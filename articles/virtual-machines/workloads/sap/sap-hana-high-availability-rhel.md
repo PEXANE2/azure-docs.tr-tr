@@ -1,6 +1,6 @@
 ---
-title: RHEL'de Azure VM'lerde SAP HANA'nın yüksek kullanılabilirliği | Microsoft Dokümanlar
-description: Azure sanal makinelerinde (VM) SAP HANA'nın yüksek kullanılabilirliğini belirleyin.
+title: RHEL üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik | Microsoft Docs
+description: Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirlik sağlayın.
 services: virtual-machines-linux
 documentationcenter: ''
 author: rdeltcheva
@@ -13,13 +13,13 @@ ms.workload: infrastructure
 ms.date: 03/31/2020
 ms.author: radeltch
 ms.openlocfilehash: f1ae2c3c949e8bdbf30c8bef496177d56cd2dcbd
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521402"
 ---
-# <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux'ta Azure VM'lerde SAP HANA'nın yüksek kullanılabilirliği
+# <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -43,201 +43,201 @@ ms.locfileid: "80521402"
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 
-Şirket içi geliştirme için HANA Sistem Çoğaltma'yı kullanabilir veya SAP HANA için yüksek kullanılabilirlik oluşturmak için paylaşılan depolamayı kullanabilirsiniz.
-Azure sanal makinelerde (VM) Azure'daki HANA System Replication şu anda desteklenen tek yüksek kullanılabilirlik işlevidir.
-SAP HANA Çoğaltma bir birincil düğüm ve en az bir ikincil düğüm oluşur. Birincil düğümdeki verilerdeki değişiklikler, ikincil düğüme eşzamanlı olarak veya eşzamanlı olarak çoğaltılır.
+Şirket içi geliştirme için, her iki HANA sistem çoğaltmasını kullanabilir veya SAP HANA için yüksek kullanılabilirlik sağlamak üzere paylaşılan depolama alanını kullanabilirsiniz.
+Azure sanal makinelerinde (VM), Azure 'da HANA sistem çoğaltması Şu anda desteklenen tek yüksek kullanılabilirlik işlevidir.
+SAP HANA çoğaltma bir birincil düğümden ve en az bir ikincil düğümden oluşur. Birincil düğümdeki verilerde yapılan değişiklikler ikincil düğüme zaman uyumlu veya zaman uyumsuz olarak çoğaltılır.
 
-Bu makalede, sanal makinelerin nasıl dağıtılanın ve yapılandırılabilmek, küme çerçevesini yüklemek ve SAP HANA Sistem Çoğaltma'yı yüklemek ve yapılandırmak açıklanmaktadır.
-Örnek yapılandırmalarda yükleme komutları, örnek numarası **03**ve HANA System ID **HN1** kullanılır.
+Bu makalede, sanal makinelerin nasıl dağıtılacağı ve yapılandırılacağı, küme çerçevesinin nasıl yükleneceği ve SAP HANA sistem çoğaltmasının nasıl yükleneceği ve yapılandırılacağı açıklanmaktadır.
+Örnek yapılandırmalarda, yükleme komutları, örnek numarası **03**ve Hana sistem kimliği **HN1** kullanılır.
 
-Önce aşağıdaki SAP Notlarını ve bildirilerini okuyun:
+Önce aşağıdaki SAP notlarını ve kağıtları okuyun:
 
-* SAP Note [1928533], olan:
+* SAP Note [1928533], şunları içerir:
   * SAP yazılımının dağıtımı için desteklenen Azure VM boyutlarının listesi.
   * Azure VM boyutları için önemli kapasite bilgileri.
-  * Desteklenen SAP yazılımı ve işletim sistemi (OS) ve veritabanı kombinasyonları.
-  * Microsoft Azure'da Windows ve Linux için gerekli SAP çekirdeği sürümü.
-* SAP Note [2015553,] Azure'da SAP destekli SAP yazılım dağıtımları için ön koşulları listeler.
-* SAP Note [2002167] Red Hat Enterprise Linux için işletim sistemi ayarlarını tavsiye etti
-* SAP Not [2009879] Red Hat Enterprise Linux için SAP HANA Yönergeleri vardır
-* SAP Note [2178632,] Azure'da SAP için bildirilen tüm izleme ölçümleri hakkında ayrıntılı bilgilere sahiptir.
-* SAP Note [2191498,] Azure'da Linux için gerekli SAP Host Agent sürümüne sahiptir.
-* SAP Note [2243692,] Azure'da Linux'ta SAP lisanslama hakkında bilgi edinmiştir.
-* SAP Note [1999351,] SAP için Azure Gelişmiş İzleme Uzantısı için ek sorun giderme bilgilerine sahiptir.
-* [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) Linux için gerekli tüm SAP Notları'na sahiptir.
-* [Linux'ta SAP için Azure Sanal Makineler planlaması ve uygulaması][planning-guide]
-* [Linux'ta SAP için Azure Sanal Makineler dağıtımı (bu makale)][deployment-guide]
-* [Linux'ta SAP için Azure Sanal Makineler DBMS dağıtımı][dbms-guide]
-* [Kalp pili kümesinde SAP HANA sistem replikasyonu](https://access.redhat.com/articles/3004101)
+  * Desteklenen SAP yazılımı ve işletim sistemi (OS) ve veritabanı birleşimleri.
+  * Microsoft Azure üzerinde Windows ve Linux için gereken SAP çekirdek sürümü.
+* SAP Note [2015553] , Azure 'da SAP tarafından desteklenen SAP yazılım dağıtımları için önkoşulları listeler.
+* SAP Note [2002167] Red Hat Enterprise Linux için önerilen işletim sistemi ayarlarına sahiptir
+* SAP Note [2009879] , Red Hat Enterprise Linux Için SAP HANA yönergelerine sahiptir
+* SAP Note [2178632] , Azure 'da SAP için raporlanan tüm izleme ölçümleriyle ilgili ayrıntılı bilgiler içerir.
+* SAP Note [2191498] , Azure 'da Linux IÇIN gereken SAP konak Aracısı sürümüne sahiptir.
+* SAP Note [2243692] , Azure 'da LINUX üzerinde SAP lisanslama hakkında bilgi içerir.
+* SAP Note [1999351] , SAP Için Azure Gelişmiş izleme uzantısı için ek sorun giderme bilgilerine sahiptir.
+* [SAP COMMUNITY WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 'nin Linux için gereklı tüm sap notları vardır.
+* [Linux 'ta SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
+* [Linux 'ta SAP için Azure sanal makineleri dağıtımı (Bu makale)][deployment-guide]
+* [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
+* [Pacemaker kümesinde sistem çoğaltmasını SAP HANA](https://access.redhat.com/articles/3004101)
 * Genel RHEL belgeleri
-  * [Yüksek Kullanılabilirlik Eklentisi Genel Bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Yüksek Kullanılabilirlik Eklenti Yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Yüksek Kullanılabilirlik Eklenti Başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-* Azure'a özgü RHEL belgeleri:
-  * [RHEL Yüksek Kullanılabilirlik Kümeleri için Destek İlkeleri - Küme Üyesi Olarak Microsoft Azure Sanal Makineleri](https://access.redhat.com/articles/3131341)
-  * [Microsoft Azure'da Red Hat Enterprise Linux 7.4 (ve sonrası) Yüksek Kullanılabilirlik Kümesi'ni yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
-  * [SAP HANA'yı Microsoft Azure'da Kullanılmak Üzere Red Hat Enterprise Linux'a yükleyin](https://access.redhat.com/solutions/3193782)
+  * [Yüksek kullanılabilirlik eklentisi genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Yüksek kullanılabilirlik eklentisi Yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Yüksek kullanılabilirlik eklentisi başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+* Azure 'a özgü RHEL belgeleri:
+  * [RHEL yüksek kullanılabilirlik kümeleri için destek Ilkeleri-küme üyesi olarak Microsoft Azure Sanal Makineler](https://access.redhat.com/articles/3131341)
+  * [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
+  * [Microsoft Azure kullanım için Red Hat Enterprise Linux SAP HANA yüklemesi](https://access.redhat.com/solutions/3193782)
 
 ## <a name="overview"></a>Genel Bakış
 
-Yüksek kullanılabilirlik elde etmek için, SAP HANA iki sanal makineye yüklenir. Veriler HANA Sistem Çoğaltma kullanılarak çoğaltılır.
+Yüksek kullanılabilirlik elde etmek için SAP HANA iki sanal makineye yüklenir. Veriler, HANA sistem çoğaltması kullanılarak çoğaltılır.
 
-![SAP HANA yüksek kullanılabilirlik genel bakış](./media/sap-hana-high-availability-rhel/ha-hana.png)
+![SAP HANA yüksek kullanılabilirliğe genel bakış](./media/sap-hana-high-availability-rhel/ha-hana.png)
 
-SAP HANA Sistem Çoğaltma kurulumu, özel bir sanal ana bilgisayar adı ve sanal IP adresleri kullanır. Azure'da, sanal bir IP adresi kullanmak için bir yük dengeleyicisi gereklidir. Aşağıdaki liste yük dengeleyicisinin yapılandırmasını gösterir:
+SAP HANA sistem çoğaltma Kurulumu, ayrılmış bir sanal konak adı ve sanal IP adresleri kullanır. Azure 'da bir sanal IP adresi kullanmak için bir yük dengeleyici gereklidir. Aşağıdaki listede yük dengeleyicinin yapılandırması gösterilmektedir:
 
-* Ön uç yapılandırması: HN1-db için IP adresi 10.0.0.13
-* Arka uç yapılandırması: HANA Sistem Çoğaltma'nın bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlı
-* Sonda Bağlantı Noktası: Bağlantı Noktası 62503
-* Yük dengeleme kuralları: 30313 TCP, 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
+* Ön uç yapılandırması: hn1-DB için IP adresi 10.0.0.13
+* Arka uç yapılandırması: HANA sistem çoğaltmasının parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
+* Araştırma bağlantı noktası: bağlantı noktası 62503
+* Yük Dengeleme kuralları: 30313 TCP, 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
 
-## <a name="deploy-for-linux"></a>Linux için dağıt
+## <a name="deploy-for-linux"></a>Linux için dağıtma
 
-Azure Marketi, SAP HANA için Red Hat Enterprise Linux 7.4 için yeni sanal makineleri dağıtmak için kullanabileceğiniz bir resim içerir.
+Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz SAP HANA için Red Hat Enterprise Linux 7,4 için bir görüntü içerir.
 
-### <a name="deploy-with-a-template"></a>Şablonla dağıtma
+### <a name="deploy-with-a-template"></a>Şablon ile dağıtma
 
-Gerekli tüm kaynakları dağıtmak için GitHub'da olan hızlı başlangıç şablonlarından birini kullanabilirsiniz. Şablon sanal makineleri, yük dengeleyicisini, kullanılabilirlik kümesini ve benzeri uygulamaları dağır.
+GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm kaynakları dağıtmak için kullanabilirsiniz. Şablon, sanal makineleri, yük dengeleyiciyi, kullanılabilirlik kümesini ve benzerlerini dağıtır.
 Şablonu dağıtmak için aşağıdaki adımları izleyin:
 
-1. Azure portalında [veritabanı şablonu][template-multisid-db] açın.
+1. Azure portal [veritabanı şablonunu][template-multisid-db] açın.
 1. Aşağıdaki parametreleri girin:
-    * **Sap Sistem Kimliği**: Yüklemek istediğiniz SAP sisteminin SAP sistem kimliğini girin. Kimlik, dağıtılan kaynaklar için önek olarak kullanılır.
-    * **Os Türü**: Linux dağıtımlarından birini seçin. Bu örnek için **RHEL 7'yi**seçin.
-    * **Db Türü**: **HANA'yı**seçin.
-    * **Sap Sistem Boyutu**: Yeni sistemin sağlayacağı SAPS sayısını girin. Sistemin kaç SAPS gerektirdiğinden emin değilseniz, SAP Teknoloji Ortağınıza veya Sistem Entegratörünüze danışın.
-    * **Sistem Kullanılabilirliği**: **SELECT HA**.
-    * **Admin Kullanıcı Adı, Yönetici Şifresi veya SSH tuşu**: Makinede oturum açabilen yeni bir kullanıcı oluşturulur.
-    * **Subnet ID**: VM'yi, vm'nin atanması gereken tanımlanmış bir alt ağına yerleştirmek istiyorsanız, o alt ağın kimliğini adlandırın. Kimlik genellikle **/abonelik/\<abonelik kimliği>/kaynakGruplar/\<kaynak grup adı>/providers/Microsoft.Network/virtualNetworks/\<sanal\<ağ adı>/subnet/subnet adı>** gibi görünür. Yeni bir sanal ağ oluşturmak istiyorsanız boş bırakın
+    * **SAP SISTEM kimliği**: yüklemek istediğiniz SAP sisteminin SAP sistem kimliğini girin. KIMLIK, dağıtılan kaynakların ön eki olarak kullanılır.
+    * **Işletim sistemi türü**: Linux dağılımından birini seçin. Bu örnek için **RHEL 7**' yi seçin.
+    * **Veritabanı türü**: **Hana**seçin.
+    * **SAP sistem boyutu**: yeni sistemin SAĞLAYACAĞı SAPS sayısını girin. Sistemin kaç tane için gerekli olduğundan emin değilseniz, SAP Technology Iş ortağınızdan veya sistem tümleştirmenize sorun.
+    * **Sistem kullanılabilirliği**: **ha**seçeneğini belirleyin.
+    * **Yönetici Kullanıcı adı, yönetici parolası veya SSH anahtarı**: makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
+    * **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle **/Subscriptions/\<Subscription ID>/ResourceGroups/\<kaynak grubu adı>/Providers/Microsoft.Network/virtualnetworks/\<sanal ağ adı>/subnets/\<alt ağ adı>** gibi görünür. Yeni bir sanal ağ oluşturmak istiyorsanız boş bırakın
 
 ### <a name="manual-deployment"></a>El ile dağıtım
 
 1. Bir kaynak grubu oluşturun.
 1. Sanal ağ oluşturun.
-1. Kullanılabilirlik kümesi oluşturun.  
-   Maksimum güncelleştirme etki alanını ayarlayın.
-1. Yük dengeleyici (dahili) oluşturun. Standart [yük dengeleyicisi](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)öneririz.
-   * Adım 2'de oluşturulan sanal ağı seçin.
-1. Sanal makine 1 oluşturun.  
-   SAP HANA için en az Red Hat Enterprise Linux 7.4 kullanın. Bu örnek, SAP HANA görüntüsü <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> için Red Hat Enterprise Linux 7.4'ü kullanır Adım 3'te oluşturulan kullanılabilirlik kümesini seçin.
-1. Sanal makine 2 oluşturun.  
-   SAP HANA için en az Red Hat Enterprise Linux 7.4 kullanın. Bu örnek, SAP HANA görüntüsü <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> için Red Hat Enterprise Linux 7.4'ü kullanır Adım 3'te oluşturulan kullanılabilirlik kümesini seçin.
+1. Bir kullanılabilirlik kümesi oluşturun.  
+   En fazla güncelleştirme etki alanını ayarlayın.
+1. Yük Dengeleyici (iç) oluşturun. [Standart yük dengeleyiciyi](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)öneririz.
+   * 2. adımda oluşturulan sanal ağı seçin.
+1. Sanal makine oluşturun 1.  
+   SAP HANA için en az Red Hat Enterprise Linux 7,4 kullanın. Bu örnek, adım 3 ' te oluşturulan kullanılabilirlik <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> kümesini seçmek SAP HANA görüntüsü için Red Hat Enterprise Linux 7,4 kullanır.
+1. Sanal makine oluştur 2.  
+   SAP HANA için en az Red Hat Enterprise Linux 7,4 kullanın. Bu örnek, adım 3 ' te oluşturulan kullanılabilirlik <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> kümesini seçmek SAP HANA görüntüsü için Red Hat Enterprise Linux 7,4 kullanır.
 1. Veri diskleri ekleyin.
-1. Standart yük dengeleyicisi kullanıyorsanız, aşağıdaki yapılandırma adımlarını izleyin:
+1. Standart yük dengeleyici kullanıyorsanız, bu yapılandırma adımlarını izleyin:
    1. İlk olarak, bir ön uç IP havuzu oluşturun:
 
-      1. Yük bakiyesini açın, **frontend IP havuzunu**seçin ve **Ekle'yi**seçin.
-      1. Yeni ön uç IP havuzunun adını girin (örneğin, **hana-frontend).**
-      1. **Atamayı** **Statik** olarak ayarlayın ve IP adresini girin (örneğin, **10.0.0.13).**
-      1. **Tamam'ı**seçin.
-      1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuz IP adresine dikkat edin.
+      1. Yük dengeleyiciyi açın, **ön uç IP havuzu**' nu seçin ve **Ekle**' yi seçin.
+      1. Yeni ön uç IP havuzunun adını girin (örneğin, **Hana-ön uç**).
+      1. **Atamayı** **statik** olarak ayarlayın ve IP adresini (örneğin, **10.0.0.13**) girin.
+      1. **Tamam**’ı seçin.
+      1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuzun IP adresini aklınızda edin.
 
-   1. Ardından, bir arka uç havuzu oluşturun:
+   1. Sonra, bir arka uç havuzu oluşturun:
 
-      1. Yük bakiyesini açın, **arka uç havuzlarını**seçin ve **Ekle'yi**seçin.
-      1. Yeni arka uç havuzunun adını girin (örneğin, **hana-backend).**
-      1. **Sanal makine ekle'yi**seçin.
-      1. ** Sanal makine**'yi seçin.
+      1. Yük dengeleyiciyi açın, **arka uç havuzları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni arka uç havuzunun adını girin (örneğin, **Hana arka ucu**).
+      1. **Sanal makine Ekle**' yi seçin.
+      1. * * Sanal makine * * öğesini seçin.
       1. SAP HANA kümesinin sanal makinelerini ve IP adreslerini seçin.
-      1. **Ekle'yi**seçin.
+      1. **Add (Ekle)** seçeneğini belirleyin.
 
-   1. Ardından, bir sistem durumu sondası oluşturun:
+   1. Sonra, bir sistem durumu araştırması oluşturun:
 
-      1. Yük bakiyesini açın, **sistem durumu sondalarını**seçin ve **Ekle'yi**seçin.
-      1. Yeni sağlık sondasının adını girin (örneğin, **hana-hp).**
-      1. Protokol olarak **TCP'yi** ve 625**03**bağlantı noktasını seçin. **Aralık** değerini 5'e, **Sağlıksız eşik** değerini 2 olarak ayarlayın.
-      1. **Tamam'ı**seçin.
+      1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
+      1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+      1. **Tamam**’ı seçin.
 
-   1. Ardından, yük dengeleme kurallarını oluşturun:
+   1. Sonra, Yük Dengeleme kurallarını oluşturun:
    
-      1. Yük dengeleyicisini açın, **yük dengeleme kurallarını**seçin ve **Ekle'yi**seçin.
-      1. Yeni yük dengeleyici kuralının adını girin (örneğin, **hana-lb).**
-      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sağlık sondasını seçin (örneğin, **hana-frontend,** **hana-backend** ve **hana-hp).**
-      1. **HA Bağlantı Noktalarını**seçin.
-      1. **Boşta kalma süresini** 30 dakikaya çıkarın.
-      1. **Kayan IP'yi etkinleştirdiğinden**emin olun.
-      1. **Tamam'ı**seçin.
+      1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, **Hana-lb**).
+      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**, **Hana-arka uç** ve **Hana-HP**) seçin.
+      1. **Ha bağlantı noktalarını**seçin.
+      1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+      1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+      1. **Tamam**’ı seçin.
 
    > [!Note]
-   > Ortak IP adresi olmayan VM'ler dahili (genel IP adresi yok) Standart Azure yük bakiyesi arka uç havuzuna yerleştirildiğinde, ortak bitiş noktalarına yönlendirmeye izin verecek ek yapılandırma yapılmadığı sürece giden internet bağlantısı olmaz. Giden bağlantının nasıl elde edilene ilişkin ayrıntılar [için, SAP yüksek kullanılabilirlik senaryolarında Azure Standart Yük Dengeleyicisini kullanan Sanal Makineler için Genel uç nokta bağlantısına](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)bakın.  
+   > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
-1. Alternatif olarak, senaryonuz temel yük dengeleyicisi kullanmayı gerektiriyorsa, aşağıdaki yapılandırma adımlarını izleyin:
-   1. Yük dengeleyicisini yapılandırın. İlk olarak, bir ön uç IP havuzu oluşturun:
+1. Alternatif olarak, senaryonuz temel yük dengeleyiciyi kullanmayı belirlemesi durumunda aşağıdaki yapılandırma adımlarını izleyin:
+   1. Yük dengeleyiciyi yapılandırın. İlk olarak, bir ön uç IP havuzu oluşturun:
 
-      1. Yük bakiyesini açın, **frontend IP havuzunu**seçin ve **Ekle'yi**seçin.
-      1. Yeni ön uç IP havuzunun adını girin (örneğin, **hana-frontend).**
-      1. **Atamayı** **Statik** olarak ayarlayın ve IP adresini girin (örneğin, **10.0.0.13).**
-      1. **Tamam'ı**seçin.
-      1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuz IP adresine dikkat edin.
+      1. Yük dengeleyiciyi açın, **ön uç IP havuzu**' nu seçin ve **Ekle**' yi seçin.
+      1. Yeni ön uç IP havuzunun adını girin (örneğin, **Hana-ön uç**).
+      1. **Atamayı** **statik** olarak ayarlayın ve IP adresini (örneğin, **10.0.0.13**) girin.
+      1. **Tamam**’ı seçin.
+      1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuzun IP adresini aklınızda edin.
 
-   1. Ardından, bir arka uç havuzu oluşturun:
+   1. Sonra, bir arka uç havuzu oluşturun:
 
-      1. Yük bakiyesini açın, **arka uç havuzlarını**seçin ve **Ekle'yi**seçin.
-      1. Yeni arka uç havuzunun adını girin (örneğin, **hana-backend).**
-      1. **Sanal makine ekle'yi**seçin.
-      1. Adım 3'te oluşturulan kullanılabilirlik kümesini seçin.
+      1. Yük dengeleyiciyi açın, **arka uç havuzları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni arka uç havuzunun adını girin (örneğin, **Hana arka ucu**).
+      1. **Sanal makine Ekle**' yi seçin.
+      1. Adım 3 ' te oluşturulan kullanılabilirlik kümesini seçin.
       1. SAP HANA kümesinin sanal makinelerini seçin.
-      1. **Tamam'ı**seçin.
+      1. **Tamam**’ı seçin.
 
-   1. Ardından, bir sistem durumu sondası oluşturun:
+   1. Sonra, bir sistem durumu araştırması oluşturun:
 
-      1. Yük bakiyesini açın, **sistem durumu sondalarını**seçin ve **Ekle'yi**seçin.
-      1. Yeni sağlık sondasının adını girin (örneğin, **hana-hp).**
-      1. Protokol olarak **TCP'yi** ve 625**03**bağlantı noktasını seçin. **Aralık** değerini 5'e, **Sağlıksız eşik** değerini 2 olarak ayarlayın.
-      1. **Tamam'ı**seçin.
+      1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
+      1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+      1. **Tamam**’ı seçin.
 
-   1. SAP HANA 1.0 için yük dengeleme kurallarını oluşturun:
+   1. SAP HANA 1,0 için, Yük Dengeleme kurallarını oluşturun:
 
-      1. Yük dengeleyicisini açın, **yük dengeleme kurallarını**seçin ve **Ekle'yi**seçin.
-      1. Yeni yük dengeleyici kuralının adını girin (örneğin, hana-lb-3**03**15).
-      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu sondasını (örneğin, **hana-frontend)** seçin.
-      1. **Protokol'ün** **TCP**olarak ayarlı olmasını ve 3**03**15 bağlantı noktasını girin.
-      1. **Boşta kalma süresini** 30 dakikaya çıkarın.
-      1. **Kayan IP'yi etkinleştirdiğinden**emin olun.
-      1. **Tamam'ı**seçin.
+      1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**15).
+      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
+      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**15 girin.
+      1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+      1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+      1. **Tamam**’ı seçin.
       1. Bağlantı noktası 3**03**17 için bu adımları tekrarlayın.
 
-   1. SAP HANA 2.0 için sistem veritabanı için yük dengeleme kurallarını oluşturun:
+   1. SAP HANA 2,0 için, sistem veritabanı için Yük Dengeleme kurallarını oluşturun:
 
-      1. Yük dengeleyicisini açın, **yük dengeleme kurallarını**seçin ve **Ekle'yi**seçin.
-      1. Yeni yük dengeleyici kuralının adını girin (örneğin, hana-lb-3**03**13).
-      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu sondasını (örneğin, **hana-frontend)** seçin.
-      1. **Protokol'ün** **TCP**olarak ayarlı olmasını ve 3**03**13 bağlantı noktasını girin.
-      1. **Boşta kalma süresini** 30 dakikaya çıkarın.
-      1. **Kayan IP'yi etkinleştirdiğinden**emin olun.
-      1. **Tamam'ı**seçin.
+      1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**13).
+      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
+      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**13 yazın.
+      1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+      1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+      1. **Tamam**’ı seçin.
       1. Bağlantı noktası 3**03**14 için bu adımları tekrarlayın.
 
-   1. SAP HANA 2.0 için öncelikle kiracı veritabanı için yük dengeleme kurallarını oluşturun:
+   1. SAP HANA 2,0 için, önce Kiracı veritabanı için Yük Dengeleme kurallarını oluşturun:
 
-      1. Yük dengeleyicisini açın, **yük dengeleme kurallarını**seçin ve **Ekle'yi**seçin.
-      1. Yeni yük dengeleyici kuralının adını girin (örneğin, hana-lb-3**03**40).
-      1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu sondasını seçin (örneğin, **hana-frontend).**
-      1. **Protokol'ün** **TCP**olarak ayarlı olmasını ve 3**03**40 bağlantı noktasını girin.
-      1. **Boşta kalma süresini** 30 dakikaya çıkarın.
-      1. **Kayan IP'yi etkinleştirdiğinden**emin olun.
-      1. **Tamam'ı**seçin.
-      1. 3**03**41 ve 3**03**42 bağlantı noktaları için bu adımları tekrarlayın.
+      1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**40).
+      1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **Hana-ön uç**).
+      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**40 yazın.
+      1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+      1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+      1. **Tamam**’ı seçin.
+      1. Bağlantı noktaları 3**03**41 ve 3**03**42 için bu adımları yineleyin.
 
-SAP HANA için gerekli bağlantı noktaları hakkında daha fazla bilgi için SAP [HANA Kiracı Veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) kılavuzunda veya [SAP Note 2388694'teki][2388694] [Kiracı Veritabanlarına Bağlantılar](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) bölümünü okuyun.
+SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [SAP HANA kiracı veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) Kılavuzu veya [SAP Note 2388694][2388694]' de [kiracı veritabanlarına yönelik bölüm bağlantılarını](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) okuyun.
 
 > [!IMPORTANT]
-> Azure Yük Bakiyesi'nin arkasına yerleştirilen Azure VM'lerinde TCP zaman damgalarını etkinleştirme. TCP zaman damgalarını etkinleştirmek sistem durumu sondalarının başarısız lığa neden olur. Parametre **net.ipv4.tcp_timestamps** **0**'a ayarlayın. Ayrıntılar için [Bkz. Yük Dengeleyici sağlık probları.](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
-> Ayrıca bakınız SAP notu [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
+> Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Ayrıca bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="install-sap-hana"></a>SAP HANA yükleme
 
-Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
+Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
 
-* **[A]**: Adım tüm düğümler için geçerlidir.
-* **[1]**: Adım yalnızca düğüm 1 için geçerlidir.
-* **[2]**: Adım yalnızca Pacemaker kümesinin 2 numaralı düğümü için geçerlidir.
+* **[A]**: adım tüm düğümler için geçerlidir.
+* **[1]**: adım yalnızca düğüm 1 ' e uygulanır.
+* **[2]**: adım yalnızca Paceoluşturucu kümesinin node 2 ' de geçerlidir.
 
-1. **[A]** Disk düzenini ayarlama: **Mantıksal Birim Yöneticisi (LVM)**.
+1. **[A]** disk düzeni ayarlama: **mantıksal birim Yöneticisi (LVM)**.
 
-   Verileri depolayan ve dosyaları kaydeden birimler için LVM kullanmanızı öneririz. Aşağıdaki örnek, sanal makinelerin iki birim oluşturmak için kullanılan dört veri diski eklenmiş olduğunu varsayar.
+   Veri ve günlük dosyalarını depolayan birimlerde LVM kullanmanızı öneririz. Aşağıdaki örnek, sanal makinelerin iki birim oluşturmak için kullanılan dört veri diskine sahip olduğunu varsayar.
 
-   Kullanılabilir tüm diskleri listele:
+   Tüm kullanılabilir diskleri listeleyin:
 
    <pre><code>ls /dev/disk/azure/scsi1/lun*
    </code></pre>
@@ -256,18 +256,18 @@ Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
    sudo pvcreate /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Veri dosyaları için bir birim grubu oluşturun. Günlük dosyaları için bir birim grubu ve SAP HANA'nın paylaşılan dizini için bir birim grubu kullanın:
+   Veri dosyaları için bir birim grubu oluşturun. Günlük dosyaları için bir birim grubu ve SAP HANA paylaşılan dizinine yönelik bir tane kullanın:
 
    <pre><code>sudo vgcreate vg_hana_data_<b>HN1</b> /dev/disk/azure/scsi1/lun0 /dev/disk/azure/scsi1/lun1
    sudo vgcreate vg_hana_log_<b>HN1</b> /dev/disk/azure/scsi1/lun2
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Mantıksal birimleri oluşturun. `-i` Anahtar olmadan kullandığınızda `lvcreate` doğrusal bir birim oluşturulur. Daha iyi G/Ç performansı için çizgili bir hacim oluşturmanızı ve şerit boyutlarını [SAP HANA VM depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)belgelenen değerlerle hizalamanızı öneririz. `-i` Bağımsız değişken, temel fiziksel birimlerin sayısı `-I` olmalıdır ve bağımsız değişken şerit boyutudur. Bu belgede, veri hacmi için iki fiziksel birim `-i` kullanılır, bu nedenle anahtar bağımsız değişkeni **2**olarak ayarlanır. Veri hacmi için şerit boyutu **256KiB'dir.** Günlük birimi için bir fiziksel birim `-i` kullanılır, bu nedenle günlük hacmi komutları için açık bir şekilde hiçbir anahtar veya `-I` anahtar kullanılır.  
+   Mantıksal birimleri oluşturun. `-i` Anahtar olmadan kullandığınızda `lvcreate` doğrusal bir birim oluşturulur. Daha iyi g/ç performansı için şeritli bir birim oluşturmanızı ve şeritli boyutları [SAP HANA VM depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)belgelenen değerlere hizalamanızı öneririz. `-i` Bağımsız değişken, temeldeki fiziksel birimlerin sayısı olmalıdır ve `-I` bağımsız değişken Stripe boyutudur. Bu belgede, veri hacmi için iki fiziksel birim kullanılır, bu nedenle `-i` anahtar bağımsız değişkeni **2**olarak ayarlanır. Veri hacmi için Şerit boyutu **256Kıb**'dir. Günlük birimi için bir fiziksel birim kullanılır, bu nedenle günlük birimi `-i` komutları `-I` için hiçbir veya anahtar açık olarak kullanılmaz.  
 
    > [!IMPORTANT]
-   > `-i` Her veri, günlük veya paylaşılan birimler için birden fazla fiziksel birim kullandığınızda anahtarı kullanın ve temel fiziksel birim sayısına ayarlayın. Çizgili `-I` bir birim oluştururken şerit boyutunu belirtmek için anahtarı kullanın.  
-   > Şerit boyutları ve disk sayısı da dahil olmak üzere önerilen depolama yapılandırmaları için [SAP HANA VM depolama yapılandırmalarına](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) bakın.  
+   > Her bir `-i` veri, günlük veya paylaşılan birim için birden fazla fiziksel birim kullandığınızda anahtarı kullanın ve temel alınan fiziksel birimin numarasını ayarlayın. Şeritli birim `-I` oluştururken Stripe boyutunu belirtmek için anahtarını kullanın.  
+   > Bkz. şerit boyutları ve disk sayısı dahil olmak üzere önerilen depolama yapılandırmalarının [SAP HANA VM depolama yapılandırması](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) .  
 
    <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -277,7 +277,7 @@ Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
 
-   Montaj dizinlerini oluşturun ve tüm mantıksal birimlerin UUID'sini kopyalayın:
+   Bağlama dizinlerini oluşturun ve tüm mantıksal birimlerin UUID 'sini kopyalayın:
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>
    sudo mkdir -p /hana/log/<b>HN1</b>
@@ -286,26 +286,26 @@ Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
    sudo blkid
    </code></pre>
 
-   Üç `fstab` mantıksal birim için girişler oluşturun:
+   Üç `fstab` mantıksal birim için girdi oluşturun:
 
    <pre><code>sudo vi /etc/fstab
    </code></pre>
 
-   `/etc/fstab` Dosyaya aşağıdaki satırı ekleyin:
+   Aşağıdaki satırı `/etc/fstab` dosyasına ekleyin:
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_data_<b>HN1</b>-hana_data&gt;</b> /hana/data/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_log_<b>HN1</b>-hana_log&gt;</b> /hana/log/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_shared_<b>HN1</b>-hana_shared&gt;</b> /hana/shared/<b>HN1</b> xfs  defaults,nofail  0  2
    </code></pre>
 
-   Yeni ciltleri monte edin:
+   Yeni birimleri bağlama:
 
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** Disk düzenini ayarlama: **Düz Diskler**.
+1. **[A]** disk düzeni ayarlama: **düz diskler**.
 
-   Demo sistemleri için HANA verilerinizi yerleyebilir ve dosyalarınızı tek bir diske kaydedebilirsiniz. /dev/disk/azure/scsi1/lun0 üzerinde bir bölüm oluşturun ve xfs ile biçimlendirin:
+   Demo sistemlerinde, HANA verilerinizi ve günlük dosyalarınızı bir diske yerleştirebilirsiniz. /Dev/disk/Azure/scsi1/lun0 üzerinde bir bölüm oluşturun ve XFS ile biçimlendirin:
 
    <pre><code>sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
    sudo mkfs.xfs /dev/disk/azure/scsi1/lun0-part1
@@ -315,92 +315,92 @@ Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
    sudo vi /etc/fstab
    </code></pre>
 
-   /etc/fstab dosyasına bu satırı ekleyin:
+   Bu satırı/etc/fstab dosyasına ekleyin:
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID&gt;</b> /hana xfs  defaults,nofail  0  2
    </code></pre>
 
-   Hedef dizini oluşturun ve diski monte edin:
+   Hedef dizini oluşturun ve diski bağlayın:
 
    <pre><code>sudo mkdir /hana
    sudo mount -a
    </code></pre>
 
-1. **[A]** Tüm ana bilgisayarlar için ana bilgisayar ad çözümlemesi ayarlayın.
+1. **[A]** tüm konaklar için konak adı çözümlemesi ayarlayın.
 
-   Bir DNS sunucusu kullanabilir veya tüm düğümlerde /etc/hosts dosyasını değiştirebilirsiniz. Bu örnekte /etc/hosts dosyasının nasıl kullanılacağı gösterilmektedir.
+   Bir DNS sunucusu kullanabilir ya da tüm düğümlerdeki/etc/hosts dosyasını değiştirebilirsiniz. Bu örnekte,/etc/hosts dosyasının nasıl kullanılacağı gösterilmektedir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   /etc/hosts dosyasına aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınıza uyacak şekilde değiştirin:
+   /Etc/hosts dosyasına aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınızla eşleşecek şekilde değiştirin:
 
    <pre><code><b>10.0.0.5 hn1-db-0</b>
    <b>10.0.0.6 hn1-db-1</b>
    </code></pre>
 
-1. HANA yapılandırması için **[A]** RHEL
+1. **[A]** Hana yapılandırması için RHEL
 
-   SAP Note [2292690] ve [2455582 ve 2455582] ve 'de <https://access.redhat.com/solutions/2447641>açıklandığı şekilde RHEL'i yapılandırın.
+   RHEL 'yi SAP Note [2292690] ve [2455582] ve <https://access.redhat.com/solutions/2447641>içinde açıklanan şekilde yapılandırın.
 
-1. **[A]** SAP HANA'yı yükleyin
+1. **[A]** SAP HANA yüklemesi
 
-   SAP HANA Sistem Çoğaltma yüklemek <https://access.redhat.com/articles/3004101>için, izleyin.
+   SAP HANA sistem çoğaltmasını yüklemek için izleyin <https://access.redhat.com/articles/3004101>.
 
-   * HANA DVD **hdblcm** programı çalıştırın. İstem de aşağıdaki değerleri girin:
-   * Yüklemeyi seçin: **1**girin.
-   * Kurulum için ek bileşenler seçin: **1**girin.
-   * Yükleme Yolunu girin [/hana/shared]: Enter'u seçin.
-   * Yerel Ana Bilgisayar Adı girin [..]: Enter'u seçin.
-   * Sisteme ek ana bilgisayarlar eklemek istiyor musunuz? (y/n) [n]: Enter'u seçin.
-   * SAP HANA Sistem Kimliği girin: ÖRNEĞIN HANA'nın SID'ini girin: **HN1**.
-   * Örnek Numarası [00]: HANA Örnek numarasını girin. Azure şablonunu kullandıysanız veya bu makalenin el ile dağıtım bölümünü izlediyseniz **03** girin.
-   * Veritabanı Modu ' nu seçin / Dizini girin [1]: Enter'u seçin.
-   * Sistem Kullanımı / Enter Index 'i seçin [4]: Sistem kullanım değerini seçin.
-   * Veri Hacimlerinin Konumunu Girin [/hana/data/HN1]: Enter'u seçin.
-   * Günlük Hacimlerinin Konumunu Girin [/hana/log/HN1]: Enter'u seçin.
-   * Maksimum bellek ayırmayı kısıtlamak mı? [n]: Enter'u seçin.
-   * Ana Bilgisayar Için Sertifika Ana Bilgisayar Adı Girin '...' [...]: Enter'u seçin.
-   * SAP Host Agent User (sapadm) Şifresini girin: Ana bilgisayar temsilcisi kullanıcı parolasını girin.
-   * SAP Host Agent User (sapadm) Parolasını onaylayın: Onaylamak için ana bilgisayar kullanıcı parolasını yeniden girin.
-   * Sistem Yöneticisi (hdbadm) Şifresini girin: Sistem yöneticisi parolasını girin.
-   * Sistem Yöneticisi (hdbadm) Şifresini Onaylayın: Onaylamak için sistem yöneticisi parolasını tekrar girin.
-   * Sistem Yöneticisi Giriş Dizini [/usr/sap/HN1/home]: Enter'u seçin.
-   * Sistem Yöneticisi Giriş Kabuğu [/bin/sh]: Enter'u seçin.
-   * Sistem Yöneticisi Kullanıcı Kimliğini Girin [1001]: Enter'u seçin.
-   * Kullanıcı Grubunun Kimliğini girin (sapsys) [79]: Enter'u seçin.
-   * Veritabanı Kullanıcı (SYSTEM) Şifresini girin: Veritabanı kullanıcı parolasını girin.
-   * Veritabanı Kullanıcı (SYSTEM) Şifresini Onaylayın: Onaylamak için veritabanı kullanıcı parolasını yeniden girin.
-   * Makine yeniden başlatıldıktan sonra sistemi yeniden başlatın? [n]: Enter'u seçin.
-   * Devam etmek istiyor musunuz? (y/n): Özeti doğrulayın. Devam etmek için **y** girin.
+   * HANA DVD 'sindeki **hdblcm** programını çalıştırın. Komut istemine aşağıdaki değerleri girin:
+   * Yükleme seç: **1**yazın.
+   * Yükleme için ek bileşenler seçin: **1**girin.
+   * Yükleme yolunu girin [/Hana/Shared]: ENTER ' ı seçin.
+   * Yerel ana bilgisayar adı [..] girin: ENTER ' u seçin.
+   * Sisteme ek konaklar eklemek istiyor musunuz? (e/h) [n]: ENTER ' ı seçin.
+   * SAP HANA sistem KIMLIĞINI girin: HANA 'nın SID 'sini girin, örneğin: **HN1**.
+   * Örnek numarasını girin [00]: HANA örnek numarasını girin. Azure şablonunu kullandıysanız veya bu makalenin el ile dağıtım bölümünü izlediyseniz **03** girin.
+   * Veritabanı modunu seçin/Dizin [1] girin: ENTER ' u seçin.
+   * Sistem kullanımı/dizin girin [4]: sistem kullanım değerini seçin.
+   * [/Hana/data/HN1] veri birimlerinin konumunu girin: ENTER ' u seçin.
+   * [/Hana/log/HN1] günlük birimlerinin konumunu girin: ENTER ' u seçin.
+   * Maksimum bellek ayırmayı kısıtla mı? [n]: ENTER ' ı seçin.
+   * '... ' Konağının sertifika ana bilgisayar adını girin [...]: ENTER ' ı seçin.
+   * SAP konak Aracısı Kullanıcı (sapadm) parolasını girin: konak Aracısı Kullanıcı parolasını girin.
+   * SAP konak aracısı kullanıcısı (sapadm) parolasını onaylayın: onaylamak için konak Aracısı Kullanıcı parolasını yeniden girin.
+   * Sistem Yöneticisi (hdbadm) parolasını girin: Sistem Yöneticisi parolasını girin.
+   * Sistem Yöneticisi (hdbadm) parolasını onaylayın: onaylamak için sistem yöneticisi parolasını yeniden girin.
+   * Sistem Yöneticisi giriş dizinini girin [/usr/sap/HN1/home]: ENTER ' ı seçin.
+   * Sistem Yöneticisi oturum açma kabuğunu girin [/bin/sh]: ENTER ' u seçin.
+   * Sistem Yöneticisi kullanıcı KIMLIĞINI girin [1001]: ENTER ' u seçin.
+   * Kullanıcı grubunun KIMLIĞINI girin (sapsys) [79]: ENTER ' u seçin.
+   * Veritabanı kullanıcı (SISTEM) parolasını girin: veritabanı kullanıcı parolasını girin.
+   * Veritabanı kullanıcı (SISTEM) parolasını onaylayın: onaylamak için veritabanı kullanıcı parolasını yeniden girin.
+   * Makine yeniden başlatıldıktan sonra sistem yeniden başlatılsın mı? [n]: ENTER ' ı seçin.
+   * Devam etmek istiyor musunuz? (e/h): özeti doğrulayın. Devam etmek için **y** girin.
 
-1. **SAP** Ana Bilgisayar Aracısını yükseltin.
+1. **[A]** SAP konak aracısını yükseltin.
 
-   [SAP Yazılım Merkezi'nden][sap-swcenter] en son SAP Ana Bilgisayar Aracısı arşivini indirin ve aracıyı yükseltmek için aşağıdaki komutu çalıştırın. İndirdiğiniz dosyayı işaret etmek için arşivyolunu değiştirin:
+   [SAP yazılım merkezi][sap-swcenter] 'nden en son SAP konak Aracısı arşivini indirin ve aracıyı yükseltmek için aşağıdaki komutu çalıştırın. Arşiv yolunu, indirdiğiniz dosyayı işaret etmek için değiştirin:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
 
-1. **[A]** Güvenlik duvarLarını yapılandırma
+1. **[A]** güvenlik duvarını yapılandırma
 
-   Azure yük dengeleyici sondası bağlantı noktası için güvenlik duvarı kuralını oluşturun.
+   Azure yük dengeleyici araştırma bağlantı noktası için güvenlik duvarı kuralı oluşturun.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp
    sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp --permanent
    </code></pre>
 
-## <a name="configure-sap-hana-20-system-replication"></a>SAP HANA 2.0 Sistem Çoğaltma yapılandırma
+## <a name="configure-sap-hana-20-system-replication"></a>SAP HANA 2,0 sistem çoğaltmasını yapılandırma
 
-Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
+Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
 
-* **[A]**: Adım tüm düğümler için geçerlidir.
-* **[1]**: Adım yalnızca düğüm 1 için geçerlidir.
-* **[2]**: Adım yalnızca Pacemaker kümesinin 2 numaralı düğümü için geçerlidir.
+* **[A]**: adım tüm düğümler için geçerlidir.
+* **[1]**: adım yalnızca düğüm 1 ' e uygulanır.
+* **[2]**: adım yalnızca Paceoluşturucu kümesinin node 2 ' de geçerlidir.
 
-1. **[A]** Güvenlik duvarLarını yapılandırma
+1. **[A]** güvenlik duvarını yapılandırma
 
-   HANA Sistem Çoğaltma ve istemci trafiğine izin vermek için güvenlik duvarı kuralları oluşturun. Gerekli bağlantı noktaları [Tüm SAP Ürünlerinin TCP/IP bağlantı noktalarında](https://help.sap.com/viewer/ports)listelenir. Aşağıdaki komutlar HANA 2.0 Sistem Çoğaltma ve veritabanı SYSTEMDB, HN1 ve NW1 istemci trafiğine izin vermek için sadece bir örnektir.
+   HANA sistem çoğaltmasına ve istemci trafiğine izin vermek için güvenlik duvarı kuralları oluşturun. Gerekli bağlantı noktaları, [Tüm sap ürünlerinin TCP/IP bağlantı noktalarında](https://help.sap.com/viewer/ports)listelenir. Aşağıdaki komutlar, HANA 2,0 sistem çoğaltmasının ve istemci trafiğinin SYSTEMDB, HN1 ve NW1 veritabanına erişmesine izin veren bir örnektir.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=40302/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=40302/tcp
@@ -420,18 +420,18 @@ Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
    sudo firewall-cmd --zone=public --add-port=30342/tcp
    </code></pre>
 
-1. **[1]** Kiracı veritabanını oluşturun.
+1. **[1]** kiracı veritabanını oluşturun.
 
-   SAP HANA 2.0 veya MDC kullanıyorsanız, SAP NetWeaver sisteminiz için bir kiracı veritabanı oluşturun. **NW1'i** SAP sisteminizin SID'si ile değiştirin.
+   SAP HANA 2,0 veya MDC kullanıyorsanız, SAP NetWeaver sisteminiz için bir kiracı veritabanı oluşturun. **NW1** değerini SAP sisteminizin SID 'si ile değiştirin.
 
-   Hanasid\>adm <aşağıdaki komutu çalıştırın:
+   Farklı Çalıştır <hanasıd\>adm aşağıdaki komutu:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
-1. **[1]** Sistem Çoğaltma'yı ilk düğümde yapılandır:
+1. **[1]** Ilk düğümde sistem çoğaltmasını yapılandırın:
 
-   <hanasid\>adm olarak veritabanları yedekleme:
+   Veritabanlarını <hanasıd\>adm olarak yedekleyin:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -449,17 +449,17 @@ Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
    <pre><code>hdbnsutil -sr_enable --name=<b>SITE1</b>
    </code></pre>
 
-1. **[2]** İkinci düğümde Sistem Çoğaltma'yı yapılandırın:
+1. **[2]** Ikinci düğümde sistem çoğaltmasını yapılandırın:
     
-   Sistem çoğaltmabaşlatmak için ikinci düğüm kaydedin. Hanasid\>adm <aşağıdaki komutu çalıştırın:
+   Sistem çoğaltmasını başlatmak için ikinci düğümü kaydedin. <hanasid\>adm olarak aşağıdaki komutu çalıştırın:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
    </code></pre>
 
-1. **[1]** Çoğaltma durumunu denetleyin
+1. **[1]** çoğaltma durumunu denetleme
 
-   Çoğaltma durumunu denetleyin ve tüm veritabanları eşitlenene kadar bekleyin. Durum bilinmiyorsa, güvenlik duvarı ayarlarınızı kontrol edin.
+   Çoğaltma durumunu denetleyin ve tüm veritabanları eşitlenene kadar bekleyin. Durum bılınmıyor olarak kalırsa güvenlik duvarı ayarlarınızı denetleyin.
 
    <pre><code>sudo su - <b>hn1</b>adm -c "python /usr/sap/<b>HN1</b>/HDB<b>03</b>/exe/python_support/systemReplicationStatus.py"
    # | Database | Host     | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -481,25 +481,25 @@ Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
    # site name: <b>SITE1</b>
    </code></pre>
 
-## <a name="configure-sap-hana-10-system-replication"></a>SAP HANA 1.0 Sistem Çoğaltma yapılandırma
+## <a name="configure-sap-hana-10-system-replication"></a>SAP HANA 1,0 sistem çoğaltmasını yapılandırma
 
-Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
+Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
 
-* **[A]**: Adım tüm düğümler için geçerlidir.
-* **[1]**: Adım yalnızca düğüm 1 için geçerlidir.
-* **[2]**: Adım yalnızca Pacemaker kümesinin 2 numaralı düğümü için geçerlidir.
+* **[A]**: adım tüm düğümler için geçerlidir.
+* **[1]**: adım yalnızca düğüm 1 ' e uygulanır.
+* **[2]**: adım yalnızca Paceoluşturucu kümesinin node 2 ' de geçerlidir.
 
-1. **[A]** Güvenlik duvarLarını yapılandırma
+1. **[A]** güvenlik duvarını yapılandırma
 
-   HANA Sistem Çoğaltma ve istemci trafiğine izin vermek için güvenlik duvarı kuralları oluşturun. Gerekli bağlantı noktaları [Tüm SAP Ürünlerinin TCP/IP bağlantı noktalarında](https://help.sap.com/viewer/ports)listelenir. Aşağıdaki komutlar HANA 2.0 Sistem Çoğaltma izin vermek için sadece bir örnektir. SAP HANA 1.0 kurulumunuza uyarla.
+   HANA sistem çoğaltmasına ve istemci trafiğine izin vermek için güvenlik duvarı kuralları oluşturun. Gerekli bağlantı noktaları, [Tüm sap ürünlerinin TCP/IP bağlantı noktalarında](https://help.sap.com/viewer/ports)listelenir. Aşağıdaki komutlar, HANA 2,0 sistem çoğaltmasına izin veren yalnızca bir örnektir. SAP HANA 1,0 yüklemenize uyarlayabilirsiniz.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=40302/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=40302/tcp
    </code></pre>
 
-1. **[1]** Gerekli kullanıcıları oluşturun.
+1. **[1]** gerekli kullanıcıları oluşturun.
 
-   Aşağıdaki komutu kök olarak çalıştırın. Sap HANA kurulumdeğerlerinin değerleriile kalın dizeleri (HANA System ID **HN1** ve örnek numarası **03)** değiştirmeyi unutmayın:
+   Aşağıdaki komutu kök olarak çalıştırın. Kalın dizeleri (HANA sistem KIMLIĞI **HN1** ve örnek numarası **03**) SAP HANA yüklemenizin değerleriyle değiştirdiğinizden emin olun:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -507,51 +507,51 @@ Bu bölümdeki adımlar aşağıdaki önekleri kullanır:
    hdbsql -u system -i <b>03</b> 'ALTER USER <b>hdb</b>hasync DISABLE PASSWORD LIFETIME'
    </code></pre>
 
-1. **[A]** Keystore girişini oluşturun.
+1. **[A]** anahtar deposu girişi oluşturun.
 
-   Yeni bir keystore girişi oluşturmak için aşağıdaki komutu kök olarak çalıştırın:
+   Yeni bir anahtar deposu girişi oluşturmak için aşağıdaki komutu kök olarak çalıştırın:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
    </code></pre>
 
-1. **[1]** Veritabanını yedekleyin.
+1. **[1]** veritabanını yedekleyin.
 
-   Veritabanlarını kök olarak yedekleyin:
+   Veritabanlarını kök olarak yedekleme:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
    </code></pre>
 
-   Çok kiracılı yükleme kullanıyorsanız, kiracı veritabanını da yedekleyin:
+   Çok kiracılı bir yükleme kullanıyorsanız, kiracı veritabanını da yedekleyin:
 
    <pre><code>hdbsql -d <b>HN1</b> -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
    </code></pre>
 
-1. **[1]** Sistem Çoğaltma'yı ilk düğümde yapılandırın.
+1. **[1]** Ilk düğümde sistem çoğaltmasını yapılandırın.
 
-   <hanasid\>adm olarak birincil site oluşturun:
+   Birincil siteyi <hanasıd\>adm olarak oluşturun:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
    </code></pre>
 
-1. **[2]** İkincil düğümüzerinde Sistem Çoğaltma'yı yapılandırın.
+1. **[2]** Ikincil düğümde sistem çoğaltmasını yapılandırın.
 
-   <hanasid\>adm olarak ikincil site kaydedin:
+   İkincil siteyi <hanasıd\>adm olarak Kaydet:
 
    <pre><code>HDB stop
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
    HDB start
    </code></pre>
 
-## <a name="create-a-pacemaker-cluster"></a>Kalp Pili kümesi oluşturma
+## <a name="create-a-pacemaker-cluster"></a>Paceoluşturucu kümesi oluşturma
 
-Bu HANA sunucusu için temel bir Pacemaker kümesi oluşturmak için [Azure'da Red Hat Enterprise Linux'ta Pacemaker'ı ayarlama](high-availability-guide-rhel-pacemaker.md) adımlarını izleyin.
+Bu HANA sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [Azure 'daki Red Hat Enterprise Linux Paceyapıcısı ayarlama](high-availability-guide-rhel-pacemaker.md) bölümündeki adımları izleyin.
 
-## <a name="create-sap-hana-cluster-resources"></a>SAP HANA küme kaynakları oluşturma
+## <a name="create-sap-hana-cluster-resources"></a>SAP HANA kümesi kaynakları oluşturma
 
-**Tüm düğümlere**SAP HANA kaynak aracılarını yükleyin. Paketi içeren bir depoyu etkinleştirdiğinden emin olun.
+SAP HANA kaynak aracılarını **tüm düğümlere**yükler. Paketi içeren bir depoyu etkinleştirdiğinizden emin olun.
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -559,7 +559,7 @@ sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
 sudo yum install -y resource-agents-sap-hana
 </code></pre>
 
-Sonra, HANA topolojisi oluşturun. Pacemaker küme düğümlerinden birinde aşağıdaki komutları çalıştırın:
+Ardından, HANA topolojisini oluşturun. Aşağıdaki komutları Paceyapıcısı küme düğümlerinden birinde çalıştırın:
 
 <pre><code>sudo pcs property set maintenance-mode=true
 
@@ -593,10 +593,10 @@ sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana
 sudo pcs property set maintenance-mode=false
 </code></pre>
 
-Küme durumunun iyi olduğundan ve tüm kaynakların başlatıldıklarından emin olun. Kaynakların hangi düğümün çalıştırıldığı önemli değildir.
+Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların hangi düğümde çalıştığı önemli değildir.
 
 > [!NOTE]
-> Yukarıdaki yapılandırmadaki zaman ekmeleri yalnızca örneklerdir ve belirli HANA kurulumuna uyarlanmış olması gerekebilir. Örneğin, SAP HANA veritabanını başlatmak daha uzun sürüyorsa, başlangıç zaman aşımını artırmanız gerekebilir.  
+> Yukarıdaki yapılandırmadaki zaman aşımları yalnızca örnektir ve belirli HANA kurulumuna uyarlanmasını gerektirebilir. Örneğin, SAP HANA veritabanını başlatmak daha uzun sürerse Başlangıç zaman aşımını artırmanız gerekebilir.  
 
 <pre><code>sudo pcs status
 
@@ -615,14 +615,14 @@ Küme durumunun iyi olduğundan ve tüm kaynakların başlatıldıklarından emi
 #      vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-## <a name="test-the-cluster-setup"></a>Küme kurulumını test edin
+## <a name="test-the-cluster-setup"></a>Küme kurulumunu test etme
 
-Bu bölümde kurulumunuzu nasıl sınayabileceğiniz açıklanmaktadır. Bir teste başlamadan önce, Pacemaker'ın herhangi bir başarısız eylemi olmadığından (pc'ler durumu yla), beklenmeyen konum kısıtlamaları olmadığından (örneğin geçiş testi artıkları) ve HANA'nın eşitleme durumu olduğundan emin olun, örneğin systemReplicationStatus ile:
+Bu bölüm, kurulumunuzu nasıl test kullanabileceğinizi açıklar. Bir teste başlamadan önce, pacemaker 'ın başarısız bir eyleme (bilgisayarların durumu aracılığıyla) sahip olmadığından emin olun, beklenmedik bir konum kısıtlaması olmadığından (örneğin, bir geçiş testinin kalan kısmını) ve HANA 'nın eşitleme durumu olduğundan (örneğin, systemReplicationStatus:
 
 <pre><code>[root@hn1-db-0 ~]# sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
 </code></pre>
 
-### <a name="test-the-migration"></a>Geçişi test edin
+### <a name="test-the-migration"></a>Geçişi test etme
 
 Teste başlamadan önce kaynak durumu:
 
@@ -636,14 +636,14 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-Aşağıdaki komutu çalıştırarak SAP HANA ana düğümü geçirebilirsiniz:
+Aşağıdaki komutu yürüterek SAP HANA ana düğümünü geçirebilirsiniz:
 
 <pre><code>[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
 </code></pre>
 
-Ayarlarsanız, `AUTOMATED_REGISTER="false"`bu komut SAP HANA ana düğümü ve hn1-db-1 için sanal IP adresi içeren grup geçirmelisiniz.
+Ayarlarsanız `AUTOMATED_REGISTER="false"`, bu komut SAP HANA ana düğümünü ve sanal IP adresini içeren grubu hn1-DB-1 ' e geçirmelidir.
 
-Geçiş yapıldıktan sonra, 'sudo pcs durumu' çıkışı şu na benzer
+Geçiş yapıldıktan sonra, ' sudo bilgisayarları durumu ' çıkışı şöyle görünür
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -655,7 +655,7 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
-HN1-db-0'daki SAP HANA kaynağı durduruldu. Bu durumda, hana örneğini bu komutu çalıştırarak ikincil olarak yapılandırın:
+Hn1-DB-0 üzerindeki SAP HANA kaynağı durduruldu. Bu durumda, aşağıdaki komutu yürüterek HANA örneğini ikincil olarak yapılandırın:
 
 <pre><code>[root@hn1-db-0 ~]# su - hn1adm
 
@@ -665,14 +665,14 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=hn1-db-1
 e=sync --name=SITE1
 </code></pre>
 
-Geçiş, yeniden silinmesi gereken konum kısıtlamaları oluşturur:
+Geçiş, yeniden silinmesi gereken konum kısıtlamalarını oluşturur:
 
 <pre><code># Switch back to root
 exit
 [root@hn1-db-0 ~]# pcs resource clear SAPHana_HN1_03-master
 </code></pre>
 
-'Pcs durumunu' kullanarak HANA kaynağının durumunu izleyin. HANA hn1-db-0'da başlatıldıktan sonra, çıktı şu şekilde görünmelidir
+' PC Status ' kullanarak HANA kaynağının durumunu izleyin. Hn1-DB-0 ' da HANA başlatıldıktan sonra çıktı şöyle görünmelidir
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
     Started: [ hn1-db-0 hn1-db-1 ]
@@ -684,7 +684,7 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
-### <a name="test-the-azure-fencing-agent"></a>Azure eskrim aracısını test edin
+### <a name="test-the-azure-fencing-agent"></a>Azure ile sınırlama aracısını test etme
 
 Teste başlamadan önce kaynak durumu:
 
@@ -698,19 +698,19 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
-SAP HANA'nın Master olarak çalıştığı düğümdeki ağ arabirimini devre dışı bırakarak Azure eskrim aracısının kurulumlarını sınayabilirsiniz.
-Bir ağ hatasının nasıl simüle edilebildiğini anlatan bir açıklama için [Red Hat Knowledgebase makalesi 79523'e](https://access.redhat.com/solutions/79523) bakın. Bu örnekte, ağa tüm erişimi engellemek için net_breaker komut dosyasını kullanırız.
+SAP HANA ana öğe olarak çalıştığı düğümdeki ağ arabirimini devre dışı bırakarak Azure uçulama aracısının kurulumunu test edebilirsiniz.
+Ağ hatasının benzetimini yapma hakkında bir açıklama için bkz. [Red Hat Bilgi Bankası makalesi 79523](https://access.redhat.com/solutions/79523) . Bu örnekte, ağa erişimi engellemek için net_breaker betiğini kullanırız.
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>
 
-Sanal makine artık küme yapılandırmanıza bağlı olarak yeniden başlatmalı veya durmalıdır.
-Ayarı `stonith-action` kapalı ayarlarsanız, sanal makine durdurulur ve kaynaklar çalışan sanal makineye geçirilir.
+Sanal makinenin artık küme yapılandırmanıza bağlı olarak yeniden başlatılması veya durdurulması gerekir.
+`stonith-action` Ayarı kapalı olarak ayarlarsanız, sanal makine durdurulur ve kaynaklar çalışan sanal makineye geçirilir.
 
 > [!NOTE]
 > Sanal makinelerin yeniden çevrimiçi olması 15 dakika kadar sürebilir.
 
-Sanal makineyi yeniden başlattıktan sonra, SAP HANA kaynağını ayarlarsanız `AUTOMATED_REGISTER="false"`ikincil olarak başlatılmaz. Bu durumda, hana örneğini bu komutu çalıştırarak ikincil olarak yapılandırın:
+Sanal makineyi yeniden başlattıktan sonra, ayarlarsanız `AUTOMATED_REGISTER="false"`SAP HANA kaynak ikincil olarak başlayamaz. Bu durumda, aşağıdaki komutu yürüterek HANA örneğini ikincil olarak yapılandırın:
 
 <pre><code>su - <b>hn1</b>adm
 
@@ -735,7 +735,7 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-### <a name="test-a-manual-failover"></a>Manuel başarısızlamayı test edin
+### <a name="test-a-manual-failover"></a>El ile yük devretmeyi test etme
 
 Teste başlamadan önce kaynak durumu:
 
@@ -749,12 +749,12 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
 
-Hn1-db-0 düğümünde kümeyi durdurarak manuel bir başarısızlığı test edebilirsiniz:
+Hn1-DB-0 düğümündeki kümeyi durdurarak el ile yük devretmeyi test edebilirsiniz:
 
 <pre><code>[root@hn1-db-0 ~]# pcs cluster stop
 </code></pre>
 
-Başarısız olduktan sonra kümeyi yeniden başlatabilirsiniz. Ayarlarsanız, `AUTOMATED_REGISTER="false"`hn1-db-0 düğümündeki SAP HANA kaynağı ikincil olarak başlayamaz. Bu durumda, hana örneğini bu komutu çalıştırarak ikincil olarak yapılandırın:
+Yük devretmeden sonra kümeyi yeniden başlatabilirsiniz. Ayarlarsanız `AUTOMATED_REGISTER="false"`, hn1-DB-0 düğümündeki SAP HANA kaynak ikincil olarak başlayamaz. Bu durumda, aşağıdaki komutu yürüterek HANA örneğini ikincil olarak yapılandırın:
 
 <pre><code>[root@hn1-db-0 ~]# pcs cluster start
 [root@hn1-db-0 ~]# su - hn1adm
@@ -782,7 +782,7 @@ Resource Group: g_ip_HN1_03
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [AZURE Sanal Makineler SAP için planlama ve uygulama][planning-guide]
-* [SAP için Azure Sanal Makineler dağıtımı][deployment-guide]
-* [SAP için Azure Sanal Makineler DBMS dağıtımı][dbms-guide]
-* Yüksek kullanılabilirlik oluşturmayı ve AZURE'da SAP HANA'nın olağanüstü durum kurtarmasını nasıl planlayabilirsiniz (büyük [örnekler), Azure'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md) bölümüne bakın
+* [SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
+* [SAP için Azure sanal makineleri dağıtımı][deployment-guide]
+* [SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
+* Azure 'da SAP HANA olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan (büyük örnekler) oluşturma hakkında bilgi edinmek için bkz. [Azure 'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri işi (kodlama ve çözümleme) hata kodları | Microsoft Dokümanlar
-description: Bu makalede iş hata kodları başvuru konusu bağlantılar ve ilgili konulara yararlı bağlantılar verir.
+title: Azure Media Services iş (kodlama ve çözümleme) hata kodları | Microsoft Docs
+description: Bu makale, iş hata kodları başvuru konusuna bağlanır ve ilgili konulara yararlı bağlantılar sağlar.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,30 +14,30 @@ ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
 ms.openlocfilehash: d66347bc5510189b1d947b4c6b00345b0a56c3f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582213"
 ---
-# <a name="media-services-job-error-codes"></a>Medya Hizmetleri iş hata kodları
+# <a name="media-services-job-error-codes"></a>Media Services iş hata kodları
 
-Bu konu, [İş](transforms-jobs-concept.md) hata kodlarının ve iletilerinin ayrıntılı açıklaması için bir REST başvuru belgesine bağlanır.
+Bu konu, [iş](transforms-jobs-concept.md) hata kodlarının ve iletilerinin ayrıntılı açıklaması IÇIN bir rest başvuru belgesine bağlantı sağlar.
 
 ## <a name="job-error-codes"></a>İş hata kodları
 
-Aşağıdaki REST belgesi [İş hata kodları](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)hakkında ayrıntılı açıklamalar verir.
+Aşağıdaki REST belgesi, [iş hata kodlarıyla](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)ilgili ayrıntılı açıklamalar sağlar.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde, güncellemeler alın
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Akış Uç Noktası hata kodları](streaming-endpoint-error-codes.md)
-- [Azure Medya Hizmetleri kavramları](concepts-overview.md)
+- [Azure Media Services kavramlar](concepts-overview.md)
 - [Kotalar ve sınırlar](limits-quotas-constraints.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Örnek: .NET ile ApiException'dan ErrorCode ve İleti'ye erişin](configure-connect-dotnet-howto.md#connect-to-the-net-client)
+[Örnek: .NET ile ApiException 'a hata kodu ve Ileti erişimi](configure-connect-dotnet-howto.md#connect-to-the-net-client)

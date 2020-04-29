@@ -1,6 +1,6 @@
 ---
-title: Yeni bir Uygulama Ağ Geçidi ile giriş denetleyicisi oluşturma
-description: Bu makalede, yeni bir Uygulama Ağ Geçidi ile bir Uygulama Ağ Geçidi Giriş Denetleyicisi nasıl dağıtılanın hakkında bilgi sağlar.
+title: Yeni bir Application Gateway giriş denetleyicisi oluşturma
+description: Bu makalede yeni bir Application Gateway Application Gateway giriş denetleyicisi dağıtma hakkında bilgi sağlanır.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,54 +8,54 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585892"
 ---
-# <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Yeni Bir Uygulama Ağ Geçidi Kullanarak Uygulama Ağ Geçidi Denetleyicisi (AGIC) Nasıl Yüklenir?
+# <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Yeni bir Application Gateway kullanarak Application Gateway giriş denetleyicisi (AGIC) nasıl yüklenir
 
-Aşağıdaki yönergelerde Uygulama Ağ Geçidi Giriş Denetleyicisi (AGIC) önceden varolan bileşenleri olmayan bir ortamda yüklenir.
+Aşağıdaki yönergelerde Application Gateway giriş denetleyicisinin (AGIC), önceden var olan bileşenlere sahip olmayan bir ortama yükleneceği varsayılır.
 
-## <a name="required-command-line-tools"></a>Gerekli Komut Satırı Araçları
+## <a name="required-command-line-tools"></a>Gerekli komut satırı araçları
 
-Aşağıdaki tüm komut satırı işlemleri için [Azure Cloud Shell'in](https://shell.azure.com/) kullanılmasını öneririz. Shell.azure.com'dan veya bağlantıyı tıklatarak kabuğunuzu başlatın:
+Aşağıdaki tüm komut satırı işlemleri için [Azure Cloud Shell](https://shell.azure.com/) kullanılmasını öneririz. Kabuğunu shell.azure.com adresinden başlatın veya bağlantıya tıklayın:
 
-[![Gömme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
 
-Alternatif olarak, aşağıdaki simgeyi kullanarak Azure portalından Cloud Shell'i başlatın:
+Alternatif olarak, aşağıdaki simgeyi kullanarak Azure portal Cloud Shell başlatın:
 
-![Portal lansmanı](./media/application-gateway-ingress-controller-install-new/portal-launch-icon.png)
+![Portal başlatma](./media/application-gateway-ingress-controller-install-new/portal-launch-icon.png)
 
-[Azure Bulut Shell'iniz](https://shell.azure.com/) zaten gerekli tüm araçlara sahiptir. Başka bir ortam kullanmayı seçerseniz, lütfen aşağıdaki komut satırı araçlarının yüklendiğinden emin olun:
+[Azure Cloud Shell](https://shell.azure.com/) tüm gerekli araçlara zaten sahip. Başka bir ortam kullanmayı seçmeniz gerekir, lütfen aşağıdaki komut satırı araçlarının yüklü olduğundan emin olun:
 
-* `az`- Azure CLI: [yükleme talimatları](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* `kubectl`- Kubernetes komut satırı aracı: [kurulum talimatları](https://kubernetes.io/docs/tasks/tools/install-kubectl)
-* `helm`- Kubernetes paket yöneticisi: [kurulum talimatları](https://github.com/helm/helm/releases/latest)
-* `jq`- komut satırı JSON işlemci: [kurulum talimatları](https://stedolan.github.io/jq/download/)
+* `az`-Azure CLı: [yükleme yönergeleri](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `kubectl`-Kubernetes komut satırı aracı: [yükleme yönergeleri](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+* `helm`-Kubernetes Paket Yöneticisi: [yükleme yönergeleri](https://github.com/helm/helm/releases/latest)
+* `jq`-komut satırı JSON işlemcisi: [yükleme yönergeleri](https://stedolan.github.io/jq/download/)
 
 
-## <a name="create-an-identity"></a>Kimlik Oluşturma
+## <a name="create-an-identity"></a>Kimlik oluşturma
 
-Azure Etkin Dizin (AAD) [hizmet ana nesnesi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)oluşturmak için aşağıdaki adımları izleyin. Lütfen , `appId` `password`ve `objectId` değerleri kaydedin - bunlar aşağıdaki adımlarda kullanılacaktır.
+Azure Active Directory (AAD) [hizmet sorumlusu nesnesi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)oluşturmak için aşağıdaki adımları izleyin. Lütfen `appId`, `password`ve `objectId` değerlerini kaydedin; bunlar aşağıdaki adımlarda kullanılacaktır.
 
-1. AD hizmet sorumlusu oluşturma[(RBAC hakkında daha fazla bilgi edinin):](https://docs.microsoft.com/azure/role-based-access-control/overview)
+1. AD hizmet sorumlusu oluşturma ([RBAC hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/role-based-access-control/overview)):
     ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
     ```
-    JSON çıktısından alınan `appId` ve `password` değerler aşağıdaki adımlarda kullanılacaktır
+    JSON `appId` çıkışındaki ve `password` değerleri aşağıdaki adımlarda kullanılacaktır
 
 
-1. Yeni `appId` hizmet ilkesini almak için önceki `objectId` komutun çıktısını kullanın:
+1. `appId` Yeni hizmet sorumlusunu almak `objectId` için önceki komutun çıktısından öğesini kullanın:
     ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
-    Bu komutun çıktısı `objectId`, aşağıdaki Azure Kaynak Yöneticisi şablonunda kullanılacaktır
+    Bu komutun çıktısı `objectId`, aşağıdaki Azure Resource Manager şablonunda kullanılacak olur.
 
-1. Azure Kaynak Yöneticisi şablon dağıtımında daha sonra kullanılacak parametre dosyasını oluşturun.
+1. Azure Resource Manager şablonu dağıtımında kullanılacak parametre dosyasını daha sonra oluşturun.
     ```bash
     cat <<EOF > parameters.json
     {
@@ -66,23 +66,23 @@ Azure Etkin Dizin (AAD) [hizmet ana nesnesi](https://docs.microsoft.com/azure/ac
     }
     EOF
     ```
-    **RBAC** etkin bir küme dağıtmak `aksEnabledRBAC` için, alanı`true`
+    **RBAC** etkin bir küme dağıtmak için `aksEnabledRBAC` alanını olarak ayarlayın`true`
 
-## <a name="deploy-components"></a>Bileşenleri Dağıt
-Bu adım, aboneliğinize aşağıdaki bileşenleri ekler:
+## <a name="deploy-components"></a>Bileşenleri dağıtma
+Bu adım, aboneliğinize aşağıdaki bileşenleri ekleyecek:
 
 - [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-- [Uygulama Ağ Geçidi](https://docs.microsoft.com/azure/application-gateway/overview) v2
-- 2 alt [ağlı](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) [Sanal Ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Genel IP Adresi](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
-- [AAD Pod Kimliği](https://github.com/Azure/aad-pod-identity/blob/master/README.md) tarafından kullanılacak [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+- [Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview) v2
+- 2 [alt ağı](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) olan [sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+- [Genel IP adresi](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
+- [AAD Pod kimliği](https://github.com/Azure/aad-pod-identity/blob/master/README.md) tarafından kullanılacak [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-1. Azure Kaynak Yöneticisi şablonundan indirin ve şablonu gerektiği gibi değiştirin.
+1. Azure Resource Manager şablonunu indirin ve şablonu gerektiği gibi değiştirin.
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/deploy/azuredeploy.json -O template.json
     ```
 
-1. Azure Kaynak Yöneticisi şablonuna 'yı kullanarak `az cli`dağıtın. Bu işlem 5 dakika kadar sürebilir.
+1. Azure Resource Manager şablonunu kullanarak `az cli`dağıtın. Bu işlem 5 dakikaya kadar sürebilir.
     ```azurecli
     resourceGroupName="MyResourceGroup"
     location="westus2"
@@ -99,19 +99,19 @@ Bu adım, aboneliğinize aşağıdaki bileşenleri ekler:
             --parameters parameters.json
     ```
 
-1. Dağıtım tamamlandıktan sonra, dağıtım çıktısını `deployment-outputs.json`' adlı bir dosyaya indirin.
+1. Dağıtım tamamlandıktan sonra, dağıtım çıkışını adlı `deployment-outputs.json`bir dosyaya indirin.
     ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
 
-## <a name="set-up-application-gateway-ingress-controller"></a>Uygulama Ağ Geçidi Giriş Denetleyicisi'ni ayarlama
+## <a name="set-up-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisi 'ni ayarlama
 
-Önceki bölümdeki talimatlarla, yeni bir AKS kümesi ve Uygulama Ağ Geçidi oluşturduk ve yapılandırıldık. Yeni Kubernetes altyapımıza örnek bir uygulama ve giriş denetleyicisi dağıtmaya hazırız.
+Önceki bölümde yer alarak, yeni bir AKS kümesi oluşturulup yapılandırdık ve bir Application Gateway. Şimdi yeni Kubernetes altyapısına örnek bir uygulama ve giriş denetleyicisi dağıtmaya hazırsınız.
 
-### <a name="setup-kubernetes-credentials"></a>Kurulum Kubernetes Kimlik Bilgileri
-Aşağıdaki adımlar için, yeni Kubernetes kümemize bağlanmak için kullanacağımız [kubectl](https://kubectl.docs.kubernetes.io/) komutunu kurmamız gerekir. [Cloud](https://shell.azure.com/) Shell `kubectl` zaten yüklendi. Kubernetes için kimlik bilgileri almak için CLI'yi kullanacağız. `az`
+### <a name="setup-kubernetes-credentials"></a>Kubernetes kimlik bilgilerini ayarlama
+Aşağıdaki adımlarda, yeni Kubernetes kümenize bağlanmak için kullanabilmemiz için [kubectl](https://kubectl.docs.kubernetes.io/) komutunu kurun. [Cloud Shell](https://shell.azure.com/) `kubectl` zaten yüklü. Kubernetes kimlik bilgilerini almak için CLI kullanacağız `az` .
 
-Yeni dağıtılan AKS için kimlik bilgileri alın ([devamı:](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)
+Yeni dağıtılan AKS ([daha fazla bilgi](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)) için kimlik bilgilerini alın:
 ```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
@@ -120,16 +120,16 @@ resourceGroupName=$(jq -r ".resourceGroupName.value" deployment-outputs.json)
 az aks get-credentials --resource-group $resourceGroupName --name $aksClusterName
 ```
 
-### <a name="install-aad-pod-identity"></a>AAD Pod Kimliğini Yükleme
-  Azure Etkin Dizin Bölmesi Bölmesi Kimliği, [Azure Kaynak Yöneticisi'ne (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)belirteç tabanlı erişim sağlar.
+### <a name="install-aad-pod-identity"></a>AAD Pod kimliğini yükler
+  Azure Active Directory Pod kimliği, [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)belirteç tabanlı erişim sağlar.
 
-  [AAD Pod Identity,](https://github.com/Azure/aad-pod-identity) Kubernetes kümenize aşağıdaki bileşenleri ekler:
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`,`AzureIdentityBinding`
-   * [Yönetilen Kimlik Denetleyicisi (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) bileşeni
-   * [Düğüm Yönetilen Kimlik (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) bileşeni
+  [AAD Pod kimliği](https://github.com/Azure/aad-pod-identity) , Kubernetes kümenize aşağıdaki bileşenleri ekleyecek:
+   * Kubernetes [CRD 'ler](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/) `AzureIdentity`: `AzureAssignedIdentity`,,`AzureIdentityBinding`
+   * [Yönetilen kimlik denetleyicisi (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) bileşeni
+   * [Düğüm yönetilen kimliği (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) bileşeni
 
 
-Kümenize AAD Pod Kimliğini yüklemek için:
+AAD Pod kimliğini kümenize yüklemek için:
 
    - *RBAC etkin* AKS kümesi
 
@@ -143,10 +143,10 @@ Kümenize AAD Pod Kimliğini yüklemek için:
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
      ```
 
-### <a name="install-helm"></a>Miğferi Yükle
-[Helm,](https://docs.microsoft.com/azure/aks/kubernetes-helm) Kubernetes'in paket yöneticisi. `application-gateway-kubernetes-ingress` Paketi yüklemek için aşağıdakilerden yararlanacağız:
+### <a name="install-helm"></a>Held 'yi yükler
+[Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) , Kubernetes için bir paket yöneticisidir. `application-gateway-kubernetes-ingress` Paketi yüklemek için bunu kullanacağız:
 
-1. [Helm'i](https://docs.microsoft.com/azure/aks/kubernetes-helm) yükleyin ve `application-gateway-kubernetes-ingress` dümen paketi eklemek için aşağıdakileri çalıştırın:
+1. [Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) 'yi yükleyip hele paketi eklemek `application-gateway-kubernetes-ingress` için aşağıdakileri çalıştırın:
 
     - *RBAC etkin* AKS kümesi
 
@@ -162,15 +162,15 @@ Kümenize AAD Pod Kimliğini yüklemek için:
         helm init
         ```
 
-1. AGIC Miğfer deposunu ekleyin:
+1. AGIC Held deposunu ekleyin:
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     helm repo update
     ```
 
-### <a name="install-ingress-controller-helm-chart"></a>Ingress Controller Dümen Grafiği ni yükleyin
+### <a name="install-ingress-controller-helm-chart"></a>Giriş denetleyicisi Held grafiğini yükler
 
-1. Yukarıda `deployment-outputs.json` oluşturulan dosyayı kullanın ve aşağıdaki değişkenleri oluşturun.
+1. Yukarıda oluşturulan `deployment-outputs.json` dosyayı kullanın ve aşağıdaki değişkenleri oluşturun.
     ```bash
     applicationGatewayName=$(jq -r ".applicationGatewayName.value" deployment-outputs.json)
     resourceGroupName=$(jq -r ".resourceGroupName.value" deployment-outputs.json)
@@ -178,7 +178,7 @@ Kümenize AAD Pod Kimliğini yüklemek için:
     identityClientId=$(jq -r ".identityClientId.value" deployment-outputs.json)
     identityResourceId=$(jq -r ".identityResourceId.value" deployment-outputs.json)
     ```
-1. AGIC'i yapılandıracak helm-config.yaml'yi indirin:
+1. AGC-config. YAML 'yi indirin ve bu da AGIC 'yi yapılandırır:
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```
@@ -237,7 +237,7 @@ Kümenize AAD Pod Kimliğini yüklemek için:
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. Yeni indirilen helm-config.yaml'ı edin ve `appgw` `armAuth`bölümleri doldurun ve .
+1. Yeni indirilen Held-config. YAML dosyasını düzenleyin ve bölümleri `appgw` ve `armAuth`alanlarını doldurun.
     ```bash
     sed -i "s|<subscriptionId>|${subscriptionId}|g" helm-config.yaml
     sed -i "s|<resourceGroupName>|${resourceGroupName}|g" helm-config.yaml
@@ -250,34 +250,34 @@ Kümenize AAD Pod Kimliğini yüklemek için:
     ```
 
    Değerler:
-     - `verbosityLevel`: AGIC günlük altyapısının özkaynak düzeyini ayarlar. Olası değerler için [Günlük Düzeyleri'ne](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) bakın.
-     - `appgw.subscriptionId`: Uygulama Ağ Geçidi'nin bulunduğu Azure Abonelik Kimliği. Örnek: `a123b234-a3b4-557d-b2df-a0bc12de1234`
-     - `appgw.resourceGroup`: Uygulama Ağ Geçidi'nin oluşturulduğu Azure Kaynak Grubu'nun adı. Örnek: `app-gw-resource-group`
-     - `appgw.name`: Uygulama Ağ Geçidinin Adı. Örnek: `applicationgatewayd0f0`
-     - `appgw.shared`: Bu boolean bayrak varsayılan `false`olmalıdır . Paylaşılan `true` Uygulama Ağ [Geçidine](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)ihtiyacınız olması için ayarlayın.
-     - `kubernetes.watchNamespace`: AGIC'in izlemesi gereken isim alanını belirtin. Bu, tek bir dize değeri veya virgülle ayrılmış ad alanları listesi olabilir.
-    - `armAuth.type`: olabilir `aadPodIdentity` veya`servicePrincipal`
-    - `armAuth.identityResourceID`: Azure Yönetilen Kimliğin Kaynak Kimliği
-    - `armAuth.identityClientId`: Kimliğin Müşteri Kimliği. Kimlik hakkında daha fazla bilgi için aşağıya bakın
-    - `armAuth.secretJSON`: Yalnızca Servis Müdürü Gizli türü `armAuth.type` seçildiğinde `servicePrincipal`(ayarlandığında) gereklidir 
+     - `verbosityLevel`: AGIC günlük altyapısının ayrıntı düzeyini ayarlar. Olası değerler için [günlük düzeylerini](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) görüntüleyin.
+     - `appgw.subscriptionId`: Application Gateway yer aldığı Azure abonelik KIMLIĞI. Örnek: `a123b234-a3b4-557d-b2df-a0bc12de1234`
+     - `appgw.resourceGroup`: Application Gateway oluşturulduğu Azure Kaynak grubunun adı. Örnek: `app-gw-resource-group`
+     - `appgw.name`: Application Gateway adı. Örnek: `applicationgatewayd0f0`
+     - `appgw.shared`: Bu Boole bayrağı varsayılan olarak `false`ayarlanmalıdır. Paylaşılan bir `true` [Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)gerekli olacak şekilde ayarlayın.
+     - `kubernetes.watchNamespace`: AGIC 'in izlemeniz gereken ad alanını belirtin. Bu tek bir dize değeri ya da virgülle ayrılmış ad alanları listesi olabilir.
+    - `armAuth.type`: `aadPodIdentity` veya`servicePrincipal`
+    - `armAuth.identityResourceID`: Azure tarafından yönetilen kimliğin kaynak KIMLIĞI
+    - `armAuth.identityClientId`: Kimliğin Istemci KIMLIĞI. Kimlik hakkında daha fazla bilgi için aşağıya bakın
+    - `armAuth.secretJSON`: Yalnızca hizmet sorumlusu gizli türü seçildiğinde gereklidir ( `armAuth.type` ayarlandığında) `servicePrincipal` 
 
 
    > [!NOTE]
-   > Bileşenleri `identityResourceID` `identityClientID` [Dağıt](ingress-controller-install-new.md#deploy-components) adımları sırasında oluşturulan ve değerler aşağıdaki komutkullanılarak yeniden elde edilebilir:
+   > Ve `identityResourceID` `identityClientID` , [bileşen dağıtma](ingress-controller-install-new.md#deploy-components) adımları sırasında oluşturulan değerlerdir ve aşağıdaki komut kullanılarak yeniden edinilebilir:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```
-   > `<resource-group>`yukarıdaki komutta Uygulama Ağ Geçidi'nin kaynak grubu yer alır. `<identity-name>`oluşturulan kimliğin adıdır. Belirli bir abonelik için tüm kimlikler şu şekilde listelenebilir:`az identity list`
+   > `<resource-group>`Yukarıdaki komutta Application Gateway kaynak grubu bulunur. `<identity-name>`oluşturulan kimliğin adıdır. Belirli bir abonelik için tüm kimlikler şu kullanılarak listelenebilir:`az identity list`
 
 
-1. Uygulama Ağ Geçidi giriş denetleyici paketini yükleyin:
+1. Application Gateway giriş denetleyicisi paketini yükler:
 
     ```bash
     helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure
     ```
 
-## <a name="install-a-sample-app"></a>Örnek Bir Uygulama Yükleme
-Artık Application Gateway, AKS ve AGIC yüklü olduğumuza göre [Azure Cloud Shell](https://shell.azure.com/)üzerinden örnek bir uygulama yükleyebiliriz:
+## <a name="install-a-sample-app"></a>Örnek uygulama yükler
+Artık Application Gateway, AKS ve AGIC yüklediğimiz için, [Azure Cloud Shell](https://shell.azure.com/)aracılığıyla örnek bir uygulama yükleyebiliriz:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -343,5 +343,5 @@ kubectl apply -f aspnetapp.yaml
 ```
 
 
-## <a name="other-examples"></a>Diğer Örnekler
-Bu [nasıl yapılsın kılavuzu,](ingress-controller-expose-service-over-http-https.md) bir AKS hizmetini HTTP veya HTTPS üzerinden Uygulama Ağ Geçidi ile Internet'e nasıl açıkhale bırakılabilmek le ilgili daha fazla örnek içerir.
+## <a name="other-examples"></a>Diğer örnekler
+Bu [nasıl yapılır Kılavuzu](ingress-controller-expose-service-over-http-https.md) , http veya HTTPS aracılığıyla bir aks hizmetini Application Gateway ile Internet 'e sunmaya yönelik daha fazla örnek içerir.

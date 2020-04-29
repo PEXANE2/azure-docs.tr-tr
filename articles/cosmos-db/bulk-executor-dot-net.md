@@ -1,6 +1,6 @@
 ---
-title: Toplu alma ve güncelleştirme işlemleri için Azure Cosmos DB'deki toplu yürütme .NET kitaplığını kullanma
-description: Toplu alma ve toplu yürütme .NET kitaplığı kullanarak Azure Cosmos DB belgeleri güncelleştirme.
+title: Toplu içeri aktarma ve güncelleştirme işlemleri için Azure Cosmos DB içinde toplu yürütücü .NET kitaplığı 'nı kullanın
+description: Toplu yürütücü .NET kitaplığını kullanarak Azure Cosmos DB belgelerini toplu olarak içeri aktarın ve güncelleştirin.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,50 +10,50 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478853"
 ---
-# <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Azure Cosmos DB'de toplu işlemler gerçekleştirmek için toplu yürütme .NET kitaplığını kullanın
+# <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Toplu yürütücü .NET kitaplığı 'nı kullanarak Azure Cosmos DB toplu işlemleri gerçekleştirin
 
 > [!NOTE]
-> Bu makalede açıklanan bu toplu yürütme kitaplığı .NET SDK 2.x sürümü kullanılarak uygulamalar için korunur. Yeni uygulamalar [için,.NET SDK sürüm 3.x](tutorial-sql-api-dotnet-bulk-import.md) ile doğrudan kullanılabilen **toplu desteği** kullanabilirsiniz ve herhangi bir dış kitaplık gerektirmez. 
+> Bu makalede açıklanan bu toplu yürütücü kitaplığı, .NET SDK 2. x sürümünü kullanan uygulamalar için korunur. Yeni uygulamalar için, [.NET SDK sürüm 3. x](tutorial-sql-api-dotnet-bulk-import.md) ile doğrudan kullanılabilen **toplu desteği** kullanabilir ve herhangi bir dış kitaplık gerektirmez. 
 
-> Şu anda toplu yürütücü kitaplığını kullanıyorsanız ve yeni SDK'da toplu desteğe geçiş yapmayı planlıyorsanız, uygulamanızı geçirmek için [Geçiş kılavuzundaki](how-to-migrate-from-bulk-executor-library.md) adımları kullanın.
+> Şu anda toplu yürütücü kitaplığını kullanıyorsanız ve daha yeni SDK 'da toplu desteğe geçirmeyi planlıyorsanız, uygulamanızı geçirmek için [geçiş kılavuzundaki](how-to-migrate-from-bulk-executor-library.md) adımları kullanın.
 
-Bu öğretici, belgeleri bir Azure Cosmos kapsayıcısına almak ve güncelleştirmek için toplu yürütme .NET kitaplığını kullanma yla ilgili yönergeler sağlar. Toplu yürütme kitaplığı ve büyük iş artışı ve depolamadan yararlanmanıza nasıl yardımcı olduğu hakkında bilgi edinmek [için, toplu yürütme alanı genel bakış](bulk-executor-overview.md) makalesine bakın. Bu öğreticide, rasgele oluşturulan belgeleri bir Azure Cosmos kapsayıcısına toplu olarak içe aktarmayı sağlayan bir örnek .NET uygulaması görürsünüz. İçe aktarmadan sonra, belirli belge alanlarında gerçekleştirecek işlemler olarak yamaları belirterek içe aktarılan verileri nasıl toplu olarak güncelleştirebileceğinizi gösterir.
+Bu öğretici, bir Azure Cosmos kapsayıcısına belge aktarmak ve güncelleştirmek için toplu yürütücü .NET kitaplığı kullanma hakkında yönergeler sağlar. Toplu yürütücü Kitaplığı hakkında bilgi edinmek ve çok büyük bir işlem ve depolama özelliğinden faydalanmanıza yardımcı olmak için, bkz. [toplu yürütücü kitaplığı genel bakış](bulk-executor-overview.md) makalesi. Bu öğreticide, rastgele oluşturulan belgelerin bir Azure Cosmos kapsayıcısına toplu olarak içe aktardığı örnek bir .NET uygulaması görürsünüz. İçeri aktardıktan sonra, belirli belge alanlarında gerçekleştirilecek işlemler olarak düzeltme eklerini belirterek içeri aktarılan verileri nasıl toplu olarak güncelleşkullanabileceğinizi gösterir.
 
-Şu anda toplu yürütme kitaplığı yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir. Bu makalede, SQL API hesapları ile toplu yürütme .NET kitaplığı nasıl kullanılacağı açıklanmaktadır. Gremlin API hesaplarıyla toplu yürütme .NET kitaplığını kullanma hakkında bilgi edinmek için Azure [Cosmos DB Gremlin API'de toplu işlemler gerçekleştirin'e](bulk-executor-graph-dotnet.md)bakın.
+Şu anda toplu yürütücü kitaplığı yalnızca SQL API ve Gremlin API hesapları Azure Cosmos DB desteklenir. Bu makalede, SQL API hesaplarıyla toplu yürütücü .NET kitaplığı 'nın nasıl kullanılacağı açıklanır. Gremlin API hesaplarıyla toplu yürütücü .NET kitaplığını kullanma hakkında bilgi edinmek için bkz. [Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirme](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Visual Studio 2019 yüklü değilseniz, [Visual Studio 2019 Community Edition'ı](https://www.visualstudio.com/downloads/)indirebilir ve kullanabilirsiniz. Visual Studio kurulumu sırasında "Azure geliştirme"yi etkinleştirdiğinizden emin olun.
+* Visual Studio 2019 ' ü henüz yüklemediyseniz [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio Kurulumu sırasında "Azure geliştirme" özelliğini etkinleştirdiğinizden emin olun.
 
-* Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bir hesap oluşturun.
+* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-* [Azure Cosmos DB’yi ücretsiz olarak](https://azure.microsoft.com/try/cosmosdb/) bir Azure aboneliği olmadan, ücretsiz ve herhangi bir taahhütte bulunmadan deneyebilirsiniz. Veya, son nokta yla [Azure Cosmos DB emülatörü](https://docs.microsoft.com/azure/cosmos-db/local-emulator) kullanabilirsiniz. `https://localhost:8081` Birincil Anahtar, [Kimlik doğrulama istekleri](local-emulator.md#authenticating-requests) bölümünde sağlanır.
+* [Azure Cosmos DB’yi ücretsiz olarak](https://azure.microsoft.com/try/cosmosdb/) bir Azure aboneliği olmadan, ücretsiz ve herhangi bir taahhütte bulunmadan deneyebilirsiniz. Ya da [Azure Cosmos DB öykünücüsünü](https://docs.microsoft.com/azure/cosmos-db/local-emulator) `https://localhost:8081` uç noktayla kullanabilirsiniz. Birincil Anahtar, [Kimlik doğrulama istekleri](local-emulator.md#authenticating-requests) bölümünde sağlanır.
 
-* .NET quickstart makalesinin veritabanı hesabı oluşturma bölümünde açıklanan adımları kullanarak bir Azure Cosmos DB SQL API hesabı [oluşturun.](create-sql-api-dotnet.md#create-account)
+* .NET hızlı başlangıç makalesinin [veritabanı hesabı oluşturma](create-sql-api-dotnet.md#create-account) bölümünde açıklanan adımları kullanarak Azure Cosmos DB BIR SQL API hesabı oluşturun.
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi GitHub'dan bir örnek .NET uygulaması indirerek kodla çalışmaya geçelim. Bu uygulama, Azure Cosmos hesabınızda depolanan veriler üzerinde toplu işlemler gerçekleştirir. Uygulamayı klonlamak için bir komut istemi açın, kopyalamak istediğiniz dizine gidin ve aşağıdaki komutu çalıştırın:
+Şimdi, GitHub 'dan örnek bir .NET uygulaması indirerek kodla çalışmaya geçiş yapalım. Bu uygulama, Azure Cosmos hesabınızda depolanan veriler üzerinde toplu işlemler gerçekleştirir. Uygulamayı kopyalamak için, bir komut istemi açın, kopyalamak istediğiniz dizine gidin ve şu komutu çalıştırın:
 
 ```
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-Klonlanmış depo iki örnek "BulkImportSample" ve "BulkUpdateSample" içerir. Örnek uygulamalardan birini açabilir, App.config dosyasındaki bağlantı dizelerini Azure Cosmos DB hesabınızın bağlantı dizeleriyle güncelleyebilir, çözüm oluşturabilir ve çalıştırabilirsiniz.
+Kopyalanmış depo "Bulkımportsample" ve "BulkUpdateSample" olmak üzere iki örnek içerir. Örnek uygulamalardan birini açabilir, App. config dosyasındaki bağlantı dizelerini Azure Cosmos DB hesabınızın bağlantı dizeleriyle güncelleştirebilir, çözümü derleyebilir ve çalıştırabilirsiniz.
 
-"BulkImportSample" uygulaması rasgele belgeler oluşturur ve bunları Azure Cosmos hesabınıza toplu olarak aktarın. "BulkUpdateSample" uygulaması, belirli belge alanlarında gerçekleştirilen işlemler olarak yamaları belirterek, içe aktarılan belgeleri toplu olarak günceller. Sonraki bölümlerde, bu örnek uygulamaların her birinde kodu gözden geçireceksiniz.
+"Bulkımportsample" uygulaması rastgele belgeler oluşturur ve bunları Azure Cosmos hesabınıza toplu olarak içeri aktarır. "BulkUpdateSample" uygulaması, belirli belge alanlarında gerçekleştirilecek işlemler olarak düzeltme eklerini belirterek, içeri aktarılan belgeleri toplu olarak güncelleştirir. Sonraki bölümlerde, bu örnek uygulamaların her birinde kodu gözden geçiyapacaksınız.
 
-## <a name="bulk-import-data-to-an-azure-cosmos-account"></a>Azure Cosmos hesabına toplu veri alma
+## <a name="bulk-import-data-to-an-azure-cosmos-account"></a>Azure Cosmos hesabına toplu veri aktarma
 
-1. "BulkImportSample" klasörüne gidin ve "BulkImportSample.sln" dosyasını açın.  
+1. "Bulkımportsample" klasörüne gidin ve "Bulkımportsample. sln" dosyasını açın.  
 
-2. Azure Cosmos DB'nin bağlantı dizeleri, aşağıdaki kodda gösterildiği gibi App.config dosyasından alınır:  
+2. Azure Cosmos DB bağlantı dizeleri, aşağıdaki kodda gösterildiği gibi App. config dosyasından alınır:  
 
    ```csharp
    private static readonly string EndpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -63,9 +63,9 @@ Klonlanmış depo iki örnek "BulkImportSample" ve "BulkUpdateSample" içerir. �
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   Toplu içe aktarıcı, yeni bir veritabanı ve veritabanı adı, kapsayıcı adı ve App.config dosyasında belirtilen iş gücü değerlerini içeren bir kapsayıcı oluşturur.
+   Toplu içe aktarıcı yeni bir veritabanı ve veritabanı adı, kapsayıcı adı ve App. config dosyasında belirtilen aktarım hızı değerlerini içeren bir kapsayıcı oluşturur.
 
-3. Sonraki DocumentClient nesnesi Doğrudan TCP bağlantı modu ile başharfe işlenir:  
+3. Daha sonra DocumentClient nesnesi doğrudan TCP bağlantı moduyla başlatılır:  
 
    ```csharp
    ConnectionPolicy connectionPolicy = new ConnectionPolicy
@@ -77,7 +77,7 @@ Klonlanmış depo iki örnek "BulkImportSample" ve "BulkUpdateSample" içerir. �
    connectionPolicy)
    ```
 
-4. BulkExecutor nesnesi bekleme süresi ve daraltılmış istekler için yüksek yeniden deneme değeri ile baş harfe olarak verilir. Ve sonra 0 için bulkExecutor için ömür boyu tıkanıklık kontrolü geçmek için ayarlanır.  
+4. Bulkyürütücü nesnesi, bekleme süresi ve kısıtlanmış istekler için yüksek yeniden deneme değeriyle başlatılır. Ardından, yaşam süresi boyunca sıkışıklık denetimini Bulkyürütücü 'e geçirmek için 0 olarak ayarlanır.  
 
    ```csharp
    // Set retry options high during initialization (default values).
@@ -92,7 +92,7 @@ Klonlanmış depo iki örnek "BulkImportSample" ve "BulkUpdateSample" içerir. �
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. Uygulama BulkImportAsync API çağırır. .NET kitaplığı, biri serileştirilmiş JSON belgelerinin listesini kabul eden diğeri de deserialized POCO belgelerinin listesini kabul eden toplu alma API'sinin iki aşırı yüklenir. Bu aşırı yüklü yöntemlerin tanımları hakkında daha fazla bilgi edinmek için [API belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet)bakın.
+5. Uygulama, Bulkımportasync API 'sini çağırır. .NET kitaplığı, serileştirilmiş JSON belgelerinin bir listesini kabul eden ve diğeri Serisi kaldırılan POCO belgelerinin listesini kabul eden, toplu içeri aktarma API 'sinin iki aşırı yüklemesini sağlar. Bu aşırı yüklenmiş yöntemlerin her birinin tanımları hakkında daha fazla bilgi edinmek için [API belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet)bakın.
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -103,32 +103,32 @@ Klonlanmış depo iki örnek "BulkImportSample" ve "BulkUpdateSample" içerir. �
      maxInMemorySortingBatchSize: null,
      cancellationToken: token);
    ```
-   **BulkImportAsync yöntemi aşağıdaki parametreleri kabul eder:**
+   **Bulkımportasync yöntemi aşağıdaki parametreleri kabul eder:**
    
    |**Parametre**  |**Açıklama** |
    |---------|---------|
-   |enableUpsert    |   Belgelerde işlemleri etkinleştirmek için bir bayrak. Verilen kimliği olan bir belge zaten varsa, güncelleştirilir. Varsayılan olarak, yanlış olarak ayarlanır.      |
-   |devre dışı AutomaticIdGeneration    |    Otomatik kimlik oluşturmayı devre dışı kıvmak için bir bayrak. Varsayılan olarak, doğru olarak ayarlanır.     |
-   |maxConcurrencyPerPartitionKeyRange    | Bölüm anahtar aralığı başına maksimum eşzamanlılık derecesi, null ayarı kitaplık 20 varsayılan değeri kullanmasına neden olur. |
-   |maxInMemorySortingBatchSize     |  Her aşamada API çağrısına geçirilen belge numaralandırıcısından çekilen maksimum belge sayısı. Toplu içe aktarmadan önce gerçekleşen bellek içi sıralama aşaması için, bu parametreyi null olarak ayarlamak kitaplığın varsayılan minimum değeri kullanmasına neden olur (documents.count, 1000000).       |
-   |Cancellationtoken    |    Toplu alma işleminden zarif bir şekilde çıkmak için iptal belirteci.     |
+   |enableUpsert    |   Belgelerde büyük işlemleri etkinleştiren bir bayrak. Verilen KIMLIĞE sahip bir belge zaten varsa, güncelleştirilir. Varsayılan olarak, false olarak ayarlanır.      |
+   |Disableautomaticıdgeneration    |    Otomatik KIMLIK oluşturmayı devre dışı bırakmak için bayrak. Varsayılan olarak, true olarak ayarlanır.     |
+   |maxConcurrencyPerPartitionKeyRange    | Bölüm anahtar aralığı başına en fazla eşzamanlılık derecesi, null olarak ayarlanması, kitaplığın varsayılan değer olan 20 kullanmasına neden olur. |
+   |Maxınmemorysortingbatchsize     |  Her aşamada API çağrısına geçirilen belge numaralandırıcılarından çekilen maksimum belge sayısı. Toplu içeri aktarma işleminden önce gerçekleşen bellek içi sıralama aşamasında, bu parametrenin null olarak ayarlanması, kitaplığın varsayılan en düşük değeri (Documents. Count, 1000000) kullanmasına neden olur.       |
+   |cancellationToken    |    Toplu içeri aktarma işleminden düzgün şekilde çıkmak için iptal belirteci.     |
 
-   **Toplu alma yanıtı nesne s›n›r›m›** Toplu alma API çağrısının sonucu aşağıdaki öznitelikleri içerir:
+   **Toplu içeri aktarma yanıtı nesne tanımı** Toplu içeri aktarma API çağrısının sonucu aşağıdaki öznitelikleri içerir:
 
    |**Parametre**  |**Açıklama**  |
    |---------|---------|
-   |NumberOfDocumentsİtlese (uzun)   |  Toplu alma API çağrısına sağlanan toplam belgeden başarıyla alınan toplam belge sayısı.       |
-   |TotalRequestUnitsConsumed (çift)   |   Toplu alma API çağrısı tarafından tüketilen toplam istek birimleri (RU).      |
-   |Toplam Zaman (TimeSpan)    |   Toplu alma API'si tarafından alınan toplam süre yürütmeyi tamamlamak için çağrı.      |
-   |BadInputDocuments (Liste\<nesnesi>)   |     Toplu alma API çağrısında başarıyla alınmayan kötü biçimli belgelerin listesi. Döndürülen belgeleri düzeltin ve içe aktarmayı yeniden deneyin. Kötü biçimlendirilmiş belgeler, kimlik değeri dize olmayan belgeleri içerir (null veya başka bir veri türü geçersiz kabul edilir).    |
+   |NumberOfDocumentsImported (uzun)   |  Toplu içeri aktarma API çağrısına sağlanan Toplam belgeden başarıyla içeri aktarılan toplam belge sayısı.       |
+   |Totalrequestunitstüketilen (Double)   |   Toplu içeri aktarma API çağrısı tarafından tüketilen toplam istek birimi (RU).      |
+   |Totaltımetaken (TimeSpan)    |   Yürütmeyi tamamlamaya yönelik toplu içeri aktarma API çağrısı tarafından alınan toplam süre.      |
+   |Badınputdocuments (liste\<nesnesi>)   |     Toplu içeri aktarma API çağrısında başarıyla içeri aktarılmayan hatalı biçimli belgelerin listesi. Döndürülen belgeleri düzeltip içeri aktarmayı yeniden deneyin. Hatalı biçimli belgeler, ID değeri dize olmayan belgeleri içerir (null veya başka bir veri türü geçersiz olarak kabul edilir).    |
 
-## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Azure Cosmos hesabınızdaki toplu güncelleme verileri
+## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Azure Cosmos hesabınızdaki verileri toplu güncelleştirme
 
-Varolan belgeleri BulkUpdateAsync API'sını kullanarak güncelleştirebilirsiniz. Bu örnekte, `Name` alanı yeni bir değere ayarlar `Description` ve alanı varolan belgelerden kaldırırsınız. Desteklenen güncelleştirme işlemlerinin tam kümesi için [API belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)bakın.
+Mevcut belgeleri BulkUpdateAsync API kullanarak güncelleştirebilirsiniz. Bu örnekte, `Name` alanı yeni bir değere ayarlayacaksınız ve mevcut belgelerden `Description` alanı kaldıracaksınız. Desteklenen güncelleştirme işlemlerinin tam kümesi için [API belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)bakın.
 
-1. "BulkUpdateSample" klasörüne gidin ve "BulkUpdateSample.sln" dosyasını açın.  
+1. "BulkUpdateSample" klasörüne gidin ve "BulkUpdateSample. sln" dosyasını açın.  
 
-2. Güncelleştirme öğelerini ilgili alan güncelleştirme işlemleriyle birlikte tanımlayın. `SetUpdateOperation` Bu örnekte, `Name` alanı güncelleştirmek ve `UnsetUpdateOperation` `Description` alanı tüm belgelerden kaldırmak için kullanırsınız. Ayrıca, belge alanını belirli bir değerle artırarak, belirli değerleri bir dizi alanına itme veya belirli bir değeri bir dizi alanından kaldırma gibi diğer işlemleri de gerçekleştirebilirsiniz. Toplu güncelleştirme API'si tarafından sağlanan farklı yöntemler hakkında bilgi edinmek için [API belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)bakın.
+2. Güncelleştirme öğelerini ilgili alan güncelleştirme işlemleriyle birlikte tanımlayın. Bu `SetUpdateOperation` örnekte, `Name` alanı güncelleştirmek ve `UnsetUpdateOperation` tüm belgelerden `Description` alanı kaldırmak için kullanacaksınız. Ayrıca, belirli bir değere göre bir belge alanını artırma, belirli değerleri bir dizi alanına gönderme veya dizi alanından belirli bir değeri kaldırma gibi başka işlemler de gerçekleştirebilirsiniz. Toplu güncelleştirme API 'SI tarafından sunulan farklı yöntemler hakkında bilgi edinmek için [API belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)bakın.
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -145,7 +145,7 @@ Varolan belgeleri BulkUpdateAsync API'sını kullanarak güncelleştirebilirsini
    }
    ```
 
-3. Uygulama BulkUpdateAsync API çağırır. BulkUpdateAsync yönteminin tanımı hakkında bilgi edinmek için [API belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet)bakın.  
+3. Uygulama, BulkUpdateAsync API 'sini çağırır. BulkUpdateAsync yönteminin tanımı hakkında bilgi edinmek için [API belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet)bakın.  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(
@@ -158,37 +158,37 @@ Varolan belgeleri BulkUpdateAsync API'sını kullanarak güncelleştirebilirsini
 
    |**Parametre**  |**Açıklama** |
    |---------|---------|
-   |maxConcurrencyPerPartitionKeyRange    |   Bu parametreyi null olarak ayarlayarak, bölüm anahtar aralığı başına maksimum eşzamanlılık derecesi, kitaplığın varsayılan değeri kullanmasını sağlar(20).   |
-   |maxInMemorySortingBatchSize    |    Güncelleştirme öğeleri numaralandırıcıdan çıkarılan maksimum güncelleştirme öğesi sayısı her aşamada API çağrısına aktarılır. Toplu güncelleştirmeden önce gerçekleşen bellek içi sıralama aşaması için, bu parametreyi null olarak ayarlamak kitaplığın varsayılan minimum değeri kullanmasına neden olur (updateItems.count, 1000000).     |
-   | Cancellationtoken|Toplu güncelleştirme işleminden zarif bir şekilde çıkmak için iptal belirteci. |
+   |maxConcurrencyPerPartitionKeyRange    |   Bölüm anahtar aralığı başına en fazla eşzamanlılık derecesi, bu parametreyi null olarak ayarlamak, kitaplığın varsayılan değeri (20) kullanmasını sağlar.   |
+   |Maxınmemorysortingbatchsize    |    Her aşamada API çağrısına geçirilen güncelleştirme öğesi numaralandırıcıdan alınan en fazla güncelleştirme öğesi sayısı. Toplu güncelleştirmeden önce gerçekleşen bellek içi sıralama aşamasında, bu parametrenin null olarak ayarlanması kitaplığın varsayılan en düşük değeri (UpdateItems. Count, 1000000) kullanmasına neden olur.     |
+   | cancellationToken|Toplu güncelleştirme işleminden düzgün şekilde çıkmak için iptal belirteci. |
 
-   **Toplu güncelleştirme yanıtı nesne tanımı** Toplu güncelleştirme API çağrısının sonucu aşağıdaki öznitelikleri içerir:
+   **Toplu güncelleştirme yanıtı nesne tanımı** Toplu güncelleştirme API 'SI çağrısının sonucu aşağıdaki öznitelikleri içerir:
 
    |**Parametre**  |**Açıklama** |
    |---------|---------|
-   |NumberOfDocumentsUpdated (uzun)    |   Toplu güncelleştirme API çağrısına sağlanan toplam belgeden başarıyla güncelleştirilen belge sayısı.      |
-   |TotalRequestUnitsConsumed (çift)   |    Toplu güncelleştirme API çağrısı tarafından tüketilen toplam istek birimleri (RUS).    |
-   |Toplam Zaman (TimeSpan)   | Toplu güncelleştirme API tarafından alınan toplam süre yürütmeyi tamamlamak için çağrı. |
+   |NumberOfDocumentsUpdated (uzun)    |   Toplu güncelleştirme API çağrısı için sağlanan toplam belgelerden başarıyla güncelleştirilmiş belge sayısı.      |
+   |Totalrequestunitstüketilen (Double)   |    Toplu güncelleştirme API çağrısı tarafından tüketilen toplam istek birimi (ru).    |
+   |Totaltımetaken (TimeSpan)   | Yürütmeyi tamamlamaya yönelik toplu güncelleştirme API çağrısı tarafından alınan toplam süre. |
     
 ## <a name="performance-tips"></a>Performans ipuçları 
 
-Toplu yürütme kitaplığını kullanırken daha iyi performans için aşağıdaki noktaları göz önünde bulundurun:
+Toplu yürütücü kitaplığı 'nı kullanırken daha iyi performans için aşağıdaki noktaları göz önünde bulundurun:
 
-* En iyi performans için, uygulamanızı Azure Cosmos hesabınızın yazma bölgesiyle aynı bölgede bulunan bir Azure sanal makinesinden çalıştırın.  
+* En iyi performansı elde etmek için uygulamanızı Azure Cosmos hesabınızın yazma bölgesiyle aynı bölgedeki bir Azure sanal makinesinden çalıştırın.  
 
-* Belirli bir Azure Cosmos kapsayıcısına `BulkExecutor` karşılık gelen tek bir sanal makine içinde tüm uygulama için tek bir nesneyi anında göndermeniz önerilir.  
+* Belirli bir Azure Cosmos kapsayıcısına karşılık gelen `BulkExecutor` tek bir sanal makine içinde uygulamanın tamamı için tek bir nesne örneği oluşturmanız önerilir.  
 
-* Tek bir toplu işlem API yürütme istemci makinenin CPU ve ağ IO büyük bir yığın tüketir beri (Bu dahili olarak birden çok görev yumurtlama tarafından olur). Toplu işlem API çağrılarını yürüten uygulama sürecinizde birden çok eşzamanlı görev inmekten kaçının. Tek bir sanal makinede çalışan tek bir toplu işlem API çağrısı, konteynerin tüm masını tüketemiyorsa (kabınızın iş bolması > 1 milyon RU/s) toplu işlem API çağrılarını aynı anda yürütmek için ayrı sanal makineler oluşturmak tercih edilir.  
+* Tek bir toplu işlem API yürütmesi, istemci makinesinin CPU 'SU ve ağ GÇ 'sinin büyük bir öbeğini kullandığından (Bu durum, dahili olarak birden çok görevi oluşturarak gerçekleşir). Toplu işlem API çağrılarını çalıştıran uygulama sürecinizdeki birden çok eş zamanlı görevi oluşturmaktan kaçının. Tek bir sanal makinede çalışan tek bir toplu işlem API çağrısı, kapsayıcının aktarım hızını (kapsayıcının üretilen iş > 1.000.000 RU/sn) tüketmez ve toplu işlem API çağrılarını eşzamanlı olarak yürütmek için ayrı sanal makineler oluşturmak tercih edilir.  
 
-* Hedef `InitializeAsync()` Cosmos konteynerinin bölüm eşlemesini almak için bir BulkExecutor nesnesini anında aldıktan sonra yöntemin çağrıldığından emin olun.  
+* Hedef Cosmos kapsayıcısının bölüm haritasını getirmek için bir Bulkyürütücü nesnesi örneği oluşturulduktan sonra `InitializeAsync()` yöntemin çağrıldığından emin olun.  
 
-* Uygulamanızın App.Config'inde, **gcServer'ın** daha iyi performans için etkinleştirildiğinden emin olun
+* Uygulamanızın App. config dosyasında, daha iyi performans için **gcServer** etkinleştirildiğinden emin olun
   ```xml  
   <runtime>
     <gcServer enabled="true" />
   </runtime>
   ```
-* Kitaplık, bir günlük dosyasında veya konsolda toplanabilecek izler yayır. Her ikisini de etkinleştirmek için, uygulamanızın App.Config dosyasına aşağıdaki kodu ekleyin.
+* Kitaplık, bir günlük dosyasında ya da konsolunda toplanabilecek izlemeleri yayar. Her ikisini de etkinleştirmek için uygulamanızın App. config dosyasına aşağıdaki kodu ekleyin.
 
   ```xml
   <system.diagnostics>
@@ -203,4 +203,4 @@ Toplu yürütme kitaplığını kullanırken daha iyi performans için aşağıd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Nuget paket ayrıntıları ve sürüm notları hakkında bilgi edinmek için [toplu uygulayıcı SDK ayrıntılarına](sql-api-sdk-bulk-executor-dot-net.md)bakın.
+* NuGet paketi ayrıntıları ve sürüm notları hakkında bilgi edinmek için bkz. [toplu yürütücü SDK ayrıntıları](sql-api-sdk-bulk-executor-dot-net.md).

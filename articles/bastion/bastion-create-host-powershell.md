@@ -1,6 +1,6 @@
 ---
-title: Azure Powershell'i kullanarak Bir Burç ana bilgisayar oluşturma | Microsoft Dokümanlar
-description: Bu makalede, Azure Kalesi ana bilgisayar nasıl oluşturulacak öğrenin
+title: Azure PowerShell kullanarak bir savunma Konağı oluşturma | Microsoft Docs
+description: Bu makalede, Azure savunma Konağı oluşturmayı öğrenin
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80520510"
 ---
-# <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure PowerShell'i kullanarak Azure Bastion ana bilgisayar oluşturma
+# <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure savunma ana bilgisayarı oluşturma
 
-Bu makalede, PowerShell kullanarak bir Azure Bastion ana bilgisayar oluşturmak için nasıl gösterir. Azure Bastion hizmetini sanal ağınızda kullanıma saðlamaniz sonra, sorunsuz RDP/SSH deneyimi ayný sanal ağdaki tüm Sanal M'ler için kullanılabilir. Azure Bastion dağıtımı, abonelik/hesap veya sanal makine başına değil, sanal ağ başınadır.
+Bu makalede, PowerShell kullanarak bir Azure savunma ana bilgisayarı oluşturma işlemi gösterilmektedir. Sanal ağınızda Azure savunma hizmetini sağladığınızda, sorunsuz RDP/SSH deneyimi aynı sanal ağdaki tüm VM 'Ler tarafından kullanılabilir. Azure savunma dağıtımı, abonelik/hesap veya sanal makine başına değil, sanal ağ başına değildir.
 
-İsteğe bağlı olarak, [Azure portalını](bastion-create-host-portal.md)kullanarak bir Azure Bastion ana bilgisayarı oluşturabilirsiniz.
+İsteğe bağlı olarak, [Azure Portal](bastion-create-host-portal.md)kullanarak bir Azure savunma ana bilgisayarı oluşturabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -28,9 +28,9 @@ Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MS
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion konağı oluşturma
 
-Bu bölüm, Azure PowerShell'i kullanarak yeni bir Azure Bastion kaynağı oluşturmanıza yardımcı olur.
+Bu bölüm Azure PowerShell kullanarak yeni bir Azure savunma kaynağı oluşturmanıza yardımcı olur.
 
-1. Sanal ağ ve Azure Bastion alt ağı oluşturun. **AzureBastionSubnet**ad değerini kullanarak Azure Bastion alt netini oluşturmanız gerekir. Bu değer, Azure'un Bastion kaynaklarını hangi alt ağa dağıtacağını bilmesini sağlar. Bu, Ağ Geçidi alt ağından farklıdır. En az /27 veya daha büyük bir alt ağ (/27, /26 vb.) alt ağı kullanmalısınız. **AzureBastionSubnet'i** herhangi bir rota tabloları veya delegasyonları olmadan oluşturun. **AzureBastionSubnet'te**Ağ Güvenlik Grupları kullanıyorsanız, [NSG'lerle Çalışma](bastion-nsg.md) makalesine bakın.
+1. Bir sanal ağ ve bir Azure savunma alt ağı oluşturun. **AzureBastionSubnet**ad değerini kullanarak Azure savunma alt ağını oluşturmanız gerekir. Bu değer, Azure 'un savunma kaynaklarını hangi alt ağa dağıtacağınızı bilmesini sağlar. Bu, bir ağ geçidi alt ağından farklıdır. En az/27 veya daha büyük alt ağın (/27,/26, vb.) bir alt ağını kullanmanız gerekir. Rota tabloları veya temsilcileri olmadan **AzureBastionSubnet** oluşturun. **AzureBastionSubnet**üzerinde ağ güvenlik grupları kullanıyorsanız [Nsgs ile çalışma](bastion-nsg.md) makalesine başvurun.
 
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
@@ -38,13 +38,13 @@ Bu bölüm, Azure PowerShell'i kullanarak yeni bir Azure Bastion kaynağı oluş
    $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myBastionRG" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
    ```
 
-2. Azure Bastion için genel bir IP adresi oluşturun. Genel IP, RDP/SSH'ye erişilen Bastion kaynağının ortak IP adresidir (bağlantı noktası 443'ten fazladır). Ortak IP adresi, oluşturduğunuz Bastion kaynağıyla aynı bölgede olmalıdır.
+2. Azure savunma için genel bir IP adresi oluşturun. Genel IP, RDP/SSH 'ye erişilecek savunma kaynağına genel IP adresidir (443 numaralı bağlantı noktası üzerinden). Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır.
 
    ```azurepowershell-interactive
    $publicip = New-AzPublicIpAddress -ResourceGroupName "myBastionRG" -name "myPublicIP" -location "westeurope" -AllocationMethod Static -Sku Standard
    ```
 
-3. Sanal ağınızın AzureBastionSubnet'inde yeni bir Azure Bastion kaynağı oluşturun. Bastion kaynağının oluşturması ve dağıtması yaklaşık 5 dakika sürer.
+3. Sanal ağınızın AzureBastionSubnet yeni bir Azure savunma kaynağı oluşturun. Savunma kaynağının oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.
 
    ```azurepowershell-interactive
    $bastion = New-AzBastion -ResourceGroupName "myBastionRG" -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
@@ -52,6 +52,6 @@ Bu bölüm, Azure PowerShell'i kullanarak yeni bir Azure Bastion kaynağı oluş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ek bilgi için [Bastion SSS'yi](bastion-faq.md) okuyun.
+* Ek bilgi için savunma [hakkında SSS](bastion-faq.md) makalesini okuyun.
 
-* Azure Bastion alt ağıyla Ağ Güvenlik Grupları'nı kullanmak için Bkz. [NSG'lerle Çalışma.](bastion-nsg.md)
+* Azure savunma alt ağıyla ağ güvenlik gruplarını kullanmak için bkz. [NSG Ile çalışma](bastion-nsg.md).

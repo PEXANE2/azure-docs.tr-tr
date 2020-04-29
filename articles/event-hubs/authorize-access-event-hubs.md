@@ -1,6 +1,6 @@
 ---
 title: Azure Event Hubs'a erişimi yetkilendirme
-description: Bu makalede, Azure Olay Hub'ları kaynaklarına erişim yetkisi vermek için farklı seçenekler hakkında bilgi verilmektedir.
+description: Bu makalede, Azure Event Hubs kaynaklarına erişimi yetkilendirmek için farklı seçenekler hakkında bilgi sağlanır.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,46 +9,46 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521304"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Azure Event Hubs'a erişimi yetkilendirme
-Bir olay merkezinden olayları/verileri her yayımladığınızda veya tükettiğinizde, istemciniz Olay Hub'ları kaynaklarına erişmeye çalışır. Güvenli bir kaynağa yapılan her istek, hizmetin istemcinin verileri yayımlamak/tüketmek için gerekli izinlere sahip olmasını sağlayabilmesi için yetkilendirilmelidir. 
+Bir olay hub 'ından olayları/verileri her yayımladığınızda veya kullandığınızda, istemciniz Event Hubs kaynaklara erişmeye çalışıyor. Güvenli bir kaynağa yönelik her isteğin, hizmetin verileri yayımlamak/kullanmak için gerekli izinlere sahip olduğundan emin olmak için yetkilendirilmiş olması gerekir. 
 
-Azure Etkinlik Hub'ları, güvenli kaynaklara erişim yetkisi vermek için aşağıdaki seçenekleri sunar:
+Azure Event Hubs, güvenli kaynaklara erişimi yetkilendirmek için aşağıdaki seçenekleri sunar:
 
 - Azure Active Directory
 - Paylaşılan erişim imzası
 
 > [!NOTE]
-> Bu makale, hem Olay Hub'ları hem de [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) senaryoları için geçerlidir. 
+> Bu makale hem Event Hubs hem de [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) senaryolar için geçerlidir. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Etkinlik Hub'ları kaynakları için Azure Etkin Dizin (Azure AD) tümleştirmesi, istemcinin kaynaklara erişimi üzerinde ince ayarlı denetim için rol tabanlı erişim denetimi (RBAC) sağlar. Kullanıcı, grup veya uygulama hizmeti ilkesi olabilecek güvenlik ilkesine izin vermek için rol tabanlı erişim denetimini (RBAC) kullanabilirsiniz. Güvenlik ilkesi, OAuth 2.0 belirteci döndürmek için Azure AD tarafından doğrulanır. Belirteç, olay hub'ları kaynağına erişmek için bir isteği yetkilendirmek için kullanılabilir.
+Event Hubs kaynakları için Azure Active Directory (Azure AD) tümleştirmesi, bir istemcinin kaynaklara erişimi üzerinde ayrıntılı denetim için rol tabanlı erişim denetimi (RBAC) sağlar. Rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç, bir Event Hubs kaynağına erişim isteğine yetki vermek için kullanılabilir.
 
 Azure AD ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure Etkin Dizinini kullanarak Azure Etkinlik Hub'larına istekleri nidoğrulatın](authenticate-application.md)
-- [Azure Etkin Dizin'i kullanarak Etkinlik Hub kaynaklarına erişimi yetkilendirmeyin.](authorize-access-azure-active-directory.md)
+- [Azure Active Directory kullanarak Azure Event Hubs istek kimliklerini doğrulama](authenticate-application.md)
+- [Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verin](authorize-access-azure-active-directory.md).
 
 ## <a name="shared-access-signatures"></a>Paylaşılan erişim imzaları 
-Olay Hub'ları kaynakları için paylaşılan erişim imzaları (SAS), Olay Hub'ları kaynaklarına sınırlı temsilci erişimi sağlar. İmzanın geçerli olduğu zaman aralığına veya verdiği izinlere kısıtlamalar eklemek kaynakları yönetmede esneklik sağlar. Daha fazla bilgi için [paylaşılan erişim imzalarını (SAS) kullanarak Kimlik Doğrulaması'ya](authenticate-shared-access-signature.md)bakın. 
+Event Hubs kaynakları için paylaşılan erişim imzaları (SAS), Event Hubs kaynaklara sınırlı bir temsilci erişimi sağlar. İmzanın geçerli olduğu veya izin verdiği izinlerde zaman aralığındaki kısıtlamalar, kaynakları yönetirken esneklik sağlar. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak kimlik doğrulama](authenticate-shared-access-signature.md). 
 
-Azure AD tarafından döndürülen Bir OAuth 2.0 belirteci kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinden üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, erişim belirteçlerini kodunuzla depolamanıza ve olası güvenlik açıklarını riske atmaya gerek yoktur. Azure AD, Etkinlik Hub'ları kaynaklarına ayrıntılı erişim sağlamak için paylaşılan erişim imzalarını (SAS) kullanmaya devam edebilirken, SAS belirteçlerini yönetmeye veya gizliliği ihlal edilmiş bir SAS'ı iptal etme endişesi duymadan benzer özellikler sunar. 
+Azure AD tarafından döndürülen bir OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, erişim belirteçlerini kodunuza depolamanız ve potansiyel güvenlik açıklarına karşı risk uygulamanız gerekmez. Event Hubs kaynaklarına ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD, SAS belirteçlerini yönetmeye gerek olmadan veya güvenliği aşılmış bir SAS iptal etme konusunda endişelenmeden benzer yetenekler sunmaktadır. 
 
-Varsayılan olarak, tüm Olay Hub'ları kaynakları güvenlidir ve yalnızca hesap sahibi tarafından kullanılabilir. İstemcilere Olay Hub kaynaklarına erişim izni vermek için yukarıda özetlenen yetkilendirme stratejilerinden herhangi birini kullanabilirsiniz. Microsoft, maksimum güvenlik ve kullanım kolaylığı için mümkün olduğunda Azure AD'yi kullanmanızı önerir.
+Varsayılan olarak, tüm Event Hubs kaynakları güvenlidir ve yalnızca hesap sahibi tarafından kullanılabilir. İstemcilere, Olay Hub 'ı kaynaklarına erişim izni vermek için yukarıda özetlenen yetkilendirme stratejilerinden herhangi birini de kullanabilirsiniz. Microsoft, en yüksek güvenlik ve kullanım kolaylığı için mümkün olduğunda Azure AD 'nin kullanılmasını önerir.
 
-SAS kullanarak yetkilendirme hakkında daha fazla bilgi için, [Paylaşılan Erişim İmzalarını kullanarak Olay Hub'larına erişim yetkisi](authorize-access-shared-access-signature.md)konusuna bakın.
+SAS kullanarak yetkilendirme hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirme](authorize-access-shared-access-signature.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- GitHub depomuzda yayınlanan [RBAC örneklerini](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) inceleyin. 
+- GitHub deponuzda yayınlanan [RBAC örneklerini](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) gözden geçirin. 
 - Aşağıdaki makalelere bakın:
-    - [Azure Etkin Dizin'i kullanarak bir uygulamadan Azure Etkinlik Hub'larına yönelik istekleri kimlik doğrulaması](authenticate-application.md)
-    - [Etkinlik Hub'ları Kaynaklarına erişmek için Azure Etkin Dizini ile yönetilen bir kimliğin kimliğini doğrulatın](authenticate-managed-identity.md)
-    - [Paylaşılan Erişim İmzalarını kullanarak Azure Etkinlik Hub'larına istekleri nidoğrulatın](authenticate-shared-access-signature.md)
-    - [Azure Active Directory'yi kullanarak Etkinlik Hub kaynaklarına erişimi yetkilendirme](authorize-access-azure-active-directory.md)
-    - [Paylaşılan Erişim İmzalarını kullanarak Etkinlik Hubkaynaklarına erişimi yetkilendirme](authorize-access-shared-access-signature.md)
+    - [Azure Active Directory kullanarak bir uygulamadan Azure Event Hubs istek kimliklerini doğrulama](authenticate-application.md)
+    - [Event Hubs kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama](authenticate-managed-identity.md)
+    - [Paylaşılan erişim Imzalarını kullanarak Azure Event Hubs istek kimliklerini doğrulama](authenticate-shared-access-signature.md)
+    - [Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme](authorize-access-azure-active-directory.md)
+    - [Paylaşılan erişim Imzalarını kullanarak Event Hubs kaynaklarına erişim yetkisi verme](authorize-access-shared-access-signature.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Belirli konumlardan Azure bölgelerine göreli gecikmeleri görüntüleme
-description: Belirli konumlardan Internet sağlayıcılarından Azure bölgelerine göreli gecikmeleri nasıl görüntüleyebilirsiniz öğrenin.
+title: Belirli konumlardan Azure bölgelerinin göreli gecikme sürelerini görüntüleme
+description: Belirli konumlardan Azure bölgelerine Internet sağlayıcıları genelinde göreli gecikme sürelerini görüntülemeyi öğrenin.
 services: network-watcher
 documentationcenter: ''
 author: damendo
@@ -13,39 +13,39 @@ ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521387"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Belirli konumlardan Azure bölgelerine göreli gecikmeyi görün
 
 > [!WARNING]
-> Bu özellik şu anda önizlemede ve kararlılık için test ediliyor.
+> Bu özellik şu anda önizleme aşamasındadır ve hala kararlılık için test ediliyor.
 
-Bu eğitimde, kullanıcı demografinize bağlı olarak uygulamanızı veya hizmetinizi hangi Azure bölgesinde dağıtacağına karar vermenize yardımcı olmak için Azure [Ağ İzleyicisi](network-watcher-monitoring-overview.md) hizmetini nasıl kullanacağınızı öğrenin. Ayrıca, hizmet sağlayıcıların Azure'a olan bağlantılarını değerlendirmeye yardımcı olmak için kullanabilirsiniz.  
+Bu öğreticide, Azure [Ağ İzleyicisi](network-watcher-monitoring-overview.md) hizmetini kullanarak uygulamanızı veya hizmetinizi hangi Azure bölgesine dağıtacağına karar vermenize yardımcı olması için Kullanıcı demolarınızın temel alınarak ilgili bilgi edinebilirsiniz. Ayrıca, hizmet sağlayıcılarının Azure bağlantılarını değerlendirmeye yardımcı olması için bu hizmeti kullanabilirsiniz.  
         
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="create-a-network-watcher"></a>Ağ izleyicisi oluşturma
+## <a name="create-a-network-watcher"></a>Ağ İzleyicisi oluşturma
 
-En az bir Azure [bölgesinde](https://azure.microsoft.com/regions)zaten bir ağ izleyiciniz varsa, bu bölümdeki görevleri atlayabilirsiniz. Ağ izleyicisi için bir kaynak grubu oluşturun. Bu örnekte, kaynak grubu Doğu ABD bölgesinde oluşturulur, ancak kaynak grubunu herhangi bir Azure bölgesinde oluşturabilirsiniz.
+En az bir Azure [bölgesinde](https://azure.microsoft.com/regions)zaten bir ağ izleyicisine sahipseniz, bu bölümdeki görevleri atlayabilirsiniz. Ağ İzleyicisi için bir kaynak grubu oluşturun. Bu örnekte, kaynak grubu Doğu ABD bölgesinde oluşturulur, ancak kaynak grubunu herhangi bir Azure bölgesinde oluşturabilirsiniz.
 
 ```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
-Ağ izleyicisi oluşturun. En az bir Azure bölgesinde bir ağ izleyiciniz oluşturulmuş olmalıdır. Bu örnekte, Doğu ABD Azure bölgesinde bir ağ izleyicisi oluşturulur.
+Ağ izleyicisi oluşturun. En az bir Azure bölgesinde oluşturulmuş bir ağ izleyicisine sahip olmanız gerekir. Bu örnekte, Azure bölgesinde Doğu ABD bir ağ izleyicisi oluşturulur.
 
 ```powershell
 New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
 ```
 
-## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Belirli bir konumdan belirli bir Azure bölgesiyle göreli ağ gecikmelerini karşılaştırma
+## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Göreli ağ gecikmelerinin belirli bir konumdan tek bir Azure bölgesine karşılaştırın
 
-Hizmet sağlayıcılarını değerlendirin veya belirli bir konumdan hizmetin dağıtıldığı azure bölgesine kadar "site yavaştı" gibi bir sorunu bildiren bir kullanıcının sorun giderin. Örneğin, aşağıdaki komut, 13-15 Aralık 2017 tarihleri arasında ABD'deki Washington eyaleti ile Batı ABD 2 Azure bölgesi arasındaki ortalama göreli Internet servis sağlayıcısı gecikmelerini döndürür:
+Hizmet sağlayıcılarını değerlendirin veya bir kullanıcının belirli bir konumdan bir hizmetin dağıtıldığı Azure bölgesine "Site yavaş" gibi bir sorun bildirdiği bir kullanıcıya sorun giderin. Örneğin, aşağıdaki komut, Birleşik Devletler Washington Eyaleti ile 13-15 Aralık 2017 arasında Batı ABD 2 Azure bölgesindeki ortalama göreli Internet hizmet sağlayıcısı gecikme sürelerini döndürür:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `
@@ -59,12 +59,12 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Önceki komutta belirttiğiniz bölgenin, ağ izleyicisini geri aldığınızda belirttiğiniz bölgeyle aynı olması gerekmez. Önceki komut, varolan bir ağ izleyicisini belirtmenizi gerektirir. Ağ izleyicisi herhangi bir bölgede olabilir. Değerleri `-Country` için ve `-State`, geçerli olmalıdır belirtirseniz. Değerler büyük/küçük harf duyarlıdır. Veriler sınırlı sayıda ülke/bölge, eyalet ve şehir için kullanılabilir. [Kullanılabilir ülkelerin/bölgelerin, eyaletlerin, şehirlerin ve sağlayıcıların](#view-available) listesini önceki komutla kullanmak üzere kullanılabilir ülkelerin/bölgelerin, şehirlerin ve sağlayıcıların listesini görüntülemek için Görünüm'deki komutları çalıştırın. 
+> Önceki komutta belirttiğiniz bölgenin, Ağ İzleyicisi 'ni aldığınızda belirttiğiniz bölgeyle aynı olması gerekmez. Önceki komut basitçe var olan bir ağ izleyicisi belirtmenizi gerektirir. Ağ İzleyicisi herhangi bir bölgede olabilir. Ve `-Country` `-State`için değerler belirtirseniz, bunların geçerli olmaları gerekir. Değerler büyük/küçük harfe duyarlıdır. Veriler, sınırlı sayıda ülke/bölge, eyalet ve şehir için kullanılabilir. Kullanılabilir ülke/bölge, [eyalet, şehir ve sağlayıcıları görüntüleme](#view-available) içindeki komutları çalıştırarak, önceki komutla birlikte kullanılacak mevcut ülkelerin/bölgelerin, şehirlerin ve durumların bir listesini görüntüleyin. 
 
 > [!WARNING]
-> Son 30 gün içinde bir tarih `-StartTime` `-EndTime`belirtmeniz gerekir. Önceki bir tarih belirtilmesi, hiçbir verinin döndürülmemesine neden olur.
+> Son 30 gün içinde ve `-StartTime` `-EndTime`için bir tarih belirtmeniz gerekir. Önceki bir tarih belirtildiğinde hiçbir veri döndürülmeyecektir.
 
-Önceki komutun çıktısı aşağıdaki gibidir:
+Önceki komutun çıktısı şöyledir:
 
 ```powershell
 AggregationLevel   : State
@@ -104,11 +104,11 @@ ReachabilityReport : [
                      ]
 ```
 
-Döndürülen çıktıda, **Puan** değeri bölgeler ve sağlayıcılar arasında göreli gecikme dir. 1 puanı en kötü (en yüksek) gecikme, 100 ise en düşük gecikme dir. Göreceli gecikmeler gün için ortalama. Önceki örnekte, gecikmelerin her iki gün de aynı olduğu ve iki sağlayıcının gecikmesi arasında küçük bir fark olduğu açık olmakla birlikte, her iki sağlayıcıiçin de gecikme saatlerinin 1-100 ölçeğinde düşük olduğu açıktır. Bu beklenirken, ABD'deki Washington eyaleti fiziksel olarak Batı ABD 2 Azure bölgesine yakın olduğundan, bazen sonuçlar beklendiği gibi değildir. Belirttiğiniz tarih aralığı ne kadar büyükse, zaman içinde gecikme süresini o kadar fazla o kadar fazla alabilirsiniz.
+Döndürülen çıktıda, **puan** değeri bölgeler ve sağlayıcılar arasındaki göreli gecikmedir. 1 skoru en kötü (en yüksek) gecikmedir, ancak 100 en düşük gecikmedir. Gün için göreli gecikme süreleri ortalaması alınır. Önceki örnekte, gecikme sürelerinin her iki günde aynı olduğunu ve iki sağlayıcının gecikmesi arasında küçük bir farklılık olduğunu fark ederken, her iki sağlayıcının da gecikme sürelerinin 1-100 ölçeğinde düşük olduğunu da temizleyebilir. Bu beklenirken, Birleşik Devletler Washington Eyaleti Batı ABD 2 Azure bölgesine fiziksel olarak yakın olduğundan sonuçlar bazen beklenmez. Belirttiğiniz tarih aralığı arttıkça, zaman içinde ortalama gecikme süresi daha fazla olabilir.
 
-## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Azure bölgelerindeki göreli ağ gecikmelerini belirli bir konumdan karşılaştırın
+## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Belirli bir konumdan Azure bölgelerinde göreli Ağ gecikmeleri karşılaştırın
 
-Belirli bir konum la belirli bir Azure bölgesi arasındaki göreli `-Location`gecikme sürelerini belirli bir fiziksel konumdan tüm Azure bölgelerine göreli gecikme sürelerini belirlemek yerine bunu da yapabilirsiniz. Örneğin, aşağıdaki komut, birincil kullanıcılarınız Washington eyaletinde bulunan Comcast kullanıcılarıysa, bir hizmeti hangi azure bölgesinde dağıtabileceğinizi değerlendirmenize yardımcı olur:
+Kullanarak `-Location`belirli bir konum ve belirli bir Azure bölgesi arasındaki göreli gecikme sürelerini belirtmek yerine, belirli bir fiziksel konumdan tüm Azure bölgelerinin göreli gecikme sürelerini belirlemek istediğinizde, bunu da yapabilirsiniz. Örneğin, aşağıdaki komut, birincil kullanıcılarınızın Washington durumunda bulunan kullanıcıları Comcast durumunda ' de bir hizmeti hangi Azure bölgesine dağıtacağınızı değerlendirmenize yardımcı olur:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `
@@ -122,19 +122,19 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Tek bir konum belirtmenizin aksine, bir konum belirtmezseniz veya "Batı US2", "Batı ABD" gibi birden çok konum belirtmezseniz, komutu çalıştırırken bir Internet servis sağlayıcısı belirtmeniz gerekir. 
+> Tek bir konum belirttiğinizde farklı olarak, bir konum belirtmezseniz veya "Batı ABD2", "Batı ABD" gibi birden çok konum belirtmezseniz, komutu çalıştırırken bir Internet hizmeti sağlayıcısı belirtmeniz gerekir. 
 
-## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>Kullanılabilir ülkeleri/bölgeleri, eyaletleri, şehirleri ve sağlayıcıları görüntüleyin
+## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>Kullanılabilir ülkeleri/bölgeleri, durumları, şehirleri ve sağlayıcıları görüntüleme
 
-Veriler belirli Internet servis sağlayıcıları, ülkeler/bölgeler, eyaletler ve şehirler için kullanılabilir. Verileri görüntüleyebileceğiniz tüm kullanılabilir Internet servis sağlayıcılarının, ülkelerin/bölgelerinin, devletlerin ve şehirlerin listesini görüntülemek için aşağıdaki komutu girin:
+Veriler belirli Internet hizmet sağlayıcıları, ülkeler/bölgeler, durumlar ve şehirlerde kullanılabilir. Veri görüntüleyebildiğiniz tüm kullanılabilir Internet hizmet sağlayıcılarının, ülkelerin/bölgelerin, durumların ve şehirlerin listesini görüntülemek için aşağıdaki komutu girin:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Veriler yalnızca önceki komutla döndürülen ülkeler/bölgeler, eyaletler ve şehirler için kullanılabilir. Önceki komut, varolan bir ağ izleyicisini belirtmenizi gerektirir. Örnek, *NetworkWatcherRG*adlı bir kaynak grubunda *NetworkWatcher_eastus* ağ izleyicisini belirtebilir, ancak varolan ağ izleyicisini belirtebilirsiniz. Varolan bir ağ izleyiciniz yoksa, ağ izleyicisi [oluştur'daki](#create-a-network-watcher)görevleri tamamlayarak bir tane oluşturun. 
+Veriler yalnızca önceki komut tarafından döndürülen ülkeler/bölgeler, durumlar ve şehirlerde kullanılabilir. Önceki komut, var olan bir ağ izleyicisi belirtmenizi gerektirir. Örnek, *NetworkWatcherRG*adlı bir kaynak grubunda *NetworkWatcher_eastus* Ağ İzleyicisini belirtti, ancak var olan herhangi bir ağ izleyicisini belirtebilirsiniz. Mevcut bir ağ izleyicisine sahip değilseniz, [ağ Izleyicisi oluşturma](#create-a-network-watcher)' daki görevleri tamamlayarak bir tane oluşturun. 
 
-Önceki komutu çalıştırdıktan sonra, istenirse **Ülke**, **Eyalet**ve **Şehir**için geçerli değerler belirterek döndürülen çıktıyı filtreleyebilirsiniz.  Örneğin, Seattle, Washington'da bulunan Internet servis sağlayıcılarının listesini ABD'de görüntülemek için aşağıdaki komutu girin:
+Önceki komutu çalıştırdıktan sonra, isterseniz **ülke**, **eyalet**ve **şehir**için geçerli değerler belirterek döndürülen çıktıyı filtreleyebilirsiniz.  Örneğin, Seattle, Washington 'da bulunan Internet hizmet sağlayıcılarının listesini görüntülemek için Birleşik Devletler, aşağıdaki komutu girin:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList `
@@ -146,4 +146,4 @@ Get-AzNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> **Ülke** için belirtilen değer daha büyük ve küçük olmalıdır. **Eyalet** ve **Şehir** için belirtilen değerler daha küçük olmalıdır. Değerler **Ülke,** **Devlet**ve **Şehir**için hiçbir değer olmadan komutçalıştırdıktan sonra döndürülen çıktıda listelenmelidir. Yanlış servis talebi belirtirseniz veya bu özellikler için hiçbir değer olmadan komutu çalıştırdıktan sonra döndürülen çıktıda olmayan **Ülke,** **Eyalet**veya **Şehir** için bir değer belirtirseniz, döndürülen çıktı boşkalır.
+> **Ülke** için belirtilen değer büyük ve küçük harf olmalıdır. **Eyalet** ve **şehir** için belirtilen değerler küçük harfle yazılmalıdır. Değerler **ülke**, **eyalet**ve **şehir**için hiçbir değer olmadan çalıştırıldıktan sonra döndürülen çıktıda listelenmelidir. Yanlış bir durum belirtirseniz veya bir **ülke**, **eyalet**veya **şehir** için, komutu bu özellikler için hiçbir değer olmadan çalıştırıldıktan sonra döndürülen çıktıda olmayan bir değer belirtirseniz, döndürülen çıkış boştur.

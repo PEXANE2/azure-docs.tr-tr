@@ -1,28 +1,28 @@
 ---
-title: Sınırlamalar - MySQL için Azure Veritabanı
-description: Bu makalede, MySQL için Azure Veritabanı'nda bağlantı sayısı ve depolama motoru seçenekleri gibi sınırlamalar açıklanmaktadır.
+title: Sınırlamalar-MySQL için Azure veritabanı
+description: Bu makalede, MySQL için Azure veritabanı 'nda bağlantı ve depolama motoru seçeneklerinin sayısı gibi sınırlamalar açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/1/2020
 ms.openlocfilehash: 6ca09ab0578fb88e443d6e9e1f920c22457eb042
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548481"
 ---
-# <a name="limitations-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanında Sınırlamalar
-Aşağıdaki bölümlerde veritabanı hizmetinde kapasite, depolama motoru desteği, ayrıcalık desteği, veri işleme bildirimi desteği ve işlevsel sınırlar açıklanmıştır. Ayrıca MySQL veritabanı altyapısı için geçerli [genel sınırlamalara](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) bakın.
+# <a name="limitations-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı sınırlamaları
+Aşağıdaki bölümlerde kapasiteyi, depolama altyapısı desteğini, ayrıcalık desteğini, veri işleme ekstresi desteğini ve veritabanı hizmetindeki işlev sınırlarını anlatmaktadır. Ayrıca bkz. MySQL veritabanı altyapısı için geçerli olan [genel sınırlamalar](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) .
 
 ## <a name="server-parameters"></a>Sunucu parametreleri
 
-Birkaç popüler sunucu parametrelerinin minimum ve maksimum değerleri fiyatlandırma katmanı ve vCores tarafından belirlenir. Sınırlar için aşağıdaki tablolara bakın.
+Çeşitli popüler sunucu parametrelerinin en düşük ve en yüksek değerleri, fiyatlandırma katmanı ve sanal çekirdekler tarafından belirlenir. Sınırlar için aşağıdaki tablolara bakın.
 
 ### <a name="max_connections"></a>max_connections
 
-|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
+|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
 |---|---|---|---|---|
 |Temel|1|50|10|50|
 |Temel|2|100|10|100|
@@ -38,24 +38,24 @@ Birkaç popüler sunucu parametrelerinin minimum ve maksimum değerleri fiyatlan
 |Bellek İçin İyileştirilmiş|16|5000|10|10000|
 |Bellek İçin İyileştirilmiş|32|10000|10|20000|
 
-Bağlantılar sınırı aştığında, aşağıdaki hatayı alabilirsiniz:
-> HATA 1040 (08004): Çok fazla bağlantı
+Bağlantılar sınırı aştığında, şu hatayı alabilirsiniz:
+> HATA 1040 (08004): çok fazla bağlantı
 
 > [!IMPORTANT]
-> En iyi deneyim için, bağlantıları verimli bir şekilde yönetmek için ProxySQL gibi bir bağlantı havuzu kullanmanızı öneririz.
+> En iyi deneyim için, bağlantıları verimli bir şekilde yönetmek üzere ProxySQL gibi bir bağlantı havuzlayıcı kullanmanızı öneririz.
 
-MySQL'e yeni istemci bağlantıları oluşturmak zaman alır ve kurulduktan sonra, bu bağlantılar boşta yken bile veritabanı kaynaklarını kaplar. Çoğu uygulama, bu durumu biraraya getiren birçok kısa süreli bağlantı isteğinde dir. Sonuç, performansın düşmesine yol açan gerçek iş yükünüz için daha az kaynak kullanılabilir. Boşta kalan bağlantıları azaltan ve varolan bağlantıları yeniden kullanan bir bağlantı havuzu bunu önlemeye yardımcı olur. ProxySQL kurulumu hakkında bilgi edinmek için [blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)ziyaret edin.
+MySQL 'e yeni istemci bağlantıları oluşturma zaman alır ve bir kez kurulduktan sonra bile bu bağlantılar veritabanı kaynaklarını kaplar. Çoğu uygulama, bu durumu çözer birçok kısa süreli bağlantı ister. Sonuç olarak gerçek iş yükünüz için daha az kaynak kullanılabilir ve performansı azaltıldı. Boştaki bağlantıları azaltan ve var olan bağlantıları yeniden kullanan bir bağlantı havuzlayıcı bunun önlenmesine yardımcı olur. ProxySQL 'i ayarlama hakkında bilgi edinmek için [Blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)ziyaret edin.
 
 ### <a name="query_cache_size"></a>query_cache_size
 
-Sorgu önbelleği varsayılan olarak kapatılır. Sorgu önbelleğini etkinleştirmek için `query_cache_type` parametreyi yapılandırın. 
+Sorgu önbelleği varsayılan olarak kapalıdır. Sorgu önbelleğini etkinleştirmek için `query_cache_type` parametresini yapılandırın. 
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size) inceleyin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size) gözden geçirin.
 
 > [!NOTE]
-> Sorgu önbelleği MySQL 5.7.20 itibariyle amortismana kaldırıldı ve MySQL 8.0'da kaldırıldı
+> Sorgu önbelleği MySQL 5.7.20 yükle itibariyle kullanımdan kaldırılmıştır ve MySQL 8,0 ' de kaldırılmıştır
 
-|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
+|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -73,9 +73,9 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) inceleyin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) gözden geçirin.
 
-|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
+|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -93,9 +93,9 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size) inceleyin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size) gözden geçirin.
 
-|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
+|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -113,9 +113,9 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size) inceleyin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size) gözden geçirin.
 
-|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
+|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -133,9 +133,9 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 ### <a name="tmp_table_size"></a>tmp_table_size
 
-Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size) inceleyin.
+Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size) gözden geçirin.
 
-|**Fiyatlandırma Katmanı**|**vCore(lar)**|**Varsayılan değer**|**Min değeri**|**Maksimum değer**|
+|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
 |---|---|---|---|---|
 |Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
@@ -153,57 +153,57 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 ### <a name="time_zone"></a>time_zone
 
-Saat dilimi tabloları, `mysql.az_load_timezone` MySQL komut satırı veya MySQL Workbench gibi bir araçtan depolanan yordamı arayarak doldurulabilir. Depolanan [Azure portal](howto-server-parameters.md#working-with-the-time-zone-parameter) yordamı [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) nasıl çağırıp genel veya oturum düzeyinde saat dilimlerini ayarlanın.
+Saat dilimi tabloları, MySQL komut satırı veya MySQL çalışma `mysql.az_load_timezone` ekranı gibi bir araçtan saklı yordam çağırarak doldurulabilirler. Saklı yordamı çağırma ve küresel veya oturum düzeyi saat dilimlerini ayarlama hakkında [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) veya [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) makalelerine bakın.
 
-## <a name="storage-engine-support"></a>Depolama motoru desteği
+## <a name="storage-engine-support"></a>Depolama altyapısı desteği
 
 ### <a name="supported"></a>Destekleniyor
-- [ınnodb](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
-- [Bellek](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
+- [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
+- [BELLEK](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
 
 ### <a name="unsupported"></a>Desteklenmeyen
-- [Myısam](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
-- [Blackhole](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
-- [Arşiv](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
-- [Federe](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
+- [MyISAM](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
+- [KARA DELIK](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
+- [ARŞIVLIYORSANıZ](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
+- [Federasyon](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
 ## <a name="privilege-support"></a>Ayrıcalık desteği
 
 ### <a name="unsupported"></a>Desteklenmeyen
-- DBA rolü: Birçok sunucu parametreve ayarı yanlışlıkla sunucu performansını düşürebilir veya DBMS'nin ACID özelliklerini inkâr edebilir. Bu nedenle, hizmet bütünlüğünü ve SLA'yı ürün düzeyinde korumak için bu hizmet DBA rolünü ortaya çıkarmaz. Yeni bir veritabanı örneği oluşturulduğunda oluşturulan varsayılan kullanıcı hesabı, kullanıcının yönetilen veritabanı örneğinde DDL ve DML ekstrelerinin çoğunu gerçekleştirmesine olanak tanır. 
-- SÜPER ayrıcalık: Benzer super [ayrıcalık](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) da sınırlıdır.
-- DEFINER: Oluşturmak için süper ayrıcalıklar gerektirir ve sınırlıdır. Bir yedekleme kullanarak veri alma, `CREATE DEFINER` el ile veya bir `--skip-definer` mysqldump gerçekleştirirken komutu kullanarak komutları kaldırın.
+- DBA rolü: çok sayıda sunucu parametresi ve ayarı, DBMS 'nin sunucu performansını veya Negate ACID özelliklerini yanlışlıkla düşürebilir. Bu nedenle, hizmet bütünlüğünü ve SLA 'yı bir ürün düzeyinde sürdürmek için, bu hizmet DBA rolünü kullanıma sunmaz. Yeni bir veritabanı örneği oluşturulduğunda oluşturulan varsayılan kullanıcı hesabı, bu kullanıcının yönetilen veritabanı örneğinde DDL ve DML deyimlerinin çoğunu gerçekleştirmesini sağlar. 
+- Süper ayrıcalık: benzer [süper ayrıcalık](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) da kısıtlıdır.
+- DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, `CREATE DEFINER` komutları el ile veya bir mysqldump gerçekleştirirken `--skip-definer` komutunu kullanarak kaldırın.
 
-## <a name="data-manipulation-statement-support"></a>Veri işleme bildirimi desteği
+## <a name="data-manipulation-statement-support"></a>Veri işleme ekstresi desteği
 
 ### <a name="supported"></a>Destekleniyor
-- `LOAD DATA INFILE`desteklenir, ancak `[LOCAL]` parametre belirtilmeli ve bir UNC yoluna yönlendirilmelidir (SMB aracılığıyla monte edilmiş Azure depolama).
+- `LOAD DATA INFILE`desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bir UNC yoluna (SMB üzerinden bağlanmış Azure Storage) yönlendirilmelidir.
 
 ### <a name="unsupported"></a>Desteklenmeyen
 - `SELECT ... INTO OUTFILE`
 
-## <a name="functional-limitations"></a>Fonksiyonel sınırlamalar
+## <a name="functional-limitations"></a>İşlevsel sınırlamalar
 
-### <a name="scale-operations"></a>Ölçek işlemleri
-- Temel fiyatlandırma katmanlarına ve temel fiyatlandırma katmanlarından dinamik ölçeklendirme şu anda desteklenmez.
-- Azalan sunucu depolama boyutu desteklenmez.
+### <a name="scale-operations"></a>Ölçeklendirme işlemleri
+- Temel fiyatlandırma katmanlarına ve bu katmanlara dinamik ölçeklendirme Şu anda desteklenmiyor.
+- Sunucu depolama boyutunun düşürülmesi desteklenmiyor.
 
 ### <a name="server-version-upgrades"></a>Sunucu sürümü yükseltmeleri
-- Ana veritabanı altyapısı sürümleri arasında otomatik geçiş şu anda desteklenmez. Bir sonraki ana sürüme yükseltmek istiyorsanız, [bir döküm](./concepts-migrate-dump-restore.md) alın ve yeni motor sürümü ile oluşturulan bir sunucuya geri yükleyin.
+- Ana veritabanı altyapısı sürümleri arasında otomatik geçiş Şu anda desteklenmiyor. Bir sonraki ana sürüme yükseltmek isterseniz, bir dökümünü alın ve yeni altyapı sürümüyle oluşturulmuş bir sunucuya [geri yükleyin](./concepts-migrate-dump-restore.md) .
 
 ### <a name="point-in-time-restore"></a>belirli bir noktaya geri yükleme
-- PITR özelliğini kullanırken, yeni sunucu dayandığı sunucuyla aynı yapılandırmalarla oluşturulur.
-- Silinen bir sunucunun geri dinlenmesi desteklenmez.
+- INR özelliği kullanılırken yeni sunucu, temel aldığı sunucuyla aynı yapılandırmalara sahip olarak oluşturulur.
+- Silinen bir sunucunun geri yüklenmesi desteklenmez.
 
 ### <a name="vnet-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
-- VNet hizmet uç noktaları için destek yalnızca Genel Amaç ve Bellek Optimize Edilmiş sunucular içindir.
+- VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 
 ### <a name="storage-size"></a>Depolama boyutu
-- Fiyatlandırma katmanı başına depolama boyutu sınırları için lütfen [fiyatlandırma katmanlarına](concepts-pricing-tiers.md) bakın.
+- Fiyatlandırma Katmanı başına depolama boyutu sınırları için lütfen [fiyatlandırma katmanlarına](concepts-pricing-tiers.md) bakın.
 
-## <a name="current-known-issues"></a>Güncel bilinen sorunlar
-- MySQL sunucu örneği bağlantı kurulduktan sonra yanlış sunucu sürümünü görüntüler. Doğru sunucu örneği motoru sürümünü almak `select version();` için komutu kullanın.
+## <a name="current-known-issues"></a>Bilinen geçerli sorunlar
+- MySQL Server örneği bağlantı kurulduktan sonra yanlış sunucu sürümünü görüntülüyor. Doğru sunucu örneği altyapısı sürümünü almak için `select version();` komutunu kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Her hizmet katmanında neler mevcuttur?](concepts-pricing-tiers.md)
+- [Her hizmet katmanında kullanılabilen özellikler](concepts-pricing-tiers.md)
 - [Desteklenen MySQL veritabanı sürümleri](concepts-supported-versions.md)

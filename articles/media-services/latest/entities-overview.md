@@ -1,7 +1,7 @@
 ---
-title: Medya Hizmetleri kuruluşlarının filtreleme, sipariş ve sayfalama
+title: Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
 titleSuffix: Azure Media Services
-description: Azure Media Services v3 varlıklarını filtreleme, sıralama ve sayfalama hakkında bilgi edinin.
+description: Azure Media Services v3 varlıklarının filtrelenmesini, sıralanmasını ve sayfalamayı öğrenin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,80 +14,80 @@ ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80584525"
 ---
-# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Medya Hizmetleri kuruluşlarının filtreleme, sipariş ve sayfalama
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
 
-Bu konu, Azure Medya Hizmetleri v3 varlıklarını listelediğinizde kullanılabilen OData sorgu seçeneklerini ve pagination desteğini açıklar.
+Bu konu, Azure Media Services v3 varlıklarını listelerken kullanılabilen OData sorgu seçeneklerini ve sayfalandırma desteğini ele alır.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* `Datetime` Türdeki varlıkların özellikleri her zaman UTC biçimindedir.
-* Bir istek göndermeden önce sorgu dizesindeki beyaz alan URL kodlanmış olmalıdır.
+* `Datetime` Türündeki varlıkların özellikleri her zaman UTC biçimindedir.
+* İstek gönderilmeden önce sorgu dizesindeki boşluk, URL kodlamalı olmalıdır.
 
 ## <a name="comparison-operators"></a>Karşılaştırma işleçleri
 
-Bir alanı sabit bir değerle karşılaştırmak için aşağıdaki işleçleri kullanabilirsiniz:
+Bir alanı sabit değerle karşılaştırmak için aşağıdaki işleçleri kullanabilirsiniz:
 
-Eşitlik operatörleri:
+Eşitlik işleçleri:
 
-- `eq`: Bir alanın sabit bir *değere eşit* olup olmadığını test edin.
-- `ne`: Bir alanın sabit bir *değere eşit olup olmadığını* test edin.
+- `eq`: Bir alanın sabit değere *eşit* olup olmadığını test edin.
+- `ne`: Bir alanın sabit değere *eşit* olup olmadığını test edin.
 
-Aralık operatörleri:
+Aralık işleçleri:
 
-- `gt`: Bir alanın sabit bir *değerden büyük* olup olmadığını test edin.
-- `lt`: Bir alanın sabit bir *değerden küçük* olup olmadığını test edin.
-- `ge`: Bir alanın sabit bir *değerden büyük mü* yoksa eşit mi olduğunu test edin.
-- `le`: Bir alanın sabit bir *değerden küçük mü* yoksa eşit mi olduğunu test edin.
+- `gt`: Bir alanın sabit değerden *büyük* olup olmadığını test edin.
+- `lt`: Bir alanın sabit değerden *küçük* olup olmadığını test edin.
+- `ge`: Bir alanın sabit değere *eşit veya ondan büyük* olup olmadığını test edin.
+- `le`: Bir alanın sabit değere *eşit veya ondan küçük* olup olmadığını test edin.
 
 ## <a name="filter"></a>Filtre
 
-Yalnızca `$filter` ilgilendiğiniz nesneleri bulmak için bir OData filtre parametresi sağlamak için kullanın.
+Yalnızca `$filter` ilgilendiğiniz nesneleri bulmak Için bir OData filtre parametresi sağlamak üzere kullanın.
 
-Aşağıdaki REST örneği bir `alternateId` varlığın değerine filtre lenir:
+Aşağıdaki REST örneği bir varlığın `alternateId` değerine göre filtreliyor:
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
 ```
 
-Varlığın oluşturulan tarihinde aşağıdaki C# örneği filtreler:
+Aşağıdaki C# örneği varlığın oluşturulma tarihinde filtreliyor:
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
 ```
 
-## <a name="order-by"></a>Sipariş tarafından
+## <a name="order-by"></a>Sıralama ölçütü
 
-Döndürülen nesneleri belirtilen parametreye göre sıralamak için kullanın. `$orderby` Örnek:  
+Döndürülen `$orderby` nesneleri belirtilen parametreye göre sıralamak için kullanın. Örneğin:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Sonuçları artan veya azalan sırada sıralamak için, `asc` `desc` bir boşlukla ayrılmış alan adını veya öğeadını ekleyerek. Örneğin: `$orderby properties/created desc`.
+Sonuçları artan veya azalan düzende sıralamak için, alan adına `asc` veya `desc` alana ayırarak bir boşluk ekleyin. Örneğin: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Belirteci atla
 
-Sorgu yanıtı çok sayıda öğe içeriyorsa, hizmet bir sonraki sonuç sayfasını almak için kullandığınız bir `$skiptoken` (`@odata.nextLink`) değerini döndürür. Tüm sonuç kümesini sayfalamak için kullanın.
+Bir sorgu yanıtı çok sayıda öğe içeriyorsa, hizmet bir sonraki sonuç `$skiptoken` sayfasını`@odata.nextLink`almak için kullandığınız bir () değeri döndürür. Tüm sonuç kümesi üzerinden sayfa eklemek için kullanın.
 
-Medya Hizmetleri v3'te sayfa boyutunu yapılandıramazsınız. Sayfa boyutu varlığın türüne göre değişir. Ayrıntılar için takip eden bölümleri tek tek okuyun.
+V3 Media Services, sayfa boyutunu yapılandıramazsınız. Sayfa boyutu varlık türüne göre değişir. Ayrıntılar için aşağıdaki ayrı bölümleri okuyun.
 
-Koleksiyonda çağrı yaparken varlıklar oluşturulur veya silinirse, değişiklikler döndürülen sonuçlara yansıtılır (bu değişiklikler koleksiyonun indirilmemiş kısmındaysa).
+Koleksiyon üzerinde sayfalama yaparken varlıklar oluşturulur veya silinirse, değişiklikler döndürülen sonuçlara yansıtılır (Bu değişiklikler henüz indirilmemiş koleksiyonun parçasıysa).
 
 > [!TIP]
-> Koleksiyonu `nextLink` numaralandırmak için her zaman kullanın ve belirli bir sayfa boyutuna bağlı olmayın.
+> Koleksiyonu numaralandırmak `nextLink` için her zaman kullanın ve belirli bir sayfa boyutuna bağlı değildir.
 >
-> Değer, `nextLink` yalnızca birden fazla sayfa varlıklar varsa kullanılabilir.
+> `nextLink` Değer yalnızca birden fazla varlık sayfası varsa mevcut olacaktır.
 
-Kullanıldığı yerin `$skiptoken` aşağıdaki örneğini göz önünde bulundurun. *Amstestaccount'u* hesap adınız ile değiştirdiğinizden ve *api sürüm* değerini en son sürüme ayarladığınızdan emin olun.
+Öğesinin `$skiptoken` kullanıldığı aşağıdaki örneği göz önünde bulundurun. *Amstestaccount* değerini hesap adınızla değiştirdiğinizden ve *api sürümü* değerini en son sürüme ayarladığınızdan emin olun.
 
-Bu gibi varlıkların bir listesini isterseniz:
+Aşağıdaki gibi varlıkların bir listesini istemeniz durumunda:
 
 ```
 GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
@@ -95,7 +95,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-Buna benzer bir yanıt alırsınız:
+Aşağıdakine benzer bir yanıt geri alacaksınız:
 
 ```
 HTTP/1.1 200 OK
@@ -117,13 +117,13 @@ HTTP/1.1 200 OK
 }
 ```
 
-Daha sonra aşağıdakiler için bir alma isteği göndererek bir sonraki sayfayı isteyebilirsiniz:
+Ardından, için bir get isteği göndererek sonraki sayfayı isteyebilirsiniz:
 
 ```
 https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
 ```
 
-Aşağıdaki C# örneği, hesaptaki tüm akış bulucuları nasıl numaralandırmayı gösterir.
+Aşağıdaki C# örneği, hesaptaki tüm akış konum belirleyicilerinin nasıl numaralandırılacağını gösterir.
 
 ```csharp
 var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -135,9 +135,9 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-## <a name="using-logical-operators-to-combine-query-options"></a>Sorgu seçeneklerini birleştirmek için mantıksal işleçleri kullanma
+## <a name="using-logical-operators-to-combine-query-options"></a>Sorgu seçeneklerini birleştirmek için mantıksal işleçler kullanma
 
-Medya Hizmetleri v3 **OR** ve **VE** mantıksal operatörleri destekler. 
+Media Services **v3** , **ve ve mantıksal işleçleri destekler.** 
 
 Aşağıdaki REST örneği işin durumunu denetler:
 
@@ -145,47 +145,47 @@ Aşağıdaki REST örneği işin durumunu denetler:
 https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
-Aynı sorguyu C#'da şöyle oluşturuyorsunuz: 
+C# ' de aynı sorguyu şöyle oluşturursunuz: 
 
 ```csharp
 var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
 client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
 ```
 
-## <a name="filtering-and-ordering-options-of-entities"></a>Varlıkların filtreleme ve sipariş seçenekleri
+## <a name="filtering-and-ordering-options-of-entities"></a>Varlıkların filtreleme ve sıralama seçenekleri
 
-Aşağıdaki tablo, filtreleme ve sıralama seçeneklerini farklı varlıklara nasıl uygulayabileceğinizi gösterir:
+Aşağıdaki tabloda, filtreleme ve sıralama seçeneklerinin farklı varlıklara nasıl uygulanacağı gösterilmektedir:
 
 |Varlık adı|Özellik adı|Filtre|Sipariş verme|
 |---|---|---|---|
 |[Varlıklar](https://docs.microsoft.com/rest/api/media/assets/)|ad|`eq`, `gt`, `lt`, `ge`, `le`|`asc` ve `desc`|
-||properties.alternateId |`eq`||
-||properties.assetId |`eq`||
-||özellikleri.oluşturulan| `eq`, `gt`, `lt`| `asc` ve `desc`|
-|[İçerik anahtar ilkeleri](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|ad|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||özellikleri.oluşturulan    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||properties.lastModi|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||properties.policyId|`eq`, `ne`||
+||Properties. AlternateId |`eq`||
+||Properties. assetId |`eq`||
+||Özellikler. oluşturuldu| `eq`, `gt`, `lt`| `asc` ve `desc`|
+|[İçerik anahtarı ilkeleri](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|ad|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Properties. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Properties. PolicyId|`eq`, `ne`||
 |[İşler](https://docs.microsoft.com/rest/api/media/jobs)| ad  | `eq`            | `asc` ve `desc`|
-||properties.state        | `eq`, `ne`        |                         |
-||özellikleri.oluşturulan      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
-||properties.lastModi | `gt`, `ge`, `lt`, `le` | `asc` ve `desc`| 
-|[Akış lı bulucular](https://docs.microsoft.com/rest/api/media/streaminglocators)|ad|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||özellikleri.oluşturulan    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` ve `desc`|
-||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Properties. State        | `eq`, `ne`        |                         |
+||Özellikler. oluşturuldu      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
+||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` ve `desc`| 
+|[Akış Konumlandırıcı](https://docs.microsoft.com/rest/api/media/streaminglocators)|ad|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` ve `desc`|
+||Properties. BitişZamanı    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 |[Akış ilkeleri](https://docs.microsoft.com/rest/api/media/streamingpolicies)|ad|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
-||özellikleri.oluşturulan    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
+||Özellikler. oluşturuldu    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` ve `desc`|
 |[Dönüştürmeler](https://docs.microsoft.com/rest/api/media/transforms)| ad | `eq`            | `asc` ve `desc`|
-|| özellikleri.oluşturulan      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
-|| properties.lastModi | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
+|| Özellikler. oluşturuldu      | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
+|| Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` ve `desc`|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Varlıkları Listele](https://docs.microsoft.com/rest/api/media/assets/list)
-* [İçerik Anahtar İlkelerini Listele](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [İş İlanları Listele](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [Akış İlkelerini Listele](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [Akış Lı Yer bulucuları listele](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [Içerik anahtarı Ilkelerini Listele](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+* [Işleri listeleme](https://docs.microsoft.com/rest/api/media/jobs/list)
+* [Akış Ilkelerini Listele](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+* [Akış Konumlandırıcı listesini Listele](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
 * [Bir dosyayı akışa alma](stream-files-dotnet-quickstart.md)
 * [Kotalar ve sınırlar](limits-quotas-constraints.md)

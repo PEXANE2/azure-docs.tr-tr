@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetlerinde Akış Konumlayıcıları | Microsoft Dokümanlar
-description: Bu makalede, Akış Lı Konum bulucuların ne olduğu ve Azure Medya Hizmetleri tarafından nasıl kullanıldığı hakkında bir açıklama yapılır.
+title: Azure Media Services akış Konumlandırıcı | Microsoft Docs
+description: Bu makalede, akış bulucuların ne olduğu ve Azure Media Services tarafından nasıl kullanıldığı hakkında bir açıklama sunulmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,37 +12,37 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582686"
 ---
 # <a name="streaming-locators"></a>Akış Bulucuları
 
-Çıkış Varlığınızdaki videoların istemcilerde kayıttan yürütülebilmesi için bir [Akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators) ve ardından akış URL'si oluşturmanız gerekir. URL oluşturmak için, Akış Uç Nokta ana bilgisayar adını ve Akış Lı Konum belirleme yolunu oluşturmanız gerekir. .NET örneği için bkz. [Akış Bulucu edinme](stream-files-tutorial-with-api.md#get-a-streaming-locator).
+Çıkış Varlığınızdaki videoların istemcilerde kayıttan yürütülebilmesi için bir [Akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators) ve ardından akış URL'si oluşturmanız gerekir. URL oluşturmak için, akış uç noktası ana bilgisayar adını ve akış Bulucu yolunu birleştirmeniz gerekir. .NET örneği için bkz. [Akış Bulucu edinme](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
-**Akış Lı Bulucu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **Akış Bulucu,** API aramalarını yaptıktan hemen sonra geçerlidir ve isteğe bağlı başlangıç ve bitiş saatlerini yapılandırmadığınız sürece silinene kadar sürer. 
+**Akış Bulucu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **akış Bulucu** , API çağrılarını yaptıktan hemen sonra geçerli olur ve isteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadıkça silinene kadar sürer. 
 
-**Akış Bulucu**oluştururken, bir **Varlık** adı ve **Akış İlkesi** adı belirtmeniz gerekir. Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
+Bir **akış Bulucu**oluştururken bir **varlık** adı ve **akış ilkesi** adı belirtmeniz gerekir. Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 * [Varlıklar](assets-concept.md)
 * [Akış İlkeleri](streaming-policy-concept.md)
 * [İçerik Anahtar İlkeleri](content-key-policy-concept.md)
 
-Ayrıca, kullanıcınızın içeriği yalnızca bu saatler arasında (örneğin, 5/1/2019 ile 5/5/2019 arasında) oynatmasına izin veren Akış Bulucu'nuzda başlangıç ve bitiş saatini de belirtebilirsiniz.  
+Ayrıca, yalnızca kullanıcının bu saatler arasında içerik oynamasını sağlayan akış bulucuda başlangıç ve bitiş saatini belirtebilirsiniz (örneğin, 5/1/2019 arasında 5/5/2019 arasında).  
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* **Akış Lı Konum belirleyiciler** güncel değildir. 
-* Datetime türünde **Akış Lı Konum belirleyicilerin** özellikleri her zaman UTC biçimindedir.
-* Medya Hizmeti hesabınız için sınırlı bir dizi ilke tasarlamalı ve aynı seçenekler gerektiğinde Akış Lı Konum belirleyicileriniz için yeniden kullanmalısınız. Daha fazla bilgi için [Kotalar ve sınırlar](limits-quotas-constraints.md)abakın.
+* **Akış Konumlandırıcı** güncelleştirilemez. 
+* Tarih saat türünde **akış Konumlandırıcı** özellikleri her zaman UTC biçimindedir.
+* Media Service hesabınız için sınırlı bir ilke kümesi tasarlamanızı ve aynı seçenek gerektiğinde bunları akış bulucular için yeniden kullanmanız gerekir. Daha fazla bilgi için bkz. [Kotalar ve sınırlar](limits-quotas-constraints.md).
 
-## <a name="create-streaming-locators"></a>Akış Lı Konum belirleyiciler Oluşturma  
+## <a name="create-streaming-locators"></a>Akış Konumlandırıcı oluşturma  
 
-### <a name="not-encrypted"></a>Şifrelenmemiş
+### <a name="not-encrypted"></a>Şifrelenmedi
 
-Dosyanızı açık (şifrelenmemiş) olarak aktarmak istiyorsanız, önceden tanımlanmış açık akış ilkesini ayarlayın: 'Predefined_ClearStreamingOnly' (.NET'te PredefinedStreamingPolicy.ClearStreamingOnly enumunu kullanabilirsiniz).
+Dosyanızı açık (şifrelenmemiş) olarak akışa almak istiyorsanız, önceden tanımlı açık akış ilkesini ayarlayın: ' Predefined_ClearStreamingOnly ' (.NET 'te PredefinedStreamingPolicy. ClearStreamingOnly enum) kullanabilirsiniz.
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -58,7 +58,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>Şifreli 
 
-İçeriğinizi CENC şifrelemesiyle şifrelemeniz gerekiyorsa, ilkenizi 'Predefined_MultiDrmCencStreaming' olarak ayarlayın. Widevine şifreleme, DASH akışına ve PlayReady to Smooth'a uygulanır. Anahtar, yapılandırılan DRM lisanslarına dayalı olarak bir oynatma istemcisine teslim edilir.
+İçeriğinizi CENC şifrelemesiyle şifrelemeniz gerekiyorsa, ilkenizi ' Predefined_MultiDrmCencStreaming ' olarak ayarlayın. Widevine şifrelemesi, bir DASH akışına ve PlayReady 'ın pürüzsüz olması için geçerlidir. Anahtar, yapılandırılmış DRM lisanslarına bağlı olarak bir kayıttan yürütme istemcisine gönderilir.
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -73,38 +73,38 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-HLS akışınızı CBCS (FairPlay) ile şifrelemek istiyorsanız, 'Predefined_MultiDrmStreaming' kullanın.
+Ayrıca, HLS akışınızı CBCS (FairPlay) ile şifrelemek istiyorsanız ' Predefined_MultiDrmStreaming ' kullanın.
 
 > [!NOTE]
-> Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+> Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="associate-filters-with-streaming-locators"></a>Filtreleri Akış Lı Konumlatörler ile ilişkilendirin
+## <a name="associate-filters-with-streaming-locators"></a>Filtreleri akış Konumlandırıcı ile ilişkilendir
 
-Bkz. [Filtreler: Akış Lı Konumbelirleyiciler ile ilişkilendirin.](filters-concept.md#associating-filters-with-streaming-locator)
+Bkz. [Filtreler: akış Bulleyicileri ile ilişkilendir](filters-concept.md#associating-filters-with-streaming-locator).
 
-## <a name="filter-order-page-streaming-locator-entities"></a>Filtre, sipariş, sayfa Akış Bulucu varlıkları
+## <a name="filter-order-page-streaming-locator-entities"></a>Filtre, sipariş, sayfa akışı Bulucu varlıkları
 
-Bkz. [Medya Hizmetleri varlıklarınıfiltreleme, sipariş etme, sayfalama.](entities-overview.md)
+Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](entities-overview.md).
 
-## <a name="list-streaming-locators-by-asset-name"></a>Varlık adına göre Akış Konumlayıcıları Listele
+## <a name="list-streaming-locators-by-asset-name"></a>Akış Konumlandırıcı 'yı varlık adına göre Listele
 
-İlgili Varlık adını temel alan Akış Bulucuları almak için aşağıdaki işlemleri kullanın:
+İlişkili varlık adına göre akış Konumlandırıcı almak için aşağıdaki işlemleri kullanın:
 
 |Dil|API|
 |---|---|
-|REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|CLI|[az ams varlık listesi-streaming-locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
-|.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
-|Java|[VarlıkStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
-|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
+|REST|[liststreamingkonumlandırıcı](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
+|CLI|[az AMS varlık listesi-akış-Konumlandırıcı](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|.NET|[Liststreamingkonumlandırıcı](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
+|Node.js|[Liststreamingkonumlandırıcı](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Varlıklar](assets-concept.md)
 * [Akış İlkeleri](streaming-policy-concept.md)
 * [İçerik Anahtar İlkeleri](content-key-policy-concept.md)
-* [Öğretici: .NET kullanarak video yükleme, kodlama ve akış](stream-files-tutorial-with-api.md)
+* [Öğretici: .NET kullanarak videoları karşıya yükleme, kodlama ve akışla](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Akış bulucu oluşturma ve URL oluşturma](create-streaming-locator-build-url.md)
+[Akış bulucu ve derleme URL 'Leri oluşturma](create-streaming-locator-build-url.md)

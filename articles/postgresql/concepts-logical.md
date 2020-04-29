@@ -1,39 +1,39 @@
 ---
-title: Mantıksal kod çözme - PostgreSQL için Azure Veritabanı - Tek Sunucu
-description: PostgreSQL için Azure Veritabanı'nda veri yakalamayı değiştirmek için mantıksal kod çözme ve wal2json'u açıklar - Tek Sunucu
+title: Mantıksal kod çözme-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı 'nda değişiklik verilerini yakalama için mantıksal kod çözme ve wal2json açıklar-tek sunucu
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 1213b38f2b67e8fed179cfda4308943808893e1b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80522153"
 ---
 # <a name="logical-decoding"></a>Mantıksal kod çözme
  
-[PostgreSQL'de mantıksal kod çözme,](https://www.postgresql.org/docs/current/logicaldecoding.html) veri değişikliklerini harici tüketicilere aktaranıza olanak tanır. Mantıksal kod çözme, genel olarak olay akışı ve veri yakalama senaryolarını değiştirmek için kullanılır.
+[PostgreSQL Içindeki mantıksal kod çözme](https://www.postgresql.org/docs/current/logicaldecoding.html) , dış tüketicilerle veri değişiklikleri akışına olanak sağlar. Mantıksal kod çözme, olay akışı ve değişiklik verilerini yakalama senaryoları için popudöngüsel olarak kullanılır.
 
-Mantıksal kod çözme, Postgres'in yazma giriş günlüğünü (WAL) okunabilir bir biçime dönüştürmek için bir çıktı eklentisi kullanır. PostgreSQL için Azure Veritabanı iki çıkış eklentisi sağlar: [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) ve [wal2json.](https://github.com/eulerto/wal2json)
+Mantıksal kod çözme, Postgres 'nin yazma sonrası günlüğünü (WAL) okunabilir bir biçime dönüştürmek için bir çıktı eklentisi kullanır. PostgreSQL için Azure veritabanı iki çıkış eklentileri sağlar: [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) ve [wal2json](https://github.com/eulerto/wal2json).
  
 
 > [!NOTE]
-> Mantıksal kod çözme, PostgreSQL - Single Server için Azure Veritabanı'nda genel önizlemede dir.
+> Mantıksal kod çözme, PostgreSQL için Azure veritabanı-tek sunucu genel önizlemede.
 
 
 ## <a name="set-up-your-server"></a>Sunucunuzu ayarlama
-Mantıksal kod çözme kullanmaya başlamak için, sunucunuzun WAL'ı kaydetmesini ve akış lamasını etkinleştirin. 
+Mantıksal kod çözme 'yı kullanmaya başlamak için sunucunuzun WAL 'yi kaydetmesine ve akışına izin vermek için etkinleştirin. 
 
-1. Azure.replication_support'yi `logical` Azure CLI'yi kullanmaya ayarlayın. 
+1. Azure CLı 'yi kullanmak için `logical` azure. replication_support ayarlayın. 
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ```
 
    > [!NOTE]
-   > Okuma yinelemeleri kullanıyorsanız, azure.replication_support `logical` yinelemelerin çalışmasına da izin vermek üzere ayarlanmış. Mantıksal kod çözmeyi durdurursanız, ayarı `replica`'ye geri değiştirin. 
+   > Okuma çoğaltmaları kullanıyorsanız, Azure. replication_support `logical` kopyaların çalışmasına izin verir. Mantıksal kod çözme kullanmayı durdurursanız, ayarı olarak `replica`değiştirin. 
 
 
 2. Değişiklikleri uygulamak için sunucuyu yeniden başlatın.
@@ -41,27 +41,27 @@ Mantıksal kod çözme kullanmaya başlamak için, sunucunuzun WAL'ı kaydetmesi
    az postgres server restart --resource-group mygroup --name myserver
    ```
 
-## <a name="start-logical-decoding"></a>Mantıksal çözmeyi başlatma
+## <a name="start-logical-decoding"></a>Mantıksal kod çözmeyi Başlat
 
-Mantıksal kod çözme akış protokolü veya SQL arabirimi üzerinden tüketilebilir. Her iki yöntem de [çoğaltma yuvaları](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html#LOGICALDECODING-REPLICATION-SLOTS)kullanın. Yuva, tek bir veritabanından gelen bir değişiklik akışını temsil eder.
+Mantıksal kod çözme, akış protokolü veya SQL arabirimi aracılığıyla tüketilebilir. Her iki yöntem de [çoğaltma yuvaları](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html#LOGICALDECODING-REPLICATION-SLOTS)kullanır. Yuva, tek bir veritabanındaki değişikliklerin akışını temsil eder.
 
-Çoğaltma yuvası kullanmak Postgres'in çoğaltma ayrıcalıklarını gerektirir. Şu anda, çoğaltma ayrıcalığı yalnızca sunucunun yönetici kullanıcısı için kullanılabilir. 
+Çoğaltma yuvası kullanılması için Postgres 'nin çoğaltma ayrıcalıkları gerekir. Şu anda, çoğaltma ayrıcalığı yalnızca sunucunun yönetici kullanıcısı için kullanılabilir. 
 
-### <a name="streaming-protocol"></a>Akış protokolü
-Akış protokolünü kullanarak değiştirme ler genellikle tercih edilir. Kendi tüketici / konektör oluşturabilir veya [Debezium](https://debezium.io/)gibi bir araç kullanabilirsiniz. 
+### <a name="streaming-protocol"></a>Akış Protokolü
+Akış protokolünü kullanan değişiklikleri kullanmak genellikle tercih edilir. Kendi tüketicisini/bağlayıcınızı oluşturabilir veya [Debezium](https://debezium.io/)gibi bir araç kullanabilirsiniz. 
 
-pg_recvlogical ile akış protokolünü kullanarak bir örnek için wal2json belgelerini ziyaret [edin.](https://github.com/eulerto/wal2json#pg_recvlogical)
+[Pg_recvlogical ile akış protokolünü kullanarak bir örnek](https://github.com/eulerto/wal2json#pg_recvlogical)için wal2json belgelerini ziyaret edin.
 
 
 ### <a name="sql-interface"></a>SQL arabirimi
-Aşağıdaki örnekte, wal2json eklentisi ile SQL arabirimini kullanıyoruz.
+Aşağıdaki örnekte, SQL arabirimini wal2json eklentisi ile kullanıyoruz.
  
-1. Bir yuva oluşturun.
+1. Yuva oluşturun.
    ```SQL
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL komutlarını sorun. Örnek:
+2. SQL komutları verin. Örneğin:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,
@@ -73,12 +73,12 @@ Aşağıdaki örnekte, wal2json eklentisi ile SQL arabirimini kullanıyoruz.
    DELETE FROM a_table WHERE id='id1';
    ```
 
-3. Değişiklikleri tüketin.
+3. Değişiklikleri kullanın.
    ```SQL
    SELECT data FROM pg_logical_slot_get_changes('test_slot', NULL, NULL, 'pretty-print', '1');
    ```
 
-   Çıktı aşağıdaki gibi görünecektir:
+   Çıktı şöyle görünür:
    ```
    {
          "change": [
@@ -112,41 +112,41 @@ Aşağıdaki örnekte, wal2json eklentisi ile SQL arabirimini kullanıyoruz.
    }
    ```
 
-4. Kullanımı bittikten sonra yuvayı bırakın.
+4. Onu kullanarak işiniz bittiğinde yuvayı atın.
    ```SQL
    SELECT pg_drop_replication_slot('test_slot'); 
    ```
 
 
-## <a name="monitoring-slots"></a>İzleme yuvaları
+## <a name="monitoring-slots"></a>İzleme Yuvaları
 
-Mantıksal kod çözmeyi izlemeniz gerekir. Kullanılmayan çoğaltma yuvası bırakılmalıdır. Yuvalar, değişiklikler bir tüketici tarafından okunana kadar Postgres WAL günlüklerini ve ilgili sistem kataloglarını saklar. Tüketiciniz başarısız olursa veya düzgün bir şekilde yapılandırılmamışsa, tüketilmemiş günlükler yığılır ve deponuzu doldurur. Ayrıca, tüketilmemiş günlükler işlem kimliği kaydırma riskini artırır. Her iki durum da sunucunun kullanılamamasına neden olabilir. Bu nedenle, mantıksal çoğaltma yuvaları sürekli tüketilen önemlidir. Mantıksal çoğaltma yuvası artık kullanılmazsa, hemen düşün.
+Mantıksal kod çözmeyi izlemeniz gerekir. Kullanılmayan herhangi bir çoğaltma yuvası bırakılmalıdır. Yuvalar, değişiklikler bir tüketici tarafından okunana kadar Postgres WAL günlüklerine ve ilgili sistem kataloglarına sahiptir. Tüketicinizin başarısız olması veya düzgün bir şekilde yapılandırılmamışsa, tüketilmemiş Günlükler depolama alanını doldurup dolduracaktır. Ayrıca, tüketilmemiş Günlükler işlem KIMLIĞI wraparound riskini artırır. Her iki durum da sunucunun kullanılamaz hale gelmesine neden olabilir. Bu nedenle, mantıksal çoğaltma yuvalarının sürekli olarak tüketilmesi kritik öneme sahiptir. Mantıksal çoğaltma yuvası artık kullanılmıyorsa, hemen bırakın.
 
-pg_replication_slots görünümündeki 'etkin' sütun, yuvaya bağlı bir tüketici olup olmadığını gösterir.
+Pg_replication_slots görünümündeki ' etkin ' sütunu, bir yuvaya bağlı bir tüketici olup olmadığını gösterir.
 ```SQL
 SELECT * FROM pg_replication_slots;
 ```
 
-*Kullanılan Depolama'da* [uyarıları ayarlayın](howto-alert-on-metric.md) ve değerler normal eşikleri geçtiğinde sizi bilgilendirmek için yineleme ölçümleri arasında *Max gecikmesi.* 
+Değerler, geçmiş normal eşiklerini arttırabilmeniz için, *kullanılan depolamada* [uyarıları](howto-alert-on-metric.md) ve *çoğaltmalar ölçümleri genelinde en fazla gecikme* değerini ayarlayın. 
 
 > [!IMPORTANT]
-> Kullanılmayan çoğaltma yuvalarını bırakmalısınız. Aksi takdirde sunucu nun kullanılamamasına neden olabilir.
+> Kullanılmayan çoğaltma yuvalarını bırakmalısınız. Bunun başarısız olması sunucunun kullanılamamasına yol açabilir.
 
-## <a name="how-to-drop-a-slot"></a>Nasıl bir yuva bırak
-Bir çoğaltma yuvasını etkin olarak tüketmiyorsanız, bu yuvayı bırakmanız gerekir.
+## <a name="how-to-drop-a-slot"></a>Yuva bırakma
+Bir çoğaltma yuvasını etkin bir şekilde kullanmıyorsanız bırakmalısınız.
 
-SQL kullanılarak çağrılan `test_slot` bir çoğaltma yuvasını düşürmek için:
+SQL kullanılarak adlandırılan `test_slot` bir çoğaltma yuvasını bırakmak için:
 ```SQL
 SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Mantıksal kod çözmeyi durdurursanız, azure.replication_support'ı değiştirin `replica` veya `off`. Tarafından `logical` tutulan WAL ayrıntıları daha ayrıntılıdır ve mantıksal kod çözme kullanılmadığında devre dışı bırakılmalı. 
+> Mantıksal kod çözme kullanmayı durdurursanız, Azure. replication_support öğesini veya `replica` `off`olarak değiştirin. Tarafından `logical` tutulan Wal ayrıntıları daha ayrıntılıdır ve mantıksal kod çözme kullanımda olmadığında devre dışı bırakılmalıdır. 
 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Mantıksal kod çözme hakkında daha fazla bilgi edinmek için Postgres belgelerini ziyaret [edin.](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html)
-* Mantıksal kod çözme ile ilgili sorularınız varsa [ekibimize](mailto:AskAzureDBforPostgreSQL@service.microsoft.com) ulaşın.
-* [Okuma yinelemeleri](concepts-read-replicas.md)hakkında daha fazla bilgi edinin.
+* [Mantıksal kod çözme hakkında daha fazla bilgi edinmek](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html)Için Postgres belgelerini ziyaret edin.
+* Mantıksal kod çözme hakkında sorularınız varsa [ekibimize](mailto:AskAzureDBforPostgreSQL@service.microsoft.com) ulaşın.
+* [Okuma çoğaltmaları](concepts-read-replicas.md)hakkında daha fazla bilgi edinin.
 

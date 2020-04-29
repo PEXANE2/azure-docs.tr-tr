@@ -1,35 +1,35 @@
 ---
-title: Azure Konteyner Kayıt Defterini Azure Kubernetes Hizmetiyle Tümleştir
-description: Azure Kubernetes Hizmeti'ni (AKS) Azure Kapsayıcı Kayıt Defteri (ACR) ile nasıl entegre edebilirsiniz öğrenin
+title: Azure Container Registry Azure Kubernetes hizmeti ile tümleştirme
+description: Azure Kubernetes Service 'i (AKS) Azure Container Registry (ACR) ile tümleştirmeyi öğrenin
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80617415"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service'ten Azure Container Registry ile Kimlik Doğrulaması Yapma
 
-Azure Kubernetes Hizmeti (AKS) ile Azure Kapsayıcı Kayıt Defteri'ni (ACR) kullanırken, bir kimlik doğrulama mekanizmasının oluşturulması gerekir. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulamayapılandırmak için örnekler verilmektedir. 
+Azure Kubernetes Service (AKS) ile Azure Container Registry (ACR) kullanırken, bir kimlik doğrulama mekanizmasının kurulması gerekir. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulaması yapılandırmak için örnekler sağlanmaktadır. 
 
-AKS'den ACR tümleştirmesine Azure CLI ile birkaç basit komutta ayarlayabilirsiniz. Bu tümleştirme, AkS Kümesi'yle ilişkili hizmet ilkesine AcrPull rolünü atar.
+Azure CLı ile birkaç basit komutlarda ACR tümleştirmesi için AKS tümleştirmesini ayarlayabilirsiniz. Bu tümleştirme, AKS kümesiyle ilişkili hizmet sorumlusuna AcrPull rolünü atar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu örnekler şunları gerektirir:
+Bu örneklerde şunlar gerekir:
 
-* **Azure aboneliğinde** **sahip** veya Azure **hesap yöneticisi** rolü
-* Azure CLI sürüm 2.0.73 veya sonrası
+* **Azure aboneliğinde** **sahip** veya **Azure Hesap Yöneticisi** rolü
+* Azure CLı sürüm 2.0.73 veya üzeri
 
-**Sahibi** veya **Azure hesap yöneticisi** rolüne ihtiyaç duymamak için bir hizmet ilkesini el ile yapılandırabilir veya AKS'den ACR'nin kimliğini doğrulamak için varolan bir hizmet ilkesini kullanabilirsiniz. Daha fazla bilgi için, [hizmet ilkeleriyle ACR kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md) veya [Kubernetes'ten bir çekme sırrıyla kimlik doğrulaması'na](../container-registry/container-registry-auth-kubernetes.md)bakın.
+Bir **sahip** veya **Azure Hesap Yöneticisi** rolüne gerek duymamak için bir hizmet sorumlusunu el ile yapılandırabilir veya mevcut bir hizmet sorumlusunu kullanarak aks 'ten ACR 'nin kimliğini doğrulayabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumluları Ile ACR kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md) veya [çekme gizli anahtarı Ile Kubernetes kimlik doğrulaması](../container-registry/container-registry-auth-kubernetes.md).
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR tümleştirmesi ile yeni bir AKS kümesi oluşturma
 
-AKS kümenizin ilk oluşturulması sırasında AKS ve ACR tümleştirmesini ayarlayabilirsiniz.  Bir AKS kümesinin ACR ile etkileşim kurabilmesi için bir Azure Etkin Dizin **hizmet ilkesi** kullanılır. Aşağıdaki CLI komutu, aboneliğinizde varolan bir ACR'yi yetkilendirmenize olanak tanır ve hizmet sorumlusu için uygun **ACRPull** rolünü yapılandırır. Parametreleriniz için aşağıdaki geçerli değerleri sağlar.
+AKS kümenizi ilk oluşturma sırasında AKS ve ACR tümleştirmesini ayarlayabilirsiniz.  AKS kümesinin ACR ile etkileşime geçmesini sağlamak için bir Azure Active Directory **hizmet sorumlusu** kullanılır. Aşağıdaki CLı komutu aboneliğinizdeki mevcut bir ACR 'ye yetki vermenize ve hizmet sorumlusu için uygun **Acrpull** rolünü yapılandırmanıza olanak tanır. Aşağıdaki parametreleriniz için geçerli değerler sağlayın.
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
@@ -42,7 +42,7 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
 
-Alternatif olarak, aşağıdaki biçime sahip bir ACR kaynak kimliği kullanarak ACR adını belirtebilirsiniz:
+Alternatif olarak, aşağıdaki biçime sahip bir ACR kaynak KIMLIĞI kullanarak ACR adını belirtebilirsiniz:
 
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
 
@@ -52,21 +52,21 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 
 Bu adımın tamamlanması birkaç dakika sürebilir.
 
-## <a name="configure-acr-integration-for-existing-aks-clusters"></a>Varolan AKS kümeleri için ACR tümleştirmeyi yapılandırma
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>Mevcut AKS kümeleri için ACR tümleştirmesini yapılandırma
 
-Aşağıdaki gibi **acr-name** veya **acr-resource-id** için geçerli değerler sağlayarak varolan bir ACR'yi varolan AKS kümeleriyle tümleştirin.
+Aşağıdaki gibi **ACR-Name** veya **ACR-Resource-id** için geçerli değerler sağlayarak mevcut bir ACR 'yi mevcut aks kümeleriyle tümleştirin.
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 ```
 
-Veya
+veya
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
 
-Ayrıca, bir ACR ve aks kümesi arasındaki tümleştirmeyi aşağıdaki
+Bir ACR ve AKS kümesi arasındaki tümleştirmeyi aşağıdakiler ile de kaldırabilirsiniz
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
@@ -80,24 +80,24 @@ az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 
 ## <a name="working-with-acr--aks"></a>ACR & AKS ile çalışma
 
-### <a name="import-an-image-into-your-acr"></a>ACR'nize görüntü alma
+### <a name="import-an-image-into-your-acr"></a>ACR 'nize görüntü aktarma
 
-Aşağıdakileri çalıştırarak docker hub'ından ACR'nize bir görüntü aktarın:
+Aşağıdaki çalıştırarak, Docker Hub 'ından bir görüntüyü ACR 'nize aktarın:
 
 
 ```azurecli
 az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest --image nginx:v1
 ```
 
-### <a name="deploy-the-sample-image-from-acr-to-aks"></a>Örnek görüntüyü ACR'den AKS'ye dağıtma
+### <a name="deploy-the-sample-image-from-acr-to-aks"></a>Örnek görüntüyü ACR 'den AKS 'e dağıtma
 
-Uygun AKS kimlik bilgilerine sahip olduğundan emin olun
+Uygun AKS kimlik bilgilerine sahip olduğunuzdan emin olun
 
 ```azurecli
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-**Acr-nginx.yaml** adlı ve aşağıdakileri içeren bir dosya oluşturun:
+Aşağıdakileri içeren **ACR-NGINX. YAML** adlı bir dosya oluşturun:
 
 ```yaml
 apiVersion: apps/v1
@@ -135,7 +135,7 @@ Aşağıdakileri çalıştırarak dağıtımı izleyebilirsiniz:
 kubectl get pods
 ```
 
-İki çalışan kapsülün olmalı.
+İki çalışan bir pod olmalıdır.
 
 ```output
 NAME                                 READY   STATUS    RESTARTS   AGE

@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs sanal makinelerinde tarayıcı bağlantısını etkinleştirin | Microsoft Dokümanlar
-description: DevTest Labs artık Azure Bastion ile entegre olarak, bir tarayıcı üzerinden tüm laboratuvar sanal makinelerine erişmesini etkinleştirebileceğiniz laboratuvarın sahibi olarak.
+title: Azure DevTest Labs sanal makinelerde tarayıcı bağlantısını etkinleştir | Microsoft Docs
+description: DevTest Labs artık Azure savunma ile tümleşir, bu da laboratuvarın sahibi olarak tüm laboratuar sanal makinelerine erişimi bir tarayıcıdan sağlayabilir.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: tanmayeekamath
@@ -14,59 +14,59 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
 ms.openlocfilehash: 86304fc7776f49c999924b8609f2d26120cee372
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549093"
 ---
-# <a name="enable-browser-connection-on-lab-virtual-machines"></a>Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirme 
+# <a name="enable-browser-connection-on-lab-virtual-machines"></a>Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştir 
 
-DevTest Labs, sanal makinelerinize bir tarayıcı üzerinden bağlanmanızı sağlayan [Azure Bastion](https://docs.microsoft.com/azure/bastion/)ile tümleşir. Öncelikle laboratuvar sanal makinelerde tarayıcı bağlantısını etkinleştirmeniz gerekir.
+DevTest Labs, sanal makinelerinize bir tarayıcıdan bağlanmanızı sağlayan [Azure](https://docs.microsoft.com/azure/bastion/)savunma ile tümleşir. Önce laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirmeniz gerekir.
 
-Bir laboratuvarın sahibi olarak, tüm laboratuvar sanal makinelerine bir tarayıcı üzerinden erişmesini sağlayabilirsiniz. Ek bir istemciye, aracıya veya yazılım parçasına ihtiyacınız yoktur. Azure Bastion, TLS üzerinden sanal makinelerinize doğrudan Azure portalında güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion üzerinden bağlandığınızda, sanal makinelerinizin herkese açık bir IP adresine ihtiyacı yoktur. Daha fazla bilgi için azure [kalesi nedir?](../bastion/bastion-overview.md)
+Bir laboratuvarın sahibi olarak, tüm Laboratuvar sanal makinelerine bir tarayıcıdan erişmeyi etkinleştirebilirsiniz. Ek bir istemci, aracı veya yazılım parçası gerekmez. Azure savunma, doğrudan TLS üzerinden Azure portal sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure savunma aracılığıyla bağlandığınızda, sanal makinelerinizin ortak bir IP adresi olması gerekmez. Daha fazla bilgi için bkz. Azure savunma nedir [?](../bastion/bastion-overview.md)
 
 > [!NOTE]
-> Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirmek önizlemededir.
+> Laboratuvar sanal makinelerinde tarayıcı bağlantısının etkinleştirilmesi önizleme aşamasındadır.
 
-Bu makalede, laboratuvar sanal makinelerde tarayıcı bağlantısı etkinleştirmek için nasıl gösterir.
+Bu makalede, laboratuvar sanal makinelerinde tarayıcı bağlantısının nasıl etkinleştirileceği gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar 
-Mevcut laboratuvarınızın sanal ağına **(OR)** bir Bastion ana bilgisayar dağıtın, laboratuvarınızı yapılandırılmış bir VNet ile bağlayın. 
+Mevcut laboratuvarın sanal ağında bir savunma ana bilgisayarı dağıtın **(veya)** laboratuvarınızı yapılandırılmış bir VNET ile bağlayın. 
 
-Bir VNet'te Bir Bastion ana bilgisayarınnasıl dağıtılangerektiğini öğrenmek için [bkz.](../bastion/bastion-create-host-portal.md) Bastion ana bilgisayarını oluştururken, laboratuvarın sanal ağını seçin. 
+Bir savunma konağını VNet 'te dağıtmayı öğrenmek için bkz. [Azure savunma Konağı (Önizleme) oluşturma](../bastion/bastion-create-host-portal.md). Savunma konağını oluştururken, laboratuvarın sanal ağını seçin. 
 
-Laboratuvarınızı Bastion yapılandırılmış bir VNet'e nasıl bağlayacağınızı öğrenmek için Azure [DevTest Labs'da sanal ağı Yapılandırma'ya](devtest-lab-configure-vnet.md)bakın. Bastion ana bilgisayarını dağıtılan VNet'i ve içinde **AzureBastionSubnet'i** seçin. Aşağıda ayrıntılı adımlar veörnekler yer alıyor: 
+Laboratuvarınızı yapılandırılmış bir sanal ağ ile nasıl bağlayacağınızı öğrenmek için bkz. [Azure DevTest Labs sanal ağı yapılandırma](devtest-lab-configure-vnet.md). Savunma konağının dağıtıldığı VNet 'i ve içinde **AzureBastionSubnet** seçin. Ayrıntılı adımlar aşağıda verilmiştir: 
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Sol navigasyon menüsünden **Tüm Hizmetler'i** seçin. 
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol gezinti menüsünde **tüm hizmetler** ' i seçin. 
 1. Listeden **DevTest Labs**'i seçin. 
-1. Laboratuvarlar listesinden, *laboratuvarınızı*seçin. 
+1. Laboratuvarlar listesinden *laboratuvarınızı*seçin. 
 
     > [!NOTE]
-    > Azure Bastion şu anda önizlemede. Aşağıdaki bölgelerle sınırlıdır: Batı ABD, Doğu ABD, Batı Avrupa, Güney Orta ABD, Avustralya Doğu ve Japonya Doğu. Eğer laboratuvarınız bunlardan birinde değilse, bu bölgelerden birinde bir laboratuvar oluşturun. 
-1. Sol menüdeki **Ayarlar** bölümünde **Yapılandırma ve ilkeler'i** seçin. 
+    > Azure savunma Şu anda önizleme aşamasındadır. Şu bölgelerle sınırlıdır: Batı ABD, Doğu ABD, Batı Avrupa, Orta Güney ABD, Avustralya Doğu ve Japonya Doğu. Bu nedenle, laboratuvarınız bunlardan birinde değilse, bu bölgelerden birinde bir laboratuvar oluşturun. 
+1. Sol menüdeki **Ayarlar** bölümünde **yapılandırma ve ilkeler** ' i seçin. 
 1. **Sanal ağları**seçin.
-1. Araç çubuğundan **Ekle'yi** seçin. 
-1. Bastion ana bilgisayarını dağıtan **VNet'i** seçin. 
+1. Araç çubuğundan **Ekle** ' yi seçin. 
+1. Savunma konağının dağıtıldığı **VNET** 'i seçin. 
 1. Alt ağı seçin: **AzureBastionSubnet**. 
 
     ![Alt ağ](./media/enable-browser-connection-lab-virtual-machines/subnet.png)
-1. **Sanal makine oluşturma seçeneğinde Kullan'ı** seçin. 
+1. **Sanal makine oluşturma seçeneğinde kullan '** ı seçin. 
 1. Araç çubuğunda **Kaydet**’i seçin. 
-1. Eğer laboratuvar için eski bir VNet varsa, * seçerek kaldırın *...*  ve **kaldırın.** 
+1. Laboratuvar için eski bir VNet 'iniz varsa, **...* seçeneğini belirleyerek kaldırın.  ve **kaldırın**. 
 
-## <a name="enable-browser-connection"></a>Tarayıcı bağlantısını etkinleştirme 
+## <a name="enable-browser-connection"></a>Tarayıcı bağlantısını etkinleştir 
 
-Laboratuvar içinde bir Bastion yapılandırılmış VNet sonra, bir laboratuvar sahibi olarak, tarayıcı laboratuvar sanal makinelerde bağlanmak etkinleştirebilirsiniz.
+Laboratuvarda laboratuvar sahibi olarak yapılandırılmış VNet 'e sahip olduktan sonra, laboratuvar sanal makinelerinde tarayıcı bağlantısı sağlayabilirsiniz.
 
-Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirmek için aşağıdaki adımları izleyin:
+Laboratuvar sanal makinelerinde tarayıcı bağlantısı sağlamak için şu adımları izleyin:
 
-1. Azure portalında *laboratuvarınıza*gidin.
-1. **Yapılandırma ve ilkeleri**seçin.
-1. **Ayarlar'da** **Tarayıcı bağlantısı (Önizleme)** seçeneğini belirleyin.
+1. Azure portal *laboratuvara*gidin.
+1. **Yapılandırma ve ilkeler '** i seçin.
+1. **Ayarlar**' da **tarayıcı bağlantısı (Önizleme)** öğesini seçin.
 
-![Tarayıcı bağlantısını etkinleştirme](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
+![Tarayıcı bağlantısını etkinleştir](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Tarayıcı kullanarak SANAL M'lerinize nasıl bağlanışsüreceğinizi öğrenmek için aşağıdaki makaleye bakın: [Tarayıcı üzerinden sanal makinelerinize bağlanın](connect-virtual-machine-through-browser.md)
+Bir tarayıcı kullanarak VM 'lerinize nasıl bağlanacağınızı öğrenmek için aşağıdaki makaleye bakın: [bir tarayıcı aracılığıyla sanal makinelerinize bağlanma](connect-virtual-machine-through-browser.md)

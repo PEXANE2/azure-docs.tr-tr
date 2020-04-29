@@ -1,37 +1,37 @@
 ---
-title: Bağlantı mimarisi - MariaDB için Azure Veritabanı
-description: MariaDB sunucusu için Azure Veritabanınızın bağlantı mimarisini açıklar.
+title: Bağlantı mimarisi-MariaDB için Azure veritabanı
+description: MariaDB sunucusu için Azure veritabanı 'nın bağlantı mimarisini açıklar.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 38b6f797541ef07fa3fb5e1dc71029a4cbcf5d22
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546302"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'nda bağlantı mimarisi
-Bu makalede, MariaDB bağlantı mimarisi için Azure Veritabanı'nın yanı sıra, trafiğin Azure içindeki ve dışındaki istemcilerden MariaDB örneği için Azure Veritabanınıza nasıl yönlendirileceği açıklanmaktadır.
+# <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda bağlantı mimarisi
+Bu makalede, MariaDB bağlantı mimarisi için Azure veritabanı 'nın yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden MariaDB örneğine nasıl yönlendirildiği açıklanmaktadır.
 
 ## <a name="connectivity-architecture"></a>Bağlantı mimarisi
 
-MariaDB için Azure Veritabanınıza bağlantı, gelen bağlantıların kümelerimizdeki sunucunuzun fiziksel konumuna yönlendirmeden sorumlu bir ağ geçidi aracılığıyla kurulur. Aşağıdaki diyagram trafik akışını göstermektedir.
+MariaDB için Azure veritabanınıza bağlantı, gelen bağlantıları kümelerimize ait fiziksel konuma yönlendirmekten sorumlu bir ağ geçidiyle oluşturulmuştur. Aşağıdaki diyagramda trafik akışı gösterilmektedir.
 
 ![Bağlantı mimarisine genel bakış](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-İstemci veritabanına bağlanırken, ağ geçidine bağlanan bir bağlantı dizesi elde ederler. Bu ağ geçidi, bağlantı noktası 3306'yı dinleyen genel bir IP adresine sahiptir. Veritabanı kümesi içinde, trafik MariaDB için uygun Azure Veritabanı'na iletilir. Bu nedenle, şirket ağları gibi sunucunuza bağlanmak için, giden trafiğin ağ geçitlerimize erişebilmesi için istemci tarafındaki güvenlik duvarını açmak gerekir. Aşağıda bölge ağ geçitlerimiz tarafından kullanılan IP adreslerinin tam listesini bulabilirsiniz.
+İstemci veritabanına bağlandığında, ağ geçidine bağlanan bir bağlantı dizesi alırlar. Bu ağ geçidinin 3306 numaralı bağlantı noktasını dinleyen bir genel IP adresi vardır. Veritabanı kümesi içinde trafik, MariaDB için uygun Azure veritabanına iletilir. Bu nedenle, şirket ağları gibi sunucunuza bağlanmak için, giden trafiğin ağ geçitlerimize ulaşmasını sağlamak üzere istemci tarafı güvenlik duvarını açmanız gerekir. Aşağıda, bölge başına ağ geçitlerimiz tarafından kullanılan IP adreslerinin tamamen bir listesini bulabilirsiniz.
 
-## <a name="azure-database-for-mariadb-gateway-ip-addresses"></a>MariaDB ağ geçidi IP adresleri için Azure Veritabanı
+## <a name="azure-database-for-mariadb-gateway-ip-addresses"></a>MariaDB ağ geçidi IP adresleri için Azure veritabanı
 
-Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure Veritabanı'nın birincil ve ikincil IP'leri listelemektedir. Birincil IP adresi ağ geçidinin geçerli IP adresidir ve ikinci IP adresi birincil hata durumunda bir failover IP adresidir. Belirtildiği gibi, müşteriler her iki IP adresine de giden izin vermelidir. İkinci IP adresi, MariaDB'nin bağlantıları kabul etmesi için Azure Veritabanı tarafından etkinleştirilene kadar hiçbir hizmeti dinlemez.
+Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure veritabanı 'nın birincil ve ikincil IP 'Leri listelenmektedir. Birincil IP adresi, ağ geçidinin geçerli IP adresidir ve ikinci IP adresi birincil hata durumunda bir yük devretme IP adresidir. Belirtildiği gibi, müşteriler her iki IP adresine de giden trafiği izin vermelidir. İkinci IP adresi, bağlantıları kabul etmek için MariaDB için Azure veritabanı tarafından etkinleştirilinceye kadar hiçbir hizmet üzerinde dinleme yapmaz.
 
-| **Bölge Adı** | **Ağ Geçidi IP Adresleri** |
+| **Bölge Adı** | **Ağ geçidi IP adresleri** |
 |:----------------|:-------------|
 | Orta Avustralya| 20.36.105.0     |
-| Avustralya Merkez2     | 20.36.113.0   |
+| Avustralya Central2     | 20.36.113.0   |
 | Doğu Avustralya | 13.75.149.87, 40.79.161.1     |
 | Avustralya Güneydoğu |191.239.192.109, 13.73.109.251   |
 | Güney Brezilya | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
@@ -61,7 +61,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 | Güney Afrika Batı | 102.133.24.0   |
 | Orta Güney ABD |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Güneydoğu Asya | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
-| BAE Merkez | 20.37.72.64  |
+| BAE Orta | 20.37.72.64  |
 | BAE Kuzey | 65.52.248.0    |
 | Güney Birleşik Krallık | 51.140.184.11   |
 | Batı Birleşik Krallık | 51.141.8.11  |
@@ -73,5 +73,5 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure portalını kullanarak MariaDB güvenlik duvarı kuralları için Azure Veritabanı oluşturma ve yönetme](./howto-manage-firewall-portal.md)
-* [Azure CLI'yi kullanarak MariaDB güvenlik duvarı kuralları için Azure Veritabanı oluşturma ve yönetme](./howto-manage-firewall-cli.md)
+* [Azure portal kullanarak MariaDB için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](./howto-manage-firewall-portal.md)
+* [Azure CLı kullanarak MariaDB için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](./howto-manage-firewall-cli.md)

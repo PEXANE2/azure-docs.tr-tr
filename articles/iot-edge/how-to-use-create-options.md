@@ -1,6 +1,6 @@
 ---
-title: Modüller için createOptions yazın - Azure IoT Edge | Microsoft Dokümanlar
-description: Modülleri çalışma zamanında yapılandırmak için dağıtım bildiriminde createOptions nasıl kullanılır?
+title: Modüller için createOptions yazma-Azure IoT Edge | Microsoft Docs
+description: Çalışma zamanında modülleri yapılandırmak için dağıtım bildiriminde createOptions kullanma
 keywords: ''
 author: kgremban
 manager: philmea
@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550350"
 ---
-# <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>IoT Edge modülleri için kapsayıcı oluşturma seçenekleri nasıl yapılandırılır?
+# <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>IoT Edge modülleri için kapsayıcı oluşturma seçeneklerini yapılandırma
 
-Dağıtım bildirimindeki **createOptions** parametresi, modül kapsayıcılarını çalışma zamanında yapılandırmanızı sağlar. Bu parametre, modüller üzerindeki denetiminizi genişletir ve modülün ana bilgisayarın kaynaklarına erişimine izin verme veya kısıtlama veya ağ yapılandırma gibi görevlere olanak tanır.
+Dağıtım bildirimindeki **createOptions** parametresi, çalışma zamanında modül kapsayıcılarını yapılandırmanızı sağlar. Bu parametre, denetim modüllerini modüller üzerinde genişletir ve modülün konak cihazının kaynaklarına erişimine izin verme veya kısıtlama veya ağı yapılandırma gibi görevler için izin verir.
 
-IoT Edge modülleri, IoT Edge cihazınızda Docker uyumlu kaplar olarak uygulanır. Docker kapsayıcı oluşturmak için birçok seçenek sunar ve bu seçenekler IoT Edge modülleri için de geçerlidir. Daha fazla bilgi için [Docker kapsayıcısı seçenekleri oluşturmaya](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)bakın.
+IoT Edge modüller, IoT Edge cihazınızda Docker uyumlu kapsayıcılar olarak uygulanır. Docker kapsayıcı oluşturmaya yönelik birçok seçenek sunar ve bu seçenekler IoT Edge modüller için de geçerlidir. Daha fazla bilgi için bkz. [Docker kapsayıcı oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 
-## <a name="format-create-options"></a>Oluşturma seçeneklerini biçimlendirme
+## <a name="format-create-options"></a>Biçim oluşturma seçenekleri
 
-IoT Edge dağıtım bildirimi, JSON olarak biçimlendirilmiş oluşturma seçeneklerini kabul eder. Örneğin, her edgeHub modülü için otomatik olarak dahil edilen oluşturma seçeneklerini ele alalım:
+IoT Edge dağıtım bildirimi JSON olarak biçimlendirilen oluşturma seçeneklerini kabul eder. Örneğin, her edgeHub modülü için otomatik olarak eklenen oluşturma seçeneklerini alın:
 
 ```json
 "createOptions": {
@@ -50,36 +50,36 @@ IoT Edge dağıtım bildirimi, JSON olarak biçimlendirilmiş oluşturma seçene
 }
 ```
 
-Bu edgeHub örneği, kapsayıcıdaki açıkta kalan bağlantı noktalarını ana aygıttaki bir bağlantı noktasına eşlemek için **HostConfig.PortBindings** parametresini kullanır.
+Bu edgeHub örneği, kapsayıcıda gösterilen bağlantı noktalarını konak cihazdaki bir bağlantı noktasına eşlemek için **Hostconfig. PortBindings** parametresini kullanır.
 
-Visual Studio veya Visual Studio Code için Azure IoT Araçları uzantılarını kullanıyorsanız, oluşturma seçeneklerini **deployment.template.json** dosyasına JSON biçiminde yazabilirsiniz. Ardından, uzantıyı IoT Edge çözümcüllerini oluşturmak veya dağıtım bildirimini oluşturmak için kullandığınızda, JSON'u sizin için IoT Edge çalışma zamanının beklediği biçimde dize eder. Örnek:
+Visual Studio için Azure IoT Araçları uzantıları 'nı veya Visual Studio Code kullanıyorsanız, **dağıtım. Template. JSON** dosyasına oluşturma seçeneklerini JSON biçiminde yazabilirsiniz. Daha sonra, IoT Edge çözümünü derlemek veya dağıtım bildirimini oluşturmak için uzantıyı kullandığınızda, bu, JSON 'u, IoT Edge çalışma zamanının beklediği biçimde, sizin için bir dize olarak oluşturur. Örneğin:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-Oluşturma seçeneklerini yazmak için bir `docker inspect` ipucu komutu kullanmaktır. Geliştirme sürecinizin bir parçası olarak, modülü `docker run <container name>`yerel olarak çalıştırın. Modülü istediğiniz gibi çalıştırdıktan sonra çalıştırın. `docker inspect <container name>` Bu komut, modül ayrıntılarını JSON formatında çıkar. Yapılandırdığınız parametreleri bulun ve JSON'u kopyalayın. Örnek:
+Oluşturma seçeneklerini yazmak için bir ipucu, `docker inspect` komutunu kullanmaktır. Geliştirme işleminizin bir parçası olarak, kullanarak `docker run <container name>`modülü yerel olarak çalıştırın. Modülün istediğiniz şekilde çalışmasını istediğinizde, öğesini çalıştırın `docker inspect <container name>`. Bu komut modül ayrıntılarını JSON biçiminde verir. Yapılandırdığınız parametreleri bulun ve JSON ' ı kopyalayın. Örneğin:
 
-[![Docker incelemesi edgeHub](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) sonuçları](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![Docker Inceleme edgeHub](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) sonuçları](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
-## <a name="common-scenarios"></a>Genel senaryolar
+## <a name="common-scenarios"></a>Yaygın senaryolar
 
-Kapsayıcı oluşturma seçenekleri birçok senaryoya olanak sağlar, ancak IoT Edge çözümleri oluştururken en sık karşılaşılan bazı seçenekler şunlardır:
+Kapsayıcı oluşturma seçenekleri birçok senaryoyu etkinleştirir, ancak IoT Edge çözüm oluştururken en sık kullanılan bazı bazıları aşağıda verilmiştir:
 
-* [Modüllere ana bilgisayar depolamasına erişim verme](how-to-access-host-storage-from-module.md)
-* [Harita ana bağlantı noktası modül bağlantı noktasına](#map-host-port-to-module-port)
-* [Modül belleği ve CPU kullanımını kısıtlama](#restrict-module-memory-and-cpu-usage)
+* [Modüller konak depolamaya erişim izni verme](how-to-access-host-storage-from-module.md)
+* [Ana bilgisayar bağlantı noktasını modül bağlantı noktasına eşle](#map-host-port-to-module-port)
+* [Modül belleğini ve CPU kullanımını kısıtla](#restrict-module-memory-and-cpu-usage)
 
-### <a name="map-host-port-to-module-port"></a>Harita ana bağlantı noktası modül bağlantı noktasına
+### <a name="map-host-port-to-module-port"></a>Ana bilgisayar bağlantı noktasını modül bağlantı noktasına eşle
 
-Modülünüzün IoT Edge çözümü dışındaki bir hizmetle iletişim kurması gerekiyorsa ve bunu yapmak için ileti yönlendirmesi kullanmıyorsa, ana bilgisayar bağlantı noktasını bir modül bağlantı noktasına eşlemeniz gerekir.
+Modülünüzün IoT Edge çözümü dışındaki bir hizmetle iletişim kurması gerekiyorsa ve bunu yapmak için ileti yönlendirmeyi kullanmıyorsanız, bir ana bilgisayar bağlantı noktasını modül bağlantı noktasıyla eşlemeniz gerekir.
 
 >[!TIP]
->Bu bağlantı noktası eşlemesi, aynı aygıtta modülden modüle iletişim için gerekli değildir. A modülü, B modülünde barındırılan bir API'yi sorgulaması gerekiyorsa, bunu herhangi bir bağlantı noktası eşlemesi olmadan yapabilir. B modülü, örneğin, dockerfile bir bağlantı `EXPOSE 8080`noktası ortaya çıkarmak gerekir: . Daha sonra A modülü, örneğin B modülünün adını `http://ModuleB:8080/api`kullanarak API'yi sorgulayabilir: .
+>Aynı cihazdaki modül-modül iletişimi için bu bağlantı noktası eşlemesi gerekli değildir. A modülünün B modülünde barındırılan bir API sorgulaması gerekiyorsa, bağlantı noktası eşleştirmesi olmadan bunu yapabilir. B modülünün dockerfile içinde bir bağlantı noktasını kullanıma sunması gerekir, örneğin: `EXPOSE 8080`. Ardından A modülü, Modül B 'nin adını kullanarak API 'YI sorgulayabilir, örneğin: `http://ModuleB:8080/api`.
 
-İlk olarak, modülün içindeki bir bağlantı noktasının bağlantıları dinlemek için maruz kaldığından emin olun. Bunu dockerfile'deki bir [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) yönergesi kullanarak yapabilirsiniz. Örneğin, `EXPOSE 8080`. Açık pozlama yönergesi belirtilmemişse TCP protokolüne varsayılan olarak veya UDP belirtebilirsiniz.
+İlk olarak, modül içindeki bir bağlantı noktasının bağlantıları dinlemek için açık olduğundan emin olun. Bunu, dockerfile içindeki bir [sergileme](https://docs.docker.com/engine/reference/builder/#expose) yönergesini kullanarak yapabilirsiniz. Örneğin, `EXPOSE 8080`. Gösterme yönergesi varsayılan olarak TCP protokolüne göre belirlenir veya UDP 'yi belirtebilirsiniz.
 
-Ardından, Docker kapsayıcısının **HostConfig** grubunda ki **PortBindings** ayarını kullanarak modüldeki açıkta kalan bağlantı noktasını ana aygıttaki bir bağlantı noktasına eşlemek için [seçenekler oluşturun.](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) Örneğin, modülün içindeki port 8080'i maruz bıraktıysanız ve bunu ana bilgisayar aygıtının 80 no'lu bağlantı noktasıyla eşlemek istiyorsanız, template.json dosyasındaki oluşturma seçenekleri aşağıdaki örnek gibi görünür:
+Ardından, modüldeki açığa çıkarılan bağlantı noktasını konak cihazdaki bir bağlantı noktasıyla eşlemek için [Docker kapsayıcısının](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) **Hostconfig** grubundaki **portbindings** ayarını kullanın. Örneğin, modül içinde 8080 numaralı bağlantı noktasını açığa çıkardıysanız ve bunu konak cihazının 80 numaralı bağlantı noktasıyla eşlemek istiyorsanız, Template. JSON dosyasındaki oluşturma seçenekleri aşağıdaki örnekteki gibi görünür:
 
 ```json
 "createOptions": {
@@ -95,21 +95,21 @@ Ardından, Docker kapsayıcısının **HostConfig** grubunda ki **PortBindings**
 }
 ```
 
-Dağıtım bildirimi için dizelendirildikten sonra, aynı yapılandırma aşağıdaki örnek gibi görünür:
+Dağıtım bildirimi için strıningolduktan sonra, aynı yapılandırma aşağıdaki örneğe benzer şekilde görünür:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8080/tcp\":[{\"HostPort\":\"80\"}]}}}"
 ```
 
-### <a name="restrict-module-memory-and-cpu-usage"></a>Modül belleği ve CPU kullanımını kısıtlama
+### <a name="restrict-module-memory-and-cpu-usage"></a>Modül belleğini ve CPU kullanımını kısıtla
 
-Bir modülün kullanabileceği ana bilgisayar kaynaklarının ne kadarını kullanabileceğini bildirebilirsiniz. Bu denetim, bir modülün çok fazla bellek veya CPU kullanamamasını sağlamak ve diğer işlemlerin aygıtta çalışmasını önlemek için yararlıdır. **HostConfig** grubunda [Docker kapsayıcı oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) yle bu ayarları yönetebilirsiniz:
+Bir modülün ne kadar ana bilgisayar kaynaklarını kullanabileceğinizi bildirebilirsiniz. Bu denetim, bir modülün çok fazla bellek veya CPU kullanımı tüketmemesini sağlamak ve cihazda diğer işlemlerin çalıştırılmasını engellemek için yararlıdır. Bu ayarları, aşağıdaki gibi, **Hostconfig** grubundaki [Docker kapsayıcı oluşturma seçenekleriyle](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) yönetebilirsiniz:
 
-* **Bellek**: Baytlarda bellek sınırı. Örneğin, 268435456 bayt = 256 MB.
-* **MemorySwap**: Toplam bellek sınırı (bellek + takas). Örneğin, 536870912 bayt = 512 MB
-* **CpuPeriod**: Bir CPU döneminin mikrosaniye cinsinden uzunluğu. Varsayılan değer 100000'dir, bu nedenle, örneğin, 25000 değeri bir kapsayıcıyı CPU kaynaklarının %25'i ile sınırlar.
+* **Bellek**: bayt cinsinden bellek sınırı. Örneğin, 268435456 bayt = 256 MB.
+* **Memoryswap**: toplam bellek sınırı (bellek + takas). Örneğin, 536870912 bayt = 512 MB
+* **Cpuperiod**: CPU süresinin mikrosaniye cinsinden uzunluğu. Varsayılan değer 100000 ' dir; Örneğin, 25000 değeri, bir kapsayıcıyı CPU kaynaklarının %25 ' i ile sınırlandırır.
 
-template.json biçiminde, bu değerler aşağıdaki örnek gibi görünür:
+Template. JSON biçiminde, bu değerler aşağıdaki örneğe benzer şekilde görünür:
 
 ```json
 "createOptions": {
@@ -121,7 +121,7 @@ template.json biçiminde, bu değerler aşağıdaki örnek gibi görünür:
 }
 ```
 
-Son dağıtım bildirimi için dizelendirildikten sonra, bu değerler aşağıdaki örnek gibi görünür:
+Son dağıtım bildirimi için, bu değerler aşağıdaki örnekteki gibi görünür:
 
 ```json
 "createOptions":"{\"HostConfig\":{\"Memory\":268435456,\"MemorySwap\":536870912,\"CpuPeriod\":25000}}"
@@ -129,7 +129,7 @@ Son dağıtım bildirimi için dizelendirildikten sonra, bu değerler aşağıda
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İş başındaki oluşturma seçeneklerine daha fazla örnek için aşağıdaki IoT Edge örneklerine bakın:
+Eylemde oluşturma seçenekleri hakkında daha fazla örnek için aşağıdaki IoT Edge örneklere bakın:
 
-* [Ahududu Pi 3'te Özel Görme ve Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
-* [Azure IoT Edge blob depolama örneği](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)
+* [Raspberry Pi 3 üzerinde Özel Görüntü İşleme ve Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
+* [Azure IoT Edge BLOB depolama örneği](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)

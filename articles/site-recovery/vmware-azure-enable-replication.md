@@ -1,149 +1,149 @@
 ---
-title: Azure Site Kurtarma'yı kullanarak olağanüstü durum kurtarma için VMware VM'leri etkinleştirme
-description: Bu makalede, Azure Site Kurtarma hizmetini kullanarak olağanüstü durum kurtarma için VMware VM çoğaltma etkinleştirin nasıl açıklanmaktadır
+title: Azure Site Recovery kullanarak olağanüstü durum kurtarma için VMware VM 'lerini etkinleştirin
+description: Bu makalede, Azure Site Recovery hizmeti kullanılarak olağanüstü durum kurtarma için VMware VM çoğaltmasının nasıl etkinleştirileceği açıklanır.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80584140"
 ---
-# <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware VM'ler için Azure'a çoğaltmayı etkinleştirme
+# <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware VM 'Leri için Azure 'a çoğaltmayı etkinleştirme
 
-Bu makalede, şirket içi VMware sanal makinelerinin (VM) Azure'a çoğaltılmasını nasıl etkinleştireceğimizin açıklanmaktadır.
+Bu makalede, şirket içi VMware sanal makinelerinin (VM) Azure 'a nasıl çoğaltılmasının nasıl etkinleştirileceği açıklanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, sisteminizin aşağıdaki ölçütleri karşıladığını varsayar:
+Bu makalede, sisteminizin aşağıdaki ölçütleri karşıladığı varsayılmaktadır:
 
-- [Şirket içi kaynak ortamınızı ayarlayın.](vmware-azure-set-up-source.md)
-- [Hedef ortamınızı Azure'da ayarlayın.](vmware-azure-set-up-target.md)
-- Başlamadan önce [gereksinimleri ve ön koşulları doğrulayın.](vmware-physical-azure-support-matrix.md) Unutulmaması gereken önemli şeyler şunlardır:
-  - Çoğaltılan makineler için [desteklenen işletim sistemleri.](vmware-physical-azure-support-matrix.md#replicated-machines)
+- Şirket [içi kaynak ortamınızı ayarlayın](vmware-azure-set-up-source.md).
+- [Azure 'da hedef ortamınızı ayarlayın](vmware-azure-set-up-target.md).
+- Başlamadan önce [gereksinimleri ve önkoşulları doğrulayın](vmware-physical-azure-support-matrix.md) . Dikkat etmeniz gereken önemli noktalar:
+  - Çoğaltılan makineler için [desteklenen işletim sistemleri](vmware-physical-azure-support-matrix.md#replicated-machines) .
   - [Depolama/disk](vmware-physical-azure-support-matrix.md#storage) desteği.
-  - Şirket içi makinelerin uyması gereken [Azure gereksinimleri.](vmware-physical-azure-support-matrix.md#azure-vm-requirements)
+  - Şirket içi makinelerin uyması gereken [Azure gereksinimleri](vmware-physical-azure-support-matrix.md#azure-vm-requirements) .
 
-### <a name="resolve-common-issues"></a>Sık karşılaşılan sorunları çözümle
+### <a name="resolve-common-issues"></a>Yaygın sorunları çözme
 
-- Her disk 4 TB'den daha küçük olmalıdır.
-- İşletim sistemi diski dinamik bir disk değil, temel bir disk olmalıdır.
-- Nesil 2 UEFI özellikli sanal makineler için işletim sistemi ailesi Windows olmalı ve önyükleme diski 300 GB'tan küçük olmalıdır.
+- Her disk 4 TB 'tan küçük olmalıdır.
+- İşletim sistemi diski, dinamik disk değil, temel bir disk olmalıdır.
+- 2. nesil UEFı özellikli sanal makinelerde, işletim sistemi ailesi Windows olmalıdır ve önyükleme diski 300 GB 'tan küçük olmalıdır.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-VMware sanal makinelerini çoğaltırken, şu bilgileri aklınızda bulundurun:
+VMware sanal makinelerini çoğalttığınızda, bu bilgileri göz önünde bulundurun:
 
-- Azure kullanıcı hesabınızın, yeni bir sanal makinenin Azure'da çoğaltılmasını etkinleştirmek için belirli [izinlere](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) sahip olması gerekir.
-- VMware VM'ler her 15 dakikada bir keşfedilir. VM'lerin keşiften sonra Azure portalında görünmesi 15 dakika veya daha uzun sürebilir. Yeni bir vCenter sunucusu veya vSphere ana bilgisayar eklediğinizde, keşif 15 dakika veya daha uzun sürebilir.
-- Sanal makinedeki ortam değişikliklerinin portalda güncellenmesi 15 dakika veya daha uzun sürebilir. Örneğin, VMware araçları yükleme.
-- VMware VM'ler için son keşfedilen zamanı kontrol edebilirsiniz: VCenter sunucusu/vSphere ana bilgisayarı için **Configuration Servers** sayfasındaki **Son Kişi** At alanına bakın.
-- Zamanlanan keşfi beklemeden çoğaltma için sanal makineler eklemek için yapılandırma sunucusunu vurgulayın (ancak tıklatmayın) ve **Yenile'yi**seçin.
-- Çoğaltmayı etkinleştirdiğinizde, sanal makine hazırlanırsa, işlem sunucusu Azure Site Kurtarma Mobilite hizmetini vm'ye otomatik olarak yükler.
+- Azure Kullanıcı hesabınızın yeni bir sanal makinenin Azure 'a çoğaltılmasını sağlamak için belirli [izinlere](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) sahip olması gerekir.
+- VMware VM 'Leri 15 dakikada bir bulunur. VM 'Lerin bulmadan sonra Azure portal görünmesi 15 dakika veya daha fazla sürebilir. Yeni bir vCenter sunucusu veya vSphere Konağı eklediğinizde, bulma işlemi 15 dakika veya daha fazla sürebilir.
+- Sanal makinede bulunan ortam değişikliklerinin portalda güncelleştirilmesini 15 dakika veya daha fazla sürebilir. Örneğin, VMware araçları yüklemesi.
+- VMware VM 'Leri için en son bulunan saati denetleyebilirsiniz: vCenter Server/vSphere konağının **yapılandırma sunucuları** sayfasında **yer alan son iletişim** bölümüne bakın.
+- Zamanlanan bulmayı beklemeden sanal makineleri çoğaltmaya eklemek için yapılandırma sunucusunu vurgulayın (ancak tıklamayın) ve **Yenile**' yi seçin.
+- Çoğaltmayı etkinleştirdiğinizde, sanal makine hazırlanmışsa, işlem sunucusu Azure Site Recovery Mobility hizmetini otomatik olarak VM 'ye yüklenir.
 
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 
-Bu bölümdeki adımları yapmadan önce aşağıdaki bilgileri gözden geçirin:
+Bu bölümdeki adımları uygulamadan önce, aşağıdaki bilgileri gözden geçirin:
 
-- Azure Site Kurtarma artık tüm yeni çoğaltmalar için yönetilen disklere doğrudan çoğaltır. İşlem sunucusu, çoğaltma günlüklerini hedef bölgedeki bir önbellek depolama hesabına yazar. Bu günlükler, `asrseeddisk`'' adlandırma kuralına sahip yineleme yönetilen disklerde kurtarma noktaları oluşturmak için kullanılır.
-- [Az.RecoveryServices modül sürüm 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) ile başlayan yönetilen disklere çoğaltma için PowerShell desteği kullanılabilir
-- Başarısız olduğu sırada, seçtiğiniz kurtarma noktası hedef yönetilen diski oluşturmak için kullanılır.
-- Daha önce hedef depolama hesaplarına çoğaltmak üzere yapılandırılan VM'ler etkilenmez.
-- Yeni bir sanal makine için depolama hesaplarına çoğaltma yalnızca Temsili Durum Aktarımı (REST) API ve PowerShell üzerinden kullanılabilir. Depolama hesaplarına çoğaltma kullanabilirsiniz Azure REST API sürümünü 2016-08-10 veya 2018-01-10'u kullanın.
+- Azure Site Recovery artık tüm yeni çoğaltmalar için yönetilen disklere doğrudan çoğaltılır. İşlem sunucusu, çoğaltma günlüklerini hedef bölgedeki bir önbellek depolama hesabına yazar. Bu Günlükler, adlandırma kuralına sahip olan çoğaltma tarafından yönetilen disklerde kurtarma noktaları oluşturmak için kullanılır `asrseeddisk`.
+- Yönetilen disklere çoğaltma için PowerShell desteği [az. RecoveryServices Modül sürümü 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) ile başlayarak kullanılabilir
+- Yük devretme sırasında, seçtiğiniz kurtarma noktası, hedef tarafından yönetilen diski oluşturmak için kullanılır.
+- Daha önce hedef depolama hesaplarına çoğaltılmak üzere yapılandırılmış VM 'Ler etkilenmez.
+- Yeni bir sanal makine için depolama hesaplarına çoğaltma yalnızca bir temsili durum aktarımı (REST) API 'SI ve PowerShell ile kullanılabilir. Depolama hesaplarına çoğaltma için Azure REST API 2016-08-10 veya 2018-01-10 sürümünü kullanın.
 
-Çoğaltmayı etkinleştirmek için aşağıdaki adımları izleyin:
+Çoğaltmayı etkinleştirmek için şu adımları izleyin:
 
-1. Adım **2'ye git: Uygulama** > **Kaynağını**çoğaltma. Çoğaltmayı ilk kez etkinleştirdikten sonra, ek sanal makineler için çoğaltmayı etkinleştirmek için kasada **+Çoğaltma'yı** seçin.
-1. **Kaynak** > **Kaynak**sayfasında yapılandırma sunucusunu seçin.
-1. **Makine türü için**Sanal Makineler veya Fiziksel **Makineler'i** seçin. **Physical Machines**
-1. **vCenter/vSphere Hypervisor** bölümünde vSphere konağını yöneten vCenter sunucusunu veya konağı seçin. Fiziksel bilgisayarları çoğaltırsanız bu ayar önemli değildir.
-1. İşlem sunucusunu seçin. Oluşturulan ek işlem sunucuları yoksa, yapılandırma sunucusunun dahili işlem sunucusu açılır menüde kullanılabilir. Her işlem sunucusunun sistem durumu, önerilen sınırlar ve diğer parametrelere göre gösterilir. Sağlıklı bir işlem sunucusu seçin. [Kritik](vmware-physical-azure-monitor-process-server.md#process-server-alerts) bir işlem sunucusu seçilemiyor. Hataları [giderebilir ve çözebilir](vmware-physical-azure-troubleshoot-process-server.md) **veya** [bir ölçeklendirme işlem sunucusu ayarlayabilirsiniz.](vmware-azure-set-up-process-server-scale.md)
+1. 2. **Adım: uygulama** > **kaynağını**Çoğalt ' a gidin. Çoğaltmayı ilk kez etkinleştirdikten sonra ek sanal makineler için çoğaltmayı etkinleştirmek üzere kasada **+ Çoğalt** ' ı seçin.
+1. **Kaynak** sayfada > **kaynak**bölümünde yapılandırma sunucusunu seçin.
+1. **Makine türü**Için **sanal makineler** veya **fiziksel makineler**' i seçin.
+1. **vCenter/vSphere Hypervisor** bölümünde vSphere konağını yöneten vCenter sunucusunu veya konağı seçin. Fiziksel bilgisayarları çoğaltdıysanız Bu ayar ilgili değildir.
+1. İşlem sunucusunu seçin. Başka bir işlem sunucusu oluşturulmadıysa, yapılandırma sunucusunun yerleşik işlem sunucusu açılan menüde kullanılabilir olacaktır. Her işlem sunucusunun sistem durumu, önerilen sınırlara ve diğer parametrelere göre belirtilir. Sağlıklı bir işlem sunucusu seçin. [Kritik](vmware-physical-azure-monitor-process-server.md#process-server-alerts) bir işlem sunucusu seçilemez. Hataları [giderebilir ve çözümleyebilir](vmware-physical-azure-troubleshoot-process-server.md) **ya** da bir [genişleme işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlayabilirsiniz.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/ps-selection.png" alt-text="Çoğaltma kaynak penceresini etkinleştirme":::
-
-   > [!NOTE]
-   > Sürüm [9.24](site-recovery-whats-new.md)ile başlayarak, işlem sunucusunun sistem durumu uyarılarını geliştirmek için ek uyarılar getirilir. Oluşturulacak tüm uyarılar için Site Kurtarma bileşenlerini 9.24 veya üzeri sürümlere yükseltin.
-
-1. **Hedef**için, sanal makineler üzerinde başarısız oluşturmak istediğiniz abonelik ve kaynak grubunu seçin. Azure'da kullanmak istediğiniz dağıtım modelini, VM'ler üzerinde başarısız olması için seçin.
-1. Azure VM'lerinin başarısız olduktan sonra bağlanacak azure ağını ve alt ağını seçin. Ağ, Site Kurtarma hizmet kasası ile aynı bölgede olmalıdır.
-
-   Ağ ayarını koruma için seçtiğiniz tüm sanal makinelere uygulamak **için seçili makineler için şimdi Yapılandır'ı** seçin. Sanal makine başına Azure ağını seçmek için **daha sonra Yapılandır'ı** seçin. Ağınız yoksa, bir ağ oluşturmanız gerekir. Azure Kaynak Yöneticisi'ni kullanarak ağ oluşturmak için **yeni oluştur'u**seçin. Varsa bir alt ağ seçin ve ardından **Tamam'ı**seçin.
-
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Çoğaltma hedef penceresini etkinleştirme":::
-
-1. **Sanal makineler** > için**sanal makineleri seçin,** çoğaltmak istediğiniz her sanal makineyi seçin. Yalnızca çoğaltmanın etkinleştirilebileceği sanal makineleri seçebilirsiniz. Sonra **Tamam**’ı seçin. Belirli bir sanal makineyi göremiyor veya seçmiyorsanız, sorunu gidermek için [Kaynak makinenin Azure portalında listelenmediğini](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) görün.
-
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Çoğaltmayı etkinleştirsanal makineler penceresini seçin":::
-
-1. **Özellikleri** > **Yapılandırma özellikleri**için, işlem sunucusunun VM'ye Site Kurtarma Mobilite hizmetini otomatik olarak yüklemek için kullandığı hesabı seçin. Ayrıca, veri karmaşası desenlerinizi temel alan çoğaltma için kullanılacak hedef yönetilen disk türünü seçin.
-1. Varsayılan olarak, bir kaynak VM'nin tüm diskleri çoğaltılır. Diskleri çoğaltmadışında tutmak için çoğaltmak istemediğiniz diskler için **Ekle** onay kutusunu temizleyin. Sonra **Tamam**’ı seçin. Daha sonra ek özellikleri ayarlayabilirsiniz. Diskleri hariç tlandırma hakkında [daha fazla bilgi edinin.](vmware-azure-exclude-disk.md)
-
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Çoğaltma yapılandırma özellikleri penceresini etkinleştirme":::
-
-1. **Çoğaltma ayarlarından** > **çoğaltma ayarlarını yapılandırın,** doğru çoğaltma ilkesinin seçildiğini doğrulayın. **Çoğaltma** > ilkesi ayarlarını Ayarlar**Çoğaltma ilkeleri** > _ilkesi adı_ > **Edit Ayarları'nda**değiştirebilirsiniz. İlke için uygulanan değişiklikler çoğaltma ve yeni sanal makineler için de geçerlidir.
-1. Sanal makineleri bir çoğaltma grubuna toplamak istiyorsanız, **Multi-VM tutarlılığını**etkinleştirin. Grup için bir ad belirtin ve ardından **Tamam'ı**seçin.
+   :::image type="content" source="./media/vmware-azure-enable-replication/ps-selection.png" alt-text="Çoğaltma kaynağı penceresini etkinleştir":::
 
    > [!NOTE]
-   > - Çoğaltma grubundaki sanal makineler birlikte çoğalır ve başarısız olduklarında kilitlenme tutarlısı ve uygulama tutarlı kurtarma noktalarını paylaştılar.
-   > - İş yüklerinizi yansıtmaları için VM'leri ve fiziksel sunucuları bir araya getirin. Çoklu VM tutarlılığını etkinleştirmek iş yükü performansını etkileyebilir. Bunu yalnızca sanal makineler aynı iş yükünü çalıştırıyorsa ve tutarlılığa ihtiyacınız varsa yapın.
+   > [Sürüm 9,24](site-recovery-whats-new.md)' den başlayarak, işlem sunucusunun sistem durumu uyarılarını iyileştirmek için ek uyarılar sunulmuştur. Tüm uyarıların üretilmesi için Site Recovery bileşenlerini 9,24 veya üzeri sürüme yükseltin.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Çoğaltma penceresini etkinleştirme":::
+1. **Hedef**için, yük devredilen sanal makineleri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Yük devredilen VM 'Ler için Azure 'da kullanmak istediğiniz dağıtım modelini seçin.
+1. Yük devretmeden sonra Azure VM 'lerinin bağlanacağı Azure ağını ve alt ağını seçin. Ağın Site Recovery hizmet kasası ile aynı bölgede olması gerekir.
 
-1. **Çoğaltmayı Etkinleştir'i**seçin.  >  **Ayarlar** > **İşleri****Sitesi Kurtarma İşlerinden** **Koruma Yı etkinleştir** işinin ilerlemesini izleyebilirsiniz. **Finalize Protection** işi çalıştırdıktan sonra, sanal makine başarısız olmaya hazırdır.
+   Koruma için seçtiğiniz tüm sanal makinelere ağ ayarını uygulamak için **Seçili makineler için Şimdi Yapılandır** ' ı seçin. Sanal makine başına Azure ağı seçmek için **daha sonra Yapılandır** ' ı seçin. Ağınız yoksa bir tane oluşturmanız gerekir. Azure Resource Manager kullanarak bir ağ oluşturmak için **Yeni oluştur**' u seçin. Uygulanabiliyorsa bir alt ağ seçin ve ardından **Tamam**' ı seçin.
+
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Çoğaltma hedefi penceresini etkinleştir":::
+
+1.  > Sanal **makineler için****sanal makineler**' i seçin, çoğaltmak istediğiniz her bir sanal makineyi seçin. Yalnızca çoğaltmanın etkinleştiribileceği sanal makineleri seçebilirsiniz. Sonra **Tamam**’ı seçin. Belirli bir sanal makineyi göremiyorsanız veya seçmezseniz, bu sorunu çözmek için [Azure Portal kaynak makine listede listelenmiyor](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) bölümüne bakın.
+
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Çoğaltmayı etkinleştir sanal makineler penceresi seçin":::
+
+1.  > Özellikler**yapılandırma özellikleri**için, işlem sunucusunun VM 'ye Site Recovery Mobility hizmetini otomatik olarak yüklemek için kullandığı hesabı seçin. **Properties** Ayrıca, veri dalgalanma desenlerinize göre çoğaltma için kullanılacak hedef yönetilen disk türünü seçin.
+1. Varsayılan olarak, bir kaynak VM 'nin tüm diskleri çoğaltılır. Diskleri çoğaltmanın dışında tutmak için, çoğaltmak istemediğiniz disklerin **dahil** etme onay kutusunu temizleyin. Sonra **Tamam**’ı seçin. Daha sonra ek özellikleri ayarlayabilirsiniz. Diskleri dışarıda bırakma hakkında [daha fazla bilgi edinin](vmware-azure-exclude-disk.md) .
+
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Çoğaltmayı etkinleştir özellikleri yapılandırma penceresi":::
+
+1. Çoğaltma **ayarları** > **çoğaltma ayarlarını yapılandır**' dan doğru çoğaltma ilkesinin seçildiğini doğrulayın. **Ayarlar** > **çoğaltma ilkeleri** > _ilke adı_ > **düzenleme ayarları**' nın çoğaltma ilkesi ayarlarını değiştirebilirsiniz. Bir ilkeye uygulanan değişiklikler, çoğaltma ve yeni sanal makineler için de geçerlidir.
+1. Sanal makineleri bir çoğaltma grubuna toplamak istiyorsanız **Çoklu VM tutarlılığını**etkinleştirin. Grup için bir ad belirtin ve ardından **Tamam**' ı seçin.
+
+   > [!NOTE]
+   > - Bir çoğaltma grubundaki sanal makineler birlikte çoğaltılır ve yük devreder, kilitlenmeyle tutarlı ve uygulamayla tutarlı kurtarma noktalarına sahip olur.
+   > - VM 'Leri ve fiziksel sunucuları birlikte iş yüklerinizi yansıtacak şekilde toplayın. Çoklu VM tutarlılığını etkinleştirmek, iş yükü performansını etkileyebilir. Bunu yalnızca sanal makineler aynı iş yükünü çalıştırıyorsa ve tutarlılığa ihtiyaç duyuyorsanız yapın.
+
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Çoğaltma penceresini etkinleştir":::
+
+1. **Çoğaltmayı etkinleştir**' i seçin. **Koruma** işinin ilerleme durumunu **Ayarlar** > **işleri** > **Site Recovery işler**' de izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştıktan sonra, sanal makine yük devretmeye hazırsa.
 
 ## <a name="view-and-manage-vm-properties"></a>VM özelliklerini görüntüleme ve yönetme
 
-Ardından, kaynak sanal makinenin özelliklerini doğrulayın. Azure VM adının Azure sanal [makine gereksinimlerine](vmware-physical-azure-support-matrix.md#replicated-machines)uyması gerektiğini unutmayın.
+Ardından, kaynak sanal makinenin özelliklerini doğrulayın. Azure VM adının [Azure sanal makine gereksinimleriyle](vmware-physical-azure-support-matrix.md#replicated-machines)uyumlu olması gerektiğini unutmayın.
 
-1. Yinelenen **Ayarlar** > **öğelerine**gidin ve ardından sanal makineyi seçin. **Essentials** sayfası VM'nin ayarları ve durumu hakkında bilgi gösterir.
-1. **Özellikler'de,** VM için çoğaltma ve başarısız bilgileri görüntüleyebilirsiniz.
-1. **İşlem ve Ağ** > **İşlem özelliklerinde,** birden çok VM özelliğini değiştirebilirsiniz.
+1. **Ayarlar** > **çoğaltılan öğeler**' e gidin ve ardından sanal makineyi seçin. **Essentials** SAYFASıNDA, sanal makinenin ayarları ve durumuyla ilgili bilgiler gösterilir.
+1. **Özellikler**' de VM için çoğaltma ve yük devretme bilgilerini görüntüleyebilirsiniz.
+1. **İşlem ve ağ** > **işlem özellikleri**' nde, birden çok VM özelliğini değiştirebilirsiniz.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="İşlem ve ağ özellikleri penceresi":::
 
-   - **Azure VM adı**: Gerekirse Azure gereksinimlerini karşılayacak şekilde adı değiştirin.
-   - **Hedef VM boyutu veya VM türü**: Varsayılan VM boyutu, hedef Azure bölgesinde disk sayısı, NIC sayısı, CPU çekirdek sayısı, bellek ve kullanılabilir VM rol boyutlarını içeren parametrelere göre seçilir. Azure Site Kurtarma, tüm ölçütleri karşılayan kullanılabilir ilk VM boyutunu seçer. Başarısız olmadan önce istediğiniz zaman ihtiyaçlarınıza göre farklı bir VM boyutu seçebilirsiniz. VM disk boyutu da kaynak disk boyutuna bağlıdır ve yalnızca başarısız olduktan sonra değiştirilebilir. [Windows'daki VM diskler için Ölçeklenebilirlik ve performans hedeflerinde](/azure/virtual-machines/windows/disk-scalability-targets)disk boyutları ve IOPS oranları hakkında daha fazla bilgi edinin.
-   - **Kaynak grubu**: Sanal bir makinenin bir gönderi failover'ın parçası haline geldiği bir [kaynak grubu](/azure/azure-resource-manager/management/overview#resource-groups)seçebilirsiniz. Bu ayarı, başarısız olmadan önce istediğiniz zaman değiştirebilirsiniz. Başarısız olduktan sonra, sanal makineyi farklı bir kaynak grubuna geçirin, bu sanal makinenin koruma ayarları kırılır.
-   - **Kullanılabilirlik kümesi**: Sanal makinenizin bir gönderi başarısızlığı nın bir parçası olması gerekiyorsa bir [kullanılabilirlik kümesi](/azure/virtual-machines/windows/tutorial-availability-sets) seçebilirsiniz. Bir kullanılabilirlik kümesi seçtiğinizde, aşağıdaki bilgileri aklınızda bulundurun:
+   - **Azure VM adı**: gerekirse, Azure gereksinimlerine uyacak şekilde adı değiştirin.
+   - **Hedef VM boyutu veya VM türü**: varsayılan VM boyutu, hedef Azure bölgesindeki disk sayısı, NIC sayısı, CPU çekirdek sayısı, bellek ve kullanılabilir VM rolü boyutlarını içeren parametrelere göre seçilir. Azure Site Recovery tüm ölçütleri karşılayan kullanılabilir ilk VM boyutunu seçer. Yük devretmeden önce istediğiniz zaman, gereksinimlerinize göre farklı bir VM boyutu seçebilirsiniz. VM disk boyutu da kaynak disk boyutuna dayalıdır ve yalnızca yük devretme işleminden sonra değiştirilebilir. [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedeflerinde](/azure/virtual-machines/windows/disk-scalability-targets)disk BOYUTLARı ve IOPS ücretleri hakkında daha fazla bilgi edinin.
+   - **Kaynak grubu**: bir sanal makinenin yük devretmenin bir parçası haline geldiği bir [kaynak grubu](/azure/azure-resource-manager/management/overview#resource-groups)seçebilirsiniz. Bu ayarı, yük devretmeden önce istediğiniz zaman değiştirebilirsiniz. Yük devretmeden sonra, sanal makineyi farklı bir kaynak grubuna geçirirseniz bu sanal makine için koruma ayarları kesilir.
+   - **Kullanılabilirlik kümesi**: sanal makinenizin yük devretmenin bir parçası olması gerekiyorsa bir [kullanılabilirlik kümesi](/azure/virtual-machines/windows/tutorial-availability-sets) seçebilirsiniz. Bir kullanılabilirlik kümesi seçtiğinizde, aşağıdaki bilgileri aklınızda bulundurun:
      - Yalnızca belirtilen kaynak grubuna ait kullanılabilirlik kümeleri listelenir.
-     - Farklı sanal ağlarda olan VM'ler aynı kullanılabilirlik kümesinin bir parçası olamaz.
-     - Yalnızca aynı boyuttaki sanal makineler kullanılabilirlik kümesinin bir parçası olabilir.
+     - Farklı sanal ağlardaki VM 'Ler aynı Kullanılabilirlik kümesinin parçası olamaz.
+     - Yalnızca aynı boyuttaki sanal makineler bir kullanılabilirlik kümesinin parçası olabilir.
 
-1. Ayrıca, Azure VM'ye atanan hedef ağ, alt ağ ve IP adresi hakkında da bilgi ekleyebilirsiniz.
-1. **Disklerde,** VM'de çoğaltılacak işletim sistemini ve veri disklerini görebilirsiniz.
+1. Hedef ağ, alt ağ ve Azure VM 'sine atanan IP adresi hakkında bilgi de ekleyebilirsiniz.
+1. **Diskler**' de, çoğaltılacak sanal makinede işletim sistemi ve veri disklerini görebilirsiniz.
 
 ### <a name="configure-networks-and-ip-addresses"></a>Ağları ve IP adreslerini yapılandırma
 
 Hedef IP adresini ayarlayabilirsiniz:
 
-- Bir adres sağlamazsanız, VM üzerinde başarısız DHCP kullanır.
-- Başarısız bir adreste kullanılamayan bir adres ayarlarsanız, başarısız lık işe yaramaz.
-- Adres test başarısız ağında varsa, test başarısız için aynı hedef IP adresini kullanabilirsiniz.
+- Bir adres sağlamazsanız, yük devredilen VM DHCP kullanır.
+- Yük devretmede kullanılamayan bir adres ayarlarsanız, yük devretme çalışmaz.
+- Adres, yük devretme testi ağında kullanılabiliyorsa, yük devretme testi için aynı hedef IP adresini kullanabilirsiniz.
 
-Ağ bağdaştırıcılarının sayısı, hedef sanal makine için belirttiğiniz boyuta göre aşağıdaki gibi belirlenir:
+Ağ bağdaştırıcılarının sayısı, hedef sanal makine için belirttiğiniz boyuta göre dikte edilir ve aşağıdaki gibi:
 
-- Kaynak sanal makinedeki ağ bağdaştırıcılarının sayısı hedef VM boyutu için izin verilen bağdaştırıcı sayısından daha az veya eşitse, hedef kaynakla aynı sayıda bağdaştırıcıya sahiptir.
-- Kaynak sanal makineiçin bağdaştırıcı sayısı hedef VM boyutu için izin verilen sayıyı aşıyorsa, hedef boyutu maksimum kullanılır. Örneğin, bir kaynak sanal makinenin iki ağ bağdaştırıcısı varsa ve hedef VM boyutu dört ünü destekliyorsa, hedef sanal makinenin iki bağdaştırıcısı vardır. Kaynak VM'de iki bağdaştırıcı varsa ancak hedef boyutu yalnızca birini destekliyorsa, hedef VM'de yalnızca bir bağdaştırıcı vardır.
-- Sanal makinede birden çok ağ bağdaştırıcısı varsa, hepsi aynı ağa bağlanır. Ayrıca, listede gösterilen ilk bağdaştırıcı, Azure sanal makinesindeki varsayılan ağ bağdaştırıcısı olur.
+- Kaynak sanal makinedeki ağ bağdaştırıcılarının sayısı, hedef VM 'nin boyutu için izin verilen bağdaştırıcıların sayısından küçük veya bu sayıya eşitse, hedef, kaynak ile aynı sayıda bağdaştırıcıya sahiptir.
+- Kaynak sanal makinenin bağdaştırıcı sayısı hedef VM 'nin boyutu için izin verilen sayıyı aşarsa, en fazla hedef boyutu kullanılır. Örneğin, bir kaynak sanal makinede iki ağ bağdaştırıcısı varsa ve hedef VM boyutu dördü destekliyorsa, hedef sanal makinenin iki bağdaştırıcısı vardır. Kaynak VM 'nin iki bağdaştırıcısı varsa ancak hedef boyutu yalnızca birini destekliyorsa, hedef VM 'nin yalnızca bir bağdaştırıcısı vardır.
+- Sanal makinenin birden çok ağ bağdaştırıcısı varsa, hepsi aynı ağa bağlanır. Ayrıca, listede gösterilen ilk bağdaştırıcı, Azure sanal makinesinde varsayılan ağ bağdaştırıcısı olur.
 
 ### <a name="azure-hybrid-benefit"></a>Azure Hibrit Avantajı
 
-Microsoft Yazılım Güvencesi müşterileri, Azure'a geçirilen Windows Server bilgisayarlarının lisans maliyetlerinden tasarruf etmek için Azure Karma Avantajı'nı kullanabilir. Bu avantaj, Azure olağanüstü durum kurtarma için de geçerlidir. Uygunsanız, bir hata olduğunda Site Kurtarma'nın oluşturduğu sanal makineye avantaj atayabilirsiniz.
+Microsoft yazılım güvencesi müşterileri, Azure 'a geçirilen Windows Server bilgisayarları için lisanslama maliyetlerinden tasarruf etmek üzere Azure Hibrit Avantajı kullanabilir. Bu avantaj Ayrıca Azure olağanüstü durum kurtarma için de geçerlidir. Uygunsanız, bir yük devretme işlemi varsa Site Recovery oluşturduğu sanal makineye avantajınızı atayabilirsiniz.
 
-1. Çoğaltılan sanal makinenin **Bilgisayar ve Ağ özelliklerine** gidin.
-1. Azure Karma Avantajı için uygun hale getiren bir Windows Server lisansına sahip olup olmadığınız sorulduğunda yanıt verin.
-1. Yazılım Güvencesi ile uygun bir Windows Server lisansına sahip olduğunuzu ve bu avantajı başarısız bir şekilde oluşturulacak VM'ye uygulamak için kullanabileceğinizi doğrulayın.
-1. Yinelenen sanal makine için ayarları kaydedin.
+1. Çoğaltılan sanal makinenin **bilgisayar ve ağ özelliklerine** gidin.
+1. Azure Hibrit Avantajı uygun hale getirmenizi sağlayan bir Windows Server lisansınız olup olmadığı sorulduğunda yanıtlayın.
+1. Yük devretmede oluşturulacak VM 'nin avantajını uygulamak için kullanabileceğiniz, Yazılım Güvencesi kapsamındaki uygun bir Windows Server lisansınızın olduğunu doğrulayın.
+1. Çoğaltılan sanal makinenin ayarlarını kaydedin.
 
-Azure Karma Avantajı hakkında [daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/hybrid-benefit/)
+Azure Hibrit Avantajı hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/hybrid-benefit/) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal makine korumalı bir duruma ulaştıktan sonra, uygulamanızın Azure'da görünüp görünmediğini kontrol etmek için bir [başarısızlık](site-recovery-failover.md) deneyin.
+Sanal makine korumalı duruma ulaştıktan sonra uygulamanızın Azure 'da görünüp görüntülenmediğini denetlemek için bir [Yük devretme](site-recovery-failover.md) işlemi deneyin.
 
-- Çoğaltmayı devre dışı kıvmak için kayıt ve koruma ayarlarını nasıl temizleyebileceğihakkında [daha fazla bilgi edinin.](site-recovery-manage-registration-and-protection.md)
-- PowerShell'i kullanarak sanal makinelerinizin çoğaltmasını otomatikleştirme hakkında [daha fazla bilgi edinin.](vmware-azure-disaster-recovery-powershell.md)
+- Çoğaltmayı devre dışı bırakmak için kayıt ve koruma ayarlarını temizleme hakkında [daha fazla bilgi edinin](site-recovery-manage-registration-and-protection.md) .
+- PowerShell kullanarak sanal makineleriniz için çoğaltmayı otomatikleştirme hakkında [daha fazla bilgi edinin](vmware-azure-disaster-recovery-powershell.md) .

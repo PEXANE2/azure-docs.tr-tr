@@ -1,6 +1,6 @@
 ---
-title: Güvenlik Etkinliği Destek Bileti Nasıl Giriş Ilir - Azure | Microsoft Dokümanlar
-description: Azure Marketi'nde bir satıcı olarak, olası bir güvenlik olayını belirledikten sonra, uygun bir bileti nasıl günlüğe kaydedeceğimi bilmem gerekir.
+title: Güvenlik olayı destek bileti günlüğe kaydetme-Azure | Microsoft Docs
+description: Azure Marketi 'nde bir satıcı olarak, olası bir güvenlik olayı tanımladım, uygun bir anahtarın nasıl günlüğe alınacağını bilmem gerekiyor.
 documentationcenter: na
 author: DavidBosland
 manager: lakoch
@@ -15,36 +15,36 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548600"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Güvenlik Olayı Destek Biletini Günlüğe Kaydetme
 
-1. Publisher [Desteği'ne](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) gidin ve Microsoft kimlik bilgilerinizle oturum açın.
-2. Sorun Türü olarak "Güvenlik Olayı"nı seçin ve "Güvenlik Olayı" ve "Güvenlik Açığı" kategorileri arasında seçim yapın.
+1. [Yayımcı desteği](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) ' ne gidin ve Microsoft kimlik bilgilerinizle oturum açın.
+2. Sorun türü olarak "güvenlik olayı" nı seçin ve "güvenlik olayı" ve "güvenlik açığı" kategorileri arasında seçim yapın.
 
-    ![Olay türü ve Tanımı](./media/event-support-ticket/chart.png)
+    ![Olay türü ve tanımı](./media/event-support-ticket/chart.png)
 
-3. Sorun Türü ve Kategorisi'ni seçtikten sonra '**İstek'i başlat**' düğmesini tıklatın. Sorunu daha iyi anlamamıza yardımcı olmak için aşağıdaki bilgileri sağlayın.
+3. Sorun türünü ve kategorisini seçtikten sonra, '**Isteği Başlat**' düğmesine tıklayın. Sorunu daha iyi anlamamıza yardımcı olması için aşağıdaki bilgileri sağlayın.
 
     i. Sorun ve/veya güvenlik açığı nedir?
 
-    ii. Güvenlik açıkları için lütfen CVE (mitre.org) veya doldurulmuş CVSS3https://www.first.org/cvss/calculator/3.0)v3 hesap makinesini (.
+    ii. Güvenlik açıkları için lütfen CVE (mitre.org) veya doldurulmuş CVSS3 v3 Hesaplayıcı (https://www.first.org/cvss/calculator/3.0).
 
-    iii. Bir çözüm veya azaltma var mı? Evet ise, lütfen düzeltme adımlarını sağlayın.
+    iii. Bir çözüm veya azaltma var mı? Yanıt Evet ise lütfen düzeltme adımlarını belirtin.
 
-    ıv. Müşterilere göndermek istediğiniz bir iletiniz var mı? Mümkünse uygun bir mesaj vermek için sizinle birlikte çalışacağız.
+    IV. Müşterilere göndermek istediğiniz bir iletiniz var mı? Uygunsa uygun bir ileti oluşturacak şekilde sizinle çalışacağız.
 
-4. Gönderim onayı - Sorununuzu gönderdikten sonra, bir iş günü içinde makbuzu kabul edecek ve sorunuza bir öncelik ve önem atayacaktır.
+4. Gönderim onayı-sorununuzu gönderdikten sonra bir iş günü içinde alındısı kabul edeceğiz ve sorunu bir öncelik ve önem derecesi olarak atayacağız.
 
-    - Sorununuzun bizimle iletişime olması gerekiyorsa, tüm yazışmalarda onay numarasını kullanın.
-    - Sorununuzla ilgili ilerlemeyi istediğiniz zaman görüntüleyebilirsiniz.
+    - Sorununuz hakkında bizimle iletişim kurması gerekiyorsa, tüm yazışmalarda onay numarasını kullanın.
+    - Sorununuzu dilediğiniz zaman görebilirsiniz.
 
-5. Sonra ne olacak? Soruna ve önem derecesine bağlı olarak aşağıdaki adımlar atılabilir:
+5. Sonra ne olur? Soruna ve önem derecesine bağlı olarak, aşağıdaki adımlar uygulanabilir:
 
-    - Değerlendirmemizin sonucunu size ileteceğiz. Sonuca bağlı olarak, teklifinizi kaldırmanızı veya değiştirmenizi isteyebiliriz. Bu durumda, etkilenen müşterilere zarar vermenin en aza indirilmesini sağlamak için sizinle birlikte çalışacağız.
-    - Ortak müşterilerimiz için olayın/güvenlik açığının etkisini azaltmaya yardımcı olmak için sizinle birlikte çalışacağız.
+    - Değerlendirmem sonucunu size ileteceğiz. Sonuca bağlı olarak, teklifinizi değiştirmenize veya sizin için değişiklik yapma isteyebiliriz. Bu durumda, etkilenen müşterilerin kesintiye uğramasını önlemek için sizinle birlikte çalışacağız.
+    - Karşılıklı müşterilerimiz için olay/güvenlik açığının etkisini azaltmaya yardımcı olmak üzere sizinle çalışacağız.
 

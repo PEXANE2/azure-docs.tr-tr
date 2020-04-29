@@ -1,6 +1,6 @@
 ---
-title: Bir Düğüm.js Mongoose uygulamasını Azure Cosmos DB'ye bağlayın
-description: Azure Cosmos DB'deki verileri depolamak ve yönetmek için Mongoose Framework'ü nasıl kullanacağınızı öğrenin.
+title: Node. js Mongoose uygulamasını Azure Cosmos DB bağlama
+description: Azure Cosmos DB verileri depolamak ve yönetmek için Mongoose çerçevesini nasıl kullanacağınızı öğrenin.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
@@ -10,17 +10,17 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18
 ms.openlocfilehash: ff4455571aa5cfa5c9214bdf18af1853b0cef352
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585390"
 ---
-# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Bir Düğüm.js Mongoose uygulamasını Azure Cosmos DB'ye bağlayın
+# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node. js Mongoose uygulamasını Azure Cosmos DB bağlama
 
-Bu öğretici, Cosmos DB'de veri depolarken [Mongoose Framework'ün](https://mongoosejs.com/) nasıl kullanılacağını göstermektedir. Bu iziçin Azure Cosmos DB'nin MongoDB api'sini kullanıyoruz. Henüz tanımayanlar için, Mongoose MongoDB için Node.js'de bir nesne modelleme çerçevesidir ve uygulama verilerinizi modellemeniz için rahat, şema tabanlı bir çözüm sağlar.
+Bu öğreticide, Cosmos DB veri depolarken [Mongoose çerçevesinin](https://mongoosejs.com/) nasıl kullanılacağı gösterilmektedir. Bu izlenecek yol için MongoDB için Azure Cosmos DB API 'sini kullanıyoruz. Henüz tanımayanlar için, Mongoose MongoDB için Node.js'de bir nesne modelleme çerçevesidir ve uygulama verilerinizi modellemeniz için rahat, şema tabanlı bir çözüm sağlar.
 
-Cosmos DB, Microsoft'un dünya çapında dağıtılan çok modelli veritabanı hizmetidir. Cosmos DB'nin çekirdeğindeki küresel dağıtım ve yatay ölçek özelliklerinden yararlanan belge, anahtar/değer ve grafik veritabanlarını hızla oluşturabilir ve sorgulayabilirsiniz.
+Cosmos DB, Microsoft 'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve her şey belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulayabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -32,19 +32,19 @@ Cosmos DB, Microsoft'un dünya çapında dağıtılan çok modelli veritabanı h
 
 ## <a name="create-a-cosmos-account"></a>Cosmos hesabı oluşturma
 
-Bir Cosmos hesabı oluşturalım. Kullanmak istediğiniz bir hesap zaten varsa Node.js uygulamanızı ayarlama adımına atlayabilirsiniz. Azure Cosmos DB Emülatörü kullanıyorsanız, emülatörkurmak için [Azure Cosmos DB Emulator'daki](local-emulator.md) adımları izleyin ve Düğüm.js uygulamanızı ayarlamak için ileri ye atın.
+Bir Cosmos hesabı oluşturalım. Kullanmak istediğiniz bir hesap zaten varsa Node.js uygulamanızı ayarlama adımına atlayabilirsiniz. Azure Cosmos DB öykünücüsü kullanıyorsanız, öykünücüyü ayarlamak ve Node. js uygulamanızı ayarlamaya devam etmek için [Azure Cosmos DB öykünücüsü](local-emulator.md) ' nde bulunan adımları izleyin.
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ### <a name="create-a-database"></a>Veritabanı oluşturma 
-Bu uygulamada Azure Cosmos DB'de koleksiyon oluşturmanın iki yolunu ele alacağız: 
-- **Her nesne modelini ayrı bir koleksiyonda depolama**: [Özel iş verisiyle bir veritabanı oluşturmanızı](set-throughput.md#set-throughput-on-a-database)öneririz. Bu kapasite modelini kullanmak size daha iyi maliyet verimliliği sağlayacaktır.
+Bu uygulamada Azure Cosmos DB koleksiyon oluşturmanın iki yolu ele alınacaktır: 
+- **Her nesne modelini ayrı bir koleksiyonda depolama**: [adanmış aktarım hızına sahip bir veritabanı oluşturmanızı](set-throughput.md#set-throughput-on-a-database)öneririz. Bu kapasite modelinin kullanılması, size daha iyi maliyet verimliliği sağlayacaktır.
 
-    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js öğretici - Mongoose Node modülüile kullanılmak üzere, Bir Azure Cosmos DB hesabı için Veri Gezgini'nde veritabanı oluşturmayı gösteren Azure portalının ekran görüntüsü":::
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node. js öğreticisi-Azure portal, Mongoose node modülüyle kullanılmak üzere bir Azure Cosmos DB hesabı için Veri Gezgini veritabanı oluşturmayı gösteren ekran görüntüsü":::
 
-- **Tüm nesne modellerini tek bir Cosmos DB koleksiyonunda depolama**: Tüm modelleri tek bir koleksiyonda depolamak isterseniz, Provision ThroughPut seçeneğini seçmeden yeni bir veritabanı oluşturabilirsiniz. Bu kapasite modelini kullanmak, her nesne modeli için kendi iş yaratma kapasitesine sahip her koleksiyonu oluşturur.
+- **Tüm nesne modellerini tek bir Cosmos DB koleksiyonunda**depolama: tüm modelleri tek bir koleksiyonda depolamayı tercih ediyorsanız, sağlama üretilen iş seçeneğini seçmeden yalnızca yeni bir veritabanı oluşturabilirsiniz. Bu kapasite modelinin kullanılması her bir koleksiyonu her nesne modeli için kendi üretilen iş kapasitesine sahip olacak şekilde oluşturacaktır.
 
-Veritabanını oluşturduktan sonra, aşağıdaki ortam değişkeninde `COSMOSDB_DBNAME` adı kullanırsınız.
+Veritabanını oluşturduktan sonra, aşağıdaki `COSMOSDB_DBNAME` ortam değişkeninde adı kullanacaksınız.
 
 ## <a name="set-up-your-nodejs-application"></a>Node.js uygulamanızı ayarlama
 
@@ -62,7 +62,7 @@ Veritabanını oluşturduktan sonra, aşağıdaki ortam değişkeninde `COSMOSDB
    * Mongoose: ```npm install mongoose@5 --save```
 
      > [!Note]
-     > Aşağıdaki Mongoose örnek bağlantısı, önceki sürümlerden beri değişen Mongoose 5+'a dayanmaktadır.
+     > Aşağıdaki Mongoose örnek bağlantısı, önceki sürümlerden beri değiştirilen Mongoose 5 ' i temel alır.
     
    * Dotenv (gizli dizilerinizi bir .env dosyasında yüklemek isterseniz): ```npm install dotenv --save```
 
@@ -76,7 +76,7 @@ Veritabanını oluşturduktan sonra, aşağıdaki ortam değişkeninde `COSMOSDB
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-5. Cosmos DB bağlantı dizenizi ve Cosmos DB Adını ```.env``` dosyasına ekleyin. Yer tutucular {cosmos-account-name} ve {dbname} yer tutucularını parantez sembolleri olmadan kendi Cosmos hesap adınız ve veritabanı adınız ile değiştirin.
+5. Cosmos DB bağlantı dizenizi ve Cosmos DB Adını ```.env``` dosyasına ekleyin. {Cosmos-Account-Name} ve {dbname} yertutucuları, küme ayracı sembolleri olmadan kendi Cosmos hesap adınız ve veritabanı adınızla değiştirin.
 
     ```JavaScript
    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
@@ -88,7 +88,7 @@ Veritabanını oluşturduktan sonra, aşağıdaki ortam değişkeninde `COSMOSDB
    COSMOSDB_PORT=10255
     ```
 
-6. Index.js sonuna aşağıdaki kodu ekleyerek Mongoose çerçevesini kullanarak Cosmos DB'ye bağlanın.
+6. Aşağıdaki kodu index. js sonuna ekleyerek Mongoose çerçevesini kullanarak Cosmos DB bağlanın.
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -104,15 +104,15 @@ Veritabanını oluşturduktan sonra, aşağıdaki ortam değişkeninde `COSMOSDB
 
     Azure Cosmos DB'ye bağlandıktan sonra, artık Mongoose'da nesne modellerini ayarlamaya başlayabilirsiniz.
 
-## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>Cosmos DB ile Mongoose kullanmak için en iyi uygulamalar
+## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>Cosmos DB ile Mongoose kullanmaya yönelik en iyi uygulamalar
 
-Oluşturduğunuz her model için, Mongoose yeni bir koleksiyon oluşturur. Bu, daha önce tartışılan [Veritabanı Düzey İş İlerletme seçeneği](set-throughput.md#set-throughput-on-a-database)kullanılarak en iyi şekilde ele alınmıştır. Tek bir koleksiyon kullanmak için Mongoose [Discriminators](https://mongoosejs.com/docs/discriminators.html)kullanmanız gerekir. Ayırıcılar bir şema devralma mekanizmasıdır. Bunlar aynı temel MongoDB koleksiyonu üzerinde örtüşen şemalar içeren birden çok modelinizin olmasına olanak tanır.
+Oluşturduğunuz her model için Mongoose yeni bir koleksiyon oluşturur. Bu, daha önce açıklanan [veritabanı düzeyi aktarım hızı seçeneği](set-throughput.md#set-throughput-on-a-database)kullanılarak en iyi şekilde karşılanır. Tek bir koleksiyon kullanmak için Mongoose [ayrılmış Minators](https://mongoosejs.com/docs/discriminators.html)'ı kullanmanız gerekir. Ayırıcılar bir şema devralma mekanizmasıdır. Bunlar aynı temel MongoDB koleksiyonu üzerinde örtüşen şemalar içeren birden çok modelinizin olmasına olanak tanır.
 
-Çeşitli veri modellerini aynı koleksiyonda depolayabilir ve ardından sorgu zamanında bir filtre yan tümcesi kullanarak yalnızca gerekli verileri aşağı çekebilirsiniz. Her modelin üzerinden geçelim.
+Çeşitli veri modellerini aynı koleksiyonda depolayabilir ve ardından sorgu zamanında bir filtre yan tümcesi kullanarak yalnızca gerekli verileri aşağı çekebilirsiniz. Modellerden her birini inceleyelim.
 
 ### <a name="one-collection-per-object-model"></a>Nesne modeli başına bir koleksiyon
 
-Bu bölümde, Azure Cosmos DB'nin MongoDB için api'si ile bunu nasıl başarılalıştırılanınca incelenilir. Maliyet ve kapasiteyi kontrol etmenizi sağladığından, bu yöntem bizim önerilen yaklaşımımızdır. Sonuç olarak, veritabanındaki İstek Birimlerinin miktarı nesne modellerinin sayısına bağlı değildir. Bu Mongoose için varsayılan işletim modeli, bu yüzden, bu aşina olabilir.
+Bu bölümde, MongoDB için Azure Cosmos DB API 'SI ile nasıl elde edilecek anlatılmaktadır. Bu yöntem, maliyet ve kapasiteyi denetlemenize izin verdiğinden, önerilen yaklaşımımız. Sonuç olarak, veritabanındaki Istek birimlerinin miktarı nesne modellerinin sayısına bağlı değildir. Bu, Mongoose için varsayılan işletim modelidir. bu nedenle, bunu biliyor olabilirsiniz.
 
 1. ```index.js``` dosyanızı yeniden açın.
 
@@ -163,7 +163,7 @@ Bu bölümde, Azure Cosmos DB'nin MongoDB için api'si ile bunu nasıl başarıl
     });
     ```
 
-1. Son olarak, nesneyi Cosmos DB'ye kaydedelim. Bu işlem, perde arkasında bir koleksiyon oluşturur.
+1. Son olarak, nesneyi Cosmos DB kaydedelim. Bu işlem, perde arkasında bir koleksiyon oluşturur.
 
     ```JavaScript
     family.save((err, saveFamily) => {
@@ -192,11 +192,11 @@ Bu bölümde, Azure Cosmos DB'nin MongoDB için api'si ile bunu nasıl başarıl
       });
       ```
 
-1. Şimdi, Azure portalına girerken, Cosmos DB'de oluşturulan iki koleksiyonu fark esiniz.
+1. Şimdi de Azure portal giderek Cosmos DB iki koleksiyonun oluşturulduğunu fark edersiniz.
 
-    ![Node.js öğretici - Azure portalının ekran görüntüsü, azure cosmos DB hesabı nı gösteren, birden çok koleksiyon adı vurgulanmış - Düğüm veritabanı][multiple-coll]
+    ![Node. js öğreticisi-birden çok koleksiyon adı vurgulanmış bir Azure Cosmos DB hesabı gösteren Azure portal ekran görüntüsü][multiple-coll]
 
-1. Son olarak, Cosmos DB'den gelen verileri okuyalım. Varsayılan Mongoose çalışma modelini kullandığımızdan, okuma işlemleri Mongoose'la yapılan diğer okuma işlemleriyle aynıdır.
+1. Son olarak, Cosmos DB verileri okuyalim. Varsayılan Mongoose çalışma modelini kullandığımızdan, okuma işlemleri Mongoose'la yapılan diğer okuma işlemleriyle aynıdır.
 
     ```JavaScript
     Family.find({ 'children.gender' : "male"}, function(err, foundFamily){
@@ -206,7 +206,7 @@ Bu bölümde, Azure Cosmos DB'nin MongoDB için api'si ile bunu nasıl başarıl
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Mongoose ayırıcılarını kullanarak verileri tek koleksiyonda depolama
 
-Bu yöntemde, her koleksiyonun maliyetlerini optimize etmeye yardımcı olmak için [Mongoose Ayırıcılar](https://mongoosejs.com/docs/discriminators.html) kullanıyoruz. Ayırıcılar, farklı nesne modellerinde depolama, ayırt etme ve filtreleme işlemleri yapmanıza olanak tanıyan ayırt edici bir 'Key' (Anahtar) tanımlamanızı sağlar.
+Bu yöntemde, her koleksiyonun maliyetlerini iyileştirmenize yardımcı olmak için [Mongoose ayrımlarını](https://mongoosejs.com/docs/discriminators.html) kullanırız. Ayırıcılar, farklı nesne modellerinde depolama, ayırt etme ve filtreleme işlemleri yapmanıza olanak tanıyan ayırt edici bir 'Key' (Anahtar) tanımlamanızı sağlar.
 
 Burada temel bir nesne modeli oluşturuyor, ayırt edici anahtar tanımlıyor ve temel modele 'Family' ile 'VacationDestinations' nesneleri uzantı olarak ekliyoruz.
 
@@ -299,7 +299,7 @@ Burada temel bir nesne modeli oluşturuyor, ayırt edici anahtar tanımlıyor ve
 
 1. Artık Azure Portal'a dönerseniz, hem 'Family' hem de 'VacationDestinations' verilerini içeren ```alldata``` adlı tek bir koleksiyonunuz olduğunu görürsünüz.
 
-    ![Node.js öğretici - Azure portalının ekran görüntüsü, bir Azure Cosmos DB hesabı nı gösteren, koleksiyon adı vurgulanmış - Düğüm veritabanı][alldata]
+    ![Node. js öğreticisi-koleksiyon adı vurgulanmış düğüm veritabanı ile Azure Cosmos DB hesabı gösteren Azure portal ekran görüntüsü][alldata]
 
 1. Ayrıca, iki farklı nesne modeli arasında ayırt etmenize yardımcı olmak üzere her nesnenin ```__type``` olarak adlandırılan başka bir özniteliği vardır.
 
@@ -311,7 +311,7 @@ Burada temel bir nesne modeli oluşturuyor, ayırt edici anahtar tanımlıyor ve
     });
     ```
 
-Sizin de görebileceğiniz gibi, Mongoose ayırıcılarıyla çalışmak kolaydır. Bu nedenle, Mongoose çerçevesini kullanan bir uygulamanız varsa, bu öğretici, çok fazla değişiklik gerektirmeden Azure Cosmos'un MongoDB apisini kullanarak uygulamanızı çalışır hale getirebilmenizin bir yoludur.
+Sizin de görebileceğiniz gibi, Mongoose ayırıcılarıyla çalışmak kolaydır. Bu nedenle, Mongoose çerçevesini kullanan bir uygulamanız varsa, bu öğretici, çok fazla değişiklik gerektirmeden Azure Cosmos 'nin MongoDB API 'sini kullanarak uygulamanızı çalışır duruma getirmenin bir yoludur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -319,9 +319,9 @@ Sizin de görebileceğiniz gibi, Mongoose ayırıcılarıyla çalışmak kolayd�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Cosmos DB'nin MongoDB için API'si ile [Studio 3T'yi](mongodb-mongochef.md) nasıl kullanacağınızı öğrenin.
-- MongoDB için Azure Cosmos DB'nin API'si ile [Robo 3T'yi](mongodb-robomongo.md) nasıl kullanacağınızı öğrenin.
-- Azure Cosmos DB'nin MongoDB için API'si ile MongoDB [örneklerini](mongodb-samples.md) keşfedin.
+- [Studio 3T](mongodb-mongochef.md) 'ı Azure Cosmos DB MongoDB IÇIN API 'si ile nasıl kullanacağınızı öğrenin.
+- MongoDB için Azure Cosmos DB API 'SI ile [Robo 3T kullanmayı](mongodb-robomongo.md) öğrenin.
+- MongoDB için Azure Cosmos DB API 'siyle MongoDB [örneklerini](mongodb-samples.md) gezin.
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

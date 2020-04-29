@@ -1,7 +1,7 @@
 ---
-title: Akış Uç Noktaları (Başlangıç)
+title: Akış uç noktaları (başlangıç)
 titleSuffix: Azure Media Services
-description: İçeriği doğrudan bir istemci oynatıcı uygulamasına veya Bir İçerik Dağıtım Ağına (CDN) sunan dinamik bir paketleme ve akış hizmeti olan Akış Uç Noktaları (Origin) hakkında bilgi edinin.
+description: Doğrudan bir istemci oynatıcı uygulamasına veya bir Content Delivery Network (CDN) içerik teslim eden bir dinamik paketleme ve akış hizmeti olan akış uç noktaları (Origin) hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,155 +13,155 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582722"
 ---
-# <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Medya Hizmetlerinde Akış Uç Noktaları (Başlangıç)
+# <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
 
-Microsoft Azure Medya Hizmetleri'nde, [Akış Bitiş Noktası,](https://docs.microsoft.com/rest/api/media/streamingendpoints) canlı ve isteğe bağlı içeriğinizi ortak akışlı ortam protokollerinden (HLS veya DASH) birini kullanarak doğrudan istemci oynatıcı uygulamasına sunabilen dinamik (tam zamanında) bir paketleme ve başlangıç hizmetini temsil eder. Buna ek olarak, **Akış Bitiş Noktası,** endüstri lideri DRM'lere dinamik (tam zamanında) şifreleme sağlar. 
+Microsoft Azure Media Services, bir [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints) , canlı ve isteğe bağlı içeriğinizi ortak akış medya protokollerinden (HLS veya Dash) birini kullanarak doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Ayrıca, **akış uç noktası** sektör lideri drms için dinamik (tam zamanında) şifreleme sağlar. 
 
-Bir Medya Hizmetleri hesabı oluşturduğunuzda, durmuş durumda sizin için **varsayılan** bir Akış Bitiş Noktası oluşturulur. **Varsayılan** Akış Bitiş Noktasını silemezsiniz. Hesap altında daha fazla Akış Bitiş Noktası oluşturulabilir [(bkz. Kotalar ve sınırlar).](limits-quotas-constraints.md)
+Media Services bir hesap oluşturduğunuzda, bir durdurulmuş durumda sizin için **varsayılan** bir akış uç noktası oluşturulur. **Varsayılan** akış uç noktasını silemezsiniz. Hesap altında daha fazla akış uç noktası oluşturulabilir (bkz. [Kotalar ve sınırlar](limits-quotas-constraints.md)).
 
 > [!NOTE]
-> Video akışına başlamak için, videoyu akışı istediğiniz **Akış Bitiş Noktasını** başlatmanız gerekir.
+> Video akışını başlatmak için videoyu akışını istediğiniz **akış uç noktasını** başlatmanız gerekir.
 >
-> Yalnızca Akış Bitiş Noktanız çalışan durumdayken faturalandırılırsınız.
+> Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
 
-[Dinamik ambalaj](dynamic-packaging-overview.md) konusunu da gözden geçirdiğinizden emin olun. 
+[Dinamik paketleme](dynamic-packaging-overview.md) konusunu da gözden geçirdiğinizden emin olun. 
 
 ## <a name="naming-convention"></a>Adlandırma kuralı
 
-Akış URL'sinin ana bilgisayar `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`adı `servicename` biçimi: , where = akış uç noktası adı veya canlı olay adı.
+Akış URL 'sinin ana bilgisayar adı biçimi: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, burada `servicename` = akış uç noktası adı veya canlı olay adı.
 
-Varsayılan akış bitiş noktası `servicename` nı kullanırken, URL şu `{accountname}-{regionname}.streaming.azure.net`şekilde atlanır: .
+Varsayılan akış uç noktası `servicename` kullanılırken URL: `{accountname}-{regionname}.streaming.azure.net`olarak atlanır.
 
 ### <a name="limitations"></a>Sınırlamalar
 
-* Akış uç noktası adı 24 karakter maksimum değeri vardır.
-* Ad bu [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) desen `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`takip etmelidir: .
+* Akış uç noktası adı, en fazla 24 karakter uzunluğunda bir değer içerir.
+* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
 ## <a name="types"></a>Türler
 
-İki **Akış Uç Nokta** türü vardır: **Standart** (önizleme) ve **Premium.** Tür, akış bitiş noktası için`scaleUnits`ayırdığınız ölçek birimi sayısına göre tanımlanır.
+İki **akış uç noktası** türü vardır: **Standart** (Önizleme) ve **Premium**. Tür, akış uç noktası için ayırdığınız ölçek birimi sayısıyla (`scaleUnits`) tanımlanır.
 
 Türler aşağıdaki tabloda açıklanmıştır:
 
 |Tür|Ölçek birimleri|Açıklama|
 |--------|--------|--------|  
-|**Standart**|0|Varsayılan Akış Bitiş Noktası **Standart** bir türdür ve ayarlayarak `scaleUnits`Premium türüne değiştirilebilir.|
-|**Premium**|>0|**Premium** Akış Uç Noktaları gelişmiş iş yükleri ve özel ve ölçeklenebilir bant genişliği kapasitesi sağlamak için uygundur. (akış birimleri) ayarlayarak `scaleUnits` **Premium** türüne geçersiniz. `scaleUnits`200 Mbps'lik artışlarla satın alınabilen özel çıkış kapasitesi sağlar. **Premium** türünü kullanırken, etkinleştirilen her birim uygulamaya ek bant genişliği kapasitesi sağlar. |
+|**Standart**|0|Varsayılan akış uç noktası **Standart** bir türdür — ayarlanarak `scaleUnits`Premium türüne değiştirilebilir.|
+|**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. Bir **Premium** türüne (akış birimleri) ayarlayarak `scaleUnits` geçiş yapabilirsiniz. `scaleUnits`200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
 
 > [!NOTE]
-> Büyük internet hedef kitlelerine içerik sunmak isteyen müşteriler için, Akış Bitiş Noktası'nda CDN'yi etkinleştirmenizi öneririz.
+> Büyük internet kitlelerine içerik teslim etmek isteyen müşteriler için, akış uç noktasında CDN 'yi etkinleştirmenizi öneririz.
 
-SLA bilgileri için [Fiyatlandırma ve SLA'ya](https://azure.microsoft.com/pricing/details/media-services/)bakın.
+SLA bilgileri için bkz. [fiyatlandırma ve SLA](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="comparing-streaming-types"></a>Akış türlerini karşılaştırma
 
 Özellik|Standart|Premium
 ---|---|---
-Aktarım hızı |600 Mbps'ye kadar ve CDN kullanıldığında çok daha yüksek etkili bir iş çıkarımı sağlayabilir.|Akış birimi (SU) başına 200 Mbps. CDN kullanıldığında çok daha yüksek etkili bir iş elde edilebilir.
+Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
-Faturalandırma eşit olarak eşit| Günlük|Günlük
-Dinamik şifreleme|Evet|Evet
-Dinamik paketleme|Evet|Evet
-Ölçek|Otomatik ölçeklendirme hedeflenen iş sonuna kadar.|Ek SUs
-IP filtreleme/G20/Özel ana bilgisayar <sup>1</sup>|Evet|Evet
-Aşamalı indirme|Evet|Evet
-Önerilen kullanım |Akış senaryolarının büyük çoğunluğu için önerilir.|Profesyonel kullanım.
+Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
+Dinamik şifreleme|Yes|Yes
+Dinamik paketleme|Yes|Yes
+Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek SUs
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
+Aşamalı indirme|Yes|Yes
+Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım.
 
-<sup>1</sup> Yalnızca CDN bitiş noktasında etkinleştirilemiyorsa Doğrudan Akış Bitiş Noktası'nda kullanılır.<br/>
+<sup>1</sup> yalnızca CDN uç noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>
 
-## <a name="streaming-endpoint-properties"></a>Akış Bitiş Noktası özellikleri
+## <a name="streaming-endpoint-properties"></a>Akış uç noktası özellikleri
 
-Bu bölümde, Akış Bitiş Noktası'nın bazı özellikleri hakkında ayrıntılı bilgi verilmiştir. Yeni bir akış bitiş noktası ve tüm özelliklerin açıklamaları oluşturma örnekleri için [Bkz.](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
+Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları sağlar. Yeni bir akış uç noktası ve tüm özelliklerin açıklamalarını oluşturma örnekleri için bkz. [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
 
-- `accessControl`: Bu akış bitiş noktası için aşağıdaki güvenlik ayarlarını yapılandırmak için kullanılır: Akamai Signature Header Kimlik Doğrulama anahtarları ve bu bitiş noktasına bağlanmasına izin verilen IP adresleri. Bu özellik yalnızca false `cdnEnabled` olarak ayarlandığında ayarlanabilir.
+- `accessControl`: Bu akış uç noktası için şu güvenlik ayarlarını yapılandırmak için kullanılır: Akamai Imza üst bilgisi kimlik doğrulama anahtarları ve bu uç noktaya bağlanmasına izin verilen IP adresleri. Bu özellik yalnızca false olarak ayarlandığında ayarlanabilir `cdnEnabled` .
 
-- `cdnEnabled`: Bu akış bitiş noktası için Azure CDN tümleştirmesinin etkin olup olmadığını (varsayılan olarak devre dışı bırakıldığını) gösterir. Doğru ayarladıysanız, `cdnEnabled` aşağıdaki yapılandırmalar devre `customHostNames` dışı `accessControl`bırakılır: ve .
+- `cdnEnabled`: Bu akış uç noktası için Azure CDN tümleştirme özelliğinin etkin olup olmadığını gösterir (varsayılan olarak devre dışı). True olarak ayarlarsanız `cdnEnabled` aşağıdaki konfigürasyonlar devre dışı bırakılır: `customHostNames` ve. `accessControl`
 
-    Tüm veri merkezleri Azure CDN tümleştirmesini desteklemez. Veri merkezinizde Azure CDN tümleştirmesinin kullanılabilir olup olmadığını kontrol etmek için aşağıdaki adımları yapın:
+    Tüm veri merkezleri Azure CDN tümleştirmeyi desteklemez. Veri merkezinizde Azure CDN tümleştirmesinin mevcut olup olmadığını denetlemek için aşağıdaki adımları uygulayın:
 
-  - Doğruyu ayarlamaya `cdnEnabled` çalış.
-  - Döndürülen sonucu "Akış uç noktası CdnEtkin özelliği geçerli bölgede CDN özelliği kullanılamadığı için doğru olarak ayarlanamaz" iletisi içeren bir `HTTP Error Code 412` (PreconditionFailed) için denetleyin.
+  - Öğesini true `cdnEnabled` olarak ayarlamayı deneyin.
+  - CDN özelliği geçerli bölgede kullanılamadığından, `HTTP Error Code 412` "akış uç noktası CdnEnabled özelliği doğru olarak ayarlanamıyor" iletisiyle döndürülen sonucu (preconditionfailed) denetleyin. "
 
-    Bu hatayı alırsanız, veri merkezi bunu desteklemez. Başka bir veri merkezi deneyin.
+    Bu hatayı alırsanız veri merkezi tarafından desteklenmez. Başka bir veri merkezini deneyin.
 
-- `cdnProfile`: `cdnEnabled` Doğru ayarlandığında, değerleri de `cdnProfile` geçirebilirsiniz. `cdnProfile`CDN bitiş noktasının oluşturulacağı CDN profilinin adıdır. Varolan bir cdnProfile sağlayabilir veya yeni bir cdnProfile kullanabilirsiniz. Değer NULL ise `cdnEnabled` ve doğruysa, varsayılan değer "AzureMediaStreamingPlatformCdnProfile" kullanılır. Sağlanan `cdnProfile` zaten varsa, altında bir bitiş noktası oluşturulur. Profil yoksa, yeni bir profil otomatik olarak oluşturulur.
-- `cdnProvider`: CDN etkinleştirildiğinde, değerleri `cdnProvider` de geçebilirsiniz. `cdnProvider`hangi sağlayıcının kullanılacağını kontrol eder. Şu anda üç değer desteklenir: "StandardVerizon", "PremiumVerizon" ve "StandardAkamai". Hiçbir değer sağlanmadıysa ve `cdnEnabled` doğruysa, "StandardVerizon" kullanılır (bu varsayılan değerdir).
-- `crossSiteAccessPolicies`: Çeşitli istemciler için çapraz site erişim ilkelerini belirtmek için kullanılır. Daha fazla bilgi için, etki alanı ilkesi dosya belirtimine ve Bir Hizmeti Etki Alanı Sınırları Arasında Kullanılabilir Hale [Getirme'ye](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) bakın. [Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx) Ayarlar yalnızca Düzgün Akış için geçerlidir.
-- `customHostNames`: Özel bir ana bilgisayar adına yönlendirilen trafiği kabul etmek için Akış Bitiş Noktası'nı yapılandırmak için kullanılır. Bu özellik Standart ve Premium Akış Bitiş Noktaları `cdnEnabled`için geçerlidir ve yanlış olduğunda ayarlanabilir.
+- `cdnProfile``cdnEnabled` : True olarak ayarlandığında değerleri de geçirebilirsiniz `cdnProfile` . `cdnProfile`CDN uç nokta noktasının oluşturulacağı CDN profilinin adıdır. Var olan bir cdnProfile sağlayabilirsiniz veya yenisini kullanabilirsiniz. Değer NULL ise ve `cdnEnabled` true ise, "AzureMediaStreamingPlatformCdnProfile" varsayılan değeri kullanılır. Belirtilen `cdnProfile` zaten varsa, altında bir uç nokta oluşturulur. Profil yoksa, yeni bir profil otomatik olarak oluşturulur.
+- `cdnProvider`: CDN etkinleştirildiğinde değerleri de geçirebilirsiniz `cdnProvider` . `cdnProvider`hangi sağlayıcının kullanılacağını denetler. Şu anda üç değer desteklenir: "StandardVerizon", "PremiumVerizon" ve "Standardadkamai". Değer sağlanmazsa ve `cdnEnabled` true ise, "StandardVerizon" kullanılır (varsayılan değer).
+- `crossSiteAccessPolicies`: Çeşitli istemciler için çapraz site erişim ilkeleri belirtmek için kullanılır. Daha fazla bilgi için bkz. [etki alanları arası ilke dosyası belirtimi](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) ve [bir hizmetin etki alanı sınırları genelinde kullanılabilir hale getirilmesi](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx). Ayarlar yalnızca Kesintisiz Akış için geçerlidir.
+- `customHostNames`: Bir akış uç noktasını, özel bir ana bilgisayar adına yönlendirilmiş trafiği kabul edecek şekilde yapılandırmak için kullanılır. Bu özellik standart ve Premium akış uç noktaları için geçerlidir ve şu durumlarda `cdnEnabled`ayarlanabilir: false.
 
-    Etki alanı adının sahipliği Media Services tarafından onaylanmalıdır. Medya Hizmetleri, kullanımda etki alanına `CName` eklenecek bir bileşen olarak Medya Hizmetleri hesap kimliğini içeren bir kaydı nisbeten isteyerek etki alanı adı sahipliğini doğrular. Örneğin, akış bitiş noktası için özel bir ana bilgisayar adı olarak "sports.contoso.com" olarak kullanılabilmesi için, `<accountId>.contoso.com` bir kaydın Medya Hizmetleri doğrulama ana bilgisayar adlarından birine işaret edecek şekilde yapılandırılması gerekir. Doğrulama ana bilgisayar adı doğrulanmış nakışlardan oluşur. \<mediaservices-dns-zone>.
+    Etki alanı adının sahipliğinin Media Services tarafından onaylanması gerekir. Media Services, kullanımda olan etki alanına eklenecek bir bileşen `CName` olarak MEDIA SERVICES hesap kimliğini içeren bir kayıt isteyerek etki alanı adı sahipliğini doğrular. Örnek olarak, "sports.contoso.com" için, akış uç noktası için özel bir ana bilgisayar adı olarak kullanılmak üzere, için `<accountId>.contoso.com` bir kayıt Media Services doğrulama ana bilgisayar adlarından birine işaret etmek üzere yapılandırılmalıdır. Doğrulama ana bilgisayar adı verifydns ' den oluşur. \<mediaservices-DNS-Zone>.
 
-    Aşağıda, farklı Azure bölgeleri için doğrulama kaydında kullanılması beklenen DNS bölgeleri verecektir.
+    Aşağıda, farklı Azure bölgeleri için doğrulama kaydında kullanılacak beklenen DNS bölgeleri verilmiştir.
   
-  - Kuzey Amerika, Avrupa, Singapur, Hong Kong SAR, Japonya:
+  - Kuzey Amerika, Avrupa, Singapur, Hong Kong ÖIB, Japonya:
 
     - `media.azure.net`
     - `verifydns.media.azure.net`
 
-  - Çin:
+  - Arasında
 
     - `mediaservices.chinacloudapi.cn`
     - `verifydns.mediaservices.chinacloudapi.cn`
 
-    Örneğin, "945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com" ile "verifydns.media.azure.net" eşleyen bir `CName` kayıt, Medya Hizmetleri KIMLIĞI 945a4c4e-28ea-45cd-8ccb-a519f6b700ad'ın contoso.com alan adının mülkiyetine sahip olduğunu kanıtlayarak, contoso.com altındaki herhangi bir adın bu hesap altında bir akış bitiş noktası için özel bir ana bilgisayar adı olarak kullanılmasını sağlar. Medya Hizmeti Kimliği değerini bulmak için [Azure portalına](https://portal.azure.com/) gidin ve Medya Hizmeti hesabınızı seçin. **Hesap Kimliği** sayfanın sağ üst kısmında görünür.
+    Örneğin, "945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com `CName` " ile "verifydns.Media.Azure.net" eşleyen bir kayıt, Media Services kimliği 945a4c4e-28ea-45CD-8ccb-a519f6b700ad 'nin contoso.com etki alanının sahipliğinin sahip olduğunu kanıtlar ve bu nedenle contoso.com altında herhangi bir adın bu hesabın altındaki bir akış uç noktası için özel ana bilgisayar adı olarak kullanılmasını sağlar. Medya hizmeti KIMLIK değerini bulmak için [Azure Portal](https://portal.azure.com/) gidin ve medya hizmeti hesabınızı seçin. **Hesap kimliği** sayfanın sağ üst kısmında görünür.
 
-    `CName` Kaydın doğru bir şekilde doğrulanması olmadan özel bir ana bilgisayar adı ayarlama girişimi varsa, DNS yanıtı başarısız olur ve bir süre önbelleğe alınır. Uygun bir kayıt yerleştirildikten sonra, önbelleğe alınmış yanıtın yeniden geçersiz kılınması biraz zaman alabilir. Özel etki alanı için DNS sağlayıcısına bağlı olarak, kaydın yeniden geçersiz kılınması birkaç dakika ile bir saat arasında değişir.
+    `CName` Kaydın düzgün bir şekilde doğrulanması gerekmeden özel bir ana bilgisayar adı ayarlamaya yönelik bir girişim varsa, DNS yanıtı başarısız olur ve sonra bir süre önbelleğe alınır. Uygun bir kayıt olduktan sonra, önbelleğe alınmış yanıt yeniden doğrulandıktan kadar biraz zaman alabilir. Özel etki alanı için DNS sağlayıcısına bağlı olarak, kaydın yeniden doğrulanması için birkaç dakika ile bir saate kadar her yerden zaman alır.
 
-    `CName` Bu `<accountId>.<parent domain>` eşler ek `verifydns.<mediaservices-dns-zone>`olarak, özel `CName` ana bilgisayar adını (örneğin, `sports.contoso.com`) Medya Hizmetleri Akışı Bitiş Noktası'nın ana `amstest-usea.streaming.media.azure.net`bilgisayarı adı (örneğin,) eşleyen başka bir oluşturmanız gerekir.
+    İle `verifydns.<mediaservices-dns-zone>`eşlendiği `CName` `sports.contoso.com` `amstest-usea.streaming.media.azure.net`öğesine ek `CName` `<accountId>.<parent domain>` olarak, özel ana bilgisayar adını (örneğin,) Media Services akış uç noktasının ana bilgisayar adı (örneğin,) ile eşleyen bir tane oluşturmanız gerekir.
 
     > [!NOTE]
-    > Aynı veri merkezinde bulunan Akış Uç Noktaları aynı özel ana bilgisayar adını paylaşamaz.
+    > Aynı veri merkezinde bulunan akış uç noktaları aynı özel ana bilgisayar adını paylaşamaz.
 
-    Şu anda, Medya Hizmetleri tls'yi özel etki alanlarıyla desteklemiyor.
+    Şu anda, Media Services özel etki alanlarıyla TLS 'yi desteklemez.
 
-- `maxCacheAge`- Varsayılan maksimum yaş HTTP önbellek denetim üstbilgisini, ortam parçaları ve isteğe bağlı bildirimlerüzerinde akış uç noktası tarafından ayarlanan geçersiz kılar. Değer saniye cinsinden ayarlanır.
+- `maxCacheAge`-Medya parçalarında ve isteğe bağlı bildirimlerde akış uç noktası tarafından ayarlanan varsayılan en yüksek yaş HTTP önbelleği denetim üstbilgisini geçersiz kılar. Değer saniye cinsinden ayarlanır.
 - `resourceState` -
 
-    - Durduruldu: oluşturulduktan sonra Bir Akış Bitiş Noktası'nın ilk durumu
-    - Başlangıç: çalışan duruma geçiş
-    - Çalışan: istemcilere içerik akışı yapabiliyor
-    - Ölçekleme: ölçek birimleri artırılıyor veya azaltılıyor
-    - Durdurma: durdurulan duruma geçiş
+    - Durduruldu: oluşturulduktan sonra akış uç noktasının başlangıç durumu
+    - Başlatılıyor: çalışma durumuna geçiyor
+    - Çalışıyor: istemcilere içerik akışı verebilir
+    - Ölçeklendirme: ölçek birimleri artırıldı veya azaltılır
+    - Durduruluyor: durdurulmuş duruma geçiyor
     - Silme: siliniyor
 
-- `scaleUnits`: Size 200 Mbps'lik artışlarla satın alınabilen özel çıkış kapasitesi sağlar. **Premium** türüne geçmeniz gerekiyorsa, `scaleUnits`'yi ayarlayın.
+- `scaleUnits`: 200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** bir türe taşımanız gerekiyorsa, öğesini ayarlayın `scaleUnits`.
 
-## <a name="why-use-multiple-streaming-endpoints"></a>Neden birden çok akış uç noktası kullanıyor?
+## <a name="why-use-multiple-streaming-endpoints"></a>Neden birden çok akış uç noktası kullanılmalıdır?
 
-Tek bir akış bitiş noktası hem canlı hem de isteğe bağlı videoları aktarabilir ve çoğu müşteri yalnızca bir akış bitiş noktası kullanır. Bu bölümde, neden birden çok akış uç noktası kullanmanız gerekebileceğine dair bazı örnekler verilmiştir.
+Tek bir akış uç noktası hem canlı hem de isteğe bağlı videoları akışa alabilir ve çoğu müşteri yalnızca bir akış uç noktası kullanabilir. Bu bölümde, neden birden çok akış uç noktası kullanmanız gerektiği hakkında bazı örnekler verilmektedir.
 
-* Ayrılmış her birim 200 Mbps bant genişliği sağlar. 2.000 Mbps'den (2 Gbps) fazla bant genişliğine ihtiyacınız varsa, size ek bant genişliği sağlamak için ikinci akış bitiş noktasını ve yük dengesini kullanabilirsiniz.
+* Her ayrılmış birim 200 Mbps bant genişliğine izin verir. 2.000 MB/sn 'den fazla bant genişliği (2 Gbps) varsa, size ek bant genişliği sağlamak için ikinci akış uç noktasını ve yük dengeini kullanabilirsiniz.
 
-    Ancak, CDN içerik akışı için ölçeklendirme elde etmek için en iyi yoldur ama CDN 2 Gbps'den fazla çekerek o kadar çok içerik teslim ediyorsanız o zaman ek akış bitiş noktaları (menşe) ekleyebilirsiniz. Bu durumda, iki akış uç noktası boyunca dengelenmiş içerik URL'leri dağıtmanız gerekir. Bu yaklaşım, her kökene rasgele istek göndermeye çalışmaktan daha iyi önbelleğe alma sağlar (örneğin, bir trafik yöneticisi aracılığıyla). 
+    Ancak CDN, akış içeriği için ölçek genişletme gerçekleştirmenin en iyi yoludur, ancak CDN 'nin 2 GB 'tan fazla çıkarmakta olduğu çok sayıda içerik sunmanız durumunda ek akış uç noktaları (kaynaklar) ekleyebilirsiniz. Bu durumda, iki akış uç noktası üzerinden dengelenen içerik URL 'Lerini kullanıma açmanız gerekir. Bu yaklaşım, istekleri her kaynağa rastgele gönderme denemesi (örneğin, bir Traffic Manager aracılığıyla) için daha iyi önbelleğe alma olanağı sağlar. 
     
     > [!TIP]
-    > Genellikle CDN 2 Gbps'den fazla çekiyorsa, bir şey yanlış yapılandırılmış olabilir (örneğin, kaynak kalkanı yok).
+    > Genellikle CDN 2 Gbps 'den fazla çekirse, bir şey yanlış yapılandırılmış olabilir (örneğin, kaynak koruma yoktur).
     
-* Farklı CDN sağlayıcıları nın dengelemesini yükleyin. Örneğin, Verizon CDN'yi kullanmak ve Akamai'yi kullanmak için ikinci bir akış bitiş noktası oluşturabilirsiniz. Sonra çoklu CDN dengeleme elde etmek için ikisi arasında bazı yük dengeleme ekleyin. 
+* Farklı CDN sağlayıcılarının yükünü dengeleyin. Örneğin, Verizon CDN 'yi kullanmak için varsayılan akış uç noktasını ayarlayabilir ve Akamai kullanmak için ikinci bir tane oluşturabilirsiniz. Daha sonra, çoklu CDN dengelemesi elde etmek için ikisi arasında bazı yük dengelemesi ekleyin. 
 
-    Ancak, müşteri genellikle tek bir menşe kullanarak birden çok CDN sağlayıcısı arasında yük dengeleme yapmak.
-* Karışık içerik akışı: Canlı ve Video on Demand. 
+    Bununla birlikte, müşteri genellikle tek bir kaynak kullanarak birden çok CDN sağlayıcısı genelinde yük dengelemesi yapılır.
+* Akıcı karışık içerik: canlı ve Isteğe bağlı video. 
 
-    Canlı ve isteğe bağlı içerik için erişim şekilleri çok farklıdır. Canlı içerik aynı anda aynı içerik için çok fazla talep alma eğilimindedir. İsteğe bağlı video içeriği (örneğin uzun kuyruk arşivi içeriği) aynı içerikte düşük kullanıma sahiptir. Böylece önbelleğe alma canlı içerik üzerinde çok iyi çalışır ama uzun kuyruk içeriği de değil.
+    Canlı ve isteğe bağlı içerik için erişim desenleri çok farklıdır. Canlı içerik her seferinde aynı içerik için çok miktarda talep almayı eğilimindedir. İsteğe bağlı video içeriği (örneğin, örnek için uzun kuyruk Arşivi), aynı içerikte düşük kullanımdır. Böylece önbelleğe alma işlemi, canlı içerik üzerinde çok iyi sonuç verir, ancak uzun kuyruk içeriğini de içermez.
 
-    Müşterilerinizin çoğunlukla canlı içeriği izlediği, ancak yalnızca zaman zaman isteğe bağlı içeriği izlediği ve aynı Akış Bitiş Noktası'ndan sunulduğu bir senaryo düşünün. İsteğe bağlı içeriğin düşük kullanımı, canlı içerik için daha iyi kaydedilecek önbellek alanı kaplar. Bu senaryoda, canlı içeriği bir Akış Bitiş Noktasından ve başka bir Akış Bitiş Noktasından gelen uzun kuyruk içeriğinden sunmanızı öneririz. Bu, canlı etkinlik içeriğinin performansını artırır.
+    Müşterilerinizin temel olarak canlı içerik izlerken, ancak yalnızca isteğe bağlı içerikleri izlerken ve aynı akış uç noktasından sunulduğunda bir senaryoyu düşünün. İsteğe bağlı içeriğin düşük kullanımı, canlı içerik için daha iyi kaydedilecek önbellek alanı kaplar. Bu senaryoda, bir akış uç noktasından canlı içeriği ve başka bir akış uç noktasından uzun kuyruk içeriğini sunduğumuz için önereceğiz. Bu, canlı olay içeriğinin performansını iyileştirir.
     
-## <a name="scaling-streaming-with-cdn"></a>CDN ile akış ölçekleme
+## <a name="scaling-streaming-with-cdn"></a>CDN ile akışı ölçeklendirme
 
 Aşağıdaki makalelere bakın:
 
-- [CDN'ye genel bakış](../../cdn/cdn-overview.md)
-- [CDN ile akış ölçekleme](scale-streaming-cdn.md)
+- [CDN genel bakış](../../cdn/cdn-overview.md)
+- [CDN ile akışı ölçeklendirme](scale-streaming-cdn.md)
 
-## <a name="ask-questions-and--get-updates"></a>Soru sorun ve güncellemeler alın
+## <a name="ask-questions-and--get-updates"></a>Soru sorun ve güncelleştirme al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

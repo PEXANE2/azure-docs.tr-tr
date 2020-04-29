@@ -1,6 +1,6 @@
 ---
-title: Yönetilebilirlik ve izleme - genel bakış
-description: Synapse SQL havuzu ile kaynak kullanımı, günlük ve sorgu etkinliği, öneriler ve veri koruma (yedekleme ve geri yükleme) için izleme ve yönetilebilirlik genel bakış.
+title: Yönetilebilirlik ve izleme-genel bakış
+description: SYNAPSE SQL havuzu ile kaynak kullanımı, günlük ve sorgu etkinliği, öneriler ve veri koruması (yedekleme ve geri yükleme) için izleme ve yönetilebilirlik açısından genel bakış.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,25 +12,25 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e41bf003af7d0926aab04ffed86bf6ec5031c4f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80586410"
 ---
-# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Synapse SQL havuzu ile yönetilebilirlik ve izleme
+# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>SYNAPSE SQL havuzu ile yönetilebilirlik ve izleme
 
-Synapse SQL, SQL havuzu üzerinden bir veri ambarı sağlamanızı sağlar. İzleyen makaleler, veri ambarınızı yönetmenize ve izlemenize yardımcı olur. Ayrıca, veri ambarının kullanımını ve performansını optimize etmenin yollarını da öğreneceksiniz.
+SYNAPSE SQL, SQL havuzu aracılığıyla bir veri ambarı sağlamanıza olanak tanır. Aşağıdaki makaleler, veri Ambarınızı yönetmenize ve izlemenize yardımcı olur. Ayrıca, veri ambarının kullanımını ve performansını iyileştirmenin yollarını öğreneceksiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
-* [Bilgi işlem yönetimi ve elastikiyet hakkında bilgi edinin](sql-data-warehouse-manage-compute-overview.md)
-* [Azure portalında hangi ölçümlerin ve günlüklerin kullanılabilmesini anlama](sql-data-warehouse-concept-resource-utilization-query-activity.md)
+* [İşlem yönetimi ve esneklik hakkında bilgi edinin](sql-data-warehouse-manage-compute-overview.md)
+* [Azure portal hangi ölçümlerin ve günlüklerin kullanılabildiğini anlayın](sql-data-warehouse-concept-resource-utilization-query-activity.md)
 * [Yedekleme ve geri yükleme özellikleri hakkında bilgi edinin](backup-and-restore.md)
 * [Yerleşik zeka ve öneriler hakkında bilgi edinin](sql-data-warehouse-concept-recommendations.md)
-* [Bakım dönemleri ve veri ambarınızın kapalı kalma süresini en aza indirmek için nelerin kullanılabilenleri hakkında bilgi edinin](maintenance-scheduling.md)
-* [Sık karşılaşılan sorun giderme kılavuzunu bulma](sql-data-warehouse-troubleshoot.md)
+* [Bakım dönemleri ve veri ambarınızın kapalı kalma süresini en aza indirmek için neler kullanılabildiğini öğrenin](maintenance-scheduling.md)
+* [Ortak sorun giderme kılavuzunu bulun](sql-data-warehouse-troubleshoot.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Nasıl Yapılır kılavuzları için Monitör'e bakın [ve SQL havuzunuzu ayarlayın.](sql-data-warehouse-manage-monitor.md)
+Nasıl yapılır kılavuzlarında bkz. [SQL havuzunuzu izleme ve ayarlama](sql-data-warehouse-manage-monitor.md).

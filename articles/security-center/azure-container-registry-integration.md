@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi ve Azure Kapsayıcı Kayıt Defteri
-description: Azure Güvenlik Merkezi'nin Azure Kapsayıcı Kayıt Defteri ile tümleştirmesi hakkında bilgi edinin
+title: Azure Güvenlik Merkezi ve Azure Container Registry
+description: Azure Güvenlik Merkezi 'nin Azure Container Registry ile tümleştirmesi hakkında bilgi edinin
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,40 +13,40 @@ ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
 ms.openlocfilehash: 1c1b48d3715d838827f88f99fc0849d25677fdcc
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585736"
 ---
-# <a name="azure-container-registry-integration-with-security-center"></a>Güvenlik Merkezi ile Azure Kapsayıcı Kayıt Defteri entegrasyonu
+# <a name="azure-container-registry-integration-with-security-center"></a>Güvenlik Merkezi ile Azure Container Registry tümleştirme
 
-Azure Kapsayıcı Kayıt Defteri (ACR), azure dağıtımları için konteyner resimlerinizi merkezi bir kayıt defterinde depolayan ve yöneten yönetilen, özel bir Docker kayıt hizmetidir. Açık kaynak Docker Registry 2.0'a dayanıyor.
+Azure Container Registry (ACR), Azure dağıtımları için kapsayıcı görüntülerinizi merkezi bir kayıt defterinde depolayan ve yöneten, yönetilen ve özel bir Docker kayıt defteri hizmetidir. Bu, açık kaynaklı Docker kayıt defteri 2,0 ' i temel alır.
 
-Azure Güvenlik Merkezi'nin standart katmanındaysanız, Konteyner Kayıt Defterleri paketini ekleyebilirsiniz. Bu isteğe bağlı özellik, ARM tabanlı kayıt defterlerinizdeki görüntülerin güvenlik açıklarına daha fazla görünürlük sağlar. Abonelikteki tüm kayıtları kapsayacak şekilde paketi abonelik düzeyinde etkinleştirin veya devre dışı edin. Bu özellik, [fiyatlandırma sayfasında](security-center-pricing.md)gösterildiği gibi görüntü başına ücretlendirilir. Kapsayıcı Kayıt Defterleri paketini etkinleştirmek, Güvenlik Merkezi'nin kayıt defterine itilen görüntüleri taraya hazır olmasını sağlar. 
+Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı kayıt defterleri paketini ekleyebilirsiniz. Bu isteğe bağlı özellik, ARM tabanlı kayıt defterlerinden görüntülerin güvenlik açıklarına daha derin görünürlük getirir. Abonelik düzeyindeki paketi bir abonelikteki tüm kayıt defterlerini kapsayacak şekilde etkinleştirin veya devre dışı bırakın. Bu özellik, [fiyatlandırma sayfasında](security-center-pricing.md)gösterildiği gibi görüntü başına ücretlendirilir. Kapsayıcı kayıt defterleri paketini etkinleştirme, güvenlik merkezi 'nin kayıt defterine gönderilen görüntüleri taramaya hazırlanmasını sağlar. 
 
-Bir görüntü kayıt defterinize itildiğinde, Güvenlik Merkezi bu görüntüyü otomatik olarak tarar. Görüntünün teşbini tetiklemek için deponuza itin.
+Kayıt defterinize her görüntü gönderildiğinde, güvenlik merkezi bu görüntüyü otomatik olarak tarar. Bir görüntünün taramasını tetiklemek için onu deponuza gönderin.
 
-Taramalar tamamlandığında (genellikle yaklaşık 10 dakika sonra), bulgular Güvenlik Merkezi önerilerinde şu gibi kullanılabilir:
+Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra), bulgular aşağıdaki gibi güvenlik merkezi önerilerinde mevcuttur:
 
-[![Azure Kapsayıcı Kayıt Defteri'nde (ACR) barındırılan görüntüde bulunan güvenlik açıkları hakkında örnek Azure Güvenlik Merkezi önerisi](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![Azure Container Registry (ACR) barındırılan görüntüde bulunan güvenlik açıkları hakkında örnek Azure Güvenlik Merkezi önerisi](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
-## <a name="benefits-of-integration"></a>Entegrasyonun faydaları
+## <a name="benefits-of-integration"></a>Tümleştirmenin avantajları
 
-Güvenlik Merkezi, aboneliğinizdeki ARM tabanlı ACR kayıt defterlerini tanımlar ve sorunsuz bir şekilde sağlar:
+Güvenlik Merkezi, aboneliğinizdeki ARM tabanlı ACR kayıt defterlerini tanımlar ve şunları sorunsuz şekilde sağlar:
 
-* Tüm itilen Linux görüntüleri için **Azure'da yerel güvenlik açığı taraması.** Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı Qualys'in tarayıcısını kullanarak görüntüyü tarar. Bu yerel çözüm varsayılan olarak sorunsuz bir şekilde tümleştirilir.
+* Tüm gönderilen Linux görüntüleri için **Azure yerel güvenlik açığı taraması** . Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar. Bu yerel çözüm, varsayılan olarak sorunsuzca tümleşiktir.
 
-* Bilinen güvenlik açıklarına sahip Linux görüntüleri için **güvenlik önerileri.** Güvenlik Merkezi, bildirilen her güvenlik açığının ayrıntılarını ve önem derecesini sınıflamayı sağlar. Ayrıca, kayıt defterine itilen her görüntüde bulunan belirli güvenlik açıklarının nasıl düzeltileceğine ilişkin rehberlik sağlar.
+* Bilinen güvenlik açıklarına sahip Linux görüntüleri için **güvenlik önerileri** . Güvenlik Merkezi, bildirilen her güvenlik açığının ayrıntılarını ve önem derecesini sağlar. Ayrıca, kayıt defterine gönderilen her görüntüde bulunan belirli güvenlik açıklarının nasıl düzeltileceğine ilişkin yönergeler sağlar.
 
-![Azure Güvenlik Merkezi ve Azure Kapsayıcı Kayıt Defteri (ACR) üst düzey genel bakış](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+![Azure Güvenlik Merkezi ve Azure Container Registry (ACR) üst düzey genel bakış](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenlik Merkezi'nin kapsayıcı güvenlik özellikleri hakkında daha fazla bilgi edinmek için bkz:
+Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Azure Güvenlik Merkezi ve kapsayıcı güvenliği](container-security.md)
 
 * [Azure Kubernetes Service ile tümleştirme](azure-kubernetes-service-integration.md)
 
-* [Sanal Makine koruması](security-center-virtual-machine-protection.md) - Güvenlik Merkezi'nin önerilerini açıklar
+* [Sanal makine koruması](security-center-virtual-machine-protection.md) -Güvenlik Merkezi 'nin önerilerini açıklar

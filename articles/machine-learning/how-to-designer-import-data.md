@@ -1,7 +1,7 @@
 ---
 title: Veri içeri aktarma
 titleSuffix: Azure Machine Learning
-description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning tasarımcısına nasıl aktarılacınız öğrenin.
+description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning tasarımcı 'ya aktarmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,72 +10,72 @@ author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546748"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Verilerinizi Azure Machine Learning tasarımcısına aktarın (önizleme)
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Verilerinizi Azure Machine Learning tasarımcı 'ya aktarma (Önizleme)
 
-Bu makalede, özel çözümler oluşturmak için tasarımcıda kendi verilerinizi nasıl içe aktarabileceğinizi öğrenirsiniz. Tasarımcıya veri aktarabilirsiniz iki yolu vardır: 
+Bu makalede, özel çözümler oluşturmak için kendi verilerinizi tasarımcıda nasıl içeri aktaracağınızı öğreneceksiniz. Verileri tasarımcıya içeri aktarabilmeniz için kullanabileceğiniz iki yol vardır: 
 
-* **Azure Machine Learning veri kümeleri** - Verilerinizi yönetmenize yardımcı olan gelişmiş özellikleri etkinleştirmek için Azure Machine Learning'de [veri kümelerini](concept-data.md#datasets) kaydedin.
-* **Veri Aktarma modülü** - Çevrimiçi veri kaynaklarından doğrudan verilere erişmek için [Veri Alma](algorithm-module-reference/import-data.md) modüllerini kullanın.
+* **Azure Machine Learning veri kümeleri** -verilerinizi yönetmenize yardımcı olan gelişmiş özellikleri etkinleştirmek için Azure Machine Learning veri [kümelerini](concept-data.md#datasets) kaydettirin.
+* **Veri modülünü Içeri aktarma** -çevrimiçi veri kaynaklarında verilere doğrudan erişmek Için [verileri içeri aktarma](algorithm-module-reference/import-data.md) modülünü kullanın.
 
 ## <a name="use-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümelerini kullanma
 
-Verileri tasarımcıya almak için [veri kümelerini](concept-data.md#datasets) kullanmanızı öneririz. Bir veri kümesini kaydettirdiğinizde, [sürüm leme, izleme ve](how-to-version-track-datasets.md) veri [izleme](how-to-monitor-datasets.md)gibi gelişmiş veri özelliklerinden tam olarak yararlanabilirsiniz.
+Verileri tasarımcıya aktarmak için veri [kümelerini](concept-data.md#datasets) kullanmanızı öneririz. Bir veri kümesini kaydettiğinizde, [sürüm oluşturma ve izleme](how-to-version-track-datasets.md) ve [veri izleme](how-to-monitor-datasets.md)gibi gelişmiş veri özelliklerinden tam olarak yararlanabilirsiniz.
 
-### <a name="register-a-dataset"></a>Bir veri kümesi kaydetme
+### <a name="register-a-dataset"></a>Veri kümesini kaydetme
 
-Varolan veri kümelerini [Programlı olarak SDK'ya](how-to-create-register-datasets.md#use-the-sdk) veya [Azure Machine Learning stüdyosuna](how-to-create-register-datasets.md#use-the-ui)kaydedebilirsiniz.
+Var olan veri kümelerini [SDK ile program aracılığıyla](how-to-create-register-datasets.md#use-the-sdk) veya [Azure Machine Learning Studio 'da görsel olarak](how-to-create-register-datasets.md#use-the-ui)kaydedebilirsiniz.
 
-Ayrıca, herhangi bir tasarımcı modülü için çıktıyı veri kümesi olarak kaydedebilirsiniz.
+Ayrıca, herhangi bir tasarımcı modülünün çıkışını bir veri kümesi olarak kaydedebilirsiniz.
 
-1. Kaydetmek istediğiniz verileri oluşturan modülü seçin.
+1. Kaydetmek istediğiniz verilerin çıkışı olan modülü seçin.
 
-1. Özellikler bölmesinde, **Çıktılar** > **Kayıt veri kümesini**seçin.
+1. Özellikler bölmesinde, **çıktılar** > **kayıt veri kümesi**' ni seçin.
 
-    ![Register Dataset seçeneğine nasıl gidilir gösteren ekran görüntüsü](media/how-to-designer-import-data/register-dataset-designer.png)
+    ![Register DataSet seçeneğine nasıl gidebileceğiniz gösteren ekran görüntüsü](media/how-to-designer-import-data/register-dataset-designer.png)
 
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma
 
-Kayıtlı veri kümeleriniz, **Datasets** > **My Datasets**altında modül paletinde bulunabilir. Bir veri kümesi ni kullanmak için sürükleyin ve boru hattı tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını paletteki diğer modüllere bağlayın.
+Kayıtlı veri kümeleriniz **, veri kümeleri veri kümeleri altında** > bulunan modül paletinde**bulunabilir.** Bir veri kümesini kullanmak için sürükleyin ve ardışık düzen tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını paletteki diğer modüllere bağlayın.
 
-![Tasarımcı paletinde kaydedilen veri kümelerinin konumunu gösteren ekran görüntüsü](media/how-to-designer-import-data/use-datasets-designer.png)
+![Tasarımcı paletindeki kaydedilen veri kümelerinin konumunu gösteren ekran görüntüsü](media/how-to-designer-import-data/use-datasets-designer.png)
 
-
-> [!NOTE]
-> Tasarımcı şu anda yalnızca [tabular veri kümelerini](how-to-create-register-datasets.md#dataset-types)işlemeyi destekler. [Dosya veri kümelerini](how-to-create-register-datasets.md#dataset-types)kullanmak istiyorsanız, Python ve R için kullanılabilen Azure Machine Learning SDK'yı kullanın.
-
-## <a name="import-data-using-the-import-data-module"></a>İçe Alma Verisi modüllerini kullanarak veri alma
-
-Veri almak için veri kümelerini kullanmanızı öneririz, ancak [Veri Alma](algorithm-module-reference/import-data.md) modüllerini de kullanabilirsiniz. Veri Alma modülü, Azure Machine Learning'de veri kümenizi kaydetmeyi atlar ve verileri doğrudan bir [veri deposundan](concept-data.md#datastores) veya HTTP URL'sinden içeri aktarıyor.
-
-Alma Verileri modülünün nasıl kullanılacağı hakkında ayrıntılı bilgi [için, İçe İşlem Verileri başvuru sayfasına](algorithm-module-reference/import-data.md)bakın.
 
 > [!NOTE]
-> Veri kümenizde çok fazla sütun varsa, aşağıdaki hatayla karşılaşabilirsiniz: "Doğrulama boyut sınırlaması nedeniyle başarısız oldu". Bunu önlemek için [veri kümesini Veri Kümeleri arabirimine kaydedin.](how-to-create-register-datasets.md#use-the-ui)
+> Tasarımcı şu anda yalnızca [tablolu veri kümelerini](how-to-create-register-datasets.md#dataset-types)işlemeyi destekliyor. [Dosya veri kümelerini](how-to-create-register-datasets.md#dataset-types)kullanmak istiyorsanız Python ve R için kullanılabilen Azure Machine Learning SDK 'sını kullanın.
+
+## <a name="import-data-using-the-import-data-module"></a>Verileri Içeri aktarma modülünü kullanarak içeri aktarma
+
+Verileri içeri aktarmak için veri kümelerini kullanmanızı öneririz, ayrıca [verileri Içeri aktarma](algorithm-module-reference/import-data.md) modülünü de kullanabilirsiniz. Veri Içeri aktarma modülü, veri kümenizin Azure Machine Learning kaydedilmesini atlar ve verileri doğrudan bir [veri deposundan](concept-data.md#datastores) veya http url 'sinden içeri aktarır.
+
+Veri alma modülünü kullanma hakkında ayrıntılı bilgi için bkz. [veri başvurusunu Içeri aktarma sayfası](algorithm-module-reference/import-data.md).
+
+> [!NOTE]
+> Veri kümenizin çok fazla sütunu varsa, aşağıdaki hatayla karşılaşabilirsiniz: "boyut sınırlaması nedeniyle doğrulama başarısız oldu". Bunu önlemek için [veri kümesini veri kümeleri arabirimine kaydedin](how-to-create-register-datasets.md#use-the-ui).
 
 ## <a name="supported-sources"></a>Desteklenen kaynaklar
 
-Bu bölümde tasarımcı tarafından desteklenen veri kaynakları listelenir. Veriler tasarımcıya bir veri deposundan veya [tabular veri kümesinden](how-to-create-register-datasets.md#dataset-types)gelir.
+Bu bölüm, tasarımcı tarafından desteklenen veri kaynaklarını listeler. Veriler bir veri deposundan veya [tablo veri kümesinden](how-to-create-register-datasets.md#dataset-types)tasarımcıya gelir.
 
-### <a name="datastore-sources"></a>Datastore kaynakları
-Desteklenen veri deposu kaynaklarının listesi için Azure [depolama hizmetlerinde Access verilerine](how-to-access-data.md#supported-data-storage-service-types)bakın.
+### <a name="datastore-sources"></a>Veri deposu kaynakları
+Desteklenen veri deposu kaynaklarının listesi için bkz. [Azure Storage hizmetlerindeki verilere erişme](how-to-access-data.md#supported-data-storage-service-types).
 
-### <a name="tabular-dataset-sources"></a>Tabular veri seti kaynakları
+### <a name="tabular-dataset-sources"></a>Tablo veri kümesi kaynakları
 
-Tasarımcı aşağıdaki kaynaklardan oluşturulan tabular veri kümelerini destekler:
- * Sınırlı dosyalar
+Tasarımcı, aşağıdaki kaynaklardan oluşturulan tablo veri kümelerini destekler:
+ * Sınırlandırılmış dosyalar
  * JSON dosyaları
  * Parquet dosyaları
  * SQL sorguları
 
 ## <a name="data-types"></a>Veri türleri
 
-Tasarımcı dahili olarak aşağıdaki veri türlerini tanır:
+Tasarımcı aşağıdaki veri türlerini dahili olarak tanır:
 
 * Dize
 * Tamsayı
@@ -83,12 +83,12 @@ Tasarımcı dahili olarak aşağıdaki veri türlerini tanır:
 * Boole
 * Tarih
 
-Tasarımcı, modüller arasında veri aktarmak için bir iç veri türü kullanır. [Dataset'e Dönüştür](algorithm-module-reference/convert-to-dataset.md) modüllerini kullanarak verilerinizi açıkça veri tablosu biçimine dönüştürebilirsiniz. İç biçim dışındaki biçimleri kabul eden herhangi bir modül, verileri bir sonraki modüle geçirmeden önce sessizce dönüştürür.
+Tasarımcı, modüller arasında veri geçirmek için bir iç veri türü kullanır. Veri [kümesine Dönüştür](algorithm-module-reference/convert-to-dataset.md) modülünü kullanarak verilerinizi veri tablosu biçimine açıkça dönüştürebilirsiniz. İç biçim dışındaki biçimleri kabul eden herhangi bir modül, verileri bir sonraki modüle geçirmeden önce sessizce dönüştürür.
 
 ## <a name="data-constraints"></a>Veri kısıtlamaları
 
-Tasarımcıdaki modüller bilgi işlem hedefinin boyutuyla sınırlıdır. Daha büyük veri kümeleri için daha büyük bir Azure Machine Learning bilgi işlem kaynağı kullanmanız gerekir. Azure Machine Learning bilgi işlem hakkında daha fazla bilgi için Azure [Machine Learning'de bilgi işlem hedefleri nelerdir?](concept-compute-target.md#azure-machine-learning-compute-managed)
+Tasarlayıcıdaki modüller, işlem hedefinin boyutuyla sınırlıdır. Daha büyük veri kümelerinde daha büyük bir Azure Machine Learning işlem kaynağı kullanmanız gerekir. Azure Machine Learning işlem hakkında daha fazla bilgi için bkz. [Azure Machine Learning işlem hedefleri nelerdir?](concept-compute-target.md#azure-machine-learning-compute-managed)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tutorial ile tasarımcının temellerini [öğrenin: Tasarımcı ile otomobil fiyatını tahmin edin.](tutorial-designer-automobile-price-train-score.md)
+Öğreticiyle tasarımcı 'nın temellerini öğrenin [: tasarımcı ile otomobil fiyatını tahmin](tutorial-designer-automobile-price-train-score.md)edin.

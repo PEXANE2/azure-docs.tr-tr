@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlatma: Özel bir IP adresi kullanarak sanal bir makineye bağlanma: Azure Bastion'
-description: Bu makalede, sanal bir makineden Azure Bastion ana bilgisayarını nasıl oluşturup özel bir IP adresi kullanarak güvenli bir şekilde nasıl bağlanabilirsiniz öğrenin.
+title: 'Hızlı başlangıç: özel IP adresi kullanarak bir sanal makineye bağlanma: Azure savunma'
+description: Bu makalede, bir sanal makineden Azure savunma ana bilgisayarı oluşturmayı ve özel bir IP adresi kullanarak güvenli bir şekilde bağlamayı öğrenin.
 services: bastion
 author: charwen
 ms.service: bastion
@@ -8,90 +8,90 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: charwen
 ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619264"
 ---
-# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Hızlı başlatma: Özel bir IP adresi ve Azure Kalesi kullanarak sanal makineye bağlanma
+# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Hızlı başlangıç: özel IP adresi ve Azure savunma kullanarak bir sanal makineye bağlanma
 
-Bu hızlı başlangıç makalesi, özel bir IP adresi kullanarak sanal bir makineye nasıl bağlanabileceğinizi gösterir. Bastion üzerinden bağlandığınızda, sanal makinelerinizin genel bir IP adresine ihtiyacı yoktur. Bu makaledeki adımlar, Portaldaki sanal makineniz aracılığıyla Bastion'u sanal ağınıza dağıtmanıza yardımcı olur. Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal makineler tarafından kullanılabilir.
+Bu hızlı başlangıç makalesinde, özel bir IP adresi kullanarak bir sanal makineye nasıl bağlanabilmeniz gösterilmektedir. Savunma aracılığıyla bağlandığınızda, sanal makinelerinizin ortak bir IP adresine ihtiyacı yoktur. Bu makaledeki adımlar, portaldaki sanal makineniz aracılığıyla sanal ağınıza yönelik savunma dağıtmanıza yardımcı olur. Hizmet sağlandıktan sonra, RDP/SSH deneyimi aynı sanal ağdaki tüm sanal makineler için kullanılabilir.
 
 ## <a name="prerequisites"></a><a name="prereq"></a>Ön koşullar
 
-* Azure sanal ağı.
-* 3389 portu açık olan sanal ağda bulunan bir Azure sanal makinesi.
+* Bir Azure sanal ağı.
+* Sanal ağda bulunan ve 3389 numaralı bağlantı noktası açık olan bir Azure sanal makinesi.
 
 ### <a name="example-values"></a>Örnek değerler
 
 |**Adı** | **Değer** |
 | --- | --- |
-| Adı |  VNet1Burçyasyon |
+| Adı |  VNet1Bastion |
 | Bölge | eastus |
 | Sanal ağ |  VNet1 |
-| + Subnet Adı | AzureBastionSubnet |
+| + Alt ağ adı | AzureBastionSubnet |
 | AzureBastionSubnet adresleri |  10.1.254.0/27 |
 | Genel IP adresi |  Yeni oluştur |
-| Genel IP adresi adı | VNet1BurçPIP  |
-| Genel IP adresi SKU |  Standart  |
+| Genel IP adresi adı | VNet1BastionPIP  |
+| Genel IP adresi SKU 'SU |  Standart  |
 | Atama  | Statik |
 
 ## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Bastion konağı oluşturma
 
-Varolan bir sanal makineyi kullanarak portalda bir burç ana bilgisayar oluşturduğunuzda, çeşitli ayarlar sanal makinenize ve/veya sanal ağınıza karşılık gelecek şekilde otomatik olarak varsayılan hale gelir.
+Portalda var olan bir sanal makineyi kullanarak bir savunma ana bilgisayarı oluşturduğunuzda, sanal makinenize ve/veya sanal ağınıza karşılık gelen farklı ayarlar otomatik olarak varsayılan olarak değişir.
 
-1. Azure [portalını](https://portal.azure.com)açın. Sanal makinenize gidin ve **ardından Bağlan'ı**tıklatın.
+1. [Azure Portal](https://portal.azure.com)açın. Sanal makinenize gidin ve **Bağlan**' a tıklayın.
 
    ![sanal makine ayarları](./media/quickstart-host-portal/vm-settings.png)
-1. Açılan dosyadan **Bastion'u**seçin.
-1. Bağlan sayfasında **Bastion'u kullan'ı**seçin.
+1. Açılan menüden, savunma ' **yı seçin.**
+1. Bağlan sayfasında, savunma **kullan**' ı seçin.
 
-   ![burç seçin](./media/quickstart-host-portal/select-bastion.png)
+   ![Savunma seçin](./media/quickstart-host-portal/select-bastion.png)
 
-1. Bastion sayfasında aşağıdaki ayarlar alanlarını doldurun:
+1. Savunma sayfasında, aşağıdaki ayarlar alanlarını doldurun:
 
-   * **Adı**: Burç ana bilgisayarını adlandır
-   * **Alt Ağ**: Bastion kaynağının dağıtılacayacağı sanal ağınuzun alt ağı. Alt ağ **AzureBastionSubnet**adı ile oluşturulmalıdır. Ad, Azure'un Bastion kaynağını hangi alt ağa dağıtacağını bilmesini sağlar. Bu, Ağ Geçidi alt ağından farklıdır. En az /27 veya daha büyük (/27, /26, /25 vb.) bir alt ağ kullanın.
+   * **Ad**: savunma konağını adlandırın
+   * **Alt ağ**: sanal ağınızdaki, savunma kaynağına dağıtılacak alt ağ. Alt ağın **AzureBastionSubnet**adıyla oluşturulması gerekir. Ad, Azure 'un savunma kaynağını hangi alt ağa dağıtacağınızı bilmesini sağlar. Bu, bir ağ geçidi alt ağından farklıdır. En az/27 veya daha büyük (/27,/26,/25 vb.) bir alt ağ kullanın.
    
-      * **Alt net yapılandırması yönet'i**seçin, sonra + **Subnet'i**seçin.
-      * Ekle alt ağ sayfasında **AzureBastionSubnet**yazın.
-      * CIDR gösteriminde adres aralığını belirtin. Örneğin, 10.1.254.0/27.
-      * Alt ağı oluşturmak için **Tamam'ı** seçin. Sayfanın üst kısmında, ayarların geri kalanını tamamlamak için Bastion'a geri gidin.
+      * **Alt ağ yapılandırmasını Yönet**' i seçin ve **+ alt ağ**' ı seçin
+      * Alt ağ Ekle sayfasında, **AzureBastionSubnet**yazın.
+      * CıDR gösteriminde adres aralığını belirtin. Örneğin, 10.1.254.0/27.
+      * Alt ağı oluşturmak için **Tamam ' ı** seçin. Sayfanın üst kısmında, geri dönerek ayarların geri kalanını tamamlayın.
 
-         ![burç ayarlarına gidin](./media/quickstart-host-portal/navigate-bastion.png)
-   * **Genel IP adresi**: RDP/SSH'ye erişilen Bastion kaynağının genel IP'sidir (bağlantı noktası 443'ten fazla). Yeni bir genel IP oluşturun veya varolan bir IP kullanın. Ortak IP adresi, oluşturduğunuz Bastion kaynağıyla aynı bölgede olmalıdır.
-   * **Genel IP adresi adı**: Genel IP adresi kaynağının adı.
-1. Doğrulama ekranında **Oluştur'u**tıklatın. Bastion kaynağı oluşturmak ve dağıtmak için yaklaşık 5 dakika bekleyin.
+         ![Savunma ayarlarına git](./media/quickstart-host-portal/navigate-bastion.png)
+   * **Genel IP adresi**: Bu, RDP/SSH 'ye erişilebilen savunma KAYNAĞıNıN genel IP adresidir (443 numaralı bağlantı noktası üzerinden). Yeni bir genel IP oluşturun veya var olan bir IP 'yi kullanın. Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır.
+   * **Genel IP adresi adı**: genel IP adresi kaynağının adı.
+1. Doğrulama ekranında **Oluştur**' a tıklayın. Savunma kaynağı oluşturma ve dağıtma için 5 dakika bekleyin.
 
-   ![burç ana bilgisayar oluşturma](./media/quickstart-host-portal/bastion-settings.png)
+   ![Savunma Konağı oluştur](./media/quickstart-host-portal/bastion-settings.png)
 
-## <a name="connect"></a><a name="connect"></a>Bağlanma
+## <a name="connect"></a><a name="connect"></a>Bağlan
 
-Bastion sanal ağa dağıtıldıktan sonra ekran bağlantı sayfasına değişir.
+Sanal ağa bağlantı dağıtıldıktan sonra ekran bağlan sayfasına dönüşür.
 
-1. Sanal makinenizin kullanıcı adını ve parolasını yazın. Ardından **Bağlan'ı**seçin.
+1. Sanal makineniz için Kullanıcı adını ve parolayı yazın. Ardından **Bağlan**' ı seçin.
 
    ![bağlanmaya](./media/quickstart-host-portal/connect.png)
-1. Bastion üzerinden bu sanal makineye RDP bağlantısı doğrudan Azure portalında (HTML5 üzerinden) bağlantı noktası 443 ve Bastion hizmetini kullanarak açılır.
+1. Bu sanal makineyle savunma aracılığıyla RDP bağlantısı, bağlantı noktası 443 ve savunma hizmeti kullanılarak doğrudan Azure portal (HTML5 üzerinden) açılır.
 
    ![RDP bağlantısı](./media/quickstart-host-portal/443-rdp.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Sanal ağı ve sanal makineleri kullanmayı bitirdiğinizde, kaynak grubunu ve içerdiği tüm kaynakları silin:
+Sanal ağ ve sanal makineler kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki **Arama** kutusuna *TestRG1'i* girin ve arama sonuçlarından **TestRG1'i** seçin.
+1. Portalın üst kısmındaki **arama** kutusuna *TestRG1* girin ve arama sonuçlarından **TestRG1** öğesini seçin.
 
 2. **Kaynak grubunu sil**'i seçin.
 
-3. **KAYNAK GRUBU ADINI YAZIN** *ve* **Sil'i**seçin.
+3. **Kaynak grubu adını yazmak** için *TestRG1* girin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, sanal ağınız için bir Bastion ana bilgisayarı oluşturdunuz ve ardından Bastion ana bilgisayarı aracılığıyla güvenli bir şekilde sanal bir makineye bağlandınız.
+Bu hızlı başlangıçta, sanal ağınız için bir savunma ana bilgisayarı oluşturdunuz ve ardından savunma ana bilgisayarı aracılığıyla güvenli bir şekilde sanal makineye bağlanırsınız.
 
-* Azure Bastion hakkında daha fazla bilgi edinmek için [Bastion Genel Bakış](bastion-overview.md) ve [Bastion SSS'yi](bastion-faq.md)okuyun.
-* Azure Bastion alt ağıyla Ağ Güvenlik Grupları'nı kullanmak için Bkz. [NSG'lerle Çalışma.](bastion-nsg.md)
-* Azure Bastion ana bilgisayar ayarlarının açıklamalarını içeren yönergeler için [Öğretici'ye](bastion-create-host-portal.md)bakın.
-* Sanal makine ölçeği kümesine bağlanmak için Azure [Bastion kullanarak sanal makine ölçeği kümesine bağlan'a](bastion-connect-vm-scale-set.md)bakın.
+* Azure savunma hakkında daha fazla bilgi edinmek için savunma hakkında [genel bakış](bastion-overview.md) ve savunma [hakkında SSS](bastion-faq.md)makalesini okuyun.
+* Azure savunma alt ağıyla ağ güvenlik gruplarını kullanmak için bkz. [NSG Ile çalışma](bastion-nsg.md).
+* Azure savunma ana bilgisayarı ayarlarının açıklamalarını içeren yönergeler için bkz. [öğreticiye](bastion-create-host-portal.md)bakın.
+* Bir sanal makine ölçek kümesine bağlanmak için bkz. [Azure savunma kullanarak bir sanal makine ölçek kümesine bağlanma](bastion-connect-vm-scale-set.md).

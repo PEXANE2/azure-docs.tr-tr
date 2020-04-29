@@ -1,35 +1,35 @@
 ---
-title: Bağlantı mimarisi - PostgreSQL için Azure Veritabanı - Tek Sunucu
-description: PostgreSQL - Single Server için Azure Veritabanınızın bağlantı mimarisini açıklar.
+title: Bağlantı mimarisi-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı 'nın bağlantı mimarisini açıklar-tek sunucu.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546608"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı'nda bağlantı mimarisi
-Bu makalede, PostgreSQL bağlantı mimarisi için Azure Veritabanı'nın yanı sıra, trafiğin Azure içindeki ve dışındaki istemcilerden PostgreSQL veritabanı örneği için Azure Veritabanınıza nasıl yönlendirileceği açıklanmaktadır.
+# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda bağlantı mimarisi
+Bu makalede PostgreSQL için Azure veritabanı bağlantı mimarisi ve trafiğin Azure 'daki ve dışındaki istemcilerden PostgreSQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
 
 ## <a name="connectivity-architecture"></a>Bağlantı mimarisi
-PostgreSQL için Azure Veritabanınıza bağlantı, gelen bağlantıların kümelerimizdeki sunucunuzun fiziksel konumuna yönlendirmeden sorumlu bir ağ geçidi aracılığıyla kurulur. Aşağıdaki diyagram trafik akışını göstermektedir.
+PostgreSQL için Azure veritabanı 'na bağlantı, gelen bağlantıları kümelerimize ait fiziksel konuma yönlendirmekten sorumlu bir ağ geçidiyle oluşturulur. Aşağıdaki diyagramda trafik akışı gösterilmektedir.
 
 ![Bağlantı mimarisine genel bakış](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-İstemci veritabanına bağlanırken, ağ geçidine bağlanan bir bağlantı dizesi elde ederler. Bu ağ geçidi, bağlantı noktası 5432'yi dinleyen genel bir IP adresine sahiptir. Veritabanı kümesi trafiğinin içinde PostgreSQL için uygun Azure Veritabanı'na iletilir. Bu nedenle, şirket ağları gibi sunucunuza bağlanmak için, giden trafiğin ağ geçitlerimize erişebilmesi için istemci tarafındaki güvenlik duvarını açmak gerekir. Aşağıda bölge ağ geçitlerimiz tarafından kullanılan IP adreslerinin tam listesini bulabilirsiniz.
+İstemci veritabanına bağlandığında, ağ geçidine bağlanan bir bağlantı dizesi alırlar. Bu ağ geçidinin 5432 numaralı bağlantı noktasını dinleyen bir genel IP adresi vardır. Veritabanı kümesi trafiği, PostgreSQL için uygun Azure veritabanına iletilir. Bu nedenle, şirket ağları gibi sunucunuza bağlanmak için, giden trafiğin ağ geçitlerimize ulaşmasını sağlamak üzere istemci tarafı güvenlik duvarını açmanız gerekir. Aşağıda, bölge başına ağ geçitlerimiz tarafından kullanılan IP adreslerinin tamamen bir listesini bulabilirsiniz.
 
-## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>PostgreSQL ağ geçidi IP adresleri için Azure Veritabanı
-Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL ağ geçidi için Azure Veritabanı'nın birincil ve ikincil IP'leri listelemektedir. Birincil IP adresi ağ geçidinin geçerli IP adresidir ve ikinci IP adresi birincil hata durumunda bir failover IP adresidir. Belirtildiği gibi, müşteriler her iki IP adresine de giden izin vermelidir. İkinci IP adresi, PostgreSQL için Azure Veritabanı tarafından bağlantıları kabul etmek üzere etkinleştirilene kadar hiçbir hizmeti dinlemez.
+## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>PostgreSQL için Azure veritabanı ağ geçidi IP adresleri
+Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritabanı ağ geçidinin birincil ve ikincil IP 'Leri listelenmektedir. Birincil IP adresi, ağ geçidinin geçerli IP adresidir ve ikinci IP adresi birincil hata durumunda bir yük devretme IP adresidir. Belirtildiği gibi, müşteriler her iki IP adresine de giden trafiği izin vermelidir. İkinci IP adresi, PostgreSQL için Azure veritabanı tarafından bağlantıları kabul etmek üzere etkinleştirilinceye kadar hiçbir hizmet üzerinde dinleme yapmaz.
 
-| **Bölge Adı** | **Ağ Geçidi IP Adresleri** |
+| **Bölge Adı** | **Ağ geçidi IP adresleri** |
 |:----------------|:-------------|
 | Orta Avustralya| 20.36.105.0     |
-| Avustralya Merkez2     | 20.36.113.0   |
+| Avustralya Central2     | 20.36.113.0   |
 | Doğu Avustralya | 13.75.149.87, 40.79.161.1     |
 | Avustralya Güneydoğu |191.239.192.109, 13.73.109.251   |
 | Güney Brezilya | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
@@ -59,7 +59,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL ağ geçidi için Az
 | Güney Afrika Batı | 102.133.24.0   |
 | Orta Güney ABD |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Güneydoğu Asya | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
-| BAE Merkez | 20.37.72.64  |
+| BAE Orta | 20.37.72.64  |
 | BAE Kuzey | 65.52.248.0    |
 | Güney Birleşik Krallık | 51.140.184.11   |
 | Batı Birleşik Krallık | 51.141.8.11  |
@@ -71,5 +71,5 @@ Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL ağ geçidi için Az
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure portalını kullanarak PostgreSQL güvenlik duvarı kuralları için Azure Veritabanı oluşturma ve yönetme](./howto-manage-firewall-using-portal.md)
-* [Azure CLI'yi kullanarak PostgreSQL güvenlik duvarı kuralları için Azure Veritabanı oluşturma ve yönetme](./howto-manage-firewall-using-cli.md)
+* [Azure portal kullanarak PostgreSQL için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](./howto-manage-firewall-using-portal.md)
+* [Azure CLı kullanarak PostgreSQL için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](./howto-manage-firewall-using-cli.md)

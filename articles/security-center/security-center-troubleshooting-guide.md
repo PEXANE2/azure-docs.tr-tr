@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi Sorun Giderme Kılavuzu | Microsoft Belgeleri
-description: Bu kılavuz, Azure Güvenlik Merkezi ile ilgili sorunları gidermesi gereken BT uzmanları, güvenlik analistleri ve bulut yöneticileri içindir.
+description: Bu kılavuz BT uzmanları, Güvenlik analistleri ve Azure Güvenlik Merkezi ile ilgili sorunları gidermek için gereken bulut yöneticilerine yöneliktir.
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585334"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
 Bu kılavuz, kuruluşları Azure Güvenlik Merkezi'ni kullanmayı planlayan ve Güvenlik Merkezi ile ilgili sorunları gidermeye ihtiyaç duyan bilgi teknolojisi (BT) uzmanları, bilgi güvenlik analizi uzmanları ve bulut yöneticileri içindir.
 
-Güvenlik Merkezi, veri toplamak ve depolamak için Log Analytics aracısını kullanır. Daha fazla bilgi edinmek için [Azure Güvenlik Merkezi Platform Geçişi](security-center-platform-migration.md) makalesine bakın. Bu makaledeki bilgiler, Log Analytics temsilcisine geçtikten sonra Güvenlik Merkezi işlevselliğini temsil eder.
+Güvenlik Merkezi, veri toplamak ve depolamak için Log Analytics aracısını kullanır. Daha fazla bilgi edinmek için [Azure Güvenlik Merkezi Platform Geçişi](security-center-platform-migration.md) makalesine bakın. Bu makaledeki bilgiler, Log Analytics aracısına geçişten sonra Güvenlik Merkezi işlevlerini temsil eder.
 
 ## <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
@@ -54,47 +54,47 @@ Denetim günlüğü, kaynaklarınız üzerinde gerçekleştirilen tüm yazma iş
 
 ## <a name="log-analytics-agent"></a>Log Analytics aracısı
 
-Security Center, Azure sanal makinelerinizden güvenlik verileri toplamak için Azure Monitor hizmeti tarafından kullanılan aracıyla Log Analytics aracısını kullanır. Veri toplama etkinleştirilip aracı hedef makineye doğru şekilde yüklendikten sonra, aşağıdaki işlem yürütülmelidir:
+Güvenlik Merkezi, Azure sanal makinelerinizden güvenlik verilerini toplamak için Azure Izleyici hizmeti tarafından kullanılan aracıdır Log Analytics aracısını kullanır. Veri toplama etkinleştirilip aracı hedef makineye doğru şekilde yüklendikten sonra, aşağıdaki işlem yürütülmelidir:
 
 * HealthService.exe
 
-Hizmet yönetim konsolu (services.msc) açarsanız, aşağıda gösterildiği gibi log Analytics aracısı hizmetini de görürsünüz:
+Hizmetler yönetim konsolunu (Services. msc) açarsanız, aşağıda gösterildiği gibi Log Analytics aracı hizmetini de görürsünüz:
 
 ![Hizmetler](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Aracının hangi sürümüne sahip olduğunuzu görmek **için, İşlemler**sekmesinde Görev Yöneticisi'ni açın, **Log Analytics aracısı Hizmetini**bulun, üzerine sağ tıklayın ve **Özellikler'i**tıklatın. **Processes** **Ayrıntılar** sekmesinde aşağıda gösterildiği gibi dosya sürümüne bakın:
+Aracının hangi sürümüne sahip olduğunu görmek için, **Görev Yöneticisi**'ni açın, **işler** sekmesinde **Log Analytics aracı hizmetini**bulun, sağ tıklayın ve **Özellikler**' e tıklayın. **Ayrıntılar** sekmesinde aşağıda gösterildiği gibi dosya sürümüne bakın:
 
 ![Dosya](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-## <a name="log-analytics-agent-installation-scenarios"></a>Log Analytics aracı yükleme senaryoları
+## <a name="log-analytics-agent-installation-scenarios"></a>Log Analytics Aracısı yükleme senaryoları
 
-Log Analytics aracısını bilgisayarınıza yüklerken farklı sonuçlar üretebilecek iki yükleme senaryosu vardır. Desteklenen senaryolar şunlardır:
+Log Analytics aracısını bilgisayarınıza yüklerken farklı sonuçlar üretemeyen iki yükleme senaryosu vardır. Desteklenen senaryolar şunlardır:
 
-* **Aracı Güvenlik Merkezi tarafından otomatik olarak yüklenir**: Bu senaryoda hem Güvenlik Merkezi hem de Günlük aramasında uyarıları görüntüleyebilirsiniz. Kaynağın ait olduğu abonelik için güvenlik ilkesinde yapılandırılan e-posta adresine e-posta bildirimleri alırsınız.
+* **Aracı Güvenlik Merkezi tarafından otomatik olarak yüklenir**: Bu senaryoda hem Güvenlik Merkezi hem de Günlük aramasında uyarıları görüntüleyebilirsiniz. Kaynağın ait olduğu aboneliğe ait güvenlik ilkesinde yapılandırılmış e-posta adresine e-posta bildirimleri alırsınız.
 
-* **Azure'da bulunan bir VM'ye el ile yüklenen temsilci**: Bu senaryoda, Şubat 2017'den önce el ile indirilen ve yüklenen aracıları kullanıyorsanız, yalnızca çalışma alanının ait olduğu abonelikte filtre uygulamanız durumunda Güvenlik Merkezi portalındaki uyarıları görüntüleyebilirsiniz. Kaynağın ait olduğu abonelikte filtre ler ederseniz, herhangi bir uyarı görmezsiniz. Çalışma alanının ait olduğu abonelik için güvenlik ilkesinde yapılandırılan e-posta adresine e-posta bildirimleri alırsınız.
+* **Aracı Azure 'da bulunan BIR VM 'ye el ile yüklendi**: Bu senaryoda, karşıdan yüklenen ve 2017 Şubat 'tan önce el ile yüklenen aracılar kullanıyorsanız, uyarıları Güvenlik Merkezi portalında görüntüleyerek yalnızca çalışma alanının ait olduğu abonelikte filtre uygulamanız gerekir. Kaynağın ait olduğu abonelikte filtre uygulamanız durumunda herhangi bir uyarı görmezsiniz. Çalışma alanının ait olduğu aboneliğe ait güvenlik ilkesinde yapılandırılmış e-posta adresine e-posta bildirimleri alırsınız.
 
 > [!NOTE]
 > İkinci senaryoda açıklanan davranışı önlemek için aracının en son sürümünü indirdiğinizden emin olun.
 
-## <a name="monitoring-agent-health-issues"></a>Ajan sağlık sorunlarını izleme<a name="mon-agent"></a>
+## <a name="monitoring-agent-health-issues"></a>Aracı sistem durumu sorunlarını izleme<a name="mon-agent"></a>
 
 **İzleme durumu**, Güvenlik Merkezi’nin otomatik sağlama için başlatılmış VM’leri ve bilgisayarları neden başarıyla izleyemediğini tanımlar. Aşağıdaki tabloda **İzleme durumu** değerleri, açıklamaları ve çözüm adımları gösterilmektedir.
 
 | İzleme durumu | Açıklama | Çözüm adımları |
 |---|---|---|
-| Bekleyen aracı yüklemesi | Log Analytics aracısı yüklemesi hala çalışıyor.  Yükleme birkaç saat sürebilir. | Otomatik yükleme işlemi tamamlanana kadar bekleyin. |
-| Güç durumu kapalı | VM durduruldu.  Log Analytics aracısı yalnızca çalışan bir VM'ye yüklenebilir. | VM’yi yeniden başlatın. |
-| Eksik veya geçersiz Azure VM aracısı | Log Analytics aracısı henüz yüklenmedi.  Güvenlik Merkezi’nin uzantıyı yüklemesi için geçerli bir Azure VM aracısı gereklidir. | Azure VM aracısını VM’ye yükleyin, yeniden yükleyin veya yükseltin. |
-| VM durumu yükleme için hazır değil  | VM yüklemeye hazır olmadığından Log Analytics aracısı henüz yüklenmedi. VM aracısı veya VM sağlama ile ilgili bir sorun nedeniyle VM yükleme için hazır değil. | Sanal makinenizin durumunu denetleyin. Portalda **Sanal Makineler**’e geri dönün ve durum bilgisi için VM’yi seçin. |
-|Yükleme başarısız oldu - genel hata | Log Analytics aracısı yüklendi, ancak bir hata nedeniyle başarısız oldu. | [Uzantıyı el ile yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) veya Güvenlik Merkezi’nin yüklemeyi yeniden denemesi için uzantıyı kaldırın. |
-| Yükleme başarısız oldu - yerel aracı zaten yüklü | Log Analytics aracıyükleme başarısız oldu. Güvenlik Merkezi, VM'de zaten yüklü olan yerel bir aracıyı (Log Analytics veya System Center Operations Manager) tanımladı. VM'nin iki ayrı çalışma alanı için bildirdiği çoklu homing yapılandırmasını önlemek için Log Analytics aracı yüklemesi durduruldu. | Çözümlemek için iki yol vardır: [Uzantıyı el ile yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) ve istediğiniz çalışma alanına bağlayın. Veya, istediğiniz çalışma alanını varsayılan çalışma alanı olarak ayarlayın ve aracının otomatik sağlamasını etkinleştirin.  Bkz. [otomatik sağlamayı etkinleştirme](security-center-enable-data-collection.md). |
-| Aracı çalışma alanına bağlanamıyor | Log Analytics aracısı yüklendi ancak ağ bağlantısı nedeniyle başarısız oldu.  İnternet erişiminin olduğundan veya aracı için geçerli bir HTTP ara sunucusunun yapılandırıldığından emin olun. | Bkz. Monitoring agent ağ gereksinimleri. |
-| Aracı eksik veya bilinmeyen çalışma alanına bağlandı | Güvenlik Merkezi, VM'ye yüklenen Log Analytics aracısının erişimi olmayan bir çalışma alanına bağlı olduğunu belirlemiştir. | Bu durum iki koşulda meydana gelebilir. Çalışma alanı silindi ve artık mevcut değil. Aracıyı doğru çalışma alanıyla yeniden yükleyin veya aracıyı kaldırıp Güvenlik Merkezi’nin otomatik sağlama yüklemesini tamamlamasını bekleyin. İkinci koşul ise çalışma alanının, Güvenlik Merkezi’nin izinli olmadığı bir aboneliğe ait olmasıdır. Güvenlik Merkezi, aboneliklerin Microsoft Güvenlik Kaynak Sağlayıcısı'na erişim izni vermesini gerektirir. Etkinleştirmek için aboneliği Microsoft Güvenlik Kaynak Sağlayıcısı’na kaydedin. Bu işlem API, PowerShell, portal veya yalnızca Güvenlik Merkezi'ndeki **Genel Bakış** Panosunda abonelik filtrelenerek yapılabilir. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
-| Aracı yanıt vermiyor veya kimliği eksik | Güvenlik Merkezi, aracı yüklü olsa bile VM’den taranan güvenlik verilerini alamıyor. | Aracı, sinyal de dahil olmak üzere herhangi bir veri bildirmiyor. Aracı zarar görmüş olabilir veya trafiği engelleyen bir durum vardır. Veya aracı veri bildiriyor, ancak bir Azure kaynak kimliği eksik olduğundan verileri Azure VM ile eşleştirmek imkansız. Linux'un sorun giderme için, [Linux için Log Analytics Agent için Sorun Giderme Kılavuzu'na](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)bakın. Windows’da sorun gidermek için bkz. [Windows Sanal Makineleri’nde Sorun Giderme](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
-| Aracı yüklü değil | Veri toplama devre dışıdır. | Güvenlik ilkesinde veri toplamayı açın veya Log Analytics aracısını el ile yükleyin. |
+| Bekleyen aracı yüklemesi | Log Analytics Aracısı yüklemesi hala çalışıyor.  Yükleme birkaç saat sürebilir. | Otomatik yükleme işlemi tamamlanana kadar bekleyin. |
+| Güç durumu kapalı | VM durduruldu.  Log Analytics Aracısı yalnızca çalıştıran bir VM 'ye yüklenebilir. | VM’yi yeniden başlatın. |
+| Eksik veya geçersiz Azure VM aracısı | Log Analytics Aracısı henüz yüklenmedi.  Güvenlik Merkezi’nin uzantıyı yüklemesi için geçerli bir Azure VM aracısı gereklidir. | Azure VM aracısını VM’ye yükleyin, yeniden yükleyin veya yükseltin. |
+| VM durumu yükleme için hazır değil  | VM yüklenmeye için kullanılamadığından Log Analytics Aracısı henüz yüklenmedi. VM aracısı veya VM sağlama ile ilgili bir sorun nedeniyle VM yükleme için hazır değil. | Sanal makinenizin durumunu denetleyin. Portalda **Sanal Makineler**’e geri dönün ve durum bilgisi için VM’yi seçin. |
+|Yükleme başarısız oldu - genel hata | Log Analytics Aracısı yüklendi, ancak bir hata nedeniyle başarısız oldu. | [Uzantıyı el ile yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) veya Güvenlik Merkezi’nin yüklemeyi yeniden denemesi için uzantıyı kaldırın. |
+| Yükleme başarısız oldu - yerel aracı zaten yüklü | Aracı yüklemesi Log Analytics başarısız oldu. Güvenlik Merkezi, VM 'de zaten yüklü olan bir yerel aracı (Log Analytics veya System Center Operations Manager) tanımladı. VM 'nin iki ayrı çalışma alanına bildirdiği çok girişli yapılandırmayı önlemek için Log Analytics aracı yüklemesi durdurulur. | Çözümlemek için iki yol vardır: [Uzantıyı el ile yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) ve istediğiniz çalışma alanına bağlayın. Veya, istediğiniz çalışma alanını varsayılan çalışma alanı olarak ayarlayın ve aracının otomatik sağlamasını etkinleştirin.  Bkz. [otomatik sağlamayı etkinleştirme](security-center-enable-data-collection.md). |
+| Aracı çalışma alanına bağlanamıyor | Log Analytics Aracısı yüklendi, ancak ağ bağlantısı nedeniyle başarısız oldu.  İnternet erişiminin olduğundan veya aracı için geçerli bir HTTP ara sunucusunun yapılandırıldığından emin olun. | Bkz. Monitoring agent ağ gereksinimleri. |
+| Aracı eksik veya bilinmeyen çalışma alanına bağlandı | Güvenlik Merkezi, VM 'de yüklü Log Analytics aracısının, erişimi olmayan bir çalışma alanına bağlı olduğunu belirledi. | Bu durum iki koşulda meydana gelebilir. Çalışma alanı silindi ve artık mevcut değil. Aracıyı doğru çalışma alanıyla yeniden yükleyin veya aracıyı kaldırıp Güvenlik Merkezi’nin otomatik sağlama yüklemesini tamamlamasını bekleyin. İkinci koşul ise çalışma alanının, Güvenlik Merkezi’nin izinli olmadığı bir aboneliğe ait olmasıdır. Güvenlik Merkezi, aboneliklerin Microsoft Güvenlik Kaynak Sağlayıcısı'na erişim izni vermesini gerektirir. Etkinleştirmek için aboneliği Microsoft Güvenlik Kaynak Sağlayıcısı’na kaydedin. Bu işlem API, PowerShell, portal veya yalnızca Güvenlik Merkezi'ndeki **Genel Bakış** Panosunda abonelik filtrelenerek yapılabilir. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
+| Aracı yanıt vermiyor veya kimliği eksik | Güvenlik Merkezi, aracı yüklü olsa bile VM’den taranan güvenlik verilerini alamıyor. | Aracı, sinyal de dahil olmak üzere herhangi bir veri bildirmiyor. Aracı zarar görmüş olabilir veya trafiği engelleyen bir durum vardır. Ya da, aracı verileri raporluyor, ancak Azure Kaynak KIMLIĞI eksik olduğundan, verileri Azure VM ile eşleştirmek imkansız olabilir. Linux sorunlarını gidermek için bkz. [Linux için Log Analytics Aracısı Için sorun giderme kılavuzu](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Windows’da sorun gidermek için bkz. [Windows Sanal Makineleri’nde Sorun Giderme](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
+| Aracı yüklü değil | Veri toplama devre dışıdır. | Güvenlik ilkesinde veri toplamayı açın veya Log Analytics aracısını el ile yükleyebilirsiniz. |
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Sorun giderme izleme aracısı ağ gereksinimleri<a name="mon-network-req"></a>
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>İzleme Aracısı ağ gereksinimleri sorunlarını giderme<a name="mon-network-req"></a>
 
 Aracıların Güvenlik Merkezi’ne bağlanması ve kaydolması için, bağlantı noktası numaraları ve etki alanı URL’leri dahil olmak üzere ağ kaynaklarına erişebilmesi gerekir.
 
@@ -103,12 +103,12 @@ Aracıların Güvenlik Merkezi’ne bağlanması ve kaydolması için, bağlant�
 
 Aşağıdaki tabloda iletişim için gereken kaynaklar gösterilmektedir.
 
-| Aracı Kaynağı | Bağlantı Noktaları | HTTPS denetlemesini atlama |
+| Aracı Kaynağı | Bağlantı noktaları | HTTPS denetlemesini atlama |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Evet |
-| *.oms.opinsights.azure.com | 443 | Evet |
-| *.blob.core.windows.net | 443 | Evet |
-| *.azure-automation.net | 443 | Evet |
+| *.ods.opinsights.azure.com | 443 | Yes |
+| *.oms.opinsights.azure.com | 443 | Yes |
+| *.blob.core.windows.net | 443 | Yes |
+| *.azure-automation.net | 443 | Yes |
 
 Aracıyla ekleme sorunları yaşarsanız, [Operations Management Suite ekleme sorunlarını giderme](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) makalesini okuduğunuzdan emin olun.
 
@@ -143,12 +143,12 @@ Bu belgede, Azure Güvenlik Merkezi'nde güvenlik ilkelerinin nasıl yapılandı
 * [Azure Güvenlik Merkezi Planlama ve İşlemler Kılavuzu](security-center-planning-and-operations-guide.md) - Azure Güvenlik Merkezi'ni benimsemek için tasarım ile ilgili dikkat edilmesi gerekenleri planlama ve anlama hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md) - Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) - Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin
-* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını anlama](security-center-alerts-type.md)
+* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını anlama](security-center-alerts-type.md)
 * [Öğretici: Güvenlik olaylarına yanıt verme](tutorial-security-incident.md)
 * [Azure Güvenlik Merkezi'nde Uyarıları Doğrulama](security-center-alert-validation.md)
 * [Azure Güvenlik Merkezi'ndeki E-posta Önerileri](security-center-provide-security-contact-details.md)
 * [Azure Güvenlik Merkezi’nde Güvenlik Olaylarını İşleme](security-center-incident.md)
 * [Azure Güvenlik Merkezi algılama özellikleri](security-center-detection-capabilities.md)
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md) - İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi SSSS](faq-general.md) - Hizmeti kullanma hakkında sık sorulan soruları bulma
-* [Azure Güvenlik Blogu](https://blogs.msdn.com/b/azuresecurity/) — Azure güvenliği ve uyumluluğu yla ilgili blog gönderilerini bulun
+* [Azure Güvenlik Merkezi hakkında SSS](faq-general.md) — hizmeti kullanma hakkında sık sorulan soruları bulun
+* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) — Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun

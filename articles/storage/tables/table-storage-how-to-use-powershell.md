@@ -1,6 +1,6 @@
 ---
-title: PowerShell ile Azure Tablo depolama işlemleri gerçekleştirin | Microsoft Dokümanlar
-description: PowerShell'i kullanarak Azure Table depolama hesabından veri oluşturma, sorgulama, silme gibi yaygın görevleri nasıl çalıştırığınızı öğrenin.
+title: PowerShell ile Azure Tablo depolama işlemlerini gerçekleştirme | Microsoft Docs
+description: PowerShell kullanarak Azure Tablo depolama hesabından veri oluşturma, sorgulama, silme gibi genel görevleri çalıştırmayı öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: article
@@ -8,39 +8,39 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545959"
 ---
-# <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Tablo depolama işlemleri gerçekleştirin 
+# <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Tablo depolama işlemlerini gerçekleştirme 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Tablo depolama, yapılandırılmış, ilişkisel olmayan büyük veri kümelerini depolamak ve sorgulamak için kullanabileceğiniz bir NoSQL veri deposudur. Hizmetin ana bileşenleri tablolar, varlıklar ve özelliklerdir. Tablo varlıkların bir koleksiyondur. Varlık bir özellik kümesidir. Her varlığın tümü ad değeri çiftleri olan en fazla 252 özelliği olabilir. Bu makalede, Azure Tablo Depolama Hizmeti kavramlarını zaten bildiğiniz varsayar. Ayrıntılı bilgi için tablo [hizmeti veri modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) ve [.NET kullanarak Azure Tablo depolamasına başlayın.](../../cosmos-db/table-storage-how-to-use-dotnet.md)
+Azure Tablo depolama, yapılandırılmış ve ilişkisel olmayan verilerin büyük kümelerini depolamak ve sorgulamak için kullanabileceğiniz bir NoSQL veri deposudur. Hizmetin ana bileşenleri tablolar, varlıklar ve özelliklerdir. Bir tablo, varlıkların koleksiyonudur. Bir varlık bir özellikler kümesidir. Her varlık, tüm ad-değer çiftleri olan en fazla 252 özelliğe sahip olabilir. Bu makalede, Azure Tablo depolama hizmeti kavramlarını zaten bildiğiniz varsayılmaktadır. Ayrıntılı bilgi için bkz. [Tablo hizmeti veri modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) ve [.NET kullanarak Azure Tablo depolama ile çalışmaya başlama](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-Bu nasıl yapılsa makale, ortak Azure Tablosu depolama işlemlerini kapsar. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz: 
+Bu nasıl yapılır makalesi, genel Azure Tablo depolama işlemlerini içerir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz: 
 
 > [!div class="checklist"]
 > * Bir tablo oluşturma
-> * Tablo alma
+> * Tablo Alma
 > * Tablo varlıkları ekleme
-> * Tabloyu sorgula
-> * Tablo varlıklarını silme
+> * Tablo sorgulama
+> * Tablo varlıklarını Sil
 > * Bir tablo silme
 
-Bu nasıl yapılır makalesi, yeni bir kaynak grubunda yeni bir Azure Depolama hesabı oluşturmanızı gösterir, böylece işlem bittiğinde hesabınızı kolayca kaldırabilirsiniz. Varolan bir Depolama hesabı kullanmak isterseniz, bunun yerine bunu yapabilirsiniz.
+Bu nasıl yapılır makalesi, işiniz bittiğinde kolayca kaldırabilmeniz için yeni bir kaynak grubunda yeni bir Azure depolama hesabı oluşturmayı gösterir. Bunun yerine var olan bir depolama hesabı kullanıyorsanız bunu yapabilirsiniz.
 
-Örnekler Az PowerShell `Az.Storage (1.1.0 or greater)` modülleri `Az.Resources (1.2.0 or greater)`gerektirir ve . PowerShell penceresinde, sürümü `Get-Module -ListAvailable Az*` bulmak için çalıştırın. Hiçbir şey görüntülenmiyorsa veya yükseltmeniz gerekiyorsa, [Azure PowerShell modüllerini yükle'ye](/powershell/azure/install-az-ps)bakın.
-
-> [!IMPORTANT]
-> PowerShell'in bu Azure özelliğini `Az` kullanmak için modülün yüklü olması gerekir. Geçerli sürümü `AzTable` eski AzureRM modülüyle uyumlu değildir.
-> Gerekirse [Az modülü yüklemek için en son yükleme yönergeleriizleyin.](/powershell/azure/install-az-ps)
-
-Azure PowerShell yüklendikten veya güncelleştirildikten sonra, varlıkları yönetme komutlarına sahip **AzTable**modüllerini yüklemeniz gerekir. Bu modülü yüklemek için PowerShell'i yönetici olarak çalıştırın ve **Install-Module** komutunu kullanın.
+Örnekler az PowerShell Modules `Az.Storage (1.1.0 or greater)` ve `Az.Resources (1.2.0 or greater)`gerektirir. Bir PowerShell penceresinde, sürümü bulmak `Get-Module -ListAvailable Az*` için öğesini çalıştırın. Hiçbir şey görüntülenmiyorsa veya yükseltmeniz gerekiyorsa, bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Modül adı uyumluluğu nedenleriyle bu aynı modülü PowerShell Gallery'de eski adıyla `AzureRmStorageTables` yayınlıyoruz. Bu belge yalnızca yeni ada başvurur.
+> Bu Azure özelliği PowerShell 'den kullanıldığında `Az` modülün yüklü olması gerekir. Geçerli sürümü `AzTable` , eski Azurerd modülüyle uyumlu değil.
+> Gerekirse [az Module 'ü yüklemeye yönelik en son yükleme yönergelerini](/powershell/azure/install-az-ps) izleyin.
+
+Azure PowerShell yüklendikten veya güncelleştirildikten sonra, varlıkları yönetmeye yönelik komutlara sahip olan, **Aztable**modülünü yüklemelisiniz. Bu modülü yüklemek için PowerShell 'i yönetici olarak çalıştırın ve **install-Module** komutunu kullanın.
+
+> [!IMPORTANT]
+> Modül adı uyumluluk nedenleriyle, bu modülü hala PowerShell Galerisi eski adı `AzureRmStorageTables` altında yayımlıyoruz. Bu belge yalnızca yeni ada başvuru oluşturacak.
 
 ```powershell
 Install-Module AzTable
@@ -54,9 +54,9 @@ Install-Module AzTable
 Add-AzAccount
 ```
 
-## <a name="retrieve-list-of-locations"></a>Konumlistesini al
+## <a name="retrieve-list-of-locations"></a>Konumların listesini al
 
-Kullanmak istediğiniz konumdan emin değilseniz, kullanılabilir konumları listeleyebilirsiniz. Liste görüntülendikten sonra, kullanmak istediğiniz öğeyi bulun. Bu örnekler **eastus**kullanın. Bu değeri ileride kullanmak üzere değişken **konumda** saklayın.
+Kullanmak istediğiniz konumdan emin değilseniz, kullanılabilir konumları listeleyebilirsiniz. Liste görüntülendikten sonra, kullanmak istediğiniz öğeyi bulun. Bu örnekler **eastus**kullanır. Bu değeri gelecekteki kullanım için değişken **konumunda** depolayın.
 
 ```powershell
 Get-AzLocation | select Location
@@ -65,9 +65,9 @@ $location = "eastus"
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-[Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutuyla bir kaynak grubu oluşturun. 
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutuyla bir kaynak grubu oluşturun. 
 
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Kaynak grubu adını ileride kullanmak üzere bir değişkende saklayın. Bu örnekte, *eastus* bölgesinde *pshtablesrg* adında bir kaynak grubu oluşturulur.
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Kaynak grubu adını ileride kullanılmak üzere bir değişkende depolayın. Bu örnekte, *eastus* bölgesinde *pshtablesrg* adlı bir kaynak grubu oluşturulur.
 
 ```powershell
 $resourceGroup = "pshtablesrg"
@@ -76,7 +76,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Depolama hesabı oluştur
 
-[New-AzStorageAccount'u](/powershell/module/az.storage/New-azStorageAccount)kullanarak yerel olarak yedekli depolama (LRS) içeren standart bir genel amaçlı depolama hesabı oluşturun. Benzersiz bir depolama hesabı adı belirttiğinden emin olun. Ardından, depolama hesabını temsil eden bağlamı alın. Bir depolama hesabında hareket ederken, kimlik bilgilerinizi tekrar tekrar sağlamak yerine içeriğe başvuruda bulunabilirsiniz.
+[New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)kullanarak yerel olarak yedekli depolama (LRS) ile standart bir genel amaçlı depolama hesabı oluşturun. Benzersiz bir depolama hesabı adı belirttiğinizden emin olun. Ardından, depolama hesabını temsil eden bağlamı alın. Bir depolama hesabında davranırken, kimlik bilgilerinizi tekrar tekrar sağlamak yerine bağlama başvurabilirsiniz.
 
 ```powershell
 $storageAccountName = "pshtablestorage"
@@ -89,9 +89,9 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-new-table"></a>Yeni bir tablo oluşturma
+## <a name="create-a-new-table"></a>Yeni tablo oluştur
 
-Tablo oluşturmak için [Yeni Depolama Tablosu](/powershell/module/az.storage/New-AzStorageTable) cmdlet'ini kullanın. Bu örnekte, tablo `pshtesttable`.
+Tablo oluşturmak için [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) cmdlet 'ini kullanın. Bu örnekte, tablo çağırılır `pshtesttable`.
 
 ```powershell
 $tableName = "pshtesttable"
@@ -100,26 +100,26 @@ New-AzStorageTable –Name $tableName –Context $ctx
 
 ## <a name="retrieve-a-list-of-tables-in-the-storage-account"></a>Depolama hesabındaki tabloların listesini alma
 
-[Get-AzStorageTable'ı](/powershell/module/azure.storage/Get-AzureStorageTable)kullanarak depolama hesabındaki tabloların listesini alın.
+[Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable)kullanarak depolama hesabındaki tabloların listesini alın.
 
 ```powershell
 Get-AzStorageTable –Context $ctx | select Name
 ```
 
-## <a name="retrieve-a-reference-to-a-specific-table"></a>Belirli bir tabloya başvuru alma
+## <a name="retrieve-a-reference-to-a-specific-table"></a>Belirli bir tabloya yönelik bir başvuru alın
 
-Bir tabloda işlemleri gerçekleştirmek için belirli bir tabloya başvuruda bulunulması gerekir. [Get-AzStorageTable'ı](/powershell/module/azure.storage/Get-AzureStorageTable)kullanarak referans alın.
+Bir tabloda işlem gerçekleştirmek için, belirli tabloya bir başvuruya ihtiyacınız vardır. [Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable)kullanarak bir başvuru alın.
 
 ```powershell
 $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ```
 
-## <a name="reference-cloudtable-property-of-a-specific-table"></a>Belirli bir tablonun Başvuru CloudTable özelliği
+## <a name="reference-cloudtable-property-of-a-specific-table"></a>Belirli bir tablonun CloudTable özelliği başvurusu
 
 > [!IMPORTANT]
-> **AzTable** PowerShell modülü ile çalışırken CloudTable kullanımı zorunludur. Bu nesneye başvuru almak için **Get-AzStorageTable** komutunu arayın. Bu komut, zaten yoksa tabloyu da oluşturur.
+> **Aztable** PowerShell modülüyle çalışırken cloudtable kullanımı zorunludur. Bu nesnenin başvurusunu almak için **Get-AzStorageTable** komutunu çağırın. Bu komut, zaten mevcut değilse tabloyu da oluşturur.
 
-**AzTable**kullanarak bir tabloda işlemleri gerçekleştirmek için, belirli bir tablonun CloudTable özelliğine bir başvuru yapmanız gerekir.
+**Aztable**kullanarak bir tablo üzerinde işlem gerçekleştirmek için belirli bir tablonun cloudtable özelliğine başvurunuz olması gerekir.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
@@ -129,7 +129,7 @@ $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
 
 ## <a name="delete-a-table"></a>Bir tablo silme
 
-Bir tabloyu silmek için [Kaldır-AzStorageTable'ı](/powershell/module/az.storage/Remove-AzStorageTable)kullanın. Bu cmdlet, tüm verileri de dahil olmak üzere tabloyu kaldırır.
+Bir tabloyu silmek için [Remove-AzStorageTable](/powershell/module/az.storage/Remove-AzStorageTable)komutunu kullanın. Bu cmdlet, tüm verileri dahil olmak üzere tabloyu kaldırır.
 
 ```powershell
 Remove-AzStorageTable –Name $tableName –Context $ctx
@@ -140,7 +140,7 @@ Get-AzStorageTable –Context $Ctx | select Name
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu nasıl yapılacağının başında yeni bir kaynak grubu ve depolama hesabı oluşturduysanız, kaynak grubunu kaldırarak bu alıştırmada oluşturduğunuz tüm varlıkları kaldırabilirsiniz. Bu komut, kaynak grubunun kendisi kadar grup içinde bulunan tüm kaynakları da siler.
+Bu nasıl yapılır 'ın başlangıcında yeni bir kaynak grubu ve depolama hesabı oluşturduysanız, kaynak grubunu kaldırarak Bu alıştırmada oluşturduğunuz tüm varlıkları kaldırabilirsiniz. Bu komut, Grup içinde bulunan tüm kaynakların yanı sıra kaynak grubunun kendisini de siler.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -148,20 +148,20 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılabilir makalesinde, PowerShell ile ortak Azure Tablo depolama işlemleri hakkında şunları öğrendiniz: 
+Bu nasıl yapılır makalesinde, PowerShell ile sık kullanılan Azure Tablo depolama işlemleri hakkında bilgi edindiniz ve aşağıdakiler dahil olmak üzere: 
 
 > [!div class="checklist"]
 > * Bir tablo oluşturma
-> * Tablo alma
+> * Tablo Alma
 > * Tablo varlıkları ekleme
-> * Tabloyu sorgula
-> * Tablo varlıklarını silme
+> * Tablo sorgulama
+> * Tablo varlıklarını Sil
 > * Bir tablo silme
 
 Daha fazla bilgi için aşağıdaki makalelere bakın
 
 * [Depolama PowerShell cmdlet’leri](/powershell/module/az.storage#storage)
 
-* [PowerShell'den Azure Tablolarla Çalışma - AzureRmStorageTable/AzTable PS Modülü v2.0](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
+* [PowerShell 'den Azure tablolarıyla çalışma-AzureRmStorageTable/AzTable PS modülü v 2.0](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * [Microsoft Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.
