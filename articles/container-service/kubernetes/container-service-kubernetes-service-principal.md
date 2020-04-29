@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure Kubernetes kümesi için hizmet sorumlusu
+title: Kullanım DıŞı Azure Kubernetes kümesi için hizmet sorumlusu
 description: Azure Container Service içindeki bir Kubernetes kümesi için Azure Active Directory hizmet sorumlusu oluşturma ve yönetme
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371129"
 ---
-# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(AmortismanA Uğradı) Konteyner Hizmeti'nde bir Kubernetes kümesi için Azure AD hizmet ilkesi ayarlama
+# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Kullanım DıŞı Kapsayıcı hizmetinde bir Kubernetes kümesi için Azure AD hizmet sorumlusu ayarlama
 
 > [!TIP]
-> Azure Kubernetes Hizmetini kullanan bu makalenin güncelleştirilmiş sürümü için Azure [Kubernetes Hizmeti (AKS) ile Hizmet ilkelerine](../../aks/kubernetes-service-principal.md)bakın.
+> Azure Kubernetes hizmetini kullanan Bu makalenin güncelleştirilmiş sürümü için bkz. [Azure Kubernetes Service (AKS) Ile hizmet sorumluları](../../aks/kubernetes-service-principal.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -61,7 +61,7 @@ Aşağıdakine benzer bir çıktı döndürülür (burada gösterilen sonuç kı
 
 ![Hizmet sorumlusu oluşturma](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-Vurgulanan istemci **kimliği** `appId`( ) ve`password`küme dağıtımı için hizmet temel parametreleri olarak kullandığınız istemci **gizlidir.**
+Vurgulanan **istemci kimliği** (`appId`) ve (), Küme dağıtımı için`password`hizmet sorumlusu parametreleri olarak kullandığınız **gizli** dizi ().
 
 
 ### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>Kubernetes kümesi oluştururken hizmet sorumlusu belirtme
@@ -78,7 +78,7 @@ Aşağıdaki örnekte Azure CLI ile parametreleri iletme yollarından biri göst
 
 1. `azuredeploy.parameters.json` şablon parametre dosyasını GitHub’dan [indirin](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json).
 
-2. Hizmet sorumlusunu belirtmek için dosyada `servicePrincipalClientId` ve `servicePrincipalClientSecret` değerlerini girin. (Ayrıca `dnsNamePrefix` ve `sshRSAPublicKey` için kendi değerlerinizi de belirtmeniz gerekir. İkincisi kümeye erişmek için SSH ortak anahtarıdır.) Dosyayı kaydedin.
+2. Hizmet sorumlusunu belirtmek için dosyada `servicePrincipalClientId` ve `servicePrincipalClientSecret` değerlerini girin. (Ayrıca `dnsNamePrefix` ve `sshRSAPublicKey` için kendi değerlerinizi de belirtmeniz gerekir. İkincisi, kümeye erişmek için SSH ortak anahtarıdır.) Dosyayı kaydedin.
 
     ![Hizmet sorumlusu parametrelerini iletme](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -97,7 +97,7 @@ Aşağıdaki örnekte Azure CLI ile parametreleri iletme yollarından biri göst
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>2. Seçenek: `az acs create` ile küme oluştururken hizmet sorumlusu oluşturma
 
-Kubernetes [`az acs create`](/cli/azure/acs#az-acs-create) kümesini oluşturmak için komutu çalıştırırsanız, otomatik olarak bir hizmet ilkesi oluşturma seçeneğiniz vardır.
+Kubernetes kümesini oluşturmak için [`az acs create`](/cli/azure/acs#az-acs-create) komutunu çalıştırırsanız, otomatik olarak bir hizmet sorumlusu oluşturma seçeneğiniz vardır.
 
 Diğer Kubernetes kümesi oluşturma seçeneklerinde olduğu gibi, `az acs create` çalıştırırken mevcut bir hizmet sorumlusunun parametrelerini belirtebilirsiniz. Ancak, bu parametreleri atlarsanız Azure CLI, Container Service ile kullanılacak bir hizmet sorumlusunu otomatik olarak oluşturur. Bu işlem dağıtım sırasında saydam bir şekilde gerçekleştirilir.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Genel Bulutunda Yalıtım | Microsoft Dokümanlar
-description: Azure'un hem kötü amaçlı hem de kötü niyetli olmayan kullanıcılara karşı nasıl yalıtım sağladığını ve mimarlara çeşitli yalıtım seçenekleri sunduğunu öğrenin.
+title: Azure genel bulutu 'nda yalıtım | Microsoft Docs
+description: Azure 'un hem kötü amaçlı hem de kötü amaçlı olmayan kullanıcılara yönelik yalıtımı nasıl sağladığını öğrenin ve Mimarlar için çeşitli yalıtım seçenekleri sunar.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -16,313 +16,313 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280319"
 ---
-# <a name="isolation-in-the-azure-public-cloud"></a>Azure Genel Bulutunda Yalıtım
-Azure, paylaşılan fiziksel altyapıda uygulamaları ve sanal makineleri (VM' ler) çalıştırmanızı sağlar. Uygulamaları bulut ortamında çalıştırmanın en önemli ekonomik motivasyonlarından biri, paylaşılan kaynakların maliyetini birden çok müşteri arasında dağıtabilmektir. Çoklu kirabu uygulama düşük maliyetlerle birbirinden farklı müşteriler arasında kaynakları çokkatlı tarafından verimliliği artırır. Ne yazık ki, aynı zamanda rasgele ve potansiyel olarak kötü niyetli bir kullanıcıya ait olabilir hassas uygulamaları ve VM'ler çalıştırmak için fiziksel sunucular ve diğer altyapı kaynakları paylaşımı riskini tanıtır.
+# <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
+Azure, paylaşılan fiziksel altyapıda uygulama ve sanal makine (VM) çalıştırmanızı sağlar. Uygulamaları bir bulut ortamında çalıştırmaya yönelik başlıca ekonobilirlerden biri, paylaşılan kaynakların maliyetini birden çok müşteri arasında dağıtabilme yeteneğidir. Çok kiracılı bu uygulama, düşük maliyetlerde farklı müşteriler arasında kaynakları çoğullama açısından verimliliği artırır. Ne yazık ki, önemli uygulamalarınızı ve diğer altyapı kaynaklarını, rastgele ve potansiyel olarak kötü amaçlı bir kullanıcıya ait olabilecek duyarlı uygulamalarınızı ve VM 'Leri çalıştırmak üzere paylaşma riskini de beraberinde getirir.
 
-Bu makalede, Azure'un hem kötü amaçlı hem de kötü amaçlı olmayan kullanıcılara karşı nasıl yalıtım sağladığı ve mimarlara çeşitli yalıtım seçenekleri sunarak bulut çözümlerini mimaretmek için bir kılavuz görevi göstermesi özetlanmaktadır.
+Bu makalede, Azure 'un hem kötü amaçlı hem de kötü amaçlı olmayan kullanıcılara karşı yalıtım sağladığı ve mimarlara çeşitli yalıtım seçenekleri sunarak bulut çözümlerini mimari olarak sunan bir kılavuz olarak hizmet verdiği özetlenmektedir.
 
-## <a name="tenant-level-isolation"></a>Kiracı Seviye Yalıtımı
-Bulut bilgi işlemin başlıca avantajlarından biri, aynı anda çok sayıda müşteri arasında paylaşılan, ortak bir altyapı kavramıdır ve bu da ölçek ekonomilerine yol açacaktır. Bu kavram çoklu kira denir. Microsoft, Microsoft Cloud Azure'un çok kiracılı mimarisinin güvenlik, gizlilik, gizlilik, bütünlük ve kullanılabilirlik standartlarını desteklediğinden emin olmak için sürekli olarak çalışır.
+## <a name="tenant-level-isolation"></a>Kiracı düzeyi yalıtımı
+Bulut bilgi işlemin başlıca avantajlarından biri, aynı anda çok sayıda müşteriyle paylaşılan, ortak bir altyapının kavramıdır ve bu da ölçek ekonomisine göre önde olur. Bu kavram çok kiracılı olarak adlandırılır. Microsoft, Microsoft Bulut Azure 'un çok kiracılı mimarisinin güvenlik, gizlilik, gizlilik, bütünlük ve kullanılabilirlik standartlarını desteklediğinden emin olmak için sürekli olarak çalışmaktadır.
 
-Bulutun etkin olduğu çalışma alanında kiracı, bulut hizmetinin belirli bir örneğine sahip olan ve o örneği yöneten bir istemci veya kuruluş olarak tanımlanabilir. Microsoft Azure tarafından sağlanan kimlik platformuyla kiracı, kuruluşunuzun microsoft bulut hizmetine kaydolurken aldığı ve sahip olduğu Azure Etkin Dizin (Azure AD) özel bir örneğidir.
+Bulutun etkin olduğu çalışma alanında kiracı, bulut hizmetinin belirli bir örneğine sahip olan ve o örneği yöneten bir istemci veya kuruluş olarak tanımlanabilir. Microsoft Azure tarafından sunulan kimlik platformu ile bir kiracı, bir Microsoft bulut hizmetine kaydolduğunda kuruluşunuzun aldığı ve sahip olduğu adanmış bir Azure Active Directory (Azure AD) örneğidir.
 
 Her Azure AD dizini, diğer Azure AD dizinlerinden farklı ve ayrıdır. Kurumsal ofis binasının yalnızca kuruluşunuza özel güvenilir bir varlık olması gibi, Azure AD dizini de yalnızca sizin kuruluşunuz tarafından kullanılmak üzere tasarlanan güvenilir bir varlıktır. Azure AD mimarisi, müşteri verilerini ve kimlik bilgilerini ortak karıştırma alanından yalıtır. Bu, bir Azure AD dizinindeki kullanıcıların ve yöneticilerin yanlışlıkla veya kötü amaçlı olarak başka bir dizindeki verilere erişemeyeceği anlamına gelir.
 
-### <a name="azure-tenancy"></a>Azure Kira
-Azure kira (Azure Aboneliği), "müşteri/faturalandırma" ilişkisini ve [Azure Etkin Dizini'nde](../../active-directory/fundamentals/active-directory-whatis.md)benzersiz bir [kiracıyı](../../active-directory/develop/quickstart-create-new-tenant.md) ifade eder. Microsoft Azure'da kiracı düzeyi yalıtımı, Azure Etkin Dizini ve onun tarafından sunulan [rol tabanlı denetimler](../../role-based-access-control/overview.md) kullanılarak elde edilir. Her Azure aboneliği bir Azure Etkin Dizin (AD) dizini ile ilişkilidir.
+### <a name="azure-tenancy"></a>Azure Kiralama
+Azure Kiralama (Azure aboneliği), [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)bir "müşteri/Faturalandırma" ilişkisine ve benzersiz bir [kiracıya](../../active-directory/develop/quickstart-create-new-tenant.md) başvurur. Microsoft Azure kiracı düzeyi yalıtımı, BT tarafından sunulan Azure Active Directory ve [rol tabanlı denetimler](../../role-based-access-control/overview.md) kullanılarak elde edilir. Her Azure aboneliği bir Azure Active Directory (AD) diziniyle ilişkilendirilir.
 
-Bu dizindeki kullanıcılar, gruplar ve uygulamalar Azure aboneliğindeki kaynakları yönetebilir. Bu erişim haklarını Azure portalı, Azure komut satırı araçlarını ve Azure Yönetimi API'lerini kullanarak atayabilirsiniz. Azure AD kiracısı, hiçbir müşterinin ortak kiracılarına kötü amaçlı veya yanlışlıkla erişemesin veya bu yla güvenlik sınırlarını kullanarak mantıksal olarak yalıtılır. Azure AD, ana bilgisayar düzeyinde paket filtreleme ve Windows Güvenlik Duvarı'nın istenmeyen bağlantıları ve trafiği engellediği ayrılmış ağ segmentinde yalıtılmış "çıplak metal" sunucularda çalışır.
+Bu dizindeki kullanıcılar, gruplar ve uygulamalar, Azure aboneliğindeki kaynakları yönetebilir. Azure portal, Azure komut satırı araçları ve Azure Yönetim API 'Lerini kullanarak bu erişim haklarını atayabilirsiniz. Bir Azure AD kiracısı güvenlik sınırları kullanılarak mantıksal olarak yalıtılmıştır; böylece hiçbir müşteri kötü amaçlı olarak veya yanlışlıkla, ortak kiracılara erişemez veya bunları tehlikeye atabilir. Azure AD, ana bilgisayar düzeyindeki paket filtrelemesinin ve Windows güvenlik duvarının istenmeyen bağlantıları ve trafiği engelleyebildiği, ayrılmış bir ağ segmentinde yalıtılmış olan "çıplak" sunucularda çalışır.
 
-- Azure AD'deki verilere erişim, bir güvenlik belirteci hizmeti (STS) aracılığıyla kullanıcı kimlik doğrulaması gerektirir. Bu oturumda, hedef kiracıya istenen erişimin bu kullanıcı için izin verilip verilmediğini belirlemek için yetkilendirme sistemi tarafından kullanıcının varlığı, etkin durumu ve rolü hakkındaki bilgiler kullanılır.
+- Azure AD 'deki verilere erişim, bir güvenlik belirteci hizmeti (STS) aracılığıyla Kullanıcı kimlik doğrulaması gerektirir. Kullanıcının varlığı, etkin durumu ve rolü hakkındaki bilgiler, bu oturumdaki bu kullanıcı için istenen hedef kiracıya erişim yetkisi olup olmadığını öğrenmek üzere yetkilendirme sistemi tarafından kullanılır.
 
-![Azure Kira](./media/isolation-choices/azure-isolation-fig1.png)
+![Azure Kiralama](./media/isolation-choices/azure-isolation-fig1.png)
 
 
-- Kiracılar ayrı kapsayıcılar ve bunlar arasında hiçbir ilişki yoktur.
+- Kiracılar ayrı kapsayıcılardır ve bunlar arasında bir ilişki yoktur.
 
-- Kiracı yönetici, federasyon veya diğer kiracılardan kullanıcı hesapları sağlama yoluyla hibe sürece kiracı arasında erişim yok.
+- Kiracı Yöneticisi tarafından Federasyon veya diğer kiracılardan Kullanıcı hesapları sağlama izni verilmediği müddetçe kiracılar arasında erişim yoktur.
 
-- Azure AD hizmetini oluşturan sunuculara fiziksel erişim ve Azure AD'nin arka uç sistemlerine doğrudan erişim kısıtlanmıştır.
+- Azure AD hizmetini oluşturan sunuculara fiziksel erişim ve Azure AD 'nin arka uç sistemlerine doğrudan erişim kısıtlanmıştır.
 
-- Azure AD kullanıcılarının fiziksel varlıklara veya konumlara erişimi yoktur ve bu nedenle aşağıdaki şekilde belirtilen mantıksal RBAC ilke denetimlerini atlatırlar.
+- Azure AD kullanıcılarının fiziksel varlıklar veya konumlara erişimi yoktur ve bu nedenle, aşağıda belirtilen mantıksal RBAC ilke denetimlerini atlamak mümkün değildir.
 
-Tanılama ve bakım ihtiyaçları için, tam zamanında ayrıcalık yükselti sistemi kullanan bir operasyonel model gereklidir ve kullanılır. Azure AD Ayrıcalıklı Kimlik Yönetimi (PIM), uygun bir yönetici kavramını sunar. [Uygun yöneticiler,](../../active-directory/privileged-identity-management/pim-configure.md) her gün değil, şimdi ve sonra ayrıcalıklı erişime ihtiyaç duyan kullanıcılar olmalıdır. Bu rol, kullanıcı erişime ihtiyaç duyana kadar devre dışıdır ancak kullanıcı bir etkinleştirme işlemini tamamladıktan sonra önceden belirlenen süre boyunca etkin bir yönetici olur.
+Tanılama ve bakım ihtiyaçları için, tam zamanında ayrıcalık yükseltme sistemini kullanan bir işlem modeli gereklidir ve kullanılır. Azure AD Privileged Identity Management (PıM) uygun bir yönetici kavramını tanıtır. [Uygun yöneticiler](../../active-directory/privileged-identity-management/pim-configure.md) , her gün değil, ayrıcalıklı erişime ihtiyacı olan kullanıcılar olmalıdır. Bu rol, kullanıcı erişime ihtiyaç duyana kadar devre dışıdır ancak kullanıcı bir etkinleştirme işlemini tamamladıktan sonra önceden belirlenen süre boyunca etkin bir yönetici olur.
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
-Azure Etkin Dizin, yalnızca kiracının sahip olduğu ve yönettiği kapsayıcının ilkeleri ve izinleri ile her kiracıyı kendi korumalı kapsayıcısında barındırUr.
+Azure Active Directory, her kiracıyı kendi korunan kapsayıcısında barındırır ve yalnızca kiracı tarafından sahip olunan ve içindeki ve içindeki ve içindeki ve içindeki ve içindeki izinlerle ilgili ilkeler
 
-Kiracı kapsayıcıları kavramı, portallardan kalıcı depolamaya kadar tüm katmanlarda dizin hizmetinde kökleşmiştir.
+Kiracı kapsayıcıları kavramı, portallardan ve kalıcı depolamaya kadar her katmandaki dizin hizmetinde daha ayrıntılı bir şekilde yapılır.
 
-Birden çok Azure Etkin Dizin kiracısından gelen meta veriler aynı fiziksel diskte depolansa bile, kapsayıcılar arasında dizin hizmeti tarafından tanımlanan ve kiracı yönetici tarafından dikte edilen den başka bir ilişki yoktur.
+Birden çok Azure Active Directory kiracısından gelen meta veriler aynı fiziksel diskte depolandığında bile, dizin hizmeti tarafından tanımlandıkları dışındaki kapsayıcılar arasında hiçbir ilişki yoktur, bu da kiracı yöneticisi tarafından belirlenir.
 
-### <a name="azure-role-based-access-control-rbac"></a>Azure Role Tabanlı Erişim Denetimi (RBAC)
-[Azure Rolüne Dayalı Erişim Denetimi (RBAC),](../../role-based-access-control/overview.md) Azure için ince taneli erişim yönetimi sağlayarak Azure aboneliğinde bulunan çeşitli bileşenleri paylaşmanıza yardımcı olur. Azure RBAC, kuruluşunuzdaki görevleri ayırmanızı ve kullanıcıların işlerini gerçekleştirmek için gerekenlere göre erişim sağlamanızı sağlar. Azure aboneliğinde veya kaynaklarında herkese sınırsız izin vermek yerine, yalnızca belirli eylemlere izin verebilirsiniz.
+### <a name="azure-role-based-access-control-rbac"></a>Azure rol tabanlı Access Control (RBAC)
+Azure [rol tabanlı Access Control (RBAC)](../../role-based-access-control/overview.md) , Azure için ayrıntılı erişim yönetimi sağlayarak bir Azure aboneliğinde bulunan çeşitli bileşenleri paylaşmanıza yardımcı olur. Azure RBAC, kuruluşunuzdaki görevleri ayırabilirsiniz ve kullanıcıların işlerini gerçekleştirmesi için ihtiyaç duyduğu kullanıcılara göre erişim izni vermenizi sağlar. Azure aboneliğinde veya kaynaklarında herkes için sınırsız izin vermek yerine yalnızca belirli eylemlere izin verebilirsiniz.
 
-Azure RBAC'ın tüm kaynak türleri için geçerli olan üç temel rolü vardır:
+Azure RBAC, tüm kaynak türleri için uygulanan üç temel role sahiptir:
 
-- **Sahibi,** başkalarına erişimi devretme hakkı da dahil olmak üzere tüm kaynaklara tam erişime sahiptir.
+- **Sahibinin** , başkalarına erişim yetkisi verme hakkı dahil tüm kaynaklara tam erişimi vardır.
 
-- **Katılımcı,** tüm Azure kaynakları oluşturabilir ve yönetebilir, ancak başkalarına erişim izni veremez.
+- **Katkıda bulunan** her türlü Azure kaynağı oluşturabilir ve yönetebilir, ancak diğer kullanıcılara erişim izni veremez.
 
-- **Okuyucu** varolan Azure kaynaklarını görüntüleyebilir.
+- **Okuyucu** , mevcut Azure kaynaklarını görüntüleyebilir.
 
 ![Azure Rol Tabanlı Erişim Denetimi](./media/isolation-choices/azure-isolation-fig3.png)
 
-Azure'daki RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin Sanal Makine Katılımcısı rolü, kullanıcının sanal makine oluşturmasını ve yönetmesini sağlar. Bu, onlara Azure Sanal Ağı'na veya sanal makinenin bağlandığı alt ağa erişim sağlamaz.
+Azure 'daki RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin Sanal Makine Katılımcısı rolü, kullanıcının sanal makine oluşturmasını ve yönetmesini sağlar. Azure sanal ağına veya sanal makinenin bağlandığı alt ağa erişim vermez.
 
-[RBAC yerleşik rolleri](../../role-based-access-control/built-in-roles.md) Azure'da kullanılabilen rolleri listeler. Her yerleşik rol kullanıcıya sağladığı işlemleri ve kapsamı belirtir. Daha fazla denetim için kendi rollerinizi tanımlamak istiyorsanız, [Azure RBAC'da Özel rollerin](../../role-based-access-control/custom-roles.md)nasıl oluşturabileceğinizi görün.
+[RBAC yerleşik rolleri](../../role-based-access-control/built-in-roles.md) , Azure 'da kullanılabilen rolleri listeler. Her yerleşik rolün kullanıcılara verdiği işlemleri ve kapsamı belirtir. Daha da fazla denetim için kendi rollerinizi tanımlamak istiyorsanız bkz. [Azure RBAC 'de özel roller](../../role-based-access-control/custom-roles.md)oluşturma.
 
-Azure Etkin Dizini için diğer bazı özellikler şunlardır:
-- Azure AD, barındırıldıkları yerden bağımsız olarak SaaS uygulamaları için SSO özelliğini etkinleştirir. Bazı uygulamalar Azure AD federasyonu kullanırken diğerleri parola SSO hizmetinden yararlanır. Federe uygulamalar da kullanıcı sağlama ve [şifre tonozlama](https://www.techopedia.com/definition/31415/password-vault)destekleyebilir.
+Azure Active Directory için bazı diğer yetenekler şunlardır:
+- Azure AD, barındırıldıkları yerden bağımsız olarak SaaS uygulamaları için SSO özelliğini etkinleştirir. Bazı uygulamalar Azure AD federasyonu kullanırken diğerleri parola SSO hizmetinden yararlanır. Federasyon uygulamaları, Kullanıcı hazırlama ve [parola](https://www.techopedia.com/definition/31415/password-vault)oluşturma işlemlerini de destekleyebilir.
 
-- [Azure Storage](https://azure.microsoft.com/services/storage/) verilerine erişim, kimlik doğrulaması ile denetlenir. Her depolama hesabının birincil anahtarı[(depolama hesabı anahtarı](../../storage/common/storage-create-storage-account.md)veya SAK) ve ikincil bir gizli anahtar (paylaşılan erişim imzası veya SAS) vardır.
+- [Azure Storage](https://azure.microsoft.com/services/storage/) verilerine erişim, kimlik doğrulaması ile denetlenir. Her depolama hesabında birincil anahtar ([depolama hesabı anahtarı](../../storage/common/storage-create-storage-account.md)veya sak) ve ikincil gizli anahtar (paylaşılan erişim IMZASı veya SAS) bulunur.
 
-- Azure AD, [Etkin Dizin Federasyonu Hizmetleri,](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)eşitleme ve şirket içi dizinlerle çoğaltma kullanarak federasyon aracılığıyla Hizmet Olarak Kimlik sağlar.
+- Azure AD, şirket içi dizinlerle [Active Directory Federasyon Hizmetleri (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), eşitleme ve çoğaltma kullanarak Federasyon aracılığıyla bir hizmet olarak kimlik sağlar.
 
-- [Azure Çok Faktörlü Kimlik Doğrulama,](../../active-directory/authentication/multi-factor-authentication.md) kullanıcıların bir mobil uygulama, telefon görüşmesi veya kısa mesaj kullanarak oturum açma oturumlarını doğrulamalarını gerektiren çok faktörlü kimlik doğrulama hizmetidir. Azure Çok Faktörlü Kimlik Doğrulama sunucusuyla şirket içi kaynakların güvenliğini sağlamaya yardımcı olmak için Azure AD ile ve Ayrıca SDK'yı kullanan özel uygulamalar ve dizinlerle kullanılabilir.
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) , kullanıcıların oturum açma işlemlerini bir mobil uygulama, telefon araması veya kısa mesaj kullanarak doğrulamasını gerektiren Multi-Factor Authentication hizmetidir. Azure Multi-Factor Authentication sunucusu ile şirket içi kaynakların güvenliğini sağlamaya ve ayrıca SDK kullanan özel uygulamalarla ve dizinlerden yardım almak için Azure AD ile birlikte kullanılabilir.
 
-- [Azure AD Etki Alanı Hizmetleri,](https://azure.microsoft.com/services/active-directory-ds/) etki alanı denetleyicilerini dağıtmadan Azure sanal makinelerine Etkin Dizin etki alanına katılmanızı sağlar. Bu sanal makinelerde kurumsal Active Directory kimlik bilgilerinizle oturum açabilir ve tüm Azure sanal makinelerinizde güvenlik taban çizgilerini zorlamak için Grup İlkesi'ni kullanarak etki alanına katılan sanal makineleri yönetebilirsiniz.
+- [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) , Azure sanal makinelerini etki alanı denetleyicilerini dağıtmaya gerek kalmadan bir Active Directory etki alanına aktarmanıza olanak tanır. Şirket Active Directory kimlik bilgilerinizle bu sanal makinelerde oturum açabilir ve tüm Azure sanal makinelerinizde güvenlik temellerini zorlamak için grup ilkesi kullanarak etki alanına katılmış sanal makineleri yönetebilirsiniz.
 
-- [Azure Active Directory B2C,](https://azure.microsoft.com/services/active-directory-b2c/) yüz milyonlarca kimliğe ölçeklendirilebilen tüketiciye yönelik uygulamalar için son derece kullanılabilir bir küresel kimlik yönetimi hizmeti sağlar. Bu hizmet mobil platformlar ve web platformlarıyla tümleştirilebilir. Tüketicileriniz, mevcut sosyal hesaplarını kullanarak veya kimlik bilgileri oluşturarak özelleştirilebilir deneyimler aracılığıyla tüm uygulamalarınızda oturum açabilir.
+- [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) , yüz milyonlarca kimliği ölçeklendirirken tüketiciye yönelik uygulamalar için yüksek düzeyde kullanılabilir bir genel kimlik yönetim hizmeti sağlar. Bu hizmet mobil platformlar ve web platformlarıyla tümleştirilebilir. Tüketicileriniz, mevcut sosyal hesaplarını kullanarak veya kimlik bilgileri oluşturarak özelleştirilebilen deneyimler aracılığıyla tüm uygulamalarınızda oturum açabilir.
 
-### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Veri Silme & Microsoft Yöneticilerinden Yalıtım
-Microsoft, verilerinizi yetkisiz kişilerin uygunsuz erişimlerine veya kullanımına karşı korumak için güçlü önlemler alır. Bu operasyonel süreçler ve denetimler, verilerinize erişimi düzenleyen sözleşmetaahhütleri sunan [Çevrimiçi Hizmet Koşulları](https://aka.ms/Online-Services-Terms)tarafından desteklenir.
+### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Microsoft yöneticilerinin yalıtımı & verileri silme
+Microsoft, verilerinizi uygunsuz erişimlerden korumak veya yetkisiz kişiler tarafından kullanmak için güçlü ölçüler kullanır. Bu operasyonel işlemler ve denetimler, verilerinize erişimi yöneten sözleşme taahhütlerini sunan [çevrimiçi hizmet koşulları](https://aka.ms/Online-Services-Terms)tarafından desteklenir.
 
--   Microsoft mühendislerinin buluttaki verilerinize varsayılan erişimi yoktur. Bunun yerine, yalnızca gerektiğinde yönetim gözetimi altında erişim hakkı verilir. Bu erişim dikkatle denetlenir ve günlüğe kaydedilir ve artık ihtiyaç duyulmadığında iptal edilir.
+-   Microsoft mühendisleri, buluttaki verilerinize varsayılan erişime sahip değildir. Bunun yerine, yönetim gözetim bölümünde yalnızca gerekli olduğunda erişim verilir. Bu erişim dikkatle denetlenir ve günlüğe kaydedilir ve artık gerekli olmadığında iptal edilir.
 
--   Microsoft, kendi adına sınırlı hizmetler sağlaması için başka şirketler kiralayabilir. Alt yükleniciler müşteri verilerine yalnızca, sağlamak için kiraladığımız hizmetleri sunmak için erişebilir ler ve bunları başka herhangi bir amaçla kullanmaları yasaktır. Ayrıca, müşterilerimizin bilgilerinin gizliliğini korumak için sözleşmeye bağlıdırlar.
+-   Microsoft, diğer şirketlere, kendi adına sınırlı hizmetleri sağlamak için işe alabilir. Alt yükleniciler, müşteri verilerine yalnızca hizmetleri teslim etmek için erişebilir, bunları sağlamak üzere işe sunuyoruz ve diğer amaçlarla kullanmaları yasaktır. Diğer bir deyişle, müşterilerin bilgilerinin gizliliğini korumak için sözleşmeye dayalı bağımlıdır.
 
-ISO/IEC 27001 gibi denetlenen sertifikalara sahip iş hizmetleri, yalnızca yasal iş amaçları için bu erişimi kanıtlamak için örnek denetimler gerçekleştiren Microsoft ve akredite denetim firmaları tarafından düzenli olarak doğrulanır. İstediğiniz zaman ve herhangi bir nedenle kendi müşteri verilerinize her zaman erişebilirsiniz.
+ISO/ıEC 27001 gibi denetlenen sertifikaları olan iş hizmetleri, Microsoft ve acalacaklandırılan denetim firmaları tarafından düzenli olarak doğrulanır ve bu da erişimi yalnızca meşru iş amaçlarıyla test etmek için örnek denetimler gerçekleştirir. Her zaman kendi müşteri verilerinize dilediğiniz zaman ve herhangi bir nedenle erişebilirsiniz.
 
-Herhangi bir veriyi silerseniz, Önbelleğe alınmış veya yedek kopyalar da dahil olmak üzere Microsoft Azure verileri siler. Kapsam içi hizmetler için, bu silme işlemi bekletme süresinin bitiminden sonraki 90 gün içinde gerçekleşir. (Kapsam içi [hizmetler, Çevrimiçi Hizmet Koşullarımızın](https://aka.ms/Online-Services-Terms)Veri İşleme Koşulları bölümünde tanımlanır.)
+Herhangi bir veriyi silerseniz Microsoft Azure, önbelleğe alınmış veya yedek kopyalar dahil olmak üzere verileri siler. Kapsam içi hizmetler için, bu silme işlemi, bekletme döneminin sonundan sonra 90 gün içinde olur. (Kapsam içi hizmetler, [çevrimiçi hizmetler koşullarımızın](https://aka.ms/Online-Services-Terms)veri işleme koşulları bölümünde tanımlanmıştır.)
 
-Depolama için kullanılan bir disk sürücüsünde donanım hatası varsa, Microsoft değiştirme veya onarım için üreticiye iade etmeden önce güvenli bir şekilde silinir veya [yok edilir.](https://microsoft.com/trustcenter/privacy/you-own-your-data) Sürücüdeki veriler, verilerin hiçbir şekilde kurtarılamayacağından emin olmak için üzerine yazılır.
+Depolama için kullanılan bir disk sürücüsü bir donanım arızası içeriyorsa, Microsoft bu dosyayı değiştirme veya onarma amacıyla üreticiye geri göndermeden önce güvenli bir şekilde [silinir veya yok](https://microsoft.com/trustcenter/privacy/you-own-your-data) edilir. Verilerin herhangi bir şekilde kurtarılamayacağını sağlamak için sürücüdeki verilerin üzerine yazılır.
 
-## <a name="compute-isolation"></a>İşlem İzolasyon
-Microsoft Azure, uygulamanızın veya işletmenizin gereksinimlerini karşılamak üzere otomatik olarak ölçeklendirilebilen çok çeşitli bilgi işlem örnekleri & hizmetleri içeren çeşitli bulut tabanlı bilgi işlem hizmetleri sağlar. Bu bilgi işlem örneği ve hizmeti, müşterilerin talep ettiği yapılandırma esnekliğinden ödün vermeden verileri güvenli hale getirmek için birden çok düzeyde yalıtım sunar.
+## <a name="compute-isolation"></a>İşlem yalıtımı
+Microsoft Azure, uygulamanızın veya kuruluşunuzun ihtiyaçlarını karşılayacak şekilde otomatik olarak ölçeklenebilen ve en düşük düzeyde işlem örnekleri & hizmetleri içeren çeşitli bulut tabanlı bilgi işlem hizmetleri sağlar. Bu işlem örneği ve hizmeti, verilerin güvenliğini sağlamak için birden çok düzeyde yalıtım sunarak, müşterilerin talep ettiği yapılandırmadaki esnekliğe karşı daha fazla esneklik sunar.
 
-### <a name="isolated-virtual-machine-sizes"></a>İzole Sanal Makine Boyutları
+### <a name="isolated-virtual-machine-sizes"></a>Yalıtılmış sanal makine boyutları
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="dedicated-hosts"></a>Ayrılmış konaklar
-Azure, önceki bölümde açıklanan yalıtılmış ana bilgisayarların yanı sıra özel ana bilgisayarlar da sunar. Azure'daki özel ana bilgisayarlar, bir veya daha fazla sanal makine barındırabilen ve tek bir Azure aboneliğine adanmış fiziksel sunucular sağlayan bir hizmettir. Özel ana bilgisayarlar, fiziksel sunucu düzeyinde donanım yalıtımı sağlar. Ana bilgisayarlarınıza başka hiçbir VM yerleştirilmez. Özel ana bilgisayarlar aynı veri merkezlerinde dağıtılır ve aynı ağ ve altta yatan depolama altyapısını diğer, yalıtılmış olmayan ana bilgisayarlarla paylaşır. Daha fazla bilgi için [Azure'a özel ana bilgisayarların](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)ayrıntılı genel görünümüne bakın.
+Önceki bölümde açıklanan yalıtılmış konaklara ek olarak, Azure ayrıca adanmış konaklar da sunar. Azure 'daki adanmış konaklar, bir veya daha fazla sanal makineyi barındırabilen ve tek bir Azure aboneliğine adanmış fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, fiziksel sunucu düzeyinde donanım yalıtımı sağlar. Konaklarınıza başka VM 'Ler yerleştirilmeyecektir. Ayrılmış konaklar aynı veri merkezlerinde dağıtılır ve aynı ağı ve temel alınan depolama altyapısını diğer, yalıtılmış olmayan konaklarla paylaşır. Daha fazla bilgi için bkz. [Azure adanmış konaklara](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)yönelik ayrıntılı genel bakış.
 
-### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Root VM & Konuk VM'ler Arasında Hyper-V & Kök İşletim İzolasyon
-Azure'un bilgi işlem platformu makine sanallaştırması temel alınca tüm müşteri kodlarının bir Hyper-V sanal makinede yürütülmesi anlamına gelir. Her Azure düğümünde (veya ağ bitiş noktasında), doğrudan donanımın üzerinde çalışan ve bir düğümü değişken sayıda Konuk Sanal Makineye (VM) bölen bir Hypervisor vardır.
-
-
-![Root VM & Konuk VM'ler Arasında Hyper-V & Kök İşletim İzolasyon](./media/isolation-choices/azure-isolation-fig4.jpg)
+### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & kök VM & Konuk VM 'Ler arasında kök işletim sistemi yalıtımı
+Azure 'un işlem platformu, makine sanallaştırmaya dayalıdır; yani tüm müşteri kodu bir Hyper-V sanal makinesinde yürütülür. Her bir Azure düğümünde (veya ağ uç noktası), doğrudan donanım üzerinde çalışan ve bir düğümü değişken sayıda konuk sanal makineye (VM) ayıran bir hiper yönetici vardır.
 
 
-Her düğümde Ayrıca Host OS'yi çalıştıran özel bir Root VM vardır. Kritik bir sınır, hypervisor ve root OS tarafından yönetilen konuk VM'lerden ve konuk VM'lerden vm kökünün yalıtımıdır. Hypervisor/root OS eşleştirmesi, Microsoft'un on yıllardır süren işletim sistemi güvenlik deneyiminden ve konuk VM'lerin güçlü bir şekilde yalıtımını sağlamak için Microsoft'un Hyper-V'inden daha yeni bir öğrenme den yararlanır.
-
-Azure platformu, sanallaştırılmış bir ortam kullanır. Kullanıcı örnekleri, fiziksel bir ana bilgisayar sunucusuna erişimi olmayan bağımsız sanal makineler olarak çalışır.
-
-Azure hipervizörü mikro çekirdek gibi davranır ve konuk sanal makinelerden vmbus adı verilen paylaşılan bellek arabirimini kullanarak işlenmek üzere ana bilgisayara tüm donanım erişim isteklerini iletir. Bu, kullanıcıların sistemde ham okuma/yazma/yürütme erişimine sahip olmasını önler ve sistem kaynaklarının paylaşımıyla ilgili riskleri azaltır.
-
-### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>Gelişmiş VM yerleştirme algoritması yan kanal saldırılarına karşı koruma &
-Herhangi bir çapraz VM saldırısı iki adım içerir: kurban VM'lerinden biriyle aynı ana bilgisayara düşman kontrolündeki bir VM yerleştirmek ve daha sonra hassas kurban bilgilerini çalmak veya açgözlülük veya vandalizm performansını etkilemek için izolasyon sınırını aşmak. Microsoft Azure, gelişmiş bir VM yerleşim algoritması kullanarak her iki adımda da koruma sağlar ve gürültülü komşu VM'ler de dahil olmak üzere bilinen tüm yan kanal saldırılarına karşı koruma sağlar.
-
-### <a name="the-azure-fabric-controller"></a>Azure Kumaş Denetleyicisi
-Azure Kumaş Denetleyicisi, altyapı kaynaklarını kiracı iş yüklerine ayırmaktan sorumludur ve ana bilgisayardan sanal makinelere tek yönlü iletişimleri yönetir. Azure kumaş denetleyicisinin VM yerleştirme algoritması son derece karmaşıktır ve fiziksel ana bilgisayar düzeyi olarak tahmin edilmesi neredeyse imkansızdır.
-
-![Azure Kumaş Denetleyicisi](./media/isolation-choices/azure-isolation-fig5.png)
-
-Azure hipervizörü sanal makineler arasındaki bellek ve işlem ayrımını zorlar ve ağ trafiğini konuk işletim sistemi kiracılarına güvenli bir şekilde yönlendirir. Bu, VM düzeyinde yan kanal saldırısı olasılığını ortadan kaldırır.
-
-Azure'da VM kökü özeldir: bir kumaş aracısı (FA) barındıran kök işletim sistemi adı verilen sertleştirilmiş bir işletim sistemi çalıştırır. FA'lar, müşteri VM'lerinde konuk OS'ler içinde konuk aracıları (GA) yönetmek için kullanılır. FA'lar depolama düğümlerini de yönetir.
-
-Azure hipervizörü, root OS/FA ve müşteri VM/G'leri koleksiyonu bir işlem düğümü nden oluşur. FA'lar, bilgi işlem ve depolama düğümleri dışında bulunan bir kumaş denetleyicisi (FC) tarafından yönetilir (bilgi işlem ve depolama kümeleri ayrı FC'ler tarafından yönetilir). Bir müşteri çalışırken uygulamanın yapılandırma dosyasını güncelleştirirse, FC Fa ile iletişim kurar ve daha sonra GAs ile bağlantı kurar ve yapılandırma değişikliğini uygulamayı bildirir. Bir donanım hatası durumunda, FC kullanılabilir donanımı otomatik olarak bulur ve VM'yi orada yeniden başlatAcaktır.
-
-![Masmavi Kumaş Denetleyici](./media/isolation-choices/azure-isolation-fig6.jpg)
-
-Kumaş Denetleyicisinden bir ajana iletişim tek yönlüdür. Aracı, yalnızca denetleyiciden gelen isteklere yanıt veren SSL korumalı bir hizmet uygular. Denetleyiciye veya diğer ayrıcalıklı iç düğümlere bağlantı başlatamaz. FC, tüm yanıtları güvenilmemiş gibi ele adatır.
+![Hyper-V & kök VM & Konuk VM 'Ler arasında kök işletim sistemi yalıtımı](./media/isolation-choices/azure-isolation-fig4.jpg)
 
 
-![Kumaş Denetleyici](./media/isolation-choices/azure-isolation-fig7.png)
+Her düğüm Ayrıca konak işletim sistemini çalıştıran bir özel kök sanal makineye sahiptir. Kritik sınır, hiper yönetici ve kök işletim sistemi tarafından yönetilen bir diğeri Konuk VM 'lerden ve konuk sanal makinelerinden gelen kök VM 'nin yalıtımına sahiptir. Hiper yönetici/kök işletim sistemi eşleştirme, Microsoft 'un işletim sistemi güvenlik deneyiminin ve Microsoft 'un Hyper-V ' d e daha yeni öğrenmesinin yanı sıra konuk VM 'lerin güçlü yalıtımının sağlanması için yararlanır.
 
-İzolasyon, Konuk VM'lerden Root VM'den ve konuk VM'lerden birbirinden genişler. İşlem düğümleri de daha fazla koruma için depolama düğümlerinden izole edilmiştir.
+Azure platformu, sanallaştırılmış bir ortam kullanır. Kullanıcı örnekleri, bir fiziksel ana bilgisayar sunucusuna erişimi olmayan tek başına sanal makineler olarak çalışır.
+
+Azure Hiper Yöneticisi, mikro çekirdek gibi davranır ve konuk sanal makinelerinizdeki tüm donanım erişim isteklerini, VMBus adlı paylaşılan bellek arabirimini kullanarak işleme için konağa geçirir. Bu, kullanıcıların sistemde ham okuma/yazma/yürütme erişimine sahip olmasını önler ve sistem kaynaklarının paylaşımıyla ilgili riskleri azaltır.
+
+### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>Gelişmiş VM yerleştirme algoritması, yan kanal saldırılarına karşı koruma &
+Tüm sanal makineler arası saldırılarda iki adım vardır: bir sanal makine, kurban VM 'lerinden biri ile aynı konağa ve daha sonra hassas kurban bilgilerini çalmak veya Greed ya da vandalısm performansını etkilemek için yalıtım sınırına ulaşıyor. Microsoft Azure, gürültülü komşu VM 'Ler dahil tüm bilinen taraf kanal saldırılarına karşı gelişmiş bir VM yerleştirme algoritması ve koruma kullanarak her iki adımda de koruma sağlar.
+
+### <a name="the-azure-fabric-controller"></a>Azure yapı denetleyicisi
+Azure yapı denetleyicisi, kiracı iş yüklerine altyapı kaynakları ayırmadan sorumludur ve konaktan sanal makinelere tek yönlü iletişimleri yönetir. Azure Fabric denetleyicisi 'nin VM yerleştirme algoritması, fiziksel ana bilgisayar düzeyi olarak tahmin etmek için yüksek düzeyde gelişmiş ve neredeyse imkansızdır.
+
+![Azure yapı denetleyicisi](./media/isolation-choices/azure-isolation-fig5.png)
+
+Azure Hiper Yöneticisi, sanal makineler arasında bellek ve işlem ayrımı uygular ve ağ trafiğini Konuk işletim sistemi kiracılarına güvenli bir şekilde yönlendirir. Bu, VM düzeyinde ve yan kanal saldırısı olasılığını ortadan kaldırır.
+
+Azure 'da, kök VM özeldir: bir yapı Aracısı (SK) barındıran kök IŞLETIM sistemi olarak adlandırılan, sağlamlaştırılmış bir işletim sistemini çalıştırır. FAs, müşteri VM 'lerinde Konuk Işletim sistemleri içinde Konuk aracılarını (GA) yönetmek için kullanılır. FAs Ayrıca depolama düğümlerini da yönetir.
+
+Azure Hiper Yöneticisi, kök işletim sistemi/SK ve müşteri VM 'Leri/gaz koleksiyonu bir işlem düğümünü kapsar. FAs, işlem ve depolama düğümlerinin dışında bulunan bir yapı denetleyicisi (FC) tarafından yönetilir (işlem ve depolama kümeleri ayrı FCs tarafından yönetilir). Bir müşteri, uygulamanın yapılandırma dosyasını çalışırken güncelleştirirken, FC, bu, yapılandırma değişikliğini uygulamaya bildiren, daha sonra gaz ile iletişim kuran SK ile iletişim kurar. Donanım arızası durumunda, FC otomatik olarak kullanılabilir donanımı bulur ve VM 'yi burada yeniden başlatır.
+
+![Azure yapı denetleyicisi](./media/isolation-choices/azure-isolation-fig6.jpg)
+
+Yapı denetleyicisinden aracıya iletişim tek yönlü olur. Aracı yalnızca denetleyicideki isteklere yanıt veren SSL korumalı bir hizmet uygular. Denetleyiciye veya diğer ayrıcalıklı iç düğümlere bağlantı başlatamaz. FC, tüm yanıtları güvenilmeyen gibi davranır.
 
 
-Hypervisor ve ana bilgisayar işletim sistemi ağ paketi sağlar - güvenilmeyen sanal makinelerin sahte trafik oluşturamamasını veya kendilerine hitap edilmeyen trafiği alamamasını, trafiği korumalı altyapı uç noktalarına yönlendiremeyeceğini veya uygunsuz yayın trafiği gönderemez/alamayacağından emin olmak için filtreler.
+![Yapı denetleyicisi](./media/isolation-choices/azure-isolation-fig7.png)
+
+Yalıtım, Konuk VM 'lerden ve konuk sanal makinelerden diğerine genişletilir. İşlem düğümleri, daha fazla koruma için depolama düğümlerinden de yalıtılmıştır.
 
 
-### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>VM'yi Yalıtmak için Kumaş Denetleyici Aracısı tarafından Yapılandırılan Ek Kurallar
-Varsayılan olarak, sanal bir makine oluşturulduğunda tüm trafik engellenir ve ardından kumaş denetleyici aracısı paket filtresini yetkili trafiğe izin vermek için kurallar ve özel durumlar eklemek üzere yapılandırır.
+Hiper yönetici ve konak işletim sistemi, güvenilmeyen sanal makinelerin sahte trafik oluşturmamasını veya bunlara değinilmemiş trafiği alamamasını, korumalı altyapı uç noktalarına doğrudan trafik veya uyumsuz yayın trafiği göndermesini veya alamamasını sağlamaya yardımcı olmak için ağ paketi filtreleri sağlar.
+
+
+### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>VM 'yi yalıtmak için doku denetleyicisi Aracısı tarafından yapılandırılan ek kurallar
+Varsayılan olarak, bir sanal makine oluşturulduğunda tüm trafik engellenir ve ardından yapı denetleyicisi Aracısı, yetkili trafiğe izin vermek için kural ve özel durumlar eklemek üzere paket filtresini yapılandırır.
 
 Programlanmış iki kural kategorisi vardır:
 
--   **Makine yapılandırması veya altyapı kuralları:** Varsayılan olarak, tüm iletişim engellenir. Sanal bir makinenin DHCP ve DNS trafiğini gönderip almasına izin veren istisnalar vardır. Sanal makineler aynı Azure Sanal Ağı ve işletim sistemi etkinleştirme sunucusundaki trafiği "herkese açık" internete gönderebilir ve trafiği diğer sanal makinelere gönderebilir. Sanal makinelerin izin verilen giden hedefler listesi Azure yönlendirici alt ağlarını, Azure yönetimini ve diğer Microsoft özelliklerini içermez.
+-   **Makine yapılandırması veya altyapı kuralları:** Varsayılan olarak, tüm iletişimler engellenir. Bir sanal makinenin DHCP ve DNS trafiği gönderebilmesi ve almasına izin vermek için özel durumlar vardır. Sanal makineler Ayrıca "genel" internet 'e trafik gönderebilir ve aynı Azure sanal ağı ve işletim sistemi etkinleştirme sunucusu içindeki diğer sanal makinelere trafik gönderebilir. İzin verilen giden hedeflerin sanal makinelerin listesi Azure yönlendirici alt ağları, Azure yönetimi ve diğer Microsoft özelliklerini içermez.
 
--   **Rol yapılandırma dosyası:** Bu, kiracının hizmet modeline göre gelen Erişim Denetim Listeleri'ni (ALA)'ları tanımlar.
+-   **Rol yapılandırma dosyası:** Bu, kiracının hizmet modeline göre gelen Access Control listelerini (ACL 'Ler) tanımlar.
 
-### <a name="vlan-isolation"></a>VLAN İzolasyon
-Her kümede üç VUN vardır:
+### <a name="vlan-isolation"></a>VLAN yalıtımı
+Her kümede üç VLAN vardır:
 
-![VLAN İzolasyon](./media/isolation-choices/azure-isolation-fig8.jpg)
+![VLAN yalıtımı](./media/isolation-choices/azure-isolation-fig8.jpg)
 
 
--   Ana VLAN – güvenilmeyen müşteri düğümlerini birbirine bağlar
+-   Ana VLAN – güvenilmeyen Müşteri düğümlerini birbirine bağlar
 
--   FC VLAN – güvenilir FC'ler ve destek sistemleri içerir
+-   FC VLAN: güvenilen FCs ve destekleyici sistemler içerir
 
--   VLAN cihazı güvenilir ağ ve diğer altyapı aygıtları içerir
+-   Cihaz VLAN 'ı – güvenilen ağ ve diğer altyapı cihazlarını içerir
 
-FC VLAN'dan ana VLAN'a iletişim izin verilir, ancak ana VLAN'dan FC VLAN'a başlatılamaz. Ana VLAN'dan VLAN cihazına iletişim de engellenir. Bu, çalışan bir düğüm müşteri kodu tehlikeye olsa bile, fc veya aygıt VLANs düğümlerine saldıramayacağını garanti eder.
+FC VLAN ile ana VLAN arasında iletişime izin verilir, ancak ana VLAN 'dan FC VLAN 'a başlatılamaz. Ayrıca iletişim, ana VLAN 'dan cihaz VLAN 'a engellenir. Bu, müşteri kodu çalıştıran bir düğümün tehlikeye düşmesi durumunda olsa da, FC veya cihaz VLAN 'Ları üzerinde düğümlere saldıramaz.
 
-## <a name="storage-isolation"></a>Depolama Yalıtımı
-### <a name="logical-isolation-between-compute-and-storage"></a>İşlem ve Depolama Arasında Mantıksal Yalıtım
-Temel tasarımının bir parçası olarak Microsoft Azure, VM tabanlı hesaplamayı depolamadan ayırır. Bu ayırma, hesaplama ve depolamanın bağımsız olarak ölçeklendirmesini sağlayarak çoklu kira ve yalıtım sağlamayı kolaylaştırır.
+## <a name="storage-isolation"></a>Depolama yalıtımı
+### <a name="logical-isolation-between-compute-and-storage"></a>Işlem ve depolama arasındaki mantıksal yalıtım
+Temel tasarımının bir parçası olarak Microsoft Azure VM tabanlı hesaplamayı depolamadan ayırır. Bu ayrım, hesaplamanın ve depolamanın bağımsız olarak ölçeklendirilmesine olanak sağlayarak çok kiracılı ve yalıtımın sağlanması kolaylaşır.
 
-Bu nedenle, Azure Depolama, mantıksal olarak dışında Azure Compute'a ağ bağlantısı olmayan ayrı bir donanımda çalışır. Bu, sanal bir disk oluşturulduğunda, disk alanının tüm kapasitesi için ayrılmadığı anlamına gelir. Bunun yerine, sanal diskteki adresleri fiziksel diskteki alanlara eşleyen bir tablo oluşturulur ve bu tablo başlangıçta boştur. **Bir müşteri sanal diske ilk kez veri yazdığında, fiziksel diskteki alan ayrılır ve tabloya bir işaretçi yerleştirilir.**
-### <a name="isolation-using-storage-access-control"></a>Depolama Erişimi denetimini kullanarak yalıtım
-**Azure Depolama'da Erişim Denetimi'nin** basit bir erişim denetim modeli vardır. Her Azure aboneliği bir veya daha fazla Depolama Hesabı oluşturabilir. Her Depolama Hesabı'nın, o Depolama Hesabındaki tüm verilere erişimi denetlemek için kullanılan tek bir gizli anahtarı vardır.
+Bu nedenle, Azure Storage mantıksal dışında Azure Işlem ile ağ bağlantısı olmayan ayrı donanımlar üzerinde çalışır. Bu, bir sanal disk oluşturulduğunda, tüm kapasiteye yönelik disk alanının ayrılmadığı anlamına gelir. Bunun yerine, sanal disk üzerindeki adresleri fiziksel diskteki alanlarla eşleyen bir tablo oluşturulur ve bu tablo başlangıçta boştur. **Bir müşteri sanal diske veri yazdığında, fiziksel diskteki alan ayrılır ve tabloya bir işaretçi yerleştirilir.**
+### <a name="isolation-using-storage-access-control"></a>Depolama erişim denetimi kullanarak yalıtım
+**Azure depolamada Access Control** basit bir erişim denetimi modeline sahiptir. Her Azure aboneliği, bir veya daha fazla depolama hesabı oluşturabilir. Her depolama hesabının, bu depolama hesabındaki tüm verilere erişimi denetlemek için kullanılan tek bir gizli anahtarı vardır.
 
-![Depolama Erişimi denetimini kullanarak yalıtım](./media/isolation-choices/azure-isolation-fig9.png)
+![Depolama erişim denetimi kullanarak yalıtım](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Azure Depolama verilerine erişim (Tablolar dahil)** kapsamlı erişim sağlayan bir [SAS (Paylaşılan Erişim İmzası)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) belirteci aracılığıyla denetlenebilir. SAS, [SAK (Depolama Hesap Anahtarı)](https://msdn.microsoft.com/library/azure/ee460785.aspx)ile imzalanmış bir sorgu şablonu (URL) aracılığıyla oluşturulur. Bu [imzalı URL,](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) sorgunun ayrıntılarını doldurup depolama hizmetinin isteğini yerine getirebilecek başka bir işleme (diğer bir deyişle, temsilci) verilebilir. SAS, depolama hesabının gizli anahtarını açıklamadan istemcilere zaman tabanlı erişim sağlamanızı sağlar.
+**Azure depolama verilerine (tablolar dahil) erişim** , kapsamlı erişim veren bir [SAS (paylaşılan erişim imzası)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) belirteci aracılığıyla denetlenebilir. SAS, [sak (depolama hesabı anahtarı)](https://msdn.microsoft.com/library/azure/ee460785.aspx)ile imzalanmış bir sorgu şablonu (URL) ile oluşturulur. Bu [IMZALı URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) , başka bir işleme (yani, temsilcili) verilebilir, bu, daha sonra sorgunun ayrıntılarını doldurabilir ve depolama hizmeti isteğini oluşturabilir. SAS, depolama hesabının gizli anahtarını göstermeden istemcilere zaman tabanlı erişim sağlamanıza olanak sağlar.
 
-SAS, bir istemciye, depolama hesabımızdaki nesnelere belirli bir süre ve belirli bir izin kümesiyle sınırlı izinler verebileceğimiz anlamına gelir. Bu sınırlı izinleri hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan verebiliriz.
+SAS, belirli bir süre boyunca ve belirli bir izin kümesiyle, bir istemci sınırlı izinleri, depolama hesabımızda bulunan nesnelere sağlayabilmemiz anlamına gelir. Hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan bu sınırlı izinleri sağlayabiliriz.
 
-### <a name="ip-level-storage-isolation"></a>IP Düzey Depolama Yalıtımı
-Güvenlik duvarları oluşturup, güvenilir müşterileriniz için bir IP adresi aralığı tanımlayabilirsiniz. IP adres aralığıyla, yalnızca tanımlanan aralıkta IP adresi olan istemciler [Azure Depolama'ya](../../storage/blobs/security-recommendations.md)bağlanabilir.
+### <a name="ip-level-storage-isolation"></a>IP düzeyi depolama yalıtımı
+Güvenlik duvarları oluşturabilir ve güvenilen istemcileriniz için bir IP adresi aralığı tanımlayabilirsiniz. Bir IP adresi aralığı ile yalnızca tanımlı aralıkta bir IP adresi olan istemciler [Azure depolama](../../storage/blobs/security-recommendations.md)'ya bağlanabilir.
 
-IP depolama verileri, IP depolamasına özel veya özel bir trafik tüneli ayırmak için kullanılan bir ağ mekanizması aracılığıyla yetkisiz kullanıcılara karşı korunabilir.
+IP depolama verileri yetkisiz kullanıcılardan, IP depolama alanına adanmış veya adanmış bir trafik tüneli ayırmak için kullanılan bir ağ mekanizması aracılığıyla korunabilir.
 
 ### <a name="encryption"></a>Şifreleme
-Azure, verileri korumak için aşağıdaki Şifreleme türlerini sunar:
+Azure, verileri korumak için aşağıdaki şifreleme türlerini sunar:
 -   Aktarım sırasında şifreleme
 
 -   Bekleme sırasında şifreleme
 
-#### <a name="encryption-in-transit"></a>Aktarımda Şifreleme
-Aktarım sırasında şifreleme, ağlar arasında aktarıldığında verileri koruma mekanizmasıdır. Azure Depolama ile verileri şu şekilde güvene alabilirsiniz:
+#### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
+Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmasında bir mekanizmadır. Azure depolama ile, aşağıdakileri kullanarak verileri güvenli hale getirebilirsiniz:
 
--   Azure Depolama'ya veri aktarırken veya Azure Depolama'nın dışına aktarırken HTTPS gibi [aktarım düzeyinde şifreleme.](../../storage/blobs/security-recommendations.md)
+-   Azure depolama içine veya dışına veri aktarırken HTTPS gibi [Aktarım düzeyi şifreleme](../../storage/blobs/security-recommendations.md).
 
--   Azure Dosya paylaşımları için SMB 3.0 şifrelemesi gibi [kablo şifrelemesi.](../../storage/blobs/security-recommendations.md)
+-   Azure dosya paylaşımları için SMB 3,0 Şifrelemesi gibi bir [hat şifreleme](../../storage/blobs/security-recommendations.md).
 
--   [İstemci tarafı şifreleme,](../../storage/blobs/security-recommendations.md)depolamaya aktarılmadan önce verileri şifrelemek ve depolama dışına aktarıldıktan sonra verilerin şifresini çözmek için.
+-   Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](../../storage/blobs/security-recommendations.md).
 
-#### <a name="encryption-at-rest"></a>Istirahatte Şifreleme
-Birçok kuruluş için veri [şifreleme, veri](isolation-choices.md) gizliliği, uyumluluk ve veri egemenliği yolunda zorunlu bir adımdır. "Beklemede" olan verilerin şifrelemesini sağlayan üç Azure özelliği vardır:
+#### <a name="encryption-at-rest"></a>Bekleyen şifreleme
+Birçok kuruluş için, [bekleyen veri şifreleme](isolation-choices.md) , veri gizliliği, uyumluluk ve veri egemenlik 'e yönelik zorunlu bir adımdır. "Bekleyen" veri şifrelemesini sağlayan üç Azure özelliği vardır:
 
--   [Depolama Hizmeti](../../storage/blobs/security-recommendations.md) Şifrelemesi, depolama hizmetinin verileri Azure Depolama'ya yazarken otomatik olarak şifrelemesini istemenize olanak tanır.
+-   [Depolama hizmeti şifrelemesi](../../storage/blobs/security-recommendations.md) , depolama hizmetinin verileri Azure depolama 'ya yazarken otomatik olarak şifrelemesine olanak tanır.
 
--   [İstemci tarafı Şifreleme](../../storage/blobs/security-recommendations.md) de istirahatşifreleme özelliği sağlar.
+-   [İstemci tarafı şifreleme](../../storage/blobs/security-recommendations.md) , bekleyen şifreleme özelliğini de sağlar.
 
--   [Azure Disk Şifreleme,](../azure-security-disk-encryption-overview.md) IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenize olanak tanır.
+-   [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) , bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
-Sanal makineler için [Azure Disk Şifrelemesi](../azure-security-disk-encryption-overview.md) (VM'ler), [Azure Anahtar Kasası'nda](https://azure.microsoft.com/services/key-vault/)kontrol ettiğiniz anahtarlar ve ilkelerle VM disklerinizi (önyükleme ve veri diskleri dahil) şifreleyerek kuruluş güvenliği ve uyumluluk gereksinimlerini gidermenize yardımcı olur.
+Sanal makineler için [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) (VM 'ler), [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)DENETLEDIĞINIZ anahtarlar ve ilkelerle VM disklerini (önyükleme ve veri diskleri dahil) şifreleyerek kurumsal güvenlik ve uyumluluk gereksinimlerini sağlamanıza yardımcı olur.
 
-Windows için Disk Şifreleme çözümü [Microsoft BitLocker Sürücü Şifreleme](https://technet.microsoft.com/library/cc732774.aspx)dayanmaktadır ve Linux çözümü [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)dayanmaktadır.
+Windows için disk şifreleme çözümü, [Microsoft BitLocker Sürücü Şifrelemesi](https://technet.microsoft.com/library/cc732774.aspx)tabanlıdır ve Linux çözümü [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)' i temel alır.
 
-Çözüm, IaaS VM'ler için Microsoft Azure'da etkinleştirildiğinde aşağıdaki senaryoları destekler:
--   Azure Anahtar Kasası ile Tümleştirme
+Çözüm, Microsoft Azure ' de etkinleştirildiklerinde IaaS VM 'Leri için aşağıdaki senaryoları destekler:
+-   Azure Key Vault ile tümleştirme
 
--   Standart kademe VM'ler: A, D, DS, G, GS ve benzeri, Seri IaaS VM'ler
+-   Standart katman VM 'Leri: A, D, DS, G, GS, vb., Series IaaS VM 'Leri
 
--   Windows ve Linux IaaS VM'lerde şifrelemeyi etkinleştirme
+-   Windows ve Linux IaaS VM 'lerinde şifrelemeyi etkinleştirme
 
--   Windows IaaS VM'leri için işletim sistemi ve veri sürücülerinde şifrelemeyi devre dışı bırakma
+-   Windows IaaS VM 'Leri için işletim sistemi ve veri sürücülerinde şifrelemeyi devre dışı bırakma
 
--   Linux IaaS VM'ler için veri sürücülerinde şifrelemenin devre dışı bırakılması
+-   Linux IaaS VM 'Leri için veri sürücülerinde şifrelemeyi devre dışı bırakma
 
--   Windows istemci işletim sistemi çalıştıran IaaS VM'lerde şifreleme yi etkinleştirme
+-   Windows istemci işletim sistemi çalıştıran IaaS sanal makinelerinde şifrelemeyi etkinleştirme
 
--   Montaj yolları olan birimlerde şifreleme yi etkinleştirme
+-   Bağlama yollarındaki birimlerde şifrelemeyi etkinleştirme
 
--   [Mdadm](https://en.wikipedia.org/wiki/Mdadm) kullanarak disk şeridi (RAID) ile yapılandırılan Linux VM'lerinde şifrelemeyi etkinleştirme
+-   [Mdaddm](https://en.wikipedia.org/wiki/Mdadm) kullanılarak disk ŞERIDI (RAID) Ile yapılandırılmış Linux VM 'lerinde şifrelemeyi etkinleştirme
 
--   Veri diskleri için [LVM (Mantıksal Birim Yöneticisi)](https://msdn.microsoft.com/library/windows/desktop/bb540532) kullanarak Linux VM'lerinde şifrelemeyi etkinleştirme
+-   Veri diskleri için [LVM (mantıksal birim Yöneticisi)](https://msdn.microsoft.com/library/windows/desktop/bb540532) kullanarak Linux VM 'lerde şifrelemeyi etkinleştirme
 
--   Depolama alanları kullanılarak yapılandırılan Windows VM'lerinde şifreleme yi etkinleştirme
+-   Depolama alanları kullanılarak yapılandırılan Windows VM 'lerinde şifrelemeyi etkinleştirme
 
 -   Tüm Azure ortak bölgeleri desteklenir
 
-Çözüm, sürümdeki aşağıdaki senaryoları, özellikleri ve teknolojiyi desteklemez:
+Çözüm, sürümde aşağıdaki senaryoları, özellikleri ve teknolojiyi desteklemez:
 
--   Temel seviye IaaS VM'ler
+-   Temel katman IaaS VM 'Leri
 
--   Linux IaaS VM'ler için işletim sistemi sürücüsünde şifrelemeyi devre dışı bırakma
+-   Linux IaaS VM 'Leri için bir işletim sistemi sürücüsünde şifrelemeyi devre dışı bırakma
 
--   Klasik VM oluşturma yöntemi kullanılarak oluşturulan IaaS VM'ler
+-   Klasik VM oluşturma yöntemi kullanılarak oluşturulan IaaS VM 'Leri
 
--   Şirket içi Anahtar Yönetim Hizmetinizle entegrasyon
+-   Şirket içi anahtar yönetim hizmetiniz ile tümleştirme
 
--   Yazılım tabanlı RAID sistemleriyle yapılandırılan Azure Dosyaları (paylaşılan dosya sistemi), Ağ Dosya Sistemi (NFS), dinamik birimler ve Windows VM'leri
+-   Azure dosyaları (paylaşılan dosya sistemi), ağ dosya sistemi (NFS), dinamik birimler ve yazılım tabanlı RAID sistemleriyle yapılandırılmış Windows VM 'Leri
 
-## <a name="sql-azure-database-isolation"></a>SQL Azure Veritabanı Yalıtımı
-SQL Veritabanı, piyasa lideri Microsoft SQL Server altyapısını temel alan ve görev açısından kritik iş yüklerini üstlenebilen, Microsoft bulutu tabanlı bir ilişkisel veritabanı hizmetidir. SQL Veritabanı hesap düzeyinde öngörülebilir veri yalıtımı sunar, coğrafya / bölge tabanlı ve ağ tabanlı- tüm sıfıra yakın yönetim ile.
+## <a name="sql-azure-database-isolation"></a>SQL Azure veritabanı yalıtımı
+SQL Veritabanı, piyasa lideri Microsoft SQL Server altyapısını temel alan ve görev açısından kritik iş yüklerini üstlenebilen, Microsoft bulutu tabanlı bir ilişkisel veritabanı hizmetidir. SQL veritabanı, hesap düzeyinde, coğrafi konum/bölge temelinde tahmin edilebilir veri yalıtımı sağlar.
 
-### <a name="sql-azure-application-model"></a>SQL Azure Uygulama Modeli
+### <a name="sql-azure-application-model"></a>SQL Azure uygulama modeli
 
-[Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Veritabanı, SQL Server teknolojileri üzerine kurulu bulut tabanlı bir ilişkisel veritabanı hizmetidir. Microsoft tarafından bulutta barındırılan yüksek kullanılabilir, ölçeklenebilir, çok kiracılı bir veritabanı hizmeti sağlar.
+[Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Veritabanı, SQL Server teknolojileri üzerinde oluşturulmuş bulut tabanlı bir ilişkisel veritabanı hizmetidir. Microsoft tarafından bulutta barındırılan, yüksek oranda kullanılabilir, ölçeklenebilir, çok kiracılı bir veritabanı hizmeti sağlar.
 
-Uygulama açısından SQL Azure aşağıdaki hiyerarşiyi sağlar: Her düzey, aşağıda bir-çok düzey içeren bir düzeye sahiptir.
+Bir uygulama perspektifinden SQL Azure aşağıdaki hiyerarşiyi sağlar: her düzey, aşağıdaki düzeylerin bir-çok kapsamayı içerir.
 
-![SQL Azure Uygulama Modeli](./media/isolation-choices/azure-isolation-fig10.png)
+![SQL Azure uygulama modeli](./media/isolation-choices/azure-isolation-fig10.png)
 
-Hesap ve abonelik, faturalandırma ve yönetimi ilişkilendirmek için Microsoft Azure platform kavramlarıdır.
+Hesap ve abonelik, faturalandırma ve yönetimi ilişkilendirmek için Microsoft Azure platform kavramlardır.
 
-Mantıksal sunucular ve veritabanları SQL Azure'a özgü kavramlardır ve SQL Azure kullanılarak, OData ve TSQL arayüzleri sağlayarak veya Azure portalına entegre edilmiş SQL Azure portalı aracılığıyla yönetilir.
+Mantıksal sunucular ve veritabanları SQL Azure özgü kavramlardır ve SQL Azure, sağlanmış OData ve TSQL arabirimleri ya da Azure portal ile tümleştirilmiş SQL Azure portalı aracılığıyla yönetilir.
 
-SQL Azure sunucuları fiziksel veya VM örnekleri değildir, bunun yerine veritabanları, paylaşım yönetimi ve güvenlik ilkeleri koleksiyonlarıdır ve bunlar "mantıksal ana" veritabanında depolanır.
+SQL Azure sunucular fiziksel veya sanal makine örnekleri değildir, bu nedenle "mantıksal ana" veritabanı olarak da adlandırılan veritabanı koleksiyonları, paylaşım yönetimi ve güvenlik ilkeleri vardır.
 
 ![SQL Azure](./media/isolation-choices/azure-isolation-fig11.png)
 
-Mantıksal ana veritabanları şunlardır:
+Mantıksal ana veritabanları şunları içerir:
 
--   Sunucuya bağlanmak için kullanılan SQL girişleri
+-   Sunucuya bağlanmak için kullanılan SQL oturum açmalar
 
 -   Güvenlik duvarı kuralları
 
-Aynı mantıksal sunucudan SQL Azure veritabanları için faturalandırma ve kullanımla ilgili bilgilerin SQL Azure kümesinde aynı fiziksel örnekte olduğu garanti edilmez, bunun yerine uygulamaların bağlanırken hedef veritabanı adını sağlaması gerekir.
+Aynı mantıksal sunucudan SQL Azure veritabanları için faturalandırma ve kullanımla ilgili bilgilerin, SQL Azure kümedeki aynı fiziksel örnekte olması garanti edilmez, bunun yerine uygulamalar bağlanırken hedef veritabanı adını sağlamalıdır.
 
-Müşteri açısından bakıldığında, mantıksal bir sunucu coğrafi grafik bölgesinde oluşturulurken, sunucunun gerçek oluşturulması bölgedeki kümelerden birinde gerçekleşir.
+Bir müşteri perspektifinden, coğrafi grafik bölgesinde bir mantıksal sunucu oluşturulur, ancak sunucu gerçek oluşturma bölgedeki kümelerden birinde olur.
 
-### <a name="isolation-through-network-topology"></a>Ağ Topolojisi ile Yalıtım
+### <a name="isolation-through-network-topology"></a>Ağ topolojisi ile yalıtma
 
-Mantıksal bir sunucu oluşturulduğunda ve DNS adı kaydedildiğinde, DNS adı sunucunun yerleştirildiği belirli veri merkezindeki sözde "Ağ Geçidi VIP" adresine işaret eder.
+Bir mantıksal sunucu oluşturulduğunda ve DNS adı kaydedildiğinde, DNS adı sunucunun yerleştirildiği belirli veri merkezinde "ağ geçidi VIP" adresine işaret eder.
 
-VIP (sanal IP adresi) arkasında, biz vatansız ağ geçidi hizmetleri bir koleksiyona sahip. Genel olarak, birden çok veri kaynağı (ana veritabanı, kullanıcı veritabanı, vb) arasında koordinasyon gerektiğinde ağ geçitleri dahil olsun. Ağ geçidi hizmetleri aşağıdakileri uygular:
--   **TDS bağlantı proxying.** Bu, kullanıcı veritabanını arka uç kümesinde bulmayı, oturum açma sırasını uygulamayı ve Ardından TDS paketlerini arka uça ve arkaya iletmeyi içerir.
+VIP 'nin (sanal IP adresi) arkasında durum bilgisiz ağ geçidi Hizmetleri koleksiyonudur. Genel olarak, birden çok veri kaynağı (ana veritabanı, Kullanıcı veritabanı vb.) arasında koordinasyon olduğunda, ağ geçitleri söz konusu olabilir. Ağ geçidi Hizmetleri aşağıdakileri uygular:
+-   **TDS bağlantı proxy 'i.** Bu, arka uç kümesinde kullanıcı veritabanını konumlandırmayı, oturum açma dizisini uygulamayı ve ardından TDS paketlerini arka uca ve geri iletmeyi içerir.
 
--   **Veritabanı yönetimi.** Bu, CREATE/ALTER/DROP veritabanı işlemleri yapmak için bir iş akışı koleksiyonunu n uygulanmasını içerir. Veritabanı işlemleri, TDS paketlerini koklayarak veya açık OData API'leri ile çağrılabilir.
+-   **Veritabanı yönetimi.** Bu, CREATE/ALTER/DROP DATABASE işlemleri yapmak için bir iş akışı koleksiyonu uygulamayı içerir. Veritabanı işlemleri, algılama TDS paketleri ya da açık OData API 'Leri tarafından çağrılabilir.
 
--   CREATE/ALTER/DROP giriş/kullanıcı işlemleri
+-   OLUŞTURMA/DEĞIŞTIRME/BıRAKMA oturum açma/kullanıcı işlemleri
 
--   OData API ile mantıksal sunucu yönetimi işlemleri
+-   OData API aracılığıyla mantıksal sunucu yönetim işlemleri
 
-![Ağ Topolojisi ile Yalıtım](./media/isolation-choices/azure-isolation-fig12.png)
+![Ağ topolojisi ile yalıtma](./media/isolation-choices/azure-isolation-fig12.png)
 
-Ağ geçitlerinin arkasındaki katmana "arka uç" denir. Tüm verilerin son derece kullanılabilir bir şekilde depolandığı yerdir. Her veri parçasının bir "bölüm" veya "başarısız birim"e ait olduğu söylenir ve her birinin en az üç kopyası vardır. Yinelemeler SQL Server altyapısı tarafından depolanır ve çoğaltılır ve genellikle "kumaş" olarak adlandırılan bir başarısız sistem tarafından yönetilir.
+Ağ geçitlerinin arkasındaki katmana "arka uç" adı verilir. Bu, tüm verilerin yüksek oranda kullanılabilir bir biçimde depolandığı yerdir. Her veri parçası, en az üç çoğaltmaya sahip olan bir "Bölüm" veya "yük devretme birimine" ait olarak kabul edilir. Çoğaltmalar SQL Server altyapısı tarafından depolanır ve çoğaltılır ve genellikle "Fabric" olarak adlandırılan bir yük devretme sistemi tarafından yönetilir.
 
-Genellikle, arka uç sistemi bir güvenlik önlemi olarak giden diğer sistemlere iletişim kurmaz. Bu, ön uç (ağ geçidi) katmanındaki sistemlere ayrılmıştır. Ağ geçidi katmanı makineleri, saldırı yüzeyini derinlemesine bir savunma mekanizması olarak en aza indirmek için arka uç makinelerde sınırlı ayrıcalıklara sahiptir.
+Genellikle, arka uç sistemi bir güvenlik önlemi olarak diğer sistemlerle giden iletişim kurmaz. Bu, ön uç (Gateway) katmanındaki sistemlere ayrılmıştır. Ağ Geçidi katmanı makineleri, saldırı yüzeyini derinlemesine bir savunma mekanizması olarak en aza indirmek için arka uç makinelerde sınırlı ayrıcalıklara sahiptir.
 
-### <a name="isolation-by-machine-function-and-access"></a>Makine Fonksiyonu ve Erişime Göre Yalıtım
-SQL Azure (farklı makine işlevleri üzerinde çalışan hizmetlerden oluşur. SQL Azure, "arka uç" Bulut Veritabanı ve "ön uç" (Ağ Geçidi/Yönetim) ortamlarına ayrılır ve trafiğin genel ilkesi yalnızca arka uca girer ve dışarı çıkmaz. Ön uç ortamı diğer hizmetlerin dış dünyasına iletişim kurabilir ve genel olarak, arka uçta yalnızca sınırlı izinlere sahiptir (çağırması gereken giriş noktalarını aramak için yeterlidir).
+### <a name="isolation-by-machine-function-and-access"></a>Makine Işlevine ve erişime göre yalıtma
+SQL Azure (farklı makine işlevlerinde çalışan hizmetlerden oluşur. SQL Azure, "arka uç" bulut veritabanına ve "ön uç" (ağ geçidi/yönetim) ortamlarına bölünür. Bu, genel trafik ilkesiyle yalnızca arka uca ve değil. Ön uç ortamı diğer hizmetlerin dış dünyasına iletişim kurabilir ve genel olarak arka uçta yalnızca sınırlı izinlere sahiptir (çağırmak için gereken giriş noktalarını çağırmak yeterlidir).
 
-## <a name="networking-isolation"></a>Ağ Yalıtımı
-Azure dağıtımında birden çok ağ yalıtım katmanı vardır. Aşağıdaki diyagram, Azure'un müşterilere sağladığı çeşitli ağ yalıtımı katmanlarını gösterir. Bu katmanlar hem Azure platformunun kendisinde hem de müşteri tanımlı özelliklerde yereldir. Azure DDoS, Internet'ten gelen büyük ölçekli saldırılara karşı yalıtım sağlar. Bir sonraki yalıtım katmanı, bulut hizmetinden sanal ağa hangi trafiğin geçebileceğini belirlemek için kullanılan müşteri tanımlı genel IP adresleridir (uç noktalar). Yerel Azure sanal ağ yalıtımı, diğer tüm ağlardan tam yalıtım sağlar ve trafik yalnızca kullanıcı tarafından yapılandırılan yollar ve yöntemlerüzerinden akar. Bu yollar ve yöntemler, NSG'lerin, UDR'lerin ve ağ sanal cihazlarının koruma altındaki ağdaki uygulama dağıtımlarını korumak için yalıtım sınırları oluşturmak için kullanılabildiği bir sonraki katmandır.
+## <a name="networking-isolation"></a>Ağ yalıtımı
+Azure dağıtımında birden çok ağ yalıtımı katmanı vardır. Aşağıdaki diyagramda, Azure 'un müşterilerine sağladığı çeşitli ağ yalıtımı katmanları gösterilmektedir. Bu katmanların ikisi de Azure platformunda yerel ve müşteri tanımlı özelliklerdir. Internet 'ten gelen Azure DDoS, Azure 'da büyük ölçekli saldırılara karşı yalıtımı sağlar. Bir sonraki yalıtım katmanı, bulut hizmetinden sanal ağa hangi trafiğin geçebileceği belirlenmesi için kullanılan müşteri tanımlı genel IP adresleridir (uç noktalar). Yerel Azure sanal ağ yalıtımı, diğer tüm ağlardan tamamen yalıtımı sağlar ve bu trafik yalnızca Kullanıcı tarafından yapılandırılan yollar ve yöntemler aracılığıyla akar. Bu yollar ve Yöntemler, NSGs, UDR ve ağ sanal gereçlerinin, korunan ağdaki uygulama dağıtımlarını korumak üzere yalıtım sınırları oluşturmak için kullanılabileceği bir sonraki katmandır.
 
-![Ağ Yalıtımı](./media/isolation-choices/azure-isolation-fig13.png)
+![Ağ yalıtımı](./media/isolation-choices/azure-isolation-fig13.png)
 
-**Trafik yalıtımı:** [Sanal ağ,](../../virtual-network/virtual-networks-overview.md) Azure platformundaki trafik yalıtım sınırıdır. Bir sanal ağdaki sanal makineler (VM'ler), her iki sanal ağ da aynı müşteri tarafından oluşturulsa bile, farklı bir sanal ağdaki VM'lere doğrudan iletişim kuramaz. Yalıtım, müşteri VM'lerinin ve iletişimin sanal ağ içinde gizli kalmasını sağlayan kritik bir özelliktir.
+**Trafik yalıtımı:** [Sanal ağ](../../virtual-network/virtual-networks-overview.md) , Azure platformunda trafik yalıtımı sınırıdır. Tek bir sanal ağdaki sanal makineler (VM), aynı müşteri tarafından her iki sanal ağ da oluşturulsa bile, farklı bir sanal ağdaki VM 'Ler ile doğrudan iletişim kuramaz. Yalıtım, bir sanal ağ içinde müşteri VM 'lerinin ve iletişimin özel kalmasını sağlayan kritik bir özelliktir.
 
-[Subnet,](../../virtual-network/virtual-networks-overview.md) IP aralığına dayalı sanal ağda ek bir yalıtım katmanı sunar. Sanal ağdaki IP adresleri, sanal bir ağı kuruluş ve güvenlik için birden çok alt ağa bölebilirsiniz. Bir sanal ağ içindeki alt ağlara (aynı veya farklı) dağıtılan VM'ler ve PaaS rolü örnekleri, ek bir yapılandırma gerektirmeden birbirleriyle iletişim kurabilir. [Ayrıca, Ağ güvenliği grubunu (NSGs) NSG'nin](../../virtual-network/virtual-networks-overview.md) erişim denetim listesinde (ACL) yapılandırılan kurallara göre ağ trafiğine izin verecek veya vm örneğine karşı reddedebilir şekilde yapılandırabilirsiniz. NSG'ler alt ağlarla veya bu alt ağların içindeki tekil VM örnekleriyle ilişkili olabilir. NSG bir alt ağ ile ilişkili olduğunda ACL kuralları bu alt ağdaki tüm VM örnekleri için geçerli olur.
+[Alt ağ](../../virtual-network/virtual-networks-overview.md) , IP aralığına göre sanal ağ ile ek bir yalıtım katmanı sunar. Sanal ağdaki IP adresleri, bir sanal ağı kuruluş ve güvenlik için birden çok alt ağa bölebilirsiniz. Bir sanal ağ içindeki alt ağlara (aynı veya farklı) dağıtılan VM'ler ve PaaS rolü örnekleri, ek bir yapılandırma gerektirmeden birbirleriyle iletişim kurabilir. Ayrıca, NSG erişim denetim listesi 'nde (ACL) yapılandırılan kurallara göre bir VM örneğine ağ trafiğine izin vermek veya reddetmek için [ağ güvenlik grubu (NSG 'ler)](../../virtual-network/virtual-networks-overview.md) yapılandırabilirsiniz. NSG'ler alt ağlarla veya bu alt ağların içindeki tekil VM örnekleriyle ilişkili olabilir. NSG bir alt ağ ile ilişkili olduğunda ACL kuralları bu alt ağdaki tüm VM örnekleri için geçerli olur.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- Windows [Azure Sanal Ağlardaki Makineler için Ağ Yalıtım Seçenekleri](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)hakkında bilgi edinin. Buna, belirli bir arka uç ağındaki veya alt ağdaki makinelerin yalnızca belirli istemcilerin veya diğer bilgisayarların izin veren IP adresleri listesine dayalı olarak belirli bir bitiş noktasına bağlanmasına izin verebileceği klasik ön uç ve arka uç senaryosu dahildir.
+- [Windows Azure sanal ağlarında makineler Için ağ yalıtımı seçenekleri](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)hakkında bilgi edinin. Bu, belirli bir arka uç ağı veya alt ağı içindeki makinelerin yalnızca belirli bir uç noktaya izin verilen IP adresleri listesine bağlı olarak belirli bir uç noktaya bağlanmasına izin veren klasik ön uç ve arka uç senaryosunu içerir.
 
-- [Azure'da sanal makine yalıtımı](../../virtual-machines/windows/isolation.md)hakkında bilgi edinin. Azure Compute, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar.
+- [Azure 'da sanal makine yalıtımı](../../virtual-machines/windows/isolation.md)hakkında bilgi edinin. Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar.

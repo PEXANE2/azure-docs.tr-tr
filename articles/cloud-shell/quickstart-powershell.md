@@ -1,6 +1,6 @@
 ---
-title: Azure Bulut Kabuğu Quickstart - PowerShell
-description: Azure Cloud Shell ile PowerShell'i tarayıcınızda nasıl kullanacağınızı öğrenin.
+title: Azure Cloud Shell hızlı başlangıç-PowerShell
+description: Azure Cloud Shell ile tarayıcınızda PowerShell 'i kullanmayı öğrenin.
 author: maertendmsft
 ms.author: damaerte
 tags: azure-resource-manager
@@ -10,32 +10,32 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273013"
 ---
-# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Bulut BulutU'da PowerShell için hızlı başlatma
+# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 'de PowerShell için hızlı başlangıç
 
-Bu belge, [Azure portalında](https://portal.azure.com/)Cloud Shell'de PowerShell'in nasıl kullanılacağını ayrıntılarıyla anlatır.
+Bu belge [Azure portal](https://portal.azure.com/)Cloud Shell ' de PowerShell 'in nasıl kullanılacağını açıklamaktadır.
 
 > [!NOTE]
-> [Azure Cloud Cloud Cloud Quickstart'ta](quickstart.md) bir Bash da mevcuttur.
+> Azure Cloud Shell hızlı başlangıç bir [Bash](quickstart.md) de mevcuttur.
 
 ## <a name="start-cloud-shell"></a>Cloud Shell'i Başlatma
 
-1. Azure portalının üst teki gezinme çubuğundan **Bulut Kabuğu** düğmesine tıklayın
+1. Azure portal üst gezinti çubuğundan **Cloud Shell** düğmesine tıklayın
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. Açılan yerden PowerShell ortamını seçin ve Azure sürücüsünde olursunuz`(Azure:)`
+2. Açılır listeden PowerShell ortamını seçin ve Azure Drive 'da olursunuz`(Azure:)`
 
    ![](media/quickstart-powershell/environment-ps.png)
 
-## <a name="run-powershell-commands"></a>PowerShell komutlarını çalıştırın
+## <a name="run-powershell-commands"></a>PowerShell komutlarını çalıştır
 
-Bulut Shell'de aşağıdakiler gibi düzenli PowerShell komutları çalıştırın:
+Cloud Shell normal PowerShell komutlarını çalıştırın, örneğin:
 
 ```azurepowershell-interactive
 PS Azure:\> Get-Date
@@ -53,24 +53,24 @@ MyResourceGroup         MyVM1       eastus            Standard_DS1  Windows    S
 MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    Succeeded           deallocated
 ```
 
-## <a name="navigate-azure-resources"></a>Azure kaynaklarında gezinme
+## <a name="navigate-azure-resources"></a>Azure kaynaklarında gezin
 
- 1. Sürücüdeki `Azure` tüm aboneliklerinizi listele
+ 1. Tüm aboneliklerinizi `Azure` sürücüden listeleyin
 
     ```azurepowershell-interactive
     PS Azure:\> dir
     ```
 
- 2. `cd`tercih ettiğiniz aboneye
+ 2. `cd`tercih ettiğiniz abonelik için
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
     PS Azure:\MySubscriptionName>
     ```
 
- 3. Geçerli abonelik altında tüm Azure kaynaklarınızı görüntüleyin
+ 3. Geçerli abonelik kapsamındaki tüm Azure kaynaklarınızı görüntüleyin
 
-    Azure `dir` kaynaklarınızın birden çok kez görüntülerini listelemek için yazın.
+    Azure `dir` kaynaklarınızın birden çok görünümünü listelemek için yazın.
 
     ```azurepowershell-interactive
     PS Azure:\MySubscriptionName> dir
@@ -88,15 +88,15 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ### <a name="allresources-view"></a>AllResources görünümü
 
-Azure `dir` `AllResources` kaynaklarınızı görüntülemek için dizin altında yazın.
+Azure `dir` kaynaklarınızı `AllResources` görüntülemek için dizin altına yazın.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir AllResources
 ```
 
-### <a name="explore-resource-groups"></a>Kaynak gruplarını keşfedin
+### <a name="explore-resource-groups"></a>Kaynak gruplarını keşfet
 
- `ResourceGroups` Dizin ve sanal makineleri bulabilirsiniz belirli bir kaynak grubu içinde gidebilirsiniz.
+ Sanal makineler bulmak için `ResourceGroups` dizine ve belirli bir kaynak grubunun içine gidebilirsiniz.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
@@ -114,13 +114,13 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 ```
 
 > [!NOTE]
-> İkinci kez yazarken `dir`Cloud Shell'in öğeleri çok daha hızlı görüntülediğini fark edebilirsiniz.
-> Bunun nedeni, alt öğelerin daha iyi bir kullanıcı deneyimi için bellekte önbelleğe alınmış olmasıdır.
-Ancak, her zaman `dir -Force` taze veri almak için kullanabilirsiniz.
+> İkinci kez yazdığınızda `dir`Cloud Shell öğeleri çok daha hızlı bir şekilde görüntüleyebileceğini fark edebilirsiniz.
+> Bunun nedeni, daha iyi bir kullanıcı deneyimi için alt öğelerin bellekte önbelleğe alınmasıdır.
+Ancak, yeni verileri almak için `dir -Force` her zaman kullanabilirsiniz.
 
-### <a name="navigate-storage-resources"></a>Depolama kaynaklarında gezinme
+### <a name="navigate-storage-resources"></a>Depolama kaynaklarında gezin
 
-Dizine `StorageAccounts` girerek, tüm depolama kaynaklarınızda kolayca gezinebilirsiniz
+`StorageAccounts` Dizine girerek, tüm depolama kaynaklarınızda kolayca gezinebilirsiniz
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -134,15 +134,15 @@ MyFileShare2  \\MyStorageAccountName.file.core.windows.net\MyFileShare2;AccountN
 MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountName=MyStorageAccountName AccountKey=<key>
 ```
 
-Bağlantı dizesi ile Azure Dosyaları paylaşımını monte etmek için aşağıdaki komutu kullanabilirsiniz.
+Bağlantı dizesiyle, Azure dosya paylaşımının bağlanması için aşağıdaki komutu kullanabilirsiniz.
 
 ```azurepowershell-interactive
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
 ```
 
-Ayrıntılar için Azure Dosyalarını Dağı'na bakın [ve Windows'daki paylaşıma erişin.][azmount]
+Ayrıntılar için bkz. [Azure dosya paylaşma bağlama ve Windows 'da paylaşıma erişme][azmount].
 
-Azure Dosyaları paylaşımı altındaki dizinlerde de aşağıdaki gibi gezinebilirsiniz:
+Ayrıca, Azure dosyaları paylaşımının altındaki dizinlere aşağıdaki gibi gidebilirsiniz:
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> cd .\MyFileShare1\
@@ -154,9 +154,9 @@ Mode  Name
 .     hello.ps1
 ```
 
-### <a name="interact-with-virtual-machines"></a>Sanal makinelerle etkileşim
+### <a name="interact-with-virtual-machines"></a>Sanal makinelerle etkileşim kurma
 
-Tüm sanal makinelerinizi geçerli abonelik altında `VirtualMachines` dizin üzerinden bulabilirsiniz.
+Tüm sanal makinelerinizi geçerli aboneliğin altında Dizin aracılığıyla `VirtualMachines` bulabilirsiniz.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\VirtualMachines> dir
@@ -171,19 +171,19 @@ TestVm2    MyResourceGroup1   westus    Standard_DS1_v2 Windows          jpstest
 TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest         Succeeded     running
 ```
 
-#### <a name="invoke-powershell-script-across-remote-vms"></a>Uzak VM'ler arasında PowerShell komut dosyasını çağırma
+#### <a name="invoke-powershell-script-across-remote-vms"></a>Uzak VM 'lerde PowerShell betiğini çağırma
 
  > [!WARNING]
- > Lütfen [Azure VM'lerinin Sorun Giderme uzaktan yönetimine](troubleshooting.md#troubleshooting-remote-management-of-azure-vms)bakın.
+ > Lütfen [Azure VM 'lerinin uzaktan yönetimine Ilişkin sorun giderme](troubleshooting.md#troubleshooting-remote-management-of-azure-vms)bölümüne bakın.
 
-  Bir VM, MyVM1 varsayarak, `Invoke-AzVMCommand` uzak makinede bir PowerShell komut dosyası bloğu çağırmak için kullanalım.
+  Bir VM 'nin olduğu varsayılırsa, MyVM1, uzak makinede `Invoke-AzVMCommand` bir PowerShell betik bloğu çağırmak için kullanalım.
 
   ```azurepowershell-interactive
   Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
   Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
-  Ayrıca ilk VirtualMachines dizinine gidin ve `Invoke-AzVMCommand` aşağıdaki gibi çalıştırın.
+  Ayrıca, önce VirtualMachines dizinine gidebilir ve aşağıdaki gibi çalıştırabilirsiniz `Invoke-AzVMCommand` .
 
   ```azurepowershell-interactive
   PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
@@ -204,23 +204,23 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
    ...
   ```
 
-#### <a name="interactively-log-on-to-a-remote-vm"></a>Etkileşimli olarak uzak bir VM'de oturum açın
+#### <a name="interactively-log-on-to-a-remote-vm"></a>Uzak bir sanal makinede etkileşimli olarak oturum açma
 
-Azure'da `Enter-AzVM` çalışan bir VM'de etkileşimli olarak oturum açmak için kullanabilirsiniz.
+Azure 'da çalışan `Enter-AzVM` bir sanal makinede etkileşimli olarak oturum açmak için ' i kullanabilirsiniz.
 
   ```azurepowershell-interactive
   PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
-Ayrıca önce dizine `VirtualMachines` gidebilir ve `Enter-AzVM` aşağıdaki gibi çalıştırabilirsiniz
+Ayrıca, önce `VirtualMachines` dizine gidebilir ve aşağıdaki gibi çalıştırabilirsiniz `Enter-AzVM`
 
   ```azurepowershell-interactive
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
  ```
 
-### <a name="discover-webapps"></a>WebApps'ı Keşfedin
+### <a name="discover-webapps"></a>WebApps bulma
 
-Dizine `WebApps` girerek, web uygulamaları kaynaklarınızda kolayca gezinebilirsiniz
+`WebApps` Dizine girerek Web Apps kaynaklarınızda kolayca gezinebilirsiniz
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -254,16 +254,16 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-SSH kullanarak sunuculara veya VM'lere kimlik doğrulamak için Bulut Bulut'ta ortak `authorized_keys` özel anahtar çiftini `/home/user/.ssh/authorized_keys`oluşturun ve ortak anahtarı uzak makinede yayımlayın.
+SSH kullanarak sunucularda veya VM 'Lerde kimlik doğrulaması yapmak için, Cloud Shell içinde ortak özel anahtar çiftini oluşturun ve ortak anahtarı `authorized_keys` uzak makinede (gibi) yayımlayın. `/home/user/.ssh/authorized_keys`
 
 > [!NOTE]
-> Cloud `ssh-keygen` `$env:USERPROFILE\.ssh` Shell'de bunları kullanarak SSH özel ortak anahtarları oluşturabilir ve bunları yayımlayabilirsiniz.
+> Kullanarak `ssh-keygen` SSH özel ortak anahtarları oluşturabilir ve bunları Cloud Shell `$env:USERPROFILE\.ssh` ' de yayımlayabilirsiniz.
 
 ### <a name="using-ssh"></a>SSH kullanma
 
-Azure PowerShell cmdlets kullanarak yeni bir VM yapılandırması oluşturmak için [buradaki](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) yönergeleri izleyin.
-Dağıtımı başlatmak `New-AzVM` için çağırmadan önce, VM yapılandırmasına SSH ortak anahtarı ekleyin.
-Yeni oluşturulan `~\.ssh\authorized_keys` VM, konumda ortak anahtarı içerecek ve böylece VM'ye kimlik bilgisi içermeyen SSH oturumu na olanak sağlayacaktır.
+Azure PowerShell cmdlet 'lerini kullanarak yeni bir VM yapılandırması oluşturmak için [buradaki](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) yönergeleri izleyin.
+Dağıtımı devre dışı `New-AzVM` bırakmak için ' a çağrılmadan önce, VM yapılandırmasına SSH ortak anahtarı ekleyin.
+Yeni oluşturulan VM, `~\.ssh\authorized_keys` konumdaki ortak anahtarı içerir ve böylece VM 'ye kimlik BILGISI içermeyen SSH oturumu etkinleştirir.
 
 ```azurepowershell-interactive
 # Create VM config object - $vmConfig using instructions on linked page above
@@ -282,33 +282,33 @@ New-AzVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmCo
 ssh azureuser@MyVM.Domain.Com
 ```
 
-## <a name="list-available-commands"></a>Kullanılabilir komutları listele
+## <a name="list-available-commands"></a>Kullanılabilir komutları listeleyin
 
-Sürücü `Azure` altında, `Get-AzCommand` içeriğe özel Azure komutlarını almak için yazın.
+Sürücü `Azure` altında, Içeriğe `Get-AzCommand` özgü Azure komutları almak için yazın.
 
-Alternatif olarak, kullanılabilir `Get-Command *az* -Module Az.*` Azure komutlarını bulmak için her zaman kullanabilirsiniz.
+Alternatif olarak, kullanılabilir Azure komutlarını `Get-Command *az* -Module Az.*` bulmak için her zaman kullanabilirsiniz.
 
-## <a name="install-custom-modules"></a>Özel modüller yükleme
+## <a name="install-custom-modules"></a>Özel modülleri yükler
 
-`Install-Module` [PowerShell Galerisi'nden][gallery]modülleri yüklemek için çalıştırabilirsiniz.
+[PowerShell Galerisi][gallery]modül yüklemek `Install-Module` için çalıştırabilirsiniz.
 
-## <a name="get-help"></a>Yardım Al
+## <a name="get-help"></a>Yardım alın
 
-Azure `Get-Help` Cloud Shell'de PowerShell hakkında bilgi almak için yazın.
+Azure Cloud Shell `Get-Help` ' de PowerShell hakkında bilgi almak için yazın.
 
 ```azurepowershell-interactive
 Get-Help
 ```
 
-Belirli bir komut için, `Get-Help` yine de bir cmdlet takip yapabilirsiniz.
+Belirli bir komut için yine de bir cmdlet 'i `Get-Help` takip edebilirsiniz.
 
 ```azurepowershell-interactive
 Get-Help Get-AzVM
 ```
 
-## <a name="use-azure-files-to-store-your-data"></a>Verilerinizi depolamak için Azure Dosyaları'nı kullanma
+## <a name="use-azure-files-to-store-your-data"></a>Verilerinizi depolamak için Azure dosyalarını kullanma
 
-Bir komut dosyası oluşturabilir, kabuk oturumları arasında kullanmak için bir komut dosyası oluşturabilir, ', ve `helloworld.ps1`size `clouddrive` kaydedebilirsiniz.
+Bir komut dosyası oluşturabilir, söyleyebilir `helloworld.ps1`ve Shell oturumlarında kullanmak `clouddrive` için bu dosyayı kaydedebilirsiniz.
 
 ```azurepowershell-interactive
 cd $HOME\clouddrive
@@ -321,18 +321,18 @@ code .\helloworld.ps1
 Hello World!
 ```
 
-Cloud Shell'de PowerShell'i bir `helloworld.ps1` daha ki `$HOME\clouddrive` sefere kullandığınızda, dosya Azure Dosyaları nızı paylaşan dizinin altında bulunur.
+Cloud Shell ' de PowerShell 'i bir sonraki sefer kullandığınızda, `helloworld.ps1` dosya Azure dosya paylaşımınızı `$HOME\clouddrive` bağlayan dizinin altında bulunur.
 
-## <a name="use-custom-profile"></a>Özel profil kullanın
+## <a name="use-custom-profile"></a>Özel profil kullan
 
-PowerShell profil(ler) - `profile.ps1` (veya) `Microsoft.PowerShell_profile.ps1`oluşturarak PowerShell ortamınızı özelleştirebilirsiniz.
-Cloud Shell `$profile.CurrentUserAllHosts` oturumundaki her PowerShell'e yüklenebilmek için (veya), `$profile.CurrentUserAllHosts`altında kaydedin.
+PowerShell ortamınızı, PowerShell profilleri `profile.ps1` (veya `Microsoft.PowerShell_profile.ps1`) oluşturarak özelleştirebilirsiniz.
+Cloud Shell oturumunda her `$profile.CurrentUserAllHosts` PowerShell 'e `$profile.CurrentUserAllHosts`yüklenebilmeleri için (veya) altına kaydedin.
 
-Profil oluşturma hakkında [bkz.][profile]
+Profil oluşturma [hakkında bilgi][profile]için bkz. profiller.
 
-## <a name="use-git"></a>Git'i kullan
+## <a name="use-git"></a>Git kullan
 
-Bulut Kabuğu'nda bir Git repo'yu klonlamak için kişisel bir [erişim jetonu][githubtoken] oluşturmanız ve kullanıcı adı olarak kullanmanız gerekir. Belirtecinizi aldıktan sonra, depoyu aşağıdaki gibi kopyala:
+Cloud Shell Git deposunu kopyalamak için bir [kişisel erişim belirteci][githubtoken] oluşturmanız ve bunu Kullanıcı adı olarak kullanmanız gerekir. Belirtecinizi aldıktan sonra depoyu şu şekilde kopyalayın:
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git

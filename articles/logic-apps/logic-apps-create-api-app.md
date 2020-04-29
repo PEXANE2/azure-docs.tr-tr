@@ -1,228 +1,228 @@
 ---
-title: Azure Mantık Uygulamaları için web API'leri & REST API'leri oluşturun
-description: Azure Logic Apps'taki sistem tümleştirmeleri için API'lerinizi, hizmetlerinizi veya sistemlerinizi aramak için WEB API'leri & REST API'leri oluşturun
+title: Azure Logic Apps için REST API 'Leri & Web API 'Leri oluşturma
+description: API 'leri, hizmetlerinizi veya sistemlerinizi Azure Logic Apps içindeki Sistem tümleştirmeleri için çağırmak üzere Web API 'leri & REST API 'leri oluşturun
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270543"
 ---
-# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps'tan arayaabileceğiniz özel API'ler oluşturun
+# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
 
-Azure Logic Apps, mantık uygulaması iş akışlarında kullanabileceğiniz [yüzlerce bağlayıcı](../connectors/apis-list.md) sunsa da, bağlayıcı olarak kullanılamayan API'leri, sistemleri ve hizmetleri aramak isteyebilirsiniz. Mantık uygulamalarında kullanmak üzere eylemler ve tetikleyiciler sağlayan kendi API'lerinizi oluşturabilirsiniz. Mantık uygulaması iş akışlarından arayabilirsiniz kendi API'lerinizi oluşturmak isteyebileceğiniz diğer nedenler şunlardır:
+Azure Logic Apps, mantıksal uygulama iş akışlarında kullanabileceğiniz [yüzlerce bağlayıcı](../connectors/apis-list.md) sunmakla birlikte, bağlayıcı olarak kullanılamayan API 'leri, sistemleri ve Hizmetleri çağırmak isteyebilirsiniz. Logic Apps 'te kullanılacak eylemler ve Tetikleyiciler sağlayan kendi API 'lerinizi oluşturabilirsiniz. Mantıksal uygulama iş akışlarından çağırabilmeniz için kendi API 'lerinizi oluşturmak isteyebileceğiniz diğer nedenler şunlardır:
 
 * Geçerli sistem tümleştirmenizi ve veri tümleştirme iş akışlarınızı genişletin.
 * Müşterilerin profesyonel veya kişisel görevleri yönetmek için hizmetinizi kullanmasına yardımcı olun.
-* Erişimini, keşfedilebilirliğini ve hizmetiniz için kullanımı genişletin.
+* Hizmetiniz için erişim, keşfedilebilirlik ve kullanım alanını genişletin.
 
-Temel olarak, bağlayıcılar takılabilir arayüzler için REST kullanan web API'leri, dokümantasyon için [Swagger meta veri biçimi](https://swagger.io/specification/) ve veri alışverişi biçimi olarak JSON'dur. Bağlayıcılar, HTTP uç noktaları üzerinden iletişim kuran REST API'leri olduğundan, bağlayıcılar oluşturmak için .NET, Java, Python veya Node.js gibi herhangi bir dili kullanabilirsiniz. API barındırma için en iyi, en kolay ve en ölçeklenebilir yollardan birini sunan hizmet olarak platform (PaaS) sunan [Azure Uygulama Hizmeti'nde](../app-service/overview.md)API'lerinizi de barındırabilirsiniz. 
+Temel olarak bağlayıcılar, eklenebilir arabirimler için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve veri değişim BIÇIMI olarak JSON kullanan Web API 'lardır. Bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, bağlayıcılar oluşturmak için .NET, Java, Python veya Node. js gibi herhangi bir dili kullanabilirsiniz. API 'lerinizi, API barındırma için en iyi, en kolay ve en ölçeklenebilir yollarla bir hizmet olarak platform (PaaS) sunan [Azure App Service](../app-service/overview.md)de barındırabilirsiniz. 
 
-Özel API'ların mantık uygulamalarıyla çalışması için API'niz, mantık uygulaması iş akışlarında belirli görevleri gerçekleştiren [*eylemler*](./logic-apps-overview.md#logic-app-concepts) sağlayabilir. API'niz, yeni veriler veya bir olay belirli bir koşulu karşıladığında bir mantık uygulaması iş akışı başlatan bir [*tetikleyici*](./logic-apps-overview.md#logic-app-concepts) olarak da hareket edebilir. Bu konu, API'nizin sağlamasını istediğiniz davranışa bağlı olarak API'nizde eylemler ve tetikleyiciler oluşturmak için izleyebileceğiniz ortak desenleri açıklar.
+Özel API 'Lerin Logic Apps ile çalışması için API 'niz mantıksal uygulama iş akışlarında belirli görevleri gerçekleştiren [*Eylemler*](./logic-apps-overview.md#logic-app-concepts) sağlayabilir. API 'niz Ayrıca, yeni veriler veya bir olay belirtilen bir koşulu karşıladığında bir mantıksal uygulama iş akışı Başlatan bir [*tetikleyici*](./logic-apps-overview.md#logic-app-concepts) işlevi görür. Bu konu, API 'nizin sağlamasını istediğiniz davranışa bağlı olarak API 'inizdeki eylemleri ve Tetikleyicileri oluşturmak için izleyebileceğiniz ortak desenleri açıklar.
 
-API'lerinizi, yüksek ölçeklenebilir ve kolay API barındırma sağlayan hizmet olarak platform (PaaS) sunan [Azure Uygulama Hizmeti'nde](../app-service/overview.md)barındırabilirsiniz.
+API 'lerinizi, yüksek düzeyde ölçeklenebilir ve kolay API barındırma sağlayan bir hizmet olarak platform (PaaS) teklifi olan [Azure App Service](../app-service/overview.md)barındırabilirsiniz.
 
 > [!TIP] 
-> API'lerinizi web uygulamaları olarak dağıtabiliyor olsanız da, API'lerinizi API uygulamaları olarak dağıtmayı düşünün, bu da bulutta ve şirket içinde API'ler oluşturduğunuzda, barındırırken ve tükettiğinizde işinizi kolaylaştırabilir. API'lerinizdeki hiçbir kodu değiştirmeniz gerekmesin , kodunuzu bir API uygulamasına dağıtmanız gerekir. Örneğin, bu dillerle oluşturulan API uygulamalarını nasıl oluşturarak nasıl oluşturabildiğini öğrenin: 
+> API 'lerinizi Web Apps olarak dağıtabilir olsanız da, API 'lerinizi bulutta ve şirket içinde API 'Ler oluştururken, barındırdığınızda ve kullandığınızda işinizi daha kolay hale getirmek için API Apps olarak dağıtmayı göz önünde bulundurun. API 'lerinizin herhangi bir kodunu değiştirmeniz gerekmez; kodunuzu bir API uygulamasına dağıtmanız yeterlidir. Örneğin, bu dillerle oluşturulan API uygulamalarının nasıl oluşturulacağını öğrenin: 
 > 
-> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). 
+> * [ASP.net](../app-service/app-service-web-get-started-dotnet.md). 
 > * [Java](../app-service/app-service-web-get-started-java.md)
 > * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> Mantık uygulamaları için oluşturulmuş API Uygulaması örnekleri için [Azure Logic Apps GitHub deposunu](https://github.com/logicappsio) veya [blogunu](https://aka.ms/logicappsblog)ziyaret edin.
+> Logic Apps için derlenmiş API uygulama örnekleri için [GitHub deposunu](https://github.com/logicappsio) veya [blogu](https://aka.ms/logicappsblog)Azure Logic Apps ziyaret edin.
 
-## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Özel API'lerin özel konektörlerden farkı nedir?
+## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Özel API 'Lerin özel bağlayıcılardan farkı nedir?
 
-Özel API'ler ve [özel bağlayıcılar,](../logic-apps/custom-connector-overview.md) takılabilir arabirimler için REST kullanan web API'leri, dokümantasyon için [Swagger meta veri biçimini](https://swagger.io/specification/) ve veri alışverişi biçimi olarak JSON'dur. Bu API'ler ve bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API'leri olduğundan, özel API'ler ve bağlayıcılar oluşturmak için .NET, Java, Python veya Node.js gibi herhangi bir dili kullanabilirsiniz.
+Özel API 'ler ve [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) , eklenebilir ARABIRIMLER için REST, belgeler için [Swagger meta veri biçimi](https://swagger.io/specification/) ve VERI değişim biçimi olarak JSON kullanan Web API 'lerdedir. Bu API 'Ler ve bağlayıcılar HTTP uç noktaları üzerinden iletişim kuran REST API 'Leri olduğundan, özel API 'Ler ve bağlayıcılar oluşturmak için .NET, Java, Python veya Node. js gibi herhangi bir dili kullanabilirsiniz.
 
-Özel API'ler, bağlayıcı olmayan API'leri aramanıza ve HTTP + Swagger, Azure API Yönetimi veya Uygulama Hizmetleri ile arayaabileceğiniz uç noktaları sağlamanıza izin tanır. Özel bağlayıcılar özel API'ler gibi çalışır, ancak aynı zamanda şu özniteliklere sahiptir:
+Özel API 'ler, bağlayıcılar olmayan API 'Leri çağırmasına ve HTTP + Swagger, Azure API Management veya App Services ile çağırabilmeniz için uç noktalar sağlamanıza olanak tanır. Özel Bağlayıcılar özel API 'Ler gibi çalışır, ancak aynı zamanda şu özniteliklere sahiptir:
 
-* Azure'da Logic Apps Bağlayıcısı kaynakları olarak kaydedilir.
-* Logic Apps Tasarımcısı'nda Microsoft tarafından yönetilen konektörlerin yanında simgelerle görünün.
-* Yalnızca, mantıksal uygulamaların dağıtıldığı bölgede aynı Azure Active Directory kiracısına ve Azure aboneliğine sahip bağlayıcıların yazarları ve mantıksal uygulama kullanıcıları tarafından kullanılabilir.
+* Azure 'da Logic Apps bağlayıcı kaynakları olarak kaydedilir.
+* Logic Apps tasarımcısında Microsoft tarafından yönetilen bağlayıcılar yanında simgelerle birlikte görüntülenir.
+* Yalnızca, mantıksal uygulamaların dağıtıldığı bölgede aynı Azure Active Directory kiracıya ve Azure aboneliğine sahip olan bağlayıcılar ve Logic App kullanıcıları tarafından kullanılabilir.
 
-Microsoft sertifikası için kayıtlı bağlayıcıları da aday gösterebilirsiniz. Bu işlem, kayıtlı bağlayıcıların genel kullanım ölçütlerini karşıladığını doğrular ve bu bağlayıcıları Power Automate ve Microsoft Power Apps'taki kullanıcılar için kullanılabilir hale getirir.
+Ayrıca, Microsoft sertifikası için kayıtlı bağlayıcılar da aday ekleyebilirsiniz. Bu işlem, kayıtlı bağlayıcıların genel kullanım ölçütlerini karşıladığını doğrular ve bu bağlayıcıları Power otomatikleştir ve Microsoft Power Apps 'teki kullanıcılar için kullanılabilir hale getirir.
 
-Özel bağlayıcılar hakkında daha fazla bilgi için bkz. 
+Özel Bağlayıcılar hakkında daha fazla bilgi için bkz. 
 
 * [Özel bağlayıcılara genel bakış](../logic-apps/custom-connector-overview.md)
-* [Web API'larından özel bağlayıcılar oluşturma](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Azure Mantık Uygulamaları'na özel bağlayıcılar kaydedin](../logic-apps/logic-apps-custom-connector-register.md)
+* [Web API 'Lerinden özel bağlayıcılar oluşturma](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
+* [Azure Logic Apps özel bağlayıcıları kaydetme](../logic-apps/logic-apps-custom-connector-register.md)
 
-## <a name="helpful-tools"></a>Yararlı araçlar
+## <a name="helpful-tools"></a>Faydalı araçlar
 
-ÖZEL API, API'nin işlemlerini ve parametrelerini açıklayan bir [Swagger belgesine](https://swagger.io/specification/) sahipse, mantık uygulamalarıyla en iyi şekilde çalışır.
-[Swashbuckle](https://github.com/domaindrivendev/Swashbuckle)gibi birçok kitaplık, otomatik olarak sizin için Swagger dosyaoluşturabilirsiniz. Ekran adları, özellik türleri ve benzeri için Swagger dosyasına açıklama yapmak için, Swagger dosyanızın mantık uygulamalarıyla iyi çalışması için [TRex'i](https://github.com/nihaue/TRex) de kullanabilirsiniz.
+API 'nin aynı zamanda API 'nin işlemlerini ve parametrelerini açıklayan bir [Swagger belgesi](https://swagger.io/specification/) olduğunda, özel bir API, Logic Apps ile en iyi şekilde çalışmaktadır.
+[Swashbuckle](https://github.com/domaindrivendev/Swashbuckle)gibi birçok kitaplık, Swagger dosyasını sizin için otomatik olarak oluşturabilir. Ekran adları, özellik türleri vb. için Swagger dosyasına ek açıklama eklemek için [trex](https://github.com/nihaue/TRex) ' i de kullanarak Swagger dosyanızın Logic Apps ile düzgün bir şekilde çalışmasına olanak sağlayabilirsiniz.
 
 <a name="actions"></a>
 
 ## <a name="action-patterns"></a>Eylem desenleri
 
-Mantık uygulamalarının görevleri gerçekleştirmesi için özel API'nizin [*eylemler*](./logic-apps-overview.md#logic-app-concepts)sağlaması gerekir. API'nizdeki her işlem bir eylemi eşler. Temel eylem, HTTP isteklerini kabul eden ve HTTP yanıtlarını döndüren bir denetleyicidir. Örneğin, bir mantık uygulaması web uygulamanıza veya API uygulamanıza bir HTTP isteği gönderir. Uygulamanız daha sonra, mantık uygulamasının işleyebilir içeriğiile birlikte bir HTTP yanıtı döndürür.
+Mantıksal uygulamaların görevleri gerçekleştirmesi için özel API 'niz [*eylem*](./logic-apps-overview.md#logic-app-concepts)sağlamalıdır. API 'inizdeki her işlem bir eyleme eşlenir. Temel eylem, HTTP isteklerini kabul eden ve HTTP yanıtlarını döndüren bir denetleyiciden yapılır. Örneğin, bir mantıksal uygulama Web uygulamanıza veya API uygulamanıza HTTP isteği gönderir. Daha sonra uygulamanız, mantıksal uygulamanın işleyebilmesine yönelik içerikle birlikte bir HTTP yanıtı döndürür.
 
-Standart bir eylem için, API'nize bir HTTP istek yöntemi yazabilir ve bu yöntemi bir Swagger dosyasında açıklayabilirsiniz. Daha sonra API'nizi doğrudan bir [HTTP eylemi](../connectors/connectors-native-http.md) veya http [+ Swagger](../connectors/connectors-native-http-swagger.md) eylemiyle arayabilirsiniz. Varsayılan olarak, yanıtlar istek [zaman sınırı](./logic-apps-limits-and-config.md)içinde döndürülmelidir. 
+Standart bir eylem için, API 'nize bir HTTP istek yöntemi yazabilir ve bu yöntemi Swagger dosyasında tanımlayabilirsiniz. Daha sonra API 'nizi doğrudan bir [http eylemiyle](../connectors/connectors-native-http.md) veya bir [http + Swagger](../connectors/connectors-native-http-swagger.md) eylemiyle çağırabilirsiniz. Varsayılan olarak, yanıtların [istek zaman aşımı sınırı](./logic-apps-limits-and-config.md)içinde döndürülmesi gerekir. 
 
-![Standart eylem deseni](./media/logic-apps-create-api-app/standard-action.png)
+![Standart eylem deseninin](./media/logic-apps-create-api-app/standard-action.png)
 
-<a name="pattern-overview"></a>Bir mantık uygulamasını, API'niz daha uzun süren görevleri bitirirken beklemek için, API'niz bu konuda açıklanan [eşzamanlı yoklama deseni](#async-pattern) veya eşzamanlı [webhook deseni](#webhook-actions) izleyebilir. Bu desenlerin farklı davranışlarını görselleştirmenize yardımcı olan bir benzetme için, bir pastaneden özel pasta sipariş etme işlemini hayal edin. Yoklama deseni, pastanın hazır olup olmadığını kontrol etmek için her 20 dakikada bir fırını aradığınız davranışı yansıtıyor. Webhook deseni, pasta hazır olduğunda sizi arayabilmeleri için fırının sizden telefon numaranızı istediği davranışı yansıtıyor.
+<a name="pattern-overview"></a>API 'niz uzun süre çalışan görevleri bitirirken bir mantıksal uygulamanın beklemesini sağlamak için API 'niz, [zaman uyumsuz yoklama düzenine](#async-pattern) veya bu konuda açıklanan [zaman uyumsuz Web kancası düzenine](#webhook-actions) göre değişiklik yapabilir. Bu desenlerin farklı davranışlarını görselleştirmenize yardımcı olan bir benzerleme vurguladı için bir bakışta özel bir pasta siparişi verme sürecini düşünün. Yoklama deseninin, pastanın bir tane olup olmadığını denetlemek için 20 dakikada bir fırın çağrısı yaptığınız davranış yansıtılıdır. Web kancası stili, pastanın telefon numaranızı sorduğu, pastanın sizi arayabilmesi için sizi telefon numaranız istediğinde davranışını yansıtır.
 
-Örnekler için [Logic Apps GitHub deposunu](https://github.com/logicappsio)ziyaret edin. Ayrıca, eylemler [için kullanım ölçümü](logic-apps-pricing.md)hakkında daha fazla bilgi edinin.
+Örnekler için [Logic Apps GitHub deposunu](https://github.com/logicappsio)ziyaret edin. Ayrıca, [Eylemler için kullanım ölçümü](logic-apps-pricing.md)hakkında daha fazla bilgi edinin.
 
 <a name="async-pattern"></a>
 
-### <a name="perform-long-running-tasks-with-the-polling-action-pattern"></a>Yoklama eylem deseniyle uzun süren görevleri gerçekleştirin
+### <a name="perform-long-running-tasks-with-the-polling-action-pattern"></a>Yoklama eylemi düzeniyle uzun süre çalışan görevler gerçekleştirme
 
-API'nizin [istek zaman aşımı sınırından](./logic-apps-limits-and-config.md)daha uzun süre çalıştırılabilen görevleri gerçekleştirmesi için, eşzamanlı yoklama deseni kullanabilirsiniz. Bu desen, API'nizin ayrı bir iş parçacığında çalışmasını sağlar, ancak Logic Apps altyapısına etkin bir bağlantı tutun. Bu şekilde, mantıksal uygulama, API'niz çalışmayı tamamlamadan önce iş akışındaki bir sonraki adıma zaman vermez veya devam etmez.
+API 'nizin [istek zaman aşımı sınırından](./logic-apps-limits-and-config.md)daha uzun bir süre çalışabilecek görevler gerçekleştirmesini sağlamak için zaman uyumsuz yoklama modelini kullanabilirsiniz. Bu düzenin API 'niz ayrı bir iş parçacığında çalışır, ancak Logic Apps altyapısına etkin bir bağlantıyı saklayın. Bu şekilde, mantıksal uygulama zaman aşımına uğrar veya API çalışmaya başlamadan önce iş akışındaki bir sonraki adımla devam etmez.
 
-İşte genel desen:
+Genel desenler aşağıda verilmiştir:
 
-1. Motorun, API'nizin isteği kabul ettiğini ve çalışmaya başladığını bildiğinden emin olun.
-2. Motor sonraki iş durumu isteklerini yaptığında, API'niz görevi bitirdiğinde motora bildirin.
-3. Mantık uygulaması iş akışının devam edilebilmeleri için ilgili verileri motora döndürün.
+1. Altyapının API 'nizin isteği kabul ettiğini ve çalışmaya başlatıldığını bildiğinden emin olun.
+2. Motor iş durumu için sonraki istekleri yaptığında, API 'niz görevi bitirdiğinde altyapıya izin verir.
+3. Mantıksal uygulama iş akışının devam edebilmesi için ilgili verileri altyapıya döndürün.
 
-<a name="bakery-polling-action"></a>Şimdi yoklama desenine önceki fırın benzetmesini uygulayın ve bir fırını çağırıp teslimat için özel bir pasta sipariş ettiğinizi düşünün. Pasta yapma işlemi zaman alır ve fırın pasta üzerinde çalışırken telefonda beklemek istemiyorum. Fırın siparişinizi onaylar ve pastanın durumu için her 20 dakikada bir aramanızı sağlar. 20 dakika geçtikten sonra fırını ararsın ama pastanızın bitmediğini ve 20 dakika içinde aramanız gerektiğini söylerler. Bu ileri geri görüşme işlemi siz arayana kadar devam eder ve fırın size siparişinizin hazır olduğunu söyler ve pastanızı teslim eder. 
+<a name="bakery-polling-action"></a>Şimdi önceki fırın benzerleme vurguladı ' i yoklama düzenine uygulayın ve bir fırın çağırdığınızı ve teslim için özel bir pasta sipariş etdiğinizi düşünün. Pastayı oluşturma işlemi zaman alır ve Pastanda pasta üzerinde çalışırken telefonda beklemek istemezsiniz. Fırının siparişiniz onaylanır ve pastanın durumu için her 20 dakikada bir çağıralım. 20 dakika geçtikten sonra, fırının çağırın, ancak Pastanıza bir 20 dakika sonra çağrı yapmanız gerektiğini söyler. Bu geri ve ileriye doğru işlem, çağrılana kadar devam eder ve siz de siparişinizin size ait olduğunu ve pastanızı teslim ettiğini söyler. 
 
-Bu anket düzenini tekrar haritalayalım. Pasta, özel API'nizi temsil ederken, siz, pasta müşterisi, Logic Apps motorunu temsil esiniz. Motor API'nizi bir istekle aradığında, API'niz isteği onaylar ve motorun iş durumunu kontrol edebileceği zaman aralığıyla yanıt verir. Ekinleriniz işin tamamlandığı yanıtını verene ve verileri mantık uygulamanıza döndürene ve ardından iş akışına devam edene kadar motor iş durumunu denetlemeye devam eder. 
+Şimdi bu yoklama düzenlerini geri eşleyelim. Bu, özel API 'nizi temsil ederken, pasta müşterisiyseniz Logic Apps altyapısını temsil eder. Motor API 'nizi bir istek ile çağırdığında API 'niz isteği onaylar ve altyapının iş durumunu kontrol edip zaman aralığı ile yanıt verir. Motor iş durumunu denetlemeye devam eder ve bu, iş akışına devam eden verileri mantıksal uygulamanıza gönderir. 
 
-![Yoklama eylem deseni](./media/logic-apps-create-api-app/custom-api-async-action-pattern.png)
+![Yoklama eylemi kriteri](./media/logic-apps-create-api-app/custom-api-async-action-pattern.png)
 
-API'nizin izleyeceği özel adımlar, API'nin bakış açısından açıklanmıştır:
+API 'nizin, API 'nin perspektifinden açıklanacak özel adımlar aşağıda verilmiştir:
 
-1. API'niz çalışmaya başlamak için bir HTTP isteği `202 ACCEPTED` aldığında, `location` bu adımda daha sonra açıklanan üstbilgiyle hemen bir HTTP yanıtı döndürün. Bu yanıt, Logic Apps motorunun API'nizin isteği aldığını, istek yükünü (veri girişi) kabul ettiğini ve şu anda işlenmekte olduğunu bilmesini sağlar. 
+1. API 'niz çalışmaya başlamak için bir HTTP isteği aldığında, bu adımda daha sonra açıklanan `202 ACCEPTED` `location` üst bilgiyle bir http yanıtı döndürür. Bu yanıt, Logic Apps altyapısının API 'nizin isteği aldığı, istek yükünü kabul ettiğini (veri girişi) ve şimdi işleme olduğunu bilmesini sağlar. 
    
-   Yanıt `202 ACCEPTED` şu üstbilgiiçermelidir:
+   `202 ACCEPTED` Yanıt şu üstbilgileri içermelidir:
    
-   * *Gerekli*: `location` Logic Apps altyapısının API'nizin iş durumunu kontrol edebileceği bir URL'ye giden mutlak yolu belirten üstbilgi
+   * *Gerekli*: LOGIC Apps `location` altyapısının API 'nizin iş durumunu kontrol ettiği bir URL 'nin mutlak yolunu belirten bir üst bilgi
 
-   * *İsteğe* `retry-after` Bağlı : İş durumu için `location` URL'yi kontrol etmeden önce motorun beklemesi gereken saniye sayısını belirten üstbilgi. 
+   * *Isteğe bağlı*: `retry-after` altyapının iş durumu için `location` URL 'yi denetlemeden önce bekleyeceği saniye sayısını belirten bir üstbilgi. 
 
-     Varsayılan olarak, motor her 20 saniyede bir kontrol eder. Farklı bir aralık belirtmek `retry-after` için üstbilgi ve bir sonraki ankete kadar saniye sayısını ekleyin.
+     Varsayılan olarak motor her 20 saniyede bir kontrol eder. Farklı bir Aralık belirtmek için, sonraki yoklamaya kadar `retry-after` üstbilgiyi ve saniye sayısını ekleyin.
 
-2. Belirtilen süre geçtikten sonra, Logic `location` Apps altyapısı iş durumunu denetlemek için URL'yi yoklar. API'niz bu denetimleri gerçekleştirmeli ve şu yanıtları döndürmelidir:
+2. Belirtilen süre geçtikten sonra Logic Apps altyapısı, iş durumunu denetlemek için `location` URL 'yi yoklar. API 'niz bu denetimleri gerçekleştirmelidir ve bu yanıtları döndürmelidir:
    
-   * İş yapılırsa, yanıt `200 OK` yüküyle birlikte bir HTTP yanıtı döndürün (bir sonraki adım için giriş).
+   * İş yapıldığında, yanıt yükünün yanı da (bir `200 OK` sonraki adım için giriş) bir http yanıtı döndürün.
 
-   * İş hala işliyorsa, başka `202 ACCEPTED` bir HTTP yanıtı döndürün, ancak özgün yanıtla aynı üstbilgiyle.
+   * İş hala işlenmeye devam ediyorsa, başka bir HTTP `202 ACCEPTED` yanıtı döndürün, ancak özgün Yanıtla aynı üst bilgilere sahip olur.
 
-API'niz bu deseni izlediğinde, iş durumunu denetlemeye devam etmek için mantık uygulaması iş akışı tanımında hiçbir şey yapmanız gerekir. Motor bir HTTP `202 ACCEPTED` yanıtı ve `location` geçerli bir üstbilgi aldığında, motor asenkron `location` desenine saygı duyar ve API'niz 202 olmayan bir yanıtı döndürene kadar üstbilgikontrol eder.
+API 'niz bu kalıbı izlediğinde, iş durumunu denetlemeye devam etmek için mantıksal uygulama iş akışı tanımında herhangi bir şey yapmanız gerekmez. Motor bir HTTP `202 ACCEPTED` yanıtı ve geçerli `location` bir üst bilgi aldığında, altyapı zaman uyumsuz düzene uyar ve API 'niz 202 olmayan `location` bir yanıt döndürünceye kadar üstbilgiyi denetler.
 
 > [!TIP]
-> Örneğin bir eşzamanlı desen için, [GitHub](https://github.com/logicappsio/LogicAppsAsyncResponseSample)bu eşzamanlı denetleyici yanıt örneği gözden geçirin.
+> Örnek bir zaman uyumsuz model için [GitHub 'daki bu zaman uyumsuz denetleyici yanıtı örneğini](https://github.com/logicappsio/LogicAppsAsyncResponseSample)inceleyin.
 
 <a name="webhook-actions"></a>
 
-### <a name="perform-long-running-tasks-with-the-webhook-action-pattern"></a>Webhook eylem deseniyle uzun süren görevleri gerçekleştirin
+### <a name="perform-long-running-tasks-with-the-webhook-action-pattern"></a>Web kancası eylem düzeniyle uzun süre çalışan görevler gerçekleştirme
 
-Alternatif olarak, uzun süren görevler ve eşzamanlı işleme için webhook deseni kullanabilirsiniz. Bu desen mantık uygulaması duraklatma ve devam iş akışı önce işleme bitirmek için API bir "geri arama" bekleyin. Bu geri arama, bir olay olduğunda URL'ye ileti gönderen bir HTTP POST'dur. 
+Alternatif olarak, uzun süre çalışan görevler ve zaman uyumsuz işleme için Web kancası modelini kullanabilirsiniz. Bu düzende, mantıksal uygulama duraklamıştır ve iş akışına devam etmeden önce API 'nizden bir "geri çağırma" işleminin bitmesini bekleyin. Bu geri çağırma, bir olay gerçekleştiğinde bir URL 'ye ileti gönderen bir HTTP GÖNDERMESIDIR. 
 
-<a name="bakery-webhook-action"></a>Şimdi webhook desen önceki fırın benzetmesi uygulayın ve bir fırın aramak ve teslimat için özel bir pasta sipariş düşünün. Pasta yapma işlemi zaman alır ve fırın pasta üzerinde çalışırken telefonda beklemek istemiyorum. Fırın siparişinizi onaylıyor, ama bu sefer onlara telefon numaranızı verin ki pasta bittiğinde sizi arayabilsinler. Bu kez, fırın sipariş hazır olduğunda söyler ve pasta teslim eder.
+<a name="bakery-webhook-action"></a>Şimdi önceki fırın benzerleme vurguladı 'i Web kancası düzenine uygulayın ve bir fırın çağırdığınızı ve teslim için özel bir pastanın sipariş edildiğini düşünün. Pastayı oluşturma işlemi zaman alır ve Pastanda pasta üzerinde çalışırken telefonda beklemek istemezsiniz. Bu durumda siparişiniz onaylanır, ancak bu kez, pasta tamamlandığında sizi arayabilmesi için telefon numaranızı bize verirsiniz. Bu kez, daha sonra siparişiniz için ne zaman hazırlandığını ve pastanızı teslim eder.
 
-Bu webhook desenini geri eşlediğimizde, fırın özel API'nizi temsil ederken, siz, pasta müşterisi, Logic Apps motorunu temsil esiniz. Motor API'nizi bir istekle çağırır ve bir "geri arama" URL'si içerir.
-İş bittiğinde, API'niz motoru bilgilendirmek ve verileri mantık uygulamanıza döndürmek için URL'yi kullanır ve bu da iş akışına devam edin. 
+Bu Web kancası kalıbını geri eşliyoruz, fırın özel API 'nizi temsil ederken, pasta müşterisiyseniz Logic Apps altyapısını temsil etmektedir. Motor, API 'nizi bir istek ile çağırır ve "geri arama" URL 'sini içerir.
+İş tamamlandığında, API, altyapıyı bilgilendirmek ve mantıksal uygulamanıza veri döndürmek için URL 'YI kullanır ve sonra iş akışına devam eder. 
 
-Bu desen için, denetleyicinizde iki uç `subscribe` nokta ayarlayın:`unsubscribe`
+Bu düzende, denetleyicinizde iki uç nokta ayarlayın: `subscribe` ve`unsubscribe`
 
-*  `subscribe`bitiş noktası: Yürütme, API'nizin iş akışındaki eylemine ulaştığında, Logic Apps altyapısı `subscribe` bitiş noktasını çağırır. Bu adım, mantık uygulamasının API'nizin depoladığını bir geri arama URL'si oluşturmasına ve çalışma tamamlandığında API'nizden geri çağrıyı beklemesine neden olur. API'niz daha sonra URL'ye bir HTTP POST ile geri çağırır ve döndürülen tüm içeriği ve üstbilgileri mantık uygulamasına giriş olarak geçirir.
+*  `subscribe`uç noktası: yürütme, iş akışındaki API 'nin eylemine ulaştığında, Logic Apps altyapısı `subscribe` bitiş noktasını çağırır. Bu adım mantıksal uygulamanın API 'nizin depolayacağı bir geri çağırma URL 'SI oluşturmasına ve sonra iş tamamlandığında API 'nizden geri çağırma işlemini beklemesine neden olur. API 'niz daha sonra URL 'ye bir HTTP gönderimiyle geri çağrı yapar ve döndürülen içerik ve üst bilgileri mantıksal uygulamaya girdi olarak geçirir.
 
-* `unsubscribe`bitiş noktası: Mantık uygulaması çalışması iptal edilirse, Logic `unsubscribe` Apps motoru bitiş noktasını çağırır. Ekin'iniz daha sonra geri arama URL'sinin kaydını açabilir ve gerekli işlemleri durdurabilir.
+* `unsubscribe`uç nokta: mantıksal uygulama çalıştırması iptal edilirse, Logic Apps altyapısı `unsubscribe` bitiş noktasını çağırır. API 'niz daha sonra geri arama URL 'sini kaydedebilir ve gereken her türlü işlemi durdurabilir.
 
-![Webhook eylem deseni](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
+![Web kancası eylem kalıbı](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
 > [!NOTE]
-> Şu anda, Logic App Designer Swagger üzerinden webhook uç noktaları keşfetmek desteklemiyor. Bu desen için, bir [ **Webhook** eylemi](../connectors/connectors-native-webhook.md) eklemeniz ve isteğiniz için URL'yi, üstbilgi ve gövdeyi belirtmeniz gerekir. [Ayrıca](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)bkz. Geri arama URL'sini geçirmek için, `@listCallbackUrl()` önceki alanlardan herhangi birinde iş akışı işlevini gerektiği gibi kullanabilirsiniz.
+> Şu anda Logic App Designer, Swagger aracılığıyla Web kancası uç noktalarının bulunmasını desteklemez. Bu nedenle, bu düzende bir [ **Web kancası** eylemi](../connectors/connectors-native-webhook.md) eklemenız ve isteğiniz için URL, üst bilgiler ve gövde belirtmeniz gerekir. Ayrıca bkz. [Iş akışı eylemleri ve Tetikleyicileri](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Geri çağırma URL 'sini geçirmek için, bir önceki alanda bulunan `@listCallbackUrl()` iş akışı işlevini gerekli şekilde kullanabilirsiniz.
 
 > [!TIP]
-> Örnek bir webhook deseni için, GitHub bu [webhook tetikleme örneği](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)gözden geçirin.
+> Örnek bir Web kancası düzeniyle ilgili bu [Web kancası tetikleyicisi örneğini GitHub '](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)da inceleyin.
 
 <a name="triggers"></a>
 
-## <a name="trigger-patterns"></a>Tetik leme desenleri
+## <a name="trigger-patterns"></a>Tetikleyici desenleri
 
-Özel API'niz, yeni veriler veya bir olay belirli bir koşulu karşıladığında bir mantık uygulaması başlatan bir [*tetikleyici*](./logic-apps-overview.md#logic-app-concepts) görevi görebilir. Bu tetikleyici, hizmet bitiş noktanızda yeni veriler veya olaylar için düzenli olarak denetleyebilir veya bekleyip dinleyebilir. Yeni veriler veya bir olay belirtilen koşulu karşılıyorsa, tetikleyici tetiklenir ve tetikleyiciyi dinleyen mantık uygulamasını başlatır. Mantık uygulamalarını bu şekilde başlatmak için API'niz [*yoklama tetikleyicisini*](#polling-triggers) veya [*webhook tetikleyici*](#webhook-triggers) deseni izleyebilir. Bu desenler [yoklama eylemleri](#async-pattern) ve [webhook eylemleri](#webhook-actions)için muadillerine benzer. Ayrıca, [tetikleyiciler için kullanım ölçümü](logic-apps-pricing.md)hakkında daha fazla bilgi edinin.
+Özel API 'niz, yeni veriler veya bir olay belirtilen bir koşulu karşıladığında bir mantıksal uygulama başlatan bir [*tetikleyici*](./logic-apps-overview.md#logic-app-concepts) olarak davranabilir. Bu tetikleyici, hizmet uç noktanıza yeni veriler veya olaylar için düzenli olarak denetleyebilir ya da bekleyip dinleyebilirler. Yeni veriler veya bir olay belirtilen koşulu karşılıyorsa, tetikleyici ateşlenir ve bu tetikleyiciyi dinleyen mantıksal uygulamayı başlatır. Logic Apps 'i bu şekilde başlatmak için, API 'niz [*yoklama tetikleyicisini*](#polling-triggers) veya [*Web kancası tetikleyici*](#webhook-triggers) modelini izleyebilir. Bu desenler, [yoklama eylemleri](#async-pattern) ve [Web kancası eylemleri](#webhook-actions)için karşılıklarına benzerdir. Ayrıca, [Tetikleyiciler için kullanım ölçümü](logic-apps-pricing.md)hakkında daha fazla bilgi edinin.
 
 <a name="polling-triggers"></a>
 
-### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>Yoklama tetikleyici deseniyle düzenli olarak yeni verileri veya olayları denetleme
+### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>Yoklama tetikleme düzeniyle düzenli olarak yeni verileri veya olayları denetleyin
 
-Bir *yoklama* tetikleyicisi, daha önce bu konuda açıklanan [yoklama eylemine](#async-pattern) çok benzer hareket eder. Logic Apps altyapısı, yeni veriler veya olaylar için tetikleyici bitiş noktasını düzenli aralıklarla arar ve denetler. Motor yeni veriler veya belirtilen koşulunkarşıladığı bir olay bulursa, tetikleyici devreye sayılsa. Daha sonra, motor verileri giriş olarak işleyen bir mantık uygulaması örneği oluşturur. 
+*Yoklama tetikleyicisi* , bu konuda daha önce açıklanan [yoklama eylemine](#async-pattern) benzer şekilde davranır. Logic Apps altyapısı, yeni veriler veya olaylar için tetikleyici uç noktasını düzenli aralıklarla çağırır ve denetler. Motor, belirtilen koşullarınızı karşılayan yeni veriler veya bir olay bulursa, tetikleyici ateşlenir. Daha sonra, altyapı verileri girdi olarak işleyen bir mantıksal uygulama örneği oluşturur. 
 
-![Yoklama tetikleyici deseni](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
+![Yoklama tetikleyicisi kriteri](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
 
 > [!NOTE]
-> Her yoklama isteği, hiçbir mantık uygulaması örneği oluşturulmasa bile bir eylem yürütmesi olarak sayılır. Aynı verilerin birden çok kez işlenmesini önlemek için tetikleyiciniz, zaten okunmuş ve mantık uygulamasına aktarılan verileri temizlemelidir.
+> Her yoklama isteği, mantıksal uygulama örneği oluşturulmasa bile, eylem yürütmesi olarak sayılır. Aynı verinin birden çok kez işlenmesini engellemek için, Tetikleyiciniz zaten okunmuş ve mantıksal uygulamaya geçirilen verileri temizlemelidir.
 
-API'nin bakış açısından açıklanan bir yoklama tetikleyicisi için belirli adımlar şunlardır:
+Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için özel adımlar verilmiştir:
 
-| Yeni veri veya olay mı buldu?  | API yanıtı | 
+| Yeni veri veya olay bulundu mu?  | API yanıtı | 
 | ------------------------- | ------------ |
-| Bulundu | Yanıt yüküyle bir HTTP `200 OK` durumu döndür (sonraki adım için giriş). <br/>Bu yanıt bir mantık uygulaması örneği oluşturur ve iş akışını başlatır. | 
-| Bulunamadı | Üstbilgi `202 ACCEPTED` ve `retry-after` üstbilgi yle bir HTTP durumunu döndürün. `location` <br/>Tetikleyiciler için `location` üstbilgi, genellikle `triggerState` "zaman damgası" olan bir sorgu parametresi de içermelidir. API'niz, mantık uygulamasının en son ne zaman tetiklediğini izlemek için bu tanımlayıcıyı kullanabilir. | 
+| Bulundu | Yanıt yüküne ( `200 OK` sonraki adım için giriş) sahıp bir HTTP durumu döndürün. <br/>Bu yanıt bir mantıksal uygulama örneği oluşturur ve iş akışını başlatır. | 
+| Bulunamadı | Üst bilgi ve `202 ACCEPTED` `retry-after` üst bilgi içeren bir HTTP durumu döndürür. `location` <br/>Tetikleyiciler için `location` üst bilgi, genellikle "timestamp" `triggerState` olan bir sorgu parametresi de içermelidir. API 'niz mantıksal uygulamanın tetiklendiği son saati izlemek için bu tanımlayıcıyı kullanabilir. | 
 ||| 
 
-Örneğin, hizmetinizi yeni dosyalar için düzenli aralıklarla denetlemek için, şu davranışlara sahip bir yoklama tetikleyicisi oluşturabilirsiniz:
+Örneğin, hizmetinizi yeni dosyalara düzenli olarak denetlemek için, bu davranışları içeren bir yoklama tetikleyicisi oluşturabilirsiniz:
 
-| İstek `triggerState`içerir? | API yanıtı | 
+| İstek şunları `triggerState`içerir? | API yanıtı | 
 | -------------------------------- | -------------| 
-| Hayır | Bir HTTP `202 ACCEPTED` durumunun `location` yanı `triggerState` sıra geçerli saate `retry-after` ve aralıkta 15 saniyeye ayarlanmış bir üstbilgi döndürün. | 
-| Evet | Için'den sonra eklenen `DateTime` dosyalar `triggerState`için servisinizi kontrol edin. | 
+| Hayır | Bir HTTP `202 ACCEPTED` durumu ve geçerli saate `location` ayarlanmış bir `triggerState` üstbilgi ve `retry-after` 15 saniyeye kadar olan bir üst bilgi döndürür. | 
+| Yes | `DateTime` İçin `triggerState`' den sonra eklenen dosyalar için hizmetinizi kontrol edin. | 
 ||| 
 
 | Bulunan dosya sayısı | API yanıtı | 
 | --------------------- | -------------| 
-| Tek dosya | Bir HTTP `200 OK` durumunu ve içerik yükünü `triggerState` döndürün, döndürülen dosyaiçin `DateTime` güncelleştirin ve aralığı 15 saniyeye ayarlayın. `retry-after` | 
-| Birden çok dosya | Bir defada bir dosya `200 OK` döndürün `triggerState`ve bir `retry-after` HTTP durumunu güncelleştirin ve aralığı 0 saniyeye ayarlayın. </br>Bu adımlar, motora daha fazla veri kullanılabildiğini ve motorun üstbilgideki `location` URL'den verileri hemen istemesi gerektiğini bildirin. | 
-| Dosya yok | Bir HTTP `202 ACCEPTED` durumunu döndürün, `triggerState`değiştirmeyin `retry-after` ve aralığı 15 saniyeolarak ayarlayın. | 
+| Tek dosya | Bir HTTP `200 OK` durumu ve içerik yükü döndürün, döndürülen dosya `triggerState` `DateTime` için ' a güncelleştirin ve aralığı 15 saniyeye ayarlayın `retry-after` . | 
+| Birden çok dosya | Tek seferde bir dosya ve bir HTTP `200 OK` durumu döndürün, güncelleştirin `triggerState`ve `retry-after` aralığı 0 saniyeye ayarlayın. </br>Bu adımlar, altyapının daha fazla verinin kullanılabildiğini ve altyapının, `location` üstbilgideki URL 'den verileri hemen istemesi gerektiğini bilmesini sağlar. | 
+| Dosya yok | Bir HTTP `202 ACCEPTED` durumu döndürün, değiştirmeyin `triggerState`ve `retry-after` aralığı 15 saniyeye ayarlayın. | 
 ||| 
 
 > [!TIP]
-> Örneğin yoklama tetikleyici deseni için, [GitHub'daki](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/PollTriggerController.cs)bu anket tetikleyici denetleyici örneğini gözden geçirin.
+> Örnek bir yoklama tetikleyici deseninin, [GitHub 'daki bu yoklama tetikleme denetleyicisi örneğini](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/PollTriggerController.cs)gözden geçirin.
 
 <a name="webhook-triggers"></a>
 
-### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Webhook tetikleme deseni yle yeni verileri veya olayları bekleyin ve dinleyin
+### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Web kancası tetikleyici düzeniyle yeni verileri veya olayları bekleme ve dinleme
 
-Webhook tetikleyicisi, hizmetinizdeki son noktada yeni verileri veya olayları bekleyen ve dinleyen bir *itme* tetikleyicisidir. Yeni veri veya olay belirtilen koşulu karşılıyorsa, tetikleyici yangınları ve daha sonra giriş olarak veri işleyen bir mantık uygulaması örneği oluşturur.
-Webhook tetikleyicileri daha önce bu konuda açıklanan [webhook eylemleri](#webhook-actions) gibi `subscribe` hareket `unsubscribe` ve ile ayarlanır ve uç noktalar. 
+Web kancası tetikleyicisi, hizmet uç noktanıza yeni verileri veya olayları bekleyen ve dinleyen bir *gönderim tetikleyicisine* sahiptir. Yeni veriler veya bir olay belirtilen koşulu karşılıyorsa, tetikleyici ateşlenir ve bir mantıksal uygulama örneği oluşturur ve daha sonra verileri girdi olarak işler.
+Web kancası Tetikleyicileri, bu konuda daha önce açıklanan [Web kancası eylemlerine](#webhook-actions) benzer bir şekilde davranır ve ve `subscribe` `unsubscribe` uç noktaları ile ayarlanır. 
 
-* `subscribe`bitiş noktası: Mantık uygulamanızda bir webhook tetikleyicisi ekleyip kaydettiğinizde, Logic Apps motoru `subscribe` bitiş noktasını çağırır. Bu adım, mantık uygulamasının API'nizin depoladığını bir geri arama URL'si oluşturmasına neden olur. Yeni veriler veya belirtilen koşulu karşılayan bir olay olduğunda, API'niz URL'ye bir HTTP POST ile geri çağrır. İçerik yükü ve üstbilgi, mantık uygulamasına giriş olarak geçer.
+* `subscribe`uç nokta: mantıksal uygulamanızda bir Web kancası tetikleyicisi eklediğinizde ve kaydettiğinizde, Logic Apps altyapısı `subscribe` uç noktasını çağırır. Bu adım mantıksal uygulamanın API 'nizin depoladığını belirten bir geri çağırma URL 'SI oluşturmasına neden olur. Yeni veriler veya belirtilen koşulu karşılayan bir olay olduğunda, API 'niz URL 'ye bir HTTP gönderimiyle geri çağrı yapılır. İçerik yükü ve üstbilgiler, Logic App 'e giriş olarak geçer.
 
-* `unsubscribe`bitiş noktası: Webhook tetikleyicisi veya tüm mantık uygulaması silinirse, `unsubscribe` Logic Apps motoru bitiş noktasını çağırır. Ekin'iniz daha sonra geri arama URL'sinin kaydını açabilir ve gerekli işlemleri durdurabilir.
+* `unsubscribe`uç noktası: Web kancası tetikleyicisi veya tüm mantıksal uygulama silinirse, Logic Apps altyapısı `unsubscribe` uç noktasını çağırır. API 'niz daha sonra geri arama URL 'sini kaydedebilir ve gereken her türlü işlemi durdurabilir.
 
-![Webhook tetikleme deseni](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
+![Web kancası tetikleyici stili](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
 > [!NOTE]
-> Şu anda, Logic App Designer Swagger üzerinden webhook uç noktaları keşfetmek desteklemiyor. Bu desen için, bir [ **Webhook** tetikleyici](../connectors/connectors-native-webhook.md) si eklemeniz ve isteğiniz için URL'yi, üstbilgi ve gövdeyi belirtmeniz gerekir. Ayrıca bakınız [HTTPWebhook tetikleyici](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Geri arama URL'sini geçirmek için, `@listCallbackUrl()` önceki alanlardan herhangi birinde iş akışı işlevini gerektiği gibi kullanabilirsiniz.
+> Şu anda Logic App Designer, Swagger aracılığıyla Web kancası uç noktalarının bulunmasını desteklemez. Bu nedenle, bu düzende bir [ **Web kancası** tetikleyicisi](../connectors/connectors-native-webhook.md) eklemenız ve isteğiniz için URL, üst bilgiler ve gövde belirtmeniz gerekir. Ayrıca bkz. [Httpweb kancası tetikleyicisi](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Geri çağırma URL 'sini geçirmek için, bir önceki alanda bulunan `@listCallbackUrl()` iş akışı işlevini gerekli şekilde kullanabilirsiniz.
 >
-> Aynı verilerin birden çok kez işlenmesini önlemek için tetikleyiciniz, zaten okunmuş ve mantık uygulamasına aktarılan verileri temizlemelidir.
+> Aynı verinin birden çok kez işlenmesini engellemek için, Tetikleyiciniz zaten okunmuş ve mantıksal uygulamaya geçirilen verileri temizlemelidir.
 
 > [!TIP]
-> Örnek bir webhook deseni için, GitHub bu [webhook tetik denetleyicisi örnek](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)gözden geçirin.
+> Örnek bir Web kancası düzeniyle ilgili bu [Web kancası tetikleyici denetleyicisi örneğini GitHub '](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)da gözden geçirin.
 
-## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Mantık uygulamalarından API'lerinize yapılan aramalar için güvenliği artırın
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Mantıksal uygulamalardan API 'lerinize yapılan çağrılar için güvenliği geliştirme
 
-Özel API'lerinizi oluşturduktan sonra, API'leriniz için kimlik doğrulamasını ayarlayın, böylece bunları mantık uygulamalarından güvenli bir şekilde arayabilirsiniz. [Mantık uygulamalarından özel API'lere yapılan aramalariçin güvenliği nasıl artırılamayı](../logic-apps/logic-apps-custom-api-authentication.md)öğrenin.
+Özel API 'lerinizi oluşturduktan sonra, mantıksal uygulamalardan güvenli bir şekilde çağırabilmeniz için API 'niz için kimlik doğrulaması ayarlayın. [Mantıksal uygulamalardan özel API 'lere yapılan çağrılar için Güvenliği geliştirmeyi](../logic-apps/logic-apps-custom-api-authentication.md)öğrenin.
 
-## <a name="deploy-and-call-your-apis"></a>API'lerinizi dağıtın ve arayın
+## <a name="deploy-and-call-your-apis"></a>API 'lerinizi dağıtın ve çağırın
 
-Kimlik doğrulaması ayarladıktan sonra API'leriniz için dağıtım ayarlayın. [Mantık uygulamalarından özel API'leri nasıl dağıtıp çağırılamayı](../logic-apps/logic-apps-custom-api-host-deploy-call.md)öğrenin.
+Kimlik doğrulamasını ayarladıktan sonra API 'niz için dağıtımı ayarlayın. [Logic Apps 'ten özel API 'leri dağıtmayı ve çağırmayı](../logic-apps/logic-apps-custom-api-host-deploy-call.md)öğrenin.
 
-## <a name="publish-custom-apis-to-azure"></a>Azure'da özel API'ler yayımlama
+## <a name="publish-custom-apis-to-azure"></a>Azure 'da özel API 'Ler yayımlama
 
-Azure'daki diğer Logic Apps kullanıcıları için özel API'lerinizi kullanılabilir hale getirmek için güvenlik eklemeniz ve bunları Logic App bağlayıcıları olarak kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Özel bağlayıcılara genel bakış](../logic-apps/custom-connector-overview.md). 
+Özel API 'lerinizi Azure 'daki diğer Logic Apps kullanıcıları için kullanılabilir hale getirmek için güvenlik eklemeniz ve bunları mantıksal uygulama bağlayıcıları olarak kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Özel bağlayıcılara genel bakış](../logic-apps/custom-connector-overview.md). 
 
-Özel API'lerinizi Logic Apps, Power Automate ve Microsoft Power Apps'taki tüm kullanıcılar için kullanılabilir hale getirmek için güvenlik eklemeniz, API'lerinizi Logic App bağlayıcıları olarak kaydetmeniz ve bağlayıcılarınızı [Microsoft Azure Sertifikalı programı](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)için aday göstermeniz gerekir. 
+Özel API 'lerinizi Logic Apps, Power otomatikleştirmede ve Microsoft Power Apps 'teki tüm kullanıcılar için kullanılabilir hale getirmek için, güvenlik eklemeniz, API 'lerinizi Logic App bağlayıcıları olarak kaydetmeniz ve [Microsoft Azure Sertifikalı program](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)için bağlayıcılarınızı aday hale getirmeniz gerekir. 
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
-* Özel API'lerle ilgili [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)özel yardım için, '.
+* Özel API 'lerle ilgili belirli yardım için, [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)ile iletişim kurun.
 
 * Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
 
@@ -231,5 +231,5 @@ Azure'daki diğer Logic Apps kullanıcıları için özel API'lerinizi kullanıl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hataları ve özel durumları işleme](../logic-apps/logic-apps-exception-handling.md)
-* [HTTP uç noktalarıyla mantık uygulamalarını arama, tetikleme veya yuvalama](../logic-apps/logic-apps-http-endpoint.md)
-* [Eylemler ve tetikleyiciler için kullanım ölçümü](../logic-apps/logic-apps-pricing.md)
+* [HTTP uç noktaları ile çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md)
+* [Eylemler ve Tetikleyiciler için kullanım ölçümü](../logic-apps/logic-apps-pricing.md)

@@ -1,7 +1,7 @@
 ---
-title: Dize alanlarına dil çözümleyicileri ekleme
+title: Dize alanlarına dil Çözümleyicileri ekleme
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama'da İngilizce olmayan sorgular ve dizinler için çok dilli sözlü metin çözümlemesi.
+description: Azure Bilişsel Arama 'de Ingilizce olmayan sorgular ve dizinler için çok dilli sözlü metin analizi.
 manager: nitinme
 author: Yahnoosh
 ms.author: jlembicz
@@ -20,112 +20,112 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283153"
 ---
-# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil çözümleyicileri ekleme
+# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
-*Dil çözümleyicisi,* hedef dilin dilsel kurallarını kullanarak sözlü çözümleme gerçekleştiren belirli bir metin [çözümleyici](search-analyzers.md) türüdür. Her aranabilir alanın bir **çözümleyici** özelliği vardır. Dizininizde İngilizce ve Çince metin için ayrı alanlar gibi çevrilmiş dizeler içeriyorsa, bu çözümleyicilerin zengin dil selyeteneklerine erişmek için her alandaki dil çözümleyicilerini belirtebilirsiniz.  
+*Dil çözümleyici* , hedef dilin dil kurallarını kullanarak sözlü analiz gerçekleştiren belirli bir [metin Çözümleyicisi](search-analyzers.md) türüdür. Aranabilir her alanın bir **çözümleyici** özelliği vardır. Dizininiz, Ingilizce ve Çince metin için ayrı alanlar gibi çevrilmiş dizeler içeriyorsa, bu çözümleyicilerin zengin dil özelliklerine erişmek için her bir alanda dil Çözümleyicileri belirtebilirsiniz.  
 
-Azure Bilişsel Arama, Lucene tarafından desteklenen 35 çözümleyiciyi ve Office ve Bing'de kullanılan özel Microsoft doğal dil işleme teknolojisi tarafından desteklenen 50 çözümleyiciyi destekler.
+Azure Bilişsel Arama, Lucene tarafından desteklenen 35 Çözümleyicileri ve Office ve Bing 'de kullanılan özel Microsoft doğal dil işleme teknolojisi tarafından desteklenen 50 Çözümleyicileri destekler.
 
-## <a name="comparing-analyzers"></a>Çözümleyicileri karşılaştırma
+## <a name="comparing-analyzers"></a>Çözümleyiciler karşılaştırılıyor
 
-Bazı geliştiriciler Lucene daha tanıdık, basit, açık kaynak çözüm tercih edebilir. Lucene dil çözümleyicileri daha hızlıdır, ancak Microsoft çözümleyicileri lemmatizasyon, kelime decompounding (Almanca, Danca, Felemenkçe, İsveççe, Norveççe, Estonyaca, Finish, Macarca, Slovakça gibi dillerde) ve varlık gibi gelişmiş özelliklere sahiptir tanıma (URL'ler, e-postalar, tarihler, sayılar). Mümkünse, hangisinin daha uygun olduğuna karar vermek için hem Microsoft hem de Lucene çözümleyicilerinin karşılaştırmalarını çalıştırmalısınız. 
+Bazı geliştiriciler, Lucene 'in daha tanıdık, basit ve açık kaynaklı çözümünü tercih edebilir. Lucene dil Çözümleyicileri daha hızlıdır, ancak Microsoft Çözümleyicileri, Microsoft çözümleyicilerinin (Almanca, Danca, Felemenkçe, Isveççe, Norveççe, Estonca, son, Macarca, Slovakça) ve varlık tanıma (URL 'Ler, e-postalar, tarihler, sayılar) gibi gelişmiş özellikleri vardır. Mümkünse, hangisinin daha iyi bir şekilde uygun olduğuna karar vermek için hem Microsoft hem de Lucene Çözümleyicileri için karşılaştırmalar çalıştırmalısınız. 
 
-Microsoft çözümleyicileri ile dizin oluşturma, dile bağlı olarak Lucene eşdeğerlerinden ortalama 2-3 kat daha yavaştır. Ortalama boyut sorguları için arama performansı önemli ölçüde etkilenmemelidir. 
+Microsoft Çözümleyicileri ile dizin oluşturma, dile bağlı olarak, Lucene eşdeğerlerine kıyasla ortalama iki ile üç kat daha yavaştır. Ara performans, ortalama boyut sorgularında önemli ölçüde etkilenmemelidir. 
 
-### <a name="english-analyzers"></a>İngilizce analizörler
+### <a name="english-analyzers"></a>İngilizce çözümleyiciler
 
-Varsayılan çözümleyici, İngilizce için iyi çalışan standart Lucene'dir, ancak belki de Lucene'nin İngilizce çözümleyicisi veya Microsoft'un İngilizce çözümleyicisi kadar iyi değildir. 
+Varsayılan çözümleyici, Ingilizce 'nin yanı sıra Lucene 'in Ingilizce Çözümleyicisi veya Microsoft 'un Ingilizce Çözümleyicisi için iyi bir şekilde çalışacak standart Lucene ' dir. 
  
-+ Lucene'nin İngilizce analizörü standart analizörü genişletir. Bu iyelik kaldırır ('s) kelimelerden, Porter Stemming algoritması başına kaynaklanan uygular ve İngilizce stop kelimeleri kaldırır.  
++ Lucene 'ın Ingilizce Çözümleyicisi standart çözümleyici 'yi genişletiyor. Sözcüklerdeki iyelik (sondaki) ' ı kaldırır, her Porter için sözcük kökü karartma algoritması olarak sözcük kökü ayırmayı uygular ve Ingilizce durdurma sözcüklerini kaldırır.  
 
-+ Microsoft'un İngilizce çözümleyicisi, köklendirme yerine lemmatizasyon gerçekleştirir. Bu, daha alakalı arama sonuçları çok daha iyi, çekimli ve düzensiz sözcük formları işleyebilir anlamına gelir 
++ Microsoft 'un Ingilizce Çözümleyicisi, sözcük kökü ayırmayı yerine katileştirme gerçekleştirir. Bu, daha fazla ilgili arama sonuçlarıyla sonuçlanarak ve düzensiz Word formlarının çok daha iyi işleyebileceği anlamına gelir 
 
 ## <a name="configuring-analyzers"></a>Çözümleyicileri yapılandırma
 
-Dil çözümleyicileri olduğu gibi kullanılır. Dizin tanımındaki her alan için **çözümleyici** özelliğini, dil ve dilbilgisi yığınını (Microsoft veya Lucene) belirten bir çözümleyici adı olarak ayarlayabilirsiniz. Dizin leme ve bu alan aranırken aynı çözümleyici uygulanacaktır. Örneğin, aynı dizinde yan yana bulunan İngilizce, Fransızca ve İspanyolca otel açıklamaları için ayrı alanlar alabilirsiniz.
+Dil Çözümleyicileri olduğu gibi kullanılır. Dizin tanımındaki her bir alan için, **çözümleyici** özelliğini dili ve Linguistics yığınını (Microsoft veya Lucene) belirten bir çözümleyici adı olarak ayarlayabilirsiniz. Aynı çözümleyici, bu alan için dizin oluştururken ve aranırken de uygulanır. Örneğin, aynı dizinde yan yana bulunan Ingilizce, Fransızca ve Ispanyolca otel açıklamaları için ayrı alanlara sahip olabilirsiniz.
 
 > [!NOTE]
-> Dizinleme zamanında, bir alanın sorgu zamanına göre farklı bir dil çözümleyicisi kullanmak mümkün değildir. Bu özellik [özel çözümleyiciler](index-add-custom-analyzers.md)için ayrılmıştır. Bu nedenle, **searchAnalyzer** veya **indexAnalyzer** özelliklerini bir dil çözümleyicisinin adına ayarlamaya çalışırsanız, REST API bir hata yanıtı döndürecektir. Bunun yerine **çözümleyici** özelliğini kullanmanız gerekir.
+> Dizin oluşturma sırasında bir alanın sorgu süresinden farklı bir dil Çözümleyicisi kullanmak mümkün değildir. Bu özellik [özel çözümleyiciler](index-add-custom-analyzers.md)için ayrılmıştır. Bu nedenle, **searchAnalyzer** veya **ındexanalyzer** özelliklerini bir dil çözümleyici adına ayarlamaya çalışırsanız REST API bir hata yanıtı döndürür. Bunun yerine **çözümleyici** özelliğini kullanmanız gerekir.
 
-Sorgularınızda hangi dile özgü alana karşı arama yapılacağını belirtmek için **arama Alanları** sorgu parametresini kullanım. [Arama Belgelerinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)çözümleyici özelliğini içeren sorgu örneklerini gözden geçirebilirsiniz. 
+Sorgularınızda aranacak dile özgü alanı belirtmek için **Searchfields** sorgu parametresini kullanın. [Arama belgelerinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)çözümleyici özelliğini içeren sorgu örneklerini inceleyebilirsiniz. 
 
-Dizin özellikleri hakkında daha fazla bilgi için Azure [Bilişsel Arama REST API &#40;&#41;dizin oluştur'a ](https://docs.microsoft.com/rest/api/searchservice/create-index)bakın. Azure Bilişsel Arama'da analiz hakkında daha fazla bilgi için Azure [Bilişsel Arama'da Çözümleyiciler'e](https://docs.microsoft.com/azure/search/search-analyzers)bakın.
+Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Azure Bilişsel Arama 'de analiz hakkında daha fazla bilgi için bkz. [azure bilişsel arama 'de çözümleyiciler](https://docs.microsoft.com/azure/search/search-analyzers).
 
 <a name="language-analyzer-list"></a>
 
-## <a name="language-analyzer-list"></a>Dil çözümleyici listesi 
- Aşağıda Lucene ve Microsoft çözümleyici adları ile birlikte desteklenen dillerin listesi verilmiştir.  
+## <a name="language-analyzer-list"></a>Dil Çözümleyicisi listesi 
+ Aşağıda, Lucene ve Microsoft çözümleyici adlarıyla birlikte desteklenen dillerin listesi verilmiştir.  
 
-|Dil|Microsoft Analyzer Adı|Lucene Analizörü Adı|  
+|Dil|Microsoft Çözümleyicisi adı|Lucene çözümleyici adı|  
 |--------------|-----------------------------|--------------------------|  
-|Arapça|ar.microsoft|ar.lucene|  
-|Ermenice||hy.lucene|  
-|Bangla|bn.microsoft||  
-|Baskça||eu.lucene|  
-|Bulgarca|bg.microsoft|bg.lucene|  
-|Katalanca|ca.microsoft|ca.lucene|  
-|Basitleştirilmiş Çince|zh-Hans.microsoft|zh-Hans.lucene|  
-|Geleneksel Çince|zh-Hant.microsoft|zh-Hant.lucene|  
-|Hırvatça|hr.microsoft||  
-|Çekçe|cs.microsoft|cs.lucene|  
-|Danca|da.microsoft|da.lucene|  
-|Felemenkçe|nl.microsoft|nl.lucene|  
-|Türkçe|tr.microsoft|en.lucene|  
-|Estonya Dili|et.microsoft||  
-|Fince|fi.microsoft|fi.lucene|  
-|Fransızca|fr.microsoft|fr.lucene|  
-|Galiçya Dili||gl.lucene|  
-|Almanca|de.microsoft|de.lucene|  
-|Yunanca|el.microsoft|el.lucene|  
-|Gucerat dili|gu.microsoft||  
-|İbranice|he.microsoft||  
-|Hintçe|merhaba.microsoft|merhaba.lucene|  
-|Macarca|hu.microsoft|hu.lucene|  
-|İzlandaca|is.microsoft||  
-|Endonezya dili (Bahasa)|id.microsoft|id.lucene|  
-|İrlandaca||ga.lucene|  
-|İtalyanca|it.microsoft|it.lucene|  
-|Japonca|ja.microsoft|ja.lucene|  
-|Kannada dili|kn.microsoft||  
-|Korece|ko.microsoft|ko.lucene|  
-|Letonca|lv.microsoft|lv.lucene|  
-|Litvanca|lt.microsoft||  
-|Malayalam dili|ml.microsoft||  
-|Malay (Latince)|ms.microsoft||  
-|Marathi|mr.microsoft||  
-|Norveççe|nb.microsoft|no.lucene|  
-|Farsça||fa.lucene|  
-|Lehçe|pl.microsoft|pl.lucene|  
-|Portekizce (Brezilya)|pt-Br.microsoft|pt-Br.lucene|  
-|Portekizce (Portekiz)|pt-Pt.microsoft|pt-Pt.lucene|  
-|Pencap dili|pa.microsoft||  
-|Rumence|ro.microsoft|ro.lucene|  
-|Rusça|ru.microsoft|ru.lucene|  
-|Sırpça (Kiril)|sr-kirillic.microsoft||  
-|Sırpça (Latin)|sr-latin.microsoft||  
-|Slovakça|sk.microsoft||  
-|Slovence|sl.microsoft||  
-|İspanyolca|es.microsoft|es.lucene|  
-|İsveççe|sv.microsoft|sv.lucene|  
-|Tamil dili|ta.microsoft||  
-|Telugu dili|te.microsoft||  
-|Tayca|th.microsoft|th.lucene|  
-|Türkçe|tr.microsoft|tr.lucene|  
-|Ukraynaca|uk.microsoft||  
-|Urduca|sizin.microsoft||  
-|Vietnamca|vi.microsoft||  
+|Arapça|ar. Microsoft|ar. Lucene|  
+|Ermenice||HY. Lucene|  
+|Bangla|milyar TL. Microsoft||  
+|Baskça||AB. Lucene|  
+|Bulgarca|bg. Microsoft|bg. Lucene|  
+|Katalanca|CA. Microsoft|CA. Lucene|  
+|Basitleştirilmiş Çince|zh-Hans. Microsoft|zh-Hans. Lucene|  
+|Geleneksel Çince|zh-Hant. Microsoft|zh-Hant. Lucene|  
+|Hırvatça|HR. Microsoft||  
+|Çekçe|CS. Microsoft|CS. Lucene|  
+|Danca|da. Microsoft|da. Lucene|  
+|Felemenkçe|nl. Microsoft|nl. Lucene|  
+|İngilizce|en. Microsoft|en. Lucene|  
+|Estonya Dili|et. Microsoft||  
+|Fince|Fi. Microsoft|Fi. Lucene|  
+|Fransızca|fr. Microsoft|fr. Lucene|  
+|Galiçya Dili||GL. Lucene|  
+|Almanca|de Microsoft|de. Lucene|  
+|Yunanca|El. Microsoft|El. Lucene|  
+|Gucerat dili|Gu. Microsoft||  
+|İbranice|BT. Microsoft||  
+|Hintçe|Merhaba. Microsoft|Merhaba. Lucene|  
+|Macarca|Hu. Microsoft|Hu. Lucene|  
+|İzlandaca|. Microsoft||  
+|Endonezya dili (Bahasa)|kimliği. Microsoft|ID. Lucene|  
+|İrlandaca||ga. Lucene|  
+|İtalyanca|BT. Microsoft|BT. Lucene|  
+|Japonca|Ja. Microsoft|Ja. Lucene|  
+|Kannada dili|KN. Microsoft||  
+|Korece|Ko. Microsoft|Ko. Lucene|  
+|Letonca|LV. Microsoft|LV. Lucene|  
+|Litvanca|lt. Microsoft||  
+|Malayalam dili|ml. Microsoft||  
+|Malay dili (Latin)|MS. Microsoft||  
+|Marathi|Mr. Microsoft||  
+|Norveççe|NB. Microsoft|Hayır. Lucene|  
+|Farsça||FA. Lucene|  
+|Lehçe|pl. Microsoft|pl. Lucene|  
+|Portekizce (Brezilya)|pt-br. Microsoft|pt-br. Lucene|  
+|Portekizce (Portekiz)|PT-PT. Microsoft|PT-PT. Lucene|  
+|Pencap dili|PA. Microsoft||  
+|Rumence|ro. Microsoft|ro. Lucene|  
+|Rusça|ru. Microsoft|ru. Lucene|  
+|Sırpça (Kiril)|SR-Kiril. Microsoft||  
+|Sırpça (Latin)|SR-Latin. Microsoft||  
+|Slovakça|SK. Microsoft||  
+|Slovence|SL. Microsoft||  
+|İspanyolca|es. Microsoft|es. Lucene|  
+|İsveççe|ZF. Microsoft|ZF. Lucene|  
+|Tamil dili|ta. Microsoft||  
+|Telugu dili|te. Microsoft||  
+|Tayca|TH. Microsoft|TH. Lucene|  
+|Türkçe|tr. Microsoft|tr. Lucene|  
+|Ukraynaca|UK. Microsoft||  
+|Urduca|. Microsoft||  
+|Vietnamca|Vi. Microsoft||  
 
- **Lucene** ile açıklamalı isimleri ile tüm analizörler [Apache Lucene dil analizörleri](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )tarafından desteklenmektedir.
+ **Lucene** ile açıklama eklenmiş adlara sahip tüm çözümleyiciler [Apache Lucene 'in dil Çözümleyicileri](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )tarafından desteklenir.
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-+ [Azure Bilişsel Arama REST API &#40;Dizin oluşturma&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
++ [Azure Bilişsel Arama REST API &#40;dizin oluşturma&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 
-+ [AnalyzerName Sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
++ [Analiz Zername sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
 

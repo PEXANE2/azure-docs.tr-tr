@@ -1,6 +1,6 @@
 ---
-title: Azure Ağ İzleyicisi Bağlantı Sorun Giderme Sorununa Giriş | Microsoft Dokümanlar
-description: Bu sayfa, Ağ İzleyicisi bağlantı sorun giderme özelliğine genel bir bakış sağlar
+title: Azure ağ Izleyicisi bağlantısına giriş sorun giderme | Microsoft Docs
+description: Bu sayfada ağ Izleyicisi bağlantısı sorun giderme özelliğine bir genel bakış sunulmaktadır
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,46 +12,46 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283283"
 ---
-# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure Ağ İzleyicisi'nde bağlantı sorun gidermeye giriş
+# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde bağlantıya sorun giderme konusuna giriş
 
-Network Watcher'ın bağlantı sorunu giderme özelliği, sanal bir makineden sanal makineye (VM), tam nitelikli etki alanı adı (FQDN), URI veya IPv4 adresine doğrudan TCP bağlantısını denetleme olanağı sağlar. Ağ senaryoları karmaşıktır, ağ güvenlik grupları, güvenlik duvarları, kullanıcı tanımlı rotalar ve Azure tarafından sağlanan kaynaklar kullanılarak uygulanır. Karmaşık yapılandırmalar, sorun giderme bağlantı sorunlarını zora sokar. Ağ İzleyicisi, bağlantı sorunlarını bulmak ve algılamak için gereken süreyi azaltmaya yardımcı olur. Döndürülen sonuçlar, bir bağlantı sorununun bir platformdan mı yoksa kullanıcı yapılandırma sorunundan mı kaynaklandığına ilişkin öngörüler sağlayabilir. Bağlantı [PowerShell,](network-watcher-connectivity-powershell.md) [Azure CLI](network-watcher-connectivity-cli.md)ve REST [API](network-watcher-connectivity-rest.md)ile kontrol edilebilir.
+Ağ Izleyicisi 'nin bağlantı sorunlarını giderme özelliği, bir sanal makineden bir sanal makineye (VM), tam etki alanı adına (FQDN), URI 'ye veya IPv4 adresine doğrudan TCP bağlantısını denetleme yeteneği sağlar. Ağ senaryoları karmaşıktır, bunlar ağ güvenlik grupları, güvenlik duvarları, Kullanıcı tanımlı yollar ve Azure tarafından sağlanmış kaynaklar kullanılarak uygulanır. Karmaşık yapılandırmalarda sorun giderme bağlantı sorunları zorlayıcı hale getirir. Ağ Izleyicisi, bağlantı sorunlarını bulma ve algılamaya yönelik süreyi azaltmaya yardımcı olur. Döndürülen sonuçlar, bir bağlantı sorununun bir platform veya Kullanıcı yapılandırma sorunundan kaynaklanıyor olup olmadığı hakkında öngörüler sağlayabilir. Bağlantı, [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md)ve [REST API](network-watcher-connectivity-rest.md)ile denetlenebilir.
 
 > [!IMPORTANT]
-> Bağlantı sorun giderme, sorun giderdiğiniz VM'nin `AzureNetworkWatcherExtension` VM uzantısıyüklü olması gerekir. Uzantıyı Windows VM'de yüklemek [için Windows için Azure Network Watcher Agent sanal makine uzantısını](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ziyaret edin ve Linux VM için Linux için Azure Network [Watcher Agent sanal makine uzantısını](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)ziyaret edin. Uzantı, hedef bitiş noktasında gerekli değildir.
+> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız VM 'nin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
 
 ## <a name="response"></a>Yanıt
 
-Aşağıdaki tablo, bağlantı sorunu giderme işi tamamlandığında döndürülen özellikleri gösterir.
+Aşağıdaki tabloda, bağlantı sorun gidermesi çalışırken döndürülen özellikler gösterilmektedir.
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Bağlantı Durumu     | Bağlantı denetiminin durumu. Olası sonuçlar **Ulaşılabilir** ve **Ulaşılamıyor.**        |
-|AvgLatencyInMs     | Milisaniye cinsinden bağlantı denetimi sırasında ortalama gecikme süresi. (Yalnızca çek durumuna ulaşılabilirse gösterilir)        |
-|MinLatencyInMs     | Milisaniye cinsinden bağlantı denetimi sırasında minimum gecikme süresi. (Yalnızca çek durumuna ulaşılabilirse gösterilir)        |
-|MaxLatencyInMs     | Milisaniye cinsinden bağlantı denetimi sırasında maksimum gecikme süresi. (Yalnızca çek durumuna ulaşılabilirse gösterilir)        |
-|ProbesSent     | Kontrol sırasında gönderilen sonda sayısı. Maksimum değer 100'dür.        |
-|ProbesFailed     | Denetim sırasında başarısız olan sonda sayısı. Maksimum değer 100'dür.        |
-|Atlamalar     | Kaynaktan hedefe atlama yolu ile hop.        |
-|Hops[]. Türü     | Kaynak türü. Olası değerler **Kaynak**, **VirtualAppliance**, **VnetLocal**ve **Internet**vardır.        |
-|Hops[]. Kimliği | Hop benzersiz tanımlayıcısı.|
-|Hops[]. Adres | Atlamanın IP adresi.|
-|Hops[]. Resourceıd | Atlama bir Azure kaynağıysa atlamanın Kaynak Kimliği. Bir internet kaynağı ise, ResourceID **Internet'tir.** |
-|Hops[]. NextHopIds | Bir sonraki atlamanın benzersiz tanımlayıcısı alınır.|
-|Hops[]. Sorun | O atlamada kontrol sırasında karşılaşılan sorunlar dan oluşan bir koleksiyon. Sorun yoksa, değer boştur.|
-|Hops[]. Sorunlar[]. Kökenli | Sorunun oluştuğu geçerli atlamada. Olası değerler şunlardır:<br/> **Gelen** - Sorun geçerli atlama önceki atlama bağlantıda<br/>**Giden** - Sorun geçerli atlamadan sonraki hop bağlantıda<br/>**Yerel** - Sorun geçerli atlamada.|
-|Hops[]. Sorunlar[]. Önem | Sorunun önem derecesi algılandı. Olası değerler **Hata** ve **Uyarı'dır.** |
-|Hops[]. Sorunlar[]. Türü |Bulunan sorunun türü. Olası değerler şunlardır: <br/>**CPU**<br/>**Bellek**<br/>**GuestFirewall**<br/>**DnsÇözünürlük**<br/>**AğGüvenliği Kuralı**<br/>**UserDefinedRoute** |
-|Hops[]. Sorunlar[]. Bağlam |Konuyla ilgili ayrıntılar bulundu.|
-|Hops[]. Sorunlar[]. Bağlam[].key |Anahtar değer çiftinin anahtarı döndürülür.|
-|Hops[]. Sorunlar[]. Bağlam[].value |Döndürülen anahtar değer çiftinin değeri.|
+|ConnectionStatus     | Bağlantı denetiminin durumu. Olası sonuçlar **erişilebilir** ve **ulaşılamaz**durumda olur.        |
+|Avglatencyms     | Milisaniye cinsinden bağlantı denetimi sırasında ortalama gecikme süresi. (Yalnızca Check durumu erişilebilir ise gösterilir)        |
+|Minlatencyms     | Bağlantı denetimi sırasında milisaniye cinsinden en düşük gecikme süresi. (Yalnızca Check durumu erişilebilir ise gösterilir)        |
+|Maxlatencyms     | Milisaniye cinsinden bağlantı denetimi sırasında en fazla gecikme süresi. (Yalnızca Check durumu erişilebilir ise gösterilir)        |
+|ProbesSent     | Denetim sırasında gönderilen yoklamaların sayısı. En büyük değer 100 ' dir.        |
+|ProbesFailed     | Denetim sırasında başarısız olan yoklamaların sayısı. En büyük değer 100 ' dir.        |
+|Atlamalar     | Kaynaktan hedefe atlama yoluyla atlama.        |
+|Atlamaları []. Türüyle     | Kaynak türü. Olası değerler şunlardır. **kaynak**, **virtualappliance**, **vnetlocal**ve **Internet**.        |
+|Atlamaları []. Numarasını | Atlamanın benzersiz tanımlayıcısı.|
+|Atlamaları []. Adrestir | Atlamanın IP adresi.|
+|Atlamaları []. RESOURCEID | Atlama bir Azure kaynağı ise, atlamanın RESOURCEID. Bir internet kaynağı ise RESOURCEID **İnternet**olur. |
+|Atlamaları []. Nexthopıds | Sonraki atlamanın benzersiz tanımlayıcısı.|
+|Atlamaları []. Çıkışları | Bu atlamada Denetim sırasında karşılaşılan sorunların toplanması. Sorun yoksa değer boştur.|
+|Atlamaları []. Sorunlar []. Tıdır | Geçerli atlamada, sorun oluştuğu yerdir. Olası değerler şunlardır:<br/> **Gelen** -sorun önceki atlamanın geçerli atlamaya olan bağlantıdır<br/>**Giden** sorun, geçerli atlamanın bir sonraki atlamada olan bağlantıdır<br/>**Yerel** -sorun geçerli atlamada.|
+|Atlamaları []. Sorunlar []. İnin | Sorunun önem derecesi algılandı. Olası değerler **hata** ve **uyarıdır**. |
+|Atlamaları []. Sorunlar []. Türüyle |Sorun türü bulundu. Olası değerler şunlardır: <br/>**CPU**<br/>**Bellek**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Atlamaları []. Sorunlar []. Bağlam |Bulunan sorunla ilgili ayrıntılar.|
+|Atlamaları []. Sorunlar []. Context []. Key |Anahtar değer çiftinin anahtarı döndürüldü.|
+|Atlamaları []. Sorunlar []. Context []. Value |Döndürülen anahtar değer çiftinin değeri.|
 
-Aşağıda, atlamada bulunan bir soruna bir örnek verilmiştir.
+Aşağıda, bir atlama üzerinde bulunan bir sorun örneği verilmiştir.
 
 ```json
 "Issues": [
@@ -68,19 +68,19 @@ Aşağıda, atlamada bulunan bir soruna bir örnek verilmiştir.
     }
 ]
 ```
-## <a name="fault-types"></a>Hata tipleri
+## <a name="fault-types"></a>Hata türleri
 
-Bağlantı sorun giderme, bağlantıyla ilgili hata türlerini döndürür. Aşağıdaki tablo, döndürülen geçerli hata türlerinin bir listesini sağlar.
+Bağlantı sorunlarını giderme bağlantıyla ilgili hata türlerini döndürür. Aşağıdaki tabloda döndürülen geçerli hata türlerinin bir listesi verilmiştir.
 
 |Tür  |Açıklama  |
 |---------|---------|
 |CPU     | Yüksek CPU kullanımı.       |
-|Bellek     | Yüksek Bellek kullanımı.       |
-|GuestFirewall     | Sanal makine güvenlik duvarı yapılandırması nedeniyle trafik engellendi.        |
-|DNSResolution     | DNS çözümü hedef adres için başarısız oldu.        |
-|AğGüvenliği Kuralı    | Trafik Bir NSG Kuralı tarafından engellenir (Kural döndürülür)        |
-|UserDefinedRoute|Trafik, kullanıcı tanımlı veya sistem rotası nedeniyle bırakılır. |
+|Bellek     | Yüksek bellek kullanımı.       |
+|GuestFirewall     | Bir sanal makine güvenlik duvarı yapılandırması nedeniyle trafik engellendi.        |
+|DNSResolution     | Hedef adres için DNS çözümlemesi başarısız oldu.        |
+|NetworkSecurityRule    | Trafik bir NSG kuralı tarafından engelleniyor (kural döndürülür)        |
+|UserDefinedRoute|Kullanıcı tanımlı veya sistem yolu nedeniyle trafik bırakıldı. |
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-[Azure portalı](network-watcher-connectivity-portal.md), [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md)veya [REST API'yi](network-watcher-connectivity-rest.md)kullanarak bağlantıları nasıl gidereceklerini öğrenin.
+[Azure Portal](network-watcher-connectivity-portal.md), [POWERSHELL](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md)veya [REST API](network-watcher-connectivity-rest.md)kullanarak bağlantı sorunlarını giderme hakkında bilgi edinin.

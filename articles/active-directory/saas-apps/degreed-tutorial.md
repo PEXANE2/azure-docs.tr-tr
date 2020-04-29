@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Degreed ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Degreed arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: kullanıma alınan Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,194 +17,194 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6b02fd3593036a6620d7eeec42dd6bae373ca53
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73158429"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-degreed"></a>Öğretici: Degreed ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-degreed"></a>Öğretici: kullanıma alınan Azure Active Directory tümleştirme
 
-Bu eğitimde, Diplomayı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğrenirsiniz.
-Dereceyi Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz.
+Azure AD ile tümleştirmeyi tümleştirmek aşağıdaki avantajları sağlar:
 
-* Degreed erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla otomatik olarak Diploma (Tek Oturum Açma) ile oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de, daha fazla erişme erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Degreed ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini kullanıma alınan şekilde yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Dereceli tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Degreed **SP** başlatılan SSO destekler
+* Noktalama, **SP** tarafından başlatılan SSO 'yu destekler
 
-* Degreed, **Just In Time** kullanıcı sağlamayı destekler
+* Noktalama **, tam zamanında** Kullanıcı sağlamayı destekliyor
 
-## <a name="adding-degreed-from-the-gallery"></a>Galeriden Derece Ekleme
+## <a name="adding-degreed-from-the-gallery"></a>Galeriden ekleme
 
-Derece'nin Azure AD'ye tümleştirmesini yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Derece'yi eklemeniz gerekir.
+Azure AD 'ye yöneltilen tümleştirmeyi yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize bir ölçü eklemeniz gerekir.
 
-**Galeriden Derece eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden daha fazla eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Derece ,** sonuç panelinden **Derece'yi** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **noktalama**yazın, sonuç panelinden **noktalama** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuç listesinde derece](common/search-new-app.png)
+     ![Sonuçlar listesinde gri çıkarıldı](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD tek oturum açma işlemini Derece ile yapılandırıp test esiniz.
-Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile Degreed'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayanarak yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Azure AD'yi Derece ile tek oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Dereceli Tek Oturum Açma'yı yapılandırın.](#configure-degreed-single-sign-on)**
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Degreed test kullanıcısını oluşturun](#create-degreed-test-user)** - Kullanıcının Azure AD gösterimine bağlı Degreed'deki Britta Simon'ın bir örneğine sahip olmak için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. Çoklu **[oturum açmayı yapılandırma](#configure-degreed-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanıcının Azure AD gösterimine bağlı olan, hiç bir detta Simon 'a sahip olmak için, çıplak **[test kullanıcısı oluşturun](#create-degreed-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini Degreed ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı devre dışı olarak yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında,](https://portal.azure.com/) **Dereceuygulama** tümleştirme sayfasında **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **kullanıma alınan** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Dereceli Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![Gri etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
 
-    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://degreed.com/?orgsso=<company code>`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://degreed.com/?orgsso=<company code>`
 
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://degreed.com/<instancename>`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://degreed.com/<instancename>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Dereceli İstemci destek ekibine](mailto:admin@degreed.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, iletişim [kurulmuş istemci desteği ekibine](mailto:admin@degreed.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. **Dereceyi Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **Kullanıma alınan ayarı ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure Reklam Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-degreed-single-sign-on"></a>Dereceli Tek İşaret-On'u Yapılandır
+### <a name="configure-degreed-single-sign-on"></a>Kullanıma alınan çoklu oturum açmayı yapılandırma
 
-**Derece tarafında** tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'lerini Azure portalından [Derece destek ekibine](mailto:admin@degreed.com)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Kullanıma alınan** tarafta çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal ' den daha fazla [Destek ekibine](mailto:admin@degreed.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Degreed'ye erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Dereceyi**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **gri seçimini**yapın.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Dereceyi**seçin.
+2. Uygulamalar listesinde, **noktalama**' i seçin.
 
-    ![Uygulamalar listesindeki Derece bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki gri kullanıma alınan bağlantı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-degreed-test-user"></a>Dereceli test kullanıcısı oluşturma
+### <a name="create-degreed-test-user"></a>Çıplak test kullanıcısı oluşturma
 
-Bu bölümün amacı, Derece'de Britta Simon adında bir kullanıcı oluşturmaktır. Degreed, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler.
+Bu bölümün amacı, lül 'de Britta Simon adlı bir Kullanıcı oluşturmaktır. , Varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler.
 
-Bu bölümde sizin için bir eylem öğesi yoktur. Henüz yoksa, Derece'ye erişme girişimi sırasında yeni bir kullanıcı oluşturulur.
+Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz mevcut değilse, erişim girişimi sırasında yeni bir Kullanıcı oluşturulur.
 
 > [!NOTE]
-> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Derece destek ekibine](mailto:admin@degreed.com)başvurmanız gerekir.
+> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, daha fazla [Destek ekibine](mailto:admin@degreed.com)başvurmanız gerekir.
 
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Dereceli döşemeyi tıklattığınızda, Otomatik olarak SSO'yu kurduğunuz Derece'de oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde gri Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız sırada otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

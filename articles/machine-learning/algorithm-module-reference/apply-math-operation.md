@@ -1,7 +1,7 @@
 ---
 title: Matematik İşlemi Uygulama
 titleSuffix: Azure Machine Learning
-description: Bir ardışık işlemdeki sütun değerlerine matematiksel bir işlem uygulamak için Azure Machine Learning'de Matematik İşlemuygula modüllerini nasıl kullanacağınızı öğrenin.
+description: Bir işlem hattındaki sütun değerlerine matematik işlemi uygulamak için Azure Machine Learning Math Işlem modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,197 +10,197 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456752"
 ---
 # <a name="apply-math-operation"></a>Matematik İşlemi Uygulama
 
-Bu makalede, Azure Machine Learning tasarımcısının (önizleme) bir modülü açıklanmaktadır.
+Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
-Giriş veri kümesindeki sayısal sütunlara uygulanan hesaplamalar oluşturmak için Matematik Uygula İşlemini kullanın. 
+Giriş veri kümesindeki sayısal sütunlara uygulanan hesaplamalar oluşturmak için matematik Uygula Işlemini kullanın. 
 
-Desteklenen matematik işlemleri, çarpma ve bölme, trigonometrik fonksiyonlar, çeşitli yuvarlama işlevleri ve gama ve hata işlevleri gibi veri bilimlerinde kullanılan özel işlevler gibi yaygın aritmetik işlevleri içerir.  
+Desteklenen matematik işlemleri, çarpma ve bölme, Trigonometrik İşlevler, çeşitli yuvarlama işlevleri ve gama ve hata işlevleri gibi veri bilimi için kullanılan özel işlevler gibi yaygın aritmetik işlevleri içerir.  
 
-Bir işlemi tanımladıktan ve ardışık hattı çalıştırdıktan sonra, değerler veri kümenize eklenir. Modülü nasıl yapılandırdığınıza bağlı olarak şunları yapabilirsiniz:
+Bir işlemi tanımladıktan ve işlem hattını çalıştırdıktan sonra, değerler veri kümenize eklenir. Modülünü nasıl yapılandırdığınıza bağlı olarak, şunları yapabilirsiniz:
 
-+ Sonuçları veri setinize ekle. Bu, özellikle işlemin sonucunu doğrularken kullanışlıdır.
-+ Sütun değerlerini yeni, hesaplanmış değerlerle değiştirin.
-+ Sonuçlar için yeni bir sütun oluşturun ve özgün verileri göstermeyin. 
++ Sonuçları veri kümenize ekleyin. Bu, özellikle işlemin sonucunu doğrularken yararlı olur.
++ Sütun değerlerini yeni, hesaplanan değerlerle değiştirin.
++ Sonuçlar için yeni bir sütun oluşturun ve özgün verileri göstermez. 
 
-Bu kategorilerde ihtiyacınız olan işlemi arayın:  
+Aşağıdaki kategorilerde ihtiyacınız olan işlemi arayın:  
 
 - [Temel](#basic-math-operations)  
   
-     **Temel** kategorisindeki işlevler, tek bir değeri veya değer sütununu işlemek için kullanılabilir. Örneğin, bir sütundaki tüm sayıların mutlak değerini alabilir veya bir sütundaki her değerin kare kökünü hesaplayabilirsiniz.  
+     **Temel** kategorideki işlevler, tek bir değeri veya değer sütununu işlemek için kullanılabilir. Örneğin, bir sütundaki tüm sayıların mutlak değerini alabilir veya bir sütundaki her bir değerin kare kökünü hesaplayabilirsiniz.  
   
 -   [Karşılaştır](#comparison-operations)  
   
-      **Karşılaştırma** kategorisindeki işlevlerin tümü karşılaştırma için kullanılır: iki sütundaki değerlerin çift yönlü karşılaştırmasını yapabilir veya sütundaki her değeri belirli bir sabitle karşılaştırabilirsiniz. Örneğin, iki veri kümesinde değerlerin aynı olup olmadığını belirlemek için sütunları karşılaştırabilirsiniz. Veya, sayısal bir sütundaki aykırılıkları bulmak için izin verilen en büyük değer gibi bir sabit kullanabilirsiniz.  
+      **Karşılaştırma kategorisindeki işlevlerin** tamamı karşılaştırma için kullanılır: iki sütundaki değerleri çift yönlü bir şekilde karşılaştırın veya bir sütundaki her değeri belirtilen bir sabitle karşılaştırabilirsiniz. Örneğin, değerlerin iki veri kümelerinde aynı olup olmadığını belirleyecek sütunları karşılaştırabilirsiniz. Ya da, bir sayısal sütunda aykırı değerleri bulmak için izin verilen maksimum değer gibi bir sabit kullanabilirsiniz.  
   
 -   [İşlemler](#arithmetic-operations)  
   
-     **İşlemler** kategorisi temel matematiksel işlevleri içerir: toplama, çıkarma, çarpma ve bölme. Sütunlar veya sabitlerle çalışabilirsiniz. Örneğin, A sütunundaki değeri B Sütunu'ndaki değere ekleyebilirsiniz. Veya, A sütunundaki her değerden önceden hesaplanmış bir ortalama gibi bir sabit çıkarabilirsiniz.  
+     **İşlemler** kategorisi temel matematik işlevlerini içerir: toplama, çıkarma, çarpma ve bölme. Sütunlarla veya sabitlerle çalışabilirsiniz. Örneğin, A sütunundaki değeri B sütunundaki değere ekleyebilirsiniz. Ya da, A sütunundaki her bir değerden daha önce hesaplanan bir ortalama gibi bir sabiti çıkartabilir.  
   
 -   [Yuvarlama](#rounding-operations)  
   
-     **Yuvarlama** kategorisi, yuvarlama, tavan, zemin ve kesilme gibi işlemleri çeşitli hassasiyet düzeylerinde gerçekleştirmek için çeşitli işlevler içerir. Hem ondalık hem de tam sayılar için kesinlik düzeyini belirtebilirsiniz.  
+     **Yuvarlama** kategorisi, çeşitli duyarlık düzeylerine yuvarlama, tavan, kat ve kesme gibi işlemler gerçekleştirmeye yönelik çeşitli işlevler içerir. Her iki ondalık ve tam sayı için duyarlık düzeyini belirtebilirsiniz.  
   
--   [Özel](#special-math-functions)  
+-   [Spec](#special-math-functions)  
   
-     **Özel** kategori, özellikle eliptik integraller ve Gaussian hata fonksiyonu gibi veri bilimlerinde kullanılan matematiksel işlevleri içerir.  
+     **Özel** kategori, özellikle eliptik integrals ve Gauss hata işlevi gibi veri bilimi içinde kullanılan matematik işlevlerini içerir.  
   
 -   [Trigonometrik](#trigonometric-functions)  
   
-     **Trigonometrik** kategori tüm standart trigonometrik fonksiyonları içerir. Örneğin, radyanları dereceye dönüştürebilir veya radyanlarda veya derecelerde teğet gibi hesaplama işlevlerini hesaplayabilirsiniz.
-     Bu işlevler unary, yani giriş olarak tek bir değer sütunu alırlar, trigonometrik işlevi uygularlar ve sonuç olarak bir değer sütunu döndürürler.  Bu nedenle, giriş sütununun uygun tür olduğundan ve belirtilen işlem için doğru türde değerler içerdiğinden emin olmanız gerekir.   
+     **Trigonometrik** kategori tüm standart trigonometrik işlevlerini içerir. Örneğin radyan ya da derece cinsinden radyan veya derece cinsinden işlem işlevlerini dönüştürebilirsiniz.
+     Bu işlevler, tek bir değer sütununu giriş olarak alır, trigonometrik işlevi uygular ve sonuç olarak bir değer sütunu döndürür.  Bu nedenle, giriş sütununun uygun tür olduğundan ve belirtilen işlem için doğru değer türünü içerdiğinden emin olmanız gerekir.   
 
-## <a name="how-to-configure-apply-math-operation"></a>Matematik Uygula İşlemi nasıl yapılandırılır?  
+## <a name="how-to-configure-apply-math-operation"></a>Matematik Işlemini Uygula Işlemini yapılandırma  
 
-**Matematik İşlemuygula** modülü, yalnızca sayılar içeren en az bir sütun içeren bir veri kümesi gerektirir. Sayılar ayrık veya sürekli olabilir, ancak bir dize değil, sayısal veri türünde olmalıdır.
+**Matematik Işlemi uygulama** modülü, yalnızca sayı içeren en az bir sütun içeren bir veri kümesi gerektirir. Sayılar ayrık veya sürekli olabilir, ancak sayısal bir veri türünde olmalıdır, dize değil.
 
-Aynı işlemi birden çok sayısal sütuna uygulayabilirsiniz, ancak tüm sütunların aynı veri kümesinde olması gerekir. 
+Aynı işlemi birden çok sayısal sütuna uygulayabilirsiniz, ancak tüm sütunlar aynı veri kümesinde olmalıdır. 
 
-Bu modülün her örneği aynı anda yalnızca bir tür işlem gerçekleştirebilir. Karmaşık matematik işlemleri gerçekleştirmek için, **Matematik İşlemuygula** modülünün birkaç örneğini birbirine zincirlemeniz gerekebilir.  
+Bu modülün her örneği aynı anda yalnızca bir işlem türü gerçekleştirebilir. Karmaşık matematik işlemleri gerçekleştirmek için, **Math işlem** modülünün birkaç örneğini birlikte zincirlemek gerekebilir.  
   
-1.  Ardınıza **Matematik İşlemuygula** modülünüzü ekleyin.
+1.  Işlem hattınızı **matematik işlemi Için uygulama** modülünü ekleyin.
 
-1. En az bir sayısal sütun içeren bir veri kümesibağlayın.  
+1. En az bir sayısal sütun içeren bir veri kümesini bağlayın.  
 
-1.  Hesaplamayı gerçekleştirmek için bir veya daha fazla kaynak sütun seçin.   
+1.  Hesaplamanın gerçekleştirileceği bir veya daha fazla kaynak sütun seçin.   
   
     - Seçtiğiniz herhangi bir sütun sayısal bir veri türü olmalıdır. 
-    - Veri aralığı seçilen matematiksel işlem için geçerli olmalıdır. Aksi takdirde bir hata veya NaN (sayı değil) sonucu oluşabilir. Örneğin, Ln(-1.0) geçersiz bir işlemdir ve .'ın değeri ile `NaN`sonuçlanır.
+    - Veri aralığı, seçilen matematik işlemi için geçerli olmalıdır. Aksi takdirde, bir hata veya NaN (sayı değil) sonucu oluşabilir. Örneğin, LN (-1,0) geçersiz bir işlemdir ve değeriyle sonuçlanır `NaN`.
   
-1.  Gerçekleşecek matematik işlemi **nin türünü** seçmek için **Kategori'** yi tıklatın.
+1.  Gerçekleştirilecek matematik işleminin **türünü** seçmek için **Kategori** ' ye tıklayın.
     
 1. Bu kategorideki listeden belirli bir işlem seçin.
   
 1.  Her işlem türü için gereken ek parametreleri ayarlayın.  
   
-1.  Matematik işleminin nasıl oluşturulmasını istediğinizi belirtmek için **Çıktı modunu** kullanın: 
+1.  Math işleminin nasıl oluşturulmasını istediğinizi belirtmek için **çıkış modu** seçeneğini kullanın: 
 
-    - **Ek.** Giriş olarak kullanılan tüm sütunlar çıktı veri kümesine eklenir, ayrıca matematik işleminin sonuçlarını içeren bir ek sütun eklenir.
-    - **Yerin karşısı.** Giriş olarak kullanılan sütunlarda değerler yeni hesaplanan değerlerle değiştirilir. 
-    - **Sonuç sadece**. Matematik işleminin sonuçlarını içeren tek bir sütun döndürülür.
+    - **Ekle**. Giriş olarak kullanılan tüm sütunlar çıktı veri kümesine dahil edilir ve matematik işleminin sonuçlarını içeren bir ek sütun eklenir.
+    - **InPlace**. Giriş olarak kullanılan sütunlardaki değerler, yeni hesaplanmış değerlerle değiştirilmiştir. 
+    - **Resultonly**. Matematik işleminin sonuçlarını içeren tek bir sütun döndürülür.
   
-1.  Boru hattını gönderin.  
+1.  İşlem hattını gönderme.  
   
 ## <a name="results"></a>Sonuçlar
 
-Sonuçları **Append** veya **ResultOnly** seçeneklerini kullanarak oluşturursanız, döndürülen veri kümesinin sütun başlıkları işlemi ve kullanılan sütunları gösterir. Örneğin, **Eşitler** işleci kullanarak iki sütunu karşılaştırırsanız, sonuçlar aşağıdaki gibi görünür:  
+Sonuçları **append** veya **resultonly** seçeneklerini kullanarak oluşturursanız, döndürülen veri kümesinin sütun başlıkları işlemi ve kullanılan sütunları gösterir. Örneğin, **eşittir** işlecini kullanarak iki sütunu karşılaştırırsanız, sonuçlar şöyle görünür:  
   
--   **Equals(Col2_Col1)**, Col2'yi Col1'e karşı test ettiğinizi gösterir.  
--   **Eşittir (Col2_ $10)**, sütun 2 ile sabit 10 arasında karşılaştırıldığında olduğunu gösterir.  
+-   **Eşittir (Col2_Col1)**, col2 'e göre test edildiğini belirtir.  
+-   **Eşittir (Col2_ $10)** ve sütun 2 ' yi sabit 10 ' a karşılaştırdığını gösterir.  
 
-**Yerinde kullanım** seçeneğini kullansanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun hala tasarımcıda kullanılabilir. Özgün verileri görüntülemek için Sütun [Ekle](add-columns.md) modülünü bağlayabilir ve **Matematik İşlemuygula'nın**çıktısına katılabilirsiniz.  
+**InPlace** seçeneğini kullanıyor olsanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun tasarımcıda hala kullanılabilir. Özgün verileri görüntülemek için, [sütun ekleme](add-columns.md) modülünü bağlanabilir ve **matematik işlemini Uygula işleminin**çıktısına katabilirsiniz.  
     
 ## <a name="basic-math-operations"></a>Temel matematik işlemleri 
 
-**Temel** kategorisindeki işlevler genellikle bir sütundan tek bir değer alır, önceden tanımlanmış işlemi gerçekleştirir ve tek bir değer döndürer. Bazı işlevler için, ikinci bir bağımsız değişken olarak bir sabit veya sütun kümesi belirtebilirsiniz.  
+**Temel** kategorideki işlevler genellikle bir sütundan tek bir değer alır, önceden tanımlanmış işlemi gerçekleştirir ve tek bir değer döndürür. Bazı işlevler için ikinci bir bağımsız değişken olarak bir sabit veya bir sütun kümesi belirtebilirsiniz.  
   
- Azure Machine Learning **Temel** kategorisinde aşağıdaki işlevleri destekler:  
+ Azure Machine Learning, **temel** kategoride aşağıdaki işlevleri destekler:  
 
 ### <a name="abs"></a>Abs
 
-Seçili sütunların mutlak değerini verir.  
+Seçili sütunların mutlak değerini döndürür.  
   
 ### <a name="atan2"></a>Atan2
 
-Dört dörtlük ters teğet verir.  
+Dört Çeyrekli ters tanjant döndürür.  
 
-Nokta koordinatlarını içeren sütunları seçin. X-koordinatına karşılık gelen ikinci bağımsız değişken için bir sabit de belirtebilirsiniz.  
+Nokta koordinatlarını içeren sütunları seçin. X koordinatına karşılık gelen ikinci bağımsız değişken için de bir sabit belirtebilirsiniz.  
 
-Matlab'daki ATAN2 işlevine karşılık gelir.  
+MATLAB içindeki ATAN2 işlevine karşılık gelir.  
 
 ### <a name="conj"></a>Conj
 
-Seçili sütundaki değerler için eşlekap'ı döndürür.  
+Seçilen sütundaki değerlerin eşleniğini döndürür.  
 
-### <a name="cuberoot"></a>Küp Kökü
+### <a name="cuberoot"></a>Külifot
 
-Seçili sütundaki değerler için küp kökünü hesaplar.  
+Seçili sütundaki değerler için Küp kökünü hesaplar.  
 
-### <a name="doublefactorial"></a>DoubleFactorial  
- Seçili sütundaki değerler için çift faktörlü hesaplar. Çift faktöriyel normal faktöriyel fonksiyonun bir uzantısıdır ve x olarak gösterilir!!.  
+### <a name="doublefactorial"></a>Örneksel Solaci  
+ Seçili sütundaki değerler için çift çarpınımını hesaplar. Çift çarpınımı, normal çarpınımı işlevinin bir uzantısıdır ve x!!. olarak gösterilir  
 
-### <a name="eps"></a>Eps
+### <a name="eps"></a>EPS
 
-Geçerli değer ile sonraki en yüksek, çift duyarlıklı sayı arasındaki boşluğun boyutunu döndürür. Matlab'daki EPS işlevine karşılık gelir.  
+Geçerli değer ile bir sonraki en yüksek, çift duyarlıklı sayı arasındaki boşluğun boyutunu döndürür. MATLAB içindeki EPS işlevine karşılık gelir.  
   
 ### <a name="exp"></a>Exp
 
-Seçilen sütundaki değerin gücüne yükseltilen e döndürür. Bu, Excel EXP işleviyle aynıdır.  
+Seçili sütundaki değerin üssüne yükseltilmiş e döndürür. Bu, Excel EXP işleviyle aynıdır.  
 
 ### <a name="exp2"></a>Exp2
 
-T'nin üs içeren değerler sütunu olduğu y = x * 2<sup>t</sup> için çözme, bağımsız değişkenlerin taban-2 üstel sini verir.  
+Y = x * 2<sup>t</sup> için çözüm olan bağımsız değişkenlerin taban 2 üssünü döndürür; burada t, üs içeren değerlerin bir sütunudur.  
 
-**Sütun kümesinde,** t'nin üs değerlerini içeren sütunu seçin.
+**Sütun kümesi**' nde, t değerlerini içeren sütunu seçin.
 
-**Exp2** için, sabit veya başka bir değer sütunu olabilecek ikinci bir bağımsız değişken x belirtebilirsiniz. **İkinci bağımsız değişken türünde,** çarpan ı sabit olarak mı yoksa bir sütundaki değeri mi sağlayacağınızı belirtin.  
+**Exp2** için ikinci bir bağımsız değişken x belirtebilirsiniz ve bu değer bir sabit ya da başka bir sütun olabilir. **İkinci bağımsız değişken türünde**, x çarpanını bir sabit olarak veya bir sütunda bir değer sağlayıp sağlamadığını belirtin.  
 
-Örneğin, hem çarpan hem de {0,1,2,3,4,5} üs için değerleri olan bir sütun seçerseniz, işlev {0, 2, 8, 24, 64 160) döndürür.  
+Örneğin, hem çarpanı hem de üs için değerleri {0,1,2,3,4,5} olan bir sütun seçerseniz, işlev {0, 2, 8, 24, 64 160) döndürür.  
 
-### <a name="expminus1"></a>ExpEksi1 
+### <a name="expminus1"></a>ExpMinus1 
 
 Seçili sütundaki değerler için negatif üs döndürür.  
 
 ### <a name="factorial"></a>Faktöriyel
-Seçili sütundaki değerler için faktöriyel verir.  
+Seçilen sütundaki değerlerin faktöriyelini döndürür.  
 
-### <a name="hypotenuse"></a>Hipotenüs
-Bir tarafın uzunluğunun değerler sütunu olarak belirtildiği bir üçgen için hipotenüs hesaplar ve ikinci tarafın uzunluğu sabit veya iki sütun olarak belirtilir.  
+### <a name="hypotenuse"></a>Hipotenüsü
+Bir kenarın uzunluğunun bir değer sütunu olarak belirtildiği ve ikinci tarafın uzunluğu sabit ya da iki sütun olarak belirtilen bir üçgen için hipotenüsü hesaplar.  
 
 ### <a name="ln"></a>Ln
 
-Seçili sütundaki değerler için doğal logaritma verir.  
+Seçili sütundaki değerler için doğal logaritmayı döndürür.  
 
 ### <a name="lnplus1"></a>LnPlus1
 
-Seçili sütundaki değerler için doğal logaritma artı bir verir.  
+Seçilen sütundaki değerler için doğal logaritmayı artı bir değer döndürür.  
 
 ### <a name="log"></a>Günlük
 
-Belirtilen taban göz önüne alındığında, seçili sütundaki değerlerin günlüğünü verir.  
+Seçilen sütundaki değerlerin günlüğünü belirtilen temel olarak döndürür.  
 
-Temeli (ikinci bağımsız değişken) sabit olarak veya başka bir değer sütunu seçerek belirtebilirsiniz.  
+Temeli (ikinci bağımsız değişkeni) sabit ya da başka bir değer sütunu seçerek belirtebilirsiniz.  
 
 ### <a name="log10"></a>Log10
 
-Seçili sütun için temel 10 logarithm değerlerini döndürür.  
+Seçili sütun için 10 tabanında logaritma değerlerini döndürür.  
 
-### <a name="log2"></a>Günlük2
+### <a name="log2"></a>Log2
 
-Seçili sütun için temel 2 logaitm değerlerini döndürür.  
+Seçili sütun için taban 2 logaritma değerlerini döndürür.  
 
 ### <a name="nthroot"></a>NthRoot
-Belirttiğiniz bir n kullanarak değerin nth kökünü döndürür.  
+Belirttiğiniz n öğesini kullanarak değerin n. kökünü döndürür.  
 
-**ColumnSet** seçeneğini kullanarak kökünü hesaplamak istediğiniz sütunları seçin.  
+**ColumnSet** seçeneğini kullanarak kökü hesaplamak istediğiniz sütunları seçin.  
 
-**İkinci bağımsız değişken türünde,** kökü içeren başka bir sütun seçin veya kök olarak kullanılacak bir sabit belirtin.  
+**İkinci bağımsız değişken türünde**, kökü içeren başka bir sütun seçin veya kök olarak kullanılacak bir sabit belirtin.  
 
-İkinci bağımsız değişken bir sütunsa, sütundaki her değer karşılık gelen satır için n değeri olarak kullanılır. İkinci bağımsız değişken sabitse, İkinci bağımsız **değişken** metin kutusuna n değerini yazın.
-### <a name="pow"></a>Pow
+İkinci bağımsız değişken bir sütundaysa, sütundaki her bir değer, karşılık gelen satır için n değeri olarak kullanılır. İkinci bağımsız değişken bir sabit ise, **ikinci bağımsız değişken** metin kutusuna n değerini yazın.
+### <a name="pow"></a>POW
 
-Seçili sütundaki değerlerin her biri için Y'nin gücüne yükseltilen X'i hesaplar.  
+Seçili olan sütundaki her bir değer için X ' in üssünü hesaplar.  
 
 İlk olarak, **ColumnSet** seçeneğini kullanarak, float olması gereken **tabanı**içeren sütunları seçin.  
 
-**İkinci bağımsız değişken türünde,** üs içeren sütunu seçin veya üs olarak kullanılacak bir sabit belirtin.  
+**İkinci bağımsız değişken türünde**, üs içeren sütunu seçin veya üs olarak kullanılacak bir sabit belirtin.  
 
-İkinci bağımsız değişken bir sütunsa, sütundaki her değer karşılık gelen satırın üsolarak kullanılır. İkinci bağımsız değişken sabitse, **İkinci bağımsız değişken** metin kutusuna üs için değeri yazın.  
+İkinci bağımsız değişken bir sütunse, sütundaki her bir değer karşılık gelen satırın üs değeri olarak kullanılır. İkinci bağımsız değişken bir sabit ise **ikinci bağımsız değişken** metin kutusuna üs değerini yazın.  
 
 ### <a name="sqrt"></a>Sqrt
 
-Seçili sütundaki değerlerin kare kökünü döndürür.  
+Seçilen sütundaki değerlerin kare kökünü döndürür.  
 
 ### <a name="sqrtpi"></a>SqrtPi
 
-Seçili sütundaki her değer için değeri pi ile çarpar ve sonucun kare kökünü döndürür.  
+Seçili sütundaki her bir değer için değeri Pi ile çarpar ve sonucun kare kökünü döndürür.  
 
 ### <a name="square"></a>Square
 
@@ -208,341 +208,341 @@ Seçili sütundaki değerleri kareler.
 
 ## <a name="comparison-operations"></a>Karşılaştırma işlemleri  
 
-İki değer kümesini birbirinibire karşı sınamanız gereken her zaman Azure Machine Learning tasarımcısındaki karşılaştırma işlevlerini kullanın. Örneğin, bir ardışık alanda şu karşılaştırma işlemlerini yapmanız gerekebilir:  
+Azure Machine Learning tasarımcısında karşılaştırma işlevlerini, iki değer kümesini birbirlerine karşı test etmeniz gereken her zaman kullanın. Örneğin, bir işlem hattının bu karşılaştırma işlemlerini yapmanız gerekebilir:  
 
-- Olasılık puanları modeli sütununu eşik değere göre değerlendirin.
-- İki sonuç kümesinin aynı olup olmadığını belirleyin. Farklı olan her satır için, daha fazla işleme veya filtreleme için kullanılabilecek bir FALSE bayrağı ekleyin.  
+- Bir olasılık değerine karşı olasılık puanları modelinin bir sütununu değerlendirin.
+- İki sonuç kümesinin aynı olup olmadığını belirler. Farklı olan her satır için, daha fazla işleme veya filtreleme için kullanılabilecek bir yanlış bayrak ekleyin.  
 
-### <a name="equalto"></a>Equalto
+### <a name="equalto"></a>EqualTo
 
-Değerler aynıysa True döndürür.  
+Değerler aynıysa true döndürür.  
 
 ### <a name="greaterthan"></a>GreaterThan
 
-**Sütun kümesindeki** değerler belirtilen sabitten büyükse veya karşılaştırma sütunundaki karşılık gelen değerlerden büyükse True döndürür.  
+**Sütun kümesindeki** değerler belirtilen sabitten daha büyükse veya karşılaştırma sütunundaki karşılık gelen değerlerden daha büyükse true değerini döndürür.  
 
-### <a name="greaterthanorequalto"></a>Greaterthanorequalto
+### <a name="greaterthanorequalto"></a>GreaterThanOrEqualTo
 
-**Sütun kümesindeki** değerler belirtilen sabitten büyük veya eşitse veya karşılaştırma sütunundaki karşılık gelen değerlerden daha büyük veya eşitse True döndürür.  
+**Sütun kümesindeki** değerler belirtilen sabitten büyük veya buna eşitse true, karşılaştırma sütunundaki karşılık gelen değerlere eşit veya daha büyük bir değer döndürür.  
 
 ### <a name="lessthan"></a>LessThan
 
-**Sütun kümesindeki** değerler belirtilen sabitten küçükse veya karşılaştırma sütunundaki karşılık gelen değerlerden daha azsa True döndürür.  
+**Sütun kümesindeki** değerler belirtilen sabitten küçük veya karşılaştırma sütunundaki karşılık gelen değerlerden daha az olursa true değerini döndürür.  
   
-### <a name="lessthanorequalto"></a>lessthanorequalto
+### <a name="lessthanorequalto"></a>Okarşılandığından Alto Ile Lessme
 
-**Sütun kümesindeki** değerler belirtilen sabitten küçük veya eşitse veya karşılaştırma sütunundaki karşılık gelen değerlerden daha az veya eşitse True döndürür.  
+**Sütun kümesindeki** değerler belirtilen sabitten küçük veya ona eşitse true, karşılaştırma sütunundaki karşılık gelen değerlere eşit veya daha az bir değer döndürür.  
 
-### <a name="notequalto"></a>NotEqualto
+### <a name="notequalto"></a>Not Qualto
 
-**Sütun kümesindeki** değerler sabit veya karşılaştırma sütununa eşit değilse True döndürür ve eşitse False döndürür.  
+**Sütun kümesindeki** değerler sabit veya karşılaştırma sütununa eşit değilse true, eşitse false değerini döndürür.  
 
 ### <a name="pairmax"></a>PairMax
 
-**Sütun kümesindeki** değeri veya sabit veya karşılaştırma sütunundaki değeri daha büyük olan değeri döndürür.  
+Daha büyük değeri döndürür; **sütun kümesindeki** değer veya sabit ya da karşılaştırma sütunundaki değer.  
 
 ### <a name="pairmin"></a>PairMin
 
-Daha küçük olan değeri **verir—Sütun kümesindeki** değer veya sabit veya karşılaştırma sütunundaki değer  
+**Sütun kümesindeki** değer veya sabit ya da karşılaştırma sütunundaki değer olan küçük değeri döndürür  
   
 ##  <a name="arithmetic-operations"></a>Aritmetik işlemler   
 
-Temel aritmetik işlemleri içerir: toplama ve çıkarma, bölme ve çarpma.  İşlemlerin çoğu ikili olduğundan, iki sayı gerektirdiğinden, önce işlemi seçin ve sonra birinci ve ikinci bağımsız değişkenlerde kullanılacak sütun veya sayıları seçin.
+Temel aritmetik işlemleri içerir: toplama ve çıkarma, bölme ve çarpma.  Çoğu işlem ikili olduğundan, iki sayı gerektiren bir işlem seçin ve ardından ilk ve ikinci bağımsız değişkenlerde kullanılacak sütunu veya rakamları seçersiniz.
 
-Bölme ve çıkarma için sütunları seçtiğiniz sıra mantıksız görünebilir; ancak, sonuçları daha kolay anlamak için, sütun başlığı işlem adını ve sütunların kullanıldığı sırayı sağlar.
+Bölme ve çıkarma için sütunları seçme sırası, anlaşılır görünebilir; Ancak, sonuçların anlaşılması daha kolay hale getirmek için, sütun başlığı işlem adını ve sütunların kullanıldığı sırayı sağlar.
 
-İşlem|Sayısal Olarak 1|Sayısal Olarak 2|Sonuç sütunu|Sonuç değeri|
+İşlem|Num1|Num2|Sonuç sütunu|Sonuç değeri|
 ----|----|----|----|----
-|Toplama|1|5|Ekle(Num2_Num1)| 4|
-|Çarpma|1|5|Çoklu(Num2_Num1)|5|
-|Çıkarma|1|5|Çıkarma(Num2_Num1)|4|
-|Çıkarma|0|1|Çıkarma(Num2_Num1)|0|
-|Bölme|1|5|Bölme(Num2_Num1)|5|
-|Bölme|0|1|Bölme(Num2_Num1)|Sonsuz|
+|Toplama|1|5|Ekle (Num2_Num1)| 4|
+|Çarpma|1|5|Birden çok (Num2_Num1)|5|
+|Çıkarma|1|5|Çıkart (Num2_Num1)|4|
+|Çıkarma|0|1|Çıkart (Num2_Num1)|0|
+|Bölme|1|5|Böl (Num2_Num1)|5|
+|Bölme|0|1|Böl (Num2_Num1)|Sonsuz|
 
 ### <a name="add"></a>Ekle
 
-**Sütun kümesini**kullanarak kaynak sütunları belirtin ve ardından bu değerlere **İkinci bağımsız değişkende**belirtilen bir sayı ekleyin.  
+**Sütun kümesini**kullanarak kaynak sütunları belirtin ve ardından bu değerlere **ikinci bağımsız değişkende**belirtilen bir sayı ekleyin.  
 
-İki sütundaki değerleri eklemek için **Sütun kümesini**kullanarak bir sütun veya sütun seçin ve **ardından İkinci bağımsız değişkeni**kullanarak ikinci bir sütun seçin.  
+Değerleri iki sütuna eklemek için, **sütun kümesi**kullanarak bir sütun veya sütun seçin ve ardından **ikinci bağımsız değişkeni**kullanarak ikinci bir sütun seçin.  
 
 ### <a name="divide"></a>Böl
 
-**Sütun kümesindeki** değerleri bir sabit veya İkinci bağımsız **değişkende**tanımlanan sütun değerleriyle böler.  Başka bir deyişle, önce böleni, sonra da kar payını seçersin. Çıktı değeri bölüm değeridir.
+**Sütundaki** değerleri bir sabitine veya **ikinci bağımsız değişkende**tanımlanan sütun değerlerine böler.  Diğer bir deyişle, önce böleni ve ardından Bölüneni seçer. Çıkış değeri, bölüm.
 
 ### <a name="multiply"></a>Çarp
 
-Sütunda belirtilen sabit veya sütun değerleri **ile ayarlanan** değerleri çarpar.  
+Belirtilen sabit veya sütun değerleriyle **ayarlanan sütundaki** değerleri çarpar.  
 
 ### <a name="subtract"></a>Çıkar
 
-**Sütun kümesi** seçeneğini kullanarak farklı bir sütun seçerek, üzerinde çalışacak değerler sütunu *(minuend)* belirtin. Ardından, **İkinci bağımsız değişken** açılır listesini kullanarak çıkarı *(subtrahend)* numarasını belirtin. Sabit veya değerler sütunu seçebilirsiniz.
+**Sütun kümesi** seçeneğini kullanarak, farklı bir sütun seçerek üzerinde çalışılacak değer sütununu belirtin ( *eksilen*). Ardından, **ikinci bağımsız değişken** açılan listesini kullanarak çıkarılacak sayıyı ( *çıkarılan*) belirtin. Bir sabit ya da bir değer sütunu seçebilirsiniz.
 
 ##  <a name="rounding-operations"></a>Yuvarlama işlemleri 
 
-Azure Machine Learning tasarımcısı çeşitli yuvarlama işlemlerini destekler. Birçok işlem için, yuvarlama yaparken kullanılacak hassasiyet miktarını belirtmeniz gerekir. Sabit olarak belirtilen statik bir duyarlık düzeyi kullanabilir veya bir değer sütunundan elde edilen dinamik bir duyarlık değeri uygulayabilirsiniz.  
+Azure Machine Learning tasarımcı, çeşitli yuvarlama işlemlerini destekler. Birçok işlem için, yuvarlama sırasında kullanılacak duyarlık miktarını belirtmeniz gerekir. Sabit olarak belirtilen bir statik duyarlık düzeyi kullanabilir veya bir değer sütunundan elde edilen dinamik bir duyarlık değeri uygulayabilirsiniz.  
 
-- Sabit kullanıyorsanız, **Precision Type'ı** **Sabit** olarak ayarlayın ve ardından basamak sayısını **Sabit Kesinmetin** metin kutusuna tamsayı olarak yazın. Tamsayı olmayan bir yazar yazarsanız, modül hata yapmaz, ancak sonuçlar beklenmeyen olabilir.  
+- Sabit kullanırsanız **duyarlık türünü** **sabit** olarak ayarlayın ve ardından **Sabit duyarlık** metin kutusunda basamak sayısını tamsayı olarak yazın. Tamsayı olmayan bir dize yazarsanız modül bir hata oluşturmaz, ancak sonuçlar beklenmedik olabilir.  
 
-- Veri setinizdeki her satır için farklı bir duyarlık değeri kullanmak için **Precision Type'ı** **ColumnSet'e**ayarlayın ve ardından uygun hassas değerleri içeren sütunu seçin.  
+- Veri kümenizdeki her satır için farklı bir duyarlık değeri kullanmak istiyorsanız **duyarlık türünü** **ColumnSet**olarak ayarlayın ve ardından uygun duyarlık değerlerini içeren sütunu seçin.  
 
 ### <a name="ceiling"></a>Üst sınır
 
-**Sütun kümesindeki**değerlerin tavanını döndürür.  
+**Sütun kümesindeki**değerler için tavan döndürür.  
 
-### <a name="ceilingpower2"></a>TavanGücü2
+### <a name="ceilingpower2"></a>CeilingPower2
 
-Sütun kümesindeki değerler için kareli tavanı **döndürür.**  
+**Sütun kümesindeki**değerler için kare yukarı tavan döndürür.  
 
 ### <a name="floor"></a>Floor
 
-**Sütun kümesindeki**değerlerin zeminini belirtilen duyarlıkiçin döndürür.  
+**Sütun kümesindeki**değerlerin taban değerini belirtilen duyarlığa döndürür.  
 
 ### <a name="mod"></a>Mod
 
-**Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlıka döndürür.  
+**Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
 
 ### <a name="quotient"></a>Üs
 
-**Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlıka döndürür.  
+**Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
 
 ### <a name="remainder"></a>Kalan
 
-**Sütun kümesindeki**değerler için kalan değeri verir.  
+**Sütun kümesindeki**değerler için kalanı döndürür.  
 
-### <a name="rounddigits"></a>Yuvarlak Basamaklar
+### <a name="rounddigits"></a>RoundDigits
 
-4/5 kuralıyla yuvarlatılmış **Sütun kümesindeki**değerleri belirtilen basamak sayısına döndürür.  
+**Sütun kümesindeki**değerleri döndürür ve 4/5 kuralına göre belirtilen basamak sayısına yuvarlanır.  
 
 ### <a name="rounddown"></a>RoundDown
 
-**Sütun kümesindeki**değerleri , belirtilen basamak sayısına yuvarlatılır.  
+**Sütun kümesindeki**değerleri döndürür, belirtilen basamak sayısına yuvarlanır.  
 
 ### <a name="roundup"></a>RoundUp
 
-**Sütun kümesindeki**değerleri, belirtilen basamak sayısına yuvarlanır.  
+**Sütun kümesindeki**değerleri döndürür, belirtilen basamak sayısına yuvarlanır.  
 
-### <a name="toeven"></a>Toeven
+### <a name="toeven"></a>Tobile
 
-**Sütun kümesindeki**değerleri , en yakın tam, çift sayıya yuvarlanır.  
+**Sütun kümesindeki**değerleri döndürür, hatta en yakın tam sayıya yuvarlanır.  
 
-### <a name="toodd"></a>ToOdd
+### <a name="toodd"></a>Totek
 
-**Sütun kümesindeki**değerleri , yuvarlatılmış en yakın tam, tek sayıya döndürür.  
+**Sütun kümesindeki**değerleri döndürür ve en yakın tamsayıya, tek sayıya yuvarlanır.  
 
 ### <a name="truncate"></a>Truncate
 
-Belirtilen kesinlik tarafından izin verilmeyen tüm basamakları kaldırarak **Sütun kümesindeki** değerleri kırar.  
+Belirtilen duyarlık tarafından izin verilmeyen tüm basamakları kaldırarak **sütun kümesindeki** değerleri keser.  
   
-## <a name="special-math-functions"></a>Özel matematik fonksiyonları
+## <a name="special-math-functions"></a>Özel matematik işlevleri
 
-Bu kategori, genellikle veri biliminde kullanılan özel matematiksel işlevleri içerir. Aksi belirtilmedikçe, işlev unary ve seçili sütun veya sütunlarda her değer için belirtilen hesaplama döndürür.  
+Bu kategori, genellikle veri bilimi 'nde kullanılan özel matematik işlevlerini içerir. Aksi belirtilmediği takdirde, işlev birli olur ve seçilen sütun veya sütunlardaki her bir değer için belirtilen hesaplamayı döndürür.  
 
 ### <a name="beta"></a>Beta
 
-Euler'in beta işlevinin değerini verir.  
+Euler 'ın Beta işlevinin değerini döndürür.  
 
-### <a name="ellipticintegrale"></a>EliptikIntegralE
-Tamamlanmamış eliptik integralin değerini verir.  
+### <a name="ellipticintegrale"></a>EllipticIntegralE
+Tamamlanmamış eliptik tamsayısı değerini döndürür.  
   
 
-### <a name="ellipticintegralk"></a>EliptikIntegralK
+### <a name="ellipticintegralk"></a>EllipticIntegralK
 
-Tam eliptik integralin (K) değerini verir.  
+Tam eliptik integral (K) değerini döndürür.  
 
-### <a name="erf"></a>Erf
+### <a name="erf"></a>İşlevi
 
-Hata işlevinin değerini verir.  
+Hata işlevinin değerini döndürür.  
 
-Hata işlevi (Gauss hata işlevi olarak da adlandırılır) difüzyonu tanımlamak için olasılık olarak kullanılan sigmoid şeklin özel bir fonksiyonudur.  
+Hata işlevi (Gauss Error işlevi olarak da bilinir), bir, diffıd 'nin tanımlanmasında kullanılan sigmoid şeklinin özel bir işlevidir.  
 
 ### <a name="erfc"></a>Erfc
 
-Tamamlayıcı hata işlevinin değerini verir.  
+Tamamlayıcı hata işlevinin değerini döndürür.  
 
-Erfc 1 – erf(x) olarak tanımlanır.  
+Erfc, 1 – HATAİŞLEV (x) olarak tanımlanır.  
 
-### <a name="erfscaled"></a>ErfÖlçekli
+### <a name="erfscaled"></a>Erfölçekli
 
-Ölçeklenen hata işlevinin değerini verir.  
+Ölçeklendirilmiş hata işlevinin değerini döndürür.  
 
-Hata işlevinin ölçeklenmiş sürümü aritmetik akışı önlemek için kullanılabilir.  
+Hata işlevinin ölçeklendirilen sürümü, aritmetik sınırın önüne geçmek için kullanılabilir.  
 
-### <a name="erfinverse"></a>ErfInverse
+### <a name="erfinverse"></a>Erfınverse
 
-Ters erf işlevinin değerini verir.  
+Ters HATAİŞLEV işlevinin değerini döndürür.  
 
-### <a name="exponentialintegralein"></a>Üstel IntegralEin
+### <a name="exponentialintegralein"></a>Üs Alıntegralet
 
-Üstel integral Ei değerini verir.  
+Üstel integral ei değerini döndürür.  
 
 ### <a name="gamma"></a>Gama
 
-Gama fonksiyonunun değerini verir.  
+Gama işlevinin değerini döndürür.  
 
-### <a name="gammaln"></a>Gamaln
+### <a name="gammaln"></a>GAMALN
 
-Gama fonksiyonunun doğal logaritmasını verir.  
+Gama işlevinin doğal logaritmasını döndürür.  
 
 ### <a name="gammaregularizedp"></a>GammaRegularizedP
 
-Düzenli olarak tamamlanmamış gama fonksiyonunun değerini verir.  
+Regularized eksik gama işlevinin değerini döndürür.  
 
-Bu işlev, sabit veya değerler sütunu olarak sağlanabilir ikinci bir bağımsız değişken alır.  
+Bu işlev, bir sabit veya bir değer sütunu olarak sağlanılabilen ikinci bir bağımsız değişken alır.  
 
-### <a name="gammaregularizedpinverse"></a>GammaRegularizedPInverse
+### <a name="gammaregularizedpinverse"></a>Gammaregularizedpters
 
-Ters düzenli olarak yapılan eksik gama fonksiyonunun değerini verir.  
+Ters regularized tamamlanmamış gama işlevinin değerini döndürür.  
 
-Bu işlev, sabit veya değerler sütunu olarak sağlanabilir ikinci bir bağımsız değişken alır.  
+Bu işlev, bir sabit veya bir değer sütunu olarak sağlanılabilen ikinci bir bağımsız değişken alır.  
 
 ### <a name="gammaregularizedq"></a>GammaRegularizedQ  
 
-Düzenli olarak tamamlanmamış gama fonksiyonunun değerini verir.  
+Regularized eksik gama işlevinin değerini döndürür.  
 
-Bu işlev, sabit veya değerler sütunu olarak sağlanabilir ikinci bir bağımsız değişken alır.  
+Bu işlev, bir sabit veya bir değer sütunu olarak sağlanılabilen ikinci bir bağımsız değişken alır.  
 
-### <a name="gammaregularizedqinverse"></a>GammaRegularizedQInverse
+### <a name="gammaregularizedqinverse"></a>Gammaregularizedqters
 
-Ters jeneralize edilmiş normalleştirilmiş eksik gama fonksiyonunun değerini verir.
+Ters Genelleştirilmiş regularized tamamlanmamış gama işlevinin değerini döndürür.
 
-Bu işlev, sabit veya değerler sütunu olarak sağlanabilir ikinci bir bağımsız değişken alır.  
+Bu işlev, bir sabit veya bir değer sütunu olarak sağlanılabilen ikinci bir bağımsız değişken alır.  
 
-### <a name="polygamma"></a>Poligama
+### <a name="polygamma"></a>Poligamma
 
-Poligama fonksiyonunun değerini verir.  
+Polygama işlevinin değerini döndürür.  
 
-Bu işlev, sabit veya değerler sütunu olarak sağlanabilir ikinci bir bağımsız değişken alır.
+Bu işlev, bir sabit veya bir değer sütunu olarak sağlanılabilen ikinci bir bağımsız değişken alır.
 
-##  <a name="trigonometric-functions"></a>Trigonometrik fonksiyonlar 
+##  <a name="trigonometric-functions"></a>Trigonometrik işlevleri 
 
-Bu kategori de önemli trigonometrik ve ters trigonometrik fonksiyonların çoğunu içerir. Tüm trigonometrik işlevler unary ve ek bağımsız değişkenler gerektirir.  
+Bu kategori, önemli trigonometrik ve ters kullanılan ölçüm işlevlerinin çoğunu Içerir. Tüm Trigonometrik İşlevler birli ve ek bağımsız değişken gerektirmez.  
 
 ### <a name="acos"></a>Acos
 
-Sütun değerleri için arccosine hesaplar.  
+Sütun değerleri için arkkosinüsünü hesaplar.  
 
-### <a name="acosdegree"></a>AcosDerece
+### <a name="acosdegree"></a>Acosderece
 
-Sütun değerlerinin arccosine derece olarak hesaplar.  
+Sütun değerlerinin ark kosinüsünü derece cinsinden hesaplar.  
 
 ### <a name="acosh"></a>Acosh
 
-Sütun değerlerinin hiperbolik arckozini hesaplar.  
+Sütun değerlerinin hiperbolik ark kosinüsünü hesaplar.  
 
 ### <a name="acot"></a>Acot
 
-Sütun değerlerinin arccotant'ını hesaplar.  
+Sütun değerlerinin arckotanjant değerini hesaplar.  
 
-### <a name="acotdegrees"></a>AcotDegrees
+### <a name="acotdegrees"></a>Acotderece
 
-Sütun değerlerinin arccotant'ını derece olarak hesaplar.  
+Sütun değerlerinin, derece cinsinden arckotanjant değerini hesaplar.  
 
 ### <a name="acoth"></a>Acoth
 
-Sütun değerlerinin hiperbolik arccotant'ını hesaplar.  
+Sütun değerlerinin hiperbolik arckotanjant değerini hesaplar.  
 
-### <a name="acsc"></a>Acsc
+### <a name="acsc"></a>ACSC
 
-Sütun değerlerinin arkentot'unu hesaplar.  
+Sütun değerlerinin arckosekant değerini hesaplar.  
 
-### <a name="acscdegrees"></a>AcscDegrees
+### <a name="acscdegrees"></a>Acscderece
 
-Sütun değerlerinin arkentot'unu derece olarak hesaplar.  
-### <a name="asec"></a>Asec
+Sütun değerlerinin, derece cinsinden arckosekant değerini hesaplar.  
+### <a name="asec"></a>ASEC
 
-Sütun değerlerinin yaylı değerini hesaplar.  
+Sütun değerlerinin arcsekant değerini hesaplar.  
 
-### <a name="asecdegrees"></a>AsecDegrees
+### <a name="asecdegrees"></a>Asecderece
 
-Sütun değerlerinin yay değerini derece olarak hesaplar.  
+Sütun değerlerinin, derece cinsinden arcsekant değerini hesaplar.  
 
-### <a name="asech"></a>Asech
+### <a name="asech"></a>AsecH
 
-Sütun değerlerinin hiperbolik yaylarını hesaplar.  
+Sütun değerlerinin hiperbolik arcsekant değerini hesaplar.  
 
 ### <a name="asin"></a>Asin
 
-Sütun değerlerinin arcsine'sini hesaplar.  
+Sütun değerlerinin arksinüsünü hesaplar.  
 
 ### <a name="asindegrees"></a>AsinDegrees
 
-Sütun değerlerinin yay larını derece olarak hesaplar.  
+Sütun değerlerinin derece cinsinden arksinüsünü hesaplar.  
 
-### <a name="asinh"></a>Asinh
+### <a name="asinh"></a>ASİNH
 
-Sütun değerleri için hiperbolik arcsine hesaplar.  
+Sütun değerleri için hiperbolik ark sinüsünü hesaplar.  
 
 ### <a name="atan"></a>Atan
 
-Sütun değerlerinin arktantını hesaplar.  
+Sütun değerlerinin arktanjantını hesaplar.  
 
 ### <a name="atandegrees"></a>AtanDegrees
 
-Sütun değerlerinin arktantını derece olarak hesaplar.  
+Sütun değerlerinin derece cinsinden ark tanjantını hesaplar.  
 
-### <a name="atanh"></a>Atanh
+### <a name="atanh"></a>ATANH
 
-Sütun değerlerinin hiperbolik arctant'ını hesaplar.  
+Sütun değerlerinin hiperbolik ark tanjantını hesaplar.  
 
 ### <a name="cos"></a>Cos
 
-Sütun değerlerinin kosinüslerini hesaplar.  
+Sütun değerlerinin kosinüsünü hesaplar.  
 
-### <a name="cosdegrees"></a>CosDegrees
+### <a name="cosdegrees"></a>Cosdereceler
 
-Sütun değerleri için kosinüsün derece olarak hesaplar.  
+Sütun değerlerinin derece cinsinden kosinüsünü hesaplar.  
 
 ### <a name="cosh"></a>Cosh
 
-Sütun değerleri için hiperbolik kosinüs hesaplar.  
+Sütun değerleri için hiperbolik kosinüsü hesaplar.  
 
 ### <a name="cot"></a>Cot
 
-Sütun değerleri için kotanjant hesaplar.  
+Sütun değerleri için kotanjantı hesaplar.  
 
-### <a name="cotdegrees"></a>Karyola Dereceleri
+### <a name="cotdegrees"></a>Cotderece
 
-Sütun değerleri için kotanjantı derece olarak hesaplar.  
+Sütun değerleri için kotanjantı derece cinsinden hesaplar.  
 
-### <a name="coth"></a>Koth
-Sütun değerleri için hiperbolik kotanjant hesaplar.  
+### <a name="coth"></a>Coth
+Sütun değerleri için hiperbolik kotanjantı hesaplar.  
 
-### <a name="csc"></a>Csc
+### <a name="csc"></a>CSC
 
-Sütun değerleri için cosecant hesaplar.  
+Sütun değerleri için kosekant hesaplar.  
 
-### <a name="cscdegrees"></a>CscDereceler
+### <a name="cscdegrees"></a>Cscdereceler
 
-Sütun değerlerinin cosecant'ını derece olarak hesaplar.  
+Sütun değerlerinin değerini derece cinsinden hesaplar.  
 
 ### <a name="csch"></a>Csch
 
-Sütun değerleri için hiperbolik cosecant hesaplar.  
+Sütun değerleri için hiperbolik kovaryansı hesaplar.  
 
-### <a name="degreestoradians"></a>DereceToRadians
+### <a name="degreestoradians"></a>Degreestoradyan
 
 Dereceyi radyana dönüştürür.  
 
 ### <a name="sec"></a>Sn
 
-Sütun değerlerinin secantını hesaplar.  
+Sütun değerlerinin Sekant değerini hesaplar.  
 
-### <a name="asecdegrees"></a>aSecDegrees
+### <a name="asecdegrees"></a>Asecderece
 
-Sütun değerlerinin secantını derece olarak hesaplar.  
+Sütun değerleri için, derece cinsinden Sekant değerini hesaplar.  
 
-### <a name="asech"></a>ASech
+### <a name="asech"></a>aSech
 
-Sütun değerlerinin hiperbolik secantını hesaplar.  
+Sütun değerlerinin Hiperbolik Sekant değerini hesaplar.  
 
 ### <a name="sign"></a>İşaret
 
-Sütun değerlerinin işaretini verir.  
+Sütun değerlerinin işaretini döndürür.  
 
 ### <a name="sin"></a>Sin
 
-Sütun değerlerinin sinüslerini hesaplar.  
+Sütun değerlerinin sinüsünü hesaplar.  
 
 ### <a name="sinc"></a>Sinc
 
@@ -550,39 +550,39 @@ Sütun değerlerinin sinüs-kosinüs değerini hesaplar.
 
 ### <a name="sindegrees"></a>SinDegrees
 
-Sütun değerlerinin sinüslerini derece olarak hesaplar.  
+Sütun değerleri için, derece cinsinden sinüsü hesaplar.  
 
 ### <a name="sinh"></a>Sinh
 
-Sütun değerlerinin hiperbolik sinüslerini hesaplar.  
+Sütun değerlerinin hiperbolik sinüsünü hesaplar.  
 
 ### <a name="tan"></a>Tan
 
-Sütun değerlerinin teğetini hesaplar.  
+Sütun değerlerinin tanjantını hesaplar.  
 
-### <a name="tandegrees"></a>TanDegrees
+### <a name="tandegrees"></a>Tandereceler
 
-Argüman için teğeti derece olarak hesaplar.  
+Bağımsız değişken için tanjantı derece cinsinden hesaplar.  
 
 ### <a name="tanh"></a>Tanh
 
-Sütun değerlerinin hiperbolik teğetini hesaplar.  
+Sütun değerlerinin hiperbolik tanjantını hesaplar.  
   
 ## <a name="technical-notes"></a>Teknik notlar
 
-İkinci işleç olarak birden fazla sütun seçerken dikkatli olun. İşlemin tüm sütunlara sabit ekleme gibi basit olup olmadığını anlamak kolaydır. 
+İkinci operatör olarak birden fazla sütun seçerken dikkatli olun. Sonuçların, tüm sütunlara bir sabit ekleme gibi basit olduğunu anlamak kolaydır. 
 
-Veri kümenizde birden çok sütun olduğunu varsayalım ve veri kümesini kendisine ekleyin. Sonuçlarda, her sütun kendisine aşağıdaki gibi eklenir:  
+Veri kümenizin birden çok sütunu olduğunu varsayın ve veri kümesini kendi kendine eklersiniz. Sonuçlarda her bir sütun kendine aşağıdaki gibi eklenir:  
   
-|Sayısal Olarak 1|Sayısal Olarak 2|Sayısal Tsük3|Ekle(Num1_Num1)|Ekle(Num2_Num2)|Ekle(Num3_Num3)|
+|Num1|Num2|Num3|Ekle (Num1_Num1)|Ekle (Num2_Num2)|Ekle (Num3_Num3)|
 |----|----|----|----|----|----|
 |1|5|2|2|10|4|
 |2|3|-1|4|6|-2|
 |0|1|-1|0|2|-2|
 
-Daha karmaşık hesaplamalar gerçekleştirmeniz gerekiyorsa, **Matematik İşlemi Uygula'nın**birden çok örneğini zincirleyebilirsiniz. Örneğin, **Matematik İşlemi Uygula'nın**bir örneğini kullanarak iki sütun ekleyebilir ve ardından ortalamayı elde etmek için toplamı sabite bölmek için **Matematik İşlemi Uygula'nın** başka bir örneğini kullanabilirsiniz.  
+Daha karmaşık hesaplamalar yapmanız gerekiyorsa, **matematik Işlemi Uygula**işleminin birden çok örneğini zincirleyebilirsiniz. Örneğin, **matematik Işlemi Uygula**' nın bir örneğini kullanarak iki sütun ekleyebilir ve sonra da ortalaması elde etmek üzere toplamı bir sabite bölmek Için **matematik işlemi Uygula** ' nın başka bir örneğini kullanabilirsiniz.  
   
-Alternatif olarak, SQL, R veya Python komut dosyasını kullanarak tüm hesaplamaları aynı anda yapmak için aşağıdaki modüllerden birini kullanın:
+Alternatif olarak, SQL, R veya Python betiği kullanarak tüm hesaplamaları tek seferde yapmak için aşağıdaki modüllerden birini kullanın:
  
 + [R Betiği yürütme](execute-r-script.md)
 + [Python Betiği Yürütme](execute-python-script.md)
@@ -590,4 +590,4 @@ Alternatif olarak, SQL, R veya Python komut dosyasını kullanarak tüm hesaplam
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

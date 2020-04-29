@@ -1,7 +1,7 @@
 ---
-title: 'İthalat Verileri: Modül Referansı'
+title: 'İçeri aktarma verileri: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Mevcut bulut veri hizmetlerinden bir makine öğrenimi boru hattına veri yüklemek için Azure Machine Learning'deki Veri Alma modüllerini nasıl kullanacağınızı öğrenin.
+description: Mevcut bulut veri hizmetlerinden bir makine öğrenimi ardışık düzenine veri yüklemek için Azure Machine Learning veri alma modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,83 +10,83 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456208"
 ---
-# <a name="import-data-module"></a>İthalat Veri modülü
+# <a name="import-data-module"></a>Veri modülünü içeri aktarma
 
-Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
-Mevcut bulut veri hizmetlerinden bir makine öğrenme ardışık hattına veri yüklemek için bu modülü kullanın. 
+Mevcut bulut veri hizmetlerinden bir makine öğrenimi ardışık düzenine veri yüklemek için bu modülü kullanın. 
 
 > [!Note]
-> Bu modül tarafından sağlanan tüm işlevler, iş sapı açılış **sayfasındaki datastore** ve **veri kümeleri** tarafından yapılabilir. Veri izleme gibi ek özellikler içeren **veri depolama** ve **veri kümesini** kullanmanızı öneririz. Daha fazla bilgi için [veriye nasıl erişilir](../how-to-access-data.md) ve Datasets makalesini [nasıl kaydedebilirsiniz makalesine](../how-to-create-register-datasets.md) bakın.
-> Bir veri kümesini kaydettikten sonra, tasarımcı arabirimindeki **Veri Kümeleri** -> **My Datasets** kategorisinde bulabilirsiniz. Bu modül tanıdık bir deneyim için Studio (klasik) kullanıcıları için ayrılmıştır. 
+> Bu modül tarafından sunulan tüm işlevler, çalışma alanı giriş sayfasında **veri deposu** ve **veri kümeleri** tarafından yapılabilir. Veri izleme gibi ek özellikler içeren veri **deposu** ve veri **kümesi** kullanmanızı öneririz. Daha fazla bilgi edinmek için bkz. [verilere erişme ve veri](../how-to-access-data.md) [kümelerini kaydetme](../how-to-create-register-datasets.md) makalesi.
+> Bir veri kümesini kaydettikten sonra, tasarımcı **arabirimindeki DataSet** -> **My** DataSet kategorisinden bulabilirsiniz. Bu modül, tanıdık bir deneyim için Studio (klasik) kullanıcıları için ayrılmıştır. 
 >
 
-**Veri Alma** modülü desteği aşağıdaki kaynaklardan alınan verileri okuyun:
+**Veri Içeri aktarma** modülü aşağıdaki kaynaklardan gelen verileri oku destekler:
 
-- HTTP üzerinden URL
-- [**Datastores**](../how-to-access-data.md)aracılığıyla Azure bulut depolamaları)
-    - Azure Blob Konteyner
+- HTTP aracılığıyla URL
+- Azure bulut, [**veri depoları**](../how-to-access-data.md)üzerinden depolar)
+    - Azure Blob kapsayıcısı
     - Azure Dosya Paylaşımı
     - Azure Data Lake
-    - Azure Veri Gölü Gen2
+    - Azure Data Lake Gen2
     - Azure SQL Veritabanı
     - Azure PostgreSQL    
 
-Bulut depolamayı kullanmadan önce Azure Machine Learning çalışma alanınızda bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için [verilere nasıl erişilir'](../how-to-access-data.md)e bakın. 
+Bulut depolama 'yı kullanmadan önce, Azure Machine Learning çalışma alanınıza önce bir veri deposu kaydetmeniz gerekir. Daha fazla bilgi için bkz. [verilere erişme](../how-to-access-data.md). 
 
-İstediğiniz verileri tanımladıktan ve kaynağa bağlandıktan sonra, **[İçe Aktar Verileri](./import-data.md)** içerdiği değerleri temel alan her sütunun veri türünü çıkartır ve verileri tasarımcı ardınıza yükler. **Alma Verileri** çıktısı, herhangi bir tasarımcı ardışık alanıyla kullanılabilen bir veri kümesidir.
+İstediğiniz verileri tanımladıktan ve kaynağa bağlandıktan sonra, **[verileri Içeri aktarın](./import-data.md)** her bir sütunun veri türünü içerdiği değerlere göre alır ve verileri Tasarımcı işlem hattınızla yükler. **Içeri aktarma verilerinin** çıktısı, herhangi bir tasarımcı işlem hattı ile kullanılabilen bir veri kümesidir.
 
-Kaynak verileriniz değişirse, Veri Kümesini yenileyebilir ve [Veri Aktar'ı](./import-data.md)yeniden çalıştırarak yeni veriler ekleyebilirsiniz.
+Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı yeniden çalıştırarak veri kümesini yenileyebilir ve yeni veri ekleyebilirsiniz.
 
-## <a name="how-to-configure-import-data"></a>Alma Verileri nasıl yapılandırılır?
+## <a name="how-to-configure-import-data"></a>Içeri aktarma verilerini yapılandırma
 
-1. Veri **Aktar'ı** boru hattınıza ekleyin. Bu modülü tasarımcıda **Veri Girişi ve Çıktısı** kategorisinde bulabilirsiniz.
+1. **Veri alım** modülünü işlem hattınızı ekleyin. Bu modülü, tasarımcıda **veri girişi ve çıkış** kategorisinde bulabilirsiniz.
 
 1. Sağ bölmeyi açmak için modülü seçin.
 
-1. **Veri kaynağını**seçin ve veri kaynağı türünü seçin. Bu HTTP veya datastore olabilir.
+1. **Veri kaynağı**' nı seçin ve veri kaynağı türünü seçin. HTTP veya veri deposu olabilir.
 
-    Datastore'u seçerseniz, Azure Machine Learning çalışma alanınıza zaten kaydedilmiş varolan veri depolarını seçebilir veya yeni bir veri deposu oluşturabilirsiniz. Ardından veri deposunda aktak etmek için veri yolunu tanımlayın. **Gözat Yolu'nu** ![tıklatarak yola kolayca göz atabilirsiniz.](media/module/import-data-path.png)
+    Veri deposu ' nu seçerseniz, Azure Machine Learning çalışma alanınıza zaten kayıtlı olan mevcut veri depolarını seçebilirsiniz veya yeni bir veri deposu oluşturabilirsiniz. Ardından veri deposuna aktarılacak verilerin yolunu tanımlayın. Yola **gözatmaya yol** ![Al-veri-yolu öğesine tıklayarak kolayca gidebilirsiniz](media/module/import-data-path.png)
 
-1. Eklemek istediğiniz sütunları filtrelemek için önizleme şemasını seçin. Ayrışma seçeneklerinde Delimiter gibi gelişmiş ayarları da tanımlayabilirsiniz.
+1. Dahil etmek istediğiniz sütunları filtrelemek için Önizleme şemasını seçin. Ayrıca, ayrıştırma seçeneklerinde sınırlayıcı gibi gelişmiş ayarları tanımlayabilirsiniz.
 
-    ![alma-veri önizleme](media/module/import-data.png)
+    ![İçeri aktarma-veri önizleme](media/module/import-data.png)
 
-1. Onay kutusu, **Çıktıyı Yeniden Oluşturma**, çalışma zamanında çıktıyı yeniden oluşturmak için modülü n için çalıştırıp çalıştırmayacağına karar verir. 
+1. Onay kutusu, **çıktıyı yeniden oluştur**, çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
 
-    Varsayılan olarak seçili değil, yani modül daha önce aynı parametrelerle yürütülmüşse, sistem çalışma süresini azaltmak için son çalıştırmadaki çıktıyı yeniden kullanır. 
+    Bu, varsayılan olarak seçili değildir, bu da modülün aynı parametrelerle daha önce yürütülmesi durumunda sistemin, çalışma süresini azaltmak için son çalıştırışınızda çıktıyı yeniden kullanacağı anlamına gelir. 
 
-    Seçilirse, sistem çıkışı yeniden oluşturmak için modülü yeniden çalıştıracaktır. Bu nedenle, depolama alanında temel veriler güncelleştirildiğinde bu seçeneği belirleyin, en son verileri almaya yardımcı olabilir.
+    Seçilirse, sistem çıktıyı yeniden oluşturmak için modülü yeniden yürütür. Bu nedenle, depolama alanındaki temel alınan veriler güncelleştirilirken bu seçeneği belirleyin. Bu seçenek, en son verileri almaya yardımcı olabilir.
 
 
-1. Boru hattını gönderin.
+1. İşlem hattını gönderme.
 
-    Veri Alma verileri tasarımcıya yüklendiğinde, her sütunun veri türünü içerdiği değerlere göre çıkartır, sayısal veya kategorik.
+    Veri Içeri aktarma verileri tasarımcıya yüklerken, her bir sütunun veri türünü, sayısal veya kategorik, içerdiği değerlere göre alır.
 
-    Üstbilgi varsa, çıktı veri kümesinin sütunlarını adlandırmak için üstbilgi kullanılır.
+    Bir üst bilgi varsa, çıkış veri kümesinin sütunlarını adlandırmak için üst bilgi kullanılır.
 
-    Verilerde varolan sütun üstbilgileri yoksa, col1, col2 biçimi kullanılarak yeni sütun adları oluşturulur,... , coln*.
+    Verilerde mevcut sütun başlıkları yoksa, yeni sütun adları Sütun1, col2 biçimi kullanılarak üretilir,... , Coln *.
 
 ## <a name="results"></a>Sonuçlar
 
-Alma işlemi tamamlandığında, çıktı veri kümesini tıklatın ve verilerin başarılı bir şekilde içeri mi alındığını görmek için **Visualize'ı** seçin.
+İçeri aktarma tamamlandığında, çıktı veri kümesine tıklayın ve verilerin başarıyla içeri aktarılmadığını görmek için **Görselleştir** ' i seçin.
 
-Verileri yeniden kullanmak için kaydetmek istiyorsanız, ardışık hatlar her çalıştırılınca yeni bir veri kümesi almak yerine, modülün sağ panelindeki **Çıktılar** sekmesinin altındaki **Kayıt veri kümesi** simgesini seçin. Veri kümesi için bir ad seçin. Kaydedilen veri kümesi, tasarruf sırasında verileri korur, veri hattı ndaki veri kümesi değişse bile, ardışık iş aktarım yeniden çalıştırıldığında veri kümesi güncelleştirilemiyor. Bu, verilerin anlık görüntülerini almak için yararlı olabilir.
+İşlem hattı her çalıştırıldığında verilerin yeni bir kümesini içeri aktarmak yerine yeniden kullanım için kaydetmek istiyorsanız, modülün sağ panelindeki **çıktılar** sekmesinin altında bulunan veri **kümesini kaydet** simgesini seçin. Veri kümesi için bir ad seçin. Kaydedilen veri kümesi, kaydetme sırasında verileri korur, işlem hattının veri kümesi değişse bile, işlem hattı yeniden çalıştırıldığında veri kümesi güncellenmez. Bu, verilerin anlık görüntülerini almak için yararlı olabilir.
 
-Verileri aldıktan sonra, modelleme ve analiz için bazı ek hazırlıklar gerekebilir:
+Verileri içeri aktardıktan sonra, modelleme ve analiz için bazı ek hazırlıklar gerekebilir:
 
-- Sütun adlarını değiştirmek, bir sütunu farklı bir veri türü olarak işlemek veya bazı sütunların etiket veya özellik olduğunu belirtmek için [Meta Verileri Edit'i](./edit-metadata.md) kullanın.
+- Sütun adlarını değiştirmek, bir sütunu farklı bir veri türü olarak işlemek veya bazı sütunların Etiketler ya da Özellikler olduğunu göstermek için [meta verileri Düzenle](./edit-metadata.md) ' yi kullanın.
 
-- Dönüştürme veya modellemede kullanmak üzere sütun alt kümesini seçmek için [Veri Kümesi'nde Sütunları Seç'i](./select-columns-in-dataset.md) kullanın. Dönüştürülen veya kaldırılan sütunlar, [Sütun Ekle](./add-columns.md) modülü kullanılarak kolayca orijinal veri kümesine yeniden katılabilir.  
+- Modelde dönüştürülecek veya kullanılacak sütunların bir alt kümesini seçmek için [veri kümesindeki sütunları seç '](./select-columns-in-dataset.md) i kullanın. Dönüştürülen veya kaldırılan sütunlar, [sütun Ekle](./add-columns.md) modülü kullanılarak, özgün veri kümesine kolayca yeniden katılabilir.  
 
-- Veri kümesini bölmek, örnekleme gerçekleştirmek veya üst n satırlarını almak için [Bölüm ve Örnek'i](./partition-and-sample.md) kullanın.
+- Veri kümesini bölmek, örnekleme gerçekleştirmek veya ilk n satırı almak için [bölüm ve örnek](./partition-and-sample.md) kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

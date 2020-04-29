@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Küçük Geliştirmelerle Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Etkin Dizin ve Küçük Geliştirmeler arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: küçük Iyileştirmelerle Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve küçük Iyileştirmeler arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,235 +16,235 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67090371"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Öğretici: Küçük Geliştirmelerle Azure Active Directory tümleştirmesi
+# <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Öğretici: küçük geliştirmelerle Azure Active Directory tümleştirme
 
-Bu eğitimde, Küçük Geliştirmeleri Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Küçük Geliştirmeleri Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, küçük geliştirmeleri Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Azure AD ile küçük Iyileştirmeleri tümleştirmek aşağıdaki avantajları sağlar:
 
-* Küçük Geliştirmelere erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Küçük Geliştirmelerde (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de küçük geliştirmelere erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla küçük geliştirmelere (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Küçük Geliştirmelerle yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini küçük geliştirmelerle yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Küçük Geliştirmeler tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Küçük Iyileştirmeler çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Küçük İyileştirmeler **SP** başlatılan SSO destekler
+* Küçük Iyileştirmeler **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-small-improvements-from-the-gallery"></a>Galeriden Küçük Geliştirmeler Ekleme
+## <a name="adding-small-improvements-from-the-gallery"></a>Galeriden küçük Iyileştirmeler ekleme
 
-Küçük Geliştirmelerin Azure AD'ye entegrasyonunu yapılandırmak için, galerideki Küçük Geliştirmeleri yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Küçük geliştirmelerin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize küçük geliştirmeler eklemeniz gerekir.
 
-**Galeriden Küçük Geliştirmeler eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden küçük geliştirmeler eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Küçük Geliştirmeler**yazın, sonuç panelinden **Küçük Geliştirmeler'i** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **küçük iyileştirmeler**yazın, sonuç panelinden **küçük geliştirmeler** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesindeküçük iyileştirmeler](common/search-new-app.png)
+     ![Sonuçlar listesinde küçük geliştirmeler](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Küçük Geliştirmelerle yapılandırıp test esinizsiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure REKLAM kullanıcısı ile Küçük Geliştirmeler'deki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayalı küçük geliştirmelerle yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve küçük geliştirmelerle ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD oturumlarını Küçük Geliştirmelerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı küçük geliştirmelerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Küçük Geliştirmeleri Tek Oturum](#configure-small-improvements-single-sign-on)** Açma'yı yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Küçük Geliştirmeler test kullanıcısı oluşturun](#create-small-improvements-test-user)** - Kullanıcının Azure AD gösterimine bağlı Küçük Geliştirmeler'de Britta Simon'ın bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Küçük geliştirmeleri yapılandırma çoklu oturum](#configure-small-improvements-single-sign-on)** açma-uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanıcının Azure AD gösterimine bağlı küçük geliştirmelerle bir Britta Simon 'a sahip olmak için **[küçük geliştirmeler test kullanıcısı oluşturun](#create-small-improvements-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini Küçük Geliştirmelerle yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı küçük geliştirmelerle yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında,](https://portal.azure.com/) **Küçük Geliştirmeler** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **küçük iyileştirmeler** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Küçük Geliştirmeler Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![Küçük Iyileştirmeler etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
 
-    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<subdomain>.small-improvements.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.small-improvements.com`
 
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<subdomain>.small-improvements.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.small-improvements.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Küçük Geliştirmeler İstemci destek ekibine](mailto:support@small-improvements.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [küçük Iyileştirmeler istemci destek ekibine](mailto:support@small-improvements.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. Küçük **İyileştirmeler Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **Küçük Iyileştirmeleri ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-small-improvements-single-sign-on"></a>Küçük Geliştirmeleri Tek Oturum Açma'yı Yapılandır
+### <a name="configure-small-improvements-single-sign-on"></a>Küçük Iyileştirmeler için çoklu oturum açmayı yapılandırma
 
-1. Başka bir tarayıcı penceresinde, yönetici olarak Küçük Geliştirmeler şirket sitenizde oturum açın.
+1. Başka bir tarayıcı penceresinde, küçük Iyileştirmeler şirket sitenizde yönetici olarak oturum açın.
 
-1. Ana pano sayfasından soldaki **Yönetim** düğmesini tıklatın.
+1. Ana Pano sayfasında, sol taraftaki **Yönetim** düğmesine tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![Çoklu oturum açmayı yapılandırma](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
-1. **Tümleştirmeler** bölümünden **SAML SSO** düğmesini tıklatın.
+1. **Tümleştirmeler** bölümünden **SAML SSO** düğmesine tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![Çoklu oturum açmayı yapılandırma](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
-1. SSO Kurulum sayfasında aşağıdaki adımları gerçekleştirin:
+1. SSO kurulum sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Tek İşaret-On'u Yapılandır](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![Çoklu oturum açmayı yapılandırma](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a. HTTP **Endpoint** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin**değerini yapıştırın.
+    a. **Http uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    b. İndirilen sertifikanızı Not Defteri'nde açın, içeriği kopyalayın ve **ardından x509 Sertifika** metin kutusuna yapıştırın. 
+    b. İndirilen sertifikanızı Not defteri 'nde açın, içeriği kopyalayın ve ardından **x509 sertifikası** metin kutusuna yapıştırın. 
 
-    c. Kullanıcılar için SSO ve Giriş formu kimlik doğrulama seçeneğinin kullanılabilmesini istiyorsanız, **giriş/parola seçeneği yle erişimi etkinleştir** seçeneğini kontrol edin.  
+    c. Kullanıcılar için SSO ve oturum açma formu kimlik doğrulama seçeneğinin kullanılabilir olmasını istiyorsanız, **oturum açma/parola aracılığıyla erişimi etkinleştir** seçeneğini işaretleyin.  
 
-    d. **SAML İstem** metin kutusundaSSO Giriş düğmesini adlandırmak için uygun değeri girin.  
+    d. **SAML istem** metın kutusunda SSO oturum açma düğmesine ad vermek için uygun değeri girin.  
 
-    e. **Kaydet**'e tıklayın.
+    e. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı türünde**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Küçük Geliştirmelere erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, küçük Iyileştirmelere erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Küçük Geliştirmeler'i**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **küçük geliştirmeler**' i seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Küçük Geliştirmeler'i**seçin.
+2. Uygulamalar listesinde, **küçük geliştirmeler**' i seçin.
 
-    ![Uygulamalar listesindeküçük iyileştirmeler bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki küçük geliştirmeler bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-small-improvements-test-user"></a>Küçük Geliştirmeler test kullanıcısı oluşturma
+### <a name="create-small-improvements-test-user"></a>Küçük geliştirmeler testi Kullanıcı Oluştur
 
-Azure AD kullanıcılarının Küçük Geliştirmeler'de oturum açmalarını sağlamak için, küçük geliştirmeler olarak sağlanmalıdır. Küçük Geliştirmeler söz konusu olduğunda, sağlama el ile bir görevdir.
+Azure AD kullanıcılarının küçük geliştirmelere oturum açmasını sağlamak için bunların küçük Iyileştirmeler halinde sağlanması gerekir. Küçük Iyileştirmeler söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Yönetici olarak Küçük Geliştirmeler şirket sitenize oturum açın.
+1. Küçük Iyileştirmeler şirket sitenizde yönetici olarak oturum açın.
 
-1. Giriş sayfasından soldaki menüye gidin, **Yönetim'i**tıklatın.
+1. Giriş sayfasından sol taraftaki menüye gidin, **Yönetim**' e tıklayın.
 
-1. Kullanıcı Yönetimi bölümünden **Kullanıcı Dizini** düğmesini tıklatın.
+1. Kullanıcı Yönetimi bölümünden **Kullanıcı dizini** düğmesine tıklayın.
 
     ![Azure AD test kullanıcısı oluşturma](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
-1. **Kullanıcı Ekle'yi**tıklatın.
+1. **Kullanıcı Ekle**' ye tıklayın.
 
     ![Azure AD test kullanıcısı oluşturma](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
-1. Kullanıcı **Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin: 
+1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin: 
 
     ![Azure AD test kullanıcısı oluşturma](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
-    a. **Britta**gibi kullanıcının **ilk adını** girin.
+    a. Kullanıcının **ilk adını** **Britta**gibi girin.
 
-    b. **Simon**gibi kullanıcının **soyadını** girin.
+    b. **Simon**gibi Kullanıcı **adının soyadını** girin.
 
-    c. Gibi **brittasimon@contoso.com**kullanıcının **E-posta** girin.
+    c. Kullanıcının **e-postasını** girin **brittasimon@contoso.com**.
 
-    d. Ayrıca, **bildirim e-posta gönder** kutusuna kişisel iletiyi girmeyi de seçebilirsiniz. Bildirimi göndermek istemiyorsanız, bu onay kutusunun işaretlerini kaldırın.
+    d. Kişisel iletiyi **bildirim gönder e-posta** kutusuna girmeyi de tercih edebilirsiniz. Bildirimi göndermek istemiyorsanız, bu onay kutusunun işaretini kaldırın.
 
-    e. **Kullanıcı Oluştur'u**tıklatın.
+    e. **Kullanıcı oluştur**' a tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Küçük İyileştirmeler döşemesini tıklattığınızda, SSO'yu kurduğunuz Küçük Geliştirmeler'de otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde küçük Iyileştirmeler kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız küçük geliştirmelere otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

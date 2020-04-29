@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Yardımcı Yardımcı ile Azure Active Directory tümleştirmesi | Microsoft Dokümanlar'
-description: Azure Etkin Dizinve Yardımcı Yardımcısı arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: yardımcı yardımcı ile Azure Active Directory Tümleştirmesi | Microsoft Docs'
+description: Azure Active Directory ve yardımcı Yardımcısı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,142 +17,142 @@ ms.date: 05/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d70cdade93b028c90c9f62374cd6b997556dd52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67101280"
 ---
-# <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>Öğretici: Yardımcı Yardımcısı Azure Etkin Dizini ile Tümleştir
+# <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>Öğretici: yardımcı Yardımcısı Azure Active Directory ile tümleştirin
 
-Bu eğitimde, Yardımcı Yardımcı'yı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Yardımcı Yardımcısı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, yardımcı yardımcıyı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Yardımcı Yardımcısı 'nı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Yardımcı Yardımcısı'na erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Yardımcı Yardımcı'da otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de yardımcı Yardımcısı erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak yardım eden oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Helper Helper tek oturum açma (SSO) aboneliğini etkinleştirildi.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Yardımcı Yardımcısı çoklu oturum açma (SSO) etkin abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. Yardımcı Yardımcı, **SP ve IDP** tarafından başlatılan SSO'yı destekler ve **Just In Time** kullanıcı sağlamayı destekler.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Yardımcı Yardımcısı **SP ve ıDP** tarafından başlatılan SSO 'yu destekler ve **yalnızca zamanında** Kullanıcı sağlamayı destekler.
 
-## <a name="adding-helper-helper-from-the-gallery"></a>Galeriden Yardımcı Yardımcısı Ekleme
+## <a name="adding-helper-helper-from-the-gallery"></a>Galeriden yardımcı Yardımcısı ekleme
 
-Yardımcı Yardımcısı'nın Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Yardımcı Yardımcısı'nı eklemeniz gerekir.
+Yardım Yardımcısı 'nın Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize yardımcı Yardımcısı eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Yardımcı Yardımcısı** yazın.
-1. Sonuç panelinden **Yardımcı Yardımcısı'nı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **yardımcı Yardımcısı** yazın.
+1. Sonuçlar panelinden **yardımcı Yardımcısı** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO'nu Yardımcı Yardımcısı ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Yardımcı Yardımcı'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu yardımcı yardımcı ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve yardım Yardımcısı 'nda ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Yardımcı Yardımcısı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu yardımcı yardımcı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-2. Uygulama tarafındaki SSO ayarlarını yapılandırmak için **[Yardımcı Yardımcısı'nı yapılandırın.](#configure-helper-helper)**
-3. Azure AD oturum açma'yı B. Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. B. Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Yardımcı Yardımcı test kullanıcısı,](#create-helper-helper-test-user)** Kullanıcının Azure REKLAM gösterimine bağlı Yardımcı Yardımcı'da B. Simon'ın bir örneğine sahip olacak şekilde oluşturun.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
+2. Uygulama tarafında SSO ayarlarını yapılandırmak için **[yardımcı Yardımcısı 'Nı yapılandırın](#configure-helper-helper)** .
+3. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+4. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
+5. Kullanıcının Azure AD gösterimine bağlı olan yardımcı Yardımcısı 'nda B. Simon 'a karşılık gelen bir yardım Yardımcısı **[test kullanıcısı oluşturun](#create-helper-helper-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. **Yardımcı Yardımcı** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **yardımcı Yardımcısı** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sı bölümünde, **Servis Sağlayıcı meta veri dosyanız** varsa ve **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
+1. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa ve **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
     >[!NOTE]
-    >Servis Sağlayıcı `https://sso.helperhelper.com/saml/<customer_id>` meta veri dosyasını almak için url'ye gidin. Için [Yardımcı Yardımcı İstemci destek ekibine](mailto:info@helperhelper.com) `<customer_id>`başvurun.
+    >Hizmet sağlayıcı meta veri `https://sso.helperhelper.com/saml/<customer_id>` dosyasını almak için URL 'ye gidin. `<customer_id>`Için [Yardım Yardımcısı istemci destek ekibine](mailto:info@helperhelper.com) başvurun.
 
-    a. **Meta veri dosyalarını yükle'yi**tıklatın.
+    a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
-    b. Meta veri dosyasını seçmek için **klasör logosuna** tıklayın ve **Yükle'yi**tıklatın.
+    b. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
 
-    c. Meta veri dosyası başarıyla yüklendikten sonra, **Tanımlayıcı** ve **YanıtURL** değerleri Temel SAML Yapılandırması bölümünde otomatik olarak doldurulur.
+    c. Meta veri dosyası başarıyla karşıya yüklendikten sonra, **tanımlayıcı** ve **yanıt URL** değerleri temel SAML yapılandırması bölümünde otomatik olarak doldurulur.
 
     > [!Note]
-    > **Tanımlayıcı** ve **Yanıt URL** değerleri otomatik olarak dosyalamıyorsa, gereksiniminize göre değerleri el ile doldurun.
+    > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak alamazsanız, değerleri gereksinimlerinize göre el ile girin.
 
-1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://sso.helperhelper.com/saml/<customer_id>/login`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://sso.helperhelper.com/saml/<customer_id>/login`
 
     > [!NOTE]
-    > Oturum açma URL değeri gerçek değildir. Bu değeri gerçek Oturum Açma URL'si ile güncelleştirin. Bu değeri almak için [Yardımcı Yardımcı İstemci destek ekibine](mailto:info@helperhelper.com) başvurun. Azure portalı.l'deki Temel **SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [Yardım Yardımcısı istemci destek ekibine](mailto:info@helperhelper.com) başvurun. Ayrıca, Azure portal. l içindeki **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve Not Defterinize kaydetmek için kopyala düğmesini tıklatın.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve Not defteri 'ne kaydetmek için Kopyala düğmesine tıklayın.
 
    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-1. Yardımcı **Yardımcısı Nı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Yardımcı Yardımcısı ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-   ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+   ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-helper-helper"></a>Yardımcı Yardımcısını Yapılandır
+### <a name="configure-helper-helper"></a>Yardımcı yardımcıyı yapılandırma
 
-**Yardımcı Yardımcı** tarafında tek oturum açma yapmak için, Uygulama **Federasyonu Metaveri Url'sini** [Yardımcı Yardımcı destek ekibine](mailto:info@helperhelper.com)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Yardım Yardımcısı** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta veri URL 'sini** [Yardım Yardımcısı destek ekibine](mailto:info@helperhelper.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B. Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B. Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `BrittaSimon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B. Simon'ın Yardımcı Yardımcı'ya erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, yardım Yardımcısı 'na erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Yardımcı Yardımcısı'nı**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **yardımcı Yardımcısı**' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B. Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-helper-helper-test-user"></a>Yardımcı Yardımcı test kullanıcısı oluşturma
+### <a name="create-helper-helper-test-user"></a>Yardım Yardımcısı test kullanıcısı oluştur
 
-Bu bölümde, Yardımcı Yardımcı'da Britta Simon adında bir kullanıcı oluşturulur. Yardımcı Yardımcı, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Yardımcı Yardımcı'da bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
+Bu bölümde, yardım Yardımcısı 'nda Britta Simon adlı bir Kullanıcı oluşturulur. Yardımcı Yardımcısı, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Kullanıcı yardımcı Yardımcısı 'nda zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Erişim Paneli'ndeki Yardımcı Yardımcı döşemesini seçtiğinizde, SSO'yu kurduğunuz Yardımcı Yardımcısı'nda otomatik olarak oturum açmış olmanız gerekir. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde yardımcı Yardımcısı kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız yardımcı yardımcıya otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

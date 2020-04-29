@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Sona Erme Anımsatıcı ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Etkin Dizin ve Sona Kullanma Anımsatıcı arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: kullanım süresi sonu anımsatıcısı ile Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve süre sonu anımsatıcısı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,180 +17,180 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8261ab34398d8961faf0abda8df17db1be3bfdd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73158181"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>Öğretici: Sona Kullanma Anımsatıcısıyla Azure Etkin Dizin entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>Öğretici: süre sonu anımsatıcısı ile Azure Active Directory tümleştirme
 
-Bu öğreticide, Sona Kullanma Anımsatıcısını Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Sona Kullanma Anımsatıcısını Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, süre sonu anımsatıcısını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Azure AD ile zaman aşımı anımsatıcısını tümleştirmek aşağıdaki avantajları sağlar:
 
-* Sona Kullanma Anımsatıcısına erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla otomatik olarak Son Kullanma Anımsatıcı (Tek Oturum Açma) oturum açmalarını etkinleştirebilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de, süre sonu anımsatıcısının erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla sona erme anımsatıcısı (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Sona Kullanma Anımsatıcısıyla yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini süre sonu anımsatıcısı ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Sona Erme Anımsatıcı tek oturum açma etkin abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Süre sonu anımsatıcısı çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Sona Erme Anımsatıcı **SP** başlatılan SSO destekler
+* Süre sonu anımsatıcısı **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-expiration-reminder-from-the-gallery"></a>Galeriden Sona Kullanma Anımsatıcı ekleme
+## <a name="adding-expiration-reminder-from-the-gallery"></a>Galeriden süre sonu anımsatıcısı ekleme
 
-Sona Kullanma Anımsatıcısının Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Son Kullanma Anımsatıcısıeklemeyi eklemeniz gerekir.
+Süre sonu anımsatıcısının Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize zaman aşımı anımsatıcısı eklemeniz gerekir.
 
-**Galeriden Sona Kullanma Anımsatıcı'sı eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden süre sonu anımsatıcısı eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Sona Kullanma Anımsatıcısını**yazın, sonuç panelinden **Sona Kullanma Anımsatıcısı'nı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **süre sonu anımsatıcı**yazın, sonuç panelinden **süre sonu anımsatıcısı** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde ki Son Kullanma Anımsatıcı](common/search-new-app.png)
+     ![Sonuç listesindeki süre sonu anımsatıcısı](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Son Kullanma Anımsatıcısıyla yapılandırıp test esiniz.
-Tek oturum açmanın çalışabilmesi için, Bir Azure REKLAM kullanıcısı ile Sona Kullanma Anımsatıcısı'ndaki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre sona erme anımsatıcısı ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve sona erme anımsatıcısı ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Azure AD oturum açma işlemlerini Sona Kullanma Anımsatıcısıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD 'yi, sona erme anımsatıcısı ile birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Son Kullanma Anımsatıcısını Tek Oturum](#configure-expiration-reminder-single-sign-on)** Açma'yı yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Sona Kullanma Anımsatıcı testi kullanıcısı oluşturun](#create-expiration-reminder-test-user)** - Kullanıcının Azure REKLAM gösterimine bağlı Sona Kullanma Anımsatıcısında Britta Simon'ın bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Süre sonu anımsatıcısını çoklu oturum açma yapılandırma](#configure-expiration-reminder-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanım **[süresi sonu anımsatıcı sınama kullanıcısı](#create-expiration-reminder-test-user)** -kullanıcının Azure AD gösterimine bağlı olan süre sonu anımsatıcısı 'Nda Britta Simon 'a sahip olmak için.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini Sona Kullanma Anımsatıcısıyla yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD 'yi sona erme anımsatıcısı ile çoklu oturum açmayı yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında](https://portal.azure.com/), **Sona Kullanma Anımsatıcı** uygulaması tümleştirme **sayfasında, Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **süre sonu anımsatıcı** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Sona Erme Anımsatıcı Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-signonurl.png)
+    ![Süre sonu anımsatıcı etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
-    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://app.expirationreminder.net/account/sso`
+    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.expirationreminder.net/account/sso`
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Ham)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
-6. Son **Kullanma Anımsatıcısını Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **Süre sonu anımsatıcısını ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure Reklam Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-expiration-reminder-single-sign-on"></a>Yapılandırma Son Kullanma Anımsatıcı Tek Oturum Açma
+### <a name="configure-expiration-reminder-single-sign-on"></a>Süre sonu anımsatıcısı çoklu oturum açmayı Yapılandır
 
-Tek oturum açma Süresi **Anımsatıcı** tarafını yapılandırmak için, indirilen **Sertifikayı (Raw)** ve uygun kopyalanmış URL'leri Azure portalından [Sona Kullanma Anımsatıcı destek ekibine](mailto:support@expirationreminder.net)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Süre sonu anımsatıcı** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal ' dan [süre sonu anımsatıcı destek ekibine](mailto:support@expirationreminder.net)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Sona Kullanma Anımsatıcısına erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, süre sonu anımsatıcısının erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından Sona **Kullanma Anımsatıcı'sını**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **süre sonu anımsatıcısı**' nı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, Sona Kullanma **Anımsatıcısını**yazın ve seçin.
+2. Uygulamalar listesinde, **zaman aşımı anımsatıcısını**yazın ve seçin.
 
-    ![Uygulamalar listesindeki Sona Kullanma Anımsatıcı bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki süre sonu anımsatıcı bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-expiration-reminder-test-user"></a>Sona Erme Anımsatıcı testi kullanıcısı oluşturma
+### <a name="create-expiration-reminder-test-user"></a>Süre sonu anımsatıcı testi Kullanıcı Oluştur
 
-Bu bölümde, Sona Erme Anımsatıcı'da Britta Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları Sona Kullanma Anımsatıcı platformuna eklemek için [Sona Kullanma Anımsatıcı destek ekibiyle](mailto:support@expirationreminder.net) çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, süre sonu anımsatıcısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Süre sonu anımsatıcı platformunda kullanıcıları eklemek için [süre sonu anımsatıcı destek ekibi](mailto:support@expirationreminder.net) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Sona Kullanma Anımsatıcı döşemesini tıklattığınızda, SSO'yu kurduğunuz Sona Kullanma Anımsatıcısında otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde süre sonu anımsatıcı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız süre sonu anımsatıcısı için otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

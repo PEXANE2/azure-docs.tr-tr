@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Everbridge ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Everbridge arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: her yaprak Köprüsü ile Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve tek köprü arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,227 +16,227 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67103251"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Öğretici: Everbridge ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Öğretici: her yaprak Köprüsü ile Azure Active Directory tümleştirme
 
-Bu eğitimde, Everbridge'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Everbridge'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, yaprak Köprüsü Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Her bir Azure AD ile bir yaprak Köprüsü tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD'de Everbridge erişimi olan denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Everbridge'de otomatik olarak oturum açabilmelerine izin verin. Bu erişim denetimine tek oturum açma (SSO) adı verilir.
-* Azure portalını kullanarak hesaplarınızı tek bir merkezi konumda yönetin.
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi [için](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bkz.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+* Azure AD 'de her bir yaprak köprüye erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla bir yaprak 'ta otomatik olarak oturum açmaya izin verin. Bu erişim denetimine çoklu oturum açma (SSO) adı verilir.
+* Azure portal kullanarak hesaplarınızı tek bir merkezi konumda yönetin.
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Everbridge ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini her bir yaprak Köprüle yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız [yoksa, ücretsiz](https://azure.microsoft.com/free/)bir hesap alabilirsiniz.
-* Tek oturum açma kullanan bir Everbridge aboneliği.
+* Bir Azure AD aboneliği. Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Çoklu oturum açma kullanan bir yaprak Köprüsü aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Everbridge, IDP tarafından başlatılan SSO'ya destek veriyor.
+* Yaprak Köprüsü ıDP tarafından başlatılan SSO 'yu destekler.
 
-## <a name="add-everbridge-from-the-azure-marketplace"></a>Azure Marketinden Everbridge Ekle
+## <a name="add-everbridge-from-the-azure-marketplace"></a>Azure Marketi 'nden yaprak Köprüsü ekleme
 
-Everbridge'in Azure AD'ye entegrasyonunu yapılandırmak için Azure Marketi'nden Everbridge'i yönetilen SaaS uygulamaları listenize ekleyin.
+Her yaprak Köprüsü 'nün Azure AD ile tümleştirilmesini yapılandırmak için, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize yaprak Köprüsü ekleyin.
 
-Azure Marketi'nden Everbridge eklemek için aşağıdaki adımları izleyin.
+Azure Marketi 'nden bir yaprak Köprüsü eklemek için aşağıdaki adımları izleyin.
 
-1. Sol daki gezinti bölmesinde [bulunan Azure portalında](https://portal.azure.com) **Azure Etkin Dizin'i**seçin.
+1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmında **Yeni uygulama'yı** seçin.
+3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** ' yı seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Everbridge'i**girin. Sonuç panelinden **Everbridge'i** seçin ve **Ekle'yi**seçin.
+4. Arama kutusuna, **yaprak Köprüsü**girin. Sonuç panelinden her bir **yaprak Köprüsü** seçin ve **Ekle**' yi seçin.
 
-     ![Sonuç listesinde Everbridge](common/search-new-app.png)
+     ![Sonuçlar listesinde yaprak Köprüsü](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Test kullanıcısı Britta Simon'a göre Azure AD oturum açma işlemini Everbridge ile yapılandırın ve test esiniz.
-Tek oturum açma nın çalışması için, Bir Azure REKLAM kullanıcısı ile Everbridge'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurun.
+Bu bölümde, Azure AD çoklu oturum açmayı, bu Kullanıcı test kullanıcısına göre her ne kadar bas.
+Çoklu oturum açma için, tek Köprü ' de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturun.
 
-Azure AD oturumaçmayı Everbridge ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD çoklu oturum açmayı tek köprü ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-- Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD oturumunu yapılandırın.](#configure-azure-ad-single-sign-on)
-- [Everbridge'i Everbridge yönetici portalı olarak yapılandırın tek oturum açma](#configure-everbridge-as-everbridge-manager-portal-single-sign-on) uygulaması tarafındaki tek oturum açma ayarlarını yapılandırın.
-- [Everbridge'i Everbridge üye portalı olarak yapılandırın tek oturum açma](#configure-everbridge-as-everbridge-member-portal-single-sign-on) uygulaması tarafındaki tek oturum açma ayarlarını yapılandırın.
-- Britta Simon ile Azure AD tek oturum açma işlemini test etmek için [bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)
-- Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için [Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)
-- Everbridge'de Britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için [bir Everbridge test kullanıcısı oluşturun.](#create-an-everbridge-test-user)
-- Yapılandırmanın çalışıp çalışmadığını doğrulamak için [tek oturum](#test-single-sign-on) açma yı test edin.
+- Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD çoklu oturum açmayı yapılandırın](#configure-azure-ad-single-sign-on) .
+- Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için her bir [yaprak köprü Yöneticisi portalı çoklu oturum açma olarak tek köprü yapılandırın](#configure-everbridge-as-everbridge-manager-portal-single-sign-on) .
+- Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için her bir [yaprak Köprüsü üye portalı çoklu oturum açma olarak yapılandırın](#configure-everbridge-as-everbridge-member-portal-single-sign-on) .
+- Britta Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
+- Azure AD 'de çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirmek için [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
+- Kullanıcının Azure AD gösterimine bağlı olan her bir yaprak Köprüsü içinde Britta Simon 'a sahip olmak için bir [yaprak Köprüsü test kullanıcısı oluşturun](#create-an-everbridge-test-user) .
+- Yapılandırmanın çalışıp çalışmadığını doğrulamak için [Çoklu oturum açmayı test](#test-single-sign-on) edin.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini Everbridge ile yapılandırmak için aşağıdaki adımları izleyin.
+Azure AD çoklu oturum açma 'yı tek köprü ile yapılandırmak için aşağıdaki adımları izleyin.
 
-1. Azure [portalında](https://portal.azure.com/), **Everbridge** uygulama tümleştirme sayfasında Tek **oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), tek **köprü** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum** açma yöntemi iletişim kutusunu seç'te, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. **Çoklu oturum açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme'yi** seçin.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** ' yi seçin.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
     >[!NOTE]
-    >Uygulamayı yönetici portalı *veya* hem Azure portalında hem de Everbridge portalında üye portalı olarak yapılandırın.
+    >Uygulamayı Yönetici portalı olarak *veya* hem Azure Portal hem de tek tek köprü portalında üye portalı olarak yapılandırın.
 
-4. **Everbridge** uygulamasını **Temel SAML Yapılandırması** bölümündeEverbridge **yöneticisi portalı**olarak yapılandırmak için aşağıdaki adımları izleyin:
+4. **Yaprak Köprüsü** uygulamasını her bir **yaprak Köprüsü Yönetici portalı**olarak YAPıLANDıRMAK Için, **temel SAML yapılandırması** bölümünde şu adımları izleyin:
 
-    ![Everbridge etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![Yaprak Köprüsü etki alanı ve URL çoklu oturum açma bilgileri](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** kutusuna, deseni izleyen bir URL girin`https://sso.everbridge.net/<API_Name>`
+    a. **Tanımlayıcı** kutusunda, kalıbı IZLEYEN bir URL girin`https://sso.everbridge.net/<API_Name>`
 
-    b. **Yanıtla URL** kutusuna, deseni izleyen bir URL girin`https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
+    b. **Yanıt URL 'si** kutusuna, kalıbı IZLEYEN bir URL girin`https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
 
     > [!NOTE]
-    > Bu değerler gerçek değil. Bu değerleri gerçek Tanımlayıcı ve Yanıtla URL değerleriyle güncelleştirin. Bu değerleri almak için [Everbridge destek ekibine](mailto:support@everbridge.com)başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'SI değerleriyle güncelleştirin. Bu değerleri almak için, [yaprak Köprüsü destek ekibine](mailto:support@everbridge.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. **Everbridge** uygulamasını **Temel SAML Yapılandırması** bölümündeEverbridge **üye portalı**olarak yapılandırmak için aşağıdaki adımları izleyin:
+5. **Yaprak** Köprüsü uygulamasını her **yaprak Köprüsü üye portalı**olarak YAPıLANDıRMAK Için, **temel SAML yapılandırması** bölümünde şu adımları izleyin:
 
-  * Uygulamayı IDP tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları izleyin:
+  * Uygulamayı ıDP tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları izleyin:
 
-     ![IDP tarafından başlatılan mod için Everbridge etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+     ![Her yaprak için etki alanı ve URL 'Ler ıDP tarafından başlatılan mod için çoklu oturum açma bilgileri](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** kutusuna, deseni izleyen bir URL girin`https://sso.everbridge.net/<API_Name>/<Organization_ID>`
+    a. **Tanımlayıcı** kutusunda, kalıbı IZLEYEN bir URL girin`https://sso.everbridge.net/<API_Name>/<Organization_ID>`
 
-    b. **Yanıtla URL** kutusuna, deseni izleyen bir URL girin`https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
+    b. **Yanıt URL 'si** kutusuna, kalıbı IZLEYEN bir URL girin`https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
 
-   * Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız, **ek URL'ler** ayarla'yı seçin ve şu adımı izleyin:
+   * Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla** ' yı seçin ve bu adımı izleyin:
 
-     ![SP tarafından başlatılan mod için Everbridge etki alanı ve URL'ler tek oturum açma bilgileri](common/both-signonurl.png)
+     ![Tek tek köprü etki alanı ve URL 'Ler SP tarafından başlatılan mod için çoklu oturum açma bilgileri](common/both-signonurl.png)
 
-     a. **URL'de Oturum Aç** kutusuna, deseni izleyen bir URL girin`https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
+     a. **Oturum açma URL 'si** kutusuna, kalıbı IZLEYEN bir URL girin`https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
 
      > [!NOTE]
-     > Bu değerler gerçek değil. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL ve URL değerlerinde oturum açarak güncelleştirin. Bu değerleri almak için [Everbridge destek ekibine](mailto:support@everbridge.com)başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'si ve oturum açma URL 'SI değerleriyle güncelleştirin. Bu değerleri almak için, [yaprak Köprüsü destek ekibine](mailto:support@everbridge.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-6. **SAML** ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'i**indirmek için **İndir'i** seçin. Bilgisayarınıza kaydedin.
+6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML**'sini indirmek için **İndir** ' i seçin. Bu dosyayı bilgisayarınıza kaydedin.
 
-    ![Sertifika indirme linki](common/metadataxml.png)
+    ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. **Everbridge'i Ayarla** bölümünde, gereksinimleriniz için ihtiyacınız olan URL'leri kopyalayın:
+7. Her bir **yaprak kümesi ayarla** bölümünde, gereksinimleriniz için Ihtiyaç duyduğunuz URL 'leri kopyalayın:
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     - Oturum Açma URL’si
-    - Azure AD Tanımlayıcısı
-    - Giriş URL'si
+    - Azure AD tanımlayıcısı
+    - Oturum kapatma URL 'SI
 
-### <a name="configure-everbridge-as-everbridge-manager-portal-single-sign-on"></a>Everbridge'i Everbridge yönetici portalı olarak yapılandırın tek oturum açma
+### <a name="configure-everbridge-as-everbridge-manager-portal-single-sign-on"></a>Her bir yaprak için tek köprü Yönetici portalı çoklu oturum açma olarak yapılandırma
 
-**Everbridge'de** SSO'yu **Everbridge yönetici portalı** uygulaması olarak yapılandırmak için aşağıdaki adımları izleyin.
+Her bir **yaprak ÜZERINDE SSO** 'Yu bir **yaprak Köprüsü Yöneticisi Portal** uygulaması olarak yapılandırmak için aşağıdaki adımları izleyin.
  
-1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak Everbridge'de oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak yaprak olarak oturum açın.
 
-1. Üstteki menüde **Ayarlar** sekmesini seçin. **Güvenlik**Altında, **Tek Oturum Açma'yı**seçin.
+1. Üstteki menüde **Ayarlar** sekmesini seçin. **Güvenlik**bölümünde **Çoklu oturum açma**seçeneğini belirleyin.
    
      ![Çoklu oturum açmayı yapılandırma](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
-     a. **Ad** kutusuna tanımlayıcı sağlayıcısının adını girin. Örnek olarak şirket adınız verilmiştir.
+     a. **Ad** kutusuna, tanımlayıcı sağlayıcının adını girin. Şirketinizin adı bir örnektir.
    
-     b. **API Adı** kutusuna API adını girin.
+     b. **API adı** kutusuna API 'nin adını girin.
    
-     c. Azure portalından indirdiğiniz meta veri dosyasını yüklemek için **Dosyayı Seç'i** seçin.
+     c. Azure portal indirdiğiniz meta veri dosyasını karşıya yüklemek için **Dosya Seç** ' i seçin.
    
-     d. **SAML Identity Location**için, select **Identity Konu deyiminin NameIdentifier öğesindedir.**
+     d. **SAML kimlik konumu**Için, **Konu ifadesinin NameIdentifier öğesinde kimlik**' i seçin.
    
-     e. Kimlik **Sağlayıcı Giriş URL** kutusuna, Azure portalından kopyaladığınız **Giriş URL** değerini yapıştırın.
+     e. **Kimlik sağlayıcısı oturum açma URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
    
-     f. **Hizmet Sağlayıcı için başlatılan İstek Bağlama**, HTTP Yeniden **Yönlendirme**seçin.
+     f. **Hizmet sağlayıcı tarafından başlatılan Istek bağlama**Için **http yeniden yönlendirme**' yi seçin.
 
-     g. **Kaydet'i**seçin.
+     g. **Kaydet**’i seçin.
 
-### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Everbridge'i Everbridge üye portalı olarak yapılandırTek oturum açma
+### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Her bir yaprak Köprüsü üye portalı çoklu oturum açma olarak yapılandırma
 
-**Everbridge'de** **everbridge üye portalı**olarak tek oturum açma yı yapılandırmak için, indirilen Federasyon **Metadata XML'i** [Everbridge destek ekibine](mailto:support@everbridge.com)gönderin. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+Her **bir yaprak Köprüsü** **üye portalı**olarak tek tek oturum açma 'yı yapılandırmak Için, INDIRILEN **Federasyon meta verileri XML** 'i tek [köprü desteği ekibine](mailto:support@everbridge.com)gönderin. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Azure portalında test kullanıcısı Britta Simon'ı oluşturmak için aşağıdaki adımları izleyin.
+Azure portal test kullanıcısını, için bu adımları izleyin.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizin** > **Kullanıcıları** > **Tüm kullanıcıları**seçin.
+1. Azure Portal sol bölmedeki **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
 
-    ![Kullanıcılar ve Tüm kullanıcı bağlantıları](common/users.png)
+    ![Kullanıcılar ve tüm kullanıcılar bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları izleyin.
+3. **Kullanıcı** iletişim kutusunda, aşağıdaki adımları izleyin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** **kutusuna BrittaSimon**girin.
+    a. **Ad** kutusuna **Brittasıon**yazın.
   
     b. **Kullanıcı adı** kutusuna `brittasimon@yourcompanydomain.extension` girin. BrittaSimon@contoso.com bunun bir örneğidir.
 
-    c. **Parolayı Göster** onay kutusunu seçin. **Parola** kutusuna görünen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin. **Parola** kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**seçin.
+    d. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Britta Simon'ın Everbridge'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını etkinleştirin.
+Her bir yaprak köprüye erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında Kurumsal **uygulamaları** > seçtüm uygulamalar**Everbridge'****i** >seçin.
+1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar** >tek**köprü**' i seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Everbridge'i**seçin.
+2. Uygulamalar listesinde, **yaprak Köprüsü**' nü seçin.
 
-    ![Uygulamalar listesinde Everbridge bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesinde yaprak köprüsü bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Kullanıcılar ve gruplar bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle'yi**seçin. Atama **Ekle** iletişim **kutusunda, Kullanıcılar ve gruplar**seçin.
+4. **Kullanıcı Ekle**' yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Atama iletişim kutusu ekle](common/add-assign-user.png)
+    ![Atama Ekle iletişim kutusu](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, kullanıcı listesinde **Britta Simon'ı** seçin. Ekranın alt kısmında **seç'i** seçin.
+5. **Kullanıcılar ve gruplar** iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' u seçin. Ekranın alt kısmında **Seç ' i** seçin.
 
-6. SAML iddiasında, **Rolü Seç** iletişim kutusunda herhangi bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Ekranın alt kısmında **seç'i** seçin.
+6. SAML onaylama 'da herhangi bir rol değeri bekleliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ekranın alt kısmında **Seç ' i** seçin.
 
-7. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
+7. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
-### <a name="create-an-everbridge-test-user"></a>Everbridge test kullanıcısı oluşturma
+### <a name="create-an-everbridge-test-user"></a>Bir yaprak Köprüsü test kullanıcısı oluşturma
 
-Bu bölümde, Everbridge test kullanıcı Britta Simon oluşturun. Everbridge platformunda kullanıcı eklemek için [Everbridge destek ekibiyle](mailto:support@everbridge.com)çalışın. Tek oturum açmadan önce everbridge'de kullanıcılar oluşturulmalı ve etkinleştirilmelidir. 
+Bu bölümde, her bir yaprak için Kullanıcı, Britta Simon ' u oluşturun. Her yaprak Köprüsü platformunda Kullanıcı eklemek için, her bir [yaprak Köprüsü destek ekibi](mailto:support@everbridge.com)ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların tek köprü içinde oluşturulması ve etkinleştirilmesi gerekir. 
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı test edin.
+Erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Access Paneli'ndeki Everbridge döşemesini seçtiğinizde, SSO'yu kurduğunuz Everbridge hesabında otomatik olarak oturum açmanız gerekir. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde her bir yaprak Köprüsü kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız yaprak Köprüsü hesabında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarının Azure Active Directory ile nasıl entegre edilebildiğini anlatan öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

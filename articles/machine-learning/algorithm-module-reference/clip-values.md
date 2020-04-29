@@ -1,7 +1,7 @@
 ---
 title: Değerleri Kırpma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning'de, aykırı ları tespit etmek ve değerlerini kesmek veya değiştirmek için Küçük Değerler modülünü nasıl kullanacağınızı öğrenin.
+description: Aykırı değerleri ve klibi algılamak veya değerlerini değiştirmek için Azure Machine Learning Clip Values modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,114 +10,114 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 6466cea9fe04bb308a670cb03fd3de5314758142
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456616"
 ---
 # <a name="clip-values"></a>Değerleri Kırpma
 
-Bu makalede, Azure Machine Learning tasarımcısının (önizleme) bir modülü açıklanmaktadır.
+Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
-Belirli bir eşiğin üstünde veya altında olan veri değerlerini ortalama, sabit veya başka bir yedek değerle tanımlamak ve isteğe bağlı olarak değiştirmek için Küçük Değerler modülünü kullanın.  
+Belirtilen eşiğin üstünde veya altında olan veri değerlerini bir ortalama, sabit veya diğer bir alternatif değerle tanımlamak ve isteğe bağlı olarak değiştirmek için klip değerleri modülünü kullanın.  
 
-Modülü, klibin üzerinde olmak istediğiniz sayılara sahip bir veri kümesine bağlar, çalışacak sütunları seçer ve ardından bir eşik veya değer aralığı ve değiştirme yöntemi belirlersiniz. Modül, yalnızca sonuçları veya orijinal veri kümesine eklenen değiştirilen değerleri çıktı alabilir.
+Modüle, kırpmak istediğiniz sayıları içeren bir veri kümesine bağlanırsınız, birlikte çalışmak istediğiniz sütunları seçin ve ardından bir eşik veya değer aralığı ve bir değiştirme yöntemi ayarlayın. Modül yalnızca sonuçları veya değiştirilen değerleri özgün veri kümesine eklenmiş şekilde yazabilir.
 
-## <a name="how-to-configure-clip-values"></a>Klip değerleri nasıl yapılandırılır?
+## <a name="how-to-configure-clip-values"></a>Klip değerlerini yapılandırma
 
-Başlamadan önce, klibin kırpısıyabilmesini istediğiniz sütunları ve kullanılacak yöntemi tanımlayın. Önce küçük bir veri alt kümesi üzerinde herhangi bir kırpma yöntemini test etmenizi öneririz.
+Başlamadan önce, kırpmak istediğiniz sütunları ve kullanılacak yöntemi belirlemeniz gerekir. Önce küçük bir veri alt kümesinde herhangi bir kırpma yöntemini test etmenizi öneririz.
 
-Modül, seçime eklediğiniz **tüm** sütunlara aynı ölçütleri ve değiştirme yöntemini uygular. Bu nedenle, değiştirmek istemediğiniz sütunları hariç tutabildiğinizden emin olun.
+Modül, seçime dahil ettiğiniz **Tüm** sütunlara aynı ölçütleri ve değiştirme yöntemini uygular. Bu nedenle, değiştirmek istemediğiniz sütunları dışlediğinizden emin olun.
 
-Bazı sütunlara kırpma yöntemleri veya farklı ölçütler uygulamanız gerekiyorsa, benzer sütunkümeleri için yeni bir **Küçük Değer** örneği kullanmanız gerekir.
+Bazı sütunlara kırpma yöntemleri veya farklı ölçütler uygulamanız gerekiyorsa, her bir benzer sütun kümesi için **klip değerlerinin** yeni bir örneğini kullanmanız gerekir.
 
-1.  Kesme **Değerleri** modülünü ardışık noktanıza ekleyin ve değiştirmek istediğiniz veri kümesine bağlayın. Bu modülü Veri **Dönüşümü**altında Ölçek **ve Azalt** kategorisinde bulabilirsiniz. 
+1.  Ardışık düzene **Clip Values** modülünü ekleyin ve değiştirmek istediğiniz veri kümesine bağlayın. Bu modülü, **veri dönüştürme**altında, **ölçek ve azalt** kategorisinde bulabilirsiniz. 
   
-1.  **Sütun lar listesinde,** **Küçük Değerlerin** uygulanacağı sütunları seçmek için Sütun Seçici'yi kullanın.  
+1.  Sütun **listesinde**, **kırpma değerlerinin** uygulanacağı sütunları seçmek için sütun seçiciyi kullanın.  
   
-1.  **Eşikler Kümesi**için açılır listeden aşağıdaki seçeneklerden birini seçin. Bu seçenekler, kırpılması gereken değerler ve kabul edilebilir değerler için üst ve alt sınırları nasıl ayarladığınızı belirler.  
+1.  **Eşik kümesi**için, açılan listeden aşağıdaki seçeneklerden birini seçin. Bu seçenekler, kabul edilebilir değerler ve kırpılmakta olması gereken değerler için üst ve alt sınırları nasıl ayarlayabileceğiniz belirlenir.  
   
-    - **ClipPeaks**: Değerleri tepenoktalarına göre kırptığınızda yalnızca bir üst sınır belirtirsiniz. Bu sınır değerinden büyük değerler değiştirilir.
+    - **Clienppeaks**: değerleri en üste kadar kırpdığınızda, yalnızca bir üst sınır belirtirsiniz. Bu sınır değerinden büyük değerler değiştirilmiştir.
   
-    -  **ClipSubpeaks**: Alt tepenoktalarına göre değerleri klibinde yalnızca daha düşük bir sınır belirtirsiniz. Bu sınır değerinden daha az olan değerler değiştirilir.  
+    -  **Clipsubpeaks**: değerleri alt seviyeye göre kırpdığınızda, yalnızca alt sınır belirtirsiniz. Sınır değerinden daha az olan değerler değiştirilmiştir.  
   
-    - **ClipPeaksAndSubpeaks**: Değerleri tepe noktalarına ve alt tepe noktalarına göre kırptığınızda, hem üst hem de alt sınırları belirtebilirsiniz. Bu aralığın dışındaki değerler değiştirilir. Sınır değerleriyle eşleşen değerler değiştirilmez.
+    - **Clienppeaksandsubpeaks**: değerleri en üst ve alt sınır değerlerine göre kırpdığınızda, hem üst hem de alt sınırları belirtebilirsiniz. Bu aralığın dışında kalan değerler değiştirilmez. Sınır değerleriyle eşleşen değerler değiştirilmez.
   
-1.  Önceki adımdaki seçiminize bağlı olarak, aşağıdaki eşik değerlerini ayarlayabilirsiniz: 
+1.  Önceki adımda yaptığınız seçiminize bağlı olarak, aşağıdaki eşik değerlerini ayarlayabilirsiniz: 
 
-    + **Alt eşik**: Yalnızca **ClipSubPeaks'i** seçerseniz görüntülenir
-    + **Üst eşik**: Yalnızca **ClipPeaks'i** seçerseniz görüntülenir
-    + **Eşik**: Yalnızca **ClipPeaksAndSubPeaks'i** seçerseniz görüntülenir
+    + **Alt eşik**: yalnızca **Clipsubpeaks** ' i seçerseniz gösterilir
+    + **Üst eşik**: yalnızca **Clienppeaks** ' i seçerseniz gösterilir
+    + **Eşik**: yalnızca **Clippeaksandsubpeaks** ' i seçerseniz gösterilir
 
-    Her eşik türü için **Sabit** veya **Yüzdek'yi**seçin.
+    Her eşik türü için **sabit** veya **yüzdebirlik**' i seçin.
 
-1. **Sabit'i**seçerseniz, metin kutusuna en büyük veya minimum değeri yazın. Örneğin, 999 değerinin yer tutucu değeri olarak kullanıldığını bildiğinizi varsayalım. Üst eşik için **Sabit'i** ve **üst eşik için Sabit değeri**olarak 999 yazın'ı seçebilirsiniz.
+1. **Sabit**' i seçerseniz, metin kutusuna en büyük veya en küçük değeri yazın. Örneğin, 999 değerini bir yer tutucu değeri olarak kullandığınızı varsayalım. Üst eşik için **sabit** ' i seçebilir ve **üst eşik için sabit değer**olarak 999 yazabilirsiniz.
   
-1. **Yüzdele'yi**seçerseniz, sütun değerlerini yüzdelik aralıkla sınırlandırMış olursunuz. 
+1. **Yüzdebirlik**değerini seçerseniz, sütun değerlerini bir yüzdebirlik aralığıyla sınırlandırın. 
 
-    Örneğin, yalnızca yüzdelik aralığındaki değerleri tutmak istediğinizi varsayalım ve diğer tüm değerleri değiştirin. **Yüzdele'yi**seçersiniz ve daha sonra **daha düşük eşik için Yeşİl değeri için**10 yazar sınız ve üst eşik için **Yüzdelik değeri**için 80 yazın. 
+    Örneğin, yalnızca 10-80 yüzdebirlik aralığındaki değerleri tutmak istediğinizi varsayalım ve diğerlerinin yerini alır. **Yüzdelik**değer ' i seçin ve ardından, **daha düşük eşiğin yüzde birlik değeri**için 10 yazın ve **üst eşiğe yönelik yüzdebirlik değeri**için 80 yazın. 
 
-    Yüzdelik aralıklarının nasıl kullanılacağına ilişkin bazı örnekler için [yüzdelik](#examples-for-clipping-using-percentiles) dilimleri bölümüne bakın.  
+    Yüzdebirlik aralıklarının nasıl kullanılacağına ilişkin bazı örnekler için [yüzdebirlik değeri](#examples-for-clipping-using-percentiles) adresindeki bölümüne bakın.  
   
-1.  Yedek bir değer tanımlayın.
+1.  Bir değiştirme değeri tanımlayın.
 
-    Belirttiğiniz sınırlara tam olarak uyan sayılar izin verilen değerler aralığında kabul edilir ve bu nedenle değiştirilmez. Belirtilen aralığın dışına düşen tüm sayılar yedek değerle değiştirilir. 
+    Belirttiğiniz sınırlara tam olarak eşleşen sayıların izin verilen değer aralığı içinde olduğu kabul edilir ve bu nedenle değiştirilmez. Belirtilen aralığın dışında kalan tüm sayılar değiştirme değeri ile değiştirilmiştir. 
   
-    + **Zirvelerin yerine geçen değer**: Belirtilen eşikten büyük tüm sütun değerlerinin yerine geçecek değeri tanımlar.  
-    + **Alt zirvelerin yerine değer**: Belirtilen eşikten daha az olan tüm sütun değerlerinin yerine kullanılacak değeri tanımlar.  
-    + **ClipPeaksAndSubpeaks** seçeneğini kullanıyorsanız, kırpılabilen üst ve alt değerler için ayrı değiştirme değerleri belirtebilirsiniz.  
+    + **Tepe noktaları için yedek değer**: belirtilen eşikten daha büyük olan tüm sütun değerlerinin yerine konacak değeri tanımlar.  
+    + **Subpeaks Için ikame değer**: belirtilen eşikten daha küçük olan tüm sütun değerleri için alternatif olarak kullanılacak değeri tanımlar.  
+    + **Clippeaksandsubpeaks** seçeneğini kullanırsanız, üst ve alt kırpılan değerler için ayrı bir değiştirme değeri belirtebilirsiniz.  
 
     Aşağıdaki değiştirme değerleri desteklenir:  
   
-    -   **Eşik**: Kırpılmış değerleri belirtilen eşik değeriyle değiştirir.  
+    -   **Eşik**: kırpılan değerleri belirtilen eşik değeriyle değiştirir.  
   
-    -   **Ortalama**: Kırpılmış değerleri sütun değerlerinin ortalamasıyla değiştirir. Değerler kırpılmadan önce ortalama hesaplanır.  
+    -   **Ortalama**: kırpılan değerleri sütun değerlerinin ortalaması ile değiştirir. Ortalama değerler kırpılmadan önce hesaplanır.  
   
-    -   **Ortanca**: Kırpık değerleri sütun değerlerinin ortancasıyla değiştirir. Değerler kırpılmadan önce ortanca hesaplanır.   
+    -   **Ortanca**: kırpılan değerleri sütun değerlerinin ortancası ile değiştirir. Ortanca değerler kırpılmadan önce hesaplanır.   
   
-    -   **Kayıp**. Kırpılak değerleri eksik (boş) değerle değiştirir.  
+    -   **Yok**. Kırpılan değerleri eksik (boş) değeriyle değiştirir.  
   
-1.  **Gösterge sütunları ekleme**: Belirtilen kırpma işleminin o satırdaki verilere uygulanıp uygulanmadığını belirten yeni bir sütun oluşturmak istiyorsanız bu seçeneği seçin. Bu seçenek, yeni bir kırpma ve değiştirme değerleri kümesini sınarken yararlıdır.  
+1.  **Gösterge sütunları ekle**: belirtilen kırpma işleminin o satırdaki verilere uygulanıp uygulanmadığını belirten yeni bir sütun oluşturmak istiyorsanız bu seçeneği belirleyin. Yeni bir kırpma ve değiştirme değerleri kümesini sınarken Bu seçenek faydalıdır.  
   
-1. **Üstyazı :** Yeni değerlerin nasıl oluşturulmasını istediğinizi belirtin. Varsayılan olarak, **Küçük Değerler** istenen eşiğe kırpılmış tepe değerleri ile yeni bir sütun inşa eder. Yeni değerler özgün sütunun üzerine yazılır.  
+1. **Üzerine yazma bayrağı**: yeni değerlerin nasıl oluşturulmasını istediğinizi belirtin. Varsayılan olarak, **klip değerleri** en yoğun değerleri istenen eşiğe kırparak yeni bir sütun oluşturur. Yeni değerler özgün sütunun üzerine yazılır.  
   
-    Özgün sütunu tutmak ve kırpılen değerlere sahip yeni bir sütun eklemek için bu seçeneği seçin.  
+    Özgün sütunu tutmak ve kırpılan değerlerle yeni bir sütun eklemek için bu seçeneğin seçimini kaldırın.  
   
-1.  Boru hattını gönderin.  
+1.  İşlem hattını gönderme.  
   
-    **Clip Values** modülüne sağ tıklayın ve **Visualize'ı** seçin veya modülü seçin ve sağ paneldeki **Çıktılar** sekmesine geçin, Bağlantı **Noktası çıkışlarında**histogram simgesine tıklayın, değerleri gözden geçirin ve kırpma işleminin beklentilerinizi karşıladığınızdan emin olun.  
+    **Clip Values** modülüne sağ tıklayın ve **modülü seçip sağ** paneldeki **çıktılar** sekmesine geçin, değerleri gözden geçirmek ve kırpma işleminin beklentilerinizi karşıladığından emin olmak için **bağlantı noktası çıktılarında**histogram simgesine tıklayın.  
  
-### <a name="examples-for-clipping-using-percentiles"></a>Yüzdelik dilimleri kullanarak kırpma örnekleri
+### <a name="examples-for-clipping-using-percentiles"></a>Yüzdebirlik değeri kullanarak kırpma örnekleri
 
-Yüzdelik kırpma nın nasıl çalıştığını anlamak için, 1-10 değerlerinin her biri bir örneği olan 10 satırlı bir veri kümesi düşünün.  
+Yüzdebirlik değeri tarafından nasıl kırpılmasının çalıştığını anlamak için, 1-10 değerlerinin her birini içeren 10 satırlık bir veri kümesini düşünün.  
   
-- Yüzdelik olarak yüzdeyi kullanıyorsanız, 90 yüzdelik değerin değerinde, veri kümesindeki tüm değerlerin yüzde 90'ı bu değerden daha az olmalıdır.  
+- En büyük eşik olarak yüzdebirlik değerini kullanıyorsanız, 90. yüzdebirlik değerinde, veri kümesindeki tüm değerlerin yüzde 90 ' unun bu değerden küçük olması gerekir.  
   
-- Yüzdelik ile'yi alt eşik olarak kullanıyorsanız, yüzde 10'luk değerin değerinde, veri kümesindeki tüm değerlerin yüzde 10'u bu değerden daha az olmalıdır.  
+- Yüzdebirlik değerini alt eşik olarak kullanıyorsanız, 10 yüzdelik değerde, veri kümesindeki tüm değerlerin yüzde 10 ' u bu değerden küçük olmalıdır.  
   
-1.  **Eşikler kümesi için** **ClipPeaksAndSubPeaks'i**seçin.  
+1.  **Eşik kümesi**Için **Clippeaksandsubpeaks**' i seçin.  
   
-1.  **Üst eşik için,** **Yüzdele'yi**seçin ve **Yüzdele sayısı**için 90 yazın.  
+1.  **Üst eşik**için **yüzdebirlik**' ü seçin ve **yüzdebirlik numarası**için 90 yazın.  
   
-1.  **Üst yedek değer**için Eksik **Değer'i**seçin.  
+1.  **Büyük alternatif değeri**Için **eksik değer**' i seçin.  
   
-1.  **Alt eşik için,** **Yüzdeli'yi**seçin ve **Yüzdele sayısı**için , 10 yazın.  
+1.  **Daha düşük eşik**Için, **yüzdebirlik**' ü seçin ve **yüzdebirlik numarası**için 10 yazın.  
   
-1.  **Daha düşük yedek değer**için Eksik **Değer'i**seçin.  
+1.  **Daha düşük yedek değer**Için **eksik değer**' i seçin.  
   
-1.  **Overwrite bayrağı**seçeneğini seçin ve gösterge **sütunu ekle**seçeneğini seçin.  
+1.  **Üzerine yazma bayrağı**seçeneğinin işaretini kaldırın ve **gösterge sütunu Ekle**seçeneğini belirleyin.  
   
-Şimdi üst yüzdelik eşik olarak 60 ve alt yüzdelik eşik olarak 30 kullanarak aynı ardışık deneyin ve değiştirme değeri olarak eşik değerini kullanın. Aşağıdaki tablo da bu iki sonucu karşılaştırır:  
+Şimdi de aynı işlem hattını, üst yüzdebirlik eşiği olarak 60 ve alt yüzdebirlik eşiği olarak 30 ' u kullanarak deneyin ve eşik değerini değiştirme değeri olarak kullanın. Aşağıdaki tabloda bu iki sonuç karşılaştırılmaktadır:  
   
-1.  Eksik ile değiştirin; Üst eşik = 90; Alt eşik = 20  
+1.  Eksik ile Değiştir; Üst eşik = 90; Alt eşik = 20  
   
-1.  Eşik ile değiştirin; Üst yüzdelik = 60; Daha düşük yüzdelik = 40  
+1.  Eşikle değiştirin; Üst yüzdebirlik = 60; Alt yüzdebirlik = 40  
   
-|Orijinal veriler|Eksikle değiştir|Eşikle değiştir|  
+|Özgün veriler|Eksik ile Değiştir|Eşikle Değiştir|  
 |-------------------|--------------------------|----------------------------|  
-|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3, YANLIŞ<br /><br /> 4, YANLIŞ<br /><br /> 5, YANLIŞ<br /><br /> 6, YANLIŞ<br /><br /> 7, YANLIŞ<br /><br /> 8, YANLIŞ<br /><br /> 9, YANLIŞ<br /><br /> TRUE|4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 5, YANLIŞ<br /><br /> 6, YANLIŞ<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU| 
+|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3, YANLıŞ<br /><br /> 4, YANLıŞ<br /><br /> 5, YANLıŞ<br /><br /> 6, YANLıŞ<br /><br /> 7, YANLıŞ<br /><br /> 8, YANLıŞ<br /><br /> 9, YANLıŞ<br /><br /> TRUE|4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 5, YANLıŞ<br /><br /> 6, YANLıŞ<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU| 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

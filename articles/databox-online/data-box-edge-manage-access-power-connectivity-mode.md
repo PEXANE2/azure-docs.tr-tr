@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kutusu Kenarı aygıt erişimi, gücü ve bağlantı modu | Microsoft Dokümanlar
-description: Azure Veri Kutusu Kenarı aygıtının azure'a veri aktarımı için erişim, güç ve bağlantı modunu nasıl yönetirize edilebildiğini açıklar
+title: Cihaz erişimi, güç ve bağlantı modu Azure Data Box Edge | Microsoft Docs
+description: Azure 'a veri aktarmaya yardımcı olan Azure Data Box Edge cihaz için erişim, güç ve bağlantı modunun nasıl yönetileceğini açıklar
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,129 +9,129 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: be4b780161003470622cb367d78138cfeffe341b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79454341"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Azure Veri Kutusu Edge'iniz için erişim, güç ve bağlantı modunu yönetme
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Azure Data Box Edge için erişimi, güç ve bağlantı modunu yönetme
 
-Bu makalede, Azure Veri Kutusu Edge'inizin erişim, güç ve bağlantı modunun nasıl yönetilenolduğu açıklanmaktadır. Bu işlemler yerel web ui veya Azure portalı üzerinden gerçekleştirilir.
+Bu makalede, Azure Data Box Edge erişim, güç ve bağlantı modunun nasıl yönetileceği açıklanır. Bu işlemler yerel Web Kullanıcı arabirimi veya Azure portal aracılığıyla gerçekleştirilir.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Aygıt erişimini yönetme
-> * Bağlantı modunu yönetme
-> * Gücü yönetin
+> * Cihaz erişimini yönetme
+> * Bağlantı modunu Yönet
+> * Güç yönetimi
 
 
-## <a name="manage-device-access"></a>Aygıt erişimini yönetme
+## <a name="manage-device-access"></a>Cihaz erişimini yönetme
 
-Veri Kutusu Edge cihazınıza erişim bir aygıt parolası nın kullanımı yla denetlenir. Parolayı yerel web ui üzerinden değiştirebilirsiniz. Azure portalındaki aygıt parolasını da sıfırlayabilirsiniz.
+Data Box Edge cihazınıza erişim, bir cihaz parolasının kullanımı ile denetlenir. Parolayı yerel Web Kullanıcı arabirimi aracılığıyla değiştirebilirsiniz. Ayrıca Azure portal cihaz parolasını sıfırlayabilirsiniz.
 
 ### <a name="change-device-password"></a>Cihaz parolasını değiştirme
 
-Aygıt parolasını değiştirmek için yerel UI'deki aşağıdaki adımları izleyin.
+Cihaz parolasını değiştirmek için yerel kullanıcı arabirimindeki adımları izleyin.
 
-1. Yerel web ui'sinde, **Maintenance > Password değişikliğine**gidin.
-2. Geçerli parolayı ve ardından yeni parolayı girin. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola aşağıdaki karakterlerden 3'ü olmalıdır: büyük harf, küçük harf, sayısal ve özel karakterler. Yeni parolayı onaylayın.
+1. Yerel Web Kullanıcı arabiriminde **bakım > parola değiştirme**' ye gidin.
+2. Geçerli parolayı ve ardından yeni parolayı girin. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. Yeni parolayı onaylayın.
 
     ![Parolayı değiştir](media/data-box-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. **Parolayı Değiştir'i**seçin.
+3. **Parolayı Değiştir**' i seçin.
  
-### <a name="reset-device-password"></a>Aygıt parolasını sıfırlama
+### <a name="reset-device-password"></a>Cihaz parolasını sıfırla
 
-Sıfırlama iş akışı, kullanıcının eski parolayı geri çağırmasını gerektirmez ve parola kaybolduğunda kullanışlıdır. Bu iş akışı Azure portalında gerçekleştirilir.
+Sıfırlama iş akışı, kullanıcının eski parolayı geri çekemesini gerektirmez ve parola kaybolduğunda faydalıdır. Bu iş akışı Azure portal gerçekleştirilir.
 
-1. Azure portalında, **Yönetici parolasını sıfırlama> genel e gidin.**
+1. Azure portal, **genel bakış > yönetici parolasını sıfırla**' ya gidin.
 
     ![Parola sıfırlama](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. Yeni parolayı girin ve onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola aşağıdaki karakterlerden 3'ü olmalıdır: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla**’yı seçin.
+2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla**’yı seçin.
 
     ![Parola sıfırlama](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Kaynak erişimini yönetme
 
-Veri Kutusu Kenarı/Veri Kutusu Ağ Geçidi, IoT Hub ve Azure Depolama kaynağınızı oluşturmak için, kaynak grubu düzeyinde katılımcı veya daha yüksek izinlere ihtiyacınız vardır. Ayrıca, ilgili kaynak sağlayıcılarının kaydedilmesi gerekir. Etkinleştirme anahtarı ve kimlik bilgileri içeren işlemler için Microsoft Graph API'ye izin verilmesi de gereklidir. Bunlar aşağıdaki bölümlerde açıklanmıştır.
+Data Box Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynağını oluşturmak için, bir kaynak grubu düzeyinde katkıda bulunan veya daha yüksek izinlere sahip olmanız gerekir. Ayrıca, kaydedilecek ilgili kaynak sağlayıcılarının da olması gerekir. Etkinleştirme anahtarı ve kimlik bilgilerini içeren tüm işlemler için Microsoft Graph API 'SI izinleri de gereklidir. Bunlar aşağıdaki bölümlerde açıklanmıştır.
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API izinlerini yönetme
 
-Veri Kutusu Kenarı aygıtı için etkinleştirme anahtarı oluştururken veya kimlik bilgileri gerektiren işlemleri gerçekleştirirken, Microsoft Graph API için izinlere ihtiyacınız vardır. Kimlik bilgileri gerektiren işlemler şu şekilde olabilir:
+Data Box Edge cihaz için etkinleştirme anahtarını oluştururken veya kimlik bilgileri gerektiren işlemler gerçekleştirirken, Microsoft Graph API 'sine yönelik izinlere ihtiyacınız vardır. Kimlik bilgileri gerektiren işlemler şunlar olabilir:
 
--  İlişkili bir depolama hesabıyla paylaşım oluşturma.
--  Aygıttaki paylaşımlara erişebilen bir kullanıcı oluşturma.
+-  İlişkili bir depolama hesabıyla bir paylaşma oluşturuluyor.
+-  Cihazdaki paylaşımlara erişebilen bir Kullanıcı oluşturma.
 
-Eğer yapabilmek `User` için gereken Active Directory kiracı bir `Read all directory objects`erişim olmalıdır. Çünkü onlar için `Read all directory objects`izinleri yok bir Konuk kullanıcı olamaz. Misafirseniz, etkinleştirme anahtarının oluşturulması, Veri Kutusu Edge aygıtınızda paylaşım oluşturulması, kullanıcı oluşturma, Edge bilgi işlem rolünün yapılandırması, aygıt parolasını sıfırlama gibi işlemler başarısız olur.
+Active Directory kiracısında yapabilmeniz için bir `User` erişiminizin olması gerekir. `Read all directory objects` Bir Konuk Kullanıcı, izinleri olmadığı için `Read all directory objects`bu kullanıcı olamaz. Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Data Box Edge cihazınızda bir paylaşımın oluşturulması, Kullanıcı oluşturma, sınır hesaplama rolü yapılandırması, cihaz parolasını sıfırlama işlemi başarısız olur.
 
-Kullanıcılara Microsoft Graph API'ye erişim innasıl sağlayabileceğiniz hakkında daha fazla bilgi için [Microsoft Graph izinleri başvurusuna](https://docs.microsoft.com/graph/permissions-reference)bakın.
+API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference).
 
-### <a name="register-resource-providers"></a>Kaynak sağlayıcılar kaydedin
+### <a name="register-resource-providers"></a>Kaynak sağlayıcılarını kaydetme
 
-Azure'da (Azure Kaynak Yöneticisi modelinde) bir kaynak sağlamak için, söz konusu kaynağın oluşturulmasını destekleyen bir kaynak sağlayıcısına ihtiyacınız var. Örneğin, sanal bir makine sağlamak için abonelikte bir 'Microsoft.Compute' kaynak sağlayıcısı olmalıdır.
+Azure 'da bir kaynak sağlamak için (Azure Resource Manager modelinde), bu kaynağın oluşturulmasını destekleyen bir kaynak sağlayıcısına ihtiyacınız vardır. Örneğin, bir sanal makine sağlamak için abonelikte bir ' Microsoft. COMPUTE ' kaynak sağlayıcısına sahip olmanız gerekir.
  
-Kaynak sağlayıcıları abonelik düzeyinde kaydedilir. Varsayılan olarak tüm yeni Azure abonelikleri sık kullanılan kaynak sağlayıcıları listesiyle önceden kaydedilir. 'Microsoft.DataBoxEdge' kaynak sağlayıcısı bu listeye dahil edilmez.
+Kaynak sağlayıcıları abonelik düzeyinde kaydedilir. Varsayılan olarak tüm yeni Azure abonelikleri sık kullanılan kaynak sağlayıcıları listesiyle önceden kaydedilir. ' Microsoft. DataBoxEdge ' için kaynak sağlayıcısı bu listeye dahil değildir.
 
-Kullanıcıların sahip hakları olan kaynak gruplarında 'Microsoft.DataBoxEdge' gibi kaynaklar oluşturabilmeleri için, bu kaynakların kaynak sağlayıcıları zaten olduğu sürece abonelik düzeyine erişim izni vermeniz gerekmez Kayıtlı.
+Bu kaynakların kaynak sağlayıcıları zaten kayıtlı olduğu sürece, kullanıcıların sahip oldukları kaynak grupları dahilinde ' Microsoft. DataBoxEdge ' gibi kaynaklar oluşturabilmeleri için abonelik düzeyine erişim izni vermeniz gerekmez.
 
-Herhangi bir kaynak oluşturmaya çalışmadan önce, kaynak sağlayıcısının aboneye kayıtlı olduğundan emin olun. Kaynak sağlayıcısı kayıtlı değilse, yeni kaynağı oluşturan kullanıcının gerekli kaynak sağlayıcısını abonelik düzeyinde kaydetmek için yeterli haklara sahip olduğundan emin olmanız gerekir. Bunu da yapmadıysanız, aşağıdaki hatayı görürsünüz:
+Herhangi bir kaynak oluşturmayı denemeden önce, kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kaynak sağlayıcısı kayıtlı değilse, yeni kaynağı oluşturan kullanıcının abonelik düzeyinde gerekli kaynak sağlayıcısını kaydetmek için yeterli haklara sahip olduğundan emin olmanız gerekir. Bunu yapmadıysanız, şu hatayı görürsünüz:
 
-*Abonelik \<Abonelik adı> kaynak sağlayıcısı(lar): Microsoft.DataBoxEdge'i kaydetme izinleri yoktur.*
+*> abonelik \<abonelik adı kaynak sağlayıcıları kaydetme iznine sahip değil: Microsoft. DataBoxEdge.*
 
 
-Geçerli abonelikte kayıtlı kaynak sağlayıcılarının listesini almak için aşağıdaki komutu çalıştırın:
+Geçerli abonelikteki kayıtlı kaynak sağlayıcılarının bir listesini almak için aşağıdaki komutu çalıştırın:
 
 ```PowerShell
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Veri Kutusu Kenarı `Microsoft.DataBoxEdge` aygıtı için kaydedilmelidir. Kayıt `Microsoft.DataBoxEdge`için, abonelik yöneticisi aşağıdaki komutu çalıştırmalıdır:
+Data Box Edge cihaz `Microsoft.DataBoxEdge` için kaydedilmelidir. Kaydolmak `Microsoft.DataBoxEdge`için, abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Kaynak sağlayıcısının nasıl kaydedilen hakkında daha fazla bilgi için [kaynak sağlayıcı kaydı hataları giderme'ye](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)bakın.
+Kaynak sağlayıcısını kaydetme hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı kaydı hatalarını giderme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
 
-## <a name="manage-connectivity-mode"></a>Bağlantı modunu yönetme
+## <a name="manage-connectivity-mode"></a>Bağlantı modunu Yönet
 
-Varsayılan tam bağlı modun dışında, aygıtınız kısmen bağlı veya tamamen bağlantısı kesilmiş modda da çalıştırılabilir. Bu modların her biri aşağıdaki gibi açıklanmıştır:
+Varsayılan tam bağlı moddan ayrı olarak, cihazınız kısmen bağlı veya tamamen bağlantısı kesik modda da çalıştırılabilir. Bu modların her biri aşağıda gösterildiği gibi açıklanmıştır:
 
-- **Tamamen bağlı** - Bu, aygıtın çalıştığı normal varsayılan moddur. Bu modda hem bulut yüklemesi hem de veri indirme özelliği etkinleştirilir. Aygıtı yönetmek için Azure portalını veya yerel web ui'sini kullanabilirsiniz.
+- **Tam bağlantı** -bu, cihazın işlem yaptığı normal varsayılan moddur. Verilerin hem bulut yüklemesi hem de indirilmesi bu modda etkindir. Cihazı yönetmek için Azure portal veya yerel Web Kullanıcı arabirimini kullanabilirsiniz.
 
-- **Kısmen bağlantısı kesildi** – Bu modda, aygıt herhangi bir paylaşım verisi yükleyemez veya indiremez ancak Azure portalı üzerinden yönetilebilir.
+- **Kısmen bağlantısı kesik** – bu modda cihaz, hiçbir paylaşma verisini karşıya yükleyemiyor veya indiremez, ancak Azure Portal aracılığıyla yönetilebilir.
 
-    Bu mod genellikle tarifeli uydu ağında kullanılır ve amaç ağ bant genişliği tüketimini en aza indirmektir. Cihaz izleme işlemleri için minimum ağ tüketimi oluşabilir.
+    Bu mod genellikle ölçülen uydu ağı kullanılırken kullanılır ve amaç ağ bant genişliği tüketimini en aza indirmektir. Cihaz izleme işlemleri için en az ağ tüketimi hala meydana gelebilir.
 
-- **Bağlantısı kesildi** – Bu modda, aygıt bulutla tamamen bağlantısı kesilir ve hem bulut yüklemeleri hem de karşıdan yüklemeleri devre dışı bırakılır. Cihaz yalnızca yerel web ui üzerinden yönetilebilir.
+- **Bağlı** değil – bu modda, cihazın bulutla bağlantısı tamamen kesilir ve hem bulut karşıya yüklemeleri hem de İndirmeleri devre dışı bırakılır. Cihaz yalnızca yerel Web Kullanıcı arabirimi aracılığıyla yönetilebilir.
 
-    Bu mod genellikle aygıtınızı çevrimdışına almak istediğinizde kullanılır.
+    Bu mod genellikle cihazınızı çevrimdışına almak istediğinizde kullanılır.
 
-Aygıt modunu değiştirmek için aşağıdaki adımları izleyin:
+Cihaz modunu değiştirmek için şu adımları izleyin:
 
-1. Cihazınızın yerel web ui'sinde Configuration **> Cloud ayarlarına**gidin.
-2. Açılan listeden, aygıtı çalıştırmak istediğiniz modu seçin. **Tam bağlı,** kısmen **bağlı**ve **tamamen bağlantısı kesilmiş**birini seçebilirsiniz. Aygıtı kısmen bağlantısı kesilmiş modda çalıştırmak için **Azure portal yönetimini**etkinleştirin.
+1. Cihazınızın yerel Web Kullanıcı arabiriminde, **yapılandırma > bulut ayarları**' na gidin.
+2. Açılan listeden, cihazı çalıştırmak istediğiniz modu seçin. **Tam bağlı**, **kısmen bağlı**ve **tamamen bağlantısı kesilen**' ı seçebilirsiniz. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini**etkinleştirin.
 
     ![Bağlantı modu](media/data-box-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
-## <a name="manage-power"></a>Gücü yönetin
+## <a name="manage-power"></a>Güç yönetimi
 
-You can shut down or restart your physical device using the local web UI. Yeniden başlatmadan önce, veri sunucusundaki ve ardından aygıttaki paylaşımları çevrimdışına almanızı öneririz. Bu eylem, veri bozulması olasılığını en aza indirir.
+Yerel Web Kullanıcı arabirimini kullanarak fiziksel cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Yeniden başlatmadan önce, verileri veri sunucusunda ve ardından cihazda çevrimdışı duruma getirin. Bu eylem, herhangi bir veri bozulması olasılığını en aza indirir.
 
-1. Yerel web ui'sinde, **Bakım > Güç ayarlarına**gidin.
-2. Ne yapmak istediğinize bağlı olarak **Kapatma** veya **Yeniden Başlat'ı** seçin.
+1. Yerel Web Kullanıcı arabiriminde **bakım > güç ayarları**' na gidin.
+2. Ne yapmak istediğinize bağlı olarak, **kapanıyor** ' u veya **Yeniden Başlat** ' ı seçin.
 
     ![Güç ayarları](media/data-box-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
-3. Onay istendiğinde, devam etmek için **Evet'i** seçin.
+3. Onaylamanız istendiğinde, devam etmek için **Evet** ' i seçin.
 
 > [!NOTE]
-> Fiziksel aygıtı kapatırsanız, açmak için aygıtın güç düğmesine basmanız gerekir.
+> Fiziksel cihazı kapatırsanız, açmak için cihazda güç düğmesine gönderim yapmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Paylaşımları](data-box-edge-manage-shares.md)nasıl yönetinen öğrenin.
+- [Paylaşımları yönetmeyi](data-box-edge-manage-shares.md)öğrenin.

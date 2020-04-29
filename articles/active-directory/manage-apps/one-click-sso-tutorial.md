@@ -1,6 +1,6 @@
 ---
-title: Azure Marketi uygulamanızın tek tıklamayla, tek oturum açma (SSO) yapılandırması | Microsoft Dokümanlar
-description: Azure Marketi'nden uygulamanız için SSO'nun tek tıklamayla yapılandırması için adımlar.
+title: Azure Market uygulamanızın tek tıklamayla, çoklu oturum açma (SSO) yapılandırması | Microsoft Docs
+description: Azure Marketi 'nden uygulamanız için SSO 'nun tek tıklamayla yapılandırmasına yönelik adımlar.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,73 +17,73 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67872436"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on"></a>Tek oturum açmanın tek tıklamayla uygulama yapılandırması
+# <a name="one-click-app-configuration-of-single-sign-on"></a>Çoklu oturum açma için tek tıklamayla uygulama yapılandırması
 
- Bu eğitimde, Azure Marketi'nden SAML destekli Azure Active Directory (Azure AD) uygulamaları için tek tıklamalı, tek oturum açma (SSO) yapılandırmasını nasıl gerçekleştireceklerini öğreneceksiniz.
+ Bu öğreticide, Azure Marketi 'nden SAML destekleme, Azure Active Directory (Azure AD) uygulamaları için tek tıklamayla, çoklu oturum açma (SSO) yapılandırması gerçekleştirmeyi öğrenirsiniz.
 
-## <a name="introduction-to-one-click-sso"></a>Tek tıklamayla SSO'ya giriş
+## <a name="introduction-to-one-click-sso"></a>Tek tıklamayla SSO 'ya giriş
 
-Tek tıklatma SSO özelliği, SAML protokolünü destekleyen Azure Marketi uygulamaları için tek oturum açma yapmak üzere tasarlanmıştır. Azure AD SSO yapılandırma sayfasında, bu seçenek uygulama tarafındaki Azure AD meta verilerini otomatik olarak yapılandırmanıza olanak tanır. Bu şekilde, sso'u en az manuel çabayla hızlı bir şekilde ayarlayabilirsiniz.
+Tek tıklamayla SSO özelliği, SAML protokolünü destekleyen Azure Market uygulamaları için çoklu oturum açmayı yapılandırmak üzere tasarlanmıştır. Azure AD SSO yapılandırma sayfasında bu seçenek, Azure AD meta verilerini uygulama tarafında otomatik olarak yapılandırmanızı sağlar. Bu şekilde, en az el ile gerçekleştirilen çabayla kolayca SSO 'yu ayarlayabilirsiniz.
 
-## <a name="advantages-of-one-click-sso"></a>Tek tıklamayla SSO'nun avantajları
+## <a name="advantages-of-one-click-sso"></a>Tek tıklama SSO 'SU avantajları
 
-- Uygulama tarafında manuel kurulum gerektiren Azure Marketi uygulamalarının hızlı SSO yapılandırması.
+- Uygulama tarafında el ile kurulum gerektiren Azure Marketi uygulamalarının hızlı SSO yapılandırması.
 - Daha verimli ve doğru SSO yapılandırması.
-- Kurulum için ortak iletişimi veya desteği gerekmez. Uygulama SAML yapılandırması için Kullanıcı Arabirimi sağlar.
+- Kurulum için ortak iletişim veya destek gerekmez. Uygulama, SAML yapılandırması için Kullanıcı arabirimi sağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- SSO ile yapılandırmak için uygulamanın etkin bir abonelik. Ayrıca yönetici kimlik bilgilerine de ihtiyacınız var.
-- Microsoft'un **Uygulamalarım Güvenli Oturum Açma uzantısı** tarayıcıda yüklü. Daha fazla bilgi için [Access'e bakın ve Uygulamalarım portalındaki uygulamaları kullanın.](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
+- SSO ile yapılandırılacak uygulamanın etkin bir aboneliği. Yönetici kimlik bilgilerine de ihtiyacınız vardır.
+- Uygulamalarım Microsoft 'un tarayıcıda yüklü olan **güvenli oturum açma uzantısı** . Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulamalara erişme ve bunları kullanma](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
 ## <a name="one-click-sso-configuration-steps"></a>Tek tıklamayla SSO yapılandırma adımları
 
-1. Uygulamayı Azure Marketi'nden ekleyin.
+1. Uygulamayı Azure Marketi 'nden ekleyin.
 
-2. **Tek oturum açma'yı**seçin.
+2. **Çoklu oturum açma**seçeneğini belirleyin.
 
-3. **Tek oturum açmayı etkinleştir'i**seçin.
+3. **Çoklu oturum açmayı etkinleştir '** i seçin.
 
-4. **Temel SAML Yapılandırması** bölümündezorunlu yapılandırma değerlerini doldurma.
+4. **Temel SAML yapılandırması** bölümünde zorunlu yapılandırma değerlerini doldurun.
 
     > [!NOTE]
-    > Uygulama, yapılandırmanız gereken özel talepleri varsa, tek tıklamayla SSO gerçekleştirmeden önce bunları işleyin.
+    > Uygulamanın yapılandırmanız gereken özel talepleri varsa, tek tıklamayla SSO gerçekleştirmeden önce bunları işleyin.
 
-5. Azure Marketi uygulamanız için tek tıklamayla SSO özelliği varsa, aşağıdaki ekranı görürsünüz. Uzantıyı yükle seçeneğini seçerek **Uygulamalarım Güvenli Oturum Açma tarayıcı** **uzantısını**yüklemeniz gerekebilir.
+5. Azure Market uygulamanız için bir tıklama SSO özelliği varsa, aşağıdaki ekranı görürsünüz. **Uzantıyı yükleyebilirsiniz**' i seçerek **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklemelisiniz.
 
-   ![Uygulamalarımı Güvenli Oturum Açma tarayıcı uzantısını yükleme](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
+   ![Uygulamalarımı güvenli oturum açma tarayıcı uzantısı 'nı yükler](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Uzantıyı tarayıcıya ekledikten **sonra, \<\>Kurulum Uygulama Adı'nı**seçin. Uygulama yöneticisi portalına yönlendirildikten sonra yönetici olarak oturum açın.
+6. Uzantıyı tarayıcıya ekledikten sonra, ** \<kurulum uygulama adı\>**' nı seçin. Uygulama Yöneticisi portalına yeniden yönlendirildikten sonra, yönetici olarak oturum açın.
 
-   ![Kurulum uygulama adı](./media/one-click-sso-tutorial/setup-sso.png)
+   ![Kurulum uygulaması adı](./media/one-click-sso-tutorial/setup-sso.png)
 
-7. Tarayıcı uzantısı uygulamada SSO'yu otomatik olarak yapılandırır. **Evet'i**seçerek onayla.
+7. Tarayıcı uzantısı, uygulamada SSO 'yu otomatik olarak yapılandırır. **Evet**' i seçerek onaylayın.
 
-   ![Otomatik doldurulan verileri kaydetme](./media/one-click-sso-tutorial/save-autopopulate.png)
+   ![Otomatik doldurulmuş verileri kaydetme](./media/one-click-sso-tutorial/save-autopopulate.png)
 
    > [!NOTE]
-   > Uygulamanız için SSO yapılandırması, adımları gerçekleştirmek için istemleri izleyerek ek adımlar gerektiriyorsa.
+   > Uygulamanız için SSO Yapılandırması ek adımlar gerektiriyorsa, adımları gerçekleştirmek için istemleri takip edin.
 
-8. Yapılandırma tamamlandıktan sonra değişiklikleri kaydetmek için **Tamam'ı** seçin.
+8. Yapılandırma tamamlandıktan sonra, değişiklikleri kaydetmek için **Tamam** ' ı seçin.
 
-   ![Otomatik doldurulan verileri kaydetme](./media/one-click-sso-tutorial/save-data.png)
+   ![Otomatik olarak doldurulan verileri kaydetme](./media/one-click-sso-tutorial/save-data.png)
 
-9. SSO ayarlarının başarıyla yapılandırıldığına dair bir onay penceresi görüntülenir.
+9. SSO ayarlarının başarıyla yapılandırıldığını bilmenizi sağlamak için bir onay penceresi görüntülenir.
 
-   ![SSO yapılandırılmış](./media/one-click-sso-tutorial/sso-configured.png)
+   ![SSO yapılandırıldı](./media/one-click-sso-tutorial/sso-configured.png)
 
-10. Yapılandırma başarılı olduktan sonra, uygulamadan çıkış yapar ve Azure portalına döndürülür.
+10. Yapılandırma başarılı olduktan sonra, uygulamadan oturumunuzu kapatıp Azure portal geri döndürülürsünüz.
 
-11. Tek oturum açma yı test etmek için **Test'i** seçebilirsiniz.
+11. Çoklu oturum açmayı test etmek için **Test** ' i seçebilirsiniz.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [SaaS uygulamalarının Azure Active Directory ile nasıl entegre edilebildiğini anlatan öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısı nedir?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
+* [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+* [Uygulamalarım güvenli oturum açma tarayıcı uzantısı nedir?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
  

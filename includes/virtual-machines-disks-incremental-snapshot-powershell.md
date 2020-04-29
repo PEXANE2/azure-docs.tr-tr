@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 3eec6583ebdff35d7e40d2eec305a947de0cb87c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79299473"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -26,17 +26,17 @@ ms.locfileid: "79299473"
 
 ## <a name="powershell"></a>PowerShell
 
-Artımlı anlık görüntü oluşturmak için Azure PowerShell'i kullanabilirsiniz. Azure PowerShell'in en son sürümüne ihtiyacınız olacak, aşağıdaki komut ya yükler veya mevcut yüklemenizi en son güncelleştirmeye çalışacaktır:
+Artımlı bir anlık görüntü oluşturmak için Azure PowerShell kullanabilirsiniz. Azure PowerShell en son sürümü gerekir, aşağıdaki komut bunu yükleyecek veya mevcut yüklemenizi en son sürümüne güncelleştirecek:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Bu yüklendikten sonra PowerShell oturumunuza `az login`'' ile giriş yapın.
+Yüklendikten sonra PowerShell oturumunuzda ile `az login`oturum açın.
 
-Azure PowerShell ile artımlı anlık görüntü oluşturmak için, [yeni-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) ile yapılandırmayı `-Incremental` parametre ile ayarlayın ve bunu parametre aracılığıyla Yeni [AzSnapshot'a](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) değişken olarak geçirin. `-Snapshot`
+Azure PowerShell ile artımlı bir anlık görüntü oluşturmak için, yapılandırmayı [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) ile `-Incremental` parametresiyle ayarlayın ve ardından bu `-Snapshot` parametreyi parametresi aracılığıyla [New-azsnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) öğesine bir değişken olarak geçirin.
 
-`<yourDiskNameHere>`Değiştirin `<yourResourceGroupNameHere>`, `<yourDesiredSnapShotNameHere>` ve değerlerinizle, artımlı bir anlık görüntü oluşturmak için aşağıdaki komut dosyasını kullanabilirsiniz:
+`<yourResourceGroupNameHere>`, Ve `<yourDesiredSnapShotNameHere>` değerlerini değerleriyle değiştirin `<yourDiskNameHere>`, ardından artımlı bir anlık görüntü oluşturmak için aşağıdaki betiği kullanabilirsiniz:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -47,9 +47,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-Anlık görüntülerve `SourceResourceId` `SourceUniqueId` özellikleriyle aynı diskten artan anlık görüntüleri tanımlayabilirsiniz. `SourceResourceId`üst diskin Azure Kaynak Yöneticisi kaynak kimliğidir. `SourceUniqueId`diskin `UniqueId` özelliğinden devralınan değerdir. Bir diski siler ve sonra aynı ada sahip yeni `UniqueId` bir disk oluşturursanız, özelliğin değeri değişir.
+Aynı diskten Artımlı anlık görüntüleri `SourceResourceId` ve anlık görüntülerin `SourceUniqueId` özelliklerini tanımlayabilirsiniz. `SourceResourceId`, üst diskin Azure Resource Manager kaynak KIMLIĞIDIR. `SourceUniqueId`, diskin `UniqueId` özelliğinden devralınan değerdir. Bir diski silip aynı ada sahip yeni bir disk oluşturursanız, `UniqueId` özelliğin değeri değişir.
 
-Belirli bir `SourceResourceId` `SourceUniqueId` diskle ilişkili tüm anlık görüntülerin listesini kullanabilir ve oluşturabilirsiniz. Değerinizle değiştirin `<yourResourceGroupNameHere>` ve ardından varolan artımlı anlık görüntülerinizi listelemek için aşağıdaki örneği kullanabilirsiniz:
+Belirli bir diskle `SourceResourceId` ilişkili `SourceUniqueId` tüm anlık görüntülerin listesini oluşturmak için ve kullanabilirsiniz. Değerini `<yourResourceGroupNameHere>` , ile değiştirin ve ardından mevcut Artımlı anlık görüntülerinizi listelemek için aşağıdaki örneği kullanabilirsiniz:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -69,7 +69,7 @@ $incrementalSnapshots
 
 ## <a name="resource-manager-template"></a>Resource Manager şablonu
 
-Artımlı anlık görüntü oluşturmak için Azure Kaynak Yöneticisi şablonlarını da kullanabilirsiniz. ApiVersion **2019-03-01** olarak ayarlanmış olduğundan ve artımlı özelliğin de doğru olduğundan emin olmanız gerekir. Aşağıdaki parçacık, Kaynak Yöneticisi şablonları ile artımlı anlık görüntü oluşturmanın bir örneğidir:
+Artımlı bir anlık görüntü oluşturmak için Azure Resource Manager şablonlarını da kullanabilirsiniz. ApiVersion 'ın **2019-03-01** olarak ayarlandığından ve artımlı özelliğinin de true olarak ayarlandığından emin olmanız gerekir. Aşağıdaki kod parçacığı, Kaynak Yöneticisi şablonlarıyla artımlı bir anlık görüntü oluşturma örneğidir:
 
 ```json
 {
@@ -105,4 +105,4 @@ Artımlı anlık görüntü oluşturmak için Azure Kaynak Yöneticisi şablonla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-.NET'i kullanarak artımlı anlık görüntünün diferansiyel yeteneğini gösteren örnek kodu görmek istiyorsanız, [Azure Yönetilen Diskleri yedeklemelerini artımlı anlık görüntü fark özelliğine sahip başka bir bölgeye](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)kopyalayın'a bakın.
+.NET kullanarak Artımlı anlık görüntülerin fark yeteneğini gösteren örnek kodu görmek isterseniz, bkz. [Azure yönetilen diskler yedeklemelerini, artımlı anlık görüntülerin fark yeteneği ile başka bir bölgeye kopyalama](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

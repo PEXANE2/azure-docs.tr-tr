@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Kiteworks ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Kiteworks arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Kiteçalışmalarla Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve Kiteçalışmaarasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,166 +16,166 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68248912"
 ---
-# <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Öğretici: Kiteworks'ü Azure Active Directory ile tümleştir
+# <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Öğretici: Kiteçalışmalarla Azure Active Directory tümleştirme
 
-Bu eğitimde, Kiteworks'ü Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Kiteworks'ü Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Kiteçalışmalarla Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Kiteçalışmalarınızla Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Uçurtma'ya erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Kiteworks'te otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de Kiteçalışmasına erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Kiteçalışmasına otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü alabilirsiniz.
-* Kiteworks tek oturum açma (SSO) aboneliği sağladı.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü edinebilirsiniz.
+* Kiteçalışmalarım çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Kiteworks **SP** başlatılan SSO destekler
-* Uçurtma **Just In Time** kullanıcı sağlama destekler
+* Kiteçalışmaları **SP** tarafından başlatılan SSO 'yu destekler
+* Kiteçalışmalarım **yalnızca zamanında** Kullanıcı sağlamasını destekler
 
-## <a name="adding-kiteworks-from-the-gallery"></a>Galeriden Kiteworks ekleme
+## <a name="adding-kiteworks-from-the-gallery"></a>Galeriden Kiteçalışmalarından ekleme
 
-Uçurtma İşleri'nin Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Kiteworks eklemeniz gerekir.
+Kiteçalışmalarınızın tümleştirilmesine Azure AD ile yapılandırmak için, Galeriden Kiteçalışmalar ' ı yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Kiteworks** yazın.
-1. Sonuç panelinden **Uçurtma İşleri'ni** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **kiteçalışmatürleri** yazın.
+1. Sonuçlar panelinden **Kiteçalışmaçalıştır** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Kiteworks ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Kiteworks'teki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Kiteçalışmalarla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Kiteçalışmadaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Kiteworks ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Kiteçalışmalarıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-2. **[Yapılandırılan Kiteworks SSO](#configure-kiteworks-sso)** - uygulama tarafında Tek Oturum Açma ayarlarını yapılandırmak için.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Kiteworks test kullanıcı oluşturun](#create-kiteworks-test-user)** - Kullanıcının Azure AD gösterimi ile bağlantılı Kiteworks Britta Simon bir meslektaşı olması.
-6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+2. **[Kiteçalışmaları SSO 'Yu yapılandırma](#configure-kiteworks-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[Kitebir test kullanıcısı oluşturun](#create-kiteworks-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan Kiteçalışmalerinde Britta Simon 'a sahip olmak için.
+6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Kiteworks** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **kiteçalışmalarım** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<kiteworksURL>.kiteworks.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<kiteworksURL>.kiteworks.com`
 
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<kiteworksURL>/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<kiteworksURL>/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Kiteworks İstemci destek ekibine](https://accellion.com/support) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Kiteçalışmaistemci destek ekibine](https://accellion.com/support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde Sertifika **'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Uçurtma İşleri'ni Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Kiteçalışmaları ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-kiteworks-sso"></a>Yapılandırış Kiteworks SSO
+### <a name="configure-kiteworks-sso"></a>Kiteçalışmaları SSO 'yu yapılandırma
 
-1. Bir yönetici olarak Kiteworks şirket sitesinde oturum açın.
+1. Kiteçalışmalarınız şirket sitenizde yönetici olarak oturum açın.
 
-1. Üstteki araç çubuğunda **Ayarlar'ı**tıklatın.
+1. Üstteki araç çubuğunda, **Ayarlar**' a tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
-1. Kimlik **Doğrulama ve Yetkilendirme** bölümünde **SSO Kurulumu'nu**tıklatın.
+1. **Kimlik doğrulama ve yetkilendirme** bölümünde, **SSO kurulumu**' na tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
 
-1. SSO Kurulum sayfasında aşağıdaki adımları gerçekleştirin:
+1. SSO kurulum sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Tek İşaret-On'u Yapılandır](./media/kiteworks-tutorial/tutorial_kiteworks_09.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kiteworks-tutorial/tutorial_kiteworks_09.png)
 
-    a. **SSO üzerinden Kimlik Doğrulaması'nı**seçin.
+    a. **SSO aracılığıyla kimlik doğrulaması**' nı seçin.
 
-    b. **AuthnRequest Başlat'ı**seçin.
+    b. **Authnistek Başlat**' ı seçin.
 
-    c. **IDP Entity ID** textbox'a, Azure portalından kopyaladığınız **Azure AD Tanımlayıcısı'nın**değerini yapıştırın.
+    c. **IDP VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 
-    d. Tek **Oturum Açma Hizmeti URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin**değerini yapıştırın.
+    d. **Çoklu oturum açma hizmeti URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    e. Tek **Oturum Açma Hizmeti URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL**değerini yapıştırın.
+    e. **Çoklu oturum kapatma hizmeti URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın.
 
-    f. İndirilen sertifikanızı Not Defteri'nde açın, içeriği kopyalayın ve **ardından RSA Ortak Anahtar Sertifikası** metin kutusuna yapıştırın.
+    f. İndirilen sertifikanızı Not defteri 'nde açın, içeriği kopyalayın ve ardından **RSA ortak anahtar sertifikası** metin kutusuna yapıştırın.
 
-    g. **Kaydet**'e tıklayın.
+    g. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Kiteworks'e erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Kiteçalışmalarınızın erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Kiteworks'ü**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Kiteçalışmaları**' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-kiteworks-test-user"></a>Uçurtma test kullanıcısı oluşturma
+### <a name="create-kiteworks-test-user"></a>Kiteçalışmatesti Kullanıcı Oluştur
 
-Bu bölümün amacı Kiteworks Britta Simon adlı bir kullanıcı oluşturmaktır.
+Bu bölümün amacı, Kiteçalışıyor 'da Britta Simon adlı bir Kullanıcı oluşturmaktır.
 
-Uçurtma, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Yeni bir kullanıcı henüz yoksa Kiteworks erişmek için bir girişim sırasında oluşturulur.
+Kiteçalışıyor, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz yoksa, Kiteçalışmasına erişme denemesi sırasında yeni bir Kullanıcı oluşturulur.
 
 > [!NOTE]
-> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Kiteworks destek ekibine](https://accellion.com/support)başvurmanız gerekir.
+> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Kitesupport ekibine](https://accellion.com/support)başvurmanız gerekir.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Kiteworks döşemesini tıklattığınızda, SSO'yu kurduğunuz Kiteworks'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Kiteçalışmalarım kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Kiteçalışmalarınız için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

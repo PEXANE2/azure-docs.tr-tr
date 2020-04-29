@@ -9,19 +9,19 @@ ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
 ms.openlocfilehash: 9d8de8826fc3dfcc2360eb3b6c82b3ff8d65d845
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79461240"
 ---
 ### <a name="access-the-media-services-api"></a>Media Services API’sine erişim
 
 Azure AD hizmet sorumlusu kimlik doğrulamasını kullanarak Azure Media Services API’sine bağlanın. Aşağıdaki komut bir Azure AD uygulaması oluşturur ve hesaba bir hizmet sorumlusu ekler. Uygulamanızı yapılandırmak için, döndürülen değerleri kullanmalısınız.
 
-Komut dosyasını çalıştırmadan önce, bu kaynakları oluştururken seçtiğiniz adlarla `amsaccount` ve `amsResourceGroup` değiştirmelisiniz. `amsaccount`, hizmet sorumlusunu ekleyeceğiniz Azure Media Services hesabının adıdır.
+Betiği çalıştırmadan önce, ve ' `amsaccount` `amsResourceGroup` yi, bu kaynakları oluştururken seçtiğiniz adlarla değiştirmelisiniz. `amsaccount`, hizmet sorumlusunu ekleyeceğiniz Azure Media Services hesabının adıdır.
 
-Birden çok aboneliğe erişiminiz varsa, ilk olarak etkin aboneliği Medya Hizmetleri hesabının oluşturulduğu aboneliğe ayarlayın.
+Birden çok aboneliğe erişiminiz varsa, önce etkin aboneliği Media Services hesabının oluşturulduğu aboneliğe ayarlayın.
 
 ```azurecli
 az account set --subscription subscriptionId

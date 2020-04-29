@@ -1,6 +1,6 @@
 ---
-title: Azure portalında disk ölçümleri amortismanı | Microsoft Dokümanlar
-description: Yeni ölçümleri kullanmak için hangi disk ölçümlerinin devre deprecated olduğunu ve metrik uyarılarınızı nasıl güncelleştirtini öğrenin.
+title: Azure portal disk ölçümleri kullanımdan kaldırıldı | Microsoft Docs
+description: Hangi disk ölçümlerinin kullanım dışı olduğunu ve ölçüm uyarılarınızı yeni ölçümleri kullanacak şekilde güncelleştirmeyi öğrenin.
 services: azure-monitor
 ms.subservice: metrics
 ms.topic: conceptual
@@ -8,100 +8,100 @@ author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
 ms.openlocfilehash: f2b960c2198800e04da77ad6b5be78d7b4762354
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79299809"
 ---
-# <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Azure portalında disk ölçümleri amortismanı
+# <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Azure portal disk ölçümleri kullanımdan kaldırıldı
 
-Deprecated disk ile ilgili ölçümler yakında Azure portalıkaldırılacaktır. Her amortismana uygun ölçümün yeni bir sürümünü kullanmanız için kullanılabilir. Bu makalede, hangi ölçümlerin yeni olduğu ve bunları kullanmak için metrik uyarılarınızın nasıl güncelleştirildiği gösterilmektedir.
+Kullanımdan kaldırılan diskle ilgili ölçümler yakında Azure portal kaldırılacak. Kullanım dışı bırakılan her ölçümün yeni bir sürümü kullanılabilir. Bu makalede, hangi ölçümlerin yeni olduğu ve ölçüm uyarılarınızın bunları kullanmak için nasıl güncelleştirilmesi gösterilmektedir.
 
-## <a name="list-of-new-metrics"></a>Yeni ölçümler listesi
+## <a name="list-of-new-metrics"></a>Yeni ölçümlerin listesi
 
-Bu tablo, amortismana uğran her ölçüğe karşılık gelen yeni metrikle eşlenir. 
+Bu tablo, kullanım dışı bırakılan her ölçüyü buna karşılık gelen yeni ölçüyle eşler. 
 
-|Amortismana ermiş metrik|Yeni (değiştirme) metrik|
+|Kullanım dışı ölçüm|Yeni (değiştirme) ölçüm|
 |----|----|
-|Veri Diski QD (Deprecated)|Veri DiskI Sıra Derinliği (Önizleme)|
-|Veri Diski Okuma Bayt/Sn (Amortismana Ermiş)|Veri Diski Okuma Bayt/Sn (Önizleme)|
-|Veri Diski Okuma İşlemleri/Sn (Amortismana Alındı)|Veri Diski Okuma İşlemleri/Sn (Önizleme)|
-|Veri Diski Yazma Bayt/Sn (Amortismana Eritilmiş)|Veri Diski Yazma Bayt/Sn (Önizleme)|
-|Veri Diski Yazma İşlemleri/Sn (Amortismana Alındı)|Veri Disk ihyası işlemleri/sn (Önizleme)|
-|İşletim Sistemi QD (Amortismana Uğradı)|İşletim Sistemi Sıra Derinliği (Önizleme)|
-|İşletim Sistemi Okuma Bayt/Sn (Amortismana Ermiş)|İşletim Sistemi Okuma Bayt/Sn (Önizleme)|
-|İşletim Sistemi Okuma İşlemleri/Sn (Amortismana Uğradı)|İşletim Sistemi Okuma İşlemleri/Sn (Önizleme)|
-|İşletim Sistemi Bayt/Sn (Amortismana Göre) Yaz|İşletim Sistemi Bayt/Sn Yaz (Önizleme)|
-|İşletim Sistemi Yazma İşlemleri/Sn (Amortismana Uğradı)|İşletim Sistemi Yazma İşlemleri/Sn (Önizleme)|
+|Veri diski QD (kullanım dışı)|Veri diski sıra derinliği (Önizleme)|
+|Veri diski okuma bayt/sn (kullanım dışı)|Veri diski okuma bayt/sn (Önizleme)|
+|Veri diski okuma Işlemi/sn (kullanım dışı)|Veri diski okuma Işlemi/sn (Önizleme)|
+|Veri diski yazma bayt/sn (kullanım dışı)|Veri diski yazma bayt/sn (Önizleme)|
+|Veri diski yazma Işlemi/sn (kullanım dışı)|Veri diski yazma Işlemi/sn (Önizleme)|
+|OS QD (kullanım dışı)|İşletim sistemi sıra derinliği (Önizleme)|
+|İşletim sistemi okuma bayt/sn (kullanım dışı)|İşletim sistemi okuma bayt/sn (Önizleme)|
+|İşletim sistemi okuma Işlemi/sn (kullanım dışı)|İşletim sistemi okuma Işlemi/sn (Önizleme)|
+|İşletim sistemi yazma bayt/sn (kullanım dışı)|İşletim sistemi yazma bayt/sn (Önizleme)|
+|İşletim sistemi yazma Işlemi/sn (kullanım dışı)|İşletim sistemi yazma Işlemi/sn (Önizleme)|
 
 <a id="update-metrics" />
 
-## <a name="migrate-metrics-in-your-metric-alerts"></a>Metrik uyarılarınızdaki ölçümleri geçirin
+## <a name="migrate-metrics-in-your-metric-alerts"></a>Ölçüm uyarılarınıza ölçümleri geçirin
 
-Yeni ölçümleri kullanmak için metrik uyarılarınızı güncelleştirin.
+Ölçüm uyarılarınızı yeni ölçümleri kullanacak şekilde güncelleştirin.
 
-1. Azure portalında **Uyarıları**arayın. Ardından, **Hizmetler** bölümünde **Uyarılar'ı**seçin.
-
-   > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
-
-2. **Uyarılar** sayfasında, **Uyarı Kurallarını Yönet** düğmesini seçin. 
+1. Azure portal, **Uyarılar**' ı arayın. Ardından, **Hizmetler** bölümünde **Uyarılar**' ı seçin.
 
    > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
 
-3. Kaynak **grubu** açılır listesinde **Sanal Makineler** onay kutusunu seçin ve **Sinyal türü** açılır listesinde **Ölçümler** onay kutusunu seçin. 
-
-   > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/filter-alerts.png)
-
-4. Ölçümler listesinde, disklerle ilgili koşulları tanımlayın. Kuralın adını tıklatın. 
-
-   Ad, tablonun **Ad** sütununda bir köprü olarak görünür.
+2. **Uyarılar** sayfasında, **Uyarı kurallarını yönet** düğmesini seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
 
-5. **Kurallar yönetimi** sayfasının **Koşullar** bölümünde, uyarının durumunu tıklatın. 
-
-   Durum bir köprü olarak görünür.  
+3. **Kaynak grubu** açılan listesinde, **sanal makineler** onay kutusunu seçin ve **sinyal türü** aşağı açılan listesinde **ölçümler** onay kutusunu seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/adjust-condition.png)
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/filter-alerts.png)
 
-   **Yapılandırma sinyali mantığı** sayfası görüntülenir ve koşulun ayarları o sayfanın **Uyarı mantığı** bölümünde görünür.
+4. Ölçümler listesinde disklerle ilgili koşulları tanımla. Kuralın adına tıklayın. 
 
-6. Amortismana uğrama gelen metriği kaldırdığınızda kaybolacakları için bu ayarların kaydını yapın.
+   Ad, tablonun **ad** sütununda köprü olarak görünür.
 
    > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/condition-rules.png)
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
+
+5. **Kural yönetimi** sayfasının **koşullar** bölümünde, uyarının koşuluna tıklayın. 
+
+   Koşul bir köprü olarak görünür.  
+
+   > [!div class="mx-imgBorder"]
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/adjust-condition.png)
+
+   **Sinyal mantığını Yapılandır** sayfası görünür ve bu sayfanın **Uyarı mantığı** bölümünde koşulun ayarları görüntülenir.
+
+6. Kullanım dışı olan ölçüyü kaldırdığınızda bu ayarların kaydını temizler.
+
+   > [!div class="mx-imgBorder"]
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/condition-rules.png)
 
    > [!TIP] 
-   > Bu ayarları ekran görüntüsünde veya metin dosyasında yakalamayı düşünün. 
+   > Bu ayarları bir ekran görüntüsünde veya metin dosyasında yakalamayı göz önünde bulundurun. 
 
-7. Sinyal seçimi bağlantısını **yapmak için Geri'yi** tıklatın.
+7. **Sinyal seçimine dön** bağlantısına tıklayın.
 
    > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
 
-8. **Yapılı sinyal** mantık sayfasında uygun yedek metrik (yeni metrik) seçin. Yeni metnin adını kimlikle ilişkilendirmek için bu makalede daha önce görünen [tabloyu](#update-metrics) kullanın.
+8. **Sinyal mantığını Yapılandır** sayfasında, uygun değiştirme ölçümünü (yeni ölçüm) seçin. Yeni ölçümün adını kimlik olarak vermek için bu makalenin önceki kısımlarında yer alan [tabloyu](#update-metrics) kullanın.
 
    > [!TIP] 
-   > Metrik adlistesini daraltmak için arama çubuğuna yazmaya başlayın. 
+   > Ölçüm adlarının listesini daraltmak için arama çubuğuna yazmaya başlayın. 
 
    > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
 
 9. **Bitti** düğmesini seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/set-new-metric.png)
+   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/set-new-metric.png)
 
-10. **Kaydet** düğmesini seçerek değişikliklerinizi gerçekleştirin. 
+10. **Kaydet** düğmesini seçerek yaptığınız değişiklikleri işleyin. 
 
     > [!div class="mx-imgBorder"]
-    > ![Resim açıklaması](./media/portal-disk-metrics-deprecation/save-new-metric.png)
+    > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/save-new-metric.png)
 
 
 

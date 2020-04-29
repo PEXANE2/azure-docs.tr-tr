@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Cincom tarafından CPQSync ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve CPQSync arasında Cincom tarafından tek oturum açma nın nasıl yapılandırılabildiğini öğrenin.
+title: 'Öğretici: Incom tarafından CPQSync ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Cincom tarafından Azure Active Directory ve CPQSync arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,139 +17,139 @@ ms.date: 08/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fc9cf236beab78d666f634489a205828050fae4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68879558"
 ---
-# <a name="tutorial-integrate-cpqsync-by-cincom-with-azure-active-directory"></a>Öğretici: CPQSync'i Cincom ile Azure Active Directory ile tümleştirin
+# <a name="tutorial-integrate-cpqsync-by-cincom-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Cpqeşitlemesini bir Incom ile tümleştirme
 
-Bu eğitimde, Cincom tarafından CPQSync'in Azure Etkin Dizini (Azure AD) ile nasıl entegre edileceksiniz. Cincom tarafından CPQSync'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Azure Active Directory (Azure AD) ile bir Incom ile Cpqeşitlemesini nasıl tümleştirileceğini öğreneceksiniz. Incom ile Cpqeşitlemesini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Cincom tarafından CPQSync erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Cincom tarafından CPQSync'de otomatik olarak oturum açAbilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de, Incom tarafından CPQSync 'e erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Incom ile, CPQSync 'e otomatik olarak kaydolmalarına imkan tanıyın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* CPQSync by Cincom tek oturum açma (SSO) aboneliği etkinleştirilmiştir.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Incom çoklu oturum açma (SSO) özellikli abonelik ile CPQSync.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Cincom tarafından CPQSync **SP ve IDP** başlatılan SSO destekler
+* Cincom tarafından bulunan CPQSync **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-cpqsync-by-cincom-from-the-gallery"></a>Galeriden Cincom tarafından CPQSync ekleme
+## <a name="adding-cpqsync-by-cincom-from-the-gallery"></a>Galeriden Incom tarafından CPQSync 'i ekleme
 
-CPQSync'in Cincom tarafından Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Cincom tarafından CPQSync'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Incom ile CPQSync 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden Incom ile CPQSync eşitlemesini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Cincom tarafından CPQSync** yazın.
-1. Sonuç panelinden **Cincom tarafından CPQSync'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna, **Incom ile cpqsync** yazın.
+1. Sonuçlar panelinden, **Incom Ile Cpqsync** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cpqsync-by-cincom"></a>Cincom tarafından CPQSync için Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on-for-cpqsync-by-cincom"></a>Incom tarafından CPQSync için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu Cincom tarafından **B.Simon**adlı bir test kullanıcısı kullanarak CPQSync ile yapılandırın ve test edin. SSO'nun çalışması için, Cincom tarafından CPQSync'de bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak, Incom tarafından Azure AD SSO 'Su Ile cpqsync 'i yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Incom ile CPQSync içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Cincom tarafından CPQSync ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Incom tarafından CPQSync ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-2. **[CpQSync'i Cincom SSO tarafından yapılandırın](#configure-cpqsync-by-cincom-sso)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
-    1. **[Cincom test kullanıcısı tarafından CPQSync oluşturun - Cincom](#create-cpqsync-by-cincom-test-user)** tarafından CPQSync'de B.Simon'ın bir muadili olması için kullanıcının Azure AD gösterimine bağlanın.
-3. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Incom SSO Ile Cpqeşitlemesini yapılandırın](#configure-cpqsync-by-cincom-sso)** .
+    1. Kullanıcının Azure AD gösterimine bağlı olan Incom tarafından, CPQSync 'e ait bir B. Simon 'a sahip olmak için, **[Incom test kullanıcısına ait Cpqsync oluşturun](#create-cpqsync-by-cincom-test-user)** .
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Cincom tarafından CPQSync** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), Incom uygulama tümleştirmesine **göre Cpqsync** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://cincom.oktapreview.com/sso/saml2/<CUSTOMURL>`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://cincom.oktapreview.com/sso/saml2/<CUSTOMURL>`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://cincom.okta.com/sso/saml2/<CUSTOMDOMAIN>`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://cincom.okta.com/sso/saml2/<CUSTOMDOMAIN>`
 
-1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://cincom.okta.com/`
+    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://cincom.okta.com/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [Cincom Client destek ekibi tarafından CPQSync](https://cpqsupport.cincomcpq.com) ile iletişime geçin. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Incom istemci desteği ekibine Cpqsync ile](https://cpqsupport.cincomcpq.com) iletişime geçin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde Sertifika **(Ham)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
-6. **Cincom tarafından CPQSync'i ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **Incom Ile Cpqeşitlemesini ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
     1. **Ad** alanına `B.Simon` girin.  
-    1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-    1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-    1. **Oluştur'u**tıklatın.
+    1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+    1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Cincom tarafından CPQSync'e erişim sağlayarak B.Simon'Un Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, '. Simon 'u, Incom ile CPQSync 'e erişim vererek Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Cincom tarafından CPQSync'i**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Cincom Ile Cpqsync**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-cpqsync-by-cincom-sso"></a>CPQSync'i Cincom SSO tarafından yapılandır
+## <a name="configure-cpqsync-by-cincom-sso"></a>Incom SSO 'SU ile Cpqeşitlemesini yapılandırma
 
-**CPQSync'de Cincom** tarafından tek oturum açma yapılandırmak için, indirilen **Sertifikayı (Raw)** ve uygun kopyalanmış URL'leri Azure portalından [Cincom destek ekibi tarafından CPQSync'e](https://cpqsupport.cincomcpq.com)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+Incom tarafında **Cpqsync** 'te çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'leri, [Incom destek ekibine Azure Portal adresinden cpqsync](https://cpqsupport.cincomcpq.com)'e göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-cpqsync-by-cincom-test-user"></a>Cincom test kullanıcısı tarafından CPQSync oluşturma
+### <a name="create-cpqsync-by-cincom-test-user"></a>Incom test kullanıcısı tarafından CPQSync oluşturma
 
-Bu bölümde, Cincom tarafından CPQSync'de B.Simon adında bir kullanıcı oluşturursunuz. Cincom platformu tarafından CPQSync kullanıcıları eklemek için [Cincom destek ekibi tarafından CPQSync](https://cpqsupport.cincomcpq.com) ile çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, Incom tarafından CPQSync içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Incom platformu tarafından CPQSync içindeki kullanıcıları eklemek için, [Incom destek ekibine cpqsync](https://cpqsupport.cincomcpq.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'nde Cincom karosu ile CPQSync'i tıklattığınızda, SSO'yu kurduğunuz Cincom tarafından CPQSync'de otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde, Cincom 'a göre CPQSync tarafından eşitleme ' ye tıkladığınızda, SSO 'yu ayarladığınız Incom ile CPQSync tarafından otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

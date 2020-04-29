@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight'ta Apache Spark için OutOfMemoryError özel durumları
-description: Azure HDInsight'ta Apache Spark kümesi için çeşitli OutOfMemoryError özel durumları
+title: Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
+description: Azure HDInsight 'ta Apache Spark kümesi için çeşitli OutOfMemoryError özel durumları
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,21 +8,21 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271973"
 ---
-# <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Spark için OutOfMemoryError özel durumları
+# <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
 
-Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorun giderme adımları ve sorunların olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorunlar için sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 
 ## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>Senaryo: Apache Spark için OutOfMemoryError özel durumu
 
 ### <a name="issue"></a>Sorun
 
-Apache Spark uygulamanız, OutOfMemoryError işlenmemiş bir özel durumla başarısız oldu. Şuna benzer bir hata iletisi alabilirsiniz:
+Apache Spark uygulamanız OutOfMemoryError işlenmemiş özel durumuyla başarısız oldu. Şuna benzer bir hata iletisi alabilirsiniz:
 
 ```error
 ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439)
@@ -54,17 +54,17 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>Nedeni
 
-Bu özel durum en olası nedeni yeterli yığın bellek Java sanal makineler (JVM) tahsis olmasıdır. Bu JVM'ler Apache Spark uygulamasının bir parçası olarak uygulayıcıveya sürücü olarak başlatılır.
+Bu özel durumun en olası nedeni, Java sanal makinelerine (JVM 'Ler) yeterli yığın belleği ayrılmamalıdır. Bu JVM 'Ler, Apache Spark uygulamasının bir parçası olarak yürüticileri veya sürücüler olarak başlatılır.
 
 ### <a name="resolution"></a>Çözüm
 
-1. Spark uygulamasının işleyeceği verilerin boyut üst sınırını belirleyin. Girdi verilerinin boyutunun maksimumuna, girdi verilerinin dönüştürülmesiyle üretilen ara verilerin ve ara verilerin daha da dönüştürülmesiyle üretilen çıktı verilerine göre boyutu tahmin edin. İlk tahmin yeterli değilse, boyutu biraz artırın ve bellek hataları yatışana kadar yineleyin.
+1. Spark uygulamasının işleyeceği verilerin boyut üst sınırını belirleyin. Giriş verilerini dönüştürerek oluşturulan ara veriler ve ara verileri daha fazla dönüştürme ile üretilen çıkış verileri temelinde, en fazla giriş verisi boyutuna göre boyut tahmini yapın. Başlangıçtaki tahmin yeterli değilse, boyutu biraz artırabilir ve bellek hataları alt tarafına kadar yineleme yapın.
 
-1. Kullanılacak HDInsight kümesinin, Spark uygulamasını barındırmak için yeterli kaynağa (bellek ve ayrıca çekirdek olarak) sahip olduğundan emin olun. Bu, kullanılan **Memory Total** ve **VCores'un** Toplam'a karşı **kullanılan Bellek** değerleri için kümenin İplik **VCores Total**UI'sinin Küme Ölçümleri bölümünü görüntüleyerek belirlenebilir.
+1. Kullanılacak HDInsight kümesinin, Spark uygulamasını barındırmak için yeterli kaynağa (bellek ve ayrıca çekirdek olarak) sahip olduğundan emin olun. Bu, **kullanılan bellek** **değerleri ve kullanılan bellek ve** **sanal** çekirdek sayısı karşılaştırması için kümenin Yarn Kullanıcı arabirimine ait küme ölçümleri bölümü görüntülenirken **belirlenebilir.**
 
-    ![iplik çekirdek bellek görünümü](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    ![Yarn çekirdek bellek görünümü](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
-1. Aşağıdaki Spark yapılandırmalarını uygun değerlere ayarlayın. Uygulama gereksinimlerini kümedeki kullanılabilir kaynaklarla dengeleyin. Bu değerler, İplik tarafından görüntülenen kullanılabilir bellek ve çekirdeklerin %90'ını geçmemeli ve Aynı zamanda Kıvılcım uygulamasının minimum bellek gereksinimini karşılamalıdır:
+1. Aşağıdaki Spark yapılandırmasını uygun değerlere ayarlayın. Uygulama gereksinimlerini kümedeki kullanılabilir kaynaklarla dengeleyin. Bu değerler, YARN tarafından görüntülenen kullanılabilir bellek ve çekirdekler için %90 ' ı aşmamalıdır ve Spark uygulamasının en düşük bellek gereksinimini de karşılamalıdır:
 
     ```
     spark.executor.instances (Example: 8 for 8 executor count)
@@ -76,7 +76,7 @@ Bu özel durum en olası nedeni yeterli yığın bellek Java sanal makineler (JV
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB)
     ```
 
-    Tüm uygulayıcılar tarafından kullanılan toplam bellek =
+    Tüm yürüticileri tarafından kullanılan toplam bellek =
 
     ```
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
@@ -90,11 +90,11 @@ Bu özel durum en olası nedeni yeterli yığın bellek Java sanal makineler (JV
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Senaryo: Apache Spark tarih sunucusu açmaya çalışırken Java yığın alanı hatası
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Senaryo: Apache Spark geçmiş sunucusunu açmaya çalışırken Java yığın alanı hatası
 
 ### <a name="issue"></a>Sorun
 
-Spark History sunucusunda olayları açarken aşağıdaki hatayı alırsınız:
+Spark geçmiş sunucusunda olayları açarken aşağıdaki hatayı alıyorsunuz:
 
 ```
 scala.MatchError: java.lang.OutOfMemoryError: Java heap space (of class java.lang.OutOfMemoryError)
@@ -102,9 +102,9 @@ scala.MatchError: java.lang.OutOfMemoryError: Java heap space (of class java.lan
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun genellikle büyük kıvılcım olay dosyaları açarken kaynak eksikliği neden olur. Spark yığını boyutu varsayılan olarak 1 GB olarak ayarlanır, ancak büyük Spark olay dosyaları bundan daha fazlasını gerektirebilir.
+Bu sorun genellikle büyük Spark-Event dosyalarını açarken kaynak yetersizliği nedeniyle oluşur. Spark yığın boyutu varsayılan olarak 1 GB olarak ayarlanır, ancak büyük Spark olay dosyaları bundan daha fazlasını gerektirebilir.
 
-Yüklemeye çalıştığınız dosyaların boyutunu doğrulamak istiyorsanız, aşağıdaki komutları gerçekleştirebilirsiniz:
+Yüklemeye çalıştığınız dosyaların boyutunu doğrulamak isterseniz, aşağıdaki komutları gerçekleştirebilirsiniz:.
 
 ```bash
 hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0274_1/
@@ -116,25 +116,25 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ### <a name="resolution"></a>Çözüm
 
-Özelliği Spark yapılandırmasında düzenleyerek `SPARK_DAEMON_MEMORY` ve tüm hizmetleri yeniden başlatarak Spark History Server belleği artırabilirsiniz.
+Spark yapılandırmasındaki `SPARK_DAEMON_MEMORY` özelliği düzenleyerek Spark geçmiş sunucu belleğini artırabilir ve tüm hizmetleri yeniden başlatabilirsiniz.
 
-Bunu Ambari tarayıcı kullanıcı arabirimi içinden Spark2/Config/Advanced spark2-env bölümünü seçerek yapabilirsiniz.
+Bunu, Spark2/config/Advanced Spark2-env bölümünü seçerek, ambarı tarayıcısı kullanıcı arabiriminden yapabilirsiniz.
 
-![Gelişmiş spark2-env bölümü](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+![Advanced spark2-env bölümü](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-Spark History Server belleği 1g'den 4g'ye `SPARK_DAEMON_MEMORY=4g`değiştirmek için aşağıdaki özelliği ekleyin: .
+Spark geçmiş sunucusu belleğini 1G 'den 4g 'ye değiştirmek için aşağıdaki özelliği ekleyin: `SPARK_DAEMON_MEMORY=4g`.
 
-![Kıvılcım özelliği](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+![Spark özelliği](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
-Ambari'den etkilenen tüm hizmetleri yeniden başlattığınızdan emin olun.
+Tüm etkilenen hizmetleri ambarı 'ndan yeniden başlattığınızdan emin olun.
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Senaryo: Livy Server Apache Spark kümesinde başlatılamıyor
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Senaryo: Apache Spark kümesinde Livy sunucu başlatılamaz
 
 ### <a name="issue"></a>Sorun
 
-Livy Server bir Apache Spark [(Spark 2.1 Linux (HDI 3.6)]tarihinde başlatılamaz. Livy günlüklerinden aşağıdaki hata yığınında sonuçları yeniden başlatmaya çalışAlım:
+Livy sunucu bir Apache Spark [(Linux üzerinde Spark 2,1 (HDI 3,6)] üzerinde başlatılamaz. Aşağıdaki hata yığınında, tüm sonuçları yeniden başlatmaya çalışmak, Livy günlüklerinden:
 
 ```log
 17/07/27 17:52:50 INFO CuratorFrameworkImpl: Starting
@@ -194,65 +194,65 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Nedeni
 
-`java.lang.OutOfMemoryError: unable to create new native thread`OS'nin JVM'lere daha fazla yerel iş parçacığı atayamayacağını vurgular. Bu Özel Durum'un işlem başına iş parçacığı sayısı sınırının ihlalinden kaynaklandığı doğrulandı.
+`java.lang.OutOfMemoryError: unable to create new native thread`Ana işletim sistemi, JVM 'lere daha fazla yerel iş parçacığı atayamaz. Bu özel durumun, işlem başına iş parçacığı sayısı sınırının ihlalinden kaynaklanmış olduğunu doğrulamıştır.
 
-Livy Server beklenmedik bir şekilde sonlandığında, Kıvılcım Kümeleri'ne olan tüm bağlantılar da sonlandırılır, bu da tüm işlerin ve ilgili verilerin kaybolacağı anlamına gelir. HDP'de 2.6 oturumkurtarma mekanizması uygulamaya kondu, Livy, Livy Server geri döndükten sonra kurtarılmak üzere Seans detaylarını Zookeeper'da saklar.
+Livy sunucusu beklenmedik şekilde sonlandırıldığında, Spark kümelerine yapılan tüm bağlantılar da sonlandırılır. Bu, tüm işlerin ve ilgili verilerin kaybedildiği anlamına gelir. HDP 2,6 oturum kurtarma mekanizması tanıtılmıştı, Livy sunucu geri alındıktan sonra kurtarılacak Zookeeper içinde oturum ayrıntılarını depolar.
 
-Livy üzerinden çok sayıda iş gönderildiğinde, Livy Server için Yüksek Kullanılabilirlik'in bir parçası olarak bu oturum durumları ZK'da (HDInsight kümelerinde) saklar ve Livy hizmeti yeniden başlatıldığında bu oturumları kurtarır. Beklenmeyen sonlandırmadan sonra yeniden başlatılırken, Livy oturum başına bir iş parçacığı oluşturur ve bu, çok fazla iş parçacığı nın oluşturulmasına neden olacak belirli sayıda kurtarılacak oturumlar birikir.
+Livy aracılığıyla çok sayıda iş gönderildiğinde, Livy sunucusu için yüksek kullanılabilirlik parçası olan bu oturum durumlarını ZK 'de (HDInsight kümelerinde) depolar ve Livy hizmeti yeniden başlatıldığında bu oturumları kurtarır. Beklenmedik sonlandırma sonrasında, Livy oturum başına bir iş parçacığı oluşturur ve bu, çok fazla iş parçacığı oluşturulmasını neden olan belirli bir sayıda kurtarılabilir oturumu biriktirir.
 
 ### <a name="resolution"></a>Çözüm
 
-Aşağıda ayrıntılı olarak belirtilen adımları kullanarak tüm girişleri silin.
+Aşağıda açıklanan adımları kullanarak tüm girdileri silin.
 
-1. Zookeeper Düğümlerinin IP adresini kullanarak alın
+1. Kullanarak Zookeeper düğümlerinin IP adresini al
 
     ```bash
     grep -R zk /etc/hadoop/conf  
     ```
 
-1. Yukarıdaki komut benim küme için tüm zookeepers listelenen
+1. Yukarıdaki komut, Kümem için tüm zookeepers listelendi
 
     ```bash
     /etc/hadoop/conf/core-site.xml:      <value>zk1-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk2-      hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk4-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181</value>
     ```
 
-1. Ping kullanarak zookeeper düğümlerinin tüm IP adreslerini alın Veya zk adını kullanarak headnode zookeeper bağlanabilirsiniz
+1. Ping kullanarak Zookeeper düğümlerinin tüm IP adreslerini alın veya Ayrıca ZK adını kullanarak baş düğümüne 'dan Zookeeper 'e bağlanabilirsiniz
 
     ```bash
     /usr/hdp/current/zookeeper-client/bin/zkCli.sh -server zk2-hwxspa:2181
     ```
 
-1. Zookeeper'a bağlandıktan sonra yeniden başlatmaya çalışılmaya çalışılan tüm oturumları listelemek için aşağıdaki komutu uygulayın.
+1. Zookeeper 'e bağlandıktan sonra, yeniden başlatılmaya çalışılan tüm oturumları listelemek için aşağıdaki komutu yürütün.
 
-    1. Vakaların çoğu bu 8000'den fazla oturumları bir liste olabilir ####
+    1. Çoğu durumda bu durum 8000 ' den fazla oturumu bir liste olabilir ####
 
         ```bash
         ls /livy/v1/batch
         ```
 
-    1. Aşağıdaki komut, kurtarılacak tüm oturumları kaldırmaktır. #####
+    1. Aşağıdaki komut, tüm kurtarılabilir oturumları kaldırmalıdır. #####
 
         ```bash
         rmr /livy/v1/batch
         ```
 
-1. Yukarıdaki komutun tamamlanmasını ve imlecin komut istemini döndürmesini bekleyin ve sonra Ambari'den Livy hizmetini yeniden başlatın, bu da başarılı olmalıdır.
+1. Yukarıdaki komutun tamamlanmasını bekleyin ve imleci bir süre sonra yeniden başlatın ve bu işlemin başarılı olması gerekir.
 
 > [!NOTE]
-> `DELETE`yürütülmesi tamamlandıktan sonra livy oturumu. Livy toplu iş oturumları, kıvılcım uygulaması tamamlanır tamamlanmaz otomatik olarak silinmez, ki bu da tasarım gereğidir. Livy oturumu, Livy Rest sunucusuna karşı bir POST isteği tarafından oluşturulan bir varlıktır. Bu `DELETE` varlığı silmek için bir arama gereklidir. Ya da GC'nin etkisini beklemeli.
+> `DELETE`Yürütme tamamlandıktan sonra tüm oturum. Tek tek toplu oturumlar, bir tasarıma göre olan Spark uygulaması tamamlandıktan hemen sonra otomatik olarak silinmez. Livy oturumu, Livy Rest sunucusuna yönelik bir POST isteği tarafından oluşturulan bir varlıktır. Varlığı `DELETE` silmek için bir çağrı gerekir. Ya da GC 'nin başlatılmasını beklememiz gerekir.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* [Kıvılcım bellek yönetimi genel bakış](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
+* [Spark bellek yönetimine genel bakış](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
 
-* [HDInsight kümelerinde Hata Ayıklama Spark uygulaması.](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+* [HDInsight kümelerinde Spark uygulamasında hata ayıklama](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
 
-* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
+* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın. Azure topluluğunu doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)yı gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

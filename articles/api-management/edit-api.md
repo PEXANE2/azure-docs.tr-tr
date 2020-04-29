@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70072165"
 ---
 # <a name="edit-an-api"></a>API’yi düzenleme
@@ -47,7 +47,7 @@ Bu öğreticideki adımlar, bir API’yi düzenlemek için API Management’ın 
 
 Aşağıdaki adımları izleyerek Azure portaldan arka uç API’nizi güncelleştirebilirsiniz:
 
-1. **Tüm işlemleri** seçin
+1. **Tüm işlemleri** Seç
 2. **Ön uç** penceresinde kaleme tıklayın.
 
     ![API’yi düzenleme](./media/edit-api/edit-api002.png)
@@ -64,5 +64,5 @@ Aşağıdaki adımları izleyerek Azure portaldan arka uç API’nizi güncelle�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [APIM ilkesi örnekleri](policy-samples.md)
-> [Yayımlanmış bir API'yi dönüştürve korur](transform-api.md)
+> [APIM ilke örnekleri](policy-samples.md)
+> [yayınlanmış bir API 'yi dönüştürme ve koruma](transform-api.md)

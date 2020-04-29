@@ -1,6 +1,6 @@
 ---
-title: Uygulama Ağ Geçidi Giriş Denetleyicisi için birden çok ad alanı desteketkinleştirme
-description: Bu makalede, Bir Uygulama Ağ Geçidi Giriş Denetleyicisi ile Bir Kubernetes kümesinde birden çok ad alanı desteği etkinleştirmek için nasıl bilgi sağlar.
+title: Application Gateway giriş denetleyicisi için birden çok ad alanı desteği etkinleştir
+description: Bu makalede, bir Kubernetes kümesinde Application Gateway giriş denetleyicisi ile birden çok ad alanı desteğinin nasıl etkinleştirileceği hakkında bilgi verilmektedir.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,43 +8,43 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279929"
 ---
-# <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Uygulama Ağ Geçidi Giriş Denetleyicisi ile bir AKS kümesinde birden çok Ad Alanı desteği etkinleştirme
+# <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway Ingress denetleyicisi ile bir AKS kümesinde birden çok ad alanı desteğini etkinleştirme
 
 ## <a name="motivation"></a>Motivasyon
-Kubernetes [Ad Alanları,](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) bir Kubernetes kümesinin bölünmesini ve daha büyük bir takımın alt gruplarına ayrılmasını mümkün kılar. Bu alt takımlar daha sonra kaynakların, güvenliğin, yapılandırmanın vb. daha hassas denetimleri ile altyapıyı dağıtabilir ve yönetebilir. Kubernetes, her ad alanı içinde bir veya daha fazla giriş kaynağının bağımsız olarak tanımlanmasına olanak tanır.
+Kubernetes [ad alanları](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) , bir Kubernetes kümesinin bölümlenmesi ve daha büyük bir ekibin alt grupları için ayrılmasını mümkün kılar. Daha sonra bu alt takımlar daha ayrıntılı kaynak, güvenlik, yapılandırma vb. denetimlerle altyapıyı dağıtabilir ve yönetebilir. Kubernetes, bir veya daha fazla giriş kaynaklarının her bir ad alanı içinde bağımsız olarak tanımlanmasını sağlar.
 
-Sürüm 0.7 [Azure Uygulama Ağ Geçidi Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) (AGIC) sürümü nden itibaren olayları yutabilir ve birden çok ad alanı gözlemleyebilir. AKS yöneticisi [Uygulama Ağ Geçidi'ni](https://azure.microsoft.com/services/application-gateway/) giriş olarak kullanmaya karar verirse, tüm ad alanları aynı Uygulama Ağ Geçidi örneğini kullanır. Giriş Denetleyicisi'nin tek bir yüklemesi erişilebilir ad boşluklarını izler ve ilişkili olduğu Uygulama Ağ Geçidi'ni yapılandıracaktır.
+Sürüm 0,7 itibariyle [Azure Application Gateway Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) (AGIC), içindeki olayları alabilir ve birden çok ad alanını gözlemleyebilirsiniz. AKS Yöneticisi, [uygulama ağ geçidini](https://azure.microsoft.com/services/application-gateway/) bir giriş olarak kullanmaya karar verirse, tüm ad alanları Application Gateway aynı örneğini kullanır. Tek bir giriş denetleyicisi yüklemesi, erişilebilir ad alanlarını izleyecek ve ilişkilendirildiği Application Gateway yapılandıracaktır.
 
-AGIC'in 0.7 sürümü, Helm `default` yapılandırmasında açıkça bir veya daha fazla farklı ad alanı olarak değiştirilmediği sürece yalnızca ad alanını gözlemlememeye devam edecektir (aşağıdaki bölüme bakın).
+Bağımsız olarak, Helm yapılandırmasındaki bir veya daha fazla farklı `default` ad alanına açıkça değiştirilmediği sürece agic sürüm 0,7, ad alanını özel olarak gözlemlemeye devam eder (aşağıdaki bölümüne bakın).
 
 ## <a name="enable-multiple-namespace-support"></a>Birden çok ad alanı desteğini etkinleştirme
 Birden çok ad alanı desteğini etkinleştirmek için:
-1. [helm-config.yaml](#sample-helm-config-file) dosyasını aşağıdaki yollardan birinde değiştirin:
-   - `watchNamespace` [helm-config.yaml](#sample-helm-config-file) tamamen anahtar silin - AGIC tüm isim boşlukları gözlemleyecek
-   - boş `watchNamespace` bir dize ayarlanmış - AGIC tüm ad boşluklarını gözlemleyecek
-   - virgülle ayrılmış birden çok`watchNamespace: default,secondNamespace`ad alanı ekleyin ( ) - AGIC bu ad alanlarını yalnızca gözlemleyecek
-2. Ile Miğfer şablonu değişiklikleri uygulayın:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
+1. [Helm-config. YAML](#sample-helm-config-file) dosyasını aşağıdaki yollarla değiştirin:
+   - `watchNamespace` anahtarı tamamen [helk-config konumundan silin. YAML](#sample-helm-config-file) -agic tüm ad alanlarını gözlemleyecek
+   - boş `watchNamespace` bir dizeye ayarla-agic, tüm ad alanlarını gözlemleyecek
+   - virgülle ayrılmış birden çok ad alanı ekleme (`watchNamespace: default,secondNamespace`)-agic bu ad alanlarını özel olarak gözlemleyecek
+2. ile Helmtemplate değişikliklerini Uygula:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
-Birden çok ad alanı gözlemleme özelliğiile dağıtıldıktan sonra, AGIC şunları yapacaktır:
-  - tüm erişilebilir ad alanlarından kaynak listesi
-  - ile açıklamalı giriş kaynaklarına filtre`kubernetes.io/ingress.class: azure/application-gateway`
-  - kombine [Uygulama Ağ Geçidi config](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) oluşturmak
-  - config'i [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) aracılığıyla ilişkili Uygulama Ağ Geçidi'ne uygulayın
+Birden çok ad alanını gözlemleyebilme özelliği ile dağıtıldıktan sonra, AGIC şunları sağlar:
+  - tüm erişilebilir ad alanlarından giriş kaynaklarını listeleyin
+  - giriş kaynakları için açıklama eklenmiş olarak filtrele`kubernetes.io/ingress.class: azure/application-gateway`
+  - Birleşik [Application Gateway yapılandırması](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) oluştur
+  - yapılandırmayı [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) aracılığıyla ilişkili Application Gateway uygulama
 
-## <a name="conflicting-configurations"></a>Çakışan Yapılandırmalar
-Birden çok ad alanı alan [giriş kaynakları,](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) AGIC'e tek bir Uygulama Ağ Geçidi için çakışan yapılandırmalar oluşturması talimatını verebilir. (Örneğin aynı etki alanını iddia eden iki giriş.)
+## <a name="conflicting-configurations"></a>Çakışan yapılandırma
+Birden çok gösterilemez [ınress kaynağı](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) , tek bir Application Gateway için çakışan yapılandırmaların oluşturulmasını sağlayabilir. (Örnek için aynı etki alanını talep eden iki giriş.)
 
-Hiyerarşinin üst kısmında - **dinleyiciler** (IP adresi, bağlantı noktası ve ana bilgisayar) ve **yönlendirme kuralları** (bağlayıcı dinleyici, arka uç havuzu ve HTTP ayarları) oluşturulabilir ve birden çok ad alanı/giriş tarafından paylaşılabilir.
+Hiyerarşinin en **üstünde (IP** adresi, bağlantı noktası ve ana bilgisayar) ve **yönlendirme kuralları** (bağlama dinleyicisi, arka uç havuzu ve http ayarları), birden çok ad alanı/giriş tarafından oluşturulup paylaşılabilir.
 
-Diğer taraftan - yollar, arka uç havuzları, HTTP ayarları ve TLS sertifikaları yalnızca bir ad alanı tarafından oluşturulabilir ve yinelenenler kaldırılır.
+Diğer yandan yollar, arka uç havuzları, HTTP ayarları ve TLS sertifikaları yalnızca bir ad alanı tarafından oluşturulabilir ve yinelemeler kaldırılır.
 
-Örneğin, aşağıdaki yinelenen giriş kaynaklarını tanımlanan `staging` `production` ad `www.contoso.com`alanlarını göz önünde bulundurun ve aşağıdakiler için:
+Örneğin, aşağıdaki yinelenen giriş kaynakları tanımlı ad alanlarını `staging` ve `production` için `www.contoso.com`göz önünde bulundurun:
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -81,26 +81,26 @@ spec:
               servicePort: 80
 ```
 
-İlgili Kubernetes ad `www.contoso.com` alanlarına yönlendirilmesi için trafik talep eden iki giriş kaynağına rağmen, trafiğe yalnızca bir arka uç hizmet verebilir. AGIC, kaynaklardan biri için "ilk gelen, ilk hizmet" temelinde bir yapılandırma oluşturacak. Aynı anda iki giriş kaynağı oluşturulursa, alfabedeki daha önceki kaynak önceliklidir. Yukarıdaki örnekten yalnızca `production` giriş için ayarlar oluşturabilecektir. Uygulama Ağ Geçidi aşağıdaki kaynaklarla yapılandırılacaktır:
+İki giriş kaynağına, ilgili Kubernetes ad alanlarına yönlendirilmek için trafik `www.contoso.com` talep etmekte olsa da, trafiğe yalnızca bir arka uç hizmet verebilir. AGIC, kaynaklardan biri için "ilk olarak ilk kez sunulan" temelinde bir yapılandırma oluşturur. Aynı anda iki giriş kaynağı oluşturulursa, alfabede daha önceki bir işlem öncelikli olur. Yukarıdaki örnekte, yalnızca giriş için `production` ayarları oluşturabileceksiniz. Application Gateway, aşağıdaki kaynaklarla yapılandırılacak:
 
-  - Dinleyici:`fl-www.contoso.com-80`
-  - Yönlendirme Kuralı:`rr-www.contoso.com-80`
-  - Arka uç Havuzu:`pool-production-contoso-web-service-80-bp-80`
-  - HTTP Ayarları:`bp-production-contoso-web-service-80-80-websocket-ingress`
-  - Sağlık Sondası:`pb-production-contoso-web-service-80-websocket-ingress`
+  - Oluşturulurken`fl-www.contoso.com-80`
+  - Yönlendirme kuralı:`rr-www.contoso.com-80`
+  - Arka uç havuzu:`pool-production-contoso-web-service-80-bp-80`
+  - HTTP ayarları:`bp-production-contoso-web-service-80-80-websocket-ingress`
+  - Durum araştırması:`pb-production-contoso-web-service-80-websocket-ingress`
 
-*Dinleyici* ve *yönlendirme kuralı*dışında, oluşturulan Uygulama Ağ Geçidi kaynaklarının oluşturuldukları`production`ad alanının adını içerdiğini unutmayın.
+*Dinleyici* ve *yönlendirme kuralı*haricinde oluşturulan Application Gateway kaynakları, oluşturuldukları ad alanının (`production`) adını içerir.
 
-İki giriş kaynağı AKS kümesine zaman içinde farklı noktalarda getirilirse, AGIC'nin Uygulama Ağ Geçidi'ni yeniden yapılandırdığı `namespace-B` `namespace-A`ve trafiği .'ye yeniden yönlendirirhale geldiği bir senaryoda son bulmaolasılığı yüksektir.
+İki giriş kaynağı, zaman içinde farklı noktalarda AKS kümesine tanıtılıyorsa, AGC 'nin Application Gateway yeniden yapılandırdığı ve trafiği ' den `namespace-B` ' a yeniden yönlendirdiği bir senaryoya kadar sona erdirmek olasıdır. `namespace-A`
 
-Örneğin, ilk `staging` olarak eklediyseniz, AGIC, trafiği evreleme arka uç havuzuna yönlendirmek için Uygulama Ağ Geçidi'ni yapılandıracaktır. Daha sonraki bir aşamada, giriş tanıtılması, `production` AGIC'in Uygulama Ağ Geçidi'ni `production` yeniden programlamasına neden olur ve bu da trafiği arka uç havuzuna yönlendirmeye başlar.
+Örneğin, önce eklediyseniz `staging` , agic, trafiği hazırlama arka uç havuzuna yönlendirmek için Application Gateway yapılandırır. Daha sonraki bir aşamada, giriş `production` girişi, `production` arka uç havuzuna trafiği yönlendirmeyi Başlatan Application Gateway yeniden programmasına neden olur.
 
-## <a name="restrict-access-to-namespaces"></a>Erişimi Ad Boşluklarıyla Sınırlandır
-Varsayılan olarak AGIC, herhangi bir ad alanı içinde açıklamalı Giriş'e göre Uygulama Ağ Geçidi'ni yapılandıracaktır. Bu davranışı sınırlamak istiyorsanız, aşağıdaki seçeneklere sahipsiniz:
-  - ad boşluklarını sınırlandırın, ad boşluklarını açıkça tanımlayarak `watchNamespace` AGIC [helm-config.yaml'deki](#sample-helm-config-file) YAML tuşu ile gözlemlemelidir.
-  - AGIC'i belirli ad alanlarıyla sınırlamak için [Role/RoleBinding'i](https://docs.microsoft.com/azure/aks/azure-ad-rbac) kullanın
+## <a name="restrict-access-to-namespaces"></a>Ad alanlarına erişimi kısıtlama
+Varsayılan olarak AGIC, Application Gateway herhangi bir ad alanı içinde açıklamalı giriş temelli olarak yapılandırır. Bu davranışı sınırlandırmak istiyorsanız aşağıdaki seçeneklere sahip olursunuz:
+  - ad alanlarını sınırsız olarak tanımlayarak ad alanlarını sınırlayın, `watchNamespace` [helk-config. YAML](#sample-helm-config-file) içindeki YAML anahtarı aracılığıyla gözlemelidir
+  - AGIC 'i belirli ad alanlarıyla sınırlamak için [rol/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) kullanın
 
-## <a name="sample-helm-config-file"></a>Örnek Helm config dosyası
+## <a name="sample-helm-config-file"></a>Örnek HELI yapılandırma dosyası
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 

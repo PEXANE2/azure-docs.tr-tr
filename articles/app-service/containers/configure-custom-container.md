@@ -1,24 +1,24 @@
 ---
 title: Özel bir Linux kapsayıcısı yapılandırma
-description: Azure Uygulama Hizmeti'nde özel bir Linux kapsayıcısını nasıl yapılandırıştırmayı öğrenin. Bu makalede, en yaygın yapılandırma görevleri gösterir.
+description: Azure App Service bir özel Linux kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280150"
 ---
-# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure Uygulama Hizmeti için özel bir Linux kapsayıcısı yapılandırma
+# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service için özel bir Linux kapsayıcısı yapılandırma
 
-Bu makalede, Azure Uygulama Hizmeti'nde çalışacak özel bir Linux kapsayıcısını nasıl yapılandırabileceğiniz gösterilmektedir.
+Bu makalede, Azure App Service üzerinde çalışacak özel bir Linux kapsayıcısının nasıl yapılandırılacağı gösterilir.
 
-Bu kılavuz, Uygulama Hizmeti'nde Linux uygulamalarının kapsayıcıhale getirilmesi için temel kavramlar ve yönergeler sağlar. Azure Uygulama Hizmeti'ni hiç kullanmadıysanız, önce [özel kapsayıcıhızlı başlat'ı](quickstart-docker-go.md) ve [öğreticiyi](tutorial-custom-docker-image.md) izleyin. Ayrıca bir [çok konteyner uygulaması quickstart](quickstart-multi-container.md) ve [öğretici](tutorial-multi-container-app.md)var.
+Bu kılavuzda, App Service Linux uygulamalarının kapsayıcılama için temel kavramlar ve yönergeler sağlanmaktadır. Azure App Service hiç kullanmadıysanız, önce [özel kapsayıcı hızlı başlangıç](quickstart-docker-go.md) ve [öğreticiyi](tutorial-custom-docker-image.md) izleyin. Ayrıca [çok kapsayıcılı bir uygulama hızlı](quickstart-multi-container.md) başlangıcı ve [öğretici](tutorial-multi-container-app.md)de mevcuttur.
 
-## <a name="configure-port-number"></a>Bağlantı noktası numarasını yapılandırma
+## <a name="configure-port-number"></a>Bağlantı noktası numarasını Yapılandır
 
-Özel resminizdeki web sunucusu 80'den başka bir bağlantı noktası kullanabilir. Azure'a özel kapsayıcınızın kullandığı bağlantı noktasını `WEBSITES_PORT` uygulama ayarını kullanarak anlatırsınız. [Bu öğreticideki Python örneği](https://github.com/Azure-Samples/docker-django-webapp-linux) için GitHub sayfası, `WEBSITES_PORT` olarak _8000_ ayarlamanız gerektiğini gösterir. Bulut Kabuğu'nda [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komut çalıştırarak ayarlayabilirsiniz. Örnek:
+Özel görüntinizdeki Web sunucusu 80 dışında bir bağlantı noktası kullanabilir. Azure 'a özel kapsayıcının kullandığı bağlantı noktasını `WEBSITES_PORT` uygulama ayarını kullanarak söylemiş olursunuz. [Bu öğreticideki Python örneği](https://github.com/Azure-Samples/docker-django-webapp-linux) için GitHub sayfası, `WEBSITES_PORT` olarak _8000_ ayarlamanız gerektiğini gösterir. Bu ayarı, Cloud Shell komutunu çalıştırarak [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ayarlayabilirsiniz. Örneğin:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -26,46 +26,46 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>Ortam değişkenlerini yapılandırma
 
-Özel kapsayıcınız dışarıdan sağlanması gereken ortam değişkenlerini kullanabilir. Bulut Kabuğu'nda komut [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) çalıştırarak bunları geçirebilirsiniz. Örnek:
+Özel Kapsayıcınız, dışarıdan sağlanması gereken ortam değişkenlerini kullanabilir. Cloud Shell komutu çalıştırarak [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) içine geçirebilirsiniz. Örneğin:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
 ```
 
-Bu yöntem, ortam değişkenlerinin *docker-compose.yml* dosyasında belirtildiği tek kapsayıcı uygulamalar veya çoklu kapsayıcı uygulamaları için çalışır.
+Bu yöntem, hem tek Kapsayıcılı uygulamalar için hem de ortam değişkenlerinin *Docker-Compose. yıml* dosyasında belirtildiği çok Kapsayıcılı uygulamalar için geçerlidir.
 
-## <a name="use-persistent-shared-storage"></a>Kalıcı paylaşılan depolama alanını kullanma
+## <a name="use-persistent-shared-storage"></a>Kalıcı paylaşılan depolama kullan
 
-Yeniden başlatmalarda dosyaları sürdürmek ve örnekler arasında paylaşmak için uygulamanızın dosya sistemindeki */home* dizinini kullanabilirsiniz. Uygulamanızdaki uygulama, `/home` konteyner uygulamanızın kalıcı depolama alanına erişmesini sağlamak için sağlanır.
+Dosyaları yeniden başlatmalar arasında kalıcı hale getirmek ve örnekleri arasında paylaşmak için uygulamanızın dosya sistemindeki */Home* dizinini kullanabilirsiniz. Uygulamanızda `/home` , kapsayıcı uygulamanızın kalıcı depolamaya erişmesini sağlamak için verilmiştir.
 
-Kalıcı depolama devre dışı bırakıldığında, `/home` dizin için yazma uygulaması yeniden başlatmaveya birden çok örnek arasında kalıcı değildir. Bunun tek istisnası, Docker ve konteyner günlüklerini depolamak için kullanılan `/home/LogFiles` dizindir. Kalıcı depolama etkinleştirildiğinde, `/home` dizine yapılan tüm yazılar kalıcıdır ve ölçeklenmiş bir uygulamanın tüm örnekleri tarafından erişilebilir.
+Kalıcı depolama devre dışı bırakıldığında, `/home` dizine yazma işlemleri, uygulama yeniden başlatmaları veya birden çok örnek arasında kalıcı olmaz. Tek özel durum, Docker ve kapsayıcı günlüklerini depolamak için kullanılan `/home/LogFiles` dizindir. Kalıcı depolama etkinleştirildiğinde, `/home` dizine yapılan tüm yazmaları kalıcı hale getirilir ve genişleme uygulamasının tüm örnekleri tarafından erişilebilir.
 
-Varsayılan olarak, kalıcı depolama *etkinleştirilir* ve ayar Uygulama Ayarları'nda açıklanmaz. Devre dışı kalmak için `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Bulut Kabuğu'nda komut çalıştırarak [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) uygulama ayarını ayarlayın. Örnek:
+Varsayılan olarak, kalıcı depolama *etkindir* ve ayar uygulama ayarları 'nda gösterilmez. Devre dışı bırakmak için Cloud Shell komut `WEBSITES_ENABLE_APP_SERVICE_STORAGE` çalıştırarak [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) uygulama ayarını ayarlayın. Örneğin:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]
-> [Ayrıca kendi kalıcı depolama nızı da yapılandırabilirsiniz.](how-to-serve-content-from-azure-storage.md)
+> Ayrıca, [kendi kalıcı depolama alanınızı da yapılandırabilirsiniz](how-to-serve-content-from-azure-storage.md).
 
-## <a name="enable-ssh"></a>SSH'yi etkinleştir
+## <a name="enable-ssh"></a>SSH 'yi etkinleştirme
 
-SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Özel bir kapsayıcının SSH'yi desteklemesi için, bunu Dockerfile'nin kendisine eklemeniz gerekir.
+SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Özel bir kapsayıcının SSH 'yi desteklemesi için onu Dockerfile öğesine eklemeniz gerekir.
 
 > [!TIP]
-> Tüm yerleşik Linux kapları, görüntü depolarına SSH yönergelerini ekledi. Orada nasıl etkinleştirildiğinizi görmek için [Node.js 10.14 deposu](https://github.com/Azure-App-Service/node/blob/master/10.14) ile aşağıdaki yönergeleri gözden geçirebilirsiniz.
+> Tüm yerleşik Linux kapsayıcıları, görüntü depolarında SSH yönergelerini ekledi. Nasıl etkinleştirildiğini görmek için [Node. js 10,14 deposu](https://github.com/Azure-App-Service/node/blob/master/10.14) ile aşağıdaki yönergeleri izleyebilirsiniz.
 
-- SSH [RUN](https://docs.docker.com/engine/reference/builder/#run) sunucusunu yüklemek ve kök hesabın parolasını ' `"Docker!"`olarak ayarlamak için RUN yönergesini kullanın. Örneğin, [Alpine Linux](https://hub.docker.com/_/alpine)tabanlı bir görüntü için aşağıdaki komutlara ihtiyacınız vardır:
+- SSH sunucusunu [RUN](https://docs.docker.com/engine/reference/builder/#run) yüklemek ve kök hesabın parolasını olarak `"Docker!"`ayarlamak için Çalıştır yönergesini kullanın. Örneğin, [alp Linux](https://hub.docker.com/_/alpine)tabanlı bir görüntü için aşağıdaki komutlara ihtiyacınız vardır:
 
     ```Dockerfile
     RUN apk add openssh \
          && echo "root:Docker!" | chpasswd 
     ```
 
-    Bu yapılandırma kapsayıcıya harici bağlantılara izin vermez. SSH yalnızca yayımlama kimlik bilgileri aracılığıyla `https://<app-name>.scm.azurewebsites.net` kullanılabilir ve doğrulanır.
+    Bu yapılandırma kapsayıcıya dış bağlantılara izin vermiyor. SSH yalnızca yayımlama kimlik bilgileriyle `https://<app-name>.scm.azurewebsites.net` kullanılabilir ve kimlik doğrulaması yapılabilir.
 
-- [Bu sshd_config dosyayı](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) resim deponuza ekleyin ve */etc/ssh/directory'ye* kopyalamak için [COPY](https://docs.docker.com/engine/reference/builder/#copy) yönergesini kullanın. *sshd_config* dosyaları hakkında daha fazla bilgi için [OpenBSD belgelerine](https://man.openbsd.org/sshd_config)bakın.
+- [Bu sshd_config dosyasını](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) görüntü deponuza ekleyin ve [Copy](https://docs.docker.com/engine/reference/builder/#copy) yönergesini kullanarak dosyayı */etc/ssh/* dizinine kopyalayın. *Sshd_config* dosyaları hakkında daha fazla bilgi için bkz. [OpenBSD belgeleri](https://man.openbsd.org/sshd_config).
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -76,43 +76,43 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Özel 
     > - `Ciphers`, bu listedeki en az bir öğeyi içermelidir: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs`, bu listedeki en az bir öğeyi içermelidir: `hmac-sha1,hmac-sha1-96`.
 
-- Kapsayıcıda 2222 bağlantı noktasını açmak için [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) yönergesini kullanın. Kök parola bilinmesine rağmen, bağlantı noktası 2222'ye internetten erişilemez. Yalnızca özel bir sanal ağın köprü ağındaki kapsayıcılar tarafından erişilebilir.
+- Kapsayıcıda 2222 numaralı bağlantı noktasını açmak için [sergileme](https://docs.docker.com/engine/reference/builder/#expose) yönergesini kullanın. Kök parola bilinse de, 2222 numaralı bağlantı noktasına internet 'ten erişilemez. Yalnızca özel bir sanal ağın köprü ağı içindeki kapsayıcılar tarafından erişilebilir.
 
     ```Dockerfile
     EXPOSE 80 2222
     ```
 
-- Kapsayıcınızın başlangıç komut dosyasında SSH sunucusunu başlatın.
+- Kapsayıcının başlangıç komut dosyasında SSH sunucusunu başlatın.
 
     ```bash
     /usr/sbin/sshd
     ```
 
-    Örneğin, varsayılan [Düğüm 10.14 kapsayıcısının](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) SSH sunucusunu nasıl başlattığını görün.
+    Örneğin, varsayılan [Node. js 10,14 KAPSAYıCıSıNıN](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) SSH sunucusunu nasıl başlatadığına bakın.
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="configure-multi-container-apps"></a>Çok kapsayıcı uygulamaları yapılandırma
+## <a name="configure-multi-container-apps"></a>Çok Kapsayıcılı uygulamaları yapılandırma
 
-- [Docker Compose'da kalıcı depolama yı kullanma](#use-persistent-storage-in-docker-compose)
+- [Docker Compose 'de kalıcı depolamayı kullanma](#use-persistent-storage-in-docker-compose)
 - [Önizleme sınırlamaları](#preview-limitations)
-- [Docker Oluşturma seçenekleri](#docker-compose-options)
+- [Docker Compose seçenekleri](#docker-compose-options)
 
-### <a name="use-persistent-storage-in-docker-compose"></a>Docker Compose'da kalıcı depolama yı kullanma
+### <a name="use-persistent-storage-in-docker-compose"></a>Docker Compose 'de kalıcı depolamayı kullanma
 
-WordPress gibi çoklu kapsayıcı uygulamaların düzgün çalışması için kalıcı depolama alanına ihtiyaç duyar. Bunu etkinleştirmek için Docker Compose yapılandırmanızın kapsayıcınızın *dışındaki* bir depolama konumunu işaret etmesi gerekir. Kapsayıcınızın içindeki depolama konumları, uygulama yeniden başlatmanın ötesinde değişiklikleri devam etmez.
+WordPress gibi çok Kapsayıcılı uygulamalarda kalıcı depolamanın düzgün çalışması gerekir. Bunu etkinleştirmek için, Docker Compose yapılandırmanızın kapsayıcının *dışında* bir depolama konumunu göstermesi gerekir. Kapsayıcının içindeki depolama konumları değişiklikleri uygulamanın yeniden başlatmalarıyla kalıcı tutmaz.
 
-Cloud Shell'de `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak uygulama ayarını ayarlayarak kalıcı depolamayı etkinleştirin.
+Cloud Shell ' deki `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanarak uygulama ayarını ayarlayarak kalıcı depolamayı etkinleştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-*Docker-compose.yml* dosyanızda, seçeneğini `volumes` `${WEBAPP_STORAGE_HOME}`belirleyin. 
+*Docker-Compose. yıml* dosyanızda, `volumes` seçeneğini ile `${WEBAPP_STORAGE_HOME}`eşleyin. 
 
-`WEBAPP_STORAGE_HOME`, App Service içinde bulunan ve uygulamanız için kalıcı depolamayla eşlenmiş olan bir ortam değişkenidir. Örnek:
+`WEBAPP_STORAGE_HOME`, App Service içinde bulunan ve uygulamanız için kalıcı depolamayla eşlenmiş olan bir ortam değişkenidir. Örneğin:
 
 ```yaml
 wordpress:
@@ -125,14 +125,14 @@ wordpress:
 
 ### <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-Çoklu kapsayıcı şu anda önizlemede. Aşağıdaki Uygulama Hizmeti platformu özellikleri desteklenmez:
+Çok Kapsayıcılı Şu anda önizleme aşamasındadır. Aşağıdaki App Service platform özellikleri desteklenmez:
 
-- Kimlik Doğrulama / Yetkilendirme
-- Yönetilen Kimlikler
+- Kimlik doğrulama/yetkilendirme
+- Yönetilen kimlikler
 
-### <a name="docker-compose-options"></a>Docker Oluşturma seçenekleri
+### <a name="docker-compose-options"></a>Docker Compose seçenekleri
 
-Aşağıdaki listeler desteklenen ve desteklenmeyen Docker Compose yapılandırma seçeneklerini gösterir:
+Aşağıdaki listede desteklenen ve desteklenmeyen Docker Compose yapılandırma seçenekleri gösterilmektedir:
 
 #### <a name="supported-options"></a>Desteklenen seçenekler
 
@@ -151,21 +151,21 @@ Aşağıdaki listeler desteklenen ve desteklenmeyen Docker Compose yapılandırm
 - depends_on (yoksayılır)
 - networks (yoksayılır)
 - secrets (yoksayılır)
-- 80 ve 8080 dışındaki bağlantı noktaları (göz ardı edilen)
+- 80 ve 8080 dışındaki bağlantı noktaları (yoksayıldı)
 
 > [!NOTE]
-> Açıkça çağrılmayan diğer seçenekler Genel Önizleme'de yoksayılır.
+> Açıkça çağrılmayan diğer seçenekler genel önizlemede yok sayılır.
 
-## <a name="configure-vnet-integration"></a>VNet tümleştirmeyi yapılandırma
+## <a name="configure-vnet-integration"></a>VNet tümleştirmesini yapılandırma
 
-VNet tümleştirmesi ile özel bir kapsayıcı kullanmak ek kapsayıcı yapılandırması gerektirebilir. Bkz. [Uygulamanızı Azure Sanal Ağıyla Tümleştirin.](../web-sites-integrate-with-vnet.md)
+VNet tümleştirmeyle özel bir kapsayıcı kullanmak için ek kapsayıcı yapılandırması gerekebilir. Bkz. [uygulamanızı Azure sanal ağıyla tümleştirme](../web-sites-integrate-with-vnet.md).
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Özel konteyner deposundan dağıtma](tutorial-custom-docker-image.md)
+> [Öğretici: özel kapsayıcı deposundan dağıtma](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [Öğretici: Multi-konteyner WordPress uygulaması](tutorial-multi-container-app.md)
+> [Öğretici: çok Kapsayıcılı WordPress uygulaması](tutorial-multi-container-app.md)

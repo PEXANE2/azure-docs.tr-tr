@@ -1,6 +1,6 @@
 ---
-title: IoT Cihaz Sağlama Hizmeti (DPS) örneğinizin IP adresini anlama | Microsoft Dokümanlar
-description: IoT Aygıt Sağlama Hizmeti (DPS) adresinizi ve özelliklerini nasıl sorgulayacağınızı öğrenin. DPS örneğinizin IP adresi, olağanüstü durum kurtarma veya bölgesel arıza gibi belirli senaryolar sırasında değişebilir.
+title: IoT cihazı sağlama hizmeti (DPS) örneğinizin IP adresini anlama | Microsoft Docs
+description: IoT cihaz sağlama hizmeti (DPS) adresinizi ve özelliklerini sorgulamayı öğrenin. DPS örneğinizin IP adresi, olağanüstü durum kurtarma veya bölgesel yük devretme gibi belirli senaryolar sırasında değişebilir.
 author: wesmc7777
 ms.author: wesmc
 ms.service: iot-dps
@@ -8,47 +8,47 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: f6afd5c4cc5aa0215f943979ae91389b39d449f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284934"
 ---
 # <a name="iot-hub-dps-ip-addresses"></a>IoT Hub DPS IP adresleri
 
-Bir IoT Hub Aygıt Sağlama Hizmetinin (DPS) ortak uç noktalarına ait IP adresi önekleri _AzureIoTHub_ [hizmet etiketi](../virtual-network/service-tags-overview.md)altında düzenli aralıklarla yayımlanır. Çeşitli ağ yalıtım hedefleri uygulamak için bu IP adresi önekleri bir IoT DPS örneği ile aygıtlar veya ağ varlıkları arasındaki bağlantıyı denetlemek için kullanabilirsiniz:
+IoT Hub cihaz sağlama hizmeti 'nin (DPS) genel uç noktaları için IP adresi önekleri, _AzureIoTHub_ [hizmet etiketi](../virtual-network/service-tags-overview.md)altında düzenli aralıklarla yayımlanır. Çeşitli ağ yalıtımı hedefleri uygulamak için IoT DPS örneği ile cihazları veya Ağ varlıkları arasındaki bağlantıyı denetlemek üzere bu IP adresi öneklerini kullanabilirsiniz:
 
 | Hedef | Yaklaşım |
 |------|----------|
-| Aygıtlarınızın ve hizmetlerinizin yalnızca IoT Hub DPS uç noktalarıyla iletişim kurmasını sağlayın | IoT Hub DPS örneklerini keşfetmek için _AzureIoTHub_ hizmet etiketini kullanın. Bu IP adresi önekleri için aygıtlarınızın ve hizmetlerinizin güvenlik duvarı ayarınındaki ALLOW kurallarını yapılandırın. Aygıtların veya hizmetlerin iletişim kurmasını istemediğiniz diğer hedef IP adreslerine trafiği bırakacak kuralları yapılandırın. |
-| IoT Hub DPS uç noktanızın yalnızca aygıtlarınızdan ve ağ varlıklarınızdan bağlantı aldığından emin olun | Aygıt ve DPS servis API'leri için filtre kuralları oluşturmak için IoT DPS [IP filtresi özelliğini](iot-dps-ip-filtering.md) kullanın. Bu filtre kuralları yalnızca aygıtlarınızdan ve ağ varlık IP adreslerinden gelen bağlantılara izin vermek için kullanılabilir [(bkz. sınırlamalar](#limitations-and-workarounds) bölümü). | 
+| Cihazlarınızın ve hizmetlerinizin yalnızca IoT Hub DPS uç noktaları ile iletişim kurabildiğinden emin olun | IoT Hub DPS örneklerini saptamak için _AzureIoTHub_ Service etiketini kullanın. Bu IP adresi önekleri için cihazlarınızda ' ve hizmetler ' güvenlik duvarı ayarında kurallara ızın ver ' i yapılandırın. Cihazların veya hizmetlerin iletişim kurmasını istemediğiniz diğer hedef IP adreslerine trafik bırakma kurallarını yapılandırın. |
+| IoT Hub DPS uç noktanızın yalnızca cihazlarınızdan ve ağ varlıklarınızdan bağlantı aldığından emin olun | Cihaz ve DPS hizmet API 'Leri için filtre kuralları oluşturmak üzere IoT DPS [IP filtresi özelliğini](iot-dps-ip-filtering.md) kullanın. Bu filtre kuralları yalnızca cihazlarınızdan ve ağ varlığı IP adreslerinden gelen bağlantılara izin vermek için kullanılabilir (bkz. [sınırlamalar](#limitations-and-workarounds) bölümü). | 
 
 
 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-* Aygıtlarınızın güvenlik duvarı yapılandırmasına ALLOW kuralları eklerken, [ilgili protokoller tarafından kullanılan](../iot-hub/iot-hub-devguide-protocols.md#port-numbers)belirli bağlantı noktalarını sağlamak en iyisidir.
+* Cihazlarınızda ızın verme kuralları eklerken, [uygun protokoller tarafından kullanılan belirli bağlantı noktalarını](../iot-hub/iot-hub-devguide-protocols.md#port-numbers)sağlamak en iyisidir.
 
-* IoT DPS örneklerinin IP adresi önekleri değişebilir. Bu değişiklikler, yürürlüğe girmeden önce hizmet etiketleri aracılığıyla periyodik olarak yayınlanır. Bu nedenle, en son hizmet etiketlerini düzenli olarak almak ve kullanmak için süreçler geliştirmeniz önemlidir. Bu [işlem, servis etiketleri bulma API](../virtual-network/service-tags-overview.md#service-tags-on-premises)üzerinden otomatikolabilir. Hizmet etiketleri bulma API hala önizleme ve bazı durumlarda etiketleri ve IP adreslerinin tam listesini üretmek olmayabilir. Bulma API'si genellikle kullanılabilir olana kadar, [hizmet etiketlerini indirilebilir JSON formatında](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)kullanmayı düşünün. 
+* IoT DPS örneklerinin IP adresi ön ekleri değişikliğe tabidir. Bu değişiklikler, etkin olmadan önce hizmet etiketleri aracılığıyla düzenli olarak yayımlanır. Bu nedenle, en son hizmet etiketlerini düzenli olarak almak ve kullanmak için işlem geliştirmeniz önemlidir. Bu işlem, [hizmet etiketleri bulma API 'si](../virtual-network/service-tags-overview.md#service-tags-on-premises)aracılığıyla otomatikleştirilebilir. Hizmet etiketleri bulma API 'SI hala önizlemededir ve bazı durumlarda etiketlerin ve IP adreslerinin tam listesini oluşturmayabilir. Keşif API 'SI genel kullanıma hazır olana kadar, [INDIRILEBILIR JSON biçiminde hizmet etiketlerini](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)kullanmayı göz önünde bulundurun. 
 
-* *AzureIoTHub'ı kullanın.[ bölge adı]* etiketi, dps uç noktaları tarafından belirli bir bölgede kullanılan IP önekleri tanımlamak için. Veri merkezi olağanüstü durum kurtarma veya [bölgesel arıza](../iot-hub/iot-hub-ha-dr.md)için hesap vermek için, DPS örneğinizin coğrafi çifti bölgesinin IP öneklerine bağlantının da etkin olduğundan emin olun.
+* AzureIoTHub kullanın *. [ bölge adı]* etiketi, belirli bir BÖLGEDEKI DPS uç noktaları tarafından kullanılan IP öneklerini belirler. Veri merkezi olağanüstü durum kurtarmayı veya [bölgesel yük devretmeyi](../iot-hub/iot-hub-ha-dr.md)hesaba eklemek IÇIN, DPS örneğinizin coğrafi ÇIFT bölgesinin IP öneklerine bağlantısının de etkinleştirildiğinden emin olun.
 
-* BIR DPS örneği için güvenlik duvarı kurallarının ayarlanması, Azure CLI ve PowerShell komutlarını buna karşı çalıştırmak için gereken bağlantıyı engelleyebilir. Bu bağlantı sorunlarını önlemek için, CLI veya PowerShell istemcilerinin DPS örneğinizle iletişim kurmasını yeniden etkinleştirmek için müşterilerinizin IP adresi önekleri için ALLOW kuralları ekleyebilirsiniz.  
+* Bir DPS örneği için güvenlik duvarı kuralları ayarlamak, Azure CLı ve PowerShell komutlarını çalıştırmak için gereken bağlantıyı engelleyebilir. Bu bağlantı sorunlarından kaçınmak için, CLı veya PowerShell istemcilerinin DPS örneğiniz ile iletişim kurmasını sağlamak üzere istemcilerinizin IP adresi öneklerine ızın verme kuralları ekleyebilirsiniz.  
 
 
-## <a name="limitations-and-workarounds"></a>Sınırlamalar ve geçici geçici işler
+## <a name="limitations-and-workarounds"></a>Sınırlamalar ve geçici çözümler
 
-* DPS IP filtre özelliğinin 100 kuralı vardır. Bu sınır, Azure Müşteri Desteği aracılığıyla istekler yoluyla yükseltilebilir. 
+* DPS IP Filtresi özelliği 100 kurallara sınırlıdır. Bu sınır, Azure müşteri desteği aracılığıyla istekler aracılığıyla oluşturulabilir. 
 
-* Yapılandırılmış [IP filtreleme kurallarınız](iot-dps-ip-filtering.md) yalnızca BAĞLı IoT Hub uç noktalarınızda değil, yalnızca DPS uç noktalarınızda uygulanır. Bağlantılı IoT Hub'ları için IP filtreleme ayrı olarak yapılandırılmalıdır. Daha fazla bilgi için bkz: [IoT Hub IP filtreleme kuralları.](../iot-hub/iot-hub-ip-filtering.md)
+* Yapılandırılmış [IP filtreleme kurallarınız](iot-dps-ip-filtering.md) , bağlı IoT Hub uç noktalarında değil, yalnızca DPS uç noktalarınıza uygulanır. Bağlı IoT Hub 'Ları için IP filtrelemesi ayrı olarak yapılandırılmalıdır. Daha fazla bilgi için bkz. [IP filtreleme kuralları IoT Hub](../iot-hub/iot-hub-ip-filtering.md).
 
 ## <a name="support-for-ipv6"></a>IPv6 için destek 
 
-IPv6 şu anda IoT Hub veya DPS'de desteklenmez.
+IPv6, IoT Hub veya DPS üzerinde şu anda desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-DPS ile IP adresi yapılandırmaları hakkında daha fazla bilgi edinmek için bkz:
+DPS IP adresi konfigürasyonları hakkında daha fazla bilgi edinmek için bkz.:
 
 * [IP filtrelemeyi yapılandırma](iot-dps-ip-filtering.md)

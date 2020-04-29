@@ -1,84 +1,84 @@
 ---
 title: Sistem durum raporlarıyla ilgili sorunları giderme
-description: Azure Hizmet Dokusu bileşenleri tarafından gönderilen sistem durumu raporlarını ve sorun giderme kümesi veya uygulama sorunları için bunların kullanımını açıklar
+description: Azure Service Fabric bileşenleri tarafından gönderilen sistem durumu raporlarını ve küme veya uygulama sorunlarını gidermeye yönelik kullanımları açıklar
 author: oanapl
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282022"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Sorun gidermek için sistem durum raporlarını kullanma
-Azure Hizmet Dokusu bileşenleri, kümedeki tüm varlıkların sistem sistem durumu raporlarını kutunun hemen dışında sağlar. [Sistem deposu,](service-fabric-health-introduction.md#health-store) sistem raporlarına göre varlıkları oluşturur ve siler. Ayrıca, varlık etkileşimlerini yakalayan bir hiyerarşi içinde düzenler.
+Azure Service Fabric bileşenleri, kümedeki tüm varlıklarda sistem durumu raporlarını doğrudan kutudan çıkar. Sistem [durumu deposu](service-fabric-health-introduction.md#health-store) , sistem raporlarına göre varlıkları oluşturur ve siler. Ayrıca, bunları varlık etkileşimleri yakalayan bir hiyerarşide düzenler.
 
 > [!NOTE]
-> Sağlıkla ilgili kavramları anlamak için [Service Fabric sağlık modeli](service-fabric-health-introduction.md)hakkında daha fazla bilgi edinin.
+> Sağlık ile ilgili kavramları anlamak için [Service Fabric sistem durumu modelinde](service-fabric-health-introduction.md)daha fazla bilgi edinin.
 > 
 > 
 
-Sistem sistem durumu raporları küme ve uygulama işlevselliği ve bayrak sorunları görünürlük sağlar. Uygulamalar ve hizmetler için sistem sağlık raporları, varlıkların uygulandığını ve Service Fabric perspektifinden doğru davrandığını doğrular. Raporlar, hizmetin iş mantığının veya yanıt vermeyen işlemlerin algılanmasının herhangi bir sistem durumu izlemesini sağlamaz. Kullanıcı hizmetleri, sistem durumu verilerini mantığına özgü bilgilerle zenginleştirebilir.
+Sistem durumu raporları, küme ve uygulama işlevlerine ilişkin görünürlük sağlar ve sorunları bayrak olarak verir. Uygulamalar ve hizmetler için sistem durumu raporları varlıkların uygulandığını ve Service Fabric perspektifinden doğru şekilde çalıştığını doğrular. Raporlar, hizmetin iş mantığını veya yanıt vermeyen işlemlerin algılanmasına ilişkin bir sistem durumu izleme sağlamaz. Kullanıcı Hizmetleri, sistem durumu verilerini mantığına özgü bilgilerle zenginleştirebilirsiniz.
 
 > [!NOTE]
-> Kullanıcı izleme köpekleri tarafından gönderilen sistem raporları yalnızca sistem bileşenleri bir varlık *oluşturduktan sonra* görünür. Bir varlık silindiğinde, sistem durumu deposu onunla ilişkili tüm sistem durumu raporlarını otomatik olarak siler. Aynı varlık yeni bir örnek oluşturulduğunda da geçerlidir. Bir örnek, yeni bir durum lu kalıcı hizmet çoğaltma örneği oluşturulduğunda. Eski örnekle ilişkili tüm raporlar silinir ve mağazadan temizlenir.
+> Kullanıcı Watchdogs tarafından gönderilen durum raporları yalnızca sistem bileşenleri bir varlık oluşturduktan *sonra* görünür. Bir varlık silindiğinde, sistem durumu deposu onunla ilişkili tüm sistem durumu raporlarını otomatik olarak siler. Varlığın yeni bir örneği oluşturulduğunda aynı değeri de geçerlidir. Yeni bir durum bilgisi olan kalıcı hizmet çoğaltması örneği oluşturulduğunda örnek bir örnektir. Eski örnekle ilişkili tüm raporlar silinir ve mağazadan temizlenir.
 > 
 > 
 
-Sistem bileşen raporları kaynak tarafından tanımlanır ve bu raporlar " Sistem " ile**başlar.** ekleyin. İzleme örgütleri, geçersiz parametrelere sahip raporlar reddedildiğinden, kaynakları için aynı öneki kullanamaz.
+Sistem bileşen raporları, kaynak tarafından tanımlanır ve "sistem" ile başlar **.** ekleyin. Geçersiz parametrelere sahip raporlar reddedildiği için Watchdogs, kaynakları için aynı öneki kullanamaz.
 
-Onları neyin tetiklediğini anlamak ve temsil ettikleri olası sorunları nasıl düzelteceklerini öğrenmek için bazı sistem raporlarına bakalım.
+Ne tetikleyeceğini anlamak ve bunların gösterdiği olası sorunları nasıl düzeltebileceğinizi öğrenmek için bazı sistem raporlarına göz atalım.
 
 > [!NOTE]
-> Service Fabric, kümede ve uygulamalarda neler olup bittiğine ilişkin görünürlüğü artıran ilgi koşulları hakkında raporlar eklemeye devam ediyor. Varolan raporlar, sorunu daha hızlı gidermeye yardımcı olmak için daha fazla ayrıntıyla geliştirilebilir.
+> Service Fabric,, kümede ve uygulamalarda meydana gelen görünürlüğü artıran ilgilendiğiniz koşullara rapor eklemeye devam eder. Mevcut raporlar sorunu daha hızlı gidermeye yardımcı olmak için daha fazla ayrıntıya sahip olabilir.
 > 
 > 
 
-## <a name="cluster-system-health-reports"></a>Küme sistemi sistem sağlık raporları
-Küme durumu varlığı sistem durumu deposunda otomatik olarak oluşturulur. Her şey düzgün çalışırsa, sistem raporu yoktur.
+## <a name="cluster-system-health-reports"></a>Küme sistem durumu raporları
+Küme durumu varlığı, sistem durumu deposunda otomatik olarak oluşturulur. Her şey düzgün çalışıyorsa, bir sistem raporuna sahip değildir.
 
-### <a name="neighborhood-loss"></a>Mahalle kaybı
-**System.Federation,** bir mahalle kaybı algıladığında bir hata bildirir. Rapor tek tek düğümlerden gelir ve düğüm kimliği özellik adına dahildir. Bir mahalle tüm Hizmet Kumaşı halkasında kaybolursa, genellikle boşluk raporunun her iki tarafını temsil eden iki olay bekleyebilirsiniz. Daha fazla mahalle kaybedilirse, daha fazla olay vardır.
+### <a name="neighborhood-loss"></a>Komşu kaybı
+**System. Federation** , bir komşu kayıp algıladığında bir hata bildiriyor. Rapor bağımsız düğümlerden, düğüm KIMLIĞI ise özellik adına dahil edilir. Service Fabric halkasının tamamında bir komşu kaybolursa, genellikle boşluk raporunun her iki tarafını temsil eden iki olayı bekleyebilir. Daha fazla neighborhoods kaybolursa, daha fazla olay vardır.
 
-Rapor, genel kira zaman larını zaman-to-live (TTL) olarak belirtir. Rapor, durum etkin kaldığı sürece TTL süresinin her yarısına dargındır. Olay süresi dolduğunda otomatik olarak kaldırılır. Süresi dolduğunda kaldırma davranışı, raporlama düğümü aşağıda olsa bile raporun sistem durumu deposundan doğru şekilde temizlenmesini sağlar.
+Rapor, genel kira zaman aşımını yaşam süresi (TTL) olarak belirtir. Rapor, koşulun etkin kaldığı sürece TTL süresinin her yarısında yeniden gönderilir. Etkinlik süresi dolduktan sonra otomatik olarak kaldırılır. Kaldırma-süre sonu davranışı, raporlama düğümü çalışmıyor olsa bile raporun sistem durumu deposundan doğru şekilde temizlenmesini sağlar.
 
-* **SourceId**: System.Federation
-* **Özellik**: **Mahalle** ile başlar ve düğüm bilgilerini içerir.
-* **Sonraki adımlar**: Mahallenin neden kaybolduğunu araştırın. Örneğin, küme düğümleri arasındaki iletişimi denetleyin.
+* **SourceId**: System. FEDERATION
+* **Özellik**: **komşuları** ile başlar ve düğüm bilgilerini içerir.
+* **Sonraki adımlar**: komşularınızın neden kaybolduğunu araştırın. Örneğin, küme düğümleri arasındaki iletişimi denetleyin.
 
 ### <a name="rebuild"></a>Yeniden derleme
 
-Failover Manager (FM) hizmeti küme düğümleri hakkındaki bilgileri yönetir. FM verilerini kaybedip veri kaybına geçtiğinde, küme düğümleri hakkında en güncel bilgilere sahip olduğunu garanti edemez. Bu durumda, sistem yeniden oluşturma yoluyla gider ve System.FM durumunu yeniden oluşturmak için kümedeki tüm düğümlerden veri toplar. Bazen, ağ veya düğüm sorunları nedeniyle, yeniden sıkışmış veya duraklattı alabilirsiniz. Aynı failover Manager Master (FMM) hizmeti ile de olabilir. FMM, tüm FM'lerin kümede nerede olduğunu izleyen, devletsiz bir sistem hizmetidir. FMM birincil her zaman 0'a en yakın kimliği ile düğümdür. Bu düğüm düşerse, yeniden tetiklenir.
-Önceki koşullardan biri gerçekleştiğinde, **System.FM** veya **System.FMM** bir hata raporu yla işaretler. Yeniden oluşturma iki aşamadan birinde sıkışmış olabilir:
+Yük Devretme Yöneticisi (FM) hizmeti, küme düğümleri hakkındaki bilgileri yönetir. FM, verilerini kaybeder ve veri kaybına geçtiğinde, küme düğümleri hakkında en güncel bilgilere sahip olduğunu garanti etmez. Bu durumda, sistem yeniden derleme yoluyla geçer ve System.FM durumunu yeniden derlemek için kümedeki tüm düğümlerden verileri toplar. Bazen ağ veya düğüm sorunlarından dolayı yeniden oluşturma, takılmış veya durdurulmuş olabilir. Aynı durum Yük Devretme Yöneticisi Master (FMM) hizmeti ile de oluşabilir. FMM, tüm FMs 'nin kümede nerede olduğunu izlemeye devam eden, durum bilgisi olmayan bir sistem hizmetidir. FMM 'nin birincili, KIMLIĞI 0 ' a yakın olan düğümdür. Bu düğüm atıldığında yeniden derleme tetiklenir.
+Önceki koşullardan biri gerçekleştiğinde, **System.FM** veya **System. FMM** bunu bir hata raporuyla işaretler. Yeniden oluşturma iki aşamadan birinde takılmış olabilir:
 
-* **Yayını beklemek**: FM/FMM diğer düğümlerden gelen yayın iletisi yanıtını bekler.
+* **Yayın bekleniyor**: FM/FDD diğer düğümlerden gelen yayın iletisi yanıtı için bekler.
 
-  * **Sonraki adımlar**: Düğümler arasında ağ bağlantısı sorunu olup olmadığını araştırın.
-* **Düğümleri Bekliyorum**: FM/FMM zaten diğer düğümlerden bir yayın yanıtı aldı ve belirli düğümlerden yanıt bekliyor. Sistem durumu raporu, FM/FMM'in yanıt beklediği düğümleri listeler.
-   * **Sonraki adımlar**: FM/FMM ve listelenen düğümler arasındaki ağ bağlantısını incele. Listelenen her düğümü diğer olası sorunlar için araştırın.
+  * **Sonraki adımlar**: düğümler arasında bir ağ bağlantısı sorunu olup olmadığını araştırın.
+* **Düğüm bekleniyor**: FM/FMM zaten diğer düğümlerden bir yayın yanıtı aldı ve belirli düğümlerden yanıt bekliyor. Sistem durumu raporu, FM/FMM 'nin bir yanıt beklediği düğümleri listeler.
+   * **Sonraki adımlar**: FM/FDD ve listelenen düğümler arasındaki ağ bağlantısını araştırın. Diğer olası sorunlar için listelenen her düğümü araştırın.
 
-* **SourceID**: System.FM veya System.FMM
-* **Özellik**: Yeniden.
-* **Sonraki adımlar**: Düğümler arasındaki ağ bağlantısını ve sistem durumu raporunun açıklamasında listelenen belirli düğümlerin durumunu araştırın.
+* **SourceId**: System.FM veya System. FMM
+* **Özellik**: yeniden derleyin.
+* **Sonraki adımlar**: düğümler arasındaki ağ bağlantısını ve sistem durumu raporunun açıklamasında listelenen belirli düğümlerin durumunu araştırın.
 
-### <a name="seed-node-status"></a>Tohum Düğümü Durumu
-**System.FM,** bazı tohum düğümleri sağlıksızsa küme düzeyi uyarısı bildirir. Tohum düğümleri, altta yatan kümenin kullanılabilirliğini koruyan düğümlerdir. Bu düğümler, diğer düğümlerle kiralama lar kurarak ve belirli ağ hatalarında tiebreaker olarak hizmet vererek kümenin ayakta kalmasını sağlamaya yardımcı olur. Tohum düğümlerinin çoğunluğu kümede aşağıysa ve geri getirilmezse, küme otomatik olarak kapanır. 
+### <a name="seed-node-status"></a>Çekirdek düğüm durumu
+**System.FM** , bazı çekirdek düğümlerin sağlıksız olması durumunda küme düzeyinde bir uyarı bildirir. Çekirdek düğümleri, temel alınan kümenin kullanılabilirliğini sürdürdüğüm olan düğümlerdir. Bu düğümler, diğer düğümlerle Kiralama kurarak ve belirli ağ başarısızlığı türleri sırasında tiebreaklikler gören kümenin devam ettiğinden emin olmaya yardımcı olur. Çekirdek düğümlerin bir çoğunluğu kümede kapalıysa ve geri getirilmezse, küme otomatik olarak kapanır. 
 
-Bir tohum düğümü, düğüm durumu Aşağı, Kaldırıldı veya Bilinmiyor ise sağlıksızdır.
-Tohum düğümü durumu için uyarı raporu ayrıntılı bilgi ile tüm sağlıksız tohum düğümleri listeleyecek.
+Düğüm durumu kapalıysa, kaldırılırsa veya bilinmiyorsa, çekirdek düğüm sağlıksız olur.
+Çekirdek düğüm durumu için uyarı raporu, tüm sağlıksız çekirdek düğümlerini ayrıntılı bilgilerle listelecektir.
 
-* **SourceID**: System.FM
-* **Özellik**: SeedNodeStatus
-* **Sonraki adımlar**: Bu uyarı kümede gösteriliyorsa, düzeltmek için aşağıdaki yönergeleri izleyin: Cluster running Service Fabric sürüm 6.5 veya daha yüksek: Azure'da Hizmet Kumaşı kümesi için, tohum düğümü aşağı indikten sonra, Service Fabric bunu otomatik olarak tohum olmayan bir düğümolarak değiştirmeye çalışır. Bunu gerçekleştirmek için, birincil düğüm türündeki tohumsuz düğüm sayısının Down tohum düğümlerinin sayısına daha büyük veya eşit olduğundan emin olun. Gerekirse, bunu başarmak için birincil düğüm türüne daha fazla düğüm ekleyin.
-Küme durumuna bağlı olarak, sorunu gidermek biraz zaman alabilir. Bu işlem yapıldıktan sonra, uyarı raporu otomatik olarak temizlenir.
+* **SourceId**: System.FM
+* **Özellik**: seednodestatus
+* **Sonraki adımlar**: Bu uyarı kümede görünüyorsa, bunları onarmak için aşağıdaki yönergeleri izleyin: Service Fabric 6,5 veya üzeri bir sürümü çalıştıran küme Için: Azure 'da Service Fabric kümesi için, çekirdek düğüm kapatıldıktan sonra, Service Fabric onu otomatik olarak çekirdek olmayan bir düğüm olarak değiştirmeye çalışır. Bunu yapmak için, birincil düğüm türündeki çekirdek olmayan düğümlerin sayısının aşağı çekirdek düğümlerin sayısına eşit veya ondan daha büyük olduğundan emin olun. Gerekirse, bunu elde etmek için birincil düğüm türüne daha fazla düğüm ekleyin.
+Küme durumuna bağlı olarak, sorunun düzeltilmesi biraz zaman alabilir. Bu işlem tamamlandığında, uyarı raporu otomatik olarak temizlenir.
 
-Service Fabric bağımsız küme için, uyarı raporunu temizlemek için, tüm tohum düğümleri sağlıklı olmak gerekir. Tohum düğümlerinin neden sağlıksız olduğuna bağlı olarak, farklı eylemler yapılması gerekir: tohum düğümü Aşağı ise, kullanıcıların bu tohum düğümlerini yukarı getirmeleri gerekir; tohum düğümü Çıkarılırsa veya Bilinmiyorsa, bu tohum [düğümünün kümeden çıkarılması gerekir.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)
-Tüm tohum düğümleri sağlıklı olduğunda uyarı raporu otomatik olarak temizlenir.
+Tek başına küme Service Fabric, uyarı raporunu temizlemek için tüm çekirdek düğümlerin sağlıklı olması gerekir. Çekirdek düğümlerin neden sağlıksız olduğuna bağlı olarak, farklı eylemlerin alınması gerekir: çekirdek düğüm kapalıysa, kullanıcıların bu çekirdek düğümü yukarı getirmelerini sağlar; çekirdek düğüm kaldırılırsa veya bilinmiyorsa, bu çekirdek düğümün [kümeden kaldırılması gerekir](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+Tüm çekirdek düğümleri sağlıklı hale geldiğinde uyarı raporu otomatik olarak temizlenir.
 
-Küme çalıştıran Service Fabric sürümü 6.5'ten eski: Bu durumda uyarı raporunun el ile temizlenmesi gerekir. **Kullanıcılar raporu temizlemeden önce tüm tohum düğümlerinin sağlıklı hale olduğundan emin olmalıdır:** tohum düğümü Aşağı ise, kullanıcıların bu tohum düğümyukarı getirmek gerekir;tohum düğümü Kaldırılır veya Bilinmiyorise, bu tohum düğümü kümeden kaldırılması gerekir.
-Tüm tohum düğümleri sağlıklı hale geldikten sonra, [uyarı raporunu temizlemek](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)için Powershell aşağıdaki komutu kullanın:
+6,5 'den eski Service Fabric sürümü çalıştıran küme için: Bu durumda, uyarı raporunun el ile temizlenmesi gerekir. **Kullanıcılar, raporu temizlemeden önce tüm çekirdek düğümlerin sağlıklı hale gelmesini sağlamalıdır**: çekirdek düğüm kapalıysa, kullanıcıların bu çekirdek düğümü yukarı getirmeleri gerekir; çekirdek düğüm kaldırılırsa veya bilinmiyorsa, bu çekirdek düğümün kümeden kaldırılması gerekir.
+Tüm çekirdek düğümleri sağlıklı olduktan sonra, [Uyarı raporunu temizlemek](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)için PowerShell 'de aşağıdaki komutu kullanın:
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
@@ -115,38 +115,38 @@ HealthEvents          :
 ```
 
 
-### <a name="certificate-expiration"></a>Sertifika nın süresi doldu
-**System.FabricNode,** düğüm tarafından kullanılan sertifikalar son kullanma tarihine yakın olduğunda bir uyarı bildirir. Düğüm başına üç sertifika vardır: **Certificate_cluster**, **Certificate_server**ve **Certificate_default_client.** Son kullanma tarihine en az iki hafta kaldığınızda, rapor sağlık durumu tamamdır. Son kullanma tarihi iki hafta içinde olduğunda, rapor türü bir uyarıdır. Bu olayların TTL'si sonsuzdur ve bir düğüm kümeden ayrıldığında kaldırılır.
+### <a name="certificate-expiration"></a>Sertifika süre sonu
+**System. fabricnode** , düğüm tarafından kullanılan sertifikaların süresi dolmak üzere bir uyarı bildirir. Düğüm başına üç sertifika vardır: **Certificate_cluster**, **Certificate_server**ve **Certificate_default_client**. Süre sonu en az iki hafta sonra, raporun sistem durumu Tamam olur. Süre sonu iki hafta içinde olduğunda, rapor türü bir uyarıdır. Bu olayların TTL 'si sonsuzdur ve düğüm kümeden ayrıldığında kaldırılır.
 
-* **SourceId**: System.FabricNode
-* **Özellik**: **Sertifika** ile başlar ve sertifika türü hakkında daha fazla bilgi içerir.
-* **Sonraki adımlar**: Sertifikaları niçin sona ermeleri yakınsa güncelleştirin.
+* **SourceId**: System. fabricnode
+* **Özellik**: **sertifikayla** başlar ve sertifika türü hakkında daha fazla bilgi içerir.
+* **Sonraki adımlar**: süresi dolmak üzere olan sertifikaları güncelleştirin.
 
 ### <a name="load-capacity-violation"></a>Yük kapasitesi ihlali
-Servis Kumaş Yük Dengeleyici, düğüm kapasitesi ihlali algıladığında bir uyarı bildirir.
+Service Fabric Load Balancer düğüm kapasitesi ihlali algıladığında bir uyarı bildirir.
 
-* **SourceId**: System.PLB
-* **Özellik**: **Kapasite**ile başlar.
-* **Sonraki adımlar**: Sağlanan ölçümleri kontrol edin ve düğümdeki geçerli kapasiteyi görüntüleyin.
+* **SourceId**: System. PLB
+* **Özellik**: **kapasiteyle**başlar.
+* **Sonraki adımlar**: belirtilen ölçümleri denetleyin ve düğümdeki geçerli kapasiteyi görüntüleyin.
 
-### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Kaynak yönetim ölçümleri için düğüm kapasitesi uyuşmazlığı
-System.Hosting, küme bildiriminde tanımlanan düğüm kapasiteleri kaynak yönetim ölçümleri (bellek ve CPU çekirdekleri) için gerçek düğüm kapasitelerinden daha büyükse bir uyarı bildirir. Kaynak [yönetişimini](service-fabric-resource-governance.md) kullanan ilk hizmet paketi belirli bir düğümde kaydolduğunda bir sistem durumu raporu görüntülenir.
+### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Kaynak idare ölçümleri için düğüm kapasitesi uyumsuzluğu
+System. Hosting, küme bildiriminde tanımlanan düğüm kapasiteleri, kaynak idare ölçümleri (bellek ve CPU çekirdekleri) için gerçek düğüm kapasitelerine kıyasla bir uyarı bildirir. Bir sistem durumu raporu, [kaynak idare](service-fabric-resource-governance.md) kullanan ilk hizmet paketi belirtilen bir düğümde kaydolduğunda görüntülenir.
 
-* **SourceId**: System.Hosting
-* **Özellik**: **Kaynak Yönetişim**.
-* **Sonraki adımlar**: Yönetim hizmeti paketleri beklendiği gibi zorlanmadığından ve [kaynak yönetimi](service-fabric-resource-governance.md) düzgün çalışmadığından, bu sorun sorun olabilir. Küme bildirimini bu ölçümler için doğru düğüm kapasiteleriyle güncelleştirin veya belirtmeyin ve Hizmet Kumaşı'nın kullanılabilir kaynakları otomatik olarak algılamasına izin vermeyin.
+* **SourceId**: System. Hosting
+* **Özellik**: **resourceidare**.
+* **Sonraki adımlar**: Bu sorun bir sorun olabilir çünkü hizmet paketlerinin yönetimi beklenen şekilde zorlanmaz ve [kaynak](service-fabric-resource-governance.md) İdaresi düzgün şekilde çalışmıyor. Bu ölçümler için doğru düğüm kapabilgileriyle küme bildirimini güncelleştirin veya bunları belirtmeyin ve Service Fabric kullanılabilir kaynakları otomatik olarak algılamaya izin verin.
 
-## <a name="application-system-health-reports"></a>Uygulama sistemi sağlık raporları
-Küme Yöneticisi hizmetini temsil eden System.CM, bir uygulama hakkındaki bilgileri yöneten makamdır.
+## <a name="application-system-health-reports"></a>Uygulama sistem durumu raporları
+Küme Yöneticisi hizmetini temsil eden System.CM, bir uygulamayla ilgili bilgileri yöneten yetkildir.
 
 ### <a name="state"></a>Durum
-System.CM, uygulama oluşturulduğunda veya güncelleştirildiğinde Tamam olarak raporlandı. Uygulama silindiğinde sağlık deposuna bilgi verir, böylece mağazadan kaldırılabilir.
+Uygulama oluşturulduğunda veya güncelleştirilirken raporları Tamam olarak System.CM. Mağaza 'dan kaldırılabilmesi için uygulama silindiğinde sistem durumu deposuna bildirir.
 
-* **SourceId**: System.CM
-* **Özellik**: Devlet.
-* **Sonraki adımlar**: Uygulama oluşturulduysa veya güncelleştirildiyse, Cluster Manager sistem durumu raporunu içermelidir. Aksi takdirde, bir sorgu düzenleyerek uygulamanın durumunu denetleyin. Örneğin, PowerShell cmdlet **Get-ServiceFabricApplication -ApplicationName applicationName** *applicationName*kullanın.
+* **SourceId**: System.cm
+* **Özellik**: durum.
+* **Sonraki adımlar**: uygulama oluşturulduysa veya güncelleştirilirse, Küme Yöneticisi sistem durumu raporunu içermelidir. Aksi takdirde, bir sorgu vererek uygulamanın durumunu kontrol edin. Örneğin, **Get-ServiceFabricApplication-ApplicationName** *ApplicationName*PowerShell cmdlet 'ini kullanın.
 
-Aşağıdaki örnek, kumaştaki durum olayını **gösterir:/WordCount** uygulaması:
+Aşağıdaki örnek, **Fabric:/WordCount** uygulamasındaki durum olayını gösterir:
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
@@ -169,16 +169,16 @@ HealthEvents                    :
                                   Transitions           : Error->Ok = 7/13/2017 5:57:05 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-## <a name="service-system-health-reports"></a>Hizmet sistemi sağlık raporları
-Failover Manager hizmetini temsil eden System.FM, hizmetlerle ilgili bilgileri yöneten yetkilidir.
+## <a name="service-system-health-reports"></a>Hizmet sistem durumu raporları
+Yük Devretme Yöneticisi hizmetini temsil eden System.FM, hizmetlerle ilgili bilgileri yöneten yetkilisdir.
 
 ### <a name="state"></a>Durum
-hizmet oluşturulduğunda System.FM Tamam olarak bildirir. Hizmet silindiğinde varlığı sistem durumu deposundan siler.
+Hizmet oluşturulduğunda raporları Tamam olarak System.FM. Hizmet silindiğinde varlığı sistem durumu deposundan siler.
 
 * **SourceId**: System.FM
-* **Özellik**: Devlet.
+* **Özellik**: durum.
 
-Aşağıdaki örnek, hizmet dokusundaki durum olayını **gösterir:/WordCount/WordCountWebService:**
+Aşağıdaki örnek Service Fabric 'teki durum olayını gösterir **:/WORDCOUNT/WordCountWebService**:
 
 ```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
@@ -204,34 +204,34 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="service-correlation-error"></a>Hizmet korelasyon hatası
-**System.PLB,** bir hizmeti güncelleştirmenin yakınlık zinciri oluşturan başka bir hizmetle ilişkili olduğunu algıladığında bir hata bildirir. Başarılı bir güncelleştirme gerçekleştiğinde rapor temizlenir.
+### <a name="service-correlation-error"></a>Hizmet bağıntı hatası
+**System. PLB** , bir hizmetin güncelleştirme bir benzeşim zinciri oluşturan başka bir hizmetle bağıntılı olduğunu algıladığında bir hata bildirir. Başarılı bir güncelleştirme gerçekleştiğinde rapor temizlenir.
 
-* **SourceId**: System.PLB
+* **SourceId**: System. PLB
 * **Özellik**: **ServiceDescription**.
-* **Sonraki adımlar**: İlişkili hizmet açıklamalarını denetleyin.
+* **Sonraki adımlar**: bağıntılı hizmet açıklamalarını denetleyin.
 
-## <a name="partition-system-health-reports"></a>Bölüm sistemi sağlık raporları
-Failover Manager hizmetini temsil eden System.FM, hizmet bölümleri hakkındaki bilgileri yöneten yetkilidir.
+## <a name="partition-system-health-reports"></a>Sistem durumu raporlarını bölümle
+Yük Devretme Yöneticisi hizmetini temsil eden System.FM, hizmet bölümleri hakkındaki bilgileri yöneten yetkilisdir.
 
 ### <a name="state"></a>Durum
-System.FM, bölüm oluşturulduğunda ve sağlıklı olduğunda Tamam olarak bildirir. Bölüm silindiğinde varlığı sistem durumu deposundan siler.
+System.FM, bölüm oluşturulduğunda ve sağlıklı olduğunda raporları Tamam olarak bildirir. Bölüm silindiğinde varlığı sistem durumu deposundan siler.
 
-Bölüm en az yineleme sayısının altındaysa, bir hata bildirir. Bölüm minimum yineleme sayısının altında değilse, ancak hedef yineleme sayısının altındaysa, bir uyarı bildirir. Bölüm çoğunluk kaybı ise, System.FM bir hata bildirir.
+Bölüm en düşük çoğaltma sayısının altındaysa bir hata bildirir. Bölüm en düşük çoğaltma sayısının altında değilse, ancak hedef çoğaltma sayısının altındaysa, bir uyarı bildirir. Bölüm çekirdek kaybolduysa, System.FM bir hata bildirir.
 
-Diğer önemli olaylar arasında, yeniden yapılandırma beklenenden uzun sürdüğünde ve yapı beklenenden daha uzun sürdüğünde bir uyarı yer alır. Yapı ve yeniden yapılandırma için beklenen süreler, hizmet senaryolarına göre yapılandırılabilir. Örneğin, bir hizmette Azure SQL Veritabanı gibi bir terabayt lık durum varsa, yapı az miktarda durum içeren bir hizmetten daha uzun sürer.
+Diğer önemli olaylar, yeniden yapılandırma beklenenden uzun sürerse ve derleme beklenenden uzun sürerse bir uyarı içerir. Derleme ve yeniden yapılandırma için beklenen zamanlar, hizmet senaryolarına göre yapılandırılabilir. Örneğin, bir hizmetin Azure SQL veritabanı gibi terabaytlık bir durumu varsa, derleme az miktarda duruma sahip bir hizmet için daha uzun sürer.
 
 * **SourceId**: System.FM
-* **Özellik**: Devlet.
-* **Sonraki adımlar**: Sistem durumu iyi değilse, bazı yinelemelerin birincil veya ikincil olarak doğru şekilde oluşturulmadı, açılmamış veya birincil veya ikincil olarak yükseltilmemiş olabilir. 
+* **Özellik**: durum.
+* **Sonraki adımlar**: sistem durumu Tamam değilse, bazı çoğaltmaların oluşturulması, açılmadığının veya birincil ya da ikinciye yükseltilme olasılığı vardır. 
 
-Açıklama çoğunluk kaybını tanımlıyorsa, daha sonra aşağı olan yinelemeler için ayrıntılı sağlık raporunu incelemek ve bunları geri getirmek, bölümün yeniden çevrimiçi duruma getirilmesine yardımcı olur.
+Açıklama çekirdek kaybını tanımlıysa, kapatılmış olan ve yedeklenen çoğaltmalar için ayrıntılı sistem durumu raporunu incelemek, bölümü yeniden çevrimiçi duruma getirmeye yardımcı olur.
 
-Açıklama, yeniden yapılandırmaya sıkışmış bir bölümü [açıklarsa,](service-fabric-concepts-reconfiguration.md)birincil yinelemedeki sistem durumu raporu ek bilgiler sağlar.
+Açıklama, yeniden [yapılandırma](service-fabric-concepts-reconfiguration.md)sırasında takılmış bir bölümü tanımlıyorsa, birincil çoğaltmadaki sistem durumu raporu daha fazla bilgi sağlar.
 
-Diğer System.FM sağlık raporları için, yinelemeler veya diğer sistem bileşenlerinden bölüm veya hizmet raporları olacaktır. 
+Diğer System.FM sistem durumu raporları için, diğer sistem bileşenlerinden çoğaltmalar veya bölüm ya da hizmet üzerinde raporlar vardır. 
 
-Aşağıdaki örneklerde bu raporlardan bazıları açıklayınız. 
+Aşağıdaki örneklerde bu raporların bazıları açıklanır. 
 
 Aşağıdaki örnekte sağlıklı bir bölüm gösterilmektedir:
 
@@ -255,7 +255,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-Aşağıdaki örnek, hedef çoğaltma sayısının altında olan bir bölümün durumunu gösterir. Bir sonraki adım, nasıl yapılandırıldığı gösterir bölüm açıklaması almaktır: **MinReplicaSetSize** üç ve **TargetReplicaSetSize** yedi. Ardından kümedeki düğüm sayısını alın ve bu durumda beş tir. Yani, bu durumda, iki yineleme yerleştirilemez, çünkü yinelemelerin hedef sayısı kullanılabilir düğüm sayısından daha yüksektir.
+Aşağıdaki örnek, hedef çoğaltma sayısı altındaki bir bölümün sistem durumunu gösterir. Bir sonraki adım, nasıl yapılandırıldığını gösteren bölüm açıklamasını almak için kullanılır: **Minreplicasetsize** üç ve **targetreplicasetsize** yedi. Daha sonra kümedeki düğümlerin sayısını alın, bu durumda beş olur. Bu nedenle, hedef çoğaltma sayısı kullanılabilir düğüm sayısından daha yüksek olduğundan, bu durumda iki çoğaltma yerleştirilemez.
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
@@ -333,7 +333,7 @@ PS C:\> @(Get-ServiceFabricNode).Count
 5
 ```
 
-Aşağıdaki örnek, kullanıcının **RunAsync** yöntemindeki iptal belirteciyle onurlandırmamasıdır nedeniyle yeniden yapılandırmada sıkışmış bir bölümün durumunu gösterir. Birincil (P) olarak işaretlenmiş herhangi bir yinelemenin sistem durumu raporunu araştırmak, sorunun daha fazla araştırılmasına yardımcı olabilir.
+Aşağıdaki örnek, Kullanıcı, **RunAsync** yönteminde iptal belirtecini göstermediğinden, yeniden yapılandırma sırasında takılmış bir bölümün sistem durumunu gösterir. Birincil (P) olarak işaretlenen herhangi bir çoğaltmanın sistem durumu raporunun araştırılmasına yardımcı olabilir.
 
 ```powershell
 PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
@@ -365,7 +365,7 @@ HealthEvents          :
                         IsExpired             : False
                         Transitions           : Ok->Warning = 8/27/2017 3:43:32 AM, LastError = 1/1/0001 12:00:00 AM
 ```
-Bu sistem durumu raporu, yeniden yapılandırmadan geçen bölümün yinelemelerinin durumunu gösterir: 
+Bu sistem durumu raporu, yeniden yapılandırma yapılmakta olan bölüm çoğaltmalarının durumunu gösterir: 
 
 ```
   P/S Ready Node1 131482789658160654
@@ -373,31 +373,31 @@ Bu sistem durumu raporu, yeniden yapılandırmadan geçen bölümün yinelemeler
   S/S Ready Node3 131482789688598468
 ```
 
-Her yineleme için sistem durumu raporu şunları içerir:
+Her çoğaltma için sistem durumu raporu şunları içerir:
 - Önceki yapılandırma rolü
 - Geçerli yapılandırma rolü
-- [Yineleme durumu](service-fabric-concepts-replica-lifecycle.md)
-- Yinelemenin üzerinde çalışan düğüm
-- Çoğaltma Kimliği
+- [Çoğaltma durumu](service-fabric-concepts-replica-lifecycle.md)
+- Çoğaltmanın çalıştığı düğüm
+- Çoğaltma KIMLIĞI
 
-Örnek gibi bir durumda, daha fazla araştırma gereklidir. Önceki örnekte ve `Primary` `Secondary` (131482789658160654 ve 131482789688598467) olarak işaretlenmiş yinelemeler ile başlayan her bir yinelemenin durumunu araştırın.
+Örnek gibi bir durumda, daha fazla araştırma yapmanız gerekir. Önceki örnekte, ve `Primary` `Secondary` (131482789658160654 ve 131482789688598467) olarak işaretlenen yinelemelerle başlayarak her bir çoğaltmanın sistem durumunu araştırın.
 
-### <a name="replica-constraint-violation"></a>Yineleme kısıtlaması ihlali
-**System.PLB,** yineleme kısıtlaması ihlali algılarsa ve tüm bölüm yinelemelerini yerleştiremezse bir uyarı bildirir. Rapor ayrıntıları, hangi kısıtlamaların ve özelliklerin yineleme yerleşimini engellediğini gösterir.
+### <a name="replica-constraint-violation"></a>Çoğaltma kısıtlaması ihlali
+**System. PLB** , bir çoğaltma kısıtlaması ihlali algılarsa bir uyarı bildirir ve tüm bölüm çoğaltmalarını yerleştiremiyor. Rapor ayrıntıları hangi kısıtlamaların ve özelliklerin çoğaltma yerleşimini engellediğini gösterir.
 
-* **SourceId**: System.PLB
+* **SourceId**: System. PLB
 * **Özellik**: **ReplicaConstraintViolation**ile başlar.
 
-## <a name="replica-system-health-reports"></a>Çoğaltma sistemi sağlık raporları
-Yeniden yapılandırma aracısı bileşenini temsil eden **System.RA,** yineleme durumunun yetkisidir.
+## <a name="replica-system-health-reports"></a>Çoğaltma sistem durumu raporları
+Yeniden yapılandırma aracı bileşenini temsil eden **System. ra**, çoğaltma durumu için yetkilidir.
 
 ### <a name="state"></a>Durum
-System.RA, yineleme oluşturulduğunda Tamam'ı bildirir.
+Çoğaltma oluşturulduğunda System. RA raporları tamam.
 
-* **SourceId**: System.RA
-* **Özellik**: Devlet.
+* **SourceId**: System. ra
+* **Özellik**: durum.
 
-Aşağıdaki örnekte sağlıklı bir yineleme gösterilmektedir:
+Aşağıdaki örnekte sağlıklı bir çoğaltma gösterilmektedir:
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
@@ -419,16 +419,16 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/14/2017 4:55:13 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ÇoğaltmaOpen Durumu, ÇoğaltmaCloseStatus, ReplicaChangeRoleStatus
-Bu özellik, yinelemeyi açmaya, yinelemeyi kapatmaya veya bir yinelemeyi bir rolden diğerine geçirmeye çalışırken uyarıları veya hataları belirtmek için kullanılır. Daha fazla bilgi için [Bkz. Çoğaltma yaşam döngüsü.](service-fabric-concepts-replica-lifecycle.md) Hatalar, bu süre içinde api aramalarından veya hizmet ana bilgisayar işleminin çökmelerinden atılan özel durumlar olabilir. C# kodundan gelen API çağrıları nedeniyle yapılan hatalar için Service Fabric, sistem durumu raporuna özel durum ve yığın izlemesini ekler.
+### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus, ReplicaCloseStatus, ReplicaChangeRoleStatus
+Bu özellik, bir çoğaltmayı açmaya çalışırken, bir çoğaltmayı kapatan veya bir rolden bir çoğaltmayı diğerine geçirmeye çalışırken uyarıları veya sorunları göstermek için kullanılır. Daha fazla bilgi için bkz. [çoğaltma yaşam döngüsü](service-fabric-concepts-replica-lifecycle.md). Bu süre boyunca, API çağrılarından veya hizmet ana bilgisayarı işleminin kilitlenmelerinden oluşan özel durumlar olabilir. C# kodundan gelen API çağrıları nedeniyle oluşan hatalarda, Service Fabric özel durum ve yığın izlemesini sistem durumu raporuna ekler.
 
-Bu sistem durumu uyarıları, eylemi yerel olarak birkaç kez yeniden denedikten sonra (politikaya bağlı olarak) yükseltilir. Service Fabric eylemi en yüksek eşiğe kadar yeniden dener. Maksimum eşiğe ulaşıldıktan sonra, durumu düzeltmek için harekete geçmeye çalışabilir. Bu girişim, bu düğüm üzerindeki eylemden vazgeçtikçe bu uyarıların temizlenmesine neden olabilir. Örneğin, bir yineleme düğümde açılmıyorsa, Hizmet Kumaşı bir sistem durumu uyarısı yükseltir. Çoğaltma açılmamaya devam ederse, Service Fabric kendi kendini onarmak için hareket eder. Bu eylem, aynı işlemi başka bir düğüm üzerinde denemeyi içerebilir. Bu girişim, bu yinelemenin temizlenmesi için yükseltilen uyarıya neden olur. 
+Bu sistem durumu uyarıları, eyleme yerel olarak birkaç kez yeniden denendikten sonra tetiklenir (ilkeye bağlı olarak). Service Fabric en yüksek eşiğe kadar yeniden dener. En fazla eşiğe ulaşıldığında, durumu düzeltmek için işlem yapmayı deneyebilir. Bu girişim, bu düğümdeki eylemde bulunduğu için bu uyarıların temizlenmesine neden olabilir. Örneğin, bir çoğaltma bir düğümde açılmazsa, Service Fabric bir sistem durumu uyarısı oluşturur. Çoğaltma açık olmaya devam ederse, Service Fabric kendi kendine onarım işlevi görür. Bu eylem, aynı işlemi başka bir düğümde denemeyi gerektirebilir. Bu girişim, bu çoğaltma için oluşturulan uyarının temizlenmesine neden olur. 
 
-* **SourceId**: System.RA
-* **Özellik**: **ReplicaOpenStatus**, **ReplicaCloseStatus**, ve **ReplicaChangeRoleStatus**.
-* **Sonraki adımlar**: İşlemin neden başarısız olduğunu belirlemek için servis kodunu veya kilitlenme dökümlerini inceleştirin.
+* **SourceId**: System. ra
+* **Özellik**: **replicaopenstatus**, **Replicaclosestatus**ve **replicachangerolestatus**.
+* **Sonraki adımlar**: işlemin neden başarısız olduğunu belirlemek için hizmet kodunu veya kilitlenme dökümlerini araştırın.
 
-Aşağıdaki örnek, açık yönteminden atan `TargetInvocationException` bir yinelemenin durumunu gösterir. Açıklama hata noktası, **IStatefulServiceReplica.Open,** özel durum türü **TargetInvocationException**ve yığın izleme içerir.
+Aşağıdaki örnek, Open yönteminden `TargetInvocationException` alınan bir çoğaltmanın sistem durumunu gösterir. Açıklama hata noktasını, **Istatefulservicereplica. Open**, **TargetInvocationException**özel durum türünü ve yığın izlemesini içerir.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
@@ -479,7 +479,7 @@ Exception has been thrown by the target of an invocation.
                         Transitions           : Error->Warning = 8/27/2017 11:43:21 PM, LastOk = 1/1/0001 12:00:00 AM                        
 ```
 
-Aşağıdaki örnek, kapatma sırasında sürekli çöken bir yinelemeyi gösterir:
+Aşağıdaki örnekte, kapatma sırasında sürekli olarak kilitlenen bir çoğaltma gösterilmektedir:
 
 ```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
@@ -510,21 +510,21 @@ HealthEvents          :
 ```
 
 ### <a name="reconfiguration"></a>Yeniden yapılandırma
-Bu özellik, yeniden yapılandırma gerçekleştiren bir yinelemenin yeniden [yapılandırmanın](service-fabric-concepts-reconfiguration.md) durduğunu veya sıkıştığını algıladığını belirtmek için kullanılır. Bu sistem durumu raporu, birincil ikincil den etkin ikincil indirgenmiş olan yineleme üzerinde olabilir bir takas birincil yeniden yapılandırma durumları dışında, geçerli rolü birincil olan yineleme üzerinde olabilir.
+Bu özellik yeniden [yapılandırma](service-fabric-concepts-reconfiguration.md) gerçekleştiren bir çoğaltmanın, yeniden yapılandırma durdurulduğunu veya takıldığını algıladığında kullanılır. Bu sistem durumu raporu geçerli rolü birincil olan çoğaltma üzerinde olabilir. bu durum, birincil olan bir değiştirme birincil yeniden yapılandırması, birincisinin birincil ' dan etkin ikincil 'e indirgenmiş olması durumunda olabilir.
 
-Yeniden yapılandırma aşağıdaki nedenlerden biri için sıkışmış olabilir:
+Yeniden yapılandırma aşağıdaki nedenlerden biri için takılmış olabilir:
 
-- Yeniden yapılandırmayı gerçekleştiren yinelemeyle aynı yineleme olan yerel yineleme üzerindeki bir eylem tamamlanamaz. Bu durumda, diğer bileşenlerden bu yineleme, System.RAP veya System.RE sağlık raporları nın incelenmesi ek bilgi sağlayabilir.
+- Yerel çoğaltma üzerinde, yeniden yapılandırması gerçekleştirmeyle aynı çoğaltma tamamlanırken bir eylem tamamlanmıyor. Bu durumda, System. RAP veya System.RE diğer bileşenlerinden bu çoğaltmadaki sistem durumu raporlarının araştırmasından daha fazla bilgi sağlayabiliriz.
 
-- Bir eylem uzak bir yineleme de tamamlanınmıyor. Eylemlerin beklemede olduğu yinelemeler sistem durumu raporunda listelenir. Daha fazla araştırma bu uzak kopyaları için sağlık raporları üzerinde yapılmalıdır. Bu düğüm ve uzak düğüm arasında iletişim sorunları da olabilir.
+- Bir eylem, uzak bir çoğaltmada tamamlanmıyor. Eylemlerin beklemede olduğu çoğaltmalar sistem durumu raporunda listelenir. Bu uzak çoğaltmaların sistem durumu raporlarında daha fazla araştırma yapılmalıdır. Bu düğüm ile uzak düğüm arasında iletişim sorunları da olabilir.
 
-Nadir durumlarda, yeniden yapılandırma iletişim veya bu düğüm ve Failover Manager hizmeti arasındaki diğer sorunlar nedeniyle sıkışmış olabilir.
+Nadir durumlarda, bu düğüm ve Yük Devretme Yöneticisi hizmeti arasındaki iletişim veya diğer sorunlar nedeniyle yeniden yapılandırma yapılabilir.
 
-* **SourceId**: System.RA
-* **Özellik**: Yeniden yapılandırma.
-* **Sonraki adımlar**: Sistem durumu raporunun açıklamasına bağlı olarak yerel veya uzak yinelemeleri incele.
+* **SourceId**: System. ra
+* **Özellik**: yeniden yapılandırma.
+* **Sonraki adımlar**: sistem durumu raporunun açıklamasına bağlı olarak yerel veya uzak çoğaltmaları araştırın.
 
-Aşağıdaki örnek, yeniden yapılandırmanın yerel yinelemeye takılıp kaldığı bir sistem durumu raporunu gösterir. Bu örnekte, iptal jetonuna uymayan bir hizmetten kaynaklanmaktadır.
+Aşağıdaki örnek, bir yeniden yapılandırma yerel çoğaltmada takılı bir sistem durumu raporu gösterir. Bu örnekte, bunun nedeni, iptal belirtecini içermeyen bir hizmettir.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
@@ -553,7 +553,7 @@ HealthEvents          :
                         Transitions           : Error->Warning = 8/28/2017 2:13:57 AM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-Aşağıdaki örnek, yeniden yapılandırmanın iki uzak yinelemeden yanıt beklerken tıkandığı bir sistem durumu raporunu gösterir. Bu örnekte, geçerli birincil dahil olmak üzere bölüm üç yineleme vardır. 
+Aşağıdaki örnek, iki uzak çoğaltmalardan yanıt bekleyen bir yeniden yapılandırma takılmasına neden olan bir sistem durumu raporunu gösterir. Bu örnekte, bölümde geçerli birincil dahil olmak üzere üç çoğaltma vardır. 
 
 ```Powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId  579d50c6-d670-4d25-af70-d706e4bc19a2 -ReplicaOrInstanceId 131483956274977415
@@ -585,32 +585,32 @@ HealthEvents          :
                         Transitions           : Error->Warning = 8/28/2017 12:07:37 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-Bu sistem durumu raporu, yeniden yapılandırmanın iki yinelemeden yanıt beklerken sıkışıp kaldığını gösterir: 
+Bu sistem durumu raporu, yeniden yapılandırma işleminin iki çoğaltmalardan yanıt beklerken takılmasını gösterir: 
 
 ```
     P/I Down 40 131483956244554282
     S/S Down 20 131483956274972403
 ```
 
-Her yineleme için aşağıdaki bilgiler verilir:
+Her çoğaltma için aşağıdaki bilgiler verilmiştir:
 - Önceki yapılandırma rolü
 - Geçerli yapılandırma rolü
-- [Yineleme durumu](service-fabric-concepts-replica-lifecycle.md)
-- Düğüm Kimliği
-- Çoğaltma Kimliği
+- [Çoğaltma durumu](service-fabric-concepts-replica-lifecycle.md)
+- Düğüm KIMLIĞI
+- Çoğaltma KIMLIĞI
 
-Yeniden yapılandırmanın engelini kaldırmak için:
-- **Aşağı** kopyaları gündeme getirilmelidir. 
-- **Yapı kopyaları** yapıyı tamamlamalı ve hazıra geçiş yapmalıdır.
+Yeniden yapılandırma engelini kaldırmak için:
+- **Aşağı** çoğaltmaların oluşturulması gerekir. 
+- **InBuild** çoğaltmalarının derleme ve geçiş için hazırlık yapması gerekir.
 
 ### <a name="slow-service-api-call"></a>Yavaş hizmet API çağrısı
-**System.RAP** ve **System.Replicator,** kullanıcı hizmet koduna yapılandırılan süreden daha uzun sürerse bir uyarı bildirir. Arama tamamlandığında uyarı temizlenir.
+Kullanıcı Hizmeti koduna yapılan bir çağrı yapılandırılan süreden uzun sürerse **System. rap** ve **System. Replicator** bir uyarı bildirir. Çağrı tamamlandığında uyarı temizlenir.
 
-* **SourceId**: System.RAP veya System.Replicator
-* **Özellik**: Yavaş API'nin adı. Açıklama, API'nin beklemede olduğu saat hakkında daha fazla ayrıntı sağlar.
-* **Sonraki adımlar**: Aramanın neden beklenenden uzun sürdüğünü araştırın.
+* **SourceId**: System. rap veya System. Replicator
+* **Özellik**: yavaş API 'nin adı. Açıklama, API 'nin beklenme zamanı hakkında daha fazla ayrıntı sağlar.
+* **Sonraki adımlar**: çağrının beklenenden uzun sürmesinin nedenini araştırın.
 
-Aşağıdaki örnek, **RunAsync'deki**iptal belirteciyle onurlandırmayan güvenilir bir hizmet için System.RAP'teki sağlık olayını gösterir:
+Aşağıdaki örnek, **RunAsync**içindeki iptal belirtecini içermeyen güvenilir bir hizmet için System. rap 'deki sistem durumu olayını gösterir:
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
@@ -637,58 +637,58 @@ HealthEvents          :
                         
 ```
 
-Özellik ve metin hangi API'nin takılıp kaldığını gösterir. Farklı sıkışmış API'ler için atılacak sonraki adımlar farklıdır. *IStatefulServiceReplica* veya *IStatelessServiceInstance'daki* tüm API'ler genellikle hizmet kodundaki bir hatadır. Aşağıdaki bölümde, bunların Güvenilir [Hizmetler modeline](service-fabric-reliable-services-lifecycle.md)nasıl çevrildiği açıklanmaktadır:
+Özellik ve metin hangi API 'nin takılı olduğunu gösterir. Farklı takılmış API 'Ler için gerçekleştirilecek sonraki adımlar farklıdır. *Istatefulservicereplica* veya *Istatelessserviceınstance* üzerinde herhangi bir API genellikle hizmet kodundaki bir hatadır. Aşağıdaki bölümde [Reliable Services modeline](service-fabric-reliable-services-lifecycle.md)nasıl çevireceği açıklanmaktadır:
 
-- **IStatefulServiceReplica.Open**: Bu `CreateServiceInstanceListeners`uyarı, bir `ICommunicationListener.OpenAsync`çağrının , veya `OnOpenAsync` geçersiz kılınmışsa, sıkışmış olduğunu gösterir.
+- **İstatefulservicereplica. Open**: Bu uyarı,, veya `CreateServiceInstanceListeners` `ICommunicationListener.OpenAsync` `OnOpenAsync` üzerine bir çağrının takıldığını gösterir.
 
-- **IStatefulServiceReplica.Close** ve **IStatefulServiceReplica.Abort**: En yaygın durumda iptal belirteci onurlandıran olmayan bir `RunAsync`hizmettir . `ICommunicationListener.CloseAsync`Ayrıca, ya da geçersiz kılınmış, `OnCloseAsync` sıkışmış olabilir.
+- **Istatefulservicereplica. Close** ve **Istatefulservicereplica. Abort**: en yaygın durum, ' a geçirilen iptal belirtecini temel alan bir hizmettir `RunAsync`. Ayrıca, ya da geçersiz `ICommunicationListener.CloseAsync`kılınırsa, `OnCloseAsync` bu da olabilir.
 
-- **IStatefulServiceReplica.ChangeRole(S)** ve **IStatefulServiceReplica.ChangeRole(N)**: En yaygın durumda iptal belirteci onurlandıran olmayan bir `RunAsync`hizmettir . Bu senaryoda, en iyi çözüm çoğaltmayeniden başlatmaktır.
+- **Istatefulservicereplica. ChangeRole (S)** ve **istatefulservicereplica. Changerole (N)**: en yaygın durum, ' a geçirilen iptal belirtecini temel alan bir hizmettir `RunAsync`. Bu senaryoda, en iyi çözüm çoğaltmayı yeniden başlatmasıdır.
 
-- **IStatefulServiceReplica.ChangeRole(P)**: En yaygın durumda hizmet `RunAsync`bir görev döndürmüş olmasıdır .
+- **Istatefulservicereplica. ChangeRole (P)**: en yaygın durum, hizmetin öğesinden `RunAsync`bir görev döndürmediğinde olur.
 
-Takılıp kalanabilecek diğer API çağrıları **IReplicator** arabirimindedir. Örnek:
+Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örneğin:
 
-- **IReplicator.CatchupReplicaSet**: Bu uyarı iki şeyden birini gösterir. Yetersiz çoğaltmalar var. Bu durumda olup olmadığını görmek için, sıkışmış bir yeniden yapılandırma için bölüm veya System.FM sağlık raporu yineleme durumuna bakın. Ya da yinelemeler işlemleri kabul etmiyor. PowerShell cmdlet `Get-ServiceFabricDeployedReplicaDetail` tüm kopyaların ilerlemesini belirlemek için kullanılabilir. Sorun, birincil `LastAppliedReplicationSequenceNumber` `CommittedSequenceNumber` değerin arkasındaki değeri olan yinelemelerde yatıyor.
+- **Ireplicator. catch Upreplicaset**: Bu uyarı iki işlemlerden birini gösterir. Yetersiz çoğaltma yok. Bu durumun bu olup olmadığını görmek için, bir veya daha fazla yeniden yapılandırma için bölümdeki çoğaltmaların çoğaltma durumuna veya System.FM sistem durumu raporuna bakın. Veya çoğaltmalar, işleme işlemleri değildir. PowerShell cmdlet 'i `Get-ServiceFabricDeployedReplicaDetail` Tüm çoğaltmaların ilerlemesini belirlemede kullanılabilir. Sorun, `LastAppliedReplicationSequenceNumber` değeri birincil `CommittedSequenceNumber` değerinin arkasında olan çoğaltmalarla birlikte kalıyor.
 
-- **IReplicator.BuildReplica\<(Uzaktan Çoğaltma>)**: Bu uyarı yapı işleminde bir sorun gösterir. Daha fazla bilgi için [Bkz. Çoğaltma yaşam döngüsü.](service-fabric-concepts-replica-lifecycle.md) Çoğalıcı adresinin yanlış yapılandırılmasından kaynaklanıyor olabilir. Daha fazla bilgi için bkz: [Özel Güvenilir Hizmetleri Yapılandırın](service-fabric-reliable-services-configuration.md) ve [bir hizmet bildiriminde kaynakları belirtin.](service-fabric-service-manifest-resources.md) Ayrıca uzak düğümüzerinde bir sorun olabilir.
+- **Ireplicator. BuildReplica (\<uzaktan yineleme kimliği>)**: Bu uyarı, derleme işlemindeki bir sorunu gösterir. Daha fazla bilgi için bkz. [çoğaltma yaşam döngüsü](service-fabric-concepts-replica-lifecycle.md). Bunun nedeni, Replicator adresinin yanlış yapılandırılması olabilir. Daha fazla bilgi için bkz. [durum bilgisi Reliable Services yapılandırma](service-fabric-reliable-services-configuration.md) ve [hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md). Uzak düğümde de sorun olabilir.
 
-### <a name="replicator-system-health-reports"></a>Çoğaltıcı sistem sağlık raporları
-**Çoğaltma sırası tam:**
-**System.Replicator** çoğaltma sırası dolduğunda bir uyarı bildirir. Birincil, bir veya daha fazla ikincil yineleme işlemleri kabul etmek yavaş olduğundan çoğaltma sırası genellikle tam olur. İkincil olarak, bu genellikle hizmet işlemleri uygulamak için yavaş olduğunda olur. Sıra artık dolduğunda uyarı temizlenir.
+### <a name="replicator-system-health-reports"></a>Çoğaltıcı sistem durumu raporları
+**Çoğaltma sırası dolu:**
+**System. Replicator** , çoğaltma kuyruğu dolduğunda bir uyarı bildirir. Birincil üzerinde, bir veya daha fazla ikincil çoğaltmanın işlemleri bildirmek için yavaş olduğu için çoğaltma kuyruğu genellikle tam hale gelir. İkincil üzerinde bu durum genellikle hizmetin işlemleri uygulamak için yavaş olduğu durumlarda oluşur. Sıra artık dolduğunda uyarı temizlenir.
 
-* **SourceId**: System.Replicator
-* **Özellik**: **PrimaryReplicationQueueStatus** veya **SecondaryReplicationQueueStatus**, çoğaltma rolüne bağlı olarak.
-* **Sonraki adımlar**: Rapor birincil taraftaysa, kümedeki düğümler arasındaki bağlantıyı denetleyin. Tüm bağlantılar sağlıklıysa, işlemleri uygulamak için yüksek disk gecikmesi olan en az bir yavaş ikincil olabilir. Rapor ikincil taraftaysa, önce düğümdeki disk kullanımını ve performansını denetleyin. Ardından, giden bağlantıyı yavaş düğümden birincil düğüme doğru kontrol edin.
+* **SourceId**: System. Replicator
+* **Özellik**: çoğaltma rolüne bağlı olarak **primaryreplicationqueuestatus** veya **secondaryreplicationqueuestatus**.
+* **Sonraki adımlar**: rapor birincil ise, kümedeki düğümler arasındaki bağlantıyı denetleyin. Tüm bağlantılar sağlıklı ise, işlemleri uygulamak için yüksek disk gecikmesi olan en az bir adet yavaş ikincil olabilir. Rapor ikincikse, önce düğüm üzerinde disk kullanımı ve performansını denetleyin. Ardından yavaş düğümden birincil bağlantı bağlantısını birincil olarak denetleyin.
 
-**RemoteReplicatorConnectionStatus:**
-**System.Replicator** birincil çoğaltma bir uyarı bildirir ikincil (uzak) çoğaltıcı bağlantısı sağlıklı değil. Uzaktan çoğaltıcının adresi raporun iletisinde gösterilir, bu da yanlış yapılandırmanın geçirilip geçirilmediğini veya çoğalıcılar arasında ağ sorunları olup olmadığını algılamayı daha kullanışlı hale getirir.
+**Remoterepereptorconnectionstatus:**
+ikincil (uzak) çoğaltıcının bağlantısı sağlıklı olmadığında birincil çoğaltmadaki**System. Replicator** bir uyarı bildirir. Uzak çoğaltıcı adresi raporun iletisinde gösterilir, bu, yanlış yapılandırmanın geçtiğini veya replicators arasında ağ sorunları olup olmadığını algılamaya daha kolay hale getirir.
 
-* **SourceId**: System.Replicator
-* **Özellik**: **RemoteReplicatorConnectionStatus**.
-* **Sonraki adımlar**: Hata iletisini denetleyin ve uzak çoğaltıcı adresinin doğru şekilde yapılandırıldığından emin olun. Örneğin, uzaktan çoğaltıcı "localhost" dinleme adresiyle açılırsa, dışarıdan erişilemez. Adres doğru görünüyorsa, olası ağ sorunlarını bulmak için birincil düğüm ile uzak adres arasındaki bağlantıyı denetleyin.
+* **SourceId**: System. Replicator
+* **Özellik**: **remoterepereptorconnectionstatus**.
+* **Sonraki adımlar**: hata iletisini denetleyin ve uzak çoğaltıcı adresinin doğru bir şekilde yapılandırıldığından emin olun. Örneğin, uzak çoğaltıcı "localhost" dinleme adresiyle açılırsa, dışından ulaşılamaz. Adres doğru görünüyorsa, olası ağ sorunlarını bulmak için birincil düğüm ile uzak adres arasındaki bağlantıyı denetleyin.
 
-### <a name="replication-queue-full"></a>Çoğaltma sırası tam
-**System.Replicator** çoğaltma sırası dolduğunda bir uyarı bildirir. Birincil, bir veya daha fazla ikincil yineleme işlemleri kabul etmek yavaş olduğundan çoğaltma sırası genellikle tam olur. İkincil olarak, bu genellikle hizmet işlemleri uygulamak için yavaş olduğunda olur. Sıra artık dolduğunda uyarı temizlenir.
+### <a name="replication-queue-full"></a>Çoğaltma kuyruğu dolu
+**System. Replicator** , çoğaltma kuyruğu dolduğunda bir uyarı bildirir. Birincil üzerinde, bir veya daha fazla ikincil çoğaltmanın işlemleri bildirmek için yavaş olduğu için çoğaltma kuyruğu genellikle tam hale gelir. İkincil üzerinde bu durum genellikle hizmetin işlemleri uygulamak için yavaş olduğu durumlarda oluşur. Sıra artık dolduğunda uyarı temizlenir.
 
-* **SourceId**: System.Replicator
-* **Özellik**: **PrimaryReplicationQueueStatus** veya **SecondaryReplicationQueueStatus**, çoğaltma rolüne bağlı olarak.
+* **SourceId**: System. Replicator
+* **Özellik**: çoğaltma rolüne bağlı olarak **primaryreplicationqueuestatus** veya **secondaryreplicationqueuestatus**.
 
-### <a name="slow-naming-operations"></a>Yavaş Adlandırma işlemleri
-**System.NamingService,** bir Adlandırma işlemi kabul edilebilirden daha uzun sürdüğünde, birincil yinelemesi üzerinde sağlık bildirir. Adlandırma işlemlerine örnek olarak [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) veya [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync)verilebilir. FabricClient altında daha fazla yöntem bulunabilir. Örneğin, [bunlar hizmet yönetimi yöntemleri](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) veya mülkiyet yönetimi [yöntemleri](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)altında bulunabilir.
+### <a name="slow-naming-operations"></a>Yavaş adlandırma işlemleri
+**System. NamingService** , bir adlandırma işlemi kabul edilebilir ' den daha uzun sürerse, birincil çoğaltmadaki sistem durumunu raporlar. Adlandırma işlemlerine örnek olarak [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) veya [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync)verilebilir. FabricClient altında daha fazla Yöntem bulunabilir. Örneğin, [hizmet yönetimi yöntemleri](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) veya [özellik yönetimi yöntemleri](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)altında bulunabilir.
 
 > [!NOTE]
-> Adlandırma hizmeti, hizmet adlarını kümedeki bir konuma giderir. Kullanıcılar bunu hizmet adlarını ve özelliklerini yönetmek için kullanabilir. Service Fabric bölümlenmiş-kalıcı bir hizmettir. Bölümlerden biri, tüm Hizmet Kumaşadları ve hizmetleri hakkında meta veriler içeren *Yetki Sahibini*temsil eder. Hizmet Kumaşı adları, *Ad Sahibi* bölümleri olarak adlandırılan farklı bölümlere eşlenir, bu nedenle hizmet genişletilebilir. [Adlandırma hizmeti](service-fabric-architecture.md)hakkında daha fazla bilgi edinin.
+> Adlandırma hizmeti, hizmet adlarını kümedeki bir konuma çözer. Kullanıcılar bu hizmeti, hizmet adlarını ve özelliklerini yönetmek için kullanabilir. Bu, Service Fabric bölümlenmiş kalıcı bir hizmettir. Bölümlerden biri, tüm Service Fabric adları ve hizmetleriyle ilgili meta verileri içeren *yetkili sahibini*temsil eder. Service Fabric adları, *ad sahibi* bölümleri olarak adlandırılan farklı bölümlerle eşleştirilir, bu nedenle hizmet Genişletilebilir olur. [Adlandırma hizmeti](service-fabric-architecture.md)hakkında daha fazla bilgi edinin.
 > 
 > 
 
-Bir Adlandırma işlemi beklenenden uzun sürdüğünde, işlem, işlem için hizmet veren Adlandırma hizmeti bölümü birincil yinelemesi hakkında bir uyarı raporuyla işaretlenir. İşlem başarıyla tamamlanırsa, uyarı temizlenir. İşlem bir hatayla tamamlanırsa, sistem durumu raporu hatayla ilgili ayrıntıları içerir.
+Bir adlandırma işlemi beklenenden uzun sürerse, işleme işlem gören adlandırma hizmeti bölümünün birincil çoğaltmasında, işlem bir uyarı raporuyla işaretlenir. İşlem başarıyla tamamlanırsa, uyarı temizlenir. İşlem bir hata ile tamamlanırsa, sistem durumu raporu hata hakkındaki ayrıntıları içerir.
 
-* **SourceId**: System.NamingService
-* **Özellik**: "**Duration_**" öneki ile başlar ve yavaş işlemi ve işlemin uygulandığı Servis Kumaşı adını tanımlar. Örneğin, ad kumaş hizmet **oluşturmak:/MyApp/MyService** çok uzun sürerse, özellik **Duration_AOCreateService.fabric:/MyApp/MyService**. "AO", bu ad ve işlem için Adlandırma bölmesinin rolüne işaret ediyor.
-* **Sonraki adımlar**: Adlandırma işleminin neden başarısız olduğunu kontrol edin. Her işlemin farklı kök nedenleri olabilir. Örneğin, silme hizmeti sıkışmış olabilir. Uygulama ana bilgisayarı hizmet kodundaki bir kullanıcı hatası nedeniyle düğümüzerinde çökmeye devam ettiği için hizmet sıkışmış olabilir.
+* **SourceId**: System. NamingService
+* **Özellik**: "**Duration_**" önekiyle başlar ve yavaş işlemi ve işlemin uygulandığı Service Fabric adını tanımlar. Örneğin, **Fabric:/MyApp/hizmetim** adlı hizmet oluşturma işlemi çok uzun sürerse, özellik **Duration_AOCreateService. Fabric:/MyApp/hizmetim**. "AO" Bu ad ve işlem için adlandırma bölümünün rolüne işaret eder.
+* **Sonraki adımlar**: adlandırma işleminin neden başarısız olduğunu görmek için denetleyin. Her işlemin farklı kök nedenleri olabilir. Örneğin, silme hizmeti takılmış olabilir. Hizmet kodundaki Kullanıcı hatası nedeniyle uygulama ana bilgisayarı bir düğümde kilitlendiğinden, hizmet takılmış olabilir.
 
-Aşağıdaki örnek, bir hizmet oluşturma işlemini gösterir. İşlem, yapılandırılan süreden daha uzun sürdü. "AO" yeniden çalışır ve "HAYR" için iş gönderir. "HAYRİ" TIMEOUT ile son işlemi tamamladı. Bu durumda, aynı yineleme hem "AO" hem de "NO" rolleri için birincildir.
+Aşağıdaki örnekte, bir hizmet oluşturma işlemi gösterilmektedir. İşlem yapılandırılan süreden daha uzun sürdü. "AO" yeniden denemeler yapın ve "Hayır" a iş gönderir. "Hayır" zaman AŞıMı ile son işlemi tamamladı. Bu durumda, aynı çoğaltma hem "AO" hem de "NO" rollerinin birincili olur.
 
 ```powershell
 PartitionId           : 00000000-0000-0000-0000-000000001000
@@ -735,15 +735,15 @@ HealthEvents          :
                         Transitions           : Error->Warning = 4/29/2016 8:39:38 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-## <a name="deployedapplication-system-health-reports"></a>DeployedApplication sistem sağlık raporları
-**System.Hosting** dağıtılan varlıklar üzerinde yetkidir.
+## <a name="deployedapplication-system-health-reports"></a>Deployedadpplication sistem durumu raporları
+**System. Hosting** , dağıtılan varlıklarda yetkilisdir.
 
 ### <a name="activation"></a>Etkinleştirme
-System.Hosting, düğümüzerinde bir uygulama başarıyla etkinleştirildiğinde Tamam olarak raporlar. Aksi takdirde, bir hata bildirir.
+System. bir uygulama, düğümde başarıyla etkinleştirildiğinde raporları Tamam olarak barınıyor. Aksi halde, bir hata bildirir.
 
-* **SourceId**: System.Hosting
-* **Özellik**: **Etkinleştirme**, rollout sürümü de dahil olmak üzere.
-* **Sonraki adımlar**: Uygulama sağlıksızsa, etkinleştirme neden başarısız olduğunu araştırın.
+* **SourceId**: System. Hosting
+* **Özellik**: **etkinleştirme**, dağıtım sürümü dahil.
+* **Sonraki adımlar**: uygulama sağlıksız ise, etkinleştirmenin neden başarısız olduğunu araştırın.
 
 Aşağıdaki örnekte başarılı bir etkinleştirme gösterilmektedir:
 
@@ -774,35 +774,35 @@ HealthEvents                       :
 ```
 
 ### <a name="download"></a>İndirme
-System.Hosting, uygulama paketi karşıdan yüklemesi başarısız olursa bir hata bildirir.
+Uygulama paketi indirmesi başarısız olursa System. Hosting bir hata bildirir.
 
-* **SourceId**: System.Hosting
-* **Özellik**: **İndir**, rollout sürümü de dahil olmak üzere.
-* **Sonraki adımlar**: İndirme düğümünde neden başarısız olduğunu araştırın.
+* **SourceId**: System. Hosting
+* **Özellik**: dağıtım sürümü de dahil olmak üzere **indirme**.
+* **Sonraki adımlar**: düğümde indirmenin neden başarısız olduğunu araştırın.
 
-## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage sistem sağlık raporları
-**System.Hosting** dağıtılan varlıklar üzerinde yetkidir.
+## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage sistem durumu raporları
+**System. Hosting** , dağıtılan varlıklarda yetkilisdir.
 
-### <a name="service-package-activation"></a>Servis paketi etkinleştirme
-Düğümdeki servis paketi etkinleştirme başarılı olursa System.Hosting raporları tamam olarak. Aksi takdirde, bir hata bildirir.
+### <a name="service-package-activation"></a>Hizmet paketi etkinleştirme
+Node üzerinde hizmet paketi etkinleştirmesi başarılı olursa sistem., raporları Tamam olarak barındırıyor. Aksi halde, bir hata bildirir.
 
-* **SourceId**: System.Hosting
-* **Özellik**: Aktivasyon.
-* **Sonraki adımlar**: Etkinleştirme başarısız nedenini araştırın.
+* **SourceId**: System. Hosting
+* **Özellik**: etkinleştirme.
+* **Sonraki adımlar**: etkinleştirmenin neden başarısız olduğunu araştırın.
 
 ### <a name="code-package-activation"></a>Kod paketi etkinleştirme
-Etkinleştirme başarılı olursa, System.Hosting her kod paketi için Tamam olarak raporlar. Etkinleştirme başarısız olursa, yapılandırılmış olarak bir uyarı bildirir. **CodePackage** etkinleştirmek için başarısız olursa veya yapılandırılan **CodePackageHealthErrorThreshold**daha büyük bir hata ile sona erer , barındırma bir hata raporlar. Bir hizmet paketi birden çok kod paketi içeriyorsa, her biri için bir etkinleştirme raporu oluşturulur.
+Etkinleştirme başarılı olursa, her kod paketi için sistem. Etkinleştirme başarısız olursa, yapılandırılan bir uyarı bildirir. **CodePackage** , yapılandırılmış **CodePackageHealthErrorThreshold**daha büyük bir hata ile etkinleştirilemez veya sonlanamazsa, barındırma bir hata bildirir. Bir hizmet paketi birden çok kod paketi içeriyorsa, her biri için bir etkinleştirme raporu oluşturulur.
 
-* **SourceId**: System.Hosting
-* **Özellik**: **CodePackageActivation** önekini kullanır ve kod paketinin adını ve giriş noktasını *CodePackageActivation:CodePackageName:SetupEntryPoint/EntryPoint*olarak içerir. Örneğin, **CodePackageActivation:Code:SetupEntryPoint**.
+* **SourceId**: System. Hosting
+* **Özellik**: **codepackageactivation** önekini kullanır ve kod paketinin adını ve giriş noktasını *Codepackageactivation: codepackagename: setupentrypoint/EntryPoint*olarak içerir. Örneğin, **Codepackageactivation: Code: SetupEntryPoint**.
 
 ### <a name="service-type-registration"></a>Hizmet türü kaydı
-System.Hosting, hizmet türü başarıyla kaydedilmişse tamam olarak raporlar. **ServiceTypeRegistrationTimeout**kullanılarak yapılandırıldığı gibi, kayıt zamanında yapılmazsa bir hata bildirir. Çalışma süresi kapalıysa, hizmet türü düğümden kaydedilmemiş ve barındırma bir uyarı bildirir.
+System., hizmet türü başarıyla kaydedilmişse, raporları Tamam olarak barındırıyor. Kayıt, **Servicetyperyumuristrationtimeout**kullanılarak yapılandırıldığı şekilde zamanında yapılmadıysa bir hata bildirir. Çalışma zamanı kapalıysa, hizmet türünün düğümünden kaydı yapılır ve bir uyarı raporlar.
 
-* **SourceId**: System.Hosting
-* **Özellik**: **ServiceTypeRegistration** önekini kullanır ve hizmet türü adını içerir. Örneğin, **ServiceTypeRegistration:FileStoreServiceType**.
+* **SourceId**: System. Hosting
+* **Özellik**: **ServiceTypeRegistration** önekini kullanır ve hizmet türü adını içerir. Örneğin, **ServiceTypeRegistration: Filestorezervicetype**.
 
-Aşağıdaki örnek, sağlıklı dağıtılan bir hizmet paketini gösterir:
+Aşağıdaki örnekte sağlıklı olarak dağıtılan bir hizmet paketi gösterilmektedir:
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
@@ -852,32 +852,32 @@ HealthEvents               :
 ```
 
 ### <a name="download"></a>İndirme
-System.Hosting, hizmet paketi karşıdan yüklemesi başarısız olursa bir hata bildirir.
+System. Hosting, hizmet paketi indirmesi başarısız olursa bir hata bildiriyor.
 
-* **SourceId**: System.Hosting
-* **Özellik**: **İndir**, rollout sürümü de dahil olmak üzere.
-* **Sonraki adımlar**: İndirme düğümünde neden başarısız olduğunu araştırın.
+* **SourceId**: System. Hosting
+* **Özellik**: dağıtım sürümü de dahil olmak üzere **indirme**.
+* **Sonraki adımlar**: düğümde indirmenin neden başarısız olduğunu araştırın.
 
 ### <a name="upgrade-validation"></a>Yükseltme doğrulaması
-System.Hosting, yükseltme sırasında doğrulama başarısız olursa veya yükseltme düğümde başarısız olursa bir hata bildirir.
+System. Hosting, yükseltme sırasında doğrulama başarısız olursa veya yükseltme düğümde başarısız olursa bir hata bildirir.
 
-* **SourceId**: System.Hosting
-* **Özellik**: **FabricUpgradeValidation** önekini kullanır ve yükseltme sürümünü içerir.
-* **Açıklaması**: Karşılaşılan hataya işaret ediyor.
+* **SourceId**: System. Hosting
+* **Özellik**: **fabricupgradevalidation** önekini kullanır ve yükseltme sürümünü içerir.
+* **Açıklama**: karşılaşılan hatayı işaret eder.
 
-### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Kaynak yönetim ölçümleri için tanımlanmamış düğüm kapasitesi
-System.Hosting, küme manifestosunda düğüm kapasiteleri tanımlanmamışsa ve otomatik algılama yapılandırması kapatılırsa bir uyarı bildirir. Hizmet Kumaşı, [kaynak yönetimini](service-fabric-resource-governance.md) kullanan hizmet paketi belirli bir düğümüzerinde kaydolduğunda bir sistem durumu uyarısı yükseltir.
+### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>Kaynak idare ölçümleri için tanımsız düğüm kapasitesi
+System. Hosting, düğüm kapasiteleri küme bildiriminde tanımlanmamışsa ve otomatik algılama yapılandırması kapatılırsa bir uyarı bildirir. Service Fabric, belirtilen bir düğümde [Resource idare](service-fabric-resource-governance.md) kaydı kullanan hizmet paketi her seferinde bir sistem durumu uyarısı başlatır.
 
-* **SourceId**: System.Hosting
-* **Özellik**: **Kaynak Yönetişim**.
-* **Sonraki adımlar**: Bu sorunun üstesinden gelmek için tercih edilen yol, kullanılabilir kaynakların otomatik olarak algılanmasını sağlamak için küme bildirimini değiştirmektir. Başka bir yolu, küme bildirimini bu ölçümler için doğru belirtilen düğüm kapasiteleriyle güncelleştirmektir.
+* **SourceId**: System. Hosting
+* **Özellik**: **resourceidare**.
+* **Sonraki adımlar**: Bu sorunu aşmak için tercih edilen yol, kullanılabilir kaynakların otomatik olarak algılanmasını sağlamak üzere küme bildirimini değiştirkullanmaktır. Bu ölçümler için, küme bildirimini doğru belirtilen düğüm kapasiteleri ile güncelleştirmek daha farklı bir yoldur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Hizmet Kumaşı sağlık raporlarını görüntüleyin](service-fabric-view-entities-aggregated-health.md)
+* [Service Fabric sistem durumu raporlarını görüntüleme](service-fabric-view-entities-aggregated-health.md)
 
-* [Hizmet durumunu bildirme ve kontrol etme](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+* [Hizmet durumunu raporlama ve denetleme](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
 * [Hizmetleri yerel olarak izleme ve tanılama](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-* [Hizmet Kumaş uygulama yükseltme](service-fabric-application-upgrade.md)
+* [Uygulama yükseltmesini Service Fabric](service-fabric-application-upgrade.md)
 

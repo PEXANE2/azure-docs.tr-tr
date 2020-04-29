@@ -1,6 +1,6 @@
 ---
-title: SRE bağlantı koleksiyonları ve özetleri | Microsoft Dokümanlar
-description: Bu kaynaklarla site güvenilirlik mühendisliği bilginizi genişletin
+title: SRE bağlantı koleksiyonları ve yemek bağlantıları | Microsoft Docs
+description: Bu kaynaklarla site güvenilirliği Mühendisliği bilginizi genişletin
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: a891b580b5cb62d111e5d8a6980f4f547345deb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471260"
 ---
-# <a name="sources-for-site-reliability-engineering-information"></a>Site güvenilirliği mühendisliği bilgileri için kaynaklar
+# <a name="sources-for-site-reliability-engineering-information"></a>Site güvenilirliği mühendislik bilgileri kaynakları
 
-Web'de site güvenilirliği mühendisliği (SRE) bilgileri için çok, çok sayıda kaynak vardır.
+Web üzerinde site güvenilirliği Mühendisliği (SRE) bilgileri için birçok kaynak vardır.
 
-## <a name="curated-link-lists"></a>Küratörlü bağlantı listeleri
+## <a name="curated-link-lists"></a>Seçkin bağlantı listeleri
 
-Burada SRE ve SRE ile ilgili konular için bağlantıların bazı iyi küratörlü listeleri şunlardır:
+SRE ve SRE ile ilgili konular için bağlantıların iyi bir listesini aşağıda bulabilirsiniz:
 
-* [Awesome Site Güvenilirlik Mühendisliği](https://github.com/dastergon/awesome-sre)
-* [Awesome Site Güvenilirlik Mühendisliği Araçları](https://github.com/SquadcastHub/awesome-sre-tools)
-* [Ölçeklenebilir, Güvenilir ve Performant Büyük Ölçekli Sistemlerin Desenleri](http://awesome-scalability.com)
-* [awesome-dağıtılmış sistemler](https://github.com/theanalyst/awesome-distributed-systems)
-* [Awesome Konsensus](https://github.com/dgryski/awesome-consensus)
-* [awesome izleme](https://github.com/crazy-canux/awesome-monitoring)
-* [Müthiş Gözlemlenebilirlik](https://github.com/adriannovegil/awesome-observability)
+* [Başar site güvenilirliği Mühendisliği](https://github.com/dastergon/awesome-sre)
+* [Başar site güvenilirliği mühendislik araçları](https://github.com/SquadcastHub/awesome-sre-tools)
+* [Ölçeklenebilir, güvenilir ve Performank büyük ölçekli sistemlerin desenleri](http://awesome-scalability.com)
+* [başar dağıtılmış sistemler](https://github.com/theanalyst/awesome-distributed-systems)
+* [Başar Consensus](https://github.com/dgryski/awesome-consensus)
+* [başar izleme](https://github.com/crazy-canux/awesome-monitoring)
+* [Başar Observability](https://github.com/adriannovegil/awesome-observability)
 
-## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>Site güvenilirlik mühendisleri ilgi Haftalık özetleri
+## <a name="weekly-digests-of-interest-to-site-reliability-engineers"></a>Site güvenilirliği mühendislerine yönelik haftalık derinlemesine bilgi
 
-* [SRE Weekly](https://sreweekly.com) - "SRE Weekly, bir sitenin veya hizmetin mümkün olduğunca tutarlı bir şekilde kullanılabilir olmasını sağlamakla ilgili her şeye adanmış bir bültendir."
-* [Devops Haftalık](https://www.devopsweekly.com) - "Devops haber bir haftalık dilim Gareth Rushgrove tarafından size getirilen."
-* [DevOps Bu Hafta](https://thisweekindevops.com) - "DevOps haber yutturmaca olmadan."
-* [KubeWeekly](https://kubeweekly.io) - "Her şey Kubernetes için haftalık bültenler."
+* [SRE haftalık](https://sreweekly.com) -"SRE haftalık, bir site veya hizmetin mümkün olduğunca sürekli olarak kullanılabilmesini sağlamak için ilgili her şeye ayrılan bir bültendir."
+* [DevOps haftalık](https://www.devopsweekly.com) -"bir haftalık DevOps haberleri, Gareth Rushgrove tarafından size getirilen bir dilim."
+* DevOps-"hype olmadan DevOps News" [olarak bu hafta](https://thisweekindevops.com) .
+* [Kubeweekly](https://kubeweekly.io) -"Kubernetes için haftalık bültenler."

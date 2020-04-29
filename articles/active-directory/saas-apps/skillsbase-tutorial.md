@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Skills Base ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Skills Base arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: beceriler tabanıyla Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve beceriler tabanı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,206 +16,206 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a088675bc1610daf275bac77ae222f0e664afd67
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67090553"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Öğretici: Skills Base ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Öğretici: beceriler tabanıyla Azure Active Directory tümleştirme
 
-Bu eğitimde, Beceri Tabanını Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğrenirsiniz.
-Beceri Tabanını Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, beceriler temelini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Beceri tabanını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Beceri Tabanı'na erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Skills Base 'de (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de yetenekler tabanına erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla beceri tabanında (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Skills Base ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini beceriler tabanıyla yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Skills Base tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Yetenekler temel çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Skills **Base, SP** tarafından başlatılan SSO'ya destek veriyor
-* Skills Base **Just In Time** kullanıcı sağlama destekler
+* Yetenekler tabanı **SP** tarafından başlatılan SSO 'yu destekler
+* Yetenekler tabanı **, tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-skills-base-from-the-gallery"></a>Galeriden Beceri Tabanı ekleme
+## <a name="adding-skills-base-from-the-gallery"></a>Galeriden beceriler temeli ekleme
 
-Skills Base'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Skills Base eklemeniz gerekir.
+Beceri temelinin Azure AD ile tümleştirilmesini yapılandırmak için, galerisindeki beceriler temelini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Skills Base eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden yetenek tabanı eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Beceri Tabanı**yazın, sonuç panelinden **Beceri Tabanı'nı** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **yetenekler tabanı**yazın, sonuç panelinden **yetenekler tabanı** ' nı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde ki Beceri Tabanı](common/search-new-app.png)
+     ![Sonuçlar listesinde yetenekler tabanı](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Skills Base ile yapılandırıp test esiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure REKLAM kullanıcısı ile Skills Base'deki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına göre yetenekler temelinde yapılandırıp test edersiniz.
+Çoklu oturum açma için, beceriler tabanında bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD'yi Skills Base ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açmayı beceriler tabanıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Skills Base Single Sign-On](#configure-skills-base-single-sign-on)** 'u yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Skills Base test kullanıcısını oluşturun](#create-skills-base-test-user)** - Kullanıcının Azure AD gösterimine bağlı Skills Base'deki Britta Simon'ın bir örneğine sahip olmak için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Becerileri yapılandırma temel çoklu oturum açma](#configure-skills-base-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Becerinin, kullanıcının Azure AD gösterimine bağlı olan yetenekler tabanında Britta Simon 'a sahip olması için **[yetenekler temel test kullanıcısı oluşturun](#create-skills-base-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini Skills Base ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı beceriler tabanıyla yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında,](https://portal.azure.com/) **Skills Base** uygulama tümleştirme sayfasında Tek oturum **açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/) **yetenekler temel** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Skills Base Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-signonurl.png)
+    ![Yetenekler temel etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://app.skills-base.com/o/<customer-unique-key>`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE]
-    > Skills Base uygulamasından Oturum Açma URL'sini alabilirsiniz. Yönetici olarak giriş yapın ve Yönetici-> Ayarlar-> Örneği ayrıntıları -> Kısayol bağlantısına gidin. Oturum Açma URL'sini kopyalayın ve yukarıdaki textbox'a yapıştırın.
+    > Yetenekler temel uygulamasından oturum açma URL 'sini alabilirsiniz. Lütfen yönetici olarak oturum açın ve yönetici-> ayarları-> örnek ayrıntıları-> kısayol bağlantısına gidin. Oturum açma URL 'sini kopyalayın ve yukarıdaki metin kutusuna yapıştırın.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. Becerileri **Temel'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **Becerileri ayarla temel** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-skills-base-single-sign-on"></a>Yapılandırma Becerileri Tabanı Tek İşaret-On
+### <a name="configure-skills-base-single-sign-on"></a>Becerileri yapılandırma temeli çoklu oturum açma
 
-1. Farklı bir web tarayıcısı penceresinde, Güvenlik Yöneticisi olarak Skills Base'e giriş yapın.
+1. Farklı bir Web tarayıcısı penceresinde, beceriler tabanında güvenlik yöneticisi olarak oturum açın.
 
-2. Menünün sol tarafından, **ADMIN** altında **Kimlik Doğrulama'yı**tıklatın.
+2. Menünün sol tarafında, **yönetici** ' nin altında **kimlik doğrulama**' ya tıklayın.
 
     ![Yönetici](./media/skillsbase-tutorial/tutorial_skillsbase_auth.png)
 
-3. Kimlik **Doğrulama** Sayfasında, **SAML 2**olarak Tek Oturum Açma'yı seçin.
+3. **Kimlik doğrulama** sayfasında, **SAML 2**olarak çoklu oturum açma ' yı seçin.
 
     ![Tek](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
-4. Kimlik **Doğrulama** Sayfasında aşağıdaki adımları gerçekleştirin:
+4. **Kimlik doğrulama** sayfasında, aşağıdaki adımları uygulayın:
 
     ![Tek](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
-    a. **Durum** seçeneğinin yanındaki **IdP meta verisini güncelleştir** düğmesini tıklatın ve belirtilen metin kutusunda Azure portalından indirdiğiniz Metadata XML içeriğini yapıştırın.
+    a. **Durum** seçeneğinin yanındaki **IDP meta verilerini Güncelleştir** düğmesine tıklayın ve belirtilen metin kutusundaki Azure Portal indirdiğiniz meta veri XML içeriğini yapıştırın.
 
     > [!Note]
-    > IDP meta verilerini, yukarıdaki ekran görüntüsünde vurgulandığı gibi **Meta veri doğrulayıcı** aracı aracılığıyla da doğrulayabilirsiniz.
+    > IDP meta verilerini, yukarıdaki ekran görüntüsünde vurgulanan şekilde **meta veri Doğrulayıcı** aracı aracılığıyla da doğrulayabilirsiniz.
 
-    b. **Kaydet**'e tıklayın.
+    b. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı türünde**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Skills Base'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, beceriler tabanına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Beceri Tabanı'nı**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve **beceriler tabanı**' nu seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Başvuru listesinde **Skills Base'i**seçin.
+2. Uygulamalar listesinde **yetenekler tabanı**' nı seçin.
 
-    ![Uygulamalar listesindeki Beceri Tabanı bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki beceriler tabanı bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-skills-base-test-user"></a>Beceri Tabanı test kullanıcıoluşturma
+### <a name="create-skills-base-test-user"></a>Beceriler temel test kullanıcısı oluştur
 
-Bu bölümde, Britta Simon adlı bir kullanıcı Skills Base oluşturulur. Skills Base, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Bir kullanıcı Skills Base'de zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
+Bu bölümde, yetenekler tabanında Britta Simon adlı bir Kullanıcı oluşturulur. Yetenekler tabanı, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı yetenekler tabanında zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 > [!Note]
-> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [buradaki](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in)yönergeleri izleyin.
+> El ile bir kullanıcı oluşturmanız gerekiyorsa [buradaki](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in)yönergeleri izleyin.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Beceri Tabanı döşemesini tıklattığınızda, SSO'yu kurduğunuz Beceri Tabanı'nda otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde yetenekler temel kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız beceriler tabanında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

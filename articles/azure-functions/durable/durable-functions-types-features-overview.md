@@ -1,67 +1,67 @@
 ---
-title: Azure Dayanıklı İşlevlerde İşlev türleri
-description: Azure İşlevlerinde Dayanıklı İşlevler düzenlemesinde işlevden işleve iletişimi destekleyen işlev ve rol türleri hakkında bilgi edinin.
+title: Azure Dayanıklı İşlevler işlev türleri
+description: Azure Işlevlerinde bir Dayanıklı İşlevler düzenleme bölümünde işlev-işlev iletişimini destekleyen işlev ve rol türleri hakkında bilgi edinin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277888"
 ---
-# <a name="durable-functions-types-and-features"></a>Dayanıklı Fonksiyonlar türleri ve özellikleri
+# <a name="durable-functions-types-and-features"></a>Türler ve Özellikler Dayanıklı İşlevler
 
-Dayanıklı Işlevler, [Azure İşlevlerinin](../functions-overview.md)bir uzantısıdır. İşlev yürütmenin durum lu düzenlemesi için Dayanıklı İşlevler'i kullanabilirsiniz. Dayanıklı işlev uygulaması, farklı Azure işlevlerinden oluşan bir çözümdür. Fonksiyonlar dayanıklı bir işlev orkestrasyonunda farklı roller oynayabilir. 
+Dayanıklı İşlevler, [Azure işlevleri](../functions-overview.md)'nin bir uzantısıdır. İşlev yürütmenin durum bilgisi düzenlemesi için Dayanıklı İşlevler kullanabilirsiniz. Dayanıklı bir işlev uygulaması, farklı Azure işlevlerinden oluşan bir çözümdür. İşlevler, dayanıklı bir işlev düzenlemesi içinde farklı roller oynayabilir. 
 
-Şu anda Azure İşlevlerinde dört dayanıklı işlev türü vardır: etkinlik, orkestratör, varlık ve istemci. Bu bölümün geri kalanı, bir orkestrasyonda yer alan işlev türleri hakkında daha fazla ayrıntıya girer.
+Şu anda Azure Işlevlerinde dört dayanıklı işlev türü vardır: etkinlik, Orchestrator, varlık ve istemci. Bu bölümün geri kalanı, bir düzenleme işleminde yer alan işlevlerin türleri hakkında daha fazla ayrıntıya gider.
 
-## <a name="orchestrator-functions"></a>Orkestratör fonksiyonları
+## <a name="orchestrator-functions"></a>Orchestrator işlevleri
 
-Orchestrator işlevleri, eylemlerin nasıl yürütüldedildiğini ve eylemlerin yürütülme sırasını açıklar. Orchestrator işlevleri, dayanıklı [işlevler uygulama desenlerinde](durable-functions-overview.md#application-patterns)gösterildiği gibi, düzenlemeyi kodda (C# veya JavaScript) açıklar. Bir orkestrasyon [etkinlik fonksiyonları,](#activity-functions) [alt orkestrasyonlar,](durable-functions-orchestrations.md#sub-orchestrations) [dış olaylar,](durable-functions-orchestrations.md#external-events) [HTTP](durable-functions-http-features.md)ve [zamanlayıcılar](durable-functions-orchestrations.md#durable-timers)için bekleyen dahil olmak üzere eylemlerin birçok farklı türde olabilir. Orchestrator işlevleri de [varlık işlevleri](#entity-functions)ile etkileşime girebilirsiniz.
-
-> [!NOTE]
-> Orchestrator işlevleri sıradan kod kullanılarak yazılır, ancak kodun nasıl yazılalacaksı konusunda katı gereksinimler vardır. Özellikle, orchestrator fonksiyon kodu *deterministik*olmalıdır. Bu determinizm gereksinimlerini n uyulmaması, orkestratör işlevlerinin düzgün çalışmasına neden olabilir. Bu gereksinimler ve bunların nasıl çözülebileceği hakkında ayrıntılı bilgi [kod kısıtlamaları](durable-functions-code-constraints.md) konusuna eklenebilir.
-
-Orkestratör işlevleri ve özellikleri hakkında daha ayrıntılı bilgi için [Dayanıklı orkestrasyon](durable-functions-orchestrations.md) makalesine bakın.
-
-## <a name="activity-functions"></a>Etkinlik fonksiyonları
-
-Etkinlik işlevleri, dayanıklı bir fonksiyon orkestrasyonundaki temel çalışma birimidir. Etkinlik işlevleri, işlemde düzenlenmiş işlevler ve görevlerdir. Örneğin, bir siparişi işlemek için bir orkestratör işlevi oluşturabilirsiniz. Görevler envanteri denetlemeyi, müşteriyi şarj etmeyi ve sevkiyat oluşturmayı içerir. Her görev ayrı bir etkinlik işlevi olacaktır. Bu etkinlik işlevleri seri olarak, paralel olarak veya her ikisinin bir birleşimi olarak yürütülebilir.
-
-Orchestrator işlevlerinin aksine, etkinlik işlevleri, bu işlevlerde yapabileceğiniz iş türünde kısıtlanmaz. Etkinlik işlevleri sık sık ağ aramaları yapmak veya CPU yoğun işlemleri çalıştırmak için kullanılır. Bir etkinlik işlevi de verileri orkestratör işlevine geri döndürebilir. Dayanıklı Görev Çerçevesi, çağrılan her etkinlik işlevinin bir orkestrasyonun yürütülmesi sırasında *en az bir kez* yürütüleceğini garanti eder.
+Orchestrator işlevleri, eylemlerin nasıl yürütüleceğini ve eylemlerin yürütülme sırasını açıklamaktadır. Orchestrator işlevleri [dayanıklı işlevler uygulama desenlerinde](durable-functions-overview.md#application-patterns)gösterildiği gibi kodda düzenleme (C# veya JavaScript) açıklanır. Bir düzenleme, [etkinlik işlevleri](#activity-functions), [alt](durable-functions-orchestrations.md#sub-orchestrations)düzenlemeler dahil olmak üzere çok sayıda farklı eylem türüne sahip olabilir, [dış olaylar](durable-functions-orchestrations.md#external-events), [http](durable-functions-http-features.md)ve [zamanlayıcılar](durable-functions-orchestrations.md#durable-timers)bekleniyor. Orchestrator işlevleri de [varlık işlevleriyle](#entity-functions)etkileşime geçebilir.
 
 > [!NOTE]
-> Etkinlik işlevleri *yalnızca bir kez* yürütmeyi garanti ettiğinden, etkinlik işlevmantığınızı mümkün olduğunca *iktidara* getirmenizi öneririz.
+> Orchestrator işlevleri sıradan kod kullanılarak yazılır, ancak kodun nasıl yazılacağı konusunda katı gereksinimler vardır. Özellikle, Orchestrator işlev kodu *belirleyici*olmalıdır. Bu belirleyici gereksinimlerin izlenmesi başarısız olursa, Orchestrator işlevlerinin düzgün şekilde çalışmamasına neden olabilir. Bu gereksinimlerle ilgili ayrıntılı bilgiler ve bunların çevresinde nasıl çalışılacağı [kod kısıtlamaları](durable-functions-code-constraints.md) konusunda bulunabilir.
 
-Bir [etkinlik](durable-functions-bindings.md#activity-trigger) işlevini tanımlamak için bir etkinlik tetikleyicisi kullanın. .NET işlevleri `DurableActivityContext` parametre olarak alır. Ayrıca, tetikleyiciyi işleve girişler geçirmek için başka bir JSON serihale getirilebilir nesneye bağlayabilirsiniz. JavaScript'te, `<activity trigger binding name>` [ `context.bindings` nesneüzerindeki](../functions-reference-node.md#bindings)özellik üzerinden bir girişe erişebilirsiniz. Etkinlik işlevleri yalnızca tek bir değere geçmiş olabilir. Birden çok değer geçirmek için tuples, diziler veya karmaşık türleri kullanmanız gerekir.
+Orchestrator işlevleri ve özellikleri hakkında daha ayrıntılı bilgi için bkz. [dayanıklı](durable-functions-orchestrations.md) düzenleme makalesi.
+
+## <a name="activity-functions"></a>Etkinlik işlevleri
+
+Etkinlik işlevleri, dayanıklı bir işlev düzenleme içinde temel iş birimidir. Etkinlik işlevleri, işlemde düzenlenmiş işlevler ve görevlerdir. Örneğin, bir siparişi işlemek için bir Orchestrator işlevi oluşturabilirsiniz. Görevler, envanteri denetlemeyi, müşteriyi borçlandırmayı ve bir sevkiyat oluşturmayı içerir. Her görev ayrı bir etkinlik işlevi olacaktır. Bu etkinlik işlevleri, paralel olarak veya her ikisinin birleşimini de çalıştırılabilir.
+
+Orchestrator işlevlerinin aksine, etkinlik işlevleri, bunlarda yapabileceğiniz iş türünde sınırlı değildir. Etkinlik işlevleri genellikle ağ aramaları yapmak veya CPU yoğun işlemler çalıştırmak için kullanılır. Etkinlik işlevi, verileri Orchestrator işlevine geri de döndürebilir. Dayanıklı görev çerçevesi, her çağrılan etkinlik işlevinin Orchestration yürütmesi sırasında *en az bir kez* yürütüleceğini garanti eder.
 
 > [!NOTE]
-> Bir etkinlik işlevini yalnızca bir orkestratör işlevinden tetikleyebilirsiniz.
+> Etkinlik işlevleri yalnızca *en az bir kez* yürütmeyi garanti ettiğinden, mümkün olduğunda Etkinlik işlevi mantığınızı *ıdempotent* yapmanızı öneririz.
+
+Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-functions-bindings.md#activity-trigger) kullanın. .NET işlevleri bir parametresi `DurableActivityContext` olarak bir alır. Ayrıca, bu tetikleyiciyi işleve geçirilecek diğer JSON-serializlenebilir nesnesine da bağlayabilirsiniz. JavaScript 'te, `<activity trigger binding name>` [ `context.bindings` nesne](../functions-reference-node.md#bindings)üzerindeki özelliği aracılığıyla bir girişe erişebilirsiniz. Etkinlik işlevlerine yalnızca tek bir değer geçirilmiş olabilir. Birden çok değer geçirmek için, tanımlama grupları, diziler veya karmaşık türler kullanmanız gerekir.
+
+> [!NOTE]
+> Bir etkinlik işlevini yalnızca bir Orchestrator işlevinden tetikleyebilirsiniz.
 
 ## <a name="entity-functions"></a>Varlık işlevleri
 
-Varlık işlevleri, küçük durum parçalarını okuma ve güncelleştirme işlemlerini tanımlar. Bu durum lu varlıklara sık sık dayanıklı varlıklar atıfta *bulunuruz.* Orchestrator işlevleri gibi, varlık işlevleri özel bir tetikleyici türü, *varlık tetikleyici*si ile işlevlerdir. İstemci işlevlerinden veya orkestratör işlevlerinden de çağrılabilirler. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli bir kod kısıtlaması yoktur. Varlık işlevleri de açıkça yerine örtülü kontrol akışı yoluyla devlet temsil devlet yönetir.
+Varlık işlevleri, küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Genellikle bu durum bilgisi olan varlıklara *dayanıklı varlıklar*olarak başvurduk. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Bunlar, istemci işlevlerinden veya Orchestrator işlevlerinden de çağrılabilir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
 
 > [!NOTE]
-> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı Fonksiyonlar 2.0 ve üzeri işlevlerde kullanılabilir.
+> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir.
 
-Varlık işlevleri hakkında daha fazla bilgi için [Dayanıklı Varlıklar](durable-functions-entities.md) makalesine bakın.
+Varlık işlevleri hakkında daha fazla bilgi için bkz. [dayanıklı varlıklar](durable-functions-entities.md) makalesi.
 
 ## <a name="client-functions"></a>İstemci işlevleri
 
-Orchestrator işlevleri bir [orchestration tetikleme bağlama](durable-functions-bindings.md#orchestration-trigger) tarafından tetiklenir ve varlık işlevleri bir [varlık tetikleyici bağlama](durable-functions-bindings.md#entity-trigger)tarafından tetiklenir. Bu tetikleyicilerin her ikisi de, görev hub'ına [task hub](durable-functions-task-hubs.md)sıralanmış iletilere tepki vererek çalışır. Bu iletileri teslim etmenin birincil yolu, bir [orchestrator istemci bağlama](durable-functions-bindings.md#orchestration-client) veya bir istemci işlevi içinden bağlayıcı bir [varlık istemcisi](durable-functions-bindings.md#entity-client) *kullanarak.* Herhangi bir non-orchestrator işlevi bir *istemci işlevi*olabilir. Örneğin, orkestratörü HTTP tarafından tetiklenen bir işlevden, bir Azure Olay Hub'ı tetikleyen işlevden vb. tetikleyebilirsiniz. Bir işlevi *istemci işlevi* yapan şey, dayanıklı istemci çıktısı bağlamasını kullanmasıdır.
+Orchestrator işlevleri bir [düzenleme tetikleyicisi bağlaması](durable-functions-bindings.md#orchestration-trigger) tarafından tetiklenir ve varlık işlevleri bir [varlık tetikleyicisi bağlaması](durable-functions-bindings.md#entity-trigger)tarafından tetiklenir. Bu tetikleyicilerin her ikisi de bir [görev hub 'ında](durable-functions-task-hubs.md)sıraya alınmış iletilere tepki vererek çalışır. Bu iletileri sunmanýn birincil yolu, bir [Orchestrator istemci bağlaması](durable-functions-bindings.md#orchestration-client) veya bir *istemci işlevinin*içinden bir [varlık istemci bağlaması](durable-functions-bindings.md#entity-client) kullanmaktır. Orchestrator olmayan herhangi bir işlev bir *istemci işlevi*olabilir. Örneğin, bir HTTP ile tetiklenen bir işlevden Orchestrator 'ı tetikleyebilirsiniz, bir Azure Olay Hub 'ı tetiklenen işlev vb. Bir işlevi bir *istemci işlevi* yapan, dayanıklı istemci çıkış bağlamasının kullanımı.
 
 > [!NOTE]
-> Diğer işlev türlerinin aksine, orkestratör ve varlık işlevleri doğrudan Azure Portalı'ndaki düğmeler kullanılarak tetiklenemez. Azure Portalı'nda bir orkestratör veya varlık işlevini sınamak istiyorsanız, bunun yerine, bir orkestratör veya varlık işlevini uygulamanın bir parçası olarak başlatan bir *istemci işlevi* çalıştırmanız gerekir. En basit test deneyimi için *manuel tetikleme* işlevi önerilir.
+> Diğer işlev türlerinden farklı olarak, Orchestrator ve varlık işlevleri doğrudan Azure portalındaki düğmeler kullanılarak tetiklenemez. Azure portalında bir Orchestrator veya varlık işlevini test etmek istiyorsanız, bunun yerine uygulamasının bir Orchestrator veya Entity işlevi Başlatan bir *istemci işlevi* çalıştırmalısınız. En basit test deneyimi için *el ile tetikleyici* işlevi önerilir.
 
-Orchestrator veya varlık işlevlerini tetiklemenin yanı sıra, *dayanıklı istemci* bağlaması çalışan orkestrasyonlarla ve varlıklarla etkileşimkurmak için kullanılabilir. Örneğin, orkestrasyonlar sorgulanabilir, sonlandırılabilir ve olaylar bunlara yükseltilebilir. Orkestrasyon ve varlıkları yönetme hakkında daha fazla bilgi için [Örnek yönetimi](durable-functions-instance-management.md) makalesine bakın.
+Orchestrator veya Entity işlevlerinin tetiklenmesi ek olarak, *sürekli istemci* bağlama, çalışma düzenlemeleri ve varlıklarıyla etkileşim kurmak için kullanılabilir. Örneğin, düzenlemeler sorgulanabilir, sonlandırılabilir ve bunlara oluşturulan olaylar olabilir. Düzenlemeleri ve varlıkları yönetme hakkında daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için [C#](durable-functions-create-first-csharp.md) veya [JavaScript'te](quickstart-js-vscode.md)ilk dayanıklı işlevinizi oluşturun.
+Başlamak için, [C#](durable-functions-create-first-csharp.md) veya [JavaScript](quickstart-js-vscode.md)'te ilk dayanıklı işlevinizi oluşturun.
 
 > [!div class="nextstepaction"]
-> [Dayanıklı Fonksiyonlar orkestrasyonları hakkında daha fazla bilgi edinin](durable-functions-orchestrations.md)
+> [Dayanıklı İşlevler düzenlemeleri hakkında daha fazla bilgi edinin](durable-functions-orchestrations.md)

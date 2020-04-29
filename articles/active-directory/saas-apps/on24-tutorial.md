@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: ON24 Sanal Ortam SAML Bağlantısı ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve ON24 Virtual Environment SAML Connection arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: ON24 sanal ortamıyla Azure Active Directory tümleştirme SAML bağlantısı | Microsoft Docs'
+description: Azure Active Directory ve ON24 sanal ortam SAML bağlantısı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,98 +16,98 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 801a631b56a11e68c444ede846ff82195cd7627f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67095720"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Öğretici: ON24 Sanal Ortam SAML Bağlantısı ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Öğretici: ON24 sanal ortamı SAML bağlantısı ile Azure Active Directory tümleştirme
 
-Bu eğitimde, ON24 Sanal Ortam SAML Bağlantısını Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-ON24 Sanal Ortam SAML Bağlantısını Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, ON24 sanal ortam SAML bağlantısını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+ON24 sanal ortamı SAML bağlantısını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* ON24 Sanal Ortam SAML Bağlantısı'na erişimi olan Azure AD'de kontrol edebilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla ON24 Sanal Ortam SAML Bağlantısında (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* ON24 sanal ortam SAML bağlantısına erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla ON24 sanal ortam SAML bağlantısına (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini ON24 Sanal Ortam SAML Bağlantısı ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini ON24 sanal ortam SAML bağlantısıyla yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* ON24 Sanal Çevre SAML Bağlantısı tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* ON24 sanal ortam SAML bağlantısı çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* ON24 Sanal Çevre SAML Bağlantı **SP** ve **IDP** SSO başlatılan destekler
+* ON24 sanal ortamı SAML bağlantısı **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-on24-virtual-environment-saml-connection-from-the-gallery"></a>Galeriden ON24 Sanal Ortam SAML Bağlantısı ekleme
+## <a name="adding-on24-virtual-environment-saml-connection-from-the-gallery"></a>Galeriden ON24 sanal ortam SAML bağlantısı ekleniyor
 
-ON24 Sanal Ortam SAML Bağlantısının Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize ON24 Sanal Ortam SAML Bağlantısı eklemeniz gerekir.
+ON24 sanal ortam SAML bağlantısı 'nın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden ON24 sanal ortam SAML bağlantısı ' nı galerisinden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-**Galeriden ON24 Sanal Ortam SAML Bağlantısı eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden ON24 sanal ortam SAML bağlantısı eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **ON24 Sanal Çevre SAML Bağlantısı**yazın, sonuç panelinden **ON24 Sanal Ortam SAML Bağlantısı'nı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **ON24 sanal ortam SAML bağlantısı**yazın, sonuç panelinden **ON24 sanal ortam SAML bağlantısı** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde ON24 Sanal Çevre SAML Bağlantısı](common/search-new-app.png)
+     ![ON24 sanal ortamı SAML Connection for Results List](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak ON24 Sanal Ortam SAML Bağlantısı ile Azure AD tek oturum açma işlemini yapılandırıp test emzebilirsiniz.
-Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile ON24 Sanal Ortam SAML Bağlantısı'ndaki ilgili kullanıcı arasında bir bağlantı ilişkisi nin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test KULLANıCıSıNA göre ON24 sanal ortamı SAML bağlantısı Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve ON24 sanal ortamındaki ilgili Kullanıcı ile ilgili bir bağlantı ilişkisi SAML bağlantısı kurulması gerekir.
 
-ON24 Virtual Environment SAML Connection ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı ON24 sanal ortam SAML bağlantısıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. **[On24 Sanal Ortam SAML Bağlantısı Tek Oturum Açma](#configure-on24-virtual-environment-saml-connection-single-sign-on)** - uygulama tarafında Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[ON24 Sanal Ortam SAML Bağlantı test kullanıcıoluşturun](#create-on24-virtual-environment-saml-connection-test-user)** - on24 Sanal Çevre SAML Bağlantı kullanıcının Azure AD gösterimi ile bağlantılı Britta Simon bir meslektaşı olması.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[ON24 sanal ortamını yapılandırın SAML bağlantısı çoklu oturum açma](#configure-on24-virtual-environment-saml-connection-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[ON24 sanal ORTAMı SAML bağlantısı test kullanıcısı oluşturun](#create-on24-virtual-environment-saml-connection-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan ON24 sanal ortam SAML bağlantısı 'Nda Britta Simon 'a sahip olmalıdır.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-ON24 Virtual Environment SAML Connection ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı ON24 sanal ortam SAML bağlantısıyla yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. **ON24 Sanal Ortam SAML Bağlantısı** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **ON24 sanal ortamı SAML bağlantısı** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** sı bölümünde, Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![ON24 Sanal Çevre SAML Bağlantı Etki Alanı ve URL'ler tek oturum açma bilgileri](common/idp-relay.png)
+    ![ON24 sanal ortamı SAML bağlantısı etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-relay.png)
 
     a. **Tanımlayıcı** metin kutusuna bir URL yazın:
 
-     **Üretim Ortamı URL'si**
+     **Üretim ortamı URL 'SI**
     
     `SAML-VSHOW.on24.com`
 
@@ -115,7 +115,7 @@ ON24 Virtual Environment SAML Connection ile Azure AD oturum açma işlemlerini 
 
     `SAP PROD SAML-EliteAudience.on24.com` 
                 
-     **QA Çevre URL**
+     **QA ortam URL 'SI**
     
     `SAMLQA-VSHOW.on24.com` 
 
@@ -123,9 +123,9 @@ ON24 Virtual Environment SAML Connection ile Azure AD oturum açma işlemlerini 
 
     `SAMLQA-EliteAudience.on24.com`
 
-    b. **Yanıtla URL** metin kutusuna bir URL yazın:
+    b. **Yanıt URL** 'si metin kutusuna bir URL yazın:
 
-     **Üretim Ortamı URL'si**
+     **Üretim ortamı URL 'SI**
     
     `https://federation.on24.com/sp/ACS.saml2`
 
@@ -135,7 +135,7 @@ ON24 Virtual Environment SAML Connection ile Azure AD oturum açma işlemlerini 
 
     `https://federation.on24.com/sp/eyJ2c2lkIjoiU0FNTC1FbGl0ZUF1ZGllbmNlLm9uMjQuY29tIn0/ACS.saml2`
 
-     **QA Çevre URL**
+     **QA ortam URL 'SI**
     
     `https://qafederation.on24.com/sp/ACS.saml2`
 
@@ -145,103 +145,103 @@ ON24 Virtual Environment SAML Connection ile Azure AD oturum açma işlemlerini 
      
     `https://qafederation.on24.com/sp/eyJ2c2lkIjoiU0FNTFFBLUVsaXRlQXVkaWVuY2Uub24yNC5jb20ifQ/ACS.saml2` 
 
-    c. **Ek URL'ler ayarla'yı**tıklatın. 
+    c. **Ek URL 'Ler ayarla**' ya tıklayın. 
 
-    d. **Röle Durumu** metin kutusuna bir URL yazın:`https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
+    d. **Geçiş durumu** metin kutusuna bir URL yazın:`https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
 
-5.  Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımı gerçekleştirin:
+5.  Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    ![ON24 Sanal Çevre SAML Bağlantı Etki Alanı ve URL'ler tek oturum açma bilgileri](common/both-signonurl.png)
+    ![ON24 sanal ortamı SAML bağlantısı etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-signonurl.png)
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://vshow.on24.com/vshow/<INSTANCENAME>`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://vshow.on24.com/vshow/<INSTANCENAME>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Röle Durumu ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [ON24 Sanal Ortam SAML Bağlantı İstemci destek ekibine](https://www.on24.com/contact-us/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek geçiş durumu ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [ON24 sanal ortam SAML bağlantısı istemci destek ekibine](https://www.on24.com/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. **ON24 Sanal Ortam SAML Bağlantısı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **ON24 sanal ortamını Ayarla SAML bağlantısı** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-on24-virtual-environment-saml-connection-single-sign-on"></a>ON24 Sanal Ortam SAML Bağlantısı Tek İşaret-On yapıla
+### <a name="configure-on24-virtual-environment-saml-connection-single-sign-on"></a>ON24 sanal ortamını yapılandırma SAML bağlantısı çoklu oturum açma
 
-**ON24 Sanal Ortam SAML Bağlantısı** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'i** ve uygun kopyalanmış URL'leri Azure portalından [ON24 Virtual Environment SAML Connection destek ekibine](https://www.on24.com/about-us/support/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**ON24 sanal ORTAMıNDAKI SAML bağlantı** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'Sini ve Azure Portal [sanal ortam SAML bağlantısı destek ekibine](https://www.on24.com/about-us/support/)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın ON24 Sanal Ortam SAML Bağlantısı'na erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, ON24 sanal ortam SAML bağlantısına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin, ardından **ON24 Sanal Ortam SAML Bağlantısı'nı**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **ON24 sanal ortam SAML bağlantısı**' nı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **ON24 Sanal Ortam SAML Bağlantısı'nı**seçin.
+2. Uygulamalar listesinde **ON24 sanal ortam SAML bağlantısı**' nı seçin.
 
-    ![Uygulamalar listesindeki ON24 Sanal Ortam SAML Bağlantısı bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki ON24 sanal ortam SAML bağlantı bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-on24-virtual-environment-saml-connection-test-user"></a>ON24 Sanal Ortam SAML Bağlantı test kullanıcıoluşturma
+### <a name="create-on24-virtual-environment-saml-connection-test-user"></a>ON24 sanal ortamı oluşturma SAML bağlantısı test kullanıcısı
 
-Bu bölümde, ON24 Sanal Çevre SAML Bağlantısı britta Simon adlı bir kullanıcı oluşturun.  [ON24 Sanal Çevre SAML Bağlantı destek ekibiyle](https://www.on24.com/about-us/support/) çalışarak kullanıcıları ON24 Sanal Ortam SAML Bağlantısı platformuna ekleyin. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, ON24 sanal ortamı SAML bağlantısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. ON24 sanal ortam SAML bağlantı platformuna kullanıcıları eklemek için [ON24 sanal ORTAMı SAML bağlantısı destek ekibi](https://www.on24.com/about-us/support/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki ON24 Sanal Ortam SAML Bağlantı döşemesini tıklattığınızda, SSO'yu kurduğunuz ON24 Sanal Ortam SAML Bağlantısı'nda otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde ON24 sanal ortam SAML bağlantısı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ON24 sanal ortam SAML bağlantısında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

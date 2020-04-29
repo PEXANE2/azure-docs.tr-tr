@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Bitbucket için Kantega SSO ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Bitbucket için Azure Active Directory ve Kantega SSO arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: "Öğretici: Bitbucket için Kantega SSO 'SU ile Azure Active Directory tümleştirme | Microsoft Docs"
+description: Bitbucket için Azure Active Directory ve Kantega SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,262 +16,262 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: b04b44c907e3210f3cc3975b36639f4fe275eef9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67099203"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Öğretici: Bitbucket için Kantega SSO ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Öğretici: Bitbucket için Kantega SSO ile tümleştirme Azure Active Directory
 
-Bu eğitimde, Bitbucket için Kantega SSO'yu Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Bitbucket için Kantega SSO'yu Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Bitbucket için Kantega SSO 'yu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Bitbucket için Kantega SSO 'yu Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Bitbucket için Kantega SSO erişimi olan Azure AD'de kontrol edebilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Bitbucket (Tek Oturum Açma) için Kantega SSO'da otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Bitbucket için Kantega SSO 'ya erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Bitbucket (çoklu oturum açma) için Kantega SSO 'ya otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bitbucket için Kantega SSO ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Bitbucket için Kantega SSO 'SU ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* Bitbucket tek oturum açma özellikli abonelik için Kantega SSO
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Bitbucket çoklu oturum açma özellikli abonelik için Kantega SSO
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Bitbucket için Kantega SSO **SP ve IDP** SSO başlatılan destekler
+* Bitbucket için Kantega SSO **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-kantega-sso-for-bitbucket-from-the-gallery"></a>Galeriden Bitbucket için Kantega SSO ekleme
+## <a name="adding-kantega-sso-for-bitbucket-from-the-gallery"></a>Galeriden Bitbucket için Kantega SSO 'SU ekleme
 
-Bitbucket için Kantega SSO'nun Azure AD'ye entegrasyonunu yapılandırmak için, Galeriden Bitbucket için Kantega SSO'yu yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Bitbucket için Kantega SSO 'SU ile Azure AD arasında tümleştirmeyi yapılandırmak için, galerideki Bitbucket için Kantega SSO 'SU ile yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-**Galeriden Bitbucket için Kantega SSO eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Bitbucket için Kantega SSO eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Bitbucket için Kantega SSO**yazın, sonuç panelinden **Bitbucket için Kantega SSO'yu** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Ara kutusuna, **Bitbucket Için KANTEGA SSO**yazın, sonuç panelinden **KANTEGA SSO** ' yı seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Sonuç listesinde Bitbucket için Kantega SSO](common/search-new-app.png)
+    ![Sonuç listesindeki Bitbucket için Kantega SSO](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Bitbucket için Kantega SSO ile Azure AD tek oturum açma işlemini yapılandırın ve test esinizsiniz.
-Tek oturum açmanın işe yaraması için, Bitbucket için Bir Azure AD kullanıcısı ile Kantega SSO'daki ilgili kullanıcı arasında bir bağlantı ilişkisi nin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Bitbucket Için Kantega SSO 'Su Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve BitBucket için Kantega SSO 'SU içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Bitbucket için Kantega SSO ile Azure AD tek oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Bitbucket için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. **[Bitbucket Tek Oturum Açma için Kantega SSO'yu yapılandırın](#configure-kantega-sso-for-bitbucket-single-sign-on)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Bitbucket test kullanıcısı için Kantega SSO oluşturun](#create-kantega-sso-for-bitbucket-test-user)** - Kullanıcının Azure AD gösterimine bağlı Bitbucket için Kantega SSO'da Britta Simon'ın bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Bit demeti çoklu oturum açma Için Kantega SSO](#configure-kantega-sso-for-bitbucket-single-sign-on)** 'yu, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[Bitbucket test kullanıcısı Için Kantega SSO oluşturma](#create-kantega-sso-for-bitbucket-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Bitbucket Için Kantega SSO 'Da Britta Simon 'un bir karşılığı olmalıdır.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Bitbucket için Kantega SSO ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Bitbucket için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında,](https://portal.azure.com/)Bitbucket uygulama tümleştirme sayfasında **Kantega SSO'da** **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **Bitbucket Için KANTEGA SSO** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** sı bölümünde, Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Bitbucket Etki Alanı ve URL'ler için Kantega SSO tek oturum açma bilgileri](common/idp-intiated.png)
+    ![Bitbucket etki alanı ve URL 'Ler çoklu oturum açma bilgileri için Kantega SSO](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Bitbucket Etki Alanı ve URL'ler için Kantega SSO tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Bitbucket etki alanı ve URL 'Ler çoklu oturum açma bilgileri için Kantega SSO](common/metadata-upload-additional-signon.png)
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtURL'i ve Oturum Açma URL'si ile güncelleştirin. Bu değerler, daha sonra öğreticide açıklanan Bitbucket eklentisinin yapılandırması sırasında alınır.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerler, Öğreticinin ilerleyen kısımlarında açıklanan Bitbucket eklentisinin yapılandırması sırasında alınır.
 
-6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. **Bitbucket için Kantega SSO'yu ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+7. **Bitbucket Için Kantega SSO ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-kantega-sso-for-bitbucket-single-sign-on"></a>Bitbucket Tek İşaret-On için Kantega SSO'yu yapılandırın
+### <a name="configure-kantega-sso-for-bitbucket-single-sign-on"></a>Bitbucket çoklu oturum açma için Kantega SSO 'yu yapılandırın
 
-1. Farklı bir web tarayıcısı penceresinde, Bitbucket yönetici portalınızda yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, Bitbucket yönetici portalınızdaki yönetici olarak oturum açın.
 
-1. Dişli'yi tıklatın ve **yeni eklentileri bul'a**tıklayın.
+1. Dişli ' ye tıklayın ve **yeni eklentiler bul**' a tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon1.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
-1. **Bitbucket SAML & Kerberos için Kantega SSO'yu** arayın ve yeni SAML eklentisini yüklemek için **Yükle** düğmesini tıklatın.
+1. **Bit DEMETI SAML & Kerberos Için Kantega SSO** 'yu arayın ve yeni SAML **eklentisini yüklemek için** , Kaldır düğmesine tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon2.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon2.png)
 
 1. Eklenti yüklemesi başlar.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon31.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
-1. Yükleme tamamlandıktan sonra. **Kapat'ı**tıklatın.
+1. Yükleme tamamlandıktan sonra. **Kapat**' a tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon33.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
 1. **Yönet**'e tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon34.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon34.png)
 
-1. Yeni **Configure** eklentiyi yapılandırmak için Yapıya'yı tıklatın.
+1. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon35.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon35.png)
 
-1. **SAML** bölümünde. Kimlik ekle **sağlayıcısı** açılır tarafından **Azure Etkin Dizin 'i (Azure AD) seçeneğini** belirleyin.
+1. **SAML** bölümünde. **Kimlik sağlayıcısı ekle** açılır listesinden **Azure ACTIVE DIRECTORY (Azure AD)** öğesini seçin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon4.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
-1. **Temel**olarak abonelik düzeyini seçin.
+1. Abonelik düzeyini **temel**olarak seçin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon5.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
-1. Uygulama **özellikleri** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Uygulama özellikleri** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon6.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
-    a. App **ID URI** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırmabölümünde** **Tanımlayıcı, Yanıt URL'si ve Oturum Açma URL'si** olarak kullanın.
+    a. **Uygulama KIMLIĞI URI** değerini kopyalayın ve Azure Portal IÇINDEKI **temel SAML yapılandırması** bölümünde **tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'si** olarak kullanın.
 
-    b. **İleri**'ye tıklayın.
+    b. **İleri**’ye tıklayın.
 
-1. Meta **veri alma** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Meta veri içeri aktarma** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon7.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
-    a. **Bilgisayarımda Meta Veri dosyasını**seçin ve Azure portalından indirdiğiniz meta veri dosyasını yükleyin.
+    a. Bilgisayarımdaki **meta veri dosyasını**seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
 
-    b. **İleri**'ye tıklayın.
+    b. **İleri**’ye tıklayın.
 
-1. Ad **ve SSO konum** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Ad ve SSO konumu** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon8.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
-    a. **Kimlik sağlayıcı ad** metin kutusuna Kimlik Sağlayıcının Adını ekleyin (örn. Azure AD).
+    a. Kimlik sağlayıcısı **adı** metin kutusuna kimlik sağlayıcısının adını ekleyin (ör. Azure AD).
 
-    b. **İleri**'ye tıklayın.
+    b. **İleri**’ye tıklayın.
 
-1. İmzasertifikasını doğrulayın ve **İleri'yi**tıklatın.
+1. Imzalama sertifikasını doğrulayın ve **İleri**' ye tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon9.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
-1. **Bitbucket kullanıcı hesapları** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Bitbucket Kullanıcı hesapları** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon10.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
-    a. **Gerekirse Bitbucket'ın iç Dizininde Kullanıcıları Oluştur'u** seçin ve kullanıcılar için grubun uygun adını girin (birden çok hayır olabilir. virgülle ayrılmış grupların).
+    a. **Gerekirse Bitbucket 'ın Iç dizininde kullanıcı oluştur** ' u seçin ve Kullanıcı için grubun uygun adını girin (birden çok No olabilir. virgülle ayrılmış gruplar).
 
-    b. **İleri**'ye tıklayın.
+    b. **İleri**’ye tıklayın.
 
 1. **Son**'a tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon11.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
-1. Azure **AD için bilinen etki alanlarında** aşağıdaki adımları gerçekleştirin:
+1. **Azure AD Için bilinen etki alanları** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tek İşaret-On'u Yapılandır](./media/kantegassoforbitbucket-tutorial/addon12.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
-    a. Sayfanın sol panelinden **Bilinen etki alanlarını** seçin.
+    a. Sayfanın sol panelinden **bilinen etki alanları ' nı** seçin.
 
-    b. **Bilinen etki alanları** textbox'a etki alanı adı girin.
+    b. **Bilinen etki alanları** metin kutusuna etki alanı adını girin.
 
-    c. **Kaydet**'e tıklayın.
+    c. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı türünde`brittasimon@yourcompanydomain.extension`  
+    b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Bitbucket için Kantega SSO'ya erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Bitbucket için Kantega SSO 'SU erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin, ardından **Bitbucket için Kantega SSO'yu**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Bitbucket için Kantega SSO**' yı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Bitbucket için Kantega SSO'yu**seçin.
+2. Uygulamalar listesinde, **Bitbucket Için Kantega SSO**' yı seçin.
 
-    ![Uygulamalar listesinde Bitbucket bağlantısı için Kantega SSO](common/all-applications.png)
+    ![Uygulamalar listesindeki Bitbucket için Kantega SSO bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-kantega-sso-for-bitbucket-test-user"></a>Bitbucket test kullanıcısı için Kantega SSO oluşturma
+### <a name="create-kantega-sso-for-bitbucket-test-user"></a>Bitbucket test kullanıcısı için Kantega SSO oluştur
 
-Azure AD kullanıcılarının Bitbucket'ta oturum açabilmeleri için Bitbucket'a sağlanmış olmaları gerekir. Bitbucket için Kantega SSO durumunda, sağlama manuel bir görevdir.
+Azure AD kullanıcılarının Bitbucket 'da oturum açmasını sağlamak için, Bitbucket 'a sağlanması gerekir. Bitbucket için Kantega SSO olması durumunda, sağlama el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
@@ -281,41 +281,41 @@ Azure AD kullanıcılarının Bitbucket'ta oturum açabilmeleri için Bitbucket'
 
     ![Çalışan Ekle](./media/kantegassoforbitbucket-tutorial/user1.png) 
 
-1. **Yönetim** sekmesi bölümü **altında, Kullanıcılar'ı**tıklatın.
+1. **Yönetim** sekmesi bölümünde **Kullanıcılar**' a tıklayın.
 
     ![Çalışan Ekle](./media/kantegassoforbitbucket-tutorial/user2.png)
 
-1. **Kullanıcı Oluştur'u**tıklatın.
+1. **Kullanıcı oluştur**' a tıklayın.
 
     ![Çalışan Ekle](./media/kantegassoforbitbucket-tutorial/user3.png)   
 
-1. Kullanıcı **Oluştur** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
+1. **Kullanıcı oluştur** iletişim sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Çalışan Ekle](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
-    a. Kullanıcı **adı** metin kutusuna, kullanıcının Brittasimon@contoso.come-postasını yazın.
+    a. Kullanıcı **adı** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-postasını yazın.
 
-    b. Tam **Ad** metin kutusuna Britta Simon gibi kullanıcının tam adını yazın.
+    b. **Tam ad** metin kutusuna, Britta Simon gibi kullanıcının tam adını yazın.
 
-    c. **E-posta adresi** metin kutusuna, kullanıcının Brittasimon@contoso.come-posta adresini yazın.
+    c. **E-posta adresi** metin kutusuna, gibi Brittasimon@contoso.comkullanıcının e-posta adresini yazın.
 
-    d. **Parola** metin kutusuna, kullanıcının parolasını yazın.
+    d. **Parola** metin kutusuna kullanıcının parolasını yazın.
 
-    e. **Parolayı Onayla** metin kutusuna, kullanıcının parolasını yeniden girin.
+    e. **Parolayı Onayla** metin kutusuna kullanıcı parolasını yeniden girin.
 
-    f. **Kullanıcı Oluştur'u**tıklatın.
+    f. **Kullanıcı oluştur**' a tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Bitbucket döşemesi için Kantega SSO'yu tıklattığınızda, SSO'yu kurduğunuz Bitbucket için Kantega SSO'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Bitbucket için Kantega SSO kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Bitbucket için Kantega SSO 'SU için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

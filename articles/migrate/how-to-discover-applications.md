@@ -1,63 +1,63 @@
 ---
-title: Azure Geçiş ile şirket içi sunucularda uygulamaları, rolleri ve özellikleri keşfedin
-description: Azure Geçiş Sunucusu Değerlendirmesi ile şirket içi sunucularda uygulamaları, rolleri ve özellikleri nasıl keşfederiz öğrenin.
+title: Azure geçişi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulma
+description: Azure geçişi sunucu değerlendirmesi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulmayı öğrenin.
 ms.topic: article
 ms.date: 03/12/2020
 ms.openlocfilehash: e8ce279afc845ebf37ad4ab8b2ce7236cb18137a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79453591"
 ---
-# <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rollerini ve özelliklerini keşfedin
+# <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rolleri ve özellikleri bul
 
-Bu makalede, Azure Geçiş: Sunucu Değerlendirmesi'ni kullanarak şirket içi sunucularda uygulamaların, rollerin ve özelliklerin nasıl keşfedilebildiğini açıklanmaktadır.
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak şirket içi sunuculardaki uygulamaların, rollerin ve özelliklerin nasıl keşfedileceğini açıklanmaktadır.
 
-Şirket içi makinelerinizde çalışan uygulamaların ve rollerin/özelliklerin envanterini keşfetmek, iş yüklerinize göre uyarlanmış bir Azure geçiş yolunu belirlemenize ve planlamanıza yardımcı olur.
+Uygulamaların envanterini bulma ve şirket içi makinelerinizde çalışan roller/özellikler, iş yükleriniz için uyarlanmış bir Azure 'a geçiş yolu tanımlamanızı ve planlamanız sağlar.
 
 > [!NOTE]
-> Uygulama bulma şu anda yalnızca VMware VM'ler için önizlemededir ve yalnızca keşifle sınırlıdır. Henüz uygulama tabanlı değerlendirme sunmuyoruz. Şirket içi VMware VM'ler, Hyper-V VM'ler ve fiziksel sunucular için makine tabanlı değerlendirme.
+> Uygulama bulma Şu anda yalnızca VMware VM 'Leri için önizleme aşamasındadır ve yalnızca bulma ile sınırlıdır. Henüz uygulama tabanlı değerlendirme sunmuyoruz. Şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucular için makine tabanlı değerlendirme.
 
-Azure Geçiş: Sunucu Değerlendirmesi aracısız kullanarak uygulama bulma. Makinelere ve VM'lere hiçbir şey yüklenmez. Sunucu Değerlendirmesi, makine konuk kimlik bilgileriyle birlikte keşif gerçekleştirmek için Azure Geçir cihazını kullanır. Cihaz VMware API'lerini kullanarak VMware makinelerine uzaktan eriştir.
+Azure geçişi kullanarak uygulama bulma: Sunucu değerlendirmesi aracısız. Makinelere ve VM 'Lere hiçbir şey yüklenmez. Sunucu değerlendirmesi, makine konuk kimlik bilgileriyle birlikte bulma işlemi gerçekleştirmek için Azure geçişi gereci kullanır. Gereç, VMware API 'Lerini kullanarak VMware makinelerine uzaktan erişir.
 
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-1. Bir Azure Geçiş projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
-2. Projeye Azure Geçiş: Sunucu Değerlendirmesi aracını [eklediğinizden](how-to-assess.md) emin olun.
-4. Azure Geçiş cihazıyla VMware VM'leri keşfetmek ve değerlendirmek için [VMware gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements) kontrol edin.
-5. Azure Geçiş cihazını dağıtma [gereksinimlerini](migrate-appliance.md) kontrol edin.
-6. Uygulama bulma için [desteği ve gereksinimleri doğrulayın.](migrate-support-matrix-vmware.md#application-discovery)
+1. Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
+2. Azure geçişi: Sunucu değerlendirmesi aracını bir [projeye eklediğinizden emin](how-to-assess.md) olun.
+4. Azure geçişi gereci ile VMware VM 'lerini bulmak ve değerlendirmek için [VMware gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements) denetleyin.
+5. Azure geçişi gerecini dağıtmaya yönelik [gereksinimleri](migrate-appliance.md) kontrol edin.
+6. Uygulama bulma için [destek ve gereksinimleri doğrulayın](migrate-support-matrix-vmware.md#application-discovery) .
 
-## <a name="prepare-for-app-discovery"></a>Uygulama keşfine hazırlanın
+## <a name="prepare-for-app-discovery"></a>Uygulama bulma için hazırlanma
 
-1. [Cihaz dağıtımına hazırlanın.](tutorial-prepare-vmware.md) Hazırlık, cihaz ayarlarını doğrulamayı ve cihazın vCenter Server'a erişmek için kullanacağı bir hesap oluşturmayı içerir.
-2. Uygulamaları, rolleri ve özellikleri keşfetmek istediğiniz makineler için yönetici izinlerine sahip bir kullanıcı hesabınız olduğundan (Windows ve Linux sunucuları için birer tane) emin olun.
-3. Keşfetmeye başlamak için [Azure Geçir cihazını dağıtın.](how-to-set-up-appliance-vmware.md) Cihazı dağıtmak için, cihazı VMware VM olarak oluşturmak için VMware'e bir OVA şablonu indirip içe aktarabilirsiniz. Cihazı yapılandırır ve Azure Geçiş'e kaydedersiniz.
-2. Cihazı dağıtırken, sürekli keşif başlatmak için aşağıdakileri belirtin:
-    - Bağlanmak istediğiniz vCenter Server'ın adı.
-    - Cihazın vCenter Server'a bağlanması için oluşturduğunuz kimlik bilgileri.
-    - Cihazın Windows/Linux VM'lerine bağlanması için oluşturduğunuz hesap kimlik bilgileri.
+1. [Gereç dağıtımına hazırlanın](tutorial-prepare-vmware.md). Hazırlık, Gereç ayarlarını doğrulamayı ve gerecin vCenter Server erişmek için kullanacağı bir hesap ayarlamayı içerir.
+2. Uygulamaları, rolleri ve özellikleri öğrenmek istediğiniz makineler için yönetici izinlerine sahip bir kullanıcı hesabına (Windows ve Linux sunucuları için birer tane) sahip olduğunuzdan emin olun.
+3. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için bir OVA şablonunu indirip bir VMware VM 'si olarak oluşturmak üzere VMware 'ye içeri aktarabilirsiniz. Gereci yapılandırıp Azure geçişi ile kaydedersiniz.
+2. Gereci dağıtırken, sürekli bulmayı başlatmak için aşağıdakileri belirtirsiniz:
+    - Bağlanmak istediğiniz vCenter Server adı.
+    - VCenter Server Bağlanılacak gereç için oluşturduğunuz kimlik bilgileri.
+    - Windows/Linux VM 'lerine bağlanmak için gereç için oluşturduğunuz hesap kimlik bilgileri.
 
-Cihaz dağıtıldıktan ve kimlik bilgileri sağladıktan sonra, cihaz, uygulamaların, özelliklerin ve rollerin yanı sıra VM meta verilerinin ve performans verilerinin sürekli olarak keşfedilmesine başlar.  Uygulama bulma süresi kaç VM'ine sahip olduğunuza bağlıdır. Genellikle 500 VM'nin app-discovery için bir saat sürer.
+Gereç dağıtıldıktan ve kimlik bilgilerini sağladıysanız, Gereç VM meta verilerinin ve performans verilerinin sürekli olarak keşfedilmesi ve uygulamaların, özelliklerin ve rollerin keşfedilmesi ile birlikte başlatılır.  Uygulama bulmanın süresi, sahip olduğunuz VM sayısına bağlıdır. Genellikle uygulama keşfi 500 VM 'Ler için bir saat sürer.
 
-## <a name="review-and-export-the-inventory"></a>Envanteri gözden geçirme ve dışa aktarma
+## <a name="review-and-export-the-inventory"></a>Envanteri gözden geçirin ve dışa aktarın
 
-Keşif sona erdikten sonra, uygulama bulma için kimlik bilgileri sağladıysanız, uygulama envanterini Azure portalında inceleyebilir ve dışa aktarabilirsiniz.
+Bulma sona erdikten sonra, uygulama bulma için kimlik bilgileri sağladıysanız, Azure portal uygulama envanterini gözden geçirebilir ve dışarı aktarabilirsiniz.
 
-1. **Azure Geçir - Sunucular** > Azure**Geçir: Sunucu Değerlendirmesi,** **Keşfedilen sunucular** sayfasını açmak için görüntülenen sayıyı tıklatın.
+1. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular** sayfasını açmak için, görünen sayıya tıklayın.
 
     > [!NOTE]
-    > Bu aşamada, değerlendirmek istediğiniz makineler deki bağımlılıkları görselleştirebilmeniz için, keşfedilen makineler için bağımlılık eşlemi de isteğe bağlı olarak ayarlayabilirsiniz. [Daha fazla bilgi edinin](how-to-create-group-machine-dependencies.md).
+    > Bu aşamada, değerlendirmek istediğiniz makineler arasında bağımlılıkları görselleştirmeniz için isteğe bağlı olarak bulunan makineler için bağımlılık eşlemesini da ayarlayabilirsiniz. [Daha fazla bilgi edinin](how-to-create-group-machine-dependencies.md).
 
-2. **Keşfedilen Uygulamalar'da**görüntülenen sayıyı tıklatın.
-3. **Uygulama**envanterinde, keşfedilen uygulamaları, rolleri ve özellikleri inceleyebilirsiniz.
-4. Envanteri dışa aktarmak **için, Keşfedilen Sunucular'da,** **uygulama envanterini dışa aktar'ı**tıklatın.
+2. **Bulunan uygulamalarda**, görünen sayıya tıklayın.
+3. **Uygulama envanteri**' nde, bulunan uygulamaları, rolleri ve özellikleri inceleyebilirsiniz.
+4. Envanteri dışarı aktarmak için **bulunan sunucularda**, **uygulama envanterini dışarı aktar**' a tıklayın.
 
-Uygulama envanteri dışa aktarılır ve Excel formatında indirilir. **Uygulama Envanteri** sayfası, tüm makinelerde keşfedilen tüm uygulamaları görüntüler.
+Uygulama envanteri, Excel biçiminde verilir ve indirilir. **Uygulama envanteri** sayfasında tüm makinelerde bulunan tüm uygulamalar görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Keşfedilen sunucuların kaldırma ve kaydırma geçişi için [bir değerlendirme oluşturun.](how-to-create-assessment.md)
-- [Azure Geçiş: Veritabanı Değerlendirmesi'ni](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)kullanarak SQL Server veritabanlarını değerlendirin.
+- Bulunan sunucuların geçiş ve kaydırma için [bir değerlendirme oluşturun](how-to-create-assessment.md) .
+- [Azure geçişi: veritabanı değerlendirmesi](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017)kullanarak SQL Server veritabanlarını değerlendirin.
