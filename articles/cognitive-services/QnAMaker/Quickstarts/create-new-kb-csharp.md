@@ -6,13 +6,13 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 78608d3acdfea07f21ccc42e8d530ff502fbb0b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851932"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Quickstart: REST ile C# kullanarak QnA Maker'da bir bilgi tabanı oluşturun
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Hızlı başlangıç: Soru-Cevap Oluşturma 'de REST Ile C# kullanarak bilgi tabanı oluşturma
 
 Bu hızlı başlangıçta program aracılığıyla örnek bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturma ve yayımlama adımları gösterilir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/knowledge-base.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
 
@@ -20,32 +20,32 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [KB Oluşturma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [İşlem Ayrıntılarını Alma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Referans belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# Örnek](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
+[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [.NET Core'un](https://dotnet.microsoft.com/download/dotnet-core)geçerli sürümü.
-* [Bir QnA Maker kaynağınız](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtar ve bitiş noktanızı (kaynak adını içerir) almak için Azure portalındaki kaynağınız için **Hızlı Başlat'ı** seçin.
+* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
+* Bir [soru-cevap oluşturma kaynağınız](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE'de yeni bir .NET Core uygulaması oluşturun.
+Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun.
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adı `qna-maker-quickstart`olan yeni bir konsol uygulaması oluşturmak için komutu kullanın. Bu komut, tek bir kaynak dosyası ile basit bir "Hello World" C# projesi oluşturur: *Program.cs*.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), adıyla `dotnet new` `qna-maker-quickstart`yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
 ```dotnetcli
 dotnet new console -n qna-maker-quickstart
 ```
 
-Diziniyeniyeniyeni oluşturulan uygulama klasörüne değiştirin. Uygulamayı aşağıdakilerle oluşturabilirsiniz:
+Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. Uygulamayı ile oluşturabilirsiniz:
 
 ```dotnetcli
 dotnet build
 ```
 
-Yapı çıktısı hiçbir uyarı veya hata içermemelidir.
+Derleme çıktısı hiçbir uyarı veya hata içermemelidir.
 
 ```console
 ...
@@ -63,12 +63,12 @@ Program.cs dosyasının en üst kısmındaki tek using deyimini aşağıdaki sat
 
 ## <a name="add-the-required-constants"></a>Gerekli sabitleri ekleme
 
-Program sınıfının en üstünde, QnA Maker'a erişmek için gerekli sabitleri ekleyin.
+Program sınıfının en üstünde, Soru-Cevap Oluşturma erişmek için gereken sabitleri ekleyin.
 
 Ortam değişkenlerinde aşağıdaki değerleri ayarlayın:
 
-* `QNA_MAKER_SUBSCRIPTION_KEY`- **Anahtar** 32 karakterli bir dizedir ve Azure portalında, QnA Maker kaynağında, Quickstart sayfasında mevcuttur. Bu, tahmin bitiş noktası anahtarıyla aynı değildir.
-* `QNA_MAKER_ENDPOINT`- **Bitiş noktası,** yazma için URL'dir, `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`biçiminde . Bu, tahmin bitiş noktasını sorgulamak için kullanılan URL ile aynı url değildir.
+* `QNA_MAKER_SUBSCRIPTION_KEY`- **Anahtar** , bir 32 karakter dizesidir ve hızlı başlangıç sayfasında Soru-Cevap Oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
+* `QNA_MAKER_ENDPOINT`- **Uç noktası** yazma URL 'sidir, biçiminde `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 

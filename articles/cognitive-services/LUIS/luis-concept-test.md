@@ -1,7 +1,7 @@
 ---
-title: LUIS uygulamanızı test edin
+title: LUSıS uygulamanızı test etme
 titleSuffix: Azure Cognitive Services
-description: Test, LUIS'e örnek söz verme ve LUIS tarafından tanınan niyet ve varlıkların yanıtını alma işlemidir.
+description: Sınama, luve ile tanınan amaçlardan ve varlıklardan oluşan bir yanıt alma sürecine örnektir.
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -12,50 +12,50 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73486678"
 ---
-# <a name="testing-example-utterances-in-luis"></a>LUIS'te örnek söyleyişlerin test edilmesi
+# <a name="testing-example-utterances-in-luis"></a>LUSıS 'de test örneği
 
-Test, LUIS'e örnek söz verme ve LUIS tarafından tanınan niyet ve varlıkların yanıtını alma işlemidir. 
+Sınama, luve ile tanınan amaçlardan ve varlıklardan oluşan bir yanıt alma sürecine örnektir. 
 
-LUIS'i etkileşimli olarak test edebilir veya bir erte bir söz verebilir veya bir söz verebilirsiniz. Sınama sırasında, geçerli etkin modelin tahmin yanıtını yayımlanmış modelin tahmin yanıtıyla karşılaştırabilirsiniz. 
+Lua 'yı etkileşimli olarak test edebilir, bir seferde tek bir söylik sağlayabilir veya bir tanınlik sağlayabilirsiniz. Test ederken, geçerli etkin modelin tahmini yanıtını yayınlanan modelin tahmin yanıtı ile karşılaştırabilirsiniz. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
 <a name="E-(exponent)-notation"></a>
 
-## <a name="what-is-a-score-in-testing"></a>Testte puan nedir?
-Tahmin puanları hakkında daha fazla bilgi edinmek için [Tahmin puanı](luis-concept-prediction-score.md) kavramlarına bakın.
+## <a name="what-is-a-score-in-testing"></a>Sınamadaki puan nedir?
+Tahmin puanları hakkında daha fazla bilgi için bkz. [tahmin puanı](luis-concept-prediction-score.md) kavramları.
 
 ## <a name="interactive-testing"></a>Etkileşimli test
-İnteraktif testler LUIS portalının **test** panelinden yapılır. Niyetlerin ve varlıkların nasıl tanımlanıp puanlandığını görmek için bir söz girebilirsiniz. LUIS, test panelinde bir sözde beklediğiniz gibi niyetleri ve varlıkları tahmin etmiyorsa, yeni bir söz olarak **Niyet** sayfasına kopyalayın. Sonra varlıklar için bu söyleyiş parçaları etiket ve LUIS tren. 
+Etkileşimli test, LUO portalının **Test** panelinden yapılır. Amaçlarınızın ve varlıkların nasıl tanımlandığını ve puanlanmadığını görmek için bir söylenişi girebilirsiniz. LUSıS, test panelinde bir utterde beklediği sürece amaçları ve varlıkları tahmin etmemişse, yeni bir utterlik olarak **amacı** sayfasına kopyalayın. Daha sonra varlıklar için bu utterlik parçalarını etiketleyip LUO 'nun eğit. 
 
 ## <a name="batch-testing"></a>Toplu işe testi
-Aynı anda birden fazla sözcük testi yapıyorsunuzsa [toplu iş testlerine](luis-concept-batch-test.md) bakın.
+Tek seferde birden fazla farklı şekilde test ediyorsanız bkz. [Batch test](luis-concept-batch-test.md) .
 
-## <a name="endpoint-testing"></a>Bitiş noktası testi
-[Uygulamanızın](luis-glossary.md#endpoint) en fazla iki sürümüyle bitiş noktasını kullanarak test edebilirsiniz. Uygulamanızın ana veya canlı sürümünüüretim **bitiş** noktası olarak **ayarlarken, evreleme** bitiş noktasına ikinci bir sürüm ekleyin. Bu yaklaşım size bir söyleyiş üç sürümü verir: [LUIS](luis-reference-regions.md) web sitesinin Test bölmesinde geçerli model ve iki farklı uç noktalarında iki sürüm. 
+## <a name="endpoint-testing"></a>Uç nokta testi
+[Uç noktasını](luis-glossary.md#endpoint) uygulamanızın en fazla iki sürümü ile kullanarak test edebilirsiniz. **Üretim** uç noktası olarak uygulamanızın ana veya canlı sürümü ile, **hazırlama** uç noktasına ikinci bir sürüm ekleyin. Bu yaklaşım, bir utterance 'in üç sürümünü sağlar: [Luo](luis-reference-regions.md) Web sitesinin test bölmesindeki geçerli model ve iki farklı uç noktada iki sürüm. 
 
-Tüm uç nokta testi kullanım kotanıza doğru sayılır. 
+Tüm uç nokta testleri kullanım kotanıza doğru sayılır. 
 
 ## <a name="do-not-log-tests"></a>Testleri günlüğe kaydetme
-Bir bitiş noktasına karşı sınayırsanız ve sözcük günlüğe kaydolmasını istemiyorsanız, sorgu dizesi yapılandırmasını `logging=false` kullanmayı unutmayın.
+Bir uç noktaya karşı test ederseniz ve söylenişi 'in günlüğe kaydedilmesini istemiyorsanız, `logging=false` sorgu dizesi yapılandırmasını kullanmayı unutmayın.
 
-## <a name="where-to-find-utterances"></a>Nerede söyleyiş bulmak için
-LUIS, **uygulamalar** listesi sayfasından LUIS portalında indirilebilen tüm günlükteki tüm günlükleri ve [LUIS'in API'lerini yazarken](https://go.microsoft.com/fwlink/?linkid=2092087)saklar. 
+## <a name="where-to-find-utterances"></a>Utterslar nerede bulunur?
+LUıS, **uygulama** listesi sayfasından ve LUIS [yazma API 'lerinin](https://go.microsoft.com/fwlink/?linkid=2092087)yanı sıra LUIS portalında indirileceği, sorgu günlüğünde bulunan tüm günlüğe kaydedilen tüm detersliği depolar. 
 
-LUIS'in emin olmadığı tüm söyleyişler, [LUIS](luis-reference-regions.md) web sitesinin **[Gözden Geçirin bitiş noktası söyleyiş](luis-how-to-review-endpoint-utterances.md)** sayfasında listelenmiştir. 
+Herhangi bir söyleyki, [lusıs](luis-reference-regions.md) Web sitesinin **[Endpoint deterliği](luis-how-to-review-endpoint-utterances.md)** sayfasında listelenmemiştir. 
 
-## <a name="remember-to-train"></a>Antrenman yapmayı unutma.
-Modelde değişiklik yaptıktan sonra LUIS'i [eğitmeyi](luis-how-to-train.md) unutmayın. LUIS uygulamasındaki değişiklikler, uygulama eğitilene kadar testte görülmez. 
+## <a name="remember-to-train"></a>Eğitme etmeyi unutmayın
+Modelde değişiklik yaptıktan sonra lu, [eğitme](luis-how-to-train.md) yapmayı unutmayın. LUO uygulamasındaki değişiklikler, uygulama eğitilene kadar sınama bölümünde görülmez. 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
-[En iyi uygulamaları](luis-concept-best-practices.md)öğrenin.
+[En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Söyleyişlerinizi [test](luis-interactive-test.md) etme hakkında daha fazla bilgi edinin.
+* Aradıklarınızı [test etme](luis-interactive-test.md) hakkında daha fazla bilgi edinin.

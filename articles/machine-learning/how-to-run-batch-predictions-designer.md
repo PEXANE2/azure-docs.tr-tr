@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning tasarımcısını (önizleme) kullanarak toplu tahminleri çalıştırma
 titleSuffix: Azure Machine Learning
-description: Bir modeli nasıl eğitecekve tasarımcıyı kullanarak bir toplu iş tahmin ardışık hattı nasıl ayarlayayın. Ardışık hattı, herhangi bir HTTP kitaplığından tetiklenebilen parametrelendirilmiş bir web hizmeti olarak dağıtın.
+description: Tasarımcıyı kullanarak bir modeli eğitme ve Batch tahmini işlem hattı ayarlama hakkında bilgi edinin. İşlem hattını, herhangi bir HTTP kitaplığından tetiklenebilecek parametreli bir Web hizmeti olarak dağıtın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,138 +11,138 @@ author: peterclu
 ms.date: 02/24/2020
 ms.custom: Ignite2019
 ms.openlocfilehash: 01d69bffcf2c17abceba8ba2e0893360bead8b12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477230"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısını (önizleme) kullanarak toplu tahminleri çalıştırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Bu makalede, bir toplu iş tahmin ardışık oluşturmak için tasarımcıyı nasıl kullanacağınızı öğrenirsiniz. Toplu oluşturma tahmini, herhangi bir HTTP kitaplığından tetiklenebilen bir web hizmetini kullanarak sürekli olarak isteğe bağlı olarak büyük veri kümeleri elde etmenizi sağlar.
+Bu makalede, bir Batch tahmin işlem hattı oluşturmak için tasarımcıyı nasıl kullanacağınızı öğreneceksiniz. Toplu tahmin, herhangi bir HTTP kitaplığından tetiklenebilecek bir Web hizmeti kullanarak isteğe bağlı olarak büyük veri kümelerini sürekli olarak puanlamanızı sağlar.
 
-Bu nasıl yapılsa, aşağıdaki görevleri yapmayı öğrenirsiniz:
+Bu nasıl yapılır, aşağıdaki görevleri yapmayı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Toplu çıkarım ardışık hatlar oluşturma ve yayımlama
-> * Bir ardışık nokta uç noktası tüketin
+> * Toplu çıkarım ardışık düzeni oluşturma ve yayımlama
+> * Ardışık düzen uç noktası kullanma
 > * Uç nokta sürümlerini yönetme
 
-SDK'yı kullanarak toplu puanlama hizmetlerinin nasıl ayarlangerektiğini öğrenmek için, aşağıdaki [nasıl yapılacağını](how-to-run-batch-predictions.md)öğrenin.
+SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](how-to-run-batch-predictions.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl zaten bir eğitim boru hattı var sayıyor. Tasarımcı için rehberli bir giriş için, tasarımcı öğretici tam [bir parçası](tutorial-designer-automobile-price-train-score.md). 
+Bu nasıl yapılır, zaten bir eğitim ardışık düzenine sahip olduğunuzu varsayar. Tasarımcıya yönelik Kılavuzlu giriş için [Tasarımcı öğreticisinin birinci kısmını](tutorial-designer-automobile-price-train-score.md)doldurun. 
 
-## <a name="create-a-batch-inference-pipeline"></a>Toplu çıkarım ardışık işlem hattı oluşturma
+## <a name="create-a-batch-inference-pipeline"></a>Toplu çıkarım ardışık düzeni oluşturma
 
-Eğitim boru hattınız, çıkarlayıcı bir boru hattı oluşturabilmek için en az bir kez çalıştırılmalıdır.
+Bir ınsele sınırlama işlem hattı oluşturabilmek için eğitim işlem hattının en az bir kez çalıştırılması gerekir.
 
 1. Çalışma alanınızdaki **Tasarımcı** sekmesine gidin.
 
-1. Tahmin de bulunmak için kullanmak istediğiniz modeli eğiten eğitim ardışık hattını seçin.
+1. Tahmin yapmak için kullanmak istediğiniz modeli gösteren eğitim işlem hattını seçin.
 
-1. Boru hattını **gönderin.**
+1. İşlem hattını **gönderme** .
 
-    ![Boru hattını gönderme](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
+    ![İşlem hattını gönderme](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-Artık eğitim ardışık alanı çalıştırıldığına göre, toplu çıkarım ardışık bir işlem hattı oluşturabilirsiniz.
+Artık eğitim işlem hattı çalıştırıldığına göre, bir toplu çıkarım ardışık düzeni oluşturabilirsiniz.
 
-1. **Gönder'in**yanında, yeni açılır **çıkarım ardışık hattını**seçin.
+1. **Gönder**' in yanındaki yeni açılan menü **oluşturma çıkarım**işlem hattını seçin.
 
-1. **Toplu çıkarım ardışık hattını**seçin.
+1. **Toplu çıkarım ardışık düzeni**' ni seçin.
 
-    ![Toplu çıkarım ardışık işlem hattı oluşturma](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
+    ![Toplu çıkarım ardışık düzeni oluşturma](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
     
-Sonuç varsayılan toplu çıkarım ardışık bir iş. 
+Sonuç, varsayılan bir Batch çıkarım ardışık düzeni olur. 
 
-### <a name="add-a-pipeline-parameter"></a>Boru hattı parametresi ekleme
+### <a name="add-a-pipeline-parameter"></a>İşlem hattı parametresi ekleme
 
-Yeni verilerle ilgili öngörüler oluşturmak için, bu ardışık işlem kümesi taslak görünümünde farklı bir veri kümesini el ile bağlayabilir veya veri kümeniz için bir parametre oluşturabilirsiniz. Parametreler, çalışma zamanında toplu çıkarTma işleminin davranışını değiştirmenize izin sağlar.
+Yeni veriler üzerinde tahminler oluşturmak için bu işlem hattı Taslak görünümünde farklı bir veri kümesini el ile bağlayabilirsiniz ya da veri kümeniz için bir parametre oluşturabilirsiniz. Parametreler, çalışma zamanında toplu iş örneği işleme işleminin davranışını değiştirmenize izin verir.
 
-Bu bölümde, öngörülerde bulunmak için farklı bir veri kümesi belirtmek için bir veri kümesi parametresi oluşturursunuz.
+Bu bölümde, tahminleri yapmak için farklı bir veri kümesi belirtmek üzere bir veri kümesi parametresi oluşturacaksınız.
 
-1. Veri seti modülünü seçin.
+1. Veri kümesi modülünü seçin.
 
-1. Tuvalin sağında bir bölme görünür. Bölmenin alt **kısmında, ardışık parametre olarak Ayarla'yı**seçin.
+1. Tuvalin sağında bir bölme belirir. Bölmenin en altında, **ardışık düzen parametresi olarak ayarla**' yı seçin.
    
     Parametre için bir ad girin veya varsayılan değeri kabul edin.
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>Toplu iş inizi çıkartma ardışık hattınızı yayımlama
+## <a name="publish-your-batch-inferencing-pipeline"></a>Batch ınkoya sınırlama işlem hattınızı yayımlayın
 
-Şimdi çıkaran boru hattını dağıtmaya hazırsınız. Bu, ardışık alanı dağıtacak ve başkalarının kullanması için kullanılabilir hale getirecektir.
+Şimdi de ınıri sınırlama işlem hattını dağıtmaya hazırsınız. Bu işlem hattı dağıtır ve başkalarının kullanması için kullanılabilir hale getirir.
 
 1. **Yayımla** düğmesini seçin.
 
-1. Görünen iletişim kutusunda, PipelineEndpoint için açılır noktayı genişletin ve **Yeni PipelineEndpoint'i**seçin. **PipelineEndpoint**
+1. Görüntülenen iletişim kutusunda, **pipelineendpoint**için açılan liste ' yi genişletin ve **Yeni bir pipelineendpoint**' i seçin.
 
-1. Bir bitiş noktası adı ve isteğe bağlı açıklama sağlayın.
+1. Bir uç nokta adı ve isteğe bağlı bir açıklama sağlayın.
 
-    İletişim kutusunun alt kısmında, eğitim sırasında kullanılan veri kümesi kimliğinin varsayılan değeriyle yapılandırdığınız parametreyi görebilirsiniz.
+    İletişim kutusunun alt kısmında, eğitim sırasında kullanılan veri kümesi KIMLIĞI için varsayılan bir değerle yapılandırdığınız parametreyi görebilirsiniz.
 
 1. **Yayımla**’yı seçin.
 
-![Bir ardışık hat lar yayımlama](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
+![İşlem hattı yayımlama](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
 
-## <a name="consume-an-endpoint"></a>Bir bitiş noktası tüketin
+## <a name="consume-an-endpoint"></a>Uç nokta kullanma
 
-Şimdi, veri kümesi parametresi olan yayınlanmış bir ardışık hattınız var. Ardışık etki, parametre olarak sağladığınız veri kümesini puanlamak için eğitim ardışık etki alanında oluşturulan eğitilmiş modeli kullanır.
+Şimdi, bir veri kümesi parametresi olan yayımlanmış bir işlem hattına sahipsiniz. İşlem hattı, bir parametre olarak sağladığınız veri kümesini öğrenmek için eğitim ardışık düzeninde oluşturulan eğitilen modeli kullanır.
 
-### <a name="submit-a-pipeline-run"></a>Bir ardışık hat lar çalıştır 
+### <a name="submit-a-pipeline-run"></a>İşlem hattı çalıştırması gönderme 
 
-Bu bölümde, bir el ile ardışık ardışık işlem kümesi çalıştıracak ve yeni veriler elde etmek için ardışık hatlar parametresini değiştirin. 
+Bu bölümde, bir el ile işlem hattı çalıştırması ayarlayacaksınız ve yeni verileri Puanlama için işlem hattı parametresini değiştirecek olursunuz. 
 
-1. Dağıtım tamamlandıktan sonra Bitiş **Noktaları** bölümüne gidin.
+1. Dağıtım tamamlandıktan sonra **uç noktalar** bölümüne gidin.
 
-1. **Pipeline uç noktalarını**seçin.
+1. **Ardışık düzen uç noktalarını**seçin.
 
-1. Oluşturduğunuz bitiş noktasının adını seçin.
+1. Oluşturduğunuz uç noktanın adını seçin.
 
-![Bitiş noktası bağlantısı](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
+![Uç nokta bağlantısı](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
 
-1. **Yayımlanmış ardışık lıkları**seçin.
+1. **Yayınlanan işlem hatlarını**seçin.
 
-    Bu ekran, bu bitiş noktası altında yayınlanan tüm yayımlanmış ardışık dizileri gösterir.
+    Bu ekran, bu uç nokta altında Yayınlanan Tüm yayınlanan işlem hatlarını gösterir.
 
-1. Yayınladığınız ardışık hattı seçin.
+1. Yayımladığınız işlem hattını seçin.
 
-    Ardışık hatlar ayrıntıları sayfası, ardışık hattınız için ayrıntılı bir çalışma geçmişi ve bağlantı dizebilgileri gösterir. 
+    İşlem hattı ayrıntıları sayfasında, işlem hattınızla ilgili ayrıntılı çalıştırma geçmişi ve bağlantı dizesi bilgileri görüntülenir. 
     
-1. Ardışık hattın el ile çalışmasını oluşturmak için **Gönder'i** seçin.
+1. İşlem hattının el ile çalıştırılmasını oluşturmak için **Gönder** ' i seçin.
 
-    ![Boru hattı ayrıntıları](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
+    ![Ardışık düzen ayrıntıları](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
     
-1. Farklı bir veri kümesi kullanmak için parametreyi değiştirin.
+1. Parametresini farklı bir veri kümesi kullanacak şekilde değiştirin.
     
-1. Ardışık hattı çalıştırmak için **Gönder'i** seçin.
+1. İşlem hattını çalıştırmak için **Gönder** ' i seçin.
 
-### <a name="use-the-rest-endpoint"></a>REST bitiş noktasını kullanma
+### <a name="use-the-rest-endpoint"></a>REST uç noktasını kullanma
 
-**Son Noktalar** bölümünde, ardışık nokta uç noktalarının ve yayımlanmış ardışık hattın nasıl tüketilmesi hakkında bilgi bulabilirsiniz.
+**Uç noktalar** bölümünde, ardışık düzen uç noktaları ve yayımlanan işlem hattının nasıl kullanılacağına ilişkin bilgileri bulabilirsiniz.
 
-Çalışma genel bakış panelinde bir ardışık noktanın REST bitiş noktasını bulabilirsiniz. Bitiş noktasını arayarak, varsayılan olarak yayımlanmış ardışık hattını tüketmiş olursunuz.
+Bir işlem hattının REST uç noktasını çalışma genel bakış panelinde bulabilirsiniz. Uç noktasını çağırarak, varsayılan yayımlanmış işlem hattını kullanıyor olursunuz.
 
-**Yayınlanan ardışık hatlar** sayfasında yayımlanmış bir ardışık hatlar da tüketebilirsiniz. Yayımlanmış bir ardışık nokta seçin ve bunun REST bitiş noktasını bulun. 
+Yayımlanan **ardışık düzen sayfasında yayımlanmış** bir işlem hattını de kullanabilirsiniz. Yayımlanmış bir işlem hattı seçin ve bunun REST uç noktasını bulun. 
 
-![Dinlenme bitiş noktası ayrıntıları](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+![REST uç noktası ayrıntıları](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
 
-REST araması yapmak için OAuth 2.0 taşıyıcı tipi kimlik doğrulama üstbilgisine ihtiyacınız olacaktır. Çalışma alanınızda kimlik doğrulamayı ayarlama ve parametreli REST araması yapma hakkında daha fazla ayrıntı için aşağıdaki [öğretici bölümüne](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) bakın.
+REST çağrısı yapmak için bir OAuth 2,0 taşıyıcı türü kimlik doğrulama üst bilgisi gerekir. Çalışma alanınıza yönelik kimlik doğrulamasını ayarlama ve parametreli bir REST çağrısı yapma hakkında daha fazla ayrıntı için aşağıdaki [öğretici bölümüne](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) bakın.
 
-## <a name="versioning-endpoints"></a>Uç noktaları n
+## <a name="versioning-endpoints"></a>Sürüm uç noktaları
 
-Tasarımcı, bir bitiş noktasına yayımladığınız sonraki her ardışık noktaya bir sürüm atar. REST aramanızda parametre olarak yürütmek istediğiniz ardışık hatlar ekssürümünü belirtebilirsiniz. Bir sürüm numarası belirtmezseniz, tasarımcı varsayılan ardışık lığı kullanır.
+Tasarımcı, bir uç noktada yayımladığınız her bir sonraki ardışık düzen için bir sürüm atar. REST çağrınızda bir parametre olarak yürütmek istediğiniz işlem hattı sürümünü belirtebilirsiniz. Sürüm numarası belirtmezseniz, tasarımcı varsayılan işlem hattını kullanır.
 
-Bir ardışık ardışık yol yayımladığınızda, bu bitiş noktası için yeni varsayılan ardışık nokta yapmayı seçebilirsiniz.
+Bir işlem hattını yayımladığınızda, bu uç nokta için yeni varsayılan işlem hattını yapmayı tercih edebilirsiniz.
 
-![Varsayılan ardışık lığı ayarlama](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+![Varsayılan işlem hattını ayarla](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
 
-Bitiş noktanızın **Yayımlanmış ardışık hatlar** sekmesinde yeni bir varsayılan ardışık nokta ayarlayabilirsiniz.
+Ayrıca, uç noktanızın **yayınlanan ardışık düzen** sekmesinde yeni bir varsayılan işlem hattı da ayarlayabilirsiniz.
 
-![Varsayılan ardışık lığı ayarlama](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![Varsayılan işlem hattını ayarla](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir regresyon modelini eğitmek ve dağıtmak için tasarımcı [öğreticisini](tutorial-designer-automobile-price-train-score.md) izleyin.
+Bir regresyon modeli eğitme ve dağıtma için tasarımcı [öğreticisini](tutorial-designer-automobile-price-train-score.md) izleyin.
 ''

@@ -1,7 +1,7 @@
 ---
-title: Özel listelere ve API konsoluna sahip Orta dereceli görüntüler - İçerik Moderatör
+title: Özel listeler ve API konsolu ile orta boyutlu görüntüler-Content Moderator
 titleSuffix: Azure Content Moderator
-description: Azure İçerik Moderatörü'ndeki Liste Yönetimi API'sini özel resim listeleri oluşturmak için kullanırsınız.
+description: Özel görüntü listeleri oluşturmak için Azure Content Moderator 'da liste yönetimi API 'sini kullanırsınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72757186"
 ---
-# <a name="moderate-with-custom-image-lists-in-the-api-console"></a>API konsolunda özel görüntü listeleri ile orta
+# <a name="moderate-with-custom-image-lists-in-the-api-console"></a>API konsolundaki özel görüntü listeleriyle orta
 
-Azure İçerik Moderatörü'ndeki [Liste Yönetimi API'sini](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) özel resim listeleri oluşturmak için kullanırsınız. Görüntü Moderasyon API'si ile özel resim listelerini kullanın. Görüntü denetleme işlemi görüntünüzün değerlendirilmesi. Özel listeler oluşturursanız, işlem özel listelerinizdeki resimlerle de karşılaştırır. Görüntüyü engellemek veya izin vermek için özel listeler kullanabilirsiniz.
+Özel görüntü listeleri oluşturmak için Azure Content Moderator 'da [liste YÖNETIMI API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) 'sini kullanırsınız. Görüntü denetleme API 'SI ile görüntülerin özel listelerini kullanın. Görüntü denetleme işlemi görüntünüzü değerlendirir. Özel listeler oluşturursanız, işlem onu özel listeinizdeki görüntülerle karşılaştırır. Görüntüyü engellemek veya buna izin vermek için özel listeler kullanabilirsiniz.
 
 > [!NOTE]
 > Liste sayısı üst sınırı, her biri **10.000 görüntüyü aşmamak** kaydıyla **5 görüntü listesidir**.
 >
 
-Liste Yönetimi API'sini aşağıdaki görevleri yapmak için kullanırsınız:
+Aşağıdaki görevleri yapmak için liste yönetimi API 'sini kullanın:
 
 - Liste oluşturma.
-- Resimlerin bir listeye eklenmesi.
-- Görüntüleri listedeki resimlere karşı taraya.
-- Resimleri listeden silin.
+- Bir listeye görüntü ekleyin.
+- Listedeki görüntülere karşı ekran görüntüleri.
+- Listeden görüntüleri silin.
 - Listeyi silme.
 - Liste bilgileri düzenleme.
 - Listede yapılan değişikliklerin yeni taramaya eklenmesi için dizini yenileyin.
 
 ## <a name="use-the-api-console"></a>API konsolunu kullanma
-API'yi çevrimiçi konsolda test etmeden önce abonelik anahtarınız gerekir. Bu, **Ayarlar** sekmesinde, **Ocp-Apim-Abonelik-Anahtar** kutusunda bulunur. Daha fazla bilgi için bkz. [Genel Bakış](overview.md).
+Çevrimiçi konsolda API 'YI test etmeden önce, abonelik anahtarınız olmalıdır. Bu, **Ayarlar** sekmesinde, **OCP-apim-Subscription-Key** kutusunda bulunur. Daha fazla bilgi için bkz. [Genel Bakış](overview.md).
 
-## <a name="refresh-search-index"></a>Arama dizini yenile
+## <a name="refresh-search-index"></a>Arama dizinini Yenile
 
-Görüntü listesinde değişiklik yaptıktan sonra, gelecekteki taramalara eklenecek değişiklikler için dizinini yenilemeniz gerekir. Bu adım, masaüstünüzdeki bir arama motorunun (etkinse) veya web arama motorunun dizinini sürekli olarak yeni dosyalar veya sayfalar içerecek şekilde yenilemesine benzer.
+Bir görüntü listesinde değişiklik yaptıktan sonra, gelecekteki taramalara dahil edilecek değişikliklerin dizinini yenilemeniz gerekir. Bu adım, masaüstünüzdeki bir arama altyapısının (etkinse) veya bir Web araması altyapısının, yeni dosya veya sayfaları içerecek şekilde dizinini sürekli olarak yenilediğine benzer.
 
-1. Resim [Listesi Yönetimi API başvurusu,](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)sol menüde, **Resim Listeleri'ni**seçin ve ardından **Arama Dizini Yenile'yi**seçin.
+1. [Görüntü listesi yönetim API 'si başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)' nda, sol menüsünde, **görüntü listeleri**' ni seçin ve ardından **Arama dizinini Yenile**' yi seçin.
 
-   **Resim Listeleri - Arama Dizini Yenile** sayfası açılır.
+   **Görüntü listeleri-arama dizinini Yenile** sayfası açılır.
 
-2. **API test konsolunu Aç**için, konumunuzu en yakından açıklayan bölgeyi seçin. 
+2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
  
-    ![Resim Listeleri - Arama Dizini sayfa bölge seçimini yenile](images/test-drive-region.png)
+    ![Görüntü listeleri-arama dizini sayfa bölgesi seçimini Yenile](images/test-drive-region.png)
 
-    **Resim Listeleri - Arama Dizini** API konsolunu Yenile açılır.
+    **Görüntü listeleri-arama dizinini Yenile** API konsolu açılır.
 
-3. **ListId** kutusuna, liste kimliği girin. Abonelik anahtarınızı girin ve sonra **Gönder'i**seçin.
+3. **ListId** kutusuna liste kimliğini girin. Abonelik anahtarınızı girin ve ardından **Gönder**' i seçin.
 
-   ![Resim Listeleri - Arama Dizini konsolu Yanıt içerik kutusunu yenile](images/try-image-list-refresh-1.png)
+   ![Görüntü listeleri-arama dizini konsol yanıtı içerik kutusunu Yenile](images/try-image-list-refresh-1.png)
 
 
-## <a name="create-an-image-list"></a>Resim listesi oluşturma
+## <a name="create-an-image-list"></a>Görüntü listesi oluşturma
 
-1. [Görüntü Listesi Yönetimi API başvurusuna](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)gidin.
+1. [Görüntü listesi yönetim API 'si başvurusuna](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)gidin.
 
-   **Resim Listeleri - Oluştur** sayfası açılır. 
+   **Görüntü listeleri-oluştur** sayfası açılır. 
 
-3. **API test konsolunu Aç**için, konumunuzu en yakından açıklayan bölgeyi seçin.
+3. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.
 
-   ![Resim Listeleri - Sayfa bölgesi seçimi oluşturma](images/test-drive-region.png)
+   ![Görüntü listeleri-sayfa bölgesi seçimi oluşturma](images/test-drive-region.png)
 
-   **Resim Listeleri - CREATE** API konsolu açılır.
+   **Görüntü listeleri-** API konsolu Oluştur açılır.
  
-4. **Ocp-Apim-Abonelik-Anahtar** kutusuna abonelik anahtarınızı girin.
+4. **OCP-apim-Subscription-Key** kutusuna abonelik anahtarınızı girin.
 
-5. İstek **gövdesi** kutusuna, **Ad** (örneğin, MyList) ve **Açıklama**için değerler girin.
+5. **İstek gövdesi** kutusuna **ad** (örneğin, myList) ve **Açıklama**değerlerini girin.
 
-   ![Resim Listeleri - Konsol oluşturma İstek gövde adı ve açıklaması](images/try-terms-list-create-1.png)
+   ![Görüntü listeleri-konsol Isteği gövdesi adı ve açıklaması oluşturma](images/try-terms-list-create-1.png)
 
-6. Listenize daha açıklayıcı meta veriler atamak için anahtar değeri çifti yer tutucularını kullanın.
+6. Listenize daha açıklayıcı meta veriler atamak için anahtar-değer çifti yer tutucuları kullanın.
 
        {
           "Name": "MyExclusionList",
@@ -87,83 +87,83 @@ Görüntü listesinde değişiklik yaptıktan sonra, gelecekteki taramalara ekle
           }
        }
 
-   Liste meta verilerini gerçek görüntüler olarak değil, anahtar değer çiftleri olarak ekleyin.
+   Asıl görüntüleri değil, anahtar-değer çiftleri olarak liste meta verileri ekleyin.
  
-7. **Gönder**’i seçin. Listeniz oluşturulur. Yeni listeyle ilişkili **kimlik** değerini not edin. Diğer görüntü listesi yönetim işlevleri için bu kİmLİğİnGEREKDİ.
+7. **Gönder**’i seçin. Listeniz oluşturulur. Yeni liste ile ilişkili olan **kimlik** değerini unutmayın. Diğer görüntü listesi yönetim işlevleri için bu KIMLIĞE ihtiyacınız vardır.
 
-   ![Resim Listeleri - Konsol Oluştur Yanıt içerik kutusu liste kimliğini gösterir](images/try-terms-list-create-2.png)
+   ![Görüntü listeleri-konsol yanıt içeriği oluştur kutusu liste KIMLIĞINI gösterir](images/try-terms-list-create-2.png)
  
-8. Ardından, MyList'e resim ekleyin. Sol menüde **Resim'i**seçin ve ardından **Resim Ekle'yi**seçin.
+8. Ardından, MyList 'e görüntüler ekleyin. Sol taraftaki menüden **görüntü**' i seçin ve ardından **Görüntü ekle**' yi seçin.
 
-   **Resim - Resim Ekle** sayfası açılır. 
+   **Resim ekle** sayfası açılır. 
 
-9. **API test konsolunu Aç**için, konumunuzu en yakından açıklayan bölgeyi seçin.
+9. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.
 
-   ![Resim - Resim sayfası bölge seçimi ekle](images/test-drive-region.png)
+   ![Görüntü-görüntü sayfası bölge seçimi ekleme](images/test-drive-region.png)
 
-   **Resim - Resim Ekle** API konsolu açılır.
+   Görüntü **ekleme** API 'si konsolu açılır.
  
-10. **ListId** kutusuna, oluşturduğunuz liste kimliğini girin ve ardından eklemek istediğiniz resmin URL'sini girin. Abonelik anahtarınızı girin ve sonra **Gönder'i**seçin.
+10. **ListId** kutusunda, oluşturduğunuz liste kimliğini girin ve sonra eklemek istediğiniz görüntünün URL 'sini girin. Abonelik anahtarınızı girin ve ardından **Gönder**' i seçin.
 
-11. Resmin listeye eklendiğini doğrulamak için sol menüde **Resim'i**seçin ve ardından **Tüm Görüntü Kimliklerini Al'ı**seçin.
+11. Görüntünün listeye eklendiğini doğrulamak için, Sol menüdeki **görüntü**' i seçin ve ardından **tüm görüntü kimliklerini al**' ı seçin.
 
-    **Resim - Tüm Görüntü Ids** API konsolu açılır alın.
+    **Görüntü-tüm görüntü kimliklerini al** API konsolu açılır.
   
-12. **ListId** kutusuna, liste kimliğigirin ve ardından abonelik anahtarınızı girin. **Gönder**’i seçin.
+12. **ListId** kutusuna liste kimliği ' ni girin ve ardından abonelik anahtarınızı girin. **Gönder**’i seçin.
 
-    ![Resim - Tüm Resim Kimlikleri konsolu Yanıt içerik kutusunu alın girdiğiniz görüntüleri listeler](images/try-image-list-create-11.png)
+    ![Görüntü-tüm görüntü kimliklerini al konsol yanıtı içerik kutusu, girdiğiniz görüntüleri listeler](images/try-image-list-create-11.png)
  
-10. Birkaç resim daha ekle. Artık özel bir resim listesi oluşturduğunuza göre, özel resim listesini kullanarak [görüntüleri değerlendirmeyi](try-image-api.md) deneyin. 
+10. Birkaç resim daha ekleyin. Özel bir görüntü listesi oluşturduğunuza göre, özel görüntü listesini kullanarak [görüntüleri değerlendirmeyi](try-image-api.md) deneyin. 
 
-## <a name="delete-images-and-lists"></a>Resimleri ve listeleri silme
+## <a name="delete-images-and-lists"></a>Görüntüleri ve listeleri sil
 
-Bir resmi veya listeyi siler. Aşağıdaki görevleri yapmak için API'yi kullanabilirsiniz:
+Bir görüntüyü veya listeyi silme işlemi basittir. API 'YI kullanarak aşağıdaki görevleri gerçekleştirebilirsiniz:
 
-- Görüntüyü silin. (**Resim - Sil**)
-- Listeyi silmeden listedeki tüm görüntüleri silin. (**Resim - Tüm Görüntüleri Sil**)
-- Listeyi ve tüm içeriğini silme. (**Resim Listeleri - Sil**)
+- Görüntüyü silin. (**Görüntü-silme**)
+- Listeyi silmeden listedeki tüm görüntüleri silin. (**Görüntü-tüm görüntüleri Sil**)
+- Listeyi ve tüm içeriğini silme. (**Görüntü listeleri-silme**)
 
-Bu örnek tek bir resmi siler:
+Bu örnek tek bir görüntüyü siler:
 
-1. Resim [Listesi Yönetimi API başvurusu,](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)sol menüde, **Resim'i**seçin ve sonra **Sil'i**seçin. 
+1. [Görüntü listesi yönetim API 'si başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)' nda, sol menüsünde **görüntü**' i seçin ve **Sil**' i seçin. 
 
-   **Resim - Sil** sayfası açılır.
+   **Görüntü silme** sayfası açılır.
 
-2. **API test konsolunu Aç**için, konumunuzu en yakından açıklayan bölgeyi seçin. 
+2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin. 
 
-   ![Resim - Sayfa bölge seçimini silme](images/test-drive-region.png)
+   ![Görüntü-sayfa bölgesi seçimini silme](images/test-drive-region.png)
  
-   **Resim - API konsolu silin** açılır.
+   **Görüntü silme** API 'si konsolu açılır.
  
-3. **ListId** kutusuna, bir resmi silmek için listenin kimliğini girin.  Bu, Resim'de döndürülen **numaradır -** MyList için Tüm Görüntü Kimlikleri konsolu alın. Ardından, silmek için resmin **ImageId'ini** girin. 
+3. **ListId** kutusuna bir görüntünün SILINECEĞI listenin kimliğini girin.  Bu, MyList için **Image-tüm görüntü kimliklerini al** konsolunda döndürülen sayıdır. Ardından, silinecek görüntünün **ImageID** 'sini girin. 
 
-Örneğimizde, liste kimliği **58953**, **ContentSource**için değeri. Görüntü kimliği **59021**, **ContentIds**için değer .
+Örneğimizde, liste KIMLIĞI, **ContentSource**değeri **58953**' dir. Görüntü KIMLIĞI, **ContentID 'ler**için değer **59021**' dir.
 
-1. Abonelik anahtarınızı girin ve sonra **Gönder'i**seçin.
+1. Abonelik anahtarınızı girin ve ardından **Gönder**' i seçin.
 
-1. Resmin silindiğini doğrulamak için **Image - Get All Image Ids** konsoluna sahip olun.
+1. Görüntünün silindiğini doğrulamak için görüntü **-tüm görüntü kimliklerini al** konsolunu kullanın.
  
-## <a name="change-list-information"></a>Liste bilgilerini değiştirme
+## <a name="change-list-information"></a>Liste bilgilerini değiştir
 
-Bir listenin adını ve açıklamasını dinleyebilir ve meta veri öğeleri ekleyebilirsiniz.
+Bir listenin adını ve açıklamasını düzenleyebilir ve meta veri öğeleri ekleyebilirsiniz.
 
-1. Resim [Listesi Yönetimi API başvurusu,](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)sol menüde, **Resim Listeleri'ni**seçin ve ardından **Ayrıntıları Güncelleştir'i**seçin. 
+1. [Görüntü listesi yönetim API 'si başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)' nda, sol menüsünde, **görüntü listeleri**' ni seçin ve ardından **Güncelleştirme ayrıntıları**' nı seçin. 
 
-   **Resim Listeleri - Ayrıntıları Güncelle** sayfası açılır.
+   **Görüntü listeleri-Güncelleştirme ayrıntıları** sayfası açılır.
 
-2. **API test konsolunu Aç**için, konumunuzu en yakından açıklayan bölgeyi seçin.  
+2. **Open API test konsolu**için, konumunuzu en iyi şekilde açıklayan bölgeyi seçin.  
 
-    ![Resim Listeleri - Ayrıntılar sayfa bölge seçimini güncelleştir](images/test-drive-region.png)
+    ![Görüntü listeleri-Güncelleştirme ayrıntıları sayfa bölge seçimi](images/test-drive-region.png)
 
-    **Resim Listeleri - Ayrıntıları Güncelle** API konsolu açılır.
+    **Görüntü listeleri-Güncelleştirme ayrıntıları** API konsolu açılır.
  
-3. **ListId** kutusuna, liste kimliğigirin ve ardından abonelik anahtarınızı girin.
+3. **ListId** kutusuna liste kimliği ' ni girin ve ardından abonelik anahtarınızı girin.
 
-4. İstek **gövdesi** kutusunda, aramalarınızı yapın ve ardından sayfadaki **Gönder** düğmesini seçin.
+4. **İstek gövdesi** kutusunda, düzenlemelerinizi yapın ve ardından sayfadaki **Gönder** düğmesini seçin.
 
-   ![Resim Listeleri - Ayrıntıları Güncelle konsol İstek gövde lisitleri](images/try-terms-list-change-1.png)
+   ![Görüntü listeleri-Güncelleştirme ayrıntıları konsolu Istek gövdesi düzenlemeleri](images/try-terms-list-change-1.png)
  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kodunuzda REST API'sini kullanın veya uygulamanızla tümleştirmek için [Görüntü listeleri .NET quickstart](image-lists-quickstart-dotnet.md) ile başlayın.
+Uygulamanızla birleştirmek için kodunuzda REST API kullanın veya görüntü ile başlayın [.net hızlı](image-lists-quickstart-dotnet.md) başlangıcı.

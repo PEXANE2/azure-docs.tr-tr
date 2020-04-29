@@ -1,7 +1,7 @@
 ---
-title: Arama sonuçlarında sayfalama - Bing Arama API'leri
+title: Arama sonuçları aracılığıyla sayfa oluşturma-Bing Arama API'leri
 titleSuffix: Azure Cognitive Services
-description: Bing Arama API'lerinden arama sonuçlarını nasıl sayfalayan öğrenebilirsiniz.
+description: Bing Arama API'leri arama sonuçları aracılığıyla nasıl sayfa oluşturacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
 ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73481731"
 ---
-# <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Bing Arama API'lerinden elde edilen sonuçlar alanasıl sayfalanır?
+# <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Bing Arama API'leri sonuçları arasında sayfa oluşturma
 
-Bing Web, Özel, Resim, Haber veya Video Arama API'lerine çağrı gönderdiğinde, Bing sorguyla alakalı olabilecek toplam sonuç sayısının bir alt kümesini döndürür. Tahmini toplam kullanılabilir sonuç sayısını elde etmek için yanıt `totalEstimatedMatches` nesnesinin alanına erişin. 
+Bing Web, özel, görüntü, haber veya Video Arama API 'Lerine bir çağrı gönderdiğinizde Bing, sorguyla ilgili olabilecek Toplam Sonuç sayısının bir alt kümesini döndürür. Tahmini toplam kullanılabilir sonuç sayısını almak için, yanıt nesnesinin `totalEstimatedMatches` alanına erişin. 
 
-Örnek: 
+Örneğin: 
 
 ```json
 {
@@ -35,21 +35,21 @@ Bing Web, Özel, Resim, Haber veya Video Arama API'lerine çağrı gönderdiğin
 }  
 ```
 
-## <a name="paging-through-search-results"></a>Arama sonuçlarında gezinme
+## <a name="paging-through-search-results"></a>Arama sonuçları aracılığıyla sayfalama
 
-Kullanılabilir sonuçları sayfalamak için, `count` `offset` isteğinizi gönderirken ve sorgu parametrelerini kullanın.  
+Kullanılabilir sonuçlar aracılığıyla sayfa eklemek için isteğinizi gönderirken `count` ve `offset` sorgu parametrelerini kullanın.  
 
 > [!NOTE]
 >
-> * Bing Video, Resim ve Haber API'leri ile sayfalama`/video/search`yalnızca`/news/search`genel video`/image/search`( ), haberler ( ) ve görüntü ( ) aramaları için geçerlidir. Popüler konular ve kategoriler arasında gezinme desteklenmez.  
-> * Alan, `TotalEstimatedMatches` geçerli sorgunun toplam arama sonuçları nın tahminidir. Parametreleri ve `count` `offset` parametreleri ayarladığınızda, bu tahmin değişebilir.
+> * Bing video, resim ve haber API 'Leri ile sayfalama yalnızca genel video (`/video/search`), haber (`/news/search`) ve görüntü (`/image/search`) aramalarında geçerlidir. Popüler konular ve Kategoriler aracılığıyla sayfalama desteklenmez.  
+> * Bu `TotalEstimatedMatches` alan, geçerli sorgu için toplam arama sonucu sayısının tahminidir. `count` Ve `offset` parametrelerini ayarladığınızda bu tahmin değişebilir.
 
 | Parametre | Açıklama                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `count`   | Yanıtta döndürülecek sonuç sayısını belirtir. `count`Varsayılan değerinin ve isteyebileceğiniz maksimum sonuç sayısının API'ye göre değiştiğini unutmayın. Bu değerleri [Sonraki adımlar](#next-steps)altında başvuru belgelerinde bulabilirsiniz. |
-| `offset`  | Atlayacak sonuç sayısını belirtir. Sıfır `offset` tabanlıdır ve ()`totalEstimatedMatches` - `count`den daha az olmalıdır.                                           |
+| `count`   | Yanıtta döndürülecek sonuçların sayısını belirtir. Varsayılan değerinin `count`ve talep ettiğiniz en fazla sonuç sayısının API 'ye göre değiştiğini unutmayın. Bu değerleri, [sonraki adımlar](#next-steps)altındaki başvuru belgelerinde bulabilirsiniz. |
+| `offset`  | Atlanacak sonuç sayısını belirtir. `offset` Sıfır tabanlıdır ve (`totalEstimatedMatches` - `count`) değerinden küçük olmalıdır.                                           |
 
-Örnek olarak, sayfa başına 15 sonuç görüntülemek istiyorsanız, `count` sonuçların ilk `offset` sayfasını almak için 15 ve 0 olarak ayarlarsınız. Sonraki her API çağrısı için, `offset` 15 oranında artış olur. Aşağıdaki örnekte, ofset 45'ten başlayarak 15 web sayfası isteyiş verilmiştir.
+Örnek olarak, sayfa başına 15 sonuç göstermek istiyorsanız, sonuçların ilk sayfasını almak için 15 ve `count` `offset` 0 olarak ayarlanır. Sonraki her API çağrısı için 15 oranında arttırılırsınız `offset` . Aşağıdaki örnek 45 uzaklığında başlayan 15 Web sayfasını ister.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us HTTP/1.1  
@@ -57,7 +57,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Varsayılan `count` değeri kullanıyorsanız, yalnızca API `offset` çağrılarınızda sorgu parametresini belirtmeniz gerekir.  
+Varsayılan `count` değeri KULLANıRSANıZ, API aramalarınızın yalnızca `offset` sorgu parametresini belirtmeniz gerekir.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us HTTP/1.1  
@@ -65,18 +65,18 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Bing Resim ve Video API'lerini kullanırken, yinelenen arama sonuçlarından kaçınmak için `nextOffset` bu değeri kullanabilirsiniz. Veya `Images` `Videos` yanıt nesnelerinden değeri alın ve `offset` parametre ile isteklerinizde kullanın.  
+Bing görüntüsünü ve video API 'Lerini kullanırken yinelenen arama sonuçlarından kaçınmak için `nextOffset` değerini kullanabilirsiniz. Veya Yanıt nesnelerinden değeri alın ve bu `offset` parametre ile isteklerinizi kullanın. `Videos` `Images`  
 
 > [!NOTE]
-> Bing Web Arama API'sı, web sayfaları, resimler, videolar ve haberler içerebilen arama sonuçlarını döndürür. Bing Web Arama API'sının arama sonuçlarına sayfa araettiğinizde, resim veya haber gibi diğer yanıt türlerini değil, yalnızca [Web Sayfalarını](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)sayfalarsınız. Nesnelerdeki `WebPage` arama sonuçları, diğer yanıt türlerinde de görünen sonuçlar içerebilir.
+> Bing Web Araması API'si, Web sayfalarını, resimleri, Videoları ve haberleri içerebilen arama sonuçlarını döndürür. Bing Web Araması API'si arama sonuçlarıyla çalışırken, görüntü veya haber gibi diğer yanıt türlerini değil, yalnızca [Web sayfalarının](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)sayfalamalarından olursunuz. `WebPage` Nesnelerde arama sonuçları, diğer yanıt türlerinde de görünen sonuçları içerebilir.
 >
-> Sorgu parametresini herhangi bir `responseFilter` filtre değeri belirtmeden kullanıyorsanız, bu parametreyi ve `count` `offset` parametreleri kullanmayın. 
+> `responseFilter` Sorgu parametresini herhangi bir filtre değeri belirtmeden kullanırsanız, `count` ve `offset` parametrelerini kullanmayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bing Web Arama API'leri nedir?](bing-api-comparison.md)
+* [Bing Web Araması API 'Leri nelerdir?](bing-api-comparison.md)
 * [Bing Web Araması API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
-* [Bing Özel Arama API v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-* [Bing Haber Arama API v7 referans](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
-* [Bing Video Arama API v7 başvuru](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
-* [Bing Resim Arama API v7 başvuru](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Özel Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+* [Bing Haber Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
+* [Bing Video Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
+* [Bing Resim Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

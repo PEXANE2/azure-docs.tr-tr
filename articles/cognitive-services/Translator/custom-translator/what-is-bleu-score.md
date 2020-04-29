@@ -1,7 +1,7 @@
 ---
-title: BLEU skoru nedir? - Özel Çevirmen
+title: BLEU puanı nedir? -Özel çevirici
 titleSuffix: Azure Cognitive Services
-description: BLEU, makine çevirisi ile aynı kaynak cümlenin insan tarafından oluşturulan referans çevirileri arasındaki farkların bir ölçüsüdür.
+description: BLEU, makine çevirisi ile aynı kaynak cümlenin insan tarafından oluşturulan başvuru çevirileri arasındaki farkların ölçümüdür.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647367"
 ---
-# <a name="what-is-a-bleu-score"></a>BLEU skoru nedir?
+# <a name="what-is-a-bleu-score"></a>BLEU puanı nedir?
 
-[BLEU (İki Dilli Değerlendirme Yedeği)](https://en.wikipedia.org/wiki/BLEU) otomatik çeviri ile aynı kaynak cümlenin bir veya daha fazla insan tarafından oluşturulan referans çevirileri arasındaki farkların bir ölçüsüdür.
+[Bleu (iki noktalı değerlendirme çalışması)](https://en.wikipedia.org/wiki/BLEU) , bir otomatik çeviri ve aynı kaynak cümlenin bir veya daha fazla insan tarafından oluşturulan başvuru çevirisi arasındaki farkların ölçümüdür.
 
 ## <a name="scoring-process"></a>Puanlama işlemi
 
-BLEU algoritması, otomatik çevirinin ardışık tümcelerini başvuru çevirisinde bulduğu ardışık tümceciklerle karşılaştırır ve ağırlıklı bir şekilde eşleşme sayısını sayar. Bu maçlar pozisyon bağımsızdır. Daha yüksek bir eşleşme derecesi, başvuru çevirisiyle daha yüksek bir benzerlik derecesi ve daha yüksek puan gösterir. Anlaşılabilirlik ve dilbilgisi doğruluğu dikkate alınmaz.
+BLEU algoritması, otomatik çevirinin ardışık tümceciklerini başvuru çevirisi içinde bulduğu ardışık tümceciklerle karşılaştırır ve eşleşmelerin sayısını ağırlıklı bir biçimde sayar. Bu eşleşmeler konumdan bağımsızdır. Daha yüksek bir eşleşme derecesi, başvuru çevirisi ve daha yüksek puan ile daha yüksek bir benzerlik derecesini gösterir. Intelligibility ve dilbilgisi doğruluğu dikkate alınmaz.
 
-## <a name="how-bleu-works"></a>BLEU nasıl çalışır?
+## <a name="how-bleu-works"></a>BLEU nasıl çalışıyor?
 
-BLEU'nun gücü, her cümle için tam insani yargıyı tasarlamaya çalışmak yerine, bir test korpusu üzerinden bireysel cümle yargısı hatalarını ortalamaya alarak insan yargısıyla iyi ilişkili olmasıdır.
+BLEU 'nın kuvveti, her tümce için uygun insan kararından bağımsız olarak her tümce için bir test etcesini değerlendirerek bir test Corp, her tümce için bir değerlendirme hatası duymuştur.
 
-BLEU puanları daha kapsamlı bir tartışma [burada](https://youtu.be/-UqDljMymMg).
+BLEU puanlarını daha kapsamlı bir tartışmada [bulabilirsiniz](https://youtu.be/-UqDljMymMg).
 
-BLEU sonuçları, etki alanınızın genişliğine, test verilerinin eğitim ve ayarlama verileriyle tutarlılığına ve eğitmek için ne kadar veriye sahip olduğunuza bağlıdır. Modelleriniz dar bir etki alanında eğitildiyse ve eğitim verileriniz test verilerinizle tutarlıysa, yüksek bir BLEU puanı bekleyebilirsiniz.
+BLEU sonuçları, etki alanınızda yer alan, eğitim ve ayarlama verileriyle test verilerinin tutarlılığı ve eğitene kadar veri harcandığına bağlıdır. Modelleriniz dar bir etki alanı üzerinde eğitildi ve eğitim verileriniz test verileriyle tutarlıdır, yüksek bir BLEU puanı bekleyebilir.
 
 >[!NOTE]
->BLEU sonuçları aynı Test kümesi, aynı dil çifti ve aynı MT altyapısıyla karşılaştırıldığında, BLEU puanları arasındaki karşılaştırma yalnızca haklı dır. Farklı bir test kümesinden bleu puanı farklı olması kaçınılmazdır.
+>BLEU skorları arasında bir karşılaştırma yalnızca BLEU sonuçları aynı test kümesiyle, aynı dil çiftinden ve aynı MT altyapısından karşılaştırıldığı zaman yeniden oluşturulabilir. Farklı bir test kümesinden bir BLEU puanı farklı olacak şekilde bağlanır.

@@ -1,59 +1,59 @@
 ---
-title: Personalizer Nasıl Çalışır - Personalizer
-description: Personalizer _döngüsü,_ içeriğiniz için en iyi eylemi öngören modeli oluşturmak için makine öğrenimini kullanır. Model, yalnızca Rank ve Reward çağrılarıyla gönderdiğiniz verilerinizde eğitilir.
+title: Kişiselleştirici nasıl çalıştığı-kişiselleştirici
+description: Kişiselleştirici _döngüsü_ , içeriğiniz için en iyi eylemi tahmin eden modeli oluşturmak için makine öğrenimini kullanır. Model, bu verilere yalnızca derecelendirme ve ödül çağrılarında gönderdiğiniz verilerinize göre eğitilir.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77623770"
 ---
 # <a name="how-personalizer-works"></a>Kişiselleştirme nasıl çalışır?
 
-Personalizer kaynak, _öğrenme döngüsü_, içeriğiniz için üst eylem tahmin modeli oluşturmak için makine öğrenme kullanır. Model, yalnızca **Rank** ve **Reward** çağrılarıyla gönderdiğiniz verilerinizde eğitilir. Her döngü birbirinden tamamen bağımsızdır.
+_Öğrenme döngünüz_olan kişiselleştirici kaynağı, içeriğiniz için en iyi eylemi tahmin eden modeli oluşturmak için makine öğrenimi 'ni kullanır. Model, bu verilere yalnızca **Derecelendirme** ve **ödül** çağrılarında gönderdiğiniz verilerinize göre eğitilir. Her döngü birbirleriyle tamamen bağımsızdır.
 
-## <a name="rank-and-reward-apis-impact-the-model"></a>Sıralama ve Ödül API'leri modeli etkiler
+## <a name="rank-and-reward-apis-impact-the-model"></a>Derecelendirme ve Reward API 'Leri modeli etkiler
 
-Özellikler ve bağlam _özellikleri_ _içeren eylemleri_ Rank API'sine gönderirsiniz. **Rank** API'si aşağıdakilerden birini kullanmaya karar verir:
+Özellikler ve _bağlam özellikleriyle_ _işlemleri_ derecelendirme API 'sine gönderirsiniz. **Derecelendirme** API 'si şu iki seçenekten birini kullanmanıza karar verir:
 
-* _Exploit_: Geçmiş verilere dayalı olarak en iyi eylemi karara karar vermek için geçerli model.
-* _Keşfet_: Üst eylem yerine farklı bir eylem seçin. Bu yüzdeyi Azure portalındaki Personalizer kaynağınız için [yapılandırırsınız.](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt)
+* _Yararlanma_: geçmiş verilere göre en iyi eyleme karar vermeye yönelik geçerli model.
+* _Keşfet_: en üstteki eylem yerine farklı bir eylem seçin. [Bu yüzdeyi](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) , Azure Portal, kişiselleştirici kaynağınız için yapılandırırsınız.
 
-Ödül puanını belirleyin ve bu puanı Ödül API'sine gönderin. **Ödül** API:
+Ödül Puanını belirlersiniz ve bu puanı ödül API 'sine gönderirsiniz. **Reward** API 'si:
 
-* Her rütbe çağrısının özelliklerini ve ödül puanlarını kaydederek modeli eğitmek için veri toplar.
-* _Bu verileri, Öğrenme İlkesi'nde_belirtilen yapılandırmayı temel alan modeli güncelleştirmek için kullanır.
+* Her bir derece çağrısının özelliklerini ve yeniden puanlarını kaydederek modeli eğitmek için veri toplar.
+* , _Öğrenme ilkesinde_belirtilen yapılandırmaya göre modeli güncelleştirmek için bu verileri kullanır.
 
-## <a name="your-system-calling-personalizer"></a>Sisteminiz Personalizer'ı arıyor
+## <a name="your-system-calling-personalizer"></a>Kişiselleştirici çağıran sistem
 
-Aşağıdaki resim, Rank ve Reward çağrılarını çağırmanın mimari akışını gösterir:
+Aşağıdaki görüntüde, derece ve geri aramaları çağırmanın mimari akışı gösterilmektedir:
 
-![alternatif metin](./media/how-personalizer-works/personalization-how-it-works.png "Kişiselleştirme Nasıl Çalışır?")
+![alternatif metin](./media/how-personalizer-works/personalization-how-it-works.png "Kişiselleştirmenin çalışması")
 
-1. Özellikler ve bağlam _özellikleri_ _içeren eylemleri_ Rank API'sine gönderirsiniz.
+1. Özellikler ve _bağlam özellikleriyle_ _işlemleri_ derecelendirme API 'sine gönderirsiniz.
 
-    * Personalizer, geçerli modelden yararlanıp yararlanmamaya veya model için yeni seçenekler keşfetmeye karar verir.
-    * Sıralama sonucu EventHub'a gönderilir.
-1. Üst rütbe _ödül eylem kimliği_olarak sisteminize döndürülür.
-    Sisteminiz bu içeriği sunar ve kendi iş kurallarınıza göre bir ödül puanı belirler.
-1. Sisteminiz ödül puanını öğrenme döngüsüne döndürür.
-    * Personalizer ödülü aldığında, ödül EventHub'a gönderilir.
-    * Rütbe ve ödül ilişkilidir.
-    * AI modeli korelasyon sonuçlarına göre güncelleştirilir.
-    * Çıkarım motoru yeni modelle güncelleştirilir.
+    * Kişiselleştirici, geçerli modelden mi yararlanacağına yoksa model için yeni seçimler keşfetmesine karar verir.
+    * Derecelendirme sonucu EventHub öğesine gönderilir.
+1. En üst sıra, sisteminize geri dönüş _eylem kimliği_olarak döndürülür.
+    Sisteminiz bu içeriği gösterir ve kendi iş kurallarınızı temel alarak bir ödül puanı belirler.
+1. Sisteminiz öğrenme döngüsüne geri dönüş puanı döndürür.
+    * Kişiselleştirmede bir ödül alındığında, bu, EventHub öğesine gönderilir.
+    * Rank ve ödül, bağıntılı.
+    * AI modeli, bağıntı sonuçlarına göre güncelleştirilir.
+    * Çıkarım altyapısı yeni modelle güncellenir.
 
-## <a name="personalizer-retrains-your-model"></a>Personalizer modelinizi yeniler
+## <a name="personalizer-retrains-your-model"></a>Kişiselleştirici, modelinize geri çekme
 
-Personalizer, Azure portalındaki Personalizer kaynağınızdaki **Model sıklık güncelleştirme** ayarınızı temel alınarak modelinizi yeniden yeniler.
+Kişiselleştirici, Azure portal kişiselleştirici kaynağınız üzerindeki **model sıklığı güncelleştirme** ayarınızı temel alarak modelinize geri çeker.
 
-Personalizer, Azure portalındaki Personalizer kaynağınızdaki gün sayısındaki **Veri saklama** ayarına bağlı olarak, şu anda tutulan tüm verileri kullanır.
+Kişiselleştirici, Azure portal, kişiselleştirme kaynağınızın, **veri saklama** ayarına göre şu anda korunan tüm verileri kullanır.
 
-## <a name="research-behind-personalizer"></a>Personalizer arkasında Araştırma
+## <a name="research-behind-personalizer"></a>Kişiselleştirici arkasında araştırma
 
-Personalizer, Microsoft Research'te makaleler, araştırma faaliyetleri ve devam eden araştırma alanları da dahil olmak üzere [Güçlendirme Öğrenimi](concepts-reinforcement-learning.md) alanında en ileri bilim ve araştırmalara dayanmaktadır.
+Kişiselleştirici, Microsoft Research 'daki incelemeler, araştırma etkinlikleri ve devam eden araştırma dahil olmak üzere [pekiştirmeye dayalı Learning](concepts-reinforcement-learning.md) 'in alanında son teknoloji bilimine ve araştırmasına dayalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Personalizer için [en iyi senaryolar](where-can-you-use-personalizer.md) hakkında bilgi edinin
+Kişiselleştiriciye yönelik [popüler senaryolar](where-can-you-use-personalizer.md) hakkında bilgi edinin

@@ -1,116 +1,116 @@
 ---
-title: Geliştirici kaynakları - Dil Anlama
-description: SDK'lar, REST API'ler, CLI, programlama dilinizde Dil Anlama (LUIS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUIS tahminlerinizi yönetin.
+title: Geliştirici kaynakları-Language Understanding
+description: SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin.
 ms.topic: reference
 ms.date: 03/16/2020
 ms.openlocfilehash: 5e375157cef4789bc2980f6154ea8d59e765ff3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79457993"
 ---
-# <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Dil Anlama için SDK, REST ve CLI geliştirici kaynakları (LUIS)
+# <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding için SDK, REST ve CLı geliştirici kaynakları (LUSıS)
 
-SDK'lar, REST API'ler, CLI, programlama dilinizde Dil Anlama (LUIS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUIS tahminlerinizi yönetin.
+SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin.
 
-## <a name="azure-resource-management"></a>Azure kaynak yönetimi
+## <a name="azure-resource-management"></a>Azure Kaynak Yönetimi
 
-Dil Anlama veya Bilişsel Hizmet kaynağını oluşturmak, bunları listelemek, listelemek ve silmek için Azure Bilişsel Hizmetler Yönetimi katmanını kullanın.
+Language Understanding veya bilişsel hizmet kaynağını oluşturmak, düzenlemek, listelemek ve silmek için Azure bilişsel hizmetler yönetim katmanını kullanın.
 
-Araca dayalı başvuru belgelerini bulun:
+Araca göre başvuru belgelerini bulun:
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
 * [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
 
-## <a name="language-understanding-authoring-and-prediction-requests"></a>Dil Anlama yazma ve tahmin istekleri
+## <a name="language-understanding-authoring-and-prediction-requests"></a>Language Understanding yazma ve tahmin istekleri
 
-Dil Bilgisi hizmetine oluşturmanız gereken bir Azure kaynağından erişilir. İki kaynak vardır:
+Language Understanding hizmetine, oluşturmanız gereken bir Azure kaynağından erişilir. İki kaynak vardır:
 
-* Oluşturmak, oluşturmak, eğitmek, eğitmek ve yayımlamak için eğitim için **yazma** kaynağını kullanın.
-* Kullanıcının metnini göndermek ve bir tahmin almak için çalışma zamanı **için öngörüyü** kullanın.
+* Oluşturma, düzenleme, eğitme ve yayımlama için eğitim için **yazma** kaynağını kullanın.
+* Kullanıcının metnini göndermek ve tahmin almak için çalışma zamanı **tahminini** kullanın.
 
-[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında bilgi edinin.
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında bilgi edinin.
 
-En yaygın görevleri öğrenmek ve kullanmak için [Bilişsel Hizmetler örnek kodunu](https://github.com/Azure-Samples/cognitive-services-quickstart-code) kullanın.
+En yaygın görevleri öğrenmek ve kullanmak için bilişsel [Hizmetler örnek kodunu](https://github.com/Azure-Samples/cognitive-services-quickstart-code) kullanın.
 
-### <a name="rest-specifications"></a>REST özellikleri
+### <a name="rest-specifications"></a>REST belirtimleri
 
-[LUIS REST özellikleri,](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS)tüm [Azure REST özellikleriyle](https://github.com/Azure/azure-rest-api-specs)birlikte GitHub'da herkese açıktır.
+[LUSıS Rest belirtimleri](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS), tüm [Azure Rest belirtimleriyle](https://github.com/Azure/azure-rest-api-specs)birlikte GitHub 'da herkese açık bir şekilde sunulmaktadır.
 
 ### <a name="rest-apis"></a>REST API'leri
 
-Hem yazma hem de tahmin uç noktası APIS'leri REST API'lerinden edinilebilir:
+REST API 'lerden hem yazma hem de tahmin uç nokta API 'LERI kullanılabilir:
 
 |Tür|Sürüm|
 |--|--|
-|Yazma|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[önizleme V3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
-|Prediction (Tahmin)|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+|Yazma|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[izleme v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
+|Prediction (Tahmin)|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[Yüklemesinde](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
-### <a name="rest-endpoints"></a>DINLENME Uç Noktaları
+### <a name="rest-endpoints"></a>REST uç noktaları
 
-LUIS şu anda 2 uç nokta türüne sahiptir:
+LUIN Şu anda 2 uç nokta türü vardır:
 
-* eğitim bitiş noktası üzerinde yazma
-* çalışma zamanı bitiş noktasında sorgu tahmini.
+* Eğitim uç noktasında yazma
+* çalışma zamanı uç noktasında sorgu tahmini.
 
 |Amaç|URL'si|
 |--|--|
-|Eğitim bitiş noktası üzerine yazma|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
-|V2 Runtime - çalışma zamanı bitiş noktasındaki tüm tahminler|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
-|V3 Çalışma Süresi - çalışma zamanı bitiş noktasında sürüm tahmini|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
-|V3 Çalışma Süresi - çalışma zamanı bitiş noktasında slot tahmini|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|Eğitim uç noktasında yazma|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|V2 çalışma zamanı-çalışma zamanı uç noktasındaki tüm tahminler|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 çalışma zamanı-çalışma zamanı uç noktasındaki sürümler tahmini|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 çalışma zamanı-çalışma zamanı uç noktasında yuva tahmini|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
 
-Aşağıdaki tablo, önceki tabloda kıvırcık `{}`ayraçlarla gösterilen parametreleri açıklar.
+Aşağıdaki tabloda, önceki tabloda küme ayraçları `{}`ile belirtilen parametreler açıklanmaktadır.
 
 |Parametre|Amaç|
 |--|--|
-|`your-resource-name`|Azure kaynak adı|
-|`q` veya `query`|sohbet bot gibi istemci uygulamasından gönderilen söyleyiş metni|
-|`version`|10 karakter sürüm adı|
+|`your-resource-name`|Azure Kaynak adı|
+|`q` veya `query`|sohbet bot gibi istemci uygulamasından gönderilen söylenişi metni|
+|`version`|10 karakter sürümü adı|
 |`slot`| `production` veya `staging`|
 
-### <a name="language-based-sdks"></a>Dil tabanlı SDK'lar
+### <a name="language-based-sdks"></a>Dil tabanlı SDK 'lar
 
-|Dil |Referans belgeleri|Paket|Örnekler|Hızlı Başlangıçlar|
+|Dil |Başvuru belgeleri|Paket|Örnekler|Hızlı başlangıçlar|
 |--|--|--|--|--|
-|C#|[Yazma](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Tahmin](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet yazar](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet tahmini](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.Net SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Uygulama oluşturma ve yönetme](sdk-authoring.md?pivots=programming-language-csharp)<br>[Sorgu tahmin uç noktası](sdk-query-prediction-endpoint.md)|
-|Başlayın|[Yazma ve tahmin](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[REST kullanarak Yazma ve Tahmin](luis-get-started-get-intent-from-rest.md)|
-|Java|[Yazma ve tahmin](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven yazarlık](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven tahmin](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Yazma ve Tahmin](luis-get-started-get-intent-from-rest.md)
-|Node.js|[Yazma](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Tahmin](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM yazma](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM tahmini](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[REST kullanarak Yazma ve Tahmin](luis-get-started-get-intent-from-rest.md)|
+|C#|[Yazma](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Tahmin](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet yazma](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet tahmini](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.NET SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Uygulama oluşturma ve yönetme](sdk-authoring.md?pivots=programming-language-csharp)<br>[Sorgu tahmin uç noktası](sdk-query-prediction-endpoint.md)|
+|Başlayın|[Yazma ve tahmin](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[REST kullanarak yazma ve tahmin](luis-get-started-get-intent-from-rest.md)|
+|Java|[Yazma ve tahmin](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven yazma](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven tahmini](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Yazma ve tahmin](luis-get-started-get-intent-from-rest.md)
+|Node.js|[Yazma](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Tahmin](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM yazma](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM tahmini](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[REST kullanarak yazma ve tahmin](luis-get-started-get-intent-from-rest.md)|
 |Python|[Yazma ve tahmin](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Yazma](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Yazma](sdk-authoring.md?pivots=programming-language-python)<br>[REST kullanarak tahmin](luis-get-started-get-intent-from-rest.md)
 
 
 ### <a name="containers"></a>Kapsayıcılar
 
-Dil Anlama (LUIS), uygulamanızın şirket içi ve içerdiği sürümlerini sağlamak için bir [kapsayıcı](luis-container-howto.md) sağlar.
+Language Understanding (LUSıS), uygulamanızın şirket içi ve içerilen sürümlerini sağlamak için bir [kapsayıcı](luis-container-howto.md) sağlar.
 
-### <a name="export-and-import-formats"></a>Dışa aktarma ve alma biçimleri
+### <a name="export-and-import-formats"></a>Dışarı ve içeri aktarma biçimleri
 
-Dil Anlama, uygulamanızı ve modellerini JSON biçiminde, `.LU` [(LUDown)](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)formatında ve Dil Anlama kapsayıcısı için sıkıştırılmış bir pakette yönetme olanağı sağlar.
+Language Understanding, uygulamanızı ve modellerini bir JSON biçiminde, `.LU` ([luaşağı](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)) biçimde ve Language Understanding kapsayıcısı için sıkıştırılmış bir pakette yönetme olanağı sağlar.
 
-Bu biçimlerin içe aktarılabı ve dışa aktarılabilmektedir, API'lerden ve LUIS portalından. Portal, Uygulamalar listesi ve Sürümler listesinin bir parçası olarak içe aktarma ve dışa aktarma sağlar.
+Bu biçimlerin içeri ve dışarı aktarılması API 'lerden ve LUıS portalından kullanılabilir. Portal, uygulamalar listesi ve sürümler listesinin bir parçası olarak içeri ve dışarı aktarma sağlar.
 
-## <a name="other-tools-and-sdks"></a>Diğer araçlar ve SDK'lar
+## <a name="other-tools-and-sdks"></a>Diğer araçlar ve SDK 'lar
 
-Bot çerçevesi çeşitli dillerde [SDK](https://github.com/Microsoft/botframework) olarak ve [Azure Bot Hizmetini](https://dev.botframework.com/)kullanan bir hizmet olarak kullanılabilir.
+Bot Framework, [Azure bot hizmeti](https://dev.botframework.com/)kullanılarak çeşitli dillerde ve hizmet olarak bir [SDK](https://github.com/Microsoft/botframework) olarak kullanılabilir.
 
-Bot çerçevesi, Dil Anlama ile ilgili çeşitli [araçlar](https://github.com/microsoft/botbuilder-tools) sağlar:
+Bot Framework, aşağıdakiler dahil olmak üzere Language Understanding yardımcı olmak için [çeşitli araçlar](https://github.com/microsoft/botbuilder-tools) sağlar:
 
-* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown) - Markdown dosyalarını kullanarak LUIS dil anlama modelleri oluşturun
-* [LUIS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) - LUIS.ai uygulamalarınızı oluşturun ve yönetin
-* [Gönderme](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)- üst ve alt uygulamaları yönetme
-* [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) - Auto, LUIS niyet leriniz ve varlıklarınız için destek C#/Typescript sınıfları oluşturur.
-* [Bot Framework emülatörü](https://github.com/Microsoft/BotFramework-Emulator/releases) - Bot geliştiricileri test etmek ve Bot Framework SDK kullanılarak inşa botlar hata ayıklama sağlayan bir masaüstü uygulaması
-* [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) - Microsoft Bot Framework ile botlar ve konuşma deneyimleri oluşturmak için geliştiriciler ve çok disiplinli ekipler için entegre bir geliştirme aracı
-* [microsoft/NLU. DevOps](https://github.com/microsoft/NLU.DevOps) - NLU hizmetleri için sürekli tümleştirme ve dağıtımı destekleyen araçlar.
+* [Luaşağı](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown) -derleme lusıs dili, markın dosyalarını kullanarak modelleri anlama
+* [LUSıS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) -LUIS.ai uygulamalarınızı oluşturma ve yönetme
+* [Dağıtım](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)-üst ve alt uygulamaları yönetme
+* [Luisgen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) -lusıs amaçları ve varlıklarınız için otomatik olarak C#/TypeScript sınıfları oluşturma.
+* [Bot Framework öykünücüsü](https://github.com/Microsoft/BotFramework-Emulator/releases) -bot geliştiricilerinin, bot Framework SDK kullanılarak oluşturulan botları test etmesine ve hata ayıklamasına izin veren bir masaüstü uygulaması
+* [Bot Framework besteci](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) -geliştiriciler ve çok disiplinli takımlar Için Microsoft bot Framework ile botları ve konuşma deneyimleri oluşturmaya yönelik tümleşik bir geliştirme aracı
+* [Microsoft/NLU. DevOps](https://github.com/microsoft/NLU.DevOps) -NLU Hizmetleri için sürekli tümleştirmeyi ve dağıtımı destekleyen araçlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sık kullanılan [HTTP hata kodları](luis-reference-response-codes.md) hakkında bilgi edinin
-* Tüm API'ler ve SDK'lar için [başvuru belgeleri](https://docs.microsoft.com/azure/index)
-* [Bot çerçevesi](https://github.com/Microsoft/botbuilder-dotnet) ve [Azure Bot Hizmeti](https://dev.botframework.com/)
-* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
-* [Bilişsel Kaplar](../cognitive-services-container-support.md)
+* Ortak [http hata kodları](luis-reference-response-codes.md) hakkında bilgi edinin
+* Tüm API 'Ler ve SDK 'Lar için [başvuru belgeleri](https://docs.microsoft.com/azure/index)
+* [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) ve [Azure bot hizmeti](https://dev.botframework.com/)
+* [Luaşağı](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
+* [Bilişsel kapsayıcılar](../cognitive-services-container-support.md)

@@ -1,32 +1,32 @@
 ---
-title: Öğrenme politikası - Personalizer
-description: Öğrenme ayarları, model eğitiminin *hiperparametrelerini* belirler. Farklı öğrenme ayarlarında eğitilmiş aynı verilerin iki modeli farklı sona erer.
+title: Öğrenme ilkesi-kişiselleştirici
+description: Öğrenme ayarları, model eğitiminin *hiper parametrelerini* belirlenir. Farklı öğrenme ayarları üzerinde eğitilen aynı verilerin iki modeli farklı olacaktır.
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219351"
 ---
-# <a name="learning-policy-and-settings"></a>Öğrenme politikası ve ayarları
+# <a name="learning-policy-and-settings"></a>Öğrenme ilkesi ve ayarları
 
-Öğrenme ayarları, model eğitiminin *hiperparametrelerini* belirler. Farklı öğrenme ayarlarında eğitilmiş aynı verilerin iki modeli farklı sona erer.
+Öğrenme ayarları, model eğitiminin *hiper parametrelerini* belirlenir. Farklı öğrenme ayarları üzerinde eğitilen aynı verilerin iki modeli farklı olacaktır.
 
-[Öğrenme ilkesi ve ayarları](how-to-settings.md#configure-rewards-for-the-feedback-loop) Azure portalındaki Personalizer kaynağınızda ayarlanır.
+[Öğrenme ilkesi ve ayarları](how-to-settings.md#configure-rewards-for-the-feedback-loop) Azure Portal, kişiselleştirici kaynağınız üzerinde ayarlanır.
 
-## <a name="import-and-export-learning-policies"></a>Öğrenme politikaları ithalat ve ihracat
+## <a name="import-and-export-learning-policies"></a>Öğrenme ilkelerini içeri ve dışarı aktarma
 
-Azure portalından öğrenme ilkesi dosyalarını içe aktarAbilir ve dışa aktarabilirsiniz. Varolan ilkeleri kaydetmek, test etmek, değiştirmek ve kaynak kod denetiminizde gelecekteki başvuru ve denetim yapıları olarak arşivlemek için bu yöntemi kullanın.
+Azure portal öğrenme ilkesi dosyalarını içeri ve dışarı aktarabilirsiniz. Mevcut ilkeleri kaydetmek, test etmek, değiştirmek ve bunları kaynak kodu denetiinizde daha sonra başvurmak ve denetlemek için yapıtlar olarak arşivlemek için bu yöntemi kullanın.
 
-Personalizer kaynağınız için Azure portalında bir öğrenme ilkesini nasıl içe [aktarıp](how-to-manage-model.md#import-a-new-learning-policy) dışa aktarırım öğrenin.
+Kişiselleştirici kaynağınız için Azure portal bir öğrenme [ilkesini içeri ve dışarı aktarmayı öğrenin](how-to-manage-model.md#import-a-new-learning-policy) .
 
-## <a name="understand-learning-policy-settings"></a>Öğrenme politikası ayarlarını anlama
+## <a name="understand-learning-policy-settings"></a>Öğrenme ilkesi ayarlarını anlama
 
-Öğrenme ilkesindeki ayarların değiştirilmesi amaçlanmamıştır. Ayarları yalnızca Personalizer'ı nasıl etkilediğini anlarsanız değiştirin. Bu bilgi olmadan, Personalizer modelleri geçersiz kılma da dahil olmak üzere sorunlara neden olabilir.
+Öğrenme ilkesindeki ayarların değiştirilmesi amaçlanmamaktadır. Ayarları yalnızca, kişiselleştirici tarafından nasıl etkilendiklerini anladıysanız değiştirin. Bu bilgi olmadan, geçersiz kılma için kişiselleştirici modeller dahil olmak üzere sorunlara neden olabilirsiniz.
 
-Personalizer eğitmek ve olayları puan [vowpalwabbit](https://github.com/VowpalWabbit) kullanır. Vowpalwabbit kullanarak öğrenme ayarlarının nasıl değiştirilebildiğini anlatan [vowpalwabbit belgelerine](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments) bakın. Doğru komut satırı bağımsız değişkenlerini aldıktan sonra, komutu aşağıdaki biçime sahip bir dosyaya kaydedin (bağımsız değişkenlerin özellik değerini istenen komutla değiştirin) ve Dosyayı Azure portalındaki **Model ve Öğrenme Ayarları** bölmesinde Kilikçi kaynağınız için öğrenme ayarlarını almak için yükleyin.
+Kişiselleştirici olayları eğitme ve Puanlama için [vowpalwabbit](https://github.com/VowpalWabbit) kullanır. Vowpalwabbit kullanarak öğrenme ayarlarını düzenleme hakkındaki [vowpalwabbit belgelerine](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments) bakın. Doğru komut satırı bağımsız değişkenlerine sahip olduktan sonra, komutu aşağıdaki biçimde bir dosyaya kaydedin (bağımsız değişkenler özellik değerini istenen komutla değiştirin) ve kişiselleştirme kaynağı için Azure portal **model ve öğrenme ayarları** bölmesinde öğrenme ayarlarını içeri aktarmak üzere dosyayı karşıya yükleyin.
 
 Aşağıda `.json` bir öğrenme ilkesi örneği verilmiştir.
 
@@ -37,17 +37,17 @@ Aşağıda `.json` bir öğrenme ilkesi örneği verilmiştir.
 }
 ```
 
-## <a name="compare-learning-policies"></a>Öğrenme politikalarını karşılaştırın
+## <a name="compare-learning-policies"></a>Öğrenme ilkelerini karşılaştırın
 
-Farklı öğrenme ilkelerinin kişisel günlüklerde geçmiş verilerle nasıl performans gösterdiğini [çevrimdışı değerlendirmeler](concepts-offline-evaluation.md)yaparak karşılaştırabilirsiniz.
+[Çevrimdışı değerlendirmeler](concepts-offline-evaluation.md)yaparak, farklı öğrenme Ilkelerinin kişiselleştirici günlüklerinde geçmiş verilere karşı nasıl gerçekleştirileceğini karşılaştırabilirsiniz.
 
-Geçerli öğrenme politikasıyla karşılaştırmak için [kendi öğrenme politikanızı yükleyin.](how-to-manage-model.md)
+Geçerli öğrenme ilkesiyle karşılaştırmak için [kendi öğrenme Ilkelerinizi karşıya yükleyin](how-to-manage-model.md) .
 
-## <a name="optimize-learning-policies"></a>Öğrenme politikalarını optimize edin
+## <a name="optimize-learning-policies"></a>Öğrenme ilkelerini iyileştirme
 
-Personalizer [çevrimdışı bir değerlendirmede](how-to-offline-evaluation.md)optimize edilmiş bir öğrenme ilkesi oluşturabilir. Çevrimdışı bir değerlendirmede daha iyi ödüllere sahip optimize edilmiş bir öğrenme politikası, Personalizer'da çevrimiçi kullanıldığında daha iyi sonuçlar verecektir.
+Kişiselleştirici, [çevrimdışı bir değerlendirmede](how-to-offline-evaluation.md)iyileştirilmiş bir öğrenme ilkesi oluşturabilir. Çevrimdışı değerlendirmede daha iyi bir değerlendirme olan iyileştirilmiş bir öğrenme ilkesi, kişiselleştirmede çevrimiçi olarak kullanıldığında daha iyi sonuçlar verir.
 
-Bir öğrenme ilkesini optimize ettikten sonra, doğrudan Personalizer'a uygulayabilirsiniz, böylece geçerli politikanın hemen yerini alır. Veya daha fazla değerlendirme için optimize edilmiş ilkeyi kaydedebilir ve daha sonra atılıp atılmayacağınıza, kaydedip uygulamayacağınıza karar verebilirsiniz.
+Bir öğrenme ilkesini iyileştirdikten sonra, geçerli ilkenin hemen yerini alacak şekilde doğrudan Kişiselleştiriciye uygulayabilirsiniz. Ayrıca, daha fazla değerlendirme için iyileştirilmiş ilkeyi kaydedebilir ve daha sonra atma, kaydetme veya uygulama seçeneklerinden hangisi olduğuna karar verebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

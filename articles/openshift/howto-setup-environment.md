@@ -1,114 +1,114 @@
 ---
 title: Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
-description: Microsoft Azure Red Hat OpenShift ile çalışmak için ön koşullar aşağıda verilmiştir.
-keywords: kırmızı şapka openshift kurulum kurulumu
+description: Microsoft Azure Red Hat OpenShift ile çalışmaya yönelik önkoşullar aşağıda verilmiştir.
+keywords: Red Hat OpenShift kurulumu kuruldu
 author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477043"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
 
-Microsoft Azure Red Hat OpenShift uygulamalarını oluşturmak ve çalıştırmak için şunları yapmanız gerekir:
+Microsoft Azure Red Hat OpenShift uygulamalarını derlemek ve çalıştırmak için şunları yapmanız gerekir:
 
-* Azure CLI sürümünü 2.0.65 (veya daha yüksek) yükleyin (veya Azure Bulut Kabuğu'nu kullanın).
-* `AROGA` Özellik ve ilişkili kaynak sağlayıcıları için kaydolun.
-* Azure Etkin Dizin (Azure AD) kiracısı oluşturun.
-* Azure AD uygulama nesnesi oluşturun.
+* Azure CLı 'nın sürüm 2.0.65 (veya üzeri) sürümünü (veya Azure Cloud Shell kullanın).
+* `AROGA` Özellik ve ilişkili kaynak sağlayıcılarına kaydolun.
+* Azure Active Directory (Azure AD) kiracısı oluşturun.
+* Bir Azure AD uygulama nesnesi oluşturun.
 * Bir Azure AD kullanıcısı oluşturun.
 
-Aşağıdaki talimatlar tüm bu ön koşullar üzerinden size yol verecektir.
+Aşağıdaki yönergeler, bu önkoşulların tümünde size yol gösterecektir.
 
 ## <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
 
-Azure Red Hat OpenShift, Azure CLI sürümü 2.0.65 veya daha yüksek gerektirir. Azure CLI'yi zaten yüklediyseniz, aşağıdakileri çalıştırarak hangi sürüme sahip olduğunuzu kontrol edebilirsiniz:
+Azure Red Hat OpenShift, Azure CLı 'nin sürüm 2.0.65 veya üstünü gerektirir. Azure CLı 'yi zaten yüklediyseniz, şunu çalıştırarak hangi sürüme sahip olmanız gerektiğini kontrol edebilirsiniz:
 
 ```azurecli
 az --version
 ```
 
-İlk çıktı satırı, örneğin `azure-cli (2.0.65)`CLI sürümüne sahip olacaktır.
+Çıktının ilk satırı CLı sürümüne sahip olacaktır, örneğin `azure-cli (2.0.65)`.
 
-Yeni bir yükleme veya yükseltme gerektiren [Azure CLI'yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yönergeleri aşağıda veda edilmiştir.
+Yeni bir yükleme veya yükseltme gerekiyorsa [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yönergeleri aşağıda verilmiştir.
 
-Alternatif olarak, Azure [Bulut Kabuğu'nu](https://docs.microsoft.com/azure/cloud-shell/overview)kullanabilirsiniz. Azure Bulut Kabuğu'nu kullanırken, [Bir Azure Kırmızı Şapka OpenShift küme](tutorial-create-cluster.md) öğretici serisiyle birlikte izlemeyi ve yönetmeyi planlıyorsanız **Bash** ortamını seçtiğinizden emin olun.
+Alternatif olarak, [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)de kullanabilirsiniz. Azure Cloud Shell kullanırken, [Azure Red Hat Openshıft kümesi oluşturma ve yönetme](tutorial-create-cluster.md) öğreticisiyle birlikte Izlemeyi planlıyorsanız **Bash** ortamını seçtiğinizden emin olun.
 
-## <a name="register-providers-and-features"></a>Kayıt sağlayıcıları ve özellikleri
+## <a name="register-providers-and-features"></a>Sağlayıcıları ve özellikleri kaydetme
 
-Özellik, `Microsoft.ContainerService AROGA` `Microsoft.Solutions`, `Microsoft.Compute` `Microsoft.Storage`, `Microsoft.KeyVault` `Microsoft.Network` , ve sağlayıcıları n ilk Azure Red Hat OpenShift kümenizi dağıtmadan önce aboneliğinize el ile kaydedilmelidir.
+İlk `Microsoft.ContainerService AROGA` Azure Red `Microsoft.Solutions`hat `Microsoft.Compute`OpenShift kümenizi dağıtmadan önce, özelliği `Microsoft.Storage`,,, `Microsoft.KeyVault` ve `Microsoft.Network` sağlayıcılarının aboneliğinize el ile kaydedilmesi gerekir.
 
-Bu sağlayıcıları ve özellikleri el ile kaydetmek için, CLI'yi yüklediyseniz veya Azure portalınızda Azure Bulut Kabuğu (Bash) oturumundan aşağıdaki yönergeleri kullanın:
+Bu sağlayıcıları ve özellikleri el ile kaydetmek için, CLı 'yı yüklediyseniz veya Azure portal Azure Cloud Shell (Bash) oturumunda, bir bash kabuğundan aşağıdaki yönergeleri kullanın:
 
-1. Birden fazla Azure aboneliğiniz varsa, ilgili abonelik kimliğini belirtin:
+1. Birden çok Azure aboneliğiniz varsa ilgili abonelik KIMLIĞINI belirtin:
 
     ```azurecli
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. Microsoft.ContainerService AROGA özelliğini kaydedin:
+1. Microsoft. ContainerService AROGA özelliğini kaydedin:
 
     ```azurecli
     az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
-1. Microsoft.Storage sağlayıcısını kaydedin:
+1. Microsoft. Storage sağlayıcısını kaydedin:
 
     ```azurecli
     az provider register -n Microsoft.Storage --wait
     ```
     
-1. Microsoft.Compute sağlayıcısını kaydedin:
+1. Microsoft. COMPUTE sağlayıcısını kaydedin:
 
     ```azurecli
     az provider register -n Microsoft.Compute --wait
     ```
 
-1. Microsoft.Solutions sağlayıcısını kaydedin:
+1. Microsoft. Solutions sağlayıcısını kaydedin:
 
     ```azurecli
     az provider register -n Microsoft.Solutions --wait
     ```
 
-1. Microsoft.Network sağlayıcısını kaydedin:
+1. Microsoft. Network sağlayıcısı 'nı kaydedin:
 
     ```azurecli
     az provider register -n Microsoft.Network --wait
     ```
 
-1. Microsoft.KeyVault sağlayıcısını kaydedin:
+1. Microsoft. Keykasası sağlayıcısını kaydedin:
 
     ```azurecli
     az provider register -n Microsoft.KeyVault --wait
     ```
 
-1. Microsoft.ContainerService kaynak sağlayıcısının kaydını yenileyin:
+1. Microsoft. ContainerService kaynak sağlayıcısının kaydını yenileyin:
 
     ```azurecli
     az provider register -n Microsoft.ContainerService --wait
     ```
 
-## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>Azure Etkin Dizin (Azure AD) kiracısı oluşturma
+## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>Azure Active Directory (Azure AD) kiracısı oluşturma
 
-Azure Red Hat OpenShift hizmeti, kuruluşunuzun ve Microsoft ile olan ilişkisini temsil eden ilişkili bir Azure Etkin Dizin (Azure AD) kiracısı gerektirir. Azure AD kiracınız, uygulamaları kaydetmenizi, oluşturmanızı ve yönetmenizin yanı sıra diğer Azure hizmetlerini kullanmanızı sağlar.
+Azure Red Hat OpenShift hizmeti, kuruluşunuzu ve Microsoft ile ilişkisini temsil eden ilişkili bir Azure Active Directory (Azure AD) kiracısı gerektirir. Azure AD kiracınız, uygulamaları kaydetmenizi, oluşturmanızı ve yönetmenizi, ayrıca diğer Azure hizmetlerini kullanmayı sağlar.
 
-Azure Red Hat OpenShift kümenizin kiracısı olarak kullanabileceğiniz bir Azure REKLAM'ınız yoksa veya sınama için bir kiracı oluşturmak istiyorsanız, bu kılavuza devam etmeden önce [Azure Red Hat OpenShift kümeniz için Azure AD kiracısı oluştur'daki](howto-create-tenant.md) yönergeleri izleyin.
+Azure Red Hat OpenShift kümeniz için kiracı olarak kullanabileceğiniz bir Azure AD yoksa veya test için bir kiracı oluşturmak istiyorsanız, bu kılavuza devam etmeden önce [Azure Red Hat Openshıft kümeniz Için Azure AD kiracısı oluşturma](howto-create-tenant.md) bölümündeki yönergeleri izleyin.
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Azure AD kullanıcısı, güvenlik grubu ve uygulama nesnesi oluşturma
 
-Azure Red Hat OpenShift, depolama alanını yapılandırma gibi kümenizde görevleri gerçekleştirmek için izinler gerektirir. Bu izinler bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)aracılığıyla temsil edilir. Azure Red Hat OpenShift kümenizde çalışan uygulamaları test etmek için yeni bir Active Directory kullanıcısı da oluşturmak isteyebilirsiniz.
+Azure Red Hat OpenShift, kümenizde depolama yapılandırma gibi görevleri gerçekleştirmek için izinler gerektirir. Bu izinler bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)ile temsil edilir. Ayrıca, Azure Red Hat OpenShift kümenizde çalışan uygulamaları test etmek için yeni bir Active Directory Kullanıcı oluşturmak isteyeceksiniz.
 
-Bir hizmet sorumlusu oluşturmak, uygulamanız için bir istemci gizli ve kimlik doğrulama geri arama URL'si oluşturmak ve kümeye erişmek için yeni bir Azure AD güvenlik grubu ve kullanıcı oluşturmak için [Bir Azure AD uygulaması nesnesi ve kullanıcısı oluşturun'daki](howto-aad-app-configuration.md) yönergeleri izleyin.
+Hizmet sorumlusu oluşturmak için [Azure AD uygulama nesnesi ve Kullanıcı oluşturma](howto-aad-app-configuration.md) bölümündeki yönergeleri izleyin, uygulamanız için bir istemci gizli anahtarı ve kimlik doğrulama geri çağırma URL 'si oluşturun ve kümeye erişmek için yeni BIR Azure AD güvenlik grubu ve kullanıcı oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Red Hat OpenShift'i kullanmaya hazırsınız!
+Artık Azure Red Hat OpenShift kullanmaya hazırsınız!
 
 Öğreticiyi deneyin:
 > [!div class="nextstepaction"]

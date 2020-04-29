@@ -1,88 +1,88 @@
 ---
-title: Nasıl bir bilgi tabanı test etmek - QnA Maker
-description: QnA Maker bilgi tabanınızı test etmek, döndürülen yanıtların doğruluğunu artırmak için yinelemeli bir işlemin önemli bir parçasıdır. Ayrıca, değişiklikler yapmanızı sağlayan gelişmiş bir sohbet arabirimi aracılığıyla bilgi tabanını test edebilirsiniz.
+title: Bilgi Bankası Soru-Cevap Oluşturma test etme-
+description: Soru-Cevap Oluşturma bilgi tabanınızı test etmek, döndürülen yanıtların doğruluğunu artırmak için yinelemeli bir işlemin önemli bir parçasıdır. Bilgi bankasını, düzenleme yapmanıza olanak tanıyan gelişmiş bir sohbet arabiriminden test edebilirsiniz.
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78927268"
 ---
-# <a name="test-your-knowledge-base-in-qna-maker"></a>QnA Maker'da bilgi tabanınızı test edin
+# <a name="test-your-knowledge-base-in-qna-maker"></a>Bilgi tabanınızı Soru-Cevap Oluşturma test edin
 
-QnA Maker bilgi tabanınızı test etmek, döndürülen yanıtların doğruluğunu artırmak için yinelemeli bir işlemin önemli bir parçasıdır. Ayrıca, değişiklikler yapmanızı sağlayan gelişmiş bir sohbet arabirimi aracılığıyla bilgi tabanını test edebilirsiniz.
+Soru-Cevap Oluşturma bilgi tabanınızı test etmek, döndürülen yanıtların doğruluğunu artırmak için yinelemeli bir işlemin önemli bir parçasıdır. Bilgi bankasını, düzenleme yapmanıza olanak tanıyan gelişmiş bir sohbet arabiriminden test edebilirsiniz.
 
-## <a name="interactively-test-in-qna-maker-portal"></a>QnA Maker portalında etkileşimli test
+## <a name="interactively-test-in-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında etkileşimli test
 
-1. **Bilgi tabanım** sayfasında adını seçerek bilgi tabanınıza erişin.
-1. Test slayt-out paneline erişmek için, uygulamanızın üst panelinde **Test'i** seçin.
-1. Metin kutusuna bir sorgu girin ve Enter'u seçin.
-1. Bilgi tabanından en iyi eşleşen yanıt yanıt olarak döndürülür.
+1. Bilgi **tabanlarım** sayfasında adını seçerek bilgi tabanınızı erişin.
+1. Test slayt paneli paneline erişmek için uygulamanızın üst panelinde **Test** ' i seçin.
+1. Metin kutusuna bir sorgu girin ve ENTER ' u seçin.
+1. Bilgi bankasından en iyi eşleşen yanıt yanıt olarak döndürülür.
 
 ### <a name="clear-test-panel"></a>Test panelini temizle
 
-Girilen tüm test sorgularını ve sonuçlarını test konsolundan temizlemek için Test panelinin sol üst köşesinden **Baştan Başla'yı** seçin.
+Tüm girilen test sorgularını ve sonuçlarını test konsolundan temizlemek için, test bölmesinin sol üst köşesinden **başla** ' yı seçin.
 
 ### <a name="close-test-panel"></a>Test panelini kapat
 
-Test panelini kapatmak için **Test** düğmesini yeniden seçin. Test paneli açıkken, Bilgi Bankası içeriğini kaldıramazsınız.
+Test panelini kapatmak için, **Test** düğmesini yeniden seçin. Test paneli açıkken Bilgi Bankası içeriğini düzenleyemezsiniz.
 
-### <a name="inspect-score"></a>Skoru inceleyin
+### <a name="inspect-score"></a>Puanı İncele
 
-Test sonucunun ayrıntılarını İncele panelinde incelersiniz.
+Inceleme panelinde test sonucunun ayrıntılarını inceleyebilirsiniz.
 
-1.  Test slayt-out paneli açıkken, bu yanıt la ilgili daha fazla ayrıntı için **İncele'yi** seçin.
+1.  Test slayt paneli açık olduğunda, bu yanıt hakkında daha fazla ayrıntı için **İnceleme** ' yi seçin.
 
-    ![Yanıtları inceleyin](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![Yanıtları İncele](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  Teftiş paneli görüntülenir. Panelde en yüksek puanlama niyetinin yanı sıra tanımlanmış tüm varlıklar da yer alıyor. Panel, seçilen söyleyiş sonucunu gösterir.
+2.  Inceleme paneli görüntülenir. Panel, en iyi Puanlama amacını ve tanımlanan tüm varlıkları içerir. Panel, seçili utterlik 'in sonucunu gösterir.
 
-### <a name="correct-the-top-scoring-answer"></a>En yüksek puanlama yanıtını düzeltme
+### <a name="correct-the-top-scoring-answer"></a>En üst Puanlama yanıtını düzeltin
 
-En yüksek puanlama yanıtı yanlışsa, listeden doğru yanıtı seçin ve **Kaydet ve Eğit'i**seçin.
+En üst Puanlama yanıtı yanlışsa, listeden doğru yanıtı seçin ve **Kaydet ve eğit**' i seçin.
 
-![En yüksek puanlama yanıtını düzeltme](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![En üst Puanlama yanıtını düzeltin](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
-### <a name="add-alternate-questions"></a>Alternatif sorular ekleme
+### <a name="add-alternate-questions"></a>Alternatif sorular ekleyin
 
-Belirli bir yanıta alternatif soru biçimleri ekleyebilirsiniz. Metin kutusuna alternatif yanıtları yazın ve eklemek için enter'u tıklatın. Güncelleştirmeleri depolamak için **Kaydet ve Tren'i** seçin.
+Belirli bir yanıta bir sorunun alternatif formlarını ekleyebilirsiniz. Diğer yanıtları metin kutusuna yazın ve ENTER ' a tıklayarak ekleyin. Güncelleştirmeleri depolamak için **Kaydet ve eğitme '** yi seçin.
 
-![Alternatif sorular ekleme](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Alternatif sorular ekleyin](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
-### <a name="add-a-new-answer"></a>Yeni bir yanıt ekleme
+### <a name="add-a-new-answer"></a>Yeni bir yanıt ekleyin
 
-Eşleşen mevcut yanıtlardan herhangi biri yanlışsa veya yanıt bilgi tabanında yoksa yeni bir yanıt ekleyebilirsiniz (KB'de iyi eşleşme yok).
+Eşlenen mevcut yanıtlardan herhangi biri hatalıysa veya Yanıt Bilgi Bankası 'nda yoksa (KB 'de iyi eşleşme bulunamadıysanız) yeni bir yanıt ekleyebilirsiniz.
 
-Yanıt listesinin en altında, yeni bir yanıt girmek için metin kutusunu kullanın ve eklemek için enter tuşuna basın.
+Yanıtlar listesinin en altında, yeni bir yanıt girmek için metin kutusunu kullanın ve eklemek için ENTER tuşuna basın.
 
-Bu yanıtı devam etmek için **Kaydet ve Eğit'i** seçin. Bilgi tabanınıza yeni bir soru-cevap çifti eklendi.
+Bu yanıtı kalıcı hale getirmek için **Kaydet ve eğitme** seçeneğini belirleyin. Bilgi tabanıza yeni bir soru-cevap çifti eklenmiştir.
 
 > [!NOTE]
-> Bilgi tabanınızdaki tüm yapılan tüzünler yalnızca **Kaydet ve Tren** düğmesine bastığınızda kaydedilir.
+> Bilgi bankasındaki tüm düzenlemeler yalnızca **Kaydet ve eğitme** düğmesine bastığınızda kaydedilir.
 
-### <a name="test-the-published-knowledge-base"></a>Yayınlanan bilgi tabanını test edin
+### <a name="test-the-published-knowledge-base"></a>Yayınlanan Bilgi Bankası 'nı test etme
 
-Bilgi tabanının yayımlanmış sürümünü test bölmesinde test edebilirsiniz. KB'yi yayımladıktan **sonra, Yayınlanan KB** kutusunu seçin ve yayınlanan KB'den sonuç almak için bir sorgu gönderin.
+Bilgi Bankası 'nın yayımlanmış sürümünü test bölmesinde test edebilirsiniz. KB 'yi yayımladıktan **sonra yayımlanmış KB kutusunu seçin** ve yayımlanan KB 'den sonuçları almak için bir sorgu gönderin.
 
-![Yayınlanan bir KB'ye karşı test](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Yayımlanan bir KB 'ye karşı test](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
-## <a name="batch-test-with-tool"></a>Araçla toplu test
+## <a name="batch-test-with-tool"></a>Araçla Batch testi
 
-İstediğince toplu iş test aracını kullanın:
+Şunları yapmak istediğinizde Batch test aracını kullanın:
 
-* bir dizi soru için en yüksek yanıtı ve puanı belirleme
-* soru kümesi için beklenen yanıtı doğrulamak
+* bir soru kümesinin en iyi yanıtını ve Puanını belirleme
+* soru kümesi için beklenen yanıtı doğrulama
 
-Adım adım talimatlar için toplu iş testi [öğreticisini](../Quickstarts/batch-testing.md) okuyun.
+Adım adım yönergeler için Batch test [öğreticisini](../Quickstarts/batch-testing.md) okuyun.
 
-Toplu iş testi, toplu test aracıyla sağlanır. Bu araç, karşıdan [yüklenebilir sıkıştırılabilir](https://aka.ms/qnamakerbatchtestingtool) veya [C# kaynak kodu](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)olarak kullanılabilir.
+Toplu işlem testi, Batch test aracı ile sağlanır. Bu araç, karşıdan yüklenmek üzere veya [C# kaynak kodu](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)olarak bir [ZIP yürütülebilir dosyası](https://aka.ms/qnamakerbatchtestingtool) olarak kullanılabilir.
 
-[Araçla ilgili başvuru belgeleri](../reference-tsv-format-batch-testing.md) şunları içerir:
+[Araçla Ilgili başvuru belgeleri](../reference-tsv-format-batch-testing.md) şunları içerir:
 
 * aracın komut satırı örneği
-* TSV giriş ve çıkış dosyaları için biçim
+* TSV giriş ve çıkışdosyası dosyaları için biçim
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

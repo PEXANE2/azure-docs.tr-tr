@@ -1,7 +1,7 @@
 ---
 title: Özel alt etki alanları
 titleSuffix: Azure Cognitive Services
-description: Her Bilişsel Hizmet kaynağı için özel alt alan adları Azure portalı, Azure Bulut Kabuğu veya Azure CLI üzerinden oluşturulur.
+description: Her bilişsel hizmet kaynağı için özel alt etki alanı adları Azure portal, Azure Cloud Shell veya Azure CLı aracılığıyla oluşturulur.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,48 +10,48 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647687"
 ---
-# <a name="custom-subdomain-names-for-cognitive-services"></a>Bilişsel Hizmetler için özel alt alan adları
+# <a name="custom-subdomain-names-for-cognitive-services"></a>Bilişsel hizmetler için özel alt etki alanı adları
 
-Azure Bilişsel Hizmetleri, [Azure portalı](https://portal.azure.com), Azure Bulut [Bulutu](https://azure.microsoft.com/features/cloud-shell/)veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)aracılığıyla oluşturulan her kaynak için özel alt alan adları kullanır. Belirli bir Azure bölgesindeki tüm müşteriler için yaygın olan bölgesel uç noktaların aksine, özel alt etki alanı adları kaynağa özgüdir. Kimlik doğrulaması için Azure Active Directory (Azure AD) gibi özellikleri etkinleştirmek için özel alt alan adları gereklidir.
+Azure bilişsel hizmetler, [Azure Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)aracılığıyla oluşturulan her kaynak için özel alt etki alanı adları kullanır. Belirli bir Azure bölgesindeki tüm müşteriler için ortak olan bölgesel bitiş noktalarından farklı olarak, özel alt etki alanı adları kaynağa özeldir. Kimlik doğrulaması için Azure Active Directory (Azure AD) gibi özellikleri etkinleştirmek için özel alt etki alanı adları gereklidir.
 
-## <a name="how-does-this-impact-existing-resources"></a>Bu, varolan kaynakları nasıl etkiler?
+## <a name="how-does-this-impact-existing-resources"></a>Bu, mevcut kaynakları nasıl etkiler?
 
-1 Temmuz 2019'dan önce oluşturulan Bilişsel Hizmetler kaynakları, ilgili hizmet için bölgesel uç noktaları kullanacaktır. Bu uç noktalar varolan ve yeni kaynaklarla çalışır.
+1 Temmuz 2019 tarihinden önce oluşturulan bilişsel hizmetler kaynakları, ilişkili hizmet için bölgesel uç noktaları kullanır. Bu uç noktalar, mevcut ve yeni kaynaklarla çalışır.
 
-Azure AD gibi özellikleri etkinleştirmek için varolan bir kaynağı özel alt alan adlarını etkinleştirmek için geçirmek istiyorsanız aşağıdaki yönergeleri izleyin:
+Mevcut bir kaynağı özel alt etki alanı adlarından yararlanmak üzere geçirmek istiyorsanız, Azure AD gibi özellikleri etkinleştirebilmeniz için aşağıdaki yönergeleri izleyin:
 
-1. Azure portalında oturum açın ve özel bir alt etki alanı adı eklemek istediğiniz Bilişsel Hizmetler kaynağını bulun.
-2. Genel **Bakış** bıçağında, **Özel Alan Adı Oluştur'u**bulun ve seçin.
-3. Bu, kaynağınız için benzersiz bir özel alt etki alanı oluşturmak için yönergeleri içeren bir panel açar.
+1. Azure portal oturum açın ve özel bir alt etki alanı adı eklemek istediğiniz bilişsel hizmetler kaynağını bulun.
+2. **Genel bakış** dikey penceresinde, **özel etki alanı adı oluştur**' u bulun ve seçin.
+3. Bu, kaynağınız için benzersiz bir özel alt etki alanı oluşturmaya yönelik yönergeler içeren bir panel açar.
    > [!WARNING]
-   > Özel bir alt etki alanı adı oluşturduktan sonra **değiştirilemez.**
+   > Özel bir alt etki alanı adı oluşturduktan **sonra bu ad değiştirilemez.**
 
-## <a name="do-i-need-to-update-my-existing-resources"></a>Varolan kaynaklarımı güncelleştirmem gerekiyor mu?
+## <a name="do-i-need-to-update-my-existing-resources"></a>Mevcut kaynaklarımı güncelleştirmem gerekiyor mu?
 
-Hayır. Bölgesel bitiş noktası yeni ve varolan Bilişsel Hizmetler için çalışmaya devam edecektir ve özel alt etki alanı adı isteğe bağlıdır. Özel bir alt etki alanı adı eklense bile bölgesel bitiş noktası kaynakla çalışmaya devam edecektir.
+Hayır. Bölgesel uç nokta, yeni ve mevcut bilişsel hizmetler için çalışmaya devam edecektir ve özel alt etki alanı adı isteğe bağlıdır. Özel bir alt etki alanı adı eklendiyse bile bölgesel uç nokta kaynakla çalışmaya devam edecektir.
 
-## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Ya bir SDK benden kaynak isterse?
+## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Bir SDK bana bir kaynak için bölge istediğinde ne olacak?
 
 > [!WARNING]
-> Konuşma Hizmetleri şu anda özel alt etki alanlarını **desteklemez.** Konuşma Hizmetlerini ve ilişkili SDK'ları kullanırken lütfen bölgesel uç noktaları kullanın.
+> Konuşma **Hizmetleri şu** anda özel alt etki alanlarını desteklemez. Lütfen konuşma hizmetlerini ve ilişkili SDK 'Ları kullanırken bölgesel uç noktaları kullanın.
 
-Bölgesel uç noktalar ve özel alt alan adları hem desteklenir hem de birbirinin yerine kullanılabilir. Ancak, tam bitiş noktası gereklidir.
+Bölgesel uç noktalar ve özel alt etki alanı adları desteklenir ve birbirlerinin yerine kullanılabilir. Ancak tam uç nokta gereklidir.
 
-Azure [portalındaki](https://portal.azure.com)kaynağınız için **Genel Bakış** bıçağında bölge bilgileri mevcuttur. Bölgesel uç noktaların tam listesi için [bkz.](#is-there-a-list-of-regional-endpoints)
+Bölge bilgileri, [Azure Portal](https://portal.azure.com)kaynağınızın **genel bakış** dikey penceresinde kullanılabilir. Bölgesel bitiş noktalarının tam listesi için bkz. [Bölgesel uç noktaların listesi var mı?](#is-there-a-list-of-regional-endpoints)
 
-## <a name="are-custom-subdomain-names-regional"></a>Özel alt alan adları bölgesel mi?
+## <a name="are-custom-subdomain-names-regional"></a>Özel alt etki alanı adları bölgesel mi?
 
-Evet. Özel bir alt etki alanı adı kullanmak, Bilişsel Hizmetler kaynağınızın bölgesel yönlerini değiştirmez.
+Evet. Özel bir alt etki alanı adının kullanılması bilişsel hizmetler kaynağınızın bölgesel yönlerini değiştirmez.
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Özel bir alt etki alanı adı için gereksinimler nelerdir?
 
-Özel bir alt etki alanı adı kaynağınıza özgüdür. Ad yalnızca alfanümerik karakterleri ve `-` karakteri içerebilir; uzunluğu 2 ile 64 karakter arasında olmalıdır ve `-`bir .
+Özel bir alt etki alanı adı, kaynağınız için benzersizdir. Ad yalnızca alfasayısal karakterler ve `-` karakteri içerebilir; 2 ila 64 karakter uzunluğunda olmalı ve ile bitemez `-`.
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Özel bir etki alanı adını değiştirebilir miyim?
 
@@ -59,18 +59,18 @@ Hayır. Özel bir alt etki alanı adı oluşturulduktan ve bir kaynakla ilişkil
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>Özel bir etki alanı adını yeniden kullanabilir miyim?
 
-Her özel alt etki alanı adı benzersizdir, bu nedenle Bilişsel Hizmetler kaynağına atadığınız özel bir alt etki alanı adını yeniden kullanmak için varolan kaynağı silmeniz gerekir. Kaynak silindikten sonra, özel alt etki alanı adını yeniden kullanabilirsiniz.
+Her özel alt etki alanı adı benzersizdir, bu nedenle bilişsel hizmetler kaynağına atadığınız özel bir alt etki alanı adını yeniden kullanmak için mevcut kaynağı silmeniz gerekir. Kaynak silindikten sonra, özel alt etki alanı adını yeniden kullanabilirsiniz.
 
-## <a name="is-there-a-list-of-regional-endpoints"></a>Bölgesel bitiş noktalarının bir listesi var mı?
+## <a name="is-there-a-list-of-regional-endpoints"></a>Bölgesel bitiş noktaları listesi var mı?
 
-Evet. Bu, Azure Bilişsel Hizmetler kaynaklarıyla kullanabileceğiniz bölgesel uç noktaların listesidir.
+Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel bitiş noktalarının bir listesidir.
 
 > [!NOTE]
-> Çevirmen Metin API'si ve Bing Arama API'leri genel uç noktaları kullanır.
+> Translator Metin Çevirisi API'si ve Bing Arama API'leri genel uç noktaları kullanır.
 
 | Uç nokta türü | Bölge | Uç Nokta |
 |---------------|--------|----------|
-| Genel | Global (Çevirmen Metin & Bing) | `https://api.cognitive.microsoft.com` |
+| Ortak | Küresel (Translator Metin Çevirisi & Bing) | `https://api.cognitive.microsoft.com` |
 | | Doğu Avustralya | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Güney Brezilya | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -98,5 +98,5 @@ Evet. Bu, Azure Bilişsel Hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bilişsel Hizmetler nelerdir?](Welcome.md)
-* [Kimlik doğrulaması](authentication.md)
+* [Bilişsel hizmetler nelerdir?](Welcome.md)
+* [Kimlik Doğrulaması](authentication.md)
