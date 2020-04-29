@@ -1,7 +1,7 @@
 ---
-title: Müşteri tarafından yönetilen anahtarları yapılandırmak için PowerShell'i kullanın
+title: Müşteri tarafından yönetilen anahtarları yapılandırmak için PowerShell 'i kullanma
 titleSuffix: Azure Storage
-description: Azure Depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırmak için PowerShell'i nasıl kullanacağınızı öğrenin.
+description: Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırmak üzere PowerShell 'in nasıl kullanılacağını öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81456405"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>PowerShell'i kullanarak Azure Key Vault ile müşteri tarafından yönetilen tuşları yapılandırın
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>PowerShell kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Bu makalede, PowerShell kullanarak müşteri tarafından yönetilen anahtarlarla azure anahtar kasası nasıl yapılandırılanın gösterilmektedir. Azure CLI kullanarak anahtar kasası oluşturmayı öğrenmek için [Quickstart: PowerShell'i kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/secrets/quick-create-powershell.md)
+Bu makalede, PowerShell kullanarak müşteri tarafından yönetilen anahtarlarla bir Azure Key Vault nasıl yapılandırılacağı gösterilmektedir. Azure CLı kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: PowerShell kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-powershell.md).
 
-## <a name="assign-an-identity-to-the-storage-account"></a>Depolama hesabına kimlik atama
+## <a name="assign-an-identity-to-the-storage-account"></a>Depolama hesabına bir kimlik atayın
 
-Depolama hesabınız için müşteri tarafından yönetilen anahtarları etkinleştirmek için, önce depolama hesabına sistem tarafından atanmış yönetilen bir kimlik atayın. Bu yönetilen kimliği, depolama hesabının anahtar kasasına erişme izni vermek için kullanırsınız.
+Depolama hesabınız için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere öncelikle depolama hesabına sistem tarafından atanan bir yönetilen kimlik atayın. Bu yönetilen kimliği, depolama hesabı izinlerini anahtar kasasına erişim vermek için kullanacaksınız.
 
-PowerShell kullanarak yönetilen bir kimlik atamak için [Set-AzStorageAccount'u](/powershell/module/az.storage/set-azstorageaccount)arayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+PowerShell kullanarak yönetilen bir kimlik atamak için [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount)' ı çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```powershell
 $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -35,13 +35,13 @@ $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -AssignIdentity
 ```
 
-PowerShell ile sistem tarafından atanan yönetilen kimlikleri yapılandırma hakkında daha fazla bilgi için, [PowerShell'i kullanarak Azure vm'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)'ya bakın.
+Sistem tarafından atanan yönetilen kimlikleri PowerShell ile yapılandırma hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md).
 
-## <a name="create-a-new-key-vault"></a>Yeni bir anahtar kasası oluşturma
+## <a name="create-a-new-key-vault"></a>Yeni bir Anahtar Kasası oluşturun
 
-PowerShell kullanarak yeni bir anahtar kasası oluşturmak için [New-AzKeyVault'u](/powershell/module/az.keyvault/new-azkeyvault)arayın. Azure Depolama şifrelemesi için müşteri tarafından yönetilen anahtarları depolamak için kullandığınız anahtar kasasının iki anahtar koruma ayarı etkin leştirilmiş olmalıdır: **Yumuşak Silme** ve **Temizleme).**
+PowerShell kullanarak yeni bir Anahtar Kasası oluşturmak için [New-Azkeykasasını](/powershell/module/az.keyvault/new-azkeyvault)çağırın. Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları depolamak üzere kullandığınız anahtar kasasında iki anahtar koruma ayarı etkinleştirilmiş, **geçici silme** ve **Temizleme işlemi**yapılmalıdır.
 
-Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```powershell
 $keyVault = New-AzKeyVault -Name <key-vault> `
@@ -51,13 +51,13 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-**PowerShell** ile varolan bir anahtar kasasında Soft Delete ve **Do Sunurge'ı** etkinleştirmeyi öğrenmek için [PowerShell ile yumuşak](../../key-vault/general/soft-delete-powershell.md) **silmeyi etkinleştirme** ve **Temizleme Korumasını Etkinleştirme** başlıklı bölümlere bakın.
+**Geçici silme** özelliğini etkinleştirme ve var olan bir anahtar kasasında PowerShell ile **Temizleme** hakkında bilgi edinmek için, [PowerShell ile geçici silme özelliğini kullanma](../../key-vault/general/soft-delete-powershell.md)bölümünde **geçici** silme ve **Temizleme korumasını** etkinleştirme başlıklı bölümlere bakın.
 
-## <a name="configure-the-key-vault-access-policy"></a>Anahtar kasa erişim ilkesini yapılandırma
+## <a name="configure-the-key-vault-access-policy"></a>Anahtar Kasası erişim ilkesini yapılandırma
 
-Ardından, depolama hesabının erişim izinleri olacak şekilde anahtar kasasının erişim ilkesini yapılandırın. Bu adımda, depolama hesabına daha önce atadığınız yönetilen kimliği kullanırsınız.
+Daha sonra, depolama hesabının bu hesaba erişim izinleri olması için Anahtar Kasası için erişim ilkesini yapılandırın. Bu adımda, daha önce depolama hesabına atadığınız yönetilen kimliği kullanacaksınız.
 
-Anahtar kasasının erişim ilkesini ayarlamak için [Set-AzKeyVaultAccessPolicy'yi](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)arayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
+Anahtar Kasası erişim ilkesini ayarlamak için [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)komutunu çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy `
@@ -66,21 +66,21 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
-## <a name="create-a-new-key"></a>Yeni bir anahtar oluşturma
+## <a name="create-a-new-key"></a>Yeni anahtar oluştur
 
-Ardından, anahtar kasasında yeni bir anahtar oluşturun. Yeni bir anahtar oluşturmak için [Add-AzKeyVaultKey'i](/powershell/module/az.keyvault/add-azkeyvaultkey)arayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
+Ardından, anahtar kasasında yeni bir anahtar oluşturun. Yeni bir anahtar oluşturmak için [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)komutunu çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
 
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
 ```
 
-Azure Depolama şifrelemesi ile yalnızca 2048 bit RSA ve RSA-HSM anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için [Azure Key Vault tuşları, sırlar ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)Key Vault **tuşlarına** bakın.
+Azure depolama şifrelemesi ile yalnızca 2048 bit RSA ve RSA-HSM anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault anahtarlar** .
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma
 
-Varsayılan olarak, Azure Depolama şifrelemesi Microsoft tarafından yönetilen anahtarları kullanır. Bu adımda, Azure Depolama hesabınızı müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırın ve depolama hesabıyla ilişkilendirilen anahtarı belirtin.
+Varsayılan olarak, Azure depolama şifrelemesi Microsoft tarafından yönetilen anahtarları kullanır. Bu adımda, Azure depolama hesabınızı müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırın ve depolama hesabıyla ilişkilendirilecek anahtarı belirtin.
 
-Aşağıdaki örnekte gösterildiği gibi, depolama hesabının şifreleme ayarlarını güncelleştirmek için [Set-AzStorageAccount'u](/powershell/module/az.storage/set-azstorageaccount) arayın. Depolama hesabı için müşteri tarafından yönetilen anahtarları etkinleştirmek için **-KeyvaultEncryption** seçeneğini ekleyin. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
+Aşağıdaki örnekte gösterildiği gibi, depolama hesabının şifreleme ayarlarını güncelleştirmek için [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) komutunu çağırın. Depolama hesabı için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere **-keyvaultencryption** seçeneğini dahil edin. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -93,24 +93,24 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="update-the-key-version"></a>Anahtar sürümünü güncelleştirme
 
-Anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanmak için depolama hesabını güncelleştirmeniz gerekir. İlk olarak, anahtarın en son sürümünü almak için [Get-AzKeyVaultKey'i](/powershell/module/az.keyvault/get-azkeyvaultkey) arayın. Ardından, önceki bölümde gösterildiği gibi anahtarın yeni sürümünü kullanmak için depolama hesabının şifreleme ayarlarını güncelleştirmek için [Set-AzStorageAccount'u](/powershell/module/az.storage/set-azstorageaccount) arayın.
+Bir anahtarın yeni bir sürümünü oluşturduğunuzda, yeni sürümü kullanmak için depolama hesabını güncelleştirmeniz gerekir. İlk olarak, anahtarın en son sürümünü almak için [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) öğesini çağırın. Ardından, önceki bölümde gösterildiği gibi, depolama hesabının şifreleme ayarlarını anahtarın yeni sürümünü kullanacak şekilde güncelleştirmek için [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) komutunu çağırın.
 
 ## <a name="use-a-different-key"></a>Farklı bir anahtar kullanın
 
-Azure Depolama şifrelemesi için kullanılan anahtarı değiştirmek için, [şifrelemeyi müşteri tarafından yönetilen anahtarlarla yapılandır'da](#configure-encryption-with-customer-managed-keys) gösterildiği gibi [Set-AzStorageAccount'u](/powershell/module/az.storage/set-azstorageaccount) arayın ve yeni anahtar adını ve sürümünü sağlayın. Yeni anahtar farklı bir anahtar kasasındaysa, uri anahtar kasasını da güncelleyin.
+Azure depolama şifrelemesi için kullanılan anahtarı değiştirmek için, [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) komutunu, [müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](#configure-encryption-with-customer-managed-keys) bölümünde gösterildiği gibi çağırın ve yeni anahtar adını ve sürümünü sağlayın. Yeni anahtar farklı bir anahtar kasasında ise, Anahtar Kasası URI 'sini de güncelleştirin.
 
-## <a name="revoke-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları iptal edin
+## <a name="revoke-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları iptal et
 
-Bir anahtarın ele geçirildiğini düşünüyorsanız, anahtar kasa erişim ilkesini kaldırarak müşteri tarafından yönetilen anahtarları iptal edebilirsiniz. Müşteri tarafından yönetilen bir anahtarı iptal etmek için aşağıdaki örnekte gösterildiği gibi [Kaldır-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) komutunu arayın. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
+Bir anahtarın tehlikede olduğunu düşünüyorsanız, Anahtar Kasası erişim ilkesini kaldırarak müşteri tarafından yönetilen anahtarları iptal edebilirsiniz. Müşteri tarafından yönetilen bir anahtarı iptal etmek için, aşağıdaki örnekte gösterildiği gibi [Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) komutunu çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
 
 ```powershell
 Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
     -ObjectId $storageAccount.Identity.PrincipalId `
 ```
 
-## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı
+## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı bırak
 
-Müşteri tarafından yönetilen anahtarları devre dışı dışı bettiğinizde, depolama hesabınız bir kez daha Microsoft tarafından yönetilen anahtarlarla şifrelenir. Müşteri tarafından yönetilen anahtarları devre dışı bırakarak, aşağıdaki `-StorageEncryption` örnekte gösterildiği gibi [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) seçeneğini belirleyin. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
+Müşteri tarafından yönetilen anahtarları devre dışı bıraktığınızda, depolama hesabınız Microsoft tarafından yönetilen anahtarlarla yeniden şifrelenir. Müşteri tarafından yönetilen anahtarları devre dışı bırakmak için, aşağıdaki örnekte gösterildiği gibi [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) komutunu `-StorageEncryption` seçeneğiyle çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -120,5 +120,5 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Veriler için Azure Depolama şifrelemesi](storage-service-encryption.md)
-- [Azure Anahtar Kasası Nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md)
+- [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

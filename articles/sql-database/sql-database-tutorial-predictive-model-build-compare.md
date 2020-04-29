@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Tren ve R tahminmodelleri karşılaştırın'
+title: "Öğretici: R 'de tahmine dayalı modelleri eğitme ve karşılaştırma"
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Bu üç bölümlük öğretici serinin ikinci bölümünde, Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme) ile R'de iki tahmine dayalı model oluşturacak ve ardından en doğru modeli seçeceksiniz.
+description: Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, R 'de Azure SQL veritabanı Machine Learning Services (Önizleme) ile birlikte iki tahmine dayalı model oluşturacak ve en doğru modeli seçeceksiniz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,36 +15,36 @@ manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0985b37280e3cd363ba1728a5ec33b0012611ab2
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81452936"
 ---
-# <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model oluşturun (önizleme)
+# <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model oluşturma
 
-Bu üç bölümlük öğretici serinin ikinci bölümünde, R'de iki tahminmodeli oluşturacak ve en doğru modeli seçeceksiniz. Bu serinin bir sonraki bölümünde, bu modeli Azure SQL Database Machine Learning Services (önizleme) içeren bir SQL veritabanında dağıtacaksınız.
+Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, R 'de iki tahmine dayalı model oluşturacak ve en doğru modeli seçmelisiniz. Bu serinin bir sonraki bölümünde, bu modeli Azure SQL veritabanı Machine Learning Services (Önizleme) ile bir SQL veritabanında dağıtacaksınız.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-Bu makalede, nasıl öğreneceksiniz:
+Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
-> * İki makine öğrenme modeli eğitin
-> * Her iki modelden de öngörülerde bulunun
+> * İki makine öğrenimi modeli eğitimi
+> * Her iki modelden de tahminler yapın
 > * En doğru modeli seçmek için sonuçları karşılaştırın
 
-[Birinci bölümde,](sql-database-tutorial-predictive-model-prepare-data.md)örnek bir veritabanını nasıl içe aktarabileceğinizi ve daha sonra Verileri R'de bir tahminmodelinin eğitimi için nasıl hazırlayacağınızı öğrendiniz.
+[Birinci bölümde](sql-database-tutorial-predictive-model-prepare-data.md), örnek bir veritabanını içeri aktarmayı ve ardından R 'deki tahmine dayalı bir modeli eğitmek için kullanılacak verileri oluşturmayı öğrendiniz.
 
-[Üçüncü bölümde,](sql-database-tutorial-predictive-model-deploy.md)modeli veritabanında nasıl depoladığınızı ve ardından bir ve ikinci bölümlerde geliştirdiğiniz R komut dosyalarından depolanmış yordamlar oluşturmayı öğreneceksiniz. Depolanan yordamlar, yeni verilere dayalı öngörüler yapmak için bir SQL veritabanında çalışır.
+[Üçüncü kısımda](sql-database-tutorial-predictive-model-deploy.md), modeli bir veritabanında nasıl depolayacağınızı öğrenirsiniz ve sonra bir ve iki bölümde geliştirdiğiniz R betiklerinden saklı yordamlar oluşturabilirsiniz. Saklı yordamlar yeni verilere göre tahmine dayalı hale getirmek için bir SQL veritabanında çalışır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bu öğretici Bölüm iki bölüm [**bir**](sql-database-tutorial-predictive-model-prepare-data.md) ve ön koşulları tamamlamış varsayar.
+* Bu öğreticinin ikinci bölümünde [**Birinci bölüm bir**](sql-database-tutorial-predictive-model-prepare-data.md) ve önkoşulları tamamladığınız varsayılır.
 
-## <a name="train-two-models"></a>İki modeli eğitin
+## <a name="train-two-models"></a>İki modeli eğitme
 
-Kayak kiralama verileri için en iyi modeli bulmak için iki farklı model (doğrusal regresyon ve karar ağacı) oluşturun ve hangisinin daha doğru tahmin ettiğini görün. Bu serinin birinci `rentaldata` bölümünde oluşturduğunuz veri çerçevesini kullanırsınız.
+Kayak kiralama verileri için en iyi modeli bulmak için, iki farklı model (doğrusal regresyon ve karar ağacı) oluşturun ve hangisinin daha doğru bir şekilde tahmin edilebileceğine bakın. Bu serinin bir bölümünde oluşturduğunuz veri `rentaldata` çerçevesini kullanacaksınız.
 
 ```r
 #First, split the dataset into two different sets:
@@ -62,9 +62,9 @@ model_linmod <- rxLinMod(RentalCount ~  Month + Day + WeekDay + Snow + Holiday, 
 model_dtree  <- rxDTree(RentalCount ~ Month + Day + WeekDay + Snow + Holiday, data = train_data);
 ```
 
-## <a name="make-predictions-from-both-models"></a>Her iki modelden de öngörülerde bulunun
+## <a name="make-predictions-from-both-models"></a>Her iki modelden de tahminler yapın
 
-Her eğitimli modeli kullanarak kiralama sayılarını tahmin etmek için bir tahmin işlevi kullanın.
+Her eğitilen modeli kullanarak Kiralama sayılarını tahmin etmek için bir tahmin işlevi kullanın.
 
 ```r
 #Use both models to make predictions using the test data set.
@@ -96,7 +96,7 @@ head(predict_dtree);
 
 ## <a name="compare-the-results"></a>Sonuçları karşılaştırın
 
-Şimdi hangi modellerin en iyi tahminleri verdiğini görmek istiyorsunuz. Bunu yapmanın hızlı ve kolay bir yolu, eğitim verilerinizdeki gerçek değerler le öngörülen değerler arasındaki farkı görüntülemek için temel bir çizim işlevi kullanmaktır.
+Artık modellerden hangisinin en iyi tahminlere sahip olduğunu görmek istiyorsunuz. Bunu yapmanın hızlı ve kolay bir yolu, eğitim verilerinizde gerçek değerler ve tahmin edilen değerler arasındaki farkı görüntülemek için temel bir çizim işlevi kullanmaktır.
 
 ```r
 #Use the plotting functionality in R to visualize the results from the predictions
@@ -107,28 +107,28 @@ plot(predict_dtree$RentalCount_Pred  - predict_dtree$RentalCount,  main = "Diffe
 
 ![İki modeli karşılaştırma](./media/sql-database-tutorial-predictive-model-build-compare/compare-models.png)
 
-Bu karar ağacı modeli iki model daha doğru gibi görünüyor.
+Karar ağacı modeli, iki modelden daha doğru bir şekilde görünür.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticiyle devam etmeyecekseniz, TutorialDB veritabanını Azure SQL Veritabanı sunucunuzdan silin.
+Bu öğreticiye devam edemeyecekinizden Tutorialdb 'yi veritabanını Azure SQL veritabanı sunucusundan silin.
 
-Azure portalından aşağıdaki adımları izleyin:
+Azure portal, aşağıdaki adımları izleyin:
 
-1. Azure portalındaki sol menüden Tüm **kaynakları** veya **SQL veritabanlarını**seçin.
-1. **Ada göre Filtre...** alanına **TutorialDB'yi**girin ve aboneliğinizi seçin.
-1. TutorialDB veritabanınızı seçin.
+1. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı veya **SQL veritabanları**' nı seçin.
+1. **Ada göre filtrele...** alanına **tutorialdb 'yi**girin ve aboneliğinizi seçin.
+1. Tutorialdb 'yi veritabanınızı seçin.
 1. **Genel Bakış** sayfasında **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici serinin ikinci bölümünde, şu adımları tamamladınız:
+Bu öğretici serisinin ikinci bölümünde, şu adımları tamamladınız:
 
-* İki makine öğrenme modeli eğitin
-* Her iki modelden de öngörülerde bulunun
+* İki makine öğrenimi modeli eğitimi
+* Her iki modelden de tahminler yapın
 * En doğru modeli seçmek için sonuçları karşılaştırın
 
-Oluşturduğunuz makine öğrenimi modelini dağıtmak için bu öğretici serinin üçüncü bölümünü izleyin:
+Oluşturduğunuz Machine Learning modelini dağıtmak için, bu öğretici serisinin üçüncü kısmını izleyin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model dağıtma (önizleme)](sql-database-tutorial-predictive-model-deploy.md)
+> [Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model dağıtma](sql-database-tutorial-predictive-model-deploy.md)

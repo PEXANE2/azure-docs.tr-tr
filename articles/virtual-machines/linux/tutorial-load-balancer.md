@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure'da yük dengesi Linux sanal makineleri
+title: Öğretici-Azure 'da Linux sanal makinelerinin yükünü dengeleyin
 description: Bu öğreticide, üç Linux sanal makinesi arasında yüksek kullanılabilirliğe sahip ve güvenli uygulama için bir yük dengeleyici oluşturmak üzere Azure CLI kullanmayı öğreneceksiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 89ed39d1cd18fc97cec06dce4313271731b23b90
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460044"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Öğretici: Azure CLI ile yüksek oranda kullanılabilir bir uygulama oluşturmak için Azure’da Linux sanal makinelerinde yük dengeleme
@@ -35,7 +35,7 @@ Yük dengeleme, gelen istekleri birden çok sanal makineye dağıtarak yüksek d
 > * Çalışan yük dengeleyiciyi görüntüleme
 > * VM’leri yük dengeleyiciye ekleme ve kaldırma
 
-Bu öğretici, sürekli olarak en son sürüme güncelleştirilen [Azure Bulut Kabuğu'ndaki](https://docs.microsoft.com/azure/cloud-shell/overview)CLI'yi kullanır. Bulut Kabuğu'nu açmak için, herhangi bir kod bloğunun üstünden **deneyin'i** seçin.
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 

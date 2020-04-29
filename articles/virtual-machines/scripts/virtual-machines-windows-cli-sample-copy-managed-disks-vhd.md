@@ -1,6 +1,6 @@
 ---
-title: Yönetilen diskleri depolama hesabına kopyalama - CLI örneği
-description: Azure CLI örneği - Yönetilen diskleri bir s torage hesabına dışa aktarın veya kopyalayın.
+title: Yönetilen diskleri bir depolama hesabına kopyalama-CLı örneği
+description: Azure CLı örneği-yönetilen diskleri bir s Storage hesabına aktarın veya kopyalayın.
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -16,13 +16,13 @@ ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 64db152c6ebd2e8be4dc8034222eb5f1610946ae
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459619"
 ---
-# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLI'yi kullanarak yönetilen bir diski depolama hesabına dışa aktarma/kopyalama
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLı kullanarak yönetilen bir diski depolama hesabına aktarma/kopyalama
 
 Bu betik yönetilen diskin VHD dosyasını aynı veya farklı bölgede bulunan bir depolama hesabına aktarır. İlk olarak yönetilen diskin SAS URI'sini oluşturur ve sonra onu VHD dosyasını bir depolama hesabına kopyalamak için kullanır. Bu betiği bölgesel genişleme için yönetilen disklerinizi kopyalama amacıyla kullanabilirsiniz.
 
@@ -49,4 +49,4 @@ Bu betik bir yönetilen diskin SAS URI'sini oluşturmak için aşağıdaki komut
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
 
-Ek sanal makine ve yönetilen diskler CLI komut dosyası örnekleri [Azure Windows VM belgelerinde](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bulunabilir.
+Ek sanal makine ve yönetilen diskler CLı betiği örnekleri, [Azure WINDOWS VM belgelerinde](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bulunabilir.

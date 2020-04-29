@@ -1,6 +1,6 @@
 ---
-title: VM'ler için özel IP adreslerini yapılandırma (Klasik) - Azure PowerShell | Microsoft Dokümanlar
-description: PowerShell'i kullanarak sanal makineler (Klasik) için özel IP adreslerini nasıl yapılandırıştırmayı öğrenin.
+title: VM 'Ler için özel IP adresleri yapılandırma (klasik)-Azure PowerShell | Microsoft Docs
+description: PowerShell kullanarak sanal makineler (klasik) için özel IP adreslerini yapılandırmayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -16,13 +16,13 @@ ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9255ca3a2ed7e446c60a269deef61372955c25f4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458514"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>PowerShell kullanarak sanal bir makine (Klasik) için özel IP adreslerini yapılandırın
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>PowerShell kullanarak bir sanal makine için özel IP adreslerini yapılandırma (klasik)
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
@@ -30,14 +30,14 @@ ms.locfileid: "81458514"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Bu makale, klasik dağıtım modelini kapsamaktadır. [Kaynak Yöneticisi dağıtım modelinde statik bir özel IP adresini](virtual-networks-static-private-ip-arm-ps.md)de yönetebilirsiniz.
+Bu makale, klasik dağıtım modelini kapsamaktadır. Ayrıca [, Kaynak Yöneticisi dağıtım modelinde statik bir özel IP adresi yönetebilirsiniz](virtual-networks-static-private-ip-arm-ps.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Aşağıdaki örnek PowerShell komutları zaten oluşturulmuş basit bir ortam bekliyor. Komutları bu belgede görüntülenen komutları çalıştırmak istiyorsanız, önce [VNet Oluştur'da](virtual-networks-create-vnet-classic-netcfg-ps.md)açıklanan test ortamını oluşturun.
+Aşağıdaki örnek PowerShell komutları önceden oluşturulmuş basit bir ortam bekliyor. Komutları bu belgede görüntülendikleri gibi çalıştırmak istiyorsanız, önce [VNET oluşturma](virtual-networks-create-vnet-classic-netcfg-ps.md)bölümünde açıklanan test ortamını oluşturun.
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Belirli bir IP adresinin kullanılabilir olup olmadığını doğrulama
-IP adresi *192.168.1.101* *TestVNet*adlı bir VNet kullanılabilir olup olmadığını doğrulamak için, aşağıdaki PowerShell komutunu çalıştırın ve *IsAvailable*için değeri doğrulamak:
+*192.168.1.101* IP adresinin *testvnet*adlı bir VNET 'te kullanılabilir olup olmadığını doğrulamak için aşağıdaki PowerShell komutunu çalıştırın ve *IsAvailable*için değeri doğrulayın:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -49,8 +49,8 @@ Beklenen çıktı:
     OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
     OperationStatus      : Succeeded
 
-## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>VM oluştururken statik özel IP adresi nasıl belirtilir?
-Aşağıdaki PowerShell komut dosyası *TestService*adında yeni bir bulut hizmeti oluşturur, ardından Azure'dan bir görüntü alır, alınan görüntüyü kullanarak yeni bulut hizmetinde *DNS01* adında bir VM oluşturur, VM'yi *FrontEnd*adlı bir alt ağda ayarlar ve VM için statik özel IP adresi olarak *192.168.1.7* ayarlar:
+## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>VM oluştururken statik özel IP adresi belirtme
+Aşağıdaki PowerShell betiği, *TestService*adlı yeni bir bulut hizmeti oluşturur ve Azure 'dan bir görüntü alır, alınan görüntüyü kullanarak yeni bulut hizmetinde *DNS01* adlı BIR VM oluşturur, VM 'yi *ön uç*adlı bir alt ağda olacak şekilde ayarlar ve *192.168.1.7* 'i VM için statik bir özel IP adresi olarak ayarlar:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -68,8 +68,8 @@ Beklenen çıktı:
     New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
-## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Bir VM için statik özel IP adresi bilgileri nasıl alınır?
-Yukarıdaki komut dosyasıyla oluşturulan VM'nin statik özel IP adresi bilgilerini görüntülemek için aşağıdaki PowerShell komutunu çalıştırın ve *IpAddress*değerlerini gözlemleyin:
+## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Bir VM için statik özel IP adresi bilgilerini alma
+Yukarıdaki betikle oluşturulan VM 'nin statik özel IP adresi bilgilerini görüntülemek için aşağıdaki PowerShell komutunu çalıştırın ve *IPAddress*değerini gözlemleyin:
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
@@ -102,8 +102,8 @@ Beklenen çıktı:
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Statik özel IP adresi VM'den nasıl kaldırılır?
-Yukarıdaki komut dosyasında VM'ye eklenen statik özel IP adresini kaldırmak için aşağıdaki PowerShell komutunu çalıştırın:
+## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Bir VM 'den statik özel IP adresi kaldırma
+Yukarıdaki betikte bulunan VM 'ye eklenen statik özel IP adresini kaldırmak için aşağıdaki PowerShell komutunu çalıştırın:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Remove-AzureStaticVNetIP |
@@ -115,8 +115,8 @@ Beklenen çıktı:
     -------------------- -----------                          ---------------
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Varolan bir VM'ye statik özel IP adresi ekleme
-Yukarıdaki komut dosyası kullanılarak oluşturulan VM'ye statik özel BIR IP adresi eklemek için aşağıdaki komutu çalıştırın:
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Var olan bir VM 'ye statik bir özel IP adresi ekleme
+Yukarıdaki betiği kullanarak oluşturulan VM 'ye statik bir özel IP adresi eklemek için aşağıdaki komutu çalıştırın:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
@@ -128,12 +128,12 @@ Beklenen çıktı:
     -------------------- -----------                          ---------------
     Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
 
-## <a name="set-ip-addresses-within-the-operating-system"></a>İşletim sistemi içindeki IP adreslerini ayarlama
+## <a name="set-ip-addresses-within-the-operating-system"></a>İşletim sistemi içinde IP adreslerini ayarla
 
-Gerekli olmadıkça, Bir VM işletim sistemi içinde Azure sanal makinesine atanan özel IP'yi statik olarak atamamanız önerilir. İşletim sistemi içindeki özel IP adresini el ile ayarlarsanız, bunun Azure VM'ye atanan özel IP adresiyle aynı adres olduğundan emin olun veya sanal makineye bağlantınızı kaybedebilirsiniz. Sanal makinenin işletim sistemi içinde bir Azure sanal makinesine atanan genel IP adresini asla el ile atamamalısınız.
+Gerekli değilse, bir VM 'nin işletim sistemi içinde Azure sanal makinesine atanan özel IP 'yi statik olarak atamanız önerilir. İşletim sistemi içinde özel IP adresini el ile ayarlarsanız, Azure VM 'ye atanan özel IP adresi ile aynı adres olduğundan emin olun veya sanal makine bağlantısını kaybedebilirsiniz. Sanal makinenin işletim sistemi içindeki bir Azure sanal makinesine atanan genel IP adresini asla el ile atamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ayrılmış [genel IP](virtual-networks-reserved-public-ip.md) adresleri hakkında bilgi edinin.
-* Örnek [düzeyindeki genel IP (ILPIP)](virtual-networks-instance-level-public-ip.md) adresleri hakkında bilgi edinin.
-* Ayrılmış [IP REST API'leri](https://msdn.microsoft.com/library/azure/dn722420.aspx)başvurun.
+* [Ayrılmış genel IP](virtual-networks-reserved-public-ip.md) adresleri hakkında bilgi edinin.
+* [Örnek düzeyi genel IP (ıLPıP)](virtual-networks-instance-level-public-ip.md) adresleri hakkında bilgi edinin.
+* [Ayrılmış IP REST API 'lerine](https://msdn.microsoft.com/library/azure/dn722420.aspx)danışın.
 

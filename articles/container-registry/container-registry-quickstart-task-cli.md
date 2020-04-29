@@ -1,30 +1,30 @@
 ---
-title: Quickstart - & çalıştır konteyner görüntüsü oluşturun
-description: İsteğe bağlı bir Docker kapsayıcı görüntüsü oluşturmak ve çalıştırmak için Azure Konteyner Kayıt Defteri ile görevleri bulutta hızlı bir şekilde çalıştırın.
+title: Hızlı başlangıç-derleme & çalıştırma kapsayıcı görüntüsü
+description: Bulutta bir Docker kapsayıcı görüntüsü derlemek ve çalıştırmak için Azure Container Registry ile görevleri hızlıca çalıştırın.
 ms.topic: quickstart
 ms.date: 01/31/2020
 ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76986283"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlatma: Azure Kapsayıcı Kayıt Defteri Görevlerini kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
 
-Bu hızlı başlangıçta, Azure'da bir Docker kapsayıcı görüntüsünü hızlı bir şekilde oluşturmak, itmek ve çalıştırmak için Azure Kapsayıcı Kayıt Defteri Görevleri komutlarını kullanarak "iç döngü" geliştirme döngünüzün buluta nasıl boşaltılacagerektiğini gösterirsiniz. [ACR Görevleri,][container-registry-tasks-overview] kapsayıcı yaşam döngüsü boyunca kapsayıcı görüntülerini yönetmenize ve değiştirmenize yardımcı olan Azure Kapsayıcı Kayıt Defteri'ndeki bir özellik paketidir. 
+Bu hızlı başlangıçta, Azure 'da bir Docker kapsayıcı görüntüsünü hızlı bir şekilde oluşturmak, göndermek ve çalıştırmak için Azure Container Registry görev komutlarını kullanarak "iç döngü" geliştirme döngüsünün buluta nasıl boşalmasını istediğinizi gösterir. [ACR görevleri][container-registry-tasks-overview] kapsayıcı görüntülerini kapsayıcı yaşam döngüsü genelinde yönetmenize ve değiştirmenize yardımcı olmak üzere Azure Container Registry içindeki bir özellik paketidir. 
 
-Bu hızlı başlangıçtan sonra, ACR Görevleri'nin daha gelişmiş özelliklerini keşfedin. ACR Görevleri, kod taahhütlerini veya temel görüntü güncelleştirmelerini temel alan görüntü yapılarını temel olarak otomatikleştirebilir veya diğer senaryoların yanı sıra paralel olarak birden çok kapsayıcıyı sınayabilir. 
+Bu hızlı başlangıç sonrasında ACR görevlerinin daha gelişmiş özelliklerine göz atın. ACR görevleri kod yürütmelerine veya temel görüntü güncelleştirmelerine göre görüntü derlemelerini otomatikleştirebilir veya birden çok kapsayıcıyı paralel olarak diğer senaryolar arasında test edebilir. 
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz][azure-account] bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account] oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bu hızlı başlangıcı tamamlamak için Azure Cloud Shell veya yerel bir Azure CLI yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, sürüm 2.0.58 veya daha sonra önerilir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
+Bu hızlı başlangıcı tamamlamak için Azure Cloud Shell veya yerel bir Azure CLI yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, sürüm 2.0.58 veya üzeri önerilir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Zaten bir kapsayıcı kayıt defteriniz yoksa, önce az grubu oluşturma komutuna sahip bir kaynak grubu [oluşturun.][az-group-create] Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+Zaten bir kapsayıcı kayıt defteriniz yoksa, önce [az Group Create][az-group-create] komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
@@ -34,23 +34,23 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-[az acr oluşturma][az-acr-create] komutunu kullanarak bir kapsayıcı kayıt defteri oluşturun. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Aşağıdaki örnekte, *myContainerRegistry008* kullanılır. Bunu benzersiz bir değerle güncelleştirin.
+[Az ACR Create][az-acr-create] komutunu kullanarak bir kapsayıcı kayıt defteri oluşturun. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Aşağıdaki örnekte, *myContainerRegistry008* kullanılır. Bunu benzersiz bir değerle güncelleştirin.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-Bu örnek, Azure Kapsayıcı Kayıt Defteri'ni öğrenen geliştiriciler için maliyet için en uygun seçenek olan *Temel* kayıt defteri oluşturur. Kullanılabilir hizmet katmanları hakkında ayrıntılı bilgi için [Konteyner kayıt defteri SUS'larına][container-registry-skus]bakın.
+Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetli bir seçenek olan *temel* bir kayıt oluşturur. Kullanılabilir hizmet katmanları hakkında daha fazla bilgi için bkz. [kapsayıcı kayıt defteri SKU 'ları][container-registry-skus].
 
-## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile'den görüntü oluşturma
+## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile dosyasından görüntü oluşturma
 
-Şimdi bir resim oluşturmak için Azure Kapsayıcı Kayıt Defteri'ni kullanın. İlk olarak, bir çalışma dizini oluşturun ve ardından aşağıdaki içeriği içeren Dockerfile adında bir *Dockerfile* oluşturun. Bu bir Linux kapsayıcı görüntü oluşturmak için basit bir örnektir, ancak kendi standart Dockerfile oluşturabilir ve diğer platformlar için görüntüler oluşturabilirsiniz. Bu makaledeki komut örnekleri bash kabuğu için biçimlendirilmiştir.
+Şimdi bir görüntü oluşturmak için Azure Container Registry kullanın. İlk olarak, bir çalışma dizini oluşturun ve ardından aşağıdaki içerikle *dockerfile* adlı bir dockerfile oluşturun. Bu, Linux kapsayıcı görüntüsü oluşturmak için basit bir örnektir, ancak kendi standart Dockerfile dosyanızı oluşturabilir ve diğer platformlar için görüntü oluşturabilirsiniz. Bu makaledeki komut örnekleri bash kabuğu için biçimlendirilir.
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Görüntüyü oluşturmak için [az acr yapı][az-acr-build] komutunu çalıştırın. Başarıyla inşa edildiğinde, görüntü kayıt defterinize itilir. Aşağıdaki örnek `sample/hello-world:v1` görüntüyü iter. `.` Komutun sonunda Dockerfile konumunu ayarlar, bu durumda geçerli dizin.
+Görüntüyü derlemek için [az ACR Build][az-acr-build] komutunu çalıştırın. Başarıyla derlendiğinde, görüntü kayıt defterinize gönderilir. Aşağıdaki örnek `sample/hello-world:v1` görüntüyü iter. Komutun `.` sonundaki, Dockerfile dosyasının konumunu, bu durumda geçerli dizin olarak belirler.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \
@@ -58,7 +58,7 @@ az acr build --image sample/hello-world:v1 \
   --file Dockerfile . 
 ```
 
-Başarılı bir yapı ve itme çıktısı aşağıdakilere benzer:
+Başarılı bir derleme ve gönderim çıkışı aşağıdakine benzer:
 
 ```console
 Packing source code into tar to upload...
@@ -112,16 +112,16 @@ Run ID: ca8 was successful after 10s
 
 ## <a name="run-the-image"></a>Görüntüyü çalıştırma
 
-Şimdi, oluşturduğunuz ve ittiğiniz görüntüyü hızla çalıştırın. Burada kapsayıcı komutunu çalıştırmak için [az acr çalıştır'ı][az-acr-run] kullanıyorsunuz. Kapsayıcı geliştirme iş akışınızda, görüntüyü dağıtmadan önce bu bir doğrulama adımı olabilir veya komutu [çok adımlı BIR YAML dosyasına][container-registry-tasks-multi-step]dahil edebilirsiniz. 
+Şimdi oluşturduğunuz ve Kayıt defterinize gönderdiğiniz görüntüyü hızlıca çalıştırın. Burada, Container komutunu çalıştırmak için [az ACR Run][az-acr-run] komutunu kullanın. Kapsayıcı geliştirme iş akışınızda bu, görüntüyü dağıtmadan önce bir doğrulama adımı olabilir veya komutu [çok adımlı BIR YAML dosyasına][container-registry-tasks-multi-step]ekleyebilirsiniz. 
 
-Aşağıdaki örnek, `$Registry` komutu çalıştırdığınız kayıt defterini belirtmek için kullanır:
+Aşağıdaki örnek, komutunu `$Registry` çalıştırdığınız kayıt defterini belirtmek için kullanır:
 
 ```azurecli-interactive
 az acr run --registry myContainerRegistry008 \
   --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
 
-Bu `cmd` örnekteki parametre kapsayıcıyı varsayılan yapılandırmasında `cmd` çalıştırıyor, ancak ek `docker run` parametreleri ve hatta diğer `docker` komutları destekler.
+Bu `cmd` örnekteki parametresi kapsayıcıyı varsayılan yapılandırmasında çalıştırır, ancak `cmd` ek `docker run` parametreleri veya diğer `docker` komutları destekler.
 
 Çıktı aşağıdakine benzer:
 
@@ -170,7 +170,7 @@ Run ID: cab was successful after 6s
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kaynak grubunu, kapsayıcı kayıt defterini ve depolanan kapsayıcı görüntülerini kaldırmak için [az grubu silme][az-group-delete] komutunu kullanabilirsiniz.
+Artık gerekli değilse, [az Group Delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı kayıt defterini ve orada depolanan kapsayıcı görüntülerini kaldırabilirsiniz.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -178,10 +178,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, yerel bir Docker yüklemesi olmadan Azure'da bir Docker kapsayıcı görüntüsünü hızlı bir şekilde oluşturmak, itmek ve çalıştırmak için ACR Görevleri özelliklerini kullandınız. Görüntü oluşturma ve güncelleştirmeleri otomatikleştirmek için ACR Görevlerini kullanma hakkında bilgi edinmek için Azure Kapsayıcı Kayıt Defteri Görevleri öğreticilerine devam edin.
+Bu hızlı başlangıçta, yerel bir Docker yüklemesi olmadan Azure 'da bir Docker kapsayıcı görüntüsünü hızlıca oluşturmak, göndermek ve çalıştırmak için ACR görevlerinin özelliklerini kullandınız. Görüntü yapılarını ve güncelleştirmelerini otomatikleştirmek üzere ACR görevlerini kullanma hakkında bilgi edinmek için Azure Container Registry görev öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Kapsayıcı Kayıt Defteri Görevleri öğreticileri][container-registry-tutorial-quick-task]
+> [Azure Container Registry görevleri öğreticileri][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

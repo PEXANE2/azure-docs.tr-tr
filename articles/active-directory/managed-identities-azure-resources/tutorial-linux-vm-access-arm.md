@@ -1,5 +1,5 @@
 ---
-title: Hızlı`:` Başlangıç Azure Kaynak Yöneticisi'ne erişmek için yönetilen bir kimliği kullanma - Azure AD
+title: Hızlı`:` başlangıç Azure Resource Manager erişmek için yönetilen bir kimlik kullanma-Azure AD
 description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Resource Manager’a erişme işleminde size yol gösteren bir hızlı başlangıç.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ee10a73579e8533cd14ecfeeebab44e726ba16b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74326331"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Azure Resource Manager’a erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma
@@ -56,9 +56,9 @@ Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsan�
 
 1. Portalda Linux VM’nize gidin ve **Genel Bakış**’ta **Bağlan**’a tıklayın.  
 2. Tercih ettiğiniz SSH istemciyle VM'ye **bağlanın**. 
-3. Terminal penceresinde, `curl`Azure Kaynak Yöneticisi için bir erişim belirteci almak için Azure kaynakları bitiş noktası için yerel yönetilen kimliklere istekte bulunun.  
+3. Terminal penceresinde, kullanarak `curl`, Azure Resource Manager için bir erişim belirteci almak üzere Azure kaynakları için yerel yönetilen kimliklere bir istek yapın.  
  
-    Erişim `curl` belirteci için istek aşağıdadır.  
+    Erişim `curl` belirtecinin isteği aşağıda verilmiştir.  
     
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
@@ -100,5 +100,5 @@ Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsan�
 Bu hızlı başlangıçta, Azure Resource Manager API'sine erişmek amacıyla, sistem tarafından atanmış bir yönetilen kimliği nasıl kullanacağınızı öğrendiniz.  Azure Resource Manager hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
->[Azure Kaynak Yöneticisi](/azure/azure-resource-manager/resource-group-overview)
->[Azure PowerShell kullanarak kullanıcı tarafından atanan yönetilen bir kimlik oluşturun, listele veya silin](how-to-manage-ua-identity-powershell.md)
+>[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+>[Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](how-to-manage-ua-identity-powershell.md) Azure Resource Manager

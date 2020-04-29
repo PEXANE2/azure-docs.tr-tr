@@ -1,5 +1,5 @@
 ---
-title: Aynı abonelikteki bir depolama hesabındaki bir VHD dosyasından yönetilen bir disk oluşturma - CLI Sample
+title: Aynı abonelikte bir depolama hesabındaki VHD dosyasından yönetilen disk oluşturma-CLı örneği
 description: Azure CLI Betik Örneği - Aynı abonelikteki bir depolama hesabında VHD dosyasından yönetilen disk oluşturma
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,10 +16,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 7c6ecb41d90669cd874e28519d4c102d8f11d218
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460384"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>CLI kullanarak aynı abonelikteki bir depolama hesabında VHD dosyasından yönetilen disk oluşturma

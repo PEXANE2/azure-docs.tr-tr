@@ -1,146 +1,146 @@
 ---
 title: Kapsayıcı örnekleri için güvenlik
-description: Azure Kapsayıcı Örnekleri için görüntüleri ve sırları güvenli hale getirmek için öneriler ve herhangi bir kapsayıcı platformu için genel güvenlik konuları
+description: Azure Container Instances için güvenli görüntü ve gizli dizileri ve herhangi bir kapsayıcı platformu için genel güvenlik konularını korumanıza yönelik öneriler
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
 ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458003"
 ---
-# <a name="security-considerations-for-azure-container-instances"></a>Azure Kapsayıcı Örnekleri için güvenlik hususları
+# <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances için güvenlik konuları
 
-Bu makalede, kapsayıcı uygulamaları çalıştırmak için Azure Kapsayıcı Örnekleri kullanmak için güvenlik konuları tanıtıştır. Konu başlıkları şunlardır:
+Bu makalede, kapsayıcı uygulamalarını çalıştırmak için Azure Container Instances kullanmaya yönelik güvenlik konuları açıklanır. Konu başlıkları şunlardır:
 
 > [!div class="checklist"]
-> * Azure Kapsayıcı Örnekleri için görüntüleri ve sırları yönetmek için **güvenlik önerileri**
-> * Herhangi bir konteyner platformu için konteyner yaşam döngüsü boyunca **konteyner ekosistemi** için dikkat edilmesi gerekenler
+> * Azure Container Instances için görüntü ve gizli dizileri yönetmeye yönelik **güvenlik önerileri**
+> * Kapsayıcı platformu için kapsayıcı ekosisteminin her türlü kapsayıcı platformu için **dikkat edilmesi gerekenler**
 
-## <a name="security-recommendations-for-azure-container-instances"></a>Azure Kapsayıcı Örnekleri için güvenlik önerileri
+## <a name="security-recommendations-for-azure-container-instances"></a>Azure Container Instances için güvenlik önerileri
 
-### <a name="use-a-private-registry"></a>Özel kayıt defteri kullanma
+### <a name="use-a-private-registry"></a>Özel kayıt defteri kullan
 
-Kapsayıcı, bir veya daha fazla depoda depolanan görüntülerden oluşturulur. Bu depolar [Docker Hub](https://hub.docker.com)gibi bir genel kayıt defterine veya özel bir kayıt defterine ait olabilir. Özel bir kayıt defteri örneği olarak şirket içinde veya sanal özel bulutta kullanılabilen [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/) gösterilebilir. [Azure Kapsayıcı Kayıt Defteri](../container-registry/container-registry-intro.md)de dahil olmak üzere bulut tabanlı özel kapsayıcı kayıt defteri hizmetlerini de kullanabilirsiniz. 
+Kapsayıcı, bir veya daha fazla depoda depolanan görüntülerden oluşturulur. Bu depolar, [Docker Hub](https://hub.docker.com)veya özel bir kayıt defteri gibi genel bir kayıt defterine ait olabilir. Özel bir kayıt defteri örneği olarak şirket içinde veya sanal özel bulutta kullanılabilen [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/) gösterilebilir. Bulut tabanlı özel kapsayıcı kayıt defteri hizmetlerini de [Azure Container Registry](../container-registry/container-registry-intro.md)de kullanabilirsiniz. 
 
-Genel kullanıma açık bir kapsayıcı görüntüsü güvenliği garanti etmez. Kapsayıcı görüntüler birden çok yazılım katmanından oluşur ve her yazılım katmanında güvenlik açıkları olabilir. Saldırı tehdidini azaltmaya yardımcı olmak için, Azure Konteyner Kayıt Defteri veya Docker Trusted Registry gibi özel bir kayıt defterinden görüntüleri depolamalı ve almalısınız. Azure Kapsayıcı Kayıt Defteri, yönetilen bir özel kayıt defteri sağlamanın yanı sıra, temel kimlik doğrulama akışları için Azure Etkin Dizini aracılığıyla hizmet temel kimlik [doğrulamasını](../container-registry/container-registry-authentication.md) destekler. Bu kimlik doğrulaması, salt okunur (çekme), yazma (itme) ve diğer izinler için rol tabanlı erişimi içerir.
+Genel olarak kullanılabilir bir kapsayıcı görüntüsü güvenliği garanti etmez. Kapsayıcı görüntüleri birden çok yazılım katmanından oluşur ve her yazılım katmanında güvenlik açıkları olabilir. Saldırılara yönelik tehditleri azaltmaya yardımcı olmak için, Azure Container Registry veya Docker güvenilen kayıt defteri gibi özel bir kayıt defterinden görüntü depolamanız ve almanız gerekir. Azure Container Registry yönetilen özel bir kayıt defteri sağlamaya ek olarak, temel kimlik doğrulama akışları için Azure Active Directory aracılığıyla [hizmet sorumlusu tabanlı kimlik doğrulamasını](../container-registry/container-registry-authentication.md) destekler. Bu kimlik doğrulaması salt okuma (çekme), yazma (gönderme) ve diğer izinler için rol tabanlı erişimi içerir.
 
-### <a name="monitor-and-scan-container-images"></a>Konteyner görüntülerini izleme ve tarayıp taz
+### <a name="monitor-and-scan-container-images"></a>Kapsayıcı görüntülerini izleme ve tarama
 
-Özel bir kayıt defterindeki kapsayıcı görüntülerini tarayabilir ve olası güvenlik açıklarını belirlemek için çözümlerden yararlanın. Farklı çözümlerin sağladığı tehdit algılamanın derinliğini anlamak önemlidir.
+Özel bir kayıt defterinde kapsayıcı görüntülerini taramak ve olası güvenlik açıklarını belirlemek için çözümlerden yararlanın. Farklı çözümlerin sağladığı tehdit algılama derinliğini anlamak önemlidir.
 
-Örneğin, Azure Kapsayıcı Kayıt Defteri isteğe bağlı olarak [Azure Güvenlik Merkezi ile entegre edilip,](../security-center/azure-container-registry-integration.md) bir kayıt defterine itilen tüm Linux görüntülerini otomatik olarak tarar. Azure Güvenlik Merkezi'nin tümleşik Qualys tarayıcısı görüntü açıklarını algılar, sınıfa tanır ve düzeltme kılavuzu sağlar.
+Örneğin, Azure Container Registry bir kayıt defterine gönderilen tüm Linux görüntülerini otomatik olarak taramak için isteğe bağlı olarak [Azure Güvenlik Merkezi ile tümleşir](../security-center/azure-container-registry-integration.md) . Azure Güvenlik Merkezi 'nin tümleşik Qualys tarayıcısı, görüntü güvenlik açıklarını algılar, bunları sınıflandırır ve düzeltme kılavuzu sağlar.
 
-[Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) ve [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) gibi güvenlik izleme ve görüntü tarama çözümleri de Azure Marketi'nde kullanılabilir.  
+[Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) ve [deniz mavisi güvenlik](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) gibi güvenlik izleme ve görüntü tarama çözümleri de Azure Marketi aracılığıyla sunulmaktadır.  
 
 ### <a name="protect-credentials"></a>Kimlik bilgilerini koruma
 
-Kapsayıcılar çeşitli kümelere ve Azure bölgelerine yayılabilir. Bu nedenle, parolalar veya belirteçler gibi oturum açma veya API erişimi için gereken kimlik bilgilerini güvence altına almanız gerekir. Yalnızca ayrıcalıklı kullanıcıların bu kapsayıcılara geçiş sırasında ve istirahatte erişebilmesini sağlayın. Tüm kimlik bilgilerini envantere çıkarın ve ardından geliştiricilerin kapsayıcı platformlar için tasarlanmış yeni ortaya çıkan sırlar yönetimi araçlarını kullanmalarını gerektirir.  Çözümünüzde şifreli veritabanları, aktarımsırasındaki sırlar için TLS şifreleme ve en az ayrıcalıklı [rol tabanlı erişim denetimi](../role-based-access-control/overview.md)bulunduğundan emin olun. [Azure Key Vault,](../key-vault/general/secure-your-key-vault.md) kapsayıcı uygulamalar için şifreleme anahtarlarını ve sırlarını (sertifikalar, bağlantı dizeleri ve parolalar gibi) koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamaların ve kullanıcıların bunlara erişebilmeleri için anahtar kasalarınıza güvenli erişim.
+Kapsayıcılar, çeşitli kümeler ve Azure bölgelerine yayılabilir. Bu nedenle, oturum açma işlemleri veya parola veya belirteçler gibi API erişimi için gereken kimlik bilgilerini güvence altına almalısınız. Yalnızca ayrıcalıklı kullanıcıların, aktarımda ve geri kalanında bu kapsayıcılara erişebildiğinden emin olun. Tüm kimlik bilgisi gizli dizileri envanterini çıkarın ve geliştiricilerin kapsayıcı platformları için tasarlanan, gelişen gizli dizi yönetim araçlarını kullanmasını gerektirir.  Çözümünüz şifreli veritabanları, aktarım sırasında gizli veriler için TLS şifreleme ve en düşük ayrıcalıklı [rol tabanlı erişim denetimi](../role-based-access-control/overview.md)içerdiğinden emin olun. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) , Kapsayıcılı uygulamalar için şifreleme anahtarlarını ve gizli dizileri (sertifikalar, bağlantı dizeleri ve parolalar gibi) korumalarını sağlayan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamaların ve kullanıcıların erişebilmesi için anahtar kasalarınıza güvenli bir şekilde erişin.
 
-## <a name="considerations-for-the-container-ecosystem"></a>Konteyner ekosistemi için dikkat edilecek hususlar
+## <a name="considerations-for-the-container-ecosystem"></a>Kapsayıcı ekosistemi ile ilgili konular
 
-İyi uygulanan ve etkin bir şekilde yönetilen aşağıdaki güvenlik önlemleri, konteyner ekosisteminizi güvence altına almanıza ve korumanıza yardımcı olabilir. Bu önlemler, geliştirmeden üretim dağıtımına ve bir dizi konteyner orkestratör, ana bilgisayar ve platforma kadar konteyner yaşam döngüsü boyunca geçerlidir. 
+Uygun ve iyi şekilde uygulanan aşağıdaki güvenlik önlemleri, kapsayıcı ekosisteminizi güvenli hale getirmenize ve korumanıza yardımcı olabilir. Bu ölçüler, üretim dağıtımı aracılığıyla geliştirme aşamasından ve kapsayıcı yöneticileri, ana bilgisayarlar ve platformlar arasında, kapsayıcı yaşam döngüsü boyunca geçerlidir. 
 
-### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Konteyner geliştirme yaşam döngünüzün bir parçası olarak güvenlik açığı yönetimini kullanın 
+### <a name="use-vulnerability-management-as-part-of-your-container-development-lifecycle"></a>Kapsayıcı geliştirme yaşam döngüsünün bir parçası olarak güvenlik açığı yönetimi 'ni kullanın 
 
-Kapsayıcı geliştirme yaşam döngüsü boyunca etkili güvenlik açığı yönetimini kullanarak, daha ciddi bir sorun haline gelmeden önce güvenlik sorunlarını belirleme ve çözme olasılığınız artar. 
+Kapsayıcı geliştirme yaşam döngüsü boyunca geçerli güvenlik açığı yönetimini kullanarak, daha ciddi bir sorun haline gelmeden önce, güvenlik sorunlarını belirleyip çöztireceğiniz gürültü 'yi geliştirir. 
 
-### <a name="scan-for-vulnerabilities"></a>Güvenlik açıklarını taramaya 
+### <a name="scan-for-vulnerabilities"></a>Güvenlik açıklarını Tara 
 
-Her zaman yeni güvenlik açıkları keşfedilir, bu nedenle güvenlik açıklarını tarama ve tanımlama sürekli bir işlemdir. Kapsayıcı yaşam döngüsü boyunca güvenlik açığı taramasını birleştirin:
+Her zaman yeni güvenlik açıkları bulunur, bu nedenle güvenlik açıklarını taramak ve tanımlamak sürekli bir işlemdir. Kapsayıcı yaşam döngüsü boyunca güvenlik açığı taramasını dahil edin:
 
-* Geliştirme ardışık alanınızda son bir denetim olarak, görüntüleri genel veya özel bir kayıt defterine itmeden önce kapsayıcılarda bir güvenlik açığı tayini gerçekleştirmeniz gerekir. 
-* Hem geliştirme sırasında gözden kaçırılan kusurları belirlemek hem de kapsayıcı görüntülerinde kullanılan kodda bulunan yeni keşfedilen güvenlik açıklarını gidermek için kayıt defterindeki kapsayıcı görüntülerini taramaya devam edin.  
+* Geliştirme işlem hattınızda son bir denetim olarak, görüntüleri ortak veya özel bir kayıt defterine göndermeden önce kapsayıcılar üzerinde bir güvenlik açığı taraması gerçekleştirmeniz gerekir. 
+* Geliştirme sırasında bir şekilde kaçırılmış olan ve kapsayıcı görüntülerinde kullanılan kodda mevcut olabilecek yeni keşfedilen güvenlik açıklarını gidermeye yönelik tüm kusurlar belirlemek için kayıt defterindeki kapsayıcı görüntülerini taramaya devam edin.  
 
-### <a name="map-image-vulnerabilities-to-running-containers"></a>Çalışan kapsayıcılara görüntü açıklarını haritalamak 
+### <a name="map-image-vulnerabilities-to-running-containers"></a>Çalışan kapsayıcılarla harita görüntüsü güvenlik açıkları 
 
-Güvenlik sorunlarının azaltılaabilmesi veya çözülebilmeleri için kapsayıcı görüntülerinde tanımlanan güvenlik açıklarını çalıştıran kapsayıcılara eşleme aracı olmanız gerekir.  
+Kapsayıcıları çalıştırmak için kapsayıcı görüntülerinde tanımlanan güvenlik açıklarını eşleştirmenin bir yolu olması gerekir, bu nedenle güvenlik sorunları azaltılabilir veya çözülebilir.  
 
-### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Ortamınızda yalnızca onaylı görüntülerin kullanıldığından emin olun 
+### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>Ortamınızda yalnızca onaylanan görüntülerin kullanıldığından emin olun 
 
-Bilinmeyen konteynerlere izin vermeden bir konteyner ekosisteminde yeterli değişim ve değişkenlik vardır. Yalnızca onaylı kapsayıcı görüntülerine izin verin. Onaylanmamış kapsayıcı görüntülerinin kullanımını izlemek ve önlemek için araçlara ve işlemlere sahip olmak. 
+Bir kapsayıcı ekosisteminde, bilinmeyen kapsayıcılara da izin verilmeden yeterli sayıda değişiklik ve volajyer vardır. Yalnızca onaylanan kapsayıcı görüntülerine izin verin. İçin, onaylanmamış kapsayıcı görüntülerinin kullanımını izlemek ve bunları engellemek için araçlar ve süreçler vardır. 
 
-Saldırı yüzeyini azaltmanın ve geliştiricilerin kritik güvenlik hataları yapmasını önlemenin etkili bir yolu, konteyner görüntülerinin geliştirme ortamınıza akışını denetlemektir. Örneğin, olası saldırılar için yüzeyi en aza indirmek için tek bir Linux dağıtımını temel görüntü olarak, tercihen yalın (Ubuntu yerine Alp veya CoreOS) olarak onaylayabilirsiniz. 
+Saldırı yüzeyini azaltmanın etkili bir yolu ve geliştiricilerin kritik güvenlik hataları yapmasını önlemek, kapsayıcı görüntülerinin akışını geliştirme ortamınıza göre denetlemedir. Örneğin, olası saldırılara karşı yüzeyi en aza indirmek için, tercihen bir temel görüntü olarak tek bir Linux dağıtımını tasdik (Ubuntu yerine alp veya CoreOS) olarak düşünebilirsiniz. 
 
-Görüntü imzalama veya parmak izi, kapsayıcıların bütünlüğünü doğrulamanızı sağlayan bir gözetim zinciri sağlayabilir. Örneğin, Azure Kapsayıcı Kayıt Defteri, görüntü yayıncılarının bir kayıt defterine itilen görüntüleri imzalamasına ve tüketicilerin yalnızca imzalı görüntüleri çekmesine olanak tanıyan Docker'ın [içerik güven](https://docs.docker.com/engine/security/trust/content_trust) modelini destekler.
+Görüntü imzalama veya parmak izi, kapsayıcıların bütünlüğünü doğrulamanızı sağlayan bir gözetim zinciri sağlayabilir. Örneğin, Azure Container Registry Docker 'ın [içerik güven](https://docs.docker.com/engine/security/trust/content_trust) modelini destekler, bu da görüntü yayımcılarının bir kayıt defterine gönderilen görüntüleri imzalamasını ve görüntü tüketicilerini yalnızca imzalı görüntüleri çekmesini sağlar.
 
-### <a name="permit-only-approved-registries"></a>Yalnızca onaylı kayıt defterlerine izin verme 
+### <a name="permit-only-approved-registries"></a>Yalnızca onaylanan kayıt defterlerine izin ver 
 
-Ortamınızın yalnızca onaylı görüntüler kullanmasını sağlamanın bir uzantısı, yalnızca onaylı konteyner kayıtlarının kullanımına izin vermektir. Onaylı konteyner kayıtlarının kullanılması, bilinmeyen güvenlik açıklarının veya güvenlik sorunlarının ortaya çıkması potansiyelini sınırlayarak riske maruz kalmanızı azaltır. 
+Ortamınızın yalnızca onaylanmış görüntüleri kullandığından emin olmanın bir uzantısı, yalnızca onaylanan kapsayıcı kayıt defterlerinin kullanılmasına izin versağlamaktır. Onaylanan kapsayıcı kayıt defterlerinin kullanımını zorunlu kılmak, bilinmeyen güvenlik açıklarına veya güvenlik sorunlarından sorumlu olma olasılığını sınırlayarak riske maruz kalmayı azaltır. 
 
-### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Yaşam döngüsü boyunca görüntülerin bütünlüğünü sağlama 
+### <a name="ensure-the-integrity-of-images-throughout-the-lifecycle"></a>Yaşam döngüsü boyunca görüntülerin bütünlüğünden emin olun 
 
-Kapsayıcı yaşam döngüsü boyunca güvenliği yönetmenin bir parçası da, kayıt defterindeki kapsayıcı görüntülerinin bütünlüğünü sağlamak ve bunlar değiştirildikçe veya üretime dağıtılındığından emin olmaktır. 
+Kapsayıcı yaşam döngüsü boyunca güvenlik yönetiminin bir parçası, kayıt defterindeki kapsayıcı görüntülerinin bütünlüğünden ve bunlar tarafından değiştirildikleri veya üretimde dağıtıldığı şekilde sağlamaktır. 
 
-* Güvenlik açıkları olan görüntülerin, küçük de olsa, üretim ortamında çalışmasına izin verilmemelidir. İdeal olarak, üretimde dağıtılan tüm görüntüler, belirli birkaç kişi tarafından erişilebilen özel bir kayıt defterine kaydedilmelidir. Etkili bir şekilde yönetilebildiklerinden emin olmak için üretim görüntülerinin sayısını küçük tutun.
+* Küçük ve güvenlik açıklarına sahip görüntülerin bir üretim ortamında çalıştırılmasına izin verilmemelidir. İdeal olarak, üretimde dağıtılan tüm görüntülerin, bir seçimi birkaç kez erişilebilen özel bir kayıt defterine kaydedilmesi gerekir. Etkili bir şekilde yönetilebilmeleri için üretim görüntülerinin sayısını küçük tutun.
 
-* Yazılımın kaynağını genel olarak kullanılabilen bir kapsayıcı görüntüsünden saptamak zor olduğundan, katmanın kökeni hakkında bilgi sahibi olmak için kaynaktan görüntüler oluşturun. Kendi oluşturdukları bir kapsayıcı görüntüsünde bir güvenlik açığı olduğunda müşteriler çözüme daha hızlı ulaşabilir. Herkese açık bir görüntüyle, müşterilerin bunu düzeltmek veya yayımcıdan başka bir güvenli görüntü almak için herkese açık bir resmin kökünü bulmaları gerekir. 
+* Genel kullanıma açık bir kapsayıcı görüntüsünden yazılımın kaynağını belirlemek zor olduğundan, katmanın kaynağı bilgisini sağlamak için kaynaktan görüntü oluşturun. Kendi oluşturdukları bir kapsayıcı görüntüsünde bir güvenlik açığı olduğunda müşteriler çözüme daha hızlı ulaşabilir. Ortak bir görüntüyle, müşterilerin bu görüntüyü onarmak için ortak bir görüntünün kökünü bulması veya yayımcıdan başka bir güvenli görüntü alması gerekir. 
 
-* Üretimde dağıtılan tam olarak taranmış bir görüntünün uygulamanın kullanım ömrü boyunca güncel olacağı garanti edilmez. Görüntünün önceden bilinmeyen veya üretim dağıtımından sonra sunulan katmanlarında güvenlik açıkları bildirilebilir. 
+* Üretimde dağıtılan ve tamamen taranan bir görüntünün, uygulamanın kullanım ömrü için güncel olması garanti edilmez. Görüntünün önceden bilinmeyen veya üretim dağıtımından sonra sunulan katmanlarında güvenlik açıkları bildirilebilir. 
 
-  Güncel liğini yitirmiş veya bir süredir güncelleştirilemeyen görüntüleri belirlemek için üretimde dağıtılan görüntüleri düzenli olarak denetler. Kapsayıcı görüntüleri kapalı kalmadan güncelleştirmek için mavi-yeşil dağıtım yöntemlerini ve yuvarlanma yükseltme mekanizmalarını kullanabilirsiniz. Önceki bölümde açıklanan araçları kullanarak görüntüleri tyapabilirsiniz. 
+  Güncel olmayan veya bir süredir güncelleştirilmemiş resimleri belirlemek için üretimde dağıtılan görüntüleri düzenli olarak denetleyin. Kapalı kalma süresi olmadan kapsayıcı görüntülerini güncelleştirmek için mavi yeşil dağıtım yöntemleri ve sıralı yükseltme mekanizmaları kullanabilirsiniz. Önceki bölümde açıklanan araçları kullanarak görüntüleri tarayabilirsiniz. 
 
-* Güvenli görüntüler oluşturmak ve bunları özel kayıt defterinize itmek için entegre güvenlik taraması içeren sürekli bir tümleştirme (CI) ardışık hattı kullanın. CI çözümüne yerleşik güvenlik açığı taraması, tüm sınamaları geçen görüntülerin üretim iş yüklerinin dağıtıldığı özel kayıt defterine gönderilmesini sağlar. 
+* Güvenli görüntüler oluşturmak ve bunları özel kayıt defterinize göndermek için tümleşik güvenlik taramasıyla sürekli tümleştirme (CI) işlem hattı kullanın. CI çözümüne yerleşik güvenlik açığı taraması, tüm sınamaları geçen görüntülerin üretim iş yüklerinin dağıtıldığı özel kayıt defterine gönderilmesini sağlar. 
 
-  CI boru hattı hatası, güvenlik açığı olan görüntülerin üretim iş yükü dağıtımları için kullanılan özel kayıt defterine itilmemesini sağlar. Ayrıca, önemli sayıda görüntü varsa görüntü güvenliği taramaotomatikleştirir. Aksi durumda, görüntüleri güvenlik açıkları için el ile denetlemek çok zor olabileceği gibi hata riskini de artırır. 
+  CI ardışık düzen hatası, güvenlik açığı bulunan görüntülerin üretim iş yükü dağıtımları için kullanılan özel kayıt defterine itilmemesini sağlar. Ayrıca, önemli sayıda görüntü varsa görüntü güvenliği taramasını otomatikleştirir. Aksi durumda, görüntüleri güvenlik açıkları için el ile denetlemek çok zor olabileceği gibi hata riskini de artırır. 
 
 ### <a name="enforce-least-privileges-in-runtime"></a>Çalışma zamanında en az ayrıcalıkları zorla 
 
-En az ayrıcalık kavramı, kapsayıcılar için de geçerli olan temel bir güvenlik en iyi uygulamasıdır. Bir güvenlik açığından yararlanıldığında, genellikle saldırgana erişim ve gizliliği ihlal edilen uygulama veya işlemle eşit ayrıcalıklar sağlar. Kapsayıcıların en düşük ayrıcalıklarla çalışmasını ve işi halletmek için gereken erişimin riske maruz kalmanızı azaltır. 
+En az ayrıcalık kavramı, kapsayıcılar için de geçerli olan temel bir en iyi güvenlik uygulamasıdır. Bir güvenlik açığından yararlandığında, genellikle güvenliği aşılan uygulama veya işlemden birine eşit olan saldırgan erişimi ve ayrıcalıkları verir. Kapsayıcının, işin tamamlanması için gereken en düşük ayrıcalıklarla ve erişimlerle çalışmasını sağlamak, riske maruz kalmayı azaltır. 
 
-### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Gereksiz ayrıcalıkları kaldırarak konteyner saldırı yüzeyini azaltın 
+### <a name="reduce-the-container-attack-surface-by-removing-unneeded-privileges"></a>Gereksiz ayrıcalıkları kaldırarak kapsayıcı saldırısı yüzeyini azaltma 
 
-Ayrıca, kullanılmayan veya gereksiz işlemleri veya ayrıcalıkları kapsayıcı çalışma zamanından kaldırarak olası saldırı yüzeyini en aza indirebilirsiniz. Ayrıcalıklı kapsayıcılar kök olarak çalıştırın. Kötü amaçlı bir kullanıcı veya iş yükü ayrıcalıklı bir kapsayıcıda kaçarsa, kapsayıcı bu sistemde kök olarak çalışır.
+Ayrıca, kapsayıcı çalışma zamanından kullanılmayan veya gereksiz süreçler veya ayrıcalıklar kaldırarak olası saldırı yüzeyini en aza indirebilirsiniz. Ayrıcalıklı kapsayıcılar kök olarak çalışır. Kötü amaçlı bir kullanıcı veya iş yükü ayrıcalıklı bir kapsayıcıda çıkar, kapsayıcı o sistemde kök olarak çalıştırılır.
 
-### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Kapsayıcının erişmesine veya çalıştırmasına izin verilen dosyaları ve yürütülebilir leri önceden onaylama 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Kapsayıcının erişimine veya çalıştırmasına izin verilen dosya ve yürütülebilir dosyaları önceden onaylama 
 
-Değişken veya bilinmeyen sayısını azaltmak, istikrarlı ve güvenilir bir ortamı korumanıza yardımcı olur. Kapsayıcılara yalnızca önceden onaylanmış veya güvenli listelenmiş dosyalara ve yürütülebilir dosyalara erişebilmeleri veya çalıştırabilmeleri için sınırlama, riske maruzkalmanın sınırlandırılması için kanıtlanmış bir yöntemdir.  
+Değişken sayısının azaltılması veya bilinmeyenler, kararlı ve güvenilir bir ortamı korumanıza yardımcı olur. Kapsayıcıları yalnızca önceden onaylanmış veya güvenli bir şekilde listelenen dosyalara erişebilmeleri veya çalıştırmasına izin verecek şekilde sınırlandırma, risk düzeyini sınırlayan kanıtlanmış bir yöntemdir.  
 
-Bir güvenli listeyi en başından itibaren yönetmek çok daha kolaydır. Güvenli bir liste, uygulamanın düzgün çalışması için hangi dosyaların ve yürütülebilir lerin gerekli olduğunu öğrendikçe, denetim ve yönetilebilirlik ölçüsü sağlar. 
+Baştan uygulandığında SafeList yönetimi çok daha kolay. SafeList, uygulamanın düzgün çalışması için hangi dosya ve yürütülebilir dosyaların gerekli olduğunu öğrenecek şekilde denetim ve yönetilebilirlik ölçümü sağlar. 
 
-Bir safelist sadece saldırı yüzeyini azaltır ama aynı zamanda anomaliler için bir temel sağlayabilir ve "gürültülü komşu" ve konteyner koparma senaryoları kullanımını önlemek. 
+SafeList yalnızca saldırı yüzeyini azaltmaz, ancak aynı zamanda anomali için bir taban çizgisi sağlayabilir ve "gürültülü komşu" ve kapsayıcı ayırıcı senaryolarının kullanım örneklerinin oluşmasını önler. 
 
-### <a name="enforce-network-segmentation-on-running-containers"></a>Çalışan kapsayıcılarda ağ bölümlemesini zorlama  
+### <a name="enforce-network-segmentation-on-running-containers"></a>Çalışan kapsayıcılar üzerinde ağ segmentlemesini zorla  
 
-Bir alt ağdaki kapsayıcıları başka bir alt ağdaki güvenlik risklerinden korumaya yardımcı olmak için ağ bölümlemasını (veya nano segmentasyonunu) veya çalışan kapsayıcılar arasında ayrım yapmayı koruyun. Uyumluluk görevlerini yerine getirmek için gerekli olan endüstrilerde kapsayıcıları kullanmak için ağ bölümlemesi de gerekebilir.  
+Bir alt ağdaki kapsayıcıları başka bir alt ağdaki güvenlik risklerine karşı korumaya yardımcı olmak için ağ kesimlemesini (veya nano kesimlemeye) veya çalışan kapsayıcılar arasında ayırmayı koruyun. Ağ segmentlemesini sürdürmek, Ayrıca, uyumluluk mantarihlerini karşılamak için gereken sektörlerde kapsayıcılar kullanmak için de gerekli olabilir.  
 
-Örneğin, ortak araç [Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) nano-segmentasyon için otomatik bir yaklaşım sağlar. Aqua, konteyner ağ etkinliklerini çalışma zamanında izler. Diğer kapsayıcılara, hizmetlere, IP adreslerine ve genel internete gelen ve giden tüm ağ bağlantılarını tanımlar. Nano segmentasyon, izlenen trafiğe göre otomatik olarak oluşturulur. 
+Örneğin, partner aracı [deniz mavisi](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , nano kesimlemeye yönelik otomatik bir yaklaşım sağlar. Deniz mavisi, çalışma zamanında kapsayıcı ağ etkinliklerini izler. Diğer kapsayıcılardan, hizmetlerden, IP adreslerinden ve genel İnternet 'e giden tüm gelen ve giden ağ bağlantılarını tanımlar. Nano-segmentleme, izlenen trafiğe göre otomatik olarak oluşturulur. 
 
-### <a name="monitor-container-activity-and-user-access"></a>Kapsayıcı etkinliğini ve kullanıcı erişimini izleme 
+### <a name="monitor-container-activity-and-user-access"></a>Kapsayıcı etkinliğini ve Kullanıcı erişimini izleme 
 
-Herhangi bir BT ortamında olduğu gibi, şüpheli veya kötü amaçlı etkinlikleri hızlı bir şekilde tanımlamak için etkinliği ve konteyner ekosisteminize kullanıcı erişimini sürekli olarak izlemeniz gerekir. Azure, şunları içeren kapsayıcı izleme çözümleri sağlar:
+Her türlü BT ortamında olduğu gibi, tüm şüpheli veya kötü amaçlı etkinlikleri hızlı bir şekilde belirlemek için, kapsayıcı ekosisteminize düzenli olarak etkinlik ve Kullanıcı erişimi izlemeniz gerekir. Azure, aşağıdakiler dahil olmak üzere kapsayıcı izleme çözümleri sağlar:
 
-* [Kapsayıcılar için Azure Monitörü,](../azure-monitor/insights/container-insights-overview.md) Azure Kubernetes Hizmeti'nde (AKS) barındırılan Kubernetes ortamlarına dağıtılan iş yüklerinizin performansını izler. Kapsayıcılar için Azure Monitör, Ölçümler API'si aracılığıyla Kubernetes'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğü sağlar. 
+* [Kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) , Azure Kubernetes Service (aks) üzerinde barındırılan Kubernetes ortamlarına dağıtılan iş yüklerinizin performansını izler. Kapsayıcılar için Azure Izleyici, ölçüm API 'SI aracılığıyla Kubernetes 'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğüne sahip olmanızı sağlar. 
 
-* [Azure Kapsayıcı İzleme çözümü,](../azure-monitor/insights/containers.md) diğer Docker ve Windows kapsayıcı ana bilgisayarlarını tek bir konumda görüntülemenize ve yönetmenize yardımcı olur. Örneğin:
+* [Azure Kapsayıcı izleme çözümü](../azure-monitor/insights/containers.md) , diğer Docker ve Windows kapsayıcı konaklarının tek bir konumda görüntülemenize ve yönetilmesine yardımcı olur. Örneğin:
 
-  * Kapsayıcılarla birlikte kullanılan komutları gösteren ayrıntılı denetim bilgilerini görüntüleyin. 
-  * Docker veya Windows ana bilgisayarlarını uzaktan görüntülemek zorunda kalmadan merkezi günlükleri görüntüleyerek ve arayarak kapsayıcıları sorun giderin.  
-  * Gürültülü olabilecek kapsayıcıları bulun ve ana bilgisayarda fazla kaynakları tüketin.
-  * Kapsayıcılar için merkezi cpu, bellek, depolama ve ağ kullanımını ve performans bilgilerini görüntüleyin.  
+  * Kapsayıcılarla kullanılan komutları gösteren ayrıntılı denetim bilgilerini görüntüleyin. 
+  * Docker veya Windows konaklarını uzaktan görüntülemek zorunda kalmadan merkezi günlükleri görüntüleyip arayarak kapsayıcılarla ilgili sorunları giderin.  
+  * Gürültülü olabilecek ve bir konakta fazla kaynak tüketen kapsayıcılar bulun.
+  * Kapsayıcılar için merkezi CPU, bellek, depolama ve ağ kullanımını ve performans bilgilerini görüntüleyin.  
 
-  Çözüm, Docker Swarm, DC/OS, yönetilmeyen Kubernetes, Service Fabric ve Red Hat OpenShift gibi konteyner orkestratörlerini destekler. 
+  Çözüm, Docker Sısınma, DC/OS, yönetilmeyen Kubernetes, Service Fabric ve Red Hat OpenShift gibi kapsayıcı düzenleyicilerinin kullanılmasını destekler. 
 
 ### <a name="monitor-container-resource-activity"></a>Kapsayıcı kaynak etkinliğini izleme 
 
-Kapsayıcılarınızın eriştisi dosyalar, ağ ve diğer kaynaklar gibi kaynak etkinliğinizi izleyin. Kaynak etkinliğini ve tüketimini izlemek hem performans izleme hem de güvenlik önlemi olarak yararlıdır. 
+Dosyalar, ağ ve kapsayıcılarınızın erişebileceği diğer kaynaklar gibi kaynak etkinliğinizi izleyin. İzleme kaynak etkinliği ve tüketimi, hem performans izleme hem de güvenlik önlemi olarak faydalıdır. 
 
-[Azure Monitor,](../azure-monitor/overview.md) ölçümlerin, etkinlik günlüklerinin ve tanılama günlüklerinin toplanmasına izin vererek Azure hizmetleri için temel izleme sağlar. Örneğin, etkinlik günlüğü size yeni kaynakların ne zaman oluşturulduğunu veya değiştirildiğini bildirir. 
+[Azure izleyici](../azure-monitor/overview.md) , ölçümler, etkinlik günlükleri ve tanılama günlükleri koleksiyonuna Izin vererek Azure hizmetleri için çekirdek izlemeye olanak tanır. Örneğin, etkinlik günlüğü size yeni kaynakların ne zaman oluşturulduğunu veya değiştirildiğini bildirir. 
 
   Farklı kaynaklar için ve hatta bir sanal makinenin içindeki işletim sistemi için bile performans istatistikleri sağlayan ölçümler kullanılabilir. Azure portalında gezginlerden biriyle bu verileri görüntüleyebilir ve bu ölçümlere dayalı uyarılar oluşturabilirsiniz. Azure İzleyici, en hızlı ölçüm işlem hattını (5 dakika ila 1 dakika arasında) sağlar, bu nedenle zaman açısından kritik uyarılar ve bildirimler için bunu kullanmalısınız. 
 
-### <a name="log-all-container-administrative-user-access-for-auditing"></a>Denetim için tüm konteyner yönetim kullanıcı erişimini günlüğe kaydetme 
+### <a name="log-all-container-administrative-user-access-for-auditing"></a>Denetim için tüm kapsayıcı Yönetici Kullanıcı erişimini günlüğe kaydet 
 
-Kubernetes kümeniz, konteyner kayıt defteriniz ve konteyner görüntüleriniz de dahil olmak üzere konteyner ekosisteminize yönetime erişimin doğru bir denetim izini koruyun. Bu günlükler denetim amaçları için gerekli olabilir ve herhangi bir güvenlik olayından sonra adli kanıt olarak yararlı olacaktır. Azure çözümleri şunları içerir:
+Kubernetes kümeniz, kapsayıcı kayıt defteriniz ve kapsayıcı görüntüleriniz dahil olmak üzere kapsayıcı ekosisteminize yönetim erişiminin doğru bir denetim izini saklayın. Bu Günlükler, denetim amaçlarıyla gerekli olabilir ve herhangi bir güvenlik olayından sonra Forli kanıt olarak yararlı olacaktır. Azure çözümleri şunları içerir:
 
-* Küme ortamının güvenlik yapılandırmasını izlemek ve güvenlik önerileri oluşturmak için [Azure Kubernetes Hizmetinin Azure Güvenlik Merkezi ile tümleştirilmesi](../security-center/azure-kubernetes-service-integration.md)
-* [Azure Kapsayıcı İzleme çözümü](../azure-monitor/insights/containers.md)
-* Azure Kapsayıcı Örnekleri ve [Azure Kapsayıcı Kayıt Defteri](../container-registry/container-registry-diagnostics-audit-logs.md) için kaynak [günlükleri](container-instances-log-analytics.md)
+* Azure [Kubernetes Service 'In Azure Güvenlik Merkezi Ile tümleştirilmesi](../security-center/azure-kubernetes-service-integration.md) , küme ortamının güvenlik yapılandırmasını izlemek ve güvenlik önerileri oluşturmak için
+* [Azure Kapsayıcı Izleme çözümü](../azure-monitor/insights/containers.md)
+* [Azure Container Instances](container-instances-log-analytics.md) ve [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) için kaynak günlükleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Güvenlik [Merkezi'ni](../security-center/container-security.md) konteyner ortamlarınızda gerçek zamanlı tehdit algılama için kullanma hakkında daha fazla bilgi edinin.
+* Kapsayıcılı ortamlarınızda gerçek zamanlı tehdit algılama için [Azure Güvenlik Merkezi](../security-center/container-security.md) 'ni kullanma hakkında daha fazla bilgi edinin.
 
-* [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) ve [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/)çözümleriyle konteyner güvenlik açıklarını yönetme hakkında daha fazla bilgi edinin.
+* [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) ve [deniz mavisi güvenlik](https://www.aquasec.com/solutions/azure-container-security/)çözümleriyle kapsayıcı güvenlik açıklarını yönetme hakkında daha fazla bilgi edinin.

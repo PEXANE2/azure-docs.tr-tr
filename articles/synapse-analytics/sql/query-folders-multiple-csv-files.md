@@ -1,6 +1,6 @@
 ---
-title: SQL isteğe bağlı (önizleme) kullanarak sorgu klasörleri ve birden çok CSV dosyası
-description: SQL isteğe bağlı (önizleme), Windows OS'de kullanılan joker karakterlere benzer joker karakterler kullanarak birden çok dosya/klasör okumayı destekler.
+title: İsteğe bağlı SQL (Önizleme) kullanarak sorgu klasörleri ve birden çok CSV dosyası
+description: İsteğe bağlı SQL (Önizleme), Windows işletim sisteminde kullanılan Joker karakterlere benzer bir joker karakter kullanarak birden çok dosya/klasör okumayı destekler.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,46 +10,46 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457374"
 ---
 # <a name="query-folders-and-multiple-csv-files"></a>Sorgu klasörleri ve birden çok CSV dosyası  
 
-Bu makalede, Azure Synapse Analytics'te isteğe bağlı SQL (önizleme) kullanarak sorgu yazmayı öğreneceksiniz.
+Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz.
 
-İsteğe bağlı SQL, Windows OS'de kullanılan joker karakterlere benzer joker karakterler kullanarak birden çok dosya/klasör okumayı destekler. Ancak, birden fazla joker karaktere izin verildiği için daha fazla esneklik mevcuttur.
+İsteğe bağlı SQL, Windows işletim sisteminde kullanılan Joker karakterlere benzer bir joker karakter kullanarak birden çok dosya/klasörü okumayı destekler. Ancak, birden çok Joker karakterlere izin verildiğinden daha fazla esneklik mevcuttur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalenin geri kalanını okumadan önce, aşağıda listelenen makaleleri gözden geçirmek için emin olun:
+Bu makalenin geri kalanını okumadan önce, aşağıda listelenen makaleleri gözden geçirdiğinizden emin olun:
 
 - [İlk kez kurulum](query-data-storage.md#first-time-setup)
 - [Ön koşullar](query-data-storage.md#prerequisites)
 
-## <a name="read-multiple-files-in-folder"></a>Klasörde birden çok dosya okuma
+## <a name="read-multiple-files-in-folder"></a>Klasördeki birden çok dosyayı oku
 
-Örnek sorguları takip etmek için *csv/taxi* klasörünü kullanırsınız. Temmuz 2016 ile Haziran 2018 arasında NYC Taxi - Yellow Taxi Trip Records verilerini içerir.
+Örnek sorguları izlemek için *CSV/Taxi* klasörünü kullanacaksınız. Bu, NYC Taxi-sarı TAXI 'yi içerir 2016 Temmuz 'dan 2018 Haziran 'a kadar verileri kaydeder.
 
-*CSV/taksi deki* dosyalar anın adı ve yıl:
+*CSV/TAXI* 'deki dosyalar yıl ve ay sonra adlandırılır:
 
-- yellow_tripdata_2016-07.csv
-- yellow_tripdata_2016-08.csv
-- yellow_tripdata_2016-09.csv
+- yellow_tripdata_2016 -07. csv
+- yellow_tripdata_2016 -08. csv
+- yellow_tripdata_2016 -09. csv
 - ...
-- yellow_tripdata_2018-04.csv
-- yellow_tripdata_2018-05.csv
-- yellow_tripdata_2018-06.csv
+- yellow_tripdata_2018 -04. csv
+- yellow_tripdata_2018 -05. csv
+- yellow_tripdata_2018 -06. csv
 
-Her dosyaaşağıdaki yapıya sahiptir:
+Her dosya aşağıdaki yapıya sahiptir:
         
     [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
 
-## <a name="read-all-files-in-folder"></a>Klasördeki tüm dosyaları okuyun
+## <a name="read-all-files-in-folder"></a>Klasördeki tüm dosyaları oku
     
-Aşağıdaki örnek, *csv/taksi* klasöründeki tüm NYC Sarı Taksi veri dosyalarını okur ve yılda toplam yolcu ve biniş sayısını döndürür. Ayrıca toplu işlevlerin kullanımını gösterir.
+Aşağıdaki örnek, *CSV/TAXI* klasöründeki tüm NYC sarı TAXI veri dosyalarını okur ve yıl boyunca toplam pasger ve bayıldığı sayısını döndürür. Ayrıca toplam işlevlerin kullanımını gösterir.
 
 ```sql
 SELECT 
@@ -87,11 +87,11 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Tek OPENROWSET ile erişilen tüm dosyaların aynı yapıya (yani sütun sayısı ve veri türleri) sahip olması gerekir.
+> Tek OPENROWSET ile erişilen tüm dosyalar aynı yapıya sahip olmalıdır (yani, sütun sayısı ve veri türleri).
 
-### <a name="read-subset-of-files-in-folder"></a>Klasördeki dosyaların alt kümesini okuma
+### <a name="read-subset-of-files-in-folder"></a>Klasördeki dosyaların alt kümesini oku
 
-Aşağıdaki örnek, *csv/taksi* klasöründeki 2017 NYC Yellow Taxi veri dosyalarını joker karakter kullanarak okur ve ödeme türü başına toplam ücret tutarını döndürür.
+Aşağıdaki örnek, *CSV/TAXI* klasöründeki 2017 NYC sarı TAXI veri dosyalarını bir joker karakter kullanarak okur ve her ödeme türü için toplam tarifeli havayolu tutarını döndürür.
 
 ```sql
 SELECT 
@@ -126,20 +126,20 @@ ORDER BY payment_type;
 ```
 
 > [!NOTE]
-> Tek OPENROWSET ile erişilen tüm dosyaların aynı yapıya (yani sütun sayısı ve veri türleri) sahip olması gerekir.
+> Tek OPENROWSET ile erişilen tüm dosyalar aynı yapıya sahip olmalıdır (yani, sütun sayısı ve veri türleri).
 
-## <a name="read-folders"></a>Klasörleri okuma
+## <a name="read-folders"></a>Klasörleri oku
 
-OPENROWSET'e sağladığınız yol da bir klasöre giden bir yol olabilir. Aşağıdaki bölümlerde bu sorgu türleri yer almaktadır.
+OPENROWSET 'e sağladığınız yol, bir klasörün yolu da olabilir. Aşağıdaki bölümler bu sorgu türlerini içerir.
 
-### <a name="read-all-files-from-specific-folder"></a>Belirli klasördeki tüm dosyaları okuma
+### <a name="read-all-files-from-specific-folder"></a>Belirli bir klasördeki tüm dosyaları oku
 
-Dosya düzeyinde joker kullanarak bir klasördeki tüm dosyaları okuyabilirsiniz [klasördeki tüm dosyaları okuyun.](#read-all-files-in-folder) Ancak, bir klasörü sorgulamanın ve bu klasördeki tüm dosyaları kullanmanın bir yolu vardır.
+Dosya düzeyi joker karakterini kullanarak bir klasördeki tüm dosyaları, [klasördeki tüm dosyaları oku](#read-all-files-in-folder)bölümünde gösterildiği gibi okuyabilirsiniz. Ancak, bir klasörü sorgulamak ve bu klasördeki tüm dosyaları kullanmak için bir yol vardır.
 
-OPENROWSET'te sağlanan yol bir klasöre işaret ederse, bu klasördeki tüm dosyalar sorgunuz için kaynak olarak kullanılır. Aşağıdaki sorgu *csv/taksi* klasöründeki tüm dosyaları okuyacaktır.
+OPENROWSET içinde belirtilen yol bir klasöre işaret ediyorsa, bu klasördeki tüm dosyalar sorgunuz için kaynak olarak kullanılır. Aşağıdaki sorgu *CSV/TAXI* klasöründeki tüm dosyaları okuyacaktır.
 
 > [!NOTE]
-> Aşağıdaki sorguda yolun sonunda / varlığını unutmayın. Bir klasörü gösterir. / atlanırsa, sorgu yerine *taksi* adlı bir dosyayı hedefa alacak.
+> Aşağıdaki sorgudaki yolun sonundaki/sonunda yer almadığına göz önüne alın. Bir klasörü gösterir. /Belirtilmemişse, sorgu bunun yerine *TAXI* adlı bir dosyayı hedefleyecek.
 
 ```sql
 SELECT
@@ -177,14 +177,14 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Tek OPENROWSET ile erişilen tüm dosyaların aynı yapıya (yani sütun sayısı ve veri türleri) sahip olması gerekir.
+> Tek OPENROWSET ile erişilen tüm dosyalar aynı yapıya sahip olmalıdır (yani, sütun sayısı ve veri türleri).
 
-### <a name="read-all-files-from-multiple-folders"></a>Birden çok klasördeki tüm dosyaları okuma
+### <a name="read-all-files-from-multiple-folders"></a>Birden çok klasörden tüm dosyaları okuma
 
-Joker karakter kullanarak birden çok klasördeki dosyaları okumak mümkündür. Aşağıdaki sorgu, *csv* klasöründe bulunan ve *t* ile başlayan ve *i*ile biten adlara sahip tüm klasörlerdeki tüm dosyaları okuyacaktır.
+Joker karakter kullanarak birden çok klasörden dosya okumak mümkündür. Aşağıdaki sorgu, *t* ile başlayan ve *i*ile biten adlara sahip *CSV* klasöründe bulunan tüm klasörlerdeki tüm dosyaları okur.
 
 > [!NOTE]
-> Aşağıdaki sorguda yolun sonunda / varlığını unutmayın. Bir klasörü gösterir. / atlanırsa, sorgu yerine *t&ast;i* adlı dosyaları hedefa salar.
+> Aşağıdaki sorgudaki yolun sonundaki/sonunda yer almadığına göz önüne alın. Bir klasörü gösterir. /Belirtilmemişse, sorgu *t&ast;ı* adlı dosyaları hedefleyecek.
 
 ```sql
 SELECT
@@ -222,17 +222,17 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Tek OPENROWSET ile erişilen tüm dosyaların aynı yapıya (yani sütun sayısı ve veri türleri) sahip olması gerekir.
+> Tek OPENROWSET ile erişilen tüm dosyalar aynı yapıya sahip olmalıdır (yani, sütun sayısı ve veri türleri).
 
-Ölçütlere uyan tek bir klasörünüz olduğundan, sorgu sonucu [klasördeki tüm dosyaları oku](#read-all-files-in-folder)ile aynıdır.
+Ölçütlerle eşleşen yalnızca bir klasörünüz olduğundan, sorgu sonucu [klasördeki tüm dosyaları okuma](#read-all-files-in-folder)ile aynıdır.
 
-## <a name="multiple-wildcards"></a>Birden fazla joker karakter
+## <a name="multiple-wildcards"></a>Birden çok joker karakter
 
-Farklı yol düzeylerinde birden çok joker karakter kullanabilirsiniz. Örneğin, önceki sorguları yalnızca 2017 verileriyle dosyaları okumak için, adların *t* ile başlayıp *i*ile biten tüm klasörlerinden zenginleştirebilirsiniz.
+Farklı yol düzeylerinde birden çok joker karakter kullanabilirsiniz. Örneğin, yalnızca 2017 veri içeren dosyaları okumak için bir önceki sorguyu zenginleştirebilirsiniz. bu adların *t* ile başlayan ve *i*ile biten tüm klasörlerden.
 
 > [!NOTE]
-> Aşağıdaki sorguda yolun sonunda / varlığını unutmayın. Bir klasörü gösterir. / atlanırsa, sorgu yerine *t&ast;i* adlı dosyaları hedefa salar.
-> Sorgu başına en fazla 10 joker karakter sınırı vardır.
+> Aşağıdaki sorgudaki yolun sonundaki/sonunda yer almadığına göz önüne alın. Bir klasörü gösterir. /Belirtilmemişse, sorgu *t&ast;ı* adlı dosyaları hedefleyecek.
+> Sorgu başına en fazla 10 joker sınır vardır.
 
 ```sql
 SELECT
@@ -270,10 +270,10 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Tek OPENROWSET ile erişilen tüm dosyaların aynı yapıya (yani sütun sayısı ve veri türleri) sahip olması gerekir.
+> Tek OPENROWSET ile erişilen tüm dosyalar aynı yapıya sahip olmalıdır (yani, sütun sayısı ve veri türleri).
 
-Ölçütlere uyan tek bir klasörünüz olduğundan, sorgu sonucu [klasördeki dosyaların alt kümesini okuma](#read-subset-of-files-in-folder) ve [belirli klasördeki tüm dosyaları okuyun.](#read-all-files-from-specific-folder) Daha karmaşık joker kullanım senaryoları [Sorgu Parke dosyalarında ele alınmıştır.](query-parquet-files.md)
+Ölçütlere uyan yalnızca bir klasörünüz olduğundan, sorgu sonucu, [klasördeki dosyaların okuma alt kümesiyle](#read-subset-of-files-in-folder) aynıdır ve [belirli bir klasördeki tüm dosyaları okur](#read-all-files-from-specific-folder). [Sorgu Parquet dosyalarında](query-parquet-files.md)daha karmaşık joker karakter kullanım senaryoları ele alınmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorgu [belirli dosyalar](query-specific-files.md) makalesinde daha fazla bilgi bulunabilir.
+Daha fazla bilgi, [belirli dosyaları sorgula](query-specific-files.md) makalesinde bulunabilir.

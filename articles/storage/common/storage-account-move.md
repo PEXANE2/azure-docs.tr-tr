@@ -1,6 +1,6 @@
 ---
-title: Azure Depolama hesabını başka bir bölgeye taşıma | Microsoft Dokümanlar
-description: Azure Depolama hesabını başka bir bölgeye nasıl taşıyabileceğinizi gösterir.
+title: Bir Azure Depolama hesabını başka bir bölgeye taşıma | Microsoft Docs
+description: Bir Azure Depolama hesabını başka bir bölgeye nasıl taşıyabileceğinizi gösterir.
 services: storage
 author: normesta
 ms.service: storage
@@ -10,21 +10,21 @@ ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459041"
 ---
-# <a name="move-an-azure-storage-account-to-another-region"></a>Azure Depolama hesabını başka bir bölgeye taşıma
+# <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
-Depolama hesabını taşımak için, başka bir bölgedeki depolama hesabınızın bir kopyasını oluşturun. Ardından, AzCopy'yi veya seçtiğiniz başka bir aracı kullanarak verilerinizi bu hesaba taşıyın.
+Bir depolama hesabını taşımak için, başka bir bölgede depolama hesabınızın bir kopyasını oluşturun. Daha sonra, AzCopy veya seçtiğiniz başka bir aracı kullanarak verilerinizi bu hesaba taşıyın.
 
-Bu makalede, nasıl öğreneceksiniz:
+Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
 > 
-> * Şablon uy.
+> * Bir şablonu dışarı aktarın.
 > * Hedef bölge ve depolama hesabı adını ekleyerek şablonu değiştirin.
 > * Yeni depolama hesabı oluşturmak için şablonu dağıtın.
 > * Yeni depolama hesabını yapılandırın.
@@ -33,53 +33,53 @@ Bu makalede, nasıl öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendirilmesini sağlayın.
+- Hesabınızın kullandığı hizmet ve özelliklerin hedef bölgede desteklendiğinden emin olun.
 
-- Önizleme özellikleri için, aboneliğinizin hedef bölge için beyaz listeye alındığından emin olun.
+- Önizleme özellikleri için, aboneliğinizin hedef bölge için beyaz listeye kaydedildiğinden emin olun.
 
 <a id="prepare" />
 
 ## <a name="prepare"></a>Hazırlama
 
-Başlamak için kaynak yöneticisi şablonu dışa aktarın ve sonra değiştirin. 
+Başlamak için Kaynak Yöneticisi şablonu dışarı aktarın ve değiştirin. 
 
 ### <a name="export-a-template"></a>Şablonu dışarı aktar
 
-Bu şablon, depolama hesabınızı açıklayan ayarlar içerir. 
+Bu şablon, depolama hesabınızı tanımlayan ayarları içerir. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portalını kullanarak şablon uyguluyor:
+Azure portal kullanarak bir şablonu dışarı aktarmak için:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. **Tüm kaynakları** seçin ve ardından depolama hesabınızı seçin.
+2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
-3. **Ayarlar** > **> Verme şablonunu**seçin.
+3. > **ayarları** > **dışarı aktarma şablonu**' nu seçin.
 
-4. **Dışa Aktarma şablonu** bıçaklarında **İndir'i** seçin.
+4. **Şablonu dışarı aktar** dikey penceresinde **İndir** ' i seçin.
 
-5. Portaldan indirdiğiniz .zip dosyasını bulun ve dosyayı istediğiniz klasöre çekin.
+5. Portaldan indirdiğiniz. zip dosyasını bulun ve bu dosyayı seçtiğiniz bir klasöre ayıklayın.
 
-   Bu zip dosyası şablonu dağıtmak için şablon ve komut dosyalarını oluşturan .json dosyalarını içerir.
+   Bu ZIP dosyası, şablonu dağıtmak için şablon ve betikleri oluşturan. JSON dosyalarını içerir.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell kullanarak bir şablon dışa aktarmak için:
+Bir şablonu PowerShell kullanarak dışarı aktarmak için:
 
 1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
 
    ```azurepowershell-interactive
    Connect-AzAccount
    ```
-2. Kimliğiniz birden fazla abonelikle ilişkiliyse, etkin aboneliğinizi taşımak istediğiniz depolama hesabıaboneliğine ayarlayın.
+2. Kimliğiniz birden fazla abonelikle ilişkiliyse, etkin aboneliğinizi taşımak istediğiniz depolama hesabının aboneliğine ayarlayın.
 
    ```azurepowershell-interactive
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
    Set-AzContext $context
    ```
 
-3. Kaynak depolama hesabınızın şablonunu dışa aktarın. Bu komutlar geçerli dizininize bir json şablonu kaydeder.
+3. Kaynak depolama hesabınızın şablonunu dışarı aktarın. Bu komutlar geçerli dizininize bir JSON şablonu kaydeder.
 
    ```azurepowershell-interactive
    $resource = Get-AzResource `
@@ -99,7 +99,7 @@ Depolama hesabı adını ve bölgesini değiştirerek şablonu değiştirin.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portalını kullanarak şablonu dağıtmak için:
+Azure portal kullanarak şablonu dağıtmak için:
 
 1. Azure portalda **Kaynak oluştur**’u seçin.
 
@@ -113,9 +113,9 @@ Azure portalını kullanarak şablonu dağıtmak için:
 
 5. **Düzenleyicide kendi şablonunuzu oluşturun**'u seçin.
 
-6. **Dosyayı Yükle'yi**seçin ve ardından son bölümde indirdiğiniz **template.json** dosyasını yüklemek için yönergeleri izleyin.
+6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz **Template. JSON** dosyasını yüklemek için yönergeleri izleyin.
 
-7. **template.json** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan `mytargetaccount`değerini .
+7. **Template. JSON** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak `mytargetaccount`ayarlar.
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -137,13 +137,13 @@ Azure portalını kullanarak şablonu dağıtmak için:
          "location": "centralus"
          }]          
     ```
-    Bölge konum kodları edinmek için [Azure Konumları'na](https://azure.microsoft.com/global-infrastructure/locations/)bakın.  Bir bölgenin kodu boşluksuz bölge adıdır, **Orta ABD** = **centralus.**
+    Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell'i kullanarak şablonu dağıtmak için:
+PowerShell kullanarak şablonu dağıtmak için:
 
-1. **template.json** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan `mytargetaccount`değerini .
+1. **Template. JSON** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak `mytargetaccount`ayarlar.
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ PowerShell'i kullanarak şablonu dağıtmak için:
     },
     ``` 
 
-2. **template.json** dosyasındaki **konum** özelliğini hedef bölgeye edin. Bu örnek, hedef `eastus`bölgeyi .
+2. **Template. JSON** dosyasındaki **Location** özelliğini hedef bölgeye düzenleyin. Bu örnek, hedef bölgeyi olarak `eastus`ayarlar.
 
     ```json
     "resources": [{
@@ -167,7 +167,7 @@ PowerShell'i kullanarak şablonu dağıtmak için:
          }]          
     ```
 
-    [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) komutunu çalıştırarak bölge kodları alabilirsiniz.
+    [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) komutunu çalıştırarak bölge kodlarını elde edebilirsiniz.
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -182,27 +182,27 @@ Hedef bölgede yeni bir depolama hesabı oluşturmak için şablonu dağıtın.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. **template.json** dosyasını kaydedin.
+1. **Template. JSON** dosyasını kaydedin.
 
 2. Özellik değerlerini girin veya seçin:
 
-- **Abonelik**: Azure aboneliği seçin.
+- **Abonelik**: bir Azure aboneliği seçin.
 
 - **Kaynak grubu**: **Yeni Oluştur**'u seçin ve kaynak grubuna bir ad verin.
 
-- **Konum**: Azure konumu seçin.
+- **Konum**: bir Azure konumu seçin.
 
-3. Onay **kutusunun üzerinde belirtilen hüküm ve koşulları kabul** ediyorum ve ardından Satın Al düğmesini **seç** düğmesini tıklatın.
+3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** onay kutusuna tıklayın ve ardından **satın al düğmesini seçin** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)ile hedef genel IP dağıtmak istediğiniz abonelik kimliği edinin:
+1. [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)ile hedef genel IP 'yi dağıtmak ISTEDIĞINIZ abonelik kimliğini edinin:
 
    ```azurepowershell-interactive
    Get-AzSubscription
    ```
 
-2. Şablonunuzu dağıtmak için bu komutları kullanın:
+2. Şablonunuzu dağıtmak için şu komutları kullanın:
 
    ```azurepowershell-interactive
    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -215,68 +215,68 @@ Hedef bölgede yeni bir depolama hesabı oluşturmak için şablonu dağıtın.
 
 ### <a name="configure-the-new-storage-account"></a>Yeni depolama hesabını yapılandırma
 
-Bazı özellikler şablona dışa aktarmaz, bu nedenle bunları yeni depolama hesabına eklemeniz gerekir. 
+Bazı özellikler bir şablona aktarmayacaktır, bu nedenle bunları yeni depolama hesabına eklemeniz gerekecektir. 
 
-Aşağıdaki tabloda bu özelliklerin yanı sıra yeni depolama hesabınıza ekleme kılavuzu listeleneb.red.
+Aşağıdaki tablo, bu özellikleri yeni depolama hesabınıza ekleme kılavuzlarıyla birlikte listelemektedir.
 
 | Özellik    | Rehber    |
 |--------|-----------|
-| **Yaşam döngüsü yönetimi politikaları** | [Azure Blob depolama yaşam döngüsünü yönetme](../blobs/storage-lifecycle-management-concepts.md) |
-| **Statik web siteleri** | [Azure Depolama'da statik bir web sitesi barındırma](../blobs/storage-blob-static-website-how-to.md) |
-| **Etkinlik abonelikleri** | [Blob depolama olaylarına yanıt verme](../blobs/storage-blob-event-overview.md) |
-| **Uyarılar** | [Azure Monitör'ü kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-activity-log.md) |
-| **İçerik Dağıtım Ağı (CDN)** | [HTTPS üzerinden özel etki alanları olan blob'lara erişmek için Azure CDN'yi kullanın](../blobs/storage-https-custom-domain-cdn.md) |
+| **Yaşam döngüsü yönetim ilkeleri** | [Azure Blob depolama yaşam döngüsünü yönetme](../blobs/storage-lifecycle-management-concepts.md) |
+| **Statik web siteleri** | [Azure depolama 'da statik bir Web sitesi barındırma](../blobs/storage-blob-static-website-how-to.md) |
+| **Olay abonelikleri** | [Blob depolama olaylarına yanıt verme](../blobs/storage-blob-event-overview.md) |
+| **Uyarılar** | [Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-activity-log.md) |
+| **Content Delivery Network (CDN)** | [HTTPS üzerinden özel etki alanlarıyla bloblara erişmek için Azure CDN kullanma](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
-> Kaynak depolama hesabı için bir CDN ayarlarsanız, mevcut CDN'nizin kaynağını yeni hesabınızın birincil blob hizmeti bitiş noktası (veya birincil statik web sitesi bitiş noktası) olarak değiştirmeniz gerekir. 
+> Kaynak depolama hesabı için bir CDN ayarlarsanız, mevcut CDN 'nizin kaynağını yeni hesabınızın birincil blob hizmeti uç noktası (veya birincil statik Web sitesi uç noktası) olarak değiştirmeniz yeterlidir. 
 
-### <a name="move-data-to-the-new-storage-account"></a>Verileri yeni depolama hesabına taşıma
+### <a name="move-data-to-the-new-storage-account"></a>Verileri yeni depolama hesabına taşı
 
-Verilerinizi taşımanın bazı yolları aşağıda verebebilirsiniz.
+Verilerinizi üzerine taşımanın bazı yolları aşağıda verilmiştir.
 
-:heavy_check_mark: **Azure Depolama Gezgini**
+: heavy_check_mark: **Azure Depolama Gezgini**
 
-  Kullanımı kolay ve küçük veri kümeleri için uygundur. Kapsayıcıları kopyalayabilir ve paylaşımları dosyalayabilir ve ardından hedef hesaba yapıştırabilirsiniz.
+  Kullanımı kolay ve küçük veri kümeleri için uygundur. Kapsayıcıları ve dosya paylaşımlarını kopyalayabilir ve sonra bunları hedef hesaba yapıştırabilirsiniz.
 
   Bkz. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/);
 
-:heavy_check_mark: **AzCopy**
+: heavy_check_mark: **AzCopy**
 
-  Bu tercih edilen bir yaklaşımdır. Performans için optimize edilmiş.  Daha hızlı olmasının bir yolu, verilerin doğrudan depolama sunucuları arasında kopyalanmasıdır, böylece AzCopy bilgisayarınızın ağ bant genişliğini kullanmaz. Komut satırında veya özel bir komut dosyasının parçası olarak AzCopy'yi kullanın.
+  Bu tercih edilen yaklaşımdır. Performans için en iyi duruma getirilmiştir.  Daha hızlı bir şekilde, verilerin doğrudan depolama sunucuları arasında kopyalandığı, AzCopy 'in bilgisayarınızın ağ bant genişliğini kullanmadığı bir yoldur. Komut satırında veya özel bir betiğin parçası olarak AzCopy kullanın.
 
-  Bkz. [AzCopy ile başlayın](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+  Bkz. [AzCopy ile çalışmaya başlama](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-:heavy_check_mark: **Azure Veri Fabrikası** 
+: heavy_check_mark: **Azure Data Factory** 
 
-  Bu aracı yalnızca AzCopy'nin geçerli sürümünde desteklenmeyen işlevselliğe ihtiyacınız varsa kullanın. Örneğin, AzCopy'nin geçerli sürümünde, hiyerarşik ad alanına sahip hesaplar arasındaki lekeleri kopyalayamazsınız. Ayrıca AzCopy dosya erişim denetim listelerini veya dosya zaman damgalarını korumaz (Örneğin: zaman damgaları oluşturma ve değiştirin). 
+  Bu aracı yalnızca AzCopy 'in geçerli sürümünde desteklenmeyen işlevlere ihtiyacınız varsa kullanın. Örneğin, AzCopy 'ın geçerli sürümünde blob 'ları hiyerarşik bir ad alanı olan hesaplar arasında kopyalayamazsınız. Ayrıca AzCopy dosya erişim denetim listelerini veya dosya zaman damgalarını korumaz (örneğin: oluşturma ve değiştirme zaman damgaları). 
 
   Şu bağlantılara bakın:
-  - [Azure Veri Fabrikası'nı kullanarak verileri Azure Blob depolamasına veya Azure Blob depolamasından kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Azure Veri Fabrikası'nı kullanarak Azure Veri Depolama Gen2'ye veya Azure Veri Gölü Depolama Gen2'den veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Azure Veri Fabrikası'nı kullanarak verileri Azure Dosya Depolama'dan veya Azure Dosya Depolamasına kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Azure Veri Fabrikası'nı kullanarak Verileri Azure Table depolamasına ve azure tablo depolamasına kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Azure Data Factory kullanarak Azure Blob depolama alanına veya veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+  - [Azure Data Factory kullanarak Azure Data Lake Storage 2. veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
+  - [Azure Data Factory kullanarak Azure dosya depolamadan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
+  - [Azure Data Factory kullanarak Azure Tablo depolamadan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
 
 ---
 
-## <a name="discard-or-clean-up"></a>Atın veya temizleme
+## <a name="discard-or-clean-up"></a>Atın veya temizleyin
 
-Dağıtımdan sonra, yeniden başlamak isterseniz, hedef depolama hesabını silebilir ve bu makalenin [Hazırla](#prepare) ve [Taşı](#move) bölümlerinde açıklanan adımları yineleyebilirsiniz.
+Dağıtımdan sonra, baştan başlamak istiyorsanız, hedef depolama hesabını silebilir ve bu makalenin [hazırlama](#prepare) ve [taşıma](#move) bölümünde açıklanan adımları yineleyebilirsiniz.
 
-Değişiklikleri işlemek ve bir depolama hesabının hareketini tamamlamak için kaynak depolama hesabını silin.
+Değişiklikleri uygulamak ve depolama hesabını taşımayı tamamlamak için, kaynak depolama hesabını silin.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portalını kullanarak bir depolama hesabını kaldırmak için:
+Azure portal kullanarak bir depolama hesabını kaldırmak için:
 
-1. Azure portalında, hizmetler menüsünü açmak için sol taraftaki menüyü genişletin ve depolama hesaplarınızın listesini görüntülemek için **Depolama hesaplarını** seçin.
+1. Azure portal, sol taraftaki menüyü genişleterek hizmet menüsünü açın **ve depolama hesapları ' nı seçerek depolama** hesaplarınızın listesini görüntüleyin.
 
-2. Silmek için hedef depolama hesabını bulun ve girişin sağ tarafındaki **Daha Fazla** düğmesine **(...**) sağ tıklayın.
+2. Silinecek hedef depolama hesabını bulun ve listenin sağ tarafındaki **daha fazla** düğmesine (**...**) sağ tıklayın.
 
-3. **Sil'i**seçin ve onaylayın.
+3. **Sil**' i seçin ve onaylayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Kaynak grubunu ve yeni depolama hesabı da dahil olmak üzere ilişkili kaynaklarını kaldırmak için [Kaldır-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) komutunu kullanın:
+Kaynak grubunu ve yeni depolama hesabı da dahil olmak üzere ilişkili kaynaklarını kaldırmak için [Remove-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) komutunu kullanın:
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount
@@ -285,7 +285,7 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, bir Azure depolama hesabını bir bölgeden diğerine taşıdınız ve kaynak kaynaklarını temizlediniz.  Azure'da kaynakları bölgeler arasında taşıma ve olağanüstü durum kurtarma hakkında daha fazla bilgi edinmek için şu na bakın:
+Bu öğreticide, bir Azure Depolama hesabını bir bölgeden diğerine taşıdı ve kaynak kaynakları temizledi.  Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz:
 
 
 - [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

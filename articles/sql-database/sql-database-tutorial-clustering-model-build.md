@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: R'de bir kümeleme modeli oluşturma"
+title: "Öğretici: R 'de kümeleme modeli oluşturma"
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Bu üç bölümlük öğretici serinin ikinci bölümünde, Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme) ile R'de kümeleme gerçekleştirmek için bir K-Means modeli oluşturursunuz.
+description: Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme gerçekleştirmek üzere bir K-bit modeli oluşturacaksınız.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,42 +15,42 @@ manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ebea6117420ee6de67025dfd4cfba71e905cb9ec
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453106"
 ---
-# <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de bir kümeleme modeli oluşturun (önizleme)
+# <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme modeli oluşturma
 
-Bu üç bölümlük öğretici serinin ikinci bölümünde, kümeleme gerçekleştirmek için R bir K-Means modeli oluşturacaksınız. Bu serinin bir sonraki bölümünde, bu modeli Azure SQL Database Machine Learning Services (önizleme) içeren bir SQL veritabanında dağıtacaksınız.
+Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, kümeleme gerçekleştirmek için R ' de bir K-anlamı modeli oluşturacaksınız. Bu serinin bir sonraki bölümünde, bu modeli Azure SQL veritabanı Machine Learning Services (Önizleme) ile bir SQL veritabanında dağıtacaksınız.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-Bu makalede, nasıl öğreneceksiniz:
+Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
-> * K-Means algoritması için küme sayısını tanımlama
-> * Kümeleme yapma
+> * K-Ortalamalar algoritması için küme sayısını tanımlayın
+> * Kümeleme gerçekleştir
 > * Sonuçları analiz etme
 
-Birinci [bölümde,](sql-database-tutorial-clustering-model-prepare-data.md)kümeleme gerçekleştirmek için azure SQL veritabanından verileri nasıl hazırlayacağınızı öğrendiniz.
+[Birinci bölümde](sql-database-tutorial-clustering-model-prepare-data.md), verileri BIR Azure SQL veritabanından kümeleme gerçekleştirmek üzere nasıl hazırlayacağınızı öğrendiniz.
 
-[Üçüncü bölümde,](sql-database-tutorial-clustering-model-deploy.md)yeni verilere dayanarak R'de kümeleme gerçekleştirebilen bir Azure SQL veritabanında depolanmış yordamı nasıl oluşturabileceğinizi öğreneceksiniz.
+[Üçünde](sql-database-tutorial-clustering-model-deploy.md), BIR Azure SQL veritabanında yeni verileri temel alan R 'de kümeleme gerçekleştirebilen bir saklı yordam oluşturmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bu öğretici Bölüm iki bölüm [**bir**](sql-database-tutorial-clustering-model-prepare-data.md) ve ön koşulları tamamlamış varsayar.
+* Bu öğreticinin ikinci bölümünde [**Birinci bölüm bir**](sql-database-tutorial-clustering-model-prepare-data.md) ve önkoşulları tamamladığınız varsayılır.
 
-## <a name="define-the-number-of-clusters"></a>Küme sayısını tanımlama
+## <a name="define-the-number-of-clusters"></a>Küme sayısını tanımlayın
 
-Müşteri verilerinizi kümelemek için, verileri gruplandırmanın en basit ve en iyi bilinen yollarından biri olan **K-Means** kümeleme algoritmasını kullanırsınız.
-[K-Means clustering algoritması için tam bir kılavuzda K-Means](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)hakkında daha fazla bilgi edinebilirsiniz.
+Müşteri verilerinizi Kümelendirmek için, verilerin gruplandırılması için en basit ve en iyi bilinen yollardan biri olan **K-anlamı** kümeleme algoritmasını kullanırsınız.
+K-ortalamalar hakkında daha fazla bilgi edinmek [için, k-bit küme algoritması için tam bir kılavuzda](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html).
 
-Algoritma iki girişi kabul eder: veri kendisi ve oluşturmak için küme sayısını temsil eden önceden tanımlanmış bir sayı "*k*" .
-Çıktı, kümeler arasında bölümlenmiş giriş verileriyle *k* kümeleridir.
+Algoritma iki girişi kabul eder: verilerin kendisi ve oluşturulacak kümelerin sayısını temsil eden önceden tanımlanmış bir "*k*" numarası.
+Çıktı, kümeler arasında bölümlenmiş giriş verilerinin bulunduğu *k* kümeleridir.
 
-Algoritmanın kullanacağı küme sayısını belirlemek için, ayıklanan küme sayısına göre karelerin içindeki grupgrupları toplamının bir çizimini kullanın. Kullanılacak uygun küme sayısı, çizimin bükülme veya "dirseği"ndedir.
+Kullanılacak algoritmanın küme sayısını öğrenmek için, ayıklanan küme sayısına göre kareler toplamı içindeki bir çizim kullanın. Kullanılacak uygun küme sayısı, çizimin dirseği veya "dirseği" olur.
 
 ```r
 # Determine number of clusters by using a plot of the within groups sum of squares,
@@ -63,11 +63,11 @@ plot(1:20, wss, type = "b", xlab = "Number of Clusters", ylab = "Within groups s
 
 ![Dirsek grafiği](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
 
-Grafik dayanarak, *k = 4* denemek için iyi bir değer olacağını görünüyor. Bu *k* değeri müşterileri dört kümeye gruplayacaktır.
+Grafiğe bağlı olarak, *k = 4* gibi bir değer, denemek için iyi bir değer olacaktır. Bu *k* değeri, müşterileri dört kümeye gruplacaktır.
 
-## <a name="perform-clustering"></a>Kümeleme yapma
+## <a name="perform-clustering"></a>Kümeleme gerçekleştir
 
-Aşağıdaki R komut dosyasında, RevoScaleR paketinde K-Means işlevi olan **rxKmeans**işlevini kullanacaksınız.
+Aşağıdaki R betiğindeki **Rxkanlamý**Işlevini, iptal edilmiş paketteki K-Ortalamalar işlevini kullanacaksınız.
 
 ```r
 # Output table to hold the customer group mappings.
@@ -91,9 +91,9 @@ customer_cluster <- rxDataStep(return_cluster);
 
 ## <a name="analyze-the-results"></a>Sonuçları analiz etme
 
-Şimdi K-Means kullanarak kümeleme yaptık, bir sonraki adım sonucu analiz etmek ve herhangi bir işlem yapılabilir bilgi bulabilirsiniz görmektir.
+Artık K-bit kullanarak kümelendirmeyi tamamladığınıza göre, bir sonraki adım sonucu analiz etmek ve eyleme dönüştürülebilir herhangi bir bilgiyi bulup bulamadığınızı görmektedir.
 
-**Clust** nesnesi K-Means kümeleme sonuçlarını içerir.
+**Clust** nesnesi, K-anlamı Kümelemesi sonuçlarını içerir.
 
 ```r
 #Look at the clustering details to analyze results
@@ -123,39 +123,39 @@ Within cluster sum of squares by cluster:
     0.0000  1329.0160 18561.3157   363.2188
 ```
 
-Dört küme [anlamı, birinci bölümde](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)tanımlanan değişkenler kullanılarak verilmiştir:
+Dört küme, [Birinci bölümde](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)tanımlanan değişkenler kullanılarak verilmiştir:
 
-* *orderRatio* = iade sipariş oranı (toplam sipariş sayısına karşılık kısmen veya tamamen iade edilen toplam sipariş sayısı)
-* *itemsRatio* = iade madde oranı (geri dönen toplam madde sayısı ile satın alınan madde sayısı)
-* *monetaryRatio* = iade tutarı oranı (iade edilen kalemlerin toplam parasal tutarı ile satın alınan tutar)
-* *frekans* = dönüş frekansı
+* *Orderratio* = dönüş siparişi oranı (Toplam sipariş sayısına göre kısmen veya tam olarak döndürülen toplam sipariş sayısı)
+* *ıtemratio* = dönüş öğesi oranı (döndürülen toplam öğe sayısı ve alınan öğe sayısı)
+* *Monetaryratio* = dönüş tutarı oranı (döndürülen miktara göre döndürülen toplam parasal miktar)
+* *Sıklık* = dönüş sıklığı
 
-K-Means kullanarak veri madenciliği genellikle sonuçların daha fazla analizini ve her kümeyi daha iyi anlamak için daha fazla adım gerektirir, ancak bazı iyi müşteri adayları sağlayabilir.
-Bu sonuçları yorumlamanın birkaç yolu şunlardır:
+K-u kullanan veri madenciliği genellikle sonuçların daha fazla analizini ve her kümeyi daha iyi anlamak için daha fazla adım gerektirir, ancak bu durum iyi bir müşteri adayı sağlayabilir.
+Bu sonuçları yorumlayabilmeniz için birkaç yol aşağıda verilmiştir:
 
 * Küme 1 (en büyük küme) etkin olmayan bir müşteri grubu gibi görünüyor (tüm değerler sıfırdır).
-* Küme 3, dönüş davranışı açısından öne çıkan bir grup gibi görünün.
+* Küme 3, dönüş davranışının koşullarını temsil eden bir grup gibi görünüyor.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-***Bu öğreticiye devam etmeyecekseniz,*** Azure SQL Veritabanı sunucunuzdaki tpcxbb_1gb veritabanını silin.
+***Bu öğreticiye devam Edemeyecekinizden***Azure SQL veritabanı sunucunuzdaki tpcxbb_1gb veritabanını silin.
 
-Azure portalından aşağıdaki adımları izleyin:
+Azure portal, aşağıdaki adımları izleyin:
 
-1. Azure portalındaki sol menüden Tüm **kaynakları** veya **SQL veritabanlarını**seçin.
-1. **Ada göre Filtre'ye...** alanına **tpcxbb_1gb**girin ve aboneliğinizi seçin.
-1. **tpcxbb_1gb** veritabanınızı seçin.
+1. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı veya **SQL veritabanları**' nı seçin.
+1. **Ada göre filtrele...** alanına **tpcxbb_1gb**girin ve aboneliğinizi seçin.
+1. **Tpcxbb_1gb** veritabanınızı seçin.
 1. **Genel Bakış** sayfasında **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici serinin ikinci bölümünde, şu adımları tamamladınız:
+Bu öğretici serisinin ikinci bölümünde, şu adımları tamamladınız:
 
-* K-Means algoritması için küme sayısını tanımlama
-* Kümeleme yapma
+* K-Ortalamalar algoritması için küme sayısını tanımlayın
+* Kümeleme gerçekleştir
 * Sonuçları analiz etme
 
-Oluşturduğunuz makine öğrenimi modelini dağıtmak için bu öğretici serinin üçüncü bölümünü izleyin:
+Oluşturduğunuz Machine Learning modelini dağıtmak için, bu öğretici serisinin üçüncü kısmını izleyin:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de bir kümeleme modeli dağıtma (önizleme)](sql-database-tutorial-clustering-model-deploy.md)
+> [Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme modeli dağıtma](sql-database-tutorial-clustering-model-deploy.md)

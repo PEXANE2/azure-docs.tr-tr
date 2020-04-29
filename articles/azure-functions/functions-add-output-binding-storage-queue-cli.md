@@ -1,23 +1,23 @@
 ---
-title: Komut satırı araçlarını kullanarak Azure Fonksiyonlarını Azure Depolama'ya bağlayın
-description: Komut satırı projenize bir çıktı bağlama ekleyerek Azure İşlevlerini Azure Depolama kuyruğuna nasıl bağlayabilirsiniz öğrenin.
+title: Komut satırı araçlarını kullanarak Azure Işlevlerini Azure depolama 'ya bağlama
+description: Komut satırı projenize bir çıkış bağlaması ekleyerek Azure Işlevlerini bir Azure depolama kuyruğuna bağlamayı öğrenin.
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673383"
 ---
-# <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Komut satırı araçlarını kullanarak Azure Fonksiyonlarını Azure Depolama'ya bağlayın
+# <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Komut satırı araçlarını kullanarak Azure Işlevlerini Azure depolama 'ya bağlama
 
-Bu makalede, bir Azure Depolama [kuyruğunu önceki quickstart'ta](functions-create-first-azure-function-azure-cli.md)oluşturduğunuz işlev ve depolama hesabıyla tümleştirirsiniz. Bu tümleştirmeyi, bir HTTP isteğinden kuyruktaki bir iletiye veri yazan bir *çıktı bağlama* kullanarak elde elabilirsiniz. Bu makalenin tamamlanması, önceki hızlı başlangıç birkaç USD sent ötesinde hiçbir ek maliyete tabi değildir. Bağlamalar hakkında daha fazla bilgi edinmek için [Azure İşlevlerini tetikleyen ve bağlama kavramlarına](functions-triggers-bindings.md)bakın.
+Bu makalede, bir Azure depolama kuyruğunu [önceki hızlı](functions-create-first-azure-function-azure-cli.md)başlangıçta oluşturduğunuz işlev ve depolama hesabıyla tümleştirmeniz gerekir. Bu tümleştirmeyi, HTTP isteğinden kuyruktaki bir iletiye veri yazan bir *Çıkış bağlaması* kullanarak elde edersiniz. Bu makalenin tamamlanması, önceki hızlı başlangıç için birkaç USD 'nin ötesinde ek maliyet yoktur. Bağlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
-## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırın
+## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırma
 
-Başlamadan önce, makaleyi tamamlamanız gerekir, [Hızlı Başlat: Komut satırından bir Azure İşlevleri projesi oluşturun.](functions-create-first-azure-function-azure-cli.md) Bu makalenin sonunda kaynakları zaten temizlediyseniz, Azure'daki işlev uygulamasını ve ilgili kaynakları yeniden oluşturmak için adımları yeniden gözden geçirin.
+Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](functions-create-first-azure-function-azure-cli.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
@@ -32,11 +32,11 @@ Başlamadan önce, makaleyi tamamlamanız gerekir, [Hızlı Başlat: Komut satı
 [!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 ::: zone-end   
 
-Bağlamaayrıntıları hakkında daha fazla bilgi için Azure [İşlevlerini tetikler ve bağlamalar kavramları ve](functions-triggers-bindings.md) [sıra çıktıyapılandırması'na](functions-bindings-storage-queue-output.md#configuration)bakın.
+Bağlamaların ayrıntıları hakkında daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md) ve [sıra çıkış yapılandırması](functions-bindings-storage-queue-output.md#configuration).
 
-## <a name="add-code-to-use-the-output-binding"></a>Çıktı bağlamayı kullanmak için kod ekleme
+## <a name="add-code-to-use-the-output-binding"></a>Çıkış bağlamayı kullanmak için kod ekleme
 
-Tanımlanan sıra bağlama ile, artık `msg` çıktı parametresini almak ve sıraya iletiyazmak için işlevinizi güncelleştirebilirsiniz.
+Sıra bağlaması tanımlı ile, artık işlevinizi, `msg` çıkış parametresini alacak ve kuyruğa ileti yazacak şekilde güncelleştirebilirsiniz.
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -64,22 +64,22 @@ Tanımlanan sıra bağlama ile, artık `msg` çıktı parametresini almak ve sı
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
-Kimlik doğrulama, sıra başvurusu alma veya veri yazma için kod yazmanız *gerekmesin.* Tüm bu tümleştirme görevleri Azure İşlevleri çalışma zamanında ve sıra çıktısına bağlamada rahatlıkla işlenir.
+Kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için kod *yazmanıza gerek olmadığını* gözlemleyin. Tüm bu tümleştirme görevleri, Azure Işlevleri çalışma zamanı ve sıra çıkış bağlamasında kolayca işlenir.
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
 [!INCLUDE [functions-extension-bundles-info](../../includes/functions-extension-bundles-info.md)]
 
-## <a name="view-the-message-in-the-azure-storage-queue"></a>Azure Depolama kuyruğundaki iletiyi görüntüleme
+## <a name="view-the-message-in-the-azure-storage-queue"></a>Azure depolama sırasındaki iletiyi görüntüleme
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
-## <a name="redeploy-the-project-to-azure"></a>Projeyi Azure'a yeniden dağıtma
+## <a name="redeploy-the-project-to-azure"></a>Projeyi Azure 'a yeniden dağıtın
 
-İşlevin Azure Depolama kuyruğuna bir ileti yazdığını yerel olarak doğruladığınıza göre, Projenizi Azure'da çalışan bitiş noktasını güncelleştirmek için yeniden dağıtabilirsiniz.
+İşlevin Azure depolama kuyruğuna bir ileti yazdığını doğruladığınıza göre, Azure üzerinde çalışan uç noktayı güncelleştirmek için projenizi yeniden dağıtabilirsiniz.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
-*LocalFunctionsProj* klasöründe, uygulamanızın adını değiştirerek [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) `<APP_NAME>` projeyi yeniden dağıtmak için komutu kullanın.
+*Localfunctionsproj* klasöründe, uygulamayı yeniden dağıtmak için [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) komutunu kullanın ve bunu uygulamanızın adıyla değiştirin`<APP_NAME>` .
 
 ```
 func azure functionapp publish <APP_NAME>
@@ -94,29 +94,29 @@ mvn azure-functions:deploy
 ```
 ::: zone-end
 
-## <a name="verify-in-azure"></a>Azure'da doğrula
+## <a name="verify-in-azure"></a>Azure 'da doğrulama
 
-1. Önceki hızlı başlatmada olduğu gibi, yeniden dağıtılan işlevi sınamak için bir tarayıcı veya CURL kullanın.
+1. Önceki hızlı başlangıçta olduğu gibi, yeniden dağıtılan işlevi sınamak için bir tarayıcı veya KıVRıMLı kullanın.
 
     # <a name="browser"></a>[Tarayıcı](#tab/browser)
     
-    Yayımlama komutunun çıktısında gösterilen invoke **URL'sinin** tamamını bir tarayıcı adresi `&name=Functions`çubuğuna kopyalayın ve sorgu parametresini ekler. Tarayıcı, işlevi yerel olarak çalıştırdığınızda olduğu gibi benzer çıktıları görüntülemelidir.
+    Yayımla komutunun çıktısında gösterilen tüm **ÇAĞıRMA URL** 'sini, sorgu parametresini `&name=Functions`ekleyerek bir tarayıcı adres çubuğuna kopyalayın. , İşlevi yerel olarak çalıştırdığınızda tarayıcı benzer bir çıktı görüntülemelidir.
 
-    ![İşlevin çıktısı bir tarayıcıda Azure'da çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
+    ![İşlevin çıktısı Azure üzerinde bir tarayıcıda çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
-    # <a name="curl"></a>[Curl](#tab/curl)
+    # <a name="curl"></a>[kıvr](#tab/curl)
     
-    Invoke [`curl`](https://curl.haxx.se/) **URL'si**ile çalıştırın, parametreyi `&name=Functions`ekle. Komutun çıktısı "Merhaba İşlevler" metni olmalıdır.
+    Parametresini [`curl`](https://curl.haxx.se/) `&name=Functions`ekleyerek **Invoke URL 'si**ile çalıştırın. Komutun çıktısı, "Hello Functions" metni olmalıdır.
     
-    ![İşlevin çıktısı CURL kullanarak Azure'da çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
+    ![İşlevin çıktısı, Azure 'da KıVRıMLı kullanılarak çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 
     --- 
 
-1. Sıraya yazılan yeni iletiyi içerdiğini doğrulamak için önceki bölümde açıklandığı gibi Depolama sırasını yeniden inceleyin.
+1. Depolama sırasını, önceki bölümde açıklandığı gibi bir kez inceleyerek sıraya yazılan yeni iletiyi içerdiğini doğrulayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bitirdikten sonra, daha fazla maliyete yol alamamak için kaynak grubunu ve içerdiği tüm kaynakları silmek için aşağıdaki komutu kullanın.
+İşiniz bittiğinde, daha fazla maliyet ödemeden kaçınmak için kaynak grubunu ve içerdiği tüm kaynakları silmek için aşağıdaki komutu kullanın.
 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
@@ -124,37 +124,37 @@ az group delete --name AzureFunctionsQuickstart-rg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Depolama kuyruğuna veri yazmak için HTTP tetiklenen işlevinizi güncellediniz. Artık Temel Araçlar ve Azure CLI'yi kullanarak komut satırından İşlevler geliştirme hakkında daha fazla bilgi edinebilirsiniz:
+HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Artık çekirdek araçları ve Azure CLı kullanarak komut satırından Işlev geliştirme hakkında daha fazla bilgi edinebilirsiniz:
 
-+ [Azure İşlevleri Temel Araçlarıyla Çalışma](functions-run-local.md)  
++ [Azure Functions Core Tools çalışın](functions-run-local.md)  
 
 ::: zone pivot="programming-language-csharp"  
-+ [C# 'daki komple Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=csharp)
++ [C# ' de tamamen işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=csharp).
 
-+ [Azure İşlevler C# geliştirici başvurusu](functions-dotnet-class-library.md)  
++ [Azure Işlevleri C# Geliştirici Başvurusu](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
-+ [JavaScript'teki tam Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=javascript)
++ [JavaScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=javascript).
 
-+ [Azure İşlevler JavaScript geliştirici kılavuzu](functions-reference-node.md)  
++ [Azure Işlevleri JavaScript Geliştirici Kılavuzu](functions-reference-node.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-+ [TypeScript'teki komple Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=typescript)
++ [TypeScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=typescript).
 
-+ [Azure İşlevler TypeScript geliştirici kılavuzu](functions-reference-node.md#typescript)  
++ [Azure Işlevleri TypeScript Geliştirici Kılavuzu](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-+ [Python'daki komple Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=python)
++ [Python 'da tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=python).
 
-+ [Azure İşlevler Python geliştirici kılavuzu](functions-reference-python.md)  
++ [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-+ [PowerShell'deki komple Fonksiyon projelerine örnekler.](/samples/browse/?products=azure-functions&languages=azurepowershell)
++ [PowerShell 'de tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=azurepowershell).
 
-+ [Azure İşgücü Shell geliştirici kılavuzu](functions-reference-powershell.md) 
++ [Azure Işlevleri PowerShell Geliştirici Kılavuzu](functions-reference-powershell.md) 
 ::: zone-end
-+ [Azure Fonksiyonları tetikler ve bağlamalar](functions-triggers-bindings.md)
++ [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
 
-+ [Fonksiyonlar fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/)
++ [İşlevler fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/)
 
-+ [Tüketim planı maliyetlerinin tahmini](functions-consumption-costs.md) 
++ [Tüketim planı maliyetlerini tahmin etme](functions-consumption-costs.md) 

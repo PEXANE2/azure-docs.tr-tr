@@ -1,5 +1,5 @@
 ---
-title: Anlık görüntüden yönetilen bir disk oluşturma - PowerShell Sample
+title: Snapshot-PowerShell örneğinden yönetilen disk oluşturma
 description: Azure PowerShell Betiği Örneği - Anlık görüntüden yönetilen disk oluşturma
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
 ms.openlocfilehash: 5758e31fc24d366479cbebb139f1a8376330b397
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459330"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>PowerShell ile anlık görüntüden yönetilen disk oluşturma
@@ -40,8 +40,8 @@ Bu betik bir anlık görüntüden yönetilen disk oluşturmak için aşağıdaki
 | Komut | Notlar |
 |---|---|
 | [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | Anlık görüntü özelliklerini alır.  |
-| [Yeni-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Disk oluşturmak için kullanılan disk yapılandırmasını oluşturur. Üst anlık görüntünün kaynak kimliğini, üst anlık görüntünün konumuyla aynı olan konumu ve depolama türünü içerir.  |
-| [Yeni-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Parametre olarak geçirilen disk yapılandırmasını, disk adını ve kaynak grubu adını kullanarak bir disk oluşturur. |
+| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Disk oluşturmak için kullanılan disk yapılandırmasını oluşturur. Üst anlık görüntünün kaynak kimliğini, üst anlık görüntünün konumuyla aynı olan konumu ve depolama türünü içerir.  |
+| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Parametre olarak geçirilen disk yapılandırmasını, disk adını ve kaynak grubu adını kullanarak bir disk oluşturur. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

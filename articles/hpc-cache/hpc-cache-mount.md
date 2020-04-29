@@ -1,103 +1,103 @@
 ---
-title: Azure HPC Önbelleğini Takma
-description: İstemcileri Azure HPC Önbellek hizmetine bağlama
+title: Azure HPC önbelleği bağlama
+description: İstemcileri Azure HPC önbellek hizmetine bağlama
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: v-erkel
 ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458421"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>Azure HPC Önbelleğini Dağın
+# <a name="mount-the-azure-hpc-cache"></a>Azure HPC önbelleğini bağlama
 
-Önbellek oluşturulduktan sonra, NFS istemcileri basit `mount` bir komutla erişebilir. Komut, Azure HPC Önbelleğindeki belirli bir depolama hedef yolunu istemci makinesindeki yerel bir dizine bağlar.
+Önbellek oluşturulduktan sonra, NFS istemcileri basit `mount` bir komutla erişebilir. Komutu, Azure HPC önbelleğindeki belirli bir depolama hedef yolunu, istemci makinesindeki bir yerel dizine bağlar.
 
-Montaj komutu şu öğelerden oluşur:
+Bağlama komutu şu öğelerden oluşur:
 
-* Önbelleğin montaj adreslerinden biri (önbelleğe genel bakış sayfasında listelenir)
-* Depolama hedefini oluşturduğunuzda ayarladığınız sanal ad alanı yolu
+* Önbelleğin bağlama adreslerinden biri (önbelleğe Genel Bakış sayfasında listelenir)
+* Depolama hedefini oluştururken ayarladığınız sanal ad alanı yolu
 * İstemcide kullanılacak yerel yol
-* Bu tür NFS montajının başarısını optimize eden komut parametreleri
+* Bu tür NFS bağlamasının başarısını en iyileştiren komut parametreleri
 
-Önbelleğiniz için **Mount yönergeleri** sayfası sizin için bilgileri ve önerilen seçenekleri toplar ve kopyalayabileceğiniz bir prototip montaj komutu oluşturur. Ayrıntılar için [montaj talimatları yardımcı programını kullanın.](#use-the-mount-instructions-utility)
+Önbelleğiniz için **bağlama yönergeleri** sayfası, sizin için bilgileri ve önerilen seçenekleri toplar ve kopyalayacağınız bir prototip bağlama komutu oluşturur. Ayrıntılar için [bağlama yönergeleri yardımcı programını kullanın](#use-the-mount-instructions-utility) .
 
 ## <a name="prepare-clients"></a>İstemcileri hazırlama
 
-Müşterilerinizin bu bölümdeki yönergeleri izleyerek Azure HPC Önbelleğini monte edebilmelerini unutmayın.
+Bu bölümdeki yönergeleri izleyerek istemcilerinizin Azure HPC önbelleğini bağlayabilmesini sağlayın.
 
-### <a name="provide-network-access"></a>Ağ erişimi sağlama
+### <a name="provide-network-access"></a>Ağ erişimi sağla
 
-İstemci makineleri önbelleğin sanal ağına ve özel alt ağına ağ erişimine sahip olmalıdır.
+İstemci makinelerin, önbelleğin sanal ağına ve özel alt ağına ağ erişiminin olması gerekir.
 
-Örneğin, aynı sanal ağ içinde istemci VM'leri oluşturun veya dışarıdan erişmek için sanal ağda bir bitiş noktası, ağ geçidi veya başka bir çözüm kullanın. (Önbelleğin kendisinden başka hiçbir şeyin önbelleğin alt ağı içinde barındırılması gerektiğini unutmayın.)
+Örneğin, aynı sanal ağ içinde istemci VM 'Leri oluşturun veya dışarıdaki bir erişim için bir uç nokta, ağ geçidi veya sanal ağda başka bir çözüm kullanın. (Önbelleğin kendisi dışında hiçbir şeyin, önbelleğin alt ağı içinde barındırılıp barındırılmadığını unutmayın.)
 
-### <a name="install-utilities"></a>Yardımcı programları yükleme
+### <a name="install-utilities"></a>Yardımcı programları yükler
 
-NFS montaj komutunu desteklemek için uygun Linux yardımcı programı yazılımını yükleyin:
+NFS bağlama komutunu desteklemek için uygun Linux yardımcı programı yazılımını yüklemek:
 
 * Red Hat Enterprise Linux veya SuSE için:`sudo yum install -y nfs-utils`
-* Ubuntu veya Debian için:`sudo apt-get install nfs-common`
+* Ubuntu veya de, için:`sudo apt-get install nfs-common`
 
-### <a name="create-a-local-path"></a>Yerel bir yol oluşturma
+### <a name="create-a-local-path"></a>Yerel yol oluştur
 
-Önbelleğe bağlanmak için her istemcide yerel bir dizin yolu oluşturun. Monte etmek istediğiniz her ad alanı yolu için bir yol oluşturun.
+Her istemcide önbelleğe bağlanacak bir yerel dizin yolu oluşturun. Bağlamak istediğiniz her bir ad alanı yolu için bir yol oluşturun.
 
 Örnek: `sudo mkdir -p /mnt/hpc-cache-1/target3`
 
-Azure portalındaki [Montaj yönergeleri](#use-the-mount-instructions-utility) sayfası, kopyalayabileceğiniz bir prototip komutu içerir.
+Azure portal [bağlama yönergeleri](#use-the-mount-instructions-utility) sayfasında, kopyalayacağınız bir prototip komutu bulunur.
 
-İstemci makinesini önbelleğe bağladığınızda, bu yolu depolama hedef dışa aktarmayı temsil eden sanal bir ad alanı yolu ile ilişkilendireceksiniz. İstemcinin kullanacağı sanal ad alanı yollarının her biri için dizinler oluşturun.
+İstemci makinesini önbelleğe bağladığınızda, bu yolu bir depolama hedefi dışarı aktarmayı temsil eden bir sanal ad alanı yoluyla ilişkilendirirsiniz. İstemcinin kullanacağı sanal ad alanı yollarının her biri için dizinler oluşturun.
 
-## <a name="use-the-mount-instructions-utility"></a>Montaj talimatları yardımcı programını kullanma
+## <a name="use-the-mount-instructions-utility"></a>Bağlama yönergeleri yardımcı programını kullanma
 
-Kopyalanabilir bir montaj komutu oluşturmak için Azure portalındaki **Montaj yönergeleri** sayfasını kullanabilirsiniz. Sayfayı portaldaki önbellek görünümünün **Yapıla** bölümünden açın.
+Kopyalanabilir mount komutu oluşturmak için Azure portal içindeki **bağlama yönergeleri** sayfasını kullanabilirsiniz. Portalda önbellek görünümünün **Yapılandır** bölümünden sayfayı açın.
 
-Bir istemci üzerinde komutu kullanmadan önce, istemci ön koşulları karşıladığından emin olun ve `mount` yazılım yukarıda açıklandığı gibi NFS komutunu kullanmak için gerekli [olan hazır istemciler](#prepare-clients).
+Komutunu bir istemcide kullanmadan önce, istemcinin önkoşulları karşıladığından ve `mount` [istemcileri hazırlama](#prepare-clients)bölümünde yukarıda açıklanan şekilde NFS komutunu kullanması için gereken yazılıma sahip olduğundan emin olun.
 
-![Portaldaki bir Azure HPC Önbelleği örneğinin ekran görüntüsü, Yapılandırma > Montaj yönergeleri sayfası yüklü](media/mount-instructions.png)
+![Portalda > bağlama yönergelerini yapılandır sayfası yüklü olan bir Azure HPC önbellek örneğinin ekran görüntüsü](media/mount-instructions.png)
 
-Montaj komutunu oluşturmak için bu yordamı izleyin.
+Bağlama komutunu oluşturmak için bu yordamı izleyin.
 
-1. **İstemci yol** alanını özelleştirin. Bu alan, istemcide yerel bir yol oluşturmak için kullanabileceğiniz bir örnek komut verir. İstemci bu dizindeki Azure HPC Önbelleğinden içeriğe yerel olarak eriştir.
+1. **İstemci yolu** alanını özelleştirin. Bu alan, istemcide yerel bir yol oluşturmak için kullanabileceğiniz örnek bir komut verir. İstemci, Azure HPC önbelleğinden bu dizindeki içeriğe yerel olarak erişir.
 
-   Alanı tıklatın ve istediğiniz dizin adını içerecek şekilde komutu edin. Ad, dize sonunda görünür sonra`sudo mkdir -p`
+   Alana tıklayın ve komutu istediğiniz dizin adını içerecek şekilde düzenleyin. Ad, dizenin sonunda daha sonra görüntülenir`sudo mkdir -p`
 
-   ![sonunda konumlandırılmış imleç ile istemci yol alanının ekran görüntüsü](media/mount-edit-client.png)
+   ![imleç sonda konumlandırılmış olan istemci yolu alanının ekran görüntüsü](media/mount-edit-client.png)
 
-   Alanı düzenlemeyi bitirdikten sonra, sayfanın altındaki montaj komutu yeni istemci yolu ile güncellenir.
+   Alanı düzenledikten sonra, sayfanın altındaki mount komutu yeni istemci yoluyla güncelleştirilir.
 
-1. Listeden **Önbellek montaj adresini** seçin. Bu menü, önbelleğin [istemci montaj noktalarının](#find-mount-command-components)tümünün listesini listeler.
+1. Listeden **önbellek bağlama adresini** seçin. Bu menü, tüm önbelleğin [istemci bağlama noktalarını](#find-mount-command-components)listeler.
 
-   Daha iyi önbellek performansı için kullanılabilir montaj adreslerinin tümüne istemci yükünü dengeleyin.
+   Daha iyi önbellek performansı için tüm kullanılabilir Mount adreslerinde istemci yükünü dengeleyin.
 
-   ![seçim için üç IP adresi gösteren seçici ile önbellek montaj adresi alanının ekran görüntüsü](media/mount-select-ip.png)
+   ![arasından seçim yapabileceğiniz üç IP adresini gösteren seçiciyle önbellek bağlama adresi alanının ekran görüntüsü](media/mount-select-ip.png)
 
-1. İstemci için kullanılacak **Sanal ad alanı yolunu** seçin. Bu yollar arka uç depolama sistemindedışada dışa bağlanır.
+1. İstemci için kullanılacak **sanal ad alanı yolunu** seçin. Bu yollar arka uç depolama sisteminde dışarı aktarmalar için bağlantı sağlar.
 
-   ![seçici açık olan ad alanı yolları alanının ekran görüntüsü](media/mount-select-target.png)
+   ![Seçici açık olan ad alanı yolları alanının ekran görüntüsü](media/mount-select-target.png)
 
-   Depolama hedefleri portalı sayfasında sanal ad alanı yollarını görüntüleyebilir ve değiştirebilirsiniz. Nasıl yapılacağını görmek için [depolama hedefleri ekle'yi](hpc-cache-add-storage.md) okuyun.
+   Sanal ad alanı yollarını depolama hedefleri portalı sayfasında görüntüleyebilir ve değiştirebilirsiniz. Nasıl yapılacağını görmek için [depolama hedefleri ekleme](hpc-cache-add-storage.md) bölümünü okuyun.
 
-   Azure HPC Önbelleği'nin toplu ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplu ad alanını planla'yı](hpc-cache-namespace.md)okuyun.
+   Azure HPC önbelleğinin toplanmış ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanını planlayın](hpc-cache-namespace.md).
 
-1. Üçüncü adımdaki **Mount komut** alanı, önceki alanlarda ayarladığınız montaj adresini, sanal ad alanı yolunu ve istemci yolunu kullanan özelleştirilmiş bir montaj komutuyla otomatik olarak doldurulur.
+1. Üçüncü adımda bulunan **mount komutu** alanı, önceki alanlarda ayarladığınız bağlama adresini, sanal ad alanı yolunu ve istemci yolunu kullanan özelleştirilmiş bir Mount komutuyla otomatik olarak doldurulur.
 
-   Otomatik olarak panonuza kopyalamak için alanın sağ tarafındaki kopya simgesini tıklatın.
+   Pano 'ya otomatik olarak kopyalamak için alanın sağ tarafındaki kopyalama simgesine tıklayın.
 
-   ![seçici açık olan ad alanı yolları alanının ekran görüntüsü](media/mount-command-copy.png)
+   ![Seçici açık olan ad alanı yolları alanının ekran görüntüsü](media/mount-command-copy.png)
 
-1. Azure HPC Önbelleğine bağlamak için istemci makinesindeki kopyalanan montaj komutunu kullanın. Komutu doğrudan istemci komut satırından verebilir veya montaj komutunu istemci kurulum komut dosyasına veya şablonuna ekleyebilirsiniz.
+1. Azure HPC önbelleğine bağlamak için istemci makinedeki kopyalanmış Mount komutunu kullanın. Komutu doğrudan istemci komut satırından verebilir veya bir istemci kurulum komut dosyasına veya şablonuna Mount komutunu ekleyebilirsiniz.
 
-## <a name="understand-mount-command-syntax"></a>Montaj komutu sözdizimini anlama
+## <a name="understand-mount-command-syntax"></a>Mount komut söz dizimini anlayın
 
-Montaj komutu aşağıdaki forma sahiptir:
+Mount komutu aşağıdaki biçimdedir:
 
-> sudo mount {*options*} *cache_mount_address*:/*namespace_path* *local_path*
+> sudo bağlama {*Options*} *cache_mount_address*:/*namespace_path* *local_path*
 
 Örnek:
 
@@ -107,34 +107,34 @@ root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0
 root@test-client:/tmp#
 ```
 
-Bu komut başarılı olduktan sonra, depolama dışa aktarAn ların içeriği istemcideki dizinde ``hpccache`` görünür olacaktır.
+Bu komut başarılı olduktan sonra, depolama dışarı aktarmanın içerikleri istemcideki ``hpccache`` dizinde görünür olur.
 
-### <a name="mount-command-options"></a>Montaj komut seçenekleri
+### <a name="mount-command-options"></a>Bağlama komutu seçenekleri
 
-Sağlam bir istemci yuvası için, montaj komutunuzda bu ayarları ve bağımsız değişkenleri geçirin:
+Sağlam bir istemci bağlama için, bu ayarları ve bağımsız değişkenleri bağlama komutunuz geçirin:
 
-> montaj -o hard,proto=tcp,mountproto=tcp,retry=30 ${CACHE_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}
+> Mount-o hard, Proto = TCP, bağlamaproto = TCP, yeniden deneme = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| Önerilen montaj komutu ayarları | |
+| Önerilen bağlama komutu ayarları | |
 --- | ---
-``hard`` | Azure HPC Önbelleğine yumuşak bağlar uygulama hataları ve olası veri kaybıyla ilişkilidir.
-``proto=tcp`` | Bu seçenek, NFS ağ hatalarının uygun şekilde işlenmesini destekler.
-``mountproto=tcp`` | Bu seçenek, montaj işlemleri için ağ hatalarının uygun şekilde işlenmesini destekler.
-``retry=<value>`` | Geçici ``retry=30`` montaj hatalarını önlemek için ayarlayın. (Ön plandaki bağlarda farklı bir değer önerilir.)
+``hard`` | Azure HPC Cache 'e yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir.
+``proto=tcp`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.
+``mountproto=tcp`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
+``retry=<value>`` | Geçici ``retry=30`` bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
 
-### <a name="find-mount-command-components"></a>Montaj komut bileşenlerini bulma
+### <a name="find-mount-command-components"></a>Bağlama komutu bileşenlerini bul
 
-**Bağlı yönergeleri** sayfasını kullanmadan bir montaj komutu oluşturmak istiyorsanız, önbelleğe **Genel Bakış** sayfasında montaj adreslerini ve Depolama **hedef** sayfasında sanal ad alanı yollarını bulabilirsiniz.
+Bağlama **yönergeleri** sayfasını kullanmadan bir bağlama komutu oluşturmak isterseniz, bağlama adreslerini önbelleğe **genel bakış** sayfasında ve sanal ad alanı yollarında **depolama hedefi** sayfasında bulabilirsiniz.
 
-![Sağ alttaki montaj adresleri listesinin etrafında bir vurgu kutusu olan Azure HPC Önbellek örneğinin Genel Bakış sayfasının ekran görüntüsü](media/hpc-cache-mount-addresses.png)
+![Azure HPC önbellek örneğinin genel bakış sayfasının ekran görüntüsü, sağ alt taraftaki bağlama adresleri listesi etrafında bir vurgulama kutusuyla](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE]
-> Önbellek montaj adresleri, önbelleğin alt ağındaki ağ arabirimlerine karşılık gelir. Bir kaynak grubunda, bu NIC'ler biten `-cluster-nic-` adlar ve bir sayı ile listelenir. Bu arabirimleri değiştirmeyin veya silmeyin, yoksa önbellek kullanılamaz hale gelir.
+> Önbellek bağlama adresleri, önbelleğin alt ağının içindeki ağ arabirimlerine karşılık gelir. Bir kaynak grubunda, bu NIC 'ler bitiş adlarıyla `-cluster-nic-` ve bir sayı ile listelenir. Bu arabirimleri değiştirmeyin veya silmeyin, aksi durumda önbellek kullanılamaz hale gelir.
 
-Sanal ad alanı yolları her depolama hedefinin ayrıntılar sayfasında gösterilir. Ayrıntılarıyla ilişkili toplu ad alanı yolları da dahil olmak üzere ayrıntılarını görmek için tek bir depolama hedef adını tıklatın.
+Sanal ad alanı yolları her bir depolama hedefinin ayrıntılar sayfasında gösterilir. Ayrıntılarını görmek için, bununla ilişkili toplanmış ad alanı yolları da dahil olmak üzere, ayrı bir depolama hedefi adına tıklayın.
 
-![depolama hedefinin ayrıntı sayfasının ekran görüntüsü (üstbilgi "Depolama hedefini güncelleştir"). Tablonun Sanal ad alanı yolu sütununda bir girişin etrafında bir vurgu kutusu vardır](media/hpc-cache-view-namespace-paths.png)
+![depolama hedefinin ayrıntı sayfasının ekran görüntüsü ("depolama hedefini Güncelleştir" başlığı). Tablonun sanal ad alanı yol sütunundaki bir girdinin etrafında bir vurgulama kutusu bulunur](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Verileri önbelleğin depolama hedeflerine taşımak [için, yeni Azure Blob depolama alanını doldur'u](hpc-cache-ingest.md)okuyun.
+* Verileri önbelleğin depolama hedeflerine taşımak için [yeni Azure Blob depolama alanını](hpc-cache-ingest.md)okuyun.

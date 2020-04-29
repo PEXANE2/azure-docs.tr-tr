@@ -1,6 +1,6 @@
 ---
-title: Azure AD ön koşullarıyla Azure Disk Şifrelemesi (önceki sürüm)
-description: Bu makalede, IaaS VM'ler için Microsoft Azure Disk Şifrelemesi kullanmak için ön koşullar sağlanmaktadır.
+title: Azure AD uygulama önkoşulları (önceki sürüm) ile Azure disk şifrelemesi
+description: Bu makalede, IaaS VM 'Leri için Microsoft Azure disk şifrelemesi kullanma önkoşulları sağlanır.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -9,34 +9,34 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 029743dbb44ab0ebb6ab8f695c0c966137c45107
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459806"
 ---
-# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD ile Azure Disk Şifreleme (önceki sürüm)
+# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD ile Azure disk şifrelemesi (önceki sürüm)
 
-Azure Disk Şifreleme'nin yeni sürümü, VM disk şifrelemesini etkinleştirmek için Bir Azure Active Directory (Azure AD) uygulama parametresi sağlama gereksinimini ortadan kaldırır. Yeni sürümle birlikte, şifrelemeyi etkinleştir medeni sırasında Azure AD kimlik bilgilerini sağlamanız gerekmez. Tüm yeni VM'ler, yeni sürüm kullanılarak Azure AD uygulama parametreleri olmadan şifrelenmelidir. Yeni sürümü kullanarak VM disk şifrelemesini etkinleştirme yle ilgili talimatlar [için Linux VM'ler için Azure Disk](disk-encryption-overview.md)Şifrelemesi'ne bakın. Azure AD uygulama parametreleri ile zaten şifrelenmiş olan VM'ler hala desteklenir ve AAD sözdizimi ile korunmaya devam etmelidir.
+Azure disk şifrelemesi 'nin yeni sürümü, VM disk şifrelemeyi etkinleştirmek için bir Azure Active Directory (Azure AD) uygulama parametresi sağlama gereksinimini ortadan kaldırır. Yeni sürümle birlikte, şifrelemeyi Etkinleştir adımını kullanarak artık Azure AD kimlik bilgilerini sağlamanız gerekmez. Yeni sürüm kullanılarak tüm yeni VM 'Ler Azure AD uygulama parametreleri olmadan şifrelenmelidir. Yeni sürümü kullanarak VM disk şifrelemesini etkinleştirme hakkında yönergeler için bkz. [Linux VM 'leri Için Azure disk şifrelemesi](disk-encryption-overview.md). Azure AD uygulama parametreleriyle zaten şifrelenmiş VM 'Ler hala desteklenmektedir ve AAD sözdizimi ile sürdürülmeye devam etmelidir.
 
-Bu makalede, Azure AD ile Azure Disk Şifrelemesi için ek gereksinimler ve Azure Disk Şifrelemesi için ön koşullar (önceki sürüm) içeren [Linux VM'leri için Azure Disk Şifrelemesi](disk-encryption-overview.md) ekleri sağlanmaktadır.
+Bu makalede, Azure AD (önceki sürüm) ile Azure disk şifrelemesi için ek gereksinimlere ve önkoşullara sahip [Linux sanal makineleri Için Azure disk şifrelemesi](disk-encryption-overview.md) 'nin nasıl sağladığı açıklanır.
 
 Bu bölümlerdeki bilgiler aynı kalır:
 
-- [Desteklenen VM'ler ve işletim sistemleri](disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [Desteklenen VM 'Ler ve işletim sistemleri](disk-encryption-overview.md#supported-vms-and-operating-systems)
 - [Ek VM gereksinimleri](disk-encryption-overview.md#additional-vm-requirements)
 
 
  
 
-## <a name="networking-and-group-policy"></a>Ağ ve Grup Politikası
+## <a name="networking-and-group-policy"></a>Ağ ve grup ilkesi
 
-Eski AAD parametre sözdizimini kullanarak Azure Disk Şifreleme özelliğini etkinleştirmek için hizmet olarak altyapı (IaaS) VM'ler aşağıdaki ağ bitiş noktası yapılandırma gereksinimlerini karşılamalıdır: 
-  - IaaS VM'nin anahtar kasanıza bağlanmak için bir belirteç elde etmek için \[Azure\]AD bitiş noktasına login.microsoftonline.com.
-  - Anahtar kasanızın şifreleme anahtarlarını yazmak için, IaaS VM'nin anahtar kasa bitiş noktasına bağlanabilmesi gerekir.
-  - IaaS VM, Azure uzantı deposunu ve VHD dosyalarını barındıran bir Azure depolama hesabı barındıran bir Azure depolama bitiş noktasına bağlanabilmeli.
-  -  Güvenlik politikanız Azure VM'lerinden Internet'e erişimi kısıtlıyorsa, önceki URI'yi çözebilir ve IP'lere giden bağlantıya izin verecek şekilde belirli bir kural yapılandırabilirsiniz. Daha fazla bilgi için [bir güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/general/access-behind-firewall.md)bakın.
-  - Windows'da, TLS 1.0 açıkça devre dışı bırakılırsa ve .NET sürümü 4,6 veya daha yüksek olarak güncelleştirilmezse, aşağıdaki kayıt defteri değişikliği Azure Disk Şifrelemesinin daha yeni TLS sürümünü seçmesini sağlar:
+Azure Disk Şifrelemesi özelliğini eski AAD parametresi sözdizimini kullanarak etkinleştirmek için hizmet olarak altyapı (IaaS) VM 'Leri aşağıdaki ağ uç noktası yapılandırma gereksinimlerini karşılamalıdır: 
+  - Anahtar kasanıza bağlanmak için bir belirteç almak üzere, IaaS VM 'sinin bir Azure AD uç noktasına bağlanabilmelidir, \[Login.microsoftonline.com.\]
+  - Şifreleme anahtarlarını anahtar kasanıza yazmak için, IaaS VM 'sinin Anahtar Kasası uç noktasına bağlanabilmesi gerekir.
+  - IaaS sanal makinesi, Azure uzantı deposunu barındıran bir Azure depolama uç noktasına ve VHD dosyalarını barındıran bir Azure depolama hesabına bağlanabilmelidir.
+  -  Güvenlik ilkeniz, Azure VM 'lerinden internet 'e erişimi sınırlayıp, önceki URI 'yi çözümleyebilir ve IP 'lere giden bağlantılara izin vermek için belirli bir kuralı yapılandırabilirsin. Daha fazla bilgi için bkz. [Azure Key Vault bir güvenlik duvarı arkasında](../../key-vault/general/access-behind-firewall.md).
+  - Windows 'da, TLS 1,0 açık olarak devre dışıysa ve .NET sürümü 4,6 veya üzeri bir sürüme güncellenmemişse, aşağıdaki kayıt defteri değişikliği Azure disk şifrelemesi 'nin daha son TLS sürümünü seçmesini sağlar:
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
             "SystemDefaultTlsVersions"=dword:00000001
@@ -48,19 +48,19 @@ Eski AAD parametre sözdizimini kullanarak Azure Disk Şifreleme özelliğini et
          
     
 ### <a name="group-policy"></a>Grup İlkesi
- - Azure Disk Şifreleme çözümü, Windows IaaS VM'ler için BitLocker harici anahtar koruyucusu kullanır. Etki alanına katılan VM'ler için, TPM koruyucularını zorlayan Grup İlkeleri'ni itmeyin. **Uyumlu bir TPM olmadan BitLocker'a İzin Ver**seçeneği için Grup İlkesi hakkında bilgi için [Bkz. BitLocker Grup İlkesi başvurusu.](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)
+ - Azure disk şifrelemesi çözümü, Windows IaaS VM 'Leri için BitLocker dış anahtar koruyucusunu kullanır. Etki alanına katılmış VM 'Ler için TPM koruyucuları uygulayan herhangi bir grup Ilkesi göndermeyin. **Uyumlu TPM olmadan BitLocker 'A Izin ver**seçeneğinin Grup ilkesi hakkında bilgi için, bkz. [BitLocker Grup İlkesi başvurusu](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-- Özel bir Grup İlkesi ile etki alanı birleştirilmiş sanal makinelerde BitLocker ilkesi aşağıdaki ayarı içermelidir: [BitLocker kurtarma bilgilerinin kullanıcı depolama yapılandırma -> 256 bit kurtarma anahtarı na izin ver.](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings) Azure Disk Şifreleme, BitLocker için özel Grup İlkesi ayarları uyumsuz olduğunda başarısız olur. Doğru ilke ayarı olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye (gpupdate.exe /force) zorlayın ve gerekirse yeniden başlatın. 
+- Özel bir grup ilkesi etki alanına katılmış sanal makinelerde BitLocker ilkesi şu ayarı içermelidir: [BitLocker kurtarma bilgileri 'nin Kullanıcı depolamasını yapılandırma-> Izin ver 256-bit kurtarma anahtarı](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). BitLocker için özel grup ilkesi ayarları uyumsuz olduğunda Azure disk şifrelemesi başarısız olur. Doğru ilke ayarına sahip olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye zorlayın (gpupdate. exe/Force) ve gerekirse yeniden başlatın. 
 
 ## <a name="encryption-key-storage-requirements"></a>Şifreleme anahtarı depolama gereksinimleri 
 
-Azure Disk Şifreleme, disk şifreleme anahtarlarını ve sırlarını denetlemek ve yönetmek için Azure Key Vault gerektirir. Anahtar kasanız ve VM'leriniz aynı Azure bölgesinde ve abonelikte ikamet etmelidir.
+Azure disk şifrelemesi, disk şifreleme anahtarlarını ve gizli dizileri denetlemek ve yönetmek için Azure Key Vault gerektirir. Anahtar kasanızın ve sanal makinelerinizin aynı Azure bölgesinde ve abonelikte bulunması gerekir.
 
-Daha fazla bilgi için bkz. Azure [AD ile Azure Disk Şifrelemesi için önemli bir kasa oluşturma ve yapılandırma (önceki sürüm)](disk-encryption-key-vault-aad.md).
+Daha fazla bilgi için bkz. Azure [ad Ile Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma (önceki sürüm)](disk-encryption-key-vault-aad.md).
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD ile Azure Disk Şifrelemesi için önemli bir kasa oluşturma ve yapılandırma (önceki sürüm)](disk-encryption-key-vault-aad.md)
-- [Linux VM'lerde Azure AD ile Azure Disk Şifrelemesini etkinleştirme (önceki sürüm)](disk-encryption-linux-aad.md)
-- [Azure Disk Şifreleme önkoşullar CLI komut dosyası](https://github.com/ejarvi/ade-cli-getting-started)
-- [Azure Disk Şifreleme PowerShell komut dosyası önkoşullar](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- [Azure AD ile Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma (önceki sürüm)](disk-encryption-key-vault-aad.md)
+- [Linux sanal makinelerinde Azure AD ile Azure disk şifrelemesini etkinleştirme (önceki sürüm)](disk-encryption-linux-aad.md)
+- [Azure disk şifrelemesi önkoşulları CLı betiği](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure disk şifrelemesi önkoşulları PowerShell betiği](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

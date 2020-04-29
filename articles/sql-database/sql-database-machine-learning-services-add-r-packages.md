@@ -1,7 +1,7 @@
 ---
-title: Machine Learning Services'a R paketi ekleme (önizleme)
+title: Machine Learning Services bir R paketi ekleme (Önizleme)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Bu makalede, Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde (önizleme) zaten yüklenmemiş bir R paketinin nasıl yüklenilen açıklanmaktadır.
+description: Bu makalede, Azure SQL veritabanı Machine Learning Services (Önizleme) ' de zaten yüklü olmayan bir R paketinin nasıl yükleneceği açıklanır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,33 +15,33 @@ manager: cgronlun
 ms.date: 04/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ab066609bff773ceacb06be604e386eed5cdf7ec
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81453345"
 ---
-# <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Veritabanı Makine Öğrenme Hizmetleri'ne R paketi ekleme (önizleme)
+# <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Azure SQL veritabanı 'na R paketi ekleme Machine Learning Services (Önizleme)
 
-Bu makalede, Azure SQL Veritabanı Makine Öğrenme Hizmetleri'ne R paketi nasıl ekleyeceğiniz açıklanmaktadır (önizleme).
+Bu makalede, Azure SQL veritabanı Machine Learning Services (Önizleme) için bir R paketinin nasıl ekleneceği açıklanmaktadır.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yerel bilgisayarınıza [R](https://www.r-project.org) ve [RStudio Desktop'ı](https://www.rstudio.com/products/rstudio/download/) yükleyin. R; Windows, MacOS ve Linux platformlarında kullanılabilir. Bu makalede, Windows kullandığınızı varsayar.
+- Yerel bilgisayarınıza [R](https://www.r-project.org) ve [rstudio Desktop](https://www.rstudio.com/products/rstudio/download/) 'ı yükler. R; Windows, MacOS ve Linux platformlarında kullanılabilir. Bu makalede, Windows kullandığınızı varsaymaktadır.
 
-- Bu makalede, Azure SQL Veritabanı'nda bir R komut dosyası çalıştırmak için [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) veya SQL Server Management [Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanma örneği yer almaktadır. Diğer veritabanı yönetimi veya sorgu araçlarını kullanarak R komut dosyalarını çalıştırabilirsiniz, ancak bu örnek Azure Veri Stüdyosu veya SSMS'i varsayar.
+- Bu makalede, Azure SQL veritabanı 'nda R betiği çalıştırmak için [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) veya [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanma örneği yer almaktadır. R komut dosyalarını diğer veritabanı yönetimini veya sorgu araçlarını kullanarak çalıştırabilirsiniz, ancak bu örnekte Azure Data Studio veya SSMS varsayılır.
    
 > [!NOTE]
-> Azure Veri Stüdyosu veya SSMS'te **sp_execute_external_script** kullanarak Bir R komut dosyası çalıştırarak paket yükleyemezsiniz. Paketleri yalnızca bu makalede açıklandığı şekilde R komut satırı ve RStudio'yu kullanarak yükleyebilir ve kaldırabilirsiniz. Paket yüklendikten sonra, **sp_execute_external_script**kullanarak paket işlevlerine R komut dosyasında erişebilirsiniz.
+> Azure Data Studio veya SSMS 'de **sp_execute_external_script** kullanarak bir R betiği çalıştırarak bir paket yükleyemezsiniz. Bu makalede açıklandığı gibi, yalnızca R komut satırını ve RStudio 'Yu kullanarak paketleri yükleyebilir ve kaldırabilirsiniz. Paket yüklendikten sonra, **sp_execute_external_script**kullanarak bir R betiğindeki paket işlevlerine erişebilirsiniz.
 
 ## <a name="list-r-packages"></a>R paketlerinin listesi
 
-Microsoft, Azure SQL veritabanınızda Machine Learning Services ile önceden yüklenmiş bir dizi R paketi sağlar.
-Azure Veri Stüdyosu veya SSMS'te aşağıdaki komutu çalıştırarak yüklü R paketlerinin listesini görebilirsiniz.
+Microsoft, Azure SQL veritabanınızda Machine Learning Services önceden yüklenmiş bir dizi R paketi sağlar.
+Azure Data Studio veya SSMS 'de aşağıdaki komutu çalıştırarak yüklü R paketlerinin bir listesini görebilirsiniz.
 
-1. Azure Veri Stüdyosu'nı veya SSMS'i açın ve Azure SQL Veritabanınıza bağlanın.
+1. Azure Data Studio veya SSMS 'yi açın ve Azure SQL veritabanınıza bağlanın.
 
 1. Şu komutu çalıştırın:
 
@@ -57,30 +57,30 @@ WITH RESULT SETS((
             ));
 ```
 
-Çıktı aşağıdakine benzer olmalıdır.
+Çıktı aşağıdakine benzer görünmelidir.
 
 **Sonuçlar**
 
 ![R içindeki yüklü paketler](./media/sql-database-machine-learning-services-add-r-packages/r-installed-packages.png)
 
-## <a name="add-a-package-with-sqlmlutils"></a>sqlmlutils ile bir paket ekleme
+## <a name="add-a-package-with-sqlmlutils"></a>Sqlmlutils ile paket ekleme
 
-Azure SQL Veritabanınızda zaten yüklü olmayan bir paket kullanmanız gerekiyorsa, paketi [sqlmlutils](https://github.com/Microsoft/sqlmlutils)kullanarak yükleyebilirsiniz. **sqlmlutils,** kullanıcıların SQL veritabanlarıyla (SQL Server ve Azure SQL Veritabanı) etkileşimde kalmalarına ve SQL'deki R veya Python kodunu bir R veya Python istemcisinden yürütmelerine yardımcı olmak için tasarlanmış bir pakettir. Şu anda Azure SQL Veritabanı'nda yalnızca **sqlmlutils'in** R sürümü desteklenir.
+Azure SQL veritabanınızda zaten yüklü olmayan bir paket kullanmanız gerekiyorsa, bunu [sqlmlutils](https://github.com/Microsoft/sqlmlutils)kullanarak yükleyebilirsiniz. **sqlmlutils** , kullanıcıların SQL veritabanları (SQL Server ve Azure SQL veritabanı) ile etkileşime geçmesini ve r veya Python istemcisinden SQL 'de r veya Python kodu yürütmesini sağlamaya yardımcı olmak için tasarlanan bir pakettir. Şu anda, Azure SQL veritabanı 'nda yalnızca **sqlmlutils** 'ın R sürümü destekleniyor.
 
-Aşağıdaki örnekte, dizeleri biçimlendirebilen ve enterpolasyona getirebilen **[tutkal](https://cran.r-project.org/web/packages/glue/)** paketini yüklersiniz. Bu adımlar **sqlmlutils** ve **RODBCext** **(sqlmlutils**için bir ön koşul) yükler ve **tutkal** paketi ekleyin.
+Aşağıdaki örnekte, dizeleri biçimlendirebilir ve enterpolacağımız **[birleştirici](https://cran.r-project.org/web/packages/glue/)** paketini yükleyeceksiniz. Bu adımlar **sqlmlutils** ve **Rodbcext** ( **sqlmlutils**için bir önkoşul) yükler ve **tutkalla** paketini ekler.
 
-### <a name="install-sqlmlutils"></a>**sqlmlutils yükleyin**
+### <a name="install-sqlmlutils"></a>**Sqlmlutils** 'i yükler
 
-1. Yerel bilgisayarınıza en son **sqlmlutils** zip dosyasını https://github.com/Microsoft/sqlmlutils/tree/master/R/dist indirin. Dosyanın zip'ini açmanız gerekmez.
+1. En son **sqlmlutils** ZIP dosyasını https://github.com/Microsoft/sqlmlutils/tree/master/R/dist yerel bilgisayarınıza indirin. Dosyayı sıkıştırmayı açmanız gerekmez.
 
-1. Komut **İstemi'ni** açın ve **rodbcext** ve **sqlmlutils'i** yerel bilgisayarınıza yüklemek için aşağıdaki komutları çalıştırın. İndirdiğiniz **sqlmlutils** zip dosyasına tam yol değiştirin (örnek dosyanın Belgeler klasörünüzde olduğunu varsayar).
+1. Bir **komut istemi** açın ve yerel bilgisayarınıza **Rodbcext** ve **sqlmlutils** yüklemek için aşağıdaki komutları çalıştırın. İndirdiğiniz **sqlmlutils** ZIP dosyasının tam yolunu değiştirin (örnek, dosyanın Belgeler klasörünüzde olduğunu varsayar).
     
     ```console
     R -e "install.packages('RODBCext', repos='https://cran.microsoft.com')"
     R CMD INSTALL %UserProfile%\Documents\sqlmlutils_0.5.1.zip
     ```
 
-    Gördüğünüz çıktı aşağıdakilere benzer olmalıdır.
+    Gördüğünüz çıktı aşağıdakine benzer olmalıdır.
 
     ```text
     In R CMD INSTALL
@@ -89,13 +89,13 @@ Aşağıdaki örnekte, dizeleri biçimlendirebilen ve enterpolasyona getirebilen
     ```
 
     > [!TIP]
-    > Hata alırsanız, " 'R' bir iç veya dış komut, çalışabilir program veya toplu dosya olarak tanınmıyor", büyük olasılıkla R.exe yolu Windows'da **PATH** ortamı değişkenine dahil olmadığı anlamına gelir. Yolu ortam değişkenine ekleyebilir veya komut istemindeki klasöre (örneğin) `cd C:\Program Files\R\R-3.5.3\bin`gidebilir ve ardından komutu yeniden deneyebilirsiniz.
+    > "' R" iç veya dış komut, çalıştırılabilir program veya toplu iş dosyası olarak tanınmıyor, büyük olasılıkla R. exe yolunun Windows 'daki **Path** ortam değişkenine dahil olmadığı anlamına gelir. Yolu ortam değişkenine ekleyebilir veya komut isteminde klasörüne gidebilir (örneğin `cd C:\Program Files\R\R-3.5.3\bin`) ve sonra komutu yeniden deneyebilirsiniz.
 
-### <a name="add-the-package"></a>Paketi ekle
+### <a name="add-the-package"></a>Paketi ekleyin
 
 1. RStudio'yu açın ve yeni bir **R Script** dosyası oluşturun. 
 
-1. **Sqlmlutils**kullanarak **tutkal** paketini yüklemek için aşağıdaki R kodunu kullanın. Kendi Azure SQL Veritabanı bağlantı bilgilerinizi değiştirin.
+1. **Sqlmlutils**kullanarak **tutkalla** paketini yüklemek için aşağıdaki R kodunu kullanın. Kendi Azure SQL veritabanı bağlantı bilgilerinizi yerine koyun.
 
     ```R
     library(sqlmlutils)
@@ -109,11 +109,11 @@ Aşağıdaki örnekte, dizeleri biçimlendirebilen ve enterpolasyona getirebilen
     ```
 
     > [!TIP]
-    > **Kapsam** **GENEL** veya **ÖZEL**olabilir. Genel kapsam, veritabanı yöneticisinin tüm kullanıcıların kullanabileceği paketleri yüklemesi açısından yararlıdır. Özel kapsam, paketi yalnızca onu yükleyen kullanıcı tarafından kullanılabilir hale getirir. Kapsam değeri belirtmezseniz **PRIVATE** varsayılan kapsamı kullanılır.
+    > **Kapsam** **genel** veya **özel**olabilir. Genel kapsam, veritabanı yöneticisinin tüm kullanıcıların kullanabileceği paketleri yüklemesi açısından yararlıdır. Özel kapsam, paketi yalnızca onu yükleyen kullanıcı için kullanılabilir hale getirir. Kapsam değeri belirtmezseniz **PRIVATE** varsayılan kapsamı kullanılır.
 
-### <a name="verify-the-package"></a>Paketi doğrulayın
+### <a name="verify-the-package"></a>Paketi doğrulama
 
-**Yapıştırıcı** paketinin RStudio'da aşağıdaki R komut dosyasını çalıştırarak yüklendiğini doğrulayın. Önceki adımda tanımladığınız **bağlantıyı** kullanın.
+RStudio 'da aşağıdaki R betiğini çalıştırarak, **birleştirici** paketinin yüklendiğini doğrulayın. Önceki adımda tanımladığınız **bağlantıyı** kullanın.
 
 ```R
 r<-sql_installed.packages(connectionString = connection, fields=c("Package", "Version", "Depends", "License"))
@@ -124,11 +124,11 @@ View(r)
 
 ![RTestData tablosunun içeriği](./media/sql-database-machine-learning-services-add-r-packages/r-verify-package-install.png)
 
-### <a name="use-the-package"></a>Paketi kullanma
+### <a name="use-the-package"></a>Paketi kullanın
 
-Paket yüklendikten sonra, **sp_execute_external_script**aracılığıyla r komut dosyasında kullanabilirsiniz.
+Paket yüklendikten sonra, **sp_execute_external_script**aracılığıyla bir R betikte kullanabilirsiniz.
 
-1. Azure Veri Stüdyosu'nı veya SSMS'i açın ve Azure SQL Veritabanınıza bağlanın.
+1. Azure Data Studio veya SSMS 'yi açın ve Azure SQL veritabanınıza bağlanın.
 
 1. Şu komutu çalıştırın:
 
@@ -156,21 +156,21 @@ Paket yüklendikten sonra, **sp_execute_external_script**aracılığıyla r komu
     My name is Fred, my age next year is 51, my anniversary is Sunday, June 14, 2020.
     ```
 
-### <a name="remove-the-package"></a>Paketi kaldırma
+### <a name="remove-the-package"></a>Paketi kaldır
 
-Paketi kaldırmak istiyorsanız, Aşağıdaki R komut dosyasını RStudio'da çalıştırın. Daha önce **tanımladığınız** bağlantıyı kullanın.
+Paketi kaldırmak istiyorsanız, RStudio 'da aşağıdaki R betiğini çalıştırın. Daha önce tanımladığınız **bağlantıyı** kullanın.
 
 ```R
 sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLIC")
 ```
 
 > [!TIP]
-> Azure SQL veritabanınıza Bir R paketi yüklemenin başka bir yolu da **CREATE EXTERNAL LIBRARY** T-SQL deyimini kullanarak R paketini bayt akışından yüklemektir. Bkz. CREATE EXTERNAL LIBRARY başvuru belgelerindeki [bir bayt akışından kitaplık](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) [oluştur.](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql)
+> R paketini Azure SQL veritabanınıza yüklemenin başka bir yolu da, **dış kitaplık** T-SQL Ifadesini kullanarak r paketini bir bayt akışından karşıya yüklemektir. [Dış kitaplık başvurusu oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) belgelerindeki bir [bayt akışından kitaplık oluşturma](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-R ile Azure SQL Veritabanı Makine Öğrenme Hizmetleri hakkında daha fazla bilgi için (önizleme), aşağıdaki makalelere bakın.
+R (Önizleme) ile Azure SQL veritabanı Machine Learning Services hakkında daha fazla bilgi için aşağıdaki makalelere bakın.
 
-- [R ile Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme)](sql-database-machine-learning-services-overview.md)
-- [Machine Learning Services 'i kullanarak Azure SQL Veritabanı'na gelişmiş R işlevleri yazın (önizleme)](sql-database-machine-learning-services-functions.md)
-- [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R ve SQL verileriyle çalışma (önizleme)](sql-database-machine-learning-services-data-issues.md)
+- [R ile Azure SQL veritabanı Machine Learning Services (Önizleme)](sql-database-machine-learning-services-overview.md)
+- [Machine Learning Services kullanarak Azure SQL veritabanı 'nda gelişmiş R işlevleri yazma (Önizleme)](sql-database-machine-learning-services-functions.md)
+- [Azure SQL veritabanı 'nda R ve SQL verileriyle çalışma Machine Learning Services (Önizleme)](sql-database-machine-learning-services-data-issues.md)

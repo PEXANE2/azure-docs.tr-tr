@@ -1,22 +1,22 @@
 ---
-title: Hizmet kataloğu yönetilen uygulamayı yayımla
+title: Service Catalog ile yönetilen uygulama yayımlama
 description: Kuruluşunuzun üyelerine yönelik bir Azure yönetilen uygulaması oluşturmayı gösterir.
 author: tfitzmac
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81391500"
 ---
-# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Quickstart: Yönetilen bir uygulama tanımı oluşturma ve yayımlama
+# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Hızlı başlangıç: yönetilen uygulama tanımı oluşturma ve yayımlama
 
-Bu hızlı başlangıç, Azure [Yönetilen Uygulamalar](overview.md)ile çalışmaya giriş sağlar. Kuruluşunuzun üyeleri için tasarlanmış yönetilen bir uygulama oluşturabilir ve yayımlayabilirsiniz.
+Bu hızlı başlangıçta [Azure yönetilen uygulamalarla](overview.md)çalışmaya giriş sunulmaktadır. Kuruluşunuzun üyeleri için tasarlanan yönetilen bir uygulama oluşturabilir ve yayımlayabilirsiniz.
 
-Yönetilen bir uygulamayı hizmet kataloğunuzda yayınlamak için şunları yapmalısınız:
+Yönetilen bir uygulamayı hizmet kataloğunuza yayımlamak için şunları yapmanız gerekir:
 
 * Yönetilen uygulama ile dağıtılacak kaynakları tanımlayan bir şablon oluşturun.
 * Yönetilen uygulamayı dağıtırken portal için kullanıcı arabirimi öğeleri tanımlayın.
@@ -24,9 +24,9 @@ Yönetilen bir uygulamayı hizmet kataloğunuzda yayınlamak için şunları yap
 * Kullanıcının aboneliğindeki kaynak grubuna hangi kullanıcı, grup veya uygulamanın erişmesi gerektiğine karar verin.
 * .zip paketini işaret eden ve kimlik için erişim isteyen yönetilen uygulama tanımını oluşturun.
 
-## <a name="create-the-arm-template"></a>ARM şablonu oluşturma
+## <a name="create-the-arm-template"></a>ARM şablonunu oluşturma
 
-Her yönetilen uygulama tanımı **mainTemplate.json** adlı bir dosya içerir. Bu dosyanın içinde, dağıtılacak Azure kaynaklarını tanımlarsınız. Şablon, normal bir Azure Kaynak Yöneticisi (ARM) şablonundan farklı değildir.
+Her yönetilen uygulama tanımı **mainTemplate.json** adlı bir dosya içerir. Bu dosyanın içinde, dağıtılacak Azure kaynaklarını tanımlarsınız. Şablon, düzenli bir Azure Resource Manager (ARM) şablonundan farklı değildir.
 
 **mainTemplate.json** adlı bir dosya oluşturun. Bu ad büyük/küçük harfe duyarlıdır.
 
@@ -75,13 +75,13 @@ Aşağıdaki JSON’u dosyanıza ekleyin. Depolama hesabı oluşturma parametrel
 
 mainTemplate.json dosyasını kaydedin.
 
-## <a name="define-your-create-experience"></a>Oluşturma deneyiminizi tanımlayın
+## <a name="define-your-create-experience"></a>Oluşturma deneyiminizi tanımlama
 
-Yayımcı olarak, yönetilen uygulamayı oluşturmak için portal deneyimini tanımlarsınız. **createUiDefinition.json** dosyası portal arabirimini oluşturur. Açılan lar, metin kutuları ve parola kutuları gibi [denetim öğelerini](create-uidefinition-elements.md) kullanarak kullanıcıların her parametre için girişi nasıl sağladığını tanımlarsınız.
+Yayımcı olarak, yönetilen uygulamayı oluşturmak için Portal deneyimini tanımlarsınız. **Createuıdefinition. JSON** dosyası Portal arabirimini oluşturur. Kullanıcıların, açılan liste, metin kutuları ve parola kutuları dahil olmak üzere [Denetim öğelerini](create-uidefinition-elements.md) kullanarak her bir parametre için giriş nasıl sağlayacağınızı tanımlarsınız.
 
-**createUiDefinition.json** adlı bir dosya oluşturma (Bu ad büyük/küçük harf duyarlıdır)
+**Createuıdefinition. JSON** adlı bir dosya oluşturun (Bu ad büyük/küçük harfe duyarlıdır)
 
-Aşağıdaki başlangıç json dosyaya ekleyin ve kaydedin.
+Aşağıdaki Başlatıcı JSON dosyasını dosyaya ekleyin ve kaydedin.
 
 ```json
 {
@@ -132,7 +132,7 @@ Aşağıdaki başlangıç json dosyaya ekleyin ve kaydedin.
 }
 ```
 
-Daha fazla bilgi için [createUiDefinition ile başlayın.](create-uidefinition-overview.md)
+Daha fazla bilgi için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
 
 ## <a name="package-the-files"></a>Dosyaları paketleme
 
@@ -194,7 +194,7 @@ az storage blob upload \
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Azure Active Directory kullanıcı grubu veya uygulaması oluşturma
 
-Bir sonraki adım, müşteri için kaynakları yönetmek için bir kullanıcı grubu, kullanıcı veya uygulama seçmektir. Bu kimlik, atanan role göre yönetilen kaynak grubu üzerinde izinlere sahiptir. Rol, Sahip veya Katkıda Bulunan gibi herhangi bir yerleşik Rol Tabanlı Erişim Denetimi (RBAC) rolü olabilir. Yeni bir Active Directory kullanıcı grubu oluşturmak için bkz. [Azure Active Directory’de grup oluşturma ve üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Bir sonraki adım, müşterinin kaynaklarını yönetmek için bir Kullanıcı grubu, Kullanıcı veya uygulama seçmek içindir. Bu kimlik, atanan role göre yönetilen kaynak grubu üzerinde izinlere sahiptir. Rol, Sahip veya Katkıda Bulunan gibi herhangi bir yerleşik Rol Tabanlı Erişim Denetimi (RBAC) rolü olabilir. Yeni bir Active Directory kullanıcı grubu oluşturmak için bkz. [Azure Active Directory’de grup oluşturma ve üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Kaynakları yönetmek için kullanılacak kullanıcı grubunun nesne kimliği gerekir. 
 
@@ -288,38 +288,38 @@ Komut tamamlandığında, kaynak grubunuzda bir yönetilen uygulamanız olur.
 
 Yukarıdaki örnekte kullanılan parametrelerden bazıları şunlardır:
 
-* **kaynak grubu**: Yönetilen uygulama tanımının oluşturulduğu kaynak grubunun adıdır.
-* **kilit düzeyi**: Yönetilen kaynak grubuna yerleştirilen kilit türüdür. Müşterinin bu kaynak grubunda istenmeyen işlemler gerçekleştirmesini engeller. ReadOnly şu anda desteklenen tek kilit düzeyidir. ReadOnly belirtildiğinde müşteri yalnızca yönetilen kaynak grubunda mevcut olan kaynakları okuyabilir. Yönetilen kaynak grubuna erişim izni verilen yayımcı kimlikleri kilitli olmaz.
+* **kaynak grubu**: yönetilen uygulama tanımının oluşturulduğu kaynak grubunun adı.
+* **kilit düzeyi**: yönetilen kaynak grubuna yerleştirilmiş kilit türü. Müşterinin bu kaynak grubunda istenmeyen işlemler gerçekleştirmesini engeller. ReadOnly şu anda desteklenen tek kilit düzeyidir. ReadOnly belirtildiğinde müşteri yalnızca yönetilen kaynak grubunda mevcut olan kaynakları okuyabilir. Yönetilen kaynak grubuna erişim izni verilen yayımcı kimlikleri kilitli olmaz.
 * **authorizations**: Yönetilen kaynak grubuna izin vermek için kullanılan sorumlu kimliğini ve rol tanımı kimliğini açıklar. `<principalId>:<roleDefinitionId>` biçiminde belirtilir. Birden fazla değer kullanacaksanız `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` biçiminde belirtin. Değerler boşlukla ayrılır.
-* **paket dosyası URI**: Gerekli dosyaları içeren bir .zip paketinin konumu.
+* **paket dosyası URI 'si**: gerekli dosyaları içeren bir. zip paketinin konumu.
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Yönetilen uygulama tanımı için kendi depolama alanınızı getirin
 
-Yönetilen uygulama tanımınızı, konumu ve erişiminin düzenleyici gereksinimleriniz için tam olarak yönetilebilmesi için oluşturma sırasında sizin sağladığınız bir depolama hesabında saklamayı seçebilirsiniz.
+Yönetilen uygulama tanımınızı, oluşturma sırasında sizin tarafınızdan belirtilen bir depolama hesabı içinde depolamayı tercih edebilirsiniz. böylece, konum ve erişim düzenleme gereksinimlerinize göre tam olarak yönetilebilir.
 
 > [!NOTE]
-> Kendi depolama getir in sadece yönetilen uygulama tanımının ARM Şablonu veya REST API dağıtımları ile desteklenir.
+> Kendi depolama alanınızı getir yalnızca ARM şablonuyla desteklenir veya yönetilen uygulama tanımının REST API dağıtımlarıyla desteklenir.
 
 ### <a name="select-your-storage-account"></a>Depolama hesabınızı seçin
 
-Hizmet Kataloğu ile kullanmak için yönetilen uygulama tanımınızı içerecek [bir depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir.
+Service Catalog ile kullanmak üzere yönetilen uygulama tanımınızı içeren [bir depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir.
 
-Depolama hesabının kaynak kimliğini kopyalayın. Tanımı dağıtılırken daha sonra kullanılacaktır.
+Depolama hesabının kaynak KIMLIĞINI kopyalayın. Tanım dağıtıldığında daha sonra kullanılacaktır.
 
-### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Depolama hesabınızdaki "Beyaz Cihaz Kaynak Sağlayıcısı" için rol atamasını ayarlama
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Depolama hesabınızda "gereç kaynak sağlayıcısı" için rol atamasını ayarlama
 
-Yönetilen uygulama tanımınızın depolama hesabınıza dağıtılabilmesi için, tanım dosyalarını depolama hesabınızın kapsayıcısına yazabilmesi için katkıda bulunanlara **Appliance Resource Provider** rolüne izin vermeniz gerekir.
+Yönetilen uygulama tanımınızın depolama hesabınıza dağıtılabilmesi için, yönetim dosyalarını depolama hesabınızın kapsayıcısına yazabilmesi için **gereç kaynak sağlayıcısı** rolüne katkıda bulunan izinleri vermeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com)depolama hesabınıza gidin.
-1. Depolama hesabının erişim denetim ayarlarını görüntülemek için **Access denetimini (IAM)** seçin. Rol **atamaları** listesini görmek için Rol atamaları sekmesini seçin.
-1. Rol **atama ekle** penceresinde **Katılımcı** rolünü seçin. 
-1. Alana **Atama erişiminden** Azure **AD kullanıcısını, grubunu veya hizmet sorumlusunu**seçin.
-1. **Select**altında, **Appliance Resource Provider** rolünü arayın ve seçin.
-1. Rol atamasını kaydet.
+1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
+1. Depolama hesabının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
+1. **Rol ataması Ekle** penceresinde, **katkıda** bulunan rolünü seçin. 
+1. **Erişim ata** ALANıNDAN **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
+1. **Seç**' in altında, **gereç kaynak sağlayıcısı** rolünü arayın ve seçin.
+1. Rol atamasını kaydedin.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Yönetilen uygulama tanımını ARM Şablonuyla dağıtma 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Yönetilen uygulama tanımını ARM şablonuyla dağıtma 
 
-Tanım dosyaları kendi depolama hesabınızda depolanan ve tutulan Hizmet Kataloğu'nda yeni yönetilen bir uygulama tanımı olarak paketlenmiş yönetilen uygulamanızı dağıtmak için aşağıdaki ARM Şablonunu kullanın:
+Paketlenmiş yönetilen uygulamanızı, tanım dosyaları kendi depolama hesabınızda depolanan ve tutulan hizmet kataloğunda yeni bir yönetilen uygulama tanımı olarak dağıtmak için aşağıdaki ARM şablonunu kullanın:
    
 ```json
     {
@@ -391,12 +391,12 @@ Tanım dosyaları kendi depolama hesabınızda depolanan ve tutulan Hizmet Katal
 }
 ```
 
-Uygulamanıza **storageAccountId** adlı yeni bir özellik ekledikDefintion'Un özellikleri ve tanımınızı değeri olarak saklamak istediğiniz depolama hesabı kimliği sağladık:
+ApplicationDefintion 'un özelliklerine **Storageaccountıd** adlı yeni bir özellik ekledik ve tanımınızı kendi değeri olarak depolamak istediğiniz depolama hesabı kimliğini sağlayın:
 
-Uygulama tanım dosyalarının sağlanan depolama hesabınıza **uygulama tanımları**başlıklı bir kapsayıcıda kayda alındığını doğrulayabilirsiniz.
+Uygulama tanımı dosyalarının, **applicationdefinitions**başlıklı bir kapsayıcıda, belirtilen depolama hesabınıza kaydedildiğini doğrulayabilirsiniz.
 
 > [!NOTE]
-> Daha fazla güvenlik için, yönetilen bir uygulama tanımı oluşturabilirsiniz, şifrelemenin etkin olduğu bir [Azure depolama hesabı blob'unda](../../storage/common/storage-service-encryption.md)depolayabilirsiniz. Tanım içeriği, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izni olan kullanıcılar Hizmet Kataloğu'ndaki tanımı görebilir.
+> Ek güvenlik için, yönetilen bir uygulama tanımı oluşturmak için [şifreleme etkin olan bir Azure depolama hesabı blobu](../../storage/common/storage-service-encryption.md)içinde depolama alanı tanımlayabilirsiniz. Tanım içerikleri, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izinlerine sahip kullanıcılar, hizmet kataloğunda tanımı görebilir.
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Kullanıcıların tanımınızı görebilmesini sağlama
 

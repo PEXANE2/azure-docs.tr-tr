@@ -1,47 +1,47 @@
 ---
-title: Unity ile bir model oluşturma
-description: Bir modeli işlemek için kullanıcıya yol gösteren hızlı başlatma
+title: Unity ile model işleme
+description: Bir modeli işleme adımlarında kullanıcıya kılavuzluk eden hızlı başlangıç
 author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
 ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679789"
 ---
-# <a name="quickstart-render-a-model-with-unity"></a>Quickstart: Unity ile bir model oluşturma
+# <a name="quickstart-render-a-model-with-unity"></a>Hızlı başlangıç: Unity ile model Işleme
 
-Bu hızlı başlatma, Azure Uzaktan İşleme (ARR) hizmetini kullanarak yerleşik bir modeli uzaktan işleyen bir Birlik örneğinin nasıl çalıştırılabildiğini kapsar.
+Bu hızlı başlangıçta, yerleşik bir modeli Azure uzaktan Işleme (ARR) hizmetini kullanarak uzaktan işleyen bir Unity örneğinin nasıl çalıştırılacağı ele alınmaktadır.
 
-ARR API'nin kendisi veya yeni bir Birlik projesinin nasıl kurulması hakkında ayrıntılı bilgi vermeyececeğiz. Bu konular [Tutorial: Sıfırdan bir Birlik projesi kurma](../tutorials/unity/project-setup.md)kapsamındadır.
+ARR API 'SI ile ilgili ayrıntılarla karşılaşmayacağız veya yeni bir Unity projesi nasıl ayarlanır? Bu konular [öğreticide ele alınmıştır: bir Unity projesini sıfırdan ayarlama](../tutorials/unity/project-setup.md).
 
-Bu hızlı başlangıçta nasıl öğreneceksiniz:
+Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
 > [!div class="checklist"]
 >
 >* Yerel geliştirme ortamınızı ayarlama
->* Unity için ARR Quickstart örnek uygulamasını alın ve oluşturun
->* ARR Quickstart örnek uygulamasında bir model oluşturma
+>* Unity için ARR hızlı başlangıç örnek uygulamasını edinme ve derleme
+>* ARR hızlı başlangıç örnek uygulamasında bir model işleme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure Uzaktan İşlem hizmetine erişmek için öncelikle [bir hesap oluşturmanız](../how-tos/create-an-account.md)gerekir.
+Azure uzaktan Işleme hizmetine erişim sağlamak için önce [bir hesap oluşturmanız](../how-tos/create-an-account.md)gerekir.
 
-Aşağıdaki yazılım yüklenmelidir:
+Aşağıdaki yazılım yüklü olmalıdır:
 
-* Windows SDK 10.0.18362.0 [(indir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Visual Studio 2019'un en son sürümü [(indir)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* GIT [(indir)](https://git-scm.com/downloads)
-* Birlik 2019.3.1 [(indir)](https://unity3d.com/get-unity/download)
-  * Bu modülleri Birlik olarak yükleyin:
-    * **UWP** - Universal Windows Platform Build Desteği
-    * **IL2CPP** - Windows Yapı Desteği (IL2CPP)
+* Windows SDK 10.0.18362.0 [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* Visual Studio 2019 ' un en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* GIT [(İndir)](https://git-scm.com/downloads)
+* Unity 2019.3.1 [(indirme)](https://unity3d.com/get-unity/download)
+  * Bu modülleri Unity 'ye yükler:
+    * **UWP** -Evrensel Windows platformu derleme desteği
+    * **IL2CPP** -Windows derleme DESTEĞI (IL2CPP)
 
 ## <a name="clone-the-sample-app"></a>Örnek uygulamayı kopyalama
 
-Komut istemini açın `cmd` (Windows başlat menüsünde yazın) ve ARR örnek projesini depolamak istediğiniz bir dizine değiştirin.
+Bir komut istemi açın (Windows `cmd` Başlat menüsünde yazın) ve ARR örnek projesini depolamak istediğiniz bir dizine geçin.
 
 Aşağıdaki komutları çalıştırın:
 
@@ -51,66 +51,66 @@ cd ARR
 git clone https://github.com/Azure/azure-remote-rendering
 ```
 
-Son komut, ARR dizininde Azure Uzaktan İşleme için çeşitli örnek projeleri içeren bir alt dizini oluşturur.
+Son komut, Azure uzaktan Işleme için çeşitli örnek projelerini içeren ARR dizininde bir alt dizin oluşturur.
 
-Unity için hızlı başlatma örnek uygulaması alt dizin *Birlik /Quickstart*bulunur.
+Unity için hızlı başlangıç örnek uygulaması *Unity/hızlı başlangıç*alt dizininde bulunur.
 
-## <a name="rendering-a-model-with-the-unity-sample-project"></a>Unity örnek projesi ile bir model oluşturma
+## <a name="rendering-a-model-with-the-unity-sample-project"></a>Unity örnek projesiyle model işleme
 
-Unity Hub'ı açın ve *ARR\azure-uzaktan işleme\Unity\Quickstart* klasörü olan örnek projeyi ekleyin.
-Projeyi açın. Gerekirse, Unity'nin projeyi yüklü sürümünüze yükseltmesine izin verin.
+Unity hub 'ını açın ve *ARR\azure-Remote-rendering\Unity\Quickstart* klasörü olan örnek projeyi ekleyin.
+Projeyi açın. Gerekirse, Unity 'nin projeyi yüklü sürüme yükseltmesine izin verin.
 
-İşlediğimiz varsayılan model yerleşik bir [örnek modeldir.](../samples/sample-model.md) Bir [sonraki quickstart'ta](convert-model.md)ARR dönüşüm hizmetini kullanarak özel bir modelin nasıl dönüştürüleceğini göstereceğiz.
+İşlediğimiz varsayılan model [yerleşik bir örnek modeldir](../samples/sample-model.md). Bir [sonraki hızlı](convert-model.md)başlangıçta ARR dönüştürme hizmetini kullanarak özel bir modeli nasıl dönüştürecağız.
 
 ### <a name="enter-your-account-info"></a>Hesap bilgilerinizi girin
 
-1. Unity varlık *tarayıcısında, Sahneler* klasörüne gidin ve **Quickstart** sahnesini açın.
-1. *Hiyerarşi'den* **RemoteRendering** oyun nesnesini seçin.
-1. *Müfettiş*olarak, [hesap kimlik bilgilerinizi](../how-tos/create-an-account.md)girin.
+1. Unity varlık tarayıcısında, *sahneler* klasörüne gidin ve **hızlı başlangıç** sahneyi açın.
+1. *Hiyerarşisinden* **RemoteRendering** Game nesnesini seçin.
+1. *Denetçisinde* [Hesap kimlik bilgilerinizi](../how-tos/create-an-account.md)girin.
 
-![ARR Hesap Bilgileri](./media/arr-sample-account-info.png)
+![ARR hesap bilgileri](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure Portalı hesabınızın etki alanını yalnızca *mixedreality.azure.com*olarak görüntüler. Bu, başarılı bir şekilde bağlanmak için yeterli değildir.
-> **AccountDomain'i** `<region>.mixedreality.azure.com`, `<region>` [yakınınıza gelen kullanılabilir bölgelerden biri](../reference/regions.md)olan yere ayarlayın.
+> Azure portalı, hesabınızın etki alanını yalnızca *mixedreality.Azure.com*olarak görüntüler. Bu, başarıyla bağlanmak için yeterli değil.
+> **Accountdomain** öğesini olarak `<region>.mixedreality.azure.com`ayarlayın; `<region>` burada, [size yakın olan kullanılabilir bölgelerden biridir](../reference/regions.md).
 
-Daha sonra bu projeyi bir HoloLens'e dağıtmak ve bu cihazdan Uzaktan İşlem hizmetine bağlanmak istiyoruz. Aygıttaki kimlik bilgilerini girmenin kolay bir yolu olmadığından, hızlı başlatma örneği **Birlik sahnesindekimlik bilgilerini kaydeder.**
+Daha sonra bu projeyi bir HoloLens 'e dağıtmak ve bu cihazdan uzaktan Işleme hizmetine bağlanmak istiyoruz. Cihazdaki kimlik bilgilerini girmek için kolay bir yol olmadığı için hızlı başlangıç örneği, **kimlik bilgilerini Unity sahnede kaydeder**.
 
 > [!WARNING]
-> Kaydedilmiş kimlik bilgilerinizle projeyi gizli giriş bilgilerini sızdıracağı bir depoya kontrol etmemeyi unutmayın!
+> Kayıtlı kimlik bilgilerinizle projeyi, gizli oturum açma bilgilerini sızan bir depoya denetlediğinizden emin olun!
 
 ### <a name="create-a-session-and-view-the-default-model"></a>Oturum oluşturma ve varsayılan modeli görüntüleme
 
-Oturumu başlatmak için Unity'nin **Oynat** düğmesine basın. *Oyun* panelinde görünüm portunun alt kısmında durum metni içeren bir bindirme görmeniz gerekir. Oturumda bir dizi devlet geçişi yapılacak. **Başlangıç** durumunda, uzak VM döndürüldü, bu da birkaç dakika sürer. Başarı üzerine, **Hazır** durumuna geçişler. Şimdi oturum, bu VM'de işleme çalışma süresine ulaşmaya çalıştığı **Bağlama** durumuna girer. Başarılı olduğunda, örnek **Bağlı** duruma geçiş eder. Bu noktada, işleme modeli indirmeye başlar. Modelin boyutu nedeniyle, karşıdan yükleme birkaç dakika daha sürebilir. Sonra uzaktan işlenen model görüntülenir.
+Oturumu başlatmak için Unity 'nin **oynat** düğmesine basın. *Oyun* panelindeki görünüm penceresinin alt kısmında durum metni içeren bir kaplama görmeniz gerekir. Oturum, bir dizi durum geçişine devam edecektir. **Başlangıç** durumunda uzak VM, birkaç dakika sürer. Başarılı olduğunda, **hazırlık** durumuna geçer. Artık oturum, bu VM üzerinde işleme çalışma zamanına ulaşmaya çalıştığı **bağlantı** durumuna girer. Başarılı olduğunda, örnek **bağlı** duruma geçiş yapar. Bu noktada, işleme için model indirilbaşlayacaktır. Modelin boyutu nedeniyle indirme birkaç dakika daha sürebilir. Daha sonra uzaktan işlenen model görüntülenir.
 
-![Örnekten çıktı](media/arr-sample-output.png)
+![Örnekten çıkış](media/arr-sample-output.png)
 
-Tebrikler! Şimdi uzaktan işlenmiş bir model görüntüleme!
+Tebrikler! Artık uzaktan işlenmiş bir modeli görüntülüyorsunuz!
 
-## <a name="inspecting-the-scene"></a>Olay yerini inceleme
+## <a name="inspecting-the-scene"></a>Sahneyi İnceleme
 
-Uzaktan işleme bağlantısı çalıştırıladıktan sonra, Denetçi paneli ek durum bilgileriyle güncellenir:
+Uzaktan işleme bağlantısı çalışmaya başladıktan sonra Denetçi paneli ek durum bilgileriyle güncelleştirilir:
 
 ![Unity örnek oynama](./media/arr-sample-configure-session-running.png)
 
-Artık yeni düğümü seçerek ve Denetçi'deki çocukları **göster'i** tıklatarak sahne grafiğini keşfedebilirsiniz.
+Artık yeni düğümü seçip Inspector 'da **alt öğeleri göster** ' i tıklatarak sahne grafiğini inceleyebilirsiniz.
 
-![Birlik Hiyerarşisi](./media/unity-hierarchy.png)
+![Unity hiyerarşisi](./media/unity-hierarchy.png)
 
-Olay yerinde kesik bir [düzlem](../overview/features/cut-planes.md) nesnesi var. Özelliklerinde etkinleştirmeyi ve hareket ettirin:
+Sahnede [kesilmiş bir düzlem](../overview/features/cut-planes.md) nesnesi var. Özelliklerinde etkinleştirmeyi ve taşınmasını deneyin:
 
-![Kesme düzlemini değiştirme](media/arr-sample-unity-cutplane.png)
+![Kesilen düzlemi değiştirme](media/arr-sample-unity-cutplane.png)
 
-Dönüşümleri eşitlemek için **şimdi Eşitle'yi** tıklatın veya **her kareyi Eşitle** seçeneğini denetleyin. Bileşen özellikleri için bunları değiştirme yeterlidir.
+Dönüşümleri eşitlemek için **Şimdi Eşitle** ' ye tıklayın ya da **her kareyi Eşitle** seçeneğini işaretleyin. Bileşen özellikleri için, yalnızca bunları değiştirmeniz yeterlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki hızlı başlangıçta, uzaktan işlenen modeli orijinal boyutunda görüntülemek için örneği bir HoloLens'e dağıtacağız.
+Sonraki hızlı başlangıçta, özgün boyutunda uzaktan işlenmiş modeli görüntülemek için örneği bir HoloLens 'e dağıtacağız.
 
 > [!div class="nextstepaction"]
-> [Quickstart: HoloLens'e Birlik örneğini dağıtın](deploy-to-hololens.md)
+> [Hızlı başlangıç: Unity örneğini HoloLens 'e dağıtma](deploy-to-hololens.md)
 
-Alternatif olarak, örnek bir masaüstü bilgisayara da dağıtılabilir.
+Alternatif olarak, örnek bir masaüstü BILGISAYARA da dağıtılabilir.
 
 > [!div class="nextstepaction"]
-> [Quickstart: Unity örneğini Masaüstüne dağıtın](deploy-to-desktop.md)
+> [Hızlı başlangıç: Unity örneğini masaüstüne dağıtma](deploy-to-desktop.md)

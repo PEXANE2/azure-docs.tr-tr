@@ -1,77 +1,77 @@
 ---
-title: Azure Dizüstü Bilgisayarlar Önizleme ile GitHub'dan bir Jupyter dizüstü bilgisayar klonlama
-description: Bir Jupyter dizüstü bilgisayarını GitHub deposundan hızla klonla ve Azure Not Defterleri hesabınızda çalıştırın.
+title: Azure Notebooks Preview ile bir Jupyter Not defterini GitHub 'dan kopyalama
+description: Bir GitHub deposundan hızlı bir şekilde Jupyter Not defterini kopyalayın ve Azure Notebooks hesabınızda çalıştırın.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77064606"
 ---
-# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Dizüstü Bilgisayarlar Önizleme'de not defterini klonlama
+# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede bir not defteri kopyalama
 
-Bu hızlı başlangıçta, GitHub'da depolanan bir Jupyter not defterini Azure Dizüstü Bilgisayarlar hesabına kopyalarsınız. 
+Bu hızlı başlangıçta, GitHub ' da depolanan bir Jupyter Not defterini Azure Notebooks hesabına kopyalayabilirsiniz. 
 
-GitHub depoları Jupyter dizüstü bilgisayarlar için depolama ve sürüm denetimi sağlar. Ortak çalışanlar depoların yerel kopyalarını korur ve not defterlerini bu kopyalardan çalıştırın. GitHub'dan Bir Jupyter not defterini Azure Notebook hesabınıza klonlamak, not defterinin bağımsız bir kopyasını oluşturur. Değişiklikler yalnızca Azure Not Defterleri hesabınızda depolanır ve özgün GitHub deposunu etkilemez. 
+GitHub depoları, Jupyıter Not defterleri için depolama ve sürüm denetimi sağlar. Ortak çalışanlar depoların yerel kopyalarını korur ve not defterlerini bu kopyalardan çalıştırır. Bir Jupyter Not defterini GitHub 'dan Azure Notebooks hesabınıza kopyalama, Not defterinin bağımsız bir kopyasını oluşturur. Değişiklikler yalnızca Azure Notebooks hesabınızda depolanır ve özgün GitHub deposunu etkilemez. 
 
-Azure Not Defterleri klonunuz bulutta olduğundan, bunu yerel kopya yapmaya veya bilgisayarlarına Jupyter yüklemesi gerekmeyen ortak çalışanlarla paylaşabilirsiniz. Ayrıca, yalnızca kendi projeniz için bir başlangıç noktası olarak veya veri dosyaları elde etmek için bir not defterini klonlaabilirsiniz. 
+Azure Notebooks kopya bulutta olduğundan, bu dosyayı yerel kopya yapmadan veya bilgisayarlarında Jupyıter 'ın yüklü olması gereken ortak çalışanlarla paylaşabilirsiniz. Ayrıca, bir not defterini yalnızca kendi projesi için bir başlangıç noktası olarak kopyalayabilir veya veri dosyalarını elde edebilirsiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 Yok.
 
-## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Bilişsel Hizmetleri dizüstü bilgisayarlarını klonla
+## <a name="clone-azure-cognitive-services-notebooks"></a>Azure bilişsel hizmetler not defterlerini Kopyala
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-1. Azure [Not Defterleri'ne](https://notebooks.azure.com) gidin ve oturum açın. Ayrıntılar için [Quickstart - Azure Not Defterlerinde oturum açın.](quickstart-sign-in-azure-notebooks.md)
+1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md).
 
-1. Herkese açık profil sayfanızdan, sayfanın üst kısmında **Projelerim'i** seçin:
+1. Ortak profil sayfanızda sayfanın en üstündeki **Projelerim** ' nı seçin:
 
-    ![Tarayıcı penceresinin üst kısmındaki Projelerim bağlantısı](media/quickstarts/my-projects-link.png)
+    ![Projelerim tarayıcı penceresinin üst kısmında bağlantı](media/quickstarts/my-projects-link.png)
 
-1. **Projelerim** sayfasında yukarı ok düğmesini seçin (klavye kısayolu: U; tarayıcı penceresi yeterince geniş olduğunda düğme **GitHub Repo Yükle** olarak görünür):
+1. **Projelerim** sayfasında, yukarı ok düğmesini (klavye kısayolu: U; tarayıcı penceresi yeterince geniş olduğunda **GitHub deposu karşıya yükle** olarak görünür) seçin:
 
-    ![Projelerim sayfasına GitHub Repo komutunu yükleyin](media/quickstarts/upload-github-repo-command.png)
+    ![Projelerim sayfasında GitHub deposu komutunu karşıya yükle](media/quickstarts/upload-github-repo-command.png)
 
-1. Aşağıdaki ayrıntıları görünen, giren veya ayarlayan **Upload GitHub Deposu'nda** **Içe Aktar'ı**seçin:
+1. Görüntülenen **GitHub deposunu karşıya yükle** ' de, aşağıdaki ayrıntıları girin veya ayarlayın ve ardından **içeri aktar**' ı seçin:
 
-   - **GitHub deposu**: Microsoft/cognitive-services-notebook (bu ad, Azure Bilişsel Hizmetler için Jupyter dizüstü bilgisayarlarını [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)klonlar).
-   - **Klon özyinelemeli:**(temizlenmiş)
-   - **Proje adı**: Bilişsel Hizmetler Klonu
-   - **Proje Kimliği**: bilişsel-hizmetler-klon
-   - **Genel**: (temizlendi)
+   - **GitHub deposu**: Microsoft/bilişsel hizmetler-not defterleri (Bu ad, Azure bilişsel Hizmetleri Için Jupyter Not [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)defterlerini klonlar).
+   - **Yinelemeli olarak Kopyala**: (işaretsiz)
+   - **Proje adı**: bilişsel hizmetler kopyası
+   - **Proje kimliği**: bilişsel hizmetler-Kopyala
+   - **Genel**: (işaretsiz)
 
-     ![Repo bilgilerini toplamak için GitHub Repo açılır penceresini yükleyin](media/quickstarts/upload-github-repo-popup.png)
+     ![Depo bilgilerini toplamak için GitHub deposu yükleme açılan penceresini karşıya yükleyin](media/quickstarts/upload-github-repo-popup.png)
 
-1. İşlem tamamlarken sabırlı olun; bir depo klonlama birkaç dakika sürebilir.
+1. İşlem tamamlanırken sabırlı olun; bir depoyu kopyalamak birkaç dakika sürebilir.
 
-1. Klonlama tamamlandıktan sonra Azure Not Defterleri sizi tüm dosyaların kopyalarını görebileceğiniz yeni projeye götürür.
+1. Kopyalama işlemi tamamlandıktan sonra, Azure Notebooks tüm dosyaların kopyalarını görebileceğiniz yeni projeye götürür.
 
     [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
 
-## <a name="share-a-notebook"></a>Not defterini paylaşma
+## <a name="share-a-notebook"></a>Bir not defteri paylaşma
 
-1. Klonlanan projenin kopyasını paylaşmak **için, Paylaşım** denetimini kullanın veya bir bağlantı edinin, bağlantıyı içeren HTML veya Markdown kodu edinin veya bağlantıyla bir e-posta iletisi oluşturun:
+1. Klonlanan proje kopyanızı paylaşmak için, **paylaşma** denetimini kullanın veya bir bağlantı alın, bağlantıyı içeren HTML veya markı kodu alın veya şu bağlantıyla bir e-posta iletisi oluşturun:
 
-    ![Proje payı komutu](media/quickstarts/share-project-command.png)
+    ![Proje paylaşma komutu](media/quickstarts/share-project-command.png)
 
-1. Projeyi klonlarken **Genel** seçeneği temizlediğiniz için, klon özeldir. Kopyanızı herkese açık hale getirmek için **Proje Ayarları'nı**seçin, açılır pencerede **Herkese Açık proje** seçeneğini ayarlayın ve ardından **Kaydet'i**seçin.
+1. Projeyi kopyalarken **ortak** seçeneği temizlediğiniz için kopya özeldir. Kopyanızı ortak hale getirmek için **proje ayarları**' nı seçin, açılan pencerede **ortak proje** seçeneğini ayarlayın ve ardından **Kaydet**' i seçin.
 
-1. Çalıştırmak için projede bir not defteri seçin. Örneğin, Azure Bilişsel Hizmetler deposundaki her dizüstü bilgisayarın kendi kendine yeten Quickstart'ı vardır. Aşağıdaki resim, Bilişsel Hizmetler API abonelik anahtarı nı ekledikten ve "yavru" arama terimini "bunnies" olarak değiştirdikten sonra BingImageSearchAPI not defterini kullanmanın sonucunu gösterir:
+1. Projede çalıştırmak için bir not defteri seçin. Örneğin, Azure bilişsel hizmetler deposundaki her bir not defteri, kendi kendine dahil olan kendi hızlı başlangıçsıdır. Aşağıdaki görüntüde, bir bilişsel hizmetler API 'SI abonelik anahtarı eklendikten ve "Puppies" arama terimini "bies" olarak değiştirerek Bingimagesearchapı Not defterinin kullanılması sonucu gösterilmektedir:
 
-    ![GitHub'dan klonlanmış Jupyter dizüstü bilgisayar çalıştırma](media/quickstarts/clone-notebook-result.png)
+    ![GitHub 'dan kopyalanmış Jupyter Not defterini çalıştırma](media/quickstarts/clone-notebook-result.png)
 
-1. Not defterini çalıştırmayı bitirdiğinizde, **Dosya** > **Kapat'ı** seçin ve not defterini ve tarayıcı penceresini kapatmak için durun.
+1. Not defterini çalıştırmayı tamamladığınızda, **Dosya** > **Kapat** ' ı ve sonra da Durdur ' u seçerek not defterini ve tarayıcı penceresini kapatın.
 
-1. Projede tek bir not defterini paylaşmak için not defterine sağ tıklayın ve **Kopyala bağlantısını** seçin (klavye kısayolu: y):
+1. Projede tek bir not defterini paylaşmak için not defterine sağ tıklayıp **Bağlantıyı Kopyala** ' yı seçin (klavye kısayolu: y):
 
     ![Tek bir not defterine bağlantı kopyalamak için bağlam menüsü komutu](media/quickstarts/copy-link-to-individual-notebook.png)
 
-1. Not defteri dışındaki dosyaları yeniden deletmek için projedeki dosyayı sağ tıklatın ve **Dosyayı Edit'i** seçin (klavye kısayolu: i). Varsayılan eylem, **Çalıştır** (klavye kısayolu: r), yalnızca dosya içeriğini gösterir ve düzenlemeye izin vermez.
+1. Not defterleri dışındaki dosyaları düzenlemek için, projedeki dosyaya sağ tıklayın ve **dosyayı Düzenle** ' yi seçin (klavye kısayolu: ı). Varsayılan eylem, **Çalıştır** (klavye kısayolu: r) yalnızca dosya içeriğini gösterir ve düzenlenmesine izin vermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Doğrusal regresyon yapmak için bir Jupyter dizüstü bilgisayar oluşturun ve çalıştırın](tutorial-create-run-jupyter-notebook.md)
+> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md)

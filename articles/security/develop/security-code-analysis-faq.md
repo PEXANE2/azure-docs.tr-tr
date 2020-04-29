@@ -1,6 +1,6 @@
 ---
-title: Microsoft Güvenlik Kodu Analizi belgeleri SSS
-description: Bu makale, Microsoft Güvenlik Kodu Çözümlemesi uzantısı hakkında bir SSS içerir
+title: Microsoft Güvenlik kodu çözümleme belgeleri SSS
+description: Bu makale, Microsoft Güvenlik kodu analiz uzantısı hakkında bir SSS içerir
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -13,98 +13,98 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81460231"
 ---
 # <a name="frequently-asked-questions"></a>Sık sorulan sorular
-Sorularınız mı var? Daha fazla bilgi için aşağıdaki SSS'ye göz atın.
+Sorularınız mı var? Daha fazla bilgi için aşağıdaki SSS bölümüne bakın.
 
 ## <a name="general-faq"></a>Genel SSS
 
-### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Uzantıyı Azure DevOps örneği yerine Visual Studio Team Foundation Server örneğime yükleyebilir miyim?
+### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Uzantıyı bir Azure DevOps örneği yerine Visual Studio Team Foundation Server örneğine yükleyebilir miyim?
 
-Hayır. Uzantı, Visual Studio Team Foundation Server için indirme ve yükleme için kullanılamaz.
+Hayır. Uzantı Visual Studio Team Foundation Server İndiriyor ve yüklenmeye hazır değil.
 
-### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Yapımla Microsoft Güvenlik Kodu Çözümlemesi'ni çalıştırmam gerekiyor mu? 
+### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Microsoft Güvenlik kodu çözümlemesini benim yapımda çalıştırdım mı? 
 
-Belki. Analiz aracının türüne bağlıdır. Kaynak kodu gerekli olan tek şey olabilir veya yapı çıktısı gerekebilir.
+Belki. Analiz aracının türüne bağlıdır. Kaynak kodu, gereken tek şey olabilir veya derleme çıktısı gerekli olabilir.
 
-Örneğin, Kimlik Bilgisi Tarayıcısı (CredScan) kod deposunun klasör yapısındaki dosyaları analiz eder. Bu çözümleme nedeniyle, sonuç almak için Tek başına bir yapıda CredScan ve Publish Security Analysis Logs oluşturma görevlerini çalıştırabilirsiniz.
+Örneğin, kimlik bilgisi tarayıcısı (CredScan), dosyaları kod deposunun klasör yapısı içinde analiz eder. Bu analiz nedeniyle, sonuçları almak için bir tek başına derlemede CredScan ve güvenlik Analizi günlüklerini Yayımla oluşturma görevlerini çalıştırabilirsiniz.
 
-BinSkim gibi yapı sonrası yapıları analiz eden diğer araçlar için, önce yapının oluşturulması gerekir.
+Derleme sonrası yapıtları çözümleyen BinSkim gibi diğer araçlar için öncelikle derleme gereklidir.
 
-### <a name="can-i-break-my-build-when-results-are-found"></a>Sonuçlar bulunduğunda yapımı bozabilir miyim?
+### <a name="can-i-break-my-build-when-results-are-found"></a>Sonuçlar bulunduğunda derlemeden bölebilir miyim?
 
-Evet. Herhangi bir araç günlük dosyasında bir sorun veya sorun bildirdiğinde bir yapı sonu tanıtabilirsiniz. Analiz Sonrası oluşturma görevini eklemeniz ve yapıyı kırmak istediğiniz herhangi bir araç için onay kutusunu seçmeniz.
+Evet. Bir araç, günlük dosyasında bir sorun veya sorun bildirdiğinde, derleme kesmesi oluşturabilirsiniz. Analiz sonrası derleme görevini eklemeniz yeterlidir ve derlemeyi bölmek istediğiniz herhangi bir araçla ilgili onay kutusunu seçin.
 
-Çözümleme Sonrası görevin UI'sinde, herhangi bir araç yalnızca hataları veya her iki hata ve uyarı yı bildirdiğinde yapıyı kesmeyi seçebilirsiniz.
+Analiz sonrası görevinin Kullanıcı arabiriminde, herhangi bir araç yalnızca hata veya hata ve uyarı bildirdiğinde derlemeyi kesmeyi seçebilirsiniz.
 
-### <a name="how-do-the-command-line-arguments-in-azure-devops-differ-from-those-arguments-in-the-standalone-desktop-tools"></a>How do the command-line arguments in Azure DevOps differ from those arguments in the standalone desktop tools? 
+### <a name="how-do-the-command-line-arguments-in-azure-devops-differ-from-those-arguments-in-the-standalone-desktop-tools"></a>Azure DevOps 'daki komut satırı bağımsız değişkenleri, tek başına masaüstü araçlarında bu bağımsız değişkenlerden farklı midir? 
 
-Azure DevOps yapı görevleri çoğunlukla, güvenlik araçlarının komut satırı bağımsız değişkenlerinin etrafındaki doğrudan sarmalayıcılardır. Normalde bir komut satırı aracına geçtiğiniz her şeyi oluşturma görevine bağımsız değişken olarak geçirebilirsiniz.
+Çoğu bölümde, Azure DevOps derleme görevleri, güvenlik araçlarının komut satırı bağımsız değişkenleri etrafında doğrudan sarmalayıcılardır. Bir yapı görevine, normalde bir komut satırı aracına geçirdiğiniz her şeyi bağımsız değişken olarak geçirebilirsiniz.
 
-Fark edilir:
+Dikkat çekici farklılıklar:
 
-- Araçlar $(Build.SourcesDirectory) aracısının kaynak klasöründen veya %BUILD_SOURCESDIRECTORY'den çalışır. Örnek C:\agent\_work\1\s'dir.
-- Bağımsız değişkenlerde yollar daha önce listelenen kaynak dizinin köküne göreli olabilir. Yollar da mutlak olabilir. Azure DevOps Yapı Değişkenleri'ni kullanarak veya yerel kaynakların bilinen dağıtım konumlarına sahip bir şirket içi aracı çalıştırarak mutlak yollar elde elabilirsiniz.
-- Araçlar otomatik olarak bir çıktı dosya yolu veya klasör sağlar. Bir yapı görevi için bir çıktı konumu sağlarsanız, bu konum yapı aracısı üzerindeki günlüklerin iyi bilinen konumuna giden bir yol ile değiştirilir
-- Bazı ek komut satırı bağımsız değişkenleri bazı araçlar için değiştirilir. Bir örnek, GUI'nin başlatılmamasından emin olan seçeneklerin eklenmesi veya kaldırılmasıdır.
+- Araçlar, aracının $ (Build. SourcesDirectory) kaynak klasöründen veya% BUILD_SOURCESDIRECTORY% öğesinden çalıştırılır. Örnek, C:\agent\_work\1\dizinidir.
+- Bağımsız değişkenlerdeki yollar, daha önce listelenen kaynak dizinin köküne göre olabilir. Yollar da mutlak olabilir. Azure DevOps derleme değişkenlerini kullanarak ya da yerel kaynakların bilinen dağıtım konumlarına sahip şirket içi bir aracı çalıştırarak mutlak yollar alırsınız.
+- Araçlar otomatik olarak bir çıkış dosyası yolu veya klasörü sağlar. Derleme görevi için bir çıkış konumu sağlarsanız, bu konum derleme aracısındaki iyi bilinen günlüklerin konumuyla birlikte değişir
+- Bazı araçlar için bazı ek komut satırı bağımsız değişkenleri değiştirilmiştir. Bir örnek, GUI 'nin başlatılmasından emin olan seçeneklerin eklenmesi veya kaldırılması.
 
-### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Bir Azure DevOps Yapısı'ndaki birden çok depoda Kimlik Bilgisi Tarayıcısı gibi bir yapı görevi çalıştırabilir miyim?
+### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Azure DevOps derlemesinde birden fazla depoda kimlik bilgisi tarayıcısı gibi bir yapı görevini çalıştırabilir miyim?
 
-Hayır. Güvenli geliştirme araçlarını tek bir ardışık ardışık alanda birden çok depoda çalıştırmak desteklenmez.
+Hayır. Güvenli geliştirme araçlarının tek bir işlem hattında birden çok depoda çalıştırılması desteklenmez.
 
-### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>Belirttiğim çıktı dosyası oluşturulmuyor veya belirttiğim çıktı dosyasını bulamıyorum
+### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>Belirtdiğim çıkış dosyası oluşturulmıyor veya belirtilen çıkış dosyasını bulamıyorum
 
-Yapı görevleri bazı kullanıcı girişlerini filtreler. Özellikle bu soru için, oluşturulan çıktı dosyasının konumunu yapı aracısı üzerinde ortak bir konum olarak güncelleştirin. Bu konum hakkında daha fazla bilgi için aşağıdaki sorulara bakın.
+Derleme görevleri bazı kullanıcı girişlerini filtreleyebilir. Özellikle bu soru için, oluşturulan çıkış dosyasının konumunu yapı aracısında ortak bir konum olacak şekilde güncelleştirirler. Bu konum hakkında daha fazla bilgi için aşağıdaki sorulara bakın.
 
-### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Kaydedilen araçlar tarafından oluşturulan çıktı dosyaları nerede? 
+### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Araçlar tarafından oluşturulan çıkış dosyaları nerede kaydedilir? 
 
-Yapı görevleri, yapı aracısı üzerinde bu iyi bilinen konuma otomatik olarak çıktı yolları\_ekler: $(Agent.BuildDirectory) sdt\logs. Bu konumda standartlaştırdığımız için, kod çözümleme günlükleri üreten veya tüketen tüm takımlar çıktıya erişebilir.
+Derleme görevleri, derleme aracısında bu iyi bilinen konuma çıkış yolları otomatik olarak ekler: $ (Agent. BuildDirectory)\_sdt\logs. Bu konumda standartlaştırdığımız için, kod analizi günlüklerini üreten veya kullanan tüm ekipler çıkışa erişebilir.
 
-### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Barındırılan bir yapı aracısı üzerinde bu görevleri çalıştırmak için bir yapı sıraya miyim? 
+### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Bu görevleri barındırılan bir yapı aracısında çalıştırmak için bir derlemeyi sıraya alabilir miyim? 
 
 Evet. Uzantıdaki tüm görevler ve araçlar barındırılan bir yapı aracısında yürütülebilir.
 
 >[!NOTE]
-> Kötü Amaçlı Yazılımdan Koruma Tarayıcısı oluşturma görevi, Windows Defender etkinleştirilmiş bir yapı aracısı gerektirir. Hosted Visual Studio 2017 ve daha sonra böyle bir ajan sağlar. Yapı görevi Visual Studio 2015 barındırılan temsilcide çalışmaz.
+> Kötü amaçlı yazılımdan koruma tarayıcı oluşturma görevi, Windows Defender 'ın etkinleştirildiği bir derleme Aracısı gerektirir. Barındırılan Visual Studio 2017 ve üzeri, böyle bir aracı sağlar. Derleme görevi, Visual Studio 2015 barındırılan aracısında çalışmaz.
 >
-> Bu aracılar üzerinde imzalar güncelleştirilemese de, imzalar her zaman üç saatten daha eski olmalıdır.
+> İmzalar bu aracılarda güncelleştirilemeyebilir, ancak imzaların her zaman üç saat öncesine eşit olması gerekir.
 
-### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>Bu yapı görevlerini, yapı ardışık bir yapı nın aksine, bir sürüm ardışık hattının parçası olarak çalıştırabilir miyim?
+### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>Derleme işlem hattının aksine, bu derleme görevlerini bir yayın işlem hattının parçası olarak çalıştırabilir miyim?
 
 Çoğu durumda, evet.
 
-Ancak Azure DevOps, bu görevler yapılarını yayımladığında sürüm ardışık hatlarında görev çalıştırmayı desteklemez. Bu destek eksikliği, Yayımlama Güvenlik Çözümlemesi Günlükleri görevinin bir sürüm ardışık alanında başarılı bir şekilde çalışmasını engeller. Görev bunun yerine açıklayıcı bir hata iletisi ile başarısız olur.
+Ancak, Azure DevOps, bu görevler yapıtları yayımladığınızda, yayın işlem hatları içinde görevleri çalıştırmayı desteklemez. Bu destek eksikliği, bir yayın ardışık düzeninde güvenlik Analizi günlüklerini Yayımla görevinin başarıyla çalışmasını önler. Bunun yerine görev, açıklayıcı bir hata iletisiyle başarısız olur.
 
-### <a name="from-where-do-the-build-tasks-download-the-tools"></a>Yapı görevleri araçları nereden indirmektedir?
+### <a name="from-where-do-the-build-tasks-download-the-tools"></a>Derleme görevleri nereden araçlar indirir?
 
-Yapı görevleri, araçların NuGet paketlerini [Azure DevOps Paket Yönetimi akışından](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)indirebilir. Yapı görevleri, yapı aracısının üzerine önceden yüklenmesi gereken Düğüm Paket Yöneticisi'ni de kullanabilir. Bu tür yükleme bir örnek komut **u pm tslint yükleyin.**
+Yapı görevleri, araçların NuGet paketlerini [Azure DevOps paket yönetimi akışından](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)indirebilir. Yapı görevleri, derleme aracısında önceden yüklenmiş olması gereken düğüm paket yöneticisini da kullanabilir. Bu tür bir yüklemeye örnek **NPM Install tslint**komutu vardır.
 
-### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>Uzantıyı yüklemenin Azure DevOps kuruluşum üzerinde ne gibi bir etkisi var? 
+### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>Uzantıyı yükleyen efekt, Azure DevOps kuruluşuma sahip mi? 
 
-Bunların yüklenmesi nden sonra, uzantı tarafından sağlanan güvenlik yapısı görevleri kuruluşunuzdaki tüm kullanıcılar tarafından kullanılabilir hale gelir. Bir Azure Ardışık Alanı oluşturduğunuzda veya bunları yaptığınızda, bu görevler yapı görev koleksiyonu listesinden kullanılabilir. Aksi takdirde, uzantını Azure DevOps kuruluşunuza yüklemenin hiçbir etkisi olmaz. Yükleme, hesap ayarlarını, proje ayarlarını veya ardışık hatları değiştirmez.
+Yükleme sonrasında, uzantı tarafından sağlanan güvenlik derleme görevleri kuruluşunuzdaki tüm kullanıcılar için kullanılabilir hale gelir. Bir Azure işlem hattı oluşturduğunuzda veya düzenlediğinizde, bu görevler yapı-görev koleksiyonu listesinden kullanılabilir. Aksi takdirde, uzantıyı Azure DevOps kuruluşunuzda yüklemek hiçbir etkiye sahip değildir. Yükleme, hesap ayarlarını, proje ayarlarını veya işlem hatlarını değiştirmez.
 
-### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Uzantıyı yüklemek varolan Azure Ardışık Hatlarımı değiştirir mi? 
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Uzantının yüklenmesi var olan Azure Pipelines mi değiştirilsin mi? 
 
-Hayır. Uzantıyı yüklemek, güvenlik yapısı görevlerini ardışık hatlarınıza ek olarak kullanılabilir hale getirir. Araçların yapı işleminizle çalışabilmesi için yapı tanımları eklemeniz veya güncelleştirmeniz gerekir.
+Hayır. Uzantının yüklenmesi, işlem hatlarınızın yanı sıra güvenlik yapı görevlerinin kullanılabilmesini sağlar. Araçların yapı süreciyle çalışabilmesi için derleme tanımlarını eklemeniz veya güncelleştirmeniz gerekir.
 
-## <a name="task-specific-faq"></a>Göreve özel SSS
+## <a name="task-specific-faq"></a>Göreve özgü SSS
 
-Görevler oluşturmaya özgü sorular bu bölümde listelenmiştir.
+Derleme görevlerine özgü sorular bu bölümde listelenmiştir.
 
-### <a name="credential-scanner"></a>Kimlik Bilgisi Tarayıcı
+### <a name="credential-scanner"></a>Kimlik bilgisi tarayıcısı
 
-#### <a name="what-are-common-suppression-scenarios-and-examples"></a>Ortak bastırma senaryoları ve örnekleri nelerdir?
+#### <a name="what-are-common-suppression-scenarios-and-examples"></a>Yaygın gizleme senaryoları ve örnekleri nelerdir?
 
-Aşağıda, en yaygın iki bastırma senaryosunun ayrıntıları verilmiştir.
+En yaygın gizleme senaryolarından ikisi için Ayrıntılar aşağıda verilmiştir.
 
-##### <a name="to-suppress-all-occurrences-of-a-given-secret-within-the-specified-path"></a>Belirtilen yol içinde belirli bir sırrın tüm oluşumlarını bastırmak için
+##### <a name="to-suppress-all-occurrences-of-a-given-secret-within-the-specified-path"></a>Belirli bir gizli dizi içindeki tüm oluşumları belirtilen yolda gizlemek için
 
-Aşağıdaki örnekte gösterildiği gibi, CredScan çıktı dosyasından gelen sırrın karma anahtarı gereklidir.
+Aşağıdaki örnekte gösterildiği gibi, CredScan çıkış dosyasındaki gizli dizinin karma anahtarı gereklidir.
 
         {
             "tool": "Credential Scanner",
@@ -117,21 +117,21 @@ Aşağıdaki örnekte gösterildiği gibi, CredScan çıktı dosyasından gelen 
         }
 
 >[!WARNING]
-> Karma anahtar, eşleşen değerin veya dosya içeriğinin bir bölümü tarafından oluşturulur. Herhangi bir kaynak kodu düzeltmesi karma anahtarı değiştirebilir ve bastırma kuralını devre dışı edebilir.
+> Karma anahtar, eşleşen değerin veya dosya içeriğinin bir kısmı tarafından oluşturulur. Herhangi bir kaynak kodu düzeltmesi, karma anahtarı değiştirebilir ve gizleme kuralını devre dışı bırakabilir.
 
-##### <a name="to-suppress-all-secrets-in-a-specified-file-or-to-suppress-the-secrets-file-itself"></a>Belirli bir dosyadaki tüm sırları bastırmak veya sırları dosyanın kendisini bastırmak için
+##### <a name="to-suppress-all-secrets-in-a-specified-file-or-to-suppress-the-secrets-file-itself"></a>Belirli bir dosyadaki tüm gizli dizileri bastırmak veya gizli dizileri dosyanın kendisini bastırmak için
 
-Dosya ifadesi bir dosya adı olabilir. Ayrıca, tam bir dosya yolunun veya dosya adının temel adı parçası da olabilir. Joker karakterler desteklenmez.
+Dosya ifadesi bir dosya adı olabilir. Ayrıca, tam dosya yolunun veya dosya adının baseName bir bölümü de olabilir. Joker karakterler desteklenmez.
 
-Aşağıdaki örnekler, InputPath \<>\src\JS\lib\angular.js dosyasının nasıl bastırılabildiğini gösterir
+Aşağıdaki örneklerde inputPath> \src\JS\lib\angular.js dosyasının \<nasıl bastıralınacağını gösterilmektedir
 
-Geçerli bastırma kurallarına örnekler:
+Geçerli gizleme kuralları örnekleri:
 
-- \<InputPath>\src\JS\lib\angular.js - belirtilen yolda dosyayı bastırır
+- \<Inputpath> \src\JS\lib\angular.js-belirtilen yoldaki dosyayı bastırır
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
-- açısal.js - aynı ada sahip herhangi bir dosyayı bastırır
+- Angular. js-aynı ada sahip herhangi bir dosyayı bastırır
 
         {
             "tool": "Credential Scanner",
@@ -148,80 +148,80 @@ Geçerli bastırma kurallarına örnekler:
         }      
 
 >[!WARNING] 
-> Dosyaya eklenen gelecekteki tüm sırlar da otomatik olarak bastırılır.
+> Dosyaya eklenen tüm sonraki gizlilikler da otomatik olarak bastırılır.
 
-#### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>Sırları yönetmek için önerilen yönergeler nelerdir?
+#### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>Gizli dizileri yönetmeye yönelik tavsiye edilen yönergeler nelerdir?
 
-Aşağıdaki kaynaklar, sırları güvenli bir şekilde yönetmenize ve uygulamalarınız içinden hassas bilgilere erişmenize yardımcı olur:
+Aşağıdaki kaynaklar, gizli dizileri güvenli bir şekilde yönetmenize ve uygulamalarınızın içinden hassas bilgilere erişmenize yardımcı olur:
 
  - [Azure Key Vault](../../key-vault/index.yml)
- - [Azure Etkin Dizin (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
  - [Azure AD Yönetilen Hizmet Kimliği (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)
- - [Azure Uygulama Hizmeti ve Azure İşlerinde yönetilen kimlikler](../../app-service/overview-managed-identity.md)
+ - [Azure App Service ve Azure Işlevlerinde Yönetilen kimlikler](../../app-service/overview-managed-identity.md)
  - [AppAuthentication kitaplığı](../../key-vault/general/service-to-service-authentication.md)
 
 
-Daha fazla bilgi için, [Bulut'ta Sırları Güvenli Bir Şekilde Yönetme](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)blog yazısına bakın.
+Daha fazla bilgi için bkz. Web günlüğü gönderisi, [bulutta gizli dizileri güvenli bir şekilde yönetme](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
 
-#### <a name="can-i-write-my-own-custom-searchers"></a>Kendi özel arama ekibimi yazabilir miyim?
+#### <a name="can-i-write-my-own-custom-searchers"></a>Kendi özel aramalarımı yazabilir miyim?
 
-Kimlik Bilgisi Tarayıcı, buildsearchers.xml dosyasında yaygın olarak tanımlanan bir içerik arama kümesine dayanır. Dosya, **ContentSearcher** nesnesini temsil eden bir Dizi XML seri nesnelerini içerir. Program iyi test edilmiş arama bir dizi dağıtılır. Ama çok kendi özel arama uygulayabilirsiniz.
+Kimlik bilgisi tarayıcısı, buildsearchers. xml dosyasında yaygın olarak tanımlanan bir dizi içerik arayanları kullanır. Dosya, bir **Contentsearcher** nesnesini temsil eden bir XML serileştirilmiş nesneler dizisi içerir. Program, iyi test edilmiş bir arayanlar kümesiyle dağıtılır. Ancak kendi özel aramalarınızı da uygulayabilirsiniz.
 
-İçerik arayan bir kullanıcı aşağıdaki gibi tanımlanır:
+Bir içerik arayici aşağıdaki gibi tanımlanır:
 
-- **Adı**: Kimlik Bilgisi Tarayıcı çıktı dosyalarında kullanılacak açıklayıcı arama adı. Arama adlarını kullanmak için deve kasa adlandırma kuralını kullanmanızı tavsiye ettik.
-- **RuleId**: Arama yapılanın kararlı opak kimliği:
-    - Bir Kimlik Bilgisi Tarayıcı varsayılan arayıcısı CSCAN0010, CSCAN0020 veya CSCAN0030 gibi bir **RuleId** değeri atanır. Son basamak, arama grubu gruplarının normal ifadeler (regex) aracılığıyla birleştirilmesi veya bölünmesi için ayrılmıştır.
-    - Özelleştirilmiş bir arama nın **RuleId** değerinin kendi ad alanına sahip olması gerekir. Örnekler arasında\<CSCAN-\>Namespace 0010,\<CSCAN- Namespace\>0020 ve CSCAN-\<Namespace\>0030 sayılabilir.
-    - Tam nitelikli arama **adı, RuleId** değeri ve arama adının birleşimidir. Örnekler CSCAN0010 içerir. KeyStoreFiles ve CSCAN0020. Base64EncodedCertificate.
-- **ResourceMatchPattern**: Arama üzerinde kontrol etmek için dosya uzantıları Regex.
-- **ContentSearchPatterns**: Eşleşen regex ifadeleri içeren dizeleri bir dizi. Arama deseni tanımlanmamışsa, **ResourceMatchPattern** değeriyle eşleşen tüm dosyalar döndürülür.
-- **ContentSearchFilters**: Arama cıvık yanlış pozitifleri filtrelemek için regex ifadeleri içeren bir dizi dize.
-- **MatchDetails**: Açıklayıcı bir ileti, azaltma yönergeleri veya her ikisi de aramanın her eşleşmesi için eklenecek.
-- **Öneri**: PREfast rapor biçimini kullanarak bir eşleşmeiçin öneri alanı içeriği.
-- **Önem Derecesi**: Bir sorunun önem düzeyini yansıtan bir karşıcı. En yüksek önem düzeyi 1 değerine sahiptir.
+- **Ad**: kimlik bilgisi tarayıcısı çıktı dosyalarında kullanılacak açıklayıcı Arayıcının adı. Arayıcının adları için Camel-Case adlandırma kuralını kullanmanızı öneririz.
+- **RuleId**: Searcher 'ın KARARLı donuk kimliği:
+    - Kimlik bilgisi tarayıcısı varsayılan Arayıcının, CSCAN0010, CSCAN0020 veya CSCAN0030 gibi bir **RuleId** değeri atanır. Son basamak, normal ifadeler (Regex) yoluyla arama gruplarını birleştirmek veya bölmek için ayrılmıştır.
+    - Özelleştirilmiş bir Arayıcının için **RuleId** değeri kendi ad alanına sahip olmalıdır. Örnek olarak CSCAN-\<Namespace\>0010, cscan-\<Namespace\>0020 ve cscan-\<Namespace\>0030 sayılabilir.
+    - Tam bir Arayıcının adı **RuleId** değerinin ve bir Arayıcının adının birleşimidir. Örnekler şunlardır CSCAN0010. KeyStoreFiles ve CSCAN0020. Base64EncodedCertificate.
+- **Resourcematchmodel**: araya karşı Denetlenecek dosya uzantılarının Regex.
+- **Contentsearchpatterns**: eşleştirilecek Regex deyimlerini içeren bir dizeler dizisi. Arama desenleri tanımlanmamışsa, **Resourcematchmodel** değeriyle eşleşen tüm dosyalar döndürülür.
+- **Contentsearchfilters**: Searcher 'a özgü hatalı pozitifleri filtrelemek için Regex deyimlerini içeren bir dize dizisi.
+- **Matchdetails**: her bir araya eşleşmesi için eklenen açıklayıcı bir ileti, azaltma yönergeleri veya her ikisi.
+- **Öneri**: PREfast rapor biçimini kullanarak bir eşleşme için öneriler-alan içeriği.
+- **Önem derecesi**: bir sorunun önem derecesini yansıtan bir tamsayı. En yüksek önem derecesi 1 ' dir.
 
-  ![Kimlik Bilgisi Tarayıcı kurulumlarını gösteren XML](./media/security-tools/6-credscan-customsearchers.png)
+  ![Kimlik bilgisi tarayıcı kurulumunu gösteren XML](./media/security-tools/6-credscan-customsearchers.png)
 
 ### <a name="roslyn-analyzers"></a>Roslyn Çözümleyicileri
 
-#### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>Roslyn Çözümleyicileri görevini kullanırken sık karşılaşılan hatalar nelerdir?
+#### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>Roslyn çözümleyiciler görevi kullanılırken sık karşılaşılan hatalar nelerdir?
 
-##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Proje yanlış bir Microsoft.NETCore.App sürümü kullanılarak geri yüklendi
-
-Tam hata iletisi:
-
-"Hata: Proje Microsoft.NETCore.App sürümü *x.x.x*kullanılarak geri yüklendi, ancak geçerli ayarları ile, sürüm *y.y.y* yerine kullanılacak. Bu sorunu gidermek için, aynı ayarların geri yükleme ve yapı veya yayımlama gibi sonraki işlemler için kullanıldığından emin olun. RuntimeIdentifier özelliği yapı veya yayımlama sırasında ayarlanır, ancak geri yükleme sırasında değil, genellikle bu sorun oluşabilir."
-
-Roslyn Çözümleyicileri görevleri derlemenin bir parçası olarak çalıştırıldığı için, yapı makinesindeki kaynak ağacın inşa edilebilir durumda olması gerekir.
-
-Ana yapınız ile Roslyn Çözümleyiciadımları adımları arasındaki bir adım, kaynak ağacı nı binayı engelleyen bir duruma sokmuş olabilir. Bu ekstra adım muhtemelen **dotnet.exe yayımlamak**. Roslyn Analyzers adımından hemen önce NuGet restorasyonu yapan adımı çoğaltmayı deneyin. Bu yinelenen adım, kaynak ağacı tekrar inşa edilebilir duruma sokabilir.
-
-##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc.exe çözümleyici örneği oluşturamaz
+##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Proje yanlış bir Microsoft. NETCore. app sürümü kullanılarak geri yüklendi
 
 Tam hata iletisi:
 
-"'csc.exe' hata kodu 1 ile çıktı - Analizör *AAAA* bir\\örnek C oluşturulamaz:*BBBB*.dll : Dosya veya derleme 'Microsoft.CodeAnalysis, Sürüm =*X.X.X.X*, Kültür = nötr, PublicKeyToken=31bf3856ad364e35' veya bağımlılıklarından biri yükleyemedi. Sistem belirtilen dosyayı bulamıyor."
+"Hata: proje Microsoft. NETCore. app Version *x. x*. x kullanılarak geri yüklendi, ancak geçerli ayarlarla birlikte sürüm *y. y. y* kullanılacak. Bu sorunu çözmek için, geri yükleme ve derleme ya da yayımlama gibi sonraki işlemler için aynı ayarların kullanıldığından emin olun. Genellikle bu sorun, Runtimeıdentifier özelliği Build veya Publish sırasında ayarlandıysa, geri yükleme sırasında olmasa da oluşabilir. "
 
-Derleyicinizin Roslyn Analizörlerini desteklediğinden emin olun. **komut csc.exe /sürüm** çalıştıran 2.6 veya daha sonra bir sürüm değeri bildirmelidir.
+Roslyn, görevleri derlemenin bir parçası olarak çalıştırır, derleme makinesindeki kaynak ağacının oluşturulabilir bir durumda olması gerekir.
 
-Bazen bir .csproj dosyası, Microsoft.Net.Compilers'dan bir pakete başvurarak yapı makinesinin Visual Studio yüklemesini geçersiz kılabilir. Derleyicinin belirli bir sürümünü kullanmak istemiyorsanız, Microsoft.Net.Compilers'a yapılan başvuruları kaldırın. Aksi takdirde, başvurulan paketin sürümünün de 2,6 veya daha sonra olduğundan emin olun.
+Ana derleme ve Roslyn Çözümleyicileri adımları arasındaki bir adım, kaynak ağacını derlemeyi engelleyen bir duruma koymalarından kaynaklanabilir. Bu ek adım büyük olasılıkla **DotNet. exe ' nin yayınlaması**. Yalnızca Roslyn Çözümleyicileri adımından önce NuGet geri yüklemesi yapan adımı çoğaltma işlemini deneyin. Bu yinelenen adım, kaynak ağacını oluşturulabilir bir duruma geri yerleştirebilir.
 
-**csc.exe /errorlog** seçeneğinde belirtilen hata günlüğü yolunu almaya çalışın. Seçenek ve yol, Roslyn Çözümleyicileri oluşturma görevinin günlüğünde görünür. Onlar /errorlog gibi bir şey **görünebilir:F:\ts-services-123\_iş\456\s\Some\Project\Code\Code.csproj.sarif**
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc. exe, bir çözümleyici örneği oluşturamaz
+
+Tam hata iletisi:
+
+"' CSC. exe" hata koduyla çıkış yaptı--C:\\*bbbb*. dll ' den bir çözümleyici *aaaa* örneği oluşturulamıyor: dosya veya derleme ' Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor. "
+
+Derleyicisinin Roslyn çözümleyicilerinin desteklediğinden emin olun. **CSC. exe/Version** komutunu çalıştırmak, 2,6 veya üzeri bir sürüm değeri bildirmelidir.
+
+Bazen bir. csproj dosyası, Microsoft.Net. derleyicileri bir pakete başvurarak derleme makinesinin Visual Studio yüklemesini geçersiz kılabilir. Derleyicinin belirli bir sürümünü kullanmayı düşünmüyorsanız, Microsoft.Net. derleyicilere başvuruları kaldırın. Aksi takdirde, başvurulan paketin sürümünün de 2,6 veya üzeri olduğundan emin olun.
+
+**CSC. exe/Errorlog** seçeneğinde belirtilen hata günlüğü yolunu almayı deneyin. Seçenek ve yol, Roslyn Çözümleyicileri derleme görevinin günlüğünde görüntülenir. **/Errorlog: F:\ts-Services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif** gibi bir şey görünebilir
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>C# derleyici sürümü yeterince yeni değil
 
-C# derleyicisinin en son sürümlerini almak için [Microsoft.Net.Compilers'a](https://www.nuget.org/packages/Microsoft.Net.Compilers)gidin. Yüklü sürüm almak için komut istemi **csc.exe /sürümünü** çalıştırın. Sürüm 2.6 veya sonraki sürüm olan bir Microsoft.Net.Compilers NuGet paketine başvurup başvurulduğuzdan emin olun.
+C# derleyicisinin en son sürümlerini almak için [Microsoft.net. derleyiciler](https://www.nuget.org/packages/Microsoft.Net.Compilers)sayfasına gidin. Yüklü sürümünüzü almak için, bir komut isteminde **CSC. exe/Version** komutunu çalıştırın. Sürüm 2,6 veya üzeri bir Microsoft.Net. derleyiciler NuGet paketine başvurtığınızdan emin olun.
 
 ##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>MSBuild ve VSBuild günlükleri bulunamadı
 
-Roslyn Çözümleyicileri oluşturma görevi, MSBuild yapı görevinden MSBuild günlüğü için Azure DevOps'leri sorgulamak gerekir. Çözümleyici görevi MSBuild görevinden hemen sonra çalışırsa, günlük henüz kullanılamayacak. MSBuild görevi ile Roslyn Çözümleyicileri görevi arasına başka görevler yerleştirin. Diğer görevlere örnek olarak BinSkim ve Malware Scanner verilebilir.
+Roslyn çözümleyiciler derleme görevinin MSBuild Build görevinin MSBuild günlüğü için Azure DevOps 'u sorgulaması gerekir. Çözümleyici görevi MSBuild görevinden hemen sonra çalışırsa, günlük henüz kullanılamaz. MSBuild görevi ve Roslyn Çözümleyicileri görevi arasına diğer görevleri yerleştirin. Diğer görevlere örnek olarak Binskım ve kötü amaçlı yazılımdan koruma tarayıcısı verilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ek yardıma ihtiyacınız varsa, Microsoft Güvenlik Kodu Analizi Desteği Pazartesi'den Cuma'ya 09:00-17:00 Pasifik Standart Saati arasında kullanılabilir.
+Ek yardıma ihtiyacınız varsa, Microsoft Güvenlik kodu analizi desteği Pazartesi-saat Pasifik Standart Saati 9:00 ile 5:00 00 arasında olmalıdır.
 
-- Onboarding: [Onboarding belgelerimize](security-code-analysis-onboard.md) bakın
+- Ekleme: [ekleme belgelerimize](security-code-analysis-onboard.md) bakın
   
-- Destek: [Ekibimize Microsoft Güvenlik Kodu Analizi Desteği'nde](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request) e-posta gönder
+- Destek: [Microsoft Güvenlik kodu analizi desteğiyle](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request) ekibimizi e-postayla gönderin

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure CLI ile özel VM görüntüleri oluşturun
+title: Öğretici-Azure CLı ile özel VM görüntüleri oluşturma
 description: Bu öğreticide, Azure CLI kullanarak Azure’da özel sanal makine görüntüsü oluşturmayı öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: dc7b395d46fd28cde9ccbbda8a8a55447efa61c9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460061"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Öğretici: Azure CLI ile bir Azure VM'nin özel görüntüsünü oluşturma
@@ -32,7 +32,7 @@ ms.locfileid: "81460061"
 > * Aboneliğinizdeki tüm görüntüleri listeleme
 > * Görüntü silme
 
-Bu öğretici, sürekli olarak en son sürüme güncelleştirilen [Azure Bulut Kabuğu'ndaki](https://docs.microsoft.com/azure/cloud-shell/overview)CLI'yi kullanır. Bulut Kabuğu'nu açmak için, herhangi bir kod bloğunun üstünden **deneyin'i** seçin.
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
@@ -40,7 +40,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için A
 
 Aşağıdaki adımlarda, mevcut bir VM'yi alıp yeni VM örnekleri oluşturmak için kullanabileceğiniz yeniden kullanılabilir bir özel görüntüye dönüştürme işlemi ayrıntılı olarak açıklanmıştır.
 
-Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olması gerekir. Gerekirse, bu [komut dosyası örneği](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) sizin için bir tane oluşturabilir. Bu öğreticide çalışırken, gerektiğinde kaynak grubu ve VM adlarını değiştirin.
+Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olması gerekir. Gerekirse, bu [betik örneği](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) sizin için bir tane oluşturabilir. Bu öğreticide çalışırken, gerektiğinde kaynak grubu ve VM adlarını değiştirin.
 
 ## <a name="create-a-custom-image"></a>Özel görüntü oluşturma
 
@@ -51,7 +51,7 @@ Sanal makinenin bir görüntüsünü oluşturmak için, kaynak VM’nin sağlama
 Sağlamayı kaldırma işlemi, makineye özgü bilgileri kaldırarak VM’yi genelleştirir. Bu genelleştirme, tek bir görüntüden birçok VM dağıtmayı mümkün kılar. Sağlamayı kaldırma sırasında, ana bilgisayar adı sıfırlanarak *localhost.localdomain* olur. SSH ana bilgisayar anahtarları, ad sunucusu yapılandırmaları, kök parolası ve önbelleğe alınan DHCP kiraları da ayrıca silinir.
 
 > [!WARNING]
-> VM'nin genelleştirilmiş olarak sıralanması ve işaretlenmesi kaynak VM'yi kullanılamaz hale getirecek tir ve yeniden başlatılamaz. 
+> VM 'nin genelleştirilmesi ve kaldırılması, kaynak VM 'nin kullanılamamasına neden olur ve yeniden başlatılamaz. 
 
 VM’nin sağlamasını kaldırmak için, Azure VM aracısını (waagent) kullanın. Azure VM aracısı, VM’de yüklüdür ve sağlamayı ve Azure Yapı Denetleyicisi ile etkileşimi yönetir. Daha fazla bilgi için bkz. [Azure Linux Aracısı kullanıcı kılavuzu](../extensions/agent-linux.md).
 
@@ -110,7 +110,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Eşzamanlı dağıtım sayısını tek bir görüntüden 20 VM ile sınırlamanızı öneririz. Aynı özel görüntüden 20'den fazla VM'nin büyük ölçekli, eşzamanlı dağıtımlarını planlıyorsanız, birden çok resim yinelemesi içeren [paylaşılan resim galerisi](shared-image-galleries.md) kullanmanız gerekir. 
+Tek bir görüntüden 20 VM 'ye eş zamanlı dağıtım sayısını kısıtlamanızı öneririz. Aynı özel görüntüden 20 ' den fazla VM 'ye ait büyük ölçekli, eşzamanlı dağıtımlar planlarken, birden çok görüntü çoğaltmasıyla paylaşılan bir [görüntü Galerisi](shared-image-galleries.md) kullanmanız gerekir. 
 
 ## <a name="image-management"></a>Görüntü yönetimi 
 
@@ -145,5 +145,5 @@ Bu öğreticide, özel bir VM görüntüsü oluşturdunuz. Şunları öğrendini
 Yüksek oranda kullanılabilir sanal makineler hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Yüksek kullanılabilir VM'ler oluşturun.](tutorial-availability-sets.md)
+> [Yüksek oranda kullanılabilir VM 'Ler oluşturun](tutorial-availability-sets.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Anlık görüntüden yönetilen bir disk oluşturma - CLI Sample
+title: Snapshot-CLı örneğinden yönetilen disk oluşturma
 description: Azure CLI Betik Örneği - Anlık görüntüden yönetilen disk oluşturma
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,10 +16,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 00fdfe3669e0ad84702f20be4d7efffcdc871149
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459560"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>CLI ile anlık görüntüden yönetilen disk oluşturma
@@ -47,4 +47,4 @@ Bu betik bir anlık görüntüden yönetilen disk oluşturmak için aşağıdaki
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
 
-Ek sanal makine ve yönetilen diskler CLI komut dosyası örnekleri [Azure Windows VM belgelerinde](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bulunabilir.
+Ek sanal makine ve yönetilen diskler CLı betiği örnekleri, [Azure WINDOWS VM belgelerinde](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bulunabilir.

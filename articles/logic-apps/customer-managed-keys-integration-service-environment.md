@@ -1,99 +1,99 @@
 ---
-title: ISEs'te kalan yerlerdeki verileri şifrelemek için müşteri tarafından yönetilen anahtarları ayarlama
-description: Azure Logic Apps'ta entegrasyon hizmeti ortamları (ISEs) için verileri istirahatte güvende hale getirmek için kendi şifreleme anahtarlarınızı oluşturun ve yönetin
+title: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları ayarlama
+description: Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri güvenli hale getirmek üzere kendi şifreleme anahtarlarınızı oluşturun ve yönetin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458446"
 ---
-# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps'ta tümleştirme hizmeti ortamları (ISEs) için verileri istirahatte şifrelemek için müşteri tarafından yönetilen anahtarları ayarlama
+# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
 
-Azure Logic Apps, [verileri istirahatte](../storage/common/storage-service-encryption.md)depolamak ve otomatik olarak şifrelemek için Azure Depolama'ya güvenir. Bu şifreleme verilerinizi korur ve kuruluş güvenliği ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Varsayılan olarak Azure Depolama, verilerinizi şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. Azure Depolama şifrelemesi hakkında daha fazla bilgi [için, veriler için Azure Depolama şifrelemesi](../storage/common/storage-service-encryption.md) ve [Beklemede Azure Veri](../security/fundamentals/encryption-atrest.md)Şifrelemesi'ne bakın.
+Azure Logic Apps, [bekleyen verileri](../storage/common/storage-service-encryption.md)depolamak ve otomatik olarak şifrelemek Için Azure Storage 'ı kullanır. Bu şifreleme, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Azure depolama, verilerinizi şifrelemek için varsayılan olarak Microsoft tarafından yönetilen anahtarları kullanır. Azure depolama şifrelemesi 'nin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md) ve [bekleyen Azure veri şifreleme](../security/fundamentals/encryption-atrest.md).
 
-Mantıksal uygulamalarınızı barındırmak için bir [entegrasyon hizmeti ortamı (Ise)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturduğunuzda ve Azure Depolama tarafından kullanılan şifreleme anahtarları üzerinde daha fazla denetim istediğinizde, [Azure Key Vault'u](../key-vault/general/overview.md)kullanarak kendi anahtarınızı ayarlayabilir, kullanabilir ve yönetebilirsiniz. Bu özellik "Kendi Anahtarını Getir" (BYOK) olarak da bilinir ve anahtarınıza "müşteri tarafından yönetilen anahtar" denir.
+Logic Apps 'i barındırmak için bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturduğunuzda ve Azure Storage tarafından kullanılan şifreleme anahtarları üzerinde daha fazla denetim istiyorsanız, [Azure Key Vault](../key-vault/general/overview.md)kullanarak kendi anahtarınızı ayarlayabilir, kullanabilir ve yönetebilirsiniz. Bu özellik "Kendi Anahtarını Getir" (BYOK) olarak da bilinir ve anahtarınız "müşteri tarafından yönetilen anahtar" olarak adlandırılır.
 
-Bu konu, Logic Apps REST API'sini kullanarak İmKB'nizi oluştururken kullanılacak kendi şifreleme anahtarınızı nasıl ayarlayıp belirtdiğinizi gösterir. Logic Apps REST API ile Bir İmKB oluşturmak için genel adımlar için, [Bkz. Logic Apps REST API'yi kullanarak bir entegrasyon hizmet ortamı (İmKB) oluşturun.](../logic-apps/create-integration-service-environment-rest-api.md)
+Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere kendi şifreleme anahtarınızı ayarlama ve belirtme işlemlerinin nasıl yapılacağı gösterilmektedir. Logic Apps REST API aracılığıyla bir ıSE oluşturmanın genel adımları için, bkz. [Logic Apps REST API kullanarak bir tümleştirme hizmeti ortamı (ISE) oluşturma](../logic-apps/create-integration-service-environment-rest-api.md).
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Şu anda, Bir İmKB için müşteri tarafından yönetilen anahtar desteği yalnızca bu Azure bölgelerinde kullanılabilir: Batı ABD 2, Doğu ABD ve Güney Orta ABD
+* Şu anda bir ıSE için müşteri tarafından yönetilen anahtar desteği yalnızca şu Azure bölgelerinde kullanılabilir: Batı ABD 2, Doğu ABD ve Orta Güney ABD
 
-* Müşteri tarafından yönetilen bir anahtarı, yalnızca Daha sonra değil, *İmKB'nizi oluşturduğunuzda*belirtebilirsiniz. İmKB'niz oluşturulduktan sonra bu anahtarı devre dışı kalamazsınız. Şu anda, bir İmKB için müşteri tarafından yönetilen bir anahtarı döndürmek için destek yok.
+* Müşteri tarafından yönetilen bir anahtarı, daha sonra değil *yalnızca Ise 'nizi oluşturduğunuz zaman*belirtebilirsiniz. ISE oluşturulduktan sonra bu anahtarı devre dışı bırakabilirsiniz. Şu anda, bir ıSE için müşteri tarafından yönetilen bir anahtarı döndürmek için destek yok.
 
-* Müşteri tarafından yönetilen anahtarları desteklemek için Ise'inizin [sistem tarafından atanmış yönetilen kimliğinin](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) etkinleştirilmesi gerekir. Bu kimlik, İmKB'nin diğer Azure Etkin Dizin (Azure AD) kiracılarında bulunan kaynaklara erişimi doğrulamasına olanak tanır, böylece kimlik bilgilerinizle oturum açmanız gerekmez.
+* Müşteri tarafından yönetilen anahtarları desteklemek için, ıSE 'niz, [sistem tarafından atanan yönetilen kimliğin](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) etkinleştirilmesini gerektirir. Bu kimlik, ıSE, kimlik bilgilerinizle oturum açmanıza gerek kalmaması için diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişimi kimlik doğrulamasını sağlar.
 
-* Şu anda, müşteri tarafından yönetilen anahtarları destekleyen ve sistem tarafından atanmış kimliği etkinleştirilmiş bir İmKB oluşturmak için, bir HTTPS PUT isteği kullanarak Logic Apps REST API'yi aramanız gerekir.
+* Şu anda, müşteri tarafından yönetilen anahtarları destekleyen ve sistem tarafından atanan kimliği etkin olan bir ıSE oluşturmak için, HTTPS PUT isteği kullanarak Logic Apps REST API çağırmanız gerekir.
 
-* İmKB'nizi oluşturan HTTPS PUT isteğini gönderdikten *30 dakika* sonra, [İmKB'nizin sistemle atanmış kimliğine anahtar kasaerişimi vermelisiniz.](#identity-access-to-key-vault) Aksi takdirde, İmKB oluşturma başarısız olur ve bir izinhatası atar.
+* ISE 'yi oluşturan HTTPS PUT isteğini gönderdikten sonra *30 dakika* içinde, [Ise 'nin sistem tarafından atanan kimliğe Anahtar Kasası erişimi vermeniz](#identity-access-to-key-vault)gerekir. Aksi takdirde, ıSE oluşturma işlemi başarısız olur ve bir izin hatası oluşturur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure portalında Bir İmKB oluşturduğunuzda olduğu [gibi İmKB'nize erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [ön koşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
+* Azure portal bir ıSE oluşturduğunuzda, [Ise için erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [Önkoşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
 
-* **Yumuşak Silme** ve **Temizleme özelliklerini** etkinleştiren Azure anahtar kasası
+* **Geçici silme** ve **Temizleme** özellikleri etkin olan bir Azure Anahtar Kasası
 
-  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için [Azure Key Vault yumuşak silme genel bakışı](../key-vault/general/overview-soft-delete.md) ve Azure Key Vault ile müşteri tarafından yönetilen anahtarları [yapılandırın.](../storage/common/storage-encryption-keys-portal.md) Azure Key Vault'ta yeniyseniz, Azure portalını kullanarak veya Azure PowerShell komutu Olan [New-AzKeyVault'u](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)kullanarak [nasıl bir anahtar kasası oluşturabileceğinizi](../key-vault/secrets/quick-create-portal.md#create-a-vault) öğrenin.
+  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/overview-soft-delete.md) ve [müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma](../storage/common/storage-encryption-keys-portal.md). Azure Key Vault yeni başladıysanız, Azure portal kullanarak veya Azure PowerShell komutu, [New-Azkeykasasını](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)kullanarak [bir Anahtar Kasası oluşturmayı](../key-vault/secrets/quick-create-portal.md#create-a-vault) öğrenin.
 
-* Anahtar kasanızda, bu özellik değerleri yle oluşturulmuş bir anahtar:
+* Anahtar Kasanızda, bu özellik değerleriyle oluşturulmuş bir anahtar:
 
   | Özellik | Değer |
   |----------|-------|
-  | **Anahtar Türü** | RSA |
-  | **RSA Anahtar Boyutu** | 2048 |
-  | **Etkin** | Evet |
+  | **Anahtar türü** | RSA |
+  | **RSA anahtar boyutu** | 2048 |
+  | **Etkin** | Yes |
   |||
 
-  ![Müşteri tarafından yönetilen şifreleme anahtarınızı oluşturun](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
+  ![Müşteri tarafından yönetilen şifreleme anahtarınızı oluşturma](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  Daha fazla bilgi için Azure Key Vault veya Azure PowerShell komutu ekle [ile](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey) [müşteri tarafından yönetilen anahtarları yapılandırın.](../storage/common/storage-encryption-keys-portal.md)
+  Daha fazla bilgi için bkz. Azure Key Vault veya Azure PowerShell komutuyla [müşteri tarafından yönetilen anahtarları yapılandırma](../storage/common/storage-encryption-keys-portal.md) , [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey).
 
-* Https PUT isteğiyle Logic Apps REST API'sini arayarak İmKB'nizi oluşturmak için kullanabileceğiniz bir araçtır. Örneğin, [Postacı'yı](https://www.getpostman.com/downloads/)kullanabilir veya bu görevi gerçekleştiren bir mantık uygulaması oluşturabilirsiniz.
+* HTTPS PUT isteğiyle Logic Apps REST API çağırarak ıSE oluşturmak için kullanabileceğiniz bir araç. Örneğin [Postman](https://www.getpostman.com/downloads/)'ı kullanabilir veya bu görevi gerçekleştiren bir mantıksal uygulama oluşturabilirsiniz.
 
 <a name="enable-support-key-system-identity"></a>
 
-## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>Anahtar kasa ve yönetilen kimlik desteği ile İmKB'yi oluşturun
+## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>Anahtar Kasası ve yönetilen kimlik desteği ile ıSE oluşturma
 
-Logic Apps REST API'yi arayarak İmKB'nizi oluşturmak için şu HTTPS PUT isteğini yapın:
+Logic Apps REST API çağırarak ıSE oluşturmak için, bu HTTPS PUT isteğini yapın:
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Logic Apps REST API 2019-05-01 sürümü, İmKB konektörleri için kendi HTTP PUT isteğinizi oluşturmanızı gerektirir.
+> Logic Apps REST API 2019-05-01 sürümü, ıSE bağlayıcıları için kendi HTTP PUT isteğinizi yapmanızı gerektirir.
 
-Dağıtımın tamamlanması genellikle iki saat içinde gerçekleşir. Bazen, dağıtım dört saat kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğunuzdaki [Azure portalında,](https://portal.azure.com)bildirimler bölmesini açan bildirimler simgesini seçin.
+Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen dağıtım dört saate kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğinizdeki [Azure Portal](https://portal.azure.com)bildirimler bölmesini açan Bildirimler simgesini seçin.
 
 > [!NOTE]
-> Dağıtım başarısız olursa veya İmKB'nizi silerseniz, Azure'un alt ağlarınızı serbest bırakması bir saat kadar sürebilir. Bu gecikme, bu alt ağları başka bir ISE'de yeniden kullanmadan önce beklemeniz anlamına gelir.
+> Dağıtım başarısız olursa veya ıSE 'yi silerseniz, Azure, alt ağlarınızı serbest bırakmadan önce bir saat kadar sürebilir. Bu gecikme, başka bir ıSE içinde bu alt ağları yeniden kullanmadan önce beklemeniz gerekebilecek anlamına gelir.
 >
-> Sanal ağınızı silerseniz, Azure'un alt ağlarınızı serbest bırakması genellikle iki saat kadar sürer, ancak bu işlem daha uzun sürebilir. 
-> Sanal ağları silerken, hiçbir kaynağın hala bağlı olmadığından emin olun. 
-> Bkz. [Sanal ağı sil.](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)
+> Sanal ağınızı silerseniz Azure, alt ağlarınızı serbest bırakmadan genellikle iki saate kadar sürer, ancak bu işlem daha uzun sürebilir. 
+> Sanal ağları silerken, hala bağlı hiçbir kaynak bulunmadığından emin olun. 
+> Bkz. [sanal ağı silme](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ### <a name="request-header"></a>İstek üst bilgisi
 
 İstek üstbilgisinde şu özellikleri ekleyin:
 
-* `Content-type`: Bu özellik `application/json`değerini .
+* `Content-type`: Bu özellik değerini olarak `application/json`ayarlayın.
 
-* `Authorization`: Bu özellik değerini, kullanmak istediğiniz Azure aboneliğine veya kaynak grubuna erişimi olan müşteri için taşıyıcı belirteci olarak ayarlayın.
+* `Authorization`: Bu özellik değerini, kullanmak istediğiniz Azure aboneliğine veya kaynak grubuna erişimi olan müşterinin taşıyıcı belirtecine ayarlayın.
 
 ### <a name="request-body"></a>İstek gövdesi
 
-İstek gövdesinde, Kendi Bilgileri İmKB tanımınızda sağlayarak bu ek öğeler için destek sağlayabilir:
+İstek gövdesinde, bilgileri ıSE tanımınızda bilgilerini sağlayarak bu ek öğelere yönelik desteği etkinleştirin:
 
-* İmKB'nizin anahtar kasanıza erişmek için kullandığı sistem atanmış yönetilen kimlik
-* Anahtar kasanız ve kullanmak istediğiniz müşteri tarafından yönetilen anahtar
+* ISE 'nizin anahtar kasanıza erişmek için kullandığı, sistem tarafından atanan yönetilen kimlik
+* Anahtar kasanızın ve kullanmak istediğiniz müşteri tarafından yönetilen anahtar
 
 #### <a name="request-body-syntax"></a>İstek gövdesi sözdizimi
 
-İmKB'nizi oluştururken kullanılacak özellikleri açıklayan istek gövdesi sözdizimi aşağıda verilmiştir:
+İşte, ıSE 'nizi oluştururken kullanılacak özellikleri açıklayan istek gövdesi sözdizimi şöyledir:
 
 ```json
 {
@@ -144,7 +144,7 @@ Dağıtımın tamamlanması genellikle iki saat içinde gerçekleşir. Bazen, da
 
 #### <a name="request-body-example"></a>İstek gövdesi örneği
 
-Bu örnek istek gövdesi örnek değerleri gösterir:
+Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
 
 ```json
 {
@@ -195,38 +195,38 @@ Bu örnek istek gövdesi örnek değerleri gösterir:
 
 <a name="identity-access-to-key-vault"></a>
 
-## <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni ver
+## <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
-İmKB'nizi oluşturmak için HTTP PUT isteğini gönderdikten *30 dakika* sonra, İmKB'nizin sistemle atanmış kimliği için anahtar kasanıza bir erişim ilkesi eklemeniz gerekir. Aksi takdirde, İmKB'niz için oluşturma başarısız olur ve bir izin hatası alırsınız. 
+ISE 'yi oluşturmak için HTTP PUT isteğini gönderdikten sonra *30 dakika* içinde, Ise 'nin sistem tarafından atanan kimlik için anahtar kasanıza bir erişim ilkesi eklemeniz gerekir. Aksi takdirde, ıSE 'niz için oluşturma işlemi başarısız olur ve bir izin hatası alırsınız. 
 
-Bu görev için Azure PowerShell [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) komutunu kullanabilir veya Azure portalında aşağıdaki adımları izleyebilirsiniz:
+Bu görev için Azure PowerShell [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) komutunu kullanabilir ya da Azure Portal aşağıdaki adımları izleyebilirsiniz:
 
-1. Azure [portalında](https://portal.azure.com)Azure anahtar kasanızı açın.
+1. [Azure Portal](https://portal.azure.com)Azure anahtar kasanızı açın.
 
-1. Anahtar kasa menüsünde,**Access** **ilkelerini** > ekle ilkelerini seçin , örneğin:
+1. Anahtar Kasası menüsünde erişim **ilkeleri** > **ekleme İlkesi Ekle**' yi seçin, örneğin:
 
    ![Sistem tarafından atanan yönetilen kimlik için erişim ilkesi ekleme](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
-1. Erişim **ekle ilkesi** bölmesi açıldıktan sonra aşağıdaki adımları izleyin:
+1. **Erişim Ilkesi Ekle** bölmesi açıldıktan sonra aşağıdaki adımları izleyin:
 
-   1. Şu seçenekleri seçin:
+   1. Şu seçenekleri belirleyin:
 
       | Ayar | Değerler |
       |---------|--------|
-      | **Şablon (isteğe bağlı) listesinden yapılandırma** | Anahtar Yönetimi |
-      | **Anahtar izinler** | - **Anahtar Yönetim İşlemleri**: Al, Liste <p><p>- **Şifreleme İşlemleri**: Açma Tuşu, Şal Anahtarı |
+      | **Şablondan yapılandırma (isteğe bağlı) listesinden** | Anahtar yönetimi |
+      | **Anahtar izinleri** | - **Anahtar yönetim işlemleri**: get, List <p><p>- **Şifreleme işlemleri**: anahtar kaydırmayı geri al, tuşu sarmala |
       |||
 
-      !["Anahtar İzni" > "Anahtar Yönetimi"ni seçin](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
+      !["Anahtar yönetimi" > "anahtar izinleri" ni seçin](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. **Select principal**için, **Seçili Yok'u**seçin. **Asıl** bölme açıldıktan sonra, arama kutusunda Ise'nizi bulun ve seçin. Bittikten sonra >  **Ekle'yi seçin.****Add**
+   1. **Asıl seçin**Için **Seçili hiçbiri**' ni seçin. **Asıl** bölmesi açıldıktan sonra arama kutusunda, Ise 'nizi bulun ve seçin. İşiniz bittiğinde > **Ekle**' **yi seçin.**
 
-      ![Asıl olarak kullanmak için İmKB'nizi seçin](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
+      ![Asıl öğe olarak kullanılacak ıSE 'yi seçin](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
-   1. **Access ilkeleri** bölmesini bitirdikten sonra **Kaydet'i**seçin.
+   1. **Erişim ilkeleri** bölmesi ile Işiniz bittiğinde **Kaydet**' i seçin.
 
-Daha fazla bilgi için [bkz.](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)
+Daha fazla bilgi için bkz. [yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Anahtar Kasası](../key-vault/general/overview.md) hakkında daha fazla bilgi edinin
+* [Azure Key Vault](../key-vault/general/overview.md) hakkında daha fazla bilgi edinin

@@ -1,7 +1,7 @@
 ---
-title: Sanal ağ oluşturma - quickstart - Azure CLI
+title: Sanal ağ oluşturma-hızlı başlangıç-Azure CLı
 titlesuffix: Azure Virtual Network
-description: Bu hızlı başlangıçta, Azure CLI'yi kullanarak sanal ağ oluşturmayı öğrenirsiniz. Sanal ağ, sanal makineler gibi Azure kaynaklarının birbirleriyle ve internetle özel olarak iletişim kurmasına olanak tanır.
+description: Bu hızlı başlangıçta, Azure CLı kullanarak bir sanal ağ oluşturmayı öğreneceksiniz. Sanal ağ, sanal makineler gibi Azure kaynaklarının birbiriyle ve internet ile özel olarak iletişim kurmasına olanak tanır.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,31 +14,31 @@ ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
 ms.openlocfilehash: 2a4c63aeaa303692fa0f2d115a3df0d80cfab0b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80235190"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak sanal ağ oluşturma
 
-Sanal ağ, sanal makineler (VM'ler) gibi Azure kaynaklarının birbirleriyle ve internetle özel olarak iletişim kurmasını sağlar. Bu hızlı başlangıçta, sanal ağ oluşturmayı öğreneceksiniz. Bir sanal ağ oluşturduktan sonra, sanal ağa iki sanal makine dağıtacaksınız. Daha sonra Internet'ten Sanal M'lere bağlanır ve yeni sanal ağ üzerinden özel olarak iletişim kurarsınız.
+Sanal ağ, sanal makineler (VM) gibi Azure kaynaklarının birbiriyle ve internet ile özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, sanal ağ oluşturmayı öğreneceksiniz. Bir sanal ağ oluşturduktan sonra, sanal ağa iki sanal makine dağıtacaksınız. Daha sonra internet 'ten VM 'lere bağlanır ve yeni sanal ağ üzerinden özel olarak iletişim kurabilirsiniz.
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLI'yi yerel olarak yüklemeye ve kullanmaya karar verirseniz, bu hızlı başlangıç Azure CLI sürüm 2.0.28 veya sonraki sürümlerini kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için `az --version`çalıştırın. Bilgileri yüklemek veya yükseltmek için [Azure CLI'yi yükle'ye](/cli/azure/install-azure-cli) bakın.
+Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Kaynak grubu ve sanal ağ oluşturma
 
-Sanal ağ oluşturmadan önce, sanal ağı barındıracak bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Bu örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Bir sanal ağ oluşturabilmeniz için önce sanal ağı barındırmak üzere bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Bu örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet) komutu ile bir sanal ağ oluşturun. Bu örnekte varsayılan adlı bir alt ağ ile *myVirtualNetwork* adlı *varsayılan*bir sanal ağ oluşturur:
+[az network vnet create](/cli/azure/network/vnet) komutu ile bir sanal ağ oluşturun. Bu örnek, *varsayılan*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
 
 ```azurecli-interactive
 az network vnet create \
@@ -53,7 +53,7 @@ Sanal ağ üzerinde iki sanal makine oluşturun.
 
 ### <a name="create-the-first-vm"></a>Birinci sanal makineyi oluşturma
 
-[az vm create](/cli/azure/vm) ile bir VM oluşturun. SSH anahtarları varsayılan anahtar konumunda zaten yoksa, komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın. `--no-wait` seçeneği, sonraki adıma devam edebilmeniz için arka planda sanal makineyi oluşturur. Bu örnek *myVm1*adlı bir VM oluşturur:
+[az vm create](/cli/azure/vm) ile bir VM oluşturun. SSH anahtarları varsayılan anahtar konumunda zaten mevcut değilse, komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın. `--no-wait` seçeneği, sonraki adıma devam edebilmeniz için arka planda sanal makineyi oluşturur. Bu örnek, *myVm1*adlı bir sanal makine oluşturur:
 
 ```azurecli-interactive
 az vm create \
@@ -66,7 +66,7 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>İkinci sanal makineyi oluşturma
 
-Önceki adımda `--no-wait` seçeneği kullandığınızdan, devam edin ve *myVm2*adlı ikinci VM oluşturabilirsiniz.
+Önceki adımda bu `--no-wait` seçeneği kullandıysanız, devam edebilir ve *myVm2*adlı ikinci VM 'yi oluşturabilirsiniz.
 
 ```azurecli-interactive
 az vm create \
@@ -76,9 +76,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-### <a name="azure-cli-output-message"></a>Azure CLI çıktı iletisi
+### <a name="azure-cli-output-message"></a>Azure CLı çıkış iletisi
 
-Sanal makinelerin oluşturulması birkaç dakika sürebilir. Azure VM'leri oluşturduktan sonra, Azure CLI çıktısını şu şekilde döndürür:
+Sanal makinelerin oluşturulması birkaç dakika sürebilir. Azure VM 'Leri oluşturduktan sonra, Azure CLı şunun gibi bir çıktı döndürür:
 
 ```output
 {
@@ -94,11 +94,11 @@ Sanal makinelerin oluşturulması birkaç dakika sürebilir. Azure VM'leri oluş
 }
 ```
 
-**publicIpAddress** değerini not alın. Bir sonraki adımda internetten VM'ye bağlanmak için bu adresi kullanacaksınız.
+**publicIpAddress** değerini not alın. Sonraki adımda İnternet 'ten VM 'ye bağlanmak için bu adresi kullanacaksınız.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
-Bu komutta, `<publicIpAddress>` *myVm2* VM'nizin genel IP adresiyle değiştirin:
+Bu komutta, *myVm2* sanal `<publicIpAddress>` makinenizin genel IP adresiyle değiştirin:
 
 ```bash
 ssh <publicIpAddress>
@@ -106,19 +106,19 @@ ssh <publicIpAddress>
 
 ## <a name="communicate-between-vms"></a>Sanal makineler arasında iletişim
 
-*myVm2* ve *myVm1* VM'ler arasındaki özel iletişimi onaylamak için şu komutu girin:
+*MyVm2* ve *myVm1* VM 'ler arasındaki özel iletişimi doğrulamak için şu komutu girin:
 
 ```bash
 ping myVm1 -c 4
 ```
 
-*10.0.0.4'ten*dört yanıt alırsınız.
+*10.0.0.4*adresinden dört yanıt alacaksınız.
 
 *myVm2* sanal makinesiyle SSH oturumundan çıkın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kaynak grubunu ve sahip olduğu tüm kaynakları kaldırmak için [az group delete'i](/cli/azure/group) kullanabilirsiniz:
+Artık gerekli değilse, [az Group Delete](/cli/azure/group) ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -126,6 +126,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, varsayılan bir sanal ağ ve iki sanal makine oluşturdunuz. İnternetten bir VM'ye bağlandınız ve iki VM arasında özel olarak iletişim kurdunuz. Sanal ağ ayarları hakkında daha fazla bilgi için [Sanal ağı yönetme](manage-virtual-network.md) başlıklı konuya bakın.
+Bu hızlı başlangıçta, varsayılan bir sanal ağ ve iki sanal makine oluşturdunuz. İnternet 'ten bir sanal makineye bağlanırsınız ve iki VM arasında özel olarak iletişim kuracaksınız. Sanal ağ ayarları hakkında daha fazla bilgi için [Sanal ağı yönetme](manage-virtual-network.md) başlıklı konuya bakın.
 
-Azure, VM'ler arasında sınırsız özel iletişim sağlar. Varsayılan olarak Azure, yalnızca Internet'ten Windows VM'lere gelen uzak masaüstü bağlantılarını sağlar. Farklı VM ağ iletişimi türlerini yapılandırma hakkında daha fazla bilgi edinmek için [Filtre ağı trafiği](tutorial-filter-network-traffic.md) öğreticisine gidin.
+Azure, VM 'Ler arasında sınırsız özel iletişime olanak sağlar. Varsayılan olarak, Azure yalnızca İnternet 'ten gelen Windows VM 'lerine gelen Uzak Masaüstü bağlantılarına izin verir. Farklı türlerde VM ağı iletişimleri yapılandırma hakkında daha fazla bilgi edinmek için [ağ trafiğini filtreleme](tutorial-filter-network-traffic.md) öğreticisine gidin.

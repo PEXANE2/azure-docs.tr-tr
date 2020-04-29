@@ -1,5 +1,5 @@
 ---
-title: Yönetilen bir diskin VHD'sini farklı bölgedeki bir depolama hesabına aktarma/kopyalama - PowerShell örneği
+title: Yönetilen bir diskin VHD 'sini farklı bölgedeki bir depolama hesabına dışarı aktarma/kopyalama-PowerShell örneği
 description: Azure PowerShell betik örneği - Yönetilen diskin VHD dosyasını aynı veya farklı bölgedeki bir depolama hesabına aktarma/kopyalama
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.openlocfilehash: 8388863bb88e3e97d16ad7c80aad6387cf9e03b9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459381"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell"></a>PowerShell ile yönetilen diskin VHD dosyasını farklı bölgedeki bir depolama hesabına aktarma/kopyalama
@@ -41,7 +41,7 @@ Bu betik bir yönetilen diskin SAS URI'sini oluşturmak için aşağıdaki komut
 
 | Komut | Notlar |
 |---|---|
-| [Hibe-AzDiskAccess](https://docs.microsoft.com/powershell/module/az.compute/grant-azdiskaccess) | VHD dosyasını bir depolama hesabına kopyalamak için kullanılan yönetilen disk SAS URI değerini oluşturur. |
+| [Grant-AzDiskAccess](https://docs.microsoft.com/powershell/module/az.compute/grant-azdiskaccess) | VHD dosyasını bir depolama hesabına kopyalamak için kullanılan yönetilen disk SAS URI değerini oluşturur. |
 | [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | Hesap adını ve anahtarını kullanarak depolama hesabı bağlamı oluşturur. Bu bağlam depolama hesabında okuma/yazma işlemi gerçekleştirmek için kullanılabilir. |
 | [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Bir anlık görüntüde kullanılan VHD dosyasını bir depolama hesabına kopyalar |
 

@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure Analiz Hizmetleri rollerini yapılandırma | Microsoft Dokümanlar
-description: Azure portalını veya SQL Server Management Studio'yu kullanarak Azure Analiz Hizmetleri yöneticisini ve kullanıcı rollerini nasıl yapılandırabileceğinizi öğrenin.
+title: Öğretici-Azure Analysis Services rollerini yapılandırma | Microsoft Docs
+description: Azure portal veya SQL Server Management Studio kullanarak Azure Analysis Services Yönetici ve Kullanıcı rollerinin nasıl yapılandırılacağını öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81454263"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
@@ -37,7 +37,7 @@ Azure Analysis Services'de kullanıcı güvenliği hakkında daha fazla bilgi ed
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Portalda](https://portal.azure.com/)oturum aç.
+[Portalda](https://portal.azure.com/)oturum açın.
 
 ## <a name="get-server-name"></a>Sunucu adını alma
 SSMS'den sunucunuza bağlanmak için önce sunucu adını bilmelisiniz. Sunucu adını portaldan alabilirsiniz.
@@ -67,7 +67,7 @@ Kalan görevlerde sunucunuza bağlanmak ve sunucunuzu yönetmek için SSMS kulla
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Sunucu yöneticisi rolüne bir kullanıcı hesabı ekleme
 
-Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya grup hesabı ekleyeceksiniz. Bir güvenlik grubu belirtiyorsanız, .' `obj:groupid@tenantid`
+Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya grup hesabı ekleyeceksiniz. Bir güvenlik grubu belirtiyorsanız, kullanın `obj:groupid@tenantid`.
 
 1. **Nesne Gezgini**'nde sunucu adınızı sağ tıklatın, sonra **Özellikler**'i tıklatın. 
 2. **Analysis Server Özellikleri** penceresinde **Güvenlik** > **Ekle**'ye tıklayın.
@@ -130,13 +130,13 @@ Bu görevde yeni bir Internet Satış Genel rolü oluşturmak için bir TMSL bet
 ## <a name="verify-your-changes"></a>Değişikliklerinizi doğrulama
 
 1. **Nesne Gezgini**'nde, servername'inize tıklayın, sonra **Yenile**'yi tıklayın ve **F5**'e basın.
-2. Genişlet **Veritabanları** > **adventureworks** > **Roller**. Önceki görevlerde eklediğiniz kullanıcı hesabının ve yeni rol değişikliklerinin göründüğünü doğrulayın.   
+2. **Veritabanları** > **adventureworks**AdventureWorks > **rollerini**genişletin. Önceki görevlerde eklediğiniz kullanıcı hesabının ve yeni rol değişikliklerinin göründüğünü doğrulayın.   
 
     ![Nesne Gezgini'nde doğrulama](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kullanıcı ve grup hesaplarını ve rolleri silin. Bunu yapmak için, kullanıcı hesaplarını kaldırmak için **Role Properties** > **Membership'i** kullanın veya bir rolü sağ tıklatın ve sonra **Sil'i**tıklatın.
+Artık gerekmediğinde, kullanıcı ve grup hesaplarını ve rolleri silin. Bunu yapmak için, Kullanıcı hesaplarını kaldırmak için **rol özellikleri** > **üyeliğini** kullanın veya bir role sağ tıklayıp **Sil**' e tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

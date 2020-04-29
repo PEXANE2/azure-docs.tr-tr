@@ -1,6 +1,6 @@
 ---
-title: Varsayılan Linux kapsayıcılarında kod çalıştırma
-description: Azure Uygulama Hizmeti, kodunuzu önceden oluşturulmuş Linux kapsayıcılarında çalıştırabilir. Linux web uygulamalarınızı Azure'da nasıl çalıştırabileceğinizi öğrenin.
+title: Kodu varsayılan Linux kapsayıcılarında Çalıştır
+description: Azure App Service, kodunuzu önceden oluşturulmuş Linux kapsayıcılarında çalıştırabilir. Linux Web uygulamalarınızı Azure 'da nasıl çalıştırabileceğinizi öğrenin.
 keywords: azure app service, linux, oss
 author: msangapu-msft
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
@@ -9,19 +9,19 @@ ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80046408"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux’ta Azure App Service’e Giriş
 
-[Azure Uygulama Hizmeti,](../overview.md) web sitelerini ve web uygulamalarını barındırmak için optimize edilmiş tam olarak yönetilen bir bilgi işlem platformudur. Müşteriler Linux’ta App Service’i kullanarak desteklenen uygulama yığınları için Linux’ta yerel olarak web uygulamaları barındırabilir.
+[Azure App Service](../overview.md) , Web sitelerini ve Web uygulamalarını barındırmak için optimize edilmiş, tam olarak yönetilen bir işlem platformudur. Müşteriler Linux’ta App Service’i kullanarak desteklenen uygulama yığınları için Linux’ta yerel olarak web uygulamaları barındırabilir.
 
 ## <a name="languages"></a>Diller
 
-Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşitli Yerleşik görüntüleri destekler. Diller şunlardır: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. En [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) son dilleri ve desteklenen sürümleri görüntülemek için çalıştırın. Yerleşik görüntülerde uygulamanızın gerektirdiği çalışma zamanı desteklenmiyorsa, [kendi Docker görüntünüzü](tutorial-custom-docker-image.md) oluşturarak Kapsayıcılar için Web App’e dağıtmaya yönelik yönergeler sunulmaktadır.
+Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşitli Yerleşik görüntüleri destekler. Diller şunlardır: node. js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. En [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) son dilleri ve desteklenen sürümleri görüntülemek için ' i çalıştırın. Yerleşik görüntülerde uygulamanızın gerektirdiği çalışma zamanı desteklenmiyorsa, [kendi Docker görüntünüzü](tutorial-custom-docker-image.md) oluşturarak Kapsayıcılar için Web App’e dağıtmaya yönelik yönergeler sunulmaktadır.
 
 ## <a name="deployments"></a>Dağıtımlar
 
@@ -54,18 +54,18 @@ Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşit
 
 Azure portalı, yalnızca şu anda Kapsayıcılar için Web App ile kullanılabilen özellikleri gösterir. Yeni özellikler etkinleştirildikçe portalda görünmeye başlayacaktır.
 
-Linux'taki Uygulama Hizmeti yalnızca [Ücretsiz, Temel, Standart ve Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) uygulama hizmet planlarıyla desteklenir ve [Paylaşılan](https://azure.microsoft.com/pricing/details/app-service/plans/) bir katmanı yoktur. Linux olmayan Web Uygulamalarını barındıran bir Uygulama Hizmeti planında bir Linux Web Uygulaması oluşturamazsınız.  
+Linux üzerinde App Service yalnızca [ücretsiz, temel, standart ve Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service planlarında desteklenir ve [paylaşılan](https://azure.microsoft.com/pricing/details/app-service/plans/) bir katmana sahip değildir. Linux olmayan Web Apps barındırmakta olan bir App Service planında Linux Web uygulaması oluşturamazsınız.  
 
-Geçerli bir sınırlamaya bağlı olarak, aynı kaynak grubu için Windows ve Linux uygulamalarını aynı bölgede karıştıramazsınız.
+Aynı kaynak grubu için geçerli bir sınırlamaya bağlı olarak, aynı bölgedeki Windows ve Linux uygulamalarını karıştıramazsınız.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 > [!NOTE]
-> [Azure İzleme (önizleme)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) ile yeni entegre günlük özelliği vardır. 
+> [Azure izleme (Önizleme)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) ile birlikte yeni tümleşik günlüğe kaydetme özelliği vardır. 
 >
 >
 
-Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. Ve konteyner `stdout` `stderr` gelen oturum açmak için, Uygulama **Hizmet Günlükleri**altında **Uygulama Günlüğü** etkinleştirmek gerekir. Ayar hemen etkili olur. Uygulama Hizmeti değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
+Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. Kapsayıcısını `stdout` ve `stderr` kapsayıcısından günlüğe kaydetmek Için **App Service günlükleri**altında **Uygulama günlüğünü** etkinleştirmeniz gerekir. Ayar hemen yürürlüğe girer. App Service değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
 
 SCM sitesine **Geliştirme Araçları** menüsündeki **Gelişmiş Araçlar**’dan erişebilirsiniz.
 
@@ -84,7 +84,7 @@ Aşağıdaki makaleler farklı dillerde yazılmış web uygulamalarıyla Linux't
 * [Git](quickstart-docker-go.md)
 * [Birden çok kapsayıcılı uygulamalar](quickstart-multi-container.md)
 
-Linux'ta Uygulama Hizmeti hakkında daha fazla bilgi için bkz:
+Linux üzerinde App Service hakkında daha fazla bilgi için bkz.:
 
 * [Linux’ta App Service hakkında SSS](app-service-linux-faq.md)
 * [Linux'ta App Service için SSH desteği](app-service-linux-ssh-support.md)

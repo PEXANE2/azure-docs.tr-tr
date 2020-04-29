@@ -1,6 +1,6 @@
 ---
-title: Azure Monitör Uygulama Öngörüleri ile mobil uygulamaları izleyin
-description: Azure Monitör Uygulama Öngörüleri ve Uygulama Merkezi ile izleme için hızlı bir mobil uygulama oluşturmak için talimatlar sağlar
+title: Azure Izleyici Application Insights mobil uygulamaları izleme
+description: Azure Izleyici Application Insights ve App Center izleme için bir mobil uygulamayı hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
 ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77660300"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Mobil uygulamanızı App Center ve Application Insights ile analiz etmeye başlama
@@ -26,20 +26,20 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 - Azure aboneliği.
 - iOS, Android, Xamarin, Universal Windows veya React Native uygulaması.
  
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="sign-up-with-app-center"></a>App Center ile kaydolun
-Başlamak için bir hesap oluşturun ve [App Center'a kaydolun.](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs)
+## <a name="sign-up-with-app-center"></a>App Center kaydolun
+Başlamak için bir hesap oluşturun ve [App Center kaydolun](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs).
 
 ## <a name="onboard-to-app-center"></a>App Center'a ekleme
 
-Application Insights'ı mobil uygulamanızla kullanabilmeniz için, önce uygulamanızı [App Center](https://docs.microsoft.com/mobile-center/)'a eklemelisiniz. Application Insights doğrudan mobil uygulamanızdan telemetri almaz. Bunun yerine, uygulamanız özel olay telemetrisini App Center'a gönderir. Ardından, App Center olaylar alındıkça bu özel olayların kopyalarını sürekli Application Insights'a aktarır. (Bu, telemetrinin doğrudan Application Insights'a gönderildiği [Uygulama Öngörüleri JS SDK](https://github.com/Microsoft/ApplicationInsights-JS) veya [React Native eklentisi](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) için geçerli değildir.)
+Application Insights'ı mobil uygulamanızla kullanabilmeniz için, önce uygulamanızı [App Center](https://docs.microsoft.com/mobile-center/)'a eklemelisiniz. Application Insights doğrudan mobil uygulamanızdan telemetri almaz. Bunun yerine, uygulamanız özel olay telemetrisini App Center'a gönderir. Ardından, App Center olaylar alındıkça bu özel olayların kopyalarını sürekli Application Insights'a aktarır. (Bu, [APPLICATION INSIGHTS js SDK 'sı](https://github.com/Microsoft/ApplicationInsights-JS) için veya Telemetriyi doğrudan Application Insights ' e gönderilen [tepki verme yerel eklentisine](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) uygulanmaz.)
 
 Uygulamanızı eklemek için, uygulamanızın desteklediği her platform için App Center hızlı başlangıç yönergelerini izleyin. Her platform için ayrı App Center örnekleri oluşturun:
 
 * [iOS](https://docs.microsoft.com/mobile-center/sdk/getting-started/ios).
 * [Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/android).
-* [Xamarin.](https://docs.microsoft.com/mobile-center/sdk/getting-started/xamarin)
+* [Xamarin](https://docs.microsoft.com/mobile-center/sdk/getting-started/xamarin).
 * [Evrensel Windows](https://docs.microsoft.com/mobile-center/sdk/getting-started/uwp).
 * [React Native](https://docs.microsoft.com/mobile-center/sdk/getting-started/react-native).
 
@@ -67,29 +67,29 @@ Diğer uygulama platformlarından özel olayları göndermek için, App Center S
 
 Uygulamanız özel olayları gönderdikten ve bunlar App Center tarafından alındıktan sonra, Azure Portal'da App Center türünde bir Application Insights kaynağı oluşturmalısınız:
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-2. **Kaynak** > **Oluştur Geliştirici araçları** > **Uygulama Öngörüleri'ni**seçin.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. **Kaynak** > oluştur**Geliştirici Araçları** > **Application Insights**seçin.
 
     > [!NOTE]
-    > Uygulama Öngörüleri kaynağını ilk kez oluşturuyorsanız, [Uygulama Öngörüleri Oluştur Kaynak](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) dokümanını ziyaret ederek daha fazla bilgi edinebilirsiniz.
+    > İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) ' a giderek daha fazla bilgi edinebilirsiniz.
 
     Yapılandırma kutusu görüntülenir. Giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın.
 
     | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
    | **Adı**      | Genel olarak benzersiz bir değer, örneğin "Uygulamam-iOS" | İzlemekte olduğunuz uygulamayı tanımlayan ad |
-     | **Kaynak Grubu**     | Yeni bir kaynak grubu veya menüde var olanlardan biri | İçinde yeni Application Insights kaynağının oluşturulacağı kaynak grubu |
+     | **Kaynak grubu**     | Yeni bir kaynak grubu veya menüde var olanlardan biri | İçinde yeni Application Insights kaynağının oluşturulacağı kaynak grubu |
    | **Konum** | Menüden bir konum | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-3. **Oluştur'u**tıklatın.
+3. **Oluştur**' a tıklayın.
 
 Uygulamanız birden çok platformu (iOS, Android, vb.) destekliyorsa, en iyisi her platform için ayrı bir Application Insights kaynağı oluşturmaktır.
 
 ## <a name="export-to-application-insights"></a>Application Insights'a aktarma
 
-**Genel Bakış** sayfasındaki yeni Uygulama Öngörüleri kaynağınızda. Enstrümantasyon anahtarını kaynağınızdan kopyalayın.
+Yeni Application Insights kaynağında **genel bakış** sayfasında. İzleme anahtarını kaynağından kopyalayın.
 
-Uygulamanız için [App Center](https://appcenter.ms/) örneğinde:
+Uygulamanızın [App Center](https://appcenter.ms/) örneğinde:
 
 1. **Ayarlar** sayfasında **Dışarı Aktar**'a tıklayın.
 2. **Yeni Dışarı Aktarma**'yı seçin, **Application Insights**'ı seçin ve ardından **Özelleştir**'e tıklayın.
@@ -106,11 +106,11 @@ Uygulamanızın desteklediği her platformda bu işlemi yinelemeyi unutmayın.
 
 Application Insights, uygulamalarınızın özel olay telemetrisini App Center'ın sağladığı analiz araçlarının çok ötesinde sorgulayabilir, segmentlere ayırabilir, filtreleyebilir ve analiz edebilir.
 
-1. **Özel olay telemetrinizi sorgulayın.** Uygulama Öngörülerine **Genel Bakış** sayfasından **Günlükler (Analytics) seçeneğini belirleyin.**
+1. **Özel olay telemetrinizi sorgulayın.** Application Insights **genel bakış** sayfasında **Günlükler (Analiz)** öğesini seçin.
 
-   Application Insights kaynağınızla ilişkili Application Insights Logs (Analytics) portalı açılır. Günlükler (Analytics) portalı, Log Analytics sorgu dilini kullanarak verilerinizi doğrudan sorgulamanızı sağlar, böylece uygulamanız ve kullanıcıları hakkında keyfi olarak karmaşık sorular sorabilirsiniz.
+   Application Insights kaynağınız ile ilişkili Application Insights günlükleri (Analiz) portalı açılır. Günlükler (Analiz) portalı Log Analytics sorgu dilini kullanarak verilerinizi doğrudan sorgulamanıza olanak tanıyarak, uygulamanız ve kullanıcılarınızla ilgili rastgele karmaşık sorular sorabilirsiniz.
    
-   Günlükler (Analytics) portalında yeni bir sekme açın ve ardından aşağıdaki sorguya yapıştırın. Son 24 saat içinde uygulamanızdan her özel olayı ayrı ayrı kaç kullanıcının gönderdiğini, bu ayrı sayımlara göre sıralanmış olarak döndürür.
+   Günlükler (Analiz) portalında yeni bir sekme açın, sonra aşağıdaki sorguyu yapıştırın. Son 24 saat içinde uygulamanızdan her özel olayı ayrı ayrı kaç kullanıcının gönderdiğini, bu ayrı sayımlara göre sıralanmış olarak döndürür.
 
    ```AIQL
    customEvents
@@ -119,7 +119,7 @@ Application Insights, uygulamalarınızın özel olay telemetrisini App Center'�
    | order by dcount_user_Id desc 
    ```
 
-   ![Günlükler (Analytics) portalı](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![Günlükler (Analiz) portalı](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Metin düzenleyicisinde sorgunun herhangi bir yerine tıklayarak sorguyu seçin.
    2. Ardından, **Git**'e tıklayarak sorguyu çalıştırın. 

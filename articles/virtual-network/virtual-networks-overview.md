@@ -14,35 +14,35 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
 ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879369"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağı nedir?
 
-Azure Sanal Ağı (VNet), Azure'daki özel ağınızın temel yapı taşıdır. VNet, Azure Sanal Makineleri (VM) gibi birçok Azure kaynağının birbirleriyle, internetle ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. VNet, kendi veri merkezinizde çalıştıracağınız geleneksel ağa benzer, ancak azure altyapısının ölçek, kullanılabilirlik ve yalıtım gibi ek avantajlarını da beraberinde getirir.
+Azure sanal ağı (VNet), Azure 'daki özel ağınız için temel yapı taşdır. VNet, Azure sanal makineler (VM) gibi birçok Azure Kaynak türünün birbirleriyle güvenli bir şekilde iletişim kurmasına olanak sağlar, internet ve şirket içi ağlar. VNet, kendi veri merkezinizde işlemenizi sağlayan geleneksel bir ağa benzer, ancak Azure 'un ölçek, kullanılabilirlik ve yalıtım gibi ek avantajlarından yararlanıyor.
 
 ## <a name="vnet-concepts"></a>VNet kavramları
 
-- **Adres alanı:** Bir VNet oluştururken, ortak ve özel (RFC 1918) adreslerini kullanarak özel bir özel IP adresi alanı belirtmeniz gerekir. Azure, bir sanal ağdaki kaynaklara, atadığınız adres alanından özel bir IP adresi atar. Örneğin, 10.0.0.0/16 adresindeki bir VNet'e VM dağıtırsanız, VM'ye 10.0.0.4 gibi özel bir IP atanır.
-- **Alt ağlar:** Alt ağlar, sanal ağı bir veya daha fazla alt ağa bölmenize ve sanal ağın adres alanının bir bölümünü her alt ağa ayırmanıza olanak tanır. Daha sonra Azure kaynaklarını belirli bir alt ağda dağıtabilirsiniz. Geleneksel bir ağda olduğu gibi, alt ağlar da VNet adres alanınızı kuruluşun iç ağına uygun segmentlere bölmenize olanak tanır. Bu aynı zamanda adres tahsisverimliliğini artırır. Ağ Güvenlik Grupları'nı kullanarak alt ağlardaki kaynakları güvence altına alabilirsiniz. Daha fazla bilgi için [Güvenlik gruplarına](security-overview.md)bakın.
-- **Bölgeler**: VNet tek bir bölge/konum kapsamındadır; ancak, farklı bölgelerden birden fazla sanal ağ Sanal Ağ Eşleme kullanarak birbirine bağlanabilir.
-- **Abonelik:** VNet bir abonelik kapsamındadır. Her Azure [aboneliğinde](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) ve Azure [bölgesinde](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) birden çok sanal ağ uygulayabilirsiniz.
+- **Adres alanı:** VNet oluştururken, genel ve özel (RFC 1918) adreslerini kullanarak özel bir özel IP adresi alanı belirtmeniz gerekir. Azure, bir sanal ağdaki kaynaklara, atadığınız adres alanından özel bir IP adresi atar. Örneğin, adres alanı 10.0.0.0/16 olan VNet 'te bir VM dağıtırsanız, VM 'de 10.0.0.4 gibi özel bir IP atanır.
+- **Alt ağlar:** Alt ağlar, sanal ağı bir veya daha fazla alt ağa segmentetmenize ve sanal ağın adres alanının bir bölümünü her alt ağa ayırmayı sağlar. Ardından, belirli bir alt ağda Azure kaynaklarını dağıtabilirsiniz. Geleneksel ağlarda olduğu gibi, alt ağlar, VNet adres alanınızı kuruluşun iç ağı için uygun parçalara ayırmanıza olanak tanır. Bu ayrıca adres ayırma verimliliğini de artırır. Ağ güvenlik gruplarını kullanarak alt ağlar içindeki kaynakların güvenliğini sağlayabilirsiniz. Daha fazla bilgi için bkz. [güvenlik grupları](security-overview.md).
+- **Bölgeler**: VNET tek bir bölgeye/konuma göre kapsamlandırılır; Ancak, farklı bölgelerdeki birden fazla sanal ağ, sanal ağ eşlemesi kullanılarak birbirine bağlanabilir.
+- **Abonelik:** VNet, bir aboneliğe göre kapsamlandırılır. Her Azure [aboneliğinde](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) ve Azure [bölgesinde](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) birden çok sanal ağ uygulayabilirsiniz.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Ağınızı Azure'da oluştururken, aşağıdaki evrensel tasarım ilkelerini göz önünde bulundurmanız önemlidir:
+Ağınızı Azure 'da oluştururken, aşağıdaki evrensel tasarım ilkelerini göz önünde bulundurmanız önemlidir:
 
-- Çakışmayan adres boşlukları sağlayın. VNet adres alanınızın (CIDR bloğu) kuruluşunuzun diğer ağ aralıklarıyla örtüşmediğinden emin olun.
-- Alt ağlarınız VNet'in tüm adres alanını kapsamamalıdır. Önceden planlayın ve gelecek için bazı adres alanı ayırın.
-- Birden çok küçük VNets daha az büyük VNets olması önerilir. Bu, yönetim yükü önleyecektir.
-- Ağ Güvenlik Grupları (NSG' ler) alt ağlarına atayarak VNet'lerinizi güvence altına alayın.
+- Çakışmayan adres alanlarının bulunduğundan emin olun. VNet adres alanının (CıDR bloğu) kuruluşunuzun diğer ağ aralıklarıyla çakışmadığından emin olun.
+- Alt ağlarınız VNet 'in tüm adres alanını kapsamamalıdır. Daha önce planlayın ve daha sonra adres alanı ayırın.
+- Birden çok küçük VNET 'ten daha az büyük VNET kullanmanız önerilir. Bu, yönetim yükünü engeller.
+- Ağ güvenlik gruplarını (NSG 'ler) bunların altındaki alt ağlara atayarak VNet 'iniz için güvenli hale getirin.
 
 ## <a name="communicate-with-the-internet"></a>İnternet ile iletişim kurma
 
-Bir VNet'teki tüm kaynaklar varsayılan olarak internete giden iletişim kurabilir. Bir kaynağa genel IP adresi veya genel Load Balancer atayarak o kaynağa gelen yönde iletişim kurabilirsiniz. Giden bağlantılarınızı yönetmek için genel IP adresi veya genel Load Balancer da kullanabilirsiniz.  Azure'daki giden bağlantılar hakkında daha fazla bilgi edinmek için bkz. [Giden bağlantılar](../load-balancer/load-balancer-outbound-connections.md), [Genel IP adresleri](virtual-network-public-ip-address.md) ve [Load Balancer](../load-balancer/load-balancer-overview.md).
+Bir sanal ağ içindeki tüm kaynaklar varsayılan olarak Internet ile giden iletişim kurabilir. Bir kaynağa genel IP adresi veya genel Load Balancer atayarak o kaynağa gelen yönde iletişim kurabilirsiniz. Giden bağlantılarınızı yönetmek için genel IP adresi veya genel Load Balancer da kullanabilirsiniz.  Azure'daki giden bağlantılar hakkında daha fazla bilgi edinmek için bkz. [Giden bağlantılar](../load-balancer/load-balancer-outbound-connections.md), [Genel IP adresleri](virtual-network-public-ip-address.md) ve [Load Balancer](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 >Yalnızca sistem içi [Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md) kullanıldığında [giden bağlantıların](../load-balancer/load-balancer-outbound-connections.md) örnek düzeyinde genel IP veya genel Load Balancer ile nasıl çalışacağını tanımlamadığınız sürece giden bağlantı kullanılamaz.
@@ -52,8 +52,8 @@ Bir VNet'teki tüm kaynaklar varsayılan olarak internete giden iletişim kurabi
 Azure kaynakları, aşağıdaki yöntemlerden birini uygulayarak birbiriyle güvenli şekilde iletişim kurar:
 
 - **Bir sanal ağ üzerinden**: Azure App Service Ortamları, Azure Kubernetes Service (AKS) ve Azure Sanal Makine Ölçek Kümeleri gibi sanal makineleri ve diğer birçok türde Azure kaynağını bir sanal ağa dağıtabilirsiniz. Bir sanal ağa dağıtabileceğiniz Azure kaynaklarının tam listesini görüntülemek için bkz. [Sanal ağ hizmeti tümleştirmesi](virtual-network-for-azure-services.md).
-- **Sanal ağ hizmeti bitiş noktası aracılığıyla**: Sanal ağ özel adres alanınızı ve sanal ağınızın kimliğini doğrudan bağlantı üzerinden Azure Depolama hesapları ve Azure SQL veritabanları gibi Azure hizmet kaynaklarına genişletin. Hizmet uç noktaları, kritik Azure hizmeti kaynaklarınızı yalnızca bir sanal ağla sınırlayarak güvenliğini sağlamanıza imkan verir. Daha fazla bilgi için bkz. [Sanal ağ hizmet uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md).
-- **VNet Peering :** Sanal ağ ları birbirine bağlayarak sanal ağdaki kaynakların birbirleriyle iletişim kurmasını sağlayabilirsiniz. Bağlandığınız sanal ağlar aynı veya farklı Azure bölgelerinde bulunabilir. Daha fazla bilgi edinmek için bkz. [Sanal ağ eşlemesi](virtual-network-peering-overview.md).
+- **Bir sanal ağ hizmeti uç noktası aracılığıyla**: sanal ağınızın özel adres alanınızı ve sanal ağınızın kimliğini Azure depolama hesapları ve Azure SQL veritabanları gibi Azure hizmet kaynaklarına ve doğrudan bir bağlantı üzerinden genişletin. Hizmet uç noktaları, kritik Azure hizmeti kaynaklarınızı yalnızca bir sanal ağla sınırlayarak güvenliğini sağlamanıza imkan verir. Daha fazla bilgi için bkz. [Sanal ağ hizmet uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md).
+- **VNET eşlemesi aracılığıyla**: sanal ağları birbirlerine bağlanarak sanal ağ eşlemesi kullanarak sanal ağların birbirleriyle iletişim kurmasına olanak sağlayabilirsiniz. Bağlandığınız sanal ağlar aynı veya farklı Azure bölgelerinde bulunabilir. Daha fazla bilgi edinmek için bkz. [Sanal ağ eşlemesi](virtual-network-peering-overview.md).
 
 ## <a name="communicate-with-on-premises-resources"></a>Şirket içi kaynaklarla iletişim kurma
 
@@ -67,7 +67,7 @@ Aşağıdaki seçenekleri bir arada kullanarak şirket içi bilgisayarlarınız�
 
 Aşağıdaki seçeneklerden birini veya her ikisini de kullanarak alt ağlar arasındaki ağ trafiğini filtreleyebilirsiniz:
 
-- **Güvenlik grupları:** Ağ güvenlik grupları ve uygulama güvenlik grupları, kaynak ve hedef IP adresi, bağlantı noktası ve protokole göre kaynaklara gelen ve gelen trafiği filtrelemenizi sağlayan birden çok gelen ve giden güvenlik kuralı içerebilir. Daha fazla bilgi edinmek için [Ağ güvenlik gruplarına](security-overview.md#network-security-groups) veya Uygulama güvenlik [gruplarına](security-overview.md#application-security-groups)bakın.
+- **Güvenlik grupları:** Ağ güvenlik grupları ve uygulama güvenlik grupları, kaynak ve hedef IP adresi, bağlantı noktası ve protokole göre kaynaklardan gelen ve giden trafiği filtrelemenizi sağlayan birden çok gelen ve giden güvenlik kuralına sahip olabilir. Daha fazla bilgi için bkz. [ağ güvenlik grupları](security-overview.md#network-security-groups) veya [uygulama güvenlik grupları](security-overview.md#application-security-groups).
 - **Ağ sanal gereçleri:** Ağ sanal gereci; güvenlik duvarı, WAN iyileştirmesi veya diğer ağ işlevi gibi ağ işlevlerini gerçekleştiren bir sanal makinedir. Bir sanal ağda dağıtabileceğiniz kullanılabilir ağ sanal gereçleri listesini görüntülemek için bkz. [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
 ## <a name="route-network-traffic"></a>Ağ trafiğini yönlendirme
@@ -79,20 +79,20 @@ Azure varsayılan olarak alt ağlar, bağlı sanal ağlar, şirket içi ağlar v
 
 ## <a name="virtual-network-integration-for-azure-services"></a>Azure hizmetleri için sanal ağ tümleştirmesi
 
-Azure hizmetlerini bir Azure sanal ağına entegre etmek, sanal makinelerden hizmete özel erişim veya sanal ağdaki bilgi işlem kaynaklarına özel erişim sağlar.
-Azure hizmetlerini sanal ağınızda aşağıdaki seçeneklerle tümleştirebilirsiniz:
-- [Hizmetin özel örneklerini](virtual-network-for-azure-services.md) sanal ağa dağıtma. Hizmetlere daha sonra sanal ağ içinde ve şirket içi ağlardan özel olarak erişilebilir.
-- [Özel Bağlantı'yı](../private-link/private-link-overview.md) kullanarak sanal ağınızdan ve şirket içi ağlardan hizmetin belirli bir örneğine özel olarak erişin.
-- Ayrıca, [hizmet bitiş noktaları](virtual-network-service-endpoints-overview.md)aracılığıyla, hizmete sanal bir ağ genişleterek ortak uç noktaları kullanarak hizmete erişebilirsiniz. Hizmet bitiş noktaları, hizmet kaynaklarının sanal ağa güvenli hale alınmasına olanak tanır.
+Azure hizmetleri 'ni bir Azure sanal ağı ile tümleştirmek, sanal makinelerden hizmete özel erişim sağlar veya sanal ağdaki işlem kaynaklarını sağlar.
+Sanal ağınızdaki Azure hizmetlerini aşağıdaki seçeneklerle tümleştirebilirsiniz:
+- [Hizmetin adanmış örneklerini](virtual-network-for-azure-services.md) bir sanal ağa dağıtma. Daha sonra hizmetlere sanal ağ ve şirket içi ağlardan özel olarak erişilebilir.
+- [Özel bağlantıyı](../private-link/private-link-overview.md) kullanarak sanal ağınızdan ve şirket içi ağlardan gelen hizmetin belirli bir örneğine özel olarak erişin.
+- Hizmet [uç noktaları](virtual-network-service-endpoints-overview.md)aracılığıyla bir sanal ağı hizmete genişleterek genel uç noktaları kullanarak hizmete erişebilirsiniz. Hizmet uç noktaları, hizmet kaynaklarının sanal ağla güvenliğini sağlar.
  
 
 ## <a name="azure-vnet-limits"></a>Azure VNet sınırları
 
-Dağıtabileceğiniz Azure kaynaklarının sayısıyla ilgili belirli sınırlar vardır. Azure ağ sınırlarının çoğu maksimum değerlerdedir. Ancak, [VNet sınırları sayfasında](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)belirtildiği gibi [belirli ağ sınırlarını artırabilirsiniz.](../azure-portal/supportability/networking-quota-requests.md) 
+Dağıtabileceğiniz Azure kaynakları sayısında belirli sınırlar vardır. Azure ağ sınırlarının çoğu en büyük değer olan değerlerdir. Ancak, [VNET sınırları sayfasında](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)belirtilen [bazı ağ sınırlarını artırabilirsiniz](../azure-portal/supportability/networking-quota-requests.md) . 
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Azure VNet kullanmak ücretsizdir, ücretsizdir. Sanal Makineler (VM' ler) ve diğer ürünler gibi kaynaklar için standart ücretler geçerlidir. Daha fazla bilgi için [VNet fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network/) ve Azure [fiyatlandırma hesap layıcısına](https://azure.microsoft.com/pricing/calculator/)bakın.
+Azure VNet kullanımı ücretsizdir, ücretsiz olarak ücretlendirilir. Standart ücretler, sanal makineler (VM 'Ler) ve diğer ürünler gibi kaynaklar için geçerlidir. Daha fazla bilgi için bkz. [VNET fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network/) ve Azure [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,95 +1,95 @@
 ---
-title: Azure Not Defterleri Önizlemesi'ne Genel Bakış
-description: Kurulum veya yapılandırma gerektirmediği ücretsiz Azure Notebook Önizleme hizmetini kullanarak Jupyter dizüstü bilgisayarları bulutta çalıştırın.
+title: Azure Notebooks önizlemeye genel bakış
+description: Kurulum veya yapılandırma gerektirmeyen ücretsiz Azure Notebooks önizleme hizmetini kullanarak bulutta Jupyıter not defterlerini çalıştırın.
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75646339"
 ---
-# <a name="overview-of-azure-notebooks-preview"></a>Azure Not Defterleri Önizlemesi'ne Genel Bakış
+# <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks önizlemeye genel bakış
 
-Azure Notebooks, yükleme yapmadan Jupyter not defterlerini geliştirmeye ve çalıştırmaya yönelik, ücretsiz ve barındırılan bir hizmettir. [Jupyter](https://jupyter.org/) (eski adıyla IPython), Markdown metnini, çalıştırılabilir kodu, kalıcı verileri, grafikleri ve görselleştirmeleri tek, sharable tuval, not defteri (jupyter.org görüntü nezaketi üzerine kolayca birleştirmenizi sağlayan açık kaynak *kodlu* bir projedir):
+Azure Notebooks, yükleme yapmadan Jupyter not defterlerini geliştirmeye ve çalıştırmaya yönelik, ücretsiz ve barındırılan bir hizmettir. [Jupyter](https://jupyter.org/) (eski adıyla IPython), markı metnini, çalıştırılabilir kodu, kalıcı verileri, grafikleri ve görselleştirmeleri tek bir paylaşılabilir tuval, *not defteri* (Jupyter.org Image hitap) üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem ' dir:
 
-[![Jupyter dizüstü bilgisayar örnekleri](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Jupyıter Not defteri örnekleri](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
-Kod, grafik ve açıklayıcı metnin bu güçlü birleşimi sayesinde, Jupyter veri bilimi öğretimi, veri temizleme ve dönüştürme, sayısal simülasyon, istatistiksel modelleme ve makine öğrenme modelleri.
+Kod, grafik ve açıklayıcı metinlerin bu güçlü birleşimi nedeniyle, Jupyıter, veri bilimi yönergeleri, veri temizleme ve dönüştürme, sayısal benzetim, istatistiksel modelleme ve makine öğrenimi modellerinin geliştirilmesi gibi birçok kullanım için popüler hale geldi.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-## <a name="hassle-free-experience"></a>Sorunsuz deneyim
+## <a name="hassle-free-experience"></a>Sorun ücretsiz deneyim
 
-Azure Dizüstü Bilgisayarlar, prototip oluşturma, veri bilimi, akademik araştırma veya Python programlamayı öğrenme konusunda hızlı bir şekilde başlamanıza yardımcı olur:
+Azure Notebooks prototipsiz, veri bilimi, akademik araştırma veya program Python 'u öğrenmeye yönelik hızlı bir şekilde başlamanıza yardımcı olur:
 
-- Bir veri bilimcisi kurulum olmadan tam bir Anaconda ortamına anında erişebilir.
-- Bir öğretmen öğrencilere sorunsuz bir Python ortamı sağlayabilir.
-- Sunucu, katılımcılardan yazılım yükleyerek 45 dakika harcamalarını istemeden benzer bir konuşma veya web semineri verebilir.
-- Bir geliştirici veya hobisi hızlı kod scratchpad olarak Dizüstü bilgisayarlar kullanabilirsiniz.
+- Bir veri bilimi, yükleme olmadan tam bir Anaconda ortamına anında erişebilir.
+- Öğretmen, öğrenciler için sorunsuz bir Python ortamı sağlayabilir.
+- Bir sunucu, katılımcıları 45 dakikalık bir yazılım yüklemesi yapmadan katılanlara veya web seminerine benzer bir şekilde izin verebilir.
+- Geliştirici veya Hobbyist, dizüstü bilgisayarları bir hızlı kod karalama paneli olarak kullanabilir.
 
-Dizüstü bilgisayarlar, azure not defterleri gibi tarayıcıtarafından erişilebilen bir bulut hizmeti aracılığıyla (Önizleme'de) insanlar onlarla işbirliği yaptığında daha da güçlü hale gelir. Bulutta, kullanıcıların Jupyter'ı yerel olarak yüklemeleri veya ortamı korumakla ilgilenmeleri gerekmez. Bulut ayrıca, not defterlerini (ve ilişkili veri dosyalarını) diğer yetkili kullanıcılarla paylaşmayı da kolaylaştırır ve kaynak kontrol depoları gibi dış yollarla not defterlerini paylaşmanın komplikasyonlarını önler. Azure Not Defterleri ile kullanıcılar, özellikle talimat amacıyla kullanışlı olan değişiklik veya deneme için not defterlerini kendi hesaplarında kopyalayabilir (veya "klonlayabilir").
+Kişiler, Azure Notebooks (önizlemede) gibi tarayıcıda erişilebilen bir bulut hizmeti aracılığıyla insanlar üzerinde işbirliği yapabilseler de daha güçlü hale gelir. Bulutta, kullanıcıların Jupyıter 'ı yerel olarak yüklememeleri veya bir ortamı korumasıyla ilgili sorun olması gerekir. Bulut Ayrıca, diğer yetkili kullanıcılarla not defterlerini (ve ilişkili veri dosyalarını) paylaşmayı kolaylaştırır ve kaynak denetimi depoları gibi dış yollarla not defterlerini paylaşma zorluklar önler. Azure Notebooks, kullanıcılar, not defterlerini değişiklik veya deneme için kendi hesaplarına kopyalayabilir (veya "klonlayabilir"), özellikle de yönerge amaçlarıyla yararlı olur.
 
-Azure Not Defterleri genel bir kod yazma, yürütme ve paylaşım platformu olduğundan, bunu birçok farklı senaryoiçin kullanabilirsiniz:
+Azure Notebooks genel bir kod yazma, yürütme ve paylaşma platformu olduğundan, bunu birçok farklı senaryo için kullanabilirsiniz:
 
-- Yeni bir programlama dili öğrenin – [ön sayfa eğitimlerinden](https://notebooks.azure.com/Microsoft/projects/samples/html/Introduction%20to%20Python.ipynb) birini deneyin
-- Veri Bilimi öğrenin - [Jake VanderPlas 'kitap](https://notebooks.azure.com/jakevdp/projects/PythonDataScienceHandbook) deneyin
-- Yüzlerce öğrenciye [kurs öğretmek](https://notebooks.azure.com/garth-wells/projects/CUED-IA-Computing-Michaelmas)
-- Kurulumda zaman harcamadan çevrimiçi veya bir konferansta web semineri verin 
-- GitHub kullanıcılarının [Bir GitHub başlatma rozeti oluşturarak](https://notebooks.azure.com/help/projects/sharing/create-a-github-badge) dizüstü bilgisayarları doğrudan yüklemesini ve çalıştırmasını sağlama
-- Slaytlarda kodun yürütülebileceği [slayt gösterileri gibi PowerPoint](https://notebooks.azure.com/help/jupyter-notebooks/slides) verin!
+- Yeni bir programlama dili öğrenin – [FrontPage öğreticilerden](https://notebooks.azure.com/Microsoft/projects/samples/html/Introduction%20to%20Python.ipynb) birini deneyin
+- Veri bilimi öğrenme – TRY [Jake VanderPlas ' Book](https://notebooks.azure.com/jakevdp/projects/PythonDataScienceHandbook)
+- Yüzlerce öğrenci için [Kurs öğretin](https://notebooks.azure.com/garth-wells/projects/CUED-IA-Computing-Michaelmas)
+- Yükleme sırasında harcamadan çevrimiçi veya bir konferansta web seminerine bir Web semineri sunun 
+- GitHub kullanıcılarının [bir GitHub başlatma rozet oluşturarak](https://notebooks.azure.com/help/projects/sharing/create-a-github-badge) not defterlerini doğrudan yüklemesini ve çalıştırmasını sağlama
+- Slaytlara, slaytların çalıştırılabilir olduğu [Slayt gösterileri gibi PowerPoint](https://notebooks.azure.com/help/jupyter-notebooks/slides) sunun!
 
-Kısacası, Azure Dizüstü Bilgisayarlar işinizi daha verimli bir şekilde gerçekleştirmenize ve böylece daha fazlasını elde eve ulaşmanıza yardımcı olur.
+Kısacası, Azure Notebooks çalışmanızı daha verimli bir şekilde gerçekleştirmenize ve bu sayede daha fazla bilgi almanıza yardımcı olur.
 
 > [!Note]
-> Jupyter kendisi hakkında daha fazla bilgi [jupyter.org](https://jupyter.org/) ve [Jupyter belgelerde](https://jupyter-notebook.readthedocs.io/en/latest/)bulunabilir.
+> Jupi 'in kendisi hakkında daha fazla bilgi [Jupyter.org](https://jupyter.org/) ve [jupyıter belgelerinde](https://jupyter-notebook.readthedocs.io/en/latest/)bulunabilir.
 
-## <a name="pricing-and-quotas"></a>Fiyatlandırma ve kotalar
+## <a name="pricing-and-quotas"></a>Fiyatlandırma ve Kotalar
 
-Azure Dizüstü Bilgisayarlar ücretsiz bir hizmettir, ancak kötüye kullanımı önlemek için her proje 4 GB bellek ve 1GB veriile sınırlıdır. Bu sınırları aşan yasal kullanıcılar, dizüstü bilgisayarları çalıştırmaya devam etmek için Captcha zorluğunu görür.
+Azure Notebooks ücretsiz bir hizmettir, ancak kötüye kullanımı engellemek için her proje 4 GB bellek ve 1 GB verilerle sınırlandırılmıştır. Bu sınırları aşan meşru kullanıcılar, not defterlerini çalıştırmaya devam etmek için CAPTCHA Challenge bölümüne bakın.
 
-Tüm sınırları serbest bırakmak için Azure Active Directory (şirket hesabı gibi) kullanarak bir hesapla Azure Not Defteri'nde oturum açın. Bu hesap bir Azure aboneliğiyle ilişkiliyse, bu abonelik içindeki tüm Azure Veri Bilimi Sanal Makine örneklerine bağlanabilirsiniz. Daha fazla bilgi için [projeleri yönet ve yapılandırma - Katmanı hesapla.](configure-manage-azure-notebooks-projects.md#compute-tier)
+Tüm limitleri serbest bırakmak için Azure Notebooks Azure Active Directory (örneğin, bir şirket hesabı) kullanarak bir hesapla oturum açın. Bu hesap bir Azure aboneliğiyle ilişkiliyse, bu abonelik içindeki tüm Azure Veri Bilimi Sanal Makinesi örneklerine bağlanabilirsiniz. Daha fazla bilgi için bkz. [projeleri yönetme ve yapılandırma-işlem katmanı](configure-manage-azure-notebooks-projects.md#compute-tier).
 
-Dizüstü bilgisayar sunucularının en fazla 8 saat boyunca var olması garanti edilir. Çoğu durumda, kapsayıcınız bu sınıra tabi değildir ve bu sürenin ötesine devam eder, ancak uzun süreli oturumlar bazen sistem kararlılığı için kapatılabilir.
+Not defteri sunucularının en fazla 8 saat içinde var olduğu garanti edilir. Çoğu durumda, Kapsayıcınız bu sınıra tabi değildir ve bu sürenin ötesinde çalışmaya devam eder, ancak uzun süreli oturumlar sistem kararlılığını sağlamak için zaman zaman kapatılabilir.
 
 ## <a name="available-kernels-and-environments"></a>Kullanılabilir çekirdekler ve ortamlar
 
-Her not defteri için, herhangi bir kod hücresini çalıştırmak için kullanılan çekirdeği (diğer bir şekilde çalışma zamanı ortamı) seçersiniz. Azure Not Defterleri aşağıdaki çekirdekleri destekler:
+Her bir not defteri için, herhangi bir kod hücresini çalıştırmak için kullanılan çekirdeği (çalışma zamanı ortamı) seçersiniz. Azure Notebooks aşağıdaki çekirdekleri destekler:
 
-- Python 2.7 + Anaconda2-5.3.0
-- Python 3.6 + Anaconda3-5.3.0
-- Python 3.5 + Anaconda3-4.2.0 (amortismana alınacaktır)
-- R 3.4.1 + Microsoft R Açık 3.4.1
-- F# 4.1.9
+- Python 2,7 + Anaconda2-5.3.0
+- Python 3,6 + Anaconda3-5.3.0
+- Python 3,5 + Anaconda3-4.2.0 (kullanım dışı olacaktır)
+- R 3.4.1 + Microsoft R Open 3.4.1
+- F # 4.1.9
 
-Azure Not Defterleri, temel dağıtımların ötesinde ekstra paketler de içerir. Python çekirdekleri, örneğin, numpy, pandalar, scikit-learn, matplotlib ve bokeh kütüphaneleri içerir.
+Azure Notebooks, temel dağıtımların ötesinde ek paketler de içerir. Örneğin, Python kerels, örneğin sayısal tuş takımı, Pandas, scikit-öğren, Matplotlib ve bokeh kitaplıklarını içerir.
 
-Ayrıca, projedeki tüm not defterleri için bir ortam oluşturmak için projeyi özelleştirebilirsiniz. Daha fazla bilgi için [Bkz. Hızlı Başlangıç: Özel bir ortama sahip bir proje oluşturun.](quickstart-create-jupyter-notebook-project-environment.md)
+Ayrıca, projedeki tüm not defterleri için bir ortam oluşturmak üzere bir projeyi özelleştirebilirsiniz. Daha fazla bilgi için bkz. [hızlı başlangıç: özel bir ortamla proje oluşturma](quickstart-create-jupyter-notebook-project-environment.md).
 
-Azure Dizüstü Bilgisayarlar, temel dağıtımlara ek olarak, veri bilimciler için yararlı olan birçok ek paketle birlikte önceden yüklenmiş olarak gelir. Ayrıca, her dil için tipik işlemi kullanarak kendi paketlerinizi yükleyebilirsiniz.
+Temel dağıtımların yanı sıra, Azure Notebooks veri bilimcileri için yararlı olan çok sayıda ek pakete önceden yüklenmiş olarak gelir. Ayrıca, her dil için tipik işlemi kullanarak kendi paketlerinizi yükleyebilirsiniz.
 
-## <a name="pre-configured-jupyter-extensions"></a>Önceden yapılandırılmış Jupyter uzantıları
+## <a name="pre-configured-jupyter-extensions"></a>Önceden yapılandırılmış Jupyıter uzantıları
 
-Azure Dizüstü Bilgisayarlar aşağıdaki Jupyter uzantılarıyla önceden yapılandırılmıştır:
+Azure Notebooks aşağıdaki Jupyter uzantılarıyla önceden yapılandırılmıştır:
 
-- [RISE](https://github.com/damianavila/RISE): Bir Jupyter Slayt Uzantısı (live_reveal olarak da bilinir). Daha fazla bilgi için [bkz.](present-jupyter-notebooks-slideshow.md)
-- [JupyterLab : Jupyter](https://github.com/jupyterlab/jupyterlab)dizüstü bilgisayarlarla çalışmak için tam bir hesaplama ortamı.
-- [Altair](https://github.com/ellisonbg/altair): Python için bildirimsel istatistiksel görüntüleme kütüphanesi.
-- [BQPlot](https://github.com/bloomberg/bqplot): Jupyter Notebook'lar için etkileşimli bir çizim çerçevesi.
-- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Jupyter Notebook'lar için etkileşimli HTML widget'ları.
+- [RISE](https://github.com/damianavila/RISE): Jupyter slayt gösterisi uzantısı (live_reveal olarak da bilinir). Daha fazla bilgi için bkz. [Not defteri slayt gösterisi çalıştırma](present-jupyter-notebooks-slideshow.md).
+- [Jupyterlab](https://github.com/jupyterlab/jupyterlab): Jupyter Not defterleri ile çalışmaya yönelik tam bir hesaplama ortamıdır.
+- [Altair](https://github.com/ellisonbg/altair): Python için bildirime dayalı istatistiksel görselleştirme kitaplığı.
+- [Bqçiz](https://github.com/bloomberg/bqplot): Jupyter Not defterleri için etkileşimli bir çizim çerçevesi.
+- [Ipypencere öğeleri](https://github.com/jupyter-widgets/ipywidgets): Jupyter Not defterleri IÇIN etkileşimli HTML pencere öğeleri.
 
 ## <a name="issues-and-getting-help"></a>Sorunlar ve yardım alma
 
-Azure Not Defterleri hala Önizleme'de olduğundan, hizmet diğer Azure hizmetlerine göre daha sık veya daha uzun süreli geçici kesintiler yaşayabilir. Bazı özellikler eksik olabilir veya hata içeriyor olabilir.
+Azure Notebooks hala önizlemede olduğundan, hizmet diğer Azure hizmetlerinden daha sık veya daha fazla olabilecek geçici kesintiler yaşayabilir. Bazı özellikler tamamlanmamış veya hata içeriyor olabilir.
 
-Şu anda, iş açısından kritik uygulamalar veya hassas not defterleri ve veriler için Azure Not Defteri Önizlemesi'ni kullanmamayı öneririz.
+Bu noktada, iş açısından kritik uygulamalar veya hassas Not defterleri ve veriler için Azure Notebooks önizlemesi kullanılması önerilir.
 
-Azure Dizüstü Bilgisayarlar hakkındaki sorularınızı tartışmak için [GitHub deposunda](https://github.com/Microsoft/AzureNotebooks/issues)bir sorun dosyalayın.
+Azure Notebooks hakkındaki sorularınızı tartışmak için [GitHub deposunda](https://github.com/Microsoft/AzureNotebooks/issues)bir sorun verin.
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Örnek not defterlerini keşfedin](azure-notebooks-samples.md)
+- [Örnek not defterlerini keşfet](azure-notebooks-samples.md)
 
 - Hızlı Başlangıçlar:
 
@@ -103,11 +103,11 @@ Azure Dizüstü Bilgisayarlar hakkındaki sorularınızı tartışmak için [Git
 
   - [Not defteri oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md  )
 
-- Nasıl-makaleler:
+- Nasıl yapılır makaleleri:
   
   - [Projeleri oluşturma ve kopyalama](create-clone-jupyter-notebooks.md)
   - [Projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
-  - [Paketleri dizüstü bilgisayarın içinden yükleme](install-packages-jupyter-notebook.md)
+  - [Bir not defteri içinden paket yükler](install-packages-jupyter-notebook.md)
   - [Slayt gösterisi yapma](present-jupyter-notebooks-slideshow.md)
   - [Veri dosyalarıyla çalışma](work-with-project-data-files.md)
   - [Veri kaynaklarına erişme](access-data-resources-jupyter-notebooks.md)

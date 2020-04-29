@@ -1,6 +1,6 @@
 ---
-title: Yönetilen diskleri depolama hesabına kopyalama - CLI örneği
-description: Azure CLI örneği - Yönetilen diskleri bir depolama hesabına dışa aktarın veya kopyalayın.
+title: Yönetilen diskleri bir depolama hesabına kopyalama-CLı örneği
+description: Azure CLı örneği-yönetilen diskleri bir depolama hesabına aktarın veya kopyalayın.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,15 +16,15 @@ ms.date: 05/09/2019
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: d841519aeedb4b85fb897b45fa09be6c62b1fa2a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459993"
 ---
-# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLI'yi kullanarak yönetilen bir diski depolama hesabına dışa aktarma/kopyalama
+# <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Azure CLı kullanarak yönetilen bir diski depolama hesabına aktarma/kopyalama
 
-Bu betik yönetilen diskin VHD dosyasını aynı veya farklı bölgede bulunan bir depolama hesabına aktarır. İlk olarak yönetilen diskin SAS URI'sini oluşturur ve sonra onu VHD dosyasını bir depolama hesabına kopyalamak için kullanır. Bu betiği bölgesel genişleme için yönetilen diskleri farklı bölgelere kopyalama amacıyla kullanabilirsiniz. Yönetilen bir diskin VHD dosyasını Azure Marketi'nde yayımlamak istiyorsanız, bu komut dosyasını kullanarak VHD dosyasını bir depolama hesabına kopyalayabilir ve ardından kopyalanan VHD'nin SAS URI'sini oluşturarak Market'te yayımlayabilirsiniz.   
+Bu betik yönetilen diskin VHD dosyasını aynı veya farklı bölgede bulunan bir depolama hesabına aktarır. İlk olarak yönetilen diskin SAS URI'sini oluşturur ve sonra onu VHD dosyasını bir depolama hesabına kopyalamak için kullanır. Bu betiği bölgesel genişleme için yönetilen diskleri farklı bölgelere kopyalama amacıyla kullanabilirsiniz. Azure Marketi 'nde yönetilen bir diskin VHD dosyasını yayınlamak istiyorsanız, bu betiği kullanarak VHD dosyasını bir depolama hesabına kopyalayabilir ve ardından Market 'te yayımlamak için kopyalanmış VHD 'nin SAS URI 'sini oluşturabilirsiniz.   
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

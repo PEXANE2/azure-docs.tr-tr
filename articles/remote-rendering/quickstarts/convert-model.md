@@ -1,123 +1,123 @@
 ---
 title: Modeli dönüştürme
-description: Özel bir modeliçin dönüşüm adımlarını gösteren hızlı başlat.
+description: Özel bir model için dönüştürme adımlarını gösteren hızlı başlangıç.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
 ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81312990"
 ---
-# <a name="quickstart-convert-a-model-for-rendering"></a>Quickstart: Oluşturma için bir modeli dönüştürme
+# <a name="quickstart-convert-a-model-for-rendering"></a>Hızlı başlangıç: bir modeli işleme için dönüştürme
 
-[Quickstart: Unity ile bir model oluşturma](render-model.md), yerleşik bir model işlemek için Birlik örnek projesini nasıl kullanacağınızı öğrendiniz. Bu kılavuz, kendi modellerinizi nasıl dönüştürdüğünüzü gösterir.
+[Hızlı başlangıç: Unity ile model işleme](render-model.md), bir yerleşik modeli Işlemek için Unity örnek projesini nasıl kullanacağınızı öğrendiniz. Bu kılavuzda kendi modellerinizi nasıl dönüştürebileceğiniz gösterilmektedir.
 
 Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Giriş ve çıktı için azure blob depolama hesabı ayarlama
-> * Azure Uzaktan İşleme ile kullanılmak üzere bir 3B model yükleme ve dönüştürme
-> * Dönüştürme yapılan 3B modeli işleme uygulamasına dahil etme
+> * Giriş ve çıkış için bir Azure Blob depolama hesabı ayarlama
+> * Azure uzaktan Işleme ile kullanmak için bir 3B modeli yükleme ve dönüştürme
+> * Dönüştürülmüş 3B modeli işleme için bir uygulamaya ekleme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Komple [Quickstart: Unity ile bir model oluşturma](render-model.md)
-* Azure PowerShell'i yükleme [(dokümantasyon)](https://docs.microsoft.com/powershell/azure/)
-  * Yönetici haklarıyla powershell açın
-  * Çalıştırmak:`Install-Module -Name Az -AllowClobber`
+* [Hızlı başlangıç: Unity ile model işleme](render-model.md)
+* Azure PowerShell 'yi [(belgeler)](https://docs.microsoft.com/powershell/azure/)
+  * Yönetici haklarıyla bir PowerShell açın
+  * Çalışmaz`Install-Module -Name Az -AllowClobber`
 
 ## <a name="overview"></a>Genel Bakış
 
-Sunucudaki işleyici, FBX veya GLTF gibi kaynak model biçimleriyle doğrudan çalışamaz. Bunun yerine, modelin özel bir ikili biçimde olmasını gerektirir.
-Dönüştürme hizmeti, Azure blob depolama adresindeki modelleri tüketir ve dönüştürülmüş modelleri sağlanan Azure blob depolama kapsayıcısına geri yazar.
+Sunucu üzerindeki işleyici, FBX veya GLTF gibi kaynak model biçimleriyle doğrudan çalışabilir. Bunun yerine, modelin özel bir ikili biçimde olmasını gerektirir.
+Dönüştürme hizmeti, Azure Blob depolama alanındaki modelleri kullanır ve dönüştürülen modelleri, belirtilen bir Azure Blob depolama kapsayıcısına geri yazar.
 
 Gerekenler:
 
 * Bir Azure aboneliği
-* Aboneliğinizde bir 'StorageV2' hesabı
-* Giriş modeliniz için bir blob depolama kabı
-* Çıktı verileriniz için bir blob depolama kapsayıcısı
-* Dönüştürmek için bir model, [örnek modellere](../samples/sample-model.md) bakın
-  * Desteklenen kaynak [biçimleri](../how-tos/conversion/model-conversion.md#supported-source-formats) listesine bakın
-  * Örnek dönüştürme komut dosyasını kullanmak için, modeli ve tüm dış bağımlılıkları (dış dokular veya geometri gibi) içeren bir giriş klasörü hazırladığınıza emin olun
+* Aboneliğinizdeki bir ' StorageV2 ' hesabı
+* Giriş modeliniz için bir BLOB depolama kapsayıcısı
+* Çıkış verileriniz için bir BLOB depolama kapsayıcısı
+* Dönüştürülecek bir model, bkz. [örnek modeller](../samples/sample-model.md)
+  * [Desteklenen kaynak biçimlerinin](../how-tos/conversion/model-conversion.md#supported-source-formats) listesini görün
+  * Örnek dönüştürme betiğini kullanmak için modeli ve tüm dış bağımlılıkları (dış dokular veya geometri gibi) içeren bir giriş klasörü hazırlandığınızdan emin olun
 
 ## <a name="azure-setup"></a>Azure kurulumu
 
-Henüz bir hesabınız yoksa, [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/)ücretsiz hesap seçeneğini tıklayın ve talimatları izleyin.
+Henüz bir hesabınız yoksa, sayfasına gidin [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/), ücretsiz hesap seçeneğine tıklayın ve yönergeleri izleyin.
 
-Azure hesabınız olduktan sonra' [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home)a gidin.
+Bir Azure hesabınız olduğunda adresine gidin [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home).
 
 ### <a name="storage-account-creation"></a>Depolama hesabı oluşturma
 
-Blob depolama oluşturmak için öncelikle bir depolama hesabı gerekir.
-Bir tane oluşturmak için "Kaynak oluştur" düğmesine tıklayın:
+BLOB depolama oluşturmak için önce bir depolama hesabına ihtiyacınız vardır.
+Bir tane oluşturmak için, "kaynak oluştur" düğmesine tıklayın:
 
-![Azure - kaynak ekleme](media/azure-add-a-resource.png)
+![Azure-Kaynak Ekle](media/azure-add-a-resource.png)
 
-Yeni ekrandan, sol tarafta **Depolama'yı** ve ardından Depolama hesabını seçin **- blob, dosya, tablo,** sonraki sütundan sıra:
+Yeni ekrandan, sol taraftaki **depolama** ' yı ve ardından **depolama hesabı-blob, dosya, tablo,** sonraki sütundan kuyruk ' u seçin:
 
-![Azure - depolama alanı ekle](media/azure-add-storage.png)
+![Azure-depolama ekleme](media/azure-add-storage.png)
 
-Bu düğmeyi tıklattığınızda, doldurulması gereken depolama özellikleri yle birlikte aşağıdaki ekran açılır:
+Bu düğmeye tıkladığınızda, doldurulacak depolama özellikleriyle aşağıdaki ekran görüntülenir:
 
-![Azure Kurulumu](media/azure-setup1.png)
+![Azure kurulumu](media/azure-setup1.png)
 
 Formu aşağıdaki şekilde doldurun:
 
-* Açılan kutunun altındaki bağlantıdan yeni bir Kaynak Grubu oluşturun ve bu **ARR_Tutorial**
-* Depolama **hesabı adı için**buraya benzersiz bir ad girin. **Bu ad genel olarak benzersiz olmalıdır,** aksi takdirde adı verilen hazır olduğunu bildiren bir istem olacaktır. Bu hızlı başlangıç kapsamında, biz **arrtutorialstorage**adını. Buna göre, bu hızlı başlangıç herhangi bir olay için adınızı ile değiştirmeniz gerekir.
-* Size yakın bir **konum** seçin. İdeal olarak, diğer hızlı başlatmada işlemeyi ayarlamak için kullanılan aynı konumu kullanın.
-* **Performans** 'Standart' olarak ayarlandı
-* 'StorageV2 (genel amaçlı v2)' olarak ayarlanmış **hesap türü**
-* **Çoğaltma** 'Okuma-erişim coğrafi yedekli depolama (RA-GRS)' olarak ayarlanır
-* **Erişim katmanı** 'Hot' olarak ayarlandı
+* Açılan kutunun altındaki bağlantıdan yeni bir kaynak grubu oluşturun ve bu **ARR_Tutorial** adlandırın
+* **Depolama hesabı adı**için buraya benzersiz bir ad girin. **Bu ad genel olarak benzersiz olmalıdır**, aksi takdirde adın verildiğini bildiren bir istem olacaktır. Bu hızlı başlangıç kapsamında, **arrtutorialstorage**olarak adlandırın. Buna uygun olarak, bu hızlı başlangıçtaki herhangi bir oluşum için adınızı adınızla değiştirmeniz gerekir.
+* Size yakın bir **konum** seçin. İdeal olarak, diğer hızlı başlangıçta işlemeyi ayarlamak için kullanılan konumu kullanır.
+* ' Standart ' olarak ayarlanan **performans**
+* **Hesap türü** ' StorageV2 (genel amaçlı v2) ' olarak ayarlandı
+* **Çoğaltma** ' Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) ' olarak ayarlandı
+* **Erişim katmanı** ' Hot ' olarak ayarlandı
 
-Diğer sekmelerde özelliklerin hiçbirinin değiştirilmesi gerekmez, bu nedenle **"Gözden Geçir + oluştur"** bölümüne devam edebilir ve kurulumu tamamlamak için adımları izleyebilirsiniz.
+Diğer sekmelerdeki özelliklerden hiçbirinin değiştirilmemesi gerekir, bu sayede **"gözden geçir + oluştur"** ile devam edebilir ve ardından kurulumu tamamlamaya yönelik adımları izleyebilirsiniz.
 
-Web sitesi artık dağıtımınızın ilerlemesi hakkında sizi bilgilendirir ve sonunda "Dağıtımınız tamamlandı" bildirir. Sonraki adımlar için **"Kaynağa git"** düğmesine tıklayın:
+Web sitesi artık dağıtımınızın ilerleme durumu hakkında bilgi verir ve "dağıtımınız tamamlanmıştır". Sonraki adımlar için **"kaynağa git"** düğmesine tıklayın:
 
-![Azure Depolama oluşturma tamamlandı](./media/storage-creation-complete.png)
+![Azure depolama oluşturma Tamam](./media/storage-creation-complete.png)
 
-### <a name="blob-storage-creation"></a>Blob depolama oluşturma
+### <a name="blob-storage-creation"></a>BLOB depolama oluşturma
 
-Sonra iki blob kaplar, giriş ve çıktı için bir gerekir.
+Ardından, biri giriş ve diğeri çıkış için olmak üzere iki blob kapsayıcıyla ihtiyacımız var.
 
-Yukarıdaki **"Kaynağa git"** düğmesinden, solda liste menüsü içeren bir panelin bulunduğu bir sayfaya geçersiniz. **"Blob hizmeti"** kategorisi altındaki listede **"Kapsayıcılar"** düğmesine tıklayın:
+Yukarıdaki **"kaynağa git"** düğmesine, sol taraftaki bir liste menüsü içeren bir panelin bulunduğu bir sayfaya ulaşırsanız. **"Blob hizmeti"** kategorisinin altındaki listede, **"kapsayıcılar"** düğmesine tıklayın:
 
-![Azure - Kapsayıcı ekle](./media/azure-add-containers.png)
+![Azure-kapsayıcı ekleme](./media/azure-add-containers.png)
 
-**Giriş** blob depolama kabı oluşturmak için **"+ Konteyner"** düğmesine basın.
+**Giriş** blobu depolama kapsayıcısını oluşturmak için **"+ Container"** düğmesine basın.
 Oluştururken aşağıdaki ayarları kullanın:
   
 * Ad = arrinput
-* Genel erişim düzeyi = Özel
+* Genel erişim düzeyi = özel
 
-Kapsayıcı oluşturulduktan sonra **+ Kapsayıcı'yı** tekrar tıklatın ve **çıkış** kapsayıcısı için bu ayarları tekrarlayın:
+Kapsayıcı oluşturulduktan sonra **+ Container** ' e tıklayın ve **Çıkış** kapsayıcısı için bu ayarlarla yineleyin:
 
 * Ad = arroutput
-* Genel erişim düzeyi = Özel
+* Genel erişim düzeyi = özel
 
-Şimdi iki blob depolama kapları olmalıdır:
+Artık iki BLOB depolama Kapsayıcınız olmalıdır:
 
-![Blob Depolama Kurulumu](./media/blob-setup.png)
+![BLOB depolama kurulumu](./media/blob-setup.png)
 
-## <a name="run-the-conversion"></a>Dönüşümü çalıştırma
+## <a name="run-the-conversion"></a>Dönüştürmeyi çalıştırma
 
-Varlık dönüştürme hizmetini aramayı kolaylaştırmak için bir yardımcı program komut dosyası salıyoruz. *Bu Scripts* klasöründe bulunan ve **Conversion.ps1**denir.
+Varlık dönüştürme hizmetini çağırmayı kolaylaştırmak için bir yardımcı program betiği sağlıyoruz. *Betikler* klasöründe bulunur ve **dönüştürme. ps1**olarak adlandırılır.
 
-Özellikle, bu komut dosyası
+Özellikle, bu betik
 
-1. yerel diskten giriş depolama kapsayıcısına belirli bir dizindeki tüm dosyaları yükler
-1. giriş depolama kabından verileri alacak ve bir dönüşüm kimliği döndürecek bir dönüştürme başlatacak [varlık dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md) çağırır
-1. dönüşüm işlemi başarı veya başarısızlıkla sona erene kadar, alınan dönüşüm kimliğiyle dönüşüm durumu API'sini yoklama
-1. çıkış depolamasında dönüştürülen varlığa bir bağlantı alır
+1. belirli bir dizindeki tüm dosyaları yerel diskten giriş depolama kapsayıcısına yükler
+1. Giriş depolama kapsayıcısından verileri alacak ve dönüştürme kimliği döndürecek bir dönüştürme başlatacak [varlık dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md) çağırır
+1. dönüştürme işlemi başarılı veya başarısız ile sonlanana kadar, alınan dönüştürme kimliğiyle birlikte dönüştürme durumu API 'sini yoklayın
+1. çıktı depolama alanındaki dönüştürülmüş varlığın bir bağlantısını alır
 
-Komut dosyası dosya *Scripts\arrconfig.json*kendi yapılandırmasını okur. JSON dosyanı bir metin düzenleyicisinde açın.
+Betik, *Scripts\arrconfig.JSON*dosyasından yapılandırmasını okur. Bu JSON dosyasını bir metin düzenleyicisinde açın.
 
 ```json
 {
@@ -144,58 +144,58 @@ Komut dosyası dosya *Scripts\arrconfig.json*kendi yapılandırmasını okur. JS
 }
 ```
 
-**Hesap Ayarları** grubu içindeki yapılandırma (hesap kimliği ve anahtar) [Unity quickstart ile bir model oluşturmadaki](render-model.md)kimlik bilgilerine benzer şekilde doldurulmalıdır.
+**Accountsettings** grubu içindeki (hesap kimliği ve anahtar) yapılandırma, [Unity hızlı başlangıç ile model işleme](render-model.md)içindeki kimlik bilgilerine benzer şekilde doldurulmalıdır.
 
-**VarlıkDönüşüm Ayarları** grubunda, yukarıda görüldüğü gibi **kaynakGrubu**, **blobInputContainerName**ve **blobOutputContainerName'i** değiştirdiğinden emin olun.
-**Arrtutorialstorage** değerinin depolama hesabı oluşturma sırasında seçtiğiniz benzersiz adla değiştirilmesi gerektiğini unutmayın.
+**Assetconversionsettings** grubunun içinde, aşağıda görüldüğü gibi **resourceGroup**, **Blobınputcontainername**ve **bloi putcontainername** ' i değiştirdiğinizden emin olun.
+**Arrtutorialstorage** değerinin, depolama hesabı oluşturma sırasında seçtiğiniz benzersiz adla değiştirilmesini unutmayın.
 
-**YerelAssetDirectoryPath'i,** dönüştürmek istediğiniz modeli içeren diskinizdeki dizini işaret etmek için değiştirin. Çift eğik çizgi (" ") kullanarak yolda düzgün bir şekilde ters eğik çizgilerden ("\\")\\\\kaçmaya dikkat edin.
+**Localassetdirectorypath** öğesini, diskinizde dönüştürmek istediğiniz modeli içeren dizine işaret etmek üzere değiştirin. Çift ters eğik çizgi ("\\\\\\") kullanarak yoldaki ters eğik çizgileri ("") doğru bir şekilde kaçış konusunda dikkatli olun.
 
-**LocalAssetDirectoryPath'de** verilen yoldan tüm **veriler, inputFolderPath**tarafından verilen bir alt patavar altında **blobInputContainerName** blob konteynerine yüklenir. Yani "D:\\tmp\\robot" dizininin içeriğinin üzerindeki örnek yapılandırmada "robotDönüşüm" yolu altında depolama hesabı "arrtutorialstorage" blob konteyner "arrinput" yüklenecektir. Zaten varolan dosyalar üzerine yazılır.
+**Localassetdirectorypath** içinde verilen yoldaki tüm veriler, **ınputfolderpath**tarafından verilen bir alt yol altında **blobinputcontainername** blob kapsayıcısına yüklenir. Bu nedenle, "D:\\tmp\\robot" dizininin içeriğinin yukarıdaki örnek yapılandırmasında "robotconversion" yolu altındaki "arrtutorialstorage" depolama hesabının "arrinput" blob kapsayıcısına yüklenir. Zaten var olan dosyaların üzerine yazılacak.
 
-**GirişAssetPath'i** dönüştürülecek modelin yoluna değiştirin - yol yerelAssetDirectoryPath'e göredir. Yol ayırıcısı olarak\\" " yerine "/" kullanın. Yani doğrudan "D:\\tmp\\robot" bulunan bir "robot.fbx" dosyası için "robot.fbx" kullanın.
+**Inputassetpath** öğesini dönüştürülecek modelin yolu olarak değiştirin; yol, localAssetDirectoryPath öğesine görelidir. Yol ayırıcısı olarak "\\" yerine "/" kullanın. Bu nedenle doğrudan "D:\\tmp\\robot" içinde bulunan bir "robot. fbx" dosyası için "robot. fbx" kullanın.
 
-Model dönüştürüldükten sonra **blobOutputContainerName**tarafından verilen depolama konteynerine geri yazılacaktır. Bir alt patina isteğe bağlı **çıktılarFolderPath**sağlayarak belirtilebilir. Yukarıdaki örnekte ortaya çıkan "robot.arrAsset" "dönüştürülmüş/robot" altında çıkış blob konteyner kopyalanacaktır.
+Model dönüştürüldükten sonra, **Bloi Putcontainername**tarafından verilen depolama kapsayıcısına geri yazılır. İsteğe bağlı **Outputfolderpath**sağlanarak bir alt yol belirtilebilir. Yukarıdaki örnekte, "robot. arrAsset" sonucu "dönüştürülmüş/robot" altındaki çıkış blob kapsayıcısına kopyalanacaktır.
 
-Config ayarı **çıktısıAssetFileName** dönüştürülen varlığın adını belirler - parametre isteğe bağlıdır ve çıktı dosya adı aksi takdirde giriş dosyası adından çıkarılır. 
+**Outputassetfilename** yapılandırma ayarı, dönüştürülmüş varlığın adını belirler-parametre isteğe bağlıdır ve çıkış dosya adı, aksi takdirde giriş dosyası adından çıkarılır. 
 
-Bir PowerShell açın, [ön koşullarda](#prerequisites)belirtildiği gibi *Azure PowerShell'i* yüklediğinizden emin olun. Ardından aşağıdaki komutla aboneliğinize giriş yapın ve ekrandaki yönergeleri izleyin:
+Bir PowerShell açın, *Azure PowerShell* [önkoşullara](#prerequisites)belirtilen şekilde yüklediğinizden emin olun. Ardından aşağıdaki komutla aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
 
 ```PowerShell
 Connect-AzAccount
 ```
 
 > [!NOTE]
-> Kuruluşunuzun birden fazla aboneliği olması durumunda, SubscriptionId ve Kiracı bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
+> Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
 
-Dizin `azure-remote-rendering\Scripts` değiştirin ve dönüşüm komut dosyası çalıştırın:
+`azure-remote-rendering\Scripts` Dizine geçin ve dönüştürme betiğini çalıştırın:
 
 ```PowerShell
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Böyle bir şey görmelisiniz: ![Conversion.ps1](./media/successful-conversion.png)
+Şuna benzer bir şey görmeniz gerekir: ![dönüştürme. ps1](./media/successful-conversion.png)
 
-Dönüştürme komut dosyası dönüştürülen model için *paylaşılan erişim imzası (SAS)* URI oluşturur. Artık bu URI'yi **Model Adı** olarak quickstart örnek uygulamasına kopyalayabilirsiniz (bkz. [Quickstart: Unity ile bir model oluşturma).](render-model.md)
+Dönüştürme betiği, dönüştürülmüş model için bir *paylaşılan erişim imzası (SAS)* URI 'si oluşturur. Artık bu URI 'yi **model adı** olarak hızlı başlangıç örnek uygulamasına kopyalayabilirsiniz (bkz. [hızlı başlangıç: Unity ile model oluşturma](render-model.md)).
 
-![Birlikte modeli değiştirin](./media/replace-model-in-unity.png)
+![Unity 'de modeli değiştirme](./media/replace-model-in-unity.png)
 
- Örnek şimdi yüklemeli ve özel model işlemek!
+ Örnek, şimdi özel modelinizi yükleyip işlemelidir!
 
-## <a name="optional-re-creating-a-sas-uri"></a>İsteğe bağlı: SAS URI'yi yeniden oluşturma
+## <a name="optional-re-creating-a-sas-uri"></a>İsteğe bağlı: SAS URI 'sini yeniden oluşturma
 
-Dönüştürme komut dosyası tarafından oluşturulan SAS URI yalnızca 24 saat geçerli olacaktır. Ancak, süresi dolduktan sonra modelinizi yeniden dönüştürmeniz gerekmez. Bunun yerine, sonraki adımlarda açıklandığı gibi portalda yeni bir SAS oluşturabilirsiniz:
+Dönüştürme betiği tarafından oluşturulan SAS URI 'SI yalnızca 24 saat için geçerli olacaktır. Ancak, bu süre dolduktan sonra modelinizi yeniden dönüştürmeniz gerekmez. Bunun yerine, sonraki adımlarda açıklandığı gibi portalda yeni bir SAS oluşturabilirsiniz:
 
-1. [Azure portalına](https://www.portal.azure.com) gidin
-1. **Depolama hesabı** kaynağınıza ![tıklayın: İmza Erişimi](./media/portal-storage-accounts.png)
-1. Aşağıdaki ekranda, sol paneldeki **Depolama gezginine** tıklayın ve çıkış modelinizi *(.arrAsset* dosyası) *arroutput* blob depolama kabında bulun. Dosyaya sağ tıklayın ve bağlam menüsünden Paylaşılan Erişim ![ **İmzasını Al'ı** seçin: İmza Erişimi](./media/portal-storage-explorer.png)
-1. Son kullanma tarihini seçebileceğiniz yeni bir ekran açılır. **Oluştur'a**basın ve bir sonraki iletişim kutusunda gösterilen URI'yi kopyalayın. Bu yeni URI, komut dosyasının oluşturduğu geçici URI'nin yerini alır.
+1. [Azure Portal](https://www.portal.azure.com) git
+1. **Depolama hesabı** kaynağına tıklayın: ![imza erişimi](./media/portal-storage-accounts.png)
+1. Aşağıdaki ekranda, sol panelde **Depolama Gezgini** ' ne tıklayın ve *arroutput* BLOB depolama kapsayıcısında çıkış modelinizi (*. arrAsset* dosyası) bulun. Dosyaya sağ tıklayın ve bağlam menüsünden **paylaşılan erişim Imzası al** ' ı seçin: ![imza erişimi](./media/portal-storage-explorer.png)
+1. Sona erme tarihi seçebileceğiniz yeni bir ekran açılır. **Oluştur**' a basın ve sonraki iletişim kutusunda gösterilen URI 'yi kopyalayın. Bu yeni URI, betiğin oluşturulduğu geçici URI 'yi değiştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi temel leri bildiğinize göre, daha derinlemesine bilgi edinmek için öğreticilerimize bir göz atın.
+Artık temel bilgileri öğrenmiş olduğunuza göre, daha ayrıntılı bilgi edinmek için öğreticilerimize göz atın.
 
-Model dönüştürme ayrıntılarını öğrenmek istiyorsanız, model [dönüşümü REST API'ye](../how-tos/conversion/conversion-rest-api.md)göz atın.
+Model dönüştürmenin ayrıntılarını öğrenmek isterseniz, [model dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md)göz atın.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Sıfırdan bir Birlik projesi kurma](../tutorials/unity/project-setup.md)
+> [Öğretici: sıfırdan Unity projesi ayarlama](../tutorials/unity/project-setup.md)

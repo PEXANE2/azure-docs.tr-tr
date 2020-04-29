@@ -1,99 +1,99 @@
 ---
-title: Veri şifreleme - Azure portalı - PostgreSQL için Azure Veritabanı için - Tek sunucu
-description: Azure portalını kullanarak PostgreSQL Single sunucusu için Azure Veritabanınız için veri şifrelemeyi nasıl ayarlayıp yöneteceklerinizi öğrenin.
+title: Veri şifreleme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
+description: Azure portal kullanarak PostgreSQL için Azure veritabanı için veri şifrelemeyi ayarlamayı ve yönetmeyi öğrenin.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 07e103c3e1f56e8a46ea24e750d83e719abab3d5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457986"
 ---
-# <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Azure portalını kullanarak PostgreSQL Tek sunucu için Azure Veritabanı için veri şifreleme
+# <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Azure portal kullanarak PostgreSQL için Azure veritabanı için veri şifreleme tek sunucu
 
-PostgreSQL Tek sunucu için Azure Veritabanınız için veri şifrelemesini ayarlamak ve yönetmek için Azure portalını nasıl kullanacağınızı öğrenin.
+PostgreSQL için Azure veritabanı tek sunucu için veri şifrelemeyi ayarlamak ve yönetmek üzere Azure portal nasıl kullanacağınızı öğrenin.
 
-## <a name="prerequisites-for-azure-cli"></a>Azure CLI için ön koşullar
+## <a name="prerequisites-for-azure-cli"></a>Azure CLı önkoşulları
 
-* Azure aboneliğiniz olmalı ve bu abonelikte yönetici olmalısınız.
-* Azure Key Vault'ta, müşteri tarafından yönetilen bir anahtar için kullanılacak bir anahtar kasası ve anahtar oluşturun.
-* Anahtar kasası, müşteri tarafından yönetilen anahtar olarak kullanılacak aşağıdaki özelliklere sahip olmalıdır:
-  * [Yumuşak silme](../key-vault/general/overview-soft-delete.md)
+* Bu abonelikte bir Azure aboneliğiniz olması ve bir yönetici olmanız gerekir.
+* Azure Key Vault, müşteri tarafından yönetilen anahtar için kullanılacak bir anahtar kasası ve anahtar oluşturun.
+* Anahtar Kasası, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özelliklere sahip olmalıdır:
+  * [Geçici silme](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Temizleme korumalı](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [Korumalı Temizleme](../key-vault/general/overview-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* Anahtar, müşteri tarafından yönetilen bir anahtar olarak kullanılacak aşağıdaki özniteliklere sahip olmalıdır:
-  * Son kullanma tarihi yok
-  * Devre dışı bırakılmadı
-  * Anahtarı al, sarve anahtar işlemlerini gerçekleştirebilme ve açma
+* Anahtar, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özniteliklere sahip olmalıdır:
+  * Sona erme tarihi yok
+  * Devre dışı değil
+  * Al, sarmalama tuşu ve sarmalama anahtar işlemlerini gerçekleştirebiliyor
 
-## <a name="set-the-right-permissions-for-key-operations"></a>Önemli işlemler için doğru izinleri ayarlama
+## <a name="set-the-right-permissions-for-key-operations"></a>Anahtar işlemleri için doğru izinleri ayarla
 
-1. Key Vault'ta **Erişim İlkeleri** > **Ekle'yi**seçin.
+1. Key Vault ' de erişim **ilkeleri** > **erişim ilkesi Ekle**' yi seçin.
 
-   ![Erişim ilkeleri ve Access Ekle İlkesi vurgulanan Key Vault ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   ![Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. **Anahtar izinlerini**seçin ve PostgreSQL sunucusunun adı olan **Al**, **Sarg,** **Aç**ve **Asıl'** u seçin. Sunucu müdürünüz varolan ilkeler listesinde bulunamazsa, bunu kaydetmeniz gerekir. Veri şifrelemesini ilk kez ayarlamaya çalıştığınızda sunucu anaparanızı kaydetmeniz istenir ve bu başarısız olur.  
+2. **Anahtar izinleri**' ni seçin ve PostgreSQL sunucusunun adı olan Al, **sarmalama**, **geri** **Al**ve **asıl**' ı seçin. Sunucu sorumlunuz mevcut sorumlular listesinde bulunamazsa, kaydolmanız gerekir. Veri şifrelemeyi ilk kez ayarlamaya çalıştığınızda sunucu sorumlunuzu kaydetmeniz istenir ve başarısız olur.  
 
    ![Erişim ilkesine genel bakış](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
 3. **Kaydet**’i seçin.
 
-## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>PostgreSQL Tek sunucu için Azure Veritabanı için veri şifrelemesi ayarlama
+## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı için veri şifrelemeyi ayarlama tek sunucu
 
-1. PostgreSQL için Azure Veritabanı'nda, müşteri tarafından yönetilen anahtarı ayarlamak için **Veri şifrelemesini** seçin.
+1. PostgreSQL için Azure veritabanı 'nda, müşteri tarafından yönetilen anahtarı ayarlamak için **veri şifreleme** ' yi seçin.
 
-   ![Veri şifrelemesi vurgulanmış PostgreSQL için Azure Veritabanı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   ![Veri şifrelemesi vurgulanmış şekilde PostgreSQL için Azure veritabanı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
 
-2. Bir anahtar tonoz ve anahtar çifti seçebilir veya bir anahtar tanımlayıcısı girebilirsiniz.
+2. Bir anahtar kasası ve anahtar çifti seçebilir ya da bir anahtar tanımlayıcı girebilirsiniz.
 
-   ![Veri şifreleme seçenekleri vurgulanan PostgreSQL için Azure Veritabanı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   ![Veri şifreleme seçenekleri vurgulanmış şekilde PostgreSQL için Azure veritabanı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
 3. **Kaydet**’i seçin.
 
-4. Tüm dosyaların (geçici dosyalar dahil) tamamen şifrelenmiş olduğundan emin olmak için sunucuyu yeniden başlatın.
+4. Tüm dosyaların (geçici dosyalar dahil) tamamen şifrelendiğinden emin olmak için sunucuyu yeniden başlatın.
 
-## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Geri yükleme veya çoğaltma sunucuları için Veri şifrelemesi kullanma
+## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Geri yükleme veya çoğaltma sunucuları için veri şifrelemeyi kullanma
 
-PostgreSQL için Azure Veritabanı Tek sunucu, müşterinin yönetilen anahtarıyla Key Vault'ta depolandıktan sonra, sunucunun yeni oluşturulan herhangi bir kopyası da şifrelenir. Bu yeni kopyayı yerel veya coğrafi geri yükleme işlemi veya yineleme (yerel/çapraz bölge) işlemi aracılığıyla yapabilirsiniz. Yani, şifreli bir PostgreSQL sunucusu için, şifreli bir geri yüklenen sunucu oluşturmak için aşağıdaki adımları kullanabilirsiniz.
+PostgreSQL için Azure veritabanı tek sunucu, Key Vault ' de depolanan bir müşterinin yönetilen anahtarıyla şifrelendikten sonra, sunucunun yeni oluşturulan kopyası da şifrelenir. Bu yeni kopyayı yerel veya coğrafi geri yükleme işlemi aracılığıyla ya da bir çoğaltma (yerel/bölge) işlemi aracılığıyla yapabilirsiniz. Bu nedenle, şifrelenmiş bir PostgreSQL sunucusu için, şifrelenmiş geri yüklenmiş bir sunucu oluşturmak için aşağıdaki adımları kullanabilirsiniz.
 
-1. Sunucunuzda **Genel Bakış** > **Geri Yükleme'yi**seçin.
+1. Sunucunuzda **genel bakış** > **geri yükleme**' yi seçin.
 
-   ![PostgreSQL için Azure Veritabanı'nın ekran görüntüsü, Genel Bakış ve Geri Yükleme vurgulanmış](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   ![PostgreSQL için Azure veritabanı 'Na genel bakış ve geri yükleme vurgulanmış ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   Veya çoğaltma özellikli bir sunucu için, **Ayarlar** başlığı altında **Çoğaltma'yı**seçin.
+   Ya da çoğaltma özellikli bir sunucu için, **Ayarlar** başlığı altında **çoğaltma**' yı seçin.
 
-   ![PostgreSQL için Azure Veritabanı ekran görüntüsü, Çoğaltma vurgulanır](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
+   ![Çoğaltma vurgulanmış şekilde PostgreSQL için Azure veritabanı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
 
-2. Geri yükleme işlemi tamamlandıktan sonra oluşturulan yeni sunucu birincil sunucunun anahtarıyla şifrelenir. Ancak, sunucudaki özellikler ve seçenekler devre dışı bırakılır ve sunucuya erişilemez. Yeni sunucunun kimliğine anahtar kasasına erişmek için henüz izin verilmediği için bu durum herhangi bir veri işlemesini önler.
+2. Geri yükleme işlemi tamamlandıktan sonra oluşturulan yeni sunucu birincil sunucunun anahtarıyla şifrelenir. Ancak, sunucudaki Özellikler ve seçenekler devre dışı bırakılır ve sunucuya erişilemez. Bu, tüm veri düzenlemesini engeller, çünkü yeni sunucu kimliği henüz anahtar kasasına erişmek için izin verilmemiş.
 
-   ![PostgreSQL için Azure Veritabanı ekran görüntüsü, erişilemez durum vurgulanır](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   ![PostgreSQL için Azure veritabanı 'nın, erişilemeyen durum vurgulandığı ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Sunucunun erişilebilir olmasını sağlamak için, geri yüklenen sunucudaki anahtarı yeniden geçersiz kılın. **Veri Şifreleme** > **yeniden doğrula anahtarını**seçin.
+3. Sunucuyu erişilebilir hale getirmek için geri yüklenen sunucuda anahtarı yeniden doğrulayın. **Veri şifrelemeyi** > **yeniden doğrula anahtarını**seçin.
 
    > [!NOTE]
-   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet ilkesini oluşturmak için, hata gösterecek ancak hizmet ilkesini oluşturan **Yeniden Doğrula tuşu'nu**seçin. Bundan sonra, bu makalede daha önce [bu adımlara](#set-the-right-permissions-for-key-operations) bakın.
+   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusunu oluşturmak için **anahtarı yeniden doğrula**' yı seçin, bu, bir hatayı gösterir, ancak hizmet sorumlusu oluşturur. Bundan sonra bu makalede daha önce bahsedilen [adımlara](#set-the-right-permissions-for-key-operations) bakın.
 
-   ![PostgreSQL için Azure Veritabanı ekran görüntüsü, yeniden doğrulama adımı vurgulanır](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   ![Yeniden doğrulama adımı vurgulanmış şekilde PostgreSQL için Azure veritabanı 'nın ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   Yeni sunucuya anahtar kasa erişim vermek zorunda kalacak.
+   Yeni sunucuya Anahtar Kasası erişimi sağlamanız gerekir.
 
-4. Hizmet ilkesini kaydettikten sonra anahtarı yeniden geçersiz kılın ve sunucu normal işlevini devam ettirin.
+4. Hizmet sorumlusu kaydedildikten sonra anahtarı yeniden doğruladıktan sonra sunucu normal işlevselliğini sürdürür.
 
-   ![PostgreSQL için Azure Veritabanı'nın ekran görüntüsü, geri yüklenen işlevselliği gösteriyor](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   ![PostgreSQL için Azure veritabanı 'nın, geri yüklenen işlevselliği gösteren ekran görüntüsü](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- Veri şifreleme hakkında daha fazla bilgi edinmek [için, müşteri tarafından yönetilen anahtara sahip PostgreSQL Tek sunucu veri şifrelemeiçin Azure Veritabanı'na](concepts-data-encryption-postgresql.md)bakın.
+ Veri şifreleme hakkında daha fazla bilgi edinmek için bkz. [PostgreSQL Için Azure veritabanı istemci tarafından yönetilen anahtarla tek sunuculu veri şifreleme](concepts-data-encryption-postgresql.md).

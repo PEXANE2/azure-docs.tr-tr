@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure'da Linux VM'leri için Azure Güvenlik Merkezi'ni kullanın
+title: Öğretici-Azure 'da Linux sanal makineleri için Azure Güvenlik Merkezi 'Ni kullanma
 description: Bu öğreticide, Azure’da Linux sanal makinelerinizi korumaya ve güvenliğini sağlamaya yardımcı olmak için Azure Güvenlik Merkezi özelliklerini öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460112"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Öğretici: Linux sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
@@ -61,9 +61,9 @@ Güvenlik ilkeleri, Güvenlik Merkezi’nin kendisi için veriler topladığı v
 
 Aboneliğin tümüne bir güvenlik ilkesi oluşturmak için:
 
-1. Güvenlik Merkezi panosunda **Güvenlik ilkesini** seçin ve ardından aboneliğinizi seçin.
+1. Güvenlik Merkezi panosunda **güvenlik ilkesi** ' ni seçin ve ardından aboneliğinizi seçin.
 2. **Güvenlik ilkesi** dikey penceresinde **Güvenlik ilkesini** seçin. 
-3. Güvenlik **ilkesinde - Güvenlik ilkesi** bıçak, abonelik için uygulamak istediğiniz ilke öğelerini açın veya kapatın.
+3. **Güvenlik ilkesi-güvenlik ilkesi** dikey penceresinde, aboneliğe uygulamak istediğiniz ilke öğelerini açın veya kapatın.
 4. Ayarlarınızı seçmeyi tamamladığınızda dikey pencerenin en üstünden **Kaydet**'i seçin. 
 
 ![Benzersiz ilke](./media/tutorial-azure-security/unique-policy.png)
@@ -102,9 +102,9 @@ Tüm önerilerin listesini göstermek için:
 
 ## <a name="view-detected-threats"></a>Algılanan tehditleri görüntüleme
 
-Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama yetenekleri hakkında ayrıntılı bilgi için, [Güvenlik Merkezi'nin tehditleri nasıl algıladığını görün?](../../security-center/security-center-alerts-overview.md#detect-threats)
+Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama özellikleri hakkında ayrıntılı bilgi için bkz. [Güvenlik Merkezi tehditleri nasıl algılar?](../../security-center/security-center-alerts-overview.md#detect-threats).
 
-Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu yüksek fiyatlandırma katmanına taşındığınızda **ücretsiz deneme** sürümü kullanılabilir. 
+Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu daha yüksek fiyatlandırma katmanına geçtiğinizde **ücretsiz deneme sürümü** kullanılabilir. 
 
 Fiyatlandırma katmanını değiştirmek için:  
 

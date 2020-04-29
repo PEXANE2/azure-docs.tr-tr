@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu için yerleşik güncelleştirme, izleme değişikliği ve envanter çözümleri
+title: Azure Otomasyonu 'nda güncelleştirme, değişiklik izleme ve envanter çözümlerini ekleme
 description: Güncelleştirme ve değişiklik izleme çözümlerini Azure Otomasyonu’na nasıl ekleyeceğinizi öğrenin.
 services: automation
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: 721157c333e381799ef08930c667c51a51a4fd6a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81457629"
 ---
-# <a name="onboard-update-change-tracking-and-inventory-solutions-to-azure-automation"></a>Azure Otomasyonu için yerleşik güncelleştirme, izleme değişikliği ve envanter çözümleri
+# <a name="onboard-update-change-tracking-and-inventory-solutions-to-azure-automation"></a>Azure Otomasyonu 'nda güncelleştirme, değişiklik izleme ve envanter çözümlerini ekleme
 
 Bu öğreticide VM’lere yönelik Güncelleştirme, Değişiklik İzleme ve Sayım çözümlerini Azure Otomasyonu’na nasıl otomatik olarak ekleyeceğinizi öğreneceksiniz:
 
@@ -24,13 +24,13 @@ Bu öğreticide VM’lere yönelik Güncelleştirme, Değişiklik İzleme ve Say
 > * Runbook’u başlatma
 
 >[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
-* Azure aboneliği. Henüz bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)kaydolabilirsiniz.
+* Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](automation-offering-get-started.md).
 * Sisteme eklenecek bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
@@ -40,12 +40,12 @@ Makine eklemenin birden fazla yolu vardır. Çözümü [bir sanal makineden](aut
 
 ### <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzlemeyi ve Sayımı Etkinleştirme
 
-İzlemeyi Değiştir ve Envanter çözümleri, sanal makinelerinizdeki değişiklikleri ve [envanteri](automation-vm-inventory.md) [izlemenize](automation-vm-change-tracking.md) olanak sağlar. Bu adımda, sanal bir makinede çözümleri etkinleştirin.
+Değişiklik İzleme ve envanter çözümleri, sanal makinelerinizdeki değişiklikleri ve [envanteri](automation-vm-inventory.md) [izlemenize](automation-vm-change-tracking.md) olanak sağlar. Bu adımda, bir sanal makinede çözümleri etkinleştirirsiniz.
 
-1. Azure portalında **Otomasyon Hesapları'nı**seçin ve ardından listedeki otomasyon hesabınızı seçin.
-1. **Yapılandırma Yönetimi**altında **Envanter'i** seçin.
-1. Varolan bir Log Analytics çalışma alanını seçin veya yeni bir çalışma oluşturun. 
-1. **Etkinleştir'i**tıklatın.
+1. Azure portal **Otomasyon hesapları**' nı seçin ve ardından listeden Otomasyon hesabınızı seçin.
+1. **Yapılandırma yönetimi**altında **Stok** ' ı seçin.
+1. Mevcut bir Log Analytics çalışma alanını seçin veya yenisini oluşturun. 
+1. **Etkinleştir**' e tıklayın.
 
     ![Güncelleştirme çözümü ekleme](media/automation-onboard-solutions/inventory-onboard.png)
 
@@ -53,8 +53,8 @@ Makine eklemenin birden fazla yolu vardır. Çözümü [bir sanal makineden](aut
 
 Güncelleştirme Yönetimi çözümü, Azure Windows VM’leriniz için güncelleştirmeleri ve yamaları yönetmenizi sağlar. Kullanılabilir güncelleştirmelerin durumunu değerlendirebilir, gerekli güncelleştirmelerin yüklemesini zamanlayabilir ve güncelleştirmelerin VM’ye başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirebilirsiniz. Bu adımda çözümü VM’niz için etkinleştirirsiniz.
 
-1. Otomasyon **hesabınızda, Güncelleme Yönetimi** bölümünde Yönetim **Güncelle'yi** seçin.
-1. Log analitik çalışma alanı seçilen önceki adımda kullanılan çalışma alanıdır. Güncelleştirme yönetimi çözümünü eklemek için **Etkinleştir**’e tıklayın. Güncelleştirme yönetimi çözümü yüklenirken mavi renkli bir başlık gösterilir. 
+1. Otomasyon hesabınızda, **güncelleştirme yönetimi** bölümünde **güncelleştirme yönetimi** ' yi seçin.
+1. Seçilen Log Analytics çalışma alanı, önceki adımda kullanılan çalışma alanıdır. Güncelleştirme yönetimi çözümünü eklemek için **Etkinleştir**’e tıklayın. Güncelleştirme yönetimi çözümü yüklenirken mavi renkli bir başlık gösterilir. 
 
     ![Güncelleştirme çözümü ekleme](media/automation-onboard-solutions/update-onboard.png)
 
@@ -62,62 +62,62 @@ Güncelleştirme Yönetimi çözümü, Azure Windows VM’leriniz için güncell
 
 Çözümler etkinleştirildiğine göre artık bu çözümleri eklemek için bir Azure VM ekleyebilirsiniz.
 
-1. Otomasyon **hesabınızdan, Yapılandırma Yönetimi**altında Izlemeyi **Değiştir'i** seçin. 
-2. İzlemeyi Değiştir sayfasında, VM'nizi eklemek için **Azure VM'leri ekle'yi** tıklatın.
+1. Otomasyon hesabınızdan **yapılandırma yönetimi**altında **değişiklik izleme** ' yi seçin. 
+2. Değişiklik izleme sayfasında, sanal makinelerinizi eklemek için **Azure VM 'Leri Ekle** ' ye tıklayın.
 
-3. Listeden VM'nizi seçin ve **Etkinleştir'i**tıklatın. Bu eylem, VM için Değişiklik İzleme ve Stok çözümlerini sağlar.
+3. Listeden VM 'nizi seçin ve **Etkinleştir**' e tıklayın. Bu eylem, sanal makine için Değişiklik İzleme ve envanter çözümlerini sunar.
 
    ![VM için güncelleştirme çözümünü etkinleştirme](media/automation-onboard-solutions/enable-change-tracking.png)
 
-4. VM onboarding bildirimi tamamlandığında, **Güncelleştirme Yönetimi**altında **Güncelleştirme yönetimini** seçin.
+4. VM ekleme bildirimi tamamlandığında **güncelleştirme yönetimi**altında **güncelleştirme yönetimi** ' ni seçin.
 
-5. VM'nizi eklemek için **Azure VM** ekle'yi seçin.
+5. VM 'nizi eklemek için **Azure VM 'Leri Ekle** ' yi seçin.
 
-6. Listeden VM’nizi seçin ve **Etkinleştir** seçeneğini belirleyin. Bu eylem, VM için Güncelleştirme Yönetimi çözümsağlar.
+6. Listeden VM’nizi seçin ve **Etkinleştir** seçeneğini belirleyin. Bu eylem, sanal makine için Güncelleştirme Yönetimi çözümüne izin vermez.
 
    ![VM için güncelleştirme çözümünü etkinleştirme](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Diğer çözümün tamamlanmasını beklemezseniz, sonraki çözümü etkinleştirirken iletiyi alırsınız:`Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
+> Diğer çözümün tamamlanmasını beklerseniz, bir sonraki çözümü etkinleştirirken şu iletiyi alırsınız:`Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
 
 ## <a name="install-and-update-modules"></a>Modülleri yükleme ve güncelleştirme
 
-En son Azure modüllerine güncelleştirmek ve onboarding çözümlerini başarıyla otomatikleştirmek için [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) modüllerini almak gerekir.
+En son Azure modüllerine güncelleştirmeniz ve [az. Operationalınsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) modülünü içeri aktararak çözüm ekleme işlemini başarıyla otomatikleştirmeniz gerekir.
 
 ## <a name="update-azure-modules"></a>Azure Modüllerini etkinleştirme
 
-1. Otomasyon hesabınızda, **Paylaşılan Kaynaklar**altında **Modülleri** seçin. 
+1. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **modüller** ' i seçin. 
 2. Azure modüllerini en son sürüme güncelleştirmek için **Azure Modüllerini Güncelleştir** seçeneğini belirleyin. 
-3. Varolan tüm Azure modüllerini en son sürüme güncellemek için **Evet'i** tıklatın.
+3. Var olan tüm Azure modüllerini en son sürüme güncelleştirmek için **Evet** ' e tıklayın.
 
-![Modülleri](media/automation-onboard-solutions/update-modules.png) güncelleştir A
+![Modül](media/automation-onboard-solutions/update-modules.png) A güncelleştirme
 
-### <a name="install-azoperationalinsights-module"></a>Az.OperationalInsights modüllerini yükleyin
+### <a name="install-azoperationalinsights-module"></a>Az. Operationalınsights modülünü yüklensin
 
-1. Otomasyon hesabında, **Paylaşılan Kaynaklar**altında **Modülleri** seçin. 
-2. Modül galerisini açmak için **Gözat galerisini** seçin. 
-3. Az.OperationalInsights'ı arayın ve bu modülü Otomasyon hesabına aktarın.
+1. Otomasyon hesabında, **paylaşılan kaynaklar**altında **modüller** ' i seçin. 
+2. Modül galerisini açmak için **tarayıcı Galerisi** ' ni seçin. 
+3. Az. Operationalınsights araması yapın ve bu modülü Otomasyon hesabına aktarın.
 
 ![OperationalInsights modülünü içeri aktarma](media/automation-onboard-solutions/import-operational-insights-module.png)
 
 ## <a name="import-the-onboarding-runbook"></a>Ekleme runbook’unu içeri aktarma
 
-1. Otomasyon hesabınızda, **Proses Otomasyonu**altında **Runbook'ları** seçin.
+1. Otomasyon hesabınızda, **Işlem Otomasyonu**altında **runbook 'lar** ' ı seçin.
 1. **Galeriye gözat** seçeneğini belirleyin.
 1. `update and change tracking` arayın.
-3. Runbook'u seçin ve Kaynak Görüntüley sayfasında **İçe Aktar'ı** tıklatın. 
-4. Runbook'u Otomasyon hesabına almak için **Tamam'ı** tıklatın.
+3. Runbook 'u seçin ve kaynak görüntüleme sayfasında **Içeri aktar** ' a tıklayın. 
+4. Runbook 'u Otomasyon hesabına aktarmak için **Tamam** ' ı tıklatın.
 
    ![Ekleme runbook’unu içeri aktarma](media/automation-onboard-solutions/import-from-gallery.png)
 
-6. Runbook **sayfasında, Edit'i**tıklatın ve ardından **Yayımla'yı**seçin. 
-7. Yayımlama RunBook bölmesine, runbook'u yayımlamak için **Evet'i** tıklatın.
+6. Runbook sayfasında, **Düzenle**' ye tıklayın ve ardından **Yayımla**' yı seçin. 
+7. Runbook 'U Yayımla bölmesinde, runbook 'u yayımlamak için **Evet** ' i tıklatın.
 
 ## <a name="start-the-runbook"></a>Runbook’u başlatma
 
-Bu runbook'u başlatmak için izlemeyi değiştirme veya azure VM çözümlerini güncelleştirme konusunda yerleşik olmalısınız. Parametreler için çözümün eklenmiş olduğu mevcut bir sanal makine ve kaynak grubu gereklidir.
+Bu runbook 'u başlatmak için değişiklik izleme veya güncelleştirme çözümlerini bir Azure VM 'ye eklendi sahip olmanız gerekir. Parametreler için çözümün eklenmiş olduğu mevcut bir sanal makine ve kaynak grubu gereklidir.
 
-1. **Etkinleştir-ÇokÇözüm** çalışma kitabını açın.
+1. **Enable-MultipleSolution** runbook 'unu açın.
 
    ![Çoklu çözüm runbook’ları](media/automation-onboard-solutions/runbook-overview.png)
 
@@ -127,8 +127,8 @@ Bu runbook'u başlatmak için izlemeyi değiştirme veya azure VM çözümlerini
    * **VMRESOURCEGROUP** - Ekleme yapılacak VM’lere ilişkin kaynak grubunun adıdır.
    * **SUBSCRIPTIONID** - Boş bırakın. Ekleme yapılacak yeni VM’nin abonelik kimliğidir. Boş bırakılırsa çalışma alanının aboneliği kullanılır. Farklı bir abonelik kimliği belirtildiğinde, bu otomasyon hesabına yönelik RunAs hesabının da söz konusu abonelik için katkıda bulunan olarak eklenmesi gerekir.
    * **ALREADYONBOARDEDVM** - Güncelleştirme veya Değişiklik İzleme çözümünün el ile eklendiği VM’nin adıdır.
-   * **ALREADYONBOARDEDVMRESOURCEGROUP** - VM'nin ait olduğu kaynak grubunun adı.
-   * **SOLUTIONTYPE** - **Güncelleştirmeleri** girin veya **ChangeTracking**.
+   * **Alreadyonboardedvmresourcegroup** -VM 'nin ait olduğu kaynak grubunun adı.
+   * **Solutiontype** - **güncellemeleri** veya **ChangeTracking**girin.
 
    ![Enable-MultipleSolution runbook parametreleri](media/automation-onboard-solutions/runbook-parameters.png)
 
@@ -137,10 +137,10 @@ Bu runbook'u başlatmak için izlemeyi değiştirme veya azure VM çözümlerini
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Güncelleştirme Yönetimi'nden bir VM kaldırmak için:
+Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
 
-1. Günlük Analizi çalışma alanınızda, kapsam yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan VM'yi kaldırın. Kaydedilen aramalar çalışma alanınızda **Genel** altında bulunabilir.
-2. Windows [için Log Analytics aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Linux için Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
+1. Log Analytics çalışma alanınızda, VM 'yi, kapsam yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
+2. [Windows için Log Analytics aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Linux için Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

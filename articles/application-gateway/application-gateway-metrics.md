@@ -1,5 +1,5 @@
 ---
-title: Uygulama Ağ Geçidi için Azure Monitör ölçümleri
+title: Application Gateway için Azure Izleyici ölçümleri
 description: Uygulama ağ geçidinin performansını izlemek için ölçümleri nasıl kullanacağınızı öğrenin
 services: application-gateway
 author: abshamsft
@@ -8,237 +8,237 @@ ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
 ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457884"
 ---
-# <a name="metrics-for-application-gateway"></a>Uygulama Ağ Geçidi ölçümleri
+# <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
-Uygulama Ağ Geçidi, Uygulama Ağ Geçidi nizin ve arka uç örneklerinizin performansı için [Azure Monitor'a](https://docs.microsoft.com/azure/azure-monitor/overview) ölçümler adı verilen veri noktaları yayımlar. Bu ölçümler, uygulama ağ geçidinizin belirli bir zamanda bazı yönünü açıklayan sıralı bir zaman serisi veri kümesindeki sayısal değerlerdir. Uygulama Ağ Geçidi'nden akan istekler varsa, ölçümlerini 60 saniyelik aralıklarla ölçer ve gönderir. Uygulama Ağ Geçidi'nden akan istek yoksa veya bir metrik için veri yoksa, metrik rapor edilmez. Daha fazla bilgi için [Azure Monitör ölçümleri'ne](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)bakın.
+Application Gateway, Application Gateway ve arka uç örneklerinizin performansı için ölçümler olarak adlandırılan veri noktalarını [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) 'ye yayımlar. Bu ölçümler, belirli bir zamanda uygulama ağ geçidinizin bazı yönlerini tanımlayan sıralı bir zaman serisi verileri kümesindeki sayısal değerlerdir. Application Gateway üzerinden akan istekler varsa, ölçümlerini ölçer ve 60 saniyelik aralıklarla gönderir. Application Gateway veya bir ölçüm için veri akışı olmayan bir istek yoksa, ölçüm raporlanmaz. Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
 
-## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Uygulama Ağ Geçidi V2 SKU tarafından desteklenen ölçümler
+## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Application Gateway v2 SKU 'SU tarafından desteklenen ölçümler
 
 ### <a name="timing-metrics"></a>Zamanlama ölçümleri
 
-Uygulama Ağ Geçidi, istek ve yanıtla ilgili olarak, tümü milisaniye cinsinden ölçülen birkaç yerleşik zamanlama ölçümü sağlar. 
+Application Gateway, istek ve Yanıtla ilgili, hepsi milisaniye cinsinden ölçülen çeşitli yerleşik zamanlama ölçümleri sağlar. 
 
 ![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
-> Uygulama Ağ Geçidi'nde birden fazla dinleyici varsa, anlamlı çıkarım elde etmek için farklı gecikme süresi ölçümlerini karşılaştırırken her zaman *Dinleyici* boyutuna göre filtre uygulayın.
+> Application Gateway birden fazla dinleyici varsa, anlamlı çıkarımı almak için farklı gecikme ölçümlerini karşılaştırırken her zaman *dinleyici* boyutuna göre filtreleyin.
 
-- **Arka uç bağlantı süresi**
+- **Arka uç bağlantı saati**
 
-  Arka uç uygulamasıyla bağlantı kurmak için harcanan zaman. 
+  Arka uç uygulamasıyla bağlantı kurmaya harcanan süre. 
 
-  Bu, ağ gecikmesinin yanı sıra arka uç sunucusunun TCP yığınının yeni bağlantılar kurmak için aldığı süreyi de içerir. TLS durumunda, el sıkışma için harcanan zamanı da içerir. 
+  Bu, yeni bağlantılar kurmak için arka uç sunucusunun TCP yığınının yanı sıra ağ gecikmesini da içerir. TLS durumunda ayrıca, el sıkışma için harcanan süreyi de içerir. 
 
-- **Önce byte yanıt süresini geri le**
+- **Arka uç ilk bayt yanıt süresi**
 
-  Arka uç sunucusuna bağlantı kurma nın başlamasıyla yanıt üstbilgisinin ilk baytını alma arasındaki zaman aralığı. 
+  Arka uç sunucusuna bağlantı kurma ve Yanıt üstbilgisinin ilk baytını alma arasındaki zaman aralığı. 
 
-  Bu, *Geri Uç bağlantı süresi,* Uygulama Ağ Geçidi'nden arka uça ulaşmak için istek tarafından alınan süre, yanıt vermek için arka uç uygulaması tarafından alınan süre (sunucunun içerik oluşturmak için aldığı süre, veritabanı sorgularını alma potansiyeline karşı) ve yanıtın ilk baytının uygulama ağ geçidine arka uçtan ulaşması için aldığı süreyi yaklaşık olarak oluşturur.
+  Bu, arka uca *bağlantı süresinin*toplamı, Application Gateway ' den arka uca ulaşmak için geçen süre (sunucunun içerik oluşturmak için geçen süre, büyük olasılıkla veritabanı sorguları) ve arka uçta Application Gateway ulaşmak için yanıtın ilk baytından geçen süre kadar yaklaşık bir süredir.
 
 - **Arka uç son bayt yanıt süresi**
 
-  Arka uç sunucusuna bağlantı kurma nın başlaması yla yanıt gövdesinin son baytını alma arasındaki zaman aralığı. 
+  Arka uç sunucusuna bağlantı kurma ve yanıt gövdesinin son baytını alma arasındaki zaman aralığı. 
 
-  Bu, *Backend ilk bayt yanıt süresi* ve veri aktarım süresinin toplamını yaklaşık olarak karşılar (bu sayı, istenen nesnelerin boyutuna ve sunucu ağının gecikme süresine bağlı olarak büyük ölçüde değişebilir).
+  Bu, *Arka uç ilk bayt yanıt süresi* ve veri aktarımı süresinin (bu sayı, istenen nesnelerin boyutuna ve sunucu ağının gecikme süresine göre büyük ölçüde farklılık gösterebilir) toplamıdır.
 
-- **Uygulama ağ geçidi toplam süresi**
+- **Application Gateway toplam süre**
 
-  Bir isteğin alınması, işlenmesi ve yanıtın gönderilmesi için gereken ortalama süre. 
+  İstek alma, işleme ve gönderme yanıtı için geçen ortalama süre. 
 
-  Bu, Uygulama Ağ Geçidi'nin HTTP isteğinin ilk baytını aldığı andan istemciye son yanıt baytının gönderildiği zamana kadar olan aralıktır. Bu Uygulama Ağ Geçidi tarafından alınan işlem süresi içerir, *Backend son bayt yanıt süresi,* tüm yanıtı ve *İstemci RTT*göndermek için Application Gateway tarafından alınan süre.
+  Bu, Application Gateway HTTP isteğinin ilk baytını istemciye Son Yanıt baytı gönderilirken geçen zaman olan aralıktır. Bu, Application Gateway tarafından alınan işlem süresini, *arka uç son bayt yanıt süresini*, tüm yanıtı ve *istemci RTT*'yi göndermek için Application Gateway tarafından alınan süreyi içerir.
 
 - **İstemci RTT**
 
-  İstemciler ve Uygulama Ağ Geçidi arasındaki ortalama gidiş-dönüş süresi.
+  İstemcilerle Application Gateway arasında ortalama gidiş dönüş süresi.
 
 
 
-Bu ölçümler, gözlenen yavaşlamanın istemci ağı, Application Gateway performansı, arka uç ağı ve arka uç sunucusu TCP yığın doygunluğu, arka uç uygulama performansı veya büyük dosya boyutundan kaynaklanıp kaynaklanmadığını belirlemek için kullanılabilir.
+Bu ölçümler, gözlemlenen yavaşlamanın istemci ağı, Application Gateway performans, arka uç ağı ve arka uç sunucusu TCP yığını doygunluğu, arka uç uygulama performansı veya büyük dosya boyutu nedeniyle olup olmadığını belirlemede kullanılabilir.
 
-Örneğin, *Backend ilk bayt yanıt süresi* eğiliminde bir artış varsa ancak *Backend bağlantı süresi* eğilimi kararlıysa, uygulama ağ geçidinin gecikmesüresini geri aldığı ve bağlantıyı kurmak için geçen sürenin kararlı olduğu ve ani artışın arka uç uygulamasının yanıt süresindeki artışnedeniyle kaynaklandığı çıkarılabilir. Öte yandan, *Backend ilk bayt yanıt süresi* başak *Backend bağlantı süresi*karşılık gelen bir başak ile ilişkili ise, o zaman Uygulama Ağ Geçidi ve arka uç sunucusu veya arka uç sunucu TCP yığını arasındaki ağ doymuş olduğu sonucuna varılabilir. 
+Örneğin, *arka uç ilk bayt yanıt süresi* eğilimi, ancak *arka uç bağlantı zamanı* eğilimi kararlı ise, uygulama ağ geçidinin arka uç gecikmesi ve bağlantı kurma süresi kararlı olduğunu ve ani bir şekilde arka uç uygulamasının yanıt süresi boyunca bir artış meydana geldiğini çıkarmış olabilir. Öte yandan, arka uç *ilk bayt yanıt süresi* içindeki ani artış, *arka uç bağlantı zamanında*karşılık gelen bir ani ilişkili ise, Application Gateway ile arka uç sunucusu veya arka uç sunucusu TCP yığını arasındaki ağın doymuş olduğu anlaşılamıyor. 
 
-*Backend son bayt yanıt süresi* bir ani fark ederseniz, ancak *Backend ilk bayt yanıt süresi* kararlı, o zaman başak istenen daha büyük bir dosya nedeniyle olduğu sonucuna varılabilir.
+*Arka uç son bayt yanıt* süresi içinde bir ani artış fark ederseniz, ancak *arka uç ilk bayt yanıt süresi* kararlı olduğunda, bu durumda ani bir dosya istenmekte olduğundan emin olabilir.
 
-Benzer şekilde, *Uygulama ağ geçidinin toplam süresi* bir ani olabilir, ancak *Backend son bayt yanıt süresi* kararlıysa, Uygulama Ağ Geçidi'nde performans darboğazının bir işareti veya istemci ile Uygulama Ağ Geçidi arasındaki ağda bir darboğaz olabilir. Ayrıca, istemci *RTT* de karşılık gelen bir başak varsa, o zaman bozulma istemci ve Uygulama Ağ Geçidi arasındaki ağ nedeniyle olduğunu gösterir.
+Benzer şekilde, *uygulama ağ geçidinin toplam süresi* bir ani, ancak *arka uç son bayt yanıt süresi* kararlı ise, Application Gateway bir performans sorunu ya da istemci ile Application Gateway arasında ağ üzerinde tıkanıklık olabilir. Ayrıca, *ISTEMCI RTT* de karşılık gelen bir ani ağa sahipse, istemci ile Application Gateway arasındaki ağ nedeniyle azalma olduğunu gösterir.
 
-### <a name="application-gateway-metrics"></a>Uygulama Ağ Geçidi ölçümleri
+### <a name="application-gateway-metrics"></a>Application Gateway ölçümleri
 
-Uygulama Ağ Geçidi için aşağıdaki ölçümler kullanılabilir:
+Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **Alınan Bayt**
 
-   Uygulama Ağ Geçidi tarafından istemcilerden alınan bayt sayısı
+   İstemcilerden Application Gateway tarafından alınan bayt sayısı
 
 - **Gönderilen Bayt**
 
-   Uygulama Ağ Geçidi tarafından istemcilere gönderilen bayt sayısı
+   Application Gateway istemciye gönderilen bayt sayısı
 
 - **İstemci TLS protokolü**
 
-   Uygulama Ağ Geçidi ile bağlantı kuran istemci tarafından başlatılan TLS ve TLS dışı isteklerin sayısı. TLS protokol dağılımını görüntülemek için TLS Protokolü boyutuna göre filtre uygulayın.
+   Application Gateway ile bağlantı kurulan istemci tarafından başlatılan TLS ve TLS olmayan isteklerin sayısı. TLS protokol dağıtımını görüntülemek için Dimension TLS protokolüne göre filtreleyin.
 
-- **Mevcut kapasite birimleri**
+- **Geçerli kapasite birimleri**
 
-   Trafik dengesini yüklemek için tüketilen kapasite birimlerinin sayısı. Kapasite birimiiçin üç belirleyici vardır - işlem birimi, kalıcı bağlantılar ve iş ortası. Her kapasite birimi en fazla oluşur: 1 işlem birimi veya 2500 kalıcı bağlantı veya 2,22 Mbps'lik iş ortası.
+   Trafiğin yükünü dengelemek için tüketilen kapasite birimi sayısı. Kapasite birimi işlem biriminin, kalıcı bağlantıların ve aktarım hızının üç belirleyici vardır. Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
 
 - **Geçerli işlem birimleri**
 
-   Tüketilen işlemci kapasitesi sayısı. Bilgi işlem birimini etkileyen etkenler TLS bağlantıları/sn, URL Yeniden Yazma hesaplamaları ve WAF kural işlemedir. 
+   Tüketilen işlemci kapasitesi sayısı. İşlem birimini etkileyen faktörler, TLS bağlantısı/sn, URL Yeniden yazma hesaplamaları ve WAF kural işlemedir. 
 
 - **Geçerli bağlantılar**
 
-   İstemcilerden Uygulama Ağ Geçidi'ne etkin olan toplam eşzamanlı bağlantı sayısı
+   İstemcilerden Application Gateway etkin olan eşzamanlı bağlantıların toplam sayısı
    
-- **Tahmini Faturalı Kapasite birimleri**
+- **Tahmini Faturalanan Kapasite birimleri**
 
-  v2 SKU ile fiyatlandırma modeli tüketime göre hareket eder. Kapasite birimleri, sabit maliyete ek olarak tahsil edilen tüketim eki maliyeti ölçer. *Tahmini Faturalı Kapasite birimleri,* faturalandırmanın tahmin edildiği kapasite birimi sayısını gösterir. Bu, *Geçerli kapasite birimleri* (trafiği dengelemek için gerekli kapasite birimleri) ile Sabit *faturalandırılabilir kapasite birimleri* (minimum kapasite birimleri sağlanmış olarak tutulan) arasındaki daha büyük değer olarak hesaplanır.
+  v2 SKU’su ile, fiyatlandırma modeli tüketime göre belirlenir. Kapasite birimleri, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı maliyeti ölçer. *Tahmini faturalandırılan Kapasite birimleri* , faturalandırmayı tahmin eden Kapasite birimi sayısını belirtir. Bu, *Geçerli kapasite birimleri* (trafiğin yükünü dengelemek için gereken kapasite birimleri) ve *Sabit faturalanabilir kapasite birimleri* (sağlanan minimum kapasite birimleri) değerlerinden daha büyük olanıdır.
 
-- **Başarısız İstekler**
+- **Başarısız Istekler**
 
-  Uygulama Ağ Geçidi'nin 5xx sunucu hata kodlarıyla hizmet verdiği istek sayısı. Bu, Uygulama Ağ Geçidi'nden oluşturulan 5xx kodlarının yanı sıra arka uçtan oluşturulan 5xx kodlarını da içerir. İstek sayısı, her/belirli arka uç havuzu-http ayar birleşimi başına sayım göstermek için daha fazla filtrelenebilir.
+  Application Gateway 5 xx sunucu hata kodlarıyla birlikte sunulan istek sayısı. Bu, Application Gateway oluşturulan 5xx kodlarını ve arka uçta oluşturulan 5xx kodlarını içerir. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
    
-- **Sabit Faturalandırılabilir Kapasite Birimleri**
+- **Sabit Faturalanabilir Kapasite Birimleri**
 
-  Uygulama Ağ Geçidi yapılandırmasında *Minimum ölçek birimleri* ayarına göre sağlanan minimum kapasite birimi sayısı (bir örnek 10 kapasite birimine çevirir).
+  Application Gateway yapılandırmasındaki *Minimum ölçek birimi* ayarı (bir örnek 10 kapasite birimine eşittir) için sağlanan kapasite birimi sayısı alt sınırı.
    
- - **Saniyede yeni bağlantılar**
+ - **Saniyedeki yeni bağlantı sayısı**
 
-   İstemcilerden Uygulama Ağ Geçidi'ne ve Uygulama Ağ Geçidi'nden arka uç üyelerine kurulan saniyede ortalama yeni TCP bağlantısı sayısı.
+   İstemcilerden Application Gateway ve Application Gateway arka uç üyelerine kurulan saniye başına yeni TCP bağlantısı sayısı.
 
 
-- **Yanıt Durumu**
+- **Yanıt durumu**
 
-   HTTP yanıt durumu Application Gateway tarafından döndürülür. Yanıt durumu kodu dağıtımı, 2xx, 3xx, 4xx ve 5xx kategorilerinde yanıtları göstermek için daha fazla kategorize edilebilir.
+   Application Gateway tarafından döndürülen HTTP yanıt durumu. Yanıt durum kodu dağıtımı, 5 xx, 3xx, 4xx ve 5xx kategorilerindeki yanıtları göstermek için daha fazla kategorilere ayrılabilir.
 
 - **Aktarım hızı**
 
-   Uygulama Ağ Geçidi'nin hizmet verdiği saniyede bayt sayısı
+   Application Gateway saniyede hizmet verilen bayt sayısı
 
-- **Toplam İstek**
+- **Toplam Istek sayısı**
 
-   Uygulama Ağ Geçidi'nin sunduğu başarılı isteklerin sayısı. İstek sayısı, her/belirli arka uç havuzu-http ayar birleşimi başına sayım göstermek için daha fazla filtrelenebilir.
+   Application Gateway tarafından sunulan başarılı istek sayısı. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
 
 ### <a name="backend-metrics"></a>Arka uç ölçümleri
 
-Uygulama Ağ Geçidi için aşağıdaki ölçümler kullanılabilir:
+Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **Arka uç yanıt durumu**
 
-  Arka uçlar tarafından döndürülen HTTP yanıt durum kodlarının sayısı. Bu, Uygulama Ağ Geçidi tarafından oluşturulan yanıt kodlarını içermez. Yanıt durumu kodu dağıtımı, 2xx, 3xx, 4xx ve 5xx kategorilerinde yanıtları göstermek için daha fazla kategorize edilebilir.
+  Arka uçların döndürdüğü HTTP yanıt durum kodlarının sayısı. Bu, Application Gateway tarafından oluşturulan yanıt kodlarını içermez. Yanıt durum kodu dağıtımı, 5 xx, 3xx, 4xx ve 5xx kategorilerindeki yanıtları göstermek için daha fazla kategorilere ayrılabilir.
 
 - **İyi durumda olan konak sayısı**
 
-  Sağlık sondası tarafından sağlıklı olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıklı ana bilgisayar sayısını göstermek için her arka uç havuzuna filtre uygulayabilirsiniz.
+  Sistem durumu araştırması tarafından sağlıklı olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıklı ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
 
 - **İyi durumda olmayan konak sayısı**
 
-  Sağlık sondası tarafından sağlıksız olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıksız ana bilgisayar sayısını göstermek için her arka uç havuzuna filtre uygulayabilirsiniz.
+  Durum araştırmasının sağlıksız olduğunu belirlenen arka uçların sayısı. Belirli bir arka uç havuzundaki sağlıksız ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
   
-- **Sağlıklı Ana Bilgisayar Başına dakika başına istekler**
+- **Sağlıklı ana bilgisayar başına dakika başına istek**
 
-  Bir dakika içinde bir arka uç havuzunda her sağlıklı üye tarafından alınan isteklerin ortalama sayısı. *BackendPool HttpSettings* boyutunu kullanarak arka uç havuzunu belirtmeniz gerekir.  
+  Bir arka uç havuzundaki her sağlıklı üye tarafından bir dakika içinde alınan isteklerin ortalama sayısı. *Backendpool HttpSettings* boyutunu kullanarak arka uç havuzunu belirtmeniz gerekir.  
   
 
-## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Uygulama Ağ Geçidi V1 SKU tarafından desteklenen ölçümler
+## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Application Gateway v1 SKU 'SU tarafından desteklenen ölçümler
 
-### <a name="application-gateway-metrics"></a>Uygulama Ağ Geçidi ölçümleri
+### <a name="application-gateway-metrics"></a>Application Gateway ölçümleri
 
-Uygulama Ağ Geçidi için aşağıdaki ölçümler kullanılabilir:
+Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **CPU Kullanımı**
 
-  Uygulama Ağ Geçidi'ne tahsis edilen CPU kullanımını görüntüler.  Normal koşullarda, Cpu kullanımı düzenli olarak %90'ı geçmemelidir, çünkü bu Uygulama Ağ Geçidi'nin arkasında barındırılan web sitelerinde gecikmeye neden olabilir ve istemci deneyimini bozabilir. Örnek sayısını artırarak veya daha büyük bir SKU boyutuna geçerek veya her ikisini de yaparak Uygulama Ağ Geçidi yapılandırmasını değiştirerek CPU kullanımını dolaylı olarak denetleyebilir veya geliştirebilirsiniz.
+  Application Gateway’e ayrılan CPU’ların kullanımını görüntüler.  Normal koşullar altında CPU kullanımı, Application Gateway’in arkasında barındırılan web sitelerinde gecikmeye neden olabileceğinden ve istemci deneyimini kesintiye uğratabileceğinden düzenli olarak %90’ı aşmamalıdır. Örnek sayısını artırarak veya daha büyük bir SKU boyutuna geçerek ya da her ikisini de yaparak Application Gateway yapılandırmasını değiştirebilir ve CPU kullanımını dolaylı olarak denetleyebilir veya iyileştirebilirsiniz.
 
 - **Geçerli bağlantılar**
 
-  Uygulama Ağ Geçidi ile kurulan geçerli bağlantıların sayısı
+  Application Gateway ile kurulan geçerli bağlantı sayısı
 
-- **Başarısız İstekler**
+- **Başarısız Istekler**
 
-  Uygulama Ağ Geçidi'nin 5xx sunucu hata kodlarıyla hizmet verdiği istek sayısı. Bu, Uygulama Ağ Geçidi'nden oluşturulan 5xx kodlarının yanı sıra arka uçtan oluşturulan 5xx kodlarını da içerir. İstek sayısı, her/belirli arka uç havuzu-http ayar birleşimi başına sayım göstermek için daha fazla filtrelenebilir.
+  Application Gateway 5 xx sunucu hata kodlarıyla birlikte sunulan istek sayısı. Bu, Application Gateway oluşturulan 5xx kodlarını ve arka uçta oluşturulan 5xx kodlarını içerir. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
 
-- **Yanıt Durumu**
+- **Yanıt durumu**
 
-  HTTP yanıt durumu Application Gateway tarafından döndürülür. Yanıt durumu kodu dağıtımı, 2xx, 3xx, 4xx ve 5xx kategorilerinde yanıtları göstermek için daha fazla kategorize edilebilir.
+  Application Gateway tarafından döndürülen HTTP yanıt durumu. Yanıt durum kodu dağıtımı, 5 xx, 3xx, 4xx ve 5xx kategorilerindeki yanıtları göstermek için daha fazla kategorilere ayrılabilir.
 
 - **Aktarım hızı**
 
-  Uygulama Ağ Geçidi'nin hizmet verdiği saniyede bayt sayısı
+  Application Gateway saniyede hizmet verilen bayt sayısı
 
-- **Toplam İstek**
+- **Toplam Istek sayısı**
 
-  Uygulama Ağ Geçidi'nin sunduğu başarılı isteklerin sayısı. İstek sayısı, her/belirli arka uç havuzu-http ayar birleşimi başına sayım göstermek için daha fazla filtrelenebilir.
+  Application Gateway tarafından sunulan başarılı istek sayısı. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
 
-- **Web Uygulaması Güvenlik Duvarı Engellenen İstek Sayısı**
-- **Web Uygulaması Güvenlik Duvarı Engellenen İstekdağıtım**
-- **Web Uygulama Güvenlik Duvarı Toplam Kural Dağılımı**
+- **Web uygulaması güvenlik duvarı engellenen Istek sayısı**
+- **Web uygulaması güvenlik duvarı engellenen Istek dağıtımı**
+- **Web uygulaması güvenlik duvarı toplam kural dağıtımı**
 
 ### <a name="backend-metrics"></a>Arka uç ölçümleri
 
-Uygulama Ağ Geçidi için aşağıdaki ölçümler kullanılabilir:
+Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **İyi durumda olan konak sayısı**
 
-  Sağlık sondası tarafından sağlıklı olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıklı ana bilgisayar sayısını göstermek için her arka uç havuzuna filtre uygulayabilirsiniz.
+  Sistem durumu araştırması tarafından sağlıklı olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıklı ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
 
 - **İyi durumda olmayan konak sayısı**
 
-  Sağlık sondası tarafından sağlıksız olarak belirlenen arka uç sayısı. Belirli bir arka uç havuzundaki sağlıksız ana bilgisayar sayısını göstermek için her arka uç havuzuna filtre uygulayabilirsiniz.
+  Durum araştırmasının sağlıksız olduğunu belirlenen arka uçların sayısı. Belirli bir arka uç havuzundaki sağlıksız ana bilgisayar sayısını göstermek için arka uç havuzu başına filtre uygulayabilirsiniz.
 
-## <a name="metrics-visualization"></a>Ölçümler görselleştirme
+## <a name="metrics-visualization"></a>Ölçüm görselleştirme
 
-Belirli Ölçümleri **İzleme** altında bir uygulama ağ **geçidine**göz atın. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
+Uygulama ağ geçidine gidin, **izleme** ' nin altında **ölçümleri**seçin. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
 
-Aşağıdaki resimde, son 30 dakika için görüntülenen üç ölçümiçeren bir örnek görürsünüz:
+Aşağıdaki görüntüde, son 30 dakika boyunca üç ölçüm görüntülenirken bir örnek görürsünüz:
 
 [![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
-Geçerli bir metrik listesini görmek için [Azure Monitor ile Desteklenen ölçümlere](../azure-monitor/platform/metrics-supported.md)bakın.
+Geçerli ölçüm listesini görmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md).
 
-### <a name="alert-rules-on-metrics"></a>Ölçümlerle ilgili uyarı kuralları
+### <a name="alert-rules-on-metrics"></a>Ölçümlerde uyarı kuralları
 
-Bir kaynağın ölçümlerine göre uyarı kurallarını başlatabilirsiniz. Örneğin, uygulama ağ geçidinin iş bölümü belirli bir süre için bir eşikte, aşağıda veya eşikteyse, bir uyarı bir webhook'u arayabilir veya yöneticiyi e-posta yla çağırabilir.
+Bir kaynağın ölçümlerine göre uyarı kuralları başlatabilirsiniz. Örneğin, bir uyarı, uygulama ağ geçidinin üretilen işi belirli bir dönem üzerinde, aşağıda veya bir eşiğin üzerinde ise bir Web kancasını veya bir yöneticiye e-posta gönderebilir.
 
-Aşağıdaki örnek, iş elde etme eşiğini ihlal ettikten sonra yöneticiye e-posta gönderen bir uyarı kuralı oluşturmanıza neden olur:
+Aşağıdaki örnek, aktarım hızı bir eşiğe ulaştığında bir yöneticiye e-posta gönderen bir uyarı kuralı oluşturma işleminde size yol gösterir:
 
-1. **kural ekle** sayfasını açmak için metrik **uyarı ekle'yi** seçin. Bu sayfaya ölçümler sayfasından da ulaşabilirsiniz.
+1. **Kural Ekle** sayfasını açmak için **ölçüm uyarısı Ekle** ' yi seçin. Bu sayfaya ölçüm sayfasından da ulaşabilirsiniz.
 
-   !["Metrik uyarı ekle" düğmesi][6]
+   !["Ölçüm uyarısı Ekle" düğmesi][6]
 
-2. Ekle **kuralı** sayfasında, adı, koşulu doldurun ve bölümleri bildirin ve **Tamam'ı**seçin.
+2. **Kural Ekle** sayfasında, ad, koşul ve bildirim bölümlerini doldurun ve **Tamam**' ı seçin.
 
-   * **Koşul** seçicide, dört değerden birini seçin: **Büyük, Büyük** **veya eşit**, Daha **Az**veya Daha Az **veya eşittir**.
+   * **Koşul** seçicide dört değerden birini seçin: **büyüktür**, **büyüktür veya eşittir**, **küçüktür**veya **küçüktür veya eşittir**.
 
-   * **Dönem** seçicide, beş dakika ile altı saat arasında bir dönem seçin.
+   * **Süre** seçicide beş dakikadan altı saat arasında bir dönem seçin.
 
-   * **E-posta sahiplerini, katkıda bulunanları ve okuyucuları**seçerseniz, e-posta, bu kaynağa erişimi olan kullanıcılara göre dinamik olabilir. Aksi takdirde, **Ek yönetici e-posta(ları)** kutusunda virgülle ayrılmış bir kullanıcı listesi sağlayabilirsiniz.
+   * **E-posta sahipleri, katkıda bulunanlar ve okuyucular**' ı seçerseniz, e-posta söz konusu kaynağa erişimi olan kullanıcılara göre dinamik olabilir. Aksi takdirde, **ek yönetici e-postaları** kutusunda kullanıcıların virgülle ayrılmış bir listesini sağlayabilirsiniz.
 
    ![Kural sayfası ekle][7]
 
-Eşik ihlal edilirse, aşağıdaki resimdekine benzer bir e-posta gelir:
+Eşiğe ihlal olursa, aşağıdaki görüntüde olana benzer bir e-posta gönderilir:
 
-![Eşik ihlal için e- posta][8]
+![İhlal eşiği için e-posta][8]
 
-Bir metrik uyarı oluşturduktan sonra bir uyarı listesi görüntülenir. Tüm uyarı kurallarına genel bir bakış sağlar.
+Bir ölçüm uyarısı oluşturduktan sonra uyarıların bir listesi görüntülenir. Tüm uyarı kurallarına genel bir bakış sağlar.
 
-![Uyarılar ve kurallar listesi][9]
+![Uyarıların ve kuralların listesi][9]
 
-Uyarı bildirimleri hakkında daha fazla bilgi edinmek için [uyarı bildirimleri alın'](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)a bakın.
+Uyarı bildirimleri hakkında daha fazla bilgi edinmek için bkz. [uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-Web hooks hakkında daha fazla bilgi ve bunları uyarılarla nasıl kullanabileceğinizi anlamak için Azure [metrik uyarısıüzerindeki bir web hook'u yapılandır'ı](../azure-monitor/platform/alerts-webhooks.md)ziyaret edin.
+Web kancaları ve bunları uyarılarla nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için [Azure ölçüm uyarısında Web kancası yapılandırma](../azure-monitor/platform/alerts-webhooks.md)makalesini ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Monitor günlüklerini](../azure-monitor/insights/azure-networking-analytics.md)kullanarak sayaç ve olay günlüklerini görselleştirin.
-* Power BI blog [gönderisiyle Azure etkinlik günlüğünüünüzü görselleştirin.](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)
-* Power BI ve daha fazla blog [gönderisinde Azure etkinlik günlüklerini görüntüleyin ve analiz edin.](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)
+* [Azure izleyici günlüklerini](../azure-monitor/insights/azure-networking-analytics.md)kullanarak sayaç ve olay günlüklerini görselleştirin.
+* [Azure etkinlik günlüğünüzü Power BI blog gönderisi Ile görselleştirin](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) .
+* [Power BI ve daha fazla blog gönderisine Azure etkinlik günlüklerini görüntüleyin ve çözümleyin](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) .
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
 [2]: ./media/application-gateway-diagnostics/figure2.png

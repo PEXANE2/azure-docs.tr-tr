@@ -1,6 +1,6 @@
 ---
-title: Azure Etkinlik Hub'ları verilerini şifrelemek için kendi anahtarınızı yapılandırma
-description: Bu makalede, Azure Olay Hub'ları veri geri kalanı şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
+title: Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kendi anahtarınızı yapılandırın
+description: Bu makalede, Azure Event Hubs Data Rest 'i şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,110 +9,110 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
 ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459143"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portalını kullanarak Azure Event Hub'ları verilerini yeniden şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
-Azure Etkinlik Hub'ları, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile veri şifrelemesini sağlar. Olay Hub'ları verileri depolamak için Azure Depolama'ya güvenir ve varsayılan olarak Azure Depolama ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
+Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
 
 ## <a name="overview"></a>Genel Bakış
-Azure Etkinlik Hub'ları artık verileri Microsoft tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla (Kendi Anahtarınızı Getir – BYOK) ile birlikte şifreleme seçeneğini destekler. Bu özellik, Azure Etkinlik Hub'ları verilerini kolaylaştırmak için kullanılan müşteri tarafından yönetilen anahtarlara erişimi oluşturmanıza, döndürmenize, devre dışı etmenizi ve iptal etmenizi sağlar.
+Azure Event Hubs artık, Microsoft tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla (Kendi Anahtarını Getir – BYOK), bekleyen verileri şifreleme seçeneğini desteklemektedir. Bu özellik, Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kullanılan müşteri tarafından yönetilen anahtarlara erişimi oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal etmenize olanak sağlar.
 
-BYOK özelliğini etkinleştirmek, ad alanınızda tek seferlik bir kurulum işlemidir.
+BYOK özelliğinin etkinleştirilmesi, ad alanınız üzerinde bir kerelik kurulum işlemidir.
 
 > [!NOTE]
-> BYOK özelliği, tek [kiracılı kümeler için özel Etkinlik Hub'ları](event-hubs-dedicated-overview.md) tarafından desteklenir. Standart Olay Hub'ları ad alanları için etkinleştirilenemez.
+> BYOK özelliği [Event Hubs adanmış tek kiracılı](event-hubs-dedicated-overview.md) kümeler tarafından desteklenir. Standart Event Hubs ad alanları için etkinleştirilemez.
 
-Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault'u kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/general/overview.md)
+Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
 
-Bu makalede, Azure portalını kullanarak müşteri tarafından yönetilen anahtarlarla anahtar kasasının nasıl yapılandırılabildiğini gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../key-vault/secrets/quick-create-portal.md)
+Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Azure Etkinlik Hub'ları ile müşteri tarafından yönetilen anahtarları kullanmak, anahtar kasasının iki gerekli özellisini yapılandırmasını gerektirir. Bunlar: **Yumuşak Silme** ve **Temizleme etmeyin**. Azure portalında yeni bir anahtar kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, bu özellikleri varolan bir anahtar kasasında etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLI'yi kullanmanız gerekir.
+> Azure Event Hubs ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmış olmasını gerektirir. Bunlar: **geçici silme** ve **Temizleme**. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
 
-## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştirme
-Azure portalında müşteri tarafından yönetilen anahtarları etkinleştirmek için aşağıdaki adımları izleyin:
+## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir
+Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için şu adımları izleyin:
 
-1. Etkinlik Hub'larınıza Özel kümenize gidin.
-1. BYOK'u etkinleştirmek istediğiniz ad alanını seçin.
-1. Olay Hub'larınızın ad alanının **Ayarlar** sayfasında **Şifreleme'yi**seçin. 
-1. Aşağıdaki resimde gösterildiği **gibi, Müşteri tarafından yönetilen anahtar şifrelemesini istirahatte** seçin. 
+1. Event Hubs Ayrılmış kümenize gidin.
+1. BYOK ' u etkinleştirmek istediğiniz ad alanını seçin.
+1. Event Hubs ad alanının **Ayarlar** sayfasında **şifreleme**' yi seçin. 
+1. Aşağıdaki görüntüde gösterildiği gibi **geri kalan müşteri tarafından yönetilen anahtar şifrelemesini** seçin. 
 
-    ![Müşteri yönetilen anahtarını etkinleştirme](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Müşteri tarafından yönetilen anahtarı etkinleştir](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
-## <a name="set-up-a-key-vault-with-keys"></a>Anahtarlarla anahtar kasası ayarlama
-Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri yönetilen anahtarını Azure Etkinlik Hub'larınız ad alanınızla ilişkilendirmeniz gerekir. Etkinlik Hub'ları yalnızca Azure Anahtar Kasası'nı destekler. Önceki bölümde **müşteri tarafından yönetilen anahtar seçeneğiyle Şifreleme'yi** etkinleştiriseniz, anahtarın Azure Anahtar Kasası'na aktarılmasını sağlamanız gerekir. Ayrıca, anahtarlar **Yumuşak Silme** ve **Temizleme anahtarı** için yapılandırılan etmeyin olmalıdır. Bu ayarlar [PowerShell](../key-vault/general/soft-delete-powershell.md) veya [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
+## <a name="set-up-a-key-vault-with-keys"></a>Anahtarlar içeren bir Anahtar Kasası ayarlama
+Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri tarafından yönetilen anahtarı Azure Event Hubs ad alanınız ile ilişkilendirmeniz gerekir. Event Hubs yalnızca Azure Key Vault destekler. Önceki bölümde, **müşteri tarafından yönetilen anahtar seçeneğiyle şifrelemeyi** etkinleştirirseniz, anahtarın Azure Key Vault içine aktarılması gerekir. Ayrıca, anahtarlar için **yumuşak silme** ve anahtar Için de **Temizleme** yapılandırması olmalıdır. Bu ayarlar, [PowerShell](../key-vault/general/soft-delete-powershell.md) veya [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
 
-1. Yeni bir anahtar kasası oluşturmak için Azure Key Vault [Quickstart'ı](../key-vault/general/overview.md)izleyin. Varolan anahtarları alma hakkında daha fazla bilgi için [anahtarlar, sırlar ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md)bilgi edinebilirsiniz.
-1. Kasa oluştururken hem yumuşak silme hem de temizleme korumasını açmak için [az keyvault oluşturma](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın.
+1. Yeni bir Anahtar Kasası oluşturmak için Azure Key Vault [hızlı](../key-vault/general/overview.md)başlangıcı ' nı izleyin. Varolan anahtarları içeri aktarma hakkında daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md).
+1. Bir kasa oluştururken hem geçici silme hem de Temizleme korumasını açmak için [az keykasa Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın.
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Varolan bir kasaya temizleme koruması eklemek için (zaten yumuşak silme etkinleştirilmiş), [az keyvault güncelleştirme](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) komutunu kullanın.
+1. Var olan bir kasaya Temizleme koruması eklemek için (zaten geçici silme etkindir), [az keykasa Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) komutunu kullanın.
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
     ```
 1. Aşağıdaki adımları izleyerek anahtarlar oluşturun:
-    1. Yeni bir anahtar oluşturmak için **Ayarlar**menüsünden **Ayarlar** menüsünden **Oluştur/İçe Aktar'ı** seçin.
+    1. Yeni bir anahtar oluşturmak için **Ayarlar**altındaki **anahtarlar** menüsünden **Oluştur/içeri aktar** ' ı seçin.
         
-        ![Oluştur/İçe'yi seç düğmesini seçin](./media/configure-customer-managed-key/select-generate-import.png)
-    1. **Seçenekler** **Oluşturmak** ve anahtara bir ad vermek için ayarlama.
+        ![Oluştur/Içeri Aktar düğmesini seçin](./media/configure-customer-managed-key/select-generate-import.png)
+    1. Oluşturma **seçeneklerini** belirleyin **Generate** ve anahtara bir ad verin.
 
         ![Bir anahtar oluşturma](./media/configure-customer-managed-key/create-key.png) 
-    1. Artık açılan listeden şifrelemek için Olay Hub'ları ad alanıyla ilişkilendirmek için bu anahtarı seçebilirsiniz. 
+    1. Şimdi, açılan listeden şifrelemek için Event Hubs ad alanıyla ilişkilendirmek üzere bu anahtarı seçebilirsiniz. 
 
-        ![Anahtar kasasından anahtarı seçin](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. Anahtarın ayrıntılarını doldurun ve **Seç'e**tıklayın. Bu, müşteri yönetilen bir anahtarla ad alanında veri şifrelemesini sağlar. 
+        ![Anahtar kasasından anahtar seçin](./media/configure-customer-managed-key/select-key-from-key-vault.png)
+    1. Anahtarın ayrıntılarını girin ve **Seç**' e tıklayın. Bu, müşteri tarafından yönetilen anahtar ile ad alanındaki bekleyen verilerin şifrelenmesini sağlar. 
 
 
-## <a name="rotate-your-encryption-keys"></a>Şifreleme anahtarlarınızı döndürme
-Azure Anahtar Kasaları döndürme mekanizmasını kullanarak anahtarınızı anahtar kasasında döndürebilirsiniz. Daha fazla bilgi için [bkz.](../key-vault/secrets/key-rotation-log-monitoring.md) Etkinleştirme ve son kullanma tarihleri de anahtar döndürmeyi otomatikleştirmek için ayarlanabilir. Olay Hub'ları hizmeti yeni anahtar sürümlerini algılar ve otomatik olarak kullanmaya başlar.
+## <a name="rotate-your-encryption-keys"></a>Şifreleme anahtarlarınızı döndürün
+Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını kullanarak döndürebilirsiniz. Daha fazla bilgi için bkz. [anahtar dönüşü ve denetimini ayarlama](../key-vault/secrets/key-rotation-log-monitoring.md). Etkinleştirme ve sona erme tarihleri, anahtar döndürmeyi otomatik hale getirmek için de ayarlanabilir. Event Hubs hizmet yeni anahtar sürümlerini algılar ve otomatik olarak kullanmaya başlar.
 
-## <a name="revoke-access-to-keys"></a>Anahtarlara erişimi iptal etme
-Şifreleme anahtarlarına erişimi iptal etmek, verileri Olay Hub'larından temizlemez. Ancak, verilere Olay Hub'ları ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi yle veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri ve anahtar kasanızı Güvenli kasadan [anahtar kasasına](../key-vault/general/secure-your-key-vault.md)güvenli hale alma hakkında daha fazla bilgi edinin.
+## <a name="revoke-access-to-keys"></a>Anahtarlara erişimi iptal et
+Şifreleme anahtarlarına erişimin iptal edilmemesi Event Hubs verileri temizleyemezsiniz. Ancak, verilere Event Hubs ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/general/secure-your-key-vault.md).
 
-Şifreleme anahtarı iptal edildikten sonra, şifrelenmiş ad alanındaki Olay Hub'ları hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilmişse veya silme anahtarı geri yüklenirse, şifreli Olay Hub'ları ad alanından verilere erişebilmeniz için Olay Hub'ları hizmeti anahtarı seçer.
+Şifreleme anahtarı iptal edildiğinde, şifrelenen ad alanındaki Event Hubs hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilirse veya silme anahtarı geri yüklenirse, şifrelenmiş Event Hubs ad alanındaki verilere erişebilmek için Event Hubs hizmet anahtarı seçer.
 
 ## <a name="set-up-diagnostic-logs"></a>Tanılama günlükleri ayarlama 
-BYOK etkin ad alanları için tanılama günlükleri ayarlama, bir ad alanı müşteri tarafından yönetilen anahtarlarla şifrelendiğinde işlemler hakkında gerekli bilgileri verir. Bu günlükler etkinleştirilebilir ve daha sonra bir olay hub'ına akabilir veya günlük analitiği aracılığıyla analiz edilebilir veya özelleştirilmiş analitik gerçekleştirmek için depolama alanına aktarılabilir. Tanılama günlükleri hakkında daha fazla bilgi edinmek için Azure [Tanı günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md)bölümüne bakın.
+BYOK etkinleştirilmiş ad alanları için tanılama günlüklerini ayarlama, bir ad alanı müşteri tarafından yönetilen anahtarlarla şifrelendiğinde, işlemler hakkında gerekli bilgileri sağlar. Bu Günlükler etkinleştirilebilir ve daha sonra bir olay hub 'ına bağlanabilir veya Log Analytics aracılığıyla analiz edilebilir ya da özelleştirilmiş analizler gerçekleştirmek için depolama alanına akışı yapılabilir. Tanılama günlükleri hakkında daha fazla bilgi edinmek için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
 
-## <a name="enable-user-logs"></a>Kullanıcı günlüklerini etkinleştirme
-Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek için aşağıdaki adımları izleyin.
+## <a name="enable-user-logs"></a>Kullanıcı günlüklerini etkinleştir
+Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek üzere bu adımları izleyin.
 
-1. Azure portalında, BYOK etkinleştirilmiş ad alanına gidin.
-1. **İzleme**altında **Tanılama ayarlarını** seçin.
+1. Azure portal, BYOK etkinleştirilmiş olan ad alanına gidin.
+1. Izleme altında **Tanılama ayarları** ' **nı**seçin.
 
     ![Tanılama ayarlarını seçin](./media/configure-customer-managed-key/select-diagnostic-settings.png)
-1. **+Tanı ayarını ekle'yi**seçin. 
+1. **+ Tanılama ayarı Ekle**' yi seçin. 
 
-    ![Tanılama ayarı ekle'yi seçin](./media/configure-customer-managed-key/select-add-diagnostic-setting.png)
-1. Bir **ad** sağlayın ve günlükleri nereye aktarmak istediğinizi seçin.
-1. **CustomerManagedKeyUserLogs'u** seçin ve **Kaydedin.** Bu eylem, ad alanında BYOK günlükleri sağlar.
+    ![Tanılama ayarı Ekle 'yi seçin](./media/configure-customer-managed-key/select-add-diagnostic-setting.png)
+1. Bir **ad** girin ve günlüklerin akışını istediğiniz yeri seçin.
+1. **Customermanagedkeyuserlogs** ve **Kaydet**' i seçin. Bu eylem, ad alanı üzerinde BYOK için günlüklere izin vermez.
 
-    ![Müşteri tarafından yönetilen anahtar kullanıcı günlükleri seçeneğini seçin](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
+    ![Müşteri tarafından yönetilen anahtar Kullanıcı günlükleri seçeneğini belirleyin](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
-## <a name="log-schema"></a>Günlük şema 
-Tüm günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her giriş, aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
+## <a name="log-schema"></a>Günlük şeması 
+Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
 
 | Adı | Açıklama |
 | ---- | ----------- | 
-| Görevadı | Başarısız olan görevin açıklaması. |
-| Activityıd | İzleme için kullanılan dahili kimlik. |
-| category | Görevin sınıflandırını tanımlar. Örneğin, anahtar kasanızdaki anahtar devre dışı ediliyorsa, bu bir bilgi kategorisi olur veya bir anahtar paketten çıkarılamazsa hata altında kalabilir. |
-| resourceId | Azure Kaynak Yöneticisi kaynak kimliği |
+| Silinecek | Başarısız olan görevin açıklaması. |
+| Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |
+| category | Görevin sınıflandırmasını tanımlar. Örneğin, anahtar kasanızın anahtarı devre dışı bırakılmışsa, bir bilgi kategorisi olur veya bir anahtarın sarmalanmamış olması durumunda hataya neden olabilir. |
+| resourceId | Azure Resource Manager kaynak KIMLIĞI |
 | keyVault | Anahtar kasasının tam adı. |
-| anahtar | Olay Hub'ları ad alanını şifrelemek için kullanılan anahtar adı. |
+| anahtar | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
 | version | Kullanılan anahtarın sürümü. |
-| Işlem | Anahtar kasanızdaki anahtara yapılan işlem. Örneğin, anahtarı, kaydırmayı veya açma |
-| kod | İşlemle ilişkili kod. Örnek: Hata kodu, 404 bu anahtarın bulunamadı anlamına gelir. |
+| çalışmasını | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
+| kod | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
 | message | İşlemle ilişkili herhangi bir hata iletisi |
 
-Müşteri yönetilen bir anahtar için günlük örneği aşağıda verilmiştir:
+Müşteri tarafından yönetilen anahtar için günlüğe bir örnek aşağıda verilmiştir:
 
 ```json
 {
@@ -144,18 +144,18 @@ Müşteri yönetilen bir anahtar için günlük örneği aşağıda verilmiştir
 }
 ```
 
-## <a name="use-resource-manager-template-to-enable-encryption"></a>Şifrelemeyi etkinleştirmek için Kaynak Yöneticisi şablonunu kullanma
-Bu bölümde, **Azure Kaynak Yöneticisi şablonlarını**kullanarak aşağıdaki görevlerin nasıl yapılacağını gösterilmektedir. 
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Şifrelemeyi etkinleştirmek için Kaynak Yöneticisi şablonu kullanma
+Bu bölümde **Azure Resource Manager şablonlar**kullanılarak aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir. 
 
-1. Yönetilen hizmet kimliğine sahip bir **Olay Hub'ları ad alanı** oluşturun.
-2. Anahtar **kasası** oluşturun ve servis kimliğine anahtar kasasına erişim hakkı tanıyın. 
-3. Olay Hub'ları ad alanını anahtar kasa bilgileriyle (anahtar/değer) güncelleştirin. 
+1. Yönetilen hizmet kimliğiyle bir **Event Hubs ad alanı** oluşturun.
+2. **Anahtar Kasası** oluşturun ve anahtar kasasına hizmet kimliği erişimi verin. 
+3. Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleştirin (anahtar/değer). 
 
 
-### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Yönetilen hizmet kimliğiyle Olay Hub'ları kümesi ve ad alanı oluşturma
-Bu bölümde, Azure Kaynak Yöneticisi şablonu ve PowerShell kullanarak yönetilen hizmet kimliğine sahip bir Azure Etkinlik Hub'ları ad alanı nasıl oluşturulacaksınız gösterilmektedir. 
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Yönetilen hizmet kimliğiyle bir Event Hubs kümesi ve ad alanı oluşturma
+Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yönetilen hizmet kimliğiyle Azure Event Hubs ad alanı oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir. 
 
-1. Yönetilen hizmet kimliğine sahip bir Olay Hub'ları ad alanı oluşturmak için Azure Kaynak Yöneticisi şablonu oluşturun. Dosyayı adlandırın: **CreateEventHubClusterAndNamespace.json**: 
+1. Yönetilen hizmet kimliğiyle bir Event Hubs ad alanı oluşturmak için Azure Resource Manager şablonu oluşturun. Dosyayı adlandırın: **Createeventhubclusterandnamespace. JSON**: 
 
     ```json
     {
@@ -224,13 +224,13 @@ Bu bölümde, Azure Kaynak Yöneticisi şablonu ve PowerShell kullanarak yöneti
        }
     }
     ```
-2. Adlı bir şablon parametre dosyası oluşturun: **CreateEventHubClusterAndNamespaceParams.json**. 
+2. **Createeventhubclusterandnamespaceparams. JSON**adlı bir şablon parametre dosyası oluşturun. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
-    > - `<EventHubsClusterName>`- Olay Hub'larınızın adı    
-    > - `<EventHubsNamespaceName>`- Etkinlik Hub'larınızın ad alanının adı
-    > - `<Location>`- Etkinlik Hub'larınızın ad alanının konumu
+    > - `<EventHubsClusterName>`-Event Hubs Kümenizin adı    
+    > - `<EventHubsNamespaceName>`-Event Hubs ad alanının adı
+    > - `<Location>`-Event Hubs ad alanınız konumu
 
     ```json
     {
@@ -250,7 +250,7 @@ Bu bölümde, Azure Kaynak Yöneticisi şablonu ve PowerShell kullanarak yöneti
     }
     
     ```
-3. Olay Hub'ları ad alanı oluşturmak için şablonu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Ardından, daha sonra kullanmak üzere Olay Hub'larının ad alanının kimliğini alın. Komutu çalıştırmadan önce kaynak grubunun adı ile değiştirin. `{MyRG}`  
+3. Event Hubs bir ad alanı oluşturmak üzere şablonu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Ardından, daha sonra kullanmak üzere Event Hubs ad alanının KIMLIĞINI alın. Komutu `{MyRG}` çalıştırmadan önce kaynak grubunun adıyla değiştirin.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -258,22 +258,22 @@ Bu bölümde, Azure Kaynak Yöneticisi şablonu ve PowerShell kullanarak yöneti
     $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
     ```
  
-### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Grant Event Hubs ad alanı kimlik erişimi anahtar kasa
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Anahtar kasasına Event Hubs ad alanı kimliği erişimi verme
 
-1. **Temizleme koruması** ve **yumuşak silme** etkin leştirilmiş anahtar kasası oluşturmak için aşağıdaki komutu çalıştırın. 
+1. **Temizleme koruması** ve **geçici silme** etkin olan bir Anahtar Kasası oluşturmak için aşağıdaki komutu çalıştırın. 
 
     ```powershell
     New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
     ```     
     
-    (VEYA)    
+    VEYA    
     
-    Varolan bir anahtar **kasasını**güncelleştirmek için aşağıdaki komutu çalıştırın. Komutu çalıştırmadan önce kaynak grubu ve anahtar kasa adları için değerleri belirtin. 
+    **Mevcut bir anahtar kasasını**güncelleştirmek için aşağıdaki komutu çalıştırın. Komutu çalıştırmadan önce kaynak grubu ve Anahtar Kasası adları için değerler belirtin. 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
     ``` 
-2. Olay Hub'larının yönetilen kimliğinin anahtar kasasındaki anahtar değerine erişebileceği şekilde anahtar kasa erişim ilkesini ayarlayın. Önceki bölümdeki Olay Hub'ları ad alanının kimliğini kullanın. 
+2. Event Hubs ad alanındaki yönetilen kimliğin anahtar kasasındaki anahtar değere erişebilmesi için Anahtar Kasası erişim ilkesini ayarlayın. Önceki bölümde Event Hubs ad alanının KIMLIĞINI kullanın. 
 
     ```powershell
     $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
@@ -281,15 +281,15 @@ Bu bölümde, Azure Kaynak Yöneticisi şablonu ve PowerShell kullanarak yöneti
     Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
     ```
 
-### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Olay Hub'ları ad alanında ki verileri anahtar kasasından müşteri tarafından yönetilen anahtarla şifreleme
-Şimdiye kadar aşağıdaki adımları yaptınız: 
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Anahtar kasasından müşteri tarafından yönetilen anahtarla Event Hubs ad alanındaki verileri şifreleme
+Şu ana kadar şu adımları tamamladınız: 
 
-1. Yönetilen bir kimliğe sahip bir premium ad alanı oluşturdu.
-2. Anahtar kasası oluşturun ve anahtar kasasına yönetilen kimlik erişimi ne zaman verildi. 
+1. Yönetilen kimliğe sahip bir Premium ad alanı oluşturuldu.
+2. Anahtar Kasası oluşturun ve anahtar kasasında yönetilen kimlik erişimi izni verilir. 
 
-Bu adımda, Olay Hub'ları ad alanını anahtar kasa bilgileriyle güncelleştireceksiniz. 
+Bu adımda, Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleirsiniz. 
 
-1. **CreateEventHubClusterAndNamespace.json** adlı bir JSON dosyası oluşturun: 
+1. Aşağıdaki içeriğe sahip **Createeventhubclusterandnamespace. JSON** ADLı bir JSON dosyası oluşturun: 
 
     ```json
     {
@@ -361,15 +361,15 @@ Bu adımda, Olay Hub'ları ad alanını anahtar kasa bilgileriyle güncelleştir
     }
     ``` 
 
-2. Şablon parametre dosyası oluşturun: **UpdateEventHubClusterAndNamespaceParams.json**. 
+2. Şablon parametre dosyası oluştur: **Updateeventhubclusterandnamespaceparams. JSON**. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
-    > - `<EventHubsClusterName>`- Olay Hub'larınızın adı.        
-    > - `<EventHubsNamespaceName>`- Etkinlik Hub'larınızın ad alanının adı
-    > - `<Location>`- Etkinlik Hub'larınızın ad alanının konumu
-    > - `<KeyVaultName>`- Anahtar kasanızın adı
-    > - `<KeyName>`- Anahtar kasasındaki anahtarın adı
+    > - `<EventHubsClusterName>`-Event Hubs Kümenizin adı.        
+    > - `<EventHubsNamespaceName>`-Event Hubs ad alanının adı
+    > - `<Location>`-Event Hubs ad alanınız konumu
+    > - `<KeyVaultName>`-Anahtar kasanızın adı
+    > - `<KeyName>`-Anahtar kasasındaki anahtarın adı
 
     ```json
     {
@@ -394,36 +394,36 @@ Bu adımda, Olay Hub'ları ad alanını anahtar kasa bilgileriyle güncelleştir
        }
     }
     ```             
-3. Kaynak Yöneticisi şablonunu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Komutu çalıştırmadan önce kaynak grubunuzun adı ile değiştirin. `{MyRG}` 
+3. Kaynak Yöneticisi şablonunu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Komutu `{MyRG}` çalıştırmadan önce kaynak grubunuzun adıyla değiştirin. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
 
 ## <a name="troubleshoot"></a>Sorun giderme
-En iyi uygulama olarak, her zaman önceki bölümde gösterildiği gibi günlükleri etkinleştirin. BYOK şifrelemesi etkinleştirildiğinde etkinlikleri izlemede yardımcı olur. Aynı zamanda sorunları aşağı inme de yardımcı olur.
+En iyi uygulama olarak, önceki bölümde gösterildiği gibi günlükleri her zaman etkinleştirin. BYOK şifrelemesi etkinleştirildiğinde etkinlikleri izlemeye yardımcı olur. Ayrıca sorunların kapsamını belirlemek için de yardımcı olur.
 
-BYOK şifrelemesi etkinleştirildiğinde aranacak yaygın hata kodları aşağıda verilmiştir.
+Aşağıda, BYOK şifrelemesi etkinleştirildiğinde aranacak ortak hatalar kodları verilmiştir.
 
-| Eylem | Hata kodu | Ortaya çıkan veri durumu |
+| Eylem | Hata kodu | Verilerin sonuç durumu |
 | ------ | ---------- | ----------------------- | 
-| Anahtar kasasından kaydırma/açma iznini kaldırma | 403 |    Erişile -mez |
-| Kaydırma/açma izni veren bir AAD müdüründen AAD rol üyeliğini kaldırma | 403 |  Erişile -mez |
-| Anahtar kasasından şifreleme anahtarını silme | 404 | Erişile -mez |
-| Anahtar kasasını silme | 404 | Erişilemez (gerekli ayar olan yumuşak silmenin etkin olduğunu varsayar.) |
-| Şifreleme anahtarının son kullanma süresini, süresi nin dolması gibi değiştirme | 403 |   Erişile -mez  |
-| Anahtar şifreleme anahtarının etkin olmaması gibi NBF'yi (daha önce değil) değiştirme | 403 | Erişile -mez  |
-| Anahtar kasa güvenlik duvarı için **MSFT Hizmetlerine İzin Ver** seçeneğini seçmek veya şifreleme anahtarına sahip anahtar kasasına ağ erişimini engellemek | 403 | Erişile -mez |
-| Anahtar kasasını farklı bir kiracıya taşıma | 404 | Erişile -mez |  
+| Anahtar kasasından kaydırmayı/kaydırmayı kaldırma iznini kaldır | 403 |    Erişilemez |
+| Bir AAD sorumlusunun sarmalama/sarmalama izni verilen AAD rolü üyeliğini kaldırma | 403 |  Erişilemez |
+| Anahtar kasasından bir şifreleme anahtarı silme | 404 | Erişilemez |
+| Anahtar kasasını silme | 404 | Erişilebilir değil (gerekli bir ayar olan, geçici silme özelliğinin etkin olduğunu varsayar.) |
+| Şifreleme anahtarındaki süre sonu süresini, zaten süresi dolduğu için değiştirme | 403 |   Erişilemez  |
+| Bu anahtar şifreleme anahtarı etkin olmayan NBF (daha önce değil) değiştiriliyor | 403 | Erişilemez  |
+| Anahtar Kasası güvenlik duvarı için **MSFT hizmetlerine Izin ver** seçeneğini belirleme veya başka bir şekilde şifreleme anahtarına sahip anahtar kasasına ağ erişimini engelleme | 403 | Erişilemez |
+| Anahtar kasasını farklı bir kiracıya taşıma | 404 | Erişilemez |  
 | Aralıklı ağ sorunu veya DNS/AAD/MSI kesintisi |  | Önbelleğe alınmış veri şifreleme anahtarı kullanılarak erişilebilir |
 
 > [!IMPORTANT]
-> BYOK şifrelemesini kullanan bir ad alanında Geo-DR'yi etkinleştirmek için, eşleştirme için ikincil ad alanının özel bir kümede olması ve üzerinde yönetilen kimlik atanmış bir sistem olması gerekir. Daha fazla bilgi için Azure [Kaynakları için Yönetilen Kimlikler'e](../active-directory/managed-identities-azure-resources/overview.md)bakın.
+> BYOK şifrelemesini kullanan bir ad alanında coğrafi DR 'yi etkinleştirmek için, eşleştirme için ikincil ad alanı adanmış bir kümede olmalıdır ve üzerinde sistem tarafından atanmış bir yönetilen kimlik etkin olmalıdır. Daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
-- [Olay Hub'larına genel bakış](event-hubs-about.md)
-- [Key Vault'a genel bakış](../key-vault/general/overview.md)
+- [Event Hubs genel bakış](event-hubs-about.md)
+- [Anahtar Kasasına genel bakış](../key-vault/general/overview.md)
 
 
 

@@ -1,23 +1,23 @@
 ---
-title: 'Quickstart: REST API ile bir plan oluşturma'
-description: Bu hızlı başlangıçta, REST API'sini kullanarak yapı oluşturmak, tanımlamak ve dağıtmak için Azure Planları'nı kullanırsınız.
+title: 'Hızlı başlangıç: REST API bir şema oluşturma'
+description: Bu hızlı başlangıçta, REST API kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 02/26/2020
 ms.topic: quickstart
 ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80676577"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: REST API ile Bir Azure Planı tanımlayın ve Atayın
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Hızlı başlangıç: REST API Azure Blueprint tanımlama ve atama
 
 Şema oluşturma ve atama süreçlerini anlamak, ortak tutarlılık desenlerini tanımlamanızı ve Resource Manager şablonlarını, ilkelerini, güvenlik düzeyini ve daha fazlasını temel alan yeniden kullanılabilir ve hızla dağıtılabilir yapılandırmalar geliştirmenizi sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free) bir hesap oluşturun.
-- Kaynak `Microsoft.Blueprint` sağlayıcısını kaydedin. Yol tarifleri için [Kaynak sağlayıcıları ve türleri'ne](../../azure-resource-manager/management/resource-providers-and-types.md)bakın.
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
+- `Microsoft.Blueprint` Kaynak sağlayıcısını kaydedin. Yönergeler için bkz. [kaynak sağlayıcıları ve türleri](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "80676577"
 
 REST API konusunda bilginiz yoksa özellikle istek URI'si ve istek gövdesi olmak üzere REST API hakkında genel bilgi edinmek için [Azure REST API Başvurusu](/rest/api/azure/) sayfasını inceleyerek başlayın. Bu makalede Azure Blueprints ile çalışmak üzere yönlendirme yapmak için bu kavramlar kullanılmakta ve bunları bildiğiniz kabul edilmektedir. [ARMClient](https://github.com/projectkudu/ARMClient) gibi araçlar yetkilendirme adımlarını otomatik olarak gerçekleştirebilir ve bu nedenle yeni başlayanlar için önerilir.
 
-Azure Blueprints özellikleri için [Azure Blueprints REST API'ye](/rest/api/blueprints/)bakın.
+Azure şemaları özellikleri için bkz. [Azure şemaları REST API](/rest/api/blueprints/).
 
 ### <a name="rest-api-and-powershell"></a>REST API ve PowerShell
 
@@ -59,11 +59,11 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
 Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değişkenler bulunur:
 
-- `{YourMG}`- Yönetim grubunuzun kimliğiyle değiştirin
+- `{YourMG}`-Yönetim grubunuzun KIMLIĞIYLE değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
 
 > [!NOTE]
-> Planlar abonelik düzeyinde de oluşturulabilir. Bir örnek görmek [için, abonelik örneğinde plan oluşturma'ya](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)bakın.
+> Ayrıca, planlar abonelik düzeyinde oluşturulabilir. Bir örnek görmek için bkz. [abonelikte şema oluşturma örneği](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
 
 1. İlk _şema_ nesnesini oluşturun. **İstek Gövdesi** şemayla ilgili özellikleri, oluşturulacak kaynak gruplarını ve tüm şema düzeyi parametreleri içerir. Parametreler atama sırasında ayarlanır ve sonraki adımlarda eklenecek yapıtlar tarafından kullanılır.
 
@@ -124,7 +124,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Abonelikte rol ataması ekleyin. **İstek Gövdesi** yapıtın _türünü_ tanımlar, özellikler rol tanımı tanımlayıcısıyla eşlenir ve sorumlu kimlikleri değer dizisi olarak geçirilir. Aşağıdaki örnekte belirtilen rolün verildiği sorumlu kimlikleri, şema ataması sırasında ayarlanan bir parametreyle yapılandırılmıştır. Bu _örnekte, Bir_ GUID ile Katılımcı `b24988ac-6180-42a0-ab88-20f7382dd24c`yerleşik rolü kullanır.
+1. Abonelikte rol ataması ekleyin. **İstek Gövdesi** yapıtın _türünü_ tanımlar, özellikler rol tanımı tanımlayıcısıyla eşlenir ve sorumlu kimlikleri değer dizisi olarak geçirilir. Aşağıdaki örnekte belirtilen rolün verildiği sorumlu kimlikleri, şema ataması sırasında ayarlanan bir parametreyle yapılandırılmıştır. Bu örnek, bir GUID 'SI ile _katkıda_ bulunan yerleşik rolünü kullanır `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
    - REST API URI'si
 
@@ -144,7 +144,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Abonelikte ilke ataması ekleyin. **İstek Gövdesi** yapıtın _türü_ ile bir ilke veya girişim tanımıyla eşleşen özellikleri tanımlar ve ilke atamasını şema ataması sırasında yapılandırılacak tanımlı şema parametrelerini kullanacak şekilde yapılandırır. Bu örnekte _Uygula etiketi ve varsayılan değeri,_ yerleşik kaynak gruplarına guid `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`ile .
+1. Abonelikte ilke ataması ekleyin. **İstek Gövdesi** yapıtın _türü_ ile bir ilke veya girişim tanımıyla eşleşen özellikleri tanımlar ve ilke atamasını şema ataması sırasında yapılandırılacak tanımlı şema parametrelerini kullanacak şekilde yapılandırır. Bu örnekte, GUID 'SI ile birlikte _Apply etiketi ve varsayılan değerini kaynak grupları_ yerleşik İlkesi kullanır `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - REST API URI'si
 
@@ -172,7 +172,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Abonelikte Depolama etiketi için (_storageAccountType_ parametresini yeniden kullanarak) başka bir ilke ataması ekleyin. Bu ek ilke ataması yapıtı, şemada tanımlanan bir parametrenin birden fazla yapıt tarafından kullanılabileceğini gösterir. Örnekte kaynak grubunda etiket ayarlamak için **storageAccountType** kullanılmıştır. Bu değer, bir sonraki adımda oluşturulan depolama hesabıyla ilgili bilgi sağlar. Bu örnekte _Uygula etiketi ve varsayılan değeri,_ yerleşik kaynak gruplarına guid `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`ile .
+1. Abonelikte Depolama etiketi için (_storageAccountType_ parametresini yeniden kullanarak) başka bir ilke ataması ekleyin. Bu ek ilke ataması yapıtı, şemada tanımlanan bir parametrenin birden fazla yapıt tarafından kullanılabileceğini gösterir. Örnekte kaynak grubunda etiket ayarlamak için **storageAccountType** kullanılmıştır. Bu değer, bir sonraki adımda oluşturulan depolama hesabıyla ilgili bilgi sağlar. Bu örnekte, GUID 'SI ile birlikte _Apply etiketi ve varsayılan değerini kaynak grupları_ yerleşik İlkesi kullanır `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - REST API URI'si
 
@@ -286,7 +286,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      }
      ```
 
-1. Rol atamasını kaynak grubuna ekleyin. Yukarıdaki rol ataması girişine benzer şekilde aşağıdaki örnekte de **Sahip** rolü için tanımlayıcı kullanılır ve şemadan farklı bir parametre sunulur. Bu örnek, Bir GUID ile _Sahibi_ `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`yerleşik rolü kullanır.
+1. Rol atamasını kaynak grubuna ekleyin. Yukarıdaki rol ataması girişine benzer şekilde aşağıdaki örnekte de **Sahip** rolü için tanımlayıcı kullanılır ve şemadan farklı bir parametre sunulur. Bu örnek, GUID 'SI ile _sahip_ yerleşik rolünü kullanır `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
 
    - REST API URI'si
 
@@ -321,15 +321,15 @@ Yapıtları ekledikten sonra şemayı yayımlayabilirsiniz. Yayımladığınızd
 
 ## <a name="assign-a-blueprint"></a>Şema atama
 
-REST API kullanarak yayımlanan şemaları bir aboneliğe atayabilirsiniz. Oluşturduğunuz şemayı yönetim grubu hiyerarşinizdeki aboneliklerden birine atayın. Plan bir aboneye kaydedilirse, yalnızca bu aboneye atanabilir. **İstek Gövdesi** atanacak şemayı belirtir, şema tanımındaki kaynak gruplarının adını ve konumunu sağlar ve şemada tanımlanıp ekli yapıtların biri veya daha fazlası tarafından kullanılan tüm parametreleri sağlar.
+REST API kullanarak yayımlanan şemaları bir aboneliğe atayabilirsiniz. Oluşturduğunuz şemayı yönetim grubu hiyerarşinizdeki aboneliklerden birine atayın. Şema bir aboneliğe kaydedilirse, bu aboneliğe yalnızca atanabilir. **İstek Gövdesi** atanacak şemayı belirtir, şema tanımındaki kaynak gruplarının adını ve konumunu sağlar ve şemada tanımlanıp ekli yapıtların biri veya daha fazlası tarafından kullanılan tüm parametreleri sağlar.
 
 Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değişkenler bulunur:
 
-- `{tenantId}`- Kiracı kimliğinizle değiştirin
-- `{YourMG}`- Yönetim grubunuzun kimliğiyle değiştirin
+- `{tenantId}`-Kiracı KIMLIĞINIZLE değiştirin
+- `{YourMG}`-Yönetim grubunuzun KIMLIĞIYLE değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
 
-1. Azure Blueprints hizmet sorumlusuna hedef abonelikte **Sahip** rolünü atayın. AppId statiktir`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`( ), ancak hizmet asıl kimliği kiracıya göre değişir. Aşağıdaki REST API ile kiracınıza ait ayrıntılı bilgileri isteyebilirsiniz. Farklı bir yetkilendirme sistemine sahip olan [Azure Active Directory Graph API'sini](../../active-directory/develop/active-directory-graph-api.md) kullanır.
+1. Azure Blueprints hizmet sorumlusuna hedef abonelikte **Sahip** rolünü atayın. AppID statiktir (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ancak HIZMET sorumlusu kimliği kiracıya göre değişir. Aşağıdaki REST API ile kiracınıza ait ayrıntılı bilgileri isteyebilirsiniz. Farklı bir yetkilendirme sistemine sahip olan [Azure Active Directory Graph API'sini](../../active-directory/develop/active-directory-graph-api.md) kullanır.
 
    - REST API URI'si
 
@@ -390,8 +390,8 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
 
    - Kullanıcı tarafından atanan yönetilen kimlik
 
-     Plan [ataması, kullanıcı tarafından atanan yönetilen bir kimliği](../../active-directory/managed-identities-azure-resources/overview.md)de kullanabilir.
-     Bu durumda, istek gövdesinin **kimlik** bölümü aşağıdaki gibi değişir. Sırasıyla `{userIdentity}` kaynak grup adınız ve kullanıcı tarafından atanan yönetilen kimliğinizin adını değiştirin. `{yourRG}`
+     Bir şema ataması, [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md)de kullanabilir.
+     Bu durumda, istek gövdesinin **kimlik** kısmı aşağıdaki şekilde değişir. Ve `{yourRG}` `{userIdentity}` ' ı kaynak grubu adınızla ve Kullanıcı tarafından atanan yönetilen kimliğinizin adıyla değiştirin.
 
      ```json
      "identity": {
@@ -403,10 +403,10 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      },
      ```
 
-     **Kullanıcı tarafından atanan yönetilen kimlik,** planı atadığı kullanıcının izinleri olan herhangi bir abonelik ve kaynak grubunda olabilir.
+     **Kullanıcı tarafından atanan yönetilen kimlik** herhangi bir abonelik ve kaynak grubunda olabilir ve bu şema, şema ' i atayan kullanıcının izinlerine sahip olur.
 
      > [!IMPORTANT]
-     > Azure Blueprints, kullanıcı tarafından atanan yönetilen kimliği yönetmez. Kullanıcılar yeterli rolleri ve izinleri atamaktan sorumludur veya plan ataması başarısız olur.
+     > Azure şemaları, Kullanıcı tarafından atanan yönetilen kimliği yönetmez. Kullanıcılar yeterli rol ve izin atamaktan sorumludur ya da şema ataması başarısız olur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -432,7 +432,7 @@ Bir şemanın kendisini kaldırmak için aşağıdaki REST API işlemini kullan�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, REST API içeren bir plan oluşturdunuz, atadınız ve kaldırdınız. Azure Planları hakkında daha fazla bilgi edinmek için, plan yaşam döngüsü makalesine devam edin.
+Bu hızlı başlangıçta, REST API ile bir şema oluşturdunuz, atadınız ve kaldırdınız. Azure şemaları hakkında daha fazla bilgi edinmek için şema yaşam döngüsü makalesine ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Plan yaşam döngüsü hakkında bilgi edinin](./concepts/lifecycle.md)
+> [Şema yaşam döngüsü hakkında bilgi edinin](./concepts/lifecycle.md)

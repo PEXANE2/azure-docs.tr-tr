@@ -1,6 +1,6 @@
 ---
-title: Öğretici - CLI ile sanal makineleri yönetin
-description: Bu eğitimde, RBAC, polis, kilit ve etiketler uygulayarak Azure sanal makinelerini yönetmek için Azure CLI'yi nasıl kullanacağınızı öğrenirsiniz.
+title: Öğretici-CLı ile sanal makineleri yönetme
+description: Bu öğreticide, Azure CLı kullanarak RBAC, ilkeler, kilitler ve Etiketler uygulayarak Azure sanal makinelerini yönetme hakkında bilgi edineceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,13 +13,13 @@ ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: 883bc209c343784e07bb5e03dc9f721c19b2f635
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460095"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Öğretici: Azure CLI ile Linux sanal makine yönetimi hakkında bilgi edinin
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Öğretici: Azure CLı ile Linux sanal makine yönetimi hakkında bilgi edinin
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -63,7 +63,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Ana yol gösterici ** \<> dizinde bulunmadığını**belirten bir hata alırsanız, yeni grup Azure Etkin Dizini boyunca yayılmamıştır. Komutu tekrar çalıştırmayı deneyin.
+Asıl GUID 'yi belirten bir hata alırsanız ** \<> dizinde yoksa**, yeni grup Azure Active Directory genelinde yayılmaz. Komutu tekrar çalıştırmayı deneyin.
 
 Genellikle, kullanıcıların dağıtılmış kaynakları yönetmek için atandığından emin olmak üzere *Ağ Katılımcısı* ve *Depolama Hesabı Katılımcısı* için işlemi yinelemeniz gerekir. Bu makalede, söz konusu adımları atlayabilirsiniz.
 
@@ -171,7 +171,7 @@ Silme işleminin bir kilit nedeniyle tamamlanamadığını belirten bir hata gö
 
 ## <a name="tag-resources"></a>Kaynakları etiketleme
 
-Kategorilere göre mantıksal olarak düzenlemek için [etiketleri](../../azure-resource-manager/management/tag-resources.md) Azure kaynaklarınıza uygularsınız. Her etiket bir ad ve değerden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
+Bunları kategorilere göre mantıksal olarak düzenlemek için Azure kaynaklarınıza [Etiketler](../../azure-resource-manager/management/tag-resources.md) uygularsınız. Her etiket bir ad ve değerden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
@@ -235,7 +235,7 @@ Bu öğreticide, özel bir VM görüntüsü oluşturdunuz. Şunları öğrendini
 > * Kilitlerle kritik kaynakları koruma
 > * Fatura ve yönetim için kaynakları etiketleme
 
-Değişiklikleri nasıl belirleyip sanal bir makinede paket güncelleştirmelerini yöneteceklerini öğrenmek için bir sonraki öğreticiye ilerleyin.
+Bir sanal makinede yapılan değişiklikleri belirleme ve paket güncelleştirmelerini yönetme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Sanal makineleri yönetme](tutorial-config-management.md)

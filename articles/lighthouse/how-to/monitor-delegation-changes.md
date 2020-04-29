@@ -1,53 +1,53 @@
 ---
-title: Yönetici kiracınızdaki temsilci değişikliklerini izleme
-description: Müşteri kiracılarından yönetici kiracınıza kadar temsilcilik etkinliğini nasıl izleyeceğinizi öğrenin.
+title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
+description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458820"
 ---
-# <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönetici kiracınızdaki temsilci değişikliklerini izleme
+# <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
-Bir hizmet sağlayıcısı olarak, müşteri abonelikleri veya kaynak grupları [Azure temsilcikaynak yönetimi](../concepts/azure-delegated-resource-management.md)aracılığıyla kiracınıza verildiğinde veya daha önce devredilen kaynaklar kaldırıldığında farkında olmak isteyebilirsiniz.
+Hizmet sağlayıcı olarak, müşteri abonelikleri veya kaynak grupları, kiracınıza [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)aracılığıyla veya daha önce atanmış kaynaklar kaldırıldığında farkında olmak isteyebilirsiniz.
 
-Yönetici kiracıda, [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) temsilcilik etkinliğini kiracı düzeyinde izler. Bu günlüğe kaydedilmiş etkinlik, tüm müşteri kiracılarından eklenen veya kaldırılan tüm delegasyonları içerir.
+Yönetim kiracısında [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) , yetkilendirme etkinliğini kiracı düzeyinde izler. Günlüğe kaydedilen bu etkinlik, tüm müşteri kiracılarından eklenen veya kaldırılan temsilcileri içerir.
 
-Bu konu, kiracınıza (tüm müşterilerinizarasında) temsilcilik etkinliğini izlemek için gereken izinleri ve bunu yapmak için en iyi uygulamaları açıklar. Ayrıca, bu verileri sorgulamak ve raporlamak için bir yöntem gösteren bir örnek komut dosyası içerir.
-
-> [!IMPORTANT]
-> Tüm bu adımlar, müşteri kiracıları yerine yönetici kiracınızda gerçekleştirilmelidir.
-
-## <a name="enable-access-to-tenant-level-data"></a>Kiracı düzeyindeki verilere erişimi etkinleştirme
-
-Kiracı düzeyindeki Etkinlik Günlüğü verilerine erişmek için, bir hesaba kök kapsamda (/) yerleşik [İzleme Okuyucurolü](../../role-based-access-control/built-in-roles.md#monitoring-reader) atanması gerekir. Bu atama, ek yüksek erişime sahip Genel Yönetici rolüne sahip bir kullanıcı tarafından gerçekleştirilmelidir.
-
-### <a name="elevate-access-for-a-global-administrator-account"></a>Global Yönetici hesabı için erişimi yükseltme
-
-Kök kapsamda bir rol atamak için (/), yüksek erişime sahip Genel Yönetici rolüne sahip olmanız gerekir. Bu yükseltilmiş erişim yalnızca rol ataması yapmanız gerektiğinde eklenmeli, sonra da bittiğinde kaldırılmalıdır.
-
-Yükseklik ekleme ve kaldırma yla ilgili ayrıntılı talimatlar için [bkz.](../../role-based-access-control/elevate-access-global-admin.md)
-
-Erişiminizi yükselttikten sonra, hesabınızkök kapsamında Azure'da Kullanıcı Erişim Yöneticisi rolüne sahip olur. Bu rol ataması, tüm kaynakları görüntülemenize ve dizindeki herhangi bir abonelik veya yönetim grubuna erişim atamanın yanı sıra kök kapsamda rol atamaları yapmanızı sağlar. 
-
-### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>Kiracı düzeyindeki verilere erişmek için yeni bir hizmet ana hesabı oluşturma
-
-Erişiminizi yükselttikten sonra, kiracı düzeyindeki etkinlik günlüğü verilerini sorgulayabilmesi için bir hesaba uygun izinleri atayabilirsiniz. Bu hesabın, yönetici kiracınızın temel kapsamına atanmış [İzleme Okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) yerleşik rolünün olması gerekir.
+Bu konuda, kiracınıza (tüm müşterileriniz genelinde) ve bunu yapmak için en iyi uygulamalara yönelik olan temsilciyi izlemek için gereken izinler açıklanmaktadır. Ayrıca, bu verileri sorgulamak ve raporlamak için bir yöntem gösteren bir örnek komut dosyası da içerir.
 
 > [!IMPORTANT]
-> Kök kapsamda bir rol ataması verilmesi, aynı izinlerin kiracıdaki her kaynak için geçerli olacağı anlamına gelir.
+> Bu adımların tümü, tüm müşteri kiracılarında değil, kuruluşunuzda yönetim kiracınızda gerçekleştirilmelidir.
 
-Bu geniş bir erişim düzeyi olduğundan, bu rolü tek bir kullanıcıya veya bir gruba değil, bir hizmet ana hesabına atamanızı öneririz. Ayrıca, aşağıdaki en iyi uygulamaları öneririz:
+## <a name="enable-access-to-tenant-level-data"></a>Kiracı düzeyindeki verilere erişimi etkinleştir
 
-- Bu rolü diğer otomasyon için kullanılan varolan bir hizmet ilkesine atamak yerine, yalnızca bu işlev için kullanılacak yeni bir [hizmet anahesabı oluşturun.](../../active-directory/develop/howto-create-service-principal-portal.md)
-- Bu hizmet sorumlusunun devralınan müşteri kaynaklarına erişimi olmadığından emin olun.
-- [Sertifikayı doğrulamak](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) ve [Azure Key Vault'ta güvenli bir şekilde depolamak için](../../key-vault/general/best-practices.md)kullanın.
-- Erişim erişimi olan kullanıcıları hizmet ilkesi adına hareket etmek için sınırlandırın.
+Kiracı düzeyindeki etkinlik günlüğü verilerine erişmek için bir hesaba, kök kapsamda (/) [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) yerleşik rolü atanmalıdır. Bu atama, ek yükseltilmiş erişimle genel yönetici rolüne sahip bir kullanıcı tarafından gerçekleştirilmelidir.
 
-Kök kapsam atamaları yapmak için aşağıdaki yöntemlerden birini kullanın.
+### <a name="elevate-access-for-a-global-administrator-account"></a>Genel yönetici hesabına erişimi yükseltme
+
+Kök kapsamda (/) bir rol atamak için, yükseltilmiş erişime sahip genel yönetici rolüne sahip olmanız gerekir. Bu yükseltilmiş erişim yalnızca rol ataması yapmanız gerektiğinde eklenmelidir, sonra işiniz bittiğinde kaldırılır.
+
+Yükseltme ekleme ve kaldırma hakkında ayrıntılı yönergeler için, bkz. [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](../../role-based-access-control/elevate-access-global-admin.md).
+
+Erişiminizi yükselttikten sonra hesabınız, Azure 'da kök kapsamdaki Kullanıcı erişimi Yöneticisi rolüne sahip olacaktır. Bu rol ataması, tüm kaynakları görüntülemenize ve dizindeki herhangi bir abonelikte veya yönetim grubunda erişim atamanıza ve ayrıca kök kapsamda rol atamaları yapmanıza olanak sağlar. 
+
+### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>Kiracı düzeyindeki verilere erişmek için yeni bir hizmet sorumlusu hesabı oluşturun
+
+Erişiminizi yükselttikten sonra, kiracı düzeyindeki etkinlik günlüğü verilerini sorgulayabilmesi için ilgili izinleri hesaba atayabilirsiniz. Bu hesabın, yönetim kiracınızın kök kapsamında, [Izleme okuyucusu](../../role-based-access-control/built-in-roles.md#monitoring-reader) yerleşik rolüne atanmış olması gerekir.
+
+> [!IMPORTANT]
+> Kök kapsamda rol ataması verilmesi, Kiracıdaki her kaynak için aynı izinlerin uygulanacağı anlamına gelir.
+
+Bu çok geniş bir erişim düzeyi olduğundan, bu rolü tek bir kullanıcı veya gruba göre değil, bir hizmet sorumlusu hesabına atamanızı öneririz. Ayrıca, aşağıdaki en iyi yöntemleri öneririz:
+
+- Bu rolü, diğer otomasyon için kullanılan mevcut bir hizmet sorumlusuna atamak yerine yalnızca bu işlev için kullanılacak [Yeni bir hizmet sorumlusu hesabı oluşturun](../../active-directory/develop/howto-create-service-principal-portal.md) .
+- Bu hizmet sorumlusunun, temsilcili müşteri kaynaklarına erişimi olmadığından emin olun.
+- Azure Key Vault kimlik doğrulaması yapmak ve güvenli bir şekilde [depolamak](../../key-vault/general/best-practices.md) [Için bir sertifika kullanın](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) .
+- Erişimi olan kullanıcıları hizmet sorumlusu adına hareket etmek için sınırlayın.
+
+Kök kapsam atamalarını yapmak için aşağıdaki yöntemlerden birini kullanın.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -65,28 +65,28 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
 
-### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Global Administrator hesabı için yükseltilmiş erişimi kaldırma
+### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Genel yönetici hesabı için yükseltilmiş erişimi kaldırın
 
-Hizmet ana hesabınızı oluşturduktan ve Izleme Okuyucurolünü kök kapsamda atadıktan sonra, bu erişim düzeyi artık gerekmediğinden, Global Administrator hesabı için [yükseltilmiş erişimi kaldırdığınızdan](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) emin olun.
+Hizmet sorumlusu hesabınızı oluşturduktan ve kök kapsamda Izleme okuyucusu rolünü atadıktan sonra, bu erişim düzeyi artık gerekli olmayacak olduğundan genel yönetici hesabına yönelik [yükseltilmiş erişimi](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) kaldırdığınızdan emin olun.
 
-## <a name="query-the-activity-log"></a>Etkinlik günlüğünü sorgula
+## <a name="query-the-activity-log"></a>Etkinlik günlüğünü sorgulama
 
-Yönetici kiracınızın kök kapsamına İzleme Okuyucusu erişimi içeren yeni bir hizmet ana hesabı oluşturduktan sonra, bunu kiracınızdaki temsilcilik etkinliğini sorgulamak ve raporlamak için kullanabilirsiniz. 
+Yönetim kiracınızın kök kapsamına yönelik Izleme okuyucusu erişimi ile yeni bir hizmet sorumlusu hesabı oluşturduktan sonra, kiracınızdaki yetkilendirme etkinliğini sorgulamak ve raporlamak için kullanabilirsiniz. 
 
-[Bu Azure PowerShell komut dosyası,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) eklenen veya kaldırılan tümleçlerle (veya başarısız olan girişimler) son 1 günlük etkinlik ve raporları sorgulamak için kullanılabilir. Kiracı Etkinlik [Günlüğü](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) verilerini sorgular, ardından eklenen veya kaldırılan delegasyonlar hakkında rapor vermek için aşağıdaki değerleri kurar:
+[Bu Azure PowerShell betiği](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) , eklenen ya da Kaldırılan temsilci (veya başarılı olmayan denemeler) üzerinde etkinlik ve raporların Son 1 gününü sorgulamak için kullanılabilir. [Kiracı etkinlik günlüğü](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) verilerini sorgular, sonra eklenen veya kaldırılan temsilcileri raporlamak için aşağıdaki değerleri oluşturur:
 
-- **DelegatedResourceId**: Devredilen aboneliğin veya kaynak grubunun kimliği
-- **CustomerTenantId**: Müşteri kiracı kimliği
-- **CustomerSubscriptionId**: Devredilen veya devredilen kaynak grubunu içeren abonelik kimliği
-- **Müşteri Temsilci Durumu**: Devredilen kaynağın durum değişikliği (başarılı veya başarısız)
-- **EventTimeStamp**: Delegasyon değişikliğinin günlüğe kaydedildiği tarih ve saat
+- **Delegatedresourceıd**: atanan aboneliğin veya kaynak grubunun kimliği
+- **Customertenantıd**: MÜŞTERI Kiracı kimliği
+- **Customersubscriptionıd**: temsilci seçilmiş olan veya temsilci atanan kaynak grubunu IÇEREN abonelik kimliği
+- **Customerdelegationstatus**: atanan kaynağın durum değişikliği (başarılı veya başarısız)
+- **Eventtimestamp**: temsili değişikliğinin kaydedildiği tarih ve saat
 
-Bu verileri sorgularken, aklınızda bulundurun:
+Bu verileri sorgularken şunları göz önünde bulundurun:
 
-- Tek bir dağıtımda birden çok kaynak grubu devredilirse, her kaynak grubu için ayrı girişler döndürülür.
-- Önceki bir delegasyonda yapılan değişiklikler (izin yapısının güncelleştirilmesi gibi) ek bir temsilci olarak günlüğe kaydedilir.
-- Yukarıda belirtildiği gibi, bir hesabın bu kiracı düzeyindeki verilere erişmek için kök kapsamda (/) yerleşik Olarak İzleme Okuyucurolüne sahip olması gerekir.
-- Bu verileri kendi iş akışlarınızda ve raporlamanızda kullanabilirsiniz. Örneğin, bir REST API istemcisinden Azure Monitor'a veri günlüğe kaydetmek için [HTTP Veri Toplayıcı API'sını (genel önizleme)](../../azure-monitor/platform/data-collector-api.md) kullanabilir, ardından bildirim veya uyarı oluşturmak için [eylem gruplarını](../../azure-monitor/platform/action-groups.md) kullanabilirsiniz.
+- Birden çok kaynak grubu tek bir dağıtımda Temsilcili ise, her kaynak grubu için ayrı girdiler döndürülür.
+- Önceki bir temsilciyle yapılan değişiklikler (izin yapısını güncelleştirme gibi), eklenen bir temsili olarak günlüğe kaydedilir.
+- Yukarıda belirtildiği gibi, bu kiracı düzeyindeki verilere erişebilmek için bir hesabın, kök kapsamda (/) Izleme okuyucusu yerleşik rolüne sahip olması gerekir.
+- Bu verileri kendi iş akışlarında ve raporlarınızda kullanabilirsiniz. Örneğin, Azure Izleyici 'de verileri bir REST API istemcisinden günlüğe kaydetmek için [http veri toplayıcı API 'sini (Genel Önizleme)](../../azure-monitor/platform/data-collector-api.md) kullanabilir ve sonra bildirim veya uyarı oluşturmak için [eylem gruplarını](../../azure-monitor/platform/action-groups.md) kullanabilirsiniz.
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -158,5 +158,5 @@ else
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [temsilcikaynak yönetimine](../concepts/azure-delegated-resource-management.md)müşterilerin nasıl bindirilen öğrenin.
-- Azure [Monitörü](../../azure-monitor/index.yml) ve [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md)hakkında bilgi edinin.
+- [Azure tarafından atanan kaynak yönetimine](../concepts/azure-delegated-resource-management.md)müşterilerin nasıl ekleneceğini öğrenin.
+- [Azure izleyici](../../azure-monitor/index.yml) ve [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md)hakkında bilgi edinin.

@@ -1,16 +1,16 @@
 ---
-title: 'Quickstart: Azure CLI ile yeni ilke ataması'
-description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları tanımlamak için bir Azure İlkesi ataması oluşturmak için Azure CLI'yi kullanırsınız.
+title: 'Hızlı başlangıç: Azure CLı ile yeni ilke ataması'
+description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Azure CLı 'yi kullanırsınız.
 ms.date: 01/11/2020
 ms.topic: quickstart
 ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75978317"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Hızlı başlatma: Azure CLI ile uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
 Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir.
 Bu hızlı başlangıç, yönetilen disk kullanmayan sanal makineleri belirlemek üzere ilke ataması oluşturma işleminde size yol gösterir.
@@ -21,11 +21,11 @@ Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını yönetme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-- Bu hızlı başlatma, CLI sürümünü yerel olarak yüklemek ve kullanmak için Azure CLI sürümünü 2.0.76 veya daha sonra çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+- Bu hızlı başlangıç, CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm 2.0.76 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
-- Azure CLI'yi kullanarak Azure İlkesi Öngörüleri kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydedildiğinde, aboneliğinizin bununla çalıştığından emin olunur. Bir kaynak sağlayıcısı kaydetmek için, kayıt kaynak sağlayıcısı işlemi için izniniz olması gerekir. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
+- Azure CLı kullanarak Azure Policy Insights kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydedildiğinde, aboneliğinizin bununla çalıştığından emin olunur. Kaynak sağlayıcısını kaydetmek için, kaynak sağlayıcısı kaydetme işlemini kaydettirme izninizin olması gerekir. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
 
   ```azurecli-interactive
   az provider register --namespace 'Microsoft.PolicyInsights'
@@ -39,7 +39,7 @@ Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını yönetme
 
 ## <a name="create-a-policy-assignment"></a>İlke ataması oluşturma
 
-Bu hızlı başlangıçta, bir ilke ataması oluşturup **Yönetilen diskleri kullanmayan sanal makineleri denetle** tanımını atayacaksınız. Bu ilke tanımı, ilke tanımında ayarlanan koşullara uygun olmayan kaynakları tanımlar.
+Bu hızlı başlangıçta, bir ilke ataması oluşturup **Yönetilen diskleri kullanmayan sanal makineleri denetle** tanımını atayacaksınız. Bu ilke tanımı, ilke tanımında ayarlanan koşullarla uyumlu olmayan kaynakları belirler.
 
 İlke ataması oluşturmak için aşağıdaki komutu çalıştırın:
 
@@ -50,8 +50,8 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 Yukarıdaki komutta aşağıdaki bilgiler kullanılmaktadır:
 
 - **Ad** - Atamanın gerçek adı. Bu örnekte _audit-vm-manageddisks_ kullanıldı.
-- **Görünen Ad** - Bu ilke atamasının görünen adı. Bu durumda, _yönetilen diskler Atama olmadan Denetim VM'leri_kullanıyorsunuz.
-- **İlke** - Bu, atamayı oluşturmak için kullandığınız ilke tanımı kimliğidir. Bu durumda, yönetilen diskleri kullanmayan ilke tanımı _Denetim VM'lerinin_kimliğidir. İlke tanımı kimliğini almak için şu komutu çalıştırın: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
+- **Görünen Ad** - Bu ilke atamasının görünen adı. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_kullanıyorsunuz demektir.
+- **İlke** - Bu, atamayı oluşturmak için kullandığınız ilke tanımı kimliğidir. Bu durumda, _yönetilen diskleri kullanmayan ilke tanımı denetim VM_'lerinin kimliğidir. İlke tanımı kimliğini almak için şu komutu çalıştırın: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **Kapsam** - Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Abonelikten kaynak gruplarına kadar değişebilir. &lt;Kapsam&gt; yerine kaynak grubunuzun adını yazdığınızdan emin olun.
 
 ## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları belirleme
@@ -62,7 +62,7 @@ Bu yeni atama altında uyumlu olmayan kaynakları görüntülemek için aşağı
 az policy assignment list --query "[?displayName=='Audit VMs without managed disks Assignment'].id"
 ```
 
-İlke atama sı disleri hakkında daha fazla bilgi için [az ilke ataması'na](/cli/azure/policy/assignment)bakın.
+İlke atama kimlikleri hakkında daha fazla bilgi için, bkz. [az Policy atama](/cli/azure/policy/assignment).
 
 Daha sonra, JSON dosyasına çıkarılan uyumlu olmayan kaynakların kaynak kimliklerini almak için aşağıdaki komutu çalıştırın:
 
@@ -110,7 +110,7 @@ az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptio
 
 Bu hızlı başlangıçta, Azure ortamınızda uyumlu olmayan kaynakları belirlemek üzere bir ilke tanımı atadınız.
 
-Yeni kaynakların uyumlu olduğunu doğrulamak için ilkeler atama hakkında daha fazla bilgi edinmek için aşağıdakiler için öğreticiye devam edin:
+Yeni kaynakların uyumlu olduğunu doğrulamak üzere ilke atama hakkında daha fazla bilgi edinmek için öğreticiye geçin:
 
 > [!div class="nextstepaction"]
 > [İlke oluşturma ve yönetme](./tutorials/create-and-manage.md)
