@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Bir ses dosyası, Python konuşma tanıma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: bir ses dosyasındaki konuşmayı tanıma, Python-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: f3fa4c3e194d05edce973bdeddd0e75de5cdfd4e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75927966"
 ---
-Hemen atlamak isterseniz, GitHub'daki tüm <a href="https://aka.ms/speech/github-python">Speech SDK Python Örneklerini</a> görüntüleyin veya indirin. Yoksa başlayalım.
+Sağ tarafta doğrudan geçiş yapmayı tercih ediyorsanız, GitHub 'daki tüm <a href="https://aka.ms/speech/github-python">konuşma SDK 'Sı Python örneklerini</a> görüntüleyin veya indirin. Aksi takdirde, haydi başlayalım.

@@ -9,16 +9,16 @@ ms.date: 01/22/2019
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: ebc23ce4238c736442fbc4507e858876f9192fd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76021106"
 ---
-## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Azure Depolama hesabını IoT Hub ile ilişkilendirme
+## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Bir Azure Depolama hesabını IoT Hub ilişkilendir
 
-Benzetimli aygıt uygulaması bir dosyayı blob'a yükledığından, IoT hub'ınızla ilişkili bir [Azure Depolama](../articles/storage/common/storage-account-create.md) hesabınız olmalıdır. Bir Azure Depolama hesabını bir IoT hub'ı ile ilişkilendirdiğinizde, IoT hub'ı bir SAS URI oluşturur. Bir aygıt, bir dosyayı blob kapsayıcısına güvenli bir şekilde yüklemek için bu SAS URI'yi kullanabilir. IoT Hub hizmeti ve aygıt SDK'ları, SAS URI'yi oluşturan ve dosya yüklemek için kullanılacak bir aygıt için kullanılabilir hale getiren işlemi koordine eder.
+Sanal cihaz uygulaması bir blob 'a dosya yüklediğinde, IoT Hub 'ınız ile ilişkili bir [Azure depolama](../articles/storage/common/storage-account-create.md) hesabınızın olması gerekir. Bir Azure Depolama hesabını IoT Hub ile ilişkilendirdiğinizde, IoT Hub 'ı bir SAS URI 'SI oluşturur. Bir cihaz, bir dosyayı bir blob kapsayıcısına güvenli bir şekilde yüklemek için bu SAS URI 'sini kullanabilir. IoT Hub hizmeti ve cihaz SDK 'ları, SAS URI 'sini oluşturan işlemi koordine edin ve bir dosyayı karşıya yüklemek için kullanılacak bir cihaz için kullanılabilir hale getirir.
 
-[Azure portalını kullanarak dosya yüklemelerini yapılandırma yönergelerini](../articles/iot-hub/iot-hub-configure-file-upload.md)izleyin. Blob kapsayıcının IoT hub'ınızla ilişkili olduğundan ve dosya bildirimlerinin etkin olduğundan emin olun.
+[Azure Portal kullanarak dosya karşıya yüklemelerini yapılandırma](../articles/iot-hub/iot-hub-configure-file-upload.md)bölümündeki yönergeleri izleyin. Bir blob kapsayıcısının IoT Hub 'ınız ile ilişkilendirildiğinden ve dosya bildirimlerinin etkinleştirildiğinden emin olun.
 
-![Portalda Dosya Bildirimlerini Etkinleştir](./media/iot-hub-associate-storage/file-notifications-vs2019.png)
+![Portalda dosya bildirimlerini etkinleştir](./media/iot-hub-associate-storage/file-notifications-vs2019.png)

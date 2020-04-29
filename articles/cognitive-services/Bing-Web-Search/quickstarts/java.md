@@ -1,7 +1,7 @@
 ---
-title: "Quickstart: Bing Web Search REST API'yi aramak için Java'yı kullanın"
+title: 'Hızlı başlangıç: Bing Web Araması REST API çağırmak için Java kullanın'
 titleSuffix: Azure Cognitive Services
-description: Java'yı kullanarak Bing Web Search REST API'sine istek göndermek ve JSON yanıtı almak için bu hızlı başlatmayı kullanın
+description: Java kullanarak Bing Web Araması REST API istekleri göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76166739"
 ---
-# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Quickstart: Azure bilişsel hizmeti olan Bing Web Search REST API ile web'de arama yapmak için Java'yı kullanın
+# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Hızlı başlangıç: bir Azure bilişsel hizmeti olan Bing Web Araması REST API web 'de aramak için Java kullanın
 
-Bu hızlı başlangıçta, Bing Web Arama API'sine ilk aramanızı yapmak ve JSON yanıtını almak için bir Java uygulaması kullanırsınız. Bu Java uygulaması API'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu hızlı başlangıçta, Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bir Java uygulaması kullanacaksınız. Bu Java uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -73,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Bu kod `subscriptionKey`, `host`, `path` ve `searchTerm` tanımlaması yapar. `host`aşağıdaki genel bitiş noktası veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktası olabilir. `subscriptionKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz. Yukarıda belirtildiği gibi sınıfa bu kodu `BingWebSearch` eklemeyi unutmayın.
+Bu kod `subscriptionKey`, `host`, `path` ve `searchTerm` tanımlaması yapar. `host`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir. `subscriptionKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz. Bu kodu, `BingWebSearch` yukarıda belirtildiği gibi sınıfa eklemeyi unutmayın.
 
 ```java
 // Enter a valid subscription key.

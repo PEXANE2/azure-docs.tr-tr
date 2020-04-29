@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Kubernetes için Azure Konteyner Hizmetine Giriş
+title: Kullanım DıŞı Kubernetes için Azure Container Service giriş
 description: Kubernetes için Azure Container Service, Azure üzerinde kapsayıcı tabanlı uygulamaları dağıtmayı ve yönetmeyi kolaylaştırır.
 author: gabrtv
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
 ms.openlocfilehash: c0ef7255a087dd5dc26532316deab337f9eff715
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76271578"
 ---
-# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>(AmortismanA Uğradı) Kubernetes için Azure Konteyner Hizmetine Giriş
+# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>Kullanım DıŞı Kubernetes için Azure Container Service giriş
 
 > [!TIP]
-> Azure Kubernetes Hizmetini kullanan bu makalenin güncelleştirilmiş sürümü için Azure [Kubernetes Hizmetine (AKS) genel bakış'a](../../aks/intro-kubernetes.md)bakın.
+> Azure Kubernetes hizmetini kullanan Bu makalenin güncelleştirilmiş sürümü için bkz. [Azure Kubernetes Service (AKS) genel bakış](../../aks/intro-kubernetes.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 

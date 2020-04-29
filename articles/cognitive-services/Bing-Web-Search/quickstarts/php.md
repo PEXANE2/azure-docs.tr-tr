@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı Başlangıç: PHP ile arama gerçekleştirme - Bing Web Araması API’si'
 titleSuffix: Azure Cognitive Services
-description: PHP kullanarak Bing Web Search REST API'sine istek göndermek ve JSON yanıtı almak için bu hızlı başlatmayı kullanın
+description: Bu hızlı başlangıcı, PHP kullanarak istekleri Bing Web Araması REST API göndermek ve bir JSON yanıtı almak için kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169723"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web Araması API’sini çağırmak için PHP kullanma  
 
-Bing Web Arama API'sine ilk aramanızı yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Düğüm.js uygulaması API'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama JavaScript'te yazılı olsa da, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Node. js uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -43,7 +43,7 @@ Başlamadan önce `php.ini` dosyasını bulun ve şu satırın açıklamasını 
 
 Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun. `<?php` ve `?>` açılış ve kapanış etiketlerini eklemeyi unutmayın.
 
-Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `$endpoint`aşağıdaki genel bitiş noktası veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktası olabilir. `$endpoint` öğesinin geçerli olduğunu doğrulayın ve `$accesskey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `$term` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
+Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `$endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir. `$endpoint` öğesinin geçerli olduğunu doğrulayın ve `$accesskey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `$term` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
 
 ```php
 $accessKey = 'enter key here';

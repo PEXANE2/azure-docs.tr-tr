@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Bir mikrofondan konuşmayı tanıyın, C++ - Konuşma hizmeti'
+title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma, C++ konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: 13e2bf74de4f2118b338e7b21a7e3e7e818775aa
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75928246"
 ---
 **Hedef ortamınızı seçin**
@@ -22,7 +22,7 @@ ms.locfileid: "75928246"
 
 [!INCLUDE [linux](./linux.md)]
 
-# <a name="macos"></a>[Macos](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 [!INCLUDE [macos](./macos.md)]
 
