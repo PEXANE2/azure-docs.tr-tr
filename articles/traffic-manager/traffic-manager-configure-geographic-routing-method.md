@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure Trafik Yöneticisi ile coğrafi trafik yönlendirmeyi yapılandırma
-description: Bu öğretici, Azure Trafik Yöneticisi'ni kullanarak coğrafi trafik yönlendirme yönteminin nasıl yapılandırılabildiğini açıklar
+title: Öğretici-Azure Traffic Manager coğrafi trafik yönlendirmeyi yapılandırma
+description: Bu öğreticide Azure Traffic Manager kullanarak coğrafi trafik yönlendirme yönteminin nasıl yapılandırılacağı açıklanmaktadır.
 services: traffic-manager
 author: rohinkoul
 manager: kumudD
@@ -12,52 +12,52 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 3eb3f354d51833e55f405ed35679f1a5882c057a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76938799"
 ---
-# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Öğretici: Trafik Yöneticisi'ni kullanarak coğrafi trafik yönlendirme yöntemini yapılandırın
+# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Öğretici: Traffic Manager kullanarak coğrafi trafik yönlendirme yöntemini yapılandırma
 
-Coğrafi trafik yönlendirme yöntemi, isteklerin kaynaklandığı coğrafi konuma bağlı olarak trafiği belirli uç noktalara yönlendirmenize olanak tanır. Bu öğretici, bu yönlendirme yöntemiyle trafik yöneticisi profilini nasıl oluşturabileceğinizi ve bitiş noktalarını belirli coğrafyalardan trafik alacak şekilde nasıl yapılandırabileceğinizi gösterir.
+Coğrafi trafik yönlendirme yöntemi, isteklerin gerçekleştiği coğrafi konuma göre trafiği belirli uç noktalara yönlendirmenizi sağlar. Bu öğreticide, bu yönlendirme yöntemiyle bir Traffic Manager profili oluşturma ve uç noktaları belirli coğrafi cihazlardan trafik alacak şekilde yapılandırma gösterilmektedir.
 
-## <a name="create-a-traffic-manager-profile"></a>Trafik Yöneticisi Profili Oluşturma
+## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
 1. Bir tarayıcıdan [Azure portalında](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz denemeye](https://azure.microsoft.com/free/) kaydolabilirsiniz.
-2. Kaynak > Oluştur**Trafik** > **Yöneticisi profili** >  **Oluştur'u**tıklatın.**Create**
-4. Trafik **Yöneticisi Oluştur profilinde:**
-    1. Profilinize bir ad sağlayın. Bu adın trafficmanager.net bölgesi içinde benzersiz olması gerekir. Trafik Yöneticisi profilinize erişmek için DNS `<profilename>.trafficmanager.net`adını kullanırsınız.
+2. Profil **Create a resource** > **Networking** > **Traffic Manager profile****Create**oluştur Traffic Manager kaynak ağı oluştur ' a tıklayın. > 
+4. **Traffic Manager oluşturma profilinde**:
+    1. Profiliniz için bir ad girin. Bu adın trafficmanager.net bölgesi içinde benzersiz olması gerekir. Traffic Manager profilinize erişmek için DNS adını `<profilename>.trafficmanager.net`kullanırsınız.
     2. **Coğrafi** yönlendirme yöntemini seçin.
-    3. Altında bu profili oluşturmak istediğiniz aboneliği seçin.
-    4. Varolan bir kaynak grubu kullanın veya bu profili altına yerleştirmek için yeni bir kaynak grubu oluşturun. Yeni bir kaynak grubu oluşturmayı seçerseniz, kaynak grubunun konumunu belirtmek için **Kaynak Grubu konumu** açılır ayinini kullanın. Bu ayar kaynak grubunun konumunu ifade eder ve genel olarak dağıtılan Trafik Yöneticisi profili üzerinde hiçbir etkisi yoktur.
-    5. **Oluştur'u**tıklattıktan sonra, Trafik Yöneticisi profiliniz oluşturulur ve genel olarak dağıtılır.
+    3. Bu profili oluşturmak istediğiniz aboneliği seçin.
+    4. Bu profili yerleştirmek için mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. Yeni bir kaynak grubu oluşturmayı seçerseniz, kaynak grubunun konumunu belirtmek için **kaynak grubu konumu** açılan listesini kullanın. Bu ayar, kaynak grubunun konumunu ifade eder ve genel olarak dağıtılan Traffic Manager profilini etkilemez.
+    5. **Oluştur**' a tıkladıktan sonra Traffic Manager profiliniz Global olarak oluşturulur ve dağıtılır.
 
 ![Traffic Manager profili oluşturma](./media/traffic-manager-geographic-routing-method/create-traffic-manager-profile.png)
 
-## <a name="add-endpoints"></a>Uç nokta ekleme
+## <a name="add-endpoints"></a>Uç nokta Ekle
 
-1. Portalın arama çubuğunda oluşturduğunuz Trafik Yöneticisi profil adını arayın ve gösterildiğinde sonuca tıklayın.
-2. Trafik Yöneticisi'nde **Ayarlar** -> **Bitiş Noktaları'na** gidin.
-3. **Bitiş Noktası Ekle'yi**göstermek için **Ekle'yi** tıklatın.
-3. **Ekle'yi** tıklatın ve görüntülenen **Ekle bitiş noktası,** aşağıdaki gibi tamamlayın:
-4. Eklediğiniz bitiş noktasının türüne bağlı olarak **Türü** seçin. Üretimde kullanılan coğrafi yönlendirme profilleri için, birden fazla uç noktası olan bir alt profil içeren iç içe uç nokta türlerini kullanmanızı şiddetle öneririz. Daha fazla ayrıntı [için, coğrafi trafik yönlendirme yöntemleri hakkında SSS](traffic-manager-FAQs.md)bölümüne bakın.
+1. Portalın arama çubuğunda oluşturduğunuz Traffic Manager profili adını arayın ve gösterilen sonuca tıklayın.
+2. Traffic Manager **Ayarlar** -> **uç noktalarına** gidin.
+3. Ekleme **uç noktasını**göstermek için **Ekle** ' ye tıklayın.
+3. **Ekle** ' ye tıklayın ve görüntülenen **uç nokta Ekle** ' ye tıkladıktan sonra aşağıdaki gibi tamamlanır:
+4. Eklediğiniz uç noktanın türüne bağlı olarak **tür** ' ı seçin. Üretimde kullanılan coğrafi yönlendirme profilleri için, birden fazla uç noktaya sahip bir alt profil içeren iç içe geçmiş uç nokta türlerini kullanmanızı önemle öneririz. Daha fazla ayrıntı için bkz. [coğrafi trafik yönlendirme yöntemleri hakkında SSS](traffic-manager-FAQs.md).
 5. Bu uç noktayı tanımak istediğiniz bir **Ad** belirtin.
-6. Bu sayfadaki belirli alanlar eklediğiniz bitiş noktasının türüne bağlıdır:
-    1. Bir Azure bitiş noktası ekliyorsanız, trafiği yönlendirmek istediğiniz kaynağa göre **Hedef kaynak türünü** ve **Hedef'i** seçin
-    2. **Harici** bitiş noktası ekliyorsanız, bitiş noktanız için **Tam nitelikli alan adı (FQDN)** sağlayın.
-    3. **İç içe bir uç nokta**ekliyorsanız, kullanmak istediğiniz alt profile karşılık gelen Hedef **kaynağını** seçin ve Minimum alt uç **puan sayısını**belirtin.
-7. Coğrafi haritalama bölümünde, trafiğin bu bitiş noktasına gönderilmesini istediğiniz bölgeleri eklemek için açılır noktayı kullanın. En az bir bölge eklemeniz gerekir ve birden çok bölgenin eşlenmiş olması gerekir.
-8. Bu profilin altına eklemek istediğiniz tüm uç noktalar için bunu yineleyin
+6. Bu sayfadaki bazı alanlar, eklediğiniz uç noktanın türüne bağlıdır:
+    1. Azure uç noktası ekliyorsanız, trafiği yönlendirmek istediğiniz kaynak temelinde **hedef kaynak türünü** ve **hedefi** seçin
+    2. **Dış** uç nokta ekliyorsanız, uç noktanız için **tam etki alanı adını (FQDN)** sağlayın.
+    3. **Iç Içe geçmiş bir uç nokta**ekliyorsanız, kullanmak istediğiniz alt profile karşılık gelen **hedef kaynağı** seçin ve **En düşük alt uç nokta sayısını**belirtin.
+7. Coğrafi eşleme bölümünde, trafiğin bu uç noktaya gönderilmesini istediğiniz bölgeleri eklemek için açılan liste ' yi kullanın. En az bir bölge eklemeniz ve birden fazla bölgenin eşleştirilmiş olması gerekir.
+8. Bu profil altına eklemek istediğiniz tüm uç noktalar için bunu tekrarlayın
 
 ![Traffic Manager uç noktası ekleme](./media/traffic-manager-geographic-routing-method/add-traffic-manager-endpoint.png)
 
-## <a name="use-the-traffic-manager-profile"></a>Trafik Yöneticisi profilini kullanma
-1.  Portalın arama çubuğunda, önceki bölümde oluşturduğunuz **Trafik Yöneticisi profil** adını arayın ve görüntülenen sonuçlarda trafik yöneticisi profiline tıklayın.
+## <a name="use-the-traffic-manager-profile"></a>Traffic Manager profilini kullanma
+1.  Portalın arama çubuğunda, önceki bölümde oluşturduğunuz **Traffic Manager profili** adını arayın ve görüntülenen sonuçlarda Traffic Manager profiline tıklayın.
 2. **Genel Bakış**'a tıklayın.
-3. **Traffic Manager profili** penceresinde yeni oluşturduğunuz Traffic Manager profilinin DNS adı görüntülenir. Bu, yönlendirme türüne göre belirlendiği şekilde doğru uç noktaya yönlendirilen almak için herhangi bir istemci (örneğin, bir web tarayıcısı kullanarak ona yönlendirilerek) tarafından kullanılabilir.  Coğrafi yönlendirme durumunda, Trafik Yöneticisi gelen isteğin kaynağı IP'ye bakar ve kaynağının kaynağını belirler. Bu bölge bir bitiş noktasına eşlenirse, trafik oraya yönlendirilir. Bu bölge bitiş noktasına eşlenmezse, Trafik Yöneticisi bir NODATA sorgu yanıtı döndürür.
+3. **Traffic Manager profili** penceresinde yeni oluşturduğunuz Traffic Manager profilinin DNS adı görüntülenir. Bu, yönlendirme türü tarafından belirlendiği şekilde doğru uç noktaya yönlendirilmek için herhangi bir istemci tarafından (örneğin, bir Web tarayıcısı kullanılarak gezinilirken) kullanılabilir.  Coğrafi yönlendirme söz konusu olduğunda, Traffic Manager gelen isteğin kaynak IP 'sini arar ve kaynaklandığı bölgeyi belirler. Bu bölge bir uç noktayla eşlenmişse trafik buraya yönlendirilir. Bu bölge bir uç noktayla eşlenmişse, Traffic Manager bir NODATA sorgu yanıtı döndürür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Coğrafi trafik yönlendirme yöntemi](traffic-manager-routing-methods.md#geographic)hakkında daha fazla bilgi edinin.
-- [Trafik Yöneticisi ayarlarını](traffic-manager-testing-settings.md)nasıl test edebilirsiniz öğrenin.
+- [Traffic Manager ayarlarını test](traffic-manager-testing-settings.md)etme hakkında bilgi edinin.

@@ -1,22 +1,22 @@
 ---
-title: 'Desen: İlke tanımıyla kaynakları dağıtma'
-description: Bu Azure İlkesi deseni, ilke tanımıyla kaynakların nasıl dağıtılanacak larına bir örnek sağlar.
+title: 'Model: bir ilke tanımıyla kaynakları dağıtma'
+description: Bu Azure Ilke düzeninde, bir ilke tanımıyla kaynakların nasıl dağıtılacağı hakkında bir örnek verilmiştir.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77172677"
 ---
-# <a name="azure-policy-pattern-deploy-resources"></a>Azure İlkesi deseni: kaynakları dağıtma
+# <a name="azure-policy-pattern-deploy-resources"></a>Azure Ilke deseninin: kaynakları dağıtma
 
-[DeployIfNotExists](../concepts/effects.md#deployifnotexists) efekti, uyumlu olmayan bir kaynak oluştururken veya güncellerken bir [Azure Kaynak Yöneticisi şablonu](../../../azure-resource-manager/templates/overview.md) dağıtmayı mümkün kılar. Bu yaklaşım, kaynakların oluşturulmaya devam etmesine izin verdiği için [reddet](../concepts/effects.md#deny) efektini kullanmak için tercih edilebilir, ancak değişikliklerin uyumlu olmasını sağlamak için yapılmasını sağlar.
+[Deployifnotexists](../concepts/effects.md#deployifnotexists) efekti, uyumlu olmayan bir kaynak oluştururken veya güncelleştirirken bir [Azure Resource Manager şablonu](../../../azure-resource-manager/templates/overview.md) dağıtmayı mümkün hale getirir. Bu yaklaşım, kaynakların oluşturulmasını devam etmesine izin vermek için [reddetme](../concepts/effects.md#deny) efektini kullanmak üzere tercih edilebilir, ancak bunları uyumlu hale getirmek için değişikliklerin yapılmasını sağlar.
 
 ## <a name="sample-policy-definition"></a>Örnek ilke tanımı
 
-Bu ilke **field** tanımı, oluşturulan `type` veya güncelleştirilen kaynağıdeğerlendirmek için alan işleci kullanır. Bu kaynak bir _Microsoft.Network/virtualNetworks_olduğunda, ilke yeni veya güncelleştirilmiş kaynağın konumunda bir ağ izleyicisi arar. Eşleşen bir ağ izleyicisi bulunamazsa, eksik kaynağı oluşturmak için Kaynak Yöneticisi şablonu dağıtılır.
+Bu ilke tanımı, oluşturulan **field** veya güncellenen kaynak `type` sayısını değerlendirmek için alan işlecini kullanır. Bu kaynak bir _Microsoft. Network/virtualNetworks_olduğunda, ilke yeni veya güncelleştirilmiş kaynağın konumunda bir ağ izleyicisi arar. Eşleşen bir ağ izleyicisi bulunamıyorsa, eksik kaynağı oluşturmak için Kaynak Yöneticisi şablonu dağıtılır.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 
@@ -26,25 +26,25 @@ Bu ilke **field** tanımı, oluşturulan `type` veya güncelleştirilen kaynağ�
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="18-23":::
 
-**Properties.policyRule.then.details block,** Azure İlke'ye **properties.policyRule.if** block'ta oluşturulan veya güncelleştirilen kaynakla ilgili nelere bakması gerektiğini söyler. Bu örnekte, kaynak grubu **ağıWatcherRG'deki** bir ağ izleyicisinin, yeni veya güncelleştirilmiş kaynağın konumuna eşit **alana** `location` sahip olması gerekir. İşlevin `field()` **kullanılması, existenceCondition'ın** yeni veya güncelleştirilmiş `location` kaynaktaki özelliklere, özellikle de özellikteki özelliklere erişmesine olanak tanır.
+**Properties. policyRule. then. Details** bloğu, Azure ilkesine **Özellikler. policyrule. If** bloğunda oluşturulan veya güncellenen kaynakla ilgili arama yapılacağını söyler. Bu örnekte, **networkWatcherRG** kaynak grubundaki bir ağ izleyicisi, yeni veya güncelleştirilmiş kaynağın konumuna eşit **alana** `location` sahip olmalıdır. İşlevinin kullanılması, **existenceCondition** 'in yeni veya güncelleştirilmiş kaynaktaki özelliklere, özellikle de `location` özelliğine erişmesini sağlar. `field()`
 
-#### <a name="roledefinitionids"></a>roleDefinitionIds
+#### <a name="roledefinitionids"></a>Roledefinitionıds
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="24-26":::
 
-**RoleDefinitionIds** _dizi_ özelliği **properties.policyRule.then.details** block, yönetilen kimliğin eklenmiş Kaynak Yöneticisi şablonuna dağıtmak için hangi hakların olması gerektiğini ilke tanımını söyler. Bu özellik, şablon dağıtımının gerektirdiği izinlere sahip rolleri içerecek şekilde ayarlanmalıdır, ancak 'en az ayrıcalık ilkesi' kavramını kullanmalıdır ve yalnızca gerekli işlemlere sahip olmalıdır ve başka bir şey olmamalıdır.
+**Properties. policyRule. then. Details** bloğundaki **roledefinitionıds** _dizi_ özelliği, ilke tanımına, yönetilen kimliğin eklenen kaynak yöneticisi şablonunu dağıtması için gereken hakları söyler. Bu özellik, şablon dağıtımı için gerekli izinlere sahip rolleri içerecek şekilde ayarlanmalıdır, ancak ' en az ayrıcalık ' kavramını kullanması ve yalnızca gerekli işlemleri ve hiçbir şey yapmamanız gerekir.
 
 #### <a name="deployment-template"></a>Dağıtım şablonu
 
-İlke tanımının **dağıtım** bölümünde üç temel bileşeni tanımlayan bir **özellik** bloğu vardır:
+İlke tanımının **dağıtım** bölümü, üç çekirdek bileşeni tanımlayan bir **Özellikler** bloğuna sahiptir:
 
-- **mod** - Bu özellik şablonun [dağıtım modunu](../../../azure-resource-manager/templates/deployment-modes.md) ayarlar.
+- **Mode** -bu özellik, şablonun [Dağıtım modunu](../../../azure-resource-manager/templates/deployment-modes.md) ayarlar.
 
-- **şablon** - Bu özellik şablonun kendisini içerir. Bu örnekte, **konum** şablonu parametresi yeni ağ izleyicisi kaynağının konumunu ayarlar.
+- **şablon** -bu özellik, şablonun kendisini içerir. Bu örnekte, **konum** şablonu parametresi yeni ağ izleyicisi kaynağının konumunu ayarlar.
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="30-44":::
   
-- **parametreler** - Bu özellik **şablona**sağlanan parametreleri tanımlar. Parametre adları **şablonda**tanımlananla eşleşmelidir. Bu örnekte, parametre eşleşecek **konum** olarak adlandırılır. **Konum** değeri, değerlendirilen kaynağın değerini almak için `field()` işlevi yeniden kullanır, bu da **rule.if** bloğundaki sanal ağdır.
+- **Parametreler** -bu özellik, **şablona**sunulan parametreleri tanımlar. Parametre adlarının **şablonda**tanımlananla eşleşmesi gerekir. Bu örnekte, parametresi eşleştirilecek **konum** olarak adlandırılır. **Konum** değeri, `field()` **policyrule. If** bloğunda sanal ağı olan değerlendirilen kaynağın değerini almak için işlevini yeniden kullanır.
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="45-49":::
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
 ms.openlocfilehash: 26aab287c6bf216129bdf372f7dee4d22f12f7bd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71299296"
 ---
-  Azure Cosmos DB hesap sayfasına gidin ve **Keys'i**seçin. Sonraki oluşturduğunuz web uygulamasında kullanılacak değerleri kopyalayın.
+  Azure Cosmos DB hesap sayfasına gidin ve **anahtarlar**' ı seçin. Daha sonra oluşturduğunuz Web uygulamasında kullanılacak değerleri kopyalayın.
 
-![Azure Cosmos DB hesap sayfasında vurgulanan Keys düğmesiyle Azure portalının ekran görüntüsü](./media/cosmos-db-keys/copy-keys.png)
+![Azure Cosmos DB hesabı sayfasında vurgulanan anahtarlar düğmesine sahip Azure portal ekran görüntüsü](./media/cosmos-db-keys/copy-keys.png)

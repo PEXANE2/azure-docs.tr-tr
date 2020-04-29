@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri v3 API'ye bağlanın - .NET
-description: Bu makalede, .NET ile Media Services v3 API'ye nasıl bağlanılalışiz gösteriş ve gösteriş.
+title: Azure Media Services v3 API-.NET ' e bağlanın
+description: Bu makalede, .NET ile Media Services v3 API 'sine nasıl bağlanulacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,63 +14,63 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269815"
 ---
-# <a name="connect-to-media-services-v3-api---net"></a>Medya Hizmetlerine bağlan v3 API - .NET
+# <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
 
-Bu makalede, hizmet temel giriş yöntemini kullanarak Azure Media Services v3 .NET SDK'ya nasıl bağlanabileceğinizgösterilmektedir.
+Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 .NET SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md) Kaynak grup adını ve Medya Hizmetleri hesap adını hatırladığından emin olun
-- .NET geliştirme için kullanmak istediğiniz bir araç yükleyin. Bu makaledeki adımlar Visual [Studio 2019 Community Edition'ın](https://www.visualstudio.com/downloads/)nasıl kullanılacağını göstermektedir. Visual Studio Code'u kullanabilir, [Bkz. C# ile Çalışma](https://code.visualstudio.com/docs/languages/csharp). Veya farklı bir kod düzenleyicisi kullanabilirsiniz.
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun
+- .NET geliştirme için kullanmak istediğiniz bir araç yükler. Bu makaledeki adımlarda, [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)'ın nasıl kullanılacağı gösterilmektedir. Visual Studio Code kullanabilirsiniz, bkz. [C# ile çalışma](https://code.visualstudio.com/docs/languages/csharp). Ya da farklı bir kod düzenleyicisi kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Adlandırma kurallarını gözden [geçirin.](media-services-apis-overview.md#naming-conventions)
+> [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
 
 ## <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
 
 1. Visual Studio’yu çalıştırın. 
-1. **Dosya** menüsünden **Yeni** > **Proje'yi**tıklatın. 
-1. Bir **.NET Core** konsol uygulaması oluşturun.
+1. **Dosya** menüsünde **Yeni** > **Proje**' ye tıklayın. 
+1. **.NET Core** konsol uygulaması oluşturun.
 
-Bu konuda örnek uygulama, `netcoreapp2.0`hedefler . Kod, C# 7.1 ile başlayan 'async main'i kullanır. Daha fazla bilgi için bu [bloga](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) bakın.
+Bu konudaki örnek uygulama, hedefler `netcoreapp2.0`. Kod, C# 7,1 ile başlayarak kullanılabilir olan ' Async Main ' kullanır. Daha fazla ayrıntı için bu [bloga](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) bakın.
 
-## <a name="add-required-nuget-packages"></a>Gerekli NuGet paketlerini ekleme
+## <a name="add-required-nuget-packages"></a>Gerekli NuGet paketlerini ekleyin
 
-1. Visual Studio'da **Araçlar** > **NuGet Paket Yöneticisi** > **NuGet Manager Console'u**seçin.
-2. Paket **Yöneticisi Konsolu** penceresinde, aşağıdaki NuGet paketlerini eklemek için komutu kullanın. `Install-Package` Örneğin, `Install-Package Microsoft.Azure.Management.Media`.
+1. Visual Studio 'da **Araçlar** > **NuGet Paket Yöneticisi** > **NuGet Yönetici Konsolu**' nu seçin.
+2. **Paket Yöneticisi konsolu** penceresinde, aşağıdaki NuGet paketlerini `Install-Package` eklemek için komutunu kullanın. Örneğin, `Install-Package Microsoft.Azure.Management.Media`.
 
 |Paket|Açıklama|
 |---|---|
-|`Microsoft.Azure.Management.Media`|Azure Medya Hizmetleri SDK. <br/>En son Azure Medya Hizmetleri paketini kullandığınızdan emin olmak için [Microsoft.Azure.Management.Media'ya](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)bakın.|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|NET için Azure SDK için ADAL kimlik doğrulama kitaplığı|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Ortam değişkenlerinden ve yerel JSON dosyalarından yapılandırma değerlerini okuma|
-|`Microsoft.Extensions.Configuration.Json`|Ortam değişkenlerinden ve yerel JSON dosyalarından yapılandırma değerlerini okuma
-|`WindowsAzure.Storage`|Depolama SDK|
+|`Microsoft.Azure.Management.Media`|SDK Azure Media Services. <br/>En son Azure Media Services paketini kullandığınızdan emin olmak için [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)' i kontrol edin.|
+|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|NET için Azure SDK için ADAL kimlik doğrulaması kitaplığı|
+|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Ortam değişkenleri ve yerel JSON dosyalarından yapılandırma değerlerini oku|
+|`Microsoft.Extensions.Configuration.Json`|Ortam değişkenleri ve yerel JSON dosyalarından yapılandırma değerlerini oku
+|`WindowsAzure.Storage`|Depolama SDK 'Sı|
 
-## <a name="create-and-configure-the-app-settings-file"></a>Uygulama ayarları dosyasını oluşturma ve yapılandırma
+## <a name="create-and-configure-the-app-settings-file"></a>Uygulama ayarları dosyası oluşturma ve yapılandırma
 
-### <a name="create-appsettingsjson"></a>appsettings.json oluşturma
+### <a name="create-appsettingsjson"></a>AppSettings. JSON oluştur
 
-1. **Genel** > **Metin dosyası**gidin .
-1. Adını "appsettings.json" olarak adlandır.
-1. .json dosyasının "Çıktı Dizini"ne kopyala özelliğini "Daha yeniyse kopyala" olarak ayarlayın (böylece uygulama yayımlandığında dosyaya erişebilsin).
+1. Git **genel** > **metin dosyası**.
+1. "AppSettings. JSON" olarak adlandırın.
+1. . Json dosyasının "çıkış dizinine Kopyala" özelliğini "daha sonra Kopyala" olarak ayarlayın (böylece uygulamanın yayımlandığında erişebilmesi için).
 
-### <a name="set-values-in-appsettingsjson"></a>appsettings.json'da değerleri ayarlama
+### <a name="set-values-in-appsettingsjson"></a>AppSettings. JSON içindeki değerleri ayarla
 
-Access `az ams account sp create` [API'lerinde](access-api-cli-how-to.md)açıklandığı gibi komutu çalıştırın. Komut, "appsettings.json"unuza kopyalamanız gerektiğini gösterir.
+`az ams account sp create` Komutunu [erişim API 'lerinde](access-api-cli-how-to.md)açıklandığı gibi çalıştırın. Komutu, "appSettings. JSON" uygulamanıza kopyalamanız gereken JSON döndürür.
  
 ## <a name="add-configuration-file"></a>Yapılandırma dosyasını ekleme
 
-Kolaylık sağlamak için, "appsettings.json" adresinden değerleri okumaktan sorumlu bir yapılandırma dosyası ekleyin.
+Kolaylık sağlaması için, "appSettings. JSON" öğesinden değerleri okumaktan sorumlu bir yapılandırma dosyası ekleyin.
 
-1. Projenize yeni bir .cs sınıfı ekleyin. Bunu, `ConfigWrapper` olarak adlandırın. 
-1. Bu dosyaya aşağıdaki kodu yapıştırın (bu örnek, ad `ConsoleApp1`alanı olduğunu varsayar).
+1. Projenize yeni bir. cs sınıfı ekleyin. Bunu, `ConfigWrapper` olarak adlandırın. 
+1. Aşağıdaki kodu bu dosyaya yapıştırın (Bu örnek, ad alanının olduğunu `ConsoleApp1`varsayar).
 
 ```csharp
 using System;
@@ -141,9 +141,9 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="connect-to-the-net-client"></a>.NET istemcisine bağlanın
+## <a name="connect-to-the-net-client"></a>.NET istemcisine bağlanma
 
-.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Aşağıdaki kodda, GetCredentialsAsync işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerini temel alan ServiceClient Credentials nesnesini oluşturur.
+.NET ile Media Services API’lerini kullanmaya başlamak için bir **AzureMediaServicesClient** nesnesi oluşturmanız gerekir. Nesneyi oluşturmak için, Azure AD kullanarak Azure’a bağlanmak üzere istemcinin ihtiyaç duyduğu kimlik bilgilerini sağlamanız gerekir. Aşağıdaki kodda, GetCredentialsAsync işlevi, yerel yapılandırma dosyasında sağlanan kimlik bilgilerine göre ServiceClientCredentials nesnesini oluşturur.
 
 1. `Program.cs` dosyasını açın.
 1. Aşağıdaki kodu yapıştırın:
@@ -228,19 +228,19 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Yükleme, kodlama ve akış videoları - .NET](stream-files-tutorial-with-api.md) 
-- [Öğretici: Medya Hizmetleri v3 ile canlı yayın - .NET](stream-live-tutorial-with-api.md)
-- [Öğretici: Medya Hizmetleri v3 ile videoları analiz - .NET](analyze-videos-tutorial-with-api.md)
-- [Yerel bir dosyadan iş girişi oluşturma - .NET](job-input-from-local-file-how-to.md)
-- [HTTPS URL'sinden iş girişi oluşturma - .NET](job-input-from-http-how-to.md)
-- [Özel Bir Dönüştür ile kodlayın - .NET](customize-encoder-presets-how-to.md)
-- [AES-128 dinamik şifreleme ve anahtar teslim hizmetini kullanın - .NET](protect-with-aes128.md)
-- [DRM dinamik şifreleme ve lisans teslim hizmetini kullanın - .NET](protect-with-drm.md)
-- [Varolan ilkeden imza anahtarı alın - .NET](get-content-key-policy-dotnet-howto.md)
-- [Medya Hizmetleri ile filtre oluşturma - .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Media Services v3 ile Azure Fonksiyonları v2 gelişmiş video isteğe bağlı örnekleri](https://aka.ms/ams3functions)
+- [Öğretici: videoları karşıya yükleme, kodlama ve akışla-.NET](stream-files-tutorial-with-api.md) 
+- [Öğretici: Media Services v3-.NET ile canlı akış](stream-live-tutorial-with-api.md)
+- [Öğretici: Media Services v3-.NET ile videoları analiz etme](analyze-videos-tutorial-with-api.md)
+- [Yerel dosyadan iş girişi oluşturma-.NET](job-input-from-local-file-how-to.md)
+- [HTTPS URL 'sinden iş girişi oluşturma-.NET](job-input-from-http-how-to.md)
+- [Özel dönüşümle kodlama-.NET](customize-encoder-presets-how-to.md)
+- [AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini kullanın-.NET](protect-with-aes128.md)
+- [DRM dinamik şifrelemesini ve lisans teslim hizmetini kullanma-.NET](protect-with-drm.md)
+- [Var olan ilkeden bir imzalama anahtarı al-.NET](get-content-key-policy-dotnet-howto.md)
+- [Media Services .NET ile filtre oluşturma](filters-dynamic-manifest-dotnet-howto.md)
+- [Media Services v3 ile Azure Işlevleri v2 'ye yönelik gelişmiş video isteğe bağlı örnekleri](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [.NET başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
-* Daha fazla kod örneği için [.NET SDK örnekleri](https://github.com/Azure-Samples/media-services-v3-dotnet) repo'ya bakın.
+* Daha fazla kod örneği için bkz. [.NET SDK örnek](https://github.com/Azure-Samples/media-services-v3-dotnet) deposu.

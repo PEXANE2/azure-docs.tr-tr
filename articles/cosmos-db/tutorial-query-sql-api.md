@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Cosmos DB'de SQL ile sorgulama nasıl yapılır?"
-description: "Öğretici: Thw query playground'u kullanarak Azure Cosmos DB'deki SQL sorgularıyla nasıl sorgulanır öğrenin"
+title: 'Öğretici: Azure Cosmos DB SQL ile sorgulama nasıl yapılır?'
+description: 'Öğretici: thw sorgu PLAYIN kullanarak Azure Cosmos DB SQL sorgularıyla sorgulama hakkında bilgi edinin'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74870080"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Öğretici: SQL API’sini kullanarak Azure Cosmos DB’yi sorgulama
@@ -77,7 +77,7 @@ Yukarıda verilen örnek aile belgesiyle aşağıdaki SQL sorgusu, kimlik alanı
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
 
-**Sonuç -ları**
+**Sonuçlar**
 
 ```json
 {
@@ -119,7 +119,7 @@ Sonraki sorgu, ailede kimlikleri `WakefieldFamily` ile eşleşen çocukların t�
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
 
-**Sonuç -ları**
+**Sonuçlar**
 
 [ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 

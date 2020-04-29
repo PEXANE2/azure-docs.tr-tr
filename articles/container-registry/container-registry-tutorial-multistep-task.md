@@ -1,28 +1,28 @@
 ---
-title: Öğretici - Çok aşamalı ACR görevi
-description: Bu öğreticide, kaynak kodunu git deposuna işlediğinizde bulutta kapsayıcı görüntüleri oluşturmak, çalıştırmak ve itmek için çok aşamalı bir iş akışını otomatik olarak tetikleyecek bir Azure Kapsayıcı Kayıt Defteri Görevi'ni nasıl yapılandırabileceğinizi öğrenirsiniz.
+title: Öğretici-çok adımlı ACR görevi
+description: Bu öğreticide, bir git deposuna kaynak kodu kaydederken, bulutta kapsayıcı görüntülerini derlemek, çalıştırmak ve göndermek üzere bir Azure Container Registry görevinin otomatik olarak tetiklenmesi hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78402309"
 ---
-# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Öğretici: Kaynak kodu işlerken bulutta çok adımlı kapsayıcı iş akışı çalıştırma
+# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Öğretici: kaynak kodu kaydederken bulutta çok adımlı bir kapsayıcı iş akışını çalıştırın
 
-Hızlı bir [göreve](container-registry-tutorial-quick-task.md)ek olarak, ACR Görevleri, kaynak kodunu git deposuna işlediğinizde otomatik olarak tetiklenebilen çok adımlı, çok kapsayıcı tabanlı iş akışlarını destekler. 
+[Hızlı bir göreve](container-registry-tutorial-quick-task.md)ek olarak ACR görevleri, kaynak kodu bir git deposuna kaydederken otomatik olarak tetikleyemeyen çok adımlı, çok Kapsayıcılı iş akışlarını destekler. 
 
-Bu öğreticide, kaynak kodu işlediğizde bir veya daha fazla kapsayıcı görüntüsünü oluşturan, çalıştıran ve bir kayıt defterine iten çok aşamalı görevleri tanımlamak için örnek YAML dosyalarını nasıl kullanacağınızı öğrenirsiniz. Yalnızca kod işleme üzerine inşa edilen tek bir görüntüyü otomatikleştiren bir görev oluşturmak için [bkz.](container-registry-tutorial-build-task.md) ACR Görevleri'ne genel bir bakış için, [ACR Görevleri ile Işletim Sistemi ve çerçeve düzeltme bölümüne](container-registry-tasks-overview.md)bakın,
+Bu öğreticide, kaynak kodu kaydederken bir veya daha fazla kapsayıcı görüntüsünü oluşturan, çalıştıran ve bir kayıt defterine ileten çok adımlı görevleri tanımlamak için örnek YAML dosyalarını nasıl kullanacağınızı öğreneceksiniz. Kod işlemede yalnızca tek bir görüntü derlemesini otomatikleştiren bir görev oluşturmak için bkz. [öğretici: kaynak kodu kaydederken buluttaki kapsayıcı görüntüsü derlemelerini otomatikleştirme](container-registry-tutorial-build-task.md). ACR görevlerine genel bakış için bkz. [ACR görevleri ile işletim sistemi ve çerçeve düzeltme eki uygulamayı otomatikleştirme](container-registry-tasks-overview.md),
 
-Bu eğitimde:
+Bu öğreticide:
 
 > [!div class="checklist"]
-> * YAML dosyalarını kullanarak çok aşamalı bir görev tanımlama
+> * YAML dosyası kullanarak çok adımlı bir görev tanımlama
 > * Görev oluşturma
-> * Başka bir kayıt defterine erişimi etkinleştirmek için isteğe bağlı olarak göreve kimlik bilgileri ekleyin
+> * İsteğe bağlı olarak, başka bir kayıt defterine erişim sağlamak için göreve kimlik bilgileri ekleyin
 > * Görevi test etme
 > * Görev durumunu görüntüleme
 > * Kod işlemesi ile görevi tetikleme
@@ -31,17 +31,17 @@ Bu öğreticide, [önceki öğreticide](container-registry-tutorial-quick-task.m
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLI'yi yerel olarak kullanmak istiyorsanız, Azure CLI sürüm **2.0.62** veya daha sonra az [girişi][az-login]ile yüklenmiş ve oturum açmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
+Azure CLı 'yı yerel olarak kullanmak istiyorsanız, [az Login][az-login]Ile Azure CLI sürüm **2.0.62** veya sonraki bir sürümünün yüklü ve oturum açmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
 ## <a name="create-a-multi-step-task"></a>Çok adımlı bir görev oluşturma
 
-Artık ACR Görevlerinin commit status'u okumasını ve bir depoda web hooks oluşturmasına olanak sağlamak için gereken adımları tamamladığınızda, kapsayıcı görüntüsünü oluşturmayı, çalıştırmayı ve itmenizi tetikleyen çok aşamalı bir görev oluşturun.
+ACR görevlerinin kayıt durumunu okumasını ve bir depoda Web kancaları oluşturmasını sağlamak için gerekli adımları tamamladığınıza göre, bir kapsayıcı görüntüsünü oluşturma, çalıştırma ve göndermeyi tetikleyen çok adımlı bir görev oluşturun.
 
 ### <a name="yaml-file"></a>YAML dosyası
 
-Yaml [dosyasında](container-registry-tasks-reference-yaml.md)çok adımlı bir görevin adımlarını tanımlarsınız. Bu öğretici için ilk örnek çok adımlı `taskmulti.yaml`görev, klonladığınız GitHub repo'nun kökünde bulunan dosyada tanımlanır:
+Bir [YAML dosyasında](container-registry-tasks-reference-yaml.md)çok adımlı bir görev için adımları tanımlarsınız. Bu öğreticinin ilk örnek çoklu adım görevi, Klonladığınız GitHub deposunun kökündeki dosyada `taskmulti.yaml`tanımlanmıştır:
 
 ```yml
 version: v1.0.0
@@ -59,17 +59,17 @@ steps:
   - {{.Run.Registry}}/hello-world:{{.Run.ID}}
 ```
 
-Bu çok adımlı görev aşağıdakileri yapar:
+Bu çok adımlı görev şunları yapar:
 
-1. Çalışma `build` dizinindeki Dockerfile'den bir görüntü oluşturmak için bir adım çalıştırın. `Run.Registry`Görüntü, görevin çalıştırıldığı kayıt defterini hedefler ve benzersiz bir ACR Görevleri çalıştırılaç kimliğiyle etiketlenir. 
-1. Görüntüyü `cmd` geçici bir kapsayıcıda çalıştırmak için bir adım çalıştırın. Bu örnek, arka planda uzun süren bir kapsayıcı yı başlatır ve kapsayıcı kimliğini döndürür, ardından kapsayıcıyı durdurur. Gerçek bir senaryoda, doğru çalıştığından emin olmak için çalışan kapsayıcıyı sınamak için adımlar ekleyebilirsiniz.
-1. Bir `push` adımda, yapıldaki görüntüyü çalıştır kayıt defterine iter.
+1. Çalışma dizininde `build` Dockerfile 'dan görüntü oluşturmak için bir adım çalıştırır. Görüntüde `Run.Registry`, görevin çalıştırıldığı kayıt defteri ve benzersiz bir ACR GÖREVI çalıştırma kimliğiyle etiketlendi. 
+1. Görüntüyü geçici `cmd` bir kapsayıcıda çalıştırmak için bir adım çalıştırır. Bu örnek, arka planda uzun süre çalışan bir kapsayıcı başlatır ve kapsayıcı KIMLIĞINI döndürür, sonra kapsayıcıyı sonlandırır. Gerçek dünyada bir senaryoda, doğru çalıştığından emin olmak için çalışan kapsayıcıyı test etme adımlarını dahil edebilirsiniz.
+1. Bir `push` adımda, çalışma kayıt defterine oluşturulan görüntüyü iter.
 
 ### <a name="task-command"></a>Görev komutu
 
-İlk olarak, bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmeniz gerekir.
+İlk olarak, bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmelisiniz.
 
-[![Gömme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -77,7 +77,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Şimdi, aşağıdaki [az acr görev oluşturma][az-acr-task-create] komutunu çalıştırarak görev oluşturun:
+Şimdi aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görevi oluşturun:
 
 ```azurecli-interactive
 az acr task create \
@@ -88,7 +88,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Bu görev, herhangi bir zaman kodunun, `--context`acr Görevler tarafından belirtilen depodaki *ana* dala adandığını belirtir, ACR Görevleri bu daldaki koddan çok aşamalı görevi çalıştıracaktır. Depo `--file` kökünden belirtilen YAML dosyası adımları tanımlar. 
+Bu görev, tarafından `--context`belirtilen depodaki *ana* dala herhangi bir zaman kodu taahhüt olduğunu belirtir, ACR görevleri bu daldaki koddan çok adımlı görevi çalıştırır. Depo kökünden tarafından `--file` belirtilen YAML dosyası adımları tanımlar. 
 
 Başarılı bir [az acr task create][az-acr-task-create] komutundaki çıktı aşağıdakilere benzer:
 
@@ -147,15 +147,15 @@ Başarılı bir [az acr task create][az-acr-task-create] komutundaki çıktı a�
 }
 ```
 
-## <a name="test-the-multi-step-workflow"></a>Çok aşamalı iş akışını test edin
+## <a name="test-the-multi-step-workflow"></a>Çok adımlı iş akışını test etme
 
-Çok adımlı görevi sınamak için [az acr görev çalıştırma][az-acr-task-run] komutunu çalıştırarak el ile tetikle:
+Çok adımlı görevi test etmek için [az ACR Task Run][az-acr-task-run] komutunu yürüterek el ile tetikleyin:
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example1
 ```
 
-Varsayılan olarak, `az acr task run` komutunu yürüttüğünüzde komut, günlük çıktısını konsolunuza akışla aktarır. Çıktı, görev adımlarının her birinin çalıştırıldının ilerlemesini gösterir. Aşağıdaki çıktı önemli adımları göstermek için yoğuşturulur.
+Varsayılan olarak, `az acr task run` komutunu yürüttüğünüzde komut, günlük çıktısını konsolunuza akışla aktarır. Çıktı, görev adımlarının her birini çalıştırmanın ilerlemesini gösterir. Aşağıdaki çıktı, önemli adımları göstermek için yoğunlaştırılmış.
 
 ```output
 Queued a run with ID: cf19
@@ -239,7 +239,7 @@ Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
 
-Deponuza bir taahhütte bulunundıktan sonra, ACR Görevler tarafından oluşturulan web hook, Azure Konteyner Kayıt Defteri'nde devreyi kapatır ve başlatAr. Derlemenin ilerleme durumunu doğrulamak ve izlemek için o anda devam eden görevin günlüklerini görüntüleyin:
+Deponuza bir kayıt gönderdikten sonra ACR görevleri tarafından oluşturulan Web kancası ateşlenir ve Azure Container Registry görevi kapanır. Derlemenin ilerleme durumunu doğrulamak ve izlemek için o anda devam eden görevin günlüklerini görüntüleyin:
 
 ```azurecli-interactive
 az acr task logs --registry $ACR_NAME
@@ -276,17 +276,17 @@ cf1a      example1   linux       Succeeded  Commit     2019-05-03T03:09:32Z  00:
 cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:00:21
 ```
 
-## <a name="create-a-multi-registry-multi-step-task"></a>Çok kayıt defteri çok adımlı görev oluşturma
+## <a name="create-a-multi-registry-multi-step-task"></a>Birden çok kayıt defteri çoklu adım görevi oluşturma
 
-ACR Görevleri varsayılan olarak, görevin çalıştığı kayıt defterinden görüntüleri itme veya çekme izinlerine sahiptir. Run kayıt defterine ek olarak bir veya daha fazla kayıt defterini hedefleyen çok aşamalı bir görev çalıştırmak isteyebilirsiniz. Örneğin, bir kayıt defterinde görüntüler oluşturmanız ve görüntüleri üretim sistemi tarafından erişilen ikinci bir kayıt defterinde farklı etiketlerle depolamanız gerekebilir. Bu örnek, böyle bir görevoluşturmak ve başka bir kayıt için kimlik bilgileri sağlamak nasıl gösterir.
+ACR görevleri varsayılan olarak, görevin çalıştığı kayıt defterinden görüntü gönderme veya çekme için izinlere sahiptir. Çalışma kayıt defterine ek olarak bir veya daha fazla kayıt defteri hedefleyen çok adımlı bir görev çalıştırmak isteyebilirsiniz. Örneğin, bir kayıt defterinde görüntü oluşturmanız ve bir üretim sisteminin eriştiği ikinci bir kayıt defterinde farklı etiketlere sahip görüntüleri depolamanız gerekebilir. Bu örnek, böyle bir görevin nasıl oluşturulacağını ve başka bir kayıt defteri için kimlik bilgileri nasıl sağlayakullanacağınızı gösterir.
 
 Zaten ikinci bir kayıt defteriniz yoksa, bu örnek için bir tane oluşturun. Bir kayıt defterine ihtiyacınız varsa, [önceki öğreticiye](container-registry-tutorial-quick-task.md) veya [Hızlı Başlangıç: Azure CLI kullanarak kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md) bölümüne bakın.
 
-Görevi oluşturmak için, *mycontainerregistrydate.azurecr.io* formu (tüm küçük harf) olan kayıt defteri giriş sunucusunun adını almanız gerekir. Bu örnekte, yapı tarihine göre etiketlenmiş görüntüleri depolamak için ikinci kayıt defterini kullanırsınız.
+Görevi oluşturmak için, *mycontainerregistrydate.azurecr.io* biçimindeki kayıt defteri oturum açma sunucusunun adı gerekir (tümü küçük harf). Bu örnekte, derleme tarihine göre etiketlendirilmiş resimleri depolamak için ikinci kayıt defteri kullanılır.
 
 ### <a name="yaml-file"></a>YAML dosyası
 
-Bu öğretici için ikinci örnek çok adımlı `taskmulti-multiregistry.yaml`görev, klonladığınız GitHub repo'nun kökünde bulunan dosyada tanımlanır:
+Bu öğreticinin ikinci örnek çoklu adım görevi, Klonladığınız GitHub deposunun kökündeki dosyada `taskmulti-multiregistry.yaml`tanımlanmıştır:
 
 ```yml
 version: v1.0.0
@@ -306,17 +306,17 @@ steps:
   - {{.Values.regDate}}/hello-world:{{.Run.Date}}
 ```
 
-Bu çok adımlı görev aşağıdakileri yapar:
+Bu çok adımlı görev şunları yapar:
 
-1. Çalışma `build` dizininde Dockerfile'den görüntüler oluşturmak için iki adım çalışır:
-    * İlk hedef `Run.Registry`, görevin çalıştırıldığı kayıt defteri ve ACR Görevler çalıştırıçalıştıran kimliği ile etiketlenir. 
-    * İkinci hedef, görevi oluştururken belirlediğiniz (veya geçirilen harici `regDate` `values.yaml` bir dosya aracılığıyla `az acr task create`sağladığınız) değeriyle tanımlanan kayıt defterini hedefler. Bu resim çalışma tarihi ile etiketlenir.
-1. Yapılı `cmd` kapsayıcılardan birini çalıştırmak için bir adım çalıştırın. Bu örnek, arka planda uzun süren bir kapsayıcı yı başlatır ve kapsayıcı kimliğini döndürür, ardından kapsayıcıyı durdurur. Gerçek bir senaryoda, çalışan bir kapsayıcının doğru çalıştığından emin olmak için test edebilirsiniz.
-1. Bir `push` adımda, inşa edilen görüntüleri iter, ilk çalıştırKayıt defterine, ikinci tarafından `regDate`tanımlanan kayıt defterine .
+1. Çalışma dizininde `build` Dockerfile 'dan görüntü oluşturmak için iki adımı çalıştırır:
+    * Birincisi `Run.Registry`, görevin çalıştırıldığı kayıt defteri ve ACR GÖREVLERININ çalıştırma kimliğiyle etiketlendi. 
+    * İkincisi, görevi oluştururken ayarladığınız (veya bir dış dosya `regDate`ile bir dış `values.yaml` dosya aracılığıyla sağladığınız `az acr task create`) değeri tarafından tanımlanan kayıt defterini hedefler. Bu görüntü, çalışma tarihi ile etiketlendi.
+1. Oluşturulan kapsayıcılardan birini çalıştırmak için bir `cmd` adım çalıştırır. Bu örnek, arka planda uzun süre çalışan bir kapsayıcı başlatır ve kapsayıcı KIMLIĞINI döndürür, sonra kapsayıcıyı sonlandırır. Gerçek dünyada bir senaryoda, çalışan bir kapsayıcıyı doğru çalıştığından emin olmak için test edebilirsiniz.
+1. Bir `push` adımda oluşturulan görüntüleri, birincisini çalıştırılan kayıt defterine, ikincisi ise tarafından `regDate`tanımlanan kayıt defterine iter.
 
 ### <a name="task-command"></a>Görev komutu
 
-Daha önce tanımlanan kabuk ortamı değişkenlerini kullanarak, aşağıdaki [az acr görev oluşturma][az-acr-task-create] komutunu çalıştırarak görevi oluşturun. Kayıt defterinizin adını *mycontainer registrydate*için değiştirin.
+Daha önce tanımlanan kabuk ortam değişkenlerini kullanarak, aşağıdaki [az ACR Task Create][az-acr-task-create] komutunu yürüterek görevi oluşturun. Kayıt defterinizin adını *mycontainerregistrydate*için yerine koyun.
 
 ```azurecli-interactive
 az acr task create \
@@ -328,13 +328,13 @@ az acr task create \
     --set regDate=mycontainerregistrydate.azurecr.io
 ```
 
-### <a name="add-task-credential"></a>Görev kimlik bilgisi ekleme
+### <a name="add-task-credential"></a>Görev kimlik bilgisi ekle
 
-Değeri ile tanımlanan kayıt defterine görüntüleri `regDate`itmek için, göreve bu kayıt defteri için giriş kimlik bilgilerini eklemek için [az acr görev kimlik bilgilerini ekleyin][az-acr-task-credential-add] komutunu kullanın.
+' In `regDate`değeri tarafından tanımlanan kayıt defterine görüntü göndermek için, bu kayıt defteri için oturum açma kimlik bilgilerini göreve eklemek üzere [az ACR Task Credential Add][az-acr-task-credential-add] komutunu kullanın.
 
-Bu örnekte, *AcrPush* rolüne yönelik kayıt defterine erişimi olan bir [hizmet ilkesi](container-registry-auth-service-principal.md) oluşturmanızı öneririz. Hizmet ilkesini oluşturmak için bu [Azure CLI komut dosyasına](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)bakın.
+Bu örnekte, *Acrpush* rolü kapsamındaki kayıt defterine erişimi olan bir [hizmet sorumlusu](container-registry-auth-service-principal.md) oluşturmanız önerilir. Hizmet sorumlusu oluşturmak için, bu [Azure CLI betiğine](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)bakın.
 
-Hizmet temel başvuru kimliği ve parolasını aşağıdaki `az acr task credential add` komutla geçirin:
+Aşağıdaki `az acr task credential add` komutta hizmet sorumlusu uygulama kimliğini ve parolasını geçirin:
 
 ```azurecli-interactive
 az acr task credential add --name example2 \
@@ -344,17 +344,17 @@ az acr task credential add --name example2 \
     --password <service-principal-password>
 ```
 
-CLI, eklediğiniz kayıt defteri giriş sunucusunun adını döndürür.
+CLı, eklediğiniz kayıt defteri oturum açma sunucusunun adını döndürür.
 
-### <a name="test-the-multi-step-workflow"></a>Çok aşamalı iş akışını test edin
+### <a name="test-the-multi-step-workflow"></a>Çok adımlı iş akışını test etme
 
-Önceki örnekte olduğu gibi, çok adımlı görevi sınamak için [az acr görev çalıştırma][az-acr-task-run] komutunu çalıştırarak el ile tetikle. Git deposuna bir taahhütile görevi tetiklemek için, commit [with a commit ile bir yapıyı tetikleyen](#trigger-a-build-with-a-commit)bölümüne bakın.
+Yukarıdaki örnekte olduğu gibi, çok adımlı görevi test etmek için [az ACR Task Run][az-acr-task-run] komutunu yürüterek el ile tetikleyin. Görevi git deposuna yapılan bir işlemeye tetiklemek için, bir [oluşturma ile derleme tetikleme](#trigger-a-build-with-a-commit)bölümüne bakın.
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example2
 ```
 
-Varsayılan olarak, `az acr task run` komutunu yürüttüğünüzde komut, günlük çıktısını konsolunuza akışla aktarır. Daha önce olduğu gibi, çıktı görev adımlarının her birini çalıştırmanın ilerlemesini gösterir. Çıktı, önemli adımları göstermek için yoğunlaştırılmıştır.
+Varsayılan olarak, `az acr task run` komutunu yürüttüğünüzde komut, günlük çıktısını konsolunuza akışla aktarır. Daha önce olduğu gibi, çıkış, görev adımlarının her birini çalıştırmanın ilerlemesini gösterir. Çıkış, önemli adımları göstermek için yoğunlaştırılmış.
 
 Çıktı:
 
@@ -454,7 +454,7 @@ Run ID: cf1g was successful after 46s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, kaynak kodunu git deposuna adadığınızda otomatik olarak tetikleyen çok aşamalı, çok kapsayıcı tabanlı görevlerin nasıl oluşturulacağımı öğrendiniz. Paralel ve bağımlı adım yürütme de dahil olmak üzere çok adımlı görevlerin gelişmiş özellikleri için [ACR Görevleri YAML başvurusuna](container-registry-tasks-reference-yaml.md)bakın. Bir kapsayıcı görüntüsünün temel görüntüsü güncelleştirildiğinde derlemeleri tetikleyen görevler oluşturmak için sonraki öğreticiye geçin.
+Bu öğreticide, bir git deposuna kaynak kodu kaydederken otomatik olarak tetiklenen çok adımlı, çok Kapsayıcılı görevler oluşturmayı öğrendiniz. Paralel ve bağımlı adım yürütmesi dahil olmak üzere çok adımlı görevlerin gelişmiş özellikleri için [ACR görevlerine YAML başvurusu](container-registry-tasks-reference-yaml.md)' na bakın. Bir kapsayıcı görüntüsünün temel görüntüsü güncelleştirildiğinde derlemeleri tetikleyen görevler oluşturmak için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Temel görüntü güncelleştirmesi ile derlemeleri otomatikleştirme](container-registry-tutorial-base-image-update.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Geçiş Sunucusu Geçişi'ni kullanarak VMware sanal makinelerini sunucu tarafı şifreleme (SSE) ve müşteri tarafından yönetilen anahtarlarla (CMK) Azure'a geçirin
-description: Azure Geçiş Sunucusu Geçişi'ni kullanarak Sunucu tarafı şifreleme (SSE) ve müşteri tarafından yönetilen anahtarlar (CMK) ile VMware VM'leri Azure'a nasıl geçirebilirsiniz öğrenin
+title: Azure geçiş sunucusu geçişini kullanarak VMware sanal makinelerini sunucu tarafı şifreleme (SSE) ve müşteri tarafından yönetilen anahtarlar (CMK) ile Azure 'a geçirme
+description: Azure geçişi sunucu geçişini kullanarak VMware VM 'lerini sunucu tarafı şifreleme (SSE) ve müşteri tarafından yönetilen anahtarlar (CMK) ile Azure 'a geçirmeyi öğrenin
 author: bsiva
 ms.service: azure-migrate
 ms.manager: carmonm
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269490"
 ---
-# <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware VM'leri sunucu tarafı şifrelemesi ve müşteri tarafından yönetilen anahtarlarla etkinleştirilen Azure VM'lere geçirin
+# <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware VM 'lerini, sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla etkinleştirilen Azure VM 'lerine geçirin
 
-Bu makalede, VMware VM'lerin, müşteri tarafından yönetilen anahtarlarla (CMK) sunucu tarafı şifrelemesi (CMK) kullanılarak şifrelenmiş diskleri olan Azure sanal makinelerine Azure sanal makinelerine nasıl geçirilen Azure'a nasıl geçirilebilirsiniz, Azure Geçiş Sunucusu Geçişi (aracısız çoğaltma) kullanılır.
+Bu makalede, Azure geçişi sunucu geçişini (aracısız çoğaltma) kullanarak, müşteri tarafından yönetilen anahtarlar (CMK) ile sunucu tarafı şifreleme (SSE) kullanılarak, VMware VM 'lerinin Azure sanal makinelerine nasıl geçirileceği açıklanır.
 
-Azure Geçir Sunucusu Geçişi portalı deneyimi, [VMware VM'leri aracısız çoğaltma yla Azure'a geçirmenize](tutorial-migrate-vmware.md) olanak tanır. Portal deneyimi şu anda Azure'da çoğaltılan diskleriniz için CMK ile SSE'yi açma olanağı sunmuyor. Çoğaltılan diskler için CMK ile SSE'yi açma özelliği şu anda yalnızca REST API ile kullanılabilir. Bu makalede, bir VMware VM'yi çoğaltmak ve Azure'da çoğaltılan diskleri CMK ile SSE'yi kullanacak şekilde yapılandırmak için bir [Azure Kaynak Yöneticisi şablonu](../azure-resource-manager/templates/overview.md) oluşturmave dağıtmayı göreceksiniz.
+Azure geçişi sunucusu geçiş portalı deneyimi, [VMware VM 'lerini aracısız çoğaltma Ile Azure 'a geçirmenize](tutorial-migrate-vmware.md) olanak sağlar. Portal deneyimi şu anda Azure 'daki çoğaltılan diskleriniz için SSE 'yi CMK ile açma özelliği sunmaz. Çoğaltılan diskler için CMK ile SSE 'yi açma özelliği şu anda yalnızca REST API aracılığıyla kullanılabilir. Bu makalede bir VMware sanal makinesini çoğaltmak ve Azure 'daki çoğaltılan diskleri CMK ile SSE kullanacak şekilde yapılandırmak için bir [Azure Resource Manager şablonu](../azure-resource-manager/templates/overview.md) oluşturma ve dağıtma hakkında bilgi edineceksiniz.
 
-Bu makaledeki örnekler, Kaynak Yöneticisi şablonu oluşturmak ve dağıtmak için gereken görevleri gerçekleştirmek için [Azure PowerShell'i](/powershell/azure/new-azureps-module-az) kullanır.
+Bu makaledeki örneklerde, Kaynak Yöneticisi şablonu oluşturmak ve dağıtmak için gereken görevleri gerçekleştirmek üzere [Azure PowerShell](/powershell/azure/new-azureps-module-az) kullanılır.
 
-Yönetilen diskler için müşteri yönetilen anahtarlarla (CMK) sunucu tarafı şifrelemesi (SSE) hakkında [daha fazla bilgi edinin.](../virtual-machines/windows/disk-encryption.md)
+Yönetilen diskler için müşteri tarafından yönetilen anahtarlarla (CMK) sunucu tarafı şifreleme (SSE) hakkında [daha fazla bilgi edinin](../virtual-machines/windows/disk-encryption.md) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Araç gereksinimlerini anlamak için VMware VM'lerin aracısız çoğaltmayla Azure'a geçişi yle ilgili [öğreticiyi gözden geçirin.](tutorial-migrate-vmware.md)
-- Bir Azure Geçiş projesi oluşturmak ve projeye **Azure Geçiş: Sunucu Geçişi** aracını eklemek için bu yönergeleri [izleyin.](how-to-add-tool-first-time.md)
-- VMware için Azure Geçir cihazını şirket içi ortamınızda kurmak ve tam keşif yapmak için [bu yönergeleri izleyin.](how-to-set-up-appliance-vmware.md)
+- Araç gereksinimlerini anlamak üzere aracısız çoğaltma ile VMware VM 'lerini Azure 'a geçirme [öğreticisini gözden geçirin](tutorial-migrate-vmware.md) .
+- Azure geçişi projesi oluşturmak ve projeye **Azure geçişi: sunucu geçiş** aracını eklemek için [Bu yönergeleri izleyin](how-to-add-tool-first-time.md) .
+- Şirket içi ortamınızda VMware için Azure geçişi gereci ayarlamak ve bulma işlemini gerçekleştirmek için [Bu yönergeleri izleyin](how-to-set-up-appliance-vmware.md) .
 
-## <a name="prepare-for-replication"></a>Çoğaltma için hazırlanın
+## <a name="prepare-for-replication"></a>Çoğaltmaya hazırlanma
 
-VM keşfi tamamlandıktan sonra, Sunucu Geçişi döşemesindeki Keşfedilen Sunucular satırı, cihaz tarafından keşfedilen VMware VM sayısını gösterir.
+VM bulma işlemi tamamlandıktan sonra, sunucu geçiş kutucuğunda bulunan sunucular satırı, Gereç tarafından bulunan VMware VM 'lerinin sayısını gösterir.
 
-VM'leri çoğaltmaya başlamadan önce çoğaltma altyapısının hazırlanması gerekir.
+VM 'Leri çoğaltmaya başlayabilmeniz için önce çoğaltma altyapısının hazırlanması gerekir.
 
-1. Hedef bölgede bir Hizmet Veri Yolu örneği oluşturun. Hizmet Veri Servisi, çoğaltma ve geçişi koordine etmek için Sunucu Geçişi hizmetiyle iletişim kurmak için şirket içi Azure Geçiş cihazı tarafından kullanılır.
-2. Çoğaltmadan işlem günlüklerinin aktarılması için bir depolama hesabı oluşturun.
-3. Azure Geçiş cihazının çoğaltma verilerini yüklediği bir depolama hesabı oluşturun.
-4. Bir Anahtar Kasası oluşturun ve 3 ve 4.
-5. Adım 1'de oluşturulan servis veri kurumu için paylaşılan bir erişim imzası belirteci oluşturun ve önceki adımda oluşturulan Anahtar Kasası'ndaki belirteç için bir sır oluşturun.
-6. Şirket içi Azure Geçiş cihazını (cihaz AAD uygulamasını kullanarak) ve Sunucu Geçiş Hizmeti'nin Anahtar Kasası'na erişimini sağlamak için bir Key Vault erişim ilkesi oluşturun.
-7. Bir çoğaltma ilkesi oluşturun ve Sunucu Geçişi hizmetini önceki adımda oluşturulan çoğaltma altyapısının ayrıntılarıyla yapılandırın.
+1. Hedef bölgede Service Bus bir örnek oluşturun. Service Bus, çoğaltma ve geçişi koordine etmek üzere sunucu geçiş hizmeti ile iletişim kurmak için şirket içi Azure geçişi gereci tarafından kullanılır.
+2. İşlem günlüklerinin çoğaltmadan aktarılması için bir depolama hesabı oluşturun.
+3. Azure geçişi gerecinin çoğaltma verilerini uygulamasına karşıya yüklemesi için bir depolama hesabı oluşturun.
+4. Key Vault oluşturun ve adım 3 ve 4 ' te oluşturulan depolama hesaplarında blob erişimi için paylaşılan erişim imza belirteçlerini yönetmek üzere Key Vault yapılandırın.
+5. Adım 1 ' de oluşturulan Service Bus için bir paylaşılan erişim imza belirteci oluşturun ve önceki adımda oluşturulan Key Vault belirteç için bir gizli dizi oluşturun.
+6. Şirket içi Azure geçiş gereci (gereç AAD uygulaması kullanılarak) ve sunucu geçiş hizmeti 'nin Key Vault erişimini sağlamak için Key Vault erişim ilkesi oluşturun.
+7. Bir çoğaltma ilkesi oluşturun ve önceki adımda oluşturulan çoğaltma altyapısının ayrıntıları ile sunucu geçiş hizmetini yapılandırın.
 
-Geçiş için hedefleme Azure bölgesinde ve VM'lerin geçirildiği hedef Azure aboneliğinde çoğaltma altyapısı oluşturulmalıdır.
+Çoğaltma altyapısının geçiş için hedef Azure bölgesinde ve VM 'Lerin geçirildiği hedef Azure aboneliğinde oluşturulması gerekir.
 
-Sunucu Geçişi portalı deneyimi, bir projede ilk kez bir VM'i kopyaladiğinizde bunu sizin için otomatik olarak yaparak çoğaltma altyapısının hazırlanmasını kolaylaştırır. Bu makalede, portal deneyimini kullanarak bir veya daha fazla VM'yi zaten kopyaladığınızı ve çoğaltma altyapısının zaten oluşturulduğunu varsayalım. Varolan çoğaltma altyapısının ayrıntılarını nasıl keşfedeceğimize ve bu ayrıntıları CMK ile çoğaltmayı ayarlamak için kullanılacak Kaynak Yöneticisi şablonuna girdi olarak nasıl kullanacağımızı inceeceğiz.
+Sunucu geçiş portalı deneyimi, bir VM 'yi bir projede ilk kez çoğalttığınızda otomatik olarak bunu yaparak çoğaltma altyapısının hazırlanmasını basitleştirir. Bu makalede, Portal deneyimini kullanarak bir veya daha fazla VM 'yi zaten çoğalttığınızı ve çoğaltma altyapısının önceden oluşturulduğunu varsayacağız. Mevcut çoğaltma altyapısının ayrıntılarını bulma ve bu ayrıntıları CMK ile çoğaltmayı ayarlamak için kullanılacak Kaynak Yöneticisi şablonuna giriş olarak nasıl kullanacağınızı inceleyeceğiz.
 
-### <a name="identifying-replication-infrastructure-components"></a>Çoğaltma altyapısı bileşenlerinin tanımlanması
+### <a name="identifying-replication-infrastructure-components"></a>Çoğaltma altyapısı bileşenlerini tanımlama
 
-1. Azure portalında kaynak grupları sayfasına gidin ve Azure Geçiş projesinin oluşturulduğu kaynak grubunu seçin.
-2. Sol menüden **Dağıtımlar'ı** seçin ve *"Microsoft.MigrateV2.VMwareV2EnableMigrate"* dizesiyle başlayan bir dağıtım adı arayın. Bu projedeki VM'ler için çoğaltma ayarlamak için portal deneyimi tarafından oluşturulan Kaynak Yöneticisi şablonlarının listesini görürsünüz. Böyle bir şablon indireceğiz ve bunu cmk ile çoğaltma için şablonu hazırlamak için temel olarak kullanacağız.
-3. Şablonu indirmek için, önceki adımda dize deseniyle eşleşen herhangi bir dağıtımı seçin > sol menüden **Şablon'u** seçin > üst menüden **İndir'e** tıklayın. template.json dosyasını yerel olarak kaydedin. Bu şablon dosyasını son adımda edineceksiniz.
+1. Azure portal, kaynak grupları sayfasına gidin ve Azure geçişi projesinin oluşturulduğu kaynak grubunu seçin.
+2. Sol menüden **dağıtımlar** ' ı seçin ve *"Microsoft. MigrateV2. VMwareV2EnableMigrate"* dizesiyle başlayarak bir dağıtım adı arayın. Bu projedeki VM 'Lerin çoğaltmasını ayarlamak için Portal deneyimi tarafından oluşturulan Kaynak Yöneticisi şablonlarının bir listesini görürsünüz. Bu tür bir şablonu indirecek ve şablonu CMK ile çoğaltmaya hazırlamak için temel olarak kullanacaksınız.
+3. Şablonu indirmek için önceki adımda dize düzeniyle eşleşen herhangi bir dağıtım seçin > sol menüden **şablon** ' u seçin > en üstteki menüden **Indir** ' e tıklayın. Template. json dosyasını yerel olarak kaydedin. Bu şablon dosyasını son adımda düzenlersiniz.
 
-## <a name="create-a-disk-encryption-set"></a>Disk Şifreleme Kümesi Oluşturma
+## <a name="create-a-disk-encryption-set"></a>Disk şifreleme kümesi oluşturma
 
-Disk şifreleme, Yönetilen Diskler eşlemlerini SSE için kullanılacak CMK'yı içeren bir Anahtar Kasası olarak ayarlar. CMK ile VM'leri çoğaltmak için bir disk şifreleme kümesi oluşturur ve çoğaltma işlemine giriş olarak aktarırsınız.
+Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler. VM 'Leri CMK ile çoğaltmak için bir disk şifreleme kümesi oluşturacak ve bunu çoğaltma işlemine girdi olarak geçireceğiz.
 
-Azure PowerShell'i kullanarak bir disk şifreleme kümesi oluşturmak için [aşağıdaki](../virtual-machines/windows/disk-encryption.md#powershell) örneği izleyin. Disk şifreleme kümesinin, VM'lerin geçirildiği hedef abonelikte ve geçiş için hedef Azure bölgesinde oluşturulduğundan emin olun.
+Azure PowerShell kullanarak bir disk şifreleme kümesi oluşturmak için [buradaki](../virtual-machines/windows/disk-encryption.md#powershell) örneği izleyin. Disk şifrelemesi kümesinin, sanal makinelerin geçirildiği hedef abonelikte ve geçiş için hedef Azure bölgesinde oluşturulduğundan emin olun.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 
@@ -81,12 +81,12 @@ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ObjectId $des.Identity.Prin
 New-AzRoleAssignment -ResourceName $KeyVaultName -ResourceGroupName $TargetResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader"
 ```
 
-## <a name="get-details-of-the-vmware-vm-to-migrate"></a>Geçiş yapmak için VMware VM'nin ayrıntılarını alın
+## <a name="get-details-of-the-vmware-vm-to-migrate"></a>Geçirilecek VMware VM 'sinin ayrıntılarını alın
 
-Bu adımda, geçirilmesi gereken VM'nin ayrıntılarını almak için Azure PowerShell'i kullanırsınız. Bu ayrıntılar çoğaltma için Kaynak Yöneticisi şablonu oluşturmak için kullanılır. Özellikle, ilgi iki özellikleri şunlardır:
+Bu adımda, geçirilmesi gereken sanal makinenin ayrıntılarını almak için Azure PowerShell kullanacaksınız. Bu ayrıntılar, çoğaltma için Kaynak Yöneticisi şablonu oluşturmak üzere kullanılacaktır. Özellikle, ilgilendiğiniz iki özellik şunlardır:
 
-- Keşfedilen VM'ler için makine Kaynak Kimliği.
-- VM ve disk tanımlayıcıları için disklerin listesi.
+- Bulunan VM 'Ler için makine kaynak KIMLIĞI.
+- Sanal makine ve bunların disk tanımlayıcıları için disk listesi.
 
 ```azurepowershell
 
@@ -105,7 +105,7 @@ ApplianceName  SiteId
 VMwareApplianc /subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite
 ```
 
-VM'nin bulunduğu Azure Geçiş cihazına karşılık gelen SiteKimliği dizesinin değerini kopyalayın. Yukarıda gösterilen örnekte, SiteId *"/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite"*
+VM 'nin bulduğu Azure geçiş gerecine karşılık gelen siteID dizesinin değerini kopyalayın. Yukarıda gösterilen örnekte, siteID *"/Subscriptions/509099b2-9d2c-4636-B43E-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/Providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite"* olur
 
 ```azurepowershell
 
@@ -120,7 +120,7 @@ PS /home/bharathram> $machine = $Discoveredmachines | where {$_.Properties.displ
 PS /home/bharathram> $machine.count   #Validate that only 1 VM was found matching this name.
 ```
 
-Geçirilecek makine için ResourceId, ad ve disk uuid değerlerini kopyalayın.
+Geçirilecek makinenin RESOURCEID, ad ve disk UUID değerlerini kopyalayın.
 ```Output
 PS > $machine.Name
 10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50098f99-f949-22ca-642b-724ec6595210
@@ -139,10 +139,10 @@ uuid                                 label       name    maxSizeInBytes
 
 ## <a name="create-resource-manager-template-for-replication"></a>Çoğaltma için Kaynak Yöneticisi şablonu oluşturma
 
-- **Tanımlama çoğaltma altyapısı bileşenlerinde** indirdiğiniz Kaynak Yöneticisi şablon dosyasını seçtiğiniz bir düzenleyicide açın.
-- *"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems"* türündeki kaynaklar dışında şablondaki tüm kaynak tanımlarını kaldırın
-- Yukarıdaki türe ait birden çok kaynak tanımı varsa, biri hariç tümünün kaldırılmasını kaldırın. Kaynak tanımından özellik tanımlarına **bağlı** olarak kaldırın.
-- Bu adımın sonunda, aşağıdaki örnek gibi görünen ve aynı özellik kümesine sahip bir dosyanız olmalıdır.
+- **Çoğaltma altyapısı bileşenlerini belirleme** adımında indirdiğiniz Kaynak Yöneticisi Şablon dosyasını seçtiğiniz bir düzenleyicide açın.
+- *"Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationmigrationıtems"* türünde kaynaklar hariç tüm kaynak tanımlarını şablondan kaldırın
+- Yukarıdaki türün birden fazla kaynak tanımı varsa, bunlardan birini kaldırın. Kaynak tanımından tüm **Bağımlıdson** özellik tanımlarını kaldırın.
+- Bu adımın sonunda, aşağıdaki örnekte olduğu gibi görünen ve aynı özellik kümesine sahip bir dosyanız olmalıdır.
 
 ```
 {
@@ -182,14 +182,14 @@ uuid                                 label       name    maxSizeInBytes
 }
 ```
 
-- Kaynak tanımındaki **ad** özelliğini edin. Ad özelliğindeki son "/" dizesini $machine değeriyle *değiştirin. Ad*(önceki adımdan).
-- özelliklerinin değerini **değiştirin.providerSpecificDetails.vmwareMachineId** özelliği$machine değeri *ile. ResourceId*(önceki adımdan).
-- **HedefResourceGroupId,** **targetNetworkId,** **targetSubnetName** için hedef kaynak grubu kimliği, hedef sanal ağ kaynak kimliği ve hedef alt net adı sırasıyla değerleri ayarlayın.
-- Bu VM için Azure Karma Avantajı uygulamak için **licenseType** değerini "WindowsServer" olarak ayarlayın. Bu VM Azure Karma Avantajı için uygun değilse, **licenseType** değerini NoLicenseType olarak ayarlayın.
-- **HedefVmName** özelliğinin değerini, geçirilen VM için istenen Azure sanal makine adı ile değiştirin.
-- İsteğe bağlı olarak **targetVmName** özelliğinin altına **targetVmSize** adlı bir özellik ekleyin. **Hedeflenen VmSize** özelliğinin değerini, geçirilen VM için istenen Azure sanal makine boyutuna ayarlayın.
-- **disksToInclude** özelliği, her liste öğesi nin bir şirket içi diski temsil eden çoğaltma için disk girişlerinin listesidir. Şirket içi VM'deki disk sayısı kadar liste öğesi oluşturun. Liste öğesindeki **diskid** özelliğini önceki adımda tanımlanan disklerin uuid'ine değiştirin. **ISOSDisk** değerini VM işletim sistemi diski için "true" ve diğer tüm diskler için "false" olarak ayarlayın. **LogStorageAccountId'i** ve **logStorageAccountSasSecretName** özelliklerini değiştirmeden bırakın. **DiskType** değerini, disk için kullanmak üzere Azure Yönetilen Disk türüne *(Standard_LRS, Premium_LRS StandardSSD_LRS)* ayarlayın. CMK ile şifrelenebilen diskler için **diskEncryptionSetId** adında bir özellik ekleyin ve oluşturulan disk şifreleme kümesinin kaynak kimliğine ($des değerini**ayarlayın. Disk**Şifreleme *Kümesi Oluşturma* adımında Id )
-- Düzenlenen şablon dosyasını kaydedin. Yukarıdaki örnekte, düzenlenen şablon dosyası aşağıdaki gibi görünür:
+- Kaynak tanımındaki **ad** özelliğini düzenleyin. Name özelliğindeki Last "/" öğesini izleyen dizeyi $machine değeriyle değiştirin *. Ad*(önceki adımdan).
+- **Properties. providerSpecificDetails. Vmwaremachineıd** özelliğinin değerini $Machine değeri ile değiştirin *. RESOURCEID*(önceki adımdan).
+- **Targetresourcegroupıd**, **targetnetworkıd**, **targetsubnetname** değerlerini, hedef kaynak grubu KIMLIĞI, hedef sanal ağ kaynak kimliği ve hedef alt ağ adı sırasıyla ayarlayın.
+- Bu VM için Azure Hibrit Avantajı uygulamak için **LicenseType** değerini "windowsserver" olarak ayarlayın. Bu VM Azure Hibrit Avantajı uygun değilse, **LicenseType** değerini nolicensetype olarak ayarlayın.
+- **Targetvmname** özelliğinin DEĞERINI geçirilen VM 'Nin istenen Azure sanal makine adıyla değiştirin.
+- İsteğe bağlı olarak **Targetvmname** özelliğinin altında **targetvmsize** adlı bir özellik ekleyin. **Targetvmsize** özelliğinin DEĞERINI geçirilen VM Için istenen Azure sanal makine boyutu olarak ayarlayın.
+- **Diskstoınclude** özelliği, tek bir şirket içi diski temsil eden her liste öğesiyle çoğaltma için disk girişlerinin bir listesidir. Şirket içi VM 'deki disk sayısı kadar çok sayıda liste öğesi oluşturun. Liste öğesindeki **DiskID** özelliğini, önceki adımda tanımlanan disklerin UUID 'si ile değiştirin. **Iosdisk** değerini VM 'nin işletim sistemi diski için "true", diğer tüm diskler için "false" olarak ayarlayın. **Logstorageaccountıd** ve **Logstorageaccountsassecretname** özelliklerini değiştirmeden bırakın. **Disktype** değerini disk Için kullanılacak Azure yönetilen disk türü (*Standard_LRS, Premium_LRS, StandardSSD_LRS*) olarak ayarlayın. CMK ile şifrelenmesi gereken diskler için **Diskencryptionsetıd** adlı bir özellik ekleyin ve değeri oluşturulan disk şifreleme KÜMESININ kaynak kimliği ($des olarak ayarlayın **. Kimliği**) *disk şifreleme kümesi oluşturma* adımında
+- Düzenlenmiş şablon dosyasını kaydedin. Yukarıdaki örnekte, düzenlenmiş şablon dosyası şu şekilde görünür:
 
 ```
 {
@@ -249,7 +249,7 @@ uuid                                 label       name    maxSizeInBytes
 
 ## <a name="set-up-replication"></a>Çoğaltmayı ayarlama
 
-Artık VM için çoğaltma ayarlamak için düzenlenen Kaynak Yöneticisi şablonu proje kaynak grubuna dağıtabilirsiniz. [Azure Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtmayı](../azure-resource-manager/templates/deploy-powershell.md) öğrenin
+Artık, sanal makine için çoğaltmayı ayarlamak üzere düzenlenmiş Kaynak Yöneticisi şablonunu proje kaynak grubuna dağıtabilirsiniz. [Azure Resource Manager şablonları ve Azure PowerShell ile kaynak dağıtmayı](../azure-resource-manager/templates/deploy-powershell.md) öğrenin
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $ProjectResourceGroup -TemplateFile "C:\Users\Administrator\Downloads\template.json"
@@ -270,4 +270,4 @@ DeploymentDebugLogLevel :
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Portal deneyimi aracılığıyla çoğaltma durumunu [izleyin](tutorial-migrate-vmware.md#track-and-monitor) ve Test geçişleri ve geçişleri gerçekleştirin.
+Portal deneyimi aracılığıyla [çoğaltma durumunu izleyin](tutorial-migrate-vmware.md#track-and-monitor) ve test geçişleri ile geçişini gerçekleştirin.

@@ -1,6 +1,6 @@
 ---
-title: Azure Servis Veri Servisi ileti aktarımları, kilitler ve kapatma
-description: Bu makalede, Azure Hizmet Veri Servisi ileti aktarımlarına, kilitlere ve kapatma işlemlerine genel bir bakış sunulmaktadır.
+title: İleti aktarımları, kilitler ve kapatma Azure Service Bus
+description: Bu makalede Azure Service Bus ileti aktarımları, kilitler ve kapatma işlemlerine ilişkin bir genel bakış sunulmaktadır.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,35 +14,35 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: aschhab
 ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261001"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>İleti aktarımları, kilitler ve kapatma
 
-Service Bus gibi bir ileti aracısının merkezi özelliği, iletileri bir kuyruğa veya konuya kabul etmek ve daha sonra almak için kullanılabilir durumda tutmaktır. *Gönder,* iletinin ileti aracısına aktarılması için yaygın olarak kullanılan terimdir. *Alma,* iletinin bir istemciye aktarılması nda yaygın olarak kullanılan terimdir.
+Service Bus gibi bir ileti aracısının merkezi özelliği, iletileri bir kuyruğa veya konuya kabul etmek ve daha sonra alınabilmeleri için kullanılabilir tutmaktır. *Send* iletisi, ileti aracısına ileti aktarımı için yaygın olarak kullanılan terimdir. *Alma* , bir iletinin alma istemcisine aktarılması için yaygın olarak kullanılan terimdir.
 
-İstemci bir ileti gönderdiğinde, genellikle iletinin aracı tarafından düzgün bir şekilde aktarılıp aktarılmadığını veya bir tür hata nın oluşup oluşmadığını bilmek ister. Bu olumlu veya olumsuz bildirim müşteri ve broker anlayışı ile ilgili iletinin transfer durumu hakkında yerleşir ve böylece *uzlaşma*olarak adlandırılır.
+Bir istemci bir ileti gönderdiğinde, genellikle iletinin aracı tarafından düzgün şekilde aktarıldığını ve kabul edilip edilmediğini veya bir hata oluştuğunu bilmek ister. Bu olumlu veya negatif bildirim, istemciyi ve aracının aktarım durumu hakkında bilgi sahibi olduğunu ve bu nedenle *kapatma*olarak adlandırılmasını sağlar.
 
-Aynı şekilde, komisyoncu bir müşteriye bir ileti aktardığında, komisyoncu ve müşteri mesajın başarılı bir şekilde işlenip işlenmediği ve bu nedenle kaldırılıp kaldırılamayacağı veya ileti nin tesliminin veya işlenmesinin başarısız olup olmadığı ve böylece iletinin yeniden teslim edilmesi gerekebilir.
+Benzer şekilde, aracı bir istemciye bir ileti aktarırken, aracı ve istemci, iletinin başarıyla işlenip işlenmeyeceğini ve bu nedenle kaldırılıp kaldırılmadığını ya da ileti tesliminin ya da işlemenin başarısız olup olmadığını anlamak ister ve bu nedenle ileti yeniden teslim edilmesi gerekebilir.
 
-## <a name="settling-send-operations"></a>Gönderme işlemlerini çözme
+## <a name="settling-send-operations"></a>Gönderme işlemlerini kapatma
 
-Desteklenen Hizmet Veri Gönderi istemcilerinden herhangi birini kullanarak, Hizmetleri Veri Servisi'ne göndermek işlemleri her zaman açıkça kapatılır, bu da API işleminin Servis Veri Servisi'nden gelen kabul sonucunu beklediği ve daha sonra gönderme işlemini tamamladığını anlamına gelir.
+Desteklenen Service Bus API istemcilerinden herhangi birini kullanarak, işlemleri Service Bus içine gönder, API işleminin Service Bus gelmesi için bir kabul sonucu bekleyeceğini ve sonra Gönder işlemini tamamlayarak, her zaman açıkça kapatılır.
 
-İleti Servis Veri Kurumu tarafından reddedilirse, reddi içinde "izleme kimliği" bulunan bir hata göstergesi ve metin içerir. Ret işlemi başarı beklentisi ile yeniden denenebilir olup olmadığı hakkında bilgi içerir. İstemcide, bu bilgiler bir özel durum haline getirilir ve gönderme işlemini arayana yükseltilir. İleti kabul edildiyse, işlem sessizce tamamlanır.
+İleti Service Bus tarafından reddedilirse, reddetme bir hata göstergesi ve içinde bir "izleme kimliği" olan metin içerir. Reddetme, işlemin başarılı olma beklentisiyle yeniden denenip denenmeyeceğini belirten bilgileri de içerir. İstemcide, bu bilgiler özel bir duruma getirilir ve gönderme işlemi çağıranına yükseltilir. İleti kabul edildiyse, işlem sessizce tamamlanır.
 
-.NET Standart istemcisi ve Java istemcisi için özel protokol olan ve [.NET Framework istemcisi için bir seçenek olan](service-bus-amqp-dotnet.md)AMQP protokolünü kullanırken, ileti aktarımları ve yerleşimleri boru hattı ve tamamen eşzamanlı dır ve eşzamanlı programlama modeli API türevlerini kullanmanız önerilir.
+.NET Standard istemcisi ve Java istemcisi için özel protokol olan ve [.NET Framework istemcisi için bir seçenek](service-bus-amqp-dotnet.md)olan AMQP protokolünü kullanırken, ileti aktarımları ve kapatmaları ardışık düzen ve tamamen zaman uyumsuz olur ve zaman uyumsuz programlama modeli API türevlerini kullanmanız önerilir.
 
-Gönderen, sbmp protokolünde veya HTTP 1.1'de olduğu gibi, her iletinin kabul olmasını beklemek zorunda kalmadan, telüzerinde hızlı bir şekilde birkaç ileti koyabilir. Bu eşzamanlı gönderme işlemleri, ilgili iletiler kabul edilip depolandığında, bölümlenmiş varlıklarda veya farklı varlıklara işlem gönderdiğinde tamamlanır. Tamamlamalar, özgün gönderme siparişinin dışında da oluşabilir.
+Bir gönderici, SBMP protokolünde veya HTTP 1,1 ile büyük bir süre olacağı gibi, her bir iletinin onaylanmasına gerek kalmadan, her iletiyi almak için beklemek zorunda kalmadan, hatta her ileti için bir araya daha fazla ileti yerleştirebilir. İlgili iletiler kabul edildiği ve depolandığı, bölümlenmiş varlıklarda veya farklı varlıklara gönderme işlemi çakıştığında, bu zaman uyumsuz gönderme işlemleri tamamlanır. Tamamlamalar, özgün gönderme siparişinden da oluşabilir.
 
-Gönderme işlemlerinin sonucunu işleme stratejisi, uygulamanız için anında ve önemli bir performans etkisi ne olabilir. Bu bölümdeki örnekler C# ile yazılır ve Java Futures için eşdeğer olarak uygulanır.
+Gönderme işlemlerinin sonucunu işleme stratejisi, uygulamanız için anında ve önemli performans etkisine sahip olabilir. Bu bölümdeki örnekler C# dilinde yazılmıştır ve Java Futures için equivalently uygular.
 
-Uygulama, burada düz bir döngü yle resimlenen ileti patlamaları üretirse ve bir sonraki ileti, senkron veya eşzamanlı API şekillerini göndermeden önce her gönderme işleminin tamamlanmasını beklerse, 10 ileti yalnızca 10'dan sonra tamamlar yerleşim için sıralı tam gidiş-dönüş geziler.
+Uygulama bir sonraki ileti, zaman uyumlu veya zaman uyumsuz API şekillerini göndermeden önce, burada düz bir döngüyle gösterilen ve her gönderme işleminin tamamlanmasını beklemek zorunda olsaydı, 10 ileti gönderildiğinde yalnızca 10 sıralı tam gidiş dönüş sonrasında tamamlanır.
 
-Tesis içi bir siteden Servis Veri Servisi'ne 70 milisaniyelik tcp gidiş dönüş gecikme mesafesi ve Servis Veri Servisi'nin her iletiyi kabul etmesi ve depolaması için sadece 10 ms veren aşağıdaki döngü, yük aktarım süresini veya potansiyelini saymamak için en az 8 saniye kadar sürer. rota tıkanıklığı etkileri:
+Bir şirket içi siteden Service Bus ve her iletiyi kabul etmesi ve depolaması için yalnızca 10 Service Bus MS sağlayan 70 milisaniyelik bir TCP gidiş dönüş gecikme süresi ile, aşağıdaki döngü en az 8 saniye sürer, yük aktarma süresini veya olası yol tıkanıklık efektlerini saymaz:
 
 ```csharp
 for (int i = 0; i < 100; i++)
@@ -52,9 +52,9 @@ for (int i = 0; i < 100; i++)
 }
 ```
 
-Uygulama 10 asynchronous gönderme işlemlerini hemen art arda başlatır ve bunların tamamlanmasını ayrı ayrı beklerse, bu 10 gönderi işlemi için gidiş-dönüş süresi çakışıyor. 10 ileti, tcp çerçevelerini paylaşarak hemen art arda aktarılır ve genel aktarım süresi büyük ölçüde iletilerin aracıya aktarılması için gereken ağla ilgili süreye bağlıdır.
+Uygulama, arka arkaya 10 zaman uyumsuz gönderme işlemini başlatır ve ilgili tamamlamayı ayrı olarak bekleirse, bu 10 gönderme işlemlerine ilişkin gidiş dönüş süresi örtüşüyor. 10 ileti hemen art arda aktarılır, hatta TCP çerçevelerini paylaşıma alabilir ve genel aktarım süresi büyük ölçüde, aracıya aktarılan iletilerin alması için gereken ağla ilgili zamana bağlıdır.
 
-Önceki döngüyle aynı varsayımları yapmak, aşağıdaki döngü için toplam çakışan yürütme süresi bir saniyenin altında kalabilir:
+Önceki döngü için aynı varsayımlar yapılıyor, aşağıdaki döngü için toplam çakışan yürütme süresi bir saniye içinde iyi kalabilirler:
 
 ```csharp
 var tasks = new List<Task>();
@@ -65,9 +65,9 @@ for (int i = 0; i < 100; i++)
 await Task.WhenAll(tasks);
 ```
 
-Tüm eşzamanlı programlama modellerinin bekleyen işlemleri tutan bellek tabanlı, gizli iş sırasının bir tür ini kullandığını unutmayın. [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) veya **Send** (Java) döndüklerinde, gönderme görevi bu iş kuyruğunda sıraya alınır, ancak protokol hareketi yalnızca görevin çalışma sırası geldiğinde başlar. İleti patlamalarını itme eğiliminde olan ve güvenilirliğin bir sorun olduğu kod için, çok fazla iletinin aynı anda "uçuşa" konulmaması gerektiğine dikkat edilmelidir, çünkü gönderilen tüm iletiler aslında kabloya asılana kadar bellek alır.
+Tüm zaman uyumsuz programlama modellerinin, bekleyen işlemleri tutan bir dizi bellek tabanlı, gizli iş kuyruğunu kullandığından emin olmak önemlidir. [Sendadsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) veya **Send** (Java) geri geldiğinde, Gönder görevi o iş sırasında sıraya alınır ancak protokol hareketi, görevin çalışmaya dönüşü bir kez gönderilir. İletilerin ani ve güvenilir bir sorun olduğu konusunda eğilimi gösteren kod için, gönderilen tüm iletiler factually olana kadar bellek çektiğinden, her seferinde çok fazla ileti "uçuşmaya" koyduğundan dikkatli olunmalıdır.
 
-Semaforlar, C#'da aşağıdaki kod snippetinde gösterildiği gibi, gerektiğinde bu tür uygulama düzeyinde azaltmayı sağlayan eşitleme nesneleridir. Semaforbu kullanımı en fazla 10 mesajın aynı anda uçuşa izin verir. Mevcut 10 semafor kilidinden biri göndermeden önce alınır ve gönderme tamamlandıkça serbest bırakılır. Döngüden geçen 11.
+Aşağıdaki kod parçacığında C# dilinde gösterildiği gibi Semaforlar, gerektiğinde uygulama düzeyi azaltmayı etkinleştiren eşitleme nesneleridir. Semaforun bu kullanımı, en fazla 10 iletinin bir kez Uçuşta olmasını sağlar. 10 kullanılabilir semafor kilitlerinin biri göndermeden önce alınır ve gönderme işlemi olarak serbest bırakılır. Döngü boyunca geçen 11, önceki gönderiden en az biri tamamlanana kadar bekler ve ardından kilidini kullanılabilir hale getirir:
 
 ```csharp
 var semaphore = new SemaphoreSlim(10);
@@ -82,7 +82,7 @@ for (int i = 0; i < 100; i++)
 await Task.WhenAll(tasks);
 ```
 
-Uygulamalar, operasyonun sonucunu almadan **asla** "ateş ve unut" şeklinde bir eşzamanlı gönderme işlemi başlatmamalıdır. Bunu yapmak, iç ve görünmez görev sırasını bellek yorgunluğuna kadar yükleyebilir ve uygulamanın gönder hatalarını algılamasını engelleyebilir:
+Uygulamalar **hiçbir zaman** zaman uyumsuz gönderme işlemini işlemin sonucunu almadan bir "ateş ve unutmadan" bir biçimde başlatmamalıdır. Bunun yapılması, iç ve görünmeyen görev kuyruğunu bellek tükenmesi için yükleyebilir ve uygulamanın gönderme hatalarını algılamasını önler:
 
 ```csharp
 for (int i = 0; i < 100; i++)
@@ -92,51 +92,51 @@ for (int i = 0; i < 100; i++)
 }
 ```
 
-Düşük seviyeli BIR AMQP istemcisi ile Servis Otobüsü de "önceden yerleşmiş" aktarımları kabul eder. Önceden kararlaştırılan bir aktarım, her iki şekilde de sonucun istemciye geri bildirilmediğini ve iletinin gönderildiğinde kapatıldığı kabul edildiği bir yangın ve unut işlemidir. İstemciye geri bildirim eksikliği, tanılama için kullanılabilir bir veri olmadığı anlamına da gelir, bu da bu modun Azure desteği aracılığıyla yardım almaya uygun olmadığı anlamına gelir.
+Alt düzey AMQP istemcisiyle, Service Bus Ayrıca "önceden kapatılan" aktarımları kabul eder. Önceden kapatılan bir aktarım, sonucun istemciye geri bildirilmediği ve iletinin gönderildiğinde kapatılan kabul edildiği bir ateş ve-unut işlemidir. İstemciye geri bildirimde bulunamaması Ayrıca, Tanılama için kullanılabilir bir kullanılabilir veri yoktur, bu da bu modun Azure desteği aracılığıyla yardım için uygun olmadığı anlamına gelir.
 
-## <a name="settling-receive-operations"></a>Alma işlemlerini niçin halletmek
+## <a name="settling-receive-operations"></a>Alma işlemlerini kapatma
 
-Alma işlemleri için, Service Bus API istemcileri iki farklı açık modu etkinleştirir: *Al ve Sil* ve *Peek-Lock.*
+Alma işlemleri için Service Bus API istemcileri iki farklı açık modu etkinleştirir: *al-ve-DELETE* ve *Peek-kilitle*.
 
 ### <a name="receiveanddelete"></a>ReceiveAndDelete
 
-[Al ve Sil](/dotnet/api/microsoft.servicebus.messaging.receivemode) modu, aracıcıya gönderildiğinde alıcı istemciye gönderdiği tüm iletileri yerleşik olarak dikkate almasını söyler. Bu, iletinin komisyoncu nun kabloya koyar koymaz tükettiği anlamına gelir. İleti aktarımı başarısız olursa, ileti kaybolur.
+[Alma ve silme](/dotnet/api/microsoft.servicebus.messaging.receivemode) modu, aracıya gönderildiği sırada, alıcı istemciye gönderdiği tüm iletileri kabul etmeyi söyler. Diğer bir deyişle, aracı bunu kabloya yerleştirdiğinden ileti tüketilen kabul edilir. İleti aktarımı başarısız olursa ileti kaybedilir.
 
-Bu modun iyi tarafı, alıcının ileti üzerinde daha fazla işlem yapmanıza gerek olmaması ve anlaşmanın sonucunu bekleyerek de yavaşlatılmamasıdır. Tek tek iletilerde yer alan veriler düşük değere sahipse ve/veya çok kısa bir süre için anlamlıysa, bu mod makul bir seçimdir.
+Bu modun üstü, alıcının ileti üzerinde daha fazla işlem yapması gerekmez ve ayrıca kapatmanın sonucunu beklerken yavaşlamaz. Tek tek iletilerde içerilen verilerin değeri düşük ve/veya yalnızca çok kısa bir süre için anlamlı ise, bu mod makul bir seçimdir.
 
 ### <a name="peeklock"></a>PeekLock
 
-[Peek-Lock](/dotnet/api/microsoft.servicebus.messaging.receivemode) modu, alıcı istemcinin alınan iletileri açıkça kapatmak istediğini komisyoncuya bildirir. İleti, diğer rakip alıcıların göremaması için hizmette özel bir kilit altında tutulurken, alıcının işlemesi için kullanılabilir hale getirilir. Kilidin süresi başlangıçta sıra veya abonelik düzeyinde tanımlanır ve Kilidi niçin sahibi olan istemci tarafından [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) işlemi yle genişletilebilir.
+[Peek-kilit](/dotnet/api/microsoft.servicebus.messaging.receivemode) modu, alıcı istemcinin alınan iletileri açıkça kapatmak istediğini aracıya söyler. İleti, alıcının işlemesi için kullanılabilir hale getirilir, böylece diğer, rakip alıcıların bunu görebilmesi için hizmette özel bir kilit altında tutulur. Kilit süresi başlangıçta sırada veya abonelik düzeyinde tanımlanır ve [yenilenebilir kilit](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) işlemi aracılığıyla kilidin sahibi olan istemci tarafından genişletilebilir.
 
-Bir ileti kilitlendiğinde, aynı kuyruktan veya abonelikten alan diğer istemciler kilitleri alabilir ve etkin kilit altında olmayan bir sonraki kullanılabilir iletileri alabilir. İletideki kilit açıkça serbest bırakıldığında veya kilidin süresi dolduğunda, ileti yeniden teslim için alma siparişinin önünde veya önünde açılır.
+Bir ileti kilitliyken, aynı kuyruktan veya abonelikten alınan diğer istemciler kilitleri alabilir ve etkin kilit altında olmayan bir sonraki kullanılabilir iletiyi alabilir. Bir iletideki kilit açıkça serbest bırakıldığında veya kilidin süresi dolarsa, ileti yeniden teslim edilmek üzere alma sırasının önüne veya yanına doğru bir şekilde yeniden açılır.
 
-İleti alıcılar tarafından tekrar tekrar yayımlandığında veya kilidin belirli sayıda[(maxDeliveryCount)](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)alınmasına izin verdiklerinde, ileti otomatik olarak kuyruktan veya abonelikten kaldırılır ve ilişkili ölü harf kuyruğuna yerleştirilir.
+İleti alıcılar tarafından tekrararda serbest bırakıldığında veya kilit, belirlenen sayıda kez ([Maxdeliverycount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)) geçerse, ileti kuyruktan veya abonelikten otomatik olarak kaldırılır ve ilişkili atılacak ileti kuyruğuna yerleştirilir.
 
-Alıcı istemci, API düzeyinde [Tam'ı](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) aradığında olumlu bir bildirimle alınan bir iletinin çözüme kavuşması nı başlatır. Bu, aracıcıya iletinin başarıyla işlendiğini ve iletinin kuyruktan veya abonelikten kaldırıldığını gösterir. Komisyoncu, alıcının yerleşim amacına, anlaşmanın yapılıp yapılmayacağını belirten bir yanıtla yanıt verir.
+Alıcı istemci, API düzeyinde [tamamlanma](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) çağrısı yapıldığında olumlu bir bildirim ile alınan bir iletinin kapatılmasını başlatır. Bu, iletinin başarıyla işlendiği ve iletinin kuyruktan veya abonelikten kaldırıldığı aracıya işaret gösterir. Aracı, kapatmanın gerçekleştirilip gerçekleştirilmeyeceğini belirten bir Yanıt ile alıcının kapatma amacını yanıtlar.
 
-Alıcı istemci bir iletiyi işlemeyi başaramazsa ancak iletinin yeniden iletilmesini istediğinde, [bırak'ı](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) arayarak iletinin serbest bırakılmasını ve kilidinin açılmasını açıkça isteyebilir veya hiçbir şey yapamaz ve kilidin açılmasına izin verebilir.
+Alıcı istemci bir iletiyi işleyemediğinde ancak iletinin yeniden teslim edilmesini istiyorsa, [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) 'ı çağırarak iletiyi doğrudan serbest bir şekilde ve kilidi açabilir veya herhangi bir şey yapmaz ve kilitleme geçmesini sağlar.
 
-Alıcı istemci bir iletiyi işlemek için başarısız olursa ve iletiyi yeniden teslim etme ve işlemi yeniden denemenin yardımcı olmayacağını bilirse, [deadLetter'ı](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)arayarak ölü harf kuyruğuna taşıyan iletiyi reddedebilir, bu da ölü harf kuyruğundan iletiyle birlikte alınabilecek bir neden kodu da dahil olmak üzere özel bir özellik ayarlamasına olanak tanır.
+Alıcı istemci bir iletiyi işleyemezse ve iletiyi yeniden teslim etmek ve işlemi yeniden denemek size yardımcı olmazsa iletiyi reddedebilir ve bu ileti, [atılacak mektup sırasından](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)ileti ile alınabilecek bir neden kodu dahil özel bir özellik ayarlamaya olanak tanır ve bu da iletiyi reddedebilir.
 
-Ayrı bir makalede tartışılan özel bir uzlaşma durumu tecildir.
+Bir kapanış özel durumu ertelenmiştir ve ayrı bir makalede ele alınmıştır.
 
-**Tam** veya **Deadletter** işlemleri ve **Yenileme Kilidi** işlemleri ağ sorunları nedeniyle, tutulan kilidin süresi dolmuşsa veya yerleşimi engelleyen diğer hizmet tarafı koşulları varsa başarısız olabilir. İkinci durumlardan birinde, hizmet API istemcilerinde bir istisna olarak ortaya çıkan olumsuz bir bildirim gönderir. Bunun nedeni bozuk bir ağ bağlantısıysa, Servis Veri Yolu farklı bir bağlantıdaki varolan AMQP bağlantılarının kurtarılmasını desteklemediğinden kilit bırakılır.
+**Tam** **veya kaldırılmış bir Işlem ve** **yenilenebilir kilit** işlemleri ağ sorunları nedeniyle başarısız olabilir, bu da tutulan kilidin süresi dolmuşsa veya kapatmayı önleyen başka hizmet tarafı koşulları vardır. İkinci durumlardan birinde, hizmet API istemcilerinde özel durum olarak yüzey sağlayan negatif bir bildirim gönderir. Nedeni bozuk bir ağ bağlantııysa, farklı bir bağlantıda var olan AMQP bağlantılarının kurtarılmasını desteklemediği Service Bus kilit bırakılır.
 
-Genellikle ileti işlemeişleminin sonunda ve bazı durumlarda işlem dakikalarının ardından oluşan **Complete** başarısız olursa, alıcı uygulama işin durumunu koruyup korumadığına ve ikinci kez teslim edildiğinde aynı iletiyi yok saymaya mı yoksa ileti yeniden teslim edilirken iş sonucunu ve yeniden denemelerini mi atacağına karar verebilir.
+Genellikle ileti işlemenin çok sonunda ve bazı durumlarda çalışma işleminin süresi dolduktan sonra meydana gelen **işlem başarısız olursa** , alıcı uygulama işin durumunu korur ve ikinci bir kez teslim edildiğinde aynı iletiyi yok sayar ya da ileti yeniden teslim edildiğinde yeniden denemeler yapıp uygulamamaya karar verebilir.
 
-Yinelenen ileti teslimlerini tanımlamak için tipik bir mekanizma, gönderen tarafından büyük olasılıkla kaynak işleminden bir tanımlayıcıyla hizalanmış benzersiz bir değere ayarlanabilen ve ayarlanması gereken ileti kimliğini denetlemektir. Bir iş zamanlayıcısı büyük olasılıkla ileti kimliğini, verilen işçiyle birlikte bir işçiye atamaya çalıştığı işin tanımlayıcısına ayarlar ve bu iş zaten yapılmışsa, işçi iş atamasının ikinci oluşumunu göz ardı eder.
+Yinelenen ileti teslimlerini tanımlamaya yönelik tipik mekanizma ileti kimliğini denetleyerek, büyük olasılıkla kaynak işlemden tanımlayıcı ile hizalanmış bir şekilde, gönderen tarafından benzersiz bir değere ayarlanmalıdır. Bir iş Zamanlayıcı büyük olasılıkla ileti Kimliğini verilen çalışan bir çalışana atamaya çalıştığı işin tanımlayıcısına ayarlayabilir ve bu iş zaten yapıldıysa çalışan, iş atamasının ikinci oluşumunu yoksayar.
 
 > [!IMPORTANT]
-> PeekLock'un iletide edindığı kilidin geçici olduğunu ve aşağıdaki koşullarda kaybolabileceğini unutmayın
->   * Hizmet Güncellemesi
+> PeekLock 'in ileti üzerinde elde edilen kilidinin geçici olduğunu ve aşağıdaki koşullarda kaybolabileceğini unutmayın
+>   * Hizmet güncelleştirmesi
 >   * İşletim sistemi güncelleştirmesi
->   * Kilidi tutarken varlık (Sıra, Konu, Abonelik) üzerindeki özellikleri değiştirme.
+>   * Kilidi tutarken varlıktaki özellikleri değiştirme (kuyruk, konu, abonelik).
 >
-> Kilit kaybolduğunda, Azure Hizmet Veri Tos'u istemci uygulama kodunda su yüzüne çıkacak bir LockLostException oluşturur. Bu durumda, istemcinin varsayılan yeniden deneme mantığı otomatik olarak devreye girip işlemi yeniden denemelidir.
+> Kilit kaybedildiği zaman, Azure Service Bus istemci uygulama kodu üzerinde ortaya çıkacak bir LockLostException oluşturur. Bu durumda, istemcinin varsayılan yeniden deneme mantığı otomatik olarak başlamalıdır ve işlemi yeniden dener.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

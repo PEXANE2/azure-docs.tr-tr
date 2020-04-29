@@ -1,5 +1,5 @@
 ---
-title: Azure'da Hizmet Kumaşı'nda bir Java uygulaması için Jenkins'i yapılandırın
+title: Azure 'da Service Fabric bir Java uygulaması için Jenkins yapılandırma
 description: Bu öğreticide, bir Java Service Fabric uygulaması dağıtmak için Jenkins kullanarak sürekli tümleştirmenin nasıl ayarlanacağını öğreneceksiniz.
 author: suhuruli
 ms.topic: tutorial
@@ -7,15 +7,15 @@ ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376673"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Öğretici: Service Fabric üzerindeki bir Java uygulamasında CI/CD etkinleştirmek için bir Jenkins ortamı yapılandırma
 
-Bu öğretici, bir serinin beşinci kısmıdır. Yükseltmeleri uygulamanızda dağıtmak için Jenkins’in nasıl kullanılacağını gösterir. Bu öğreticide, Service Fabric Jenkins eklentisi, uygulamayı bir kümeye dağıtmak için Oylama uygulamasını barındıran bir GitHub deposuyla birlikte kullanılır.
+Bu öğretici, bir serinin beşinci kısmıdır. Yükseltmeleri uygulamanızda dağıtmak için Jenkins’in nasıl kullanılacağını gösterir. Bu öğreticide, Service Fabric Jenkins eklentisi, uygulamayı bir kümeye dağıtmak için oylama uygulamasını barındıran bir GitHub deposu ile birlikte kullanılır.
 
 Serinin beşinci kısmında öğrenecekleriniz:
 > [!div class="checklist"]
@@ -62,7 +62,7 @@ Jenkins’i bir Service Fabric kümesinin içinde veya dışında ayarlayabilirs
     * ``http://<HOST-IP>:8080`` olan bu parola, portaldan Jenkins panosunda oturum açmak için gereklidir
     * İlk kez oturum açtıktan sonra kendi kullanıcı hesabınızı oluşturabilir veya yönetici hesabını kullanabilirsiniz.
 
-1. GitHub'ı jenkins ile yeni [bir SSH anahtarı oluşturmada](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)belirtilen adımları kullanarak ve SSH aracısına ekleyerek çalışacak şekilde ayarlayın. Komutlar Docker kapsayıcısından çalıştırıldığından, Linux ortamı için yönergeleri izleyin.
+1. [Yeni BIR SSH anahtarı oluşturma ve SSH aracısına ekleme](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)bölümünde bahsedilen adımları kullanarak, GitHub 'ı Jenkins ile çalışacak şekilde ayarlayın. Komutlar Docker kapsayıcısından çalıştırıldığından, Linux ortamı için yönergeleri izleyin.
    * SSH anahtarı oluşturmak için GitHub tarafından sağlanan yönergeleri kullanın. Ardından, depoyu barındıran GitHub hesabına SSH anahtarını ekleyin.
    * Önceki bağlantıda belirtilen komutları Jenkins Docker kabuğunda (ana bilgisayarınızda değil) çalıştırın.
    * Ana bilgisayarınızdan Jenkins kabuğunda oturum açmak için aşağıdaki komutları kullanın:
@@ -75,7 +75,7 @@ Jenkins’i bir Service Fabric kümesinin içinde veya dışında ayarlayabilirs
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Bir Jenkins işi oluşturma ve yapılandırma
 
-1. İlk olarak, GitHub'da Oylama projesini barındırmak için kullanabileceğiniz bir deponuz yoksa, bir tane oluşturun. Bu öğreticinin geri kalan kısmında depo, **dev_test** olarak anılmıştır.
+1. İlk olarak, GitHub 'da oylama projesini barındırmak için kullanabileceğiniz bir deponuz yoksa bir tane oluşturun. Bu öğreticinin geri kalan kısmında depo, **dev_test** olarak anılmıştır.
 
 1. ``http://<HOST-IP>:8080`` üzerinden Jenkins panonuzda **yeni öğe** oluşturun.
 
@@ -85,15 +85,15 @@ Jenkins’i bir Service Fabric kümesinin içinde veya dışında ayarlayabilirs
 
    a. Genel bölümünde, **GitHub projesi**’nin onay kutusunu seçin ve GitHub projesi URL’nizi belirtin. Bu URL, Jenkins sürekli tümleştirme, sürekli dağıtım (CI/CD) akışı ile tümleştirmek istediğiniz Service Fabric Java uygulamasını barındırır (örneğin, ``https://github.com/testaccount/dev_test``).
 
-   b. **Kaynak Kodu Yönetimi** bölümünde **Git**’i seçin. Jenkins CI/CD akışıyla tümleştirmek istediğiniz Service Fabric Java uygulamasını barındıran depo URL'sini *https://github.com/testaccount/dev_test.git*belirtin (örneğin, ). Ayrıca, burada hangi dalın derleneceğini belirtebilirsiniz (örneğin, **/master**).
+   b. **Kaynak Kodu Yönetimi** bölümünde **Git**’i seçin. Jenkins CI/CD akışıyla tümleştirmek istediğiniz Service Fabric Java uygulamasını barındıran depo URL 'sini belirtin (örneğin, *https://github.com/testaccount/dev_test.git*). Ayrıca, burada hangi dalın derleneceğini belirtebilirsiniz (örneğin, **/master**).
 
 1. *GitHub*’ınızı (depoyu barındıran) Jenkins ile konuşabilecek şekilde yapılandırın. Aşağıdaki adımları kullanın:
 
-   a. GitHub depo sayfanıza gidin. **Ayarlar** > **Tümleştirmeleri ve Hizmetleri'ne**gidin.
+   a. GitHub depo sayfanıza gidin. **Ayarlar** > **tümleştirmeleri ve Hizmetleri '** ne gidin.
 
    b. **Hizmet Ekle**’yi seçin, **Jenkins** yazın ve **Jenkins-GitHub eklentisi**’ni seçin.
 
-   c. Jenkins web kancası URL'nizi girin (varsayılan olarak, ``http://<PublicIPorFQDN>:8081/github-webhook/`` olmalıdır). **Ekle/Güncelle hizmetini**tıklatın.
+   c. Jenkins web kancası URL'nizi girin (varsayılan olarak, ``http://<PublicIPorFQDN>:8081/github-webhook/`` olmalıdır). **Hizmet Ekle/güncelleştir**' e tıklayın.
 
    d. Jenkins örneğinize bir test olayı gönderilir. GitHub’da web kancasının yanında yeşil renkli bir onay işareti görürsünüz ve projeniz derlenir.
 
@@ -115,7 +115,7 @@ Jenkins’i bir Service Fabric kümesinin içinde veya dışında ayarlayabilirs
     > Burada küme, Jenkins kapsayıcı görüntüsünü dağıtmak için Service Fabric kullandığınız durumda Jenkins kapsayıcı uygulamasını barındıran kümeyle aynı olabilir.
     >
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 ## <a name="update-your-existing-application"></a>Mevcut uygulamanızı güncelleştirme
 
@@ -172,7 +172,7 @@ Jenkins’i bir Service Fabric kümesinin içinde veya dışında ayarlayabilirs
     </CodePackage>
     ```
 
-1. Uygulama yükseltmesi gerçekleştiren bir Jenkins işini başlatmaya çalışmak için, yeni değişikliklerinizi GitHub deponuza itin.
+1. Uygulama yükseltmesi gerçekleştiren bir Jenkins işini başlatmak için, yeni değişikliklerinizi GitHub deponuza gönderin.
 
 1. Service Fabric Explorer’da **Uygulamalar** açılan listesine tıklayın. Yükseltmenizin durumunu görmek için **Devam Eden Yükseltmeler** sekmesine tıklayın.
 

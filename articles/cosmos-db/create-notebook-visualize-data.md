@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Verileri analiz etmek ve görselleştirmek için Azure Cosmos DB'de bir dizüstü bilgisayar oluşturun"
-description: "Öğretici: Azure Cosmos DB'ye veri almak, verileri analiz etmek ve çıktıyı görselleştirmek için yerleşik Jupyter dizüstü bilgisayarlarını nasıl kullanacağınızı öğrenin."
+title: 'Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun'
+description: 'Öğretici: Azure Cosmos DB verileri içeri aktarmak, verileri çözümlemek ve çıktıyı görselleştirmek için yerleşik Jupyter not defterlerini nasıl kullanacağınızı öğrenin.'
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
@@ -8,33 +8,33 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73720916"
 ---
-# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: Verileri analiz etmek ve görselleştirmek için Azure Cosmos DB'de bir dizüstü bilgisayar oluşturun
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 
-Bu makalede, azure Cosmos DB'ye örnek perakende verilerini almak için yerleşik Jupyter dizüstü bilgisayarlarının nasıl kullanılacağı açıklanmaktadır. Sorguları çalıştırmak, verileri çözümlemek ve sonuçları görselleştirmek için SQL ve Azure Cosmos DB sihirli komutlarını nasıl kullanacağınızı göreceksiniz.
+Bu makalede, örnek perakende verileri Azure Cosmos DB aktarmak için yerleşik jupi Not defterlerinin nasıl kullanılacağı açıklanır. Sorguları çalıştırmak, verileri çözümlemek ve sonuçları görselleştirmek için SQL ve Azure Cosmos DB Magic komutlarının nasıl kullanılacağını göreceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Azure Cosmos hesabı oluştururken not defterleri desteğini etkinleştirme](enable-notebooks.md)
+* [Azure Cosmos hesabını oluştururken Not defteri desteğini etkinleştir](enable-notebooks.md)
 
-## <a name="create-the-resources-and-import-data"></a>Kaynakları oluşturma ve verileri alma
+## <a name="create-the-resources-and-import-data"></a>Kaynakları oluşturma ve verileri içeri aktarma
  
-Bu bölümde, Azure Cosmos veritabanını, kapsayıcıyı oluşturur ve perakende verilerini kapsayıcıya aktarın.
+Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve perakende verilerini kapsayıcıya aktaracaksınız.
 
-1. Azure Cosmos hesabınıza gidin ve **Veri Gezgini'ni açın.**
+1. Azure Cosmos hesabınıza gidin ve **Veri Gezgini açın.**
 
-1. **Not Defterleri** sekmesine `…` gidin, **Not Defterlerim'in** yanında seçin ve **Yeni Bir Not Defteri**oluşturun. Varsayılan Çekirdek olarak **Python 3'u** seçin.
+1. **Not** defterleri `…` sekmesine gidin, **Not Defterlerimin** ileri ' yi seçin ve **Yeni bir not defteri**oluşturun. Varsayılan Çekirdek olarak **Python 3 ' ü** seçin.
 
    ![Yeni not defteri oluşturma](./media/create-notebook-visualize-data/create-new-notebook.png)
 
-1. Yeni bir dizüstü bilgisayar oluşturulduktan sonra, **visualizeRetailData.ipynb** gibi bir şey için yeniden adlandırabilirsiniz.
+1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
 
-1. Daha sonra perakende verilerini depolamak için "RetailDemo" adında bir veritabanı ve "WebsiteData" adlı bir kapsayıcı oluşturacaksınız. /CardID'yi bölüm anahtarı olarak kullanabilirsiniz. Aşağıdaki kodu not defterinizdeki yeni bir hücreye kopyalayıp yapıştırın ve çalıştırın:
+1. Daha sonra perakende verilerini depolamak için "RetailDemo" adlı bir veritabanı ve "WebsiteData" adlı bir kapsayıcı oluşturacaksınız. /CardId ' i bölüm anahtarı olarak kullanabilirsiniz. Aşağıdaki kodu kopyalayıp Not defterinize yeni bir hücreye yapıştırın ve çalıştırın:
 
    ```python
    import azure.cosmos
@@ -47,22 +47,22 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcıyı oluşturur ve perakend
    print('Container WebsiteData created')
    ```
 
-   Bir hücreyi çalıştırmak `Shift + Enter` için hücreyi seçin veya hücreyi seçin ve veri gezgini gezinti çubuğunda **Etkin Hücreyi Çalıştır** seçeneğini seçin.
+   Bir hücreyi çalıştırmak için, hücreyi `Shift + Enter` seçin veya seçin ve veri Gezgini gezinti çubuğunda **etkin hücreyi Çalıştır** seçeneğini belirleyin.
 
-   ![Etkin hücreyi çalıştırma](./media/create-notebook-visualize-data/run-active-cell.png)
+   ![Etkin hücreyi Çalıştır](./media/create-notebook-visualize-data/run-active-cell.png)
 
-   Veritabanı ve kapsayıcı geçerli Azure Cosmos hesabınızda oluşturulur. Konteyner 400 RU/s ile birlikte verilir. Veritabanı ve kapsayıcı oluşturulduktan sonra aşağıdaki çıktıyı görürsünüz. 
+   Veritabanı ve kapsayıcı, geçerli Azure Cosmos hesabınızda oluşturulur. Kapsayıcı, 400 RU/s ile sağlanır. Veritabanı ve kapsayıcı oluşturulduktan sonra aşağıdaki çıktıyı görürsünüz. 
 
    ```console
     Database RetailDemo created
     Container WebsiteData created
    ```
 
-   **Ayrıca Veri** sekmesini yenileyebilir ve yeni oluşturulan kaynakları görebilirsiniz:
+   Ayrıca, **veri** sekmesini yenileyebilir ve yeni oluşturulan kaynakları görebilirsiniz:
 
    ![Yeni kapsayıcıyı görmek için veri sekmesini yenileyin](media/create-notebook-visualize-data/refresh-data-tab.png)
 
-1. Ardından örnek perakende verilerini Azure Cosmos kapsayıcısına aktarın. Perakende verilerinden bir öğenin biçimi aşağıda veda edin:
+1. Ardından, örnek perakende verilerini Azure Cosmos kapsayıcısına içeri aktaracaksınız. Perakende verilerinden bir öğenin biçimi aşağıda verilmiştir:
 
    ```json
     {
@@ -80,7 +80,7 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcıyı oluşturur ve perakend
     }
    ```
 
-   Öğretici amacıyla, örnek perakende verileri Azure blob depolama alanında depolanır. Aşağıdaki kodu yeni bir hücreye yapıştırarak Azure Cosmos kapsayıcısına aktarabilirsiniz. Öğe sayısını seçmek için bir sorgu çalıştırarak verilerin başarıyla alındığını doğrulayabilirsiniz.
+   Öğretici amacıyla, örnek perakende verileri Azure Blob depolama alanında depolanır. Aşağıdaki kodu yeni bir hücreye yapıştırarak Azure Cosmos kapsayıcısına aktarabilirsiniz. Öğelerin sayısını seçmek için bir sorgu çalıştırarak verilerin başarıyla içeri aktarıldığını doğrulayabilirsiniz.
 
    ```python
     # Read data from storage
@@ -104,7 +104,7 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcıyı oluşturur ve perakend
     print('Container with id \'{0}\' contains \'{1}\' items'.format(container.id, result[0]))
    ```
 
-   Önceki sorguyu çalıştırdığınızda, aşağıdaki çıktıyı döndürür:
+   Önceki sorguyu çalıştırdığınızda şu çıktıyı döndürür:
 
    ```console
    Importing data. This will take a few minutes...
@@ -112,45 +112,45 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcıyı oluşturur ve perakend
    Container with id 'WebsiteData' contains '2654' items
    ```
 
-## <a name="get-your-data-into-a-dataframe"></a>Verilerinizi bir DataFrame'e alın
+## <a name="get-your-data-into-a-dataframe"></a>Verilerinizi bir veri çerçevesine alın
 
-Verileri çözümlemek için sorguları çalıştırmadan önce, verileri kapsayıcıdan analiz için [Pandas DataFrame'e](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) kadar okuyabilirsiniz. Verileri DataFrame'e okumak için aşağıdaki sql magic komutunu kullanın:
+Verileri çözümlemek için sorguları çalıştırmadan önce, analiz için kapsayıcıdan bir [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) 'e ait verileri okuyabilirsiniz. Verileri bir DataFrame 'e okumak için aşağıdaki SQL Magic komutunu kullanın:
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output outputDataframeVar 
 {Query text}
 ```
 
-Daha fazla bilgi edinmek için [Azure Cosmos DB makalesindeki yerleşik not defteri komutlarına ve özelliklerine](use-notebook-features-and-commands.md) bakın. Sorguyu çalıştıracak- `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Sonuçlar, df_cosmos adlı bir Pandas DataFrame'e kaydedilir. Aşağıdaki komutu yeni bir not defteri hücresine yapıştırın ve çalıştırın:
+Daha fazla bilgi edinmek için [Azure Cosmos DB makalesinde yerleşik Not defteri komutları ve özellikleri](use-notebook-features-and-commands.md) bölümüne bakın. Sorguyu çalıştıracaksınız- `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Sonuçlar df_cosmos adlı bir Pandas DataFrame içine kaydedilir. Aşağıdaki komutu yeni bir not defteri hücresine yapıştırın ve çalıştırın:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```
 
-Yeni bir not defteri hücresinde, çıktıdan ilk 10 öğeyi okumak için aşağıdaki kodu çalıştırın:
+Yeni bir not defteri hücresinde, çıktısından ilk 10 öğeyi okumak için aşağıdaki kodu çalıştırın:
 
 ```python
 # See a sample of the result
 df_cosmos.head(10)
 ```
 
-![En iyi 10 öğeyi almak için sorguçalıştırma](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+![İlk 10 öğeyi almak için sorguyu Çalıştır](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
 
-## <a name="run-queries-and-analyze-your-data"></a>Sorguları çalıştırın ve verilerinizi çözümleme
+## <a name="run-queries-and-analyze-your-data"></a>Sorguları çalıştırın ve verilerinizi çözümleyin
 
-Bu bölümde, alınan veriler üzerinde bazı sorgular çalıştırın.
+Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
 
-* **Sorgu1:** Her ülkenin toplam satış gelirinin toplamını almak ve sonuçlardan 5 öğe görüntülemek için DataFrame'te sorguya göre bir Grup çalıştırın. Yeni bir not defteri hücresinde aşağıdaki kodu çalıştırın:
+* **Sorgu1:** Her ülkenin toplam satış gelirinin toplamını almak ve sonuçlardan 5 öğe göstermek için veri çerçevesinde sorgu yaparak bir grubu çalıştırın. Yeni bir not defteri hücresinde aşağıdaki kodu çalıştırın:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
    display(df_revenue.head(5))
    ```
 
-   ![Toplam satış geliri çıktısı](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   ![Toplam satış geliri çıkışı](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
 
-* **Sorgu2:** Satın alınan en iyi beş öğenin listesini almak için yeni bir dizüstü bilgisayar hücresi açın ve aşağıdaki kodu çalıştırın:
+* **Query2:** Satın alınan beş öğenin bir listesini almak için yeni bir not defteri hücresi açın ve aşağıdaki kodu çalıştırın:
 
    ```python
    import pandas as pd
@@ -159,18 +159,18 @@ Bu bölümde, alınan veriler üzerinde bazı sorgular çalıştırın.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Satın alınan en iyi beş öğe](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   ![İlk beş satın alınan öğe](./media/create-notebook-visualize-data/top5-purchased-items.png)
 
 ## <a name="visualize-your-data"></a>Verilerinizi görselleştirme  
 
-1. Azure Cosmos kapsayıcısından elde edilen gelirle ilgili verilerimize sahip olduğumuza göre, seçtiğiniz bir görselleştirme kitaplığıyla verilerinizi görselleştirebilirsiniz. Bu eğitimde, Bokeh kütüphanesini kullanacağız. Yeni bir not defteri hücresi açın ve Bokeh kitaplığını yüklemek için aşağıdaki kodu çalıştırın. Tüm gereksinimler karşılandıktan sonra kitaplık yüklenir.
+1. Azure Cosmos kapsayıcısından gelir üzerinde verilerimizi öğrendiğimiz için verilerinizi seçtiğiniz bir görselleştirme kitaplığıyla görselleştirebilirsiniz. Bu öğreticide bokeh kitaplığı kullanacağız. Yeni bir not defteri hücresi açın ve bokeh kitaplığını yüklemek için aşağıdaki kodu çalıştırın. Tüm gereksinimler karşılandıktan sonra, kitaplık yüklenir.
 
    ```python
    import sys
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. Sonra bir harita üzerinde veri çizmek için hazırlayın. Azure Blob depolama alanında bulunan ülke bilgileriyle Azure Cosmos DB'deki verilere katılın ve sonucu GeoJSON biçimine dönüştürün. Aşağıdaki kodu yeni bir not defteri hücresine kopyalayın ve çalıştırın.
+1. Sonra bir haritadaki verileri çizmek için hazırlanın. Azure Cosmos DB verileri Azure Blob depolamada bulunan ülke bilgileriyle birleştirin ve sonucu GeoJSON biçimine dönüştürün. Aşağıdaki kodu yeni bir not defteri hücresine kopyalayın ve çalıştırın.
 
    ```python
    import urllib.request, json
@@ -187,7 +187,7 @@ Bu bölümde, alınan veriler üzerinde bazı sorgular çalıştırın.
    json_data = json.dumps(merged_json)
    ```
 
-1. Aşağıdaki kodu yeni bir dizüstü bilgisayar hücresinde çalıştırarak farklı ülkelerin satış gelirlerini dünya haritasında görselleştirin:
+1. Yeni bir not defteri hücresinde aşağıdaki kodu çalıştırarak bir dünya eşlemesindeki farklı ülkelerin satış gelirini görselleştirin:
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,11 +233,11 @@ Bu bölümde, alınan veriler üzerinde bazı sorgular çalıştırın.
    show(p)
    ```
 
-   Çıktı, dünya haritasını farklı renklerle görüntüler. Daha koyu ve açık renkler, en yüksek gelire sahip ülkeleri temsil ediyor.
+   Çıktı, dünya haritasını farklı renklerle görüntüler. Daha hafif olan renkler, en düşük gelirle en yüksek gelire sahip ülkeleri temsil eder.
 
-   ![Ülkeler gelir haritası görselleştirme](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![Ülkeler gelir Haritası görselleştirme](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
-1. Başka bir veri görselleştirme vakası görelim. WebsiteData kapsayıcısı, bir öğeyi görüntüleyen, sepetine eklenen ve öğeyi satın alan kullanıcıların kaydına sahiptir. Satın alınan maddelerin dönüşüm oranını çizelim. Her öğe için dönüşüm oranını görselleştirmek için aşağıdaki kodu yeni bir hücrede çalıştırın:
+1. Veri görselleştirmesinin başka bir durumunu görelim. WebsiteData kapsayıcısı, bir öğeyi görüntüleyen, sepetine eklenen ve öğeyi satın alan kullanıcıların kaydına sahiptir. Satın alınan öğelerin dönüştürme oranını çizelim. Her bir öğenin dönüştürme oranını görselleştirmek için aşağıdaki kodu yeni bir hücrede çalıştırın:
 
    ```python
    from bokeh.io import show, output_notebook
@@ -286,8 +286,8 @@ Bu bölümde, alınan veriler üzerinde bazı sorgular çalıştırın.
    show(p)
    ```
 
-   ![Satınalma dönüşüm oranını görselleştirin](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   ![Satın alma dönüştürme oranını görselleştirin](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Not defteri komutları hakkında daha fazla bilgi edinmek için [Azure Cosmos DB makalesinde yerleşik not defteri komutlarının ve özelliklerinin nasıl kullanılacağına](use-notebook-features-and-commands.md) bakın.
+* Not defteri komutları hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB makalesinde yerleşik Not defteri komutlarını ve özelliklerini kullanma](use-notebook-features-and-commands.md) .

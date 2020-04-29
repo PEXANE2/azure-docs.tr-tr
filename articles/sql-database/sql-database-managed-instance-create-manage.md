@@ -1,6 +1,6 @@
 ---
-title: Yönetilen örnek için yönetim API başvurusu
-description: Azure SQL Veritabanı Yönetilen Örnekleri oluşturma ve yönetme hakkında bilgi edinin.
+title: Yönetilen örnek için yönetim API 'SI başvurusu
+description: Azure SQL veritabanı yönetilen örnekleri oluşturma ve yönetme hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,89 +12,89 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268866"
 ---
-# <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL Veritabanı Yönetilen Örnekleri için yönetilen API başvurusu
+# <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL veritabanı yönetilen örnekleri için yönetilen API başvurusu
 
-Azure portalı, PowerShell, Azure CLI, REST API ve Transact-SQL'i kullanarak Azure SQL Veritabanı Yönetilen Örnekleri oluşturabilir ve yönetebilirsiniz. Bu makalede, Yönetilen Örnek oluşturmak ve yapılandırmak için kullanabileceğiniz işlevlere ve API'ye genel bir bakış bulabilirsiniz.
+Azure portal, PowerShell, Azure CLı, REST API ve Transact-SQL kullanarak Azure SQL veritabanı yönetilen örnekleri oluşturabilir ve yönetebilirsiniz. Bu makalede, yönetilen örnek oluşturmak ve yapılandırmak için kullanabileceğiniz işlevlere ve API 'ye genel bir bakış bulabilirsiniz.
 
-## <a name="azure-portal-create-a-managed-instance"></a>Azure portalı: Yönetilen bir örnek oluşturma
+## <a name="azure-portal-create-a-managed-instance"></a>Azure portal: yönetilen örnek oluşturma
 
-Azure SQL Veritabanı Yönetilen Örneği'ni nasıl oluşturabileceğinizi gösteren hızlı bir başlangıç için Bkz. [Hızlı Başlangıç: Azure SQL Veritabanı Yönetilen Örneği Oluşturun.](sql-database-managed-instance-get-started.md)
+Azure SQL veritabanı yönetilen örneği oluşturmayı gösteren bir hızlı başlangıç için bkz. [hızlı başlangıç: Azure SQL veritabanı yönetilen örneği oluşturma](sql-database-managed-instance-get-started.md).
 
-## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: Yönetilen örnekleri oluşturma ve yönetme
+## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: yönetilen örnekler oluşturma ve yönetme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Kaynak Yöneticisi modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirme az.sql modülü içindir. Bu cmdlets için [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın. Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-Azure PowerShell ile yönetilen örnekleri oluşturmak ve yönetmek için aşağıdaki PowerShell cmdlets'i kullanın. PowerShell'i yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure PowerShell modüllerini yükle'ye](/powershell/azure/install-az-ps)bakın.
+Azure PowerShell ile yönetilen örnekler oluşturup yönetmek için aşağıdaki PowerShell cmdlet 'lerini kullanın. PowerShell 'i yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> PowerShell örnek komut dosyaları için [bkz: Hızlı başlatma komut dosyası: PowerShell kitaplığını kullanarak Azure SQL Yönetilen Örnek oluşturun.](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/)
+> PowerShell örnek betikleri için bkz. [hızlı başlangıç betiği: PowerShell kitaplığı kullanarak Azure SQL yönetilen örneği oluşturma](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
 | Cmdlet | Açıklama |
 | --- | --- |
-|[Yeni-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Azure SQL Veritabanı Yönetilen Örneği Oluşturur |
-|[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Azure SQL Yönetilen Örneği hakkında bilgi verir|
-|[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Azure SQL Veritabanı Yönetilen Örneği için özellikleri ayarlar|
-|[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Azure SQL Yönetilen Veritabanı Örneğini Kaldırır|
-|[Yeni-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Azure SQL Veritabanı Yönetilen Örnek veritabanı oluşturur|
-|[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Azure SQL Yönetilen Örnek veritabanı hakkında bilgi verir|
-|[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Azure SQL Yönetilen Veritabanı Örneği veritabanını kaldırır|
-|[Geri Yükleme-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Azure SQL Yönetilen Veritabanı Örneği veritabanını geri yükler|
+|[New-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Azure SQL veritabanı yönetilen örneği oluşturur |
+|[Get-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Azure SQL yönetilen örneği hakkında bilgi döndürür|
+|[Set-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Azure SQL veritabanı yönetilen örneği için özellikleri ayarlar|
+|[Remove-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Azure SQL yönetilen veritabanı örneğini kaldırır|
+|[New-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Azure SQL veritabanı yönetilen örnek veritabanı oluşturur|
+|[Get-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Azure SQL yönetilen örnek veritabanı hakkında bilgi döndürür|
+|[Remove-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Azure SQL yönetilen veritabanı örneği veritabanını kaldırır|
+|[Restore-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Azure SQL yönetilen veritabanı örneği veritabanını geri yükler|
 
-## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: Yönetilen örnekleri oluşturma ve yönetme
+## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLı: yönetilen örnekler oluşturma ve yönetme
 
-[Azure CLI](/cli/azure)ile yönetilen örnekleri oluşturmak ve yönetmek için aşağıdaki [Azure CLI SQL Yönetilen Örnek](/cli/azure/sql/mi) komutlarını kullanın. CLI’yi tarayıcınızda çalıştırmak için [Cloud Shell](/azure/cloud-shell/overview) kullanın veya macOS, Linux ya da Windows’da [yükleyin](/cli/azure/install-azure-cli).
+[Azure CLI](/cli/azure)ile yönetilen örnekler oluşturup yönetmek Için AŞAĞıDAKI [Azure CLI SQL yönetilen örnek](/cli/azure/sql/mi) komutlarını kullanın. CLI’yi tarayıcınızda çalıştırmak için [Cloud Shell](/azure/cloud-shell/overview) kullanın veya macOS, Linux ya da Windows’da [yükleyin](/cli/azure/install-azure-cli).
 
 > [!TIP]
-> Azure CLI hızlı başlatma için Azure [CLI'yi kullanarak SQL Yönetilen Örnekle Çalışma'ya](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)bakın.
+> Azure CLı hızlı başlangıcı için bkz. [Azure CLI kullanarak SQL yönetilen örneği Ile çalışma](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
 | Cmdlet | Açıklama |
 | --- | --- |
-|[az sql mi oluşturma](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Yönetilen Örnek Oluşturur|
-|[az sql mi listesi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Kullanılabilir Yönetilen Örnekleri listeler|
-|[az sql mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Yönetilen Örnek için ayrıntıları alma|
-|[az sql mi güncelleme](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Yönetilen Örneği Güncelleştirir|
-|[az sql mi silme](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Yönetilen Örneği Kaldırır|
-|[az sql midb oluşturma](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Yönetilen bir veritabanı oluşturur|
-|[az sql midb listesi](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Kullanılabilir yönetilen veritabanlarını listeler|
-|[az sql midb geri yükleme](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Yönetilen veritabanını geri yükleme|
-|[az sql midb silme](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Yönetilen veritabanını kaldırır|
+|[az SQL mı oluştur](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Yönetilen bir örnek oluşturur|
+|[az SQL mı listesi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Kullanılabilir yönetilen örnekleri listeler|
+|[az SQL mı Show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|Yönetilen bir örnek için ayrıntıları alın|
+|[az SQL mı güncelleştirmesi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|Yönetilen bir örneği güncelleştirir|
+|[az SQL mi Delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|Yönetilen bir örneği kaldırır|
+|[az SQL mıdb Create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |Yönetilen bir veritabanı oluşturur|
+|[az SQL mıdb List](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|Kullanılabilir yönetilen veritabanlarını listeler|
+|[az SQL mıdb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Yönetilen bir veritabanını geri yükleme|
+|[az SQL mıdb Delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Yönetilen bir veritabanını kaldırır|
 
-## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL: Örnek veritabanları oluşturma ve yönetme
+## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL: örnek veritabanları oluşturma ve yönetme
 
-Yönetilen Örnek oluşturulduktan sonra örnek veritabanı oluşturmak ve yönetmek için aşağıdaki T-SQL komutlarını kullanın. Bu komutları Azure portalı, [SQL Server Management Studio,](/sql/ssms/use-sql-server-management-studio)Azure Data [Studio'yu](https://docs.microsoft.com/sql/azure-data-studio/what-is)kullanarak verebilirsiniz. [Visual Studio Code](https://code.visualstudio.com/docs)veya Bir Azure SQL Veritabanı sunucusuna bağlanabilen ve Transact-SQL komutlarını geçebilen başka bir program.
+Yönetilen örnek oluşturulduktan sonra örnek veritabanı oluşturmak ve yönetmek için aşağıdaki T-SQL komutlarını kullanın. Azure portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio) [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)kullanarak bu komutları verebilirsiniz. [Visual Studio Code](https://code.visualstudio.com/docs)veya BIR Azure SQL veritabanı sunucusuna bağlanabilecek ve Transact-SQL komutlarını geçirebilirler.
 
 > [!TIP]
-> Microsoft Windows'da SQL Server Management Studio'u kullanarak yönetilen bir örneği yapılandırmanız ve ona bağlanmanız gerektiğini gösteren hızlı başlangıçlar için [Bkz. Quickstart: Azure Sql Veritabanı Yönetilen Örneği'ne bağlanmak için Azure VM'yi yapılandırın](sql-database-managed-instance-configure-vm.md) [ve Quickstart: Şirket içinde bir Azure SQL Veritabanı Yönetilen Örneği'ne noktadan siteye bağlantı kurun.](sql-database-managed-instance-configure-p2s.md)
+> Microsoft Windows üzerinde SQL Server Management Studio kullanarak yönetilen bir örneğe yapılandırma ve bağlanma yapmanız gerektiğini gösteren hızlı başlangıç için bkz. [hızlı başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak Için Azure VM 'Yi yapılandırma](sql-database-managed-instance-configure-vm.md) ve [hızlı başlangıç: Şirket IÇINDEN bir Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma](sql-database-managed-instance-configure-p2s.md).
 > [!IMPORTANT]
-> Transact-SQL kullanarak Yönetilen Örnek oluşturamaz veya silemezsiniz.
+> Transact-SQL ' y i kullanarak yönetilen bir örnek oluşturamaz veya silemezsiniz.
 
 | Komut | Açıklama |
 | --- | --- |
-|[VERITABANı OLUŞTUR](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Yeni bir Yönetilen Örnek veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmalısınız.|
-| [VERITABANıNı DEĞIŞTIR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Azure SQL Yönetilen Örnek veritabanını değiştirir.|
+|[VERITABANı OLUŞTUR](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Yeni bir yönetilen örnek veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Azure SQL yönetilen örnek veritabanını değiştirir.|
 
-## <a name="rest-api-create-and-manage-managed-instances"></a>REST API: Yönetilen örnekleri oluşturma ve yönetme
+## <a name="rest-api-create-and-manage-managed-instances"></a>REST API: yönetilen örnekler oluşturma ve yönetme
 
-Yönetilen Örnekleri oluşturmak ve yönetmek için bu REST API isteklerini kullanın.
+Yönetilen örnekler oluşturmak ve yönetmek için bu REST API isteklerini kullanın.
 
 | Komut | Açıklama |
 | --- | --- |
-|[Yönetilen Örnekler - Oluştur Veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|Yönetilen Örnek oluşturur veya güncelleştirir.|
-|[Yönetilen Örnekler - Sil](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Yönetilen Örneği siler.|
-|[Yönetilen Örnekler - Get](https://docs.microsoft.com/rest/api/sql/managedinstances/get)|Yönetilen Bir Örnek Alır.|
-|[Yönetilen Örnekler - Liste](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|Abonelikte Yönetilen Örneklerin listesini verir.|
-|[Yönetilen Örnekler - Kaynak Grubuna Göre Listele](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Kaynak grubunda Yönetilen Örneklerin listesini verir.|
-|[Yönetilen Örnekler - Güncelleme](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Yönetilen Örneği Güncelleştirir.|
+|[Yönetilen örnekler-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|Yönetilen bir örnek oluşturur veya güncelleştirir.|
+|[Yönetilen örnekler-Sil](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Yönetilen bir örneği siler.|
+|[Yönetilen örnekler-al](https://docs.microsoft.com/rest/api/sql/managedinstances/get)|Yönetilen bir örnek alır.|
+|[Yönetilen örnekler-liste](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|Bir abonelikteki yönetilen örneklerin listesini döndürür.|
+|[Yönetilen örnekler-kaynak grubuna göre Listele](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Bir kaynak grubundaki yönetilen örneklerin listesini döndürür.|
+|[Yönetilen örnekler-güncelleştirme](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Yönetilen bir örneği güncelleştirir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- BIR SQL Server veritabanını Azure'a geçirme hakkında bilgi edinmek [için](sql-database-single-database-migrate.md)bkz.
-- Desteklenen özellikler hakkında bilgi için [bkz.](sql-database-features.md)
+- SQL Server bir veritabanını Azure 'a geçirme hakkında bilgi edinmek için bkz. [Azure SQL veritabanı 'Na geçiş](sql-database-single-database-migrate.md).
+- Desteklenen özellikler hakkında bilgi için bkz. [Özellikler](sql-database-features.md).

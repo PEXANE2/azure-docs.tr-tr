@@ -1,5 +1,5 @@
 ---
-title: Azure Veri Gölü Analizini Sorgula - Visual Studio
+title: Sorgu Azure Data Lake Analytics-Visual Studio
 description: Visual Studio için Data Lake Araçları'nı nasıl yükleyeceğinizi ve U-SQL betiklerini nasıl geliştirip test edeceğinizi öğrenin.
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -10,22 +10,22 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260351"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme
 
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Azure Veri Gölü ve Akış Analizi Araçları, iki Azure hizmeti, Azure Veri Gölü Analizi ve Azure Akış Analizi ile ilgili işlevleri içerir. Azure Akış Analizi senaryoları hakkında daha fazla bilgi için [Visual Studio için Azure Akış Analizi araçlarına](../stream-analytics/stream-analytics-tools-for-visual-studio-install.md)bakın.
+Azure Data Lake ve Stream Analytics araçları, iki Azure hizmeti, Azure Data Lake Analytics ve Azure Stream Analytics ile ilgili işlevsellik içerir. Azure Stream Analytics senaryoları hakkında daha fazla bilgi için bkz. [Visual Studio için Azure Stream Analytics araçları](../stream-analytics/stream-analytics-tools-for-visual-studio-install.md).
 
-Bu makalede, Azure Veri Gölü Analizi hesapları oluşturmak için Visual Studio'nun nasıl kullanılacağı açıklanmaktadır. [U-SQL'deki](data-lake-analytics-u-sql-get-started.md)işleri tanımlayabilir ve işleri Data Lake Analytics hizmetine gönderebilirsiniz. Veri Gölü Analizi hakkında daha fazla bilgi için [Azure Veri Gölü Analizi'ne genel bakış](data-lake-analytics-overview.md)bölümüne bakın.
+Bu makalede, Azure Data Lake Analytics hesapları oluşturmak için Visual Studio 'Nun nasıl kullanılacağı açıklanır. İşleri [U-SQL](data-lake-analytics-u-sql-get-started.md)içinde tanımlayabilir ve Data Lake Analytics hizmetine işler gönderebilirsiniz. Data Lake Analytics hakkında daha fazla bilgi için bkz. [Azure Data Lake Analytics genel bakış](data-lake-analytics-overview.md).
 
 > [!IMPORTANT]
-> Visual Studio sürümü 2.3.3000.4 veya sonraki sürüm için Azure Veri Göl Araçları'na yükseltmenizi öneririz. Önceki sürümler artık indirilemiyor ve kullanım dışı.
+> Visual Studio için Azure Data Lake Araçları sürüm 2.3.3000.4 veya sonraki bir sürüme yükseltmenizi öneririz. Önceki sürümler artık indirilemiyor ve kullanım dışı.
 >
 > 1. Visual Studio için Azure Data Lake Araçları’nın 2.3.3000.4’ten önceki bir sürümünü kullanıp kullanmadığınızı denetleyin.
 >
@@ -45,21 +45,21 @@ Bu makalede, Azure Veri Gölü Analizi hesapları oluşturmak için Visual Studi
   * Visual Studio 2013
 
 * **.NET için Microsoft Azure SDK** 2.7.1 sürümü veya sonraki sürümleri. [Web platformu yükleyicisini](https://www.microsoft.com/web/downloads/platform.aspx) kullanarak yükleyin.
-* **Bir Data Lake Analytics** hesabı. Hesap oluşturmak için bkz. [Azure portalı kullanarak Azure Data Lake Analytics ile çalışmaya başlama](data-lake-analytics-get-started-portal.md).
+* **Data Lake Analytics** hesabı. Hesap oluşturmak için bkz. [Azure portalı kullanarak Azure Data Lake Analytics ile çalışmaya başlama](data-lake-analytics-get-started-portal.md).
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Visual Studio için Azure Data Lake Araçları’nı yükleme
 
-Bu öğretici, Visual Studio için Data Lake Araçları’nın yüklü olmasını gerektirir. Daha fazla bilgi için Visual [Studio için Veri Gölü Araçlarını Yükle'ye](data-lake-analytics-data-lake-tools-install.md)bakın.
+Bu öğretici, Visual Studio için Data Lake Araçları’nın yüklü olmasını gerektirir. Daha fazla bilgi için bkz. [Visual Studio için Data Lake araçları 'Nı yükler](data-lake-analytics-data-lake-tools-install.md).
 
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Azure Data Lake Analytics hesabına bağlanma
 
 1. Visual Studio'yu açın.
 
-1. Sunucu **Gezgini'ni** **Görüntüle'yi** > seçerek Server**Explorer'ı**açın.
+1. **Sunucu Gezgini** **Sunucu Gezgini** **göster** > ' i seçerek açın.
 
-1. Azure'a **Azure**sağ tıklayın, ardından **Microsoft Azure Aboneliği'ne Bağlan'ı**seçin. **Hesabınızda Oturum Aç,** talimatları izleyin.
+1. **Azure**' a sağ tıklayıp **Microsoft Azure aboneliğine Bağlan**' ı seçin. **Hesabınızda oturum açmak için**yönergeleri izleyin.
 
-1. **Sunucu Gezgini'nde** **Azure** > **Veri Gölü Analitiği'ni**seçin. Data Lake Analytics hesaplarınızın listesini görürsünüz.
+1. **Sunucu Gezgini**' de **Azure** > **Data Lake Analytics**' nı seçin. Data Lake Analytics hesaplarınızın listesini görürsünüz.
 
 ## <a name="write-your-first-u-sql-script"></a>İlk U-SQL betiğinizi yazma
 
@@ -82,17 +82,17 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics işi gönderme
 
-1. Visual Studio'da **Dosya** > **Yeni** > **Projesi'ni**seçin.
+1. Visual Studio 'da **Dosya** > **Yeni** > **Proje**' yi seçin.
 
-1. **U-SQL Project** türünü seçin ve sonra **İleri'yi**seçin. **Yeni projenizi yapılandırın**, **Oluştur'u**seçin.
+1. **U-SQL proje** türünü seçin ve ardından **İleri**' yi seçin. **Yeni projenizi yapılandırın**bölümünde **Oluştur**' u seçin.
 
-   Visual Studio, **Script.usql** dosyası içeren bir çözüm oluşturur.
+   Visual Studio, bir **Script. usql** dosyası içeren bir çözüm oluşturur.
 
-1. Komut [dosyasını ilk U-SQL komut dosyanızı](#write-your-first-u-sql-script) **Script.usql** penceresine yazın' dan yapıştırın.
+1. Betiği [Ilk U-SQL betiğinizden](#write-your-first-u-sql-script) **Script. usql** penceresine yapıştırın.
 
-1. **Solution Explorer'da**, **Script.usql'e**sağ tıklayın ve **Komut Dosyası Gönder'i**seçin.
+1. **Çözüm Gezgini**, **Script. usql**öğesine sağ tıklayın ve **betiği gönder**' i seçin.
 
-1. **İş**Gönder'de, Veri Gölü Analizi hesabınızı seçin ve **Gönder'i**seçin.
+1. **Işi gönder**' de Data Lake Analytics hesabınızı seçin ve **Gönder**' i seçin.
 
    ![U-SQL Visual Studio projesini gönderme](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-submit-job-vs2019.png)
 
@@ -103,16 +103,16 @@ OUTPUT @a
 * **Meta Veri İşlemleri**, U-SQL kataloğunda yapılan tüm işlemleri gösterir.
 * **Veri** tüm girdileri ve çıktıları gösterir.
 * **Durum Geçmişi** bölümünde zaman çizelgesi ve durum ayrıntıları gösterilir.
-* **AU Analizi,** işte kaç AUs kullanıldığını gösterir ve farklı AU ayırma stratejilerinin simülasyonlarını araştırın.
+* **Au Analizi** işte kaç au kullanıldığını gösterir ve farklı au ayırma stratejilerinin benzetimlerini keşfedebilir.
 * **Tanılama**, iş yürütme ve performans iyileştirme için gelişmiş bir analiz sağlar.
 
 ![U-SQL Visual Studio Data Lake Analytics iş performans grafiği](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-En son iş durumunu görmek ve ekranı yenilemek için **Yenile'yi**seçin.
+En son iş durumunu görmek ve ekranı yenilemek için **Yenile**' yi seçin.
 
 ## <a name="check-job-status"></a>İş durumunu kontrol etme
 
-1. **Sunucu Gezgini'nde** **Azure** > **Veri Gölü Analitiği'ni**seçin.
+1. **Sunucu Gezgini**' de **Azure** > **Data Lake Analytics**' nı seçin.
 
 1. Data Lake Analytics hesap adını genişletin.
 
@@ -122,7 +122,7 @@ En son iş durumunu görmek ve ekranı yenilemek için **Yenile'yi**seçin.
 
 ## <a name="see-the-job-output"></a>İş çıktısını görme
 
-1. **Sunucu Gezgini'nde,** gönderdiğiniz işe göz atın.
+1. **Sunucu Gezgini**, gönderdiğiniz işe gidin.
 
 1. **Veri** sekmesine tıklayın.
 

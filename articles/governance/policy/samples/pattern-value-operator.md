@@ -1,25 +1,25 @@
 ---
-title: 'Desen: İlke tanımındaki değer işleci'
-description: Bu Azure İlkesi deseni, değer işlecinin ilke tanımında nasıl kullanılacağına bir örnek sağlar.
+title: 'Model: bir ilke tanımındaki değer işleci'
+description: Bu Azure Ilke modelinde, bir ilke tanımında değer işlecinin nasıl kullanılacağına ilişkin bir örnek verilmiştir.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: ace7b7cd4a765cdb8c7aa764b52b180c60508ab2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77172789"
 ---
-# <a name="azure-policy-pattern-the-value-operator"></a>Azure İlkesi deseni: değer işleci
+# <a name="azure-policy-pattern-the-value-operator"></a>Azure Ilke stili: değer operatörü
 
-[Değer](../concepts/definition-structure.md#value) işleci [parametreleri,](../concepts/definition-structure.md#parameters) [desteklenen şablon işlevlerini](../concepts/definition-structure.md#policy-functions)veya belirli bir [durum](../concepts/definition-structure.md#conditions)için sağlanan değere literals değerlendirir.
+[Value](../concepts/definition-structure.md#value) işleci [parametreleri](../concepts/definition-structure.md#parameters), [desteklenen şablon işlevlerini](../concepts/definition-structure.md#policy-functions)veya sabit değerlerini belirli bir [koşul](../concepts/definition-structure.md#conditions)için sağlanan bir değere değerlendirir.
 
 > [!WARNING]
-> _Şablon işlevinin_ sonucu bir hataysa, ilke değerlendirmesi başarısız olur. Başarısız bir değerlendirme örtülü bir **inkardır.** Daha fazla bilgi için [şablon hatalarından kaçınma](../concepts/definition-structure.md#avoiding-template-failures)ya da bkz.
+> Bir _şablon işlevinin_ sonucu bir hata ise, ilke değerlendirmesi başarısız olur. Başarısız bir değerlendirme örtük bir **reddetme**. Daha fazla bilgi için bkz. [şablon arızalarını önleme](../concepts/definition-structure.md#avoiding-template-failures).
 
 ## <a name="sample-policy-definition"></a>Örnek ilke tanımı
 
-Bu ilke tanımı, kaynaklara parametre **tagName** _(string)_ olarak belirtilen etiketi ekler veya değiştirir ve kaynağın içinde olduğu kaynak grubundan **tagName** değerini devralır. Bu değerlendirme, kaynak oluşturulduğunda veya güncelleştirildiğinde gerçekleşir. [Değişiklik](../concepts/effects.md#modify) efekti olarak, düzeltme bir [düzeltme görevi](../how-to/remediate-resources.md)aracılığıyla varolan kaynaklarüzerinde çalıştırılabilir.
+Bu ilke tanımı, kaynaklardaki **TagName** (_String_) parametresinde belirtilen etiketi ekler veya değiştirir ve kaynak grubundaki **TagName** için değeri kaynağın bulunduğu kaynak grubundan devralır. Bu değerlendirme, kaynak oluşturulduğunda veya güncellendiğinde gerçekleşir. [Değişiklik](../concepts/effects.md#modify) etkisi olarak, düzeltme bir [Düzeltme görevi](../how-to/remediate-resources.md)aracılığıyla mevcut kaynaklarda çalıştırılabilir.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-value-operator.json":::
 
@@ -27,9 +27,9 @@ Bu ilke tanımı, kaynaklara parametre **tagName** _(string)_ olarak belirtilen 
 
 :::code language="json" source="~/policy-templates/patterns/pattern-value-operator.json" range="20-30" highlight="7,8":::
 
-**Değer** işleci, **properties**içinde blok **varsa policyRule.if** içinde kullanılır. Bu örnekte, [mantıksal işleç](../concepts/definition-structure.md#logical-operators) **allOf** etkisi için her iki koşullu ifadeler doğru olması gerektiğini belirtmek için kullanılır, **değiştirmek**, gerçekleşecek.
+**Value** Işleci, **policyrule. If** blok **özellikleri**içinde kullanılır. Bu örnekte, her iki koşullu deyimin de etkili **olması, değişikliğin**gerçekleşmesi için doğru olması gerektiğini belirten **allof** [mantıksal işleci](../concepts/definition-structure.md#logical-operators) kullanılır.
 
-**değer,** şablon işlevi [kaynakGrubu()](../../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup) sonucunu boş bir değerin **eşit leri** koşuluna göre değerlendirir. Ana kaynak grubunda **tagName'de** sağlanan etiket adı varsa, koşullu durum doğru olarak değerlendirilir.
+**değer** , [resourceGroup ()](../../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup) şablon işlevinin sonucunu boş bir değerin koşul **notlarında** değerlendirir. Üst kaynak grubunda **TagName** içinde belirtilen etiket adı varsa, koşullu doğru olarak değerlendirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

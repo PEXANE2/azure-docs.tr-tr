@@ -1,6 +1,6 @@
 ---
-title: Veri Eşitlemeyi Ayarlama
-description: Bu öğretici, Azure SQL Veri Eşitlemeyi'ni nasıl ayarlayabileceğinizi gösterir
+title: Veri eşitlemesini ayarlama
+description: Bu öğreticide, Azure SQL Data Sync ayarlama gösterilmektedir
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,233 +12,233 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
 ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268970"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Öğretici: Azure SQL Veritabanı ve SQL Server arasında SQL Veri Eşitlemeyi'ni şirket içinde ayarlama
+# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Öğretici: Azure SQL veritabanı ve şirket içi SQL Server arasında SQL Data Sync ayarlama
 
-Bu eğitimde, hem Azure SQL Veritabanı hem de SQL Server örneklerini içeren bir eşitleme grubu oluşturarak Azure SQL Veri Eşitlemeyi'ni nasıl ayarlayabileceğinizi öğrenirsiniz. Eşitleme grubu özel olarak yapılandırılır ve ayarladığınız zamanlamaya göre eşitlenir.
+Bu öğreticide, Azure SQL veritabanı ve SQL Server örneklerini içeren bir eşitleme grubu oluşturarak Azure SQL Data Sync ayarlamayı öğreneceksiniz. Eşitleme grubu özel olarak yapılandırılır ve ayarladığınız zamanlamaya göre eşitlenir.
 
-Öğretici, SQL Database ve SQL Server ile ilgili en azından bazı önceden deneyiminiz olduğunu varsayar.
+Bu öğreticide, SQL veritabanı ve SQL Server ile ilgili en az bir önceki deneyim olduğunu varsaymaktadır.
 
-SQL Veri Eşitlemesine genel bakış için, [Azure SQL Veri Eşitleme ile bulut ve şirket içi veritabanları arasında verileri eşitleme](sql-database-sync-data.md)bölümüne bakın.
+SQL Data Sync genel bir bakış için bkz. [Azure SQL Data Sync ile bulut ve şirket içi veritabanları arasında verileri eşitleme](sql-database-sync-data.md).
 
-SQL Veri Eşitleme'nin nasıl yapılandırılılabildiğini anlatan PowerShell örnekleri için, Azure SQL veritabanları veya [Azure SQL Veritabanı ile sql server şirket içi veritabanı](scripts/sql-database-sync-data-between-azure-onprem.md) arasında nasıl [eşitlenenebilin](scripts/sql-database-sync-data-between-sql-databases.md)
+SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri için bkz. [Azure SQL veritabanları](scripts/sql-database-sync-data-between-sql-databases.md) veya [Azure sql veritabanı ile SQL Server şirket içi veritabanı](scripts/sql-database-sync-data-between-azure-onprem.md) arasında eşitleme
 
 > [!IMPORTANT]
-> Azure SQL Veri Eşitlemesi şu anda Azure SQL Veritabanı Yönetilen Örneği'ni **desteklemez.**
+> Azure SQL Data Sync Şu anda Azure SQL veritabanı yönetilen **örneğini desteklemez.**
 
-## <a name="create-sync-group"></a>Eşitleme grubu oluşturma
+## <a name="create-sync-group"></a>Eşitleme grubu oluştur
 
-1. SQL veritabanınızı bulmak için [Azure portalına](https://portal.azure.com) gidin. **SQL veritabanlarını**arayın ve seçin.
+1. SQL veritabanınızı bulmak için [Azure Portal](https://portal.azure.com) gidin. **SQL veritabanlarını**arayın ve seçin.
 
-    ![SQL veritabanları, Microsoft Azure portalı ara](media/sql-database-get-started-sql-data-sync/search-for-sql-databases.png)
+    ![SQL veritabanlarını arayın Microsoft Azure portal](media/sql-database-get-started-sql-data-sync/search-for-sql-databases.png)
 
-1. Veri Eşitleme için hub veritabanı olarak kullanmak istediğiniz veritabanını seçin.
+1. Veri eşitleme için merkez veritabanı olarak kullanmak istediğiniz veritabanını seçin.
 
-    ![SQL veritabanı listesinden seçin, Microsoft Azure portalı](media/sql-database-get-started-sql-data-sync/select-sql-database.png)
+    ![SQL veritabanı listesinden seç, Microsoft Azure portal](media/sql-database-get-started-sql-data-sync/select-sql-database.png)
 
     > [!NOTE]
-    > Hub veritabanı, eşitleme grubunun birden çok veritabanı uç noktası olduğu bir eşitleme topolojisinin merkezi bitiş noktasıdır. Eşitleme grubunda uç noktaları olan diğer tüm üye veritabanları, hub veritabanı ile eşitleme.
+    > Merkez veritabanı, bir eşitleme grubunun birden çok veritabanı uç noktasına sahip olduğu bir eşitleme topolojisinin merkezi uç noktasıdır. Eşitleme grubundaki uç noktalara sahip diğer tüm üye veritabanları, hub veritabanıyla eşitlenir.
 
-1. Seçili veritabanının **SQL veritabanı** menüsünde, **diğer veritabanlarına eşitle'yi**seçin.
+1. Seçili veritabanı için **SQL veritabanı** menüsünde **diğer veritabanlarına Eşitle**' yi seçin.
 
-    ![Diğer veritabanları, SQL veritabanı, Microsoft Azure portalı ile eşitleme](media/sql-database-get-started-sql-data-sync/sync-to-other-databases.png)
+    ![Diğer veritabanlarıyla, SQL veritabanı, Microsoft Azure portal eşitleme](media/sql-database-get-started-sql-data-sync/sync-to-other-databases.png)
 
-1. Diğer **veritabanlarıyla eşitleme** sayfasında **Yeni Eşitleme Grubu'nu**seçin. **Yeni eşitleme grubu** sayfası, **eşitleme grubu oluştur (adım 1)** vurgulanmış olarak açılır.
+1. **Diğer veritabanlarına Eşitle** sayfasında, **Yeni eşitleme grubu**' nu seçin. **Yeni eşitleme grubu** sayfası, **eşitleme grubu oluştur (1. adım)** vurgulanmış olarak açılır.
 
    ![Adım 1 ayarları](media/sql-database-get-started-sql-data-sync/stepone.png)
 
-   Veri **Eşitleme Grubu Oluştur** sayfasında aşağıdaki ayarları değiştirin:
+   **Veri eşitleme grubu oluştur** sayfasında, aşağıdaki ayarları değiştirin:
 
    | Ayar                        | Açıklama |
    | ------------------------------ | ------------------------------------------------- |
-   | **Eşitleme Grubu Adı** | Yeni eşitleme grubu için bir ad girin. Bu ad, veritabanının adından farklıdır. |
-   | **Eşitleme Meta veri veritabanı** | Veritabanı oluşturmayı (önerilir) veya varolan bir veritabanını kullanmayı seçin.<br/><br/>**Yeni veritabanını**seçerseniz, **yeni veritabanı oluştur'u seçin.** Sonra **SQL Veritabanı** sayfasında, adını ve yeni veritabanı yapılandırmak ve **Tamam**seçin.<br/><br/>**Varolan veritabanını kullan'ı**seçerseniz, listeden veritabanını seçin. |
-   | **Otomatik Eşitleme** | **A veya** **Kapalı'yı**seçin.<br/><br/>**Açık'ı**seçerseniz, bir sayı girin ve **Eşitleme Sıklığı** bölümünde **Saniye,** **Dakika,** **Saat**veya **Günler'i** seçin. |
-   | **Uyuşmazlık Çözümü** | **Hub'ı seçin veya** **Üye kazanın.**<br/><br/>**Hub kazanmak,** çakışmalar oluştuğunda, hub veritabanındaki verilerin üye veritabanında çakışan verilerin üzerine yazması anlamına gelir.<br/><br/>**Üye galibiyeti,** çakışmalar oluştuğunda, üye veritabanındaki verilerin hub veritabanında çakışan verilerin üzerine yazması anlamına gelir. |
+   | **Eşitleme grubu adı** | Yeni eşitleme grubu için bir ad girin. Bu ad, veritabanının kendisinin adından farklıdır. |
+   | **Meta veri veritabanını Eşitle** | Veritabanı oluşturmayı seçin (önerilir) veya var olan bir veritabanını kullanın.<br/><br/>**Yeni veritabanı**' nı seçerseniz **Yeni veritabanı oluştur** ' u seçin. Ardından **SQL veritabanı** sayfasında, yeni veritabanını adlandırın ve yapılandırın ve **Tamam**' ı seçin.<br/><br/>**Varolan veritabanını kullan**' ı seçerseniz, listeden veritabanını seçin. |
+   | **Otomatik eşitleme** | **Açık** veya **kapalı**seçeneğini belirleyin.<br/><br/>**Açık**' ı seçerseniz, bir sayı girin ve **eşitleme sıklığı** bölümünde **saniye**, **dakika**, **saat**veya **gün** ' yı seçin. |
+   | **Çakışma çözümleme** | **Hub Win** veya **member WIN**' i seçin.<br/><br/>**Merkez kazanma** , çakışmaların ne zaman meydana geldiğini, Merkez veritabanındaki verileri üye veritabanındaki çakışan verilerin üzerine yazar.<br/><br/>**Üye kazanma** , çakışmaların ne zaman meydana geldiğini, üye veritabanındaki verileri Merkez veritabanındaki çakışan verilerin üzerine yazar. |
 
    > [!NOTE]
-   > Microsoft, **Eşitleme Meta veri veritabanı**olarak kullanılmak üzere yeni, boş bir veritabanı oluşturmanızı önerir. Veri Eşitleme bu veritabanında tablolar oluşturur ve sık sık iş yükü çalıştırın. Bu veritabanı, seçili bölgedeki tüm Eşitleme Grupları için **Eşitleme Meta Veri Veritabanı** olarak paylaşılır ve bölgedeki tüm Eşitleme Grupları ve Eşitleme Aracıları kaldırmadan veritabanını veya adını değiştiremezsiniz.
+   > Microsoft, **eşitleme meta verileri veritabanı**olarak kullanılmak üzere yeni, boş bir veritabanı oluşturmayı önerir. Veri eşitleme, bu veritabanında tabloları oluşturur ve sık sık iş yükü çalıştırır. Bu veritabanı seçili bir bölgedeki tüm eşitleme grupları için **eşitleme meta verileri veritabanı** olarak paylaşılır ve bölgedeki tüm eşitleme gruplarını ve eşitleme aracılarını kaldırmadan veritabanını veya adını değiştiremezsiniz.
 
-   **Tamam'ı** seçin ve eşitleme grubunun oluşturulmasını ve dağıtılmasını bekleyin.
+   **Tamam** ' ı seçin ve eşitleme grubunun oluşturulmasını ve dağıtılmasını bekleyin.
 
-## <a name="add-sync-members"></a>Eşitleme üyeleri ekleme
+## <a name="add-sync-members"></a>Eşitleme üyeleri Ekle
 
-Yeni eşitleme grubu oluşturulduktan ve dağıtıldıktan sonra, **Eşitleme üye ekle (adım 2)** **Yeni eşitleme grubu** sayfasında vurgulanır.
+Yeni eşitleme grubu oluşturulup dağıtıldıktan sonra, **eşitleme üyeleri Ekle (2. adım)** , **Yeni eşitleme grubu** sayfasında vurgulanır.
 
-Hub **Veritabanı** bölümünde, hub veritabanının bulunduğu SQL Veritabanı sunucusu için varolan kimlik bilgilerini girin. Bu bölüme *yeni* kimlik bilgileri girmeyin.
+**Merkez veritabanı** bölümünde, hub VERITABANıNıN bulunduğu SQL veritabanı sunucusu için mevcut kimlik bilgilerini girin. Bu bölüme *Yeni* kimlik bilgileri girmeyin.
 
-![Adım 2 ayarları](media/sql-database-get-started-sql-data-sync/steptwo.png)
+![2. adım ayarları](media/sql-database-get-started-sql-data-sync/steptwo.png)
 
-### <a name="to-add-an-azure-sql-database"></a>Azure SQL Veritabanı eklemek için
+### <a name="to-add-an-azure-sql-database"></a>Azure SQL veritabanı eklemek için
 
-Üye **Veritabanı** bölümünde, azure SQL Veritabanı Ekle'yi seçerek isteğe bağlı olarak eşitleme grubuna **bir Azure SQL Veritabanı**ekleyin. **Azure SQL Veritabanını Yapılandırışla** sayfası açılır.
+**Üye veritabanı** bölümünde, isteğe bağlı olarak Azure SQL veritabanı **Ekle**' yi seçerek EŞITLEME grubuna bir Azure SQL veritabanı ekleyin. **Azure SQL veritabanını Yapılandır** sayfası açılır.
 
-  ![Adım 2 - veritabanını yapılandırma](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
+  ![2. adım-veritabanını yapılandırma](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
 
-  Azure **SQL Veritabanını Yapılandır** sayfasında aşağıdaki ayarları değiştirin:
+  **Azure SQL veritabanını Yapılandır** sayfasında, aşağıdaki ayarları değiştirin:
 
   | Ayar                       | Açıklama |
   | ----------------------------- | ------------------------------------------------- |
-  | **Üye Adını Senkronize Edin** | Yeni eşitleme üyesi için bir ad sağlayın. Bu ad, veritabanı adının kendisinden farklıdır. |
-  | **Abonelik** | Faturalandırma amacıyla ilişkili Azure aboneliğini seçin. |
-  | **Azure SQL Sunucusu** | Varolan SQL Veritabanı sunucusunu seçin. |
-  | **Azure SQL Veritabanı** | Varolan SQL veritabanını seçin. |
-  | **Yol Tariflerini Eşitle** | **Çift Yönlü Eşitleme,** **Hub'a**veya **Hub'dan**seçin. |
-  | **Kullanıcı Adı** ve **Şifre** | Üye veritabanının bulunduğu SQL Veritabanı sunucusunun varolan kimlik bilgilerini girin. Bu bölüme *yeni* kimlik bilgileri girmeyin. |
+  | **Eşitleme üyesi adı** | Yeni eşitleme üyesi için bir ad sağlayın. Bu ad, veritabanı adından farklıdır. |
+  | **Abonelik** | Faturalama amacıyla ilişkili Azure aboneliğini seçin. |
+  | **Azure SQL Server** | Mevcut SQL veritabanı sunucusunu seçin. |
+  | **Azure SQL Veritabanı** | Mevcut SQL veritabanını seçin. |
+  | **Eşitleme yönleri** | **Çift yönlü eşitlemeyi**, **hub 'A**veya **hub 'dan**seçin. |
+  | **Kullanıcı adı** ve **parola** | Üye veritabanının bulunduğu SQL veritabanı sunucusu için mevcut kimlik bilgilerini girin. Bu bölüme *Yeni* kimlik bilgileri girmeyin. |
 
-  **Tamam'ı** seçin ve yeni eşitleme üyesinin oluşturulmasını ve dağıtılmasını bekleyin.
+  **Tamam** ' ı seçin ve yeni eşitleme üyesinin oluşturulması ve dağıtılması için bekleyin.
 
 <a name="add-on-prem"></a>
 ### <a name="to-add-an-on-premises-sql-server-database"></a>Şirket içi SQL Server veritabanı eklemek için
 
-Üye **Veritabanı** bölümünde, şirket içi **Veritabanı Ekle'yi**seçerek isteğe bağlı olarak eşitleme grubuna şirket içi BIR SQL Server ekleyin. **Şirket Başına Yapılandırış** sayfası aşağıdaki şeyleri yapabileceğiniz yerlerde açılır:
+**Üye veritabanı** bölümünde, isteğe bağlı olarak, Şirket **içi veritabanı Ekle**' yi seçerek eşitleme grubuna şirket içi SQL Server ekleyin. **Şirket Içi yapılandırma** sayfası açılır ve aşağıdaki işlemleri yapabilirsiniz:
 
-1. **Eşitle Aracısı Ağ Geçidi'ni seçin.** **Aracıyı Seç** sayfası açılır.
+1. **Eşitleme Aracısı ağ geçidini Seç**' i seçin. **Eşitleme aracısını seçin** sayfası açılır.
 
-   ![Eşitleme aracısı oluşturma](media/sql-database-get-started-sql-data-sync/steptwo-agent.png)
+   ![Eşitleme Aracısı oluşturma](media/sql-database-get-started-sql-data-sync/steptwo-agent.png)
 
-1. **Eşitle Aracısı** seç sayfasında, varolan bir aracıyı kullanıp kullanmamayı veya aracı oluşturup oluşturmayYacağını seçin.
+1. **Eşitleme aracısını seçin** sayfasında, var olan bir aracıyı mi kullanacağınızı yoksa bir aracı mı oluşturulacağını seçin.
 
-   **Varolan aracıları**seçerseniz, listeden varolan aracıyı seçin.
+   **Mevcut aracılar**' ı seçerseniz, listeden var olan aracıyı seçin.
 
-   **Yeni bir aracı oluştur'u**seçerseniz, aşağıdakileri yapın:
+   **Yeni bir aracı oluştur**' u seçerseniz, aşağıdaki işlemleri yapın:
 
-   1. Sağlanan bağlantıdan veri eşitleme aracısını indirin ve SQL Server'ın bulunduğu bilgisayara yükleyin. Aracıyı doğrudan [SQL Azure Veri Eşitleme Aracısı'ndan](https://www.microsoft.com/download/details.aspx?id=27693)da indirebilirsiniz.
+   1. Veri eşitleme aracısını, belirtilen bağlantıdan indirin ve SQL Server bulunduğu bilgisayara yükleyin. Aracıyı doğrudan [SQL Azure veri eşitleme aracısından](https://www.microsoft.com/download/details.aspx?id=27693)de indirebilirsiniz.
 
       > [!IMPORTANT]
-      > İstemci aracısının sunucuyla iletişim kurmasını sağlamak için güvenlik duvarında giden TCP bağlantı noktası 1433'u açmanız gerekir.
+      > İstemci aracısının sunucusuyla iletişim kurmasına izin vermek için güvenlik duvarında giden TCP bağlantı noktası 1433 ' i açmanız gerekir.
 
    1. Aracı için bir ad girin.
 
-   1. **Oluştur ve Oluştur Anahtarı'nı** seçin ve aracı anahtarını panoya kopyalayın.
+   1. **Anahtar oluştur ve oluştur** ' u seçin ve aracı anahtarını panoya kopyalayın.
 
-   1. **Eşitle Aracısı** seç sayfasını kapatmak için **Tamam'ı** seçin.
+   1. **Eşitleme aracısını Seç** sayfasını kapatmak için **Tamam ' ı** seçin.
 
-1. SQL Server bilgisayarında, İstemci Eşitleme Aracısı uygulamasını bulun ve çalıştırın.
+1. SQL Server bilgisayarda, İstemci Eşitleme Aracısı uygulamasını bulun ve çalıştırın.
 
-   ![Veri senkronizasyonu istemci aracı uygulaması](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
+   ![Veri eşitleme istemci Aracısı uygulaması](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
 
-    1. Eşitleme aracısı uygulamasında **Aracı Anahtarı Gönder'i**seçin. **Eşitleme Meta veri veritabanı yapılandırma** iletişim kutusu açılır.
+    1. Eşitleme Aracısı uygulamasında, **Aracı anahtarını gönder**' i seçin. **Eşitleme meta verileri veritabanı yapılandırması** iletişim kutusu açılır.
 
-    1. Meta **veri veritabanı yapılandırmasını eşitle** iletişim kutusuna, Azure portalından kopyalanan aracı anahtarına yapıştırın. Ayrıca, meta veri veritabanının bulunduğu Azure SQL Veritabanı sunucusuiçin varolan kimlik bilgilerini de sağlayın. (Bir meta veri veritabanı oluşturduysanız, bu veritabanı hub veritabanıyla aynı sunucudadır.) **Tamam'ı** seçin ve yapılandırmanın tamamlanmasını bekleyin.
+    1. **Eşitleme meta verileri veritabanı yapılandırması** iletişim kutusunda, Azure Portal kopyaladığınız aracı anahtarını yapıştırın. Ayrıca, meta veri veritabanının bulunduğu Azure SQL veritabanı sunucusu için mevcut kimlik bilgilerini sağlayın. (Bir meta veri veritabanı oluşturduysanız, bu veritabanı hub veritabanıyla aynı sunucuda bulunur.) **Tamam** ' ı seçin ve yapılandırmanın bitmesini bekleyin.
 
         ![Aracı anahtarını ve sunucu kimlik bilgilerini girin](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         > [!NOTE]
-        > Güvenlik duvarı hatası alırsanız, SQL Server bilgisayarından gelen trafiğe izin vermek için Azure'da bir güvenlik duvarı kuralı oluşturun. Kuralı portalda veya SQL Server Management Studio'da (SSMS) el ile oluşturabilirsiniz. SSMS'te, adını <hub_database_name hub_database_name>.database.windows.net olarak girerek Azure'daki hub veritabanına bağlanın.
+        > Bir güvenlik duvarı hatası alırsanız, SQL Server bilgisayardan gelen trafiğe izin vermek için Azure 'da bir güvenlik duvarı kuralı oluşturun. Kuralı portalda veya SQL Server Management Studio (SSMS) içinde el ile oluşturabilirsiniz. SSMS 'de, adını <hub_database_name>. database.windows.net olarak girerek Azure 'daki hub veritabanına bağlanın.
 
-    1. Aracıya bir SQL Server veritabanı kaydetmek için **Kaydet'i** seçin. **SQL Server Configuration** iletişim kutusu açılır.
+    1. SQL Server bir veritabanını aracıya kaydetmek için **Kaydet** ' i seçin. **SQL Server yapılandırma** iletişim kutusu açılır.
 
         ![SQL Server veritabanı ekleme ve yapılandırma](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-adddb.png)
 
-    1. SQL **Server Configuration** iletişim kutusunda, SQL Server kimlik doğrulamasını veya Windows kimlik doğrulamasını kullanarak bağlanmayı seçin. SQL Server kimlik doğrulamasını seçerseniz, varolan kimlik bilgilerini girin. Senkronize etmek istediğiniz SQL Server adını ve veritabanının adını sağlayın ve ayarlarınızı test etmek için **Test bağlantısını** seçin. Ardından **Kaydet'i** seçin ve kayıtlı veritabanı listede görünür.
+    1. **SQL Server yapılandırma** iletişim kutusunda, SQL Server kimlik doğrulaması veya Windows kimlik doğrulaması kullanarak bağlanmayı seçin. SQL Server kimlik doğrulaması ' nı seçerseniz, mevcut kimlik bilgilerini girin. SQL Server adı ve eşitlemek istediğiniz veritabanının adını girip ayarlarınızı test etmek için **Bağlantıyı Sına** ' yı seçin. Ardından **Kaydet** ' i seçin ve kayıtlı veritabanı listede görüntülenir.
 
         ![SQL Server veritabanı artık kayıtlı](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-dbadded.png)
 
     1. İstemci Eşitleme Aracısı uygulamasını kapatın.
 
-1. Portalda, Şirket **Içi Yapıla** sayfasında **Veritabanını Seç'i**seçin.
+1. Portalda, **Şirket Içi yapılandırma** sayfasında **veritabanını Seç**' i seçin.
 
-1. **Veritabanını Seç** sayfasında, **Üye Adı Eşitle** alanında, yeni eşitleme üyesi için bir ad sağlayın. Bu ad, veritabanının adından farklıdır. Listeden veritabanını seçin. **Eşitleme Yönleri** alanında, **Çift Yönlü Eşitleme,** **Hub'a**veya **Hub'dan'ı**seçin.
+1. **Veritabanı Seç** sayfasında, **eşitleme üye adı** alanında, yeni eşitleme üyesi için bir ad girin. Bu ad, veritabanının kendisinin adından farklıdır. Listeden veritabanını seçin. **Eşitleme yönleri** alanında çift **yönlü eşitleme**' yi, **hub 'a**veya **hub 'dan**seçin.
 
     ![Şirket içi veritabanını seçin](media/sql-database-get-started-sql-data-sync/datasync-preview-selectdb.png)
 
-1. **Veritabanı seç** sayfasını kapatmak için **Tamam'ı** seçin. Ardından, **Şirket İçi Yapılandırma** sayfasını kapatmak ve yeni eşitleme üyesinin oluşturulmasını ve dağıtılmasını beklemek için **Tamam'ı** seçin. Son olarak, **eşitle üyeleri** sayfasını kapatmak için **Tamam'ı** seçin.
+1. **Veritabanı Seç** sayfasını kapatmak için **Tamam ' ı** seçin. Ardından, **Şirket Içi yapılandırma** sayfasını kapatmak için **Tamam** ' ı seçin ve yeni eşitleme üyesinin oluşturulması ve dağıtılması için bekleyin. Son olarak, **eşitleme üyelerini Seç** sayfasını kapatmak için **Tamam** ' ı seçin.
 
 > [!NOTE]
-> SQL Veri Eşitleme'ye ve yerel aracıya bağlanmak için, DataSync_Executor *rolüne*kullanıcı adınızı ekleyin. Veri Eşitleme, SQL Server örneğinde bu rolü oluşturur.
+> SQL Data Sync ve yerel aracısına bağlanmak için, Kullanıcı adınızı rol *DataSync_Executor*ekleyin. Veri eşitleme, bu rolü SQL Server örneğinde oluşturur.
 
-## <a name="configure-sync-group"></a>Eşitleme grubunu yapılandırma
+## <a name="configure-sync-group"></a>Eşitleme grubunu yapılandır
 
-Yeni eşitleme grubu üyeleri oluşturulduktan ve dağıtıldıktan sonra, **Yapılandırma eşitleme grubu (adım 3)** **Yeni eşitleme grubu** sayfasında vurgulanır.
+Yeni eşitleme grubu üyeleri oluşturulup dağıtıldıktan sonra, **eşitleme grubunu yapılandırın (3. adım)** , **Yeni eşitleme grubu** sayfasında vurgulanır.
 
 ![Adım 3 ayarları](media/sql-database-get-started-sql-data-sync/stepthree.png)
 
-1. **Tablolar** sayfasında, eşitleme grubu üyeleri listesinden bir veritabanı seçin ve **şema'yı yenile'yi**seçin.
+1. **Tablolar** sayfasında, eşitleme grubu üyeleri listesinden bir veritabanı seçin ve **şemayı Yenile**' yi seçin.
 
-1. Listeden eşitlemek istediğiniz tabloları seçin. Varsayılan olarak, tüm sütunlar seçilir, bu nedenle eşitlemek istemediğiniz sütunlar için onay kutusunu devre dışı kaldırın. Birincil anahtar sütunu seçili bıraktığından emin olun.
+1. Listeden eşitlemek istediğiniz tabloları seçin. Varsayılan olarak, tüm sütunlar seçilidir, bu nedenle eşitlemek istemediğiniz sütunlar için onay kutusunu devre dışı bırakın. Birincil anahtar sütununu seçili bırakmayı unutmayın.
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-1. Varsayılan olarak, veritabanları zamanlanana veya el ile çalıştırılana kadar eşitlenmez. El ile eşitleme çalıştırmak için Azure portalındaki SQL veritabanınıza gidin, **diğer veritabanlarıyla eşitle'yi**seçin ve eşitleme grubunu seçin. **Veri Eşitleme** sayfası açılır. **Eşitle**’yi seçin.
+1. Varsayılan olarak, veritabanları zamanlanana veya el ile çalışmaya kadar eşitlenmez. El ile eşitleme çalıştırmak için Azure portal SQL veritabanınıza gidin, **diğer veritabanlarına Eşitle**' yi seçin ve eşitleme grubunu seçin. **Veri eşitleme** sayfası açılır. **Eşitle**’yi seçin.
 
-    ![Manuel eşitleme](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
+    ![El ile eşitleme](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
 ## <a name="faq"></a>SSS
 
-**Veri Eşitleme verilerimi ne sıklıkta eşitleyebilir?**
+**Veri eşitleme, verilerimi ne sıklıkta eşitler?**
 
-Eşitlemeler arasındaki minimum süre beş dakikadır.
+Eşitlemeler arasındaki en az süre beş dakikadır.
 
-**SQL Data Sync tabloları tam olarak oluşturuyor mu?**
+**SQL Data Sync tamamen tablo oluşturur mi?**
 
-Hedef veritabanında eşitleme şeması tabloları eksikse SQL Data Sync seçtiğiniz sütunlarla o tabloları oluşturur. Ancak, bu aşağıdaki nedenlerle tam sadakat şema neden olmaz:
+Hedef veritabanında eşitleme şeması tabloları eksikse SQL Data Sync seçtiğiniz sütunlarla o tabloları oluşturur. Bununla birlikte, bu, aşağıdaki nedenlerden dolayı tam aslına uygunluk şemasına neden olmaz:
 
 - Hedef tabloda yalnızca seçtiğiniz sütunlar oluşturulmuştur. Seçilmeyen sütunlar yoksayılmıştır.
 - Hedef tabloda yalnızca seçili sütun dizinleri oluşturulmuştur. Seçili olmayan sütunların dizinleri yoksayılmıştır.
 - XML türü sütunlarında dizinler oluşturulmaz.
-- CHECK kısıtlamaları oluşturulmaz.
-- Kaynak tablolardaki tetikleyiciler oluşturulmaz.
-- Görünümler ve depolanan yordamlar oluşturulmaz.
+- DENETIM kısıtlamaları oluşturulmaz.
+- Kaynak tablolardaki Tetikleyiciler oluşturulmaz.
+- Görünümler ve saklı yordamlar oluşturulmaz.
 
 Bu sınırlamalar nedeniyle aşağıdakileri öneririz:
 
-- Üretim ortamları için, tam sadakat şema kendiniz oluşturun.
+- Üretim ortamları için tam doğruluk şemasını kendiniz oluşturun.
 - Hizmetle denemeler yaparken otomatik sağlama özelliğini kullanın.
 
-**Neden oluşturmadığım tabloları görüyorum?**
+**Neden oluşturamadığım tabloları görüyorum?**
 
-Veri Eşitleme, değişiklik izleme için veritabanında ek tablolar oluşturur. Bunları silmeyin veya Veri Eşitleme çalışmayı durdurur.
+Veri eşitleme, değişiklik izleme için veritabanında ek tablolar oluşturur. Bu veya veri eşitleme, çalışmayı silme işlemini silmez.
 
-**Verilerim eşitlendikten sonra yakınsak mı?**
+**Bir eşitlemeden sonra veri dönüştürüme Gent mı?**
 
-Mutlaka. Eşitlemelerin Hub'dan A'ya, Hub'dan B'ye ve Hub'dan C'ye olduğu hub ve üç sözcülü (A, B ve C) içeren bir eşitleme grubu alın. *Hub'dan* A eşitlemesine sonra Veritabanı A'da değişiklik yapılırsa, bu değişiklik bir sonraki eşitleme görevine kadar B veya veritabanı C veritabanına yazılmaz.
+Gerekli değildir. Bir hub ve üç bağlı bileşen (A, B ve C) içeren bir eşitleme grubu alıp, eşitlemelerin hub olduğu, hub 'Dan B 'ye ve hub 'a Merkez 'e Veritabanında bir eşitleme *sonrasında* bir değişiklik yapılırsa, bu değişiklik sonraki eşitleme görevine kadar veritabanı B 'ye veya C veritabanına yazılmaz.
 
-**Şema değişikliklerini eşitleme grubuna nasıl alabilirim?**
+**Nasıl yaparım?, şema değişiklikleri bir eşitleme grubuna mı alınır?**
 
-Tüm şema değişikliklerini el ile yapın ve çoğaltın.
+Tüm şema değişikliklerini el ile yapın ve yayın.
 
-1. Şema değişikliklerini hub'da ve tüm eşitleme üyelerine el ile çoğaltın.
-1. Eşitleme şeasını güncelleştirin.
+1. Şema değişikliklerini hub 'a ve tüm eşitleme üyelerine çoğaltın.
+1. Eşitleme şemasını güncelleştirin.
 
 Yeni tablo ve sütun eklemek için:
 
-Yeni tablolar ve sütunlar geçerli eşitlemeyi etkilemez ve Veri Eşitleme, eşitleme şemasına eklenene kadar bunları yok sayar. Yeni veritabanı nesneleri eklerken sırayı izleyin:
+Yeni tablolar ve sütunlar geçerli eşitlemeyi etkilemez ve veri eşitleme, eşitleme şemasına eklenene kadar onları yoksayar. Yeni veritabanı nesneleri eklerken sırayı izleyin:
 
-1. Hub'a ve tüm eşitleme üyelerine yeni tablolar veya sütunlar ekleyin.
+1. Hub 'a ve tüm eşitleme üyelerine yeni tablo veya sütun ekleyin.
 1. Eşitleme şemasına yeni tablolar veya sütunlar ekleyin.
-1. Yeni tablo ve sütunlara değerler eklemeye başlayın.
+1. Yeni tablolara ve sütunlara değer eklemeye başlayın.
 
 Bir sütunun veri türünü değiştirmek için:
 
-Varolan bir sütunun veri türünü değiştirdiğinizde, Veri Eşitleme, eşitleme şemasında tanımlanan özgün veri türüne yeni değerler sığdırınca çalışmaya devam eder. Örneğin, kaynak veritabanındaki türü **int'den** **bigint'e**değiştirirseniz, **int** veri türü için çok büyük bir değer ekilene kadar Veri Eşitleme çalışmaya devam edin. Değişikliği tamamlamak için şema değişikliğini hub'a ve tüm eşitleme üyelerine el ile çoğaltın ve ardından eşitleme şemasını güncelleştirin.
+Varolan bir sütunun veri türünü değiştirdiğinizde, yeni değerler eşitleme şemasında tanımlanan özgün veri türüne uygun olduğu sürece veri eşitleme çalışmaya devam eder. Örneğin, kaynak veritabanındaki türü **int** 'ten **bigint**'e değiştirirseniz, veri eşitleme, **int** veri türü için çok büyük bir değer ekleyene kadar çalışmaya devam eder. Değişikliği tamamladıktan sonra, şema değişikliğini hub 'a ve tüm eşitleme üyelerine çoğaltın, ardından eşitleme şemasını güncelleştirin.
 
-**Veri Eşitleme ile veritabanını nasıl dışa aktarıp içe aktarabilirim?**
+**Veri eşitleme ile bir veritabanını nasıl dışarı ve dışarı aktarabilirim?**
 
-Bir veritabanını *.bacpac* dosyası olarak dışa aktardıktan ve veritabanı oluşturmak için dosyayı içe aktardıktan sonra, yeni veritabanında Veri Eşitlemeyi'ni kullanmak için aşağıdakileri yapın:
+Bir veritabanını bir *. bacpac* dosyası olarak dışa aktarıp bir veritabanı oluşturmak için dosyayı içeri aktardıktan sonra, yeni veritabanında veri eşitlemesini kullanmak için aşağıdakileri yapın:
 
-1. [Bu komut dosyasını](https://github.com/vitomaz-msft/DataSyncMetadataCleanup/blob/master/Data%20Sync%20complete%20cleanup.sql)kullanarak yeni veritabanındaki Veri Eşitleme nesnelerini ve ek tabloları temizleyin. Komut dosyası, veritabanından gerekli tüm Veri Eşitleme nesnelerini siler.
-1. Eşitleme grubunu yeni veritabanıyla yeniden oluşturun. Eski eşitleme grubuna artık ihtiyacınız yoksa, silin.
+1. [Bu betiği](https://github.com/vitomaz-msft/DataSyncMetadataCleanup/blob/master/Data%20Sync%20complete%20cleanup.sql)kullanarak, veri eşitleme nesnelerini ve yeni veritabanında ek tabloları temizleyin. Betik tüm gerekli veri eşitleme nesnelerini veritabanından siler.
+1. Yeni veritabanıyla birlikte eşitleme grubunu yeniden oluşturun. Artık eski eşitleme grubuna ihtiyacınız yoksa, silin.
 
-**Müşteri temsilcisi hakkında nerede bilgi edinebilirim?**
+**İstemci aracısında bilgileri nereden bulabilirim?**
 
-İstemci aracısı hakkında sık sorulan sorular için [Agent SSS](sql-database-data-sync-agent.md#agent-faq)bölümüne bakın.
+İstemci Aracısı hakkında sık sorulan sorular için bkz. [Aracı SSS](sql-database-data-sync-agent.md#agent-faq).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tebrikler. Hem SQL Veritabanı örneğini hem de SQL Server veritabanını içeren bir eşitleme grubu oluşturdunuz.
+Tebrikler. Hem SQL veritabanı örneği hem de bir SQL Server veritabanı içeren bir eşitleme grubu oluşturdunuz.
 
 SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
-- [Azure SQL Veri Eşitlemi için Veri Eşitleme Aracısı](sql-database-data-sync-agent.md)
-- [En iyi uygulamalar](sql-database-best-practices-data-sync.md) ve [Azure SQL Veri Eşitlemenile ilgili sorunları giderme](sql-database-troubleshoot-data-sync.md)
-- [Azure Monitor günlükleriyle SQL Veri Eşitlemesini Izleyin](sql-database-sync-monitor-oms.md)
-- [Eşitleme şeasını Transact-SQL](sql-database-update-sync-schema.md) veya [PowerShell](scripts/sql-database-sync-update-schema.md) ile güncelleştirme
+- [Azure SQL Data Sync için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
+- [En iyi uygulamalar](sql-database-best-practices-data-sync.md) ve [Azure SQL Data Sync sorunları nasıl giderilir](sql-database-troubleshoot-data-sync.md)
+- [Azure Izleyici günlükleriyle SQL Data Sync izleme](sql-database-sync-monitor-oms.md)
+- [Transact-SQL veya PowerShell ile eşitleme şemasını güncelleştirme](sql-database-update-sync-schema.md) [PowerShell](scripts/sql-database-sync-update-schema.md)
 
 SQL Veritabanı hakkında daha fazla bilgi için bkz.:
 

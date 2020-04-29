@@ -1,7 +1,7 @@
 ---
-title: Küresel olarak kullanılabilir hizmetleri tasarla
-description: Azure SQL Veritabanı'nı kullanarak yüksek kullanılabilir hizmetler için uygulama tasarımı hakkında bilgi edinin.
-keywords: bulut felaket kurtarma, olağanüstü durum kurtarma çözümleri, uygulama veri yedekleme, coğrafi çoğaltma, iş sürekliliği planlama
+title: Küresel olarak kullanılabilir hizmetler tasarlama
+description: Azure SQL veritabanı 'nı kullanarak yüksek oranda kullanılabilir hizmetler için uygulama tasarımı hakkında bilgi edinin.
+keywords: bulut olağanüstü durum kurtarma, olağanüstü durum kurtarma çözümleri, uygulama veri yedekleme, coğrafi çoğaltma, iş sürekliliği planlama
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -13,156 +13,156 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269074"
 ---
-# <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL Veritabanı'nı kullanarak genel olarak kullanılabilir hizmetler tasarlama
+# <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanarak küresel olarak kullanılabilir hizmetler tasarlama
 
-Azure SQL Veritabanı ile bulut hizmetleri oluşturma ve dağıtma da, bölgesel kesintilere ve yıkıcı hatalara karşı esneklik sağlamak için [etkin coğrafi çoğaltma](sql-database-active-geo-replication.md) veya otomatik [hata](sql-database-auto-failover-group.md) grupları kullanırsınız. Aynı özellik, verilere yerel erişim için optimize edilmiş genel olarak dağıtılmış uygulamalar oluşturmanıza olanak tanır. Bu makalede, her seçeneğin yararları ve dengeleri de dahil olmak üzere ortak uygulama kalıpları tartışılır.
+Azure SQL veritabanı ile bulut hizmetleri oluştururken ve dağıttığınızda, bölgesel kesintiler ve çok önemli hatalara esnekliği sağlamak için [etkin coğrafi çoğaltma](sql-database-active-geo-replication.md) veya [otomatik yük devretme grupları](sql-database-auto-failover-group.md) kullanırsınız. Aynı özellik, verilere yerel erişim için iyileştirilmiş, global olarak dağıtılmış uygulamalar oluşturmanıza olanak sağlar. Bu makalede, her seçeneğin avantajları ve avantajları dahil olmak üzere yaygın uygulama desenleri ele alınmaktadır.
 
 > [!NOTE]
-> Premium veya İş Açısından Kritik veritabanları nı ve esnek havuzları kullanıyorsanız, bunları bölge gereksiz dağıtım yapılandırmasına dönüştürerek bunları bölgesel kesintilere karşı esnek hale getirebilirsiniz. Bkz. [Bölge yedekli veritabanları.](sql-database-high-availability.md)  
+> Premium veya İş Açısından Kritik veritabanları ve elastik havuzlar kullanıyorsanız, bunları bölge yedekli dağıtım yapılandırmasına dönüştürerek bölge kesintilerine dayanıklı hale getirebilirsiniz. Bkz. bölgesel olarak [yedekli veritabanları](sql-database-high-availability.md).  
 
-## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Senaryo 1: En az kapalı kalma süresiyle iş sürekliliği için iki Azure bölgesi kullanma
+## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Senaryo 1: en az kapalı kalma süresiyle iş sürekliliği için iki Azure bölgesi kullanma
 
 Bu senaryoda, uygulamalar aşağıdaki özelliklere sahiptir:
 
-* Uygulama tek bir Azure bölgesinde etkin
-* Tüm veritabanı oturumları verilere okuma ve yazma erişimi (RW) gerektirir
-* Gecikme süresini ve trafik maliyetini azaltmak için Web katmanı ve veri katmanı harmanlanmalıdır
-* Temelde, kesinti veri kaybı daha bu uygulamalar için daha yüksek bir iş riski
+* Uygulama, bir Azure bölgesinde etkin
+* Tüm veritabanı oturumları, verilere okuma ve yazma erişimi (RW) gerektirir
+* Gecikme ve trafik maliyetini azaltmak için Web katmanı ve veri katmanının birlikte bulunması gerekir
+* Temelde, kapalı kalma süresi bu uygulamalar için veri kaybına kıyasla daha yüksek bir iş riskidir
 
-Bu durumda, tüm uygulama bileşenlerinin birlikte başarısız olması gerektiğinde, uygulama dağıtım topolojisi bölgesel felaketleri işlemek için en iyi duruma getirilmiştir. Aşağıdaki diyagram bu topolojiyi göstermektedir. Coğrafi artıklık için, uygulamanın kaynakları Bölge A ve B'ye dağıtılır. Ancak, Bölge A başarısız olana kadar B bölgesindeki kaynaklar kullanılmaz. Veritabanı bağlantısı, çoğaltma ve başarısızlığı yönetmek için iki bölge arasında bir başarısızlık grubu yapılandırılır. Her iki bölgede web hizmeti okuma-yazma dinleyici ** &lt;failover-group-name&gt;.database.windows.net** (1) üzerinden veritabanına erişmek için yapılandırılmıştır. Trafik yöneticisi [öncelik yönlendirme yöntemini](../traffic-manager/traffic-manager-configure-priority-routing-method.md) kullanmak üzere ayarlanmıştır (2).  
-
-> [!NOTE]
-> [Azure trafik yöneticisi](../traffic-manager/traffic-manager-overview.md) bu makale boyunca yalnızca illüstrasyon amacıyla kullanılır. Öncelikli yönlendirme yöntemini destekleyen herhangi bir yük dengeleme çözümlerini kullanabilirsiniz.
-
-Aşağıdaki diyagram, bir kesintiden önce bu yapılandırmayı gösterir:
-
-![Senaryo 1. Kesintiden önce yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
-
-Birincil bölgede bir kesintiden sonra, SQL Veritabanı hizmeti birincil veritabanına erişilemediğini algılar ve otomatik hata ilkesinin parametrelerine bağlı olarak ikincil bölgeye başarısız lığı tetikler (1). Uygulamanız SLA bağlı olarak, kesinti nin algılanması ile failover kendisi arasındaki süreyi denetleyen bir yetkisiz kullanım süresi yapılandırabilirsiniz. Failover grubu veritabanının başarısızolmasını tetiklemeden önce trafik yöneticisinin bitiş noktası hatasını başlatması mümkündür. Bu durumda web uygulaması hemen veritabanına yeniden bağlanamaz. Ancak yeniden bağlantılar, veritabanı başarısız olur olmaz otomatik olarak başarılı olur. Başarısız olan bölge geri yüklendiğinde ve yeniden çevrimiçi olduğunda, eski birincil otomatik olarak yeni bir ikincil olarak yeniden bağlanır. Aşağıdaki diyagram, başarısız olduktan sonra yapılandırmayı göstermektedir.
+Bu durumda, uygulama dağıtım topolojisi, tüm uygulama bileşenlerinin birlikte yük devretmesi gerektiğinde bölgesel olağanüstü durumları işlemek için iyileştirilmiştir. Aşağıdaki diyagramda bu topoloji gösterilmektedir. Coğrafi artıklık için, uygulamanın kaynakları A ve B bölgesine dağıtılır. Ancak, bölge B 'deki kaynaklar başarısız olana kadar kullanılmaz. Veritabanı bağlantısı, çoğaltma ve yük devretme yönetimi için iki bölge arasında bir yük devretme grubu yapılandırılır. Her iki bölgedeki Web hizmeti, okuma-yazma dinleyicisi ** &lt;yük devretmesi-Group-Name&gt;. Database.Windows.net** (1) yoluyla veritabanına erişecek şekilde yapılandırılmıştır. Traffic Manager, [Öncelik yönlendirme yöntemini](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2) kullanacak şekilde ayarlanır.  
 
 > [!NOTE]
-> Arıza dan sonra yapılan tüm işlemler yeniden bağlantı sırasında kaybolur. Hata tamamlandıktan sonra, B bölgesindeki uygulama kullanıcı isteklerini yeniden bağlayabilir ve yeniden başlatabilir. Hem web uygulaması hem de birincil veritabanı şu anda B bölgesinde dir ve birlikte konumlarını korumaktadır.
+> [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) , bu makale boyunca yalnızca çizim amaçlarıyla kullanılır. Öncelik yönlendirme yöntemini destekleyen herhangi bir yük dengeleme çözümünü kullanabilirsiniz.
 
-![Senaryo 1. Başarısız olduktan sonra yapılandırma](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
+Aşağıdaki diyagramda bir kesinti olmadan önce bu yapılandırma gösterilmektedir:
 
-B bölgesinde bir kesinti olursa, birincil ve ikincil veritabanı arasındaki çoğaltma işlemi askıya alınır, ancak ikisi arasındaki bağlantı bozulmadan kalır (1). Trafik yönetilen Bölge B bağlantısı kırık olduğunu algılar ve bozulmuş olarak uç nokta web uygulaması 2 işaretler (2). Uygulamanın performansı bu durumda etkilenmez, ancak veritabanı maruz kalır ve bu nedenle a bölgesinin art arda başarısız olması durumunda veri kaybı riski daha yüksektir.
+![Senaryo 1. Kesinti olmadan önce yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
+
+Birincil bölgedeki bir kesinti sonrasında SQL veritabanı hizmeti, birincil veritabanının erişilebilir olduğunu algılar ve otomatik yük devretme ilkesinin (1) parametrelerine göre ikincil bölgeye yük devretmeyi tetikler. Uygulamanızın SLA 'sına bağlı olarak, kesinti ve yük devretme algılaması arasındaki süreyi denetleyen bir yetkisiz kullanım süresi yapılandırabilirsiniz. Yük devretme grubu, veritabanının yük devretmesini tetiklemesini yapmadan önce Traffic Manager 'ın uç nokta yük devretmesini başlattığı olasıdır. Bu durumda, Web uygulaması veritabanına hemen yeniden bağlanamaz. Ancak yeniden bağlantı, veritabanının yük devretmesi tamamlandıktan hemen sonra otomatik olarak başarılı olur. Başarısız bölge geri yüklendiğinde ve tekrar çevrimiçi olduğunda eski birincil, yeni bir ikincil olarak otomatik olarak yeniden bağlanır. Aşağıdaki diyagramda, yük devretmeden sonra yapılandırma gösterilmektedir.
 
 > [!NOTE]
-> Olağanüstü durum kurtarma için, uygulama dağıtımı iki bölgeyle sınırlı yapılandırma öneririz. Bunun nedeni, Azure coğrafyalarının çoğunun yalnızca iki bölgesi olmasıdır. Bu yapılandırma, uygulamanızı her iki bölgenin eşzamanlı felaket hatasından korumaz. Böyle bir hata olasılığı düşük bir durumda, [coğrafi geri yükleme işlemini](sql-database-disaster-recovery.md#recover-using-geo-restore)kullanarak veritabanlarınızı üçüncü bir bölgedeki kurtarabilirsiniz.
+> Yük devretme işleminden sonra kaydedilen tüm işlemler, yeniden bağlantı sırasında kaybedilir. Yük devretme tamamlandıktan sonra, B bölgesindeki uygulama yeniden bağlanabilir ve Kullanıcı isteklerini işlemeye yeniden başlatılabilir. Hem Web uygulaması hem de birincil veritabanı artık B bölgesinde ve birlikte bulunan olarak kalır.
+
+![Senaryo 1. Yük devretmeden sonra yapılandırma](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
+
+B bölgesinde bir kesinti olursa, birincil ve ikincil veritabanı arasındaki çoğaltma işlemi askıya alınır ancak ikisi arasındaki bağlantı değişmeden kalır (1). Yönetilen trafik, B bölgesine giden bağlantının kesildiğini algılar ve uç nokta Web uygulaması 2 ' nin düşürülmüş (2) olarak işaret eder. Uygulamanın performansı Bu durumda etkilenmez, ancak veritabanı açık duruma gelir ve bu nedenle, büyük/küçük harfli bir şekilde veri kaybı durumunda veri kaybı daha yüksek risklidir.
+
+> [!NOTE]
+> Olağanüstü durum kurtarma için, uygulama dağıtımı ile yapılandırmanın iki bölgeyle sınırlı olması önerilir. Bunun nedeni, Azure coğrafi bölümlerinin çoğunun yalnızca iki bölgedir. Bu yapılandırma, uygulamanızı her iki bölgenin de eş zamanlı olmayan arızasından korumaz. Bu tür bir başarısızlığın olası bir olayında, [coğrafi geri yükleme işlemini](sql-database-disaster-recovery.md#recover-using-geo-restore)kullanarak veritabanlarınızı üçüncü bir bölgede kurtarabilirsiniz.
 >
 
- Kesinti azaltıldıktan sonra, ikincil veritabanı birincil veritabanıyla otomatik olarak yeniden eşitlenir. Eşitleme sırasında birincil performansın etkilenebilir. Belirli etki, başarısızlıktan sonra yeni birincil olarak elde edilen veri miktarına bağlıdır. Aşağıdaki diyagram, ikincil bölgede bir kesintisi göstermektedir:
+ Kesinti azaltıldıktan sonra, ikincil veritabanı otomatik olarak birincil ile yeniden eşitlenir. Eşitleme sırasında birincili performansı etkilenebilir. Belirli etki, yük devretmeden bu yana yeni birincil alınan veri miktarına bağlıdır. Aşağıdaki diyagramda, İkincil bölgedeki bir kesinti gösterilmektedir:
 
-![Senaryo 1. İkincil bölgede bir kesintiden sonra yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
+![Senaryo 1. İkincil bölgedeki bir kesinti sonrasında yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 
-Bu tasarım deseninin temel **avantajları** şunlardır:
+Bu tasarım deseninin başlıca **avantajları** şunlardır:
 
-* Aynı web uygulaması, bölgeye özgü yapılandırması olmayan her iki bölgeye de dağıtılır ve başarısız olmayı yönetmek için ek mantık gerektirmez.
-* Uygulama performansı, web uygulaması ve veritabanı her zaman birlikte bulunduğundan, başarısızlından etkilenmez.
+* Aynı Web uygulaması, bölgeye özgü hiçbir yapılandırma olmadan her iki bölgeye de dağıtılır ve yük devretmeyi yönetmek için ek mantık gerektirmez.
+* Web uygulaması ve veritabanı her zaman birlikte bulunan için uygulama performansı yük devretmeden etkilenmez.
 
-Ana **denge,** B bölgesindeki uygulama kaynaklarının çoğu zaman yeterince kullanılmamış olmasıdır.
+Ana **zorunluluğunu getirir** , B bölgesindeki uygulama kaynaklarının çoğu zaman aşırı kullanıldığı yerdedir.
 
-## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Senaryo 2: Maksimum veri koruma ile iş sürekliliği için Azure bölgeleri
+## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Senaryo 2: en yüksek veri koruma ile iş sürekliliği için Azure bölgeleri
 
-Bu seçenek en iyi aşağıdaki özelliklere sahip uygulamalar için uygundur:
+Bu seçenek, aşağıdaki özelliklere sahip uygulamalar için idealdir:
 
-* Herhangi bir veri kaybı yüksek iş riskidir. Veritabanı hatası yalnızca kesinti felaket bir hatadan kaynaklanıyorsa son çare olarak kullanılabilir.
-* Uygulama, salt okunur ve okundu-yazma modlarını destekler ve belirli bir süre için "salt okunur modunda" çalışabilir.
+* Veri kaybı yüksek iş riskidir. Veritabanı yük devretmesi yalnızca kesinti çok önemli bir hatadan kaynaklanmasından önce son çare olarak kullanılabilir.
+* Uygulama, salt okuma ve okuma yazma modlarını destekler ve bir süre için "salt okunurdur" modunda çalışabilir.
 
-Bu desende, okuma-yazma bağlantıları zaman-out hataları almaya başladığında uygulama salt okunur moduna geçer. Web Uygulaması her iki bölgeye de dağıtılır ve okuma-yazma dinleyici bitiş noktasına bir bağlantı ve yalnızca okundu dinleyici bitiş noktasına farklı bağlantı (1) içerir. Trafik yöneticisi profili [öncelikli yönlendirme](../traffic-manager/traffic-manager-configure-priority-routing-method.md)kullanmalıdır. Her bölgedeki uygulama bitiş noktası için [bitiş noktası izleme](../traffic-manager/traffic-manager-monitoring.md) etkinleştirilmelidir (2).
+Bu düzende, okuma yazma bağlantıları zaman aşımı hataları almaya başladığınızda uygulama salt okuma moduna geçer. Web uygulaması her iki bölgeye de dağıtılır ve okuma-yazma dinleyicisi uç noktasına bir bağlantı ve salt okunurdur (1) dinleyici uç noktasına farklı bağlantı içerir. Traffic Manager profili [öncelikli yönlendirmeyi](../traffic-manager/traffic-manager-configure-priority-routing-method.md)kullanmalıdır. [Uç nokta izlemenin](../traffic-manager/traffic-manager-monitoring.md) her bölgedeki uygulama uç noktası için etkinleştirilmesi gerekir (2).
 
-Aşağıdaki diyagram, bir kesintiden önce bu yapılandırmayı göstermektedir:
+Aşağıdaki diyagramda bir kesinti olmadan önce bu yapılandırma gösterilmektedir:
 
-![Senaryo 2. Kesintiden önce yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
+![Senaryo 2. Kesinti olmadan önce yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
 
-Trafik yöneticisi A bölgesinde bir bağlantı hatası algıladığında, kullanıcı trafiğini otomatik olarak B bölgesindeki uygulama örneğine değiştirir. Bu desenle, yetkisiz kullanım süresini veri kaybıyla birlikte örneğin 24 saat gibi yeterince yüksek bir değere ayarlamanız önemlidir. Bu süre içinde kesinti azaltılırsa veri kaybının önlenmesini sağlar. B bölgesindeki Web uygulaması etkinleştirildiğinde okuma yazma işlemleri başarısız olmaya başlar. Bu noktada, salt okunur moduna geçmelidir (1). Bu modda istekler otomatik olarak ikincil veritabanına yönlendirilir. Kesinti felaket bir başarısızlık neden ise, büyük olasılıkla yetkisiz kullanım süresi içinde azaltılamaz. Süresi dolduğunda, başarısız grup, başarısızı tetikler. Bundan sonra okuma-yazma dinleyicisi kullanılabilir hale gelir ve bağlantıbaşarısız olmayı durdurur (2). Aşağıdaki diyagram, kurtarma işleminin iki aşamasını göstermektedir.
+Traffic Manager A bölgesine bir bağlantı hatası algıladığında, Kullanıcı trafiğini otomatik olarak B bölgesinde uygulama örneğine geçirir. Bu düzende, yetkisiz kullanım süresini veri kaybı ile, 24 saat gibi yeterince yüksek bir değere ayarlamanız önemlidir. Kesinti bu süre içinde azaltıldığında veri kaybının engellenmesini sağlar. B bölgesindeki Web uygulaması etkinleştirildiğinde okuma yazma işlemleri başarısız olur. Bu noktada, salt okuma moduna (1) geçiş yapılmalıdır. Bu modda, istekler otomatik olarak ikincil veritabanına yönlendirilir. Kesinti çok önemli bir hatadan kaynaklanıyorsa, büyük olasılıkla yetkisiz kullanım süresi içinde azaltılamaz. Süresi dolmuşsa, yük devretme grubu yük devretmeyi tetikler. Okuma-yazma dinleyicisi kullanılabilir hale geldikten sonra bağlantı kurulan bağlantılar başarısız olur (2). Aşağıdaki diyagramda, kurtarma işleminin iki aşaması gösterilmektedir.
 
 > [!NOTE]
-> Birincil bölgedeki kesinti yetkisiz kullanım süresi içinde azaltılırsa, trafik yöneticisi birincil bölgedeki bağlantının geri yüklemesini algılar ve kullanıcı trafiğini A bölgesindeki uygulama örneğine geri döndürür. Bu uygulama örneği, önceki diyagramda gösterildiği gibi A bölgesindeki birincil veritabanını kullanarak okuma yazma modunda devam eder ve çalışır.
+> Birincil bölgedeki kesinti yetkisiz kullanım süresi içinde azaltıldığında, Traffic Manager birincil bölgedeki bağlantının geri yüklenmesini algılar ve Kullanıcı trafiğini A bölgesindeki uygulama örneğine geri geçirir. Bu uygulama örneği, önceki diyagramda gösterildiği gibi A bölgesindeki birincil veritabanını kullanarak okuma-yazma modunda devam eder ve çalışır.
 
 ![Senaryo 2. Olağanüstü durum kurtarma aşamaları.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
 
-B bölgesinde bir kesinti olursa, trafik yöneticisi B bölgesindeki bitiş noktası web-app-2'nin başarısızlığını algılar ve bozulduğunu işaretler (1). Bu arada, failover grubu salt okunur dinleyiciyi A (2) bölgesine değiştirir. Bu kesinti son kullanıcı deneyimini etkilemez, ancak birincil veritabanı kesinti sırasında açığa çıkar. Aşağıdaki diyagram, ikincil bölgede bir hata gösterir:
+B bölgesinde bir kesinti olursa Traffic Manager, B bölgesinde Web-App-2 bitiş noktası başarısızlığını algılar ve düzeyi (1) olarak işaretler. Bu sırada, yük devretme grubu salt okuma dinleyicisini A (2) bölgesine geçirir. Bu kesinti, son kullanıcı deneyimini etkilemez, ancak birincil veritabanı kesinti sırasında gösterilir. Aşağıdaki diyagramda ikincil bölgedeki bir hata gösterilmektedir:
 
-![Senaryo 2. İkincil bölgede kesinti.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
+![Senaryo 2. İkincil bölgenin kesintisi.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
 
-Kesinti azaltıldıktan sonra, ikincil veritabanı hemen birincil ile senkronize edilir ve salt okunur dinleyici b bölgesindeki ikincil veritabanına geri değiştirilir. Birincil eşitleme performansı sırasında eşitlenmesi gereken veri miktarına bağlı olarak biraz etkilenebilir.
+Kesinti azaltıldıktan sonra, ikincil veritabanı hemen birincil ile eşitlenir ve salt okuma dinleyicisi B bölgesinde ikincil veritabanına geri getirilir. Birincil öğesinin eşitleme performansı sırasında eşitlenmesi gereken veri miktarına bağlı olarak biraz etkilenebilir.
 
-Bu tasarım deseni çeşitli **avantajları**vardır:
+Bu tasarım deseninin çeşitli **avantajları**vardır:
 
 * Geçici kesintiler sırasında veri kaybını önler.
-* Kapalı kalma süresi yalnızca trafik yöneticisinin yapılandırılabilir olan bağlantı hatasını ne kadar hızlı algıladığına bağlıdır.
+* Kesinti süresi yalnızca, Traffic Manager 'ın yapılandırılabilir olduğu bağlantı hatasını ne kadar hızlı algıladığına bağlıdır.
 
-Bunun **sakıncası,** uygulamanın salt okunur modda çalışabilmesidir.
+**Zorunluluğunu getirir** , uygulamanın salt okunurdur modunda çalışabilebilmelidir.
 
-## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Senaryo 3: Veri kaybı ve sıfıra yakın kapalı kalma süresi olmadan farklı bir coğrafyaya uygulama taşınması
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Senaryo 3: uygulama, veri kaybı olmadan ve sıfıra yakın kapalı kalma süresi olmadan farklı bir Coğrafya 'ya yeniden konumlandırma
 
-Bu senaryoda uygulama aşağıdaki özelliklere sahiptir:
+Bu senaryoda, uygulama aşağıdaki özelliklere sahiptir:
 
-* Son kullanıcılar uygulamaya farklı coğrafyalardan erişiciler
-* Uygulama, en son güncelleştirmelerle tam eşitlemeye bağlı olmayan salt okunur iş yüklerini içerir
-* Verilere yazma erişimi kullanıcıların çoğunluğu için aynı coğrafyada desteklenmelidir
-* Okuma gecikmesi son kullanıcı deneyimi için çok önemlidir
+* Son kullanıcılar uygulamaya farklı coğrafi bölgelerde erişir
+* Uygulama, en son güncelleştirmelerle tam eşitlemeye bağımlı olmayan salt okuma iş yüklerini içerir
+* Verilere yazma erişimi, kullanıcıların çoğunluğu için aynı coğrafya içinde desteklenmelidir
+* Son Kullanıcı deneyimi için okuma gecikmesi kritiktir
 
-Bu gereksinimleri karşılamak için, kullanıcı aygıtının, gözatma verileri, analitik vb. gibi salt okunur işlemler için aynı coğrafyada dağıtılan uygulamaya **her zaman** bağlandığını garanti etmeniz gerekir. Oysa OLTP işlemleri **çoğu zaman**aynı coğrafyada işlenir. Örneğin, gün içinde OLTP işlemleri aynı coğrafyada işlenir, ancak kapalı saatlerde farklı bir coğrafyada işlenebilir. Son kullanıcı etkinliği çoğunlukla çalışma saatleri içinde gerçekleşirse, çoğu zaman kullanıcıların çoğu için en iyi performansı garanti edebilirsiniz. Aşağıdaki diyagram bu topolojiyi göstermektedir.
+Bu gereksinimleri karşılamak için, Kullanıcı cihazının, veri tarama, analiz vb. gibi salt okuma işlemleri için aynı coğrafya 'da dağıtılan uygulamaya **her zaman** bağlandığından emin olmanız gerekir. Öte yandan, OLTP işlemleri **zaman**içinde aynı coğrafya içinde işlenir. Örneğin, OLTP işlemlerinin gün içinde aynı coğrafya 'da işlendiği, ancak kapalı saatlerde farklı bir Coğrafya içinde işlenebilecekleri zaman içinde. Son Kullanıcı etkinliği genellikle çalışma saatlerinde gerçekleşdiğinde, çoğu kullanıcının çoğu için en iyi performansı garanti edebilirsiniz. Aşağıdaki diyagramda bu topoloji gösterilmektedir.
 
-Uygulamanın kaynakları, önemli kullanım talebinizin olduğu her coğrafyada dağıtılmalıdır. Örneğin, uygulamanız Amerika Birleşik Devletleri, Avrupa Birliği ve Güney Doğu Asya'da etkin olarak kullanılıyorsa, uygulama nın tüm bu coğrafyalara dağıtılması gerekir. Birincil veritabanı, çalışma saatlerinin sonunda dinamik olarak bir coğrafyadan diğerine geçilmelidir. Bu yöntem "güneşi takip" olarak adlandırılır. OLTP iş yükü her zaman okuma-yazma ** &lt;&gt;dinleyicifailover-group-name .database.windows.net** (1) üzerinden veritabanına bağlanır. Salt okunur iş yükü, sunucu bitiş noktası ** &lt;sunucu adı&gt;.database.windows.net** (2) veritabanını kullanarak doğrudan yerel veritabanına bağlanır. Trafik yöneticisi [performans yönlendirme yöntemi](../traffic-manager/traffic-manager-configure-performance-routing-method.md)ile yapılandırılır. Son kullanıcının aygıtının en yakın bölgedeki web hizmetine bağlanmasını sağlar. Trafik yöneticisi, her web hizmeti bitiş noktası için etkin leştirilmiş son nokta izleme ile ayarlanmalıdır (3).
-
-> [!NOTE]
-> Failover grubu yapılandırması, failover için hangi bölgenin kullanıldığını tanımlar. Yeni birincil farklı bir coğrafyada olduğundan, etkilenen bölge yeniden çevrimiçi olana kadar hem OLTP hem de salt okunur iş yükleri için daha uzun gecikme sonu ile sonuçlanır.
-
-![Senaryo 3. Doğu ABD'de birincil ile yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
-
-Günün sonunda, örneğin yerel saatle 23:00'te, etkin veritabanları bir sonraki bölgeye (Kuzey Avrupa) geçilmelidir. Bu görev Azure Logic [Apps](../logic-apps/logic-apps-overview.md)kullanılarak tam otomatikolabilir. Görev aşağıdaki adımları içerir:
-
-* Failover grubundaki birincil sunucuyu dost failover kullanarak Kuzey Avrupa'ya geçirin (1)
-* Doğu ABD ve Kuzey Avrupa arasındaki başarısız grubu kaldırın
-* Kuzey Avrupa ve Doğu Asya arasında aynı adı taşıyan yeni bir başarısız grup oluşturun (2).
-* Kuzey Avrupa'daki birincil ve Doğu Asya'daki ikincil primary'i bu başarısız gruba ekleyin (3).
-
-Aşağıdaki diyagram, planlanan hatadan sonra yeni yapılandırmayı gösterir:
-
-![Senaryo 3. Ön seçimin Kuzey Avrupa'ya geçişi.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
-
-Örneğin Kuzey Avrupa'da bir kesinti gerçekleşirse, otomatik veritabanı başarısızlığı failover grubu tarafından başlatılır ve bu da uygulamanın zamanlamadan önce bir sonraki bölgeye taşınmasıyla sonuçlanır (1).  Bu durumda, Kuzey Avrupa tekrar devreye dönene kadar ABD Doğusu kalan tek ikincil bölgedir. Geri kalan iki bölge, rollerdeğiştirerek üç coğrafyadaki müşterilere hizmet vermektedir. Azure Logic Apps buna göre ayarlanmalıdır. Kalan bölgeler Avrupa'dan ek kullanıcı trafiği aldığı için, uygulamanın performansı yalnızca ek gecikme süresinden değil, aynı zamanda artan son kullanıcı bağlantısı sayısından da etkilenir. Kesinti Kuzey Avrupa'da azaltıldıktan sonra, oradaki ikincil veritabanı hemen geçerli birincil veritabanıyla senkronize edilir. Aşağıdaki diyagram, Kuzey Avrupa'daki bir kesintiyi göstermektedir:
-
-![Senaryo 3. Kuzey Avrupa'da kesinti.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
+Uygulamanın kaynakları, önemli kullanım talebi olan her bir Coğrafya üzerinde dağıtılmalıdır. Örneğin, uygulamanız Birleşik Devletler etkin olarak kullanılıyorsa, Avrupa Birliği ve Güney Doğu Asya, uygulamanın tüm bu coğrafi ormallara dağıtılması gerekir. Birincil veritabanı, çalışma saatlerinin sonunda bir Coğrafya 'dan bir sonrakine dinamik olarak yerleştirilmelidir. Bu yöntem "Güneş izle" olarak adlandırılır. OLTP iş yükü, her zaman okuma-yazma dinleyicisi ** &lt;yük devretmesi-grup-adı&gt;. Database.Windows.net** (1) yoluyla veritabanına bağlanır. Salt okuma iş yükü, veritabanı sunucusu uç nokta ** &lt;sunucusu-adı&gt;. Database.Windows.net** (2) kullanarak doğrudan yerel veritabanına bağlanır. Traffic Manager, [performans yönlendirme yöntemiyle](../traffic-manager/traffic-manager-configure-performance-routing-method.md)yapılandırılır. Son kullanıcının cihazının en yakın bölgede Web hizmetine bağlı olmasını sağlar. Traffic Manager, her Web hizmeti uç noktası (3) için uç nokta izleme etkinleştirilmiş olarak ayarlanmalıdır.
 
 > [!NOTE]
-> Son kullanıcının Avrupa'daki deneyiminin uzun gecikme süresiyle bozulduğu zamanı azaltabilirsiniz. Bunu yapmak için, kuzey Avrupa'daki çevrimdışı uygulama örneğinin yerine, bir uygulama kopyasını proaktif olarak dağıtmalı ve başka bir yerel bölgede (Batı Avrupa) ikincil veritabanı(lar) oluşturmalısınız. İkincisi tekrar çevrimiçi olduğunda, Batı Avrupa'yı kullanmaya devam edip etmemeye veya uygulamanın kopyasını kaldırmaya ve Kuzey Avrupa'yı kullanmaya geri dönüp dönmeyeceğinizkonusunda karar verebilirsiniz.
+> Yük devretme grubu yapılandırması, yük devretme için hangi bölgenin kullanıldığını tanımlar. Yeni birincil konum farklı bir Coğrafya içinde olduğundan, etkilenen bölge yeniden çevrimiçi olana kadar hem OLTP hem de salt okuma iş yükleri için yük devretme sonuçları daha uzun gecikme süresine sahiptir.
 
-Bu tasarımın temel **yararları** şunlardır:
+![Senaryo 3. Doğu ABD birincil ile yapılandırma.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-* Salt okunur uygulama iş yükü, dolaplar bölgesindeki verilere her zaman erişir.
-* Okuma yazma uygulaması iş yükü, her coğrafyada en yüksek etkinlik döneminde en yakın bölgedeki verilere erişir
-* Uygulama birden çok bölgeye dağıtıldığı için, önemli bir kesinti olmaksızın bölgelerden birinin kaybına neden olabilir.
+Günün sonunda, örneğin 11 PM yerel saatinde, etkin veritabanlarının bir sonraki bölgeye (Kuzey Avrupa) geçiş yapılmalıdır. Bu görev, [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullanılarak tamamen otomatikleştirilebilir. Görev aşağıdaki adımları içerir:
 
-Ama bazı **tradeoffs**vardır:
+* Kolay yük devretme (1) kullanarak Kuzey Avrupa yük devretme grubundaki birincil sunucuyu değiştirin
+* Doğu ABD ve Kuzey Avrupa arasında yük devretme grubunu kaldırma
+* Aynı ada sahip ancak Kuzey Avrupa ve Doğu Asya (2) arasında yeni bir yük devretme grubu oluşturun.
+* Bu yük devretme grubuna (3) Doğu Asya Kuzey Avrupa birincili ve ikincil öğesine ekleyin.
 
-* Bölgesel bir kesinti, coğrafyanın daha uzun gecikme süreden etkilenmesine neden olur. Uygulama tarafından farklı bir coğrafyada hem okuma-yazma hem de salt okunur iş yükleri sunulur.
-* Salt okunur iş yükleri, her bölgedeki farklı bir bitiş noktasına bağlanmalıdır.
+Aşağıdaki diyagramda, planlı yük devretmenin ardından yeni yapılandırma gösterilmektedir:
 
-## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>İş sürekliliği planlaması: Bulut felaketini kurtarma için bir uygulama tasarımı seçin
+![Senaryo 3. Birincil Kuzey Avrupa geçişi yapılıyor.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Özel bulut olağanüstü durum kurtarma stratejiniz, uygulamanızın gereksinimlerini en iyi şekilde karşılamak için bu tasarım modellerini birleştirebilir veya genişletebilir.  Daha önce de belirtildiği gibi, seçtiğiniz strateji, müşterilerinize sunmak istediğiniz SLA'ya ve uygulama dağıtım topolojisine dayanır. Kararınızı yönlendirmeye yardımcı olmak için, aşağıdaki tablo kurtarma noktası hedefine (RPO) ve tahmini kurtarma süresine (ERT) dayalı seçenekleri karşılaştırır.
+Örneğin Kuzey Avrupa bir kesinti olursa, otomatik veritabanı yük devretmesi yük devretme grubu tarafından başlatılır ve bu, uygulamayı zamanlamanın (1) bir sonraki bölgesine taşımaya etkili bir şekilde neden olur.  Bu durumda, Kuzey Avrupa yeniden çevrimiçi olana kadar ABD Doğu kalan tek ikincil bölgedir. Kalan iki bölge, roller arasında geçiş yaparak müşterileri üç coğrafi bölgede sunar. Azure Logic Apps uygun şekilde ayarlanmalıdır. Kalan bölgelerde Avrupa 'dan ek Kullanıcı trafiği alındığından, uygulamanın performansı yalnızca ek gecikme süresi ve ayrıca daha fazla sayıda Son Kullanıcı bağlantısı tarafından etkilenmez. Kesinti Kuzey Avrupa bir kez azaltıldıktan sonra, ikincil veritabanı geçerli birincil ile hemen eşitlenir. Aşağıdaki diyagramda Kuzey Avrupa bir kesinti gösterilmektedir:
+
+![Senaryo 3. Kuzey Avrupa kesinti.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
+
+> [!NOTE]
+> Son kullanıcının Avrupa 'daki deneyiminin uzun gecikme süresine göre düştüğü süreyi azaltabilirsiniz. Bunu yapmak için, bir uygulama kopyasını önceden dağıtmanız ve ikincil veritabanlarını başka bir yerel bölgede (Batı Avrupa) oluşturmanız gerekir ve Kuzey Avrupa çevrimdışı uygulama örneğinin yerini alır. İkincisi yeniden çevrimiçi olduğunda, Batı Avrupa kullanmaya devam edilip edilmeyeceğini ya da uygulamanın kopyasını kaldırıp Kuzey Avrupa kullanmaya geri dönmek için karar verebilirsiniz.
+
+Bu tasarımın başlıca **avantajları** şunlardır:
+
+* Salt okuma uygulama iş yükü, verileri her zaman ve alt kümeler bölgesinde erişir.
+* Okuma-yazma uygulaması iş yükü, her Coğrafya 'daki en yüksek Etkinliğin süresi boyunca en yakın bölgedeki verilere erişir
+* Uygulama birden çok bölgeye dağıtıldığından, önemli kapalı kalma süresi olmadan bölgelerden birinin kaybedilmesi devam edebilir.
+
+Ancak bazı **dengeler**vardır:
+
+* Bölgesel bir kesinti, Coğrafya 'nın daha uzun bir gecikmeyle etkilenmesine neden olur. Okuma-yazma ve salt okuma iş yükleri, uygulama tarafından farklı bir Coğrafya içinde sunulur.
+* Salt okuma iş yükleri her bölgede farklı bir uç noktasına bağlanmalıdır.
+
+## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>İş sürekliliği planlama: bulut olağanüstü durum kurtarma için bir uygulama tasarımı seçme
+
+Özel bulut olağanüstü durum kurtarma stratejiniz, uygulamanızın ihtiyaçlarını en iyi şekilde karşılayacak şekilde bu tasarım düzenlerini birleştirebilir veya genişletebilir.  Daha önce belirtildiği gibi, seçtiğiniz strateji müşterilerinize ve uygulama dağıtım topolojisine sunmak istediğiniz SLA 'yı temel alır. Kararmanıza yardımcı olmak için aşağıdaki tabloda, kurtarma noktası hedefi (RPO) ve tahmini kurtarma süresi (ERT) temelinde seçimler karşılaştırılmaktadır.
 
 | Desen | RPO | ERT |
 |:--- |:--- |:--- |
-| Ortak bulunan veritabanı erişimi yle olağanüstü durum kurtarma için etkin-pasif dağıtım |5 sn < okuma-yazma erişimi |Arıza algılama süresi + DNS TTL |
-| Uygulama yük dengelemesi için etkin dağıtım |5 sn < okuma-yazma erişimi |Arıza algılama süresi + DNS TTL |
-| Veri koruma için etkin-pasif dağıtım |5 sn < salt okunur erişim | Salt okunur erişim = 0 |
-||Okuma-yazma erişimi = sıfır | Okuma-yazma erişimi = Hata algılama süresi + veri kaybı ile yetkisiz kullanım süresi |
+| Birlikte bulunan veritabanı erişimiyle olağanüstü durum kurtarma için etkin-Pasif dağıtım |Okuma-yazma erişimi < 5 sn |Hata algılama zamanı + DNS TTL |
+| Uygulama yük dengelemesi için etkin-etkin dağıtım |Okuma-yazma erişimi < 5 sn |Hata algılama zamanı + DNS TTL |
+| Etkin-Pasif dağıtım veri koruma |Salt okuma erişimi < 5 sn | Salt okuma erişimi = 0 |
+||Okuma-yazma erişimi = sıfır | Okuma-yazma erişimi = hata algılama süresi + yetkisiz kullanım süresi veri kaybı |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* İş sürekliliğine genel bakış ve senaryolar için [bkz.](sql-database-business-continuity.md)
-* Etkin coğrafi çoğaltma hakkında bilgi edinmek için [Etkin coğrafi çoğaltma'ya](sql-database-active-geo-replication.md)bakın.
-* Otomatik hata grupları hakkında bilgi edinmek için Otomatik [başarısız grupları'na](sql-database-auto-failover-group.md)bakın.
-* Elastik havuzlu etkin coğrafi çoğaltma hakkında bilgi için [elastik havuz felaket kurtarma stratejilerine](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)bakın.
+* İş sürekliliği için genel bakış ve senaryolar için bkz. [iş sürekliliği genel bakış](sql-database-business-continuity.md)
+* Etkin coğrafi çoğaltma hakkında bilgi edinmek için bkz. [etkin coğrafi çoğaltma](sql-database-active-geo-replication.md).
+* Otomatik yük devretme grupları hakkında bilgi edinmek için bkz. [otomatik yük devretme grupları](sql-database-auto-failover-group.md).
+* Esnek havuzlarla etkin coğrafi çoğaltma hakkında daha fazla bilgi için bkz. [elastik havuz olağanüstü durum kurtarma stratejileri](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

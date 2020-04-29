@@ -1,99 +1,99 @@
 ---
-title: Azure Kaynağından kaynak günlükleri toplayın ve Azure Monitor ile analiz edin
-description: Bir Azure kaynağından kaynak günlüklerini bir günlük sorgusuyla analiz edilebilen bir Günlük Analizi çalışma alanına toplamak için tanılama ayarlarını yapılandırma öğreticisi.
+title: Azure kaynağından kaynak günlüklerini toplayın ve Azure Izleyici ile çözümleyin
+description: Bir Azure kaynağından kaynak günlüklerini, bir günlük sorgusuyla çözümlenebilecekleri bir Log Analytics çalışma alanına toplamak üzere tanılama ayarlarını yapılandırma öğreticisi.
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
 ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78269203"
 ---
-# <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Öğretici: Azure kaynağından kaynak günlüklerini toplama ve analiz
+# <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Öğretici: Azure kaynağından kaynak günlüklerini toplayın ve çözümleyin
 
-Kaynak günlükleri, bir Azure kaynağının ayrıntılı çalışması hakkında bilgi sağlar ve sistem ve kullanılabilirliklerini izlemek için yararlıdır. Azure kaynakları kaynak günlüklerini otomatik olarak oluşturur, ancak bunların toplanması gereken yeri yapılandırmanız gerekir. Bu öğretici, Azure aboneliğinizdeki bir kaynak için kaynak günlükleri toplamak ve günlük sorgusuyla çözümlemek için tanılama ayarı oluşturma işlemine geçer.
+Kaynak günlükleri bir Azure kaynağının ayrıntılı işlemine ilişkin öngörüler sağlar ve sistem durumunu ve kullanılabilirliğini izlemek için yararlıdır. Azure kaynakları otomatik olarak kaynak günlükleri oluşturur, ancak toplanacak yerleri yapılandırmanız gerekir. Bu öğretici, Azure aboneliğinizdeki bir kaynağın kaynak günlüklerini toplamak ve bir günlük sorgusuyla çözümlemek için bir tanılama ayarı oluşturma sürecinde size kılavuzluk ediyor.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure Monitör'de Günlük Analizi çalışma alanı oluşturma
-> * Kaynak günlüklerini toplamak için tanılama ayarı oluşturma 
+> * Azure Izleyici 'de Log Analytics çalışma alanı oluşturma
+> * Kaynak günlüklerini toplamak için bir tanılama ayarı oluşturma 
 > * Günlükleri çözümlemek için basit bir günlük sorgusu oluşturma
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için izlemek için bir Azure kaynağına ihtiyacınız var. Azure aboneliğinizde tanılama ayarlarını destekleyen tüm kaynakları kullanabilirsiniz. Kaynağın tanılama ayarlarını destekleyip desteklemediğini belirlemek için Azure portalındaki menüsüne gidin ve menünün **İzleme** bölümünde **Tanılama ayarları** seçeneği olduğunu doğrulayın.
+Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağınız olması gerekir. Azure aboneliğinizdeki herhangi bir kaynağı tanılama ayarlarını destekleyen bir kaynak kullanabilirsiniz. Bir kaynağın tanılama ayarlarını destekleyip desteklemediğini anlamak için Azure portal menüsüne gidin ve menünün **izleme** bölümünde bir **Tanılama ayarları** seçeneğinin olduğunu doğrulayın.
 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-Azure portalına giriş [https://portal.azure.com](https://portal.azure.com)yapın.
+Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal oturum açın.
 
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
-Azure Monitor'daki Log Analytics çalışma alanı, çeşitli kaynaklardan günlük verileri toplar ve dizinler ve güçlü bir sorgu dili kullanarak gelişmiş analizsağlar. Giriş Analitiği çalışma alanının, veri göndermek için bir tanıa ayar oluşturmadan önce var olması gerekir. Azure aboneliğinizde varolan bir çalışma alanı kullanabilir veya aşağıdaki yordamı kullanarak bir çalışma alanı oluşturabilirsiniz. 
+Azure Izleyici 'deki bir Log Analytics çalışma alanı, çeşitli kaynaklardan günlük verilerini toplar ve dizinler ve güçlü bir sorgu dili kullanarak gelişmiş analizler sağlar. Veri göndermek için bir tanılama ayarı oluşturmadan önce Log Analytics çalışma alanının mevcut olması gerekir. Azure aboneliğinizde var olan bir çalışma alanını kullanabilir veya aşağıdaki yordamla bir tane oluşturabilirsiniz. 
 
 > [!NOTE]
-> **Azure Monitor** menüsündeki Log Analytics çalışma alanlarındaki verilerle çalışabiliyorken, **Log Analytics çalışma alanları** menüsünde çalışma alanları oluşturur ve yönetirsiniz.
+> **Azure izleyici** menüsündeki Log Analytics çalışma alanlarında verilerle çalışıyorsanız, **Log Analytics çalışma alanları** menüsündeki çalışma alanlarını oluşturup yönetirsiniz.
 
-1. **Tüm hizmetlerden** **Log Analytics çalışma alanlarını**seçin.
-2. Ekranın üst kısmında **Ekle'yi** tıklatın ve çalışma alanı için aşağıdaki ayrıntıları sağlayın:
-   - **Günlük Analitiği çalışma alanı**: Yeni çalışma alanının adı. Bu ad, tüm Azure Monitor aboneliklerinde genel olarak benzersiz olmalıdır.
-   - **Abonelik**: Çalışma alanını depolamak için aboneliği seçin. Bu, izlenen kaynakla aynı abonelik olması gerekmez.
-   - **Kaynak Grubu**: Varolan bir kaynak grubu seçin veya yeni sini oluşturmak için **yeni oluştur'u** tıklatın. Bu, izlenen kaynakla aynı kaynak grubu olması gerekmez.
-   - **Konum**: Bir Azure bölgesi seçin veya yeni bir bölge oluşturun. Bu, izlenen kaynakla aynı konumda olması gerekmez.
-   - **Fiyatlandırma katmanı**: Fiyatlandırma katmanı olarak *istediğiniz kadar öde'yi* seçin. Bu fiyatlandırma katmanını daha sonra değiştirebilirsiniz. Farklı fiyatlandırma katmanları hakkında daha fazla bilgi edinmek için **Günlük Analizi fiyatlandırma** bağlantısını tıklayın.
+1. **Tüm hizmetlerden** **Log Analytics çalışma alanları**' nı seçin.
+2. Ekranın üst kısmındaki **Ekle** ' ye tıklayın ve çalışma alanı için aşağıdaki ayrıntıları sağlayın:
+   - **Log Analytics çalışma alanı**: yeni çalışma alanının adı. Bu ad tüm Azure Izleyici abonelikleri genelinde genel olarak benzersiz olmalıdır.
+   - **Abonelik**: çalışma alanını depolamak için aboneliği seçin. Bu, izlenmekte olan kaynakla aynı abonelik olması gerekmez.
+   - **Kaynak grubu**: var olan bir kaynak grubunu seçin veya yeni bir tane oluşturmak Için **Yeni oluştur** ' a tıklayın. Bu, izlenmekte olan kaynakla aynı kaynak grubu olması gerekmez.
+   - **Konum**: bir Azure bölgesi seçin ya da yeni bir tane oluşturun. Bu, izlenmekte olan kaynakla aynı konum olması gerekmez.
+   - **Fiyatlandırma katmanı**: fiyatlandırma katmanı olarak *Kullandıkça Öde* ' yi seçin. Bu fiyatlandırma katmanını daha sonra değiştirebilirsiniz. Farklı fiyatlandırma katmanları hakkında daha fazla bilgi edinmek için **Log Analytics fiyatlandırma** bağlantısına tıklayın.
 
     ![Yeni çalışma alanı](media/tutorial-resource-logs/new-workspace.png)
 
-3. Çalışma alanını oluşturmak için **Tamam'ı** tıklatın.
+3. Çalışma alanını oluşturmak için **Tamam** ' ı tıklatın.
 
-## <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluşturma
-[Tanılama ayarları,](../platform/diagnostic-settings.md) belirli bir kaynak için kaynak günlüklerinin nereye gönderilmesi gerektiğini tanımlar. Tek bir tanılama ayarı birden çok [hedefe](../platform/diagnostic-settings.md#destinations)sahip olabilir, ancak bu öğreticide yalnızca bir Log Analytics çalışma alanı kullanırız.
+## <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur
+[Tanılama ayarları](../platform/diagnostic-settings.md) , belirli bir kaynak için kaynak günlüklerinin nereye gönderileceğini tanımlar. Tek bir tanılama ayarında birden çok [hedef](../platform/diagnostic-settings.md#destinations)bulunabilir, ancak bu öğreticide yalnızca bir Log Analytics çalışma alanı kullanacağız.
 
-1. Kaynak menünüzün **İzleme** bölümünde **Tanılama ayarlarını**seçin.
-2. "Tanılama ayarları tanımlanmadı" iletisi olmalıdır. **Tanı ayarını ekle'yi**tıklatın.
+1. Kaynağınızın menüsünün **izleme** bölümü altında **Tanılama ayarları**' nı seçin.
+2. "Tanılama ayarları tanımlanmamış" iletisine sahip olmalısınız. **Tanılama ayarı Ekle**' ye tıklayın.
 
     ![Tanılama ayarları](media/tutorial-resource-logs/diagnostic-settings.png)
 
-3. Her tanılama ayarı üç temel bölümden oluşur:
+3. Her tanılama ayarının üç temel bölümü vardır:
  
-   - **Adı**: Bu önemli bir etkisi yoktur ve sadece sizin için açıklayıcı olmalıdır.
-   - **Gidilecek Yerler**: Günlükleri göndermek için bir veya daha fazla hedef. Tüm Azure hizmetleri, üç olası hedef kümesini paylaşır. Her tanılama ayarı bir veya daha fazla hedef tanımlayabilir, ancak belirli bir türde birden fazla hedef belirleyemez. 
-   - **Kategorisi**: Her bir hedefe gönderilecek günlük kategorileri. Kategoriler kümesi her Azure hizmeti için değişir.
+   - **Ad**: Bu, önemli bir etkiye sahip değildir ve yalnızca sizin için açıklayıcı olmalıdır.
+   - **Hedefler**: günlükleri göndermek için bir veya daha fazla hedef. Tüm Azure hizmetleri aynı üç olası hedef kümesini paylaşır. Her bir tanılama ayarı bir veya daha fazla hedef tanımlayabilir, ancak belirli bir türün birden fazla hedefi olamaz. 
+   - **Kategoriler**: hedeflerin her birine gönderilecek günlüklerin kategorileri. Kategori kümesi, her bir Azure hizmeti için farklılık gösterecektir.
 
-4. **Günlük Analitiği Çalışma Alanını Gönder'i** seçin ve ardından oluşturduğunuz çalışma alanını seçin.
-5. Toplamak istediğiniz kategorileri seçin. Kullanılabilir kategorilerin tanımı için her hizmetiçin belgelere bakın.
+4. **Log Analytics çalışma alanına gönder** ' i seçin ve ardından oluşturduğunuz çalışma alanını seçin.
+5. Toplamak istediğiniz kategorileri seçin. Kullanılabilir kategorilerinin bir tanımı için her hizmet için belgelere bakın.
 
     ![Tanılama ayarı](media/tutorial-resource-logs/diagnostic-setting.png)
 
-6. Tanılama ayarlarını kaydetmek için **Kaydet'i** tıklatın.
+6. Tanılama ayarlarını kaydetmek için **Kaydet** ' e tıklayın.
 
     
  
- ## <a name="use-a-log-query-to-retrieve-logs"></a>Günlükleri almak için günlük sorgusu kullanma
-Veriler, Kusto Query Language (KQL) ile yazılmış bir günlük sorgusu kullanılarak Günlük Analizi çalışma alanından alınır. Azure Monitor'daki öngörüler ve çözümler, belirli bir hizmet için veri almak için günlük sorguları sağlar, ancak günlük sorguları ve bunların sonuçlarıyla Doğrudan Log Analytics ile Azure portalında çalışabilirsiniz. 
+ ## <a name="use-a-log-query-to-retrieve-logs"></a>Günlükleri almak için bir günlük sorgusu kullanma
+Veriler, kusto sorgu dilinde (KQL) yazılmış bir günlük sorgusu kullanılarak Log Analytics çalışma alanından alınır. Azure Izleyici 'deki Öngörüler ve çözümler, belirli bir hizmet için veri almaya yönelik günlük sorguları sağlar, ancak günlük sorgularıyla doğrudan ve Log Analytics ile Azure portal sonuçlarla çalışabilirsiniz. 
 
-1. Kaynak menünün **İzleme** bölümünde **Günlükler'i**seçin.
-2. Log Analytics, kapsamı kaynağınıza ayarlanmış boş bir sorgu penceresi ile açılır. Tüm sorgular yalnızca bu kaynaktan gelen kayıtları içerir.
+1. Kaynağınızın menüsünün **izleme** bölümü altında **Günlükler**' i seçin.
+2. Log Analytics, kaynağı olarak ayarlanmış bir boş sorgu penceresiyle açılır. Tüm sorgular yalnızca bu kaynaktaki kayıtları içerir.
 
     > [!NOTE]
-    > Azure Monitor menüsünden Günlükler'i açtıysanız, kapsam Log Analytics çalışma alanına ayarlanır. Bu durumda, tüm sorgular çalışma alanındaki tüm kayıtları içerir.
+    > Günlükleri Azure Izleyici menüsünden açtıysanız, kapsam Log Analytics çalışma alanına ayarlanır. Bu durumda, tüm sorgular çalışma alanındaki tüm kayıtları içerir.
    
     ![Günlükler](media/tutorial-resource-logs/logs.png)
 
-4. Örnekte gösterilen hizmet **AzureDiagnostics** tablosuna kaynak günlükleri yazar, ancak diğer hizmetler diğer tablolara yazabilir. Farklı Azure hizmetleri tarafından kullanılan tablolar [için Desteklenen hizmetler, şemalar ve Kategorilere](../platform/diagnostic-logs-schema.md) bakın Azure Kaynak Günlükleri için.
+4. Örnekte gösterilen hizmet, kaynak günlüklerini **AzureDiagnostics** tablosuna yazar, ancak diğer hizmetler diğer tablolara yazabilir. Farklı Azure hizmetleri tarafından kullanılan tablolar için [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/diagnostic-logs-schema.md) bölümüne bakın.
 
     > [!NOTE]
-    > Birden çok hizmet AzureDiagnostics tablosuna kaynak günlükleri yazar. Azure Monitor menüsünden Log Analytics'i başlatıysanız, `where` belirli bir `ResourceProvider` hizmetinizi belirtmek için sütuna bir ekstre eklemeniz gerekir. Günlük Analizi'ni bir kaynağın menüsünden başlattığınızda, kapsam yalnızca bu kaynaktan kaydolacak şekilde ayarlanır, böylece bu sütun gerekli değildir. Örnek sorgular için hizmetbelgelerine bakın.
+    > Birden çok hizmet, kaynak günlüklerini AzureDiagnostics tablosuna yazar. Azure Izleyici menüsünden Log Analytics başlatırsanız, belirli hizmetinizi belirtmek için `where` `ResourceProvider` sütununa sahip bir ifade eklemeniz gerekir. Bir kaynağın menüsünden Log Analytics başlattığınızda, bu sütun gerekli olmaması için kapsam yalnızca bu kaynaktaki kayıtlar olarak ayarlanır. Örnek sorgular için hizmetin belgelerine bakın.
 
 
-5. Sorgu yazın ve sonuçları incelemek için **Çalıştır'ı** tıklatın. 
-6. Bkz. Günlük sorguları yazma yla ilgili bir öğretici için [Azure Monitor'daki günlük sorgularına başlayın.](../log-query/get-started-queries.md)
+5. Sonuçları incelemek için bir sorguyu yazın ve **Çalıştır** ' a tıklayın. 
+6. Günlük sorguları yazma hakkında bir öğretici için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](../log-query/get-started-queries.md) .
 
     ![Günlük sorgusu](media/tutorial-resource-logs/log-query-1.png)
 
@@ -101,7 +101,7 @@ Veriler, Kusto Query Language (KQL) ile yazılmış bir günlük sorgusu kullan�
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık Bir Log Analytics çalışma alanında kaynak günlükleri toplamayı öğrendiğiniz için, bu verileri çözümlemek için günlük sorguları yazma yla ilgili bir eğitimi tamamlayın.
+Kaynak günlüklerinin bir Log Analytics çalışma alanına nasıl toplanacağını öğrendiğinize göre, bu verileri çözümlemek için günlük sorguları yazma hakkında bir öğretici doldurun.
 
 > [!div class="nextstepaction"]
-> [Azure Monitor'da günlük sorgularına başlayın](../log-query/get-started-queries.md)
+> [Azure Izleyici 'de günlük sorgularını kullanmaya başlama](../log-query/get-started-queries.md)

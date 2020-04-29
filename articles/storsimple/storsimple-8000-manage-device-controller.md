@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi cihaz denetleyicilerini yönetin | Microsoft Dokümanlar
-description: StorSimple aygıt denetleyicilerinizi nasıl durduracağınız, yeniden başlatacağınız, kapatacağınız veya sıfırlamayı öğrenin.
+title: StorSimple 8000 serisi cihaz denetleyicilerini yönetme | Microsoft Docs
+description: StorSimple cihaz denetleyicilerinizi durdurmayı, yeniden başlatmayı, kapatmayı veya sıfırlamayı öğrenin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,150 +15,150 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267774"
 ---
-# <a name="manage-your-storsimple-device-controllers"></a>StorSimple cihaz denetleyicilerinizi yönetme
+# <a name="manage-your-storsimple-device-controllers"></a>StorSimple cihaz denetleyicilerinizi yönetin
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğretici, StorSimple aygıt denetleyicilerinizde gerçekleştirilebilecek farklı işlemleri açıklar. StorSimple aygıtınızdaki denetleyiciler, etkin-pasif yapılandırmada yedek (eş) denetleyicilerdir. Belirli bir zamanda, yalnızca bir denetleyici etkindir ve tüm disk ve ağ işlemlerini işler. Diğer denetleyici pasif modda. Etkin denetleyici başarısız olursa, pasif denetleyici otomatik olarak etkin olur.
+Bu öğreticide, StorSimple cihaz denetleyicilerinizde gerçekleştirilebilecek farklı işlemler açıklanmaktadır. StorSimple cihazınızdaki denetleyiciler, etkin-Pasif bir yapılandırmada gereksiz (eş) denetleyicileridir. Belirli bir zamanda yalnızca bir denetleyici etkindir ve tüm disk ve ağ işlemlerini işliyor. Diğer denetleyici pasif bir modda. Etkin denetleyici başarısız olursa, pasif denetleyici otomatik olarak etkin hale gelir.
 
-Bu öğretici, aşağıdakileri kullanarak aygıt denetleyicilerini yönetmek için adım adım yönergeler içerir:
+Bu öğreticide, cihaz denetleyicilerini yönetmek için adım adım yönergeler yer almaktadır:
 
-* StorSimple Device Manager hizmetinde cihazınıziçin **denetleyiciler.**
+* StorSimple Aygıt Yöneticisi hizmetinde cihazınızın **denetleyiciler** dikey penceresi.
 * StorSimple için Windows PowerShell.
 
-Cihaz denetleyicilerini StorSimple Device Manager hizmeti aracılığıyla yönetmeniz. Bir eylem yalnızca StorSimple için Windows PowerShell kullanılarak gerçekleştirilebiliyorsa, öğretici bunu not eder.
+StorSimple Aygıt Yöneticisi hizmeti aracılığıyla cihaz denetleyicilerini yönetmenizi öneririz. Bir eylem yalnızca StorSimple için Windows PowerShell kullanılarak gerçekleştirilemiyorsa, öğretici bunu bir yere getirir.
 
-Bu öğretici okuduktan sonra, mümkün olacak:
+Bu öğreticiyi okuduktan sonra şunları yapabilirsiniz:
 
-* StorSimple aygıt denetleyicisini yeniden başlatma veya kapatma
-* StorSimple aygıtını kapatma
-* StorSimple cihazınızı fabrika varsayılanlarına sıfırlama
+* StorSimple cihaz denetleyicisini yeniden başlatma veya kapatma
+* StorSimple cihazını kapatma
+* StorSimple cihazınızı fabrika varsayılanlarına sıfırlayın
 
 ## <a name="restart-or-shut-down-a-single-controller"></a>Tek bir denetleyiciyi yeniden başlatma veya kapatma
-Denetleyici, normal sistem çalışmasının bir parçası olarak yeniden başlatma veya kapatma gerektirmez. Tek bir aygıt denetleyicisi için kapatma işlemleri yalnızca başarısız bir aygıt donanım bileşeninin değiştirilmesi gereken durumlarda yaygındır. Performansın aşırı bellek kullanımından veya arızalı bir denetleyiciden etkilendiği bir durumda denetleyicinin yeniden başlatılması da gerekebilir. Değiştirilen denetleyiciyi etkinleştirmek ve test etmek istiyorsanız, başarılı bir denetleyici değişiminden sonra bir denetleyiciyi yeniden başlatmanız gerekebilir.
+Normal sistem işleminin bir parçası olarak denetleyicinin yeniden başlatılması veya kapatılmasını gerekli değildir. Tek bir cihaz denetleyicisi için kapalı işlemler yalnızca, başarısız bir cihaz donanım bileşeninin değişiklik gerektirdiği durumlarda ortaktır. Bir denetleyici yeniden başlatması, performansının aşırı bellek kullanımından veya hatalı çalışan bir denetleyiciden etkilediği bir durumda da gerekebilir. Ayrıca, değiştirilen denetleyiciyi etkinleştirmek ve test etmek istiyorsanız, başarılı bir denetleyici değişikliği sonrasında bir denetleyiciyi yeniden başlatmanız gerekebilir.
 
 Pasif denetleyicinin kullanılabilir olduğu varsayılırsa, cihazın yeniden başlatılması bağlı başlatıcılarda kesintiye neden olmaz. Pasif denetleyici kullanılabilir değilse veya kapatılmışsa, etkin denetleyicinin yeniden başlatılması hizmet kesintisine ve kapalı kalma süresine yol açabilir.
 
 > [!IMPORTANT]
-> * **Çalışan bir denetleyici, fazlalık kaybına ve daha fazla kesinti riskine neden olacağından fiziksel olarak asla kaldırılmaz.**
-> * Aşağıdaki yordam yalnızca StorSimple fiziksel aygıtı için geçerlidir. StorSimple Cloud Appliance'ı nasıl başlatacak, durdurup yeniden başlatacağız hakkında bilgi için bulut [cihazıyla Çalışma 'ya](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance)bakın.
+> * **Çalışan bir denetleyici asla fiziksel olarak kaldırılmamalıdır, çünkü bu durum yedekliliğe ve kapalı kalma süresinin artmasına neden olur.**
+> * Aşağıdaki yordam yalnızca StorSimple fiziksel cihazı için geçerlidir. StorSimple Cloud Appliance başlatma, durdurma ve yeniden başlatma hakkında daha fazla bilgi için bkz. [bulut gereci Ile çalışma](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance).
 
-StorSimple Aygıt Yöneticisi hizmetinin Azure portalı veya StorSimple için Windows PowerShell üzerinden tek bir aygıt denetleyicisini yeniden başlatabilir veya kapatabilirsiniz.
+StorSimple Aygıt Yöneticisi hizmeti veya StorSimple için Windows PowerShell Azure portal aracılığıyla tek bir cihaz denetleyicisini yeniden başlatabilir veya kapatabilirsiniz.
 
-Aygıt denetleyicilerinizi Azure portalından yönetmek için aşağıdaki adımları gerçekleştirin.
+Cihaz denetleyicilerinizi Azure portal yönetmek için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Azure portalında bir denetleyiciyi yeniden başlatmak veya kapatmak için
-1. StorSimple Aygıt Yöneticisi hizmetinizde **Cihazlar'a**gidin. Aygıtlar listesinden cihazınızı seçin. 
+#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Azure portal bir denetleyiciyi yeniden başlatmak veya kapatmak için
+1. StorSimple Aygıt Yöneticisi hizmetinizde **cihazlar**' a gidin. Cihaz listesinden cihazınızı seçin. 
 
     ![Cihaz seçin](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. Ayarlar **> Denetleyicileri'ne**gidin.
+2. **Ayarlar > denetleyicileri**' ne gidin.
    
-    ![StorSimple aygıt denetleyicilerinin sağlıklı olduğunu doğrulayın](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. **Denetleyiciler** bıçağında, cihazınızdaki her iki denetleyicinin durumunun **Sağlıklı**olduğunu doğrulayın. Bir denetleyici seçin, sağ tıklatın ve sonra **Yeniden Başlat** veya **Kapat'ı**seçin.
+    ![StorSimple cihaz denetleyicilerinin sağlıklı olduğunu doğrulayın](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
+3. **Denetleyiciler** dikey penceresinde, cihazlarınızın her iki denetleyicisinin durumunun **sağlıklı**olduğunu doğrulayın. Bir denetleyici seçin, sağ tıklayın ve ardından **Yeniden Başlat** veya **Kapat**' ı seçin.
 
-    ![StorSimple aygıt denetleyicilerini yeniden başlat'ı seçin veya kapatın](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
+    ![Yeniden Başlat veya StorSimple cihaz denetleyicilerini Kapat ' ı seçin](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. Denetleyiciyi yeniden başlatmak veya kapatmak için bir iş oluşturulur ve varsa geçerli uyarılar sunulur. Yeniden başlatma veya kapatmayı izlemek için **Hizmet > Etkinlik günlüklerine** gidin ve ardından hizmetinize özgü parametrelere göre filtre uygulayın. Bir denetleyici kapatıldıysa, açmak için kumandayı açmak için güç düğmesine basmanız gerekir.
+4. Denetleyiciyi yeniden başlatmak veya kapatmak için bir iş oluşturulur ve varsa geçerli uyarılarla karşılaşırsınız. Yeniden başlatma veya kapatmaları izlemek için, **service > etkinlik günlükleri** ' ne gidin ve ardından hizmetinize özgü parametrelere göre filtreleyin. Bir denetleyici kapatıldıysa, denetleyiciyi açmak için güç düğmesini göndermeniz gerekir.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell'deki bir denetleyiciyi yeniden başlatmak veya kapatmak için
-StorSimple için Windows PowerShell'den StorSimple aygıtınızdaki tek bir denetleyiciyi kapatmak veya yeniden başlatmak için aşağıdaki adımları gerçekleştirin.
+#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell bir denetleyiciyi yeniden başlatmak veya kapatmak için
+StorSimple için Windows PowerShell StorSimple cihazınızda tek bir denetleyiciyi kapatmak veya yeniden başlatmak için aşağıdaki adımları gerçekleştirin.
 
-1. Aygıta seri konsol veya uzak bir bilgisayardan telnet oturumu üzerinden erişin. Denetleyici 0 veya Controller 1'e bağlanmak [için, aygıt seri konsoluna bağlanmak için PuTTY'yi kullan'daki](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)adımları izleyin.
-2. Seri konsol menüsünde, seçenek 1 seçin, **tam erişim ile giriş yapın.**
-3. Banner iletisinde, bağlı olduğunuz denetleyiciye (Denetleyici 0 veya Denetleyici 1) ve etkin veya pasif (bekleme) denetleyici olup olmadığını not alın.
+1. Cihaza seri konsol veya uzak bir bilgisayardan bir Telnet oturumu aracılığıyla erişin. Controller 0 veya Controller 1 ' e bağlanmak için, [cihaz seri konsoluna bağlanmak Için PuTTY kullanma](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)bölümündeki adımları izleyin.
+2. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**.
+3. Başlık iletisinde, bağlandığınız denetleyiciyi (denetleyici 0 veya denetleyici 1) ve etkin veya pasif (bekleme) denetleyicisi olduğunu bir yere getirin.
    
-   * İstemde tek bir denetleyiciyi kapatmak için yazın:
+   * Tek bir denetleyiciyi kapatmak için, isteminde şunu yazın:
      
        `Stop-HcsController`
      
-       Bu, bağlı olduğunuz denetleyiciyi kapatır. Etkin denetleyiciyi durdurursanız, aygıt pasif denetleyiciye geçemezse.
+       Bu, bağlandığınız denetleyiciyi kapatır. Etkin denetleyiciyi durdurursanız, cihaz pasif denetleyiciye devreder.
 
-   * Bir denetleyiciyi yeniden başlatmak için, istek te, yazın:
+   * Bir denetleyiciyi yeniden başlatmak için, isteminde şunu yazın:
      
        `Restart-HcsController`
      
-       Bu işlem bağlandığınız denetleyiciyi yeniden başlatır. Etkin denetleyiciyi yeniden başlatırsanız, yeniden başlatmadan önce pasif denetleyiciye geçemezse.
+       Bu işlem bağlandığınız denetleyiciyi yeniden başlatır. Etkin denetleyiciyi yeniden başlatırsanız, yeniden başlatmadan önce pasif denetleyiciye devreder.
 
-## <a name="shut-down-a-storsimple-device"></a>StorSimple aygıtını kapatma
+## <a name="shut-down-a-storsimple-device"></a>StorSimple cihazını kapatma
 
-Bu bölümde, çalışan veya başarısız bir StorSimple aygıtının uzak bir bilgisayardan nasıl kapatılabildiğini açıklar. Her iki aygıt denetleyicisi kapatıldıktan sonra bir aygıt kapatılır. Aygıt kapatma işlemi, aygıt fiziksel olarak taşındığında veya hizmet dışı kaldığında yapılır.
+Bu bölümde, çalışan veya başarısız bir StorSimple cihazını uzak bir bilgisayardan nasıl kapatılabilen açıklanmaktadır. Cihaz denetleyicileri kapatıldıktan sonra bir cihaz kapalıdır. Cihaz fiziksel olarak taşındığında veya hizmet dışına çıktığında bir cihaz kapatma işlemi yapılır.
 
 > [!IMPORTANT]
-> Aygıtı kapatmadan önce aygıt bileşenlerinin sistem durumunu kontrol edin. Cihazınıza gidin ve ardından **Ayarlar > Donanım sağlık'ı**tıklatın. Durum **ve donanım sağlık** bıçağında, tüm bileşenlerin LED durumunun yeşil olduğunu doğrulayın. Yalnızca sağlıklı bir aygıt yeşil bir duruma sahiptir. Aygıtınız arızalı bir bileşeni değiştirmek için kapatılıyorsa, ilgili bileşen(ler) için başarısız (kırmızı) veya bozulmuş (sarı) bir durum görürsünüz.
+> Cihazı kapatmadan önce cihaz bileşenlerinin sistem durumunu kontrol edin. Cihazınıza gidin ve ardından **ayarlar > donanım sistem durumu**' na tıklayın. **Durum ve donanım durumu** dikey penceresinde, tüm bileşenlerin LED durumunun yeşil olduğunu doğrulayın. Yalnızca sağlıklı bir cihazın yeşil durumu vardır. Cihazınız hatalı çalışan bir bileşenin yerini alacak şekilde kapatılmakta ise ilgili bileşenler için başarısız (kırmızı) veya düşürülmüş (sarı) bir durum görürsünüz.
 
 
-#### <a name="to-shut-down-a-storsimple-device"></a>StorSimple aygıtını kapatmak için
+#### <a name="to-shut-down-a-storsimple-device"></a>StorSimple cihazını kapatmak için
 
-1. Cihazınızdaki pasif denetleyiciyi tanımlamak ve kapatmak için yeniden başlat'ı kullanın veya bir denetleyici yordamını [kapatın.](#restart-or-shut-down-a-single-controller) Bu işlemi Azure portalında veya StorSimple için Windows PowerShell'de gerçekleştirebilirsiniz.
-2. Etkin denetleyiciyi kapatmak için yukarıdaki adımı tekrarlayın.
-3. Şimdi cihazın arka düzlemine bakmalısınız. İki denetleyici tamamen kapatıldıktan sonra, her iki denetleyicideki durum LED'leri kırmızı yanıp sönmelidir. Şu anda cihazı tamamen kapatmanız gerekiyorsa, hem Güç hem de Soğutma Modülleri'ndeki (PCM) güç anahtarlarını KAPALI konuma çevirin. Bu, aygıtı kapatmalıdır.
+1. Cihazınızdaki pasif denetleyiciyi tanımlamak ve kapatmak için [yeniden başlatma veya bir denetleyiciyi kapatma](#restart-or-shut-down-a-single-controller) yordamını kullanın. Bu işlemi Azure portal veya StorSimple için Windows PowerShell ' de yapabilirsiniz.
+2. Etkin denetleyiciyi kapatmak için yukarıdaki adımı yineleyin.
+3. Artık cihazın arka düzlemine bakmanız gerekir. İki denetleyici tamamen kapatıldıktan sonra, denetleyicilerde her iki durumda da durum LED 'Leri yanıp sönen kırmızı olmalıdır. Şu anda cihazı tam olarak kapatmanız gerekiyorsa güç ve soğutma modüllerindeki (PCMs) güç anahtarlarını kapalı konuma çevirin. Bu, cihazı kapatmalıdır.
 
 ## <a name="reset-the-device-to-factory-default-settings"></a>Cihazı varsayılan fabrika ayarlarına sıfırlama
 
 > [!IMPORTANT]
-> Cihazınızı fabrika varsayılan ayarlarına sıfırlamanız gerekiyorsa, Microsoft Destek'e başvurun. Aşağıda açıklanan yordam yalnızca Microsoft Desteği ile birlikte kullanılmalıdır.
+> Cihazınızı fabrika varsayılan ayarlarına sıfırlamanız gerekiyorsa Microsoft Desteği başvurun. Aşağıda açıklanan yordam yalnızca Microsoft Desteği ile birlikte kullanılmalıdır.
 
-Bu yordam, Microsoft Azure StorSimple aygıtınızı StorSimple için Windows PowerShell kullanarak varsayılan ayarlara sıfırlamayı açıklar.
-Aygıtı sıfırlamak varsayılan olarak tüm kümeden tüm verileri ve ayarları kaldırır.
+Bu yordamda, StorSimple için Windows PowerShell kullanılarak Microsoft Azure StorSimple cihazınızın fabrika varsayılan ayarlarına nasıl sıfırlanacağı açıklanır.
+Bir cihazı sıfırlamak, tüm verileri ve ayarları varsayılan olarak tüm kümeden kaldırır.
 
-Microsoft Azure StorSimple aygıtınızı varsayılan ayarlara sıfırlamak için aşağıdaki adımları gerçekleştirin:
+Microsoft Azure StorSimple cihazınızı fabrika varsayılan ayarlarına sıfırlamak için aşağıdaki adımları gerçekleştirin:
 
-### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>StorSimple için Windows PowerShell'de aygıtı varsayılan ayarlara sıfırlamak için
-1. Aygıta seri konsolu üzerinden erişin. **Etkin** denetleyiciye bağlı olduğundan emin olmak için banner iletisini denetleyin.
-2. Seri konsol menüsünde, seçenek 1 seçin, **tam erişim ile giriş yapın.**
-3. İstemde, tüm verileri, meta verileri ve denetleyici ayarlarını kaldırarak tüm kümeyi sıfırlamak için aşağıdaki komutu yazın:
+### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Cihazı StorSimple için Windows PowerShell varsayılan ayarlarına sıfırlamak için
+1. Cihaza seri konsol üzerinden erişin. **Etkin** denetleyiciye bağlı olduğunuzdan emin olmak için başlık iletisini kontrol edin.
+2. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**.
+3. Komut isteminde, tüm verileri, meta verileri ve denetleyici ayarlarını kaldırarak kümeyi tümüyle sıfırlamak için aşağıdaki komutu yazın:
    
     `Reset-HcsFactoryDefault`
    
-    Bunun yerine tek bir denetleyiciyi sıfırlamak için parametreli [Sıfırlama-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) cmdlet'ini `-scope` kullanın.)
+    Tek bir denetleyiciyi sıfırlamak için, `-scope` parametresiyle [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) cmdlet 'ini kullanın.)
    
-    Sistem birden çok kez yeniden başlatılır. Sıfırlama başarıyla tamamlandığında size bildirilir. Sistem modeline bağlı olarak, bir 8100 cihaz için 45-60 dakika ve 8600 bu işlemi bitirmek için 60-90 dakika sürebilir.
+    Sistem birden çok kez yeniden başlatılacak. Sıfırlama başarıyla tamamlandığında size bildirilir. Sistem modeline bağlı olarak, 8100 bir cihaz için 45-60 dakika sürebilir ve bu işlemi tamamlaması 8600 için 60-90.
    
 ## <a name="questions-and-answers-about-managing-device-controllers"></a>Cihaz denetleyicilerini yönetme ile ilgili sorular ve yanıtlar
-Bu bölümde, StorSimple aygıt denetleyicilerinin yönetimi yle ilgili sık sorulan sorulardan bazılarını özetledik.
+Bu bölümde, StorSimple cihaz denetleyicilerini yönetme hakkında sık sorulan sorulardan bazılarını özetliyoruz.
 
-**S.** Aygıtımdaki her iki kumanda da sağlıklıysa ve açıksa ve etkin denetleyiciyi yeniden başlatıp kapatırsam ne olur?
+**Ç.** Cihazımın her ikisi de sağlıklı ve açık durumda olduğunda ve etkin denetleyiciyi yeniden başlattıktan veya kapatdığımda ne olur?
 
-**A.** Cihazınızdaki her iki denetleyici de sağlıklıysa ve açıksa, onay için istenirsiniz. Şunları seçebilirsiniz:
+**A.** Cihazınızdaki denetleyicilerin her ikisi de sağlıklı ve açık ise sizden onay istenir. Şunları seçebilirsiniz:
 
-* **Etkin denetleyiciyi yeniden başlatın** - Etkin bir denetleyiciyi yeniden başlatmanın aygıtın pasif denetleyicide başarısız olması nedeniyle olduğu bildirilir. Denetleyici yeniden başlatılır.
-* **Etkin bir denetleyiciyi kapatın** – Etkin bir denetleyicinin kapatılmasının kapalı kalma süresine neden olduğu bildirilir. Ayrıca kumandayı açmak için cihazdaki güç düğmesine basmanız gerekir.
+* **Etkin denetleyiciyi yeniden başlatma** – etkin bir denetleyiciyi yeniden başlatmanın, cihazın pasif denetleyiciye yük devretmeye neden olduğunu size bildirilir. Denetleyici yeniden başlatılır.
+* **Etkin bir denetleyiciyi kapatma** : etkin bir denetleyicinin kapandığı için kapalı kalma süresi ile ilgili bildirim alırsınız. Ayrıca, denetleyiciyi açmak için cihazdaki güç düğmesine gönderim yapmanız gerekir.
 
-**S.** Aygıtımdaki pasif denetleyici kullanılamıyorsa veya kapatılırsa ve etkin denetleyiciyi yeniden başlatıp kapatırsam ne olur?
+**Ç.** Cihazımın pasif denetleyicisi kullanılamıyorsa veya devre dışı bırakıldıysa ve etkin denetleyiciyi yeniden başlattıktan veya kapatdığımda ne olur?
 
-**A.** Cihazınızdaki pasif denetleyici kullanılamıyorsa veya kapalıysa ve aşağıdakileri yapmayı tercih eyseniz:
+**A.** Cihazınızdaki pasif denetleyici kullanılamıyorsa veya kapatılmışsa ve şunları yapabilirsiniz:
 
-* **Etkin denetleyiciyi yeniden başlatın** - İşleme devam ın hizmetin geçici olarak kesintiye uğramasına neden olacağı bildirilir ve onay için istenirsiniz.
-* **Etkin bir denetleyiciyi kapatın** – İşleme devam ın kapalı kalma süresiyle sonuçlanması durumunda size bildirilir. Ayrıca aygıtı açmak için bir veya her iki kumandanın güç düğmesine basmanız gerekir. Onay için istenir.
+* **Etkin denetleyiciyi yeniden başlatın** : işleme devam etmek, hizmette geçici bir kesinti oluşmasına neden olur ve sizden onay istenir.
+* **Etkin bir denetleyiciyi kapatma** – işlem kapalı kalma süresi ile sonuçlanmasına devam eden bilgilendirilirsiniz. Ayrıca, cihazı açmak için bir veya her iki denetleyicinin güç düğmesini de göndermeniz gerekir. Onaylamanız istenir.
 
-**S.** Denetleyici yeniden başlatma veya kapatma ne zaman ilerleme kaydedilemez?
+**Ç.** Denetleyicinin yeniden başlatılması veya kapatılmasını ne zaman devam etmez?
 
-**A.** Aşağıdaki nedenler halinde bir denetleyiciyi yeniden başlatma veya kapatma başarısız olabilir:
+**A.** Bir denetleyicinin yeniden başlatılması veya kapatılması şu durumlarda başarısız olabilir:
 
-* Aygıt güncelleştirmesi devam ediyor.
-* Denetleyici yeniden başlatma zaten devam ediyor.
-* Denetleyici kapatma işlemi devam ediyor.
+* Bir cihaz güncelleştirmesi devam ediyor.
+* Bir denetleyici yeniden başlatması zaten devam ediyor.
+* Bir denetleyici kapatması zaten devam ediyor.
 
-**S.** Bir denetleyicinin yeniden başlatılıp başlatılmadı veya kapatıldığını nasıl anlayabilirsiniz?
+**Ç.** Bir denetleyicinin yeniden başlatılıp kapatıldığına nasıl emin olabilirsiniz?
 
-**A.** Denetleyici bıçağındaki denetleyici durumunu kontrol edebilirsiniz. Denetleyici durumu, denetleyicinin yeniden başlatma veya kapatma işleminde olup olmadığını gösterir. Ayrıca, denetleyici yeniden başlatılırsa veya kapatılırsa **Uyarılar** bıçağı bir bilgilendirme uyarısı içerir. Denetleyici yeniden başlatma ve kapatma işlemleri de etkinlik günlüklerine kaydedilir. Etkinlik günlükleri hakkında daha fazla bilgi için [etkinlik günlüklerini görüntüleyin.](storsimple-8000-service-dashboard.md#view-the-activity-logs)
+**A.** Denetleyici dikey penceresinde denetleyici durumunu kontrol edebilirsiniz. Denetleyici durumu, bir denetleyicinin yeniden başlatma veya kapatma sürecinde olup olmadığını gösterir. Ayrıca, denetleyicinin yeniden başlatılması veya kapatılması durumunda **Uyarılar** dikey penceresi bir bilgilendirme uyarısı içerir. Denetleyici yeniden başlatma ve kapatılma işlemleri de etkinlik günlüklerine kaydedilir. Etkinlik günlükleri hakkında daha fazla bilgi için [etkinlik günlüklerini görüntüleme](storsimple-8000-service-dashboard.md#view-the-activity-logs)sayfasına gidin.
 
-**S.** Denetleyicinin başarısız olması sonucu G/Ç'ye herhangi bir etkisi var mı?
+**Ç.** Denetleyici yük devretmesinin sonucu olarak g/ç 'nin herhangi bir etkisi var mı?
 
-**A.** Başlatıcılar ve etkin denetleyici arasındaki TCP bağlantıları, denetleyicinin başarısız olması sonucu sıfırlanır, ancak pasif denetleyici işlemi üstlendiğinde yeniden kurulacaktır. Bu işlem sırasında başlatıcılar ve aygıt arasında G/Ç etkinliğinde geçici (30 saniyeden az) bir duraklama olabilir.
+**A.** Başlatıcı ve etkin denetleyici arasındaki TCP bağlantıları, denetleyici yük devretmesinin bir sonucu olarak sıfırlanır, ancak pasif denetleyici işlemi kabul eder. Bu işlemin kursu sırasında başlatıcılar ve cihaz arasındaki g/ç etkinliğinde geçici (30 saniyeden az) bir etkinlik olabilir.
 
-**S.** Denetleyicim kapatıldıktan ve kaldırıldıktan sonra hizmete nasıl geri dönerim?
+**Ç.** Nasıl yaparım?, kapatıldıktan ve kaldırıldıktan sonra denetleyicim hizmete geri dönsin mi?
 
-**A.** Bir denetleyiciyi servise döndürmek için, [StorSimple cihazınızdaki bir denetleyici](storsimple-8000-controller-replacement.md)modüldeğiştir'de açıklandığı gibi kasaya takmanız gerekir.
+**A.** Bir denetleyiciyi hizmete döndürmek için, [StorSimple cihazınızda bir denetleyici modülünü değiştirme](storsimple-8000-controller-replacement.md)bölümünde açıklandığı gibi gövdeye eklemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bu öğreticide listelenen yordamları kullanarak çözemeyeceğiniz StorSimple aygıt denetleyicileri ile ilgili sorunlarla karşılaşırsanız, [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
-* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi edinmek için [StorSimple cihazınızı yönetmek için StorSimple Device Manager hizmetini kullanın.](storsimple-8000-manager-service-administration.md)
+* StorSimple cihaz denetleyicilerinizde Bu öğreticide listelenen yordamları kullanarak çözemayacağınızı sorun yaşarsanız [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md).
+* StorSimple Aygıt Yöneticisi hizmetini kullanma hakkında daha fazla bilgi edinmek için StorSimple [Aygıt Yöneticisi hizmetini kullanarak StorSimple cihazınızı yönetin](storsimple-8000-manager-service-administration.md)sayfasına gidin.
 

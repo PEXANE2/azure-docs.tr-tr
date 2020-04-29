@@ -1,5 +1,5 @@
 ---
-title: Azure'da ELK kullanarak Uygulamalarınızı Hizmet Kumaşı'nda izleme
+title: Azure 'da ELK kullanarak uygulamalarınızı Service Fabric izleyin
 description: Bu öğreticide, ELK’nın nasıl ayarlanacağını ve Service Fabric uygulamalarınızın nasıl izleneceğini öğrenin.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376672"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Öğretici: ELK kullanarak Service Fabric uygulamalarınızı izleme
@@ -42,7 +42,7 @@ Bu öğreticiye başlamadan önce:
 
 ## <a name="download-the-voting-sample-application"></a>Voting örnek uygulamasını indirme
 
-[Bu öğretici serinin birinci bölümünde](service-fabric-tutorial-create-java-app.md)Oylama örnek uygulama inşa etmediyseniz, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki komutu çalıştırın.
+[Bu öğretici serisinin birinci kısmında](service-fabric-tutorial-create-java-app.md)oylama örnek uygulamasını oluşturmadıysanız, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki komutu çalıştırın.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
@@ -140,7 +140,7 @@ Bu öğretici için önceden yapılandırılmış bir ELK ortamı kullanabilirsi
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Kibana panonunıza **http:\//SERVER-IP** adresinden erişin ve Kibana'nın kullanıcı adını ve parolasını girin. Azure’da ELK görüntüsünü kullandıysanız varsayılan kullanıcı adı 'user' ve parola da **Önyükleme Tanılaması**’ndan alınan paroladır.
+8. **Http:\//Server-IP** adresinden kibana panonuza erişin ve kibana için Kullanıcı adını ve parolayı girin. Azure’da ELK görüntüsünü kullandıysanız varsayılan kullanıcı adı 'user' ve parola da **Önyükleme Tanılaması**’ndan alınan paroladır.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

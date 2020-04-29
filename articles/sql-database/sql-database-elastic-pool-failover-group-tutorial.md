@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Başarısız bir gruba elastik bir havuz ekleme'
-description: Azure portalını, PowerShell'i veya Azure CLI'yi kullanarak bir başarısız gruba Azure SQL Veritabanı elastik havuzu ekleyin.
+title: 'Öğretici: bir yük devretme grubuna elastik havuz ekleme'
+description: Azure portal, PowerShell veya Azure CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,67 +12,67 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268983"
 ---
-# <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: Bir başarısız gruba Azure SQL Veritabanı elastik havuzu ekleme
+# <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 
-Azure portalını kullanarak bir Azure SQL Veritabanı elastik havuzu için bir başarısız lık grubunu yapılandırın ve başarısızlığı test edin.  Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Azure SQL veritabanı elastik havuzu için bir yük devretme grubu yapılandırın ve Azure portal kullanarak yük devretme testi yapın.  Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> - Azure SQL Veritabanı tek bir veritabanı oluşturun.
+> - Azure SQL veritabanı tek veritabanı oluşturun.
 > - Tek veritabanını elastik bir havuza ekleyin. 
-> - İki mantıksal SQL sunucusu arasında iki elastik havuz için bir başarısız lık [grubu](sql-database-auto-failover-group.md) oluşturun.
-> - Test başarısız.
+> - İki mantıksal SQL Server arasında iki elastik havuz için bir [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturun.
+> - Yük devretme testi.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
 
-- Azure aboneliği. Zaten hesabınız yoksa [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+- Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 
-## <a name="1---create-a-single-database"></a>1 - Tek bir veritabanı oluşturma 
+## <a name="1---create-a-single-database"></a>1-tek veritabanı oluşturma 
 
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
-## <a name="2---add-single-database-to-elastic-pool"></a>2 - Elastik havuza tek veritabanı ekleme
-Bu adımda, elastik bir havuz oluşturur ve tek veritabanınızı buna eklersiniz. 
+## <a name="2---add-single-database-to-elastic-pool"></a>2-elastik havuza tek veritabanı ekleme
+Bu adımda, bir elastik havuz oluşturacak ve tek veritabanınızı bu veritabanına eklersiniz. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portalını kullanarak esnek havuzunuzu oluşturun. 
+Azure portal kullanarak elastik havuzunuzu oluşturun. 
 
 
-1. Azure portalının sol menüsünde **Azure SQL'i** seçin. **Azure SQL** listede yoksa, **Tüm hizmetler'i**seçin ve ardından arama kutusuna Azure SQL yazın. (İsteğe bağlı) En beğenilebilmek için **Azure SQL'in** yanındaki yıldızı seçin ve sol gezintiye öğe olarak ekleyin. 
-1. SELECT SQL dağıtım **seçeneği** sayfasını açmak için **+ Ekle'yi** seçin. Veritabanları döşemesindeki ayrıntıları göster'i seçerek farklı veritabanları hakkında ek bilgileri görüntüleyebilirsiniz.
-1. **SQL Veritabanları** döşemesinde **Kaynak türü** açılır dilinden **Elastik havuzu** seçin. Elastik havuzunuzu oluşturmak için **Oluştur'u** seçin. 
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. Veritabanları kutucuğunda ayrıntıları göster ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
+1. **SQL veritabanları** kutucuğunda **kaynak türü** açılır listesinden **elastik havuz** ' ı seçin. Elastik havuzunuzu oluşturmak için **Oluştur** ' u seçin. 
 
-    ![Elastik havuzu seçin](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
+    ![Elastik havuz Seç](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Elastik havuzunuzu aşağıdaki değerlerle yapılandırın:
-   - **Adı**: Elastik havuzunuz için benzersiz `myElasticPool`bir ad sağlayın, örneğin. 
-   - **Abonelik**: Aboneliğinizi açılır yerden seçin.
-   - **ResourceGroup**: `myResourceGroup` Bölüm 1'de oluşturduğunuz kaynak grubu açılır kaynak grubundan seçin. 
-   - **Sunucu**: Bölüm 1'de oluşturduğunuz sunucuyu açılır dosyadan seçin.  
+   - **Ad**: elastik havuzunuz için gibi benzersiz bir ad sağlayın `myElasticPool`. 
+   - **Abonelik**: açılır listeden aboneliğinizi seçin.
+   - **ResourceGroup**: 1 `myResourceGroup` . bölümde oluşturduğunuz kaynak grubundan açılan listeden seçim yapın. 
+   - **Sunucu**: açılan listeden, Bölüm 1 ' de oluşturduğunuz sunucuyu seçin.  
 
-       ![Esnek havuz için yeni sunucu oluşturma](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
+       ![Elastik havuz için yeni sunucu oluştur](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **İşlem + depolama**: İşleminizi, depolamanızı yapılandırmak ve tek veritabanınızı elastik havuzunuza eklemek için **yapılandırılan esnek havuzu** seçin. Havuz **Ayarları** sekmesinde, 2 vCores ve 32gb ile Gen5 varsayılan bırakın. 
+   - **İşlem + depolama**: işlem, depolama alanınızı yapılandırmak ve esnek havuzunuza tek veritabanınızı eklemek için **elastik havuzu Yapılandır** ' ı seçin. **Havuz ayarları** sekmesinde, 2 sanal çekirdek ve 32 Ile varsayılan 5. nesil bırakın. 
 
-1. **Yapılartır** **sayfasında, Veritabanları** sekmesini seçin ve ardından **veritabanı ekle'yi**seçin. Bölüm 1'de oluşturduğunuz veritabanını seçin ve ardından elastik havuzunuza eklemek için **Uygula'yı** seçin. Esnek havuz ayarlarınızı uygulamak ve **Yapıl'ı kapatmak** için yeniden **Uygula'yı** seçin. 
+1. **Yapılandır** sayfasında **veritabanları** sekmesini seçin ve ardından **veritabanı Ekle**' yi seçin. Bölüm 1 ' de oluşturduğunuz veritabanını seçin ve ardından, elastik havuzunuza eklemek için **Uygula** ' yı seçin. Esnek havuz ayarlarınızı uygulamak ve **Yapılandır** sayfasını kapatmak Için yeniden **Uygula** ' yı seçin. 
 
     ![Elastik havuza SQL DB ekleme](media/sql-database-elastic-pool-failover-group-tutorial/add-database-to-elastic-pool.png)
 
-1. Elastik havuz ayarlarınızı gözden geçirmek için **Gözden Geçir + oluştur'u** seçin ve ardından elastik havuzunuzu oluşturmak için **Oluştur'u** seçin. 
+1. Elastik havuz ayarlarınızı gözden geçirmek için **gözden geçir + oluştur** seçeneğini belirleyin ve ardından esnek havuzunuzu oluşturmak için **Oluştur** ' u seçin 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
-PowerShell'i kullanarak elastik havuzlarınızı ve ikincil sunucunuzu oluşturun. 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+PowerShell kullanarak elastik havuzlarınızı ve ikincil sunucunuzu oluşturun. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -116,56 +116,56 @@ PowerShell'i kullanarak elastik havuzlarınızı ve ikincil sunucunuzu oluşturu
    $addDatabase
    ```
 
-Öğreticinin bu bölümü aşağıdaki PowerShell cmdlets kullanır:
+Öğreticinin bu bölümü aşağıdaki PowerShell cmdlet 'lerini kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-Azsqlelasticpool](/powershell/module/az.sql/new-azsqlelasticpool) | Azure SQL Veritabanı için esnek bir veritabanı havuzu oluşturur.| 
-| [Set-AzSqlVeritabanı](/powershell/module/az.sql/set-azsqldatabase) | Veritabanı nın özelliklerini ayarlar veya varolan bir veritabanını elastik bir havuza taşır. | 
+| [New-Azsqtalaçıkartma havuzu](/powershell/module/az.sql/new-azsqlelasticpool) | Azure SQL veritabanı için elastik veritabanı havuzu oluşturur.| 
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Bir veritabanının özelliklerini ayarlar veya var olan bir veritabanını esnek bir havuza taşıanlar. | 
 
 ---
 
-## <a name="3---create-the-failover-group"></a>3 - Başarısız grup oluşturma 
-Bu adımda, varolan bir Azure SQL sunucusu yla başka bir bölgedeki yeni bir Azure SQL sunucusu arasında bir başarısız lık [grubu](sql-database-auto-failover-group.md) oluşturursunuz. Sonra failover grubuna elastik havuzu ekleyin. 
+## <a name="3---create-the-failover-group"></a>3-yük devretme grubu oluşturma 
+Bu adımda, mevcut bir Azure SQL sunucusu ile başka bir bölgedeki yeni bir Azure SQL sunucusu arasında bir [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturacaksınız. Ardından, elastik havuzu yük devretme grubuna ekleyin. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portalını kullanarak başarısız grubunuzu oluşturun. 
+Azure portal kullanarak yük devretme grubunuz oluşturun. 
 
-1. [Azure portalının](https://portal.azure.com)sol menüsünde **Azure SQL'i** seçin. **Azure SQL** listede yoksa, **Tüm hizmetler'i**seçin ve ardından arama kutusuna Azure SQL yazın. (İsteğe bağlı) En beğenilebilmek için **Azure SQL'in** yanındaki yıldızı seçin ve sol gezintiye öğe olarak ekleyin. 
-1. Önceki bölümde oluşturulan elastik havuzu seçin, örneğin. `myElasticPool` 
-1. Genel **Bakış** bölmesindeki sunucunun ayarlarını açmak için Sunucu adı altında **sunucunun** adını seçin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. Önceki bölümde oluşturulan elastik havuzu seçin (örneğin,) `myElasticPool`. 
+1. **Genel bakış** bölmesinde sunucu **adı** bölümünde sunucu adı ' nı seçerek sunucu ayarlarını açın.
   
-    ![Elastik havuz için açık sunucu](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![Elastik havuz için sunucu açma](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. **Ayarlar** bölmesinin altındaki **Failover gruplarını** seçin ve ardından yeni bir başarısız grup oluşturmak için **Grup Ekle'yi** seçin. 
+1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve sonra yeni bir yük devretme grubu oluşturmak için **Grup Ekle** ' yi seçin. 
 
-    ![Yeni başarısız grup ekleme](media/sql-database-elastic-pool-failover-group-tutorial/elastic-pool-failover-group.png)
+    ![Yeni Yük devretme grubu Ekle](media/sql-database-elastic-pool-failover-group-tutorial/elastic-pool-failover-group.png)
 
-1. **Failover Grubu** sayfasında aşağıdaki değerleri girin veya seçin ve sonra **Oluştur'u**seçin:
-    - **Failover grup adı**: Benzersiz bir failover `failovergrouptutorial`grup adı yazın, gibi . 
-    - **İkincil sunucu**: *Gerekli ayarları yapılandırma* seçeneğini seçin ve ardından yeni bir sunucu **oluşturmayı**seçin. Alternatif olarak, ikincil sunucu olarak zaten varolan bir sunucu seçebilirsiniz. Yeni ikincil sunucunuz için aşağıdaki değerleri girdikten sonra **Seç'i**seçin. 
-        - **Sunucu adı**: İkincil sunucu için benzersiz `mysqlsecondary`bir ad yazın, gibi . 
-        - **Sunucu admin giriş**: Türü`azureuser`
-        - **Parola**: Parola gereksinimlerini karşılayan karmaşık bir parola yazın.
-        - **Konum**: Açılan konumdan bir konum `East US`seçin, örneğin. Bu konum birincil sunucunuzla aynı konumda olamaz.
+1. **Yük devretme grubu** sayfasında, aşağıdaki değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
+    - **Yük devretme grubu adı**: gibi benzersiz bir yük devretme grubu adı yazın `failovergrouptutorial`. 
+    - **İkincil sunucu**: *gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı**seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Yeni ikincil sunucunuz için aşağıdaki değerleri girdikten sonra **Seç**' i seçin. 
+        - **Sunucu adı**: ikincil sunucu için, gibi benzersiz bir ad yazın `mysqlsecondary`. 
+        - **Sunucu Yöneticisi oturum açma**: tür`azureuser`
+        - **Parola**: parola gereksinimlerini karşılayan karmaşık bir parola yazın.
+        - **Konum**: açılan listeden, gibi bir konum seçin `East US`. Bu konum, birincil sunucunuz ile aynı konumda olamaz.
 
        > [!NOTE]
-       > Sunucu girişi ve güvenlik duvarı ayarları birincil sunucunuzunkiyle eşleşmelidir. 
+       > Sunucu oturum açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir. 
     
-       ![Failover grubu için ikincil bir sunucu oluşturma](media/sql-database-elastic-pool-failover-group-tutorial/create-secondary-failover-server.png)
+       ![Yük devretme grubu için ikincil sunucu oluşturma](media/sql-database-elastic-pool-failover-group-tutorial/create-secondary-failover-server.png)
 
-1. **Grup içindeki Veritabanları'nı** seçin ve ardından bölüm 2'de oluşturduğunuz elastik havuzu seçin. İkincil sunucuda elastik bir havuz oluşturmanızı isteyen bir uyarı görünmelidir. Uyarıyı seçin ve ardından ikincil sunucuda elastik havuz oluşturmak için **Tamam'ı** seçin. 
+1. **Grup Içindeki veritabanları** ' nı seçin ve ardından Bölüm 2 ' de oluşturduğunuz elastik havuzu seçin. İkincil sunucuda bir elastik havuz oluşturmanızı isteyen bir uyarı görüntülenmelidir. Uyarıyı seçin ve ardından ikincil sunucuda elastik havuzu oluşturmak için **Tamam** ' ı seçin. 
         
-    ![Başarısız gruba elastik havuz ekleme](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Esnek havuzu yük devretme grubuna ekle](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. Elastik havuz ayarlarınızı başarısız gruba uygulamak için **Seç'i** seçin ve ardından başarısız grubunuzu oluşturmak için **Oluştur'u** seçin. Başarısız gruba elastik havuz eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır.
+1. Elastik havuz ayarlarınızı yük devretme grubuna uygulamak için **Seç** ' i seçin ve ardından yük devretme grubunuzu oluşturmak için **Oluştur** ' u seçin. Elastik havuzun yük devretme grubuna eklenmesi, coğrafi çoğaltma işlemini otomatik olarak başlatır.
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell'i kullanarak başarısız grubunuzu oluşturun. 
+PowerShell kullanarak yük devretme grubunuz oluşturun. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -234,51 +234,51 @@ PowerShell'i kullanarak başarısız grubunuzu oluşturun.
    $failoverGroup
    ```
 
-Öğreticinin bu bölümü aşağıdaki PowerShell cmdlets kullanır:
+Öğreticinin bu bölümü aşağıdaki PowerShell cmdlet 'lerini kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek veritabanları ve elastik havuzlar barındıran bir SQL Veritabanı sunucusu oluşturur. |
-| [Yeni-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Mantıksal bir sunucu için bir güvenlik duvarı kuralı oluşturur. | 
-| [Yeni-Azsqlelasticpool](/powershell/module/az.sql/new-azsqlelasticpool) | Azure SQL Veritabanı için esnek bir veritabanı havuzu oluşturur.| 
-| [Yeni-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Yeni bir başarısız grup oluşturur. |
-| [Ekle-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Bir başarısız gruba bir veya daha fazla Azure SQL Veritabanı ekler. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Veritabanı başarısız grupları alır veya listeler. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek veritabanları ve elastik havuzlar barındıran bir SQL veritabanı sunucusu oluşturur. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Mantıksal sunucu için bir güvenlik duvarı kuralı oluşturur. | 
+| [New-Azsqtalaçıkartma havuzu](/powershell/module/az.sql/new-azsqlelasticpool) | Azure SQL veritabanı için elastik veritabanı havuzu oluşturur.| 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Yeni bir yük devretme grubu oluşturur. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Bir yük devretme grubuna bir veya daha fazla Azure SQL veritabanı ekler. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL veritabanı yük devretme gruplarını alır veya listeler. |
 
 ---
 
 
-## <a name="4---test-failover"></a>4 - Test başarısız 
-Bu adımda, başarısız olan grubunuzun ikincil sunucuya devredilemeyeceğiniz ve Azure portalını kullanarak geri dönmeceksiniz. 
+## <a name="4---test-failover"></a>4-yük devretme testi 
+Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure portal kullanarak yeniden başarısız olursunuz. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portalını kullanarak başarısız grubunuzun başarısız olduğunu test edin. 
+Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
-1. [Azure portalının](https://portal.azure.com)sol menüsünde **Azure SQL'i** seçin. **Azure SQL** listede yoksa, **Tüm hizmetler'i**seçin ve ardından arama kutusuna Azure SQL yazın. (İsteğe bağlı) En beğenilebilmek için **Azure SQL'in** yanındaki yıldızı seçin ve sol gezintiye öğe olarak ekleyin. 
-1. Önceki bölümde oluşturulan elastik havuzu seçin, örneğin. `myElasticPool` 
-1. **Sunucunun** ayarlarını açmak için Sunucu adı altında sunucunun adını seçin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. Önceki bölümde oluşturulan elastik havuzu seçin (örneğin,) `myElasticPool`. 
+1. Sunucu ayarlarını açmak için sunucu **adı** altında sunucunun adını seçin.
 
-    ![Elastik havuz için açık sunucu](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![Elastik havuz için sunucu açma](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. **Ayarlar** bölmesinin altındaki **Failover gruplarını** seçin ve ardından bölüm 2'de oluşturduğunuz başarısız grubu seçin. 
+1. **Ayarlar** bölmesinde **Yük devretme grupları** ' nı seçin ve ardından Bölüm 2 ' de oluşturduğunuz yük devretme grubunu seçin. 
   
-   ![Portaldan başarısız grubu seçin](media/sql-database-elastic-pool-failover-group-tutorial/select-failover-group.png)
+   ![Portaldan yük devretme grubunu seçin](media/sql-database-elastic-pool-failover-group-tutorial/select-failover-group.png)
 
-1. Hangi sunucunun birincil, hangi sunucunun ikincil olduğunu gözden geçirin. 
-1. Elastik havuzunuzu içeren failover grubunuzda başarısız olmak için görev bölmesinden **Failover'ı** seçin. 
-1. TDS oturumlarının bağlantısının kesilmeyeceğini size belirten uyarıda **Evet'i** seçin. 
+1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. 
+1. Elastik havuzunuzu içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin. 
+1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin. 
 
-   ![SQL veritabanınızı içeren başarısız grubunuzun üzerinde başarısız olun](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
+   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
 
-1. Hangi sunucunun birincil, hangi sunucunun ikincil olduğunu gözden geçirin. Failover başarılı olduysa, iki sunucu rolleri değiş tokuş etmiş olmalıdır. 
-1. Failover grubunu orijinal ayarlara geri getirmek için **failover'ı** yeniden seçin. 
+1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır. 
+1. Yük devretme grubundan özgün ayarlara geri dönmek için **Yük devretmeyi** yeniden seçin. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell'i kullanarak başarısız grubunuzun başarısız olduğunu test edin. 
+PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -310,7 +310,7 @@ PowerShell'i kullanarak başarısız grubunuzun başarısız olduğunu test edin
    Write-host "Failover group failed over to" $drServerName 
    ```
 
-Başarısız grupunuzu ikincil sunucuya aktarın ve PowerShell'i kullanarak başarısız olur. 
+Yük devretme grubunuzu ikincil sunucuya devreder ve sonra PowerShell kullanarak yeniden devreder. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -342,12 +342,12 @@ Başarısız grupunuzu ikincil sunucuya aktarın ve PowerShell'i kullanarak baş
    Write-host "Failover group failed over to" $serverName 
    ```
 
-Öğreticinin bu bölümü aşağıdaki PowerShell cmdlets kullanır:
+Öğreticinin bu bölümü aşağıdaki PowerShell cmdlet 'lerini kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Veritabanı başarısız grupları alır veya listeler. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Veritabanı failover grubunun başarısız olduğunu yürüter. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL veritabanı yük devretme gruplarını alır veya listeler. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Bir Azure SQL veritabanı yük devretme grubunun yük devretmesini yürütür. |
 
 
 ---
@@ -360,14 +360,14 @@ Kaynak grubunu silerek kaynakları temizleyin.
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 
-1. [Azure portalındaki](https://portal.azure.com)kaynak grubunuza gidin.
-1. Gruptaki tüm kaynakları ve kaynak grubunun kendisini silmek için **kaynak grubunu** sil'i seçin. 
-1. Kaynak grubunun adını textbox'a `myResourceGroup`yazın ve kaynak grubunu silmek için **Sil'i** seçin. 
+1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin.
+1. Gruptaki tüm kaynakların yanı sıra kaynak grubunun kendisini silmek için **kaynak grubunu sil** ' i seçin. 
+1. Kaynak grubunun adını `myResourceGroup`, metin kutusuna yazın ve ardından **Sil** ' i seçerek kaynak grubunu silin. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell'i kullanarak kaynaklarınızı temizleyin. 
+PowerShell kullanarak kaynaklarınızı temizleyin. 
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -379,20 +379,20 @@ PowerShell'i kullanarak kaynaklarınızı temizleyin.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-Öğreticinin bu bölümü aşağıdaki PowerShell cmdlet kullanır:
+Öğreticinin bu bölümü aşağıdaki PowerShell cmdlet 'ini kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu kaldırır | 
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu kaldırır | 
 
 ---
 
 > [!IMPORTANT]
-> Kaynak grubunu tutmak ancak ikincil veritabanını silmek istiyorsanız, silmeden önce başarısız gruptan kaldırın. Başarısız gruptan kaldırılmadan önce ikincil bir veritabanının silinmesi öngörülemeyen davranışlara neden olabilir. 
+> Kaynak grubunu korumak, ancak ikincil veritabanını silmek istiyorsanız, onu silmeden önce yük devretme grubundan kaldırın. İkincil bir veritabanının yük devretme grubundan kaldırılmadan önce silinmesi öngörülemeyen davranışlara neden olabilir. 
 
 ## <a name="full-script"></a>Tam betik
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
@@ -401,35 +401,35 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [Yeni-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek veritabanları ve elastik havuzlar barındıran bir SQL Veritabanı sunucusu oluşturur. |
-| [Yeni-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Mantıksal bir sunucu için bir güvenlik duvarı kuralı oluşturur. | 
-| [Yeni-AzSqlVeritabanı](/powershell/module/az.sql/new-azsqldatabase) | Yeni bir Azure SQL Veritabanı tek veritabanı oluşturur. | 
-| [Yeni-Azsqlelasticpool](/powershell/module/az.sql/new-azsqlelasticpool) | Azure SQL Veritabanı için esnek bir veritabanı havuzu oluşturur.| 
-| [Set-AzSqlVeritabanı](/powershell/module/az.sql/set-azsqldatabase) | Veritabanı nın özelliklerini ayarlar veya varolan bir veritabanını elastik bir havuza taşır. | 
-| [Yeni-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Yeni bir başarısız grup oluşturur. |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Bir veya daha fazla SQL veritabanı alır. |
-| [Ekle-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Bir başarısız gruba bir veya daha fazla Azure SQL Veritabanı ekler. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Veritabanı başarısız grupları alır veya listeler. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Veritabanı failover grubunun başarısız olduğunu yürüter. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu kaldırır | 
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek veritabanları ve elastik havuzlar barındıran bir SQL veritabanı sunucusu oluşturur. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Mantıksal sunucu için bir güvenlik duvarı kuralı oluşturur. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Yeni bir Azure SQL veritabanı tek veritabanı oluşturur. | 
+| [New-Azsqtalaçıkartma havuzu](/powershell/module/az.sql/new-azsqlelasticpool) | Azure SQL veritabanı için elastik veritabanı havuzu oluşturur.| 
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Bir veritabanının özelliklerini ayarlar veya var olan bir veritabanını esnek bir havuza taşıanlar. | 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Yeni bir yük devretme grubu oluşturur. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Bir veya daha fazla SQL veritabanını alır. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Bir yük devretme grubuna bir veya daha fazla Azure SQL veritabanı ekler. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL veritabanı yük devretme gruplarını alır veya listeler. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Bir Azure SQL veritabanı yük devretme grubunun yük devretmesini yürütür. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu kaldırır | 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Azure portalı için kullanılabilir komut dosyası yok.
+Azure portal için kullanılabilir komut yok.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir başarısız gruba bir Azure SQL Veritabanı elastik havuzu eklediniz ve başarısız lığı sınadın. Şunları öğrendiniz:
+Bu öğreticide, bir yük devretme grubuna Azure SQL veritabanı elastik havuzu eklediniz ve yük devretmeyi test edersiniz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> - Azure SQL Veritabanı tek bir veritabanı oluşturun.
+> - Azure SQL veritabanı tek veritabanı oluşturun.
 > - Tek veritabanını elastik bir havuza ekleyin. 
-> - İki mantıksal SQL sunucusu arasında iki elastik havuz için bir başarısız lık [grubu](sql-database-auto-failover-group.md) oluşturun.
-> - Test başarısız.
+> - İki mantıksal SQL Server arasında iki elastik havuz için bir [Yük devretme grubu](sql-database-auto-failover-group.md) oluşturun.
+> - Yük devretme testi.
 
-DMS kullanarak nasıl geçirilir bir sonraki öğreticiye ilerleyin.
+DMS kullanarak geçiş yapmak için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: SQL Server'ı DMS kullanarak havuzlu bir veritabanına geçirin](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)
+> [Öğretici: DMS kullanarak SQL Server havuza alınmış bir veritabanına geçirme](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)

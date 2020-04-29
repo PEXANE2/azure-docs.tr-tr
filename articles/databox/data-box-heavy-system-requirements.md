@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Veri Kutusu Ağır sistem gereksinimleri| Microsoft Dokümanlar
-description: Azure Veri Kutusu Heavy'niz için yazılım ve ağ gereksinimleri hakkında bilgi edinin
+title: Data Box Heavy sistem gereksinimlerini Microsoft Azure | Microsoft Docs
+description: Azure Data Box Heavy için yazılım ve ağ gereksinimleri hakkında bilgi edinin
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,24 +9,24 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260078"
 ---
-# <a name="azure-data-box-heavy-system-requirements"></a>Azure Veri Kutusu Ağır sistem gereksinimleri
+# <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy sistem gereksinimleri
 
-Bu makalede, Azure Veri Kutusu Ağır aygıtınız ve aygıta bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Veri Kutusu Ağır'ınızı dağıtmadan önce bilgileri dikkatle gözden geçirmenizi ve dağıtım ve sonraki işlem sırasında gerekli olduğu şekilde geri başvurmanızı öneririz.
+Bu makalede, Azure Data Box Heavy cihazınız ve cihaza bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Data Box Heavy dağıtmadan önce bilgileri dikkatlice incelemenizi ve ardından dağıtım ve sonraki işlemler sırasında gerektiği şekilde geri başvurmalarını öneririz.
 
-Sistem gereksinimleri şunlardır:
+Sistem gereksinimleri şunları içerir:
 
-* **Data Box Heavy'ye bağlanan ana bilgisayarlar için yazılım gereksinimleri** , desteklenen platformları, yerel web arabirimi tarayıcılarını, Kobİ istemcilerini ve Veri Kutusu'na bağlanabilen ana bilgisayarlar için ek gereksinimleri açıklar.
-* **Data Box Heavy için ağ gereksinimleri** - Data Box Heavy cihazının optimum çalışması için ağ gereksinimleri hakkında bilgi sağlar.
+* **Data Box Heavy bağlanan konaklar Için yazılım gereksinimleri** -desteklenen platformları, yerel Web Kullanıcı arabirimine yönelik TARAYıCıLARı, SMB istemcilerini ve Data Box bağlanabilecek konaklara yönelik ek gereksinimleri açıklar.
+* **Data Box Heavy Için ağ gereksinimleri** -Data Box Heavy cihazının en iyi işlemi için ağ gereksinimleri hakkında bilgi sağlar.
 
 ## <a name="software-requirements"></a>Yazılım gereksinimleri
 
-Yazılım gereksinimleri desteklenen işletim sistemleri, yerel web kullanıcı arabirimi için desteklenen tarayıcılar ve Kobİ istemcileri hakkındaki bilgileri içerir.
+Yazılım gereksinimleri, desteklenen işletim sistemleri, yerel Web Kullanıcı arabirimi için desteklenen tarayıcılar ve SMB istemcileri hakkındaki bilgileri içerir.
 
 ### <a name="supported-operating-systems-for-clients"></a>İstemciler için desteklenen işletim sistemleri
 
@@ -50,14 +50,14 @@ Yazılım gereksinimleri desteklenen işletim sistemleri, yerel web kullanıcı 
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 
-Veri merkezinizin yüksek hızlı ağı olmalıdır. En hızlı kopyalama hızları için, iki adet 40 GbE bağlantı paralel olarak kullanılabilir (düğüm başına bir bağlantı). 40 GbE'niz yoksa, en az iki adet 10 GbE bağlantınız (düğüm başına bir) sahip olduğunuzu öneririz.
+Veri merkezinizin yüksek hızlı ağı olmalıdır. En hızlı kopyalama hızları için 2 40-GbE bağlantıları paralel olarak (düğüm başına bir tane) kullanılabilir. 40-GbE kullanılabilir değilse, en az 2 10-GbE bağlantınız olması önerilir (düğüm başına bir tane).
 
 ### <a name="port-requirements"></a>Bağlantı noktası gereksinimleri
 
-Aşağıdaki tabloda, SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenildi. Bu tabloda, *gelen* *istemcinin* cihazınıza erişmelerini talep ettiği yönü ifade eder. *Giden* veya *giden,* Veri Kutusu Ağır aygıtınızın verileri dağıtımın ötesinde harici olarak gönderdiği yönü ifade eder: örneğin, Internet'e giden.
+Aşağıdaki tabloda SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *içinde* , gelen istemci, cihazınıza erişim talep ettiği yöne başvurur. *Out* veya *Outbound* , dağıtım ötesinde Data Box Heavy cihazınızın verileri dışarıdan gönderdiği yönü ifade eder. Örneğin, Internet 'e giden.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Kutunuzu Dağıtma](data-box-deploy-ordered.md)
+* [Azure Data Box dağıtın](data-box-deploy-ordered.md)

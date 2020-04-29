@@ -1,17 +1,17 @@
 ---
-title: Öğretici - Hızlı konteyner görüntü oluşturma
+title: Öğretici-hızlı kapsayıcı görüntüsü oluşturma
 description: Bu öğreticide, Azure’da Azure Container Registry Görevleri (ACR Görevleri) ile bir Docker kapsayıcı görüntüsü derleme, ardından bu görüntüyü Azure Container Instances’a dağıtma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78398507"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Öğretici: Azure Kapsayıcı Kayıt Defteri Görevleri ile bulutta kapsayıcı görüntüleri oluşturma ve dağıtma
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Öğretici: Azure Container Registry görevlerle bulutta kapsayıcı görüntüleri oluşturun ve dağıtın
 
 **ACR Görevleri**, Azure’da kolaylaştırılmış ve verimli Docker kapsayıcı görüntüsü derlemeleri sağlayan bir Azure Container Registry özellik paketidir. Bu makalede, ACR Görevlerinin *hızlı görev* özelliğini kullanmayı öğreneceksiniz.
 
@@ -26,7 +26,7 @@ Dizinin birinci bölümü olan bu öğreticide şunları öğreneceksiniz:
 > * Azure’da kapsayıcı görüntüsü derleme
 > * Azure Container Instances‘a kapsayıcı dağıtma
 
-Sonraki öğreticilerde, ACR Görevlerini kod işleme ve temel görüntü güncelleştirmesi üzerindeki otomatik kapsayıcı görüntüsü derlemelerine yönelik görevler için kullanmayı öğreneceksiniz. ACR Görevleri, birden çok kapsayıcıyı oluşturmak, itmek ve isteğe bağlı olarak sınamak için adımları tanımlamak için bir YAML dosyasını kullanarak [çok aşamalı görevleri](container-registry-tasks-multi-step.md)de çalıştırabilir.
+Sonraki öğreticilerde, ACR Görevlerini kod işleme ve temel görüntü güncelleştirmesi üzerindeki otomatik kapsayıcı görüntüsü derlemelerine yönelik görevler için kullanmayı öğreneceksiniz. ACR görevleri, birden çok kapsayıcıyı oluşturma, gönderme ve isteğe bağlı olarak test etme adımlarını tanımlamak için bir YAML dosyası kullanarak [çok adımlı görevler](container-registry-tasks-multi-step.md)de çalıştırabilir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,7 +50,7 @@ Sonra, GitHub kullanıcı arabirimini kullanarak GitHub hesabınızda örnek dep
 
 Deponun çatalını oluşturduktan sonra çatalınızı kopyalayın ve yerel kopyanızı içeren dizine girin.
 
-Repo'yu `git`değiştirin, ** \<github kullanıcı adınızı\> ** GitHub kullanıcı adınız ile değiştirin:
+Depoyu kopyalayın `git`, ** \<-GitHub-username\> ** öğesini GitHub Kullanıcı adınızla değiştirin:
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -70,9 +70,9 @@ Bu öğretici serisindeki komutlar Bash kabuğu için biçimlendirilmiştir. Pow
 
 Kaynak kodunu makinenize çektikten sonra aşağıdaki adımları izleyerek bir kapsayıcı kayıt defteri oluşturun ve ACR Görevleri ile kapsayıcı görüntüsünü derleyin.
 
-Örnek komutları yürütmeyi kolaylaştırmak için, bu serideki öğreticilerde kabuk ortam değişkenleri kullanılmıştır. `ACR_NAME` değişkenini ayarlamak için aşağıdaki komutu yürütün. ** \<Kayıt defteri adını\> ** yeni kapsayıcı kayıt defteriniz için benzersiz bir adla değiştirin. Kayıt defteri adı Azure içinde benzersiz olmalı, yalnızca küçük harfler içermeli ve 5-50 alfasayısal karakter içermelidir. Bu öğreticide oluşturduğunuz diğer kaynaklar bu adı temel alır; bu nedenle yalnızca bu ilk değişkeni değiştirmeniz gerekir.
+Örnek komutları yürütmeyi kolaylaştırmak için, bu serideki öğreticilerde kabuk ortam değişkenleri kullanılmıştır. `ACR_NAME` değişkenini ayarlamak için aşağıdaki komutu yürütün. ** \<Kayıt defteri adını\> ** yeni kapsayıcı kayıt defteriniz için benzersiz bir adla değiştirin. Kayıt defteri adı Azure içinde benzersiz olmalı, yalnızca küçük harf ve 5-50 alfasayısal karakter içermelidir. Bu öğreticide oluşturduğunuz diğer kaynaklar bu adı temel alır; bu nedenle yalnızca bu ilk değişkeni değiştirmeniz gerekir.
 
-[![Gömme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>
@@ -203,7 +203,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Önceki `--role` komuttaki bağımsız değişken, hizmet ilkesini *acrpull* rolüyle yapılandırır ve bu da kayıt defterine yalnızca çekme erişimi verir. Hem itme hem de çekme `--role` erişimi sağlamak için, bağımsız değişkeni kısaltma olarak *değiştirin.*
+Yukarıdaki `--role` komutta bağımsız değişken hizmet sorumlusunu, BT 'nin kayıt defterine yalnızca çekme erişimi veren *acrpull* rolüyle yapılandırır. Hem itme hem de çekme erişimi sağlamak için `--role` bağımsız değişkenini *acrpush*olarak değiştirin.
 
 Ardından, hizmet sorumlusunun *uygulama kimliğini* kasada depolayın. Bu değer, kimlik doğrulaması için Azure Container Registry’ye geçirdiğiniz **kullanıcı adıdır**:
 

@@ -1,6 +1,6 @@
 ---
-title: MongoDB için Azure Cosmos DB'nin API'si ile verileri sorgula
-description: MongoDB kabuk komutlarını kullanarak Azure Cosmos DB'nin MongoDB api'sinden verileri nasıl sorgulayacağım
+title: MongoDB için Azure Cosmos DB API 'SI ile verileri sorgulama
+description: MongoDB kabuk komutlarını kullanarak MongoDB için Azure Cosmos DB API 'sindeki verileri sorgulamayı öğrenin
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74870148"
 ---
-# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB'nin API'sini kullanarak verileri sorgula
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sini kullanarak verileri sorgulama
 
-[Azure Cosmos DB'nin MongoDB için API'si](mongodb-introduction.md) [MongoDB sorgularını](https://docs.mongodb.com/manual/tutorial/query-documents/)destekler. 
+[MongoDB için Azure Cosmos DB API 'Si](mongodb-introduction.md) [MongoDB sorgularını](https://docs.mongodb.com/manual/tutorial/query-documents/)destekler. 
 
 Bu makale aşağıdaki görevleri kapsar: 
 
 > [!div class="checklist"]
-> * MongoDB kabuğunu kullanarak Cosmos veritabanınızda depolanan verileri sorgulama
+> * MongoDB kabuğu kullanarak Cosmos veritabanınızda depolanan verileri sorgulama
 
 Başlamak için bu belgedeki örnekleri kullanabilir ve [Query Azure Cosmos DB with MongoDB shell](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) (Azure Cosmos DB'yi MongoDB kabuğu ile sorgulama) videosunu izleyebilirsiniz.
 
@@ -66,7 +66,7 @@ Yukarıda verilen örnek aile belgesiyle aşağıdaki sorgu, kimlik alanının `
     
     db.families.find({ id: "WakefieldFamily"})
 
-**Sonuç -ları**
+**Sonuçlar**
 
     {
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
@@ -116,7 +116,7 @@ Sonraki sorgu, ailedeki tüm çocukları döndürür.
     
     db.families.find( { id: "WakefieldFamily" }, { children: true } )
 
-**Sonuç -ları**
+**Sonuçlar**
 
     {
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
@@ -157,7 +157,7 @@ Sonraki sorgu, kayıtlı olmayan tüm aileleri döndürür.
 **Sorgu**
     
     db.families.find( { "isRegistered" : false })
-**Sonuç -ları**
+**Sonuçlar**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -202,7 +202,7 @@ Sonraki sorgu, kayıtlı olmayan ve durumu NY olan tüm aileleri döndürür.
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
-**Sonuç -ları**
+**Sonuçlar**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -248,7 +248,7 @@ Sonraki sorgu, çocukları 8. sınıfta olan tüm aileleri döndürür.
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
-**Sonuç -ları**
+**Sonuçlar**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -293,7 +293,7 @@ Sonraki sorgu, çocuk dizisi boyutu 3 olan tüm aileleri döndürür.
   
       db.Family.find( {children: { $size:3} } )
 
-**Sonuç -ları**
+**Sonuçlar**
 
 İkiden fazla çocuğu olan bir aile olmadığından herhangi bir sonuç döndürülmez. Yalnızca parametre 2 olduğunda bu sorgu başarılı olur ve tam belgeyi döndürür.
 
@@ -302,7 +302,7 @@ Sonraki sorgu, çocuk dizisi boyutu 3 olan tüm aileleri döndürür.
 Bu öğreticide aşağıdakileri yaptınız:
 
 > [!div class="checklist"]
-> * MongoDB için Cosmos DB'nin API'sini kullanarak sorgulama yapmayı öğrendim
+> * MongoDB için Cosmos DB API 'sini kullanarak sorgu oluşturmayı öğrendiniz
 
 Artık verilerinizi genel olarak nasıl dağıtacağınızı öğrenmek için sonraki öğreticiye ilerleyebilirsiniz.
 

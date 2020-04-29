@@ -1,32 +1,32 @@
 ---
-title: 'Desen: İlke tanımındaki sayı işleci'
-description: Bu Azure İlkesi deseni, bir ilke tanımında sayım işlecinin nasıl kullanılacağına bir örnek sağlar.
+title: 'Model: bir ilke tanımındaki Count işleci'
+description: Bu Azure Ilke deseninin Count işlecinin bir ilke tanımında nasıl kullanılacağına ilişkin bir örnek sağlar.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 88c2d1083a92732ac56ca4d6da7087cc4220d9a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77172950"
 ---
-# <a name="azure-policy-pattern-the-count-operator"></a>Azure İlkesi deseni: sayım işleci
+# <a name="azure-policy-pattern-the-count-operator"></a>Azure Ilke stili: Count işleci
 
-[Sayım](../concepts/definition-structure.md#count) işleci, diğer \[ \* \] adın üyelerini değerlendirir.
+[Count](../concepts/definition-structure.md#count) işleci bir \[ \* \] diğer adın üyelerini değerlendirir.
 
 ## <a name="sample-policy-definition"></a>Örnek ilke tanımı
 
-Bu ilke tanımı, gelen Uzak Masaüstü Protokolü (RDP) trafiğine izin verecek şekilde yapılandırılan Ağ Güvenlik Gruplarını [denetler.](../concepts/effects.md#audit)
+Bu ilke tanımı, gelen Uzak Masaüstü Protokolü (RDP) trafiğine izin verecek şekilde yapılandırılmış ağ güvenlik gruplarını [denetler](../concepts/effects.md#audit) .
 
 :::code language="json" source="~/policy-templates/patterns/pattern-count-operator.json":::
 
 ### <a name="explanation"></a>Açıklama
 
-**Sayım** işlecinin temel bileşenleri _alan,_ _nerede_ve durumdur. Her biri aşağıdaki snippet vurgulanır.
+**Count** işlecinin temel bileşenleri _alan_, _nerede_ve durumdur. Her biri aşağıdaki kod parçacığında vurgulanır.
 
-- _alan_ üyeleri değerlendirmek için hangi [takma saymak](../concepts/definition-structure.md#aliases) söyler. Burada, ağ güvenlik grubunun **güvenlik\[ \* kuralları** diğer ad _dizisine_ bakıyoruz.
-- _hangi_ _dizi_ üyelerinin ölçütleri karşılamasını tanımlamak için ilke dilini kullanır. Bu örnekte, **allOf** mantıksal işleç grupları diğer ad _dizi_ özellikleriüç farklı durum değerlendirmeleri: _yön_, _erişim_, ve _hedefPortRange_.
-- Bu örnekteki sayım koşulu **daha büyüktür.** Diğer ad _dizisinin_ bir veya daha fazla üyesi _where_ yan tümcesi ile eşleştiğinde Kont doğru olarak değerlendirir.
+- _alan_ , üyelerini değerlendirmek için kullanılacak [diğer ad](../concepts/definition-structure.md#aliases) sayısını belirtir. Burada ağ güvenlik grubunun **\[ \* SecurityRules** diğer ad _dizisine_ bakıyoruz.
+- , hangi _dizi_ üyelerinin ölçütlere uygun olduğunu tanımlamak için ilke _dilini kullanır._ Bu örnekte, **allof** Logical operator diğer ad _dizisi_ özelliklerinin üç farklı koşul değerlendirmesini gruplandırır: _Direction_, _Access_ve _destinationPortRange_.
+- Bu örnekteki sayı koşulu **daha büyüktür**. Diğer ad _dizisinin_ bir veya daha fazla üyesi _WHERE_ yan tümcesiyle eşleştiğinde Count değeri true olarak değerlendirilir.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-count-operator.json" range="12-32" highlight="3,4,20":::
 

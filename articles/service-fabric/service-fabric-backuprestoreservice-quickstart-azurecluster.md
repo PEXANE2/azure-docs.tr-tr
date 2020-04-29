@@ -1,62 +1,62 @@
 ---
 title: Azure Service Fabric’te düzenli yedekleme ve geri yükleme
-description: Uygulama verilerinizin periyodik veri yedeklemesini etkinleştirmek için Service Fabric'in periyodik yedekleme ve geri yükleme özelliğini kullanın.
+description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
 author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259012"
 ---
-# <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Hizmet Kumaşı kümesinde periyodik yedekleme ve geri yükleme
+# <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme
 > [!div class="op_single_selector"]
 > * [Azure’da kümeler](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
-> * [Bağımsız Kümeler](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
+> * [Tek başına kümeler](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
 > 
 
-Service Fabric, güvenilir, dağıtılmış, mikro hizmetlere dayalı bulut uygulamalarının geliştirilmesini ve yönetilmesini kolaylaştıran dağıtılmış bir sistem platformudur. Hem devletsiz hem de devlete özel mikro hizmetlerin yürütülmesini sağlar. Durumlu hizmetler, istek ve yanıt ın veya tam bir işlemin ötesinde mutable, yetkili durumu koruyabilir. Bir Devlet hizmeti uzun bir süre için aşağı gider veya bir felaket nedeniyle bilgi kaybederse, geri geldikten sonra hizmet vermeye devam etmek için devletin bazı yeni yedekleme geri yüklenebilir.
+Service Fabric, güvenilir, dağıtılmış ve mikro hizmet tabanlı bulut uygulamaları geliştirmeyi ve yönetmeyi kolaylaştıran bir dağıtılmış sistemler platformudur. Hem durum bilgisi olmayan hem de durum bilgisi olan mikro hizmetlerin çalıştırılmasına izin verir. Durum bilgisi olan hizmetler, istek ve yanıtın ötesinde kesilebilir, yetkili durumunu veya tamamlanmış bir işlemi koruyabilir. Durum bilgisi olan bir hizmet uzun bir süre aşağı gittiğinde veya bir olağanüstü durum nedeniyle bilgileri kaybederse, bir kez daha başlatıldıktan sonra hizmet sağlamaya devam edebilmek için, durumunun son yedeklenmesinden geri yüklenmesi gerekebilir.
 
-Service Fabric, hizmetin yüksek oranda kullanılabilir olduğundan emin olmak için durumu birden çok düğüm üzerinde çoğaltır. Kümedeki bir düğüm başarısız olsa bile, hizmet kullanılabilir olmaya devam eder. Ancak bazı durumlarda, hizmet verilerinin daha geniş hatalara karşı güvenilir olması yine de arzu edilir.
+Service Fabric, hizmetin yüksek oranda kullanılabilir olduğundan emin olmak için durumu birden çok düğüm arasında çoğaltır. Kümedeki bir düğüm başarısız olsa bile, hizmet kullanılabilir olmaya devam eder. Ancak, bazı durumlarda hizmet verilerinin daha geniş hatalara karşı güvenilir olması tercih edilir.
  
-Örneğin, hizmet aşağıdaki senaryolardan korumak için verilerini yedeklemek isteyebilir:
-- Tüm Service Fabric kümesinin kalıcı kaybı durumunda.
-- Bir hizmet bölümünün yinelemelerinin çoğunluğunun kalıcı kaybı
-- Durum yanlışlıkla silinir veya bozuk alır yönetim hataları. Örneğin, yeterli ayrıcalığa sahip bir yönetici hizmeti hatalı bir şekilde siler.
-- Hizmette veri bozulmasına neden olan hatalar. Örneğin, bir hizmet kodu yükseltmesi güvenilir bir koleksiyona hatalı veri yazmaya başladığında bu durum oluşabilir. Böyle bir durumda, hem kod hem de veri önceki bir duruma döndürülebilir.
-- Çevrimdışı veri işleme. Verileri oluşturan hizmetten ayrı olarak gerçekleşen iş zekası için verilerin çevrimdışı işlenmesi uygun olabilir.
+Örneğin, hizmet aşağıdaki senaryolardan korunmak için verilerini yedeklemek isteyebilir:
+- Service Fabric kümesinin tamamının kalıcı kaybolması durumunda.
+- Bir hizmet bölümünün çoğaltmalarının çoğunluğunun kalıcı kaybolması
+- Durumun yanlışlıkla silindiği veya bozulduğu yönetim hataları. Örneğin, yeterli ayrıcalığa sahip bir yönetici yanlışlıkla hizmeti siler.
+- Hizmette veri bozulmasına neden olan hatalar. Örneğin, bu durum bir hizmet kodu yükseltmesinin hatalı verileri güvenilir bir koleksiyona yazmaya başladığında meydana gelebilir. Böyle bir durumda, hem kod hem de verilerin önceki bir duruma döndürülmesi gerekebilir.
+- Çevrimdışı veri işleme. Veri üreten hizmetten ayrı olarak gerçekleşen iş zekası için verilerin çevrimdışı işlenmesini sağlamak uygun olabilir.
 
-Service Fabric, zaman [yedeklemeve geri yükleme](service-fabric-reliable-services-backup-restore.md)noktası yapmak için dahili bir API sağlar. Uygulama geliştiricileri bu API'leri hizmetin durumunu düzenli aralıklarla yedeklemek için kullanabilir. Ayrıca, hizmet yöneticileri uygulamayı yükseltmeden önce olduğu gibi belirli bir zamanda hizmet dışından bir yedekleme tetiklemek istiyorlarsa, geliştiricilerin yedeklemeyi (ve geri yüklemeyi) hizmetten API olarak çıkarmaları gerekir. Yedeklemeleri korumak bunun üzerinde ek bir maliyettir. Örneğin, her yarım saatte beş artımlı yedekleme almak isteyebilirsiniz ve ardından tam bir yedekleme. Tam yedeklemeden sonra, önceki artımlı yedeklemeleri silebilirsiniz. Bu yaklaşım, uygulama geliştirme sırasında ek maliyete yol açan ek kod gerektirir.
+Service Fabric, zaman [yedekleme ve geri yükleme](service-fabric-reliable-services-backup-restore.md)için oluşturulmuş bir API sağlar. Uygulama geliştiricileri bu API 'Leri, hizmetin durumunu düzenli aralıklarla yedeklemek için kullanabilir. Ayrıca, hizmet yöneticileri, uygulamayı yükseltmeden önce olduğu gibi, bir yedekleme özelliğini hizmetin dışından belirli bir zamanda tetiklemeyi tercih ediyorsanız, geliştiricilerin, hizmeti bir API olarak yedeklemeyi (ve geri yüklemeyi) kullanıma sunması gerekir. Yedeklemelerin saklanması bunun üzerinde ek bir maliyettir. Örneğin, her yarı saatte beş artımlı yedekleme yapmak ve ardından tam yedekleme yapmak isteyebilirsiniz. Tam yedeklemeden sonra, önceki artımlı yedeklemeleri silebilirsiniz. Bu yaklaşım, uygulama geliştirme sırasında ek kod lideri olmasını gerektirir.
 
-Hizmet Kumaşındaki Yedekleme ve Geri Yükleme hizmeti, özel hizmetlerde depolanan bilgilerin kolay ve otomatik olarak yedeklemesini sağlar. Uygulama verilerinin periyodik olarak yedeklenin, veri kaybına ve hizmet inmemelerine karşı koruma için esastır. Service Fabric, herhangi bir ek kod yazmak zorunda kalmadan, özel Güvenilir Hizmetlerin (Aktör Hizmetleri dahil) periyodik yedeklemesini yapılandırmanızı sağlayan isteğe bağlı yedekleme ve geri yükleme hizmeti sağlar. Ayrıca, daha önce alınan yedeklemelerin geri alınmasını da kolaylaştırır. 
+Service Fabric 'de yedekleme ve geri yükleme hizmeti, durum bilgisi olan hizmetlerde depolanan bilgilerin kolay ve otomatik yedeklemesini mümkün bir şekilde sunar. Uygulama verilerini düzenli aralıklarla yedeklemek, veri kaybına ve hizmetin kullanılamamasına karşı koruma için temel bir uygulamadır. Service Fabric, ek kod yazmak zorunda kalmadan durum bilgisi olan Reliable Services (aktör hizmetleri dahil) düzenli olarak yedeklenmesini yapılandırmanıza olanak tanıyan, isteğe bağlı bir yedekleme ve geri yükleme hizmeti sağlar. Ayrıca, daha önce alınan yedeklemelerin geri yüklenmesini de kolaylaştırır. 
 
 
-Service Fabric, periyodik yedekleme ve geri yükleme özelliğiyle ilgili aşağıdaki işlevselliği elde etmek için bir dizi API sağlar:
+Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağıdaki işlevlere ulaşmak için bir API kümesi sağlar:
 
-- (Harici) depolama konumlarına yedekleme yüklemek için destek ile Güvenilir Stateful hizmetleri ve Güvenilir Aktörler periyodik yedekleme zamanlayın. Desteklenen depolama konumları
+- Güvenilir durum bilgisi olan ve Reliable Actors yedekleme 'yi (harici) depolama konumlarına yükleme desteğiyle düzenli olarak durum bilgisi olan ve düzenli olarak yedekleyin. Desteklenen depolama konumları
     - Azure Storage
-    - Dosya Paylaşımı (şirket içi)
-- Yedeklemeleri sayısallandırma
-- Bir bölümün geçici yedeklemesini tetikleme
+    - Dosya paylaşma (Şirket içi)
+- Yedeklemeleri listeleme
+- Bir bölümün geçici yedeklemesini tetikleyin
 - Önceki yedeklemeyi kullanarak bir bölümü geri yükleme
-- Yedeklemeleri geçici olarak askıya alma
-- Yedeklemelerin bekletme yönetimi (gelecek)
+- Yedeklemeleri geçici olarak askıya al
+- Yedeklemelerin bekletme yönetimi (yakında)
 
 ## <a name="prerequisites"></a>Ön koşullar
-* Kumaş sürüm 6.4 veya üzeri servis kumaş küme. Azure kaynak şablonu kullanarak Hizmet Dokusu kümesi oluşturma adımları için bu [makaleye](service-fabric-cluster-creation-via-arm.md) bakın.
-* Depolama alanına bağlanmak için gereken sırlarışifrelemek için X.509 Sertifikası yedeklemeleri depolamak için. X.509 sertifikasıalmak veya oluşturmak için [makaleye](service-fabric-cluster-creation-via-arm.md) bakın.
-* Service Fabric SDK sürüm 3.0 veya üzeri kullanılarak oluşturulmuş Servis Kumaşı Güvenilir Stateful uygulaması. .NET Core 2.0'ı hedefleyen uygulamalariçin, uygulama Service Fabric SDK sürüm 3.1 veya üzeri kullanılarak oluşturulmalıdır.
-* Uygulama yedeklemelerini depolamak için Azure Depolama hesabı oluşturun.
-* Yapılandırma aramaları yapmak için Microsoft.ServiceFabric.Powershell.Http Modülü [Önizlemede] yükleyin.
+* Yapı sürümü 6,4 veya üzeri bir küme Service Fabric. Azure kaynak şablonu kullanarak Service Fabric kümesi oluşturma adımları için bu [makaleye](service-fabric-cluster-creation-via-arm.md) başvurun.
+* Yedeklemeleri depolamak üzere depolamaya bağlanmak için gereken gizli dizileri şifrelemek için X. 509.440 sertifikası. X. 509.952 sertifikası alma veya oluşturma hakkında bilgi edinmek için [makaleye](service-fabric-cluster-creation-via-arm.md) bakın.
+* Service Fabric SDK 3,0 veya üzeri sürümleri kullanılarak oluşturulmuş güvenilir durum bilgisi olan uygulamayı Service Fabric. .NET Core 2,0 'yi hedefleyen uygulamalar için, uygulama Service Fabric SDK sürümü 3,1 veya üzeri kullanılarak oluşturulmalıdır.
+* Uygulama yedeklemelerini depolamak için Azure depolama hesabı oluşturun.
+* Yapılandırma çağrıları yapmak için Microsoft. ServiceFabric. PowerShell. http modülünü [önizlemede] yüklersiniz.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Microsoft.ServiceFabric.Powershell.Http Module kullanarak herhangi bir yapılandırma isteği yapmadan önce Cluster'ın `Connect-SFCluster` komutu kullanarak bağlı olduğundan emin olun.
+* Microsoft. ServiceFabric. PowerShell. http `Connect-SFCluster` modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
 ```powershell
 
@@ -64,19 +64,19 @@ Service Fabric, periyodik yedekleme ve geri yükleme özelliğiyle ilgili aşağ
 
 ```
 
-## <a name="enabling-backup-and-restore-service"></a>Yedekleme ve geri yükleme hizmetini etkinleştirme
+## <a name="enabling-backup-and-restore-service"></a>Yedekleme ve geri yükleme hizmeti etkinleştiriliyor
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-`+ Show optional settings` Sekmede `Cluster Configuration` onay kutusunu etkinleştirin. `Include backup restore service`
+`Cluster Configuration` Sekmesinin `Include backup restore service` altındaki `+ Show optional settings` onay kutusunu etkinleştirin.
 
-![Portal ile Yedekleme Geri Yükleme Hizmetini Etkinleştir][1]
+![Portal Ile yedekleme geri yükleme hizmetini etkinleştir][1]
 
 
-### <a name="using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi Şablonu'nun Kullanımı
-Öncelikle kümenizdeki _yedekleme ve geri yükleme hizmetini_ etkinleştirmeniz gerekir. Dağıtmak istediğiniz küme için şablonu alın. [Örnek şablonları](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) kullanabilir veya Bir Kaynak Yöneticisi şablonu oluşturabilirsiniz. Aşağıdaki adımlarla _yedekleme ve geri yükleme hizmetini_ etkinleştirin:
+### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
+İlk olarak, kümenizde _yedekleme ve geri yükleme hizmetini_ etkinleştirmeniz gerekir. Dağıtmak istediğiniz kümenin şablonunu alın. [Örnek şablonları](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) kullanabilir ya da bir kaynak yöneticisi şablonu oluşturabilirsiniz. _Yedekleme ve geri yükleme hizmetini_ aşağıdaki adımlarla etkinleştirin:
 
-1. Kaynağın `apiversion` **`2018-02-01`** `Microsoft.ServiceFabric/clusters` kaynak için ayarlanıp ayarlanmadığını denetleyin ve değilse, aşağıdaki parçacıkta gösterildiği gibi güncelleştirin:
+1. Kaynak için olarak **`2018-02-01`** ayarlanmış olup olmadığını denetleyin ve yoksa, aşağıdaki kod parçacığında gösterildiği gibi güncelleştirin: `apiversion` `Microsoft.ServiceFabric/clusters`
 
     ```json
     {
@@ -88,7 +88,7 @@ Service Fabric, periyodik yedekleme ve geri yükleme özelliğiyle ilgili aşağ
     }
     ```
 
-2. Şimdi aşağıdaki parçacık gösterildiği gibi bölüm `addonFeatures` altında `properties` aşağıdaki bölümü ekleyerek _yedekleme ve geri yükleme hizmeti_ etkinleştirin: 
+2. Şimdi aşağıdaki kod parçacığında gösterildiği gibi `addonFeatures` `properties` bölümüne aşağıdaki bölümü ekleyerek _yedekleme ve geri yükleme hizmetini_ etkinleştirin: 
 
     ```json
         "properties": {
@@ -99,7 +99,7 @@ Service Fabric, periyodik yedekleme ve geri yükleme özelliğiyle ilgili aşağ
         }
 
     ```
-3. Kimlik bilgilerinin şifrelemesi için X.509 sertifikasını yapılandırın. Bu, depolamaya bağlanmak için sağlanan kimlik bilgilerinin kalıcı olmadan önce şifrelenmiş olduğundan emin olmak için önemlidir. Aşağıdaki parçacıkta gösterildiği gibi `BackupRestoreService` aşağıdaki `fabricSettings` bölümü ekleyerek şifreleme sertifikasını yapılandırın: 
+3. Kimlik bilgilerinin şifrelenmesi için X. 509.440 sertifikasını yapılandırın. Bu, depolamaya bağlanmak için girilen kimlik bilgilerinin kalıcı olmadan önce şifrelenmesini sağlamak açısından önemlidir. Aşağıdaki kod parçacığında gösterildiği gibi `BackupRestoreService` `fabricSettings` bölümüne aşağıdaki bölümü ekleyerek şifreleme sertifikasını yapılandırın: 
 
     ```json
     "properties": {
@@ -116,23 +116,23 @@ Service Fabric, periyodik yedekleme ve geri yükleme özelliğiyle ilgili aşağ
     }
     ```
 
-4. Küme şablonunuzu önceki değişikliklerle güncelledikten sonra bunları uygulayın ve dağıtım/yükseltmenin tamamlanmasına izin verin. Tamamlandıktan sonra, _yedekleme ve geri yükleme hizmeti_ kümenizde çalışmaya başlar. Bu hizmetin Uri `fabric:/System/BackupRestoreService` ve hizmet Hizmet Kumaş explorer sistem servis bölümü altında bulunabilir. 
+4. Küme şablonunuzu önceki değişikliklerle güncelleştirdikten sonra, dağıtım/yükseltme tamamlanana izin verin. Tamamlandıktan sonra _yedekleme ve geri yükleme hizmeti_ kümenizde çalışmaya başlar. Bu hizmetin URI 'Si `fabric:/System/BackupRestoreService` ve hizmet, Service Fabric Explorer 'ın sistem hizmeti bölümünde bulunabilir. 
 
-## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Güvenilir Stateful hizmeti ve Güvenilir Aktörler için periyodik yedeklemeyi etkinleştirme
-Güvenilir Stateful hizmeti ve Güvenilir Aktörler için periyodik yedeklemeyi etkinleştirmek için adımları inceleyelim. Bu adımlar,
-- Küme yedekleme _ve geri yükleme hizmeti_ile X.509 güvenlik kullanarak kurulum olduğunu.
-- Kümede Güvenilir Durumlu hizmet dağıtılır. Bu hızlı başlangıç kılavuzu nun amacı `fabric:/SampleApp` için, uygulama Uri ve Uri Güvenilir `fabric:/SampleApp/MyStatefulService`Stateful hizmet için bu uygulamaya ait . Bu hizmet tek bir bölümle dağıtılır `974bd92a-b395-4631-8a7f-53bd4ae9cf22`ve bölüm kimliği.
-- Yönetici rolü olan istemci sertifikası, aşağıdaki komut dosyalarının çağrılacağı makinedeki _CurrentUser_ sertifikası mağaza konumunun _(Kişisel)_ _mağazam_ ın adına yüklenir. Bu örnek, bu sertifikanın parmak izi olarak kullanır. `1b7ebe2174649c45474a4819dafae956712c31d3` İstemci sertifikaları hakkında daha fazla bilgi için [Service Fabric istemcileri için Rol tabanlı erişim denetimine](service-fabric-cluster-security-roles.md)bakın.
+## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme
+Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme adımlarını inceleyelim. Bu adımlarda varsayılmaktadır
+- Küme, _yedekleme ve geri yükleme hizmeti_ile X. 509.440 Security kullanılarak ayarlanır.
+- Küme üzerinde güvenilir bir durum bilgisi olan hizmet dağıtılır. Bu hızlı başlangıç kılavuzunun amacı için uygulama URI 'si `fabric:/SampleApp` ve bu uygulamaya ait güvenilir durum bilgisi olan hizmet URI 'si. `fabric:/SampleApp/MyStatefulService` Bu hizmet tek bölüm ile dağıtılır ve bölüm KIMLIĞI olur `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
+- Yönetici rolüne sahip istemci sertifikası, aşağıdaki betiklerin çağrıldığı makinede bulunan _CurrentUser_ sertifika depolama konumunun (_Kişisel_) depolama _adı ' na_ yüklenir. Bu örnek, `1b7ebe2174649c45474a4819dafae956712c31d3` bu sertifikanın parmak izi olarak kullanır. İstemci sertifikaları hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri Için rol tabanlı erişim denetimi](service-fabric-cluster-security-roles.md).
 
-### <a name="create-backup-policy"></a>Yedekleme ilkesi oluşturma
+### <a name="create-backup-policy"></a>Yedekleme İlkesi Oluştur
 
-İlk adım, yedekleme depolama için tam yedekleme ve bekletme ilkesini tetiklemeden önce izin verilecek yedekleme çizelgesi, yedekleme verileri için hedef depolama, ilke adı, maksimum artımlı yedeklemeler açıklayan yedekleme ilkesi oluşturmaktır. 
+İlk adım Yedekleme zamanlamasını açıklayan yedekleme ilkesi, yedekleme verileri için hedef depolama, ilke adı, yedekleme depolaması için tam yedekleme ve bekletme ilkesi tetiklemeden önce izin verilen maksimum artımlı yedeklemeler oluşturmaktır. 
 
-Yedekleme depolama için yukarıda oluşturulan Azure Depolama hesabını kullanın. Kapsayıcı `backup-container` yedekleme depolamak için yapılandırılır. Yedekleme yükleme sırasında bu ada sahip bir kapsayıcı zaten yoksa oluşturulur. Azure `ConnectionString` Depolama hesabı için geçerli bir bağlantı dizesi ile, depolama `account-key` hesabı adınız ve depolama hesabı anahtarınızla değiştirin. `account-name`
+Yedekleme depolaması için yukarıda oluşturulan Azure Storage hesabını kullanın. Kapsayıcı `backup-container` yedeklemeleri depolamak için yapılandırılmış. Bu ada sahip bir kapsayıcı, zaten mevcut değilse, yedekleme karşıya yüklemesi sırasında oluşturulur. Azure `ConnectionString` depolama hesabı için geçerli bir bağlantı dizesiyle doldurun, depolama hesabınızın adıyla `account-name` ve `account-key` depolama hesabı anahtarınızla değiştirin.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell Microsoft.ServiceFabric.Powershell.Http Modülü kullanarak
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
-Yeni yedekleme ilkesi oluşturmak için PowerShell cmdlets'i uygulayın. Depolama `account-name` hesabı adınız ve `account-key` depolama hesabı anahtarınızla değiştirin.
+Yeni yedekleme ilkesi oluşturmak için aşağıdaki PowerShell cmdlet 'lerini yürütün. Depolama `account-name` Hesabı adınızla ve `account-key` depolama hesabı anahtarınızla değiştirin.
 
 ```powershell
 
@@ -140,9 +140,9 @@ New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrem
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Dinlenme Çağrısı
+#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Yeni ilke oluşturmak için gerekli REST API çağırmak için PowerShell komut dosyası aşağıdaki çalıştırın. Depolama `account-name` hesabı adınız ve `account-key` depolama hesabı anahtarınızla değiştirin.
+Yeni ilke oluşturmak için gerekli REST API çağırmak üzere aşağıdaki PowerShell betiğini yürütün. Depolama `account-name` Hesabı adınızla ve `account-key` depolama hesabı anahtarınızla değiştirin.
 
 ```powershell
 $StorageInfo = @{
@@ -176,29 +176,29 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ```
 
-#### <a name="using-service-fabric-explorer"></a>Servis Kumaş Explorer kullanma
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer kullanma
 
-1. Hizmet Kumaşı Gezgini'nde Yedekler sekmesine gidin ve Yedekleme İlkesi Oluştur'> Eylemleri seçin.
+1. Service Fabric Explorer, yedeklemeler sekmesine gidin ve yedekleme Ilkesi oluştur > Eylemler ' i seçin.
 
-    ![Yedekleme İlkesi Oluştur][6]
+    ![Yedekleme Ilkesi oluştur][6]
 
 2. Bilgileri doldurun. Azure kümeleri için AzureBlobStore seçilmelidir.
 
-    ![Yedekleme İlkesi Azure Blob Depolama Oluşturma][7]
+    ![Yedekleme Ilkesi oluşturma Azure Blob depolama][7]
 
-### <a name="enable-periodic-backup"></a>Periyodik yedeklemeyi etkinleştirme
-Uygulamanın veri koruma gereksinimlerini karşılamak için yedekleme ilkesini tanımladıktan sonra, yedekleme ilkesi uygulamayla ilişkilendirilmelidir. Gereksinime bağlı olarak, yedekleme ilkesi bir uygulama, hizmet veya bir bölümle ilişkilendirilebilir.
+### <a name="enable-periodic-backup"></a>Düzenli yedeklemeyi etkinleştir
+Uygulamanın veri koruma gereksinimlerini karşılamak için yedekleme ilkesi tanımladıktan sonra, yedekleme ilkesinin uygulamayla ilişkilendirilmesi gerekir. Gereksinime bağlı olarak, yedekleme ilkesi bir uygulama, hizmet veya bir bölümle ilişkilendirilebilir.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell Microsoft.ServiceFabric.Powershell.Http Modülü kullanarak
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
 ```powershell
 
 Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
 
 ```
-#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Dinlenme Çağrısı
+#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Yukarıdaki adımda oluşturulan adla `BackupPolicy1` yedekleme ilkesini uygulamayla `SampleApp`ilişkilendirmek için gerekli REST API'yi çağırmak için PowerShell komut dosyasını aşağıdaki yürütme.
+Yedekleme ilkesini uygulama `BackupPolicy1` `SampleApp`ile yukarıdaki adımda oluşturulan adla ilişkilendirmek için gerekli REST API çağırmak üzere aşağıdaki PowerShell betiğini yürütün.
 
 ```powershell
 $BackupPolicyReference = @{
@@ -211,37 +211,37 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ``` 
 
-#### <a name="using-service-fabric-explorer"></a>Servis Kumaş Explorer kullanma
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer kullanma
 
-1. Bir uygulama seçin ve eyleme geçin. Uygulama Yedeklemesini Etkinleştir/Güncelle'yi tıklatın.
+1. Bir uygulama seçin ve eyleme geçin. Uygulama yedeklemesini etkinleştir/Güncelleştir ' e tıklayın.
 
-    ![Uygulama Yedeklemesini Etkinleştir][3]
+    ![Uygulama yedeklemesini etkinleştir][3]
 
-2. Son olarak, istenen ilkeyi seçin ve Yedeklemeyi Etkinleştir'i tıklatın.
+2. Son olarak, istenen ilkeyi seçin ve yedeklemeyi etkinleştir ' e tıklayın.
 
-    ![İlke Seçin][4]
+    ![Ilke seçin][4]
 
 
-### <a name="verify-that-periodic-backups-are-working"></a>Periyodik yedeklemelerin çalıştığını doğrulama
+### <a name="verify-that-periodic-backups-are-working"></a>Düzenli yedeklemelerin çalıştığını doğrulama
 
-Uygulama düzeyinde yedeklemeyi etkinleştirdikten sonra, uygulama altındaki Güvenilir Durum hizmetleri ve Güvenilir Aktörler'e ait tüm bölümler, ilişkili yedekleme ilkesiuyarınca düzenli olarak yedeklenmeye başlar. 
+Uygulama düzeyinde yedeklemeyi etkinleştirdikten sonra, güvenilir durum bilgisi olan hizmetlere ve uygulama altındaki Reliable Actors sahip olan tüm bölümler, ilişkili yedekleme ilkesine göre düzenli aralıklarla yedeklenmek üzere başlatılır. 
 
-![Bölüm BackedUp Sağlık Etkinliği][0]
+![Bölüm BackedUp sistem durumu olayı][0]
 
 ### <a name="list-backups"></a>Yedeklemeleri Listele
 
-Güvenilir Durum hizmetleri ve uygulamanın Güvenilir Aktörleri'ne ait tüm bölümlerle ilişkili yedeklemeler _GetBackups_ API kullanılarak numaralandırılabilir. Yedeklemeler bir uygulama, hizmet veya bölüm için numaralandırılabilir.
+Güvenilir durum bilgisi olan hizmetlere ve uygulamanın Reliable Actors ait tüm bölümlerle ilişkili yedeklemeler, _Getbackups_ API 'si kullanılarak listelenebilir. Yedeklemeler, bir uygulama, hizmet veya bir bölüm için Numaralandırılabilir.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell Microsoft.ServiceFabric.Powershell.Http Modülü kullanarak
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
 ```powershell
     
 Get-SFApplicationBackupList -ApplicationId WordCount
 ```
 
-#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Dinlenme Çağrısı
+#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Uygulama içindeki tüm bölümler için oluşturulan yedeklemeleri doğrulamak için HTTP API'yi `SampleApp` çağırmak için PowerShell komut dosyasını aşağıdaki şekilde uygulayın.
+`SampleApp` Uygulamanın içindeki tüm bölümler için oluşturulan yedeklemeleri NUMARALANDıRMAK üzere HTTP API 'sini çağırmak Için aşağıdaki PowerShell betiğini yürütün.
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"
@@ -292,15 +292,15 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            : 
 ```
 
-#### <a name="using-service-fabric-explorer"></a>Servis Kumaş Explorer kullanma
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer kullanma
 
-Hizmet Kumaş ı Explorer'daki yedeklemeleri görüntülemek için bir bölüme gidin ve Yedekler sekmesini seçin.
+Service Fabric Explorer yedeklemeleri görüntülemek için bir bölüme gidin ve yedeklemeler sekmesini seçin.
 
-![Yedeklemeleri Sayısalat][5]
+![Yedeklemeleri listeleme][5]
 
-## <a name="limitation-caveats"></a>Sınırlama / uyarılar
-- Servis Kumaş PowerShell cmdlets önizleme modunda.
-- Linux'ta Service Fabric kümeleri için destek yok.
+## <a name="limitation-caveats"></a>Sınırlama/uyarılar
+- Service Fabric PowerShell cmdlet 'leri önizleme modundadır.
+- Linux üzerinde Service Fabric kümesi desteği yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Düzenli aralıklarla yedekleme yapılandırmasını anlama](./service-fabric-backuprestoreservice-configure-periodic-backup.md)

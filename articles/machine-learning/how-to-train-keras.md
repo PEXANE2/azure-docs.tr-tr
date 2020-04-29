@@ -1,7 +1,7 @@
 ---
-title: Tren derin öğrenme Keras modelleri
+title: Derin öğrenme keras modellerini eğitme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning'i kullanarak TensorFlow'da çalışan Keras derin sinir ağı sınıflandırma modelini nasıl eğitip kaydedebilirsiniz öğrenin.
+description: Azure Machine Learning kullanarak TensorFlow 'da çalışan keras derin sinir ağ sınıflandırma modelini eğitme ve kaydetme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,47 +12,47 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: ba7976d602412037578d0a324916718b2d515aac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269971"
 ---
-# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning ile bir Keras sınıflandırma modeli eğitin ve kaydedin
+# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning ile keras sınıflandırma modelini eğitme ve kaydetme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning kullanarak TensorFlow'da oluşturulmuş bir Keras sınıflandırma modelini nasıl eğitip kaydedebilirsiniz. [TensorFlow'un](https://www.tensorflow.org/overview)üstünde çalışan [Keras Python kitaplığı](https://keras.io) kullanılarak oluşturulmuş derin bir sinir ağı (DNN) kullanarak el yazısı yla yazılmış rakamları sınıflandırmak için popüler [MNIST veri kümesini](http://yann.lecun.com/exdb/mnist/) kullanır.
+Bu makalede, Azure Machine Learning kullanarak TensorFlow 'da oluşturulan keras sınıflandırma modelinin nasıl eğildiği ve kaydedileceği gösterilmektedir. Popüler [veri kümesini](http://yann.lecun.com/exdb/mnist/) kullanarak, [TensorFlow](https://www.tensorflow.org/overview)üzerinde çalışan [keras Python kitaplığı](https://keras.io) kullanılarak oluşturulan derin bir sinir ağı (DNN) kullanarak el yazısı rakamlarını sınıflandırın.
 
-Keras, geliştirmeyi kolaylaştırmak için diğer popüler DNN çerçevelerinin en üstünde çalışan üst düzey bir sinir ağı API'sidir. Azure Machine Learning ile, elastik bulut bilgi işlem kaynaklarını kullanarak eğitim işlerini hızla ölçeklendirebilirsiniz. Ayrıca eğitim çalıştırmalarınızı, sürüm modellerinizi, dağıtma modellerinizi ve çok daha fazlasını izleyebilirsiniz.
+Keras, geliştirmeyi basitleştirmek için diğer popüler DNN çerçevelerinin üstünü çalıştırabilen üst düzey bir sinir ağ API 'sidir. Azure Machine Learning, esnek bulut işlem kaynaklarını kullanarak eğitim işlerini hızla ölçeklendirebilirsiniz. Ayrıca eğitim çalıştırmalarını, sürüm modellerinizi, modellerinizi dağıtmayı ve daha fazlasını izleyebilirsiniz.
 
-İster sıfırdan bir Keras modeli geliştiriyor olun ister buluta mevcut bir model getiriyor olun, Azure Machine Learning üretime hazır modeller oluşturmanıza yardımcı olabilir.
+Sıfırdan bir keras modeli geliştirirken veya var olan bir modeli buluta getiriyor Azure Machine Learning, üretime hazır modeller oluşturmanıza yardımcı olabilir.
 
-Makine öğrenimi ve derin öğrenme arasındaki farklar hakkında bilgi için [kavramsal makaleye](concept-deep-learning-vs-machine-learning.md) bakın.
+Machine Learning ve derin öğrenme arasındaki farklar hakkında bilgi edinmek için [kavramsal makaleye](concept-deep-learning-vs-machine-learning.md) bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu kodu aşağıdaki ortamlardan herhangi birinde çalıştırın:
+Bu kodu şu ortamlardan birinde çalıştırın:
 
-- Azure Machine Learning bilgi işlem örneği - indirme veya yükleme ye gerek yok
+- Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
 
-     - [Öğreticiyi tamamlayın:](tutorial-1st-experiment-sdk-setup.md) SDK ve örnek depoyla önceden yüklenmiş özel bir dizüstü bilgisayar sunucusu oluşturmak için kurulum ortamı ve çalışma alanı.
-    - Not defteri sunucusundaki örnekler klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **nasıl kullanılır-azureml > eğitimi-ile derin öğrenme >-hiperparametre-tune-deploy-with-keras** klasörü.
+     - Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
+    - Not defteri sunucusundaki örnekler klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **kullanımı nasıl kullanılır-azureml > eğitimi--derin öğrenme > tren-hyperparameter-ayarla-dağıt-i-keras** klasörü.
 
  - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine Learning SDK'yı yükleyin.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
-    - [Çalışma alanı yapılandırma dosyası oluşturun.](how-to-configure-environment.md#workspace)
-    - [Örnek komut dosyası dosyalarını](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` indirin ve`utils.py`
+    - [Azure Machine Learning SDK 'Sını yükler](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    - [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
+    - [Örnek betik dosyalarını](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` indirin ve`utils.py`
 
-    Ayrıca GitHub örnekleri sayfasında bu kılavuzun tamamlanmış bir [Jupyter Notebook sürümünü](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) de bulabilirsiniz. Not defteri, akıllı hiperparametre atonlarını, model dağıtımını ve dizüstü bilgisayar widget'larını kapsayan genişletilmiş bölümler içerir.
+    Ayrıca, bu kılavuzun tamamlanmış bir [Jupyter Notebook sürümünü](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb) GitHub örnekleri sayfasından bulabilirsiniz. Not defteri, akıllı hiper parametre ayarlamayı, model dağıtımını ve Not defteri pencere öğelerini kapsayan genişletilmiş bölümler içerir.
 
 ## <a name="set-up-the-experiment"></a>Denemeyi ayarlama
 
-Bu bölümde, gerekli python paketlerini yükleyerek, bir çalışma alanını başlatma, deneme oluşturma ve eğitim verilerini ve eğitim komut dosyalarını yükleyerek eğitim denemesini ayarlar.
+Bu bölüm, gerekli Python paketlerini yükleyerek, bir çalışma alanı başlatarak, bir deneme oluşturarak ve eğitim verilerini ve eğitim betikleri karşıya yükleyerek Eğitim denemesini ayarlar.
 
 ### <a name="import-packages"></a>Paketleri içeri aktarma
 
-İlk olarak, gerekli Python kitaplıklarını içe aktarın.
+İlk olarak, gerekli Python kitaplıklarını içeri aktarın.
 
 ```Python
 import os
@@ -65,9 +65,9 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı,](concept-workspace.md) hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm eserlerle çalışmak için merkezi bir yer sağlar. Python SDK'da, bir [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesne oluşturarak çalışma alanı yapılarına erişebilirsiniz.
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz.
 
-[Önkoşullar bölümünde](#prerequisites)oluşturulan `config.json` dosyadan bir çalışma alanı nesnesi oluşturun.
+`config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
 ```Python
 ws = Workspace.from_config()
@@ -84,7 +84,7 @@ exp = Experiment(workspace=ws, name='keras-mnist')
 <a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>Dosya veri kümesi oluşturma
 
-Nesne, `FileDataset` çalışma alanı veri deponuzda veya genel url'lerinizde bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıf, dosyaları bilgisayarınıza indirme veya yükleme olanağı sağlar. Bir `FileDataset`, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüşüm uyguladıysanız, bunlar veri kümesinde de depolanır. Veriler varolan konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmez. Daha [how-to](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) fazla bilgi için `Dataset` paketteki nasıl yapılacağını kılavuzuna bakın.
+`FileDataset` Nesne, çalışma alanı veri deposundaki veya genel URL 'lerdeki bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıfı, size dosyaları indirme veya işleme özelliğini sağlar. Bir `FileDataset`oluşturarak, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüştürme uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir. Daha fazla bilgi için bkz. `Dataset` paketteki [nasıl yapılır](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) Kılavuzu.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -98,7 +98,7 @@ web_paths = [
 dataset = Dataset.File.from_files(path=web_paths)
 ```
 
-Veri `register()` kümesini çalışma alanınıza kaydetmek için yöntemi kullanın, böylece bunlar başkalarıyla paylaşılabilir, çeşitli denemeler arasında yeniden kullanılabilir ve eğitim komut dosyanızda adıyla anılabilen ler.
+Veri kümesini `register()` çalışma alanınıza kaydetmek için yöntemini kullanın, böylece diğer denemeleri arasında yeniden kullanılabilir ve eğitim betiğinizdeki ada göre adlandırılır.
 
 ```python
 dataset = dataset.register(workspace=ws,
@@ -107,9 +107,9 @@ dataset = dataset.register(workspace=ws,
                            create_new_version=True)
 ```
 
-## <a name="create-a-compute-target"></a>İşlem hedefi oluşturma
+## <a name="create-a-compute-target"></a>İşlem hedefi oluştur
 
-TensorFlow işinizin çalışması için bir bilgi işlem hedefi oluşturun. Bu örnekte, GPU etkin leştirilmiş bir Azure Machine Learning bilgi işlem kümesi oluşturun.
+Açık iş akışı işinizin üzerinde çalışacağı bir işlem hedefi oluşturun. Bu örnekte, GPU özellikli Azure Machine Learning işlem kümesi oluşturun.
 
 ```Python
 cluster_name = "gpucluster"
@@ -127,13 +127,13 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-Bilgi işlem hedefleri hakkında daha fazla bilgi için, [bilgi işlem hedef](concept-compute-target.md) makalesinin ne olduğunu görün.
+İşlem hedefleri hakkında daha fazla bilgi için bkz. [işlem hedefi nedir](concept-compute-target.md) makalesi.
 
-## <a name="create-a-tensorflow-estimator-and-import-keras"></a>Bir TensorFlow tahmincisi oluşturun ve Keras'ı içe aktarın
+## <a name="create-a-tensorflow-estimator-and-import-keras"></a>TensorFlow tahmin aracı oluşturma ve keras içeri aktarma
 
-[TensorFlow tahmincisi,](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) bilgi işlem hedefinde TensorFlow eğitim işlerini başlatmanın basit bir yolunu sağlar. Keras TensorFlow'un üstünde çalıştığından, TensorFlow tahminini kullanabilir ve bağımsız `pip_packages` değişkeni kullanarak Keras kitaplığını içe aktarabilirsiniz.
+[TensorFlow tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) , işlem hedefinde TensorFlow eğitim işlerinin başlatılması için basit bir yol sağlar. Keras, TensorFlow üzerinde çalıştığından, TensorFlow tahmin Aracı ' ı kullanabilir ve `pip_packages` bağımsız değişkenini kullanarak keras kitaplığını içeri aktarabilirsiniz.
 
-Önce `Dataset` sınıfı kullanarak çalışma alanı veri deposundan veri alın.
+İlk olarak, `Dataset` sınıfını kullanarak çalışma alanı veri deposundan verileri alın.
 
 ```python
 dataset = Dataset.get_by_name(ws, 'mnist dataset')
@@ -142,7 +142,7 @@ dataset = Dataset.get_by_name(ws, 'mnist dataset')
 dataset.to_path()
 ```
 
-TensorFlow tahmincisi, herhangi bir [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) çerçeveyi desteklemek için kullanılabilecek genel sınıf aracılığıyla uygulanır. Ayrıca, DNN `script_params` hiperparametre ayarlarını içeren bir sözlük oluşturun. Genel tahminciyi kullanarak eğitim modelleri hakkında daha fazla bilgi [için, tahminci kullanarak Azure Machine Learning'e sahip tren modellerine](how-to-train-ml-models.md) bakın
+TensorFlow tahmin aracı, herhangi bir çerçeveyi desteklemek için [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) kullanılabilen genel sınıf aracılığıyla uygulanır. Ek olarak, DNN `script_params` hyperparameter ayarlarını içeren bir sözlük oluşturun. Genel tahmin aracı kullanan eğitim modelleri hakkında daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md)
 
 ```python
 from azureml.train.dnn import TensorFlow
@@ -163,37 +163,37 @@ est = TensorFlow(source_directory=script_folder,
                  use_gpu=True)
 ```
 
-## <a name="submit-a-run"></a>Çalıştırma gönder
+## <a name="submit-a-run"></a>Bir çalıştırma gönder
 
-[Çalıştır](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) nesnesi, iş çalışırken ve tamamlandıktan sonra çalışma geçmişine arabirimi sağlar.
+[Run nesnesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
 
 ```Python
 run = exp.submit(est)
 run.wait_for_completion(show_output=True)
 ```
 
-Run yürütülderken, aşağıdaki aşamalardan geçer:
+Çalıştırma yürütüldüğü için aşağıdaki aşamalardan geçer:
 
-- **Hazırlama**: TensorFlow tahmincisine göre docker görüntüsü oluşturulur. Görüntü çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonraki çalıştırmalar için önbelleğe alındı. Günlükler de çalışma geçmişine akışı ve ilerleme izlemek için görüntülenebilir.
+- **Hazırlama**: bir Docker görüntüsü, TensorFlow Estimator öğesine göre oluşturulur. Görüntü, çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonra çalışacak şekilde önbelleğe alınır. Günlükler, çalıştırma geçmişine de kaydedilir ve ilerlemeyi izlemek için görüntülenebilir.
 
-- **Ölçeklendirme**: Toplu AI kümesi, çalıştırmayı yürütmek için şu anda kullanılabilir olandan daha fazla düğüm gerektiriyorsa, küme ölçeklendirmeye çalışır.
+- **Ölçeklendirme**: Batch AI kümesi, çalışmayı yürütmek için daha fazla düğüm gerektiriyorsa, küme ölçeği büyütmeyi dener ve şu anda kullanılabilir.
 
-- **Çalışma**: Komut dosyası klasöründeki tüm komut dosyaları bilgi işlem hedefine yüklenir, veri depolarına monte edilir veya kopyalanır ve entry_script yürütülür. Stdout ve ./logs klasöründen çıkan çıktılar çalışma geçmişine aktarılır ve çalıştırmayı izlemek için kullanılabilir.
+- **Çalışıyor**: betik klasöründeki tüm betikler işlem hedefine yüklenir, veri depoları bağlanır veya kopyalanır ve entry_script yürütülür. Stdout ve./logs klasörü çıkışları, çalıştırma geçmişine akışla kaydedilir ve çalıştırmayı izlemek için kullanılabilir.
 
-- **Post-Processing**: Çalıştırın ./çıktılar klasörü çalışma geçmişine kopyalanır.
+- **Işlem sonrası**: çalıştırmanın./çıktılar klasörü, çalışma geçmişine kopyalanır.
 
 ## <a name="register-the-model"></a>Modeli kaydedin
 
-DNN modelini eğittikten sonra çalışma alanınıza kaydedebilirsiniz. Model kaydı, [model yönetimini ve dağıtımı](concept-model-management-and-deployment.md)basitleştirmek için modellerinizi çalışma alanınızda depolamanızı ve sürümünüzü yapmanızı sağlar.
+DNN modelini eğittikten sonra, çalışma alanınıza kaydedebilirsiniz. Model kaydı, [model yönetimi ve dağıtımını](concept-model-management-and-deployment.md)basitleştirmek için modellerinizi çalışma alanınızda depolamanızı ve sürümlerini oluşturmanıza imkan tanır.
 
 ```Python
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
 
 > [!TIP]
-> Az önce kaydettiğiniz model, eğitim için hangi tahminciden kullandığınıza bakılmaksızın Azure Machine Learning'deki diğer kayıtlı modelle aynı şekilde dağıtılır. Dağıtım nasıl yapılacağını niçin kaydeden modellerle ilgili bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan dağıtım için [doğrudan bir işlem hedefi oluşturmayı](how-to-deploy-and-where.md#choose-a-compute-target) atlayabilirsiniz.
+> Yeni kaydettiğiniz model, eğitim için kullandığınız tahmin aracı 'dan bağımsız olarak, Azure Machine Learning ' deki diğer tüm kayıtlı modellerle aynı şekilde dağıtılır. Dağıtım nasıl yapılır, model kaydettirme hakkında bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan, dağıtım için doğrudan [bir işlem hedefi oluşturmaya](how-to-deploy-and-where.md#choose-a-compute-target) geçebilirsiniz.
 
-Ayrıca modelin yerel bir kopyasını indirebilirsiniz. Bu, ek model doğrulama çalışması yapmak için yararlı olabilir. Eğitim komut dosyasında, `mnist-keras.py`TensorFlow koruyucu nesnesi modeli yerel bir klasöre (işlem hedefine yerel) devam eder. Veri deposundan bir kopyasını indirmek için Çalıştır nesnesini kullanabilirsiniz.
+Ayrıca modelin yerel bir kopyasını da indirebilirsiniz. Bu, ek model doğrulama işini yerel olarak gerçekleştirmek için yararlı olabilir. Eğitim betiğinde `mnist-keras.py`, bir TensorFlow koruyucu nesnesi modeli yerel bir klasöre (yerel olarak işlem hedefine) devam ettirir. Veri deposundan bir kopya indirmek için Run nesnesini kullanabilirsiniz.
 
 ```Python
 # Create a model folder in the current directory
@@ -208,11 +208,11 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Machine Learning'de bir Keras modelini eğittiniz ve kaydettiniz. Bir modeli nasıl dağıtılacayacağını öğrenmek için, model deployment makalemize devam edin.
+Bu makalede, Azure Machine Learning bir keras modeli eğitildiniz ve kaydettiniz. Modeli dağıtmayı öğrenmek için model dağıtım makalemize devam edin.
 
 > [!div class="nextstepaction"]
-> [Modelleri nasıl ve nerede dağıtılır](how-to-deploy-and-where.md)
-* [Eğitim sırasında koşu ölçümlerini izleme](how-to-track-experiments.md)
+> [Modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md)
+* [Eğitim sırasında çalıştırma ölçümlerini izleyin](how-to-track-experiments.md)
 * [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
-* [Eğitimli bir model dağıtma](how-to-deploy-and-where.md)
-* [Azure'da dağıtılmış derin öğrenim eğitimi için referans mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [Eğitilen model dağıtma](how-to-deploy-and-where.md)
+* [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)

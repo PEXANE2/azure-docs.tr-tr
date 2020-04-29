@@ -1,5 +1,5 @@
 ---
-title: Node.Js, MongoB için Azure Cosmos DB'nin API'yi kullanarak Açısal uygulama (Part1)
+title: MongoB için Azure Cosmos DB API 'SI kullanan Node. js, angular uygulaması (part1)
 description: Video temelli bu öğretici serisiyle Azure Cosmos DB üzerinde Angular ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturmayı öğrenirsiniz.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,17 +11,17 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75444694"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB'nin API'si ile Açısal bir uygulama oluşturma
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma
 
-Bu çok parçalı öğretici nasıl Express ve Angular ile Node.js yazılmış yeni bir uygulama oluşturmak ve daha sonra [Cosmos hesabı Cosmos DB's API MongoDB için yapılandırılan](mongodb-introduction.md)bağlanmak için nasıl gösterir.
+Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB'nin çekirdeğindeki küresel dağıtım ve yatay ölçek özelliklerinden yararlanan belge, anahtar/değer ve grafik veritabanlarını hızla oluşturmanızı ve sorgulamanızı sağlar. 
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB çekirdekli genel dağıtım ve yatay ölçek özelliğinden yararlanan belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturmanızı ve sorgulamanızı sağlar. 
 
 Bu çok bölümlü öğretici aşağıdaki görevleri içerir:
 

@@ -1,16 +1,16 @@
 ---
-title: "PowerShell: Yerel Git repo'dan dağıtın"
-description: Uygulama Hizmeti'nin dağıtımını ve yönetimini otomatikleştirmek için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Bu örnek, yerel bir Git deposundan kodun nasıl dağıtılancaya bildiğini gösterir.
+title: 'PowerShell: yerel git deposundan dağıtma'
+description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, yerel bir git deposundan kodun nasıl dağıtılacağını gösterir.
 tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74684833"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Bir web uygulaması oluşturma ve yerel Git deposundan kod dağıtma
@@ -39,7 +39,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Gerekli kaynak grubu ve App Service grubu ile bir web uygulaması oluşturur. Geçerli dizin bir Git deposu içerdiğinde ayrıca uzak bir `azure` ekleyin. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Gerekli kaynak grubu ve App Service grubu ile bir web uygulaması oluşturur. Geçerli dizin bir Git deposu içerdiğinde ayrıca uzak bir `azure` ekleyin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,19 +1,19 @@
 ---
-title: CI ve Azure Pipelines ile bir uygulama dağıtma
-description: Bu eğitimde, Azure Pipelines kullanarak bir Hizmet Kumaşı uygulaması için sürekli tümleştirme ve dağıtım ayarlamayı öğrenirsiniz.
+title: CI ve Azure Pipelines ile uygulama dağıtma
+description: Bu öğreticide, Azure Pipelines kullanarak Service Fabric bir uygulama için sürekli tümleştirme ve dağıtım ayarlamayı öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614154"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesine CI/CD ile uygulama dağıtma
 
-Bu öğretici, bir serinin dördüncü bölümüdür ve Azure Pipelines kullanarak bir Azure Hizmet Kumaşı uygulaması için sürekli tümleştirme ve dağıtımın nasıl ayarlanır olduğunu açıklar.  Mevcut bir Service Fabric uygulaması gereklidir; örnek olarak [.NET uygulaması oluşturma](service-fabric-tutorial-create-dotnet-app.md) bölümünde oluşturulan uygulama kullanılır.
+Bu öğretici, bir serinin dört bölümüdür ve Azure Pipelines kullanarak bir Azure Service Fabric uygulaması için sürekli tümleştirme ve dağıtımın nasıl ayarlanacağını açıklar.  Mevcut bir Service Fabric uygulaması gereklidir; örnek olarak [.NET uygulaması oluşturma](service-fabric-tutorial-create-dotnet-app.md) bölümünde oluşturulan uygulama kullanılır.
 
 Serinin üçüncü bölümünde şunları öğrenirsiniz:
 
@@ -27,7 +27,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * [.NET Service Fabric uygulaması oluşturma](service-fabric-tutorial-create-dotnet-app.md)
 > * [Uygulamayı uzak kümeye dağıtma](service-fabric-tutorial-deploy-app-to-party-cluster.md)
-> * [ASP.NET Core ön uç hizmetine BIR HTTPS bitiş noktası ekleme](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
+> * [ASP.NET Core ön uç hizmetine HTTPS uç noktası ekleme](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * Azure Pipelines kullanarak CI/CD yapılandırma
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -36,14 +36,14 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Visual Studio 2019'u yükleyin](https://www.visualstudio.com/) ve **Azure geliştirme** ve ASP.NET ve web geliştirme iş yüklerini **yükleyin.**
-* [Servis Kumaşı SDK'yı yükleyin](service-fabric-get-started.md)
+* [Visual Studio 2019](https://www.visualstudio.com/) ' i yükleyip **Azure geliştirme** ve **ASP.net ve Web geliştirme** iş yüklerini yüklersiniz.
+* [Service Fabric SDK 'sını yükler](service-fabric-get-started.md)
 * Azure’da Windows Service Fabric kümesi oluşturun; örneğin, [bu öğreticiyi izleyin](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* [Azure DevOps kuruluşu](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) oluşturun. Bu, Azure DevOps'lerde bir proje oluşturmanıza ve Azure Ardışık Hatlar'ı kullanmanıza olanak tanır.
+* [Azure DevOps kuruluşu](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) oluşturun. Bu, Azure DevOps 'da bir proje oluşturmanıza ve Azure Pipelines kullanmanıza olanak sağlar.
 
 ## <a name="download-the-voting-sample-application"></a>Voting örnek uygulamasını indirme
 
-[Bu öğretici serinin birinci bölümünde](service-fabric-tutorial-create-dotnet-app.md)Oylama örnek uygulama inşa etmediyseniz, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki komutu çalıştırın.
+[Bu öğretici serisinin birinci kısmında](service-fabric-tutorial-create-dotnet-app.md)oylama örnek uygulamasını oluşturmadıysanız, indirebilirsiniz. Komut penceresinde, örnek uygulama deposunu yerel makinenize kopyalamak için aşağıdaki komutu çalıştırın.
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Yayımlama profili hazırlama
 
-[Uygulamayı oluşturduğunuza](service-fabric-tutorial-create-dotnet-app.md) ve [uygulamayı Azure’a dağıttığınıza](service-fabric-tutorial-deploy-app-to-party-cluster.md) göre, artık sürekli tümleştirme ayarlamaya hazırsınız.  İlk olarak, Azure Pipelines içinde yürüten dağıtım işlemi tarafından kullanılmak üzere uygulamanız içinde bir yayımlama profili hazırlayın.  Yayımlama profili, daha önce oluşturduğunuz kümeyi hedefleyecek şekilde yapılandırılmalıdır.  Visual Studio’yu başlatın ve mevcut Service Fabric uygulaması projesini açın.  **Çözüm Gezgini**'nde uygulamaya sağ tıklayın ve **Yayımla...** öğesini seçin.
+[Uygulamayı oluşturduğunuza](service-fabric-tutorial-create-dotnet-app.md) ve [uygulamayı Azure’a dağıttığınıza](service-fabric-tutorial-deploy-app-to-party-cluster.md) göre, artık sürekli tümleştirme ayarlamaya hazırsınız.  İlk olarak, Azure Pipelines içinde yürüten dağıtım işlemi tarafından kullanılmak üzere uygulamanız dahilinde bir yayımlama profili hazırlayın.  Yayımlama profili, daha önce oluşturduğunuz kümeyi hedefleyecek şekilde yapılandırılmalıdır.  Visual Studio’yu başlatın ve mevcut Service Fabric uygulaması projesini açın.  **Çözüm Gezgini**'nde uygulamaya sağ tıklayın ve **Yayımla...** öğesini seçin.
 
 Sürekli tümleştirme iş akışınızda kullanmak üzere uygulama projenizin içinde bir hedef profil seçin (örneğin Bulut).  Küme bağlantısı uç noktasını belirtin.  Azure DevOps’daki her dağıtımda uygulamanızın yükseltilmesi için **Uygulamayı Yükselt** onay kutusunu işaretleyin.  Ayarları yayımlama profiline kaydetmek için **Kaydet** bağlantısına tıklayın ve ardından **İptal**’e tıklayarak iletişim kutusunu kapatın.
 
@@ -61,7 +61,7 @@ Sürekli tümleştirme iş akışınızda kullanmak üzere uygulama projenizin i
 
 Derlemeler oluşturabilmek için uygulamanızın kaynak dosyalarını Azure DevOps’daki bir projede paylaşın.
 
-Visual Studio'nun sağ alt köşesindeki durum çubuğunda Kaynak Denetimi -> **ne** **ekle'yi**seçerek projeniz için yeni bir yerel Git reposu oluşturun.
+Visual Studio 'nun sağ alt köşesindeki durum çubuğunda **kaynak denetimine** -> Ekle**Git** ' i seçerek projeniz için yeni bir yerel Git deposu oluşturun.
 
 **Takım Gezgini**’ndeki **Gönderim** görünümünde **Azure DevOps’a Gönder**’in altında yer alan **Git Deposunda Yayımla** düğmesini seçin.
 
@@ -73,51 +73,51 @@ E-postanızı doğrulayın ve **Azure DevOps Etki Alanı** açılır listesinde 
 
 Depoyu yayımlamak, hesabınızda yerel depoyla aynı ada sahip yeni bir proje oluşturur. Mevcut projede depoyu oluşturmak için, **Depo adının** yanındaki **Gelişmiş**’e tıklayın ve bir proje seçin. **Web üzerinde görüntüleyin**’i seçerek kodunuzu web’de görüntüleyebilirsiniz.
 
-## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure Pipelines ile Sürekli Teslimatı Yapılandırma
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure Pipelines ile sürekli teslimi yapılandırma
 
-Azure Ardışık Hatları yapı, sırayla yürütülen bir yapı adım kümesinden oluşan bir iş akışını açıklar. Service Fabric kümenize dağıtmak üzere Service Fabric uygulama paketini ve diğer yapıtları üreten bir derleme işlem hattı oluşturun. [Azure Pipelines derleme işlem hatları](https://www.visualstudio.com/docs/build/define/create) hakkında daha fazla bilgi edinin. 
+Azure Pipelines yapı işlem hattı, sıralı olarak yürütülen bir yapı adımları kümesinden oluşan bir iş akışını açıklar. Service Fabric kümenize dağıtmak üzere Service Fabric uygulama paketini ve diğer yapıtları üreten bir derleme işlem hattı oluşturun. [Azure Pipelines derleme işlem hatları](https://www.visualstudio.com/docs/build/define/create) hakkında daha fazla bilgi edinin. 
 
-Bir Azure Pipelines yayın işlem hattı, kümeye uygulama paketi dağıtan bir iş akışını açıklar. Derleme işlem hattı ve yayın işlem hattı ile birlikte kullanıldığında kaynak dosyalardan başlayıp kümenizde çalışan bir uygulamada biten iş akışının tamamını yürütür. [Azure Ardışık Hatları sürümü için](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)daha fazla bilgi edinin.
+Bir Azure Pipelines yayın işlem hattı, kümeye uygulama paketi dağıtan bir iş akışını açıklar. Derleme işlem hattı ve yayın işlem hattı ile birlikte kullanıldığında kaynak dosyalardan başlayıp kümenizde çalışan bir uygulamada biten iş akışının tamamını yürütür. [Azure Pipelines yayın işlem hatları](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)hakkında daha fazla bilgi edinin.
 
 ### <a name="create-a-build-pipeline"></a>Derleme işlem hattı oluşturma
 
 Web tarayıcısını açın ve şu adresteki yeni projenize gidin: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-**Ardışık Hatlar** sekmesini seçin, sonra **Oluşturur,** ardından **Yeni Ardışık Hatlar'ı**tıklatın.
+İşlem **hatları** sekmesini seçin ve ardından **Yeni işlem hattı**' na tıklayın. **Builds**
 
 ![Yeni İşlem Hattı][new-pipeline]
 
-Kaynak olarak **Azure Repos** Git'i, **Oylama** Ekibi projesini, **Oylama** Deposu'nu ve el ile ve zamanlanmış yapılar için Varsayılan **dala'yı** seçin.  Ardından **Devam et'i**tıklatın.
+El ile ve zamanlanan derlemeler için kaynak olarak **Git Azure Repos** , **Oylama** takım projesi, **Oylama** deposu ve **ana** varsayılan dalı seçin.  Sonra **devam**' a tıklayın.
 
-![Repo'u seçin][select-repo]
+![Depoyu seçin][select-repo]
 
 **Şablon seç** alanında **Azure Service Fabric uygulaması** şablonunu seçin ve **Uygula**'ya tıklayın.
 
 ![Derleme şablonu seçme][select-build-template]
 
-**Görevlerde**, "Barındırılan VS2017"yi **Agent havuzu**olarak girin.
+**Görevler**' de, **Aracı havuzu**olarak "barındırılan VS2017" yazın.
 
 ![Görevleri seçme][save-and-queue]
 
-**Tetikleyiciler**’in altında **Sürekli tümleştirmeyi etkinleştir**'i işaretleyerek sürekli tümleştirmeyi etkinleştirin. **Branch filtreleri**içinde, **Şube belirtimi** **varsayılan olarak master.** Derlemeyi el ile başlatmak için **Kaydet ve kuyruğa al**’ı seçin.
+**Tetikleyiciler**’in altında **Sürekli tümleştirmeyi etkinleştir**'i işaretleyerek sürekli tümleştirmeyi etkinleştirin. **Dal filtreleri**içinde **dal belirtimi** varsayılan olarak **Master**' dir. Derlemeyi el ile başlatmak için **Kaydet ve kuyruğa al**’ı seçin.
 
 ![Tetikleyicileri seçme][save-and-queue2]
 
-Derlemeler gönderme veya iade işlemleriyle de tetiklenir. Yapı ilerlemenizi denetlemek için **Yapılar** sekmesine geçin.  Yapının başarılı bir şekilde yürütüldettiğini doğruladıktan sonra, uygulamanızı bir kümeye dağıtan bir sürüm ardışık hattı tanımlayın.
+Derlemeler gönderme veya iade işlemleriyle de tetiklenir. Derleme ilerleme durumunu denetlemek için **derlemeler** sekmesine geçin.  Derlemeyi başarıyla yürüttüğünü doğruladıktan sonra, uygulamanızı bir kümeye dağıtan bir yayın işlem hattı tanımlayın.
 
 ### <a name="create-a-release-pipeline"></a>Yayın işlem hattı oluşturma
 
-**Ardışık Hatlar** sekmesini seçin, ardından **Serbest Bırakır**, sonra **+ Yeni ardışık.**  **Şablon seç** alanında, listeden **Azure Service Fabric Dağıtımı** şablonunu ve sonra da **Uygula**'yı seçin.
+İşlem **hatları** sekmesini seçin, sonra **yayınlar**ve **+ Yeni işlem hattı**' nı seçin.  **Şablon seç** alanında, listeden **Azure Service Fabric Dağıtımı** şablonunu ve sonra da **Uygula**'yı seçin.
 
 ![Yayın şablonunu seçme][select-release-template]
 
-Yeni küme bağlantısı eklemek için **Görevler**->**Ortamı 1** ve ardından **+Yeni'yi** seçin.
+Yeni bir küme bağlantısı eklemek için **Görevler**->**ortam 1** ve sonra **+ Yeni** ' yi seçin.
 
 ![Küme bağlantısı ekleme][add-cluster-connection]
 
 **Yeni Service Fabric Bağlantısı ekle** görünümünde **Sertifika Tabanlı** veya **Azure Active Directory** kimlik doğrulamasını seçin.  Bağlantı adı olarak "mysftestcluster" ve küme uç noktası olarak "tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000" (veya dağıtım yaptığınız kümenin uç noktası) belirtin.
 
-Sertifika tabanlı kimlik doğrulama için, kümeoluşturmak için kullanılan sunucu sertifikasının **Sunucu sertifikası parmak izini** ekleyin.  **İstemci sertifikası** alanında, istemci sertifika dosyasının base-64 kodlamasını ekleyin. Sertifikanın bu base-64 kodlamalı gösterimini nasıl alacağınızı öğrenmek için bu alanın yardım açılan kutusuna bakın. Ayrıca sertifika için **Parola** ekleyin.  Ayrı bir istemci sertifikanız yoksa, küme veya sunucu sertifikasını kullanabilirsiniz.
+Sertifika tabanlı kimlik doğrulaması için, kümeyi oluşturmak için kullanılan sunucu sertifikasının **sunucu sertifikası parmak izini** ekleyin.  **İstemci sertifikası** alanında, istemci sertifika dosyasının base-64 kodlamasını ekleyin. Sertifikanın bu base-64 kodlamalı gösterimini nasıl alacağınızı öğrenmek için bu alanın yardım açılan kutusuna bakın. Ayrıca sertifika için **Parola** ekleyin.  Ayrı bir istemci sertifikanız yoksa, küme veya sunucu sertifikasını kullanabilirsiniz.
 
 Azure Active Directory kimlik bilgileri için, kümeyi oluştururken kullanılan sunucu sertifikasının **Sunucu sertifikası parmak izi**'ni ve ayrıca **Kullanıcı adı** ve **Parola** alanlarına kümeye bağlanırken kullanmak istediğiniz kimlik bilgilerini girin.
 
@@ -131,7 +131,7 @@ Derleme tamamlandığında otomatik olarak bir yayın oluşturulması için sür
 
 ![Tetikleyici etkinleştirme][enable-trigger]
 
-Bir sürümü el ile oluşturmak için**Sürüm** -> **Oluştur** ' u seçin **+ Yayın** -> Oluştur' u seçin. Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
+Bir yayını el ile oluşturmak için **+** -> **Create a Release** -> **yayın** oluştur oluştur ' u seçin. Yayının ilerleme durumunu **Yayınlar** sekmesinden takip edebilirsiniz.
 
 Dağıtımın başarılı olduğunu ve uygulamanın kümede çalıştığını doğrulayın.  Bir web tarayıcısı açın ve `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` sayfasına gidin.  Uygulama sürümünü not alın (bu örnekte "1.0.0.20170616.3").
 
@@ -145,11 +145,11 @@ Takım Gezgini'ndeki **Değişiklikler** görünümünde, güncelleştirmenizi a
 
 ![Tümünü işleme][changes]
 
-Yayımlanmamış değişiklikler durum çubuğu simgesini (![Yayımlanmamış değişiklikler][unpublished-changes]) veya Takım Gezgini'nde Eşitleme görünümünü seçin. Azure Pipelines'da kodunuzu güncelleştirmek için **Push'u** seçin.
+Yayımlanmamış değişiklikler durum çubuğu simgesini (![Yayımlanmamış değişiklikler][unpublished-changes]) veya Takım Gezgini'nde Eşitleme görünümünü seçin. Azure Pipelines kodunuzu güncelleştirmek için **Gönder** ' i seçin.
 
 ![Değişiklikleri gönderme][push]
 
-Değişiklikleri Azure Ardışık Larına zorlamak otomatik olarak bir yapıyı tetikler.  Derleme işlem hattı başarıyla tamamlandığında, otomatik olarak bir yayın oluşturulur ve kümede uygulamayı yükseltme işlemini başlatır.
+Değişiklikleri Azure Pipelines göndermek, otomatik olarak bir derlemeyi tetikler.  Derleme işlem hattı başarıyla tamamlandığında, otomatik olarak bir yayın oluşturulur ve kümede uygulamayı yükseltme işlemini başlatır.
 
 Derlemenizin ilerleme durumunu denetlemek için, Visual Studio'nun **Takım Gezgini**'nde **Derlemeler** sekmesine geçin.  Derlemenin başarıyla yürütüldüğünü doğruladıktan sonra, uygulamanızı kümeye dağıtan bir yayın işlem hattı belirleyin.
 
