@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Symantec Web Güvenlik Hizmeti (WSS) ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Symantec Web Security Service (WSS) arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Symantec Web Security Service (WSS) ile Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve Symantec Web Security Service (WSS) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,182 +17,182 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d496015440deb80a0159ed0ec234ae60c2c64a66
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73159937"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Öğretici: Symantec Web Güvenlik Hizmeti (WSS) ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Öğretici: Symantec Web Security Service (WSS) ile Azure Active Directory tümleştirme
 
-Bu eğitimde, WSS'nin SAML kimlik doğrulaması kullanarak Azure AD'de bulunan bir son kullanıcının kimliğini doğrulayabilmesi ve kullanıcıyı veya grup düzeyi ilke kuralları.
+Bu öğreticide, WSS 'nin SAML kimlik doğrulaması kullanarak Azure AD 'de sağlanan son kullanıcının kimliğini doğrulayabilmesi ve Kullanıcı veya grup düzeyi ilke kuralları zorlaması için Symantec Web Security Service (WSS) hesabınızı Azure Active Directory (Azure AD) hesabınızla tümleştirmeyi öğreneceksiniz.
 
-Symantec Web Güvenlik Hizmeti'ni (WSS) Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Symantec Web Security Service 'i (WSS) Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-- Azure REKLAM portalınızdan WSS hesabınız tarafından kullanılan tüm son kullanıcıları ve grupları yönetin.
+- WSS hesabınız tarafından Azure AD portalından kullanılan tüm son kullanıcıları ve grupları yönetin.
 
-- Son kullanıcıların Azure AD kimlik bilgilerini kullanarak WSS'de kendilerini doğrulamalarına izin verin.
+- Son kullanıcıların Azure AD kimlik bilgilerini kullanarak WSS 'de kendilerini kimlik doğrulamasına izin verin.
 
-- WSS hesabınızda tanımlanan kullanıcı ve grup düzeyi ilkesi kurallarının uygulanmasını etkinleştirin.
+- WSS hesabınızda tanımlanan Kullanıcı ve Grup düzeyindeki ilke kurallarının uygulanmasını etkinleştirin.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Symantec Web Güvenlik Hizmeti (WSS) ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Symantec Web Security Service (WSS) ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Symantec Web Güvenlik Hizmeti (WSS) tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Symantec Web Security Service (WSS) çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Symantec Web Güvenlik Servisi (WSS) **IDP** başlatılan SSO destekler
+* Symantec Web Security Service (WSS), **IDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>Galeriden Symantec Web Güvenlik Hizmeti (WSS) ekleme
+## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>Galerideki Symantec Web Security Service (WSS) ekleme
 
-Symantec Web Güvenlik Hizmeti'nin (WSS) Azure AD'ye entegrasyonunu yapılandırmak için galeriden Yönetilen SaaS uygulamaları listenize Symantec Web Güvenlik Hizmeti'ni (WSS) eklemeniz gerekir.
+Symantec Web Security hizmeti 'nin (WSS) Azure AD ile tümleştirilmesini yapılandırmak için, galerideki Symantec Web Security Service (WSS) öğesini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Symantec Web Güvenlik Hizmeti (WSS) eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Symantec Web Security hizmeti (WSS) eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Symantec Web Güvenlik Hizmeti (WSS)** yazın, sonuç panelinden **Symantec Web Güvenlik Hizmeti'ni (WSS)** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **Symantec Web Security Service (WSS)** yazın, sonuç panelinden **Symantec Web SECURITY Service (WSS)** öğesini seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde Symantec Web Güvenlik Hizmeti (WSS)](common/search-new-app.png)
+     ![Sonuç listesinde Symantec Web Security Service (WSS)](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD oturum açma işlemini Symantec Web Güvenlik Hizmeti (WSS) ile yapılandırıp test esinizsiniz.
-Tek oturum açmanın işe yaraması için, bir Azure REKLAM kullanıcısı ile Symantec Web Güvenlik Hizmeti'ndeki (WSS) ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına göre Symantec Web Security SERVICE (WSS) ile yapılandırıp test edersiniz.
+Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Symantec Web Security Service (WSS) içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Symantec Web Güvenlik Hizmeti (WSS) ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Symantec Web Security Service (WSS) ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **Symantec Web Güvenlik Hizmeti (WSS) Tek Oturum** Açma'yı yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Symantec Web Güvenlik Hizmeti (WSS) test kullanıcısını oluşturun](#create-symantec-web-security-service-wss-test-user)** - kullanıcının Azure AD gösterimine bağlı Symantec Web Güvenlik Hizmeti'nde (WSS) Britta Simon'ın bir örneğine sahip olun.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **Symantec Web Security Service (WSS) çoklu oturum açmayı yapılandırın** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Symantec Web **[Security Service (WSS) test kullanıcısı oluşturun](#create-symantec-web-security-service-wss-test-user)** . Symantec Web Security SERVICE (WSS) ' de kullanıcının Azure AD gösterimine bağlı bir Britta Simon 'a sahip olacak.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Symantec Web Güvenlik Hizmeti (WSS) ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı Symantec Web Security Service (WSS) ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. **Symantec Web Güvenlik Hizmeti (WSS)** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/) **Symantec Web SECURITY Service (WSS)** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Symantec Web Güvenlik Hizmeti (WSS) Etki Alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![Symantec Web Security Service (WSS) etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusuna bir URL yazın:`https://saml.threatpulse.net:8443/saml/saml_realm`
 
-    b. **Yanıtla URL** metin kutusuna bir URL yazın:`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
+    b. **Yanıt URL** 'si metin kutusuna bir URL yazın:`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
-    > [Symantec Web Güvenlik Hizmeti (WSS) İstemci destek ekibine](https://www.symantec.com/contact-us) başvurun, **Tanımlayıcı** ve **Yanıt URL'si** için değerler bazı nedenlerden dolayı çalışmıyor... Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > [Symantec Web Security Service (WSS) istemci desteği ekibine](https://www.symantec.com/contact-us) başvurun f **tanımlayıcı** için değerler ve **yanıt URL 'si** bazı nedenlerle çalışmıyor. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-### <a name="configure-symantec-web-security-service-wss-single-sign-on"></a>Symantec Web Güvenlik Hizmeti (WSS) Tek Oturum Açma'yı Yapılandır
+### <a name="configure-symantec-web-security-service-wss-single-sign-on"></a>Symantec Web Security Service (WSS) çoklu oturum açmayı yapılandırma
 
-Symantec Web Güvenlik Hizmeti (WSS) tarafında tek oturum açma yapmak için WSS çevrimiçi belgelerine bakın. İndirilen **Federasyon Metadata XML** WSS portalına aktarılmak gerekir. WSS portalındaki yapılandırma yla ilgili yardıma ihtiyacınız varsa [Symantec Web Güvenlik Hizmeti (WSS) destek ekibine](https://www.symantec.com/contact-us) başvurun.
+Symantec Web Security Service (WSS) tarafında çoklu oturum açmayı yapılandırmak için WSS çevrimiçi belgelerine bakın. İndirilen **Federasyon meta VERI XML** dosyası WSS portalına aktarılmalıdır. WSS portalındaki yapılandırmayla ilgili yardıma ihtiyacınız varsa [Symantec Web Security Service (WSS) destek ekibine](https://www.symantec.com/contact-us) başvurun.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Symantec Web Güvenlik Hizmeti'ne (WSS) erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Symantec Web Security Service (WSS) erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirirsiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin, ardından **Symantec Web Güvenlik Hizmeti'ni (WSS)** seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve **Symantec Web Security hizmeti (WSS)** öğesini seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Symantec Web Güvenlik Hizmeti (WSS)** yazın ve seçin.
+2. Uygulamalar listesinde **Symantec Web Security Service (WSS)** yazın ve seçin.
 
-    ![Uygulamalar listesindeki Symantec Web Güvenlik Hizmeti (WSS) bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesinde Symantec Web Security Service (WSS) bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-symantec-web-security-service-wss-test-user"></a>Symantec Web Güvenlik Hizmeti (WSS) test kullanıcısı oluşturma
+### <a name="create-symantec-web-security-service-wss-test-user"></a>Symantec Web Security Service (WSS) test kullanıcısı oluştur
 
-Bu bölümde, Symantec Web Güvenlik Hizmeti'nde (WSS) Britta Simon adında bir kullanıcı oluşturursunuz. İlgili son kullanıcı adı WSS portalında el ile oluşturulabilir veya Azure REKLAMı'nda verilen kullanıcıların/grupların birkaç dakika (~15 dakika) sonra WSS portalına senkronize olmasını bekleyebilirsiniz. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir. Web sitelerine göz atmak için kullanılacak olan son kullanıcı makinesinin genel IP adresinin Desymantec Web Güvenlik Hizmeti (WSS) portalında sağlanması gerekir.
+Bu bölümde Symantec Web Security Service (WSS) ' de Britta Simon adlı bir Kullanıcı oluşturacaksınız. İlgili Son Kullanıcı adı, WSS portalında el ile oluşturulabilir veya Azure AD 'de sağlanan Kullanıcı/grupların, birkaç dakika sonra (yaklaşık 15 dakika) WSS portalı ile eşitlenmesi için bekleyebilirsiniz. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir. Web sitelerine Gözatılacak olan Son Kullanıcı makinesinin genel IP adresi, Symantec Web Security Service (WSS) portalında da sağlanmalıdır.
 
 > [!NOTE]
-> Makinenizin genel Ipadresini almak için [lütfen buraya](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) tıklayın.
+> Makinenizin genel IPAddress değerini almak için lütfen [buraya](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, WSS hesabınızı SAML kimlik doğrulaması için Azure AD'nizi kullanacak şekilde yapılandırdığınıza göre tek oturum açma işlevini sınayacaksınız.
+Bu bölümde, artık WSS hesabınızı, SAML kimlik doğrulaması için Azure AD 'yi kullanacak şekilde yapılandırdığınıza göre çoklu oturum açma işlevlerini test edeceksiniz.
 
-Web tarayıcınızı WSS'ye proxy trafiği yle yapılandırıldıktan sonra, web tarayıcınızı açtığınızda ve bir siteye göz atmaya çalıştığınızda Azure oturum açma sayfasına yönlendirilirsiniz. Azure REKLAMında (yani BrittaSimon'da) ve ilişkili parolada sağlanan test son kullanıcının kimlik bilgilerini girin. Kimlik doğrulaması alındıktan sonra, seçtiğiniz web sitesine göz atabilirsiniz. WsS tarafında BrittaSimon'Un belirli bir siteye gezinmesini engellemek için bir ilke kuralı oluşturursanız, o siteye kullanıcı BrittaSimon olarak göz atmaya çalıştığınızda WSS blok sayfasını görmeniz gerekir.
+Web tarayıcınızı WSS 'ye proxy trafiğine yapılandırdıktan sonra, Web tarayıcınızı açıp bir siteye gözatmaya çalıştığınızda Azure oturum açma sayfasına yönlendirilirsiniz. Azure AD 'de (yani, BrittaSimon) ve ilişkili parolada sağlanan test son kullanıcısının kimlik bilgilerini girin. Kimliği doğrulandıktan sonra seçtiğiniz Web sitesine gözatabileceksiniz. Bu sitede belirli bir siteye gözatmasını engellemek için WSS tarafında bir ilke kuralı oluşturmanız gerekir, bu siteye Kullanıcı Brittasıas olarak gözatmaya çalıştığınızda WSS blok sayfasını görmeniz gerekir.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

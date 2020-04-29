@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71837541"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -29,9 +29,9 @@ import os, requests, uuid, json
 
 İlk açıklama Python yorumlayıcısına UTF-8 kodlaması kullanması gerektiğini bildirir. Ardından bir ortam değişkeninden abonelik anahtarınızı okumak, HTTP isteğini yapılandırmak, benzersiz bir tanımlayıcı oluşturmak ve Translator Metin Çevirisi API'si tarafından döndürülen JSON yanıtını işlemek için gereken modüller içeri aktarılır.
 
-## <a name="set-the-subscription-key-endpoint-and-path"></a>Abonelik anahtarını, bitiş noktasını ve yolu ayarlama
+## <a name="set-the-subscription-key-endpoint-and-path"></a>Abonelik anahtarını, uç noktayı ve yolu ayarla
 
-Bu örnek, Çevirmen Metni abonelik anahtarınızı ve bitiş noktanızı `TRANSLATOR_TEXT_KEY` `TRANSLATOR_TEXT_ENDPOINT`ortam değişkenlerinden okumaya çalışacaktır: ve . Ortam değişkenlerini bilmiyorsanız, dizeleri olarak `subscription_key` ayarlayabilir ve `endpoint` koşullu ifadeleri yorumlayabilirsiniz.
+Bu örnek, ortam değişkenlerinden Translator Metin Çevirisi abonelik anahtarınızı ve uç noktasını okumaya çalışacaktır: `TRANSLATOR_TEXT_KEY` ve. `TRANSLATOR_TEXT_ENDPOINT` Ortam değişkenlerine alışkın değilseniz, bir dize ayarlayabilir ve koşullu deyimleri açıklama `subscription_key` `endpoint` olarak ayarlayabilirsiniz.
 
 Bu kodu projenize kopyalayın:
 
@@ -47,7 +47,7 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Çevirmen Metni genel bitiş noktası `endpoint`olarak ayarlanır. `path`, `detect` rotasını ayarlar ve API sürüm 3’ü kullanmak istediğimizi belirler.
+Translator Metin Çevirisi genel uç noktası olarak ayarlanır `endpoint`. `path`, `detect` rotasını ayarlar ve API sürüm 3’ü kullanmak istediğimizi belirler.
 
 >[!NOTE]
 > Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator Metin Çevirisi API’si 3.0: Algılama](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
@@ -71,7 +71,7 @@ headers = {
 }
 ```
 
-Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek parametrelerinize `Ocp-Apim-Subscription-Region` de eklemeniz gerekir. [Çoklu hizmet aboneliği ile kimlik doğrulama hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-detect-text-language"></a>Metini dilini algılamak için istek oluşturma
 
@@ -112,10 +112,10 @@ Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam örnek kodu [GitHub](http
 
 ## <a name="sample-response"></a>Örnek yanıt
 
-Örneği çalıştırdıktan sonra terminale yazdırılan aşağıdakileri görmeniz gerekir:
+Örneği çalıştırdıktan sonra, şu şekilde terminalden yazdırılmış olduğunu görmeniz gerekir:
 
 > [!NOTE]
-> Bu dil listesinde ülke/bölge [kısaltmasını](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)bulun.
+> Bu [diller listesinde](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)ülke/bölge kısaltmasını bulun.
 
 ```json
 [
@@ -148,7 +148,7 @@ Abonelik anahtarınızı programınıza sabit kodladıysanız, bu hızlı başla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
+Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

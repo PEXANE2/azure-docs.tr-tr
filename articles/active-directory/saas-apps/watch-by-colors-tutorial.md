@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Renklere Göre İzle ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Watch by Colors arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: renklerle Izle ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Renklerle Azure Active Directory ve Izleme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,178 +17,178 @@ ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d8fdc8ba2337a3be49a4645e48a45120fb0ccec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72026098"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Öğretici: Renklere Göre İzle ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Öğretici: renklerle Izleme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, Renklere Göre İzle'yi Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Renklere Göre İzle'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Azure Active Directory (Azure AD) ile Izlemeyi renklerle nasıl tümleştirileceğini öğreneceksiniz. Izlemeyi renklerle Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Renklere Göre İzle'ye erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Renklere Göre İzleme kullanabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de, renklere göre Izleme erişimine sahip olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla renkler ile Izlemek için otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Renklere göre tek oturum açma (SSO) özellikli aboneliği izleyin.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Renklerle tek oturum açma (SSO) özellikli aboneliğe göre izleyin.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Watch by **Colors, SP ve IDP** tarafından başlatılan SSO'ya destek veriyor
+* Renklere göre izleme **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-watch-by-colors-from-the-gallery"></a>Galeriden Renklere Göre İzle Ekleme
+## <a name="adding-watch-by-colors-from-the-gallery"></a>Galeriden renklere göre Izleme ekleme
 
-Watch by Colors'ın Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Renklere Göre İzle'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Watch 'un renkler tarafından Azure AD 'ye tümleştirilmesini yapılandırmak için, galerisindeki renkleri, yönetilen SaaS uygulamaları listenize göre Izle eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Renklere Göre İzle** yazın.
-1. Sonuçlar panelinden **Renklere Göre İzle'yi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **renklere göre izle** yazın.
+1. Sonuçlar panelinden **renklere göre izle** ' yi seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Azure AD oturumaçmayı Renklere Göre İzle'ye göre yapılandırma ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Renklere göre Izleme için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Renklere Göre İzle ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Renklere Göre İzle'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu, renklerle izleme ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Watch 'da ilgili Kullanıcı arasında renklerle bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO'yu Renklere Göre İzle ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu, Izleme renkleriyle birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için **[İzlemeyi Renkler SSO'ya göre yapılandırın.](#configure-watch-by-colors-sso)**
-    1. **[Renklere Göre İzle testi kullanıcısı oluşturun](#create-watch-by-colors-test-user)** - kullanıcının Azure AD gösterimine bağlı Renklere Göre İzle'deki B.Simon'ın bir örneğine sahip olmak için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Renkleri, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[renklere göre Izle SSO 'Yu yapılandırın](#configure-watch-by-colors-sso)** .
+    1. Kullanıcıların Azure AD gösterimine bağlı olan renklere göre Watch 'da B. Simon 'a göre izleme **[oluşturun](#create-watch-by-colors-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. **Renklere Göre İzle** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/) **renklerle izle** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL'ler azure ile önceden doldurulmuş durumdadır. Kullanıcının **Kaydet** düğmesini tıklatarak yapılandırmayı kaydetmesi gerekir.
+1. **Temel SAML yapılandırması** bölümünde, uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
-1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://app.colorscorporation.com/login`
+    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.colorscorporation.com/login`
 
-1. **SAML ile Tek Oturum** Açma sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Renklere Göre İzle'ye erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, renklere göre Izleme erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Renklere Göre İzle'yi**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **renklere göre izle**' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-watch-by-colors-sso"></a>İzle Renklere Göre YapılandırSın SSO
+## <a name="configure-watch-by-colors-sso"></a>Renklere göre gözcü yapılandırma SSO 'SU
 
-1. Renklere Göre İzle içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. Renklere göre Izleme içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
-2. Tarayıcıya uzantı ekledikten sonra, Renklere Göre **İzle kurulumuna** tıklayın ve sizi Renklere Göre İzle uygulamasına yönlendirecektir. Buradan, Renklere Göre İzle'de oturum açabilmek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-5 adımlarını otomatikleştirecektir.
+2. Tarayıcıya Uzantı eklendikten sonra, **kuruluma göre izleme** ' ye tıklayın, sizi renklere göre izle uygulamasına yönlendirir. Buradan, renklerle Izlemek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-3. Renklere göre izle'yi el ile kurmak istiyorsanız, yeni bir web tarayıcısı penceresi açın ve Watch by Colors şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Izlemeyi renklerle el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve renkler şirket sitesini yönetici olarak Izleyin ve aşağıdaki adımları gerçekleştirin:
 
-4. Sayfanın sağ üst köşesinde **profil** > **Hesap Ayarları** > **SSO (Tek Oturum Açma)** tıklayın.
+4. Sayfanın sağ üst köşesinde **profil** > **Hesap ayarları** > **SSO (çoklu oturum açma)** seçeneğine tıklayın.
 
-    ![Renklere göre izlemeyi izleyin yapılandırması](./media/watch-by-colors-tutorial/config01.png)
+    ![Renklerin yapılandırmasına göre izleme](./media/watch-by-colors-tutorial/config01.png)
 
-5. **SSO (Tek Oturum Açma)** sayfasında aşağıdaki adımları gerçekleştirin:
+5. **SSO (çoklu oturum açma)** sayfasında, aşağıdaki adımları gerçekleştirin:
 
-    ![Renklere göre izlemeyi izleyin yapılandırması](./media/watch-by-colors-tutorial/config02.png)
+    ![Renklerin yapılandırmasına göre izleme](./media/watch-by-colors-tutorial/config02.png)
 
-    a. **SAML'yi** **AÇIYA**İDEE'yi geçiş e.
+    a. **SAML etkinleştirme** 'yi **Açık**olarak değiştirin.
 
-    b. **URL** metin kutusuna, Azure portalından kopyaladığınız **Federasyon Metaveri Url'sini**yapıştırın.
+    b. **URL** metin kutusunda, Azure Portal kopyaladığınız **Federasyon meta veri URL 'sini**yapıştırın.
 
-    c. **İçe Aktar'ı**tıklatın, ardından aşağıdaki alanlar sayfada otomatik olarak doldurulur.
+    c. **Içeri aktar**' a tıklayın, ardından aşağıdaki alanlar sayfada otomatik olarak doldurulur.
 
-    d. **Kaydet**'e tıklayın.
+    d. **Kaydet**’e tıklayın.
 
-### <a name="create-watch-by-colors-test-user"></a>Renklere Göre İzle test kullanıcısı oluştur
+### <a name="create-watch-by-colors-test-user"></a>Renklere göre Izleme test kullanıcısı oluştur
 
-Azure AD kullanıcılarının Renklere Göre İzle'de oturum açabilmeleri için Renklere Göre İzle'ye göre etkinleştirilmeleri gerekir. Renklere Göre İzle'de, sağlama el ile bir görevdir.
+Azure AD kullanıcılarının renklerle Izlemek üzere oturum açmasını sağlamak için, renkler tarafından Watch 'a sağlanması gerekir. Renklerle görüntüleme bölümünde, sağlama işlemi el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Güvenlik Yöneticisi Olarak Renklere Göre İzlemek için oturum açın.
+1. Renklerle bir güvenlik yöneticisi olarak Izlemek için oturum açın.
 
-1. Sayfanın sağ üst köşesinde, kullanıcı**Users** > **ekle** **profiline** > tıklayın.
+1. Sayfanın sağ üst köşesinde **profil** > **kullanıcıları** > **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Renklere göre izlemeyi izleyin yapılandırması](./media/watch-by-colors-tutorial/config03.png)
+    ![Renklerin yapılandırmasına göre izleme](./media/watch-by-colors-tutorial/config03.png)
 
-1. Kullanıcı **Ayrıntıları** sayfasında aşağıdaki adımları gerçekleştirin:
+1. **Kullanıcı ayrıntıları** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Renklere göre izlemeyi izleyin yapılandırması](./media/watch-by-colors-tutorial/config04.png)
+    ![Renklerin yapılandırmasına göre izleme](./media/watch-by-colors-tutorial/config04.png)
 
-    a. **Ad metin** kutusuna, **B**gibi kullanıcının ilk adını girin.
+    a. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
 
-    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcının soyadını girin.
+    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
 
-    c. **E-posta** metin kutusuna, gibi `B.Simon@contoso.com`kullanıcının e-posta girin.
+    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com`.
 
     d. **Parola** metin kutusuna parolayı girin.
 
-    e. Kuruluşunuza göre **Hesap İzinleri'ni** seçin.
+    e. Kuruluşunuza göre **hesap izinlerini** seçin.
 
-    f. **Kaydet**'e tıklayın.
+    f. **Kaydet**’e tıklayın.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Renklere Göre İzle'yi tıklattığınızda, SSO'yu kurduğunuz Renklere Göre İzle'de otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde renklere göre Izle kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız renklere göre Izlemek için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Renklere Göre İzle'yi deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile renklerle Izlemeyi deneyin](https://aad.portal.azure.com/)
 

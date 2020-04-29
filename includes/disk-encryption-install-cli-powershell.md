@@ -9,61 +9,61 @@ ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
 ms.openlocfilehash: 05794a046fdcb15a91145a75717a6a454d15a8da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72511532"
 ---
-Azure Disk Şifrelemesi Azure [CLI](/cli/azure) ve [Azure PowerShell](/powershell/azure/new-azureps-module-az)aracılığıyla etkinleştirilebilir ve yönetilebilir. Bunu yapmak için araçları yerel olarak yüklemeniz ve Azure aboneliğinize bağlanmanız gerekir.
+Azure disk şifrelemesi, [Azure CLI](/cli/azure) ve [Azure PowerShell](/powershell/azure/new-azureps-module-az)aracılığıyla etkinleştirilebilir ve yönetilebilir. Bunu yapmak için araçları yerel olarak yüklemeli ve Azure aboneliğinize bağlamanız gerekir.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI 2.0,](/cli/azure) Azure kaynaklarını yönetmek için bir komut satırı aracıdır. CLI, verileri esnek bir şekilde sorgulamak, engelleme olmayan işlemler olarak uzun süren işlemleri desteklemek ve komut dosyası yürütmeyi kolaylaştırmak için tasarlanmıştır. [Azure CLI'yi](/cli/azure/install-azure-cli?view=azure-cli-latest)yükleyin'deki adımları izleyerek yerel olarak yükleyebilirsiniz.
+[Azure clı 2,0](/cli/azure) , Azure kaynaklarını yönetmeye yönelik bir komut satırı aracıdır. CLı, verileri esnek bir şekilde sorgulamak, engelleyici olmayan işlemler olarak uzun süreli işlemleri desteklemek ve komut dosyasını kolay hale getirmek için tasarlanmıştır. [Azure CLI 'Yı yüklemeye](/cli/azure/install-azure-cli?view=azure-cli-latest)ilişkin adımları izleyerek yerel olarak yükleyebilirsiniz.
 
-[Azure CLI ile Azure hesabınızda oturum açmak](/cli/azure/authenticate-azure-cli)için az [giriş](/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanın.
+Azure [CLI Ile Azure hesabınızda oturum açmak](/cli/azure/authenticate-azure-cli)için [az Login](/cli/azure/reference-index?view=azure-cli-latest#az-login) komutunu kullanın.
 
 ```azurecli
 az login
 ```
 
-Oturum açacak bir kiracı seçmek istiyorsanız şunları kullanın:
+Oturum açmak için bir kiracı seçmek istiyorsanız şunu kullanın:
     
 ```azurecli
 az login --tenant <tenant>
 ```
 
-Birden çok aboneliğiniz varsa ve belirli bir abonelik belirtmek istiyorsanız, az hesap listesi yle abonelik [listenizi](/cli/azure/account#az-account-list) alın ve [az hesap kümesi](/cli/azure/account#az-account-set)yle belirtin.
+Birden çok aboneliğiniz varsa ve belirli bir tane belirtmek istiyorsanız, [az Account List](/cli/azure/account#az-account-list) komutuyla abonelik listenizi alın ve [az Account set](/cli/azure/account#az-account-set)ile belirtin.
      
 ```azurecli
 az account list
 az account set --subscription "<subscription name or ID>"
 ```
 
-Daha fazla bilgi için Azure [CLI 2.0 ile başlayın' a](/cli/azure/get-started-with-azure-cli)bakın. 
+Daha fazla bilgi için bkz. [Azure CLI ile çalışmaya başlama 2,0](/cli/azure/get-started-with-azure-cli). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell az modülü,](/powershell/azure/new-azureps-module-az) Azure kaynaklarınızı yönetmek için [Azure Kaynak Yöneticisi](/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir cmdlets kümesi sağlar. [Azure Cloud Shell](/azure/cloud-shell/overview)ile tarayıcınızda kullanabilirsiniz veya Azure [PowerShell modüllerini yükleyin](/powershell/azure/install-az-ps)yönergelerini kullanarak yerel makinenize yükleyebilirsiniz. 
+[Azure PowerShell az Module](/powershell/azure/new-azureps-module-az) , Azure kaynaklarınızı yönetmek için [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir cmdlet kümesi sağlar. Bunu tarayıcınızda [Azure Cloud Shell](/azure/cloud-shell/overview)ile kullanabilir veya [Azure PowerShell modülünü yüklemeye](/powershell/azure/install-az-ps)ilişkin yönergeleri kullanarak yerel makinenize yükleyebilirsiniz. 
 
-Yerel olarak zaten yüklediyseniz, Azure Disk Şifrelemesini yapılandırmak için Azure PowerShell SDK sürümünün en son sürümünü kullandığınızdan emin olun. [Azure PowerShell sürümünün](https://github.com/Azure/azure-powershell/releases)en son sürümünü indirin.
+Yerel olarak zaten yüklüyse, Azure disk şifrelemesini yapılandırmak için Azure PowerShell SDK sürümünün en son sürümünü kullandığınızdan emin olun. [Azure PowerShell sürümünün](https://github.com/Azure/azure-powershell/releases)en son sürümünü indirin.
 
-[Azure PowerShell ile Azure hesabınızda oturum açabilmek](/powershell/azure/authenticate-azureps?view=azps-2.5.0)için [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) cmdlet'ini kullanın.
+[Azure hesabınızda Azure PowerShell oturum açmak](/powershell/azure/authenticate-azureps?view=azps-2.5.0)için [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) cmdlet 'ini kullanın.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Birden çok aboneliğiniz varsa ve bir tane sini belirtmek istiyorsanız, bunları listelemek için [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) cmdlet'ini kullanın ve ardından [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) cmdlet'i ekleyin:
+Birden çok aboneliğiniz varsa ve bir tane belirtmek istiyorsanız, [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) cmdlet 'ini kullanarak bunları listeleyin ve ardından [set-azcontext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) cmdlet 'ini kullanın:
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>
 ```
 
-[Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) cmdlet'inçalıştırıldığı, doğru aboneliğin seçildiğini doğrular.
+[Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) cmdlet 'ini çalıştırmak, doğru aboneliğin seçildiğini doğrular.
 
-Azure Disk Şifreleme cmdletlerinin yüklü olduğunu doğrulamak için [Get-command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) cmdlet'ini kullanın:
+Azure disk şifrelemesi cmdlet 'lerinin yüklendiğini doğrulamak için [Get-Command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) cmdlet 'ini kullanın:
      
 ```powershell
 Get-command *diskencryption*
 ```
-Daha fazla bilgi için Azure [PowerShell'e başlarken](/powershell/azure/get-started-azureps)bakın. 
+Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya](/powershell/azure/get-started-azureps)başlama. 
