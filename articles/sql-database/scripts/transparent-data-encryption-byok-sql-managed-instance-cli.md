@@ -1,6 +1,6 @@
 ---
-title: CLI örneği- BYOK TDE'yi etkinleştir - Azure SQL Veritabanı Yönetilen Örneği
-description: PowerShell'i kullanarak istirahatte şifreleme için BYOK Saydam Veri Şifrelemesini (TDE) kullanmaya başlamak için Azure SQL Yönetilen Örneği'ni nasıl yapılandırarak nasıl yapılandırılayarılamayı öğrenin.
+title: CLı örneği-Azure SQL veritabanı yönetilen örneği için BYOK TDE 'yı etkinleştirin
+description: Azure SQL yönetilen örneğini, PowerShell kullanarak bekleyen şifreleme için BYOK Saydam Veri Şifrelemesi (TDE) kullanmaya başlamak üzere nasıl yapılandıracağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,15 +12,15 @@ ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
 ms.openlocfilehash: 8e8c0e2db1f87cca52c44d33ce14d7ce4f00e895
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061727"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Azure Anahtar Kasası'ndan kendi anahtarınızı kullanarak Yönetilen Örnekte Saydam Veri Şifrelemeyi Yönetin
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Yönetilen bir örnekteki Saydam Veri Şifrelemesi, Azure Key Vault kendi anahtarınızı kullanarak yönetin
 
-Bu Azure CLI komut dosyası örneği, Azure Anahtar Kasası'ndan bir anahtar kullanarak Azure SQL Yönetilen Örneği için müşteri tarafından yönetilen anahtarla Saydam Veri Şifrelemesini (TDE) yapılandırır. Bu genellikle TDE için Kendi Anahtarınızı Getir senaryosu olarak adlandırılır. Müşteri tarafından yönetilen anahtarla TDE hakkında daha fazla bilgi edinmek için TDE'ye bakın [Kendi Anahtarınızı Azure SQL'e Getirin.](../transparent-data-encryption-byok-azure-sql.md)
+Bu Azure CLı betik örneği, Azure Key Vault bir anahtar kullanarak Azure SQL yönetilen örneği için müşteri tarafından yönetilen anahtarla Saydam Veri Şifrelemesi (TDE) yapılandırır. Bu, genellikle TDE Kendi Anahtarını Getir senaryosu olarak adlandırılır. Müşteri tarafından yönetilen anahtarla TDE hakkında daha fazla bilgi edinmek için bkz. [tde kendi anahtarını getir Azure SQL 'e](../transparent-data-encryption-byok-azure-sql.md).
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -28,7 +28,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-Varolan yönetilen [bir](sql-database-create-configure-managed-instance-cli.md)Örnek, bkz.
+Mevcut bir yönetilen örnek, bkz. Azure [CLI kullanarak Azure SQL veritabanı yönetilen örneği oluşturma](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -52,14 +52,14 @@ Kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdak
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
-| [az sql db](/cli/azure/sql/db) | Veritabanı komutları. |
-| [az sql failover-group](/cli/azure/sql/failover-group) | Failover grup komutları. |
+| [az SQL DB](/cli/azure/sql/db) | Veritabanı komutları. |
+| [az SQL yük devretme-Grup](/cli/azure/sql/failover-group) | Yük devretme grubu komutları. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

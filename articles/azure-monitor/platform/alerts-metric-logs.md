@@ -1,88 +1,88 @@
 ---
-title: Azure Monitör'deki Günlükler için Metrik Uyarılar Oluşturma
-description: Popüler günlük analizi verilerinde neredeyse gerçek zamanlı metrik uyarıları oluşturma konusunda öğretici.
+title: Azure Izleyici 'de Günlükler için ölçüm uyarıları oluşturma
+description: Popüler Günlük Analizi verilerinde neredeyse gerçek zamanlı ölçüm uyarıları oluşturma hakkında öğretici.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.subservice: alerts
 ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055172"
 ---
-# <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitör'deki Günlükler için Metrik Uyarılar Oluşturma
+# <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Izleyici 'de Günlükler için ölçüm uyarıları oluşturma
 
 ## <a name="overview"></a>Genel Bakış
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitör, [klasik uyarılara](../../azure-monitor/platform/alerts-classic-portal.md)göre avantajları olan [metrik uyarı türünü](../../azure-monitor/platform/alerts-metric-near-real-time.md) destekler. Ölçümler, Azure [hizmetlerinin büyük listesi](../../azure-monitor/platform/metrics-supported.md)için kullanılabilir. Bu makalede, kaynak için bir alt küme `Microsoft.OperationalInsights/workspaces`(yani) kullanımını açıklar - .
+Azure Izleyici, [Klasik uyarılarla](../../azure-monitor/platform/alerts-classic-portal.md)avantajları olan [ölçüm uyarı türünü](../../azure-monitor/platform/alerts-metric-near-real-time.md) destekler. Ölçümler, [büyük Azure hizmetleri listesi](../../azure-monitor/platform/metrics-supported.md)için kullanılabilir. Bu makalede, kaynağı için bir alt küme (yani) kullanımı açıklanmaktadır `Microsoft.OperationalInsights/workspaces`.
 
-Azure'daki veya şirket içi kaynaklar da dahil olmak üzere Günlüklerden Ölçümlerin bir parçası olarak metrik olarak çıkarılan popüler Log Analytics günlüklerinde metrik uyarıları kullanabilirsiniz. Desteklenen Log Analytics çözümleri aşağıda listelenmiştir:
+Azure 'daki veya Şirket içindeki kaynaklar dahil olmak üzere günlüklerdeki ölçümlerin bir parçası olarak ayıklanan popüler Log Analytics günlüklerinde ölçüm uyarılarını kullanabilirsiniz. Desteklenen Log Analytics çözümleri aşağıda listelenmiştir:
 
 - Windows & Linux makineleri için [performans sayaçları](../../azure-monitor/platform/data-sources-performance-counters.md)
-- [Ajan Sağlık için Kalp Atışı kayıtları](../../azure-monitor/insights/solution-agenthealth.md)
-- [Yönetim](../../automation/automation-update-management.md) kayıtlarını güncelleştirme
+- [Aracı Durumu için sinyal kayıtları](../../azure-monitor/insights/solution-agenthealth.md)
+- [Yönetim kayıtlarını Güncelleştir](../../automation/automation-update-management.md)
 - [Olay veri](../../azure-monitor/platform/data-sources-windows-events.md) günlükleri
 
-Azure'da sorgu tabanlı [Günlük Uyarıları](../../azure-monitor/platform/alerts-log.md) üzerinden **Günlükler için Metrik Uyarıları** kullanmanın birçok avantajı vardır; bazıları aşağıda listelenmiştir:
+Azure 'da sorgu tabanlı [günlük uyarıları](../../azure-monitor/platform/alerts-log.md) üzerinde **Günlükler için ölçüm uyarılarını** kullanmanın birçok avantajı vardır; Bunlardan bazıları aşağıda listelenmiştir:
 
-- Metrik Uyarılar, aynı şeyi sağlamak için günlük kaynağından gelen günlükler için neredeyse gerçek zamanlı izleme yeteneği ve Metrik Uyarılar sunar.
-- Metrik Uyarılar durum ludur - yalnızca uyarı ateşlendiğinde bir kez ve uyarı çözüldüğünde bir kez bildirme; stateless ve uyarı koşulu karşılanırsa her aralıkta ateş tutmak Log uyarıları, aksine.
-- Günlük için Metrik Uyarılar, Bilgisayarlar, İşletim Sistemi Türü, vb. gibi belirli değerlere filtreleme sağlayan birden çok boyut sağlar; analitik sorgu kaleme gerek kalmadan.
+- Ölçüm uyarıları, aynı olduğundan emin olmak için günlük kaynak çatalları verilerine yönelik neredeyse gerçek zamanlı izleme özelliği ve ölçüm uyarıları sunar.
+- Ölçüm uyarıları durum bilgisi-yalnızca uyarı tetiklendiğinde bir kez ve uyarı çözüldüğünde bir kez bildiriliyor; Günlük uyarılarının aksine, durum bilgisi olmayan ve uyarı koşulu karşılanırsa her aralıkta tetikleme devam eden.
+- Günlük için ölçüm uyarıları birden çok boyut sağlar ve bilgisayarlar, işletim sistemi türü vb. daha basit gibi belirli değerlere filtre sağlar. Analytics 'te penkenme sorgusuna gerek kalmadan.
 
 > [!NOTE]
-> Belirli metrik ve/veya boyut yalnızca seçilen dönemde veri varsa gösterilir. Bu ölçümler, Azure Günlük Analizi çalışma alanlarına sahip müşteriler için kullanılabilir.
+> Belirli bir ölçüm ve/veya boyut yalnızca seçili dönemde verileri varsa gösterilir. Bu ölçümler, Azure Log Analytics çalışma alanları olan müşteriler için kullanılabilir.
 
 ## <a name="metrics-and-dimensions-supported-for-logs"></a>Günlükler için desteklenen ölçümler ve boyutlar
 
- Metrik uyarılar, boyutları kullanan ölçümler için uyarıyı destekler. Ölçümünüzü doğru düzeye filtrelemek için boyutları kullanabilirsiniz. [Log Analytics çalışma alanlarından](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) Günlükler için desteklenen ölçümlerin tam listesi listelenir; desteklenen çözümler arasında.
+ Ölçüm uyarıları, boyutları kullanan ölçümler için uyarı vermeyi destekler. Ölçülerinizi doğru düzeye filtrelemek için boyutları kullanabilirsiniz. [Log Analytics çalışma alanlarındaki](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) Günlükler için desteklenen ölçümlerin tam listesi listelenir; , desteklenen çözümler genelinde.
 
 > [!NOTE]
-> [Azure Monitor - Ölçümler](../../azure-monitor/platform/metrics-charts.md)üzerinden Bir Günlük Analizi çalışma alanından çıkarılan desteklenen bir ölçütünü görüntülemek için, bu belirli metrikte bir günlük için metrik uyarı oluşturulması gerekir. Günlükler için metrik uyarıda seçilen boyutlar - yalnızca Azure Monitor - Ölçümler üzerinden keşif için görünür.
+> [Azure izleyici-ölçümler](../../azure-monitor/platform/metrics-charts.md)aracılığıyla bir Log Analytics çalışma alanından ayıklanan desteklenen bir ölçümü görüntülemek için, bu belirli ölçüm üzerinde günlük için bir ölçüm uyarısı oluşturulmalıdır. Günlükler için ölçüm uyarısında seçilen boyutlar-yalnızca Azure Izleyici ölçümleri aracılığıyla araştırma için görünür.
 
-## <a name="creating-metric-alert-for-log-analytics"></a>Log Analytics için metrik uyarı oluşturma
+## <a name="creating-metric-alert-for-log-analytics"></a>Log Analytics için ölçüm uyarısı oluşturuluyor
 
-Popüler günlüklerden gelen metrik veriler, Log Analytics'te işlenmeden önce Azure Monitor - Ölçümler'e aktarılır. Bu, kullanıcıların Metrik platformun ve metrik uyarının özelliklerinden yararlanabına olanak tanır - 1 dakikagibi düşük sıklıkta uyarılar da dahil.
-Aşağıda günlükleri için bir metrik uyarı oluşturma aracıdır.
+Popüler günlüklere ait ölçüm verileri, Azure Izleyici-ölçümler ' de Log Analytics işlenmeden önce gönderilir. Bu, kullanıcıların ölçüm platformunun özelliklerinden ve ölçüm uyarısından yararlanmasını sağlar ve 1 dakikalık bir sıklık süresi ile uyarılar içeren uyarılar vardır.
+Günlükler için bir ölçüm uyarısı taslağı oluşturma yolları aşağıda listelenmiştir.
 
-## <a name="prerequisites-for-metric-alert-for-logs"></a>Günlükler için Metrik Uyarı için Ön koşullar
+## <a name="prerequisites-for-metric-alert-for-logs"></a>Günlükler için ölçüm uyarısı önkoşulları
 
-Log Analytics verilerinde toplanan Günlükler için Metrik çalışmadan önce aşağıdakilerin ayarlanıp kullanılabilir olması gerekir:
+Log Analytics verilerinde toplanan Günlükler için ölçüm öncesinde, aşağıdakiler ayarlanmalıdır ve kullanılabilir olmalıdır:
 
-1. **Active Log Analytics Workspace**: Geçerli ve etkin bir Log Analytics çalışma alanı bulunmalıdır. Daha fazla bilgi için bkz. [Azure portalında Bir Günlük Analizi Çalışma Alanı Oluştur.](../../azure-monitor/learn/quick-create-workspace.md)
-2. **Aracı, Log Analytics Workspace için yapılandırılmıştır**: Aracının, önceki adımda kullanılan Log Analytics Çalışma Alanına veri göndermek için Azure VM'leri (ve/veya) şirket içi VM'leri için yapılandırılması gerekir. Daha fazla bilgi için [Bkz. Log Analytics - Agent Overview](../../azure-monitor/platform/agents-overview.md).
-3. **Desteklenen Log Analytics Çözümleri yüklenir**: Log Analytics çözümü yapılandırılmalı ve Log Analytics çalışma alanına veri gönderilmelidir - desteklenen çözümler [Windows & Linux için Performans sayaçlarıdır,](../../azure-monitor/platform/data-sources-performance-counters.md)Ajan Sağlık için Heartbeat [kayıtları,](../../azure-monitor/insights/solution-agenthealth.md) [Güncelleme yönetimi](../../automation/automation-update-management.md)ve [Olay verileridir.](../../azure-monitor/platform/data-sources-windows-events.md)
-4. **Günlük göndermek için yapılandırılan Log Analytics çözümleri**: Log Analytics çözümü, [Log Analytics çalışma alanları için desteklenen ölçümlere](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) karşılık gelen gerekli günlüklere/verilere sahip olmalıdır. Örneğin, *% Kullanılabilir Bellek* sayacı için önce Performans [sayaçları](../../azure-monitor/platform/data-sources-performance-counters.md) çözümünde yapılandırılmalıdır.
+1. **Etkin Log Analytics çalışma alanı**: geçerli ve etkin bir Log Analytics çalışma alanı bulunmalıdır. Daha fazla bilgi için bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md).
+2. **Aracı Log Analytics çalışma alanı için yapılandırılmış**: Azure VM 'ler (ve/veya) Şirket Içi VM 'ler için, önceki adımda kullanılan Log Analytics çalışma alanına veri göndermek üzere aracının yapılandırılması gerekir. Daha fazla bilgi için bkz. [Log Analytics aracısına genel bakış](../../azure-monitor/platform/agents-overview.md).
+3. **Desteklenen Log Analytics çözümleri yüklendi**: Log Analytics çözüm yapılandırılmalı ve Log Analytics çalışma alanında veri göndermesi gerekir-desteklenen çözümler, [Windows & Linux için performans sayaçlarıdır](../../azure-monitor/platform/data-sources-performance-counters.md), aracı durumu, [güncelleştirme yönetimi](../../automation/automation-update-management.md)ve [Olay verileri](../../azure-monitor/platform/data-sources-windows-events.md) [için sinyal kayıtları](../../azure-monitor/insights/solution-agenthealth.md).
+4. **Günlükleri göndermek için yapılandırılan Log Analytics çözümleri**: Log Analytics çözüm, [Log Analytics çalışma alanları için desteklenen ölçümlere](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) karşılık gelen gerekli günlüklere/verilere sahip olmalıdır. Örneğin, *% kullanılabilir bellek* sayacı için Ilk olarak [performans sayaçları](../../azure-monitor/platform/data-sources-performance-counters.md) çözümünde yapılandırılması gerekir.
 
-## <a name="configuring-metric-alert-for-logs"></a>Günlükler için Metrik UyarıYı Yapılandırma
+## <a name="configuring-metric-alert-for-logs"></a>Günlükler için ölçüm uyarısını yapılandırma
 
- Azure portalı, Kaynak Yöneticisi Şablonları, REST API, PowerShell ve Azure CLI kullanılarak metrik uyarılar oluşturulabilir ve yönetilebilir. Günlükler için Metrik Uyarılar, metrik uyarıların bir varyantı olduğundan - ön koşullar yapıldıktan sonra, belirtilen Log Analytics çalışma alanı için günlükler için metrik uyarı oluşturulabilir. [Metrik uyarıların](../../azure-monitor/platform/alerts-metric-near-real-time.md) tüm özellikleri ve işlevleri günlükler için metrik uyarılar için de geçerli olacaktır; yük şeması, geçerli kota limitleri ve faturalı fiyat dahil.
+ Ölçüm uyarıları Azure portal, Kaynak Yöneticisi şablonları, REST API, PowerShell ve Azure CLı kullanılarak oluşturulabilir ve yönetilebilir. Günlükler için ölçüm uyarıları, bir ölçüm uyarısı olduğundan, Önkoşullar yapıldıktan sonra, belirtilen Log Analytics çalışma alanı için Günlükler için ölçüm uyarısı oluşturulabilir. [Ölçüm uyarılarının](../../azure-monitor/platform/alerts-metric-near-real-time.md) tüm özellikleri ve işlevleri, Günlükler için ölçüm uyarıları için de geçerli olacaktır; Yük şeması, uygulanabilir kota limitleri ve Faturalanan Fiyat dahil.
 
-Adım adım ayrıntılar ve örnekler için metrik [uyarılar oluşturma ve yönetme](https://aka.ms/createmetricalert)ye bakın. Özellikle, Günlükler için Metrik Uyarılar için - metrik uyarıları yönetmek için yönergeleri izleyin ve aşağıdakileri sağlamak:
+Adım adım ayrıntılar ve örnekler için bkz. [ölçüm uyarıları oluşturma ve yönetme](https://aka.ms/createmetricalert). Özellikle, Günlükler için ölçüm uyarıları için, ölçüm uyarılarını yönetmek için yönergeleri izleyin ve aşağıdakileri doğrulayın:
 
-- Metrik uyarı için hedef geçerli bir *Log Analytics çalışma alanıdır*
-- Seçili *Log Analytics çalışma alanı* için metrik uyarı için seçilen sinyal metrik tür **Metric**
-- Boyut filtrelerini kullanarak belirli koşullar veya kaynak için filtreleme; günlükleri için ölçümler çok boyutlu
-- *Sinyal Mantığını*yapılandırırken, birden çok boyut değerine (Bilgisayar gibi) yayılacak tek bir uyarı oluşturulabilir
-- Seçili *Log Analytics çalışma alanı*için metrik uyarı oluşturmak için Azure portalını **kullanmıyorsanız;** daha sonra kullanıcı, [azure monitor - Zamanlanmış Sorgu Kuralları'nı](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)kullanarak günlük verilerini metrme dönüştürmek için önce el ile açık bir kural oluşturmalıdır.
+- Ölçüm uyarısı hedefi geçerli bir *Log Analytics çalışma alanıdır*
+- Seçili *Log Analytics çalışma alanı* için ölçüm uyarısı için seçilen sinyal **ölçüm** türünde
+- Boyut filtrelerini kullanarak belirli koşullar veya kaynaklar için filtre uygulayın; Günlükler için ölçümler çok boyutlu
+- *Sinyal mantığını*yapılandırırken, boyutun birden çok değerini (bilgisayar gibi) yaymak için tek bir uyarı oluşturulabilir
+- Seçili *Log Analytics çalışma alanı*için ölçüm uyarısı oluşturmak üzere **Azure Portal kullanmıyorsanız;** daha sonra kullanıcının [Azure izleyici tarafından zamanlanan sorgu kurallarını](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)kullanarak günlük verilerini bir ölçüme dönüştürmek için el ile bir açık kural oluşturması gerekir.
 
 > [!NOTE]
-> Azure portalı üzerinden Log Analytics çalışma alanı için metrik uyarı oluştururken - azure monitor üzerinden günlük verilerini metrik olarak dönüştürmek için ilgili kural [- Planlanmış Sorgu Kuralları,](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) *herhangi bir kullanıcı müdahalesi veya eylemine gerek kalmadan*arka planda otomatik olarak oluşturulur. Azure portalı dışındaki araçları kullanarak günlük oluşturma için metrik uyarı için metrik uyarı için bkz: Metrik uyarı oluşturmadan önce metrik dönüştürme kuralına scheduledqueryrule tabanlı günlük oluşturma nın örnek yollarından [Günlükler için Metrik Uyarılar](#resource-template-for-metric-alerts-for-logs) için Kaynak Şablonu bölümüne bakın , aksi takdirde oluşturulan günlüklerde metrik uyarı için veri olmayacaktır.
+> Log Analytics çalışma alanı için ölçüm uyarısı oluştururken, [Azure izleyici](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) ile günlük verilerini ölçüsüne dönüştürmek için Azure Portal ilgili kural aracılığıyla, *herhangi bir kullanıcı müdahalesi veya eylemi gerekmeden*arka planda otomatik olarak oluşturulur. Azure portal dışındaki yollarla günlük oluşturma için ölçüm uyarısı için, bkz. bir ScheduledQueryRule tabanlı [Günlükler Için kaynak şablonu](#resource-template-for-metric-alerts-for-logs) ölçüm uyarı oluşturma işleminden önce ölçüm dönüştürme kuralına kaydetme, diğer bir deyişle, oluşturulan günlüklerde ölçüm uyarısı için veri olmaz.
 
-## <a name="resource-template-for-metric-alerts-for-logs"></a>Günlükler için Metrik Uyarılar için Kaynak Şablonu
+## <a name="resource-template-for-metric-alerts-for-logs"></a>Günlükler için ölçüm uyarıları kaynak şablonu
 
-Daha önce de belirtildiği gibi, günlüklerden metrik uyarıların oluşturulması işlemi iki uçlu:
+Daha önce belirtildiği gibi, günlüklerden ölçüm uyarıları oluşturma işlemi iki ayaklı:
 
-1. ScheduledQueryRule API'yi kullanarak desteklenen günlüklerden ölçümleri ayıklamak için bir kural oluşturma
-2. Hedef kaynak olarak günlükten (adım1'de) ve Log Analytics çalışma alanından çıkarılan metrik için metrik uyarı oluşturma
+1. ScheduledQueryRule API kullanarak desteklenen günlüklerden ölçümleri ayıklama kuralı oluşturma
+2. Günlükte ayıklanan (adım ' de) ve çalışma alanındaki hedef kaynak olarak Log Analytics bir ölçüm uyarısı oluşturun
 
-### <a name="metric-alerts-for-logs-with-static-threshold"></a>Statik eşikli Günlükler için Metrik Uyarılar
+### <a name="metric-alerts-for-logs-with-static-threshold"></a>Statik eşikli Günlükler için ölçüm uyarıları
 
-Aynı başarıyı elde etmek için aşağıdaki örnek Azure Kaynak Yöneticisi Şablonu'nu kullanabilirsiniz - statik eşik metrik uyarısı oluşturulması, scheduledQueryRule aracılığıyla günlüklerden ölçümleri ayıklamak için kuralın başarılı bir şekilde oluşturulmasına bağlıdır.
+Aynı şekilde elde etmek için, bir statik eşik ölçüm uyarısının oluşturulması, aşağıdaki örnek Azure Resource Manager şablonunu kullanarak, bir statik eşik ölçümü oluşturma işleminin, scheduledQueryRule aracılığıyla günlüklerden ölçümleri ayıklama kuralının başarıyla oluşturulmasına bağlıdır.
 
 ```json
 {
@@ -299,7 +299,7 @@ Aynı başarıyı elde etmek için aşağıdaki örnek Azure Kaynak Yöneticisi 
 }
 ```
 
-Yukarıdaki JSON metrikfromLogsAlertStatic.json olarak kaydedilir say - o zaman Kaynak Şablonu tabanlı oluşturma için bir parametre JSON dosyası ile birleştiğinde olabilir. Örnek bir parametre JSON dosyası aşağıda listelenmiştir:
+Yukarıdaki JSON 'un Metricfromlogsalcertstatic. JSON olarak kaydedildiğini varsayalım; kaynak şablonu tabanlı oluşturma için bir parametre JSON dosyası ile bağlanabilir. Örnek parametre JSON dosyası aşağıda listelenmiştir:
 
 ```json
 {
@@ -355,23 +355,23 @@ Yukarıdaki JSON metrikfromLogsAlertStatic.json olarak kaydedilir say - o zaman 
 }
 ```
 
-Yukarıdaki parametre dosyasının metrik olarak kaydedilen varsayarsakLogsAlertStatic.parameters.json; daha sonra [Azure portalında oluşturmak için Kaynak Şablonu'nun](../../azure-resource-manager/templates/deploy-portal.md)kullanımı günlükleri için metrik uyarı oluşturabilirsiniz.
+Yukarıdaki parametre dosyasının Metricfromlogsalcertstatic. Parameters. JSON olarak kaydedildiği varsayıldığında daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
 
-Alternatif olarak, aşağıdaki Azure Powershell komutunu da kullanabilirsiniz:
+Alternatif olarak, bir diğeri aşağıdaki Azure PowerShell komutunu da kullanabilir:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
 ```
 
-Veya Azure CLI'yi kullanarak Kaynak Şablonu'na dağıt'ı kullanın:
+Veya Azure CLı kullanarak kaynak şablonu dağıtma ' yı kullanın:
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
 ```
 
-### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>Dinamik Eşiklere Sahip Günlükler için Metrik Uyarılar
+### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>Dinamik eşiklere sahip Günlükler için ölçüm uyarıları
 
-Aynı başarıyı elde etmek için aşağıdaki örnek Azure Kaynak Yöneticisi Şablonu'nu kullanabilirsiniz - dinamik eşikler metrik uyarısı oluşturulması, scheduledQueryRule aracılığıyla günlüklerden ölçümler ilerletmek için kuralın başarılı bir şekilde oluşturulmasına bağlıdır.
+Aynı sağlamak için, bunlardan biri aşağıdaki örnek Azure Resource Manager şablonunu kullanabilir; burada dinamik bir eşik ölçüm uyarısı oluşturulması, scheduledQueryRule aracılığıyla günlüklerden ölçümleri ayıklama kuralının başarılı bir şekilde oluşturulmasına bağlıdır.
 
 ```json
 {
@@ -609,7 +609,7 @@ Aynı başarıyı elde etmek için aşağıdaki örnek Azure Kaynak Yöneticisi 
 }
 ```
 
-Yukarıdaki JSON'un metricfromLogsAlertDynamic.json olarak kaydedileceğini varsayalım - o zaman Kaynak Şablonu tabanlı oluşturma için bir parametre JSON dosyası ile birleştiğinde olabilir. Örnek bir parametre JSON dosyası aşağıda listelenmiştir:
+Yukarıdaki JSON 'un, Metricfromlogsalcertdynamic. JSON olarak kaydedildiğini varsayalım; kaynak şablonu tabanlı oluşturma için bir parametre JSON dosyası ile bağlanabilir. Örnek parametre JSON dosyası aşağıda listelenmiştir:
 
 ```json
 {
@@ -671,15 +671,15 @@ Yukarıdaki JSON'un metricfromLogsAlertDynamic.json olarak kaydedileceğini vars
 }
 ```
 
-Yukarıdaki parametre dosyasının metricfromLogsAlertDynamic.parameters.json olarak kaydedilen varsayıyor; daha sonra [Azure portalında oluşturmak için Kaynak Şablonu'nun](../../azure-resource-manager/templates/deploy-portal.md)kullanımı günlükleri için metrik uyarı oluşturabilirsiniz.
+Yukarıdaki parametre dosyasının Metricfromlogsalcertdynamic. Parameters. JSON olarak kaydedildiği varsayıldığında daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
 
-Alternatif olarak, aşağıdaki Azure Powershell komutunu da kullanabilirsiniz:
+Alternatif olarak, bir diğeri aşağıdaki Azure PowerShell komutunu da kullanabilir:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
 ```
 
-Veya Azure CLI'yi kullanarak Kaynak Şablonu'na dağıt'ı kullanın:
+Veya Azure CLı kullanarak kaynak şablonu dağıtma ' yı kullanın:
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
@@ -687,6 +687,6 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Metrik uyarılar](alerts-metric.md)hakkında daha fazla bilgi edinin.
-- [Azure'daki günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md)hakkında bilgi edinin.
-- [Azure'daki uyarılar](alerts-overview.md)hakkında bilgi edinin.
+- [Ölçüm uyarıları](alerts-metric.md)hakkında daha fazla bilgi edinin.
+- [Azure 'da günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md)hakkında bilgi edinin.
+- [Azure 'daki uyarılar](alerts-overview.md)hakkında bilgi edinin.

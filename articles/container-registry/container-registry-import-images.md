@@ -1,50 +1,50 @@
 ---
 title: Kapsayıcı görüntülerini içeri aktarma
-description: Docker komutlarını çalıştırmaya gerek kalmadan Azure API'lerini kullanarak konteyner görüntülerini Azure kapsayıcı kayıt defterine aktarın.
+description: Docker komutlarını çalıştırmaya gerek kalmadan Azure API 'Lerini kullanarak kapsayıcı görüntülerini bir Azure Container Registry 'ye aktarın.
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80051917"
 ---
-# <a name="import-container-images-to-a-container-registry"></a>Kapsayıcı görüntülerini konteyner kayıt defterine alma
+# <a name="import-container-images-to-a-container-registry"></a>Kapsayıcı görüntülerini kapsayıcı kayıt defterine aktarma
 
-Konteyner görüntülerini Docker komutlarını kullanmadan azure konteyner kayıt defterine kolayca içe aktarabilirsiniz (kopyalayabilirsiniz). Örneğin, görüntüleri geliştirme kayıt defterinden üretim kayıt defterine aktarın veya temel görüntüleri genel kayıt defterinden kopyalayın.
+Kapsayıcı görüntülerini Docker komutlarını kullanmadan bir Azure Container Registry 'ye kolayca içeri aktarabilirsiniz (kopyalayabilirsiniz). Örneğin, bir geliştirme kayıt defterindeki görüntüleri bir üretim kayıt defterine aktarın veya temel görüntüleri ortak bir kayıt defterinden kopyalayın.
 
-Azure Kapsayıcı Kayıt Defteri, görüntüleri varolan bir kayıt defterinden kopyalamak için bir dizi yaygın senaryoyu işler:
+Azure Container Registry, var olan bir kayıt defterinden görüntüleri kopyalamak için bir dizi yaygın senaryoyu işler:
 
-* Genel kayıt defterinden alma
+* Ortak bir kayıt defterinden içeri aktarma
 
-* Aynı veya farklı bir Azure aboneliğinde başka bir Azure kapsayıcı kayıt defterinden alma
+* Aynı veya farklı bir Azure aboneliğinde başka bir Azure Container Registry 'den içeri aktarma
 
-* Azure olmayan özel konteyner kayıt defterinden alma
+* Azure olmayan özel kapsayıcı kayıt defterinden içeri aktarma
 
-Bir Azure kapsayıcı kayıt defterine görüntü alma Docker CLI komutları kullanarak üzerinde aşağıdaki avantajlara sahiptir:
+Azure Container Registry 'de görüntü içeri aktarma işlemi Docker CLı komutlarını kullanarak aşağıdaki avantajlara sahiptir:
 
-* İstemci ortamınızın yerel bir Docker yüklemesine ihtiyacı olmadığından, desteklenen işletim sistemi türünden bağımsız olarak herhangi bir kapsayıcı görüntüsü aktarın.
+* İstemci ortamınız yerel bir Docker yüklemesine ihtiyaç duymadığından, desteklenen işletim sistemi türünden bağımsız olarak tüm kapsayıcı görüntülerini içeri aktarın.
 
-* Çok mimarili görüntüleri (resmi Docker görüntüleri gibi) içe aktardığınızda, manifesto listesinde belirtilen tüm mimariler ve platformlar için görüntüler kopyalanır.
+* Multi-Architecture görüntülerini (resmi Docker görüntüleri gibi) içeri aktardığınızda, bildirim listesinde belirtilen tüm mimarilerin ve platformların görüntüleri bir kopyası alınır.
 
-Kapsayıcı görüntülerini almak için bu makalede, Azure CLI'yi Azure Bulut BulutU'nda veya yerel olarak çalıştırmanız gerekir (sürüm 2.0.55 veya daha sonra önerilir). Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
+Kapsayıcı görüntülerini içeri aktarmak için bu makale, Azure CLı 'yı Azure Cloud Shell veya yerel olarak (sürüm 2.0.55 veya üzeri önerilir) çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
 
 > [!NOTE]
-> Aynı kapsayıcı görüntülerini birden çok Azure bölgesine dağıtmanız gerekiyorsa, Azure Kapsayıcı Kayıt Defteri [coğrafi çoğaltmayı](container-registry-geo-replication.md)da destekler. Bir kayıt defterini coğrafi olarak kopyalayarak (Premium hizmet katmanı gereklidir), tek bir kayıt defterinden aynı görüntü ve etiket adlarıyla birden çok bölgeye hizmet edebilirsiniz.
+> Aynı kapsayıcı görüntülerini birden çok Azure bölgesinde dağıtmanız gerekiyorsa Azure Container Registry [Coğrafi çoğaltmayı](container-registry-geo-replication.md)da destekler. Bir kayıt defteri coğrafi olarak çoğaltılırken (Premium hizmet katmanı gereklidir), tek bir kayıt defterinden aynı görüntü ve etiket adları ile birden çok bölgeye hizmet verebilirsiniz.
 >
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure kapsayıcı kayıt defteriniz yoksa, bir kayıt defteri oluşturun. Adımlar için [Bkz. Hızlı Başlangıç: Azure CLI'yi kullanarak özel bir kapsayıcı kayıt defteri oluşturun.](container-registry-get-started-azure-cli.md)
+Zaten bir Azure Container kayıt defteriniz yoksa bir kayıt defteri oluşturun. Adımlar için bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md).
 
-Bir görüntüyü Azure kapsayıcı kayıt defterine aktarmak için kimliğinizin hedef kayıt defterine yazma izinleri olmalıdır (en azından Katılımcı rolü). Bkz. [Azure Kapsayıcı Kayıt Defteri rolleri ve izinleri.](container-registry-roles.md) 
+Bir görüntüyü Azure Container Registry 'ye aktarmak için, kimliğinizin hedef kayıt defterine (en az katkıda bulunan rolü) yazma izinleri olması gerekir. Bkz. [Azure Container Registry rolleri ve izinleri](container-registry-roles.md). 
 
-## <a name="import-from-a-public-registry"></a>Genel kayıt defterinden alma
+## <a name="import-from-a-public-registry"></a>Ortak bir kayıt defterinden içeri aktarma
 
-### <a name="import-from-docker-hub"></a>Docker Hub'dan İthalat
+### <a name="import-from-docker-hub"></a>Docker Hub 'dan içeri aktar
 
-Örneğin, Docker Hub'dan *myregistry*adlı bir `hello-world:latest` kayıt defterine çok mimari görüntü almak için [az acr alma][az-acr-import] komutunu kullanın. Docker `hello-world` Hub'ın resmi bir görüntüsü olduğundan, `library` bu görüntü varsayılan depodadır. Depo adını ve isteğe bağlı olarak `--source` görüntü parametresinin değerine bir etiket ekleyin. (Bir resmin belirli bir sürümünü garanti eden, etiket yerine manifesto özetine göre isteğe bağlı olarak tanımlayabilirsiniz.)
+Örneğin, Docker Hub 'ından Multi-Architecture `hello-world:latest` görüntüsünü *myregistry*adlı bir kayıt defterine aktarmak için [az ACR Import][az-acr-import] komutunu kullanın. , `hello-world` Docker Hub 'ından resmi bir görüntü olduğundan, bu görüntü varsayılan `library` depodadır. Depo adını ve isteğe bağlı olarak `--source` Image parametresinin değerine bir etiketi ekleyin. (Bir görüntüyü, bir görüntünün belirli bir sürümünü garanti eden etiketi yerine, bildirim özetine göre belirleyebilirsiniz.)
  
 ```azurecli
 az acr import \
@@ -53,7 +53,7 @@ az acr import \
   --image hello-world:latest
 ```
 
-Komutu çalıştırarak `az acr repository show-manifests` birden çok bildirimin bu görüntüyle ilişkili olduğunu doğrulayabilirsiniz:
+`az acr repository show-manifests` Komutu çalıştırarak bu görüntüyle ilişkili birden fazla bildirimin olduğunu doğrulayabilirsiniz:
 
 ```azurecli
 az acr repository show-manifests \
@@ -61,7 +61,7 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-Aşağıdaki örnek, Docker Hub'daki depodan `tensorflow` genel bir görüntü alma:
+Aşağıdaki örnek, Docker Hub 'daki `tensorflow` depodan ortak bir görüntü içeri aktarır:
 
 ```azurecli
 az acr import \
@@ -70,9 +70,9 @@ az acr import \
   --image tensorflow:latest-gpu
 ```
 
-### <a name="import-from-microsoft-container-registry"></a>Microsoft Konteyner Kayıt Defteri'nden alma
+### <a name="import-from-microsoft-container-registry"></a>Microsoft Container Registry içeri aktar
 
-Örneğin, Microsoft Kapsayıcı Kayıt Defteri'ndeki `windows` depodan en son Windows Server Core görüntüsünü aktarın.
+Örneğin, Microsoft Container Registry `windows` deposundaki en son Windows Server çekirdek görüntüsünü içeri aktarın.
 
 ```azurecli
 az acr import \
@@ -81,17 +81,17 @@ az acr import \
 --image servercore:latest
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>Başka bir Azure kapsayıcı kayıt defterinden alma
+## <a name="import-from-another-azure-container-registry"></a>Başka bir Azure Container Registry 'den içeri aktar
 
-Tümleşik Azure Etkin Dizin izinlerini kullanarak başka bir Azure kapsayıcı kayıt defterinden görüntü içe aktarabilirsiniz.
+Bir görüntüyü, tümleşik Azure Active Directory izinleri kullanarak başka bir Azure Container kayıt defterinden içeri aktarabilirsiniz.
 
-* Kimliğiniz, kaynak kayıt defterinden (Reader rolü) okumak ve hedef kayıt defterine (Katılımcı rolü) yazmak için Azure Active Directory izinlerine sahip olmalıdır.
+* Kimliğiniz, kaynak kayıt defterinden (okuyucu rolü) okumak ve hedef kayıt defterine (katkıda bulunan rolü) yazmak için Azure Active Directory izinlere sahip olmalıdır.
 
-* Kayıt defteri, aynı Active Directory kiracısında aynı veya farklı bir Azure aboneliğinde olabilir.
+* Kayıt defteri aynı Active Directory kiracısında aynı veya farklı bir Azure aboneliğinde olabilir.
 
-### <a name="import-from-a-registry-in-the-same-subscription"></a>Aynı abonelikteki bir kayıt defterinden alma
+### <a name="import-from-a-registry-in-the-same-subscription"></a>Aynı abonelikteki bir kayıt defterinden içeri aktarma
 
-Örneğin, `aci-helloworld:latest` görüntüyü aynı Azure aboneliğinde kaynak kayıt *defteri mysourceregistry'den* *myregistry'ye* taşıyın.
+Örneğin, bir kaynak kayıt `aci-helloworld:latest` defteri *mysourceregyıpdan* aynı Azure aboneliğindeki *myregistry* 'e ait görüntüyü içeri aktarın.
 
 ```azurecli
 az acr import \
@@ -100,7 +100,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-Aşağıdaki örnek, bir resmi etiket yerine manifest sindirimi (SHA-256 karma, temsil) `sha256:...`ile içeri yedirerek içeri iter:
+Aşağıdaki örnek, bir görüntüyü etiketi yerine manifest Digest (SHA-256 karması, olarak `sha256:...`temsil edilir) ile içe aktarır:
 
 ```azurecli
 az acr import \
@@ -108,9 +108,9 @@ az acr import \
   --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
 ```
 
-### <a name="import-from-a-registry-in-a-different-subscription"></a>Farklı bir abonelikteki kayıt defterinden alma
+### <a name="import-from-a-registry-in-a-different-subscription"></a>Farklı bir abonelikteki kayıt defterinden içeri aktarma
 
-Aşağıdaki örnekte, *mysourceregistry* aynı Active Directory kiracı *myregistry* farklı bir abonelik olduğunu. Kaynak kayıt defterinin kaynak kimliğini `--registry` parametreyle birlikte ver. Parametrenin `--source` kayıt defteri giriş sunucusu adını değil, yalnızca kaynak deposunu ve etiketini belirlediğine dikkat edin.
+Aşağıdaki örnekte, *mysourceregbakanlığı* aynı Active Directory kiracısındaki *myregistry* 'den farklı bir abonelikte yer verilir. Kaynak kayıt defterinin `--registry` parametresi Ile kaynak kimliğini sağlayın. `--source` Parametresinin kayıt defteri oturum açma sunucusu adını değil yalnızca kaynak depoyu ve etiketi belirttiğinden emin olun.
 
 ```azurecli
 az acr import \
@@ -120,9 +120,9 @@ az acr import \
   --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
-### <a name="import-from-a-registry-using-service-principal-credentials"></a>Hizmet temel kimlik bilgilerini kullanarak kayıt defterinden alma
+### <a name="import-from-a-registry-using-service-principal-credentials"></a>Hizmet sorumlusu kimlik bilgilerini kullanarak bir kayıt defterinden içeri aktarma
 
-Etkin Dizin izinlerini kullanarak erişemediğiniz bir kayıt defterinden içe aktarmak için hizmet temel kimlik bilgilerini (varsa) kullanabilirsiniz. Kaynak kayıt defterine ACRPull erişimi olan bir Active Directory [hizmet yöneticisinin](container-registry-auth-service-principal.md) appID ve şifresini tedarik edin. Hizmet sorumlusu kullanmak, yapı sistemleri ve görüntüleri kayıt defterinize aktarması gereken diğer sahipsiz sistemler için yararlıdır.
+Active Directory izinleri kullanarak erişekullanmadığınız bir kayıt defterinden içeri aktarmak için, hizmet sorumlusu kimlik bilgilerini (varsa) kullanabilirsiniz. Kaynak kayıt defterine ACRPull erişimi olan Active Directory [hizmet sorumlusunun](container-registry-auth-service-principal.md) AppID 'sini ve parolasını sağlayın. Hizmet sorumlusu kullanmak, derleme sistemleri ve görüntüleri kayıt defterinize aktarması gereken diğer katılımsız sistemler için yararlıdır.
 
 ```azurecli
 az acr import \
@@ -133,9 +133,9 @@ az acr import \
   –-password <SP_Passwd>
 ```
 
-## <a name="import-from-a-non-azure-private-container-registry"></a>Azure olmayan özel konteyner kayıt defterinden alma
+## <a name="import-from-a-non-azure-private-container-registry"></a>Azure olmayan özel kapsayıcı kayıt defterinden içeri aktarma
 
-Kayıt defterine çekme erişimi sağlayan kimlik bilgilerini belirterek özel bir kayıt defterinden görüntü aktarın. Örneğin, özel bir Docker kayıt defterinden bir görüntü çekin: 
+Kayıt defterine çekme erişimini etkinleştiren kimlik bilgilerini belirterek özel bir kayıt defterinden görüntü içeri aktarın. Örneğin, özel bir Docker kayıt defterinden bir görüntü çekin: 
 
 ```azurecli
 az acr import \
@@ -148,7 +148,7 @@ az acr import \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir azure kapsayıcı kayıt defterine kapsayıcı resimleri alma hakkında bir genel kayıt defteri veya başka bir özel kayıt defteri öğrendim. Ek görüntü alma seçenekleri için [az acr alma][az-acr-import] komutu başvurusuna bakın. 
+Bu makalede, kapsayıcı görüntülerini genel bir kayıt defterine veya başka bir özel kayıt defterinden Azure Container Registry 'ye aktarma hakkında bilgi edindiniz. Ek görüntü içeri aktarma seçenekleri için, [az ACR Import][az-acr-import] komut başvurusuna bakın. 
 
 
 <!-- LINKS - Internal -->
