@@ -1,6 +1,6 @@
 ---
 title: Azure Databricks ile dönüştürme
-description: Azure Veri Fabrikası'nda bir Databricks dizüstü bilgisayarı kullanarak verileri dönüştürmek için bir çözüm şablonu nasıl kullanacağınızı öğrenin.
+description: Azure Data Factory bir Databricks Not defteri kullanarak verileri dönüştürmek için bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -12,52 +12,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
 ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414860"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks ile dönüştürme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu öğreticide, Azure Veri Fabrikası'nda **Doğrulama, Verileri** **Kopyalama**ve **Not Defteri** etkinliklerini içeren uçdan uca bir ardışık ardışık işlem alanı oluşturursunuz.
+Bu öğreticide, Azure Data Factory **doğrulama**, **kopyalama verileri**ve **Not defteri** etkinliklerini içeren uçtan uca bir işlem hattı oluşturacaksınız.
 
-- **Doğrulama,** kopyalama ve analiz işini tetiklemeden önce kaynak veri setinizin akış aşağı tüketimine hazır olmasını sağlar.
+- **Doğrulama** , kopyalama ve analiz işini tetiklemeniz için kaynak veri kümenizin aşağı akış tüketimine hazırlanmasını sağlar.
 
-- **Verileri kopyalamak,** kaynak veri kümesini Azure Databricks not defterine DBFS olarak monte edilen lavabo depolamasına kopyalar. Bu şekilde, veri kümesi doğrudan Spark tarafından tüketilebilir.
+- **Verileri kopyalama** , kaynak veri kümesini Azure Databricks not defterinde dBFS olarak bağlanan havuz depolama alanına çoğaltır. Bu şekilde, veri kümesi Spark tarafından doğrudan tüketilebilir.
 
-- **Not defteri,** veri kümesini dönüştüren Databricks not defterini tetikler. Ayrıca, veri kümesini işlenmiş bir klasöre veya Azure SQL Veri Ambarı'na ekler.
+- **Not defteri** , veri kümesini dönüştüren Databricks Not defterini tetikler. Ayrıca, veri kümesini işlenen bir klasöre veya Azure SQL veri ambarı 'na ekler.
 
-Basitlik için, bu öğreticideki şablon zamanlanmış bir tetikleyici oluşturmaz. Gerekirse bir tane ekleyebilirsiniz.
+Kolaylık olması için bu öğreticideki şablon, zamanlanmış bir tetikleyici oluşturmaz. Gerekirse bir tane ekleyebilirsiniz.
 
-![Boru hattı diyagramı](media/solution-template-Databricks-notebook/pipeline-example.png)
+![İşlem hattının diyagramı](media/solution-template-Databricks-notebook/pipeline-example.png)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Lavabo olarak kullanılmak üzere çağrılan `sinkdata` bir kapsayıcıya sahip bir Azure Blob depolama hesabı.
+- Havuzu olarak kullanılmak üzere adlı `sinkdata` bir kapsayıcı Içeren bir Azure Blob depolama hesabı.
 
-  Depolama hesabı adını, kapsayıcı adını ve erişim anahtarını not alın. Bu değerler daha sonra şablonda gerekir.
+  Depolama hesabı adı, kapsayıcı adı ve erişim anahtarı ' nı unutmayın. Bu değerlere daha sonra şablonda ihtiyaç duyarsınız.
 
 - Azure Databricks çalışma alanı.
 
-## <a name="import-a-notebook-for-transformation"></a>Dönüşüm için not defteri alma
+## <a name="import-a-notebook-for-transformation"></a>Dönüşüm için bir not defteri içeri aktar
 
-Veri tuğlaları çalışma alanınıza **dönüşüm** not defteri almak için:
+Bir **dönüştürme** Not defterini Databricks çalışma alanınıza aktarmak için:
 
-1. Azure Databricks çalışma alanınızda oturum açın ve ardından **İçe Aktar'ı**seçin.
-       ![Çalışma alanını](media/solution-template-Databricks-notebook/import-notebook.png) almak için menü komutu Çalışma alanınız yolunuz gösterilenden farklı olabilir, ancak daha sonra için hatırlayın.
-1. **İçe Aktar'ı seçin: URL**. Metin kutusuna girin. `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`
+1. Azure Databricks çalışma alanınızda oturum açın ve ardından **Içeri aktar**' ı seçin.
+       ![Çalışma](media/solution-template-Databricks-notebook/import-notebook.png) alanını içeri aktarmaya yönelik menü komutu çalışma alanı yolunuz gösterilenden farklı olabilir, ancak daha sonra bunu unutmayın.
+1. **Içeri aktarma seçin: URL**. Metin kutusuna yazın `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`.
 
-   ![Not defteri almak için seçimler](media/solution-template-Databricks-notebook/import-from-url.png)
+   ![Not defteri içeri aktarma seçimleri](media/solution-template-Databricks-notebook/import-from-url.png)
 
-1. Şimdi **Dönüşüm** not defterini depolama bağlantı bilgilerinizle güncelleştirelim.
+1. Şimdi, **dönüştürme** Not defterini depolama bağlantı bilgileriniz ile güncelleştirelim.
 
-   Alınan not defterinde, aşağıdaki kod parçacığında gösterildiği gibi **5 komutuna** gidin.
+   İçeri aktarılan not defterinde, aşağıdaki kod parçacığında gösterildiği gibi **komut 5** ' e gidin.
 
-   - `<storage name>`Değiştirin `<access key>` ve kendi depolama bağlantı bilgilerinizi değiştirin.
-   - `sinkdata` Kapsayıcıyla birlikte depolama hesabını kullanın.
+   - Ve `<storage name>`' `<access key>` i kendi depolama bağlantı bilgileriniz ile değiştirin.
+   - `sinkdata` Kapsayıcı ile depolama hesabını kullanın.
 
     ```python
     # Supply storageName and accessKey values  
@@ -81,104 +81,104 @@ Veri tuğlaları çalışma alanınıza **dönüşüm** not defteri almak için:
       print e \# Otherwise print the whole stack trace.  
     ```
 
-1. DataBricks'e erişmek için Veri Fabrikası için bir **Databricks erişim jetonu** oluşturun.
-   1. Databricks çalışma alanınızda sağ üstteki kullanıcı profili simgenizi seçin.
-   1. **Kullanıcı Ayarlarını**Seçin.
+1. Databricks 'e erişmek için Data Factory için bir **databricks erişim belirteci** oluşturun.
+   1. Databricks çalışma alanınızda sağ üstteki Kullanıcı profili simgenizi seçin.
+   1. **Kullanıcı ayarları**' nı seçin.
     ![Kullanıcı ayarları için menü komutu](media/solution-template-Databricks-notebook/user-setting.png)
-   1. **Access Belirteçleri** sekmesi altında **Yeni Belirteç Oluştur'u** seçin.
-   1. **Oluştur'u**seçin.
+   1. **Erişim belirteçleri** sekmesinde **Yeni belirteç oluştur** ' u seçin.
+   1. **Oluştur**' u seçin.
 
     !["Oluştur" düğmesi](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-   Access jetonuna Databricks bağlantılı bir hizmet oluştururken daha sonra kullanmak üzere *kaydedin.* Erişim jetonu gibi `dapi32db32cbb4w6eee18b7d87e45exxxxxx`görünüyor.
+   Daha sonra kullanmak üzere bir Databricks bağlı hizmeti oluştururken *erişim belirtecini kaydedin* . Erişim belirteci şuna benzer `dapi32db32cbb4w6eee18b7d87e45exxxxxx`.
 
-## <a name="how-to-use-this-template"></a>Bu şablon nasıl kullanılır?
+## <a name="how-to-use-this-template"></a>Bu şablonu kullanma
 
-1. **Azure Databricks şablonuyla Dönüşüm'e** gidin ve aşağıdaki bağlantılar için yeni bağlantılı hizmetler oluşturun.
+1. **Azure Databricks şablonuyla dönüştürmeye** gidin ve aşağıdaki bağlantılar için yeni bağlı hizmetler oluşturun.
 
-   ![Bağlantılar ayarı](media/solution-template-Databricks-notebook/connections-preview.png)
+   ![Bağlantı ayarı](media/solution-template-Databricks-notebook/connections-preview.png)
 
-    - **Kaynak Blob Bağlantısı** - kaynak verilere erişmek için.
+    - Kaynak **BLOB bağlantısı** -kaynak verilere erişmek için.
 
-       Bu alıştırma için, kaynak dosyaları içeren ortak blob depolama kullanabilirsiniz. Yapılandırma için aşağıdaki ekran görüntüsüne başvurun. Kaynak depolama alanına bağlanmak için aşağıdaki **SAS URL'sini** kullanın (salt okunur erişim):
+       Bu alıştırmada, kaynak dosyaları içeren genel BLOB depolama alanını kullanabilirsiniz. Yapılandırma için aşağıdaki ekran görüntüsüne başvurun. Kaynak depolamaya bağlanmak için aşağıdaki **SAS URL 'sini** kullanın (salt okuma erişimi):
 
        `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
 
-        ![Kimlik doğrulama yöntemi ve SAS URL için seçimler](media/solution-template-Databricks-notebook/source-blob-connection.png)
+        ![Kimlik doğrulama yöntemi ve SAS URL 'SI için seçimler](media/solution-template-Databricks-notebook/source-blob-connection.png)
 
-    - **Hedef Blob Bağlantısı** - kopyalanan verileri depolamak için.
+    - **Hedef blobu bağlantısı** -kopyalanmış verileri depolamak için.
 
-       Yeni **bağlantılı hizmet** penceresinde, lavabo depolama lekenizi seçin.
+       **Yeni bağlı hizmet** penceresinde, havuz Depolama Blobu ' nı seçin.
 
-       ![Yeni bağlantılı hizmet olarak lavabo depolama blob](media/solution-template-Databricks-notebook/destination-blob-connection.png)
+       ![Yeni bağlı hizmet olarak havuz Depolama Blobu](media/solution-template-Databricks-notebook/destination-blob-connection.png)
 
-    - **Azure Databricks** - Databricks kümesine bağlanmak için.
+    - **Azure Databricks** , Databricks kümesine bağlanmak için.
 
-        Daha önce oluşturduğunuz erişim anahtarını kullanarak Databricks'e bağlı bir hizmet oluşturun. Eğer varsa *etkileşimli* bir küme seçmeyi seçebilirsiniz. Bu örnekte **Yeni iş kümesi** seçeneği kullanır.
+        Daha önce oluşturduğunuz erişim anahtarını kullanarak bir Databricks ile bağlantılı hizmet oluşturun. Bir *etkileşimli kümeyi* varsa seçebilirsiniz. Bu örnek, **yeni iş kümesi** seçeneğini kullanır.
 
         ![Kümeye bağlanma seçimleri](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-1. **Bu şablonu kullan'ı**seçin. Bir boru hattı oluşturulduğunu göreceksiniz.
+1. **Bu şablonu kullan**' ı seçin. Oluşturulan bir işlem hattı görürsünüz.
 
     ![İşlem hattı oluşturma](media/solution-template-Databricks-notebook/new-pipeline.png)
 
-## <a name="pipeline-introduction-and-configuration"></a>Boru hattı tanıtımı ve yapılandırması
+## <a name="pipeline-introduction-and-configuration"></a>İşlem hattı giriş ve yapılandırma
 
-Yeni ardışık alanda, çoğu ayar varsayılan değerlerle otomatik olarak yapılandırılır. Ardışık alanınızın yapılandırmalarını gözden geçirin ve gerekli değişiklikleri yapın.
+Yeni işlem hattında, çoğu ayar varsayılan değerlerle otomatik olarak yapılandırılır. İşlem hattının yapılandırmasını gözden geçirin ve gerekli değişiklikleri yapın.
 
-1. **Doğrulama** etkinliği **Kullanılabilirlik bayrağında,** kaynak **Dataset** değerinin `SourceAvailabilityDataset` daha önce oluşturduğunuz değere ayarlı olduğunu doğrulayın.
+1. **Doğrulama** etkinliği **kullanılabilirliği bayrağıyla**, kaynak **veri kümesi** değerinin daha önce oluşturduğunuz olarak `SourceAvailabilityDataset` ayarlandığını doğrulayın.
 
    ![Kaynak veri kümesi değeri](media/solution-template-Databricks-notebook/validation-settings.png)
 
-1. Veri **kopyalama** etkinliği **dosyasından blob'a,** **Kaynak** ve **Lavabo** sekmelerini denetleyin. Gerekirse ayarları değiştirin.
+1. **Veri kopyalama** etkinlik **dosyası-blob**' da, **kaynak** ve **Havuz** sekmelerini kontrol edin. Gerekirse ayarları değiştirin.
 
-   - **Kaynak** ![sekmesi Kaynak sekmesi](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **Kaynak** sekmesi ![kaynak sekmesi](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - **Lavabo** ![sekmesi Lavabo sekmesi](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - **Havuz** sekmesi ![havuz sekmesi](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
-1. Not **Defteri** etkinliği **Dönüştürme'de,** yolları ve ayarları gerektiği gibi gözden geçirin ve güncelleyin.
+1. **Not defteri** etkinliği **dönüşümünde**, yolları ve ayarları gerektiği gibi gözden geçirin ve güncelleştirin.
 
-   **Databricks bağlantılı hizmet,** gösterildiği gibi önceki adımdaki değerle önceden ![doldurulmalıdır: Databricks bağlantılı hizmetiçin doldurulan değer](media/solution-template-Databricks-notebook/notebook-activity.png)
+   **Databricks bağlı** hizmeti, şu şekilde gösterildiği gibi önceki adımlardan alınan değerle önceden doldurulmalıdır: ![databricks bağlı hizmeti için doldurulmuş değer](media/solution-template-Databricks-notebook/notebook-activity.png)
 
-   **Not Defteri** ayarlarını kontrol etmek için:
+   **Not defteri** ayarlarını denetlemek için:
   
-    1. **Ayarlar** sekmesini seçin. **Not Defteri yolu**için, varsayılan yolun doğru olduğunu doğrulayın. Doğru not defteri yoluna göz atmanız ve seçmeniz gerekebilir.
+    1. **Ayarlar** sekmesini seçin. **Not defteri yolu**için varsayılan yolun doğru olduğundan emin olun. Doğru not defteri yolunu gözatmanıza ve seçmeniz gerekebilir.
 
        ![Not defteri yolu](media/solution-template-Databricks-notebook/notebook-settings.png)
 
-    1. Temel **Parametreler** seçiciyi genişletin ve parametrelerin aşağıdaki ekran görüntüsünde gösterilenle eşleşip eşleşmediğini doğrulayın. Bu parametreler Veri Fabrikası'ndan Databricks not defterine aktarılır.
+    1. **Taban parametreleri** seçicisini genişletin ve parametrelerin aşağıdaki ekran görüntüsünde gösterilenle eşleştiğini doğrulayın. Bu parametreler, Data Factory Databricks not defterine geçirilir.
 
-       ![Taban parametreleri](media/solution-template-Databricks-notebook/base-parameters.png)
+       ![Temel parametreler](media/solution-template-Databricks-notebook/base-parameters.png)
 
-1. **Pipeline Parametrelerinin** aşağıdaki ekran görüntüsünde gösterilenle eşleştirdiğini doğrulayın: ![Pipeline parametreleri](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. **Ardışık düzen parametrelerinin** aşağıdaki ekran görüntüsünde gösterilenle eşleştiğini doğrulayın: ![işlem hattı parametreleri](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Veri kümelerinize bağlanın.
 
-   - **SourceAvailabilityDataset** - kaynak verilerin kullanılabilir olup olmadığını kontrol etmek için.
+   - Kaynak verilerin kullanılabilir olup olmadığını denetlemek için **Sourcekullanılabilirliği Bilitydataset** .
 
-     ![SourceAvailabilityDataset için bağlantılı hizmet ve dosya yolu için seçimler](media/solution-template-Databricks-notebook/source-availability-dataset.png)
+     ![Sourcekullanılabilirliği Bilitydataset için bağlı hizmet ve dosya yolu seçimleri](media/solution-template-Databricks-notebook/source-availability-dataset.png)
 
-   - **SourceFilesDataset** - kaynak verilere erişmek için.
+   - Kaynak verilere erişmek için **Sourcefilesveri kümesi** .
 
-       ![SourceFilesDataset için bağlantılı hizmet ve dosya yolu için seçimler](media/solution-template-Databricks-notebook/source-file-dataset.png)
+       ![Sourcefilesveri kümesi için bağlı hizmet ve dosya yolu seçimleri](media/solution-template-Databricks-notebook/source-file-dataset.png)
 
-   - **DestinationFilesDataset** - verileri lavabo hedef konumuna kopyalamak için. Aşağıdaki değerleri kullanın:
+   - **Destinationfilesveri kümesi** -verileri havuz hedef konumuna kopyalamak için. Aşağıdaki değerleri kullanın:
 
-     - **Bağlantılı hizmet,** - `sinkBlob_LS`önceki adımda oluşturuldu.
+     - **Linked service** - `sinkBlob_LS`Önceki bir adımda oluşturulan bağlı hizmet.
 
      - **Dosya yolu** - `sinkdata/staged_sink`.
 
-       ![DestinationFilesDataset için bağlantılı hizmet ve dosya yolu için seçimler](media/solution-template-Databricks-notebook/destination-dataset.png)
+       ![Destinationfilesveri kümesi için bağlı hizmet ve dosya yolu seçimleri](media/solution-template-Databricks-notebook/destination-dataset.png)
 
-1. Ardışık bölümü çalıştırmak için **Hata Ayıklama'yı** seçin. Daha ayrıntılı Spark günlükleri için Databricks günlüklerinin bağlantısını bulabilirsiniz.
+1. İşlem hattını çalıştırmak için **Hata Ayıkla** ' yı seçin. Daha ayrıntılı Spark günlükleri için Databricks günlüklerine bağlantıyı bulabilirsiniz.
 
     ![Çıktıdan Databricks günlüklerine bağlantı](media/solution-template-Databricks-notebook/pipeline-run-output.png)
 
-    Azure Depolama Gezgini'ni kullanarak veri dosyasını da doğrulayabilirsiniz.
+    Veri dosyasını Azure Depolama Gezgini kullanarak da doğrulayabilirsiniz.
 
     > [!NOTE]
-    > Veri Fabrikası ardışık işakleri ile ilişkilendirmek için, bu örnek, veri fabrikasından çıktı klasörüne boru hattı çalıştıran kimliğini ekler. Bu, her çalıştırma tarafından oluşturulan dosyaların izlenmesine yardımcı olur.
-    > ![Eklenen ardışık hat lar çalıştırKimliği](media/solution-template-Databricks-notebook/verify-data-files.png)
+    > Data Factory işlem hattı çalıştırmaları ile ilgili olan bu örnek, veri fabrikasından alınan işlem hattı çalıştırma KIMLIĞINI çıkış klasörüne ekler. Bu, her çalıştırma tarafından oluşturulan dosyaların izlenmesini sağlar.
+    > ![Eklenen işlem hattı çalıştırma KIMLIĞI](media/solution-template-Databricks-notebook/verify-data-files.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

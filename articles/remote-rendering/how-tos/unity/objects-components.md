@@ -1,30 +1,30 @@
 ---
 title: Unity oyun nesneleri ve bileşenleri
-description: Uzaktan İşleme varlıkları ve bileşenleriyle çalışmak için Birliğe özgü yöntemleri açıklar.
+description: Uzaktan Işleme varlıkları ve bileşenleriyle çalışmak için Unity 'ye özgü yöntemleri açıklar.
 author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409867"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Unity oyun nesneleri ve bileşenleriyle etkileşim kurma
 
-Azure Uzaktan İşleme (ARR) çok sayıda nesne için optimize edilmiştir [(bkz. Sınırlamalar).](../../reference/limits.md) Ana bilgisayarda büyük ve karmaşık hiyerarşileri yönetmek mümkün olsa da, bunların hepsini düşük güçlü cihazlarda Unity'de çoğaltmak mümkün değildir.
+Azure uzaktan Işleme (ARR) çok sayıda nesne için iyileştirilmiştir (bkz. [sınırlamalar](../../reference/limits.md)). Konakta büyük ve karmaşık hiyerarşileri yönetmek mümkün olsa da, düşük güç kullanan cihazlarda Unity 'de tümünü çoğaltmak uygun değildir.
 
-Bu nedenle, bir model ana bilgisayara yüklendiğinde, Azure Uzaktan İşleme istemci aygıtındaki (ağ trafiğine neden olacak) model yapısı hakkındaki bilgileri yansıtmaktadır, ancak Unity'deki nesneleri ve bileşenleri çoğaltmaz. Bunun yerine, gerekli Unity oyun nesnelerini ve bileşenlerini el ile talep etmenizi bekler, böylelikle genel yükü gerçekte gerekenlerle sınırlandırabilirsiniz. Bu şekilde istemci tarafı performansı üzerinde daha fazla denetime sahip olabilirsiniz.
+Bu nedenle, konakta bir model yüklendiğinde, Azure uzaktan Işleme, istemci cihazdaki model yapısıyla ilgili bilgileri yansıtır (ağ trafiği olur), ancak Unity 'deki nesneleri ve bileşenleri çoğaltmaz. Bunun yerine, gerekli Unity oyun nesneleri ve bileşenlerini el ile istemeniz gerekir, bu nedenle ek yükü gerçekten gereken şekilde sınırlayabilirsiniz. Bu şekilde, istemci tarafı performans üzerinde daha fazla denetime sahip olursunuz.
 
-Sonuç olarak, Azure Uzaktan İşleme'nin Birlik tümleştirmesi, Uzaktan İşlem yapısını isteğe bağlı olarak çoğaltmak için ek işlevlerle birlikte gelir.
+Sonuç olarak, Azure uzaktan Işlemenin Unity tümleştirmesi, uzaktan Işleme yapısını isteğe bağlı olarak çoğaltmak için ek işlevlerle birlikte gelir.
 
-## <a name="load-a-model-in-unity"></a>Unity'de bir modeli yükleme
+## <a name="load-a-model-in-unity"></a>Unity 'de model yükleme
 
-Bir modeli yüklediğinizde, yüklenen modelin kök nesnesine bir başvuru alırsınız. Bu başvuru bir Unity oyun nesnesi değildir, ancak uzantı yöntemini `Entity.GetOrCreateGameObject()`kullanarak bir nesneye dönüştürebilirsiniz. Bu işlev türünde `UnityCreationMode`bir argüman bekliyor. Geçerseniz, `CreateUnityComponents`yeni oluşturulan Unity oyun nesnesi ayrıca ana bilgisayarda bulunan tüm Uzaktan İşlembileşenleri için proxy bileşenleriyle doldurulur. Bu tavsiye edilir, ancak, tercih `DoNotCreateUnityComponents`etmek , havai minimum tutmak için.
+Bir model yüklediğinizde, yüklenen modelin kök nesnesine bir başvuru alırsınız. Bu başvuru bir Unity oyun nesnesi değildir, ancak genişletme yöntemini `Entity.GetOrCreateGameObject()`kullanarak bir tane içine dönüştürebilirsiniz. Bu işlev türünde `UnityCreationMode`bir bağımsız değişken bekliyor. Geçirirseniz `CreateUnityComponents`, yeni oluşturulan Unity oyun nesnesi, konakta bulunan tüm uzaktan işleme bileşenleri için ara sunucu bileşenleri ile doldurulur. Bunun yapılması önerilir, ancak bunu tercih `DoNotCreateUnityComponents`etmek için en düşük düzeyde tutar.
 
-### <a name="load-model-with-task"></a>Görevle birlikte yükleme modeli
+### <a name="load-model-with-task"></a>Modeli görev ile yükle
 
 ```cs
 LoadModelAsync _pendingLoadTask = null;
@@ -50,7 +50,7 @@ void LoadModelWithTask()
 }
 ```
 
-### <a name="load-model-with-unity-coroutines"></a>Unity coroutines ile yük modeli
+### <a name="load-model-with-unity-coroutines"></a>Unity bağıntıları ile model yükleme
 
 ```cs
 IEnumerator LoadModelWithCoroutine()
@@ -72,7 +72,7 @@ IEnumerator LoadModelWithCoroutine()
 }
 ```
 
-### <a name="load-model-with-await-pattern"></a>Bekleme deseni ile yük modeli
+### <a name="load-model-with-await-pattern"></a>Bekleme düzenine sahip modeli yükle
 
 ```cs
 async void LoadModelWithAwait()
@@ -82,33 +82,33 @@ async void LoadModelWithAwait()
 }
 ```
 
-Yukarıdaki kod örnekleri, yerleşik model yüklendiğinden, SAS üzerinden model yükleme yolunu kullandınız. Blob kapları (kullanarak `LoadModelAsync` ve `LoadModelParams`) üzerinden model adresleme tamamen benzer çalışır.
+Yukarıdaki kod örnekleri, yerleşik model yüklendiği için SAS aracılığıyla model yükleme yolunu kullandı. (Ve `LoadModelAsync` `LoadModelParams`kullanarak), blob kapsayıcıları aracılığıyla modelin adreslenmesi tamamen analoya.
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
-Bir Unity oyun nesnesi `RemoteEntitySyncObject` oluşturmak dolaylı olarak oyun nesnesine bir bileşen ekler. Bu bileşen, varlık dönüşüm sunucuya eşitlemek için kullanılır. Varsayılan `RemoteEntitySyncObject` olarak, kullanıcının yerel `SyncToRemote()` Birlik durumunu sunucuya eşitlemek için açıkça aramasını gerektirir. Etkinleştirme `SyncEveryFrame` nesneyi otomatik olarak eşitler.
+Unity oyun nesnesi oluşturma, oyun nesnesine örtülü `RemoteEntitySyncObject` olarak bir bileşen ekler. Bu bileşen, varlık dönüşümünü sunucuya eşleştirmek için kullanılır. Varsayılan `RemoteEntitySyncObject` olarak, kullanıcının yerel Unity durumunu sunucuya `SyncToRemote()` eşitlemeyi açıkça çağırması gerekir. Etkinleştirme `SyncEveryFrame` nesneyi otomatik olarak eşitler.
 
-A'ya `RemoteEntitySyncObject` sahip nesneler, Uzak çocuklarınanlık bir şekilde, Çocukları **Göster** düğmesi aracılığıyla Unity düzenleyicisinde gösterilebilir.
+' A `RemoteEntitySyncObject` sahip olan nesneler, uzak alt öğelerinin örneğinin oluşturulmasını ve **alt öğeleri göster** düğmesi aracılığıyla Unity düzenleyicisinde gösterilmesini sağlayabilir.
 
 ![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
-## <a name="wrapper-components"></a>Sarma bileşenleri
+## <a name="wrapper-components"></a>Sarmalayıcı bileşenleri
 
-Uzaktan İşleme varlıklarına bağlı [bileşenler](../../concepts/components.md) proxy `MonoBehavior`s aracılığıyla Unity'ye maruz kalır. Bu yakınlıklar Unity'deki uzak bileşeni temsil eder ve tüm değişiklikleri ana bilgisayara iletir.
+Uzaktan Işleme varlıklarına eklenen [Bileşenler](../../concepts/components.md) , ara sunucu `MonoBehavior`'lar aracılığıyla Unity 'ye sunulur. Bu proxy 'ler Unity 'deki uzak bileşeni temsil eder ve tüm değişiklikleri konağa iletir.
 
-Proxy Uzaktan İşleme bileşenleri oluşturmak için `GetOrCreateArrComponent`uzantı yöntemini kullanın:
+Proxy uzaktan Işleme bileşenleri oluşturmak için, genişletme yöntemini `GetOrCreateArrComponent`kullanın:
 
 ```cs
 var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteManagerUnity.CurrentSession);
 ```
 
-## <a name="coupled-lifetimes"></a>Birleştirilmiş ömürler
+## <a name="coupled-lifetimes"></a>Bağlanmış yaşam süreleri
 
-Uzak bir [varlığın](../../concepts/entities.md) ve Unity oyun nesnesinin ömrü birbirime geçerken bir `RemoteEntitySyncObject`.. Böyle bir `UnityEngine.Object.Destroy(...)` oyun nesnesi ile ararsanız, uzak varlık da kaldırılır.
+Bir uzak [varlığın](../../concepts/entities.md) ve Unity oyun nesnesinin yaşam süresi bir `RemoteEntitySyncObject`ile bağlı oldukları sırada bağlanır. Bu tür bir `UnityEngine.Object.Destroy(...)` oyun nesnesiyle birlikte çağırırsanız, uzak varlık da kaldırılır.
 
-Unity oyun nesnesini yok etmek için, uzak varlığı `Unbind()` etkilemeden, öncelikle `RemoteEntitySyncObject`.
+Unity oyun nesnesini, uzak varlığı etkilemeden yok etmek için öncelikle üzerinde çağırmanız `Unbind()` gerekir. `RemoteEntitySyncObject`
 
-Aynı tüm proxy bileşenleri için geçerlidir. Yalnızca istemci tarafı temsilini yok etmek `Unbind()` için önce proxy bileşenini aramanız gerekir:
+Bu, tüm proxy bileşenleri için de geçerlidir. Yalnızca istemci tarafı gösterimini yok etmek için önce proxy bileşenini çağırmanız `Unbind()` gerekir:
 
 ```cs
 var cutplane = gameObject.GetComponent<ARRCutPlaneComponent>();
@@ -122,4 +122,4 @@ if (cutplane != null)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Unity için Remote Rendering’i ayarlama](unity-setup.md)
-* [Öğretici: Unity içinde uzak varlıklarla çalışma](../../tutorials/unity/working-with-remote-entities.md)
+* [Öğretici: Unity 'de uzak varlıklarla çalışma](../../tutorials/unity/working-with-remote-entities.md)

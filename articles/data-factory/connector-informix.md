@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nı kullanarak IBM Informix kaynaklarından verileri kopyalama
-description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık bir kopyalama etkinliği kullanarak desteklenen lavabo veri depolarına IBM Informix kaynaklarından gelen verileri nasıl kopyalaylayamamayı öğrenin.
+title: Azure Data Factory kullanarak IBM Informix kaynaklarından veri kopyalama
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliği kullanarak IBM Informix kaynaklarından desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,54 +12,54 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
 ms.openlocfilehash: b4fb6662491443db5d10825635cad8496e56e7f3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414971"
 ---
-# <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri IBM Informix veri depolarından kopyalayın
+# <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak IBM Informix veri depolarından veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, bir IBM Informix veri deposundan veri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
+Bu makalede, bir IBM Informix veri deposundan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Informix konektörü aşağıdaki etkinlikler için desteklenir:
+Bu Informix Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Verileri Informix kaynağından desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Informix kaynağından, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu Informix konektörünü kullanmak için şunları yapmanız gerekir:
+Bu Informix bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
-- Kendi kendine barındırılan Tümleştirme Çalışma Zamanı'nı ayarlayın. Ayrıntılar için [Kendi barındırılan Tümleştirme Çalışma Zamanı](create-self-hosted-integration-runtime.md) makalesine bakın.
-- Tümleştirme Runtime makinesindeki veri deposu için Informix ODBC sürücüsünü yükleyin. Örneğin, sürücü "IBM INFORMIX Informix DRIVER (64-bit)" kullanabilirsiniz.
+- Şirket içinde barındırılan bir Integration Runtime ayarlayın. Ayrıntılar için bkz. [Şirket içinde barındırılan Integration Runtime](create-self-hosted-integration-runtime.md) makalesi.
+- Integration Runtime makinesindeki veri deposu için Informix ODBC sürücüsünü yükler. Örneğin, "IBM ıNFORMIX Informix sürücü (64-bit)" sürücüsünü kullanabilirsiniz.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, Informix konektörüne özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi verilmiştir.
+Aşağıdaki bölümlerde, Informix bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Informix bağlantılı hizmet için aşağıdaki özellikler desteklenir:
+Informix bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği ayarlanmalıdır: **Informix** | Evet |
-| Connectionstring | Kimlik bilgileri bölümünü hariç alan ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Tümleştirme Runtime makinesinde ayarladığınız Sistem DSN'yi (Veri Kaynak Adı) kullanabilirsiniz (yine de bağlantılı hizmetteki kimlik bölümünü buna göre belirtmeniz gerekir). <br> Ayrıca Azure Key Vault'a bir parola `password` koyabilir ve yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Azure [Anahtar Kasası'ndaki](store-credentials-in-key-vault.md) Mağaza kimlik bilgilerine daha fazla ayrıntı yla bakın.| Evet |
-| authenticationType | Informix veri deposuna bağlanmak için kullanılan kimlik doğrulama türü.<br/>İzin verilen değerler şunlardır: **Temel** ve **Anonim**. | Evet |
-| userName | Temel kimlik doğrulamasını kullanıyorsanız kullanıcı adını belirtin. | Hayır |
-| password | Kullanıcı Adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
-| kimlik bilgisi | Bağlantı dizesinin sürücüye özgü özellik değeri biçiminde belirtilen erişim kimlik bilgileri bölümü. Bu alanı SecureString olarak işaretleyin. | Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullarda](#prerequisites)belirtildiği gibi Kendi kendine barındırılan Tümleştirme Çalışma Süresi gereklidir. |Evet |
+| type | Type özelliği: **Informix** olarak ayarlanmalıdır | Yes |
+| Dizisi | Kimlik bilgisi bölümünü dışlayarak ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Integration Runtime makinesinde ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü de belirtmeniz gerekir). <br> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için  [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md)inceleyin.| Yes |
+| authenticationType | Informix veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Yes |
+| userName | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | Hayır |
+| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
+| kimlik bilgisi | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Bu alanı SecureString olarak işaretleyin. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -85,16 +85,16 @@ Informix bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, Informix dataset tarafından desteklenen özelliklerin bir listesi yer almaktadır.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Informix veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Informix'teki verileri kopyalamak için aşağıdaki özellikler desteklenir:
+Informix verilerini kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **InformixTable** | Evet |
-| tableName | Informix'teki tablonun adı. | Kaynak için hayır (etkinlik kaynağında "sorgu" belirtilirse);<br/>Lavabo için evet |
+| type | DataSet 'in Type özelliği: **ınformixtable** olarak ayarlanmalıdır | Yes |
+| tableName | Informix içindeki tablonun adı. | Kaynak için Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse);<br/>Havuz için Evet |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -114,18 +114,18 @@ Informix'teki verileri kopyalamak için aşağıdaki özellikler desteklenir:
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, Informix kaynağı tarafından desteklenen özelliklerin bir listesi yer almaktadır.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm Informix kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="informix-as-source"></a>Kaynak olarak Informix
 
-Informix'teki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölümünde aşağıdaki özellikler desteklenir:
+Informix verilerini kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının türü özelliği ayarlanmalıdır: **InformixSource** | Evet |
-| sorgu | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **ınformixsource** olarak ayarlanmalıdır | Yes |
+| sorgu | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -157,10 +157,10 @@ Informix'teki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölüm
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

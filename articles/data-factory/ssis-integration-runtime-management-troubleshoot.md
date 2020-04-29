@@ -1,6 +1,6 @@
 ---
-title: Sorun Giderme SSIS Tümleştirme Runtime yönetimi
-description: Bu makale, SSIS Tümleştirme Çalışma Zamanı (SSIS IR) yönetim sorunları için sorun giderme kılavuzu sağlar
+title: SSIS Integration Runtime yönetimi sorunlarını giderme
+description: Bu makale, SSIS Integration Runtime (SSIS IR) yönetim sorunları için sorun giderme kılavuzu sağlar
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -12,27 +12,27 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414708"
 ---
-# <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Veri Fabrikası'nda SSIS Tümleştirme Çalışma Zamanı yönetimini sorun giderme
+# <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory 'de SSIS Integration Runtime yönetimi sorunlarını giderme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede, SSIS IR olarak da bilinen Azure-SQL Server Integration Services (SSIS) Tümleştirme Çalışma Süresi'ndeki (IR) yönetim sorunları için sorun giderme kılavuzu sağlanmaktadır.
+Bu makalede, SSIS IR olarak da bilinen Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) içindeki yönetim sorunlarına yönelik sorun giderme kılavuzu sunulmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
 
-SSIS IR'yi sağlarken veya yok ederken herhangi bir sorunla karşınıza çıkarsa, Microsoft Azure Veri Fabrikası portalında bir hata iletisi veya PowerShell cmdlet'ten döndürülen bir hata görürsünüz. Hata her zaman ayrıntılı bir hata iletisi ile bir hata kodu biçiminde görünür.
+SSIS IR sağlama veya sağlamayı kaldırma sırasında herhangi bir sorunla karşılaşırsanız, Microsoft Azure Data Factory portalında bir hata iletisi veya bir PowerShell cmdlet 'inden döndürülen bir hata görürsünüz. Hata her zaman, ayrıntılı bir hata iletisiyle birlikte hata kodu biçiminde görüntülenir.
 
-Hata kodu InternalServerError ise, hizmetgeçici sorunları vardır ve daha sonra işlemi yeniden denemelisiniz. Yeniden deneme nin yardımı yoksa, Azure Veri Fabrikası destek ekibine başvurun.
+Hata kodu ınternalservererror ise, hizmette geçici sorunlar olur ve işlemi daha sonra yeniden denemeniz gerekir. Yeniden deneme işlemi yardım vermezse, Azure Data Factory destek ekibine başvurun.
 
-Aksi takdirde, üç büyük dış bağımlılık hatalara neden olabilir: Bir Azure SQL Veritabanı sunucusu veya yönetilen örnek, özel bir kurulum komut dosyası ve sanal ağ yapılandırması.
+Aksi takdirde, üç önemli dış bağımlılıklar hatalara neden olabilir: bir Azure SQL veritabanı sunucusu veya yönetilen örnek, özel bir kurulum betiği ve sanal ağ yapılandırması.
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL Veritabanı sunucusu veya yönetilen örnek sorunları
+## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL veritabanı sunucusu veya yönetilen örnek sorunları
 
 SSIS IR'yi bir SSIS katalog veritabanıyla sağlıyorsanız Azure SQL Veritabanı sunucusu veya yönetilen örneği gereklidir. SSIS IR'nin Azure SQL Veritabanı sunucusuna veya yönetilen örneğine erişebilmesi gerekir. Ayrıca Azure SQL Veritabanı sunucusu veya yönetilen örneğinin hesabı bir SSIS katalog veritabanı (SSISDB) oluşturma iznine sahip olmalıdır. Hata varsa, ayrıntılı SQL özel durum iletisiyle hata kodu Data Factory portalında gösterilir. Hata kodlarındaki sorunları gidermek için aşağıdaki listede yer alan bilgileri kullanın.
 
@@ -45,8 +45,8 @@ Yeni SSIS IR sağlarken veya IR çalıştırılırken bu hatayı görebilirsiniz
 * Microsoft Azure Active Directory (Azure AD) kimlik doğrulaması (yönetilen kimlik) sırasında oturum açma başarısız oldu. Fabrikanızın yönetilen kimliğini bir AAD grubuna ekleyin ve yönetilen kimliğin katalog veritabanı sunucunuza erişim izinleri olduğundan emin olun.
 * Bağlantı zaman aşımı. Bu hatanın nedeni her zaman güvenlikle ilgili yapılandırmadır. Şunları yapmanızı öneririz:
   1. Yeni bir VM oluşturun.
-  1. IR sanal ağdaysa, VM'ye aynı Microsoft Azure Sanal IR Ağı'na katılın.
-  1. SSMS'i yükleyin ve Azure SQL Veritabanı sunucusunu veya yönetilen örnek durumunu denetleyin.
+  1. IR bir sanal ağda ise, VM 'yi IR 'nin aynı Microsoft Azure Sanal Ağ birleştirin.
+  1. SSMS 'yi yükleyip Azure SQL veritabanı sunucusunu veya yönetilen örnek durumunu denetleyin.
 
 Diğer sorunlar için, ayrıntılı SQL Özel Durum hata iletisinde gösterilen sorunu çözün. Sorun yaşamaya devam ediyorsanız Azure SQL Veritabanı sunucusu veya yönetilen örneğinin destek takımına başvurun.
 
@@ -54,13 +54,13 @@ Hatayı IR çalıştırılırken görüyorsanız, ağ güvenlik grubu veya güve
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
-Bu tür bir hata iletisi şu şekilde görünebilir: "Veritabanı 'SSISDB' boyut kotasına ulaştı. Verileri bölme veya silme, dizinleri bırakma veya olası çözümler için belgelere başvurun." 
+Bu tür bir hata iletisi şöyle görünebilir: "veritabanı ' SSSıSDB ', boyut kotasına ulaştı. Verileri bölümleyin veya silin, dizinleri bırakın veya olası çözümler için belgelere başvurun. " 
 
 Olası çözümler şunlardır:
-* SSISDB'nizin kota boyutunu artırın.
+* SSSıSDB 'nizin kota boyutunu artırın.
 * SSISDB'nin yapılandırmasını değiştirerek boyutu şöyle azaltın:
-   * Bekletme süresini ve proje sürümlerinin sayısını azaltma.
-   * Günlüğün bekletme süresini azaltmak.
+   * Saklama süresini ve proje sürümü sayısını azaltma.
+   * Günlüğün Bekletme dönemi azaltıyor.
    * Günlüğün varsayılan düzeyini değiştirme.
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
@@ -78,9 +78,9 @@ Diğer sorunlar için SQL Özel Durumu hata iletisini gözden geçirin ve hata a
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Bu tür bir hata iletisi şuna benzer: "Geçersiz nesne adı 'catalog.catalog_properties'." Bu durumda, ssisdb adında bir veritabanınız zaten var, ancak SSIS IR tarafından oluşturulmadı veya veritabanı son SSIS IR sağlamadaki hatalardan kaynaklanan geçersiz bir durumdadır. SSISDB adlı mevcut veritabanını bırakabilir veya IR için yeni bir Azure SQL Veritabanı sunucusu veya yönetilen örneği yapılandırabilirsiniz.
+Bu tür bir hata iletisi şöyle görünür: "geçersiz nesne adı ' kataloğu. catalog_properties '." Bu durumda, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış veya veritabanı, son SSIS IR sağlama hatalarından kaynaklanan geçersiz bir durumda. SSISDB adlı mevcut veritabanını bırakabilir veya IR için yeni bir Azure SQL Veritabanı sunucusu veya yönetilen örneği yapılandırabilirsiniz.
 
-## <a name="custom-setup-issues"></a>Özel kurulum sorunları
+## <a name="custom-setup-issues"></a>Özel Kurulum sorunları
 
 SSIS IR'nizin sağlanması veya yeniden yapılandırılması sırasında özel kurulum kendi kurulum adımlarınızı eklemeniz için bir arabirim sağlar. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime için kurulumu özelleştirme](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
 
@@ -88,7 +88,7 @@ Kapsayıcınızın yalnızca gerekli kurulum dosyalarını içerdiğinden emin o
 
 Özel kurulum betiği kapsayıcısı IR çalıştırılırken denetlenir çünkü SSIS IR düzenli aralıklarla güncelleştirilir. Bu güncelleştirme, özel kurulum betiğini indirmek ve yeniden yüklemek için kapsayıcıya erişim gerektirir. İşlemde kapsayıcının erişilebilir ve main.cmd dosyasının mevcut olup olmadığı da denetlenir.
 
-Özel kurulum içeren herhangi bir hata için, CustomSetupScriptBlobContainerInaccessible veya CustomSetupScriptNotFound gibi alt kodu ile bir CustomSetupScriptFailure hata kodu görürsünüz.
+Özel kurulumu içeren herhangi bir hata için, Customsetupscriptblobcontainererişilemeyen veya CustomSetupScriptNotFound gibi Sub Code ile bir CustomSetupScriptFailure hata kodu görürsünüz.
 
 ### <a name="customsetupscriptblobcontainerinaccessible"></a>CustomSetupScriptBlobContainerInaccessible
 
@@ -124,7 +124,7 @@ Bu hata çeşitli nedenlerle oluşabilir. Sorunu gidermek için [Yasak](#forbidd
 
 ### <a name="forbidden"></a>Yasak
 
-Bu tür bir hata buna benzeyebilir: "SubnetId cari hesap için etkinleştirilemedi. Microsoft.Batch kaynak sağlayıcısı VNet'in aynı aboneliği altında kayıtlı değildir."
+Bu tür bir hata şuna benzeyebilir: "SubnetID geçerli hesap için etkinleştirilmemiş. Microsoft. Batch kaynak sağlayıcısı, VNet 'in aynı aboneliğine kayıtlı değil. "
 
 Bu ayrıntılar Azure Batch'in sanal ağınıza erişemediği anlamına gelir. Microsoft.Batch kaynak sağlayıcısını Sanal Ağ ile aynı aboneliğe kaydedin.
 
@@ -132,14 +132,14 @@ Bu ayrıntılar Azure Batch'in sanal ağınıza erişemediği anlamına gelir. M
 
 Bu tür bir hata aşağıdakilerden birine benzer olabilir: 
 
-- "Belirtilen VNet yok veya Toplu İşlem hizmetinin bu hizmete erişimi yok."
+- "Belirtilen sanal ağ yok ya da Batch hizmetinin erişimi yok."
 - "Belirtilen alt ağ xxx yok."
 
 Bu hatalar sanal ağın var olmadığı, Azure Batch hizmetinin bu sanal ağa erişemediği veya sağlanan alt ağın var olmadığı anlamına gelir. Sanal ağ ile alt ağın var olduğundan ve Azure Batch'in bunlara erişebildiğinden emin olun.
 
 ### <a name="misconfigureddnsserverornsgsettings"></a>MisconfiguredDnsServerOrNsgSettings
 
-Bu tür bir hata iletisi şu şekilde görünebilir: "VNet'te Tümleştirme Runtime'ı sağlayamayan. DNS sunucusu veya NSG ayarları yapılandırılırsa, DNS sunucusuna erişilebilir olduğundan ve NSG'nin düzgün şekilde yapılandırıldığından emin olun."
+Bu tür bir hata iletisi şu şekilde görünebilir: "VNet 'te Integration Runtime sağlanamadı. DNS sunucusu veya NSG ayarları yapılandırılırsa, DNS sunucusunun erişilebilir olduğundan ve NSG 'nin doğru yapılandırıldığından emin olun. "
 
 Bu durumda büyük olasılıkla DNS sunucusunda ve NSG ayarlarında SSIS IR için gereken Azure sunucu adının çözümlenmesini veya bu ada erişilmesini engelleyen özelleştirilmiş bir yapılandırma kullanıyorsunuzdur. Daha fazla bilgi için bkz. [SSIS IR Sanal Ağ yapılandırması](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Sorunlarınız devam ediyorsa Azure Data Factory destek takımına başvurun.
 
@@ -161,35 +161,35 @@ Bu hata IR çalışırken oluşur ve IR'nin artık iyi durumda olmadığı anlam
 
 ## <a name="static-public-ip-addresses-configuration"></a>Statik genel IP adresleri yapılandırması
 
-Azure-SSIS IR'ye Azure Sanal Ağı'na katıldığınızda, IR'nin belirli IP adreslerine erişimi sınırlayan veri kaynaklarına erişebilmesi için IR için kendi statik genel IP adreslerinizi de getirebilirsiniz. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime'ı sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+Azure-SSIS IR Azure sanal ağına katdığınızda, IR 'nin, belirli IP adreslerine erişimi sınırlayan veri kaynaklarına erişebilmesi için kendi statik genel IP adreslerini de bir araya getirebileceksiniz. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime'ı sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
-Yukarıdaki sanal ağ sorunlarının yanı sıra, statik genel IP adresleriyle ilgili sorunu da karşılaabilirsiniz. Lütfen yardım için aşağıdaki hataları kontrol edin.
+Yukarıdaki sanal ağ sorunlarının yanı sıra statik ortak IP adresleriyle ilgili sorunu da karşılayabilirsiniz. Yardım için lütfen aşağıdaki hataları kontrol edin.
 
-### <a name="invalidpublicipspecified"></a><a name="InvalidPublicIPSpecified"></a>GeçersizPublicIPSpecified
+### <a name="invalidpublicipspecified"></a><a name="InvalidPublicIPSpecified"></a>Invalidpublicipbelirtilmiş
 
-Bu hata, Azure-SSIS IR'yi başlattığınızda çeşitli nedenlerle oluşabilir:
+Bu hata, Azure-SSIS IR başlattığınızda çeşitli nedenlerden kaynaklanabilir:
 
 | Hata iletisi | Çözüm|
 |:--- |:--- |
-| Sağlanan statik genel IP adresi zaten kullanılmış, lütfen Azure-SSIS Tümleştirme Çalışma süreniz için kullanılmayan iki adres sağlayın. | Kullanılmayan iki statik genel IP adresi seçmeli veya belirtilen genel IP adresine yapılan geçerli başvuruları kaldırmalı ve ardından Azure-SSIS IR'yi yeniden başlatmalısınız. |
-| Sağlanan statik genel IP adresidn adı yoktur, lütfen azure-SSIS Tümleştirme Çalışma süreniz için bunlardan ikisine DNS adı sağlayın. | Aşağıdaki resimde görüldüğü gibi, Azure portalında genel IP adresinin DNS adını kurabilirsiniz. Belirli adımlar şunlardır: (1) Azure portalını açın ve bu genel IP adresinin kaynak sayfasına gidin; (2) **Yapılandırma** bölümünü seçin ve DNS adını ayarlayın, sonra **Kaydet** düğmesini tıklatın; (3) Azure-SSIS IR'nizi yeniden başlatın. |
-| Azure-SSIS Tümleştirme Çalışma süreniz için sağlanan VNet ve statik genel IP adresleri aynı konumda olmalıdır. | Azure Ağı'nın gereksinimlerine göre, statik genel IP adresi ve sanal ağ aynı konumda ve abonelikte olmalıdır. Lütfen iki geçerli statik genel IP adresi sağlayın ve Azure-SSIS IR'yi yeniden başlatın. |
-| Sağlanan statik genel IP adresi temel bir adrestir, lütfen Azure-SSIS Tümleştirme Çalışma süreniz için iki standart adres sağlayın. | Yardım için [Genel IP Adresi'nin SK'lerine](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) bakın. |
+| Belirtilen statik genel IP adresi zaten kullanılıyor, lütfen Azure-SSIS Integration Runtime için kullanılmamış iki tane belirtin. | İki kullanılmamış statik genel IP adresi seçmeniz veya belirtilen genel IP adresine yönelik geçerli başvuruları kaldırmanız ve ardından Azure-SSIS IR yeniden başlatmanız gerekir. |
+| Belirtilen statik genel IP adresi, DNS adına sahip değil, lütfen Azure-SSIS Integration Runtime DNS adına sahip iki tane belirtin. | Aşağıdaki resimde gösterildiği gibi Azure portal genel IP adresinin DNS adını ayarlayabilirsiniz. Belirli adımlar şunlardır: (1) Azure portal aç ve bu genel IP adresinin kaynak sayfasına git; (2) **yapılandırma** bölümünü SEÇIN ve DNS adını ayarlayıp **Kaydet** düğmesine tıklayın; (3) Azure-SSIS IR yeniden başlatın. |
+| Azure-SSIS Integration Runtime için sunulan VNet ve statik genel IP adresleri aynı konumda olmalıdır. | Azure ağının gereksinimlerine göre, statik genel IP adresi ve sanal ağ aynı konum ve abonelikte olmalıdır. Lütfen iki geçerli statik genel IP adresi sağlayın ve Azure-SSIS IR yeniden başlatın. |
+| Belirtilen statik genel IP adresi temel bir tane, lütfen Azure-SSIS Integration Runtime için iki standart değer sağlayın. | Yardım için [genel IP adresi SKU 'larına](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) bakın. |
 
 ![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 
-### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
+### <a name="publicipresourcegrouplockedduringstart"></a>Publicıpresourcegrouplockedduringstart
 
-Azure-SSIS IR sağlama başarısız olursa, oluşturulan tüm kaynaklar silinir. Ancak, abonelik veya kaynak grubunda (statik genel IP adresinizi içeren) bir kaynak silme kilidi varsa, ağ kaynakları beklendiği gibi silinmez. Hatayı gidermek için lütfen silme kilidini kaldırın ve IR'yi yeniden başlatın.
+Azure-SSIS IR sağlama başarısız olursa, oluşturulan tüm kaynaklar silinir. Ancak, abonelikte veya kaynak grubunda (statik genel IP adresiniz içeren) bir kaynak silme kilidi varsa, ağ kaynakları beklendiği gibi silinmez. Hatayı düzeltemedi, lütfen silme kilidini kaldırın ve IR 'yi yeniden başlatın.
 
-### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
+### <a name="publicipresourcegrouplockedduringstop"></a>Publicıpresourcegrouplockedduringstop
 
-Azure-SSIS IR'yi durdurduğunuzda, ortak IP adresinizi içeren kaynak grubunda oluşturulan tüm ağ kaynakları silinir. Ancak, abonelik veya kaynak grubunda (statik genel IP adresinizi içeren) bir kaynak silme kilidi varsa silme işlemi başarısız olabilir. Lütfen silme kilidini kaldırın ve IR'yi yeniden başlatın.
+Azure-SSIS IR durdurduğunuzda, genel IP adresinizi içeren kaynak grubunda oluşturulan tüm ağ kaynakları silinir. Ancak abonelikte veya kaynak grubunda (statik genel IP adresiniz içeren) bir kaynak silme kilidi varsa silme işlemi başarısız olabilir. Lütfen silme kilidini kaldırın ve IR 'yi yeniden başlatın.
 
-### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedYükseltme Sırasında
+### <a name="publicipresourcegrouplockedduringupgrade"></a>Publicıpresourcegrouplockedduringupgrade
 
-Azure-SSIS IR düzenli olarak otomatik olarak güncelleştirilir. Yükseltme sırasında yeni IR düğümleri oluşturulur ve eski düğümler silinir. Ayrıca, eski düğümler için oluşturulan ağ kaynakları (örn. yük dengeleyicisi ve ağ güvenlik grubu) silinir ve aboneliğiniz altında yeni ağ kaynakları oluşturulur. Bu hata, abonelik veya kaynak grubundaki (statik genel IP adresinizi içeren) silme kilidi nedeniyle eski düğümler için ağ kaynaklarını silmenin başarısız olduğu anlamına gelir. Eski düğümleri temizleyebilmemiz ve eski düğümlerin statik genel IP adresini serbest bırakabilmemiz için lütfen silme kilidini kaldırın. Aksi takdirde statik genel IP adresi serbest bırakılamaz ve IR'nizi daha da yükseltemeyiz.
+Azure-SSIS IR düzenli aralıklarla otomatik olarak güncelleştirilir. Yükseltme sırasında yeni IR düğümleri oluşturulur ve eski düğümler silinir. Ayrıca, eski düğümlerin oluşturduğu ağ kaynakları (örneğin, yük dengeleyici ve ağ güvenlik grubu) silinir ve yeni ağ kaynakları aboneliğiniz altında oluşturulur. Bu hata, abonelik veya kaynak grubundaki (statik genel IP adresi içeren) silme kilidi nedeniyle eski düğümlerin ağ kaynaklarının silinmesinin başarısız olduğu anlamına gelir. Eski düğümleri temizleyebilmemiz ve eski düğümlerin statik genel IP adresini serbest bırakabilmeleri için silme kilidini kaldırın. Aksi takdirde, statik genel IP adresi yayınlanamaz ve diğer bir deyişle, IR 'yi yükseltemeyeceksiniz.
 
-### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableYükseltme Sırasında
+### <a name="publicipnotusableduringupgrade"></a>Publicıpnotusableduringupgrade
 
-Kendi statik genel IP adreslerinizi getirmek istediğinizde, iki genel IP adresi sağlanmalıdır. Bunlardan biri hemen IR düğümleri oluşturmak için kullanılacak ve başka bir IR yükseltme sırasında kullanılacaktır. Bu hata, yükseltme sırasında diğer genel IP adresi kullanışsız olduğunda oluşabilir. Olası nedenler için lütfen [GeçersizKamuIPSpecified'e](#InvalidPublicIPSpecified) bakın.
+Kendi statik genel IP adreslerinizi getirmek istediğinizde, iki genel IP adresi sağlanmalıdır. Bunlardan biri, IR düğümlerini hemen oluşturmak için kullanılır ve IR 'nin yükseltilmesi sırasında başka bir tane kullanılır. Bu hata, diğer genel IP adresi yükseltme sırasında kullanılabilir olmadığında ortaya çıkabilir. Olası nedenler için lütfen [ınvalidpublicıpbelirtilen](#InvalidPublicIPSpecified) bölümüne bakın.

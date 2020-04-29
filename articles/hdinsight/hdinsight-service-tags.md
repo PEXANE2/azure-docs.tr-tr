@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight için ağ güvenlik grubu (NSG) hizmet etiketleri
-description: NSG'lerinize IP adresleri eklemeden, sağlık ve yönetim hizmetleri düğümlerinden kümenize gelen trafiğin izin vermek için HDInsight hizmet etiketlerini kullanın.
+description: NSG 'lerinize IP adresleri eklemeden, sistem durumu ve Yönetim Hizmetleri düğümlerinden kümenize gelen trafiğe izin vermek için HDInsight hizmet etiketlerini kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
@@ -8,85 +8,85 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410866"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için NSG hizmet etiketleri
 
-Ağ güvenliği grupları (NSG'ler) için Azure HDInsight hizmet etiketleri, sağlık ve yönetim hizmetleri için IP adresleri gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığını en aza indirmeye yardımcı olur. [Hizmet etiketleri,](../virtual-network/security-overview.md#service-tags) NSG'lerinizde [yönetim IP adreslerinin](hdinsight-management-ip-addresses.md) her birini girmeden belirli IP'lerden gelen gelen trafiğe izin verir.
+Ağ güvenlik grupları (NSG 'ler) için Azure HDInsight hizmet etiketleri, sistem durumu ve Yönetim Hizmetleri için IP adresi gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığına en aza indirmenize yardımcı olur. [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags) , NSG 'lerinize her BIR [Yönetim IP adresini](hdinsight-management-ip-addresses.md) girmeden belirli IP 'lerden gelen trafiğe izin verir.
 
-HDInsight hizmeti bu hizmet etiketlerini yönetir. Kendi hizmet etiketinizi oluşturamaz veya varolan bir etiketi değiştiremezsiniz. Microsoft, hizmet etiketiyle eşleşen adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir.
+HDInsight hizmeti bu hizmet etiketlerini yönetir. Kendi hizmet etiketinizi oluşturamaz veya var olan bir etiketi değiştiremezsiniz. Microsoft, hizmet etiketiyle eşleşen adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 
-## <a name="get-started-with-service-tags"></a>Hizmet etiketleri ile başlayın
+## <a name="get-started-with-service-tags"></a>Hizmet etiketlerini kullanmaya başlama
 
-Ağ güvenlik gruplarınızda hizmet etiketlerini kullanmak için iki seçeneğiniz vardır:
+Ağ güvenlik gruplarında hizmet etiketleri kullanmak için iki seçeneğiniz vardır:
 
-- **Tek bir global HDInsight hizmet etiketi kullanın**: Bu seçenek, sanal ağınızı HDInsight hizmetinin tüm bölgelerdeki kümeleri izlemek için kullandığı tüm IP adreslerine açar. Bu seçenek en basit yöntemdir, ancak kısıtlayıcı güvenlik gereksinimleriniz varsa uygun olmayabilir.
+- **Tek bir Global HDInsight hizmet etiketi kullan**: Bu seçenek, Sanal ağınızı HDInsight hizmetinin tüm bölgelerde kümeleri izlemek için KULLANDıĞı tüm IP adreslerine açar. Bu seçenek en basit yöntemdir, ancak kısıtlayıcı güvenlik gereksinimleriniz varsa uygun olmayabilir.
 
-- **Birden çok bölgesel hizmet etiketi kullanın**: Bu seçenek sanal ağınızı yalnızca HDInsight'ın söz konusu bölgede kullandığı IP adreslerine açar. Ancak, birden çok bölge kullanıyorsanız, sanal ağınıza birden çok hizmet etiketi eklemeniz gerekir.
+- **Birden çok bölgesel hizmet etiketi kullan**: Bu seçenek, Sanal ağınızı yalnızca HDInsight 'ın o belirli bölgede kullandığı IP adreslerine açar. Ancak, birden çok bölge kullanıyorsanız, sanal ağınıza birden çok hizmet etiketi eklemeniz gerekir.
 
-## <a name="use-a-single-global-hdinsight-service-tag"></a>Tek bir global HDInsight hizmet etiketi kullanma
+## <a name="use-a-single-global-hdinsight-service-tag"></a>Tek bir Global HDInsight hizmet etiketi kullanın
 
-HDInsight kümenizde hizmet etiketlerini kullanmaya başlamanın en kolay `HDInsight` yolu, genel etiketi bir NSG kuralına eklemektir.
+HDInsight kümeniz ile hizmet etiketleri kullanmaya başlamanın en kolay yolu, genel etiketi `HDInsight` bir NSG kuralına eklemektir.
 
-1. Azure [portalından](https://portal.azure.com/)ağ güvenlik grubunuzu seçin.
+1. [Azure Portal](https://portal.azure.com/)ağ güvenlik grubunuzu seçin.
 
-1. **Ayarlar**altında **Gelen güvenlik kurallarını**seçin ve sonra **+ Ekle'yi**seçin.
+1. **Ayarlar**altında **gelen güvenlik kuralları**' nı seçin ve **+ Ekle**' yi seçin.
 
-1. **Kaynak** açılır listesinden Hizmet **Etiketi'ni**seçin.
+1. **Kaynak** açılan listesinden **hizmet etiketi**' ni seçin.
 
-1. Kaynak **hizmet etiketi** açılır listesinden **HDInsight'ı**seçin.
+1. **Kaynak hizmet etiketi** açılan listesinden **HDInsight**' ı seçin.
 
-    ![Azure portalından hizmet etiketi ekleme](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    ![Azure portal bir hizmet etiketi ekleyin](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
-Bu etiket, HDInsight'ın kullanılabildiği tüm bölgeler için sağlık ve yönetim hizmetlerinin IP adreslerini içerir. Etiket, kümenizin nerede oluşturulursa oluşturulsun gerekli sağlık ve yönetim hizmetleriyle iletişim kurmasını sağlar.
+Bu etiket, HDInsight 'ın kullanılabildiği tüm bölgeler için sistem durumu ve yönetim hizmetlerinin IP adreslerini içerir. Etiketi, kümenizin nerede oluşturulduğuna bakılmaksızın gerekli sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olur.
 
 ## <a name="use-regional-hdinsight-service-tags"></a>Bölgesel HDInsight hizmet etiketlerini kullanma
 
-Daha kısıtlayıcı izinlere ihtiyacınız olduğundan genel etiket seçeneği işe yaramazsa, yalnızca bölgeniz için geçerli olan hizmet etiketlerine izin verebilirsiniz. Kümenizin oluşturulduğu bölgeye bağlı olarak birden çok hizmet etiketi olabilir.
+Daha kısıtlayıcı izinleriniz olması gerektiğinden genel etiket seçeneği çalışmazsa, yalnızca bölgeniz için geçerli olan hizmet etiketlerine izin verebilirsiniz. Kümenizin oluşturulduğu bölgeye bağlı olarak birden çok hizmet etiketi olabilir.
 
-Bölgeniz için hangi hizmet etiketlerini ekleyeceğinizi öğrenmek için makalenin aşağıdaki bölümlerini okuyun.
+Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için makalenin aşağıdaki bölümlerini okuyun.
 
-### <a name="use-a-single-regional-service-tag"></a>Tek bir bölgesel hizmet etiketi kullanma
+### <a name="use-a-single-regional-service-tag"></a>Tek bir bölgesel hizmet etiketi kullanın
 
-Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG'nize yalnızca tek bir bölgesel hizmet etiketi eklemeniz gerekir.
+Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG 'nize yalnızca tek bir bölgesel hizmet etiketi eklemeniz gerekir.
 
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
-| Avustralya | Doğu Avustralya | HDInsight.AustraliaDoğu |
-| &nbsp; | Güneydoğu Avustralya | HDInsight.AustraliaGüneydoğu |
-| &nbsp; | Orta Avustralya | HDInsight.AustraliaCentral |
-| Çin | Çin Doğu 2 | HDInsight.ChinaEast2 |
-| &nbsp; | Çin Kuzey 2 | HDInsight.ChinaNorth2 |
-| Amerika Birleşik Devletleri | Orta Kuzey ABD | HDInsight.NorthCentralUS |
-| &nbsp; | Batı ABD 2 | HDInsight.WestUS2 |
-| &nbsp; | Orta Batı ABD | HDInsight.WestCentralUS |
-| Kanada | Doğu Kanada | HDInsight.CanadaDoğu |
-| Brezilya | Güney Brezilya | HDInsight.BrazilSouth |
-| Güney Kore | Güney Kore - Orta | HDInsight.KoreaCentral |
-| &nbsp; | Güney Kore - Güney | HDInsight.KoreaSouth |
-| Hindistan | Orta Hindistan | HDInsight.CentralHindistan |
-| &nbsp; | Güney Hindistan | HDInsight.SouthIndia |
-| Japonya | Batı Japonya | HDInsight.JapanWest |
-| Fransa | Orta Fransa| HDInsight.FranceCentral |
-| Birleşik Krallık | Güney Birleşik Krallık | HDInsight.UKSouth |
-| Azure Kamu | USDoD Merkez | HDInsight.USDoDCentral |
-| &nbsp; | USGov Texas | HDInsight.USGovTexas |
-| &nbsp; | Usdod Doğu | HDInsight.USDoDEast |
-| &nbsp; | USGov Arizona | HDInsight.USGovArizona |
+| Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
+| &nbsp; | Güneydoğu Avustralya | HDInsight. AustraliaSoutheast |
+| &nbsp; | Orta Avustralya | HDInsight. AustraliaCentral |
+| Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
+| &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
+| Amerika Birleşik Devletleri | Orta Kuzey ABD | HDInsight. Kuzeydoğu ABD |
+| &nbsp; | Batı ABD 2 | HDInsight. WestUS2 |
+| &nbsp; | Orta Batı ABD | HDInsight. WestCentralUS |
+| Kanada | Doğu Kanada | HDInsight. Canadadoğu |
+| Brezilya | Güney Brezilya | HDInsight. BrazilSouth |
+| Güney Kore | Güney Kore - Orta | HDInsight. KoreaCentral |
+| &nbsp; | Güney Kore - Güney | HDInsight. Koreagüney |
+| Hindistan | Orta Hindistan | HDInsight. merkezde Hindistan |
+| &nbsp; | Güney Hindistan | HDInsight. Güneydoğu |
+| Japonya | Batı Japonya | HDInsight. JapanWest |
+| Fransa | Orta Fransa| HDInsight. Francecna al |
+| Birleşik Krallık | Güney Birleşik Krallık | HDInsight. UKGüney |
+| Azure Kamu | USDoD orta | HDInsight. Usdodorta |
+| &nbsp; | USGov Texas | HDInsight. USGovTexas |
+| &nbsp; | UsDoD Doğu | HDInsight. USDoDEast |
+| &nbsp; | USGov Arizona | HDInsight. USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Birden çok bölgesel hizmet etiketi kullanma
 
-Kümenizin oluşturulduğu bölge önceki tabloda listelenmemişse, birden çok bölgesel hizmet etiketine izin vermeniz gerekir. Birden fazla kullanma gereksinimi, çeşitli bölgeler için kaynak sağlayıcılarının düzenlenmesindeki farklılıklardan kaynaklanır.
+Kümenizin oluşturulduğu bölge yukarıdaki tabloda listelenmiyorsa, birden çok bölgesel hizmet etiketine izin vermeniz gerekir. Çeşitli bölgelere yönelik kaynak sağlayıcılarının düzenleme farklarından çok daha fazlasını kullanma ihtiyacı vardır.
 
-Geri kalan bölgeler, kullandıkları bölgesel hizmet etiketlerine göre gruplara ayrılır.
+Kalan bölgeler, kullandıkları bölgesel hizmet etiketlerine göre gruplara ayrılır.
 
 #### <a name="group-1"></a>Grup 1
 
-Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet `HDInsight.WestUS` etiketlerini ve `HDInsight.EastUS`. Ayrıca, bölgesel hizmet etiketi listelenmiştir. Bu bölümdeki bölgeler üç hizmet etiketi gerektirir.
+Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet etiketlerine `HDInsight.WestUS` izin verin ve. `HDInsight.EastUS` Ayrıca, bölgesel hizmet etiketi de listelenir. Bu bölümdeki bölgeler üç hizmet etiketi gerektirir.
 
 Örneğin, kümeniz `East US 2` bölgede oluşturulduysa, ağ güvenlik grubunuza aşağıdaki hizmet etiketlerini eklemeniz gerekir:
 
@@ -96,30 +96,30 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet `HD
 
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
-| Amerika Birleşik Devletleri | Doğu ABD 2 | HDInsight.EastUS2 |
-| &nbsp; | Orta ABD | HDInsight.CentralUS |
-| &nbsp; | KuzeyOrta ABD | HDInsight. KuzeyCentralUS |
-| &nbsp; | Orta Güney ABD | HDInsight.SouthCentralUS |
-| &nbsp; | Doğu ABD | HDInsight.EastUS |
-| &nbsp; | Batı ABD | HDInsight.WestUS |
-| Japonya | Doğu Japonya | HDInsight.JapanDoğu |
-| Avrupa | Kuzey Avrupa | HDInsight.NorthEurope |
-| &nbsp; | Batı Avrupa| HDInsight.WestEurope |
-| Asya | Doğu Asya | HDInsight.EastAsia |
-| &nbsp; | Güneydoğu Asya | HDInsight.SoutheastAsia |
-| Avustralya | Doğu Avustralya | HDInsight.AustraliaDoğu |
+| Amerika Birleşik Devletleri | Doğu ABD 2 | HDInsight. EastUS2 |
+| &nbsp; | Orta ABD | HDInsight. merkezde ABD |
+| &nbsp; | Kuzey Orta ABD | 'Tan. Kuzeydoğu ABD |
+| &nbsp; | Orta Güney ABD | HDInsight. Güneydoğu ABD |
+| &nbsp; | Doğu ABD | HDInsight. EastUS |
+| &nbsp; | Batı ABD | HDInsight. WestUS |
+| Japonya | Doğu Japonya | HDInsight. JapanEast |
+| Avrupa | Kuzey Avrupa | HDInsight. NorthEurope |
+| &nbsp; | Batı Avrupa| HDInsight. WestEurope |
+| Asya | Doğu Asya | HDInsight. Eastasıya |
+| &nbsp; | Güneydoğu Asya | HDInsight. Güneydoğu |
+| Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
 
 #### <a name="group-2"></a>Grup 2
 
-*Çin Kuzey* ve *Çin Doğu* bölgelerinde kümeler iki hizmet `HDInsight.ChinaNorth` `HDInsight.ChinaEast`etiketleri izin vermek gerekir: ve .
+*Çin Kuzey* ve *Çin Doğu* bölgelerindeki kümelerin iki hizmet etiketine izin vermek gerekir: `HDInsight.ChinaNorth` ve `HDInsight.ChinaEast`.
 
 #### <a name="group-3"></a>Grup 3
 
-*ABD Gov Iowa* ve ABD *Gov Virginia* bölgelerinde kümeler iki `HDInsight.USGovIowa` `HDInsight.USGovVirginia`hizmet etiketleri izin vermek gerekir: ve .
+*US gov Iowa* ve *US gov Virginia* bölgelerindeki kümelerin iki hizmet etiketine izin vermek gerekir: `HDInsight.USGovIowa` ve `HDInsight.USGovVirginia`.
 
 #### <a name="group-4"></a>Grup 4
 
-*Almanya Orta* ve *Almanya Kuzeydoğu* bölgelerinde kümeler iki hizmet `HDInsight.GermanyCentral` `HDInsight.GermanyNortheast`etiketleri izin vermek gerekir: ve .
+*Almanya Orta* ve *Almanya kuzeydoğu* bölgelerindeki kümelerin iki hizmet etiketine izin vermek gerekir: `HDInsight.GermanyCentral` ve `HDInsight.GermanyNortheast`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

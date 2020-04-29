@@ -1,5 +1,5 @@
 ---
-title: "Azure Veri Fabrikası'nda Spark kullanarak verileri dönüştürme "
+title: 'Azure Data Factory Spark kullanarak verileri dönüştürme '
 description: Bu öğretici, Azure Data Factory'de Spart Etkinliğini kullanarak verileri dönüştürmeye ilişkin adım adım yönergeler sağlar.
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409098"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de Spark etkinliğini kullanarak verileri bulutta dönüştürme
@@ -30,18 +30,18 @@ Bu öğreticide, Azure PowerShell kullanarak verileri Spark Etkinliği ve talep 
 > * Bir işlem hattı çalıştırması başlatma.
 > * İşlem hattı çalıştırmasını izleme.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure Depolama hesabı.** Bir python betiği ve giriş dosyası oluşturup Azure depolama alanına yükleyin. Spark programının çıktısı bu depolama hesabında depolanır. İsteğe bağlı Spark kümesi, birincil depolama alanıyla aynı depolama hesabını kullanır.  
+* **Azure depolama hesabı**. Bir python betiği ve giriş dosyası oluşturup Azure depolama alanına yükleyin. Spark programının çıktısı bu depolama hesabında depolanır. İsteğe bağlı Spark kümesi, birincil depolama alanıyla aynı depolama hesabını kullanır.  
 * **Azure PowerShell**. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
 
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Python betiğini Blob Depolama hesabınıza yükleme
-1. aşağıdaki içeriği içeren **WordCount_Spark.py** adlı bir python dosyası oluşturun: 
+1. Aşağıdaki içerikle **WordCount_Spark. Kopyala** adlı bir Python dosyası oluşturun: 
 
     ```python
     import sys
@@ -66,7 +66,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
     if __name__ == "__main__":
         main()
     ```
-2. ** &lt;&gt; storageAccountName'i** Azure Depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
+2. ** &lt;StorageAccountName&gt; ** ' i Azure depolama hesabınızın adıyla değiştirin. Ardından dosyayı kaydedin. 
 3. Azure Blob depolama alanınızda henüz yoksa **adftutorial** adlı bir kapsayıcı oluşturun. 
 4. **Spark** adlı bir klasör oluşturun.
 5. **Spark** klasörünün altında **script** adlı bir alt klasör oluşturun. 
@@ -136,7 +136,7 @@ Bağlı hizmet tanımında aşağıdaki özelliklerin değerlerini güncelleşti
 
 - **hostSubscriptionId**. &lt;SubscriptionID&gt;’yi Azure aboneliğinizin kimliği ile değiştirin. İsteğe bağlı HDInsight kümesi bu abonelikte oluşturulur. 
 - **kiracı**. &lt;tenantID&gt; değerini Azure kiracınızın kimliği ile değiştirin. 
-- **servicePrincipalId**, **servicePrincipalKey**. &lt;servicePrincipalID&gt; ve &lt;servicePrincipalKey&gt; değerini Azure Active Directory’deki hizmet sorumlunuzun kimliği ve anahtarıyla değiştirin. Bu hizmet sorumlusu, abonelikte ya da kümenin oluşturulduğu kaynak grubunda Katkıda Bulunan rolünün bir üyesi olmalıdır. Ayrıntılar için bkz. [Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). **Hizmet asıl kimliği** Uygulama *Kimliği'ne* eşdeğerdir ve Servis ana **anahtarı** bir *Müşteri sırrının*değerine eşdeğerdir.
+- **servicePrincipalId**, **servicePrincipalKey**. &lt;servicePrincipalID&gt; ve &lt;servicePrincipalKey&gt; değerini Azure Active Directory’deki hizmet sorumlunuzun kimliği ve anahtarıyla değiştirin. Bu hizmet sorumlusu, abonelikte ya da kümenin oluşturulduğu kaynak grubunda Katkıda Bulunan rolünün bir üyesi olmalıdır. Ayrıntılar için bkz. [Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). **Hizmet sorumlusu kimliği** , *uygulama kimliği* Ile eşdeğerdir ve bir **hizmet sorumlusu anahtarı** , bir *istemci parolasının*değeri ile eşdeğerdir.
 - **clusterResourceGroup**. &lt;resourceGroupOfHDICluster&gt; değerini HDInsight kümesinin oluşturulması gereken kaynak grubunun adıyla değiştirin. 
 
 > [!NOTE]
@@ -186,12 +186,12 @@ JSON dosyalarında bağlı hizmet ve işlem hattı tanımları oluşturdunuz. Ş
 
 1. Değişkenleri tek tek ayarlayın.
 
-    **Kaynak Grup Adı**
+    **Kaynak grubu adı**
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup" 
     ```
 
-    **Veri Fabrikası Adı. Küresel olarak benzersiz olmalı** 
+    **Data Factory adı. Genel olarak benzersiz olmalıdır** 
     ```powershell
     $dataFactoryName = "MyDataFactory09102017"
     ```
@@ -344,7 +344,7 @@ Bu örnekteki işlem hattı, verileri bir konumdan Azure blob depolama alanında
 Sanal ağdaki bir Azure HDInsight kümesinde Hive betiği çalıştırarak verileri dönüştürme hakkında bilgi almak için sonraki öğreticiye ilerleyin. 
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Sanal Ağ'da Hive'ı kullanarak verileri dönüştürün.](tutorial-transform-data-hive-virtual-network.md)
+> [Öğretici: Azure sanal ağ 'Da Hive kullanarak verileri dönüştürme](tutorial-transform-data-hive-virtual-network.md).
 
 
 

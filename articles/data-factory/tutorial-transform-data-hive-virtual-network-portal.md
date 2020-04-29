@@ -1,5 +1,5 @@
 ---
-title: Azure portalını kullanarak Azure Sanal Ağında Hive kullanarak verileri dönüştürme
+title: Azure portal kullanarak Azure sanal ağ 'da Hive kullanarak veri dönüştürme
 description: Bu öğretici, Azure Data Factory'de Hive etkinliğini kullanarak verileri dönüştürmeye ilişkin adım adım yönergeler sağlar.
 services: data-factory
 ms.service: data-factory
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
 ms.openlocfilehash: 23accddcc468eb841eb7c217ec17a893db214cb6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409461"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory’de Hive etkinliğini kullanarak Azure Sanal Ağ’daki verileri dönüştürme
@@ -32,14 +32,14 @@ Bu öğreticide, Azure portalını kullanarak Azure Sanal Ağ’daki bir HDInsig
 > * İşlem hattı çalıştırmasını izleme 
 > * Çıktıyı doğrulama
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure Depolama hesabı.** Bir hive betiği oluşturun ve Azure depolama alanına yükleyin. Hive betiğinin çıktısı bu depolama hesabında depolanır. Bu örnekte, HDInsight kümesi bu Azure Depolama hesabını birincil depolama alanı olarak kullanır. 
-- **Azure Sanal Ağ.** Bir Azure sanal ağınız yoksa [bu yönergeleri](../virtual-network/quick-create-portal.md) izleyerek bir tane oluşturun. Bu örnekte HDInsight bir Azure Sanal Ağ içindedir. Azure Sanal Ağ’ın örnek yapılandırması aşağıda verilmiştir. 
+- **Azure depolama hesabı**. Bir hive betiği oluşturun ve Azure depolama alanına yükleyin. Hive betiğinin çıktısı bu depolama hesabında depolanır. Bu örnekte, HDInsight kümesi bu Azure Depolama hesabını birincil depolama alanı olarak kullanır. 
+- **Azure sanal ağı.** Bir Azure sanal ağınız yoksa [bu yönergeleri](../virtual-network/quick-create-portal.md) izleyerek bir tane oluşturun. Bu örnekte HDInsight bir Azure Sanal Ağ içindedir. Azure Sanal Ağ’ın örnek yapılandırması aşağıda verilmiştir. 
 
     ![Sanal ağ oluşturma](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
 - **HDInsight kümesi.** Bir HDInsight kümesi oluşturun ve önceki adımda oluşturduğunuz sanal ağa katmak için şu makaleyi izleyin: [Bir Azure Sanal Ağ kullanarak Azure HDInsight’ı genişletme](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Bir sanal ağda HDInsight’ın örnek yapılandırması aşağıda verilmiştir. 
@@ -73,7 +73,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. [Azure portalına](https://portal.azure.com/)giriş yapın.    
+1. [Azure Portal](https://portal.azure.com/)oturum açın.    
 2. Soldaki menüde **Yeni**, **Veri + Analiz** ve **Data Factory** öğesine tıklayın. 
    
    ![Yeni->DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
@@ -85,7 +85,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
   
        `Data factory name “MyAzureSsisDataFactory” is not available`
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
-4. Kaynak **Grubu**için aşağıdaki adımlardan birini yapın:
+4. **Kaynak grubu**için aşağıdaki adımlardan birini yapın:
      
    - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
    - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
@@ -94,7 +94,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Listede yalnızca veri fabrikası oluşturma için desteklenen konumlar gösterilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur'u**tıklatın.
+7. **Oluştur**' a tıklayın.
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**. 
 
      ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -151,7 +151,7 @@ Hadoop kümesi bir sanal ağın içinde olduğundan, aynı sanal ağa şirket i�
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
 Bu bölümde iki Bağlı Hizmet oluşturup dağıtacaksınız:
-- Bir Azure Depolama hesabını veri fabrikasına bağlayan bir **Azure Depolama Bağlantılı Hizmeti.** Bu depolama, HDInsight kümeniz tarafından kullanılan birincil depolamadır. Bu durumda, Hive betiğini ve betiğin çıktısını depolamak için de bu Azure Depolama hesabını kullanırsınız.
+- Bir Azure Depolama hesabını veri fabrikasına bağlayan **Azure depolama bağlı hizmeti** . Bu depolama, HDInsight kümeniz tarafından kullanılan birincil depolamadır. Bu durumda, Hive betiğini ve betiğin çıktısını depolamak için de bu Azure Depolama hesabını kullanırsınız.
 - Bir **HDInsight Bağlı Hizmeti**. Azure Data Factory, Hive betiğini yürütmek üzere bu HDInsight kümesine gönderir.
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage bağlı hizmeti oluşturma

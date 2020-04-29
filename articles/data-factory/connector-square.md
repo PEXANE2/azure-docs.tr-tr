@@ -1,6 +1,6 @@
 ---
-title: Verileri Kare'den kopyalama (Önizleme)
-description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopya etkinliği kullanarak Kare'den desteklenen lavabo veri depolarına verileri nasıl kopyalayatılayış edin.
+title: Kare içinden veri kopyalama (Önizleme)
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak, kare içinden desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,54 +13,54 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410308"
 ---
-# <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Azure Veri Fabrikasını kullanarak Verileri Kare'den kopyalama (Önizleme)
+# <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak kareden veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, Kare'deki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
+Bu makalede, verileri kareyle kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 > [!IMPORTANT]
-> Bu bağlayıcı şu anda önizlemede. Bunu deneyebilir ve bize geribildirim verebilirsiniz. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
+> Bu bağlayıcı Şu anda önizleme aşamasındadır. Deneyebilir ve geri bildirimde bulunun. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Kare bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu kare bağlayıcı, aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 
-Verileri Kare'den desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Kareden verileri, desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
+Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, Kare bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sağlanmaktadır.
+Aşağıdaki bölümler, kare bağlayıcıya özgü Data Factory varlıkları tanımlamak için kullanılan özelliklerle ilgili ayrıntıları sağlar.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Kare bağlantılı hizmet için aşağıdaki özellikler desteklenir:
+Kare bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği ayarlanmalıdır: **Kare** | Evet |
-| konak | Kare örneğinin URL'si. (yani mystore.mysquare.com)  | Evet |
-| clientId | Kare uygulamanızla ilişkili istemci kimliği.  | Evet |
-| clientSecret | Kare uygulamanızla ilişkili istemci sırrı. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
-| redirectUri | Kare uygulama panosuna atanan yönlendirme URL'si. (yani http:\//localhost:2500)  | Evet |
+| type | Type özelliği: **Square** olarak ayarlanmalıdır | Yes |
+| konak | Kare örneğinin URL 'SI. (örn. mystore.mysquare.com)  | Yes |
+| clientId | Kare uygulamanızla ilişkili istemci KIMLIĞI.  | Yes |
+| clientSecret | Kare uygulamanızla ilişkili istemci gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| redirectUri | Kare uygulama panosunda atanan yeniden yönlendirme URL 'SI. (örn. http:\//localhost: 2500)  | Yes |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| useHostVerification | TLS üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| usePeerVerification | TLS üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -82,16 +82,16 @@ Kare bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, Kare veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, kare veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Kare'deki verileri kopyalamak için, veri kümesinin tür özelliğini **SquareObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Kare içinden veri kopyalamak için, veri kümesinin Type özelliğini **Squareobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **Kare Nesne** | Evet |
-| tableName | Masanın adı. | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
+| type | Veri kümesinin Type özelliği: **Squareobject** olarak ayarlanmalıdır | Yes |
+| tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -110,18 +110,18 @@ Kare'deki verileri kopyalamak için, veri kümesinin tür özelliğini **SquareO
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, Kare kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, kare kaynağına göre desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="square-as-source"></a>Kaynak olarak kare
 
-Kare'deki verileri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **SquareSource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir:
+Kare içinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **SquareSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının türü özelliği şu şekilde ayarlanmalıdır: **SquareSource** | Evet |
-| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Business"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **SquareSource** olarak ayarlanmalıdır | Yes |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Business"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -153,9 +153,9 @@ Kare'deki verileri kopyalamak için, kopyalama etkinliğindeki kaynak türünü 
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

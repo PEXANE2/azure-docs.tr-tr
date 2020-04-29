@@ -1,6 +1,6 @@
 ---
-title: Veri kopyalama aracı Azure Veri Fabrikası
-description: Azure Veri Fabrikası Kullanıcı Arabirimi'nde Veri Kopyalama aracı hakkında bilgi sağlar
+title: Veri Kopyalama araç Azure Data Factory
+description: Azure Data Factory Kullanıcı arabirimindeki Veri Kopyalama aracı hakkında bilgi sağlar
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,77 +12,77 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
 ms.openlocfilehash: df078673aed60086a88961ff64f9bfa596d96346
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414096"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory'deki Veri Kopyalama aracı
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Veri Fabrikası Kopyalama Verileri aracı, genellikle uçtan uca veri tümleştirme senaryosunun ilk adımı olan verileri veri gölüne alma işlemini kolaylaştırır ve optimize eder.  Özellikle bir veri kaynağından ilk kez veri almak için Azure Veri Fabrikası'nı kullandığınızda zamandan tasarruf sağlar. Bu aracı kullanmanın avantajlarından bazıları şunlardır:
+Azure Data Factory Veri Kopyalama araç, verileri bir veri Gölü içine almak ve bu işlemi, genellikle uçtan uca bir veri tümleştirme senaryosunda ilk adımdan en iyi duruma getirir.  Özellikle bir veri kaynağından ilk kez veri almak için Azure Data Factory kullandığınızda zaman kazandırır. Bu aracı kullanmanın avantajlarından bazıları şunlardır:
 
-- Azure Veri Fabrikası Kopyalama Veri aracını kullanırken, bağlantılı hizmetler, veri kümeleri, ardışık hatlar, etkinlikler ve tetikleyiciler için Veri Fabrikası tanımlarını anlamanız gerekmez. 
-- Veri Kopyalama aracının akışı, verileri bir veri gölüne yüklemek için sezgiseldir. Araç, seçili kaynak veri deposundan seçili hedef/lavabo veri deposuna veri kopyalamak için gerekli tüm Veri Fabrikası kaynaklarını otomatik olarak oluşturur. 
-- Verileri Kopyala aracı, yazarlık sırasında yutulan verileri doğrulamanıza yardımcı olur ve bu da başlangıçta olası hataları önlemenize yardımcı olur.
-- Verileri bir veri gölüne yüklemek için karmaşık iş mantığı uygulamanız gerekiyorsa, Veri Fabrikası Web'de yazma başına yazma yı kullanarak Veri Veri aracı tarafından oluşturulan Veri Fabrikası kaynaklarını yine de düzenlemeniz gerekir. 
+- Azure Data Factory Veri Kopyalama aracını kullanırken, bağlı hizmetler, veri kümeleri, işlem hatları, etkinlikler ve Tetikleyiciler için Data Factory tanımları anlamanız gerekmez. 
+- Veri Kopyalama aracın akışı, verileri bir Data Lake 'e yüklemek için sezgisel hale sahiptir. Araç, seçili kaynak veri deposundan verileri seçilen hedef/havuz veri deposuna kopyalamak için tüm gerekli Data Factory kaynaklarını otomatik olarak oluşturur. 
+- Veri Kopyalama Aracı, yazma sırasında gerçekleştirilen verileri doğrulamanıza yardımcı olur. Bu, başındaki olası hatalardan kaçınmanıza yardımcı olur.
+- Verileri bir veri Gölü içine yüklemek için karmaşık iş mantığı uygulamanız gerekiyorsa, Data Factory Kullanıcı arabirimindeki etkinlik başına yazmayı kullanarak Veri Kopyalama aracı tarafından oluşturulan Data Factory kaynaklarını düzenlemeye devam edebilirsiniz. 
 
-Aşağıdaki tablo, Veri Fabrikası Kullanıcı Arabirimi'nde yazma ile Etkinlik Başına Kopyalama aracının ne zaman kullanılacağı na ilişkin kılavuz sağlar: 
+Aşağıdaki tabloda, Data Factory Kullanıcı arabirimindeki Veri Kopyalama aracı ve etkinlik başına yazmanın ne zaman kullanılacağı hakkında rehberlik verilmektedir: 
 
-| Veri Kopyalama aracı | Etkinlik başına (Kopyalama etkinliği) yazma |
+| Veri Kopyalama aracı | Etkinlik başına (kopyalama etkinliği) yazma |
 | -------------- | -------------------------------------- |
-| Azure Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri, boru hatları, vb.) hakkında bilgi edinmeden kolayca veri yükleme görevi oluşturmak istiyorsunuz | Verileri göle yüklemek için karmaşık ve esnek bir mantık uygulamak istiyorsunuz. |
-| Çok sayıda veri yapısını bir veri gölüne hızla yüklemek istiyorsunuz. | Verileri temizlemek veya işlemek için sonraki etkinliklerle Kopyalama etkinliğini zincirlemek istiyorsunuz. |
+| Azure Data Factory varlıkları (bağlı hizmetler, veri kümeleri, işlem hatları, vb.) hakkında bilgi edinmeden kolayca bir veri yükleme görevi oluşturmak istiyorsunuz. | Gölü verileri yüklemek için karmaşık ve esnek mantık uygulamak istiyorsunuz. |
+| Bir veri Gölü içine çok sayıda veri yapıtları hızlıca yüklemek istiyorsunuz. | Kopyalama etkinliğini, verileri temizleme veya işleme için sonraki etkinliklerle zincirlemek istiyorsunuz. |
 
-Veri Kopyala aracını başlatmak için, veri fabrikanızın ana sayfasındaki **Veri Kopyala'yı** tıklatın.
+Veri Kopyalama aracı 'nı başlatmak için veri fabrikanızın giriş sayfasındaki **veri kopyalama** kutucuğuna tıklayın.
 
-![Başlangıç sayfasına geçin - Verileri Kopyala aracına bağlantı](./media/copy-data-tool/get-started-page.png)
+![Kullanmaya başlama sayfası-Veri Kopyalama araca bağlantı](./media/copy-data-tool/get-started-page.png)
 
 
-## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Veri gölüne veri yüklemek için sezgisel akış
-Bu araç, sezgisel bir akışla çok çeşitli kaynaklardan belirli bilgileri dakikalar içinde varış noktalarına kolayca taşımanızı sağlar:  
+## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Data Lake 'e veri yüklemek için sezgisel akış
+Bu araç, çok çeşitli kaynaklardan gelen verileri, sezgisel bir akışa göre dakikalar içinde hedefe kolayca taşımanızı sağlar:  
 
 1. **Kaynak**için ayarları yapılandırın.
 2. **Hedef**için ayarları yapılandırın. 
-3. Sütun eşleme, performans ayarları ve hata toleransı ayarları gibi kopyalama işlemi için **gelişmiş ayarları** yapılandırın. 
+3. Kopyalama işlemi için, sütun eşleme, performans ayarları ve hata toleransı ayarları gibi **Gelişmiş ayarları** yapılandırın. 
 4. Veri yükleme görevi için bir **zamanlama** belirtin. 
-5. Oluşturulacak Veri Fabrikası varlıklarının **özetini** gözden geçirin. 
-6. Kopya etkinliği ayarlarını gerektiği gibi güncelleştirmek için ardışık hattı **edin.** 
+5. Oluşturulacak Data Factory varlıkların **özetini** gözden geçirin. 
+6. Kopyalama etkinliğinin ayarlarını gerektiği şekilde güncelleştirmek için işlem hattını **düzenleyin** . 
 
-   Araç, farklı veri ve nesne türleri için destek ile, başından itibaren akılda büyük veri ile tasarlanmıştır. Yüzlerce klasör, dosya veya tablotaşımak için kullanabilirsiniz. Araç otomatik veri önizleme, şema yakalama ve otomatik haritalama ve veri filtreleme de destekler.
+   Araç, farklı veri ve nesne türleri desteğiyle başlangıçtan itibaren göz önünde bulundurularak büyük verilerle tasarlanmıştır. Yüzlerce klasör, dosya veya tablo taşımak için kullanabilirsiniz. Araç otomatik veri önizlemeyi, şema yakalamayı ve otomatik eşlemeyi ve veri filtrelemeyi de destekler.
 
 ![Veri Kopyalama aracı](./media/copy-data-tool/copy-data-tool.png)
 
 ## <a name="automatic-data-preview"></a>Otomatik veri önizleme
-Verilerin bir kısmını, kopyalanan verileri doğrulamanızı sağlayan seçili kaynak veri deposundan önizleyebilirsiniz. Ayrıca, kaynak veriler bir metin dosyasındaysa, Veri Kopyala aracı metin dosyasını ayrıştırır ve satır ve sütun sınırlayıcıları ve şemayı otomatik olarak algılar.
+Verilerin bir kısmını seçili kaynak veri deposundan önizleyebilirsiniz, bu da Kopyalanmakta olan verileri doğrulamanızı sağlar. Ayrıca, kaynak veriler bir metin dosyası ise, Veri Kopyalama aracı metin dosyasını, satır ve sütun sınırlayıcılarını ve şemayı otomatik olarak algılayacak şekilde ayrıştırır.
 
 ![Dosya ayarları](./media/copy-data-tool/file-format-settings.png)
 
-Tespitten sonra:
+Algılandıktan sonra:
 
-![Algılanan dosya ayarları ve önizleme](./media/copy-data-tool/after-detection.png)
+![Algılanan dosya ayarları ve Önizleme](./media/copy-data-tool/after-detection.png)
 
-## <a name="schema-capture-and-automatic-mapping"></a>Şema yakalama ve otomatik haritalama
-Veri kaynağının şeması birçok durumda veri hedefişemasıyla aynı olmayabilir. Bu senaryoda, sütunları kaynak şemadaki sütunları hedef şemadaki sütunlara eşlemeniz gerekir.
+## <a name="schema-capture-and-automatic-mapping"></a>Şema yakalama ve otomatik eşleme
+Veri kaynağının şeması birçok durumda veri hedefi şeması ile aynı olamaz. Bu senaryoda, kaynak şemadan sütunları hedef şemadaki sütunlara eşlemeniz gerekir.
 
-Verileri Kopyala aracı, kaynak ve hedef mağazalar arasında sütunları eşlerken davranışınızı izler ve öğrenir. Kaynak veri deposundan bir veya birkaç sütun seçtikten ve bunları hedef şemaya eşledikten sonra, Veri Kopyala aracı her iki taraftan seçtiğiniz sütun çiftleri için deseni çözümlemeye başlar. Daha sonra, sütunların geri kalanına aynı deseni uygular. Bu nedenle, tüm sütunların hedefe birkaç tıklamadan hemen sonra istediğiniz şekilde eşlendiğini görürsünüz.  Veri Kopyala aracı tarafından sağlanan sütun eşleme seçeneğinden memnun değilseniz, bunu yoksayabilir ve sütunları el ile eşleyerek devam edebilirsiniz. Bu arada, Veri Kopyalama aracı sürekli olarak deseni öğrenir ve günceller ve sonuçta ulaşmak istediğiniz sütun eşleme için doğru desenine ulaşır. 
+Veri Kopyalama Aracı, kaynak ve hedef mağazalar arasında sütunları eşlerken davranışınızı izler ve öğrenir. Kaynak veri deposundan bir veya birkaç sütun belirledikten ve bunları hedef şemayla eşleştirdikten sonra, Veri Kopyalama aracı her iki taraftan de seçtiğiniz sütun çiftleri için olan düzeni çözümlemeye başlar. Daha sonra, sütunların geri kalanına aynı kalıbı uygular. Bu nedenle, birkaç tıklamayla hemen sonra istediğiniz şekilde, tüm sütunların hedefle eşleştirilmiş olduğunu görürsünüz.  Veri Kopyalama aracı tarafından sunulan sütun eşleme seçiminden memnun değilseniz, yoksayabilirsiniz ve sütunları el ile eşlemek için devam edebilirsiniz. Bu arada, Veri Kopyalama Aracı, kalıbı sürekli öğrenir ve güncelleştirir ve sonunda elde etmek istediğiniz sütun eşlemesi için doğru düzene ulaşır. 
 
 > [!NOTE]
-> SQL Server veya Azure SQL Veritabanı'ndan Azure SQL Veri Ambarı'na veri kopyalanırken, tablo hedef deposunda yoksa, Veri Kopyalama aracı kaynak şemayı kullanarak tablonun oluşturulmasını otomatik olarak destekler. 
+> SQL Server veya Azure SQL veritabanından Azure SQL veri ambarı 'na veri kopyalarken, tablo hedef depoda yoksa, Veri Kopyalama araç, kaynak şemasını kullanarak tablonun otomatik olarak oluşturulmasını destekler. 
 
 ## <a name="filter-data"></a>Verileri filtreleme
-Yalnızca lavabo veri deposuna kopyalanması gereken verileri seçmek için kaynak verilerine filtre uygulayabilirsiniz. Filtreleme, lavabo veri deposuna kopyalanacak verilerin hacmini azaltır ve bu nedenle kopyalama işleminin veri hacmini artırır. Veri Kopyalama aracı, SQL sorgu dilini veya Azure blob klasöründeki dosyaları kullanarak ilişkisel bir veritabanındaki verileri filtrelemek için esnek bir yol sağlar. 
+Yalnızca havuz veri deposuna kopyalanması gereken verileri seçmek için kaynak verilerini filtreleyebilirsiniz. Filtreleme, havuz veri deposuna kopyalanacak verilerin hacmini azaltır ve bu nedenle kopyalama işleminin aktarım hızını geliştirir. Veri Kopyalama araç, bir ilişkisel veritabanındaki verileri SQL sorgu dilini veya bir Azure Blob klasöründeki dosyaları kullanarak filtrelemek için esnek bir yol sağlar. 
 
 ### <a name="filter-data-in-a-database"></a>Veritabanındaki verileri filtreleme
-Aşağıdaki ekran görüntüsü, verileri filtrelemek için bir SQL sorgusu gösterir.
+Aşağıdaki ekran görüntüsünde, verileri filtrelemek için bir SQL sorgusu gösterilmektedir.
 
 ![Veritabanındaki verileri filtreleme](./media/copy-data-tool/filter-data-in-database.png)
 
-### <a name="filter-data-in-an-azure-blob-folder"></a>Azure blob klasöründeki verileri filtreleme
-Klasördeki verileri kopyalamak için klasör yolundaki değişkenleri kullanabilirsiniz. Desteklenen değişkenler şunlardır: **{year}**, **{ay}**, **{gün}**, **{hour}** ve **{dakika}**. Örneğin: inputfolder/{year}/{month}/{day}. 
+### <a name="filter-data-in-an-azure-blob-folder"></a>Azure Blob klasöründeki verileri filtreleme
+Klasör yolundaki değişkenleri bir klasörden veri kopyalamak için kullanabilirsiniz. Desteklenen değişkenler şunlardır: **{Year}**, **{Month}**, **{Day}**, **{Hour}** ve **{Minute}**. Örneğin: ınputfolder/{year}/{month}/{Day}. 
 
-Aşağıdaki biçimde giriş klasörleri olduğunu varsayalım: 
+Giriş klasörlerinizi aşağıdaki biçimde kullandığınızı varsayalım: 
 
 ```
 2016/03/01/01
@@ -91,25 +91,25 @@ Aşağıdaki biçimde giriş klasörleri olduğunu varsayalım:
 ...
 ```
 
-**Dosya veya klasör**için **Gözat** düğmesini tıklatın, bu klasörlerden birine göz atın (örneğin, 2016->03->01->02) ve **Seç'i**tıklatın. 2016/03/01/02 metin kutusunda görmelisiniz. 
+**Dosya veya klasör**için **Araştır** düğmesine tıklayın, bu klasörlerden birine gidin (örneğin, 2016->03->01->02) ve **Seç**' e tıklayın. Metin kutusunda 2016/03/01/02 ' i görmeniz gerekir. 
 
-Ardından, **2016'yı** **{year}**, **03** ile **{month},** **01'i** **{day}** ve **02'yi** **{hour}** ile değiştirin ve **Sekme** tuşuna basın. Bu dört değişkenin biçimini seçmek için açılır listeler görmelisiniz:
+Ardından, **2016** öğesini **{Year}**, **03** ile { **Month**}, { **Day**} ile **01** ve **{Hour}** ile **02** ile değiştirin ve **sekme** tuşuna basın. Bu dört değişkenin biçimini seçmek için açılan listeleri görmeniz gerekir:
 
-![Filtre dosyası veya klasör](./media/copy-data-tool/filter-file-or-folder.png)
+![Dosya veya klasörü filtrele](./media/copy-data-tool/filter-file-or-folder.png)
 
-Veri Kopyalama aracı, ardışık düzen oluştururken {year}, {month}, {day}, {hour}ve {minute} ifadelerini, işlevleri ni temsil etmek için kullanılabilecek parametreler oluşturur.
+Veri Kopyalama Aracı, işlem hattı oluştururken {Year}, {month}, {Day}, {Hour} ve {Minute} göstermek için kullanılabilecek ifadeler, işlevler ve sistem değişkenleri içeren parametreler oluşturur.
 
 ## <a name="scheduling-options"></a>Zamanlama seçenekleri
-Kopyalama işlemini bir kez veya bir zamanlamada (saatlik, günlük vb.) çalıştırabilirsiniz. Bu seçenekler, şirket içi, bulut ve yerel masaüstü dahil olmak üzere farklı ortamlardaki bağlayıcılar için kullanılabilir. 
+Kopyalama işlemini bir kez veya bir zamanlamaya göre (saatlik, günlük, vb.) çalıştırabilirsiniz. Bu seçenekler, şirket içi, bulut ve Yerel Masaüstü gibi farklı ortamlarda bağlayıcılar için kullanılabilir. 
 
-Tek seferlik kopyalama işlemi, veri hareketinin bir kaynaktan hedefe yalnızca bir kez taşınmasını sağlar. Herhangi bir boyuttave desteklenen biçimdeki veriler için geçerlidir. Zamanlanan kopya, belirttiğiniz bir yinelemedeki verileri kopyalamanızı sağlar. Zamanlanan kopyayı yapılandırmak için zengin ayarları (yeniden deneme, zaman sonu ve uyarılar gibi) kullanabilirsiniz.
+Tek seferlik kopyalama işlemi, veri hareketini bir kaynaktan hedefe yalnızca bir kez sağlar. Her boyuttaki ve desteklenen biçimdeki veriler için geçerlidir. Zamanlanan kopya, belirttiğiniz bir tekrarda verileri kopyalamanızı sağlar. Zamanlanmış kopyayı yapılandırmak için zengin ayarları (yeniden deneme, zaman aşımı ve uyarılar gibi) kullanabilirsiniz.
 
 ![Zamanlama seçenekleri](./media/copy-data-tool/scheduling-options.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri Kopyalama aracını kullanan şu öğreticileri deneyin:
+Veri Kopyalama aracını kullanan Bu öğreticileri deneyin:
 
-- [Quickstart: Veri Kopyalama aracını kullanarak bir veri fabrikası oluşturma](quickstart-create-data-factory-copy-data-tool.md)
-- [Öğretici: Verileri Azure'da Kopyala veri aracını kullanarak kopyalama](tutorial-copy-data-tool.md) 
-- [Öğretici: Verileri Kopyala aracını kullanarak şirket içi verileri Azure'a kopyalama](tutorial-hybrid-copy-data-tool.md)
+- [Hızlı başlangıç: Veri Kopyalama aracını kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-copy-data-tool.md)
+- [Öğretici: Veri Kopyalama aracını kullanarak Azure 'da veri kopyalama](tutorial-copy-data-tool.md) 
+- [Öğretici: Veri Kopyalama aracını kullanarak şirket içi verileri Azure 'a kopyalama](tutorial-hybrid-copy-data-tool.md)

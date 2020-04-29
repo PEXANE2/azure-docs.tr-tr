@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda veri akışıyla mücadeleye başlama
-description: Çekişmeli veri akışını kullanarak Azure Veri Fabrikası'nda veri hazırlama konusunda bir öğretici
+title: Azure Data Factory denetimi veri akışı ile çalışmaya başlama
+description: Denetimi veri akışını kullanarak Azure Data Factory veri hazırlama hakkında bir öğretici
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: gamal
@@ -8,55 +8,55 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: a180a7a0c85b642ac09d1d027c95809c4638dee1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409004"
 ---
-# <a name="prepare-data-with-wrangling-data-flow"></a>Çekişmeli veri akışıyla veri hazırlama
+# <a name="prepare-data-with-wrangling-data-flow"></a>Denetimi veri akışı ile veri hazırlama
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="create-a-wrangling-data-flow"></a>Çekişmeli bir veri akışı oluşturma
+## <a name="create-a-wrangling-data-flow"></a>Denetimi veri akışı oluşturma
 
-Azure Veri Fabrikası'nda çekişmeli bir veri akışı oluşturmanın iki yolu vardır. Bunun bir yolu artı simgesini tıklatmak ve fabrika kaynakları bölmesinde **Veri Akışı'nı** seçmektir.
+Azure Data Factory içinde bir denetimi veri akışı oluşturmanın iki yolu vardır. Tek yönlü, artı simgesine tıklamanız ve fabrika kaynakları bölmesinde **veri akışı** ' nı seçmesidir.
 
-![Çekişme](media/wrangling-data-flow/tutorial7.png)
+![Denetimi](media/wrangling-data-flow/tutorial7.png)
 
-Diğer yöntem, boru hattı tuvalinin etkinlik bölmesindedir. Taşı **ve Dönüştür** akordeonu açın ve **Veri akışı** etkinliğini tuvale sürükleyin.
+Diğer yöntem, işlem hattı tuvalinin Etkinlikler bölmesinde bulunur. **Taşıma ve dönüştürme** Accordion açın ve **veri akışı** etkinliğini tuvale sürükleyin.
 
-Her iki yöntemde de, açılan yan **bölmede, yeni veri akışı oluştur'u** seçin ve **Wrangling veri akışını**seçin. Tamam'a tıklayın.
+Her iki yöntemde, açılan bölmede **Yeni veri akışı oluştur** ' u seçin ve **Wrangling veri akışı**' nı seçin. Tamam'a tıklayın.
 
-![Çekişme](media/wrangling-data-flow/tutorial1.png)
+![Denetimi](media/wrangling-data-flow/tutorial1.png)
 
-## <a name="author-a-wrangling-data-flow"></a>Çekişmeli bir veri akışı yazma
+## <a name="author-a-wrangling-data-flow"></a>Denetimi veri akışı yazma
 
-Çekişmeli veri akışınız için bir **Kaynak veri kümesi** ekleyin. Varolan bir veri kümesi seçebilir veya yeni bir veri kümesi oluşturabilirsiniz. Ayrıca bir lavabo veri kümesi seçebilirsiniz. Bir veya daha fazla kaynak veri kümesi seçebilirsiniz, ancak şu anda yalnızca bir lavaboya izin verilir. Lavabo veri kümesi seçmek isteğe bağlıdır, ancak en az bir kaynak veri kümesi gereklidir.
+Denetimi veri akışınız için bir **kaynak veri kümesi** ekleyin. Mevcut bir veri kümesini seçebilir ya da yeni bir veri kümesi oluşturabilirsiniz. Havuz veri kümesi de seçebilirsiniz. Bir veya daha fazla kaynak veri kümesi seçebilirsiniz, ancak şu anda yalnızca bir havuza izin verilir. Bir havuz veri kümesi seçilmesi isteğe bağlıdır, ancak en az bir kaynak veri kümesi gereklidir.
 
 > [!NOTE]
-> Sınırlı önizleme için yalnızca ADLS Gen 2 Sınırlı Metin desteklenir. 
+> Sınırlı önizleme için yalnızca ADLS Gen 2 ile ayrılmış metin desteklenir. 
 
-![Çekişme](media/wrangling-data-flow/tutorial4.png)
+![Denetimi](media/wrangling-data-flow/tutorial4.png)
 
-Power Query Online mashup düzenleyicisini açmak için **Oluştur'u** tıklatın.
+Power Query çevrimiçi mashup düzenleyicisini açmak için **Oluştur** ' a tıklayın.
 
-![Çekişme](media/wrangling-data-flow/tutorial5.png)
+![Denetimi](media/wrangling-data-flow/tutorial5.png)
 
-Kodsuz veri hazırlamayı kullanarak çekişmeli veri akışınızı yazar. Kullanılabilir işlevler listesi için [dönüşüm işlevlerine](wrangling-data-flow-functions.md) bakın/
+Kod içermeyen veri hazırlama kullanarak denetimi veri akışınızı yazın. Kullanılabilir işlevlerin listesi için bkz. [dönüştürme işlevleri](wrangling-data-flow-functions.md)/
 
-![Çekişme](media/wrangling-data-flow/tutorial6.png)
+![Denetimi](media/wrangling-data-flow/tutorial6.png)
 
-## <a name="running-and-monitoring-a-wrangling-data-flow"></a>Çekişmeli bir veri akışının çalıştırılması ve izlenmesi
+## <a name="running-and-monitoring-a-wrangling-data-flow"></a>Bir denetimi veri akışını çalıştırma ve izleme
 
-Bir boru hattı hata ayıklama işlemini yürütmek için, boru hattı tuvalinde **Hata Ayıklama'yı** tıklatın. Veri akışınızı yayımladıktan **sonra, Trigger şimdi** yayınlanan son ardışık hattın isteğe bağlı çalışmasını yürütür. Dönen veri akışları, varolan tüm Azure Veri Fabrikası tetikleyicileriyle zamanlanabilir.
+Bir denetimi veri akışının işlem hattı hata ayıklama çalıştırmasını yürütmek için işlem hattı tuvalinde **Hata Ayıkla** ' ya tıklayın. Veri akışınızı yayımladığınızda, **tetikleyici artık** son yayımlanan işlem hattının isteğe bağlı bir çalıştırmasını yürütür. Wrangling veri akışları, tüm mevcut Azure Data Factory tetikleyicilerle zaman alabilir.
 
-![Çekişme](media/wrangling-data-flow/tutorial3.png)
+![Denetimi](media/wrangling-data-flow/tutorial3.png)
 
-Tetiklenen bir veri akışı çalışmasının çıktısını görselleştirmek için **Monitör** sekmesine gidin.
+Tetiklenen bir denetimi veri akışı etkinliği çalışmasının çıkışını görselleştirmek için **izleyici** sekmesine gidin.
 
-![Çekişme](media/wrangling-data-flow/tutorial2.png)
+![Denetimi](media/wrangling-data-flow/tutorial2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Eşleme veri akışı](tutorial-data-flow.md)oluşturmayı öğrenin.
+[Eşleme veri akışı oluşturmayı](tutorial-data-flow.md)öğrenin.

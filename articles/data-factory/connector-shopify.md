@@ -1,6 +1,6 @@
 ---
-title: Shopify'den veri kopyalama (Önizleme)
-description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopyalama etkinliği kullanarak Shopify'den desteklenen lavabo veri depolarına verileri nasıl kopyalayatılayılamayı öğrenin.
+title: Shopify 'dan veri kopyalama (Önizleme)
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak Shopify 'tan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,51 +12,51 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: e387d8329249fff0b3e84460bd753f35dd275507
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415188"
 ---
-# <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Azure Veri Fabrikasını kullanarak Shopify'den veri kopyalama (Önizleme)
+# <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Shopify 'tan veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, Shopify'deki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
+Bu makalede, Shopify ' den veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 > [!IMPORTANT]
-> Bu bağlayıcı şu anda önizlemede. Bunu deneyebilir ve bize geribildirim verebilirsiniz. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
+> Bu bağlayıcı Şu anda önizleme aşamasındadır. Deneyebilir ve geri bildirimde bulunun. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Shopify konektörü aşağıdaki etkinlikler için desteklenir:
+Bu Shopify Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Shopify'den desteklenen herhangi bir lavabo veri deposuna verileri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Shopify 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
+Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Shopify bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde Shopify bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Shopify bağlantılı hizmet için aşağıdaki özellikler desteklenir:
+Aşağıdaki özellikler Shopify bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği ayarlanmalıdır: **Alışveriş** | Evet |
-| konak | Shopify sunucusunun bitiş noktası. (yani, mystore.myshopify.com)  | Evet |
-| accessToken | Shopify'nin verilerine erişmek için kullanılabilecek API erişim belirteci. Çevrimdışı modda belirteç süresi dolmaz. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
+| type | Type özelliği: **Shopify** olarak ayarlanmalıdır | Yes |
+| konak | Shopify sunucusunun uç noktası. (yani, mystore.myshopify.com)  | Yes |
+| accessToken | Shopify 'in verilerine erişmek için kullanılabilecek API erişim belirteci. Çevrimdışı modda belirtecin kullanım süreleri dolmaz. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| useHostVerification | TLS üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| usePeerVerification | TLS üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -76,16 +76,16 @@ Shopify bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde Shopify dataset tarafından desteklenen özelliklerin bir listesi sağlar.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Shopify veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Shopify'den veri kopyalamak için, veri kümesinin tür özelliğini **ShopifyObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Shopify öğesinden veri kopyalamak için, veri kümesinin Type özelliğini **ShopifyObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **ShopifyObject** | Evet |
-| tableName | Masanın adı. | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
+| type | DataSet 'in Type özelliği: **ShopifyObject** olarak ayarlanmalıdır | Yes |
+| tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -104,18 +104,18 @@ Shopify'den veri kopyalamak için, veri kümesinin tür özelliğini **ShopifyOb
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde Shopify kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm Shopify kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="shopify-as-source"></a>Kaynak olarak alışveriş yapın
+### <a name="shopify-as-source"></a>Kaynak olarak Shopify
 
-Shopify'den veri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **ShopifySource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir:
+Shopify adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **ShopifySource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının türü özelliği şu şekilde ayarlanmalıdır: **ShopifySource** | Evet |
-| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **ShopifySource** olarak ayarlanmalıdır | Yes |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -147,10 +147,10 @@ Shopify'den veri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

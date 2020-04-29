@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası konektörüne genel bakış
-description: Veri Fabrikası'nda desteklenen bağlayıcıları öğrenin.
+title: Azure Data Factory bağlayıcıya genel bakış
+description: Data Factory içinde desteklenen bağlayıcıları öğrenin.
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410424"
 ---
-# <a name="azure-data-factory-connector-overview"></a>Azure Veri Fabrikası konektörüne genel bakış
+# <a name="azure-data-factory-connector-overview"></a>Azure Data Factory bağlayıcıya genel bakış
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Veri Fabrikası, Kopyalama, Veri Akışı, Arama, Meta Verileri Al ve Sil etkinlikleri aracılığıyla aşağıdaki veri depolarını ve biçimlerini destekler. Desteklenen yetenekleri ve ilgili yapılandırmaları ayrıntılarda öğrenmek için her veri deposunu tıklatın.
+Azure Data Factory, kopyalama, veri akışı, arama, meta veri al ve silme etkinlikleri aracılığıyla aşağıdaki veri depolarını ve biçimlerini destekler. Desteklenen özellikleri ve Ayrıntılar ' daki ilgili konfigürasyonları öğrenmek için her bir veri deposuna tıklayın.
 
 ## <a name="supported-data-stores"></a>Desteklenen veri depoları
 
@@ -31,8 +31,8 @@ Azure Veri Fabrikası, Kopyalama, Veri Akışı, Arama, Meta Verileri Al ve Sil 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Etkinliği kopyalama](copy-activity-overview.md)
-- [Veri Akışını Haritalama](concepts-data-flow-overview.md)
+- [Kopyalama etkinliği](copy-activity-overview.md)
+- [Eşleme Veri Akışı](concepts-data-flow-overview.md)
 - [Arama Etkinliği](control-flow-lookup-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
-- [Etkinliği Sil](delete-activity.md)
+- [Etkinliği sil](delete-activity.md)

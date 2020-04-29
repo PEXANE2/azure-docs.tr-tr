@@ -1,6 +1,6 @@
 ---
-title: MySQL için Azure Veritabanı'na veri kopyalama
-description: Bir Azure Veri Fabrikası ardışık hattında bir kopyalama etkinliği kullanarak MySQL için Azure Veritabanı'na ve Azure Veritabanından verileri nasıl kopyalayın öğrenin.
+title: MySQL için Azure veritabanına veri kopyalama
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak MySQL için Azure veritabanı 'na ve veri kopyalama hakkında bilgi edinin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,55 +12,55 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/25/2019
 ms.openlocfilehash: bbb4aed8ca10fcf7c15e7442ee7067b2e3f8087d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410702"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak MySQL için Azure Veritabanı'na veri kopyalama
+# <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL için Azure veritabanı 'na veri kopyalama
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, MySQL için Azure Veritabanı'ndaki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
+Bu makalede, MySQL için Azure veritabanı 'ndan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
-Bu bağlayıcı [MySQL hizmeti için Azure Veritabanı için](../mysql/overview.md)özelleştirilmiştir. Şirket içinde veya bulutta bulunan genel MySQL veritabanından verileri kopyalamak için [MySQL bağlayıcısını](connector-mysql.md)kullanın.
+Bu bağlayıcı, [MySQL Için Azure veritabanı hizmeti](../mysql/overview.md)için özel bir hizmettir. Şirket içinde veya bulutta bulunan genel MySQL veritabanından veri kopyalamak için [MySQL bağlayıcısını](connector-mysql.md)kullanın.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-MySQL bağlayıcısı için bu Azure Veritabanı aşağıdaki etkinlikler için desteklenir:
+MySQL için Azure Veritabanı Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-MySQL için Azure Veritabanı'ndan desteklenen herhangi bir lavabo veri deposuna veri kopyalayabilirsiniz. Veya, desteklenen herhangi bir kaynak veri deposundan MySQL için Azure Veritabanı'na veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+MySQL için Azure veritabanı 'ndan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ya da desteklenen herhangi bir kaynak veri deposundan verileri MySQL için Azure veritabanı 'na kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
+Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, MySQL bağlayıcısı için Azure Veritabanı'na özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, MySQL için Azure Veritabanı Bağlayıcısı 'na özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-MySQL bağlantılı hizmet için Azure Veritabanı için aşağıdaki özellikler desteklenir:
+MySQL için Azure veritabanı bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği şu şekilde ayarlanmalıdır: **AzureMySql** | Evet |
-| Connectionstring | MySQL örneği için Azure Veritabanına bağlanmak için gereken bilgileri belirtin. <br/> Parolayı Azure Key Vault'a koyabilir `password` ve yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Azure Key Vault [makalesinde](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren aşağıdaki örneklere ve Mağaza kimlik bilgilerine bakın. | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Süresi'ni veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
+| type | Type özelliği: **AzureMySql** olarak ayarlanmalıdır | Yes |
+| Dizisi | MySQL için Azure veritabanı örneğine bağlanmak için gereken bilgileri belirtin. <br/> Ayrıca, Azure Key Vault parolayı yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
-Tipik bir bağlantı `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`dizesi. Durumunuza göre ayarlayabildiğiniz daha fazla özellik:
+Tipik bir bağlantı dizesi `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Servis talebi başına ayarlayabileceğiniz daha fazla özellik:
 
 | Özellik | Açıklama | Seçenekler | Gerekli |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Bu seçenek, sürücünün MySQL'e bağlanırken TLS şifreleme ve doğrulama kullanıp kullanmadığını belirtir. Örneğin `SSLMode=<0/1/2/3/4>`| ÖZÜRLÜ (0) / TERCIH EDILEN (1) **(Varsayılan)** / GEREKLİ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Hayır |
-| UseSystemTrustStore | Bu seçenek, sistem güven deposundan mı yoksa belirli bir PEM dosyasından mı CA sertifikası kullanacağımı belirtir. Örneğin `UseSystemTrustStore=<0/1>;`| Etkin (1) / Devre Dışı (0) **(Varsayılan)** | Hayır |
+| SSLMode | Bu seçenek, sürücünün MySQL 'e bağlanırken TLS şifrelemesini ve doğrulamasını kullanıp kullanmadığını belirtir. Örneğin `SSLMode=<0/1/2/3/4>`| DEVRE DıŞı (0)/tercıh EDILEN (1) **(varsayılan)** /gerekli (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Hayır |
+| UseSystemTrustStore | Bu seçenek, sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Örneğin `UseSystemTrustStore=<0/1>;`| Etkin (1)/devre dışı (0) **(varsayılan)** | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -78,7 +78,7 @@ Tipik bir bağlantı `Server=<server>.mysql.database.azure.com;Port=<port>;Datab
 }
 ```
 
-**Örnek: parolayı Azure Key Vault'ta depolama**
+**Örnek: Azure Key Vault parola depola**
 
 ```json
 {
@@ -106,16 +106,16 @@ Tipik bir bağlantı `Server=<server>.mysql.database.azure.com;Port=<port>;Datab
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde MySQL veri kümesi için Azure Veritabanı tarafından desteklenen özelliklerin bir listesi bulunmaktadır.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, MySQL için Azure veritabanı veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-MySQL için Azure Veritabanı'ndaki verileri kopyalamak için, veri kümesinin tür özelliğini **AzureMySqlTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+MySQL için Azure veritabanı 'ndan veri kopyalamak için veri kümesinin Type özelliğini **AzureMySqlTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **AzureMySqlTable** | Evet |
-| tableName | MySQL veritabanındaki tablonun adı. | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
+| type | DataSet 'in Type özelliği: **AzureMySqlTable** olarak ayarlanmalıdır | Yes |
+| tableName | MySQL veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -135,19 +135,19 @@ MySQL için Azure Veritabanı'ndaki verileri kopyalamak için, veri kümesinin t
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, MySQL kaynağı ve lavabo için Azure Veritabanı tarafından desteklenen özelliklerin bir listesi bulunmaktadır.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, MySQL için Azure veritabanı kaynak ve havuzu tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="azure-database-for-mysql-as-source"></a>Kaynak olarak MySQL için Azure Veritabanı
+### <a name="azure-database-for-mysql-as-source"></a>MySQL için Azure veritabanı kaynak olarak
 
-MySQL için Azure Veritabanı'ndaki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölümünde aşağıdaki özellikler desteklenir:
+MySQL için Azure veritabanı 'ndan veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının tür özelliği şu şekilde ayarlanmalıdır: **AzureMySqlSource** | Evet |
-| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
-| queryCommandTimeout | Sorgu isteğinin zaman ları dolmadan önceki bekleme süresi. Varsayılan değer 120 dakikadır (02:00:00) | Hayır |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **AzureMySqlSource** olarak ayarlanmalıdır | Yes |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
+| queryCommandTimeout | Sorgu isteğinin zaman aşımına uğramadan önce beklenecek bekleme süresi. Varsayılan değer 120 dakikadır (02:00:00) | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -179,18 +179,18 @@ MySQL için Azure Veritabanı'ndaki verileri kopyalamak için, kopyalama etkinli
 ]
 ```
 
-### <a name="azure-database-for-mysql-as-sink"></a>MySQL için Azure Veritabanı
+### <a name="azure-database-for-mysql-as-sink"></a>MySQL için Azure veritabanı havuz olarak
 
-MySQL için Azure Veritabanı'na veri kopyalamak için, kopyalama etkinliği **lavabo** bölümünde aşağıdaki özellikler desteklenir:
+MySQL için Azure veritabanı 'na veri kopyalamak için aşağıdaki özellikler, etkinlik **havuzunu** Kopyala bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği lavabonun türü özelliği şu şekilde ayarlanmalıdır: **AzureMySqlSink** | Evet |
-| preCopyScript | Her çalıştırmada MySQL için Azure Veritabanı'na veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanabilirsiniz. | Hayır |
-| yazmaBatchSize | Arabellek boyutu writeBatchSize'a ulaştığında MySQL tablosu için Azure Veritabanına veri ekler.<br>İzin verilen değer satır sayısını temsil eden bir sayıdır. | Hayır (varsayılan değer 10.000'dir) |
-| yazmaBatchTimeout | Toplu ekleme işleminin zaman dolmadan tamamlanması için bekleme süresi.<br>İzin verilen değerler Timespan'dır. Bir örnek 00:30:00 (30 dakika). | Hayır (varsayılan değer 00:00:30'dur) |
+| type | Kopyalama etkinliği havuzunun Type özelliği: **AzureMySqlSink** olarak ayarlanmalıdır | Yes |
+| Ön Copyscrıpt | Her çalıştırmada MySQL için Azure veritabanı 'na veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. | Hayır |
+| writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında, MySQL için Azure veritabanı tablosuna veri ekler.<br>İzin verilen değer, satır sayısını temsil eden bir tamsayıdır. | Hayır (varsayılan değer 10.000) |
+| writeBatchTimeout | Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br>İzin verilen değerler TimeSpan. Örnek olarak 00:30:00 (30 dakika). | Hayır (varsayılan değer 00:00:30) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -223,15 +223,15 @@ MySQL için Azure Veritabanı'na veri kopyalamak için, kopyalama etkinliği **l
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
-## <a name="data-type-mapping-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı için veri türü eşleme
+## <a name="data-type-mapping-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı veri türü eşlemesi
 
-MySQL için Azure Veritabanı'ndan veri kopyalanırken, MySQL veri türlerinden Azure Veri Fabrikası geçici veri türlerine aşağıdaki eşlemeler kullanılır. Kopya etkinliği kaynak şemasını ve veri türünü lavaboyla nasıl eşler hakkında bilgi edinmek için Şema ve [veri türü eşlemelerine](copy-activity-schema-and-type-mapping.md) bakın.
+MySQL için Azure veritabanından veri kopyalarken aşağıdaki eşlemeler, MySQL veri türlerinden, geçici veri türlerini Azure Data Factory için kullanılır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md) .
 
-| MySQL veri türü için Azure Veritabanı | Veri fabrikası geçici veri türü |
+| MySQL için Azure veritabanı veri türü | Veri Fabrikası geçici veri türü |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -275,4 +275,4 @@ MySQL için Azure Veritabanı'ndan veri kopyalanırken, MySQL veri türlerinden 
 | `year` |`Int32` |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

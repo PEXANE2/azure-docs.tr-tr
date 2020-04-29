@@ -1,6 +1,6 @@
 ---
-title: Veri akışını haritalamada düzdönüşüm
-description: Düzleştirme dönüşümlerini kullanarak hiyerarşik verileri normalden arındır
+title: Eşleme veri akışında dönüştürmeyi düzleştirme
+description: Düzleştirme dönüşümünü kullanarak hiyerarşik verileri yeniden Renklendir
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -8,41 +8,41 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81413688"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>Veri akışını haritalamada düzdönüşüm
+# <a name="flatten-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi düzleştirme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-JSON gibi hiyerarşik yapıların içindeki dizi değerlerini almak ve bunları tek tek satırlara dönüştürmek için düzleştir dönüşümlerini kullanın. Bu işlem denormalization olarak bilinir.
+JSON gibi hiyerarşik yapıların içinde dizi değerleri almak için Düzleştir dönüşümünü kullanın ve bunları tek tek satırlara geri alın. Bu işlem, Normalleştirilmemiş olarak bilinir.
 
 ## <a name="configuration"></a>Yapılandırma
 
-Düzleştirmek dönüşümü aşağıdaki yapılandırma ayarlarını içerir
+Düzleştirme dönüştürmesi aşağıdaki yapılandırma ayarlarını içerir
 
-![Ayarları düzleştirmek](media/data-flow/flatten1.png "Ayarları düzleştirmek")
+![Ayarları Düzleştir](media/data-flow/flatten1.png "Ayarları Düzleştir")
 
-### <a name="unroll-by"></a>Unroll tarafından
+### <a name="unroll-by"></a>Alma ölçütü
 
-Unroll için bir dizi seçin. Çıktı verilerinin her dizideki öğe başına bir satırı olur. Giriş satırındaki dizi tarafından unroll null veya boş ise, null olarak unrolled değerleri ile bir çıkış satırı olacaktır.
+Geri almak için bir dizi seçin. Çıktı verilerinde her dizide öğe başına bir satır olacaktır. Giriş satırındaki diziyi al değeri null veya boş ise, null olarak untoplaedilmemiş değerler içeren bir çıkış satırı olacaktır.
 
-### <a name="unroll-root"></a>Kökünü aç
+### <a name="unroll-root"></a>Kökü al
 
-Varsayılan olarak, düzleme dönüştürme, bir diziyi içinde bulunduğu hiyerarşinin en üstüne alır. İsteğe bağlı olarak unroll kök olarak bir dizi seçebilirsiniz. Unroll kökü, dizitarafından unroll'u içeren veya karmaşık nesnelerden oluşan bir dizi olmalıdır. Unroll kökü seçilirse, çıktı verileri unroll kökündeki öğeler başına en az bir satır içerir. Giriş satırıun unroll kökünde herhangi bir öğe yoksa, çıktı verilerinden bırakılır. Unroll kök seçimi her zaman varsayılan davranış daha az veya eşit sayıda satır çıktı olacaktır.
+Varsayılan olarak, düzet dönüştürmesi, içinde bulunan hiyerarşinin en üstüne bir diziyi kaydeder. İsteğe bağlı olarak, geri alma kökiniz olarak bir dizi seçebilirsiniz. Döngüleri kökü, dizi olmayan ya da içeren bir karmaşık nesneler dizisi olmalıdır. Bir döngüleri kökü seçilirse, çıkış verileri, döngüleri kökündeki her öğe için en az bir satır içerir. Giriş satırında hiç bir öğe yoksa, çıkış verilerinden bırakılır. Bir döngüleri kökünü seçme, her zaman varsayılan davranıştan daha az veya eşit sayıda satır çıktısı alacak.
 
-### <a name="flatten-mapping"></a>Düzleme haritalama
+### <a name="flatten-mapping"></a>Eşlemeyi Düzleştir
 
-Seçili dönüşüme benzer şekilde, gelen alanlardan yeni yapının projeksiyonunu ve normalden arındırılmış diziyi seçin. Normalden arındırılmış bir dizi eşlenirse, çıktı sütunu diziyle aynı veri türünde olur. Dizi tarafından unroll alt dizileri içeren karmaşık nesnelerin bir dizi ise, bu subarry bir öğe eşleme bir dizi çıktı olacaktır.
+Seçim dönüşümüne benzer şekilde, gelen alanlardan yeni yapının projeksiyonunu ve diğer dizi dizisini seçin. Bir Normalleştirilmemiş dizi eşlenmişse, çıkış sütunu dizi ile aynı veri türü olacaktır. Dizi tarafından geri alma, alt diziler içeren karmaşık nesnelerden oluşan bir diziyse, bu alt sınır için bir öğe eşleme bir diziyi çıktı olarak alır.
 
-Eşleme çıktınızı doğrulamak için denetim sekmesine ve veri önizlemesine bakın.
+Eşleme çıktlarınızın doğrulanması için İnceleme sekmesine ve veri önizlemesine bakın.
 
 ## <a name="examples"></a>Örnekler
 
-Düzleştirmek dönüşümüne aşağıdaki örnekler için aşağıdaki JSON nesnesine bakın
+Düzleştirme dönüşümünün aşağıdaki örnekleri için aşağıdaki JSON nesnesine başvurun
 
 ``` json
 {
@@ -64,11 +64,11 @@ Düzleştirmek dönüşümüne aşağıdaki örnekler için aşağıdaki JSON ne
 {"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>Dize dizisi ile unroll kökü yok
+### <a name="no-unroll-root-with-string-array"></a>Dize dizisi ile hiçbir toplama kökü yok
 
-| Unroll tarafından | Kökünü aç | Yansıtma |
+| Alma ölçütü | Kökü al | Yansıtma |
 | --------- | ----------- | ---------- |
-| goods.customers | Hiçbiri | ad <br> customer = goods.customer |
+| mallar. müşteriler | Hiçbiri | ad <br> Müşteri = mallar. müşteri |
 
 #### <a name="output"></a>Çıktı
 
@@ -82,11 +82,11 @@ Düzleştirmek dönüşümüne aşağıdaki örnekler için aşağıdaki JSON ne
 { 'Company3', null}
 ```
 
-### <a name="no-unroll-root-with-complex-array"></a>Karmaşık dizili unroll kökü yok
+### <a name="no-unroll-root-with-complex-array"></a>Karmaşık dizi ile hiçbir toplama kökü yok
 
-| Unroll tarafından | Kökünü aç | Yansıtma |
+| Alma ölçütü | Kökü al | Yansıtma |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItems | Hiçbiri | ad <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> yer = konum |
+| mallar. Orders. sevkedildi. OrderItems | Hiçbiri | ad <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
 
 #### <a name="output"></a>Çıktı
 
@@ -103,11 +103,11 @@ Düzleştirmek dönüşümüne aşağıdaki örnekler için aşağıdaki JSON ne
 { 'Company3', null, null, null, 'Kirkland'}
 ```
 
-### <a name="same-root-as-unroll-array"></a>Unroll dizisiyle aynı kök
+### <a name="same-root-as-unroll-array"></a>Geri alma dizisi olarak aynı kök
 
-| Unroll tarafından | Kökünü aç | Yansıtma |
+| Alma ölçütü | Kökü al | Yansıtma |
 | --------- | ----------- | ---------- |
-| goods.orders | goods.orders | ad <br> goods.orders.shipped.orderItems.itemName <br> goods.customers <br> location |
+| mallar. siparişler | mallar. siparişler | ad <br> mallar. Orders. sevkedildi. OrderItems. ItemName <br> mallar. müşteriler <br> location |
 
 #### <a name="output"></a>Çıktı
 
@@ -119,11 +119,11 @@ Düzleştirmek dönüşümüne aşağıdaki örnekler için aşağıdaki JSON ne
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>Karmaşık diziile kökü aç
+### <a name="unroll-root-with-complex-array"></a>Karmaşık dizi ile kök al
 
-| Unroll tarafından | Kökünü aç | Yansıtma |
+| Alma ölçütü | Kökü al | Yansıtma |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItem | goods.orders |ad <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> yer = konum |
+| mallar. Orders. sevkedildi. OrderItem | mallar. siparişler |ad <br> OrderID = mal. Orders. OrderID <br> ItemName = mal. Orders. sevkedildi. OrderItems. ItemName <br> ımqty = mallar. Orders. sevkedildi. OrderItems. ıtemqty <br> Konum = Konum |
 
 #### <a name="output"></a>Çıktı
 
@@ -171,5 +171,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Satırları sütunlara döndürmek için [Özet dönüşüm'üne](data-flow-pivot.md) kullanın.
-* Sütunları satırlara döndürmek için [Unpivot dönüşümlerini](data-flow-unpivot.md) kullanın.
+* Satırları sütunlara eklemek için [Pivot dönüşümünü](data-flow-pivot.md) kullanın.
+* Sütunları satırlara pivot olarak eklemek için [UNPIVOT dönüşümünü](data-flow-unpivot.md) kullanın.

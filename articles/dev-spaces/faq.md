@@ -1,101 +1,101 @@
 ---
-title: Azure Geliştirme Alanları hakkında sık sorulan sorular
+title: Azure Dev Spaces hakkında sık sorulan sorular
 services: azure-dev-spaces
 ms.date: 01/28/2020
 ms.topic: conceptual
-description: Azure Geliştirme Alanları ile ilgili sık sorulan bazı soruların yanıtlarını bulun
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s '
+description: Azure Dev Spaces hakkında bazı yaygın soruların yanıtlarını bulun
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414305"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Geliştirme Alanları hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces hakkında sık sorulan sorular
 
-Bu, Azure Dev Alanları hakkında sık sorulan soruları gideriyor.
+Bu, Azure Dev Spaces hakkında sıkça sorulan soruları ele alınmaktadır.
 
-## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Alanları için Kubernetes'in hangi sürümleri desteklenir?
+## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces için Kubernetes sürümleri destekleniyor mu?
 
-Azure Dev Spaces, [AKS'deki Kubernetes'in şu anda desteklenen tüm genel kullanılabilirlik (GA) sürümlerini][aks-supported-k8s]destekler.
+Azure Dev Spaces, [AKS 'Deki Kubernetes 'in Şu anda desteklenen tüm genel kullanılabilirlik (GA) sürümlerini][aks-supported-k8s]destekler.
 
-## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Şu anda hangi Azure bölgeleri Azure Geliştirme Alanları sağlar?
+## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Şu anda hangi Azure bölgeleri Azure Dev Spaces sağlıyor?
 
-Kullanılabilir bölgelerin tam listesi için [desteklenen bölgelere][supported-regions] bakın.
+Kullanılabilir bölgelerin tüm listesi için bkz. [Desteklenen bölgeler][supported-regions] .
 
-## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>AKS kümemi Azure Dev Spaces ile başka bir bölgeye geçirebilir miyim?
+## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>AKS kümemi başka bir bölgeye Azure Dev Spaces geçirebilir miyim?
 
-Evet, AKS kümenizi Azure Dev Spaces ile başka bir [desteklenen bölgeye][supported-regions]taşımak istiyorsanız, diğer bölgede yeni bir küme oluşturmanızı ve ardından Azure Dev Alanları'nı yüklemenizi ve yapılandırmanızı ve kaynaklarınızı ve uygulamalarınızı yeni kümenize dağıtmanızı öneririz. AKS'ye geçiş hakkında daha fazla bilgi için [bkz.][aks-migration]
+Evet, AKS kümenizi Azure Dev Spaces başka bir [desteklenen bölgeye][supported-regions]taşımak istiyorsanız, diğer bölgede yeni bir küme oluşturmanız ve ardından Azure dev Spaces yükleyip yapılandırmanız ve kaynak ve uygulamalarınızı yeni kümenize dağıtmanız önerilir. AKS 'leri geçirme hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetine geçiş (aks)][aks-migration].
 
-## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Mevcut Dockerfiles veya Helm grafikleriyle Azure Dev Spaces'i kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Azure Dev Spaces, mevcut Dockerfiles veya Helm grafikleriyle kullanabilir miyim?
 
-Evet, projenizde zaten bir Dockerfile veya Miğfer grafiği varsa, bu dosyaları Azure Geliştirme Alanları ile kullanabilirsiniz. Çalıştırdığınızda, `azds prep`parametreyi `--chart` kullanın ve grafiğin konumunu belirtin. Azure Dev Spaces yine de *bir azds.yaml* ve *Dockerfile.develop* dosyası oluşturur, ancak varolan bir Dockerfile veya Helm grafiğini değiştirmez veya değiştirmez. Çalışırken her şeyin mevcut uygulamanızla doğru çalışması için *azds.yaml* ve *Dockerfile'i* değiştirmeniz `azds up`gerekebilir.
+Evet, projenizde zaten bir Dockerfile veya Held grafiği varsa, bu dosyaları Azure Dev Spaces kullanabilirsiniz. Çalıştırdığınızda `azds prep`, `--chart` parametresini kullanın ve grafiğin konumunu belirtin. Azure Dev Spaces, *azds. YAML* ve *dockerfile. geliþme* dosyası oluşturmaya devam eder, ancak mevcut bir Dockerfile veya Helu grafiğini değiştirmez ya da değiştirmeyecektir. *Azds. YAML* ve *dockerfile.* çalıştırırken `azds up`, her şeyin mevcut uygulamanızla doğru şekilde çalışması için dosyaları geliştirmeniz gerekebilir.
 
-Kendi Dockerfile veya Helm grafiğinizi kullanırken aşağıdaki sınırlamalar vardır:
-* Yalnızca bir Dockerfile kullanıyorsanız, yalnızca çalışma zamanı değil, SDK dili gibi geliştirme senaryolarını etkinleştirmek için ihtiyacınız olan her şeyi içermelidir. Dockerfile gibi Azure Dev Spaces için ayrı bir Dockerfile kullanıyorsanız, geliştirme senaryolarını etkinleştirmek için ihtiyacınız olan her şeyin söz konusu Dockerfile'a dahil edilmesi gerekir.
-* Miğfer grafiğiniz, görüntü etiketinin bir kısmını veya tamamını *values.yaml'den*bir değer olarak geçirmeyi desteklemelidir.
-* Giriş le herhangi bir şeyi değiştiriyorsanız, Azure Dev Spaces tarafından sağlanan giriş çözümlerini kullanmak için Miğfer grafiğinizi de güncelleyebilirsiniz.
-* Azure Dev Spaces [tarafından sağlanan yönlendirme özelliklerini][dev-spaces-routing]kullanmak istiyorsanız, tek bir proje için tüm hizmetler tek bir Kubernetes ad alanına sığmalı ve basit bir adlandırma ile dağıtılmalı, örneğin *service-a*. Standart Miğfer grafiklerinde, bu adlandırma güncelleştirmesi *tam nameOverride* özelliği için bir değer belirterek yapılabilir.
+Kendi Dockerfile veya Held grafiğinizi kullanırken aşağıdaki sınırlamalar vardır:
+* Yalnızca bir Dockerfile kullanılıyorsa, dil SDK 'Sı gibi yalnızca çalışma zamanı değil, geliştirme senaryolarını etkinleştirmek için ihtiyaç duyduğunuz her şeyi içermesi gerekir. Azure Dev Spaces için bir Dockerfile. geliştirme gibi ayrı bir Dockerfile kullanılıyorsa, geliştirme senaryolarını etkinleştirmek için ihtiyacınız olan her şey, bu Dockerfile 'a eklenmelidir.
+* Held grafiğiniz, tüm görüntü etiketinin bir kısmını veya tamamını *values. YAML*değeri olarak geçirmeyi desteklemelidir.
+* Giriş ile herhangi bir şeyi değiştiriyorsanız, Azure Dev Spaces tarafından sunulan giriş çözümünü kullanmak için Helm grafiğinizi da güncelleştirebilirsiniz.
+* [Azure dev Spaces tarafından sunulan yönlendirme yeteneklerini][dev-spaces-routing]kullanmak istiyorsanız, tek bir proje için tüm hizmetlerin tek bir Kubernetes ad alanı içine sığması ve basit adlandırma ile dağıtılması gerekir. Örneğin, *hizmet-a*. Standart HELI grafiklerinde, bu adlandırma güncelleştirmesi *Fullnameoverride* özelliği için bir değer belirtilerek yapılabilir.
 
-Kendi Dockerfile veya Helm grafiğinizi Azure Dev Alanları ile çalışan varolan bir sürümle karşılaştırmak [için, hızlı başlangıç'ta][quickstart-cli]oluşturulan dosyaları gözden geçirin.
+Kendi Dockerfile veya hele grafiğinizi Azure Dev Spaces ile birlikte kullanılan mevcut bir sürümle karşılaştırmak için [hızlı][quickstart-cli]başlangıçta oluşturulan dosyaları gözden geçirin.
 
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Azure Dev Spaces tarafından oluşturulan dosyaları değiştirebilir miyim?
 
-Evet, [projenizi hazırlarken Azure Dev Spaces tarafından oluşturulan][dev-spaces-prep] *azds.yaml* dosyasını, Dockerfile ve Helm grafiğini değiştirebilirsiniz. Bu dosyaların değiştirilmesi, projenin oluşturulma ve çalışma şeklini değiştirir.
+Evet, [projenizi hazırlarken Azure dev Spaces tarafından oluşturulan][dev-spaces-prep] *azds. YAML* dosyasını, Dockerfile ve Held grafiğini değiştirebilirsiniz. Bu dosyalar değiştirildiğinde projenin nasıl oluşturulduğu ve çalıştırıldığı değişir.
 
-## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Azure Dev Spaces'i genel bir IP adresi olmadan kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Genel IP adresi olmadan Azure Dev Spaces kullanabilir miyim?
 
-Hayır, ortak bir IP olmadan BIR AKS Kümesi'nde Azure Dev Spaces'i sağlayamaz. Yönlendirme için [Azure Dev Spaces tarafından][dev-spaces-routing]ortak bir IP gereklidir.
+Hayır, genel IP olmadan AKS kümesinde Azure Dev Spaces sağlayamazsınız. [Yönlendirme için Azure dev Spaces][dev-spaces-routing]genel bir IP gerekir.
 
-## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Azure Dev Spaces ile kendi girişalanımı kullanabilir miyim?
+## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Azure Dev Spaces ile kendi giriş sayfamı kullanabilir miyim?
 
-Evet, Azure Dev Spaces'in oluşturduğu girişle birlikte kendi girişinizi yapılandırabilirsiniz. Örneğin, [traefik][ingress-traefik] veya [NGINX][ingress-nginx]kullanabilirsiniz.
+Evet, giriş Azure Dev Spaces oluştururken kendi giriş bilgilerinizi yapılandırabilirsiniz. Örneğin, [traefik][ingress-traefik] veya [NGINX][ingress-nginx]kullanabilirsiniz.
 
-## <a name="can-i-use-https-with-azure-dev-spaces"></a>AZURE Dev Spaces ile HTTPS'yi kullanabilir miyim?
+## <a name="can-i-use-https-with-azure-dev-spaces"></a>Azure Dev Spaces ile HTTPS kullanabilir miyim?
 
-Evet, [traefik][ingress-https-traefik] veya [NGINX][ingress-https-nginx]kullanarak HTTPS ile kendi giriş inizi yapılandırabilirsiniz.
+Evet, [traefik][ingress-https-traefik] veya [NGINX][ingress-https-nginx]kullanarak kendi giriş hesabınızı https ile yapılandırabilirsiniz.
 
-## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Azure Dev Spaces'i kubenet yerine CNI kullanan bir kümede kullanabilir miyim? 
+## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Azure Dev Spaces, kubenet yerine CNı kullanan bir kümede kullanabilir miyim? 
 
-Evet, ağ oluşturmak için CNI kullanan bir AKS kümesinde Azure Dev Spaces'i kullanabilirsiniz. Örneğin, ağ için CNI kullanan [varolan Windows kapsayıcıları][windows-containers]olan bir AKS kümesinde Azure Dev Spaces'i kullanabilirsiniz. Azure Dev Spaces ile ağ oluşturmak için CNI kullanma hakkında daha fazla bilgiyi [burada](configure-networking.md#using-azure-cni)bulabilirsiniz.
+Evet, ağ için CNı kullanan bir AKS kümesinde Azure Dev Spaces kullanabilirsiniz. Örneğin, bir AKS kümesinde Azure Dev Spaces, ağ için CNı kullanan [mevcut Windows kapsayıcılarıyla][windows-containers]birlikte kullanabilirsiniz. Azure Dev Spaces ile ağ için CNı kullanma hakkında daha fazla bilgiye [buradan](configure-networking.md#using-azure-cni)ulaşabilirsiniz.
 
-## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Windows Kapsayıcılı Azure Dev Alanları kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Windows kapsayıcılarıyla Azure Dev Spaces kullanabilir miyim?
 
-Şu anda Azure Dev Spaces yalnızca Linux bölmelerinde ve düğümlerinde çalışacak şekilde tasarlanmıştır, ancak Azure Dev [Spaces'i varolan Windows kapsayıcıları][windows-containers]içeren bir AKS kümesinde çalıştırabilirsiniz.
+Şu anda Azure Dev Spaces yalnızca Linux düğüm ve düğümleri üzerinde çalışmak üzere tasarlanmıştır, ancak [mevcut Windows kapsayıcılarıyla][windows-containers]bir aks kümesinde Azure dev Spaces çalıştırabilirsiniz.
 
-## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>API sunucusu yetkili IP adresi aralıkları etkinleştirilmiş AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>API sunucusu yetkilendirilmiş IP adresi aralıkları etkin olan AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
 
-Evet, [API sunucusu yetkili IP adresi aralıkları][aks-auth-range] etkinleştirilmiş aks kümelerinde Azure Dev Spaces kullanabilirsiniz. Azure Dev Spaces ile etkinleştirilmiş API sunucusu yetkili IP adresi aralıkları ile AKS kümeleri kullanma hakkında daha fazla bilgiyi [burada](configure-networking.md#using-api-server-authorized-ip-ranges)bulabilirsiniz.
+Evet, [API sunucusu YETKILENDIRILMIŞ IP adresi aralıkları][aks-auth-range] etkin olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Azure Dev Spaces ile etkinleştirilmiş bir AKS kümesi ile ilgili daha fazla bilgi için, ile etkinleştirilen IP adresi aralıklarını [burada](configure-networking.md#using-api-server-authorized-ip-ranges)bulabilirsiniz.
 
-## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Küme düğümleri için sınırlı çıkış trafiği olan AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Küme düğümleri için kısıtlanmış çıkış trafiği ile AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
 
-Evet, doğru FQDN'lere izin verildikten sonra [etkinleştirilen küme düğümleri için sınırlı çıkış trafiğine][aks-restrict-egress-traffic] sahip AKS kümelerinde Azure Dev Spaces'i kullanabilirsiniz. Azure Dev Spaces ile etkin küme düğümleri için sınırlı çıkış trafiğine sahip aks kümeleri kullanma hakkında daha fazla bilgiyi [burada](configure-networking.md#ingress-and-egress-network-traffic-requirements)bulabilirsiniz.
+Evet, doğru FQDN 'Lere izin verildiğinde, [küme düğümleri için kısıtlanmış çıkış trafiği][aks-restrict-egress-traffic] olan aks kümelerinde Azure dev Spaces kullanabilirsiniz. Azure Dev Spaces ile etkin küme düğümleri için kısıtlanmış çıkış trafiği ile AKS kümelerini kullanma hakkında daha fazla [bilgi edinebilirsiniz.](configure-networking.md#ingress-and-egress-network-traffic-requirements)
 
 ## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>RBAC özellikli AKS kümelerinde Azure Dev Spaces kullanabilir miyim?
 
-Evet, RBAC etkinken veya olmadan AKS kümelerinde Azure Dev Spaces'i kullanabilirsiniz.
+Evet, AKS kümelerindeki Azure Dev Spaces RBAC etkinleştirilmiş veya olmadan kullanabilirsiniz.
 
-## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Visual Studio'da proje girişini etkinleştirdiğimde ne olur?
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Visual Studio 'da Project için giriş 'i etkinleştirdiğimde ne olur?
 
-Projenizi hazırlamak için Visual Studio'yu kullanırken, hizmetiniz için giriş emseçeneğini zedeleme seçeneğiniz var. Girişi etkinleştirmek, isteğe bağlı olan AKS kümenizde çalışırken hizmetinize erişmek için genel bir bitiş noktası oluşturur. Girişi etkinleştirmezseniz, hizmetiniz yalnızca AKS kümenizden erişilebilir.
+Projenizi hazırlamak için Visual Studio kullanırken hizmetiniz için giriş etkinleştirme seçeneğiniz vardır. Inress 'nin etkinleştirilmesi, AKS kümenizde çalışırken hizmetinize erişmek için genel bir uç nokta oluşturur, bu isteğe bağlıdır. Girişi etkinleştirmezseniz hizmetinize yalnızca AKS kümeniz içinden erişilebilir.
 
-## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Azure Dev Spaces ile bölme yönetilen kimlikleri kullanabilir miyim?
+## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Azure Dev Spaces Pod tarafından yönetilen kimlikleri kullanabilir miyim?
 
-Evet, Azure Dev Spaces etkinleştirilmiş aks kümelerinde [pod yönetilen kimlikleri][aks-pod-managed-id] kullanabilirsiniz, ancak bölme yönetilen kimliklerle kümenizde Azure Dev Spaces'i etkinleştirdikten sonra ek yapılandırma [adımları][dev-spaces-pod-managed-id-steps] vardır. Pod yönetilen kimlikleriniz yüklüyse ve onu kaldırmak istiyorsanız, [kaldır notları'nda][aks-pod-managed-id-uninstall]daha fazla ayrıntı bulabilirsiniz.
+Evet, AKS kümelerinde [Pod yönetilen kimliklerini][aks-pod-managed-id] Azure dev Spaces etkinleştirilmiş olarak kullanabilirsiniz, ancak kümenizde Pod yönetilen kimliklerle Azure dev Spaces etkinleştirdikten sonra [ek yapılandırma adımları][dev-spaces-pod-managed-id-steps] vardır. Pod yönetilen kimlikleri yüklüyse ve kaldırmak istiyorsanız, [kaldırma notlarında][aks-pod-managed-id-uninstall]daha fazla ayrıntı bulabilirsiniz.
 
-## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Azure Dev Alanları'nı bir uygulamada birden çok mikro hizmetle kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Bir uygulamada birden fazla mikro hizmet ile Azure Dev Spaces kullanabilir miyim?
 
-Evet, azure dev spaces'i birden çok mikro hizmetiçeren bir uygulamada kullanabilirsiniz, ancak tek tek mikro hizmetleri kendi köklerinde hazırlamanız ve çalıştırmanız gerekir. Azure Dev Spaces CLI, Azure Dev Spaces VS Code uzantısı ve Visual Studio Azure Geliştirme iş yükü, *azds.yaml* dosyasının çalıştırmak ve hata ayıklamak için mikro hizmetin kökünde olmasını bekler. Tek bir uygulamada birden çok mikro hizmet örneği için [Bisiklet Paylaşımı örnek uygulamasına][bike-sharing] bakın.
+Evet, birden fazla mikro hizmet içeren bir uygulamada Azure Dev Spaces kullanabilirsiniz, ancak tek tek mikro hizmetleri köklerinde hazırlamanız ve çalıştırmanız gerekir. Azure Dev Spaces CLı, Azure Dev Spaces VS Code uzantısı ve Visual Studio Azure geliştirme iş yükü, çalıştırılabilmesi ve hata ayıklaması için *azds. YAML* dosyasının mikro hizmetin kökünde olmasını bekler. Tek bir uygulamada birden fazla mikro hizmet örneği için bkz. [Bisiklet paylaşma örnek uygulaması][bike-sharing] .
 
-Visual Studio [Code'da, tek bir çalışma alanında ayrı projeler açmak][vs-code-multi-root-workspaces] ve bunları Azure Dev Spaces üzerinden ayrı ayrı hata ayıklamak mümkündür. Projelerin her biri bağımsız olmalı ve Azure Dev Spaces için hazırlanmalıdır.
+Visual Studio Code, [tek bir çalışma alanında ayrı projeler açmak][vs-code-multi-root-workspaces] ve Azure dev Spaces aracılığıyla ayrı olarak hata ayıklamak mümkündür. Projelerin her biri, Azure Dev Spaces için kendi kendine dahil ve hazırlanmalıdır.
 
-Visual Studio'da, Azure Dev Spaces üzerinden hata ayıklama için .NET Core çözümlerini yapılandırmak mümkündür.
+Visual Studio 'da, Azure Dev Spaces aracılığıyla hata ayıklama için .NET Core çözümlerini yapılandırmak mümkündür.
 
-## <a name="can-i-use-azure-dev-spaces-with-a-service-mesh"></a>Azure Dev Spaces'i hizmet örgüsüyle kullanabilir miyim?
+## <a name="can-i-use-azure-dev-spaces-with-a-service-mesh"></a>Hizmet ağı ile Azure Dev Spaces kullanabilir miyim?
 
-Şu anda, [Istio][istio] veya [Linkerd][linkerd]gibi hizmet meshes ile Azure Dev Spaces kullanamazsınız. Azure Dev Alanları'nı ve hizmet örgüsi aynı AKS kümesinde çalıştırabilirsiniz, ancak hem Azure Dev Spaces'i hem de aynı ad alanında bir hizmet örgüsü etkinleştiremezsiniz.
+Şu anda, [Istio][istio] veya [linkerd][linkerd]gibi hizmet kafesleri ile Azure dev Spaces kullanamazsınız. Azure Dev Spaces ve bir hizmet ağı aynı AKS kümesinde çalıştırılabilir, ancak aynı ad alanında hem Azure Dev Spaces hem de bir hizmet ağı etkinleştirilmemiş olabilir.
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled

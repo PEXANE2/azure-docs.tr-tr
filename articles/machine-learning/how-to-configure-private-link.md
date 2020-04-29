@@ -1,7 +1,7 @@
 ---
-title: Azure Özel Bağlantısını Yapılandırma
+title: Azure özel bağlantısını yapılandırma
 titleSuffix: Azure Machine Learning
-description: Azure Makine Öğrenimi çalışma alanınıza sanal bir ağdan güvenli bir şekilde erişmek için Azure Özel Bağlantısını kullanın.
+description: Azure Machine Learning çalışma alanınıza sanal bir ağdan güvenli bir şekilde erişmek için Azure özel bağlantısı 'nı kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,67 +11,67 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
 ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81411194"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning çalışma alanı için Azure Özel Bağlantısını Yapılandırma (Önizleme)
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma (Önizleme)
 
-Bu belgede, Azure Makine Öğrenimi çalışma alanınızla Azure Özel Bağlantısını nasıl kullanacağınızı öğrenirsiniz. Bu özellik şu anda önizlemededir ve ABD Doğu, ABD Batı 2, ABD Güney Orta bölgelerinde mevcuttur. 
+Bu belgede, Azure özel bağlantısının Azure Machine Learning çalışma alanıyla nasıl kullanılacağını öğrenirsiniz. Bu özellik şu anda önizleme aşamasındadır ve ABD Doğu, ABD Batı 2 ABD Orta Güney bölgelerinde kullanılabilir. 
 
-Azure Özel Bağlantı, özel bir bitiş noktası kullanarak çalışma alanınıza bağlanmanızı sağlar. Özel bitiş noktası, sanal ağınızdaki özel IP adresleri kümesidir. Daha sonra çalışma alanınıza erişimi yalnızca özel IP adresleri üzerinden oluşacak şekilde sınırlandırabilirsiniz. Private Link, veri sızma riskini azaltmaya yardımcı olur. Özel uç noktalar hakkında daha fazla bilgi edinmek için [Azure Özel Bağlantı](/azure/private-link/private-link-overview) makalesine bakın.
+Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza bağlanmanızı sağlar. Özel uç nokta, sanal ağınız içindeki özel IP adresleri kümesidir. Daha sonra çalışma alanınıza erişimi yalnızca özel IP adresleri üzerinden oluşacak şekilde sınırlayabilirsiniz. Özel bağlantı, veri taşması riskini azaltmaya yardımcı olur. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel bağlantı](/azure/private-link/private-link-overview) makalesi.
 
 > [!IMPORTANT]
-> Azure Özel Bağlantısı, çalışma alanını silme veya bilgi işlem kaynaklarını yönetme gibi Azure denetim düzlemini (yönetim işlemleri) etkilemez. Örneğin, bir işlem hedefi oluşturma, güncelleştirme veya silme. Bu işlemler normal olarak genel Internet üzerinden gerçekleştirilir.
+> Azure özel bağlantısı, çalışma alanını silme veya işlem kaynaklarını yönetme gibi Azure denetim düzlemi 'ni (yönetim işlemleri) etkilemez. Örneğin, bir işlem hedefi oluşturma, güncelleştirme veya silme. Bu işlemler, genel Internet üzerinden normal olarak gerçekleştirilir.
 >
-> Azure Machine Learning bilgi işlem örnekleri önizlemesi, Private Link'in etkin olduğu bir çalışma alanında desteklenmez.
+> Azure Machine Learning işlem örnekleri önizlemesi, özel bağlantının etkinleştirildiği bir çalışma alanında desteklenmez.
 
-## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Özel bitiş noktası kullanan bir çalışma alanı oluşturma
+## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Özel uç nokta kullanan bir çalışma alanı oluşturma
 
-Şu anda, yalnızca yeni bir Azure Machine Learning çalışma alanı oluştururken özel bir bitiş noktasını etkinleştirmeyi destekliyoruz. Aşağıdaki şablonlar birkaç popüler yapılandırmaiçin sağlanır:
+Şu anda yalnızca yeni bir Azure Machine Learning çalışma alanı oluştururken özel bir uç noktanın etkinleştirilmesini destekliyoruz. Aşağıdaki şablonlar çeşitli popüler yapılandırmalarda verilmiştir:
 
 > [!TIP]
-> Otomatik onay, Özel Bağlantı etkin kaynağına otomatik erişimi denetler. Daha fazla bilgi için Azure [Özel Bağlantı hizmeti nedir'e](../private-link/private-link-service-overview.md)bakın.
+> Otomatik onay, özel bağlantı etkin kaynağına otomatik erişimi denetler. Daha fazla bilgi için bkz. [Azure özel bağlantı hizmeti nedir?](../private-link/private-link-service-overview.md)
 
-* [Müşteri tarafından yönetilen anahtarlarla çalışma alanı ve Private Link için otomatik onay](#cmkaapl)
-* [Müşteri tarafından yönetilen anahtarlar ve Özel Bağlantı için manuel onay içeren çalışma alanı](#cmkmapl)
-* [Microsoft tarafından yönetilen anahtarlarla çalışma alanı ve Private Link için otomatik onay](#mmkaapl)
-* [Microsoft tarafından yönetilen anahtarlarla çalışma alanı ve Private Link için manuel onay](#mmkmapl)
+* [Özel bağlantı için müşteri tarafından yönetilen anahtarlar ve otomatik onaylama ile çalışma alanı](#cmkaapl)
+* [Müşteri tarafından yönetilen anahtarlar ve özel bağlantı için el ile onaylama ile çalışma alanı](#cmkmapl)
+* [Özel bağlantı için Microsoft tarafından yönetilen anahtarlar ve otomatik onay ile çalışma alanı](#mmkaapl)
+* [Microsoft tarafından yönetilen anahtarlar ve özel bağlantı için el ile onaylama ile çalışma alanı](#mmkmapl)
 
-Bir şablon dağıtırken aşağıdaki bilgileri sağlamanız gerekir:
+Bir şablonu dağıttığınızda, aşağıdaki bilgileri sağlamanız gerekir:
 
 * Çalışma alanı adı
-* Kaynakları oluşturmak için Azure bölgesi
-* Çalışma alanı sürümü (Temel veya Kurumsal)
-* Çalışma alanı için yüksek gizlilik ayarları etkinleştirilmeliyse
-* Müşteri tarafından yönetilen bir anahtarla çalışma alanı için şifreleme etkinve anahtar için ilişkili değerler etkinleştirilmelidir
-* Sanal Ağ ve Subnet adı, şablon yeni sanal ağ ve alt ağ yaratacak
+* Kaynakların oluşturulacağı Azure bölgesi
+* Çalışma alanı sürümü (temel veya kurumsal)
+* Çalışma alanı için yüksek gizlilik ayarlarının etkinleştirilmesi gerekiyorsa
+* Müşterinin yönettiği anahtarla çalışma alanı için şifreleme etkin olmalıdır ve anahtar için ilişkili değerler
+* Sanal ağ ve alt ağ adı, şablon yeni sanal ağ ve alt ağ oluşturacak
 
-Şablon gönderildikten ve sağlama tamamlandıktan sonra, çalışma alanınızı içeren kaynak grubu Özel Bağlantı ile ilgili üç yeni yapı türü içerir:
+Bir şablon gönderildikten ve sağlama tamamlandıktan sonra, çalışma alanınızı içeren kaynak grubu, özel bağlantıyla ilgili üç yeni yapıt türü içerir:
 
-* Özel bitiş noktası
+* Özel uç nokta
 * Ağ arabirimi
 * Özel DNS bölgesi
 
-Çalışma alanı, özel bitiş noktası üzerinden çalışma alanıyla iletişim kurabilen bir Azure Sanal Ağı da içerir.
+Çalışma alanı Ayrıca, Özel uç nokta üzerinden çalışma alanıyla iletişim kurabilen bir Azure sanal ağı içerir.
 
-### <a name="deploy-the-template-using-the-azure-portal"></a>Azure portalını kullanarak şablonu dağıtma
+### <a name="deploy-the-template-using-the-azure-portal"></a>Azure portal kullanarak şablonu dağıtma
 
-1. [Özel şablondan kaynakları dağıt'taki](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)adımları izleyin. __Şablonu Edit__ ekranına vardığınızda, bu belgenin sonundaki şablonlardan birine yapıştırın.
-1. Şablonu kullanmak için __Kaydet'i__ seçin. Aşağıdaki bilgileri sağlayın ve listelenen hüküm ve koşulları kabul edin:
+1. [Özel şablondan kaynak dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)bölümündeki adımları izleyin. __Şablonu Düzenle__ ekranına geldiğinizde, bu belgenin sonundaki şablonlardan birine yapıştırın.
+1. Şablonu kullanmak için __Kaydet__ ' i seçin. Aşağıdaki bilgileri sağlayın ve listelenen hüküm ve koşulları kabul edin:
 
    * Abonelik: Bu kaynaklar için kullanılacak Azure aboneliğini seçin.
-   * Kaynak grubu: Hizmetleri içerecek bir kaynak grubu seçin veya oluşturun.
-   * Çalışma alanı adı: Oluşturulacak Azure Machine Learning çalışma alanı için kullanılacak ad. Çalışma alanı adı 3 ile 33 karakter arasında olmalıdır. Sadece alfasayısal karakterler ve '-' içerebilir.
-   * Konum: Kaynakların oluşturulacağı konumu seçin.
+   * Kaynak grubu: hizmetleri içeren bir kaynak grubu seçin veya oluşturun.
+   * Çalışma alanı adı: oluşturulacak Azure Machine Learning çalışma alanı için kullanılacak ad. Çalışma alanı adı 3 ile 33 karakter arasında olmalıdır. Yalnızca alfasayısal karakterler ve '-' içerebilir.
+   * Konum: kaynakların oluşturulacağı konumu seçin.
 
-Daha fazla bilgi için [bkz.](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)
+Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-### <a name="deploy-the-template-using-azure-powershell"></a>Azure PowerShell'i kullanarak şablonu dağıtma
+### <a name="deploy-the-template-using-azure-powershell"></a>Azure PowerShell kullanarak şablonu dağıtma
 
-Bu örnek, bu belgenin sonundan geçerli dizinde adlı `azuredeploy.json` bir dosyaya şablonlardan birini kaydettiğinizi varsayar:
+Bu örnek, bu belgenin sonundaki şablonlardan birini geçerli dizinde adlı `azuredeploy.json` bir dosyaya kaydettiğiniz varsayılır:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -80,11 +80,11 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-Daha fazla bilgi için Kaynak [Yöneticisi şablonları ve Azure PowerShell ile kaynakları dağıt'a](../azure-resource-manager/templates/deploy-powershell.md) bakın ve [SAS jetonu ve Azure PowerShell ile özel Kaynak Yöneticisi şablonu dağıtın.](../azure-resource-manager/templates/secure-template-with-sas-token.md)
+Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtma ve Azure POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md) [SAS belirteci ve Azure PowerShell ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
-### <a name="deploy-the-template-using-the-azure-cli"></a>Azure CLI'yi kullanarak şablonu dağıtma
+### <a name="deploy-the-template-using-the-azure-cli"></a>Azure CLı kullanarak şablonu dağıtma
 
-Bu örnek, bu belgenin sonundan geçerli dizinde adlı `azuredeploy.json` bir dosyaya şablonlardan birini kaydettiğinizi varsayar:
+Bu örnek, bu belgenin sonundaki şablonlardan birini geçerli dizinde adlı `azuredeploy.json` bir dosyaya kaydettiğiniz varsayılır:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -95,46 +95,46 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-Daha fazla bilgi için Kaynak [Yöneticisi şablonları ve Azure CLI ile kaynakları dağıt](../azure-resource-manager/templates/deploy-cli.md) ve [SAS jetonu ve Azure CLI ile özel Kaynak Yöneticisi şablonu dağıt'a](../azure-resource-manager/templates/secure-template-with-sas-token.md)bakın.
+Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıtma](../azure-resource-manager/templates/deploy-cli.md) ve [SAS BELIRTECI ve Azure clı ile özel kaynak yöneticisi şablonu dağıtma](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
-## <a name="using-a-workspace-over-a-private-endpoint"></a>Özel bir bitiş noktası üzerinde çalışma alanı kullanma
+## <a name="using-a-workspace-over-a-private-endpoint"></a>Özel bir uç nokta üzerinde çalışma alanı kullanma
 
-Çalışma alanına iletişimyalnızca sanal ağdan izin verildiği için, çalışma alanını kullanan tüm geliştirme ortamları sanal ağın üyeleri olmalıdır. Örneğin, sanal ağdaki sanal bir makine veya VPN ağ geçidi kullanarak sanal ağa bağlı bir makine.
+Çalışma alanına yönelik iletişime yalnızca sanal ağdan izin verildiğinden, çalışma alanını kullanan tüm geliştirme ortamları sanal ağın üyesi olmalıdır. Örneğin, sanal ağ veya bir VPN ağ geçidi kullanarak sanal ağa bağlı bir makine olan sanal makine.
 
 > [!IMPORTANT]
-> Bağlantının geçici olarak kesintiye uğramasını önlemek için Microsoft, Private Link'i etkinleştirdikten sonra çalışma alanına bağlanan makinelerde DNS önbelleğinin temizlenmesini önerir. 
+> Microsoft, bağlantının geçici kesintisini önlemek için özel bağlantı etkinleştirildikten sonra çalışma alanına bağlanan makinelerde DNS önbelleğini temizlemeye öneriyor. 
 
-Azure Sanal Makineler hakkında bilgi için [Sanal Makineler belgelerine](/azure/virtual-machines/)bakın.
+Azure sanal makineleri hakkında daha fazla bilgi için bkz. [sanal makineler belgeleri](/azure/virtual-machines/).
 
-VPN ağ geçitleri hakkında bilgi için [VPN ağ geçidi nedir'](/azure/vpn-gateway/vpn-gateway-about-vpngateways)e bakın.
+VPN ağ geçitleri hakkında daha fazla bilgi için bkz. [VPN Gateway nedir](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
 ## <a name="using-azure-storage"></a>Azure Depolama’yı kullanma
 
-Çalışma alanınız tarafından kullanılan Azure Depolama hesabını güvenli hale getirmek için, bu hesabı sanal ağa koyun.
+Çalışma alanınız tarafından kullanılan Azure depolama hesabının güvenliğini sağlamak için sanal ağın içine yerleştirin.
 
-Depolama hesabını sanal ağa koyma hakkında bilgi [için](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)bkz.
+Depolama hesabını sanal ağa yerleştirme hakkında daha fazla bilgi için bkz. [çalışma alanınız için bir depolama hesabı kullanma](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace).
 
-## <a name="using-azure-key-vault"></a>Azure Anahtar Kasası Kullanma
+## <a name="using-azure-key-vault"></a>Azure Key Vault kullanma
 
-Çalışma alanınız tarafından kullanılan Azure Anahtar Kasası'nı güvenli hale getirmek için, bu tokaları sanal ağa koyabilir veya bunun için Private Link'i etkinleştirebilirsiniz.
+Çalışma alanınız tarafından kullanılan Azure Key Vault güvenli hale getirmek için, sanal ağın içine yerleştirebilir veya özel bağlantıyı etkinleştirebilirsiniz.
 
-Anahtar kasasını sanal ağa koyma hakkında bilgi [için](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)bkz.
+Anahtar kasasını sanal ağa yerleştirme hakkında daha fazla bilgi için bkz. [çalışma alanınıza sahip bir Anahtar Kasası örneği kullanma](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace).
 
-Anahtar kasası için Özel Bağlantıyı etkinleştirme hakkında daha fazla bilgi için [bkz.](/azure/key-vault/private-link-service)
+Anahtar Kasası için özel bağlantıyı etkinleştirme hakkında daha fazla bilgi için bkz. [Azure özel bağlantısı ile Key Vault tümleştirme](/azure/key-vault/private-link-service).
 
-## <a name="using-azure-kubernetes-services"></a>Azure Kubernetes Hizmetlerini Kullanma
+## <a name="using-azure-kubernetes-services"></a>Azure Kubernetes hizmetlerini kullanma
 
-Çalışma alanınız tarafından kullanılan Azure Kubernetes hizmetlerini güvenli hale getirmek için sanal bir ağa koyun. Daha fazla bilgi için çalışma [alanınızla Azure Kubernetes Hizmetlerini Kullan'a](how-to-enable-virtual-network.md#aksvnet)bakın.
+Çalışma alanınız tarafından kullanılan Azure Kubernetes hizmetlerini güvenli hale getirmek için, sanal bir ağ içine yerleştirin. Daha fazla bilgi için bkz. [Azure Kubernetes hizmetlerini çalışma alanım Ile kullanma](how-to-enable-virtual-network.md#aksvnet).
 
 > [!WARNING]
-> Azure Machine Learning, özel bağlantı etkinleştirilmiş bir Azure Kubernetes Hizmeti kullanmayı desteklemez.
+> Azure Machine Learning, özel bağlantısı etkin olan bir Azure Kubernetes hizmetini kullanmayı desteklemez.
 
-## <a name="azure-container-registry"></a>Azure Container Kayıt Defteri
+## <a name="azure-container-registry"></a>Azure Container Registry
 
-Sanal ağ içinde Azure Kapsayıcı Kayıt Defteri'ni güvence altına alma hakkında bilgi [için](how-to-enable-virtual-network.md#use-azure-container-registry)bkz.
+Sanal ağ içinde Azure Container Registry güvenliğini sağlama hakkında bilgi için bkz. [Azure Container Registry kullanma](how-to-enable-virtual-network.md#use-azure-container-registry).
 
 > [!IMPORTANT]
-> Azure Machine Learning çalışma alanınız için Özel Bağlantı kullanıyorsanız ve çalışma alanınız için Azure Kapsayıcı Kayıt Defteri'ni sanal bir ağa koyduysanız, aşağıdaki Azure Kaynak Yöneticisi şablonunu da uygulamanız gerekir. Bu şablon, çalışma alanınızın Özel Bağlantı üzerinden ACR ile iletişim kurmasını sağlar.
+> Azure Machine Learning çalışma alanınız için özel bağlantı kullanıyorsanız ve çalışma alanınızın Azure Container Registry bir sanal ağa yerleştirirseniz, aşağıdaki Azure Resource Manager şablonunu da uygulamanız gerekir. Bu şablon, çalışma alanınızın özel bağlantı üzerinden ACR ile iletişim kurmasını sağlar.
 
 ```json
 {
@@ -189,7 +189,7 @@ Sanal ağ içinde Azure Kapsayıcı Kayıt Defteri'ni güvence altına alma hakk
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
 <a id="cmkaapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>Müşteri tarafından yönetilen anahtarlarla çalışma alanı ve Private Link için otomatik onay
+### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>Özel bağlantı için müşteri tarafından yönetilen anahtarlar ve otomatik onaylama ile çalışma alanı
 
 ```json
 {
@@ -492,7 +492,7 @@ Sanal ağ içinde Azure Kapsayıcı Kayıt Defteri'ni güvence altına alma hakk
 ```
 
 <a id="cmkmapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>Müşteri tarafından yönetilen anahtarlar ve Özel Bağlantı için manuel onay içeren çalışma alanı
+### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>Müşteri tarafından yönetilen anahtarlar ve özel bağlantı için el ile onaylama ile çalışma alanı
 
 ```json
 {
@@ -718,7 +718,7 @@ Sanal ağ içinde Azure Kapsayıcı Kayıt Defteri'ni güvence altına alma hakk
 ```
 
 <a id="mmkaapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>Microsoft tarafından yönetilen anahtarlarla çalışma alanı ve Private Link için otomatik onay
+### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>Özel bağlantı için Microsoft tarafından yönetilen anahtarlar ve otomatik onay ile çalışma alanı
 
 ```json
 {
@@ -979,7 +979,7 @@ Sanal ağ içinde Azure Kapsayıcı Kayıt Defteri'ni güvence altına alma hakk
 ```
 
 <a id="mmkmapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>Microsoft tarafından yönetilen anahtarlarla çalışma alanı ve Private Link için manuel onay
+### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>Microsoft tarafından yönetilen anahtarlar ve özel bağlantı için el ile onaylama ile çalışma alanı
 
 ```json
 {
@@ -1164,4 +1164,4 @@ Sanal ağ içinde Azure Kapsayıcı Kayıt Defteri'ni güvence altına alma hakk
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning çalışma alanınızın güvenliğini sağlama hakkında daha fazla bilgi için [Kurumsal güvenlik](concept-enterprise-security.md) makalesine bakın.
+Azure Machine Learning çalışma alanınızı güvenli hale getirme hakkında daha fazla bilgi için bkz. [Enterprise Security](concept-enterprise-security.md) article.

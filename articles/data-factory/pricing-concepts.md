@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası fiyatlandırmalarını örneklerle anlama
-description: Bu makalede, ayrıntılı örneklerle Azure Veri Fabrikası fiyatlandırma modelini açıklar ve gösterir
+title: Örnekler aracılığıyla Azure Data Factory fiyatlandırmasını anlama
+description: Bu makalede, ayrıntılı örneklerle Azure Data Factory fiyatlandırma modeli açıklanmaktadır ve gösterilmektedir
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
@@ -11,168 +11,168 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414934"
 ---
-# <a name="understanding-data-factory-pricing-through-examples"></a>Örnekler aracılığıyla Veri Fabrikası fiyatlandırmaanlama
+# <a name="understanding-data-factory-pricing-through-examples"></a>Örnekler aracılığıyla Data Factory fiyatlandırmasını anlama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede, ayrıntılı örneklerle Azure Veri Fabrikası fiyatlandırma modelini açıklar ve gösterir.
+Bu makalede, ayrıntılı örneklerle Azure Data Factory fiyatlandırma modeli açıklanmaktadır ve gösterilmektedir.
 
 > [!NOTE]
-> Aşağıdaki örneklerde kullanılan fiyatlar varsayımsalolup, gerçek fiyatlandırmayı ima etmeamacında değildir.
+> Aşağıdaki örneklerde kullanılan fiyatlar kuramsal değildir ve gerçek fiyatlandırmaya yönelik değildir.
 
-## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>AWS S3'ten Azure Blob depolamasına saatlik veri kopyalama
+## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>AWS S3 'ten Azure Blob depolama alanına veri kopyalama
 
-Bu senaryoda, AWS S3'ten Azure Blob depolama alanına saatlik zamanlamayla verileri kopyalamak istiyorsunuz.
+Bu senaryoda, bir saatlik zamanlamaya göre AWS S3 ' den Azure Blob depolamaya veri kopyalamak istersiniz.
 
-Senaryoyu gerçekleştirmek için aşağıdaki öğelerden bir ardışık kaynak oluşturmanız gerekir:
+Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturmanız gerekir:
 
-1. Verilerin AWS S3'ten kopyalanması için giriş veri kümesine sahip bir kopyalama etkinliği.
+1. AWS S3 öğesinden kopyalanacak veriler için giriş veri kümesi olan bir kopyalama etkinliği.
 
-2. Azure Depolama'daki veriler için bir çıktı veri kümesi.
+2. Azure depolama 'daki veriler için çıkış veri kümesi.
 
-3. Boru hattını her saat çalıştıracak bir zamanlama tetikleyicisi.
+3. İşlem hattını her saat yürütmek için bir zamanlama tetikleyicisi.
 
-   ![Senaryo1](media/pricing-concepts/scenario1.png)
+   ![Scenario1](media/pricing-concepts/scenario1.png)
 
-| **İşlemler** | **Türleri ve Birimleri** |
+| **İşlemler** | **Türler ve birimler** |
 | --- | --- |
-| Bağlantılı Hizmet Oluştur | 2 Oku/Yaz varlığı  |
-| Veri Kümeleri Oluşturma | 4 Okuma/Yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
-| Boru Hattı Oluştur | 3 Okuma/Yazma varlıkları (1'i boru hattı oluşturma, 2'si veri kümesi başvuruları için) |
-| Boru Hattı alın | 1 Oku/Yaz varlığı |
-| Çalıştır Boru Hattı | 2 Etkinlik çalışır (tetikleme çalışması için 1, etkinlik çalıştırmaları için 1) |
-| Veri Varsayımı Kopyala: yürütme süresi = 10 dk | 10 \* 4 Azure Tümleştirme Çalışma Süresi (varsayılan DIU ayarı = 4) Veri tümleştirme birimleri hakkında daha fazla bilgi ve kopya performansını optimize etmek için [bu makaleye](copy-activity-performance.md) bakın |
-| DenetimİzE VarAKSI DenetimI Denetimi Varsayımı: Yalnızca 1 çalıştırma oluştu | 2 İzleme çalıştırma kayıtları yeniden denenmiş (1 ardışık hat lar için, 1 etkinlik çalışması için) |
+| Bağlı hizmet oluştur | 2 varlık okuma/yazma  |
+| Veri kümeleri oluştur | 4 okuma/yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
+| İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
+| İşlem hattı al | 1 okuma/yazma varlığı |
+| İşlem hattını Çalıştır | 2 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 1) |
+| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan Diu ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
 
-**Toplam Senaryo fiyatlandırması: $0.16811**
+**Toplam senaryo fiyatlandırması: $0,16811**
 
-- Veri Fabrikası İşlemleri = **$0.0001**
-  - Okuma/Yazma =\*10 00001 = $0.0001 [1 R/W = $0.50/50000 = 0.00001]
-  - İzleme =\*2 000005 = $0.00001 [1 İzleme = $0.25/50000 = 0,000005]
-- Boru Hattı &amp; Orkestrasyon Yürütme = **0,168 $**
-  - Etkinlik Çalışır =\*001 2 = 0.002 [1 çalıştırın = $1/1000 = 0.001]
-  - Veri Hareketi Etkinlikleri = $0.166 (Yürütme süresinin 10 dakikası için eşit olarak verilir. Azure Tümleştirme Çalışma Zamanında $0.25/saat)
+- Data Factory Işlemler = **$0,0001**
+  - Okuma/yazma = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - İzleme = 2\*000005 = $0,00001 [1 izleme = $0,25/50000 = 0,000005]
+- İşlem hattı &amp; düzenleme yürütmesi = **$0,168**
+  - Etkinlik çalıştırmaları = 001\*2 = 0,002 [1 Çalıştırma = $1/1000 = 0,001]
+  - Veri taşıma etkinlikleri = $0,166 (10 dakikalık yürütme süresi için günlere eşit olarak dağıtılır. Azure Integration Runtime) $0,25/saat)
 
-## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Azure Databricks ile verileri saatlik olarak kopyalayın ve dönüştürün
+## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Veri kopyalama ve Azure Databricks saatlik olarak dönüştürme
 
-Bu senaryoda, AWS S3'ten Azure Blob depolamasına kadar olan verileri kopyalamak ve verileri Azure Databricks ile saatlik zamanlamayla dönüştürmek istiyorsunuz.
+Bu senaryoda, AWS S3 ' den Azure Blob depolama alanına veri kopyalamak ve saatlik bir zamanlamaya göre verileri Azure Databricks dönüştürmek istiyorsunuz.
 
-Senaryoyu gerçekleştirmek için aşağıdaki öğelerden bir ardışık kaynak oluşturmanız gerekir:
+Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturmanız gerekir:
 
-1. Verilerin AWS S3'ten kopyalanması için giriş veri kümesine ve Azure depolamadaki veriler için çıktı veri kümesine sahip bir kopyalama etkinliği.
-2. Veri dönüşümü için bir Azure Databricks etkinliği.
-3. Boru hattını her saat çalıştıracak bir zamanlama tetikleyicisi.
+1. AWS S3 öğesinden kopyalanacak veriler için bir giriş veri kümesi ve Azure Storage 'daki veriler için bir çıkış veri kümesi içeren bir kopyalama etkinliği.
+2. Veri dönüştürme için bir Azure Databricks etkinliği.
+3. Her saat ardışık düzeni yürütmek için bir zamanlama tetikleyicisi.
 
-![Senaryo2](media/pricing-concepts/scenario2.png)
+![Scenario2](media/pricing-concepts/scenario2.png)
 
-| **İşlemler** | **Türleri ve Birimleri** |
+| **İşlemler** | **Türler ve birimler** |
 | --- | --- |
-| Bağlantılı Hizmet Oluştur | 3 Oku/Yaz varlığı  |
-| Veri Kümeleri Oluşturma | 4 Okuma/Yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
-| Boru Hattı Oluştur | 3 Okuma/Yazma varlıkları (1'i boru hattı oluşturma, 2'si veri kümesi başvuruları için) |
-| Boru Hattı alın | 1 Oku/Yaz varlığı |
-| Çalıştır Boru Hattı | 3 Etkinlik çalışır (tetikleme çalışması için 1, etkinlik çalıştırmaları için 2) |
-| Veri Varsayımı Kopyala: yürütme süresi = 10 dk | 10 \* 4 Azure Tümleştirme Çalışma Süresi (varsayılan DIU ayarı = 4) Veri tümleştirme birimleri hakkında daha fazla bilgi ve kopya performansını optimize etmek için [bu makaleye](copy-activity-performance.md) bakın |
-| DenetimİzE VarAKSI DenetimI Denetimi Varsayımı: Yalnızca 1 çalıştırma oluştu | 3 İzleme çalıştırma kayıtları yeniden denenmiş (1 boru hattı çalıştırımı için, 2 etkinlik çalışması için) |
-| Databricks etkinliği Varsayım yürüt: yürütme süresi = 10 dk | 10 dk Dış Boru Hattı Faaliyet Yürütme |
+| Bağlı hizmet oluştur | 3 okuma/yazma varlığı  |
+| Veri kümeleri oluştur | 4 okuma/yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
+| İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
+| İşlem hattı al | 1 okuma/yazma varlığı |
+| İşlem hattını Çalıştır | 3 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 2) |
+| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan Diu ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 3 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 2) |
+| Databricks etkinlik varsayımını Yürüt: yürütme süresi = 10 dk | 10 dakikalık dış işlem hattı etkinliği yürütme |
 
-**Toplam Senaryo fiyatlandırması: $0.16916**
+**Toplam senaryo fiyatlandırması: $0,16916**
 
-- Veri Fabrikası İşlemleri = **$0.00012**
-  - Okuma/Yazma =\*11 00001 = $0.00011 [1 R/W = $0.50/50000 = 0.00001]
-  - İzleme =\*3 000005 = $0.00001 [1 İzleme = $0.25/50000 = 0,000005]
-- Boru Hattı &amp; Orkestrasyon Yürütme = **0,16904 $**
-  - Etkinlik Çalışır =\*001 3 = 0.003 [1 çalıştırın = $1/1000 = 0.001]
-  - Veri Hareketi Etkinlikleri = $0.166 (Yürütme süresinin 10 dakikası için eşit olarak verilir. Azure Tümleştirme Çalışma Zamanında $0.25/saat)
-  - Dış Boru Hattı Etkinliği = $0.000041 (10 dakikalık yürütme süresi için eşit olarak eşitolarak sürülür. Azure Tümleştirme Çalışma Süresi'nde $0.00025/saat)
+- Data Factory Işlemler = **$0,00012**
+  - Okuma/yazma = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 3\*000005 = $0,00001 [1 izleme = $0,25/50000 = 0,000005]
+- İşlem hattı &amp; düzenleme yürütmesi = **$0,16904**
+  - Etkinlik çalıştırmaları = 001\*3 = 0,003 [1 Çalıştırma = $1/1000 = 0,001]
+  - Veri taşıma etkinlikleri = $0,166 (10 dakikalık yürütme süresi için günlere eşit olarak dağıtılır. Azure Integration Runtime) $0,25/saat)
+  - Dış ardışık düzen etkinliği = $0,000041 (10 dakikalık yürütme süresi için eşit olarak dağıtılır. Azure Integration Runtime için $0.00025/saat)
 
-## <a name="copy-data-and-transform-with-dynamic-parameters-hourly"></a>Verileri kopyalayın ve dinamik parametrelerle saatlik dönüştürme
+## <a name="copy-data-and-transform-with-dynamic-parameters-hourly"></a>Saatlik dinamik parametrelerle veri kopyalama ve dönüştürme
 
-Bu senaryoda, AWS S3'ten Azure Blob depolama alanına kadar olan verileri kopyalamak ve Azure Veri Tuğlaları (komut dosyasındaki dinamik parametrelerle) saatlik zamanlamayla dönüştürmek istiyorsunuz.
+Bu senaryoda, AWS S3 ' den Azure Blob depolama alanına veri kopyalamak ve bir saatlik zamanlamaya göre Azure Databricks (betikteki dinamik parametrelerle birlikte) ile dönüştürmek istiyorsunuz.
 
-Senaryoyu gerçekleştirmek için aşağıdaki öğelerden bir ardışık kaynak oluşturmanız gerekir:
+Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturmanız gerekir:
 
-1. Verilerin Azure depolamadaki veriler için bir çıktı veri kümesi olan AWS S3'ten kopyalanması için giriş veri kümesine sahip bir kopyalama etkinliği.
-2. Parametreleri dönüşüm komut dosyasına dinamik olarak geçirmek için bir Arama etkinliği.
-3. Veri dönüşümü için bir Azure Databricks etkinliği.
-4. Boru hattını her saat çalıştıracak bir zamanlama tetikleyicisi.
+1. Azure depolama 'daki veriler için bir çıkış veri kümesi olan AWS S3 'den kopyalanacak veriler için bir giriş veri kümesi içeren bir kopyalama etkinliği.
+2. Parametreleri dönüştürme betiğine dinamik olarak geçirmek için bir arama etkinliği.
+3. Veri dönüştürme için bir Azure Databricks etkinliği.
+4. Her saat ardışık düzeni yürütmek için bir zamanlama tetikleyicisi.
 
-![Senaryo3](media/pricing-concepts/scenario3.png)
+![Scenario3](media/pricing-concepts/scenario3.png)
 
-| **İşlemler** | **Türleri ve Birimleri** |
+| **İşlemler** | **Türler ve birimler** |
 | --- | --- |
-| Bağlantılı Hizmet Oluştur | 3 Oku/Yaz varlığı  |
-| Veri Kümeleri Oluşturma | 4 Okuma/Yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
-| Boru Hattı Oluştur | 3 Okuma/Yazma varlıkları (1'i boru hattı oluşturma, 2'si veri kümesi başvuruları için) |
-| Boru Hattı alın | 1 Oku/Yaz varlığı |
-| Çalıştır Boru Hattı | 4 Etkinlik çalışır (tetikleme çalışması için 1, etkinlik çalıştırmaları için 3) |
-| Veri Varsayımı Kopyala: yürütme süresi = 10 dk | 10 \* 4 Azure Tümleştirme Çalışma Süresi (varsayılan DIU ayarı = 4) Veri tümleştirme birimleri hakkında daha fazla bilgi ve kopya performansını optimize etmek için [bu makaleye](copy-activity-performance.md) bakın |
-| DenetimİzE VarAKSI DenetimI Denetimi Varsayımı: Yalnızca 1 çalıştırma oluştu | 4 İzleme çalıştırma kayıtları yeniden denenmiş (1 boru hattı çalıştırımı için, 3 etkinlik çalışması için) |
-| Yürütme Arama etkinliği Varsayım: yürütme süresi = 1 dk | 1 dk Boru Hattı Etkinliği yürütme |
-| Databricks etkinliği Varsayım yürüt: yürütme süresi = 10 dk | 10 dk Dış Boru Hattı Etkinliği yürütme |
+| Bağlı hizmet oluştur | 3 okuma/yazma varlığı  |
+| Veri kümeleri oluştur | 4 okuma/yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
+| İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
+| İşlem hattı al | 1 okuma/yazma varlığı |
+| İşlem hattını Çalıştır | 4 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 3) |
+| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan Diu ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 4 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 3) |
+| Arama etkinlik varsayımını Yürüt: yürütme süresi = 1 dk | 1 dakikalık işlem hattı etkinliği yürütme |
+| Databricks etkinlik varsayımını Yürüt: yürütme süresi = 10 dk | 10 dakikalık dış işlem hattı etkinliği yürütme |
 
-**Toplam Senaryo fiyatlandırması: $0.17020**
+**Toplam senaryo fiyatlandırması: $0,17020**
 
-- Veri Fabrikası İşlemleri = **$0.00013**
-  - Okuma/Yazma =\*11 00001 = $0.00011 [1 R/W = $0.50/50000 = 0.00001]
-  - İzleme =\*4 000005 = $0.00002 [1 İzleme = $0.25/50000 = 0,000005]
-- Boru Hattı &amp; Orkestrasyon Yürütme = **0,17007 $**
-  - Etkinlik Çalışır =\*001 4 = 0.004 [1 çalıştırın = $1/1000 = 0.001]
-  - Veri Hareketi Etkinlikleri = $0.166 (Yürütme süresinin 10 dakikası için eşit olarak verilir. Azure Tümleştirme Çalışma Zamanında $0.25/saat)
-  - Boru Hattı Etkinliği = $0.00003 (Yürütme süresinin 1 dakikası için eşit olarak eşittir. Azure Tümleştirme Çalışma Zamanında $0.002/saat)
-  - Dış Boru Hattı Etkinliği = $0.000041 (10 dakikalık yürütme süresi için eşit olarak eşitolarak sürülür. Azure Tümleştirme Çalışma Süresi'nde $0.00025/saat)
+- Data Factory Işlemler = **$0,00013**
+  - Okuma/yazma = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 4\*000005 = $0,00002 [1 izleme = $0,25/50000 = 0,000005]
+- İşlem hattı &amp; düzenleme yürütmesi = **$0,17007**
+  - Etkinlik çalıştırmaları = 001\*4 = 0,004 [1 Çalıştırma = $1/1000 = 0,001]
+  - Veri taşıma etkinlikleri = $0,166 (10 dakikalık yürütme süresi için günlere eşit olarak dağıtılır. Azure Integration Runtime) $0,25/saat)
+  - İşlem hattı etkinliği = $0,00003 (1 dakikalık yürütme süresi için eşit olarak dağıtılır. Azure Integration Runtime için $0.002/saat)
+  - Dış ardışık düzen etkinliği = $0,000041 (10 dakikalık yürütme süresi için eşit olarak dağıtılır. Azure Integration Runtime için $0.00025/saat)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Normal bir iş günü için veri akışı hata ayıklama eşleme kullanma
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Normal bir Workday için eşleme veri akışı hata ayıklamasını kullanma
 
-Veri Mühendisi olarak, haritalama veri akışlarını her gün tasarlamaktan, oluşturmakve test etmek sizin sorumluluğunuzdadır. Sabah ADF UI'ye giriş yapın ve Veri Akışları için Hata Ayıklama modunu etkinleştirin. Hata Ayıklama oturumları için varsayılan TTL 60 dakikadır. Hata Ayıklama oturumunuzun süresinin dolmaması için gün boyunca 8 saat çalışırsınız. Bu nedenle, gün için ücret olacaktır:
+Veri mühendisi olarak her gün veri akışlarını tasarlama, oluşturma ve test etme konusunda siz sorumlusunuz. Sabah ADF Kullanıcı arabiriminde oturum açın ve veri akışları için hata ayıklama modunu etkinleştirin. Hata ayıklama oturumları için varsayılan TTL 60 dakikadır. Günde 8 saat boyunca çalışırsınız, bu nedenle hata ayıklama oturumunuzun süresi dolmaz. Bu nedenle, günün ücreti şu şekilde olacaktır:
 
-**8 (saat) x 8 (işlem için optimize edilmiş çekirdekler) x 0,193 $ = 12,35 TL**
+**8 (saat) x 8 (işlem için iyileştirilmiş çekirdek) x $0,193 = $12,35**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Veri akışlarını eşlemeyle blob deposunda verileri dönüştürme
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Eşleme verisi akışlarıyla blob deposundaki verileri dönüştürme
 
-Bu senaryoda, Blob Store'daki verileri Saatlik zamanlamayla ADF eşleme veri akışlarında görsel olarak dönüştürmek istiyorsunuz.
+Bu senaryoda, bir saatlik zamanlamaya göre ADF eşleme veri akışları ' nda blob deposundaki verileri görsel olarak dönüştürmek istiyorsunuz.
 
-Senaryoyu gerçekleştirmek için aşağıdaki öğelerden bir ardışık kaynak oluşturmanız gerekir:
+Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturmanız gerekir:
 
-1. Dönüşüm mantığıile veri akışı etkinliği.
+1. Dönüştürme mantığıyla bir veri akışı etkinliği.
 
-2. Azure Depolama'daki veriler için giriş veri kümesi.
+2. Azure depolama 'daki veriler için bir giriş veri kümesi.
 
-3. Azure Depolama'daki veriler için bir çıktı veri kümesi.
+3. Azure depolama 'daki veriler için çıkış veri kümesi.
 
-4. Boru hattını her saat çalıştıracak bir zamanlama tetikleyicisi.
+4. İşlem hattını her saat yürütmek için bir zamanlama tetikleyicisi.
 
-| **İşlemler** | **Türleri ve Birimleri** |
+| **İşlemler** | **Türler ve birimler** |
 | --- | --- |
-| Bağlantılı Hizmet Oluştur | 2 Oku/Yaz varlığı  |
-| Veri Kümeleri Oluşturma | 4 Okuma/Yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
-| Boru Hattı Oluştur | 3 Okuma/Yazma varlıkları (1'i boru hattı oluşturma, 2'si veri kümesi başvuruları için) |
-| Boru Hattı alın | 1 Oku/Yaz varlığı |
-| Çalıştır Boru Hattı | 2 Etkinlik çalışır (tetikleme çalışması için 1, etkinlik çalıştırmaları için 1) |
-| Veri Akışı Varsayımları: yürütme süresi = 10 dk + 10 dk TTL | 10 \* TTL ile Genel Hesaplama 10 16 çekirdek |
-| DenetimİzE VarAKSI DenetimI Denetimi Varsayımı: Yalnızca 1 çalıştırma oluştu | 2 İzleme çalıştırma kayıtları yeniden denenmiş (1 ardışık hat lar için, 1 etkinlik çalışması için) |
+| Bağlı hizmet oluştur | 2 varlık okuma/yazma  |
+| Veri kümeleri oluştur | 4 okuma/yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
+| İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
+| İşlem hattı al | 1 okuma/yazma varlığı |
+| İşlem hattını Çalıştır | 2 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 1) |
+| Veri akışı varsayımları: yürütme süresi = 10 dk + 10 dakikalık TTL | 10 \* TTL ile 10 16 genel işlem |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
 
-**Toplam Senaryo fiyatlandırması: $1.4631**
+**Toplam senaryo fiyatlandırması: $1,4631**
 
-- Veri Fabrikası İşlemleri = **$0.0001**
-  - Okuma/Yazma =\*10 00001 = $0.0001 [1 R/W = $0.50/50000 = 0.00001]
-  - İzleme =\*2 000005 = $0.00001 [1 İzleme = $0.25/50000 = 0,000005]
-- Boru Hattı &amp; Orkestrasyon Yürütme = **1.463 $**
-  - Etkinlik Çalışır =\*001 2 = 0.002 [1 çalıştırın = $1/1000 = 0.001]
-  - Veri Akışı Etkinlikleri = $1.461 20 dakika (10 dakika yürütme süresi + 10 dakika TTL) için eşit olarak verilir. 16 çekirdekli genel işlemle Azure Tümleştirme Çalışma Süresi'nde $0.274/saat
+- Data Factory Işlemler = **$0,0001**
+  - Okuma/yazma = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - İzleme = 2\*000005 = $0,00001 [1 izleme = $0,25/50000 = 0,000005]
+- İşlem hattı &amp; düzenleme yürütmesi = **$1,463**
+  - Etkinlik çalıştırmaları = 001\*2 = 0,002 [1 Çalıştırma = $1/1000 = 0,001]
+  - Veri akışı etkinlikleri = $1,461 20 dakika (10 dakikalık yürütme süresi + 10 dakikalık TTL) için eşit olarak dağıtılır. 16 çekirdek genel işlem ile Azure Integration Runtime $0.274/saat
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Veri Fabrikası'nın fiyatlandırmasını anladığınıziçin, işe başlayın!
+Azure Data Factory için fiyatlandırmayı anladığınıza göre, şimdi kullanmaya başlayın!
 
 - [Azure Data Factory UI kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-portal.md)
 
 - [Azure Data Factory'ye giriş](introduction.md)
 
-- [Azure Veri Fabrikası'nda görsel yazma](author-visually.md)
+- [Azure Data Factory 'de görsel yazma](author-visually.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure portalını kullanarak tabloyu aşamalı olarak kopyalama
+title: Azure portal kullanarak bir tabloyu artımlı olarak kopyalama
 description: Bu öğreticide, verileri Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalayan bir Azure veri fabrikası işlem hattı oluşturacaksınız.
 services: data-factory
 author: dearandyxu
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: 78cb58bca9b06b6dcf8549eefa5ebf0eb2b4b01c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409328"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portalını kullanarak azure SQL veritabanından Azure Blob depolamasına verileri aşamalı olarak yükleyin
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -53,7 +53,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 2. **Eşik değerini depolamak için veri deposunu hazırlayın**. Bu öğreticide, eşik değerini bir SQL veritabanında depolayacaksınız.
 
-3. **Aşağıdaki iş akışıile bir ardışık kaynak oluşturma:**
+3. **Aşağıdaki iş akışıyla bir işlem hattı oluşturun**:
 
     Bu çözümdeki işlem hattı aşağıdaki etkinlikleri içerir:
 
@@ -62,14 +62,14 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
     * Sonraki seferde çalışan işlem hattı için eşik değerini güncelleştiren bir StoredProcedure etkinliği oluşturun.
 
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure SQL Veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md).
-* **Azure Depolama**. Blob depolamayı havuz veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). adftutorial adlı bir kapsayıcı oluşturun. 
+* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md).
+* **Azure depolama**. Blob depolamayı havuz veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). adftutorial adlı bir kapsayıcı oluşturun. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL veritabanınızda bir veri kaynağı tablosu oluşturma
-1. SQL Server Management Studio’yu açın. **Sunucu Gezgini'nde**veritabanına sağ tıklayın ve **Yeni Sorgu'yu**seçin.
+1. SQL Server Management Studio’yu açın. **Sunucu Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
 2. SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak veri kaynağı deponuz olarak `data_source_table` adlı bir tablo oluşturun:
 
@@ -152,7 +152,7 @@ END
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-2. Sol menüde, **bir kaynak** > **Analiz** > **Veri Fabrikası**Oluştur'u seçin:
+2. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -162,7 +162,7 @@ END
 
        `Data factory name "ADFIncCopyTutorialDF" is not available`
 4. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin.
-5. Kaynak **Grubu**için aşağıdaki adımlardan birini yapın:
+5. **Kaynak grubu**için aşağıdaki adımlardan birini yapın:
 
       - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
       - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
@@ -170,7 +170,7 @@ END
         Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 6. **Sürüm** için **V2**'yi seçin.
 7. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-8. **Oluştur'u**tıklatın.      
+8. **Oluştur**' a tıklayın.      
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
 
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
@@ -189,23 +189,23 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
    ![İlk arama etkinliği - ad](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
 5. **Ayarlar** sekmesine geçin ve **Kaynak Veri Kümesi** için **+ Yeni**’ye tıklayın. Bu adımda, **filigran tablosundaki** verileri temsil eden bir veri kümesi oluşturursunuz. Bu tablo, önceki kopyalama işleminde kullanılan eski filigranı içerir.
 
-6. Yeni **Veri Kümesi** penceresinde **Azure SQL Veritabanı'nı**seçin ve **Devam et'i**tıklatın. Veri kümesi için yeni bir pencere açıldığını görürsünüz.
+6. **Yeni veri kümesi** PENCERESINDE **Azure SQL veritabanı**' nı seçin ve **devam**' a tıklayın. Veri kümesi için yeni bir pencere açıldığını görürsünüz.
 
-7. Veri kümesiiçin **Ayar özellikleri** penceresinde, **Ad**için **FiligranDataset'i** girin.
+7. Veri kümesinin **Özellikler** penceresinde, **ad**Için **sulu markmarkdataset** girin.
 
-8. **Bağlantılı Hizmet**için **Yeni'yi**seçin ve ardından aşağıdaki adımları yapın:
+8. **Bağlı hizmet**için **Yeni**' yi seçin ve ardından aşağıdaki adımları uygulayın:
 
     1. **Ad** için **AzureSqlDatabaseLinkedService** adını girin.
     2. **Sunucu adı** için Azure SQL Server’ınızı seçin.
-    3. Açılan listeden **Veritabanı adınızı** seçin.
-    4. Kullanıcı **adı** & **Şifrenizi**girin.
+    3. Açılan listeden **veritabanınızın adını** seçin.
+    4. **Kullanıcı adı** & **parolanızı**girin.
     5. Azure SQL veritabanı bağlantısını test etmek için **Bağlantıyı sına**’ya tıklayın.
     6. **Son**'a tıklayın.
-    7. **AzureSqlDatabaseLinkedService'in** Bağlantılı **hizmet**için seçildiğini doğrulayın.
+    7. **Bağlı hizmet**Için **Azuressqldatabaselinkedservice** 'in seçili olduğunu onaylayın.
 
         ![Yeni bağlı hizmet penceresi](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-    8. **Bitiş'i**seçin.
-9. **Bağlantı** sekmesinde **[dbo]'yu seçin.[ ** **tablo**için filigran] . Tablodaki verilerin önizlemesini yapmak istiyorsanız **Veri önizlemesini görüntüle**’ye tıklayın.
+    8. **Son**' u seçin.
+9. **Bağlantı** sekmesinde **[dbo] öğesini seçin. [ Tablo için su marktable]** . **Table** Tablodaki verilerin önizlemesini yapmak istiyorsanız **Veri önizlemesini görüntüle**’ye tıklayın.
 
     ![Filigran veri kümesi - bağlantı ayarları](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
 10. Üstteki işlem hattı sekmesine veya soldaki ağaç görünümünden işlem hattının adına tıklayarak işlem hattı düzenleyicisine geçin. **Arama** etkinliğinin özellikler penceresinde **Kaynak Veri Kümesi** alanı için **WatermarkDataset** seçeneğinin belirlendiğinden emin olun.
@@ -214,19 +214,19 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 
 12. İkinci **Arama** etkinliğinin özellikler penceresinde **Ayarlar** sekmesine geçip **Yeni**’ye tıklayın. Yeni filigran değerini (en yüksek LastModifyTime değeri) içeren kaynak tabloyu gösteren bir veri kümesi oluşturursunuz.
 
-13. Yeni **Veri Kümesi** penceresinde **Azure SQL Veritabanı'nı**seçin ve **Devam et'i**tıklatın.
-14. Set **özellikleri** penceresinde, **Ad**için **SourceDataset'i** girin. **Bağlı hizmet** için **AzureSqlDatabaseLinkedService** hizmetini seçin.
-15. **[dbo]'yu seçin.[ tablo** için data_source_table] Bu öğreticinin sonraki bölümlerinde, bu veri kümesinde bir sorgu belirtirsiniz. Bu sorgu, bu adımda belirttiğiniz tablodan önceliklidir.
-16. **Bitiş'i**seçin.
+13. **Yeni veri kümesi** PENCERESINDE **Azure SQL veritabanı**' nı seçin ve **devam**' a tıklayın.
+14. **Özellikleri ayarla** penceresinde, **ad**için **sourceDataset** girin. **Bağlı hizmet** için **AzureSqlDatabaseLinkedService** hizmetini seçin.
+15. **[Dbo] öğesini seçin. [ Tablo için data_source_table]** . Bu öğreticinin sonraki bölümlerinde, bu veri kümesinde bir sorgu belirtirsiniz. Bu sorgu, bu adımda belirttiğiniz tablodan önceliklidir.
+16. **Son**' u seçin.
 17. Üstteki işlem hattı sekmesine veya soldaki ağaç görünümünden işlem hattının adına tıklayarak işlem hattı düzenleyicisine geçin. **Arama** etkinliğinin özellikler penceresinde **Kaynak Veri Kümesi** alanı için **SourceDataset** seçeneğinin belirlendiğinden emin olun.
-18. **Sorgu Kullan** alanı için **Sorgu**’yu seçin ve aşağıdaki sorguyu girin: **data_source_table** tablosundan yalnızca en yüksek **LastModifytime** değerini seçersiniz. Lütfen **yalnızca İlk satırı**da kontrol ettiğinizden emin olun.
+18. **Sorgu Kullan** alanı için **Sorgu**’yu seçin ve aşağıdaki sorguyu girin: **data_source_table** tablosundan yalnızca en yüksek **LastModifytime** değerini seçersiniz. Lütfen **yalnızca ilk satırı**da seçtiğinizden emin olun.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
     ```
 
     ![İkinci arama etkinliği - sorgu](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
-19. **Etkinlikler** araç kutusunda, **Dönüştür& taşı'nı**genişletin ve Etkinlikler araç kutusundan **Kopyalama** etkinliğini sürükleyin ve adını **Artımlı CopyActivity**olarak ayarlayın.
+19. **Etkinlikler** araç kutusunda **Taşı & Dönüştür**' ü genişletin ve Etkinlikler Araç kutusundan **kopyalama** etkinliğini sürükleyip bırakın ve adı **ıncrementalcopyactivity**olarak ayarlayın.
 
 20. Arama etkinliklerine bağlı **yeşil düğmeyi** Kopyalama etkinliğine sürükleyerek **her iki Arama etkinliğini Kopyalama etkinliğine bağlayın**. Kopyalama etkinliğinin kenarlık renginin mavi olduğunu gördüğünüzde fare düğmesini bırakın.
 
@@ -246,30 +246,30 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
         ![Kopyalama etkinliği - kaynak](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
 23. **Havuz** sekmesine geçin ve **Havuz Veri Kümesi** alanı için **+ Yeni**’ye tıklayın.
 
-24. Bu öğreticide, havuz veri deposu Azure Blob Depolama türündedir. Bu nedenle, **Azure Blob Depolama'yı**seçin ve **Yeni Veri Kümesi** penceresinde **Devam** et'i tıklatın.
-25. **Biçim'i seç** penceresinde, verilerinizin biçim türünü seçin ve **Devam et'i**tıklatın.
-25. Özellikleri **Ayarla** penceresinde, **Ad**için **SinkDataset'i** girin. **Bağlantılı Hizmet**için , seçin **+ Yeni**. Bu adımda, **Azure Blob Depolama**’nıza yönelik bir bağlantı (bağlı hizmet) oluşturursunuz.
-26. Yeni **Bağlantılı Hizmet (Azure Blob Depolama)** penceresinde aşağıdaki adımları yapın:
+24. Bu öğreticide, havuz veri deposu Azure Blob Depolama türündedir. Bu nedenle, **Azure Blob depolama**' yı seçin ve **Yeni veri kümesi** penceresinde **devam** ' a tıklayın.
+25. **Biçim Seç** penceresinde, verilerinizin biçim türünü seçin ve **devam**' a tıklayın.
+25. **Özellikleri ayarla** penceresinde **ad**için **sinkdataset** girin. **Bağlı hizmet**Için **+ Yeni**' yi seçin. Bu adımda, **Azure Blob Depolama**’nıza yönelik bir bağlantı (bağlı hizmet) oluşturursunuz.
+26. **Yeni bağlı hizmet (Azure Blob depolama)** penceresinde aşağıdaki adımları uygulayın:
 
     1. **Ad** için **AzureStorageLinkedService** adını girin.
-    2. **Depolama hesabı adı**için Azure Depolama hesabınızı seçin.
-    3. Bağlantıyı Test Edin ve **ardından Bitir'i**tıklatın.
+    2. **Depolama hesabı adı**Için Azure depolama hesabınızı seçin.
+    3. Bağlantıyı test edin ve ardından **son**' a tıklayın.
 
-27. Özellikleri **Ayarla** penceresinde, **AzureStorageLinkedService'in** **Bağlantılı hizmet**için seçildiğini onaylayın. Ardından **Son**’u seçin.
-28. SinkDataset'in **Bağlantı** sekmesine gidin ve aşağıdaki adımları yapın:
-    1. Dosya **yolu** alanı için **adftutorial/artımlı kopya**girin. **adftutorial** blob kapsayıcısı adı, **incrementalcopy** klasör adıdır. Bu kod parçacığı blob depolama hesabınızda adftutorial adlı bir blob kapsayıcıya sahip olduğunuzu varsayar. Henüz yoksa kapsayıcıyı oluşturun veya var olan bir kapsayıcının adına ayarlayın. **incrementalcopy** adlı çıktı dosyası mevcut değilse Azure Data Factory tarafından otomatik olarak oluşturulur. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
-    2. **Dosya yolu** alanının **Dosya** bölümü için dinamik içerik **ekle [Alt+P]** ve ardından açılan pencereye girin' `@CONCAT('Incremental-', pipeline().RunId, '.txt')`i seçin. Ardından **Son**’u seçin. Dosya adı, ifade kullanılarak dinamik olarak oluşturulur. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
+27. **Özellikleri ayarla** penceresinde, **bağlı hizmet**için **AzureStorageLinkedService** ' nin seçili olduğunu doğrulayın. Ardından **Son**’u seçin.
+28. SinkDataset 'in **bağlantı** sekmesine gidin ve aşağıdaki adımları uygulayın:
+    1. **Dosya yolu** alanı için **adföğreticisi/incrementalcopy**girin. **adftutorial** blob kapsayıcısı adı, **incrementalcopy** klasör adıdır. Bu kod parçacığı blob depolama hesabınızda adftutorial adlı bir blob kapsayıcıya sahip olduğunuzu varsayar. Henüz yoksa kapsayıcıyı oluşturun veya var olan bir kapsayıcının adına ayarlayın. **incrementalcopy** adlı çıktı dosyası mevcut değilse Azure Data Factory tarafından otomatik olarak oluşturulur. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
+    2. **Dosya yolu** alanının **Dosya** bölümü Için, **dinamik Içerik Ekle [alt + P]** öğesini seçin ve açılan pencerede yazın `@CONCAT('Incremental-', pipeline().RunId, '.txt')`. Ardından **Son**’u seçin. Dosya adı, ifade kullanılarak dinamik olarak oluşturulur. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
 
 28. Üstteki işlem hattı sekmesine veya soldaki ağaç görünümünden işlem hattının adına tıklayarak **işlem hattı** düzenleyicisine geçin.
 29. **Etkinlikler** araç kutusunda **Genel**’i genişletin ve **Etkinlikler** araç kutusundan **Saklı Yordam** etkinliğini sürükleyip işlem hattı tasarımcısının yüzeyine bırakın. **Kopyalama** etkinliğinin yeşil (Başarılı) çıktısını **Saklı Yordam** etkinliğine **bağlayın**.
 
 24. İşlem hattı tasarımcısında **Saklı Yordam Etkinliğini** seçip etkinliğin adını **StoredProceduretoWriteWatermarkActivity** olarak değiştirin.
 
-25. **SQL Hesabı** sekmesine geçin ve **Bağlantılı hizmet**için **AzureSqlDatabaseLinkedService'i** seçin.
+25. **SQL hesabı** sekmesine geçin ve **bağlı hizmet**Için **azuressqldatabaselinkedservice** ' i seçin.
 
 26. **Saklı Yordam** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
-    1. **Depolanan yordam adı**için **usp_write_watermark'** ı seçin.
+    1. **Saklı yordam adı**için **usp_write_watermark**' yi seçin.
     2. Saklı yordam parametrelerinin değerlerini belirtmek için, **Parametreyi içeri aktar**’a tıklayın ve parametreler için aşağıdaki değerleri girin:
 
         | Adı | Tür | Değer |
@@ -284,7 +284,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 
 
 ## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırmasını tetikleme
-1. Araç çubuğunda **Tetikleyici Ekle'yi** tıklatın ve **Şimdi Tetikle'yi**tıklatın.
+1. Araç çubuğunda **tetikleyici Ekle** ' ye tıklayın ve **Şimdi Tetikle**' ye tıklayın.
 
 2. **İşlem Hattı Çalıştırma** penceresinde **Son**’u seçin.
 
@@ -348,9 +348,9 @@ PersonID | Name | LastModifytime
 
 
 ## <a name="trigger-another-pipeline-run"></a>Başka bir işlem hattı çalıştırması tetikleme
-1. **Düzenleme** sekmesine geç. Tasarımcıda açılmamışsa ağaç görünümündeki ardışık hattı tıklatın.
+1. **Düzenle** sekmesine geçin. tasarımcı 'da açılmadıysa ağaç görünümündeki Işlem hattına tıklayın.
 
-2. Araç çubuğunda **Tetikleyici Ekle'yi** tıklatın ve **Şimdi Tetikle'yi**tıklatın.
+2. Araç çubuğunda **tetikleyici Ekle** ' ye tıklayın ve **Şimdi Tetikle**' ye tıklayın.
 
 
 ## <a name="monitor-the-second-pipeline-run"></a>İkinci işlem hattı çalıştırmasını izleme

@@ -1,6 +1,6 @@
 ---
 title: SAP tablosundan veri kopyalama
-description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopya etkinliği kullanarak desteklenen lavabo veri depolarına SAP tablosundaki verileri nasıl kopyalayatılayış edin.
+description: Bir Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak SAP tablosundan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,88 +12,88 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
 ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415230"
 ---
-# <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak SAP tablosundan veri kopyalama
+# <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP tablosundan veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, bir SAP tablosundaki verileri kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Daha fazla bilgi için [bkz.](copy-activity-overview.md)
+Bu makalede, bir SAP tablosundan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Daha fazla bilgi için bkz. [kopyalama etkinliğine genel bakış](copy-activity-overview.md).
 
 >[!TIP]
->Sap veri tümleştirme senaryosunda ADF'nin genel desteğini öğrenmek için, ayrıntılı giriş, karşılaştırma ve kılavuzlu [Azure Veri Fabrikası teknik incelemesini kullanarak SAP veri tümleştirmesine](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) bakın.
+>ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için ayrıntılı giriş, comparme ve kılavuzla [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu SAP tablo bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu SAP tablo Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Verileri SAP tablosundan desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Bir SAP tablosundan desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu SAP tablo bağlayıcıdestekler:
+Özellikle, bu SAP tablo Bağlayıcısı şunları destekler:
 
-- Sap tablosundaki verileri aşağıdaki ler arasında kopyalama:
+- İçindeki bir SAP tablosundan veri kopyalama:
 
-  - SAP ERP Merkezi Bileşeni (SAP ECC) sürüm 7.01 veya sonraki sürüm (2015'ten sonra yayımlanan son SAP Destek Paketi Yığını'nda).
-  - SAP Business Warehouse (SAP BW) sürüm 7.01 veya sonraki sürüm (2015'ten sonra yayımlanan son SAP Destek Paketi Yığını'nda).
+  - SAP ERP merkezi bileşeni (SAP ECC) sürüm 7,01 veya üzeri (2015 sonrasında yayınlanan son SAP desteği paket yığınında).
+  - SAP Business Warehouse (SAP BW) sürüm 7,01 veya üzeri (2015 sonrasında yayınlanan son SAP desteği paket yığınında).
   - SAP S/4HANA.
-  - SAP Business Suite sürüm 7.01 veya sonraki diğer ürünler (2015'ten sonra yayımlanan son SAP Destek Paketi Yığını'nda).
+  - SAP Business Suite sürüm 7,01 veya üzeri (2015 ' den sonra yayınlanan son SAP desteği paket yığınında) diğer ürünler.
 
-- Hem SAP saydam tablosundan, hem havuza alınan tablodan, kümelenmiş tablodan ve görünümden veri kopyalama.
-- SNC yapılandırılmışsa, temel kimlik doğrulama veya Güvenli Ağ İletişimi (SNC) kullanarak verileri kopyalama.
-- BIR SAP uygulama sunucusuna veya SAP ileti sunucusuna bağlanma.
+- SAP saydam tablosundan, havuza alınmış bir tablodan, kümelenmiş bir tablodan ve bir görünümden veri kopyalama.
+- SNC yapılandırıldıysa, temel kimlik doğrulaması veya güvenli ağ Iletişimleri (SNC) kullanarak verileri kopyalama.
+- SAP uygulama sunucusuna veya SAP ileti sunucusuna bağlanma.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu SAP tablo konektörünü kullanmak için şunları yapmanız gerekir:
+Bu SAP tablosu bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
-- Kendi kendine barındırılan bir tümleştirme çalışma zamanı (sürüm 3.17 veya daha sonra) ayarlayın. Daha fazla bilgi için [bkz.](create-self-hosted-integration-runtime.md)
+- Şirket içinde barındırılan bir tümleştirme çalışma zamanı ayarlayın (sürüm 3,17 veya üzeri). Daha fazla bilgi için, bkz. [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](create-self-hosted-integration-runtime.md).
 
-- [Microsoft .NET 3.0 için](https://support.sap.com/en/product/connectors/msnet.html) 64 bit SAP Bağlayıcısını SAP'nin web sitesinden indirin ve kendi barındırılan tümleştirme çalışma zamanı makinesine yükleyin. Yükleme sırasında, **İsteğe Bağlı kurulum adımları** penceresinde **GAC'ye Montajları Yükle** seçeneğini seçtiğinizden emin olun.
+- 64-bit SAP bağlayıcısını SAP web sitesinden [Microsoft .NET 3,0 için](https://support.sap.com/en/product/connectors/msnet.html) indirin ve şirket içinde barındırılan tümleştirme çalışma zamanı makinesine yükleyin. Yükleme sırasında, **Isteğe bağlı kurulum adımları** penceresindeki **GAC 'ye derlemeleri yükleme** seçeneğini seçtiğinizden emin olun.
 
-  ![.NET için SAP Bağlayıcısı'nı yükleyin](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+  ![.NET için SAP bağlayıcısını yükler](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-- Veri Fabrikası SAP tablo konektöründe kullanılan SAP kullanıcısının aşağıdaki izinlere sahip olması gerekir:
+- Data Factory SAP tablosu Bağlayıcısı 'nda kullanılmakta olan SAP kullanıcısının aşağıdaki izinlere sahip olması gerekir:
 
-  - Uzaktan İşlev Arama (RFC) hedeflerini kullanma yetkisi.
-  - S_SDSAUTH yetkilendirme nesnesinin Yürütme etkinliği için izinler.
+  - Uzak Işlev çağrısı (RFC) hedeflerini kullanma yetkilendirmesi.
+  - S_SDSAUTH yetkilendirme nesnesinin yürütme etkinliğinin izinleri.
 
 ## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, SAP tablo bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, SAP tablo bağlayıcısına özgü Data Factory varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-SAP BW Open Hub bağlantılı hizmet için aşağıdaki özellikler desteklenir:
+Aşağıdaki özellikler SAP BW açık hub bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `SapTable`Özellik' `type` in . | Evet |
+| `type` | `type` Özelliğin olarak `SapTable`ayarlanması gerekir. | Yes |
 | `server` | SAP örneğinin bulunduğu sunucunun adı.<br/>SAP uygulama sunucusuna bağlanmak için kullanın. | Hayır |
-| `systemNumber` | SAP sisteminin sistem numarası.<br/>SAP uygulama sunucusuna bağlanmak için kullanın.<br/>İzin verilen değer: Dize olarak temsil edilen iki basamaklı ondalık sayı. | Hayır |
-| `messageServer` | SAP ileti sunucusunun ana bilgisayar adı.<br/>SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
-| `messageServerService` | İleti sunucusunun servis adı veya bağlantı noktası numarası.<br/>SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
-| `systemId` | Tablonun bulunduğu SAP sisteminin kimliği.<br/>SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
-| `logonGroup` | SAP sisteminin oturum açma grubu.<br/>SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
-| `clientId` | SAP sistemindeki istemcinin kimliği.<br/>İzin verilen değer: Dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet |
-| `language` | SAP sisteminin kullandığı dil.<br/>Varsayılan değer. `EN`| Hayır |
-| `userName` | SAP sunucusuna erişimi olan kullanıcının adı. | Evet |
-| `password` | Kullanıcının parolası. Bu alanı Veri `SecureString` Fabrikası'nda güvenli bir şekilde depolamak için türüyle işaretleyin veya [Azure Key Vault'ta depolanan bir gizli ye başvuruyapın.](store-credentials-in-key-vault.md) | Evet |
-| `sncMode` | Tablonun bulunduğu SAP sunucusuna erişmek için SNC etkinleştirme göstergesi.<br/>SAP sunucusuna bağlanmak için SNC kullanmak istiyorsanız kullanın.<br/>İzin verilen `0` değerler (kapalı, `1` varsayılan) veya (çevrimiçi) | Hayır |
-| `sncMyName` | Tablonun bulunduğu SAP sunucusuna erişmek için başlatıcının SNC adı.<br/>Anın `sncMode` ası olduğunda geçerlidir. | Hayır |
-| `sncPartnerName` | Tablonun bulunduğu SAP sunucusuna erişmek için iletişim ortağının SNC adı.<br/>Anın `sncMode` ası olduğunda geçerlidir. | Hayır |
-| `sncLibraryPath` | Tablonun bulunduğu SAP sunucusuna erişmek için dış güvenlik ürün kitaplığı.<br/>Anın `sncMode` ası olduğunda geçerlidir. | Hayır |
-| `sncQop` | SNC Koruma Kalitesi düzeyi uygulanacak.<br/>Azaman `sncMode` olduğunda geçerlidir. <br/>İzin verilen `1` değerler (Kimlik `2` Doğrulama), `3` (Bütünlük), (Gizlilik), `8` (Varsayılan), `9` (Maksimum). | Hayır |
-| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) Daha önce [Önkoşullar'da](#prerequisites)belirtildiği gibi, kendi kendine barındırılan bir tümleştirme çalışma süresi gereklidir. |Evet |
+| `systemNumber` | SAP sisteminin sistem numarası.<br/>SAP uygulama sunucusuna bağlanmak için kullanın.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | Hayır |
+| `messageServer` | SAP ileti sunucusunun ana bilgisayar adı.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
+| `messageServerService` | İleti sunucusunun hizmet adı veya bağlantı noktası numarası.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
+| `systemId` | Tablonun bulunduğu SAP sisteminin KIMLIĞI.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
+| `logonGroup` | SAP sistemi için oturum açma grubu.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | Hayır |
+| `clientId` | SAP sistemindeki istemcinin KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes |
+| `language` | SAP sisteminin kullandığı dil.<br/>Varsayılan değer `EN`.| Hayır |
+| `userName` | SAP sunucusuna erişimi olan kullanıcının adı. | Yes |
+| `password` | Kullanıcının parolası. Bu alanı, `SecureString` Data Factory güvenli bir şekilde depolamak için yazın veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)için işaretleyin. | Yes |
+| `sncMode` | Tablonun bulunduğu SAP sunucusuna erişmek için SNC etkinleştirme göstergesi.<br/>SAP sunucusuna bağlanmak için SNC kullanmak istiyorsanız kullanın.<br/>İzin verilen değerler `0` (kapalı, varsayılan) veya `1` (açık). | Hayır |
+| `sncMyName` | Tablonun bulunduğu SAP sunucusuna erişmek için başlatıcının SNC adı.<br/>Açık olduğunda `sncMode` geçerlidir. | Hayır |
+| `sncPartnerName` | Tablonun bulunduğu SAP sunucusuna erişmek için iletişim ortağının SNC adı.<br/>Açık olduğunda `sncMode` geçerlidir. | Hayır |
+| `sncLibraryPath` | Tablonun bulunduğu SAP sunucusuna erişmek için dış güvenlik ürününün kitaplığı.<br/>Açık olduğunda `sncMode` geçerlidir. | Hayır |
+| `sncQop` | Uygulanacak SNC koruma düzeyi kalitesi.<br/>Açık olduğunda `sncMode` geçerlidir. <br/>İzin verilen değerler `1` (kimlik doğrulaması) `2` , (bütünlük) `3` , (Gizlilik) `8` , (varsayılan) `9` , (en fazla). | Hayır |
+| `connectVia` | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . [Önkoşullardan](#prerequisites)daha önce belirtildiği gibi, şirket içinde barındırılan bir tümleştirme çalışma zamanı gereklidir. |Yes |
 
-**Örnek 1: Sap uygulama sunucusuna bağlanma**
+**Örnek 1: SAP uygulama sunucusuna bağlanma**
 
 ```json
 {
@@ -145,7 +145,7 @@ SAP BW Open Hub bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 }
 ```
 
-### <a name="example-3-connect-by-using-snc"></a>Örnek 3: SNC kullanarak bağlanın
+### <a name="example-3-connect-by-using-snc"></a>Örnek 3: SNC kullanarak bağlanma
 
 ```json
 {
@@ -177,14 +177,14 @@ SAP BW Open Hub bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için bölümlerin ve özelliklerin tam listesi için [Bkz. Veri Kümeleri.](concepts-datasets-linked-services.md) Aşağıdaki bölümde SAP tablo veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md). Aşağıdaki bölüm, SAP tablo veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-SAP BW Open Hub bağlantılı hizmetten ve SAP BW Open Hub bağlantılı hizmetten verileri kopyalamak için aşağıdaki özellikler desteklenir:
+Ve SAP BW açık hub bağlantılı hizmetine veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| `type` | `SapTableResource`Özellik' `type` in . | Evet |
-| `tableName` | Verileri kopyalamak için SAP tablosunun adı. | Evet |
+| `type` | `type` Özelliğin olarak `SapTableResource`ayarlanması gerekir. | Yes |
+| `tableName` | Verilerin kopyalanacağı SAP tablosunun adı. | Yes |
 
 ### <a name="example"></a>Örnek
 
@@ -207,33 +207,33 @@ SAP BW Open Hub bağlantılı hizmetten ve SAP BW Open Hub bağlantılı hizmett
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için bölümlerin ve özelliklerin tam listesi için [bkz.](concepts-pipelines-activities.md) Aşağıdaki bölümde SAP tablo kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md). Aşağıdaki bölüm, SAP tablo kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="sap-table-as-source"></a>Kaynak olarak SAP tablosu
 
-SAP tablosundaki verileri kopyalamak için aşağıdaki özellikler desteklenir:
+Bir SAP tablosundan veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik                         | Açıklama                                                  | Gerekli |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| `type`                             | `SapTableSource`Özellik' `type` in .         | Evet      |
+| `type`                             | `type` Özelliğin olarak `SapTableSource`ayarlanması gerekir.         | Yes      |
 | `rowCount`                         | Alınacak satır sayısı.                              | Hayır       |
-| `rfcTableFields`                   | SAP tablosundan kopyalanması gereken alanlar (sütunlar). Örneğin, `column0, column1`. | Hayır       |
-| `rfcTableOptions`                  | SAP tablosundaki satırları filtreleme seçenekleri. Örneğin, `COLUMN0 EQ 'SOMEVALUE'`. Bu makalenin ilerleyen saatlerinde SAP sorgu işleci tablosuna da bakın. | Hayır       |
-| `customRfcReadTableFunctionModule` | SAP tablosundan verileri okumak için kullanılabilecek özel bir RFC işlev modülü.<br>Verilerin SAP sisteminizden nasıl alınıp Veri Fabrikası'na döndürülebileceğini tanımlamak için özel bir RFC işlev modülü kullanabilirsiniz. Özel işlev modülü, Veri Fabrikası tarafından kullanılan varsayılan arabirim olan `/SAPDS/RFC_READ_TABLE2`abirime benzer bir arabirime (alma, dışa aktarma, tablolar) uygulanmalıdır. | Hayır       |
-| `partitionOption`                  | SAP tablosundan okunacak bölme mekanizması. Desteklenen seçenekler şunlardır: <ul><li>`None`</li><li>`PartitionOnInt`(normal tamsayı veya tamsayı değerleri, solda sıfır dolgu `0000012345`ile)</li><li>`PartitionOnCalendarYear`("YYYY" biçiminde 4 basamak)</li><li>`PartitionOnCalendarMonth`("YYYYMM" biçiminde 6 basamak)</li><li>`PartitionOnCalendarDate`("YYYYMMDD" biçiminde 8 basamak)</li></ul> | Hayır       |
-| `partitionColumnName`              | Verileri bölmek için kullanılan sütunun adı.                | Hayır       |
-| `partitionUpperBound`              | Bölümleme ile devam etmek `partitionColumnName` için kullanılacak olan sütunun en büyük değeri. | Hayır       |
-| `partitionLowerBound`              | Bölümleme ile devam etmek `partitionColumnName` için kullanılacak tır. (Not: `partitionLowerBound` bölüm seçeneği olduğunda "0" `PartitionOnInt`olamaz) | Hayır       |
-| `maxPartitionsNumber`              | Verileri bölmek için en fazla bölüm sayısı.     | Hayır       |
+| `rfcTableFields`                   | SAP tablosundan kopyalanacak alanlar (sütunlar). Örneğin, `column0, column1`. | Hayır       |
+| `rfcTableOptions`                  | SAP tablosundaki satırları filtrelemeye yönelik seçenekler. Örneğin, `COLUMN0 EQ 'SOMEVALUE'`. Bu makalenin ilerleyen kısımlarında Ayrıca bkz. SAP Query operator tablosu. | Hayır       |
+| `customRfcReadTableFunctionModule` | Bir SAP tablosundan veri okumak için kullanılabilen özel bir RFC işlev modülü.<br>Verilerin SAP sisteminizden nasıl alındığını tanımlamak ve Data Factory ' a geri dönmek için özel bir RFC işlevi modülü kullanabilirsiniz. Özel işlev modülünün, Data Factory tarafından kullanılan varsayılan arabirim olan öğesine `/SAPDS/RFC_READ_TABLE2`benzer bir arabirimi (içeri aktarma, dışarı aktarma, tablolar) uygulanmış olması gerekir. | Hayır       |
+| `partitionOption`                  | Bir SAP tablosundan okunacak bölüm mekanizması. Desteklenen seçenekler şunlardır: <ul><li>`None`</li><li>`PartitionOnInt`(gibi, sol tarafta sıfır dolgusu olan normal tamsayı veya tamsayı değerleri `0000012345`)</li><li>`PartitionOnCalendarYear`("YYYY" biçiminde 4 basamak)</li><li>`PartitionOnCalendarMonth`("YYYYMM" biçiminde 6 basamak)</li><li>`PartitionOnCalendarDate`("YYYYMMDD" biçiminde 8 basamak)</li></ul> | Hayır       |
+| `partitionColumnName`              | Verileri bölümlemek için kullanılan sütunun adı.                | Hayır       |
+| `partitionUpperBound`              | Bölümlendirmeye devam etmek için, içinde `partitionColumnName` belirtilen sütunun en büyük değeri. | Hayır       |
+| `partitionLowerBound`              | Bölümlendirmeye devam etmek için, içinde `partitionColumnName` belirtilen sütunun en küçük değeri. (Note: `partitionLowerBound` bölüm seçeneği olduğunda "0" olamaz `PartitionOnInt`) | Hayır       |
+| `maxPartitionsNumber`              | Verilerin bölüneceği en fazla bölüm sayısı.     | Hayır       |
 
 >[!TIP]
->SAP tablonuzda birkaç milyar satır gibi büyük bir veri `partitionOption` `partitionSetting` hacmi varsa, verileri daha küçük bölümlere bölmek ve kullanın. Bu durumda, veriler bölüm başına okunur ve her veri bölümü SAP sunucunuzdan tek bir RFC çağrısı yla alınır.<br/>
+>SAP tablonuzda birkaç milyar satır gibi büyük miktarda veri varsa, verileri daha küçük bölümlere bölmek için ve `partitionOption` `partitionSetting` kullanın. Bu durumda, veriler bölüm başına okunurdur ve her bir veri bölümü, tek bir RFC çağrısıyla SAP sunucusundan alınır.<br/>
 <br/>
->Örnek `partitionOption` `partitionOnInt` olarak ele alınan, her bölümdeki satır sayısı şu formülle hesaplanır: `partitionUpperBound` (toplam`maxPartitionsNumber`satırlar arasında düşen ve)/. `partitionLowerBound`<br/>
+>`partitionOption` Örnek `partitionOnInt` olarak, her bölümdeki satır sayısı şu formül ile hesaplanır: (ve `partitionUpperBound` `partitionLowerBound`arasında kalan toplam satır)/.`maxPartitionsNumber`<br/>
 <br/>
->Kopyayı hızlandırmak için veri bölümlerini paralel olarak yüklemek için, paralel derece kopyalama etkinliği ndeki [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirtilen bölüm seçeneğiniz ve ayarlarınızı temel alan dört sorgu oluşturur ve çalıştırZ ve her sorgu SAP tablonuzdan verilerin bir kısmını alır. Mülkün değerinin bir `maxPartitionsNumber` katını oluşturmanızı `parallelCopies` şiddetle öneririz. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazmak (yalnızca klasör adını belirtin) komutu da verilir, bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
+>Kopyayı hızlandırmak için veri bölümlerini paralel olarak yüklemek için, paralel derece kopyalama etkinliğindeki [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) ayarla denetlenir. Örneğin, dört olarak ayarlarsanız `parallelCopies` , Data Factory aynı anda, belirtilen bölüm seçeneğiniz ve ayarlarınıza göre dört sorgu üretir ve çalışır ve her sorgu, SAP tabloınızdan verilerin bir kısmını alır. Özelliğin değerinin birden çok değerini yapmanızı kesinlikle öneririz `maxPartitionsNumber` `parallelCopies` Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazmak da daha da iyidir. Bu durumda, performans tek bir dosyaya yazılmasından daha iyidir.
 
-Satırlara `rfcTableOptions`filtre uygulama için aşağıdaki ortak SAP sorgu işleçlerini kullanabilirsiniz:
+İçinde `rfcTableOptions`, satırları filtrelemek için AŞAĞıDAKI Genel SAP sorgu işleçlerini kullanabilirsiniz:
 
 | İşleç | Açıklama |
 | :------- | :------- |
@@ -243,8 +243,8 @@ Satırlara `rfcTableOptions`filtre uygulama için aşağıdaki ortak SAP sorgu i
 | `LE` | Küçüktür veya eşittir |
 | `GT` | Büyüktür |
 | `GE` | Büyüktür veya eşittir |
-| `IN` | Olduğu gibi`TABCLASS IN ('TRANSP', 'INTTAB')` |
-| `LIKE` | Olduğu gibi`LIKE 'Emma%'` |
+| `IN` | İtibariyle`TABCLASS IN ('TRANSP', 'INTTAB')` |
+| `LIKE` | İtibariyle`LIKE 'Emma%'` |
 
 ### <a name="example"></a>Örnek
 
@@ -287,24 +287,24 @@ Satırlara `rfcTableOptions`filtre uygulama için aşağıdaki ortak SAP sorgu i
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>SAP tablosu için veri türü eşlemeleri
 
-Sap tablosundaki verileri kopyalarken, SAP tablo veri türlerinden Azure Veri Fabrikası geçici veri türlerine aşağıdaki eşlemeler kullanılır. Kopyalama etkinliğinin kaynak şemasını ve veri türünü lavaboyla nasıl eşlenebildiğini öğrenmek için Bkz. [Şema ve veri türü eşlemeleri.](copy-activity-schema-and-type-mapping.md)
+Bir SAP tablosundan veri kopyalarken aşağıdaki eşlemeler, SAP tablosu veri türlerinden Azure Data Factory geçici veri türlerine kadar kullanılır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
 
-| SAP ABAP Tipi | Veri Fabrikası geçici veri türü |
+| SAP ABAP türü | Data Factory geçici veri türü |
 |:--- |:--- |
-| `C`(Dize) | `String` |
-| `I`(Sonda) | `Int32` |
-| `F`(Şamandıra) | `Double` |
-| `D`(Tarih) | `String` |
-| `T`(Zaman) | `String` |
-| `P`(BCD Paketlenmiş, Para Birimi, Ondalık, Qty) | `Decimal` |
-| `N`(Sayısal) | `String` |
-| `X`(İkili ve Ham) | `String` |
+| `C`Dizisinde | `String` |
+| `I`Gir | `Int32` |
+| `F`Float | `Double` |
+| `D`Güncel | `String` |
+| `T`Işınızda | `String` |
+| `P`(BCD paketlenmiş, para birimi, ondalık, miktar) | `Decimal` |
+| `N`Rakamlardan | `String` |
+| `X`(İkili ve ham) | `String` |
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için desteklenen [veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

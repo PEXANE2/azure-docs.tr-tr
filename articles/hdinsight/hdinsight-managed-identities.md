@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight'ta yönetilen kimlikler
-description: Azure HDInsight'ta yönetilen kimliklerin uygulanmasına genel bir bakış sağlar.
+title: Azure HDInsight 'ta Yönetilen kimlikler
+description: Azure HDInsight 'ta yönetilen kimliklerin uygulanmasına genel bir bakış sağlar.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,38 +9,38 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408932"
 ---
-# <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight'ta yönetilen kimlikler
+# <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 'ta Yönetilen kimlikler
 
-Yönetilen kimlik, kimlik bilgileri Azure Tarafından yönetilen Azure Etkin Dizini'nde (Azure AD) kayıtlı bir kimliktir. Yönetilen kimliklerle, hizmet ilkelerini Azure AD'ye kaydetmeniz gerekmez. Veya sertifikalar gibi kimlik bilgilerini koruyun.
+Yönetilen kimlik, kimlik bilgileri Azure tarafından yönetilen Azure Active Directory (Azure AD) ' de kayıtlı bir kimliktir. Yönetilen kimliklerle, hizmet sorumlularını Azure AD 'ye kaydetmeniz gerekmez. Ya da sertifikalar gibi kimlik bilgilerini saklayın.
 
-Azure AD etki alanı hizmetlerine erişmek veya gerektiğinde Azure Veri Gölü Depolama Gen2'deki dosyalara erişmek için Azure HDInsight'ta yönetilen kimlikler kullanılır.
+Yönetilen kimlikler Azure AD etki alanı hizmetlerine erişmek veya gerektiğinde Azure Data Lake Storage 2. dosyalara erişmek için Azure HDInsight 'ta kullanılır.
 
-Yönetilen kimliklerin iki türü vardır: kullanıcı tarafından atanan ve sistem atanan. Azure HDInsight yalnızca kullanıcı tarafından atanan yönetilen kimlikleri destekler. HDInsight, sisteme atanan yönetilen kimlikleri desteklemez. Kullanıcı tarafından atanan yönetilen kimlik, bağımsız bir Azure kaynağı olarak oluşturulur ve bu bilgiler bir veya daha fazla Azure hizmet örneğine atayabilirsiniz. Bunun aksine, Azure AD'de sistem tarafından atanmış yönetilen bir kimlik oluşturulur ve ardından doğrudan belirli bir Azure hizmet örneğinde otomatik olarak etkinleştirilir. Sistem tarafından atanan yönetilen kimliğin ömrü, etkinleştirildiği hizmet örneğinin ömrüne bağlıdır.
+İki tür yönetilen kimlik vardır: Kullanıcı tarafından atanan ve sistem tarafından atanan. Azure HDInsight yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri destekler. HDInsight, sistem tarafından atanan yönetilen kimlikleri desteklemez. Kullanıcı tarafından atanan yönetilen kimlik, tek başına bir Azure kaynağı olarak oluşturulur. Bu, daha sonra bir veya daha fazla Azure hizmet örneğine atayabilirsiniz. Buna karşılık, Azure AD 'de sistem tarafından atanan yönetilen bir kimlik oluşturulur ve ardından doğrudan belirli bir Azure Hizmeti örneğinde otomatik olarak etkinleştirilir. Bu durumda, sistem tarafından atanan yönetilen kimliğin yaşam süresi daha sonra etkinleştirilmiş olan hizmet örneği ömrü ile bağlantılıdır.
 
-## <a name="hdinsight-managed-identity-implementation"></a>HDInsight yönetilen kimlik uygulaması
+## <a name="hdinsight-managed-identity-implementation"></a>HDInsight Yönetilen kimlik uygulama
 
-Azure HDInsight'ta yönetilen kimlikler kümenin her düğümünde sağlanır. Ancak bu kimlik bileşenleri yalnızca HDInsight hizmeti tarafından kullanılabilir. Şu anda HDInsight küme düğümlerine yüklenen yönetilen kimlikleri kullanarak erişim belirteçleri oluşturmak için desteklenen bir yöntem yok. Bazı Azure hizmetlerinde, yönetilen kimlikler, erişim belirteçleri elde etmek için kullanabileceğiniz bir bitiş noktasıyla uygulanır. Belirteçleri, diğer Azure hizmetleriyle tek başına etkileşimde kalmak için kullanın.
+Azure HDInsight 'ta, Yönetilen kimlikler kümenin her bir düğümünde sağlanır. Ancak, bu kimlik bileşenleri yalnızca HDInsight hizmeti tarafından kullanılabilir. Şu anda HDInsight küme düğümlerinde yüklü yönetilen kimlikleri kullanarak erişim belirteçleri oluşturmak için desteklenen bir yöntem yoktur. Bazı Azure hizmetlerinde, Yönetilen kimlikler erişim belirteçleri almak için kullanabileceğiniz bir uç nokta ile uygulanır. Diğer Azure hizmetleriyle etkileşim kurmak için belirteçleri kullanın.
 
-## <a name="create-a-managed-identity"></a>Yönetilen bir kimlik oluşturma
+## <a name="create-a-managed-identity"></a>Yönetilen kimlik oluşturma
 
-Yönetilen kimlikler aşağıdaki yöntemlerden herhangi biriyle oluşturulabilir:
+Yönetilen kimlikler aşağıdaki yöntemlerden biriyle oluşturulabilir:
 
 * [Azure portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
 * [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 
-Yönetilen kimliği yapılandırmak için kalan adımlar, kullanılacağı senaryoya bağlıdır.
+Yönetilen kimliği yapılandırmaya yönelik kalan adımlar, kullanılacağı senaryoya bağlıdır.
 
-## <a name="managed-identity-scenarios-in-azure-hdinsight"></a>Azure HDInsight'ta yönetilen kimlik senaryoları
+## <a name="managed-identity-scenarios-in-azure-hdinsight"></a>Azure HDInsight 'ta yönetilen kimlik senaryoları
 
-Yönetilen kimlikler Azure HDInsight'ta birden çok senaryoda kullanılır. Ayrıntılı kurulum ve yapılandırma yönergeleri için ilgili belgelere bakın:
+Yönetilen kimlikler, Azure HDInsight 'ta birden çok senaryoda kullanılır. Ayrıntılı kurulum ve yapılandırma yönergeleri için bkz. ilgili belgeler:
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Kurumsal Güvenlik Paketi](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
@@ -50,7 +50,7 @@ Yönetilen kimlikler Azure HDInsight'ta birden çok senaryoda kullanılır. Ayr�
 
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Küme oluşturulduktan sonra yönetilen kimliği silersem ne olur?
 
-Kümeniz, yönetilen kimlik gerektiğinde sorunlarla karşınıza çıkacaktır. Küme oluşturulduktan sonra yönetilen bir kimliği güncelleştirmenin veya değiştirmenin şu anda yolu yok. Bu nedenle, küme çalışma zamanında yönetilen kimliğin silinmediğinden emin olmak için önerimiz dir. Veya kümeyi yeniden oluşturabilir ve yeni bir yönetilen kimlik atayabilirsiniz.
+Yönetilen kimlik gerektiğinde kümeniz sorun olarak çalışır. Şu anda küme oluşturulduktan sonra yönetilen bir kimliği güncelleştirmek veya değiştirmek mümkün değildir. Bu nedenle, küme çalışma zamanı sırasında yönetilen kimliğin silinmediğinden emin olmak için önerimiz. Ya da kümeyi yeniden oluşturabilir ve yeni bir yönetilen kimlik atayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

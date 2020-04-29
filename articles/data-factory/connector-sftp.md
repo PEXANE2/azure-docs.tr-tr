@@ -1,6 +1,6 @@
 ---
-title: Verileri SFTP sunucusundan ve SFTP sunucusuna kopyalama
-description: Azure Veri Fabrikası'nı kullanarak SFTP sunucusundan ve SFTP sunucusundan verilerin nasıl kopyalanabildiğini öğrenin.
+title: Verileri ve SFTP sunucusundan Kopyala
+description: Azure Data Factory kullanarak SFTP sunucusundan veri kopyalama hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,34 +13,34 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/02/2020
 ms.openlocfilehash: e6d29f73716b04699e0cd250396df7f7d744d4c4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415239"
 ---
-# <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri SFTP sunucusundan ve SFTP sunucusuna kopyalama
+# <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve SFTP sunucusundan kopyalama
 
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-sftp-connector.md)
-> * [Geçerli sürüm](connector-sftp.md)
+> * [Güncel sürüm](connector-sftp.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, sftp sunucusundan ve sftp sunucusuna verilerin nasıl kopyalanış edilebildiğini özetler. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
+Bu makalede, ve SFTP sunucusundan verilerin nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu SFTP bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu SFTP Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
-- [Meta veri etkinliğini alın](control-flow-get-metadata-activity.md)
-- [Etkinliği silme](delete-activity.md)
+- [GetMetadata etkinliği](control-flow-get-metadata-activity.md)
+- [Etkinliği sil](delete-activity.md)
 
-Özellikle, bu SFTP konektörü destekler:
+Özellikle, bu SFTP Bağlayıcısı şunları destekler:
 
-- **Temel** veya **SshPublicKey** kimlik doğrulamasını kullanarak dosyaları SFTP'den/SFTP'ye kopyalama.
-- Dosyaları olduğu gibi kopyalama veya desteklenen dosya biçimleri [ve sıkıştırma codec'leri](supported-file-formats-and-compression-codecs.md)ile dosyaları ayrıştırma/oluşturma.
+- **Temel** veya **sshpublickey** kimlik doğrulamasını kullanarak dosyaları/-SFTP konumundan kopyalama.
+- Dosya kopyalama veya [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md)ile dosyaları ayrıştırma/oluşturma/oluşturma.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -50,32 +50,32 @@ Bu SFTP bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, SFTP'ye özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sağlanmaktadır.
+Aşağıdaki bölümlerde, SFTP 'ye özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Aşağıdaki özellikler SFTP bağlantılı hizmet için desteklenir:
-
-| Özellik | Açıklama | Gerekli |
-|:--- |:--- |:--- |
-| type | Tür özelliği ayarlanmalıdır: **Sftp**. |Evet |
-| konak | SFTP sunucusunun adı veya IP adresi. |Evet |
-| port | SFTP sunucusunun dinlediği bağlantı noktası.<br/>İzin verilen değerler şunlardır: insa, varsayılan değer **22'dir.** |Hayır |
-| skipHostKeyValidation | Ana bilgisayar anahtar doğrulaması atlayıp atlamayacağıbelirtin.<br/>İzin verilen değerler şunlardır: **true,** **false** (varsayılan).  | Hayır |
-| hostKeyFingerprint | Ana bilgisayar anahtarının parmak izini belirtin. | Evet eğer "skipHostKeyValidation" yanlış ayarlanır.  |
-| authenticationType | Kimlik doğrulama türünü belirtin.<br/>İzin verilen değerler şunlardır: **Temel**, **SshPublicKey**. Temel [kimlik doğrulamayı kullanma](#using-basic-authentication) ve [sb ortak anahtar kimlik doğrulama](#using-ssh-public-key-authentication) bölümlerini sırasıyla daha fazla özellik ve JSON örneklerine göre kullanma bölümüne bakın. |Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
-
-### <a name="using-basic-authentication"></a>Temel kimlik doğrulamayı kullanma
-
-Temel kimlik doğrulamasını kullanmak için Temel 'kimlik doğrulama Türü" özelliğini **Temel**olarak ayarlayın ve son bölümde tanıtılan SFTP bağlayıcısı genel özelliklerinin yanı sıra aşağıdaki özellikleri belirtin:
+SFTP bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| userName | SFTP sunucusuna erişimi olan kullanıcı. |Evet |
-| password | Kullanıcı için parola (userName). Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
+| type | Type özelliği: **SFTP**olarak ayarlanmalıdır. |Yes |
+| konak | SFTP sunucusunun adı veya IP adresi. |Yes |
+| port | SFTP sunucusunun dinlediği bağlantı noktası.<br/>İzin verilen değerler: Integer, varsayılan değer **22**' dir. |Hayır |
+| skipHostKeyValidation | Konak anahtarı doğrulamanın atlanıp atlanmayacağını belirtin.<br/>İzin verilen değerler: **true**, **false** (varsayılan).  | Hayır |
+| hostKeyFingerprint | Ana bilgisayar anahtarının parmak yazdırma türünü belirtin. | "SkipHostKeyValidation" false olarak ayarlandıysa Evet.  |
+| authenticationType | Kimlik doğrulama türünü belirtin.<br/>İzin verilen değerler: **Basic**, **sshpublickey**. [Temel kimlik doğrulamasını kullanma](#using-basic-authentication) ve sırasıyla daha fazla ÖZELLIK ve JSON ÖRNEKLERI üzerinde [SSH ortak anahtar kimlik doğrulama bölümlerini kullanma](#using-ssh-public-key-authentication) bölümüne bakın. |Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
-**Örnek:**
+### <a name="using-basic-authentication"></a>Temel kimlik doğrulaması kullanma
+
+Temel kimlik doğrulamasını kullanmak için, "authenticationType" özelliğini **temel**olarak ayarlayın ve en son bölümde tanıtılan SFTP Bağlayıcısı genel 'in yanı sıra aşağıdaki özellikleri belirtin:
+
+| Özellik | Açıklama | Gerekli |
+|:--- |:--- |:--- |
+| userName | SFTP sunucusuna erişimi olan kullanıcı. |Yes |
+| password | Kullanıcı için parola (Kullanıcı adı). Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+
+**Örneğinde**
 
 ```json
 {
@@ -105,19 +105,19 @@ Temel kimlik doğrulamasını kullanmak için Temel 'kimlik doğrulama Türü" �
 
 ### <a name="using-ssh-public-key-authentication"></a>SSH ortak anahtar kimlik doğrulamasını kullanma
 
-SSH ortak anahtar kimlik doğrulamasını kullanmak için,"authenticationType" özelliğini **SshPublicKey**olarak ayarlayın ve son bölümde tanıtılan SFTP bağlayıcısı jenerik özelliklerinin yanı sıra aşağıdaki özellikleri belirtin:
+SSH ortak anahtar kimlik doğrulamasını kullanmak için, "authenticationType" özelliğini **Sshpublickey**olarak ayarlayın ve en son bölümde tanıtılan SFTP Bağlayıcısı genel 'in yanı sıra aşağıdaki özellikleri belirtin:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| userName | SFTP sunucusuna erişimi olan kullanıcı |Evet |
-| privateKeyPath | Tümleştirme Runtime'ın erişebileceği özel anahtar dosyasına mutlak yol belirtin. Yalnızca "connectVia"da Kendi kendine barındırılan Tümleştirme Çalışma süresi türü belirtildiğinde geçerlidir. | Belirtin `privateKeyPath` ya `privateKeyContent`da .  |
-| privateKeyContent | Base64 kodlanmış SSH özel anahtar içeriği. SSH özel anahtarı OpenSSH formatında olmalıdır. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Belirtin `privateKeyPath` ya `privateKeyContent`da . |
-| Parola | Anahtar dosyası bir geçiş tümceciği tarafından korunuyorsa, özel anahtarın şifresini çözmek için geçiş tümceciği/parolasını belirtin. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Özel anahtar dosyası bir geçiş tümceciği tarafından korunuyorsa evet. |
+| userName | SFTP sunucusuna erişimi olan Kullanıcı |Yes |
+| privateKeyPath | Integration Runtime erişebileceği özel anahtar dosyasının mutlak yolunu belirtin. Yalnızca kendi kendine barındırılan Integration Runtime türü "connectVia" içinde belirtildiğinde geçerlidir. | `privateKeyPath` Ya `privateKeyContent`da belirtin.  |
+| privateKeyContent | Base64 kodlamalı SSH özel anahtar içeriği. SSH özel anahtarı OpenSSH biçiminde olmalıdır. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | `privateKeyPath` Ya `privateKeyContent`da belirtin. |
+| Deyimi | Anahtar dosyası bir pass ifadesi tarafından korunuyorsa, özel anahtarın şifresini çözmek için geçiş tümceciğini/parolayı belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Özel anahtar dosyası bir pass ifadesi tarafından korunuyorsa Evet. |
 
 > [!NOTE]
-> SFTP konektörü RSA/DSA OpenSSH anahtarını destekler. Anahtar dosya içeriğinizin "-----BEGIN [RSA/DSA] PRIVATE KEY-----" ile başladığından emin olun. Özel anahtar dosyası ppk formatında bir dosyaysa, lütfen .ppk'den OpenSSH biçimine dönüştürmek için Macun aracını kullanın. 
+> SFTP Bağlayıcısı RSA/DSA OpenSSH anahtarını destekler. Anahtar dosyası içeriğinizin "-----BEGIN [RSA/DSA] özel anahtar-----" ile başlayıp başlamadığına emin olun. Özel anahtar dosyası bir PPK biçimli dosya ise, lütfen. PPK 'den OpenSSH biçimine dönüştürmek için Putty aracını kullanın. 
 
-**Örnek 1: Özel anahtar dosyasıPath kullanarak SshPublicKey kimlik doğrulaması**
+**Örnek 1: özel anahtar filePath kullanarak SshPublicKey kimlik doğrulaması**
 
 ```json
 {
@@ -145,7 +145,7 @@ SSH ortak anahtar kimlik doğrulamasını kullanmak için,"authenticationType" �
 }
 ```
 
-**Örnek 2: Özel anahtar içeriğini kullanarak SshPublicKey kimlik doğrulaması**
+**Örnek 2: özel anahtar içeriği kullanarak SshPublicKey kimlik doğrulaması**
 
 ```json
 {
@@ -178,19 +178,19 @@ SSH ortak anahtar kimlik doğrulamasını kullanmak için,"authenticationType" �
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Datasets](concepts-datasets-linked-services.md) makalesine bakın. 
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Aşağıdaki özellikler, biçim tabanlı veri `location` kümesindeki ayarlar altında SFTP için desteklenir:
+Aşağıdaki özellikler, biçim tabanlı veri kümesindeki ayarlar altında `location` SFTP için desteklenir:
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Veri kümesinin `location` altındaki tür özelliği **SftpLocation**olarak ayarlanmalıdır. | Evet      |
-| folderPath | Klasöre giden yol. Klasöre filtre açmak için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarlarını belirtin. | Hayır       |
-| fileName   | Verilen folderPath altında dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarlarını belirtin. | Hayır       |
+| type       | DataSet `location` içinde Type özelliği **sftplocation**olarak ayarlanmalıdır. | Yes      |
+| folderPath | Klasörün yolu. Klasörü filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
+| fileName   | Verilen folderPath altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -218,25 +218,25 @@ Aşağıdaki özellikler, biçim tabanlı veri `location` kümesindeki ayarlar a
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, SFTP kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, SFTP kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="sftp-as-source"></a>Kaynak olarak SFTP
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Aşağıdaki özellikler, biçim tabanlı kopyalama `storeSettings` kaynağındaki ayarlar altında SFTP için desteklenir:
+Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı ayarları altında `storeSettings` SFTP için desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Altındaki tür `storeSettings` özelliği **SftpReadSettings**olarak ayarlanmalıdır. | Evet                                           |
-| Özyinelemeli                | Verilerin alt klasörlerden mi yoksa yalnızca belirtilen klasörden mi özyinelemeli olarak okunduğunu gösterir. Özyineleme gerçek olarak ayarlandığında ve lavabo dosya tabanlı bir depo olduğunda, boş bir klasörün veya alt klasörün kopyalanmadığını veya lavaboda oluşturulmadığını unutmayın. İzin verilen değerler **doğru** (varsayılan) ve **yanlıştır.** | Hayır                                            |
-| joker KarakterFolderPath       | Kaynak klasörleri filtrelemek için joker karakteriçeren klasör yolu. <br>İzin verilen joker `*` karakterler şunlardır: (sıfır `?` veya daha fazla karakterle eşleşir) ve (sıfır veya tek karakterle eşleşir); gerçek `^` klasör adınızı joker veya bu kaçış char içinde varsa kaçmak için kullanın. <br>Klasör ve [dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görün. | Hayır                                            |
-| jokerKarakterFileName         | Kaynak dosyaları filtrelemek için verilen folderPath/jokerKarakterIn altında joker karakter içeren dosya adı. <br>İzin verilen joker `*` karakterler şunlardır: (sıfır `?` veya daha fazla karakterle eşleşir) ve (sıfır veya tek karakterle eşleşir); gerçek `^` klasör adınızı joker veya bu kaçış char içinde varsa kaçmak için kullanın.  Klasör ve [dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görün. | Veri `fileName` kümesinde belirtilmemişse evet |
-| modifiyeDatetimeBaşlat    | Dosyalar özniteliğe göre filtre: Son Değiştirildi. Son değiştirilen zamanları ile `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığında ysa, dosyalar seçilecektir. Bu süre UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br> Özellikler NULL olabilir, bu da veri kümesine dosya özniteliği filtresi uygulanamayacağı anlamına gelir.  Datetime değeri ne zaman, `modifiedDatetimeStart` ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği datetime değerinden büyük veya eşit olan dosyaların seçileceği anlamına gelir.  Datetime değeri ne zaman, `modifiedDatetimeEnd` ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği datetime değerinden daha az olan dosyaların seçileceği anlamına gelir. | Hayır                                            |
-| modifiedDatetimeEnd      | Yukarıdakiyle aynı.                                               | Hayır                                            |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantıların sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır                                            |
+| type                     | Altındaki `storeSettings` Type özelliği **Sftpreadsettings**olarak ayarlanmalıdır. | Yes                                           |
+| öz                | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir. | Hayır                                            |
+| Yavaya Cardfolderpath       | Kaynak klasörlerin filtreleneceği joker karakter içeren klasör yolu. <br>İzin verilen joker karakterler `*` : (sıfır veya daha fazla karakterle eşleşir `?` ) ve (sıfır veya tek karakterle eşleşir); gerçek `^` klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                            |
+| Yavaya Cardfilename         | Kaynak dosyalarını filtrelemek için, belirtilen folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler `*` : (sıfır veya daha fazla karakterle eşleşir `?` ) ve (sıfır veya tek karakterle eşleşir); gerçek `^` klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | `fileName` Veri kümesinde belirtilmemişse Evet |
+| modifiedDatetimeStart    | Öznitelikleri temel alan dosya filtresi: son değiştirme. Son değiştirilme zamanı ve `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığı içinde ise dosyalar seçilir. Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacak anlamına gelir.  Tarih `modifiedDatetimeStart` saat değeri olduğunda ancak `modifiedDatetimeEnd` null olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  Tarih `modifiedDatetimeEnd` saat değeri olduğunda ancak `modifiedDatetimeStart` null olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir. | Hayır                                            |
+| modifiedDatetimeEnd      | Yukarıdaki gibi.                                               | Hayır                                            |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır                                            |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -277,24 +277,24 @@ Aşağıdaki özellikler, biçim tabanlı kopyalama `storeSettings` kaynağında
 ]
 ```
 
-### <a name="sftp-as-sink"></a>Lavabo olarak SFTP
+### <a name="sftp-as-sink"></a>Havuz olarak SFTP
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Aşağıdaki özellikler, biçim tabanlı kopyalama `storeSettings` lavabosunda ayarlar altında SFTP için desteklenir:
+Aşağıdaki özellikler, biçim tabanlı kopya havuzunda ayarlar altında `storeSettings` SFTP için desteklenir:
 
 | Özellik                 | Açıklama                                                  | Gerekli |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Altındaki `storeSettings` tür özelliği **SftpWriteSettings**olarak ayarlanmalıdır. | Evet      |
-| copyBehavior             | Kaynak dosya tabanlı bir veri deposundan dosya olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>- Koruma Hiyerarşisi (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><b>- FlattenHiyerarşiy</b>: Kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak oluşturulmuş adları vardır. <br/><b>- Birleştirme Dosyaları</b>: Kaynak klasördeki tüm dosyaları tek bir dosyayla birleştirir. Dosya adı belirtilirse, birleştirilen dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulmuş bir dosya adıdır. | Hayır       |
-| maxConcurrentConnections | Veri deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır       |
-| useTempFileRename | Geçici dosya(lar) ve yeniden adlandırma ya da doğrudan hedef klasör/dosya konumuna yazmak yüklemek için olup olmadığını belirtin. Varsayılan olarak, ADF önce geçici dosya(lar) sonra yükleme tamamlandıktan sonra dosya yeniden adlandırma yapmak, amacıyla 1) aynı dosyaya başka bir işlem yazma varsa bozuk dosya ile sonuçlanan çakışma yazmak önlemek ve 2) dosyanın özgün sürümü tüm aktarım sırasında olduğundan emin olun. SFTP sunucunuz yeniden adlandırma işlemini desteklemiyorsa, bu seçeneği devre dışı kaldırın ve hedef dosyaya eşzamanlı yazma nız olmadığından emin olun. Bu tablonun altındaki sorun giderme ipucuna bakın. | Hayır. Varsayılan değer doğrudur. |
-| operationTimeout | SFTP sunucusuna her yazma isteği nden önceki bekleme süresi zaman ları doluyor. Varsayılan değer 60 dkdır (01:00:00).|Hayır |
+| type                     | Altındaki `storeSettings` Type özelliği **Sftpwritesettings**olarak ayarlanmalıdır. | Yes      |
+| copyBehavior             | Kaynak dosya tabanlı bir veri deposundan dosyalar olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>-Preservehierarchy (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın göreli yoluyla hedef klasöre aynıdır.<br/><b>-DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyalar otomatik olarak oluşturulan adlara sahiptir. <br/><b>-Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. | Hayır       |
+| maxConcurrentConnections | Aynı anda veri deposuna bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır       |
+| useTempFileRename | Geçici dosya (lar) a yükleme ve yeniden adlandırma ya da hedef klasöre/dosya konumuna doğrudan yazma yapılıp yapılmayacağını belirtin. Varsayılan olarak, ADF ilk olarak geçici dosya (lar) a yazar ve ardından karşıya yükleme tamamlandıktan sonra dosya yeniden adlandırma işlemini yapın, 1), aynı dosyaya yazma işlemi varsa çakışma yazma işleminin bozuk dosya ile sonuçlanır ve 2) dosyanın özgün sürümünün tüm aktarım sırasında mevcut olduğundan emin olun. SFTP sunucunuz yeniden adlandırma işlemini desteklemiyorsa, bu seçeneği devre dışı bırakın ve hedef dosyaya eşzamanlı olarak yazma olmadığından emin olun. Bu tablonun altındaki sorun giderme ipucu ' na bakın. | Hayır. Varsayılan değer true 'dur. |
+| operationTimeout | Her yazma isteğinin SFTP sunucusuna zaman aşımına uğramadan önce bekleme süresi. Varsayılan değer 60 dakikadır (01:00:00).|Hayır |
 
 >[!TIP]
->SFTP'ye veri yazarken "UserErrorSftpPathNotFound", "UserErrorSftpPermissionDenied" veya "SftpOperationFail" hatasına ulaştıysanız ve kullandığınız SFTP kullanıcısı uygun izne sahipse, SFTP sunucu destek dosyanızın yeniden`useTempFileRename`ad lamı işlemini kontrol edin - değilse "Geçici dosyayla Yükle" seçeneğini devre dışı bırakıp yeniden deneyin. Bu özellik hakkında daha fazla bilgi için yukarıdaki tablodan edinebilirsiniz. Kopyalamak için Kendi barındırılan Tümleştirme Çalışma Süresi'ni kullanıyorsanız, sürüm 4.6 veya üzeri sürümü kullandığınızdan emin olun.
+>"UserErrorSftpPathNotFound", "hatasını alırsanız" Usererrorsftppermissionreddedildi "veya" SftpOperationFail ", SFTP 'ye veri yazarken ve kullandığınız SFTP kullanıcısının doğru izni varsa, SFTP sunucunuzun dosya yeniden adlandırma işlemini desteklemesini, yoksa" geçici dosyayı karşıya yükle "(`useTempFileRename`) seçeneğini devre dışı bırakıp yeniden deneyin. Yukarıdaki tablodan bu özellik hakkında daha fazla bilgi edinin. Kopyalama için şirket içinde barındırılan Integration Runtime kullanıyorsanız, 4,6 veya sonraki bir sürümü kullandığınızdan emin olun.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -331,51 +331,51 @@ Aşağıdaki özellikler, biçim tabanlı kopyalama `storeSettings` lavabosunda 
 
 ### <a name="folder-and-file-filter-examples"></a>Klasör ve dosya filtresi örnekleri
 
-Bu bölümde, klasör yolunun ve dosya adının joker karakter filtreleriyle ortaya çıkan davranışı açıklanmaktadır.
+Bu bölümde, klasör yolu ve dosya adının joker karakter filtreleriyle elde edilen davranışı açıklanmaktadır.
 
-| folderPath | fileName | Özyinelemeli | Kaynak klasör yapısı ve filtre sonucu **(kalın** renkteki dosyalar alınır)|
+| folderPath | fileName | öz | Kaynak klasör yapısı ve filtre sonucu ( **kalın** olan dosyalar alınır)|
 |:--- |:--- |:--- |:--- |
-| `Folder*` | (boş, varsayılan kullanın) | yanlış | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya6.csv |
-| `Folder*` | (boş, varsayılan kullanın) | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya6.csv |
-| `Folder*` | `*.csv` | yanlış | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya6.csv |
-| `Folder*` | `*.csv` | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya6.csv |
+| `Folder*` | (boş, Varsayılanı kullan) | yanlış | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `Folder*` | (boş, Varsayılanı kullan) | true | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `Folder*` | `*.csv` | yanlış | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| `Folder*` | `*.csv` | true | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
-## <a name="getmetadata-activity-properties"></a>Metaveri etkinlik özelliklerini alın
+## <a name="getmetadata-activity-properties"></a>GetMetadata etkinlik özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [GetMetadata etkinliğini](control-flow-get-metadata-activity.md) kontrol edin 
+Özelliklerle ilgili ayrıntıları öğrenmek için [GetMetadata etkinliğini](control-flow-get-metadata-activity.md) denetleyin 
 
-## <a name="delete-activity-properties"></a>Etkinlik özelliklerini silme
+## <a name="delete-activity-properties"></a>Etkinlik özelliklerini Sil
 
-Özellikler hakkında ayrıntılı bilgi edinmek için [Sil etkinliğini denetleyin](delete-activity.md)
+Özelliklerle ilgili ayrıntıları öğrenmek için [silme etkinliği](delete-activity.md) onay
 
 ## <a name="legacy-models"></a>Eski modeller
 
 >[!NOTE]
->Aşağıdaki modeller hala geriye dönük uyumluluk için olduğu gibi desteklenir. İleriye dönük yukarıdaki bölümlerde belirtilen yeni modeli kullanmanız önerilir ve ADF yazarlı UI yeni modeli oluşturmaya geçti.
+>Geriye dönük uyumluluk için aşağıdaki modeller hala desteklenmektedir. Yukarıdaki bölümlerde bahsedilen yeni modeli kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi yeni modeli oluşturmaya geçti.
 
-### <a name="legacy-dataset-model"></a>Eski dataset modeli
+### <a name="legacy-dataset-model"></a>Eski veri kümesi modeli
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **FileShare** |Evet |
-| folderPath | Klasöre giden yol. Joker karakter filtresi desteklenir, joker `*` karakterlere izin verilir: (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); gerçek `^` dosya adınızı joker veya bu kaçış char içinde varsa kaçmak için kullanın. <br/><br/>Örnekler: rootfolder/subfolder/, Klasör [ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görün. |Evet |
-| fileName |  Belirtilen "folderPath" altındaki dosya(lar) için **ad veya joker karakter filtresi.** Bu özellik için bir değer belirtmezseniz, veri kümesi klasördeki tüm dosyaları işaret edir. <br/><br/>Filtre için izin verilen `*` joker karakterler şunlardır: (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir).<br/>- Örnek 1:`"fileName": "*.csv"`<br/>- Örnek 2:`"fileName": "???20180427.txt"`<br/>Gerçek `^` klasör adınızı joker veya bu kaçış char içinde varsa kaçmak için kullanın. |Hayır |
-| modifiyeDatetimeBaşlat | Dosyalar özniteliğe göre filtre: Son Değiştirildi. Son değiştirilen zamanları ile `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığında ysa, dosyalar seçilecektir. Bu süre UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Büyük miktarda dosya filtresi yapmak istediğinizde bu ayarı etkinleştirerek veri hareketinin genel performansının etkileneceğini unutmayın. <br/><br/> Özellikler, veri kümesine dosya özniteliği filtresi uygulanmayacak anlamına gelen NULL olabilir.  Datetime değeri ne zaman, `modifiedDatetimeStart` ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği datetime değerinden büyük veya eşit olan dosyaların seçileceği anlamına gelir.  Datetime değeri ne zaman, `modifiedDatetimeEnd` ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği datetime değerinden daha az olan dosyaların seçileceği anlamına gelir.| Hayır |
-| modifiedDatetimeEnd | Dosyalar özniteliğe göre filtre: Son Değiştirildi. Son değiştirilen zamanları ile `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığında ysa, dosyalar seçilecektir. Bu süre UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Büyük miktarda dosya filtresi yapmak istediğinizde bu ayarı etkinleştirerek veri hareketinin genel performansının etkileneceğini unutmayın. <br/><br/> Özellikler, veri kümesine dosya özniteliği filtresi uygulanmayacak anlamına gelen NULL olabilir.  Datetime değeri ne zaman, `modifiedDatetimeStart` ancak `modifiedDatetimeEnd` NULL olduğunda, son değiştirilen özniteliği datetime değerinden büyük veya eşit olan dosyaların seçileceği anlamına gelir.  Datetime değeri ne zaman, `modifiedDatetimeEnd` ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği datetime değerinden daha az olan dosyaların seçileceği anlamına gelir.| Hayır |
-| biçim | Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıktı veri kümesi tanımlarında biçim bölümünü atlayın.<br/><br/>Dosyaları belirli bir biçimde ayrıştmak istiyorsanız, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParkquetFormat**. Biçim altındaki **tür** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için [Metin Biçimi,](supported-file-formats-and-compression-codecs-legacy.md#text-format) [Json Formatı,](supported-file-formats-and-compression-codecs-legacy.md#json-format) [Avro Biçimi,](supported-file-formats-and-compression-codecs-legacy.md#avro-format) [Ork Biçimi](supported-file-formats-and-compression-codecs-legacy.md#orc-format)ve [Parke Biçimi](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) bölümlerine bakın. |Hayır (yalnızca ikili kopyalama senaryosu için) |
-| sıkıştırma | Verilerin sıkıştırma türünü ve düzeyini belirtin. Daha fazla bilgi için [desteklenen dosya biçimleri ve sıkıştırma codec'lerine](supported-file-formats-and-compression-codecs-legacy.md#compression-support)bakın.<br/>Desteklenen türleri şunlardır: **GZip**, **Deflate**, **BZip2**, ve **ZipDeflate**.<br/>Desteklenen seviyeler şunlardır: **Optimal** ve **En Hızlı.** |Hayır |
+| type | DataSet 'in Type özelliği: **FileShare** olarak ayarlanmalıdır |Yes |
+| folderPath | Klasörün yolu. Joker karakter filtresi desteklenir, izin verilen joker karakterler `*` : (sıfır veya daha fazla karakterle eşleşir `?` ) ve (sıfır veya tek karakterle eşleşir); gerçek `^` dosya adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br/><br/>Örnekler: RootFolder/alt klasör/, bkz. [klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek. |Yes |
+| fileName |  Belirtilen "folderPath" altındaki dosya (ler) için **ad veya joker karakter filtresi** . Bu özellik için bir değer belirtmezseniz, veri kümesi klasördeki tüm dosyaları işaret eder. <br/><br/>Filtre için, izin verilen joker karakterler `*` şunlardır: (sıfır veya daha fazla karakterle `?` eşleşir) ve (sıfır veya tek karakterle eşleşir).<br/>-Örnek 1:`"fileName": "*.csv"`<br/>-Örnek 2:`"fileName": "???20180427.txt"`<br/>Gerçek `^` klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. |Hayır |
+| modifiedDatetimeStart | Öznitelikleri temel alan dosya filtresi: son değiştirme. Son değiştirilme zamanı ve `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığı içinde ise dosyalar seçilir. Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Veri kümesine hiçbir dosya özniteliği filtresinin uygulanamadığını gösteren Özellikler NULL olabilir.  Tarih `modifiedDatetimeStart` saat değeri olduğunda ancak `modifiedDatetimeEnd` null olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  Tarih `modifiedDatetimeEnd` saat değeri olduğunda ancak `modifiedDatetimeStart` null olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
+| modifiedDatetimeEnd | Öznitelikleri temel alan dosya filtresi: son değiştirme. Son değiştirilme zamanı ve `modifiedDatetimeStart` `modifiedDatetimeEnd`arasındaki zaman aralığı içinde ise dosyalar seçilir. Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Veri kümesine hiçbir dosya özniteliği filtresinin uygulanamadığını gösteren Özellikler NULL olabilir.  Tarih `modifiedDatetimeStart` saat değeri olduğunda ancak `modifiedDatetimeEnd` null olduğunda, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  Tarih `modifiedDatetimeEnd` saat değeri olduğunda ancak `modifiedDatetimeStart` null olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
+| biçim | Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın.<br/><br/>Dosyaları belirli bir biçimde ayrıştırmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON biçimi](supported-file-formats-and-compression-codecs-legacy.md#json-format), [avro Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [orc biçimi](supported-file-formats-and-compression-codecs-legacy.md#orc-format)ve [Parquet biçim](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) bölümleri. |Hayır (yalnızca ikili kopya senaryosu için) |
+| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Daha fazla bilgi için bkz. [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**.<br/>Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. |Hayır |
 
 >[!TIP]
->Tüm dosyaları bir klasörün altında kopyalamak için **yalnızca folderPath'i** belirtin.<br>Belirli bir ada sahip tek bir dosyayı kopyalamak için **folderPath** klasörünü klasör bölümü ve dosya adı ile **dosya adı** ile belirtin.<br>Bir klasörün altındaki dosyaların alt kümesini kopyalamak için **folderPath** klasörünü klasör bölümüyle ve joker karakter filtresiile **fileName'yi** belirtin.
+>Bir klasörün altındaki tüm dosyaları kopyalamak için, yalnızca **FolderPath** ' i belirtin.<br>Belirli bir ada sahip tek bir dosyayı kopyalamak için klasör **bölümü ve dosya adı ile dosya** adı ile **FolderPath** belirtin.<br>Bir klasörün altına bir dosya alt kümesini kopyalamak için klasör bölümü ve **dosya adı** joker karakter filtresi ile **FolderPath** öğesini belirtin.
 
 >[!NOTE]
->Dosya filtresi için "fileFilter" özelliğini kullanıyorsanız, ileriye dönük olarak "fileName"ye eklenen yeni filtre özelliğini kullanmanız önerilirken, bu özellik olduğu gibi desteklenir.
+>Dosya filtresi için "fileFilter" özelliğini kullanıyorsanız, "dosya adı" ' na eklenen yeni filtre özelliğini kullanmanız önerilirken, olduğu gibi hala desteklenmektedir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -410,11 +410,11 @@ Bu bölümde, klasör yolunun ve dosya adının joker karakter filtreleriyle ort
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının türü özelliği ayarlanmalıdır: **FileSystemSource** |Evet |
-| Özyinelemeli | Verilerin alt klasörlerden mi yoksa yalnızca belirtilen klasörden mi özyinelemeli olarak okunduğunu gösterir. Özyineleme doğru ayarlandığında ve lavabo dosya tabanlı depolandığında, boş klasör/alt klasör lavaboda kopyalanmaz/oluşturulmaz.<br/>İzin verilen değerler şunlardır: **true** (varsayılan), **yanlış** | Hayır |
-| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantıların sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **Filesystemsource** olarak ayarlanmalıdır |Yes |
+| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı depo ise, boş klasör/alt klasör, havuzda kopyalanmayacak/oluşturulmaz.<br/>İzin verilen değerler: **true** (varsayılan), **false** | Hayır |
+| maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -447,4 +447,4 @@ Bu bölümde, klasör yolunun ve dosya adının joker karakter filtreleriyle ort
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

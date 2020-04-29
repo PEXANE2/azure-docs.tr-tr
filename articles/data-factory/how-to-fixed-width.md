@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'ndaki veri akışlarını eşlemeyle sabit uzunlukta metin dosyalarını işleme
-description: Veri akışlarını eşlemeyi kullanarak Azure Veri Fabrikası'nda sabit uzunlukta metin dosyalarını nasıl işleyin gerektiğini öğrenin.
+title: Azure Data Factory veri akışlarını eşleme ile sabit uzunluklu metin dosyalarını işle
+description: Veri akışlarını eşleme kullanarak Azure Data Factory sabit uzunluklu metin dosyalarını nasıl işleyeceğini öğrenin.
 services: data-factory
 author: balakreshnan
 ms.service: data-factory
@@ -9,37 +9,37 @@ ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
 ms.openlocfilehash: d629a9031f032a77efc953311a45b55996568191
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414385"
 ---
-# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Veri Fabrikası eşleme veri akışlarını kullanarak sabit uzunlukta metin dosyalarını işleme
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Data Factory eşleme veri akışlarını kullanarak sabit uzunluklu metin dosyalarını işleyin
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Microsoft Azure Veri Fabrikası'ndaki veri akışlarını eşleyerek, verileri sabit genişlikteki metin dosyalarından dönüştürebilirsiniz. Aşağıdaki görevde, sınır tanımayan bir metin dosyası için bir veri kümesi tanımlarız ve ardından ordinal konuma göre alt dize bölmeleri ayarlarız.
+Microsoft Azure Data Factory veri akışlarını eşleme kullanarak, sabit genişlikli metin dosyalarından verileri dönüştürebilirsiniz. Aşağıdaki görevde, bir metin dosyası için sınırlayıcı olmadan bir veri kümesi tanımlayacağız ve sonra sıra konumuna göre alt dize bölmelerini ayarlayacağız.
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1. Yeni bir ardışık kanal oluşturmak için **+Yeni Ardışık Hatlar'ı** seçin.
+1. Yeni bir işlem hattı oluşturmak için **+ Yeni Işlem hattı** ' nı seçin.
 
 2. Sabit genişlikli dosyaları işlemek için kullanılacak bir veri akışı etkinliği ekleyin:
 
-    ![Sabit Genişlik boru hattı](media/data-flow/fwpipe.png)
+    ![Sabit genişlikli işlem hattı](media/data-flow/fwpipe.png)
 
-3. Veri akışı etkinliğinde, **Yeni eşleme veri akışını**seçin.
+3. Veri akışı etkinliğinde **Yeni eşleme veri akışı**' nı seçin.
 
-4. Kaynak, Türetilmiş Sütun, Seç ve Büzerek dönüştürme ekleme:
+4. Kaynak, türetilmiş sütun, seçme ve havuz dönüşümü ekleyin:
 
-    ![Sabit Genişlik veri akışı](media/data-flow/fw2.png)
+    ![Sabit genişlikli veri akışı](media/data-flow/fw2.png)
 
-5. Kaynak dönüşümünün, Sınırlı Metin türüne ait olacak yeni bir veri kümesini kullanacak şekilde yapılandırılması.
+5. Kaynak dönüşümünü, ayrılmış metin türünde olacak şekilde yeni bir veri kümesi kullanacak şekilde yapılandırın.
 
-6. Sütun sınırlayıcı veya üstbilgi ayarlamayın.
+6. Herhangi bir sütun sınırlayıcısı veya üst bilgi ayarlama.
 
-   Şimdi bu dosyanın içeriği için alan başlangıç noktaları ve uzunlukları belirleyeceğiz:
+   Artık bu dosyanın içeriği için alan başlangıç noktaları ve uzunlukları ayarlayacağız:
 
     ```
     1234567813572468
@@ -57,38 +57,38 @@ Microsoft Azure Veri Fabrikası'ndaki veri akışlarını eşleyerek, verileri s
     1234567813572468
     ```
 
-7. Kaynak dönüşümünüzün **Projeksiyon** sekmesinde, *Column_1*adlı bir dize sütunu görmeniz gerekir.
+7. Kaynak dönüşümünüzün **İzdüşüm** sekmesinde, *Column_1*adlı bir dize sütunu görmeniz gerekir.
 
-8. Türetilmiş sütunda yeni bir sütun oluşturun.
+8. Türetilmiş sütununda yeni bir sütun oluşturun.
 
-9. Sütunlara *col1*gibi basit isimler vereceğiz.
+9. Sütunları *Sütun1*gibi basit adlara vereceğiz.
 
-10. İfade oluşturucuolarak, aşağıdakileri yazın:
+10. İfade Oluşturucusu ' nda, aşağıdakileri yazın:
 
     ```substring(Column_1,1,4)```
 
     ![türetilmiş sütun](media/data-flow/fwderivedcol1.png)
 
-11. Ayrışdırmak için gereken tüm sütunlar için adım 10'u yineleyin.
+11. Ayrıştırmak için gereken tüm sütunlar için 10. adımı tekrarlayın.
 
-12. Oluşturulacak yeni sütunları görmek için **Denetle** sekmesini seçin:
+12. Oluşturulacak yeni sütunları görmek için **İnceleme** sekmesini seçin:
 
-    ![Incelemek](media/data-flow/fwinspect.png)
+    ![bilgiyi](media/data-flow/fwinspect.png)
 
-13. Dönüştürme için gerek olmayan sütunlardan herhangi birini kaldırmak için Seç dönüşümünü kullanın:
+13. Dönüştürme için gerekli olmayan sütunları kaldırmak için Seç dönüşümünü kullanın:
 
     ![dönüşüm seçin](media/data-flow/fwselect.png)
 
-14. Verileri bir klasöre çıktırmak için Lavabo'yu kullanın:
+14. Verileri bir klasöre çıkarmak için havuz kullanın:
 
-    ![sabit genişlikte lavabo](media/data-flow/fwsink.png)
+    ![Sabit genişlikli havuz](media/data-flow/fwsink.png)
 
-    Çıktı şu şekilde görünür:
+    Çıktının şöyle göründüğü aşağıda verilmiştir:
 
-    ![sabit genişlik çıkışı](media/data-flow/fxdoutput.png)
+    ![Sabit genişlikli çıkış](media/data-flow/fxdoutput.png)
 
-  Sabit genişlikteki veriler artık dört karakterle bölünür ve Col1, Col2, Col3, Col4 ve benzeri ne atanır. Önceki örneğe göre, veriler dört sütuna bölünür.
+  Sabit genişlikli veriler artık, dört karakterle ve Sütun1, Col2, Col3, col4, vb. ' e atanmış olarak bölünür. Önceki örneğe göre, veriler dört sütuna bölünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veri akışları [dönüşümlerini](concepts-data-flow-overview.md)eşleme kullanarak veri akışı mantığınızın geri kalanını oluşturun.
+* Veri akışı [dönüştürmelerini](concepts-data-flow-overview.md)eşleme kullanarak veri akışı mantığınızın geri kalanını oluşturun.

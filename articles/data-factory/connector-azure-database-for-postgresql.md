@@ -1,6 +1,6 @@
 ---
-title: PostgreSQL için Azure Veritabanı'na veri kopyalama
-description: Bir Azure Veri Fabrikası ardışık alanında kopyalama etkinliği kullanarak PostgreSQL için Azure Veritabanı'na veri kopyalamayı öğrenin.
+title: PostgreSQL için Azure veritabanı 'na veri kopyalama
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak PostgreSQL için Azure veritabanı 'na ve veri kopyalama hakkında bilgi edinin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,53 +12,53 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/16/2019
 ms.openlocfilehash: b85e72ae6698cd9fa018c940e158bfcf25279ed5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410473"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak PostgreSQL için Azure Veritabanı'na veri kopyalama
+# <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL için Azure veritabanı 'na veri kopyalama
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, PostgreSQL için Azure Veritabanı'ndaki verileri kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliği özelliğinin nasıl kullanılacağı açıklanmaktadır. [Azure Veri Fabrikası makalesinde](copy-activity-overview.md) kopyalama etkinliğine genel bir bakış sunan Kopyalama etkinliğini temel alar.
+Bu makalede, PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için Azure Data Factory etkinlik kopyalama özelliğinin nasıl kullanılacağı açıklanır. Kopyalama etkinliğine genel bir bakış sunan [Azure Data Factory makalesinde kopyalama etkinliği](copy-activity-overview.md) oluşturur.
 
-Bu bağlayıcı, [PostgreSQL hizmeti için Azure Veritabanı için](../postgresql/overview.md)özelleştirilmiştir. Şirket içinde veya bulutta bulunan genel bir PostgreSQL veritabanından verileri kopyalamak için [PostgreSQL bağlayıcısını](connector-postgresql.md)kullanın.
+Bu bağlayıcı [PostgreSQL Için Azure veritabanı hizmeti](../postgresql/overview.md)için özelleştirilmiştir. Şirket içinde veya bulutta bulunan genel bir PostgreSQL veritabanından veri kopyalamak için [PostgreSQL bağlayıcısını](connector-postgresql.md)kullanın.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-PostgreSQL bağlayıcısı için bu Azure Veritabanı aşağıdaki etkinlikler için desteklenir:
+PostgreSQL için Azure Veritabanı Bağlayıcısı, aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen](copy-activity-overview.md) bir [kaynak/lavabo matrisi](copy-activity-overview.md) ile etkinliği kopyalama
+- [Etkinliği](copy-activity-overview.md) [desteklenen bir kaynak/havuz matrisi](copy-activity-overview.md) ile kopyalama
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-PostgreSQL için Azure Veritabanı'ndan desteklenen herhangi bir lavabo veri deposuna veri kopyalayabilirsiniz. Veya, desteklenen herhangi bir kaynak veri deposundan verileri PostgreSQL için Azure Veritabanı'na kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak ve lavabo olarak desteklediği veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+PostgreSQL için Azure veritabanı 'ndan desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ya da desteklenen herhangi bir kaynak veri deposundan verileri PostgreSQL için Azure veritabanı 'na kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar. Bu nedenle, bu bağlayıcıyı kullanmak için herhangi bir sürücüyü el ile yüklemeniz gerekmez.
+Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar. Bu nedenle, bu bağlayıcıyı kullanmak için herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, PostgreSQL bağlayıcısı için Azure Veritabanına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sunulmaktadır.
+Aşağıdaki bölümlerde, PostgreSQL için Azure veritabanı bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi verilmektedir.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Aşağıdaki özellikler PostgreSQL bağlantılı hizmet için Azure Veritabanı için desteklenir:
+PostgreSQL için Azure veritabanı bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği ayarlanmalıdır: **AzurePostgreSql**. | Evet |
-| Connectionstring | PostgreSQL için Azure Veritabanı'na bağlanmak için bir ODBC bağlantı dizesi.<br/>Ayrıca Azure Key Vault'a bir parola `password` koyabilir ve yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha fazla ayrıntı için Aşağıdaki örnekleri ve [Mağaza kimlik bilgilerini Azure Anahtar Kasası'nda](store-credentials-in-key-vault.md) görün. | Evet |
-| connectVia | Bu özellik, veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanını](concepts-integration-runtime.md) temsil eder. Azure Tümleştirme Çalışma Süresi'ni veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
+| type | Type özelliği: **AzurePostgreSql**olarak ayarlanmalıdır. | Yes |
+| Dizisi | PostgreSQL için Azure veritabanı 'na bağlanmak üzere bir ODBC bağlantı dizesi.<br/>Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha fazla ayrıntı için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault](store-credentials-in-key-vault.md) . | Yes |
+| connectVia | Bu özellik, veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanını](concepts-integration-runtime.md) temsil eder. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
-Tipik bir bağlantı `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`dizesi. Servis talebinize göre ayarlayabileceğiniz daha fazla özellik şunlardır:
+Tipik bir bağlantı dizesi `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Servis talebi başına ayarlayabileceğiniz daha fazla özellik aşağıda verilmiştir:
 
 | Özellik | Açıklama | Seçenekler | Gerekli |
 |:--- |:--- |:--- |:--- |
-| Şifreleme Yöntemi (EM)| Sürücünün sürücü ve veritabanı sunucusu arasında gönderilen verileri şifrelemek için kullandığı yöntem. Örneğin,`EncryptionMethod=<0/1/6>;`| 0 (Şifreleme Yok) **(Varsayılan)** / 1 (SSL) / 6 (RequestssL) | Hayır |
-| Sunucu Sertifikasını Doğrulama (VSC) | SSL şifrelemesi etkinleştirildiğinde sürücünün veritabanı sunucusu tarafından gönderilen sertifikayı doğrulayıp doğrulamadığını belirler (Şifreleme Yöntemi=1). Örneğin,`ValidateServerCertificate=<0/1>;`| 0 (Devre Dışı) **(Varsayılan)** / 1 (Etkin) | Hayır |
+| EncryptionMethod (EM)| Sürücünün sürücü ve veritabanı sunucusu arasında gönderilen verileri şifrelemek için kullandığı yöntem. Örneğin,`EncryptionMethod=<0/1/6>;`| 0 (şifreleme yok) **(varsayılan)** /1 (SSL)/6 (requestssl) | Hayır |
+| ValidateServerCertificate (VSC) | Sürücünün, SSL şifrelemesi etkinleştirildiğinde veritabanı sunucusu tarafından gönderilen sertifikayı doğrulayıp doğrulamayacağını belirler (şifreleme yöntemi = 1). Örneğin,`ValidateServerCertificate=<0/1>;`| 0 (devre dışı) **(varsayılan)** /1 (etkin) | Hayır |
 
 **Örnek**:
 
@@ -76,7 +76,7 @@ Tipik bir bağlantı `Server=<server>.postgres.database.azure.com;Database=<data
 
 **Örnek**:
 
-***Parolayı Azure Anahtar Kasası'nda saklayın***
+***Parolayı Azure Key Vault içinde depola***
 
 ```json
 {
@@ -100,14 +100,14 @@ Tipik bir bağlantı `Server=<server>.postgres.database.azure.com;Database=<data
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Azure Veri Fabrikası'ndaki Veri Kümeleri'ne](concepts-datasets-linked-services.md)bakın. Bu bölümde, PostgreSQL için Azure Veritabanı'nın veri kümelerinde desteklediği özelliklerin bir listesi sağlanmaktadır.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [Azure Data Factory veri kümeleri](concepts-datasets-linked-services.md). Bu bölüm, veri kümelerinde PostgreSQL için Azure veritabanı 'nın desteklediği özelliklerin bir listesini sağlar.
 
-PostgreSQL için Azure Veritabanı'ndaki verileri kopyalamak için, veri kümesinin tür özelliğini **AzurePostgreSqlTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için veri kümesinin Type özelliğini **AzurePostgreSqlTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği **AzurePostgreSqlTable** olarak ayarlanmalıdır | Evet |
-| tableName | Tablonun adı | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
+| type | Veri kümesinin Type özelliği **AzurePostgreSqlTable** olarak ayarlanmalıdır | Yes |
+| tableName | Tablonun adı | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**:
 
@@ -127,16 +127,16 @@ PostgreSQL için Azure Veritabanı'ndaki verileri kopyalamak için, veri kümesi
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için Azure [Veri Fabrikası'ndaki Boru Hatları ve etkinliklerine](concepts-pipelines-activities.md)bakın. Bu bölümde, PostgreSQL kaynağı için bir Azure Veritabanı tarafından desteklenen özelliklerin bir listesi sağlanmaktadır.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için, bkz. Azure Data Factory işlem [hatları ve etkinlikleri](concepts-pipelines-activities.md). Bu bölüm, PostgreSQL için Azure veritabanı kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="azure-database-for-postgresql-as-source"></a>Kaynak olarak PostgreSql için Azure Veritabanı
+### <a name="azure-database-for-postgresql-as-source"></a>Kaynak olarak PostgreSql için Azure veritabanı
 
-PostgreSQL için Azure Veritabanı'ndaki verileri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **AzurePostgreSqlSource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir:
+PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **AzurePostgreSqlSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının tür özelliği **AzurePostgreSqlSource** olarak ayarlanmalıdır | Evet |
-| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin, `"SELECT * FROM MyTable"` | Hayır (veri kümesindeki tabloAdı özelliği belirtilmişse) |
+| type | Kopyalama etkinliği kaynağının Type özelliği **AzurePostgreSqlSource** olarak ayarlanmalıdır | Yes |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin, `"SELECT * FROM MyTable"` | Hayır (veri kümesindeki tableName özelliği belirtilmişse) |
 
 **Örnek**:
 
@@ -170,16 +170,16 @@ PostgreSQL için Azure Veritabanı'ndaki verileri kopyalamak için, kopyalama et
 ]
 ```
 
-### <a name="azure-database-for-postgresql-as-sink"></a>PostgreSQL için Azure Veritabanı
+### <a name="azure-database-for-postgresql-as-sink"></a>Havuz olarak PostgreSQL için Azure veritabanı
 
-PostgreSQL için Verileri Azure Veritabanı'na kopyalamak için, kopyalama etkinliği **lavabo** bölümünde aşağıdaki özellikler desteklenir:
+PostgreSQL için Azure veritabanı 'na veri kopyalamak için, etkinlik **havuzunu** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği lavabonun türü özelliği **AzurePostgreSQLSink**olarak ayarlanmalıdır. | Evet |
-| preCopyScript | Her çalıştırmada PostgreSQL için Azure Veritabanı'na veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanabilirsiniz. | Hayır |
-| yazmaBatchSize | Arabellek boyutu writeBatchSize'a ulaştığında PostgreSQL için Azure Veritabanı'na veri ekler.<br>İzin verilen değer, satır sayısını temsil eden bir karşıcıdır. | Hayır (varsayılan değer 10.000'dir) |
-| yazmaBatchTimeout | Toplu ekleme işleminin zaman dolmadan tamamlanması için bekleme süresi.<br>İzin verilen değerler Timespan dizeleridir. Bir örnek 00:30:00 (30 dakika). | Hayır (varsayılan değer 00:00:30'dur) |
+| type | Kopyalama etkinliği havuzunun Type özelliği **AzurePostgreSQLSink**olarak ayarlanmalıdır. | Yes |
+| Ön Copyscrıpt | Her çalıştırmada PostgreSQL için Azure veritabanı 'na veri yazmadan önce, kopyalama etkinliğinin yürütülmesi için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. | Hayır |
+| writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında, PostgreSQL için Azure veritabanı tablosuna veri ekler.<br>İzin verilen değer, satır sayısını temsil eden bir tamsayıdır. | Hayır (varsayılan değer 10.000) |
+| writeBatchTimeout | Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br>İzin verilen değerler TimeSpan dizeleridir. Örnek olarak 00:30:00 (30 dakika). | Hayır (varsayılan değer 00:00:30) |
 
 **Örnek**:
 
@@ -214,9 +214,9 @@ PostgreSQL için Verileri Azure Veritabanı'na kopyalamak için, kopyalama etkin
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi için [Azure Veri Fabrikası'ndaki Arama etkinliği'ne](control-flow-lookup-activity.md)bakın.
+Özellikler hakkında daha fazla bilgi için [Azure Data Factory arama etkinliği](control-flow-lookup-activity.md)bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için desteklenen [veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,6 +1,6 @@
 ---
-title: Denetim tablosunu kullanarak veritabanından toplu kopya
-description: Azure Veri Fabrikası'nı kullanarak kaynak tabloların bölüm listesini depolamak için harici bir denetim tablosu kullanarak veritabanından toplu verileri kopyalamak için çözüm şablonunun nasıl kullanılacağını öğrenin.
+title: Denetim tablosu kullanarak bir veritabanından toplu kopyalama
+description: Azure Data Factory kullanarak kaynak tablolarının bölüm listesini depolamak için bir dış denetim tablosu kullanarak bir veritabanından toplu verileri kopyalamak için bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,42 +12,42 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
 ms.openlocfilehash: d6d634d9a32ae1728e1122d863ddabd94f73ee27
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414838"
 ---
-# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Denetim tablosu olan bir veritabanından toplu kopya
+# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından toplu kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Oracle Server, Netezza, Teradata veya SQL Server'daki bir veri ambarından Azure SQL Veri Ambarı'na veri kopyalamak için birden çok tablodan büyük miktarda veri yüklemeniz gerekir. Genellikle, tek bir tablodan paralel olarak birden çok iş parçacığı olan satırları yükleyebilmeniz için verilerin her tabloda bölümlenmesi gerekir. Bu makalede, bu senaryolarda kullanılacak bir şablon açıklanmaktadır.
+Oracle Server, Netezza, Teradata veya SQL Server içindeki bir veri ambarından verileri Azure SQL veri ambarı 'na kopyalamak için, birden fazla tablodan çok büyük miktarlarda veri yüklemeniz gerekir. Genellikle verilerin her tabloda bölümlenmesi gerekir, böylece birden çok iş parçacığı içeren satırları tek bir tablodan paralel olarak yükleyebilirsiniz. Bu makalede, bu senaryolarda kullanılacak bir şablon açıklanmaktadır.
 
- >! NOT Göreceli olarak küçük veri hacmine sahip az sayıda tablodan verileri SQL Veri Ambarı'na kopyalamak istiyorsanız, [Azure Veri Fabrikası Kopyalama Veri aracını](copy-data-tool.md)kullanmak daha verimliolur. Bu makalede açıklanan şablon, bu senaryo için gerekenden daha fazladır.
+ >! NOTE görece küçük veri hacimlerden oluşan az sayıda tablodan SQL veri ambarı 'na veri kopyalamak istiyorsanız, [Azure Data Factory veri kopyalama aracını](copy-data-tool.md)kullanmak daha etkilidir. Bu makalede açıklanan şablon, bu senaryoya yönelik gereksiniminden daha fazla.
 
 ## <a name="about-this-solution-template"></a>Bu çözüm şablonu hakkında
 
-Bu şablon, dış denetim tablosundan kopyalanması için kaynak veritabanı bölümleri listesini alır. Daha sonra kaynak veritabanındaki her bölüm üzerinde yinelemeler ve verileri hedefe kopyalar.
+Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölümlerinin listesini alır. Sonra kaynak veritabanındaki her bir bölümün üzerinde dolaşır ve verileri hedefe kopyalar.
 
 Şablon üç etkinlik içerir:
-- **Arama,** emin veritabanı bölümlerinin listesini harici bir denetim tablosundan alır.
-- **ForEach,** Arama etkinliğinden bölüm listesini alır ve her bölümü Kopyalama etkinliğine yineler.
-- Kaynak veritabanı deposundan hedef mağazaya her bölümü **kopyalayın.**
+- **Arama** , veritabanı bölümlerinin bir dış denetim tablosundan emin olma listesini alır.
+- **ForEach** , arama etkinliğinden bölüm listesini alır ve her bölümü kopyalama etkinliğine yineler.
+- **Kopya** , her bölümü kaynak veritabanı deposundan hedef depoya kopyalar.
 
 Şablon aşağıdaki parametreleri tanımlar:
-- *Control_Table_Name,* kaynak veritabanıiçin bölüm listesini depolayan dış denetim tablonuzdur.
-- *Control_Table_Schema_PartitionID,* dış denetim tablonuzdaki her bölüm kimliğini depolayan sütun adının adıdır. Bölüm kimliğinin kaynak veritabanındaki her bölüm için benzersiz olduğundan emin olun.
-- *Control_Table_Schema_SourceTableName,* her tablo adını kaynak veritabanından depolayan dış denetim tablonuzdur.
-- *Control_Table_Schema_FilterQuery,* kaynak veritabanındaki her bölümden verileri almak için filtre sorgusunu depolayan dış denetim tablonuzdaki sütunun adıdır. Örneğin, verileri yıla göre bölümlediyseniz, her satırda depolanan sorgu , LastModifytime >= ''2015-01 00:00'' ve LastModifytime <= ''2015-12-31 23:59:59.999'' veri kaynağından 'select *'a benzer olabilir.
-- *Data_Destination_Folder_Path,* verilerin hedef deponuza kopyalandığı yoldur (seçtiğiniz hedef "Dosya Sistemi" veya "Azure Veri Gölü Depolama Gen1" olduğunda geçerlidir). 
-- *Data_Destination_Container,* hedef deponuzda verilerin kopyalandığı kök klasör yoludur. 
-- *Data_Destination_Directory,* verilerin hedef deponuza kopyalandığı kök altındaki dizin yoludur. 
+- *Control_Table_Name* , kaynak veritabanının bölüm listesini depolayan dış denetim tablonuz olur.
+- *Control_Table_Schema_PartitionID* , her bölüm kimliğini depolayan dış denetim tablonuzda bulunan sütun adının adıdır. Bölüm KIMLIĞININ, kaynak veritabanındaki her bölüm için benzersiz olduğundan emin olun.
+- *Control_Table_Schema_SourceTableName* , kaynak veritabanından her tablo adını depolayan dış denetim tablodır.
+- *Control_Table_Schema_FilterQuery* , kaynak veritabanındaki her bölümden verileri almak için filtre sorgusunu depolayan dış denetim tablonuzun sütununun adıdır. Örneğin, verileri yıla göre bölümlüyetmeniz durumunda, her satırda depolanan sorgu, LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' ve LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' ' ' olan ' select * from DataSource ' a benzer olabilir.
+- *Data_Destination_Folder_Path* , verilerin hedef deponuza kopyalandığı yoldur (seçtiğiniz hedef "dosya sistemi" veya "Azure Data Lake Storage 1." ise geçerlidir). 
+- *Data_Destination_Container* , verilerin hedef deponuzda kopyalandığı kök klasör yoludur. 
+- *Data_Destination_Directory* , verilerin hedef deponuza kopyalandığı kök altındaki Dizin yoludur. 
 
-Hedef deponuzdaki yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ysa görünür. Hedef mağaza olarak "Azure Synapse Analytics (eski adıyla SQL DW)" seçeneğini seçerseniz, bu parametreler gerekli değildir. Ancak SQL Veri Ambarı'ndaki tablo adları ve şema, kaynak veritabanındakilerle aynı olmalıdır.
+Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ise görünür. Hedef depo olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlerseniz, bu parametreler gerekli değildir. Ancak SQL veri ambarı 'ndaki tablo adları ve şema, kaynak veritabanındaki olanlarla aynı olmalıdır.
 
-## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonu nasıl kullanılır?
+## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
-1. Kaynak veritabanı bölüm listesini toplu kopya için depolamak için SQL Server veya Azure SQL Veritabanı'nda bir denetim tablosu oluşturun. Aşağıdaki örnekte, kaynak veritabanında beş bölüm vardır. Üç bölüm *datasource_table*içindir ve iki *project_table*içindir. *LastModifytime* sütunu, *tablodaki* verileri kaynak veritabanından datasource_table bölmek için kullanılır. İlk bölümü okumak için kullanılan sorgu 'select * from datasource_table lastModifytime >= ''2015-01-01 00:00'' ve LastModifytime <= ''2015-12-31 23:59:59.999''. Benzer bir sorguyı diğer bölümlerden gelen verileri okumak için kullanabilirsiniz.
+1. Toplu kopyalama için kaynak veritabanı bölüm listesini depolamak üzere SQL Server veya Azure SQL veritabanı 'nda bir denetim tablosu oluşturun. Aşağıdaki örnekte, kaynak veritabanında beş bölüm vardır. *Datasource_table*için üç bölüm vardır ve ikisi *project_table*içindir. *LastModifyTime* sütunu, tablo *datasource_table* içindeki verileri kaynak veritabanından bölümlemek için kullanılır. İlk bölümü okumak için kullanılan sorgu, LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' ve LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' ' ' olan ' select * from datasource_table. Diğer bölümlerden verileri okumak için benzer bir sorgu kullanabilirsiniz.
 
      ```sql
             Create table ControlTableForTemplate
@@ -67,35 +67,35 @@ Hedef deponuzdaki yolu tanımlayan son üç parametre yalnızca seçtiğiniz hed
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. **Veritabanı şablonundan Toplu Kopya'ya** gidin. Adım 1'de oluşturduğunuz dış denetim tablosuna **yeni** bir bağlantı oluşturun.
+2. **Veritabanı şablonundan toplu kopyalama** sayfasına gidin. Adım 1 ' de oluşturduğunuz dış denetim tablosuna **Yeni** bir bağlantı oluşturun.
 
-    ![Denetim tablosuna yeni bir bağlantı oluşturma](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
+    ![Denetim tablosuna yeni bir bağlantı oluşturun](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
-3. Verileri kopyaladığınız kaynak veritabanına **yeni** bir bağlantı oluşturun.
+3. Verileri kopyalamakta olduğunuz kaynak veritabanına **Yeni** bir bağlantı oluşturun.
 
-    ![Kaynak veritabanına yeni bir bağlantı oluşturma](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![Kaynak veritabanıyla yeni bir bağlantı oluşturun](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
-4. Verileri kopyaladığınız hedef veri deposuna **yeni** bir bağlantı oluşturun.
+4. Verileri kopyalamakta olduğunuz hedef veri deposuna **Yeni** bir bağlantı oluşturun.
 
-    ![Hedef mağazaya yeni bir bağlantı oluşturma](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
+    ![Hedef depoya yeni bir bağlantı oluşturun](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. **Bu şablonu kullan'ı**seçin.
+5. **Bu şablonu kullan**' ı seçin.
 
-6. Aşağıdaki örnekte gösterildiği gibi, ardışık hattı görüyorsunuz:
+6. Aşağıdaki örnekte gösterildiği gibi ardışık düzeni görürsünüz:
 
-    ![Boru hattını gözden geçirin](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
+    ![İşlem hattını gözden geçirme](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. **Hata Ayıklama'yı**seçin, **Parametreleri**girin ve ardından **Bitir'i**seçin.
+7. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
 
-    ![**Hata Ayıklama** seçeneğini tıklatın](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    ![* * Hata Ayıkla * * öğesine tıklayın](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 
 8. Aşağıdaki örneğe benzer sonuçlar görürsünüz:
 
     ![Sonucu gözden geçirin](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (İsteğe bağlı) Veri hedefi olarak "Azure Synapse Analytics (eski adıyla SQL DW)" seçtiyseniz, SQL Data Warehouse Polybase tarafından gerekli olduğu gibi evreleme için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Şablon, Blob depolama alanınız için otomatik olarak bir kapsayıcı yolu oluşturur. Kapsayıcının boru hattı çalıştırıldıktan sonra oluşturulıp oluşturulmamasını denetleyin.
+9. Seçim Veri hedefi olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlediyseniz, SQL veri ambarı PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Şablon, BLOB depolama alanınızı otomatik olarak bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra kapsayıcının oluşturulup oluşturulmadıysa emin olun.
     
-    ![Polybase ayarı](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
+    ![PolyBase ayarı](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
 ## <a name="next-steps"></a>Sonraki adımlar
 

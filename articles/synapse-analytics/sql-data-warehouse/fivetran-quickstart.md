@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Fivetran ve veri ambarı'
-description: Fivetran ve Azure Synapse Analytics veri ambarı ile başlayın.
+title: 'Hızlı başlangıç: Fivetran ve veri ambarı'
+description: Fivetran ve bir Azure SYNAPSE Analytics veri ambarı ile çalışmaya başlayın.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,35 +12,35 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414281"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>Quickstart: Veri ambarı ile Fivetran 
+# <a name="quickstart-fivetran-with-data-warehouse"></a>Hızlı başlangıç: Fivetle veri ambarı ile çalıştırıldı 
 
-Bu hızlı başlangıç, SQL Havuzu ile birlikte sağlanan bir Azure Synapse Analytics veri ambarıyla çalışacak yeni bir Fivetran kullanıcısının nasıl ayarlanış edilebildiğini açıklar. Makale, varolan bir veri ambarı olduğunu varsayar.
+Bu hızlı başlangıçta, bir SQL havuzuyla sağlanan bir Azure SYNAPSE Analytics veri ambarı ile çalışmak üzere yeni bir Fivetran kullanıcısının nasıl ayarlanacağı açıklanır. Makalesinde, mevcut bir veri ambarınız olduğunu varsaymaktadır.
 
 ## <a name="set-up-a-connection"></a>Bağlantı kurma
 
-1. Veri ambarınıza bağlanmak için kullandığınız tam nitelikli sunucu adını ve veritabanı adını bulun.
+1. Veri ambarınıza bağlanmak için kullandığınız tam sunucu adını ve veritabanı adını bulun.
     
-    Bu bilgileri bulmak için yardıma ihtiyacınız varsa, [bkz.](../sql/connect-overview.md)
+    Bu bilgileri bulmak için yardıma ihtiyacınız varsa bkz. [veri ambarınıza bağlanma](../sql/connect-overview.md).
 
-2. Kurulum sihirbazında, veritabanınızı doğrudan mı yoksa Bir SSH tüneli kullanarak mı bağlayıp bağlamayyacağınızı seçin.
+2. Kurulum sihirbazında, veritabanınıza doğrudan veya bir SSH tüneli kullanarak bağlanıp bağlanmayacağını seçin.
 
-   Doğrudan veritabanınıza bağlanmayı seçerseniz, erişime izin vermek için bir güvenlik duvarı kuralı oluşturmanız gerekir. Bu yöntem en basit ve en güvenli yöntemdir.
+   Doğrudan veritabanınıza bağlanmayı seçerseniz, erişime izin vermek için bir güvenlik duvarı kuralı oluşturmanız gerekir. Bu yöntem, en basit ve en güvenli yöntemdir.
 
-   Bir SSH tüneli kullanarak bağlanmayı seçerseniz, Fivetran ağınızdaki ayrı bir sunucuya bağlanır. Sunucu veritabanınıza bir SSH tüneli sağlar. Veritabanınız sanal ağda erişilemeyen bir alt ağdaysa bu yöntemi kullanmanız gerekir.
+   Bir SSH tüneli kullanarak bağlanmayı seçerseniz, Fivetran, ağınızdaki ayrı bir sunucuya bağlanır. Sunucu, veritabanınıza bir SSH tüneli sağlar. Veritabanınız bir sanal ağ üzerinde erişilemeyen bir alt ağdaysa bu yöntemi kullanmanız gerekir.
 
-3. Fivetran'dan veri ambarı örneğinize gelen bağlantılara izin vermek için sunucu düzeyindeki güvenlik duvarınıza **52.0.2.4** IP adresini ekleyin.
+3. Fivetran 'dan veri ambarı örneğinize gelen bağlantılara izin vermek için **52.0.2.4** IP adresini sunucu düzeyi güvenlik duvarınıza ekleyin.
 
-   Daha fazla bilgi için [bkz.](create-data-warehouse-portal.md#create-a-server-level-firewall-rule)
+   Daha fazla bilgi için bkz. [sunucu düzeyinde güvenlik duvarı kuralı oluşturma](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
 ## <a name="set-up-user-credentials"></a>Kullanıcı kimlik bilgilerini ayarlama
 
-1. SQL Server Management Studio 'yı (SSMS) veya tercih ettiğiniz aracı kullanarak veri ambarınıza bağlanın. Sunucu yöneticisi kullanıcısı olarak oturum açın. Ardından, Fivetran için bir kullanıcı oluşturmak için aşağıdaki SQL komutlarını çalıştırın:
+1. SQL Server Management Studio (SSMS) veya tercih ettiğiniz aracı kullanarak veri ambarınıza bağlanın. Sunucu Yöneticisi kullanıcısı olarak oturum açın. Ardından, aşağıdaki SQL komutlarını çalıştırarak Fivetran için bir kullanıcı oluşturun:
 
     - Ana veritabanında: 
     
@@ -62,25 +62,25 @@ Bu hızlı başlangıç, SQL Havuzu ile birlikte sağlanan bir Azure Synapse Ana
     GRANT CONTROL to fivetran;
     ```
 
-    Bir kullanıcı Dosyaları Azure Blob depolama alanından PolyBase kullanarak yüklerken kullanılan veritabanı kapsamlı kimlik bilgilerini oluşturmak için CONTROL izni gereklidir.
+    Kullanıcı, PolyBase kullanarak Azure Blob depolamadan dosya yüklediğinde kullanılan veritabanı kapsamlı kimlik bilgileri oluşturmak için DENETIM izni gereklidir.
 
-3. Fivetran kullanıcısına uygun bir kaynak sınıfı ekleyin. Kullandığınız kaynak sınıfı, sütun deposu dizini oluşturmak için gereken belleğe bağlıdır. Örneğin, Marketo ve Salesforce gibi ürünlerle tümleştirmeler, çok sayıda sütun ve ürünlerin kullandığı daha büyük veri hacmi nedeniyle daha yüksek bir kaynak sınıfı gerektirir. Daha yüksek bir kaynak sınıfı, sütun deposu dizinleri oluşturmak için daha fazla bellek gerektirir.
+3. Fivetran kullanıcısına uygun bir kaynak sınıfı ekleyin. Kullandığınız kaynak sınıfı, bir columnstore dizini oluşturmak için gereken belleğe bağlıdır. Örneğin, Marketo ve Salesforce gibi ürünlerle tümleştirmeler, çok sayıda sütun ve ürünlerin kullanacağı daha büyük veri hacmi nedeniyle daha yüksek bir kaynak sınıfı gerektirir. Daha yüksek bir kaynak sınıfı, columnstore dizinleri oluşturmak için daha fazla bellek gerektirir.
 
-    Statik kaynak sınıfları kullanmanızı öneririz. `staticrc20` Kaynak sınıfıyla başlayabilirsiniz. Kaynak `staticrc20` sınıfı, kullandığınız performans düzeyine bakılmaksızın her kullanıcı için 200 MB ayırır. Sütun deposu dizini ilk kaynak sınıfı düzeyinde başarısız olursa, kaynak sınıfını artırın.
+    Statik kaynak sınıfları kullanmanızı öneririz. `staticrc20` Kaynak sınıfıyla başlayabilirsiniz. `staticrc20` Kaynak sınıfı, kullandığınız performans düzeyinden bağımsız olarak her kullanıcı IÇIN 200 MB ayırır. Columnstore dizin oluşturma ilk kaynak sınıfı düzeyinde başarısız olursa, kaynak sınıfını arttırın.
 
     ```sql
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
-    Daha fazla bilgi için [bellek ve eşzamanlılık sınırları ve](memory-concurrency-limits.md) kaynak [sınıfları](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)hakkında bilgi edinin.
+    Daha fazla bilgi için [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md) ve [kaynak sınıfları](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)hakkında bilgi edinin.
 
 
-## <a name="connect-from-fivetran"></a>Fivetran'dan bağlan
+## <a name="connect-from-fivetran"></a>Fivetran 'dan Bağlan
 
 Fivetran hesabınızdan veri ambarınıza bağlanmak için, veri ambarınıza erişmek için kullandığınız kimlik bilgilerini girin: 
 
-* Ana bilgisayar (sunucu adınız).
-* Bağlantı noktası.
-* Veritabanı.
-* Kullanıcı (kullanıcı adı, *server_name* Azure ana bilgisayar URI'nizin bir parçası olduğu **fivetran\@server_name** olmalıdır: sunucu ** _\_adı_.database.windows.net).**
-* Parola.
+* Ana bilgisayar (sunucunuzun adı).
+* Bağ.
+* Veritabanınızı.
+* Kullanıcı (Kullanıcı adı, *SERVER_NAME* Azure ana bilgisayar URI 'sinin bir parçası olduğu için **fivetran\@SERVER_NAME** olmalıdır: ** _sunucu\_adı_. Database.Windows.net**).
+* Parolayı.
