@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell Örnekleri - Veri diskleri ekleme ve kullanma
-description: Bu komut dosyası, PowerShell kullanarak bir Azure sanal makine ölçeği kümesi oluşturur ve veri disklerini bağlar ve hazırlar.
+title: Azure PowerShell örnekleri-veri disklerini Iliştirme ve kullanma
+description: Bu betik bir Azure sanal makine ölçek kümesi oluşturur ve PowerShell kullanarak veri disklerini iliştirir ve hazırlar.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: bff0bb0673862d614aac5bb783bc501516871b29
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010416"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>PowerShell ile sanal makine ölçek kümesi kullanarak veri diskleri ekleme ve kullanma
@@ -38,10 +38,10 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 
 | Komut | Notlar |
 |---|---|
-| [Yeni AzVmss](/powershell/module/az.compute/new-azvmss) | Sanal makine ölçek kümesi ve sanal ağ, yük dengeleyici ve NAT kurallarının dahil olduğu tüm destekleyici kaynakları oluşturur. |
-| [Al-AzVmss](/powershell/module/az.compute/get-azvmss) | Sanal makine ölçek kümesi hakkında bilgi alır. |
-| [Ekle-AzVmssUzatma](/powershell/module/az.compute/add-azvmssextension) | Özel Betik için sanal makine uzantısı ekleyerek temel bir web uygulaması yükler. |
-| [Güncelleme-AzVmss](/powershell/module/az.compute/update-azvmss) | Sanal makine uzantısını uygulamak için sanal makine ölçek kümesi modelini güncelleştirir. |
+| [New-AzVmss](/powershell/module/az.compute/new-azvmss) | Sanal makine ölçek kümesi ve sanal ağ, yük dengeleyici ve NAT kurallarının dahil olduğu tüm destekleyici kaynakları oluşturur. |
+| [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Sanal makine ölçek kümesi hakkında bilgi alır. |
+| [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) | Özel Betik için sanal makine uzantısı ekleyerek temel bir web uygulaması yükler. |
+| [Güncelleştirme-AzVmss](/powershell/module/az.compute/update-azvmss) | Sanal makine uzantısını uygulamak için sanal makine ölçek kümesi modelini güncelleştirir. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

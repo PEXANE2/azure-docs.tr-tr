@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81258754"
 ---
 # <a name="transform-and-protect-your-api"></a>API’nizi dönüştürme ve koruma
@@ -26,7 +26,7 @@ ms.locfileid: "81258754"
 
 Bu öğreticide size Azure API Yönetimi ile hız sınırı yapılandırarak arka uç API’niz için koruma eklemenin ne kadar kolay olduğu gösterilmektedir. Örneğin, geliştiriciler tarafından aşırı kullanılmaması için API çağrısı sayısını sınırlamak isteyebilirsiniz. Daha fazla bilgi için bkz. [API Yönetimi ilkeleri](api-management-policies.md)
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -75,12 +75,12 @@ Bu bölümde, kullanıcılarınıza göstermek istemediğiniz HTTP üst bilgiler
 2. Ekranın üst kısmında **Tasarım** sekmesini seçin.
 3. **Tüm işlemler**’i seçin.
 4. **Giden işleme** bölümünde **</>** simgesine tıklayın.
-5. İmleci ** &lt;giden&gt; ** öğenin içine yerleştirin.
+5. İmleci ** &lt;giden&gt; ** öğesinin içine konumlandırın.
 6. Sağ pencerede **Dönüştürme ilkeleri** bölümünde **+ HTTP üst bilgisini ayarla** seçeneğine iki defa tıklayın (iki ilke kod parçacığı eklemek için).
 
    ![İlkeler](./media/transform-api/transform-api.png)
 
-7. Giden ** \<>** kodunuzu şu şekilde görünecek şekilde değiştirin:
+7. Giden>kodunuzu değiştirin, şöyle görünür: ** \<**
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -112,7 +112,7 @@ Bu bölümde, API’lerin HTTP yanıt gövdesinde görüntülenen özgün URL’
 2.  **Tüm işlemler**’i seçin.
 3.  Ekranın üst kısmında **Tasarım** sekmesini seçin.
 4.  **Giden işleme** bölümünde **</>** simgesine tıklayın.
-5.  İmleci ** &lt;&gt; giden** öğenin içine yerleştirin ve sağ üst köşedeki **Ekle ilkesi** düğmesini tıklatın.
+5.  İmleci ** &lt;&gt; giden** öğesinin içine konumlandırın ve sağ üst köşedeki **ilke Ekle** düğmesine tıklayın.
 6.  Sağ pencerede **Dönüştürme ilkeleri** bölümünde **+ Gövdedeki dizeyi bul ve değiştir** seçeneğine tıklayın.
 7.  URL’yi APIM ağ geçidinizle eşleşecek şekilde değiştirmek için **find-and-replace** kodunuzu (**\<giden\>** öğesinde) değiştirin. Örneğin:
 
@@ -120,7 +120,7 @@ Bu bölümde, API’lerin HTTP yanıt gövdesinde görüntülenen özgün URL’
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Hız sınırı ilkesi ekleyerek (azaltma) bir API’yi koruma
 
-Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nasıl koruma ekleneceği gösterilmektedir. Örneğin, geliştiriciler tarafından aşırı kullanılmaması için API çağrısı sayısını sınırlamak isteyebilirsiniz. Bu örnekte, sınır her abonelik kimliği için 15 saniyede 3 çağrı olarak ayarlanır. 15 saniye sonra, bir geliştirici API'yi yeniden aramayı deneyebilir.
+Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nasıl koruma ekleneceği gösterilmektedir. Örneğin, geliştiriciler tarafından aşırı kullanılmaması için API çağrısı sayısını sınırlamak isteyebilirsiniz. Bu örnekte, her abonelik kimliği için sınır 15 saniye başına 3 çağrı olarak ayarlanır. 15 saniye sonra, bir geliştirici API 'yi çağırmayı yeniden deneyebilir.
 
 ![Gelen ilkesi ayarlama](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
@@ -128,7 +128,7 @@ Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nas
 2.  **Tüm işlemler**’i seçin.
 3.  Ekranın üst kısmında **Tasarım** sekmesini seçin.
 4.  **Gelen işleme** bölümünde **</>** simgesine tıklayın.
-5.  İmleci ** &lt;gelen&gt; ** öğenin içine yerleştirin.
+5.  İmleci ** &lt;gelen&gt; ** öğesinin içine konumlandırın.
 6.  Sağ pencerede **Erişim kısıtlama ilkeleri** bölümünde **+ Anahtar başına çağrıyı sınırla** seçeneğine tıklayın.
 7.  **rate-limit-by-key** kodunuzu (**\<gelen\>** öğesinde) aşağıdaki kodla değiştirin:
 

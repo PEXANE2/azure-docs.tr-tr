@@ -1,6 +1,6 @@
 ---
-title: İş Ortağı Merkezi'nde ticari pazar analizinde Derecelendirmeler ve İncelemeler panosu
-description: Azure Marketi ve AppSource'taki teklifleriniz için müşteri geri bildirimlerinin konsolide görünümüne nasıl erişebilirsiniz öğrenin.
+title: Iş Ortağı Merkezi 'nde ticari Market Analytics 'teki derecelendirmeler ve Incelemeler panosu
+description: Azure Market ve AppSource 'ta tekliflerinize ilişkin müşteri geri bildirimlerine yönelik birleştirilmiş bir görünüme nasıl erişebileceğinizi öğrenin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,59 +8,59 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262426"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Ticari pazar analizinde derecelendirmeler ve incelemeler panosu
+# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te derecelendirmeler ve İncelemeler panosu
 
-Bu makale, İş Ortağı Merkezi'ndeki Derecelendirme & değerlendirmeleri panosu hakkında bilgi sağlar. Bu pano, Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görüntüler.
+Bu makalede, Iş Ortağı Merkezi 'ndeki derecelendirmeler & İncelemeleri panosu hakkında bilgi sağlanmaktadır. Bu Pano, Azure Marketi ve AppSource 'ta teklifler için müşteri geri bildirimlerine yönelik birleştirilmiş bir görünüm görüntüler.
 
-İş Ortağı Merkezi analiz araçlarındaki **Derecelendirme & değerlendirmeleri panosuna** erişmek için Commercial Marketplace altında **[Analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
+Iş ortağı merkezi analiz araçları 'ndaki **derecelendirmelere & incelemeler panosuna** erişmek Için, ticari Market altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
 
 >[!NOTE]
-> Analitik terminolojinin ayrıntılı tanımları [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
 
 ## <a name="ratings--reviews"></a>Derecelendirmeler & değerlendirmeleri
 
-Müşteriler her iki pazar yerinde de göz attıkça, arama ve satın alma tekliflerine göz attıkça, elde ettikleri teklifler için derecelendirmeler ve yorumlar bırakabilirler.
+Müşteriler her iki markette de teklifler sunarak, arama ve satın alma tekliflerinden elde ettikleri teklifler için derecelendirmeleri ve incelemeleri bırakabilir.
 
-- Müşteriler yeni bir derecelendirme gönderebilir veya gözden geçirebilir, gönderdikleri varolan bir derecelendirmeyi veya incelemeyi güncelleyebilir veya silebilir. Müşteriler yalnızca sahip oldukları derecelendirmelerde ve değerlendirmelerde değişiklik yapabilir.  
-- İncelemeler, Azure marketinde veya AppSource'da teklifin ürün görüntüleme sayfasındaki İncelemeler sekmesinde yayınlanır. Müşteriler adlarını veya gönderilerini anonim olarak ekleyebilirsiniz.  
+- Müşteriler yeni bir derecelendirme gönderebilir veya var olan bir derecelendirme ya da gönderdikleri gözden geçirmeyi veya silmeyi ya da silmesini ya da silmenizi sağlayabilir. Müşteriler yalnızca derecelendirmelere ve sahip oldukları gözden geçirmelere değişiklik yapabilirler.  
+- İncelemeler, Azure Market veya AppSource 'ta teklifin ürün görüntüsü sayfasındaki Incelemeler sekmesinde gönderilir. Müşteriler, adlarını veya anonim olarak posta ekleyebilir.  
 
-**Derecelendirme & inceleme panosu,** bu etkinliğin eğilimlerini ve öngörülerini müşteriler tarafından görüntüler. Aşağıdaki öğelerin grafik gösterimini görüntüleyebilirsiniz:
+**Derecelendirmeler & gözden geçirme panosu** , müşteriler tarafından bu etkinliğin eğilimlerini ve öngörülerini görüntüler. Aşağıdaki öğelerin grafik temsilini görüntüleyebilirsiniz:
 
 - Derecelendirmeler & değerlendirmeleri  
-- Yorumları gözden geçirin
+- Açıklamaları gözden geçir
 
-**Market mağazası sekmeleri,** yayıncıların teklif ölçümlerini AppSource & Azure Marketseksekseklerinde ayrı olarak görüntülemelerine olanak tanır. Belirli teklif ölçümlerini görüntülemek için teklifi teklif açılır listesinden seçin.
+**Market storefront sekmeleri** , yayımcıların teklif ölçümlerini Azure Market sekmelerinde appsource & Ayrıca görüntülemesine olanak tanır. Belirli teklif ölçümlerini görüntülemek için teklif açılan listesinden teklifi seçin.
 
 
-### <a name="ratings-and-reviews-summary"></a>Derecelendirmeler ve incelemeler özeti
+### <a name="ratings-and-reviews-summary"></a>Derecelendirmeler ve İncelemeler Özeti
 
-Derecelendirme ler & değerlendirmeleri özet bölümü seçili bir tarih aralığı için aşağıdaki ölçümleri görüntüler:
+Derecelendirmeler & gözden geçirmeler Özeti bölümünde, seçilen bir tarih aralığı için aşağıdaki ölçümler görüntülenir:
 
-- **Ortalama derecelendirme:** Müşteriler tarafından seçilen teklif için gönderilen tüm derecelendirmelerin ağırlıklı ortalama yıldız derecelendirmesi.
-- **Derecelendirme dökümü:** Derecelendirmegönderen müşterilerin sayısına göre yıldız derecelendirmesinin dökümü. Çubuk grafik, gerçek ve gözden geçirilmiş derecelendirmelerle (güncelleştirilmiş derecelendirme sayısı) istiflenir.
-- **Toplam derecelendirme:** Gönderilen toplam derecelendirme sayısı. Bu sayım aynı zamanda değerlendirmeli ve değerlendirmesiz derecelendirmeleri de içerir.
-- **İncelemelerle reytingler:** Gönderilen değerlendirmelerin sayısı.
+- **Ortalama derecelendirme:** Seçili teklif için müşteriler tarafından gönderilen tüm derecelendirmelerin ağırlıklı ortalama yıldız derecelendirmesi.
+- **Derecelendirme dökümü:** Derecelendirmeyi gönderen müşterilerin sayısına göre yıldız derecelendirmesinin dökümü. Çubuk grafik gerçek ve düzeltilmiş derecelendirmeler (güncelleştirilmiş derecelendirme sayısı) ile yığılmış.
+- **Toplam derecelendirme:** Gönderilen toplam derecelendirme sayısı. Bu sayı Ayrıca, gözden geçirmesiz ve olmayan derecelendirmeler içerir.
+- **Gözden geçirmeler Içeren derecelendirmeler:** Gönderilen gözden geçirme sayısı.
 
-![İş Ortağı Merkezi derecelendirmeleri ve incelemeleri özetini analiz](./media/analyze-ratings-summary.png)
+![İş Ortağı Merkezi derecelendirmeleri ve incelemeleri İnceleme Özeti](./media/analyze-ratings-summary.png)
 
-### <a name="review-comments"></a>Yorumları gözden geçirin
+### <a name="review-comments"></a>Açıklamaları gözden geçir
 
-İncelemeler, ne zaman gönderildiklerine göre kronolojik sırada görüntülenir. Varsayılan görünüm tüm değerlendirmeleri görüntüler ve açılır menüdeki **Derecelendirme filtresini** kullanarak değerlendirmeleri yıldız derecelendirmeye göre filtreleyebilirsiniz. Ayrıca, incelemede görünen anahtar kelimelere göre arama yapabilirsiniz.  
+İncelemeler, ne zaman nakledildiğini kronolojik sırada görüntülenir. Varsayılan görünüm tüm incelemeleri görüntüler ve açılan menüdeki **Derecelendirme filtresini** kullanarak, yıldıza göre gözden geçirmeler aracılığıyla filtre uygulayabilirsiniz. Ayrıca, gözden geçirme içinde görüntülenen anahtar sözcüklere göre arama yapabilirsiniz.  
 
-![Ortak Merkezi inceleme yorumlarını analiz](./media/analyze-reviews.png)
+![İş Ortağı Merkezi İnceleme açıklamalarını çözümle](./media/analyze-reviews.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş Ortağı Merkezi ticari pazarda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki ticari pazar için Analytics'e](./analytics.md)bakın.
-- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri [için, ticari pazar analizinde Özet Pano'ya](./summary-dashboard.md)bakın.
-- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [ticari pazar analizinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
-- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [ticari pazar analizinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
-- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [ticari pazar analizinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
-- Son 30 gün içinde indirme isteklerinizin bir listesi için, [ticari pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
-- Ticari pazar analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+- Iş ortağı merkezi ticari marketi 'nde bulunan analiz raporlarına genel bakış için bkz. [Iş Ortağı Merkezi 'nde ticari Market Için analiz](./analytics.md).
+- Teklifinizin Market etkinliklerini özetleyen grafikler, eğilimler ve veri değerleri için bkz. [ticari Market Analytics 'Te Özet Panosu](./summary-dashboard.md).
+- Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](./orders-dashboard.md).
+- Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](./usage-dashboard.md).
+- Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](./customer-dashboard.md).
+- Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'Te panoyu indirme](./downloads-dashboard.md).
+- Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](./faq-terminology.md).

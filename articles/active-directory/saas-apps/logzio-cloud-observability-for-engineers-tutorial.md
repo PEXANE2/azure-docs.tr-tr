@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: azure Active Directory tek oturum açma (SSO) entegrasyonu ile Logz.io - Azure AD Tümleştirmesi | Microsoft Dokümanlar'
-description: Azure Etkin Dizin ve Logz.io - Azure AD Tümleştirmesi arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici Azure Active Directory: Logz.io-Azure AD tümleştirmesi ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
+description: Azure Active Directory ve Logz.io-Azure AD tümleştirmesi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,154 +16,154 @@ ms.date: 04/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e192a8e97e82ba26ffa7527cb12219aeaf2a80cd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81259468"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---azure-ad-integration"></a>Öğretici: Logz.io ile Azure Active Directory tek oturum açma (SSO) tümleştirmesi - Azure AD Tümleştirmesi
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---azure-ad-integration"></a>Öğretici: Logz.io-Azure AD tümleştirmesi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, azure etkin dizinle (Azure AD) Logz.io - Azure AD Tümleştirmesi'ni nasıl entegre edeceğinizi öğreneceksiniz. Logz.io - Azure AD Tümleştirmesi'ni Azure AD ile entegre ettiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Logz.io-Azure AD tümleştirmesini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Logz.io-Azure AD tümleştirmesini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD'de Logz.io erişimi olan denetim - Azure AD Tümleştirmesi.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla otomatik olarak oturum Logz.io - Azure AD Entegrasyonu'na sahip olmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de Logz.io-Azure AD tümleştirmesine erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Logz.io Azure AD tümleştirmesi için otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Logz.io - Azure AD Tümleştirmesi tek oturum açma (SSO) aboneliği sağladı.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Logz.io-Azure AD tümleştirmesi çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Logz.io - Azure AD Tümleştirmesi **IDP** tarafından başlatılan SSO'ya destek
-* Logz.io - Azure AD Tümleştirmesini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* Logz.io-Azure AD tümleştirmesi **IDP** tarafından başlatılan SSO 'yu destekler
+* Logz.io-Azure AD tümleştirmesini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin bir kısmını gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-logzio---azure-ad-integration-from-the-gallery"></a>Galeriden Logz.io Ekleme - Azure AD Tümleştirmesi
+## <a name="adding-logzio---azure-ad-integration-from-the-gallery"></a>Galeriden Logz.io-Azure AD tümleştirmesi ekleme
 
-Azure AD Logz.io tümleştirmesini yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Logz.io - Azure AD Tümleştirmesi eklemeniz gerekir.
+Logz.io-Azure AD tümleştirmesinin tümleştirmesini Azure AD ile yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize Logz.io-Azure AD tümleştirmesi eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Logz.io - Azure AD Tümleştirmesi** yazın.
-1. Sonuç panelinden **Logz.io - Azure AD Tümleştirmesini** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **LOGZ.IO-Azure AD tümleştirmesi** yazın.
+1. Sonuçlar panelinden **Logz.io-Azure AD tümleştirmesi** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-logzio---azure-ad-integration"></a>Logz.io için Azure AD oturumunu yapılandırma ve test Logz.io - Azure AD Tümleştirme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-logzio---azure-ad-integration"></a>Logz.io-Azure AD tümleştirmesi için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'Logz.io - Azure AD Tümleştirmesi'ni **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, bir Azure REKLAM kullanıcısı ile Logz.io - Azure AD Tümleştirmesi'ndeki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Logz.io-Azure AD tümleştirmesiyle yapılandırın ve test edin. SSO 'nun çalışması için, Logz.io-Azure AD tümleştirmesinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Logz.io - Azure AD Tümleştirmesi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Logz.io-Azure AD tümleştirmesiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için **[Logz.io -Azure AD Tümleştirme SSO-](#configure-logzio-azure-ad-integration-sso)** yapılandırın.
-    1. Logz.io'daki B.Simon'Un bir muadili olan azure AD **[Tümleştirmesi -](#create-logzio-azure-ad-integration-test-user)** kullanıcının Azure AD gösterimine bağlı azure AD Entegrasyonu- Logz.io oluşturun.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Logz.io-Azure AD TÜMLEŞTIRME SSO 'Yu yapılandırın](#configure-logzio-azure-ad-integration-sso)** .
+    1. **[Logz.io-Azure AD tümleştirme test kullanıcısı oluşturun](#create-logzio-azure-ad-integration-test-user)** -Kullanıcı Azure AD gösterimine bağlı olan Logz.io-Azure AD tümleştirmesinde B. Simon 'ın bir karşılığı olacak şekilde.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında](https://portal.azure.com/), **Logz.io - Azure AD Tümleştirme** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **LOGZ.IO-Azure AD tümleştirme** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **SAML sayfasıyla tek oturum açma'da** aşağıdaki alanların değerlerini girin:
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`urn:auth0:logzio:CONNECTION-NAME`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`urn:auth0:logzio:CONNECTION-NAME`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://logzio.auth0.com/login/callback?connection=CONNECTION-NAME`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://logzio.auth0.com/login/callback?connection=CONNECTION-NAME`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [Logz.io - Azure AD Tümleştirme İstemci destek ekibine](mailto:help@logz.io) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Logz.io-Azure AD tümleştirme istemci destek ekibine](mailto:help@logz.io) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Logz.io - Azure AD Tümleştirme uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. Logz.io-Azure AD tümleştirme uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakilere ek olarak, Logz.io - Azure AD Tümleştirme uygulaması, saml yanıtında aşağıda gösterilen birkaç özniteliğin daha geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Logz.io-Azure AD tümleştirme uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı |  Kaynak Özniteliği|
+    | Adı |  Kaynak özniteliği|
     | ---------------| --------- |
-    | oturum-sona erme | user.session-sona erme |
-    | e-posta | kullanıcı.posta |
-    | Grup | user.groups |
+    | oturum-süre sonu | User. Session-süre sonu |
+    | e-posta | Kullanıcı. Mail |
+    | Grup | Kullanıcı. gruplar |
 
-1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. Kurulum **Logz.io - Azure AD Tümleştirmesi** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Logz.io-Azure AD tümleştirmesi ayarlama** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Logz.io - Azure AD Tümleştirmesine erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Logz.io-Azure AD tümleştirmesine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Logz.io - Azure AD Tümleştirmesini**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Logz.io-Azure AD tümleştirmesi**' ni seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-logzio-azure-ad-integration-sso"></a>Azure AD Tümleştirme SSOLogz.io yapılandırma
+## <a name="configure-logzio-azure-ad-integration-sso"></a>Logz.io Azure AD tümleştirme SSO 'yu yapılandırma
 
-Logz.io - Azure AD **Tümleştirme** tarafında tek oturum açma yapılandırmak için, indirilen **Sertifikayı (Base64)** ve uygun kopyalanmış URL'leri Azure portalından [Logz.io - Azure AD Tümleştirme destek ekibine](mailto:help@logz.io)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Logz.io-Azure AD tümleştirme** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' dan [Logz.io-Azure AD tümleştirme destek ekibine](mailto:help@logz.io)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-logzio-azure-ad-integration-test-user"></a>Azure AD Tümleştirme test kullanıcıLogz.io oluşturma
+### <a name="create-logzio-azure-ad-integration-test-user"></a>Logz.io Azure AD tümleştirme testi kullanıcısı oluşturma
 
-Bu bölümde, Logz.io - Azure AD Tümleştirmesinde Britta Simon adında bir kullanıcı oluşturursunuz. Logz.io - Azure AD Tümleştirme platformuna kullanıcıları eklemek için [Logz.io - Azure AD Tümleştirme destek ekibiyle](mailto:help@logz.io) çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, Logz.io-Azure AD tümleştirmesinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Logz.io-Azure AD tümleştirme platformunda kullanıcıları eklemek için [Logz.io-Azure AD tümleştirme destek ekibi](mailto:help@logz.io) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Logz.io - Azure REKLAM Tümleştirme döşemesini tıklattığınızda, SSO'yu ayarladığınız Logz.io - Azure AD Tümleştirmesi'nde otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Logz.io-Azure AD tümleştirme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Logz.io-Azure AD tümleştirmesinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Logz.io deneyin - Azure AD ile Azure AD Tümleştirmesi](https://aad.portal.azure.com/)
+- [Azure AD ile Azure AD tümleştirmesi Logz.io deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Logz.io nasıl korunur - Gelişmiş görünürlük ve denetimlerle Azure REKLAM Tümleştirmesi](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle Azure AD tümleştirmesini Logz.io ile koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

@@ -1,6 +1,6 @@
 ---
-title: Ağ bant genişliği düşük veya hiç olmayan büyük veri kümeleri için Azure veri aktarım seçenekleri| Microsoft Dokümanlar
-description: Ortamınızda ağ bant genişliği olmadan sınırlı yken ve büyük veri kümeleri aktarmayı planlıyorsanız, veri aktarımı için bir Azure çözümünüzü nasıl seçeceğinizi öğrenin.
+title: Düşük veya ağ bant genişliğine sahip büyük veri kümeleri için Azure veri aktarımı seçenekleri | Microsoft Docs
+description: Ortamınızda ağ bant genişliği olmadan sınırlı olduğunuzda ve büyük veri kümelerini aktarmayı planlarken, veri aktarımı için bir Azure çözümü seçme hakkında bilgi edinin.
 services: storage
 author: alkohli
 ms.service: storage
@@ -9,63 +9,63 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: be1f74dcccc654dbdd0a743d1da2da89071045f1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253144"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Bant genişliği düşük olduğunda veya hiç olmadığında büyük veri kümeleri için veri aktarımı
  
-Bu makalede, ortamınızda ağ bant genişliği ile sınırlı olduğunda ve büyük veri kümelerini aktarmayı planlıyorsanız, veri aktarım çözümlerine genel bir bakış sağlar. Makalede ayrıca önerilen veri aktarım seçenekleri ve bu senaryo için ilgili anahtar yetenek matrisi açıklanmaktadır.
+Bu makalede, ortamınızda ağ bant genişliği olmadan sınırlı olduğunuzda ve büyük veri kümelerini aktarmayı planladığınızda veri aktarımı çözümlerine genel bir bakış sağlanır. Makalede ayrıca önerilen veri aktarımı seçenekleri ve bu senaryonun ilgili anahtar özelliği matrisi de açıklanmaktadır.
 
-Kullanılabilir tüm veri aktarım seçeneklerine genel bir bakış anlamak için [Azure veri aktarım çözümünün seçin'e](storage-choose-data-transfer-solution.md)gidin.
+Tüm kullanılabilir veri aktarımı seçeneklerine genel bir bakış için bkz. [Azure veri aktarımı çözümü seçme](storage-choose-data-transfer-solution.md).
 
 ## <a name="offline-transfer-or-network-transfer"></a>Çevrimdışı aktarım veya ağ aktarımı
 
-Büyük veri kümeleri, az miktarda Kisi ile birkaç PB veriniz olduğunu ima eder. Ağ bant genişliği yle sınırlı değil, ağınız yavaş veya güvenilmez. Ayrıca:
+Büyük veri kümeleri, birkaç veri PBs için birkaç TBs olduğunu kapsıyor. Ağ bant genişliği olmadan sınırlı, ağınız yavaş veya güvenilir değil. Ayrıca:
 
-- Internet Servis Sağlayıcılarınızdan (ISS) ağ aktarım maliyetleri ile sınırlıdırsınız.
-- Güvenlik veya kuruluş ilkeleri, hassas verilerle uğraşırken giden bağlantılara izin vermez.
+- Internet servis sağlayıcılarınızdan (ISS) ağ aktarımı maliyetleriyle sınırlı olursunuz.
+- Güvenlik veya kuruluş ilkeleri, hassas verilerle ilgilenirken giden bağlantılara izin vermez.
 
-Yukarıdaki tüm durumlarda, bir kerelik toplu veri aktarımı yapmak için fiziksel bir aygıt kullanın. Microsoft tarafından sağlanan Veri Kutusu Diski, Veri Kutusu, Veri Kutusu Ağır aygıtları veya kendi disklerinizi kullanarak Dışa Aktar/Dışa Aktar'dan seçim yapın.
+Yukarıdaki tüm örneklerde, bir kerelik toplu veri aktarımı yapmak için fiziksel bir cihaz kullanın. Microsoft tarafından sağlanan Data Box Disk, Data Box, Data Box Heavy cihazları seçin veya kendi disklerinizi kullanarak Içeri/dışarı aktarın.
 
-Fiziksel aygıtın doğru seçenek olup olmadığını doğrulamak için aşağıdaki tabloyu kullanın. Çeşitli kullanılabilir bant genişlikleri için (%90 kullanım dan sonra) ağ veri aktarımı için öngörülen zamanı gösterir. Ağ aktarımın çok yavaş olması öngörülüyorsa, fiziksel bir aygıt kullanmanız gerekir.  
+Fiziksel bir cihazın doğru seçenek olup olmadığını doğrulamak için aşağıdaki tabloyu kullanın. Çeşitli kullanılabilir bant genişlikleri (%90 kullanım varsayılıyor) için ağ veri aktarımı için öngörülen zamanı gösterir. Ağ aktarımının çok yavaş olması için yansıtıldıysanız fiziksel bir cihaz kullanmanız gerekir.  
 
-![Ağ aktarım veya çevrimdışı aktarım](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
+![Ağ aktarımı veya çevrimdışı aktarım](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
-## <a name="recommended-options"></a>Önerilen seçenekler
+## <a name="recommended-options"></a>Önerilen Seçenekler
 
-Bu senaryoda kullanılabilen seçenekler, Azure Veri Kutusu çevrimdışı aktarım veya Azure İçe Aktarma/Verme aygıtlarıdır.
+Bu senaryoda kullanılabilen seçenekler, Azure Data Box çevrimdışı aktarma veya Azure Içeri/dışarı aktarma için cihazlardır.
 
-- **Çevrimdışı aktarımlar için Azure Veri Kutusu ailesi** – Zaman, ağ kullanılabilirliği veya maliyetlerle sınırlı olduğunuzda büyük miktarda veriyi Azure'a taşımak için Microsoft tarafından sağlanan Veri Kutusu aygıtlarından aygıtlar kullanın. Robocopy gibi araçları kullanarak şirket içi verileri kopyalayın. Aktarım için amaçlanan veri boyutuna bağlı olarak, Veri Kutusu Diski, Veri Kutusu veya Veri Kutusu Ağır'dan seçim yapabilirsiniz.
-- **Azure İçe Aktar/Dışa Aktarma** – Azure Blob depolama ve Azure Dosyalarına büyük miktarda veri almak için kendi disk sürücülerinizi göndererek Azure İçe Alma/Dışa Aktarma hizmetini kullanın. Bu hizmet, Azure Blob depolama dan disk sürücülerine veri aktarmak ve şirket içi sitelerinize aktarmak için de kullanılabilir.
+- **Azure Data Box ailesi çevrimdışı aktarımlar için** : Microsoft tarafından sağlanan Data Box cihazlarındaki cihazları, zaman, ağ kullanılabilirliği veya maliyetlerle sınırlı olduğunuzda Azure 'a büyük miktarlarda veri taşımak için kullanın. Robocopy gibi araçları kullanarak şirket içi verileri kopyalayın. Aktarım için tasarlanan veri boyutuna bağlı olarak Data Box Disk, Data Box veya Data Box Heavy arasından seçim yapabilirsiniz.
+- **Azure içeri/dışarı aktarma** – büyük miktarlarda verileri Azure Blob depolama ve Azure dosyaları 'na güvenli bir şekilde aktarmak için kendi disk sürücülerinizi göndererek Azure Içeri/dışarı aktarma hizmetini kullanın. Bu hizmet Ayrıca, Azure Blob depolamadan disk sürücülerine veri aktarmak ve şirket içi sitelerinize göndermek için de kullanılabilir.
 
-## <a name="comparison-of-key-capabilities"></a>Anahtar özelliklerin karşılaştırılması
+## <a name="comparison-of-key-capabilities"></a>Anahtar özellikleri karşılaştırması
 
-Aşağıdaki tabloda anahtar yetenekleri farklılıkları özetlenebilir.
+Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    İçeri/Dışarı Aktarma                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    Veri boyutu                        |    35 TB'a kadar                 |    Cihaz başına 80 TB'a kadar                       |    Cihaz başına 800 TB'a kadar               |    Değişken                            |
+|    Veri boyutu                        |    35 TBs 'ye kadar                 |    Cihaz başına 80 TBs 'ye kadar                       |    Cihaz başına 800 TB 'a kadar               |    Değişken                            |
 |    Veri türü                        |    Azure Blobları                  |    Azure Blobları<br>Azure Dosyaları                    |    Azure Blobları<br>Azure Dosyaları            |    Azure Blobları<br>Azure Dosyaları          |
-|    Form faktörü                      |    Sipariş başına 5 SSD             |    1 x 50-lbs. sipariş başına masaüstü boyutlu aygıt    |    1 X ~500-lbs. sipariş başına büyük cihaz    |    Sipariş başına en fazla 10 HDD/SSD        |
-|    İlk kurulum süresi               |    Düşük <br>(15 dakika)            |    Düşük ve orta <br> (<30 dakika)               |    Orta<br>(1-2 saat)               |    Orta ve zor<br>(değişken) |
-|    Azure'a veri gönderme               |    Evet                          |    Evet                                           |    Evet                                   |    Evet                                 |
-|    Verileri Azure’dan dışarı aktarma           |    Hayır                           |    Hayır                                            |    Hayır                                    |    Evet                                 |
-|    Şifreleme                       |    AES 128-bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128-bit                         |
-|    Donanım                         |     Microsoft sağlanan          |    Microsoft sağlanan                            |    Microsoft sağlanan                    |    Müşteri sağlanan                   |
-|    Ağ arabirimi                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
-|    İş ortağı tümleştirmesi              |    Bazıları                         |    [Yüksek](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Yüksek](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Bazıları                                |
-|    Sevkiyat                         |    Microsoft yönetilen            |    Microsoft yönetilen                             |    Microsoft yönetilen                     |    Müşteri yönetimi                    |
-| Veri taşınırken kullanma         |Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Coğrafi sınırların ötesinde, örneğin ABD'den AB'ye|
+|    Form faktörü                      |    sipariş başına 5 SSD             |    1 X 50-lbs. sipariş başına masaüstü boyutunda cihaz    |    1 X ~ 500-lbs. sipariş başına büyük cihaz    |    Sipariş başına en fazla 10 HDD/SSD        |
+|    İlk kurulum saati               |    Düşük <br>(15 dakika)            |    Düşük-orta <br> (<30 dakika)               |    Orta<br>(1-2 saat)               |    Orta-zor<br>değişken |
+|    Verileri Azure 'a gönderme               |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
+|    Verileri Azure’dan dışarı aktarma           |    Hayır                           |    Hayır                                            |    Hayır                                    |    Yes                                 |
+|    Şifreleme                       |    AES 128 bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128 bit                         |
+|    Donanım                         |     Microsoft tarafından sağlanan          |    Microsoft tarafından sağlanan                            |    Microsoft tarafından sağlanan                    |    Müşteri sağlandı                   |
+|    Ağ arabirimi                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA ıı/SATA ııı                    |
+|    İş ortağı tümleştirmesi              |    Bazıları                         |    [Geniş](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Geniş](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Bazıları                                |
+|    Sevkiyat                         |    Microsoft tarafından yönetilen            |    Microsoft tarafından yönetilen                             |    Microsoft tarafından yönetilen                     |    Müşteri tarafından yönetilen                    |
+| Veri taşırken kullanın         |Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Coğrafi sınırların tamamında, örneğin ABD-AB|
 |    Fiyatlandırma                          |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Nasıl yapılacağını anlama
+- Nasıl yapılacağını öğrenin
 
-    - [Veri Kutusu Diski ile veri aktarımı.](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)
-    - [Veri Kutusu ile veri aktarımı.](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
-    - [Veri Aktar/Dışa Aktar.](/azure/storage/common/storage-import-export-data-to-blobs)
+    - [Data Box disk verileri aktarın](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
+    - [Data Box verileri aktarın](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+    - [İçeri/dışarı aktarma ile veri aktarma](/azure/storage/common/storage-import-export-data-to-blobs).

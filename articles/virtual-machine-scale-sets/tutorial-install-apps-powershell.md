@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Uygulamaları Azure PowerShell ile bir ölçek kümesine yükleme
+title: Öğretici-Azure PowerShell bir ölçek kümesine uygulama yüklemesi
 description: Azure PowerShell kullanarak Özel Betik Uzantısı ile sanal makine ölçek kümelerine uygulama yükleme işleminin nasıl yapılacağını öğrenin
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 11/08/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 789b3ca6cf49bbecf7393c5c70b19cbb43dfd164
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011292"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümelerine uygulama yükleme
@@ -24,7 +24,7 @@ Bir ölçek kümesindeki sanal makine (VM) örneklerinde uygulamaları çalışt
 > * Azure Özel Betik Uzantısı’nı kullanma
 > * Ölçek kümesinde çalıştırılan bir uygulamayı güncelleştirme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -34,13 +34,13 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 ## <a name="what-is-the-azure-custom-script-extension"></a>Azure Özel Betik Uzantısı nedir?
 Özel Betik Uzantısı, Azure VM’lerinde betik indirir ve yürütür. Bu uzantı dağıtım sonrası yapılandırma, yazılım yükleme veya diğer yapılandırma/yönetim görevleri için kullanışlıdır. Betikler Azure depolama veya GitHub konumlarından indirilebilir ya da Azure portalına uzantı çalışma zamanında iletilebilir.
 
-Özel Komut Dosyası uzantısı, Azure Kaynak Yöneticisi şablonlarıyla tümleşir. Azure CLI, Azure PowerShell, Azure portalı veya REST API ile de kullanılabilir. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/windows/extensions-customscript.md).
+Özel Betik uzantısı Azure Resource Manager şablonlarıyla tümleştirilir. Azure CLı, Azure PowerShell, Azure portal veya REST API ile de kullanılabilir. Daha fazla bilgi için bkz. [Özel Betik Uzantısı'na genel bakış](../virtual-machines/windows/extensions-customscript.md).
 
 Özel Betik Uzantısı’nı çalışır halde görmek için, IIS web sunucusunu yükleyen ve ölçek kümesi sanal makine örneğinin ana bilgisayar adını veren bir ölçek kümesi oluşturun. Özel Betik Uzantısı tanımı, GitHub’dan bir örnek betiği indirir, gerekli paketleri yükler, sonra sanal makine örneği ana bilgisayar adını bir temel HTML sayfasına yazar.
 
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
-Şimdi [Yeni-AzVmss](/powershell/module/az.compute/new-azvmss)ile ayarlanmış sanal bir makine ölçeği oluşturun. Her bir sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Yük dengeleyicisi, TCP bağlantı noktası 80'deki trafiği dağıtmak için kurallar içerir. Ayrıca TCP portu 3389 ve PowerShell remoting TCP port 5985 üzerinde uzak masaüstü trafiği sağlar. İstendiğinde, ölçek kümesindeki VM örnekleri için kendi yönetim kimlik bilgilerinizi ayarlayabilirsiniz:
+Şimdi [New-AzVmss](/powershell/module/az.compute/new-azvmss)ile bir sanal makine ölçek kümesi oluşturun. Her bir sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Yük dengeleyici, TCP bağlantı noktası 80 ' deki trafiği dağıtmaya yönelik kurallar içerir. Ayrıca TCP bağlantı noktası 3389 üzerinde Uzak Masaüstü trafiğine ve TCP bağlantı noktası 5985 ' de PowerShell uzaktan iletişimine izin verir. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi yönetici kimlik bilgilerinizi ayarlayabilirsiniz:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -68,7 +68,7 @@ $customConfig = @{
 ```
 
 
-Şimdi, [Add-AzVmssExtension](/powershell/module/az.Compute/Add-azVmssExtension)ile Özel Komut Dosyası Uzantısı uygulayın. Önceden tanımlanan yapılandırma nesnesi, uzantıya geçirilir. [Update-AzVmss](/powershell/module/az.compute/update-azvmss)ile VM örneklerindeki uzantıyı güncelleştirin ve çalıştırın.
+Şimdi, [Add-AzVmssExtension](/powershell/module/az.Compute/Add-azVmssExtension)Ile özel betik uzantısını uygulayın. Önceden tanımlanan yapılandırma nesnesi, uzantıya geçirilir. Uzantıyı Update [-AzVmss](/powershell/module/az.compute/update-azvmss)ile sanal makine örneklerinde güncelleştirin ve çalıştırın.
 
 
 ```azurepowershell-interactive
@@ -98,7 +98,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>Uygulamaya giden trafiğe izin verme
 
-Temel web uygulamasına erişime izin vermek için, [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) ve [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun. Daha fazla bilgi [için Azure sanal makine ölçek kümeleri için Ağ'a](virtual-machine-scale-sets-networking.md)bakın.
+Temel Web uygulamasına erişime izin vermek için, [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) ve [New-aznetworksecuritygroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun. Daha fazla bilgi için bkz. [Azure sanal makine ölçek kümeleri Için ağ](virtual-machine-scale-sets-networking.md).
 
 ```azurepowershell-interactive
 
@@ -140,7 +140,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 
 ## <a name="test-your-scale-set"></a>Ölçek kümenizi test etme
-Web sunucunuzun iş başında olduğunu görmek için [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)ile yük bakiyecinizin genel IP adresini alın. Aşağıdaki örnek, *myResourceGroup* kaynak grubunda oluşturulan IP adresini görüntüler:
+Web sunucunuzu işlem içinde görmek için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)ile yük dengeleyicinizin genel IP adresini alın. Aşağıdaki örnek, *Myresourcegroup* kaynak grubunda oluşturulan IP adresini görüntüler:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
@@ -154,7 +154,7 @@ Sonraki adımda güncelleştirilmiş bir sürümü görebilmeniz için web taray
 
 
 ## <a name="update-app-deployment"></a>Uygulama dağıtımını güncelleştirme
-Bir ölçek kümesinin yaşam döngüsü boyunca, uygulamanızın güncelleştirilmiş bir sürümünü dağıtmanız gerekebilir. Özel Betik Uzantısı ile, güncelleştirilmiş bir dağıtım betiğine başvurabilir ve sonra uzantıyı ölçek kümenize yeniden uygulayabilirsiniz. Ölçek kümesi önceki adımda oluşturulduğunda, `-UpgradePolicyMode` *otomatik*olarak ayarlandı. Bu ayar, ölçek kümesindeki sanal makine örneklerinin otomatik olarak güncelleştirilmesini ve uygulamanızın en son sürümünü uygulamasını sağlar.
+Bir ölçek kümesinin yaşam döngüsü boyunca, uygulamanızın güncelleştirilmiş bir sürümünü dağıtmanız gerekebilir. Özel Betik Uzantısı ile, güncelleştirilmiş bir dağıtım betiğine başvurabilir ve sonra uzantıyı ölçek kümenize yeniden uygulayabilirsiniz. Önceki adımda ölçek kümesi oluşturulduğunda, `-UpgradePolicyMode` *Otomatik*olarak ayarlanmıştır. Bu ayar, ölçek kümesindeki sanal makine örneklerinin otomatik olarak güncelleştirilmesini ve uygulamanızın en son sürümünü uygulamasını sağlar.
 
 *customConfigv2* adlı yeni bir yapılandırma tanımı oluşturun. Bu tanım, uygulama yükleme betiğinin güncelleştirilmiş bir *v2* sürümünü çalıştırır:
 
@@ -165,7 +165,7 @@ $customConfigv2 = @{
 }
 ```
 
-Özel Komut Dosyası Uzantısı yapılandırmasını ölçek kümenizdeki VM örnekleriyle güncelleştirin. Uygulamanın güncelleştirilmiş sürümünü uygulamak için *customConfigv2* tanımı kullanılır:
+Özel Betik uzantısı yapılandırmasını ölçek kümesindeki sanal makine örneklerine güncelleştirin. Uygulamanın güncelleştirilmiş sürümünü uygulamak için *customConfigv2* tanımı kullanılır:
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss `
@@ -186,7 +186,7 @@ Update-AzVmss `
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Ölçek kümenizi ve ek kaynaklarınızı kaldırmak için Kaynak grubunu ve tüm kaynaklarını [Kaldır-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)ile silin. `-Force` parametresi kaynakları ek bir komut istemi olmadan silmek istediğinizi onaylar. `-AsJob` parametresi işlemin tamamlanmasını beklemeden denetimi komut istemine döndürür.
+Ölçek kümesini ve ek kaynaklarınızı kaldırmak için, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)komutunu kullanarak kaynak grubunu ve tüm kaynaklarını silin. `-Force` parametresi kaynakları ek bir komut istemi olmadan silmek istediğinizi onaylar. `-AsJob` parametresi işlemin tamamlanmasını beklemeden denetimi komut istemine döndürür.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

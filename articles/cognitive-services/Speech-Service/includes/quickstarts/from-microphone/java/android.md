@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Bir mikrofon, Java (Android) konuşma tanıma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma, Java (Android)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK'yı kullanarak Android'de Java'daki konuşmayı nasıl tanıyın
+description: Konuşma SDK 'sını kullanarak Android 'te Java 'da konuşmayı tanımayı öğrenin
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
 ms.openlocfilehash: 2641464e52b80c59b6c6b5a123ad1605c1d41495
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275249"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
@@ -22,17 +22,17 @@ ms.locfileid: "81275249"
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kur](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * Ses çekimi için mikrofona erişebildiğinizden emin olun
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
 ## <a name="create-a-user-interface"></a>Kullanıcı arabirimi oluşturma
 
-Şimdi uygulama için temel bir kullanıcı arabirimi oluşturacağız. Ana etkinliğiniz `activity_main.xml` için düzende değişiklik yapın. Başlangıçta, düzen, uygulamanızın adını içeren bir başlık çubuğu ve "Hello World!" metnini içeren bir TextView içerir.
+Artık uygulama için temel bir kullanıcı arabirimi oluşturacağız. Ana etkinliğiniz `activity_main.xml` için düzende değişiklik yapın. Başlangıçta, düzen uygulamanızın adıyla bir başlık çubuğu ve "Merhaba Dünya!" metnini içeren bir TextView içerir.
 
 * TextView öğesini seçin. Sağ üst köşedeki ID özniteliğini `hello` olarak değiştirin.
 
-* `activity_main.xml` Pencerenin sol üst kısmındaki paletten, düğmeyi metnin üzerindeki boş boş alana sürükleyin.
+* `activity_main.xml` Pencerenin sol üst kısmındaki paletten bir düğmeyi metnin üstündeki boş alana sürükleyin.
 
 * Sağ taraftaki düğme özniteliklerde, `onClick` özniteliği değeri için `onSpeechButtonClicked` girin. Düğme olayını işlemek için bu adla bir yöntem yazacağız. Sağ üst köşedeki ID özniteliğini `button` olarak değiştirin.
 
@@ -40,7 +40,7 @@ Başlamadan önce:
 
   ![Sihirli değnek simgesinin ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-Kullanıcı arabiriminizin metin ve grafik gösterimi şimdi şu şekilde görünmelidir:
+UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 ![Kullanıcı arabirimi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-11-gui.png)
 
@@ -48,27 +48,27 @@ Kullanıcı arabiriminizin metin ve grafik gösterimi şimdi şu şekilde görü
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. `MainActivity.java` kaynak dosyasını açın. Bu dosyadaki tüm kodu aşağıdakilerle değiştirin:
+1. `MainActivity.java` kaynak dosyasını açın. Bu dosyadaki tüm kodu aşağıdaki kodla değiştirin:
 
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/android/from-microphone/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * `onCreate` yönteminde mikrofon ve İnternet izinleri isteyen ve yerel platform bağlaması başlatan kod vardır. Yerel platform bağlamaları tek bir kez yapılandırılmalıdır. Bu işlem uygulama başlatma sırasında erken bir aşamada yapılmalıdır.
 
-   * `onSpeechButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Bir düğmeye basmak konuşmadan metne transkripsiyonu tetikler.
+   * `onSpeechButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Bir düğme, konuşmadan metne dökümü tetiklemesini tetikler.
 
 1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
 
-1. Ayrıca dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) **Bölge tanımlayıcısıyla** değiştirin. Örneğin, ücretsiz `westus` deneme aboneliği için kullanın.
+1. Ayrıca dizeyi `YourServiceRegion` , [aboneliğinizle ilişkili olan bölge](https://aka.ms/speech/sdkregion) **tanımlayıcısı** ile değiştirin. Örneğin, ücretsiz deneme `westus` aboneliği için kullanın.
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-1. Android cihazınızı geliştirme bilgisayarınıza bağlayın. Aygıtta geliştirme [modunu ve USB hata ayıklamayı](https://developer.android.com/studio/debug/dev-options) etkinleştirdiğinizden emin olun.
+1. Android cihazınızı geliştirme bilgisayarınıza bağlayın. Cihazda [geliştirme modunu ve USB hata ayıklamayı](https://developer.android.com/studio/debug/dev-options) etkinleştirdiğinizden emin olun.
 
-1. Uygulamayı oluşturmak için Ctrl+F9'u seçin veya menü çubuğundan**Yapı Projesi'ni** **seçin.** > 
+1. Uygulamayı derlemek için CTRL + F9 ' ı seçin veya menü çubuğundan**projeyi** **Oluştur ' u seçin.** > 
 
-1. Uygulamayı başlatmak için Shift+F10'u seçin veya **Çalıştır** > **'uygulamasını'** seçin.
+1. Uygulamayı başlatmak için SHIFT + F10 ' i seçin **veya çalıştırmayı Çalıştır** > **' uygulama '** yı seçin.
 
-1. Görünen dağıtım hedef penceresinde Android cihazınızı seçin.
+1. Görüntülenen dağıtım hedefi penceresinde Android cihazınızı seçin.
 
    ![Dağıtım Hedefi Seç penceresinin ekran görüntüsü](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-12-deploy.png)
 

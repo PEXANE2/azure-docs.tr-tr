@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstü hizmeti temel rol atama - Azure
-description: Windows Sanal Masaüstü'nde PowerShell'i kullanarak hizmet ilkeleri oluşturma ve roller atama.
+title: Windows sanal masaüstü hizmeti sorumlusu rol ataması-Azure
+description: Windows sanal masaüstü 'nde PowerShell kullanarak hizmet sorumluları oluşturma ve rol atama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,43 +9,43 @@ ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 322ff2be4b90a945305915432a8191db9f4efee2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81252566"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Öğretici: PowerShell'i kullanarak hizmet ilkeleri ve rol atamaları oluşturun
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Öğretici: PowerShell kullanarak hizmet sorumluları ve rol atamaları oluşturma
 
-Hizmet ilkeleri, belirli bir amaç için roller ve izinler atamak için Azure Etkin Dizini'nde oluşturabileceğiniz kimliklerdir. Windows Sanal Masaüstü'nde, şu lar için bir hizmet sorumlusu oluşturabilirsiniz:
+Hizmet sorumluları, belirli bir amaçla roller ve izinler atamak için Azure Active Directory oluşturabileceğiniz kimliklerdir. Windows sanal masaüstü 'nde, aşağıdakileri yapmak için bir hizmet sorumlusu oluşturabilirsiniz:
 
-- Belirli Windows Sanal Masaüstü yönetim görevlerini otomatikleştirin.
-- Windows Sanal Masaüstü için herhangi bir Azure Kaynak Yöneticisi şablonu çalıştırırken MFA'dan gerekli kullanıcıların yerine kimlik bilgileri olarak kullanın.
+- Belirli Windows sanal masaüstü yönetim görevlerini otomatikleştirin.
+- Windows sanal masaüstü için herhangi bir Azure Resource Manager şablonu çalıştırırken, MFA 'ya gerekli kullanıcıların yerine kimlik bilgilerini kullanın.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Azure Etkin Dizini'nde bir hizmet ilkesi oluşturun.
-> * Windows Sanal Masaüstü'nde bir rol ataması oluşturun.
-> * Hizmet ilkesini kullanarak Windows Sanal Masaüstü'nde oturum açın.
+> * Azure Active Directory bir hizmet sorumlusu oluşturun.
+> * Windows sanal masaüstü 'nde bir rol ataması oluşturun.
+> * Hizmet sorumlusunu kullanarak Windows sanal masaüstü 'nde oturum açın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Hizmet ilkeleri ve rol atamaları oluşturmadan önce üç şey yapmanız gerekir:
+Hizmet sorumluları ve rol atamaları oluşturabilmeniz için üç şey yapmanız gerekir:
 
-1. AzureAD modüllerini yükleyin. Modülü yüklemek için PowerShell'i yönetici olarak çalıştırın ve aşağıdaki cmdlet'i çalıştırın:
+1. AzureAD modülünü yükler. Modülünü yüklemek için PowerShell 'i yönetici olarak çalıştırın ve aşağıdaki cmdlet 'i çalıştırın:
 
     ```powershell
     Install-Module AzureAD
     ```
 
-2. [Windows Virtual Desktop PowerShell modülünü indirin ve aktarın.](/powershell/windows-virtual-desktop/overview/)
+2. [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/).
 
-3. Aynı PowerShell oturumunda bu makaledeki tüm talimatları izleyin. PowerShell oturumunuzu pencereyi kapatıp daha sonra yeniden açarak keserseniz işlem çalışmayabilir.
+3. Bu makaledeki tüm yönergeleri aynı PowerShell oturumunda izleyin. Pencereyi kapatarak ve daha sonra yeniden açarak PowerShell oturumunuzu keserseniz işlem çalışmayabilir.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Azure Active Directory'de hizmet sorumlusu oluşturma
 
-PowerShell oturumunuzdaki ön koşulları yerine getirdikten sonra, Azure'da çok kiracılı bir hizmet ilkesi oluşturmak için aşağıdaki PowerShell cmdlets'i çalıştırın.
+PowerShell oturumunuzda önkoşulları karşıladıktan sonra, Azure 'da çok kiracılı hizmet sorumlusu oluşturmak için aşağıdaki PowerShell cmdlet 'lerini çalıştırın.
 
 ```powershell
 Import-Module AzureAD
@@ -53,11 +53,11 @@ $aadContext = Connect-AzureAD
 $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayName "Windows Virtual Desktop Svc Principal"
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
-## <a name="view-your-credentials-in-powershell"></a>PowerShell'de kimlik bilgilerinizi görüntüleyin
+## <a name="view-your-credentials-in-powershell"></a>PowerShell 'de kimlik bilgilerinizi görüntüleme
 
-Hizmet yöneticiniz için rol atamasını oluşturmadan önce kimlik bilgilerinizi görüntüleyin ve ileride başvurmak üzere yazın. Bu PowerShell oturumunu kapattıktan sonra geri alamayacağınız için parola özellikle önemlidir.
+Hizmet sorumlusu için rol atamasını oluşturmadan önce, kimlik bilgilerinizi görüntüleyin ve daha sonra başvurmak üzere bunları aşağı yazın. Bu PowerShell oturumunu kapattıktan sonra bu parola özellikle önemlidir.
 
-Burada yazmanız gereken üç kimlik bilgileri ve bunları almak için çalıştırmak için gereken cmdlets şunlardır:
+Aşağıda, yazmanız gereken üç kimlik bilgileri ve bunları almak için çalıştırmanız gereken cmdlet 'ler verilmiştir:
 
 - Parola:
 
@@ -77,40 +77,40 @@ Burada yazmanız gereken üç kimlik bilgileri ve bunları almak için çalışt
     $svcPrincipal.AppId
     ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Windows Sanal Masaüstünde rol ataması oluşturma
+## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Windows sanal masaüstünde rol ataması oluşturma
 
-Ardından, hizmet sorumlusunun Windows Sanal Masaüstü'nde oturum açabilmesi için bir rol ataması oluşturmanız gerekir. Rol atamaları oluşturma izinleri olan bir hesapla oturum açtırdığından emin olun.
+Ardından, hizmet sorumlusunun Windows sanal masaüstü 'nde oturum açmasını sağlamak için bir rol ataması oluşturmanız gerekir. Rol atamaları oluşturma izinlerine sahip bir hesapla oturum açmanız emin olun.
 
-İlk olarak, PowerShell oturumunuzda kullanmak üzere [Windows Virtual Desktop PowerShell modülünü indirin ve içe aktarın.](/powershell/windows-virtual-desktop/overview/)
+İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/) .
 
-Windows Sanal Masaüstü'ne bağlanmak ve kiracılarınızı görüntülemek için aşağıdaki PowerShell cmdletlerini çalıştırın.
+Windows sanal masaüstüne bağlanmak ve Kiracılarınızı göstermek için aşağıdaki PowerShell cmdlet 'lerini çalıştırın.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Get-RdsTenant
 ```
 
-Rol ataması oluşturmak istediğiniz kiracının kiracı adını bulduğunuzda, aşağıdaki cmdlet'te bu adı kullanın:
+İçin bir rol ataması oluşturmak istediğiniz kiracının kiracı adını bulduğunuzda, bu adı aşağıdaki cmdlet içinde kullanın:
 
 ```powershell
 $myTenantName = "<Windows Virtual Desktop Tenant Name>"
 New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
-## <a name="sign-in-with-the-service-principal"></a>Servis müdürüyle oturum açın
+## <a name="sign-in-with-the-service-principal"></a>Hizmet sorumlusu ile oturum açma
 
-Hizmet sorumlusu için bir rol ataması oluşturduktan sonra, servis müdürünün aşağıdaki cmdlet'i çalıştırarak Windows Sanal Masaüstü'nde oturum açabilmesini unutmayın:
+Hizmet sorumlusu için bir rol ataması oluşturduktan sonra, hizmet sorumlusunun aşağıdaki cmdlet 'i çalıştırarak Windows sanal masaüstü 'nde oturum açmasını sağlayın:
 
 ```powershell
 $creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
 ```
 
-Oturum açtıktan sonra, birkaç Windows Sanal Masaüstü PowerShell cmdlet'ini servis ilkesiyle test ederek her şeyin çalıştığından emin olun.
+Oturum açtıktan sonra, hizmet sorumlusu ile birkaç Windows sanal masaüstü PowerShell cmdlet 'ini test ederek her şeyin çalıştığından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hizmet ilkesini oluşturduktan ve Windows Sanal Masaüstü kiracınızda bir rol atadıktan sonra, bu hizmeti ana bilgisayar havuzu oluşturmak için kullanabilirsiniz. Ana bilgisayar havuzları hakkında daha fazla bilgi edinmek için, Windows Sanal Masaüstü'nde ana bilgisayar havuzu oluşturma eğitimine devam edin.
+Hizmet sorumlusunu oluşturup Windows sanal masaüstü kiracınızda bir rol atadıktan sonra, bir konak havuzu oluşturmak için bu hizmeti kullanabilirsiniz. Konak havuzları hakkında daha fazla bilgi edinmek için Windows sanal masaüstü 'nde bir konak havuzu oluşturma öğreticisine geçin.
 
  > [!div class="nextstepaction"]
  > [Azure Market ile ana bilgisayar havuzu oluşturma](./create-host-pools-azure-marketplace.md)

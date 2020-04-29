@@ -1,5 +1,5 @@
 ---
-title: Verilere veya zamanlamaya dayalı azure kaynaklarını otomatik ölçeklendirme
+title: Verileri veya zamanlamayı temel alarak Azure kaynaklarını otomatik ölçeklendirme
 description: Ölçüm verilerini ve bir zamanlamayı kullanarak bir uygulama hizmeti planı için otomatik ölçeklendirme ayarı oluşturma
 author: anirudhcavale
 services: azure-monitor
@@ -9,10 +9,10 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: a4502a9ec7866d9b1ecb0f2aa2257e759fd417c8
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81114684"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Azure kaynakları için performans verilerini veya bir zamanlamayı temel alan bir Otomatik Ölçeklendirme Ayarı oluşturma
@@ -27,48 +27,48 @@ Bu öğreticide şunları yapacaksınız:
 > * Bir ölçek daraltma eylemi tetikleyin ve örnek sayısının azalışını izleyin
 > * Kaynaklarınızı temizleme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure portalında oturum açma
 
-[Azure portalına](https://portal.azure.com/)giriş yapın.
+[Azure Portal](https://portal.azure.com/)oturum açın.
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Web Uygulaması ve App Service Planı oluşturma
 1. Soldaki gezinti bölmesinden **Kaynak oluştur** seçeneğine tıklayın.
-2. *Web App* öğesini arayın ve seçin ve **Oluştur'u**tıklatın.
-3. *MyTestScaleWebApp* gibi bir uygulama adı seçin. Yeni bir kaynak grubu *myResourceGroup' oluşturun veya seçtiğiniz bir kaynak grubuna yerleştirin.
+2. *Web uygulaması* öğesini arayıp seçin ve **Oluştur**' a tıklayın.
+3. *MyTestScaleWebApp* gibi bir uygulama adı seçin. Yeni bir kaynak grubu * myResourceGroup ' oluşturun veya bunu seçtiğiniz bir kaynak grubuna yerleştirin.
 
 Birkaç dakika içinde kaynaklarınız sağlanmalıdır. Bu öğreticinin geri kalanında Web Uygulamasını ve ilgili App Service Planını kullanın.
 
    ![Portalda yeni bir uygulama hizmeti oluşturma](./media/tutorial-autoscale-performance-schedule/Web-App-Create.png)
 
 ## <a name="navigate-to-autoscale-settings"></a>Otomatik Ölçeklendirme ayarlarına gidin
-1. Soldaki gezinti bölmesinden **İzleyici** seçeneğini belirleyin. Sayfa yüklendikten sonra **Otomatik Ölçek** sekmesini seçin.
+1. Soldaki gezinti bölmesinden **İzleyici** seçeneğini belirleyin. Sayfa yüklendikten sonra **Otomatik ölçeklendirme** sekmesini seçin.
 2. Burada, aboneliğinizde yer alan ve otomatik ölçeklendirmeyi destekleyen kaynaklar listelenir. Öğreticide daha önce oluşturulan App Service Planı’nı belirleyin ve buna tıklayın.
 
     ![Otomatik ölçeklendirme ayarlarına gidin](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
-3. Otomatik ölçek ayarLarında **Otomatik Ölçeği Etkinleştir** düğmesini tıklatın.
+3. Otomatik ölçeklendirme ayarında **Otomatik ölçeklendirmeyi etkinleştir** düğmesine tıklayın.
 
 Sonraki birkaç adım, otomatik ölçeklendirme ekranını aşağıdaki resimdeki gibi görünecek şekilde doldurmanıza yardımcı olur:
 
    ![Otomatik ölçeklendirme ayarını kaydedin](./media/tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
 ## <a name="configure-default-profile"></a>Varsayılan profili yapılandırın
-1. Otomatik ölçeklendirme ayarı için bir **Ad** sağlayın.
+1. Otomatik ölçeklendirme ayarı için bir **ad** girin.
 2. Varsayılan profilde **Ölçek modu**’nun 'Belirli bir örnek sayısına ölçeklendirin' olarak ayarlandığından emin olun.
 3. Örnek sayısını **1** olarak ayarlayın. Bu ayar, etkin veya geçerli olan başka bir profil yoksa varsayılan profilin örnek sayısını 1’e döndürdüğünden emin olur.
 
    ![Otomatik ölçeklendirme ayarlarına gidin](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
-## <a name="create-recurrence-profile"></a>Yineleme profili oluşturma
+## <a name="create-recurrence-profile"></a>Yinelenme profili oluştur
 
-1. Varsayılan profilin altındaki ölçek koşul bağlantısı **ekle'yi** tıklatın.
+1. Varsayılan profilin altındaki **Ölçek koşulu Ekle** bağlantısına tıklayın.
 
 2. Bu profilin **Adını** 'Pazartesi-Cuma profili' olacak şekilde düzenleyin.
 
-3. Ölçek **modunun** 'Bir metriğe göre ölçeklendir'e ayarlandığından emin olun.
+3. **Ölçek modunun** ' bir ölçüme göre ölçeklendirin ' olarak ayarlandığından emin olun.
 
 4. **Örnek limitleri** için **En az** değerini '1', **En fazla** değerini '2' ve **Varsayılan** değeri '1' olarak ayarlayın. Bu ayar, hizmet planının 1’den az ya da 2’den çok örneğe sahip olacak şekilde otomatik olarak ölçeklendirilmesini engeller. Profilde karar vermek için yeterli veri yoksa varsayılan örnek sayısını (bu durumda 1) kullanır.
 
@@ -80,7 +80,7 @@ Sonraki birkaç adım, otomatik ölçeklendirme ekranını aşağıdaki resimdek
 
 1. ‘Pazartesi-Cuma profili’nde.
 
-2. Kural **ekle** bağlantısını tıklatın.
+2. **Kural Ekle** bağlantısına tıklayın.
 
 3. **Ölçüm kaynağı**’nı ‘diğer kaynaklar’ olarak ayarlayın. **Kaynak türü**’nü ‘App Services’, **Kaynak**’ı bu öğreticide daha önce oluşturulan Web Uygulaması olarak ayarlayın.
 
@@ -88,9 +88,9 @@ Sonraki birkaç adım, otomatik ölçeklendirme ekranını aşağıdaki resimdek
 
 5. **İşleç**’i ‘Büyüktür’, **Eşik**’i ‘10’ ve **Süre**’yi ‘5’ dakika olarak ayarlayın.
 
-6. **İşlemi** 'Sayıyı artırın', **Örnek sayısı** '1' ve **Soğut** '5' dakikaolarak seçin.
+6. **İşlemi** ' sayıyı şu kadar Artır ', **örnek sayısı** ' 1 ' ve **soğuk aşağı doğru** ' 5 ' dakika olarak seçin.
 
-7. **Ekle** düğmesini tıklatın.
+7. **Ekle** düğmesine tıklayın.
 
 Bu kural, Web Uygulamanız 5 dakika veya daha kısa bir sürede 10’dan fazla istek alırsa yükün işlenebilmesi için App Service Planınıza ek bir örnek eklenmesini sağlar.
 
@@ -101,17 +101,17 @@ Her zaman ölçek genişletme kuralına eşlik eden bir ölçek daraltma kuralı
 
 1. ‘Pazartesi-Cuma profili’nde.
 
-2. Kural **ekle** bağlantısını tıklatın.
+2. **Kural Ekle** bağlantısına tıklayın.
 
 3. **Ölçüm kaynağı**’nı ‘diğer kaynaklar’ olarak ayarlayın. **Kaynak türü**’nü ‘App Services’, **Kaynak**’ı bu öğreticide daha önce oluşturulan Web Uygulaması olarak ayarlayın.
 
-4. Zaman **toplamayı** 'Toplam', Metrik **adı** 'İstek' ve **Zaman tanei istatistiğini** 'Ortalama' olarak ayarlayın.
+4. **Zaman toplamasını** ' Toplam ', **ölçüm adı** ' nı ' istekler ' ve **zaman dilimi istatistiği** ' ni ' ortalama ' olarak ayarlayın.
 
 5. **İşleç**’i ‘Küçüktür’, **Eşik**’i ‘5’ ve **Süre**’yi ‘5’ dakika olarak ayarlayın.
 
 6. **İşlem**’i ‘Sayıyı şu kadar azalt’, **Örnek sayısı**’nı ‘1’ ve **Bekleme süresi**’ni ‘5’ dakika olarak seçin.
 
-7. **Ekle** düğmesini tıklatın.
+7. **Ekle** düğmesine tıklayın.
 
     ![Ölçek daraltma kuralı oluşturma](./media/tutorial-autoscale-performance-schedule/Scale-In-Rule.png)
 
@@ -130,7 +130,7 @@ Az önce oluşturulan otomatik ölçeklendirme ayarındaki ölçek genişletme k
 
 4. Listeden bu öğretici boyunca kullanılan App Service Planını seçin.
 
-5. Otomatik ölçek lendirme ayarında, **Geçmiş Çalıştır** sekmesini tıklatın.
+5. Otomatik ölçeklendirme ayarında **çalıştırma geçmişi** sekmesine tıklayın.
 
 6. App Service Planının zaman içindeki örnek sayısını yansıtan bir grafik görürsünüz.
 
@@ -149,7 +149,7 @@ Otomatik ölçeklendirme ayarındaki ölçek daraltma koşulu, 10 dakikalık bir
 
 4. Listeden bu öğretici boyunca kullanılan App Service Planını seçin.
 
-5. Otomatik ölçek lendirme ayarında, **Geçmiş Çalıştır** sekmesini tıklatın.
+5. Otomatik ölçeklendirme ayarında **çalıştırma geçmişi** sekmesine tıklayın.
 
 6. App Service Planının zaman içindeki örnek sayısını yansıtan bir grafik görürsünüz.
 

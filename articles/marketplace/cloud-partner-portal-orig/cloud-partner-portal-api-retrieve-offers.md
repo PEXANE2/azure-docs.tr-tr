@@ -1,6 +1,6 @@
 ---
-title: Teklifleri al API | Azure Marketi
-description: API, yayımcı ad alanı altında tekliflerin özet listesini alır.
+title: Teklif API 'sini alma | Azure Marketi
+description: API, bir yayımcı ad alanı altında tekliflerin özetlenmiş bir listesini alır.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,19 +8,19 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 0413bc71c113bf1eef9f761dbeed4c0d0afe735c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255966"
 ---
 <a name="retrieve-offers"></a>Teklifleri alma
 ===============
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
-Yayımcı ad alanı altında tekliflerin özet listesini alır.
+Bir yayımcı ad alanı altındaki tekliflerin özetlenen listesini alır.
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
@@ -29,15 +29,15 @@ Yayımcı ad alanı altında tekliflerin özet listesini alır.
 
 | **Adı**         |  **Açıklama**                         |  **Veri türü** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Yayımcı tanımlayıcısı, örneğin`contoso` |   Dize    |
-|  api-sürümü     | API'nin en son sürümü                    |    Tarih        |
+|  PublisherId     | Yayımcı tanımlayıcı, örneğin`contoso` |   Dize    |
+|  api-sürümü     | En son API sürümü                    |    Tarih        |
 |  |  |
 
 
 <a name="header"></a>Üst bilgi
 ------
 
-|  **Adı**        |         **Değer**       |
+|  **Adı**        |         **Deeri**       |
 |  --------------- |       ----------------  |
 |  İçerik Türü    | `application/json`      |
 |  Yetkilendirme   | `Bearer YOUR_TOKEN`     |
@@ -66,40 +66,40 @@ Yayımcı ad alanı altında tekliflerin özet listesini alır.
   ]
 ```
 
-### <a name="response-body-properties"></a>Yanıt gövde özellikleri
+### <a name="response-body-properties"></a>Yanıt gövdesi özellikleri
 
 |  **Adı**       |       **Açıklama**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
-|  teklifTypeId    | Teklif türünü tanımlar                                                                                           |
-|  publisherId    | Yayımcıyı benzersiz olarak tanımlayan tanımlayıcı                                                                      |
-|  durum         | Teklifin durumu. Olası değerler listesi için aşağıdaki [Teklif durumuna](#offer-status) bakın.                         |
-|  id             | Teklifi yayımcı ad alanında benzersiz olarak tanımlayan GUID.                                                    |
-|  version        | Teklifin geçerli sürümü. Sürüm özelliği istemci tarafından değiştirilemez. Her yayından sonra artımlı. |
-|  tanım     | İş yükünün gerçek tanımının özet bir görünümünü içerir. Ayrıntılı bir tanım elde etmek [için, Özel teklif](./cloud-partner-portal-api-retrieve-specific-offer.md) API'sini Al'ı kullanın. |
-|  değiştirilenZaman    | Teklifin en son değiştirildiğinde UTC zamanı                                                                              |
+|  Offertypeıd    | Teklifin türünü tanımlar                                                                                           |
+|  PublisherId    | Yayımcıyı benzersiz bir şekilde tanımlayan tanımlayıcı                                                                      |
+|  durum         | Teklifin durumu. Olası değerler listesi için bkz. [teklif durumu](#offer-status) aşağıdaki.                         |
+|  id             | Yayımcıyı yayımcı ad alanında benzersiz şekilde tanımlayan GUID.                                                    |
+|  version        | Teklifin geçerli sürümü. Sürüm özelliği istemci tarafından değiştirilemiyor. Her yayımladıktan sonra artırılır. |
+|  tanım     | İş yükünün gerçek tanımının özetlenen görünümünü içerir. Ayrıntılı bir tanım almak için, belirli bir [teklifi al](./cloud-partner-portal-api-retrieve-specific-offer.md) API 'sini kullanın. |
+|  changedTime    | Teklifin en son değiştirildiği UTC saati                                                                              |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
-| **Kod**  |  **Açıklama**                                                                                                   |
+| **Kodudur**  |  **Açıklama**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`- İstek başarıyla işlendi ve yayımcı kapsamındaki tüm teklifler istemciye iade edildi.  |
-|  400      | `Bad/Malformed request`- Hata yanıt gövdesi daha fazla bilgi içerebilir.                                    |
-|  403      | `Forbidden`- İstemcinin belirtilen ad alanına erişimi yoktur.                                          |
-|  404      | `Not found`- Belirtilen varlık yok.                                                                 |
+|  200      | `OK`-İstek başarıyla işlendi ve yayımcının altındaki tüm teklifler istemciye geri döndü.  |
+|  400      | `Bad/Malformed request`-Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                                    |
+|  403      | `Forbidden`-İstemcinin belirtilen ad alanına erişimi yok.                                          |
+|  404      | `Not found`-Belirtilen varlık yok.                                                                 |
 |  |  |
 
 
-### <a name="offer-status"></a>Teklif Durumu
+### <a name="offer-status"></a>Teklif durumu
 
 |  **Adı**                    | **Açıklama**                                  |
 |  ------------------------    | -----------------------------------------------  |
-|  Hiç Yayınlanmadı              | Teklif hiç yayınlanmadı.                  |
-|  Başlatılmama                  | Teklif yeni dir, ancak başlanmaz.                 |
-|  WaitingForPublisherReview   | Teklif yayıncının onayını bekliyor.         |
+|  Neveryayınlandı              | Teklif hiç yayımlanmadı.                  |
+|  NotStarted                  | Teklif yenidir ancak başlatılmamış.                 |
+|  WaitingForPublisherReview   | Teklif, yayımcı onayını bekliyor.         |
 |  Çalışıyor                     | Teklif gönderimi işleniyor.             |
-|  Başarılı oldu                   | Teklif gönderimi işlemi tamamlandı.       |
-|  İptal edildi                    | Teklif sunumu iptal edildi.                   |
-|  Başarısız                      | Teklif gönderme başarısız oldu.                         |
+|  Başarılı oldu                   | Teklif gönderimi işlemeyi tamamladı.       |
+|  İptal edildi                    | Teklif Gönderimi iptal edildi.                   |
+|  Başarısız                      | Teklif gönderimi başarısız oldu.                         |
 |  |  |

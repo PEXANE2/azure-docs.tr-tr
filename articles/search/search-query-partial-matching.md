@@ -1,7 +1,7 @@
 ---
 title: Kısmi terimler, desenler ve özel karakterler
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama sorgu isteğinde tam veya kısmi terimlerle eşleşecek şekilde joker karakter, regex ve önek sorguları kullanın. Özel karakterler içeren eşleşmesi zor desenler tam sorgu sözdizimi ve özel çözümleyiciler kullanılarak çözülebilir.
+description: Azure Bilişsel Arama sorgu isteğindeki tüm veya kısmi terimlerle eşleştirmek için joker karakter, Regex ve önek sorguları kullanın. Özel karakterler içeren donanımdan eşleşme desenleri, tam sorgu sözdizimi ve özel çözümleyiciler kullanılarak çözülebilir.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,50 +9,50 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262885"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi süreli arama ve özel karakterler (joker karakter, regex, desenler) ile desenler
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi terim arama ve özel karakterlerle desenler (joker karakter, Regex, desenler)
 
-*Kısmi terim araması,* tüm terim yerine yalnızca başlangıç, orta veya dönem sonu (bazen önek, ek ek veya sonek sorguları olarak adlandırılır) olabilir terim parçaları oluşan sorguları ifade eder. *Desen,* genellikle tire veya çizgi çizgiler gibi sorgu dizesinin bir parçası olan özel karakterlerle birlikte parçaların bir birleşimi olabilir. Yaygın kullanım örnekleri, telefon numarasının, URL'nin, kişilerin veya ürün kodlarının veya bileşik sözcüklerin bölümlerinin sorgulanmasıdır.
+*Kısmi bir terim arama* , dönem parçalarından oluşan sorguları ifade eder; burada, tam bir dönem yerine yalnızca başlangıç, orta veya terim (ön ek, ınfıx veya sonek sorguları olarak adlandırılır) olabilir. Bir *kalıp* , genellikle sorgu dizesinin parçası olan tireler veya eğik çizgiler gibi özel karakterler içeren parçaların bir birleşimidir. Yaygın kullanım örnekleri, telefon numarası, URL, kişi veya ürün kodlarının veya Bileşik sözcüklerin bölümlerinin sorgulanmasını içerir.
 
-Dizin beklenen biçimde terimler yoksa kısmi ve desen arama sorunlu olabilir. Dizin oluşturmanın [sözlü çözümleme aşamasında](search-lucene-query-architecture.md#stage-2-lexical-analysis) (varsayılan standart çözümleyici varsayılarak), özel karakterler atılır, bileşik ve bileşik dizeleri bölünür ve beyaz boşluk silinir; bunların tümü, eşleşme bulunamayınca desen sorgularının başarısız lığa neden olabilir. Örneğin, bu içerik `+1 (425) 703-6214` dizinde gerçekte `"1"`bulunmadığından, `"6214"`(belirteç , `"3-62"` , `"425"` `"703"`) gibi bir telefon numarası sorguda gösterilmez. 
+Dizin beklenen biçimde şartlar içermiyorsa kısmi ve kalıp arama sorunlu olabilir. Dizin oluşturma işleminin (varsayılan standart çözümleyicisini varsayarak) [sözcük analizi aşamasında](search-lucene-query-architecture.md#stage-2-lexical-analysis) , özel karakterler atılır, bileşik ve Bileşik dizeler bölünür ve boşluk silinir; tümü, hiçbir eşleşme bulunamadığında, model sorgularının başarısız olmasına neden olabilir. Örneğin `+1 (425) 703-6214` , ( `"1"` `"425"` `"703"`Yani,,,, `"6214"`) gibi bir telefon numarası, içerik gerçekten dizinde bulunmadığından bir `"3-62"` sorguda gösterilmez. 
 
-Çözüm, kısmi terimler ve desenlerle eşleşebilmeniz için gerekirse boşluklar ve özel karakterler de dahil olmak üzere tam bir dizeyi koruyan bir çözümleyici çağırmaktır. Bozulmamış bir dize için ek bir alan oluşturma nın yanı sıra içerik koruyucu bir çözümleyici kullanmak çözümün temelidir.
-
-> [!TIP]
-> Postacı ve REST API'leri biliyor musunuz? Bu makalede açıklanan kısmi terimleri ve özel karakterleri sorgulamak için [sorgu örnekleri koleksiyonunu indirin.](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples)
-
-## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da kısmi arama nedir
-
-Azure Bilişsel Arama'da kısmi arama ve desen şu formlarda kullanılabilir:
-
-+ [Önek arama](query-simple-syntax.md#prefix-search), `search=cap*`örneğin , "Cap'n Jack's Waterfront Inn" veya "Gacc Capital" ile eşleşen. Önek aramaiçin basit sorgu sözdizimini veya tam Lucene sorgu sözdizimini kullanabilirsiniz.
-
-+ [Joker karakter araması](query-lucene-syntax.md#bkmk_wildcard) veya katışılmış bir dize deseni veya parçalarını arayan [Normal ifadeler.](query-lucene-syntax.md#bkmk_regex) Joker karakter ve normal ifadeler tam Lucene sözdizimini gerektirir. Sonek ve dizin sorguları normal bir ifade olarak formüle edilir.
-
-  Kısmi süreli aramanın bazı örnekleri şunlardır: "Alfasayısal" terimi verilen sonek sorgusunda, eşleşme bulmak için joker karakter`search=/.*numeric.*/`araması () kullanırsınız. URL parçası gibi iç karakterleri içeren kısmi bir terim için kaçış karakterleri eklemeniz gerekebilir. JSON'da, bir `/` ileri eğik `\`çizgi geriye doğru eğik çizgi ile kaçar. Bu nedenle, `search=/.*microsoft.com\/azure\/.*/` URL parçası "microsoft.com/azure/" için sözdizimidir.
-
-Belirtildiği gibi, yukarıdaki tüm dizin standart çözümleyici sağlamaz desen eşleştirme, elverişli bir biçimde dizeleri içerir gerektirir. Bu makaledeki adımları izleyerek, bu senaryoları desteklemek için gerekli içeriğin bulunduğundan emin olabilirsiniz.
-
-## <a name="solving-partialpattern-search-problems"></a>Kısmi/desen arama sorunlarını çözme
-
-Parçalar, desenler veya özel karakterler üzerinde arama yapmanız gerektiğinde, varsayılan çözümleyiciyi daha basit belirteç verme kuralları altında çalışan ve tüm dizeyi koruyan özel bir çözümleyiciyle geçersiz kılabilir. Bir adım geri alarak, yaklaşım şu na benzer:
-
-+ Dize bozulmamış bir sürümünü depolamak için bir alan tanımlayın (çözümlenmiş ve çözümlenmemiş metin istediğinizi varsayarak)
-+ Önceden tanımlanmış bir çözümleyici seçin veya analiz edilmeyen sağlam bir dize çıkarmak için özel bir çözümleyici tanımlayın
-+ Özel çözümleyiciyi alana atama
-+ Dizin oluşturma ve test edin
+Çözüm, gerekirse boşluklar ve özel karakterler de dahil olmak üzere tüm dizeleri koruyan bir çözümleyici çağırmak ve böylece kısmi hüküm ve desenlerle eşleşemez. Bozulmadan bir dize için ek alan oluşturma ve içerik koruma Çözümleyicisi kullanma, çözümün temelini oluşturur.
 
 > [!TIP]
-> Çözümleyicileri değerlendirmek, sık dizin yeniden oluşturmayı gerektiren yinelemeli bir işlemdir. Postacı, [Dizin Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index), [Dizin Sil](https://docs.microsoft.com/rest/api/searchservice/delete-index),[Belgeleri Yükle](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)ve Arama [Belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents)için REST API'lerini kullanarak bu adımı kolaylaştırabilirsiniz. Yükleme Belgeleri için istek gövdesi, test etmek istediğiniz küçük bir temsili veri kümesi (örneğin, telefon numaraları veya ürün kodları içeren bir alan) içermelidir. Aynı Postacı koleksiyonundaki bu API'lerle, bu adımları hızlı bir şekilde gözden geçirebilirsiniz.
+> Postman ve REST API 'Leri hakkında bilgi sahibi misiniz? Bu makalede açıklanan kısmi terimleri ve özel karakterleri sorgulamak için [sorgu örnekleri koleksiyonunu indirin](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) .
+
+## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama kısmi arama nedir?
+
+Azure Bilişsel Arama 'de, kısmi arama ve desenler şu formlarda kullanılabilir:
+
++ "Capda jakın `search=cap*`su ön Inn" veya "Gacc sermaye" Ile eşleşen [ön ek arama](query-simple-syntax.md#prefix-search). Ön ek arama için basit sorgu söz dizimini veya tam Lucene sorgu söz dizimini kullanabilirsiniz.
+
++ Katıştırılmış bir dizenin bir modelini veya parçalarını arayan [joker karakter arama](query-lucene-syntax.md#bkmk_wildcard) veya [normal ifadeler](query-lucene-syntax.md#bkmk_regex) . Joker karakter ve normal ifadeler tam Lucene sözdizimini gerektirir. Sonek ve dizin sorguları, normal bir ifade olarak formüllüyor.
+
+  Kısmi terim aramasına ilişkin bazı örnekler şunlardır. Bir sonek sorgusu için, "alfasayısal" terimi verildiğinde bir eşleştirme bulmak için joker karakter araması (`search=/.*numeric.*/`) kullanırsınız. URL parçası gibi iç karakterler içeren kısmi bir terim için kaçış karakterleri eklemeniz gerekebilir. JSON 'da eğik çizgi `/` , ters eğik `\`çizgiyle çıkış olur. Bu nedenle, `search=/.*microsoft.com\/azure\/.*/` "MICROSOFT.com/Azure/" URL parçasına yönelik sözdizimidir.
+
+Belirtildiği gibi, yukarıdaki tüm, dizinin, standart çözümleyici tarafından sağlamayan bir biçim iletkenine ve model eşleştirmeye yönelik dizeler içermesi gerekir. Bu makaledeki adımları izleyerek, bu senaryoları desteklemek için gerekli içeriğin mevcut olduğundan emin olabilirsiniz.
+
+## <a name="solving-partialpattern-search-problems"></a>Kısmi/kalıp arama sorunlarını çözme
+
+Parçalar veya desenler veya özel karakterler üzerinde arama yapmanız gerektiğinde, varsayılan çözümleyici 'yi daha basit simgeleştirme kuralları altında çalışan özel bir çözümleyici ile geçersiz kılabilirsiniz ve tüm dizeyi korur. Bir adım geri alınarak yaklaşım şuna benzer:
+
++ Dizenin bozulmadan bir sürümünü depolamak için bir alan tanımlayın (çözümlenme ve çözümlenmemiş metin istediğiniz varsayılarak)
++ Önceden tanımlanmış bir çözümleyici seçin veya çözümlenmemiş olmayan bir dizenin çıktısını almak için özel bir çözümleyici tanımlayın
++ Özel çözümleyici 'yi alana atama
++ Dizin oluşturma ve test etme
+
+> [!TIP]
+> Çözümleyiciler değerlendirmek, sık sık dizin yeniden oluşturma gerektiren yinelemeli bir işlemdir. Bu adımı Postman, [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index), [Dizin silme](https://docs.microsoft.com/rest/api/searchservice/delete-index),[belge yükleme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)ve [belge arama](https://docs.microsoft.com/rest/api/searchservice/search-documents)için REST API 'leri kullanarak daha kolay hale getirebilirsiniz. Yükleme belgeleri için, istek gövdesi test etmek istediğiniz küçük bir temsili veri kümesi (örneğin, telefon numarası veya ürün kodu içeren bir alan) içermelidir. Aynı Postman koleksiyonundaki bu API 'lerle, bu adımları hızla geçebilirsiniz.
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Farklı senaryolar için yinelenen alanlar
 
-Çözümleyiciler, alan başına olarak atanır, bu da farklı senaryolar için en iyi duruma getirmek için dizininizde alanlar oluşturabileceğiniz anlamına gelir. Özellikle, birinci ve gelişmiş desen eşleşen ilk düzenli tam metin arama desteklemek için "featureCode" ve "featureCodeRegex" tanımlayabilirsiniz.
+Çözümleyiciler alan temelinde atanır. Bu, dizininizdeki alanları farklı senaryolar için iyileştirmek üzere oluşturabileceğiniz anlamına gelir. Özellikle, ilki üzerinde düzenli tam metin aramasını desteklemek için "featureCode" ve "featureCodeRegex" tanımlayabilir ve ikincide gelişmiş bir düzende eşleştirme yapabilirsiniz.
 
 ```json
 {
@@ -71,22 +71,22 @@ Parçalar, desenler veya özel karakterler üzerinde arama yapmanız gerektiğin
 },
 ```
 
-## <a name="choose-an-analyzer"></a>Bir çözümleyici seçin
+## <a name="choose-an-analyzer"></a>Çözümleyici seçin
 
-Tam süreli belirteçler üreten bir çözümleyici seçerken, aşağıdaki çözümleyiciler sık kullanılan seçeneklerdir:
+Tam terim belirteçleri üreten bir çözümleyici seçerken, aşağıdaki çözümleyiciler yaygın seçimlerdir:
 
 | Analyzer | Davranışlar |
 |----------|-----------|
-| [dil analizörleri](index-add-language-analyzers.md) | Bileşik sözcüklerde veya dizelerde, sesli harflerdeki mutasyonlarda ve fiil formlarında tireleri korur. Sorgu desenleri tire içeriyorsa, bir dil çözümleyicisi kullanmak yeterli olabilir. |
-| [Anahtar kelime](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Tüm alanın içeriği tek bir terim olarak belirtilir. |
-| [Boşluk](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Yalnızca beyaz alanlarda ayırır. Tire veya diğer karakterleri içeren terimler tek bir belirteç olarak kabul edilir. |
-| [özel analizör](index-add-custom-analyzers.md) | (önerilir) Özel bir çözümleyici oluşturmak, hem belirteç ve belirteç filtresini belirtmenize olanak tanır. Önceki çözümleyiciler olduğu gibi kullanılmalıdır. Özel bir çözümleyici, hangi belirteçleri ve belirteç filtreleri kullanmak için seçmenizi sağlar. <br><br>Önerilen kombinasyon, [küçük harf belirteç filtresine](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)sahip anahtar kelime [tokenizeridir.](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) Kendi başına, önceden tanımlanmış [anahtar kelime çözümleyici](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) sorguları başarısızlığa neden olabilir herhangi bir büyük harfli metin, küçük harf değildir. Özel bir çözümleyici, küçük harf belirteç filtresi eklemek için bir mekanizma sağlar. |
+| [Dil Çözümleyicileri](index-add-language-analyzers.md) | Birleşik kelimeler veya dizelerde, sesli harfler ve fiil formlarında kısa çizgileri korur. Sorgu desenleri tire içeriyorsa, dil Çözümleyicisi kullanmak yeterli olabilir. |
+| [sözcükle](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Tüm alanın içeriği tek bir terim olarak simgeleştirilir. |
+| [boşlu](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Yalnızca boşluklardan ayrılır. Tireler veya diğer karakterleri içeren koşullar tek bir belirteç olarak değerlendirilir. |
+| [özel çözümleyici](index-add-custom-analyzers.md) | Önerilen Özel bir çözümleyici oluşturma, hem belirteç ayırıcı hem de Token filtresi belirtmenize olanak tanır. Önceki çözümleyiciler olduğu gibi kullanılmalıdır. Özel çözümleyici, hangi simgeleyiciler ve belirteç filtrelerini kullanacağınızı seçmenizi sağlar. <br><br>Önerilen birleşim, [küçük harfli bir belirteç filtresiyle](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html) [Simgeleştirici anahtar kelimedir](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) . Tek başına, önceden tanımlanmış [anahtar sözcük Çözümleyicisi](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) büyük/küçük harf, sorguların başarısız olmasına neden olabilir. Özel çözümleyici, size küçük harfli belirteç filtresi eklemek için bir mekanizma sağlar. |
 
-Postacı gibi bir web API test aracı kullanıyorsanız, belirteç çıktısını incelemek için [Test Analyzer REST çağrısını](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) ekleyebilirsiniz.
+Postman gibi bir Web API test aracı kullanıyorsanız, simgeleştirilmiş çıktıyı incelemek için [Test ÇÖZÜMLEYICISI Rest çağrısını](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) ekleyebilirsiniz.
 
-Çalışmak için varolan bir dizinin olması gerekir. Varolan bir dizin ve tire veya kısmi terimler içeren bir alan göz önüne alındığında, hangi belirteçlerin yayDığını görmek için belirli terimler üzerinde çeşitli çözümleyicileri deneyebilirsiniz.  
+Birlikte çalışmak için mevcut bir dizininizin olması gerekir. Var olan bir dizin ve tire ya da kısmi terim içeren bir alan verildiğinde, hangi belirteçlerin yayınlandığını görmek için belirli koşullara göre çeşitli çözümleyiciler deneyebilirsiniz.  
 
-1. Terimlerin varsayılan olarak nasıl belirteçleştirilebildiğini görmek için Standart çözümleyicisini denetleyin.
+1. Koşulların varsayılan olarak nasıl simgeleştirilmiş olduğunu görmek için standart çözümleyici 'yi denetleyin.
 
    ```json
    {
@@ -95,7 +95,7 @@ Postacı gibi bir web API test aracı kullanıyorsanız, belirteç çıktısın�
    }
     ```
 
-1. Metnin dizin içinde nasıl belirteçleştirilebildiğini görmek için yanıtı değerlendirin. Her terimin nasıl küçük harfle ve nasıl ayrıldığına dikkat edin.
+1. Metnin dizin içinde nasıl simgeleştirilmiş olduğunu görmek için yanıtı değerlendirin. Her bir terimin ne kadar küçük ve nasıl bölündüğü hakkında dikkat edin.
 
     ```json
     {
@@ -121,7 +121,7 @@ Postacı gibi bir web API test aracı kullanıyorsanız, belirteç çıktısın�
         ]
     }
     ```
-1. İsteği veya `whitespace` `keyword` çözümleyiciyi kullanmak için değiştirin:
+1. `whitespace` Veya `keyword` çözümleyicisini kullanmak için isteği değiştirin:
 
     ```json
     {
@@ -130,7 +130,7 @@ Postacı gibi bir web API test aracı kullanıyorsanız, belirteç çıktısın�
     }
     ```
 
-1. Şimdi yanıt tek bir belirteç oluşur, büyük kasalı, tire bir parçası olarak korunmuş tire ile. Bir desen veya kısmi bir terim üzerinde arama yapmanız gerekiyorsa, sorgu altyapısı artık eşleşme bulmak için temele sahiptir.
+1. Artık yanıt, dizenin bir parçası olarak bir üst üste çizgilerden oluşan tek bir belirteçle oluşur. Bir düzende veya kısmi bir dönemde aramanız gerekiyorsa, sorgu altyapısı artık eşleşme bulma temelini oluşturur.
 
 
     ```json
@@ -147,17 +147,17 @@ Postacı gibi bir web API test aracı kullanıyorsanız, belirteç çıktısın�
     }
     ```
 > [!Important]
-> Sorgu ağacını kurarken sorgu ayrıştırıcılarının genellikle bir arama ifadesinde küçük harf terimlerini ayrıştırdığını unutmayın. Küçük harfli metin girişleri olmayan bir çözümleyici kullanıyorsanız ve beklenen sonuçları almıyorsanız, bu nedenle olabilir. Çözüm, aşağıdaki "Özel çözümleyiciler kullan" bölümünde açıklandığı gibi küçük harfbelirteç filtresi eklemektir.
+> Sorgunun, sorgu ağacını oluştururken bir arama ifadesinde genellikle küçük harf koşullarına duyarlı olduğunu unutmayın. Büyük/küçük harf metin girişi olmayan bir çözümleyici kullanıyorsanız ve beklenen sonuçları alamıyorsanız, bunun nedeni bu olabilir. Çözüm, aşağıdaki "özel Çözümleyicileri kullanma" bölümünde açıklandığı gibi küçük harfli bir belirteç filtresi eklemektir.
 
-## <a name="configure-an-analyzer"></a>Çözümleyiciyi yapılandırma
+## <a name="configure-an-analyzer"></a>Çözümleyici yapılandırma
  
-Çözümleyicileri değerlendiriyor veya belirli bir yapılandırmaile ilerliyor olun, alan tanımında çözümleyiciyi belirtmeniz ve yerleşik bir çözümleyici kullanmıyorsanız çözümleyicinin kendisini yapılandırmanız gerekir. Çözümleyicileri değiştirirken, genellikle dizini yeniden oluşturmanız gerekir (bırak, yeniden oluşturma ve yeniden yükleme). 
+Çözümleyici 'yi değerlendiriyor veya belirli bir yapılandırma ile ileriye doğru hareket etmekle birlikte, alan tanımında Çözümleyicisi belirtmeniz ve bir yerleşik çözümleyici kullanmıyorsanız, büyük olasılıkla çözümleyici 'yi yapılandırmanız gerekir. Çözümleyiciler takas edildiğinde, genellikle dizini yeniden oluşturmanız gerekir (drop, yeniden oluştur ve yeniden yükle). 
 
-### <a name="use-built-in-analyzers"></a>Yerleşik çözümleyicileri kullanma
+### <a name="use-built-in-analyzers"></a>Yerleşik çözümleyiciler kullanın
 
-Yerleşik veya önceden tanımlanmış çözümleyiciler, dizinde `analyzer` ek yapılandırma gerektirmeden alan tanımının özelliğinde adlarıyla belirtilebilir. Aşağıdaki örnek, çözümleyiciyi `whitespace` bir alana nasıl ayarlayacağınızı gösterir. 
+Yerleşik veya önceden tanımlanmış çözümleyiciler, dizinde ek yapılandırma gerekmeden, bir alan tanımının `analyzer` bir özelliğinde ad ile belirtilebilir. Aşağıdaki örnek, bir alanı üzerinde `whitespace` çözümleyiciyi nasıl ayarlayabileceğinizi gösterir. 
 
-Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için [Önceden Tanımlanmış çözümleyiciler listesine](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)bakın. 
+Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [önceden tanımlanmış çözümleyiciler listesi](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {
@@ -172,14 +172,14 @@ Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bil
 
 ### <a name="use-custom-analyzers"></a>Özel çözümleyiciler kullanma
 
-Özel bir [çözümleyici](index-add-custom-analyzers.md)kullanıyorsanız, dizin içinde kullanıcı tanımlı bir belirteç, belirteç filtresi ve olası yapılandırma ayarları yla tanımlayın. Daha sonra, yerleşik bir çözümleyici gibi, bir alan tanımı üzerinde başvuru.
+[Özel bir çözümleyici](index-add-custom-analyzers.md)kullanıyorsanız, bu dosyayı, Kullanıcı tanımlı Simgeleştirici, belirteç filtresi, olası yapılandırma ayarları ile birlikte dizinde tanımlayın. Daha sonra, bir alan tanımında, tıpkı yerleşik çözümleyici gibi, ona başvurun.
 
-Amaç tam terim belirteçleştirme olduğunda, **bir anahtar kelime belirteci** ve **küçük harf belirteç filtresinden** oluşan özel bir çözümleyici önerilir.
+Amaç bir bütün olarak simgeleştirmeye ayarlandığında, **simgeleştirme anahtar sözcüğünden** ve **küçük harfli belirteç filtresinden** oluşan özel bir çözümleyici önerilir.
 
-+ Anahtar kelime belirteci, bir alanın tüm içeriği için tek bir belirteç oluşturur.
-+ Küçük harf belirteç filtresi büyük harfleri küçük harfli metne dönüştürür. Sorgu ayrıştırıcıları genellikle herhangi bir büyük metin girişlerini küçük düşürür. Düşük kasa, girdileri belirteçli terimlerle homojenize eder.
++ Belirteç ayırıcı anahtar sözcüğü, bir alanın tüm içeriği için tek bir belirteç oluşturur.
++ Küçük harfli belirteç filtresi, büyük harfli harfleri küçük harfli metne dönüştürür. Sorgu Çözümleyicileri genellikle küçük harfli bir metin girişi yapar. Büyük küçük harf, girdileri simgeleştirilmiş koşullara göre sıralar.
 
-Aşağıdaki örnekte, anahtar kelime tokenizeri ve küçük harf belirteç filtresi sağlayan özel bir çözümleyici gösteriş gösterin.
+Aşağıdaki örnek, Simgeleştirici ve küçük harfli bir belirteç filtresi anahtar sözcüğünü sağlayan özel bir çözümleyici gösterir.
 
 ```json
 {
@@ -211,35 +211,35 @@ Aşağıdaki örnekte, anahtar kelime tokenizeri ve küçük harf belirteç filt
 ```
 
 > [!NOTE]
-> Belirteç `keyword_v2` ve `lowercase` belirteç filtresi sistem tarafından bilinen ve varsayılan yapılandırmaları kullanarak, bu nedenle ilk olarak tanımlamak zorunda kalmadan adıyla başvuruyapabilirsiniz.
+> `keyword_v2` Belirteç ayırıcı ve `lowercase` Token filtresi, sistem tarafından bilinir ve varsayılan yapılandırmalarının kullanılması gerekir. bu nedenle, bunları önce tanımlamak zorunda kalmadan ada göre başvurabileceğiniz anlamına gelir.
 
 ## <a name="build-and-test"></a>Derleme ve test etme
 
-Senaryonuzu destekleyen çözümleyiciler ve alan tanımları içeren bir dizin tanımladıktan sonra, kısmi dize sorgularını sınayabilmeniz için temsili dizeleri olan belgeleri yükleyin. 
+Çözümleyicinizi destekleyen çözümleyiciler ve alan tanımlarına sahip bir dizin tanımladıktan sonra, kısmi dize sorgularını test edebilmeniz için temsili dizeleri olan belgeleri yükleyin. 
 
-Önceki bölümlerde mantık açıklanmıştır. Bu bölüm, çözümünüzü test ederken aramanız gereken her API'den geçer. Daha önce de belirtildiği gibi, Postman gibi etkileşimli bir web test aracı kullanıyorsanız, bu görevleri hızlı bir şekilde atlayabilirsiniz.
+Önceki bölümlerde Logic açıklanmaktadır. Bu bölüm, çözümünüzü sınarken çağırmanız gereken her API aracılığıyla yapmanız gereken adımları uygulayın. Daha önce belirtildiği gibi, Postman gibi etkileşimli bir Web testi aracı kullanırsanız, bu görevleri hızlıca izleyebilirsiniz.
 
-+ [Sil Dizini,](https://docs.microsoft.com/rest/api/searchservice/delete-index) aynı adı niçin yeniden oluşturabileceğinizi varolan bir dizini kaldırır.
++ [Dizini Sil](https://docs.microsoft.com/rest/api/searchservice/delete-index) , yeniden oluşturabilmeniz için aynı ada sahip var olan bir dizini kaldırır.
 
-+ [Create Index,](https://docs.microsoft.com/rest/api/searchservice/create-index) çözümleyici tanımları ve çözümleyici belirtimi olan alanlar da dahil olmak üzere arama hizmetinizdeki dizin yapısını oluşturur.
++ [Create INDEX](https://docs.microsoft.com/rest/api/searchservice/create-index) , çözümleyici tanımları ve çözümleyici belirtimine sahip alanlar da dahil olmak üzere arama hizmetinizde dizin yapısı oluşturur.
 
-+ [Yük Belgeleri,](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) dizininizdeki yapıyla aynı yapıya sahip belgeleri ve aranabilir içeriği içeri yükler. Bu adımdan sonra dizinsorgu veya test etmeye hazırdır.
++ [Yükleme belgeleri](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) , dizininizdeki ve aranabilir içeriğin yanı sıra aynı yapıya sahip belgeleri içeri aktarır. Bu adımdan sonra, dizininiz sorgu veya test için hazırlanıyor.
 
-+ [Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) bir [çözümleyici seçin](#choose-an-analyzer)tanıtıldı. Terimlerin nasıl belirteçleştirilebildiğini anlamak için çeşitli çözümleyiciler kullanarak dizininizdeki dizelerin bazılarını test edin.
++ [Test Çözümleyicisi](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) , [bir çözümleyici seçin](#choose-an-analyzer)bölümünde tanıtılmıştır. Koşulların nasıl simgeleştirilmiş olduğunu anlamak için çeşitli çözümleyiciler kullanarak dizininizdeki dizelerin bazılarını test edin.
 
-+ [Arama Belgeleri,](https://docs.microsoft.com/rest/api/searchservice/search-documents) joker karakter ve normal ifadeler için [basit sözdizimi](query-simple-syntax.md) veya [tam Lucene sözdizimini](query-lucene-syntax.md) kullanarak bir sorgu isteğinin nasıl oluşturulabildiğini açıklar.
++ [Arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) , joker ve normal ifadeler için [basit söz dizimi](query-simple-syntax.md) veya [tam Lucene sözdizimini](query-lucene-syntax.md) kullanarak bir sorgu isteğinin nasıl oluşturulacağını açıklar.
 
-  "+1 (425) 703-6214" üzerinde eşleşme bulmak için "3-6214" sorgusu gibi kısmi terim sorguları için `search=3-6214&queryType=simple`basit sözdizimini kullanabilirsiniz: .
+  "+ 1 (425) 703-6214" üzerinde bir eşleşme bulmak için "3-6214" sorgulaması gibi kısmi terim sorguları için, basit söz dizimini kullanabilirsiniz: `search=3-6214&queryType=simple`.
 
-  "Alfanümerik" üzerinde eşleşme bulmak için "sayısal" veya "sayısal" sorgusu gibi ek ve sonek sorguları için Lucene sözdiziminin tamamını ve normal bir ifadeyi kullanın:`search=/.*num.*/&queryType=full`
+  "Num" veya "" alfasayısal "ile eşleşen bir eşleşme bulmak için sayısal olarak sorgu ve sonek sorguları için, tam Lucene söz dizimini ve bir normal ifadeyi kullanın:`search=/.*num.*/&queryType=full`
 
 ## <a name="tips-and-best-practices"></a>İpuçları ve en iyi yöntemler
 
 ### <a name="tune-query-performance"></a>Sorgu performansını ayarlama
 
-keyword_v2 belirteç ve küçük harf belirteç filtresi içeren önerilen yapılandırmayı uygularsanız, dizininizdeki varolan belirteçler üzerinde ek belirteç filtresi işleme nedeniyle sorgu performansında bir düşüş fark edebilirsiniz. 
+Keyword_v2 belirteç ayırıcı ve küçük harfli belirteç filtresini içeren önerilen yapılandırmayı uygularsanız, dizininizdeki mevcut belirteçler üzerinde ek belirteç filtresi işleme nedeniyle sorgu performansında azalmayı fark edebilirsiniz. 
 
-Aşağıdaki örnek, önek eşleşmeleri daha hızlı yapmak için bir [EdgeNGramTokenFiltresi](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) ekler. Karakterleri içeren 2-25 karakter birleşimiiçin ek belirteçler oluşturulur: (sadece MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/SQ, MSFT/SQL değil). Tahmin edebileceğiniz gibi, ek belirteç oluşturma daha büyük bir dizin sonuçlanır.
+Aşağıdaki örnek, öneki daha hızlı eşleşmekte olmak için bir [Edgengramtokenfilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) ekler. Şu karakterleri içeren 2-25 karakter birleşimlerinde ek belirteçler oluşturulur: (yalnızca MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/SQ, MSFT/SQL). Imagine de, ek simgeleştirme daha büyük bir dizin ile sonuçlanır.
 
 ```json
 {
@@ -278,13 +278,13 @@ Aşağıdaki örnek, önek eşleşmeleri daha hızlı yapmak için bir [EdgeNGra
 ]
 ```
 
-### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Dizin oluşturma ve sorgu işleme için farklı çözümleyiciler kullanın
+### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Dizin oluşturma ve sorgu işleme için farklı çözümleyiciler kullanma
 
-Çözümleyiciler dizin oluşturma ve sorgu yürütme sırasında çağrılır. Her ikisi için de aynı çözümleyicikullanmak yaygındır, ancak her iş yükü için özel çözümleyicileri yapılandırabilirsiniz. Çözümleyici geçersiz kılmaları bir `analyzers` [bölümdeki dizin tanımında](https://docs.microsoft.com/rest/api/searchservice/create-index) belirtilir ve daha sonra belirli alanlarda başvurulur. 
+Çözümleyiciler dizin oluşturma sırasında ve sorgu yürütülürken çağırılır. Her ikisi için de aynı çözümleyici kullanılması yaygındır, ancak her iş yükü için özel Çözümleyicileri yapılandırabilirsiniz. Çözümleyici geçersiz kılmaları bir `analyzers` bölümdeki [Dizin tanımında](https://docs.microsoft.com/rest/api/searchservice/create-index) belirtilir ve ardından belirli alanlarda başvurulur. 
 
-Yalnızca dizin oluşturma sırasında özel çözümleme gerektiğinde, özel çözümleyiciyi yalnızca dizine uygulayabilir ve sorgular için standart Lucene çözümleyicisini (veya başka bir çözümleyiciyi) kullanmaya devam edebilirsiniz.
+Özel analiz yalnızca dizin oluşturma sırasında gerekliyse, özel çözümleyici 'yi yalnızca dizin oluşturma için uygulayabilir ve sorgular için standart Lucene Analyzer 'ı (veya başka bir Çözümleyicisi) kullanmaya devam edebilirsiniz.
 
-Role özgü çözümleme belirtmek için, her biri için alandaki `searchAnalyzer` özellikleri, `analyzer` varsayılan özellik yerine ayarlayabilirsiniz. `indexAnalyzer`
+Role özgü analiz belirtmek için, her biri için alanın özelliklerini, varsayılan `indexAnalyzer` `searchAnalyzer` `analyzer` Özellik yerine ve ayarlarını belirleyebilirsiniz.
 
 ```json
 "name": "featureCode",
@@ -294,9 +294,9 @@ Role özgü çözümleme belirtmek için, her biri için alandaki `searchAnalyze
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, çözümleyicilerin hem sorgu sorunlarına katkıda bulunmaları hem de sorgu sorunlarını nasıl çözdükleri açıklanmaktadır. Bir sonraki adım olarak, çözümleyicinin dizin oluşturma ve sorgu işleme üzerindeki etkisine daha yakından bakın. Özellikle, bir çözümleyicinin dizininiz için tam olarak ne oluşturduğunu görebilmeniz için belirteçleştirilmiş çıktıyı döndürmek için Çözümleme Metni API'sini kullanmayı düşünün.
+Bu makalede, çözümleyicilerin her ikisi de sorgu sorunlarına katkıda bulunma ve sorgu sorunlarını çözme işlemleri açıklanmaktadır. Bir sonraki adımda, dizin oluşturma ve sorgu işleme konusunda çözümleyici etkisi konusuna daha yakından göz atın. Özellikle, dizininiz için bir çözümleyici 'nin nasıl olduğunu tam olarak görebilmeniz için simgeleştirilmiş çıktıyı döndürmek için metin analizi API 'sini kullanmayı göz önünde bulundurun.
 
 + [Dil çözümleyicileri](search-language-support.md)
-+ [Azure Bilişsel Arama'da metin işleme için çözümleyiciler](search-analyzers.md)
-+ [Metin API'sini Analiz Et (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
-+ [Tam metin arama nasıl çalışır (sorgu mimarisi)](search-lucene-query-architecture.md)
++ [Azure Bilişsel Arama metin işleme için çözümleyiciler](search-analyzers.md)
++ [Metin API 'sini çözümleme (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Tam metin aramasının nasıl çalıştığı (sorgu mimarisi)](search-lucene-query-architecture.md)

@@ -1,6 +1,6 @@
 ---
-title: HTTPS üzerinden Azure CDN özel etki alanını kullanarak depolama lekelerine erişin
-description: Azure CDN özel etki alanı eklemeyi ve özel blob depolama bitiş noktanız için bu etki alanında HTTPS'yi nasıl etkinleştirleyeceğinizi öğrenin.
+title: HTTPS üzerinden Azure CDN özel etki alanı kullanarak depolama bloblarına erişme
+description: Özel BLOB depolama uç noktanız için Azure CDN özel etki alanı ekleme ve bu etki alanında HTTPS 'yi etkinleştirme hakkında bilgi edinin.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -16,10 +16,10 @@ ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 5b6fe2b2704f101a7775b7eb700375105b0a9eca
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81259893"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Öğretici: Depolama bloblarına HTTPS üzerinden Azure CDN özel etki alanı kullanarak erişme
@@ -44,15 +44,15 @@ Azure CDN SAS belirtecine eklenen kısıtlamaları yok sayar. Örneğin, tüm SA
 Aynı blob uç noktası için birden çok SAS URL’si oluşturursanız, sorgu dizesi önbelleğe almayı göz önünde bulundurun. Bunu yapmak her URL’nin benzersiz bir varlık olarak kabul edilmesini sağlar. Daha fazla bilgi için bkz. [Sorgu dizeleri içeren Azure CDN önbelleğe alma davranışını kontrol etme](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>HTTP’den -HTTPS’ye yeniden yönlendirme
-Standart kurallar motoru veya [Verizon Premium kuralları](cdn-verizon-premium-rules-engine.md) [motoru](cdn-standard-rules-engine.md) ile bir URL yönlendirme kuralı oluşturarak HTTP trafiğini HTTPS'ye yönlendirmeyi seçebilirsiniz. Standart Kurallar altyapısı yalnızca Microsoft profillerinden Azure CDN için kullanılabilirken, Verizon premium kurallar altyapısı yalnızca Verizon profillerinden Azure CDN Premium'dan kullanılabilir.
+[Standart kurallar altyapısı](cdn-standard-rules-engine.md) veya [Verizon Premium kuralları ALTYAPıSı](cdn-verizon-premium-rules-engine.md)ile bir URL YENIDEN yönlendirme KURALı oluşturarak HTTP trafiğini HTTPS 'ye yeniden yönlendirmeyi tercih edebilirsiniz. Standart kurallar altyapısı yalnızca Microsoft profillerinin Azure CDN için kullanılabilir, ancak Verizon Premium kuralları altyapısı yalnızca Verizon profillerdeki Azure CDN Premium ile kullanılabilir.
 
 ![Microsoft yeniden yönlendirme kuralı](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-Yukarıdaki kuralda, Ana Bilgisayar Adı, Yol, Sorgu dizesi ve Fragment'i terk etmek, yeniden yönlendirmede kullanılan gelen değerlerle sonuçlanır. 
+Yukarıdaki kuralda, ana bilgisayar adı, yol, sorgu dizesi ve parçadan ayrıldığınızda gelen değerler yeniden yönlendirmede kullanılır. 
 
-![Verizon yönlendirme kuralı](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Verizon yeniden yönlendirme kuralı](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
 
-Yukarıdaki kuralda, *Cdn uç nokta adı,* açılan listeden seçebileceğiniz CDN bitiş noktanız için yapılandırdığınız adı ifade eder. *origin-path* değeri statik içeriğinizin bulunduğu kaynak depolama hesabı içindeki yola başvurur. Tüm statik içeriği tek bir kapsayıcıda barındırıyorsanız, *origin-path* değerini bu kapsayıcının adıyla değiştirin.
+Yukarıdaki kuralda, CDN uç *nokta-adı* , CDN uç noktanız için yapılandırdığınız ada başvurur ve bu, açılan listeden seçim yapabilirsiniz. *origin-path* değeri statik içeriğinizin bulunduğu kaynak depolama hesabı içindeki yola başvurur. Tüm statik içeriği tek bir kapsayıcıda barındırıyorsanız, *origin-path* değerini bu kapsayıcının adıyla değiştirin.
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 Azure CDN üzerinden bloblara eriştiğinizde, POP sunucuları ve kaynak (Blob depolama) arasında trafik için [Blob depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/) ve POP sunucularından erişilen veriler için [Azure CDN fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/) üzerinden ücret ödersiniz.

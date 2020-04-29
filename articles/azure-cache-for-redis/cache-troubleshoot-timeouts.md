@@ -1,55 +1,55 @@
 ---
 title: Redis için Azure Cache zaman aşımı sorunlarını giderme
-description: Redis sunucu düzeltme ve StackExchange.Redis zaman ara verme özel durumları gibi Redis için Azure Önbellek ile sık karşılaşılan zaman anına ilişkin sorunları nasıl çözeceğinizi öğrenin.
+description: Redsıs Server düzeltme eki uygulama ve StackExchange. Redsıs zaman aşımı özel durumları gibi, Redsıs için Azure önbelleğiyle ilgili genel zaman aşımı sorunlarını çözmeyi öğrenin.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010826"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Redis için Azure Cache zaman aşımı sorunlarını giderme
 
-Bu bölümde, Redis için Azure Önbelleği'ne bağlanırken oluşan sorun giderme zaman giderme sorunları anlatılmaktadır.
+Bu bölümde, Redsıs için Azure önbelleğine bağlanılırken oluşan zaman aşımı sorunlarını giderme işlemi anlatılmaktadır.
 
-- [Redis sunucu yama](#redis-server-patching)
-- [StackExchange.Redis zaman arası özel durumlar](#stackexchangeredis-timeout-exceptions)
+- [Redsıs sunucusu düzeltme eki uygulama](#redis-server-patching)
+- [StackExchange. Redsıs zaman aşımı özel durumları](#stackexchangeredis-timeout-exceptions)
 
 > [!NOTE]
-> Bu kılavuzdaki sorun giderme adımlarından bazıları Redis komutlarını çalıştırmak ve çeşitli performans ölçümlerini izlemek için yönergeler içerir. Daha fazla bilgi ve talimatlar için [Ek bilgi](#additional-information) bölümündeki makalelere bakın.
+> Bu kılavuzdaki sorun giderme adımlarından bazıları Redsıs komutları çalıştırma ve çeşitli performans ölçümlerini izleme yönergelerini içerir. Daha fazla bilgi ve yönergeler için [ek bilgi](#additional-information) bölümündeki makalelere bakın.
 >
 
-## <a name="redis-server-patching"></a>Redis sunucu yama
+## <a name="redis-server-patching"></a>Redsıs sunucusu düzeltme eki uygulama
 
-Redis için Azure Önbelleği, sunucu yazılımını sağladığı yönetilen hizmet işlevselliğinin bir parçası olarak düzenli olarak güncelleştirir. Bu [yama](cache-failover.md) etkinliği büyük ölçüde sahnenin arkasında gerçekleşir. Redis sunucu düğümlerinin yaması sırasında, bu düğümlere bağlı Redis istemcileri, bu düğümler arasında bağlantı geçiş yaptığı için geçici zaman aparatları yaşayabilir. Bkz. Bir hata, yama nın uygulamanız üzerinde ne gibi yan etkilere sahip olabileceği ve yama olaylarının işlenmesini nasıl iyileştirebileceğiniz hakkında daha fazla bilgi için [müşteri başvurumu nasıl etkiler.](cache-failover.md#how-does-a-failover-affect-my-client-application)
+Redsıs için Azure önbelleği, sağladığı yönetilen hizmet işlevselliğinin bir parçası olarak sunucu yazılımını düzenli olarak güncelleştirir. Bu [düzeltme eki uygulama](cache-failover.md) , büyük ölçüde sahnenin arkasında yer alır. Redsıs sunucu düğümlerine düzeltme eki eklenen yük devretme işlemleri sırasında, bu düğümlere bağlı olan Redsıs istemcileri bu düğümler arasında bağlantı kurulmasını geçici zaman aşımları ile karşılaşabilir. Bkz. bir yük devretme, uygulamanızda hangi yan etkilere sahip olabilir ve düzeltme eki uygulama işlemlerini nasıl geliştirebileceğiniz hakkında daha fazla bilgi için [istemci uygulamamı nasıl etkiler](cache-failover.md#how-does-a-failover-affect-my-client-application) ?
 
-## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange.Redis zaman arası özel durumlar
+## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange. Redsıs zaman aşımı özel durumları
 
-StackExchange.Redis varsayılan değeri `synctimeout` 1000 ms olan senkron işlemler için adlandırılmış bir yapılandırma ayarı kullanır. Bu süre içinde eşzamanlı bir arama tamamlanmazsa, StackExchange.Redis istemcisi aşağıdaki örneğe benzer bir zaman alakart hatası atar:
+StackExchange. Redo, varsayılan 1000 ms değeri `synctimeout` ile zaman uyumlu işlemler için adlı bir yapılandırma ayarı kullanır. Zaman uyumlu bir çağrı bu süre içinde tamamlanmazsa, StackExchange. Redsıs istemcisi aşağıdaki örneğe benzer bir zaman aşımı hatası oluşturur:
 
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
 
-Bu hata iletisi, sorunun nedeni ve olası çözümüne işaret yardımcı olabilecek ölçümler içerir. Aşağıdaki tabloda hata iletisi ölçümleri hakkında ayrıntılar yer alıyor.
+Bu hata iletisi, sorunun nedenine ve olası çözümüne işaret etmenize yardımcı olabilecek ölçümler içerir. Aşağıdaki tabloda hata iletisi ölçümleriyle ilgili ayrıntılar yer almaktadır.
 
 | Hata iletisi ölçümü | Ayrıntılar |
 | --- | --- |
-| ınst |Son kez dilimde: 0 komutları verildi |
-| Mgr |Soket yöneticisi `socket.select`yapıyor, bu da işletim sistemi'nden yapacak bir şeyi olan bir soketi göstermesini istediği anlamına geliyor. Okuyucu ağdan aktif olarak okumuyor çünkü yapacak bir şey olmadığını düşünüyor. |
-| kuyruk |Toplam 73 devam etmekte olan operasyonlar var |
-| Qu |Devam eden işlemlerden 6'sı gönderilmemiş sırada ve giden ağa henüz yazılmadı |
-| Qs |Devam eden işlemlerin 67'si sunucuya gönderildi, ancak henüz bir yanıt bulunamadı. Yanıt, `Not yet sent by the server``sent by the server but not yet processed by the client.` |
-| Qc |Devam eden işlemlerin 0'ı yanıtları gördü, ancak tamamlanma döngüsünde bekledikleri için henüz tam olarak işaretlenmedi |
-| Wr |Etkin bir yazar (yani gönderilmemiş 6 istek göz ardı edilmiyor) baytlar/activewriters |
-| in |Hiçbir aktif okuyucu ve sıfır bayt NIC bayt / activereaders okumak için kullanılabilir |
+| inst |Son zaman dilimi: 0 komutları yayımlandığında |
+| SETUPAPI |Yuva Yöneticisi yapıyor `socket.select`, bu da işletim sisteminin, yapacağından ilgili bir yuva olduğunu belirtmesidir. Okuyucu herhangi bir şey olduğunu düşünmediği için ağ üzerinden etkin bir şekilde okunamaz |
+| kuyruk |Devam eden 73 Toplam işlem var |
+| Qu |işlemin 6 ' dan devam eden işlemler gönderilmemiş kuyrukta ve henüz giden ağa yazılmadı |
+| QS |devam eden işlemlerin 67 sunucuya gönderilmesi ancak bir yanıt henüz kullanılamıyor. Yanıt `Not yet sent by the server` veya`sent by the server but not yet processed by the client.` |
+| QC |sürmekte olan işlemlerin 0 ' a yanıt gördük ancak tamamlanma döngüsünde beklediği için henüz tamamlandı olarak işaretlenmedi |
+| WR |Etkin bir yazıcı (yani, 6 gönderilmemiş isteğin yoksayılmaması anlamına gelir) bayt/activeyazarlar |
+| in |Etkin okuyucu yok ve NIC baytları/activereaders üzerinde okunabilecek sıfır bayt var |
 
-Olası kök nedenlerini araştırmak için aşağıdaki adımları kullanabilirsiniz.
+Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsiniz.
 
-1. En iyi yöntem olarak StackExchange.Redis istemcisini kullanırken bağlanmak için aşağıdaki deseni kullandığınızdan emin olun.
+1. En iyi uygulama olarak, StackExchange. Redsıs istemcisini kullanırken bağlanmak için aşağıdaki kalıbı kullandığınızdan emin olun.
 
     ```csharp
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -67,26 +67,26 @@ Olası kök nedenlerini araştırmak için aşağıdaki adımları kullanabilirs
     }
     ```
 
-    Daha fazla bilgi için [StackExchange.Redis kullanarak önbelleğe bağlan'a](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)bakın.
+    Daha fazla bilgi için bkz. [StackExchange. redsıs kullanarak önbelleğe bağlanma](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
 
-1. Sunucunuzun ve istemci uygulamanızın Azure'da aynı bölgede olduğundan emin olun. Örneğin, önbelleğiniz Doğu ABD'deyken, ancak istemci Batı ABD'deyken ve istek `synctimeout` aralıkta tamamlanmadığında veya yerel geliştirme makinenizden hata ayıklarken zaman aşımları alıyor olabilirsiniz. 
+1. Sunucunuzun ve istemci uygulamanızın Azure 'da aynı bölgede bulunduğundan emin olun. Örneğin, önbelleğiniz Doğu ABD, ancak istemci Batı ABD ve istek `synctimeout` Aralık içinde tamamlanmadığında zaman aşımları alabilir veya yerel geliştirme makinenizden hata ayıklarken zaman aşımları elde edebilirsiniz. 
 
-    Önbelleğin aynı Azure bölgesinde ve istemcide olması önerilir. Bölgeler arası çağrıları içeren bir senaryonuz varsa, `synctimeout` bağlantı dizesine bir `synctimeout` özellik ekleyerek aralığı varsayılan 1000 ms aralığından daha yüksek bir değere ayarlamanız gerekir. Aşağıdaki örnek, StackExchange.Redis için 2000 ms ile Redis için Azure `synctimeout` Önbelleği tarafından sağlanan bir bağlantı dizesinin bir snippet'ini gösterir.
+    Önbelleğin ve istemcisinin aynı Azure bölgesinde olması kesinlikle önerilir. Çapraz bölge çağrılarını içeren bir senaryonuz varsa, bağlantı dizesine bir `synctimeout` `synctimeout` özellik ekleyerek aralığı varsayılan 1000-ms aralığından daha yüksek bir değere ayarlamanız gerekir. Aşağıdaki örnek, 2000 MS ile `synctimeout` redin Için Azure önbelleği tarafından StackExchange için bir bağlantı dizesinin kod parçacığını gösterir.
 
         synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
-1. [StackExchange.Redis NuGet paketinin](https://www.nuget.org/packages/StackExchange.Redis/)en son sürümünü kullandığınızdan emin olun. En son sürüme sahip olmak önemlidir, bu yüzden zaman ekmeleri daha sağlam hale getirmek için kod sürekli sabit hatalar vardır.
-1. İstekleriniz sunucu veya istemcideki bant genişliği sınırlamalarına bağlıysa, bunların tamamlanması daha uzun sürer ve zaman aşımına neden olabilir. Zaman aşımınızın sunucudaki ağ bant genişliğinden dolayı olup olmadığını görmek için [Sunucu tarafındaki bant genişliği sınırlamasına](cache-troubleshoot-server.md#server-side-bandwidth-limitation)bakın. Zaman aşımınızın istemci ağ bant genişliğinden dolayı olup olmadığını görmek [için, Istemci tarafındaki bant genişliği sınırlamasına](cache-troubleshoot-client.md#client-side-bandwidth-limitation)bakın.
-1. CPU'yu sunucuya mı yoksa istemciye mi bağlı hale getirin?
+1. [StackExchange. Redsıs NuGet paketinin](https://www.nuget.org/packages/StackExchange.Redis/)en son sürümünü kullandığınızdan emin olun. En son sürüme sahip olacak şekilde, zaman aşımlarını daha sağlam hale getirmek için kodda sürekli olarak düzeltilen hatalar vardır.
+1. İstekleriniz sunucu veya istemcideki bant genişliği sınırlamalarına göre bağlanmışsa, tamamlanmaları daha uzun sürer ve zaman aşımları oluşmasına neden olabilir. Zaman aşımının sunucuda ağ bant genişliği olmasından dolayı olup olmadığını görmek için bkz. [sunucu tarafı bant genişliği sınırlaması](cache-troubleshoot-server.md#server-side-bandwidth-limitation). Zaman aşımının istemci ağ bant genişliği nedeniyle olup olmadığını görmek için bkz. [istemci tarafı bant genişliği sınırlaması](cache-troubleshoot-client.md#client-side-bandwidth-limitation).
+1. Sunucuda veya istemcide CPU 'ya bağlı mı?
 
-   - Müşterinizin CPU'ya bağlanıp bağlanmadığınızı kontrol edin. Yüksek CPU, isteğin `synctimeout` aralık içinde işlenmemesi ve isteğin zaman alabına neden olabilir. Daha büyük bir istemci boyutuna taşıma veya yükü dağıtmak bu sorunu denetlemeye yardımcı olabilir.
-   - CPU [önbellek performans ölçümünü](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)izleyerek sunucuda CPU bağlanıp bağlanmadığınızı kontrol edin. Redis CPU bağlıyken gelen istekler bu isteklerin zaman alabına neden olabilir. Bu durumu gidermek için, yükü premium önbellekteki birden çok parçaya dağıtabilir veya daha büyük bir boyuta veya fiyatlandırma katmanına yükseltebilirsiniz. Daha fazla bilgi için [Sunucu tarafındaki bant genişliği sınırlaması'na](cache-troubleshoot-server.md#server-side-bandwidth-limitation)bakın.
-1. Sunucuda işlenmesi uzun zaman alan komutlar var mı? Redis sunucusunda işlenmesi uzun zaman alan uzun süreli komutlar zaman ayarı yapabilir. Uzun süren komutlar hakkında daha fazla bilgi [için, Uzun süren komutlara](cache-troubleshoot-server.md#long-running-commands)bakın. Redis-cli istemcisini veya [Redis Konsolunu](cache-configure.md#redis-console)kullanarak Redis örneği için Azure Önbelleğinize bağlanabilirsiniz. Ardından, beklenenden daha yavaş istekolup olmadığını görmek için [SLOWLOG](https://redis.io/commands/slowlog) komutunu çalıştırın. Redis Server ve StackExchange.Redis, daha az büyük istek yerine birçok küçük istek için optimize edilebistir. Verilerinizi daha küçük parçalara bölmek burada bazı şeyleri geliştirebilir.
+   - İstemcinizdeki CPU ile bağlı olup olmadığınızı denetleyin. Yüksek CPU, isteğin `synctimeout` Aralık içinde işlenmemesine ve isteğin zaman aşımına gelmesine neden olabilir. Daha büyük bir istemci boyutuna geçme veya yükü dağıtma bu sorunu denetlemeye yardımcı olabilir.
+   - CPU [önbelleği performans ölçümünü](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)IZLEYEREK sunucuda CPU bağlı olup olmadığınızı denetleyin. Redin CPU sınırının geldiği sırada gelen istekler bu isteklerin zaman aşımına yol açabilir. Bu durumu gidermek için, yükü bir Premium önbellekte birden fazla parçaya dağıtabilir veya daha büyük bir boyuta veya fiyatlandırma katmanına yükseltebilirsiniz. Daha fazla bilgi için bkz. [sunucu tarafı bant genişliği sınırlaması](cache-troubleshoot-server.md#server-side-bandwidth-limitation).
+1. Sunucuda işlenmesi uzun zaman alan komutlar var mı? Redo-Server üzerinde işlenmesi uzun süren uzun süre çalışan komutlar zaman aşımına neden olabilir. Uzun süredir çalışan komutlar hakkında daha fazla bilgi için bkz. [uzun süreli komutlar](cache-troubleshoot-server.md#long-running-commands). Redsıs-CLI istemcisini veya [Redsıs konsolunu](cache-configure.md#redis-console)kullanarak redsıs örneği Için Azure önbelleğinize bağlanabilirsiniz. Ardından, beklenden daha yavaş istekler olup olmadığını görmek için [yavaşlatma log](https://redis.io/commands/slowlog) komutunu çalıştırın. Redsıs Server ve StackExchange. Redsıs, daha az sayıda büyük istek yerine birçok küçük istek için iyileştirilmiştir. Verilerinizi daha küçük parçalara bölmek buradaki şeyleri iyileştirebilecek.
 
-    Redis-cli ve stunnel kullanarak önbelleğinizin TLS/SSL bitiş noktasına bağlanma hakkında daha fazla bilgi için, [Redis Preview Release için Oturum Devlet SağlayıcısıASP.NET duyuran](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)blog gönderisine bakın.
-1. Yüksek Redis sunucu yükü zaman adabına neden olabilir. `Redis Server Load` [Önbellek performans ölçümünü](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)izleyerek sunucu yükünü izleyebilirsiniz. 100 sunucu yükü (maksimum değer) redis sunucusunun meşgul olduğunu, boşta kalmadan istekleri ni işlemediğini belirtir. Belirli isteklerin tüm sunucu kapasitesini alıp almamalarını görmek için, önceki paragrafta açıklandığı gibi SlowLog komutunu çalıştırın. Daha fazla bilgi için Yüksek CPU kullanımı / Sunucu Yükü'ne bakın.
-1. İstemci tarafında ağ blip'ine neden olabilecek başka bir olay var mıydı? Sık karşılaşılan olaylar şunlardır: istemci örneklerinin sayısını yukarı veya aşağı ölçeklendirme, istemcinin yeni bir sürümünü dağıtma veya otomatik ölçeklendirme etkin. Testlerimizde, otomatik ölçeklendirme veya yukarı/aşağı ölçeklendirmenin giden ağ bağlantısının birkaç saniye liğine kaybolmasına neden olabileceğini bulduk. StackExchange.Redis kodu bu tür olaylara karşı dayanıklıdır ve yeniden bağlanır. Yeniden bağlanma sırasında, kuyruktaki tüm istekler zaman dışında olabilir.
-1. Önbelleğe gelen birkaç küçük istekten önce zaman lanmış büyük bir istek var mıydı? Hata iletisindeki parametre, `qs` istemciden sunucuya kaç istek gönderildiğini gösterir, ancak bir yanıtı işlememiş. StackExchange.Redis tek bir TCP bağlantısı kullandığından ve aynı anda yalnızca bir yanıtı okuyabildiği için bu değer büyümeye devam edebilir. İlk işlem zamanlanmış olsa bile, sunucuya veya sunucudan daha fazla verinin gönderilmesini durdurmaz. Diğer istekler, büyük istek tamamlanana kadar engellenir ve zaman alacaktır. Bir çözüm, önbelleğinizin iş yükünüz için yeterince büyük olmasını ve büyük değerleri daha küçük parçalara bölmesini sağlayarak zaman ayırma olasılığını en aza indirmektir. Başka bir olası çözüm istemcinizde `ConnectionMultiplexer` nesnelerin bir havuz kullanmak ve `ConnectionMultiplexer` yeni bir istek gönderirken en az yüklü seçin. Birden çok bağlantı nesnesi arasında yükleme, tek bir zaman anındiğer isteklerin de zaman alamasına neden olmasını önleymelidir.
-1. Kullanıyorsanız, `RedisSessionStateProvider`yeniden deneme zaman öncesini doğru ayarladığınızdan emin olun. `retryTimeoutInMilliseconds`daha `operationTimeoutInMilliseconds`yüksek olmalıdır, aksi takdirde hiçbir yeniden deneme oluşur. Aşağıdaki örnekte `retryTimeoutInMilliseconds` 3000 olarak ayarlanır. Daha fazla bilgi [için, Redis için Azure Önbelleği için ASP.NET Oturum Devlet Sağlayıcısı](cache-aspnet-session-state-provider.md) ve Oturum Durumu Sağlayıcısı ve Çıktı [Önbellek Sağlayıcısı'nın yapılandırma parametrelerinin nasıl kullanılacağı](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration)bölümüne bakın.
+    Redsıs-CLI ve Stunnel kullanarak önbelleğinizi TLS/SSL uç noktasına bağlama hakkında daha fazla bilgi için bkz. The [Redsıs Preview sürümü için ASP.NET oturum durumu sağlayıcısı duyuruldu](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+1. Yüksek Redsıs sunucu yüklemesi zaman aşımına neden olabilir. `Redis Server Load` [Önbellek performans ölçümünü](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)izleyerek sunucu yükünü izleyebilirsiniz. Sunucu yükü 100 (en yüksek değer), redsıs sunucusunun meşgul olduğunu, boşta kalma süresi olmadan ve işleme isteklerini belirtir. Belirli isteklerin tüm sunucu yeteneklerini mi aldığını görmek için, önceki paragrafta açıklandığı gibi Yavaşgünlüğü komutunu çalıştırın. Daha fazla bilgi için bkz. yüksek CPU kullanımı/sunucu yükü.
+1. İstemci tarafında ağ Blip oluşmasına neden olabilecek başka bir olay vardı mi? Ortak olaylar şunlardır: istemci örneklerinin sayısını ölçeği artırma veya azaltma, istemcinin yeni bir sürümünü dağıtma veya otomatik ölçeklendirme özelliği. Testinizde, otomatik ölçeklendirmeyi veya ölçeklendirmeyi artırma/azaltma, giden ağ bağlantısının birkaç saniye süreyle kaybolmasına neden olabilir. StackExchange. Redsıs kodu, bu tür olaylara esnektir ve yeniden bağlanır. Yeniden bağlanıldığında kuyruktaki isteklerin zaman aşımına uğrar.
+1. Birkaç küçük istekten daha önce zaman aşımına uğramış bir istek var mı? Hata iletisindeki `qs` parametresi, istemciden sunucuya kaç istek gönderildiğini söyler, ancak bir yanıt işlenmedi. StackExchange. redin tek bir TCP bağlantısı kullandığından ve aynı anda yalnızca bir yanıt okuyabildiğinden bu değer büyümeye devam edebilir. İlk işlem zaman aşımına uğrasa da, sunucudan veya sunucudan daha fazla verinin gönderilmesini durdurmaz. Diğer istekler, büyük istek tamamlanana kadar engellenecek ve zaman aşımlarına neden olabilir. Tek bir çözüm, önbelleğinizin iş yükünüz için yeterince büyük olmasını ve büyük değerleri daha küçük parçalara bölünmesini sağlayarak zaman aşımları olasılığını en aza indirmektir. Başka bir olası çözüm, istemcinizdeki bir `ConnectionMultiplexer` nesne havuzunu kullanmak ve yeni bir istek gönderirken en az yüklü `ConnectionMultiplexer` ' ı seçmedir. Birden çok bağlantı nesnesi arasında yükleme, tek bir zaman aşımının diğer isteklerin da zaman aşımına uğramasına neden olur.
+1. Kullanıyorsanız `RedisSessionStateProvider`, yeniden deneme zaman aşımını doğru ayarlamış olduğunuzdan emin olun. `retryTimeoutInMilliseconds`Şundan `operationTimeoutInMilliseconds`yüksek olmalıdır, aksi takdirde yeniden deneme gerçekleşmez. Aşağıdaki örnekte `retryTimeoutInMilliseconds` 3000 olarak ayarlanmıştır. Daha fazla bilgi için bkz. [ASP.NET oturum durumu sağlayıcısı, redsıs Için Azure önbelleği](cache-aspnet-session-state-provider.md) ve [oturum durumu sağlayıcısı ve çıkış önbelleği sağlayıcısı yapılandırma parametrelerinin nasıl kullanılacağı](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
     ```xml
     <add
@@ -103,17 +103,17 @@ Olası kök nedenlerini araştırmak için aşağıdaki adımları kullanabilirs
       retryTimeoutInMilliseconds="3000" />
     ```
 
-1. Redis sunucusu için Azure Önbelleğinde bellek kullanımını `Used Memory` [kontrol edin](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` ve . Bir çıkarma ilkesi varsa, Redis önbellek boyutuna `Used_Memory` ulaştığında anahtarları tahliye etmeye başlar. İdeal olarak, `Used Memory RSS` sadece biraz daha `Used memory`yüksek olmalıdır . Büyük bir fark bellek parçalanması (iç veya dış) olduğu anlamına gelir. Daha `Used Memory RSS` az `Used Memory`olduğunda, önbellek belleğinin bir parçası nın işletim sistemi tarafından değiştirildiğini gösterir. Bu takas oluşursa, bazı önemli gecikmeler bekleyebilirsiniz. Redis'in ayırmalarının bellek sayfalarına nasıl eşlendiği üzerinde denetimi `Used Memory RSS` olmadığından, yüksek genellikle bellek kullanımındaki ani bir artışın sonucudur. Redis sunucusu belleği boşalttığında, ayırıcı belleği alır, ancak belleği sisteme geri verebilir veya vermeyebilir. İşletim sistemi tarafından `Used Memory` bildirilen değer ve bellek tüketimi arasında bir tutarsızlık olabilir. Bellek Redis tarafından kullanılmış ve serbest bırakılmış olabilir ama sisteme geri verilmedi. Bellek sorunlarını azaltmaya yardımcı olmak için aşağıdaki adımları yapabilirsiniz:
+1. ' İ `Used Memory` [izleyerek](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` redo Server için Azure önbelleğindeki bellek kullanımını denetleyin. Çıkarma ilkesi mevcutsa redin, önbellek boyutuna `Used_Memory` ulaştığında anahtarları çıkarma işlemi başlatır. İdeal olarak `Used Memory RSS` , şundan `Used memory`yalnızca biraz daha yüksek olmalıdır. Büyük bir fark, bellek parçalanması (iç veya dış) anlamına gelir. Öğesinden `Used Memory RSS` `Used Memory`daha az olduğunda, önbellek belleğinin bir kısmının işletim sistemi tarafından değiştirilmiş olması anlamına gelir. Bu değiştirme gerçekleşirse bazı önemli gecikme süreleri bekleyebilir. Redin 'in, ayırmaların bellek sayfalarına eşlenme üzerinde denetimi olmadığından, yüksek `Used Memory RSS` genellikle bellek kullanımında ani bir artış elde edilir. Redsıs sunucusu belleği serbest bıraktığı zaman ayırıcı belleği alır, ancak bu bellek sisteme geri dönüş gösterebilir veya olmayabilir. İşletim sistemi tarafından bildirilen `Used Memory` değer ve bellek tüketimi arasında bir tutarsızlık olabilir. Bellek, Redsıs tarafından kullanılmış, ancak sisteme geri verilmeyebilir. Bellek sorunlarını azaltmaya yardımcı olmak için aşağıdaki adımları gerçekleştirebilirsiniz:
 
-   - Sistemdeki bellek sınırlamalarına karşı çalışmamak için önbelleği daha büyük bir boyuta yükseltin.
-   - Eski değerlerin proaktif olarak tahliye edilebilmeleri için anahtarlarda son kullanma sürelerini ayarlayın.
-   - Önbellek `used_memory_rss` ölçümünü izleyin. Bu değer önbelleklerinin boyutuna yaklaştığında, performans sorunlarını görmeye başlama olasılığınız yüksektir. Premium önbellek kullanıyorsanız verileri birden çok parçaya dağıtın veya daha büyük bir önbellek boyutuna yükseltin.
+   - Sistemdeki bellek sınırlamalarıyla çalışmaya devam edebilmeniz için önbelleği daha büyük bir boyuta yükseltin.
+   - Eski değerlerin önceden çıkarılabilmesi için anahtarların süre sonu zamanlarını ayarlayın.
+   - `used_memory_rss` Önbellek ölçümünü izleyin. Bu değer, önbelleğinin boyutuna yaklaşırsa, büyük olasılıkla performans sorunlarını görmeye başlayabilirsiniz. Premium önbellek kullanıyorsanız veya daha büyük bir önbellek boyutuna yükseltirseniz, verileri birden çok parça genelinde dağıtın.
 
-   Daha fazla bilgi için [Redis sunucusundaki Bellek basıncına](cache-troubleshoot-server.md#memory-pressure-on-redis-server)bakın.
+   Daha fazla bilgi için bkz. [redsıs sunucusu 'Nda bellek baskısı](cache-troubleshoot-server.md#memory-pressure-on-redis-server).
 
 ## <a name="additional-information"></a>Ek bilgiler
 
 - [Redis için Azure Cache istemci tarafı sorunlarını giderme](cache-troubleshoot-client.md)
 - [Redis için Azure Cache sunucu tarafı sorunlarını giderme](cache-troubleshoot-server.md)
-- [Önbelleğimin performansını nasıl kıyaslayabilir ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Redis için Azure Önbelleği nasıl izlenir?](cache-how-to-monitor.md)
+- [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Redsıs için Azure önbelleğini izleme](cache-how-to-monitor.md)

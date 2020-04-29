@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell Örnekleri - Temel sanal makine ölçek kümesi oluşturun
-description: Bu komut dosyası, RDP üzerinden erişebileceğiniz Windows Server 2016 çalıştıran bir Azure sanal makine ölçeği kümesi oluşturur.
+title: Azure PowerShell örnekleri-temel bir sanal makine ölçek kümesi oluşturma
+description: Bu betik, RDP aracılığıyla erişebileceğiniz Windows Server 2016 çalıştıran bir Azure sanal makine ölçek kümesi oluşturur.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 380b3d25bdcd5df5f095b2d87e832bf73422759e
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011497"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>PowerShell ile temel bir sanal makine ölçek kümesi oluşturma
@@ -39,7 +39,7 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 
 | Komut | Notlar |
 |---|---|
-| [Yeni AzVmss](/powershell/module/az.compute/new-azvmss) | Sanal makine ölçek kümesi ve sanal ağ, yük dengeleyici ve NAT kurallarının dahil olduğu tüm destekleyici kaynakları oluşturur. |
+| [New-AzVmss](/powershell/module/az.compute/new-azvmss) | Sanal makine ölçek kümesi ve sanal ağ, yük dengeleyici ve NAT kurallarının dahil olduğu tüm destekleyici kaynakları oluşturur. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

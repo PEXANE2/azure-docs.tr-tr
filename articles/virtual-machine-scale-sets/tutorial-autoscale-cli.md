@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure CLI ile bir ölçek kümesini otomatik ölçeklendirin
+title: Öğretici-Azure CLı ile ölçek kümesini otomatik ölçeklendirme
 description: CPU talepleri arttıkça ve azaldıkça, sanal makine ölçek kümesini Azure CLI ile otomatik olarak ölçeklendirmeyi öğrenin
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 711553fd0a71103f340137755ef51264e3883c25
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010418"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
@@ -25,7 +25,7 @@ ms.locfileid: "81010418"
 > * Sanal makine örneklerinde stres testi yapma ve otomatik ölçeklendirme kurallarını tetikleme
 > * Talep düştüğünde geriye doğru otomatik ölçeklendirme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -54,7 +54,7 @@ az vmss create \
 
 ## <a name="define-an-autoscale-profile"></a>Otomatik ölçeklendirme profilini tanımlama
 
-Bir ölçek kümesinde otomatik ölçeklendirmeyi etkinleştirmek için ilk olarak bir otomatik ölçeklendirme profili tanımlamanız gerekir. Bu profil varsayılan, en düşük ve en yüksek ölçek kümesi kapasitesini tanımlar. Bu sınırlar, sürekli olarak VM örnekleri oluşturmayarak maliyeti denetlemenize ve ölçeklendirme olayında kalan en az sayıda örnekle kabul edilebilir performansı dengelemenize izin verebiliyor. [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) komutu ile bir otomatik ölçeklendirme profili oluşturun. Aşağıdaki *örnekte, 2* VM örneğinin varsayılan ve en az kapasite ve en fazla *10'u*vardır:
+Bir ölçek kümesinde otomatik ölçeklendirmeyi etkinleştirmek için ilk olarak bir otomatik ölçeklendirme profili tanımlamanız gerekir. Bu profil varsayılan, en düşük ve en yüksek ölçek kümesi kapasitesini tanımlar. Bu sınırlar, sanal makine örneklerini sürekli olarak oluşturmadığından maliyeti denetlemenizi sağlar ve ölçek genişletme olayında kalan minimum örnek sayısı ile kabul edilebilir performansı dengelemenize olanak tanır. [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) komutu ile bir otomatik ölçeklendirme profili oluşturun. Aşağıdaki örnek, varsayılan ve en düşük, *2* VM örneğinin kapasitesini ve en fazla *10*' u ayarlar:
 
 ```azurecli-interactive
 az monitor autoscale create \

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Bir mikrofon, C# (UWP) - Konuşma hizmeti konuşma tanıma'
+title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma, C# (UWP)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
 ms.openlocfilehash: 1c631f4dea3b182c97f11f3892dff834c7681507
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275391"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
@@ -21,27 +21,27 @@ ms.locfileid: "81275391"
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * Ses çekimi için mikrofona erişebildiğinizden emin olun
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
-Bunu zaten yaptıysan, harika. Devam edelim.
+Bunu zaten yaptıysanız harika. Şimdi devam edelim.
 
-## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
-İlk adım, visual studio'da projenizin açık olduğundan emin olmaktır.
+İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
-Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
+Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
-1. **Çözüm Gezgini'nde**, açık `MainPage.xaml`.
+1. **Çözüm Gezgini**' de, `MainPage.xaml`öğesini açın.
 
-2. Tasarımcının XAML görünümünde, **Grid** etiketine aşağıdaki XAML snippet'i `</Grid>`ekleyin (arasında ve arasında): `<Grid>`
+2. Tasarımcının XAML görünümünde, **kılavuz** ETIKETINE aşağıdaki xaml kod parçacığını ekleyin (ve `<Grid>` `</Grid>`arasında):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml#StackPanel)]
 
-3. **Çözüm Gezgini'nde,** kod arkasındaki `MainPage.xaml.cs`kaynak dosyayı açın. (Bu altında `MainPage.xaml`gruplandı .)
+3. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. (Altında `MainPage.xaml`gruplandırılır.)
 
 4. Kodu aşağıdaki temel kodla değiştirin:
 
@@ -49,43 +49,43 @@ Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Bir `SpeechRecognizer` nesneyi başlatmadan önce, abonelik anahtarınızı ve abonelik bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Yönteme `RecognizeSpeechAsync()` bu kodu ekleyin.
+Bir `SpeechRecognizer` nesneyi başlatabilmeniz için önce abonelik anahtarınızı ve abonelik bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Bu kodu `RecognizeSpeechAsync()` yöntemine ekleyin.
 
 > [!NOTE]
-> Bu örnek, `FromSubscription()` `SpeechConfig`'yi oluşturmak için yöntemi kullanır. Kullanılabilir yöntemlerin tam listesi için [SpeechConfig Class'a](https://docs.microsoft.com/dotnet/api/) bakın[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
+> Bu örnek, `SpeechConfig`oluşturmak `FromSubscription()` için yöntemini kullanır. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/)[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
 
-## <a name="initialize-a-speechrecognizer"></a>Bir SpeechRecognizer'ı Başlatma
+## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer başlatma
 
-Şimdi, bir. `SpeechRecognizer` Bu nesne, yönetilmeyen kaynakların doğru şekilde serbest bırakılmasını sağlamak için kullanılan bir deyimin içinde oluşturulur. Bu kodu yönteme, `RecognizeSpeechAsync()` Konuşma yapılandırmanızın hemen altına ekleyin.
+Şimdi bir `SpeechRecognizer`oluşturalım. Yönetilmeyen kaynakların doğru şekilde yayınlanmasıyla emin olmak için bir using ifadesinin içinde bu nesne oluşturulur. Bu kodu, konuşma yapılandırmanızın `RecognizeSpeechAsync()` hemen altına, yöntemine ekleyin.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=58,59,93)]
 
 ## <a name="recognize-a-phrase"></a>Bir tümceciği tanıma
 
-Nesneden, `SpeechRecognizer` `RecognizeOnceAsync()` yöntemi aramalısınız. Bu yöntem, Konuşma hizmetinin tanınmak için tek bir ifade gönderdiğinizi ve ifade tanımlandıktan sonra konuşmayı tanımayı durdurmak için tanımladığını bilmesini sağlar.
+`SpeechRecognizer` Nesnesinden `RecognizeOnceAsync()` yöntemi çağıracağız. Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.
 
-Using deyiminin içine bu kodu ekleyin.
+Using ifadesinin içinde, bu kodu ekleyin.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
 
-## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hataları) görüntüleme
+## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hatalarını) görüntüleme
 
-Tanıma sonucu Konuşma hizmeti tarafından döndürüldüğünde, bununla ilgili bir şey yapmak istersiniz. Basit tutacağız ve sonucu durum paneline yazdıracağız.
+Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgili bir şey yapmak isteyeceksiniz. Bu uygulamayı basit tutacağız ve sonucu durum paneline yazdıracağız.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=68-93)]
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-Artık uygulamanızı oluşturmaya ve test etmeye hazırsınız.
+Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözüm'üne** bakın' ı seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatmak için **Hata Ayıklama** > **Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna) seçin. **Helloworld** penceresi görüntülenir.
+1. Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya F5 tuşuna basın). **F5** >  **HelloWorld** penceresi görüntülenir.
 
-   ![C# örnek UWP konuşma tanıma uygulaması - quickstart](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-helloworld-window.png)
+   ![C# ' de örnek UWP konuşma tanıma uygulaması-hızlı başlangıç](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-helloworld-window.png)
 
-1. **Mikrofonu Etkinleştir'i**seçin ve erişim izni isteği geldiğinde **Evet'i**seçin.
+1. **Mikrofonu etkinleştir**' i seçin ve erişim izni Isteği açıldığında **Evet**' i seçin.
 
-   ![Mikrofon erişim izni isteği](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Mikrofon erişimi izin isteği](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
 1. **Mikrofon girdisi ile konuşma tanıma**’yı seçin ve cihazınızın mikrofonuna İngilizce bir deyim ya da cümle söyleyin. Söyledikleriniz Konuşma hizmetine aktarılır ve metne dönüştürülür; metin pencerede görünür.
 

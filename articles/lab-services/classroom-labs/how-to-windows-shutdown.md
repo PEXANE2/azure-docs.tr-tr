@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Hizmetlerinde Windows kapatma davranışını denetleme kılavuzu | Microsoft Dokümanlar
-description: Boşta kalan windows sanal makinesini otomatik olarak kapatma ve Windows kapatma komutunu kaldırma adımları.
+title: Azure Lab Services | Windows 'un kapatılma davranışını denetleme Kılavuzu | Microsoft Docs
+description: Boşta bir Windows sanal makinesini otomatik olarak kapanmaya yönelik adımlar ve Windows kapatılırken komutunu kaldırma adımları.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,50 +11,50 @@ ms.topic: article
 ms.date: 3/30/2020
 ms.author: spelluru
 ms.openlocfilehash: 7b839df5940ab26e5c1a99a1bda1fbd2545f8cc4
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81113114"
 ---
-# <a name="guide-to-controlling-windows-shutdown-behavior"></a>Windows kapatma davranışını denetleme kılavuzu
+# <a name="guide-to-controlling-windows-shutdown-behavior"></a>Windows kapanıyor davranışını denetleme Kılavuzu
 
-Azure Lab Hizmetleri, Windows sanal makinelerinin (VM'ler) beklenmeyen şekilde çalışmadığından emin olmak için çeşitli maliyet denetimleri sağlar:
+Azure Lab Services, Windows sanal makinelerinin (VM 'Ler) beklenmedik şekilde çalışmadığını sağlamak için çeşitli ücret denetimleri sağlar:
  - [Zamanlama ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
  - [Kullanıcılar için kota ayarlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)
  - [Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
-Bu maliyet denetimleriyle bile, Windows VM'nin beklenmedik şekilde çalışmaya devam edebileceği durumlar vardır; ve sonuç olarak, öğrencinin kontenjanından düşüler:
+Bu maliyet denetimlerinde bile, bir Windows VM 'sinin beklenmedik şekilde çalışmaya devam edebildiği durumlar vardır; Sonuç olarak, öğrencinin kotasından düşün:
 
-- **RDP penceresi açık bırakılır**
+- **RDP penceresi açık kaldı**
   
-    Bir öğrenci RDP kullanarak VM'lerine bağlandığında, istemeden RDP penceresini açık bırakabilir.  RDP penceresi açık kaldığı sürece, **yalnızca** RDP oturumu kesildikten sonra tetiklendirildiğinden, bağlantı kesme ayarındaki otomatik kapatma hiçbir zaman etkili olmaz.
+    Bir öğrenci, sanal makinesine RDP kullanarak bağlanırsa, yanlışlıkla RDP penceresini açık bırakabilir.  RDP penceresi açık kaldığı sürece, yalnızca RDP oturumunun bağlantısı kesildikten sonra tetiklendiğinden, **bağlantı kesme sırasında otomatik olarak kapatılıyor** ayarı hiçbir zaman etkinleşmez.
 
-- **Windows kapatma komutu VM'yi kapatmak için kullanılır**
+- **Windows kapatma komutu VM 'yi kapatmak için kullanılır**
   
-    Bir öğrenci, [Azure Lab Hizmetleri'nin durdurma düğmesini](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm)kullanmak yerine VM'yi kapatmak için Windows kapatma komutunu veya Windows'da sağlanan diğer kapatma mekanizmalarını kullanabilir.  Bu durumda, Azure Lab Hizmetleri açısından VM hala kullanılıyor.
+    Bir öğrenci Windows kapatma komutunu veya Windows içinde sunulan diğer kapatma mekanizmalarını, [Azure Lab Services ' Durdur düğmesini](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-classroom-lab#start-or-stop-the-vm)kullanmak yerıne, VM 'yi kapatmak için kullanabilir.  Bu durumda, Azure Lab Services perspektifinden VM hala kullanılmaktadır.
     
-Bu kılavuz, bu durumların olmasını önlemenize yardımcı olmak için boşta kalan bir Windows VM'yi otomatik olarak kapatma ve **Başlat** menüsünden Windows kapatma komutunu kaldırma adımları sağlar.  
+Bu durumların oluşmasını önlemenize yardımcı olması için bu kılavuzda, boşta olan bir Windows sanal makinesini otomatik olarak kapanmaya yönelik adımlar ve **Başlat** menüsünden Windows oturumu kapatılıyor komutunu kaldırma adımları sunulmaktadır.  
 
 > [!NOTE]
-> Öğrenci VM'sini başlattığında vm de beklenmedik bir şekilde kotadan düşebilir, ancak rdp kullanarak asla kotaya bağlanmaz.  Bu kılavuz şu anda bu senaryoyu ele *almaz.*  Bunun yerine, öğrencilere başlattıktan sonra RDP kullanarak VM'lerine hemen bağlanmaları hatırlatılmalıdır; veya VM'yi durdurmalıdırlar.
+> Ayrıca, öğrenci VM 'leri başlattığında bir VM beklenmedik şekilde kotasından düşmeyebilir, ancak hiçbir zaman RDP kullanarak buna bağlanmamıştır.  Bu kılavuz Şu anda bu senaryoya yönelik *değildir* .  Bunun yerine, öğrenciler başlattıktan sonra RDP kullanarak VM 'lerine hemen bağlanmaları hatırlamalıdır; ya da VM 'leri durdurmalıdır.
 
-## <a name="automatic-rdp-disconnect-and-shutdown-for-idle-vm"></a>Boşta VM için otomatik RDP bağlantısı nın kesilmesi ve kapatılması
+## <a name="automatic-rdp-disconnect-and-shutdown-for-idle-vm"></a>Boşta VM için otomatik RDP bağlantısı kesme ve kapatılma
 
-Windows, bir RDP oturumuboş takılan bir OTURUM'un otomatik olarak bağlantısını kesmek için bir zaman sınırı ayarlamak için kullanabileceğiniz **Yerel Grup İlkesi** ayarlarını sağlar.  Herhangi bir fare\klavye girişi *olmadığında* oturum boşta olarak belirlenir.  Fare\klavye girişi içermeyen uzun süren etkinlikler VM'nin boşta duruma sahip olmasını sağlar.  Bu, uzun bir sorgu yürütme, video akışı, derleme, vb içerir.  Sınıfınızın gereksinimlerine bağlı olarak, bu tür etkinlikleri işlemek için yeterince uzun olacak şekilde boşta kalma süresi sınırını ayarlayabilirsiniz.  Örneğin, gerekirse boşta kalma süresi sınırını 1 veya daha fazla saat olarak ayarlayabilirsiniz.
+Windows, bir RDP oturumunun boşta kaldığında bağlantısını otomatik olarak kesmek üzere bir zaman sınırı ayarlamak için kullanabileceğiniz **yerel Grup İlkesi** ayarları sağlar.  Bir oturum, herhangi bir mouse\keyboard *girişi olmadığında boşta* olarak belirlenir.  Mouse\keyboard girişi içermeyen uzun süre çalışan etkinlikler VM 'nin boşta durumunda olmasına neden olur.  Bu, uzun bir sorgu yürütme, video akışı, derleme vb. içerir.  Sınıfınızın ihtiyaçlarına bağlı olarak, boşta kalma süresi sınırını, bu tür etkinlikleri işlemek için yeterince uzun olacak şekilde ayarlamayı tercih edebilirsiniz.  Örneğin, boşta kalma süresi sınırını, gerekirse 1 veya daha fazla saat olarak ayarlayabilirsiniz.
 
-Boşta **oturum sınırını,** bağlantı kesme ayarındaki [**otomatik kapatma**](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect) yla birlikte yapılandırdığınızda öğrencinin deneyimi aşağıda veda edinilir:
- 1. Öğrenci RDP kullanarak Windows VM'lerine bağlanır.
- 2. Öğrenci RDP penceresini açık bıraktığında ve VM belirttiğiniz **boşta oturum sınırı** için boşta kaldığında (5 dakika gibi), öğrenci aşağıdaki iletişim kutusunu görür:
+Bu, **boş oturum limitini** [**bağlantı kesildiğinde otomatik kapatılma**](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect) ayarı ile birlikte yapılandırdığınızda öğrencinin deneyimidir:
+ 1. Öğrenci, RDP kullanarak Windows VM 'lerine bağlanır.
+ 2. Öğrenci, RDP penceresini açık bırakıyor ve sanal makine belirttiğiniz **boş oturum sınırı** (5 dakika) için boşta kaldığında, öğrenci aşağıdaki iletişim kutusunu görür:
 
-    ![Boşta zaman sınırı süresi dolmuş iletişim kutusu](../media/how-to-windows-shutdown/idle-time-expired.png)
+    ![Boşta kalma süresi sınırı süresi dolmadı iletişim kutusu](../media/how-to-windows-shutdown/idle-time-expired.png)
 
-1. Öğrenci **Tamam'ı** *tıklatmazsa,* RDP oturumu 2 dakika sonra otomatik olarak kesilir.
-2. RDP oturumu kesildikten sonra, bağlantı kesme **ayarında otomatik kapatma** için belirtilen zaman çerçevesine ulaşıldıktan sonra, VM Azure Lab Hizmetleri tarafından otomatik olarak kapatılır.
+1. Öğrenci **Tamam**' a *TıKLAMADıĞıNDAN* , RDP oturumunun süresi 2 dakika sonra otomatik olarak kesilir.
+2. RDP oturumunun bağlantısı kesildikten sonra, **bağlantı kesildiğinde otomatik kapatılma** için belirtilen zaman dilimine ulaşıldığında, sanal makine Azure Lab Services tarafından otomatik olarak kapatılıyor.
 
-### <a name="set-rdp-idle-session-time-limit-on-the-template-vm"></a>Şablon VM'de RDP boşta oturum süresi sınırını ayarlama
+### <a name="set-rdp-idle-session-time-limit-on-the-template-vm"></a>Şablon VM 'de RDP boşta oturum süresi sınırını ayarlama
 
-RDP oturumu boşta zaman sınırını ayarlamak için, vm şablonuna bağlanabilir ve aşağıdaki PowerShell komut dosyasını çalıştırabilirsiniz.
+RDP oturum boşta kalma süresi sınırını ayarlamak için, şablon VM 'ye bağlanabilir ve aşağıdaki PowerShell betiğini çalıştırabilirsiniz.
 
 ```powershell
 # The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
@@ -62,54 +62,54 @@ $maxIdleTime = 15 * 60 * 1000
 
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
 ```
-Veya, vm şablonu kullanarak bu el ile adımları izlemeyi seçebilirsiniz:
+Ya da, şablon VM 'yi kullanarak bu adımları el ile izlemeyi tercih edebilirsiniz:
 
-1. Windows tuşuna basın, **gpedit**yazın, ardından **grup ilkesini (Denetim paneli) edin'i**seçin.
+1. Windows tuşuna basın, **gpedit**yazın ve ardından **Grup Ilkesini Düzenle (Denetim Masası)** seçeneğini belirleyin.
 
-1. Uzak **Masaüstü Oturum Ana Bilgisayar > > Oturum Zaman Sınırları > Windows Bileşenleri > Bilgisayar Yapılandırması > Yönetim Şablonlarına**gidin.  
+1. **> > Windows bileşenleri > Uzak Masaüstü Hizmetleri > Uzak Masaüstü oturumu ana bilgisayarı oturum süresi sınırlarını Yönetim Şablonları bilgisayar yapılandırması**' na gidin.  
 
     ![Yerel grup ilkesi düzenleyicisi](../media/how-to-windows-shutdown/group-policy-idle.png)
    
-1. Etkin ancak boşta kalan **Uzak Masaüstü Hizmetleri oturumları için zaman sınırını ayarla'yı**sağ tıklatın ve **Edit'i**tıklatın.
+1. **Etkin ancak boşta Uzak Masaüstü Hizmetleri oturumları için zaman sınırını ayarla**öğesine sağ tıklayın ve **Düzenle**' ye tıklayın.
 
-1. Aşağıdaki ayarları girin ve sonra **Tamam'ı**tıklatın:
+1. Aşağıdaki ayarları girin ve ardından **Tamam**' a tıklayın:
    1. **Etkin**'i seçin.
-   1. **Seçenekler**altında, **Boşta oturum sınırını**belirtin.
+   1. **Seçenekler**altında, **Boşta oturum sınırı**' nı belirtin.
 
-    ![Boşta oturum sınırı](../media/how-to-windows-shutdown/edit-idle-time-limit.png)
+    ![Boş oturum sınırı](../media/how-to-windows-shutdown/edit-idle-time-limit.png)
 
-1. Son olarak, bu davranışı **kesme ayarındaki otomatik kapatma** yla birleştirmek için, nasıl yapılabilen makaledeki adımları izlemeniz gerekir: Bağlantıyı [kesmede VM'lerin otomatik olarak kapatılmasını etkinleştirin.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+1. Son olarak, bu davranışı **bağlantı kesildiğinde otomatik olarak kapatılıyor** ayarı ile birleştirmek için, nasıl yapılır makalesindeki adımları izlemeniz gerekir: [bağlantı kesildiğinde sanal makinelerin otomatik olarak kapatılmasını etkinleştirin](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect).
 
 > [!WARNING]
-> Kayıt defteri ayarını doğrudan veya el ile grup ilkesi düzenleyicisini kullanmak için PowerShell'i kullanarak bu ayarı yapılandırdıktan sonra, ayarların etkili olması için önce VM'yi yeniden başlatmanız gerekir.  Ayrıca, ayarı kayıt defterini kullanarak yapılandırırsanız, Grup İlkesi düzenleyicisi her zaman kayıt defteri ayarındaki değişiklikleri yansıtacak şekilde yenilenmez; ancak, kayıt defteri ayarı beklendiği gibi yine de etkindir ve rdp oturumunun belirttiğiniz süre boyunca boşta kaldığında kesildiğini görürsünüz.
+> PowerShell kullanarak, kayıt defteri ayarını doğrudan veya grup ilkesi düzenleyicisini kullanarak el ile değiştirmek için bu ayarı yapılandırdıktan sonra, ayarların etkili olması için önce VM 'yi yeniden başlatmanız gerekir.  Ayrıca, ayarı kayıt defteri kullanarak yapılandırırsanız grup ilkesi Düzenleyicisi, kayıt defteri ayarında yapılan değişiklikleri yansıtacak şekilde her zaman yenilemez; Ancak, kayıt defteri ayarı yine de beklendiği gibi sürer ve belirttiğiniz süre boyunca boşta kaldığında RDP oturumunun bağlantısını kestiğinizi görürsünüz.
 
-## <a name="remove-windows-shutdown-command-from-start-menu"></a>Başlat menüsünden Windows kapatma komutunu kaldırma
+## <a name="remove-windows-shutdown-command-from-start-menu"></a>Windows kapanıyor komutunu Başlat menüsünden kaldır
 
-Windows **Yerel Grup İlkesi** ayarları, kapatma komutunu **Başlat** menüsünden kaldırmanızı da sağlar.
+Windows **yerel Grup İlkesi** ayarları, **Başlat** menüsünden de kapatılıyor komutunu kaldırmanızı sağlar.
 
-Kapatma komutunu kaldırmak için, vm şablonuna bağlanabilir ve aşağıdaki PowerShell komut dosyasını çalıştırabilirsiniz.
+Kapanıyor komutunu kaldırmak için, şablon VM 'ye bağlanabilir ve aşağıdaki PowerShell betiğini çalıştırabilirsiniz.
 
 ```powershell
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HidePowerOptions" -Value 1 -Force
 ```
 
-Veya, vm şablonu kullanarak bu el ile adımları izlemeyi seçebilirsiniz:
+Ya da, şablon VM 'yi kullanarak bu adımları el ile izlemeyi tercih edebilirsiniz:
 
-1. Windows tuşuna basın, **gpedit**yazın, ardından **grup ilkesini (Denetim paneli) edin'i**seçin.
+1. Windows tuşuna basın, **gpedit**yazın ve ardından **Grup Ilkesini Düzenle (Denetim Masası)** seçeneğini belirleyin.
 
-1. Başlat **Menüsü ve Görev Çubuğu'> Bilgisayar Yapılandırması > Yönetim Şablonlarına**gidin.  
+1. **> > Başlat menüsü ve görev çubuğu Yönetim Şablonları bilgisayar yapılandırması '** na gidin.  
 
     ![Yerel grup ilkesi düzenleyicisi](../media/how-to-windows-shutdown/group-policy-shutdown.png)
 
-1. Sağ tıkla Kaldır **ve Kapat, Yeniden Başlat, Uyku ve Hazırda Bekleme komutlarına erişimi engelleyin**ve **Edit'i**tıklatın.
+1. Kaldır ' a sağ tıklayın **ve kapatma, yeniden başlatma, uyku ve hazırda beklet komutlarına erişimi önleyin**ve **Düzenle**' ye tıklayın.
 
-1. **Etkin** ayarını seçin ve **sonra Tamam'ı**tıklatın:
+1. **Etkin** ayarı seçin ve ardından **Tamam**' a tıklayın:
  
-   ![Kapatma ayarı](../media/how-to-windows-shutdown/edit-shutdown.png)
+   ![Kapalı ayarı](../media/how-to-windows-shutdown/edit-shutdown.png)
 
-1. Kapatma komutu artık Windows **Başlat** menüsü altında görünmüyor dikkat edin; yalnızca **Bağlantıyı Kesme** komutu görüntülenir.
+1. Kapanıyor komutunun artık Windows **Başlat** menüsünde görüntülenmediğine dikkat edin; yalnızca **bağlantıyı kes** komutu görünür.
 
-    ![Kapatma komutu](../media/how-to-windows-shutdown/start-menu.png)
+    ![Komutu kapatır](../media/how-to-windows-shutdown/start-menu.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Windows şablonu VM: Azure Lab [Hizmetlerinde Windows şablon uyrama makinesi kurma kılavuzu](how-to-prepare-windows-template.md) nun nasıl hazırlanacağı hakkındaki makaleye bakın
+Bir Windows şablon VM 'si hazırlama hakkında bilgi için bkz. [Azure Lab Services bir Windows şablon makinesi ayarlama Kılavuzu](how-to-prepare-windows-template.md)

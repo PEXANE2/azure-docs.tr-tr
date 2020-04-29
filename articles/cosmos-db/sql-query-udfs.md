@@ -1,38 +1,38 @@
 ---
-title: Azure Cosmos DB'de kullanıcı tanımlı işlevler (UDF' ler)
-description: Azure Cosmos DB'de Kullanıcı tanımlı işlevler hakkında bilgi edinin.
+title: Azure Cosmos DB 'de Kullanıcı tanımlı işlevler (UDF 'ler)
+description: Azure Cosmos DB içindeki kullanıcı tanımlı işlevler hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011132"
 ---
-# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB'de kullanıcı tanımlı işlevler (UDF' ler)
+# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 'de Kullanıcı tanımlı işlevler (UDF 'ler)
 
-SQL API, kullanıcı tarafından tanımlanan işlevler (UDF' ler) için destek sağlar. Skaler UDF'ler ile sıfır veya birçok bağımsız değişkeni geçebilir ve tek bir bağımsız değişken sonucu döndürebilirsiniz. API yasal JSON değerleri olduğu için her argüman denetler.  
+SQL API 'SI, Kullanıcı tanımlı işlevler (UDF 'ler) için destek sağlar. Skaler UDF 'ler ile sıfır veya daha fazla bağımsız değişken geçirebilir ve tek bir bağımsız değişken sonucu döndürebilirsiniz. API, her bağımsız değişkeni geçerli JSON değerleri olarak denetler.  
 
 ## <a name="udf-use-cases"></a>UDF kullanım örnekleri
 
-API, UDF'leri kullanarak özel uygulama mantığını desteklemek için SQL sözdizimini genişletir. UDF'leri SQL API'ye kaydedebilir ve bunları SQL sorgularında referans verebilirsiniz. Depolanan yordamların ve tetikleyicilerin aksine, UDF'ler salt okunur.
+API, UDF 'Leri kullanarak özel uygulama mantığını desteklemek için SQL sözdizimini genişletir. UDF 'Leri SQL API ile kaydedebilir ve SQL sorgularında bunlara başvurabilirsiniz. Saklı yordamların ve tetikleyicilerin aksine, UDF 'ler salt okunurdur.
 
-UDF'leri kullanarak Azure Cosmos DB'nin sorgu dilini genişletebilirsiniz. UDF'ler, sorgunun projeksiyonundaki karmaşık iş mantığını ifade etmenin harika bir yoludur.
+UDF 'Leri kullanarak Azure Cosmos DB sorgu dilini genişletebilirsiniz. UDF 'ler bir sorgunun projeksiyonundaki karmaşık iş mantığını ifade etmenin harika bir yoludur.
 
-Ancak, şu anda UDF'lerden kaçınmanızı öneririz:
+Ancak, şu durumlarda UDF 'ler önlenmelerden kaçınıyoruz:
 
-- Azure Cosmos DB'de eşdeğer [bir sistem işlevi](sql-query-system-functions.md) zaten mevcut. Sistem fonksiyonları her zaman eşdeğer UDF daha az RU kullanır.
-- UDF, sorgunuzun yan `WHERE` tümcesindeki tek filtredir. UDF'ler dizin kullanmadığı için UDF'nin değerlendirilmesi için belgelerin yüklenmesi gerekir. `WHERE` Dizin kullanan ek filtre etelerinin udf ile birlikte birleştirilmesi, yan tümcede UDF tarafından işlenen belge sayısını azaltacaktır.
+- Azure Cosmos DB ' de eşdeğer bir [sistem işlevi](sql-query-system-functions.md) zaten var. Sistem işlevleri, eşdeğer UDF 'den her zaman daha az RU kullanır.
+- UDF, sorgunuzun `WHERE` yan tümcesindeki tek filtredir. UDF 'nin dizinden yararlanın ve UDF 'yi değerlendirmek için yükleme belgelerinin yüklenmesi gerekir. Dizin kullanan ek filtre koşullarını birleştirmek, bir UDF ile birlikte, `WHERE` yan tümcesinde UDF tarafından işlenen belgelerin sayısını azaltır.
 
-Bir sorguda aynı UDF'yi birden çok kez kullanmanız gerekiyorsa, UDF'yi bir kez değerlendirmek için JOIN ifadesini kullanmanıza izin veren, ancak birçok kez başvuruda bulunan bir [alt sorguda](sql-query-subquery.md#evaluate-once-and-reference-many-times)UDF'ye başvurmanız gerekir.
+Bir sorguda aynı UDF 'yi birden çok kez kullanmanız gerekiyorsa, UDF 'ye bir [alt sorgu](sql-query-subquery.md#evaluate-once-and-reference-many-times)içinde başvurmanız gerekir ve bir JOIN IFADESI kullanarak UDF 'yi bir kez değerlendirmek, ancak bu kadar çok kez başvuru yapmanız gerekir.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, Cosmos veritabanında bir madde kapsayıcısı altında bir UDF kaydeder. Örnek, adı `REGEX_MATCH`. İki JSON dize değerini `input` `pattern`kabul eder ve ,ilkinin JavaScript'in `string.match()` işlevini kullanarak ikinci deseninde eşleşip eşleşmeyemeyişece sini denetler.
+Aşağıdaki örnek, Cosmos veritabanındaki bir öğe kapsayıcısı altına bir UDF kaydeder. Örnek, `REGEX_MATCH`adı olan bir udf oluşturur. İki JSON dize değerini `input` `pattern`kabul eder ve ilk kez, JavaScript 'in `string.match()` işlevi kullanılarak ikinci öğesinde belirtilen Düzenle eşleşip eşleşmediğini denetler.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -48,7 +48,7 @@ Aşağıdaki örnek, Cosmos veritabanında bir madde kapsayıcısı altında bir
            regexMatchUdf).Result;  
 ```
 
-Şimdi, bu UDF'yi sorgu projeksiyonunda kullanın. UDF'leri sorgular içinden ararken `udf.` büyük/küçük harf duyarlı önekiyle nitelemelisiniz.
+Şimdi bu UDF 'yi bir sorgu projeksiyonu içinde kullanın. UDF 'Leri sorgular içerisinden çağırırken büyük/küçük harfe duyarlı `udf.` önekiyle nitelemeniz gerekir.
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
@@ -68,7 +68,7 @@ Sonuçlar:
     ]
 ```
 
-Aşağıdaki örnekte olduğu gibi, `udf.` bir filtrenin içindeki önek ile nitelikli UDF'yi kullanabilirsiniz:
+Aşağıdaki örnekte olduğu gibi, bir filtrenin içindeki `udf.` ÖNEKIYLE nitelenmiş UDF 'yi kullanabilirsiniz:
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -85,9 +85,9 @@ Sonuçlar:
     }]
 ```
 
-Özünde, UDF'ler hem projeksiyonlarda hem de filtrelerde kullanabileceğiniz geçerli skaler ifadelerdir.
+Temelde, UDF 'ler, hem projeksiyonde hem de filtrelerde kullanabileceğiniz geçerli skaler ifadeleridir.
 
-UDF'lerin gücünü genişletmek için koşullu mantıkla başka bir örneğe bakın:
+UDF 'nin gücünden birini genişletmek için koşullu mantığa başka bir örneğe bakın:
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -111,7 +111,7 @@ UDF'lerin gücünü genişletmek için koşullu mantıkla başka bir örneğe ba
                 seaLevelUdf);
 ```
 
-Aşağıdaki örnekTE UDF alıştırmaları:
+Aşağıdaki örnek UDF 'yi alıştırmalar:
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
@@ -133,12 +133,12 @@ Sonuçlar:
     ]
 ```
 
-UDF parametreleri tarafından atıfta bulunulan özellikler JSON değerinde kullanılamıyorsa, parametre tanımsız olarak kabul edilir ve UDF çağırması atlanır. Benzer şekilde, UDF sonucu tanımlanmamışsa, sonuca dahil edilmez.
+UDF parametreleri tarafından başvurulan Özellikler JSON değerinde kullanılamıyorsa, parametre tanımsız olarak değerlendirilir ve UDF çağrısı atlanır. Benzer şekilde, UDF 'nin sonucu tanımsızdır, sonuca dahil değildir.
 
-Önceki örneklerde de belirtildiği gibi, UDF'ler JavaScript dilinin gücünü SQL API ile tümleştirir. UDF'ler, yerleşik JavaScript çalışma zamanı özellikleri yardımıyla karmaşık yordamsal, koşullu mantık yapmak için zengin bir programlanabilir arabirim sağlar. SQL API, geçerli WHERE veya SELECT yan tümcesi aşamasındaki her kaynak öğe için bağımsız değişkenleri sağlar. Sonuç, genel yürütme ardışık hattına sorunsuz bir şekilde dahil edilir. Özetle, UDF'ler sorguların bir parçası olarak karmaşık iş mantığı yapmak için harika araçlardır.
+Yukarıdaki örneklerde gösterildiği gibi, UDF 'ler, JavaScript dilinin gücünden SQL API 'SI ile tümleşir. UDF 'ler, yerleşik JavaScript çalışma zamanı özellikleri yardımıyla karmaşık yordamla, koşullu mantığa yönelik zengin bir programlanabilir arabirim sağlar. SQL API 'SI, geçerli WHERE veya SELECT yan tümcesi aşamasında her kaynak öğe için UDF 'ler için bağımsız değişkenler sağlar. Sonuç, genel yürütme ardışık düzenine sorunsuz bir şekilde dahil edilir. Özet olarak, UDF 'ler, sorguların bir parçası olarak karmaşık iş mantığı yapmak için harika araçlardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Azure Cosmos DB giriş](introduction.md)
 - [Sistem işlevleri](sql-query-system-functions.md)
 - [Toplamalar](sql-query-aggregates.md)

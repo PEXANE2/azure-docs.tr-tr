@@ -1,6 +1,6 @@
 ---
-title: İş Ortağı Merkezi'nde ticari pazar analizinde pano indirir
-description: Pazar yeri tekliflerinizin indirme isteklerine nasıl erişilenleri öğrenin.
+title: Iş Ortağı Merkezi 'nde ticari Market Analytics 'teki panoyu indirir
+description: Market teklifleriniz için indirme isteklerine erişme hakkında bilgi edinin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,33 +8,33 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: f81b8ae927df6c95bbc34be7ad9916c88aeba03b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81251682"
 ---
-# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Ticari pazar analizinde İndirme Panosu
+# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te panoyu indirir
 
-Bu makale, İş Ortağı Merkezi'ndeki İndirme panosu hakkında bilgi sağlar. Bu pano, son 30 gün içinde indirme isteklerinizin bir listesini görüntüler.
+Bu makalede, Iş Ortağı Merkezi 'nde Indirmeler panosu hakkında bilgi sağlanmaktadır. Bu Pano, son 30 güne ait indirme isteklerinizin bir listesini görüntüler.
 
-İndirme panosuna erişmek için Ticari Pazar Yeri altında **[Analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
+Indirmeler panosuna erişmek için ticari Market altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
 
 >[!NOTE]
-> Analitik terminolojinin ayrıntılı tanımları [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
 
 ## <a name="downloads-dashboard"></a>İndirmeler panosu
 
-**Analyze** menüsünün **İndirme** panosu, 1000'den fazla müşteri veya sipariş verisi satırı içeren tüm indirme isteklerini görüntüler.
+**Çözümle** menüsünün **indirmeler** panosu, müşteri veya sipariş verilerini 1000 ' den fazla satırı içeren indirmelere yönelik istekleri görüntüler.
 
-1000'den fazla veri satırı içeren bir indirme isteğinde bulunduğunuzda, **İndirme panosuna** bağlantı içeren bir açılır bildirim ve e-posta alırsınız. Bu veri yüklemeleri 30 günlük bir süre için kullanılabilir ve sonra kaldırılır.
+1000 ' den fazla veri satırı içeren bir indirme isteğinde bulunduğunda, **indirmeler** panosuna bir bağlantı içeren bir açılır bildirim ve e-posta alacaksınız. Bu veri İndirmeleri 30 günlük bir dönemde kullanıma sunulacaktır ve sonra kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş Ortağı Merkezi ticari pazarda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki ticari pazar için Analytics'e](./analytics.md)bakın.
-- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri [için, ticari pazar analizinde Özet Pano'ya](./summary-dashboard.md)bakın.
-- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [ticari pazar analizinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
-- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [ticari pazar analizinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
-- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [ticari pazar analizinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
-- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [ticari pazar analizinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.
-- Ticari pazar analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+- Iş ortağı merkezi ticari marketi 'nde bulunan analiz raporlarına genel bakış için bkz. [Iş Ortağı Merkezi 'nde ticari Market Için analiz](./analytics.md).
+- Teklifinizin Market etkinliklerini özetleyen grafikler, eğilimler ve veri değerleri için bkz. [ticari Market Analytics 'Te Özet Panosu](./summary-dashboard.md).
+- Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](./orders-dashboard.md).
+- Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](./usage-dashboard.md).
+- Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](./customer-dashboard.md).
+- Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [ticari Market Analytics 'Te derecelendirmeler ve İncelemeler panosu](./ratings-reviews.md).
+- Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](./faq-terminology.md).

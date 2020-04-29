@@ -9,21 +9,21 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: c3e5beaef7fcc9d407103834e2040957ff32984c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008590"
 ---
-Azure paylaşılan diskleri (önizleme), yönetilen bir diskin aynı anda birden çok sanal makineye (VM) eklenmesini sağlayan Azure yönetilen diskler için yeni bir özelliktir. Yönetilen bir diski birden çok VM'ye eklemek, yeni kümelenmiş uygulamaları dağıtabilir veya varolan kümelenmiş uygulamaları Azure'a geçirmenize olanak tanır.
+Azure paylaşılan diskler (Önizleme), Azure yönetilen disklere yönelik olarak birden çok sanal makineye (VM) aynı anda bir yönetilen disk iliştirmeyi sağlayan yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Kümedeki [VM'ler, SCSI Kalıcı Rezervasyonları](https://www.t10.org/members/w_spc3.htm) (SCSI PR) kullanarak kümelenmiş uygulama tarafından seçilen rezervasyona göre ekli diskinize okuyabilir veya yazabilir. SCSI PR, Depolama Alanı Ağı (SAN) bünyesinde çalışan uygulamalar tarafından kaldıraçlı bir endüstri standardıdır. SCSI PR'ı yönetilen bir diskte etkinleştirmek, bu uygulamaları olduğu gibi Azure'a geçirmenize olanak tanır.
+Kümedeki VM 'Ler, [SCSI kalıcı ayırmaları](https://www.t10.org/members/w_spc3.htm) (SCSI PR) kullanılarak kümelenmiş uygulama tarafından seçilen ayırmayı temel alarak, bağlı diskinize okuyabilir veya yazabilir. SCSI PR, şirket içi depolama alanı ağı (SAN) üzerinde çalışan uygulamalar tarafından bir sektör standardı yararlanılabilir. Yönetilen bir diskte SCSI PR 'nin etkinleştirilmesi, bu uygulamaları olduğu gibi Azure 'a geçirmenize olanak sağlar.
 
-Paylaşılan yönetilen diskler birden çok VM'den erişilebilen paylaşılan blok depolama alanı sunar, bunlar mantıksal birim numaraları (LUNs) olarak ortaya çıkar. LU'lar daha sonra bir hedeften (disk) başlatıcıya (VM) sunulur. Bu LU'lar doğrudan bağlı depolama (DAS) veya VM'ye yerel bir sürücü gibi görünür.
+Yönetilen disklerin paylaşılması, birden çok VM 'den erişilebilen paylaşılan blok depolama alanı sunar, bunlar mantıksal birim numaraları (LUN 'Lar) olarak gösterilir. Daha sonra LUN 'Lar bir hedef (disk) üzerinden bir başlatıcıya (VM) sunulur. Bu LUN 'Lar, VM 'ye doğrudan bağlı depolama (DAS) veya yerel bir sürücü gibi görünür.
 
-Paylaşılan yönetilen diskler, SMB/NFS kullanılarak erişilebilen tam olarak yönetilen bir dosya sistemi sunmaz. Windows Server Failover Cluster (WSFC) veya Pacemaker gibi küme düğümü iletişimini işleyen ve kilitleme yazma yı işleyen bir küme yöneticisi kullanmanız gerekir.
+Paylaşılan yönetilen diskler, SMB/NFS kullanılarak erişilebilen tam olarak yönetilen bir dosya sistemini yerel olarak sunmaz. Küme düğümü iletişimini ve yazma kilitlemeyi işleyen Windows Server yük devretme kümesi (WSFC) veya Paceyapıcısı gibi bir küme yöneticisi kullanmanız gerekir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -37,100 +37,100 @@ Paylaşılan yönetilen diskler, SMB/NFS kullanılarak erişilebilen tam olarak 
 
 ### <a name="windows"></a>Windows
 
-Windows tabanlı kümelemelerin çoğu, küme düğüm iletişimi için tüm temel altyapıyı işleyen ve uygulamalarınızın paralel erişim desenlerinden yararlanmasını sağlayan WSFC üzerine kurulur. WSFC, Windows Server sürümünüze bağlı olarak hem CSV hem de CSV tabanlı olmayan seçenekler sunar. Ayrıntılar için [bir failover kümesi oluştur'a](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)bakın.
+Küme düğümü iletişimi için tüm çekirdek altyapısını işleyen, WSFC üzerinde en çok Windows tabanlı kümeleme derlemesi, uygulamalarınızın paralel erişim desenlerinden yararlanmasını sağlar. WSFC, Windows Server sürümünüze bağlı olarak hem CSV hem de CSV olmayan seçeneklere izin vermez. Ayrıntılar için [Yük devretme kümesi oluşturma](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)bölümüne bakın.
 
 WSFC üzerinde çalışan bazı popüler uygulamalar şunlardır:
 
-- SQL Server Failover Küme Örnekleri (FCI)
-- Dosya Sunucusu (SoFS)
-- Genel Kullanım için Dosya Sunucusu (IW iş yükü)
-- Uzak Masaüstü Sunucu Kullanıcı Profili Diski (RDS UPD)
-- SAP ASCS/SCS
+- SQL Server yük devretme kümesi örnekleri (FCı)
+- Genişleme dosya sunucusu (SoFS)
+- Genel kullanım için dosya sunucusu (ıW iş yükü)
+- Uzak Masaüstü sunucusu kullanıcı profili diski (RDS UPD)
+- SAP YOKS/SCS
 
 ### <a name="linux"></a>Linux
 
-Linux kümeleri [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)gibi küme yöneticilerinden yararlanabiliyor. Kalp pili, yüksek kullanılabilir ortamlarda dağıtılan uygulamalar için küme iletişimini sağlayan [Corosync](http://corosync.github.io/corosync/)üzerine inşa edilir. Bazı ortak kümelenmiş file systems [ocfs2](https://oss.oracle.com/projects/ocfs2/) ve [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2)içerir. [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) ve [sg_persist](https://linux.die.net/man/8/sg_persist)gibi yardımcı programları kullanarak rezervasyonları ve kayıtları manipüle edebilirsiniz.
+Linux kümeleri [pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker)gibi küme yöneticileriyle yararlanabilir. Pacemaker, yüksek oranda kullanılabilir ortamlarda dağıtılan uygulamalar için küme iletişimini etkinleştirerek [Corosync](http://corosync.github.io/corosync/)üzerinde yapılar. Bazı yaygın kümelenmiş dosya sistemleri, [ocfs2](https://oss.oracle.com/projects/ocfs2/) ve [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2)' i içerir. [Fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) ve [sg_persist](https://linux.die.net/man/8/sg_persist)gibi yardımcı programları kullanarak ayırmaları ve kayıtları yönetebilirsiniz.
 
 ## <a name="persistent-reservation-flow"></a>Kalıcı rezervasyon akışı
 
-Aşağıdaki diyagram, bir düğümden diğerine başarısız olmasını sağlamak için SCSI PR'dan yararlanan örnek 2 düğümlü kümelenmiş veritabanı uygulamasını göstermektedir.
+Aşağıdaki diyagramda, bir düğümden diğerine yük devretmeyi etkinleştirmek için SCSI PR 'den yararlanan örnek 2 düğümlü kümelenmiş bir veritabanı uygulaması gösterilmektedir.
 
-![İki düğüm kümesi. Kümeüzerinde çalışan bir uygulama diske erişimi ele alıyor](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![İki düğümlü küme. Kümede çalışan bir uygulama, diske erişimi işliyor](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
-Akış aşağıdaki gibidir:
+Akış şu şekildedir:
 
-1. Hem Azure VM1 hem de VM2'de çalışan kümelenmiş uygulama, diske okuma veya yazma niyetini kaydeder.
-1. VM1'deki uygulama örneği diske yazmak için özel rezervasyon alır.
-1. Bu rezervasyon Azure diskinizde uygulanır ve veritabanı artık yalnızca diske yazabilir. VM2 uygulama örneğinden herhangi bir yazma başarılı olmayacaktır.
-1. VM1'deki uygulama örneği düşerse, VM2'deki örnek artık bir veritabanı nın başarısız olup diskin devrini başlatabilir.
-1. Bu rezervasyon artık Azure diskinde uygulanır ve disk artık VM1'den gelen yazıları kabul etmez. Sadece VM2 gelen yazıyor kabul edecektir.
-1. Kümelenmiş uygulama veritabanı failover tamamlayabilir ve VM2 gelen istekleri hizmet.
+1. Hem Azure VM1 hem de VM2 üzerinde çalışan kümelenmiş uygulama, diski okuma veya diske yazma amacını kaydeder.
+1. VM1 üzerindeki uygulama örneği daha sonra diske yazmak için dışlamalı ayırma alır.
+1. Bu rezervasyon, Azure diskinizde zorlanır ve veritabanı artık diske özel olarak yazılabilir. VM2 üzerindeki uygulama örneğinden yapılan herhangi bir yazma işlemi başarısız olur.
+1. VM1 üzerindeki uygulama örneği kapalıysa, VM2 üzerindeki örnek artık diskin bir yük devretmesini ve yükünü başlatabilir.
+1. Bu rezervasyon artık Azure diskinde zorlanır ve disk artık VM1 ' dan yazma işlemlerini kabul etmez. Yalnızca VM2 'deki yazmaları kabul eder.
+1. Kümelenmiş uygulama, veritabanı yük devretmesini tamamlayabilir ve istekleri VM2 ' dan sunabilir.
 
-Aşağıdaki diyagram, makine öğrenimi modellerinin eğitimi gibi paralel işlemler in çalıştırılmak üzere diskten birden çok düğüm okuma verilerinden oluşan başka bir ortak kümelenmiş iş yükünü göstermektedir.
+Aşağıdaki diyagramda, makine öğrenimi modellerinin eğitimi gibi paralel süreçler çalıştırmak için diskten veri okuyan birden çok düğümden oluşan başka bir ortak kümelenmiş iş yükü gösterilmektedir.
 
-![Dört düğüm VM küme, her düğüm yazma niyeti kaydeder, uygulama düzgün yazma sonuçlarını işlemek için özel rezervasyon alır](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![Dört düğümlü VM kümesi, her düğüm yazma hedefini kaydeder, uygulama, yazma sonuçlarını düzgün bir şekilde işlemek için özel ayırma alır](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
-Akış aşağıdaki gibidir:
+Akış şu şekildedir:
 
-1. Tüm VM'lerde çalışan kümelenmiş uygulama, diske okuma veya yazma niyetini kaydeder.
-1. VM1'deki uygulama örneği, diske yazmak için özel bir rezervasyon alır ve diğer VM'lerden diske okumalar açılır.
-1. Bu rezervasyon Azure diskinizde uygulanır.
-1. Kümedeki tüm düğümler artık diskten okunabilir. Kümedeki tüm düğümler adına diske yalnızca bir düğüm sonuçları yazar.
+1. Tüm VM 'lerde çalışan kümelenmiş uygulama, diski okuma veya diske yazma amacını kaydeder.
+1. VM1 üzerindeki uygulama örneği, diğer VM 'lerden diske okuma açarken diske yazmak için özel bir ayırma alır.
+1. Bu rezervasyon, Azure diskinizde zorlanır.
+1. Kümedeki tüm düğümler artık diskten okuyabilir. Yalnızca bir düğüm, kümedeki tüm düğümler adına sonuçları diske geri yazar.
 
 ### <a name="ultra-disks-reservation-flow"></a>Ultra diskler rezervasyon akışı
 
-Ultra diskler, toplam iki gaz için ek bir gaz sunar. Bu nedenle, ultra diskler rezervasyon akışı önceki bölümde açıklandığı gibi çalışabilir veya performansı daha ayrıntılı olarak azaltıp dağıtabilir.
+Ultra diskler, toplam iki kısıtlamak için ek bir kısıtlama sağlar. Bu nedenle, Ultra disklerin rezervasyon akışı, önceki bölümde açıklandığı gibi çalışabilir veya performansı daha fazla azaltabilecek ve dağıtabilirler.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
 
-## <a name="ultra-disk-performance-throttles"></a>Ultra disk performansı azaltır
+## <a name="ultra-disk-performance-throttles"></a>Ultra disk performansı azaltıcı Les
 
-Ultra diskler, değiştirilebilir öznitelikleri ortaya çıkararak ve bunları değiştirmenize izin vererek performansınızı ayarlamanızı sağlayan benzersiz bir yeteneğe sahiptir. Varsayılan olarak, yalnızca iki değiştirilebilir öznitelikleri vardır, ancak paylaşılan ultra diskler iki ek öznitelikleri vardır.
+Ultra diskler, değiştirilebilir öznitelikler sunarak ve bunları değiştirmenize izin vererek performansınızı ayarlamanıza olanak tanıyan benzersiz bir özelliktir. Varsayılan olarak, yalnızca iki değiştirilebilir öznitelik vardır ancak paylaşılan Ultra diskler iki ek özniteliğe sahiptir.
 
 
 |Öznitelik  |Açıklama  |
 |---------|---------|
-|DiskiOPSReadWrite     |Tüm VM'lerde izin verilen toplam IOPS sayısı, paylaşım diskini yazma erişimiyle monte edin.         |
-|DiskMBpsReadWrite     |Paylaşılan diski yazma erişimiyle monte eden tüm VM'lerde izin verilen toplam iş tamsayısı (MB/s).         |
-|DiskiOPSReadOnly*     |Paylaşılan diski ReadOnly olarak monte eden tüm VM'lerde izin verilen toplam IOPS sayısı.         |
-|DiskMBpsReadOnly*     |Paylaşılan diski ReadOnly olarak monte eden tüm VM'lerde izin verilen toplam iş tamsayısı (MB/s).         |
+|Diskıopsreadwrite     |Paylaşılan diski yazma erişimiyle bağlamak için tüm VM 'lerde izin verilen toplam ıOPS sayısı.         |
+|DiskMBpsReadWrite     |Paylaşılan diski yazma erişimiyle bağlamak için tüm VM 'lerde izin verilen toplam verimlilik (MB/s).         |
+|Diskıopsreadonly *     |Paylaşılan diski ReadOnly olarak bağlayarak tüm VM 'lerde izin verilen toplam ıOPS sayısı.         |
+|DiskMBpsReadOnly*     |Paylaşılan diski ReadOnly olarak bağlayarak tüm VM 'lerde izin verilen toplam işleme (MB/sn).         |
 
-\*Yalnızca paylaşılan ultra diskler için geçerlidir
+\*Yalnızca paylaşılan Ultra diskler için geçerlidir
 
-Aşağıdaki formüller, kullanıcı değiştirilebilir olduğundan performans özniteliklerinin nasıl ayarlanabileceğini açıklar:
+Aşağıdaki formüllerde, Kullanıcı tarafından değiştirilebilir olduklarından performans özniteliklerinin nasıl ayarlanacağı açıklanmaktadır:
 
-- DiskiOPSReadWrite/DiskiOPSReadOnly: 
-    - Disk başına maksimum 160K IOPS'ye kadar 300 IOPS/GiB IOPS limitleri
-    - En az 100 IOPS
-    - DiskIOPSReadWrite + DiskIOPSReadOnly en az 2 IOPS/GiB
-- DiskMBpsRead Yazma /DiskMBpsReadOnly:
-    - Tek bir diskin verim sınırı, her sağlanan IOPS için 256 KiB/s'dir ve disk başına en fazla 2000 MBps'ye kadar
-    - Disk başına minimum garantili iş başı, her bir IOPS için 4KiB/s'dir ve genel taban çizgisi minimumu 1 MBp'dir
+- Diskıopsreadwrite/DiskIOPSReadOnly: 
+    - 300 ıOPS/GiB 'nin ıOPS sınırları, disk başına en fazla 160K ıOPS
+    - Minimum 100 ıOPS
+    - DiskIOPSReadWrite + DiskIOPSReadOnly en az 2 ıOPS/GiB
+- DiskMBpsRead Write/DiskMBpsReadOnly:
+    - Tek bir diskin verimlilik limiti, sağlanan her ıOPS için 256 KiB/sn ve disk başına en fazla 2000 MBps olur
+    - Her bir sağlanan ıOPS için en düşük değer 1 MB/sn olan her bir disk için en az garanti edilen iş hacmi 4KiB/sn 'dir
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki örnekler, özellikle paylaşılan ultra disklerle nasıl çalıştığını gösteren birkaç senaryo göstermektedir.
+Aşağıdaki örneklerde, kısıtlama 'nin paylaşılan Ultra disklerle özel olarak nasıl çalışabildiğiyle ilgili birkaç senaryo gösterilmektedir.
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Küme paylaşılan birimleri kullanarak iki düğüm kümesi
+#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Küme Paylaşılan birimlerini kullanan iki düğümlü küme
 
-Aşağıda, kümelenmiş paylaşılan birimleri kullanan 2 düğümlü BIR WSFC örneği verilmiştir. Bu yapılandırmaile, her iki VM'nin de diske eşzamanlı yazma erişimi vardır ve bu da ReadWrite gazının iki VM'ye bölünmesine ve ReadOnly gazının kullanılmamasıyla sonuçlanır.
+Aşağıda, kümelenmiş paylaşılan birimleri kullanarak 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmayla, her iki VM için aynı anda diske yazma erişimi vardır ve bu da iki VM 'de ve salt okunur kısıtlama kullanılmakta olan okuma kısıtlaması ile sonuçlanır.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV iki düğüm ultra örnek":::
-
-:::image-end:::
-
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Küme payı birimleri olmayan iki düğüm kümesi
-
-Aşağıda, kümelenmiş paylaşılan birimleri kullanmayan 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmaile diske yalnızca bir VM yazma erişimi vardır. Bu, ReadWrite gazının yalnızca birincil VM için kullanılmasına ve ReadOnly gazın yalnızca ikincil tarafından kullanılmasına neden olabilir.
-
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV iki düğüm yok csv ultra disk örneği":::
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV iki düğümlü Ultra örnek":::
 
 :::image-end:::
 
-#### <a name="four-node-linux-cluster"></a>Dört düğüm Linux kümesi
+#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Küme paylaşma birimleri olmayan iki düğümlü küme
 
-Aşağıda, tek bir yazar ve üç ölçek-out okuyucuları ile 4-düğüm Linux küme bir örnektir. Bu yapılandırmaile diske yalnızca bir VM yazma erişimi vardır. Bu, ReadWrite gazının yalnızca birincil VM için kullanılmasına ve ReadOnly gazının ikincil VM'ler tarafından bölünmesine neden olabilir.
+Aşağıda, kümelenmiş paylaşılan birimleri kullanmayan 2 düğümlü bir WSFC örneği verilmiştir. Bu yapılandırmayla, yalnızca bir VM 'nin diske yazma erişimi vardır. Bu durum, yalnızca birincil VM için ve salt okunur kısıtlama yalnızca ikincil tarafından kullanılan okuma kısıtlaması ile sonuçlanır.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Dört düğüm ultra azaltma örneği":::
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV iki düğüm hiçbir CSV Ultra disk örneği":::
+
+:::image-end:::
+
+#### <a name="four-node-linux-cluster"></a>Dört düğümlü Linux kümesi
+
+Aşağıda, tek bir yazıcı ve üç genişleme okuyucuları içeren 4 düğümlü Linux kümesine bir örnek verilmiştir. Bu yapılandırmayla, yalnızca bir VM 'nin diske yazma erişimi vardır. Bu durum, birincil VM için özel olarak kullanılan okuma kısıtlaması ve ikincil VM 'Ler tarafından bölünen salt okunur kısıtlama ile sonuçlanır.
+
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Dört düğümlü Ultra azaltma örneği":::
 
 :::image-end:::

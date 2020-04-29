@@ -1,6 +1,6 @@
 ---
-title: Azure CDN bitiş noktası oluşturma | Microsoft Dokümanlar
-description: Bu makalede, gelişmiş ayarlar da dahil olmak üzere yeni bir Azure İçerik Teslim Ağı (CDN) bitiş noktası nasıl oluşturulacak gösterilmektedir.
+title: Azure CDN uç noktası oluşturma | Microsoft Docs
+description: Bu makalede gelişmiş ayarlar dahil olmak üzere yeni bir Azure Content Delivery Network (CDN) uç noktası oluşturma gösterilmektedir.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,17 +15,17 @@ ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254024"
 ---
-# <a name="create-an-azure-cdn-endpoint"></a>Azure CDN bitiş noktası oluşturma
-Bu makalede, varolan bir CDN profilinde bir [Azure İçerik Teslim Ağı (CDN)](cdn-overview.md) bitiş noktası oluşturmak için tüm ayarları açıklanmaktadır. Bir profil ve bitiş noktası oluşturduktan sonra, müşterilerinize içerik sunmaya başlayabilirsiniz. Profil ve bitiş noktası oluşturmaya hızlı bir başlangıç için [Bkz. Hızlı Başlangıç: Azure CDN profili ve bitiş noktası oluşturun.](cdn-create-new-endpoint.md)
+# <a name="create-an-azure-cdn-endpoint"></a>Azure CDN uç noktası oluşturma
+Bu makalede, mevcut bir CDN profilinde [Azure Content Delivery Network (CDN)](cdn-overview.md) uç noktası oluşturmaya yönelik tüm ayarlar açıklanmaktadır. Bir profil ve uç nokta oluşturduktan sonra müşterilerinize içerik sunmaya başlayabilirsiniz. Bir profil ve uç nokta oluşturmaya yönelik hızlı başlangıç için bkz. [hızlı başlangıç: Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
-CDN bitiş noktası oluşturmadan önce, bir veya daha fazla CDN uç noktası içerebilen en az bir CDN profili oluşturmuş olmalısınız. CDN uç noktalarınızı internet etki alanı, web uygulaması veya başka ölçütlere göre düzenlemek için birden çok profil kullanabilirsiniz. CDN fiyatlandırması CDN profil düzeyinde uygulandığından, Azure CDN fiyatlandırma katmanlarının bir karışımını kullanmak istiyorsanız birden çok CDN profili oluşturmanız gerekir. CDN profili oluşturmak için [bkz.](cdn-create-new-endpoint.md#create-a-new-cdn-profile)
+Bir CDN uç noktası oluşturabilmeniz için önce bir veya daha fazla CDN uç noktası içerebilen en az bir CDN profili oluşturmuş olmanız gerekir. CDN uç noktalarınızı internet etki alanı, web uygulaması veya başka ölçütlere göre düzenlemek için birden çok profil kullanabilirsiniz. CDN fiyatlandırma, CDN profil düzeyinde uygulandığından, Azure CDN fiyatlandırma katmanlarının bir karışımını kullanmak istiyorsanız birden çok CDN profili oluşturmanız gerekir. CDN profili oluşturmak için bkz. [Yeni BIR CDN profili oluşturma](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure portalında oturum açma
 Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
@@ -36,25 +36,25 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
    
     CDN profili bölmesi görünür.
 
-2. **Bitiş Noktası'nı**seçin.
+2. **Uç nokta**seçin.
    
-    ![CDN bitiş noktasını seçin](./media/cdn-create-endpoint-how-to/cdn-select-endpoint.png)
+    ![CDN Select Endpoint](./media/cdn-create-endpoint-how-to/cdn-select-endpoint.png)
    
     **Uç nokta ekleyin** sayfası görüntülenir.
    
-    ![Bitiş noktası sayfası ekleme](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
+    ![Uç nokta sayfası ekle](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. **Ad** için, yeni CDN uç noktasına yönelik benzersiz bir ad girin. Bu ad, önbelleğe alınmış kaynaklarınızı etki alanı _ \<bitiş noktası adından _>.azureedge.net'da erişmek için kullanılır.
+3. **Ad** için, yeni CDN uç noktasına yönelik benzersiz bir ad girin. Bu ad, _ \<>_. azureedge.net etki alanındaki önbelleğe alınmış kaynaklarınıza erişmek için kullanılır.
 
-4. **Başlangıç türü için,** aşağıdaki kaynak türlerinden birini seçin: 
-   - Azure Depolama için **Depolama**
-   - Azure Bulut Hizmetleri için **bulut hizmeti**
-   - Azure Web Uygulamaları için **Web Uygulaması**
-   - Herkese açık diğer web sunucusu (Azure veya başka bir yerde barındırılan) için **özel menşe**
+4. **Kaynak türü**için aşağıdaki kaynak türlerinden birini seçin: 
+   - Azure depolama için **depolama**
+   - Azure Cloud Services için **bulut hizmeti**
+   - Azure Web Apps **Web uygulaması**
+   - Genel olarak erişilebilen diğer tüm kaynak Web sunucuları için **özel başlangıç** (Azure 'da veya başka bir yerde barındırılan)
 
-5. **Origin ana bilgisayar adı**için, başlangıç sunucu etki alanınızı seçin veya girin. Açılır, adım 4'te belirttiğiniz türdeki tüm kullanılabilir başlangıç sunucularını listeler. Başlangıç türünüz olarak **Özel menşeseçtiyseniz,** özel kaynak sunucunuzun etki alanını girin.
+5. **Kaynak ana bilgisayar adı**için, kaynak sunucu etki alanınızı seçin veya girin. Açılan listede, 4. adımda belirttiğiniz türdeki tüm kullanılabilir kaynak sunucuları listelenir. Kaynak türü olarak **özel kaynak** ' ı seçtiyseniz, özel kaynak sunucunuzun etki alanını girin.
     
-6. **Başlangıç yolu**için, önbellek yapmak istediğiniz kaynaklara giden yolu girin. Adım 5'te belirttiğiniz etki alanında herhangi bir kaynağın önbelleğe almasına izin vermek için bu ayarı boş bırakın.
+6. **Kaynak yolu**için, önbelleğe almak istediğiniz kaynakların yolunu girin. 5. adımda belirttiğiniz etki alanındaki herhangi bir kaynağın önbelleğe alınmasına izin vermek için bu ayarı boş bırakın.
     
 7. **Kaynak ana bilgisayar üst bilgisi** için, Azure CDN'nin her bir istekle göndermesini istediğiniz ana bilgisayar üst bilgisini girin veya varsayılan değeri bırakın.
    
@@ -62,31 +62,31 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
    > Azure Storage ve Web Apps gibi bazı kaynak türleri, ana bilgisayar üst bilgisinin kaynağın etki alanı ile eşleşmesini gerektirir. Etki alanından farklı ana bilgisayar üst bilgisi gerektiren bir kaynağa sahip değilseniz varsayılan değeri bırakmanız gerekir.
    > 
     
-8. **Protokol** ve **Başlangıç bağlantı noktası**için, kaynak sunucusundaki kaynaklara erişmek için kullanılacak protokolleri ve bağlantı noktalarını belirtin. En az bir protokol (HTTP veya HTTPS) seçilmelidir. HTTPS içeriğine erişmek için CDN tarafından sağlanan etki alanını_\<(bitiş adı>_.azureedge.net) kullanın. 
+8. **Protokol** ve **kaynak bağlantı noktası**için, kaynak sunucudaki kaynaklarınıza erişmek üzere kullanılacak protokolleri ve bağlantı noktalarını belirtin. En az bir protokol (HTTP veya HTTPS) seçilmelidir. HTTPS içeriğine erişmek için CDN tarafından belirtilen etki alanını (_\<uçnoktaadı>_. azureedge.net) kullanın. 
    
    > [!NOTE]
-   > **Başlangıç bağlantı noktası** değeri, yalnızca bitiş noktasının başlangıç sunucusundan bilgi almak için kullandığı bağlantı noktasını belirler. Uç noktanın kendisi, **Kaynak bağlantı noktası** değerinden bağımsız olarak, yalnızca varsayılan HTTP ve HTTPS bağlantı noktalarındaki (80 ve 443) uç istemciler tarafından kullanılabilir.  
+   > **Kaynak bağlantı noktası** değeri, yalnızca uç noktanın kaynak sunucudan bilgi almak için kullandığı bağlantı noktasını belirler. Uç noktanın kendisi, **Kaynak bağlantı noktası** değerinden bağımsız olarak, yalnızca varsayılan HTTP ve HTTPS bağlantı noktalarındaki (80 ve 443) uç istemciler tarafından kullanılabilir.  
    > 
    > **Akamai'den Azure CDN** profillerindeki uç noktalar, kaynak bağlantı noktaları için tam TCP bağlantı noktası aralığına izin vermez. İzin verilmeyen kaynak bağlantı noktalarının listesi için bkz. [Akamai'den Azure CDN İzin Verilen Kaynak Bağlantı Noktaları](/previous-versions/azure/mt757337(v=azure.100)).  
    > 
-   > Azure CDN özel etki alanları için HTTPS **desteği, Akamai ürünlerinden Azure CDN'de** desteklenmez. Daha fazla bilgi için bkz. [Azure CDN özel etki alanı üzerinde HTTPS'yi yapılandırma](cdn-custom-ssl.md).
+   > Azure CDN özel etki alanları için HTTPS desteği **Akamai ürünlerden Azure CDN** desteklenmez. Daha fazla bilgi için bkz. [Azure CDN özel etki alanı üzerinde HTTPS'yi yapılandırma](cdn-custom-ssl.md).
     
-9. **Optimize için,** bitiş noktasının teslim etmesini istediğiniz senaryo ve içerik türüyle en iyi eşleşen bir optimizasyon türü seçin. Daha fazla bilgi [için, içerik teslim türü için Azure CDN'sini Optimize Et'e](cdn-optimization-overview.md)bakın.
+9. **Için iyileştirilmiş**için, uç noktanın teslim etmesini istediğiniz senaryoya ve içerik türüne en iyi eşleşen bir iyileştirme türü seçin. Daha fazla bilgi için bkz. [içerik teslimi türü için Azure CDN iyileştirme](cdn-optimization-overview.md).
 
-    Profil türüne göre aşağıdaki optimizasyon türü ayarları desteklenir:
-    - **Microsoft profillerinden Azure CDN Standardı:**
-       - [**Genel web teslimatı**](cdn-optimization-overview.md#general-web-delivery)
+    Aşağıdaki en iyi duruma getirme türü ayarları, profil türüne göre desteklenir:
+    - **Microsoft profillerinden Azure CDN Standart** :
+       - [**Genel web teslimi**](cdn-optimization-overview.md#general-web-delivery)
 
-    - **Verizon'dan Azure CDN Standardı** ve **Verizon profillerinden Azure CDN Premium:**
-       - [**Genel web teslimatı**](cdn-optimization-overview.md#general-web-delivery)
-       - [**Dinamik alan ivmesi**](cdn-optimization-overview.md#dynamic-site-acceleration)
+    - **Verizon profillerden Verizon ve Azure CDN Premium** **'dan standart Azure CDN** :
+       - [**Genel web teslimi**](cdn-optimization-overview.md#general-web-delivery)
+       - [**Dinamik site hızlandırma**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
-    - **Akamai profillerinden Azure CDN Standardı:**
-       - [**Genel web teslimatı**](cdn-optimization-overview.md#general-web-delivery)
+    - **Akamai profillerden Azure CDN Standart** :
+       - [**Genel web teslimi**](cdn-optimization-overview.md#general-web-delivery)
        - [**Genel medya akışı**](cdn-optimization-overview.md#general-media-streaming)
-       - [**İsteğe bağlı medya akışı üzerine video**](cdn-optimization-overview.md#video-on-demand-media-streaming)
+       - [**İsteğe bağlı medya akışı videosu**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**Büyük dosya indirme**](cdn-optimization-overview.md#large-file-download)
-       - [**Dinamik alan ivmesi**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Dinamik site hızlandırma**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
 10. Yeni uç nokta oluşturmak için **Ekle**’yi seçin.
    
@@ -99,13 +99,13 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
     - **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 
     - **Verizon’dan Azure CDN Standart** ve **Verizon’dan Azure CDN Premium** profilleri için yayma işlemi genellikle 90 dakika içinde tamamlanır. 
    
-    Son nokta yapılandırması olay noktası (POP) sunucularına yayılmadan önce CDN etki alanı adını kullanmaya çalışırsanız, http 404 yanıt durumu alabilirsiniz. Bitiş noktanızı oluşturmanızın üzerinden birkaç saat geçtiyse ve hala bir 404 yanıt durumu alıyorsanız, [404 durum kodunu döndüren Sorun Giderme Azure CDN uç noktalarına](cdn-troubleshoot-endpoint.md)bakın.
+    Uç nokta yapılandırması, mevcut nokta (POP) sunucularına yayılmadan önce CDN etki alanı adını kullanmayı denerseniz, bir HTTP 404 yanıt durumu alabilirsiniz. Uç noktanızı oluşturduğumdan bu yana birkaç saat sonra hala 404 yanıt durumu alıyorsanız, bkz. [404 durum kodu döndüren uç noktalar Azure CDN sorun giderme](cdn-troubleshoot-endpoint.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Artık ihtiyaç duyulmadığında bir bitiş noktasını silmek için, onu seçin ve sonra **Sil'i**seçin. 
+Artık gerekli olmadığında bir uç noktayı silmek için, seçin ve **Sil**' i seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Özel etki alanları hakkında bilgi edinmek için, CDN bitiş noktanıza özel bir etki alanı ekleme eğitimine devam edin.
+Özel etki alanları hakkında bilgi edinmek için, CDN uç noktanıza özel etki alanı eklemeye yönelik öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Özel etki alanı ekleme](cdn-map-content-to-custom-domain.md)

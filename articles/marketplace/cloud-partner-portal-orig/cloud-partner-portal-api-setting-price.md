@@ -1,6 +1,6 @@
 ---
 title: Sanal makine teklifleri için fiyatlandırma | Azure Marketi
-description: Sanal makine tekliflerinin fiyatlandırmasını belirtmenin üç yöntemini açıklar.
+description: Sanal makine tekliflerinin Fiyatlandırmasını belirtmenin üç yöntemini açıklar.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 487e66b39bc63363497cb3497d32158efd0c6c8a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255898"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Sanal makine tekliflerinin fiyatlandırması
 ==================================
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
-Sanal makine teklifleri için fiyatlandırma belirlemenin üç yolu vardır: özelleştirilmiş çekirdek fiyatlandırma, çekirdek başına fiyatlandırma ve elektronik tablo fiyatlandırması.
+Sanal makine teklifleri için fiyatlandırma belirtmek için üç yol vardır: özelleştirilmiş çekirdek fiyatlandırma, çekirdek başına fiyatlandırma ve elektronik tablo fiyatlandırması.
 
 
 <a name="customized-core-pricing"></a>Özelleştirilmiş çekirdek fiyatlandırma
 -----------------------
 
-Fiyatlandırma her bölge ve çekirdek kombinasyonu için özeldir. Satış listesindeki her bölge **sanalMachinePricing**/**bölgesiFiyatları** bölümünde tanım belirtilmelidir.  İsteğinizdeki her [bölge](#regions) için doğru para birimi kodlarını kullanın.  Aşağıdaki örnekte bu gereksinimleri gösteriş verilmiştir:
+Fiyatlandırma her bölge ve çekirdek birleşimine özgüdür. Satış listesindeki her bölge, tanımın **virtualmachinefiyatlandırma**/**regionfiyatların** bölümünde belirtilmelidir.  İsteğinizin her bir [bölgesi](#regions) için doğru para birimi kodlarını kullanın.  Aşağıdaki örnek bu gereksinimleri göstermektedir:
 
 ``` json
     "virtualMachinePricing": 
@@ -72,7 +72,7 @@ Fiyatlandırma her bölge ve çekirdek kombinasyonu için özeldir. Satış list
 <a name="per-core-pricing"></a>Çekirdek başına fiyatlandırma
 ----------------
 
-Bu durumda, yayıncılar SKU için USD olarak bir fiyat belirtir ler ve diğer tüm fiyatlar otomatik olarak oluşturulur. Çekirdek başına fiyat, istekteki **tek** parametrede belirtilir.
+Bu durumda, yayımcılar SKU 'ları için ABD Doları cinsinden bir fiyat belirtir ve diğer tüm fiyatlar otomatik olarak oluşturulur. İstekteki **tek** parametrede çekirdek başına fiyat belirtilir.
 
 ``` json
      "virtualMachinePricing": 
@@ -90,7 +90,7 @@ Bu durumda, yayıncılar SKU için USD olarak bir fiyat belirtir ler ve diğer t
 <a name="spreadsheet-pricing"></a>Elektronik tablo fiyatlandırması
 -------------------
 
-Yayımcı ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konumuna yükleyebilir, ardından uri'yi diğer dosya yapıları gibi isteğe dahil edebilir. Elektronik tablo daha sonra yüklenir, belirtilen fiyat çizelgesini değerlendirmek için tercüme edilir ve son olarak teklifi fiyatlandırma bilgileriyle güncelleştirir. Sonraki TEKLIF için GET istekleri elektronik tablo URI ve bölge için değerlendirilen fiyatlar döndürür.
+Yayımcı Ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konumuna yükleyebilir ve sonra diğer dosya yapıtları gibi isteğe URI 'yi dahil edebilir. Daha sonra bu elektronik tablo yüklenir, belirtilen fiyat zamanlamasını değerlendirmek için çevrilir ve son olarak teklifi fiyatlandırma bilgileriyle güncelleştirir. Teklifin sonraki GET istekleri, bölge için elektronik tablo URI 'sini ve değerlendirilen fiyatları döndürür.
 
 ``` json
      "virtualMachinePricing": 
@@ -103,39 +103,39 @@ Yayımcı ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konum
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>7/2/2019 tarihinde eklenen yeni çekirdek boyutları
+<a name="new-core-sizes-added-on-722019"></a>7/2/2019 üzerine yeni temel boyutlar eklendi
 ---------------------------
 
-VM yayıncılarına 2 Temmuz 2019'da yeni Azure sanal makine boyutları için yeni fiyatların eklenmesi (çekirdek sayısına bağlı olarak) bildirilir.  Yeni fiyatlar çekirdek boyutları 10, 44, 48, 60, 120, 208 ve 416 içindir.  Mevcut VM için bu çekirdek boyutları için yeni fiyatlar otomatik olarak cari fiyatlara göre hesaplanmıştır sunuyor.  Yayıncıların ek fiyatları gözden geçirmek ve istenen değişiklikleri yapmak için 1 Ağustos 2019'a kadar zamanları vardır.  Bu tarihten sonra, yayımcı tarafından yeniden yayımlanmazsa, bu yeni çekirdek boyutları için otomatik olarak hesaplanan fiyatlar geçerli olacaktır.
+VM yayımcılarının, yeni Azure sanal makine boyutlarına (çekirdek sayısına göre) yeni fiyatlara ek olarak, 2 Temmuz 2019 tarihinde bilgilendirildi.  Yeni fiyatlar, 10, 44, 48, 60, 120, 208 ve 416 temel boyutlarına yöneliktir.  Mevcut VM için, bu çekirdek boyutları için yeni fiyatlar, geçerli fiyatlara göre otomatik olarak hesaplanır.  Yayımcılar, ek fiyatları gözden geçirmek ve istediğiniz değişiklikleri yapmak için 1 Ağustos 2019 ' e kadar.  Bu tarihten sonra, yayımcı tarafından zaten yeniden yayımlanmamışsa, bu yeni çekirdek boyutları için otomatik olarak hesaplanan fiyatlar geçerli olur.
 
 
 <a name="regions"></a>Bölgeler
 -------
 
-Aşağıdaki tablo, özelleştirilmiş çekirdek fiyatlandırma için belirtebileceğiniz farklı bölgeleri ve bunların karşılık gelen para birimi kodlarını gösterir.
+Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirtebileceğiniz farklı bölgeler ve bunlara karşılık gelen para birimi kodları gösterilmektedir.
 
 | **Bölge** | **Adı**             | **Para birimi kodu** |
 |------------|----------------------|-------------------|
-| DZ         | Cezayir              | Dzd               |
+| DZ         | Cezayir              | DZD               |
 | AR         | Arjantin            | ARS               |
 | AU         | Avustralya            | AUD               |
 | AT         | Avusturya              | EUR               |
-| BH         | Bahreyn              | Bhd               |
+| BH         | Bahreyn              | BHD               |
 | BY         | Belarus              | RUB               |
 | BE         | Belçika              | EUR               |
 | BR         | Brezilya               | USD               |
-| BG         | Bulgaristan             | Bgn               |
+| BG         | Bulgaristan             | BGN               |
 | CA         | Kanada               | CAD               |
-| CL         | Şili                | Clp               |
-| CO         | Kolombiya             | Polis               |
-| CR         | Kosta Rika           | Crc               |
-| HR         | Hırvatistan              | Hrk               |
+| CL         | Şili                | CLP               |
+| CO         | Kolombiya             | COP               |
+| CR         | Kosta Rika           | CRC               |
+| HR         | Hırvatistan              | HRK dili               |
 | CY         | Kıbrıs               | EUR               |
-| CZ         | Çek Cumhuriyeti       | Czk               |
+| CZ         | Çek Cumhuriyeti       | CZK dili               |
 | DK         | Danimarka              | DKK               |
 | DO         | Dominik Cumhuriyeti   | USD               |
 | EC         | Ekvador              | USD               |
-| EG         | Mısır                | Egp               |
+| EG         | Mısır                | EGP               |
 | SV         | El Salvador          | USD               |
 | EE         | Estonya              | EUR               |
 | FI         | Finlandiya              | EUR               |
@@ -144,47 +144,47 @@ Aşağıdaki tablo, özelleştirilmiş çekirdek fiyatlandırma için belirtebil
 | GR         | Yunanistan               | EUR               |
 | GT         | Guatemala            | GTQ               |
 | HK         | Hong Kong ÖİB        | HKD               |
-| HU         | Macaristan              | Huf               |
-| IS         | İzlanda              | ısk               |
+| HU         | Macaristan              | KUF               |
+| IS         | İzlanda              | ISK               |
 | IN         | Hindistan                | INR               |
 | Kimlik         | Endonezya            | IDR               |
 | IE         | İrlanda              | EUR               |
-| IL         | İsrail               | ıls               |
+| IL         | İsrail               | ÖR               |
 | BT         | İtalya                | EUR               |
 | JP         | Japonya                | JPY               |
-| JO         | Ürdün               | Jod               |
-| KZ         | Kazakistan           | Kzt               |
-| KE         | Kenya                | KES               |
+| JO         | Ürdün               | JOD               |
+| KZ         | Kazakistan           | KZT               |
+| KE         | Kenya                | KAR               |
 | KR         | Güney Kore                | KRW               |
-| KW         | Kuveyt               | Kwd               |
+| KW         | Kuveyt               | KWD               |
 | LV         | Letonya               | EUR               |
 | LI         | Lihtenştayn        | CHF               |
 | LT         | Litvanya            | EUR               |
 | LU         | Lüksemburg           | EUR               |
-| MK         | Kuzey Makedonya      | Mkd               |
+| MK         | Kuzey Makedonya      | MKD               |
 | MY         | Malezya             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksika               | MXN               |
 | ME         | Karadağ           | EUR               |
-| MA         | Fas              | Mad               |
+| MA         | Fas              | MAD               |
 | NL         | Hollanda          | EUR               |
 | NZ         | Yeni Zelanda          | NZD               |
-| NG         | Nijerya              | Ngn               |
+| NG         | Nijerya              | NGN               |
 | NO         | Norveç               | NOK               |
-| OM         | Umman                 | Özgen               |
-| PK         | Pakistan             | Pkr               |
+| OM         | Umman                 | OMR               |
+| PK         | Pakistan             | PKR               |
 | PA         | Panama               | USD               |
 | PY         | Paraguay             | PYG               |
-| PE         | Peru                 | Kalem               |
+| PE         | Peru                 | KADAR               |
 | PH         | Filipinler          | PHP               |
-| PL         | Polonya               | Pln               |
+| PL         | Polonya               | PLN               |
 | PT         | Portekiz             | EUR               |
 | PR         | Porto Riko          | USD               |
-| QA         | Katar                | Qar               |
-| RO         | Romanya              | Ron               |
+| QA         | Katar                | QAR               |
+| RO         | Romanya              | IR               |
 | RU         | Rusya               | RUB               |
 | SA         | Suudi Arabistan         | SAR               |
-| RS         | Sırbistan               | Rsd               |
+| RS         | Sırbistan               | RSD               |
 | SG         | Singapur            | SGD               |
 | SK         | Slovakya             | EUR               |
 | SI         | Slovenya             | EUR               |
@@ -194,11 +194,11 @@ Aşağıdaki tablo, özelleştirilmiş çekirdek fiyatlandırma için belirtebil
 | SE         | İsveç               | SEK               |
 | CH         | İsviçre          | CHF               |
 | TW         | Tayvan               | TWD               |
-| TH         | Tayland             | Thb               |
-| TT         | Trinidad ve Tobago  | Ttd               |
-| TN         | Tunus              | Tnd               |
+| TH         | Tayland             | THB               |
+| TT         | Trinidad ve Tobago  | TTD               |
+| TN         | Tunus              | TND               |
 | TR         | Türkiye               | TRY               |
-| UA         | Ukrayna              | Uah               |
+| UA         | Ukrayna              | UAH               |
 | AE         | Birleşik Arap Emirlikleri | EUR               |
 | GB         | Birleşik Krallık       | GBP               |
 | ABD         | Amerika Birleşik Devletleri        | USD               |

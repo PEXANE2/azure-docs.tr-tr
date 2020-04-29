@@ -1,7 +1,7 @@
 ---
-title: Azure Medya Hizmetleri v3'te Canlı Etkinlikler ve Canlı Çıktılar kavramları
+title: Azure Media Services v3 içindeki canlı etkinlikler ve canlı çıktılar kavramları
 titleSuffix: Azure Media Services
-description: Bu konu, Azure Medya Hizmetleri v3'teki canlı etkinliklere ve canlı çıktılara genel bir bakış sağlar.
+description: Bu konu, Azure Media Services v3 içindeki canlı olaylara ve canlı çıkışlara genel bakış sunar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,126 +15,126 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
 ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010588"
 ---
-# <a name="live-events-and-live-outputs-in-media-services"></a>Medya Hizmetlerinde Canlı Etkinlikler ve Canlı Çıktılar
+# <a name="live-events-and-live-outputs-in-media-services"></a>Canlı etkinlikler ve canlı çıktılar Media Services
 
-Azure Medya Hizmetleri, müşterilerinize Azure bulutu üzerinde canlı etkinlikler sunmanıza olanak tanır. Medya Hizmetleri v3'te canlı akış etkinliklerinizi ayarlamak için bu makalede tartışılan kavramları anlamanız gerekir.
+Azure Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanıza olanak tanır. Media Services v3 ' de canlı akış olaylarınızı ayarlamak için, bu makalede ele alınan kavramları anlamanız gerekir.
 
 > [!TIP]
-> Media Services v2 API'lerinden geçiş yapılan müşteriler **için, Live Event** varlığı v2'deki **Kanal'ın** yerini alır ve **Canlı Çıktı** **Programı**değiştirir.
+> Media Services V2 API 'Lerinden geçiş yapmak için **canlı olay** varlığı, v2 ve **canlı çıkışdaki** **kanalın** **yerini alır.**
 
 ## <a name="live-events"></a>Canlı Etkinlikler
 
-[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Bir Canlı Olay oluşturduğunuzda, uzak bir kodlayıcıdan canlı sinyal göndermek için kullanabileceğiniz birincil ve ikincil giriş bitiş noktası oluşturulur. Uzaktan canlı kodlayıcı, [RTMP](https://www.adobe.com/devnet/rtmp.html) veya [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (parçalanmış MP4) giriş protokolünü kullanarak bu giriş bitiş noktasına katkı akışını gönderir. RTMP yutma protokolü için içerik açık ( )`rtmp://`veya güvenli bir şekilde tel`rtmps://`üzerinde şifrelenebilir. Düzgün Akış lı alma protokolü için desteklenen URL `http://` `https://`düzenleri veya .  
+[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Canlı bir olay oluşturduğunuzda, uzak bir kodlayıcıdan canlı bir sinyal göndermek için kullanabileceğiniz bir birincil ve ikincil giriş uç noktası oluşturulur. Uzak Live Encoder, bu giriş uç noktasına [RTMP](https://www.adobe.com/devnet/rtmp.html) veya [kesintisiz akış](https://msdn.microsoft.com/library/ff469518.aspx) (parçalanmış-MP4) giriş protokolünü kullanarak katkı akışını gönderir. RTMP alma protokolü için içerik açık (`rtmp://`) veya kabloda (`rtmps://`) güvenli bir şekilde şifreli olarak gönderilebilir. Kesintisiz Akış alma protokolü için desteklenen URL şemaları `http://` veya. `https://`  
 
-## <a name="live-event-types"></a>Canlı Etkinlik türleri
+## <a name="live-event-types"></a>Canlı olay türleri
 
-[Canlı Etkinlik,](https://docs.microsoft.com/rest/api/media/liveevents) geçiş (şirket *pass-through* içi canlı kodlayıcı birden çok bit hızı akışı gönderir) veya *canlı kodlama* (şirket içi canlı kodlayıcı tek bir bit hızı akışı gönderir) olarak ayarlanabilir. Türleri [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)kullanarak oluşturma sırasında ayarlanır:
+[Canlı bir olay](https://docs.microsoft.com/rest/api/media/liveevents) , *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) veya *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. Türler, [Liveeventencodingtype](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)kullanılarak oluşturma sırasında ayarlanır:
 
-* **LiveEventEncodingType.None**: Şirket içi canlı kodlayıcı birden çok bithızı akışı gönderir. Yutulan akış, başka bir işleme gerek kalmadan Canlı Etkinlik'ten geçer. Geçiş modu da denir.
-* **LiveEventEncodingType.Standard**: Şirket içi canlı kodlayıcı, Live Event'e tek bir bithızı akışı gönderir ve Medya Hizmetleri birden çok bithızı akışı oluşturur. Katkı akışı 720p veya daha yüksek çözünürlükteyse, **Default720p** önceden ayarlanmış 6 çözünürlük/bitrates çifti kümesini kodlar.
-* **LiveEventEncodingType.Premium1080p**: Şirket içi canlı kodlayıcı, Live Event'e tek bir bithızı akışı gönderir ve Medya Hizmetleri birden çok bithızı akışı oluşturur. Default1080p önayar çözünürlük/bitrates çiftleri çıkış kümesini belirtir.
+* **Liveeventencodingtype. None**: şirket içi bir Live Encoder çoklu bit hızı akışı gönderir. Alınan akış, başka bir işlem yapılmadan canlı olaydan geçer. Doğrudan geçiş modu olarak da bilinir.
+* **Liveeventencodingtype. Standard**: şirket içi bir Live Encoder canlı olaya tek bit hızlı bir akış gönderir ve Media Services çoklu bit hızı akışları oluşturur. Katkı akışı 720p veya daha yüksek bir çözünürlüğünüz ise, **Default720p** önayar bir dizi 6 çözünürlük/bitücret çifti kodlayabilir.
+* **Liveeventencodingtype. Premium1080p**: şirket içi bir Live Encoder canlı olaya tek bit hızlı bir akış gönderir ve Media Services çoklu bit hızı akışları oluşturur. Default1080p önayarı, çözümleme/bitoranlar çiftlerinin çıkış kümesini belirtir.
 
 ### <a name="pass-through"></a>Geçiş
 
-![Medya Hizmetleri örnek diyagramı ile pass-through Live Event](./media/live-streaming/pass-through.svg)
+![Media Services örnek diyagramıyla doğrudan geçiş canlı etkinliği](./media/live-streaming/pass-through.svg)
 
-Geçişli **Canlı Etkinlik** seçeneğini kullandığınızda şirket içi gerçek zamanlı kodlayıcı ile çoklu bit hızına sahip video akışı oluşturup katılım akışı olarak Canlı Etkinliğe (RTMP veya bölünmüş MP4 protokolünü kullanarak) gönderirsiniz. Daha sonra Canlı Etkinlik, gelen video akışlarını üzerinde herhangi bir işlem yapmadan iletir. Böyle bir geçiş Live Event uzun süren canlı etkinlikler veya 24x365 doğrusal canlı akış için optimize edilmiştir. Bu türde bir Canlı Etkinlik oluştururken None (LiveEventEncodingType.None) seçeneğini kullanın.
+Geçişli **Canlı Etkinlik** seçeneğini kullandığınızda şirket içi gerçek zamanlı kodlayıcı ile çoklu bit hızına sahip video akışı oluşturup katılım akışı olarak Canlı Etkinliğe (RTMP veya bölünmüş MP4 protokolünü kullanarak) gönderirsiniz. Daha sonra Canlı Etkinlik, gelen video akışlarını üzerinde herhangi bir işlem yapmadan iletir. Bu tür bir geçişli canlı etkinlik, uzun süreli canlı etkinlikler veya 24x365 doğrusal canlı akış için iyileştirilmiştir. Bu türde bir Canlı Etkinlik oluştururken None (LiveEventEncodingType.None) seçeneğini kullanın.
 
-H.264/AVC veya H.265/HEVC video codec'leri ve AAC (AAC-LC, HE-AACv1 veya HE-AACv2) ses codec'i ile katılım akışını en fazla 4K çözünürlük ve 60 kare/saniye kare hızıyla gönderebilirsiniz. Daha fazla bilgi için [Canlı Etkinlik türleri karşılaştırması'na](live-event-types-comparison.md)bakın.
+H.264/AVC veya H.265/HEVC video codec'leri ve AAC (AAC-LC, HE-AACv1 veya HE-AACv2) ses codec'i ile katılım akışını en fazla 4K çözünürlük ve 60 kare/saniye kare hızıyla gönderebilirsiniz. Daha fazla bilgi için bkz. [canlı olay türleri karşılaştırması](live-event-types-comparison.md).
 
 > [!NOTE]
-> Geçiş yöntemi kullanmak, uzun bir süre boyunca birden fazla etkinlik yaptığınızda ve şirket içi kodlayıcılara yatırım yaptığınızda canlı akış yapmanın en ekonomik yoludur. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/) detaylarına bakın.
+> Doğrudan geçiş yöntemi kullanmak, uzun bir süre boyunca birden çok olay gerçekleştirirken ve şirket içi kodlayıcılara zaten yatırım yapmış olduğunuz durumlarda canlı akış yapmanın en ekonomik yoludur. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/) detaylarına bakın.
 >
 
-[MediaV3LiveApp'ta](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)bir .NET kodu örneğine bakın.
+[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)' de bir .NET kod örneği görürsünüz.
 
 ### <a name="live-encoding"></a>Live encoding  
 
-![Medya Hizmetleri örnek diyagramı ile canlı kodlama](./media/live-streaming/live-encoding.svg)
+![Media Services örnek diyagramı ile canlı kodlama](./media/live-streaming/live-encoding.svg)
 
-Medya Hizmetleri ile canlı kodlama kullanırken, şirket içi canlı kodlayıcınızı, Live Event'e katkı akışı olarak tek bir bitrate video gönderecek şekilde yapılandırırsınız (RTMP veya Fragmented-Mp4 protokolünü kullanarak). Daha sonra, gelen tek bit hızı akışını [birden çok bit hızında video akışına](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)kodlayan ve çıktıyı MPEG-DASH, HLS ve Düzgün Akış gibi protokoller aracılığıyla aygıtları oynatmak için kullanılabilir hale getirebilecek şekilde bir Live Event ayarlarsınız.
+Media Services ile canlı kodlama kullanırken, şirket içi Live Encoder ' ı canlı olaya katkı akışı olarak tek bir bit hızlı video gönderecek şekilde yapılandırırsınız (RTMP veya parçalanmış-MP4 protokolünü kullanarak). Ardından, gelen tek bit hızı akışının [çoklu bit hızı video akışına](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)kodlanabilmesi ve ÇıKTıNıN, MPEG-Dash, hls ve kesintisiz akış gibi protokoller aracılığıyla cihazları oynamasına olanak sağlamak için canlı bir olay ayarlarsınız.
 
-Canlı kodlama kullandığınızda, katkı akışını yalnızca H.264/AVC video codec ve AAC (AAC-LC, HE-AACv1 veya HE-AACv2) ses codec ile 30 kare/saniye kare hızında 1080p çözünürlüğe kadar çözünürlükte gönderebilirsiniz. Geçişli Canlı Etkinlikler'in 60 kare/saniye de 4K'ya kadar çözünürlükleri destekleyebilir. Daha fazla bilgi için [Canlı Etkinlik türleri karşılaştırması'na](live-event-types-comparison.md)bakın.
+Canlı kodlama kullandığınızda, katkı akışını yalnızca, 30 kareden oluşan bir kare hızında (en fazla, H. ıAACv1, veya HE-AACv2) ses codec 'i ile en fazla 30 kare/saniye kare hızında gönderebilirsiniz. Geçişli canlı olayların 60 kare/saniye olan en fazla 4K çözünürlüğe kadar çözüm destekleyebileceğini unutmayın. Daha fazla bilgi için bkz. [canlı olay türleri karşılaştırması](live-event-types-comparison.md).
 
-Canlı kodlayıcıdan çıktıda bulunan çözünürlükler ve bitrates önceden ayarlanmış tarafından belirlenir. **Standart** canlı kodlayıcı (LiveEventEncodingType.Standard) kullanıyorsanız, *Default720p* önceden ayarlanmış altı çözünürlük/bit hızı çifti kümesini belirtir ve 720p'den 3,5 Mbps'de 200 kbps'de 192p'ye iner. Aksi takdirde, **Premium1080p** canlı kodlayıcı (LiveEventEncodingType.Premium1080p) kullanıyorsanız, *Default1080p* ön ayar altı çözünürlük/bit hızı çiftleri kümesini belirtir, 1080p'den 3,5 Mbps'de 180p'ye 200 kbps'de 180p'ye iner. Bilgi edinmek için bkz. [Sistem ön ayarları](live-event-types-comparison.md#system-presets).
+Live Encoder 'daki çıktıda bulunan çözünürlükler ve bitoranlar, önceden ayarlanmış olarak belirlenir. **Standart** bir Live Encoder (LiveEventEncodingType. Standard) kullanılıyorsa, *Default720p* önayarı altı çözünürlükte/bit hız çifti kümesini belirtir ve 3,5 Mbps, 200 Kbps hızında, Aksi halde, **Premium1080p** Live Encoder (LiveEventEncodingType. Premium1080p) kullanılıyorsa, *Default1080p* önayarı, 3,5 Mbps hızında 200 kbps 'e giderek, bir dizi altı çözünürlük/bit fiyat çifti belirtir. Bilgi edinmek için bkz. [Sistem ön ayarları](live-event-types-comparison.md#system-presets).
 
 > [!NOTE]
-> Canlı kodlama ön ayarını özelleştirmeniz gerekiyorsa, Azure portalı üzerinden bir destek bileti açın. İstenilen çözünürlük tablosunu ve bitrates'i belirtin. 720p 'de (Standart canlı kodlayıcı için önceden ayarlanmış istiyorsanız) veya 1080p 'de (Premium1080p canlı kodlayıcı için önceden ayarlanmış talep ediyorsanız) ve en fazla 6 katman da yalnızca bir katman olduğunu doğrulayın.
+> Canlı kodlama ön ayarını özelleştirmeniz gerekiyorsa Azure portal aracılığıyla bir destek bileti açın. İstenen çözünürlük ve bit fiyatları tablosunu belirtin. 720p (Standart bir Live Encoder için önceden ayarlanmış olarak) veya 1080p (Premium1080p Live Encoder için önceden ayarlanmış bir ön ayar isteğinde bulunursa) ve en çok 6 katman olduğunu doğrulayın.
 
-## <a name="creating-live-events"></a>Canlı Etkinlikler Oluşturma
+## <a name="creating-live-events"></a>Canlı olaylar oluşturma
 
 ### <a name="options"></a>Seçenekler
 
-Canlı Etkinlik oluştururken aşağıdaki seçenekleri belirtebilirsiniz:
+Canlı bir olay oluştururken, aşağıdaki seçenekleri belirtebilirsiniz:
 
-* Canlı Etkinlik için akış protokolü (şu anda RTMP ve Düzgün Akış protokolleri desteklenir).<br/>Canlı Etkinlik veya ilişkili Canlı Çıktılar çalışırken protokol seçeneğini değiştiremezsiniz. Farklı protokoller gerektiriyorsanız, her akış protokolü için ayrı bir Canlı Olay oluşturun.  
-* Olayı oluştururken, otomatik başlatmayı belirtebilirsiniz. <br/>Otomatik başlatma doğru ayarlandığında, Live Event oluşturulduktan sonra başlatılır. Faturalandırma, Canlı Etkinlik çalışmaya başlar başlamaz başlar. Daha fazla faturalandırmayı durdurmak için Canlı Etkinlik kaynağında Durdur'u açıkça aramalısınız. Alternatif olarak, akışı başlatmaya hazır olduğunuzda etkinliği başlatabilirsiniz.
+* Canlı olay için Akış Protokolü (Şu anda, RTMP ve Kesintisiz Akış protokolleri desteklenir).<br/>Canlı olay veya ilişkili canlı çıktıları çalışırken protokol seçeneğini değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa, her akış protokolü için ayrı bir canlı etkinlik oluşturun.  
+* Olayı oluştururken, başlatmayı belirtebilirsiniz. <br/>Autostart değeri true olarak ayarlandığında, canlı olay oluşturulduktan sonra başlatılır. Faturalandırma, canlı olay çalışmaya başladıktan hemen sonra başlar. Daha fazla faturalandırmayı durdurmak için canlı olay kaynağında durdurmayı açıkça çağırmanız gerekir. Alternatif olarak, akışı başlatmaya hazırsanız olayını başlatabilirsiniz.
 
-    Daha fazla bilgi için [Canlı Etkinlik durumları ve faturalandırma konusuna](live-event-states-billing.md)bakın.
+    Daha fazla bilgi için bkz. [canlı olay durumları ve faturalandırma](live-event-states-billing.md).
 
-* Alma ve önizleme için IP kısıtlamaları. Bu Canlı Etkinlik'e video yutmasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1/22') veya bir IP adresi ve bir noktalı ondalık alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1(255.255.252.0)') olabilir.<br/>IP adresi belirtilmemişse ve kural tanımı yoksa, IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.<br/>IP adresleri aşağıdaki biçimlerden birinde olmalıdır: Dört numaralı IpV4 adresi veya CIDR adres aralığı.
+* Alma ve önizleme için IP kısıtlamaları. Bu canlı olaya bir video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1/22') veya bir IP adresi ve bir noktalı ondalık alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1(255.255.252.0)') olabilir.<br/>Hiçbir IP adresi belirtilmemişse ve kural tanımı yoksa, hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.<br/>IP adresleri aşağıdaki biçimlerden birinde olmalıdır: dört sayı veya CıDR adres aralığı olan IPv4 adresi.
 
-    Kendi güvenlik duvarlarınızda belirli IP'leri etkinleştirmek veya canlı etkinliklerinize girişleri Azure IP adreslerine kısıtlamak istiyorsanız, [Azure Veri Merkezi IP adres aralıklarından](https://www.microsoft.com/download/details.aspx?id=41653)bir JSON dosyası indirin. Bu dosya yla ilgili ayrıntılar için sayfadaki **Ayrıntılar** bölümünü seçin.
+    Kendi Güvenlik duvarlarınızdan belirli IP 'Leri etkinleştirmek veya canlı olaylarınızın girdilerini Azure IP adreslerine kısıtlamak istiyorsanız, [Azure veri MERKEZI IP adresi aralıklarından](https://www.microsoft.com/download/details.aspx?id=41653)bir JSON dosyası indirin. Bu dosya hakkındaki ayrıntılar için sayfadaki **Ayrıntılar** bölümünü seçin.
     
-* Etkinliği oluştururken, Canlı Transkripsiyonları açmayı seçebilirsiniz. <br/> Varsayılan olarak, canlı transkripsiyon devre dışı bırakılır. Canlı Etkinlik veya ilişkili Canlı Çıktılar çalışırken bu özelliği değiştiremezsiniz. 
+* Olayı oluştururken canlı dökümlerini açmayı seçebilirsiniz. <br/> Canlı döküm varsayılan olarak devre dışıdır. Canlı olay veya onunla ilişkili canlı çıktılar çalışırken bu özelliği değiştiremezsiniz. 
 
 ### <a name="naming-rules"></a>Adlandırma kuralları
 
-* Max live etkinlik adı 32 karakterdir.
-* Ad bu [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) desen `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`takip etmelidir: .
+* En büyük canlı olay adı 32 karakterdir.
+* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
-Ayrıca [bkz: Akış Uç noktaları adlandırma kuralları.](streaming-endpoint-concept.md#naming-convention)
+Ayrıca bkz. [akış uç noktaları adlandırma kuralları](streaming-endpoint-concept.md#naming-convention).
 
 > [!TIP]
-> Canlı etkinlik adınızın benzersizliğini garanti etmek için, bir GUID oluşturabilir ve ardından tüm tireleri ve kıvırcık braketleri (varsa) kaldırabilirsiniz. Dize tüm canlı etkinliklerde benzersiz olacak ve uzunluğu 32 olması garanti edilir.
+> Canlı olay adınızın benzersizliğini garantilemek için bir GUID oluşturabilir, ardından tüm kısa çizgileri ve süslü ayraçları (varsa) kaldırabilirsiniz. Dize tüm canlı etkinlikler genelinde benzersiz olacaktır ve uzunluğu 32 olarak garanti edilir.
 
 ## <a name="live-event-ingest-urls"></a>Canlı Etkinlik alma URL'leri
 
-Canlı Etkinlik oluşturulduktan sonra, canlı şirket içi kodlayıcıya sağlayacağınız URL'leri yutabilirsiniz. Gerçek zamanlı kodlayıcı bu URL'leri canlı akış girişi için kullanır. Daha fazla bilgi için bkz: [Önerilen şirket içi canlı kodlayıcılar.](recommended-on-premises-live-encoders.md)
+Canlı olay oluşturulduktan sonra, canlı şirket içi kodlayıcıya sağlayacağınız içe alma URL 'Leri edinebilirsiniz. Gerçek zamanlı kodlayıcı bu URL'leri canlı akış girişi için kullanır. Daha fazla bilgi için bkz. [Önerilen şirket içi canlı kodlayıcılar](recommended-on-premises-live-encoders.md).
 
 Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
 
 > [!NOTE] 
-> Bir url'nin tahmine uygun olması için "makyaj" modunu ayarlayın.
+> Tahmine dayalı bir URL 'nin tahmin alınması için, "Vanity" modunu ayarlayın.
 
-* Makyajsız URL
+* Gelişmiş olmayan URL
 
-    Non-vanity URL Medya Hizmetleri v3 varsayılan modudur. Potansiyel olarak Canlı Etkinliği daha hızlı bir şekilde alabilirsiniz ancak alma URL'si yalnızca canlı etkinlik başlatıldığında bildirilir. Canlı Etkinliği durdurup yeniden başlattığınızda URL değişir. <br/>Non-Vanity, son kullanıcının uygulamanın en kısa sürede canlı bir etkinlik almak istediği bir uygulamayı kullanarak akış yapmak istemesi ve dinamik bir URL'ye sahip olmanın sorun olmadığı senaryolarda yararlıdır.
+    Yol olmayan URL, Media Services v3 ' de varsayılan moddur. Potansiyel olarak Canlı Etkinliği daha hızlı bir şekilde alabilirsiniz ancak alma URL'si yalnızca canlı etkinlik başlatıldığında bildirilir. Canlı Etkinliği durdurup yeniden başlattığınızda URL değişir. <br/>Bir son kullanıcı, uygulamanın canlı bir olay ASAP almak istediği ve dinamik alma URL 'sinin bir sorun olmaması gereken bir uygulamayı kullanarak akış yapmak istediğinde, senaryolar için yararlı değildir.
 
-    Bir istemci uygulamasının Canlı Etkinlik oluşturulmadan önce bir URL'yi önceden oluşturması gerekmiyorsa, Medya Hizmetleri'nin canlı etkinlik için Erişim Belirteci'ni otomatik olarak oluşturmasına izin verin.
+    Bir istemci uygulamanın canlı etkinlik oluşturulmadan önce alma URL 'sini önceden oluşturması gerekmiyorsa, canlı olay için erişim belirtecini Media Services AutoGenerate 'e izin verin.
 
-* Vanity URL
+* Vanity URL 'SI
 
-    Vanity modu, donanım yayını kodlayıcıları kullanan ve Live Event'i başlattıklarında kodlayıcılarını yeniden yapılandırmak istemeyen büyük medya yayıncıları tarafından tercih edilir. Bu yayıncılar zaman içinde değişmeyen bir tahmine dayalı URL istiyor.
+    Vanity modu, donanım yayını kodlayıcıları kullanan büyük medya yayımcılar tarafından tercih edilir ve canlı olayını başlatırken kodlayıcılarını yeniden yapılandırmak istemiyor. Bu yayımcılar, zaman içinde değişmeyen bir tahmine dayalı alma URL 'SI istiyor.
     
     > [!NOTE]
-    > Azure portalında, makyaj URL'si "*Kalıcı giriş URL'si*" olarak adlandırılır.
+    > Azure Portal, Gösterim URL 'si "*kalıcı giriş URL 'si*" olarak adlandırılmıştır.
 
-    API'de bu modu belirtmek `vanityUrl` `true` için, oluşturma zamanında `false`ayarlanmış (varsayılan). Ayrıca oluşturma zamanında kendi erişim belirteci (`LiveEventInput.accessToken`) geçmek gerekir. URL'de rasgele bir belirteç önlemek için belirteç değerini belirtirsiniz. Erişim belirteci geçerli bir GUID dizesi olmalıdır (tireli veya tiresiz). Mod ayarlandıktan sonra güncelleştirilemez.
+    Bu modu API 'de belirtmek için, oluşturma zamanı `vanityUrl` ( `true` varsayılan `false`) olarak ayarlayın. Ayrıca, oluşturma zamanında kendi erişim belirtecinizi (`LiveEventInput.accessToken`) geçirmeniz gerekir. URL 'de rastgele bir belirteci önlemek için belirteç değerini belirtirsiniz. Erişim belirtecinin geçerli bir GUID dizesi olması (tire ile veya kısa çizgi olmadan) vardır. Mod ayarlandıktan sonra, bu güncelleştirilemiyor.
 
-    Erişim belirteci veri merkezinizde benzersiz olması gerekir. Uygulamanızın bir makyaj URL'si kullanması gerekiyorsa, erişim belirteciniz için her zaman yeni bir GUID örneği oluşturmanız önerilir (varolan guid'leri yeniden kullanmak yerine).
+    Erişim belirtecinin, veri merkezinizde benzersiz olması gerekir. Uygulamanızın bir gösterim URL kullanması gerekiyorsa, erişim belirteciniz için her zaman yeni bir GUID örneği oluşturmanız önerilir (varolan GUID 'yi yeniden kullanmak yerine).
 
-    Vanity URL'sini etkinleştirmek ve erişim belirtecisini geçerli bir GUID `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`olarak ayarlamak için aşağıdaki API'leri kullanın (örneğin, ).  
+    Aşağıdaki API 'Leri kullanarak Vanity URL 'sini etkinleştirin ve erişim belirtecini geçerli bir GUID (örneğin, `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) olarak ayarlayın.  
 
-    |Dil|Makyaj URL'sini etkinleştirme|Erişim belirteci ayarlama|
+    |Dil|Gösterim URL 'sini etkinleştir|Erişim belirteci ayarlama|
     |---|---|---|
-    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--kibir-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--erişim-belirteç](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[Properties. vanityUrl 'Si](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[Liveeventınput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |CLI|[--Vanity-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--erişim-belirteç](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent. VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[Liveeventınput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>Canlı alma URL'si adlandırma kuralları
 
 * Aşağıdaki *rastgele* dize, 128 bit bir onaltılık sayıdır (0-9 a-f arası 32 karakterden oluşur).
-* *erişim belirteciniz*: Makyaj modunu kullanırken ayarladığınız geçerli GUID dizesi. Örneğin, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
-* *akış adı*: Belirli bir bağlantının akış adını gösterir. Akış adı değeri genellikle kullandığınız canlı kodlayıcı tarafından eklenir. "video1_audio1", "video2_audio1", "akış" gibi bağlantıyı tanımlamak için herhangi bir ad kullanacak şekilde canlı kodlayıcıyı yapılandırabilirsiniz.
+* *erişim belirteciniz*: Gösterim modunu kullanırken ayarladığınız geçerli GUID dizesi. Örneğin, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *akış adı*: belirli bir bağlantı için akış adını gösterir. Akış adı değeri genellikle kullandığınız canlı kodlayıcı tarafından eklenir. Canlı kodlayıcı 'yı bağlantıyı anlatmak için herhangi bir ad kullanacak şekilde yapılandırabilirsiniz, örneğin: "video1_audio1", "video2_audio1", "Stream".
 
-#### <a name="non-vanity-url"></a>Makyajsız URL
+#### <a name="non-vanity-url"></a>Gelişmiş olmayan URL
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -148,7 +148,7 @@ Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
 `http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
-#### <a name="vanity-url"></a>Vanity URL
+#### <a name="vanity-url"></a>Vanity URL 'SI
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -162,31 +162,31 @@ Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
 `http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 
-## <a name="live-event-preview-url"></a>Canlı Etkinlik önizleme URL'si
+## <a name="live-event-preview-url"></a>Canlı olay önizleme URL 'SI
 
-Canlı Etkinlik katkı akışını almaya başladıktan sonra, daha fazla yayımlamadan önce canlı akışı aldığınızı önizlemek ve doğrulamak için önizleme bitiş noktasını kullanabilirsiniz. Önizleme akışının iyi olup olmadığını kontrol ettikten sonra, canlı akışı bir veya daha fazla (önceden oluşturulmuş) Akış Bitiş Noktası üzerinden teslim edilebilmek için Canlı Etkinlik'i kullanabilirsiniz. Bunu başarmak için, Canlı Etkinlik'te yeni bir [Canlı Çıktı](https://docs.microsoft.com/rest/api/media/liveoutputs) oluşturun.
+Canlı olay katkı akışını almaya başladıktan sonra, daha fazla yayımlamadan önce canlı akışı aldığınızı görmek ve doğrulamak için Önizleme uç noktasını kullanabilirsiniz. Önizleme akışının iyi olduğunu kontrol ettikten sonra canlı bir olay kullanarak canlı akışı bir veya daha fazla (önceden oluşturulmuş) akış uç noktası üzerinden teslim edilmek üzere kullanılabilir hale getirebilirsiniz. Bunu gerçekleştirmek için canlı olayda yeni bir [canlı çıktı](https://docs.microsoft.com/rest/api/media/liveoutputs) oluşturun.
 
 > [!IMPORTANT]
-> Videonun devam etmeden önce önizleme URL'sine aktığından emin olun!
+> Devam etmeden önce videonun önizleme URL 'sine akmasını sağlayın!
 
-## <a name="live-event-long-running-operations"></a>Live Event uzun süren işlemler
+## <a name="live-event-long-running-operations"></a>Canlı olay uzun süre çalışan işlemler
 
-Ayrıntılar [için, uzun süren işlemlere](media-services-apis-overview.md#long-running-operations)bakın.
+Ayrıntılar için bkz. [uzun süre çalışan işlemler](media-services-apis-overview.md#long-running-operations).
 
 ## <a name="live-outputs"></a>Canlı Çıkışlar
 
-Canlı Etkinlik'e akan akışı elde ettikten sonra, bir [Varlık,](https://docs.microsoft.com/rest/api/media/assets) [Canlı Çıktı](https://docs.microsoft.com/rest/api/media/liveoutputs)ve [Akış Bulucu'su](https://docs.microsoft.com/rest/api/media/streaminglocators)oluşturarak akış etkinliğine başlayabilirsiniz. Canlı Çıktı akışı arşivleyecek ve [Akış Bitiş Noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints)aracılığıyla görüntüleyenlerin kullanımına sunacak.  
+Akışın canlı olayına akışını tamamladıktan sonra bir [varlık](https://docs.microsoft.com/rest/api/media/assets), [canlı çıkış](https://docs.microsoft.com/rest/api/media/liveoutputs)ve [akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators)oluşturarak akış olayını başlatabilirsiniz. Canlı çıktı akışı Arşivle ve [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints)aracılığıyla görüntüleyiciler için kullanılabilir hale getirir.  
 
-Canlı Çıktılar hakkında ayrıntılı bilgi için bulut [DVR kullanma'ya](live-event-cloud-dvr.md)bakın.
+Canlı çıktılar hakkında ayrıntılı bilgi için bkz. [Cloud DVR kullanma](live-event-cloud-dvr.md).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-Sık [sorulan sorular](frequently-asked-questions.md#live-streaming) makalesine bakın.
+[Sık sorulan sorular](frequently-asked-questions.md#live-streaming) makalesine bakın.
 
-## <a name="ask-questions-and-get-updates"></a>Soru sorun ve güncellemeler alın
+## <a name="ask-questions-and-get-updates"></a>Soru sorun ve güncelleştirme al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Canlı akış eğitimi](stream-live-tutorial-with-api.md)
+[Canlı akış öğreticisi](stream-live-tutorial-with-api.md)

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure sanal makine ölçek kümesi oluşturma ve yönetme
+title: Öğretici-Azure sanal makine ölçek kümesi oluşturma ve yönetme
 description: Örnek başlatma ve durdurma veya ölçek kümesi kapasitesini değiştirme gibi bazı genel yönetim görevlerinin yanı sıra, sanal makine ölçek kümesi oluşturmak için Azure CLI’nin nasıl kullanılacağını öğrenin.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 882ace506ee55f09d1b0eb5227892398a7dd9237
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011302"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi oluşturma ve yönetme
@@ -25,7 +25,7 @@ Sanal makine ölçek kümesi, birbiriyle aynı ve otomatik olarak ölçeklendiri
 > * Ölçek kümesini el ile ölçeklendirme
 > * Genel ölçek kümesi yönetim görevlerini gerçekleştirme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +43,7 @@ Bu öğreticide bir ölçek kümesi oluşturduğunuzda veya değiştirdiğinizde
 
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
-[az vmss create](/cli/azure/vmss) komutuyla bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, *myScaleSet*adlı bir ölçek kümesi oluşturur ve yoksa SSH anahtarları oluşturur:
+[az vmss create](/cli/azure/vmss) komutuyla bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, *myScaleSet*adlı bir ölçek kümesi oluşturur ve yoksa SSH anahtarlarını oluşturur:
 
 ```azurecli-interactive
 az vmss create \

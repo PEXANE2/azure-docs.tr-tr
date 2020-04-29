@@ -1,6 +1,6 @@
 ---
-title: Bir teklif oluşturma veya değiştirme | Azure Marketi
-description: API yeni veya güncelleştirme ve mevcut teklif oluşturmak için.
+title: Teklif oluşturma veya değiştirme | Azure Marketi
+description: Yeni bir veya güncelleştirme ve mevcut teklif oluşturmak için API.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,17 +8,17 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256357"
 ---
 <a name="create-or-modify-an-offer"></a>Teklifi oluşturma veya değiştirme
 =========================
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
 Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir veya yeni bir teklif oluşturur.
 
@@ -30,15 +30,15 @@ Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir ve
 
 |  **Adı**         |  **Açıklama**                      |  **Veri türü**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Yayımcı tanımlayıcısı, örneğin`contoso` |   Dize |
-| offerId           |  Teklif tanımlayıcısı                     |   Dize        |
-| api-sürümü       |  API'nin en son sürümü            |   Tarih           |
+| PublisherId       |  Yayımcı tanımlayıcı, örneğin`contoso` |   Dize |
+| OfferId           |  Teklif tanımlayıcısı                     |   Dize        |
+| api-sürümü       |  API 'nin en son sürümü            |   Tarih           |
 |  |  |  |
 
 <a name="header"></a>Üst bilgi
 ------
 
-|  **Adı**        |  **Değer**               |
+|  **Adı**        |  **Deeri**               |
 |  ---------       |  ----------              | 
 | İçerik Türü     | `application/json`       |
 | Yetkilendirme    | `Bearer YOUR_TOKEN`      |
@@ -48,7 +48,7 @@ Bu çağrı, yayımcı ad alanı içinde belirli bir teklifi güncelleştirir ve
 <a name="body-example"></a>Gövde örneği
 ------------
 
-Aşağıdaki örnek, offerid ile bir `contosovirtualmachine`teklif oluşturur.
+Aşağıdaki örnek OfferId ile bir teklif oluşturur `contosovirtualmachine`.
 
 ### <a name="request"></a>İstek
 
@@ -242,23 +242,23 @@ Aşağıdaki örnek, offerid ile bir `contosovirtualmachine`teklif oluşturur.
 ```
 
 > [!NOTE]
-> Bu teklifi değiştirmek için yukarıdaki isteğe * olarak ayarlanmış **bir If-Match** üstbilgi ekleyin. Yukarıdaki gibi aynı istek gövdesini kullanın, ancak değerleri istediğiniz gibi değiştirin. 
+> Bu teklifi değiştirmek için yukarıdaki isteğe bir **IF-Match** üst bilgisini * olarak ayarlayın. Yukarıdaki gibi aynı istek gövdesini kullanın, ancak değerleri istediğiniz şekilde değiştirin. 
 
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
-| **Kod**  |  **Açıklama**                                                                            |
+| **Kodudur**  |  **Açıklama**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. İstek başarıyla işlendi ve teklif başarıyla değiştirildi.           |
 |  201      | `Created`. İstek başarıyla işlendi ve teklif başarıyla oluşturuldu.   |
-|  400      | `Bad/Malformed request`. Hata yanıt gövdesi daha fazla bilgi sağlayabilir.            |
+|  400      | `Bad/Malformed request`. Hata yanıtı gövdesi daha fazla bilgi sağlayabilir.            |
 |  403      | `Forbidden`. İstemcinin istenen ad alanına erişimi yok.                     |
-|  404      | `Not found`. İstemci tarafından atıfta bulunulan varlık yok.                           |
-|  412      | Sunucu, istekte belirtilen ön koşullardan birini karşılamıyor. İstemci, istekle birlikte gönderilen ETAG'ı kontrol etmelidir. |
+|  404      | `Not found`. İstemci tarafından başvurulan varlık yok.                           |
+|  412      | Sunucu istekte bulunan istekten birini karşılamıyor. İstemci, istekle gönderilen ETAG öğesini denetlemelidir. |
 |  |  |
 
 
-<a name="uploading-artifacts"></a>Eserleri yükleme
+<a name="uploading-artifacts"></a>Yapıtlar karşıya yükleniyor
 -------------------
 
-Resimler ve logolar gibi eserler, yukarıdaki örnekte olduğu gibi, web'de erişilebilir bir konuma yüklenerek, daha sonra her biri PUT isteğine URI olarak dahil edilerek paylaşılmalıdır. Sistem, bu dosyaların Azure pazar depolama alanında bulunmadığını algılar ve bu dosyaları depolama alanına karşı karşıdan yüklez.  Sonuç olarak, gelecekteki GET isteklerinin bu dosyalar için bir Azure pazar yeri hizmeti URL'si döndüreceğini göreceksiniz.
+Görüntüler ve amblemler gibi yapıtlar, Web üzerinde erişilebilir bir konuma karşıya yükleyerek ve ardından her biri, yukarıdaki örnekte olduğu gibi, PUT isteğinde bir URI olarak dahil olmak üzere paylaşılmalıdır. Sistem bu dosyaların Azure Market depolamada mevcut olup olmadığı tespit eder ve bu dosyaları depolama alanına indirir.  Sonuç olarak, gelecekteki GET isteklerinin bu dosyalar için bir Azure Market hizmeti URL 'SI döndürabileceğini görürsünüz.

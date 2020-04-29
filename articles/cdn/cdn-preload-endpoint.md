@@ -1,6 +1,6 @@
 ---
-title: Azure CDN bitiş noktasında varlıkları önceden yükleme | Microsoft Dokümanlar
-description: Önbelleğe alınmış içeriği Azure CDN bitiş noktasında önceden yüklemeyi öğrenin.
+title: Azure CDN uç noktasında varlıkları önceden yükleme | Microsoft Docs
+description: Azure CDN uç noktasında önbelleğe alınmış içeriği önceden yüklemeyi öğrenin.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: allensu
 ms.openlocfilehash: c45d0a9195a719d830753a9614cfa7efb6f1c23d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260284"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN uç noktasında varlıkları önceden yükleme
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Varsayılan olarak, varlıklar yalnızca istendiğinde önbelleğe alınır. Kenar sunucuları içeriği henüz önbelleğe almadığından ve isteği kaynak sunucuya iletmesi gerektiğinden, her bölgeden gelen ilk istek sonraki isteklerden daha uzun sürebilir. Bu ilk isabet gecikmesini önlemek için varlıklarınızı önceden yükleyin. Daha iyi bir müşteri deneyimi sağlamanın yanı sıra, önbelleğe alınmış varlıklarınızın önceden yüklenmesi, kaynak sunucudaki ağ trafiğini azaltabilir.
+Varsayılan olarak, varlıklar yalnızca istendiğinde önbelleğe alınır. Uç sunucular içeriği henüz önbelleğe alınmamış ve isteği kaynak sunucuya ilettiğinden, her bölgeden gelen ilk istek sonraki isteklerden daha uzun sürebilir. Bu ilk isabet gecikmesini önlemek için varlıklarınızı önceden yükleyin. Daha iyi bir müşteri deneyimi sunmanın yanı sıra, önbelleğe alınmış varlıklarınızın ön yüklemesi, kaynak sunucudaki ağ trafiğini azaltabilir.
 
 > [!NOTE]
-> Ön yükleme varlıkları, yeni bir film sürümü veya yazılım güncelleştirmesi gibi birçok kullanıcıtarafından aynı anda kullanılabilen büyük olaylar veya içerik için yararlıdır.
+> Önceden yükleme varlıkları, yeni bir film sürümü veya yazılım güncelleştirmesi gibi birçok kullanıcı için aynı anda kullanılabilecek büyük olaylar veya içerikler için yararlıdır.
 > 
 > 
 
-Bu öğretici, tüm Azure CDN kenar düğümlerinde önbelleğe alınmış önbelleğe alınmış içerikte size yol gösterin.
+Bu öğretici, tüm Azure CDN Edge düğümlerinde önbelleğe alınmış içeriği önceden yükleme işleminde size kılavuzluk eder.
 
 ## <a name="to-pre-load-assets"></a>Varlıkları önceden yüklemek için
-1. Azure [portalında,](https://portal.azure.com)önceden yüklemek istediğiniz bitiş noktasını içeren CDN profiline göz atın. Profil bölmesi açılır.
+1. [Azure Portal](https://portal.azure.com), önceden yüklemek istediğiniz uç NOKTAYı içeren CDN profiline gidin. Profil bölmesi açılır.
     
-2. Listedeki bitiş noktasını tıklatın. Bitiş noktası bölmesi açılır.
-3. CDN bitiş noktası bölmesinden **Yükle'yi**seçin.
+2. Listedeki uç noktaya tıklayın. Uç nokta bölmesi açılır.
+3. CDN uç noktası bölmesinden **Yükle**' yi seçin.
    
-    ![CDN bitiş noktası bölmesi](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
+    ![CDN uç noktası bölmesi](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
-    **Yük** bölmesi açılır.
+    **Yükleme** bölmesi açılır.
    
     ![CDN yükleme bölmesi](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. **İçerik yolu**için, yüklemek istediğiniz her varlığın tam yolunu `/pictures/kitten.png`girin (örneğin, ).
+4. **İçerik yolu**için, yüklemek istediğiniz her varlığın tam yolunu girin (örneğin, `/pictures/kitten.png`).
    
    > [!TIP]
-   > Metin girmeye başladıktan sonra, birden çok varlığın bir listesini oluşturmanıza olanak sağlamak için daha fazla **İçerik yolu** metin kutusu görüntülenir. Varlıkları listeden silmek için elips (...) düğmesini seçin ve ardından **Sil'i**seçin.
+   > Metin girmeyi başlattıktan sonra, birden fazla varlık listesi oluşturmanıza izin veren daha fazla **içerik yolu** metin kutusu görünür. Listeden varlıkları silmek için üç nokta (...) düğmesini seçin ve **Sil**' i seçin.
    > 
-   > Her içerik yolu aşağıdaki [normal ifadelere](/dotnet/standard/base-types/regular-expression-language-quick-reference)uyan göreceli bir URL olmalıdır:  
+   > Her içerik yolu, aşağıdaki [normal ifadelere](/dotnet/standard/base-types/regular-expression-language-quick-reference)uyan GÖRELI bir URL olmalıdır:  
    > - Tek bir dosya yolu yükleyin:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - Sorgu dizesiyle tek bir dosyayı yükleyin:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > - Sorgu dizesiyle tek bir dosya yükle:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
-   > Her varlığın kendi yolu olması gerektiğinden, önceden yükleme li varlıklar için joker karakter işlevi yoktur.
+   > Her varlığın kendi yolu olması gerektiğinden, önceden yükleme varlıkları için joker karakter işlevselliği yoktur.
    > 
    > 
    
-    ![Yük düğmesi](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. İçerik yollarına girmeyi bitirdiğinizde **Yükle'yi**seçin.
+    ![Yükleme düğmesi](./media/cdn-preload-endpoint/cdn-load-paths.png)
+5. İçerik yollarını girmeyi tamamladığınızda **Yükle**' yi seçin.
    
 
 > [!NOTE]
-> CDN profili başına dakikada 10 yük isteği sınırı vardır ve aynı anda 50 eşzamanlı yol işlenebilir. Her yolun yol uzunluğu 1024 karakterden oluşan bir sınırı vardır.
+> CDN profili başına dakika başına 10 yükleme isteği ve 50 eşzamanlı yolun tek seferde işlenebilmesi için bir sınır vardır. Her yol 1024 karakterlik bir yol uzunluğu sınırına sahiptir.
 > 
 > 
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure CDN bitiş noktasını temizleme](cdn-purge-endpoint.md)
-* [Azure CDN REST API başvurusu: Bir bitiş noktasında içeriği ön yükleme](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API başvurusu: İçeriği bir uç noktadan temizleme](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
+* [Azure CDN uç noktasını Temizleme](cdn-purge-endpoint.md)
+* [Azure CDN REST API başvurusu: bir uç noktada içerik önceden yükleme](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN REST API başvurusu: bir uç noktadan içerik Temizleme](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

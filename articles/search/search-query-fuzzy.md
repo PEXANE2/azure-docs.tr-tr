@@ -1,7 +1,7 @@
 ---
-title: Bulanık arama
+title: Belirsiz arama
 titleSuffix: Azure Cognitive Search
-description: Yanlış yazılmış bir terimi veya yazım hatasını otomatik olarak düzeltmek için bir "ne demek istediğinizi mi" uygulayın.
+description: Yanlış yazılmış bir terimi veya typo 'yi otomatik olarak düzeltmek için "sizin demek istediniz" arama deneyimini uygulayın.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,108 +9,108 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262443"
 ---
-# <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Yazım hatalarını ve yazım hatalarını düzeltmek için bulanık arama
+# <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Yanlış yazım ve yazım hatalarını düzeltmek için belirsiz arama
 
-Azure Bilişsel Arama, yazım hatalarını ve giriş dizesinde yanlış yazılmış terimleri dengeleyen bir sorgu türü olan bulanık aramayı destekler. Benzer bir kompozisyona sahip terimleri tarayarak bunu yapar. Yakın eşleşmeleri kapsayacak şekilde aramayı genişletmek, tutarsızlık sadece birkaç yanlış karakter olduğunda yazım hatasını otomatik olarak düzeltme etkisine sahiptir. 
+Azure Bilişsel Arama, giriş dizesinde yazım hatası ve yanlış yazılmış terimler için telafi eden bir sorgu türü olan belirsiz aramayı destekler. Bu, benzer bir bileşim olan terimleri tarayarak yapar. Aramanın yakın eşleşmeleri kapsayacak şekilde genişletilmesi, tutarsızlık yalnızca birkaç yanlış yerleştirilmiş karakter olduğunda bir yazım hatası otomatik olarak düzeltilmesinin etkisini içerir. 
 
-## <a name="what-is-fuzzy-search"></a>Bulanık arama nedir?
+## <a name="what-is-fuzzy-search"></a>Benzer arama nedir?
 
-Benzer bir kompozisyona sahip terimlerle eşleşen bir genişletme çalışmasıdır. Bulanık bir arama belirtildiğinde, motor sorgudaki tüm terimler için benzer şekilde oluşturulmuş terimlerin grafiğini [(deterministic sonlu otomat teorisine](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)dayalı) oluşturur. Örneğin, sorgunuz "Washington Üniversitesi" üç terim içeriyorsa, sorgudaki `search=university~ of~ washington~` her terim için bir grafik oluşturulur (bulanık aramada stop-word kaldırma yoktur, bu nedenle "of" bir grafik alır).
+Benzer bir bileşim içeren koşullara uyan bir eşleşme üreten bir genişletme alıştırmada. Benzer bir arama belirtildiğinde motor, sorgudaki tüm şartlar için benzer şekilde oluşturulmuş terimlerin bir grafiğini ( [belirleyici olarak sonlu](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)bir değer temelinde) oluşturur. Örneğin, sorgunuz üç terim olan "İstanbul University" içeriyorsa, sorgudaki `search=university~ of~ washington~` her terim için bir grafik oluşturulur (benzer aramada durdur-sözcük kaldırma yoktur, bu nedenle "/" bir grafik alır).
 
-Grafik, her terimin 50'ye kadar genişlemesi veya permütasyonundan oluşur ve işlemde hem doğru hem de yanlış varyantları yakalar. Motor daha sonra yanıtta en üstteki ilgili eşleşmeleri döndürür. 
+Grafik, her bir terimin 50 genişleme veya permütasyon 'ten oluşur ve her iki durumda da hem doğru hem de hatalı varyantlar yakalanıyor. Daha sonra motor, yanıtta en üstteki ilgili eşleşmeleri döndürür. 
 
-"Üniversite" gibi bir terim için, grafik "unversty, universty, üniversite, evren, ters" olabilir. Grafiktekilerle eşleşen tüm belgeler sonuçlara dahil edilir. Metni aynı sözcüğün ("fareler" ve "fare" farklı biçimlerini işlemek için çözümleyen diğer sorguların aksine), bulanık bir sorgudaki karşılaştırmalar metin üzerinde herhangi bir dil bilimsel çözümlemesi yapılmadan yüz değerinde alınır. Semantik olarak farklı olan "Evren" ve "ters", sözdizimsel tutarsızlıklar küçük olduğu için eşleşecektir.
+"Üniversite" gibi bir terim için, grafikte "unversty, üniversty, University, Universe, ters" olabilir. Grafikteki olanlarla eşleşen tüm belgeler sonuçlara dahildir. Aynı sözcüğün farklı biçimlerini ("fareler" ve "fare") işlemek için metni çözümleyen diğer sorguların aksine, benzer bir sorgudaki karşılaştırmalar, metinde hiçbir dil analizi olmadan yüz değeri olarak alınır. Sözdizimi farklılıkları küçük olduğundan, anlamsal olarak farklı olan "Universe" ve "ters" eşleşir.
 
-Tutarsızlıklar iki veya daha az editle sınırlıysa, bir edit eklenmiş, silinmiş, değiştirilen veya aktarılan bir karakterse, eşleşme başarılı olur. Diferansiyel belirten dize düzeltme algoritması [Damerau-Levenshtein mesafe](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) metrik, "işlem minimum sayısı (eklemeler, deletiyonlar, değiştirmeler veya iki bitişik karakter transpositions) olarak tanımlanan diğer içine bir kelime değiştirmek için gerekli". 
+Tutarsızlıklar iki veya daha az düzenleme ile sınırlıysa, bir düzenlemenin eklenen, silinen, değiştirilen veya dönüştürülmüş bir karakter olduğu durumlarda eşleşme başarılı olur. Değişiklik belirten dize düzeltme algoritması, "bir sözcüğü diğer bir sözcüğe değiştirmek için gereken en az işlem sayısı (ekleme, silme, değiştirme veya iki bitişik karakterin geçiş konumları) olarak tanımlanan [Ermerau-Pavenshtein uzaklık](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) ölçümdür. 
 
-Azure Bilişsel Arama'da:
+Azure Bilişsel Arama 'de:
 
-+ Bulanık sorgu tüm terimler için geçerlidir, ancak VE yapılar aracılığıyla tümcecikleri destekleyebilirsiniz. Örneğin, "Unviersty~ ~ "Wshington ~" "University of Washington" maç olacaktır.
++ Benzer sorgu tüm şartlar için geçerlidir, ancak ve kurulumlarını aracılığıyla tümcecikleri destekleyebilirsiniz. Örneğin, "Unviersty ~ of ~" Wshington ~ "," University of Washington "ile eşleşir.
 
-+ Bir editin varsayılan uzaklığı 2'dir. Bir değer `~0` hiçbir genişleme (yalnızca tam terim eşleşme olarak kabul edilir) anlamına gelir, ancak bir fark derecesi veya bir edit için belirtebilirsiniz. `~1` 
++ Bir düzenlemenin varsayılan uzaklığı 2 ' dir. Değeri, genişlemesiz bir değer `~0` belirtir (yalnızca tam terim eşleşme olarak kabul edilir), ancak bir derece veya `~1` bir düzenleme için belirtebilirsiniz. 
 
-+ Bulanık bir sorgu, bir terimi 50 ek permütasyona kadar genişletebilir. Bu sınır yapılandırılamaz, ancak düzenleme mesafesini 1'e düşürerek genişletme sayısını etkili bir şekilde azaltabilirsiniz.
++ Benzer bir sorgu, 50 ek PERMÜTASYONA kadar bir terim genişletebilir. Bu sınır yapılandırılamaz, ancak düzenleme mesafesini 1 ' i azaltarak genişletmeleri sayısını etkili bir şekilde azaltabilirsiniz.
 
-+ Yanıtlar, ilgili eşleşme (en fazla 50) içeren belgelerden oluşur.
++ Yanıtlar, ilgili eşleşme içeren belgelerden oluşur (50 'e kadar).
 
-Grafikler, dizindeki belirteçlere göre eşmaç ölçütleri olarak topluolarak gönderilir. Tahmin edebileceğiniz gibi, bulanık arama doğal olarak diğer sorgu formlarından daha yavaştır. Dizininizin boyutu ve karmaşıklığı, faydaların yanıtın gecikmesini dengelemek için yeterli olup olmadığını belirleyebilir.
+Toplu olarak, grafikler dizindeki belirteçlere göre eşleşme ölçütü olarak gönderilir. Imagine kullanabileceğiniz gibi, benzer arama doğal olarak diğer sorgu formlarından daha yavaştır. Dizininizin boyutu ve karmaşıklığı, yanıt gecikmesini saptmak için avantajların yeterince olup olmadığını belirleyebilir.
 
 > [!NOTE]
-> Bulanık arama yavaş olma eğiliminde olduğundan, kısa karakter dizilerinin ilerlemesi (bigram ve trigram belirteçleri için iki ve üç karakter dizileri) ile n-gram indeksleme gibi alternatifleri araştırmak faydalı olabilir. Dilinize ve sorgu yüzeyinize bağlı olarak, n-gram size daha iyi performans sağlayabilir. Ticaret kapalı n-gram indeksleme çok depolama yoğun ve çok daha büyük dizinler oluşturur.
+> Benzer arama yavaş olduğundan dolayı, n-gram dizin oluşturma gibi alternatifleri, kısa karakter dizileri (bıgram ve trigram belirteçleri için iki ve üç karakter dizisi) ile araştırmaya yönelik olabilir. Dilinize ve sorgu yüzeyine bağlı olarak, n-gram size daha iyi performans sağlayabilir. Ticareti, n-gram dizin oluşturmanın çok fazla depolama alanı yoğunluğu ve çok daha büyük dizinler üretmasıdır.
 >
-> Eğer sadece en korkunç durumlarda işlemek istiyorsanız düşünebilirsiniz başka bir alternatif, [eşanlamlı](search-synonyms.md)bir harita olacaktır. Örneğin, "arama"yı "serach, serch, sarch" veya "retrieve" ile "retreive" olarak eşleme.
+> Yalnızca en egregious durumlarını işlemek istiyorsanız düşünebileceğiniz başka bir alternatif, bir [eş anlamlı eşleme](search-synonyms.md)olacaktır. Örneğin, "ara" öğesini "serach, serch, Sarch" veya "Al" olarak "retreive" olarak eşleme.
 
-## <a name="indexing-for-fuzzy-search"></a>Bulanık arama için dizin oluşturma
+## <a name="indexing-for-fuzzy-search"></a>Benzer arama için dizin oluşturma
 
-Çözümleyiciler bir genişletme grafiği oluşturmak için sorgu işleme sırasında kullanılmaz, ancak bu çözümleyicilerin bulanık arama senaryolarında göz ardı edilmesi gerektiği anlamına gelmez. Sonuçta, çözümleyiciler hangi eşleştirme yapılır, sorgu serbest form, filtrelenmiş arama veya giriş olarak bir grafik ile bulanık bir arama olup olmadığını karşı belirteçleri oluşturmak için dizin kullanılır. 
+Çözümleyiciler, bir genişletme grafiği oluşturmak için sorgu işleme sırasında kullanılmaz, ancak bu, benzer arama senaryolarında yok sayıcılar göz ardı edilmelidir. Her bir sonra çözümleyiciler, eşleme işleminin yapıldığı, sorgunun ücretsiz form, filtrelenmiş arama veya girdi olarak Graf içeren benzer bir arama olup olmadığı ile ilgili belirteçleri oluşturmak için dizin oluşturma sırasında kullanılır. 
 
-Genellikle, çözümleyicileri alan başına olarak atarken, çözümleme zincirinde ince ayar kararı bulanık arama gibi özel sorgu formları yerine birincil kullanım örneğine (filtre veya tam metin araması) dayanır. Bu nedenle, bulanık arama için belirli bir çözümleyici önerisi yoktur. 
+Genellikle, bir alan temelinde çözümleyiciler atarken, analiz zinciri üzerinde ince ayar yapma kararı, belirsiz arama gibi özelleştirilmiş sorgu formları yerine birincil kullanım örneğine (bir filtre veya tam metin arama) dayanır. Bu nedenle, benzer arama için belirli bir çözümleyici önerisi yoktur. 
 
-Ancak, test sorguları beklediğiniz eşleşmeleri üretmiyorsa, daha iyi sonuçlar alıp almadığınızı görmek için dizin çözümleyicisini değiştirerek bir [dil çözümleyicisine](index-add-language-analyzers.md)ayarlamayı deneyebilirsiniz. Bazı diller, özellikle sesli harflermutasyonu olanlar, Microsoft doğal dil işlemcileri tarafından oluşturulan çekim ve düzensiz sözcük formlarından yararlanabilir. Bazı durumlarda, doğru dil çözümleyicisini kullanmak, bir terimin kullanıcı tarafından sağlanan değerle uyumlu bir şekilde belirtilip belirtilemediği konusunda bir fark yaratabilir.
+Bununla birlikte, test sorguları, beklediğinizi eşleştirmelere neden oluşturmazsa, daha iyi sonuçlar elde edip edemediğini görmek için dizin oluşturma Çözümleyicisi 'ni bir [dil Çözümleyicisi](index-add-language-analyzers.md)olarak ayarlamayı deneyebilirsiniz. Bazı diller, özellikle sesli harften bağımsız olarak, Microsoft doğal dil işlemcileri tarafından oluşturulan esnek ve düzensiz sözcük formlarından faydalanabilir. Bazı durumlarda, doğru dil Çözümleyicisi 'nin kullanılması, bir terimin Kullanıcı tarafından belirtilen değerle uyumlu bir şekilde simgeleştirilmiş olup olmadığı konusunda bir farklılık yapabilir.
 
-## <a name="how-to-use-fuzzy-search"></a>Bulanık arama nasıl kullanılır?
+## <a name="how-to-use-fuzzy-search"></a>Benzer arama kullanma
 
-Bulanık sorgular, [Lucene sorgu parleyicisi](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)çağıran tam Lucene sorgu sözdizimi kullanılarak oluşturulur.
+Benzer sorgular tam Lucene sorgu söz dizimi kullanılarak oluşturulur ve bu, [Lucene sorgu ayrıştırıcısı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)çağırır.
 
-1. Sorguda tam Lucene parser`queryType=full`ayarlayın ( ).
+1. Sorguda (`queryType=full`) tam bir Lucene ayrıştırıcısı ayarlayın.
 
-1. İsteğe bağlı olarak, bu parametreyi kullanarak`searchFields=<field1,field2>`isteği belirli alanlara göre kapsamda tinler ( ). 
+1. İsteğe bağlı olarak, bu parametreyi kullanarak isteği belirli alanlara kapsamını (`searchFields=<field1,field2>`) kullanın. 
 
-1. Tüm terimin sonunda`~`tilde ( ) işleci`search=<string>~`() ekinde ( ).
+1. Tüm terimin sonuna (`~``search=<string>~`) tilde () işlecini ekleyin.
 
-   Edit uzaklığı (`~1`) belirtmek istiyorsanız isteğe bağlı bir parametre, 0 ile 2 (varsayılan) arasında bir sayı ekleyin. Örneğin, "blue~" veya "blue~1" "blue", "blues" ve "glue" döndürülecek.
+   Düzenleme mesafesini (`~1`) belirtmek istiyorsanız, isteğe bağlı bir parametre, 0 ile 2 (varsayılan) arasında bir sayı ekleyin. Örneğin, "mavi ~" veya "mavi ~ 1", "mavi", "maves" ve "tutkalla" döndürür.
 
-Azure Bilişsel Arama'da, terim ve mesafenin (en fazla 2) yanı sıra, sorguda ayarlanacak ek parametre yoktur.
+Azure Bilişsel Arama, dönemin ve uzaklığın yanı sıra (en fazla 2) sorgu üzerinde ayarlanacak ek parametre yoktur.
 
 > [!NOTE]
-> Sorgu işleme sırasında bulanık sorgular [sözlü çözümleme](search-lucene-query-architecture.md#stage-2-lexical-analysis)den geçmez. Sorgu girişi doğrudan sorgu ağacına eklenir ve terimlergrafiği oluşturmak üzere genişletilir. Yapılan tek dönüşüm daha düşük kasadır.
+> Sorgu işleme sırasında, benzer sorgular [sözcük temelli Analize](search-lucene-query-architecture.md#stage-2-lexical-analysis)geçmez. Sorgu girişi doğrudan sorgu ağacına eklenir ve bir terim grafiği oluşturmak için genişletilir. Gerçekleştirilen tek dönüşüm küçük harfe eşit.
 
-## <a name="testing-fuzzy-search"></a>Bulanık aramayı test etme
+## <a name="testing-fuzzy-search"></a>Benzer aramayı test etme
 
-Basit sınama için, sorgu ifadesi üzerinden yineleiçin [Arama gezgini](search-explorer.md) veya [Postacı](search-get-started-postman.md) öneririz. Her iki araç da etkileşimlidir, bu da bir terimin birden çok varyantını hızlı bir şekilde atabileceğiniz ve geri gelen yanıtları değerlendirebileceğiniz anlamına gelir.
+Basit test için, bir sorgu ifadesi üzerinden yineleme yapmak üzere [Arama Gezgini](search-explorer.md) veya [Postman](search-get-started-postman.md) önerilir. Her iki araç da etkileşimlidir. Bu, bir terimin birden fazla çeşitinden hızlıca karşılaşmanıza ve geri gelen yanıtları değerlendirebileceğiniz anlamına gelir.
 
-Sonuçlar belirsiz olduğunda, [isabet vurgulama](search-pagination-page-layout.md#hit-highlighting) yanıttaki eşleşmeyi belirlemenize yardımcı olabilir. 
+Sonuçlar belirsiz olduğunda, [isabet vurgulaması](search-pagination-page-layout.md#hit-highlighting) , yanıtta eşleşmeyi belirlemenize yardımcı olabilir. 
 
 > [!Note]
-> Bulanık eşleşmeleri tanımlamak için isabet vurgulama kullanımı sınırlamaları vardır ve yalnızca temel bulanık arama için çalışır. Dizininizin puanlama profilleri varsa veya sorguyu ek sözdizimiyle katmanlarsanız, isabet vurgulama eşleşmeyi tanımlayamayabilir. 
+> Benzer eşleşmeleri belirlemek için isabet vurgulamanın kullanımı sınırlamalara sahiptir ve yalnızca temel benzer arama için geçerlidir. Dizininizin Puanlama profilleri varsa veya sorguyu ek sözdizimi ile katmanladıysanız, isabet vurgulama, eşleşmeyi tanımlayamayabilir. 
 
-### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Örnek 1: tam terim ile bulanık arama
+### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Örnek 1: tam terimle belirsiz arama
 
-Aşağıdaki dize bir `"Description"` arama belgesinde bir alanda var varsayalım:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Arama belgesinde bir `"Description"` alanda aşağıdaki dizenin bulunduğunu varsayın:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
-"Özel" üzerinde bulanık bir arama ile başlayın ve Açıklama alanına isabet vurgulama ekleyin:
+"Özel" üzerinde benzer bir aramayla başlayın ve Açıklama alanına isabet vurgusu ekleyin:
 
     search=special~&highlight=Description
 
-Yanıtta, isabet vurgulama eklediğiniz için, biçimlendirme eşleşen terim olarak "özel"e uygulanır.
+Yanıt içinde, isabet vurgulama ' i eklediğiniz için biçimlendirme, eşleşen terim olarak "özel" e uygulanır.
 
     "@search.highlights": {
         "Description": [
             "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
         ]
 
-Birkaç harf ("pe") alarak "özel" yazım, isteği tekrar deneyin:
+İsteği yeniden deneyin, birkaç harf ("pe") alarak "özel" yazarak hatalı çalışın:
 
     search=scial~&highlight=Description
 
-Şimdiye kadar, yanıt hiçbir değişiklik. 2 derece mesafe varsayılan kullanarak, "özel" iki karakter "pe" kaldırarak hala bu terim üzerinde başarılı bir maç için izin verir.
+Şimdiye kadar, yanıtta hiçbir değişiklik yoktur. Varsayılan 2 derece uzaklığın kullanılması, "pe" iki karakteri "özel" kaynağından kaldırmak yine de söz konusu dönemde başarılı bir eşleştirmeye izin verir.
 
     "@search.highlights": {
         "Description": [
             "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
         ]
 
-Bir istek daha denenin, toplam üç silme için son bir karakter çıkararak arama terimini daha da değiştirin ("özel"den "ölçek"e kadar):
+Bir çok istek deneniyor, toplam üç silme ("özel" iken "scal") için bir son karakter alarak arama terimini daha fazla değiştirin:
 
     search=scal~&highlight=Description
 
-Aynı yanıtın döndürüldüne dikkat edin, ancak şimdi "özel" ile eşleştirmek yerine bulanık eşleşme "SQL"de dir.
+Aynı yanıtın döndürüldüğünden, ancak artık "özel" ile eşleşme yerine "SQL" üzerinde olduğu gibi dikkat edin.
 
             "@search.score": 0.4232868,
             "@search.highlights": {
@@ -118,11 +118,11 @@ Aynı yanıtın döndürüldüne dikkat edin, ancak şimdi "özel" ile eşleşti
                     "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
                 ]
 
-Bu genişletilmiş örneğin amacı, isabet vurgulamanın belirsiz sonuçlara getirebileceği netliği göstermektir. Her durumda, aynı belge döndürülür. Bir eşleşmeyi doğrulamak için belge kimliklerine güvenseydiniz, "özel"den "SQL"e geçişi kaçırmış olabilirsiniz.
+Bu genişletilmiş örneğin noktası, isabet vurgulamanın belirsiz sonuçlara yol açmak için gereken açıklık göstermektir. Her durumda, aynı belge döndürülür. Bir eşleşmeyi doğrulamak için belge kimliklerine güvenmiştiniz, "özel" ' in "SQL" olarak kaymasını kaçırmış olabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Azure Bilişsel Arama'da tam metin arama nasıl çalışır (sorgu ayrıştırma mimarisi)](search-lucene-query-architecture.md)
-+ [Arama gezgini](search-explorer.md)
-+ [.NET'te sorgulama nasıl](search-query-dotnet.md)
-+ [REST'te sorgulama nasıl](search-create-index-rest-api.md)
++ [Tam metin aramasının Azure Bilişsel Arama 'da nasıl çalıştığı (sorgu ayrıştırma mimarisi)](search-lucene-query-architecture.md)
++ [Arama Gezgini](search-explorer.md)
++ [.NET 'te sorgulama](search-query-dotnet.md)
++ [REST 'te sorgulama](search-create-index-rest-api.md)

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure şablonları ile bir ölçek kümesini otomatik ölçeklendirme
+title: Öğretici-Azure şablonları ile ölçek kümesini otomatik ölçeklendirme
 description: CPU talepleri arttıkça ve azaldıkça, sanal makine ölçek kümesini otomatik olarak ölçeklendirmek için Azure Resource Manager şablonlarının nasıl kullanılacağını öğrenin
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 02fe74a2dad7da655969c5c9523c696657425e49
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011319"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
@@ -24,7 +24,7 @@ ms.locfileid: "81011319"
 > * Sanal makine örneklerinde stres testi yapma ve otomatik ölçeklendirme kurallarını tetikleme
 > * Talep düştüğünde geriye doğru otomatik ölçeklendirme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -66,13 +66,13 @@ Bu kural için aşağıdaki parametreler kullanılır:
 | Parametre         | Açıklama                                                                                                         | Değer           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | İzlenecek ve ölçek kümesi eylemlerinin uygulanmasında temel alınacak performans ölçümü.                                                   | CPU yüzdesi  |
-| *timeGrain*       | Analiz için ne sıklıkla ölçümlerin toplanacağı.                                                                   | 1 dakika        |
+| *zamandilimi*       | Analiz için ne sıklıkla ölçümlerin toplanacağı.                                                                   | 1 dakika        |
 | *timeAggregation* | Toplanan ölçümlerin analiz için nasıl bir araya getirileceğini tanımlar.                                                | Ortalama         |
-| *zaman Penceresi*      | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 5 dakika       |
-| *operator*        | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür    |
-| *Eşik*       | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan değer.                                                      | %70             |
-| *Yön*       | Kural geçerli olduğunda ölçek kümesinin ölçeğinin genişletileceğini veya daraltılacağını tanımlar.                                              | Artır        |
-| *Türü*            | Sanal makine örneği sayısının belirli bir değerle değiştirilmesi gerektiğini belirtir.                                    | Değiştirme Sayısı    |
+| *timeWindow*      | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 5 dakika       |
+| *işlecinde*        | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür    |
+| *eşiği*       | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan değer.                                                      | %70             |
+| *Görünüm*       | Kural geçerli olduğunda ölçek kümesinin ölçeğinin genişletileceğini veya daraltılacağını tanımlar.                                              | Artır        |
+| *türüyle*            | Sanal makine örneği sayısının belirli bir değerle değiştirilmesi gerektiğini belirtir.                                    | Değiştirme Sayısı    |
 | *value*           | Kural geçerli olduğunda kaç tane sanal makine örneğinin ölçeğinin genişletileceği veya daraltılacağı.                                             | 3               |
 | *cooldown*        | Otomatik ölçeklendirme eylemlerinin geçerli olması için kural tekrar uygulanmadan önceki bekleme süresi. | 5 dakika       |
 
@@ -136,7 +136,7 @@ Aşağıdaki örnek, ortalama CPU yükü 5 dakikadan uzun bir süre boyunca %30�
 ## <a name="create-an-autoscaling-scale-set"></a>Otomatik ölçeklendirme ölçek kümesi oluşturma
 Şimdi örnek bir şablon kullanarak bir ölçek kümesi oluşturalım ve otomatik ölçeklendirme kuralları uygulayalım. [Tüm şablonu gözden geçirebilir](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json) veya [şablonun *Microsoft.insights/autoscalesettings* kaynak sağlayıcı bölümüne](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220) bakabilirsiniz.
 
-Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -256,7 +256,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Ölçek kümenizi ve ek kaynaklarınızı kaldırmak için, az grup silme ile kaynak grubunu ve tüm kaynaklarını [silin:](/cli/azure/group)
+Ölçek kümesini ve ek kaynaklarınızı kaldırmak için [az Group Delete](/cli/azure/group)komutuyla kaynak grubunu ve tüm kaynaklarını silin:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

@@ -1,6 +1,6 @@
 ---
-title: Teklif durumunu alın | Azure Marketi
-description: API teklifin geçerli durumunu alır.
+title: Teklif durumunu al | Azure Marketi
+description: API, teklifin geçerli durumunu alır.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255931"
 ---
 # <a name="retrieve-offer-status"></a>Teklif durumunu alma
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
 Teklifin geçerli durumunu alır.
 
@@ -27,9 +27,9 @@ Teklifin geçerli durumunu alır.
 
 |  **Adı**       |   **Açıklama**                            |  **Veri türü** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Yayımcı tanımlayıcısı, örneğin`Contoso`  |     Dize     |
-|  offerId        | Teklifi benzersiz bir şekilde tanımlayan GUID      |     Dize     |
-|  api-sürümü    | API'nin en son sürümü                        |     Tarih       |
+|  PublisherId    | Yayımcı tanımlayıcı, örneğin`Contoso`  |     Dize     |
+|  OfferId        | Teklifi benzersiz bir şekilde tanımlayan GUID      |     Dize     |
+|  api-sürümü    | En son API sürümü                        |     Tarih       |
 |  |  |
 
 
@@ -119,57 +119,57 @@ Teklifin geçerli durumunu alır.
 ```
 
 
-### <a name="response-body-properties"></a>Yanıt gövde özellikleri
+### <a name="response-body-properties"></a>Yanıt gövdesi özellikleri
 
 |  **Adı**             |    **Açıklama**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
-|  durum               | Teklifin durumu. Olası değerler listesi için aşağıdaki [Teklif durumuna](#offer-status) bakın. |
+|  durum               | Teklifin durumu. Olası değerler listesi için bkz. [teklif durumu](#offer-status) aşağıdaki. |
 |  sayısı             | Teklifle ilişkili ileti dizisi                                                    |
-|  adımlar                | Teklifin yayımlama sırasında sunduğu adımların dizilimi                      |
-|  tahminiTimeFrame   | Bu adımı tamamlamak için gereken sürenin tahmini, dostça biçimde                       |
+|  adımlar                | Teklifin bir teklif yayımlaması sırasında gittiği adımların dizisi                      |
+|  Estimatedzaman çerçevesi   | Bu adımın tamamlanması için gereken süre (kolay biçimde)                       |
 |  id                   | Adımın tanımlayıcısı                                                                         |
 |  stepName             | Adımın adı                                                                               |
 |  açıklama          | Adımın açıklaması                                                                        |
-|  durum               | Adımın durumu. Olası değerler listesi için aşağıdaki [Adım durumuna](#step-status) bakın.    |
+|  durum               | Adımın durumu. Olası değerler listesi için aşağıdaki [adım durumuna](#step-status) bakın.    |
 |  sayısı             | Adımla ilgili ileti dizisi                                                          |
-|  işlemYüzdesi    | Adımın yüzde tamamlanması                                                              |
-|  önizlemeLinkler         | *Şu anda uygulanmıyor*                                                                    |
-|  liveLinks            | *Şu anda uygulanmıyor*                                                                    |
-|  bildirimE-postalar   | Ortak Merkezi'ne geçirilen teklifler için amortismana uğradı. Geçirilen tekliflere ait bildirim e-postaları Hesap ayarlarındaki Satıcı iletişim bilgileri altında belirtilen e-postaya gönderilir.<br><br>Geçirilmeyen teklifler için, işlemin ilerlemesi hakkında bilgilendirilecek e-posta adreslerinin virgülden ayrılmış listesi        |
+|  processPercentage    | Adımın tamamlanma yüzdesi                                                              |
+|  Önizleme bağlantıları         | *Şu anda uygulanmadı*                                                                    |
+|  Livelmürekkepler            | *Şu anda uygulanmadı*                                                                    |
+|  Notificationepostalar   | Iş Ortağı Merkezi 'ne geçirilen tekliflere kullanım dışı bırakılmıştır. Geçirilen tekliflere yönelik bildirim e-postaları, hesap ayarları 'ndaki satıcı iletişim bilgileri altında belirtilen e-postaya gönderilir.<br><br>Geçirilmeyen tekliflere, işlemin ilerleme durumu hakkında bildirim almak için virgülle ayrılmış e-posta adresleri listesi        |
 |  |  |
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
-| **Kod** |   **Açıklama**                                                                                 |
+| **Kodudur** |   **Açıklama**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
-|  200     |  `OK`- İstek başarıyla işlendi ve teklifin geçerli durumu iade edildi. |
-|  400     | `Bad/Malformed request`- Hata yanıt gövdesi daha fazla bilgi içerebilir.                 |
-|  404     | `Not found`- Belirtilen varlık yok.                                                |
+|  200     |  `OK`-İstek başarıyla işlendi ve teklifin geçerli durumu döndürüldü. |
+|  400     | `Bad/Malformed request`-Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                 |
+|  404     | `Not found`-Belirtilen varlık yok.                                                |
 |  |  |
 
 ### <a name="offer-status"></a>Teklif durumu
 
 |  **Adı**                    |    **Açıklama**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
-|  Hiç Yayınlanmadı              | Teklif hiç yayınlanmadı.                          |
-|  Başlatılmama                  | Teklif yeni ve başlamadı.                            |
-|  WaitingForPublisherReview   | Teklif yayıncının onayını bekliyor.                 |
+|  Neveryayınlandı              | Teklif hiç yayımlanmadı.                          |
+|  NotStarted                  | Teklif yenidir ve başlatılmamaktadır.                            |
+|  WaitingForPublisherReview   | Teklif, yayımcı onayını bekliyor.                 |
 |  Çalışıyor                     | Teklif gönderimi işleniyor.                     |
-|  Başarılı oldu                   | Teklif gönderimi işlemi tamamlandı.               |
-|  İptal edildi                    | Teklif sunumu iptal edildi.                           |
-|  Başarısız                      | Teklif gönderme başarısız oldu.                                 |
+|  Başarılı oldu                   | Teklif gönderimi işlemeyi tamamladı.               |
+|  İptal edildi                    | Teklif Gönderimi iptal edildi.                           |
+|  Başarısız                      | Teklif gönderimi başarısız oldu.                                 |
 |  |  |
 
-### <a name="step-status"></a>Adım Durumu
+### <a name="step-status"></a>Adım durumu
 
 |  **Adı**                    |    **Açıklama**                           |
 |  -------------------------   |  ------------------------------------------  |
-|  Başlatılmama                  | Adım başlamadı.                        |
-|  Devam Ediyor                  | Adım çalışıyor.                             |
-|  WaitingForPublisherReview   | Adım yayımcı onayı bekliyor.      |
-|  BeklemeOnayı          | Adım işlem onayı bekliyor.        |
+|  NotStarted                  | Adım başlatılmadı.                        |
+|  Ediyor                  | Adım çalışıyor.                             |
+|  WaitingForPublisherReview   | Adım, yayımcı onayını bekliyor.      |
+|  WaitingForApproval          | Adım, işlem onayı bekliyor.        |
 |  Engellendi                     | Adım engellendi.                             |
 |  Reddedilen                    | Adım reddedildi.                            |
-|  Complete                    | Adım tamamlandı.                            |
-|  İptal edildi                    | Step iptal edildi.                           |
+|  Complete                    | Adım tamamlanmıştır.                            |
+|  İptal edildi                    | Adım iptal edildi.                           |
 |  |  |

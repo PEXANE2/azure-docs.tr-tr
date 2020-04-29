@@ -1,5 +1,5 @@
 ---
-title: Azure Monitörü uyarı kurallarını geçirin
+title: Azure Izleyici uyarı kurallarını geçirme
 description: Klasik uyarı kurallarınızı geçirmek için gönüllü geçiş aracını nasıl kullanacağınızı öğrenin.
 author: yanivlavi
 ms.author: yalavi
@@ -7,94 +7,94 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114262"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Klasik uyarı kurallarınızı geçirmek için gönüllü geçiş aracını kullanın
 
-[Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure Monitor'daki klasik uyarılar Eylül 2019'da kullanımdan kaldırılmaktadır (başlangıçta Temmuz 2019'du). Azure portalında, klasik uyarı kuralları kullanan ve geçişi kendileri tetiklemek isteyen müşteriler için bir geçiş aracı kullanılabilir. Bu makalede, otomatik geçiş Eylül 2019'da başlamadan önce klasik uyarı kurallarınızı gönüllü olarak geçirmek için geçiş aracının nasıl kullanılacağı açıklanmaktadır.
+[Daha önce duyurulduğu](monitoring-classic-retirement.md)gibi, Azure izleyici 'deki klasik uyarılar Eylül 2019 ' de kullanımdan kaldırılıyor (ilk olarak 2019 Temmuz idi). Klasik uyarı kuralları kullanan ve geçiş yapmak isteyen müşterilere Azure portal bir geçiş aracı vardır. Bu makalede, Eylül 2019 ' de otomatik geçiş başlamadan önce, klasik uyarı kurallarınızı gönüllü olarak geçirmek için geçiş aracının nasıl kullanılacağı açıklanmaktadır.
 
 > [!NOTE]
-> Geçiş aracının kullanıma sunulmasındaki gecikme nedeniyle, klasik uyarı geçişi için emeklilik tarihi 30 Haziran 2019 tarihinden itibaren [31 Ağustos 2019'a uzatıldı.](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)
+> Geçiş Aracı 'nın çıkış gecikmesi nedeniyle, klasik uyarılar geçişinin devre dışı bırakılması tarihi 31 Haziran 2019 tarihinde ilk bildirilen tarihten itibaren [31 ağustos 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) tarihine kadar genişletilmiştir.
 
 ## <a name="benefits-of-new-alerts"></a>Yeni uyarıların avantajları
 
-Azure Monitor'da klasik uyarılar yeni ve birleşik uyarılarla değiştiriliyor. Yeni uyarılar platformu aşağıdaki avantajlara sahiptir:
+Klasik uyarılar, Azure Izleyici 'de yeni ve birleştirilmiş uyarı ile değiştiriliyor. Yeni uyarılar platformunda aşağıdaki avantajlar bulunur:
 
-- Çok [daha fazla Azure hizmeti](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)için çeşitli çok boyutlu ölçümler konusunda uyarıda olabilirsiniz.
-- Yeni metrik uyarılar, birçok kuralı yönetmenin genel kısmını büyük ölçüde azaltan [çok kaynak uyarı kurallarını](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) destekler.
-- Aşağıdakileri destekleyen birleşik bildirim mekanizması:
-  - [Eylem grupları,](action-groups.md)tüm yeni uyarı türleri (metrik, günlük ve etkinlik günlüğü) ile çalışan modüler bir bildirim mekanizması.
-  - SMS, ses ve ITSM Konektörü gibi yeni bildirim mekanizmaları.
-- [Birleşik uyarı deneyimi,](alerts-overview.md) farklı sinyallerdeki (metrik, günlük ve etkinlik günlüğü) tüm uyarıları tek bir yere getirir.
+- [Birçok Azure hizmeti](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)için çeşitli çok boyutlu ölçümler üzerinde uyarı alabilirsiniz.
+- Yeni ölçüm uyarıları, birçok kuralı yönetme yükünü önemli ölçüde azaltan [çok kaynak uyarı kurallarını](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) destekler.
+- Şunları destekleyen Birleşik bildirim mekanizması:
+  - Tüm yeni uyarı türleriyle (ölçüm, günlük ve etkinlik günlüğü) birlikte çalışarak bir modüler bildirim mekanizması olan [eylem grupları](action-groups.md).
+  - SMS, Voice ve ITSM Bağlayıcısı gibi yeni bildirim mekanizmaları.
+- [Birleşik uyarı deneyimi](alerts-overview.md) , tüm uyarıları farklı sinyallere (ölçüm, günlük ve etkinlik günlüğü) tek bir yerde getirir.
 
-## <a name="before-you-migrate"></a>Göç etmeden önce
+## <a name="before-you-migrate"></a>Geçirmeden önce
 
-Geçiş işlemi, klasik uyarı kurallarını yeni, eşdeğer uyarı kurallarına dönüştürür ve eylem grupları oluşturur. Hazırlık olarak, aşağıdaki noktalara dikkat edin:
+Geçiş işlemi, klasik uyarı kurallarını yeni, denk uyarı kurallarına dönüştürür ve eylem gruplarını oluşturur. Hazırlık bölümünde aşağıdaki noktalara dikkat edin:
 
-- Hem bildirim yükü biçimi hem de yeni uyarı kuralları oluşturmak ve yönetmek için API'ler klasik uyarı kurallarından farklıdır, çünkü daha fazla özelliği desteklerler. [Geçişe nasıl hazırlanacağınızı öğrenin.](alerts-prepare-migration.md)
+- Bildirim yükü biçimi ve yeni uyarı kuralları oluşturmak ve yönetmek için API 'Ler, daha fazla özelliği desteklediklerinden klasik uyarı kurallarından farklıdır. [Geçişe hazırlanma hakkında bilgi edinin](alerts-prepare-migration.md).
 
-- Bazı klasik uyarı kuralları aracı kullanılarak geçirilemez. [Hangi kuralların geçirilemeyeceğini ve bunlarla ne yapılacağını öğrenin.](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated)
+- Bazı klasik uyarı kuralları araç kullanılarak geçirilemez. [Hangi kuralların geçirilemeyeceğini ve bunlarla ne yapılacağını öğrenin](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
 
     > [!NOTE]
-    > Geçiş işlemi, klasik uyarı kurallarınızın değerlendirilmesini etkilemez. Bunlar, geçirilmelerine ve yeni uyarı kuralları yürürlüğe girene kadar çalışmaya ve uyarı göndermeye devam ederler.
+    > Geçiş işlemi, klasik uyarı kurallarınızın değerlendirmesini etkilemez. Bunlar geçirilmeden ve yeni uyarı kuralları etkinleşene kadar uyarıları çalıştırmaya ve gönderilmeye devam ederler.
 
 ## <a name="how-to-use-the-migration-tool"></a>Geçiş aracını kullanma
 
-Azure portalında klasik uyarı kurallarınızın geçişini tetiklemek için aşağıdaki adımları izleyin:
+Klasik uyarı kurallarınızın Azure portal geçişini tetiklemek için aşağıdaki adımları izleyin:
 
-1. [Azure portalında,](https://portal.azure.com) **Monitör'ü**seçin.
+1. [Azure Portal](https://portal.azure.com), **izleme**' yi seçin.
 
-1. **Uyarıları**seçin ve ardından **uyarı kurallarını yönet'i** veya klasik **uyarıları görüntüleyin'i**seçin.
+1. **Uyarılar**' ı seçin ve ardından **Uyarı kurallarını yönet** ' i seçin veya **Klasik uyarıları görüntüleyin**.
 
-1. Geçiş açılış sayfasına gitmek için **yeni kurallara geçir'i** seçin. Bu sayfa, tüm aboneliklerinizin ve geçiş durumlarının bir listesini gösterir:
+1. Geçiş giriş sayfasına gitmek için **Yeni kurallara geçir** ' i seçin. Bu sayfa, tüm aboneliklerinizin ve geçiş durumlarının listesini gösterir:
 
-    ![göç-iniş](media/alerts-migration/migration-landing.png "Geçiş kuralları")
+    ![geçiş-giriş](media/alerts-migration/migration-landing.png "Kuralları geçir")
 
-    Aracı kullanarak geçirilebilen tüm abonelikler **geçirilmeye hazır**olarak işaretlenir.
+    Aracı kullanılarak geçirilebilen tüm abonelikler geçişe **hazırlanıyor**olarak işaretlenir.
 
     > [!NOTE]
-    > Geçiş aracı, klasik uyarı kuralları kullanan tüm aboneliklere aşamalı olarak yayılıyor. Kullanıma sonunun ilk aşamalarında, bazı aboneliklerin geçiş için hazır olmadığı şeklinde işaretlenmiş olarak görebilirsiniz.
+    > Geçiş Aracı, klasik uyarı kuralları kullanan tüm aboneliklerde aşamalar halinde kullanıma alınıyor. Piyasaya sürülmeye yönelik erken aşamalarda, geçiş için yok olarak işaretlenmiş bazı abonelikler görebilirsiniz.
 
-1. Bir veya daha fazla abonelik seçin ve ardından **Geçiş önizleme'yi**seçin.
+1. Bir veya daha fazla abonelik seçin ve ardından **geçiş önizlemesi**' ni seçin.
 
-    Ortaya çıkan sayfa, aynı anda bir abonelik için geçirilecek klasik uyarı kurallarının ayrıntılarını gösterir. Ayrıntıları CSV formatında almak **için bu aboneliğin geçiş ayrıntılarını indir'i** de seçebilirsiniz.
+    Sonuçta ortaya çıkan sayfada bir abonelik için aynı anda geçirilecek olan klasik uyarı kurallarının ayrıntıları gösterilir. Ayrıca, ayrıntıları CSV biçiminde almak için **bu aboneliğin geçiş ayrıntılarını indir** ' i de seçebilirsiniz.
 
-    ![geçiş önizleme](media/alerts-migration/migration-preview.png "Geçişönizleme")
+    ![geçiş-Önizleme](media/alerts-migration/migration-preview.png "Geçiş önizlemesi")
 
-1. Geçiş durumu hakkında bilgilendirilmek üzere bir veya daha fazla e-posta adresi belirtin. Geçiş tamamlandığında veya sizden herhangi bir eylem gerekirse e-posta alırsınız.
+1. Geçiş durumu hakkında bildirim almak için bir veya daha fazla e-posta adresi belirtin. Geçiş tamamlandığında veya sizin için herhangi bir eylemde bulunmanız durumunda e-posta alacaksınız.
 
-1. **Geçişe Başlat'ı**seçin. Onay iletişim kutusunda gösterilen bilgileri okuyun ve geçiş işlemini başlatmaya hazır olduğunuzu onaylayın.
+1. **Geçişi Başlat**' ı seçin. Onay iletişim kutusunda gösterilen bilgileri okuyun ve geçiş işlemini başlatmaya hazırsınız olduğunu onaylayın.
 
     > [!IMPORTANT]
-    > Bir abonelik için geçiş işlemini başlattıktan sonra, bu abonelik için klasik uyarı kurallarını kaldıramazsınız veya oluşturamazsınız. Bu kısıtlama, yeni kurallara geçiş sırasında klasik uyarı kurallarınızda hiçbir değişikliğin kaybedilmesini sağlar. Klasik uyarı kurallarınızı değiştiremeseniz de, bunlar çalışmaya ve bunlar geçirilene kadar uyarı vermeye devam eder. Aboneliğiniz için geçiş tamamlandıktan sonra artık klasik uyarı kurallarını kullanamazsınız.
+    > Bir abonelik için geçiş işlemini başlattıktan sonra, bu abonelik için klasik uyarı kuralları düzenleyemez veya oluşturamazsınız. Bu kısıtlama, yeni kurallara geçiş sırasında klasik uyarı kurallarında hiçbir değişiklik olmamasını sağlar. Klasik uyarı kurallarınızı değiştiremeyeceksiniz, ancak geçirilene kadar uyarıları çalıştırmaya devam eder. Aboneliğiniz için geçiş tamamlandıktan sonra, artık klasik uyarı kurallarını kullanamazsınız.
 
-    ![göç-onaylamak](media/alerts-migration/migration-confirm.png "Başlatma geçişini onaylama")
+    ![geçiş-Onayla](media/alerts-migration/migration-confirm.png "Geçişin başlamasını Onayla")
 
-1. Geçiş tamamlandığında veya sizden eylem gerekiyorsa, daha önce sağladığınız adreslerden bir e-posta alırsınız. Ayrıca, portaldaki geçiş açılış sayfasındaki durumu düzenli aralıklarla kontrol edebilirsiniz.
+1. Geçiş tamamlandığında veya eylem yapmanız gerekiyorsa, daha önce belirttiğiniz adreslerde bir e-posta alırsınız. Ayrıca, portalda geçiş giriş sayfasında düzenli olarak durumu denetleyebilirsiniz.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Aboneliğim neden geçişiçin hazır değil olarak listelendi?
+### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Aboneliğim neden geçiş için yok olarak listelendi?
 
-Geçiş aracı aşamalı olarak müşterilere yayılıyor. İlk aşamalarda, aboneliklerinizin çoğu veya tümü **geçiş için hazır değil**olarak işaretlenmiş olabilir. 
+Geçiş Aracı, aşamalar halinde müşterilere kullanıma alınıyor. Erken aşamalarda, aboneliklerinizin çoğu veya hepsi **geçiş için hazırlanma**olarak işaretlenebilir. 
 
-Bir abonelik geçiş için hazır olduğunda, abonelik sahibi aracın kullanılabilir olduğunu belirten bir e-posta iletisi alır. Bu mesajiçin bir göz atın.
+Bir abonelik geçişe hazır hale geldiğinde, aboneliğin sahibi aracın kullanılabildiğini belirten bir e-posta iletisi alır. Bu ileti için bir göz atın.
 
-### <a name="who-can-trigger-the-migration"></a>Göçü kim tetikleyebilir?
+### <a name="who-can-trigger-the-migration"></a>Geçişi kimlerin tetikleyebilen?
 
-Abonelik düzeyinde kendilerine Atanan İzleme Katılımcısı rolüne sahip kullanıcılar geçişi tetikleyebilir. [Geçiş işlemi için Rol Tabanlı Erişim Denetimi hakkında daha fazla bilgi edinin.](alerts-understand-migration.md#who-can-trigger-the-migration)
+Abonelik düzeyinde kendisine atanmış Izleme katılımcısı rolü olan kullanıcılar geçişi tetikleyebiliyor. [Geçiş işlemi Için rol tabanlı Access Control hakkında daha fazla bilgi edinin](alerts-understand-migration.md#who-can-trigger-the-migration).
 
-### <a name="how-long-will-the-migration-take"></a>Göç ne kadar sürecek?
+### <a name="how-long-will-the-migration-take"></a>Geçiş ne kadar sürer?
 
-Çoğu abonelik için geçiş bir saatten az bir sürede tamamlanır. Geçiş açılış sayfasında geçiş ilerlemesini izleyebilirsiniz. Geçiş sırasında, uyarılarınızın klasik uyarı sisteminde veya yenisinde çalışmaya devam ettiğinden emin olun.
+Çoğu abonelik için bir saat altında geçiş tamamlanır. Geçiş giriş sayfasında geçiş ilerlemesini izleyebilirsiniz. Geçiş sırasında, uyarılarınızın klasik uyarılar sisteminde veya yeni bir veritabanında çalışmaya devam ettiğinden emin olun.
 
-### <a name="what-can-i-do-if-i-run-into-a-problem-during-migration"></a>Geçiş sırasında bir sorunla karşı lakarşılarım ne yapabilirim?
+### <a name="what-can-i-do-if-i-run-into-a-problem-during-migration"></a>Geçiş sırasında bir sorunla karşılaşsam ne yapabilirim?
 
-Geçiş sırasında karşılaşabileceğiniz sorunlarla ilgili yardım için [sorun giderme kılavuzuna](alerts-understand-migration.md#common-problems-and-remedies) bakın. Geçişi tamamlamak için sizden herhangi bir işlem gerekirse, aracı ayarlarken sağladığınız e-posta adreslerinde bilgilendirilirsiniz.
+Geçiş sırasında karşılaşabileceğiniz sorunlar hakkında yardım almak için [sorun giderme kılavuzuna](alerts-understand-migration.md#common-problems-and-remedies) bakın. Geçişi tamamlayabilmeniz için herhangi bir işlem yapmanız gerekiyorsa, aracı ayarlarken girdiğiniz e-posta adreslerinde size bildirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure CDN için Standart kurallar altyapısındaki koşulları eşleştirin | Microsoft Dokümanlar
-description: Azure İçerik Dağıtım Ağı (Azure CDN) için Standart kurallar altyapısındaki eşleşme koşulları için başvuru belgeleri.
+title: Azure CDN için standart kurallar altyapısından koşulları Eşleştir | Microsoft Docs
+description: Azure Content Delivery Network için standart kurallar altyapısından eşleşme koşulları için başvuru belgeleri (Azure CDN).
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,131 +8,131 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259944"
 ---
-# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için Standart kurallar altyapısındaki koşulları eşleştirin
+# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısından koşulları Eşleştir
 
-Azure İçerik Teslim Ağı (Azure CDN) için [Standart kurallar altyapısında,](cdn-standard-rules-engine.md) bir kural bir veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, Azure CDN için Standart kurallar altyapısında kullanabileceğiniz eşler koşullarının ayrıntılı açıklamaları yer almaktadır.
+Azure Content Delivery Network için [standart kurallar altyapısında](cdn-standard-rules-engine.md) (Azure CDN), bir kural bir veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, Azure CDN için standart kurallar altyapısında kullanabileceğiniz eşleştirme koşullarına ilişkin ayrıntılı açıklamalar sağlanmaktadır.
 
-Kuralın ilk bölümü bir eşleşme koşulu veya eşleşme koşulları kümesidir. Azure CDN için Standart kurallar altyapısında, her kuralın en fazla dört eşleşme koşulu olabilir. Eşmatch koşulu, tanımlanmış eylemlerin gerçekleştirildiği belirli istek türlerini tanımlar. Birden çok eşleşme koşulu kullanıyorsanız, eşleşme koşulları AND mantığı kullanılarak birlikte gruplandırılır.
+Bir kuralın ilk bölümü eşleşme koşullarıdır veya eşleştirme koşulları kümesidir. Azure CDN için standart kurallar altyapısında her kurala en fazla dört eşleşme koşulu olabilir. Bir eşleşme koşulu, tanımlı eylemlerin gerçekleştirildiği belirli istek türlerini tanımlar. Birden çok eşleşme koşulu kullanırsanız, eşleşme koşulları ve Logic kullanılarak birlikte gruplandırılır.
 
-Örneğin, bir eşleşme koşulu kullanabilirsiniz:
+Örneğin, bir eşleşme koşulunu şu şekilde kullanabilirsiniz:
 
 - İstekleri belirli bir IP adresine, ülkeye veya bölgeye göre filtreleyin.
-- Üstbilgi bilgilerine göre istekleri filtreleyin.
-- Mobil aygıtlardan veya masaüstü aygıtlardan gelen istekleri filtreleyin.
+- İstekleri üst bilgi bilgisine göre filtreleyin.
+- Mobil cihazlardan veya masaüstü cihazlardan gelen istekleri filtreleyin.
 
-## <a name="match-conditions"></a>Maç koşulları
+## <a name="match-conditions"></a>Koşulları Eşleştir
 
-Aşağıdaki eşleşme koşulları, Azure CDN için Standart kurallar altyapısında kullanılabilir. 
+Aşağıdaki eşleşme koşulları, Azure CDN Standart kurallar altyapısında kullanılmak üzere kullanılabilir. 
 
 ### <a name="device-type"></a>Cihaz Türü 
 
-Mobil cihazdan veya masaüstü aygıttan gelen istekleri tanımlar.  
+Bir mobil cihazdan veya masaüstü cihazdan yapılan istekleri tanımlar.  
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
 İşleç | Desteklenen değerler
 ---------|----------------
-Eşittir, Eşit Değil | Mobil, Masaüstü
+Eşittir, eşit değildir | Mobil, masaüstü
 
 ### <a name="http-version"></a>HTTP sürümü
 
-İstekhttp sürümüne dayalı istekleri tanımlar.
+İsteği HTTP sürümüne göre tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
 İşleç | Desteklenen değerler
 ---------|----------------
-Eşittir, Eşit Değil | 2.0, 1.1, 1.0, 0.9, Tümü
+Eşittir, eşit değildir | 2,0, 1,1, 1,0, 0,9, All
 
-### <a name="request-cookies"></a>Çerezleri iste
+### <a name="request-cookies"></a>İstek tanımlama bilgileri
 
-Gelen istekteki çerez bilgilerine dayalı istekleri tanımlar.
+Gelen istekteki tanımlama bilgisi bilgilerine göre istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Tanımlama bilgisi adı | İşleç | Çerez değeri | Büyük/küçük harf dönüşümü
+Tanımlama bilgisi adı | İşleç | Tanımlama bilgisi değeri | Örnek dönüştürme
 ------------|----------|--------------|---------------
-Dize | [Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- Bir çerez adı belirttiğiniz zaman joker karakter\*değerlerini (yıldız işaretleri dahil ) )) kullanamazsınız; tam bir çerez adı kullanmanız gerekir.
-- Bu eşleşme koşulunun örneğine göre yalnızca tek bir çerez adı belirtebilirsiniz.
-- Çerez adı karşılaştırmaları büyük/küçük harf duyarsızdır.
-- Birden çok çerez değeri belirtmek için, her çerez değeri arasında tek bir boşluk kullanın. 
-- Çerez değerleri joker karakter değerlerinden yararlanabilir.
-- Joker karakter değeri belirtilmemişse, yalnızca tam bir eşleşme bu eşleşme koşulunu karşılar. Örneğin, "Değer" "Değer" ile eşleşir, ancak "Value1" ile eşleşmez. 
+- Bir tanımlama bilgisi adı belirttiğinizde joker karakter değerlerini (\*yıldız işaretleri () dahil) kullanamazsınız. tam bir tanımlama bilgisi adı kullanmanız gerekir.
+- Bu eşleşme koşulunun her örneği için yalnızca tek bir tanımlama bilgisi adı belirtebilirsiniz.
+- Tanımlama bilgisi adı karşılaştırmaları büyük/küçük harfe duyarlıdır.
+- Birden çok tanımlama bilgisi değeri belirtmek için, her tanımlama bilgisi değeri arasında tek bir boşluk kullanın. 
+- Tanımlama bilgisi değerleri joker değerlerden faydalanabilir.
+- Joker karakter değeri belirtilmemişse, yalnızca tam eşleşme bu eşleşme koşulunu karşılar. Örneğin, "Value" değeri "Value" ile eşleşir, ancak "değer1" olarak eşleşmez. 
 
-### <a name="post-argument"></a>Sonrası bağımsız değişken
+### <a name="post-argument"></a>Post bağımsız değişkeni
 
-İstekte kullanılan POST isteği yöntemi için tanımlanan bağımsız değişkenleri temel alan istekleri tanımlar. 
+İstekte kullanılan POST isteği yöntemi için tanımlanan bağımsız değişkenlere göre istekleri tanımlar. 
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Bağımsız değişken adı | İşleç | Bağımsız değişken değeri | Büyük/küçük harf dönüşümü
+Bağımsız değişken adı | İşleç | Bağımsız değişken değeri | Örnek dönüştürme
 --------------|----------|----------------|---------------
-Dize | [Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 ### <a name="query-string"></a>Sorgu dizesi
 
-Belirli bir sorgu dize parametresi içeren istekleri tanımlar. Bu parametre, belirli bir desenle eşleşen bir değere ayarlanır. İstek URL'sinde sorgu dize parametreleri (örneğin, **parametre=değer)** bu koşulun karşılanıp karşılanmadığını belirler. Bu eşleme koşulu, bir sorgu dize parametresini adına göre tanımlar ve parametre değeri için bir veya daha fazla değer kabul eder.
+Belirli bir sorgu dizesi parametresi içeren istekleri tanımlar. Bu parametre, belirli bir düzenle eşleşen bir değere ayarlanır. İstek URL 'sindeki sorgu dizesi parametreleri (örneğin, **Parameter = değer**) bu koşulun karşılanıp karşılanmadığını belirtir. Bu eşleştirme koşulu, bir sorgu dizesi parametresini adına göre tanımlar ve parametre değeri için bir veya daha fazla değeri kabul eder.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Sorgu dizesi | Büyük/Küçük Harf Dönüşümü
+İşleç | Sorgu dizesi | Örnek dönüştürme
 ---------|--------------|---------------
-[Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+[Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 ### <a name="remote-address"></a>Uzak adres
 
-İsteklinin konumuna veya IP adresine göre istekleri tanımlar.
+İstekleri isteyanın konumuna veya IP adresine göre tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
 İşleç | Desteklenen değerler
 ---------|-----------------
 Herhangi biri | Yok
-Geo Maç | Ülke kodu
-IP Maç | IP adresi (boşluk ayrılmış)
-Herhangi bir | Yok
-Değil Geo Match | Ülke kodu
-IP Eşleşmesi Değil | IP adresi (boşluk ayrılmış)
+Coğrafi eşleşme | Ülke kodu
+IP eşleşmesi | IP adresi (boşlukla ayrılmış)
+Hiçbirini değil | Yok
+Coğrafi eşleşme değil | Ülke kodu
+IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- CIDR gösterimini kullanın.
-- Birden çok IP adresi ve IP adresi bloğu belirtmek için, değerler arasında tek bir boşluk kullanın:
-  - **IPv4 örneği**: *1.2.3.4 10.20.30.40* adresten gelen isteklerle 1.2.3.4 veya 10.20.30.40 ile eşleşir.
-  - **IPv6 örneği**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* her iki adresten gelen isteklerle eşleşir 1:2:3:4:5:6:7:8 veya 10:20:30:40:50:60:70:80.
-- IP adresi bloğu sözdizimi, bir ileri eğik çizgi ve önek boyutu ardından temel IP adresidir. Örneğin:
-  - **IPv4 örneği**: *5.5.5.64/26, 5.5.5.64* ile 5.5.5.127 adreslerinden gelen tüm isteklerle eşleşir.
-  - **IPv6 örneği**: *1:2:3:/48* adreslerinden gelen tüm isteklerle eşleşir 1:2:3:0:0:0:0 0 ile 1:2:3:ffff:ffff:ffff:ffff:ffff.ffff.
+- CıDR gösterimini kullanın.
+- Birden çok IP adresi ve IP adres bloğu belirtmek için, değerler arasında tek bir boşluk kullanın:
+  - **IPv4 örneği**: *1.2.3.4 10.20.30.40* , 1.2.3.4 veya 10.20.30.40 adresinden gelen isteklerle eşleşir.
+  - **IPv6 örneği**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* , 1:2:3:4:5:6:7:8 ya da 10:20:30:40:50:60:70:80 adresinden gelen isteklerle eşleşir.
+- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örneğin:
+  - **IPv4 örneği**: *5.5.5.64/26* , 5.5.5.64 ile 5.5.5.127 arası adreslerden gelen isteklerle eşleşir.
+  - **IPv6 örneği**: *1:2:3:/48* , 1:2:3:0:0:0:0:0 ile 1:2: 3: ffff: ffff: ffff: ffff: ffff adresinden gelen tüm isteklerle eşleşir.
 
 ### <a name="request-body"></a>İstek gövdesi
 
-İstek gövdesinde görünen belirli metne göre istekleri tanımlar.
+İstek gövdesinde görüntülenen belirli bir metne göre istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | İstek gövdesi | Büyük/küçük harf dönüşümü
+İşleç | İstek gövdesi | Örnek dönüştürme
 ---------|--------------|---------------
-[Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+[Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 ### <a name="request-header"></a>İstek üst bilgisi
 
-İstekte belirli bir üstbilgi kullanan istekleri tanımlar.
+İstekte belirli bir üst bilgiyi kullanan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Üst bilgi adı | İşleç | Üst bilgi değeri | Büyük/küçük harf dönüşümü
+Üst bilgi adı | İşleç | Üst bilgi değeri | Örnek dönüştürme
 ------------|----------|--------------|---------------
-Dize | [Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 ### <a name="request-method"></a>İstek yöntemi
 
@@ -142,13 +142,13 @@ Belirtilen istek yöntemini kullanan istekleri tanımlar.
 
 İşleç | Desteklenen değerler
 ---------|----------------
-Eşittir, Eşit Değil | GET, POST, PUT, DELETE, HEAD, OPTIONS, TRACE
+Eşittir, eşit değildir | AL, POSTALA, KOY, SIL, HEAD, SEÇENEKLER, IZLE
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- Azure CDN'de önbelleğe alınmış içeriği yalnızca GET isteği yöntemi oluşturabilir. Diğer tüm istek yöntemleri ağ üzerinden tamamlanır. 
+- Yalnızca GET isteği yöntemi Azure CDN önbelleğe alınmış içerik oluşturabilir. Diğer tüm istek yöntemleri ağ üzerinden proxy olarak kullanılır. 
 
-### <a name="request-protocol"></a>İstek protokolü
+### <a name="request-protocol"></a>İstek Protokolü
 
 Kullanılan belirtilen protokolü kullanan istekleri tanımlar.
 
@@ -156,7 +156,7 @@ Kullanılan belirtilen protokolü kullanan istekleri tanımlar.
 
 İşleç | Desteklenen değerler
 ---------|----------------
-Eşittir, Eşit Değil | HTTP, HTTPS
+Eşittir, eşit değildir | HTTP, HTTPS
 
 ### <a name="request-url"></a>İstek URL'si
 
@@ -164,37 +164,37 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | İstek URL'si | Büyük/küçük harf dönüşümü
+İşleç | İstek URL'si | Örnek dönüştürme
 ---------|-------------|---------------
-[Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+[Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- Bu kural koşulunu kullandığınızda, protokol bilgilerini içerdiğinden emin olun. Örneğin: *https://www.\<yourdomain\>.com*.
+- Bu kural koşulunu kullandığınızda protokol bilgilerini eklediğinizden emin olun. Örneğin: *https://www.\<yourdomain\>.com*.
 
 ### <a name="url-file-extension"></a>URL dosya uzantısı
 
-İstenen URL'de dosya adında belirtilen dosya uzantısını içeren istekleri tanımlar.
+İstenen URL 'deki dosya adında belirtilen dosya uzantısını içeren istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Dahili numara | Büyük/küçük harf dönüşümü
+İşleç | Dahili numara | Örnek dönüştürme
 ---------|-----------|---------------
-[Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+[Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- Uzatma için, bir satır aralığı içermez; örneğin, *.html*yerine *html* kullanın.
+- Uzantı için, önde gelen bir nokta eklemeyin; Örneğin, *. html*yerine *HTML* kullanın.
 
-### <a name="url-file-name"></a>URL dosya adı
+### <a name="url-file-name"></a>URL dosyası adı
 
-İstenen URL'de belirtilen dosya adını içeren istekleri tanımlar.
+İstenen URL 'de belirtilen dosya adını içeren istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Dosya adı | Büyük/küçük harf dönüşümü
+İşleç | Dosya adı | Örnek dönüştürme
 ---------|-----------|---------------
-[Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+[Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 #### <a name="key-information"></a>Önemli bilgiler
 
@@ -202,47 +202,47 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 ### <a name="url-path"></a>URL yolu
 
-İstenen URL'de belirtilen yolu içeren istekleri tanımlar.
+İstek URL 'sinde belirtilen yolu içeren istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Değer | Büyük/Küçük Harf Dönüşümü
+İşleç | Değer | Örnek dönüştürme
 ---------|-------|---------------
-[Standart operatör listesi](#standard-operator-list) | Dize, Int | Dönüşüm yok, büyük harfe, küçük harfe
+[Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- Dosya adı değeri joker karakter değerlerinden yararlanabilir. Örneğin, her dosya adı deseni, her yıldız işaretinin bir veya daha fazla karakterden oluşan bir diziyle eşleştiği bir veya daha fazla yıldız işaretinden (*) oluşabilir.
+- Dosya adı değeri joker değerlerden faydalanabilir. Örneğin her bir dosya adı deseninin bir veya daha fazla yıldız işareti (*), her yıldız işareti bir veya daha fazla karakterle eşleşen bir dizi olabilir.
 
-## <a name="reference-for-rules-engine-match-conditions"></a>Kurallar motoru eşleştirme koşulları için başvuru
+## <a name="reference-for-rules-engine-match-conditions"></a>Kural altyapısı eşleştirme koşulları başvurusu
 
-### <a name="standard-operator-list"></a>Standart operatör listesi
+### <a name="standard-operator-list"></a>Standart işleç listesi
 
-Standart operatör listesinden değerleri kabul eden kurallar için aşağıdaki işleçler geçerlidir:
+Standart işleç listesinden değerleri kabul eden kurallar için aşağıdaki işleçler geçerlidir:
 
 - Herhangi biri
 - Eşittir 
 - Contains 
-- Ile başlar 
-- Ile biter 
+- Şununla başlar 
+- Şununla biter 
 - Küçüktür
-- Daha az veya eşittir
+- Küçüktür veya eşittir
 - Büyüktür
 - Büyük veya eşittir
-- Herhangi bir
+- Hiçbirini değil
 - İçermez
-- Ile başlamaz 
-- Ile bitmez 
-- En az
-- En az veya eşit
-- Daha büyük değil
-- Büyük veya eşit olmayan
+- Şununla başlamaktadır 
+- Şununla bitmiyor 
+- Küçüktür
+- Küçüktür veya eşittir
+- Şundan büyük değil
+- Büyük veya eşit değil
 
-*Daha Az* ve Büyük veya eşittir gibi sayısal işleçler *için*kullanılan karşılaştırma uzunluğuna dayanır. Bu durumda, eşleşme durumundaki değer, karşılaştırmak istediğiniz uzunluğa eşit bir tamsayı olmalıdır. 
+*Küçüktür ve* *büyüktür*gibi sayısal işleçler için, kullanılan karşılaştırma uzunluğa göre belirlenir. Bu durumda, Match koşulunun değeri, karşılaştırmak istediğiniz uzunluğa eşit bir tamsayı olmalıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure CDN'ye genel bakış](cdn-overview.md)
+- [Azure CDN genel bakış](cdn-overview.md)
 - [Standart kural altyapısı başvurusu](cdn-standard-rules-engine-reference.md)
 - [Standart kurallar altyapısındaki eylemler](cdn-standard-rules-engine-actions.md)
 - [Standart kural altyapısını kullanarak HTTPS'yi zorlama](cdn-standard-rules-engine.md)

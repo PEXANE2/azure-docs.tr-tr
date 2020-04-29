@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Merkezi uygulamanızda aygıt gruplarını kullanma | Microsoft Dokümanlar
-description: Operatör olarak, Azure IoT Merkezi uygulamanızdaki aygıtlardan telemetrianaliz etmek için aygıt gruplarını nasıl kullanacağınızı öğrenin.
+title: Azure IoT Central uygulamanızda cihaz gruplarını kullanma | Microsoft Docs
+description: Bir operatör olarak, Azure IoT Central uygulamanızdaki cihazlardan telemetri çözümlemek için cihaz gruplarını nasıl kullanacağınızı öğrenin.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
@@ -9,85 +9,85 @@ ms.service: iot-central
 services: iot-central
 manager: peterpfr
 ms.openlocfilehash: 58fc71ab05c34e8acd252e7a1984c55996d1b3a7
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80999031"
 ---
-# <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Öğretici: Cihaz telemetrisini analiz etmek için aygıt gruplarını kullanma
+# <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Öğretici: cihaz telemetrisini çözümlemek için cihaz gruplarını kullanma
 
-Bu makalede, bir operatör olarak Azure IoT Merkezi uygulamanızda aygıt telemetrisini analiz etmek için aygıt gruplarını nasıl kullanacağı açıklanmaktadır.
+Bu makalede, Azure IoT Central uygulamanızda cihaz telemetrisini çözümlemek üzere cihaz gruplarını kullanarak nasıl bir operatör olarak kullanılacağı açıklanmaktadır.
 
-Aygıt grubu, belirli ölçütler ile eşleştikleri için birlikte gruplanan aygıtların listesidir. Aygıt grupları, aygıtları daha küçük, mantıksal gruplar halinde gruplayarak aygıtları ölçekte yönetmenize, görselleştirmenize ve çözümlemenize yardımcı olur. Örneğin, seattle'daki tüm klima aygıtlarını listeleyen bir aygıt grubu oluşturarak bir teknisyenin sorumlu oldukları cihazları bulmasını sağlayabilirsiniz.
+Bir cihaz grubu, belirtilen bazı ölçütlerle eşleştiğinden, birlikte gruplanmış cihazların bir listesidir. Cihaz grupları cihazları daha küçük ve mantıksal gruplara gruplandırarak, cihazları ölçekli olarak yönetmenize, görselleştirmenize ve çözümlemenize yardımcı olur. Örneğin, bir teknisyenin sorumlu oldukları cihazları bulmasını sağlamak için Seattle 'daki tüm AIR klimaları cihazlarını listelemek üzere bir cihaz grubu oluşturabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Cihaz grubu oluşturma
-> * Cihaz telemetrisini analiz etmek için bir aygıt grubu kullanma
+> * Cihaz telemetrisini çözümlemek için bir cihaz grubu kullanma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce [Azure IoT Merkezi oluştur uygulamasını](./quick-deploy-iot-central.md) tamamlamalı ve [IoT Central uygulamanıza simüle edilmiş bir aygıt eklemeniz](./quick-create-simulated-device.md) gerekmektedir ve çalışmak için **MXChip IoT DevKit** aygıt şablonunu oluşturmaya hızlı bir şekilde başlamalısınız.
+Başlamadan önce, [Azure IoT Central oluşturma uygulamasını](./quick-deploy-iot-central.md) tamamlayıp [IoT Central uygulamanıza sanal bir cihaz ekleyerek](./quick-create-simulated-device.md) , birlikte çalışmak üzere **mxyonga IoT devkit** cihaz şablonunu oluşturmanız gerekir.
 
-## <a name="create-simulated-devices"></a>Benzetimli aygıtlar oluşturma
+## <a name="create-simulated-devices"></a>Sanal cihazlar oluşturma
 
-Bir aygıt grubu oluşturmadan önce, bu öğreticide kullanmak üzere **MXChip IoT DevKit** aygıt şablonundan en az beş simüle edilmiş aygıt ekleyin:
+Bir cihaz grubu oluşturmadan önce, bu öğreticide kullanmak üzere **Mxyonga IoT DevKit** cihaz şablonundan en az beş sanal cihaz ekleyin:
 
-![Beş simüle sensör cihazı](./media/tutorial-use-device-groups/simulated-devices.png)
+![Beş sanal algılayıcı cihazı](./media/tutorial-use-device-groups/simulated-devices.png)
 
-Simüle edilen sensör aygıtlarından dördü için, müşteri adını *Contoso*olarak ayarlamak için **Yönet aygıtı** görünümünü kullanın:
+Sanal algılayıcı aygıtlarından oluşan dört için, müşteri adını *contoso*olarak ayarlamak üzere **cihaz yönetme** görünümünü kullanın:
 
-![Müşteri adını Contoso olarak ayarlama](./media/tutorial-use-device-groups/customer-name.png)
+![Müşteri adını contoso olarak ayarla](./media/tutorial-use-device-groups/customer-name.png)
 
 ## <a name="create-a-device-group"></a>Cihaz grubu oluşturma
 
-Aygıt grubu oluşturmak için:
+Bir cihaz grubu oluşturmak için:
 
-1. Sol bölmedeki **Aygıt gruplarını** seçin.
+1. Sol bölmedeki **cihaz grupları** ' nı seçin.
 
-1. Seçin **+**:
+1. Şunu **+** seçin:
 
     ![Yeni cihaz grubu](media/tutorial-use-device-groups/image1.png)
 
-1. Cihaz grubunuza *Contoso aygıtları*adını verin. Ayrıca bir açıklama da ekleyebilirsiniz. Aygıt grubu yalnızca tek bir aygıt şablonundaki aygıtları içerebilir. Bu grup için kullanılacak **MXChip IoT DevKit** aygıt şablonunu seçin.
+1. Cihaz grubunuza *contoso cihazları*adı verin. Ayrıca, bir açıklama ekleyebilirsiniz. Bir cihaz grubu yalnızca tek bir cihaz şablonundan cihaz içerebilir. Bu grup için kullanılacak **Mxyongaıot DevKit** cihaz şablonunu seçin.
 
-1. Aygıt grubunu yalnızca **Contoso'ya**ait cihazları içerecek şekilde özelleştirmek için **+ Filtre'yi**seçin. Değer olarak **Müşteri Adı** özelliğini, **Eşittir karşılaştırma** işlecini ve **Contoso'yu** seçin. Birden çok filtre ekleyebilirsiniz ve **tüm** filtre ölçütlerini karşılayan aygıtlar aygıt grubuna yerleştirilir. Oluşturduğunuz aygıt grubuna, uygulamaya erişimi olan herkes erişebilir, böylece herkes aygıt grubunu görüntüleyebilir, değiştirebilir veya silebilir:
+1. Cihaz grubunu yalnızca **contoso**'ya ait olan cihazları içerecek şekilde özelleştirmek Için **+ filtre**' yi seçin. **Müşteri adı** özelliğini, **eşittir** karşılaştırma işlecini ve **contoso** değerini seçin. Birden çok filtre ekleyebilirsiniz ve **Tüm** filtre ölçütlerini karşılayan cihazlar cihaz grubuna yerleştirilir. Oluşturduğunuz cihaz grubuna, uygulamaya erişimi olan herkes tarafından erişilebilir, böylece herkes cihaz grubunu görüntüleyebilir, değiştirebilir veya silebilir:
 
-    ![Aygıt grubu sorgusu](media/tutorial-use-device-groups/image2.png)
+    ![Cihaz grubu sorgusu](media/tutorial-use-device-groups/image2.png)
 
     > [!TIP]
-    > Aygıt grubu dinamik bir sorgudur. Aygıtlistesini her görüntülediğiniz de listede farklı aygıtlar olabilir. Liste, hangi aygıtların şu anda sorgu ölçütlerini karşıladığına bağlıdır.
+    > Cihaz grubu dinamik bir sorgudur. Cihazların listesini her görüntülediğinizde, listede farklı cihazlar olabilir. Liste, şu anda sorgu ölçütlerine uyan cihazlara bağlıdır.
 
 1. **Kaydet**'i seçin.
 
 > [!NOTE]
-> Azure IoT Edge aygıtları için, aygıt grubu oluşturmak için Azure IoT Edge şablonlarını seçin.
+> Azure IoT Edge cihazlar için bir cihaz grubu oluşturmak üzere Azure IoT Edge Şablonlar ' ı seçin.
 
 ## <a name="analytics"></a>Analiz
 
-Gruptaki aygıtlardan gelen telemetriyi analiz etmek için **Analytics'i** bir aygıt grubuyla kullanabilirsiniz. Örneğin, tüm Contoso çevre sensörleri tarafından bildirilen ortalama sıcaklığı çizebilirsiniz.
+Gruptaki cihazlardan telemetri çözümlemek için bir cihaz grubuyla **Analytics** kullanabilirsiniz. Örneğin, tüm contoso ortam sensörleri tarafından raporlanan ortalama sıcaklığın çizebilirsiniz.
 
-Bir aygıt grubu için telemetriyi analiz etmek için:
+Bir cihaz grubunun telemetrisini çözümlemek için:
 
-1. Sol bölmede **Analytics'i** seçin.
+1. Sol bölmedeki **analiz** ' ı seçin.
 
-1. Oluşturduğunuz **Contoso aygıt** grubunu seçin. Daha sonra hem **Sıcaklık** hem de **Nem** telemetri türlerini ekleyin:
+1. Oluşturduğunuz **contoso cihazları** cihaz grubunu seçin. Ardından hem **sıcaklık** hem de **nem** telemetrisi türlerini ekleyin:
 
-    ![Analitik oluşturma](./media/tutorial-use-device-groups/create-analysis.png)
+    ![Analiz oluştur](./media/tutorial-use-device-groups/create-analysis.png)
 
-    Bir toplama türünü seçmek için telemetri türlerinin yanındaki dişli çarkı simgelerini kullanın. Varsayılan **ortalamadır.** Toplu verilerin gösterilme şeklini değiştirmek için **Split'i** kullanın. Örneğin, aygıt kimliğine göre bölünürseniz, **Çözümle'yi**seçtiğinizde her cihaz için bir çizim görürsünüz.
+    Bir toplama türü seçmek için telemetri türlerinin yanındaki dişli tekerleği simgesini kullanın. Varsayılan değer **Average**' dir. Toplama verilerinin nasıl gösterileceğini değiştirmek için **Böl** ' ü kullanın. Örneğin, cihaz KIMLIĞINE göre böldüğünüz takdirde, **Çözümle**' yi seçtiğinizde her bir cihaz için bir çizim görürsünüz.
 
-1. Ortalama telemetri değerlerini görüntülemek için **Analiz** et'i seçin:
+1. Ortalama telemetri değerlerini görüntülemek için **Çözümle** ' yi seçin:
 
     ![Analizi görüntüle](./media/tutorial-use-device-groups/view-analysis.png)
 
-    Görünümü özelleştirebilir, gösterilen süreyi değiştirebilir ve verileri dışa aktarabilirsiniz.
+    Görünümü özelleştirebilir, gösterilen zaman dilimini değiştirebilir ve verileri dışarı aktarabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Merkezi uygulamanızda aygıt gruplarını nasıl kullanacağınızı öğrendiğinize göre, önerilen bir sonraki adım şudur:
+Azure IoT Central uygulamanızda cihaz gruplarını nasıl kullanacağınızı öğrendiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
-> [Telemetri kuralları nasıl oluşturulur?](tutorial-create-telemetry-rules.md)
+> [Telemetri kuralları oluşturma](tutorial-create-telemetry-rules.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure tanı günlükleri | Microsoft Dokümanlar
-description: Müşteri Azure CDN için günlük çözümlemesini etkinleştirebilir.
+title: Azure tanılama günlükleri | Microsoft Docs
+description: Müşteri, Azure CDN için günlük analizini etkinleştirebilir.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,151 +15,151 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: allensu
 ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254810"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure tanılama günlükleri
 
-Azure tanı günlükleri ile temel analitiği görüntüleyebilir ve aşağıdakiler dahil olmak üzere bir veya daha fazla noktaya kaydedebilirsiniz:
+Azure tanılama günlükleri ile çekirdek analizlerini görüntüleyebilir ve bunları aşağıdakiler dahil olmak üzere bir veya daha fazla hedefe kaydedebilirsiniz:
 
  - Azure Depolama hesabınızın
  - Azure Event Hubs
  - [Log Analytics çalışma alanı](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
-Bu özellik, tüm fiyatlandırma katmanları için CDN uç noktalarında kullanılabilir. 
+Bu özellik tüm fiyatlandırma katmanları için CDN uç noktalarında kullanılabilir. 
 
-Azure tanılama günlükleri, cdn bitiş noktanızdan çeşitli kaynaklara temel kullanım ölçümlerini dışa aktarmanıza olanak tanır, böylece bunları özelleştirilmiş bir şekilde tüketebilirsiniz. Örneğin, aşağıdaki veri dışa aktarma türlerini yapabilirsiniz:
+Azure tanılama günlükleri, temel kullanım ölçümlerini CDN uç noktanıza çeşitli kaynaklara vererek bunları özelleştirilmiş bir şekilde kullanabilmeniz için size izin verir. Örneğin, aşağıdaki veri dışa aktarma türlerini yapabilirsiniz:
 
-- Verileri blob depolamasına aktarın, CSV'ye dışa aktarın ve Excel'de grafikler oluşturun.
-- Verileri Olay Hub'larına aktarın ve diğer Azure hizmetlerinden gelen verilerle ilişkilendirin.
-- Verileri Azure Monitor günlüklerine aktarın ve verileri kendi Log Analytics çalışma alanınızda görüntüleyin
+- Verileri blob depolamaya aktarın, CSV 'ye aktarın ve Excel 'de grafikler oluşturun.
+- Event Hubs ve diğer Azure hizmetlerinden verilerle bağıntılı verileri dışarı aktarın.
+- Azure Izleyici günlüklerine veri aktarma ve kendi Log Analytics çalışma alanınızdaki verileri görüntüleme
 
-Aşağıdaki diyagram, verilerin tipik bir CDN çekirdek analizi görünümünü gösterir.
+Aşağıdaki diyagramda, verilerin tipik bir CDN çekirdek analizi görünümü gösterilmektedir.
 
-![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/01_OMS-workspace.png)
+![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/01_OMS-workspace.png)
 
-*Şekil 1 - CDN çekirdek analizi görünümü*
+*Şekil 1-CDN çekirdek analizi görünümü*
 
-Tanılama günlükleri hakkında daha fazla bilgi için [Tanılama Günlükleri'ne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)bakın.
+Tanılama günlükleri hakkında daha fazla bilgi için bkz. [tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="enable-logging-with-the-azure-portal"></a>Azure portalıyla günlüğe kaydetmeyi etkinleştirme
 
-CDN çekirdek analitiği ile günlüğe kaydetmeyi etkinleştiren aşağıdaki adımları izleyin:
+CDN çekirdek analizine sahip günlüğü etkinleştirmek için şu adımları izleyin:
 
-[Azure Portal](https://portal.azure.com) oturum açın. İş akışınız için CDN'yi etkinleştirmediyseniz, devam etmeden önce [bir Azure CDN profili ve bitiş noktası oluşturun.](cdn-create-new-endpoint.md)
+[Azure Portal](https://portal.azure.com) oturum açın. İş akışınız için CDN 'yi etkinleştirdiyseniz, devam etmeden önce [bir Azure CDN profili ve uç noktası oluşturun](cdn-create-new-endpoint.md) .
 
-1. Azure portalında **CDN profiline**gidin.
+1. Azure portal **CDN profili**' ne gidin.
 
-2. Azure portalında, bir CDN profili arayın veya panonuzdan birini seçin. Ardından, tanılama günlüklerini etkinleştirmek istediğiniz CDN bitiş noktasını seçin.
+2. Azure portal, bir CDN profili arayın veya panonuzdan bir tane seçin. Ardından, tanılama günlüklerini etkinleştirmek istediğiniz CDN uç noktasını seçin.
 
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. İzleme bölümünde **Tanılama günlüklerini** seçin.
+3. Izleme bölümünde **tanılama günlükleri** ' ni seçin.
 
    **Tanılama günlükleri** sayfası görüntülenir.
 
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
-### <a name="enable-logging-with-azure-storage"></a>Azure Depolama ile günlüğe kaydetmeyi etkinleştirme
+### <a name="enable-logging-with-azure-storage"></a>Azure depolama ile günlüğe kaydetmeyi etkinleştirme
 
-Günlükleri depolamak için bir depolama hesabı kullanmak için aşağıdaki adımları izleyin:
+Günlükleri depolamak üzere bir depolama hesabı kullanmak için şu adımları izleyin:
     
-1. **Ad**için, tanılama günlüğü ayarlarınız için bir ad girin.
+1. **Ad**için tanılama günlüğü ayarlarınıza bir ad girin.
  
-2. **Bir depolama hesabına Arşiv'i**seçin, ardından **CoreAnalytics'i**seçin. 
+2. **Bir depolama hesabına arşiv**' i seçin ve ardından **coreanalytics**' i seçin. 
 
-2. **Bekletme (gün)** için bekletme gün sayısını seçin. Sıfır gün bekletme günlükleri süresiz olarak depolar. 
+2. **Bekletme (gün)** için bekletme günü sayısını seçin. Sıfır günlük bir bekletme, günlükleri süresiz olarak depolar. 
 
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
-3. **Depolama hesabı'nı**seçin.
+3. **Depolama hesabı**' nı seçin.
 
-    **Depolama hesabı seç** sayfası görüntülenir.
+    **Bir depolama hesabı seçin** sayfası görüntülenir.
 
-4. Açılan listeden bir depolama hesabı seçin ve **ardından Tamam'ı**seçin.
+4. Açılan listeden bir depolama hesabı seçin ve ardından **Tamam**' ı seçin.
 
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
 
-5. Tanılama günlüğü ayarlarınızı tamamladıktan sonra **Kaydet'i**seçin.
+5. Tanılama günlüğü ayarlarınızı yapmayı tamamladıktan sonra **Kaydet**' i seçin.
 
-### <a name="logging-with-azure-monitor"></a>Azure Monitörü ile Günlüğe Kaydetme
+### <a name="logging-with-azure-monitor"></a>Azure Izleyici ile günlüğe kaydetme
 
-Günlükleri depolamak için Azure Monitor'u kullanmak için aşağıdaki adımları izleyin:
+Günlükleri depolamak üzere Azure Izleyici 'yi kullanmak için şu adımları izleyin:
 
-1. **Tanılama günlükleri** sayfasından, **Günlük Analitiğine Gönder'i**seçin. 
+1. **Tanılama günlükleri** sayfasından **Log Analytics gönder**' i seçin. 
 
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Azure Monitor günlüğe kaydetmeyi yapılandırmak için **Yapılandırma'yı** seçin. 
+2. Azure Izleyici günlük kaydını yapılandırmak için **Yapılandır** ' ı seçin. 
 
-   **Günlük Analizi çalışma alanları** sayfası görüntülenir.
-
-    >[!NOTE] 
-    >OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
-
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/06_Choose-workspace.png)
-
-3. **Yeni Çalışma Alanı Oluştur'u**seçin.
-
-    **Günlük Analizi çalışma alanı** sayfası görüntülenir.
+   **Log Analytics çalışma alanları** sayfası görüntülenir.
 
     >[!NOTE] 
     >OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
 
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/07_Create-new.png)
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
-4. **Log Analytics çalışma alanı**için bir Log Analytics çalışma alanı adı girin. Log Analytics çalışma alanı adı benzersiz olmalı ve yalnızca harfler, sayılar ve tireler içermelidir; boşluklara ve alt çizere izin verilmez. 
+3. **Yeni çalışma alanı oluştur**' u seçin.
 
-5. **Abonelik**için açılan listeden varolan bir abonelik seçin. 
+    **Log Analytics çalışma alanı** sayfası görüntülenir.
 
-6. **Kaynak grubu**için yeni bir kaynak grubu oluşturun veya varolan bir tane seçin.
+    >[!NOTE] 
+    >OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
 
-7. **Konum**için, listeden bir konum seçin.
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/07_Create-new.png)
 
-8. Günlük yapılandırmasını panonuza kaydetmek istiyorsanız **panoya Pin'i** seçin. 
+4. **Log Analytics çalışma alanı**için bir Log Analytics çalışma alanı adı girin. Log Analytics çalışma alanı adı benzersiz olmalı ve yalnızca harf, rakam ve kısa çizgi içermelidir; boşluklara ve alt çizgilere izin verilmez. 
 
-9. Yapılandırmayı tamamlamak için **Tamam'ı** seçin.
+5. **Abonelik**için, açılan listeden var olan bir aboneliği seçin. 
 
-10. Çalışma alanınız oluşturulduktan sonra Tanılama **günlükleri** sayfasına döndürülür. Yeni Log Analytics çalışma alanınızın adını onaylayın.
+6. **Kaynak grubu**için yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubunu seçin.
 
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/09_Return-to-logging.png)
+7. **Konum**için listeden bir konum seçin.
 
-11. **CoreAnalytics'i**seçin, ardından **Kaydet'i**seçin.
+8. Günlük yapılandırmasını panonuza kaydetmek istiyorsanız **panoya sabitle ' yi** seçin. 
 
-12. Yeni Log Analytics çalışma alanını görüntülemek için CDN bitiş noktası sayfanızdan **Çekirdek analizini** seçin.
+9. Yapılandırmayı gerçekleştirmek için **Tamam ' ı** seçin.
 
-    ![portal - Tanılama günlükleri](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
+10. Çalışma alanınız oluşturulduktan sonra, **tanılama günlükleri** sayfasına dönersiniz. Yeni Log Analytics çalışma alanınızın adını onaylayın.
 
-    Log Analytics çalışma alanınız artık verileri günlüğe kaydetmeye hazır. Bu verileri tüketmek için, bu makalenin ilerleyen aylarında kapsanan bir [Azure Monitor günlükleri çözümünü](#consuming-diagnostics-logs-from-a-log-analytics-workspace)kullanmanız gerekir.
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-Günlük veri gecikmeleri hakkında daha fazla bilgi için veri [gecikmelerini günlüğe](#log-data-delays)bürün.
+11. **Coreanalytics**' i seçin ve ardından **Kaydet**' i seçin.
+
+12. Yeni Log Analytics çalışma alanını görüntülemek için CDN uç noktası sayfasından **çekirdek analizi** ' ni seçin.
+
+    ![Portal-tanılama günlükleri](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
+
+    Log Analytics çalışma alanınız artık verileri günlüğe kaydetmek için hazırdır. Bu verileri kullanabilmeniz için, bu makalenin ilerleyen bölümlerinde ele alınan bir [Azure izleyici günlükleri çözümü](#consuming-diagnostics-logs-from-a-log-analytics-workspace)kullanmanız gerekir.
+
+Günlük verisi gecikmeleri hakkında daha fazla bilgi için bkz. [günlük verileri gecikmeleri](#log-data-delays).
 
 ## <a name="enable-logging-with-powershell"></a>PowerShell ile günlüğe kaydetmeyi etkinleştirme
 
-Aşağıdaki örnek, Azure PowerShell Cmdlets üzerinden tanıgünlüklerinin nasıl etkinleştirilen gösterilmektedir.
+Aşağıdaki örnek, Azure PowerShell cmdlet 'Leri aracılığıyla tanılama günlüklerinin nasıl etkinleştirileceğini gösterir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Depolama hesabındatanı günlüklerini etkinleştirme
+### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Depolama hesabında tanılama günlüklerini etkinleştirme
 
-1. Giriş yapın ve bir abonelik seçin:
+1. Oturum açın ve bir abonelik seçin:
 
-    Bağlan-AzHesap 
+    Connect-AzAccount 
 
-    Select-AzureSubscription -SubscriptionId 
+    Select-Azuyeniden gönderiliyor Scription-SubscriptionID 
 
-2. Depolama hesabında Tanılama Günlükleri etkinleştirmek için şu komutu girin:
+2. Bir depolama hesabında tanılama günlüklerini etkinleştirmek için şu komutu girin:
 
     ```powershell
     Set-AzDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
     ```
 
-3. Log Analytics çalışma alanında tanılama günlemelerini etkinleştirmek için şu komutu girin:
+3. Log Analytics çalışma alanında tanılama günlüklerini etkinleştirmek için şu komutu girin:
 
     ```powershell
     Set-AzDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
@@ -167,23 +167,23 @@ Aşağıdaki örnek, Azure PowerShell Cmdlets üzerinden tanıgünlüklerinin na
     ```
 
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Azure Depolama'dan tanılama günlüklerini kullanma
-Bu bölümde CDN çekirdek analitiğinin şeması, azure depolama hesabının içinde nasıl düzenlendiği açıklanır ve bir CSV dosyasındaki günlükleri indirmek için örnek kod sağlar.
+Bu bölümde, Azure depolama hesabının içinde nasıl düzenlendiği CDN Core Analytics şeması açıklanmakta ve günlükleri bir CSV dosyasına indirmek için örnek kod sağlanmaktadır.
 
-### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini'ni kullanma
-Azure depolama hesabından temel analiz verilerine erişebilmeniz için önce bir depolama hesabındaki içeriklere erişmek için bir araca ihtiyacınız vardır. Piyasada çeşitli araçlar olsa da, önerdiğimiz araç Microsoft Azure Depolama Gezgini'dir. Aracı indirmek için [Azure Depolama Gezgini'ne](https://storageexplorer.com/)bakın. Yazılımı indirip yükledikten sonra, CDN Diagnostics Logs'a hedef olarak yapılandırılan aynı Azure depolama hesabını kullanacak şekilde yapılandırın.
+### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini kullanma
+Çekirdek analizi verilerine bir Azure Storage hesabından erişebilmek için önce, depolama hesabındaki içeriğe erişmek üzere bir araca ihtiyacınız vardır. Pazarda sunulan birkaç araç olsa da, önerdiğimiz bir Microsoft Azure Depolama Gezgini. Aracı indirmek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/). Yazılımı indirip yükledikten sonra, CDN tanılama günlüklerine hedef olarak yapılandırılmış aynı Azure Depolama hesabını kullanacak şekilde yapılandırın.
 
-1.  **Microsoft Azure Depolama Gezgini'ni** aç
+1.  **Microsoft Azure Depolama Gezgini** açın
 2.  Depolama hesabını bulma
-3.  **Blob Kapsayıcılar** düğümlerini bu depolama hesabının altında genişletin.
-4.  *Insights-logs-coreanalytics*adlı kapsayıcıyı seçin.
-5.  Sonuçlar sağ bölmede, birinci düzeyden başlayarak *resourceId= olarak*gösterir. *PT1H.json*dosyasını bulana kadar her düzeyi seçmeye devam edin. Yolun açıklaması için [Blob yol biçimine](cdn-azure-diagnostic-logs.md#blob-path-format)bakın.
-6.  Her blob *PT1H.json* dosyası, belirli bir CDN bitiş noktası veya özel etki alanı için bir saat boyunca analiz günlüklerini temsil eder.
-7.  Bu JSON dosyasının içeriğinin şeması, çekirdek analiz günlüklerinin kesitinde açıklanmıştır.
+3.  Bu depolama hesabı altındaki **BLOB kapsayıcıları** düğümünü genişletin.
+4.  *Öngörüler-logs-coreanalytics*adlı kapsayıcıyı seçin.
+5.  Sonuçlar, *RESOURCEID =* olarak ilk düzeyden başlayarak sağ bölmedeki görünür. *PT1H. JSON*dosyasını buluncaya kadar her bir düzeyi seçmeye devam edin. Yolun açıklaması için bkz. [BLOB yol biçimi](cdn-azure-diagnostic-logs.md#blob-path-format).
+6.  Her blob *PT1H. JSON* dosyası, belırlı bir CDN uç noktası veya özel etki alanı için bir saat için analiz günlüklerini temsil eder.
+7.  Bu JSON dosyasının içeriğinin şeması, çekirdek analiz günlüklerinin bölüm şemasında açıklanmaktadır.
 
 
 #### <a name="blob-path-format"></a>Blob yol biçimi
 
-Çekirdek analiz günlükleri her saat başı oluşturulur ve veriler JSON yükü olarak tek bir Azure blob'unda toplanır ve depolanır. Depolama gezgini aracı '/' dizin ayırıcısı olarak yorumladığı ve hiyerarşiyi gösterdiğinden, Azure blob'una giden yol hiyerarşik bir yapı varmış gibi görünür ve blob adını temsil eder. Blob adı aşağıdaki adlandırma kuralı izler:   
+Çekirdek analizi günlükleri saatte bir oluşturulur ve veriler toplanır ve bir JSON yükü olarak tek bir Azure blobunun içinde depolanır. Depolama Gezgini Aracı, '/' öğesini dizin ayırıcı olarak yorumladığı ve hiyerarşiyi gösterdiği için, Azure Blob 'un yolu hiyerarşik bir yapı gibi görünür ve BLOB adını temsil eder. Blobun adı aşağıdaki adlandırma kuralına uyar:   
 
 ```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
@@ -191,18 +191,18 @@ Azure depolama hesabından temel analiz verilerine erişebilmeniz için önce bi
 
 |Değer|Açıklama|
 |-------|---------|
-|Abonelik Kimliği    |Azure aboneliğinin Guid biçimindeki kimliği.|
-|Kaynak Grup Adı |CDN kaynaklarının ait olduğu kaynak grubunun adı.|
-|Profil Adı |CDN Profilinin Adı|
-|Bitiş Noktası Adı |CDN Bitiş Noktası'nın adı|
+|Abonelik Kimliği    |GUID biçiminde Azure aboneliğinin KIMLIĞI.|
+|Kaynak grubu adı |CDN kaynaklarının ait olduğu kaynak grubunun adı.|
+|Profil Adı |CDN profilinin adı|
+|Uç nokta adı |CDN uç noktasının adı|
 |Yıl|  Yılın dört basamaklı temsili, örneğin, 2017|
-|Ay| Ay sayısının iki basamaklı gösterimi. 01=Ocak ... 12=Aralık|
-|Gün|   Ayın gününün iki basamaklı gösterimi|
-|PT1H.json| Analitik verilerin depolandığı gerçek JSON dosyası|
+|Ay| Ay numarasının iki basamaklı temsili. 01 = Ocak... 12 = Aralık|
+|Gün|   Ayın gününün iki basamaklı temsili|
+|PT1H. JSON| Analiz verilerinin depolandığı gerçek JSON dosyası|
 
-### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Temel analitik verilerini bir CSV dosyasına dışa aktarma
+### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Temel analiz verilerini bir CSV dosyasına aktarma
 
-Çekirdek analitiğine erişebilmek için bir araç için örnek kod sağlanır. Bu araç, JSON dosyalarını grafikler veya diğer toplamalar oluşturmak için kullanılabilecek, virgülle ayrılmış düz bir dosya biçimine indirmenize olanak tanır.
+Çekirdek analizine erişimi kolaylaştırmak için, bir araç için örnek kod sağlanır. Bu araç, JSON dosyalarını grafik veya diğer toplamaları oluşturmak için kullanılabilecek düz bir virgülle ayrılmış dosya biçimine indirmeyi sağlar.
 
 Aracı şu şekilde kullanabilirsiniz:
 
@@ -210,61 +210,61 @@ Aracı şu şekilde kullanabilirsiniz:
 2.  Kodu indirin.
 3.  Derlemek ve yapılandırmak için yönergeleri izleyin.
 4.  Aracı çalıştırın.
-5.  Ortaya çıkan CSV dosyası, analiz verilerini basit bir düz hiyerarşide gösterir.
+5.  Elde edilen CSV dosyası, analiz verilerini basit bir düz hiyerarşide gösterir.
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Log Analytics çalışma alanından tanılama günlüklerini kullanma
-Azure Monitor, kullanılabilirliklerini ve performanslarını korumak için bulutve şirket içi ortamlarınızı izleyen bir Azure hizmetidir. Birden fazla kaynak arasında analiz sağlamak üzere bulut ve şirket içi ortamlarınızdaki kaynaklar ile diğer izleme araçları tarafından oluşturulan verileri toplar. 
+Azure Izleyici, kullanılabilirliğini ve performansını korumak için bulutunuzu ve şirket içi ortamlarınızı izleyen bir Azure hizmetidir. Birden fazla kaynak arasında analiz sağlamak üzere bulut ve şirket içi ortamlarınızdaki kaynaklar ile diğer izleme araçları tarafından oluşturulan verileri toplar. 
 
-Azure Monitor'u kullanmak için, bu makalede daha önce tartışılan Azure Günlük Analizi çalışma alanına [günlüğe kaydetmeyi etkinleştirmeniz](#enable-logging-with-azure-storage) gerekir.
+Azure Izleyici 'yi kullanmak için, bu makalede daha önce açıklanan Azure Log Analytics çalışma alanında [günlüğe kaydetmeyi etkinleştirmeniz](#enable-logging-with-azure-storage) gerekir.
 
-### <a name="using-the-log-analytics-workspace"></a>Günlük Analizi çalışma alanını kullanma
+### <a name="using-the-log-analytics-workspace"></a>Log Analytics çalışma alanını kullanma
 
- Aşağıdaki diyagram, deponun girdi ve çıktılarının mimarisini gösterir:
+ Aşağıdaki diyagramda, deponun giriş ve çıkış mimarisi gösterilmektedir:
 
 ![Log Analytics çalışma alanı](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
-*Şekil 3 - Log Analytics Deposu*
+*Şekil 3-Log Analytics deposu*
 
-Yönetim Çözümleri'ni kullanarak verileri çeşitli şekillerde görüntüleyebilirsiniz. [Azure](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)Marketi'nden Yönetim Çözümleri alabilirsiniz.
+Yönetim çözümlerini kullanarak verileri çeşitli yollarla görüntüleyebilirsiniz. Yönetim çözümlerini [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)'ten edinebilirsiniz.
 
-Her çözümün altındaki **Şimdi Al** bağlantısını seçerek Azure pazar noktasından izleme çözümleri yükleyebilirsiniz.
+İzleme çözümlerini, her çözümün en altında bulunan **Şimdi al** bağlantısını seçerek Azure Marketi 'nden yükleyebilirsiniz.
 
-### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Azure MonitörCDN izleme çözümü ekleme
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Azure Izleyici CDN izleme çözümü ekleme
 
-Azure Monitörizleme çözümü eklemek için aşağıdaki adımları izleyin:
+Azure Izleyici izleme çözümü eklemek için aşağıdaki adımları izleyin:
 
-1.   Azure aboneliğinizi kullanarak Azure portalında oturum açın ve panonuza gidin.
+1.   Azure aboneliğinizi kullanarak Azure portal oturum açın ve panonuza gidin.
     ![Azure panosu](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. **Yeni** sayfada, **Marketplace**altında, İzleme **+ yönetimi**seçin.
+2. **Yeni** sayfada **Market**altında **izleme + yönetim**' i seçin.
 
     ![Market](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. İzleme **+ yönetim** sayfasında **Tümünü Gör'ü**seçin.
+3. **İzleme + yönetim** sayfasında **Tümünü göster**' i seçin.
 
     ![Tümünü göster](./media/cdn-diagnostics-log/15_See-all.png)
 
-4. Arama kutusunda CDN'yi arayın.
+4. Arama kutusunda CDN 'yi arayın.
 
     ![Tümünü göster](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5. **Azure CDN Çekirdek Analizi'ni**seçin. 
+5. **Azure CDN çekirdek analizi**' ni seçin. 
 
     ![Tümünü göster](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6. **Oluştur'u**seçtikten sonra, yeni bir Log Analytics çalışma alanı oluşturmanız veya varolan bir çalışma alanı kullanmanız istenir. 
+6. **Oluştur**' u seçtikten sonra yeni bir Log Analytics çalışma alanı oluşturmanız veya var olan bir çalışma alanı kullanmanız istenir. 
 
     ![Tümünü göster](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
-7. Daha önce oluşturduğunuz çalışma alanını seçin. Daha sonra bir otomasyon hesabı eklemeniz gerekir.
+7. Daha önce oluşturduğunuz çalışma alanını seçin. Daha sonra bir Otomasyon hesabı eklemeniz gerekir.
 
     ![Tümünü göster](./media/cdn-diagnostics-log/19_Add-automation.png)
 
-8. Aşağıdaki ekranda doldurmanız gereken otomasyon hesap formunu gösterilmektedir. 
+8. Aşağıdaki ekranda doldurmanız gereken Otomasyon hesabı formu gösterilmektedir. 
 
     ![Tümünü göster](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. Otomasyon hesabını oluşturduktan sonra, çözümünüzü eklemeye hazırsınız. **Oluştur** düğmesini seçin.
+9. Otomasyon hesabını oluşturduktan sonra çözümünüzü eklemeye hazırız. **Oluştur** düğmesini seçin.
 
     ![Tümünü göster](./media/cdn-diagnostics-log/21_Ready.png)
 
@@ -272,93 +272,93 @@ Azure Monitörizleme çözümü eklemek için aşağıdaki adımları izleyin:
 
     ![Tümünü göster](./media/cdn-diagnostics-log/22_Dashboard.png)
 
-    Çalışma alanınıza gitmek için oluşturduğunuz Günlük Analizi çalışma alanını seçin. 
+    Çalışma alanınıza gitmek için oluşturduğunuz Log Analytics çalışma alanını seçin. 
 
-11. Yeni çözümünüzü görmek için **OMS Portal** döşemesini seçin.
+11. Yeni çözümünüzü görmek için **OMS portalı** kutucuğunu seçin.
 
     ![Tümünü göster](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. Portalınız artık aşağıdaki ekrana benzemeli:
+12. Portalınız Şu ekrana benzer şekilde görünmelidir:
 
     ![Tümünü göster](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
-    Verilerinizin çeşitli görünümlerini görmek için kutucuklardan birini seçin.
+    Verilerinize ait birkaç görünümü görmek için kutucuklardan birini seçin.
 
     ![Tümünü göster](./media/cdn-diagnostics-log/25_Interior-view.png)
 
-    Verilere tek tek görünümleri temsil eden diğer döşemeleri görmek için sola veya sağa kaydırabilirsiniz. 
+    Verilerin tek tek görünümlerini temsil eden diğer kutucukları görmek için sola veya sağa kaydırma yapabilirsiniz. 
 
-    Verileriniz hakkında daha fazla ayrıntı görmek için kutucuklardan birini seçin.
+    Verileriniz hakkında daha fazla ayrıntı görmek için kutucukların birini seçin.
 
      ![Tümünü göster](./media/cdn-diagnostics-log/26_Further-detail.png)
 
 ### <a name="offers-and-pricing-tiers"></a>Teklifler ve fiyatlandırma katmanları
 
-Yönetim çözümleri için teklifleri ve fiyatlandırma katmanlarını [burada](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)görebilirsiniz.
+Yönetim çözümleri için teklifleri ve fiyatlandırma katmanlarını [buradan](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)görebilirsiniz.
 
 ### <a name="customizing-views"></a>Görünümleri özelleştirme
 
-**Görünüm Tasarımcısı'nı**kullanarak görünümü verilerinize özelleştirebilirsiniz. Tasarıma başlamak için Log Analytics çalışma alanınıza gidin ve **Görünüm Tasarımcısı** döşemesini seçin.
+Görünüm **tasarımcısını**kullanarak görünümü verilerinize özelleştirebilirsiniz. Tasarlamaya başlamak için Log Analytics çalışma alanınıza gidin ve **Görünüm Tasarımcısı** kutucuğunu seçin.
 
 ![Görünüm Tasarımcısı](./media/cdn-diagnostics-log/27_Designer.png)
 
-Grafik türlerini sürükleyip bırakın ve çözümlemek istediğiniz veri ayrıntılarını doldurun.
+Grafiklerin türlerini sürükleyip bırakın ve analiz etmek istediğiniz veri ayrıntılarını girin.
 
 ![Görünüm Tasarımcısı](./media/cdn-diagnostics-log/28_Designer.png)
 
     
-## <a name="log-data-delays"></a>Günlük veri gecikmeleri
+## <a name="log-data-delays"></a>Günlük verileri gecikmeleri
 
-Aşağıdaki tablo, **Microsoft'tan Azure CDN Standard,** **Akamai'den Azure CDN Standard**ve **Verizon'dan Azure CDN Standard/Premium**için günlük veri gecikmelerini gösterir.
+Aşağıdaki tabloda **Microsoft 'tan Azure CDN Standart**için günlük verisi gecikmeleri **Azure CDN, Akamai 'Ten standart**ve **Verizon 'den Standart/Premium Azure CDN**gösterilmektedir.
 
-Microsoft günlük veri gecikmeleri | Verizon günlük veri gecikmeleri | Akamai günlük veri gecikmeleri
+Microsoft günlük veri gecikmeleri | Verizon günlük verileri gecikmeleri | Akamai günlük verileri gecikmeleri
 --- | --- | ---
-1 saat gecikti. | 1 saat gecikti ve bitiş noktası yayılımı tamamlandıktan sonra görünmeye başlaması 2 saat kadar sürebilir. | 24 saat gecikti; 24 saatten daha önce oluşturulduysa, görünmeye başlaması 2 saat kadar sürer. Yakın zamanda oluşturulduysa, günlüklerin görünmeye başlaması 25 saat kadar sürebilir.
+1 saat gecikiyor. | 1 saat gecikmeli ve uç nokta yayma tamamlandıktan sonra görüntülenecek 2 saate kadar zaman alabilir. | 24 saat gecikiyor; 24 saatten uzun bir süre önce oluşturulduysa, görünün başlaması 2 saate kadar sürer. Yakın zamanda oluşturulduysa, günlüklerin görünmeye başlaması 25 saate kadar sürebilir.
 
-## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>CDN çekirdek analitiği için tanılama günlüğü türleri
+## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>CDN çekirdek analizi için tanılama günlüğü türleri
 
-Microsoft şu anda yalnızca, CDN'lerden/kenarlarından görüldüğü gibi HTTP yanıt istatistiklerini ve çıkış istatistiklerini gösteren ölçümleri içeren temel analiz günlükleri sunmaktadır.
+Microsoft şu anda yalnızca CDN pop 'Ları/kenarlarından görüldüğü gibi HTTP yanıt istatistiklerini ve çıkış istatistiklerini gösteren ölçümleri içeren temel analiz günlükleri sunmaktadır.
 
-### <a name="core-analytics-metrics-details"></a>Temel analitik ölçümleri ayrıntıları
-Aşağıdaki tablo, **Microsoft'tan Azure CDN Standardı,** **Akamai'den Azure CDN Standardı**ve **Verizon'dan Azure CDN Standard/Premium**için temel analiz günlüklerinde bulunan ölçümlerin bir listesini gösterir. Bu tür farklılıklar en az olmasına rağmen, tüm ölçümler tüm sağlayıcılar tarafından kullanılamaz. Tablo, belirli bir ölçümün sağlayıcıdan kullanılabilir olup olmadığını da görüntüler. Ölçümler yalnızca üzerinde trafik olan CDN uç noktaları için kullanılabilir.
+### <a name="core-analytics-metrics-details"></a>Çekirdek analizi ölçüm ayrıntıları
+Aşağıdaki tabloda **Microsoft 'tan Azure CDN Standard**, **Akamai 'ten standart Azure CDN**ve **Verizon 'ten Standart/Premium Azure CDN**için temel analiz günlüklerinde bulunan ölçümlerin bir listesi gösterilmektedir. Tüm ölçümler tüm sağlayıcılardan kullanılamaz, ancak bu farklar en az düzeydedir. Tablo aynı zamanda belirli bir metriğin sağlayıcıdan kullanılabilir olup olmadığını gösterir. Ölçümler yalnızca üzerinde trafiği bulunan CDN uç noktaları için kullanılabilir.
 
 
 |Ölçüm                     | Açıklama | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| İstekSayısıToplam         | Bu dönemdeki toplam istek isabet sayısı. | Evet | Evet |Evet |
-| İstek SayısıHttpStatus2xx | 2xx HTTP koduyla sonuçlanan tüm isteklerin sayısı (örneğin, 200, 202). | Evet | Evet |Evet |
-| İstek SayısıHttpStatus3xx | 3xx HTTP koduyla sonuçlanan tüm isteklerin sayısı (örneğin, 300, 302). | Evet | Evet |Evet |
-| İstek SayısıHttpStatus4xx | 4xx HTTP koduyla sonuçlanan tüm isteklerin sayısı (örneğin, 400, 404). | Evet | Evet |Evet |
-| İstek SayısıHttpStatus5xx | 5xx HTTP koduyla sonuçlanan tüm isteklerin sayısı (örneğin, 500, 504). | Evet | Evet |Evet |
-| İstek SayısıhttpstatusOthers | Diğer tüm HTTP kodları (2xx-5xx dışında) sayısı. | Evet | Evet |Evet |
-| İstek SayısıhttpStatus200 | 200 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
-| İstek SayısıhttpStatus206 | 206 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
-| İstek SayısıhttpStatus302 | 302 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
-| İstek SayısıhttpStatus304 | 304 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
-| İstek SayısıhttpStatus404 | 404 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
-| İstekCountÖnbellekHit | Önbellek isabeti ile sonuçlanan tüm isteklerin sayısı. Varlık doğrudan POP'tan istemciye sunuldu. | Evet | Evet | Hayır  |
-| İstekCountCacheMiss | Önbellek kaçamaz ile sonuçlanan tüm isteklerin sayısı. Önbellek miss, varlığın istemciye en yakın POP'ta bulunmadığı ve bu nedenle Origin'den alındığı anlamına gelir. | Evet | Evet | Hayır |
-| İstekCountÖnbellek | Kenardaki bir kullanıcı yapılandırması nedeniyle önbelleğe alınmaması engellenen bir varlığa yapılan tüm isteklerin sayısı. | Evet | Evet | Hayır |
-| İstekCountÖnbelleğe | Varlığın Önbellek Denetimi ve Süresi Dolan üstbellekleri tarafından önbelleğe alınması engellenen varlıklara yönelik tüm isteklerin sayısı, bunun bir POP'ta veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Evet | Evet | Hayır |
-| İstekCountÖnbellekDiğerleri | Önbellek durumu yukarıda yer almayan tüm isteklerin sayısı. | Hayır | Evet | Hayır  |
-| ÇıkışToplam | GB'de giden veri aktarımı | Evet |Evet |Evet |
-| ÇıkışHttpStatus2xx | GB'de 2xx HTTP durum kodları içeren yanıtlar için giden veri aktarımı* | Evet | Evet | Hayır  |
-| ÇıkışHttpStatus3xx | GB 3xx HTTP durum kodları ile yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır  |
-| ÇıkışHttpStatus4xx | GB 4xx HTTP durum kodları ile yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır  |
-| ÇıkışHttpStatus5xx | GB 5xx HTTP durum kodları ile yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır |
-| ÇıkışHttpStatusOthers | GB'deki diğer HTTP durum kodlarıyla yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır  |
-| ÇıkışCacheHit | CDN'ler/Kenarlar üzerindeki CDN önbelleğinden doğrudan teslim edilen yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır |
-| ÇıkışCacheMiss. | En yakın POP sunucusunda bulunmayan ve kaynak sunucudan alınan yanıtlar için giden veri aktarımı. | Evet | Evet | Hayır |
-| ÇıkışCacheNoCache | Kenardaki bir kullanıcı yapılandırması nedeniyle önbelleğe alınmaları engellenen varlıklar için giden veri aktarımı. | Evet | Evet | Hayır |
-| ÇıkışCacheUncacheable | Varlığın Önbellek Denetimi ve/veya Sona Erer üstbilgileri tarafından önbelleğe alınmaları engellenen varlıklar için giden veri aktarımı. Pop'ta veya HTTP istemcisi tarafından önbelleğe alınmaması gerektiğini gösterir. | Evet | Evet | Hayır |
-| ÇıkışCacheOthers | Diğer önbellek senaryoları için giden veri aktarımları. | Hayır | Evet | Hayır |
+| RequestCountTotal         | Bu süre boyunca toplam istek isabet sayısı. | Yes | Yes |Yes |
+| RequestCountHttpStatus2xx | 2xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 200, 202). | Yes | Yes |Yes |
+| RequestCountHttpStatus3xx | 3xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 300, 302). | Yes | Yes |Yes |
+| RequestCountHttpStatus4xx | 4xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 400, 404). | Yes | Yes |Yes |
+| RequestCountHttpStatus5xx | 5xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 500, 504). | Yes | Yes |Yes |
+| RequestCountHttpStatusOthers | Diğer tüm HTTP kodlarının sayısı (2xx-5xx dışında). | Yes | Yes |Yes |
+| RequestCountHttpStatus200 | 200 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
+| RequestCountHttpStatus206 | 206 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
+| RequestCountHttpStatus302 | 302 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
+| RequestCountHttpStatus304 | 304 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
+| RequestCountHttpStatus404 | 404 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
+| RequestCountCacheHit | Önbellek okuması ile sonuçlanan tüm isteklerin sayısı. Varlık doğrudan POP 'tan istemciye sunulur. | Yes | Yes | Hayır  |
+| Requestcountcacheisabetsizlik | Önbellek isabetsizliği ile sonuçlanan tüm isteklerin sayısı. Önbellek isabetsizliği, varlığın istemciye en yakın POP üzerinde bulunmadığı ve bu nedenle kaynaktan alındığı anlamına gelir. | Yes | Yes | Hayır |
+| RequestCountCacheNoCache | Bir varlık için, uçta Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen tüm isteklerin sayısı. | Yes | Yes | Hayır |
+| RequestCountCacheUncacheable | Varlığın Cache-Control ve Expires üstbilgileri tarafından önbelleğe alınması engellenen ve bir POP 'ta veya HTTP istemcisi tarafından önbelleğe alınmamalıdır belirten varlıkların tüm isteklerinin sayısı. | Yes | Yes | Hayır |
+| Requestcountcachediğerleri | Yukarıda yer almayan önbellek durumuna sahip tüm isteklerin sayısı. | Hayır | Yes | Hayır  |
+| Yumurresstotal | GB cinsinden giden veri aktarımı | Yes |Yes |Yes |
+| EgressHttpStatus2xx | GB cinsinden 2xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı *. | Yes | Yes | Hayır  |
+| EgressHttpStatus3xx | GB olarak 3xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır  |
+| EgressHttpStatus4xx | GB cinsinden 4xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır  |
+| EgressHttpStatus5xx | GB olarak 5 xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır |
+| EgressHttpStatusOthers | GB olarak diğer HTTP durum kodlarına sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır  |
+| Yumurresscachehit | CDN pop 'Ları/kenarları üzerindeki CDN önbelleğinden doğrudan teslim edilen yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır |
+| Yumurresscacheisabetsizlik. | En yakın POP sunucusunda bulunmayan ve kaynak sunucudan alınan yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır |
+| Yumurresscachenocache | Kenarda Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen varlıkların giden veri aktarımı. | Yes | Yes | Hayır |
+| Yumurresscacheuncacheable | Varlığın Cache-Control ve/veya Expires üstbilgileri tarafından önbelleğe alınması engellenen varlıkların giden veri aktarımı. Bir POP veya HTTP istemcisi tarafından önbelleğe alınmamalıdır. | Yes | Yes | Hayır |
+| Yumurresscachediğerleri | Diğer önbellek senaryoları için giden veri aktarımları. | Hayır | Yes | Hayır |
 
-*Giden veri aktarımı, CDN POP sunucularından istemciye teslim edilen trafiği ifade eder.
+* Giden veri aktarımı, CDN POP sunucularından istemciye teslim edilen trafiğin anlamına gelir.
 
 
 ### <a name="schema-of-the-core-analytics-logs"></a>Çekirdek analiz günlüklerinin şeması 
 
-Tüm günlükler JSON biçiminde depolanır ve her girişte aşağıdaki şemaya göre dize alanları vardır:
+Tüm Günlükler JSON biçiminde depolanır ve her girdinin aşağıdaki şemaya göre dize alanları vardır:
 
 ```json
     "records": [
@@ -403,9 +403,9 @@ Tüm günlükler JSON biçiminde depolanır ve her girişte aşağıdaki şemaya
 }
 ```
 
-*Zaman,* istatistiklerin raporlandığı saat sınırının başlangıç saatini temsil eder. Bir metrik bir CDN sağlayıcısı tarafından desteklenmiyorsa, çift veya tamsayı değeri yerine, null bir değer vardır. Bu null değeri bir metnin yokluğunu gösterir ve 0 değerinden farklıdır. Bitiş noktasında yapılandırılan etki alanı başına bu ölçümlerden bir küme vardır.
+Burada *saat* , istatistiklerin bildirildiği saat sınırının başlangıç saatini gösterir. Bir ölçüm bir CDN sağlayıcısı tarafından, Double veya integer değeri yerine bir veya daha fazla değer olarak desteklenmiyorsa, null bir değer vardır. Bu null değer, bir ölçümün yokluğunu gösterir ve 0 değerinden farklıdır. Uç noktada yapılandırılmış etki alanı başına bu ölçümler kümesi vardır.
 
-Örnek özellikler:
+Örnek Özellikler:
 
 ```json
 {
@@ -443,10 +443,10 @@ Tüm günlükler JSON biçiminde depolanır ve her girişte aşağıdaki şemaya
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Azure Tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-* [Azure CDN ek portalı üzerinden temel analitik](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
+* [Azure tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Azure CDN ek Portal aracılığıyla temel analiz](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
 * [Azure İzleyici günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
-* [Azure Günlük Analizi REST API](https://docs.microsoft.com/rest/api/loganalytics)
+* [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 
 

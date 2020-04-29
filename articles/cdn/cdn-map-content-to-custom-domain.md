@@ -15,10 +15,10 @@ ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: ab4845a93771bace5bca15ea3afa7027884e36f4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81260590"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Öğretici: Azure CDN uç noktanıza özel etki alanı ekleme
@@ -26,7 +26,7 @@ Bu öğreticide bir Azure Content Delivery Network (CDN) uç noktasına özel et
 
 Profilinizde bir CDN uç noktası oluşturduğunuzda, varsayılan olarak CDN içeriği sunmak için URL’nize azureedge.net adresinin alt etki alanı olan uç nokta adı eklenir (örneğin, https:\//contoso.azureedge.net/photo.png). Size kolaylık olması için Azure CDN, bir CDN uç noktası ile özel etki alanını ilişkilendirme seçeneği sağlar. Bu seçeneği kullanarak URL’nizde bir uç nokta adı yerine özel etki alanı ile içerik sunabilirsiniz (örneğin, https:\//www.contoso.com/photo.png). 
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - CNAME DNS kaydı oluşturun.
 > - Özel etki alanını CDN uç noktanızla ilişkilendirin.
@@ -45,12 +45,12 @@ Henüz özel bir etki alanınız yoksa ilk olarak bir etki alanı sağlayıcıs�
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS kaydı oluşturma
 
-Bir özel etki alanını Azure CDN uç noktasıyla birlikte kullanabilmeniz için öncelikle etki alanı sağlayıcınızla CDN uç noktanızı işaret eden bir kurallı ad (CNAME) kaydı oluşturmanız gerekir. CNAME kaydı, bir kaynak etki alanı adını hedef etki alanı adına eşleyen bir DNS kaydı türüdür. Azure CDN için kaynak etki alanı adı, özel etki alanı adınızdır; hedef etki alanı adı ise CDN uç noktası ana bilgisayar adınızdır. Azure CDN oluşturduğunuz CNAME kaydını doğruladıktan sonra, kaynak özel etki\.alanına (www contoso.com gibi) gönderilen trafik, belirtilen hedef CDN bitiş noktası ana bilgisayar adına (contoso.azureedge.net gibi) yönlendirilir. 
+Bir özel etki alanını Azure CDN uç noktasıyla birlikte kullanabilmeniz için öncelikle etki alanı sağlayıcınızla CDN uç noktanızı işaret eden bir kurallı ad (CNAME) kaydı oluşturmanız gerekir. CNAME kaydı, bir kaynak etki alanı adını hedef etki alanı adına eşleyen bir DNS kaydı türüdür. Azure CDN için kaynak etki alanı adı, özel etki alanı adınızdır; hedef etki alanı adı ise CDN uç noktası ana bilgisayar adınızdır. Azure CDN, oluşturduğunuz CNAME kaydını doğruladıktan sonra, kaynak özel etki alanına (www\.contoso.com gibi) değinilmesi BELIRTILEN hedef CDN uç noktası ana bilgisayar adına yönlendirilir (örneğin, contoso.azureedge.net). 
 
 Özel etki alanı ve alt etki alanı aynı anda yalnızca tek bir uç nokta ile ilişkilendirilebilir. Ancak, birden fazla CNAME kaydı kullanarak farklı Azure hizmet uç noktaları için aynı özel etki alanından farklı alt etki alanları kullanabilirsiniz. Farklı alt etki alanlarına sahip özel bir etki alanını aynı CDN uç noktasına da eşleyebilirsiniz.
 
 > [!NOTE]
-> Azure DNS'yi etki alanı sağlayıcınız olarak kullanıyorsanız, herhangi bir takma ad kayıt türü Özel etki alanları için kullanılabilir. Bu gözden geçirme, CNAME kayıt türünü kullanır. A veya AAAA kayıt türlerini kullanıyorsanız, aşağıdaki adımları izleyin ve CNAME'yi seçtiğiniz kayıt türüyle değiştirin. Kök etki alanını özel etki alanı olarak eklemek için bir takma ad kaydı kullanıyorsanız ve TLS'yi etkinleştirmek istiyorsanız, [bu makalede](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)açıklandığı gibi el ile doğrulama kullanmanız gerekir. Daha fazla bilgi için Azure [CDN uç noktalarına nokta bölgesi tepe noktasını](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)görün.
+> Etki alanı sağlayıcınız olarak Azure DNS kullanıyorsanız, herhangi bir diğer ad kayıt türü özel etki alanları için kullanılabilir. Bu izlenecek yol CNAME kayıt türünü kullanır. Ya da AAAA kayıt türleri kullanıyorsanız, aşağıdaki adımları uygulayın ve CNAME 'i istediğiniz kayıt türüyle değiştirin. Özel etki alanı olarak bir kök etki alanı eklemek için bir diğer ad kaydı kullanıyorsanız ve TLS 'yi etkinleştirmek istiyorsanız, [Bu makalede](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)açıklandığı gibi el ile doğrulama kullanmanız gerekir. Daha fazla bilgi için bkz. [Point Zone tepesinde to Azure CDN endpoints](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Geçici cdnverify alt etki alanını eşleme
 
@@ -70,11 +70,11 @@ cdnverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - Kaynak: Cdnverify alt etki alanı da dahil olmak üzere özel alan adınızı aşağıdaki biçimde girin: cdnverify. &lt;özel alan&gt;adı . Örneğin, cdnverify.www.contoso.com.
+    - Kaynak: cdnverify alt etki alanı da dahil olmak üzere özel etki alanı adınızı şu biçimde girin: cdnverify. &lt;özel etki alanı&gt;adı. Örneğin, cdnverify.www.contoso.com.
 
     - Tür: *CNAME* yazın.
 
-    - Hedef: CDN verify alt etki alanı da dahil olmak üzere CDN bitiş noktası ana adınızı aşağıdaki biçimde girin: cdnverify. _bitiş noktası&gt;adı .azureedge.net. &lt;_ Örneğin, cdnverify.contoso.azureedge.net.
+    - Hedef: cdnverify alt etki alanı dahil olmak üzere CDN uç noktası ana bilgisayar adını şu biçimde girin: cdnverify. _uç nokta&gt;adı. azureedge.net. &lt;_ Örneğin, cdnverify.contoso.azureedge.net.
 
 4. Yaptığınız değişiklikleri kaydedin.
 
@@ -100,7 +100,7 @@ cdnverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
 
     - TTL: *1 Saat* seçeneğini işaretli bırakın.
 
-6. **Kaydet'i**seçin.
+6. **Kaydet**’i seçin.
  
     CNAME girişi DNS kayıtları tablosuna eklenir.
 
@@ -125,11 +125,11 @@ cdnverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
 
 4. **Uç nokta ana bilgisayar adı** için, CNAME kaydınızın hedef etki alanı olarak kullanılacak uç nokta ana bilgisayar adı önceden doldurulmuş ve CDN uç noktanızın URL’sinden türetilmiştir: *&lt;uç nokta ana bilgisayar adı&gt;*.azureedge.net. Bu değer değiştirilemez.
 
-5. **Özel ana bilgisayar adı** için, CNAME kaydınızın kaynak etki alanı olarak kullanılacak alt etki alanı dahil özel etki alanınızı girin. Örneğin, www\.contoso.com veya cdn.contoso.com. cdnverify alt etki alanı adını kullanmayın.
+5. **Özel ana bilgisayar adı** için, CNAME kaydınızın kaynak etki alanı olarak kullanılacak alt etki alanı dahil özel etki alanınızı girin. Örneğin, www\.contoso.com veya CDN.contoso.com. cdnverify alt etki alanı adını kullanmayın.
 
    ![CDN özel etki alanı iletişim kutusu](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
-6. **Ekle'yi**seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
    Azure, girdiğiniz özel etki alanı adı için CNAME kaydının bulunduğunu doğrular. CNAME doğruysa, özel etki alanınız doğrulanır. 
 
@@ -145,7 +145,7 @@ cdnverify alt etki alanı ile bir CNAME kaydı oluşturmak için:
  
 1. Uç noktada önbelleğe alınan genel içeriğinizin olduğundan emin olun. Örneğin, CDN uç noktanız bir depolama hesabıyla ilişkiliyse, Azure CDN içeriği genel bir kapsayıcıda önbelleğe alır. Özel etki alanını test etmek için kapsayıcınızın genel erişime izin verecek şekilde ayarlandığını ve en az bir dosya içerdiğini doğrulayın.
 
-2. Tarayıcınızda, özel etki alanını kullanarak dosyanın adresine gidin. Örneğin, özel etki alanınız `www.contoso.com`önbelleğe alınmış dosyanın URL'si aşağıdaki `http://www.contoso.com/my-public-container/my-file.jpg`URL'ye benzer olmalıdır: . Sonucun, CDN bitiş noktasına doğrudan bitiş noktası ana * &lt;bilgisayar adı&gt;*.azureedge.net'da erişmenizle aynı olduğunu doğrulayın.
+2. Tarayıcınızda, özel etki alanını kullanarak dosyanın adresine gidin. Örneğin, özel etki alanınız ise `www.contoso.com`, önbelleğe alınan dosyanın URL 'SI aşağıdaki URL 'ye benzer olmalıdır:. `http://www.contoso.com/my-public-container/my-file.jpg` Sonucun * &lt;ana bilgisayar adı&gt;*. azureedge.net ' de CDN uç noktasına doğrudan erişimindeki ile aynı olduğunu doğrulayın.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Kalıcı özel etki alanını eşleme
@@ -156,7 +156,7 @@ cdnverify alt etki alanının uç noktanıza başarıyla eşlendiğini doğrulad
 
 1. Özel etki alanınızın etki alanı sağlayıcısına ait web sitesinde oturum açın.
 
-2. Sağlayıcının belgelerine danışarak veya **Alan Adı,** **DNS**veya **Ad Sunucusu Yönetimi**etiketli web sitesinin alanlarını arayarak DNS kayıtlarını yönetmek için sayfayı bulun. 
+2. Sağlayıcının belgelerine danışarak veya **etki alanı adı**, **DNS**ya da **ad sunucusu yönetimi**etiketli Web sitesinin bölümlerini arayarak DNS kayıtlarını yönetmeye ilişkin sayfayı bulun. 
 
 3. Özel etki alanınız için bir CNAME kaydı girişi oluşturun ve alanları (alan adları değişebilir) aşağıdaki tabloda gösterildiği gibi tamamlayın:
 
@@ -164,11 +164,11 @@ cdnverify alt etki alanının uç noktanıza başarıyla eşlendiğini doğrulad
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
-   - Kaynak: Özel alan adınızı girin (örneğin, www\.contoso.com).
+   - Kaynak: özel etki alanı adınızı (örneğin, www\.contoso.com) girin.
 
    - Tür: *CNAME* yazın.
 
-   - Hedef: CDN uç noktanızın ana bilgisayar adını girin. Aşağıdaki biçimde olmalıdır:_&lt;bitiş noktası&gt;adı_.azureedge.net. Örneğin, contoso.azureedge.net.
+   - Hedef: CDN uç noktanızın ana bilgisayar adını girin. Şu biçimde olmalıdır:_&lt;uç nokta adı&gt;_. azureedge.net. Örneğin, contoso.azureedge.net.
 
 4. Yaptığınız değişiklikleri kaydedin.
 
@@ -198,7 +198,7 @@ cdnverify alt etki alanının uç noktanıza başarıyla eşlendiğini doğrulad
 
     - TTL: *1 Saat* seçeneğini işaretli bırakın.
 
-6. **Kaydet'i**seçin.
+6. **Kaydet**’i seçin.
  
     CNAME girişi DNS kayıtları tablosuna eklenir.
 

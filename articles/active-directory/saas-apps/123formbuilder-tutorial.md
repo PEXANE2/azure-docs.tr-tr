@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: 123FormBuilder SSO ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve 123FormBuilder SSO arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: 123FormBuilder SSO ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve 123FormBuilder SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,163 +16,163 @@ ms.date: 04/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 947a9d632089b18f6b950c5eecbcb74d061f32eb
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81274217"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Öğretici: 123FormBuilder SSO ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Öğretici: 123FormBuilder SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, 123FormBuilder SSO'nun Azure Active Directory (Azure AD) ile nasıl entegre edileceğinizi öğreneceksiniz. 123FormBuilder SSO'yu Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, 123FormBuilder SSO 'Yu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. 123FormBuilder SSO 'Yu Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* 123FormBuilder SSO erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla 123FormBuilder SSO'da otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de, 123FormBuilder SSO 'ya erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla 123FormBuilder SSO 'da otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* 123FormBuilder SSO tek oturum açma (SSO) özellikli abonelik.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* 123FormBuilder SSO çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* 123FormBuilder SSO **SP ve IDP** SSO başlatılan destekler.
-* 123FormBuilder SSO **Just In Time** kullanıcı sağlama destekler.
-* 123FormBuilder SSO'u yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* 123FormBuilder SSO **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
+* 123FormBuilder SSO **, tam zamanında** Kullanıcı sağlamayı destekler.
+* 123FormBuilder SSO 'Yu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-123formbuilder-sso-from-the-gallery"></a>Galeriden 123FormBuilder SSO ekleme
+## <a name="adding-123formbuilder-sso-from-the-gallery"></a>Galeriden 123FormBuilder SSO 'SU ekleme
 
-123FormBuilder SSO'nun Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize 123FormBuilder SSO eklemeniz gerekir.
+123FormBuilder SSO 'Yu Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize 123FormBuilder SSO eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **123FormBuilder SSO** yazın.
-1. Sonuç panelinden **123FormBuilder SSO'yu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **123Formbuilder SSO** yazın.
+1. Sonuçlar panelinden **123Formbuilder SSO** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-123formbuilder-sso"></a>123FormBuilder SSO için Azure AD oturum açma işlemlerini yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-123formbuilder-sso"></a>123FormBuilder SSO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak 123FormBuilder SSO ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile 123FormBuilder SSO'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu 123FormBuilder SSO ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve 123FormBuilder SSO içinde ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu 123FormBuilder SSO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'Yu 123FormBuilder SSO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[123FormBuilder SSO'yu yapılandırın](#configure-123formbuilder-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    * **[123FormBuilder SSO test kullanıcıoluşturun](#create-123formbuilder-sso-test-user)** - kullanıcının Azure AD gösterimi ile bağlantılı 123FormBuilder SSO B.Simon bir meslektaşı olması.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[123FormBuilder SSO 'Yu yapılandırın](#configure-123formbuilder-sso)** .
+    * User 'ın Azure AD gösterimine bağlı olan 123FormBuilder SSO 'SU üzerinde B. Simon 'a sahip olmak için **[123FORMBUILDER SSO test kullanıcısı oluşturun](#create-123formbuilder-sso-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **123FormBuilder SSO** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **123Formbuilder SSO** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** sı bölümünde, Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/metadata`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/metadata`
 
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/acs`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/acs`
 
-5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/sso`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.123formbuilder.com/saml/azure_ad/<tenant_id>/sso`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değeri, öğreticide daha sonra açıklanan gerçek URL'lerden ve Tanımlayıcı'dan güncelleştirmeniz gerekir.
+    > Bu değerler gerçek değildir. Bu değeri, Öğreticinin ilerleyen kısımlarında açıklanan gerçek URL 'lerden ve tanımlayıcıdan güncelleştirmeniz gerekir.
 
-1. **SAML** Ile Kurulum tek oturum açma bölümünde, **SAML İmza Sertifikası** bölümünde, **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açma kurulumu** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. Set **up 123FormBuilder SSO** bölümünde, gereksiniminize göre uygun URL(ler) kopyalayın.
+1. **123FormBuilder SSO ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın 123FormBuilder SSO'ya erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, 123FormBuilder SSO erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar **listesinde, 123FormBuilder SSO'yu**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **123Formbuilder SSO**' yı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-123formbuilder-sso"></a>123FormBuilder SSO'ya yapılandırın
+## <a name="configure-123formbuilder-sso"></a>123FormBuilder SSO 'Yu yapılandırma
 
-1. **123FormBuilder SSO** tarafında tek oturum açma yapılandırmak [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) için aşağıdaki adımları gidin ve gerçekleştirin:
+1. **123Formbuilder SSO** tarafında çoklu oturum açmayı yapılandırmak için adresine gidin [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) ve aşağıdaki adımları gerçekleştirin:
 
-    ![Tek İşaret-On'u Yapılandır](./media/123formbuilder-tutorial/submit.png) 
+    ![Çoklu oturum açmayı yapılandırma](./media/123formbuilder-tutorial/submit.png) 
 
-    a. **E-posta** metin kutusuna, kullanıcının `B.Simon@Contoso.com`e-postasını yazın.
+    a. **E-posta** metin kutusuna, gibi `B.Simon@Contoso.com`kullanıcının e-postasını yazın.
 
-    b. Azure portalından indirdiğiniz Metadata XML dosyasına **Yükle'yi** tıklatın ve göz atın.
+    b. **Karşıya yükle** ' ye tıklayın ve Azure Portal adresinden Indirdiğiniz Indirilen meta veri XML dosyasına gözatamazsınız.
 
-    c. **FORMU GÖNDER'e**tıklayın.
+    c. **Formu gönder**' e tıklayın.
 
-2. Microsoft **Azure AD'da - Tek oturum açma - Uygulama Ayarlarını Yapılandır:** Aşağıdaki adımları gerçekleştirin:
+2. **Microsoft Azure AD çoklu oturum açma-uygulama ayarlarını yapılandırma** aşağıdaki adımları uygulayın:
 
-    ![Tek İşaret-On'u Yapılandır](./media/123formbuilder-tutorial/url3.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/123formbuilder-tutorial/url3.png)
 
-    a. Uygulamayı **IDP tarafından başlatılan modda**yapılandırmak istiyorsanız, örneğiniz için **IDENTIFIER** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırma** bölümündeki **Tanımlayıcı** textbox'a yapıştırın.
+    a. Uygulamayı **IDP tarafından başlatılan modda**yapılandırmak istiyorsanız, örneğiniz için **tanımlayıcı** değeri KOPYALAYıN ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
 
-    b. Uygulamayı **IDP tarafından başlatılan modda**yapılandırmak istiyorsanız, örneğiniz için **YANıT URL** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırması** **bölümündeki YanıtURL** textbox'ına yapıştırın.
+    b. Uygulamayı **IDP tarafından başlatılan modda**yapılandırmak istiyorsanız, örneğiniz için **yanıt URL 'si** değerini KOPYALAYıN ve Azure Portal **temel SAML yapılandırması** bölümünde **yanıt URL** metin kutusuna yapıştırın.
 
-    c. Uygulamayı **SP tarafından başlatılan modda**yapılandırmak istiyorsanız, örneğiniz için **SIGN ON URL** değerini kopyalayın ve Azure portalındaki Temel **SAML Yapılandırma** bölümünde Oturum Aç **URL** textbox'a yapıştırın.
+    c. Uygulamayı **SP tarafından başlatılan modda**yapılandırmak istiyorsanız, örneğiniz Için **oturum açma URL 'si** değerini KOPYALAYıN ve Azure Portal **temel SAML yapılandırması** bölümündeki URL 'yi **oturum** Aç metin kutusuna yapıştırın.
 
-### <a name="create-123formbuilder-sso-test-user"></a>123FormBuilder SSO test kullanıcıoluşturma
+### <a name="create-123formbuilder-sso-test-user"></a>123FormBuilder SSO test kullanıcısı oluştur
 
-Bu bölümde, Britta Simon adlı bir kullanıcı 123FormBuilder SSO oluşturulur. 123FormBuilder SSO varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlama destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Bir kullanıcı zaten 123FormBuilder SSO yoksa, yeni bir kimlik doğrulama sonra oluşturulur.
+Bu bölümde, 123FormBuilder SSO 'da Britta Simon adlı bir Kullanıcı oluşturulur. 123FormBuilder SSO, tam zamanında Kullanıcı sağlamayı destekler, varsayılan olarak etkindir. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı 123FormBuilder SSO 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Panelindeki 123FormBuilder SSO döşemesini tıklattığınızda, Otomatik olarak SSO'yu kurduğunuz 123FormBuilder SSO'ya oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde 123FormBuilder SSO kutucuğuna tıkladığınızda, SSO 'Yu ayarladığınız 123FormBuilder SSO 'SU için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile 123FormBuilder SSO'u deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile 123FormBuilder SSO 'Yu deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

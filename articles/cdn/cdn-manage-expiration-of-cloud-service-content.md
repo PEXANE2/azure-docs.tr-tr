@@ -1,6 +1,6 @@
 ---
-title: Azure CDN'de web içeriğinin sona ermesini yönetme | Microsoft Dokümanlar
-description: Azure CDN'de Azure Web Apps/Bulut Hizmetleri, ASP.NET veya IIS içeriğinin sona ermesini nasıl yöneteceğimiz öğrenin.
+title: Azure CDN Web içeriğinin kullanım süresini yönetme | Microsoft Docs
+description: Azure CDN Azure Web Apps/Cloud Services, ASP.NET veya IIS içeriğinin süresinin dolmasının nasıl yönetileceğini öğrenin.
 services: cdn
 documentationcenter: .NET
 author: asudbring
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: 4598e6cee6ffbaaeb2a99727842fcd17fe0046c7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260573"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN'de web içeriğinin süre sonunu yönetme
@@ -27,25 +27,25 @@ ms.locfileid: "81260573"
 > * [Azure Blob depolama](cdn-manage-expiration-of-blob-content.md)
 > 
 
-Herkese açık kaynak web sunucularından gelen dosyalar, canlı (TTL) süresi dolana kadar Azure İçerik Teslim Ağı'nda (CDN) önbelleğe alınabilir. TTL, başlangıç sunucusundan HTTP yanıtındaki `Cache-Control` üstbilgi tarafından belirlenir. Bu makalede, Microsoft `Cache-Control` Azure Uygulama Hizmeti, Azure Bulut Hizmetleri, ASP.NET uygulamaları ve Internet Information Services (IIS) sitelerinin Web Apps özelliği için üstbilgileri nasıl ayarlanabileceğiniz açıklanmaktadır ve bunların tümü benzer şekilde yapılandırılmıştır. Üstbilgiyi `Cache-Control` yapılandırma dosyalarını kullanarak veya programlı olarak ayarlayabilirsiniz. 
+Herkese açık kaynaklı Web sunucularından dosyalar, yaşam süresi (TTL) sona erene kadar Azure Content Delivery Network (CDN) ile önbelleğe alınabilir. TTL, kaynak sunucudan gelen HTTP `Cache-Control` yanıtındaki üst bilgi tarafından belirlenir. Bu makalede, hepsi benzer şekilde `Cache-Control` yapılandırılmış Microsoft Azure App Service, Azure Cloud Services, ASP.NET uygulamaları ve Internet INFORMATION SERVICES (IIS) sitelerinin Web Apps özelliği için üst bilgilerin nasıl ayarlanacağı açıklanır. `Cache-Control` Üst bilgiyi yapılandırma dosyalarını kullanarak veya programlama yoluyla ayarlayabilirsiniz. 
 
-[CDN önbelleğe alma kurallarını](cdn-caching-rules.md)ayarlayarak Azure portalından önbellek ayarlarını da denetleyebilirsiniz. Bir veya daha fazla önbelleğe alma kuralı oluşturur ve önbelleğe alma davranışlarını **Geçersiz Kılma** veya **Atlama önbelleği**olarak ayarlarsanız, bu makalede tartışılan kaynak sağlanan önbelleğe alma ayarları yoksayılır. Genel önbelleğe alma kavramları hakkında bilgi [için](cdn-how-caching-works.md)bkz.
+Ayrıca, [CDN önbelleğe alma kurallarını](cdn-caching-rules.md)ayarlayarak Azure Portal önbellek ayarlarını kontrol edebilirsiniz. Bir veya daha fazla önbelleğe alma kuralı oluşturursanız ve önbellek ayarlarını **geçersiz kılacak** veya **atlayacak**şekilde ayarlarsanız, bu makalede ele alınan kaynak tarafından sunulan önbelleğe alma ayarları yok sayılır. Genel önbelleğe alma kavramları hakkında daha fazla bilgi için bkz. [önbelleğe alma nasıl kullanılır](cdn-how-caching-works.md).
 
 > [!TIP]
-> Bir dosyada TTL ayarlamamayı seçebilirsiniz. Bu durumda, Azure portalında önbelleğe alma kuralları ayarlamadığınız sürece Azure CDN varsayılan yedi günlük ttl'yi otomatik olarak uygular. Bu varsayılan TTL yalnızca genel web teslim optimizasyonları için geçerlidir. Büyük dosya optimizasyonları için varsayılan TTL bir gündür ve ortam akışı optimizasyonları için varsayılan TTL bir yıldır.
+> Bir dosya üzerinde TTL ayarı ayarlamayı tercih edebilirsiniz. Bu durumda, Azure portal önbelleğe alma kurallarını ayarlamadığınız müddetçe, Azure CDN otomatik olarak yedi günlük bir varsayılan TTL uygular. Bu varsayılan TTL yalnızca genel Web teslim iyileştirmeleri için geçerlidir. Büyük dosya iyileştirmeleri için varsayılan TTL bir gündür ve medya akışı iyileştirmeleri için varsayılan TTL bir yıldır.
 > 
-> Dosyalara ve diğer kaynaklara erişimi hızlandırmak için Azure CDN'nin nasıl çalıştığı hakkında daha fazla bilgi için Azure [İçerik Dağıtım Ağına Genel Bakış bölümüne](cdn-overview.md)bakın.
+> Azure CDN dosyalara ve diğer kaynaklara erişimi hızlandırmak için nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure Content Delivery Network genel bakış](cdn-overview.md).
 > 
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN önbelleğe alma kurallarını kullanarak Önbellek Denetimi üstleri ayarlama
-Bir web sunucusunun `Cache-Control` üstbilgisini ayarlamak için tercih edilen yöntem, Azure portalında önbelleğe alma kurallarını kullanmaktır. CDN önbelleğe alma kuralları hakkında daha fazla bilgi için [önbelleğe alma kurallarıyla Azure CDN önbelleğe alma davranışını denetle'](cdn-caching-rules.md)ye bakın.
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN önbelleğe alma kurallarını kullanarak Cache-Control üst bilgilerini ayarlama
+Bir Web sunucusunun `Cache-Control` üst bilgisini ayarlamak için tercih edilen yöntem Azure Portal önbelleğe alma kurallarını kullanmaktır. CDN önbelleğe alma kuralları hakkında daha fazla bilgi için bkz. [önbelleğe alma kurallarıyla denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Önbelleğe alma kuralları yalnızca **Akamai profillerinden** Verizon ve Azure **CDN Standard'dan Azure CDN Standardı** için kullanılabilir. **Verizon profillerinden Azure CDN Premium** için, benzer işlevler için **Yönet** portalındaki [Azure CDN kuralları altyapısını](cdn-rules-engine.md) kullanmanız gerekir.
+> Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Verizon profillerden Azure CDN Premium** Için, **Manage** Portal içindeki [Azure CDN Rules altyapısını](cdn-rules-engine.md) benzer işlevler için kullanmanız gerekir.
 
-**CDN önbelleğe alma kuralları sayfasına gitmek için:**
+**CDN önbelleğe alma kuralları sayfasına gitmek için**:
 
-1. Azure portalında bir CDN profili seçin ve ardından web sunucusuiçin bitiş noktasını seçin.
+1. Azure portal, bir CDN profili seçin ve ardından Web sunucusu için uç noktayı seçin.
 
 1. Ayarların altındaki sol bölmede **Önbelleğe alma kuralları**’nı seçin.
 
@@ -56,45 +56,45 @@ Bir web sunucusunun `Cache-Control` üstbilgisini ayarlamak için tercih edilen 
    ![CDN önbelleğe alma sayfası](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
 
 
-**Genel önbelleğe alma kurallarını kullanarak bir web sunucusunun Önbellek Denetimi üstbilgilerini ayarlamak için:**
+**Genel önbelleğe alma kurallarını kullanarak bir Web sunucusunun Cache-Control üst bilgilerini ayarlamak için:**
 
-1. **Genel önbelleğe alma kuralları**altında, **sorgu dizeleri yoksaymak** için **Sorgu dize önbelleğe alma davranışı** ayarlayın ve **Önbelleğe Alma davranışını** **geçersiz kılmak**için ayarlayın.
+1. **Genel önbelleğe alma kuralları**' nın altında sorgu **dizelerini yok say** ve **önbelleğe alma davranışını** **geçersiz kılmak**için **sorgu dizesi önbelleğe alma davranışını** ayarlayın.
       
-1. **Önbellek son kullanma süresi için** **Saniye** kutusuna 3600 veya **Saat** kutusuna 1 girin. 
+1. **Önbellek sona erme süresi**Için, **saniye** kutusuna 3600 veya **saat** kutusuna 1 yazın. 
 
    ![CDN genel önbelleğe alma kuralları örneği](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
 
-   Bu genel önbelleğe alma kuralı bir saatlik önbellek süresi ayarlar ve bitiş noktasına kadar tüm istekleri etkiler. Bitiş noktası `Cache-Control` tarafından `Expires` belirtilen başlangıç sunucusu tarafından gönderilen herhangi bir veya HTTP üstbilgisini geçersiz kılar.   
+   Bu genel önbelleğe alma kuralı bir saatin önbellek süresini ayarlar ve uç noktaya yapılan tüm istekleri etkiler. Uç nokta tarafından `Cache-Control` belirtilen `Expires` kaynak sunucu tarafından gönderilen tüm veya HTTP üstbilgilerini geçersiz kılar.   
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-**Özel önbelleğe alma kuralları kullanarak bir web sunucusu dosyasının Önbellek Denetimi üstbilgilerini ayarlamak için:**
+**Özel önbelleğe alma kurallarını kullanarak bir Web sunucusu dosyasının Cache-Control üst bilgilerini ayarlamak için:**
 
-1. **Özel önbelleğe alma kuralları altında,** iki maç koşulu oluşturun:
+1. **Özel önbelleğe alma kuralları**altında, iki eşleşme koşulu oluşturun:
 
-     a. İlk eşleşme koşulu **için, Match koşulunu** **Yol'a** ayarlayın ve Maç `/webfolder1/*` **değeri**için girin. **Önbelleğe Alma davranışını** **Geçersiz kılmaya** ayarlayın ve **Saat** kutusuna 4 girin.
+     a. İlk eşleşme koşulu için **eşleşme koşulu** ' nı **yol** olarak ayarlayın ve `/webfolder1/*` **eşleşme değeri**için girin. **Önbelleğe alma davranışını** **geçersiz kılmak** için ayarlayın ve **saat** kutusuna 4 girin.
 
-     b. İkinci eşleşme koşulu için **Maç koşulunu** `/webfolder1/file1.txt` **Yol'a** ayarlayın ve Match **değeri**için girin. **Önbelleğe Alma davranışını** **Geçersiz kılmaya** ayarlayın ve **Saat** kutusuna 2 girin.
+     b. İkinci eşleşme koşulu için **eşleşme koşulu** ' nı **yol** olarak ayarlayın ve `/webfolder1/file1.txt` **eşleşme değeri**için girin. **Önbelleğe alma davranışını** **geçersiz kılmak** için ayarlayın ve **saat** kutusuna 2 girin.
 
     ![CDN özel önbelleğe alma kuralları örneği](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
-    İlk özel önbelleğe alma kuralı, bitiş noktanızda belirtilen `/webfolder1` başlangıç sunucusundaki klasördeki tüm dosyalar için dört saatlik bir önbellek süresi ayarlar. İkinci kural `file1.txt` yalnızca dosya için ilk kuralı geçersiz kılar ve bunun için iki saatlik bir önbellek süresi ayarlar.
+    İlk özel önbelleğe alma kuralı, uç noktanız tarafından belirtilen kaynak sunucu üzerindeki `/webfolder1` klasörde bulunan tüm dosyalar için dört saatlik bir önbellek süresi ayarlar. İkinci kural yalnızca `file1.txt` dosyanın ilk kuralını geçersiz kılar ve kendisi için iki saatlik bir önbellek süresi ayarlar.
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 
-## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Yapılandırma dosyalarını kullanarak Önbellek Denetimi üsterlerini ayarlama
-Resimler ve stil sayfaları gibi statik içerik için, web uygulamanız için **applicationHost.config** veya **Web.config** yapılandırma dosyalarını değiştirerek güncelleştirme sıklığını denetleyebilirsiniz. İçeriğiniz `Cache-Control` için üstbilgi ayarlamak için `<system.webServer>/<staticContent>/<clientCache>` her iki dosyadaki öğeyi kullanın.
+## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Yapılandırma dosyalarını kullanarak Cache-Control üst bilgilerini ayarlama
+Görüntüler ve stil sayfaları gibi statik içerik için, Web uygulamanız için **ApplicationHost. config** veya **Web. config** yapılandırma dosyalarını değiştirerek güncelleştirme sıklığını kontrol edebilirsiniz. İçeriğinizin `Cache-Control` üst bilgisini ayarlamak için, her iki dosyadaki `<system.webServer>/<staticContent>/<clientCache>` öğesini kullanın.
 
-### <a name="using-applicationhostconfig-files"></a>ApplicationHost.config dosyalarını kullanma
-**ApplicationHost.config** dosyası IIS yapılandırma sisteminin kök dosyasıdır. **ApplicationHost.config** dosyasındaki yapılandırma ayarları sitedeki tüm uygulamaları etkiler, ancak bir web uygulaması için var olan herhangi bir **Web.config** dosyasının ayarları tarafından geçersiz kılındı.
+### <a name="using-applicationhostconfig-files"></a>ApplicationHost. config dosyalarını kullanma
+**ApplicationHost. config** dosyası IIS yapılandırma sisteminin kök dosyasıdır. Bir **ApplicationHost. config** dosyasındaki yapılandırma ayarları sitedeki tüm uygulamaları etkiler, ancak bir Web uygulaması için var olan herhangi bir **Web. config** dosyasının ayarları tarafından geçersiz kılınır.
 
-### <a name="using-webconfig-files"></a>Web.config dosyalarını kullanma
-With a **Web.config** file, you can customize the way your entire web application or a specific directory on your web application behaves. Genellikle, web uygulamanızın kök klasöründe en az bir **Web.config** dosyanız vardır. Belirli bir klasördeki her **Web.config** dosyası için yapılandırma ayarları, alt klasör düzeyinde başka bir **Web.config** dosyası tarafından geçersiz kılınmadığı sürece, o klasördeki ve alt klasörlerideki her şeyi etkiler. 
+### <a name="using-webconfig-files"></a>Web. config dosyalarını kullanma
+Web **. config** dosyası ile, Web uygulamanızın tamamının veya Web uygulamanızdaki belirli bir dizinin nasıl davranacağını özelleştirebilirsiniz. Genellikle, Web uygulamanızın kök klasöründe en az bir **Web. config** dosyanız vardır. Belirli bir klasördeki her **Web. config** dosyası için, yapılandırma ayarları başka bir **Web. config** dosyası tarafından alt klasör düzeyinde geçersiz kılınmadıkça, bu klasördeki ve alt klasörlerindeki her şeyi etkiler. 
 
-Örneğin, web uygulamanızın `<clientCache>` kök klasöründe bir **Web.config** dosyasında bir öğe ayarlayabilirsiniz, web uygulamanızdaki tüm statik içeriği üç gün süreyle önbelleğe alabilirsiniz. Ayrıca, daha değişken içeriğe (örneğin) `\frequent`sahip bir alt klasöre bir **Web.config** dosyası ekleyebilir ve öğesini `<clientCache>` alt klasörün içeriğini altı saat önbelleğe alacak şekilde ayarlayabilirsiniz. Net sonuç, yalnızca altı saat için önbelleğe alınmış olan `\frequent` dizindeki herhangi bir içerik dışında, tüm web sitesindeki içeriğin üç gün süreyle önbelleğe alınmış olmasıdır.  
+Örneğin, Web uygulamanızdaki tüm statik içerikleri `<clientCache>` üç gün boyunca önbelleğe almak için Web uygulamanızın kök klasöründeki **Web. config** dosyasında bir öğesi ayarlayabilirsiniz. Ayrıca, daha fazla değişken içeriğe sahip bir alt klasöre **Web. config** dosyası ekleyebilir (örneğin, `\frequent`) ve `<clientCache>` öğesini altı saat alt klasörünün içeriğini önbelleğe almak üzere ayarlayabilirsiniz. Net sonuç, `\frequent` dizindeki herhangi bir içerik hariç olmak üzere, tüm Web sitesinin içeriği üç gün boyunca önbelleğe alınır ve yalnızca altı saat boyunca önbelleğe alınır.  
 
-Aşağıdaki XML yapılandırma dosyası örneği, `<clientCache>` öğenin en fazla üç günlük bir yaş belirtecek şekilde nasıl ayarlanabildiğini gösterir:  
+Aşağıdaki XML yapılandırma dosyası örneği, `<clientCache>` öğesinin üç güne ait maksimum yaşı belirtmek için nasıl ayarlanacağını gösterir:  
 
 ```xml
 <configuration>
@@ -106,19 +106,19 @@ Aşağıdaki XML yapılandırma dosyası örneği, `<clientCache>` öğenin en f
 </configuration>
 ```
 
-**ÖnbellekDenetimiMaxAge** özniteliğini kullanmak için, **önbellekDenetimModu** özniteliğinin değerini `UseMaxAge`. Bu ayar, http üstbilgi `Cache-Control: max-age=<nnn>`ve yönergesi, yanıta eklenmesine neden oldu. **ÖnbellekControlMaxAge** özniteliği için zaman alanı değerinin `<days>.<hours>:<min>:<sec>`biçimi . Değeri saniyeye dönüştürülür ve `Cache-Control` `max-age` yönerge değeri olarak kullanılır. `<clientCache>` Öğe hakkında daha fazla bilgi için, [>bkz. \< ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)  
+**CacheControlMaxAge** özniteliğini kullanmak Için, **cachecontrolmode** özniteliğinin değerini olarak `UseMaxAge`ayarlamanız gerekir. Bu ayar, HTTP üst bilgisi ve yönergesinin `Cache-Control: max-age=<nnn>`yanıta eklenmesine neden oldu. **CacheControlMaxAge** özniteliği için TimeSpan değerinin biçimi `<days>.<hours>:<min>:<sec>`. Değeri saniyeye dönüştürülür ve `Cache-Control` `max-age` yönergesinin değeri olarak kullanılır. `<clientCache>` Öğesi hakkında daha fazla bilgi için bkz. [istemci önbellek \<clientcache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
-## <a name="setting-cache-control-headers-programmatically"></a>Önbellek denetimi üstbilgilerini programlı olarak ayarlama
-ASP.NET uygulamalar için, .NET API'nin **HttpResponse.Cache** özelliğini ayarlayarak CDN önbelleğe alma davranışını programlı olarak denetlersiniz. **HttpResponse.Cache** özelliği hakkında bilgi için bkz: [HttpResponse.Cache Özelliği](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) ve [HttpCachePolicy Sınıf.](/dotnet/api/system.web.httpcachepolicy)  
+## <a name="setting-cache-control-headers-programmatically"></a>Önbellek denetimi üstbilgilerini programlama yoluyla ayarlama
+ASP.NET uygulamalarında, .NET API 'nin **HttpResponse. Cache** ÖZELLIĞINI ayarlayarak CDN önbelleğe alma davranışını programlı bir şekilde kontrol edersiniz. **HttpResponse. Cache** özelliği hakkında daha fazla bilgi için bkz. [HttpResponse. Cache özelliği](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) ve [HttpCachePolicy sınıfı](/dotnet/api/system.web.httpcachepolicy).  
 
-Uygulama içeriğini ASP.NET programlı olarak önbelleğe almak için aşağıdaki adımları izleyin:
-   1. 'ye ayarlayarak `HttpCacheability` içeriğin önbelleğe `Public`alındığını doğrulayın. 
-   1. Aşağıdaki `HttpCachePolicy` yöntemlerden birini arayarak önbellek doğrulayıcısını ayarlayın:
-      - Üstbilgi için bir zaman damgası değeri ayarlamak için arayın. `SetLastModified` `Last-Modified`
-      - Üstbilgi için bir değer ayarlamak için arayın. `SetETag` `ETag`
-   1. İsteğe bağlı olarak, üstbilgi `SetExpires` için bir değer `Expires` ayarlamak için arayarak önbellek son kullanma süresini belirtin. Aksi takdirde, bu belgede daha önce açıklanan varsayılan önbellek sezgisel uygulanır.
+ASP.NET ' de uygulama içeriğini programlı bir şekilde önbelleğe almak için şu adımları izleyin:
+   1. İçeriğinin, olarak ayarlanarak `HttpCacheability` önbelleğe alınabilir olarak işaretlendiğinden emin olun. `Public` 
+   1. Aşağıdaki `HttpCachePolicy` yöntemlerden birini çağırarak bir önbellek doğrulayıcısı ayarlayın:
+      - Üst bilgi için zaman damgası değeri ayarlama çağrısı `SetLastModified` `Last-Modified`
+      - Üst bilgi için bir değer ayarlamak üzere çağırın `SetETag` `ETag`
+   1. İsteğe bağlı olarak, `SetExpires` `Expires` üst bilgi için bir değer ayarlamak üzere çağırarak bir önbellek süre sonu zamanı belirtin. Aksi takdirde, bu belgede daha önce açıklanan varsayılan önbellek buluşsal yöntemleri geçerlidir.
 
-Örneğin, içeriği bir saat önbelleğe almak için aşağıdaki C# kodunu ekleyin:  
+Örneğin, bir saatin içeriğini önbelleğe almak için aşağıdaki C# kodunu ekleyin:  
 
 ```csharp
 // Set the caching parameters.
@@ -127,11 +127,11 @@ Response.Cache.SetCacheability(HttpCacheability.Public);
 Response.Cache.SetLastModified(DateTime.Now);
 ```
 
-## <a name="testing-the-cache-control-header"></a>Önbellek Denetimi üstbilgisini sına
-Web içeriğinizin TTL ayarlarını kolayca doğrulayabilirsiniz. Tarayıcınızın geliştirici [araçlarıyla,](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)web içeriğinizin `Cache-Control` yanıt üstbilgisini içerdiğini test edin. Ayrıca, yanıt üstbilgilerini incelemek için **wget,** [Postman](https://www.getpostman.com/)veya [Fiddler](https://www.telerik.com/fiddler) gibi bir araç da kullanabilirsiniz.
+## <a name="testing-the-cache-control-header"></a>Cache-Control üst bilgisini test etme
+Web içeriğinizin TTL ayarlarını kolayca doğrulayabilirsiniz. Tarayıcınızın [Geliştirici araçlarıyla](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), Web içeriğinizin `Cache-Control` yanıt üst bilgisini içerdiğini test edin. Yanıt üst bilgilerini incelemek için **wget**, [Postman](https://www.getpostman.com/)veya [Fiddler](https://www.telerik.com/fiddler) gibi bir araç da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* [**Istemci Önbellek** öğesi hakkındaki ayrıntıları okuyun](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [**HttpResponse.Cache** Özelliği için belgeleri okuyun](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
-* [**HttpCachePolicy Sınıfı** için belgeleri okuyun](/dotnet/api/system.web.httpcachepolicy)  
-* [Önbelleğe alma kavramları hakkında bilgi edinin](cdn-how-caching-works.md)
+* [**Clientcache** öğesiyle ilgili ayrıntıları okuyun](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
+* [**HttpResponse. Cache** özelliği için belgeleri okuyun](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
+* [**HttpCachePolicy sınıfının** belgelerini okuyun](/dotnet/api/system.web.httpcachepolicy)  
+* [Önbelleğe alma kavramlarını öğrenin](cdn-how-caching-works.md)

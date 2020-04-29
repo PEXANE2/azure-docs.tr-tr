@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Örnekleri - Veri diskleri ekleme ve kullanma
-description: Bu komut dosyası, Azure sanal makine ölçeği kümesi oluşturur ve Azure CLI ile veri diskleri bağlar ve hazırlar.
+title: Azure CLı örnekleri-veri disklerini Iliştirme ve kullanma
+description: Bu betik bir Azure sanal makine ölçek kümesi oluşturur ve Azure CLı ile veri disklerini iliştirir ve hazırlar.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 7f8f84639095e4c495bfd24c534ee7c9a64136e5
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010435"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI ile sanal makine ölçek kümesi kullanarak veri diskleri ekleme ve kullanma

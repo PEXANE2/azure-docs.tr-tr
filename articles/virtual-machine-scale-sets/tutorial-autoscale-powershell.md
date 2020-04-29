@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure PowerShell ile bir ölçek kümesini otomatik ölçeklendirin
+title: Öğretici-Azure PowerShell ölçek kümesini otomatik ölçeklendirme
 description: CPU talepleri arttıkça ve azaldıkça, sanal makine ölçek kümesini Azure PowerShell ile otomatik olarak ölçeklendirmeyi öğrenin
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81009007"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
@@ -27,7 +27,7 @@ ms.locfileid: "81009007"
 > * Sanal makine örneklerinde stres testi yapma ve otomatik ölçeklendirme kurallarını tetikleme
 > * Talep düştüğünde geriye doğru otomatik ölçeklendirme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 Azure Cloud Shell’in geçerli sürümü de dahil olmak üzere Azure PowerShell modülünün 6.8.1 veya üzeri sürümlerini etkilediği bilinen bir sorun var. Bu öğretici yalnızca Azure PowerShell modülünün 6.0.0 ile 6.8.0 arasındaki sürümleri kullanılarak çalıştırılabilir. Sürümü bulmak için `Get-Module -ListAvailable AzureRM` komutunu çalıştırın. PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzureRmAccount` komutunu da çalıştırmanız gerekir.
 
@@ -66,11 +66,11 @@ Bu kural için aşağıdaki parametreler kullanılır:
 
 | Parametre               | Açıklama                                                                                                         | Değer          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
-| *-Metrik Adı*           | İzlenecek ve ölçek kümesi eylemlerinin uygulanmasında temel alınacak performans ölçümü.                                                   | CPU yüzdesi |
+| *-MetricName*           | İzlenecek ve ölçek kümesi eylemlerinin uygulanmasında temel alınacak performans ölçümü.                                                   | CPU yüzdesi |
 | *-TimeGrain*            | Analiz için ne sıklıkla ölçümlerin toplanacağı.                                                                   | 1 dakika       |
 | *-MetricStatistic*      | Toplanan ölçümlerin analiz için nasıl bir araya getirileceğini tanımlar.                                                | Ortalama        |
 | *-TimeWindow*           | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 5 dakika      |
-| *-Operatör*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür   |
+| *-İşleci*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür   |
 | *-Eşik*            | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan değer.                                                      | %70            |
 | *-ScaleActionDirection* | Kural geçerli olduğunda ölçek kümesinin ölçeğinin büyütüleceğini veya küçültüleceğini tanımlar.                                             | Artır       |
 | *-ScaleActionScaleType* | Sanal makine örneği sayısının belirli bir değerle değiştirilmesi gerektiğini belirtir.                                    | Değiştirme Sayısı   |
@@ -129,7 +129,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
 ```
 
 
-## <a name="apply-autoscale-profile-to-a-scale-set"></a>Otomatik ölçek profilini ölçek kümesine uygulama
+## <a name="apply-autoscale-profile-to-a-scale-set"></a>Ölçek kümesine otomatik ölçeklendirme profili uygulama
 Son adım, otomatik ölçeklendirme profilini ölçek kümenize uygulamaktır. Bundan sonra ölçek kümenizin ölçeği, uygulamanın talebine bağlı olarak daraltılabilir veya genişletilebilir. Otomatik ölçek profilini aşağıdaki gösterildiği gibi [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting) kullanarak uygulayın:
 
 ```azurepowershell-interactive
@@ -145,7 +145,7 @@ Add-AzureRmAutoscaleSetting `
 ## <a name="generate-cpu-load-on-scale-set"></a>Ölçek kümesinde CPU yükü oluşturma
 Otomatik ölçeklendirme kurallarını test etmek için, ölçek kümesindeki sanal makine örneklerinde biraz CPU yükü oluşturun. Bu benzetimi yapılan CPU yükü, otomatik ölçeklendirme kurallarının ölçeği genişletmesine ve sanal makine örneği sayısını artırmasına neden olur. Benzetimi yapılan CPU yükü daha sonra azaldığında otomatik ölçeklendirme kuralları ölçeği daraltır ve sanal makine örneği sayısını azaltır.
 
-Ölçek kümesindeki sanal makine örneklerine bağlanırken kullanılacak NAT bağlantı noktalarını listelemek için, önce [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer) komutuyla yük dengeleyici nesnesini alın. Ardından, [Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig)ile gelen NAT kurallarını görüntüleyin:
+Ölçek kümesindeki sanal makine örneklerine bağlanırken kullanılacak NAT bağlantı noktalarını listelemek için, önce [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer) komutuyla yük dengeleyici nesnesini alın. Ardından, [Get-Azurermloadbalancerınboundnatrutaconfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig)Ile gelen NAT kurallarını görüntüleyin:
 
 ```azurepowershell-interactive
 # Get the load balancer object
@@ -180,7 +180,7 @@ IpAddress
 52.168.121.216
 ```
 
-İlk sanal makine örneğinize bir uzak bağlantı oluşturun. Önceki komutlarda gösterildiği gibi, gerekli sanal makine örneği için kendi genel IP adresinizi ve bağlantı noktası numaranızı belirtin. İstendiğinde, ölçek kümesini oluşturduğunuzda kullanılan kimlik bilgilerini girin (örnek komutlarda varsayılan olarak *azureuser* ve *P\@ssw0rd!* vardır). Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Aşağıdaki örnek sanal makine örneği *0*'a bağlanır:
+İlk sanal makine örneğinize bir uzak bağlantı oluşturun. Önceki komutlarda gösterildiği gibi, gerekli sanal makine örneği için kendi genel IP adresinizi ve bağlantı noktası numaranızı belirtin. İstendiğinde, ölçek kümesini oluştururken kullanılan kimlik bilgilerini girin (örnek komutlarda varsayılan olarak *azureuser* ve *\@P ssw0rd!*). Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Aşağıdaki örnek sanal makine örneği *0*'a bağlanır:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -209,7 +209,7 @@ mstsc /v 52.168.121.216:50002
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Etkin otomatik ölçeklendirme kurallarını izleme
-Ölçek kümenizdeki sanal makine örneği sayısını izlemek için **while** kullanın. Otomatik ölçek ölçeklerinin, **CPUStress** tarafından VM örneklerinin her birinde oluşturduğu CPU yüküne yanıt olarak ölçeklendirme işlemine başlaması 5 dakika sürer:
+Ölçek kümenizdeki sanal makine örneği sayısını izlemek için **while** kullanın. Otomatik ölçeklendirme ölçeklerinin, sanal makine örneklerinin her birinde **CPUStress** tarafından oluşturulan CPU yüküne yanıt olarak ölçek genişletme işlemine başlaması için 5 dakika sürer:
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

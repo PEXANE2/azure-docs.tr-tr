@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Uygulamaları Azure şablonlarıyla bir ölçek kümesine yükleme
+title: Öğretici-Azure şablonları ile bir ölçek kümesine uygulama kurma
 description: Azure Resource Manager şablonlarını kullanarak Özel Betik Uzantısı ile sanal makine ölçek kümelerine uygulama yükleme işleminin nasıl yapılacağını öğrenin
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: aa5ce8876675b4332b92ee09295409540a5e6e66
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011243"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümelerine uygulama yükleme
@@ -23,7 +23,7 @@ Bir ölçek kümesindeki sanal makine (VM) örneklerinde uygulamaları çalışt
 > * Azure Özel Betik Uzantısı’nı kullanma
 > * Ölçek kümesinde çalıştırılan bir uygulamayı güncelleştirme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -65,11 +65,11 @@ Kaynak yükleme betiklerini veya paketlerini tanımlamak için *fileUris* özell
 }
 ```
 
-Ölçek kümesini ve Özel Komut Dosyası Uzantısı'nı dağıtan Azure [https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json)şablonunun tam bir örneği için bkz. Bu örnek şablon, sonraki bölümde kullanılmaktadır.
+Bir ölçek kümesi ve özel Betik uzantısı dağıtan bir Azure şablonuna ilişkin tüm bir örnek için bkz [https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json).. Bu örnek şablon, sonraki bölümde kullanılmaktadır.
 
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
-Şimdi bir ölçek kümesi oluşturmak ve Özel Betik Uzantısı’nı uygulamak için örnek şablonu kullanalım. Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Şimdi bir ölçek kümesi oluşturmak ve Özel Betik Uzantısı’nı uygulamak için örnek şablonu kullanalım. Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -107,7 +107,7 @@ Sonraki adımda güncelleştirilmiş bir sürümü görebilmeniz için web taray
 
 
 ## <a name="update-app-deployment"></a>Uygulama dağıtımını güncelleştirme
-Bir ölçek kümesinin yaşam döngüsü boyunca, uygulamanızın güncelleştirilmiş bir sürümünü dağıtmanız gerekebilir. Özel Betik Uzantısı ile, güncelleştirilmiş bir dağıtım betiğine başvurabilir ve sonra uzantıyı ölçek kümenize yeniden uygulayabilirsiniz. Ölçek kümesi önceki bir adımda oluşturulduğunda, *yükseltme Politikası* *Otomatik*olarak ayarlandı. Bu ayar, ölçek kümesindeki sanal makine örneklerinin otomatik olarak güncelleştirilmesini ve uygulamanızın en son sürümünü uygulamasını sağlar.
+Bir ölçek kümesinin yaşam döngüsü boyunca, uygulamanızın güncelleştirilmiş bir sürümünü dağıtmanız gerekebilir. Özel Betik Uzantısı ile, güncelleştirilmiş bir dağıtım betiğine başvurabilir ve sonra uzantıyı ölçek kümenize yeniden uygulayabilirsiniz. Önceki adımda ölçek kümesi oluşturulduğunda, *Upgradepolicy* *Otomatik*olarak ayarlanmıştır. Bu ayar, ölçek kümesindeki sanal makine örneklerinin otomatik olarak güncelleştirilmesini ve uygulamanızın en son sürümünü uygulamasını sağlar.
 
 Özel Betik Uzantısı tanımını güncelleştirmek için şablonunuzu yeni bir yükleme betiğine başvuracak şekilde düzenleyin. Özel Betik Uzantısı’nın değişikliği tanıması için yeni bir dosya adı kullanılmalıdır. Özel Betik Uzantısı, değişiklikleri belirlemek için betiğin içeriklerini incelemez. Aşağıdaki tanım, güncelleştirilmiş yükleme betiğini, adının sonuna *_v2* eklenmiş şekilde kullanır:
 

@@ -1,35 +1,35 @@
 ---
-title: Azure Kubernetes Hizmetinde (AKS) bölme güvenlik ilkelerini kullanma
-description: Azure Kubernetes Hizmetinde (AKS) PodSecurityPolicy'yi kullanarak pod kabullerini nasıl denetleriz öğrenin
+title: Azure Kubernetes Service (AKS) içinde Pod güvenlik ilkeleri kullanma
+description: Azure Kubernetes Service (aks) içinde Pod SecurityPolicy kullanarak Pod sayede denetimini nasıl denetleyeceğinizi öğrenin
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80998352"
 ---
-# <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme - Azure Kubernetes Hizmeti'nde (AKS) bölme güvenlik ilkelerini kullanarak kümenizi güvenli hale
+# <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
-AKS kümenizin güvenliğini artırmak için, hangi bölmelerin zamanlanabileceğini sınırlayabilirsiniz. İzin vermediğiniz kaynakları isteyen bölmeler AKS kümesinde çalıştırılamıyor. Bu erişimi pod güvenlik ilkelerini kullanarak tanımlarsınız. Bu makalede, AKS'de bakla dağıtımını sınırlamak için pod güvenlik ilkelerini nasıl kullanacağınızı gösterir.
+AKS kümenizin güvenliğini artırmak için, hangi yığınların zamanlanabileceği ile sınırlı olabilirsiniz. İzin vermeyenleri isteyen kaynaklar AKS kümesinde çalıştırılamaz. Bu erişimi Pod güvenlik ilkelerini kullanarak tanımlarsınız. Bu makalede, AKS 'deki yığınların dağıtımını sınırlamak için pod güvenlik ilkelerinin nasıl kullanılacağı gösterilmektedir.
 
 > [!IMPORTANT]
-> AKS önizleme özellikleri self servis tercihidir. Önizlemeler "olduğu gibi" ve "mevcut olduğu gibi" sağlanır ve hizmet düzeyi anlaşmaları ve sınırlı garanti dışında dır. AKS Önizlemeler kısmen en iyi çaba temelinde müşteri desteği tarafından karşılanır. Bu nedenle, bu özellikler üretim kullanımı için değildir. Daha fazla bilgi için lütfen aşağıdaki destek makalelerini görün:
+> AKS Önizleme özellikleri self servis kabul etme sürecindedir. Önizlemeler, "olduğu gibi" ve "kullanılabilir olarak" verilmiştir ve hizmet düzeyi sözleşmelerinden ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin en iyi çaba temelinde kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
 >
-> * [AKS Destek Politikaları][aks-support-policies]
-> * [Azure Destek SSS][aks-faq]
+> * [AKS destek Ilkeleri][aks-support-policies]
+> * [Azure desteği SSS][aks-faq]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, varolan bir AKS kümesi var sayıyor. AKS kümesine ihtiyacınız varsa, [Azure CLI'yi veya][aks-quickstart-cli] [Azure portalını kullanarak][aks-quickstart-portal]AKS hızlı başlat'ına bakın.
+Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Azure CLI sürümü 2.0.61 veya daha sonra yüklenmiş ve yapılandırılan gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
+Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
-### <a name="install-aks-preview-cli-extension"></a>Aks-preview CLI uzantısını yükleyin
+### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
 
-Pod güvenlik ilkelerini kullanmak için *aks önizleme* CLI uzantısı sürümü 0.4.1 veya daha yüksek olması gerekir. [az uzantı ekle][az-extension-add] komutunu kullanarak *aks önizleme* Azure CLI uzantısını yükleyin ve az [uzantı güncelleştirme][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
+Pod güvenlik ilkelerini kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.1 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -39,49 +39,49 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-pod-security-policy-feature-provider"></a>Bölme güvenlik ilkesi özelliği sağlayıcısını kaydedin
+### <a name="register-pod-security-policy-feature-provider"></a>Pod güvenlik ilkesi Özellik sağlayıcısını Kaydet
 
-Pod güvenlik ilkelerini kullanmak için bir AKS kümesi oluşturmak veya güncelleştirmek için, önce aboneliğinizde bir özellik bayrağı etkinleştirin. *PodSecurityPolicyPreview* özellik bayrağını kaydetmek için aşağıdaki örnekte gösterildiği gibi [az özellik kayıt][az-feature-register] komutunu kullanın:
+Pod güvenlik ilkelerini kullanmak üzere bir AKS kümesi oluşturmak veya güncelleştirmek için öncelikle aboneliğinizde bir özellik bayrağını etkinleştirin. *Pod Securitypolicypreview* Özellik bayrağını kaydetmek için, aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanın:
 
 > [!CAUTION]
-> Bir özelliği bir abonelikte kaydettirdiğinizde, bu özelliği şu anda geri alamazsınız. Bazı önizleme özelliklerini etkinleştirdikten sonra, varsayılanlar abonelikte oluşturulan tüm AKS kümeleri için kullanılabilir. Üretim aboneliklerinde önizleme özelliklerini etkinleştirme. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
+> Bir abonelik üzerinde bir özelliği kaydettiğinizde, o özelliği şu anda kaydedemezsiniz. Bazı Önizleme özelliklerini etkinleştirdikten sonra, daha sonra abonelikte oluşturulan tüm AKS kümeleri için varsayılanlar kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun *Kayıtlı'yı*göstermesi birkaç dakika sürer. [Az özellik listesi][az-feature-list] komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
 ```
 
-Hazır olduğunuzda, [az sağlayıcı kayıt][az-provider-register] komutunu kullanarak *Microsoft.ContainerService* kaynak sağlayıcısının kaydını yenileyin:
+Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="overview-of-pod-security-policies"></a>Bakla güvenlik ilkelerine genel bakış
+## <a name="overview-of-pod-security-policies"></a>Pod güvenlik ilkelerine genel bakış
 
-Bir Kubernetes kümesinde, bir kaynak oluşturulacakolduğunda API sunucusundaki istekleri engellemek için bir kabul denetleyicisi kullanılır. Kabul denetleyicisi daha sonra kaynak isteğini bir dizi kurala göre *doğrulayabilir* veya dağıtım parametrelerini değiştirmek için kaynağı *mutasyona* uğrayabilir.
+Bir Kubernetes kümesinde, bir kaynak oluşturulduğunda API sunucusuna yapılan istekleri ele almak için bir giriş denetleyicisi kullanılır. Giriş denetleyicisi daha sonra kaynak isteğini bir dizi kurala karşı *doğrulayabilir* *veya kaynağı* dağıtım parametrelerini değiştirecek şekilde alabilir.
 
-*PodSecurityPolicy,* bir bölme belirtiminin tanımlı gereksinimlerinizi karşıladığını doğrulayan bir kabul denetleyicisidir. Bu gereksinimler ayrıcalıklı kapsayıcıların kullanımını, belirli depolama türlerine erişimi veya kapsayıcının çalıştırabileceği kullanıcı veya grubu sınırlayabilir. Pod belirtimleri pod güvenlik ilkesinde belirtilen gereksinimleri karşılamayan bir kaynak dağıtmaya çalıştığınızda, istek reddedilir. AKS kümesinde hangi bölmelerin zamanlanabileceğini denetleme yeteneği, bazı olası güvenlik açıklarını veya ayrıcalık artışlarını önler.
+*Pod SecurityPolicy* , Pod belirtiminin tanımlı gereksinimlerinizi karşıladığından emin olan bir giriş denetleyicisidir. Bu gereksinimler, ayrıcalıklı kapsayıcıların kullanımını, belirli depolama türlerine erişimi veya kapsayıcının çalışacağı kullanıcı veya grubu sınırlandırabilir. Pod belirtimlerinin Pod güvenlik ilkesinde özetlenen gereksinimleri karşılamadığında bir kaynak dağıtmaya çalıştığınızda, istek reddedilir. AKS kümesinde hangi yığınların zamanlanabileceği, bazı olası güvenlik açıklarını veya ayrıcalık yürüyen şeyleri engeller.
 
-Bir AKS kümesinde pod güvenlik ilkesini etkinleştirdiğinizde, bazı varsayılan ilkeler uygulanır. Bu varsayılan ilkeler, hangi bölmelerin zamanlanabileceğini tanımlamak için kutunun dışında bir deneyim sağlar. Ancak, küme kullanıcıları, siz kendi ilkelerinizi tanımlayana kadar bölme dağıtma sorunlarıyla karşılaşabilir. Önerilen yaklaşım:
+Bir AKS kümesinde Pod güvenlik ilkesini etkinleştirdiğinizde, bazı varsayılan ilkeler uygulanır. Bu varsayılan ilkeler, neyin planlanabileceği hakkında bilgi edinmek için kullanıma hazır bir deneyim sağlar. Ancak, küme kullanıcıları kendi ilkelerinizi tanımladıktan sonra Pod 'yi dağıtmaya yönelik sorunlar yaşayabilirsiniz. Önerilen yaklaşım şunlardır:
 
 * AKS kümesi oluşturma
-* Kendi bölme güvenlik ilkelerinizi tanımlayın
+* Kendi Pod güvenlik ilkelerinizi tanımlama
 * Pod güvenlik ilkesi özelliğini etkinleştirme
 
-Varsayılan ilkelerin pod dağıtımlarını nasıl sınırlandırdığını göstermek için, bu makalede önce pod güvenlik ilkeleri özelliğini etkinleştiriz, sonra özel bir ilke oluştururuz.
+Varsayılan ilkelerin Pod dağıtımlarını nasıl sınırlayamayacağını göstermek için, bu makalede öncelikle Pod güvenlik ilkeleri özelliğini etkinleştirip özel bir ilke oluşturmanız gerekir.
 
-## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>AKS kümesinde bölme güvenlik ilkesini etkinleştirme
+## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>AKS kümesinde Pod güvenlik ilkesini etkinleştirme
 
-[Az aks güncelleştirme][az-aks-update] komutunu kullanarak pod güvenlik ilkesini etkinleştirebilir veya devre dışı kullanabilirsiniz. Aşağıdaki örnek, *myResourceGroup*adlı kaynak grubunda *myAKSCluster* küme adı üzerinde pod güvenlik ilkesi sağlar.
+[Az aks Update][az-aks-update] komutunu kullanarak Pod güvenlik ilkesini etkinleştirebilir veya devre dışı bırakabilirsiniz. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* küme adı üzerinde pod güvenlik ilkesini mümkün bir şekilde sunar.
 
 > [!NOTE]
-> Gerçek kullanım için, kendi özel ilkelerinizi tanımlayana kadar bakla güvenlik ilkesini etkinleştirme. Bu makalede, varsayılan ilkelerin bölme dağıtımlarını nasıl sınırladığını görmek için ilk adım olarak bölme güvenlik ilkesini etkinleştirin.
+> Gerçek dünyada kullanım için, kendi özel ilkelerinizi tanımlana kadar Pod güvenlik ilkesini etkinleştirmeyin. Bu makalede, varsayılan ilkelerin Pod dağıtımlarını nasıl sınırlayaöğrenmek için pod güvenlik ilkesini ilk adım olarak etkinleştirirsiniz.
 
 ```azurecli-interactive
 az aks update \
@@ -92,9 +92,9 @@ az aks update \
 
 ## <a name="default-aks-policies"></a>Varsayılan AKS ilkeleri
 
-Pod güvenlik ilkesini etkinleştirdiğinizde, AKS *ayrıcalıklı*olarak adlandırılan bir varsayılan ilke oluşturur. Varsayılan ilkeyi atmayın veya kaldırmayın. Bunun yerine, denetlemek istediğiniz ayarları tanımlayan kendi ilkelerinizi oluşturun. Öncelikle bu varsayılan ilkelerin pod dağıtımlarını nasıl etkilediğine bakalım.
+Pod güvenlik ilkesini etkinleştirdiğinizde AKS, *ayrıcalıklı*adlı bir varsayılan ilke oluşturur. Varsayılan ilkeyi düzenleme veya kaldırma. Bunun yerine, denetlemek istediğiniz ayarları tanımlayan kendi ilkelerinizi oluşturun. İlk olarak, bu varsayılan ilkelerin Pod dağıtımlarını nasıl etkileyeceğini göz atalım.
 
-Kullanılabilir ilkeleri görüntülemek için, aşağıdaki örnekte gösterildiği gibi [kubectl get psp][kubectl-get] komutunu kullanın
+Kullanılabilir ilkeleri görüntülemek için, aşağıdaki örnekte gösterildiği gibi [kubectl Get PSP][kubectl-get] komutunu kullanın
 
 ```console
 $ kubectl get psp
@@ -103,13 +103,13 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-*Ayrıcalıklı* bölme güvenliği ilkesi, AKS kümesindeki herhangi bir kimlik doğrulaması kullanıcıya uygulanır. Bu atama ClusterRoles ve ClusterRoleBindings tarafından denetlenir. [Kubectl get rolebindings][kubectl-get] komutunu kullanın ve *varsayılan:ayrıcalıklı:* *kube-sistem* ad alanında bağlama:
+*Ayrıcalıklı* Pod güvenlik ilkesi, aks kümesindeki tüm kimliği doğrulanmış kullanıcılara uygulanır. Bu atama ClusterRoles ve ClusterRoleBindings tarafından denetlenir. [Kubectl Get rolebindings][kubectl-get] komutunu kullanın ve *Varsayılan: ayrıcalıklı:* bağlama ' yı *KUIN-System* ad alanında arayın:
 
 ```console
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-Aşağıdaki yoğunlaştırılmış çıktıda gösterildiği gibi, *psp:sınırlı* ClusterRole herhangi bir *sisteme atanır: kimlik doğrulaması* kullanıcılar. Bu yetenek, kendi ilkeleriniz tanımlanmadan temel düzeyde kısıtlama sağlar.
+Aşağıdaki sıkıştırılmış Çıktıda gösterildiği gibi, *PSP: kısıtlanmış* kümerolü herhangi bir *Sistem: kimliği doğrulanmış* kullanıcılara atanır. Bu özellik, kendi ilkelerinizin tanımlanmamaları gerekmeden temel bir kısıtlama düzeyi sağlar.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -128,20 +128,20 @@ subjects:
   name: system:masters
 ```
 
-Kendi bakla güvenlik ilkelerinizi oluşturmaya başlamadan önce bu varsayılan ilkelerin bölmeleri zamanlamak için kullanıcı istekleriyle nasıl etkileşimde bulundurunu anlamak önemlidir. Sonraki birkaç bölümde, bu varsayılan ilkeleri iş başında görmek için bazı bölmeler zamanlayalım.
+Bu varsayılan ilkelerin, kendi Pod güvenlik ilkelerinizi oluşturmaya başlamadan önce pod 'yi zamanlamaya yönelik Kullanıcı istekleriyle nasıl etkileşime gireceğini anlamak önemlidir. Sonraki birkaç bölümde, bu varsayılan ilkeleri eylemde görmek için bazı Pod zamanlamam.
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>AKS kümesinde test kullanıcısı oluşturma
 
-Varsayılan olarak, az [aks get-credentials][az-aks-get-credentials] komutunu *admin* kullandığınızda, AKS kümesi için `kubectl` yönetici kimlik bilgileri config eklenir. Yönetici kullanıcı, pod güvenlik ilkelerinin uygulanmasını atlar. AKS kümeleriniz için Azure Active Directory tümleştirmesini kullanıyorsanız, ilkelerin uygulanmasını iş başında görmek için yönetici olmayan bir kullanıcının kimlik bilgileriyle oturum açabilirsiniz. Bu makalede, AKS kümesinde kullanabileceğiniz bir test kullanıcı hesabı oluşturalım.
+Varsayılan olarak, [az aks Get-Credentials][az-aks-get-credentials] komutunu kullandığınızda, aks kümesi için *yönetici* kimlik bilgileri, `kubectl` yapılandırmaya eklenir. Yönetici Kullanıcı, Pod güvenlik ilkelerinin zorlanmasını atlar. AKS kümeleriniz için Azure Active Directory tümleştirme kullanırsanız, ilkelerin eylemde uygulanmasını görmek için yönetici olmayan bir kullanıcının kimlik bilgileriyle oturum açın. Bu makalede, AKS kümesinde kullanabileceğiniz bir sınama Kullanıcı hesabı oluşturalım.
 
-[Kubectl create name][kubectl-create] command'ı kullanarak test kaynakları için *psp-aks* adlı örnek bir ad alanı oluşturun. Ardından, [kubectl create serviceaccount][kubectl-create] komutunu kullanarak *yönetici olmayan kullanıcı* adlı bir hizmet hesabı oluşturun:
+[Kubectl Create Namespace][kubectl-create] komutunu kullanarak test kaynakları için *PSP-aks* adlı bir örnek ad alanı oluşturun. Ardından, [kubectl Create ServiceAccount][kubectl-create] komutunu kullanarak *yönetici olmayan-User* adlı bir hizmet hesabı oluşturun:
 
 ```console
 kubectl create namespace psp-aks
 kubectl create serviceaccount --namespace psp-aks nonadmin-user
 ```
 
-Ardından, [kubectl rolebinding][kubectl-create] komutunu kullanarak ad alanında temel eylemleri gerçekleştirmesi için *yönetici olmayan kullanıcı* için bir RoleBinding oluşturun:
+Sonra, [kubectl Create rolebinding][kubectl-create] komutunu kullanarak *yönetici olmayan kullanıcılar* için bir rolebinding oluşturun ve ad alanında temel eylemleri gerçekleştirin:
 
 ```console
 kubectl create rolebinding \
@@ -151,25 +151,25 @@ kubectl create rolebinding \
     --serviceaccount=psp-aks:nonadmin-user
 ```
 
-### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Yönetici ve yönetici olmayan kullanıcı için takma ad komutları oluşturma
+### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Yönetici ve yönetici olmayan kullanıcı için diğer ad komutları oluşturma
 
-Kullanırken `kubectl` normal yönetici kullanıcısı ile önceki adımlarda oluşturulan yönetici olmayan kullanıcı arasındaki farkı vurgulamak için iki komut satırı diğer ad oluşturun:
+Kullanarak `kubectl` normal Yönetici Kullanıcı ve önceki adımlarda oluşturulan yönetici olmayan kullanıcı arasındaki farkı vurgulamak için iki komut satırı diğer adı oluşturun:
 
-* **Kubectl-admin** takma adı normal yönetici kullanıcı içindir ve *psp-aks* ad alanına yöneliktir.
-* **Kubectl-nonadminuser** diğer adı, önceki adımda oluşturulan *nonadmin kullanıcısı* içindir ve *psp-aks* ad alanına yöneliktir.
+* **Kubectl-admin** diğer adı normal yönetici kullanıcı içindir ve bu, *PSP-aks* ad alanı kapsamına alınır.
+* **Kubectl-nonadminuser** diğer adı, önceki adımda oluşturulan *yönetici olmayan kullanıcılar* içindir ve bu, *PSP-aks* ad alanı kapsamına alınır.
 
-Aşağıdaki komutlarda gösterildiği gibi bu iki diğer ad oluşturun:
+Aşağıdaki komutlarda gösterildiği gibi bu iki diğer adı oluşturun:
 
 ```console
 alias kubectl-admin='kubectl --namespace psp-aks'
 alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-user --namespace psp-aks'
 ```
 
-## <a name="test-the-creation-of-a-privileged-pod"></a>Ayrıcalıklı bir bölmeoluşturmayı test edin
+## <a name="test-the-creation-of-a-privileged-pod"></a>Ayrıcalıklı Pod oluşturmayı test etme
 
-Önce güvenlik bağlamına sahip bir bölme zamanladiğinizde `privileged: true`ne olduğunu test edelim. Bu güvenlik bağlamı bölmenin ayrıcalıklarını arttırır. Varsayılan AKS bölme güvenlik ilkelerini gösteren önceki bölümde, *kısıtlı* ilke bu isteği reddetmelidir.
+' In `privileged: true`güvenlik bağlamı ile pod zamanladığınızda, ilk test edelim. Bu güvenlik bağlamı Pod 'un ayrıcalıklarını ilerletir. Önceki bölümde, varsayılan AKS Pod güvenlik ilkelerini belirten, *kısıtlı* ilke bu isteği reddetmelidir.
 
-Adlandırılmış `nginx-privileged.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
+Adlı `nginx-privileged.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -184,13 +184,13 @@ spec:
         privileged: true
 ```
 
-[Kubectl uygula][kubectl-apply] komutunu kullanarak bölmeyi oluşturun ve YAML manifestonuzun adını belirtin:
+[Kubectl Apply][kubectl-apply] komutunu kullanarak Pod 'ı oluşturun ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl-nonadminuser apply -f nginx-privileged.yaml
 ```
 
-Aşağıdaki örnek çıktıda gösterildiği gibi bölme zamanlanamıyor:
+Pod, aşağıdaki örnek çıktıda gösterildiği gibi zamanlanamaz:
 
 ```console
 $ kubectl-nonadminuser apply -f nginx-privileged.yaml
@@ -198,13 +198,13 @@ $ kubectl-nonadminuser apply -f nginx-privileged.yaml
 Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Bölme zamanlama aşamasına ulaşmadığından, devam etmeden önce silmek için kaynak yoktur.
+Pod, zamanlama aşamasına ulaşmıyor, bu nedenle, üzerinde geçiş yapmadan önce silinecek kaynak yok.
 
-## <a name="test-creation-of-an-unprivileged-pod"></a>Ayrıcalıksız bir bölmenin test oluşturma
+## <a name="test-creation-of-an-unprivileged-pod"></a>Ayrıcalıksız Pod 'ın test oluşturması
 
-Önceki örnekte, pod belirtimi ayrıcalıklı yükseltme istedi. Bu istek varsayılan *sınırlı* pod güvenlik ilkesi tarafından reddedilir, bu nedenle pod zamanlanamaz. Şimdi ayrıcalık yükseltme isteği olmadan aynı NGINX pod çalışan deneyelim.
+Önceki örnekte, Pod belirtimi ayrıcalıklı yükseltme istedi. Bu istek, varsayılan *kısıtlı* Pod güvenlik ilkesi tarafından reddedildi, bu nedenle Pod, Pod zamanlanamaz. Artık ayrıcalık yükseltme isteği olmadan aynı NGıNX Pod 'u çalıştırmayı deneyelim.
 
-Adlandırılmış `nginx-unprivileged.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
+Adlı `nginx-unprivileged.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -217,13 +217,13 @@ spec:
       image: nginx:1.14.2
 ```
 
-[Kubectl uygula][kubectl-apply] komutunu kullanarak bölmeyi oluşturun ve YAML manifestonuzun adını belirtin:
+[Kubectl Apply][kubectl-apply] komutunu kullanarak Pod 'ı oluşturun ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Aşağıdaki örnek çıktıda gösterildiği gibi bölme zamanlanamıyor:
+Pod, aşağıdaki örnek çıktıda gösterildiği gibi zamanlanamaz:
 
 ```console
 $ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
@@ -231,13 +231,13 @@ $ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 Error from server (Forbidden): error when creating "nginx-unprivileged.yaml": pods "nginx-unprivileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Bölme zamanlama aşamasına ulaşmadığından, devam etmeden önce silmek için kaynak yoktur.
+Pod, zamanlama aşamasına ulaşmıyor, bu nedenle, üzerinde geçiş yapmadan önce silinecek kaynak yok.
 
-## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Belirli bir kullanıcı bağlamı ile bir bölmenin test oluşturma
+## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Belirli bir kullanıcı bağlamı ile pod 'ın test oluşturması
 
-Önceki örnekte, kapsayıcı görüntüsü nginx'i 80 bağlantı noktasına bağlamak için otomatik olarak root kullanmaya çalışmıştır. Bu istek varsayılan *sınırlı* pod güvenlik ilkesi tarafından reddedildi, bu nedenle pod başlatılamadı. Şimdi aynı NGINX bölmeyi belirli bir kullanıcı bağlamı `runAsUser: 2000`yla çalıştırmayı deneyelim.
+Önceki örnekte kapsayıcı görüntüsü, NGıNX 'i 80 numaralı bağlantı noktasına bağlamak için otomatik olarak kök kullanmaya çalıştı. Bu istek varsayılan *kısıtlı* Pod güvenlik ilkesi tarafından reddedildi, bu nedenle Pod başlatılamadı. Artık aynı NGıNX Pod öğesini gibi `runAsUser: 2000`belirli bir Kullanıcı bağlamıyla çalıştırmayı deneyelim.
 
-Adlandırılmış `nginx-unprivileged-nonroot.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
+Adlı `nginx-unprivileged-nonroot.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -252,13 +252,13 @@ spec:
         runAsUser: 2000
 ```
 
-[Kubectl uygula][kubectl-apply] komutunu kullanarak bölmeyi oluşturun ve YAML manifestonuzun adını belirtin:
+[Kubectl Apply][kubectl-apply] komutunu kullanarak Pod 'ı oluşturun ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-Aşağıdaki örnek çıktıda gösterildiği gibi bölme zamanlanamıyor:
+Pod, aşağıdaki örnek çıktıda gösterildiği gibi zamanlanamaz:
 
 ```console
 $ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
@@ -266,15 +266,15 @@ $ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 Error from server (Forbidden): error when creating "nginx-unprivileged-nonroot.yaml": pods "nginx-unprivileged-nonroot" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Bölme zamanlama aşamasına ulaşmadığından, devam etmeden önce silmek için kaynak yoktur.
+Pod, zamanlama aşamasına ulaşmıyor, bu nedenle, üzerinde geçiş yapmadan önce silinecek kaynak yok.
 
-## <a name="create-a-custom-pod-security-policy"></a>Özel bir bölme güvenlik ilkesi oluşturma
+## <a name="create-a-custom-pod-security-policy"></a>Özel Pod güvenlik ilkesi oluşturma
 
-Artık varsayılan bölme güvenlik ilkelerinin davranışını gördüğünüze *göre, yönetici olmayan kullanıcının* bölmeleri başarıyla zamanlamasının bir yolunu bulalım.
+Artık varsayılan Pod güvenlik ilkelerinin davranışını gördüğünüze göre, *yönetici olmayan kullanıcıların* pods 'yi başarıyla zamanlaması için bir yol sunalım.
 
-Ayrıcalıklı erişim isteyen bölmeleri reddetmek için bir ilke oluşturalım. *runAsUser* veya izin verilen *birimler*gibi diğer seçenekler açıkça kısıtlanmaz. Bu tür bir ilke ayrıcalıklı erişim isteğini reddeder, ancak aksi takdirde kümenin istenen bölmeleri çalıştırmasına izin verir.
+Ayrıcalıklı erişim isteyen Pod 'yi reddetmek için bir ilke oluşturalım. *RunAsUser* veya Allowed *birimleri*gibi diğer seçenekler açıkça kısıtlanır. Bu ilke türü, ayrıcalıklı erişim için bir isteği reddeder, ancak Aksi takdirde kümenin istenen pods 'yi çalıştırmasına izin verir.
 
-Adlandırılmış `psp-deny-privileged.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
+Adlı `psp-deny-privileged.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -295,13 +295,13 @@ spec:
   - '*'
 ```
 
-[Kubectl uygula][kubectl-apply] komutunu kullanarak ilkeyi oluşturun ve YAML manifestonuzun adını belirtin:
+[Kubectl Apply][kubectl-apply] komutunu kullanarak ilkeyi oluşturun ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Kullanılabilir ilkeleri görüntülemek için, aşağıdaki örnekte gösterildiği gibi [kubectl get psp][kubectl-get] komutunu kullanın. Bir bölmesi oluşturmak için önceki örneklerde uygulanan varsayılan *sınırlı* ilke ile *psp-reddet ayrıcalıklı* ilke karşılaştırın. Yalnızca *PRIV* yükseltme kullanımı politikanız tarafından reddedilir. *psp-deny-ayrıcalıklı* ilke için kullanıcı veya grup üzerinde herhangi bir kısıtlama yoktur.
+Kullanılabilir ilkeleri görüntülemek için, aşağıdaki örnekte gösterildiği gibi [kubectl Get PSP][kubectl-get] komutunu kullanın. Bir pod oluşturmak için, bir önceki örneklerde uygulanan varsayılan *kısıtlı* ilkeyle, *PSP-Deny-ayrıcalıklı* ilkesini karşılaştırın. İlkeniz tarafından yalnızca *PRIV* yükseltme kullanımı reddedilir. Kullanıcı veya grup üzerinde, *PSP-Deny-ayrıcalıklı* ilkesi için bir kısıtlama yoktur.
 
 ```console
 $ kubectl get psp
@@ -311,11 +311,11 @@ privileged            true    *      RunAsAny   RunAsAny           RunAsAny    R
 psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          
 ```
 
-## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Kullanıcı hesabının özel bölme güvenlik ilkesini kullanmasına izin ver
+## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Kullanıcı hesabının özel Pod güvenlik ilkesini kullanmasına izin ver
 
-Önceki adımda, ayrıcalıklı erişim isteyen bölmeleri reddetmek için bir bölme güvenlik ilkesi oluşturdunuz. İlkenin kullanılmasına izin vermek için bir *Rol* veya *ClusterRole*oluşturursunuz. Daha sonra, bu rollerden birini *RoleBinding* veya *ClusterRoleBinding*kullanarak ilişkilendirin.
+Önceki adımda, ayrıcalıklı erişim isteyen Pod 'yi reddetmek için bir pod güvenlik ilkesi oluşturdunuz. İlkenin kullanılmasına izin vermek için bir *rol* veya *clusterrole*oluşturun. Ardından, bir *rolebinding* veya *clusterrolebinding*kullanarak bu rollerden birini ilişkilendirirsiniz.
 
-Bu örnekte, önceki adımda oluşturulan *psp-reddet ayrıcalıklı* ilkeyi *kullanmanıza* olanak tanıyan bir ClusterRole oluşturun. Adlandırılmış `psp-deny-privileged-clusterrole.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
+Bu örnekte, önceki adımda oluşturulan *PSP-reddetme-ayrıcalıklı* ilkesini *kullanmanıza* Izin veren bir kümerolü oluşturun. Adlı `psp-deny-privileged-clusterrole.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
 
 ```yaml
 kind: ClusterRole
@@ -333,13 +333,13 @@ rules:
   - use
 ```
 
-[Kubectl uygula][kubectl-apply] komutunu kullanarak ClusterRole'ı oluşturun ve YAML manifestonuzun adını belirtin:
+[Kubectl Apply][kubectl-apply] komutunu kullanarak clusterrole oluşturun ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
 ```
 
-Şimdi, önceki adımda oluşturulan ClusterRole'yi kullanmak için bir ClusterRoleBinding oluşturun. Adlandırılmış `psp-deny-privileged-clusterrolebinding.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
+Şimdi, önceki adımda oluşturulan ClusterRole öğesini kullanmak için bir ClusterRoleBinding oluşturun. Adlı `psp-deny-privileged-clusterrolebinding.yaml` bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1
@@ -356,24 +356,24 @@ subjects:
   name: system:serviceaccounts
 ```
 
-[Kubectl uygula][kubectl-apply] komutunu kullanarak bir ClusterRoleBinding oluşturun ve YAML manifestonuzun adını belirtin:
+[Kubectl Apply][kubectl-apply] komutunu kullanarak bir ClusterRoleBinding oluşturun ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 ```
 
 > [!NOTE]
-> Bu makalenin ilk adımında, AKS kümesinde pod güvenlik ilkesi özelliği etkinleştirildi. Önerilen uygulama, yalnızca kendi ilkelerinizi tanımladıktan sonra bakla güvenlik ilkesi özelliğini etkinleştirmekti. Bu, bölme güvenlik ilkesi özelliğini etkinleştireceğiniz aşamadır. Bir veya daha fazla özel ilke tanımlanmış ve kullanıcı hesapları bu ilkelerle ilişkilendirilmiştir. Artık pod güvenlik ilkesi özelliğini güvenli bir şekilde etkinleştirebilir ve varsayılan ilkelerin neden olduğu sorunları en aza indirebilirsiniz.
+> Bu makalenin ilk adımında, AKS kümesinde Pod güvenlik ilkesi özelliği etkinleştirilmiştir. Önerilen uygulama, kendi ilkelerinizi tanımladıktan sonra yalnızca Pod güvenlik ilkesi özelliğini etkinleştirmeiydi. Bu, Pod güvenlik ilkesi özelliğini etkinleştirdiğiniz aşamadır. Bir veya daha fazla özel ilke tanımlanmış ve Kullanıcı hesapları bu ilkelerle ilişkili. Artık Pod güvenlik ilkesi özelliğini güvenle etkinleştirebilir ve varsayılan ilkelerden kaynaklanan sorunları en aza indirmenize izin verebilirsiniz.
 
-## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Ayrıcalıksız bir bölmenin oluşturulmasını yeniden test edin
+## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Ayrıcalıksız bir pod oluşturmayı yeniden test edin
 
-Özel bölme güvenlik ilkeniz uygulandığı nda ve kullanıcı hesabının ilkeyi kullanması için bağlayıcı lıkla, yeniden ayrıcalıksız bir bölme oluşturmaya çalışalım. `nginx-privileged.yaml` [Kubectl uygula][kubectl-apply] komutunu kullanarak pod oluşturmak için aynı bildirimi kullanın:
+Özel Pod güvenlik ilkeniz uygulanmış ve ilkeyi kullanmak üzere Kullanıcı hesabı için bir bağlama ile, ayrıcalıksız bir pod oluşturmayı yeniden denemenize imkan tanır. `nginx-privileged.yaml` [Kubectl Apply][kubectl-apply] komutunu kullanarak Pod 'u oluşturmak için aynı bildirimi kullanın:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Bölme başarıyla zamanlandı. [Kubectl get pods][kubectl-get] komutunu kullanarak bölmenin durumunu kontrol ettiğinizde, bölme *çalışıyor:*
+Pod başarıyla zamanlandı. [Kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'un durumunu denetlediğinizde, Pod *çalışır*:
 
 ```
 $ kubectl-nonadminuser get pods
@@ -382,9 +382,9 @@ NAME                 READY   STATUS    RESTARTS   AGE
 nginx-unprivileged   1/1     Running   0          7m14s
 ```
 
-Bu örnek, farklı kullanıcılar veya gruplar için AKS kümesine erişimi tanımlamak için özel bölme güvenlik ilkeleri nasıl oluşturabileceğinizi gösterir. Varsayılan AKS ilkeleri, bölmelerin neleri çalıştırabileceği üzerinde sıkı denetimler sağlar, bu nedenle ihtiyacınız olan kısıtlamaları doğru bir şekilde tanımlamak için kendi özel ilkelerinizi oluşturun.
+Bu örnekte, farklı kullanıcılar veya gruplar için AKS kümesine erişimi tanımlamak üzere nasıl özel Pod güvenlik ilkeleri oluşturabileceğiniz gösterilmektedir. Varsayılan AKS ilkeleri, ne kadar fazla çalışma yapabilecekleri konusunda sıkı denetimler sağlar, bu nedenle ihtiyacınız olan kısıtlamaları doğru şekilde tanımlamak için kendi özel ilkelerinizi oluşturun.
 
-[Kubectl delete][kubectl-delete] komutunu kullanarak NGINX ayrıcalıksız bölmesini silin ve YAML manifestonuzun adını belirtin:
+[Kubectl Delete][kubectl-delete] komutunu kullanarak NGINX unayrıcalıklı Pod öğesini SILIN ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
@@ -392,7 +392,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Pod güvenlik ilkesini devre dışı kullanabilirsiniz, [az aks güncelleştirme][az-aks-update] komutunu yeniden kullanın. Aşağıdaki örnek *myResourceGroup*adlı kaynak grubunda *myAKSCluster* küme adı pod güvenlik ilkesi devre dışı kalmaktadır:
+Pod güvenlik ilkesini devre dışı bırakmak için [az aks Update][az-aks-update] komutunu yeniden kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubundaki *Myakscluster* küme adı üzerinde pod güvenlik ilkesini devre dışı bırakır:
 
 ```azurecli-interactive
 az aks update \
@@ -401,20 +401,20 @@ az aks update \
     --disable-pod-security-policy
 ```
 
-Ardından ClusterRole ve ClusterRoleBinding'i silin:
+Sonra ClusterRole ve ClusterRoleBinding ' i silin:
 
 ```console
 kubectl delete -f psp-deny-privileged-clusterrolebinding.yaml
 kubectl delete -f psp-deny-privileged-clusterrole.yaml
 ```
 
-[Kubectl delete][kubectl-delete] komutunu kullanarak güvenlik ilkesini silin ve YAML manifestonuzun adını belirtin:
+[Kubectl Delete][kubectl-delete] komutunu kullanarak güvenlik ilkesini SILIN ve YAML bildiriminizde adı belirtin:
 
 ```console
 kubectl delete -f psp-deny-privileged.yaml
 ```
 
-Son olarak, *psp-aks* ad alanını silin:
+Son olarak, *PSP-aks* ad alanını silin:
 
 ```console
 kubectl delete namespace psp-aks
@@ -422,9 +422,9 @@ kubectl delete namespace psp-aks
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, ayrıcalıklı erişim kullanımını önlemek için bir bölme güvenlik ilkesi oluşturmak için nasıl gösterin. Bir ilkenin uygulayabileceği birim türü veya RunAs kullanıcısı gibi birçok özellik vardır. Kullanılabilir seçenekler hakkında daha fazla bilgi için [Kubernetes pod güvenlik ilkesi başvuru dokümanlarına][kubernetes-policy-reference]bakın.
+Bu makalede, ayrıcalıklı erişimin kullanımını engellemek için bir pod güvenlik ilkesi oluşturma konusu gösterilmektedir. Birim türü veya RunAs kullanıcısı gibi bir ilkenin zorlayabildikleri çok sayıda özellik vardır. Kullanılabilir seçenekler hakkında daha fazla bilgi için bkz. [Kubernetes Pod güvenlik ilkesi başvuru belgeleri][kubernetes-policy-reference].
 
-Pod ağ trafiğini sınırlama hakkında daha fazla bilgi için [AKS'deki ağ ilkelerini kullanarak bölmeler arasındaki güvenli trafiği][network-policies]görün.
+Pod ağ trafiğini sınırlama hakkında daha fazla bilgi için bkz. [aks 'deki ağ ilkelerini kullanarak Pod arasındaki trafiği güvenli hale getirme][network-policies].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

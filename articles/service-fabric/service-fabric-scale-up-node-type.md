@@ -1,45 +1,45 @@
 ---
-title: Azure Hizmet Kumaş düğümü türünü ölçeklendir
-description: Sanal Makine Ölçeği Kümesi ekleyerek Service Fabric kümesini nasıl ölçeklendireceklerini öğrenin.
+title: Azure Service Fabric düğüm türünü büyütme
+description: Bir sanal makine ölçek kümesi ekleyerek bir Service Fabric kümesini ölçeklendirmeyi öğrenin.
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80998935"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric kümesi birincil düğüm türünün ölçeğini artırma
-Bu makalede, sanal makine kaynaklarını artırarak hizmet kumaşı küme birincil düğüm türünü nasıl ölçeklendirilir. Service Fabric kümesi, mikro hizmetlerinizin dağıtıldığı ve yönetildiği ağa bağlı sanal veya fiziksel makineler kümesidir. Kümenin bir parçası olan bir makine ye veya VM'ye düğüm denir. Sanal makine ölçek kümeleri, sanal makine koleksiyonunu küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure bilgi işlem kaynağıdır. Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır.](service-fabric-cluster-nodetypes.md) Her düğüm türü daha sonra ayrı ayrı yönetilebilir. Hizmet Kumaşı kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM'lerin işletim sistemini yükseltebilirsiniz.  Kümede iş yükleri çalışıyor olsa bile, kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklendikçe, uygulamalarınız da otomatik olarak ölçeklenir.
+Bu makalede, sanal makine kaynaklarını artırarak Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir. Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM 'lerinin işletim sistemini yükseltebilirsiniz.  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
 
 > [!WARNING]
-> Küme durumu sağlıksızsa, birincil düğüm tipi VM SKU'yu değiştirmeye başlamayın. Küme durumu sağlıksızsa, VM SKU'yu değiştirmeye çalışırsanız, kümenin yalnızca daha da kararsızolduğunuz.
+> Küme durumu uygun değilse, birincil NodeType VM SKU 'sunu değiştirmeye başlamaın. Küme durumu uygun değilse, VM SKU 'sunu değiştirmeye çalışırsanız kümeyi yalnızca daha fazla sabitleyecaksınız.
 >
-> [Silver dayanıklılıkta veya daha büyük](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)bir ölçekte çalışmadığı sürece ölçek kümesi/düğümü türünün VM SKU'yu değiştirmemenizi öneririz. VM SKU Boyutunu değiştirmek, yerinde veri yıkıcı bir altyapı işlemidir. Bu değişikliği geciktirme veya izleme yeteneği olmadan, işlemin devlet tarafından sunulan hizmetler için veri kaybına veya devlet siz iş yüklerinde bile öngörülemeyen diğer operasyonel sorunlara neden olması mümkündür. Bu, devlet hizmeti kumaş sistem hizmetlerini çalıştıran birincil düğüm türünüz veya durum lu uygulama çalışma yüklerinizi çalıştıran herhangi bir düğüm türü anlamına gelir.
+> Bir ölçek kümesi/düğüm türünün sanal makine SKU 'sunu, [gümüş dayanıklılık veya daha büyük](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)bir zamanda çalışmadığı takdirde değiştirmenizi öneririz. VM SKU 'SU boyutunun değiştirilmesi, veri bozucu bir yerinde altyapı işlemidir. Bu değişikliği gecikme veya izlemeye yönelik bir özellik olmadan, işlem durum bilgisi olmayan hizmetler için veri kaybına neden olabilir veya durum bilgisiz iş yükleri için bile öngörülemeyen çalışma sorunlarına neden olabilir. Bu, durum bilgisi olmayan Service Fabric sistem hizmetlerini çalıştıran birincil düğüm türü ya da durum bilgisi olan uygulama iş yüklerinizi çalıştıran herhangi bir düğüm türü anlamına gelir.
 >
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Birincil düğüm türü VM'lerin boyutunu ve işletim sistemini yükseltme
-Burada birincil düğüm türü VM'lerin VM boyutunu ve işletim sistemini güncelleştirme işlemi ve işlemdir.  Yükseltmeden sonra, birincil düğüm türü VM'ler boyut Standart D4_V2 ve Windows Server 2016 Datacenter'ı Kapsayıcılarla çalıştırıyor.
+## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Birincil düğüm türü VM 'lerinin boyutunu ve işletim sistemini yükseltme
+Birincil düğüm türü VM 'lerinin sanal makine boyutunu ve işletim sistemini güncelleştirme süreci aşağıda verilmiştir.  Yükseltmeden sonra birincil düğüm türü VM 'Ler boyut standardı D4_V2 ve kapsayıcılarla Windows Server 2016 Datacenter çalıştırıyor.
 
 > [!WARNING]
-> Bir üretim kümesinde bu yordamı denemeden önce, örnek şablonları incelemenizi ve işlemi bir test kümesine karşı doğrulamanızı öneririz. Küme bir süre için de kullanılamaz. Aynı NodeType olarak bildirilen birden fazla VMSS'de paralel olarak değişiklik yapamazsınız; her NodeType VMSS'e tek tek değişiklik uygulamak için ayrı dağıtım işlemleri gerçekleştirmeniz gerekir.
+> Bir üretim kümesinde bu yordamı denemeden önce, örnek şablonları araştırmayı ve işlemi bir test kümesine karşı doğrulamanızı öneririz. Küme bir süre için de kullanılamaz. Paralel olarak aynı NodeType olarak belirtilen birden fazla VMSS üzerinde değişiklik yapamazsınız; Her NodeType VMSS 'de yapılan değişiklikleri ayrı ayrı uygulamak için ayrılmış dağıtım işlemleri gerçekleştirmeniz gerekir.
 
-1. Bu örnek [şablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) ve [parametre](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) dosyalarını kullanarak iki düğüm türü ve iki ölçek kümesi (düğüm türü başına bir ölçek kümesi) ile ilk kümeyi dağıtın.  Her iki ölçek kümeleri boyutu Standart D2_V2 ve Windows Server 2012 R2 Datacenter çalıştıran vardır.  Kümenin taban çizgisi yükseltmesini tamamlamasını bekleyin.   
-2. İsteğe bağlı olarak, kümeye durumlu bir örnek dağıtın.
-3. Birincil düğüm türü VM'leri yükseltmeye karar verdikten sonra, birincil düğüm türünü kullanarak bu örnek [şablonu](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) ve [parametreleri](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) kullanarak yeni bir ölçek kümesi ekleyin, böylece birincil düğüm türü artık iki ölçek kümesine sahip olur.  Sistem hizmetleri ve kullanıcı uygulamaları iki farklı ölçek kümesinde VM'ler arasında geçiş yapabiliyor.  Yeni ölçek kümesi VM'ler boyut Standart D4_V2 ve Windows Server 2016 Datacenter'ı Kapsayıcılarla çalıştırın.  Yeni ölçek kümesiile yeni bir yük dengeleyicisi ve genel IP adresi de eklenir.  
-    Şablonda ayarlanan yeni ölçeği bulmak için *vmNodeType2Name* parametresi tarafından adlandırılan "Microsoft.Compute/virtualMachineScaleSets" kaynağını arayın.  Yeni ölçek kümesi özellikleri >virtualMachineProfile->extensionProfil->uzantıları->özellikleri->ayarları->düğümTypeRef ayarı kullanılarak birincil düğüm türüne eklenir.
+1. Bu örnek [şablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) ve [parametre](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) dosyalarını kullanarak, ilk kümeyi iki düğüm türü ve iki ölçek kümesi (düğüm başına bir ölçek kümesi) dağıtın.  Her iki ölçek kümesi de boyut standardı D2_V2 ve Windows Server 2012 R2 Datacenter çalıştırıyor.  Kümenin temel yükseltme işleminin tamamlanmasını bekleyin.   
+2. İsteğe bağlı-kümeye durum bilgisi olan bir örnek dağıtın.
+3. Birincil düğüm türü VM 'Leri yükseltmeye karar verdikten sonra, bu örnek [şablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) ve [parametre](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) dosyalarını kullanarak birincil düğüm türüne yeni bir ölçek kümesi ekleyin, böylece birincil düğüm türünün artık iki ölçek kümesi vardır.  Sistem Hizmetleri ve kullanıcı uygulamaları iki farklı ölçek kümesindeki VM 'Ler arasında geçiş yapabilir.  Yeni ölçek kümesi VM 'Leri boyut standardı D4_V2 ve kapsayıcılarla Windows Server 2016 Datacenter çalıştırır.  Yeni ölçek kümesiyle yeni bir yük dengeleyici ve genel IP adresi de eklenir.  
+    Şablonda yeni ölçek kümesini bulmak için, *vmNodeType2Name* parametresi tarafından adlandırılan "Microsoft. COMPUTE/virtualMachineScaleSets" kaynağını arayın.  Yeni ölçek kümesi, >virtualMachineProfile->extensionProfile->uzantıları->özellikleri->ayarlar->nodeTypeRef ayarı kullanılarak birincil düğüm türüne eklenir.
 4. Küme durumunu denetleyin ve tüm düğümlerin sağlıklı olduğunu doğrulayın.
-5. Düğümü kaldırmak amacıyla birincil düğüm türünün eski ölçek kümesindeki düğümleri devre dışı bırak. Hepsini aynı anda devre dışı atabilirsiniz ve işlemler sıraya alınır. Tüm düğümler devre dışı bırakılana kadar bekleyin, bu da biraz zaman alabilir.  Düğüm türündeki eski düğümler devre dışı bırakıldığından, sistem hizmetleri ve tohum düğümleri birincil düğüm türünde ayarlanan yeni ölçeğin VM'lerine taşınır.
-6. Birincil düğüm türünden eski ölçek kümesini kaldırın. (Düğümler adım 5'te olduğu gibi devre dışı bırakıldıktan sonra, Azure portalındaki sanal makine ölçeği set bıçaklarında, eski düğüm türünden düğümleri tek tek konuma ayarlayın.)
-7. Eski ölçek kümesiyle ilişkili yük dengeleyicisini çıkarın. Küme, yeni genel IP adresi ve yük dengeleyicisi yeni ölçek kümesi için yapılandırılırken kullanılamaz.  
-8. Bir değişkende ayarlanan eski birincil düğüm türü ölçeğiyle ilişkili genel IP adresinin DNS ayarlarını depolayın ve bu ortak IP adresini kaldırın.
-9. Silinen genel IP adresinin DNS ayarlarıyla yeni birincil düğüm türü ölçeği kümesiyle ilişkili genel IP adresinin DNS ayarlarını değiştirin.  Kümeye artık yeniden ulaşılabilir.
-10. Düğüm düğüm durumunu kümeden kaldırın.  Eski ölçek kümesinin dayanıklılık düzeyi gümüş veya altın ise, bu adım sistem tarafından otomatik olarak yapılır.
-11. Durum lattığı uygulamayı önceki bir adımda dağıttıysanız, uygulamanın işlevsel olduğunu doğrulayın.
+5. Düğüm kaldırma amacına sahip birincil düğüm türünün eski ölçek kümesindeki düğümleri devre dışı bırakın. Tümünü tek seferde devre dışı bırakabilirsiniz ve işlemler sıraya alınır. Tüm düğümler devre dışı bırakılıncaya kadar bekleyin, bu işlem biraz zaman alabilir.  Düğüm türündeki eski düğümler devre dışı bırakıldığı için, sistem hizmetleri ve çekirdek düğümleri, birincil düğüm türünde yeni ölçek kümesinin VM 'lerine geçirilir.
+6. Eski ölçek kümesini birincil düğüm türünden kaldırın. (5. adımda düğümler devre dışı bırakıldıktan sonra, Azure portal sanal makine ölçek kümesi dikey penceresinde, düğümleri eski düğüm türünden tek tek serbest bırakın.)
+7. Eski ölçek kümesiyle ilişkili yük dengeleyiciyi kaldırın. Yeni genel IP adresi ve yük dengeleyici yeni ölçek kümesi için yapılandırıldığında küme kullanılamaz.  
+8. Bir değişkende eski birincil düğüm türü ölçek kümesiyle ilişkili genel IP adresinin DNS ayarlarını depolayın ve bu genel IP adresini kaldırın.
+9. Yeni birincil düğüm türü ölçek kümesiyle ilişkili genel IP adresinin DNS ayarlarını, silinen genel IP adresinin DNS ayarları ile değiştirin.  Kümeye artık yeniden ulaşılabilir.
+10. Düğümlerin düğüm durumunu kümeden kaldırın.  Eski ölçek kümesinin dayanıklılık düzeyi gümüş veya altın ise, bu adım sistem tarafından otomatik olarak gerçekleştirilir.
+11. Durum bilgisi olan uygulamayı önceki bir adımda dağıttıysanız, uygulamanın işlevsel olduğunu doğrulayın.
 
 ```powershell
 # Variables.
@@ -151,8 +151,8 @@ foreach($name in $nodeNames){
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Kümeye düğüm türü eklemeyi](virtual-machine-scale-set-scale-node-type-scale-out.md) öğrenin
-* Uygulama [ölçeklenebilirliği](service-fabric-concepts-scalability.md)hakkında bilgi edinin.
-* [Azure kümesini içinde veya dışında ölçeklendirin.](service-fabric-tutorial-scale-cluster.md)
-* Akıcı Azure işlem SDK'sını kullanarak [bir Azure kümesini programlı olarak](service-fabric-cluster-programmatic-scaling.md) ölçeklendirin.
-* [Bağımsız bir kümeyi içinde veya dışında ölçeklendirin.](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [Uygulama ölçeklenebilirliği](service-fabric-concepts-scalability.md)hakkında bilgi edinin.
+* [Bir Azure kümesini içinde veya dışarı ölçeklendirin](service-fabric-tutorial-scale-cluster.md).
+* Akıcı Azure işlem SDK 'sını kullanarak [bir Azure kümesini programlı bir şekilde ölçeklendirin](service-fabric-cluster-programmatic-scaling.md) .
+* [Tek başına kümeyi içinde veya dışarı ölçeklendirin](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

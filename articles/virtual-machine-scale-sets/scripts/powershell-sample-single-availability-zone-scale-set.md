@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell Örnekleri - Tek bölgeli ölçek kümesi
+title: Azure PowerShell örnekleri-tek bölge ölçek kümesi
 description: Bu betik, tek bir Kullanılabilirlik Alanı’nda Windows Server 2016 çalıştıran bir sanal makine ölçek kümesi oluşturur.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 21d83b3e39a2002725731c04f1727a0e50af335a
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81008599"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>PowerShell ile tek bölgeli sanal makine ölçek kümesi oluşturma
@@ -38,10 +38,10 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 
 | Komut | Notlar |
 |---|---|
-| [Yeni AzVmss](/powershell/module/az.compute/new-azvmss) | Sanal makine ölçek kümesi ve sanal ağ, yük dengeleyici ve NAT kurallarının dahil olduğu tüm destekleyici kaynakları oluşturur. |
-| [Al-AzVmss](/powershell/module/az.compute/get-azvmss) | Sanal makine ölçek kümesi hakkında bilgi alır. |
-| [Ekle-AzVmssUzatma](/powershell/module/az.compute/add-azvmssextension) | Özel Betik için sanal makine uzantısı ekleyerek temel bir web uygulaması yükler. |
-| [Güncelleme-AzVmss](/powershell/module/az.compute/update-azvmss) | Sanal makine uzantısını uygulamak için sanal makine ölçek kümesi modelini güncelleştirir. |
+| [New-AzVmss](/powershell/module/az.compute/new-azvmss) | Sanal makine ölçek kümesi ve sanal ağ, yük dengeleyici ve NAT kurallarının dahil olduğu tüm destekleyici kaynakları oluşturur. |
+| [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Sanal makine ölçek kümesi hakkında bilgi alır. |
+| [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) | Özel Betik için sanal makine uzantısı ekleyerek temel bir web uygulaması yükler. |
+| [Güncelleştirme-AzVmss](/powershell/module/az.compute/update-azvmss) | Sanal makine uzantısını uygulamak için sanal makine ölçek kümesi modelini güncelleştirir. |
 | [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) | Yük dengeleyici tarafından kullanılan atanan genel IP adresi hakkında bilgi alır. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
 

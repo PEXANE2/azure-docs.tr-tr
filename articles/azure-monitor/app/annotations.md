@@ -1,104 +1,104 @@
 ---
-title: Uygulama Öngörüleri için açıklama yayımla | Microsoft Dokümanlar
-description: Uygulama Öngörüleri'ndeki metrik kaşif grafiklerinize dağıtım veya yapı işaretçileri ekleyin.
+title: Application Insights için sürüm ek açıklamaları | Microsoft Docs
+description: Application Insights içinde Ölçüm Gezgini grafiklerinize dağıtım veya yapı işaretçileri ekleyin.
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010755"
 ---
-# <a name="annotations-on-metric-charts-in-application-insights"></a>Uygulama Öngörüleri'nde metrik grafiklerdeki ek açıklamalar
+# <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 'de ölçüm grafiklerindeki ek açıklamalar
 
-Ek açıklamalar, yeni bir yapıyı veya diğer önemli olayları nereye dağıttığınızı gösterir. Ek açıklamalar, değişikliklerinizin uygulamanızın performansı üzerinde herhangi bir etkisi olup olmadığını görmenizi kolaylaştırır. [Azure Ardışık Hatları](https://docs.microsoft.com/azure/devops/pipelines/tasks/) oluşturma sistemi tarafından otomatik olarak oluşturulabilirler. PowerShell'den oluşturarak istediğiniz etkinliği işaretlemek için ek açıklamalar da oluşturabilirsiniz.
+Ek açıklamalar, yeni bir derlemeyi veya diğer önemli olayları dağıttığınız yeri gösterir. Ek açıklamalar, değişikliklerinizin uygulamanızın performansı üzerinde herhangi bir etkiye sahip olup olmadığını görmenizi kolaylaştırır. [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) yapı sistemi tarafından otomatik olarak oluşturulabilir. Ayrıca, PowerShell 'den oluşturarak istediğiniz herhangi bir olayı işaretlemek için ek açıklamalar da oluşturabilirsiniz.
 
-## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines yapısıyla açıklama açıklamaları
+## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines derlemesi olan sürüm ek açıklamaları
 
-Sürüm ek açıklamaları, Azure DevOps'un bulut tabanlı Azure Bulut Hatları hizmetinin bir özelliğidir.
+Sürüm ek açıklamaları, Azure DevOps 'un bulut tabanlı Azure Pipelines hizmetinin bir özelliğidir.
 
-### <a name="install-the-annotations-extension-one-time"></a>Ek Açıklamalar uzantısını yükleme (bir kez)
+### <a name="install-the-annotations-extension-one-time"></a>Ek açıklama uzantısını (bir kez) yükler
 
-Sürüm ek açıklamaları oluşturabilmek için Visual Studio Marketplace'te bulunan birçok Azure DevOps uzantısından birini yüklemeniz gerekir.
+Sürüm ek açıklamaları oluşturabilmek için Visual Studio Market sağlanan birçok Azure DevOps uzantısını yüklemeniz gerekir.
 
 1. [Azure DevOps](https://azure.microsoft.com/services/devops/) projenizde oturum açın.
    
-1. Visual Studio Marketplace [Yayın Ek Açıklamaları uzantısı](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) sayfasında, Azure DevOps kuruluşunuzu seçin ve ardından uzantıyı Azure DevOps kuruluşunuza eklemek için **Yükle'yi** seçin.
+1. Visual Studio Market [Sürüm ek açıklaması uzantısı](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) sayfasında, Azure DevOps kuruluşunuzu seçin ve ardından uzantıyı Azure DevOps kuruluşunuza **eklemek için Ekle** ' yi seçin.
    
-   ![Bir Azure DevOps kuruluşunu seçin ve ardından Yükle'yi seçin.](./media/annotations/1-install.png)
+   ![Bir Azure DevOps organizasyonu seçin ve ardından Install ' ı seçin.](./media/annotations/1-install.png)
    
-Azure DevOps kuruluşunuz için uzantıyı yalnızca bir kez yüklemeniz gerekir. Artık kuruluşunuzdaki herhangi bir proje için sürüm ek açıklamalarını yapılandırabilirsiniz.
+Yalnızca Azure DevOps kuruluşunuz için uzantıyı bir kez yüklemeniz gerekir. Artık kuruluşunuzdaki tüm projeler için sürüm ek açıklamalarını yapılandırabilirsiniz.
 
-### <a name="configure-release-annotations"></a>Sürüm ek açıklamalarını yapılandırma
+### <a name="configure-release-annotations"></a>Sürüm ek açıklamalarını Yapılandır
 
-Azure Ardışık Hatları sürüm şablonlarınızın her biri için ayrı bir API anahtarı oluşturun.
+Azure Pipelines sürüm şablonlarınızın her biri için ayrı bir API anahtarı oluşturun.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve uygulamanızı izleyen Application Insights kaynağını açın. Veya yoksa, yeni bir [Application Insights kaynağı oluşturun.](../../azure-monitor/app/app-insights-overview.md)
+1. [Azure Portal](https://portal.azure.com) oturum açın ve uygulamanızı izleyen Application Insights kaynağını açın. Ya da bir tane yoksa, [Yeni bir Application Insights kaynağı oluşturun](../../azure-monitor/app/app-insights-overview.md).
    
-1. **API Access sekmesini** açın ve **Application Insights ID'yi**kopyalayın.
+1. **API erişimi** sekmesini açın ve **Application Insights kimliği**' ni kopyalayın.
    
-   ![API Access altında, Uygulama Kimliğini kopyalayın.](./media/annotations/2-app-id.png)
+   ![API erişimi altında uygulama KIMLIĞINI kopyalayın.](./media/annotations/2-app-id.png)
 
-1. Ayrı bir tarayıcı penceresinde, Azure Ardışık Hatları dağıtımlarınızı yöneten sürüm şablonunu açın veya oluşturun.
+1. Ayrı bir tarayıcı penceresinde, Azure Pipelines dağıtımlarınızı yöneten yayın şablonunu açın veya oluşturun.
    
-1. **Görev Ekle'yi**seçin ve ardından menüden **Uygulama Öngörüleri Yayın Açıklama ek ini** seçin.
+1. **Görev Ekle**' yi seçin ve sonra menüden **Application Insights sürüm ek açıklaması** görevi ' ni seçin.
    
-   ![Görev Ekle'yi seçin ve Uygulama Öngörüleri Yayın Ek Açıklamasını seçin.](./media/annotations/3-add-task.png)
+   ![Görev Ekle ' yi seçin ve sürüm ek açıklaması Application Insights seçin.](./media/annotations/3-add-task.png)
 
    > [!NOTE]
-   > Sürüm Ek Açıklama görevi şu anda yalnızca Windows tabanlı aracıları destekler; Linux, macOS veya diğer türde aracılarda çalışmaz.
+   > Sürüm ek açıklaması görevi şu anda yalnızca Windows tabanlı aracıları desteklemektedir; Linux, macOS veya diğer aracı türleri üzerinde çalışmaz.
    
-1. **Uygulama Kimliği**altında, **API Access** sekmesinden kopyaladığınız Uygulama Öngörüleri Kimliğini yapıştırın.
+1. **Uygulama kimliği**' nin altında, **API erişimi** sekmesinden kopyaladığınız Application Insights kimliğini yapıştırın.
    
-   ![Uygulama Öngörüleri Kimliğini Yapıştır](./media/annotations/4-paste-app-id.png)
+   ![Application Insights KIMLIĞINI yapıştırın](./media/annotations/4-paste-app-id.png)
    
-1. Application Insights **API Access** penceresinde **API Anahtarı Oluştur'u**seçin. 
+1. Application Insights **API erişimi** penceresine geri döndüğünüzde, **API anahtarı oluştur**' u seçin. 
    
-   ![API Access sekmesinde API Anahtarı Oluştur'u seçin.](./media/annotations/5-create-api-key.png)
+   ![API erişimi sekmesinde, API anahtarı oluştur ' u seçin.](./media/annotations/5-create-api-key.png)
    
-1. **API oluştur anahtar** penceresinde, açıklama yazın, **ek açıklamalar yaz'ı**seçin ve ardından **Oluştur anahtarını**seçin. Yeni anahtarı kopyalayın.
+1. **API anahtarı oluştur** penceresinde bir açıklama yazın, **ek açıklamaları yaz**' ı seçin ve ardından **anahtar oluştur**' u seçin. Yeni anahtarı kopyalayın.
    
-   ![API oluştur anahtar penceresinde, açıklama yazın, ek açıklamalar yaz'ı seçin ve sonra Oluştur anahtarını seçin.](./media/annotations/6-create-api-key.png)
+   ![API anahtarı Oluştur penceresinde bir açıklama yazın, ek açıklamaları yaz ' ı seçin ve ardından anahtar oluştur ' u seçin.](./media/annotations/6-create-api-key.png)
    
-1. Serbest bırakma şablonu penceresinde, **Değişkenler** sekmesinde, yeni API anahtarı için değişken tanımı oluşturmak için **Ekle'yi** seçin.
+1. Yayın Şablonu penceresinde, **değişkenler** sekmesinde, yeni API anahtarı için bir değişken tanımı oluşturmak üzere **Ekle** ' yi seçin.
 
-1. **Ad**altında `ApiKey`, enter ve **Value**altında, **API Access** sekmesinden kopyalanmış API anahtarını yapıştırın.
+1. **Ad**' ın altında `ApiKey`, **değer**' in altında, **API erişimi** sekmesinden kopyaladığınız API anahtarını yapıştırın.
    
-   ![Azure DevOps Değişkenleri sekmesinde Ekle'yi seçin, değişken ApiKey'i adlandırın ve API anahtarını Değer'in altına yapıştırın.](./media/annotations/7-paste-api-key.png)
+   ![Azure DevOps değişkenleri sekmesinde Ekle ' yi seçin, ApiKey değişkenini adlandırın ve değer altına API anahtarını yapıştırın.](./media/annotations/7-paste-api-key.png)
    
-1. Şablonu kaydetmek için ana sürüm şablonu penceresinde **Kaydet'i** seçin.
+1. Şablonu kaydetmek için ana yayın şablonu penceresinde **Kaydet** ' i seçin.
 
 ## <a name="view-annotations"></a>Ek açıklamaları görüntüle
 
 
    > [!NOTE]
-   > Sürüm ek açıklamaları şu anda Uygulama Öngörüleri Ölçümleri bölmesinde kullanılamıyor
+   > Sürüm ek açıklamaları Şu anda Application Insights ölçüm bölmesinde kullanılamıyor
 
-Şimdi, yeni bir sürüm dağıtmak için sürüm şablonunu her kullandığınızda, Uygulama Öngörüleri'ne bir ek açıklama gönderilir. Ek açıklamalar aşağıdaki konumlarda görüntülenebilir:
+Şimdi yeni bir sürüm dağıtmak için yayın şablonunu kullandığınızda Application Insights için bir ek açıklama gönderilir. Ek açıklamalar aşağıdaki konumlarda görüntülenebilir:
 
-Sürüm ek açıklamalarını el ile oluşturabilme özelliğine de sahip olduğunuz kullanım bölmesi:
+Sürüm ek açıklamalarını el ile oluşturma becerisinin bulunduğu kullanım bölmesi:
 
-![Saat belirli bir süre içinde görüntülenen kullanıcı ziyaretlerinin sayısıyla bar grafiğinin ekran görüntüsü. Sürüm ek açıklamaları, grafiğin üzerinde, bir sürümün oluştuğu zamanı gösteren yeşil onay işaretleri olarak görünür](./media/annotations/usage-pane.png)
+![Bir dönem boyunca görünen Kullanıcı ziyaretlerinin sayısına sahip çubuk grafiğinin ekran görüntüsü. Yayın ek açıklamaları, grafiğin üzerinde, bir yayının gerçekleştiği andaki süreyi belirten yeşil onay işaretleri olarak görünür](./media/annotations/usage-pane.png)
 
-Görselleştirmenin x ekseni boyunca zamanı gösterdiği günlük tabanlı çalışma kitabı sorgusunda.
+Görselleştirmenin x ekseni üzerinde saat gösterdiği herhangi bir günlük tabanlı çalışma kitabı sorgusunda.
 
-![Çalışma kitapları bölmesinin ekran görüntüsü ve zaman serisi günlük tabanlı sorgu ve ek açıklamalar görüntülendi](./media/annotations/workbooks-annotations.png)
+![Ek açıklamaların gösterildiği zaman serisi günlük tabanlı sorguyla çalışma kitabı bölmesinin ekran görüntüsü](./media/annotations/workbooks-annotations.png)
 
-Çalışma kitabınızdaki ek açıklamaları etkinleştirmek için **Gelişmiş Ayarlar'a** gidin ve **ek açıklamaları göster'i**seçin.
+Çalışma kitabınızda ek açıklamaların etkinleştirilmesi için **Gelişmiş ayarlar** ' a gidin ve **ek açıklamaları göster**' i seçin.
 
-![Gelişmiş Ayarlar menüsünün sözcüklerle birlikte ekran görüntüsü, etkinleştirmek için ayarın yanındaki onay işaretiyle vurgulanan ek açıklamaları gösterir.](./media/annotations/workbook-show-annotations.png)
+![Sözcüklerden oluşan Gelişmiş Ayarlar menüsünün ekran görüntüsü, ek açıklamaları göster seçeneğinin yanındaki onay işaretiyle vurgulanır.](./media/annotations/workbook-show-annotations.png)
 
-İstekçi, kaynak denetim dalı, sürüm ardışık hattı ve ortam dahil olmak üzere sürümle ilgili ayrıntıları açmak için herhangi bir ek açıklama işaretçisini seçin.
+İstek sahibi, kaynak denetimi dalı, yayın işlem hattı ve ortam dahil olmak üzere sürüm hakkındaki ayrıntıları açmak için herhangi bir ek açıklama işaretleyicisi seçin.
 
-## <a name="create-custom-annotations-from-powershell"></a>PowerShell'den özel ek açıklamalar oluşturun
-Azure DevOps'leri kullanmadan istediğiniz işlemden ek açıklamalar oluşturmak için GitHub'dan [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell komut dosyasını kullanabilirsiniz. 
+## <a name="create-custom-annotations-from-powershell"></a>PowerShell 'den özel ek açıklamalar oluşturma
+Azure DevOps kullanmadan istediğiniz herhangi bir işlemden ek açıklama oluşturmak için GitHub ' dan [Createreleaseannotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell betiğini kullanabilirsiniz. 
 
-1. [CreateReleaseAnnotation.ps1'in](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)yerel bir kopyasını oluşturun.
+1. [Createreleaseannotation. ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)yerel bir kopyasını oluşturun.
    
-1. Application Insights ID'nizi almak ve Application Insights **API Access** sekmenizden bir API anahtarı oluşturmak için önceki yordamdaki adımları kullanın.
+1. Application Insights KIMLIĞINIZI almak ve Application Insights **API erişimi** sekmesinizden bir API anahtarı oluşturmak için yukarıdaki yordamdaki adımları kullanın.
    
-1. Açı parantezli yer tutucuları değerlerinizle değiştirerek PowerShell komut dosyasını aşağıdaki kodla çağırın. İsteğe `-releaseProperties` bağlı. 
+1. Aşağıdaki kodla PowerShell betiğini çağırın ve açılı ayraçlı yer tutucuları değerlerinizle değiştirin. `-releaseProperties` İsteğe bağlıdır. 
    
    ```powershell
    
@@ -111,9 +111,9 @@ Azure DevOps'leri kullanmadan istediğiniz işlemden ek açıklamalar oluşturma
              "TriggerBy"="<Your name>" }
    ```
 
-Örneğin, geçmiş için ek açıklamalar oluşturmak için komut dosyasını değiştirebilirsiniz.
+Örneğin, geçmiş için ek açıklamalar oluşturmak üzere betiği değiştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [İş öğeleri oluşturma](../../azure-monitor/app/diagnostic-search.md#create-work-item)
+* [İş öğeleri Oluştur](../../azure-monitor/app/diagnostic-search.md#create-work-item)
 * [PowerShell ile Automation](../../azure-monitor/app/powershell.md)

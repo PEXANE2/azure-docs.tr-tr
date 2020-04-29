@@ -1,6 +1,6 @@
 ---
-title: Azure VM boyutları - Genel amaç | Microsoft Dokümanlar
-description: Azure'daki sanal makineler için kullanılabilen farklı genel amaçlı boyutları listeler. VCPUs, veri diskleri ve NIC'lerin sayısı nın yanı sıra bu serideki boyutlar için depolama verime ve ağ bant genişliği hakkındaki bilgileri listeler.
+title: Azure VM boyutları-genel amaçlı | Microsoft Docs
+description: Azure 'daki sanal makineler için kullanılabilir olan farklı genel amaçlı boyutları listeler. Bu serideki boyutlarda sanal CPU 'lar, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
@@ -15,32 +15,32 @@ ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
 ms.openlocfilehash: fc263eb6fbe6c6402aaf529229bb7025f070b8d9
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81269678"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Genel amaçlı sanal makine boyutları
 
-Genel amaçlı VM boyutları dengeli CPU-bellek oranı sağlar. Test ve geliştirme, küçük-orta büyüklükteki veritabanları ve küçük-orta büyüklükte trafik hacmine sahip web sunucuları için idealdir. Bu makalede, genel amaçlı bilgi işlem teklifleri hakkında bilgi sağlar.
+Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geliştirme, küçük-orta büyüklükteki veritabanları ve küçük-orta büyüklükte trafik hacmine sahip web sunucuları için idealdir. Bu makalede genel amaçlı bilgi işlem teklifleri hakkında bilgi sağlanır.
 
-- [Av2 serisi](av2-series.md) VM'ler çeşitli donanım türlerine ve işlemcilere dağıtılabilir. A serisi VM'ler, geliştirme ve test gibi giriş düzeyi iş yükleri için en uygun CPU performansına ve bellek yapılandırmalarına sahiptir. Dağıtıldığı donanımdan bağımsız olarak, çalışan örneğe tutarlı işlemci performansı sunmak için boyut donanıma göre genişletilir. Bu boyutun dağıtıldığı fiziksel donanımı belirlemek için Sanal Makinenin içinden sanal donanımı sorgulayın. Örnek kullanım örnekleri geliştirme ve test sunucuları, düşük trafik web sunucuları, küçük ve orta veritabanları, kavram kanıtı ve kod depolarını içerir.
+- [AV2 serisi](av2-series.md) VM 'ler, çeşitli donanım türlerinde ve işlemcilerde dağıtılabilir. A serisi VM 'Ler, geliştirme ve test gibi giriş düzeyi iş yükleri için en uygun CPU performansına ve bellek yapılandırmalarına sahiptir. Dağıtıldığı donanımdan bağımsız olarak, çalışan örneğe tutarlı işlemci performansı sunmak için boyut donanıma göre genişletilir. Bu boyutun dağıtıldığı fiziksel donanımı belirlemek için Sanal Makinenin içinden sanal donanımı sorgulayın. Örnek kullanım örnekleri arasında geliştirme ve test sunucuları, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları, kavram kanıtı ve kod depoları bulunur.
 
   > [!NOTE]
-  > A8 – A11 VM'lerin 3/2021 tarihinde emekliye ayrılması planlanmaktadır. Daha fazla bilgi için [HPC Geçiş Kılavuzu'na](https://azure.microsoft.com/resources/hpc-migration-guide/)bakın.
+  > A8 – A11 VM 'Leri 3/2021 tarihinde kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [HPC geçiş kılavuzu](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
-- [B serisi patlanabilir](sizes-b-series-burstable.md) VM'ler, web sunucuları, küçük veritabanları ve geliştirme ve test ortamları gibi CPU'nun tam performansına sürekli olarak ihtiyaç duymayan iş yükleri için idealdir. Bu iş yükleri genellikle burstable performans gereksinimleri vardır. B-Serisi, bu müşterilere, VM temel performansından daha az ını kullanırken VM örneğinin kredi oluşturmasına olanak tanıyan fiyat bilinçli temel performansıyla Bir VM boyutu satın alma olanağı sağlar. VM kredi biriktirdiğinde, uygulamanız daha yüksek CPU performansı gerektirdiğinde VM CPU'nun %100'üne kadarını kullanarak VM'nin taban çizgisinin üzerine çıkabilir.
+- [B serisi Burstable](sizes-b-series-burstable.md) VM 'Ler, Web sunucuları, küçük veritabanları ve geliştirme ve test ortamları gibi sürekli olarak CPU 'nun tam performansına gerek olmayan iş yükleri için idealdir. Bu iş yükleri genellikle ani performans gereksinimlerine sahiptir. B serisi, bu müşterilere VM 'nin temel performansından daha küçük bir performans üzerinden sanal makine örneğinin krediler oluşturmasını sağlayan bir fiyat bilincine sahip bir VM boyutu satın alma olanağı sağlar. VM 'nin birikmiş kredisi olduğunda, uygulamanız daha yüksek CPU performansı gerektirdiğinde CPU 'nun en fazla %100 ' ü kullanarak VM 'nin ana hat üzerinde veri bloğu oluşturabilir.
 
-- [Dav4 ve Dasv4 serisi,](dav4-dasv4-series.md) AMD'nin 2.35Ghz EPYC<sup>TM</sup> 7452 işlemcisini, genel amaçlı iş yüklerini çalıştırmak için müşteri seçeneklerini artıran her 8 çekirdekte 8 MB'a ithaf ederek 256 MB L3 önbelleğine kadar 256 MB L3 önbelleğine sahip çok iş parçacığı yapılandırmasında kullanan yeni boyutlardır. Dav4 serisi ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- [Dav4 ve Dasv4 serisi](dav4-dasv4-series.md) , çok iş parçacıklı BIR yapılandırmada AMD 'Nin 2.35 GHz EPıC<sup>TM</sup> 7452 işlemcisini kullanan yeni boyutlardır. bu L3 önbelleği, her 8 çekirdeğe 256 kadar, genel amaçlı iş yüklerini çalıştırmaya yönelik müşteri seçeneklerini artırır. Dav4-Series ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
-- [DCv2 serisi,](dcv2-series.md) genel bulutta işlenirken verilerinizin ve kodlarınızın gizliliğini ve bütünlüğünü korumaya yardımcı olabilir. Bu makineler, SGX teknolojisine sahip en son nesil Intel XEON E-2288G İşlemci tarafından desteklenen bir cihazdır. Intel Turbo Boost Teknolojisi ile bu makineler 5.0GHz'e kadar çıkabiliyor. DCv2 serisi örnekleri, müşterilerin kullanımdayken kodlarını ve verilerini korumak için güvenli enklav tabanlı uygulamalar oluşturmasına olanak tanır.
+- [DCv2 serisi](dcv2-series.md) , genel bulutta işlendiği sırada verilerinizin ve kodunuzun gizliliğini ve bütünlüğünü korumaya yardımcı olabilir. Bu makineler, SGX teknolojisini içeren en son Intel XEON E-2288G Işlemcisi tarafından desteklenir. Intel Turbo Boost teknolojisiyle bu makineler, 5.0 GHz 'ye kadar sürebilir. DCv2 serisi örnekler, müşterilerin, kullanıldığı sırada kod ve verilerini korumak için güvenli şifreleme tabanlı uygulamalar oluşturmasına imkan tanır.
 
-- [Dv2 ve Dsv2 serisi](dv2-dsv2-series.md) Orijinal D serisinin bir takipçisi olan VM'ler, daha güçlü bir IŞLEMCI ve en iyi CPU'dan belleğe yapılandırmaya sahiptir ve bunları çoğu üretim iş yükü için uygun hale getirir. Dv2 serisi D serisi yaklaşık% 35 daha hızlıdır. Dv2 serisi Intel Turbo Boost Technology 2.0 ile Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) veya Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- [Dv2 ve Dsv2 serisi](dv2-dsv2-series.md) Özgün D serisi için bir takip eden VM 'Ler, daha güçlü bir CPU ve en iyi CPU-bellek yapılandırmasına sahiptir ve bu da üretim iş yüklerinin çoğu için uygun hale getirir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Dv2 serisi, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
-- [Dv3 ve Dsv3 serisi](dv3-dsv3-series.md) VM'ler Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) veya Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) işlemcilerinde hiper iş parçacığı yapılandırmasında çalışır ve en genel amaçlı iş yükleri için daha iyi bir değer teklifi sunar. Bellek genişletildi (~3.5 GiB/vCPU'dan 4 GiB/vCPU'ya) disk ve ağ sınırları ise hiperiş parçacığına geçmek için çekirdek bazında ayarlandı. Dv3 serisi artık D/Dv2 serisi yüksek bellek VM boyutlarına sahip, bu bellek optimize [Ev3 ve Esv3 serisi](ev3-esv3-series.md)taşındı .
+- [Dv3 ve Dsv3 serisi](dv3-dsv3-series.md) VM 'Ler, bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlanırken, bellek (~ 3,5 GiB/vCPU 'dan 4 GiB/vCPU 'ya) genişletildi. Dv3 serisi artık D/dv2-Series ' in yüksek bellek sanal makine boyutlarına sahiptir; bunlar bellek için iyileştirilmiş [Ev3 ve Esv3-serisine](ev3-esv3-series.md)taşınmıştır.
 
-Örnek D serisi kullanım örnekleri, kurumsal dereceli uygulamaları, ilişkisel veritabanlarını, bellek içi önbelleğe alma ve analizleri içerir.
+Örnek D Serisi Kullanım örnekleri arasında kurumsal düzeyde uygulamalar, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz vardır.
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
@@ -53,4 +53,4 @@ Genel amaçlı VM boyutları dengeli CPU-bellek oranı sağlar. Test ve gelişti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

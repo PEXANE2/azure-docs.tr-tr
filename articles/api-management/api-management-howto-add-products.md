@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
 ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81261005"
 ---
 # <a name="create-and-publish-a-product"></a>Ürün oluşturma ve yayımlama  
 
 Azure API Management'ta, üründe bir veya birden çok API, ayrıca kullanım kotası ve kullanım koşulları bulunur. Ürün yayımlandığında, geliştiriciler ürüne abone olabilir ve ürünün API'lerini kullanmaya başlayabilir.  
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ürün oluşturma ve yayımlama
@@ -57,7 +57,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
     | Onay gerekiyor        | Yöneticinin bu ürüne yönelik abonelik girişimlerini gözden geçirip kabul etmesini ya da reddetmesini istiyorsanız **Onay iste** seçeneğini işaretleyin. Kutu işaretsiz bırakılırsa abonelik girişimleri otomatik olarak onaylanır.                                                                                                                         |
     | Abonelik sayısı limiti | Aynı anda sahip olunabilecek abonelik sayısını kısıtlamak için abonelik limitini girin.                                                                                                                                                                                                                                |
     | Yasal koşullar              | Abonelerin ürünü kullanmak için kabul etmek zorunda olduğu ürün kullanım koşullarını ekleyebilirsiniz.                                                                                                                                                                                                             |
-    | API'ler                     | Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. <br/> Ürün oluşturma sırasında mevcut bir API’yi ekleyebilirsiniz. Ürüne daha sonra, Ürünün **Ayarlar** sayfasından veya bir API oluştururken bir API ekleyebilirsiniz. |
+    | API'ler                     | Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. <br/> Ürün oluşturma sırasında mevcut bir API’yi ekleyebilirsiniz. Ürüne daha sonra ürünün **Ayarlar** sayfasından veya bir API oluştururken bir API ekleyebilirsiniz. |
 
 3. Yeni ürünü oluşturmak için **Oluştur**’a tıklayın.
 
@@ -67,7 +67,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 **Abonelikler** sekmesinden aboneleri görüntüleyin/ürüne abone ekleyin.
 
-**Access denetim** sekmesinden geliştiriciler veya misafirler için bir ürünün görünürlüğünü ayarlayın.
+**Erişim denetimi** sekmesinden geliştiriciler veya Konuklar için bir ürünün görünürlüğünü ayarlayın.
 
 ## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>Bir ürüne API ekleme
 

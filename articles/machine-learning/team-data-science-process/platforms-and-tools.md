@@ -1,6 +1,6 @@
 ---
-title: Veri bilimi projeleri için platformlar ve araçlar - Ekip Veri Bilimi Süreci
-description: Ekip Veri Bilimi Süreci'nde standartlaştırılabilen işletmelerin mevcut veri ve analiz kaynaklarını itemizes ve tartışır.
+title: Veri bilimi projeleri için platformlar ve araçlar-ekip veri bilimi Işlemi
+description: Ekip veri bilimi sürecinde bulunan kuruluşlar için kullanılabilen veri ve analiz kaynaklarını sıralar ve ele alır.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,144 +11,144 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256527"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Veri bilimi projeleri için platformlar ve araçlar
 
-Microsoft, hem bulut hem de şirket içi platformlar için tam bir analiz kaynağı yelpazesi sağlar. Bunlar, veri bilimi projelerinizin yürütülmesini verimli ve ölçeklenebilir hale getirmek için dağıtılabilir. Veri bilimi projelerini izlenebilir, sürüm kontrollü ve işbirliğine dayalı bir şekilde uygulayan ekipler için kılavuz, [Team Data Science Process](overview.md) (TDSP) tarafından sağlanır.  Personel rollerinin anahat ve bu süreci standartlaştıran bir veri bilimi ekibi tarafından işlenen ilişkili görevleri [için, Takım Veri Bilimi Süreci rolleri ve görevleri](roles-tasks.md)bölümüne bakın.
+Microsoft, hem bulut hem de şirket içi platformlar için eksiksiz bir analiz kaynakları yelpazesi sağlar. Veri bilimi projelerinizin yürütülmesi verimli ve ölçeklenebilir hale getirmek için dağıtılabilecek. Veri bilimi projelerini uygulayan takımlar için bir izleme, sürüm denetimli ve işbirliğine dayalı bir yöntem, [ekip veri bilimi işlemi](overview.md) (TDSP) tarafından sağlanır.  Personel rollerinin bir özeti ve bir veri bilimi ekibi tarafından işlenen ilişkili görevleri bu işlemi gerçekleştirirken, bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
 
-TDSP'yi kullanan veri bilimi ekiplerinin kullanabileceği analiz kaynakları şunlardır:
+TDSP kullanan veri bilimi ekipleri için kullanılabilen analiz kaynakları şunları içerir:
 
-- Veri Bilimi Sanal Makineler (hem Windows hem de Linux CentOS)
-- HDInsight Kıvılcım Kümeleri
+- Veri bilimi sanal makineleri (hem Windows hem de Linux CentOS)
+- HDInsight Spark kümeleri
 - Synapse Analytics
 - Azure Data Lake
-- HDInsight Kovan Kümeleri
+- HDInsight Hive kümeleri
 - Azure Dosya Depolama
 - SQL Server 2019 R ve Python Hizmetleri
 - Azure Databricks
 
-Bu belgede, kaynakları kısaca açıklar ve TDSP ekiplerinin yayımladıkları öğreticilere ve izlerle bağlantılar sağlarız. Bunları adım adım kullanmayı öğrenmenize ve akıllı uygulamalarınızı oluşturmak için kullanmaya başlamanıza yardımcı olabilir. Bu kaynaklar hakkında daha fazla bilgi ürün sayfalarında mevcuttur. 
+Bu belgede, kaynakları kısaca anladık ve TDSP takımlarının yayımladığı öğreticilere ve izlenecek yollara bağlantılar sağlıyoruz. Bunlar adım adım adımları nasıl kullanacağınızı ve akıllı uygulamalarınızı oluşturmak için kullanmaya nasıl başlayacağınızı öğrenmenize yardımcı olabilirler. Bu kaynaklarla ilgili daha fazla bilgiyi ürün sayfalarında bulabilirsiniz. 
 
-## <a name="data-science-virtual-machine-dsvm"></a>Veri Bilimi Sanal Makine (DSVM)
+## <a name="data-science-virtual-machine-dsvm"></a>Veri Bilimi Sanal Makinesi (DSVM)
 
-Microsoft tarafından hem Windows hem de Linux'ta sunulan veri bilimi sanal makinesi, veri bilimi modelleme ve geliştirme etkinlikleri için popüler araçlar içerir. Bu gibi araçlar içerir:
+Microsoft tarafından hem Windows hem de Linux üzerinde sunulan veri bilimi sanal makinesi, veri bilimi modelleme ve geliştirme etkinlikleri için popüler araçları içerir. Aşağıdakiler gibi araçlar içerir:
 
 - Microsoft R Server Developer Edition 
 - Anaconda Python dağıtımı
-- Python ve R için Jupyter dizüstü bilgisayarlar 
-- Windows / Eclipse Linux üzerinde Python ve R Araçları ile Visual Studio Community Edition
-- Windows için Power BI masaüstü
-- WINDOWS'da SQL Server 2016 Developer Edition / Linux'ta Postgres
+- Python ve R için jupyıter Not defterleri 
+- Windows üzerinde Python ve R araçları ile Visual Studio Community Edition/Linux üzerinde tutulma
+- Windows için masaüstü Power BI
+- Linux üzerinde Windows/Postgres üzerinde 2016 SQL Server Geliştirici sürümü
 
-Ayrıca xgboost, mxnet ve Vowpal Wabbit gibi ML ve **AI araçları** içerir.
+Ayrıca, xgboost, mxnet ve Vowpal Wabbit gibi **ml ve AI araçları** da içerir.
 
-Şu anda DSVM **Windows** ve **Linux CentOS** işletim sistemlerinde kullanılabilir. Üzerinde yürütmeyi planladığınız veri bilimi projelerinin gereksinimlerine göre DSVM'nizin boyutunu (CPU çekirdeği sayısı ve bellek miktarı) seçin. 
+Şu anda DSVM, **Windows** ve **Linux CentOS** işletim sistemlerinde kullanılabilir. Üzerinde yürütmeyi planladığınız veri bilimi projelerinin ihtiyaçlarına göre DSVM 'nizin boyutunu (CPU çekirdeği sayısı ve bellek miktarı) seçin. 
 
-DSVM'nin Windows sürümü hakkında daha fazla bilgi için Azure Marketi'ndeki [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) bölümüne bakın. DSVM Linux sürümü için, [Linux Veri Bilimi Sanal Makine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)bakın.
+DSVM 'nin Windows sürümü hakkında daha fazla bilgi için bkz. Azure Marketi 'nde [Microsoft veri bilimi sanal makinesi](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) . DSVM 'nin Linux sürümü için bkz. [linux veri bilimi sanal makinesi](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
 
-DSVM'deki bazı yaygın veri bilimi görevlerini niçin verimli bir şekilde yürütebileceğinizi öğrenmek için, [Veri bilimi Sanal Makine'de yapabileceğiniz 10 şeye](../data-science-virtual-machine/vm-do-ten-things.md) bakın
+DSVM 'de ortak veri bilimi görevlerinin bazılarının nasıl yürütüleceğini öğrenmek için bkz. [veri bilimi sanal makinesi üzerinde yapabileceğiniz 10 şey](../data-science-virtual-machine/vm-do-ten-things.md)
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark kümeleri
 
-Apache Spark, Büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme altyapısıdır. Spark işleme motoru hız, kullanım kolaylığı ve gelişmiş analizler için üretilmiştir. Spark'ın bellek içi hesaplama yetenekleri, makine öğreniminde ve grafik hesaplamalarında yinelemeli algoritmalar için iyi bir seçim dir. Spark, Azure Blob depolama alanıyla (WASB) da uyumludur, böylece Azure'da depolanan mevcut verileriniz Spark kullanılarak kolayca işlenebilir.
+Apache Spark, Büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme altyapısıdır. Spark işleme altyapısı hız, kullanım kolaylığı ve gelişmiş analiz için oluşturulmuştur. Spark 'ın bellek içi hesaplama özellikleri, Machine Learning ve grafik hesaplamaları için yinelemeli algoritmalar için iyi bir seçim yapar. Spark, Azure Blob depolama (IŞB) ile de uyumludur, bu nedenle Azure 'da depolanan mevcut verileriniz Spark kullanılarak kolayca işlenebilir.
 
-HDInsight’ta Spark kümesi oluşturduğunuzda, Spark yüklenmiş ve yapılandırılmış olarak Azure işlem kaynakları oluşturursunuz. HDInsight'ta bir Kıvılcım kümesi oluşturmak yaklaşık 10 dakika sürer. İşlenecek verileri Azure Blob depolama alanında saklayın. Azure Blob Depolama'yı bir kümeyle kullanma hakkında daha fazla bilgi için, [HDInsight'ta Hadoop ile HDFS uyumlu Azure Blob depolama alanını kullanın'a](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)bakın.
+HDInsight’ta Spark kümesi oluşturduğunuzda, Spark yüklenmiş ve yapılandırılmış olarak Azure işlem kaynakları oluşturursunuz. HDInsight 'ta Spark kümesi oluşturmak yaklaşık 10 dakika sürer. İşlenecek verileri Azure Blob depolama alanında depolayın. Azure Blob depolamayı bir kümeyle kullanma hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop ile uyumlu Azure Blob depolamayı kullanma](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-Microsoft'tan TDSP ekibi, biri Python ve diğeri Scala kullanılarak veri bilimi çözümleri oluşturmak için Azure HDInsight Spark Kümelerinin nasıl kullanılacağı hakkında iki uçtan uca izlik yayımladı. Azure HDInsight **Spark Kümeleri**hakkında daha fazla bilgi için genel [bakış: HDInsight Linux'ta Apache Spark'](../../hdinsight/spark/apache-spark-overview.md)a bakın. Azure HDInsight Spark Kümesi'nde **Python'u** kullanarak veri bilimi çözümü oluşturmayı öğrenmek için [Azure HDInsight'ta Kıvılcım kullanarak Veri Bilimine Genel Bakış](spark-overview.md)bölümüne bakın. Azure HDInsight Spark Cluster'da **Scala'yı** kullanarak veri bilimi çözümü oluşturmayı öğrenmek için [Azure'da Scala ve Spark'ı kullanarak Veri Bilimi'ne](scala-walkthrough.md)bakın. 
+Microsoft tarafından yapılan TDSP ekibi, tek bir Python ve diğer Scala kullanarak veri bilimi çözümleri oluşturmak için Azure HDInsight Spark kümelerinin nasıl kullanılacağına ilişkin iki uçtan uca izlenecek yol yayımladı. Azure HDInsight **Spark kümeleri**hakkında daha fazla bilgi için bkz. [genel bakış: hdınsight Linux üzerinde Apache Spark](../../hdinsight/spark/apache-spark-overview.md). Azure HDInsight Spark kümesinde **Python** kullanarak veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md). Azure HDInsight Spark kümesinde **Scala** kullanarak bir veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Azure 'da Scala ve Spark kullanan veri bilimi](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı
 
-Azure SQL Veri Ambarı, hesaplama kaynaklarını aşırı sağlama veya aşırı ödeme yapmadan kolayca ve saniyeler içinde ölçeklendirmenize olanak tanır. Ayrıca, bilgi işlem kaynaklarının kullanımını duraklatmak için benzersiz bir seçenek sunarak bulut maliyetlerinizi daha iyi yönetmenize izin verir. Ölçeklenebilir bilgi işlem kaynaklarını dağıtma özelliği, tüm verilerinizi Azure SQL Veri Ambarı'na getirmenizi mümkün kılar. Depolama maliyetleri en azdüzeydedir ve hesaplamayı yalnızca çözümlemek istediğiniz veri kümelerinin bölümlerinde çalıştırabilirsiniz. 
+Azure SQL veri ambarı, sağlama veya aşırı ödeme olmadan işlem kaynaklarını kolayca ve saniyeler içinde ölçeklendirmenize olanak tanır. Ayrıca, işlem kaynaklarının kullanımını duraklatmaya yönelik benzersiz seçeneği sunar ve böylece bulut maliyetlerinizi daha iyi yönetebilirsiniz. Ölçeklenebilir işlem kaynaklarını dağıtma özelliği, tüm verilerinizi Azure SQL veri ambarı 'na getirmeyi mümkün kılar. Depolama maliyetleri en düşük düzeydedir ve yalnızca çözümlemek istediğiniz veri kümelerinin bölümlerinde işlem gerçekleştirebilirsiniz. 
 
-Azure SQL Veri Ambarı hakkında daha fazla bilgi için [SQL Veri Ambarı](https://azure.microsoft.com/services/sql-data-warehouse) web sitesine bakın. SQL Veri Ambarı ile uçlardan uca gelişmiş analiz çözümleri oluşturmayı öğrenmek [için, Team Data Science Process'e iş başında bakın: SQL Veri Ambarı'nı kullanarak.](sqldw-walkthrough.md)
+Azure SQL veri ambarı hakkında daha fazla bilgi için bkz. [SQL veri ambarı](https://azure.microsoft.com/services/sql-data-warehouse) Web sitesi. SQL veri ambarı ile uçtan uca gelişmiş analiz çözümleri oluşturmayı öğrenmek için, bkz [: SQL veri ambarı 'nı kullanma](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Azure Veri Gölü, herhangi bir resmi gereksinim veya şema dayatılmadan önce, tek bir konumda toplanan her tür verinin kuruluş çapında bir deposudur. Bu esneklik, boyutu veya yapısı ne kadar hızlı yutulurolursa olsun, her tür verinin bir veri gölünde tutulmasını sağlar. Kuruluşlar daha sonra bu veri göllerinde desenler bulmak için Hadoop veya gelişmiş analitik kullanabilirsiniz. Veri gölleri, verileri küratörlük yapmadan ve veri ambarına taşımadan önce daha düşük maliyetli veri hazırlama için bir depo olarak da hizmet verebilir.
+Azure Data Lake, tek bir konumda toplanan tüm veri türlerinin kurumsal çapta bir deposudur, herhangi bir biçimsel gereksinimden önce veya uygulanan şemadan oluşur. Bu esneklik, boyutu veya yapısı ne olursa olsun, Veri Gölü her türden verilerin tutulmasını sağlar. Daha sonra kuruluşlar, bu veri lalardaki desenleri bulmak için Hadoop veya gelişmiş analiz kullanabilir. Veri Lakes Ayrıca verileri kapatmadan ve veri ambarına taşımadan önce düşük maliyetli veri hazırlığı için bir depo olarak da kullanılabilir.
 
-Azure Veri Gölü hakkında daha fazla bilgi için [bkz.](https://azure.microsoft.com/blog/introducing-azure-data-lake/) Azure Veri Gölü ile ölçeklenebilir uçtan uca veri bilimi çözümü oluşturmayı öğrenmek için Azure [Veri Gölü'nde Ölçeklenebilir Veri Bilimi: Uçtan uca Bir Geçiş](data-lake-walkthrough.md)
+Azure Data Lake hakkında daha fazla bilgi için bkz. [tanıtımı Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Azure Data Lake ile ölçeklenebilir bir uçtan uca veri bilimi çözümü oluşturmayı öğrenmek için bkz [. Azure Data Lake Içinde ölçeklenebilir veri bilimi: uçtan uca bir anlatım](data-lake-walkthrough.md)
 
 
-## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Kovanı (Hadoop) kümeleri
+## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive (Hadoop) kümeleri
 
-Apache Hive, Sql'e benzer bir sorgu dili olan HiveQL kullanarak veri özetleme, sorgulama ve veri analizini sağlayan Hadoop için bir veri ambarı sistemidir. Kovan, verilerinizi etkileşimli olarak keşfetmek veya yeniden kullanılabilir toplu iş yapmak için kullanılabilir.
+Apache Hive, SQL 'e benzer bir sorgu dili olan HiveQL kullanarak veri özetlemesini, sorgulamayı ve veri analizini sağlayan Hadoop için veri ambarı sistemidir. Hive, verilerinizi etkileşimli olarak araştırmak veya yeniden kullanılabilir toplu işleme işleri oluşturmak için kullanılabilir.
 
-Kovan, yapıyı büyük ölçüde yapılandırılmamış veriler üzerinde yansıtmanızı sağlar. Yapıyı tanımladıktan sonra Hive'ı kullanarak Bu verileri Bir Hadoop kümesinde Java veya MapReduce'ı kullanmak zorunda kalmadan sorgulayabilirsiniz. HiveQL (Hive sorgu dili) T-SQL benzer ifadeler ile sorgular yazmanızı sağlar.
+Hive büyük ölçüde yapılandırılmamış veriler üzerinde proje yapısı oluşturmanızı sağlar. Yapıyı tanımladıktan sonra, kullanmak zorunda kalmadan veya hatta bilmeniz, Java veya MapReduce 'nin kullanılması gerekmeden bu verileri bir Hadoop kümesinde sorgulamak için Hive kullanabilirsiniz. HiveQL (Hive sorgu dili), T-SQL ' e benzeyen deyimlerle sorgu yazmanıza olanak sağlar.
 
-Veri bilimciler için Hive, kayıtları işlemek için Hive sorgularında Python Kullanıcı Tanımlı İşlevler (UDF'ler) çalıştırabilir. Bu özellik, veri analizinde Hive sorgularının yeteneğini önemli ölçüde genişletir. Özellikle, veri bilimcilerin çoğunlukla aşina oldukları dillerde ölçeklenebilir özellik mühendisliği yürütmelerine olanak tanır: SQL benzeri HiveQL ve Python. 
+Veri bilimcileri için Hive, kayıtları işlemek üzere Hive sorgularında Python Kullanıcı tanımlı Işlevleri (UDF 'ler) çalıştırabilir. Bu özellik veri analizinde Hive sorgularının yeteneklerini önemli ölçüde genişletir. Özellikle, veri bilimcilerinin, büyük ölçüde alışkın oldukları dillerde ölçeklenebilir Özellik Mühendisliği yapmasına olanak sağlar: SQL benzeri HiveQL ve Python. 
 
-Azure HDInsight Hive Kümeleri hakkında daha fazla bilgi için [HDInsight'ta Hadoop ile Hive ve HiveQL'yi kullanın'](../../hdinsight/hadoop/hdinsight-use-hive.md)a bakın. Azure HDInsight Hive Kümeleri ile ölçeklenebilir uçtan uca veri bilimi çözümü oluşturmayı öğrenmek [için, Ekip Veri Bilimi Süreci'ni iş başında görün: HDInsight Hadoop kümelerini kullanarak.](hive-walkthrough.md)
+Azure HDInsight Hive kümeleri hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop Ile Hive ve HiveQL kullanma](../../hdinsight/hadoop/hdinsight-use-hive.md). Azure HDInsight Hive kümeleriyle ölçeklenebilir uçtan uca bir veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Team Data Science Process ın, HDInsight Hadoop kümelerini kullanma](hive-walkthrough.md).
 
 
 ## <a name="azure-file-storage"></a>Azure Dosya Depolama 
 
-Azure Dosya Depolama, standart Sunucu İleti Bloğu (SMB) Protokolü'nü kullanarak bulutta dosya paylaşımları sunan bir hizmettir. SMB 2.1 ve SMB 3.0 desteklenir. Azure File Storage, Azure’a dosya paylaşımı kullanan eski uygulamaları maliyetli yeniden yazdırmaya ihtiyaç duymadan ve hızla taşıyabilmenizi sağlar. Azure Virtual Machines’de, Cloud Services’da veya şirket içi istemcilerde çalışan uygulamalar, bir masaüstü uygulamanın tipik SMB paylaşımı bağladığı gibi buluta bir dosya paylaşımı bağlayabilir. Ardından herhangi sayıda uygulama bileşeni eş zamanlı olarak File Storage paylaşımını bağlayıp buna erişim sağlayabilir.
+Azure dosya depolama, standart sunucu Ileti bloğu (SMB) protokolünü kullanarak bulutta dosya paylaşımları sunan bir hizmettir. SMB 2.1 ve SMB 3.0 desteklenir. Azure File Storage, Azure’a dosya paylaşımı kullanan eski uygulamaları maliyetli yeniden yazdırmaya ihtiyaç duymadan ve hızla taşıyabilmenizi sağlar. Azure Virtual Machines’de, Cloud Services’da veya şirket içi istemcilerde çalışan uygulamalar, bir masaüstü uygulamanın tipik SMB paylaşımı bağladığı gibi buluta bir dosya paylaşımı bağlayabilir. Ardından herhangi sayıda uygulama bileşeni eş zamanlı olarak File Storage paylaşımını bağlayıp buna erişim sağlayabilir.
 
-Özellikle veri bilimi projeleri için kullanışlı olan, proje verilerini proje ekibi üyelerinizle paylaşılabilme yeri olarak bir Azure dosya deposu oluşturma yeteneğidir. Daha sonra her biri Azure dosya depolamasındaki verilerin aynı kopyasına erişebilir. Ayrıca, projenin yürütülmesi sırasında oluşturulan özellik kümelerini paylaşmak için bu dosya depolama alanını da kullanabilirler. Proje bir müşteri etkileşimiyse, müşterileriniz proje verilerini ve özelliklerini sizinle paylaşmak için kendi Azure abonelikleri altında bir Azure dosya depolama alanı oluşturabilir. Bu şekilde, istemci proje veri varlıklarının tam denetimine sahiptir. Azure Dosya Depolama hakkında daha fazla bilgi için [Windows'daki Azure Dosya depolama alanına başlayın](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) ve Linux ile Azure Dosya [Depolamasını nasıl kullanacağız](../../storage/files/storage-how-to-use-files-linux.md)'a bakın.
+Özellikle veri bilimi projeleri için yararlı olan proje ekip üyelerinizle proje verilerini paylaşmak için bir Azure dosya deposu oluşturma olanağıdır. Bunların her biri, Azure dosya depolama alanındaki verilerin aynı kopyasına erişebilir. Ayrıca, projenin yürütülmesi sırasında oluşturulan özellik kümelerini paylaşmak için bu dosya depolama alanını kullanabilir. Proje bir istemci katılımı ise, istemcileriniz proje verilerini ve özelliklerini sizinle paylaşmak için kendi Azure abonelikleri altında bir Azure dosya depolama alanı oluşturabilir. Bu şekilde, istemci proje veri varlıkları üzerinde tam denetime sahiptir. Azure dosya depolama hakkında daha fazla bilgi için bkz. [Windows 'Ta Azure dosya depolama ile çalışmaya başlama](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) ve [Linux Ile Azure dosya depolamayı kullanma](../../storage/files/storage-how-to-use-files-linux.md).
 
 
 ## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R ve Python Hizmetleri
 
-R Hizmetleri (Veritabanı İçi), yeni öngörüler ortaya çıkarabilecek akıllı uygulamalar geliştirmek ve dağıtmak için bir platform sağlar. Model oluşturmak ve SQL Server verilerinizden öngörüler oluşturmak için R topluluğu tarafından sağlanan birçok paket de dahil olmak üzere zengin ve güçlü R dilini kullanabilirsiniz. R Hizmetleri (Veritabanı İçi) R dilini SQL Server ile tümleştirdiği için, analizler verilere yakın tutulur ve bu da verilerin taşınmasıyla ilişkili maliyetleri ve güvenlik risklerini ortadan kaldırır.
+R Services (veritabanı Içi), yeni Öngörüler açığa çıkarmak için akıllı uygulamalar geliştirmeye ve dağıtmaya yönelik bir platform sağlar. R topluluğu tarafından sunulan birçok paket de dahil olmak üzere zengin ve güçlü R dilini kullanarak modeller oluşturabilir ve SQL Server verilerinize tahmin oluşturabilirsiniz. R Services (veritabanı Içi) R dilini SQL Server ile tümleştirdiğinden, analiz verileri yakın tutulur; bu da verileri taşıma ile ilişkili maliyetleri ve güvenlik risklerini ortadan kaldırır.
 
-R Services (Veritabanı içi) açık kaynak R dilini kapsamlı bir SQL Server araçları ve teknolojileri kümesiyle destekler. Üstün performans, güvenlik, güvenilirlik ve yönetilebilirlik sunarlar. R çözümlerini kullanışlı ve tanıdık araçları kullanarak dağıtabilirsiniz. Üretim uygulamalarınız, Transact-SQL kullanarak R çalışma saatini arayabilir ve öngörüleri ve görselleri alabilir. Ayrıca, R çözümlarınızın ölçeğini ve performansını artırmak için ScaleR kitaplıklarını da kullanırsınız. Daha fazla bilgi için [SQL Server R Hizmetleri'ne](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)bakın.
+R Services (veritabanı Içi), kapsamlı bir SQL Server araçları ve teknolojileri kümesiyle açık kaynak R dilini destekler. Üstün performans, güvenlik, güvenilirlik ve yönetilebilirlik sunar. Kullanışlı ve tanıdık araçları kullanarak R çözümlerini dağıtabilirsiniz. Üretim uygulamalarınız R çalışma zamanını çağırabilir ve Transact-SQL ' y i kullanarak tahminleri ve görselleri alabilir. Ayrıca, R çözümlerinizin ölçeğini ve performansını geliştirmek için ScaleR kitaplıklarını da kullanabilirsiniz. Daha fazla bilgi için bkz. [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
-Microsoft'un TDSP ekibi, SQL Server 2016 R Services'da veri bilimi çözümlerinin nasıl geliştirilmeye ne kadar yol açabildiğini gösteren iki uçtan uca izçıkış yayımladı: biri R programcıları için, diğeri de SQL geliştiricileri için. **R Programcıları**için [Bkz. Veri Bilimi Uçtan Uca Walkthrough.](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) **SQL Geliştiricileri** [için, SQL Geliştiricileri için Veritabanı Içi Gelişmiş Analitik (Öğretici)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)bölümüne bakın.
+Microsoft 'un TDSP ekibi, SQL Server 2016 R hizmetlerinde veri bilimi çözümlerinin nasıl oluşturulduğunu gösteren iki uçtan uca izlenecek yol yayımladı: bir R programcıları ve bir SQL geliştiricileri için. **R programcıları**için bkz. [veri bilimi uçtan uca izlenecek yol](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). **SQL geliştiricileri**için bkz. [SQL geliştiricileri Için veritabanı içi gelişmiş analiz (öğretici)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
-## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>Ek: Veri bilimi projeleri kurmak için araçlar
+## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>Ek: veri bilimi projelerini ayarlamaya yönelik araçlar
 
-### <a name="install-git-credential-manager-on-windows"></a>Windows'da Git Kimlik Bilgileri Yöneticisi'ni yükleme
+### <a name="install-git-credential-manager-on-windows"></a>Windows 'a git kimlik bilgileri Yöneticisi 'Ni yükler
 
-**Windows'da**TDSP'yi takip ediyorsanız, Git depolarıyla iletişim kurmak için **Git Kimlik Bilgileri Yöneticisi'ni (GCM)** yüklemeniz gerekir. GCM yüklemek için öncelikle **Chocolaty'yi**yüklemeniz gerekir. Chocolaty ve GCM'yi yüklemek için Windows PowerShell'de **yönetici**olarak aşağıdaki komutları çalıştırın:  
+**Windows**üzerinde TDSP 'yi takip ediyorsanız, git depoları ile iletişim kurmak Için **Git kimlik bilgileri YÖNETICISI 'ni (GCM)** yüklemeniz gerekir. GCM 'yi yüklemek için önce **chocolaty**yüklemeniz gerekir. Chocolaty ve GCM 'yi yüklemek için Windows PowerShell 'de **yönetici**olarak aşağıdaki komutları çalıştırın:  
 
     iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     choco install git-credential-manager-for-windows -y
     
 
-### <a name="install-git-on-linux-centos-machines"></a>Git'i Linux (CentOS) makinelere yükleyin
+### <a name="install-git-on-linux-centos-machines"></a>Linux (CentOS) makinelerine git 'i yükler
 
-Git'i Linux (CentOS) makinelerine yüklemek için aşağıdaki bash komutunu çalıştırın:
+Linux (CentOS) makinelerine git yüklemek için aşağıdaki Bash komutunu çalıştırın:
 
     sudo yum install git
 
 
-### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Linux (CentOS) makinelerde ortak SSH anahtarı oluşturma
+### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Linux (CentOS) makinelerinde ortak SSH anahtarı oluşturma
 
-Git komutlarını çalıştırmak için Linux (CentOS) makinelerini kullanıyorsanız, bu makinenin Azure DevOps Hizmetleri tarafından tanınması için makinenizin ortak SSH anahtarını Azure DevOps Hizmetleri'nize eklemeniz gerekir. İlk olarak, ortak bir SSH anahtarı oluşturmanız ve Azure DevOps Hizmetleri güvenlik ayarı sayfanızdaki SSH ortak anahtarlarına anahtarı eklemeniz gerekir. 
+Git komutlarını çalıştırmak için Linux (CentOS) makineleri kullanıyorsanız, bu makinenin Azure DevOps Services tanınması için makinenizin ortak SSH anahtarını Azure DevOps Services eklemeniz gerekir. İlk olarak, ortak bir SSH anahtarı oluşturmanız ve anahtarı Azure DevOps Services güvenlik ayarı sayfanızda SSH ortak anahtarlarına eklemeniz gerekir. 
 
-1. SSH anahtarını oluşturmak için aşağıdaki iki komutu çalıştırın: 
+1. SSH anahtarı oluşturmak için aşağıdaki iki komutu çalıştırın: 
 
    ```
    ssh-keygen
    cat .ssh/id_rsa.pub
    ```
    
-   ![SSH anahtarını oluşturmak için komutlar](./media/platforms-and-tools/resources-1-generate_ssh.png)
+   ![SSH anahtarı oluşturma komutları](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-1. *Ssh-rsa*dahil olmak üzere tüm ssh tuşunu kopyalayın. 
-1. Azure DevOps Hizmetlerinizde oturum açın. 
-1. Sayfanın sağ üst köşesinde **adınızı\><** ve **güvenlik'e**tıklayın. 
+1. SSH *-RSA*dahil tüm SSH anahtarını kopyalayın. 
+1. Azure DevOps Services oturum açın. 
+1. Sayfanın sağ üst köşesindeki **\> adınızı<** tıklayın ve **güvenlik**' e tıklayın. 
     
-   ![Adınızı tıklatın ve sonra güvenlik tıklayın](./media/platforms-and-tools/resources-2-user-setting.png)
+   ![Adınızın ardından Güvenlik ' e tıklayın.](./media/platforms-and-tools/resources-2-user-setting.png)
 
-1. **SSH ortak tuşlarını**tıklatın ve **+Ekle'ye**tıklayın. 
+1. **SSH ortak anahtarlar**' a tıklayın ve **+ Ekle**' ye tıklayın. 
 
-   ![SSH ortak tuşlarını tıklatın ve sonra +Ekle'yi tıklatın](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![SSH ortak anahtarlar ' a ve ardından + Ekle ' ye tıklayın.](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. Metin kutusuna kopyalanan ssh tuşunu yapıştırın ve kaydedin.
+1. Metin kutusuna kopyalanmış olan SSH anahtarını yapıştırın ve kaydedin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**Belirli senaryolar** için işlemdeki tüm adımları gösteren tam uçtan uca walkthroughs da sağlanır. Bunlar, [Örnek izthroughs](walkthroughs.md) konusundaki küçük resim açıklamalarıyla listelenir ve bunlarla bağlantılıdır. Bunlar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçlar ve hizmetleri iş akışı veya ardışık ardışık yollarla nasıl birleştirebileceklerini gösterir. 
+**Belirli senaryolar** için işlemdeki adımların tümünü gösteren tam uçtan uca izlenecek yollar da sağlanmaktadır. Bunlar listelenmiş ve [örnek izlenecek yollar](walkthroughs.md) konusunun küçük resim açıklamalarıyla bağlantılandırılır. Bulut, şirket içi araçları ve hizmetleri akıllı bir uygulama oluşturmak için bir iş akışı veya işlem hattı halinde nasıl birleştirebileceğinizi gösterir. 
 
-Azure Machine Learning Studio'yu (klasik) kullanarak Team Data Science Process'deki adımların nasıl yürütüleceklerini gösteren örnekler için Azure [ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) ile öğrenme yolunu görün.
+Azure Machine Learning Studio (klasik) kullanarak takım veri bilimi Işleminde adımların nasıl yürütüleceğini gösteren örnekler için, bkz. [Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) öğrenme yolu.

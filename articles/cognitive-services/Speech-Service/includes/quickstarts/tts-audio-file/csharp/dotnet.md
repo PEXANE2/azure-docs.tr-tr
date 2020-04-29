@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Ses dosyası, C# (.NET) içine synthesize konuşma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: ses dosyasına konuşma Sentezleştirme, C# (.net)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,30 +11,30 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
 ms.openlocfilehash: d3d0a807e8742419ee321f38daebf6f70d6b0be1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81275022"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
-## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
-İlk adım, visual studio'da projenizin açık olduğundan emin olmaktır.
+İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
-1. Görsel Stüdyo 2019'u başlatın.
-2. Projenizi yükleyin `Program.cs`ve açın.
+1. Visual Studio 2019 ' i başlatın.
+2. Projenizi yükleyin ve açın `Program.cs`.
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
-Projemiz için iskelet görevi gören bazı kodlar ekleyelim. 'li bir `SynthesisToAudioFileAsync()`async yöntemi oluşturduğunuza dikkat edin.
+Projemiz için bir çatı olarak çalışacak bir kod ekleyelim. Adlı `SynthesisToAudioFileAsync()`bir zaman uyumsuz yöntem oluşturduğunuza dikkat edin.
 
 ````C#
 
@@ -61,7 +61,7 @@ namespace helloworld
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Bir `SpeechSynthesizer` nesneyi başlatmadan önce, abonelik anahtarınızı ve abonelik bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Yönteme `SynthesisToAudioFileAsync()` bu kodu ekleyin.
+Bir `SpeechSynthesizer` nesneyi başlatabilmeniz için önce abonelik anahtarınızı ve abonelik bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Bu kodu `SynthesisToAudioFileAsync()` yöntemine ekleyin.
 
 ````C#
 // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -71,7 +71,7 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 
 ## <a name="create-an-audio-configuration"></a>Ses yapılandırması oluşturma
 
-Şimdi, ses dosyanızı ````AudioConfig```` işaret eden bir nesne oluşturmanız gerekir. Bu nesne, yönetilmeyen kaynakların doğru şekilde serbest bırakılmasını sağlamak için kullanılan bir deyimin içinde oluşturulur. Bu kodu yönteme, `SynthesisToAudioFileAsync()` Konuşma yapılandırmanızın hemen altına ekleyin.
+Şimdi, ses dosyanıza işaret eden bir ````AudioConfig```` nesnesi oluşturmanız gerekir. Yönetilmeyen kaynakların doğru şekilde yayınlanmasıyla emin olmak için bir using ifadesinin içinde bu nesne oluşturulur. Bu kodu, konuşma yapılandırmanızın `SynthesisToAudioFileAsync()` hemen altına, yöntemine ekleyin.
 
 ````C#
 var fileName = "helloworld.wav";
@@ -80,9 +80,9 @@ using (var fileOutput = AudioConfig.FromWavFileOutput(fileName))
 }
 ````
 
-## <a name="initialize-a-speechsynthesizer"></a>Bir SpeechSynthesizer'ı başlatma
+## <a name="initialize-a-speechsynthesizer"></a>SpeechSynthesizer başlatma
 
-Şimdi, nesneyi `SpeechSynthesizer` daha önce `SpeechConfig` oluşturulan `AudioConfig` nesneleri ve nesneleri kullanarak oluşturalım. Bu nesne, yönetilmeyen kaynakların doğru şekilde serbest bırakılmasını sağlamak için bir using deyiminin içinde de oluşturulur. Bu `SynthesisToAudioFileAsync()` kodu, nesnenizi ````AudioConfig```` saran kullanarak ifadenin içine ekleyin.
+Şimdi, daha önce oluşturulan `SpeechSynthesizer` `SpeechConfig` ve `AudioConfig` nesnelerini kullanarak nesneyi oluşturalım. Bu nesne, yönetilmeyen kaynakların uygun şekilde serbest bırakılması için bir using ifadesinin içinde de oluşturulur. Bu kodu `SynthesisToAudioFileAsync()` yöntemine sarmalayan ````AudioConfig```` using ifadesinin içine ekleyin.
 
 ````C#
 using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
@@ -90,21 +90,21 @@ using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
 }
 ````
 
-## <a name="synthesize-text-using-speaktextasync"></a>SpeakTextAsync kullanarak metni sentezleme
+## <a name="synthesize-text-using-speaktextasync"></a>Hoparlörktextasync kullanarak metin sentezleştir
 
-Nesneden, `SpeechSynthesizer` `SpeakTextAsync()` yöntemi aramalısınız. Bu yöntem, metninizi sese dönüştüren Konuşma hizmetine gönderir. Açıkça `SpeechSynthesizer` belirtilmemişse `config.VoiceName` varsayılan sesi kullanır.
+`SpeechSynthesizer` Nesnesinden `SpeakTextAsync()` yöntemi çağıracağız. Bu yöntem, metninizi sese dönüştüren konuşma hizmetine gönderir. `SpeechSynthesizer` Açıkça belirtilmemişse varsayılan seslendirmeyi `config.VoiceName` kullanır.
 
-Using deyiminin içine şu kodu ekleyin:
+Using ifadesinin içinde şu kodu ekleyin:
 ````C#
 var text = "Hello world!";
 var result = await synthesizer.SpeakTextAsync(text);
 ````
 
-## <a name="check-for-errors"></a>Hataları denetleme
+## <a name="check-for-errors"></a>Hataları denetle
 
-Konuşma hizmeti tarafından sentez sonucu döndürüldüğünde, metninizin başarıyla sentezlendiğinden emin olmalısınız.
+Senşme sonucu konuşma hizmeti tarafından döndürüldüğünde, metninizin başarıyla birleştirerek emin olmak için ' i denetlemeniz gerekir.
 
-Aşağıdaki kullanarak deyimi `SpeakTextAsync()`içinde, bu kodu ekleyin:
+Using ifadesinin içinde, aşağıdaki `SpeakTextAsync()`kodu ekleyin:
 ````C#
 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
 {
@@ -124,9 +124,9 @@ else if (result.Reason == ResultReason.Canceled)
 }
 ````
 
-## <a name="check-your-code"></a>Kodunuzu kontrol edin
+## <a name="check-your-code"></a>Kodunuzu denetleyin
 
-Bu noktada, kodunuz şu şekilde görünmelidir:
+Bu noktada, kodunuzun şöyle görünmesi gerekir:
 
 ````C#
 //
@@ -182,13 +182,13 @@ namespace helloworld
 }
 ````
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma sentezimizi test etmeye hazırsınız.
+Artık uygulamanızı oluşturmaya hazır olduğunuzdan konuşma senemizi konuşma hizmetini kullanarak test edebilirsiniz.
 
-1. **Kodu derle** - Visual Studio'nun menü çubuğundan **Build** > **Build Solution'ı**seçin.
-2. **Uygulamanızı başlatın** - Menü çubuğundan **Hata** > **Ayıklama'yı** seçin veya **F5 tuşuna**basın.
-3. **Sentezi başlat** - Metniniz konuşmaya dönüştürülür ve belirtilen ses verilerine kaydedilir.
+1. **Kodu derleyin** -Visual Studio menü çubuğundan derleme**Build Solution**' **ı seçin.** > 
+2. **Uygulamanızı başlatın** -menü çubuğundan hata**ayıklamayı Başlat hata** **Ayıkla** > ' yı seçin veya **F5**tuşuna basın.
+3. **Sensıs Başlat** -metniniz konuşmaya dönüştürülür ve belirtilen ses verilerinde kaydedilir.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -200,5 +200,5 @@ Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma sen
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Özel Ses Oluşturma](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Özel ses örneklerini kaydetme](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Özel bir ses oluşturun](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Özel ses örneklerini Kaydet](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

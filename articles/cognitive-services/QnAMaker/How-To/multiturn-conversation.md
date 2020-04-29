@@ -1,187 +1,187 @@
 ---
-title: Çok dönüşlü konuşmalar - QnA Maker
-description: Botunuzun bir sorudan diğerine çoklu dönüşolarak bilinen çoklu dönüşlerini yönetmek için istemleri ve bağlamı kullanın. Çoklu dönüş, önceki sorunun bağlamınınbir sonraki soru ve yanıtı etkilediği bir ileri ve geri konuşma yapma yeteneğidir.
+title: Çoklu açma konuşmaları-Soru-Cevap Oluşturma
+description: Botunuzun bir sorudan diğerine kadar olan birden çok dönüşi yönetmek için istemleri ve bağlamı kullanın. Çoklu açma, önceki sorudaki bağlamın bir sonraki soruyu ve yanıtı etkilediği geri ve ileri bir konuşmaya sahip olabilir.
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 8ef244e1b6baf480189bb90ea5ff53138a6f377a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81261474"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
 
-Botunuzun bir sorudan diğerine çoklu dönüşler olarak bilinen, birden çok _dönüşleri_yönetmek için izleme istemlerini ve bağlamını kullanın.
+Botunuzun bir sorudan diğerine kadar olan birden çok _dönüşi yönetmek_için izleme komut istemlerini ve bağlamını kullanın.
 
-Çok döndürülerek nasıl çalıştığını görmek için aşağıdaki tanıtım videosunu görüntüleyin:
+Çoklu açma işlevinin nasıl çalıştığını görmek için aşağıdaki tanıtım videosunu görüntüleyin:
 
-[![QnA Maker'da çoklu dönüşlü konuşma](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![Soru-Cevap Oluşturma çoklu oturum konuşması](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
-## <a name="what-is-a-multi-turn-conversation"></a>Çok dönüşlü konuşma nedir?
+## <a name="what-is-a-multi-turn-conversation"></a>Çoklu açma konuşması nedir?
 
-Bazı sorular tek bir dönüşte cevaplanamaz. İstemci uygulamanızı (sohbet robotu) konuşmalarınızı tasarlarken, bir kullanıcı doğru yanıtı belirlemek için filtre edilmesi veya rafine edilmesi gereken bir soru sorabilir. Kullanıcıya *takip istemleri*sunarak bu akışı sorular üzerinden mümkün kılarsınız.
+Bazı sorular tek bir sırayla yanıtlanamaz. İstemci uygulaması (sohbet botu) konuşmalarınızı tasarlarken, bir kullanıcı doğru yanıtı belirleyebilmek için filtrelenen veya iyileştirilmesi gereken bir soru sorabilir. Bu akışı, kullanıcıyı *takip eden istemlerle*sunarak mümkün olan sorulara göre yaparsınız.
 
-Bir kullanıcı bir soru sorduğunda, QnA Maker yanıtı _ve_ herhangi bir takip istemlerini döndürür. Bu yanıt, takip sorularını seçenek olarak sunmanızı sağlar.
+Bir Kullanıcı soru sorarsa, Soru-Cevap Oluşturma yanıtı _ve_ herhangi bir izleme istemini döndürür. Bu yanıt, izleme sorularını seçimler halinde sunmanıza olanak tanır.
 
 > [!CAUTION]
-> Çok dönüşlü istemler SSS belgelerinden ayıklanmaz. Çok döndürülme gerekiyorsa, QnA çiftlerini SSS olarak belirleyen soru işaretlerini kaldırın.
+> Çoklu açma istemleri, SSS belgelerinden ayıklanmaz. Çoklu çift ayıklama gerekiyorsa, QnA çiftlerini SSS olarak belirten soru işaretlerini kaldırın.
 
-## <a name="example-multi-turn-conversation-with-chat-bot"></a>Sohbet botu ile örnek çok yönlü konuşma
+## <a name="example-multi-turn-conversation-with-chat-bot"></a>Sohbet botu ile örnek çoklu açma konuşması
 
-Çoklu dönüşle, bir sohbet botu aşağıdaki resimde gösterildiği gibi son yanıtı belirlemek için bir kullanıcıyla yapılan bir konuşmayı yönetir:
+Çok yönlü olarak, bir sohbet bot, aşağıdaki görüntüde gösterildiği gibi son yanıtı belirlemede Kullanıcı ile bir konuşmayı yönetir:
 
-![Bir konuşma boyunca bir kullanıcıya yol gösteren istemleri içeren çok döndürme iletişim kutusu](../media/conversational-context/conversation-in-bot.png)
+![Bir konuşmaya karşı kullanıcıya kılavuzluk eden istemlerle çoklu çift yönlü iletişim kutusu](../media/conversational-context/conversation-in-bot.png)
 
-Önceki resimde, bir kullanıcı **hesabımı**girerek bir konuşma başlattı. Bilgi tabanının birbirine bağlı üç soru-cevap çifti vardır. Yanıtı hassaslaştırmak için, kullanıcı bilgi tabanındaki üç seçenekten birini seçer. Soru (#1), üç seçenek (#2) olarak sohbet bot sunulan üç takip istemleri vardır.
+Önceki görüntüde, Kullanıcı **hesabımı**girerek bir konuşma başlattı. Bilgi Bankası 'nda üç bağlantılı soru-cevap çifti bulunur. Kullanıcı, yanıtı iyileştirmek için bilgi bankasındaki üç seçenekten birini seçer. Soru (#1), sohbet bot 'ta üç seçenek olarak sunulan üç izleme istemiyle sahiptir (#2).
 
-Kullanıcı bir seçenek (#3) seçtiğinde, bir sonraki rafine etme seçenekleri (#4) listesi sunulur. Bu sıra kullanıcı doğru, son yanıtı (#6) belirleyene kadar (#5) devam eder.
+Kullanıcı bir seçenek seçtiğinde (#3), bir sonraki iyileştirme seçenekleri listesi (#4) sunulur. Bu dizi, Kullanıcı doğru, son yanıtı (#6) seçinceye kadar devam eder (#5).
 
 
-### <a name="use-multi-turn-in-a-bot"></a>Botta çoklu dönüş kullanma
+### <a name="use-multi-turn-in-a-bot"></a>Bir bot 'ta Çoklu açma kullan
 
-KB'nizi yayımladıktan sonra, QnA Maker botunuzu Azure bot hizmetine dağıtmak için **Bot Oluştur** düğmesini seçebilirsiniz. İstemler, botunuz için etkinleştirdiğiniz sohbet istemcilerinde görünür.
+KB 'nizi yayımladıktan sonra Soru-Cevap Oluşturma bot 'ı Azure bot hizmetine dağıtmak için **bot oluştur** düğmesini seçebilirsiniz. İstemler, bot 'niz için etkinleştirdiğiniz sohbet istemcilerinde görüntülenir.
 
-## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Belgenin yapısından çok döndürme oluşturma
+## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Belgenin yapısından çok yönlü konuşma oluşturma
 
-Bir bilgi tabanı oluşturduğunuzda, **KB'nizin Doldur** bölümü **URL'lerden çok döndürme etkinleştir, .pdf veya .docx dosyaları** onay kutusunu görüntüler.
+Bir Bilgi Bankası oluşturduğunuzda, **KB 'Nizi doldur** bölümünde **URL 'ler,. PDF veya. docx dosyalarından çoklu açmayı etkinleştir** onay kutusunu görüntülenir.
 
-![Çok döndürme sağlamak için onay kutusu](../media/conversational-context/enable-multi-turn.png)
+![Çoklu açma ayıklamasını etkinleştirmek için onay kutusu](../media/conversational-context/enable-multi-turn.png)
 
-Bu seçeneği seçtiğinizde, QnA Maker belge yapısında bulunan hiyerarşiyi ayıklar. Hiyerarşi istemleri izlemek için dönüştürülür ve hiyerarşinin kökü üst QnA olarak hizmet vermektedir. Bazı belgelerde hiyerarşinin kökünde yanıt olarak kullanılabilecek içerik yoktur, bu tür hiyerarşileri ayıklamak için yedek yanıt metni olarak kullanılmak üzere 'Varsayılan Yanıt Metni'ni sağlayabilirsiniz.
+Bu seçeneği belirlediğinizde Soru-Cevap Oluşturma belge yapısında mevcut hiyerarşiyi ayıklar. Hiyerarşi, izlemek için ' de dönüştürülür ve hiyerarşinin kökü üst QnA işlevi görür. Bazı belgelerde hiyerarşinin kökünde yanıt olarak kullanılabilecek içerik yok, bu tür hiyerarşileri ayıklamak için ikame yanıt metni olarak kullanılacak ' varsayılan yanıt metni ' ' ni sağlayabilirsiniz.
 
-Çok döndürülebilir yapı yalnızca URL'lerden, PDF dosyalarından veya DOCX dosyalarından çıkarılabilir. Yapı örneği olarak, Microsoft Surface [kullanım kılavuzu PDF dosyasının](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)görüntüsünü görüntüleyin.
+Çoklu açma yapısı yalnızca URL 'Ler, PDF dosyaları veya DOCX dosyalarından çıkarsanamıyor. Yapının bir örneği için, [Microsoft Surface Kullanıcı El Ile PDF dosyasının](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)bir görüntüsünü görüntüleyin.
 
-![! [Kullanım kılavuzundaki yapı örneği] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![! [Kullanıcı el ile yapı örneği] (.. /Media/, tional-Context/Import-File-with-konuşma tional-Structure.exe)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-### <a name="building-your-own-multi-turn-document"></a>Kendi çok dönüşlü belgenizi oluşturma
+### <a name="building-your-own-multi-turn-document"></a>Kendi Çoklu açma belgenizi oluşturma
 
-Çok döndürülerek belge oluşturuyorsanız, lütfen aşağıdaki yönergeleri göz önünde bulundurun:
+Çok yönlü bir belge oluşturuyorsanız lütfen aşağıdaki yönergeleri aklınızda bulundurun:
 
-* Hiyerarşiyi belirtmek için başlıkları ve alt başlıkları kullanın. Örneğin, hızlı olarak alınması gereken QnA'yı belirtmek için üst QnA ve h2'yi belirtmek için h1 yapabilirsiniz. Sonraki hiyerarşiyi belirtmek için küçük başlık boyutunu kullanın. Belgenizdeki yapıyı ima etmek için stil, renk veya başka bir mekanizma kullanmayın, QnA Maker çok döndürülme istemlerini ayıklamaz.
+* Hiyerarşiyi göstermek için başlıklar ve alt başlıklar kullanın. Örneğin, komut istemi olarak alınması gereken QnA 'yi göstermek için üst QnA ve H2 'yi belirtmek üzere H1 'yi belirtebilirsiniz. Sonraki hiyerarşiyi göstermek için küçük başlık boyutunu kullanın. Belgenizde yapıyı daha fazla yapmak için stil, renk veya başka bir mekanizma kullanmayın, Soru-Cevap Oluşturma çoklu açma istemlerini ayıklamaz.
 
-* Başlığın ilk karakteri büyük harfle yazılmalı.
+* Başlığın ilk karakteri büyük harfle yazılmalıdır.
 
-* Bir başlığı soru işaretiyle bitirmeyin. `?`
+* Bir başlığı soru işaretiyle sonlandırmayın `?`.
 
-* [Örnek belgeyi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) kendi çok döndürme belgenizi oluşturmak için örnek olarak kullanabilirsiniz.
+* [Örnek belgeyi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) bir örnek olarak kullanarak kendi Çoklu açma belgenizi oluşturabilirsiniz.
 
-### <a name="adding-files-to-a-multi-turn-kb"></a>Çok dönüşlü KB'ye dosya ekleme
+### <a name="adding-files-to-a-multi-turn-kb"></a>Birden çok açma KB 'ye dosya ekleme
 
-Hiyerarşik bir belge eklediğinizde, QnA Maker konuşma akışı oluşturmak için yapıdan izleme istemlerini belirler.
+Hiyerarşik bir belge eklediğinizde Soru-Cevap Oluşturma, konuşma akışı oluşturmak için yapıdan izleme istemlerini belirler.
 
-1. QnA Maker'da, **URL'lerden,.pdf veya .docx dosyalarından çoklu dönüş çıkarma etkinleştirme** ile oluşturulmuş varolan bir bilgi tabanını seçin. Etkin.
-1. **Ayarlar** sayfasına gidin, eklemek için dosyayı veya URL'yi seçin.
-1. Bilgi tabanını **kaydedin ve eğitin.**
+1. Soru-Cevap Oluşturma ' de, **URL 'ler,. PDF veya. docx dosyalarından çoklu açmayı etkinleştir** seçeneğiyle oluşturulan mevcut bir Bilgi Bankası seçin. etkinletir.
+1. **Ayarlar** sayfasına gidin, eklenecek dosyayı veya URL 'yi seçin.
+1. Bilgi Bankası 'nı **kaydedip eğitme** .
 
 > [!Caution]
-> Yeni veya boş bilgi tabanı için veri kaynağı olarak dışa aktarılan Bir TSV veya XLS çok döndüryetenekli bilgi tabanı dosyasının kullanılmasına yönelik destek desteklenmez. Bir bilgi tabanına dışa aktarılan çok döndürülme istemlerini eklemek için bu dosya türünü QnA Maker portalının **Ayarlar** sayfasından **almanız** gerekir.
+> Yeni veya boş Bilgi Bankası için bir veri kaynağı olarak, aktarılmış bir TSV veya XLS çoklu çift yönlü bilgi tabanı dosyası kullanma desteği desteklenmez. Dışarı aktarılan çoklu oturum istemlerini bir bilgi tabanına eklemek için, bu dosya türünü Soru-Cevap Oluşturma portalının **Ayarlar** sayfasından **içeri aktarmanız** gerekir.
 
 
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Create API ile çok döndürme istemleri ile bilgi tabanı oluşturma
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Oluşturma API 'SI ile çok yönlü istemlerle Bilgi Bankası oluşturma
 
-[QnA Maker Create API'yi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)kullanarak çok dönüşlü istemleri olan bir bilgi durumu oluşturabilirsiniz. İstemler özelliğin `context` `prompts` dizisinde eklenir.
+[Soru-cevap oluşturma API oluşturma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)' yı kullanarak çok yönlü istemlerle bir bilgi talebi oluşturabilirsiniz. İstemler, `context` özelliğin `prompts` dizisine ekliyor.
 
-## <a name="show-questions-and-answers-with-context"></a>Soruları ve yanıtları bağlamla göster
+## <a name="show-questions-and-answers-with-context"></a>Bağlamla soruları ve yanıtları göster
 
-Görüntülenen soru-yanıt çiftlerini yalnızca bağlamsal konuşmalara sahip olanlara indirin.
+Görüntülenecek soru-cevap çiftlerini yalnızca bağlamsal konuşmalarla birlikte azaltın.
 
-**Seçenekleri Görüntüle'yi**seçin ve ardından **bağlamı göster'i**seçin. Liste, izleme istemleri içeren soru-cevap çiftleri görüntüler.
+**Görünüm seçeneklerini**belirleyin ve ardından **bağlamı göster**' i seçin. Liste, izleme istemleri içeren soru-cevap çiftlerini görüntüler.
 
-![Soru-yanıt çiftlerini bağlamsal konuşmalara göre filtreleme](../media/conversational-context/filter-question-and-answers-by-context.png)
+![Bağlama konuşmaları ile soru-cevap çiftlerini filtreleyin](../media/conversational-context/filter-question-and-answers-by-context.png)
 
-Çok döndürme bağlamı ilk sütunda görüntülenir.
+Çoklu açma bağlamı ilk sütunda görüntülenir.
 
-![! ["Bağlam (PREVIEW)" sütunu] (.. /media/conversational-context/surface-manual-pdf-follow-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![! ["Bağlam (ÖNIZLEME)" sütunu] (.. /Media/, tional-Context/Surce-Manual-PDF-Lay-up-Prompt.exe)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-Önceki resimde, **#1** sütunda geçerli soruyu ifade eden kalın metni gösterir. Üst soru satırdaki en üst öğedir. Aşağıdaki tüm sorular bağlantılı soru-cevap çiftleridir. Bu öğeler seçilebilir, böylece hemen diğer bağlam öğelerine gidebilirsiniz.
+Önceki görüntüde, **#1** sütundaki kalın metni gösterir ve bu da geçerli soruyu belirtir. Üst soru, satırdaki en üstteki öğedir. Aşağıdaki sorular, bağlantılı soru-cevap çiftleridir. Diğer bağlam öğelerine hemen gidebilmeniz için bu öğeler seçilebilir.
 
-## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>İzleme istemi olarak varolan bir soru-yanıt çiftini ekleme
+## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Bir izleme istemi olarak mevcut soru-cevap çifti ekleme
 
-Orijinal soru, **Hesabım**, Hesapları ve oturum **açma**gibi takip istemleri vardır .
+İlk soru olan **Hesabım**, **hesaplar ve oturum açma**gibi izleme istemlerine sahiptir.
 
-!["Hesaplar ve oturum açma" yanıtları ve takip istemleri](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
+!["Hesaplar ve oturum açma" yanıtları ve izleme istemleri](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
 
-Şu anda bağlı olmayan varolan bir soru-cevap çiftine bir izleme istemi ekleyin. Soru herhangi bir soru-cevap çiftine bağlı olmadığından, geçerli görünüm ayarının değiştirilmesi gerekir.
+Mevcut bir soru-cevap çiftine Şu anda bağlı olmayan bir izleme istemi ekleyin. Soru ve yanıt çiftiyle bağlantılı olmadığından, geçerli görünüm ayarının değiştirilmesi gerekir.
 
-1. Varolan bir soru-cevap çiftini izleme istemi olarak bağlamak için, soru-cevap çifti için satırı seçin. Surface kılavuzu için, listeyi azaltmak için **Oturum Aç'ı** arayın.
-1. **Oturum Aç'ın**satırında , **Yanıt** sütununda, takip **istemi ekle'yi**seçin.
-1. **İzleme istemi** açılır penceresindeki alanlara aşağıdaki değerleri girin:
-
-    |Alan|Değer|
-    |--|--|
-    |Görüntü metni|Girin **Cihazı kapat.** Bu, izleme isteminde görüntülenecek özel bir metindir.|
-    |Yalnızca bağlam| Bu onay kutusunu seçin. Yanıt, yalnızca soru bağlamı belirtirse döndürülür.|
-    |Yanıtlamak için bağlantı|Varolan soru-cevap çiftini bulmak için **oturum açma ekranını** girin.|
-
-
-1.  Bir eşleşme döndürülür. İzleme olarak bu yanıtı seçin ve sonra **Kaydet'i**seçin.
-
-    !["İzleme istemi (PREVIEW)" sayfası](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
-
-1. Takip istemini ekledikten sonra **Kaydet'i** seçin ve en üstteki navigasyonda train'i seçin.
-
-### <a name="edit-the-display-text"></a>Görüntü metnini edin
-
-Bir takip istemi oluşturulduğunda ve varolan bir soru-cevap çifti **Yanıtbağlantısı**olarak girildiğinde, yeni **Görüntüle metni**girebilirsiniz. Bu metin varolan sorunun yerini almaz ve yeni bir alternatif soru eklemez. Bu değerlerden ayrıdır.
-
-1. Görüntü metnini deletmek için **Bağlam** alanındaki soruyu arayın ve seçin.
-1. Bu sorunun satırında, yanıt sütunundaki izleme istemini seçin.
-1. Görüntülemek istediğiniz ekran metnini seçin ve ardından **Edit'i**seçin.
-
-    ![Görüntü metni için Edit komutu](../media/conversational-context/edit-existing-display-text.png)
-
-1. İzleme **istemi** açılır penceresinde, varolan ekran metnini değiştirin.
-1. Görüntü metnini düzenlemeyi bitirdikten sonra **Kaydet'i**seçin.
-1. Üst navigasyon çubuğunda, **Kaydet ve tren**.
-
-
-## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Takip istemi olarak yeni bir soru-cevap çifti ekleme
-
-Bilgi tabanına yeni bir soru-cevap çifti eklediğinizde, her çift bir izleme istemi olarak varolan bir soruya bağlanmalıdır.
-
-1. Bilgi tabanı araç çubuğunda, Hesaplar için varolan soru-cevap çiftini arayın ve seçin **ve oturum aç.'**
-
-1. Bu sorunun **Yanıt** sütununda, **takip istemi ekle'yi**seçin.
-1. **İzleme istemi (PREVIEW)** altında, aşağıdaki değerleri girerek yeni bir izleme istemi oluşturun:
+1. Mevcut bir soru-cevap çiftini bir izleme istemi olarak bağlamak için, soru-cevap çiftinin satırını seçin. Yüzey el ile, listeyi azaltmak için **oturumu** Kapat ' ı arayın.
+1. **SignOut**satırındaki **Yanıt** sütununda, **izleme istemi Ekle**' yi seçin.
+1. **İzleme istemi** açılır penceresindeki alanlarda aşağıdaki değerleri girin:
 
     |Alan|Değer|
     |--|--|
-    |Görüntü metni|*Bir Windows Hesabı oluşturun.* İzleme isteminde görüntülenecek özel metin.|
-    |Yalnızca bağlam|Bu onay kutusunu seçin. Bu yanıt yalnızca soru bağlamı belirtirse döndürülür.|
-    |Yanıtlamak için bağlantı|Cevap olarak aşağıdaki metni girin:<br>*Yeni veya varolan bir e-posta hesabıyla bir Windows hesabı [oluşturun.](https://account.microsoft.com/) *<br>Veritabanını kaydedip eğitdiğinizde, bu metin dönüştürülür. |
+    |Görüntü metni|**Cihazı**kapatma ' yı girin. Bu, izleme isteminde görüntülenecek özel bir metindir.|
+    |Yalnızca bağlam| Bu onay kutusunu seçin. Yanıt yalnızca soru, bağlam belirttiğinde döndürülür.|
+    |Yanıta bağla|Mevcut soru-cevap çiftini bulmak için **oturum açma ekranını kullanın** yazın.|
+
+
+1.  Bir eşleşme döndürülür. Bu yanıtı izleme olarak seçin ve ardından **Kaydet**' i seçin.
+
+    !["Izleme istemi (ÖNIZLEME)" sayfası](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+
+1. İzleme istemi ekledikten sonra, üst gezinmede **Kaydet ve eğitme** ' yi seçin.
+
+### <a name="edit-the-display-text"></a>Görüntüleme metnini düzenleme
+
+Bir izleme istemi oluşturulduğunda ve **Yanıt bağlantısı**olarak mevcut soru-cevap çifti girildiğinde, yeni **görüntü metni**girebilirsiniz. Bu metin, mevcut sorunun yerini almaz ve yeni bir alternatif soru eklemez. Bu değerlerden ayrıdır.
+
+1. Görüntüleme metnini düzenlemek için **bağlam** alanında soruyu arayın ve seçin.
+1. Söz konusu sorunun satırında, yanıt sütununda izleme istemi ' ni seçin.
+1. Düzenlemek istediğiniz görüntü metnini seçin ve ardından **Düzenle**' yi seçin.
+
+    ![Görüntü metni için Düzenle komutu](../media/conversational-context/edit-existing-display-text.png)
+
+1. **İzleme istemi** açılır penceresinde, varolan görüntüleme metnini değiştirin.
+1. Görüntü metnini düzenlemenizi bitirdiğinizde **Kaydet**' i seçin.
+1. Üst gezinti çubuğunda **Kaydet ve eğitme**.
+
+
+## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Yeni soru-cevap çiftini bir izleme istemi olarak ekleyin
+
+Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bir izleme istemi olarak mevcut bir soruya bağlanması gerekir.
+
+1. Bilgi Bankası araç çubuğunda, **hesaplar ve oturum açmak**için mevcut soru-cevap çiftini arayıp seçin.
+
+1. Bu sorunun **Yanıt** sütununda, **izleme istemi Ekle**' yi seçin.
+1. **İzleme istemi (Önizleme)** altında, aşağıdaki değerleri girerek yeni bir izleme istemi oluşturun:
+
+    |Alan|Değer|
+    |--|--|
+    |Görüntü metni|*Bir Windows hesabı oluşturun*. İzleme isteminde görüntülenecek özel metin.|
+    |Yalnızca bağlam|Bu onay kutusunu seçin. Bu yanıt yalnızca soru bağlam belirttiğinde döndürülür.|
+    |Yanıta bağla|Yanıt olarak aşağıdaki metni girin:<br>*Yeni veya var olan bir e-posta hesabıyla bir Windows hesabı [oluşturun](https://account.microsoft.com/) *.<br>Veritabanını kaydedip eğitmeniz durumunda bu metin dönüştürülür. |
     |||
 
-    ![Yeni bir istemi soru ve yanıt oluşturma](../media/conversational-context/create-child-prompt-from-parent.png)
+    ![Yeni bir istem sorusu ve yanıtı oluşturma](../media/conversational-context/create-child-prompt-from-parent.png)
 
 
-1. **Yeni Oluştur'u**seçin ve sonra **Kaydet'i**seçin.
+1. **Yeni oluştur**' u seçin ve ardından **Kaydet**' i seçin.
 
-    Bu eylem yeni bir soru-cevap çifti oluşturur ve seçili soruyu bir izleme istemi olarak bağlar. **Bağlam** sütunu, her iki soru için de bir izleme istemi ilişkisini gösterir.
+    Bu eylem yeni bir soru-cevap çifti oluşturur ve seçilen soruyu bir izleme istemi olarak bağlar. **Bağlam** sütunu her iki soru için de bir izleme istemi ilişkisini gösterir.
 
-1. **Görünüm seçeneklerini**seçin ve ardından [**bağlamı Göster'i (PREVIEW)**](#show-questions-and-answers-with-context)seçin.
+1. **Görünüm seçeneklerini**belirleyin ve ardından [**BAĞLAMı göster (Önizleme)**](#show-questions-and-answers-with-context)öğesini seçin.
 
-    Yeni soru nasıl bağlantılı olduğunu gösteriyor.
+    Yeni soru, nasıl bağlandığını gösterir.
 
-    ![Yeni bir izleme istemi oluşturma](../media/conversational-context/new-qna-follow-up-prompt.png)
+    ![Yeni bir izleme istemi oluşturun](../media/conversational-context/new-qna-follow-up-prompt.png)
 
-    Üst soru seçeneklerinden biri olarak yeni bir soru görüntüler.
+    Üst soru, seçimlerinden biri olarak yeni bir soru görüntüler.
 
-    ![! [Bağlam sütunu, her iki soru için de, bir izleme istemi ilişkisini gösterir] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![! [Bağlam sütunu her iki soru için de bir izleme istemi ilişkisi gösterir] (.. /Media/konuşma tional-Context/Child-Prompt-Created.exe)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Takip istemini ekledikten sonra **Kaydet'i** seçin ve en üstteki navigasyon çubuğunda train'i seçin.
+1. İzleme istemi ekledikten sonra, üst gezinti çubuğunda **Kaydet ve eğitme** ' yi seçin.
 
 <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>
 
-## <a name="view-multi-turn-during-testing-of-follow-up-prompts"></a>İzleme istemlerinin test edilmesi sırasında çoklu dönüş görüntüleme
+## <a name="view-multi-turn-during-testing-of-follow-up-prompts"></a>İzleme istemlerinin testi sırasında çoklu açmayı görüntüle
 
-Soruyu **Test** bölmesinde takip istemleriyle test ettiğinizde, yanıt izleme istemlerini içerir.
+**Test** bölmesindeki izleme istemleri ile soruyu test ettiğinizde, yanıt izleme istemlerini içerir.
 
-![Yanıt, takip istemlerini içerir](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
+![Yanıt, izleme istemlerini içerir](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 
-## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>JSON ilk yanıtı ve takip isteklerini döndürmek için bir istek
+## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Bir başlangıç yanıtı ve izleme istemleri döndüren bir JSON isteği
 
-Kullanıcının `context` sorusunun yanıtını istemek ve izleme istemlerini eklemek için boş nesneyi kullanın.
+Kullanıcının sorusunun yanıtını `context` istemek ve izleme istemleri eklemek için boş nesneyi kullanın.
 
 ```JSON
 {
@@ -193,9 +193,9 @@ Kullanıcının `context` sorusunun yanıtını istemek ve izleme istemlerini ek
 }
 ```
 
-## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>İlk yanıtı ve takip istemlerini döndürmek için bir JSON yanıtı
+## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>Bir başlangıç yanıtı ve izleme istemleri döndüren bir JSON yanıtı
 
-Önceki bölümde bir cevap istenir ve hesaplara herhangi bir takip ister **ve oturum açar.** Yanıt, *yanıtlar[0].context'da*bulunan istem bilgilerini ve kullanıcıya görüntülenecek metni içerir.
+Yukarıdaki bölüm, **hesaplara ve oturum**açmaya yönelik bir yanıt ve herhangi bir izleme istemi istedi. Yanıt, *yanıtları [0]. bağlam*içinde bulunan istem bilgilerini ve kullanıcıya görüntülenecek metni içerir.
 
 ```JSON
 {
@@ -260,7 +260,7 @@ Kullanıcının `context` sorusunun yanıtını istemek ve izleme istemlerini ek
 }
 ```
 
-Dizi `prompts` `displayText` özellik ve `qnaId` değer metin sağlar. Bu yanıtları konuşma akışında bir sonraki görüntülenen seçenekler olarak `qnaId` gösterebilir ve ardından seçilenleri aşağıdaki istekte QnA Maker'a geri gönderebilirsiniz.
+`prompts` Dizi, `displayText` özelliğinde ve `qnaId` değerinde metin sağlar. Bu yanıtları, konuşma akışında bir sonraki görüntülenmiş seçimler olarak gösterebilir ve ardından seçilen `qnaId` isteği aşağıdaki istekte soru-cevap oluşturma geri gönderebilirsiniz.
 
 <!--
 
@@ -268,11 +268,11 @@ The `promptsToDelete` array provides the ...
 
 -->
 
-## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>JSON'un ilk yanıt ve takip istemlerini döndürme isteği
+## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>İlk yanıt olmayan yanıt ve izleme istemlerini döndüren JSON isteği
 
-Nesneyi `context` önceki bağlamı içerecek şekilde doldurun.
+`context` Nesneyi önceki bağlamı içerecek şekilde doldurur.
 
-Aşağıdaki JSON isteğinde, geçerli soru *oturum imzalamak için Windows Hello kullanın* ve önceki soru hesapları ve oturum *açma*oldu .
+Aşağıdaki JSON isteğinde, geçerli soru, *oturum açmak Için Windows Hello* ve önceki soruda *hesaplar ve oturum açmak*için kullanılır.
 
 ```JSON
 {
@@ -288,9 +288,9 @@ Aşağıdaki JSON isteğinde, geçerli soru *oturum imzalamak için Windows Hell
 }
 ```
 
-##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>İlk yanıt olmayan bir yanıtı ve takip istemlerini döndürmek için bir JSON yanıtı
+##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>İlk yanıt olmayan yanıt ve izleme komut istemlerini döndüren JSON yanıtı
 
-QnA Maker _GenerateAnswer_ JSON `context` `answers` yanıtı, nesnedeki ilk öğenin özelliğindeki izleme istemlerini içerir:
+Soru-Cevap Oluşturma _Generateanswer_ JSON yanıtı, `context` `answers` nesnedeki ilk öğenin özelliğindeki izleme istemlerini içerir:
 
 ```JSON
 {
@@ -348,26 +348,26 @@ QnA Maker _GenerateAnswer_ JSON `context` `answers` yanıtı, nesnedeki ilk öğ
 }
 ```
 
-## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Bilgi tabanını QnA Maker kimliğiyle sorgula
+## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Bilgi Bankası 'nı Soru-Cevap Oluşturma KIMLIĞIYLE sorgulayın
 
-Çok dönüşözelliğini kullanarak özel bir uygulama oluşturuyorsanız. İlk sorunun yanıtında, herhangi bir takip istemleri `qnaId` ve ilişkili döndürülür. Artık kimliğiniz olduğuna göre, bunu takip isteminin istek gövdesinde geçirebilirsiniz. İstek gövdesi `qnaId`, ve bağlam nesnesi (önceki QnA Maker özelliklerini içeren) içeriyorsa, GenerateAnswer soruyu yanıt metnine göre bulmak için sıralama algoritmasını kullanmak yerine tam soruyu kimlikle döndürür.
+Çoklu açma özelliğini kullanarak özel bir uygulama oluşturuyorsanız. İlk sorunun yanıtında, tüm izleme istemleri ve onunla ilişkili `qnaId` döndürülür. KIMLIĞINIZ olduğuna göre, bunu izleme isteminin istek gövdesinde geçirebilirsiniz. İstek gövdesi `qnaId`öğesini ve bağlam nesnesini içeriyorsa (önceki soru-cevap oluşturma özelliklerini içeren), generateanswer, soru metninin yanıtını bulmak için derecelendirme algoritmasını kullanmak yerine kimliğe göre tam soruyu döndürür.
 
 
-## <a name="display-order-is-supported-in-the-update-api"></a>Görüntüleme sırası Güncelleştirme API'sinde desteklenir
+## <a name="display-order-is-supported-in-the-update-api"></a>Güncelleştirme API 'sinde görüntüleme sırası destekleniyor
 
-JSON yanıtında döndürülen [görüntü metni ve görüntü sırası,](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)Güncelleştirme [API'sı](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)tarafından düzenlenmek üzere desteklenir.
+JSON yanıtında döndürülen [görüntüleme metni ve görüntüleme sırası](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto), [güncelleştirme API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)tarafından düzenlenmek üzere desteklenir.
 
-## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Güncelleştirme API'si ile çok dönüşlü istemler ekleme veya silme
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Güncelleştirme API 'SI ile çoklu açma istemlerini ekleme veya silme
 
-[QnA Maker Update API'sini](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)kullanarak çok dönüşlü istemler ekleyebilir veya silebilirsiniz.  İstemler özelliğin `context` `promptsToAdd` dizisinde ve diziye `promptsToDelete` eklenir.
+[Soru-cevap oluşturma Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)'sini kullanarak çok yönlü istemler ekleyebilir veya silebilirsiniz.  İstemler, `context` özelliğin `promptsToAdd` dizisine ve `promptsToDelete` dizisine ekliyor.
 
-## <a name="export-knowledge-base-for-version-control"></a>Sürüm denetimi için bilgi tabanını dışa aktarma
+## <a name="export-knowledge-base-for-version-control"></a>Sürüm denetimi için Bilgi Bankası dışarı aktarma
 
-QnA Maker, dışa aktarılan dosyaya çok döndürerek konuşma adımlarını ekleyerek sürüm denetimini destekler.
+Soru-Cevap Oluşturma, dışarıya açılan dosyadaki çok yönlü konuşma adımlarını ekleyerek sürüm denetimini destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [iletişim örneğinden](https://aka.ms/qnamakermultiturnsample) bağlamsal konuşmalar hakkında daha fazla bilgi edinin veya [çok döndürülme konuşmaları için kavramsal bot tasarımı](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)hakkında daha fazla bilgi edinin.
+Bu [iletişim kutusu](https://aka.ms/qnamakermultiturnsample) örneğinden bağlamsal konuşmalar hakkında daha fazla bilgi edinin veya [çok yönlü konuşmalar için kavramsal bot tasarımı](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Bilgi bankasını geçirme](../Tutorials/migrate-knowledge-base.md)

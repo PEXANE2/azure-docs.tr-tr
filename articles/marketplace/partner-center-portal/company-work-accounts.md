@@ -1,6 +1,6 @@
 ---
-title: Şirket iş hesapları ve Ortak Merkezi
-description: Şirketinizin Microsoft ile ayarlanmış bir iş hesabı olup olmadığını, yeni bir iş hesabı oluşturup oluşturmadığını veya İş Ortağı Merkezi ile kullanmak üzere birden çok iş hesabı oluşturup oluşturmadığını denetleme.
+title: Şirket iş hesapları ve Iş Ortağı Merkezi
+description: Şirketinizin Microsoft ile ayarlanmış bir iş hesabına sahip olup olmadığını kontrol edin, yeni bir iş hesabı oluşturun veya iş ortağı merkezi ile kullanmak üzere birden çok iş hesabı ayarlayın.
 author: dsindona
 ms.author: parthp
 ms.service: marketplace
@@ -8,50 +8,50 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262375"
 ---
-# <a name="company-work-accounts-and-partner-center"></a>Şirket iş hesapları ve Ortak Merkezi
+# <a name="company-work-accounts-and-partner-center"></a>Şirket iş hesapları ve Iş Ortağı Merkezi
 
-İş Ortağı Merkezi, birden çok kullanıcının hesap erişimini yönetmek, izinleri denetlemek, grupları ve uygulamaları barındırmak ve profil verilerini korumak için Azure Etkin Dizin (AD) kiracıları olarak da bilinen şirket çalışma hesaplarını kullanır. Şirketinizin iş e-posta hesabı etki alanını İş Merkezi hesabınıza bağlayarak, şirketinizin çalışanları kendi iş hesabı kullanıcı adlarını ve parolalarını kullanarak pazar teklifleri yönetmek için Ortak Merkezi'nde oturum açabilir.
+İş Ortağı Merkezi, birden çok kullanıcı için hesap erişimini yönetmek, izinleri denetlemek, konak grupları ve uygulamaları denetlemek ve profil verilerini korumak için Azure Active Directory (AD) kiracılar olarak da bilinen şirket iş hesaplarını kullanır. Şirketinizin iş e-posta hesabı etki alanını Iş Ortağı Merkezi hesabınıza bağlayarak, şirketinizin çalışanları kendi iş hesabı kullanıcı adlarını ve parolalarını kullanarak Market tekliflerini yönetmek için Iş Ortağı Merkezi ' nde oturum açabilir.
 
-## <a name="check-whether-your-company-already-has-a-work-account"></a>Şirketinizin zaten bir iş hesabı olup olmadığını kontrol edin
+## <a name="check-whether-your-company-already-has-a-work-account"></a>Şirketinizin zaten bir iş hesabına sahip olup olmadığını denetleyin
 
-Şirketiniz Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmetine abone olduysa, İş Merkezi ile kullanılabilecek bir iş e-posta hesabı etki alanınız (Azure Etkin Dizin kiracı olarak da adlandırılır).
+Şirketiniz Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmetine abone olduysa, iş ortağı merkezi ile kullanılabilecek bir iş e-posta hesabı etki alanınız (Azure Active Directory kiracısı olarak da bilinir) zaten vardır.
 
-Denetlemek için aşağıdaki adımları izleyin:
-1. Azure yönetici portalında oturum https://portal.azure.comaç.
-2. Sol gezinme menüsünden **Azure Etkin Dizini'ni** seçin ve ardından Özel alan **adlarını**seçin.
-3. Zaten bir iş hesabınız varsa, alan adınız listelenir.
+Denetlemek için şu adımları izleyin:
+1. Konumundaki https://portal.azure.comAzure Yönetim Portalı ' nda oturum açın.
+2. Sol gezinti menüsünden **Azure Active Directory** seçin ve ardından **özel etki alanı adları**' nı seçin.
+3. Zaten bir iş hesabınız varsa, etki alanı adınız listelenecektir.
 
-Şirketinizin zaten bir iş hesabı yoksa, İş Ortağı Merkezi kayıt işlemi sırasında sizin için bir hesap oluşturulur.
+Şirketinizde zaten bir iş hesabı yoksa, iş ortağı merkezi kayıt işlemi sırasında sizin için bir tane oluşturulur.
 
 ## <a name="set-up-multiple-work-accounts"></a>Birden çok iş hesabı ayarlama
 
-Varolan bir iş hesabını kullanmaya karar vermeden önce, iş hesabında kaç kullanıcının İş Ortağı Merkezi'ne erişmeye ihtiyacı olacağını göz önünde bulundurun. İş hesabında İş Ortağı Merkezi'ne erişmeihtiyacı olmayan kullanıcılarınız varsa, yalnızca İş Ortağı Merkezi'ne erişmeihtiyacı olan kullanıcıların belirli bir hesapta temsil edilmesi için birden çok iş hesabı oluşturmayı düşünebilirsiniz.
+Mevcut bir iş hesabını kullanmaya karar vermeden önce iş hesabındaki kaç kullanıcının iş ortağı merkezi 'ne erişmesi gerektiğini göz önünde bulundurun. İş hesabında iş ortağı merkezi 'ne erişmesi gerekmeyen kullanıcılarınız varsa, yalnızca iş ortağı merkezi 'ne erişmesi gereken kullanıcıların belirli bir hesapta temsil edilebilmesi için birden çok iş hesabı oluşturmayı düşünmek isteyebilirsiniz.
 
-## <a name="create-a-new-work-account"></a>Yeni bir iş hesabı oluşturma
+## <a name="create-a-new-work-account"></a>Yeni bir iş hesabı oluşturun
 
-Şirketiniz için yeni bir iş hesabı oluşturmak için aşağıdaki adımları izleyin. Şirketinizin Microsoft Azure hesabında yönetim izinleri olan lardan yardım istemeniz gerekebilir.
+Şirketiniz için yeni bir iş hesabı oluşturmak için aşağıdaki adımları izleyin. Şirketinizin Microsoft Azure hesabınızda Yönetici izinlerine sahip olduğunuzda yardım istemeniz gerekebilir.
 
-1. Microsoft Azure [portalında](https://portal.azure.com)oturum açın.
-2. Soldaki gezinti menüsünden **Azure Etkin Dizin** -> **Kullanıcıları'nı**seçin.
-3. **Yeni kullanıcıyı** seçin ve bir ad ve e-posta adresi girerek yeni bir Azure iş hesabı oluşturun. **Dizin rolünün** **Kullanıcı'ya** ayarlandığından emin olun ve otomatik olarak oluşturulan parolayı görüntülemek ve not almak için alttaki **Parolayı Göster** onay kutusunu seçin.
-4. Yeni kullanıcıyı kaydetmek için **Oluştur'u** seçin.
+1. [Microsoft Azure Portal](https://portal.azure.com)oturum açın.
+2. Sol gezinti menüsünden **Azure Active Directory** -> **kullanıcıları**' nı seçin.
+3. **Yeni Kullanıcı** ' yı seçin ve bir ad ve e-posta adresi girerek yeni bir Azure iş hesabı oluşturun. **Dizin rolünün** **Kullanıcı** olarak ayarlandığından emin olun ve en alttaki **parolayı göster** onay kutusunu seçerek otomatik olarak oluşturulan parolayı görebilirsiniz.
+4. Yeni kullanıcıyı kaydetmek için **Oluştur** ' u seçin.
 
-Kullanıcı hesabının e-posta adresi dizininizde doğrulanmış bir etki alanı adı olmalıdır. Sol gezinme menüsünde **Azure Active Directory** -> **Custom etki alanı adlarını** seçerek dizininizdeki tüm doğrulanmış etki alanlarını listeleyebilirsiniz.
+Kullanıcı hesabının e-posta adresi, dizininizde doğrulanmış bir etki alanı adı olmalıdır. Sol gezinti menüsünde **Azure Active Directory** -> **özel etki alanı adları** ' nı seçerek dizininizdeki tüm doğrulanmış etki alanlarını listeleyebilirsiniz.
 
-Azure Etkin Dizin'de özel etki alanları ekleme hakkında daha fazla bilgi edinmek için Azure [AD'de bir etki alanı ekle veya ilişkilendirme](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain)bölümüne bakın.
+Azure Active Directory özel etki alanları ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure AD 'de etki alanı ekleme veya ilişkilendirme](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
 
-## <a name="troubleshoot-work-email-sign-in"></a>Sorun giderme iş e-posta oturum açma
+## <a name="troubleshoot-work-email-sign-in"></a>İş e-postasına yönelik oturum açma sorunlarını giderme
 
-İş hesabınızda oturum açmada sorun yaşıyorsanız (Azure AD kiracınız olarak da bilinir), aşağıdaki diyagramda durumunuzla en iyi eşleşen senaryoyu bulun ve önerilen adımları izleyin.
+İş hesabınızda oturum açarken sorun yaşıyorsanız (Azure AD kiracınız olarak da bilinir), aşağıdaki diyagramda, durumunuza en iyi eşleşen senaryoyu bulun ve önerilen adımları izleyin.
 
-![Sorun giderme iş hesabı oturum açma diyagramı](./media/onboarding-aad-flow.png)
+![İş hesabı oturum açma sorunlarını giderme diyagramı](./media/onboarding-aad-flow.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İş Ortağı Merkezi'nde ticari pazar hesabınızı yönetme](./manage-account.md) 
+- [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](./manage-account.md) 

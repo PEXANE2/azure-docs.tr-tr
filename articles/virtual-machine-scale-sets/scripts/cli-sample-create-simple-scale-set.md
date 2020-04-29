@@ -1,5 +1,5 @@
 ---
-title: Azure CLI Örnekleri - Sanal makine ölçek kümesi oluşturma
+title: Azure CLı örnekleri-sanal makine ölçek kümesi oluşturma
 description: Bu betik, Ubuntu işletim sistemi ve yük dengeleyici içeren ilgili ağ kaynakları ile bir Azure sanal makine ölçek kümesi oluşturur.
 author: ju-shim
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: c7f03d0f6dd31d85de8c3f917895e965585eb6ed
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010405"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI ile sanal makine ölçek kümesi oluşturma

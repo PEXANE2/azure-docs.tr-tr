@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985941"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Senaryolar ve Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS), çeşitli istemcilere (TV, PC ve mobil cihazlar gibi) isteğe bağlı olarak veya canlı akış halinde teslim amacıyla video ve ses içeriklerini güvenli bir şekilde karşıya yüklemenizi, depolamanızı, kodlamanızı ve paketlemenizi sağlar.
 
 AMS, dünyanın dört bir yanındaki birden fazla veri merkezinde çalışmaktadır. Bu veri merkezleri, coğrafi bölgeler halinde gruplandırılarak uygulamalarınızı oluşturacağınız yeri seçme esnekliği tanır. [Bölgeler ve konumlarının listesini](https://azure.microsoft.com/regions/) gözden geçirebilirsiniz. 
 
-Bu konu, içeriğinizi [canlı](#live_scenarios) veya isteğe bağlı olarak sunmak için yaygın senaryoları gösterir. Bu konu başlığında, medya özellikleri ve hizmetlerinin veri merkezleri arasında kullanılabilirliği hakkındaki ayrıntılar da sağlanır.
+Bu konuda, içeriğinizi [canlı](#live_scenarios) veya isteğe bağlı olarak sunmaya yönelik yaygın senaryolar gösterilmektedir. Bu konu başlığında, medya özellikleri ve hizmetlerinin veri merkezleri arasında kullanılabilirliği hakkındaki ayrıntılar da sağlanır.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -151,14 +151,14 @@ AMS müşterileri akış uç noktalarını, medya işleme ve depolamayı kendi A
 
     **Premium** akış uç noktaları, adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar; dolayısıyla gelişmiş iş yükleri için uygundur. **Premium** akış uç noktası olan müşteriler, varsayılan olarak bir akış birimi (SU) alır. Akış uç noktası, SU’lar eklenerek ölçeklendirilebilir. Her SU, uygulamaya ek bant genişliği kapasitesi sağlar. **Premium** akış uç noktalarını ölçeklendirme hakkında daha fazla bilgi için, [Akış uç noktalarını ölçeklendirme](media-services-portal-scale-streaming-endpoints.md) konusuna bakın.
 
-* Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Aşağıdaki ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1**, **S2**, veya **S3**. Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır.
+* Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Şu ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1**, **S2**veya **S3**. Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır.
 
-    Ayrılmış birim türünü belirtmenin yanı sıra, hesabınızı Ayrılmış **Birimler** (RUS) ile birlikte sağlamanızı belirtebilirsiniz. Sağlanan RU sayısı, verili bir hesapta eşzamanlı olarak işlenebilecek medya görevlerinin sayısını belirler.
+    Ayrılmış birim türünü belirtmenin yanı sıra, hesabınızı **ayrılmış birimler** (ru) ile sağlamayı belirtebilirsiniz. Sağlanan RU sayısı, verili bir hesapta eşzamanlı olarak işlenebilecek medya görevlerinin sayısını belirler.
 
     >[!NOTE]
     >RU, tüm medya işlemesini paralel hale getirmek için çalışır ve Azure Media Indexer’ın kullanıldığı dizin oluşturma işleri de buna dahildir. Bununla birlikte kodlamadan farklı olarak, dizin oluşturma işleri daha hızlı ayrılmış birimlerde daha hızlı işlenmez.
 
-    Daha fazla bilgi için bkz: [Ölçek medya işleme.](media-services-portal-scale-media-processing.md)
+    Daha fazla bilgi için bkz. [medya Işlemeyi ölçeklendirme](media-services-portal-scale-media-processing.md).
 * Media Services hesabınızı, depolama hesapları ekleyerek de ölçeklendirebilirsiniz. Her depolama hesabı 500 TB ile sınırlıdır. Depolama alanınızı varsayılan sınırlamaların ötesine genişletmek için, tek bir Media Services hesabına birden çok depolama hesabı eklemeyi seçebilirsiniz. Daha fazla bilgi için bkz. [Depolama hesaplarını yönetme](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği
@@ -169,7 +169,7 @@ Bu bölümde, Media Services özelliklerinin veri merkezleri arasında kullanıl
 
 #### <a name="availability"></a>Kullanılabilirlik
 
-Medya Hizmetlerinin belirli bir veri merkezinde kullanılabilir olup olmadığını belirlemek için [Bölgeye göre Azure Ürünlerini](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all) kullanın.
+Belirli bir veri merkezinde Media Services kullanılabilir olup olmadığını öğrenmek için [bölgeye göre Azure ürünlerini](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all) kullanın.
 
 ### <a name="streaming-endpoints"></a>Akış uç noktaları 
 
@@ -204,7 +204,7 @@ AMS, isteğe bağlı iki kodlayıcı sunar: **Media Encoder Standard** ve **Medi
 Medya Analizi, kuruluş ve işletmelerin video dosyalarından eyleme dönüştürülebilir öngörüler türetmesini kolaylaştıran bir grup konuşma ve görme bileşenidir. Daha fazla bilgi için bkz. [Azure Media Services Analizi’ne Genel Bakış](media-services-analytics-overview.md).
 
 > [!NOTE]
-> Bazı analitik ortam işlemcileri kullanımdan kaldırılacaktır. Emeklilik tarihleri [için, eski bileşenler](legacy-components.md) konusuna bakın.
+> Bazı Analytics medya işlemcileri kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, [eski bileşenler](legacy-components.md) konusuna bakın.
 
 #### <a name="availability"></a>Kullanılabilirlik
 
@@ -257,7 +257,7 @@ Daha fazla bilgi için [ölçeklendirme](#scaling) bölümüne bakın.
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

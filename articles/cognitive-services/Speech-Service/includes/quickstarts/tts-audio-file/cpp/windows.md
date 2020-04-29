@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Ses dosyasına konuşma sentezleme, C++ (Windows) - Konuşma hizmeti'
+title: 'Hızlı başlangıç: ses dosyasına konuşma Sentezleştir, C++ (Windows)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,25 +11,25 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: wolfma
 ms.openlocfilehash: 2703756a748d8e57321e54b3a9cb961916d337b6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81274755"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. **helloworld.cpp** kaynak dosyasını açın.
 
-1. Tüm kodu aşağıdaki parçacıkla değiştirin:
+1. Tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
    ```C++
 
@@ -72,17 +72,17 @@ Başlamadan önce şunları unutmayın:
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Dizeyi `helloworld.wav` kendi dosya adınız ile değiştirin.
+1. Dizeyi `helloworld.wav` kendi dosya adı ile değiştirin.
 
-1. Menü çubuğundan **Dosya** > **Yı Tümle'yi kaydet'i**seçin.
+1. Menü çubuğundan **Dosya** > **Tümünü Kaydet**' i seçin.
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
 
-1. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna basın) seçin.
+1.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya **F5**tuşuna basın).
 
-1. Metniniz konuşmaya dönüştürülür ve belirtilen ses verilerine kaydedilir.
+1. Metniniz konuşmaya dönüştürülür ve belirtilen ses verilerinde kaydedilir.
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]
@@ -94,5 +94,5 @@ Başlamadan önce şunları unutmayın:
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Özel Ses Oluşturma](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Özel ses örneklerini kaydetme](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Özel bir ses oluşturun](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
+- [Özel ses örneklerini Kaydet](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

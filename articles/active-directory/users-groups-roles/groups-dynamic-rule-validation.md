@@ -1,6 +1,6 @@
 ---
-title: Dinamik grup üyeliği için kuralları doğrulayın (önizleme) - Azure AD | Microsoft Dokümanlar
-description: Azure Etkin Dizini'nde dinamik bir grup için üyeleri üyelik kuralına göre nasıl sınayabilirsiniz?
+title: Dinamik grup üyeliği için kuralları doğrulama (Önizleme)-Azure AD | Microsoft Docs
+description: Üyeleri, Azure Active Directory dinamik gruplar için üyelik kuralına göre test etme.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,35 +15,35 @@ ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e081f62949f4cf3f7ae375b2c60ee5b032d974
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115527"
 ---
-# <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Azure Etkin Dizini'nde dinamik bir grup üyelik kuralını (önizleme) doğrulama
+# <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Azure Active Directory bir dinamik grup üyeliği kuralını (Önizleme) doğrulama
 
-Azure Etkin Dizin (Azure AD) artık dinamik grup kurallarını (genel önizlemede) doğrulamak için araçlar sağlar. Kuralları **Doğrula** sekmesinde, kuralın beklendiği gibi çalıştığını doğrulamak için örnek grup üyelerine karşı dinamik kuralınızı doğrulayabilirsiniz. Yöneticiler dinamik grup kuralları oluştururken veya güncellerken, bir kullanıcının veya aygıtın grubun bir üyesi olup olmayacağını bilmek ister. Bu, kullanıcının veya aygıtın kural ölçütlerini karşılayıp karşılamadığını değerlendirmeye ve üyelik beklenmediği durumlarda sorun gidermeye yardımcı olur.
+Azure Active Directory (Azure AD) artık dinamik grup kurallarını (genel önizlemede) doğrulamak için araçlar sağlar. Kuralların beklenen şekilde çalıştığını onaylamak için **kuralları doğrula** sekmesinde, dinamik kuralınızı örnek grup üyelerine doğrulayabilirsiniz. Yöneticiler, dinamik grup kuralları oluştururken veya güncelleştirirken, bir kullanıcının veya cihazın grubun üyesi olup olmayacağını bilmesini ister. Bu, Kullanıcı veya cihazın kural ölçütlerini karşılayıp karşılamadığını değerlendirmeye ve üyelik beklenmediği zaman sorun gidermeye yardımcı olur.
 
-## <a name="step-by-step-walk-through"></a>Adım adım gezinme
+## <a name="step-by-step-walk-through"></a>Adım adım izlenecek yol
 
-Başlamak için Azure **Etkin Dizin** > **Grupları'na**gidin. Varolan dinamik bir grup seçin veya yeni bir dinamik grup oluşturun ve Dinamik üyelik kurallarını tıklatın. Daha sonra **Kuralları Doğrula** sekmesini görebilirsiniz.
+Başlamak için **Azure Active Directory** > **gruplar**'a gidin. Var olan bir dinamik grubu seçin veya yeni bir dinamik grup oluşturun ve dinamik üyelik kuralları ' na tıklayın. Daha sonra **kuralları doğrula** sekmesini görebilirsiniz.
 
-![Kuralları Doğrula sekmesini bulun ve varolan bir kuralla başlayın](./media/groups-dynamic-rule-validation/validate-tab.png)
+![Kuralları doğrula sekmesini bulun ve mevcut bir kuralla başlayın](./media/groups-dynamic-rule-validation/validate-tab.png)
 
-**Kuralları Doğrula** sekmesinde, kullanıcıların üyeliklerini doğrulamasını seçebilirsiniz. Aynı anda 20 kullanıcı veya cihaz seçilebilir.
+**Kuralları doğrula** sekmesinde, üyeliklerini doğrulamak için kullanıcılar ' ı seçebilirsiniz. 20 Kullanıcı veya cihaz tek seferde seçilebilir.
 
-![Karşı varolan kuralı doğrulamak için kullanıcıları ekleme](./media/groups-dynamic-rule-validation/validate-tab-add-users.png)
+![Mevcut kuralı doğrulamak için kullanıcıları ekleyin](./media/groups-dynamic-rule-validation/validate-tab-add-users.png)
 
-Seçiciden kullanıcıları veya cihazları seçtikten sonra ve **Seç,** doğrulama otomatik olarak başlar ve doğrulama sonuçları görüntülenir.
+Seçicideki kullanıcıları veya aygıtları seçtikten **sonra, doğrulama**otomatik olarak başlatılır ve doğrulama sonuçları görüntülenir.
 
-![Kural doğrulama sonuçlarını görüntüleme](./media/groups-dynamic-rule-validation/validate-tab-results.png)
+![Kural doğrulamanın sonuçlarını görüntüleme](./media/groups-dynamic-rule-validation/validate-tab-results.png)
 
-Sonuçlar, kullanıcının grubun bir üyesi olup olmadığını söyler. Kural geçerli değilse veya bir ağ sorunu varsa, sonuç **Bilinmeyen**olarak gösterecektir. **Bilinmiyor**durumunda, ayrıntılı hata iletisi sorunu ve gerekli eylemleri açıklar.
+Sonuçlar, bir kullanıcının grubun üyesi olup olmadığını belirtir. Kural geçerli değilse veya bir ağ sorunu varsa, sonuç **bilinmiyor**olarak görünür. **Bilinmeyen**bir durumda, ayrıntılı hata iletisi, gereken sorunu ve eylemleri anlatmaktadır.
 
 ![Kural doğrulama sonuçlarının ayrıntılarını görüntüleme](./media/groups-dynamic-rule-validation/validate-tab-view-details.png)
 
-Kuralı değiştirebilirsiniz ve üyeliklerin doğrulanması tetiklenir. Kullanıcının neden grubun bir üyesi olmadığını görmek için "Ayrıntıları görüntüle"yi tıklatın ve doğrulama ayrıntıları kuralı oluşturan her ifadenin sonucunu gösterir. Çıkmak için **Tamam'ı** tıklatın.
+Kuralı değiştirebilir ve üyeliklerin doğrulanması tetiklenecektir. Kullanıcının neden grubun üyesi olmadığını görmek için "Ayrıntıları görüntüle" ye tıklayın ve doğrulama ayrıntıları, kuralı oluşturan her bir ifadenin sonucunu gösterir. Çıkmak için **Tamam** ' ı tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

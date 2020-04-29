@@ -1,6 +1,6 @@
 ---
-title: Linux VM'ler için ultra diskler - Azure yönetilen diskler
-description: Azure VM'ler için ultra diskler hakkında bilgi edinin
+title: Linux VM 'Ler için Ultra diskler-Azure yönetilen diskler
+description: Azure VM 'Leri için Ultra diskler hakkında bilgi edinin
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 04/09/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 683920b192e9feec382740b7e54dcb87d3098ddc
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008663"
 ---
-# <a name="using-azure-ultra-disks"></a>Azure ultra diskleri kullanma
+# <a name="using-azure-ultra-disks"></a>Azure Ultra disklerini kullanma
 
-Bu makalede, ultra diskler hakkında kavramsal bilgiler için bir ultra diskin nasıl dağıtılanın ve kullanılacağı açıklanır, [Azure'da hangi disk türlerinin kullanılabilir olduğuna bakın?](disks-types.md#ultra-disk)
+Bu makalede, Ultra diskler hakkında kavramsal bilgi için, [Azure 'da kullanılabilen disk türlerini](disks-types.md#ultra-disk)gösteren bir ultra diskin nasıl dağıtılacağı ve kullanılacağı açıklanmaktadır.
 
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

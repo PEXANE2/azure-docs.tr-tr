@@ -1,6 +1,6 @@
 ---
-title: Azure Etkin Dizin etkinliği Azure Monitörü'nde günlükleri | Microsoft Dokümanlar
-description: Azure Monitor'da Azure Active Directory etkinlik günlüklerine giriş
+title: Azure Izleyici 'de etkinlik günlüklerini Azure Active Directory | Microsoft Docs
+description: Azure Izleyici 'de etkinlik günlüklerine Azure Active Directory giriş
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,20 +18,20 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261032"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Denetimi'nde Azure REKLAM etkinliği günlükleri
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Izleyici 'de Azure AD etkinlik günlükleri
 
-Azure Etkin Dizin (Azure AD) etkinlik günlüklerini uzun süreli bekletme ve veri öngörüleri için birkaç uç noktaya yönlendirebilirsiniz. Bu özellik şunları yapmanızı sağlar:
+Uzun süreli saklama ve veri öngörüleri için Azure Active Directory (Azure AD) etkinlik günlüklerini çeşitli uç noktalara yönlendirebilirsiniz. Bu özellik şunları yapmanıza olanak sağlar:
 
-* Verileri uzun süre saklamak için Azure AD etkinlik günlüğünü bir Azure depolama hesabına arşivleyin.
-* Splunk ve QRadar gibi popüler Güvenlik Bilgileri ve Olay Yönetimi (SIEM) araçlarını kullanarak Azure REKLAM etkinlik günlüğünü analitik için bir Azure etkinlik merkezine aktarın.
-* Azure AD etkinlik günlüklerini bir etkinlik merkezine aktararak kendi özel günlük çözümlerinizle tümleştirin.
-* Azure AD etkinlik günlüklerini azure monitörgünlüklerine göndererek zengin görselleştirmeleri, bağlı verileri izlemeve uyarmayı etkinleştirin.
+* Azure AD etkinlik günlüklerini, verileri uzun bir süre bekletmek için bir Azure depolama hesabına arşivleyin.
+* Azure AD etkinlik günlüklerini, splunk ve QRadar gibi popüler güvenlik bilgilerini ve olay yönetimi (SıEM) araçlarını kullanarak analiz için bir Azure Olay Hub 'ına kaydeder.
+* Azure AD etkinlik günlüklerini bir olay hub 'ına aktararak kendi özel günlük çözümlerinizle tümleştirin.
+* Bağlantılı verilerde zengin görselleştirmeler, izleme ve uyarı verme özelliğini etkinleştirmek için Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine gönderin.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
@@ -39,7 +39,7 @@ Azure Etkin Dizin (Azure AD) etkinlik günlüklerini uzun süreli bekletme ve ve
 
 ## <a name="supported-reports"></a>Desteklenen raporlar
 
-Bu özelliği kullanarak Azure AD denetim günlüklerini ve oturum açma günlüklerini Azure depolama hesabınıza, etkinlik merkezinize, Azure Monitor günlüklerinize veya özel çözümünize yönlendirebilirsiniz. 
+Azure AD denetim günlüklerini ve oturum açma günlüklerini bu özelliği kullanarak Azure depolama hesabınıza, Olay Hub 'ınıza, Azure Izleyici günlüklerine veya özel çözüme yönlendirebilirsiniz. 
 
 * **Denetim günlükleri**: [Denetim günlükleri etkinlik raporu](concept-audit-logs.md), kiracınızda gerçekleştirilen her görevin geçmişine erişmenizi sağlar.
 * **Oturum açma günlükleri**: [Oturum açma işlemleri etkinlik raporuyla](concept-sign-ins.md), denetim günlüklerinde bildirilen görevleri kimlerin gerçekleştirdiğini saptayabilirsiniz.
@@ -62,7 +62,7 @@ Denetim günlüğü verilerinizi yönlendirmek istediğiniz yere bağlı olarak 
 
 * *ListKeys* izinlerine sahip olduğunuz bir Azure depolama hesabı. Blob depolama hesabı değil genel bir depolama hesabı kullanmanızı öneririz. Depolamayla fiyatlandırma bilgileri için bkz. [Azure Depolama fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?service=storage). 
 * Üçüncü taraf çözümlerle tümleştirmek için Azure Event Hubs ad alanı.
-* Günlükleri Azure Monitor günlüklerine göndermek için bir Azure Günlük Analizi çalışma alanı.
+* Azure Izleyici günlüklerine Günlükler göndermek için bir Azure Log Analytics çalışma alanı.
 
 ## <a name="cost-considerations"></a>Maliyetle ilgili konular
 
@@ -70,7 +70,7 @@ Azure AD lisansınız varsa, depolama hesabı ve olay hub'ı kurulumu için bir 
 
 ### <a name="storage-size-for-activity-logs"></a>Etkinlik günlükleri için depolama boyutu
 
-Her denetim günlüğü olayı yaklaşık 2 KB veri depolama alanı kullanır. Oturum açma olay günlükleri yaklaşık 4 KB veri depolama vardır. 100.000 kullanıcıdan oluşan ve her gün yaklaşık 1,5 milyon olay gerçekleşecek bir kiracıda günlük yaklaşık 3 GB veri depolama alanına ihtiyaç duyulur. Yazma işlemleri yaklaşık beş dakikalık toplu işlemler halinde gerçekleştiğinden, ayda yaklaşık 9000 yazma işlemi olmasını bekleyebilirsiniz. 
+Her denetim günlüğü olayı yaklaşık 2 KB veri depolama alanı kullanır. Oturum açma olay günlüklerinde yaklaşık 4 KB veri depolama alanı bulunur. 100.000 kullanıcıdan oluşan ve her gün yaklaşık 1,5 milyon olay gerçekleşecek bir kiracıda günlük yaklaşık 3 GB veri depolama alanına ihtiyaç duyulur. Yazma işlemleri yaklaşık beş dakikalık toplu işlemler halinde gerçekleştiğinden, ayda yaklaşık 9000 yazma işlemi olmasını bekleyebilirsiniz. 
 
 
 Aşağıdaki tabloda, Batı ABD bölgesindeki bir genel amaçlı sürüm 2 depolama hesabında en az bir yıl saklama için kiracının boyutuna bağlı olarak yaklaşık bir maliyet hesabı verilmiştir. Uygulamanızın veri hacmine göre daha doğru bir yaklaşık değer elde etmek için [Azure depolama fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/details/storage/blobs/) kullanın.
@@ -98,24 +98,24 @@ Olaylar yaklaşık beş dakikalık aralıklarla toplanır ve bu zaman aralığı
 
 Örneğin 100.000’den fazla kullanıcısı olan büyük bir kiracıda saniyede yaklaşık 18 olay oluşur ve bu da beş dakikada bir 5400 olay yapar. Denetim günlükleri olay başına 2 KB boyutunda olduğundan toplam veri boyutu 10,8 MB olur. Bu nedenle bu beş dakikalık süre için 43 ileti gönderilir. 
 
-Aşağıdaki tablo, kullanıcı oturum açma davranışı gibi birçok faktöre göre kiracıdan kiracıya değişebilen olay verilerinin hacmine bağlı olarak, Batı ABD'deki temel bir etkinlik merkezi için aylık tahmini maliyetleri içerir. Uygulamanız için beklediğiniz veri hacminin doğru bir tahminini hesaplamak için [Olay Hub'ları fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/details/event-hubs/)kullanın.
+Aşağıdaki tabloda, Kullanıcı oturum açma davranışı gibi birçok etkene göre kiracıdan kiracıya değişebilen olay verileri hacmine bağlı olarak, Batı ABD temel bir olay hub 'ı için aylık tahmini maliyet yer alır. Uygulamanız için tahmin ettiğiniz veri hacminin doğru bir tahminini hesaplamak için [Event Hubs Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/details/event-hubs/)' nı kullanın.
 
 | Günlük kategorisi | Kullanıcı sayısı | Saniye başına olay sayısı | Beş dakikalık aralık başına olay sayısı | Aralık başına boyut | Aralık başına ileti sayısı | Aylık ileti sayısı | Aylık maliyet (tahmini) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Denetim | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371.520 | $10,83 |
 | Denetim | 1000 | 0.1 | 52 | 104 KB | 1 | 8640 | $10,80 |
-| Oturum açma işlemleri | 100.000 | 18000 | 5,400,000 | 10.8 GB | 42188 | 364,504,320 | 23.9 dolar |  
+| Oturum açma işlemleri | 100.000 | 18000 | 5.400.000 | 10,8 GB | 42188 | 364.504.320 | $23,9 |  
 | Oturum açma işlemleri | 1000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3.611.520 | $11,06 |  
 
-### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitörü maliyet hususlarını kaydeder
+### <a name="azure-monitor-logs-cost-considerations"></a>Azure Izleyici günlükleri maliyet konuları
 
 
 
-| Günlük kategorisi       | Kullanıcı sayısı | Günlük olay sayısı | Aylık etkinlikler (30 gün) | USD (est.) olarak aylık maliyet |
+| Günlük kategorisi       | Kullanıcı sayısı | Günlük olay sayısı | Aylık olay sayısı (30 gün) | ABD Doları (EST) cinsinden aylık maliyet |
 | :--                | ---             | ---            | ---                        | --:                          |
-| Denetim ve Oturum Açma | 100.000         | 16,500,000     | 495,000,000                |  1.093,00 TL                       |
-| Denetim              | 100.000         | 1,500,000      | 45,000,000                 |  246,66 dolar                     |
-| Oturum açma işlemleri           | 100.000         | 15,000,000     | 450,000,000                |  847,28 TL                     |
+| Denetim ve oturum açma işlemleri | 100.000         | 16.500.000     | 495.000.000                |  $1093,00                       |
+| Denetim              | 100.000         | 1.500.000      | 45.000.000                 |  $246,66                     |
+| Oturum açma işlemleri           | 100.000         | 15.000.000     | 450.000.000                |  $847,28                     |
 
 
 
@@ -126,7 +126,7 @@ Aşağıdaki tablo, kullanıcı oturum açma davranışı gibi birçok faktöre 
 
 
 
-Azure Monitor günlüklerini yönetmeyle ilgili maliyetleri gözden geçirmek için, [Azure Monitor günlüklerinde veri hacmini ve bekletmeyi denetleyerek maliyeti yönet'e](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)bakın.
+Azure Izleyici günlüklerini yönetme ile ilgili maliyetleri gözden geçirmek için bkz. [Azure izleyici günlüklerinde veri hacmi ve bekletme denetimi yaparak maliyeti yönetme](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -138,21 +138,21 @@ Bu bölümde, Azure İzleyici'deki Azure AD günlükleriyle ilgili sık sorulan 
 
 ---
 
-**S: Bir eylemden ne kadar sonra ilgili günlükler etkinlik merkezimde gösterilecektir?**
+**S: bir eylem ne kadar kısa bir süre sonra Olay Hub 'imde ilgili Günlükler görünür?**
 
 **A**: Günlüklerin eylem gerçekleştirildikten sonra iki ila beş dakika içinde olay hub'ınızda gösterilmesi gerekir. Event Hubs hakkında daha fazla bilgi için bkz. [Azure Event Hubs nedir?](../../event-hubs/event-hubs-about.md)
 
 ---
 
-**S: Bir eylemden ne kadar sonra ilgili günlükler depolama hesabımda gösterilecek?**
+**S: bir eylem ne kadar kısa bir süre sonra, depolama hesabmda ilgili Günlükler ne kadar görünür?**
 
 **Y**: Azure depolama hesapları için gecikme süresi eylemin gerçekleştirilmesinden itibaren 5 ile 15 dakika arasındadır.
 
 ---
 
-**S: Yönetici tanılama ayarının bekletme süresini değiştirirse ne olur?**
+**S: bir yönetici bir tanılama ayarının bekletme süresini değiştirirse ne olur?**
 
-**C**: Yeni bekletme ilkesi, değişiklikten sonra toplanan günlüklere uygulanır. İlke değişikliğinden önce toplanan günlükler etkilenmez.
+Y **: yeni**bekletme ilkesi, değişiklikten sonra toplanan günlüklere uygulanır. İlke değişikliğinden önce toplanan Günlükler etkilenmeyecektir.
 
 ---
 
@@ -180,7 +180,7 @@ Bu bölümde, Azure İzleyici'deki Azure AD günlükleriyle ilgili sık sorulan 
 
 **S: Hangi SIEM araçları desteklenmektedir?** 
 
-**A**: **A**: Şu anda Azure Monitor [Splunk,](tutorial-integrate-activity-logs-with-splunk.md)IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight), LogRhythm ve Logz.io tarafından desteklenmektedir. Bağlayıcıların çalışma şekli hakkında daha fazla bilgi için bkz. [Azure izleme verilerini bir dış araç tarafından kullanılmak üzere bir olay hub'ına aktarma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Y: **a** **: Şu**anda Azure Izleyici, [splunk](tutorial-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [arcgözetimi](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight), logrhythm ve Logz.io tarafından desteklenir. Bağlayıcıların çalışma şekli hakkında daha fazla bilgi için bkz. [Azure izleme verilerini bir dış araç tarafından kullanılmak üzere bir olay hub'ına aktarma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 
@@ -198,7 +198,7 @@ Bu bölümde, Azure İzleyici'deki Azure AD günlükleriyle ilgili sık sorulan 
 
 **S: Olay hub'ı verilerine harici bir SIEM aracı kullanmadan erişebilir miyim?** 
 
-**A**: Evet. Günlüklere özel uygulamanızdan erişmek için [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)’sini kullanabilirsiniz. 
+Y **: Evet**. Günlüklere özel uygulamanızdan erişmek için [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)’sini kullanabilirsiniz. 
 
 ---
 
@@ -207,4 +207,4 @@ Bu bölümde, Azure İzleyici'deki Azure AD günlükleriyle ilgili sık sorulan 
 
 * [Etkinlik günlüklerini depolama hesabında arşivleme](quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Etkinlik günlüklerini olay hub'ına yönlendirme](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-* [Etkinlik günlüklerini Azure Monitor ile tümleştirme](howto-integrate-activity-logs-with-log-analytics.md)
+* [Etkinlik günlüklerini Azure Izleyici ile tümleştirme](howto-integrate-activity-logs-with-log-analytics.md)

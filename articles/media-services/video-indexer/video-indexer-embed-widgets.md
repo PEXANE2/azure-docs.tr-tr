@@ -1,7 +1,7 @@
 ---
-title: Uygulamalarınıza Video Dizinleyici widget'ları gömme
+title: Video Indexer pencere öğelerini uygulamalarınıza ekleyin
 titleSuffix: Azure Media Services
-description: Video Indexer widget'larını uygulamalarınıza nasıl gömeceklerinizi öğrenin.
+description: Video Indexer pencere öğelerini uygulamalarınıza eklemeyi öğrenin.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,118 +11,118 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262919"
 ---
-# <a name="embed-video-indexer-widgets-in-your-apps"></a>Uygulamalarınıza Video Dizinleyici widget'ları gömme
+# <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer pencere öğelerini uygulamalarınıza ekleyin
 
-Bu makalede, video indexer widget'larını uygulamalarınıza nasıl gömebileceğiniz gösterilmektedir. Video Indexer uygulamalarınıza üç tür widget yerleştirmeyi destekler: *Bilişsel Bilgiler,* *Oyuncu*ve *Düzenleyici*.
+Bu makalede, uygulamalarınıza Video Indexer pencere öğelerini nasıl katıştırabileceğinizi gösterir. Video Indexer uygulamalarınıza üç tür pencere katıştırmayı destekler: bilişsel *Öngörüler*, *oynatıcı*ve *Düzenleyici*.
 
-Sürüm 2'den başlayarak, widget temel URL'si belirtilen hesabın bölgesini içerir. Örneğin, Batı ABD bölgesinde bir hesap `https://wus2.videoindexer.ai/embed/insights/...`oluşturur: .
+Sürüm 2 ' den başlayarak pencere öğesi temel URL 'SI, belirtilen hesabın bölgesini içerir. Örneğin, Batı ABD bölgesindeki bir hesap şunları oluşturur: `https://wus2.videoindexer.ai/embed/insights/...`.
 
 ## <a name="widget-types"></a>Pencere öğesi türleri
 
 ### <a name="cognitive-insights-widget"></a>Bilişsel İçgörüler pencere öğesi
 
-Bilişsel İçgörüler pencere öğeleri, video dizini oluşturma işleminizden elde edilen tüm görsel içgörüleri içerir. Cognitive Insights widget aşağıdaki isteğe bağlı URL parametrelerini destekler:
+Bilişsel İçgörüler pencere öğeleri, video dizini oluşturma işleminizden elde edilen tüm görsel içgörüleri içerir. Bilişsel Öngörüler pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler:
 
 |Adı|Tanım|Açıklama|
 |---|---|---|
-|`widgets` | Virgülle ayrılmış dizeler | Işlemek istediğiniz öngörüleri kontrol etmenizi sağlar.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` yalnızca kişileri ve anahtar kelimeleri Arama Birimi istatistiklerini işler.<br/>Kullanılabilir seçenekler: kişiler, animasyonkarakterler, anahtar kelimeler, etiketler, duygular, duygular, konular, anahtar kareler, transkript, ocr, hoparlörler, sahneler ve adlandırılmış Varlıklar.|
-|`controls`|Virgülle ayrılmış dizeler|İşlemek istediğiniz denetimleri denetlemenizi sağlar.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` yalnızca arama seçeneğini ve indirme düğmesini işler.<br/>Kullanılabilir seçenekler: arama, indirme, hazır ayarlar, dil.|
-|`language`|Kısa bir dil kodu (dil adı)|Kavrayış dilini kontrol eder.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>Veya`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
-|`locale` | Kısa bir dil kodu | UI'nin dilini kontrol eder. Varsayılan değer: `en`. <br/>Örnek: `locale=de`.|
-|`tab` | Varsayılan seçili sekme | Varsayılan olarak işlenen **Öngörüler** sekmesini denetler. <br/>Örnek: `tab=timeline` seçili **Zaman Çizelgesi** sekmesiyle öngörüleri işler.|
+|`widgets` | Virgülle ayrılmış dizeler | , İşlemek istediğiniz öngörüleri denetlemenize olanak tanır.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` yalnızca kişiler ve anahtar sözcükler UI öngörülerini işler.<br/>Kullanılabilir seçenekler: kişiler, animatedCharacters, anahtar sözcükler, Etiketler, yaklaşım, konu başlıkları, konular, ana kareler, döküm, OCR, hoparlörler, sahneler ve namedEntities.|
+|`controls`|Virgülle ayrılmış dizeler|İşlemek istediğiniz denetimleri denetlemenizi sağlar.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` yalnızca arama seçeneğini işler ve İndir düğmesi.<br/>Kullanılabilir seçenekler: arama, indirme, Önayarlar, dil.|
+|`language`|Kısa bir dil kodu (dil adı)|Öngörüler dilini denetler.<br/>Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>veya`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`locale` | Kısa bir dil kodu | Kullanıcı arabiriminin dilini denetler. Varsayılan değer: `en`. <br/>Örnek: `locale=de`.|
+|`tab` | Varsayılan seçili sekme | Varsayılan olarak işlenen **Öngörüler** sekmesini denetler. <br/>Örnek: `tab=timeline` görüş **zaman çizelgesi** sekmesi seçiliyken öngörüleri işler.|
 
 ### <a name="player-widget"></a>Yürütücü pencere öğesi
 
-Uyarlanabilir bit hızını kullanarak video akışı için Player widget'ını kullanabilirsiniz. Player widget'ı aşağıdaki isteğe bağlı URL parametrelerini destekler.
+Video akışını Uyarlamalı bit hızı kullanarak akışa almak için oynatıcı pencere öğesini kullanabilirsiniz. Oynatıcı pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler.
 
 |Adı|Tanım|Açıklama|
 |---|---|---|
-|`t` | Başlangıçtan itibaren saniyeler | Oyuncunun belirtilen zaman noktasından oynamaya başlamasını sağlar.<br/> Örnek: `t=60`. |
-|`captions` | Dil kodu | **Captions** menüsünde kullanılabilir widget yüklemesi sırasında belirtilen dilde resim yazısı getirir.<br/> Örnek: `captions=en-US`. |
-|`showCaptions` | Boolean değeri | Yürütücünün etkin olan açıklamalı alt yazıları yüklemesini sağlar.<br/> Örnek: `showCaptions=true`. |
-|`type`| | Ses oynatıcı nın cildini etkinleştirir (video bölümü kaldırılır).<br/> Örnek: `type=audio`. |
-|`autoplay` | Boolean değeri | Oynatıcının yüklendiğinde videoyu oynatmaya başlayıp başlatmaması gerektiğini gösterir. Varsayılan değer: `true`.<br/> Örnek: `autoplay=false`. |
-|`language`/`locale` | Dil kodu | Oyuncu dilini kontrol eder. Varsayılan değer: `en-US`.<br/>Örnek: `language=de-DE`.|
+|`t` | Başlangıçtan itibaren saniye | Player 'ın belirtilen zaman noktasından yürütmeye başlamasını sağlar.<br/> Örnek: `t=60`. |
+|`captions` | Dil kodu | Resim **yazıları** menüsünde kullanılabilir olacak pencere öğesi yükleme sırasında, belirtilen dilde resim yazısını getirir.<br/> Örnek: `captions=en-US`. |
+|`showCaptions` | Boole değeri | Yürütücünün etkin olan açıklamalı alt yazıları yüklemesini sağlar.<br/> Örnek: `showCaptions=true`. |
+|`type`| | Bir ses oynatıcı kaplamasını etkinleştirir (video bölümü kaldırılır).<br/> Örnek: `type=audio`. |
+|`autoplay` | Boole değeri | Player 'ın yüklendiğinde videoyu oynatmaya başlaması gerekip gerekmediğini gösterir. Varsayılan değer: `true`.<br/> Örnek: `autoplay=false`. |
+|`language`/`locale` | Dil kodu | Oynatıcı dilini denetler. Varsayılan değer: `en-US`.<br/>Örnek: `language=de-DE`.|
 
-### <a name="editor-widget"></a>Editör widget
+### <a name="editor-widget"></a>Düzenleyici pencere öğesi
 
-Yeni projeler oluşturmak ve bir videonun istatistiklerini yönetmek için Düzenleyici widget'ını kullanabilirsiniz. Düzenleyici widget aşağıdaki isteğe bağlı URL parametrelerini destekler.
+Yeni projeler oluşturmak ve bir videonun öngörülerini yönetmek için düzenleyici pencere öğesini kullanabilirsiniz. Düzenleyici pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler.
 
 |Adı|Tanım|Açıklama|
 |---|---|---|
-|`accessToken`<sup>*</sup> | Dize | Yalnızca widget'ı yerleştirmek için kullanılan hesaptaki videolara erişim sağlar.<br> Düzenleyici widget `accessToken` parametre gerektirir. |
-|`language` | Dil kodu | Oyuncu dilini kontrol eder. Varsayılan değer: `en-US`.<br/>Örnek: `language=de-DE`. |
-|`locale` | Kısa bir dil kodu | Öngörüdilini kontrol eder. Varsayılan değer: `en`.<br/>Örnek: `language=de`. |
+|`accessToken`<sup>*</sup> | Dize | Yalnızca pencere öğesini katıştırmak için kullanılan hesapta olan videolara erişim sağlar.<br> Düzenleyici pencere öğesi için `accessToken` parametre gereklidir. |
+|`language` | Dil kodu | Oynatıcı dilini denetler. Varsayılan değer: `en-US`.<br/>Örnek: `language=de-DE`. |
+|`locale` | Kısa bir dil kodu | Öngörüler dilini denetler. Varsayılan değer: `en`.<br/>Örnek: `language=de`. |
 
-<sup>*</sup>Sahibi dikkatli `accessToken` vermelidir.
+<sup>*</sup>Sahibin dikkatli sağlaması `accessToken` gerekir.
 
 ## <a name="embedding-public-content"></a>Genel içerik ekleme
 
-1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
-2. Çalışmak istediğiniz videoyu seçin.
-3. Videonun altında görünen**</>** gömme düğmesini ( ) seçin.
+1. [Video Indexer](https://www.videoindexer.ai/) Web sitesinde oturum açın.
+2. Birlikte çalışmak istediğiniz videoyu seçin.
+3. Videonun altında görünen ekleme düğmesini**</>**() seçin.
 
-    **Embed** düğmesini seçtikten sonra, uygulamanıza katıştırmak istediğiniz widget'ı seçebilirsiniz.
-4. İstediğiniz widget türünü seçin **(Cognitive Insights**, **Player**, veya **Editör**).
-5. Gömme kodunu kopyalayın **(Katıştırılmış kodu** **Paylaş & Embed** iletişim kutusunda kopyala'da görünür).
-6. Kodu uygulamanıza ekleyin.
+    **Ekle** düğmesini seçtikten sonra, uygulamanıza eklemek istediğiniz pencere öğesini seçebilirsiniz.
+4. İstediğiniz pencere öğesi türünü seçin (bilişsel**Öngörüler**, **oynatıcı**veya **Düzenleyici**).
+5. Ekleme kodunu kopyalayın ( **Katıştırılmış kodu** **paylaşma & Ekle** iletişim kutusunda görünür).
+6. Uygulamanıza kodu ekleyin.
 
 > [!NOTE]
-> Video URL'lerinizi paylaşırken sorun varsa, `location` bağlantıya parametreyi ekleyin. Parametre, [Video Dizinleyici'nin bulunduğu Azure bölgelerine](regions.md)ayarlanmalıdır. Örneğin: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+> Video URL 'larınızı paylaşan sorunlarla karşılaşırsanız, bağlantısına `location` parametresini ekleyin. Parametresi, [video Indexer var olan Azure bölgelerine](regions.md)ayarlanmalıdır. Örneğin: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 ## <a name="embedding-private-content"></a>Özel içerik ekleme
 
-Özel bir video katıştırmak için, iframe `src` özniteliği bir erişim belirteci geçmesi gerekir:
+Özel bir video eklemek için iframe 'nin `src` özniteliğinde bir erişim belirteci geçirmeniz gerekir:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-Bilişsel Bilgiler widget içeriğini elde etmek için aşağıdaki yöntemlerden birini kullanın:
+Bilişsel Öngörüler pencere öğesi içeriğini almak için aşağıdaki yöntemlerden birini kullanın:
 
-- [Insights Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API alın.<br/>
-- [Video Erişim Jetonu Alın.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) URL'ye sorgu parametresi olarak ekleyin. Bu URL'yi `src` daha önce gösterildiği gibi iframe değeri olarak belirtin.
+- [Öngörüler al pencere öğesi](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API 'si.<br/>
+- [Video erişim belirteci al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). URL 'ye bir sorgu parametresi olarak ekleyin. Daha önce gösterildiği gibi bu `src` URL 'yi iframe için değer olarak belirtin.
 
-Katıştılmış widget'ınızda düzenleme öngörüleri özellikleri sağlamak için, düzenleme izinlerini içeren bir erişim belirteci geçmeniz gerekir. [Get Insights Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) veya Get Video `&allowEdit=true`Access [Token'ı](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) kullanın.
+Katıştırılmış pencere öğesinde içgörüler özelliklerini düzenlemenizi sağlamak için, Düzenle izinlerini içeren bir erişim belirteci geçirmeniz gerekir. [Öngörüler al pencere öğesini](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) kullanın veya Ile `&allowEdit=true` [Görüntülü erişim belirteci alın](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) .
 
 ## <a name="widgets-interaction"></a>Pencere öğeleri etkileşimi
 
-Cognitive Insights widget'ı uygulamanızdaki bir videoyla etkileşimkurabilir. Bu bölümde, bu etkileşimi nasıl elde sağlayabileceğiniz gösterilmektedir.
+Bilişsel Öngörüler pencere öğesi, uygulamanızdaki bir videoyla etkileşime geçebilir. Bu bölümde, bu etkileşimi nasıl elde sağlayabileceğiniz gösterilmektedir.
 
-![Bilişsel Insights widget Video Indexer](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+![Bilişsel Öngörüler pencere öğesi Video Indexer](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
 
 ### <a name="cross-origin-communications"></a>Kaynak noktalar arası iletişim
 
-Video Indexer widget'larını diğer bileşenlerle iletişim kurmak için Video Dizinleyici hizmeti:
+Diğer bileşenlerle iletişim kurmak üzere Video Indexer pencere öğeleri almak için Video Indexer hizmeti:
 
-- Menşeler arası iletişim HTML5 yöntemini `postMessage`kullanır.
+- , Çıkış noktaları arası iletişim HTML5 yöntemini `postMessage`kullanır.
 - İletiyi VideoIndexer.ai kaynağında doğrular.
 
-Kendi oyuncu kodunuzu uygular ve Bilişsel Öngörüler widget'larıyla entegre olursanız, VideoIndexer.ai gelen iletinin kaynağını doğrulamak sizin sorumluluğunuzdadır.
+Kendi oynatıcı kodunuzu uygular ve bilişsel Öngörüler pencere öğeleri ile tümleştirirseniz, VideoIndexer.ai adresinden gelen iletinin kaynağını doğrulamak sizin sorumluluğunuzdadır.
 
-### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>Uygulamanıza veya blogunuza widget'lar gömme (önerilir)
+### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>Uygulamanıza veya blogunuza pencere öğeleri ekleme (önerilir)
 
-Bu bölümde, iki Video Indexer widget'ı arasındaki etkileşimin nasıl elde edileceği, böylece bir kullanıcı uygulamanızdaki kavrayış denetimini seçdiğinde oynın ilgili ana atlayışını günü gÜ
+Bu bölümde, bir Kullanıcı uygulamanızda öngörü denetimini seçtiğinde Player ilgili bir süre atdığında, iki Video Indexer pencere öğesi arasında nasıl etkileşim elde edilecek gösterilmektedir.
 
 1. Yürütücü pencere öğesi ekleme kodunu kopyalayın.
 2. Bilişsel İçgörüler ekleme kodunu kopyalayın.
 3. İki pencere öğesi arasındaki iletişimi işlemek için [Aracı dosyasını](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js) ekleyin:<br/> 
 `<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
-Şimdi, bir kullanıcı uygulamanızdaki içgörü denetimini seçtiğinde, oyuncu ilgili ana atlar.
+Artık bir Kullanıcı uygulamanızda Insight denetimini seçtiğinde, Player ilgili bir süre atlar.
 
-Daha fazla bilgi için [Video Indexer 'a bakın - Her iki Widget demosu da gömün.](https://codepen.io/videoindexer/pen/NzJeOb)
+Daha fazla bilgi için bkz. [video Indexer-her Iki pencere öğesini ekleme tanıtımı](https://codepen.io/videoindexer/pen/NzJeOb).
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>Bilişsel İçgörüler pencere öğesini ekleyip içeriği oynatmak için Azure Media Player'ı kullanma
 
-Bu bölümde, [AMP eklentisini](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)kullanarak Bilişsel Öngörüler widget'ı ile Azure Media Player örneği arasındaki etkileşimin nasıl elde edilebildiğini gösterilmektedir.
+Bu bölümde, bir bilişsel Öngörüler pencere öğesi ve bir Azure Media Player örneği ile [amp eklentisini](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)kullanarak nasıl etkileşim elde edilecek gösterilmektedir.
 
-1. AMP oynatıcı için Video Indexer eklentisi ekleyin:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
-2. Video Dizinleyici eklentisi ile Azure Media Player'ı anında edin.
+1. AMP Player için Video Indexer eklentisi ekleme:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
+2. Video Indexer eklentisiyle Azure Media Player örneğini oluşturun.
 
         // Init the source.
         function initSource() {
@@ -170,11 +170,11 @@ Bu bölümde, [AMP eklentisini](https://breakdown.blob.core.windows.net/public/a
 
 Artık Azure Media Player ile iletişim kurabilirsiniz.
 
-Daha fazla bilgi için [Azure Media Player + VI Insights demosu'na](https://codepen.io/videoindexer/pen/rYONrO)bakın.
+Daha fazla bilgi için [Azure Media Player + VI Öngörüler tanıtımı](https://codepen.io/videoindexer/pen/rYONrO)bölümüne bakın.
 
-### <a name="embed-the-video-indexer-cognitive-insights-widget-and-use-a-different-video-player"></a>Video Indexer Bilişsel Öngörüler widget'ı gömme ve farklı bir video oynatıcı kullanın
+### <a name="embed-the-video-indexer-cognitive-insights-widget-and-use-a-different-video-player"></a>Video Indexer bilişsel Öngörüler pencere öğesini katıştırma ve farklı bir video oynatıcı kullanma
 
-Azure Media Player dışında bir video oynatıcı kullanıyorsanız, iletişimi sağlamak için video oynatıcıyı el ile değiştirmeniz gerekir.
+Azure Media Player dışında bir video oynatıcı kullanıyorsanız, iletişim sağlamak için video yürütücüyü el ile işlemeniz gerekir.
 
 1. Video oynatıcınızı ekleyin.
 
@@ -217,27 +217,27 @@ Azure Media Player dışında bir video oynatıcı kullanıyorsanız, iletişimi
         
         </script>
 
-Daha fazla bilgi için [Azure Media Player + VI Insights demosu'na](https://codepen.io/videoindexer/pen/YEyPLd)bakın.
+Daha fazla bilgi için [Azure Media Player + VI Öngörüler tanıtımı](https://codepen.io/videoindexer/pen/YEyPLd)bölümüne bakın.
 
 ## <a name="adding-subtitles"></a>Alt yazı ekleme
 
-Video Dizinleyici öngörülerini kendi [Azure Media Player'ınızla](https://aka.ms/azuremediaplayer) `GetVttUrl` katıştırıyorsanız, kapalı altyazılar (altyazılar) almak için bu yöntemi kullanabilirsiniz. Video Indexer AMP eklentisinden `getSubtitlesUrl` (daha önce gösterildiği gibi) bir JavaScript yöntemini de arayabilirsiniz.
+Kendi [Azure Media Player](https://aka.ms/azuremediaplayer)video Indexer öngörüleri eklerseniz, Kapalı açıklamalı alt yazıları (alt yazılar `GetVttUrl` ) almak için yöntemini kullanabilirsiniz. Ayrıca, Video Indexer AMP eklentisinden bir JavaScript yöntemi çağırabilirsiniz `getSubtitlesUrl` (daha önce gösterildiği gibi).
 
 ## <a name="customizing-embeddable-widgets"></a>Eklenebilir pencere öğelerini özelleştirme
 
 ### <a name="cognitive-insights-widget"></a>Bilişsel İçgörüler pencere öğesi
 
-İstediğiniz içgörü türlerini seçebilirsiniz. Bunu yapmak için, bunları (API'den veya web uygulamasından) aldığınız gömme koduna eklenen aşağıdaki URL parametresine bir değer olarak belirtin: `&widgets=<list of wanted widgets>`.
+İstediğiniz öngörü türlerini seçebilirsiniz. Bunu yapmak için, bunları aldığınız ekleme koduna (API 'den veya Web uygulamasından) eklenen aşağıdaki URL parametresine bir değer olarak belirtin: `&widgets=<list of wanted widgets>`.
 
-`people`Olası değerler şunlardır: , `sentiments`, `topics` `keyframes` `transcript` `ocr` `speakers` `animatedCharacters` `keywords` `labels`, , `emotions` `scenes`, , , , , , , ve `namedEntities`.
+Olası değerler şunlardır: `people`, `animatedCharacters` , `keywords`, `labels`, `sentiments`, `emotions`, `topics`, `keyframes`, `transcript`, `ocr`, `speakers`, `scenes`, ve. `namedEntities`
 
-Örneğin, yalnızca kişi ve anahtar kelime istatistikleri içeren bir widget katıştırmak istiyorsanız, iframe gömme URL'si aşağıdaki gibi görünür:
+Örneğin, yalnızca kişiler ve anahtar sözcük öngörüleri içeren bir pencere öğesi eklemek istiyorsanız iframe ekleme URL 'SI şöyle görünür:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe penceresinin başlığı da iframe URL'ye sağlanarak `&title=<YourTitle>` özelleştirilebilir. (HTML `<title>` değerini özelleştirer).
+İframe penceresinin başlığı iframe URL 'SI sağlanarak `&title=<YourTitle>` da özelleştirilebilir. (HTML `<title>` değerini özelleştirir).
    
-Örneğin, iframe pencerenize "MyInsights" başlığını vermek istiyorsanız, URL aşağıdaki gibi görünür:
+Örneğin, iframe pencerenize "Myınsights" başlığına izin vermek istiyorsanız URL şöyle görünür:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
 
@@ -251,37 +251,37 @@ Video Indexer yürütücüsünü eklerseniz iframe boyutunu belirterek yürütü
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
-Varsayılan olarak, Video Indexer oynatıcı, videonun transkriptini temel alan kapalı altyazıları otomatik olarak oluşturmuştur. Transkript, video yüklendiğinde seçilen kaynak diliyle birlikte videodan çıkarılır.
+Video Indexer oynatıcı varsayılan olarak videonun dökümünü temel alan kapalı açıklamalı alt yazıları içerir. Döküm, video karşıya yüklendiğinde seçilen kaynak dili ile videodan ayıklanır.
 
-Farklı bir dile gömmek istiyorsanız, katıştırma oynatıcı URL'sine ekleyebilirsiniz. `&captions=<Language Code>` Altyazıların varsayılan olarak görüntülenmesini istiyorsanız, &showCaptions=true'yu geçebilirsiniz.
+Farklı bir dille gömmek istiyorsanız, ekleme oynatıcı URL 'sine ekleyebilirsiniz `&captions=<Language Code>` . Açıklamalı alt yazıların varsayılan olarak görüntülenmesini istiyorsanız, &Showaçıklamalı altyazıları = true olarak geçirebilirsiniz.
 
-Gömme URL sonra şu gibi görünecektir:
+Ekleme URL 'SI şu şekilde görünür:
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
-#### <a name="autoplay"></a>Autoplay
+#### <a name="autoplay"></a>Yürüt
 
-Varsayılan olarak, oynatıcı videoyu oynatmaya başlar. önceki gömme URL'ye `&autoplay=false` geçerek yapmamayı seçebilirsiniz.
+Oynatıcı, varsayılan olarak videoyu oynatmaya başlayacaktır. önceki ekleme URL 'sine geçirilerek `&autoplay=false` seçim yapabilirsiniz.
 
 ## <a name="code-samples"></a>Kod örnekleri
 
-Video Dizinleyici API ve Widget'lar için örnekler içeren [kod örnekleri](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) repo'ya bakın:
+Video Indexer API 'SI ve pencere öğeleri için örnekler içeren [kod örnekleri](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) deposuna bakın:
 
 | Dosya/klasör                       | Açıklama                                |
 |-----------------------------------|--------------------------------------------|
-| `azure-media-player`              | Özel bir Azure Media Player'a video dizini videosu yükleyin.                        |
-| `azure-media-player-vi-insights`  | VI Insights'ı özel bir Azure Media Player ile gömün.                             |
-| `control-vi-embedded-player`      | VI Player'ı gömün ve dışarıdan kontrol edin.                                    |
-| `custom-index-location`           | ÖZEL bir dış konumdan VI Öngörüler gömme (müşteri bir damla olabilir).     |
-| `embed-both-insights`             | VI Insights'ın hem oyuncu hem de öngörüler temel kullanımı.                            |
-| `embed-insights-with-AMP`         | Özel bir Azure Media Player ile VI Insights widget'ı gömün.                      |
-| `customize-the-widgets`           | Özelleştirilmiş seçeneklerle VI widget'larını gömün.                                     |
-| `embed-both-widgets`              | VI Player ve Insights'ı gömün ve aralarında iletişim kurun.                      |
-| `url-generator`                   | Kullanıcı tarafından belirtilen seçeneklere dayalı widget'lar özel gömme URL oluşturur.             |
-| `html5-player`                    | Varsayılan html5 video oynatıcıyla VI Insights'ı gömün.                           |
+| `azure-media-player`              | Video Indexer videosunu özel bir Azure Media Player yükleyin.                        |
+| `azure-media-player-vi-insights`  | Özel bir Azure Media Player VI öngörüleri ekleyin.                             |
+| `control-vi-embedded-player`      | VI oynatıcı ekleyin ve dışarıdan kontrol edin.                                    |
+| `custom-index-location`           | Özel bir dış konumdan VI öngörüleri ekleyin (bir blob müşterisi olabilir).     |
+| `embed-both-insights`             | Hem Player hem de Öngörüler için ana VI öngörüleri kullanımı.                            |
+| `embed-insights-with-AMP`         | Özel bir Azure Media Player VI Öngörüler pencere öğesi ekleyin.                      |
+| `customize-the-widgets`           | Özel seçeneklere sahip VI pencere öğelerini katıştır.                                     |
+| `embed-both-widgets`              | VI oynatıcı ve Öngörüler ekleyin ve bunlar arasında iletişim kurun.                      |
+| `url-generator`                   | Kullanıcı tarafından belirtilen seçeneklere göre pencere öğesi özel ekleme URL 'SI oluşturur.             |
+| `html5-player`                    | Varsayılan HTML5 video oynatıcı ile VI Öngörüler ekleyin.                           |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Video Dizinleyici istatistiklerini görüntüleme ve nasıl edineceklerine ilişkin bilgi için [Bkz. Video Dizinleyici öngörülerini görüntüleyin ve edin.](video-indexer-view-edit.md)
+Video Indexer öngörülerini görüntüleme ve düzenleme hakkında daha fazla bilgi için bkz. [video Indexer öngörülerini görüntüleme ve düzenleme](video-indexer-view-edit.md).
 
-Ayrıca, [Video dizinleyici CodePen](https://codepen.io/videoindexer/pen/eGxebZ)göz atın.
+Ayrıca, [video Indexer CodePen](https://codepen.io/videoindexer/pen/eGxebZ)öğesine göz atın.

@@ -1,35 +1,35 @@
 ---
 title: Silinen uygulamaları geri yükleme
-description: Azure Uygulama Hizmeti'nde silinen bir uygulamayı nasıl geri yükleyin öğrenin. Yanlışlıkla silinen bir uygulamanın baş ağrısından kaçının.
+description: Azure App Service silinen bir uygulamayı nasıl geri yükleyeceğinizi öğrenin. Yanlışlıkla silinen bir uygulamanın zahmetli kullanmaktan kaçının.
 author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.openlocfilehash: 296c8e2dfe99e3b0aea66f364ac6f6d9b2f60a1a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272500"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell kullanarak silinmiş App Service uygulamasını geri yükleme
 
-Azure Uygulama Hizmeti'nde uygulamanızı yanlışlıkla sildiyseniz, [Az PowerShell modülündeki](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)komutları kullanarak uygulamayı geri yükleyebilirsiniz.
+Uygulamanızı Azure App Service yanlışlıkla sildikten sonra, [az PowerShell modülündeki](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)komutları kullanarak geri yükleyebilirsiniz.
 
 > [!NOTE]
-> Silinen uygulamalar, ilk silinmeden 30 gün sonra sistemden silinir. Bir uygulama temizlendikten sonra kurtarılamaz.
+> Silinen uygulamalar, ilk silinmeden 30 gün sonra sistemden temizlenir. Bir uygulama temizlenmeden sonra kurtarılamaz.
 >
 
-## <a name="re-register-app-service-resource-provider"></a>Uygulama Hizmeti kaynak sağlayıcısını yeniden kaydedin
-Bazı müşteriler, silinen uygulamaların listesini almanın başarısız olduğu bir sorunla karşılaşabilir. Sorunu gidermek için aşağıdaki komutu çalıştırın:
+## <a name="re-register-app-service-resource-provider"></a>App Service kaynak sağlayıcısını yeniden Kaydet
+Bazı müşteriler, silinen uygulamaların listesini almanın başarısız olduğu bir sorun boyunca gelebilir. Sorunu çözmek için aşağıdaki komutu çalıştırın:
 
 ```powershell
  Register-AzResourceProvider -ProviderNamespace "Microsoft.Web"
 ```
 
-## <a name="list-deleted-apps"></a>Silinen uygulamaları listele
+## <a name="list-deleted-apps"></a>Silinen uygulamaları listeleme
 
-Silinen uygulamaların koleksiyonunu almak için `Get-AzDeletedWebApp`.
+Silinen uygulamalar koleksiyonunu almak için kullanabilirsiniz `Get-AzDeletedWebApp`.
 
 Silinen belirli bir uygulamayla ilgili ayrıntılar için şunları kullanabilirsiniz:
 
@@ -39,35 +39,35 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 
 Ayrıntılı bilgiler şunları içerir:
 
-- **DeletedSiteId**: Aynı adı taşıyan birden fazla uygulamanın silindiği senaryolar için kullanılan uygulama için benzersiz tanımlayıcı
-- **SubscriptionID**: Silinen kaynağı içeren abonelik
-- **Konum**: Orijinal uygulamanın konumu
-- **ResourceGroupName**: Özgün kaynak grubunun adı
-- **Adı**: Orijinal uygulamanın adı.
+- **Deletedsiteıd**: aynı ada sahip birden çok uygulama silindiği senaryolar için kullanılan, uygulamanın benzersiz tanımlayıcısı
+- **SubscriptionID**: silinen kaynağı içeren abonelik
+- **Konum**: özgün uygulamanın konumu
+- **Resourcegroupname**: özgün kaynak grubunun adı
+- **Ad**: özgün uygulamanın adı.
 - **Yuva**: yuvanın adı.
-- **Silme Süresi**: Uygulama ne zaman silindi  
+- **Silme zamanı**: uygulamanın ne zaman silindiği  
 
-## <a name="restore-deleted-app"></a>Silinen uygulamayı geri yükleme
+## <a name="restore-deleted-app"></a>Silinen uygulamayı geri yükle
 
-Geri yüklemek istediğiniz uygulama tanımlandıktan sonra, 'yi `Restore-AzDeletedWebApp`kullanarak geri yükleyebilirsiniz.
+Geri yüklemek istediğiniz uygulama tanımlandıktan sonra öğesini kullanarak `Restore-AzDeletedWebApp`geri yükleyebilirsiniz.
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
-> Dağıtım yuvaları uygulamanızın bir parçası olarak geri yüklenmez. Bir evreleme yuvasını geri yüklemeniz gerekiyorsa `-Slot <slot-name>` bayrağı kullanın.
+> Dağıtım yuvaları, uygulamanızın bir parçası olarak geri yüklenmez. Bir hazırlama yuvasını geri yüklemeniz gerekiyorsa `-Slot <slot-name>` bayrağını kullanın.
 >
 
 Komut girişleri şunlardır:
 
-- **Kaynak Grubu**: Uygulamanın geri yüklendiği hedef kaynak grubu
-- **Adı**: Uygulamanın adı, genel olarak benzersiz olmalıdır.
-- **TargetAppServicePlanName**: Uygulamaya bağlı Uygulama Hizmeti planı
+- **Kaynak grubu**: uygulamanın geri yükleneceği hedef kaynak grubu
+- **Ad**: uygulamanın adı, genel olarak benzersiz olmalıdır.
+- **Targetappserviceplanname**: uygulamaya bağlı App Service plan
 
-Varsayılan `Restore-AzDeletedWebApp` olarak hem uygulama yapılandırmanızı hem de bir içeriği geri yüklenir. Yalnızca içeriği geri yüklemek istiyorsanız, `-RestoreContentOnly` bayrağı bu komut ile kullanırsınız.
+Varsayılan `Restore-AzDeletedWebApp` olarak, hem uygulama yapılandırmanızı hem de içeriği geri yükler. Yalnızca içeriği geri yüklemek istiyorsanız bu komutu kullanın `-RestoreContentOnly` .
 
 > [!NOTE]
-> Uygulama bir Uygulama Hizmet Ortamında barındırıldıysa ve ardından silindiyse, yalnızca ilgili Uygulama Hizmeti Ortamı hala varsa geri yüklenebilir.
+> Uygulama üzerinde barındırılıyorsa ve sonra bir App Service Ortamı silinirse, bu, yalnızca karşılık gelen App Service Ortamı hala mevcutsa geri yüklenebilir.
 >
 
-Burada tam komut dosyası referans bulabilirsiniz: [Geri Yükleme-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).
+Tam komutunu başvurusunu buradan bulabilirsiniz: [restore-azdeletedwebapp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).

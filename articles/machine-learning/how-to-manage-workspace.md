@@ -1,7 +1,7 @@
 ---
 title: Portalda Azure Machine Learning çalışma alanları oluşturma
 titleSuffix: Azure Machine Learning
-description: Azure portalında Azure Machine Learning çalışma alanlarını nasıl oluşturup görüntülemeyi ve silmeyi öğrenin.
+description: Azure portal Azure Machine Learning çalışma alanlarını oluşturmayı, görüntülemeyi ve silmeyi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,100 +11,100 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81269746"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portalında Azure Machine Learning çalışma alanlarını oluşturma ve yönetme
+# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md)için Azure portalında Azure Machine Learning çalışma [**alanlarını**](concept-workspace.md) oluşturacak, görüntüleyebilir ve sileceksiniz.  Portal çalışma alanları ile başlamak için en kolay yoldur ama ihtiyaçlarınız değiştikçe veya otomasyon için gereksinimleri de oluşturmak ve [CLI kullanarak](reference-azure-machine-learning-cli.md)çalışma alanları silmek , [Python kodu ile](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) veya VS Kodu uzantısı [üzerinden](tutorial-setup-vscode-extension.md).
+Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md)için Azure Portal [**Azure Machine Learning çalışma alanları**](concept-workspace.md) oluşturacaksınız, görüntüleyebilir ve silebilirsiniz.  Portal çalışma alanları ile çalışmaya başlamanın en kolay yoludur, ancak gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler değiştikçe, [Python kodu](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) veya [vs Code uzantısı aracılığıyla](tutorial-setup-vscode-extension.md) [CLI kullanarak](reference-azure-machine-learning-cli.md)çalışma alanları oluşturabilir ve silebilirsiniz.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure portalında](https://portal.azure.com/) oturum açın. 
+1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
-1. Azure portalının sol üst köşesinde **+ Kaynak oluştur'u**seçin.
+1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
 
       ![Yeni kaynak oluşturma](./media/how-to-manage-workspace/create-workspace.gif)
 
-1. **Machine Learning'i**bulmak için arama çubuğunu kullanın.
+1. **Machine Learning**bulmak için arama çubuğunu kullanın.
 
-1. **Makine Öğrenimi'ni**seçin.
+1. **Machine Learning**seçin.
 
-1. Machine **Learning** bölmesinde başlamak için **Oluştur'u** seçin.
+1. Başlamak için **Machine Learning** bölmesinde **Oluştur** ' u seçin.
 
 1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 
    Alan|Açıklama 
    ---|---
-   Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte, **dokümanlar-ws**kullanırız. Adlar kaynak grubunda benzersiz olmalıdır. Hatırlaması ve başkaları tarafından oluşturulan çalışma alanlarından ayırt etmesi kolay bir ad kullanın. Çalışma alanı adı büyük/küçük harf duyarsız.
+   Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın. Çalışma alanı adı büyük/küçük harfe duyarlıdır.
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
-   Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, Azure çözümü için ilgili kaynakları tutar. Bu örnekte, **docs-aml**kullanırız. 
+   Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. 
    Konum | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.
-   Çalışma alanı sürümü | **Temel** veya **Kurumsal'ı**seçin.  Bu çalışma alanı sürümü, erişeceğiniz ve fiyatlandırma yapacağınız özellikleri belirler. [Temel ve Kurumsal sürüm teklifleri](overview-what-is-azure-ml.md#sku)hakkında daha fazla bilgi edinin. 
+   Çalışma alanı sürümü | **Temel** veya **Kurumsal**' i seçin.  Bu çalışma alanı sürümü, erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler. [Temel ve Kurumsal sürüm teklifleri](overview-what-is-azure-ml.md#sku)hakkında daha fazla bilgi edinin. 
 
-    ![Çalışma alanınızı yapılandırın](./media/how-to-manage-workspace/select-edition.png)
+    ![Çalışma alanınızı yapılandırma](./media/how-to-manage-workspace/select-edition.png)
 
-1. Çalışma alanını yapılandırmayı **bitirdiğinizde, Gözden Geçir + Oluştur'u**seçin.
-2. Ayarları gözden geçirin ve ek değişiklikler veya düzeltmeler yapın. Ayarlardan memnun olduğunuzda **Oluştur'u**seçin.
+1. Çalışma alanını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin.
+2. Ayarları gözden geçirin ve ek değişiklik veya düzeltme yapın. Ayarları tatmin ediyorsanız **Oluştur**' u seçin.
 
    > [!Warning] 
    > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
 
    İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. 
  
- 1. Yeni çalışma alanını görüntülemek **için kaynağa git'i**seçin.
+ 1. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
 
-### <a name="download-a-configuration-file"></a>Yapılandırma dosyası indirme
+### <a name="download-a-configuration-file"></a>Yapılandırma dosyasını indir
 
-1. Bir [işlem örneği](tutorial-1st-experiment-sdk-setup.md#azure)oluşturacaksanız, bu adımı atlayın.
+1. Bir [işlem örneği](tutorial-1st-experiment-sdk-setup.md#azure)oluşturacağınız takdirde, bu adımı atlayın.
 
-1. Bu çalışma alanına başvuran yerel ortamınızda kod kullanmayı planlıyorsanız, çalışma alanının **Genel Bakış** bölümünden **config.json indir'i** seçin.  
+1. Yerel ortamınızda bu çalışma alanına başvuruda bulunan kodu kullanmayı planlıyorsanız, çalışma alanının **genel bakış** bölümünden **config. json dosyasını indir** ' i seçin.  
 
-   ![Config.json karşıdan yükleme](./media/how-to-manage-workspace/configure.png)
+   ![Config. json dosyasını indir](./media/how-to-manage-workspace/configure.png)
    
-   Python komut dosyalarınız veya Jupyter Notebook'larınız ile dosyayı dizin yapısına yerleştirin. Aynı dizinde, *.azureml*adlı bir alt dizinde veya bir üst dizinde olabilir. Bir işlem örneği oluşturduğunuzda, bu dosya sizin için VM'deki doğru dizine eklenir.
+   Dosyayı Python betikleriniz veya Jupyıter Not defterleriniz ile dizin yapısına yerleştirin. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir. Bir işlem örneği oluşturduğunuzda, bu dosya VM 'deki doğru dizine eklenir.
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Kurumsal sürümüne yükseltme
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Enterprise Edition 'a yükseltme
 
-Düşük kod deneyimleri ve gelişmiş güvenlik özellikleri gibi gelişmiş özelliklerden yararlanmak için çalışma alanınızı Temel sürümden Enterprise sürümüne yükseltebilirsiniz.
+Düşük kodlu deneyimler ve gelişmiş güvenlik özellikleri gibi gelişmiş özelliklerden yararlanmak için, çalışma alanınızı temel sürümden Enterprise Edition 'a yükseltebilirsiniz.
 
-1. [Azure Machine Learning stüdyosunda](https://ml.azure.com)oturum açın.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
 
 1. Yükseltmek istediğiniz çalışma alanını seçin.
 
-1. Sayfanın sağ üst kısmında **daha fazla bilgi** edinin'i seçin.
+1. Sayfanın sağ üst kısmında **daha fazla bilgi edinin** ' i seçin.
 
    [![Çalışma alanını](./media/how-to-manage-workspace/upgrade.png) yükseltme](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. Görünen pencerede **Yükseltme'yi** seçin.
+1. Görüntülenen pencerede **Yükselt** ' i seçin.
 
 
 > [!IMPORTANT]
-> Kurumsal sürüm çalışma alanını Temel sürüm çalışma alanına indiremezsiniz. 
+> Enterprise Edition çalışma alanını temel bir sürüm çalışma alanına indirgeyemezsiniz. 
 
-## <a name="find-a-workspace"></a><a name="view"></a>Çalışma alanı bulma
+## <a name="find-a-workspace"></a><a name="view"></a>Çalışma alanı bul
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. En üst arama alanında **Machine Learning**yazın.  
+1. Üst arama alanına **Machine Learning**yazın.  
 
-1. **Makine Öğrenimi'ni**seçin.
+1. **Machine Learning**seçin.
 
-   ![Azure Makine Öğrenimi çalışma alanını ara](./media/how-to-manage-workspace/find-workspaces.png)
+   ![Azure Machine Learning çalışma alanı ara](./media/how-to-manage-workspace/find-workspaces.png)
 
 1. Bulunan çalışma alanları listesine bakın. Abonelik, kaynak grupları ve konumlara göre filtre uygulayabilirsiniz.  
 
-1. Özelliklerini görüntülemek için bir çalışma alanı seçin.
+1. Özelliklerini göstermek için bir çalışma alanı seçin.
 
 ## <a name="delete-a-workspace"></a>Çalışma alanını silme
 
-Azure [portalında,](https://portal.azure.com/)silmek istediğiniz çalışma alanının üst **Delete** kısmındasil'i seçin.
+[Azure Portal](https://portal.azure.com/), silmek istediğiniz çalışma alanının en üstünde bulunan **Sil** ' i seçin.
 
 :::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Çalışma alanını sil":::
 
@@ -114,24 +114,24 @@ Azure [portalında,](https://portal.azure.com/)silmek istediğiniz çalışma al
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="resource-provider-errors"></a>Kaynak sağlayıcı hataları
+### <a name="resource-provider-errors"></a>Kaynak sağlayıcısı hataları
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
-### <a name="moving-the-workspace"></a>Çalışma alanını taşıma
+### <a name="moving-the-workspace"></a>Çalışma alanı taşınıyor
 
 > [!WARNING]
-> Azure Machine Learning çalışma alanınızı farklı bir aboneye taşımak veya sahip olan aboneliğiyeni bir kiracıya taşımak desteklenmez. Bunu yapmak hatalara neden olabilir.
+> Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
 
-### <a name="deleting-the-azure-container-registry"></a>Azure Kapsayıcı Kayıt Defterini Silme
+### <a name="deleting-the-azure-container-registry"></a>Azure Container Registry silme
 
-Azure Machine Learning çalışma alanı, bazı işlemler için Azure Kapsayıcı Kayıt Defteri'ni (ACR) kullanır. İlk ihtiyacı olduğunda otomatik olarak bir ACR örneği oluşturur.
+Azure Machine Learning çalışma alanı bazı işlemler için Azure Container Registry (ACR) kullanır. İlk kez ihtiyaç duyduğunda, otomatik olarak bir ACR örneği oluşturur.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning ile modelleri oluşturmak, eğitmek ve dağıtmak için çalışma alanını nasıl kullanacağınızı öğrenmek için tam uzunluktaki öğreticiyi izleyin.
+Azure Machine Learning ile modeller derlemek, eğitme ve dağıtmak için bir çalışma alanı kullanmayı öğrenmek üzere tam uzunluklu öğreticiyi izleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Tren modelleri](tutorial-train-models-with-aml.md)
+> [Öğretici: modelleri eğitme](tutorial-train-models-with-aml.md)

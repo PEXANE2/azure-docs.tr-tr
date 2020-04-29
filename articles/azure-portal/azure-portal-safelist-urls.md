@@ -1,6 +1,6 @@
 ---
-title: Güvenlik duvarınızda veya proxy sunucunuzda Azure portalı URL'lerini güvenli listeleyin
-description: Azure portalı ve hizmetleriyle iletişim kurmak için bu URL'leri proxy sunucu bypass'ına ekleyin
+title: Güvenlik duvarınızdaki veya proxy sunucunuzdaki Azure portal URL 'Lerini listeleyin
+description: Azure portal ve hizmetleriyle iletişim kurmak için bu URL 'Leri ara sunucu geçişine ekleyin
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255058"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Güvenlik duvarınızda veya proxy sunucunuzda Azure portalı URL'lerini güvenli listeleyin
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Güvenlik duvarınızdaki veya proxy sunucunuzdaki Azure portal URL 'Lerini listeleyin
 
-Azure portalı URL'leri için güvenlik kısıtlamalarını atlatırmak için şirket içi güvenlik aygıtlarını yapılandırabilirsiniz. Bu yapılandırma, yerel veya geniş alanağınızla Azure bulutu arasındaki performansı ve bağlantıyı artırabilir.
+Şirket içi güvenlik cihazlarını, Azure portal URL 'Lerinin güvenlik kısıtlamalarını atlayacak şekilde yapılandırabilirsiniz. Bu yapılandırma, yerel veya geniş alan ağınız ile Azure bulutu arasındaki performansı ve bağlantıyı iyileştirebilir.
 
-Ağ yöneticileri genellikle proxy sunucuları, güvenlik duvarları veya diğer aygıtları dağıtır. Bu aygıtlar, kullanıcıların internete nasıl erişiciler eve erişmelerini güvence altına alma ve kontrol sağlamaya yardımcı olur. Kullanıcıları korumak için tasarlanmış kurallar bazen işle ilgili yasal internet trafiğini engelleyebilir veya yavaşlatabilir. Bu trafik, siz ve Azure arasındaki iletişimi içerir. Ağınızla Azure portalı ve hizmetleri arasındaki bağlantıyı optimize etmek için, güvenli listenize Azure portal URL'leri eklemenizi öneririz.
+Ağ yöneticileri genellikle proxy sunucuları, güvenlik duvarları veya diğer cihazları dağıtır. Bu cihazlar güvenli hale getirmeye yardımcı olur ve kullanıcıların İnternet 'e nasıl erişkullanılacağına yönelik denetim sağlar. Kullanıcıları korumak için tasarlanan kurallar, işle ilgili yasal internet trafiğini bazen engelleyebilir veya yavaşlatır. Bu trafik, siz ve Azure arasındaki iletişimleri içerir. Ağınızla Azure portal ve hizmetleri arasındaki bağlantıyı iyileştirmek için, SafeList verilerinize Azure portal URL eklemenizi öneririz.
 
-## <a name="azure-portal-urls-for-proxy-bypass"></a>Proxy baypas için Azure portal URL'leri
+## <a name="azure-portal-urls-for-proxy-bypass"></a>Proxy atlama için Azure portal URL 'Leri
 
-Azure portalı için güvenli liste listesi için URL uç noktaları, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür. Bu uç noktalardaki ağ trafiğinin kısıtlamaları atlamasına izin vermek için bulutunuzu seçin. Ardından URL'lerin listesini proxy sunucunuza veya güvenlik duvarınıza ekleyin.
+Azure portal için güvenli listeye yönelik URL uç noktaları, kuruluşunuzun dağıtıldığı Azure bulutuna özgüdür. Bu uç noktalara yönelik ağ trafiğine kısıtlama atlama izni vermek için bulutunuzu seçin. Ardından, proxy sunucunuza veya güvenlik duvarına URL listesi ekleyin.
 
-#### <a name="public-cloud"></a>[Genel Bulut](#tab/public-cloud)
+#### <a name="public-cloud"></a>[Genel bulut](#tab/public-cloud)
 
 ```
 *.aadcdn.microsoftonline-p.com
@@ -50,7 +50,7 @@ Azure portalı için güvenli liste listesi için URL uç noktaları, kuruluşun
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloud"></a>[ABD Hükümeti Bulut](#tab/us-government-cloud)
+#### <a name="us-government-cloud"></a>[ABD kamu bulutu](#tab/us-government-cloud)
 
 ```
 *.azure.us
@@ -63,7 +63,7 @@ Azure portalı için güvenli liste listesi için URL uç noktaları, kuruluşun
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloud"></a>[Çin Hükümeti Bulut](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[Çin Devlet bulutu](#tab/china-government-cloud)
 
 ```
 *.azure.cn
@@ -77,6 +77,6 @@ Azure portalı için güvenli liste listesi için URL uç noktaları, kuruluşun
 ---
 
 > [!NOTE]
-> Bu uç noktalara trafik, HTTP (80) ve HTTPS (443) için standart TCP bağlantı noktalarını kullanır.
+> Bu uç noktalara giden trafik, HTTP (80) ve HTTPS (443) için standart TCP bağlantı noktalarını kullanır.
 >
 >

@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008377"
 ---
 ## <a name="limitations"></a>Sınırlamalar
@@ -25,14 +25,14 @@ ms.locfileid: "81008377"
 
 ## <a name="deploy-shared-disks"></a>Paylaşılan diskleri dağıtma
 
-### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Premium SSD'yi paylaşılan disk olarak dağıtma
+### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Premium SSD 'yi paylaşılan disk olarak dağıtma
 
-Paylaşılan disk özelliği etkinleştirilmiş yönetilen bir disk dağıtmak `maxShares` için yeni özelliği kullanın ve 1'den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
+Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için yeni özelliği `maxShares` kullanın ve 1 ' den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
 
 > [!IMPORTANT]
-> `maxShares` Değeri yalnızca bir disk tüm VM'lerden söküldüğünde ayarlanabilir veya değiştirilebilir. Için izin verilen değerler için `maxShares`Disk [boyutlarını](#disk-sizes) görün.
+> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin `maxShares`izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın.
 
-Aşağıdaki şablonu kullanmadan `[parameters('dataDiskName')]` `[resourceGroup().location]`önce, değiştirin , , `[parameters('dataDiskSizeGB')]`, ve `[parameters('maxShares')]` kendi değerleri ile.
+Aşağıdaki şablonu kullanmadan önce,,, `[parameters('dataDiskName')]`ve `[resourceGroup().location]` `[parameters('maxShares')]` değerlerini `[parameters('dataDiskSizeGB')]`kendi değerlerinizle değiştirin.
 
 ```json
 { 
@@ -73,14 +73,14 @@ Aşağıdaki şablonu kullanmadan `[parameters('dataDiskName')]` `[resourceGroup
 }
 ```
 
-### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Ultra diski paylaşılan disk olarak dağıtma
+### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Bir ultra diski paylaşılan disk olarak dağıtma
 
 #### <a name="cli"></a>CLI
 
-Paylaşılan disk özelliği etkinleştirilmiş yönetilen bir disk `maxShares` dağıtmak için parametreyi 1'den büyük bir değere değiştirin. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
+Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için, `maxShares` parametreyi 1 ' den büyük bir değere değiştirin. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
 
 > [!IMPORTANT]
-> `maxShares` Değeri yalnızca bir disk tüm VM'lerden söküldüğünde ayarlanabilir veya değiştirilebilir. Için izin verilen değerler için `maxShares`Disk [boyutlarını](#disk-sizes) görün.
+> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin `maxShares`izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın.
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Paylaşılan disk özelliği etkinleştirilmiş yönetilen bir disk `maxShares` dağıtmak için özelliği kullanın ve 1'den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
+Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için, özelliğini `maxShares` kullanın ve 1 ' den büyük bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
 
 > [!IMPORTANT]
-> `maxShares` Değeri yalnızca bir disk tüm VM'lerden söküldüğünde ayarlanabilir veya değiştirilebilir. Için izin verilen değerler için `maxShares`Disk [boyutlarını](#disk-sizes) görün.
+> Değeri `maxShares` yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. İçin `maxShares`izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın.
 
-Aşağıdaki şablonu kullanmadan `[parameters('dataDiskName')]` `[resourceGroup().location]`önce, `[parameters('diskIOPSReadWrite')]`kendi `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]`değerlerinizle `[parameters('diskMBpsReadOnly')]` değiştirin. `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]`
+Aşağıdaki şablonu kullanmadan önce,,, `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]`ve `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadOnly')]` değerlerini `[parameters('diskMBpsReadWrite')]`kendi `[parameters('diskIOPSReadOnly')]`değerlerinizle değiştirin.
 
 ```json
 {
@@ -168,12 +168,12 @@ Aşağıdaki şablonu kullanmadan `[parameters('dataDiskName')]` `[resourceGroup
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Azure paylaşılan diskleri VM'lerinizle kullanma
+### <a name="using-azure-shared-disks-with-your-vms"></a>Sanal makinelerinizdeki Azure Paylaşılan disklerini kullanma
 
-Paylaşılan bir diski dağıttıktan `maxShares>1`sonra, diski VM'lerinizden birine veya daha fazlasına monte edebilirsiniz.
+İle `maxShares>1`paylaşılan bir disk dağıttıktan sonra, diski sanal makinelerinizdeki bir veya daha fazlasına bağlayabilirsiniz.
 
 > [!IMPORTANT]
-> Bir diski paylaşan tüm VM'ler aynı [yakınlık yerleşim grubunda](../articles/virtual-machines/windows/proximity-placement-groups.md)dağıtılmalıdır.
+> Bir diski paylaşan tüm VM 'Lerin aynı [yakınlık yerleşimi grubuna](../articles/virtual-machines/windows/proximity-placement-groups.md)dağıtılması gerekir.
 
 ```azurepowershell-interactive
 
@@ -197,9 +197,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>Desteklenen SCSI PR komutları
 
-Paylaşılan diski kümenizde VM'lerinize monte ettikten sonra, çoğunluk oluşturabilir ve SCSI PR'ı kullanarak diske okuma/yazma yapabilirsiniz. Azure paylaşılan diskleri kullanırken aşağıdaki PR komutları kullanılabilir:
+Paylaşılan diski kümenize sanal makinelerinize bağladıktan sonra, çekirdek oluşturabilir ve SCSI PR kullanarak diske okuma/yazma yapabilirsiniz. Azure paylaşılan diskler kullanılırken aşağıdaki PR komutları kullanılabilir:
 
-Diskle etkileşimkurmak için kalıcı rezervasyon eylem listesiyle başlayın:
+Diskle etkileşimde bulunmak için kalıcı rezervasyon eylem listesiyle başlayın:
 
 ```
 PR_REGISTER_KEY 
@@ -217,7 +217,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-PR_RESERVE, PR_PREEMPT_RESERVATION veya PR_RELEASE_RESERVATION kullanırken aşağıdaki kalıcı rezervasyon türünden birini sağlayın:
+PR_RESERVE, PR_PREEMPT_RESERVATION veya PR_RELEASE_RESERVATION kullanırken, şu kalıcı rezervasyon türünden birini sağlayın:
 
 ```
 PR_NONE 
@@ -235,9 +235,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-Ayrıca, PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION veya PR_RELEASE-RESERVATION kullanırken kalıcı rezervasyon anahtarı sağlamanız gerekir.
+PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION veya PR_RELEASE AYıRMAYı kullanırken de kalıcı rezervasyon anahtarı sağlamanız gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Paylaşılan diskleri denemek istiyorsanız [önizlememize kaydolun.](https://aka.ms/AzureSharedDiskPreviewSignUp)
+Paylaşılan diskler gerçekleştirmeye ilgileniyorsanız, [önizlememiz için kaydolun](https://aka.ms/AzureSharedDiskPreviewSignUp).

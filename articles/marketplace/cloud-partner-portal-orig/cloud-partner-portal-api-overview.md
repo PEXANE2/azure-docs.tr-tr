@@ -1,6 +1,6 @@
 ---
-title: Bulut İş Ortağı Portalı API Başvurusu | Azure Marketi
-description: Pazar api işlemlerinin açıklaması, kullanımı ön koşullar ve listesi.
+title: API başvurusunu Bulut İş Ortağı Portalı | Azure Marketi
+description: Açıklaması, kullanım önkoşulları ve Market API işlemlerinin listesi.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: b9f698ea81830aaa8761c05012cf6843d07ad5a4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256425"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Bulut İş Ortağı Portalı API Başvurusu
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu Ortak Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için bu belgede listelenen [CPP API'lerinde yapılan değişiklikleri](#changes-to-cpp-apis-after-the-migration-to-partner-center) gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için bu belgede listelenen [cpp API 'Lerinde yapılan değişiklikleri](#changes-to-cpp-apis-after-the-migration-to-partner-center) gözden geçirin.
 
-Cloud Partner Portal REST API'leri, iş yüklerinin, tekliflerin ve yayıncı profillerinin programlı olarak alınmasına ve manipüle edilebilmesine olanak tanır. API'ler, işleme zamanında doğru izinleri zorlamak için rol tabanlı erişim denetimini (RBAC) kullanır.
+Bulut İş Ortağı Portalı REST API 'Leri, iş yüklerinin, tekliflerin ve yayımcı profillerinin programlı olarak alınmasına ve işlemesine olanak sağlar. API 'Ler, işlem zamanında doğru izinleri zorlamak için rol tabanlı erişim denetimi (RBAC) kullanır.
 
-Bu başvuru, Bulut İş Ortağı Portalı REST API'leri için teknik ayrıntıları sağlar. Bu belgedeki yük örnekleri yalnızca başvuru amaçlıdır ve yeni işlevler eklendikçe değiştirilebilir.
+Bu başvuru Bulut İş Ortağı Portalı REST API 'Leri için teknik ayrıntılar sağlar. Bu belgedeki yük örnekleri yalnızca başvuru amaçlıdır ve yeni işlevsellik eklendikçe değişikliğe tabidir.
 
-## <a name="prerequisites-and-considerations"></a>Ön koşullar ve değerlendirmeler
+## <a name="prerequisites-and-considerations"></a>Önkoşullar ve konular
 
-API'leri kullanmadan önce şunları gözden geçirmelisiniz:
+API 'Leri kullanmadan önce şunları gözden geçirmeniz gerekir:
 
-- Hesabınıza bir hizmet yöneticisinin nasıl ekleyeceğinizi öğrenmek ve kimlik doğrulama için Azure Etkin Dizin (Azure AD) erişim jetonu almak için [Önkoşullar](./cloud-partner-portal-api-prerequisites.md) makalesi.
-- Bu API'leri aramak için kullanılabilen iki [eşzamanlılık kontrol](./cloud-partner-portal-api-concurrency-control.md) stratejileri.
-- Sürüm ve hata işleme gibi ek API [değerlendirmeleri.](./cloud-partner-portal-api-considerations.md)
+- Hesabınıza bir hizmet sorumlusu ekleme ve kimlik doğrulaması için bir Azure Active Directory (Azure AD) erişim belirteci alma hakkında bilgi edinmek için [Önkoşul](./cloud-partner-portal-api-prerequisites.md) makalesi.
+- Bu API 'Leri çağırmak için kullanılabilen iki [eşzamanlılık denetim](./cloud-partner-portal-api-concurrency-control.md) stratejisi.
+- Sürüm oluşturma ve hata işleme gibi ek API [konuları](./cloud-partner-portal-api-considerations.md).
 
-## <a name="changes-to-cpp-apis-after-the-migration-to-partner-center"></a>Ortak Merkezi'ne geçişten sonra CPP API'leri'nde yapılan değişiklikler
+## <a name="changes-to-cpp-apis-after-the-migration-to-partner-center"></a>Iş Ortağı Merkezi 'ne geçişten sonra CPP API 'Lerinde yapılan değişiklikler
 
-| **API** | **Açıklamayı değiştir** | **Etki** |
+| **API** | **Açıklamayı Değiştir** | **Etki** |
 | ------- | ---------------------- | ---------- |
-| POST Yayınla, GoLive, İptal Et | Geçirilen teklifler için yanıt üstbilgisi farklı bir biçime sahip olur, ancak işlem durumunu almak için göreli bir yolu göstererek aynı şekilde çalışmaya devam edecektir. | İlgili POST isteklerinden herhangi birini teklif için gönderirken, Konum üstbilgisi teklifin geçiş durumuna bağlı olarak iki biçimden birine sahip olacaktır:<ul><li>Geçirilmeyen teklifler<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Geçirilen teklifler<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
-| GET Operasyonu | Yanıtta daha önce desteklenen 'bildirim-e-posta' alanı olan teklif türleri için, bu alan amortismana kesilir ve artık geçirilen teklifler için iade edilmez. | Geçirilen teklifler için artık isteklerde belirtilen e-postalar listesine bildirim göndermeyiz. Bunun yerine, API hizmeti e-posta göndermek için İş Ortağı Merkezi'ndeki bildirim e-posta süreciyle uyumlu olacaktır. Özellikle, bildirimler İş Ortağı Merkezi'ndeki Hesap ayarlarınızın Satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresine gönderilecektir.<br><br>Bildirimler için doğru e-postanın sağlandığından emin olmak için lütfen İş Ortağı Merkezi'ndeki [Hesap ayarlarınızın](https://partner.microsoft.com/dashboard/account/management) Satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresini gözden geçirin.  |
+| Yayınlama SONRASı, GoLive, Iptal | Geçirilen tekliflere, yanıt üst bilgisi farklı bir biçime sahip olur ancak işlem durumunu almak için göreli bir yol belirten aynı şekilde çalışmaya devam edecektir. | Bir teklif için karşılık gelen POST isteklerinin herhangi birini gönderirken, teklifin geçiş durumuna bağlı olarak konum üstbilgisi iki biçimden birine sahip olur:<ul><li>Geçirilmeyen teklifler<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Geçirilmiş teklifler<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
+| Işlemi al | Yanıtta daha önce ' bildirim-e-posta ' alanının desteklendiği teklif türleri için, bu alan kullanım dışı bırakılır ve artık geçirilmiş teklifler için döndürülmez. | Geçirilmiş teklifleriniz için, isteklerde belirtilen e-posta listesine artık bildirim gönderemeyecektir. Bunun yerine, API hizmeti, e-posta göndermek için Iş Ortağı Merkezi 'nde bildirim e-postası işlemiyle hizalanır. Özellikle, işlem ilerleme durumunu bildirmek için Iş ortağı merkezindeki hesap ayarlarınızın satıcı iletişim bilgileri bölümünde bulunan e-posta adresine bildirim gönderilir.<br><br>Bildirimler için doğru e-postanın sağlandığından emin olmak için Iş Ortağı Merkezi 'ndeki [hesap ayarlarınızın](https://partner.microsoft.com/dashboard/account/management) satıcı iletişim bilgileri bölümünde ayarlanan e-posta adresini gözden geçirin.  |
 
 ## <a name="common-tasks"></a>Genel görevler
 
-Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API'leri ayrıntılarıyla anlatır.
+Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API 'Ler hakkında bilgi sağlar.
 
 ### <a name="offers"></a>Teklifler
 
-- [Tüm teklifleri alın](./cloud-partner-portal-api-retrieve-offers.md)
+- [Tüm teklifleri al](./cloud-partner-portal-api-retrieve-offers.md)
 - [Belirli bir teklifi alma](./cloud-partner-portal-api-retrieve-specific-offer.md)
 - [Teklif durumunu alma](./cloud-partner-portal-api-retrieve-offer-status.md)
 - [Teklif oluşturma](./cloud-partner-portal-api-creating-offer.md)
@@ -61,7 +61,7 @@ Bu başvuru, aşağıdaki ortak görevleri gerçekleştirmek için API'leri ayr�
 
 ### <a name="other-tasks"></a>Diğer görevler
 
-- [Sanal makine teklifleri için fiyatlandırma yı ayarlama](./cloud-partner-portal-api-setting-price.md)
+- [Sanal makine teklifleri için fiyatlandırmayı ayarla](./cloud-partner-portal-api-setting-price.md)
 
 ### <a name="troubleshooting"></a>Sorun giderme
 

@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstü için Azure çok faktörlü kimlik doğrulaması ayarlama - Azure
-description: Windows Sanal Masaüstü'nde artırılmış güvenlik için Azure çok faktörlü kimlik doğrulaması nasıl ayarlanır?
+title: Windows sanal masaüstü için Azure Multi-Factor Authentication 'ı ayarlama-Azure
+description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure Multi-Factor Authentication 'ı ayarlama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,89 +9,89 @@ ms.date: 04/01/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80998467"
 ---
 # <a name="set-up-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication’ı ayarlama
 
-Windows Sanal Masaüstü için Windows istemcisi, Windows Sanal Masaüstü'nü yerel makinenizle tümleştirmek için mükemmel bir seçenektir. Ancak, Windows Sanal Masaüstü hesabınızı Windows İstemci'ye yapılandırdığınızda, kendinizi ve kullanıcılarınızı güvende tutmak için almanız gereken bazı önlemler vardır.
+Windows sanal masaüstü için Windows istemcisi, Windows sanal masaüstünü yerel makineli tümleştirmeyle ilgili mükemmel bir seçenektir. Ancak, Windows sanal masaüstü hesabınızı Windows Istemcisi olarak yapılandırdığınızda, kendinizi ve kullanıcılarınızın güvenliğini sağlamak için uygulamanız gereken bazı ölçüler vardır.
 
-İlk oturum unuzu ilk oturum açğınızda, istemci kullanıcı adınızı, parolanızı ve Azure MFA'nızı sorar. Bundan sonra, bir sonraki oturum açğınızda, istemci azure Etkin Dizin (AD) Kurumsal Uygulamanızdan belirtecinizi hatırlar. **Beni Hatırla'yı**seçtiğinizde, kullanıcılarınızın kimlik bilgilerini yeniden girmelerine gerek kalmadan istemciyi yeniden başlattınktan sonra oturum açabilir.
+İlk kez oturum açtığınızda, istemci kullanıcı adınızı, parolanızı ve Azure MFA 'yı ister. Bundan sonra, bir sonraki oturum açışınızda istemci, Azure Active Directory (AD) Kurumsal uygulamanızdan belirtecinizi hatırlayacaktır. **Beni anımsa**' yı seçtiğinizde kullanıcılarınız, kimlik bilgilerini yeniden girmeye gerek kalmadan istemciyi yeniden başlattıktan sonra oturum açabilirler.
 
-Kimlik bilgilerini hatırlamak kullanışlı olsa da, Kurumsal senaryolarda veya kişisel aygıtlarda dağıtımları daha az güvenli hale getirebilir. Kullanıcılarınızı korumak için, istemcinin Azure Çok Faktörlü Kimlik Doğrulaması (MFA) kimlik bilgilerini sormaya devam edeceğinden emin olmanız gerekir. Bu makalede, bu ayarı etkinleştirmek için Windows Sanal Masaüstü için Koşullu Erişim ilkesini nasıl yapılandıracağınızı gösterecektir.
+Kimlik bilgilerini hatırlarken, kurumsal senaryolarda veya kişisel cihazlarda dağıtımları daha az güvenli hale da olabilir. Kullanıcılarınızı korumak için, istemcinin Azure Multi-Factor Authentication (MFA) kimlik bilgilerini sormayı sürdürdüğünden emin olmanız gerekir. Bu makalede, Windows sanal masaüstü için koşullu erişim ilkesinin bu ayarı etkinleştirmek üzere nasıl yapılandırılacağı gösterilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için gerekenler şunlardır:
+Başlamak için yapmanız gerekenler şunlardır:
 
-- Tüm kullanıcılarınıza aşağıdaki lisanslardan birini atama:
+- Tüm kullanıcılarınıza aşağıdaki lisanslardan birini atayın:
   - Microsoft 365 E3 veya E5
   - Azure Active Directory Premium P1 veya P2
-  - Kurumsal Mobilite + Güvenlik E3 veya E5
-- Kullanıcılarınızın grup üyesi olarak atandığı bir Azure Etkin Dizin grubu.
-- Tüm kullanıcılarınız için Azure MFA'sını etkinleştirin. Bunun nasıl yapılacıyla ilgili daha fazla bilgi için, bir kullanıcı için [iki adlı doyğunlaşnın gerekli olduÄ](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)una bakın.
+  - Enterprise Mobility + Security E3 veya E5
+- Kullanıcılarınız Grup üyeleri olarak atanmış bir Azure Active Directory grubu.
+- Tüm kullanıcılarınız için Azure MFA 'yı etkinleştirin. Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [bir kullanıcı için iki adımlı doğrulama gerektirme](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
 
 >[!NOTE]
->Aşağıdaki [ayar, Windows Sanal Masaüstü web istemcisi](https://rdweb.wvd.microsoft.com/webclient/index.html)için de geçerlidir.
+>Aşağıdaki ayar [Windows Sanal Masaüstü Web istemcisi](https://rdweb.wvd.microsoft.com/webclient/index.html)için de geçerlidir.
 
-## <a name="opt-in-to-the-conditional-access-policy"></a>Koşullu Erişim ilkesine katılma
+## <a name="opt-in-to-the-conditional-access-policy"></a>Koşullu erişim ilkesini kabul etme
 
-1. **Azure Etkin Dizini**Açın.
+1. **Azure Active Directory**açın.
 
-2. **Tüm uygulamalar** sekmesine gidin. "Uygulama türü" açılır menüsünde, **Kurumsal Uygulamalar'ı**seçin, ardından **Windows Sanal Masaüstü İstemci'sini**arayın.
+2. **Tüm uygulamalar** sekmesine gidin. "Uygulama türü" açılan menüsünde **Kurumsal uygulamalar**' ı seçin ve ardından **Windows sanal masaüstü istemcisi**' ni arayın.
 
-    ![Tüm uygulamalar sekmesinin ekran görüntüsü. Kullanıcı arama çubuğuna "windows sanal masaüstü istemcisi" girdi ve uygulama arama sonuçlarında ortaya çıktı.](media/all-applications-search.png)
+    ![Tüm uygulamalar sekmesinin ekran görüntüsü. Kullanıcı arama çubuğuna "Windows sanal masaüstü istemcisi" girdi ve uygulama arama sonuçlarında gösteriliyor.](media/all-applications-search.png)
 
-3. **Koşullu Erişim'i**seçin.
+3. **Koşullu erişim**' i seçin.
 
-    ![Kullanıcının fare imlecini Koşullu Erişim sekmesi üzerinde gezindiğini gösteren bir ekran görüntüsü.](media/conditional-access-location.png)
+    ![Kullanıcının fare imlecini koşullu erişim sekmesinin üzerine imlediği bir ekran görüntüsü.](media/conditional-access-location.png)
 
-4. + **Yeni ilke**yi seçin.
+4. **+ Yeni ilke**' yi seçin.
 
-   ![Koşullu Erişim sayfasının ekran görüntüsü. Kullanıcı fare imlecini yeni ilke düğmesinin üzerinde geziniyor.](media/new-policy-button.png)
+   ![Koşullu erişim sayfasının ekran görüntüsü. Kullanıcı, fare imlecini yeni ilke düğmesinin üzerine getirildiğinde.](media/new-policy-button.png)
 
-5. **Kural**için bir **ad** girin, ardından önkoşullarda oluşturduğunuz **grubun** *adını **seçin.**
+5. **Kural**için bir **ad** girin, ardından önkoşullarda oluşturduğunuz **grubun** adını **seçin** .
 
-6. **Seç'i**seçin, ardından **Bitti'yi**seçin.
+6. **Seç**' i seçin ve **bitti**' yi seçin.
 
-7. Ardından, **Bulut Uygulamaları veya eylemleri**açın.
+7. Ardından, **bulut uygulamalarını veya eylemlerini**açın.
 
-8. **Select** panelinde Windows **Virtual Desktop** Enterprise uygulamasını seçin.
+8. **Seç** panelinde **Windows sanal masaüstü** kurumsal uygulamasını seçin.
 
-    ![Bulut uygulamaları veya eylemleri sayfasının ekran görüntüsü. Kullanıcı yanındaki onay işaretini seçerek Windows Sanal Masaüstü uygulamasını seçmiştir. Seçili uygulama kırmızı ile vurgulanır.](media/cloud-apps-select.png)
+    ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Kullanıcı, yanındaki onay işaretini seçerek Windows sanal masaüstü uygulamasını seçti. Seçilen uygulama kırmızı renkle vurgulanır.](media/cloud-apps-select.png)
     
     >[!NOTE]
-    >Aşağıdaki resimde gösterildiği gibi ekranın sol tarafında seçilen Windows Sanal Masaüstü İstemci uygulamasını da görmeniz gerekir. İlkenin çalışması için hem Windows Sanal Masaüstü hem de Windows Sanal Masaüstü İstemci Kurumsal uygulamalarına ihtiyacınız vardır.
+    >Aşağıdaki görüntüde gösterildiği gibi, ekranın sol tarafında seçilen Windows sanal masaüstü Istemci uygulamasını da görmeniz gerekir. İlkenin çalışması için hem Windows sanal masaüstü hem de Windows sanal masaüstü Istemcisi kurumsal uygulamalarının olması gerekir.
     >
-    > ![Bulut uygulamaları veya eylemleri sayfasının ekran görüntüsü. Windows Sanal Masaüstü ve Windows Sanal Masaüstü İstemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise-selected.png)
+    > ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise-selected.png)
 
-9. **Seç'i Seç**
+9. **Seç** ' i seçin
 
-10. Sonraki, **Açık Grant** 
+10. Sonra, açık **ver** 
 
-11. **Çok faktörlü kimlik doğrulamayı**denetle'yi seçin, ardından **seçili denetimlerden birini iste'yi**seçin.
+11. **Multi-Factor Authentication gerektir**' i seçin, sonra **Seçili denetimlerden birini gerektir**' i seçin.
    
-    ![Grant sayfasının ekran görüntüsü. "Çok faktörlü kimlik doğrulaması gerektir" seçilir.](media/grant-page.png)
+    ![Izin sayfasının ekran görüntüsü. "Multi-Factor Authentication gerektir" seçilidir.](media/grant-page.png)
 
     >[!NOTE]
-    >Kuruluşunuzda MDM'ye kayıtlı aygıtlarınız varsa ve MFA istemini göstermelerini istemiyorsanız, **uyumlu olarak işaretlenecek aygıtı da**seçebilirsiniz.
+    >Kuruluşunuzda MDM 'ye kayıtlı cihazlar varsa ve MFA isteğini göstermesini istemiyorsanız, **cihazın uyumlu olarak Işaretlenmesini gerektir**' i de seçebilirsiniz.
 
-12. **Oturum'u**seçin.
+12. **Oturum**seçin.
 
-13. Oturum **açma sıklığını** **Etkin**olarak ayarlayın ve değerini **1 Saat**olarak değiştirin.
+13. **Oturum açma sıklığını** **etkin**olarak ayarlayın, ardından değerini **1 saat**olarak değiştirin.
 
-    ![Oturum sayfasının ekran görüntüsü. Oturum menüsünde oturum açma sıklığı açılır menülerin "1" ve "Saat" olarak değiştirildiğini gösterir.](media/sign-in-frequency.png)
+    ![Oturum sayfasının ekran görüntüsü. Oturum menüsü, oturum açma sıklığı açılan menüsünün "1" ve "saat" olarak değiştirildiğini gösterir.](media/sign-in-frequency.png)
    
     >[!NOTE]
-    >Windows Sanal Masaüstü ortamınızdaki etkin oturumlar, siz ilkeyi değiştirin. Ancak, bağlantıyı keser veya kapatırsanız, kimlik bilgilerinizi 60 dakika sonra yeniden sağlamanız gerekir. Ayarları değiştirince, zaman ödeme süresini istediğiniz kadar uzatabilirsiniz (kuruluşunuzun güvenlik ilkesiyle uyumlu olduğu sürece).
+    >Windows sanal masaüstü ortamınızdaki etkin oturumlar, ilkeyi değiştirirken çalışmaya devam edecektir. Bununla birlikte, bağlantısını keserseniz veya oturumu kapatırsanız, kimlik bilgilerinizi 60 dakika sonra yeniden sağlamanız gerekir. Ayarları değiştirirken, zaman aşımı süresini istediğiniz kadar genişletebilirsiniz (kuruluşunuzun güvenlik ilkesiyle aynı olduğu sürece).
     >
-    >Varsayılan ayar 90 günlük bir yuvarlanma penceresidir, bu da istemcinin kullanıcılardan 90 gün veya daha uzun süre makinelerinde etkin olmayan bir kaynağa erişmeye çalıştıklarında yeniden oturum açmalarını isteyeceği anlamına gelir.
+    >Varsayılan ayar, 90 günlük bir sıralı penceredir ve bu, istemcinin, makinenizde 90 gün veya daha uzun bir süre boyunca devre dışı kaldıktan sonra bir kaynağa erişmeyi denediğinde kullanıcılardan yeniden oturum açmasını isteytikleri anlamına gelir.
 
 14. İlkeyi etkinleştirin.
 
-15. İlkeyi onaylamak için **Oluştur'u** seçin.
+15. İlkeyi onaylamak için **Oluştur** ' u seçin.
 
-Bitirdiniz! İzin veren listenizin beklendiği gibi çalıştığından emin olmak için ilkeyi test etmekten çekinmeyin.
+Bitirdiniz! İzin verilenler listenizin istendiği gibi çalıştığından emin olmak için ilkeyi test etme ücretsizdir.

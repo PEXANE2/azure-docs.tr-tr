@@ -1,91 +1,91 @@
 ---
-title: Azure Monitör ölçümleri ve otomatik ölçeklendirme için dağıtım API'lerini emekliye ayırma
-description: Azure Hizmet Yönetimi (ASM) veya RDFE dağıtım modeli olarak da adlandırılan ölçümler ve otomatik ölçeklendirme klasik API'leri kullanımdan kaldırılıyor
+title: Azure Izleyici ölçümleri ve otomatik ölçeklendirme için dağıtım API 'Lerini devre dışı bırakma
+description: Azure hizmet yönetimi (ASM) veya RDFE dağıtım modelinin Kullanımdan kaldırılmış olarak da bilinen ölçümler ve otomatik ölçeklendirme klasik API 'Ler
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114224"
 ---
-# <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitör ölçümleri ve otomatik ölçeklendirme için klasik dağıtım modeli API'lerinin emekliye ayrılması
+# <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Izleyici, ölçümler ve otomatik ölçeklendirme için klasik dağıtım modeli API 'Lerinin kullanımdan kaldırılması
 
-Azure Monitor (eski adıyla Azure Öngörüleri) şu anda klasik VM'ler ve klasik Bulut Hizmetleri ölçümleri için otomatik ölçeklendirme ayarları oluşturma ve yönetme olanağı sunar. Klasik dağıtım modeli tabanlı API'lerin özgün kümesi, tüm bölgelerdeki tüm Azure genel ve özel bulutlarda **30 Haziran 2019'dan sonra kullanımdan kaldırılacaktır.**   
+Azure Izleyici (önceki adıyla Azure Insights) Şu anda, için otomatik ölçeklendirme ayarlarını oluşturma ve yönetme ve klasik VM 'Ler ile klasik Cloud Services ölçümleri kullanma yeteneği sunuyor. Klasik dağıtım modeli tabanlı API 'lerin orijinal kümesi, tüm bölgelerde tüm Azure genel ve özel bulutlarda **30 haziran 2019 ' den sonra kullanımdan** kaldırılacaktır.   
 
-Aynı işlemler, bir yıldan uzun süredir Azure Kaynak Yöneticisi tabanlı API'ler kümesi aracılığıyla desteklenmiştir. Azure portalı, hem otomatik ölçeklendirme hem de ölçümler için yeni REST API'lerini kullanır. Bu Kaynak Yöneticisi API'lerine dayalı yeni bir SDK, PowerShell ve CLI de mevcuttur. İzleme için iş ortağı hizmetlerimiz, Azure Monitor'daki yeni Kaynak Yöneticisi tabanlı REST API'lerini tüketir.  
+Aynı işlemler, yıl boyunca bir dizi Azure Resource Manager tabanlı API aracılığıyla desteklenmelidir. Azure portal hem otomatik ölçeklendirme hem de ölçümler için yeni REST API 'Lerini kullanır. Bu Kaynak Yöneticisi API 'Lerine göre yeni bir SDK, PowerShell ve CLı de mevcuttur. İzleme için iş ortağı hizmetlerimiz, Azure Izleyici 'de yeni Kaynak Yöneticisi tabanlı REST API 'Leri kullanır.  
 
-## <a name="who-is-not-affected"></a>Kimler etkilenmez
+## <a name="who-is-not-affected"></a>Kim etkilenmedi
 
-Azure portalı, [yeni Azure Monitor SDK,](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)PowerShell, CLI veya Kaynak Yöneticisi şablonları üzerinden otomatik ölçeklendirme yönetiyorsanız, herhangi bir işlem yapılması gerekmez.  
+Otomatik ölçeklendirmeyi Azure portal, [yeni Azure izleyici SDK 'sı](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), POWERSHELL, clı veya Kaynak Yöneticisi şablonları aracılığıyla yönetiyorsanız, hiçbir eylem gerekmez.  
 
-Azure portalı veya çeşitli [izleme ortağı hizmetleri](../../azure-monitor/platform/partners.md)aracılığıyla ölçümler tüketiyorsanız, herhangi bir işlem yapılması gerekmez. Microsoft, yeni API'lere geçiş yapmak için izleme ortaklarıyla birlikte çalışmaktadır.
+Azure portal veya çeşitli [izleme iş ortağı hizmetleri](../../azure-monitor/platform/partners.md)aracılığıyla ölçümleri tüketerek, herhangi bir işlem yapmanız gerekmez. Microsoft, yeni API 'lere geçiş yapmak için izleme iş ortaklarıyla birlikte çalışmaktadır.
 
-## <a name="who-is-affected"></a>Kimler etkilenir?
+## <a name="who-is-affected"></a>Kim etkilendi
 
 Aşağıdaki bileşenleri kullanıyorsanız, bu makale sizin için geçerlidir:
 
-- **Klasik Azure Öngörüleri SDK** - [Klasik Azure Öngörüleri SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)kullanıyorsanız, [.NET](https://github.com/azure/azure-libraries-for-net#download) veya [Java](https://github.com/azure/azure-libraries-for-java#download)için yeni Azure Monitor SDK'sını kullanmaya geçin. Azure [MonitörSI SDK NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)indirin.
+- **Klasik Azure Insights SDK 'sı** - [Klasik Azure Insights SDK 'sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)kullanıyorsanız, [.net](https://github.com/azure/azure-libraries-for-net#download) veya [Java](https://github.com/azure/azure-libraries-for-java#download)için yeni Azure izleyici SDK 'sını kullanmaya geçin. [Azure izleyici SDK 'Sı NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)indirin.
 
-- **Klasik Otomatik Ölçeklendirme** - Özel olarak oluşturulmuş araçlarınızdan [klasik otomatik ölçek ayarları API'lerini](https://msdn.microsoft.com/library/azure/mt348562.aspx) arıyorsanız veya klasik Azure [Öngörüleri SDK'yı](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)kullanıyorsanız, [Kaynak Yöneticisi Azure Monitor REST API'yi](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)kullanmaya geçmelisiniz.
+- **Klasik otomatik ölçeklendirme** - [Klasik otomatik ölçeklendirme ayarları API 'lerini](https://msdn.microsoft.com/library/azure/mt348562.aspx) özel olarak oluşturulmuş araçlardan veya [Klasik Azure Insights SDK 'sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)kullanarak arıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir.
 
-- **Klasik Ölçümler** - Özel olarak oluşturulmuş araçlardan [klasik REST API'lerini](https://msdn.microsoft.com/library/azure/dn510374.aspx) veya klasik Azure [Öngörüleri SDK'sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) kullanarak ölçümler tüketiyorsanız, [Kaynak Yöneticisi Azure Monitor REST API'yi](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)kullanmaya geçmelisiniz. 
+- **Klasik ölçümler** -özel olarak oluşturulmuş araçlardan [Klasik REST API 'Leri](https://msdn.microsoft.com/library/azure/dn510374.aspx) veya [Klasik Azure Insights SDK 'Sını](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) kullanarak ölçümler kullanıyorsanız [Azure izleyici REST API Kaynak Yöneticisi](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)kullanmaya geçmeniz gerekir. 
 
-Kod veya özel araçlarınızın klasik API'leri çağırıp çağırmadığından emin değilseniz, aşağıdakiler göz atın:
+Kodunuzun veya özel araçlarınızın klasik API 'Leri çağırma konusunda emin değilseniz, aşağıdakilere bakın:
 
-- Kodunuzda veya aracınızda başvurulan URI'yi gözden geçirin. Klasik API'ler https://management.core.windows.netURI'yi kullanır. Kaynak Yöneticisi tabanlı API'ler için yeni URI `https://management.azure.com/`kullanıyor olmalısınız.
+- Kodunuzda veya aracınız içinde başvurulan URI 'yi gözden geçirin. Klasik API 'Ler URI https://management.core.windows.netkullanır. Kaynak Yöneticisi tabanlı API 'Ler ile `https://management.azure.com/`başlayan yeni URI 'yi kullanmanız gerekir.
 
-- Makinenizdeki montaj adını karşılaştırın. Eski klasik montaj https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
+- Makinenizde derleme adını karşılaştırın. Klasik eski derleme https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
 
-- Ölçümlere erişmek veya API'lere erişmek için sertifika kimlik doğrulaması kullanıyorsanız, klasik bir bitiş noktası ve kitaplık kullanıyorsunuz. Yeni Kaynak Yöneticisi API'leri, bir hizmet yöneticisi veya kullanıcı ilkesi aracılığıyla Azure Etkin Dizin kimlik doğrulaması gerektirir.
+- Ölçüm veya otomatik ölçeklendirme API 'Lerine erişmek için sertifika kimlik doğrulaması kullanıyorsanız, klasik bir uç nokta ve kitaplık kullanıyorsunuz demektir. Yeni Kaynak Yöneticisi API 'Leri, hizmet sorumlusu veya Kullanıcı sorumlusu aracılığıyla Azure Active Directory kimlik doğrulaması gerektirir.
 
-- Aşağıdaki bağlantılardan herhangi birinde belgelerde başvurulan çağrıları kullanıyorsanız, eski klasik API'leri kullanıyorsunuz.
+- Aşağıdaki bağlantılardan herhangi birinde belgelerde başvurulan çağrılar kullanıyorsanız, klasik eski API 'Leri kullanıyorsunuz demektir.
 
-  - [Windows.Azure.Management.Monitoring Class Kitaplığı](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
+  - [Windows. Azure. Management. Monitoring sınıf kitaplığı](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
 
   - [İzleme (klasik) .NET](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
 
-  - [IMetricOperations Arayüzü](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
+  - [Imetricoperations arabirimi](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
 
-## <a name="why-you-should-switch"></a>Neden geçiş yapmalısınız?
+## <a name="why-you-should-switch"></a>Neden geçmeniz gerekir?
 
-Otomatik ölçeklendirme ve ölçümler için varolan tüm yetenekler yeni API'ler aracılığıyla çalışmaya devam edecektir.  
+Otomatik ölçeklendirme ve ölçümler için mevcut tüm yetenekler yeni API 'Ler aracılığıyla çalışmaya devam edecektir.  
 
-Yeni API'lere geçiş, tüm izleme hizmetlerinizde tutarlı Rol Tabanlı Erişim Denetimi (RBAC) desteği gibi Kaynak Yöneticisi tabanlı özelliklerle birlikte gelir. Ayrıca ölçümler için ek işlevsellik kazanırsınız: 
+Daha yeni API 'lere geçiş yapmak, tüm izleme hizmetleriniz genelinde tutarlı rol tabanlı Access Control (RBAC) desteği gibi Kaynak Yöneticisi tabanlı yetenekler sağlar. Ayrıca ölçümler için ek işlevler elde edersiniz: 
 
-- boyutlar için destek
-- tüm hizmetler de tutarlı 1 dakikalık metrik parçalılık 
+- Boyut desteği
+- tüm hizmetlerde tutarlı 1 dakikalık ölçüm ayrıntı düzeyi 
 - daha iyi sorgulama
-- daha yüksek veri saklama (93 günlük ölçümler vs. 30 gün) 
+- daha yüksek veri saklama (93 gün ölçüm ve 30 gün) 
 
-Genel olarak, Azure'daki diğer tüm hizmetler gibi, Kaynak Yöneticisi tabanlı Azure Monitör API'leri daha iyi performans, ölçeklenebilirlik ve güvenilirlikle birlikte gelir. 
+Genel olarak, Azure 'daki diğer tüm hizmetler gibi Kaynak Yöneticisi tabanlı Azure Izleyici API 'Leri, daha iyi performans, ölçeklenebilirlik ve güvenilirlik ile gelir. 
 
-## <a name="what-happens-if-you-do-not-migrate"></a>Göç etmezseniz ne olur?
+## <a name="what-happens-if-you-do-not-migrate"></a>Geçiş yapmazsanız ne olur?
 
-### <a name="before-retirement"></a>Emeklilik öncesi
+### <a name="before-retirement"></a>Kullanımdan kaldırmadan önce
 
-Azure hizmetleriniz veya iş yüklerinin doğrudan bir etkisi olmayacaktır.  
+Azure hizmetlerinizin veya iş yüklerinize doğrudan hiçbir etkisi olmayacaktır.  
 
-### <a name="after-retirement"></a>Emekli olduktan sonra
+### <a name="after-retirement"></a>Kullanımdan kaldırıldıktan sonra
 
-Daha önce listelenen klasik API'lere yapılan tüm aramalar başarısız olur ve aşağıdakilere benzer hata iletileri döndürecektir:
+Daha önce listelenen klasik API 'lere yapılan çağrılar başarısız olur ve aşağıdakine benzer hata iletileri döndürür:
 
-Otomatik ölçeklendirme için: *Bu API amortismana hazırdır. Otomatik Ölçeklendirme Ayarlarını yönetmek için Azure portalını, Azure Monitörü SDK'sını, PowerShell'i, CLI'yi veya Kaynak Yöneticisi şablonlarını kullanın.*  
+Otomatik ölçeklendirme için: *Bu API kullanım dışı bırakılmıştır. Otomatik ölçeklendirme ayarlarını yönetmek için Azure portal, Azure Izleyici SDK, PowerShell, CLı veya Kaynak Yöneticisi şablonlarını kullanın*.  
 
-Ölçümler için: *Bu API amortismana kaldırıldı. Ölçümleri sorgulamak için Azure portalını, Azure Monitor SDK'yı, PowerShell'i, CLI'yi kullanın.*
+Ölçümler için: *Bu API kullanım dışı bırakılmıştır. Ölçümleri sorgulamak için Azure Izleyici SDK 'Sı, PowerShell, CLı Azure portal kullanın*.
 
 ## <a name="email-notifications"></a>E-posta bildirimleri
 
-Aşağıdaki hesap rolleri için e-posta adreslerine bir emeklilik bildirimi gönderildi: 
+Aşağıdaki hesap rolleri için e-posta adreslerine bir kullanımdan kaldırma bildirimi gönderildi: 
 
 - Hesap ve hizmet yöneticileri
-- Yardımcı Yöneticiler  
+- Coadministrators  
 
-Herhangi bir sorunuz varsa, MonitorClassicAPIhelp@microsoft.combize ulaşın .  
+Sorularınız varsa bizimle iletişime geçin MonitorClassicAPIhelp@microsoft.com.  
 
 ## <a name="references"></a>Başvurular
 
-- [Azure Monitör için yeni REST API'leri](https://docs.microsoft.com/rest/api/monitor/) 
-- [Yeni Azure Monitör SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+- [Azure Izleyici için daha yeni REST API 'Leri](https://docs.microsoft.com/rest/api/monitor/) 
+- [Daha yeni Azure Izleyici SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

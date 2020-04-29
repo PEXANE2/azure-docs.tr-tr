@@ -1,39 +1,39 @@
 ---
-title: Mantıksal kuruluş için kaynakları, kaynak gruplarını ve abonelikleri etiketleme
-description: Faturalandırma ve yönetme için Azure kaynaklarını düzenlemek için etiketlerin nasıl uygulanacağı gösterin.
+title: Mantıksal kuruluş için kaynakları, kaynak grupları ve abonelikleri etiketleme
+description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255133"
 ---
-# <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanın
+# <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
-Etiketleri Azure kaynaklarınıza, kaynak gruplarınıza ve aboneliklerinize mantıksal olarak taksonomi olarak düzenlemek için uygularsınız. Her etiket bir ad ve bir değer çiftinden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
+Bunları bir taksonomiye mantıksal olarak düzenlemek için Azure kaynaklarınıza, kaynak gruplarına ve aboneliklerinize Etiketler uygularsınız. Her etiket bir ad ve bir değer çiftinden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
 
-Etiketleme stratejisinin nasıl uygulanacağı yla ilgili öneriler için [Kaynak adlandırma ve etiketleme karar kılavuzuna](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)bakın.
+Etiketleme stratejisi uygulama hakkında öneriler için bkz. [Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
 
 > [!IMPORTANT]
-> Etiket adları büyük/küçük harf duyarsızdır. Etiket değerleri büyük/küçük harf duyarlıdır.
+> Etiket adları büyük/küçük harfe duyarlıdır. Etiket değerleri büyük/küçük harfe duyarlıdır.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="required-access"></a>Gerekli erişim
 
-Bir kaynağa etiket uygulamak için **Microsoft.Resources/tags** kaynak türüne yazma erişiminiz olması gerekir. [Tag Contributor](../../role-based-access-control/built-in-roles.md#tag-contributor) rolü, varlığın kendisine erişmeden etiketleri bir varlığa uygulamanızı sağlar. Şu anda, etiket katılımcısı rolü portal aracılığıyla kaynaklara veya kaynak gruplarına etiketler uygulayamaz. Portal üzerinden aboneliklere etiketler uygulayabilir. PowerShell ve REST API aracılığıyla tüm etiket işlemlerini destekler.  
+Bir kaynağa etiket uygulamak için, **Microsoft. resources/Tags** kaynak türüne yazma erişiminizin olması gerekir. [Etiket katılımcısı](../../role-based-access-control/built-in-roles.md#tag-contributor) rolü, varlığa erişimi olmayan bir varlığa Etiketler uygulamanıza olanak sağlar. Şu anda, etiket katılımcısı rolü, Portal üzerinden kaynaklara veya kaynak gruplarına Etiketler uygulayamaz. Portal üzerinden aboneliğe Etiketler uygulayabilir. PowerShell ve REST API aracılığıyla tüm etiket işlemlerini destekler.  
 
-[Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) rolü ayrıca etiketleri herhangi bir varlığa uygulamak için gerekli erişimi de sağlar. Etiketleri yalnızca bir kaynak türüne uygulamak için, söz leilgili kaynak rolünü kullanın. Örneğin, sanal makinelere etiketler uygulamak için [Sanal Makine Katılımcısı'nı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)kullanın.
+[Katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolü, herhangi bir varlığa Etiketler uygulamak için gerekli erişimi de verir. Etiketleri yalnızca bir kaynak türüne uygulamak için bu kaynak için katkıda bulunan rolünü kullanın. Örneğin, sanal makinelere Etiketler uygulamak için [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)'nı kullanın.
 
 ## <a name="powershell"></a>PowerShell
 
-### <a name="apply-tags"></a>Etiketleri uygula
+### <a name="apply-tags"></a>Etiketleri Uygula
 
-Azure PowerShell, etiketleri uygulamak için iki komut sunar - [Yeni-AzTag](/powershell/module/az.resources/new-aztag) ve [Update-AzTag](/powershell/module/az.resources/update-aztag). Az.Resources modülü 1.12.0 veya daha sonra olmalıdır. Sürümünüzü `Get-Module Az.Resources`. Bu modülü yükleyebilir veya [Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 veya sonrası yükleyebilirsiniz.
+Azure PowerShell- [New-aztag](/powershell/module/az.resources/new-aztag) ve [Update-aztag](/powershell/module/az.resources/update-aztag)etiketlerini uygulamak için iki komut sunar. Az. resources Module 1.12.0 veya sonraki bir sürüme sahip olmanız gerekir. Sürümünüzü ile `Get-Module Az.Resources`denetleyebilirsiniz. Bu modülü yükleyebilir veya Azure PowerShell 3.6.1 veya üstünü [yükleyebilirsiniz](/powershell/azure/install-az-ps) .
 
-**Yeni-AzTag** kaynak, kaynak grubu veya abonelikteki tüm etiketlerin yerini alır. Komutu ararken, etiketlemek istediğiniz varlığın kaynak kimliğini geçirin.
+**New-AzTag** , kaynaktaki, kaynak grubundaki veya abonelikteki tüm etiketlerin yerini alır. Komutunu çağırırken etiketlemek istediğiniz varlığın kaynak KIMLIĞINI geçirin.
 
 Aşağıdaki örnek, bir depolama hesabına bir etiket kümesi uygular:
 
@@ -43,7 +43,7 @@ $resource = Get-AzResource -Name demoStorage -ResourceGroup demoGroup
 New-AzTag -ResourceId $resource.id -Tag $tags
 ```
 
-Komut tamamlandığında, kaynağın iki etiketi olduğunu unutmayın.
+Komut tamamlandığında, kaynağın iki etiketi olduğunu fark edersiniz.
 
 ```output
 Properties :
@@ -53,7 +53,7 @@ Properties :
         Status  Normal
 ```
 
-Komutu yeniden çalıştırıyorsanız ancak bu sefer farklı etiketlerle çalıştırılırsa, önceki etiketlerin kaldırıldığına dikkat edin.
+Komutu yeniden çalıştırırsanız, ancak bu kez farklı etiketler içeriyorsa, önceki etiketlerin kaldırıldığına dikkat edin.
 
 ```azurepowershell-interactive
 $tags = @{"Team"="Compliance"; "Environment"="Production"}
@@ -68,14 +68,14 @@ Properties :
         Team         Compliance
 ```
 
-Zaten etiketleri olan bir kaynağa etiket eklemek için **Update-AzTag'ı**kullanın. **-İşlem** parametresini **Birleştirme**olarak ayarlayın.
+Zaten etiketlere sahip olan bir kaynağa etiket eklemek için **Update-AzTag**' i kullanın. **-Operation** parametresini **birleştirilecek**şekilde ayarlayın.
 
 ```azurepowershell-interactive
 $tags = @{"Dept"="Finance"; "Status"="Normal"}
 Update-AzTag -ResourceId $resource.id -Tag $tags -Operation Merge
 ```
 
-İki yeni etiketin varolan iki etikete eklenmiştir dikkat edin.
+İki yeni etiketin varolan iki etikete eklendiğinden emin olun.
 
 ```output
 Properties :
@@ -87,7 +87,7 @@ Properties :
         Environment  Production
 ```
 
-Her etiket adının yalnızca bir değeri olabilir. Bir etiket için yeni bir değer sağlarsanız, birleştirme işlemini kullansanız bile eski değer değiştirilir. Aşağıdaki örnek, Durum etiketini Normal'den Yeşil'e değiştirir.
+Her etiket adı yalnızca bir değere sahip olabilir. Etiket için yeni bir değer sağlarsanız, birleştirme işlemini kullanıyor olsanız bile eski değer değişir. Aşağıdaki örnek durum etiketini normal iken yeşil olarak değiştirir.
 
 ```azurepowershell-interactive
 $tags = @{"Status"="Green"}
@@ -104,14 +104,14 @@ Properties :
         Environment  Production
 ```
 
-**-İşlem** parametresini **Değiştir'e**ayarladığınızda, varolan etiketler yeni etiket kümesiyle değiştirilir.
+**Değiştirilecek** **-Operation** parametresini ayarladığınızda, varolan Etiketler Yeni Etiketler kümesiyle değiştirilir.
 
 ```azurepowershell-interactive
 $tags = @{"Project"="ECommerce"; "CostCenter"="00123"; "Team"="Web"}
 Update-AzTag -ResourceId $resource.id -Tag $tags -Operation Replace
 ```
 
-Kaynakta yalnızca yeni etiketler kalır.
+Kaynak üzerinde yalnızca yeni Etiketler kalır.
 
 ```output
 Properties :
@@ -122,9 +122,9 @@ Properties :
         Project     ECommerce
 ```
 
-Aynı komutlar kaynak grupları veya aboneliklerle de çalışır. Etiketlemek istediğiniz kaynak grubu veya abonelik için tanımlayıcıdan geçersiniz.
+Aynı komutlar kaynak gruplarıyla veya aboneliklerle de çalışır. Etiketlemek istediğiniz kaynak grubu veya aboneliğin tanımlayıcısını geçirin.
 
-Kaynak grubuna yeni bir etiket kümesi eklemek için şunları kullanın:
+Bir kaynak grubuna yeni bir etiket kümesi eklemek için şunu kullanın:
 
 ```azurepowershell-interactive
 $tags = @{"Dept"="Finance"; "Status"="Normal"}
@@ -132,7 +132,7 @@ $resourceGroup = Get-AzResourceGroup -Name demoGroup
 New-AzTag -ResourceId $resourceGroup.ResourceId -tag $tags
 ```
 
-Kaynak grubunun etiketlerini güncelleştirmek için şunları kullanın:
+Bir kaynak grubunun etiketlerini güncelleştirmek için şunu kullanın:
 
 ```azurepowershell-interactive
 $tags = @{"CostCenter"="00123"; "Environment"="Production"}
@@ -140,7 +140,7 @@ $resourceGroup = Get-AzResourceGroup -Name demoGroup
 Update-AzTag -ResourceId $resourceGroup.ResourceId -Tag $tags -Operation Merge
 ```
 
-Aboneye yeni bir etiket kümesi eklemek için şunları kullanın:
+Bir aboneliğe yeni bir etiket kümesi eklemek için şunu kullanın:
 
 ```azurepowershell-interactive
 $tags = @{"CostCenter"="00123"; "Environment"="Dev"}
@@ -148,7 +148,7 @@ $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
 New-AzTag -ResourceId "/subscriptions/$subscription" -Tag $tags
 ```
 
-Aboneliğin etiketlerini güncelleştirmek için şunları kullanın:
+Bir aboneliğin etiketlerini güncelleştirmek için şunu kullanın:
 
 ```azurepowershell-interactive
 $tags = @{"Team"="Web Apps"}
@@ -156,7 +156,7 @@ $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
 Update-AzTag -ResourceId "/subscriptions/$subscription" -Tag $tags -Operation Merge
 ```
 
-Kaynak grubunda aynı ada sahip birden fazla kaynağınız olabilir. Bu durumda, her kaynağı aşağıdaki komutlarla ayarlayabilirsiniz:
+Bir kaynak grubunda aynı ada sahip birden fazla kaynağınız olabilir. Bu durumda, her bir kaynağı aşağıdaki komutlarla ayarlayabilirsiniz:
 
 ```azurepowershell-interactive
 $resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
@@ -165,59 +165,59 @@ $resource | ForEach-Object { Update-AzTag -Tag @{ "Dept"="IT"; "Environment"="Te
 
 ### <a name="list-tags"></a>Etiketleri listeleme
 
-Kaynak, kaynak grubu veya abonelik etiketlerini almak için [Get-AzTag](/powershell/module/az.resources/get-aztag) komutunu kullanın ve varlık için kaynak kimliğine geçin.
+Bir kaynağın, kaynak grubunun veya aboneliğin etiketlerini almak için [Get-AzTag](/powershell/module/az.resources/get-aztag) komutunu kullanın ve varlık IÇIN kaynak kimliğini geçirin.
 
-Bir kaynağın etiketlerini görmek için şunları kullanın:
+Bir kaynağın etiketlerini görmek için şunu kullanın:
 
 ```azurepowershell-interactive
 $resource = Get-AzResource -Name demoStorage -ResourceGroup demoGroup
 Get-AzTag -ResourceId $resource.id
 ```
 
-Kaynak grubunun etiketlerini görmek için şunları kullanın:
+Bir kaynak grubunun etiketlerini görmek için şunu kullanın:
 
 ```azurepowershell-interactive
 $resourceGroup = Get-AzResourceGroup -Name demoGroup
 Get-AzTag -ResourceId $resourceGroup.ResourceId
 ```
 
-Aboneliğin etiketlerini görmek için şunları kullanın:
+Bir aboneliğin etiketlerini görmek için şunu kullanın:
 
 ```azurepowershell-interactive
 $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
 Get-AzTag -ResourceId "/subscriptions/$subscription"
 ```
 
-### <a name="list-by-tag"></a>Etikete göre listele
+### <a name="list-by-tag"></a>Etikete göre Listele
 
-Belirli bir etiket adı ve değeri olan kaynakları elde etmek için şunları kullanın:
+Belirli bir etiket adı ve değeri olan kaynakları almak için şunu kullanın:
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ "CostCenter"="00123"}).Name
 ```
 
-Herhangi bir etiket değerine sahip belirli bir etiket adı olan kaynakları elde etmek için şunları kullanın:
+Herhangi bir etiket değerine sahip belirli bir etiket adına sahip kaynakları almak için şunu kullanın:
 
 ```azurepowershell-interactive
 (Get-AzResource -TagName "Dept").Name
 ```
 
-Belirli bir etiket adı ve değeri olan kaynak gruplarını almak için şunları kullanın:
+Belirli bir etiket adı ve değerine sahip kaynak gruplarını almak için şunu kullanın:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroup -Tag @{ "CostCenter"="00123" }).ResourceGroupName
 ```
 
-### <a name="remove-tags"></a>Etiketleri kaldırma
+### <a name="remove-tags"></a>Etiketleri Kaldır
 
-Belirli etiketleri kaldırmak için **Update-AzTag'ı** kullanın ve **-İşlemi** **Sil'e**ayarlayın. Silmek istediğiniz etiketleri geçirin.
+Belirli etiketleri kaldırmak için **Update-AzTag** ve set **-Operation** komutunu **silmek**üzere kullanın. Silmek istediğiniz etiketleri geçirin.
 
 ```azurepowershell-interactive
 $removeTags = @{"Project"="ECommerce"; "Team"="Web"}
 Update-AzTag -ResourceId $resource.id -Tag $removeTags -Operation Delete
 ```
 
-Belirtilen etiketler kaldırılır.
+Belirtilen Etiketler kaldırılır.
 
 ```output
 Properties :
@@ -226,7 +226,7 @@ Properties :
         CostCenter  00123
 ```
 
-Tüm etiketleri kaldırmak için [Kaldır-AzTag](/powershell/module/az.resources/remove-aztag) komutunu kullanın.
+Tüm etiketleri kaldırmak için [Remove-AzTag](/powershell/module/az.resources/remove-aztag) komutunu kullanın.
 
 ```azurepowershell-interactive
 $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
@@ -235,39 +235,39 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-### <a name="apply-tags"></a>Etiketleri uygula
+### <a name="apply-tags"></a>Etiketleri Uygula
 
-Bir kaynak grubuna veya kaynağa etiketler eklerken, varolan etiketlerin üzerine yazabilir veya varolan etiketlere yeni etiketler ekleyebilirsiniz.
+Bir kaynak grubuna veya kaynağa etiket eklerken, varolan etiketlerin üzerine yazabilir veya varolan etiketlere yeni etiketler ekleyebilirsiniz.
 
-Bir kaynağa etiketlerin üzerine yazmak için şunları kullanın:
+Bir kaynaktaki etiketlerin üzerine yazmak için şunu kullanın:
 
 ```azurecli-interactive
 az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Kaynaktaki varolan etiketlere etiket eklemek için şunları kullanın:
+Bir kaynaktaki varolan etiketlere bir etiket eklemek için şunu kullanın:
 
 ```azurecli-interactive
 az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Kaynak grubundaki varolan etiketlerin üzerine yazmak için şunları kullanın:
+Bir kaynak grubundaki mevcut etiketlerin üzerine yazmak için şunu kullanın:
 
 ```azurecli-interactive
 az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
 ```
 
-Kaynak grubundaki varolan etiketlere etiket eklemek için şunları kullanın:
+Bir kaynak grubundaki varolan etiketlere bir etiket eklemek için şunu kullanın:
 
 ```azurecli-interactive
 az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-Şu anda Azure CLI, aboneliklere etiket uygulanmasını desteklemez.
+Şu anda Azure CLı, aboneliğe etiket uygulanmasını desteklemiyor.
 
 ### <a name="list-tags"></a>Etiketleri listeleme
 
-Bir kaynak için varolan etiketleri görmek için şunları kullanın:
+Bir kaynağın mevcut etiketlerini görmek için şunu kullanın:
 
 ```azurecli-interactive
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
@@ -288,23 +288,23 @@ Bu betik aşağıdaki biçimde veri döndürür:
 }
 ```
 
-### <a name="list-by-tag"></a>Etikete göre listele
+### <a name="list-by-tag"></a>Etikete göre Listele
 
-Belirli bir etiket ve değere sahip tüm `az resource list`kaynakları elde etmek için şunları kullanın:
+Belirli bir etiketi ve değeri olan tüm kaynakları almak için şunu kullanın `az resource list`:
 
 ```azurecli-interactive
 az resource list --tag Dept=Finance
 ```
 
-Belirli bir etiketi olan kaynak gruplarını almak için şunları kullanın: `az group list`
+Belirli bir etikete sahip kaynak gruplarını almak için şunu kullanın `az group list`:
 
 ```azurecli-interactive
 az group list --tag Dept=IT
 ```
 
-### <a name="handling-spaces"></a>Kullanım alanları
+### <a name="handling-spaces"></a>Boşluk işleme
 
-Etiket adlarınız veya değerleriniz boşluklar içeriyorsa, birkaç ek adım atmalısınız. Aşağıdaki örnek, etiketler boşluk içerebileceğinde kaynak grubundaki tüm etiketleri kaynaklarına uygular.
+Etiket adlarınız veya değerleriniz boşluk içeriyorsa, fazladan birkaç adım gerçekleştirmeniz gerekir. Aşağıdaki örnek, Etiketler boşluk içerdiğinde bir kaynak grubundaki tüm etiketleri kaynaklarına uygular.
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)
@@ -322,11 +322,11 @@ IFS=$origIFS
 
 ## <a name="templates"></a>Şablonlar
 
-Dağıtım sırasında kaynakları, kaynak gruplarını ve abonelikleri Kaynak Yöneticisi şablonuyla etiketleyebilirsiniz.
+Dağıtım sırasında kaynakları, kaynak grupları ve abonelikleri bir Kaynak Yöneticisi şablonuyla etiketlendirebilirsiniz.
 
-### <a name="apply-values"></a>Değerleri uygulama
+### <a name="apply-values"></a>Değerleri Uygula
 
-Aşağıdaki örnekte, üç etiketli bir depolama hesabı dağıtılır. Etiketlerden ikisi`Dept` ( `Environment`ve ) gerçek değerlere ayarlanır. Bir etiket`LastDeployed`( ) geçerli tarihe varsayılan bir parametre olarak ayarlanır.
+Aşağıdaki örnek, üç etiketli bir depolama hesabı dağıtır. Etiketlerin ikisi (`Dept` ve `Environment`) değişmez değerler olarak ayarlanır. Bir Tag (`LastDeployed`), geçerli tarih için varsayılan değer olan bir parametreye ayarlanır.
 
 ```json
 {
@@ -365,7 +365,7 @@ Aşağıdaki örnekte, üç etiketli bir depolama hesabı dağıtılır. Etiketl
 
 ### <a name="apply-an-object"></a>Nesne uygulama
 
-Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi etiket öğesine uygulayabilirsiniz. Nesne farklı özelliklere sahip olabileceğinden, bu yaklaşım önceki örnekten daha fazla esneklik sağlar. Nesnedeki her özellik, kaynak için ayrı bir etiket haline gelir. Aşağıdaki örnekte etiket parametresine uygulanan `tagValues` adlı bir parametre kullanılmaktadır.
+Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi etiket öğesine uygulayabilirsiniz. Bu yaklaşım, bir önceki örnekte daha fazla esneklik sağlar çünkü nesne farklı özelliklere sahip olabilir. Nesnedeki her özellik, kaynak için ayrı bir etiket haline gelir. Aşağıdaki örnekte etiket parametresine uygulanan `tagValues` adlı bir parametre kullanılmaktadır.
 
 ```json
 {
@@ -403,7 +403,7 @@ Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi et
 
 ### <a name="apply-a-json-string"></a>JSON dizesi uygulama
 
-Çok sayıda değeri tek bir etikete depolamak için, değerleri temsil eden bir JSON dizesi uygulayın. Tüm JSON dizesi, 256 karakteri geçemeyecek tek bir etiket olarak depolanır. Aşağıdaki örnekte bir JSON dizesindeki çok sayıda değeri içeren `CostCenter` adlı tek bir etiket kullanılmaktadır:  
+Çok sayıda değeri tek bir etikete depolamak için, değerleri temsil eden bir JSON dizesi uygulayın. JSON dizesinin tamamı 256 karakteri aşmayan bir etiket olarak depolanır. Aşağıdaki örnekte bir JSON dizesindeki çok sayıda değeri içeren `CostCenter` adlı tek bir etiket kullanılmaktadır:  
 
 ```json
 {
@@ -434,9 +434,9 @@ Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi et
 }
 ```
 
-### <a name="apply-tags-from-resource-group"></a>Kaynak grubundan etiketler i
+### <a name="apply-tags-from-resource-group"></a>Kaynak grubundan Etiketler uygulama
 
-Kaynak grubundaki etiketleri kaynağa uygulamak için [kaynak Grubu](../templates/template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken, bazı `tags[tag-name]` karakterler nokta `tags.tag-name` gösteriminde doğru şekilde ayrışmadığından sözdizimi yerine sözdizimini kullanın.
+Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup](../templates/template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken `tags[tag-name]` `tags.tag-name` sözdizimi yerine sözdizimini kullanın, çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
 
 ```json
 {
@@ -468,9 +468,9 @@ Kaynak grubundaki etiketleri kaynağa uygulamak için [kaynak Grubu](../template
 }
 ```
 
-### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>Kaynak gruplarına veya aboneliklere etiket uygulama
+### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>Kaynak gruplarına veya aboneliklerine Etiketler uygulama
 
-**Microsoft.Resources/tags** kaynak türünü dağıtarak kaynak grubuna veya aboneye etiket ekleyebilirsiniz. Etiketler, hedef kaynak grubuna veya dağıtım aboneliğine uygulanır. Şablonu her dağıttığınızda, daha önce uygulanmış olan etiketleri değiştirirsiniz.
+**Microsoft. resources/Tags** kaynak türünü dağıtarak bir kaynak grubuna veya aboneliğe Etiketler ekleyebilirsiniz. Etiketler, dağıtım için hedef kaynak grubuna veya aboneliğe uygulanır. Şablonu her dağıttığınızda, daha önce uygulanmış olan tüm etiketleri değiştirirsiniz.
 
 ```json
 {
@@ -503,7 +503,7 @@ Kaynak grubundaki etiketleri kaynağa uygulamak için [kaynak Grubu](../template
 }
 ```
 
-Etiketleri bir kaynak grubuna uygulamak için PowerShell veya Azure CLI'yi kullanın. Etiketlemek istediğiniz kaynak grubuna dağıtın.
+Etiketleri bir kaynak grubuna uygulamak için PowerShell veya Azure CLı kullanın. Etiketlemek istediğiniz kaynak grubuna dağıtın.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName exampleGroup -TemplateFile https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
@@ -513,7 +513,7 @@ New-AzResourceGroupDeployment -ResourceGroupName exampleGroup -TemplateFile http
 az deployment group create --resource-group exampleGroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
-Etiketleri bir aboneye uygulamak için PowerShell veya Azure CLI'yi kullanın. Etiketlemek istediğiniz aboneye dağıtın.
+Etiketleri bir aboneliğe uygulamak için PowerShell veya Azure CLı kullanın. Etiketlemek istediğiniz aboneliğe dağıtın.
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
@@ -523,7 +523,7 @@ New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateU
 az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
-Aşağıdaki şablon, bir nesnedeki etiketleri bir kaynak grubuna veya aboneye ekler.
+Aşağıdaki şablon bir nesneden bir kaynak grubuna veya aboneliğe Etiketler ekler.
 
 ```json
 "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
@@ -559,41 +559,41 @@ Aşağıdaki şablon, bir nesnedeki etiketleri bir kaynak grubuna veya aboneye e
 
 ## <a name="rest-api"></a>REST API
 
-Azure REST API'si aracılığıyla etiketlerle çalışmak için şunları kullanın:
+Azure REST API aracılığıyla etiketlerle çalışmak için şunu kullanın:
 
-* [Etiketler - Kapsamda Oluştur veya Güncelleştir](/rest/api/resources/tags/createorupdateatscope) (PUT işlemi)
-* [Etiketler - Kapsamda Güncelleştirme](/rest/api/resources/tags/updateatscope) (YAMA işlemi)
-* [Etiketler - Kapsam al](/rest/api/resources/tags/getatscope) (GET işlemi)
-* [Etiketler - Sil Kapsamı](/rest/api/resources/tags/deleteatscope) (DELETE işlemi)
+* [Etiketler-kapsamda oluştur veya Güncelleştir](/rest/api/resources/tags/createorupdateatscope) (Put işlemi)
+* [Etiketler-kapsamda güncelleştirme](/rest/api/resources/tags/updateatscope) (düzeltme eki işlemi)
+* [Etiketler-kapsama al](/rest/api/resources/tags/getatscope) (işlemi al)
+* [Etiketler-kapsamda Sil](/rest/api/resources/tags/deleteatscope) (silme işlemi)
 
 ## <a name="inherit-tags"></a>Etiketleri devralma
 
-Kaynak grubuna veya aboneye uygulanan etiketler kaynaklar tarafından devralınmıyor. Abonelik veya kaynak grubundaki etiketleri kaynaklara uygulamak için [Azure İlkeleri -](tag-policies.md)etiketleri'ne bakın.
+Kaynak grubuna veya aboneliğe uygulanan Etiketler kaynaklar tarafından devralınmaz. Bir abonelik veya kaynak grubundan kaynaklara Etiketler uygulamak için bkz. [Azure ilkeleri-Etiketler](tag-policies.md).
 
 ## <a name="tags-and-billing"></a>Etiketler ve faturalandırma
 
 Etiketleri kullanarak faturalama verilerinizi gruplandırabilirsiniz. Örneğin, farklı organizasyonlar için birden çok sanal makine çalıştırıyorsanız, maliyet merkezine göre kullanımı gruplandırmak için etiketleri kullanın. Ayrıca etiketleri kullanarak, üretim ortamında çalışan sanal makineler için faturalama kullanımı gibi, maliyetleri çalışma zamanı ortamına göre kategorilere ayırabilirsiniz.
 
-Azure Kaynak Kullanımı ve [RateCard API'leri](../../billing/billing-usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını Azure [Hesap Merkezi'nden](https://account.azure.com/Subscriptions) veya Azure portalından indirirsiniz. Daha fazla bilgi için [Azure fatura faturanızı ve günlük kullanım verilerinizi karşıdan yükleme veya görüntüleme](../../billing/billing-download-azure-invoice-daily-usage-date.md)ye bakın. Kullanım dosyasını Azure Hesap Merkezi'nden indirirken **Sürüm 2'yi**seçin. Etiketleri faturalandırmayla destekleyen hizmetler için etiketler **Etiketler** sütununda görünür.
+[Azure Kaynak kullanımı ve RateCard API 'leri](../../billing/billing-usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../../billing/billing-download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
 
-REST API işlemleri için [Azure FaturaLAMA REST API Başvurusu'na](/rest/api/billing/)bakın.
+REST API işlemler için bkz. [Azure faturalandırma REST API başvurusu](/rest/api/billing/).
 
 ## <a name="limitations"></a>Sınırlamalar
 
 Etiketler için aşağıdaki sınırlamalar geçerlidir:
 
-* Tüm kaynak türleri destek etiketleri değil. Kaynak türüne etiket uygulayıp uygulayamayacağınızı belirlemek [için Azure kaynakları için Etiket desteğine](tag-support.md)bakın.
-* Yönetim grupları şu anda etiketleri destekletmiyor.
-* Her kaynak, kaynak grubu ve aboneliğin en fazla 50 etiket adı/değer çifti olabilir. İzin verilen maksimum sayıdan daha fazla etiket uygulamanız gerekiyorsa, etiket değeri için bir JSON dizesi kullanın. JSON dizesi, tek etiket adına uygulanan birden fazla değer içerebilir. Bir kaynak grubu veya abonelik, her biri 50 etiket adı/değer çifti olan birçok kaynak içerebilir.
+* Tüm kaynak türleri etiketleri desteklemez. Bir kaynak türüne etiket uygulayıp uygulayacağınızı öğrenmek için bkz. [Azure kaynakları Için etiket desteği](tag-support.md).
+* Yönetim grupları Şu anda etiketleri desteklemiyor.
+* Her kaynak, kaynak grubu ve abonelik en fazla 50 etiket adı/değer çiftine sahip olabilir. İzin verilen maksimum sayıdan daha fazla etiket uygulamanız gerekiyorsa, etiket değeri için bir JSON dizesi kullanın. JSON dizesi, tek etiket adına uygulanan birden fazla değer içerebilir. Bir kaynak grubu veya abonelik, her birinin 50 etiket adı/değer çifti olan çok sayıda kaynak içerebilir.
 * Etiket adı 512 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır. Depolama hesapları için etiket adı 128 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır.
-* Genelleştirilmiş VM'ler etiketleri desteklemez.
-* Etiketler Bulut Hizmetleri gibi klasik kaynaklara uygulanamaz.
-* Etiket `<`adları bu karakterleri içeremez: `>`, `\`, `?` `%` `&`, , ,`/`
+* Genelleştirilmiş VM 'Ler etiketleri desteklemez.
+* Etiketler, Cloud Services gibi klasik kaynaklara uygulanamaz.
+* Etiket adları şu karakterleri içeremez `<`:, `>`, `%`, `&`, `\`,, `?``/`
 
    > [!NOTE]
-   > Şu anda Azure DNS bölgeleri ve Traffic Manger hizmetleri de etiketteki boşlukların kullanılmasına izin vermez.
+   > Şu anda Azure DNS bölgeler ve trafik yöneticisi hizmetleri de etikette boşluk kullanılmasına izin vermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Tüm kaynak türleri destek etiketleri değil. Kaynak türüne etiket uygulayıp uygulayamayacağınızı belirlemek [için Azure kaynakları için Etiket desteğine](tag-support.md)bakın.
-* Etiketleme stratejisinin nasıl uygulanacağı yla ilgili öneriler için [Kaynak adlandırma ve etiketleme karar kılavuzuna](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)bakın.
+* Tüm kaynak türleri etiketleri desteklemez. Bir kaynak türüne etiket uygulayıp uygulayacağınızı öğrenmek için bkz. [Azure kaynakları Için etiket desteği](tag-support.md).
+* Etiketleme stratejisi uygulama hakkında öneriler için bkz. [Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).

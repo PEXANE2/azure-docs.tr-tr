@@ -1,6 +1,6 @@
 ---
-title: İş Ortağı Merkezi'nde ticari pazar analizinde müşteri panosu
-description: Ticari pazar analizinde müşteri panosunu kullanarak büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkındaki bilgilere nasıl eriştiğinizi öğrenin.
+title: Iş Ortağı Merkezi 'nde ticari Market analizinde müşteri panosu
+description: Ticari Market Analytics 'teki müşteri panosunu kullanarak, büyüme eğilimleri dahil olmak üzere müşterilerinizle ilgili bilgilere erişmeyi öğrenin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,110 +8,110 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: a8379ed883311d219bb6eeb56bd4424dfb470bc9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81251648"
 ---
-# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ticari pazar analizinde Müşteri Panosu
+# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te müşteri panosu
 
-Bu makale, İş Ortağı Merkezi'ndeki **Müşteri panosu** hakkında bilgi sağlar. Bu pano, müşterilerinizle ilgili, grafiksel ve indirilebilir biçimde sunulan büyüme eğilimleri de dahil olmak üzere bilgileri görüntüler.
+Bu makalede, Iş Ortağı Merkezi 'nde **Müşteri panosu** hakkında bilgi sağlanmaktadır. Bu Pano, bir grafik ve indirilebilir biçimde sunulan büyüme eğilimleri dahil olmak üzere müşterilerinizle ilgili bilgileri görüntüler.
 
-**Müşteri panosuna**erişmek için Ticari Pazar Yeri altında **[Analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
+**Müşteri panosuna**erişmek Için ticari Market altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
 
 >[!NOTE]
-> Analitik terminolojinin ayrıntılı tanımları [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
 
 ## <a name="customer-dashboard"></a>Müşteri panosu
 
-**Çözümle** menüsünün **Müşteri panosu,** tekliflerinizi alan müşterilere yönelik verileri görüntüler. Aşağıdaki öğelerin grafik gösterimlerini görüntüleyebilirsiniz:
+**Çözümle** menüsünün **Müşteri panosu** , tekliflerinizi almış müşterilerin verilerini görüntüler. Aşağıdaki öğelerin grafik sunumlarını görüntüleyebilirsiniz:
 
-- [Müşteri özeti](#customer-summary)
-- [Coğrafyaya göre müşteri](#customer-by-geography)
+- [Müşteri Özeti](#customer-summary)
+- [Coğrafya ile müşteri](#customer-by-geography)
 - [Müşteri eğilimleri](#customer-trends)
 - [Siparişlere ve kullanıma göre müşteriler](#customers-by-orders-and-usage)
-- [SK'lardan müşteriler](#customers-by-skus)
+- [SKU 'Lara göre müşteriler](#customers-by-skus)
 - [Müşteri türüne göre siparişler ve kullanım](#orders-and-usage-by-customer-type)
-- [Müşteri ayrıntıları tablosu](#customer-details-table)
+- [Müşteri Ayrıntıları tablosu](#customer-details-table)
 - [Müşteri sayfası filtreleri](#customer-page-filters)
 
-### <a name="customer-summary"></a>Müşteri özeti
+### <a name="customer-summary"></a>Müşteri Özeti
 
-Müşteri özeti bölümü, seçili tarih aralığında yeni, varolan ve çalkalanan dahil olmak üzere tüm müşterilerin sayısını görüntüler.
+Müşteri Özeti bölümü, seçilen tarih aralığında yeni, mevcut ve tamamen dahil olmak üzere tüm müşterilerin sayısını görüntüler.
 
-- Toplam müşteri, teklifinizi satın alan ve iptal edilmemiş en az bir siparişi olan tüm müşterilerin sayısı olarak tanımlanır.
-- Bir önceki aya göre büyüme yüzdesi, yeşil veya aşağı doğru göstergedeki kırmızı daki sayı ve yukarı doğru gösterge ile gösterilir.
-- Büyüme eğilimleri çubuk grafiklerle temsil edilir ve grafiğin sütunları üzerinde gezinerek her ayın değerini görüntüler.
+- Toplam Müşteri, teklifinizi satın almış olan ve en az bir sipariş iptal edilmemiş tüm müşterilerin sayısı olarak tanımlanır.
+- Müşterilerin önceki aya kıyasla büyüme yüzdesi, yeşil veya aşağı gösterge göstergesinde sayı ve yukarı gösterge olarak belirtilmiştir.
+- Büyüme eğilimleri çubuk grafiklerle temsil edilir ve grafiğin sütunlarının üzerine gelindiğinde her ay için değeri görüntüler.
 
-Üç **müşteri türü**vardır: yeni, varolan ve çalkalanan.
+Üç **Müşteri türü**vardır: yeni, var ve bir şekilde.
 
-- Yeni bir müşteri, seçilen ay içinde ilk kez tekliflerinizden birini veya birkaçını satın almıştır.
-- Varolan bir müşteri, seçilen aydan önce tekliflerinizden birini veya birkaçını satın almıştır.
-- Çalkalanmış bir müşteri, daha önce satın alınan tüm teklifleri iptal etti.
+- Yeni bir müşteri, seçili ay içinde ilk kez bir veya daha fazla teklifinizden elde etti.
+- Mevcut bir müşteri, seçili olan aydan önce bir veya daha fazla teklifinizden elde etti.
+- Oluşturulmuş bir müşteri, daha önce satın alınan tüm teklifleri iptal etti.
 
-### <a name="customer-by-geography"></a>Coğrafyaya göre müşteri
+### <a name="customer-by-geography"></a>Coğrafya ile müşteri
 
-Coğrafya grafiğine **göre Müşteri,** seçilen tarih aralığında edinilen tüm müşteri ve müşterilerin sayısını gösterir ve Müşteri Ülkesine göre eşlenir. Haritadaki açıktan koyu renge kadar olan renk, müşteri sayısının düşük ve yüksek değerini temsil eder. Bir ülkeyi yakınlaştırmak için tablodaki bir kaydı tıklatın.
+**Coğrafya Ile müşteri** grafiği, seçilen tarih aralığı boyunca edinilen tüm müşterilerin ve müşterilerin sayısını gösterir ve müşteri ülkesine bağlı olarak eşlenir. Haritadaki koyu renkli bir renk, müşteri sayısının yüksek değerini gösterir. Bir ülkede yakınlaştırmak için tablodaki bir kayda tıklayın.
 
-Isı haritası müşteri sayısını ve % müşteri ülkesini görüntüler. Haritayı tam konumu görüntülemek ve belirli bir konuma yakınlaştırmak için taşıyabilirsiniz. Bu harita, müşterilerin %'sini konuma göre görüntülemenize ve bu konuma yeni eklenen müşterileri görüntülemenize olanak tanıyan tamamlayıcı bir ızgaraya sahiptir.
+Isı haritasını müşteri sayısını ve% müşteri ülkesini görüntüler. Tam konumu görüntülemek ve belirli bir konuma yakınlaştırmak için Haritayı taşıyabilirsiniz. Bu haritada, müşterilerin yerinin yüzdesini konuma göre görüntülemenize ve müşterilerin bu konuma yeni eklenmiş olmasına izin veren bir ek kılavuz bulunur.
 
 ### <a name="customer-trends"></a>Müşteri eğilimleri
 
-**Müşteri eğilimleri** grafiği, aylık büyüme trendiyle yeni, var olan ve çalkalanan tüm müşterilerin sayısını görüntüler.
+**Müşteri eğilimleri** grafiği, aylık bir büyüme eğilimi ile yeni, mevcut ve tamamen dahil olmak üzere tüm müşterilerin sayısını görüntüler.
 
-- Çizgi grafiği genel müşteri büyüme yüzdelerini temsil eder.
-- Ay sütunu, yeni, varolan ve çalkalanan müşteriler tarafından yığılmış müşteri sayısını temsil eder.
-- Çalkalanan müşteri sayısı Y Ekseninin negatif yönünde görüntülenir.
-- Daha ayrıntılı görünümler görüntülenmek için belirli gösterge öğelerini seçebilirsiniz. Örneğin, yalnızca yeni müşterileri görüntülemek için göstergeden yeni müşteriler seçin.
-- Grafiğin üst kısmındaki kaydırıcıyı kullanarak x ekseninde sağa ve sola kaydırAbilir ve daha ayrıntılı olarak görüntülemek için belirli veri noktalarına odaklanabilirsiniz.
-- Grafiğin bir sütununun üzerinde gezinmek yalnızca o aya ait ayrıntıları görüntüler.
+- Çizgi grafik, genel müşteri büyüme yüzdelerini temsil eder.
+- Month sütunu, yeni, var olan ve tarafından kullanılan müşteriler tarafından yığılmış müşterilerin sayısını temsil eder.
+- Tek bir müşteri sayısı, Y ekseninin negatif yönünde görüntülenir.
+- Daha ayrıntılı görünümlerde görüntülenmek üzere belirli gösterge öğelerini seçebilirsiniz. Örneğin, yalnızca yeni müşterileri göstermek için göstergeden yeni müşteriler ' i seçin.
+- X ekseninde sağa ve sola kaydırmak için grafiğin en üstündeki kaydırıcıyı kullanabilir ve daha ayrıntılı görüntülemek için belirli veri noktalarına odaklanırsınız.
+- Grafik sütununun üzerine gelindiğinde yalnızca söz konusu ayın ayrıntıları görüntülenir.
 
 ### <a name="customers-by-orders-and-usage"></a>Siparişlere ve kullanıma göre müşteriler
 
-**Siparişlere/kullanım** grafiğine göre Müşteriler'in üç sekmesi vardır: "siparişler", "normalleştirilmiş kullanım" ve "ham kullanım." Üst **müşteri yüzdesi,** sipariş sayısına göre belirlendiği gibi x ekseni boyunca görüntülenir. Y ekseni müşterinin sipariş sayısını görüntüler. İkincil y ekseni (çizgi grafiği) toplam sipariş sayısının kümülatif yüzdesini görüntüler. Çizgi grafiği boyunca noktaların üzerinde gezinerek ayrıntıları görüntüleyebilirsiniz.
+**Siparişler/kullanım grafiğinde müşterilerin** üç sekmesi vardır, "Siparişler", "normalleştirilmiş kullanım" ve "ham kullanım". **En üstteki müşteri yüzdebirlik** değeri, siparişlerin sayısı tarafından belirlendiği şekilde x ekseni boyunca görüntülenir. Y ekseni, müşterinin sıra sayısını görüntüler. İkincil y ekseni (çizgi grafik), toplam sipariş sayısının birikmiş yüzdesini görüntüler. Çizgi grafik boyunca noktaların üzerine gelerek ayrıntıları gösterebilirsiniz.
 
-Örnek olarak, normalleştirilmiş kullanım için aşağıdaki grafiğe bakın: Müşterilerin en üst yüzde 30'u normalleştirilmiş kullanımın %87'sine kümülatif olarak katkıda bulunuyor. Müşterilerin 30 yüzdelik kısmı sadece 1,57 milyon saatlik kullanıma katkıda bulunuyor.
+Örnek olarak, normalleştirilmiş kullanım için aşağıdaki grafiğe bakın: ilk 30 yaşın, müşterilerin en fazla %87 ' luk bir normalleştirilmiş kullanımın% ' una katkısı vardır. Müşterilerin 30. Yüzdeliğini yalnızca 1.570.000 saat kullanım için katkıda bulunur.
 
-### <a name="customers-by-skus"></a>SK'lardan müşteriler
+### <a name="customers-by-skus"></a>SKU 'Lara göre müşteriler
 
-**SKS/kullanım grafiklerine göre müşteriler** aşağıda açıklanmıştır.
+**SKU 'lara/kullanım grafiklerine göre müşteriler** aşağıda açıklanmıştır.
 
-1. Lider kurulu, sipariş sayısına göre sıralanan en iyi 50 müşterinin ayrıntılarını sunar. Müşteri seçtikten sonra, müşterinin ayrıntıları bu lider panosunun 2, 3 ve 4.
-2. Yayımcılar bir sahip rolüyle oturum açtıklarında Müşteri profil ayrıntıları bu alanda görüntülenir. Yayımcılar katılımcı rolüyle oturum açmışsa, bu bölümdeki ayrıntılar kullanılamaz.
-3. SKU'lar tarafından verilen siparişler donut grafiği, SKU'lar için satın alınan siparişlerin dökümünü görüntüler. En yüksek sipariş sayısına sahip ilk 5 SNU görüntülenirken, siparişlerin geri kalanı 'rest all' altında gruplandırılır.
-4. SKU'lar tarafından koltuklar donut grafiği, SKU'lar için sipariş edilen koltukların dökümünü görüntüler. En yüksek koltuklara sahip ilk 5 STU görüntülenirken, siparişlerin geri kalanı dinlenme altında gruplandırılır.
+1. Öncü Pano, sipariş sayısına göre derecelendirilen ilk 50 müşterinin ayrıntılarını sunar. Müşteri seçildikten sonra müşterinin ayrıntıları, bu öncü panonun 2., 3 ve 4. bölümlerinde sunulur.
+2. Yayımcılar bir sahip rolüyle oturum açtıklarında, bu alanda müşteri profili ayrıntıları görüntülenir. Yayımcılar bir katkıda bulunan rolüyle oturum açtıysa, bu bölümdeki Ayrıntılar kullanılabilir olmayacaktır.
+3. SKU 'Lara göre siparişler halka grafik, SKU 'Lar için satın alınan siparişlerin dökümünü görüntüler. En yüksek sıra sayısı olan ilk 5 SKU 'Lar görüntülenir, ancak siparişlerin geri kalanı ' rest All ' altında gruplandırılır.
+4. SKU 'Lara göre koltuk halka grafiğinde, SKU 'Lar için sıralanmış bir koltuk dökümü görüntülenir. En yüksek koltuk olan en iyi 5 SKU 'Lar görüntülenir, ancak siparişlerin geri kalanı Rest tümü altında gruplandırılır.
 
 ### <a name="orders-and-usage-by-customer-type"></a>Müşteri türüne göre siparişler ve kullanım
 
-Müşteri türü grafiğine **göre Siparişler/kullanım,** sipariş sayısını, normalleştirilmiş kullanımı ve yeni müşterilerle mevcut müşteriler arasında bölünmüş ham kullanım saatlerini görüntüler; grafikte sırasıyla normalleştirilmiş ve ham kullanım dan oluşan sipariş seçimine dayanır.
+**Müşteri türüne göre siparişler/kullanım** grafiğinde, yeni müşteriler ve mevcut müşteriler arasında bölünen sipariş sayısı, normalleştirilmiş kullanım ve ham kullanım saatleri gösterilir; grafikte sırasıyla siparişlerin, normalleştirilmiş ve ham kullanımın seçimine bağlı olarak.
 
-- Yeni bir müşteri, aynı takvim ayı (y ekseni) içinde ilk kez tekliflerinizden birini veya daha fazlasını satın aldı veya kullanım bildirdi.
-- Varolan bir müşteri daha önce sizden bir teklif almış veya bildirilen takvim ayından önce (y ekseninde) kullanım bildirmiştir.
+- Yeni bir müşteri, bir veya daha fazla teklif veya bildirilen kullanımınızdan aynı takvim ayı (y ekseni) içinde ilk kez edinildi.
+- Mevcut bir müşteri daha önce sizin veya bildirilen takvim ayına (y ekseninde) önce bir teklif almış veya rapor verdi.
 
-### <a name="customer-details-table"></a>Müşteri ayrıntıları tablosu
+### <a name="customer-details-table"></a>Müşteri Ayrıntıları tablosu
 
-**Müşteri ayrıntıları** tablosu, tekliflerinizden birini ilk aldıkları tarihe göre sıralanmış en iyi 1000 müşterinin sayılı listesini görüntüler.
+**Müşteri ayrıntıları** tablosu, en önde gelen 1000 müşterinin, tekliflerinizin birini ilk almış oldukları tarihe göre sıralanan numaralandırılmış bir listesini görüntüler.
 
-- Müşterinin kişisel bilgileri yalnızca müşterinin rızası nı sağlamışsa kullanılabilir. Bu bilgileri yalnızca sahip rol izinleri düzeyiyle oturum açtıysanız görüntüleyebilirsiniz. Kullanıcı rolleri ve izinleri hakkında daha fazla bilgi edinin.
-- Kılavuzdaki her sütun sıralanabilir.
-- Kayıtların sayısı 1000'den azsa veriler Bir TSV dosyasına ayıklanabilir.
-- Kayıt numarası 1000'in üzerindeyse, dışa aktarılan veriler, önümüzdeki 30 gün boyunca bir indirme sayfasına eşit olarak yerleştirilir.
-- Filtreler, yalnızca ilgilendiğiniz verileri görüntülemek için tabloya uygulanabilir. Veriler Şirket adına, Müşteri Kimliğine, Pazar Yeri Abonelik Kimliğine, Azure Lisans Türüne, Edinilen Tarihe, Kayıp Tarihe, Müşteri E-postası, Müşteri Ülke/Eyalet/Şehir/Zip, Müşteri Dili vb. göre filtrelenebilir.
+- Müşterinin kişisel bilgileri, yalnızca müşteri izin sağladıysa kullanılabilir. Bu bilgileri yalnızca sahip rol izinleri düzeyiyle oturum açtıysanız görüntüleyebilirsiniz. Kullanıcı rolleri ve izinleri hakkında daha fazla bilgi edinin.
+- Kılavuzdaki her bir sütun sıralanabilir.
+- Kayıt sayısı 1000 ' den küçükse veriler TSV dosyasına ayıklanabilir.
+- Kayıt numarası 1000 üzerinden ise, verilen veriler sonraki 30 gün boyunca bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
+- Filtreler, yalnızca ilgilendiğiniz verileri göstermek için tabloya uygulanabilir. Veriler şirket adı, müşteri KIMLIĞI, Market abonelik KIMLIĞI, Azure lisans türü, alınma tarihi, tarih kaybı, müşteri e-postası, müşteri ülkesi/eyalet/şehir/zip, müşteri dili vb. tarafından filtrelenebilir.
 
 ### <a name="customer-page-filters"></a>Müşteri sayfası filtreleri
 
-**Müşteriler sayfası** filtreleri Müşteriler sayfası düzeyinde uygulanır. Görüntülemeyi seçtiğiniz ölçütler ve 'Ayrıntılı siparişler veri' ızgarası / dışa aktarmada görmek istediğiniz veriler için grafiği işlemek için birden çok filtre seçebilirsiniz. Filtreler, siparişler sayfasının sağ üst köşesinde seçtiğiniz veri aralığı için ayıklanan verilere uygulanır.
+**Müşteriler** sayfası filtreleri, müşteriler sayfa düzeyinde uygulanır. Grafik oluşturmak için seçtiğiniz ölçütlere ve ' ayrıntılı siparişler verileri ' kılavuzunda/dışarı aktarmaya göre görmek istediğiniz verileri görüntülemek için birden çok filtre seçebilirsiniz. Filtreler, siparişler sayfasının sağ üst köşesinde seçtiğiniz veri aralığı için ayıklanan verilere uygulanır.
 
 >[!NOTE]
-> Müşteri ızgarasındaki alanların her biri için ayrıntılı tanımlar, sayfa filtreleri ve bunların olası seçimleri [Ticari Pazar analitiği için sık sorulan sorularda ve terminolojide](./faq-terminology.md)yer alır.
+> Müşteri kılavuzunda, sayfa filtrelerinde ve olası seçimlerdeki her bir alanın ayrıntılı tanımları, [ticari Market analizine yönelik sık sorulan sorular ve terminoloji](./faq-terminology.md)bölümünde bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş Ortağı Merkezi ticari pazarda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki ticari pazar için Analytics'e](./analytics.md)bakın.
-- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri [için, ticari pazar analizinde Özet Pano'ya](./summary-dashboard.md)bakın.
-- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [ticari pazar analizinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
-- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [ticari pazar analizinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
-- Son 30 gün içinde indirme isteklerinizin bir listesi için, [ticari pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
-- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [ticari pazar analizinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.
-- Ticari pazar analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+- Iş ortağı merkezi ticari marketi 'nde bulunan analiz raporlarına genel bakış için bkz. [Iş Ortağı Merkezi 'nde ticari Market Için analiz](./analytics.md).
+- Teklifinizin Market etkinliklerini özetleyen grafikler, eğilimler ve veri değerleri için bkz. [ticari Market Analytics 'Te Özet Panosu](./summary-dashboard.md).
+- Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](./orders-dashboard.md).
+- Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](./usage-dashboard.md).
+- Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'Te panoyu indirme](./downloads-dashboard.md).
+- Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [ticari Market Analytics 'Te derecelendirmeler ve İncelemeler panosu](./ratings-reviews.md).
+- Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](./faq-terminology.md).

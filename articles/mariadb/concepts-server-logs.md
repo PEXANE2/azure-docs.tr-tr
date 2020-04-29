@@ -1,96 +1,96 @@
 ---
-title: Yavaş sorgu günlükleri - MariaDB için Azure Veritabanı
-description: MariaDB için Azure Veritabanı'nda bulunan günlükleri ve farklı günlük düzeylerini etkinleştirmek için kullanılabilir parametreleri açıklar.
+title: Yavaş sorgu günlükleri-MariaDB için Azure veritabanı
+description: MariaDB için Azure veritabanı 'nda kullanılabilen günlükleri ve farklı günlük düzeylerini etkinleştirmek için kullanılabilen parametreleri açıklar.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272092"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'nda yavaş sorgu günlükleri
-MariaDB için Azure Veritabanı'nda, yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. Hareket günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını tanımlamak için kullanılabilir.
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yavaş sorgu günlükleri
+MariaDB için Azure veritabanı 'nda yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
 
-Yavaş sorgu günlüğü hakkında daha fazla bilgi için, [yavaş sorgu günlüğü](https://mariadb.com/kb/en/library/slow-query-log-overview/)için MariaDB belgelerine bakın.
+Yavaş sorgu günlüğü hakkında daha fazla bilgi için, [yavaş sorgu günlüğü](https://mariadb.com/kb/en/library/slow-query-log-overview/)Için MariaDB belgelerine bakın.
 
-## <a name="configure-slow-query-logging"></a>Yavaş sorgu günlüğe kaydetmeyi yapılandırma
-Varsayılan olarak yavaş sorgu günlüğü devre dışı bırakılır. Etkinleştirmek için `slow_query_log` A.A. olarak ayarlayın. Bu, Azure portalı veya Azure CLI kullanılarak etkinleştirilebilir. 
+## <a name="configure-slow-query-logging"></a>Yavaş sorgu günlüğünü yapılandırma
+Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek için, açık olarak `slow_query_log` ayarlayın. Bu, Azure portal veya Azure CLı kullanılarak etkinleştirilebilir. 
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time**: Bir sorgu long_query_time 'den (saniye cinsinden) uzun sürüyorsa, bu sorgu günlüğe kaydedilir. Varsayılan değer 10 saniyedir.
-- **log_slow_admin_statements**: slow_query_log yazılan ifadelerde ALTER_TABLE ve ANALYZE_TABLE gibi idari ifadeler yer alıyorsa.
-- **log_queries_not_using_indexes**: dizin kullanmayan sorguların slow_query_log
-- **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilir dizin olmayan sorguların sayısını sınırlar. Bu parametre, log_queries_not_using_indexes A.Ş. olarak ayarlandığında etkin olur.
-- **log_output**: "Dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Monitor Tanı Günlüklerine yazılmasını sağlar. "Yok" ise, yavaş sorgu günlüğü yalnızca Azure MonitörÜ Tanılama Günlükleri'ne yazılır. 
+- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
+- **log_slow_admin_statements**: varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
+- **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
+- **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
+- **log_output**: "dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Izleyici tanılama günlüklerine yazılmasına izin verir. "None" ise, yavaş sorgu günlüğü yalnızca Azure Izleyici tanılama günlüklerine yazılır. 
 
 > [!IMPORTANT]
-> Tablolarınız dizine eklenmezse, bu dizine ekili olmayan tablolara karşı çalışan tüm sorgular yavaş sorgu günlüğüne yazılacağına göre, tabloların ve `log_queries_not_using_indexes` `log_throttle_queries_not_using_indexes` parametrelerin On olarak ayarlanması MariaDB performansını etkileyebilir.<br><br>
-> Uzun bir süre için yavaş sorguları günlüğe kaydetmeyi planlıyorsanız, "Yok" olarak ayarlanmanız `log_output` önerilir. "Dosya" olarak ayarlanırsa, bu günlükler yerel sunucu depolamasına yazılır ve MariaDB performansını etkileyebilir. 
+> Tablolarınızın dizini oluşturulmamış ise, bu dizinlenmemiş `log_queries_not_using_indexes` tablolarda `log_throttle_queries_not_using_indexes` çalışan tüm sorgular yavaş sorgu günlüğüne YAZıLACAK olduğundan ve parametrelerini açık olarak ayarlamak MariaDB performansını etkileyebilir.<br><br>
+> Uzun bir süre için yavaş sorguları günlüğe kaydetmeyi planlıyorsanız, "none" olarak ayarlanması `log_output` önerilir. "Dosya" olarak ayarlanırsa, bu günlükler yerel sunucu depolamasına yazılır ve MariaDB performansını etkileyebilir. 
 
 Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MariaDB [yavaş sorgu günlüğü belgelerine](https://mariadb.com/kb/en/library/slow-query-log-overview/) bakın.
 
 ## <a name="access-slow-query-logs"></a>Yavaş sorgu günlüklerine erişin
-MariaDB için Azure Veritabanı'nda yavaş sorgu günlüklerine erişmek için iki seçenek vardır: yerel sunucu depolama veya Azure Monitor Tanılama Günlükleri. Bu `log_output` parametre kullanılarak ayarlanır.
+MariaDB için Azure veritabanı 'nda yavaş sorgu günlüklerine erişilmesine yönelik iki seçenek vardır: yerel sunucu depolaması veya Azure Izleyici tanılama günlükleri. Bu, `log_output` parametresi kullanılarak ayarlanır.
 
-Yerel sunucu depolama için, Azure portalını veya Azure CLI'yi kullanarak yavaş sorgu günlüklerini listeleyebilir ve indirebilirsiniz. Azure portalında, Azure portalındaki sunucunuza gidin. **İzleme** başlığı altında Sunucu **Günlükleri** sayfasını seçin. Azure CLI hakkında daha fazla bilgi için Azure [CLI'yi kullanarak sunucu günlüklerini yapılandırma ve erişim](howto-configure-server-logs-cli.md)bilgisine bakın. 
+Yerel sunucu depolaması için, Azure portal veya Azure CLı kullanarak yavaş sorgu günlüklerini listeleyebilir ve indirebilirsiniz. Azure portal, Azure portal sunucunuza gidin. **İzleme** başlığı altında, **sunucu günlükleri** sayfasını seçin. Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak sunucu günlüklerini yapılandırma ve erişme](howto-configure-server-logs-cli.md). 
 
-Azure Monitör Üdne Günlükleri, yavaş sorgu günlüklerini Azure Monitör Günlükleri (Log Analytics), Azure Depolama veya Etkinlik Hub'larına denetlemenize olanak tanır. Daha fazla bilgi için [aşağıya](concepts-server-logs.md#diagnostic-logs) bakın.
+Azure Izleyici tanılama günlükleri, Azure Izleyici günlüklerine (Log Analytics), Azure depolama 'ya veya Event Hubs yavaş sorgu günlüklerini boru etmenize olanak tanır. Daha fazla bilgi için [aşağıya](concepts-server-logs.md#diagnostic-logs) bakın.
 
-## <a name="local-server-storage-log-retention"></a>Yerel sunucu depolama günlüğü tutma
-Sunucunun yerel depolama alanına günlüğe kaydedilirken, günlükler oluşturulduktan sonra yedi güne kadar kullanılabilir. Kullanılabilir günlüklerin toplam boyutu 7 GB'ı aşarsa, alan kullanılabilir olana kadar en eski dosyalar silinir.
+## <a name="local-server-storage-log-retention"></a>Yerel sunucu depolama günlüğü saklama
+Sunucunun yerel depolama alanına oturum açarken, günlükleri oluşturulduktan yedi güne kadar kullanılabilir. Kullanılabilir günlüklerin toplam boyutu 7 GB 'yi aşarsa, alan kullanılabilir olana kadar en eski dosyalar silinir.
 
-Günlükler her 24 saatte bir veya 7 GB'da bir döndürülür, hangisi önce gelirse.
+Günlükler her 24 saatte bir veya 7 GB döndürülür, hangisi önce gelir.
 
 > [!Note]
-> Yukarıdaki günlük tutma, Azure MonitörÜ Tanılama Günlükleri kullanılarak boşaltılabilen günlükler için geçerli değildir. Yayılan veri lavabolarının bekletme süresini değiştirebilirsiniz (ör. Azure Depolama).
+> Yukarıdaki günlük tutma, Azure Izleyici tanılama günlükleri kullanılarak yöneltilen Günlükler için uygulanmaz. Yayılmakta olan veri havuzları için saklama süresini değiştirebilirsiniz (örn. Azure depolama).
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
-MariaDB için Azure Veritabanı, Azure Monitor Tanı Günlükleri ile tümleşiktir. MariaDB sunucunuzdaki yavaş sorgu günlüklerini etkinleştirdikten sonra, bunları Azure Monitor günlüklerine, Etkinlik Hub'larına veya Azure Depolama'ya yaymayı seçebilirsiniz. Tanılama günlüklerini etkinleştirme hakkında daha fazla bilgi edinmek için [tanılama günlükleri belgelerinin](../azure-monitor/platform/platform-logs-overview.md)nasıl bölümle yapılacağını görün.
+MariaDB için Azure veritabanı, Azure Izleyici tanılama günlükleriyle tümleşiktir. MariaDB sunucunuzda yavaş sorgu günlüklerini etkinleştirdikten sonra, bunların Azure Izleyici günlüklerine, Event Hubs veya Azure depolama 'ya yayılmasını tercih edebilirsiniz. Tanılama günlüklerinin nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için [tanılama günlükleri belgelerinin](../azure-monitor/platform/platform-logs-overview.md)nasıl yapılır bölümüne bakın.
 
-Aşağıdaki tabloda her günlükte ne olduğu açıklanmaktadır. Çıktı yöntemine bağlı olarak, dahil edilen alanlar ve göründükleri sıra değişebilir.
+Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış yöntemine bağlı olarak, dahil edilen alanlar ve göründükleri sıralama farklılık gösterebilir.
 
 | **Özellik** | **Açıklama** |
 |---|---|
-| `TenantId` | Kiracı kimliğiniz |
+| `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`[UTC] | Günlük UTC'de kaydedildiğinde zaman damgası |
-| `Type` | Günlük türü. Her zaman`AzureDiagnostics` |
+| `TimeGenerated`UTC | Günlük kaydedildiği zaman damgası (UTC) |
+| `Type` | Günlüğün türü. Her`AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
-| `ResourceProvider` | Kaynak sağlayıcısının adı. Her zaman`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
-| `ResourceId` | Kaynak URI |
+| `ResourceId` | Kaynak URI 'SI |
 | `Resource` | Sunucunun adı |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Sunucunun adı |
-| `start_time_t`[UTC] | Sorgunun başladığı saat |
-| `query_time_s` | Sorgunun yürütülmesi için gereken toplam süre |
-| `lock_time_s` | Sorgunun kilitlenditoplam süresi |
+| `start_time_t`UTC | Sorgunun başladığı zaman |
+| `query_time_s` | Sorgunun yürütülmesi için geçen toplam süre |
+| `lock_time_s` | Sorgunun kilitlenme toplam süre |
 | `user_host_s` | Kullanıcı adı |
 | `rows_sent_s` | Gönderilen satır sayısı |
 | `rows_examined_s` | İncelenen satır sayısı |
 | `last_insert_id_s` | [last_insert_id](https://mariadb.com/kb/en/library/last_insert_id/) |
-| `insert_id_s` | Kimlik ekle |
+| `insert_id_s` | KIMLIĞI Ekle |
 | `sql_text_s` | Tam sorgu |
-| `server_id_s` | Sunucu Kimliği |
-| `thread_id_s` | İş Parçacığı Kimliği |
-| `\_ResourceId` | Kaynak URI |
+| `server_id_s` | Sunucu KIMLIĞI |
+| `thread_id_s` | İş parçacığı KIMLIĞI |
+| `\_ResourceId` | Kaynak URI 'SI |
 
 > [!Note]
-> Çünkü, `sql_text`2048 karakteri aşarsa günlük kesilir.
+> İçin `sql_text`, 2048 karakteri aşarsa günlük kesilecek.
 
-## <a name="analyze-logs-in-azure-monitor-logs"></a>Azure Monitör Günlükleri'ndeki günlükleri analiz edin
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde günlükleri analiz etme
 
-Yavaş sorgu günlükleriniz, Tanılama Günlükleri aracılığıyla Azure Monitör Günlükleri'ne aktadıktan sonra, yavaş sorgularınızın daha fazla analizini gerçekleştirebilirsiniz. Aşağıda, başlamanıza yardımcı olacak bazı örnek sorgular verilmiştir. Aşağıdaki leri sunucu adınız ile güncelleştirin.
+Yavaş sorgu günlüklerinizin tanılama günlükleri aracılığıyla Azure Izleyici günlüklerine bir kez alındıktan sonra, yavaş sorgularınızı daha fazla analiz gerçekleştirebilirsiniz. Aşağıda, başlamanıza yardımcı olacak bazı örnek sorgular verilmiştir. Aşağıdaki öğesini sunucu adınızla güncelleştirdiğinizden emin olun.
 
-- Belirli bir sunucuda 10 saniyeden uzun sorgular
+- Belirli bir sunucuda 10 saniyeden uzun sorgu
 
     ```Kusto
     AzureDiagnostics
@@ -100,7 +100,7 @@ Yavaş sorgu günlükleriniz, Tanılama Günlükleri aracılığıyla Azure Moni
     | where query_time_d > 10
     ```
 
-- Belirli bir sunucudaki en uzun 5 sorguları listele
+- Belirli bir sunucuda ilk 5 en uzun sorguyu listeleme
 
     ```Kusto
     AzureDiagnostics
@@ -111,7 +111,7 @@ Yavaş sorgu günlükleriniz, Tanılama Günlükleri aracılığıyla Azure Moni
     | take 5
     ```
 
-- Belirli bir sunucudaki en az, maksimum, ortalama ve standart sapma sorgu süresine göre yavaş sorguları özetle
+- Belirli bir sunucuda minimum, maksimum, ortalama ve standart sapma sorgu zamanına göre yavaş sorguları özetleme
 
     ```Kusto
     AzureDiagnostics
@@ -121,7 +121,7 @@ Yavaş sorgu günlükleriniz, Tanılama Günlükleri aracılığıyla Azure Moni
     | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
     ```
 
-- Belirli bir sunucudaki yavaş sorgu dağılımını grafik
+- Belirli bir sunucuda yavaş sorgu dağıtımını grafiktir
 
     ```Kusto
     AzureDiagnostics
@@ -132,7 +132,7 @@ Yavaş sorgu günlükleriniz, Tanılama Günlükleri aracılığıyla Azure Moni
     | render timechart
     ```
 
-- Tanılama Günlükleri etkinleştirilmiş tüm MariaDB sunucularında sorguları 10 saniyeden uzun görüntüleme
+- Tanılama günlükleri etkin olan tüm MariaDB sunucularında 10 saniyeden uzun sorguları görüntüle
 
     ```Kusto
     AzureDiagnostics
@@ -142,5 +142,5 @@ Yavaş sorgu günlükleriniz, Tanılama Günlükleri aracılığıyla Azure Moni
     ```    
     
 ## <a name="next-steps"></a>Sonraki Adımlar
-- [Azure portalından yavaş sorgu günlükleri nasıl yapılandırılabilen](howto-configure-server-logs-portal.md)
-- [Azure CLI'den yavaş sorgu günlükleri nasıl yapılandırılabilen](howto-configure-server-logs-cli.md)
+- [Azure portal yavaş sorgu günlüklerini yapılandırma](howto-configure-server-logs-portal.md)
+- [Azure CLı 'dan yavaş sorgu günlüklerini yapılandırma](howto-configure-server-logs-cli.md)

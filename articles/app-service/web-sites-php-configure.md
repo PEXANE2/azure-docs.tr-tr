@@ -1,6 +1,6 @@
 ---
 title: PHP çalışma zamanını yapılandırma
-description: Varsayılan PHP yüklemesini nasıl yapılandıracak veya Azure Uygulama Hizmeti için özel bir PHP yüklemesi eklemeyi öğrenin.
+description: Varsayılan PHP yüklemesini yapılandırmayı veya Azure App Service için özel bir PHP yüklemesi eklemeyi öğrenin.
 author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
@@ -9,62 +9,62 @@ ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272483"
 ---
-# <a name="configure-php-in-azure-app-service"></a>Azure Uygulama Hizmetinde PHP'yi yapılandırma
+# <a name="configure-php-in-azure-app-service"></a>Azure App Service 'de PHP 'yi yapılandırma
 
 ## <a name="introduction"></a>Giriş
 
-Bu kılavuz, [Azure Uygulama Hizmeti'ndeki](https://go.microsoft.com/fwlink/?LinkId=529714)web uygulamaları ve API uygulamaları için yerleşik PHP çalışma süresini nasıl yapılandırabileceğinizi, özel bir PHP çalışma süresi sağladığınız ve uzantıları etkinleştirmenizi gösterir. Uygulama Hizmetini kullanmak için [ücretsiz deneme sürümüne]kaydolun. Bu kılavuzdan en iyi şekilde haberdar olmak için öncelikle App Service'de bir PHP uygulaması oluşturmanız gerekir.
+Bu kılavuzda, [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)Web Apps ve API Apps IÇIN yerleşik php çalışma zamanının nasıl yapılandırılacağı, özel bir php çalışma zamanı sağlamanıza ve uzantıların nasıl etkinleştirileceği gösterilmektedir. App Service kullanmak için, [ücretsiz deneme]için kaydolun. Bu kılavuzdan en iyi şekilde yararlanmak için, öncelikle App Service bir PHP uygulaması oluşturmanız gerekir.
 
-## <a name="how-to-change-the-built-in-php-version"></a>Nasıl yapılır: Yerleşik PHP sürümünü değiştirme
+## <a name="how-to-change-the-built-in-php-version"></a>Nasıl yapılır: yerleşik PHP sürümünü değiştirme
 
-Bir web uygulaması oluştururken, PHP'nin yapılandırılacak sürümünü seçebilirsiniz. Şu [anda](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md) desteklenen sürümler hakkında güncel bilgiler için App Service'de PHP'ye bakın.
+Bir Web uygulaması oluştururken, yapılandırılacak PHP sürümünü seçebilirsiniz. Şu anda Desteklenen sürümlerin güncel bilgileri için [App Service php](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md) 'ye bakın.
 
-Uygulamanızın mevcut çalışma zamanı sürümünü denetlemek için [phpinfo()] işlevini çağıran bir komut dosyası dağıtabilirsiniz.
+Uygulamanızın mevcut çalışma zamanı sürümünü denetlemek için [phpinfo ()] işlevini çağıran bir betik dağıtabilirsiniz.
 
 PHP sürümünü güncelleştirmek için aşağıdaki yöntemlerden birini izleyin:
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com) uygulamanıza göz atın ve **Yapılandırma** sayfasına gidin.
+1. [Azure Portal](https://portal.azure.com) uygulamanıza gidin ve **yapılandırma** sayfasına gidin.
 
-2. **Yapılandırma'dan** **Genel Ayarlar'ı** seçin ve yeni PHP sürümünü seçin.
+2. **Yapılandırma**' dan **Genel ayarlar** ' ı seçin ve yeni PHP sürümünü seçin.
 
-3. **Genel ayarlar** bıçağının üst kısmındaki **Kaydet** düğmesini tıklatın.
+3. **Genel ayarlar** dikey penceresinin en üstündeki **Kaydet** düğmesine tıklayın.
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-Azure Komut Satırı Arabirimini kullanmak için [Bilgisayarınıza Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yüklemeniz gerekir.
+Azure komut satırı arabirimini kullanmak için, bilgisayarınızda [Azure CLI 'Yı yüklemelisiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
 
-1. Terminal'i açın ve hesabınıza giriş yapın.
+1. Terminal ' i açın ve hesabınızda oturum açın.
 
         az login
 
-1. Desteklenen çalışma sürelerinin listesini görmek için denetleyin.
+1. Desteklenen çalışma zamanlarının listesini görmek için işaretleyin.
 
         az webapp list-runtimes | grep php
 
-2. Uygulama için PHP sürümünü ayarlayın.
+2. Uygulamanın PHP sürümünü ayarlayın.
 
         az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
-3. PHP sürümü artık ayarlandı. Bu ayarları onaylayabilirsiniz:
+3. PHP sürümü artık ayarlandı. Bu ayarları doğrulayabilirsiniz:
 
         az webapp show --name {app-name} --resource-group {resource-group-name}
 
-## <a name="how-to-change-the-built-in-php-configurations"></a>Nasıl yapılır: Yerleşik PHP yapılandırmalarını değiştirme
+## <a name="how-to-change-the-built-in-php-configurations"></a>Nasıl yapılır: yerleşik PHP yapılandırmasını değiştirme
 
-Yerleşik PHP çalışma zamanı için, aşağıdaki adımları izleyerek yapılandırma seçeneklerinden herhangi birini değiştirebilirsiniz. (php.ini yönergeleri hakkında bilgi için [php.ini direktifleri listesine]bakın.)
+Herhangi bir yerleşik PHP çalışma zamanı için, bu adımları izleyerek yapılandırma seçeneklerinden herhangi birini değiştirebilirsiniz. (Php. ini yönergeleri hakkında daha fazla bilgi için bkz. [php. ini yönergeleri listesi].)
 
-### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>PHP\_INI\_KULLANICISI,\_PHP\_INI\_\_PERDIR, PHP INI TÜM yapılandırma ayarlarını değiştirme
+### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>\_Php\_ını kullanıcısını değiştirme, php\_ini\_perdir,\_php ini\_tüm yapılandırma ayarları
 
-1. Kök dizininize bir [.user.ini] dosyası ekleyin.
-1. Bir `php.ini` dosyada `.user.ini` kullanacağınız sözdizimini kullanarak dosyaya yapılandırma ayarları ekleyin. Örneğin, `display_errors` ayarı açıp ayarı 10M olarak ayarlamak `upload_max_filesize` istiyorsanız, dosyanız `.user.ini` bu metni içerir:
+1. Kök Dizininize bir [. User. ini] dosyası ekleyin.
+1. Dosya için kullandığınız `php.ini` söz dizimini `.user.ini` kullanarak yapılandırma ayarlarını dosyaya ekleyin. Örneğin, `display_errors` ayarı etkinleştirmek ve ayarı 10m olarak ayarlamak `upload_max_filesize` isterseniz `.user.ini` dosyanız şu metni içerir:
 
         ; Example Settings
         display_errors=On
@@ -73,99 +73,99 @@ Yerleşik PHP çalışma zamanı için, aşağıdaki adımları izleyerek yapıl
         ; OPTIONAL: Turn this on to write errors to d:\home\LogFiles\php_errors.log
         ; log_errors=On
 2. Uygulamanızı dağıtın.
-3. Uygulamayı yeniden başlatın. (PHP'nin dosyaları okuma `.user.ini` sıklığı sistem düzeyi ayarı `user_ini.cache_ttl` olan ve varsayılan olarak 300 saniye (5 dakika) olan ayarına göre yönetildiği için yeniden başlatma gereklidir. Uygulamayı yeniden başlatmak PHP'yi `.user.ini` dosyadaki yeni ayarları okumaya zorlar.)
+3. Uygulamayı yeniden başlatın. (PHP 'nin dosya okuduğu `.user.ini` sıklık, sistem düzeyi ayarı olan ve varsayılan olarak 300 saniye `user_ini.cache_ttl` (5 dakika) olan ayar tarafından yönetilmediği için yeniden başlatma gereklidir. Uygulamanın yeniden başlatılması, PHP 'nin `.user.ini` dosyadaki yeni ayarları okumasını zorlar.)
 
-`.user.ini` Dosya kullanmaya alternatif olarak, sistem düzeyinde yönergeolmayan yapılandırma seçeneklerini ayarlamak için komut dosyalarındaki [ini_set()] işlevini kullanabilirsiniz.
+Bir `.user.ini` dosya kullanmanın bir alternatifi olarak, sistem düzeyindeki yönergeler olmayan yapılandırma seçeneklerini ayarlamak için betiklerdeki [ini_set ()] işlevini kullanabilirsiniz.
 
-### <a name="changing-php_ini_system-configuration-settings"></a>PHP\_INI\_SYSTEM yapılandırma ayarlarını değiştirme
+### <a name="changing-php_ini_system-configuration-settings"></a>PHP\_ını\_sistem yapılandırma ayarlarını değiştirme
 
-1. Uygulamanıza anahtar `PHP_INI_SCAN_DIR` ve değerle Uygulama Ayarı ekleme`d:\home\site\ini`
-1. Dizinde `settings.ini` Kudu&lt;Console (http:// site&gt;adı .scm.azurewebsite.net) kullanarak bir dosya oluşturun. `d:\home\site\ini`
-1. Bir `php.ini` dosyada `settings.ini` kullanacağınız sözdizimini kullanarak dosyaya yapılandırma ayarları ekleyin. Örneğin, `curl.cainfo` ayarı bir `*.crt` dosyaya doğrultmak ve 'wincache.maxfilesize' ayarını 512 `settings.ini` K olarak ayarlamak istiyorsanız, dosyanız bu metni içerir:
+1. Anahtar `PHP_INI_SCAN_DIR` ve değer ile uygulamanıza bir uygulama ayarı ekleyin`d:\home\site\ini`
+1. Dizininde kudu konsolunu ( `settings.ini` http://&lt;site-name&gt;. scm.azurewebsite.net) kullanarak bir dosya oluşturun. `d:\home\site\ini`
+1. Dosya için kullandığınız `php.ini` söz dizimini `settings.ini` kullanarak yapılandırma ayarlarını dosyaya ekleyin. Örneğin, `curl.cainfo` ayarı bir `*.crt` dosyaya işaret etmek ve ' WinCache. MaxFileSize ' ayarını 512 K olarak ayarlamak isterseniz `settings.ini` dosyanız şu metni içerir:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
         wincache.maxfilesize=512
 1. Değişiklikleri yeniden yüklemek için uygulamanızı yeniden başlatın.
 
-## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Nasıl yapılır: Varsayılan PHP çalışma zamanında uzantıları etkinleştirme
+## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Nasıl yapılır: varsayılan PHP çalışma zamanında uzantıları etkinleştirme
 
-Önceki bölümde belirtildiği gibi, varsayılan PHP sürümünü, varsayılan yapılandırmasını ve etkin uzantıları görmenin en iyi yolu [phpinfo()]çağıran bir komut dosyası dağıtmaktır. Aşağıdaki adımları izleyerek ek uzantıları etkinleştirmek için:
+Önceki bölümde belirtildiği gibi, varsayılan PHP sürümünü, varsayılan yapılandırmasını ve etkinleştirilmiş uzantıları görmenin en iyi yolu, [PHPINFO ()]öğesini çağıran bir betiği dağıtmaktır. Ek uzantıları etkinleştirmek için aşağıdaki adımları izleyin:
 
-### <a name="configure-via-ini-settings"></a>ini ayarları ile yapılandırma
+### <a name="configure-via-ini-settings"></a>INI ayarları aracılığıyla yapılandırma
 
 1. `d:\home\site` Dizine bir `ext` dizin ekleyin.
-1. Uzantı dosyalarını `ext` dizine koyun `.dll` `php_xdebug.dll`(örneğin, ). Uzantıların PHP'nin varsayılan sürümüyle uyumlu olduğundan ve VC9 ve iş parçacığı için güvenli olmayan (nts) uyumlu olduğundan emin olun.
-1. Uygulamanıza anahtar `PHP_INI_SCAN_DIR` ve değerle Uygulama Ayarı ekleme`d:\home\site\ini`
-1. 'de `ini` bir `extensions.ini`dosya oluşturun. `d:\home\site\ini`
-1. Bir `php.ini` dosyada `extensions.ini` kullanacağınız sözdizimini kullanarak dosyaya yapılandırma ayarları ekleyin. Örneğin, MongoDB ve XDebug uzantılarını etkinleştirmek istiyorsanız, dosyanız `extensions.ini` bu metni içerir:
+1. Uzantı `.dll` dosyalarını `ext` dizine yerleştirin (örneğin, `php_xdebug.dll`). Uzantıların varsayılan PHP sürümü ile uyumlu olduğundan ve VC9 ve iş parçacığı olmayan güvenli (lar) uyumlu olduğundan emin olun.
+1. Anahtar `PHP_INI_SCAN_DIR` ve değer ile uygulamanıza bir uygulama ayarı ekleyin`d:\home\site\ini`
+1. `d:\home\site\ini` Çağrılan `extensions.ini`bir `ini` dosya oluşturun.
+1. Dosya için kullandığınız `php.ini` söz dizimini `extensions.ini` kullanarak yapılandırma ayarlarını dosyaya ekleyin. Örneğin, MongoDB ve XDebug uzantılarını etkinleştirmek isterseniz `extensions.ini` dosyanız şu metni içerir:
 
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
         zend_extension=d:\home\site\ext\php_xdebug.dll
 1. Değişiklikleri yüklemek için uygulamanızı yeniden başlatın.
 
-### <a name="configure-via-app-setting"></a>Uygulama Ayarı ile yapılandırma
+### <a name="configure-via-app-setting"></a>Uygulama ayarı aracılığıyla yapılandırma
 
-1. Kök `bin` dizine bir dizin ekleyin.
-2. Uzantı dosyalarını `bin` dizine koyun `.dll` `php_xdebug.dll`(örneğin, ). Uzantıların PHP'nin varsayılan sürümüyle uyumlu olduğundan ve VC9 ve iş parçacığı için güvenli olmayan (nts) uyumlu olduğundan emin olun.
+1. Kök dizine `bin` bir dizin ekleyin.
+2. Uzantı `.dll` dosyalarını `bin` dizine yerleştirin (örneğin, `php_xdebug.dll`). Uzantıların varsayılan PHP sürümü ile uyumlu olduğundan ve VC9 ve iş parçacığı olmayan güvenli (lar) uyumlu olduğundan emin olun.
 3. Uygulamanızı dağıtın.
-4. Azure portalında uygulamanıza göz atın ve **Ayarlar** bölümünün altında bulunan **Yapılandırma'ya** tıklayın.
-5. **Yapılandırma** bıçağından **Uygulama Ayarları'nı**seçin.
-6. Uygulama **ayarları** bölümünde + **Yeni uygulama ayarını** tıklatın ve **PHP_EXTENSIONS** bir anahtar oluşturun. Bu anahtarın değeri web sitesi köküne göre bir yol olacaktır: **bin\your-ext-file**.
-7. Alttaki **Güncelleştir** düğmesini tıklatın ve **ardından Uygulama ayarları** sekmesinin üzerine **Kaydet'i** tıklatın.
+4. Azure portal uygulamanıza gidin ve aşağıdaki **Ayarlar** bölümünde bulunan **yapılandırma** bölümüne tıklayın.
+5. **Yapılandırma** dikey penceresinde **uygulama ayarları**' nı seçin.
+6. **Uygulama ayarları** bölümünde **+ Yeni uygulama ayarı** ' na tıklayın ve bir **PHP_EXTENSIONS** anahtarı oluşturun. Bu anahtarın değeri, Web sitesi köküne göreli bir yol olacaktır: **bin\your-ext-File**.
+7. Alttaki **Güncelleştir** düğmesine tıklayın ve ardından **uygulama ayarları** sekmesinin üzerine **Kaydet** ' e tıklayın.
 
-Zend uzantıları da **PHP_ZENDEXTENSIONS** bir anahtar kullanılarak desteklenir. Birden çok uzantıyı etkinleştirmek için, `.dll` uygulama ayar değeri için virgülle ayrılmış bir dosya listesi ekleyin.
+Zend uzantıları, bir **PHP_ZENDEXTENSIONS** anahtarı kullanılarak da desteklenir. Birden çok uzantıyı etkinleştirmek için, uygulama ayarı değeri için bir virgülle `.dll` ayrılmış dosya listesi ekleyin.
 
-## <a name="how-to-use-a-custom-php-runtime"></a>Nasıl yapılır: Özel bir PHP çalışma zamanı kullanın
+## <a name="how-to-use-a-custom-php-runtime"></a>Nasıl yapılır: özel PHP çalışma zamanı kullanma
 
-Varsayılan PHP çalışma zamanı yerine, Uygulama Hizmeti PHP komut dosyalarını çalıştırmak için sağladığınız bir PHP çalışma süresi kullanabilir. Sağladığınız çalışma süresi, sizin de `php.ini` sağladığınız bir dosya tarafından yapılandırılabilir. Aşağıdaki adımları izleyerek, App Service ile özel bir PHP çalışma zamanı kullanmak için.
+Varsayılan PHP çalışma zamanı yerine, App Service PHP betiklerini yürütmek için sağladığınız PHP çalışma zamanını kullanabilir. Sağladığınız çalışma zamanı da sağladığınız bir `php.ini` dosya tarafından yapılandırılabilir. App Service ile özel bir PHP çalışma zamanı kullanmak için, bu adımları takip edin.
 
-1. Windows için PHP'nin iş parçacığı güvenli olmayan, VC9 veya VC11 uyumlu sürümünü edinin. Windows için PHP son sürümleri burada [https://windows.php.net/download/]bulabilirsiniz: . Eski sürümler burada arşivbulunabilir: [https://windows.php.net/downloads/releases/archives/].
-2. Çalışma `php.ini` süreniz için dosyayı değiştirin. Yalnızca sistem düzeyindeki yönergeler olan tüm yapılandırma ayarları App Service tarafından yoksayılır. (Yalnızca sistem düzeyindeki yönergeler hakkında bilgi için [bkz. php.ini yönergeleri listesi).]
-3. İsteğe bağlı olarak, PHP çalışma sürenize uzantılar ekleyin ve bunları dosyada etkinleştirin. `php.ini`
-4. Kök `bin` dizininize bir dizin ekleyin ve PHP çalışma sürenizi içeren dizini (örneğin, `bin\php`) koyuna koyun.
+1. Windows için PHP 'nin güvenli olmayan, VC9 veya VC11 ile uyumlu bir sürümünü edinin. Windows için PHP 'nin son sürümleri şurada bulunabilir: [https://windows.php.net/download/]. Daha eski sürümler burada arşiv içinde bulunabilir: [https://windows.php.net/downloads/releases/archives/].
+2. Çalışma zamanı `php.ini` için dosyayı değiştirin. Yalnızca sistem düzeyinde yönergeler olan yapılandırma ayarları App Service tarafından yok sayılır. (Sistem düzeyi yönergeleri hakkında daha fazla bilgi için bkz. [php. ini yönergeleri listesi]).
+3. İsteğe bağlı olarak, PHP çalışma zamanına uzantı ekleyin ve bunları `php.ini` dosyada etkinleştirin.
+4. Kök Dizininize `bin` bir dizin ekleyın ve php çalışma zamanını içeren dizini bu dizine yerleştirin (örneğin, `bin\php`).
 5. Uygulamanızı dağıtın.
-6. Azure portalında uygulamanıza göz atın ve **Yapılandırma** bıçağına tıklayın.
-8. **Yapılandırma** bıçağından **Yol eşlemelerini**seçin. 
-9. **+ Yeni İşleyici'yi** tıklatın ve Uzantı alanına ekleyin `*.php` ve Komut Dosyası `php-cgi.exe` **işlemcisinde**çalıştırılabilir yol ekleyin. PHP çalışma zamanınızı uygulamanızın `bin` kökündeki dizine koyarsanız, yol `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
-10. Altta, işleyici eşleci eklemeyi bitirmek için **Güncelleştir'i** tıklatın.
+6. Azure portal uygulamanıza gidin ve **yapılandırma** dikey penceresine tıklayın.
+8. **Yapılandırma** dikey penceresinde **yol eşlemeleri**' ni seçin. 
+9. **+ Yeni işleyici** ' ye tıklayın `*.php` ve uzantı alanına ekleyin ve `php-cgi.exe` **komut dosyası işlemcisinde**yolu çalıştırılabilir dosyaya ekleyin. PHP çalışma zamanını uygulamanızın kökündeki `bin` dizine yerleştirirseniz, yol olur. `D:\home\site\wwwroot\bin\php\php-cgi.exe`
+10. İşleyici eşlemesini eklemeyi bitirmeden alt kısımdaki **Güncelleştir** ' e tıklayın.
 11. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
 <a name="composer" />
 
-## <a name="how-to-enable-composer-automation-in-azure"></a>Nasıl yapilir: Azure'da Besteci otomasyonuna olanak sağlama
+## <a name="how-to-enable-composer-automation-in-azure"></a>Nasıl yapılır: Azure 'da besteci Otomasyonu etkinleştirme
 
-Varsayılan olarak, PHP projenizde bir tane varsa, App Service composer.json ile hiçbir şey yapmaz. [Git dağıtımını](deploy-local-git.md)kullanırsanız, Besteci uzantısını `git push` etkinleştirerek composer.json işlemini etkinleştirebilirsiniz.
+PHP projenizde bir tane varsa, varsayılan olarak, App Service besteci Oluşturucu. JSON ile hiçbir şey yapmaz. [Git dağıtımını](deploy-local-git.md)kullanıyorsanız, Oluşturucu uzantısını etkinleştirerek sırasında `git push` besteci. JSON işlemesini etkinleştirebilirsiniz.
 
 > [!NOTE]
-> Burada [App Service birinci sınıf Besteci desteği için oy](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)verebilirsiniz!
+> [Buradan App Service ilk sınıf besteci desteği için oy](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)verebilirsiniz!
 >
 
-1. [Azure portalındaki](https://portal.azure.com)PHP uygulamanızın bıçağında **Araçlar** > **Uzantıları'nı**tıklatın.
+1. [Azure Portal](https://portal.azure.com)php uygulamanızın dikey penceresinde **Araçlar** > **Uzantılar**' a tıklayın.
 
-    ![Azure'da Besteci otomasyonuna olanak sağlamak için Azure portalı ayarları](./media/web-sites-php-configure/composer-extension-settings.png)
-2. **Ekle'yi**tıklatın, ardından **Besteci'yi**tıklatın.
+    ![Azure 'da besteci Otomasyonu 'nu etkinleştirmek için Azure portal ayarları dikey penceresi](./media/web-sites-php-configure/composer-extension-settings.png)
+2. **Ekle**' ye ve ardından **besteci**' ye tıklayın.
 
-    ![Azure'da Besteci otomasyonuna olanak sağlamak için Besteci uzantısı ekleme](./media/web-sites-php-configure/composer-extension-add.png)
-3. Yasal koşulları kabul etmek için **Tamam'ı** tıklatın. Uzantıyı eklemek için yeniden **Tamam'ı** tıklatın.
+    ![Azure 'da besteci Otomasyonu 'nu etkinleştirmek için besteci uzantısı ekleyin](./media/web-sites-php-configure/composer-extension-add.png)
+3. Yasal koşulları kabul etmek için **Tamam** ' ı tıklatın. Uzantıyı eklemek için yeniden **Tamam** ' a tıklayın.
 
-    **Yüklü uzantıları** bıçak Besteci uzantısını gösterir.
-    ![Azure'da Besteci otomasyonuna olanak sağlamak için yasal koşulları kabul etme](./media/web-sites-php-configure/composer-extension-view.png)
-4. Şimdi, yerel makinenizdeki bir terminal `git add`penceresinde, `git push` uygulamanıza ve `git commit`uygulamanıza gerçekleştirin. Besteci'nin composer.json'da tanımlanan bağımlılıkları yüklediğini unutmayın.
+    **Yüklü uzantılar** dikey penceresi, besteci uzantısını gösterir.
+    ![Azure 'da besteci Otomasyonu 'nu etkinleştirmek için yasal koşulları kabul edin](./media/web-sites-php-configure/composer-extension-view.png)
+4. Şimdi, yerel makinenizde bir Terminal penceresinde,, ve `git add` `git commit` `git push` uygulamanızı gerçekleştirin. Besteci, besteci Oluşturucu. JSON içinde tanımlanan bağımlılıkları yüklediğine dikkat edin.
 
-    ![Azure'da Besteci otomasyonu ile Git dağıtımı](./media/web-sites-php-configure/composer-extension-success.png)
+    ![Azure 'da besteci otomasyonu ile git dağıtımı](./media/web-sites-php-configure/composer-extension-success.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için [PHP Geliştirici Merkezi'ne](https://azure.microsoft.com/develop/php/)bakın.
+Daha fazla bilgi için bkz. [php Geliştirici Merkezi](https://azure.microsoft.com/develop/php/).
 
 [ücretsiz deneme]: https://www.windowsazure.com/pricing/free-trial/
-[phpinfo()]: https://php.net/manual/en/function.phpinfo.php
+[phpinfo ()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
-[php.ini direktifleri listesi]: https://www.php.net/manual/en/ini.list.php
-[.user.ini]: https://www.php.net/manual/en/configuration.file.per-user.php
-[ini_set()]: https://www.php.net/manual/en/function.ini-set.php
+[Php. ini yönergelerinin listesi]: https://www.php.net/manual/en/ini.list.php
+[. User. ini]: https://www.php.net/manual/en/configuration.file.per-user.php
+[ini_set ()]: https://www.php.net/manual/en/function.ini-set.php
 [application-settings]: ./media/web-sites-php-configure/application-settings.png
 [settings-button]: ./media/web-sites-php-configure/settings-button.png
 [save-button]: ./media/web-sites-php-configure/save-button.png

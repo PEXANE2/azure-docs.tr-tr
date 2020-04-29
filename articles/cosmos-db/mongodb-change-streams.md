@@ -1,6 +1,6 @@
 ---
-title: MongoDB için Azure Cosmos DB'nin API'sındaki akışları değiştirme
-description: Verilerinizde yapılan değişiklikleri almak için Azure Cosmos DB'nin MongoDB api'sinde değişiklik akışlarını nasıl kullanacağınızı öğrenin.
+title: MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme
+description: Verilerinize yapılan değişiklikleri almak için Azure Cosmos DB, MongoDB için API 'sindeki değişiklik akışlarını nasıl kullanacağınızı öğrenin.
 author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
 ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114157"
 ---
-# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB'nin API'sındaki akışları değiştirme
+# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme
 
-Azure Cosmos DB'nin MongoDB için API'sinde akış desteğini [değiştir,](change-feed.md) değişiklik akışları API'sini kullanarak kullanılabilir. Değişiklik akışları API'sini kullanarak, uygulamalarınız koleksiyonda veya öğelerde yapılan değişiklikleri tek bir parça halinde alabilir. Daha sonra sonuçlara dayalı olarak daha fazla işlem yapabilirsiniz. Koleksiyondaki öğelerdeki değişiklikler, değişiklik zamanları sırasına göre yakalanır ve parça anahtarı başına sıralama sırası garanti edilir.
+Azure Cosmos DB, MongoDB için API 'sinde bulunan [akış](change-feed.md) desteğini değiştirme, akışları değiştirme API 'si kullanılarak kullanılabilir. Uygulamalarınız, değişiklik akışları API 'sini kullanarak koleksiyonda veya tek bir parçadaki öğelerde yapılan değişiklikleri alabilir. Daha sonra sonuçlara göre daha fazla işlem yapabilirsiniz. Koleksiyondaki öğelerde yapılan değişiklikler, değişiklik zamanının sırasına göre yakalanır ve sıralama düzeni parça anahtarı başına garanti edilir.
 
 > [!NOTE]
-> Değişiklik akışlarını kullanmak için, Azure Cosmos DB'nin MongoDB için API sürümünün 3.6 sürümü veya daha sonraki bir sürümüyle hesabı oluşturun. Değişiklik akışı örneklerini önceki bir sürüme göre `Unrecognized pipeline stage name: $changeStream` çalıştırıyorsanız, hatayı görebilirsiniz.
+> Değişiklik akışlarını kullanmak için, Azure Cosmos DB MongoDB için API 'sinin veya sonraki bir sürümünün 3,6 sürümünü içeren hesabı oluşturun. Değişiklik akışı örneklerini önceki bir sürüme karşı çalıştırırsanız, `Unrecognized pipeline stage name: $changeStream` hatayı görebilirsiniz.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-Değişiklik akışları kullanırken aşağıdaki sınırlamalar geçerlidir:
+Değişiklik akışları kullanılırken aşağıdaki sınırlamalar geçerlidir:
 
-* Ve `operationType` `updateDescription` özellikleri henüz çıktı belgesinde desteklenmez.
-* `insert`, `update`, ve `replace` işlem türleri şu anda desteklenir. 
-* Silme işlemi veya diğer olaylar henüz desteklenmez.
+* `operationType` Ve `updateDescription` özellikleri çıkış belgesinde henüz desteklenmiyor.
+* `insert`, `update`Ve `replace` işlemler türleri şu anda destekleniyor. 
+* Silme işlemi veya diğer olaylar henüz desteklenmiyor.
 
-Bu sınırlamalar nedeniyle, önceki örneklerde gösterildiği gibi $match aşaması, $project aşaması ve fullDocument seçenekleri gereklidir.
+Bu sınırlamalar nedeniyle, önceki örneklerde gösterildiği gibi $match Stage, $project Stage ve fullDocument seçenekleri gereklidir.
 
-Azure Cosmos DB'nin SQL API'sindeki değişiklik akışının aksine, değişiklik akışlarını veya kiralama kapsayıcısına ihtiyaç duyan ayrı bir [Değişiklik Akışı İşlemci Kitaplığı](change-feed-processor.md) yoktur. Değişiklik akışlarını işlemek için [Azure İşlevleri tetikleyicileri](change-feed-functions.md) için şu anda destek yok.
+Azure Cosmos DB SQL API 'sindeki değişiklik akışının aksine, değişiklik akışlarını kullanmak için ayrı bir [değişiklik akışı Işlemci kitaplığı](change-feed-processor.md) veya bir kiralama kapsayıcısı gereksinimi yoktur. Şu anda değişiklik akışlarını işlemek için [Azure işlevleri tetikleyicilerinin](change-feed-functions.md) desteği yoktur.
 
 ## <a name="error-handling"></a>Hata işleme
 
-Değişiklik akışları kullanırken aşağıdaki hata kodları ve iletiler desteklenir:
+Değişiklik akışları kullanılırken aşağıdaki hata kodları ve iletileri desteklenir:
 
-* **HTTP hata kodu 16500** - Değişiklik akışı daraltıldığında, boş bir sayfa döndürür.
+* **Http hata kodu 16500** -değişiklik akışı kısıtlandığından boş bir sayfa döndürülür.
 
-* **NamespaceNotFound (OperationType Geçersiz Kılma)** - Var olmayan koleksiyonda değişiklik akışını çalıştırırsanız veya `NamespaceNotFound` koleksiyon bırakılırsa, bir hata döndürülür. `operationType` Özellik çıktı belgesinde döndürülemediğinden, `operationType Invalidate` hata yerine `NamespaceNotFound` hata döndürülür.
+* **NamespaceNotFound (OperationType geçersiz kıl)** -değişiklik akışını varolmayan koleksiyonda çalıştırırsanız veya koleksiyon bırakıldıysanız bir `NamespaceNotFound` hata döndürülür. `operationType` Özelliği, çıkış belgesinde `operationType Invalidate` hata yerine döndürülmediğinden `NamespaceNotFound` hata döndürülür.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, koleksiyondaki tüm öğelerde değişiklik akışlarının nasıl alınış göstereceğini gösterir. Bu örnek, öğeleri eklendiğinde, güncelleştirildiğinde veya değiştirildiğinde izlemek için bir imleç oluşturur. Değişiklik `$match` akışlarını almak için aşama, `$project` aşama ve `fullDocument` seçenek gereklidir. Değişiklik akışlarını kullanarak işlemleri silme yi izlemek şu anda desteklenmemektedir. Geçici çözüm olarak, silinen öğelere yumuşak bir işaretçi ekleyebilirsiniz. Örneğin, "silinmiş" adlı öğeye bir öznitelik ekleyebilirsiniz. Öğeyi silmek istediğinizde, "silinmiş" öğeye `true` ayarlayabilir ve öğeye bir TTL ayarlayabilirsiniz. "Silindi"yi güncelleştirmeye `true` güncelleştirmek bir güncelleştirme olduğundan, bu değişiklik değişiklik akışında görünür.
+Aşağıdaki örnek, koleksiyondaki tüm öğelerde değişiklik akışlarının nasıl alınacağını gösterir. Bu örnek, öğeleri yerleştirildiğinde, güncelleştirilirken veya değiştirildiğinde izlemek için bir imleç oluşturur. Değişiklik `$match` akışlarını almak `$project` için aşama, `fullDocument` aşama ve seçenek gereklidir. Değişiklik akışlarını kullanarak silme işlemleri için izleme şu anda desteklenmiyor. Geçici bir çözüm olarak, silinmekte olan öğelere bir yumuşak işaret ekleyebilirsiniz. Örneğin, "Deleted" adlı öğeye bir öznitelik ekleyebilirsiniz. Öğeyi silmek istediğinizde, ' Deleted ' olarak `true` ayarlayabilir ve öğe ÜZERINDE bir TTL ayarlayabilirsiniz. "Deleted" güncelleştirmesi bir güncelleştirme `true` olduğundan, bu değişiklik akış değişikliğini görünür hale görünecektir.
 
-### <a name="javascript"></a>Javascript:
+### <a name="javascript"></a>JavaScript
 
 ```javascript
 var cursor = db.coll.watch(
@@ -83,9 +83,9 @@ while (enumerator.MoveNext()){
 enumerator.Dispose();
 ```
 
-## <a name="changes-within-a-single-shard"></a>Tek bir parça içindeki değişiklikler
+## <a name="changes-within-a-single-shard"></a>Tek parça içindeki değişiklikler
 
-Aşağıdaki örnek, tek bir parça içindeki öğelerde nasıl değişiklik alınış gösteriş yapılacağını gösterir. Bu örnek, "a" ile eşit sabit anahtar değerine sahip öğelerin değişikliklerini ve "1"e eşit parça anahtar değerini alır. Farklı istemcilerin farklı kırıklardan gelen değişiklikleri paralel olarak okuması mümkündür.
+Aşağıdaki örnek, tek bir parça içindeki öğelerde yapılan değişikliklerin nasıl alınacağını gösterir. Bu örnek, "a" ve parça anahtar değeri "1" değerine eşit olan öğelerin konumunu alır. Farklı parçalardan paralel olarak değişiklik okuyan farklı istemcilerin olması mümkündür.
 
 ```javascript
 var cursor = db.coll.watch(
@@ -106,5 +106,5 @@ var cursor = db.coll.watch(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB'nin MongoDB api'sinde verilerin otomatik olarak süresi dolmak için yaşamak için zamanı kullanın](mongodb-time-to-live.md)
-* [MongoDB için Azure Cosmos DB'nin API'sinde dizin oluşturma](mongodb-indexing.md)
+* [MongoDB için Azure Cosmos DB API 'sindeki verilerin süresi dolduğunda otomatik olarak yaşam süresi kullanma](mongodb-time-to-live.md)
+* [MongoDB için Azure Cosmos DB API 'sinde dizin oluşturma](mongodb-indexing.md)

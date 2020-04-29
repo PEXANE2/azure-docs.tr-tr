@@ -1,5 +1,5 @@
 ---
-title: Belirli bir teklif API'si alın | Azure Marketi
+title: Belirli bir teklif API 'sini alma | Azure Marketi
 description: API, yayımcı ad alanı içinde belirtilen teklifi alır.
 author: dsindona
 ms.service: marketplace
@@ -8,24 +8,24 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: f2182ed2377a392f55af2c1f723be325bd518349
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255932"
 ---
 <a name="retrieve-a-specific-offer"></a>Belirli bir teklifi alma
 =========================
 
 > [!NOTE]
-> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
+> Bulut İş Ortağı Portalı API 'Leri iş ortağı merkezi ile tümleşiktir ve teklifleriniz iş ortağı merkezi 'ne geçirildikten sonra çalışmaya devam edecektir. Tümleştirme küçük değişiklikler sunar. İş Ortağı Merkezi 'ne geçişten sonra kodunuzun çalışmaya devam ettiğinden emin olmak için [bulut iş ortağı PORTALı API başvurusunda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
-Yayımcı ad alanında belirtilen teklifi alır.  
+Yayımcı ad alanı içinde belirtilen teklifi alır.  
 
-Ayrıca teklifin belirli bir sürümünü alabilir veya teklifi taslak, görünüm veya üretim yuvalarında alabilirsiniz. Bir yuva belirtilmemişse, varsayılan `draft`. Önizlemesi veya yayımlanmamış bir teklifi almaya çalışmak hataya `404 Not Found` neden olur.
+Teklifin belirli bir sürümünü de alabilir veya teklifi taslak, görünüm veya üretim yuvalarında alabilirsiniz. Bir yuva belirtilmemişse, varsayılan olur `draft`. Önizlenmedi veya yayımlanmayan bir teklifi alma girişimi, bir `404 Not Found` hatayla sonuçlanır.
 
 > [!WARNING]
-> Gizli tür alanları için gizli değerler bu API tarafından alınmaz.
+> Gizli dizi türü alanları için gizli değerler bu API tarafından alınmayacak.
 
 ``` http
     GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
@@ -43,18 +43,18 @@ Ayrıca teklifin belirli bir sürümünü alabilir veya teklifi taslak, görün�
 
 | **Adı**    | **Açıklama**                                                                          | **Veri türü** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId. Örneğin, Contoso                                                        | Dize        |
-| offerId     | Teklifi benzersiz olarak tanımlayan guid.                                                 | Dize        |
-| version     | Teklifin sürümü alınıyor. Varsayılan olarak, en son teklif sürümü alınır. | Tamsayı       |
-| tembellik      | Teklifin alınabileceği yuva aşağıdakilerden biri olabilir:      <br/>  - `Draft`(varsayılan) şu anda taslakta bulunan teklif sürümünü alır.  <br/>  -  `Preview`şu anda önizlemede bulunan teklif sürümünü alır.     <br/>  -  `Production`şu anda üretimde olan teklif sürümünü alır.          |      enum |
-| api-sürümü | API'nin en son sürümü                                                                    | Tarih          |
+| PublisherId | publisherID. Örneğin, contoso                                                        | Dize        |
+| OfferId     | Teklifi benzersiz bir şekilde tanımlayan GUID.                                                 | Dize        |
+| version     | Alınan teklifin sürümü. Varsayılan olarak, en son teklif sürümü alınır. | Tamsayı       |
+| SlotID      | Teklifin alınacağı yuva aşağıdakilerden biri olabilir:      <br/>  - `Draft`(varsayılan), şu anda taslak içinde olan teklif sürümünü alır.  <br/>  -  `Preview`Şu anda önizleme aşamasında olan teklif sürümünü alır.     <br/>  -  `Production`Şu anda üretimde olan teklif sürümünü alır.          |      enum |
+| api-sürümü | En son API sürümü                                                                    | Tarih          |
 |  |  |  |
 
 
 <a name="header"></a>Üst bilgi
 ------
 
-|  **Adı**          |   **Değer**            |
+|  **Adı**          |   **Deeri**            |
 |  ---------------   |  --------------        |
 |  İçerik Türü      | `application/json`     |
 |  Yetkilendirme     | `Bearer YOUR_TOKEN`    |
@@ -169,28 +169,28 @@ Ayrıca teklifin belirli bir sürümünü alabilir veya teklifi taslak, görün�
 ```
 
 
-### <a name="response-body-properties"></a>Yanıt gövde özellikleri
+### <a name="response-body-properties"></a>Yanıt gövdesi özellikleri
 
 |  **Adı**       |   **Açıklama**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
-|  teklifTypeId    | Teklif türünü tanımlar                                                                                                    |
-|  publisherId    | Yayıncının benzersiz tanımlayıcısı                                                                                              |
-|  durum         | Teklifin durumu. Olası değerler listesi için aşağıdaki [Teklif durumuna](#offer-status) bakın.                                  |
+|  Offertypeıd    | Teklifin türünü tanımlar                                                                                                    |
+|  PublisherId    | Yayımcının benzersiz tanımlayıcısı                                                                                              |
+|  durum         | Teklifin durumu. Olası değerler listesi için bkz. [teklif durumu](#offer-status) aşağıdaki.                                  |
 |  Kimlik             | Teklifi benzersiz bir şekilde tanımlayan GUID                                                                                         |
-|  version        | Teklifin geçerli sürümü. Sürüm özelliği istemci tarafından değiştirilemez. Her yayından sonra artımlı.    |
+|  version        | Teklifin geçerli sürümü. Sürüm özelliği istemci tarafından değiştirilemiyor. Her yayımladıktan sonra artırılır.    |
 |  tanım     | İş yükünün gerçek tanımı                                                                                               |
-|  değiştirilenZaman    | Teklifin en son değiştirildiğinde UTC tarih saati                                                                                   |
+|  changedTime    | Teklifin en son değiştirildiği UTC tarih saati                                                                                   |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
-| **Kod**  | **Açıklama**                                                                                                                 |
+| **Kodudur**  | **Açıklama**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`- İstek başarıyla işlendi ve yayımcı kapsamındaki tüm teklifler istemciye iade edildi.               |
-|  400      | `Bad/Malformed request`- Hata yanıt gövdesi daha fazla bilgi içerebilir.                                                 |
-|  403      | `Forbidden`- İstemcinin belirtilen ad alanına erişimi yoktur.                                                        |
-|  404      | `Not found`- Belirtilen varlık yok. İstemci publisherId, offerId ve sürümü (belirtilmişse) kontrol etmelidir.      |
+|  200      | `OK`-İstek başarıyla işlendi ve yayımcının altındaki tüm teklifler istemciye geri döndü.               |
+|  400      | `Bad/Malformed request`-Hata yanıtı gövdesinde daha fazla bilgi bulunabilir.                                                 |
+|  403      | `Forbidden`-İstemcinin belirtilen ad alanına erişimi yok.                                                        |
+|  404      | `Not found`-Belirtilen varlık yok. İstemci, PublisherId, OfferId ve sürümü (belirtilmişse) denetlemelidir.      |
 |  |  |
 
 
@@ -198,11 +198,11 @@ Ayrıca teklifin belirli bir sürümünü alabilir veya teklifi taslak, görün�
 
 |  **Adı**                   |   **Açıklama**                             |
 | --------------------------- |  -------------------------------------------- |
-|  Hiç Yayınlanmadı             | Teklif hiç yayınlanmadı.               |
-|  Başlatılmama                 | Teklif yeni dir, ancak başlanmaz.              |
-|  WaitingForPublisherReview  | Teklif yayıncının onayını bekliyor.      |
+|  Neveryayınlandı             | Teklif hiç yayımlanmadı.               |
+|  NotStarted                 | Teklif yenidir ancak başlatılmamış.              |
+|  WaitingForPublisherReview  | Teklif, yayımcı onayını bekliyor.      |
 |  Çalışıyor                    | Teklif gönderimi işleniyor.          |
-|  Başarılı oldu                  | Teklif gönderimi işlemi tamamlandı.    |
-|  İptal edildi                   | Teklif sunumu iptal edildi.                |
-|  Başarısız                     | Teklif gönderme başarısız oldu.                      |
+|  Başarılı oldu                  | Teklif gönderimi işlemeyi tamamladı.    |
+|  İptal edildi                   | Teklif Gönderimi iptal edildi.                |
+|  Başarısız                     | Teklif gönderimi başarısız oldu.                      |
 |  |  |

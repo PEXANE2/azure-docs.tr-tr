@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254317"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Öğretici: Azure CDN önbelleğe alma kurallarını ayarlama
 
 > [!NOTE] 
-> Önbelleğe alma kuralları yalnızca **Akamai profillerinden** Verizon ve Azure **CDN Standard'dan Azure CDN Standardı** için kullanılabilir. **Microsoft profillerinden Azure CDN için,** **Verizon profillerinden Azure CDN Premium** için Standart kurallar [altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer işlevler için **Yönet** portalındaki Verizon Premium [kuralları altyapısını](cdn-rules-engine.md) kullanmanız gerekir.
+> Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Microsoft profillerinin Azure CDN** Için, Verizon profiller **'den Azure CDN Premium** için [standart kurallar altyapısını](cdn-standard-rules-engine-reference.md) kullanmanız gerekir, benzer Işlevler için **Manage** Portal 'daki [Verizon Premium Rules altyapısını](cdn-rules-engine.md) kullanmanız gerekir.
  
 
 Bu öğreticide, Azure Content Delivery Network (CDN) önbelleğe alma kurallarını kullanarak varsayılan önbellek süre sonu davranışının hem genel olarak hem de URL yolu ve dosya uzantısı gibi özel koşullarla ayarlanması veya değiştirilmesi açıklanmıştır. Azure CDN iki tür önbelleğe alma kuralı sağlar:
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Content Delivery Network (CDN) önbelleğe alma kurallar�
 
 - Özel önbelleğe alma kuralları: Profilinizdeki her uç nokta için bir veya daha fazla özel önbelleğe alma kuralı ayarlayabilirsiniz. Özel önbelleğe alma kuralları ayarlandığında belirli yollar ve dosya uzantılarıyla eşleşir, sırasıyla işlenir ve genel önbelleğe alma kuralını geçersiz kılar. 
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Önbelleğe alma kuralları sayfasını açın.
 > - Genel önbelleğe alma kuralı oluşturun.

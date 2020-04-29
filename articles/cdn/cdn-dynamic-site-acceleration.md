@@ -1,6 +1,6 @@
 ---
-title: Azure CDN ile dinamik site hızlandırma
-description: Azure CDN, dinamik içeriğe sahip dosyalar için dinamik site hızlandırma (DSA) optimizasyonunu destekler.
+title: Azure CDN aracılığıyla dinamik site hızlandırma
+description: Azure CDN dinamik içerik içeren dosyalar için dinamik site hızlandırma (DSA) iyileştirmesini destekler.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,175 +15,175 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253841"
 ---
-# <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN ile dinamik site hızlandırma
+# <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN aracılığıyla dinamik site hızlandırma
 
-Sosyal medya, elektronik ticaret ve hiper-kişiselleştirilmiş web patlama ile, son kullanıcılara sunulan içeriğin hızla artan bir yüzdesi gerçek zamanlı olarak oluşturulur. Kullanıcılar tarayıcılarından, konumlarından, aygıtlarından veya ağlarından bağımsız olarak hızlı, güvenilir ve kişiselleştirilmiş bir web deneyimi beklerler. Ancak, bu deneyimleri bu kadar ilgi çekici hale çok yenilikler de yavaş sayfa indirme ve risk tüketici deneyimi nin kalitesini koymak. 
+Sosyal medya, elektronik ticaret ve hiper kişiselleştirilmiş Web 'in açılımını yaparken son kullanıcılara sunulan içeriğin hızlı bir şekilde artması gerçek zamanlı olarak oluşturulur. Kullanıcılar tarayıcıdan, konumundan, cihazından veya ağından bağımsız olarak hızlı, güvenilir ve kişiselleştirilmiş bir Web deneyimi bekler. Bununla birlikte, bu deneyimlerin büyük bir bölümünü de yavaşlatan ve tüketici deneyiminin kalitesini riske önünde bulundurmaya yönelik yenilikler. 
 
-Standart içerik teslim ağı (CDN) özelliği, statik dosyaların teslimini hızlandırmak için dosyaları son kullanıcılara daha yakın önbelleğe alabilme özelliğini içerir. Ancak, dinamik web uygulamalarıyla, sunucu kullanıcı davranışına yanıt olarak içeriği oluşturduğundan, kenar konumlarında bu içeriğin önbelleğe alınmış olması mümkün değildir. Bu tür içeriğin teslimini hızlandırmak geleneksel kenar önbelleğe almaktan daha karmaşıktır ve başlangıçtan teslimata kadar tüm veri yolu boyunca her öğeyi ince bir şekilde ayarlayan uçtan uca bir çözüm gerektirir. Azure CDN dinamik site hızlandırma (DSA) optimizasyonu ile dinamik içeriğe sahip web sayfalarının performansı ölçülebilir şekilde artırılır.
+Standart Content Delivery Network (CDN) özelliği, statik dosyaların teslimini hızlandırmak için son kullanıcılara daha yakın olan dosyaları önbelleğe alma özelliğini içerir. Ancak, dinamik Web uygulamaları ile, sunucu içeriği kullanıcı davranışına yanıt olarak oluşturduğundan, bu içeriğin kenar konumlarında önbelleğe alınması mümkün değildir. Bu tür içeriğin tesliminin hızlandırılmış olması geleneksel kenarından daha karmaşıktır ve her bir öğeyi, veri yolunun tamamına yönelik olarak bir bütün olarak ayrıntılı bir şekilde kontrol eden uçtan uca bir çözüm gerektirir. Azure CDN dinamik site hızlandırma (DSA) iyileştirmesi sayesinde, dinamik içeriğe sahip Web sayfalarının performansı yaşamları geliştirildi.
 
-**Akamai'den Azure CDN** ve **Verizon'dan Azure CDN,** uç nokta oluşturma sırasında **Optimize edilmiş** menü aracılığıyla DSA optimizasyonu sunar. Microsoft'tan dinamik site [ivmesi Azure Ön Kapı Hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview)ile sunulmaktadır.
+**Verizon 'Den** Akamai ve Azure CDN **'tan Azure CDN** , uç nokta oluşturma sırasında **iyileştirilmiş for** Menu aracılığıyla dsa iyileştirmesi sunar. Microsoft 'un dinamik site ivmesi, [Azure ön kapı hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview)aracılığıyla sunulur.
 
 > [!Important]
-> **Akamai profillerinden Azure CDN** için, oluşturulduktan sonra bir CDN bitiş noktasının optimizasyonunu değiştirebilirsiniz.
+> **Akamai profillerden Azure CDN** için, oluşturulduktan sonra bir CDN uç noktasının iyileştirmesini değiştirmenize izin verilir.
 >   
 > **Verizon Azure CDN** profilleri için, bir CDN uç noktası oluşturulduktan sonra uç nokta iyileştirmesini değiştiremezsiniz.
 
-## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>Dinamik dosyaların teslimini hızlandırmak için CDN uç nokta yapılandırması
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>Dinamik dosyaların teslimini hızlandırmak için CDN uç noktası yapılandırması
 
-Dinamik dosyaların teslimini en iyi duruma getirmek için bir CDN bitiş noktası yapılandırmak için, aynı şeyi programlı olarak yapmak için Azure portalını, REST API'lerini veya istemci SDK'larından herhangi birini kullanabilirsiniz. 
+Dinamik dosyaların teslimini iyileştirmek üzere bir CDN uç noktası yapılandırmak için Azure portal, REST API 'Lerini veya istemci SDK 'larından herhangi birini, programlama yoluyla aynı şeyi yapmak için kullanabilirsiniz. 
 
-**Azure portalını kullanarak DSA optimizasyonu için bir CDN bitiş noktası yapılandırmak için:**
+**Azure portal kullanarak DSA iyileştirmesi için bir CDN uç noktası yapılandırmak için:**
 
-1. **CDN profil** sayfasında **Bitiş Noktası'nı**seçin.
+1. **CDN profili** sayfasında **uç nokta**' ı seçin.
 
-   ![Yeni bir CDN bitiş noktası ekleme](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
+   ![Yeni bir CDN uç noktası ekle](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
    **Uç nokta ekleyin** bölmesi görünür.
 
-2. **Için Optimize Edilmiş**altında, Dinamik site **ivmeseçin.**
+2. **Için iyileştirilmiş**altında, **dinamik site hızlandırma**' yi seçin.
 
-    ![DSA ile yeni bir CDN bitiş noktası oluşturma](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
+    ![DSA ile yeni bir CDN uç noktası oluşturma](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. **Sonda yolu**için, bir dosyaya geçerli bir yol girin.
+3. **Araştırma yolu**için, bir dosyaya geçerli bir yol girin.
 
-    Sonda yolu DSA'ya özgü bir özelliktir ve oluşturma için geçerli bir yol gereklidir. DSA, CDN için ağ yönlendirme yapılandırmalarını optimize etmek için kaynak sunucuya yerleştirilen küçük bir *sonda yolu* dosyası kullanır. Sonda yolu dosyası için örnek dosyayı indirip sitenize yükleyebilir veya kaynağınızda yaklaşık 10 KB boyutunda olan varolan bir varlığı kullanabilirsiniz.
+    Araştırma yolu, DSA 'ya özgü bir özelliktir ve oluşturma için geçerli bir yol gereklidir. DSA, CDN için ağ yönlendirme yapılandırmasını iyileştirmek üzere kaynak sunucuya yerleştirilmiş küçük bir *araştırma yolu* dosyası kullanır. Araştırma yolu dosyası için, örnek dosyayı karşıdan yükleyebilir ve sitenizde karşıya yükleyebilir veya kaynak üzerinde yaklaşık 10 KB boyutunda olan mevcut bir varlığı kullanabilirsiniz.
 
-4. Diğer gerekli bitiş noktası seçeneklerini girin (daha fazla bilgi için bkz. [yeni CDN bitiş noktası oluştur),](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)sonra **Ekle'yi**seçin.
+4. Diğer gerekli uç nokta seçeneklerini girin (daha fazla bilgi için bkz. [Yeni BIR CDN uç noktası oluşturma](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) ve ardından **Ekle**' yi seçin.
 
-   CDN bitiş noktası oluşturulduktan sonra, belirli ölçütlerle eşleşen tüm dosyalar için DSA optimizasyonları uygular. 
+   CDN uç noktası oluşturulduktan sonra, belirli ölçütlerle eşleşen tüm dosyalar için DSA iyileştirmeleri uygular. 
 
 
-**DSA için varolan bir bitiş noktasını yapılandırmak için (yalnızca Akamai profillerinden Azure CDN):**
+**DSA için var olan bir uç noktayı yapılandırmak için (yalnızca Akamai profillerinden Azure CDN):**
 
-1. **CDN profil** sayfasında, değiştirmek istediğiniz bitiş noktasını seçin.
+1. **CDN profili** sayfasında, değiştirmek istediğiniz uç noktayı seçin.
 
-2. Sol bölmeden **Optimizasyon'u**seçin. 
+2. Sol bölmeden **iyileştirme**' yi seçin. 
 
-   **Optimizasyon** sayfası görüntülenir.
+   **İyileştirme** sayfası görüntülenir.
 
-3. **Için Optimize Edilmiş**, Dinamik site **ivmeseçin,** sonra **Kaydet'i**seçin.
+3. **Için iyileştirilmiş**altında, **dinamik site hızlandırma**' yı seçin ve ardından **Kaydet**' i seçin.
 
 > [!Note]
-> DSA ek ücrete tabidir. Daha fazla bilgi için [İçerik Dağıtım Ağı fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/)için bkz.
+> DSA ek ücretler doğurur. Daha fazla bilgi için bkz. [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
 
-## <a name="dsa-optimization-using-azure-cdn"></a>Azure CDN kullanarak DSA Optimizasyonu
+## <a name="dsa-optimization-using-azure-cdn"></a>Azure CDN kullanarak DSA Iyileştirmesi
 
-Azure CDN'deki Dinamik Site Hızlandırma, aşağıdaki teknikleri kullanarak dinamik varlıkların teslimini hızlandırAr:
+Azure CDN dinamik site hızlandırma, aşağıdaki teknikleri kullanarak dinamik varlıkların teslimini hızlandırır:
 
--   [Rota optimizasyonu](#route-optimization)
--   [TCP optimizasyonları](#tcp-optimizations)
--   [Nesne ön alma (Yalnızca Akamai'den Azure CDN)](#object-prefetch-azure-cdn-from-akamai-only)
--   [Uyarlanabilir görüntü sıkıştırma (Yalnızca Akamai'den Azure CDN)](#adaptive-image-compression-azure-cdn-from-akamai-only)
+-   [Rota iyileştirmesi](#route-optimization)
+-   [TCP iyileştirmeleri](#tcp-optimizations)
+-   [Nesne önceden getirme (yalnızca Akamai 'tan Azure CDN)](#object-prefetch-azure-cdn-from-akamai-only)
+-   [Uyarlamalı görüntü sıkıştırma (yalnızca Akamai 'tan Azure CDN)](#adaptive-image-compression-azure-cdn-from-akamai-only)
 
-### <a name="route-optimization"></a>Rota Optimizasyonu
+### <a name="route-optimization"></a>Rota Iyileştirmesi
 
-Rota optimizasyonu önemlidir, çünkü Internet, trafiğin ve geçici kesintilerin ağ topolojisini sürekli olarak değiştirdiği dinamik bir yerdir. Border Gateway Protocol (BGP), Internet'in yönlendirme protokolüdür, ancak aracı Lık Noktası (PoP) sunucuları aracılığıyla daha hızlı yollar olabilir. 
+Internet 'Te dinamik bir yerde olduğu için yol iyileştirmesi önemlidir çünkü trafik ve geçici olarak kesintiler ağ topolojisini sürekli olarak değiştirir. Sınır Ağ Geçidi Protokolü (BGP), Internet 'in yönlendirme protokolüdür, ancak ara sunucu noktası (PoP) sunucuları aracılığıyla daha hızlı yollar olabilir. 
 
-Rota optimizasyonu, bir sitenin sürekli olarak erişilebilir olması ve dinamik içeriğin mümkün olan en hızlı ve en güvenilir rota üzerinden son kullanıcılara iletilmesi için menşee giden en uygun yolu seçer. 
+Yol iyileştirme, bir sitenin sürekli olarak erişilebilir olması ve dinamik içeriğin en hızlı ve en güvenilir yol aracılığıyla son kullanıcılara teslim edilmesi için en iyi kaynak yolunu seçer. 
 
-Akamai ağı, gerçek zamanlı veri toplamak ve Akamai sunucusundaki farklı düğümler üzerinden çeşitli yolları karşılaştırmak için teknikler ve kaynak ile CDN kenarı arasındaki en hızlı rotayı belirlemek için açık Internet üzerinden varsayılan BGP rotasını kullanır. Bu teknikler Internet tıkanıklık noktaları ve uzun yolları önlemek. 
+Akamai ağı, gerçek zamanlı verileri toplamak ve Akamai sunucusundaki farklı düğümler aracılığıyla çeşitli yolları karşılaştırmak ve kaynak ile CDN kenarı arasındaki en hızlı yolu belirleyebilmek için açık Internet genelinde varsayılan BGP yolunu kullanmak için teknikler kullanır. Bu teknikler, Internet tıkanıklık noktalarından ve uzun yolların oluşmasını önler. 
 
-Benzer şekilde, Verizon ağı, istemciden menşee en iyi veri yönlendirmek için en iyi ağ geçitlerini belirlemek için Anycast DNS, yüksek kapasiteli destek POP'ları ve sistem durumu denetimlerinin bir birleşimini kullanır.
+Benzer şekilde, Verizon ağı, istemciden kaynağa en iyi şekilde veri yönlendirmekte olan en iyi ağ geçitlerini tespit etmek için DNS, yüksek kapasiteli destek pop 'Ları ve sistem durumu denetimlerinin bir birleşimini kullanır.
  
-Sonuç olarak, tam dinamik ve işlemsel içerik, önbelleğe alınamamış olsa bile son kullanıcılara daha hızlı ve daha güvenilir bir şekilde teslim edilir. 
+Sonuç olarak, tamamen dinamik ve işlem içeriği, son kullanıcılara önbelleklenebilir olsa bile daha hızlı ve güvenilir bir şekilde dağıtılır. 
 
-### <a name="tcp-optimizations"></a>TCP Optimizasyonları
+### <a name="tcp-optimizations"></a>TCP Iyileştirmeleri
 
-İletim Kontrol Protokolü (TCP), IP ağındaki uygulamalar arasında bilgi sağlamak için kullanılan Internet protokol paketinin standardıdır.  Varsayılan olarak, bir TCP bağlantısı kurmak için birkaç ileri ve geri istek ve ağ tıkanıklıklarını önlemek için sınırlar gereklidir ve bu da ölçekte verimsizliklere neden olur. **Akamai'den Azure CDN** bu sorunu üç alanda en iyi duruma alarak işler: 
+İletim Denetimi Protokolü (TCP), bir IP ağındaki uygulamalar arasında bilgi sağlamak için kullanılan Internet Protokolü paketinin standardıdır.  Varsayılan olarak, bir TCP bağlantısı kurmak için birkaç geri ve geriye yönelik istek gerekir ve ağ bağlantılarını önlemek için sınırlar, verimsizlikleri ile sonuçlanır. **Akamai öğesinden Azure CDN** , bu sorunu üç alanda iyileştirerek işler: 
 
- - [TCP yavaş başlangıcı ortadan kaldırma](#eliminating-tcp-slow-start)
- - [Kalıcı bağlantılardan yararlanma](#leveraging-persistent-connections)
- - [TCP paket parametrelerini tuning](#tuning-tcp-packet-parameters)
+ - [TCP yavaş başlangıcını ortadan kaldırma](#eliminating-tcp-slow-start)
+ - [Kalıcı bağlantıları kullanma](#leveraging-persistent-connections)
+ - [TCP paket parametrelerini ayarlama](#tuning-tcp-packet-parameters)
 
-#### <a name="eliminating-tcp-slow-start"></a>TCP yavaş başlangıcı ortadan kaldırma
+#### <a name="eliminating-tcp-slow-start"></a>TCP yavaş başlangıcını ortadan kaldırma
 
-TCP *yavaş başlatma,* ağ üzerinden gönderilen veri miktarını sınırlayarak ağ tıkanıklığını önleyen TCP protokolünün bir algoritmasıdır. En fazla ulaşılana veya paket kaybı algılanıncaya kadar gönderen ve alıcı arasındaki küçük tıkanıklık penceresi boyutlarıyla başlar.
+TCP *yavaş başlangıç* , ağ üzerinden gönderilen veri miktarını sınırlayarak ağ tıkanıklığını önleyen TCP protokolünün bir algoritmasıdır. En fazla ulaşılıncaya veya paket kaybı saptanana kadar gönderici ve alıcı arasındaki küçük tıkanıklık pencere boyutları ile başlatılır.
 
- **Akamai'nin** hem de **Verizon profillerinden Azure CDN'nin** Azure CDN'i, TCP'nin aşağıdaki üç adımla yavaş başlamasını ortadan kaldırır:
+ Akamai **Azure CDN ve Verizon profillerden** **Azure CDN** her ikisi de, aşağıdaki üç adımla TCP yavaş başlangıcını ortadan kaldırır:
 
-1. Kenar PoP sunucuları arasındaki bağlantıların bant genişliğini ölçmek için sistem durumu ve bant genişliği izleme kullanılır.
+1. Durum ve bant genişliği izleme, uç PoP sunucuları arasındaki bağlantı bant genişliğini ölçmek için kullanılır.
     
-2. Ölçümler kenar PoP sunucuları arasında paylaşılır, böylece her sunucu ağ koşullarından ve çevrelerindeki diğer PoP'ların sunucu sağlığından haberdar olur.  
+2. Ölçümler, uç PoP sunucuları arasında paylaşılır, böylece her bir sunucu, çevresindeki diğer pop 'ların ağ koşullarını ve sunucu sistem durumunu algılar.  
     
-3. CDN kenar sunucuları, yakınlığındaki diğer CDN kenar sunucularıyla iletişim kurarken en uygun pencere boyutunun ne olması gerektiği gibi bazı aktarım parametreleri hakkında varsayımlarda bulunur. Bu adım, CDN kenar sunucuları arasındaki bağlantının durumu daha yüksek paket veri aktarımları yeteneğine sahipse, ilk tıkanıklık penceresi boyutunun artırılabildiği anlamına gelir.  
+3. CDN Edge sunucuları, yakındaki diğer CDN Edge sunucularıyla iletişim kurarken en iyi pencere boyutu gibi bazı iletim parametreleri hakkında varsayımlar yapar. Bu adım, CDN Edge sunucuları arasındaki bağlantının sistem durumunun daha yüksek paket veri aktarımları kapasitesine sahip olması durumunda ilk sıkışıklık penceresi boyutunun arttığı anlamına gelir.  
 
-#### <a name="leveraging-persistent-connections"></a>Kalıcı bağlantılardan yararlanma
+#### <a name="leveraging-persistent-connections"></a>Kalıcı bağlantıları kullanma
 
-CDN kullanarak, doğrudan kaynağınıza bağlanan kullanıcılarla karşılaştırıldığında, doğrudan başlangıç sunucunuza daha az benzersiz makine bağlanır. Azure CDN ayrıca, kullanıcı isteklerini bir araya getirarak kaynakla daha az bağlantı kurmayı da sağlar.
+CDN kullanarak, daha az benzersiz makine, doğrudan başlangıç kaynağınıza bağlanan kullanıcılarla karşılaştırıldığında, kaynak sunucunuza doğrudan bağlanır. Azure CDN Ayrıca, Origin ile daha az bağlantı kurmak için Kullanıcı isteklerini birbirine da havuzlar.
 
-Daha önce de belirtildiği gibi, bir TCP bağlantısı kurmak için birkaç el sıkışma isteği gereklidir. `Keep-Alive` HTTP üstbilgitarafından uygulanan kalıcı bağlantılar, gidiş-dönüş sürelerinden tasarruf etmek ve teslimatı hızlandırmak için birden çok HTTP isteği için varolan TCP bağlantılarını yeniden kullanır. 
+Daha önce belirtildiği gibi, TCP bağlantısı kurmak için birkaç el sıkışma isteği gerekir. `Keep-Alive` Http üst bilgisi tarafından uygulanan kalıcı bağlantılar, gidiş dönüş sürelerini kaydetmek ve teslimi hızlandırmak için bırden çok http isteği IÇIN mevcut TCP bağlantılarını yeniden kullanır. 
 
-**Verizon'daki Azure CDN,** açık bir bağlantının kapatılmasını önlemek için TCP bağlantısı üzerinden düzenli olarak canlı tutulan paketler gönderir.
+Ayrıca, **Verizon ' dan Azure CDN** , açık bir bağlantının kapatılmasını önlemek için TCP bağlantısı üzerinden düzenli canlı tutma paketleri gönderir.
 
-#### <a name="tuning-tcp-packet-parameters"></a>TCP paket parametrelerini tuning
+#### <a name="tuning-tcp-packet-parameters"></a>TCP paket parametrelerini ayarlama
 
-**Akamai'den Azure CDN,** sunucudan sunucuya bağlantıları yöneten parametreleri inceler ve siteye katıştıedilen içeriği almak için gereken uzun mesafeli tur yolculuklarının miktarını aşağıdaki teknikleri kullanarak azaltır:
+**Akamai** , sunucudan sunucuya bağlantıları yöneten parametreleri ve aşağıdaki teknikleri kullanarak siteye katıştırılmış içerik almak için gereken uzun mesafe gidiş dönüş miktarını azaltır: Azure CDN
 
-- Daha fazla paket onay beklemeden gönderilebilir böylece ilk tıkanıklık penceresi artırılması.
-- Bir kayıp algılansın ve yeniden iletim daha hızlı gerçekleşir, böylece ilk yeniden iletim zaman dışarısı azalır.
-- Paketlerin iletimde kaybolduğunu varsaymadan önce bekleme süresini azaltmak için minimum ve maksimum yeniden iletim süresini azaltmak.
+- Bildirim beklemeden daha fazla paket gönderilebilmeleri için ilk sıkışıklık penceresini artırma.
+- Bir kaybı tespit etmek ve yeniden iletim daha hızlı gerçekleşmesini sağlamak için ilk yeniden aktarım zaman aşımını azaltma.
+- Paketlerin iletimde kaybedilmeden önce bekleme süresini azaltmak için en düşük ve en fazla yeniden iletim zaman aşımını azaltma.
 
-### <a name="object-prefetch-azure-cdn-from-akamai-only"></a>Nesne ön alma (Yalnızca Akamai'den Azure CDN)
+### <a name="object-prefetch-azure-cdn-from-akamai-only"></a>Nesne önceden getirme (yalnızca Akamai 'tan Azure CDN)
 
-Web sitelerinin çoğu, resimler ve komut dosyaları gibi çeşitli kaynaklara başvuran bir HTML sayfasından oluşur. Genellikle, bir istemci bir web sayfası istediğinde, tarayıcı önce HTML nesnesini karşıdan yükler ve ayrıştırır ve ardından sayfayı tam olarak yüklemek için gereken bağlantılı varlıklara ek isteklerde bulundur. 
+Çoğu Web sitesi, görüntüler ve betikler gibi çeşitli diğer kaynaklara başvuran bir HTML sayfasından oluşur. Genellikle, bir istemci bir Web sayfası istediğinde, tarayıcı ilk olarak HTML nesnesini indirir ve ayrıştırır ve ardından sayfanın tam olarak yüklenmesi için gereken bağlantılı varlıklara ek istekler yapar. 
 
-*Prefetch,* HTML tarayıcıya sunulurken ve tarayıcı bu nesne isteklerini yapmadan önce HTML sayfasına katıştırılmış görüntüleri ve komut dosyalarını almak için bir tekniktir. 
+*Önceden getirme* , HTML TARAYıCıYA sunulduğunda HTML sayfasına eklenen görüntüleri ve betikleri alma tekniğidir ve tarayıcı bu nesne isteklerini bile yapar. 
 
-CDN'nin HTML temel sayfasını istemcinin tarayıcısına sunduğu anda ön getirme seçeneği açıkken, CDN HTML dosyasını ayrıştırır ve bağlantılı kaynaklar için ek isteklerde bulunarak önbelleğinde saklar. İstemci bağlı varlıklar için isteklerde bulununca, CDN kenar sunucusu zaten istenen nesnelere sahiptir ve kaynağına gidiş-dönüş olmadan bunları hemen hizmet edebilir. Bu en iyi duruma getirilmesi hem önbelleğe çıkarılabilir hem de önbelleğe alamayan içeriğe yarar sağlar.
+CDN, istemci tarayıcısına HTML temel sayfasını sunan zamanda önceden getirme seçeneği açık durumdayken, CDN, HTML dosyasını ayrıştırır ve bağlı kaynaklar için ek istekler yapar ve onu önbelleğinde depolar. İstemci bağlantılı varlıklar için istekleri yaptığında, CDN Edge sunucusu zaten istenen nesnelere sahiptir ve kaynağa gidiş dönüş olmadan hemen sunabilir. Bu iyileştirme hem önbelleklenebilir hem de Önbelleklenmemiş içerik avantajlarına sahiptir.
 
-### <a name="adaptive-image-compression-azure-cdn-from-akamai-only"></a>Uyarlanabilir görüntü sıkıştırma (Yalnızca Akamai'den Azure CDN)
+### <a name="adaptive-image-compression-azure-cdn-from-akamai-only"></a>Uyarlamalı görüntü sıkıştırma (yalnızca Akamai 'tan Azure CDN)
 
-Bazı cihazlar, özellikle mobil cihazlar, zaman zaman daha yavaş ağ hızları yaşar. Bu senaryolarda, kullanıcının tam çözünürlüklü görüntüler için uzun süre beklemekyerine web sayfalarında daha hızlı küçük görüntüler alması daha yararlıdır.
+Özellikle de mobil cihazlarda bazı cihazlar, zaman zaman daha yavaş ağ hızları yaşar. Bu senaryolarda, kullanıcının Web sayfasında daha küçük resimleri daha hızlı bir şekilde, tam çözünürlüklü görüntüler için uzun süre beklemek yerine daha hızlı alması daha faydalıdır.
 
-Bu özellik ağ kalitesini otomatik olarak izler ve ağ hızları teslimat süresini artırmak için daha yavaş olduğunda standart JPEG sıkıştırma yöntemlerikullanır.
+Bu özellik ağ kalitesini otomatik olarak izler ve dağıtım süresini geliştirmek için Ağ hızları yavaşsa standart JPEG sıkıştırma yöntemlerini kullanır.
 
-Adaptif Görüntü Sıkıştırma | Dosya Uzantıları  
+Uyarlamalı görüntü sıkıştırma | Dosya uzantıları  
 --- | ---  
-JPEG sıkıştırma | .jpg, .jpeg, .jpe, .jig, .jgig, .jgi
+JPEG sıkıştırması | . jpg,. jpeg,. jpe,. JIG,. JGB,. jgi
 
 ## <a name="caching"></a>Önbelleğe alma
 
-DSA ile önbelleğe alma, başlangıç yanıtında `Cache-Control` veya `Expires` üstbilgiiçerse bile CDN'de varsayılan olarak kapatılır. DSA genellikle, her istemciye özgü olduğu için önbelleğe alınmaması gereken dinamik varlıklar için kullanılır. Önbelleğe alma bu davranışı bozabilir.
+DSA ile, yanıtta kaynak dahil `Cache-Control` veya `Expires` üst bilgiler de dahil olmak üzere CDN 'de varsayılan olarak önbelleğe alma kapalıdır. DSA tipik olarak, her bir istemciye benzersiz olduklarından önbelleğe alınmamalıdır dinamik varlıklar için kullanılır. Önbelleğe alma, bu davranışı bozabilir.
 
-Statik ve dinamik varlıkların bir karışımı ile bir web sitesi varsa, en iyi performansı elde etmek için hibrid bir yaklaşım almak en iyisidir. 
+Statik ve dinamik varlıkların karışımına sahip bir Web siteniz varsa, en iyi performansı elde etmek için bir karma yaklaşım yapmanız en iyisidir. 
 
-**Akamai profillerinden** Verizon ve Azure CDN **Standard'dan Azure CDN Standardı** için [önbelleğe alma kurallarını](cdn-caching-rules.md)kullanarak belirli DSA uç noktaları için önbelleğe alma açabilirsiniz.
+Verizon **Azure CDN ve Akamai profillerden standart** **Azure CDN Standart** için, [önbelleğe alma kurallarını](cdn-caching-rules.md)kullanarak belirli dsa uç noktaları için önbelleğe almayı etkinleştirebilirsiniz.
 
 Önbelleğe alma kurallarına erişmek için:
 
-1. **CDN profil** sayfasından, ayarlar altında **Önbelleğe Alma kurallarını**seçin.  
+1. **CDN profili** sayfasında, ayarlar altında, **önbelleğe alma kuralları**' nı seçin.  
     
     ![CDN Önbelleğe alma kuralları düğmesi](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
-    **Önbelleğe Alma kuralları** sayfası açılır.
+    **Önbelleğe alma kuralları** sayfası açılır.
 
-2. DSA bitiş noktanız için önbelleğe alma açmak için genel veya özel önbelleğe alma kuralı oluşturun. 
+2. DSA uç noktanız için önbelleğe almayı açmak üzere genel veya özel bir önbelleğe alma kuralı oluşturun. 
 
-**Yalnızca Verizon profillerinden Azure CDN Premium** için, kurallar altyapısını kullanarak belirli DSA uç noktaları için önbelleğe alma'yı açarsınız. [rules engine](cdn-rules-engine.md) Oluşturulan tüm kurallar, profilinizin yalnızca DSA için optimize edilmiş uç noktalarını etkiler. 
+Yalnızca **Verizon profillerinin Azure CDN Premium** için, [kurallar ALTYAPıSıNı](cdn-rules-engine.md)kullanarak belirli dsa uç noktaları için önbelleğe almayı açın. Oluşturulan tüm kurallar, yalnızca DSA için iyileştirilmiş olan profilinizin uç noktalarını etkiler. 
 
-Kurallar motoruna erişmek için:
+Kural altyapısına erişmek için:
     
-1. **CDN profil** sayfasından **Yönet'i**seçin.  
+1. **CDN profili** sayfasında **Yönet**' i seçin.  
     
-    ![CDN profil yönetme düğmesi](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
+    ![CDN profili Yönet düğmesi](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     CDN yönetim portalı açılır.
 
-2. CDN yönetim portalından **ADN'yi**seçin, ardından **Kurallar Motoru'nu**seçin. 
+2. CDN yönetim portalından **ADN**' yi ve ardından **Rules Engine**' i seçin. 
 
-    ![DSA için kurallar motoru](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
+    ![DSA için kural altyapısı](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
 
 
-Alternatif olarak, iki CDN uç noktası kullanabilirsiniz: dinamik varlıkları sunmak için DSA ile optimize edilmiş bir uç nokta ve genel web teslimi gibi statik optimizasyon türüyle optimize edilmiş başka bir uç nokta, önbelleğe alınabilir varlıklara. Web sayfası URL'lerinizi, kullanmayı planladığınız CDN bitiş noktasındaki varlığa doğrudan bağlantı vermek için değiştirin. 
+Alternatif olarak, iki CDN uç noktası kullanabilirsiniz: DSA ile en iyi duruma getirilmiş bir uç nokta, dinamik varlıklar ve genel web teslimi gibi bir statik iyileştirme türü ile iyileştirilmiş başka bir uç nokta, önbelleğe alınabilir varlıkların teslim edilmesi için kullanılır. Web sayfası URL 'lerinizi, kullanmayı planladığınız CDN uç noktasındaki varlığa doğrudan bağlanacak şekilde değiştirin. 
 
-Örneğin: `mydynamic.azureedge.net/index.html` dinamik bir sayfadır ve DSA bitiş noktasından yüklenir.Html sayfası, JavaScript kitaplıkları veya statik CDN bitiş noktasından yüklenen görüntüler `mystatic.azureedge.net/banner.jpg` `mystatic.azureedge.net/scripts.js`gibi birden çok statik varlıktan başvurur. 
+Örneğin: `mydynamic.azureedge.net/index.html` dinamik bir sayfa ve dsa uç noktasından yüklenir.HTML sayfası, JavaScript kitaplıkları veya `mystatic.azureedge.net/banner.jpg` ve `mystatic.azureedge.net/scripts.js`gibi statik CDN uç noktasından yüklenen görüntüler gibi birden çok statik kıymete başvurur. 
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Uygulamaları Azure CLI ile bir ölçek kümesine yükleme
+title: Öğretici-Azure CLı ile bir ölçek kümesine uygulama yüklemesi
 description: Azure CLI kullanarak Özel Betik Uzantısı ile sanal makine ölçek kümelerine uygulama yükleme işleminin nasıl yapılacağını öğrenin
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 6faaa3bc5149d4245d026e6f91e358993e15421d
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011234"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümelerine uygulama yükleme
@@ -23,7 +23,7 @@ Bir ölçek kümesindeki sanal makine (VM) örneklerinde uygulamaları çalışt
 > * Azure Özel Betik Uzantısı’nı kullanma
 > * Ölçek kümesinde çalıştırılan bir uygulamayı güncelleştirme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -52,13 +52,13 @@ Geçerli kabuğunuzda *customConfig.json* adlı bir dosya oluşturup aşağıdak
 
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
-[az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+[az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Bu adımda [az vmss create](/cli/azure/vmss) ile bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, *myScaleSet*adlı bir ölçek kümesi oluşturur ve yoksa SSH anahtarları oluşturur:
+Bu adımda [az vmss create](/cli/azure/vmss) ile bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, *myScaleSet*adlı bir ölçek kümesi oluşturur ve yoksa SSH anahtarlarını oluşturur:
 
 ```azurecli-interactive
 az vmss create \

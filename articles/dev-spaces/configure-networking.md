@@ -1,82 +1,82 @@
 ---
-title: Azure Dev Alanları için ağ geliştirmeyi farklı ağ topolojilerinde yapılandırın
+title: Farklı ağ topolojilerinde Azure Dev Spaces için ağ yapılandırma
 services: azure-dev-spaces
 ms.date: 03/17/2020
 ms.topic: conceptual
-description: Azure Kubernetes Hizmetlerinde Azure Dev Alanları çalıştırmak için ağ gereksinimlerini açıklar
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, CNI, kubenet, SDN, ağ
+description: Azure Kubernetes hizmetlerinde Azure Dev Spaces çalıştırmaya yönelik ağ gereksinimlerini açıklar
+keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, CNı, kubenet, SDN, ağ
 ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262052"
 ---
-# <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Azure Dev Alanları için ağ geliştirmeyi farklı ağ topolojilerinde yapılandırın
+# <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Farklı ağ topolojilerinde Azure Dev Spaces için ağ yapılandırma
 
-Azure Geliştirme Alanları, varsayılan ağ yapılandırmasıyla Azure Kubernetes Hizmeti (AKS) kümelerinde çalışır. Kümeyi bir güvenlik duvarının arkasına koymak, ağ güvenlik gruplarını kullanmak veya ağ ilkelerini kullanmak gibi AKS kümenizin ağ yapılandırmasını değiştirmek istiyorsanız, Azure Dev Alanları çalıştırmak için ek hususlar da dahil etmeniz gerekir.
+Azure Dev Spaces, varsayılan ağ yapılandırmasıyla Azure Kubernetes Service (AKS) kümelerinde çalışır. Kümeyi bir güvenlik duvarının arkasına yerleştirme, ağ güvenlik gruplarını kullanma veya ağ ilkeleri kullanma gibi AKS kümenizin ağ yapılandırmasını değiştirmek istiyorsanız, Azure Dev Spaces çalıştırmak için ek hususlar eklemeniz gerekir.
 
 ![Sanal ağ yapılandırması](media/configure-networking/virtual-network-clusters.svg)
 
-## <a name="virtual-network-or-subnet-configurations"></a>Sanal ağ veya alt ağ yapılandırmaları
+## <a name="virtual-network-or-subnet-configurations"></a>Sanal ağ veya alt ağ yapılandırması
 
-AKS kümenizde, AKS kümeniziçin girişi veya çıkış trafiğini kısıtlamak için farklı bir sanal ağ veya alt ağ yapılandırması olabilir. Örneğin, kümeniz Azure Güvenlik Duvarı gibi bir güvenlik duvarının arkasında olabilir veya ağ trafiğini kısıtlamak için Ağ Güvenlik Grupları veya özel roller kullanabilirsiniz. [GitHub'daki Azure Dev Spaces örnek deposunda][sample-repo]örnek bir ağ yapılandırması bulabilirsiniz.
+AKS kümeniz, AKS kümeniz için giriş veya çıkış trafiğini kısıtlamak üzere farklı bir sanal ağ veya alt ağ yapılandırmasına sahip olabilir. Örneğin, kümeniz Azure Güvenlik Duvarı gibi bir güvenlik duvarının arkasında veya ağ trafiğini kısıtlamak için ağ güvenlik grupları veya özel roller kullanıyor olabilir. [GitHub üzerinde Azure dev Spaces örnek deposunda][sample-repo]örnek bir ağ yapılandırması bulabilirsiniz.
 
-Azure Dev Spaces'in *Giriş ve Çıkış* ağ trafiği nin yanı sıra Yalnızca *Giriş* trafiği için belirli gereksinimleri vardır. AKS kümenizin trafiğini kısıtlayan sanal ağ veya alt ağ yapılandırmasına sahip bir AKS kümesinde Azure Dev Spaces kullanıyorsanız, Azure Dev Spaces'in düzgün çalışması için yalnızca aşağıdaki giriş ve giriş ve çıkış trafiğini izlemeniz gerekir.
+Azure Dev Spaces, giriş *ve çıkış* ağ trafiği için belirli gereksinimlere ve *yalnızca* giriş trafiğini içerir. Aks kümeniz için trafiği kısıtlayan bir sanal ağ veya alt ağ yapılandırmasına sahip bir AKS kümesinde Azure Dev Spaces kullanıyorsanız, Azure Dev Spaces düzgün şekilde çalışması için yalnızca aşağıdaki giriş ve çıkış trafiği gereksinimlerini izlemeniz gerekir.
 
-### <a name="ingress-and-egress-network-traffic-requirements"></a>Giriş ve çıkış ağ trafik gereksinimleri
+### <a name="ingress-and-egress-network-traffic-requirements"></a>Giriş ve çıkış ağ trafiği gereksinimleri
 
-Azure Dev Spaces aşağıdaki FQDN'ler için giriş ve çıkış trafiğine ihtiyaç duyar:
+Azure Dev Spaces aşağıdaki FQDN 'Ler için giriş ve çıkış trafiğine ihtiyaç duyuyor:
 
 | FQDN                       | Bağlantı noktası       | Kullanım      |
 |----------------------------|------------|----------|
-| cloudflare.docker.com      | HTTPS: 443 | Azure Geliştirme Alanları için docker görüntüleri çekmek için |
-| gcr.io                     | HTTPS: 443 | Azure Dev Spaces için dümen görüntülerini çekmek için |
-| storage.googleapis.com     | HTTPS: 443 | Azure Dev Spaces için dümen görüntülerini çekmek için |
-| azds-*.azds.io             | HTTPS: 443 | Azure Dev Spaces denetleyicisi için Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. Tam FQDN *dataplaneFqdn* bulunabilir`USERPROFILE\.azds\settings.json` |
+| cloudflare.docker.com      | HTTPS: 443 | Azure Dev Spaces için Docker görüntülerini çekmek için |
+| gcr.io                     | HTTPS: 443 | Azure Dev Spaces için hele görüntülerini çekmek için |
+| storage.googleapis.com     | HTTPS: 443 | Azure Dev Spaces için hele görüntülerini çekmek için |
+| azds-*. AZD. IO             | HTTPS: 443 | Azure Dev Spaces denetleyicisi için Azure Dev Spaces arka uç hizmetleriyle iletişim kurun. İçindeki *Dataplanefqdn* IÇINDE tam FQDN bulunabilir`USERPROFILE\.azds\settings.json` |
 
-Yukarıdaki FQDN'lerin tümüne ağ trafiğine izin vermek için güvenlik duvarınızı veya güvenlik yapılandırmanızı güncelleştirin. Örneğin, ağınızı güvenli hale getirmek için bir güvenlik duvarı kullanıyorsanız, bu etki alanlarından gelen trafiğin sağlanması için yukarıdaki FQDN'ler güvenlik duvarının uygulama kuralına eklenmelidir.
+Güvenlik duvarınızı veya güvenlik yapılandırmanızı, yukarıdaki FQDN 'lerden gelen ve giden ağ trafiğine izin verecek şekilde güncelleştirin. Örneğin, ağınızı güvenli hale getirmek için bir güvenlik duvarı kullanıyorsanız, bu etki alanlarına gelen ve giden trafiğe izin vermek için yukarıdaki FQDN 'Ler güvenlik duvarının uygulama kuralına eklenmelidir.
 
-### <a name="ingress-only-network-traffic-requirements"></a>Yalnızca ağ trafiği gereksinimlerini girin
+### <a name="ingress-only-network-traffic-requirements"></a>Yalnızca ağ trafiği gereksinimlerini giriş
 
-Azure Dev Spaces, Kubernetes ad alanı düzeyinde yönlendirmenin yanı sıra kendi FQDN'sini kullanarak hizmetlere genel erişim sağlar. Bu özelliklerin her ikisinin de çalışması için, kümenizdeki Azure Dev Spaces giriş denetleyicisinin dış IP adresine ortak girişe izin vermek için güvenlik duvarınızı veya ağ yapılandırmanızı güncelleyin. Alternatif olarak, bir [dahili yük dengeleyicisi][aks-internal-lb] oluşturabilir ve güvenlik duvarınızın genel IP'sini dahili yük dengeleyicinizin IP'sine çevirmek için güvenlik duvarınıza bir NAT kuralı ekleyebilirsiniz. Özel bir giriş denetleyicisi oluşturmak için [traefik][traefik-ingress] veya [NGINX'i][nginx-ingress] de kullanabilirsiniz.
+Azure Dev Spaces, Kubernetes ad alanı düzeyinde yönlendirme sağlar ve kendi FQDN 'sini kullanarak hizmetlere genel erişim sağlar. Bu özelliklerin her ikisinin de çalışması için, güvenlik duvarınızı veya ağ yapılandırmanızı, kümenizdeki Azure Dev Spaces giriş denetleyicisinin dış IP adresine genel giriş sağlamak üzere güncelleştirin. Alternatif olarak, güvenlik duvarınızın genel IP 'sini iç yük dengeleyicinizin IP 'si ile dönüştürmek için bir [iç yük dengeleyici][aks-internal-lb] oluşturup güvenlik DUVARıNıZA bir NAT kuralı ekleyebilirsiniz. Özel bir giriş denetleyicisi oluşturmak için [traefik][traefik-ingress] veya [NGINX][nginx-ingress] de kullanabilirsiniz.
 
-## <a name="aks-cluster-network-requirements"></a>AKS küme ağ gereksinimleri
+## <a name="aks-cluster-network-requirements"></a>AKS kümesi ağ gereksinimleri
 
-AKS, kümedeki bölmeler arasındaki girişi ve çıkış trafiğini kontrol etmek ve bölmeden çıkış trafiğini kontrol etmek için [ağ ilkelerini][aks-network-policies] kullanmanıza olanak tanır. Azure Dev Spaces'in *Giriş ve Çıkış* ağ trafiği nin yanı sıra Yalnızca *Giriş* trafiği için belirli gereksinimleri vardır. AKS ağ ilkeleriyle bir AKS kümesinde Azure Dev Spaces kullanıyorsanız, Azure Dev Spaces'in düzgün çalışması için yalnızca aşağıdaki giriş ve giriş ve çıkış trafiğini izlemeniz gerekir.
+AKS, bir kümede yer alan ve bir pod 'tan çıkış trafiği arasındaki giriş ve çıkış trafiğini denetlemek için [ağ ilkelerini][aks-network-policies] kullanmanıza olanak sağlar. Azure Dev Spaces, giriş *ve çıkış* ağ trafiği için belirli gereksinimlere ve *yalnızca* giriş trafiğini içerir. Aks ağ ilkeleriyle bir AKS kümesinde Azure Dev Spaces kullanıyorsanız, Azure Dev Spaces düzgün şekilde çalışması için yalnızca aşağıdaki giriş ve çıkış trafiği gereksinimlerini izlemeniz gerekir.
 
-### <a name="ingress-and-egress-network-traffic-requirements"></a>Giriş ve çıkış ağ trafik gereksinimleri
+### <a name="ingress-and-egress-network-traffic-requirements"></a>Giriş ve çıkış ağ trafiği gereksinimleri
 
-Azure Dev Spaces, hata ayıklama için kümenizdeki dev alandaki bir bölmeyle doğrudan iletişim kurmanızı sağlar. Bu özelliğin çalışması için, [bölgeye göre değişen][dev-spaces-ip-auth-range-regions]Azure Dev Spaces altyapısının IP adreslerine giriş ve çıkış iletişimine izin veren bir ağ ilkesi ekleyin.
+Azure Dev Spaces, hata ayıklama için kümenizdeki bir geliştirme alanındaki bir pod ile doğrudan iletişim kurmanızı sağlar. Bu özelliğin çalışması için, [bölgeye göre farklılık][dev-spaces-ip-auth-range-regions]gösteren Azure dev Spaces altyapısının IP adreslerine giriş ve çıkış iletişimine izin veren bir ağ ilkesi ekleyin.
 
-### <a name="ingress-only-network-traffic-requirements"></a>Yalnızca ağ trafiği gereksinimlerini girin
+### <a name="ingress-only-network-traffic-requirements"></a>Yalnızca ağ trafiği gereksinimlerini giriş
 
-Azure Dev Spaces, ad alanlarında bölmeler arasında yönlendirme sağlar. Örneğin, Azure Geliştirme Alanları etkinleştirilmiş ad alanlarında, ağ trafiğinin üst ve alt ad alanları arasında bölmeler arasında yönlendirilmesine olanak tanıyan bir üst/alt ilişkisi olabilir. Azure Dev Spaces, kendi FQDN'sini kullanarak hizmet uç noktalarını da ortaya çıkarır. Hizmetleri farklı şekilde yapılandırmak ve ad alanı düzeyi yönlendirmesini nasıl etkilediğini yapılandırmak için [bkz.][endpoint-options]
+Azure Dev Spaces ad alanları arasında oluşan yönlendirme sağlar. Örneğin, Azure Dev Spaces etkin olan ad alanları üst/alt ilişkisine sahip olabilir ve bu, üst ve alt ad alanları arasında ağ trafiğinin yönlendirilmesine olanak tanır. Azure Dev Spaces Ayrıca kendi FQDN 'sini kullanarak hizmet uç noktalarını kullanıma sunar. Hizmetleri gösterme ve ad alanı düzeyinde yönlendirmeyi nasıl etkilediği farklı yollar yapılandırmak için bkz. [farklı uç nokta seçenekleri kullanma][endpoint-options].
 
-## <a name="using-azure-cni"></a>Azure CNI'yi kullanma
+## <a name="using-azure-cni"></a>Azure CNı kullanma
 
-Varsayılan olarak, AKS kümeleri, Azure Dev Alanları ile çalışan ağ için [kubenet][aks-kubenet] kullanacak şekilde yapılandırılır. AKS kümenizi [Azure Kapsayıcı Ağ Arabirimi 'ni (CNI)][aks-cni]kullanacak şekilde de yapılandırabilirsiniz. AKS kümenizde Azure CNI ile Azure Dev Alanları'nı kullanmak için, Azure Dev Spaces tarafından dağıtılan bölmeler için sanal ağınız ve alt net adresinizi 10'a kadar özel IP adresine izin verin. Özel IP adreslerine izin verme hakkında daha fazla ayrıntı [AKS Azure CNI belgelerinde][aks-cni-ip-planning]mevcuttur.
+Varsayılan olarak, aks kümeleri, Azure dev Spaces ile birlikte çalışarak ağ için [Kubernetes kullanan][aks-kubenet] kullanacak şekilde yapılandırılmıştır. AKS kümenizi [Azure Container Networking Interface (CNI)][aks-cni]kullanacak şekilde de yapılandırabilirsiniz. Aks kümenizde Azure CNI ile Azure dev Spaces kullanmak için, sanal ağ ve alt ağ adres alanları, Azure dev Spaces tarafından dağıtılan Pod 'ler için 10 özel IP adresine sahip olacak şekilde izin verir. Özel IP adreslerine izin verme hakkında daha fazla ayrıntı, [aks Azure CNI belgelerinde][aks-cni-ip-planning]bulunabilir.
 
-## <a name="using-api-server-authorized-ip-ranges"></a>API sunucusu yetkili IP aralıklarını kullanma
+## <a name="using-api-server-authorized-ip-ranges"></a>API sunucusu yetkilendirilmiş IP aralıklarını kullanma
 
-AKS kümeleri, örneğin özel sanal ağları kullanarak veya [yetkili IP aralıklarını kullanarak API sunucusuna erişimi güvence altına almak][aks-ip-auth-ranges]gibi, hangi IP adresinin kümelerinizle etkileşimkurabileceğini sınırlayan ek güvenlik yapılandırmanıza olanak sağlar. Kümenizi [oluştururken][aks-ip-auth-range-create] bu ek güvenliği kullanırken Azure Dev Alanları'nı kullanmak için [bölgenize göre ek aralıklara izin][dev-spaces-ip-auth-range-regions]vermelisiniz. Varolan bir kümeyi, bu ek aralıklara izin vermek için de [güncelleştirebilirsiniz.][aks-ip-auth-range-update] Ayrıca, API sunucunuza bağlanmak için hata ayıklama için AKS kümenize bağlanan geliştirme makinelerinin IP adresine izin verebilirsiniz.
+AKS kümeleri, özel sanal ağlar veya [YETKILENDIRILMIŞ IP aralıklarını kullanarak API sunucusuna erişimin güvenliğini sağlamak][aks-ip-auth-ranges]gibi kümelerinizle etkileşime girebilen ek güvenliği yapılandırmanıza olanak tanır. Kümenizi [oluştururken][aks-ip-auth-range-create] bu ek güvenliği kullanırken Azure dev Spaces kullanmak için [bölgenize göre ek aralıklara izin vermeniz][dev-spaces-ip-auth-range-regions]gerekir. Ayrıca, var olan bir kümeyi bu ek aralıklara izin verecek şekilde [güncelleştirebilirsiniz][aks-ip-auth-range-update] . Ayrıca, API sunucunuza bağlanmak üzere hata ayıklama için AKS kümenize bağlanan herhangi bir geliştirme makinesi IP adresine izin vermeniz gerekir.
 
 ## <a name="using-aks-private-clusters"></a>AKS özel kümelerini kullanma
 
-Şu anda Azure Dev Spaces [AKS özel kümeleriyle][aks-private-clusters]desteklenmiyor.
+Şu anda, [aks özel kümeleriyle][aks-private-clusters]Azure dev Spaces desteklenmez.
 
 ## <a name="using-different-endpoint-options"></a>Farklı uç nokta seçeneklerini kullanma
 
-Azure Dev Spaces, AKS'de çalışan hizmetleriniz için uç noktaları ortaya çıkarma seçeneğine sahiptir. Kümenizde Azure Dev Alanları'nı etkinleştirirken, kümeniz için uç nokta türünü yapılandırmak için aşağıdaki seçeneklere sahip siniz:
+Azure Dev Spaces, AKS üzerinde çalışan hizmetlerinize yönelik uç noktaları kullanıma sunma seçeneğine sahiptir. Kümenizde Azure Dev Spaces etkinleştirilirken, kümeniz için uç nokta türünü yapılandırmak için aşağıdaki seçeneklere sahip olursunuz:
 
-* Varsayılan olan *ortak* bitiş noktası, ortak IP adresine sahip bir giriş denetleyicisi dağıtır. Ortak IP adresi kümenin DNS'sine kaydedilir ve bir URL kullanarak hizmetlerinize genel erişim sağlar. Bu URL'yi `azds list-uris`.
-* *Özel* bir bitiş noktası, özel IP adresine sahip bir giriş denetleyicisi dağıtLar. Özel bir IP adresiyle, kümenizin yük dengeleyicisi yalnızca kümenin sanal ağının içinden erişilebilir. Yük dengeleyicisinin özel IP adresi kümenin DNS'sinde kaydedilir, böylece kümenin sanal ağındaki hizmetlere URL kullanılarak erişilebilir. Bu URL'yi `azds list-uris`.
-* Bitiş noktası seçeneği için *hiçbirinin* ayarlanması, hiçbir giriş denetleyicisinin dağıtılmasına neden olur. Giriş denetleyicisi dağıtılmadan, [Azure Dev Spaces yönlendirme özellikleri][dev-spaces-routing] çalışmaz. İsteğe bağlı olarak, yönlendirme yeteneklerinin yeniden çalışmasını sağlayacak [traefik][traefik-ingress] veya [NGINX][nginx-ingress]kullanarak kendi giriş denetleyici çözümünüzü uygulayabilirsiniz.
+* Varsayılan olan *genel* bir uç nokta, genel IP adresi ile bir giriş denetleyicisi dağıtır. Genel IP adresi kümenin DNS 'sine kaydedilir ve bir URL kullanarak hizmetlerinize genel erişim sağlar. Kullanarak `azds list-uris`bu URL 'yi görebilirsiniz.
+* *Özel* bir uç nokta, özel bir IP adresi olan bir giriş denetleyicisi dağıtır. Özel bir IP adresi ile, kümenizin yük dengeleyiciye yalnızca kümenin sanal ağı içinden erişilebilir. Yük dengeleyicinin özel IP adresi kümenin DNS 'sine kaydedilir, böylece kümenin sanal ağı içindeki hizmetlere bir URL kullanılarak erişilebilir. Kullanarak `azds list-uris`bu URL 'yi görebilirsiniz.
+* Uç nokta seçeneği için *hiçbiri* ayarı, giriş denetleyicisinin dağıtılmamasını sağlar. Giriş denetleyicisi dağıtılmadı, [Azure dev Spaces yönlendirme özellikleri][dev-spaces-routing] çalışmayacak. İsteğe bağlı olarak, [traefik][traefik-ingress] veya [NGINX][nginx-ingress]kullanarak kendi giriş denetleyicisi çözümünüzü uygulayabilir, bu da yönlendirme yeteneklerinin yeniden çalışmasına imkan sağlar.
 
-Uç nokta seçeneğinizi yapılandırmak için, kümenizde Azure Dev Alanları'nı etkinleştirirken *-e* veya *uç nokta* kullanın. Örneğin:
+Uç nokta seçeneğinizi yapılandırmak için, kümenizde Azure Dev Spaces etkinleştirirken *-e* veya *--uç noktasını* kullanın. Örneğin:
 
 > [!NOTE]
-> Bitiş noktası seçeneği, Azure CLI sürüm 2.2.0 veya sonraki sürümlerini çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
+> Uç nokta seçeneği için Azure CLı sürüm 2.2.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
@@ -84,14 +84,14 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
 
 ## <a name="client-requirements"></a>İstemci gereksinimleri
 
-Azure Dev Spaces, hata ayıklama için AKS kümenizle iletişim kurmak için Azure Dev Spaces CLI uzantısı, Visual Studio Code uzantısı ve Visual Studio uzantısı gibi istemci tarafı aracını kullanır. Azure Dev Spaces istemci tarafını kullanmak için, geliştirme makinelerinden *\*azds- .azds.io* etki alanına kadar trafiğe izin verin. Tam FQDN `USERPROFILE\.azds\settings.json` için *dataplaneFqdn* bakın. [API sunucusu yetkili IP aralıkları][auth-range-section]kullanıyorsanız, API sunucunuza bağlanmak için hata ayıklama için AKS kümenize bağlanan geliştirme makinelerinin IP adresine de izin verebilirsiniz.
+Azure Dev Spaces, hata ayıklama için AKS kümeniz ile iletişim kurmak için Azure Dev Spaces CLı uzantısı, Visual Studio Code uzantısı ve Visual Studio uzantısı gibi istemci tarafı araçları kullanır. Azure Dev Spaces istemci tarafı araçları 'nı kullanmak için, geliştirme makinelerinden *azds-\*. azds.io* etki alanına giden trafiğe izin verin. Tam FQDN için içindeki `USERPROFILE\.azds\settings.json` *Dataplanefqdn* bölümüne bakın. [API sunucusu YETKILENDIRILMIŞ IP aralıklarını][auth-range-section]KULLANıYORSANıZ, API sunucunuza bağlanmak için hata ayıklama için aks kümenize bağlanan herhangi bir GELIŞTIRME makinesi IP adresine de izin vermeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Geliştirme Alanları'nın birden çok kapsayıcıda daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda farklı sürümlerle veya kod dallarıyla çalışarak ortak geliştirmeyi nasıl basitleştirebileceğinizi öğrenin.
+Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure Geliştirme Alanlarında ekip geliştirme][team-quickstart]
+> [Azure Dev Spaces 'de takım geliştirme][team-quickstart]
 
 [aks-cni]: ../aks/configure-azure-cni.md
 [aks-cni-ip-planning]: ../aks/configure-azure-cni.md#plan-ip-addressing-for-your-cluster

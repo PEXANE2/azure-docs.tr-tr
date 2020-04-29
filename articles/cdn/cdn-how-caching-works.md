@@ -1,6 +1,6 @@
 ---
-title: Önbelleğe alma nasıl çalışır | Microsoft Dokümanlar
-description: Önbelleğe alma, veri isteklerine daha hızlı erişilebilmek için verileri yerel olarak depolama işlemidir.
+title: Önbelleğe alma nasıl işe yarar? | Microsoft Docs
+description: Önbelleğe alma, verileri yerel olarak depolamanın, bu verilere yönelik gelecekteki isteklere daha hızlı erişilebilmesi için bir işlemdir.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,128 +15,128 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253722"
 ---
 # <a name="how-caching-works"></a>Önbelleğe alma nasıl işler?
 
-Bu makalede, genel önbelleğe alma kavramlarına ve [Azure İçerik Teslim Ağı'nın (CDN)](cdn-overview.md) performansı artırmak için önbelleğe nasıl kullandığına genel bir bakış sağlanmaktadır. CDN bitiş noktanızda önbelleğe alma davranışını nasıl özelleştirdiğinizi öğrenmek istiyorsanız, [önbelleğe alma kurallarıyla Azure CDN önbelleğe alma davranışını denetle](cdn-caching-rules.md) ve [sorgu dizeleri ile Azure CDN önbelleğe alma davranışını denetleyin'](cdn-query-string.md)e bakın.
+Bu makalede genel önbelleğe alma kavramlarını ve [Azure Content Delivery Network (CDN)](cdn-overview.md) , performansı artırmak için önbelleğe alma özelliğinin bir genel bakışı sunulmaktadır. CDN uç noktanıza önbelleğe alma davranışının nasıl özelleştirileceği hakkında bilgi edinmek istiyorsanız, bkz. önbellek [kuralları ile denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md) ve [sorgu dizeleri ile Azure CDN önbelleğe alma davranışı](cdn-query-string.md).
 
-## <a name="introduction-to-caching"></a>Önbelleğe giriş
+## <a name="introduction-to-caching"></a>Önbelleğe almaya giriş
 
-Önbelleğe alma, veri isteklerine daha hızlı erişilebilmek için verileri yerel olarak depolama işlemidir. Önbelleğe alma nın en yaygın türünde, web tarayıcısı önbelleğe alma, bir web tarayıcısı statik verilerin kopyalarını yerel bir sabit diskte yerel olarak depolar. Önbelleğe alma kullanarak, web tarayıcısı sunucuya birden fazla gidiş-dönüş yapmaktan kaçınabilir ve bunun yerine aynı verilere yerel olarak erişebilir, böylece zamandan ve kaynaklardan tasarruf edebilir. Önbelleğe alma, statik görüntüler, CSS dosyaları ve JavaScript dosyaları gibi küçük, statik verileri yerel olarak yönetmek için uygundur.
+Önbelleğe alma, verileri yerel olarak depolamanın, bu verilere yönelik gelecekteki isteklere daha hızlı erişilebilmesi için bir işlemdir. En yaygın önbelleğe alma, Web tarayıcısı önbelleğe alma türünde, bir Web tarayıcısı statik verilerin kopyalarını yerel bir sabit sürücüde yerel olarak depolar. Web tarayıcısı, önbelleğe alma özelliğini kullanarak sunucuda birden çok gidiş dönüş yapmaktan kaçınabilir, bunun yerine aynı verilere yerel olarak erişebilir ve böylece zaman ve kaynak tasarrufu sağlar. Önbelleğe alma, statik görüntüler, CSS dosyaları ve JavaScript dosyaları gibi küçük, statik verilerin yerel olarak yönetilmesi için uygun bir seçenektir.
 
-Benzer şekilde, önbelleğe alma, kullanıcıya yakın kenar sunucularında bir içerik dağıtım ağı tarafından, menşeine geri seyahat eden istekleri önlemek ve son kullanıcı gecikmesini azaltmak için kullanılır. Yalnızca tek bir kullanıcı için kullanılan bir web tarayıcısı önbelleğinin aksine, CDN'nin paylaşılan bir önbelleği vardır. CDN paylaşılan önbelleğinde, bir kullanıcı tarafından istenen bir dosyaya daha sonra diğer kullanıcılar erişebilir ve bu da kaynak sunucuya gelen istek sayısını büyük ölçüde azaltır.
+Benzer şekilde, önbelleğe alma isteklerinin kaynağa geri dönmesi ve son kullanıcı gecikmesini azaltmamak için uç sunuculardaki bir içerik teslim ağı tarafından önbelleğe alma kullanılır. Yalnızca tek bir kullanıcı için kullanılan bir Web tarayıcısı önbelleğinin aksine, CDN paylaşılan bir önbelleğe sahiptir. CDN paylaşılan önbelleğinde, bir kullanıcı tarafından istenen bir dosyaya daha sonra diğer kullanıcılar tarafından erişilebiliyor ve bu da kaynak sunucuya istek sayısını önemli ölçüde düşürür.
 
-Sık sık değişen veya tek bir kullanıcıya özgü dinamik kaynaklar önbelleğe alınamaz. Ancak bu tür kaynaklar, performans iyileştirmeleri için Azure İçerik Dağıtım Ağı'ndaki dinamik site hızlandırma (DSA) optimizasyonundan yararlanabilir.
+Sık sık değişen veya tek bir kullanıcıya özgü olan dinamik kaynaklar önbelleğe alınamaz. Bununla birlikte, bu tür kaynaklar, performans iyileştirmeleri için Azure Content Delivery Network dinamik site hızlandırma (DSA) iyileştirmesinden faydalanabilir.
 
-Önbelleğe alma, kaynak sunucusu ile son kullanıcı arasında birden çok düzeyde oluşabilir:
+Önbelleğe alma, kaynak sunucu ile son kullanıcı arasında birden fazla düzeyde olabilir:
 
-- Web sunucusu: Paylaşılan önbelleği kullanır (birden çok kullanıcı için).
-- İçerik dağıtım ağı: Paylaşılan önbellek kullanır (birden çok kullanıcı için).
-- Internet servis sağlayıcısı (ISS): Paylaşılan önbelleği (birden çok kullanıcı için) kullanır.
-- Web tarayıcısı: Özel bir önbellek kullanır (bir kullanıcı için).
+- Web sunucusu: paylaşılan bir önbellek kullanır (birden çok kullanıcı için).
+- İçerik teslim ağı: paylaşılan bir önbellek kullanır (birden çok kullanıcı için).
+- Internet servis sağlayıcısı (ISS): paylaşılan bir önbellek kullanır (birden çok kullanıcı için).
+- Web tarayıcısı: özel bir önbellek kullanır (bir kullanıcı için).
 
-Her önbellek genellikle kendi kaynak tazeliğini yönetir ve bir dosya eskidiğinde doğrulama gerçekleştirir. Bu davranış HTTP önbelleğe alma belirtimi, [RFC 7234](https://tools.ietf.org/html/rfc7234)tanımlanır.
+Her önbellek genellikle kendi kaynak yeniliği yönetir ve bir dosya eskimiş olduğunda doğrulama gerçekleştirir. Bu davranış, [RFC 7234](https://tools.ietf.org/html/rfc7234)http önbellek belirtiminde tanımlanmıştır.
 
-### <a name="resource-freshness"></a>Kaynak tazeliği
+### <a name="resource-freshness"></a>Kaynak yeniliği
 
-Önbelleğe alınmış bir kaynak eski veya eski olabileceğinden (kaynak sunucusundaki ilgili kaynakla karşılaştırıldığında), içeriğin yenilendiğinde önbelleğe alma mekanizmasının denetlemesi önemlidir. Zaman ve bant genişliği tüketiminden tasarruf etmek için önbelleğe alınmış bir kaynak, her erişigeldiğinde başlangıç sunucusundaki sürümle karşılaştırılmaz. Bunun yerine, önbelleğe alınmış bir kaynağın taze olduğu kabul edildiği sürece, en güncel sürüm olduğu varsayılır ve doğrudan istemciye gönderilir. Önbelleğe alınmış bir kaynağın yaşı önbellek ayarı tarafından tanımlanan yaştan veya dönemden küçükse taze olarak kabul edilir. Örneğin, bir tarayıcı bir web sayfasını yeniden yüklediğinde, önbelleğe alınmış her kaynağın yeni olduğunu doğrular ve bu sayfayı yükler. Kaynak taze (eski) değilse, sunucudan güncel bir kopya yüklenir.
+Önbelleğe alınmış bir kaynağın güncel veya eski olduğu (kaynak sunucudaki karşılık gelen kaynakla karşılaştırıldığında) olası olabilir. Bu, içeriğin ne zaman yenileneceğini denetlemek için herhangi bir önbelleğe alma mekanizmasının kullanılması önemlidir. Zaman ve bant genişliği tüketimini kazanmak için, önbelleğe alınmış bir kaynak, her erişildiğinde kaynak sunucudaki sürümle karşılaştırılmaz. Bunun yerine, önbelleğe alınmış bir kaynağın yeni olduğu kabul edildiği sürece en güncel sürüm olduğu varsayılır ve doğrudan istemciye gönderilir. Önbellek ayarı tarafından tanımlanan yaş veya dönemden daha az olduğunda önbelleğe alınmış bir kaynak yeni olarak kabul edilir. Örneğin, bir tarayıcı bir Web sayfasını yeniden yüklediğinde, sabit sürücünüzdeki önbelleğe alınan her kaynağın yeni olduğunu doğrular ve yükler. Kaynak yeni (eski) değilse, sunucudan güncel bir kopya yüklenir.
 
 ### <a name="validation"></a>Doğrulama
 
-Bir kaynağın eski olduğu düşünülürse, kaynak sunucusundan kaynağın doğrulanması, yani önbellekteki verilerin kaynak sunucusundakilerle eşleşip eşleşmediğini belirlemesi istenir. Dosya kaynak sunucusunda değiştirildiyse, önbellek kaynağın sürümünü güncelleştirir. Aksi takdirde, kaynak yeniyse, veriler önce doğrulamadan doğrudan önbellekten teslim edilir.
+Bir kaynağın eski olduğu kabul edildiğinde, kaynak sunucunun onu doğrulaması istenir, diğer bir deyişle, önbellekteki verilerin kaynak sunucudaki verilerle aynı olup olmadığını tespit eder. Kaynak sunucu üzerinde dosya değiştirildiyse önbellek, kaynağın sürümünü güncelleştirir. Aksi takdirde, kaynak yeni ise, veriler önce doğrulamadan doğrudan önbellekten dağıtılır.
 
 ### <a name="cdn-caching"></a>CDN önbelleğe alma
 
-Önbelleğe alma, bir CDN'nin teslimatı hızlandırma ve görüntüler, yazı tipleri ve videolar gibi statik varlıkların kaynak yükünü azaltmak için çalışma şeklinin ayrılmaz bir parçasıdır. CDN önbelleğe almada, statik kaynaklar seçici olarak kullanıcıya daha yerel olan stratejik olarak yerleştirilmiş sunucularda depolanır ve aşağıdaki avantajları sunar:
+Önbelleğe alma, bir CDN 'nin teslimi hızlandırmak ve görüntüler, yazı tipleri ve videolar gibi statik varlıkların kaynak yükünü azaltmak için bir CDN 'nin bir yoludur. CDN önbelleğe alma işleminde statik kaynaklar, bir kullanıcıya daha yerel olan ve aşağıdaki avantajları sunan, stratejik olarak yerleştirilmiş olan sunucular üzerinde seçmeli olarak depolanır:
 
-- Çoğu web trafiği statik olduğundan (örneğin, görüntüler, yazı tipleri ve videolar), CDN önbelleğe alma, içeriği kullanıcıya yaklaştırarak ağ gecikmesini azaltır ve böylece verilerin kat ettiği mesafeyi azaltır.
+- Çoğu web trafiği statik olduğu için (örneğin, görüntüler, yazı tipleri ve videolar), CDN önbelleğe alma, içeriği kullanıcıya yaklaştırarak ağ gecikmesini azaltır ve bu sayede verilerin nasıl taşdığı mesafeyi azaltır.
 
-- Çalışmayı CDN'ye boşaltarak, önbelleğe alma ağ trafiğini ve kaynak sunucusundaki yükü azaltabilir. Bunu yapmak, çok sayıda kullanıcı olsa bile uygulama için maliyet ve kaynak gereksinimlerini azaltır.
+- İşi CDN 'ye devrederek, önbelleğe alma işlemi, ağ trafiğini ve kaynak sunucudaki yükü azaltabilir. Bunun yapılması, çok sayıda kullanıcı olsa bile, uygulamanın maliyetini ve kaynak gereksinimlerini azaltır.
 
-Önbelleğe almanın bir web tarayıcısında nasıl uygulandığına benzer şekilde, önbellek yönergeleri üstbilgilerini göndererek bir CDN'de önbelleğe almanın nasıl gerçekleştirileceğini denetleyebilirsiniz. Önbellek yönergesi üstbilgisi, genellikle başlangıç sunucusu tarafından eklenen HTTP üstbilgidir. Bu üstbilgileri çoğu başlangıçta istemci tarayıcılarda önbelleğe alma adresine tasarlanmış olsa da, artık CDN'ler gibi tüm ara önbellekler tarafından da kullanılmaktadır. 
+Önbelleğe almanın bir Web tarayıcısında uygulanma biçimine benzer şekilde, Cache-Directive üst bilgilerini göndererek bir CDN 'de önbelleğe almanın nasıl gerçekleştirileceğini denetleyebilirsiniz. Cache-Directive üstbilgileri, genellikle kaynak sunucu tarafından eklenen HTTP başlıklardır. Bu üstbilgilerin çoğu başlangıçta istemci tarayıcılarındaki önbelleğe alma için tasarlansa da, bunlar artık CDNs gibi tüm ara önbellekler tarafından da kullanılmaktadır. 
 
-Önbellek tazeliğini tanımlamak için iki üstbilgi kullanılabilir: `Cache-Control` ve `Expires`. `Cache-Control`daha günceldir ve her `Expires`ikisi de varsa üzerinde önceliklidir. Doğrulama için kullanılan iki tür üstbilgi de vardır `ETag` (doğrulayıcı olarak adlandırılır): ve. `Last-Modified` `ETag`daha günceldir ve her `Last-Modified`ikisi de tanımlanmışsa, üzerinde önceliklidir.  
+Önbellek yeniliği tanımlamak için iki üst bilgi kullanılabilir: `Cache-Control` ve `Expires`. `Cache-Control`daha güncel olur ve her ikisi de `Expires`varsa önceliklidir. Ayrıca, doğrulama için kullanılan iki tür üstbilgi vardır (doğrulayıcılar adı verilir) `ETag` : `Last-Modified`ve. `ETag``Last-Modified`, her ikisi de tanımlıysa daha güncel ve önceliklidir.  
 
-## <a name="cache-directive-headers"></a>Önbellek yönergesi üstbilgi
+## <a name="cache-directive-headers"></a>Cache-Directive üstbilgileri
 
 > [!IMPORTANT]
-> Varsayılan olarak, DSA için en iyi duruma getirilmiş bir Azure CDN bitiş noktası önbellek yönergeleri üstbilgilerini yok sayar ve önbelleğe alma atlar. **Akamai profillerinden** Verizon ve Azure CDN **Standard'dan Azure CDN Standardı** için, önbelleğe alma sağlamak için [CDN önbelleğe alma kurallarını](cdn-caching-rules.md) kullanarak Azure CDN uç noktasının bu üstbilgilerin nasıl davrandığını ayarlayabilirsiniz. **Yalnızca Verizon profillerinden Azure CDN Premium** için önbelleğe alma sağlamak için kurallar [altyapısını](cdn-rules-engine.md) kullanırsınız.
+> Varsayılan olarak, DSA için iyileştirilmiş bir Azure CDN uç noktası Cache-Directive üst bilgilerini yoksayar ve önbelleğe almayı atlar. Verizon **Azure CDN ve Akamai profillerden standart** **Azure CDN Standart** için, bir Azure CDN uç noktasının önbelleğe almayı etkinleştirmek için [CDN önbelleğe alma kurallarını](cdn-caching-rules.md) kullanarak bu üstbilgileri nasıl değerlendirmiş olduğunu ayarlayabilirsiniz. Yalnızca **Verizon profillerinin Azure CDN Premium** için, önbelleğe almayı etkinleştirmek üzere [Rules altyapısını](cdn-rules-engine.md) kullanın.
 
-Azure CDN, önbellek süresini ve önbellek paylaşımını tanımlayan aşağıdaki HTTP önbellek yönergesi üstbilgisini destekler.
+Azure CDN, önbellek süresini ve önbellek paylaşımını tanımlayan aşağıdaki HTTP Cache-Directive üst bilgilerini destekler.
 
-**Önbellek Denetimi:**
-- Web yayıncılarına içerikleri üzerinde daha fazla denetim sağlamak ve `Expires` üstbilginin sınırlamalarını gidermek için HTTP 1.1'de tanıtıldı.
-- `Expires` Üstbilgi, hem o hem `Cache-Control` de tanımlanmış olarak geçersiz kılar.
-- İstemciden CDN POP'a http isteğinde kullanıldığında, `Cache-Control` varsayılan olarak tüm Azure CDN profilleri tarafından yoksayılır.
-- İstemciden CDN POP'a http yanıtında kullanıldığında:
-     - Microsoft'tan Verizon ve **Azure CDN Standard'dan** `Cache-Control` **Azure CDN Standard/Premium** tüm yönergeleri destekler.
-     - **Akamai'den Azure CDN** Standardı `Cache-Control` yalnızca aşağıdaki yönergeleri destekler; diğerleri göz ardı edilir:
-         - `max-age`: Önbellek içeriği belirtilen saniye sayısı için depolayabilir. Örneğin, `Cache-Control: max-age=5`. Bu yönerge, içeriğin taze olarak kabul edilen maksimum süreyi belirtir.
-         - `no-cache`: İçeriği önbelleğe getirin, ancak önbellekten teslim etmeden önce içeriği her seferinde doğrulayın. `Cache-Control: max-age=0`Eşdeğeri .
-         - `no-store`: İçeriği asla önbelleğe alıp yok edin. Daha önce depolanmışsa içeriği kaldırın.
+**Cache-Control:**
+- HTTP 1,1 ' de kullanıma sunulmuş, Web yayımcılarının içeriği üzerinde daha fazla denetime sahip olması ve `Expires` üst bilgi sınırlamalarını ele vermesi.
+- Her ikisi `Expires` de `Cache-Control` tanımlıysa üstbilgiyi geçersiz kılar.
+- İstemciden CDN POP `Cache-Control` 'A bir http isteğinde kullanıldığında, varsayılan olarak tüm Azure CDN profilleri tarafından yok sayılır.
+- İstemciden CDN POP 'a bir HTTP yanıtında kullanıldığında:
+     - Verizon **Azure CDN ve Microsoft** desteği tüm `Cache-Control` yönergelerden standart **/Premium Azure CDN** .
+     - **Akamai 'den Azure CDN Standart** yalnızca aşağıdaki `Cache-Control` yönergeleri destekler; diğerlerinin tümü yok sayılır:
+         - `max-age`: Bir önbellek, belirtilen saniye sayısı için içeriği depolayabilirler. Örneğin, `Cache-Control: max-age=5`. Bu yönerge, içeriğin yeni olarak kabul edildiği en uzun süreyi belirtir.
+         - `no-cache`: İçeriği önbelleğe alma, ancak önbellekten teslim etmeden önce her seferinde içerik doğrulama. İle `Cache-Control: max-age=0`eşdeğerdir.
+         - `no-store`: İçeriği hiçbir bir şekilde önbelleğe alma. Daha önce depolanmışsa içeriği kaldırın.
 
-**Sona eri -yor:**
-- HTTP 1.0'da tanıtılan eski başlık; geriye dönük uyumluluk için desteklenir.
-- İkinci hassasiyetle tarih tabanlı bir son kullanma süresini kullanır. 
+**Bitiminden**
+- HTTP 1,0 ' de sunulan eski üst bilgi; geriye dönük uyumluluk için desteklenir.
+- İkinci duyarlıkla Tarih temelli bir sona erme saati kullanır. 
 - Benzer `Cache-Control: max-age`.
-- Yok `Cache-Control` olmadığında kullanılır.
+- Mevcut olmadığında `Cache-Control` kullanılır.
 
-**Pragma:**
-   - Varsayılan olarak Azure CDN tarafından onurlandırılmamak.
-   - HTTP 1.0'da tanıtılan eski başlık; geriye dönük uyumluluk için desteklenir.
-   - Aşağıdaki yönerge ile istemci istek üstbilgiolarak kullanılır: `no-cache`. Bu yönerge, sunucuya kaynağın yeni bir sürümünü sunmasını bildirir.
-   - `Pragma: no-cache`'ye `Cache-Control: no-cache`eşdeğerdir.
+**Prag**
+   - Varsayılan olarak Azure CDN tarafından kabul edilmez.
+   - HTTP 1,0 ' de sunulan eski üst bilgi; geriye dönük uyumluluk için desteklenir.
+   - Şu yönergeyle istemci isteği üst bilgisi olarak kullanılır: `no-cache`. Bu yönerge, sunucuya kaynağın yeni bir sürümünü sunmasını söyler.
+   - `Pragma: no-cache`değerine `Cache-Control: no-cache`eşdeğerdir.
 
-## <a name="validators"></a>Doğrulayıcıları
+## <a name="validators"></a>Metninin
 
-Önbellek eskidiğinde, http önbellek doğrulayıcıları bir dosyanın önbelleğe alınmış sürümünü başlangıç sunucusundaki sürümle karşılaştırmak için kullanılır. **Verizon'daki Azure CDN Standard/Premium** varsayılan olarak hem `ETag` de `Last-Modified` doğrulayıcıları desteklerken, **Microsoft'tan Azure CDN Standard** ve **Akamai'den Azure CDN Standard** yalnızca `Last-Modified` varsayılan olarak destekler.
+Önbellek eskidiğinde, bir dosyanın önbelleğe alınmış sürümünü kaynak sunucudaki sürümüyle karşılaştırmak için HTTP önbellek Doğrulayıcıları kullanılır. **Verizon tarafından sunulan standart/Premium** , varsayılan `ETag` olarak `Last-Modified` hem hem de doğrulayıcıları destekler, **Microsoft 'tan alınan Azure CDN Standart** ve **Akamai 'den Azure CDN Standart** yalnızca `Last-Modified` varsayılan olarak destekler. Azure CDN
 
-**Etag:**
-- **Verizon'dan Azure CDN Standard/Premium** varsayılan olarak desteklerken, `ETag` **Microsoft'tan Azure CDN Standard** ve **Akamai'den Azure CDN Standard** desteklemiyor.
-- `ETag`her dosya ve bir dosya sürümü için benzersiz bir dize tanımlar. Örneğin, `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
-- HTTP 1.1'de tanıtılan ve `Last-Modified`.'den daha günceldir. Son değiştirilen tarihi belirlemek zor olduğunda yararlıdır.
-- Hem güçlü doğrulamayı hem de zayıf doğrulamayı destekler; ancak Azure CDN yalnızca güçlü doğrulamayı destekler. Güçlü doğrulama için, iki kaynak gösterimi bayt için-byte aynı olmalıdır. 
-- Önbellek, istekte bir `ETag` veya daha `If-None-Match` fazla `ETag` doğrulayıcıiçeren bir üstbilgi göndererek kullanan bir dosyayı doğrular. Örneğin, `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Sunucunun sürümü listedeki `ETag` bir doğrulayıcıyla eşleşirse, yanıtında durum kodu 304 (Değiştirilmemiş) gönderir. Sürüm farklıysa, sunucu durum kodu 200 (Tamam) ve güncelleştirilmiş kaynakla yanıt verir.
+**Özelliği**
+- **Verizon ' dan Standart/Premium Azure CDN** varsayılan olarak destekler `ETag` , **Microsoft 'tan Azure CDN Standard** ve **Akamai 'den Azure CDN Standart** .
+- `ETag`bir dosyanın her bir dosyası ve sürümü için benzersiz olan bir dize tanımlar. Örneğin, `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
+- HTTP 1,1 ' de kullanıma sunulmuştur ve ' den `Last-Modified`daha güncel. Son değiştirme tarihi saptanmaları zor olduğunda faydalıdır.
+- Hem güçlü doğrulamayı hem de zayıf doğrulamayı destekler; Ancak, Azure CDN yalnızca güçlü doğrulamayı destekler. Güçlü doğrulama için iki kaynak temsili, bayt için bayt özdeş olmalıdır. 
+- Önbellek, istekte bir veya daha fazla `ETag` `ETag` doğrulayıcıya sahip `If-None-Match` bir üst bilgi göndererek kullanan bir dosyayı doğrular. Örneğin, `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Sunucunun sürümü listedeki bir `ETag` doğrulayıcı ile eşleşiyorsa, yanıt olarak 304 (değiştirilmez) durum kodunu gönderir. Sürüm farklıysa, sunucu 200 (Tamam) durum koduyla ve güncelleştirilmiş kaynakla yanıt verir.
 
-**Son Değiştirilen:**
-- Yalnızca **Verizon'dan Gelen Azure CDN Standard/Premium** için, `Last-Modified` HTTP yanıtının bir parçası değilse kullanılır. `ETag` 
-- Kaynak sunucusunun kaynağın en son değiştirildiğini belirlediği tarih ve saati belirtir. Örneğin, `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
-- Önbellek, istekte tarih `Last-Modified` ve `If-Modified-Since` saat içeren bir üstbilgi göndererek bir dosyayı kullanır. Kaynak sunucusu bu tarihi en `Last-Modified` son kaynağın üstbilgisiyle karşılaştırır. Kaynak belirtilen zamandan beri değiştirilmemişse, sunucu yanıtında durum kodu 304 (Değiştirilmemiş) döndürür. Kaynak değiştirildiyse, sunucu durum kodu 200 (Tamam) ve güncelleştirilmiş kaynağı döndürür.
+**Son değiştirme:**
+- Yalnızca **Verizon öğesinden Standart/Premium Azure CDN** IÇIN, `Last-Modified` HTTP yanıtının bir `ETag` parçası değilse kullanılır. 
+- Kaynak sunucunun, kaynağın en son değiştirildiğini belirlediği tarihi ve saati belirtir. Örneğin, `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
+- Önbellek, istekte tarih ve saat `Last-Modified` içeren bir `If-Modified-Since` üstbilgi göndererek kullanarak bir dosyayı doğrular. Kaynak sunucu bu tarihi en son kaynağın `Last-Modified` üstbilgisiyle karşılaştırır. Kaynak belirtilen süreden bu yana değiştirilmediyse, sunucu yanıtında 304 (değiştirilmez) durum kodunu döndürür. Kaynak değiştirildiyse, sunucu 200 (Tamam) durum kodunu ve güncelleştirilmiş kaynağı döndürür.
 
-## <a name="determining-which-files-can-be-cached"></a>Önbelleğe alınan dosyaların belirlenmesi
+## <a name="determining-which-files-can-be-cached"></a>Hangi dosyaların önbelleğe alınacağını belirleme
 
-Tüm kaynaklar önbelleğe alınamaz. Aşağıdaki tablo, HTTP yanıtı türüne bağlı olarak hangi kaynakların önbelleğe alınabileceğini gösterir. Bu koşulların tümünün karşılanmıyor HTTP yanıtları ile teslim edilen kaynaklar önbelleğe alınamaz. Yalnızca **Verizon'daki Azure CDN Premium** için, bu koşullardan bazılarını özelleştirmek için kurallar altyapısını kullanabilirsiniz.
+Tüm kaynaklar önbelleğe alınmayabilir. Aşağıdaki tabloda, HTTP yanıtının türüne göre hangi kaynakların önbelleğe alınacağını gösterilmektedir. Bu koşulların tümünü karşılamayan HTTP yanıtlarıyla teslim edilen kaynaklar önbelleğe alınamaz. Yalnızca **Verizon 'den Azure CDN Premium** için, bu koşulların bazılarını özelleştirmek üzere Rules altyapısını kullanabilirsiniz.
 
-|                   | Microsoft'tan Azure CDN          | Verizon'dan Azure CDN | Akamai'den Azure CDN        |
+|                   | Microsoft 'tan Azure CDN          | Verizon 'dan Azure CDN | Akamai 'dan Azure CDN        |
 |-------------------|-----------------------------------|------------------------|------------------------------|
 | HTTP durum kodu | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
-| HTTP yöntemleri      | AL, BAŞ                         | GET                    | GET                          |
-| Dosya boyutu sınırları  | 300 GB                            | 300 GB                 | - Genel web teslimat optimizasyonu: 1.8 GB<br />- Medya akışı optimizasyonları: 1,8 GB<br />- Büyük dosya optimizasyonu: 150 GB |
+| HTTP yöntemleri      | GET, HEAD                         | GET                    | GET                          |
+| Dosya boyutu sınırları  | 300 GB                            | 300 GB                 | -Genel web teslimi iyileştirmesi: 1,8 GB<br />-Medya akışı iyileştirmeleri: 1,8 GB<br />-Büyük dosya iyileştirmesi: 150 GB |
 
-**Microsoft'un** bir kaynak üzerinde çalışmak için önbelleğe aldığı Azure CDN Standardı için, kaynak sunucusunun herhangi bir HEAD ve GET HTTP isteklerini desteklemesi gerekir ve içerik uzunluğu değerleri herhangi bir HEAD ve GET HTTP yanıtları için aynı olmalıdır. HEAD isteği için, kaynak sunucusuNUN HEAD isteğini desteklemesi ve GET isteği almış gibi aynı üstbilgiyle yanıt vermesi gerekir.
+**Microsoft 'un** önbelleğe alma işleminin bir kaynakta çalışması için, kaynak sunucunun HERHANGI bir baş ve Get http isteklerini desteklemesi ve içerik uzunluğu değerlerinin HERHANGI bir baş ve VARLıK için http yanıtları alması gerekir. Azure CDN BAŞ bir istek için, kaynak sunucunun baş isteği desteklemesi ve bir GET isteği aldığından aynı üst bilgilerle yanıt vermesi gerekir.
 
 ## <a name="default-caching-behavior"></a>Varsayılan önbelleğe alma davranışı
 
-Aşağıdaki tabloda Azure CDN ürünleri için varsayılan önbelleğe alma davranışı ve bunların optimizasyonları açıklanmaktadır.
+Aşağıdaki tabloda Azure CDN ürünlerin varsayılan önbelleğe alma davranışı ve bunların iyileştirmeleri açıklanmaktadır.
 
-|    | Microsoft: Genel web dağıtımı | Verizon: Genel web teslimat | Verizon: DSA | Akamai: Genel web teslimatı | Akamai: DSA | Akamai: Büyük dosya indirme | Akamai: genel veya VOD medya akışı |
+|    | Microsoft: genel web teslimi | Verizon: genel web teslimi | Verizon: DSA | Akamai: genel web teslimi | Akamai: DSA | Akamai: büyük dosya indirme | Akamai: genel veya VOD medya akışı |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Onur kökeni**       | Evet    | Evet   | Hayır   | Evet    | Hayır   | Evet   | Evet    |
-| **CDN önbellek süresi** | 2 gün |7 gün | None | 7 gün | None | 1 gün | 1 yıl |
+| **Kaynak kabul**       | Yes    | Yes   | Hayır   | Yes    | Hayır   | Yes   | Yes    |
+| **CDN önbellek süresi** | 2 gün |7 gün | Hiçbiri | 7 gün | Hiçbiri | 1 gün | 1 yıl |
 
-**Onur kaynağı**: Desteklenen önbellek yönergesi üstbilgilerini, kaynak sunucusundan HTTP yanıtında varsa onurlandırıp onurlandırmayacaklarını belirtir.
+**Kaynağı**kabul edin: kaynak SUNUCUDAN gelen http yanıtında varsa, desteklenen Cache-Directive üst bilgilerini kabul edilip edilmeyeceğini belirtir.
 
-**CDN önbellek süresi**: Azure CDN'de kaynağın önbelleğe aldığı süreyi belirtir. Ancak, **Onur kaynağı** Evet ise ve kaynak sunucudan gelen HTTP yanıtı `Expires` `Cache-Control: max-age`önbellek yönergesi üstbilgisini içeriyorsa veya Azure CDN üstbilgitarafından belirtilen süre değerini kullanır. 
+**CDN önbellek süresi**: bir kaynağın Azure CDN önbelleğe alınma süresini belirtir. Ancak, kabul etme **kaynağı** Evet ise ve kaynak SUNUCUDAN gelen http yanıtı Cache-Directive üstbilgisini `Expires` içeriyorsa `Cache-Control: max-age`, Azure CDN bunun yerine üst bilgi tarafından belirtilen Duration değerini kullanır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Önbelleğe alma kuralları yla CDN'deki varsayılan önbelleğe alma davranışını nasıl özelleştirip geçersiz kakmayı öğrenmek için [önbelleğe alma kurallarıyla Azure CDN önbelleğe alma davranışını](cdn-caching-rules.md)denetle'ye bakın. 
-- Önbelleğe alma davranışını denetlemek için sorgu dizelerini nasıl kullanacağınızı öğrenmek için sorgu [dizeleriyle Azure CDN önbelleğe alma davranışını](cdn-query-string.md)denetle'ye bakın.
+- CDN 'de önbelleğe alma kuralları aracılığıyla varsayılan önbelleğe alma davranışını özelleştirmeyi ve geçersiz kılmayı öğrenmek için bkz. önbellek [kuralları Ile denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md). 
+- Önbelleğe alma davranışını denetlemek için Sorgu dizelerini nasıl kullanacağınızı öğrenmek için bkz. [sorgu dizeleri Ile denetim Azure CDN önbelleğe alma davranışı](cdn-query-string.md).
 
 
 

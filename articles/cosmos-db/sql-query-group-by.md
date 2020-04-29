@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB'deki GROUP BY yan tümcesi
+title: Azure Cosmos DB içindeki GROUP BY yan tümcesi
 description: Azure Cosmos DB için GROUP BY yan tümcesi hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261610"
 ---
-# <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB'deki GROUP BY yan tümcesi
+# <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki GROUP BY yan tümcesi
 
-GROUP BY yan tümcesi, sorgunun sonuçlarını bir veya daha fazla belirtilen özelliğin değerlerine göre böler.
+GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla özellik değerine göre böler.
 
 > [!NOTE]
-> Azure Cosmos DB şu anda GROUP BY'yi .NET SDK 3.3 ve üzeri ve JavaScript SDK 3.4 ve üzeri destekler.
-> Diğer dil SDK'lar için destek şu anda mevcut değildir, ancak planlanmaktadır.
+> Azure Cosmos DB Şu anda, .NET SDK 3,3 ve üzeri sürümlerde ve JavaScript SDK 3,4 ve üzeri sürümlerde grubunu desteklemektedir.
+> Diğer dil SDK desteği şu anda kullanılamıyor ancak planlanmaktadır.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -39,21 +39,21 @@ GROUP BY yan tümcesi, sorgunun sonuçlarını bir veya daha fazla belirtilen ö
 
 - `<scalar_expression>`
   
-   Skaler alt sorgular ve skaler agregalar dışında herhangi bir skaler ifadeye izin verilir. Her skaler ifade en az bir özellik başvurusu içermelidir. Tek tek ifadelerin sayısı veya her ifadenin kardinalliği için bir sınır yoktur.
+   Skalar sorgular ve skaler toplamalar dışında herhangi bir skaler ifadeye izin verilir. Her skaler ifadenin en az bir özellik başvurusu içermesi gerekir. Bağımsız ifadelerin veya her ifadenin kardinaliteinin sayısı için bir sınır yoktur.
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Bir sorgu GROUP BY yan tümcesi kullandığında, SELECT yan tümcesi yalnızca GROUP BY yan tümcesinde yer alan özelliklerin ve sistem işlevlerinin alt kümesini içerebilir. Bir istisna, GROUP BY yan tümcesi içinde yer almadan SELECT yan tümcesinde görünebilen [toplam sistem işlevleridir.](sql-query-aggregates.md) Select yan tümcesi'ne her zaman gerçek değerleri ekleyebilirsiniz.
+  Bir sorgu GROUP BY yan tümcesi kullandığında, SELECT yan tümcesi yalnızca GROUP BY yan tümcesine dahil olan özelliklerin ve sistem işlevlerinin alt kümesini içerebilir. Tek bir istisna, SELECT yan tümcesinde GROUP BY yan tümcesine eklenmeksizin görünebilen [toplu sistem işlevleridir](sql-query-aggregates.md). Ayrıca SELECT yan tümcesine her zaman sabit değerler ekleyebilirsiniz.
 
-  GROUP BY yan tümcesi SELECT, FROM ve WHERE yan tümcesinden sonra ve OFSET LIMIT iyanından önce olmalıdır. Şu anda GROUP BY'yi order by yan tümcesi ile kullanamazsınız, ancak bu planlanmıştır.
+  GROUP BY yan tümcesi SELECT, FROM ve WHERE yan tümcesinden sonra ve sınır sınırı tümceciğinden önce olmalıdır. Şu anda GROUP BY ORDER BY yan tümcesiyle birlikte kullanamazsınız, ancak bu planlanmaktadır.
 
-  GROUP BY maddesi aşağıdakilerden hiçbirine izin vermez:
+  GROUP BY yan tümcesi aşağıdakilerden hiçbirine izin vermez:
   
-- Diğer ad özellikleri veya diğer adlama sistemi işlevleri (diğer adı SELECT yan tümcesi içinde hala izin verilir)
-- Alt sorgular
-- Toplam sistem işlevleri (bunlara yalnızca SELECT yan tümcesinde izin verilir)
+- Diğer ad özellikleri veya diğer ad sistemi işlevleri (SELECT yan tümcesinde hala diğer ad kullanımına izin veriliyor)
+- Alt
+- Toplam sistem işlevleri (bunlar yalnızca SELECT yan tümcesinde kullanılabilir)
 
-Toplu sistem işlevi ve alt sorgusu `GROUP BY` olan sorgular desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
+Toplu sistem işlevine ve alt sorgusuna sahip `GROUP BY` sorgular desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
 
 ```sql
 SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
@@ -61,9 +61,9 @@ SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName
 
 ## <a name="examples"></a>Örnekler
 
-Bu örnekler, [Azure Cosmos DB Query Playground](https://www.documentdb.com/sql/demo)aracılığıyla kullanılabilen beslenme veri kümesini kullanır.
+Bu örnekler, [Azure Cosmos db sorgu deneme alanı](https://www.documentdb.com/sql/demo)aracılığıyla kullanılabilen beslenme veri kümesini kullanır.
 
-Örneğin, her foodGroup'taki toplam öğe sayısını döndüren bir sorgu aşağıda verilmiştir:
+Örneğin, her bir, her bir Mdgroup 'taki öğelerin toplam sayısını döndüren bir sorgu aşağıda verilmiştir:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup
@@ -71,7 +71,7 @@ FROM Food f
 GROUP BY f.foodGroup
 ```
 
-Bazı sonuçlar şunlardır (TOP anahtar kelime sonuçları sınırlamak için kullanılır):
+Bazı sonuçlar (sonuçları sınırlandırmak için TOP anahtar sözcüğü kullanılır):
 
 ```json
 [{
@@ -92,7 +92,7 @@ Bazı sonuçlar şunlardır (TOP anahtar kelime sonuçları sınırlamak için k
 }]
 ```
 
-Bu sorguda sonuçları bölmek için kullanılan iki ifade vardır:
+Bu sorgu, sonuçları bölmek için kullanılan iki ifadeye sahiptir:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup, f.version
@@ -125,7 +125,7 @@ Bazı sonuçlar şunlardır:
 }]
 ```
 
-Bu sorgu, GROUP BY yan tümcesinde bir sistem işlevine sahiptir:
+Bu sorgu GROUP BY yan tümcesinde bir sistem işlevine sahiptir:
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, UPPER(f.foodGroup) AS upperFoodGroup
@@ -154,7 +154,7 @@ Bazı sonuçlar şunlardır:
 }]
 ```
 
-Bu sorgu, öğe özelliği ifadesinde hem anahtar kelimeleri hem de sistem işlevlerini kullanır:
+Bu sorgu, öğe özelliği ifadesinde hem anahtar sözcükleri hem de sistem işlevlerini kullanır:
 
 ```sql
 SELECT COUNT(1) AS foodGroupCount, ARRAY_CONTAINS(f.tags, {name: 'orange'}) AS containsOrangeTag,  f.version BETWEEN 0 AND 2 AS correctVersion
@@ -181,4 +181,4 @@ Sonuçlar:
 
 - [Başlarken](sql-query-getting-started.md)
 - [SELECT yan tümcesi](sql-query-select.md)
-- [Toplam fonksiyonlar](sql-query-aggregates.md)
+- [Toplama işlevleri](sql-query-aggregates.md)

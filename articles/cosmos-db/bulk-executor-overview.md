@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
-description: Toplu yürütme kitaplığı tarafından sunulan toplu alma ve toplu güncelleştirme API'leri aracılığıyla Azure Cosmos DB'de toplu işlemler gerçekleştirin.
+description: Toplu yürütücü kitaplığı tarafından sunulan toplu içeri aktarma ve toplu güncelleştirme API 'Leri aracılığıyla Azure Cosmos DB toplu işlemler gerçekleştirin.
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985601"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
@@ -24,31 +24,31 @@ Azure Cosmos DB hızlı, esnek ve küresel ölçekte dağıtılan bir veritaban�
 Toplu yürütücü kitaplığı bu muazzam işlem hızı ve depolamadan yararlanmanıza yardımcı olur. Toplu yürütücü kitaplığı toplu içeri aktarma ve toplu güncelleştirme API'leri üzerinden Azure Cosmos DB'de toplu işlemler yapmanızı sağlar. Aşağıdaki bölümlerde toplu yürütücü kitaplığının özellikleri hakkında verilen bilgileri okuyabilirsiniz. 
 
 > [!NOTE] 
-> Şu anda, toplu yürütme kitaplığı alma ve güncelleştirme işlemlerini destekler ve bu kitaplık yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir.
+> Şu anda, toplu yürütücü kitaplığı içeri aktarma ve güncelleştirme işlemlerini destekler ve bu kitaplık yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir.
  
-## <a name="key-features-of-the-bulk-executor-library"></a>Toplu yürütme kitaplığıntemel özellikleri  
+## <a name="key-features-of-the-bulk-executor-library"></a>Toplu yürütücü kitaplığı 'nın temel özellikleri  
  
-* Bir kapsayıcıya ayrılan iş ortasını doyuramak için gereken istemci tarafı işlem kaynaklarını önemli ölçüde azaltır. Toplu alma API'sini kullanarak veri yazan tek bir iş parçacığı uygulaması, istemci makinenin CPU'unu doyururken verileri paralel olarak yazan çok iş parçacığı uygulamasıyla karşılaştırıldığında 10 kat daha fazla yazma iş parçacığı elde eder.  
+* Bir kapsayıcıya ayrılan üretilen işi Cumartesi için gereken istemci tarafı işlem kaynaklarını önemli ölçüde azaltır. Toplu içeri aktarma API 'sini kullanarak veri yazan tek bir iş parçacıklı uygulama, verileri paralel olarak yazan çok iş parçacıklı bir uygulamayla karşılaştırıldığında, istemci makinenin CPU 'SU Cumartesi sırasında 10 kat daha fazla yazma işi elde eder.  
 
-* İstek, istek zaman zamanlarını ve diğer geçici özel durumları kitaplık içinde verimli bir şekilde işleyerek hız sınırlamasını işlemek için uygulama mantığı yazmanın sıkıcı görevlerini özetler.  
+* İsteğin hız sınırlandırma, istek zaman aşımları ve diğer geçici özel durumlar için kitaplık içinde verimli bir şekilde işlenerek uygulama mantığı yazma sıkıcı görevlerinin üstesinden gelir.  
 
-* Ölçeklendirmek için toplu işlemler gerçekleştiren uygulamalar için basitleştirilmiş bir mekanizma sağlar. Azure VM'de çalışan tek bir toplu yürütme örneği 500K RU/s'den fazla tüketebilir ve tek tek istemci VM'lere ek örnekler ekleyerek daha yüksek bir iş elde etme oranı elde edebilirsiniz.  
+* Ölçeği genişletmek için toplu işlemler gerçekleştiren uygulamalar için basitleştirilmiş bir mekanizma sağlar. Azure VM 'de çalışan tek bir toplu yürütücü örneği, 500 k RU/sn 'den büyük bir ücret tüketebilir ve tek tek istemci VM 'lerine ek örnekler ekleyerek daha yüksek bir aktarım hızı elde edebilirsiniz.  
  
-* Bir terabayttan daha fazla veriyi ölçeklendirilebilir bir mimari kullanarak bir saat içinde toplu olarak aktarabilir.  
+* Ölçek Genişletme mimarisi kullanarak bir saat içinde birkaç terabaytlık verileri toplu olarak içeri aktarabilir.  
 
-* Azure Cosmos kapsayıcılarında varolan verileri düzeltme ekinde veyare olarak güncelleyebilir. 
+* Azure Cosmos kapsayıcılarındaki mevcut verileri düzeltme eki olarak toplu güncelleştirebilir. 
  
-## <a name="how-does-the-bulk-executor-operate"></a>Toplu uygulayıcı nasıl çalışır? 
+## <a name="how-does-the-bulk-executor-operate"></a>Toplu yürütücü nasıl çalışır? 
 
-Belgeleri almak veya güncelleştirmek için toplu bir işlem bir yığın varlıkla tetiklendiğinde, bunlar başlangıçta Azure Cosmos DB bölüm anahtar aralığına karşılık gelen kovalara karıştırılır. Bir bölüm anahtar aralığına karşılık gelen her kova içinde, bunlar mini gruplara ayrılır ve her mini toplu işlem sunucu tarafında işlenen bir yük olarak hareket eder. Toplu uygulayıcı kitaplığı, bu mini toplu iş birimlerinin hem bölüm anahtar aralıkları içinde hem de arasında eşzamanlı olarak yürütülmesi için optimizasyonlar oluşturmuştur. Aşağıdaki resim, toplu yürütmenin verileri farklı bölüm tuşlarına nasıl toplu olarak aktardığını gösterir:  
+Belgeleri içeri veya dışarı aktarmaya yönelik toplu bir işlem, bir dizi varlıkla tetiklendiğinde, başlangıçta Azure Cosmos DB bölüm anahtarı aralığına karşılık gelen demetlere bölünmüştür. Bölüm anahtar aralığına karşılık gelen her bir demet içinde, bunlar mini toplu işlemlere bölünür ve her mini yığın sunucu tarafında yürütülen bir yük olarak davranır. Toplu yürütücü kitaplığı, bu mini işlerin içinde ve bölüm anahtarı aralıklarında aynı anda yürütülmesi için iyileştirmelere sahiptir. Aşağıdaki görüntüde toplu yürütücü verilerinin farklı bölüm anahtarlarına nasıl toplu olarak alınacağını gösterir:  
 
-![Toplu uygulayıcı mimari](./media/bulk-executor-overview/bulk-executor-architecture.png)
+![Toplu yürütücü mimarisi](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-Toplu yürütücü kitaplığı, koleksiyona ayrılan iş kısmını maksimum olarak kullandığından emin olmasını sağlar. Hız sınırlamalarını ve zaman aşımlarını verimli bir şekilde işlemek için her Azure Cosmos DB bölüm anahtar aralığı için [AIMD tarzı bir tıkanıklık kontrol mekanizması](https://tools.ietf.org/html/rfc5681) kullanır. 
+Toplu yürütücü kitaplığı, bir koleksiyona ayrılan üretilen işi büyük ölçüde kullanmaya özen açar. Hız sınırlandırma ve zaman aşımlarını verimli bir şekilde işlemek için her bir Azure Cosmos DB bölüm anahtarı aralığı için bir [Aimd stili tıkanıklık denetim mekanizması](https://tools.ietf.org/html/rfc5681) kullanır. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar 
   
-* [.NET](bulk-executor-dot-net.md) ve [Java'daki](bulk-executor-java.md)toplu yürütme kitaplığını tüketen örnek uygulamaları deneyerek daha fazla bilgi edinin.  
-* [.NET](sql-api-sdk-bulk-executor-dot-net.md) ve [Java'daki](sql-api-sdk-bulk-executor-java.md)toplu uygulayıcı SDK bilgilerine ve sürüm notlarına göz atın.
-* Toplu uygulayıcı kitaplığı, daha fazla bilgi edinmek için Azure [Cosmos DB Spark bağlayıcısı](spark-connector.md) makalesine bakın.  
-* Toplu uygulayıcı kitaplığı, verileri kopyalamak için Azure Veri Fabrikası için [Azure Cosmos DB bağlayıcısının](../data-factory/connector-azure-cosmos-db.md) yeni sürümüne de entegre edilmiştir.
+* [.Net](bulk-executor-dot-net.md) ve [Java](bulk-executor-java.md)'daki toplu yürütücü kitaplığını kullanan örnek uygulamaları deneyerek daha fazla bilgi edinin.  
+* [.Net](sql-api-sdk-bulk-executor-dot-net.md) ve [Java](sql-api-sdk-bulk-executor-java.md)'daki toplu yürütücü SDK bilgilerine ve sürüm notlarına göz atın.
+* Toplu yürütücü kitaplığı, Cosmos DB Spark Bağlayıcısı ile tümleşiktir, daha fazla bilgi edinmek için bkz. [Azure Cosmos DB Spark Bağlayıcısı](spark-connector.md) makalesi.  
+* Toplu yürütücü kitaplığı, verileri kopyalamak için Azure Data Factory [Azure Cosmos DB bağlayıcısının](../data-factory/connector-azure-cosmos-db.md) yeni bir sürümüyle tümleşiktir.

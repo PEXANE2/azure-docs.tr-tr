@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Örnekleri - Tek bölgeli ölçek kümesi
-description: Bu komut dosyası, Tek bir Kullanılabilirlik Bölgesinde Ubuntu çalıştıran bir Azure sanal makine ölçeği kümesi oluşturur.
+title: Azure CLı örnekleri-tek bölge ölçek kümesi
+description: Bu betik, tek bir kullanılabilirlik bölgesinde Ubuntu çalıştıran bir Azure sanal makine ölçek kümesi oluşturur.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,13 +10,13 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: cd41f21c5390ca0d2c62c1989d46f3d4c0ec36f8
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011013"
 ---
-# <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI ile tek bölgeli sanal makine ölçeği kümesi oluşturun
+# <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile tek bölgeli bir sanal makine ölçek kümesi oluşturma
 Bu betik, tek bir Kullanılabilirlik Alanı’nda Ubuntu çalıştıran bir sanal makine ölçek kümesi oluşturur. Betiği çalıştırdıktan sonra sanal makineye RDP üzerinden erişebilirsiniz.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

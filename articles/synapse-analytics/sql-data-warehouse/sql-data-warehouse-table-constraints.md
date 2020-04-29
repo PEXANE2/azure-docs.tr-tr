@@ -1,6 +1,6 @@
 ---
 title: Birincil, yabancı ve benzersiz anahtarlar
-description: Azure Synapse Analytics'teki Synapse SQL havuzunda tablo kısıtlamaları desteği
+description: Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzunda tablo kısıtlamaları desteği
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,32 +12,32 @@ ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: f97163d02836442430037e18439bcf0724046332
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80990778"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Synapse SQL havuzunda birincil anahtar, yabancı anahtar ve benzersiz anahtar
+# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda birincil anahtar, yabancı anahtar ve benzersiz anahtar
 
-Synapse SQL havuzunda birincil anahtar, yabancı anahtar ve benzersiz anahtar dahil olmak üzere tablo kısıtlamaları hakkında bilgi edinin.
+Birincil anahtar, yabancı anahtar ve benzersiz anahtar dahil olmak üzere SYNAPSE SQL havuzundaki tablo kısıtlamalarını öğrenin.
 
 ## <a name="table-constraints"></a>Tablo düzeyinde kısıtlamalar
 
-Synapse SQL havuzu şu tablo kısıtlamalarını destekler: 
-- BIRINCIL ANAHTAR yalnızca CLUSTERED ve NOT ENFORCED her ikisi de kullanıldığında desteklenir.    
-- BENZERSIZ kısıtlama yalnızca NOT ENFORCED ile desteklenir kullanılır.
+SYNAPSE SQL havuzu bu tablo kısıtlamalarını destekler: 
+- BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve zorunlu KıLıNMAYAN her ikisi de kullanıldığında desteklenir.    
+- UNIQUE kısıtlaması yalnızca ZORLANMAMıŞ ile desteklenir.
 
-Sözdizimi için [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) ve CREATE [TABLE'ı](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)işaretleyin. 
+Sözdizimi için [alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) ve [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)' i işaretleyin. 
 
-Synapse SQL havuzunda FOREIGN KEY kısıtlaması desteklenmez.  
+YABANCı anahtar kısıtlaması SYNAPSE SQL havuzunda desteklenmez.  
 
 
 ## <a name="remarks"></a>Açıklamalar
 
-Birincil anahtara ve/veya benzersiz anahtara sahip olmak, Synapse SQL havuz altyapısının sorgu için en uygun yürütme planı oluşturmasını sağlar.  Birincil anahtar sütundaki veya benzersiz bir kısıtlama sütunundaki tüm değerler benzersiz olmalıdır.
+Birincil anahtar ve/veya benzersiz anahtar olması, SYNAPSE SQL havuzu altyapısının bir sorgu için en uygun yürütme planını oluşturmasına izin verir.  Birincil anahtar sütunundaki veya benzersiz bir kısıtlama sütunundaki tüm değerler benzersiz olmalıdır.
 
-Synapse SQL havuzunda birincil anahtar veya benzersiz kısıtlama içeren bir tablo oluşturduktan sonra, kullanıcıların bu sütunlarda bulunan tüm değerlerin benzersiz olduğundan emin olmanız gerekir.  Bunun ihlali, sorgunun hatalı sonuç dönmesine neden olabilir.  Bu örnek, birincil anahtar veya benzersiz kısıtlama sütununda yinelenen değerler varsa, sorgunun nasıl hatalı sonuç verebileceğini gösterir.  
+SYNAPSE SQL havuzunda birincil anahtar veya benzersiz kısıtlama içeren bir tablo oluşturduktan sonra, kullanıcıların bu sütunlardaki tüm değerlerin benzersiz olduğundan emin olması gerekir.  Bunun ihlali sorgunun yanlış sonuç döndürmesine neden olabilir.  Bu örnek, birincil anahtar veya benzersiz kısıtlama sütunu yinelenen değerler içeriyorsa bir sorgunun yanlış bir sonuç döndürmesine neden olabileceğini gösterir.  
 
 ```sql
  -- Create table t1
@@ -164,12 +164,12 @@ a1          total
 
 ## <a name="examples"></a>Örnekler
 
-Birincil anahtara sahip bir Synapse SQL bilardo tablosu oluşturun: 
+Birincil anahtarla bir Synapse SQL havuzu tablosu oluşturun: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Benzersiz bir kısıtlaması olan bir Synapse SQL bilardo tablosu oluşturun:
+Benzersiz kısıtlaması olan bir Synapse SQL havuzu tablosu oluşturun:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -177,4 +177,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Synapse SQL havuzunuz için tabloları oluşturduktan sonra, bir sonraki adım tabloya veri yüklemektir. Yükleme eğitimi için [bkz.](load-data-wideworldimportersdw.md)
+SYNAPSE SQL havuzunuzun tablolarını oluşturduktan sonra, bir sonraki adım tabloya veri yüklemek olur. Yükleme öğreticisi için bkz. [SYNAPSE SQL Pool 'a veri yükleme](load-data-wideworldimportersdw.md).

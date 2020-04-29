@@ -16,10 +16,10 @@ ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254623"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Öğretici: Azure App Service web uygulamasına Azure CDN ekleme
@@ -75,8 +75,8 @@ Sol gezinti bölmesinde **Uygulama Hizmetleri**’ni ve sonra [statik HTML hızl
 | Ayar | Önerilen değer | Açıklama |
 | ------- | --------------- | ----------- |
 | **CDN profili** | myCDNProfile | CDN profili, aynı fiyatlandırma katmanına sahip bir CDN uç noktaları koleksiyonudur. |
-| **Fiyatlandırma katmanı** | Standart Akamai | [Fiyatlandırma katmanı](cdn-features.md), sağlayıcıyı ve kullanılabilir özellikleri belirtir. Bu öğreticide *Standard Akamai* kullanılır. |
-| **CDN uç noktası adı** | azureedge.net etki alanında benzersiz olan tüm adlar | Önbelleğe alınmış kaynaklarınıza etki alanı * &lt;&gt;bitiş noktası adı*.azureedge.net adresinden erişebilirsiniz.
+| **Fiyatlandırma Katmanı** | Standart Akamai | [Fiyatlandırma katmanı](cdn-features.md), sağlayıcıyı ve kullanılabilir özellikleri belirtir. Bu öğreticide *Standard Akamai* kullanılır. |
+| **CDN uç noktası adı** | azureedge.net etki alanında benzersiz olan tüm adlar | * &lt;Uç nokta adı&gt;*. azureedge.net etki alanındaki önbelleğe alınmış kaynaklarınıza erişirsiniz.
 
 CDN profili oluşturmak için **Oluştur**’u seçin.
 
@@ -210,7 +210,7 @@ Azure portalında bulunan **CDN Uç Noktası** sayfasında **Önbellek**’i se�
 
 **Sorgu dizesi önbellek davranışı** açılan listesinden, **Her benzersiz URL’yi önbelleğe al**’ı seçin.
 
-**Kaydet'i**seçin.
+**Kaydet**’i seçin.
 
 ![Sorgu dizesini önbelleğe alma davranışı seçin](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 

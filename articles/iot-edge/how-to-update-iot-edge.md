@@ -1,6 +1,6 @@
 ---
-title: Cihazlarda IoT Edge sürümünü güncelle - Azure IoT Edge | Microsoft Dokümanlar
-description: Güvenlik daemon ve IoT Edge çalışma zamanının en son sürümlerini çalıştırmak için IoT Edge aygıtları nasıl güncellenir?
+title: Cihazlarda IoT Edge sürümü güncelleştirme-Azure IoT Edge | Microsoft Docs
+description: Güvenlik cini ve IoT Edge çalışma zamanının en son sürümlerini çalıştırmak için IoT Edge cihazları güncelleştirme
 keywords: ''
 author: kgremban
 manager: philmea
@@ -10,36 +10,36 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ce69593c1df0039d64f89e79124af1150409eff7
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81113313"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge güvenlik daemon'ını ve çalışma zamanını güncelleştirme
 
-IoT Edge hizmeti yeni sürümler yayımlanınca, IoT Edge aygıtlarınızı en son özellikler ve güvenlik iyileştirmeleri için güncelleştirmek istersiniz. Bu makalede, yeni bir sürüm kullanılabilir olduğunda IoT Edge aygıtlarınızı nasıl güncelleştireceğimiz hakkında bilgi verilmektedir.
+IoT Edge hizmeti yeni sürümleri yayındıkça, en son özellikler ve güvenlik geliştirmeleri için IoT Edge cihazlarınızı güncellemek isteyeceksiniz. Bu makalede yeni bir sürüm kullanılabilir olduğunda IoT Edge cihazlarınızı güncelleştirme hakkında bilgi sağlanır.
 
-Daha yeni bir sürüme geçmek istiyorsanız, Bir IoT Edge aygıtının iki bileşeninin güncellenmesi gerekir. Bunlardan ilki, aygıtta çalışan ve aygıt başlatıldığında çalışma zamanı modüllerini başlatan güvenlik daemonudur. Şu anda, güvenlik daemon yalnızca cihazın kendisinden güncelleştirilebilir. İkinci bileşen, IoT Edge hub'ı ve IoT Edge aracı modüllerinden oluşan çalışma zamanıdır. Dağıtımınızı nasıl yapılandırdığınıza bağlı olarak, çalışma süresi aygıttan veya uzaktan güncellenebilir.
+Daha yeni bir sürüme geçmek istiyorsanız, bir IoT Edge cihazının iki bileşeni de güncelleştirilmeleri gerekir. Birincisi, cihazda çalışan ve cihaz başladığında çalışma zamanı modüllerini Başlatan güvenlik cini ' dir. Şu anda güvenlik arka plan programı yalnızca cihazın kendisinden güncelleştirilebilen olabilir. İkinci bileşen, IoT Edge hub ve IoT Edge aracı modülleriyle oluşturulan çalışma zamanı. Dağıtımınızı nasıl yapılandırdığınıza bağlı olarak, çalışma zamanı cihazdan veya uzaktan güncelleştirilebilen olabilir.
 
-Azure IoT Edge'in en son sürümünü bulmak için [Azure IoT Edge sürümlerine](https://github.com/Azure/azure-iotedge/releases)bakın.
+En son Azure IoT Edge sürümünü bulmak için, bkz. [Azure IoT Edge yayınlar](https://github.com/Azure/azure-iotedge/releases).
 
-## <a name="update-the-security-daemon"></a>Güvenlik daemon'u güncelleştir
+## <a name="update-the-security-daemon"></a>Güvenlik cini güncelleştirme
 
-IoT Edge güvenlik daemon IoT Edge aygıtında paket yöneticisi kullanılarak güncellenmesi gereken yerel bir bileşenidir.
+IoT Edge güvenlik arka plan programı, IoT Edge cihazında Paket Yöneticisi kullanılarak güncelleştirilmesi gereken yerel bir bileşendir.
 
-Cihazınızda çalışan güvenlik daemonunun sürümünü komutu `iotedge version`kullanarak kontrol edin.
+Komutunu `iotedge version`kullanarak cihazınızda çalışan güvenlik arka plan programının sürümünü denetleyin.
 
 ### <a name="linux-devices"></a>Linux cihazları
 
-Linux x64 cihazlarında, güvenlik daemonunu en son sürüme güncellemek için apt-get'i veya uygun paket yöneticinizi kullanın.
+Linux x64 cihazlarda, güvenlik cini en son sürüme güncelleştirmek için apt-get veya uygun paket yöneticisini kullanın.
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
 
-Güvenlik daemon'unun belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerinden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde, cihazınız için uygun **libiothsm-std** ve **iotedge** dosyalarını bulun. Her dosya için dosya bağlantısını sağ tıklatın ve bağlantı adresini kopyalayın. Bu bileşenlerin belirli sürümlerini yüklemek için bağlantı adresini kullanın:
+Güvenlik arka plan programının belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde, cihazınız için uygun **libiothsm-STD** ve **ıotedge** dosyalarını bulun. Her dosya için dosya bağlantısına sağ tıklayın ve bağlantı adresini kopyalayın. Bu bileşenlerin belirli sürümlerini yüklemek için bağlantı adresini kullanın:
 
 ```bash
 curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
@@ -48,101 +48,101 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 ### <a name="windows-devices"></a>Windows cihazları
 
-Windows aygıtlarında, güvenlik daemon'unu güncelleştirmek için PowerShell komut dosyasını kullanın. Komut dosyası, güvenlik daemon'unun en son sürümünü otomatik olarak çeker.
+Windows cihazlarında güvenlik cini 'nı güncelleştirmek için PowerShell betiğini kullanın. Komut dosyası otomatik olarak güvenlik arka plan programının en son sürümünü çeker.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-Update-IoTEdge komutunu çalıştırmak, iki çalışma zamanı kapsayıcı görüntüsüyle birlikte güvenlik daemonu'nu aygıtınızdan kaldırır ve güncelleştirir. Config.yaml dosyası cihazda ve Moby konteyner motorundan gelen verilerde tutulur (Windows kapsayıcıları kullanıyorsanız). Yapılandırma bilgilerini saklamak, güncelleştirme işlemi sırasında aygıtınız için bağlantı dizesi veya Aygıt Sağlama Hizmeti bilgilerini yeniden sağlamanız gerekmediğiniz anlamına gelir.
+Update-ıotedge komutunun çalıştırılması, iki çalışma zamanı kapsayıcı görüntüsü ile birlikte cihazınızdan güvenlik cini kaldırır ve güncelleştirir. Config. YAML dosyası cihazda, ayrıca Moby kapsayıcı altyapısından (Windows kapsayıcıları kullanıyorsanız) veriler tutulur. Yapılandırma bilgilerinin tutulması, güncelleştirme işlemi sırasında cihazınız için bağlantı dizesini veya cihaz sağlama hizmeti bilgilerini yeniden sağlamanız gerekmediği anlamına gelir.
 
-Güvenlik daemon'unun belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerinden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde **Microsoft-Azure-IoTEdge.cab** dosyasını indirin. Ardından, yerel `-OfflineInstallationPath` dosya konumunu işaret etmek için parametreyi kullanın. Örneğin:
+Güvenlik arka plan programının belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde, **Microsoft-Azure-IoTEdge. cab** dosyasını indirin. Ardından, yerel dosya `-OfflineInstallationPath` konumunu işaret etmek için parametresini kullanın. Örneğin:
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
 ```
 
 >[!NOTE]
->Parametre, `-OfflineInstallationPath` sağlanan dizinde **Microsoft-Azure-IoTEdge.cab** adlı bir dosya arar. IoT Edge sürüm 1.0.9-rc4 ile başlayarak, biri AMD64 aygıtları ve diğeri ARM32 için olmak üzere iki adet .cab dosyası kullanılabilir. Aygıtınız için doğru dosyayı indirin ve ardından mimari soneki kaldırmak için dosyayı yeniden adlandırın.
+>Parametresi `-OfflineInstallationPath` , belirtilen dizinde **Microsoft-Azure-IoTEdge. cab** adlı bir dosya arar. IoT Edge Version 1.0.9-RC4 ile başlayarak, biri AMD64 cihaz ve diğeri ARM32 için kullanılabilecek iki. cab dosyası vardır. Cihazınız için doğru dosyayı indirin ve ardından mimari sonekini kaldırmak için dosyayı yeniden adlandırın.
 
-Güncelleştirme seçenekleri hakkında daha fazla `Get-Help Update-IoTEdge -full` bilgi için komutu kullanın veya [tüm yükleme parametrelerine](how-to-install-iot-edge-windows.md#all-installation-parameters)bakın.
+Güncelleştirme seçenekleri hakkında daha fazla bilgi için komutunu `Get-Help Update-IoTEdge -full` kullanın veya [tüm yükleme parametrelerine](how-to-install-iot-edge-windows.md#all-installation-parameters)başvurun.
 
 ## <a name="update-the-runtime-containers"></a>Çalışma zamanı kapsayıcılarını güncelleştirme
 
-IoT Edge aracısını ve IoT Edge hub kapsayıcılarını güncelleştirme şekliniz, dağıtımınızda yuvarlanma etiketleri (1,0 gibi) veya belirli etiketleri (1,0,7 gibi) kullanıp kullanmadığınıza bağlıdır.
+IoT Edge aracısını ve IoT Edge hub kapsayıcılarını güncelleştirme yöntemi, dağıtımınızda (1,0 gibi) veya belirli Etiketler (örneğin, 1.0.7) kullanmanıza göre değişir.
 
-Komutları kullanarak cihazınızda şu anda ioT Edge aracısı ve IoT Edge hub modüllerinin `iotedge logs edgeAgent` sürümünü kontrol edin veya `iotedge logs edgeHub`.
+IoT Edge aracısının sürümünü ve şu anda cihazınızdaki IoT Edge hub modüllerini ve komutlarını `iotedge logs edgeAgent` kullanarak denetleyin. `iotedge logs edgeHub`
 
-  ![Günlüklerde kapsayıcı sürümünü bulma](./media/how-to-update-iot-edge/container-version.png)
+  ![Günlüklerde kapsayıcı sürümünü bul](./media/how-to-update-iot-edge/container-version.png)
 
-### <a name="understand-iot-edge-tags"></a>IoT Edge etiketlerini anlayın
+### <a name="understand-iot-edge-tags"></a>IoT Edge etiketlerini anlama
 
-IoT Edge aracısı ve IoT Edge hub görüntüleri, ilişkili oldukları IoT Edge sürümüyle etiketlenir. Çalışma zamanı görüntüleriyle etiketleri kullanmanın iki farklı yolu vardır:
+IoT Edge Aracısı ve IoT Edge hub görüntüleri ilişkili oldukları IoT Edge sürümü ile etiketlenir. Çalışma zamanı görüntülerinde Etiketler kullanmanın iki farklı yolu vardır:
 
-* **Rolling etiketleri** - Bu basamaklarla eşleşen en son görüntüyü elde etmek için sürüm numarasının yalnızca ilk iki değerini kullanın. Örneğin, 1.0 en son 1.0.x sürümüne işaret etmek için yeni bir sürüm olduğunda güncelleştirilir. IoT Edge aygıtınızdaki kapsayıcı çalışma süresi görüntüyü yeniden çekerse, çalışma zamanı modülleri en son sürüme güncelleştirilir. Bu yaklaşım geliştirme amacıyla önerilmektedir. Azure portalındaki dağıtımlar varsayılan olarak yuvarlanan etiketlere.
+* **Kayan Etiketler** -bu basamakla eşleşen en son görüntüyü almak için sürüm numarasının yalnızca ilk iki değerini kullanın. Örneğin, en son 1.0. x sürümünü işaret eden yeni bir sürüm olduğunda 1,0 güncelleştirilir. IoT Edge cihazınızdaki kapsayıcı çalışma zamanı görüntüyü yeniden çeker, çalışma zamanı modülleri en son sürüme güncelleştirilir. Bu yaklaşım geliştirme amaçlarıyla önerilir. Azure portal varsayılan olan dağıtımlar, kayan etiketlere.
 
-* **Belirli etiketler** - Resim sürümünü açıkça ayarlamak için sürüm numarasının üç değerini de kullanın. Örneğin, 1.0.7 ilk sürümünden sonra değişmez. Güncelleştirmeye hazır olduğunuzda dağıtım bildiriminde yeni bir sürüm numarası bildirebilirsiniz. Bu yaklaşım üretim amaçlı önerilmektedir.
+* **Belirli Etiketler** -görüntü sürümünü açıkça ayarlamak için sürüm numarasının tüm üç değerini kullanın. Örneğin, 1.0.7 ilk sürümünden sonra değişmez. Güncelleştirme yapmaya hazırsanız dağıtım bildiriminde yeni bir sürüm numarası bildirebilirsiniz. Bu yaklaşım, üretim amaçları için önerilir.
 
-### <a name="update-a-rolling-tag-image"></a>Yuvarlanan etiket görüntüsünü güncelleştir
+### <a name="update-a-rolling-tag-image"></a>Bir sıralı etiket görüntüsünü güncelleştirme
 
-Dağıtımınızda yuvarlanan etiketlerkullanıyorsanız (örneğin, mcr.microsoft.com/azureiotedge-hub:**1.0**) sonra, aygıtınızdaki kapsayıcı çalışma süresini görüntünün en son sürümünü çekmeye zorlamanız gerekir.
+Dağıtımınızda sıralı Etiketler kullanıyorsanız (örneğin, mcr.microsoft.com/azureiotedge-hub:**1,0**), cihazdaki kapsayıcı çalışma zamanını görüntünün en son sürümünü çekmek için zorlamanız gerekir.
 
-IoT Edge aygıtınızdan resmin yerel sürümünü silin. Windows makinelerde, güvenlik daemon kaldırma da çalışma zamanı görüntüleri kaldırır, böylece bu adımı yeniden almak gerekmez.
+IoT Edge cihazınızdan görüntünün yerel sürümünü silin. Windows makinelerinde, güvenlik arka plan programının kaldırılması çalışma zamanı görüntülerini da kaldırır, bu nedenle bu adımı tekrar yapmanız gerekmez.
 
 ```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
 
-Görüntüleri kaldırmak için kuvvet `-f` bayrağını kullanmanız gerekebilir.
+Görüntüleri kaldırmak için zorla `-f` bayrağını kullanmanız gerekebilir.
 
-IoT Edge hizmeti, çalışma zamanı görüntülerinin en son sürümlerini çeker ve otomatik olarak cihazınızda yeniden başlatacaktır.
+IoT Edge hizmeti, çalışma zamanı görüntülerinin en son sürümlerini çeker ve yeniden cihazınızda otomatik olarak başlatır.
 
 ### <a name="update-a-specific-tag-image"></a>Belirli bir etiket görüntüsünü güncelleştirme
 
-Dağıtımınızda belirli etiketler kullanıyorsanız (örneğin, mcr.microsoft.com/azureiotedge-hub:**1.0.8**) tek yapmanız gereken dağıtım bildiriminizdeki etiketi güncelleştirmek ve değişiklikleri cihazınıza uygulamaktır.
+Dağıtımınızda belirli Etiketler kullanırsanız (örneğin, mcr.microsoft.com/azureiotedge-hub:**1.0.8**), tüm yapmanız gereken, dağıtım bildiriminizde etiketi güncelleştirin ve değişiklikleri cihazınıza uygular.
 
-1. Azure portalındaki IoT Hub'ında IoT Edge cihazınızı seçin ve **Modülleri Ayarla'yı**seçin.
+1. Azure portal IoT Hub IoT Edge cihazınızı seçin ve **modülleri ayarla**' yı seçin.
 
-1. **IoT Edge Modülleri** bölümünde **Çalışma Zamanı Ayarları'nı**seçin.
+1. **IoT Edge modüller** bölümünde **çalışma zamanı ayarları**' nı seçin.
 
    ![Çalışma zamanı ayarlarını yapılandırma](./media/how-to-update-iot-edge/configure-runtime.png)
 
-1. **Çalışma Zamanı Ayarları'nda**Edge **Hub'ın** **Görüntü** değerini istenen sürümle güncelleyin. Hemen **Kaydet'i** seçmeyin.
+1. **Çalışma zamanı ayarları**' nda **Edge hub** için **görüntü** değerini istenen sürümle güncelleştirin. Henüz **Kaydet** ' i seçmeyin.
 
-   ![Kenar Hub'ı Görüntüsünü Güncelleştir](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
+   ![Edge hub görüntüsünü güncelleştirme sürümü](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
 
-1. Kenar **Hub** ayarlarını daraltın veya aşağı kaydırın ve **Edge Agent** için **Görüntü** değerini istenen sürümle güncelleştirin.
+1. **Edge hub** ayarlarını daraltın veya aşağı kaydırın ve **Edge Aracısı** için **görüntü** değerini aynı istenen sürümle güncelleştirin.
 
-   ![Kenar Hub Aracısı sürümünü güncelleştirme](./media/how-to-update-iot-edge/runtime-settings-edgeagent.png)
+   ![Edge hub Agent sürümünü Güncelleştir](./media/how-to-update-iot-edge/runtime-settings-edgeagent.png)
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-1. **Gözden Geçir + oluştur'** seçeneğini seçin, dağıtımı gözden geçirin ve **Oluştur'u**seçin.
+1. **Gözden geçir + oluştur**' u seçin, dağıtımı gözden geçirin ve **Oluştur**' u seçin.
 
-## <a name="update-offline-or-to-a-specific-version"></a>Çevrimdışı veya belirli bir sürüme güncelleştirme
+## <a name="update-offline-or-to-a-specific-version"></a>Çevrimdışı veya belirli bir sürümü güncelleştirme
 
-Bir aygıtı çevrimdışı güncelleştirmek veya en son sürüm yerine IoT Edge'in belirli bir sürümüne `-OfflineInstallationPath` güncelleştirmek istiyorsanız, bunu parametreyle yapabilirsiniz.
+Bir cihazı çevrimdışı güncelleştirmek veya en son sürümü yerine IoT Edge belirli bir sürümüne güncelleştirmek istiyorsanız, bunu `-OfflineInstallationPath` parametresiyle yapabilirsiniz.
 
-Bir IoT Edge aygıtını güncelleştirmek için iki bileşen kullanılır:
+IoT Edge cihazı güncelleştirmek için iki bileşen kullanılır:
 
-* Yükleme yönergelerini içeren bir PowerShell komut dosyası
-* IoT Edge güvenlik daemon (iotedged), Moby konteyner motoru ve Moby CLI içeren Microsoft Azure IoT Edge kabini
+* Yükleme yönergelerini içeren bir PowerShell betiği
+* IoT Edge güvenlik cini (ıotedşlı), Moby kapsayıcı altyapısını ve Moby CLı 'yi içeren IoT Edge cab Microsoft Azure
 
-1. Önceki sürümlerle birlikte en son IoT Edge yükleme dosyaları için [Azure IoT Edge sürümlerine](https://github.com/Azure/azure-iotedge/releases)bakın.
+1. Önceki sürümlerle birlikte en son IoT Edge yükleme dosyaları için bkz. [Azure IoT Edge yayınlar](https://github.com/Azure/azure-iotedge/releases).
 
-2. Yüklemek istediğiniz sürümü bulun ve sürüm notlarının **Varlıklar** bölümünden Aşağıdaki dosyaları IoT aygıtınıza indirin:
+2. Yüklemek istediğiniz sürümü bulun ve sürüm notlarının **varlıklar** bölümünden aşağıdaki dosyaları IoT cihazınıza indirin:
 
-   * IoTEdgeSecurityDaemon.ps1
-   * 1.0.9 veya daha yeni sürümlerden Microsoft-Azure-IoTEdge-amd64.cab veya 1.0.8 ve üzeri sürümlerden Microsoft-Azure-IoTEdge.cab.
+   * IoTEdgeSecurityDaemon. ps1
+   * 1.0.9 veya daha yeni sürümlerden Microsoft-Azure-IoTEdge-amd64. cab veya yayınlar 1.0.8 ve daha eski sürümlerde Microsoft-Azure-IoTEdge. cab.
 
-   Microsoft-Azure-IotEdge-arm32.cab, yalnızca test amacıyla 1.0.9'dan itibaren de kullanılabilir. IoT Edge şu anda Windows ARM32 aygıtlarında desteklenmemektedir.
+   Microsoft-Azure-IotEdge-arm32. cab yalnızca test amacıyla 1.0.9 'den başlayarak da kullanılabilir. IoT Edge Şu anda Windows ARM32 cihazlarında desteklenmemektedir.
 
-   PowerShell komut dosyasını kullandığınız .cab dosyasıyla aynı sürümden kullanmanız önemlidir, çünkü işlevsellik her sürümdeki özellikleri destekleyecek şekilde değişir.
+   Her sürümdeki özellikleri desteklemek üzere değiştiğinden, kullandığınız. cab dosyası ile aynı sürümden PowerShell betiğinin kullanılması önemlidir.
 
-3. İndirdiğiniz .cab dosyasında mimari sonek varsa, dosyayı sadece **Microsoft-Azure-IoTEdge.cab**olarak yeniden adlandırın.
+3. İndirdiğiniz. cab dosyasının üzerinde bir mimari soneki varsa, dosyayı yalnızca **Microsoft-Azure-IoTEdge. cab**olarak yeniden adlandırın.
 
-4. Çevrimdışı bileşenlerle güncelleştirmek için [PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) komut dosyasının yerel kopyasını nokta kaynağı na göre yapın. Ardından, komutun `-OfflineInstallationPath` bir `Update-IoTEdge` parçası olarak parametreyi kullanın ve dosya dizinine mutlak yolu sağlayın. Örneğin,
+4. Çevrimdışı bileşenlerle güncelleştirmek için, [nokta kaynağı](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) PowerShell betiğinin yerel kopyasıdır. Sonra, `-OfflineInstallationPath` parametresini `Update-IoTEdge` komutunun bir parçası olarak kullanın ve dosya dizinine mutlak yolu sağlayın. Örneğin,
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1
@@ -151,17 +151,17 @@ Bir IoT Edge aygıtını güncelleştirmek için iki bileşen kullanılır:
 
 ## <a name="update-to-a-release-candidate-version"></a>Sürüm adayı sürümüne güncelleştirme
 
-Azure IoT Edge, IoT Edge hizmetinin yeni sürümlerini düzenli olarak yayımlar. Her kararlı sürümden önce, bir veya daha fazla sürüm adayı (RC) sürümü vardır. RC sürümleri sürüm için planlanan tüm özellikleri içerir, ancak yine de sınama ve doğrulama yoluyla devam etmektedir. Yeni bir özelliği erken test etmek istiyorsanız, bir RC sürümü yükleyebilir ve GitHub üzerinden geri bildirim sağlayabilirsiniz.
+Azure IoT Edge, IoT Edge hizmetinin yeni sürümlerini düzenli olarak yayınlar. Her kararlı sürümden önce bir veya daha fazla sürüm adayı (RC) sürümü vardır. RC sürümleri, yayın için tüm planlı özellikleri içerir, ancak yine de test ve doğrulama işlemleri yapılır. Yeni bir özelliği erken test etmek istiyorsanız bir RC sürümü yükleyebilir ve GitHub aracılığıyla geri bildirim sağlayabilirsiniz.
 
-Sürüm adayı sürümleri, aynı numaralandırma sözleşmesini izler, ancak sonuna eklenen **-rc** artı artımlı bir sayıya sahiptir. Sürüm adaylarını, kararlı sürümler ile aynı Azure [IoT Edge sürümleri](https://github.com/Azure/azure-iotedge/releases) listesinde görebilirsiniz. Örneğin, **1.0.7-rc1 ve 1.0.7-rc2 , 1.0.7** önce gelen iki sürüm adayları bulmak . **1.0.7-rc2** **1.0.7** Ayrıca, RC sürümlerinin yayın **öncesi** etiketlerle işaretlendiğini de görebilirsiniz.
+Sürüm adayı sürümleri, yayınların aynı numaralandırma kuralını izler, ancak **-RC** ve sonuna artımlı bir sayı eklenir. Sürüm adaylarını kararlı sürümlerle aynı [Azure IoT Edge yayınları](https://github.com/Azure/azure-iotedge/releases) listesinde görebilirsiniz. Örneğin, **1.0.7**'den önce gelen iki sürüm adayı olan **1.0.7-RC1** ve **1.0.7-RC2**bulun. Ayrıca, RC sürümlerinin **yayın öncesi** etiketleriyle işaretlendiğini de görebilirsiniz.
 
-IoT Edge aracısı ve hub modülleri, aynı kuralla etiketlenmiş RC sürümlerine sahiptir. Örneğin, **mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2.**
+IoT Edge Aracısı ve hub modülleri aynı kurala göre etiketlenmiş RC sürümlerine sahiptir. Örneğin, **MCR.Microsoft.com/azureiotedge-Hub:1.0.7-RC2**.
 
-Önizlemeler olarak, sürüm adayı sürümleri normal yükleyicilerin hedef aldığı en son sürüm olarak dahil değildir. Bunun yerine, test etmek istediğiniz RC sürümü için varlıkları el ile hedeflemeniz gerekir. Çoğunlukla, bir RC sürümüne yükleme veya güncelleme, IoT Edge'in diğer belirli bir sürümünü hedeflemeyle aynıdır.
+Önizleme olarak, sürüm adayı sürümleri, normal yükleyicilerin hedefi olan en son sürüm olarak dahil değildir. Bunun yerine, sınamak istediğiniz RC sürümü için varlıkları el ile hedefleyebilirsiniz. Çoğu bölüm için, bir RC sürümüne yükleme veya güncelleştirme, IoT Edge diğer belirli sürümlerini hedefleyecek şekilde aynıdır.
 
-Bir IoT Edge aygıtını güvenlik daemonunun veya çalışma zamanı modüllerinin belirli bir sürümüne nasıl güncelleştireceğimi öğrenmek için bu makaledeki bölümleri kullanın.
+Bir IoT Edge cihazını güvenlik arka plan veya çalışma zamanı modüllerinin belirli bir sürümüne güncelleştirme hakkında bilgi edinmek için bu makaledeki bölümleri kullanın.
 
-IoT Edge'i yeni bir makineye yüklüyorsanız, cihazınızın işletim sistemine bağlı olarak belirli bir sürümü nasıl yükleyeceğimize ilişkin öğrenmek için aşağıdaki bağlantıları kullanın:
+Yeni bir makineye IoT Edge yüklüyorsanız, cihaz işletim sisteminize bağlı olarak belirli bir sürümü yükleme hakkında bilgi edinmek için aşağıdaki bağlantıları kullanın:
 
 * [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
 * [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
@@ -170,4 +170,4 @@ IoT Edge'i yeni bir makineye yüklüyorsanız, cihazınızın işletim sistemine
 
 En son [Azure IoT Edge sürümlerini](https://github.com/Azure/azure-iotedge/releases)görüntüleyin.
 
-[Nesnelerin İnterneti blogunda](https://azure.microsoft.com/blog/topics/internet-of-things/) son güncellemeler ve duyurulardan haberdar olun
+[Nesnelerin interneti blogdaki](https://azure.microsoft.com/blog/topics/internet-of-things/) son güncelleştirmeler ve duyuru ile güncel kalın

@@ -1,7 +1,7 @@
 ---
 title: Lucene sorgu söz dizimi
 titleSuffix: Azure Cognitive Search
-description: Joker karakter, bulanık arama, RegEx ve diğer gelişmiş sorgu yapıları için Azure Bilişsel Arama'da kullanılan tam Lucene sorgu sözdizimi için başvuru.
+description: Azure Bilişsel Arama joker karakter, belirsiz arama, RegEx ve diğer gelişmiş sorgu yapıları için kullanılan tam Lucene sorgu söz dizimi için başvuru.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,36 +20,36 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f4c3330b23b8b724cdbf5d7e09eec8a8dd5b8cfa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81258992"
 ---
-# <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da Lucene sorgu sözdizimi
+# <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama Lucene sorgu söz dizimi
 
-Özelleştirilmiş sorgu formları için zengin [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) sözdizimine dayalı olarak Azure Bilişsel Arama'ya karşı sorgular yazabilirsiniz: joker karakter, bulanık arama, yakınlık araması, normal ifadeler birkaç örnektir. Lucene Query Parser sözdiziminin çoğu, ifadeler aracılığıyla `$filter` Azure Bilişsel Arama'da yapılan aralık *aramaları* dışında Azure Bilişsel [Arama'da bozulmadan uygulanır.](search-lucene-query-architecture.md) 
+Özelleştirilmiş sorgu formları için zengin [Lucene sorgu ayrıştırıcı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) sözdizimine göre Azure bilişsel arama karşı sorgular yazabilirsiniz: joker karakter, benzer arama, yakınlık araması, normal ifadeler birkaç örnektir. Lucene sorgu ayrıştırıcısı sözdiziminin büyük bir bölümü [azure bilişsel arama ' de](search-lucene-query-architecture.md), deyimler aracılığıyla `$filter` Azure bilişsel arama oluşturulan *Aralık aramaları* dışında bir şekilde uygulanır. 
 
 > [!NOTE]
-> Tam Lucene sözdizimi, [Arama Belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) API'sinin **arama** parametresi içinde geçirilen sorgu ifadeleri için kullanılır ve bu API'nin [$filter](search-filters.md) parametresi için kullanılan [OData sözdizimi](query-odata-filter-orderby-syntax.md) ile karıştırılmamalıdır. Bu farklı sözdizimilerin sorgu oluşturmak, dizeleri kaçmak ve benzeri için kendi kuralları vardır.
+> Full Lucene sözdizimi, bu API 'nin [$Filter](search-filters.md) parametresi Için kullanılan [OData sözdizimiyle](query-odata-filter-orderby-syntax.md) karıştırılmamalıdır, [arama belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) API 'sinin **arama** parametresinde geçirilen sorgu ifadeleri için kullanılır. Bu farklı sözdizimlerinin sorgu oluşturma, kaçış dizeleri vb. oluşturmak için kendi kuralları vardır.
 
-## <a name="invoke-full-parsing"></a>Tam ayrıştırma çağırma
+## <a name="invoke-full-parsing"></a>Tam ayrıştırmayı çağır
 
-Hangi `queryType` parser'ın kullanılacağını belirtmek için arama parametresini ayarlayın. Geçerli değerler, `simple` varsayılan olarak ve `full` Lucene için içerir. `simple|full` 
+Hangi ayrıştırıcısının kullanılacağını belirtmek için `queryType` arama parametresini ayarlayın. Geçerli değerler, `simple|full`varsayılan `simple` olarak ve `full` Lucene için içerir. 
 
 <a name="bkmk_example"></a> 
 
 ### <a name="example-showing-full-syntax"></a>Tam sözdizimini gösteren örnek
 
-Aşağıdaki örnek, `queryType=full` parametrede belirgin olan Lucene sorgu sözdizimini kullanarak dizindeki belgeleri bulur. Bu sorgu, kategori alanının "bütçe" terimini içerdiği otelleri ve "yakın zamanda yenilenmiş" ifadesini içeren tüm aranabilir alanları döndürür. "Yakın zamanda yenilenmiş" ifadesini içeren belgeler, artış değeri teriminin bir sonucu olarak daha yüksek sırada yer alatır (3).  
+Aşağıdaki örnek, dizinde bulunan ve Lucene sorgu söz dizimini `queryType=full` kullanarak dizindeki belgeleri bulur. Bu sorgu, Kategori alanının "bütçe" terimini ve "son randevu" ifadesini içeren tüm aranabilir alanları içermesi halinde oteller döndürür. "Son randevu" ifadesini içeren belgeler, artırma değeri (3) sonucu olarak daha yüksektir.  
 
-Parametre `searchMode=all` bu örnekte alakalıdır. İşleçler sorguda olduğunda, genellikle `searchMode=all` *tüm* ölçütlerin eşleştiğinden emin olmak için ayarlamanız gerekir.
+`searchMode=all` Parametresi bu örnekle ilgilidir. Her operatör sorgu üzerinde olduğunda, genellikle ölçütlerin *tümünün* eşleştiğinden emin `searchMode=all` olmak için ayarlamanız gerekir.
 
 ```
 GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
 ```
 
- Alternatif olarak, POST kullanın:  
+ Alternatif olarak, POST 'u kullanın:  
 
 ```
 POST /indexes/hotels/docs/search?api-version=2019-05-06
@@ -60,137 +60,137 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 }
 ```
 
-Ek örnekler için, [Azure Bilişsel Arama'da sorgu oluşturmak için Lucene sorgu sözdizimi örneklerine](search-query-lucene-examples.md)bakın. Sorgu parametrelerinin tam birliğini belirtme hakkında ayrıntılı bilgi için, [Arama Belgeleri &#40;Azure Bilişsel Arama REST API&#41;' ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)e bakın.
+Daha fazla örnek için bkz. [Lucene sorgu söz dizimi örnekleri Azure bilişsel arama 'de sorgu oluşturma](search-query-lucene-examples.md). Sorgu parametrelerinin tam olarak belirlenmesi hakkında daha fazla bilgi için bkz. [arama belgeleri &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 > [!NOTE]  
->  Azure Bilişsel Arama, basit anahtar kelime araması için kullanılabilecek basit ve sağlam bir sorgu dili olan [Basit Sorgu Sözdizimini](query-simple-syntax.md)de destekler.  
+>  Azure Bilişsel Arama [basit sorgu söz dizimini](query-simple-syntax.md)da destekler, basit ve güçlü bir sorgu dili, doğrudan anahtar sözcük araması için kullanılabilir.  
 
 ##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a>Sözdizimi temelleri  
 
-aşağıdaki sözdizimi temelleri Lucene sözdizimini kullanan tüm sorgular için geçerlidir.  
+Aşağıdaki sözdizimi temelleri, Lucene sözdizimini kullanan tüm sorgular için geçerlidir.  
 
-### <a name="operator-evaluation-in-context"></a>Bağlam içinde operatör değerlendirmesi
+### <a name="operator-evaluation-in-context"></a>Bağlamda işleç değerlendirmesi
 
-Yerleşim, bir sembolün işleç olarak mı yoksa dizedeki başka bir karakter olarak mı yorumlandığını belirler.
+Yerleştirme, bir simgenin bir operatör ya da bir dizedeki yalnızca başka bir karakter olarak yorumlanıp yorumlanmadığını belirler.
 
-Örneğin, Lucene tam sözdiziminde tilde (~) hem bulanık arama hem de yakınlık araması için kullanılır. Alıntı yapılan bir ifadeden sonra yerleştirildiğinde, ~ yakınlık araması çağırır. Bir dönemin sonuna yerleştirildiğinde, ~ bulanık arama çağırır.
+Örneğin, Lucene Full sözdiziminde, hem belirsiz arama hem de yakınlık araması için tilde (~) kullanılır. Tırnak içine alınmış bir tümcecikden sonra yerleştirildiğinde,, yakınlık aramasını çağırır. Bir terimin sonuna yerleştirildiğinde, belirsiz aramayı çağırır.
 
-"Business~analyst" gibi bir dönem içinde karakter operatör olarak değerlendirilmez. Bu durumda, sorgunun bir terim veya tümcecik sorgusu olduğunu varsayarsak, [sözlük analizi](search-lucene-query-architecture.md#stage-2-lexical-analysis) ile tam [metin arama](search-lucene-query-architecture.md) ~ dışarı şeritler ve iki "business ~ analist" terimini tatili: iş VEYA analisti.
+"İş ~ analist" gibi bir dönem içinde, karakter bir işleç olarak değerlendirilmez. Bu durumda, sorgunun bir terim veya tümcecik sorgusu olduğu varsayılırsa, [sözcük temelli Analize](search-lucene-query-architecture.md#stage-2-lexical-analysis) sahip [tam metin araması](search-lucene-query-architecture.md) ,, ve "Business ~ analist" TERIMINI iki: iş veya analist olarak keser.
 
-Yukarıdaki örnek tilde (~), ancak aynı ilke her işleç için geçerlidir.
+Yukarıdaki örnek, tilde (~), ancak aynı prensibi her operatör için geçerlidir.
 
-### <a name="escaping-special-characters"></a>Özel karakterlerden kaçış
+### <a name="escaping-special-characters"></a>Özel karakterleri kaçış
 
-Arama işleçlerinden herhangi birini arama metninin bir parçası olarak kullanmak için, karakteri tek`\`bir ters eğik çizgi ile öne atarak kaçmak ( ). Örneğin, sorgu dizesinin `https://`bir `://` parçası olan joker karakter araması `search=https\:\/\/*`için . Benzer şekilde, kaçan bir telefon numarası `\+1 \(800\) 642\-7676`deseni de buna benzer.
+Arama metinlerinin bir parçası olarak arama işleçlerinden herhangi birini kullanmak için, karakteri tek bir ters eğik çizgiyle (`\`) sonuna ekleyerek karakteri kaçış. Örneğin, bir joker karakter araması için `https://`, burada `://` sorgu dizesinin bir parçası olan ' i belirtmeniz `search=https\:\/\/*`gerekir. Benzer şekilde, kaçan bir telefon numarası, şöyle görünebilir `\+1 \(800\) 642\-7676`.
 
-Kaçmayı gerektiren özel karakterler şunlardır:  
+Kaçışın gerekli olduğu özel karakterler şunlardır:  
 `+ - & | ! ( ) { } [ ] ^ " ~ * ? : \ /`  
 
 > [!NOTE]  
-> Kaçan belirteçleri bir arada tutsa da, dizin oluşturma sırasında [yapılan sözlü analizler](search-lucene-query-architecture.md#stage-2-lexical-analysis) onları silebilir. Örneğin, standart Lucene çözümleyicitireler, beyaz uzay ve diğer karakterler üzerinde kelime kıracak. Sorgu dizesinde özel karakterlere ihtiyacınız varsa, bunları dizinde koruyan bir çözümleyici gerekebilir. Bazı seçenekler arasında tireli sözcükleri koruyan Microsoft doğal [dil çözümleyicileri](index-add-language-analyzers.md)veya daha karmaşık desenler için özel bir çözümleyici yer almaktadır. Daha fazla bilgi için [Kısmi terimlere, desenlere ve özel karakterlere](search-query-partial-matching.md)bakın.
+> Kaçış belirteçleri birlikte tutar, ancak dizin oluşturma sırasında [sözcük temelli analizler](search-lucene-query-architecture.md#stage-2-lexical-analysis) bunları açabilir. Örneğin, standart Lucene çözümleyici, sözcükleri kısa çizgilerden, boşluklardan ve diğer karakterlere göre keser. Sorgu dizesinde özel karakterlere ihtiyacınız varsa, bunları dizinde koruyan bir çözümleyici gerekebilir. Bazı seçimler, hecelenmiş kelimeleri koruyan Microsoft doğal [dil Çözümleyicileri](index-add-language-analyzers.md)veya daha karmaşık desenler için özel bir çözümleyici içerir. Daha fazla bilgi için bkz. [kısmi terimler, desenler ve özel karakterler](search-query-partial-matching.md).
 
-### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>URL'lerde güvenli olmayan ve ayrılmış karakterleri kodlama
+### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>URL 'lerde güvenli olmayan ve ayrılmış karakterleri kodlama
 
-Lütfen tüm güvenli olmayan ve rezerve edilmiş karakterlerin bir URL'de şifrelendirildiğından emin olun. Örneğin, '#' güvenli olmayan bir karakterdir, çünkü url'deki bir parça/bağlantı tanımlayıcısıdır. Bir URL'de `%23` kullanılıyorsa karakter kodlanmalıdır. '&' ve '=' parametreleri sınırlandırDıkları ve Azure Bilişsel Arama'da değerleri belirtirken ayrılmış karakterlere örnektir. Daha fazla bilgi için lütfen [RFC1738: Uniform Resource Locators (URL)](https://www.ietf.org/rfc/rfc1738.txt) adresine bakın.
+Lütfen tüm güvenli olmayan ve ayrılmış karakterlerin bir URL 'de kodlandığını doğrulayın. Örneğin, URL 'deki bir parça/bağlantı tanımlayıcısı olduğundan, ' # ' güvenli olmayan bir karakterdir. URL 'de kullanılıyorsa, karakterin kodlanmalıdır `%23` . ' & ' ve ' = ', parametreleri sınırlandıran ve Azure Bilişsel Arama değerlerini belirten ayrılmış karakter örnekleridir. Daha fazla ayrıntı için lütfen bkz. [rfc1738: Uniform Resource Konumlandırıcıları (URL)](https://www.ietf.org/rfc/rfc1738.txt) .
 
-Güvensiz karakterler. ``" ` < > # % { } | \ ^ ~ [ ]`` Ayrılmış karakterler `; / ? : @ = + &`.
+Güvenli olmayan karakterler ``" ` < > # % { } | \ ^ ~ [ ]``. Ayrılan karakterler şunlardır `; / ? : @ = + &`.
 
 ###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a>Sorgu boyutu sınırları
 
- Azure Bilişsel Arama'ya gönderebileceğiniz sorguların boyutunda bir sınır vardır. Özellikle, en fazla 1024 yan tümcesi (VE, OR vb. tarafından ayrılmış ifadeler) olabilir. Ayrıca bir sorguda herhangi bir tek terimin boyutu yaklaşık 32 KB sınırı vardır. Uygulamanız arama sorgularını programlı bir şekilde oluşturuyorsa, bu sorguyu sınırsız boyutta sorgu oluşturmayacak şekilde tasarlamanızı öneririz.  
+ Azure Bilişsel Arama 'e gönderebilmeniz için sorguların boyutuyla ilgili bir sınır vardır. Özellikle, en fazla 1024 yan tümce (ve, veya ile ayrılmış ifadeler) olabilir. Ayrıca, bir sorgudaki her bir terimin boyutunda yaklaşık 32 KB 'lik bir sınır vardır. Uygulamanız program aracılığıyla arama sorguları oluşturursa, bu şekilde, sınırsız boyut sorguları oluşturmamasını sağlayan bir şekilde tasarlamayı öneririz.  
 
-### <a name="precedence-operators-grouping"></a>Öncelik işleçleri (gruplandırma)
+### <a name="precedence-operators-grouping"></a>Öncelik işleçleri (gruplama)
 
- Parantez içindeki işleçler de dahil olmak üzere alt sorgular oluşturmak için parantez ler kullanabilirsiniz. Örneğin, `motel+(wifi||luxury)` "motel" terimini ve "wifi" veya "lüks" (veya her ikisini) içeren belgeleri arayacaktır.
+ Parantez, parantez içinde işleç dahil olmak üzere alt sorgular oluşturmak için kullanabilirsiniz. Örneğin, `motel+(wifi||luxury)` "Motel" terimini ve "WiFi" veya "merkezlerini" (ya da her ikisi) içeren belgeleri arar.
 
-Alan gruplandırması benzerdir, ancak gruplandırmayı tek bir alana doğru kapsamlıdır. Örneğin, `hotelAmenities:(gym+(wifi||pool))` "gym" ve "wifi" veya "gym" ve "pool" için "hotelAmenities" alanını arar.  
+Alan gruplama benzerdir, ancak gruplamayı tek bir alanla kapsamlara sahiptir. Örneğin, `hotelAmenities:(gym+(wifi||pool))` "hotelAmenities" alanını "Gym" ve "WiFi" ya da "Gym" ve "havuz" olarak arar.  
 
-##  <a name="boolean-search"></a><a name="bkmk_boolean"></a>Boolean arama
+##  <a name="boolean-search"></a><a name="bkmk_boolean"></a>Boole arama
 
- Her zaman tüm büyük harflerle metin boolean işleçleri (VE, VEYA, NOT) belirtin.  
+ Her zaman tüm büyük harf metin Boole işleçlerini (ve veya, DEĞIL) belirtin.  
 
-### <a name="or-operator-or-or-"></a>VEYA `OR` operatörü veya`||`
+### <a name="or-operator-or-or-"></a>OR işleci `OR` veya`||`
 
-OR işleci dikey bir çubuk veya boru karakteridir. Örneğin: `wifi || luxury` "wifi" veya "lüks" veya her ikisini de içeren belgeleri arar. OR varsayılan bağlaç işleci olduğundan, aynı zamanda `wifi luxury` , bu `wifi || luxury`eşdeğerdir, dışında bırakabilirsiniz .
+OR işleci dikey bir çubuk veya boru karakterdir. Örneğin: `wifi || luxury` "WiFi" veya "merkezlerini" ya da her ikisini de içeren belgeleri arar. YA da varsayılan bir `wifi luxury` `wifi || luxury`bağlantılı operatör olduğundan, buna eşdeğer olan gibi da bırakabilirsiniz.
 
-### <a name="and-operator-and--or-"></a>VE `AND`operatörü `&&` , veya`+`
+### <a name="and-operator-and--or-"></a>AND işleci `AND` `&&` veya`+`
 
-AND işleci bir ampersand veya artı işaretidir. Örneğin: `wifi && luxury` hem "wifi" hem de "lüks" içeren belgeleri arar. Artı karakter (+) gerekli terimler için kullanılır. Örneğin, `+wifi +luxury` her iki terimin de tek bir belge alanında bir yerde görünmesi gerekir.
+AND işleci bir ve işareti ya da artı işareti. Örneğin: `wifi && luxury` "WiFi" ve "merkezlerini" içeren belgeler için arama yapılır. Plus karakteri (+) gerekli şartlar için kullanılır. Örneğin, `+wifi +luxury` her iki terimi tek bir belge alanında bir yerde gözükmelidir.
 
-### <a name="not-operator-not--or--"></a>NOT `NOT`operatörü `!` , veya`-`
+### <a name="not-operator-not--or--"></a>Not işleci `NOT` `!` veya`-`
 
-NOT işleci eksi işaretidir. Örneğin, `wifi –luxury` `wifi` terimi olan ve/veya ' ı olmayan `luxury`belgeleri arayacaktır.
+NOT işleci eksi işareti. Örneğin, `wifi –luxury` ve/veya olmayan belgeler `wifi` için arama yapılır. `luxury`
 
-Sorgu isteğindeki **searchMode** parametresi, NOT işleciyle birlikte bir terimin sorgudaki diğer terimlerle birlikte `+` `|` ANDed veya ORed olup olmadığını denetler (diğer terimlerde operatör veya işleç olmadığını varsayarsak). Geçerli değerler `any` `all`içerir veya .
+Sorgu isteğindeki **searchMode** PARAMETRESI, Not işleci olan bir terimin, sorgudaki diğer koşullara sahip olup olmadığını denetler (diğer koşullarda hiçbir `+` veya `|` işleci olmadığı varsayılarak). Geçerli değerler veya `any` `all`içerir.
 
-`searchMode=any`daha fazla sonuç ekleyerek sorguların geri çağrılması artar ve varsayılan olarak `-` "VEYA Değİl" olarak yorumlanır. Örneğin, `wifi -luxury` terimi `wifi` içeren veya terimi `luxury`içermeyen belgelereşleşir.
+`searchMode=any`sorgu geri çekmeyi daha fazla sonuç ekleyerek artırır ve varsayılan `-` olarak "veya Not" olarak yorumlanır. Örneğin, `wifi -luxury` terimi `wifi` ya da terimi `luxury`içermeyen belgelerle eşleşir.
 
-`searchMode=all`daha az sonuç ekleyerek sorguların kesinliğini artırır ve varsayılan olarak "VE Değİl" olarak yorumlanır. Örneğin, `wifi -luxury` terimi `wifi` içeren ve "lüks" terimini içermeyen belgeler eşleşir. Bu operatör için `-` tartışmasız daha sezgisel bir davranıştır. Bu nedenle, aramaları `searchMode=all` geri `searchMode=any` çağırmak yerine kesinlik için optimize etmek *and* istiyorsanız kullanmayı düşünmelisiniz `-` ve kullanıcılarınız aramalarda operatörü sık sık kullanır.
+`searchMode=all`sorguların hassasiyetini daha az sonuç ekleyerek artırır ve varsayılan olarak "ve NOT" olarak yorumlanır. Örneğin, `wifi -luxury` terimi `wifi` içeren belgelerle eşleştirecektir ve "merkezlerini" terimini içermemelidir. Bu, `-` operatör için daha sezgisel bir davranış ile yapılır. Bu nedenle, aramalarını geri çağırmak `searchMode=all` yerine duyarlık `searchMode=any` için optimize etmek istiyorsanız yerine kullanmanız gerekir *ve* kullanıcılarınız, aramalardaki `-` işleci sıklıkla kullanır.
 
-**SearchMode** ayarına karar verirken, çeşitli uygulamalardaki sorgular için kullanıcı etkileşim ideleşİm modellerini göz önünde bulundurun. Daha fazla yerleşik navigasyon yapısına sahip e-ticaret sitelerinin aksine, bilgi arayan kullanıcıların bir sorguya bir operatör ekleme olasılığı daha yüksektir.
+Bir **searchMode** ayarı üzerinde karar verirken, çeşitli uygulamalardaki sorgular için Kullanıcı etkileşimi düzenlerini göz önünde bulundurun. Bilgi arayan kullanıcıların, daha fazla yerleşik gezinti yapılarına sahip olan e-ticaret sitelerinin aksine, bir sorguya işleç ekleme olasılığı yüksektir.
 
-##  <a name="fielded-search"></a><a name="bkmk_fields"></a>Alanlı arama
+##  <a name="fielded-search"></a><a name="bkmk_fields"></a>Parçalı arama
 
-Arama deyiminin `fieldName:searchExpression` tek bir sözcük veya tümcecik olabileceği sözdizimi veya parantez içinde isteğe bağlı olarak Boolean işleçleri ile daha karmaşık bir ifade yle alanlı bir arama işlemi tanımlayabilirsiniz. Bazı örnekler şunlardır:  
+Arama ifadesinin tek bir sözcük veya tümcecik ya da parantez `fieldName:searchExpression` içinde daha karmaşık bir ifade olabilecek, isteğe bağlı olarak Boolean işleçleriyle, bir ara değer arama işlemini sözdizimi ile tanımlayabilirsiniz. Bazı örnekler şunlardır:  
 
-- tür:caz Değİl tarih  
+- Tarz: canot geçmiş  
 
-- sanatçılar:("Miles Davis" "John Coltrane")
+- Sanatçılar:("mil Davis" "John Coltrane")
 
-Her iki dizenin de tek bir varlık olarak değerlendirilmesini istiyorsanız, bu durumda `artists` alanında iki farklı sanatçıyı ararken, tırnak işaretlerinin içine birden çok dize koyduğunuzdan emin olun.  
+Her iki dizenin de tek bir varlık olarak değerlendirilmesini istiyorsanız, bu durumda `artists` alanda iki ayrı sanatçı aramak istiyorsanız, tırnak işaretleri içine birden çok dize yerleştirdiğinizden emin olun.  
 
-Belirtilen alan `fieldName:searchExpression` bir `searchable` alan olmalıdır.  Alan tanımlarında dizin özniteliklerinin nasıl kullanıldığına ilişkin ayrıntılar için [Dizin Oluştur'a](https://docs.microsoft.com/rest/api/searchservice/create-index) bakın.  
+İçinde `fieldName:searchExpression` belirtilen alanın bir `searchable` alan olması gerekir.  Dizin özniteliklerinin alan tanımlarında nasıl kullanıldığına ilişkin ayrıntılar için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index) .  
 
 > [!NOTE]
-> Alanlı arama ifadeleri kullanırken, her alanlı `searchFields` arama ifadesi açıkça belirtilen bir alan adı olduğundan parametre kullanmanız gerekmez. Ancak, bazı parçaların `searchFields` belirli bir alana kapsamının bulunduğu ve geri kalanının çeşitli alanlara uygulanabileceği bir sorgu çalıştırmak istiyorsanız parametreyi kullanmaya devam edebilirsiniz. `search=genre:jazz NOT history&searchFields=description` Örneğin, sorgu yalnızca `jazz` `genre` alanla eşleşirken, `NOT history` `description` alanla eşleşir. Verilen alan adı `fieldName:searchExpression` her zaman `searchFields` parametreden önce gelir, bu nedenle bu örnekte `genre` `searchFields` parametreye eklememiz gerekmez.
+> Kullanılabilir arama ifadelerini kullanırken, her bir alan arama ifadesinde açık olarak belirtilmiş bir `searchFields` alan adı olduğundan, parametresini kullanmanız gerekmez. Ancak, bazı parçaların belirli bir alan `searchFields` kapsamında bulunduğu bir sorgu çalıştırmak istiyorsanız parametresini kullanmaya devam edebilirsiniz ve REST birçok alana uygulanabilir. Örneğin, `search=genre:jazz NOT history&searchFields=description` sorgu `jazz` `genre` yalnızca alanla eşleşirken `NOT history` `description` alanla eşleşir. `fieldName:searchExpression` Her zaman ' de belirtilen alan adı, bu örnekte `searchFields` bu nedenle parametreye dahil `genre` `searchFields` etmemiz gerekmediğimiz parametreye göre öncelik alır.
 
-##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a>Bulanık arama
+##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a>Benzer arama
 
-Bulanık bir arama, benzer bir yapıya sahip terimlerle eşleşmeler bulur ve bir terimi iki veya daha az mesafe ölçütünü karşılayan en fazla 50 döneme kadar genişletir. Daha fazla bilgi için [Bulanık arama'ya](search-query-fuzzy.md)bakın.
+Benzer bir arama, benzer bir yapıya sahip hükümlerde eşleşmeleri bulur ve iki veya daha az uzaklık ölçütlerine uyan en fazla 50 terim için bir terim genişletiyor. Daha fazla bilgi için bkz. [belirsiz arama](search-query-fuzzy.md).
 
- Bulanık bir arama yapmak için, tek bir sözcüğün sonunda, 0 ile 2 (varsayılan) arasında bir sayı olan ve düzenlenen mesafeyi belirten "~" simgesini kullanın. Örneğin, "blue~" veya "blue~1" "blue", "blues" ve "glue" döndürülecek.
+ Benzer bir arama yapmak için, tek bir sözcüğün sonundaki tilde "~" sembolünü, isteğe bağlı bir parametreyle, 0 ile 2 (varsayılan) arasında, düzenleme uzaklığını belirten bir sayı kullanın. Örneğin, "mavi ~" veya "mavi ~ 1", "mavi", "maves" ve "tutkalla" döndürür.
 
- Bulanık arama yalnızca terimlere uygulanabilir, tümceciklere değil, ancak tilde'yi çok parçalı bir ad veya tümcecikte ayrı ayrı ekleyebilirsiniz. Örneğin, "Unviersty~ ~ "Wshington ~" "University of Washington" maç olacaktır.
+ Benzer arama yalnızca koşullara uygulanabilir, tümceciklere uygulanamaz, ancak her terime bir çok parçalı ad veya ifade içinde her bir terime ekleyebilirsiniz. Örneğin, "Unviersty ~ of ~" Wshington ~ "," University of Washington "ile eşleşir.
  
 ##  <a name="proximity-search"></a><a name="bkmk_proximity"></a>Yakınlık araması
 
-Yakınlık aramaları, belgede birbirine yakın terimleri bulmak için kullanılır. Yakınlık sınırını oluşturan sözcük sayısını izleyen bir tümceciğin sonuna bir tilde "~" simgesi ekleyin. Örneğin, `"hotel airport"~5` bir belgede birbirinden 5 kelime içinde "otel" ve "havaalanı" terimlerini bulabilirsiniz.  
+Yakınlık aramaları, bir belgedeki birbirini yakın terimleri bulmak için kullanılır. Bir ifadenin sonuna, ardından yakınlık sınırını oluşturan sözcüklerin sayısını içeren bir tilde "~" simgesi ekleyin. Örneğin, `"hotel airport"~5` "otel" ve "Havaalanı" terimlerini bir belgedeki birbirini 5 sözcükten bulur.  
 
 
 ##  <a name="term-boosting"></a><a name="bkmk_termboost"></a>Terim artırma
 
-Terim artırma, bir belgeyi, terimi içermeyen belgelere göre artırılmış terimi içeriyorsa daha yüksek sıralamaanlamına gelir. Bu, puanlama profillerinin belirli terimler yerine belirli alanları artırmasındaki puanlama profillerinden farklıdır.  
+Terim artırma, bir belgeyi, süresi içermeyen belgelere göre, daha yüksek bir dönem içeriyorsa bir belgenin derecelendirdiğini ifade eder. Bu, Puanlama profillerindeki Puanlama profillerinin belirli koşullar yerine belirli alanları arttırma açısından farklılık gösterir.  
 
-Aşağıdaki örnek, farklılıkların ortaya önüne gibi yardımcı olur. Belirli bir alandaki eşleşmeleri artıran bir puanlama profili olduğunu varsayalım, [örneğin musicstoreindex örneğinde](index-add-scoring-profiles.md#bkmk_ex) *tür* deyin. Terim artırma, belirli arama terimlerini diğerlerinden daha yüksek bir şekilde artırmak için kullanılabilir. Örneğin, `rock^2 electronic` tür alanındaki arama terimlerini içeren belgeleri dizindeki diğer aranabilir alanlardan daha yüksek artırır. Ayrıca, *kaya* arama terimini içeren belgeler, artış değeri terimi sonucunda diğer arama terimi *elektronikten* daha yüksek sıralanır (2).  
+Aşağıdaki örnek, farkları göstermeye yardımcı olur. Belirli bir alanda eşleşen bir Puanlama profili olduğunu, [müzik \ dizin örneğinde](index-add-scoring-profiles.md#bkmk_ex)de *tarzı* söylediğini varsayalım. Belirli arama terimlerini diğerlerinden daha fazla artırmak için kullanım süresi kullanılabilir. Örneğin, `rock^2 electronic` tarzdaki arama terimlerini içeren belgeleri, dizin içindeki diğer aranabilir alanlardan daha yüksek olacak şekilde artırır. Ayrıca, arama terimini içeren belgeler, diğer arama teriminden daha *yüksek olarak* *derecelendirilir (* 2).  
 
- Bir terimi artırmak için aradığınız dönemin sonunda bir artırma faktörü (bir sayı) içeren "^" simgesi olan "^", "^". İfadeleri de artırabilirsiniz. Artırma faktörü ne kadar yüksekse, terim diğer arama terimlerine göre o kadar alakalı olur. Varsayılan olarak, artırma faktörü 1'dir. Artırma faktörü pozitif olsa da, 1'den küçük olabilir (örneğin, 0,20).  
+ Bir terimi artırmak için, aradığınız terimin sonundaki "^" giriş işaretini, bir artırma faktörü (bir sayı) ile simge kullanın. Ayrıca tümcecikleri de kullanabilirsiniz. Yükseltme faktörü arttıkça, terim diğer arama koşullarına göre daha ilgili olacaktır. Varsayılan olarak, Boost faktörü 1 ' dir. Boost faktörü pozitif olmalıdır, ancak 1 ' den az olabilir (örneğin, 0,20).  
 
-##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>Düzenli ifade araması  
- Normal bir ifade [araması, RegExp sınıfında](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)belgelenen "/" ileri eğik çizgileri arasındaki içeriği temel alan bir eşleşme bulur.  
+##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>Normal ifade arama  
+ Normal ifade araması, [RegExp sınıfında](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)belgelendiği gibi eğik çizgi "/" arasındaki içeriğe dayalı bir eşleşme bulur.  
 
- Örneğin, "motel" veya "otel" içeren belgeleri `/[mh]otel/`bulmak için, belirtin. Normal ifade aramaları tek sözcüklerle eşleşir.
+ Örneğin, "Motel" veya "otel" içeren belgeleri bulmak için, öğesini belirtin `/[mh]otel/`. Normal ifade aramaları tek sözcüklerle eşleştirilir.
 
-Bazı araçlar ve diller ek kaçış karakteri gereksinimleri empoze. JSON için, ileri eğik çizgi içeren dizeleri geriye doğru `search=/.*microsoft.com\/azure\/.*/` eğik çizgi ile kaçar: "microsoft.com/azure/" normal ifade kurar nerede `search=/.* <string-placeholder>.*/` olur ve `microsoft.com\/azure\/` bir kaçan ileri eğik çizgi ile dize.
+Bazı araçlar ve diller, ek kaçış karakter gereksinimleri de vardır. JSON için, eğik çizgi içeren dizelerin ters eğik çizgiyle kaçışması vardır: "microsoft.com/azure/", normal `search=/.*microsoft.com\/azure\/.*/` ifadenin `search=/.* <string-placeholder>.*/` ayarlandığı ve `microsoft.com\/azure\/` kaçış eğik çizgiyle kaçış olan dize olur.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Joker karakter arama  
 
-Birden çok (*) veya tek (?) karakter joker karakter aramaları için genel olarak tanınan sözdizimini kullanabilirsiniz. Lucene sorgu arayıcının bu sembollerin bir tümcecikle değil, tek bir terimle kullanımını desteklediğini unutmayın.
+Birden çok (*) veya tek (?) karakterli joker karakter aramaları için genellikle tanınan sözdizimini kullanabilirsiniz. Lucene sorgu ayrıştırıcısının, bu sembollerin tek bir terim ve tümcecik değil, kullanımını desteklediği unutulmamalıdır.
 
-Önek arama da yıldız (`*`) karakterini kullanır. Örneğin, "not defteri" veya "not defteri" döndürür `search=note*` bir sorgu ifadesi. Önek araması için tam Lucene sözdizimi gerekli değildir. Basit sözdizimi bu senaryoyu destekler.
+Ön ek arama, yıldız işareti (`*`) karakterini de kullanır. Örneğin, bir sorgu ifadesi "Not `search=note*` defteri" veya "Notepad" döndürür. Önek arama için tam Lucene sözdizimi gerekli değildir. Basit sözdizimi bu senaryoyu destekler.
 
-Soneki arama, `*` `?` nerede veya dize önce, tam Lucene sözdizimi ve düzenli bir ifade gerektirir (bir * veya kullanamazsınız ? bir aramanın ilk karakteri olarak sembol). "Alfanümerik" terimi göz önüne alındığında,`search=/.*numeric.*/`bir sorgu ifadesi ( ) eşleşmeyi bulur.
+Sonek araması, dizenin `*` nerede `?` veya önünde olduğu, Full Lucene söz dizimi ve normal bir ifade gerektirir (* veya kullanamazsınız. bir aramanın ilk karakteri olarak simge). "Alfasayısal" terimi verildiğinde, (`search=/.*numeric.*/`) öğesinin bir sorgu ifadesi eşleşmeyi bulur.
 
 > [!NOTE]  
-> Sorgu ayrıştırma sırasında, önek, sonek, joker karakter veya normal ifadeler olarak formüle edilen sorgular, [sözlü çözümlemesi](search-lucene-query-architecture.md#stage-2-lexical-analysis)atlayarak sorgu ağacına olduğu gibi aktarılır. Eşleşmeler yalnızca dizin, sorgunuzun belirttiği biçimdeki dizeleri içeriyorsa bulunur. Çoğu durumda, kısmi terim ve desen eşleştirme başarılı olacak şekilde dize bütünlüğünü koruyan dizinleme sırasında alternatif bir çözümleyici gerekir. Daha fazla bilgi için Azure [Bilişsel Arama sorgularında Kısmi süreli arama'ya](search-query-partial-matching.md)bakın.
+> Sorgu ayrıştırma sırasında, önek, sonek, joker karakter veya normal ifadeler olarak ifade edilen sorgular, [sözcük temelli analizleri](search-lucene-query-architecture.md#stage-2-lexical-analysis)atlayarak sorgu ağacına olarak geçirilir. Eşleşmeler yalnızca, sorgunun belirttiği biçimdeki dizeleri içermesi halinde bulunur. Çoğu durumda, kısmi terim ve kalıp eşleştirme başarılı olması için dize bütünlüğünü koruyan dizin oluşturma sırasında alternatif bir çözümleyiciye ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [Azure bilişsel arama sorgularda kısmi terim arama](search-query-partial-matching.md).
 
-##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a>Joker karakter ve regex sorgularını puanlama
+##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a>Puanlama joker karakteri ve Regex sorguları
 
-Azure Bilişsel Arama, metin sorguları için sıklık tabanlı puanlama[(TF-IDF)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)kullanır. Ancak, terimlerin kapsamının geniş olabileceği joker karakter ve regex sorguları için, sıralamanın eşleşmelere daha nadir gelen terimlere karşı önyargılı olmasını önlemek için sıklık faktörü göz ardı edilir. Tüm eşleşmeler joker karakter ve regex aramaları için eşit olarak ele alınır.
+Azure Bilişsel Arama metin sorguları için sıklık tabanlı Puanlama ([tf-ıDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) kullanır. Bununla birlikte, koşulların kapsamını büyük olasılıkla geniş olabilecek bir joker karakter ve Regex sorguları için, derecelendirmenin, rarer terimleriyle eşleşmelerin eşleşmesini engellemek için sıklık faktörü yok sayılır. Tüm eşleşmeler joker ve Regex aramaları için eşit olarak değerlendirilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Basit arama için sorgu örnekleri](search-query-simple-examples.md)
-+ [Tam Lucene araması için sorgu örnekleri](search-query-lucene-examples.md)
-+ [Belgeleri Ara](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Tam Lucene Search için sorgu örnekleri](search-query-lucene-examples.md)
++ [Belgelerde ara](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [Filtreler ve sıralama için OData ifade sözdizimi](query-odata-filter-orderby-syntax.md)   
-+ [Azure Bilişsel Arama'da basit sorgu sözdizimi](query-simple-syntax.md)   
++ [Azure Bilişsel Arama basit sorgu söz dizimi](query-simple-syntax.md)   

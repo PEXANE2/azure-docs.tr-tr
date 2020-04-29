@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Metinden konuşmaya dönüştürme, Düğüm.js - Konuşma hizmeti'
+title: "Hızlı başlangıç: metin okuma, Node. js-konuşma hizmeti 'ni dönüştürme"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Düğüm.js ve Metinden Konuşmaya REST API'yi kullanarak metinden konuşmaya nasıl dönüştüreceğinizi öğreneceksiniz. Bu kılavuzda yer alan örnek metin Konuşma Sentezi Biçimlendirme Dili (SSML) olarak yapılandırılmıştır. Bu, konuşma yanıtının sesini ve dilini seçmenize olanak tanır.
+description: Bu hızlı başlangıçta, Node. js ve metin okuma REST API kullanarak metin okumayı nasıl dönüştürebileceğinizi öğreneceksiniz. Bu kılavuza eklenen örnek metin, konuşma birleştirme biçimlendirme dili (SSML) olarak yapılandırılmıştır. Bu, konuşma yanıtının ses ve dilini seçmenizi sağlar.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 8cf9641a1b7a5d1aada13522d612458d5032f883
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81258703"
 ---
-# <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Quickstart: Düğüm.js kullanarak metin den konuşmaya dönüştürme
+# <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak metin okumayı dönüştürme
 
-Bu hızlı başlangıçta, Düğüm.js ve metinden konuşmaya REST API'yi kullanarak metinden konuşmaya nasıl dönüştüreceğinizi öğreneceksiniz. Bu kılavuzdaki istek gövdesi, yanıtın sesini ve dilini seçmenize olanak tanıyan [Konuşma Sentezi Biçimlendirme Dili (SSML)](speech-synthesis-markup.md)olarak yapılandırılmıştır.
+Bu hızlı başlangıçta, Node. js ve metin okuma REST API kullanarak metin okumayı nasıl dönüştürebileceğinizi öğreneceksiniz. Bu kılavuzdaki istek gövdesi [konuşma sen, biçimlendirme dili (SSML)](speech-synthesis-markup.md)olarak yapılandırılmıştır ve bu da yanıtın ses ve dilini seçmenizi sağlar.
 
-Bu hızlı başlatma, Konuşma hizmeti kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
+Bu hızlı başlangıç, bir konuşma hizmeti kaynağı olan bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* <a href="https://nodejs.org/en/" target="_blank">Düğüm 8.12.x veya sonrası<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual <span class="docon docon-navigate-external x-hidden-focus"> </span>Studio </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, veya en sevdiğiniz metin editörü
-* Konuşma hizmeti için azure abonelik anahtarı. [Ücretsiz bir tane al!](get-started.md)
+* <a href="https://nodejs.org/en/" target="_blank">Node 8.12. x veya üzeri<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>veya sık kullandığınız metin düzenleyiciniz
+* Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın!](get-started.md).
 
 ## <a name="create-a-project-and-require-dependencies"></a>Proje oluşturma ve bağımlılıklar gerektirme
 
-En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir Düğüm.js projesi oluşturun. Ardından bu kod parçacığını projenizde `tts.js` adlı bir dosyaya kopyalayın.
+En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir Node. js projesi oluşturun. Ardından bu kod parçacığını projenizde `tts.js` adlı bir dosyaya kopyalayın.
 
 ```javascript
 // Requires request and request-promise for HTTP requests
@@ -52,9 +52,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>Bir erişim belirteci alma
 
-Metinden konuşmaya REST API kimlik doğrulaması için bir erişim belirteci gerektirir. Bir erişim jetonu almak için bir değişim gereklidir. Bu işlev, bitiş noktasını kullanarak bir erişim belirteci için Konuşma hizmeti abonelik anahtarınızı `issueToken` değiştirir.
+Metin okuma REST API kimlik doğrulaması için bir erişim belirteci gerektirir. Erişim belirteci almak için bir Exchange gereklidir. Bu işlev, `issueToken` uç noktasını kullanarak bir erişim belirteci için konuşma hizmeti abonelik anahtarınızı değiştirir.
 
-Bu örnek, Konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölge kullanıyorsanız, `uri`değeri güncelleştirin. Tam liste için [Bölgeler'e](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)bakın.
+Bu örnek, konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölge kullanıyorsanız, değerini güncelleştirin `uri`. Tam liste için bkz. [bölgeler](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Bu kodu projenize kopyalayın:
 
@@ -73,23 +73,23 @@ function getAccessToken(subscriptionKey) {
 ```
 
 > [!NOTE]
-> Kimlik doğrulama hakkında daha fazla bilgi için [erişim belirteciyle Kimlik Doğrulaması'na](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)bakın.
+> Kimlik doğrulaması hakkında daha fazla bilgi için bkz. [bir erişim belirteciyle kimlik doğrulama](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
-Bir sonraki bölümde, metinden konuşmaya API'yi çağırmak ve sentezlenen konuşma yanıtını kaydetmek için işlevi oluşturacağız.
+Sonraki bölümde, metin okuma API 'sini çağırmak ve sentezlenmiş konuşma yanıtını kaydetmek için işlevi oluşturacağız.
 
-## <a name="make-a-request-and-save-the-response"></a>İstekte bulunun ve yanıtı kaydedin
+## <a name="make-a-request-and-save-the-response"></a>İstek yapın ve yanıtı kaydedin
 
-Burada metinden konuşmaya API'ye istek oluşturacak ve konuşma yanıtını kaydedebilirsiniz. Bu örnek, Batı ABD bitiş noktasını kullandığınızı varsayar. Kaynağınız farklı bir bölgeye kayıtlıysa, 'yi `uri`güncelleştirdiğinizden emin olun Daha fazla bilgi için konuşma [hizmet bölgelerine](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)bakın.
+Burada, metin okuma API 'sine yönelik isteği derleyeceksiniz ve konuşma yanıtını kaydetmelisiniz. Bu örnek Batı ABD uç noktasını kullandığınızı varsayar. Kaynağınız farklı bir bölgeye kayıtlıysa, ' yi güncelleştirdiğinizden emin olun `uri`. Daha fazla bilgi için bkz. [konuşma hizmeti bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Ardından, istek için gerekli üstbilgi eklemeniz gerekir. Kaynağınızın adıyla `User-Agent` güncelleştirip (Azure portalında bulunan) ve tercih `X-Microsoft-OutputFormat` ettiğiniz ses çıktısına ayarladığınızdan emin olun. Çıktı biçimlerinin tam listesi için [Ses çıktılarına](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)bakın.
+Sonra, istek için gerekli üst bilgileri eklemeniz gerekir. Kaynağınızın adıyla (Azure portal bulunan `User-Agent` ) güncelleştirdiğinizden ve tercih ettiğiniz ses çıktılarınız için ayarlandığından `X-Microsoft-OutputFormat` emin olun. Çıkış biçimlerinin tam listesi için bkz. [Ses çıkışları](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
-Daha sonra Konuşma Sentezi Biçimlendirme Dili (SSML) kullanarak istek gövdesini oluşturun. Bu örnek yapıyı tanımlar ve `text` daha önce oluşturduğunuz girişi kullanır.
+Sonra, konuşma birleştirme biçimlendirme dili (SSML) kullanarak istek gövdesini oluşturun. Bu örnek yapıyı tanımlar ve daha önce oluşturduğunuz `text` girişi kullanır.
 
 >[!NOTE]
-> Bu örnek `JessaRUS` ses yazı tipini kullanır. Microsoft tarafından sağlanan seslerin/dillerin tam listesi için [Dil desteğine](language-support.md)bakın.
-> Markanız için benzersiz, tanınabilir bir ses oluşturmak istiyorsanız, [bkz.](how-to-customize-voice-font.md)
+> Bu örnek, `JessaRUS` ses yazı tipini kullanır. Microsoft tarafından sunulan seslerin/dillerin tüm listesi için bkz. [dil desteği](language-support.md).
+> Markanız için benzersiz ve tanınabilir bir ses oluşturmaya ilgileniyorsanız, bkz. [özel ses yazı tipleri oluşturma](how-to-customize-voice-font.md).
 
-Son olarak, servise bir istekte bulunacaksınız. İstek başarılı olursa ve 200 durum kodu döndürülürse, `TTSOutput.wav`konuşma yanıtı .
+Son olarak, hizmet için bir istek yaparsınız. İstek başarılı olursa ve 200 durum kodu döndürülürse, konuşma yanıtı olarak `TTSOutput.wav`yazılır.
 
 ```javascript
 // Make sure to update User-Agent with the name of your resource.
@@ -135,9 +135,9 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Neredeyse bitti. Son adım bir eşzamanlı fonksiyon oluşturmaktır. Bu işlev, abonelik anahtarınızı bir ortam değişkeninden okur, metin ister, bir belirteç alır, isteğin tamamlanmasını bekler, ardından metinden konuşmaya dönüştürür ve sesi .wav olarak kaydeder.
+Neredeyse bitti. Son adım zaman uyumsuz bir işlev oluşturmaktır. Bu işlev, bir ortam değişkeninden abonelik anahtarınızı okur, metin ister, belirteç alır, isteğin tamamlanmasını bekler, sonra metni konuşmaya dönüştürür ve sesi bir. WAV olarak kaydeder.
 
-Ortam değişkenlerini bilmiyorsanız veya abonelik anahtarınızı dize olarak kodlanmış olarak test `process.env.SPEECH_SERVICE_KEY` etmeyi tercih ediyorsanız, bir dize olarak abonelik anahtarınızla değiştirin.
+Ortam değişkenlerini tanımıyorsanız veya bir dize olarak abonelik anahtarınız ile test yapmayı tercih ediyorsanız, bir dize olarak abonelik anahtarınızla değiştirin `process.env.SPEECH_SERVICE_KEY` .
 
 ```javascript
 // Use async and await to get the token before attempting
@@ -167,22 +167,22 @@ main()
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-İşte bu, metinden konuşmaya örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumundan), proje dizininize gidin ve çalıştırın:
+Bu, metinden konuşmaya örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumu), proje dizininize gidin ve şunu çalıştırın:
 
 ```console
 node tts.js
 ```
 
-İstendiğinde, metinden konuşmaya dönüştürmek istediğiniz her şeyi yazın. Başarılı olursa, konuşma dosyası proje klasörünüzde bulunur. En sevdiğiniz medya oynatıcıkullanarak oynayın.
+İstendiğinde, metinden konuşmaya dönüştürmek istediğiniz her şeyi yazın. Başarılı olursa, konuşma dosyası proje klasörünüzde bulunur. En sevdiğiniz Medya yürütücünüzü kullanarak yürütün.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan gizli bilgileri kaldırdıklarından emin olun.
+Örnek uygulamanızın kaynak kodundaki tüm gizli bilgileri abonelik anahtarları gibi kaldırdığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [GitHub'da Node.js örneklerini keşfedin](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
+> [GitHub 'da Node. js örneklerini keşfet](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

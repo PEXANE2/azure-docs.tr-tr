@@ -1,22 +1,22 @@
 ---
-title: 'Desen: İlke tanımındaki mantıksal işleçler'
-description: Bu Azure İlkesi deseni, mantıksal işleçlerin ilke tanımında nasıl kullanılacağına örnek olarak sunulur.
+title: 'Model: bir ilke tanımındaki mantıksal işleçler'
+description: Bu Azure Ilke modelinde, mantıksal işleçlerin bir ilke tanımında nasıl kullanılacağına ilişkin örnekler verilmektedir.
 ms.date: 04/15/2020
 ms.topic: sample
 ms.openlocfilehash: 691383b1f8ae34bbd51ce7f4f9310980e3c66537
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81272517"
 ---
-# <a name="azure-policy-pattern-logical-operators"></a>Azure İlkesi deseni: mantıksal işleçler
+# <a name="azure-policy-pattern-logical-operators"></a>Azure Ilke stili: mantıksal işleçler
 
-İlke tanımı birkaç koşullu deyim içerebilir. Her ifadenin doğru olması gerekebilir veya bunların yalnızca bazılarının doğru olması gerekebilir. Bu ihtiyaçları desteklemek için, dil **değil**için [mantıksal işleçleri](../concepts/definition-structure.md#logical-operators) vardır , **allOf**, ve **anyOf**. İsteğe bağlıdırlar ve karmaşık senaryolar oluşturmak için iç içe olabilir.
+Bir ilke tanımı, birkaç koşullu deyim içerebilir. Her deyimin doğru olması veya yalnızca bazılarının doğru olması gerekir. Bu ihtiyaçları desteklemek için, dilin [mantıksal işleçleri](../concepts/definition-structure.md#logical-operators) **değildir**, **allof**ve **anyfor**. Bunlar isteğe bağlıdır ve karmaşık senaryolar oluşturmak için iç içe olabilir.
 
-## <a name="sample-1-one-logical-operator"></a>Örnek 1: Bir mantıksal işleç
+## <a name="sample-1-one-logical-operator"></a>Örnek 1: bir mantıksal işleç
 
-Bu ilke tanımı, otomatik arızaların ve birden çok yazma yerinin yapılandırılıp yapılmaması için CosmosDB hesaplarını değerlendirir. Bunlar olmadığında, [denetim,](../concepts/effects.md#audit) uyumlu olmayan kaynak oluşturulduğunda veya güncelleştirildiğinde bir günlük girişi tetikler ve oluşturur.
+Bu ilke tanımı, otomatik yük devretme ve birden fazla yazma konumu yapılandırılıp yapılandırılmadığını görmek için CosmosDB hesaplarını değerlendirir. Olmadığında [Denetim](../concepts/effects.md#audit) tetiklenir ve uyumlu olmayan kaynak oluşturulduğunda veya güncelleştirilirken bir günlük girişi oluşturur.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json":::
 
@@ -24,12 +24,12 @@ Bu ilke tanımı, otomatik arızaların ve birden çok yazma yerinin yapılandı
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json" range="6-22" highlight="3":::
 
-**İlke Kural.eğer** blok üç koşulun da doğru olduğundan emin olmak için tek bir **allOf** kullanırsa.
-Yalnızca tüm bu koşullar doğru değerlendirildiğinde **denetim** efekti tetiklemektedir.
+**Policyrule. If** bloğu, üç koşulun de doğru olmasını sağlamak için tek bir **allof** kullanır.
+Yalnızca bu koşulların tümü doğru olarak değerlendirilse **Denetim** efekti tetikler.
 
-## <a name="sample-2-multiple-logical-operators"></a>Örnek 2: Birden çok mantıksal işleç
+## <a name="sample-2-multiple-logical-operators"></a>Örnek 2: birden çok mantıksal işleçler
 
-Bu ilke tanımı, bir adlandırma deseni için kaynakları değerlendirir. Bir kaynak eşleşmiyorsa, [reddedilir.](../concepts/effects.md#deny)
+Bu ilke tanımı, bir adlandırma deseninin kaynaklarını değerlendirir. Bir kaynak eşleşmezse, [reddedilir](../concepts/effects.md#deny).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json":::
 
@@ -37,11 +37,11 @@ Bu ilke tanımı, bir adlandırma deseni için kaynakları değerlendirir. Bir k
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
-Bu **policyRule.if** bloğu da tek bir **allOf**içerir, ancak her koşul mantıksal **işleç** ile sarılır. Mantıksal **olmayan** işleci içinde koşullu önce değerlendirir ve daha sonra tüm yan tümcedoğru veya yanlış olup olmadığını belirlemek için **değil** değerlendirir. **Her** iki mantıksal işleç de doğru değerlendirmek, ilke etkisi tetikler.
+Bu **Policyrule. If** bloğu tek bir **allof**de içeriyorsa, ancak her koşul mantıksal **olmayan** işleçle sarmalanır. **Not** Logical işlecinin içindeki koşul ilk olarak değerlendirilir ve sonra yan tümcesinin doğru mi yoksa yanlış mi olduğunu belirlememe sonucunu **vermez** . Her iki mantıksal işleç de true olarak **değerlendirilmiyorsa,** ilke efekti tetikler.
 
-## <a name="sample-3-combining-logical-operators"></a>Örnek 3: Mantıksal işleçleri birleştirme
+## <a name="sample-3-combining-logical-operators"></a>Örnek 3: mantıksal işleçleri birleştirme
 
-Bu ilke tanımı, izlemenin etkin olup olmadığını veya izlemenin başarılı bir durumda olup olmadığını görmek için Java Spring hesaplarını değerlendirir.
+Bu ilke tanımı, bir izlemenin etkin olup olmadığını veya izlemenin başarılı bir durumda olup olmadığını görmek için Java Spring hesaplarını değerlendirir.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
 
@@ -49,7 +49,7 @@ Bu ilke tanımı, izlemenin etkin olup olmadığını veya izlemenin başarılı
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
 
-Bu **ilke Kuralı.if** bloğu hem **allOf'u** hem de **tüm** mantıksal işleçleri içerir. **AnyOf** mantıksal işleci, dahil edilen bir koşul doğru olduğu sürece doğru değerlendirir. _Türü_ **allOf**özünde olduğu gibi, her zaman doğru değerlendirmek gerekir. **AnyOf'daki** _koşullardan_ biri ve türü doğruysa, ilke efekti tetikler.
+Bu **Policyrule. If** bloğu hem **allof** hem de **anyOf** mantıksal işleçleri içeriyorsa. Dahil edilen bir koşul doğru olduğu sürece, mantıksal işlecin **anydeğeri** true olarak değerlendirilir. _Türü_ , **allof**öğesinin çekirdeğünde olduğundan her zaman true olarak değerlendirilmelidir. _Türü_ ve **herhangi** bir koşuldaki koşullardan biri doğru ise, ilke efekti tetiklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,31 +5,31 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.openlocfilehash: be60a2f371148fabf73fc7fcdce114295775d71c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80986257"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, bir Azure hesabınız ve Konuşma hizmeti aboneliğiniz olduğu varsayar. Hesabınız ve aboneliğiniz yoksa, [Konuşma hizmetini ücretsiz olarak deneyin.](../../../get-started.md)
+Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../get-started.md).
 
-## <a name="install-the-speech-sdk"></a>Konuşma SDK'yı yükleyin
+## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
-Herhangi bir şey yapmadan önce Konuşma SDK'sını yüklemeniz gerekir.
+Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gerekir.
 
 ```Python
 pip install azure-cognitiveservices-speech
 ```
 
-macOS'taysanız ve yükleme sorunlarıyla karşılaştıysanız, önce bu komutu çalıştırmanız gerekebilir.
+MacOS 'ta çalışıyorsanız ve yüklemeyi sorunları yaşıyorsanız, önce bu komutu çalıştırmanız gerekebilir.
 
 ```Python
 python3 -m pip install --upgrade pip
 ```
 
-Konuşma SDK yüklendikten sonra, komut dosyanızın en üstüne aşağıdaki alma deyimleri ekleyin.
+Konuşma SDK 'Sı yüklendikten sonra, betiğinizin en üstüne aşağıdaki içeri aktarma deyimlerini ekleyin.
 
 ```Python
 from azure.cognitiveservices.speech import AudioDataStream, SpeechConfig, SpeechSynthesizer, SpeechSynthesisOutputFormat
@@ -38,65 +38,65 @@ from azure.cognitiveservices.speech.audio import AudioOutputConfig
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK'sını kullanarak Konuşma hizmetini aramak için [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)bir . Bu sınıf, anahtarınız ve ilişkili bölgeniz, bitiş noktanız, ana bilgisayar veya yetkilendirme belirteciniz gibi aboneliğiniz hakkında bilgiler içerir.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)oluşturmanız gerekir. Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
 
 > [!NOTE]
-> Konuşma tanıma, konuşma sentezi, çeviri veya niyet tanıma gerçekleştirin, her zaman bir yapılandırma oluşturursunuz.
+> Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
 
-Bir baş harfe başlatmanın birkaç [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)yolu vardır:
+[`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)Şunları başlatabilmeniz için birkaç yol vardır:
 
-* Abonelikle: bir anahtar ve ilişkili bölgede geçirin.
-* Bir bitiş noktası ile: Konuşma hizmeti bitiş noktası geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
-* Bir ana bilgisayar ile: bir ana bilgisayar adresi geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
-* Yetkilendirme belirteci yle: yetkilendirme jetonundan ve ilişkili bölgeye geçin.
+* Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
+* Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
+* Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
+* Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bu örnekte, bir [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) abonelik anahtarı ve bölge kullanarak oluşturun. Bölge tanımlayıcınızı bulmak için [bölge destek](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
+Bu örnekte, bir abonelik anahtarı ve [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) bölgesi kullanarak bir oluşturun. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
 
 ```python
 speech_config = SpeechConfig(subscription="YourSubscriptionKey", region="YourServiceRegion")
 ```
 
-## <a name="synthesize-speech-to-a-file"></a>Konuşmayı bir dosyaya sentezleme
+## <a name="synthesize-speech-to-a-file"></a>Konuşmayı bir dosyaya sentezleştirme
 
-Ardından, konuşmacılara, dosyalara veya diğer çıktı akışlarına metin den konuşmaya dönüşümleri ve çıktıları yürüten bir [`SpeechSynthesizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python) nesne oluşturursunuz. Önceki [`SpeechSynthesizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python) adımda oluşturulan [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) nesneyi ve çıktı sonuçlarının [`AudioOutputConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audiooutputconfig?view=azure-python) nasıl işleneceğini belirten bir nesneyi param olarak kabul eder.
+Sonra, metin okuma dönüştürmeleri [`SpeechSynthesizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python) yürüten ve hoparlörlerde, dosyalarda veya diğer çıkış akışlarına giden çıktıları yürüten bir nesne oluşturun. , [`SpeechSynthesizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python) Önceki adımda oluşturulan [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) nesneyi params olarak kabul eder ve çıkış sonuçlarının nasıl işleneceğini [`AudioOutputConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audiooutputconfig?view=azure-python) belirten bir nesnedir.
 
-Başlatmak için, `AudioOutputConfig` `filename` oluşturucu param kullanarak `.wav` çıktıyı otomatik olarak bir dosyaya yazmak için bir oluştur.
+Başlamak için, `AudioOutputConfig` `filename` Oluşturucu param ' ı kullanarak çıktıyı otomatik olarak bir `.wav` dosyaya yazmak üzere bir oluşturun.
 
 ```python
 audio_config = AudioOutputConfig(filename="path/to/write/file.wav")
 ```
 
-Ardından, nesnenizi `SpeechSynthesizer` `speech_config` ve nesneyi param `audio_config` olarak geçirerek anında bir annızı edin. Daha sonra, konuşma sentezini yürütmek ve bir `speak_text_async()` dosyaya yazma, bir metin dizisiyle çalışmak kadar basittir.
+Sonra, `SpeechSynthesizer` `speech_config` nesneyi ve `audio_config` nesneyi params olarak geçirerek bir örneğini oluşturun. Daha sonra, konuşma birleştirmenin yürütülmesi ve bir dosyaya yazılması, bir metin dizesiyle çalışırken `speak_text_async()` basittir.
 
 ```python
 synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
 synthesizer.speak_text_async("A simple test to write to a file.")
 ```
 
-Programı çalıştırın ve belirttiğiniz `.wav` konuma sentezlenmiş bir dosya yazılır. Bu, en temel kullanıma iyi bir örnektir, ancak daha sonra çıktıyı özelleştirmeye ve çıktı yanıtını özel senaryolarla çalışmak için bellek içi bir akış olarak işlemeye bakabilirsiniz.
+Programı çalıştırın ve belirttiğiniz konuma bir sentezlenmiş `.wav` dosya yazılır. Bu, en temel kullanımın iyi bir örneğidir, ancak sonraki bir deyişle, özel senaryolarla çalışmaya yönelik bellek içi akış olarak çıktıyı özelleştirmeye ve çıkış yanıtını işlemeye baktığınızın ardından.
 
-## <a name="synthesize-to-speaker-output"></a>Hoparlör çıkışına sentezleme
+## <a name="synthesize-to-speaker-output"></a>Konuşmacı çıktısına sentezleştirme
 
-Bazı durumlarda, sentezlenmiş konuşmayı doğrudan bir konuşmacıya doğrudan çıktınız isteyebilirsiniz. Bunu yapmak için, önceki bölümdeki örneği kullanın, ancak `filename` paramı kaldırarak `use_default_speaker=True`değiştirin `AudioOutputConfig` ve ayarlayın. Bu, geçerli etkin çıktı aygıtına çıkar.
+Bazı durumlarda, doğrudan sentezlenmiş konuşmayı doğrudan bir konuşmacının çıktısını almak isteyebilirsiniz. Bunu yapmak için, önceki bölümdeki örneği kullanın, ancak `AudioOutputConfig` `filename` param ' ı kaldırarak öğesini değiştirin ve ayarlayın. `use_default_speaker=True` Bu, geçerli etkin çıkış cihazına çıkış verir.
 
 ```python
 audio_config = AudioOutputConfig(use_default_speaker=True)
 ```
 
-## <a name="get-result-as-an-in-memory-stream"></a>Bellek içi akış olarak sonuç alma
+## <a name="get-result-as-an-in-memory-stream"></a>Bellek içi akış olarak sonuç alın
 
-Konuşma uygulaması geliştirmedeki birçok senaryo için, büyük olasılıkla bir dosyaya doğrudan yazmak yerine, ortaya çıkan ses verilerine bellek içi akış olarak gereksinim duymanız gerekir. Bu, şunları içeren özel davranış oluşturmanıza olanak sağlar:
+Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla bir dosyaya doğrudan yazmak yerine, sonuçta elde edilen ses verilerinin bellek içi akış olarak olması gerekir. Bu, aşağıdakiler dahil olmak üzere özel davranış oluşturmanıza izin verir:
 
-* Ortaya çıkan bayt dizisini özel downstream hizmetleri için aranabilir bir akış olarak özetleyin.
-* Sonucu diğer API'ler veya hizmetlerle tümleştirin.
-* Ses verilerini değiştirin, `.wav` özel üstbilgiler yazın, vb.
+* Özel aşağı akış Hizmetleri için arama yapabilecek bir akış olarak ortaya çıkan bayt dizisinin soyut olması.
+* Sonucu diğer API 'leri veya hizmetleriyle tümleştirin.
+* Ses verilerini değiştirin, özel `.wav` üstbilgiler yazın vb.
 
-Önceki örnekten bu değişikliği yapmak kolaydır. İlk olarak, `AudioConfig`daha fazla denetim için çıktı davranışını bu noktadan itibaren el ile yöneteceğiniz için kaldırın. Sonra `None` `SpeechSynthesizer` yapıcı `AudioConfig` için geçmek. 
+Önceki örnekte bu değişikliği yapmak basittir. İlk olarak, daha `AudioConfig`fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için öğesini kaldırın. Sonra `SpeechSynthesizer` Oluşturucu `None` `AudioConfig` içinde öğesine geçirin. 
 
 > [!NOTE]
-> `None` Yukarıdaki hoparlör `AudioConfig`çıktısı örneğinde olduğu gibi atlayarak yerine, geçerli etkin çıkış aygıtında varsayılan olarak sesi oynatmaz.
+> Yukarıdaki `None` konuşmacı çıktısı `AudioConfig`örneğinde olduğu gibi değil, için geçirme, geçerli etkin çıkış cihazında varsayılan olarak sesi oynamaz.
 
-Bu kez, sonucu bir [`SpeechSynthesisResult`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisresult?view=azure-python) değişkene kaydedin. Özellik `audio_data` çıktı `bytes` verilerinin bir nesnesini içerir. Bu nesneyle el ile çalışabilir veya [`AudioDataStream`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audiodatastream?view=azure-python) bellek içi akışı yönetmek için sınıfı kullanabilirsiniz. Bu örnekte, `AudioDataStream` sonuçtan bir akış almak için oluşturucuyu kullanırsınız.
+Bu kez, sonucu bir [`SpeechSynthesisResult`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisresult?view=azure-python) değişkene kaydedersiniz. Özelliği `audio_data` , çıkış verilerinin `bytes` bir nesnesini içerir. Bu nesneyle el ile çalışabilirsiniz veya bellek içi akışı yönetmek için [`AudioDataStream`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audiodatastream?view=azure-python) sınıfını kullanabilirsiniz. Bu örnekte, `AudioDataStream` sonuçtan bir akış almak için oluşturucuyu kullanırsınız.
 
 ```python
 synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config=None)
@@ -104,21 +104,21 @@ result = synthesizer.speak_text_async("Getting the response as an in-memory stre
 stream = AudioDataStream(result)
 ```
 
-Buradan, ortaya `stream` çıkan nesneyi kullanarak herhangi bir özel davranış uygulayabilirsiniz.
+Buradan, sonuçta elde edilen `stream` nesneyi kullanarak özel davranışları uygulayabilirsiniz.
 
-## <a name="customize-audio-format"></a>Ses biçimini özelleştirme
+## <a name="customize-audio-format"></a>Ses biçimini Özelleştir
 
-Aşağıdaki bölümde, aşağıdakiler de dahil olmak üzere ses çıktısı özniteliklerinin nasıl özelleştirilen gösterilmektedir:
+Aşağıdaki bölümde aşağıdakiler dahil olmak üzere ses çıkış özniteliklerinin nasıl özelleştirileceği gösterilmektedir:
 
 * Ses dosyası türü
-* Örnek oranı
+* Örnek hız
 * Bit derinliği
 
-Ses biçimini değiştirmek için nesneüzerindeki `set_speech_synthesis_output_format()` `SpeechConfig` işlevi kullanırsınız. Bu işlev, `enum` çıktı [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-python)biçimini seçmek için kullandığınız bir tür bekler. Kullanılabilen ses biçimleri listesi için başvuru [dokümanlarına](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-python) bakın.
+Ses biçimini değiştirmek için `set_speech_synthesis_output_format()` `SpeechConfig` nesnesi üzerinde işlevini kullanın. Bu işlev, çıkış `enum` biçimini seçmek [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-python)için kullandığınız türünde bir tür bekliyor. Kullanılabilir [Ses biçimlerinin listesi](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-python) için başvuru belgelerine bakın.
 
-Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçenekler vardır. Tanım olarak, gibi `Raw24Khz16BitMonoPcm` ham biçimlerin ses üstbilgilerini içermediğini unutmayın. Ham biçimleri yalnızca alt akış uygulamanızın ham bit akışını çözebileceğini bildiğinizde veya bit derinliğine, örnek hızına, kanal sayısına vb. göre el ile üstbilgi oluşturmayı planlıyorsanız kullanın.
+Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçenekler vardır. Tanımına göre, gibi `Raw24Khz16BitMonoPcm` ham biçimlerin ses üst bilgilerini içermediğini unutmayın. Ham biçimleri yalnızca aşağı akış uygulamanızın bir ham Bitstream kodunu çözemediğini veya bit derinliğine, örnek hızına, kanal sayısına ve vb. göre el ile üstbilgileri oluşturmayı planlıyorsanız kullanın.
 
-Bu örnekte, `Riff24Khz16BitMonoPcm` `SpeechSynthesisOutputFormat` `SpeechConfig` nesne üzerinde ayarlayarak yüksek doğruluklu BIR RIFF biçimi belirtirsiniz. Önceki bölümdeki örneğe benzer şekilde, sonucun bellek içi akışını almak ve sonra bir dosyaya yazmak için kullanırsınız. [`AudioDataStream`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audiodatastream?view=azure-python)
+Bu örnekte, `Riff24Khz16BitMonoPcm` `SpeechSynthesisOutputFormat` `SpeechConfig` nesnesi üzerinde ayarını yaparak Yüksek uygunluğa sahip bir biçim belirtirsiniz. Önceki bölümdeki örneğe benzer şekilde, sonucun bellek içi akışını elde [`AudioDataStream`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audiodatastream?view=azure-python) etmek ve ardından bir dosyaya yazmak için öğesini kullanırsınız.
 
 
 ```python
@@ -130,14 +130,14 @@ stream = AudioDataStream(result)
 stream.save_to_wav_file("path/to/write/file.wav")
 ```
 
-Programınızı yeniden çalıştırmak, belirtilen `.wav` yola özelleştirilmiş bir dosya yazar.
+Programınızı yeniden çalıştırmak, belirtilen yola özelleştirilmiş `.wav` bir dosya yazacak.
 
-## <a name="use-ssml-to-customize-speech-characteristics"></a>Konuşma özelliklerini özelleştirmek için SSML'yi kullanın
+## <a name="use-ssml-to-customize-speech-characteristics"></a>SSML 'yi kullanarak konuşma özelliklerini özelleştirme
 
-Konuşma Sentezi Biçimlendirme Dili (SSML), bir XML şemasından isteklerinizi göndererek adım, telaffuz, konuşma hızı, ses düzeyi ve daha fazla metin-konuşma çıktısı ince ayar yapmanızı sağlar. Bu bölümde birkaç pratik kullanım örneği gösterilmektedir, ancak daha ayrıntılı bir kılavuz için [SSML nasıl yapılacağını makaleye](../../../speech-synthesis-markup.md)bakın.
+Konuşma sen, biçimlendirme dili (SSML), isteklerinizi bir XML şemasından göndererek, metin okuma çıktılarından oluşan sıklık, Söyleniş, konuşma oranı, hacim ve daha fazlasını ayarlamanıza olanak sağlar. Bu bölümde, birkaç pratik kullanım örneği gösterilmektedir, ancak daha ayrıntılı bir kılavuz için bkz. [SSML nasıl yapılır makalesi](../../../speech-synthesis-markup.md).
 
-Özelleştirme için SSML kullanmaya başlamak için, sesi değiştiren basit bir değişiklik yaparsınız.
-İlk olarak, bu örnekte, `ssml.xml`kök proje dizininizde SSML config için yeni bir XML dosyası oluşturun. Kök öğe her `<speak>`zaman ve bir `<voice>` öğedeki metni sarma `name` param kullanarak sesi değiştirmenize olanak sağlar. Bu örnek, sesi erkek bir İngilizce (İngiltere) sesine değiştirir. Bu sesin, **nöral** seslere göre farklı fiyatlandırma ve kullanılabilirlik olan **standart** bir ses olduğunu unutmayın. Desteklenen **standart** seslerin [tam listesine](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) bakın.
+Özelleştirme için SSML 'yi kullanmaya başlamak için, sese geçiş yapan basit bir değişiklik yaparsınız.
+İlk olarak, bu örnekte `ssml.xml`, kök proje dizininizde SSML yapılandırması için yenı bir XML dosyası oluşturun. Kök öğesi her zaman `<speak>`ve metni bir `<voice>` öğe içinde sarmalama, `name` param kullanarak sesi değiştirmenize olanak sağlar. Bu örnek, sesi erkek Ingilizce (UK) sesine dönüştürür. Bu sesin, **sinir** sesinden farklı fiyatlandırmaya ve kullanılabilirliğine sahip **Standart** bir ses olduğunu unutmayın. Desteklenen **Standart** seslerin [tam listesine](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) bakın.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -147,10 +147,10 @@ Konuşma Sentezi Biçimlendirme Dili (SSML), bir XML şemasından isteklerinizi 
 </speak>
 ```
 
-Ardından, XML dosyanıza başvurmak için konuşma sentezi isteğini değiştirmeniz gerekir. İstek çoğunlukla aynıdır, ancak `speak_text_async()` işlevi kullanmak yerine. `speak_ssml_async()` Bu işlev bir XML dizesi bekler, bu nedenle ilk olarak SSML config'inizi dize olarak okuyun. Buradan, sonuç nesnesi önceki örneklerle tam olarak aynıdır.
+Ardından, XML dosyanıza başvurmak için konuşma sensıs isteğini değiştirmeniz gerekir. İstek genellikle aynıdır, ancak `speak_text_async()` işlevini kullanmak yerine kullanın. `speak_ssml_async()` Bu işlev bir XML dizesi bekliyor, bu nedenle ilk olarak SSML yapılandırmasını bir dize olarak okumalısınız. Buradan, sonuç nesnesi önceki örneklerle tamamen aynıdır.
 
 > [!NOTE]
-> `ssml_string` Dize `ï»¿` başında içerir, eğer BOM biçimini şerit gerekir veya hizmet bir hata döndürecek. Bunu parametreyi `encoding` aşağıdaki gibi ayarlayarak yaparsınız: `open("ssml.xml", "r", encoding="utf-8-sig")`.
+> Dizenin başlangıcında `ssml_string` IÇERIYORSA `ï»¿` , bom biçimini çıkarmanız gerekir, aksi takdirde hizmet bir hata döndürür. Bunu, `encoding` parametresini aşağıdaki gibi ayarlayarak yapabilirsiniz: `open("ssml.xml", "r", encoding="utf-8-sig")`.
 
 ```python
 synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config=None)
@@ -162,7 +162,7 @@ stream = AudioDataStream(result)
 stream.save_to_wav_file("path/to/write/file.wav")
 ```
 
-Çıktı çalışır, ancak daha doğal ses yardımcı olmak için yapabileceğiniz birkaç basit ek değişiklikler vardır. Genel konuşma hızı biraz fazla hızlı, bu yüzden `<prosody>` bir etiket ekleyeceğiz ve varsayılan hızın% **90** hızı azaltmak. Ayrıca, cümledeki virgülden sonra duraklama biraz fazla kısa ve doğal olmayan bir sondajdır. Bu sorunu gidermek için, konuşmayı geciktirmek için bir `<break>` etiket ekleyin ve zaman paramini **200ms**olarak ayarlayın. Bu özelleştirmelerin çıktıyı nasıl etkilediğini görmek için sentezi yeniden çalıştırın.
+Çıktı işe yarar, ancak daha doğal bir şekilde ses duymayı sağlayacak birkaç basit ek değişiklik vardır. Genel konuşma hızı çok hızlıdır, bu nedenle bir etiket ekleyeceğiz ve varsayılan orandaki `<prosody>` **%90** ' a kadar olan hızı azaltabilirsiniz. Ayrıca, tümcede virgülden sonraki duraklama, çok kısa ve doğal olmayan bir soun. Bu sorunu onarmak için konuşmayı geciktirmek üzere `<break>` bir etiket ekleyin ve zaman param ' ı **200ms**olarak ayarlayın. Bu özelleştirmelerin çıktıyı nasıl etkilediğine bakmak için senmu yeniden çalıştırın.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -174,14 +174,14 @@ stream.save_to_wav_file("path/to/write/file.wav")
 </speak>
 ```
 
-## <a name="neural-voices"></a>Sinirsel sesler
+## <a name="neural-voices"></a>Sinir sesleri
 
-Sinirsel sesler derin sinir ağları tarafından desteklenen konuşma sentezi algoritmalarıdır. Sinirsel bir ses kullanırken, sentezlenmiş konuşma insan kayıtlarından neredeyse ayırt edilemez. İnsana benzer doğal prosody ve kelimelerin net eklemleme ile, nöral sesler önemli ölçüde kullanıcıların AI sistemleri ile etkileşim dinleme yorgunluğunu azaltır.
+Sinir sesleri, derin sinir Networks tarafından desteklenen konuşma senime algoritmalardır. Bir sinir sesi kullanırken, sentezlenmiş konuşma, insan kayıtlarından neredeyse ayırt edilemez. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, sinir seslerde kullanıcılar AI sistemleriyle etkileşim kurarken büyük ölçüde dinleme performansını önemli ölçüde azaltır.
 
-Nöral bir sese `name` geçmek için, [nöral ses seçeneklerinden](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)birine değiştirin. Ardından, için `mstts`bir XML ad alanı ekleyin `<mstts:express-as>` ve metninizi etikete sarın. Konuşma `style` stilini özelleştirmek için param'ı kullanın. Bu örnek, `cheerful`ancak ayarlamayı `customerservice` `chat` veya konuşma stilindeki farkı görmeyi deneyin.
+Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)birini değiştirin. Ardından, için `mstts`bir XML ad alanı ekleyin ve metninizi `<mstts:express-as>` etikete sarın. Konuşma stilini `style` özelleştirmek için param 'ı kullanın. Bu örnek kullanır `cheerful`, ancak konuşma stilindeki farkı görmek `customerservice` için `chat` veya olarak ayarlamayı deneyin.
 
 > [!IMPORTANT]
-> Nöral sesler **sadece** *Doğu ABD,* *Güney Doğu Asya*ve Batı *Avrupa* bölgelerinde oluşturulan Konuşma kaynakları için desteklenir.
+> Sinir sesleri **yalnızca** *Doğu ABD*, *Güney Doğu Asya*ve *Batı Avrupa* bölgelerinde oluşturulan konuşma kaynakları için desteklenir.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

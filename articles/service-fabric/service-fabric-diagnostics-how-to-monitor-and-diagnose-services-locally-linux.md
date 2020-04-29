@@ -1,13 +1,13 @@
 ---
-title: Linux'ta Azure Hizmet Kumaşı uygulamalarını hata ayıklama
-description: Yerel bir Linux geliştirme makinesinde Service Fabric hizmetlerinizi nasıl izleyeceğinizi ve tanılamayı öğrenin.
+title: Linux 'ta Azure Service Fabric uygulamalarında hata ayıklama
+description: Yerel bir Linux geliştirme makinesinde Service Fabric hizmetlerinizi izlemeyi ve tanılamayı öğrenin.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991339"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Yerel bir Linux makine geliştirme kurulumunda hizmetleri izleme ve tanılama
@@ -19,16 +19,16 @@ ms.locfileid: "80991339"
 >
 >
 
-İzleme, algılama, tanılama ve sorun giderme, hizmetlerin kullanıcı deneyiminde en az kesintiye yol açmayla devam etmesine olanak sağlar. Gerçek bir dağıtım ortamında izleme ve tanılama çok önemlidir. Hizmetlerin geliştirilmesi sırasında benzer bir modelin benimsenmesi, üretim ortamına geçdiğinizde tanılama ardışık hattının çalışmasını sağlar. Service Fabric, hizmet geliştiricilerin hem tek makineli yerel geliştirme kurulumları hem de gerçek dünya üretim küme kurulumlarında sorunsuz bir şekilde çalışabilen tanılamaları uygulamalarını kolaylaştırır.
+Hizmetlerin Kullanıcı deneyimine en düşük kesintilerle devam etmesine izin vermek için izleme, algılama, tanılama ve sorun giderme. İzleme ve tanılama, gerçek dağıtılan bir üretim ortamında kritik öneme sahiptir. Hizmet geliştirme sırasında benzer bir modeli benimseme, bir üretim ortamına geçtiğinizde tanılama işlem hattının çalışmasına olanak sağlar. Service Fabric, Service Developers 'ın hem tek makineli yerel geliştirme kurulumları hem de gerçek dünya üretim kümesi kurulumları üzerinde sorunsuz bir şekilde çalışması için tanılamayı uygulamasını kolaylaştırır.
 
 
-## <a name="debugging-service-fabric-java-applications"></a>Hata Ayıklama Hizmeti Kumaş Java uygulamaları
+## <a name="debugging-service-fabric-java-applications"></a>Java uygulamalarında hata ayıklama Service Fabric
 
-Java uygulamaları için [birden çok günlük çerçevesi](https://en.wikipedia.org/wiki/Java_logging_framework) mevcuttur. JRE ile varsayılan seçenek `java.util.logging` olduğundan, [github kod örnekleri](https://github.com/Azure-Samples/service-fabric-java-getting-started)için de kullanılır. Aşağıdaki tartışma, çerçevenin nasıl `java.util.logging` yapılandırılabildiğini açıklar.
+Java uygulamaları için [birden çok günlük](https://en.wikipedia.org/wiki/Java_logging_framework) çerçevesi mevcuttur. , `java.util.logging` JRE 'nin varsayılan seçeneği olduğundan, [GitHub 'daki kod örnekleri](https://github.com/Azure-Samples/service-fabric-java-getting-started)için de kullanılır. Aşağıdaki tartışmada `java.util.logging` Framework 'ün nasıl yapılandırılacağı açıklanmaktadır.
 
-java.util.log'u kullanarak uygulama günlüklerinizi belleğe, çıkış akışlarına, konsol dosyalarına veya soketlere yönlendirebilirsiniz. Bu seçeneklerin her biri için, çerçevede zaten sağlanan varsayılan işleyicileri vardır. Tüm günlükleri `app.properties` yerel bir dosyaya yönlendirmek için uygulamanız için dosya işleyicisini yapılandırmak için bir dosya oluşturabilirsiniz.
+Java. util. Logging kullanarak, uygulama günlüklerinizi bellek, çıkış akışları, konsol dosyaları veya yuvalara yeniden yönlendirebilirsiniz. Bu seçeneklerin her biri için çerçevede zaten sağlanmış olan varsayılan işleyiciler vardır. Tüm günlükleri yerel bir `app.properties` dosyaya yeniden yönlendirmek üzere uygulamanız için dosya işleyicisini yapılandırmak üzere bir dosya oluşturabilirsiniz.
 
-Aşağıdaki kod snippet örnek bir yapılandırma içerir:
+Aşağıdaki kod parçacığı örnek bir yapılandırma içerir:
 
 ```java
 handlers = java.util.logging.FileHandler
@@ -40,34 +40,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Dosyatarafından `app.properties` işaret edilen klasör var olmalıdır. `app.properties` Dosya oluşturulduktan `entrypoint.sh` sonra, özelliği `<applicationfolder>/<servicePkg>/Code/` `java.util.logging.config.file` `app.properties` dosyaya ayarlamak için klasördeki giriş noktası komut dosyanızı da değiştirmeniz gerekir. Giriş aşağıdaki parçacık gibi görünmelidir:
+`app.properties` Dosya tarafından işaret edilen klasör var olmalıdır. `app.properties` `entrypoint.sh` Dosya oluşturulduktan sonra, özelliği `<applicationfolder>/<servicePkg>/Code/` `java.util.logging.config.file` dosya olarak `app.properties` ayarlamak için, giriş noktası komut dosyanızı klasöre de değiştirmeniz gerekir. Giriş aşağıdaki kod parçacığı gibi görünmelidir:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Bu yapılandırma, `/tmp/servicefabric/logs/`'de dönen bir şekilde toplanan günlüklerin sonucu Bu durumda günlük dosyası mysfapp%u.%g.log olarak adlandırılır:
-* **%u,** eşzamanlı Java işlemleri arasındaki çakışmaları gidermek için benzersiz bir sayıdır.
-* **%g,** dönen günlükleri ayırt etmek için nesil numarasıdır.
+Bu yapılandırma, üzerinde bir döndürme sırasında `/tmp/servicefabric/logs/`günlüklerin toplanmasına neden olur. Bu durumda bulunan günlük dosyası, burada yer aldığı Kapsamım% u .% g. log:
+* **% u** eşzamanlı Java işlemlerinde çakışmaları çözümlemek için benzersiz bir sayıdır.
+* **% g** , döndürme günlükleri arasında ayrım yapmak için oluşturma numarasıdır.
 
-Varsayılan olarak hiçbir işleyici açıkça yapılandırılmış ise, konsol işleyicisi kaydedilir. /var/log/syslog altında syslog günlükleri görüntüleyebilirsiniz.
+Varsayılan olarak, hiçbir işleyici açıkça yapılandırılmamışsa konsol işleyicisi kaydedilir. Bir tane,/var/log/Syslog altındaki Syslog 'da günlükleri görüntüleyebilir
 
-Daha fazla bilgi için [GitHub'daki kod örneklerine](https://github.com/Azure-Samples/service-fabric-java-getting-started)bakın.
-
-
-## <a name="debugging-service-fabric-c-applications"></a>Hata Ayıklama Servisi Kumaş C# uygulamaları
+Daha fazla bilgi için [GitHub 'daki kod örneklerine](https://github.com/Azure-Samples/service-fabric-java-getting-started)bakın.
 
 
-Linux'taki CoreCLR uygulamalarının izlenmesi için birden fazla çerçeve mevcuttur. Daha fazla bilgi [için, Günlük için .NET Uzantıları'na](https://github.com/dotnet/extensions/tree/master/src/Logging)bakın.  EventSource C# geliştiricileri için tanıdık olduğundan, 'Bu makalede Linux CoreCLR örneklerinde izleme için EventSource kullanır.
+## <a name="debugging-service-fabric-c-applications"></a>C# uygulamalarında hata ayıklama Service Fabric
 
-İlk adım, günlüklerinizi belleğe, çıktı akışlarına veya konsol dosyalarına yazabilmeniz için System.Diagnostics.Tracing'i eklemektir.  EventSource'u kullanmak için project.json'unuza aşağıdaki projeyi ekleyin:
+
+Linux 'ta CoreCLR uygulamalarını izlemek için birden çok çerçeve mevcuttur. Daha fazla bilgi için bkz. [günlük için .net uzantıları](https://github.com/dotnet/extensions/tree/master/src/Logging).  EventSource, C# geliştiricilerine tanıdık olduğundan, ' Bu makale Linux 'ta CoreCLR örnekleri içinde izlemek için EventSource kullanır.
+
+İlk adım, günlüklerinizi belleğe, Çıkış akışlarına veya konsol dosyalarına yazabilbilmeniz için System. Diagnostics. Tracing ' i dahil etmek için kullanılır.  EventSource kullanarak günlüğe kaydetmek için, Project. json ' a aşağıdaki projeyi ekleyin:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-Hizmet olayını dinlemek ve ardından bunları uygun şekilde izleme dosyalarına yönlendirmek için özel bir EventListener kullanabilirsiniz. Aşağıdaki kod snippet EventSource ve özel bir EventListener kullanarak günlük bir örnek uygulama gösterir:
+Hizmet olayını dinlemek için özel bir EventListener kullanabilir ve sonra bunları izleme dosyalarına uygun şekilde yeniden yönlendirebilirsiniz. Aşağıdaki kod parçacığı, EventSource ve özel bir EventListener kullanarak günlüğe kaydetmenin örnek bir uygulamasını gösterir:
 
 
 ```csharp
@@ -120,16 +120,16 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Önceki snippet' teki bir dosyaya `/tmp/MyServiceLog.txt`günlükleri çıkar Bu dosya adının uygun şekilde güncelleştirilmesi gerekir. Günlükleri konsola yönlendirmek isterseniz, özelleştirilmiş EventListener sınıfınızda aşağıdaki snippet'i kullanın:
+Yukarıdaki kod parçacığı, içindeki `/tmp/MyServiceLog.txt`bir dosyaya Günlükler verir. Bu dosya adının uygun şekilde güncelleştirilmesi gerekir. Günlükleri konsola yönlendirmek isterseniz, özelleştirilmiş EventListener Sınıfınıza aşağıdaki kod parçacığını kullanın:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-[C# Örneklerindeki](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) örnekler, olayları bir dosyaya günlüğe kaydetmek için EventSource ve özel bir EventListener kullanır.
+[C# örneklerindeki](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) örnekler, olayları bir dosyaya günlüğe kaydetmek için EventSource ve özel bir EventListener kullanır.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Uygulamanıza eklenen aynı izleme kodu, uygulamanızın bir Azure kümesindeki tanılamalarıyla da çalışır. Araçlar için farklı seçenekleri tartışan ve bunları nasıl ayarlayacaklarını açıklayan bu makalelere göz atın.
-* [Azure Tanılama ile günlükleri nasıl toplanır?](service-fabric-diagnostics-how-to-setup-lad.md)
+Uygulamanıza eklenen izleme kodu aynı zamanda uygulamanızın bir Azure kümesinde tanılamaları ile de birlikte kullanılabilir. Araçların farklı seçeneklerini tartışan ve bunların nasıl ayarlanacağını anlatan bu makalelere göz atın.
+* [Azure Tanılama ile günlükleri toplama](service-fabric-diagnostics-how-to-setup-lad.md)
