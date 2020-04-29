@@ -1,6 +1,6 @@
 ---
-title: Microsoft ticari pazar vitrinlerinde yayımlama seçeneğinizi belirleme
-description: Bu makalede, uygulamaların Microsoft AppSource ve Azure Marketplace'te nasıl yayımlandırılabildiğini anlamaya çalışan iş ortakları için uygunluk ölçütleri ve yayımlama gereksinimleri açıklanmaktadır.
+title: Microsoft ticari Market storets 'de yayımlama seçeneğinizi belirleme
+description: Bu makalede, uygulamaları Microsoft AppSource ve Azure Market 'Te nasıl yayımlayacağınızı anlamaya çalışan iş ortakları için uygunluk ölçütleri ve yayımlama gereksinimleri açıklanmaktadır.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
 ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415731"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
-Teklifiniz için seçtiğiniz yayımlama seçeneği, hem uygunluk gereksinimleri hem de ticari pazar daki GTM avantajlarıyla doğrudan ilgilidir. Daha da önemlisi, yayımlama seçeneği nin ve teklif türünün seçimi, kullanıcıların ticari pazar teklifinizle nasıl etkileşimde bulunacağını tanımlar.
+Teklifiniz için seçtiğiniz yayımlama seçeneği, doğrudan uygunluk gereksinimlerine ve ticari Market GTM avantajlarına yöneliktir. Daha önemlisi, yayımlama seçeneği ve teklif türü seçimi, kullanıcıların ticari Market teklifinizle nasıl etkileşime gireceğini tanımlar.
 
-Teklifinizi yapılandırmak için aşağıdaki temel ticari pazar kavramlarını anlamanız gerekir: yayımlama seçenekleri, teklif türleri ve yapılandırması ve teklifinizin ticari pazar vitrinlerinde nasıl ve nerede sunulacağını yönetecek eylem çağrıları.
+Teklifinizi yapılandırmak için aşağıdaki temel ticari Market kavramlarını anlamanız gerekir: Yayımlama seçenekleri, teklif türleri ve yapılandırma ve teklifinizin ticari Market stokörlerde nasıl ve nerede sunulduğunu belirleyen, eylem çağrıları.
 
 Bu makalede aşağıdakileri öğreneceksiniz:
 
-- Çözümünüz için uygun vitrin ibelirleyin
-- Her vitrinde hangi yayımlama seçenekleri ve eylem çağrısı mevcuttur
-- Her yayımlama seçeneği için hangi teklif türleri kullanılabilir
+- Çözümünüz için uygun storefront belirleme
+- Her storefront için hangi yayımlama seçenekleri ve eylem çağrıları kullanılabilir
+- Her yayımlama seçeneği için kullanılabilen teklif türleri
 
-## <a name="commercial-marketplace-publishing-options"></a>Ticari pazar yayıncılık seçenekleri
+## <a name="commercial-marketplace-publishing-options"></a>Ticari Market Yayımlama seçenekleri
 
-Aşağıdaki tablo, Microsoft AppSource ve Azure Marketplace'teki teklif türleri için yayımlama seçeneklerini gösterir.
+Aşağıdaki tabloda, Microsoft AppSource ve Azure Marketi 'nde teklif türleri için yayımlama seçenekleri gösterilmektedir.
 
-|   | **Liste (İletişim)**  | **Liste (Deneme)**  | **Ücretsiz** | **BYOL** | **Transact**|
+|   | **Liste (kişi)**  | **Liste (deneme)**  | **Ücretsiz** | **KLG** | **Transact**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
-| **Sanal Makine** |  |  |  | Azure Market |  Azure Market |
-| **Azure Uygulamaları (çoklu VM)** |  |  | Azure Market | Azure Market | Azure Market  |
-| **Konteyner görüntüsü** |  |  | Azure Market | Azure Market |   |
+| **Sanal makine** |  |  |  | Azure Market |  Azure Market |
+| **Azure uygulamaları (çoklu VM)** |  |  | Azure Market | Azure Market | Azure Market  |
+| **Kapsayıcı görüntüsü** |  |  | Azure Market | Azure Market |   |
 | **IoT Edge modülü** |  |  | Azure Market | Azure Market |   |
 | **Yönetilen hizmetler** |  |  |  | Azure Market |   |
-| **Danışmanlık hizmetleri** | Her iki vitrin |  |  |  |   |
-| **SaaS uygulaması** | Her iki vitrin | Her iki vitrin | Her iki vitrin |  | Her iki vitrin* |
-| **Microsoft 365 Uygulaması** | AppSource | AppSource |  |  | AppSource**  |
+| **Danışmanlık hizmetleri** | Her iki vitrinler |  |  |  |   |
+| **SaaS uygulaması** | Her iki vitrinler | Her iki vitrinler | Her iki vitrinler |  | Her iki storefronts * |
+| **Microsoft 365 uygulaması** | AppSource | AppSource |  |  | AppSource * *  |
 | **Dynamics 365 eklentisi** |  AppSource | AppSource |  |  |   |
 | **PowerApps** | AppSource |AppSource  |  |  |   |
 
-&#42; SaaS uygulaması Transact Microsoft AppSource teklifleri şu anda sadece kredi kartı vardır.
+Microsoft AppSource SaaS uygulaması Transact tekliflerinin &#42; Şu anda yalnızca kredi kartınlardır.
 
-&#42;&#42; Microsoft 365 teklifleri yüklemek ücretsizdir ve bir lisans hizmeti olarak SaaS teklif üzerinden para kazanılabilir. Daha fazla bilgi için Bkz. [Microsoft ticari pazarı aracılığıyla Office 365 eklentinizden para kazanın.](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)
+&#42;&#42; Microsoft 365 teklifleri yüklenmeye ücretsizdir ve bir lisans hizmeti olarak SaaS teklifi aracılığıyla oluşturulabilir. Daha fazla bilgi için bkz. [Microsoft Commercial Market aracılığıyla Office 365 eklentilerinizi Moneleştirme](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-## <a name="selecting-a-storefront"></a>Mağaza front seçme
+## <a name="selecting-a-storefront"></a>Storefront seçme
 
-Bir yayımlama seçeneği seçmeden önce, ticari pazar çözümleri, uygulamalar ve hizmetler için vitrin uygunluk gereksinimlerini anlamak önemlidir. Her vitrin benzersiz müşteri gereksinimlerine hizmet eder ve belirli kitleleri hedefler. Teklif türünüz, işlem özellikleriniz ve kategoriniz veya endüstriniz teklifinizi nerede yayınlayacağınızı belirler.
+Bir yayımlama seçeneği seçmeden önce, ticari Market çözümleri, uygulamalar ve hizmetler için storefront uygunluk gereksinimlerinin anlaşılması önemlidir. Her storefront benzersiz müşteri gereksinimlerine hizmet eder ve belirli izleyicileri hedefler. Teklif türü, Transact özellikleri ve kategori ya da sektörünüz, teklifinizin nerede yayımlanacağını saptacaktır.
 
-**Microsoft AppSource** uygulamaları, Yerleşik Azure veya yerleşik kullanılabilir: Dynamics 365, Office 365, Power BI veya Power Apps gibi iş yeri çözümleridir. AppSource danışmanlık hizmetleri, müşterilerin Dynamics 365 ve Power BI'nin kullanımını hızlandırmalarına veya yardımcı olan profesyonel hizmetler sunar.
+**Microsoft AppSource** uygulamalar, Azure veya yerleşik olarak kullanılabilecek iş kolu çözümleridir: Dynamics 365, Office 365, Power BI veya Power Apps. AppSource Danışmanlık Hizmetleri, müşterilerin Dynamics 365 ve Power BI kullanımını kullanmaya veya hızlandırmasına yardımcı olan profesyonel hizmet tekliflerdir.
 
-**Azure Marketi** uygulamaları, azure için yerleşik veya yerleşik teknik "yapı bloğu" çözümleridir ve bir BT veya geliştirici kitlesi için tasarlanmıştır. Azure Marketi danışmanlık hizmetleri, müşterilerin Azure'un kullanımına başlamasına veya kullanımını hızlandırmalarına yardımcı olan profesyonel hizmetlersunar.
+**Azure Market** uygulamaları, Azure için yerleşik veya yerleşik olarak bulunan ve BT ya da geliştirici kitlesi için tasarlanan teknik "derleme bloğu" çözümleridir. Azure Market Danışmanlık Hizmetleri, müşterilerin Azure kullanımını kullanmaya veya hızlandırmasına yardımcı olan profesyonel hizmet teklifleridir.
 
 >[!Note]
->Çapraz giriş (yalnızca SaaS Uygulamaları için): Bir liste veya deneme tabanlı teklif hem teknik hem de iş amaçlı kullanıcı kitlesi için ölçütleri karşıladığında, teklifiniz her iki mağazada da listelenir. Aşağıdaki yayımlama seçenekleri hakkında daha fazla bilgi edinin.
+>Çapraz listeleme (yalnızca SaaS uygulamaları için): bir liste veya deneme tabanlı teklif, hem teknik hem de iş kullanıcı kitlesi için ölçütlere uyduğunda, teklifiniz her iki stoporonte de listelenir. Aşağıdaki yayımlama seçenekleri hakkında daha fazla bilgi edinin.
 
-## <a name="choose-a-publishing-option"></a>Yayımlama seçeneği ni seçin
+## <a name="choose-a-publishing-option"></a>Yayımlama seçeneği seçin
 
-Mevcut yayın seçenekleri, müşteri paylaşımı ve ticari pazar [avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)erişim sağlarken farklı müşteri katılımı sunar. Yayımlama seçeneğiyle karşılık gelen eylem çağrılarına dikkat edin:
+Kullanılabilir yayımlama seçenekleri, müşteri adayı paylaşma ve [ticari Market avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)erişmenizi sağlarken farklılaştırılan müşteri katılımı sunar. Yayımlama seçeneğiyle karşılık gelen eylem çağrılarını unutmayın:
 
 | **Yayımlama seçeneği**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| **Liste** | Ticari bir pazar yeri **kullanıcısının, İletişim Beni'den** eyleme çağrı yoluyla müşteriyle bağlantı kurmanızı istemesini sağlayan uygulamanızın veya hizmetinizin basit bir şekilde listelenmesi. |
-| **Deneme** | Olası kullanıcıların Satın almadan önce sınırlı bir süre için hiçbir ücret ödemeden SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmalarını sağlayarak, çözümünizin deneme deneyiminin kullanılabilirliğini artırmak ve otomatikleştirmek için ticari pazarı kullanın. Deneme yayımlama seçeneği için kullanılan eylem çağrısı ya **Ücretsiz Deneme** veya **Test Sürüşü'tür.** |
-| **BYOL** | Keşfedilebilirliği artırmak ve çözümünüzün sağlanmasını otomatikleştirmek ve finansal işlemi ayrı ayrı tamamlamak için ticari pazarı kullanın. BYOL teklif türleri şirket içi bulut geçişleri için idealdir. Eylem çağrısı **Şimdi alın.**
-| **Transact** | Transact teklifleri ticari pazar üzerinden satılmaktadır. Microsoft, faturalandırma ve tahsilatlardan sorumludur. Eylem çağrısı **Şimdi alın.**|
+| **Listele** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** eylemi çağrısı yoluyla müşteriyle bağlantı kurma isteğinde bulunan basit listesi. |
+| **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan çağrı eylemi, **ücretsiz deneme** veya **test sürücüsü**olabilir. |
+| **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Eyleme çağrı **Şimdi**alınır.
+| **Transact** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Eyleme çağrı **Şimdi**alınır.|
 
 > [!Note]
-> Transact yayımlama seçeneğini kullanırken, bir teklif türünü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalandırma ve ödeme hususlarını anlamak önemlidir. Daha fazla bilgi için, makaleTicari pazar işlem yetenekleri gözden [geçirin.](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+> Transact Publishing seçeneğini kullanırken, bir teklif türü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalama ve ödeme konularını anlamak önemlidir. Daha fazla bilgi edinmek için [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md)makalesine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Yayımlama seçeneğine karar veredikten sonra, teklifinizi sunmak için kullanılacak [teklif türünü seçmeye](./publisher-guide-by-offer-type.md) hazırsınız.
-- Teklifinizin seçimini ve yapılandırmasını sonuçlandırmak için teklif türü bölümüne göre yayımlama seçeneklerindeki uygunluk gereksinimlerini gözden geçirin.
-- Çözümünüzün teklif türü ve yapılandırmasına nasıl eşlerini oluşturduğuna ilişkin örnekler için yayın desenlerini vitrine göre inceleyin.
+- Bir yayımlama seçeneğine karar verdikten sonra, teklifinizi sunmak için kullanılacak [teklif türünü seçmek](./publisher-guide-by-offer-type.md) için hazır olursunuz.
+- Teklifinizin seçimini ve yapılandırmasını tamamlamak için teklif türüne göre yayımlama seçeneklerinde uygunluk gereksinimlerini gözden geçirin.
+- Çözümünüzün bir teklif türü ve yapılandırmaya nasıl eşlendiğini gösteren örnekler için storefront göre yayımlama düzenlerini gözden geçirin.

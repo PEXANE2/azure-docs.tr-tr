@@ -1,6 +1,6 @@
 ---
 title: DMVs kullanarak SQL havuzu iş yükünüzü izleme
-description: DMVs kullanarak Azure Synapse Analytics SQL havuz iş yükünüzü ve sorgu yürütmenizi nasıl izleyeceğinizi öğrenin.
+description: DMVs kullanarak Azure SYNAPSE Analytics SQL havuzu iş yükünüzü ve sorgu yürütmeyi izlemeyi öğrenin.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
 ms.openlocfilehash: 5360d91a17a7eee2dd0373ac311c79d22e085939
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416094"
 ---
-# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>DMVs kullanarak Azure Synapsanalytics SQL havuz iş yükünüzü izleme
+# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>DMVs kullanarak Azure SYNAPSE Analytics SQL havuzu iş yükünüzü izleme
 
-Bu makalede, SQL havuzunda sorgu yürütmesini araştırma da dahil olmak üzere iş yükünüzü izlemek için Dinamik Yönetim Görünümleri'nin (DMV) nasıl kullanılacağı açıklanmaktadır.
+Bu makalede, SQL havuzunda sorgu yürütmeyi araştırma dahil olmak üzere iş yükünüzü izlemek için dinamik yönetim görünümlerinin (DMVs) nasıl kullanılacağı açıklanır.
 
 ## <a name="permissions"></a>İzinler
 
-Bu makaledeki DMV'leri sorgulamak için **VIEW DATABASE STATE** veya **CONTROL** iznine ihtiyacınız vardır. Genellikle, ÇOK DAHA kısıtlayıcı olduğu için **VIEW DATABASE STATE** verilmesi tercih edilen izindir.
+Bu makaledeki DMV 'leri sorgulamak için, **VERITABANı durumunu** veya **Denetim** iznini görüntüleme izninizin olması gerekir. Genellikle, **Görünüm VERITABANı durumunu** vermek, çok daha kısıtlayıcı olduğundan tercih edilen izindir.
 
 ```sql
 GRANT VIEW DATABASE STATE TO myuser;
@@ -32,23 +32,23 @@ GRANT VIEW DATABASE STATE TO myuser;
 
 ## <a name="monitor-connections"></a>Bağlantıları izleme
 
-Veri ambarınızdaki tüm girişler [sys.dm_pdw_exec_sessions'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kaydedilir.  Bu DMV son 10.000 girişi içerir.  session_id birincil anahtardır ve her yeni oturum açma için sırayla atanır.
+Veri ambarınızdaki tüm oturumlar [sys. dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)günlüğe kaydedilir.  Bu DMV, son 10.000 oturum açma bilgilerini içerir.  Session_id birincil anahtardır ve her yeni oturum açma işlemi için ardışık olarak atanır.
 
 ```sql
 -- Other Active Connections
 SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <> session_id();
 ```
 
-## <a name="monitor-query-execution"></a>Sorgu yürütmeyi izleyin
+## <a name="monitor-query-execution"></a>Sorgu yürütmeyi izleme
 
-SQL havuzunda yürütülen tüm sorgular [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kaydedilir.  Bu DMV, yürütülen son 10.000 sorguyu içerir.  request_id benzersiz her sorgu tanımlar ve bu DMV için birincil anahtarıdır.  request_id her yeni sorgu için sırayla atanır ve sorgu kimliği anlamına gelen QID ile önceden belirlenmiştir.  Belirli bir session_id için bu DMV'yi sorgulamak, belirli bir oturum açmanın tüm sorgularını gösterir.
+SQL havuzunda yürütülen tüm sorgular [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)günlüğe kaydedilir.  Bu DMV, yürütülen son 10.000 sorguyu içerir.  Request_id her sorguyu benzersiz bir şekilde tanımlar ve bu DMV için birincil anahtardır.  Request_id her yeni sorgu için ardışık olarak atanır ve sorgu KIMLIĞINI temsil eden QıD öneki vardır.  Belirli bir session_id için bu DMV sorgulaması, belirli bir oturum açma için tüm sorguları gösterir.
 
 > [!NOTE]
-> Depolanan yordamlar birden çok İstek T'leri kullanır.  İstek işleri ardından düşürülüyor.
+> Saklı yordamlar birden çok Istek kimliği kullanır.  İstek kimlikleri sıralı sırayla atanır.
 
-Burada, sorgu yürütme planlarını ve belirli bir sorguiçin süreleri araştırmak için izlenir.
+Belirli bir sorgu için sorgu yürütme planlarını ve saatlerini araştırmak üzere izlenecek adımlar aşağıda verilmiştir.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>ADIM 1: Araştırmak istediğiniz sorguyu tanımlayın
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1. Adım: araştırmak istediğiniz sorguyu tanımla
 
 ```sql
 -- Monitor active queries
@@ -65,11 +65,11 @@ ORDER BY total_elapsed_time DESC;
 
 ```
 
-Önceki sorgu sonuçlarından, araştırmak istediğiniz sorgunun **İstek Kimliğini not edin.**
+Yukarıdaki sorgu sonuçlarından, araştırmak istediğiniz sorgunun **Istek kimliğini unutmayın** .
 
-**Askıya Alınan** durumdaki sorgular, çok sayıda etkin çalışan sorgu nedeniyle sıraya alınabilir. Bu sorgular [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) userConcurrencyResourceType türüile sorgu bekler de görünür. Eşzamanlılık sınırları hakkında bilgi için, iş yükü yönetimi için [Bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md) veya Kaynak [sınıfları'na](resource-classes-for-workload-management.md)bakın. Sorgular nesne kilitleri gibi diğer nedenlerle de bekleyebilir.  Sorgunuz bir kaynak bekliyorsa, bu makalede kaynakların daha aşağıda [bekleyerek sorguları araştırma](#monitor-waiting-queries) başlıklı makalesine bakın.
+**Askıya alınmış** durumdaki sorgular, çok sayıda etkin çalışan sorgu nedeniyle sıraya alınabilir. Bu sorgular sys içinde de görünür [. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bir UserConcurrencyResourceType türü ile bekler. Eşzamanlılık limitleri hakkında daha fazla bilgi için bkz. [iş yükü yönetimi Için](resource-classes-for-workload-management.md) [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md) veya kaynak sınıfları. Sorgular, nesne kilitleri gibi diğer nedenleri de bekleyebilir.  Sorgunuz bir kaynağı bekliyorsa, bu makalede daha fazla kaynak [için bekleyen sorguları araştırma](#monitor-waiting-queries) bölümüne bakın.
 
-[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) tablosundaki bir sorgunun görünümünü basitleştirmek için, sys.dm_pdw_exec_requests görünümünde aranabilen sorgunuza yorum atamak için [LABEL'yi](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanın.
+[Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) tablosundaki bir sorgunun aramasını basitleştirmek için, sorgunuza, sys. dm_pdw_exec_requests görünümünde aranabilen bir açıklama atamak için [etiketini](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanın.
 
 ```sql
 -- Query with Label
@@ -85,9 +85,9 @@ FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>ADIM 2: Sorgu planını araştırın
+### <a name="step-2-investigate-the-query-plan"></a>2. Adım: sorgu planını araştırın
 
-Sorgunun dağıtılmış SQL (DSQL) planını [sys.dm_pdw_request_steps'dan](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) almak için İstek Kimliğini kullanın
+Sorgunun dağıtılmış SQL (DSQL) planını [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) almak IÇIN istek kimliğini kullanın
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -98,16 +98,16 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Bir DSQL planı beklenenden daha uzun sürüyorsa, bunun nedeni birçok DSQL adımı içeren karmaşık bir plan veya yalnızca bir adım ın uzun zaman aldığı olabilir.  Plan, birkaç taşıma işlemiyle birlikte birçok adımdan biriyse, veri hareketini azaltmak için tablo dağılımlarınızı en iyi duruma düşürmeyi düşünün. [Tablo dağıtım](sql-data-warehouse-tables-distribute.md) makalesi, bir sorguyu çözmek için verilerin neden taşınması gerektiğini açıklar. Makalede ayrıca veri hareketini en aza indirmek için bazı dağıtım stratejileri açıklanmaktadır.
+Bir DSQL planı beklenenden uzun sürüyorsa, nedeni çok sayıda DSQL adımı olan karmaşık bir plan veya uzun süren bir adım olabilir.  Plan birkaç taşıma işlemiyle ilgili birçok adım ise, veri hareketini azaltmak için tablo dağıtımlarınızı en iyi duruma getirme işlemini göz önünde bulundurun. [Tablo dağıtım](sql-data-warehouse-tables-distribute.md) makalesinde, bir sorguyu çözümlemek için verilerin neden taşınması gerektiği açıklanmaktadır. Makalede veri hareketini en aza indirmek için bazı dağıtım stratejileri de açıklanmaktadır.
 
-Tek bir adım la ilgili daha fazla ayrıntıyı araştırmak için, uzun süren sorgu adımının *operation_type* sütunu ve **Adım Dizini'ni**not edin:
+Tek bir adım hakkında daha fazla ayrıntı araştırmak için, uzun süreli sorgu adımının *operation_type* sütunu ve **adım dizini**' ni aklınızda koyun:
 
-* **SQL işlemleri**için Adım 3a ile devam edin : OnOperation, RemoteOperation, ReturnOperation.
-* **Veri Hareketi işlemleri**için Adım 3b ile devam edin: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* **SQL Işlemlerinde**adım 3A ile devam edin: Onoperation, Remoteoperation, ReturnOperation.
+* **Veri taşıma işlemleri**için adım 3bile devam edin: karıştırılmış Limoveoperation, Yayınmoveoperation, Kırmoveoperation, Partitionmoveoperation, Moveoperation, CopyOperation.
 
-### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>ADIM 3: Dağıtılmış veritabanlarında SQL'i inceleyin
+### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>3. Adım: dağıtılmış veritabanlarında SQL 'i araştırın
 
-Tüm dağıtılmış veritabanlarında sorgu adımının yürütme bilgilerini içeren [sys.dm_pdw_sql_requests'den](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ayrıntıları almak için İstek Kimliğini ve Adım Dizini'ni kullanın.
+Dağıtılan tüm veritabanlarında Sorgu adımının yürütme bilgilerini içeren [sys. dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'den ayrıntıları almak IÇIN istek kimliği ve adım dizinini kullanın.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -117,7 +117,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Sorgu adımı çalışırken, [DBCC PDW_SHOWEXECUTIONPLAN,](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) belirli bir dağıtımda çalışan adım için SQL Server planı önbelleğinden SQL Server tahmini planını almak için kullanılabilir.
+Sorgu adımı çalışırken, belirli bir dağıtım üzerinde çalışan adımın SQL Server plan önbelleğinden tahmini SQL Server planı almak için [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanılabilir.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL pool or control node.
@@ -126,9 +126,9 @@ Sorgu adımı çalışırken, [DBCC PDW_SHOWEXECUTIONPLAN,](/sql/t-sql/database-
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>ADIM 4: Dağıtılmış veritabanlarındaki veri hareketini araştırma
+### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>4. Adım: dağıtılmış veritabanlarında veri hareketini araştırın
 
-[Sys.dm_pdw_dms_workers'den](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)her dağıtımda çalışan bir veri hareketi adımı hakkında bilgi almak için İstek Kimliği'ni ve Adım Dizini'ni kullanın.
+[Sys. dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)' den her dağıtım üzerinde çalışan bir veri taşıma adımı hakkındaki bilgileri almak IÇIN istek kimliği ve adım dizini ' ni kullanın.
 
 ```sql
 -- Find information about all the workers completing a Data Movement Step.
@@ -138,10 +138,10 @@ SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Belirli bir dağıtımın veri hareketi için diğerlerinden önemli ölçüde daha uzun sürdüğünü görmek için *total_elapsed_time* sütununa bakın.
-* Uzun süren dağıtım için, bu dağıtımdan taşınan satır sayısının diğerlerinden önemli ölçüde daha büyük olup olmadığını görmek için *rows_processed* sütununa bakın. Bu nedenle, bu bulgu altta yatan verilerinizin çarpıkolduğunu gösterebilir.
+* Belirli bir dağıtımın, veri taşıma için diğerlerinden önemli ölçüde uzun sürdüğünü görmek için *total_elapsed_time* sütununa bakın.
+* Uzun süre çalışan dağıtım için, bu dağılıktan taşınan satır sayısının diğerlerinden önemli ölçüde daha büyük olup olmadığını görmek için *rows_processed* sütununu kontrol edin. Bu durumda, bu bulma, temel alınan verilerin eğriliğini gösterebilir.
 
-Sorgu çalışıyorsa, belirli bir dağıtım içinde şu anda çalışan SQL Step için SQL Server planı önbelleğinden SQL Server tahmini planını almak için [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz.
+Sorgu çalışıyorsa, belirli bir dağıtım içinde çalışmakta olan SQL adımının SQL Server plan önbelleğinden tahmini SQL Server planı almak için [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL pool Compute or control node.
@@ -152,9 +152,9 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 
 <a name="waiting"></a>
 
-## <a name="monitor-waiting-queries"></a>Bekleme sorgularını izleme
+## <a name="monitor-waiting-queries"></a>Bekleyen sorguları izle
 
-Bir kaynak beklediği için sorgunuzun ilerleme kaydetmediğini fark ederseniz, sorgunun beklediği tüm kaynakları gösteren bir sorgu aşağıda veda edebilirsiniz.
+Sorgunuzun bir kaynak beklediği için ilerleme göstermediği fark ederseniz, bir sorgunun beklediği tüm kaynakları gösteren bir sorgu aşağıda verilmiştir.
 
 ```sql
 -- Find queries
@@ -176,15 +176,15 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Sorgu etkin olarak başka bir sorgudan kaynakları bekliyorsa, durum **AcquireResources**olacaktır.  Sorgu gerekli tüm kaynaklara sahipse, durum **verilir.**
+Sorgu başka bir sorgudan kaynak üzerinde etkin bir şekilde bekliyorsa, durum **AcquireResources**olur.  Sorgunun tüm gerekli kaynakları varsa, durum **verilecektir**.
 
-## <a name="monitor-tempdb"></a>Tempdb'yi izleyin
+## <a name="monitor-tempdb"></a>Tempdb 'yi izleme
 
-Tempdb sorgu yürütme sırasında ara sonuçları tutmak için kullanılır. Tempdb veritabanının yüksek kullanımı yavaş sorgu performansına yol açabilir. Yapılandırılan her DW100c için 399 GB tempdb alanı ayrılır (DW1000c toplam tempdb alanı 3,99 TB olurdu).  Aşağıda tempdb kullanımını izlemek ve sorgularınızda tempdb kullanımını azaltmak için ipuçları verilmiştir.
+Tempdb sorgu yürütülürken ara sonuçları tutmak için kullanılır. Tempdb veritabanının yüksek kullanımı yavaş sorgu performansına yol açabilir. Yapılandırılan her DW100c için 399 GB tempdb alanı ayrılır (DW1000c toplam tempdb alanı 3,99 TB olur).  Aşağıda, tempdb kullanımını izlemeye ve sorgularınızdaki tempdb kullanımını düşürmeye yönelik ipuçları verilmiştir.
 
-### <a name="monitoring-tempdb-with-views"></a>Tempdb'yi görünümlerle izleme
+### <a name="monitoring-tempdb-with-views"></a>Tempdb 'yi görünümlerle izleme
 
-Tempdb kullanımını izlemek için önce [MICROSOFT Toolkit for SQL havuzundan](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring) [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) görünümünü yükleyin. Daha sonra tüm çalıştırılan sorgular için düğüm başına tempdb kullanımını görmek için aşağıdaki sorguyu çalıştırabilirsiniz:
+Tempdb kullanımını izlemek için, önce [SQL havuzu Için Microsoft araç seti](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring)'nden [Microsoft. vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) görünümünü yüklemeniz gerekir. Ardından, yürütülen tüm sorgular için düğüm başına tempdb kullanımını görmek üzere aşağıdaki sorguyu yürütebilirsiniz:
 
 ```sql
 -- Monitor tempdb
@@ -216,17 +216,17 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-Büyük miktarda bellek tüketen bir sorgunuz varsa veya tempdb'nin tahsisi ile ilgili bir hata iletisi aldıysanız, bunun nedeni son veri hareketi işleminde başarısız olan çok büyük bir [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) veya [INSERT SELECT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimi olabilir. Bu genellikle son INSERT SELECT'ten hemen önce dağıtılmış sorgu planında ShuffleMove işlemi olarak tanımlanabilir.  ShuffleMove işlemlerini izlemek için [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanın.
+Büyük miktarda bellek kullanan veya tempdb 'nin ayrılmasına ilişkin bir hata mesajı almış bir sorgunuz varsa, bu, [Select (CTAS) olarak](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) çok büyük bir create table veya son veri taşıma işleminde başarısız olan [Select](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ifadesini çalıştıran bir hata nedeniyle olabilir. Bu, genellikle son ekleme seçmeden önce dağıtılmış sorgu planında bir karıştırılmış Lemove işlemi olarak tanımlanabilir.  Karışık taşıma işlemlerini izlemek için [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanın.
 
-En yaygın azaltma, CTAS veya INSERT SELECT deyiminizi birden çok yük deyimine ayırmaktır, böylece veri hacmi düğüm başına 1 TB tempdb sınırını aşmaz. Ayrıca, kümenizi daha büyük bir boyuta ölçeklendirerek tempdb boyutunu daha fazla düğüme yayarak her bir düğümdeki tempdb'yi azaltabilirsiniz.
+En yaygın risk azaltma, CTAS 'larınızı bölmek veya SELECT deyimini birden çok yük ifadesine eklemek için veri hacmi, düğüm başına 1 TB 'lık sınırı aşmayacak. Ayrıca, her bir düğümdeki tempdb 'yi azaltan daha fazla düğüm üzerinde tempdb boyutunu yayabilecek daha büyük bir boyuta ölçeklendirebilirsiniz.
 
-CTAS ve INSERT SELECT ifadelerine ek olarak, yetersiz bellekle çalışan büyük, karmaşık sorgular tempdb'ye dökülerek sorguların başarısız lığa neden olabilir.  Tempdb'ye dökülmeyi önlemek için daha büyük bir [kaynak sınıfıyla](resource-classes-for-workload-management.md) çalıştırmayı düşünün.
+CTAS ve INSERT SELECT deyimlerinin yanı sıra, yetersiz bellekle çalışan karmaşık sorgular tempdb içine taşıtabilecek ve sorguların başarısız olmasına neden olabilir.  Tempdb 'ye taşmamak için daha büyük bir [kaynak sınıfıyla](resource-classes-for-workload-management.md) çalışmayı düşünün.
 
 ## <a name="monitor-memory"></a>Belleği izleme
 
-Bellek yavaş performans ve bellek sorunları dışında kök nedeni olabilir. Sorgu yürütme sırasında SQL Server bellek kullanımının sınırlarına ulaştığını görürseniz veri ambarınızı ölçeklemeyi düşünün.
+Bellek, yavaş performans ve yetersiz bellek sorunları için kök neden olabilir. Sorgu yürütme sırasında sınırlarına ulaşarak SQL Server bellek kullanımı bulursanız veri Ambarınızı ölçeklendirin.
 
-Aşağıdaki sorgu, SQL Server bellek kullanımını ve düğüm başına bellek basıncını döndürür:
+Aşağıdaki sorgu, düğüm başına SQL Server bellek kullanımı ve bellek baskısı döndürür:
 
 ```sql
 -- Memory consumption
@@ -250,9 +250,9 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 
-## <a name="monitor-transaction-log-size"></a>Hareket günlüğü boyutunu izleme
+## <a name="monitor-transaction-log-size"></a>İşlem günlüğü boyutunu izle
 
-Aşağıdaki sorgu, her dağıtımda hareket günlüğü boyutunu döndürür. Günlük dosyalarından biri 160 GB'a ulaşıyorsa, örneğini ölçeklemeyi veya işlem boyutunuzu sınırlamayı düşünmelisiniz.
+Aşağıdaki sorgu her bir dağıtımında işlem günlüğü boyutunu döndürür. Günlük dosyalarından biri 160 GB 'a ulaşıldığında, örneğinizi ölçeklendirmenizi veya işlem boyutunuzu sınırlandırmanız gerekir.
 
 ```sql
 -- Transaction log size
@@ -266,9 +266,9 @@ instance_name like 'Distribution_%'
 AND counter_name = 'Log File(s) Used Size (KB)'
 ```
 
-## <a name="monitor-transaction-log-rollback"></a>Hareket günlüğü geri alma işlemini izleme
+## <a name="monitor-transaction-log-rollback"></a>İzleme işlem günlüğü geri alma
 
-Sorgularınız başarısız oluyorsa veya devam etmek uzun sürüyorsa, geri alma işleminiz olup olmadığını kontrol edebilir ve izleyebilirsiniz.
+Sorgularınız başarısız olursa veya devam etmek uzun sürerse, geri alma işlemleri varsa denetleyebilir ve izleyebilirsiniz.
 
 ```sql
 -- Monitor rollback
@@ -281,9 +281,9 @@ JOIN sys.dm_pdw_nodes nod ON t.pdw_node_id = nod.pdw_node_id
 GROUP BY t.pdw_node_id, nod.[type]
 ```
 
-## <a name="monitor-polybase-load"></a>PolyBase yükünü izleyin
+## <a name="monitor-polybase-load"></a>PolyBase yükünü izle
 
-Aşağıdaki sorgu, yükünüzün ilerlemesinin yaklaşık bir tahminini sağlar. Sorgu yalnızca şu anda işlenen dosyaları gösterir.
+Aşağıdaki sorgu, yüklerinizin ilerleme durumunun yaklaşık bir tahminini sağlar. Sorgu yalnızca işlenmekte olan dosyaları gösterir.
 
 ```sql
 
@@ -309,4 +309,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-DMV'ler hakkında daha fazla bilgi için [Sistem görünümleri'ne](../sql/reference-tsql-system-views.md)bakın.
+DMVs hakkında daha fazla bilgi için bkz. [Sistem görünümleri](../sql/reference-tsql-system-views.md).

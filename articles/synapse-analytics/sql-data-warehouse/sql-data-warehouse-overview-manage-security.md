@@ -1,6 +1,6 @@
 ---
-title: Veritabanını güvenli hale
-description: Synapse SQL havuz kaynağında veritabanını güvence altına almak ve çözümler geliştirmek için ipuçları.
+title: Veritabanını güvenli hale getirme
+description: Bir veritabanını güvenli hale getirme ve bir Synapse SQL havuzu kaynağında çözüm geliştirme ipuçları.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -12,44 +12,44 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: 27d3a242d91a79ea00974748f4a8b5460d2dd247
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416067"
 ---
-# <a name="secure-a-database-in-azure-synapse"></a>Azure Synapse'de veritabanını güvenli hale
+# <a name="secure-a-database-in-azure-synapse"></a>Azure 'da bir veritabanının güvenliğini sağlama SYNAPSE
 
 > [!div class="op_single_selector"]
 >
-> * [Güvenliğe Genel Bakış](sql-data-warehouse-overview-manage-security.md)
+> * [Güvenliğe genel bakış](sql-data-warehouse-overview-manage-security.md)
 > * [Kimlik Doğrulaması](sql-data-warehouse-authentication.md)
-> * [Şifreleme (Portal)](sql-data-warehouse-encryption-tde.md)
+> * [Şifreleme (portal)](sql-data-warehouse-encryption-tde.md)
 > * [Şifreleme (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-Bu makalede, Synapse SQL havuzu güvenliğini temelleri size yol verecektir. Özellikle, bu makalede, erişim sınırlama, verileri koruma ve SQL havuzu kullanılarak sağlanan bir veritabanında etkinlikleri izleme kaynakları ile başlar.
+Bu makale, SYNAPSE SQL havuzunuzu güvenli hale getirmenin temel bilgileri konusunda size kılavuzluk eder. Özellikle bu makale, SQL havuzu kullanılarak sağlanan bir veritabanında erişimi sınırlandırma, verileri koruma ve etkinlikleri izlemeye yönelik kaynakları kullanmaya başlamanızı temin ediyor.
 
 ## <a name="connection-security"></a>Bağlantı güvenliği
 
 Bağlantı Güvenliği, veritabanı bağlantılarını güvenlik duvarı kuralları ve bağlantı şifrelemesi kullanarak kısıtlamayı ve bu bağlantıların güvenliğini sağlamayı kapsar.
 
-Güvenlik duvarı kuralları, açıkça beyaz listeye alınmamış IP adreslerinden gelen bağlantı girişimlerini reddetmek için hem sunucu hem de veritabanı tarafından kullanılır. Uygulamanızın veya istemci makinenizin genel IP adresinden bağlantılara izin vermek için, öncelikle Azure portalı, REST API veya PowerShell'i kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturmanız gerekir.
+Güvenlik duvarı kuralları, açıkça bir şekilde listelenmiş olmayan IP adreslerinden gelen bağlantı girişimlerini reddetmek için hem sunucu hem de veritabanı tarafından kullanılır. Uygulamanızın veya istemci makinenizin ortak IP adresinden gelen bağlantılara izin vermek için, önce Azure portal, REST API veya PowerShell 'i kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturmanız gerekir.
 
-En iyi uygulama olarak sunucu güvenlik duvarınızdan geçmesine izin verilen IP adresi aralıklarını mümkün olduğunca sınırlı tutmanız gerekir.  Yerel bilgisayarınızdan SQL havuzuna erişmek için, ağınızdaki güvenlik duvarının ve yerel bilgisayarın TCP bağlantı noktası 1433'te giden iletişime izin verdiğinden emin olun.  
+En iyi uygulama olarak sunucu güvenlik duvarınızdan geçmesine izin verilen IP adresi aralıklarını mümkün olduğunca sınırlı tutmanız gerekir.  Yerel bilgisayarınızdan SQL havuzuna erişmek için, ağınızdaki ve yerel bilgisayarınızdaki güvenlik duvarının TCP bağlantı noktası 1433 ' de giden iletişime izin verdiğinden emin olun.  
 
-Azure Synapse Analytics sunucu düzeyinde IP güvenlik duvarı kurallarını kullanır. Veritabanı düzeyindeIP güvenlik duvarı kurallarını desteklemez. Daha fazla bilgi için [bkz.](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Azure SYNAPSE Analytics, sunucu düzeyinde IP güvenlik duvarı kuralları kullanır. Veritabanı düzeyinde IP güvenlik duvarı kurallarını desteklemez. Daha fazla bilgi için bkz. [Azure SQL veritabanı güvenlik duvarı kuralları](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-SQL havuzunuza bağlantılar varsayılan olarak şifrelenir.  Şifrelemeyi devre dışı kakacak bağlantı ayarlarını değiştirmek göz ardı edilir.
+SQL havuzunuza bağlantılar varsayılan olarak şifrelenir.  Şifrelemeyi devre dışı bırakmak için bağlantı ayarlarını değiştirme yok sayılır.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Kimlik doğrulaması, veritabanına bağlanırken kimliğinizi nasıl kanıtlayacağınızı belirtir. SQL havuzu şu anda bir kullanıcı adı ve parola yla ve Azure Active Directory ile SQL Server Authentication'ı destekler.
+Kimlik doğrulaması, veritabanına bağlanırken kimliğinizi nasıl kanıtlayacağınızı belirtir. SQL havuzu şu anda Kullanıcı adı ve parolayla SQL Server kimlik doğrulamasını destekler ve Azure Active Directory.
 
-Veritabanınıza ait mantıksal sunucuyu oluşturduktan sonra kullanıcı adı ve parola belirleyerek "sunucu yöneticisi" oturum açma bilgisi oluşturdunuz. Bu kimlik bilgilerini kullanarak, veritabanı sahibi olarak o sunucudaki herhangi bir veritabanına veya SQL Server Authentication aracılığıyla "dbo" kimlik doğrulaması yapabilirsiniz.
+Veritabanınıza ait mantıksal sunucuyu oluşturduktan sonra kullanıcı adı ve parola belirleyerek "sunucu yöneticisi" oturum açma bilgisi oluşturdunuz. Bu kimlik bilgilerini kullanarak, bu sunucuda veritabanı sahibi olarak veya SQL Server kimlik doğrulaması aracılığıyla "dbo" olarak herhangi bir veritabanında kimlik doğrulaması yapabilirsiniz.
 
-Ancak, en iyi yöntem olarak, kuruluşunuzun kullanıcıları kimlik doğrulaması yapmak için farklı bir hesap kullanmalıdır. Bu şekilde, uygulamaya verilen izinleri sınırlayabilir ve uygulama kodunuz bir SQL enjeksiyon saldırısına karşı savunmasız durumda kötü amaçlı etkinlik risklerini azaltabilirsiniz.
+Ancak, en iyi uygulama olarak, kuruluşunuzun kullanıcıları kimlik doğrulaması için farklı bir hesap kullanmalıdır. Bu şekilde, uygulamaya verilen izinleri sınırlayabilir ve uygulama kodunuzun bir SQL ekleme saldırısından etkilenmesi durumunda kötü amaçlı etkinliğin riskleri azaltabilirsiniz.
 
-BIR SQL Server Authenticated kullanıcısı oluşturmak için sunucu yönetici girişi ile sunucunuzdaki **ana** veritabanına bağlanın ve yeni bir sunucu girişi oluşturun.  Ana veritabanında da bir kullanıcı oluşturmak iyi bir fikirdir. Ana bir kullanıcı oluşturmak, bir veritabanı adı belirtmeden kullanıcının SSMS gibi araçları kullanarak oturum açmasına olanak tanır.  Ayrıca, bir SQL sunucusundaki tüm veritabanlarını görüntülemek için nesne gezginini kullanmalarına da olanak tanır.
+SQL Server kimliği doğrulanmış bir kullanıcı oluşturmak için Sunucu Yöneticisi oturum açma bilgileriyle sunucunuzdaki **ana** veritabanına bağlanın ve yeni bir sunucu oturumu oluşturun.  Ana veritabanında da bir kullanıcı oluşturmak iyi bir fikirdir. Ana öğe içinde Kullanıcı oluşturmak, bir kullanıcının bir veritabanı adı belirtmeden SSMS gibi araçları kullanarak oturum açmasına olanak tanır.  Ayrıca, bir SQL Server üzerindeki tüm veritabanlarını görüntülemek için Nesne Gezgini 'ni kullanmalarına izin verir.
 
 ```sql
 -- Connect to master database and create a login
@@ -57,20 +57,20 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Ardından, sunucu yönetici girişi ile **SQL havuz veritabanınıza** bağlanın ve oluşturduğunuz sunucu girişine dayalı bir veritabanı kullanıcısı oluşturun.
+Ardından, Sunucu Yöneticisi oturum açma bilgilerinizi kullanarak **SQL havuzu veritabanınıza** bağlanın ve oluşturduğunuz sunucu oturumuna göre bir veritabanı kullanıcısı oluşturun.
 
 ```sql
 -- Connect to the database and create a database user
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Kullanıcıya oturum açma veya yeni veritabanları oluşturma gibi ek işlemler gerçekleştirme izni vermek `Loginmanager` için, kullanıcıyı ana veritabanındaki ve `dbmanager` rollere atayın.
+Bir kullanıcıya oturum açma veya yeni veritabanları oluşturma gibi ek işlemler gerçekleştirme izni vermek için, kullanıcıyı ana veritabanındaki `Loginmanager` ve `dbmanager` rollerine atayın.
 
-Bu ek roller ve bir SQL Veritabanına kimlik doğrulama hakkında daha fazla bilgi için Azure [SQL Veritabanı'nda veritabanlarını ve girişleri yönetme'ye](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.  Azure Etkin Dizin'i kullanarak bağlanma hakkında daha fazla bilgi için Azure [Etkin Dizin Kimlik Doğrulaması'nı kullanarak Bağlanma'ya](sql-data-warehouse-authentication.md)bakın.
+Bu ek roller ve bir SQL veritabanında kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda veritabanlarını ve oturum açma Işlemlerini yönetme](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  Azure Active Directory kullanarak bağlanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kullanarak bağlanma](sql-data-warehouse-authentication.md).
 
 ## <a name="authorization"></a>Yetkilendirme
 
-Yetkilendirme, kimlik doğrulaması alındıktan ve bağlandıktan sonra veritabanı içinde neler yapabileceğinizi ifade eder. Yetkilendirme ayrıcalıkları rol üyelikleri ve izinlerle belirlenir. En iyi uygulama olarak, kullanıcılarınıza gerekli olan en düşük ayrıcalıkları tanımanız gerekir. Rolleri yönetmek için aşağıdaki saklı yordamları kullanabilirsiniz:
+Yetkilendirme, kimlik doğrulamasından ve bağlandıktan sonra bir veritabanı içinde yapabileceklerinizi ifade eder. Yetkilendirme ayrıcalıkları, rol üyelikleri ve izinleri tarafından belirlenir. En iyi uygulama olarak, kullanıcılarınıza gerekli olan en düşük ayrıcalıkları tanımanız gerekir. Rolleri yönetmek için aşağıdaki saklı yordamları kullanabilirsiniz:
 
 ```sql
 EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationUser to read data
@@ -79,29 +79,29 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 Bağlantı kurmak için kullandığınız sunucu yöneticisi hesabı, veritabanında tüm işlemleri gerçekleştirme yetkisi olan db_owner rolünün üyesidir. Bu hesabı şema yükseltmeleri ve diğer yönetimsel işlemlerde kullanmak üzere saklayın. Uygulamanızdan veritabanına, uygulamanızın ihtiyaç duyduğu en düşük ayrıcalıklarla bağlanmak için daha sınırlı izinlere sahip olan "ApplicationUser" hesabını kullanın.
 
-Bir kullanıcının veritabanı içinde yapabileceklerini daha da sınırlamanın yolları vardır:
+Kullanıcının veritabanında neler yapabileceğini daha fazla sınırlandırmak için yollar vardır:
 
-* Parçalı [İzinler,](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) veritabanındaki tek tek sütunlar, tablolar, görünümler, şemalar, yordamlar ve diğer nesneler üzerinde hangi işlemleri yapabileceğinizi denetlemenize izin verir. En fazla denetime sahip olmak ve gerekli minimum izinleri vermek için parçalı izinleri kullanın.
-* db_datareader ve db_datawriter dışındaki [veritabanı rolleri,](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) daha güçlü uygulama kullanıcı hesapları veya daha az güçlü yönetim hesapları oluşturmak için kullanılabilir. Yerleşik sabit veritabanı rolleri izin vermek için kolay bir yol sağlar, ancak gerekenden daha fazla izin verilmesine neden olabilir.
+* Ayrıntılı [izinler](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , veritabanındaki tek tek sütunlarda, tablolarda, görünümlerde, şemalarda, yordamlarda ve diğer nesnelerde hangi işlemleri yapabilmeniz gerektiğini denetlemenize olanak tanır. En fazla denetime sahip olmak ve gereken en düşük izinleri vermek için ayrıntılı izinler kullanın.
+* Db_datareader ve db_datawriter dışındaki [veritabanı rolleri](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , daha güçlü uygulama kullanıcı hesapları veya daha az güçlü yönetim hesapları oluşturmak için kullanılabilir. Yerleşik sabit veritabanı rolleri, izin vermek için kolay bir yol sağlar, ancak gerekenden daha fazla izin verilmesine neden olabilir.
 * [Saklı yordamlar](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ile veritabanında gerçekleştirilebilecek eylemler sınırlandırılabilir.
 
-Aşağıdaki örnek, kullanıcı tanımlı bir şemaya okuma erişimi sağlar.
+Aşağıdaki örnek, Kullanıcı tanımlı bir şemaya okuma erişimi verir.
 
 ```sql
 --CREATE SCHEMA Test
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Azure portalından veritabanlarını ve mantıksal sunucuları yönetmek veya Azure Kaynak Yöneticisi API'sini kullanmak portal kullanıcı hesabınızın rol atamaları tarafından denetlenir. Daha fazla bilgi için [Azure portalında Rol tabanlı erişim denetimine](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
+Veritabanlarını ve mantıksal sunucuları Azure portal yönetme veya Azure Resource Manager API 'sini kullanma, Portal Kullanıcı hesabınızın rol atamalarınız tarafından denetlenir. Daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="encryption"></a>Şifreleme
 
-Saydam Veri Şifreleme (TDE), verilerinizi şifreleyerek ve şifresini çözerek kötü amaçlı etkinlik tehdidine karşı korumaya yardımcı olur. Veritabanınızı şifrelediğinizde, ilişkili yedeklemeler ve işlem günlüğü dosyaları uygulamalarınızda herhangi bir değişiklik gerektirmeden şifrelenir. TDE, veritabanı şifreleme anahtarı olarak adlandırılan bir simetrik anahtarı kullanarak veritabanı depolama alanının tamamını şifreler.
+Saydam Veri Şifrelemesi (TDE), bekleyen verilerinizi şifreleyerek ve şifresini çözerek kötü amaçlı etkinlik tehditlerine karşı korunmaya yardımcı olur. Veritabanınızı şifrelerken, ilişkili yedeklemeler ve işlem günlük dosyaları, uygulamalarınızda herhangi bir değişiklik yapılmadan şifrelenir. TDE, veritabanı şifreleme anahtarı olarak adlandırılan bir simetrik anahtarı kullanarak veritabanı depolama alanının tamamını şifreler.
 
-SQL Veritabanı'nda veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur. Yerleşik sunucu sertifikası her SQL Veritabanı sunucusu için benzersizdir. Microsoft bu sertifikaları en az 90 günde bir otomatik olarak döndürür. Kullanılan şifreleme algoritması AES-256. TDE'nin genel açıklaması için [Bkz. Saydam Veri Şifreleme.](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+SQL veritabanında, veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur. Yerleşik sunucu sertifikası her SQL veritabanı sunucusu için benzersizdir. Microsoft bu sertifikaları en az 90 günde bir otomatik olarak döndürür. Kullanılan şifreleme algoritması AES-256 ' dir. TDE genel bir açıklaması için bkz. [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-[Azure portalını](sql-data-warehouse-encryption-tde.md) veya [T-SQL'i](sql-data-warehouse-encryption-tde-tsql.md)kullanarak veritabanınızı şifreleyebilirsiniz.
+[Azure Portal](sql-data-warehouse-encryption-tde.md) veya [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)' i kullanarak veritabanınızı şifreleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ambarınıza farklı protokollerle bağlanmayla ilgili ayrıntılar ve örnekler için [bkz.](../sql/connect-overview.md)
+Farklı protokollerle ambarınıza bağlanma hakkındaki ayrıntılar ve örnekler için bkz. [SQL Pool 'A bağlanma](../sql/connect-overview.md).

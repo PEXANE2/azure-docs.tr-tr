@@ -1,6 +1,6 @@
 ---
-title: Azure portalında mantık uygulamalarını yönetme
-description: Azure portalını kullanarak mantık uygulamalarını düzenleyin, etkinleştirin, devre dışı edin veya silin.
+title: Azure portal Logic Apps 'i yönetme
+description: Azure portal kullanarak mantıksal uygulamaları düzenleyin, etkinleştirin, devre dışı bırakın veya silin.
 services: logic-apps
 ms.suite: integration
 author: lauradolan
@@ -10,213 +10,213 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/13/2020
 ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415942"
 ---
-# <a name="manage-logic-apps-in-the-azure-portal"></a>Azure portalında mantık uygulamalarını yönetme
+# <a name="manage-logic-apps-in-the-azure-portal"></a>Azure portal Logic Apps 'i yönetme
 
-Azure [portalını](https://portal.azure.com) veya [Visual Studio'yu](manage-logic-apps-with-visual-studio.md)kullanarak mantık uygulamalarını yönetebilirsiniz. Bu makalede, Azure portalındaki mantık uygulamalarının nasıl düzenlenebileceği, devre dışı katılmadı, etkinleştirilir veya silinebileceği gösterilmektedir. Azure Logic Apps'ta yeniyseniz, azure [mantık uygulamaları nedir?](logic-apps-overview.md)
+[Azure Portal](https://portal.azure.com) veya [Visual Studio](manage-logic-apps-with-visual-studio.md)kullanarak mantıksal uygulamaları yönetebilirsiniz. Bu makalede, Azure portal mantıksal uygulamaları düzenleme, devre dışı bırakma, etkinleştirme veya silme işlemlerinin nasıl yapılacağı gösterilir. Azure Logic Apps yeni başladıysanız, bkz. [Azure Logic Apps](logic-apps-overview.md)nedir?
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Varolan bir mantık uygulaması. Azure portalında bir mantık uygulaması oluşturmayı öğrenmek için [Bkz. Quickstart: Azure Logic Apps - Azure portalını kullanarak ilk iş akışınızı oluşturun.](quickstart-create-first-logic-app-workflow.md)
+* Mevcut bir mantıksal uygulama. Azure portal mantıksal uygulama oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Logic Apps-Azure Portal kullanarak ilk iş akışınızı oluşturma](quickstart-create-first-logic-app-workflow.md).
 
 <a name="find-logic-app"></a>
 
-## <a name="find-your-logic-apps"></a>Mantık uygulamalarınızı bulun
+## <a name="find-your-logic-apps"></a>Mantıksal uygulamalarınızı bulun
 
-Mantık uygulamanızı bulmak ve açmak için aşağıdaki adımları izleyin:
+Mantıksal uygulamanızı bulup açmak için şu adımları izleyin:
 
 1. Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure arama çubuğuna `logic apps` **Logic Apps'ı**girin ve seçin.
+1. Azure Arama çubuğunda yazın `logic apps`ve **Logic Apps**seçin.
 
-   !["Mantık Uygulamaları"nı bulun ve seçin](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
+   !["Logic Apps" bul ve Seç](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
-1. Logic **Apps** sayfasında yönetmek istediğiniz mantık uygulamasını bulun ve seçin.
+1. **Logic Apps** sayfasında, yönetmek istediğiniz mantıksal uygulamayı bulun ve seçin.
 
-   Mantık uygulamasının **Genel Bakış** bölmesi açıldıktan sonra, **Mantık Uygulamaları** sayfasında görünen listeye şu şekilde filtre uygulayabilirsiniz:
+   Mantıksal uygulamanın **genel bakış** bölmesi açıldıktan sonra, **Logic Apps** sayfasında görünen listeyi şu yollarla filtreleyebilirsiniz:
 
-   * Mantık uygulamalarını ada göre ara
-   * Mantık uygulamalarını aboneye, kaynak grubuna, konuma ve etiketlere göre filtreleme
-   * Mantık uygulamalarını kaynak grubuna, türüne, aboneliğine ve konumuna göre gruplandırma
+   * Mantıksal uygulamaları ada göre ara
+   * Mantıksal uygulamaları aboneliğe, kaynak grubuna, konuma ve etiketlere göre filtrele
+   * Kaynak grubu, tür, abonelik ve konuma göre mantıksal uygulamaları gruplandırın
 
-## <a name="view-logic-app-properties"></a>Mantık uygulaması özelliklerini görüntüleme
+## <a name="view-logic-app-properties"></a>Mantıksal uygulama özelliklerini görüntüle
 
-1. Azure portalında [mantık uygulamanızı bulun ve açın.](#find-logic-app)
+1. Azure portal, [mantıksal uygulamanızı bulun ve açın](#find-logic-app).
 
-1. Mantık uygulamanızın menüsünden **Ayarlar**altında **Özellikler'i**seçin.
+1. Mantıksal uygulamanızın menüsünde, **Ayarlar**' ın altında **Özellikler**' i seçin.
 
-1. **Özellikler** bölmesinde, mantık uygulamanızla ilgili aşağıdaki bilgileri görüntüleyebilir ve kopyalayabilirsiniz:
+1. **Özellikler** bölmesinde, mantıksal uygulamanız hakkında aşağıdaki bilgileri görüntüleyebilir ve kopyalayabilirsiniz:
 
    * **Adı**
    * **Kaynak kimliği**
    * **Kaynak grubu**
    * **Konum**
    * **Tür** 
-   * **Abonelik Adı**
-   * **Abonelik Kimliği**
-   * **Erişim Bitiş Noktası**
-   * **Runtime giden IP adresleri**
+   * **Abonelik adı**
+   * **Abonelik KIMLIĞI**
+   * **Erişim uç noktası**
+   * **Çalışma zamanı giden IP adresleri**
    * **Uç nokta IP adreslerine erişin**
-   * **Bağlayıcı giden IP adresleri**
+   * **Bağlayıcının giden IP adresleri**
 
-## <a name="disable-or-enable-logic-apps"></a>Mantık uygulamalarını devre dışı veya etkinleştirme
+## <a name="disable-or-enable-logic-apps"></a>Mantıksal uygulamaları devre dışı bırakma veya etkinleştirme
 
-Azure portalında tek bir [mantık uygulamasını](#disable-enable-single-logic-app) veya birden çok mantık uygulamasını aynı [anda](#disable-or-enable-multiple-logic-apps) etkinleştirebilir veya devre dışı kullanabilirsiniz. [Ayrıca Visual Studio'da mantık uygulamalarını etkinleştirebilir veya devre dışı kullanabilirsiniz.](manage-logic-apps-with-visual-studio.md#disable-or-enable-logic-app)
+[Tek bir mantıksal uygulamayı](#disable-enable-single-logic-app) veya [birden çok logic Apps 'i Azure Portal aynı anda](#disable-or-enable-multiple-logic-apps) etkinleştirebilir veya devre dışı bırakabilirsiniz. Ayrıca, [Visual Studio 'da Logic Apps 'i etkinleştirebilir veya devre dışı](manage-logic-apps-with-visual-studio.md#disable-or-enable-logic-app)bırakabilirsiniz.
 
-Mantık uygulamanızı devre dışı bırakmak iş akışı örneklerinizi etkiler ve şu şekilde çalışır:
+Mantıksal uygulamanızı devre dışı bırakmak, iş akışı örneklerinizi etkiler ve şu yollarla çalışır:
 
-* Devam eden ve bekleyen tüm çalıştırmalar bitene kadar devam ediyor. Bu çalıştırmaların sayısına bağlı olarak, bu işlem biraz zaman alabilir.
+* Tüm devam eden ve bekleyen çalıştırmalar tamamlanana kadar devam eder. Bu çalıştırmaların sayısına bağlı olarak, bu işlem biraz zaman alabilir.
 
 * Logic Apps altyapısı yeni iş akışı örnekleri oluşturmaz veya çalıştırmaz.
 
-* Tetikleyici, koşulları yerine getirildiğinde ateş etmeyecektir.
+* Tetikleyici, koşullarının bir sonraki karşılanışında harekete geçmeyecektir.
 
-* Tetikleyici durumu, mantık uygulamasının durdurulduğu noktayı hatırlar. Bu nedenle, mantık uygulamasını yeniden etkinleştirirseniz, tetikleyici son çalıştırmadan bu yana işlenmemiş tüm öğeler için yangınlar.
+* Tetikleyici durumu, mantıksal uygulamanın durdurulduğu noktayı anımsar. Bu nedenle, mantıksal uygulamayı yeniden etkinleştirirseniz tetikleyici, son çalıştırmasından bu yana işlenmemiş tüm öğeler için ateşlenir.
 
-  Mantık uygulamanızın son çalıştırmadan beri işlenmemiş öğelere ateş etmesini engellemek için, mantık uygulamasını yeniden etkinleştirmeden önce tetikleyicinin durumunu temizleyin:
+  Mantıksal uygulamanızı, son çalıştırmadan bu yana işlenmemiş öğelerde tetiklemeyi durdurmak için, mantıksal uygulamayı yeniden etkinleştirmeden önce tetikleyicinin durumunu temizleyin:
 
-  1. Azure portalında [mantık uygulamanızı bulun ve açın.](#find-logic-app)
+  1. Azure portal, [mantıksal uygulamanızı bulun ve açın](#find-logic-app).
 
-  1. Mantık uygulamasının tetikleyicisinin herhangi bir bölümünü edin.
+  1. Mantıksal uygulama tetikleyicisinin herhangi bir bölümünü düzenleyin.
 
   1. Yaptığınız değişiklikleri kaydedin. Bu adım, tetikleyicinizin geçerli durumunu sıfırlar.
 
-  1. [Mantık uygulamanızı yeniden etkinleştirin.](#disable-enable-single-logic-app)
+  1. [Mantıksal uygulamanızı yeniden etkinleştirin](#disable-enable-single-logic-app).
 
 <a name="disable-enable-single-logic-app"></a>
 
-### <a name="disable-or-enable-single-logic-app"></a>Tek bir mantık uygulamasını devre dışı veya etkinleştirme
+### <a name="disable-or-enable-single-logic-app"></a>Tek mantıksal uygulamayı devre dışı bırakma veya etkinleştirme
 
-1. Azure portalında [mantık uygulamanızı bulun ve açın.](#find-logic-app)
+1. Azure portal, [mantıksal uygulamanızı bulun ve açın](#find-logic-app).
 
-1. Mantık uygulamanızın menüsünde **Genel Bakış'ı**seçin. Bu seçeneklerden birini seçin:
+1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin. Aşağıdaki seçeneklerden birini belirleyin:
 
-   * Araç çubuğunda **Devre Dışı'** yı seçin.
+   * Araç çubuğunda **devre dışı bırak**' ı seçin.
 
-     ![Azure portalında tek mantık uygulamasını devre dışı](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
+     ![Azure portal 'de tek mantıksal uygulamayı devre dışı bırak](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
 
-     Mantık uygulamanız zaten devre dışı bırakılmışsa, yalnızca **Etkinleştir** seçeneğini görürsünüz.
+     Mantıksal uygulamanız zaten devre dışıysa yalnızca **Etkinleştir** seçeneğini görürsünüz.
 
-   * Araç çubuğunda **Etkinleştir'i**seçin.
+   * Araç çubuğunda **Etkinleştir**' i seçin.
 
-     ![Azure portalında tek bir mantık uygulamasını etkinleştirme](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
+     ![Azure portal 'de tek Logic App 'i etkinleştirme](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
 
-     Mantık uygulamanız zaten etkinse, **yalnızca Devre Dışı Atabilme** seçeneğini görürsünüz. 
+     Mantıksal uygulamanız zaten etkinse, yalnızca **devre dışı bırak** seçeneğini görürsünüz. 
 
-   Azure portalı, ana Azure araç çubuğunda, işleminizin başarılı olup olmadığını veya başarısız olup olmadığını doğrulayan bir bildirim gösterir.
+   Azure portal, işlemin başarılı veya başarısız olup olmadığını doğrulayan ana Azure araç çubuğunda bir bildirim gösterir.
 
-   ![Operasyon durumunu onaylamak için bildirim](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
+   ![İşlem durumunu onaylama bildirimi](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
 
 <a name="disable-or-enable-multiple-logic-apps"></a>
 
-### <a name="disable-or-enable-multiple-logic-apps"></a>Birden çok mantık uygulamalarını devre dışı veya etkinleştirme
+### <a name="disable-or-enable-multiple-logic-apps"></a>Birden çok mantıksal uygulamayı devre dışı bırakma veya etkinleştirme
 
-1. Azure portalında, devre dışı kılmasını veya etkinleştirilmesini istediğiniz [mantık uygulamalarını bulun.](#find-logic-app)
+1. Azure portal, devre dışı bırakmak veya etkinleştirmek istediğiniz [mantıksal uygulamaları bulun](#find-logic-app) .
 
-1. **Mantık Uygulamaları** sayfasında, bir mantık uygulamasının şu anda etkin veya devre dışı olup olmadığını kontrol etmek için, bu mantık uygulamasının **Durum** sütununa bakın. 
+1. Mantıksal uygulamanın Şu anda etkin veya devre dışı olduğunu denetlemek için, **Logic Apps** sayfasında, bu mantıksal uygulamanın **durum** sütununu gözden geçirin. 
 
-   ![Mantık Uygulamaları durum sütunu](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
+   ![Logic Apps durum sütunu](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
 
-   **Durum** sütunu görünmüyorsa, **Mantık Uygulamaları** araç çubuğunda **önizlemeyi den'i**seçin.
+   **Durum** sütunu görünür değilse, **Logic Apps** araç çubuğunda **önizlemeyi dene**' yi seçin.
 
-   ![Önizlemeyi açma](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
+   ![Önizlemeyi aç](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
 
-1. Onay kutusu sütununda, devre dışı kalmak veya etkinleştirmek istediğiniz mantık uygulamalarını seçin. Araç çubuğunda **Devre Dışı Nı** veya **Etkinleştir'i**seçin.
+1. Onay kutusu sütununda, devre dışı bırakmak veya etkinleştirmek istediğiniz Logic Apps ' i seçin. Araç çubuğunda **devre dışı bırak** veya **Etkinleştir**' i seçin.
 
-   ![Azure portalında birden çok mantık uygulaması etkinleştirme veya devre dışı](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
+   ![Azure portal birden çok Logic Apps 'i etkinleştirme veya devre dışı bırakma](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
 
-1. Onay kutusu göründüğünde, devam etmek için **Evet'i** seçin.
+1. Onay kutusu göründüğünde, devam etmek için **Evet** ' i seçin.
 
-   Azure portalı, ana Azure araç çubuğunda, işleminizin başarılı olup olmadığını veya başarısız olup olmadığını doğrulayan bir bildirim gösterir.
+   Azure portal, işlemin başarılı veya başarısız olup olmadığını doğrulayan ana Azure araç çubuğunda bir bildirim gösterir.
 
-## <a name="delete-logic-apps"></a>Mantık uygulamalarını silme
+## <a name="delete-logic-apps"></a>Mantıksal uygulamaları silme
 
-Azure portalında [tek bir mantık uygulamasını silebilir](#delete-single-logic-app) veya birden çok mantık uygulamasını aynı [anda silebilirsiniz.](#delete-multiple-logic-apps) [Ayrıca Visual Studio'da mantık uygulamanızı silebilirsiniz.](manage-logic-apps-with-visual-studio.md#delete-your-logic-app)
+[Tek bir mantıksal uygulamayı silebilir](#delete-single-logic-app) veya Azure Portal [aynı anda birden çok Logic Apps](#delete-multiple-logic-apps) 'i silebilirsiniz. Ayrıca, [mantıksal uygulamanızı Visual Studio 'da da silebilirsiniz](manage-logic-apps-with-visual-studio.md#delete-your-logic-app).
 
-Mantık uygulamanızı semeniz iş akışı örneklerinizi şu şekilde etkiler:
+Mantıksal uygulamanızı silmek, iş akışı örneklerinizi şu yollarla etkiler:
 
-* Devam eden ve bekleyen tüm çalıştırmalar bitene kadar devam ediyor. Bu çalıştırmaların sayısına bağlı olarak, bu işlem biraz zaman alabilir.
+* Tüm devam eden ve bekleyen çalıştırmalar tamamlanana kadar devam eder. Bu çalıştırmaların sayısına bağlı olarak, bu işlem biraz zaman alabilir.
 
 * Logic Apps altyapısı yeni iş akışı örnekleri oluşturmaz veya çalıştırmaz.
 
 <a name="delete-single-logic-app"></a>
 
-### <a name="delete-single-logic-app"></a>Tek mantık uygulamasını silme
+### <a name="delete-single-logic-app"></a>Tek mantıksal uygulamayı Sil
 
-1. Azure portalında [mantık uygulamanızı bulun ve açın.](#find-logic-app)
+1. Azure portal, [mantıksal uygulamanızı bulun ve açın](#find-logic-app).
 
-1. Mantık uygulamanızın menüsünde **Genel Bakış'ı**seçin. Mantık uygulamanızın araç çubuğunda **Sil'i**seçin.
+1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin. Mantıksal uygulamanızın araç çubuğunda **Sil**' i seçin.
 
-   ![Mantık uygulaması araç çubuğunda "Sil" seçeneğini belirleyin](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
+   ![Mantıksal uygulama araç çubuğunda "Sil" i seçin](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
 
-1. Onay kutusu göründüğünde, mantık uygulamanızın adını girin ve **Sil'i**seçin.
+1. Onay kutusu göründüğünde, mantıksal uygulamanızın adını girin ve **Sil**' i seçin.
 
-   ![Mantık uygulamanızı silmek için onaylayın](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
+   ![Mantıksal uygulamanızı silmeyi onaylayın](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
 
-   Azure portalı, ana Azure araç çubuğunda, işleminizin başarılı olup olmadığını veya başarısız olup olmadığını doğrulayan bir bildirim gösterir.
+   Azure portal, işlemin başarılı veya başarısız olup olmadığını doğrulayan ana Azure araç çubuğunda bir bildirim gösterir.
 
 <a name="delete-multiple-logic-apps"></a>
 
-### <a name="delete-multiple-logic-apps"></a>Birden çok mantık uygulaması silme
+### <a name="delete-multiple-logic-apps"></a>Birden çok Logic Apps silme
 
-1. Azure [portalında, silmek istediğiniz mantık uygulamalarını bulun.](#find-logic-app)
+1. Azure portal, [silmek istediğiniz mantıksal uygulamaları bulun](#find-logic-app).
 
-1. Onay kutusu sütununda, silmek istediğiniz mantık uygulamalarını seçin. Araç çubuğunda **Sil'i**seçin.
+1. Onay kutusu sütununda, silmek istediğiniz Logic Apps ' i seçin. Araç çubuğunda **Sil**' i seçin.
 
-   ![Birden çok mantık uygulaması silme](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
+   ![Birden çok Logic Apps silme](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
-1. Onay kutusu göründüğünde, girin `yes`ve **Sil'i**seçin.
+1. Onay kutusu göründüğünde, girin `yes`ve **Sil**' i seçin.
 
-   ![Mantık uygulamalarınızı silmek için onaylayın](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
+   ![Mantıksal uygulamalarınızı silmeyi onaylayın](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
-   Azure portalı, ana Azure araç çubuğunda, işleminizin başarılı olup olmadığını veya başarısız olup olmadığını doğrulayan bir bildirim gösterir.
+   Azure portal, işlemin başarılı veya başarısız olup olmadığını doğrulayan ana Azure araç çubuğunda bir bildirim gösterir.
 
 <a name="manage-logic-app-versions"></a>
 
-## <a name="manage-logic-app-versions"></a>Mantık uygulaması sürümlerini yönetme
+## <a name="manage-logic-app-versions"></a>Mantıksal uygulama sürümlerini yönetme
 
-Mantıksal uygulamalarınızın sürüm kontrolü için Azure portalını kullanabilirsiniz. Mantık uygulamanızın sürüm geçmişini bulabilir ve önceki sürümleri tanıtabilirsiniz.
+Mantıksal uygulamalarınızın sürüm denetimi için Azure portal kullanabilirsiniz. Mantıksal uygulamanızın sürüm geçmişini bulabilir ve önceki sürümleri yükseltebilirsiniz.
 
 <a name="find-version-history"></a>
 
-### <a name="find-and-view-previous-versions"></a>Önceki sürümleri bulma ve görüntüleme
+### <a name="find-and-view-previous-versions"></a>Önceki sürümleri bul ve görüntüle
 
-1. Azure [portalında, yönetmek istediğiniz mantık uygulamasını bulun.](#find-logic-app)
+1. Azure portal, yönetmek istediğiniz [mantıksal uygulamayı bulun](#find-logic-app).
 
-1. Mantık uygulamanızın menüsünde, **Geliştirme Araçları**altında, **Sürümler'i**seçin.
+1. Mantıksal uygulamanızın menüsünde, **geliştirme araçları**altında **sürümler**' i seçin.
 
-   ![Mantık uygulamanızın menüsünde "Geliştirme Araçları" altında "Sürümler"i seçin](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+   ![Mantıksal uygulamanızın menüsünde, "geliştirme araçları" altında "sürümler" i seçin](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
-1. Listeden yönetmek için mantık uygulamanızın **Sürümünü** seçin. Listeye filtre lemek için arama çubuğuna **Sürüm** tanımlayıcısını girebilirsiniz.
+1. Listeden yönetilecek mantıksal uygulamanızın **sürümünü** seçin. Listeyi filtrelemek için arama çubuğuna **Sürüm** tanımlayıcıyı girebilirsiniz.
 
-1. Geçmiş **sürüm** sayfasında, önceki sürümün ayrıntılarını salt okunur modunda görürsünüz. Logic Apps **Tasarımcısı** ve **Kod görüntüleme** modları arasında seçim yapabilirsiniz.
+1. **Geçmiş sürümü** sayfasında, önceki sürümün ayrıntılarını salt okuma modunda görürsünüz. Logic Apps **Tasarımcı** ve **kod görünümü** modları arasında seçim yapabilirsiniz.
 
-   ![Kod görünümü ve Logic uygulamaları tasarımcı görünümü ile mantık uygulaması için Geçmiş sürüm sayfası](./media/manage-logic-apps-with-azure-portal/history-version.png)
+   ![Kod görünümü ve Logic Apps Tasarımcı görünümü ile mantıksal uygulama için geçmiş sürüm sayfası](./media/manage-logic-apps-with-azure-portal/history-version.png)
 
 <a name="promote-previous-versions"></a>
 
-### <a name="promote-previous-versions"></a>Önceki sürümleri tanıtma
+### <a name="promote-previous-versions"></a>Önceki sürümleri yükselt
 
-1. Mantık uygulamanızın sürüm geçmişinde, [tanıtmak istediğiniz sürümü bulun ve seçin.](#find-version-history)
+1. Mantıksal uygulamanızın sürüm geçmişinde, [yükseltmek istediğiniz sürümü bulun ve seçin](#find-version-history).
 
-1. Geçmiş **sürüm** **sayfasında, Tanıt'ı**seçin.
+1. **Geçmiş sürümü** sayfasında, **Yükselt**' i seçin.
 
-   ![Mantık uygulamasının sürüm geçmişinde düğmeyi tanıtın](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+   ![Logic App 'in sürüm geçmişinde yükselt düğmesi](./media/manage-logic-apps-with-azure-portal/promote-button.png)
 
-1. Açılan **Logic Apps Designer** sayfasında, gerektiğinde tanıtımını yaptığınız sürümü edin. **Tasarımcı** ve Kod **görünüm** modları arasında geçiş yapabilirsiniz. **Parametreleri,** **Şablonları**ve **Bağlayıcıları**da güncelleştirebilirsiniz.
+1. Açılan **Logic Apps tasarımcı** sayfasında, yükseltmekte olduğunuz sürümü gerektiği gibi düzenleyin. **Tasarımcı** ve **kod görünümü** modları arasında geçiş yapabilirsiniz. **Parametreleri**, **şablonları**ve **bağlayıcıları**da güncelleştirebilirsiniz.
 
-   ![Önceki sürümü tanıtmak için Logic Apps Designer sayfası](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+   ![Önceki bir sürümü yükseltmek için Logic Apps tasarımcı sayfası](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 
-1. Önceki sürümün tanıtımını yapmak ve güncelleştirmeleri kaydetmek için **Kaydet'i**seçin. (Veya değişikliklerinizi iptal etmek için **At'ı**seçin .) 
+1. Tüm güncelleştirmeleri kaydetmek ve önceki sürümü yükseltme işlemi tamamlandıktan sonra **Kaydet**' i seçin. (Veya değişikliklerinizi iptal etmek için **at**' ı seçin.) 
 
-   Mantık [uygulamanızın sürüm geçmişini](#find-version-history) yeniden görüntülediğinizde, tanıtılan sürüm listenin en üstünde görünür ve yeni bir tanımlayıcıya sahiptir.
+   [Mantıksal uygulamanızın sürüm geçmişini yeniden görüntülediğinizde](#find-version-history) , yükseltilen sürüm listenin en üstünde görünür ve yeni bir tanımlayıcıya sahiptir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

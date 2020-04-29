@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (eski adıyla SQL DW) Sık Sorulan Sorular
-description: Bu makalede, müşterilerden ve geliştiricilerden Azure Synapse Analytics (eski adıyla SQL DW) hakkında sık sorulan sorular listele
+title: Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
+description: Bu makalede, müşteriler ve geliştiricilerden Azure SYNAPSE Analytics (eski adıyla SQL DW) hakkında sık sorulan sorular listelenmektedir
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,105 +11,105 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416085"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (eski adıyla SQL DW) Sık sorulan sorular
+# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 
 ## <a name="general"></a>Genel
 
 S. Azure Synapse nedir?
 
-A. Azure Synapse, veri depolama ve Büyük Veri analitiğini bir araya getiren sınırsız bir analiz hizmetidir. Sunucusuz isteğe bağlı veya sağlanan kaynakları ölçekte kullanarak, verileri koşullarınızla sorgulama özgürlüğü sağlar. Azure Synapse, anında BI ve makine öğrenimi ihtiyaçları için verileri yutmak, hazırlamak, yönetmek ve sunmak için bu iki dünyayı birleşik bir deneyimle bir araya getirir. Daha fazla bilgi için bkz: [Azure Synapse Analytics nedir.](sql-data-warehouse-overview-what-is.md)
+A. Azure SYNAPSE, veri depolama ve büyük veri analizlerini birlikte getiren sınırsız bir analiz hizmetidir. Aynı zamanda sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak koşullarınızda verileri sorgulama özgürlüğü sunar. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
 
-S. Azure SQL Veri Ambarı'na ne oldu?
+S. Azure SQL veri ambarı 'na ne oldu?
 
-A. Azure Synapse, Azure SQL Veri Ambarı'dır (SQL DW) geliştirildi. Aynı endüstri lideri veri ambarını yepyeni bir performans ve yetenek düzeyine taşıdık. Mevcut veri ambarı iş yüklerinizi Azure Synapse ile üretimde çalıştırmaya devam edebilir ve önizlemede bulunan yeni özelliklerden otomatik olarak yararlanabilirsiniz. Daha fazla bilgi için Azure [Synapse Analytics nedir'e](sql-data-warehouse-overview-what-is.md)bakın.
+A. Azure SYNAPSE, Azure SQL veri ambarı (SQL DW) gelişmiştir. Sektörde önde gelen veri ambarını, yeni bir performans ve özellik düzeyiyle gerçekleştirdik. Mevcut veri ambarı iş yüklerinizi Azure SYNAPSE ile üretimde çalıştırmaya devam edebilir ve önizleme aşamasında olan yeni yeteneklerden otomatik olarak yararlanabilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir?](sql-data-warehouse-overview-what-is.md).
 
-S. Synapse SQL havuzu nedir?
+S. SYNAPSE SQL havuzu nedir?
 
-A. Synapse SQL havuzu, genellikle Azure Synapse ile kullanılabilen kurumsal veri depolama özelliklerini ifade eder. Daha fazla bilgi için bkz: [Azure Synapse Analytics nedir.](sql-data-warehouse-overview-what-is.md)
+A. SYNAPSE SQL havuzu, Azure SYNAPSE ile genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
 
-S. Azure Synapse'ye nasıl başlarım?
+S. Azure SYNAPSE kullanmaya başlama Nasıl yaparım??
 
-A. Daha fazla bilgi için [Azure ücretsiz hesabıyla](https://azure.microsoft.com/free/sql-data-warehouse/) veya [satışlarla iletişim kurabilirsiniz.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)
+A. [Daha fazla bilgi Için](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html) [Azure Ücretsiz hesabıyla](https://azure.microsoft.com/free/sql-data-warehouse/) çalışmaya başlayabilir veya satışlarla iletişim kurun.
 
-S. Azure Synapse veri güvenliği için neler sunar?
+S. Azure SYNAPSE veri güvenliği için ne sunuyor?
 
-A. Azure Synapse, TDE ve denetim gibi verileri korumak için çeşitli çözümler sunar. Daha fazla bilgi için [Güvenlik'e](sql-data-warehouse-overview-manage-security.md)bakın.
+A. Azure SYNAPSE, TDE ve denetimi gibi verileri korumak için çeşitli çözümler sunar. Daha fazla bilgi için bkz. [güvenlik](sql-data-warehouse-overview-manage-security.md).
 
-S. Azure Synapse'nin hangi yasal veya iş standartlarına uygun olduğunu nereden öğrenebilirim?
+S. Azure SYNAPSE 'in hangi yasal veya iş standartlarından uyumlu olduğunu nereden bulabilirim?
 
 A. SOC ve ISO gibi ürüne göre çeşitli uyumluluk teklifleri için [Microsoft Uyumluluk](https://www.microsoft.com/trustcenter/compliance/complianceofferings) sayfasını ziyaret edin.
-İlk olarak, Uyumluluk başlığına göre seçin. Ardından, hangi hizmetlerin Azure Synapse uyumlu olduğunu görmek için sayfanın sağ tarafındaki Microsoft kapsam içi bulut hizmetleri bölümünde Azure'u genişletin.
+İlk olarak, uyumluluk başlığına göre öğesini seçin. Ardından, hangi hizmetlerin Azure SYNAPSE uyumlu olduğunu görmek için sayfanın sağ tarafındaki Microsoft 'un kapsam içi bulut Hizmetleri bölümünde Azure ' ı genişletin.
 
-S. Power BI'ye bağlanabilir miyim?
+S. Power BI bağlanabilir miyim?
 
-A. Evet! Power BI, Azure Synapse ile doğrudan sorguyı desteklese de, çok sayıda kullanıcı veya gerçek zamanlı veri için tasarlanmamıştır. Power BI performansını daha da optimize etmek için Azure Analiz Hizmetleri veya Analiz Hizmeti IaaS'ın üzerinde Power BI'yi kullanmayı düşünün.
+A. Evet! Power BI Azure SYNAPSE ile doğrudan sorguyu desteklediğinden, bu, çok sayıda kullanıcı veya gerçek zamanlı veriler için tasarlanmamıştır. Power BI performansını daha iyi hale getirebilmenizi sağlamak için, Azure Analysis Services veya Analysis Service IaaS üzerinde Power BI kullanmayı göz önünde bulundurun.
 
-S. Synapse SQL havuz kapasite sınırları nelerdir?
+S. SYNAPSE SQL havuz kapasitesi sınırları nelerdir?
 
-A. Geçerli [kapasite limitleri](sql-data-warehouse-service-capacity-limits.md) sayfamıza bakın.
+A. Geçerli [Kapasite limitleri](sql-data-warehouse-service-capacity-limits.md) sayfamıza bakın.
 
-S. Ölçek/Duraklatma/Özgeçmişim neden bu kadar uzun sürüyor?
+S. Neden Ölçeklendirmeliyim/Duraklat/devam eden uzun sürüyor?
 
-A. Çeşitli etkenler, işlem yönetimi işlemlerinin zamanını etkileyebilir. Uzun süren işlemler için yaygın bir durum işlem geri almadır. Bir ölçek veya duraklatma işlemi başlatıldığında, gelen tüm oturumlar engellenir ve sorgular boşaltılır. Sistemi istikrarlı bir durumda bırakmak için, bir işlemin başlatılabilmesi için işlemlerin geri alınması gerekir. Hareketlerin günlük boyutu ne kadar büyük ve sayı ne kadar büyükse, işlem sistemi kararlı bir duruma geri getirmek için o kadar uzun süre durdurulacaktır.
+A. Birkaç etken, işlem yönetimi işlemlerinin süresini etkileyebilir. Uzun süre çalışan işlemler için ortak bir durum işlem geri alma işlemi olur. Bir ölçek veya duraklatma işlemi başlatıldığında, tüm gelen oturumlar engellenir ve sorgular kaldırılır. Sistemin kararlı durumda kalmasını sağlamak için, bir işlemin bir işlem yapılmadan önce geri alınması gerekir. İşlemin ne kadar büyük olması ve günlük boyutunun daha büyük olması, işlemin daha uzun olması sistem kararlı duruma geri yüklenmeye karşı daha uzundur.
 
 ## <a name="user-support"></a>Kullanıcı desteği
 
-S. Bir özellik isteğim var, nereye gönderebilirim?
+S. Bir özellik isteğim var ve nereden gönderebilirim?
 
-A. Bir özellik isteğiniz varsa, [kullanıcı](https://feedback.azure.com/forums/307516-sql-data-warehouse) sesi sayfamıza gönderin
+A. Bir özellik isteğiniz varsa [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse) sayfamıza gönderebilirsiniz
 
-S. X'i nasıl yapabilirim?
+S. X 'i nasıl yapabilirim?
 
-A. Azure Synapse ile geliştirme konusunda yardım için [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) sayfamızda sorular sorabilirsiniz.
+A. Azure SYNAPSE ile geliştirmeye yönelik yardım için [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) sayfamızda soru sorabilirsiniz.
 
-S. Destek biletini nasıl gönderirim?
+S. Nasıl yaparım? bir destek bileti mi gönder?
 
-A. [Destek Biletleri](sql-data-warehouse-get-started-create-support-ticket.md) Azure portalı üzerinden dosyalanabilir.
+A. [Destek biletleri](sql-data-warehouse-get-started-create-support-ticket.md) , Azure Portal aracılığıyla dosyalanır.
 
 ## <a name="sql-languagefeature-support"></a>SQL dil/özellik desteği
 
-S. Hangi veri türleri desteklenir?
+S. Hangi veri türleri destekleniyor?
 
-A. [Bkz. veri türleri.](sql-data-warehouse-tables-data-types.md)
+A. Bkz. [veri türleri](sql-data-warehouse-tables-data-types.md).
 
-S. Hangi tablo özelliklerini destekliyorsunuz?
+S. Hangi tablo özelliklerini destekliyoruz?
 
-A. Birçok özellik desteklenir. [Desteklenmeyen Tablo Özellikleri'nde desteklenmeyen](sql-data-warehouse-tables-data-types.md)özellikler bulunabilir.
+A. Birçok özellik desteklenir. Desteklenmeyen özellikler, [Desteklenmeyen tablo özelliklerinde](sql-data-warehouse-tables-data-types.md)bulunabilir.
 
-## <a name="tooling-and-administration"></a>Takım lama ve yönetim
+## <a name="tooling-and-administration"></a>Araç ve yönetim
 
-S. Synapse SQL havuzu REST API'lerini destekliyor mu?
+S. SYNAPSE SQL havuzu REST API 'Leri destekliyor mu?
 
-A. Evet. SQL Veritabanı ile kullanılabilecek rest işlevlerinin çoğu Synapse SQL havuzunda da kullanılabilir. API bilgilerini REST dokümantasyon sayfalarında veya [Veritabanlarında](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bulabilirsiniz.
+A. Evet. SQL veritabanı ile kullanılabilen çoğu REST işlevi, SYNAPSE SQL Pool ile de kullanılabilir. API bilgilerini, REST belge sayfaları veya [veritabanları](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)içinde bulabilirsiniz.
 
-## <a name="loading"></a>Yükleme
+## <a name="loading"></a>Yükleniyor
 
-S. Hangi istemci sürücüleri destekliyorsunuz?
+S. Hangi istemci sürücülerini destekliyoruz?
 
-A. Synapse SQL havuzu için sürücü desteği [Bağlantı Dizeleri](../sql/connection-strings.md) sayfasında bulunabilir
+A. SYNAPSE SQL havuzu için sürücü desteği [bağlantı dizeleri](../sql/connection-strings.md) sayfasında bulunabilir
 
-S: Hangi dosya biçimleri PolyBase tarafından desteklenir?
+S: PolyBase tarafından hangi dosya biçimleri destekleniyor?
 
-C: Orc, RC, Parke ve düz sınırlı metin
+Y: Orc, RC, Parquet ve düz olarak sınırlandırılmış metin
 
-S: PolyBase kullanarak hangi veri kaynaklarına bağlanabilirim?
+S: PolyBase 'i kullanarak hangi veri kaynaklarına bağlanabilirim?
 
-C: [Azure Veri Gölü Depolama](sql-data-warehouse-load-from-azure-data-lake-store.md) ve Azure Depolama [Blobs](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+Y: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) ve [Azure Storage blob 'ları](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-S: Azure Depolama Blobs veya ADLS'ye bağlanırken hesaplama geri tepmesi mümkün mü?
+S: Azure Storage Bloblarına veya ADLS 'e bağlanılırken hesaplama Işlemi mümkün midir?
 
-C: Hayır, PolyBase yalnızca depolama bileşenleriyle etkileşime geçer.
+Y: Hayır, PolyBase yalnızca depolama bileşenleriyle etkileşime girer.
 
-S: HDI'ye bağlanabilir miyim?
+S: HDI 'ye bağlanabilir miyim?
 
-C: HDI, ADFS katmanı olarak ADLS veya WASB'yi kullanabilir. HDFS katmanınız olarak varsa, bu verileri bir Synapse SQL havuzuna yükleyebilirsiniz. Ancak, HDI örneğine pushdown hesaplama oluşturamazsınız.
+Y: HDI,,, bir ya da. Bu durumda, bu verileri bir Synapse SQL havuzuna yükleyebilirsiniz. Ancak, HDI örneğine aşağı itme hesaplaması oluşturamazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Sinapse hakkında daha fazla bilgi için [Genel Bakış](sql-data-warehouse-overview-faq.md) sayfamıza bakın.
+Azure SYNAPSE hakkında bir bütün olarak daha fazla bilgi için bkz. [genel bakış](sql-data-warehouse-overview-faq.md) sayfası.
