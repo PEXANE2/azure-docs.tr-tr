@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
 ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67133620"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Azure DNS için Azure PowerShell ayarlama
@@ -38,7 +38,7 @@ Find-Module -Name AzureRM.Dns
 Find-Module -Name AzureRM.Network 
 ``` 
  
-Yukarıdaki komutların çıktısının AzureRM.Dns sürümünün 4.1.0 veya daha yüksek sürüm, AzureRM.Network için ise 5.4.0 veya daha yüksek sürüm olduğunu göstermesi gerekir.  
+Yukarıdaki komutların çıktısının Azurerd. DNS sürümünün 4.1.0 veya daha yüksek bir sürüm olduğunu göstermesi ve Azurerd. Network, 5.4.0 veya üzeri bir sürümdür.  
 
 Sisteminizin önceki sürümlere sahip olması durumunda, Modül sürümlerinin yanındaki bağlantıları kullanarak en son Azure PowerShell sürümünü yükleyebilir veya PowerShell Galerisinden yukarıdaki modülleri yükleyebilirsiniz. Daha sonra aşağıdaki komutları kullanarak bunları yükleyebilirsiniz. Her iki modül de zorunludur ve tamamen geri dönük olarak uyumludur. 
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure hesabınızda oturum açma
 
-PowerShell konsolunuzu açın ve hesabınıza bağlanın. Daha fazla bilgi için [AzureRM ile Oturum Aç'a](/powershell/azure/azurerm/authenticate-azureps)bakın.
+PowerShell konsolunuzu açın ve hesabınıza bağlanın. Daha fazla bilgi için bkz. [Azurerd Ile oturum açma](/powershell/azure/azurerm/authenticate-azureps).
 
 ```powershell
 Connect-AzureRmAccount

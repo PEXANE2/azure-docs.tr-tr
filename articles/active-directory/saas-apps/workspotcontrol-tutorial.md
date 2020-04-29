@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: İş Yeri Denetimi ile Azure Active Directory tümleştirmesi | Microsoft Dokümanlar'
-description: Azure Etkin Dizin ve İş Noktası Denetimi için tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: Iş noktası denetimiyle tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve çalışma noktası denetimi için çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,236 +16,236 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67086676"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Öğretici: İş Yeri Denetimi ile Azure Active Directory tümleştirmesi
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Öğretici: Iş noktası denetimiyle tümleştirme Azure Active Directory
 
-Bu eğitimde, İş Noktasi Denetimi'ni Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. İş Noktası Denetimini Azure AD ile dışlattığında:
+Bu öğreticide, çalışma noktası denetimini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Iş noktası denetimini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* İş Yeri Denetimi'ne kimlerin erişebilenleri denetlemek için Azure AD'yi kullanın.
-* Kullanıcıların Azure AD hesaplarını kullanarak Otomatik Olarak Workspot Denetimi'nde (tek oturum açma [SSO]) oturum açmalarını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portalı.
+* Iş noktası denetimine kimlerin erişebileceğini denetlemek için Azure AD 'yi kullanın.
+* Kullanıcıların Azure AD hesaplarını kullanarak otomatik olarak Iş noktası denetiminde (çoklu oturum açma [SSO]) oturum açmasını sağlar.
+* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için [Azure AD'deki uygulamalarda tek oturum açma'ya](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure AD 'de uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Workspot Denetimi ile yapılandırmak için aşağıdaki şeylere ihtiyacınız vardır:
+Azure AD tümleştirmesini Iş noktası denetimiyle yapılandırmak için aşağıdaki işlemleri yapmanız gerekir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız [yoksa, ücretsiz](https://azure.microsoft.com/free/)bir hesap alabilirsiniz.
+* Bir Azure AD aboneliği. Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-* İş Yeri Denetimi tek oturum açma özellikli abonelik.
+* Bir Iş noktası denetimi çoklu oturum açma etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
 > [!Note]
-> Workspot Control, SP tarafından başlatılan ve IDP tarafından başlatılan SSO'yı destekler.
+> Çalışma noktası denetimi SP tarafından başlatılan ve ıDP tarafından başlatılan SSO 'yu destekler.
 
 
-## <a name="adding-workspot-control-from-the-gallery"></a>Galeriden İş Spotu Denetimi Ekleme
+## <a name="adding-workspot-control-from-the-gallery"></a>Galeriden çalışma noktası denetimi ekleme
 
-Workspot Control'ün Azure AD'ye entegrasyonunu yapılandırmak için galeriden Yönetilen SaaS uygulamaları listenize İş Noktası Denetimi eklemeniz gerekir.
+Çalışma noktası denetiminin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize çalışma noktası denetimi eklemeniz gerekir.
 
-**Galeriden Workspot Denetimi eklemek için aşağıdaki adımları izleyin:**
+**Galeriden çalışma noktası denetimi eklemek için şu adımları izleyin:**
 
-1. [Azure portalının](https://portal.azure.com)sol bölmesinde **Azure Etkin Dizini'ni**seçin.
+1. [Azure Portal](https://portal.azure.com)sol bölmesinde **Azure Active Directory**' ı seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve **Tüm Uygulamaları**seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
-3. Pencerenin üst kısmında **Yeni uygulama** seçin.
+3. Pencerenin üst kısmındaki **Yeni uygulama** ' yı seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **İş Noktası Denetimi'ni**girin, sonuç panelinden **İş Noktası Denetimi'ni** seçin ve sonra **Ekle'yi**seçin.
+4. Arama kutusuna, **çalışma noktası denetimi**girin, sonuçlar panelinden **çalışma noktası denetimi** ' ni seçin ve ardından **Ekle**' yi seçin.
 
-     !["Galeriden ekle" penceresi](common/search-new-app.png)
+     !["Galeriden Ekle" penceresi](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, test kullanıcısı Britta Simon için Workspot Control ile Azure AD tek oturum açma işlemini yapılandırın ve sınarsınız.
-Tek oturum açmanın çalışması için, Bir Azure REKLAM kullanıcısı ile İş Noktadenetimi'ndeki ilgili kullanıcı arasında bir bağlantı kurmanız gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, bir test kullanıcısı için, Britta Simon ile birlikte Iş noktası denetimiyle yapılandırıp test edersiniz.
+Çoklu oturum açma için, çalışma noktası denetimindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
 
-Azure AD oturum açma işlemlerini İş Noktası Denetimi ile yapılandırmak ve test etmek için aşağıdaki görevleri tamamlamanız gerekir:
+Azure AD çoklu oturum açmayı Iş noktası denetimiyle yapılandırmak ve test etmek için aşağıdaki görevleri gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD oturumunu tek oturuma [uygun olarak yapılandırın.](#configure-azure-ad-single-sign-on)
-2. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için [İş Noktası Denetimi'ni tek oturum](#configure-workspot-control-single-sign-on) açma yı yapılandırın.
-3. Britta Simon için Azure AD oturum açma işlemini test etmek için [bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için [Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)
-5. Kullanıcının Azure AD gösterimine bağlı İş Noktası Denetimi'nde Britta Simon'ın bir örneğini oluşturmak için [bir İş Noktası Denetimi testi kullanıcısı oluşturun.](#create-a-workspot-control-test-user)
-6. Yapılandırmanın çalıştığını doğrulamak için [tek oturum](#test-single-sign-on) açma yı test edin.
+1. Kullanıcılarınızın özelliğini kullanmasını sağlamak için [Azure AD çoklu oturum açmayı yapılandırın](#configure-azure-ad-single-sign-on) .
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için [Iş noktası denetimini çoklu oturum açmayı yapılandırın](#configure-workspot-control-single-sign-on) .
+3. Britta Simon için Azure AD çoklu oturum açma sınamasını test etmek üzere [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
+4. Azure AD 'de çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirmek için [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
+5. Kullanıcının Azure AD gösterimine bağlı olan, çalışma noktası denetiminde Britta Simon 'ın bir örneğini [oluşturmak için bir Iş noktası denetimi test kullanıcısı oluşturun](#create-a-workspot-control-test-user) .
+6. Yapılandırmanın çalıştığını doğrulamak için [Çoklu oturum açmayı test](#test-single-sign-on) edin.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini İş Noktadenetimi ile yapılandırmak için aşağıdaki adımları izleyin:
+Azure AD çoklu oturum açmayı Iş noktası denetimiyle yapılandırmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalındaki](https://portal.azure.com/) **Workspot Denetimi** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/) **çalışma noktası denetimi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** penceresinde, tek oturum açmayı etkinleştirmek için **SAML** modunu seçin.
+2. Çoklu oturum **açma yöntemi seçin** penceresinde, çoklu oturum açmayı etkinleştirmek için **SAML** modu ' nu seçin.
 
-    ![Tek oturum açma yöntemi penceresi seçin](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme yöntemi penceresi seçin](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırmasına**erişmek için **Düzenleme** (kalem) simgesini seçin.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırmasına**erişmek için **Düzenle** (kurşun kalem) simgesini seçin.
 
-    !["Temel SAML Yapılandırması"nda vurgulanan düzenleme simgesi](common/edit-urls.png)
+    !["Temel SAML yapılandırması" içinde vurgulanmış düzenleme simgesi](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde, uygulamayı IDP tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları izleyin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı IDP tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları izleyin:
 
-    ![İş yeri Denetimi etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![Çalışma noktası denetimi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
-    1. **Tanımlayıcı** metin kutusuna aşağıdaki desende bir URL girin:<br/>
-    ***https://<<i> </i>INSTANCENAME>-saml.workspot.com/saml/metadata***
+    1. **Tanımlayıcı** metin kutusunda, aşağıdaki düzende bir URL girin:<br/>
+    ***https://<<i> </i>InstanceName>-SAML.workspot.com/SAML/Metadata***
 
-    1. Yanıt **URL** metin kutusuna aşağıdaki desende bir URL girin:<br/>
-    ***https://<<i> </i>INSTANCENAME>-saml.workspot.com/saml/assertion***
+    1. **Yanıt URL** 'si metin kutusuna aşağıdaki düzende bir URL girin:<br/>
+    ***https://<<i> </i>InstanceName>-SAML.workspot.com/SAML/assertion***
 
-5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız, **ek URL'ler ayarla'yı**seçin.
+5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla**' yı seçin.
 
-    ![İş yeri Denetimi etki alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Çalışma noktası denetimi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki desende bir URL girin:<br/>
-    ***https://<<i> </i>INSTANCENAME>-saml.workspot.com/***
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki düzende bir URL girin:<br/>
+    ***https://<<i> </i>InstanceName>-SAML.workspot.com/***
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL'si ve oturum açma URL'si ile değiştirin. Bu değerleri almak için [Workspot Control Client destek ekibine](mailto:support@workspot.com) başvurun. Veya Azure portalının **Temel SAML Yapılandırması** bölümündeki desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile değiştirin. Bu değerleri almak için [Iş noktası denetimi istemci destek ekibine](mailto:support@workspot.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümündeki desenlere de başvurabilirsiniz.
 
-6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, gereksinimlerinize göre kullanılabilir seçeneklerden **Sertifikayı (Base64)** indirmek için **İndir'i** seçin. Bilgisayarınıza kaydedin.
+6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksinimlerinize göre kullanılabilir seçeneklerden **sertifikayı (base64)** indirmek için **İndir** ' i seçin. Bu dosyayı bilgisayarınıza kaydedin.
 
-    ![Sertifika (Base64) indirme bağlantısı](common/certificatebase64.png)
+    ![Sertifika (base64) indirme bağlantısı](common/certificatebase64.png)
 
-7. İş **Noktası Denetimini Ayarla** bölümünde, gereksinimlerinize göre uygun URL'leri kopyalayın:
+7. **Çalışma noktası Ayarla denetim** bölümünde, gereksinimlerinize göre uygun URL 'leri kopyalayın:
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    - **Giriş URL'si**
+    - **Oturum açma URL 'SI**
 
-    - **Azure AD Tanımlayıcısı**
+    - **Azure AD tanımlayıcısı**
 
-    - **Giriş URL'si**
+    - **Oturum kapatma URL 'SI**
 
-### <a name="configure-workspot-control-single-sign-on"></a>İş Yeri Denetimini tek oturum açma yı yapılandırma
+### <a name="configure-workspot-control-single-sign-on"></a>Çalışma noktası denetimini çoklu oturum açmayı yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, İş Yeri Denetimi'nde Güvenlik Yöneticisi olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, çalışma noktası denetiminde güvenlik yöneticisi olarak oturum açın.
 
-2. Sayfanın üst kısmındaki araç çubuğunda **Kurulum'u** ve ardından **SAML'yi**seçin.
+2. Sayfanın üst kısmındaki araç çubuğunda, **Kurulum** ve ardından **SAML**' yi seçin.
 
     ![Kurulum seçenekleri](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
-3. Güvenlik **İddiası Biçimlendirme Dili Yapılandırması** penceresinde aşağıdaki adımları izleyin:
+3. **Security assertion Markup Language yapılandırma** penceresinde aşağıdaki adımları izleyin:
  
-    ![Güvenlik İddiası Biçimlendirme Dili Yapılandırma penceresi](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
+    ![Security Assertion Markup Language yapılandırma penceresi](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    1. Varlık **Kimliği** kutusuna, Azure portalından kopyaladığınız **Azure Reklam Tanımlayıcısını** yapıştırın.
+    1. **VARLıK kimliği** kutusunda, Azure Portal kopyaladığınız **Azure ad tanımlayıcısını** yapıştırın.
 
-    1. Oturum **Açma Hizmeti URL kutusuna** Azure portalından kopyaladığınız **Giriş URL'sini** yapıştırın.
+    1. Oturum açma **hizmeti URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL** 'sini yapıştırın.
 
-    1. Oturum **Açma Hizmeti URL** kutusuna, Azure portalından kopyaladığınız **Logout URL'sini** yapıştırın.
+    1. **Oturum kapatma hizmeti URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL** 'sini yapıştırın.
 
-    1. Azure portalından indirdiğiniz base-64 kodlu sertifikayı X.509 sertifikasına yüklemek için **Dosyayı** Güncelleştir'i seçin.
+    1. Azure portal indirdiğiniz temel 64 kodlu sertifikayı X. 509.440 sertifikasına yüklemek için **güncelleştirme dosyasını** seçin.
 
-    1. **Kaydet'i**seçin.
+    1. **Kaydet**’i seçin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalının sol bölmesinde **Azure Etkin Dizini,** **Kullanıcılar**ve ardından **Tüm kullanıcılar'ı**seçin.
+1. Azure portal sol bölmesinde **Azure Active Directory**, **Kullanıcılar**ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Pencerenin üst kısmında **Yeni kullanıcı'yı** seçin.
+2. Pencerenin üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    !["Yeni kullanıcı" düğmesi](common/new-user.png)
+    !["Yeni Kullanıcı" düğmesi](common/new-user.png)
 
-3. Kullanıcının özelliklerinde aşağıdaki adımları izleyin:
+3. Kullanıcının özelliklerinde şu adımları izleyin:
 
-    ![Kullanıcı özellikleri penceresi](common/user-properties.png)
+    ![Kullanıcı Özellikleri penceresi](common/user-properties.png)
 
-    1. **Ad** alanına **BrittaSimon**girin.
+    1. **Ad** alanına **Brittasıon**yazın.
   
-    1. Kullanıcı **adı** alanına **brittasimon@* şirketinizin alan adını.extension*** girin. Örneğin, ** BrittaSimon@contosogirin.<i> </i> com**.
+    1. **Kullanıcı adı** alanına, **brittasimon@* yourcompanydomain. Extension * * * yazın. Örneğin, girin ** BrittaSimon@contoso.<i> </i> com**.
 
-    1. **Parolayı göster** onay kutusunu seçin. Ardından **Parola** kutusunda görüntülenen değeri yazın.
+    1. **Parolayı göster** onay kutusunu seçin. Ardından **parola** kutusunda görüntülenen değeri yazın.
 
-    1. **Oluştur'u**seçin.
+    1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'a Azure tek oturum açma işlemini kullanmasını sağlamak için İş Noktası Denetimi'ne erişim izni verirsiniz.
+Bu bölümde, Azure çoklu oturum açma özelliğini kullanmasını sağlamak için, çalışma noktası denetimine Britta Simon erişimi verirsiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar,** **Tüm uygulamalar**ve ardından **Workspot Denetimi'ni**seçin.
+1. Azure portal **Kurumsal uygulamalar**, **tüm uygulamalar**ve ardından **çalışma noktası denetimi**' ni seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinden İş **Noktası Denetimi'ni**seçin.
+2. Uygulamalar listesinde, **çalışma noktası denetimi**' ni seçin.
 
-    ![Uygulamalar listesindeki İş Yeri Denetimi bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki çalışma noktası denetim bağlantısı](common/all-applications.png)
 
-3. Sol taraftaki menüden **Kullanıcılar ve gruplar**seçin.
+3. Sol taraftaki menüden **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini seçin. Ardından **Atama Ekle** penceresinde Kullanıcılar **ve gruplar** seçin.
+4. **Kullanıcı Ekle** düğmesini seçin. Sonra **atama Ekle** penceresinde **Kullanıcılar ve gruplar** ' ı seçin.
 
     !["Atama Ekle" penceresi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** penceresinde, **Kullanıcılar** listesinden **Britta Simon'ı** seçin. Ardından **Seç**'e tıklayın.
+5. **Kullanıcılar ve gruplar** penceresinde, **Kullanıcılar** listesinden **Britta Simon** ' u seçin. Ardından **Seç**'e tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** penceresindeki listeden kullanıcı için uygun rolü seçin. Ardından en altta **Seç'i** tıklatın.
+6. SAML onaylama 'da herhangi bir rol değeri bekleliyorsanız, **Rol Seç** penceresinde listeden Kullanıcı için uygun rolü seçin. Ardından en altta **Seç** ' e tıklayın.
 
-7. Atama **Ekle** penceresinde **Atama'yı**seçin.
+7. **Atama Ekle** penceresinde **ata**' yı seçin.
 
-### <a name="create-a-workspot-control-test-user"></a>İş Yeri Denetimi testi kullanıcısı oluşturma
+### <a name="create-a-workspot-control-test-user"></a>Çalışma noktası denetimi test kullanıcısı oluşturma
 
-Azure AD kullanıcılarının Workspot Denetimi'nde oturum açmalarını sağlamak için, bunların İş Noktası Denetimi'nde sağlanması gerekir. Sağlama el ile bir görevdir.
+Azure AD kullanıcılarının, çalışma noktası denetiminde oturum açmasını sağlamak için, Iş noktası denetimine sağlanması gerekir. Sağlama, el ile gerçekleştirilen bir görevdir.
 
-**Bir kullanıcı hesabı sağlamak için aşağıdaki adımları izleyin:**
+**Bir kullanıcı hesabı sağlamak için şu adımları izleyin:**
 
-1. Güvenlik Yöneticisi olarak Workspot Denetimi'nde oturum açın.
+1. Iş noktası denetiminde güvenlik yöneticisi olarak oturum açın.
 
-2. Sayfanın üst kısmındaki araç çubuğunda **Kullanıcılar'ı** seçin ve ardından **Kullanıcı Ekle'yi**seçin.
+2. Sayfanın üst kısmındaki araç çubuğunda **Kullanıcılar** ' ı ve sonra **Kullanıcı Ekle**' yi seçin.
 
-    !["Kullanıcılar" seçenekleri](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
+    !["Kullanıcı" seçenekleri](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
-3. Yeni **Kullanıcı Ekle** penceresinde aşağıdaki adımları izleyin:
+3. **Yeni Kullanıcı Ekle** penceresinde aşağıdaki adımları izleyin:
 
     !["Yeni Kullanıcı Ekle" penceresi](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
-    1. **Ad adı** **kutusuna, Britta**gibi bir kullanıcının ilk adını girin.
+    1. **Ad** kutusuna bir kullanıcının adını ( **Britta**gibi) girin.
 
-    1. **Soyadı** metin kutusuna, Kullanıcının soyadını girin, **örneğin Simon.**
+    1. **Soyadı** metin kutusuna kullanıcının soyadı ( **Simon**gibi) girin.
 
-    1. **E-posta** kutusuna, kullanıcının e-posta adresini girin, ** Brittasimon@contoso<i> </i> örneğin. com**.
+    1. **E-posta** kutusuna kullanıcının e-posta adresini girin, örneğin ** Brittasimon@contoso<i> </i> . com**.
 
-    1. **Rol** açılır listesinden uygun kullanıcı rolünü seçin.
+    1. **Rol** açılan listesinden uygun Kullanıcı rolünü seçin.
 
-    1. **Grup** açılır listesinden uygun kullanıcı grubunu seçin.
+    1. **Grup** açılan listesinden ilgili kullanıcı grubunu seçin.
 
-    1. **Kullanıcı Ekle'yi**seçin.
+    1. **Kullanıcı Ekle**' yi seçin.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, *Access Panel*aracılığıyla Azure AD tek oturum açma yapılandırmamızı test ediyoruz.
+Bu bölümde, *erişim paneli*aracılığıyla Azure AD çoklu oturum açma yapılandırmanızı test ediyoruz.
 
-Access Paneli'ndeki **İş Noktası Denetimi** döşemesini tıklattığınızda, SSO'yu kurduğunuz İş Noktası Denetimi'nde otomatik olarak oturum açmalısınız. Daha fazla bilgi için bkz. [Erişim Paneli'ne Giriş](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Erişim paneli 'nde **çalışma noktası denetim** kutucuğuna TıKLADıĞıNıZDA, SSO 'Yu ayarladığınız Iş noktası denetiminde otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [Erişim Paneli'ne Giriş](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
-- [Azure Active Directory'deki uygulamalarda tek oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

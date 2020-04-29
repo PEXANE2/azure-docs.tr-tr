@@ -1,7 +1,7 @@
 ---
-title: Azure portalından bağlantı dizesini edinme
-description: Azure portalından bağlantı dizesini edinme
-keywords: sql bağlantısı,bağlantı dizesi
+title: Azure portal bağlantı dizesini alın
+description: Azure portal bağlantı dizesini alın
+keywords: SQL bağlantısı, bağlantı dizesi
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,34 +11,34 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188451"
 ---
-### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Azure portalından bağlantı dizesini edinme
-İstemci programınızın Azure SQL Veritabanı ile etkileşimkurabilmesi için gerekli olan bağlantı dizesini elde etmek için [Azure portalını](https://portal.azure.com/) kullanın.
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Azure portal bağlantı dizesini alın
+İstemci programınızın Azure SQL veritabanı ile etkileşim kurması için gerekli olan bağlantı dizesini almak için [Azure Portal](https://portal.azure.com/) kullanın.
 
 1. **Tüm hizmetler** > **SQL veritabanlarını**seçin.
 
-2. **Veritabanınızın** adını SQL veritabanları bıçağının sol üst yanındaki filtre metin kutusuna girin.
+2. **SQL veritabanları** dikey penceresinin sol üst kısmındaki filtre metin kutusuna veritabanınızın adını girin.
 
-3. Veritabanınız için satırı seçin.
+3. Veritabanınızın satırını seçin.
 
-4. Bıçak veritabanınız için göründükten sonra, görsel kolaylık sağlamak için göz atma ve veritabanı filtreleme için kullandığınız bıçakları daraltmak için **Simge Durumuna Küçült** düğmelerini seçin.
+4. Veritabanınız için dikey pencere görüntülendikten sonra, görsel olarak kolaylık sağlaması için, göz atma ve veritabanı filtrelemesinde kullandığınız dikey pencereleri daraltmak için **simge durumuna küçült** düğmesini seçin.
 
-5. Veritabanınızın bıçak üzerinde veritabanı **bağlantı dizelerini göster'i**seçin.
+5. Veritabanınızın dikey penceresinde **veritabanı bağlantı dizelerini göster**' i seçin.
 
-6. Uygun bağlantı dizesini kopyalayın. yani ADO.NET bağlantı kitaplığını kullanmayı planlıyorsanız, **ADO.NET** sekmesinden uygun dizekopyalayın.
+6. Uygun bağlantı dizesini kopyalayın. Örneğin, ADO.NET bağlantı kitaplığını kullanmayı düşünüyorsanız, **ADO.net** sekmesinden uygun dizeyi kopyalayın.
 
-    ![Veritabanınız için ADO bağlantı dizesini kopyalama][20-CopyAdoConnectionString]
+    ![Veritabanınız için ADO bağlantı dizesini kopyalayın][20-CopyAdoConnectionString]
 
-7. Bağlantı dizesini gerektiği gibi edin. kullanıcı adı veya sunucu adı çok uzunsa parolanızı bağlantı dizesine ekleyin veya kullanıcı adından "@&lt;servername"&gt;kaldırın.
+7. Bağlantı dizesini gerektiği gibi düzenleyin. Yani, parolayı bağlantı dizesine ekleyin veya Kullanıcı adı ya da sunucu adı çok&lt;uzunsa&gt;Kullanıcı adından "@ ServerName" öğesini kaldırın.
 
-8. Şu veya bu biçimde, bağlantı dize bilgilerini istemci program kodunuza yapıştırın.
+8. Tek bir biçimde veya başka bir biçimde, bağlantı dizesi bilgilerini istemci program kodunuza yapıştırın.
 
-Daha fazla bilgi için [Bağlantı dizeleri ve yapılandırma dosyalarına](https://msdn.microsoft.com/library/ms254494.aspx)bakın.
+Daha fazla bilgi için bkz. [bağlantı dizeleri ve yapılandırma dosyaları](https://msdn.microsoft.com/library/ms254494.aspx).
 
 <!-- Image references. -->
 

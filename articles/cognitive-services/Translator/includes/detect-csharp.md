@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 0c263ed1f18ceaa2db976632ea31b9fe1eb47a93
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69907131"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
 [!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
-## <a name="create-a-net-core-project"></a>Bir .NET Core projesi oluşturma
+## <a name="create-a-net-core-project"></a>.NET Core projesi oluşturma
 
 Yeni bir komut istemi (veya terminal oturumu) açın ve şu komutları çalıştırın:
 
@@ -24,9 +24,9 @@ dotnet new console -o detect-sample
 cd detect-sample
 ```
 
-İlk komut iki şey yapar. Yeni bir .NET konsol uygulaması oluşturur ve adlı `detect-sample`bir dizin oluşturur. İkinci komut, projenizin dizininde değişir.
+İlk komut iki şeyi yapar. Yeni bir .NET konsol uygulaması oluşturur ve adlı `detect-sample`bir dizin oluşturur. İkinci komut, projenizin dizinine değişir.
 
-Ardından, Json.Net yüklemeniz gerekir. Projenizin dizininden çalıştır:
+Sonra, Json.Net yüklemeniz gerekir. Projenizin dizininden şunu çalıştırın:
 
 ```console
 dotnet add package Newtonsoft.Json --version 11.0.2
@@ -34,9 +34,9 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 ## <a name="select-the-c-language-version"></a>C# dil sürümünü seçin
 
-Bu hızlı başlatma C# 7.1 veya daha sonra gerektirir. Projenizin C# sürümünü değiştirmenin birkaç yolu vardır. Bu kılavuzda, dosyayı nasıl ayarlayabileceğinizi `detect-sample.csproj` göstereceğiz. Visual Studio'da dili değiştirme gibi tüm kullanılabilir seçenekler için [C# dil sürümünü seçin'e](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version)bakın.
+Bu hızlı başlangıçta C# 7,1 veya üzeri bir sürüm gerekir. Projenizin C# sürümünü değiştirmek için birkaç yol vardır. Bu kılavuzda, `detect-sample.csproj` dosyayı nasıl ayarlayacağız gösterilmektedir. Visual Studio 'Nun dilini değiştirme gibi kullanılabilir tüm seçenekler için bkz. [C# dil sürümünü seçme](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
 
-Projenizi açın, `detect-sample.csproj`sonra açın. 7.1 `LangVersion` veya daha sonra olarak ayarlandıklarına emin olun. Dil sürümü için bir özellik grubu yoksa, aşağıdaki satırları ekleyin:
+Projenizi açın ve sonra açın `detect-sample.csproj`. ' `LangVersion` Nin 7,1 veya üzeri olarak ayarlandığından emin olun. Dil sürümü için bir özellik grubu yoksa şu satırları ekleyin:
 
 ```xml
 <PropertyGroup>
@@ -44,9 +44,9 @@ Projenizi açın, `detect-sample.csproj`sonra açın. 7.1 `LangVersion` veya dah
 </PropertyGroup>
 ```
 
-## <a name="add-required-namespaces-to-your-project"></a>Projenize gerekli ad alanları ekleme
+## <a name="add-required-namespaces-to-your-project"></a>Projenize gerekli ad alanlarını ekleyin
 
-Daha `dotnet new console` önce çalıştırdığınız komut, `Program.cs`'. Bu dosya, uygulama kodunuzu koyacağınız yerdir. Varolan ifadeleri açın `Program.cs`ve değiştirin. Bu ifadeler, örnek uygulamayı oluşturmak ve çalıştırmak için gereken tüm türlere erişebildiğinizi sağlar.
+Daha `dotnet new console` önce çalıştırdığınız komut, dahil olmak üzere `Program.cs`bir proje oluşturdu. Bu dosya, uygulama kodunuzu koyacaksınız. Öğesini `Program.cs`açın ve var olan using deyimlerini değiştirin. Bu deyimler, örnek uygulamayı derlemek ve çalıştırmak için gereken tüm türlere erişebildiğinizden emin olmanızı sağlar.
 
 ```csharp
 using System;
@@ -59,7 +59,7 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>JSON yanıtı için sınıflar oluşturma
 
-Daha sonra, Çevirmen Metin API'si tarafından döndürülen JSON yanıtını deserializing'de kullanılan bir sınıf oluşturacağız.
+Sonra, Translator Metin Çevirisi API'si tarafından döndürülen JSON yanıtının serisi kaldırılırken kullanılan bir sınıf oluşturacağız.
 
 ```csharp
 /// <summary>
@@ -82,9 +82,9 @@ public class AltTranslations
 }
 ```
 
-## <a name="get-subscription-information-from-environment-variables"></a>Çevre değişkenlerinden abonelik bilgileri alma
+## <a name="get-subscription-information-from-environment-variables"></a>Ortam değişkenlerinden abonelik bilgilerini al
 
-`Program` Sınıfa aşağıdaki satırları ekleyin. Bu satırlar, abonelik anahtarınızı ve bitiş noktanızı ortam değişkenlerinden okur ve herhangi bir sorunla karşılaştığınızda hata atar.
+`Program` Sınıfına aşağıdaki satırları ekleyin. Bu satırlar, ortam değişkenlerinden, abonelik anahtarınızı ve uç noktayı okur ve herhangi bir sorunla karşılaşırsanız bir hata oluşturur.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -109,7 +109,7 @@ static Program()
 
 ## <a name="create-a-function-to-detect-the-source-texts-language"></a>Kaynak metnin dilini algılamak için bir işlev oluşturma
 
-`Program` Sınıfta, adı verilen `DetectTextRequest()`bir işlev oluşturun. Bu sınıf, Algıla kaynağını çağırmak için kullanılan kodu kapsüller ve sonucu konsola yazdırır.
+`Program` Sınıfında adlı `DetectTextRequest()`bir işlev oluşturun. Bu sınıf, Algıla kaynağını çağırmak için kullanılan kodu kapsüller ve sonucu konsola yazdırır.
 
 ```csharp
 static public async Task DetectTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
@@ -121,18 +121,18 @@ static public async Task DetectTextRequest(string subscriptionKey, string endpoi
 }
 ```
 
-## <a name="serialize-the-detect-request"></a>Algılama isteğini seri hale
+## <a name="serialize-the-detect-request"></a>Algılama isteğini serileştirme
 
-Ardından, dil algılamadan geçecek metni içeren JSON nesnesini oluşturmamız ve seri hale leştirmemiz gerekir.
+Daha sonra, dil algılamayı gerçekleştiren metni içeren JSON nesnesi oluşturup serileştirmemiz gerekir.
 
 ```csharp
 System.Object[] body = new System.Object[] { new { Text = inputText } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
 
-## <a name="instantiate-the-client-and-make-a-request"></a>Müşteriyi anında anlayıp bir istekte bulunun
+## <a name="instantiate-the-client-and-make-a-request"></a>İstemci örneği oluşturma ve bir istek oluşturma
 
-Bu satırlar anında `HttpClient` `HttpRequestMessage`ve:
+Bu satırlar `HttpClient` ve ' nin örneğini `HttpRequestMessage`oluşturur:
 
 ```csharp
 using (var client = new HttpClient())
@@ -142,18 +142,18 @@ using (var request = new HttpRequestMessage())
 }
 ```
 
-## <a name="construct-the-request-and-print-the-response"></a>İsteği oluşturma ve yanıtı yazdırma
+## <a name="construct-the-request-and-print-the-response"></a>İsteği oluşturun ve yanıtı yazdırın
 
-`HttpRequestMessage` İçinde:
+İçinde şunları `HttpRequestMessage` yapabilirsiniz:
 
 * HTTP yöntemini bildirin
-* İstek URI'yi oluşturma
-* İstek gövdesini ekleme (serileştirilmiş JSON nesnesi)
-* Gerekli üstbilgi ekleme
-* Eşzamanlı istekte bulunun
+* İstek URI 'sini oluşturun
+* İstek gövdesini (serileştirilmiş JSON nesnesi) ekleme
+* Gerekli üst bilgileri ekle
+* Zaman uyumsuz istek oluşturma
 * Yanıtı yazdırma
 
-Bu kodu `HttpRequestMessage`ekleyin:
+Bu kodu öğesine ekleyin `HttpRequestMessage`:
 
 ```csharp
 // Build the request.
@@ -187,11 +187,11 @@ foreach (DetectResult o in deserializedOutput)
 }
 ```
 
-Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek parametrelerinize `Ocp-Apim-Subscription-Region` de eklemeniz gerekir. [Çoklu hizmet aboneliği ile kimlik doğrulama hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım `DetectTextRequest()` `Main` işlevi aramaktır. Bu `static void Main(string[] args)` kodu bulun ve değiştirin:
+Son adım, `DetectTextRequest()` `Main` işlevini çağırmak için kullanılır. Bu `static void Main(string[] args)` kodla bulun ve değiştirin:
 
 ```csharp
 static async Task Main(string[] args)
@@ -208,7 +208,7 @@ static async Task Main(string[] args)
 ```
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-İşte bu, örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumundan), proje dizininize gidin ve çalıştırın:
+Bu, örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumu), proje dizininize gidin ve şunu çalıştırın:
 
 ```console
 dotnet run
@@ -216,10 +216,10 @@ dotnet run
 
 ## <a name="sample-response"></a>Örnek yanıt
 
-Örneği çalıştırdıktan sonra terminale yazdırılan aşağıdakileri görmeniz gerekir:
+Örneği çalıştırdıktan sonra, şu şekilde terminalden yazdırılmış olduğunu görmeniz gerekir:
 
 > [!NOTE]
-> Bu dil listesinde ülke/bölge [kısaltmasını](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)bulun.
+> Bu [diller listesinde](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)ülke/bölge kısaltmasını bulun.
 
 ```bash
 The detected language is 'en'. Confidence is: 1.
@@ -237,7 +237,7 @@ Translation supported: True.
 Transliteration supported: False.
 ```
 
-Bu mesaj ham JSON, bu gibi görünecektir inşa edilmiştir:
+Bu ileti ham JSON 'dan oluşturulmuştur ve bu şöyle görünür:
 
 ```json
 [  
@@ -266,11 +266,11 @@ Bu mesaj ham JSON, bu gibi görünecektir inşa edilmiştir:
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Abonelik anahtarları gibi örnek uygulamanızın kaynak kodundan gizli bilgileri kaldırdıklarından emin olun.
+Örnek uygulamanızın kaynak kodundaki tüm gizli bilgileri abonelik anahtarları gibi kaldırdığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
+Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -9,28 +9,28 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ace42278269ff6af31902dbecead81329815af12
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67188607"
 ---
 ## <a name="create-a-topic-using-the-azure-portal"></a>Azure portalını kullanarak konu oluşturma
-1. Hizmet **Veri Aracı Ad Alanı** sayfasında, sol menüdeki **Konular'ı** seçin.
-2. Araç çubuğunda **+ Topic'i** seçin. 
+1. **Service Bus ad alanı** sayfasında sol menüdeki **konular** ' ı seçin.
+2. Araç çubuğunda **+ konu başlığını** seçin. 
 4. Konu için bir **ad** girin. Diğer seçenekleri varsayılan değerlerinde bırakın.
-5. **Oluştur'u**seçin.
+5. **Oluştur**’u seçin.
 
-    ![Konu oluşturma](./media/service-bus-create-topics-subscriptions-portal/create-topic.png)
+    ![Konu Oluştur](./media/service-bus-create-topics-subscriptions-portal/create-topic.png)
 
-## <a name="create-subscriptions-to-the-topic"></a>Konuya abonelik ler oluşturma
+## <a name="create-subscriptions-to-the-topic"></a>Konuya abonelikler oluşturma
 1. Önceki bölümde oluşturduğunuz **konuyu** seçin. 
     
-    ![Konuyu seçin](./media/service-bus-create-topics-subscriptions-portal/select-topic.png)
-2. Servis **Veri Servisi Konusu** sayfasında, sol menüden **Abonelikler'i** seçin ve ardından araç çubuğunda **+ Abonelik'i** seçin. 
+    ![Konu seçin](./media/service-bus-create-topics-subscriptions-portal/select-topic.png)
+2. **Service Bus konu** sayfasında, sol menüden **abonelikler** ' i seçin ve ardından araç çubuğunda **+ aboneliği** ' ni seçin. 
     
-    ![Abonelik düğmesi ekle](./media/service-bus-create-topics-subscriptions-portal/add-subscription-button.png)
-3. Abonelik **Oluştur** sayfasında, abonelik için **ad** için **S1** girin ve ardından **Oluştur'u**seçin. 
+    ![Abonelik Ekle düğmesi](./media/service-bus-create-topics-subscriptions-portal/add-subscription-button.png)
+3. **Abonelik oluştur** sayfasında, abonelik **adı** için **S1** girin ve ardından **Oluştur**' u seçin. 
 
-    ![Abonelik sayfası oluşturma](./media/service-bus-create-topics-subscriptions-portal/create-subscription-page.png)
-4. **S2** ve **S3**adlı abonelikler oluşturmak için önceki adımı iki kez yineleyin.
+    ![Abonelik Oluştur sayfası](./media/service-bus-create-topics-subscriptions-portal/create-subscription-page.png)
+4. **S2** ve **S3**adlı abonelikler oluşturmak için önceki adımı iki kez tekrarlayın.

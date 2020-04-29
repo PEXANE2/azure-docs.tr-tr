@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69906851"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
@@ -17,24 +17,24 @@ ms.locfileid: "69906851"
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle ile proje başlatma
 
-Bu proje için bir çalışma dizini oluşturarak başlayalım. Komut satırından (veya terminalden) şu komutu çalıştırın:
+Bu proje için çalışma dizini oluşturarak başlayalım. Komut satırından (veya terminalden) şu komutu çalıştırın:
 
 ```console
 mkdir length-sentence-sample
 cd length-sentence-sample
 ```
 
-Sonra, bir Gradle projesinin başlatılmasını yapacaksın. Bu komut, `build.gradle.kts`uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan Gradle için temel yapı dosyaları oluşturur. Bu komutu çalışma dizininizden çalıştırın:
+Sonra, bir Gradle projesi başlatacağız. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan, en önemlisi `build.gradle.kts`, Gradle için önemli derleme dosyaları oluşturur. Çalışma dizininizden bu komutu çalıştırın:
 
 ```console
 gradle init --type basic
 ```
 
-Bir **DSL**seçmek istendiğinde, **Kotlin**seçin.
+Bir **DSL**seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
 ## <a name="configure-the-build-file"></a>Yapı dosyasını yapılandırma
 
-En `build.gradle.kts` sevdiğiniz IDE veya metin düzenleyicisi ile bulun ve açın. Sonra bu yapı yapılandırmasında kopyalayın:
+En `build.gradle.kts` sevdiğiniz IDE veya metin düzenleyicinizle bulun ve açın. Sonra bu derleme yapılandırmasında Kopyala:
 
 ```
 plugins {
@@ -53,21 +53,21 @@ dependencies {
 }
 ```
 
-Bu örnekte HTTP istekleri için OkHttp'de bağımlılıklar olduğunu ve Gson'un JSON'u işlemek ve ayrıştırmak için olduğunu unutmayın. Yapı yapılandırmaları hakkında daha fazla bilgi edinmek istiyorsanız, [bkz.](https://guides.gradle.org/creating-new-gradle-builds/)
+Bu örnekte HTTP istekleri için OkHttp üzerinde bağımlılıklar ve JSON 'u işlemek ve ayrıştırmak için Gson 'un bağımlılıkları olduğuna göz atın. Derleme yapılandırmaları hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Yeni Gradle derlemeleri oluşturma](https://guides.gradle.org/creating-new-gradle-builds/).
 
 ## <a name="create-a-java-file"></a>Java dosyası oluşturma
 
-Örnek uygulamanız için bir klasör oluşturalım. Çalışma dizininizden çalıştırın:
+Örnek uygulamanız için bir klasör oluşturalım. Çalışma dizininizden şunu çalıştırın:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Ardından, bu klasörde, adlı `BreakSentence.java`bir dosya oluşturun.
+Ardından, bu klasörde adlı `BreakSentence.java`bir dosya oluşturun.
 
-## <a name="import-required-libraries"></a>Gerekli kitaplıkları içe aktarma
+## <a name="import-required-libraries"></a>Gerekli kitaplıkları içeri aktar
 
-Bu `BreakSentence.java` alma deyimlerini açın ve ekleyin:
+Bu `BreakSentence.java` içeri aktarma deyimlerini açın ve ekleyin:
 
 ```java
 import java.io.*;
@@ -88,25 +88,25 @@ public class BreakSentence {
 }
 ```
 
-Bu satırları sınıfa `BreakSentence` ekleyin. İlk olarak, abonelik anahtarı ve bitiş noktası ortam değişkenlerinden okunuyor. Daha sonra, giriş dilini tanımlayabileceğinizi fark `api-version`edeceksiniz. Bu örnekte İngilizce.
+`BreakSentence` Sınıfa bu satırları ekleyin. İlk olarak, abonelik anahtarı ve uç nokta ortam değişkenlerinden okunmakta. Ardından, ile `api-version`birlikte, giriş dilini tanımlayacağınızı fark edeceksiniz. Bu örnekte, Ingilizce olur.
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
 private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/breaksentence?api-version=3.0&language=en";
 ```
-Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek parametrelerinize `Ocp-Apim-Subscription-Region` de eklemeniz gerekir. [Çoklu hizmet aboneliği ile kimlik doğrulama hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>İstemci oluşturma ve istek oluşturma
 
-Anında sınıfa `BreakSentence` bu satırı `OkHttpClient`ekleyin:
+Örneği oluşturmak için bu satırı `BreakSentence` sınıfa ekleyin `OkHttpClient`:
 
 ```java
 // Instantiates the OkHttpClient.
 OkHttpClient client = new OkHttpClient();
 ```
 
-Sonra, POST isteği oluşturalım. Metni değiştirmekten çekinmeyin. Metin kaçmış olmalı.
+Sonra POST isteğini oluşturalım. Metnin değiştirilmesini ücretsiz olarak hissetmekten çekinmeyin. Metnin kaçışlı olması gerekir.
 
 ```java
 // This function performs a POST request.
@@ -125,7 +125,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Yanıtı ayrıştırmak için bir işlev oluşturma
 
-Bu basit işlev, Translator Text hizmetinden JSON yanıtını ayrıştırır ve güzelbir şekilde verir.
+Bu basit işlev, Translator Metin Çevirisi hizmetinden gelen JSON yanıtını ayrıştırır ve önceden inceler.
 
 ```java
 // This function prettifies the json response.
@@ -139,7 +139,7 @@ public static String prettify(String json_text) {
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım bir istekte bulunmak ve yanıt almaktır. Projenize şu satırları ekleyin:
+Son adım bir istek yapmak ve yanıt almak için kullanılır. Bu satırları projenize ekleyin:
 
 ```java
 public static void main(String[] args) {
@@ -155,13 +155,13 @@ public static void main(String[] args) {
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-İşte bu, örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumundan), çalışma dizinizin köküne gidin ve çalıştırın:
+Bu, örnek uygulamanızı çalıştırmaya hazırsınız. Komut satırından (veya terminal oturumu), çalışma dizininizin köküne gidin ve şunu çalıştırın:
 
 ```console
 gradle build
 ```
 
-Yapı tamamlandığında çalıştırın:
+Oluşturma tamamlandığında, şunu çalıştırın:
 
 ```console
 gradle run
@@ -189,7 +189,7 @@ Başarılı bir yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçimind
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
+Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

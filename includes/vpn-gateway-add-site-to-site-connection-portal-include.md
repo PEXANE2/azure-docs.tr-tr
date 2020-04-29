@@ -9,14 +9,14 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5149973fe63f867b49e55c970779c005e12536b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68780098"
 ---
-1. Sanal ağ ağ ağ geçidiniz için sayfayı açın. Buraya çeşitli yollardan gidebilirsiniz. **VNet -> Genel Bakış -> Bağlı aygıtlarınızın adı -> Ağ geçidinizin adı**>'na giderek ağ geçidine gidebilirsiniz.
-2. Ağ geçidi için **sayfada, Bağlantılar'ı**tıklatın. Bağlantılar sayfasının üstündeki **+Ekle**’ye tıklayarak **Bağlantı ekle** sayfasını açın.
+1. Sanal ağ geçidinizin sayfasını açın. Buraya çeşitli yollardan gidebilirsiniz. VNet 'iniz adına giderek ağ geçidine gidebilirsiniz- **> genel bakış-> bağlı cihazlar-ağ geçidinizin > adı**.
+2. Ağ geçidinin sayfasında **Bağlantılar**' a tıklayın. Bağlantılar sayfasının üstündeki **+Ekle**’ye tıklayarak **Bağlantı ekle** sayfasını açın.
 
    ![Siteden Siteye bağlantısı oluşturma](./media/vpn-gateway-add-site-to-site-connection-portal-include/configure-site-to-site-connection.png)
 3. **Bağlantı ekle** sayfasında, bağlantınız için değerleri yapılandırın.

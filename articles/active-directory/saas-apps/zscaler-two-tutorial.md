@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Zscaler Two ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Zscaler Two arasında tek oturum açma yı nasıl yapılandırılabildiğini öğrenin.
+title: 'Öğretici: Zscaler Iki ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Zscaler arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,298 +16,298 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 7ea4eecd5c27b6a9f14bc358c7db61da544e7530
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68825103"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Öğretici: Zscaler Two ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Öğretici: Zscaler Iki ile tümleştirme Azure Active Directory
 
-Bu eğitimde, Zscaler Two'nun Azure Etkin Dizini (Azure AD) ile nasıl entegre edilebildiğini öğrenirsiniz.
-Zscaler Two'yu Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Zscaler 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Zscaler 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Zscaler Two'ya erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Zscaler Two 'da (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de Zscaler 'ya erişimi olan bir denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Zscaler 'ın Iki (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Zscaler Two ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Zscaler Iki ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* Zscaler İki tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Zscaler Iki adet çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Zscaler İki **SP** başlatılan SSO destekler
+* Zscaler Iki **SP** tarafından başlatılan SSO 'yu destekler
 
-* Zscaler İki **Just In Time** kullanıcı sağlama destekler
+* Zscaler **, tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-zscaler-two-from-the-gallery"></a>Galeriden Zscaler İki ekleme
+## <a name="adding-zscaler-two-from-the-gallery"></a>Galeriden Zscaler Iki ekleme
 
-Zscaler Two'nun Azure AD'ye entegrasyonunu yapılandırmak için galeriden Zscaler Two'yu yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Zscaler 'ın Iki Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden Zscaler ' ı yönetilen SaaS uygulamaları listenize ekleyin.
 
-**Galeriden Zscaler Two eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Zscaler eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda **Zscaler Two**yazın, sonuç panelinden **Zscaler Two'yu** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **Zscaler Two**yazın, sonuç panelinden **Zscaler** ' ı seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Zscaler Sonuç listesinde iki](common/search-new-app.png)
+     ![Sonuçlar listesinde Zscaler Iki](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD oturum açma işlemini Zscaler Two ile yapılandırıp test esiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile Zscaler Two'daki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Zscaler Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve Zscaler 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Azure AD oturum açma işlemlerini Zscaler Two ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı Zscaler Iki ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. **[Zscaler İki Tek Oturum Açma](#configure-zscaler-two-single-sign-on)** -uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırır.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Zscaler İki test kullanıcısı oluşturun](#create-zscaler-two-test-user)** - Zscaler Two'daki Britta Simon'ın, kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Zscaler 'ı Iki adet çoklu oturum açma yapılandırması](#configure-zscaler-two-single-sign-on)** yapın.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[Zscaler iki test kullanıcısı oluşturun](#create-zscaler-two-test-user)** . Bu, kullanıcının Azure AD gösterimine bağlı olan Zscaler 'Da Britta Simon 'ın bir karşılığı olacak.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini Zscaler Two ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı Zscaler Iki ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında](https://portal.azure.com/), **Zscaler İki** uygulama tümleştirme sayfasında, **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **Zscaler iki** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Zscaler İki Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-signonurl.png)
+    ![Zscaler Iki etki alanı ve URL çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
-    Oturum Açma URL metin kutusuna, zscaler Two uygulamanızda oturum açmanız için kullanıcılarınız tarafından kullanılan URL'yi yazın.
+    Oturum açma URL 'SI metin kutusuna kullanıcılarınız tarafından, ZScaler uygulamanızda oturum açmak için kullanılan URL 'YI yazın.
 
     > [!NOTE]
-    > Değeri gerçek Oturum Açma URL'si ile güncellersiniz. Değeri almak için [Zscaler İki İstemci destek ekibine](https://www.zscaler.com/company/contact) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Zscaler Iki istemci desteği ekibine](https://www.zscaler.com/company/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Zscaler İki uygulamanız, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir. **Kullanıcı Öznitelikleri** iletişim kutusunu açmak için **Edit** simgesini tıklatın.
+5. Zscaler Iki uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
-6. Yukarıdakilere ek olarak, Zscaler İki uygulaması SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. **Kullanıcı Öznitelikleri** iletişim kutusundaki **Kullanıcı Talepleri** bölümünde, aşağıdaki tabloda gösterildiği gibi SAML belirteç özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
+6. Zscaler, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
     
-    | Adı | Kaynak Özniteliği |
+    | Adı | Kaynak özniteliği |
     | ---------| ------------ |
-    | Memberof     | user.assignedroles |
+    | Üyesi     | Kullanıcı. atandroles |
 
-    a. **Kullanıcı taleplerini yönet** iletişim kutusunu açmak için yeni **talep ekle'yi** tıklatın.
+    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. **Ad** metin kutusunda, bu satır için gösterilen öznitelik adını yazın.
+    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
-    c. Ad **alanını** boş bırakın.
+    c. **Ad alanını** boş bırakın.
 
-    d. **Kaynak'ı Öznitelik**olarak seçin.
+    d. **Öznitelik**olarak kaynak seçin.
 
-    e. Kaynak **öznitelik** listesinden, bu satır için gösterilen öznitelik değerini yazın.
+    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
     
-    f. **Kaydet**'e tıklayın.
+    f. **Kaydet**’e tıklayın.
 
     > [!NOTE]
-    > Azure AD'de Rolü nasıl yapılandıracağınıöğrenmek için [lütfen buraya](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) tıklayın
+    > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) tıklayın
 
-7. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-8. **Zscaler İki'yi Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+8. **Zscaler 'Yı ayarlama** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-zscaler-two-single-sign-on"></a>Zscaler İki Tek İşaret-On yapıla
+### <a name="configure-zscaler-two-single-sign-on"></a>Zscaler 'ı Iki adet çoklu oturum açma yapılandırması
 
-1. Zscaler Two içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı**yükleyin'i tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. Zscaler 'daki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
-2. Tarayıcıya uzantı ekledikten **sonra, Kurulum Zscaler İki'ye** tıklayın ve sizi Zscaler Two uygulamasına yönlendirecektir. Buradan, Zscaler Two'da oturum açabilmek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-6 adımlarını otomatikleştirecektir.
+2. Tarayıcıya uzantı ekledikten sonra, bu Iki uygulamaya tıklayarak **Zscaler iki** uygulamasına tıklayın. Buradan, Zscaler 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
 
-    ![Kurulum sso](common/setup-sso.png)
+    ![Yükleme SSO 'su](common/setup-sso.png)
 
-3. Zscaler Two'yu el ile kurmak istiyorsanız, yeni bir web tarayıcıpenceresi açın ve Zscaler Two şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Zscaler 'ı Iki el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Zscaler şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Yönetim **> Kimlik Doğrulama ayarları>** gidin ve aşağıdaki adımları gerçekleştirin:
+4. **Yönetim > kimlik doğrulaması > kimlik doğrulama ayarları** ' na gidin ve aşağıdaki adımları gerçekleştirin:
    
     ![Yönetim](./media/zscaler-two-tutorial/ic800206.png "Yönetim")
 
-    a. Kimlik Doğrulama Türü altında **SAML'yi**seçin.
+    a. Kimlik doğrulama türü altında **SAML**' yi seçin.
 
-    b. **SAML'yi Yapılandır'ı**tıklatın.
+    b. **SAML Yapılandır**öğesine tıklayın.
 
-5. **SAML'yi Edit** penceresinde aşağıdaki adımları gerçekleştirin ve Kaydet'i tıklatın.  
+5. **SAML Düzenle** penceresinde, aşağıdaki adımları uygulayın: ve Kaydet ' e tıklayın.  
             
-    ![Kullanıcıları & Kimlik Doğrulamayı Yönetin](./media/zscaler-two-tutorial/ic800208.png "Kullanıcıları & Kimlik Doğrulamayı Yönetin")
+    ![Kullanıcı & kimlik doğrulaması yönetme](./media/zscaler-two-tutorial/ic800208.png "Kullanıcı & kimlik doğrulaması yönetme")
     
-    a. **SAML Portal URL** textbox'ına Azure portalından kopyalamış olduğunuz **Giriş URL'sini** yapıştırın.
+    a. **SAML PORTALı URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL** 'sini yapıştırın.
 
-    b. Giriş **Adı Özniteliği** metin kutusuna **NameID'i**girin.
+    b. **Oturum açma adı öznitelik** metin kutusuna **NameID**girin.
 
-    c. Azure portalından indirdiğiniz Azure SAML imza sertifikasını **Genel SSL Sertifikası'na**yüklemek için **Yükle'yi**tıklatın.
+    c. **Ortak SSL sertifikasındaki**Azure Portal adresinden INDIRDIĞINIZ Azure SAML imzalama sertifikasını karşıya yüklemek Için **karşıya yükle**' ye tıklayın.
 
-    d. **SAML Otomatik Sağlama'yı Etkinleştir'i**geçişin.
+    d. **SAML otomatik sağlamayı etkinleştir**' i açın.
 
-    e. Kullanıcı **Görüntülü Reklam Adı Özniteliği** metin kutusuna, displayName öznitelikleri için SAML otomatik sağlamayı etkinleştirmek istiyorsanız **displayName'i** girin.
+    e. **Kullanıcı görünen adı öznitelik** metin kutusunda, DisplayName ÖZNITELIKLERI için SAML otomatik sağlamayı etkinleştirmek istiyorsanız **DisplayName** yazın.
 
-    f. Grup **Adı Özniteliği** textbox'ına, üye Of öznitelikleri için SAML otomatik sağlamayı etkinleştirmek istiyorsanız **üyeOf** girin.
+    f. **Grup adı öznitelik** metin kutusunda, memberOf ÖZNITELIKLERI için SAML otomatik sağlamayı etkinleştirmek Istiyorsanız, **memberOf** yazın.
 
-    g. Bölüm **Adı Özniteliği** Bölüm Girin **bölümünde,** bölüm öznitelikleri için SAML otomatik sağlamayı etkinleştirmek istiyorsanız.
+    g. Departman **adı özniteliğinde** departman ÖZNITELIKLERI için SAML otomatik sağlamayı etkinleştirmek istiyorsanız **departmanı** girin.
 
-    h. **Kaydet**'e tıklayın.
+    h. **Kaydet**’e tıklayın.
 
-6. Kullanıcı **Kimlik Doğrulaması'nı Yapılandırma** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
+6. **Kullanıcı kimlik doğrulamasını Yapılandır** iletişim sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Yönetim](./media/zscaler-two-tutorial/ic800207.png)
 
-    a. Sol alttaki **Etkinleştirme** menüsünün üzerine titreyin.
+    a. Sol alt kısımdaki **etkinleştirme** menüsünün üzerine gelin.
 
-    b. **Etkinleştir'i**tıklatın.
+    b. **Etkinleştir**' e tıklayın.
 
 ## <a name="configuring-proxy-settings"></a>Ara sunucu ayarlarını yapılandırma
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer'da proxy ayarlarını yapılandırmak için
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer 'da proxy ayarlarını yapılandırmak için
 
-1. **Internet Explorer'ı başlatın.**
+1. **Internet Explorer 'ı**başlatın.
 
-2. **Internet Seçenekleri** iletişim kutusunu açmak için **Araçlar** menüsünden **Internet seçeneklerini** seçin.   
+2. **Internet** seçenekleri iletişim kutusunu açmak için **Araçlar** menüsünden **Internet seçenekleri** ' ni seçin.   
     
-     ![İnternet Seçenekleri](./media/zscaler-two-tutorial/ic769492.png "İnternet Seçenekleri")
+     ![Internet seçenekleri](./media/zscaler-two-tutorial/ic769492.png "Internet seçenekleri")
 
-3. **Bağlantılar** sekmesini tıklatın.   
+3. **Bağlantılar** sekmesine tıklayın.   
   
      ![Bağlantılar](./media/zscaler-two-tutorial/ic769493.png "Bağlantılar")
 
-4. **LAN Ayarları** iletişim kutusunu açmak için **LAN ayarlarını** tıklatın.
+4. **LAN ayarları iletişim kutusunu** açmak için **LAN ayarları** ' na tıklayın.
 
-5. Proxy sunucusu bölümünde aşağıdaki adımları gerçekleştirin:   
+5. Proxy sunucusu bölümünde aşağıdaki adımları uygulayın:   
    
     ![Proxy sunucusu](./media/zscaler-two-tutorial/ic769494.png "Proxy sunucu")
 
-    a. **LAN'ınız için proxy sunucusu kullan'ı**seçin.
+    a. **LAN için bir proxy sunucusu kullan**' ı seçin.
 
     b. Adres metin kutusuna **ağ geçidi yazın. Zscaler Two.net**.
 
-    c. Bağlantı Noktası metin kutusunda **80**yazın.
+    c. Bağlantı noktası metin kutusuna **80**yazın.
 
-    d. **Yerel adresler için Bypass proxy sunucusu'ni**seçin.
+    d. **Yerel adresler için proxy sunucusunu atla**' yı seçin.
 
-    e. **Yerel Alan Ağı (LAN) Ayarları** iletişim kutusunu kapatmak için **Tamam'ı** tıklatın.
+    e. **Yerel alan ağı (LAN) ayarları** iletişim kutusunu kapatmak için **Tamam** ' ı tıklatın.
 
-6. **Internet Seçenekleri** iletişim kutusunu kapatmak için **Tamam'ı** tıklatın.
+6. **Internet seçenekleri** iletişim kutusunu kapatmak için **Tamam** ' ı tıklatın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı `brittasimon@yourcompanydomain.extension`türünde. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Zscaler Two'ya erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Zscaler 'nun Iki erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve **ardından Zscaler Two'yu**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Zscaler**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Zscaler Two'yu**seçin.
+2. Uygulamalar listesinde **Zscaler Two**' ı seçin.
 
-    ![Uygulamalar listesindeki Zscaler İki bağlantı](common/all-applications.png)
+    ![Uygulamalar listesinde Zscaler Iki bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, listeden **Britta Simon** gibi kullanıcıyı seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** iletişim kutusunda listeden **Britta Simon** gibi bir kullanıcı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
     ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
 
-6. Rolü **Seç** iletişim kutusundan listedeki uygun kullanıcı rolünü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. **Rol Seç** iletişim kutusunda listeden uygun Kullanıcı rolünü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
     ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini seçin.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesini seçin.
 
     ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
 
-### <a name="create-zscaler-two-test-user"></a>Zscaler Oluşturma İki test kullanıcısı
+### <a name="create-zscaler-two-test-user"></a>Zscaler Iki test kullanıcısı oluşturma
 
-Bu bölümde, Britta Simon adlı bir kullanıcı Zscaler İki oluşturulur. Zscaler İki, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Zscaler Two'da bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
+Bu bölümde, Zscaler içinde Britta Simon adlı bir Kullanıcı oluşturulur. Zscaler, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Zscaler 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 >[!Note]
->El ile bir kullanıcı oluşturmanız gerekiyorsa, [Zscaler Two destek ekibine](https://www.zscaler.com/company/contact)başvurun.
+>El ile bir kullanıcı oluşturmanız gerekiyorsa, [Zscaler 'ın iki destek ekibine](https://www.zscaler.com/company/contact)başvurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Zscaler İki döşemesini tıklattığınızda, SSO'yu kurduğunuz Zscaler Two'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim paneli 'nde Zscaler ' ı tıklattığınızda, SSO 'yu ayarladığınız Zscaler 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

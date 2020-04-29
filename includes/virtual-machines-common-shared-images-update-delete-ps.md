@@ -9,34 +9,34 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67188334"
 ---
 ## <a name="update-resources"></a>Kaynakları güncelleştirme
 
-Güncelleştirilebilenler hakkında bazı sınırlamalar vardır. Aşağıdaki öğeler güncelleştirilebilir: 
+Nelerin güncelleştirilemeyebilir hakkında bazı sınırlamalar vardır. Aşağıdaki öğeler güncelleştirilemeyebilir: 
 
-Paylaşılan resim galerisi:
+Paylaşılan görüntü Galerisi:
 - Açıklama
 
-Resim tanımı:
-- Önerilen vCPUs
+Görüntü tanımı:
+- Önerilen vCPU 'Lar
 - Önerilen bellek
 - Açıklama
-- Yaşam sonu tarihi
+- Yaşam tarihi sonu
 
-Resim sürümü:
-- Bölgesel yineleme sayısı
+Görüntü sürümü:
+- Bölgesel çoğaltma sayısı
 - Hedef bölgeler
-- En son dışlama
-- Yaşam sonu tarihi
+- En son dışarıda bırakma
+- Yaşam tarihi sonu
 
-Yineleme bölgeleri eklemeyi planlıyorsanız, kaynak yönetilen görüntüyü silmeyin. Kaynak yönetilen görüntü ek bölgelere görüntü sürümü çoğaltmak için gereklidir. 
+Çoğaltma bölgelerini eklemeyi planlıyorsanız, kaynak yönetilen görüntüyü silmeyin. Kaynak yönetilen görüntü, görüntü sürümünü ek bölgelere çoğaltmak için gereklidir. 
 
-Galerinin açıklamasını güncelleştirmek için [Update-AzGallery'yi](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)kullanın.
+Bir galerinin açıklamasını güncelleştirmek için [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)komutunu kullanın.
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-Bu örnek, görüntü tanımımız için kullanım ömrünün bitiş tarihini güncelleştirmek için [Update-AzGalleryImageDefinition'in](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) nasıl kullanılacağını gösterir.
+Bu örnek, görüntü tanımımız için son kullanım tarihini güncelleştirmek üzere [Update-Azgallerımagedefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) öğesinin nasıl kullanılacağını gösterir.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-Bu örnek, bu resim sürümünün *en son* resim olarak kullanılmasını engellemek için [Update-AzGalleryImageVersion'un](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) nasıl kullanılacağını gösterir.
+Bu örnek, bu görüntü sürümünün *en son* görüntü olarak kullanılmasını dışlamak için [Update-azgallerımageversion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) ' ın nasıl kullanılacağını gösterir.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -68,7 +68,7 @@ Update-AzGalleryImageVersion `
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kaynakları silerken, iç içe geçen kaynaklardaki son öğeyle başlamanız gerekir - resim sürümü. Sürümler silindikten sonra, resim tanımını silebilirsiniz. Altındaki tüm kaynaklar silinene kadar galeriyi silemezsiniz.
+Kaynakları silerken, iç içe kaynaklardaki son öğeyle başlamanız gerekir-görüntü sürümü. Sürümler silindikten sonra, görüntü tanımını silebilirsiniz. Altındaki tüm kaynaklar silinene kadar galeriyi silemezsiniz.
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"

@@ -9,10 +9,10 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9c18a2c74d03a636a0865f3008eb421ab8d7412d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68781502"
 ---
 1. Portalda **+Kaynak oluştur**’a tıklayın.
@@ -30,4 +30,4 @@ ms.locfileid: "68781502"
    - **Kaynak Grubu:** Kullanmak istediğiniz kaynak grubunu seçin. Yeni bir kaynak grubu oluşturabilir veya önceden oluşturduğunuz birini seçebilirsiniz.
    - **Konum:** Bu nesnenin oluşturulacağı konumu seçin. VNet'inizin bulunduğu konumu seçebilirsiniz ancak bu zorunlu değildir.
 
-4. Değerleri belirtmeyi bitirdikten sonra, ağ geçidini oluşturmak için **Oluştur** düğmesini tıklatın.
+4. Değerleri belirtmeyi tamamladığınızda, ağ geçidini oluşturmak için **Oluştur** düğmesine tıklayın.

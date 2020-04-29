@@ -9,21 +9,21 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188927"
 ---
 ## <a name="push-image-to-registry"></a>Kayıt defterine görüntü gönderme
 
-Azure Container kayıt defterine görüntü gönderebilmeniz için önce bir görüntünüz olmalıdır. Henüz yerel kapsayıcı görüntüleriniz yoksa, Docker Hub'dan varolan bir görüntüyü çekmek için aşağıdaki [docker çekme][docker-pull] komutunu çalıştırın. Bu örnekte, `hello-world` görüntüyü çekin.
+Azure Container kayıt defterine görüntü gönderebilmeniz için önce bir görüntünüz olmalıdır. Henüz herhangi bir yerel kapsayıcı görüntünüz yoksa, Docker Hub 'ından mevcut bir görüntüyü çekmek için aşağıdaki [Docker Pull][docker-pull] komutunu çalıştırın. Bu örnek için `hello-world` görüntüyü çekin.
 
 ```
 docker pull hello-world
 ```
 
-Kayıt defterinize görüntü gönderebilmeniz için, ACR oturum açma sunucunuzun tam adını etiketlemeniz gerekir. Giriş sunucusu adı biçim * \<kayıt defteri adı\>.azurecr.io* (tüm küçük harf), örneğin, *mycontainerregistry007.azurecr.io.*
+Kayıt defterinize görüntü gönderebilmeniz için, ACR oturum açma sunucunuzun tam adını etiketlemeniz gerekir. Oturum açma sunucusu adı * \<kayıt defteri-adı\>. azurecr.io* (tümü küçük harf) biçimindedir (örneğin, *mycontainerregistry007.azurecr.io*).
 
 Görüntüyü [docker tag][docker-tag] komutunu kullanarak etiketleyin. `<acrLoginServer>` değerini, ACR örneğinizin sunucu adıyla değiştirin.
 
@@ -31,13 +31,13 @@ Görüntüyü [docker tag][docker-tag] komutunu kullanarak etiketleyin. `<acrLog
 docker tag hello-world <acrLoginServer>/hello-world:v1
 ```
 
-Son olarak, [docker push][docker-push] komutunu kullanarak görüntüyü ACR örneğine gönderin. `<acrLoginServer>` değerini, ACR örneğinizin sunucu adıyla değiştirin. Bu örnek, **hello-world** `hello-world:v1` görüntüyü içeren merhaba dünyası deposu oluşturur.
+Son olarak, [docker push][docker-push] komutunu kullanarak görüntüyü ACR örneğine gönderin. `<acrLoginServer>` değerini, ACR örneğinizin sunucu adıyla değiştirin. Bu örnek, `hello-world:v1` görüntüyü içeren **Merhaba-Dünya** deposunu oluşturur.
 
 ```
 docker push <acrLoginServer>/hello-world:v1
 ```
 
-Görüntüyü konteyner kayıt defterinize ittikten `hello-world:v1` sonra, resmi yerel Docker ortamınızdan kaldırın. (Bu [docker rmi][docker-rmi] komutu, Azure konteyner kayıt defterinizdeki **merhaba dünyası** deposundan görüntüyü kaldırmaz.)
+Görüntüyü kapsayıcı Kayıt defterinize gönderdikten sonra, `hello-world:v1` görüntüyü yerel Docker ortamınızdan kaldırın. (Bu [Docker rmi][docker-rmi] komutunun, görüntüyü Azure Container Registry 'nizin **Hello-World** deposundan kaldırmadığını unutmayın.)
 
 ```
 docker rmi <acrLoginServer>/hello-world:v1

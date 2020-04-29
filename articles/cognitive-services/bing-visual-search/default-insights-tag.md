@@ -1,7 +1,7 @@
 ---
-title: Varsayılan öngörüler etiketi - Bing Görsel Arama
+title: Varsayılan Öngörüler etiketi-Bing Görsel Arama
 titleSuffix: Azure Cognitive Services
-description: Bing Visual Search'ün bir resim hakkında döndürdettiği varsayılan öngörüler hakkında ayrıntılı bilgi sağlar.
+description: Bing Görsel Arama bir görüntü hakkında döndürdüğü varsayılan Öngörüler hakkında ayrıntılar sağlar.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60510131"
 ---
-# <a name="default-insights-tag"></a>Varsayılan öngörüler etiketi
+# <a name="default-insights-tag"></a>Varsayılan Öngörüler etiketi
 
-Varsayılan öngörüler etiketi, `displayName` alan boş bir dize ayarlanmış olan etikettir. Aşağıdaki örnekte, varsayılan öngörülerin (eylemlerin) olası listesi gösterilmektedir. Yanıtın içerdiği eylemlerin listesi görüntüye bağlıdır. Ve her eylem için, özellikleri listesi görüntüye göre değişebilir, bu nedenle özelliği kullanmaya çalışmadan önce var olup olmadığını kontrol edin.
+Varsayılan Öngörüler etiketi, `displayName` alanı boş bir dizeye ayarlanmış olan alandır. Aşağıdaki örnekte, varsayılan Öngörüler (Eylemler) için olası bir liste gösterilmektedir. Yanıtın içerdiği eylemlerin listesi görüntüye göre değişir. Her eylem için, özelliklerin listesi görüntüye göre farklılık gösterebilir, bu nedenle özelliği kullanmayı denemeden önce mevcut olup olmadığını denetleyin.
 
 ```json
 {
@@ -98,9 +98,9 @@ Varsayılan öngörüler etiketi, `displayName` alan boş bir dize ayarlanmış 
 }
 ```
 
-## <a name="pagesincluding-insight"></a>Sayfaİçerveya
+## <a name="pagesincluding-insight"></a>Öngörüler dahil Pages
 
-PagesIncluding insight, bu resmi içeren web sayfalarının bir listesini sağlar. Aslında `Image` nesnelerin bir listesi ve `hostPageUrl` alan görüntüyü içeren web sayfasının URL'sini içerir. Örneğin kullanım, [bkz.](./bing-insights-usage.md#pagesincluding-insight-example)
+Insight dahil, bu görüntüyü içeren Web sayfalarının bir listesini sağlar. Aslında bir `Image` nesne listesidir ve `hostPageUrl` alan, görüntüyü içeren Web sayfasının URL 'sini içerir. Örneğin kullanım için bkz. [Insight örnek ekleme](./bing-insights-usage.md#pagesincluding-insight-example).
 
 ```json
       {
@@ -137,9 +137,9 @@ PagesIncluding insight, bu resmi içeren web sayfalarının bir listesini sağla
       }
 ```
 
-## <a name="shoppingsources-insight"></a>ShoppingSources içgörü
+## <a name="shoppingsources-insight"></a>ShoppingSources öngörüleri
 
-ShoppingSources öngörüsü, kullanıcının resimde gösterilen öğeyi satın alabileceği web sitelerinin bir listesini sağlar. Teklifler listesinde, kullanıcının öğeyi satın alabileceği web sayfasının URL'si, öğenin fiyatı ve derecelendirme veya inceleme ayrıntıları yer alır. Örneğin kullanım, [Bkz. ShoppingSources örneği.](./bing-insights-usage.md#shoppingsources-insight-example)
+ShoppingSources Insight, kullanıcının görüntüde gösterilen öğeyi satın alabileceği web sitelerinin bir listesini sağlar. Teklif listesi, kullanıcının öğeyi satın alabileceği web sayfasının URL 'sini, öğe fiyatını ve derecelendirme veya İnceleme ayrıntılarını içerir. Örneğin, kullanım için bkz. [Shoppingsources örneği](./bing-insights-usage.md#shoppingsources-insight-example).
 
 ```json
       {
@@ -166,9 +166,9 @@ ShoppingSources öngörüsü, kullanıcının resimde gösterilen öğeyi satın
       }
 ```
 
-## <a name="moresizes-insight"></a>MoreSizes içgörü
+## <a name="moresizes-insight"></a>Yeniden boyutlanıyor Öngörüler
 
-MoreSizes öngörüsü, Bing'in Internet'te bulduğu görüntünün boyut sayısını (daha `availableSizesCount` büyük veya daha küçük) tanımlar (alana bakın):
+Fare_kapanı, Bing 'in Internet 'te bulduğu görüntünün boyutunu (daha büyük veya daha küçük) belirler ( `availableSizesCount` alana bakın):
 
 ```json
       {
@@ -201,9 +201,9 @@ MoreSizes öngörüsü, Bing'in Internet'te bulduğu görüntünün boyut sayıs
       },
 ```
 
-## <a name="visualsearch-insight"></a>VisualSearch içgörü
+## <a name="visualsearch-insight"></a>VisualSearch öngörüleri
 
-VisualSearch öngörüsü, görsel olarak orijinal görüntüye benzeyen görüntülerin bir listesini sağlar (orijinal görüntüde gösterilen içeriğe benzer içerik içerir). Örneğin kullanım, [Bkz. VisualSearch içgörü örneği.](./bing-insights-usage.md#visualsearch-insight-example)
+VisualSearch öngörüleri, özgün görüntüye görsel olarak benzeyen görüntülerin bir listesini sağlar (Orijinal görüntüde gösterilen içeriğe benzer içerik içerir). Örneğin, kullanım için bkz. [VisualSearch Insight örneği](./bing-insights-usage.md#visualsearch-insight-example).
 
 ```json
       {
@@ -241,9 +241,9 @@ VisualSearch öngörüsü, görsel olarak orijinal görüntüye benzeyen görün
       }
 ```
 
-## <a name="recipes-insight"></a>Yemek tarifleri içgörü
+## <a name="recipes-insight"></a>Tarifler öngörüleri
 
-Recipes içgörüsü, resimde gösterilen gıdayı yapmak için bir reçete içeren web sayfalarının bir listesini sağlar. Örneğin kullanım, [Bkz. Tarifler içgörü örneği.](./bing-insights-usage.md#recipes-insight-example)
+Tarifler, görüntüde gösterilen yiyecek oluşturmak için bir yemek tarifi içeren Web sayfalarının bir listesini sağlar. Örneğin kullanım için bkz. [Tarifler öngörü örneği](./bing-insights-usage.md#recipes-insight-example).
 
 ```json
       {
@@ -276,9 +276,9 @@ Recipes içgörüsü, resimde gösterilen gıdayı yapmak için bir reçete içe
 ```
 
 
-## <a name="imagebyid-insight"></a>ImageById içgörü
+## <a name="imagebyid-insight"></a>Imagebyıd Insight
 
-ImageById öngörüsü, `Image` aşağıdakiler için öngörüler istediğiniz görüntünün bir nesnesini sağlar:
+Imagebyıd Insight, için öngörülerinizi istediğiniz bir `Image` nesne sağlar:
 
 ```json
       {
@@ -311,9 +311,9 @@ ImageById öngörüsü, `Image` aşağıdakiler için öngörüler istediğiniz 
       },
 ```
 
-## <a name="productvisualsearch-insight"></a>ProductVisualSearch içgörü
+## <a name="productvisualsearch-insight"></a>ProductVisualSearch öngörüleri
 
-ProductVisualSearch öngörüsü, orijinal resimde gösterilen ürünlere görsel olarak benzeyen ürünlerin görüntülerinin bir listesini sağlar. Alan, `insightsMetadata` ürünü ve ürünün fiyatını satın alabileceğiniz teklifler hakkında bilgi içerebilir.
+ProductVisualSearch öngörüleri, Orijinal görüntüde gösterilen ürünlere görsel olarak benzeyen ürünlerin görüntülerinin bir listesini sağlar. `insightsMetadata` Alanı, ürünü ve ürünün fiyatını satın alabileceğiniz teklifler hakkında bilgiler içerebilir.
 
 ```json
       {
@@ -375,9 +375,9 @@ ProductVisualSearch öngörüsü, orijinal resimde gösterilen ürünlere görse
       }
 ```
 
-## <a name="relatedsearches-insight"></a>RelatedSearches içgörü
+## <a name="relatedsearches-insight"></a>Relatedaramaları öngörüleri
 
-RelatedSearches öngörüsü, başkaları tarafından yapılan ilgili aramaların bir listesini sağlar (diğer kullanıcıların arama terimlerine göre). Örneğin kullanım, [bkz.](./bing-insights-usage.md#relatedsearches-insight-example)
+Relatedaramalarının öngörüleri, başkaları tarafından yapılan ilgili aramaların bir listesini sağlar (diğer kullanıcıların arama koşullarına bağlı olarak). Örneğin kullanım için bkz. [Relatedaramabakış örneği](./bing-insights-usage.md#relatedsearches-insight-example).
 
 ```json
       {
@@ -398,9 +398,9 @@ RelatedSearches öngörüsü, başkaları tarafından yapılan ilgili aramaları
       }
 ```
 
-## <a name="documentlevelsuggestions-insight"></a>DocumentLevelSuggestions içgörü
+## <a name="documentlevelsuggestions-insight"></a>Documentlevelönerilere Öngörüler
 
-DocumentLevelSuggestions öngörüsü, resmin içeriğine dayalı olarak önerilen arama terimlerinin bir listesini sağlar:
+Documentlevelönerilere ilişkin Öngörüler, görüntünün içeriğine göre önerilen arama koşullarının bir listesini sağlar:
 
 ```json
       {
@@ -423,6 +423,6 @@ DocumentLevelSuggestions öngörüsü, resmin içeriğine dayalı olarak öneril
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bing'in görsel öngörüleri nasıl görüntüleyebileceğini görmek için [Bing istatistiklerine](bing-insights-usage.md) göz atın.
+Bing 'in Visual Insights 'ın nasıl görüntüleneceğini görmek için [Bing Insights kullanımı örneklerine](bing-insights-usage.md) göz atın.
 
-Hızlı bir şekilde ilk isteğiile başlamak için, quickstarts bakın: [C #](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [düğümü.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+İlk isteğinizi hızlıca kullanmaya başlamak için hızlı başlangıçlara bakın: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: eb6c8164cc577af6023c64112f09f36a2f37fa05
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69907080"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69907080"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir proje oluşturun veya masaüstünüzde yeni bir klasör oluşturun. Bu kod parçacıklarını proje/klasörünüze kopyala `alt-translations.js`.
+En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir proje oluşturun veya masaüstünüzde yeni bir klasör oluşturun. Bu kod parçacığını projenize/klasörünüze adlı `alt-translations.js`bir dosyaya kopyalayın.
 
 ```javascript
 const request = require('request');
@@ -29,9 +29,9 @@ const uuidv4 = require('uuid/v4');
 
 Bu modüller HTTP isteği ve `'X-ClientTraceId'` üst bilgisi için benzersiz tanıtıcı oluşturmak için gereklidir.
 
-## <a name="set-the-subscription-key-and-endpoint"></a>Abonelik anahtarını ve bitiş noktasını ayarlama
+## <a name="set-the-subscription-key-and-endpoint"></a>Abonelik anahtarını ve uç noktayı ayarlama
 
-Bu örnek, çevirmen metin abonelik anahtarınızı ve bitiş noktanızı `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` `TRANSLATOR_TEXT_ENDPOINT`bu ortam değişkenlerinden okumaya çalışır: ve . Ortam değişkenlerini bilmiyorsanız, koşullu ifadeleri `subscriptionKey` ayarlayabilir ve `endpoint` dizeleri olarak yorumlayabilirsiniz.
+Bu örnek, bu ortam değişkenlerinden Translator Metin Çevirisi abonelik anahtarınızı ve uç noktasını okumaya çalışacaktır: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` ve. `TRANSLATOR_TEXT_ENDPOINT` Ortam değişkenlerine alışkın değilseniz, dizeler ayarlayabilir ve koşullu deyimleri açıklama `subscriptionKey` `endpoint` olarak ayarlayabilirsiniz.
 
 Bu kodu projenize kopyalayın:
 
@@ -79,7 +79,7 @@ let options = {
 
 Bir isteğin kimliğini doğrulamanın en kolay yolu, abonelik anahtarınızda bir `Ocp-Apim-Subscription-Key` üst bilgisi olarak geçirmektir. Bu örnekte bu yöntem kullanılır. Alternatif olarak, abonelik anahtarınızı bir erişim belirteciyle değiştirebilir ve isteğinizi doğrulamak için erişim belirtecini bir `Authorization` üst bilgisi olarak geçirebilirsiniz.
 
-Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek `Ocp-Apim-Subscription-Region` üstbilginize de eklemeniz gerekir.
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek üst bilgilerine de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir.
 
 Daha fazla bilgi için bkz. [Kimlik doğrulaması](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
@@ -140,7 +140,7 @@ Abonelik anahtarınızı programınıza sabit kodladıysanız, bu hızlı başla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
+Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -11,21 +11,21 @@ ms.custom: include file
 ms.date: 06/24/2019
 ms.author: diberry
 ms.openlocfilehash: f69502907e2dd3c5b3c64634b1b11e10af5397f5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67438423"
 ---
 ## <a name="more-information-about-bots"></a>Botlar hakkında daha fazla bilgi
 
-Botlarla bu hizmeti kullanma hakkında daha fazla bilgi için aşağıdaki kaynaklardan başlayın:
+Bu hizmeti botlarla kullanma hakkında daha fazla bilgi için aşağıdaki kaynaklarla başlayın:
 
 |Kaynak|Amaç|
 |--|--|
-|[Azure Bot hizmeti](https://dev.botframework.com/)|Azure Bot hizmeti, buluttarafından barındırılan eksiksiz bir web hizmeti ile bir bot bitiş noktası sağlar. Hizmetler, çeşitli dillerde kullanılabilen [Bot çerçevesini](https://github.com/Microsoft/botframework)kullanır.|
-|[Bot Altyapısı](https://github.com/Microsoft/botframework)|Microsoft Bot Framework, kurumsal sınıf konuşma ai deneyimleri oluşturmak için kapsamlı bir platformdur.|
-|[Bot Çerçeve Emülatör](https://github.com/Microsoft/botframework#Bot-Framework-Emulator)|Bot Framework Emulator bot geliştiricileri test etmek ve Bot Framework SDK kullanılarak inşa botlar hata ayıklama sağlayan bir çapraz platform masaüstü uygulamasıdır. Bot Framework Emülatörünü, makinenizde yerel olarak çalışan botları test etmek veya uzaktan çalışan botlara bağlanmak için kullanabilirsiniz.|
-|[Bot araçları](https://github.com/Microsoft/botbuilder-tools)|Bot Framework araçları, uçtan uca bot geliştirme iş akışını kapsayacak şekilde tasarlanmış çapraz platform komut satırı araçları topluluğudur. |
-|[Bot oluşturucu örnekleri](https://github.com/Microsoft/BotBuilder-Samples)|Tam gelişmiş bot örnekleri, büyük botlar oluşturmak için uygulamanız gereken senaryoları göstermek üzere tasarlanmıştır.|
+|[Azure bot hizmeti](https://dev.botframework.com/)|Azure bot hizmeti, bir bot uç noktası ile tam bir bulutta barındırılan Web hizmeti sağlar. Hizmetler, birkaç dilde kullanılabilen [bot çerçevesini](https://github.com/Microsoft/botframework)kullanır.|
+|[Bot Altyapısı](https://github.com/Microsoft/botframework)|Microsoft bot Framework, kurumsal düzeyde konuşma gibi bir AI deneyimi oluşturmaya yönelik kapsamlı bir platformdur.|
+|[Bot Framework öykünücüsü](https://github.com/Microsoft/botframework#Bot-Framework-Emulator)|Bot Framework öykünücüsü, bot geliştiricilerinin bot Framework SDK 'Sı kullanılarak oluşturulan botları test etmesine ve hata ayıklamasına olanak tanıyan platformlar arası bir masaüstü uygulamasıdır. Bilgisayarınızda yerel olarak çalışan botları test etmek veya uzaktan çalışan botlara bağlanmak için bot Framework öykünücüsünü kullanabilirsiniz.|
+|[Bot araçları](https://github.com/Microsoft/botbuilder-tools)|Bot Framework araçları, uçtan uca bot geliştirme iş akışını kapsayacak şekilde tasarlanan platformlar arası komut satırı araçlarının bir koleksiyonudur. |
+|[Bot Oluşturucu örnekleri](https://github.com/Microsoft/BotBuilder-Samples)|Tam olarak geliştirilen bot örnekleri, harika botlar oluşturmak için uygulamanız gereken senaryoları göstermek üzere tasarlanmıştır.|
 |||

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 2ead85da805bb33247ca54bea51cccc57b0e4e94
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69906729"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69906729"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir Go projesi oluşturun. Ardından bu kod parçacığını projenizde `translate-text.go` adlı bir dosyaya kopyalayın.
+En sevdiğiniz IDE veya düzenleyiciyi kullanarak yeni bir go projesi oluşturun. Ardından bu kod parçacığını projenizde `translate-text.go` adlı bir dosyaya kopyalayın.
 
 ```go
 package main
@@ -33,9 +33,9 @@ import (
 )
 ```
 
-## <a name="create-the-main-function"></a>Ana işlevi oluşturma
+## <a name="create-the-main-function"></a>Main işlevini oluşturma
 
-Bu örnek, çevirmen metin abonelik anahtarınızı ve bitiş noktanızı `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` `TRANSLATOR_TEXT_ENDPOINT`bu ortam değişkenlerinden okumaya çalışır: ve . Ortam değişkenlerini bilmiyorsanız, koşullu ifadeleri `subscriptionKey` ayarlayabilir ve `endpoint` dizeleri olarak yorumlayabilirsiniz.
+Bu örnek, bu ortam değişkenlerinden Translator Metin Çevirisi abonelik anahtarınızı ve uç noktasını okumaya çalışacaktır: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` ve. `TRANSLATOR_TEXT_ENDPOINT` Ortam değişkenlerine alışkın değilseniz, dizeler ayarlayabilir ve koşullu deyimleri açıklama `subscriptionKey` `endpoint` olarak ayarlayabilirsiniz.
 
 Bu kodu projenize kopyalayın:
 
@@ -65,9 +65,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-translate-text"></a>Metni çevirmek için bir işlev oluşturma
+## <a name="create-a-function-to-translate-text"></a>Metin çevirmek için bir işlev oluşturma
 
-Metni çevirmek için bir işlev oluşturalım. Bu işlev, Çevirmen Metni abonelik anahtarınız olan tek bir bağımsız değişken ilerler.
+Metni çevirmek için bir işlev oluşturalım. Bu işlev, Translator Metin Çevirisi abonelik anahtarınızı tek bir bağımsız değişken alır.
 
 ```go
 func translate(subscriptionKey string, uri string) {
@@ -78,9 +78,9 @@ func translate(subscriptionKey string, uri string) {
 }
 ```
 
-Sonra, URL oluşturalım. URL, yöntem `Parse()` ve `Query()` yöntemler kullanılarak oluşturulmuştür. Yöntemle parametrelerin eklenmediğini `Add()` fark edeceksiniz. Bu örnekte, İngilizce'den Almanca ve İtalyanca'ya `de` `it`çeviri yapıyorsunuz: ve.
+Sonra URL 'YI oluşturalım. URL, `Parse()` ve `Query()` yöntemleri kullanılarak oluşturulmuştur. Parametrelerinin `Add()` yöntemiyle eklendiğini fark edeceksiniz. Bu örnekte, Ingilizce 'den Almanca 'ya ve Italyanca 'e çeviriyoruz: `de` ve. `it`
 
-Bu kodu işleve kopyalayın. `translate`
+Bu kodu `translate` işleve kopyalayın.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
@@ -94,9 +94,9 @@ u.RawQuery = q.Encode()
 >[!NOTE]
 > Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator Metin Çevirisi API’si 3.0: Çeviri](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
-## <a name="create-a-struct-for-your-request-body"></a>İstek bedeniniz için bir yapı oluşturun
+## <a name="create-a-struct-for-your-request-body"></a>İstek gövde'niz için bir struct oluşturun
 
-Ardından, istek gövdesi için anonim bir yapı oluşturun ve `json.Marshal()`json olarak kodlayın. Bu kodu işleve `translate` ekleyin.
+Sonra, istek gövdesi için anonim bir yapı oluşturun ve bunu ile `json.Marshal()`JSON olarak kodlayın. Bu kodu `translate` işleve ekleyin.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -110,7 +110,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>İsteği oluşturma
 
-İstek gövdesini JSON olarak kodladığınıza göre, POST isteğinizi oluşturabilir ve Çevirmen Metin API'sini arayabilirsiniz.
+İstek gövdesini JSON olarak kodladığınıza göre, POST isteğinizi oluşturabilir ve Translator Metin Çevirisi API'si çağırabilirsiniz.
 
 ```go
 // Build the HTTP POST request
@@ -129,11 +129,11 @@ if err != nil {
 }
 ```
 
-Bilişsel Hizmetler çok hizmet aboneliği kullanıyorsanız, istek parametrelerinize `Ocp-Apim-Subscription-Region` de eklemeniz gerekir. [Çoklu hizmet aboneliği ile kimlik doğrulama hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="handle-and-print-the-response"></a>Yanıtı işleme ve yazdırma
 
-JSON yanıtını `translate` çözmek için işleve bu kodu ekleyin ve sonucu biçimlendirin ve yazdırın.
+JSON yanıtının kodunu çözmek için `translate` bu kodu işleve ekleyin ve ardından sonucu biçimlendirin ve yazdırın.
 
 ```go
 // Decode the JSON response
@@ -183,7 +183,7 @@ Başarılı bir yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçimind
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çevirmen Metin API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna bir göz atın.
+Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

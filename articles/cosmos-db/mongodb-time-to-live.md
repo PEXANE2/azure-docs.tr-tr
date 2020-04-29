@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB'de belge başına MongoDB belge başına TTL özelliği
-description: Bir süre sonra otomatik olarak sistemden temizlemek için MongoDB için Azure Cosmos DB API'sini kullanarak belgelerin canlı değeri için nasıl zaman ayarlayayın öğrenin.
+title: Azure Cosmos DB 'da MongoDB belge başına TTL özelliği
+description: Bir süre sonra sistemden otomatik olarak temizlemek üzere MongoDB için Azure Cosmos DB API 'sini kullanarak belgeler için yaşam süresi ayarlamayı öğrenin.
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
@@ -8,15 +8,15 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61330691"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'siyle verilerde süre sonu
 
-Yaşam süresi (TTL) işlevi, veritabanının verilerin süresini otomatik olarak sonlandırmasını sağlar. Azure Cosmos DB'nin MongoDB için API'si Cosmos DB'nin temel TTL özelliklerini kullanır. İki mod desteklenir: koleksiyonun tamamı için varsayılan TTL değeri ayarlama ve her belge için ayrı bir TTL değeri ayarlama. Cosmos DB'nin MongoDB api'sinde TTL dizinlerini ve belge başına TTL değerlerini yöneten mantık [Cosmos DB ile aynıdır.](../cosmos-db/mongodb-indexing.md)
+Yaşam süresi (TTL) işlevi, veritabanının verilerin süresini otomatik olarak sonlandırmasını sağlar. MongoDB için Azure Cosmos DB API 'SI, Cosmos DB 'ın çekirdek TTL özelliklerini kullanır. İki mod desteklenir: koleksiyonun tamamı için varsayılan TTL değeri ayarlama ve her belge için ayrı bir TTL değeri ayarlama. Cosmos DB MongoDB için API 'sindeki TTL dizinlerini ve belge başına TTL değerlerini yöneten mantık, [Cosmos DB ile aynıdır](../cosmos-db/mongodb-indexing.md).
 
 ## <a name="ttl-indexes"></a>TTL dizinleri
 TTL'yi bir koleksiyonun tamamında etkinleştirmek için bir ["TTL dizini" (yaşam süresi dizini)](../cosmos-db/mongodb-indexing.md) oluşturulması gerekir. TTL dizini, _ts alanında "expireAfterSeconds" değerini içeren bir dizindir.
@@ -72,10 +72,10 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>Belgeye özgü TTL özelliğini etkinleştirme
 
-Belge başına TTL özelliği, Azure Cosmos DB'nin MongoDB için API'si ile etkinleştirilebilir.
+Belge başına TTL özelliği Azure Cosmos DB MongoDB için API 'SI ile etkinleştirilebilir.
 
-![Portal'da belge başına TTL özelliği etkinleştirme ekran görüntüsü](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+![Portalda belge başına TTL özelliği etkinleştirmenin ekran görüntüsü](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Cosmos DB'deki verilerin süresi, yaşamak için zaman içinde otomatik olarak sona eriyor](../cosmos-db/time-to-live.md)
-* [MongoDB için Azure Cosmos DB'nin API'si ile yapılandırılan Cosmos veritabanınızı dizine alma](../cosmos-db/mongodb-indexing.md)
+* [Azure Cosmos DB verileri yaşam süresi ile otomatik olarak sona erer](../cosmos-db/time-to-live.md)
+* [Cosmos veritabanınızı dizin oluşturma Azure Cosmos DB MongoDB için API 'SI ile yapılandırılmış](../cosmos-db/mongodb-indexing.md)

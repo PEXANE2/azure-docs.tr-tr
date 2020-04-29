@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: c06b94d179f9f5a17a652cf32bd560cc9b5f8e4f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188067"
 ---
 ### <a name="azure-active-directory-authentication"></a>Azure Active Directory Kimlik Doğrulaması
 
-Azure Uzamsal Bağlantılar, uygulamaların kullanıcı Azure AD (Active Directory) belirteçleriyle kimlik doğrulaması yapmasına da olanak tanır. Örneğin, Azure Uzamsal Bağlantı larla tümleştirmek için Azure AD belirteçlerini kullanabilirsiniz. Bir Kuruluş Azure AD'deki kullanıcıları korursa, Azure Uzamsal Bağlantı SDK'sında bir kullanıcı Azure AD belirteci sağlayabilirsiniz. Bunu yapmak, aynı Azure AD kiracısının parçası olan bir hesap için doğrudan Azure Uzamsal Çapalar hizmetine kimlik doğrulamanızı sağlar.
+Azure uzamsal bağlantıları, uygulamaların Kullanıcı Azure AD (Active Directory) belirteçleriyle kimlik doğrulaması yapmasına de olanak tanır. Örneğin, Azure AD belirteçlerini Azure uzamsal bağlayıcılarla tümleştirebilmek için kullanabilirsiniz. Bir kuruluş Azure AD 'de kullanıcıları koruyorsa Azure uzamsal bağlayıcı SDK 'sında bir Kullanıcı Azure AD belirteci sağlayabilirsiniz. Bunun yapılması, aynı Azure AD kiracısının parçası olan bir hesap için doğrudan Azure uzamsal bağlayıcı hizmetinde kimlik doğrulaması yapmanıza olanak sağlar.

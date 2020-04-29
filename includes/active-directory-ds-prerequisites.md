@@ -1,6 +1,6 @@
 ---
 title: include dosyası
-description: ön koşulları olan dosyayı dahil et
+description: ön koşul içeren dosyayı Ekle
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -17,15 +17,15 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: maheshu
 ms.openlocfilehash: f7b1b294e9500ef9e0aadd24cfe3cd4e61fddda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68426971"
 ---
 > [!IMPORTANT]
-> **Bu makaledeki görevleri tamamlamadan önce Azure AD Etki Alanı Hizmetleri'ne parola karma senkronizasyonunu etkinleştirin.**
+> **Bu makaledeki görevleri tamamlamadan önce Azure AD Domain Services için Parola karması eşitlemesini etkinleştirin.**
 >
-> Azure AD dizininizdeki kullanıcı türüne bağlı olarak aşağıdaki yönergeleri izleyin. Azure AD dizininizde yalnızca bulut ve senkronize kullanıcı hesaplarının bir karışımı varsa her iki yönerge kümesini de tamamlayın. B2B Guest hesabı kullanmaya çalışıyorsanız aşağıdaki işlemleri gerçekleştiremeyebilirsiniz (örneğin, gmail'iniz veya MSA'nız farklı bir Kimlik sağlayıcısından izin verdiğimiz) çünkü bu kullanıcıların parolası yönetilen etki alanına senkronize edilemedi. dizindeki konuk hesapları. Parolaları da dahil olmak üzere bu hesaplarla ilgili tüm bilgiler Azure AD'nin dışında olacaktır ve bu bilgiler Azure AD'de olmadığı için yönetilen etki alanıyla eşitlenmez bile. 
-> - [Yalnızca bulut kullanıcı hesapları için talimatlar](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
-> - [Şirket içi dizinden senkronize edilen kullanıcı hesapları için talimatlar](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)
+> Azure AD dizininizde bulunan kullanıcıların türüne bağlı olarak aşağıdaki yönergeleri izleyin. Azure AD dizininizde yalnızca bulutta ve eşitlenmiş Kullanıcı hesaplarının bir karışımına sahipseniz her iki yönerge kümesini de doldurun. Bir B2B Konuk hesabı (örneğin, izin verdiğimiz farklı bir kimlik sağlayıcısından Gmail veya MSA) kullanmaya çalışıyorsanız aşağıdaki işlemleri gerçekleştiremeyebilirsiniz, çünkü bu kullanıcılar, dizinde Konuk hesaplardır ve bu, yönetilen etki alanı ile eşitlenen bu kullanıcılara yönelik parolaya sahip değildir. Bu hesaplarla ilgili olarak, parolaları da dahil olmak üzere tüm bilgiler Azure AD 'nin dışında ve bu bilgiler Azure AD 'de olmadığından, yönetilen etki alanıyla eşitlenmeyebilir. 
+> - [Yalnızca bulut Kullanıcı hesapları için yönergeler](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
+> - [Şirket içi dizinden eşitlenen Kullanıcı hesapları için yönergeler](../articles/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)

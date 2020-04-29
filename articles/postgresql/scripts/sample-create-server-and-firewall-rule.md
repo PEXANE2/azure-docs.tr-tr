@@ -9,10 +9,10 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 14bb46d8917aedb3ea5a625db2489c97a4fd0ba3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66122058"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure CLI kullanarak PostgreSQL için Azure Veritabanı sunucusu oluşturun ve bir güvenlik duvarı kuralı yapılandırın
@@ -41,5 +41,5 @@ Bu betik, aşağıdaki tabloda ana hatları verilen komutları kullanır:
 | [az group delete](/cli/azure/group) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure CLI: [Azure CLI belgeleri](/cli/azure) hakkında daha fazla bilgi edinin
+- Azure CLı ile ilgili daha fazla bilgi edinin: [Azure CLI belgeleri](/cli/azure)
 - Ek betikleri deneyin: [PostgreSQL için Azure Veritabanı Azure CLI örnekleri](../sample-scripts-azure-cli.md)
