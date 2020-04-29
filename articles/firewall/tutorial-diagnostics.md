@@ -8,21 +8,21 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: da46cf826da40658883d22692e5038b09d222907
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75974523"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme
 
 Güvenlik duvarı günlüklerini kullanarak Azure Güvenlik Duvarı'nı izleyebilirsiniz. Ayrıca etkinlik günlüklerini kullanarak Azure Güvenlik Duvarı kaynaklarıyla ilgili işlemleri denetleyebilirsiniz. Ölçümleri kullanarak portalda performans sayaçlarını görüntüleyebilirsiniz.
 
-Bu günlüklerden bazılarına portaldan erişebilirsiniz. Günlükler [Azure Monitor günlüklerine,](../azure-monitor/insights/azure-networking-analytics.md)Depolama ve Etkinlik Hub'larına gönderilebilir ve Azure Monitor günlüklerinde veya Excel ve Power BI gibi farklı araçlarla analiz edilebilir.
+Bu günlüklerden bazılarına portaldan erişebilirsiniz. Günlükler [Azure izleyici](../azure-monitor/insights/azure-networking-analytics.md)günlüklerine, depolamaya ve Event Hubs gönderilebilir ve Azure izleyici günlüklerinde veya Excel ve Power BI gibi farklı araçlarla analiz edilebilir.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure portaldan günlüğe kaydetmeyi etkinleştirme
@@ -44,7 +44,7 @@ Bu öğreticiye başlamadan önce, Azure Güvenlik Duvarında kullanılabilen ta
 Tanılama günlüğüne kaydetme işlemi etkinleştirildikten sonra verilerin günlükte görünmesi birkaç dakika sürebilir. İlk seferde görünen veri olmazsa birkaç dakika sonra tekrar deneyin.
 
 1. Azure portalda güvenlik duvarı kaynak grubunuzu açın ve güvenlik duvarına tıklayın.
-2. **İzleme**altında, **Tanılama ayarlarını**tıklatın.
+2. **İzleme**altında **Tanılama ayarları**' na tıklayın.
 
    Azure Güvenlik Duvarı için hizmete özgü iki günlük vardır:
 
@@ -53,7 +53,7 @@ Tanılama günlüğüne kaydetme işlemi etkinleştirildikten sonra verilerin g�
 
 3. Veri toplamaya başlamak için **Tanılamayı aç**'a tıklayın.
 4. **Tanılama ayarları** sayfasında tanılama günlükleriyle ilgili ayarlar bulunur.
-5. Bu örnekte, Azure Monitor günlükleri depolar, bu nedenle ad için **Güvenlik Duvarı günlük analitiği** yazın.
+5. Bu örnekte, Azure Izleyici günlükleri günlükleri depolar, bu nedenle ad için **güvenlik duvarı Log Analytics** yazın.
 6. Çalışma alanınızı yapılandırmak için **Log Analytics'e gönder**'e tıklayın. Tanılama günlüklerini kaydetmek için Event Hubs'ı veya depolama hesabını da kullanabilirsiniz.
 7. **Log Analytics** bölümünde **Yapılandır**'a tıklayın.
 8. Log Analytics çalışma alanları sayfasında **Yeni Çalışma Alanı Oluştur**'a tıklayın.
@@ -63,7 +63,7 @@ Tanılama günlüğüne kaydetme işlemi etkinleştirildikten sonra verilerin g�
    ![Yapılandırma işleminin başlatılmasıyla][1] OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.  
 12. **Günlük** bölümünde uygulama ve ağ kuralları için günlükleri toplamak için **AzureFirewallApplicationRule** ve **AzureFirewallNetworkRule** girişlerini seçin.
    ![Tanılama ayarlarını kaydetme][2]
-13. **Kaydet**'e tıklayın.
+13. **Kaydet**’e tıklayın.
 
 ## <a name="enable-logging-with-powershell"></a>PowerShell ile günlüğe kaydetmeyi etkinleştirme
 
@@ -99,9 +99,9 @@ Aşağıdaki yöntemlerden birini kullanarak etkinlik günlüğü verilerini gö
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Ağ ve uygulama kuralı günlüklerini görüntüleme ve analiz etme
 
-[Azure Monitor günlükleri](../azure-monitor/insights/azure-networking-analytics.md) sayaç ve olay günlüğü dosyalarını toplar. Günlüklerinizi analiz etmek için görselleştirmelere ve güçlü arama özelliklerine sahiptir.
+[Azure izleyici günlükleri](../azure-monitor/insights/azure-networking-analytics.md) sayaç ve olay günlüğü dosyalarını toplar. Günlüklerinizi analiz etmek için görselleştirmelere ve güçlü arama özelliklerine sahiptir.
 
-Azure Güvenlik Duvarı günlük analizi örnek sorguları için Bkz. [Azure Güvenlik Duvarı günlük analizi örnekleri.](log-analytics-samples.md)
+Azure Güvenlik Duvarı günlük Analizi örnek sorguları için bkz. [Azure Güvenlik Duvarı günlük Analizi örnekleri](log-analytics-samples.md).
 
 Dilerseniz depolama hesabınıza bağlanabilir ve JSON erişim günlüklerini ve performans günlüklerini alabilirsiniz. İndirdiğiniz JSON dosyalarını CSV biçimine dönüştürebilir ve Excel, Power BI veya diğer veri görselleştirme araçlarında görüntüleyebilirsiniz.
 
@@ -113,10 +113,10 @@ Bir Azure Güvenlik Duvarına gidin, **İzleme** bölümünde **Ölçümler**’
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenlik duvarınızı günlükleri toplayacak şekilde yapılandırdığınıza göre, verilerinizi görüntülemek için Azure Monitor günlüklerini keşfedebilirsiniz.
+Güvenlik duvarınızı günlükleri toplayacak şekilde yapılandırdığınıza göre, verilerinizi görüntülemek için Azure Izleyici günlüklerini keşfedebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Monitor günlüklerinde ağ izleme çözümleri](../azure-monitor/insights/azure-networking-analytics.md)
+> [Azure Izleyici günlüklerinde ağ izleme çözümleri](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

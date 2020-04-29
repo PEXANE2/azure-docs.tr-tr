@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: AskYourTeam ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve AskYourTeam arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: AskYourTeam ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve AskYourTeam arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,196 +16,196 @@ ms.date: 02/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 403f39de1b7d226d9feeb33388c32f63271fdcd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78968630"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Öğretici: AskYourTeam ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Öğretici: AskYourTeam ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, AskYourTeam'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. AskYourTeam'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Askyourekibini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Azure AD ile Askyourekibini tümleştirdiğinizde şunları yapabilirsiniz:
 
-* AskYourTeam erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla AskYourTeam'e otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de, AskYourTeam 'e erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla şirket içinde otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* AskYourTeam tek oturum açma (SSO) özellikli abonelik.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* AskYourTeam çoklu oturum açma (SSO) aboneliği etkin.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* AskYourTeam **SP ve IDP** sso başlattı destekler.
-* AskYourTeam'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızmasını ve sızmasını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* AskYourTeam **SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
+* AskYourTeam 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-askyourteam-from-the-gallery"></a>Galeriden AskYourTeam ekleme
 
-AskYourTeam'in Azure AD'ye entegrasyonunu yapılandırmak için galeriden AskYourTeam'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+AskYourTeam 'in tümleştirmesini Azure AD ile yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize AskYourTeam eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **AskYourTeam** yazın.
-1. Sonuç panelinden **AskYourTeam'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Askyourteam** yazın.
+1. Sonuçlar panelinden **Askyourteam** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-askyourteam"></a>AskYourTeam için Azure AD oturumunu yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on-for-askyourteam"></a>AskYourTeam için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak AskYourTeam ile yapılandırın ve test edin. SSO'nun çalışması için, AskYourTeam'deki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu AskYourTeam ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve AskYourTeam 'teki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu AskYourTeam ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu AskYourTeam ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[AskYourTeam SSO'yu yapılandırın](#configure-askyourteam-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    * **[AskYourTeam test kullanıcısını oluşturun](#create-askyourteam-test-user)** - AskYourTeam'de kullanıcının Azure AD gösterimine bağlı b.simon'ın bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[AskYourTeam SSO 'Yu yapılandırma](#configure-askyourteam-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    * **[Askyourteam test kullanıcısı oluşturun](#create-askyourteam-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan Askyourteam 'te B. Simon 'ın bir karşılığı olacak şekilde.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. **AskYourTeam** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **Askyourteam** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<COMPANY>.app.askyourteam.com/users/auth/saml/callback`
+    **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<COMPANY>.app.askyourteam.com/users/auth/saml/callback`
 
-1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<COMPANY>.app.askyourteam.com/login`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<COMPANY>.app.askyourteam.com/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek YanıtLA URL'si ve Oturum Açma URL değerleriyle güncelleştirin.
+    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek yanıt URL 'SI ve oturum açma URL 'SI değerleriyle güncelleştirin.
 
-1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **AskYourTeam'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **AskYourTeam 'ı ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın AskYourTeam'e erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Askyourekibine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **AskYourTeam'i**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Askyourteam**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-askyourteam-sso"></a>AskYourTeam SSO'ya yapılandır
+## <a name="configure-askyourteam-sso"></a>AskYourTeam SSO 'yu yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, yönetici olarak AskYourTeam web sitesinde oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak AskYourTeam Web sitesinde oturum açın.
 
-1. **Kuruluşum'a**tıklayın.
+1. **Kuruluşumun**üzerine tıklayın.
 
-    ![AskYourTeam Yapılandırma](./media/askyourteam-tutorial/user1.png)
+    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/user1.png)
 
-1. **Entegrasyonlar'a**tıklayın.
+1. **Tümleştirmeler**' e tıklayın.
 
-    ![AskYourTeam Yapılandırma](./media/askyourteam-tutorial/configure1.png)
+    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/configure1.png)
 
-1. Ayarları **Edit'e**tıklayın.
+1. **Ayarları Düzenle**' ye tıklayın.
 
-    ![AskYourTeam Yapılandırma](./media/askyourteam-tutorial/configure2.png)
+    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/configure2.png)
 
-1. Tek **Oturum Açma Tümleştirmesini Edit** sayfasında aşağıdaki adımları gerçekleştirin: 
+1. **Çoklu oturum açma tümleştirmesi düzenleme** sayfasında, aşağıdaki adımları uygulayın: 
 
-    ![AskYourTeam Yapılandırma](./media/askyourteam-tutorial/configure3.png)
+    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/configure3.png)
 
-    a. **SAML Tek Oturum Açma Hizmeti URL** textbox'ına, Azure portalından kopyalamış olduğunuz Giriş **URL** değerini yapıştırın.
+    a. **SAML çoklu oturum açma hizmeti URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    b. **SAML Entity ID** textbox'a, Azure portalından kopyalamış olduğunuz **Azure AD Tanımlayıcı** değerini yapıştırın.
+    b. **SAML VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 
-    c. Oturumu **Çıkış URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL** değerini yapıştırın.
+    c. Oturum kapatma **URL 'si** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
 
-    d. Azure portalından indirilen **Sertifikayı (Base64)** Notepad'e açın ve içeriği **SAML İmza Sertifikası - Base64** textbox'ına yapıştırın.
+    d. İndirilen **sertifikayı (base64)** Azure Portal Not defteri ' nden açın ve Içeriği **SAML Imzalama sertifikası-Base64** metin kutusuna yapıştırın.
 
     > [!NOTE]
-    > Alternatif olarak, **Dosya Seç** seçeneğini tıklayarak **Federasyon Metadata XML** dosyasını da yükleyebilirsiniz.
+    > Alternatif olarak, **Dosya Seç** seçeneğine tıklayarak **Federasyon meta veri XML** dosyasını da karşıya yükleyebilirsiniz.
 
-    e. **Yanıtla URL'sini kopyalayın (Tüketici Hizmeti URL'sini İddia Et)** değeri, bu değeri Azure portalındaki **Temel SAML Yapılandırması** bölümündeki **YanıtLA URL** metin kutusuna yapıştırın.
+    e. **Yanıt URL 'si (onaylama tüketici hizmeti URL 'si)** değerini Kopyala, bu değeri Azure Portal **temel SAML yapılandırması** bölümündeki **yanıt URL 'si** metin kutusuna yapıştırın.
 
-    f. URL değerinde **İmza'yı** kopyalayın, bu değeri Azure portalındaki **Temel SAML Yapılandırması** **bölümündeki URL** metin kutusuna yapıştırın.
+    f. **Oturum açma URL 'si** değerini Kopyala, bu değeri Azure Portal **temel SAML yapılandırması** bölümünde yer **alan URL 'yi aç** metin kutusuna yapıştırın.
 
-    g. **Kaydet**'e tıklayın.
+    g. **Kaydet**’e tıklayın.
 
-### <a name="create-askyourteam-test-user"></a>AskYourTeam test kullanıcınızı oluşturun
+### <a name="create-askyourteam-test-user"></a>AskYourTeam test kullanıcısı oluşturma
 
-1. Farklı bir web tarayıcısı penceresinde, yönetici olarak AskYourTeam web sitesinde oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak AskYourTeam Web sitesinde oturum açın.
 
-1. **Kuruluşum'a**tıklayın.
+1. **Kuruluşumun**üzerine tıklayın.
 
-    ![AskYourTeam Yapılandırma](./media/askyourteam-tutorial/user1.png)
+    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/user1.png)
 
-1. **Kullanıcılar'ı** tıklatın ve **Yeni Kullanıcı'yı**seçin.
+1. **Kullanıcılar** ' a tıklayın ve **Yeni Kullanıcı**' yı seçin.
 
-    ![AskYourTeam Yapılandırma](./media/askyourteam-tutorial/user2.png)
+    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/user2.png)
 
-1. Yeni **kullanıcı** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Yeni Kullanıcı** bölümünde aşağıdaki adımları uygulayın:
 
-    ![AskYourTeam Yapılandırma](./media/askyourteam-tutorial/user3.png)
+    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/user3.png)
 
-    1. Ad **metin** kutusuna, kullanıcının adını girin.
+    1. **İlk ad** metin kutusuna kullanıcının adını girin.
 
-    1. **Soyadı** metin kutusuna, kullanıcının soyadını girin.
+    1. **Son ad** metin kutusuna kullanıcının soyadını girin.
 
-    1. **E-posta** metin kutusuna, kullanıcının e-posta adresini girin. B.Simon@contoso.com
+    1. **E-posta** metin kutusuna, gibi B.Simon@contoso.comkullanıcının EMAA adını girin.
 
-    1. Kuruluş gereksiniminize göre kullanıcıiçin **Rolü** seçin.
+    1. Kuruluşunuzun gereksinimlerine göre Kullanıcı için **rol** seçin.
 
-    1. **Kaydet**'e tıklayın.
+    1. **Kaydet**’e tıklayın.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki AskYourTeam döşemesini tıklattığınızda, SSO'yu kurduğunuz AskYourTeam'de otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde AskYourTeam kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Askyourekibine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure REKLAM ile SaskYourTeam'i deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile AskYourTeam 'i deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

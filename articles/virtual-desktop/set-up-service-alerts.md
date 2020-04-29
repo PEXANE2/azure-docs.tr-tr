@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstü için hizmet uyarıları ayarlama - Azure
-description: Windows Sanal Masaüstü için hizmet bildirimleri almak için Azure Hizmet Durumu nasıl ayarlayabilirsiniz?
+title: Windows sanal masaüstü için hizmet uyarılarını ayarlama-Azure
+description: Azure hizmet durumunu Windows sanal masaüstü için hizmet bildirimleri alacak şekilde ayarlama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,53 +9,53 @@ ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 2834ba924fa9c29d955c38fbaeb45ab23e5c4e9b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79127703"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Öğretici: Hizmet uyarıları ayarlama
+# <a name="tutorial-set-up-service-alerts"></a>Öğretici: hizmet uyarılarını ayarlama
 
-Windows Sanal Masaüstü için hizmet sorunlarını ve sistem durumu danışma sorunlarını izlemek için Azure Hizmet Durumu'nü kullanabilirsiniz. Azure Hizmet Durumu sizi farklı türde uyarılarla (örneğin, e-posta veya SMS) bilgilendirebilir, sorunun etkisini anlamanıza yardımcı olabilir ve sorun giderirken sizi güncel tutabilir. Azure Hizmet Durumu, kapalı kalma süresini azaltmanıza ve kaynaklarınızın kullanılabilirliğini etkileyebilecek planlı bakım ve değişikliklere hazırlanmanıza da yardımcı olabilir.
+Windows sanal masaüstü için hizmet sorunlarını ve sistem durumu belgelerini izlemek üzere Azure hizmet durumu ' nu kullanabilirsiniz. Azure hizmet durumu, farklı Uyarı türleri (örneğin, e-posta veya SMS) ile size bildirimde bulunabilir, bir sorunun etkisini anlamanıza yardımcı olur ve sorun çözümlendiği sürece güncelleştirmiş olursunuz. Azure hizmet durumu, kapalı kalma süresini azaltmanıza ve kaynaklarınızın kullanılabilirliğini etkileyebilecek planlı bakım ve değişiklikler için hazırlık yapmanıza da yardımcı olabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Hizmet uyarıları oluşturun ve yapılandırır.
+> * Hizmet uyarıları oluşturun ve yapılandırın.
 
-Azure Hizmet Durumu hakkında daha fazla bilgi edinmek için [Azure Sistem Durumu Belgeleri'ne](https://docs.microsoft.com/azure/service-health/)bakın.
+Azure hizmet durumu hakkında daha fazla bilgi edinmek için bkz. [Azure sistem durumu belgeleri](https://docs.microsoft.com/azure/service-health/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Öğretici: Windows Sanal Masaüstünde kiracı oluşturma](tenant-setup-azure-active-directory.md)
-- [Öğretici: PowerShell ile hizmet ilkeleri ve rol atamaları oluşturun](create-service-principal-role-powershell.md)
-- [Öğretici: Azure Marketi ile ana bilgisayar havuzu oluşturma](create-host-pools-azure-marketplace.md)
+- [Öğretici: Windows sanal masaüstünde kiracı oluşturma](tenant-setup-azure-active-directory.md)
+- [Öğretici: PowerShell ile hizmet sorumluları ve rol atamaları oluşturma](create-service-principal-role-powershell.md)
+- [Öğretici: Azure Marketi ile bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md)
 
 ## <a name="create-service-alerts"></a>Hizmet uyarıları oluşturma
 
-Bu bölümde, Azure Hizmet Durumu'nu nasıl yapılandırabileceğiniz ve Azure portalında erişebileceğiniz bildirimleri nasıl ayarladığınızı gösterir. Farklı türde uyarılar ayarlayabilir ve bunları sizi zamanında bildirmek üzere zamanlayabilirsiniz.
+Bu bölümde, Azure hizmet durumunu yapılandırma ve Azure portal erişebileceğiniz bildirimlerin nasıl ayarlanacağı gösterilmektedir. Farklı Uyarı türleri ayarlayabilir ve bunları zamanında bilgilendirecek şekilde zamanlayabilirsiniz.
 
 ### <a name="recommended-service-alerts"></a>Önerilen hizmet uyarıları
 
 Aşağıdaki sistem durumu olay türleri için hizmet uyarıları oluşturmanızı öneririz:
 
-- **Hizmet sorunu:** Kullanıcılarınızın hizmetle bağlantılarını etkileyen veya Windows Sanal Masaüstü kiracınızı yönetebilme özelliğine sahip önemli konularda bildirimler alın.
-- **Sağlık danışmanlığı:** Dikkatinizi gerektiren bildirimler alın. Bu bildirim türüne bazı örnekler aşağıda verilmiştir:
-    - Sanal Makineler (VM' ler) güvenli bir şekilde açık bağlantı noktası 3389 olarak yapılandırılmamıştır
-    - İşlevselliğin amortismanı
+- **Hizmet sorunu:** Hizmet ile kullanıcılarınızın bağlantısını etkileyen veya Windows sanal masaüstü kiracınızı yönetme özelliği ile ilgili önemli sorunlar hakkında bildirim alın.
+- **Durum danışmanlık:** Dikkat etmeniz gereken bildirimleri alın. Aşağıda bu tür bir bildirime örnek verilmiştir:
+    - Sanal makineler (VM) açık bağlantı noktası 3389 olarak güvenli yapılandırılmamış
+    - İşlevin kullanımdan kaldırılması
 
 ### <a name="configure-service-alerts"></a>Hizmet uyarılarını yapılandırma
 
 Hizmet uyarılarını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-2. **Hizmet Durumu'nun** durumunu seçin.
-3. Uyarılarınızı ve bildirimlerinizi ayarlamak için [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturun'daki](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) yönergeleri kullanın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. **Hizmet durumunu seçin.**
+3. Uyarı ve bildirimlerinizi ayarlamak için [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) ' daki yönergeleri kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Windows Sanal Masaüstü için hizmet sorunlarını ve sistem durumu danışma belgelerini izlemek için Azure Hizmet Durumu'nun nasıl ayarlanıp kullanılacağını öğrendiniz. Windows Sanal Masaüstü'nde nasıl oturum açabilirsiniz hakkında bilgi edinmek için Windows Sanal Masaüstü Nasıl Yap'a Bağlan'a devam edin.
+Bu öğreticide, Windows sanal masaüstü için hizmet sorunlarını ve sistem durumu belgelerini izlemek üzere Azure hizmet durumunu ayarlamayı ve kullanmayı öğrendiniz. Windows sanal masaüstü 'nde oturum açma hakkında bilgi edinmek için Windows sanal masaüstü nasıl yapılır-TOS ' a bağlanma konusuna geçin.
 
 > [!div class="nextstepaction"]
-> [Windows 7 ve Windows 10'da Uzak Masaüstü istemcisine bağlanma](./connect-windows-7-and-10.md)
+> [Windows 7 ve Windows 10 ' da uzak masaüstü istemcisine bağlanma](./connect-windows-7-and-10.md)

@@ -1,47 +1,47 @@
 ---
-title: Öğretici - CLI kullanarak Azure'da SAP HANA DB yedeklemesi
-description: Bu eğitimde, Azure VM'de çalışan SAP HANA veritabanlarını Azure CLI'yi kullanarak Azure Yedekleme Kurtarma Hizmetleri kasasına nasıl yedekleyeceğimiz öğrenin.
+title: Öğretici-CLı kullanarak Azure 'da DB yedeklemesini SAP HANA
+description: Bu öğreticide, Azure CLı kullanarak bir Azure VM üzerinde çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78206631"
 ---
-# <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLI kullanarak SAP HANA veritabanlarını Azure VM'de yedekleme
+# <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure VM 'de SAP HANA veritabanlarını yedekleme
 
-Azure CLI, Komut Satırı'ndan veya komut dosyaları aracılığıyla Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu dokümantasyon, bir SAP HANA veritabanını nasıl yedekleyeceğimiz ve tümü Azure CLI kullanarak isteğe bağlı yedeklemeleri nasıl tetikleyeceğimiz hakkında ayrıntılı bilgi sağlar. Bu adımları [Azure portalını](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)kullanarak da gerçekleştirebilirsiniz.
+Azure CLı, komut satırından veya betiklerden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu belgelerde, Azure CLı 'yi kullanarak bir SAP HANA veritabanını yedekleme ve isteğe bağlı yedeklemeleri tetikleme ayrıntıları yer alır. Ayrıca, [Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)kullanarak da bu adımları uygulayabilirsiniz.
 
-Bu belge, Azure VM'de zaten yüklü bir SAP HANA veritabanınız olduğunu varsayar. (Azure [CLI'yi kullanarak bir VM](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)de oluşturabilirsiniz). Bu eğitimin sonunda şunları yapabileceksiniz:
+Bu belgede zaten bir Azure VM 'de yüklü bir SAP HANA veritabanınız olduğunu varsaymaktadır. (Ayrıca, [Azure CLI kullanarak BIR VM oluşturabilirsiniz](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)). Bu öğreticinin sonunda şunları yapabileceksiniz:
 
 > [!div class="checklist"]
 >
 > * Kurtarma hizmetleri kasası oluşturma
-> * SAP HANA örneğini kaydedin ve veritabanı(lar) üzerinde keşfedin
-> * SAP HANA veritabanında yedeklemeyi etkinleştirme
-> * İsteğe bağlı yedeklemeyi tetikleme
+> * SAP HANA örneğini kaydedin ve üzerinde veritabanlarını bulun
+> * SAP HANA veritabanında yedeklemeyi etkinleştir
+> * İsteğe bağlı yedekleme tetikleyin
 
-Şu anda SAP HANA için [desteklediğimiz senaryolara](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support) göz atın.
+[Şu anda SAP HANA için desteklediğimiz senaryolara](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support) göz atın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yüklemek ve kullanmak için Azure CLI sürümünü xx.xxx.x veya daha sonra çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm xx. xxx. x veya üstünü çalıştırmanız gerekir. CLI sürümünü bulmak için şunu çalıştırın: `az --version`. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma hizmetleri kasası oluşturma
 
-Kurtarma Hizmetleri kasası, Azure VM'leri veya SQL veya HANA veritabanları gibi Azure VM'lerde çalışan iş yükleri gibi her korumalı kaynağın yedekleme verilerini depolayan mantıksal bir kapsayıcıdır. Koruma altındaki bir kaynak için yedekleme işi çalıştığında Kurtarma Hizmetleri kasasının içinde bir kurtarma noktası oluşturulur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz.
+Kurtarma Hizmetleri Kasası, Azure VM 'Leri ya da SQL veya HANA veritabanları gibi Azure VM 'lerde çalışan iş yükleri gibi korunan her kaynak için yedekleme verilerini depolayan bir mantıksal kapsayıcıdır. Koruma altındaki bir kaynak için yedekleme işi çalıştığında Kurtarma Hizmetleri kasasının içinde bir kurtarma noktası oluşturulur. Daha sonra bu kurtarma noktalarından birini kullanarak verileri dilediğiniz zaman geri yükleyebilirsiniz.
 
-[az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az-backup-vault-create) komutuyla bir Kurtarma Hizmetleri kasası oluşturun. Korumak istediğiniz sanal makineyle aynı kaynak grubunu ve konumu belirtin. Bu [VM hızlı başlatma](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)ile Azure CLI'yi kullanarak nasıl bir VM oluşturabilirsiniz öğrenin.
+[az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az-backup-vault-create) komutuyla bir Kurtarma Hizmetleri kasası oluşturun. Korumak istediğiniz sanal makineyle aynı kaynak grubunu ve konumu belirtin. Bu [VM hızlı](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)başlangıcı Ile Azure CLI kullanarak sanal makine oluşturmayı öğrenin.
 
-Bu öğretici için aşağıdakileri kullanacağız:
+Bu öğreticide, aşağıdakileri kullanacağız:
 
-* *saphanaResourceGroup* adlı bir kaynak grubu
-* *saphanaVM* adlı bir VM
-* *westus2* konumunda kaynaklar.
+* *Saphanaresourcegroup* adlı bir kaynak grubu
+* *Saphanavm* ADLı bir VM
+* *westus2* konumundaki kaynaklar.
 
-*SaphanaVault*adında bir kasa yaratacağız.
+*Saphanavault*adlı bir kasa oluşturacağız.
 
 ```azurecli-interactive
 az backup vault create --resource-group saphanaResourceGroup \
@@ -49,7 +49,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-Varsayılan olarak Kurtarma Hizmetleri kasasında Coğrafi Olarak Yedekli depolama özelliği etkindir. Coğrafi Olarak Yedekli depolama, yedeklenen verilerinizin birincil bölgeden yüzlerce kilometre uzaktaki ikincil bir Azure bölgesinde çoğaltılmasını sağlar. Depolama artıklığı ayarını değiştirilmesi gerekiyorsa, az [yedekleme tonoz yedekleme özellikleri cmdlet ayarlayın](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) kullanın.
+Varsayılan olarak Kurtarma Hizmetleri kasasında Coğrafi Olarak Yedekli depolama özelliği etkindir. Coğrafi Olarak Yedekli depolama, yedeklenen verilerinizin birincil bölgeden yüzlerce kilometre uzaktaki ikincil bir Azure bölgesinde çoğaltılmasını sağlar. Depolama artıklığı ayarının değiştirilmesi gerekiyorsa, [az Backup Kasası Backup-Properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) cmdlet 'ini kullanın.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -58,7 +58,7 @@ az backup vault backup-properties set \
     --backup-storage-redundancy "LocallyRedundant/GeoRedundant"
 ```
 
-Kasanızın başarıyla oluşturulıp oluşturulmadısını görmek için [az yedek kasa listesi](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-list) cmdlet'i kullanın. Aşağıdaki yanıtı görürsünüz:
+Kasanızın başarıyla oluşturulduğunu görmek için [az Backup kasa listesi](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-list) cmdlet 'ini kullanın. Aşağıdaki yanıtı görürsünüz:
 
 ```output
 Location   Name             ResourceGroup
@@ -66,11 +66,11 @@ Location   Name             ResourceGroup
 westus2    saphanaVault     saphanaResourceGroup
 ```
 
-## <a name="register-and-protect-the-sap-hana-instance"></a>SAP HANA örneğini kaydedin ve koruyun
+## <a name="register-and-protect-the-sap-hana-instance"></a>SAP HANA örneğini kaydetme ve koruma
 
-Azure hizmetleri tarafından keşfedilecek SAP HANA örneğinin (üzerinde SAP HANA yüklü VM) bulunması için SAP HANA makinesinde bir [ön kayıt komut dosyasının](https://aka.ms/scriptforpermsonhana) çalıştırılması gerekir. Komut dosyasını çalıştırmadan önce tüm [ön koşulların](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) karşılandıkktan emin olun. Komut dosyasının ne yaptığı hakkında daha fazla bilgi edinmek [için, ön kayıt komut dosyasının ne yaptığı bölümüne](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) bakın.
+Azure hizmetleri tarafından keşfedilecek SAP HANA örneği (üzerinde SAP HANA yüklü VM) için, SAP HANA makinesinde bir [ön kayıt betiği](https://aka.ms/scriptforpermsonhana) çalıştırılmalıdır. Betiği çalıştırmadan önce tüm [önkoşulların](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) karşılandığından emin olun. Betiğin ne yaptığı hakkında daha fazla bilgi edinmek için, [ön kayıt betiğinin ne yaptığını](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) bölümüne bakın.
 
-Komut dosyası çalıştırıladıktan sonra, SAP HANA örneği daha önce oluşturduğumuz kurtarma hizmetleri kasasına kaydedilebilir. Örneği kaydetmek için [az yedekleme kapsayıcı sıcağı cmdlet'i](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) kullanın. *VMResourceId,* SAP HANA'yı yüklemek için oluşturduğunuz VM'nin kaynak kimliğidir.
+Betik çalıştırıldıktan sonra, SAP HANA örneği daha önce oluşturduğumuz kurtarma hizmetleri kasasıyla kaydedilebilir. Örneği kaydetmek için [az Backup Container Register](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) cmdlet 'ini kullanın. *Vmresourceıd* , SAP HANA yüklemek için oluşturduğunuz sanal makınenın kaynak kimliğidir.
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \
@@ -82,11 +82,11 @@ az backup container register --resource-group saphanaResourceGroup \
 ```
 
 >[!NOTE]
->VM kasayla aynı kaynak grubunda değilse, *saphanaResourceGroup* kasanın oluşturulduğu kaynak grubunu ifade eder.
+>VM, kasala aynı kaynak grubunda değilse, *Saphanaresourcegroup* , kasanın oluşturulduğu kaynak grubunu belirtir.
 
-SAP HANA örneğini kaydetmek, tüm geçerli veritabanlarını otomatik olarak keşfeder. Ancak, gelecekte ekleyebilecek yeni veritabanlarını keşfetmek için kayıtlı SAP HANA örnek bölümüne [eklenen Yeni Veritabanlarını Bulma bölümüne](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance) bakın.
+SAP HANA örneğinin kaydedilmesi, tüm geçerli veritabanlarını otomatik olarak bulur. Bununla birlikte, gelecekte eklenebilecek yeni veritabanlarını bulmak için, [kayıtlı SAP HANA örneği bölümüne eklenen yeni veritabanlarının keşfedilmesine](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance) bakın.
 
-SAP HANA örneğinin kasanıza başarıyla kaydedilip kaydedilemeip kaydedilemeylistesini kontrol etmek için [az yedekleme konteyner listesi](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) cmdlet'i kullanın. Aşağıdaki yanıtı görürsünüz:
+SAP HANA örneğinin kasaya başarıyla kaydedilip kaydedilmediği kontrol etmek için [az Backup Container List](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) cmdlet 'ini kullanın. Aşağıdaki yanıtı görürsünüz:
 
 ```output
 Name                                                    Friendly Name    Resource Group        Type           Registration Status
@@ -95,11 +95,11 @@ VMAppContainer;Compute;saphanaResourceGroup;saphanaVM   saphanaVM        saphana
 ```
 
 >[!NOTE]
-> Yukarıdaki çıktıdaki "ad" sütunu kapsayıcı adını ifade eder. Bu kapsayıcı adı, yedeklemeleri etkinleştirmek ve tetiklemek için sonraki bölümlerde kullanılacaktır. Bu durumda, *VMAppContainer olduğunu; Bilgi işlem;saphanaResourceGroup;saphanaVM*.
+> Yukarıdaki çıktıda "Name" sütunu, kapsayıcı adına başvurur. Bu kapsayıcı adı, yedeklemeleri etkinleştirmek ve onları tetiklemek için sonraki bölümlerde kullanılacaktır. Bu durumda, *Vmappcontainer; Compute; saphanaResourceGroup; saphanaVM*.
 
-## <a name="enable-backup-on-sap-hana-database"></a>SAP HANA veritabanında yedeklemeyi etkinleştirme
+## <a name="enable-backup-on-sap-hana-database"></a>SAP HANA veritabanında yedeklemeyi etkinleştir
 
-[Az yedekleme korumalı madde listesi](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet, önceki adımda kaydettiğiniz SAP HANA örneğinde bulunan tüm veritabanlarını listeler.
+[Az Backup korunabilir-Item List](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 'i, önceki adımda kaydettiğiniz SAP HANA örneğinde bulunan tüm veritabanlarını listeler.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -108,7 +108,7 @@ az backup protectable-item list --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Yedeklemek istediğiniz veritabanını bu listede aşağıdaki gibi görüneceğiniz şekilde bulmanız gerekir:
+Bu listede yedeklemek istediğiniz veritabanını bulmanız gerekir, bu, aşağıdaki gibi görünür:
 
 ```output
 Name                           Protectable Item Type    ParentName    ServerName    IsProtected
@@ -118,9 +118,9 @@ saphanadatabase;hxe;systemdb   SAPHanaDatabase          HXE           hxehost   
 saphanadatabase;hxe;hxe        SAPHanaDatabase          HXE           hxehost       NotProtected
 ```
 
-Yukarıdaki çıktıdan da görebileceğiniz gibi SAP HANA sisteminin SID'si HXE'dir. Bu öğreticide, *saphanadatabase;hxe;hxe* veritabanı için yedeklemeyi yapılandıracağız ve *hxeserver* sunucusunda bulunur.
+Yukarıdaki çıktıdan görebileceğiniz gibi SAP HANA sisteminin SID 'SI HXE olur. Bu öğreticide, *hxehost* sunucusunda bulunan *saphanadatabase; hxe; hxe* veritabanı için yedeklemeyi yapılandıracağız.
 
-Yedeklemeyi bir veritabanında korumak ve yapılandırmak [için, az yedekleme koruma enable-for-azurewl](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl) cmdlet'i kullanırız. Kullanmak istediğiniz ilkenin adını sağlayın. CLI kullanarak bir ilke oluşturmak için [az yedekleme ilkesi oluşturmak](https://docs.microsoft.com//cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) cmdlet kullanın. Bu öğretici için, *sapahanaPolicy* politikasını kullanacağız.
+Tek seferde bir veritabanında yedeklemeyi korumak ve yapılandırmak için [az Backup Protection Enable-for-azurewl](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl) cmdlet 'ini kullanırız. Kullanmak istediğiniz ilkenin adını belirtin. CLı kullanarak ilke oluşturmak için [az Backup Policy Create](https://docs.microsoft.com//cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) cmdlet 'ini kullanın. Bu öğreticide, *Sapahanapolicy* ilkesini kullanacağız.
 
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
@@ -132,7 +132,7 @@ az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Yukarıdaki yedekleme yapılandırması [az yedekleme iş listesi](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet kullanarak tamamlanmış olup olmadığını kontrol edebilirsiniz. Çıktı aşağıdaki gibi görüntülenir:
+Yukarıdaki yedekleme yapılandırmasının, [az Backup Job List](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 'ini kullanarak tamamlandığını kontrol edebilirsiniz. Çıktı aşağıdaki gibi görüntülenir:
 
 ```output
 Name                                  Operation         Status     Item Name   Start Time UTC
@@ -140,14 +140,14 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-[Az yedekleme iş listesi](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet, kayıt, yapılandırma, yedekleme verilerini silme vb. gibi diğer işlemlere ek olarak, korumalı veritabanında çalışan veya şu anda çalışmakta olan tüm yedekleme işlerini (planlanmış veya isteğe bağlı) listeler.
+[Az Backup Job List](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet 'i, korunan veritabanında çalışan veya çalışmakta olan tüm yedekleme işlerini (zamanlanmış veya isteğe bağlı) listeler; Kaydet, yedeklemeyi yapılandırma, yedekleme verilerini silme gibi diğer işlemlere ek olarak.
 
-## <a name="trigger-an-on-demand-backup"></a>İsteğe bağlı yedeklemeyi tetikleme
+## <a name="trigger-an-on-demand-backup"></a>İsteğe bağlı yedekleme tetikleyin
 
-Yukarıdaki bölümde zamanlanmış bir yedeklemenin nasıl yapılandırılabildiğini ayrıntılarıyla anlatırken, bu bölüm isteğe bağlı yedeklemeyi tetiklemekten bahseder. Bunu yapmak için, [az yedekleme yedekleme-şimdi](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now) cmdlet kullanın.
+Yukarıdaki bölümde zamanlanmış bir yedeklemenin nasıl yapılandırılacağı ayrıntılandığında, bu bölüm isteğe bağlı bir yedeklemenin tetiklenmesi ile ilgilidir. Bunu yapmak için [az Backup Protection Backup-Now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now) cmdlet 'ini kullanırız.
 
 >[!NOTE]
-> İsteğe bağlı yedeklemenin bekletme ilkesi, veritabanı için temel bekletme ilkesi tarafından belirlenir.
+> İsteğe bağlı bir yedeklemenin bekletme ilkesi, veritabanı için temeldeki bekletme ilkesine göre belirlenir.
 
 ```azurecli-interactive
 az backup protection backup-now --resource-group saphanaResourceGroup \
@@ -167,15 +167,15 @@ Name                                  ResourceGroup
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-Yanıt size iş adını verecektir. Bu iş adı [az yedekleme iş gösterisi](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet kullanarak iş durumunu izlemek için kullanılabilir.
+Yanıt size iş adı verecektir. Bu iş adı, [az Backup Job Show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 'ini kullanarak iş durumunu izlemek için kullanılabilir.
 
 >[!NOTE]
->Tam veya diferansiyel yedekleme zamanlamaya ek olarak, bunlar şu anda el ile de tetiklenebilir. Günlük yedeklemeleri otomatik olarak tetiklenir ve SAP HANA tarafından dahili olarak yönetilir.
+>Tam veya değişiklik yedeklemesi zamanlamaya ek olarak, şu anda el ile de tetiklenebilir. Günlük yedeklemeleri, SAP HANA tarafından dahili olarak otomatik olarak tetiklenir ve yönetilir.
 >
-> Artımlı yedeklemeler şu anda Azure Yedekleme tarafından desteklenmez.
+> Artımlı yedeklemeler Şu anda Azure Backup tarafından desteklenmemektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* CLI kullanarak Azure VM'de bir SAP HANA veritabanını nasıl geri yükleyeceğimi öğrenmek için öğreticiye devam edin – [CLI kullanarak Azure VM'de bir SAP HANA veritabanını geri yükleme](tutorial-sap-hana-restore-cli.md)
+* CLı kullanarak Azure VM 'de bir SAP HANA veritabanını geri yükleme hakkında bilgi edinmek için bkz. [CLI kullanarak Azure VM 'de bir SAP HANA veritabanını geri yükleme](tutorial-sap-hana-restore-cli.md)
 
-* Azure portalLarını kullanarak Azure VM'de çalışan bir SAP HANA veritabanını nasıl yedekleyeceğimi öğrenmek için Azure [VM'lerinde BIR SAP HANA veritabanlarını yedeklemeye](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database) bakın
+* Azure portal kullanarak Azure VM 'de çalışan bir SAP HANA veritabanını nasıl yedekleyeceğinizi öğrenmek için bkz. [Azure VM 'lerinde SAP HANA veritabanları yedekleme](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)

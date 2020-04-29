@@ -1,16 +1,16 @@
 ---
-title: Azure PowerShell komut dosyası örneği - Yönetilen bir uygulamayı dağıtma
-description: Aboneye yönetilen bir uygulama tanımı dağıtan Azure PowerShell örnek komut dosyası örneği sağlar.
+title: Azure PowerShell betik örneği-yönetilen bir uygulama dağıtma
+description: ', Bir yönetilen uygulama tanımını aboneliğe dağıtan Azure PowerShell örnek betik örneği sağlar.'
 author: tfitzmac
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: e076128a5be453028635b1657bf3f90980863148
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650173"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>PowerShell ile bir hizmet kataloğu için yönetilen bir uygulama dağıtma
@@ -33,7 +33,7 @@ Bu betik, yönetilen uygulamayı dağıtmak için aşağıdaki komutu kullanır.
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Yönetilen uygulama oluşturur. Şablonun tanım kimliğini ve parametrelerini sağlar. |
+| [New-Azmanagedadpplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Yönetilen uygulama oluşturur. Şablonun tanım kimliğini ve parametrelerini sağlar. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

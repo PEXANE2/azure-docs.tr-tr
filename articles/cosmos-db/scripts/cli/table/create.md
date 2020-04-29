@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB için Tablo API tablosu oluşturma
-description: Azure Cosmos DB için Tablo API tablosu oluşturma
+title: Azure Cosmos DB için Tablo API'si tablosu oluşturma
+description: Azure Cosmos DB için Tablo API'si tablosu oluşturma
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 9/25/2019
 ms.openlocfilehash: aea0697471d62e5119bbeea6a618c6e962983054
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71275482"
 ---
-# <a name="create-an-azure-cosmos-table-api-account-and-table-using-azure-cli"></a>Azure CLI'yi kullanarak Bir Azure Cosmos Table API hesabı ve tablosu oluşturun
+# <a name="create-an-azure-cosmos-table-api-account-and-table-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos Tablo API'si hesabı ve tablosu oluşturma
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu konu Azure CLI sürümünü 2.0.73 veya daha yeni çalıştırdığınızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.0.73 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -40,11 +40,11 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB hesabı oluşturur. |
-| [az cosmosdb tablo oluşturmak](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Azure Cosmos Table API tablosu oluşturur. |
+| [az cosmosdb Table Create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Azure Cosmos Tablo API'si tablosu oluşturur. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB CLI hakkında daha fazla bilgi için [Azure Cosmos DB CLI belgelerine](/cli/azure/cosmosdb)bakın.
+CLı Azure Cosmos DB hakkında daha fazla bilgi için bkz. [Azure Cosmos DB CLI belgeleri](/cli/azure/cosmosdb).
 
-Tüm Azure Cosmos DB CLI komut dosyası örnekleri [Azure Cosmos DB CLI GitHub Deposu'nda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.
+Tüm Azure Cosmos DB CLı betiği örnekleri [Azure Cosmos DB CLI GitHub deposunda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.

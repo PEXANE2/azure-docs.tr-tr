@@ -1,20 +1,20 @@
 ---
-title: 'Bir Kubernetes dev alan oluşturun: Visual Studio & .NET Core'
+title: 'Kubernetes geliştirme alanı oluşturma: Visual Studio & .NET Core'
 services: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Bu öğretici, Azure Kubernetes Hizmeti'nde bir .NET Core uygulamasını hata ayıklamak ve hızla doğrulamak için Azure Dev Spaces ve Visual Studio'yu nasıl kullanacağınızı gösterir
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s
+description: Bu öğreticide, Azure Kubernetes hizmetinde bir .NET Core uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75770722"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Bir Kubernetes dev alanı oluşturun: Visual Studio ve .NET Core ile Azure Dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes geliştirme alanı oluşturma: Azure Dev Spaces Visual Studio ve .NET Core
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -24,7 +24,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 - Kodunuzu bir ekip ortamında verimli bir şekilde geliştirip test edin.
 
 > [!Note]
-> Herhangi bir zamanda **sıkışıp kalırsanız,** [Sorun Giderme](troubleshooting.md) bölümüne bakın.
+> Herhangi bir zamanda **takıldıysanız** , [sorun giderme](troubleshooting.md) bölümüne bakın.
 
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces için bir Kubernetes kümesi oluşturma
@@ -32,9 +32,9 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 1. **Kaynak oluştur**’u seçin > **Kubernetes** ifadesini arayın > **Kubernetes Hizmeti** > **Oluştur** seçeneğini belirleyin.
 
-   *Kubernetes Oluştur küme* formunun her başlığı altında aşağıdaki adımları tamamlayın ve seçtiğiniz [bölgenin Azure Dev Alanları'nı desteklediğini][supported-regions]doğrulayın.
+   *Kubernetes kümesi oluşturma* formunun her başlığı altında aşağıdaki adımları tamamlayarak seçtiğiniz [bölgenin Azure dev Spaces desteklediğini][supported-regions]doğrulayın.
 
-   - **PROJE AYRINTILARI**: Bir Azure aboneliği ve yeni veya varolan bir Azure kaynak grubu seçin.
+   - **Proje ayrıntıları**: bir Azure aboneliği ve yeni veya mevcut bir Azure Kaynak grubu seçin.
    - **KÜME AYRINTILARI**: AKS kümesi için bir ad, bölge, sürüm ve DNS adı öneki girin.
    - **ÖLÇEK**: AKS aracısı düğümleri için bir VM boyutu ve düğüm sayısı seçin. Azure Dev Spaces kullanmaya yeni başlıyorsanız tüm özellikleri keşfetmek için bir düğüm yeterli olacaktır. Küme dağıtıldıktan sonra da dilediğiniz zaman düğüm sayısını kolayca ayarlayabilirsiniz. AKS kümesi oluşturulduktan sonra VM boyutunu değiştiremeyeceğinizi unutmayın. Ancak ölçeklendirmeniz gerekirse AKS kümesi dağıtıldıktan sonra kolayca daha büyük VM'lere sahip yeni bir AKS kümesi oluşturabilir ve Dev Spaces özelliğini kullanarak bu büyük kümeye yeniden dağıtabilirsiniz.
 
@@ -50,15 +50,15 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 1. **Gözden geçir + oluştur**’u seçin ve sonra tamamlandığında **Oluştur**’a tıklayın.
 
 ## <a name="get-the-visual-studio-tools"></a>Visual Studio araçlarını edinme
-[Visual Studio'nun](https://www.visualstudio.com/vs/)en son sürümünü yükleyin. Windows'daki Visual Studio 2019 için Azure Geliştirme iş yükünü yüklemeniz gerekir. Windows'daki Visual Studio 2017 için ASP.NET ve web geliştirme iş yükünün yanı sıra [Kubernetes için Visual Studio Araçlarını](https://aka.ms/get-azds-visualstudio)da yüklemeniz gerekir.
+[Visual Studio](https://www.visualstudio.com/vs/)'nun en son sürümünü yükler. Windows üzerinde Visual Studio 2019 için Azure geliştirme iş yükünü yüklemeniz gerekir. Windows üzerinde Visual Studio 2017 için, ASP.NET ve Web geliştirme iş yükünün yanı sıra [Kubernetes için Visual Studio Araçları](https://aka.ms/get-azds-visualstudio)yüklemeniz gerekir.
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Kapsayıcıda çalışan bir web uygulaması oluşturma
 
-Bu bölümde, bir ASP.NET Core web uygulaması oluşturacak ve Kubernetes'teki bir kapta çalıştıracaksınız.
+Bu bölümde, bir ASP.NET Core Web uygulaması oluşturacak ve Kubernetes içindeki bir kapsayıcıda çalışmaya başlayacaksınız.
 
 ### <a name="create-an-aspnet-web-app"></a>ASP.NET web uygulaması oluşturma
 
-Visual Studio içinden yeni bir proje oluşturun. Şu anda, projenin bir **ASP.NET Core Web Uygulaması** olması gerekir. Proje '**webfrontend**'.
+Visual Studio içinden yeni bir proje oluşturun. Şu anda, projenin bir **ASP.NET Core Web Uygulaması** olması gerekir. Projeyi '**webön uç**' olarak adlandırın.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
@@ -86,10 +86,10 @@ Azure Dev Spaces ile çalışacak şekilde etkinleştirilmemiş bir küme seçer
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-**Tamam'ı**seçin.
+**Tamam ' ı**seçin.
 
 > [!IMPORTANT]
-> Azure Dev Spaces yapılandırma işlemi `azds` varsa kümedeki ad alanını kaldırır.
+> Azure Dev Spaces yapılandırma işlemi, varsa, kümedeki `azds` ad alanını kaldırır.
 
  Bunu gerçekleştirmek için bir arka plan görevi başlatılır. Tamamlanması birkaç dakika sürer. Oluşturma işleminin devam edip etmediğini görmek için, aşağıdaki görüntüde gösterildiği gibi işaretçinizi durum çubuğunun sol alt köşesindeki **Arka plan görevleri** simgesinin üzerine getirin.
 
@@ -123,7 +123,7 @@ Azure Dev Spaces yalnızca kodu Kubernetes’te çalıştırmaya yönelik değil
 ### <a name="update-a-content-file"></a>İçerik dosyası güncelleştirme
 
 
-1. `./Views/Home/Index.cshtml` dosyasını bulun ve HTML dosyasında bir düzenleme yapın. Örneğin, aşağıdaki gibi bir şekilde [okuyan satır 73'i değiştirin: `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) 
+1. `./Views/Home/Index.cshtml` dosyasını bulun ve HTML dosyasında bir düzenleme yapın. Örneğin, aşağıdakine benzer bir şekilde [ `<h2>Application uses</h2>` okunan satır 73](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) ' i değiştirin: 
   
     ```html
     <h2>Hello k8s in Azure!</h2>`

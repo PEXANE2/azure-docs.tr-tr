@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:`Azure Cosmos DB 'ye erişmek için yönetilen bir kimlik kullanma - Linux - Azure AD
+title: Öğretici`:`Azure Cosmos DB erişmek için yönetilen bir kimlik kullanma-Linux-Azure AD
 description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Cosmos DB'ye erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78248273"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB'ye erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
@@ -55,7 +55,7 @@ Henüz Cosmos DB hesabınız yoksa, bir hesap oluşturun. Bu adımı atlayabilir
 3. Cosmos DB hesabı için daha sonra kullanacağınız bir **Kimlik** girin.  
 4. **API** olarak "SQL" ayarlanmalıdır. Bu öğreticide açıklanan yaklaşım varolan diğer API türleriyle kullanılabilir, ama bu öğreticideki adımlar SQL API'ye yöneliktir.
 5. **Abonelik** ve **Kaynak Grubu** değerlerinin, önceki adımda VM'nizi oluştururken belirttiklerinizle eşleştiğinden emin olun.  Cosmos DB'nin kullanılabileceği **Konum**'u seçin.
-6. **Oluştur'u**tıklatın.
+6. **Oluştur**' a tıklayın.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Cosmos DB hesabında koleksiyon oluşturma
 
@@ -67,7 +67,7 @@ Ardından, Cosmos DB hesabına sonraki adımlarda sorgulayabileceğiniz bir veri
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>Linux VM sistem tarafından atanan yönetilen kimliğinin `principalID` değerini alma
 
-Aşağıdaki bölümde Kaynak Yöneticisi'nden Cosmos DB hesabı erişim anahtarlarına erişim elde etmek için, Linux VM sistem tarafından atanan yönetilen kimliğinin `principalID` değerini almanız gerekir.  VM'nizin `<SUBSCRIPTION ID>` `<RESOURCE GROUP>` bulunduğu kaynak grubunu ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirdiğinizden emin olun.
+Aşağıdaki bölümde Kaynak Yöneticisi'nden Cosmos DB hesabı erişim anahtarlarına erişim elde etmek için, Linux VM sistem tarafından atanan yönetilen kimliğinin `principalID` değerini almanız gerekir.  `<SUBSCRIPTION ID>`' I `<RESOURCE GROUP>` (sanal makinenizin bulunduğu kaynak grubu) ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirdiğinizden emin olun.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
@@ -88,7 +88,7 @@ Yanıt, sistem tarafından atanan yönetilen kimliğin ayrıntılarını içerir
 
 Cosmos DB Azure AD kimlik doğrulamayı yerel olarak desteklemez. Bununla birlikte, Kaynak Yöneticisi'nden Cosmos DB erişim anahtarını almak için bir yönetilen kimliği kullanabilir ve ardından anahtarı kullanarak Cosmos DB'ye erişebilirsiniz. Bu adımda, sistem tarafından atanan yönetilen kimliğinize Cosmos DB hesabının anahtarları için erişim verirsiniz.
 
-Azure CLI kullanarak Azure Resource Manager'da Cosmos DB hesabına sistem tarafından atanan yönetilen kimliği erişimi vermek için, `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` ve `<COSMOS DB ACCOUNT NAME>` değerlerini ortamınıza uygun olarak güncelleştirin. Linux `<MI PRINCIPALID>` VM'nin `az resource show` MI'sinin principalID'ini al komutuyla döndürülen `principalId` özelliği değiştirin.  Cosmos DB, erişim anahtarları kullanılırken iki ayrıntı düzeyini destekler: hesaba okuma/yazma erişimi ve hesaba salt okuma erişimi.  Hesap için okuma/yazma anahtarları almak istiyorsanız `DocumentDB Account Contributor` rolünü veya hesap için salt okuma anahtarları almak istiyorsanız `Cosmos DB Account Reader Role` rolünü atayın:
+Azure CLI kullanarak Azure Resource Manager'da Cosmos DB hesabına sistem tarafından atanan yönetilen kimliği erişimi vermek için, `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` ve `<COSMOS DB ACCOUNT NAME>` değerlerini ortamınıza uygun olarak güncelleştirin. Linux `<MI PRINCIPALID>` VM 'Sinin `principalId` PrincipalId 'sini alma `az resource show` bölümünde komut tarafından döndürülen özelliği ile değiştirin.  Cosmos DB, erişim anahtarları kullanılırken iki ayrıntı düzeyini destekler: hesaba okuma/yazma erişimi ve hesaba salt okuma erişimi.  Hesap için okuma/yazma anahtarları almak istiyorsanız `DocumentDB Account Contributor` rolünü veya hesap için salt okuma anahtarları almak istiyorsanız `Cosmos DB Account Reader Role` rolünü atayın:
 
 ```azurecli-interactive
 az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"

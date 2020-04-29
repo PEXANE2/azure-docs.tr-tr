@@ -1,5 +1,5 @@
 ---
-title: PHP'den Azure Depolama Tablosu hizmetini veya Azure Cosmos DB Tablo API'yi kullanma
+title: PHP 'den Azure Storage tablo hizmeti veya Azure Cosmos DB Tablo API'si kullanma
 description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
 author: sakash279
 ms.author: akshanka
@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76771064"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP’den Azure Depolama Tablo hizmeti veya Azure Cosmos DB Tablo API'sini kullanma
@@ -140,7 +140,7 @@ catch(ServiceException $e){
 Tablo adlarındaki kısıtlamalar hakkında daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama][table-data-model].
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
-Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity**’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlıktaki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi performans gösterir.) Bölüm `RowKey` içindeki bir varlığın benzersiz kimliğidir.
+Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity**’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlık üzerindeki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi gerçekleştirilir.) , `RowKey` Bir bölüm içindeki bir VARLıĞıN benzersiz kimliğidir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -314,7 +314,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Varlık özellikleri alt kümesi alma
-Bir sorgu, varlık özelliklerinin bir alt kümesini alabilir. *Projeksiyon*adı verilen bu teknik, bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını artırabilir. Alınacak bir özelliği belirtmek için özelliğin adını **Query > addSelectField** yöntemine geçirin. Daha fazla özellik eklemek için bu yöntemi birden çok kez çağırabilirsiniz. **TableRestProxy -> queryEntities**’i yürüttükten sonra, döndürülen varlıklar yalnızca seçilen özelliklere sahip olur. (Tablo varlıklarının bir alt kümesini döndürmek istiyorsanız yukarıda gösterildiği gibi bir filtre sorgusu kullanın.)
+Bir sorgu, varlık özelliklerinin bir alt kümesini alabilir. *Projeksiyon*olarak adlandırılan bu teknik, bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Alınacak bir özelliği belirtmek için özelliğin adını **Query > addSelectField** yöntemine geçirin. Daha fazla özellik eklemek için bu yöntemi birden çok kez çağırabilirsiniz. **TableRestProxy -> queryEntities**’i yürüttükten sonra, döndürülen varlıklar yalnızca seçilen özelliklere sahip olur. (Tablo varlıklarının bir alt kümesini döndürmek istiyorsanız yukarıda gösterildiği gibi bir filtre sorgusu kullanın.)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -505,7 +505,7 @@ Artık Tablo hizmeti ve Azure Cosmos DB’ye ilişkin temel bilgileri öğrendin
 
 * [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.
 
-* [PHP Geliştirici Merkezi](https://azure.microsoft.com/develop/php/).
+* [Php Geliştirici Merkezi](https://azure.microsoft.com/develop/php/).
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: https://php.net/require_once

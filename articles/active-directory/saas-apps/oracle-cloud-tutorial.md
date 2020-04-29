@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Oracle Cloud Altyapı Konsolu ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Oracle Cloud Infrastructure Console arasında tek oturum açma işlemlerini nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Oracle Cloud Infrastructure konsolu ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Oracle bulut altyapısı konsolu arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,211 +16,211 @@ ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64cae5812a380725d612d27190042797542ee255
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76289110"
 ---
-# <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Öğretici: Oracle Cloud Altyapı Konsolu'nun Azure Active Directory ile tümleştirin
+# <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Öğretici: Oracle bulut altyapısı konsolunu Azure Active Directory ile tümleştirme
 
-Bu eğitimde, Oracle Cloud Infrastructure Console ile Azure Active Directory (Azure AD) ile nasıl entegre edeceğinizi öğreneceksiniz. Oracle Cloud Infrastructure Console'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Oracle bulut altyapısı konsolunu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Oracle bulut altyapısı konsolunu Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Oracle Cloud Infrastructure Console erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Oracle Cloud Infrastructure Console'da otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de Oracle bulut altyapısı konsoluna erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Oracle bulut altyapısı konsoluna otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Oracle Cloud Infrastructure Console tek oturum açma (SSO) özellikli abonelik.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Oracle Cloud Infrastructure konsolu çoklu oturum açma (SSO) aboneliği etkin.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Oracle Cloud Infrastructure **Console, SP** tarafından başlatılan SSO'ya destek veriyor.
-* Oracle Cloud Infrastructure Console'u yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri Koşullu Erişim'den itibaren genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Oracle bulut altyapısı Konsolu **SP** tarafından başlatılan SSO 'yu destekler.
+* Oracle bulut altyapısı konsolunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimlerini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>Galeriden Oracle Cloud Infrastructure Console ekleme
+## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>Galeriden Oracle bulut altyapısı konsolunu ekleme
 
-Oracle Cloud Infrastructure Console'un Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Oracle Cloud Infrastructure Console eklemeniz gerekir.
+Oracle bulut altyapısı konsolunun tümleştirmesini Azure AD ile yapılandırmak için, Galeriden Oracle bulut altyapısı konsolunu yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Oracle Bulut Altyapı Konsolu** yazın.
-1. Sonuç panelinden **Oracle Cloud Infrastructure Console'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Oracle Cloud Infrastructure konsolunu** yazın.
+1. Sonuçlar panelinden **Oracle bulut altyapısı konsolunu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'sunu Oracle Cloud Infrastructure Console ile **B. Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Oracle Cloud Infrastructure Console'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Oracle bulut altyapısı konsolu Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Oracle bulut altyapısı konsolundaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Oracle Cloud Infrastructure Console ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Oracle bulut altyapısı konsolu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD oturum açma'yı B. Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B. Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. Uygulama tarafındaki SSO ayarlarını yapılandırmak için **[Oracle Cloud Infrastructure Console'u yapılandırın.](#configure-oracle-cloud-infrastructure-console)**
-    1. Oracle Cloud Infrastructure Console'da B. Simon'ın, kullanıcının Azure REKLAM gösterimine bağlı bir muadili olması için **[Oracle Cloud Infrastructure Console test kullanıcısını oluşturun.](#create-oracle-cloud-infrastructure-console-test-user)**
-1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
+    1. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+    1. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
+1. Uygulama tarafında SSO ayarlarını yapılandırmak için **[Oracle bulut altyapı konsolu 'Nu yapılandırın](#configure-oracle-cloud-infrastructure-console)** .
+    1. Oracle bulut altyapısı konsolunda, kullanıcının Azure AD gösterimine bağlı olan B. Simon 'un bir karşılığı olacak şekilde **[Oracle Cloud Infrastructure konsol test kullanıcısı oluşturun](#create-oracle-cloud-infrastructure-console-test-user)** .
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. **Oracle Cloud Infrastructure Console** uygulama tümleştirme sayfasındaki Azure [portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve Tek **oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **Oracle Cloud Infrastructure konsolu** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sayfasında, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** sayfasında, aşağıdaki alanlar için değerleri girin:
 
    > [!NOTE]
-   > Hizmet Sağlayıcı meta veri dosyasını, öğreticinin **Yapılandırma Oracle Cloud Infrastructure Console Single Sign-On** bölümünden alırsınız.
+   > Hizmet sağlayıcı meta veri dosyasını, öğreticinin **Oracle bulut altyapı konsolu çoklu oturum açma bölümünde yapılandırma** bölümünden alacaksınız.
     
-   1. **Meta veri dosyalarını yükle'yi**tıklatın.
+   1. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
-   1. Meta veri dosyasını seçmek için **klasör logosuna** tıklayın ve **Yükle'yi**tıklatın.
+   1. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
 
-   1. Meta veri dosyası başarıyla yüklendikten sonra, **Tanımlayıcı** ve **YanıtURL** değerleri Temel **SAML Yapılandırması** bölümünde otomatik olarak doldurulur.
+   1. Meta veri dosyası başarıyla karşıya yüklendikten sonra **tanımlayıcı** ve **yanıt URL** değerleri, **temel SAML yapılandırması** bölüm metin kutusunda otomatik olarak doldurulur.
     
       > [!NOTE]
-      > **Tanımlayıcı** ve **Yanıt URL** değerleri otomatik olarak dosyalamıyorsa, gereksiniminize göre değerleri el ile doldurun.
+      > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak alamazsanız, değerleri gereksinimlerinize göre el ile girin.
 
-      Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://console.<REGIONNAME>.oraclecloud.com/`
+      **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
-      > Değer gerçek değil. Değeri gerçek Oturum Açma URL'si ile güncelleştirin. Değeri almak için [Oracle Cloud Infrastructure Console Client destek ekibine](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+      > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Oracle Cloud Infrastructure Konsolu istemci destek ekibine](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federation **Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. Oracle Cloud Infrastructure Console uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir. Kullanıcı Öznitelikleri iletişim kutusunu açmak için **Edit** simgesini tıklatın.
+1. Oracle Cloud Infrastructure konsol uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
    ![image](common/edit-attribute.png)
 
-1. Yukarıdakilere ek olarak, Oracle Cloud Infrastructure Console uygulaması SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. **Grup Talepleri (Önizleme)** iletişim kutusundaki **Kullanıcı Öznitelikleri & Talepler** bölümünde aşağıdaki adımları gerçekleştirin:
+1. Daha fazlasına ek olarak, Oracle bulut altyapısı konsol uygulaması, SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
-   1. **Ad tanımlayıcı değerinin**yanındaki **kalemi** tıklatın.
+   1. **Ad tanımlayıcı değeri**' nin yanındaki **kaleme** tıklayın.
 
-   1. **Ad tanımlayıcı biçimini seç**olarak **Kalıcı'yı** seçin.
+   1. **Ad tanımlayıcı biçimini seçin**olarak **persistent** ' i seçin.
  
-   1. **Kaydet**'e tıklayın.
+   1. **Kaydet**’e tıklayın.
 
       ![image](./media/oracle-cloud-tutorial/config07.png)
     
       ![image](./media/oracle-cloud-tutorial/config11.png)
 
-   1. **Talepte döndürülen Gruplar'ın**yanındaki **kalemi** tıklatın.
+   1. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
 
-   1. Radyo listesinden **Güvenlik gruplarını** seçin.
+   1. Radyo listesinden **güvenlik grupları** ' nı seçin.
 
-   1. **Grup Kimliğinin**Kaynak **Özniteliği'ni** seçin.
+   1. **Grup Kimliği**'Nin **kaynak özniteliğini** seçin.
 
-   1. **Grup talebinin adını özelleştirin.**
+   1. **Grup talebinin adını özelleştirmeyi**denetleyin.
 
-   1. **Ad** metin kutusunda, **groupName**yazın.
+   1. **Ad** metin kutusuna **GroupName**yazın.
 
-   1. Ad **Alanı (isteğe bağlı)** `https://auth.oraclecloud.com/saml/claims`metin kutusuna, yazın.
+   1. **Ad alanı (isteğe bağlı)** metin kutusuna yazın `https://auth.oraclecloud.com/saml/claims`.
 
-   1. **Kaydet**'e tıklayın.
+   1. **Kaydet**’e tıklayın.
 
       ![image](./media/oracle-cloud-tutorial/config08.png)
 
-1. Oracle **Cloud Infrastructure Console'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Oracle bulut altyapısı konsolunu ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-   ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+   ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B. Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B. Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B. Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B. Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B. Simon'ın Oracle Cloud Infrastructure Console'a erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Oracle bulut altyapısı konsoluna erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Oracle Cloud Infrastructure Console'u**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Oracle Cloud Infrastructure konsolu**' nu seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B. Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-oracle-cloud-infrastructure-console"></a>Oracle Cloud Altyapı Konsolu'nun yapılandırılması
+## <a name="configure-oracle-cloud-infrastructure-console"></a>Oracle bulut altyapısı konsolunu yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak Oracle Cloud Infrastructure Console'da oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak Oracle bulut altyapısı konsolunda oturum açın.
 
-1. Menünün sol tarafına tıklayın ve **Kimlik'e** tıklayın ve ardından **Federasyon'a**gidin.
+1. Menünün sol tarafına tıkladıktan sonra **kimlik** ' e tıklayın ve ardından **Federasyon**' a gidin.
 
    ![Yapılandırma](./media/oracle-cloud-tutorial/config01.png)
 
-1. **Bu belgeyi İndir** bağlantısını tıklatarak **Hizmet Sağlayıcısı meta veri dosyasını** kaydedin ve Azure portalının **Temel SAML Yapılandırması** bölümüne yükleyin ve ardından **Kimlik Sağlayıcısı Ekle'yi**tıklatın.
+1. **Bu belgeyi indir** bağlantısını tıklatıp Azure Portal **Service Provider metadata file** **temel SAML yapılandırması** bölümüne yükleyin ve ardından **kimlik sağlayıcısı ekle**' ye tıklayın.
 
    ![Yapılandırma](./media/oracle-cloud-tutorial/config02.png)
 
-1. Kimlik **Sağlayıcı Ekle** açılır pencerede aşağıdaki adımları gerçekleştirin:
+1. **Kimlik sağlayıcı ekle** açılır penceresinde aşağıdaki adımları uygulayın:
 
    ![Yapılandırma](./media/oracle-cloud-tutorial/config03.png)
 
-   1. **AD** metin kutusuna adınızı girin.
+   1. **Ad** metin kutusuna adınızı girin.
 
-   1. **DESCRIPTION** metin kutusuna açıklamanızı girin.
+   1. **Açıklama** metin kutusuna açıklamanızı girin.
 
-   1. TÜR OLARAK **MICROSOFT ACTIVE DIRECTORY FEDERATION SERVICE (ADFS) veya SAML 2.0 UYUMLU KİmLİk SAGLAYICI'nı** seçin. **TYPE**
+   1. **MICROSOFT ACTIVE DIRECTORY Federasyon Hizmeti (ADFS) veya SAML 2,0 uyumlu KIMLIK sağlayıcısını** **tür**olarak seçin.
 
-   1. Azure portalından indirdiğiniz Federasyon Metadata XML'ini yüklemek için **Gözat'ı** tıklatın.
+   1. Azure portal 'ten indirdiğiniz Federasyon meta veri XML 'sini karşıya yüklemek için, **Araştır** ' a tıklayın.
 
-   1. **Kimlik** Sağlayıcıyı Edin'i tıklatın ve **Kimlik Sağlayıcısını Edin** bölümünde aşağıdaki adımları gerçekleştirin:
+   1. **Devam** ' a tıklayın ve **kimlik sağlayıcısını Düzenle** bölümünde aşağıdaki adımları uygulayın:
 
       ![Yapılandırma](./media/oracle-cloud-tutorial/config09.png)
 
-   1. **KİmLİk SAYIK GRUBU** Özel Grup olarak seçilmelidir. GRUP Kimliği, Azure Etkin Dizini'ndeki grubun GUID'i olmalıdır. Grubun **OCI GROUP** alanında ilgili grupla eşlemesi gerekir.
+   1. **KIMLIK sağlayıcısı grubu** özel grup olarak seçilmelidir. Grup KIMLIĞI, Azure Active Directory grubun GUID 'SI olmalıdır. Grubun, **OCı grubu** alanında karşılık gelen grupla eşlenmesi gerekir.
 
-   1. Azure portalındaki kurulumunuza ve kuruluş gereksiniminize göre birden çok grubu eşleyebilirsiniz. + Ekle **eşleciliği** tıklatarak istediğiniz kadar grup ekleyin.
+   1. Azure portal ve kuruluşunuzun ihtiyaç duyduğu kuruluma göre birden çok grubu eşleyebilirsiniz. İhtiyaç duyduğunuz sayıda grup eklemek için **+ eşleme Ekle** ' ye tıklayın.
 
-   1. **Gönder'i**tıklatın.
+   1. **Gönder**' e tıklayın.
    
-### <a name="create-oracle-cloud-infrastructure-console-test-user"></a>Oracle Cloud Infrastructure Console test kullanıcıoluşturma
+### <a name="create-oracle-cloud-infrastructure-console-test-user"></a>Oracle bulut altyapısı konsol test kullanıcısı oluşturma
 
- Oracle Cloud Infrastructure Console, varsayılan olarak tam zamanında sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Yeni bir kullanıcı erişim girişimi sırasında oluşturulmaz ve ayrıca kullanıcıyı oluşturmaya gerek yoktur.
+ Oracle bulut altyapısı konsolu, varsayılan olarak tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Erişim denemesi sırasında yeni bir Kullanıcı oluşturulmaz ve ayrıca Kullanıcı oluşturma gereksinimi yoktur.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Access Paneli'ndeki Oracle Cloud Infrastructure Console döşemesini seçtiğinizde, Oracle Cloud Infrastructure Console oturum açsayfasına yönlendirilirsiniz. Açılan menüden **KİmLİk SAHİBİ'ni** seçin ve oturum açabilmek için aşağıda gösterildiği gibi **Devam'ı** tıklatın. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Oracle bulut altyapısı konsol kutucuğunu seçtiğinizde, Oracle bulut altyapısı Konsolu oturum açma sayfasına yönlendirilirsiniz. Açılan menüden **KIMLIK sağlayıcısını** seçin ve oturum açmak için aşağıda gösterildiği gibi **devam** ' a tıklayın. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ![Yapılandırma](./media/oracle-cloud-tutorial/config10.png)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Gelişmiş görünürlük ve denetimlerle Oracle Cloud Infrastructure Console nasıl korunur?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle Oracle bulut altyapısı konsolunu koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

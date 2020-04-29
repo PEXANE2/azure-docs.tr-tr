@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:` Azure Key Vault 'a erişmek için yönetilen bir kimlik kullanma - Windows - Azure AD
+title: Öğretici`:` Azure Key Vault erişmek için yönetilen bir kimlik kullanma-Windows-Azure AD
 description: Windows VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Key Vault’a erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75971885"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Öğretici: Azure Key Vault'a erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma 
@@ -48,11 +48,11 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 ## <a name="grant-access"></a>Erişim verme  
  
-Bu bölümde, VM'nize Key Vault'ta depolanan bir Gizli'ye nasıl erişim izni verilebildiğini gösterilmektedir. Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure AD kimlik doğrulamasını destekleyen kaynaklarda kimlik doğrulaması yapmak için erişim belirteçleri alabilir.Bununla birlikte, Azure hizmetlerinin tümü Azure AD kimlik doğrulamasını desteklemez.Söz konusu hizmetlerle Azure kaynakları için yönetilen kimlikleri kullanmak için, hizmet kimlik bilgilerini Azure Key Vault'ta depolayın ve VM’nin yönetilen kimliğini kullanarak Key Vault'a erişip kimlik bilgilerini alın. 
+Bu bölümde, VM 'nizin Key Vault depolanan bir gizli dizi erişimine nasıl izin vereceğiniz gösterilmektedir. Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure AD kimlik doğrulamasını destekleyen kaynaklarda kimlik doğrulaması yapmak için erişim belirteçleri alabilir.Bununla birlikte, Azure hizmetlerinin tümü Azure AD kimlik doğrulamasını desteklemez.Söz konusu hizmetlerle Azure kaynakları için yönetilen kimlikleri kullanmak için, hizmet kimlik bilgilerini Azure Key Vault'ta depolayın ve VM’nin yönetilen kimliğini kullanarak Key Vault'a erişip kimlik bilgilerini alın. 
 
 İlk olarak, Key Vault'u oluşturmalı ve VM'mize Key Vault üzerinde sistem tarafından atanan yönetilen kimlik erişimi vermeliyiz.   
 
-1. Sol daki gezinti çubuğunun üst kısmında kaynak**Güvenlik + Kimlik** > **Anahtarı Vault** **oluştur'u** > seçin.  
+1. Sol gezinti çubuğunun üst kısmında**Key Vault** > **güvenlik ve kimlik** >  **kaynak oluştur**' u seçin.  
 2. Yeni Key Vault için bir **Ad** belirtin. 
 3. Key Vault'u daha önce oluşturduğunuz VM'yle aynı aboneliğe ve kaynak grubuna yerleştirin. 
 4. **Erişim ilkeleri**’ni seçin ve **Yeni ekle**'ye tıklayın. 
@@ -75,7 +75,7 @@ Ardından, Key Vault'a bir gizli dizi ekleyin; böylelikle VM'nizde çalıştır
  
 ## <a name="access-data"></a>Verilere erişme  
 
-Bu bölümde, VM kimliğini kullanarak bir erişim belirteci almak ve Anahtar Vault sırrı almak için kullanabilirsiniz nasıl gösterir. PowerShell 4.3.1 veya üstünü yüklemediyseniz, [en son sürümü indirip yüklemeniz gerekir](https://docs.microsoft.com/powershell/azure/overview).
+Bu bölüm, VM kimliğini kullanarak bir erişim belirtecinin nasıl alınacağını ve Key Vault gizli anahtarı almak için nasıl kullanılacağını gösterir. PowerShell 4.3.1 veya üstünü yüklemediyseniz, [en son sürümü indirip yüklemeniz gerekir](https://docs.microsoft.com/powershell/azure/overview).
 
 İlk olarak, Key Vault'ta kimlik doğrulaması yapmak üzere erişim belirteci almak için VM’nin sistem tarafından atanan yönetilen kimliğini kullanırız:
  

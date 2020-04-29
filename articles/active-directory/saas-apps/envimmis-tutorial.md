@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Envi MMIS ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Envi MMIS arasında tek oturum açma yı nasıl yapılandırılabildiğini öğrenin.
+title: 'Öğretici: ENVI MMSıS ile tümleştirme Azure Active Directory Microsoft Docs'
+description: Azure Active Directory ile ENVI MMNE arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,252 +17,252 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1689517042713e9a3ce75c6ada822cb3d6ff138
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73158261"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Öğretici: Envi MMIS ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Öğretici: ENVI MMSıS ile tümleştirme Azure Active Directory
 
-Bu eğitimde, Envi MMIS'i Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Envi MMIS'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Envi MMSıS 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Envi MMSıS 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Envi MMIS erişimi olan Azure AD'de kontrol edebilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Envi MMIS (Tek Oturum Açma) ile otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* ENVI MMSıS 'e erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla DSıS MMIN (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Envi MMIS ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini ENVI MMWITH ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Envi MMIS tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* ENVI MMSıS çoklu oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Envi **MMIS, SP** ve **IDP'nin** başlattığı SSO'ya destek verdi
+* ENVI MMSıS, **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-envi-mmis-from-the-gallery"></a>Galeriden Envi MMIS ekleme
+## <a name="adding-envi-mmis-from-the-gallery"></a>Galeriden ENVI MMSıS ekleme
 
-Envi MMIS'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Envi MMIS'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Envi MMSıS 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Envi MMSıS ' i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden Envi MMIS eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Envi MMSıS eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Envi MMIS**yazın, sonuç panelinden **Envi MMIS'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **ENVı mmsıs**yazın, sonuç panelinden **ENVı mmsıs** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde Envi MMIS](common/search-new-app.png)
+     ![ENVI MMSıS sonuçlar listesinde](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD tek oturum açma işlemini Envi MMIS ile yapılandırıp test esinizsiniz.
-Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile Envi MMIS'teki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, Envi **Simon**adlı bir test kullanıcısına göre yapılandırma ve test edersiniz.
+Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
-Azure AD oturumlarını Envi MMIS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı Envi MMWITH ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. **[Envi MMIS Tek Oturum Açma](#configure-envi-mmis-single-sign-on)** 'yı uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Envi MMIS test kullanıcısını oluşturun](#create-envi-mmis-test-user)** - Envi MMIS'te Britta Simon'ın, kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[ENVI 'Yi yapılandırma çoklu oturum açma](#configure-envi-mmis-single-sign-on)** ayarlarını, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[ENVı mmsıs test kullanıcısı oluşturma](#create-envi-mmis-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Envi mmon 'Da Britta Simon 'ın bir karşılığı olmalıdır.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturumlarını Envi MMIS ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. **Envi MMIS** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **Envi mmsıs** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Kurulum Tek Oturum** Açma'da **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** sı bölümünde, Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Envi MMIS Etki Alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![Envi MMSıS etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://www.<CUSTOMER DOMAIN>.com/Account`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.<CUSTOMER DOMAIN>.com/Account`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
 
-5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Envi MMIS Etki Alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Envi MMSıS etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://www.<CUSTOMER DOMAIN>.com/Account`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.<CUSTOMER DOMAIN>.com/Account`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [Envi MMIS İstemci destek ekibine](mailto:support@ioscorp.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [ENVI Mmsıs istemci destek ekibine](mailto:support@ioscorp.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML** ile Kurulum Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'i** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+6. SAML **Imzalama sertifikası** bölümünde, **SAML Ile çoklu oturum açmayı ayarla** sayfasında, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. **Envi MMIS'i ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+7. **En yeni** URL 'leri ayarlama bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure Reklam Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-envi-mmis-single-sign-on"></a>Envi MMIS Tek İşaretli Yapıla
+### <a name="configure-envi-mmis-single-sign-on"></a>ENVI 'Yi yapılandırma tek oturum açma
 
-1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak Envi MMIS sitenizde oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, ENVI MMSıS sitenizde yönetici olarak oturum açın.
 
-2. Etki **Alanım** sekmesine tıklayın.
+2. **Etki alanım** sekmesine tıklayın.
 
-    ![Tek Oturum Açma Kaydet düğmesini yapılandır](./media/envimmis-tutorial/configure1.png)
+    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure1.png)
 
 3. **Düzenle**’ye tıklayın.
 
-    ![Tek Oturum Açma Kaydet düğmesini yapılandır](./media/envimmis-tutorial/configure2.png)
+    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure2.png)
 
-4. **Uzaktan kimlik doğrulama** onay kutusunu kullan'ı seçin ve ardından Kimlik **Doğrulama Türü** açılır sayfasından HTTP **Yeniden Yönlendirme'yi** seçin.
+4. **Uzaktan kimlik doğrulaması kullan** onay kutusunu seçin ve ardından **kimlik doğrulama türü** açılan listesinden **http yeniden yönlendirme** ' yi seçin.
 
-    ![Tek Oturum Açma Kaydet düğmesini yapılandır](./media/envimmis-tutorial/configure3.png)
+    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure3.png)
 
-5. **Kaynaklar** sekmesini seçin ve ardından **Meta Verilerini Yükle'yi**tıklatın.
+5. **Kaynaklar** sekmesini seçin ve ardından **meta verileri karşıya yükle**' ye tıklayın.
 
-    ![Tek Oturum Açma Kaydet düğmesini yapılandır](./media/envimmis-tutorial/configure4.png)
+    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure4.png)
 
-6. Meta **verilerini yükle** açılır pencerede aşağıdaki adımları gerçekleştirin:
+6. **Meta verileri karşıya yükle** açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![Tek Oturum Açma Kaydet düğmesini yapılandır](./media/envimmis-tutorial/configure5.png)
+    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure5.png)
 
-    a. Açılan dan **Yükle'den** **Dosya** seçeneğini seçin.
+    a. Açılan **listeden** **Dosya** seçeneğini belirleyin.
 
-    b. İndirilen meta veri dosyasını **Select dosya simgesini**seçerek Azure portalından yükleyin.
+    b. **Dosya Seç simgesini**seçerek Azure Portal indirilen meta veri dosyasını karşıya yükleyin.
 
     c. **Tamam**'a tıklayın.
 
-7. İndirilen meta veri dosyasını yükledikten sonra, alanlar otomatik olarak doldurulur. **Güncelle'yi** tıklatın
+7. İndirilen meta veri dosyasını karşıya yükledikten sonra, alanlar otomatik olarak doldurulur. **Güncelleştir** 'e tıklayın
 
-    ![Tek Oturum Açma Kaydet düğmesini yapılandır](./media/envimmis-tutorial/configure6.png)
+    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure6.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**yazın.
   
-    b. Kullanıcı **adı** alanında **brittasimon\@yourcompanydomain.extension** yazın  
+    b. **Kullanıcı adı** alanına **brittasıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Envi MMIS'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Envi MMSıS 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Envi MMIS'i**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Envi mmsıs**' yi seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Envi MMIS'i**seçin.
+2. Uygulamalar listesinde, **Envi mmsıs**' i seçin.
 
-    ![Uygulamalar listesindeki Envi MMIS bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesinde Envi MMSıS bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinden **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında daha sonra **Rolü Seç** iletişim kutusunda herhangi bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-envi-mmis-test-user"></a>Envi MMIS test kullanıcısını oluşturun
+### <a name="create-envi-mmis-test-user"></a>ENVI MMSıS test kullanıcısı oluştur
 
-Azure AD kullanıcılarının Envi MMIS'te oturum açabilmeleri için, bunların Envi MMIS'de sağlanması gerekir. Envi MMIS durumunda, sağlama manuel bir görevdir.
+Azure AD kullanıcılarının, ENVI MMO 'da oturum açmasını sağlamak için, Envi MMSıS 'e sağlanması gerekir. Envi MMSıS durumunda, sağlama el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Yönetici olarak Envi MMIS şirket sitenizde oturum açın.
+1. ENVI MMSıS şirket sitenizde yönetici olarak oturum açın.
 
-2. Kullanıcı **Listesi** sekmesine tıklayın.
+2. **Kullanıcı listesi** sekmesine tıklayın.
 
     ![Çalışan Ekle](./media/envimmis-tutorial/user1.png)
 
-3. **Kullanıcı Ekle** düğmesini tıklatın.
+3. **Kullanıcı Ekle** düğmesine tıklayın.
 
     ![Çalışan Ekle](./media/envimmis-tutorial/user2.png)
 
-4. Kullanıcı **Ekle** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
 
     ![Çalışan Ekle](./media/envimmis-tutorial/user3.png)
 
-    a. Kullanıcı **Adı** metin kutusuna Brittasimon **\@contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
+    a. **Kullanıcı adı** metin kutusuna **brittasıon\@contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
     
-    b. **Ad** metin kutusuna **BrittaGibi**BrittaSimon'Un ilk adını yazın.
+    b. **Ilk ad** metin kutusuna, **Britta**gibi brittasıın adını yazın.
 
-    c. **Soyadı** metin kutusuna, **Simon**gibi BrittaSimon soyadını yazın.
+    c. **Soyadı** metin kutusunda, **Simon**gibi brittasıon adının soyadını yazın.
 
-    d. Metin kutusunun **başlığına** kullanıcının başlığını girin.
+    d. Metin kutusunun **başlığında** kullanıcının başlığını girin.
     
-    e. **E-posta Adresi** metin kutusuna **Brittasimon\@contoso.com**gibi Britta Simon hesabının e-posta adresini yazın.
+    e. **E-posta adresi** metin kutusuna **brittasıon\@contoso.com**gibi Britta Simon hesabının e-posta adresini yazın.
 
-    f. **SSO Kullanıcı Adı** metin kutusuna Brittasimon **\@contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
+    f. **SSO Kullanıcı adı** metin kutusuna **\@brittasıon contoso.com**gibi Britta Simon hesabının kullanıcı adını yazın.
 
-    g. **Kaydet**'e tıklayın.
+    g. **Kaydet**’e tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Envi MMIS karosu tıklattığınızda, SSO'yu kurduğunuz Envi MMIS'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Envi MMSıS kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Envi MMSıS ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

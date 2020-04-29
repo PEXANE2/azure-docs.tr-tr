@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:` Azure Key Vault 'a erişmek için yönetilen bir kimlik kullanma - Linux - Azure AD
+title: Öğretici`:` Azure Key Vault erişmek için yönetilen bir kimlik kullanma-Linux-Azure AD
 description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Resource Manager’a erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdccabf701d4603b8c78f7e23ec1890171603273
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74232178"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Öğretici: Azure Key Vault'a erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
@@ -44,7 +44,7 @@ Azure kaynakları için yönetilen hizmet kimlikleri kullanıldığında kodunuz
 
 İlk olarak, Key Vault'u oluşturmalı ve VM'mize Key Vault üzerinde sistem tarafından atanan yönetilen kimlik erişimi vermeliyiz.   
 
-1. Sol daki gezinti çubuğunun üst kısmında kaynak**Güvenlik + Kimlik** > **Anahtarı Vault** **oluştur'u** > seçin.  
+1. Sol gezinti çubuğunun üst kısmında**Key Vault** > **güvenlik ve kimlik** >  **kaynak oluştur**' u seçin.  
 2. Yeni Key Vault için bir **Ad** belirtin. 
 3. Key Vault'u daha önce oluşturduğunuz VM'yle aynı aboneliğe ve kaynak grubuna yerleştirin. 
 4. **Erişim ilkeleri**’ni seçin ve **Yeni ekle**'ye tıklayın. 

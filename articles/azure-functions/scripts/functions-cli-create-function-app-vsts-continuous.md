@@ -1,19 +1,19 @@
 ---
-title: DevOps dağıtımı yla bir işlev uygulaması oluşturma - Azure CLI
+title: DevOps dağıtımı ile bir işlev uygulaması oluşturma-Azure CLı
 description: Bir İşlev Uygulaması oluşturma ve işlev kodunu Azure DevOps'tan dağıtma
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
 ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922651"
 ---
-# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure'da Azure DevOps'lerden dağıtılan bir işlev oluşturma
+# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure DevOps 'tan dağıtılan Azure 'da bir işlev oluşturma
 
-Bu konu, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir işlev uygulaması oluşturmak için Azure İşlevlerini nasıl kullanacağınızı gösterir. İşlevleriniz için bir kapsayıcı olan işlev uygulaması, bir Azure DevOps deposundan sürekli olarak dağıtılır. 
+Bu konu başlığı altında, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir Işlev uygulaması oluşturmak için Azure işlevlerinin nasıl kullanılacağı gösterilmektedir. İşlevleriniz için bir kapsayıcı olan işlev uygulaması, sürekli olarak bir Azure DevOps deposundan dağıtılır. 
 
 Bu konuyu tamamlamak için şunlara sahip olmalısınız:
 

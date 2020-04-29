@@ -1,5 +1,5 @@
 ---
-title: sfctl'deki bir kümedeki uygulamayı güncelleştirme
+title: Sfctl 'deki bir kümede bir uygulamayı güncelleştirme
 description: Service Fabric CLI Betik Örneği - Uygulamayı yeni bir sürümle güncelleştirme. Bu örnek ayrıca dağıtılmış bir uygulamayı yeni bitlerle yükseltir.
 services: service-fabric
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
 ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614732"
 ---
-# <a name="update-an-application-using-the-service-fabric-cli"></a>Service Fabric CLI kullanarak uygulamayı güncelleştirme
+# <a name="update-an-application-using-the-service-fabric-cli"></a>Service Fabric CLı kullanarak bir uygulamayı güncelleştirme
 
 Bu örnek betik, mevcut bir uygulamanın yeni bir sürümünü karşıya yükler ve sonra dağıtılmış bir uygulamayı yeni bitlerle yükseltir.
 

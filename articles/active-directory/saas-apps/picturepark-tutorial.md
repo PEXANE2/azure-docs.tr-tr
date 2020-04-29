@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Picturepark ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Picturepark arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Picturepark ile Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve Picturepark arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,98 +16,98 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73177006"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Öğretici: Picturepark ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Öğretici: Picturepark ile Azure Active Directory tümleştirme
 
-Bu eğitimde Picturepark'ı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Picturepark'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Picturepark 'nın Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz.
+Picturepark 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Picturepark'a erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Picturepark'ta (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de Picturepark alanına erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Picturepark (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Picturepark ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* Picturepark tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Picturepark çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Picturepark **SP** başlatılan SSO destekler
+* Picturepark, **SP** tarafından başlatılan SSO 'yu destekliyor
 
-## <a name="adding-picturepark-from-the-gallery"></a>Galeriden Picturepark Ekleme
+## <a name="adding-picturepark-from-the-gallery"></a>Galeriden Picturepark ekleme
 
-Picturepark'ın Azure AD'ye entegrasyonunu yapılandırmak için, Picturepark'ı galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Picturepark 'nın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize Picturepark ' i eklemeniz gerekir.
 
-**Galeriden Picturepark eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Picturepark eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda **Picturepark**yazın, sonuç panelinden **Picturepark'ı** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **Picturepark**yazın, sonuç panelinden **Picturepark** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde Picturepark](common/search-new-app.png)
+     ![Sonuçlar listesinde Picturepark](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre yapılandırıp sınayın.
-Tek oturum açmanın çalışabilmesi için, Bir Azure REKLAM kullanıcısı ile Picturepark'taki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Picturepark ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve Picturepark alanındaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Azure AD oturumaçmayı Picturepark ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı Picturepark ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Picturepark Tek Oturum Açma 'yı **[yapılandırın](#configure-picturepark-single-sign-on)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Picturepark test kullanıcısını oluşturun](#create-picturepark-test-user)** - Picturepark'ta Kullanıcının Azure AD gösterimine bağlı Britta Simon'ın bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Picturepark çoklu oturum açmayı yapılandırın](#configure-picturepark-single-sign-on)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanıcının Azure AD gösterimine bağlı olan Picturepark ortamında Britta Simon 'un bir karşılığı olacak şekilde **[Picturepark testi kullanıcısı oluşturun](#create-picturepark-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Picturepark ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı Picturepark ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. **Picturepark** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **Picturepark** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Picturepark Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![Picturepark alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
 
-    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.picturepark.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.picturepark.com`
 
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     |  |
     |--|
@@ -117,164 +117,164 @@ Picturepark ile Azure AD oturum açma işlemlerini yapılandırmak için aşağ�
     | |
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Picturepark İstemci destek ekibine](https://picturepark.com/company/picturepark-customer-support) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Picturepark istemci destek ekibine](https://picturepark.com/company/picturepark-customer-support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML İmzalama Sertifikası** bölümünde, **SAML İmzalama Sertifikası** iletişim kutusunu açmak için **Edit** düğmesini tıklatın.
+5. **SAML Imzalama sertifikası** bölümünde, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-    ![SAML İmza Sertifikasını Edin](common/edit-certificate.png)
+    ![SAML Imzalama sertifikasını Düzenle](common/edit-certificate.png)
 
-6. **SAML İmza Sertifikası** **bölümünde, Thumbprint'i** kopyalayın ve bilgisayarınıza kaydedin.
+6. **SAML Imzalama sertifikası** bölümünde, **parmak izini** kopyalayın ve bilgisayarınıza kaydedin.
 
-    ![Parmak Izi değerini kopyala](common/copy-thumbprint.png)
+    ![Parmak Izi değerini Kopyala](common/copy-thumbprint.png)
 
-7. **Picturepark'ı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın. **Giriş URL'si için**değeri aşağıdaki desenle kullanın:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. **Picturepark ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın. **Oturum açma URL 'si**için değeri aşağıdaki Düzenle kullanın:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
-    > _my_directory_id,_ Azure AD aboneliğinin kiracı kimliğidir.
+    > _my_directory_id_ , Azure AD aboneliğinin kiracı kimliğidir.
 
-    ![Yapılandırma URL'lerini kopyalama](./media/picturepark-tutorial/configurls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](./media/picturepark-tutorial/configurls.png)
 
-    a. Azure AD Tanımlayıcısı
+    a. Azure AD tanımlayıcısı
 
-    b. Giriş URL'si
+    b. Oturum kapatma URL 'SI
 
-### <a name="configure-picturepark-single-sign-on"></a>Picturepark'ı Yapılandırtek İşaretle
+### <a name="configure-picturepark-single-sign-on"></a>Picturepark çoklu oturum açmayı yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, Picturepark şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, Picturepark şirketi sitenizde yönetici olarak oturum açın.
 
-2. Üstteki araç çubuğunda **Yönetim araçlarını**tıklatın ve ardından **Yönetim Konsolu'nu**tıklatın.
+2. Üstteki araç çubuğunda **Yönetimsel Araçlar**' a ve ardından **Yönetim Konsolu**' na tıklayın.
    
     ![Yönetim Konsolu](./media/picturepark-tutorial/ic795062.png "Yönetim Konsolu")
 
-3. **Kimlik Doğrulama'yı**tıklatın ve ardından **Kimlik sağlayıcılarını**tıklatın.
+3. **Kimlik doğrulaması**' na ve ardından **kimlik sağlayıcıları**' na tıklayın.
    
-    ![Kimlik doğrulaması](./media/picturepark-tutorial/ic795063.png "Kimlik doğrulaması")
+    ![Kimlik Doğrulaması](./media/picturepark-tutorial/ic795063.png "Kimlik Doğrulaması")
 
-4. Kimlik **sağlayıcısı yapılandırma** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Kimlik sağlayıcısı yapılandırma** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Kimlik sağlayıcı yapılandırması](./media/picturepark-tutorial/ic795064.png "Kimlik sağlayıcı yapılandırması")
+    ![Kimlik sağlayıcısı yapılandırması](./media/picturepark-tutorial/ic795064.png "Kimlik sağlayıcısı yapılandırması")
    
-    a. **Ekle**’ye tıklayın.
+    a. **Ekle**'ye tıklayın.
   
     b. Yapılandırmanız için bir ad yazın.
    
-    c. **Varsayılan olarak Ayarla'yı**seçin.
+    c. **Varsayılan olarak ayarla**' yı seçin.
    
-    d. **İhraççı URI** textbox'ına, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin** değerini yapıştırın.
+    d. **Veren URI** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
    
-    e. **Güvenilir Veren Thumb Print** textbox'ta, **SAML İmzaLama Sertifikası** bölümünden kopyalamış olduğunuz **Thumbprint** değerini yapıştırın. 
+    e. **Güvenilen veren** parmak izi metin kutusunda, **SAML imzalama sertifikası** bölümünden kopyaladığınız **parmak izine** ait değeri yapıştırın. 
 
-5. **JoinDefaultUsersGroup'u**tıklatın.
+5. **Joindefaultusersgroup**öğesine tıklayın.
 
-6. **E-posta adresi** özniteliğini **Talep** metin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` kutusunda ayarlamak için **Kaydet**yazın ve tıklatın.
+6. **Talep** metin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` kutusunda **emapostaadresi** özniteliğini ayarlamak için, yazın ve **Kaydet**' e tıklayın.
 
       ![Yapılandırma](./media/picturepark-tutorial/ic795065.png "Yapılandırma")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı `brittasimon@yourcompanydomain.extension`türünde. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Picturepark'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Picturepark alanına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve **ardından Picturepark'ı**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Picturepark**' i seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Picturepark'ı**seçin.
+2. Uygulamalar listesinde, **Picturepark**' ı seçin.
 
     ![Uygulamalar listesindeki Picturepark bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-picturepark-test-user"></a>Picturepark test kullanıcısı oluşturma
+### <a name="create-picturepark-test-user"></a>Picturepark testi kullanıcısı oluşturma
 
-Azure AD kullanıcılarının Picturepark'ta oturum açabilmeleri için Picturepark'a dahil edilmeleri gerekir. Picturepark durumunda, sağlama manuel bir görevdir.
+Azure AD kullanıcılarının, Picturepark ortamında oturum açmasını sağlamak için, bu onların Picturepark halinde sağlanması gerekir. Picturepark durumunda sağlama, el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. **Picturepark** kiracınızla oturum açın.
+1. **Picturepark** kiracınızda oturum açın.
 
-1. Üstteki araç çubuğunda **Yönetim araçlarını**tıklatın ve ardından **Kullanıcılar'ı**tıklatın.
+1. Üstteki araç çubuğunda **Yönetimsel Araçlar**' a ve ardından **Kullanıcılar**' a tıklayın.
    
     ![Kullanıcılar](./media/picturepark-tutorial/ic795067.png "Kullanıcılar")
 
-1. **Kullanıcılara genel bakış** sekmesinde **Yeni'yi**tıklatın.
+1. **Kullanıcılara genel bakış** sekmesinde **Yeni**' ye tıklayın.
    
     ![Kullanıcı yönetimi](./media/picturepark-tutorial/ic795068.png "Kullanıcı yönetimi")
 
-1. Kullanıcı **Oluştur** iletişim kutusunda, sağlamak istediğiniz geçerli bir Azure Etkin Dizin Kullanıcısının aşağıdaki adımlarını gerçekleştirin:
+1. **Kullanıcı oluştur** iletişim kutusunda, sağlamak istediğiniz geçerli bir Azure Active Directory Kullanıcı için aşağıdaki adımları gerçekleştirin:
    
     ![Kullanıcı Oluştur](./media/picturepark-tutorial/ic795069.png "Kullanıcı Oluştur")
    
-    a. **E-posta Adresi** metin kutusuna, kullanıcının `BrittaSimon@contoso.com` **e-posta adresini** yazın.  
+    a. **E-posta adresi** metin kutusuna kullanıcının `BrittaSimon@contoso.com` **e-posta adresini** yazın.  
    
-    b. **Parola** ve **Şifreyi Onayla** metin kutularına BrittaSimon'Un **parolasını** yazın. 
+    b. **Parola** ve **Parolayı Onayla** metin kutularına brittasıon **parolasını** yazın. 
    
-    c. Ad **metin** kutusuna, kullanıcı **Britta'nın** **Adını** yazın. 
+    c. **Ilk ad** metin kutusuna **, kullanıcının** **ilk adını** yazın. 
    
-    d. **Soyadı** metin kutusuna, **kullanıcıNın** **Soyadı** Simon yazın.
+    d. **Soyadı** metin kutusuna kullanıcı **Simon**' un **soyadını** yazın.
    
-    e. **Şirket** metin kutusuna, kullanıcının **Şirket adını** yazın. 
+    e. **Şirket** metin kutusuna kullanıcının **şirket adını** yazın. 
    
-    f. **Ülke** metin kutusunda, kullanıcının **Ülke/Bölgesi'ni** seçin.
+    f. **Ülke** metin kutusunda kullanıcının **ülkesini/bölgesini** seçin.
   
-    g. **Posta** metin kutusuna şehrin **posta kodunu** yazın.
+    g. **Zip** metin kutusuna şehrin **posta kodunu** yazın.
    
-    h. **Şehir** metin kutusuna, kullanıcının **Şehir adını** yazın.
+    h. **Şehir** metin kutusuna kullanıcının **şehir adını** yazın.
 
-    i. Bir **Dil**seçin.
+    i. Bir **dil**seçin.
    
-    j. **Oluştur'u**tıklatın.
+    j. **Oluştur**' a tıklayın.
 
 >[!NOTE]
->Azure AD kullanıcı hesaplarını sağlamak için Picturepark tarafından sağlanan diğer Picturepark kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
+>Azure AD Kullanıcı hesapları sağlamak için, Picturepark tarafından sunulan diğer bir Picturepark Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
 >
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki Picturepark döşemesini tıklattığınızda, SSO'yu kurduğunuz Picturepark'ta otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Picturepark kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız Picturepark 'ta otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

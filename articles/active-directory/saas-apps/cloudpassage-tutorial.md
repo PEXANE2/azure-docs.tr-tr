@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: CloudPassage ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve CloudPassage arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Cloudpaszu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
+description: Azure Active Directory ve Cloudpasla arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,207 +17,207 @@ ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0bcf0b4781e7ecb4301672f511a9f01f7fd2082
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75561241"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>Öğretici: CloudPassage ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>Öğretici: Cloudpaszu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, CloudPassage'ı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. CloudPassage'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Cloudpaszu Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Cloudpaszu 'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* CloudPassage erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla CloudPassage'da otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de Cloudpasna erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Cloudj 'de otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* CloudPassage tek oturum açma (SSO) aboneliğini etkinleştirildi.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Cloudpaszu çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* CloudPassage **SP** başlatılan SSO destekler
+* Cloudpaszu, **SP** tarafından başlatılan SSO 'yu destekliyor
 
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir, bu nedenle yalnızca bir örnek bir kiracıda yapılandırılabilir.
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
-## <a name="adding-cloudpassage-from-the-gallery"></a>Galeriden CloudPassage ekleme
+## <a name="adding-cloudpassage-from-the-gallery"></a>Galeriden Cloudpaszu ekleme
 
-CloudPassage'ın Azure AD'ye entegrasyonunu yapılandırmak için, galeriden CloudPassage'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Cloudpaszu 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden Cloudpaszu ' i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **CloudPassage** yazın.
-1. Sonuçlar panelinden **CloudPassage'ı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **cloudpaszu** yazın.
+1. Sonuçlar panelinden **Cloudpaszu** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cloudpassage"></a>CloudPassage için Azure AD oturum açma işlemlerini yapılandırma ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-cloudpassage"></a>Cloudpaszu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak CloudPassage ile yapılandırın ve test edin. SSO'nun çalışması için, CloudPassage'daki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Cloudpaszu Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Cloudpaszu içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu CloudPassage ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Cloudpaszu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[CloudPassage SSO'yu yapılandırır](#configure-cloudpassage-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    1. **[CloudPassage test kullanıcısını oluşturun](#create-cloudpassage-test-user)** - Kullanıcının Azure AD gösterimine bağlı CloudPassage'da B.Simon'ın bir örneğine sahip olmak için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Cloudpaszu SSO 'Yu yapılandırın](#configure-cloudpassage-sso)** .
+    1. Cloudpaszu **[test kullanıcısı oluşturun](#create-cloudpassage-test-user)** -kullanıcının Azure AD gösterimine bağlı olan cloudpasm 'de B. Simon 'a karşılık gelen bir karşılığı vardır.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. **CloudPassage** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/) **cloudpaszu** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-     a. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://portal.cloudpassage.com/saml/init/accountid`
+     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://portal.cloudpassage.com/saml/init/accountid`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni `https://portal.cloudpassage.com/saml/consume/accountid`kullanarak bir URL yazın: . CloudPassage portalınızın **Tek Oturum Açma Ayarları** bölümündesi'ndeki **SSO Kurulum belgelerini** tıklayarak bu öznitelik için değerinizi alabilirsiniz.
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın: `https://portal.cloudpassage.com/saml/consume/accountid`. Bu özniteliğin değerini, Cloudpaszu portalınızın **Çoklu oturum açma ayarları** bölümünde **SSO kurulum belgeleri** ' ne tıklayarak alabilirsiniz.
 
-    ![Tek İşaret-On'u Yapılandır](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [CloudPassage İstemci destek ekibine](https://www.cloudpassage.com/company/contact/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirin. Bu değerleri almak için [Cloudpaszu istemci destek ekibine](https://www.cloudpassage.com/company/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. CloudPassage uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. Cloudpaszu uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/edit-attribute.png)
 
-1. Yukarıdakilere ek olarak, CloudPassage uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
+1. Cloudpaszu uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak Özniteliği|
+    | Adı | Kaynak özniteliği|
     | ---------------| --------------- |
-    | Ad |user.givenname |
-    | Soyadı |user.surname |
-    | e-posta |kullanıcı.posta |
+    | FirstName |Kullanıcı. |
+    | Soyadı |User. soyadı |
+    | e-posta |Kullanıcı. Mail |
 
-1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **CloudPassage'ı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Cloudpasu ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın CloudPassage'a erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Cloudpaszu 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **CloudPassage'ı**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Cloudpaszu**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-cloudpassage-sso"></a>CloudPassage SSO'ya yapılandır
+## <a name="configure-cloudpassage-sso"></a>Cloudpaszu SSO 'yu yapılandırma
 
-1. Farklı bir tarayıcı penceresinde, CloudPassage şirket sitenize yönetici olarak oturum açın.
+1. Farklı bir tarayıcı penceresinde, Cloudpaszu şirket sitenizde yönetici olarak oturum açın.
 
-1. Üstteki menüde **Ayarlar'ı**tıklatın ve ardından **Site Yönetimi'ni**tıklatın. 
+1. Üstteki menüde **Ayarlar**' a ve ardından **site yönetimi**' ne tıklayın. 
    
-    ![Tek İşaret-On'u Yapılandır][12]
+    ![Çoklu oturum açmayı yapılandırma][12]
 
-1. Kimlik **Doğrulama Ayarları** sekmesini tıklatın. 
+1. **Kimlik doğrulama ayarları** sekmesine tıklayın. 
    
-    ![Tek İşaret-On'u Yapılandır][13]
+    ![Çoklu oturum açmayı yapılandırma][13]
 
-1. Tek **Oturum Açma Ayarları** bölümünde aşağıdaki adımları gerçekleştirin: 
+1. **Çoklu oturum açma ayarları** bölümünde aşağıdaki adımları uygulayın: 
    
-    ![Tek İşaret-On'u Yapılandır][14]
+    ![Çoklu oturum açmayı yapılandırma][14]
 
-    a. **Tek oturum açma(SSO)(SSO Kurulum Belgeleri)** onay kutusunu etkinleştir'i seçin.
+    a. **Çoklu oturum açmayı etkinleştir (SSO) (SSO kurulum belgeleri)** onay kutusunu seçin.
     
-    b. Azure **AD Tanımlayıcısını** **SAML veren URL** textbox'a yapıştırın.
+    b. **Azure ad tanımlayıcısını** **SAML veren URL** metin kutusuna yapıştırın.
   
-    c. Giriş **URL'sini** **SAML uç noktası URL** textbox'ına yapıştırın.
+    c. **Oturum açma URL** 'sini **SAML Endpoint URL** metin kutusuna yapıştırın.
   
-    d. Giriş **Sayfası URL'sini** **Giriş sayfası** metin kutusuna yapıştırın.
+    d. **Logout URL** 'sini **Logout giriş sayfası** metin kutusuna yapıştırın.
   
-    e. İndirilen sertifikanızı not defterinde açın, indirilen sertifikanın içeriğini panonuza kopyalayın ve **ardından x 509 sertifika** metin kutusuna yapıştırın.
+    e. İndirilen sertifikanızı Not defteri 'nde açın, indirilen sertifikanın içeriğini panonuza kopyalayın ve **x 509 sertifika** metin kutusuna yapıştırın.
   
-    f. **Kaydet**'e tıklayın.
+    f. **Kaydet**’e tıklayın.
 
-### <a name="create-cloudpassage-test-user"></a>CloudPassage test kullanıcısı oluşturma
+### <a name="create-cloudpassage-test-user"></a>Cloudpaszu test kullanıcısı oluştur
 
-Bu bölümün amacı CloudPassage'da B.Simon adında bir kullanıcı oluşturmaktır.
+Bu bölümün amacı, Cloudpaszu içinde B. Simon adlı bir Kullanıcı oluşturmaktır.
 
-**CloudPassage'da B.Simon adında bir kullanıcı oluşturmak için aşağıdaki adımları gerçekleştirin:**
+**Cloudpaszu içinde B. Simon adlı bir kullanıcı oluşturmak için aşağıdaki adımları uygulayın:**
 
-1. **CloudPassage** şirket sitenizde yönetici olarak oturum açın. 
+1. **Cloudpaszu** şirket sitenizde yönetici olarak oturum açın. 
 
-1. Üstteki araç çubuğunda **Ayarlar'ı**tıklatın ve ardından **Site Yönetimi'ni**tıklatın. 
+1. Üstteki araç çubuğunda, **Ayarlar**' a ve ardından **site yönetimi**' ne tıklayın. 
    
-    ![CloudPassage test kullanıcısı oluşturma][22] 
+    ![Cloudpaszu test kullanıcısı oluşturma][22] 
 
-1. **Kullanıcılar** sekmesini tıklatın ve sonra **Yeni Kullanıcı Ekle'yi**tıklatın. 
+1. **Kullanıcılar** sekmesine tıklayın ve ardından **Yeni Kullanıcı Ekle**' ye tıklayın. 
    
-    ![CloudPassage test kullanıcısı oluşturma][23]
+    ![Cloudpaszu test kullanıcısı oluşturma][23]
 
-1. Yeni **Kullanıcı Ekle** bölümünde aşağıdaki adımları gerçekleştirin: 
+1. **Yeni Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın: 
    
-    ![CloudPassage test kullanıcısı oluşturma][24]
+    ![Cloudpaszu test kullanıcısı oluşturma][24]
     
-    a. Ad **metin** kutusuna Britta yazın. 
+    a. **Ilk ad** metin kutusuna Britta yazın. 
   
     b. **Soyadı** metin kutusuna Simon yazın.
   
-    c. Kullanıcı **adı** metin kutusunda, **E-posta** metin kutusunda ve **E-postayı Yeniden Yazın** metin kutusuna, Azure AD'ye Britta'nın kullanıcı adını yazın.
+    c. **Kullanıcı adı** metin kutusunda, **e-posta** metin kutusu ve **yeniden yazma e-posta** metin kutusunu, Azure AD 'de Britta Kullanıcı adı yazın.
   
-    d. **Access Türü**olarak, Halo Portal **Erişimini Etkinleştir'i**seçin.
+    d. **Erişim türü**olarak, **Halo portalı erişimini etkinleştir**' i seçin.
   
-    e. **Ekle**’ye tıklayın.
+    e. **Ekle**'ye tıklayın.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki CloudPassage döşemesini tıklattığınızda, SSO'yu kurduğunuz CloudPassage'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Cloudpaszu kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Cloudpaszu ' nda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile CloudPassage'ı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Cloudpaszu 'yi deneyin](https://aad.portal.azure.com/)
 
 <!--Image references-->
 

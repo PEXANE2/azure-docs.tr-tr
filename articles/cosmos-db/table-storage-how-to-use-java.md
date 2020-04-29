@@ -1,5 +1,5 @@
 ---
-title: Azure Tablo depolama sını veya Java'dan Azure Cosmos DB Tablo API'sini kullanma
+title: Java 'dan Azure Tablo Depolamayı veya Azure Cosmos DB Tablo API'si kullanma
 description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 33569730e565c68d66539feb4491b1925796b300
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76771140"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java’dan Azure Tablo depolama veya Azure Cosmos DB Tablo API'sini kullanma
@@ -93,7 +93,7 @@ StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=your_accoun
 Aşağıdaki örnekler, depolama bağlantı dizesini almak için bu yöntemlerden birini kullandığınızı varsayar.
 
 ## <a name="create-a-table"></a>Bir tablo oluşturma
-**CloudTableClient nesnesi,** tablolar ve varlıklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod bir **CloudTableClient** nesnesi oluşturur ve bu nesneyi kullanarak "people" adlı tabloyu temsil eden yeni bir **CloudTable** nesnesi oluşturur. 
+**Cloudtableclient** nesnesi, tablolar ve varlıklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod bir **CloudTableClient** nesnesi oluşturur ve bu nesneyi kullanarak "people" adlı tabloyu temsil eden yeni bir **CloudTable** nesnesi oluşturur. 
 
 > [!NOTE]
 > **CloudStorageAccount** nesneleri oluşturmanın başka yolları vardır. Daha fazla bilgi için [Azure Depolama İstemcisi SDK Başvurusu] içinde **CloudStorageAccount** bölümüne bakın.
@@ -215,7 +215,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-a-batch-of-entities"></a>Toplu işlem varlık yerleştirme
-Tablo hizmetine tek bir yazma işlemiyle çok sayıda varlık ekleyebilirsiniz. Aşağıdaki kod bir **TableBatchOperation** nesnesi oluşturur, ardından nesneye üç insert işlemi ekler. Her bir ekleme işlemi, yeni bir varlık nesnesi oluşturarak, değerlerini ayarlayarak ve sonra **tablodaki** **ekle** yöntemini çağırarak varlığı yeni bir ekleme işlemiyle ilişkilendirerek eklenir. Kod daha sonra **CloudTable** nesnesi üzerinde **execute** yöntemini çağırır, "people" tablosunu ve **TableBatchOperation** nesnesini belirtir ve tek bir istekte toplu tablo işlemlerini depolama hizmetine gönderir.
+Tablo hizmetine tek bir yazma işlemiyle çok sayıda varlık ekleyebilirsiniz. Aşağıdaki kod bir **TableBatchOperation** nesnesi oluşturur, ardından nesneye üç insert işlemi ekler. Her ekleme işlemi, yeni bir varlık nesnesi oluşturularak, değerlerini ayarlayarak ve ardından varlığı yeni bir ekleme işlemi ile ilişkilendirmek için **Tablebatchoperation** nesnesinde **Insert** yöntemi çağırarak eklenir. Kod daha sonra **CloudTable** nesnesi üzerinde **execute** yöntemini çağırır, "people" tablosunu ve **TableBatchOperation** nesnesini belirtir ve tek bir istekte toplu tablo işlemlerini depolama hizmetine gönderir.
 
 ```java
 try
@@ -454,7 +454,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Giriş özellikleri alt kümesi sorgulama
-Tabloya gönderilen bir sorgu, bir varlıktan yalnızca birkaç özellik alabilir. Projeksiyon olarak adlandırılan bu yöntem bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Aşağıdaki kodda yer alan sorgu, **select** yöntemini kullanarak yalnızca tablodaki varlıkların e-posta adreslerini döndürür. Sonuçlar bir **EntityResolver** yardımıyla bir **String** koleksiyonuna hedeflenir ve sunucudan döndürülen varlıkların tür dönüşümünü yapar. [Azure Tabloları: Yükseltme ve Sorgu Projeksiyonu Tanıtma][Azure Tabloları: Yükseltme ve Sorgu Projeksiyonu Tanıtma] adresinden projeksiyon hakkında daha fazla bilgi edinebilirsiniz. Projeksiyon yerel depolama öykünücüsünde desteklenmez, bu nedenle bu kod yalnızca tablo hizmetinde bir hesap kullanırken çalıştırılır.
+Tabloya gönderilen bir sorgu, bir varlıktan yalnızca birkaç özellik alabilir. Projeksiyon olarak adlandırılan bu yöntem bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Aşağıdaki kodda yer alan sorgu, **select** yöntemini kullanarak yalnızca tablodaki varlıkların e-posta adreslerini döndürür. Sonuçlar bir **EntityResolver** yardımıyla bir **String** koleksiyonuna hedeflenir ve sunucudan döndürülen varlıkların tür dönüşümünü yapar. [Azure tabloları: upsert ve sorgu projeksiyonu tanıtımı] [Azure tabloları: upsert ve sorgu projeksiyonu tanıtma] içinde projeksiyon hakkında daha fazla bilgi edinebilirsiniz. Projeksiyon yerel depolama öykünücüsünde desteklenmez, bu nedenle bu kod yalnızca tablo hizmetinde bir hesap kullanırken çalıştırılır.
 
 ```java
 try
@@ -496,7 +496,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Varlık Ekleme veya Değiştirme
-Genellikle tabloda zaten mevcut olup olmadığını bilmeden tabloya varlık eklemek istersiniz. insert-or-replace işlemi, mevcut değilse varlığı ekleyecek veya mevcutsa var olanı değiştirecek tek bir istekte bulunmanızı sağlar. Önceki örneklere ek olarak, aşağıdaki kod "Walter Harp" varlığını ekler veya değiştirir. Yeni bir varlık oluşturulduktan sonra bu kod **TableOperation.insertOrReplace** yöntemini çağırır. Bu kod daha sonra **CloudTable** nesnesi üzerinde tablo ile birlikte **execute** işlemini ve parametre olarak insert ya da replace tablo işlemini çağırır. Bir varlığın yalnızca bir kısmını güncelleştirmek için, bunun yerine **TableOperation.insertOrMerge** yöntemi kullanılabilir. Insert-or-replace işlemi yerel depolama öykünücüsünde desteklenmez, bu nedenle bu kod yalnızca tablo hizmetinde bir hesap kullanırken çalıştırılır. Bu [Azure Tablolar: Yükseltme ve Sorgu Projeksiyonu Tanıtma][Azure Tabloları: Yükseltme ve Sorgu Projeksiyonu Tanıtma]
+Genellikle tabloda zaten mevcut olup olmadığını bilmeden tabloya varlık eklemek istersiniz. insert-or-replace işlemi, mevcut değilse varlığı ekleyecek veya mevcutsa var olanı değiştirecek tek bir istekte bulunmanızı sağlar. Önceki örneklere ek olarak, aşağıdaki kod "Walter Harp" varlığını ekler veya değiştirir. Yeni bir varlık oluşturulduktan sonra bu kod **TableOperation.insertOrReplace** yöntemini çağırır. Bu kod daha sonra **CloudTable** nesnesi üzerinde tablo ile birlikte **execute** işlemini ve parametre olarak insert ya da replace tablo işlemini çağırır. Bir varlığın yalnızca bir kısmını güncelleştirmek için, bunun yerine **TableOperation.insertOrMerge** yöntemi kullanılabilir. Insert-or-replace işlemi yerel depolama öykünücüsünde desteklenmez, bu nedenle bu kod yalnızca tablo hizmetinde bir hesap kullanırken çalıştırılır. INSERT-or-Replace ve INSERT-or-Merge hakkında daha fazla bilgi edinmek için bu [Azure tabloları: upsert ve sorgu projeksiyonunu tanıtma] [Azure tabloları: upsert ve sorgu projeksiyonu tanıtma].
 
 ```java
 try
@@ -597,7 +597,7 @@ catch (Exception e)
 * [Java için Azure Depolama SDK'sı][Azure Storage SDK for Java]
 * [Azure Depolama İstemcisi SDK Başvurusu][Azure Storage Client SDK Reference]
 * [Azure Depolama REST API][Azure Storage REST API]
-* [Azure Depolama Ekibi Blogu] [Azure Depolama Ekibi Blogu]
+* [Azure depolama ekibi blogu] [Azure depolama ekibi blogu]
 
 Daha fazla bilgi için bkz. [Java geliştiricileri için Azure](/java/azure).
 

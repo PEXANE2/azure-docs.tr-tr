@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Tablo API'yi ve Azure Tablo Depolama'yı Ruby ile kullanma
+title: Ruby ile Azure Cosmos DB Tablo API'si ve Azure Tablo depolama kullanma
 description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76770869"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini Ruby ile kullanma
@@ -56,7 +56,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 Bu değerleri Azure portalında bir klasik veya Kaynak Yöneticisi depolama hesabından edinmek için:
 
-1. [Azure portalına](https://portal.azure.com)giriş yapın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. Kullanmak istediğiniz depolama hesabına gidin.
 3. Sağdaki Ayarlar dikey penceresinde **Erişim Anahtarları**'na tıklayın.
 4. Açılan Erişim anahtarları dikey penceresinde, 1. ve 2. erişim anahtarını göreceksiniz. Bunlardan birini kullanabilirsiniz.

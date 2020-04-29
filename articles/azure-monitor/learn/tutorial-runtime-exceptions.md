@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77670432"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights ile çalışma zamanı özel durumlarını bulma ve tanılama
@@ -31,7 +31,7 @@ Azure Application Insights, uygulamanızdan çalışma zamanı özel durumların
 
 Bu öğreticiyi tamamlamak için:
 
-- [Visual Studio 2019'u](https://www.visualstudio.com/downloads/) aşağıdaki iş yükleriyle yükleyin:
+- Aşağıdaki iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra:
     - ASP.NET ve web geliştirme
     - Azure geliştirme
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)’ı indirin ve yükleyin.
@@ -40,7 +40,7 @@ Bu öğreticiyi tamamlamak için:
 - Bu öğretici uygulamanızdaki bir özel durumun belirlenmesini izlediğinden, geliştirme veya test ortamındaki kodunuzu özel durum oluşturacak şekilde değiştirin. 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-Azure portalına giriş [https://portal.azure.com](https://portal.azure.com)yapın.
+Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal oturum açın.
 
 
 ## <a name="analyze-failures"></a>Hataları analiz etme
@@ -63,7 +63,7 @@ Application Insights, uygulamanızdaki tüm hataları toplar ve bunların farkl�
 
     ![Başarısız istek örnekleri](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. Başarısız istek ayrıntılarında Gannt grafiği görüntülenir. Grafikte, bu işlemde, işlemin toplam süresinin % 50'sinden fazlasını oluşturan iki adet bağımlılık hatası olduğu gösterilmektedir. Bu deneyim, dağıtılmış bir uygulamanın bileşenleri arasında bu işlem kimliğiyle ilişkili tüm telemetrileri sunar. [Yeni deneyim hakkında daha fazla bilgi edinin.](../../azure-monitor/app/transaction-diagnostics.md) Sağ tarafta, ayrıntılarını görmek istediğiniz öğelerden herhangi birini seçebilirsiniz. 
+6. Başarısız istek ayrıntılarında Gannt grafiği görüntülenir. Grafikte, bu işlemde, işlemin toplam süresinin % 50'sinden fazlasını oluşturan iki adet bağımlılık hatası olduğu gösterilmektedir. Bu deneyim, dağıtılmış bir uygulamanın bileşenleri arasında bu işlem kimliğiyle ilişkili tüm telemetrileri sunar. [Yeni deneyim hakkında daha fazla bilgi edinin](../../azure-monitor/app/transaction-diagnostics.md). Sağ tarafta, ayrıntılarını görmek istediğiniz öğelerden herhangi birini seçebilirsiniz. 
 
     ![Başarısız istek ayrıntıları](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -72,7 +72,7 @@ Application Insights, uygulamanızdaki tüm hataları toplar ve bunların farkl�
     ![Özel durum ayrıntıları](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Başarısız olan kodu belirleme
-Snapshot Debugger, uygulamanızda en sık karşılaşılan özel durumların anlık görüntülerini toplayarak üretimde sorunun kök nedenini tanılamanıza yardımcı olur.  Hata ayıklama anlık görüntülerini portalda görüntüleyerek çağrı yığınını görebilir ve her bir çağrı yığını çerçevesinde değişkenleri inceleyebilirsiniz. Daha sonra, anlık görüntüindirerek ve Visual Studio 2019 Enterprise'da açarak kaynak kodu hata ayıklama seçeneğiniz vardır.
+Snapshot Debugger, uygulamanızda en sık karşılaşılan özel durumların anlık görüntülerini toplayarak üretimde sorunun kök nedenini tanılamanıza yardımcı olur.  Hata ayıklama anlık görüntülerini portalda görüntüleyerek çağrı yığınını görebilir ve her bir çağrı yığını çerçevesinde değişkenleri inceleyebilirsiniz. Daha sonra, anlık görüntüyü indirerek ve Visual Studio 2019 Enterprise 'ta açarak kaynak kodda hata ayıklama seçeneğiniz vardır.
 
 1. Özel durumun özelliklerinden **Hata ayıklama anlık görüntüsünü aç**’a tıklayın.
 2. İsteğe yönelik çağrı yığınıyla birlikte **Hata Ayıklama Anlık Görüntüsü** paneli açılır.  Tüm yerel değişkenlerin istek sırasında sahip olduğu değerleri görüntülemek için herhangi bir metoda tıklayın.  Başta bu örnekte en çok kullanılan metot olmak üzere değeri olmayan yerel değişkenleri görebiliriz.
@@ -83,9 +83,9 @@ Snapshot Debugger, uygulamanızda en sık karşılaşılan özel durumların anl
 
     ![Hata ayıklama anlık görüntüsü](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Daha sonra, düzeltilmesi gereken gerçek kodu bulabileceğimiz Visual Studio'ya bu anlık görüntünün indirilmesi seçeneğiniz vardır. Bunu yapmak için **Anlık Görüntü İndir'i**tıklatın.
+4. Daha sonra, düzeltilmesi gereken gerçek kodu bulabilmemiz için bu anlık görüntüyü Visual Studio 'ya indirme seçeneğiniz vardır. Bunu yapmak için **anlık görüntüyü indir**' e tıklayın.
 5. Anlık görüntü Visual Studio'ya yüklenir.
-6. Artık Visual Studio Enterprise'da özel durumlara neden olan kod satırını hızla tanımlayan bir hata ayıklama oturumu çalıştırabilirsiniz.
+6. Artık özel duruma neden olan kod satırını hızlıca tanımlayan Visual Studio Enterprise bir hata ayıklama oturumu çalıştırabilirsiniz.
 
     ![Kodda özel durum](media/tutorial-runtime-exceptions/exception-code.png)
 

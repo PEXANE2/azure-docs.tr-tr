@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Costpoint ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Costpoint arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Costpoint ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ile Costpoint arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,173 +17,173 @@ ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 01168540e27605db0d240c0774159a710b5d5254
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71840075"
 ---
-# <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Öğretici: Costpoint'i Azure Etkin Dizini ile tümleştir
+# <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Öğretici: Costpoint 'i Azure Active Directory tümleştirin
 
-Bu eğitimde, Costpoint'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Costpoint'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Costpoint 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Costpoint 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Costpoint erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Costpoint'te otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de Costpoint 'e erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla maliyette otomatik olarak oturum açmalarına olanak sağlar.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Costpoint tek oturum açma (SSO) aboneliği ni etkinleştirildi.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Bir Costpoint çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandıracak ve sınayabilirsiniz. **Costpoint, SP ve IDP** tarafından başlatılan SSO'yu destekler.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Costpoint **SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="generate-costpoint-metadata"></a>Costpoint meta verisi oluşturma
+## <a name="generate-costpoint-metadata"></a>Costpoint meta verileri oluştur
 
-Costpoint SAML SSO yapılandırma **DeltekCostpoint711Security.pdf** kılavuzunda açıklanmıştır. Bu kılavuzu Deltek Costpoint destek sitesinden indirin ve Costpoint ve Microsoft Azure bölümü arasındaki **SAML Tek Oturum** > Yapılandırma**sı'na** bakın. Yönergeleri izleyin ve bir **Costpoint SP Federasyonu Metadata XML** dosyası oluşturun. 
+Costpoint SAML SSO yapılandırması **DeltekCostpoint711Security. PDF** kılavuzunda açıklanmıştır. Bu kılavuzu, deltek costpoint destek sitesinden indirin ve **SAML çoklu oturum açma kurulumu** > '**nu, maliyetli ve Microsoft Azure bölümünde SAML çoklu oturum açmayı yapılandırma** bölümüne başvurun. Yönergeleri izleyin ve bir **Costpoint SP Federasyon meta VERI XML** dosyası oluşturun. 
 
-![Costpoint Yapılandırma Yardımcı Programı](./media/costpoint-tutorial/config-utility.png)
+![Costpoint yapılandırma yardımcı programı](./media/costpoint-tutorial/config-utility.png)
 
-## <a name="add-costpoint-from-the-gallery"></a>Galeriden Costpoint ekleme
+## <a name="add-costpoint-from-the-gallery"></a>Galeriden Costpoint ekleyin
 
-Costpoint'i Azure REKLAMıyla tümleştirmek için, önce Azure portalındaki galeriden yönetilen SaaS uygulamaları listenize Costpoint'i ekleyin:
+Costpoint 'i Azure AD ile tümleştirmek için, önce Azure portal Galeriden yönetilen SaaS uygulamaları listenize Costpoint ekleyin:
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 
-1. Sol gezinti bölmesinde Azure **Etkin Dizin** hizmetini seçin.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 
-   ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+   ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-1. **Kurumsal Uygulamaları** > Seçin**Tüm Uygulamalar**.
+1. **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
 
-   ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+   ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-1. Yeni bir uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
 
    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Costpoint'i** girin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **costpoint** yazın.
 
-   ![Sonuç listesindecostpoint](common/search-new-app.png)
+   ![Sonuçlar listesinde costpoint](common/search-new-app.png)
 
-1. Sonuç listesinde **Costpoint'i**seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Sonuçlar listesinde, **Costpoint**' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sgn-on"></a>Azure AD tek sgn-on yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sgn-on"></a>Azure AD Single SGN 'yi yapılandırma ve test etme
 
-Azure AD SSO'yu Costpoint ile **B.Simon**adında bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Costpoint'teki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak, costpoint Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Costpoint ile ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Costpoint ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Costpoint ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-1. **[Costpoint'i](#configure-costpoint)** uygulama tarafındaki SAML SSO ayarlarını yapılandırmak için yapılandırın.
-1. Azure AD oturum açma'yı B.Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. Costpoint'te B.Simon'ın, kullanıcının Azure AD gösterimine bağlı bir muadili olması için **[bir Costpoint test kullanıcısı oluşturun.](#create-a-costpoint-test-user)**
-1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
+1. Uygulama tarafında SAML SSO ayarlarını yapılandırmak için **[Costpoint 'ı yapılandırın](#configure-costpoint)** .
+1. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+1. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
+1. Kullanıcı Azure AD gösterimine bağlı olan Costpoint 'te B. Simon 'ya karşılık gelen bir **[costpoint test kullanıcısı oluşturun](#create-a-costpoint-test-user)** .
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin:
+Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
-1. **Costpoint** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
+1. **Costpoint** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-   ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+   ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, *Servis Sağlayıcı meta veri dosyanız*varsa, aşağıdaki adımları tamamlayın:
+1. **Temel SAML yapılandırması** bölümünde, *hizmet sağlayıcısı meta verileri dosyanız*varsa, şu adımları izleyin:
 
    > [!NOTE]
-   > [Maliyet Noktası meta verilerini oluştur'da](#generate-costpoint-metadata)Servis Sağlayıcı meta veri dosyasını alırsınız. Dosyanın nasıl kullanılacağı daha sonra öğreticide açıklanır.
+   > Hizmet sağlayıcı meta veri dosyasını, [Costpoint meta verilerini oluşturma](#generate-costpoint-metadata)bölümünde alırsınız. Dosya kullanımı öğreticide daha sonra açıklanmaktadır.
  
-   1. Meta **veri dosyasını yükle** düğmesini seçin, ardından Costpoint tarafından daha önce oluşturulan **Costpoint SP Federation Metadata XML** dosyasını seçin ve ardından dosyayı yüklemek için **Ekle** düğmesini seçin.
+   1. **Meta veri dosyasını karşıya yükle** düğmesini seçin, ardından daha önce costpoint tarafından oluşturulan **Costpoint SP Federasyon meta veri XML** dosyasını seçin ve ardından dosyayı karşıya yüklemek için **Ekle** düğmesini seçin.
 
-      ![Meta veri dosyasını yükleme](./media/costpoint-tutorial/upload-metadata.png)
+      ![Meta veri dosyasını karşıya yükle](./media/costpoint-tutorial/upload-metadata.png)
     
-   1. Meta veri dosyası başarıyla yüklendiğinde, **Tanımlayıcı** ve **YanıtLA URL** değerleri Costpoint bölümünde otomatik olarak doldurulur.
+   1. Meta veri dosyası başarıyla karşıya yüklendiğinde, **tanımlayıcı** ve **yanıt URL 'Si** değerleri, costpoint bölümünde otomatik olarak doldurulur.
 
       > [!NOTE]
-      > **Tanımlayıcı** ve **Yanıt URL** değerleri otomatik olarak inceleştirilmiyorsa, gereksiniminize göre değerleri el ile girin. **Tanımlayıcının (Entity ID)** ve Yanıt URL'si **(İddia Tüketici Hizmeti URL'si)** doğru olarak ayarladığını ve **ACS URL'nin** **/LoginServlet.cps**ile biten geçerli bir Costpoint URL'si olduğunu doğrulayın.
+      > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak yoksa, gereksinimlerinize göre değerleri el ile girin. **Tanımlayıcının (VARLıK kimliği)** ve **yanıt URL 'Sinin (onaylama tüketici hizmeti URL 'si)** doğru ayarlandığını ve **ACS URL 'sinin** **/loginservlet.exe**ile biten geçerli bir costpoint URL olduğunu doğrulayın.
 
-   1. **Ek URL'ler Ayarla'yı**seçin. **Röle Durumu**için, aşağıdaki deseni kullanarak bir değer girin:`system=[your system]` (örneğin, **system=DELTEKCP).**
+   1. **Ek URL 'Ler ayarla**' yı seçin. **Geçiş durumu**için aşağıdaki kalıbı kullanarak bir değer girin:`system=[your system]` (ÖRNEĞIN, **System = deltekcp**).
 
-1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App Federation **Metadata Url'sini** kopyalamak ve Notepad'e kaydetmek için **Kopyala** simgesini seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalayıp Not defteri 'ne kaydetmek için **Kopyala** simgesini seçin.
 
-   ![SAML İmza Sertifikası](common/copy-metadataurl.png)
+   ![SAML Imzalama sertifikası](common/copy-metadataurl.png)
 
-### <a name="configure-costpoint"></a>Costpoint'i yapılandır
+### <a name="configure-costpoint"></a>Costpoint 'i yapılandırın
 
-1. Costpoint Configuration Utility'ye dönün. **IdP Federation Metadata XML** metin kutusuna, *Uygulama Federasyonu Metadata Url* dosyasının içeriğini yapıştırın. 
+1. Costpoint yapılandırma yardımcı programına dönün. **IDP Federasyon meta VERILERI XML** metin kutusunda, *uygulama Federasyon meta verileri URL 'si* dosyasının içeriğini yapıştırın. 
 
-   ![Costpoint Yapılandırma Yardımcı Programı](./media/costpoint-tutorial/config-utility-idp.png)
+   ![Costpoint yapılandırma yardımcı programı](./media/costpoint-tutorial/config-utility-idp.png)
 
-1. Costpoint SAML kurulum bitirmek için **DeltekCostpoint711Security.pdf** kılavuzundan yönergeleri devam edin.
+1. Costpoint SAML kurulumunu son almak için **DeltekCostpoint711Security. PDF** kılavuzundaki yönergelere devam edin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Azure portalında B.Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, B. Simon adlı Azure portal bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizin** > **Kullanıcıları** > **Tüm kullanıcıları**seçin.
+1. Azure Portal sol bölmedeki **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+   !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-1. **Yeni kullanıcıyı**seçin.
+1. **Yeni Kullanıcı**' yı seçin.
 
-   ![Yeni kullanıcı Düğmesi](common/new-user.png)
+   ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları tamamlayın:
+1. **Kullanıcı** özellikleri ' nde şu adımları uygulayın:
 
    ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-   1. **Ad** alanına, **B.Simon**girin.
+   1. **Ad** alanına **B. Simon**girin.
    
-   1. Kullanıcı **adı** alanına girin `b.simon\@yourcompanydomain.extension` (örneğin, B.Simon@contoso.com).
+   1. **Kullanıcı adı** alanına yazın `b.simon\@yourcompanydomain.extension` (örneğin, B.Simon@contoso.com).
    
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** alanında görüntülenen değeri yazın.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** alanında görüntülenen değeri yazın.
    
-   1. **Oluştur'u**seçin.
+   1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'a Costpoint'e erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlarsınız.
+Bu bölümde, Costpoint 'e B. Simon erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar** > **Tüm uygulamaları**seçin.
+1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
 
-1. Uygulamalar listesinde **Costpoint'i**seçin.
+1. Uygulamalar listesinde, **Costpoint**' i seçin.
 
-1. Uygulamanın genel bakış sayfasının **Yönet** **bölümünde, Kullanıcıları ve grupları**seçin.
+1. Uygulamanın genel bakış sayfasının **Yönet** bölümünde **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin. Atama **Ekle** iletişim **kutusunda, Kullanıcılar ve gruplar**seçin.
+1. **Kullanıcı Ekle**' yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde **B.Simon'u**seçin. Ardından, **Seç'i**seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde, **B. Simon**' u seçin. Sonra **Seç**' i seçin.
 
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve sonra **Seç'i**seçin.
+1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından **Seç**' i seçin.
 
-1. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
+1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
 ### <a name="create-a-costpoint-test-user"></a>Costpoint test kullanıcısı oluşturma
 
-Bu bölümde, Costpoint'te bir kullanıcı oluşturursunuz. Kullanıcı kimliğinin **B.SIMON** ve kullanıcının adının **B.Simon**olduğunu varsayalım. Kullanıcıyı Costpoint platformuna eklemek için [Costpoint İstemci destek ekibiyle](https://www.deltek.com/about/contact-us) birlikte çalışın. Tek oturum açma kullanabilmeleri için kullanıcının oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Costpoint 'te bir Kullanıcı oluşturacaksınız. Kullanıcı kimliğinin **b. Simon** ve Kullanıcı adının **b. Simon**olduğunu varsayalım. Kullanıcı costpoint platformunda eklemek için [Costpoint istemci destek ekibi](https://www.deltek.com/about/contact-us) ile çalışın. Kullanıcının çoklu oturum açmayı kullanabilmesi için önce oluşturulması ve etkinleştirilmesi gerekir.
 
-Kullanıcı oluşturulduktan sonra, kullanıcının **Kimlik Doğrulama Yöntemi** seçimi Active **Directory**olmalıdır, **SAML Tek Oturum Açma** onay kutusu seçilmeli ve Azure Active Directory'deki kullanıcı adı Active **Directory veya Sertifika Kimliği** olmalıdır (aşağıdaki ekran görüntüsünde gösterilir).
+Kullanıcı oluşturulduktan sonra, kullanıcının **kimlik doğrulama yöntemi** seçimi **Active Directory**olmalıdır; **SAML çoklu oturum açma** onay kutusu seçilmelidir ve Azure ACTIVE DIRECTORY Kullanıcı adının **Active Directory veya sertifika kimliği** olması gerekir (aşağıdaki ekran görüntüsünde gösterilen).
 
 ![Costpoint kullanıcısı](./media/costpoint-tutorial/costpoint-user.png)
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Access Paneli'ndeki Costpoint döşemesini seçtiğinizde, SSO'yu ayarladığınız için Costpoint uygulamasında otomatik olarak oturum açmış olmanız gerekir. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Costpoint kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız için, Costpoint uygulamasında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme eğitimleri listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticilerinin listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

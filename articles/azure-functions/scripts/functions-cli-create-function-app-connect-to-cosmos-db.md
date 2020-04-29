@@ -1,14 +1,14 @@
 ---
-title: Azure Cosmos DB ile bir işlev uygulaması oluşturma - Azure CLI
+title: Azure Cosmos DB-Azure CLı ile işlev uygulaması oluşturma
 description: Azure CLI Betiği Örneği - Azure Cosmos DB'ye bağlanan bir Azure İşlevi oluşturma
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc
 ms.openlocfilehash: 5ee80283ed39789eabb702a48aa97f678a6409f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922704"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Azure Cosmos DB’ye bağlanan bir Azure İşlevi oluşturma
@@ -39,9 +39,9 @@ Bu betik şu komutları kullanır: Tablodaki her komut, komuta özgü belgelere 
 | [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Depolama hesabı oluşturma |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Sunucusuz [Tüketim planında](../functions-scale.md#consumption-plan)bir işlev uygulaması oluşturur. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB veritabanı oluşturun. |
-| [az cosmosdb gösterisi](/cli/azure/cosmosdb#az-cosmosdb-show)| Veritabanı hesabı bağlantısını alır. |
-| [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Veritabanının anahtarlarını alır. |
-| [az functionapp config appsettings seti](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Bağlantı dizesini işlev uygulamasında bir uygulama ayarı olarak ayarlar. |
+| [az cosmosdb Show](/cli/azure/cosmosdb#az-cosmosdb-show)| Veritabanı hesabı bağlantısını alır. |
+| [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Veritabanı için anahtarları alır. |
+| [az functionapp config appSettings kümesi](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | İşlev uygulamasındaki uygulama ayarı olarak bağlantı dizesini ayarlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

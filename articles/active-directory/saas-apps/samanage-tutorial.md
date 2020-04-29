@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Samanage ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Samanage arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: Samanage ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Samanage arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,238 +17,238 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73160106"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Öğretici: Samanage ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Öğretici: Samanage ile tümleştirme Azure Active Directory
 
-Bu eğitimde, Samanage'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Samanage'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Samanage 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Samanage 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Samanage erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Samanage'de (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de Samanage erişimi olan ' i denetleyebilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Samanage ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Samanage ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Samanage tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Çoklu oturum açma etkin aboneliğini sayönet
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Samanage, **SP** tarafından başlatılan SSO'ya destek verdi
+* Samanage **SP** tarafından başlatılan SSO 'yu destekler
 
 ## <a name="adding-samanage-from-the-gallery"></a>Galeriden Samanage ekleme
 
-Samanage'in Azure AD'ye entegrasyonunu yapılandırmak için Galeriden Samanage'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Samanage 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Sayönet eklemeniz gerekir.
 
-**Galeriden Samanage eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Samanage eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda **Samanage**yazın, sonuç panelinden **Samanage'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **Samanage**yazın, sonuç panelinden **sayönet** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde samanage](common/search-new-app.png)
+     ![Sonuçlar listesinde Samanage](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Samanage ile yapılandırıp test esinizsiniz.
-Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile Samanage'deki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Samanage ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
-Azure AD oturumlarını Samanage ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı Samanage ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. **[Samanage Tek Oturum Açma'yı uygulama](#configure-samanage-single-sign-on)** tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Samanage test kullanıcısını oluşturun](#create-samanage-test-user)** - Samanage'de Britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Çoklu oturum açmayı yapılandırma](#configure-samanage-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanıcı Azure AD gösterimine bağlı olan Samanage 'da Britta Simon 'a sahip olmak için **[Samanage test kullanıcısı oluşturun](#create-samanage-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Samanage ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı Samanage ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında](https://portal.azure.com/), **Samanage** uygulama tümleştirme sayfasında Tek **oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **sayönet** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Samanage Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![Etki alanı ve URL 'Leri çoklu oturum açma bilgilerini sayönet](common/sp-identifier.png)
 
-    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<Company Name>.samanage.com/saml_login/<Company Name>`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<Company Name>.samanage.com/saml_login/<Company Name>`
 
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<Company Name>.samanage.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<Company Name>.samanage.com`
 
     > [!NOTE] 
-    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek Oturum Açma URL'si ve Tanımlayıcıile güncelleştirin. Daha fazla bilgi için [Samanage Client destek ekibi](https://www.samanage.com/support)yle iletişime geçin. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, Öğreticinin ilerleyen kısımlarında açıklanan gerçek oturum açma URL 'SI ve tanımlayıcı ile güncelleştirin. Daha fazla ayrıntı için [bkz. istemci desteği ekibine](https://www.samanage.com/support)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. **Samanage'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **Sayönet ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure Reklam Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-samanage-single-sign-on"></a>Samanage Tek Oturum Açma'yı Yapılandır
+### <a name="configure-samanage-single-sign-on"></a>Sayönet çoklu oturum açmayı yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak Samanage şirket sitenize giriş yapın.
+1. Farklı bir Web tarayıcısı penceresinde, Samanage şirket sitenizde yönetici olarak oturum açın.
 
-2. **Pano'ya** tıklayın ve sol gezinti bölmesinde **Kurulum'u** seçin.
+2. **Pano** ' ya tıklayın ve sol gezinti bölmesinde **Kurulum** ' u seçin.
    
     ![Pano](./media/samanage-tutorial/tutorial_samanage_001.png "Pano")
 
-3. **Tek Oturum Açma'yı**tıklatın.
+3. **Çoklu oturum açma**' ya tıklayın.
    
-    ![Tek Oturum Açma](./media/samanage-tutorial/tutorial_samanage_002.png "Çoklu Oturum Açma")
+    ![Çoklu oturum açma](./media/samanage-tutorial/tutorial_samanage_002.png "Çoklu Oturum Açma")
 
-4. **SAML** bölümünü kullanarak Giriş'e gidin, aşağıdaki adımları gerçekleştirin:
+4. **SAML kullanarak oturum açma** bölümüne gidin, aşağıdaki adımları uygulayın:
    
-    ![SAML kullanarak giriş yapın](./media/samanage-tutorial/tutorial_samanage_003.png "SAML kullanarak giriş yapın")
+    ![SAML kullanarak oturum açma](./media/samanage-tutorial/tutorial_samanage_003.png "SAML kullanarak oturum açma")
  
-    a. **SAML ile Tek Oturum Açma'yı Etkinleştir'i**tıklatın.  
+    a. **SAML Ile çoklu oturum açmayı etkinleştir**' e tıklayın.  
  
-    b. Kimlik **Sağlayıcısı URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Azure Reklam Tanımlayıcısı** değerini yapıştırın.    
+    b. **Kimlik sağlayıcısı URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.    
  
-    c. Giriş **URL'sinin** Azure portalındaki **Temel SAML Yapılandırması** bölümünün **Oturum Açma URL'si** ile eşleştiğini onaylayın.
+    c. **Oturum açma URL** 'sini Azure Portal ' DEKI **temel SAML yapılandırması** 'nın **oturum açma URL 'si** ile eşleştiğini doğrulayın.
  
-    d. Giriş **URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin** değerini girin.
+    d. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini girin.
  
-    e. **SAML Veren** metin kutusuna, uri kimlik sağlayıcınıza ayarlanan uygulama id'ini yazın.
+    e. **SAML veren** metin kutusunda, kimlik sağlayıcınızda uygulama kimliği URI 'si kümesini yazın.
  
-    f. Azure portalından indirilen taban-64 kodlu sertifikanızı not defterinde açın, içeriğini panonuza kopyalayın ve ardından **textbox'ın altındaki Kimlik Sağlayıcınızı yapıştırın x.509 Sertifikası'na** yapıştırın.
+    f. Not defteri 'nde Azure portal indirilen Base-64 kodlu sertifikanızı açın, bu içeriği panonuza kopyalayın ve ardından **kimlik sağlayıcısını aşağıdaki** metin kutusuna yapıştırın.
  
-    g. **Samanage'de yoksa kullanıcıları oluştur'u**tıklatın.
+    g. **Samanage 'de yoksa kullanıcı oluştur**' a tıklayın.
  
     h. **Güncelleştir**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Samanage'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Samanage 'a erişim izni vererek Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Samanage'i**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **sayönet**' i seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Samanage'i**seçin.
+2. Uygulamalar listesinde, **Sayönet**' i seçin.
 
     ![Uygulamalar listesindeki Samanage bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-samanage-test-user"></a>Samanage test kullanıcısı oluşturma
+### <a name="create-samanage-test-user"></a>Samanage test kullanıcısı oluştur
 
-Azure AD kullanıcılarının Samanage'de oturum açabilmeleri için Samanage'de bunların sağlanması gerekir.  
-Samanage durumunda, sağlama manuel bir görevdir.
+Azure AD kullanıcılarının Samanage 'ta oturum açmasını sağlamak için bunların Samanage 'a sağlanması gerekir.  
+Samanage, sağlama durumunda el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Yönetici olarak Samanage şirket sitenize giriş yapın.
+1. Samanage şirket sitenizde yönetici olarak oturum açın.
 
-2. **Pano'ya** tıklayın ve sol navigasyon bölmesinde **Kurulum'u** seçin.
+2. **Pano** ' ya tıklayın ve sol gezinti kaydırma bölmesinde **Kurulum** ' u seçin.
    
     ![Kurulum](./media/samanage-tutorial/tutorial_samanage_001.png "Kurulum")
 
-3. **Kullanıcılar** sekmesini tıklatın
+3. **Kullanıcılar** sekmesine tıklayın
    
     ![Kullanıcılar](./media/samanage-tutorial/tutorial_samanage_006.png "Kullanıcılar")
 
-4. **Yeni Kullanıcı'yı**tıklatın.
+4. **Yeni Kullanıcı**' ya tıklayın.
    
     ![Yeni Kullanıcı](./media/samanage-tutorial/tutorial_samanage_007.png "Yeni Kullanıcı")
 
-5. Sağlamak istediğiniz Bir Azure Etkin Dizin hesabının **Adını** ve **E-posta Adresini** yazın ve **kullanıcı oluştur'u**tıklatın.
+5. Sağlamak istediğiniz Azure Active Directory hesabının **adını** ve **e-posta adresini** yazın ve **Kullanıcı oluştur**' a tıklayın.
    
     ![Kullanıcı Oluştur](./media/samanage-tutorial/tutorial_samanage_008.png "Kullanıcı Oluştur")
    
    >[!NOTE]
-   >Azure Active Directory hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını onaylamak için bir bağlantıyı izler. Azure Active Directory kullanıcı hesaplarını sağlamak için Samanage tarafından sağlanan diğer Samanage kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
+   >Azure Active Directory hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını onaylamak için bir bağlantıyı izler. Azure Active Directory Kullanıcı hesapları sağlamak için Samanage tarafından sunulan diğer tüm Samanage Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Samanage döşemesini tıklattığınızda, SSO'yu kurduğunuz Samanage'de otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Samanage kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Samanage ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
