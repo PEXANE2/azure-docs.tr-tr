@@ -1,7 +1,7 @@
 ---
-title: AutoML ile & dengesiz verileri aşırı yakıştmaktan kaçının
+title: Oto ml ile & imsiz verileri aşırı sığdırmayı önleyin
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning'in otomatik makine öğrenme çözümleriyle ML modellerinin yaygın tuzaklarını belirleyin ve yönetin.
+description: Azure Machine Learning otomatik makine öğrenimi çözümleri ile ortak yönetim modellerini tanımlayabilir ve yönetin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,106 +11,106 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80874866"
 ---
-# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile aşırı montaj ve dengesiz verileri önleme
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
 
-Makine öğrenme modelleri oluştururken aşırı montaj ve dengesiz veriler yaygın tuzaklar vardır. Varsayılan olarak, Azure Machine Learning'in otomatik makine öğrenimi, bu riskleri belirlemenize yardımcı olacak grafikler ve ölçümler sağlar ve bunları azaltmaya yardımcı olmak için en iyi uygulamaları uygular. 
+Makine öğrenimi modelleri oluştururken, çok fazla sığdırma ve ı, imdengeli veriler yaygın olarak kullanılır. Varsayılan olarak, Azure Machine Learning otomatik makine öğrenimi, bu riskleri belirlemenize yardımcı olacak grafikler ve ölçümler sağlar ve bunları azaltmaya yardımcı olmak için en iyi yöntemleri uygular. 
 
-## <a name="identify-over-fitting"></a>Aşırı montajı tanımlayın
+## <a name="identify-over-fitting"></a>Fazla sığdırmayı tanımla
 
-Makine öğrenimine aşırı uyum, bir model eğitim verilerine çok iyi uyduğunda ortaya çıkar ve sonuç olarak görünmeyen test verileri üzerinde doğru bir şekilde tahmin edemez. Başka bir deyişle, model sadece eğitim verilerinde belirli desenleri ve gürültü ezberledi, ancak gerçek veriler üzerinde tahminler yapmak için yeterince esnek değildir.
+Makine öğreniminde fazla sığdırma, bir model eğitim verilerine çok uygun olduğunda oluşur ve sonuç olarak, görünmeyen test verilerini doğru şekilde tahmin edemeyebilir. Diğer bir deyişle, model eğitim verilerinde yalnızca belirli desenleri ve paraziti daha kolay hale getirir, ancak gerçek verilere ilişkin tahminleri yapmak için yeterince esnek değildir.
 
-Aşağıdaki eğitimli modelleri ve bunların ilgili tren ve test doğrularını göz önünde bulundurun.
+Aşağıdaki eğitilen modelleri ve bunlara karşılık gelen tren ve test accuracies göz önünde bulundurun.
 
 | Model | Tren doğruluğu | Test doğruluğu |
 |-------|----------------|---------------|
-| A | %99,9 | 95% |
-| B | 87% | 87% |
+| A | %99,9 | %95 |
+| B | %87 | %87 |
 | C | %99,9 | %45 |
 
-**Model A**göz önüne alındığında, görünmeyen verilerüzerinde test doğruluğu eğitim doğruluğu daha düşük ise, model aşırı takılı olduğu yaygın bir yanılgı vardır. Ancak, test doğruluğu her zaman eğitim doğruluğundan daha az olmalıdır ve aşırı uyum ve uygun uyum ayrımı *ne kadar* daha az doğru aşağı gelir. 
+Model **A**'yı düşünürken, görülmeyen veriler üzerinde test doğruluğu eğitim doğruluğunun altındaysa, modelin daha fazla uydurulur. Ancak, test doğruluğu her zaman eğitim doğruluğunu azaltır ve fazla sığdırma ile *uygun şekilde ayrım, daha az doğru* olacaktır. 
 
-**A** ve **B**modellerini karşılaştırırken, a **modeli** daha iyi bir modeldir çünkü daha yüksek test doğruluğuna sahiptir ve test doğruluğu %95'te biraz daha düşük olmasına rağmen, aşırı uyumun mevcut olduğunu düşündüren önemli bir fark değildir. Tren ve test doğrulukları birbirine daha yakın olduğu için **B** modelini seçmezsiniz.
+**A** ve **B**modellerini karşılaştırırken, **bir** model, daha yüksek test doğruluğu içerdiğinden daha iyi bir modeldir ve test doğruluğu %95 ' de biraz daha düşük olsa da, çok fazla sığdırma öneren önemli bir fark değildir. Tren ve test accuracies birlikte daha yakından olduğu için model **B** 'yi seçemezsiniz.
 
-Model **C** aşırı montaj net bir durumda temsil eder; eğitim doğruluğu çok yüksektir ancak test doğruluğu bu kadar yüksek değildir. Bu ayrım özneldir, ancak sorun ve verilerinizin bilgisinden gelir ve hangi hata büyüklükleri kabul edilebilir.
+Model **C** , aşırı sığdırma durumunu açık bir şekilde temsil eder; Eğitim doğruluğu çok yüksektir, ancak test doğruluğu yüksek olan her yerde değildir. Bu ayrım öznel, ancak sorununuz ve verileriniz hakkında bilgi sahibi olur ve hata magnitudes ne olduğunu kabul edilebilir.
 
-## <a name="prevent-over-fitting"></a>Aşırı montajı önleyin
+## <a name="prevent-over-fitting"></a>Fazla sığdırmayı engelle
 
-En korkunç durumlarda, aşırı takılan bir model, eğitim sırasında görülen özellik değeri kombinasyonlarının her zaman hedef için aynı çıktıyı ortaya çıkaracağını varsayar.
+En egregious durumlarda, daha fazla olan bir model, eğitim sırasında görülen Özellik değeri birleşimlerinin her zaman hedef için aynı çıkışa neden olacağını varsayacaktır.
 
-Aşırı montajı önlemenin en iyi yolu, aşağıdakiler de dahil olmak üzere ML'nin en iyi uygulamalarını takip etmektir:
+Fazla sığdırmayı önlemenin en iyi yolu, aşağıdakiler dahil olmak üzere ML en iyi yöntemlerini izlemelidir:
 
-* Daha fazla eğitim verisi kullanma ve istatistiksel önyargıyı ortadan kaldırma
-* Hedef sızıntısını önleme
+* Daha fazla eğitim verisi kullanma ve istatistiksel farkı ortadan kaldırma
+* Hedef sızıntısı engelleniyor
 * Daha az özellik kullanma
-* **Düzenlileştirme ve hiperparametre optimizasyonu**
-* **Model karmaşıklığı sınırlamaları**
+* **Düzenleme ve hyperparameter iyileştirmesi**
+* **Model karmaşıklık sınırlamaları**
 * **Çapraz doğrulama**
 
-Otomatik ML bağlamında, yukarıdaki ilk üç öğe **uyguladığınız en iyi uygulamalardır.** Son üç cesur öğeleri aşırı uydurma karşı korumak için varsayılan olarak **en iyi uygulamalar otomatik ML uygular.** Otomatik ML dışındaki ortamlarda, en iyi altı uygulamanın tümü, aşırı montaj lı modelleri önlemek için aşağıdaki leri izlemeye değerdir.
+Otomatikleştirilmiş ML bağlamında, yukarıdaki ilk üç öğe **en iyi uygulama uygulamalardır**. Son üç kalın öğe, **en iyi uygulamalar OTOMATIK ml** 'nin, aşırı sığdırma ile karşı koruma için varsayılan olarak uygular. Otomatik ML dışındaki ayarlarda, tüm altı en iyi uygulamalar, çok sığdırma modellerini kullanmaktan kaçınmak için aşağıda verilmiştir.
 
 ### <a name="best-practices-you-implement"></a>Uyguladığınız en iyi uygulamalar
 
-**Daha fazla veri** kullanmak, aşırı uyumu önlemenin en basit ve en iyi yoludur ve ek bir bonus genellikle doğruluğu artırır. Daha fazla veri kullandığınızda, modelin tam desenleri ezberleması zorlaşır ve daha fazla koşulu karşılamak için daha esnek çözümlere ulaşmak zorunda kalır. Ayrıca, eğitim verilerinizin canlı tahmin verilerinde bulunmayan yalıtılmış desenler içermediğinden emin olmak için **istatistiksel önyargıyı**tanımak da önemlidir. Bu senaryoyu çözmek zor olabilir, çünkü tren ve test kümeleriniz arasında aşırı uyum olmayabilir, ancak canlı test verileriyle karşılaştırıldığında aşırı uyum sağlayan bir durum olabilir.
+**Daha fazla veri** kullanmak, aşırı sığdırmayı önlemenin en basit ve en iyi yoludur ve ek bir prim genellikle doğruluğu arttırır. Daha fazla veri kullandığınızda, modelin tam desenleri daha zor hale getirmek daha zordur ve daha fazla koşullara uyum sağlamak için daha esnek çözümlere ulaşmaya zorlanır. Eğitim verilerinizin canlı tahmin verilerinde mevcut olmayan yalıtılmış desenler içermediğinden emin olmak için **istatistiksel farkı**tanımak de önemlidir. Eğeceğiniz ve test kümleriniz arasında aşırı yerleştirme bulunmayabilir, ancak canlı test verileriyle karşılaştırıldığında çok fazla sığdırma söz konusu olabileceğinden, bu senaryoya çözüm daha zor olabilir.
 
-Hedef sızıntısı, tren/test kümeleri arasında aşırı uyum göremeyebilirsiniz, ancak daha ziyade tahmin-zaman görünür benzer bir konudur. Hedef sızıntısı, modelinizin normalde tahmin zamanında olmaması gereken verilere erişerek eğitim sırasında "hile yaptığında" oluşur. Örneğin, sorununuz Pazartesi günü bir emtia fiyatının Cuma günü ne olacağını tahmin etmekse, ancak özelliklerinizden biri yanlışlıkla Perşembe günlerinden gelen verileri içeriyorsa, bu modelin gelecekte göremeyeceği için tahmin zamanında sahip olamayacağı veriler olacaktır. Hedef sızıntısı kaçırmak kolay bir hatadır, ancak genellikle sorun için anormal yüksek doğruluk ile karakterizedir. Hisse senedi fiyatını tahmin etmeye çalışıyorsanız ve bir modeli %95 doğrulukla eğitiyorsanız, özelliklerinizde bir yerlerde büyük olasılıkla hedef sızıntısı olabilir.
+Hedef sızıntısı, eğitim/test kümeleri arasında fazla sığdırmayı görmeyebilirsiniz, ancak bunun yerine tahmin sırasında görünmesini mümkün bir sorundur. Hedef sızıntısı, modelinize "Cheats", normalde tahmin zamanında sahip olmadığı verilere erişim izni vererek oluşur. Örneğin, sorununuz Pazartesi günü ücretlendiriyor, ancak özelliklerden biri yanlışlıkla Perşembe ' dan veri içeriyordu, ancak bu veri, bu durum, gelecekte göremeyeceği için bir tahmin süresi değildir. Hedef sızıntısı, kaçırılması kolay bir hata, ancak genellikle sorununuz için anormal ölçüde yüksek doğruluk ile ayırdedilir. Hisse senedi fiyatını tahmin etmeye ve %95 doğruluk oranında bir model eğitimeye çalışıyorsanız, özelliklerinizin bir yerinde hedef sızıntısı olabilir.
 
-Özelliklerikaldırmak, modelin belirli desenleri ezberlemek için kullanılacak çok fazla alana sahip olmasını engelleyerek aşırı uyuma yardımcı olabilir ve böylece daha esnek olmasına neden olabilir. Nicel olarak ölçmek zor olabilir, ancak özellikleri kaldırabilir ve aynı doğruluğu koruyabilirseniz, modeli daha esnek hale getirmiştir ve aşırı uyum riskini azaltmış olur.
+Özelliklerin kaldırılması, modelin belirli desenleri kaldırmak için çok fazla alan kullanmasını önleyecek ve bu sayede daha esnek olmasına neden olabilir. Ölçüyü Tayana ölçmek zor olabilir, ancak özellikleri kaldırabilmeniz ve aynı doğruluğu koruuyorsanız, büyük olasılıkla modeli daha esnek hale yapmış ve fazla sığdırma riskini azaltacaksınız.
 
-### <a name="best-practices-automated-ml-implements"></a>En iyi uygulamalar otomatik ML uygular
+### <a name="best-practices-automated-ml-implements"></a>En iyi uygulamalar otomatik ML uygulamaları
 
-Düzenlileştirme, karmaşık ve aşırı takılı modelleri cezalandırmak için bir maliyet işlevini en aza indirme işlemidir. Farklı türde düzenlileştirme işlevleri vardır, ancak genel olarak hepsi model katsayısı boyutunu, varyansını ve karmaşıklığı cezalandırır. Otomatik ML, aşırı uyumu kontrol eden farklı model hiperparametre ayarlarına sahip farklı kombinasyonlarda L1 (Kement), L2 (Sırt) ve ElasticNet (L1 ve L2) kullanır. Basit bir ifadeyle, otomatik ML bir model düzenlenir ne kadar değişir ve en iyi sonucu seçin.
+Düzenleme, karmaşık ve daha fazla olan modelleri sızmak için bir maliyet işlevini en aza indirmenizi sağlar. Farklı türlerde düzenleme işlevleri vardır, ancak genel olarak model katsayı boyutunu, varyansı ve karmaşıklığını tamamen penler. Otomatik ML, L1 (Kement), L2 (Ridge) ve Elaviznet (L1 ve L2 eşzamanlı) ' i, farklı birleşimlerde fazla sığdırmayı denetleyen farklı model hiper parametre ayarlarına sahip farklı bileşimlerde kullanır. Basit koşullarda, otomatik ML bir modelin ne kadarının düzenlenebilir olduğunu farklılık gösterecektir ve en iyi sonucu seçer.
 
-Otomatik ML ayrıca aşırı montajı önlemek için açık model karmaşıklığı sınırlamaları da uygular. Çoğu durumda bu uygulama, tek tek ağaç maksimum derinliğinin sınırlı olduğu ve orman veya topluluk tekniklerinde kullanılan toplam ağaç sayısının sınırlı olduğu karar ağacı veya orman algoritmaları için özeldir.
+Otomatik ML, aşırı sığdırmayı engellemek için açık model karmaşıklığı kısıtlamalarını da uygular. Çoğu durumda bu uygulama özellikle karar ağacı veya orman algoritmalarının yanı sıra, tek tek ağaç en yüksek derinliğinin sınırlı olduğu ve ormanda kullanılan toplam ağaç sayısı veya ensesıya da zenginlik teknikleri sınırlıdır.
 
-Çapraz doğrulama (CV), tam eğitim verilerinizin birçok alt kümesini alma ve her alt kümede bir model yetiştirme işlemidir. Fikir bir model "şanslı" alabilir ve bir alt kümesi ile büyük doğruluk var, ama birçok alt setleri kullanarak model bu yüksek doğruluk her zaman elde olmaz. CV yaparken, bir doğrulama tutma dataset sağlar, CV kıvrımları (alt küme sayısı) belirtin ve otomatik ML modelinizi eğitecek ve doğrulama setinizdeki hatayı en aza indirmek için hiperparametreleri ayarlarsınız. Bir CV kıvrımı aşırı formda olabilir, ancak birçoğunu kullanarak son modelinizin aşırı formda olma olasılığını azaltır. Bunun karşılığında CV daha uzun eğitim süreleri ve dolayısıyla daha yüksek maliyetle sonuçlanır, çünkü bir modeli bir kez eğitmek yerine, her *n* CV alt kümeleri için bir kez eğitebilirsiniz. 
+Çapraz doğrulama (CV), tam eğitim verilerinizin çok sayıda alt kümesini alma ve her bir alt kümede bir modeli eğitme işlemidir. Bu, bir modelin "Lucky" alabilir ve bir alt küme ile harika bir doğruluk elde etmenizi sağlar, ancak birçok alt küme kullanarak modelin her seferinde bu yüksek doğruluğu elde edilmeyeceği. CV 'yi yaparken, bir doğrulama veri kümesi sağlarsınız, CV katlarınızı (alt küme sayısı) belirtin ve otomatik ML, doğrulama kümenizdeki hatayı en aza indirmek için modelinize eğitme ve hiper parametreleri ayarlamanıza yardımcı olur. Bir CV katlaması daha fazla olabilir, ancak bunların çoğunu kullanarak, son modelinizin daha fazla sığdırma olasılığını azaltır. Zorunluluğunu getirir, CV 'nin bir kez eğitim sağladığından, her *n* CV alt kümesi için bir kez eğitecaksınız. 
 
 > [!NOTE]
-> Çapraz doğrulama varsayılan olarak etkinleştirilir; otomatik ML ayarlarında yapılandırılmalıdır. Ancak, çapraz doğrulama yapılandırıldıktan ve bir doğrulama veri kümesi sağlandıktan sonra, işlem sizin için otomatikleştirilir. Bkz. 
+> Çapraz doğrulama varsayılan olarak etkinleştirilmemiştir; Otomatik ML ayarları ' nda yapılandırılması gerekir. Ancak, çapraz doğrulama yapılandırıldıktan ve bir doğrulama veri kümesi sağlandıktan sonra, işlem sizin için otomatikleştirilir. Bkz. 
 
 <a name="imbalance"></a>
 
-## <a name="identify-models-with-imbalanced-data"></a>Dengesiz verilerle modelleri belirleme
+## <a name="identify-models-with-imbalanced-data"></a>İmdengelenmiş verilerle modelleri tanımla
 
-Dengesiz veriler genellikle makine öğrenimi sınıflandırma senaryoları için verilerde bulunur ve her sınıftaki gözlemlerin orantısız bir oranını içeren verileri ifade eder. Bu dengesizlik bir modelin doğruluğunun yanlış algılanan olumlu bir etkisine yol açabilir, çünkü giriş verileri bir sınıfa karşı önyargıya sahiptir, bu da eğitimli modelin bu önyargıyı taklit etmesiyle sonuçlanır. 
+Makine öğrenimi sınıflandırma senaryolarına ilişkin verilerde yaygın olarak imledengeli veriler bulunur ve her sınıfta orantısız oranını içeren verilere başvurur. Bu dengesizlik, bir modelin doğruluğu üzerinde sapma yaptığından, bu durum, eğitim modelinin bu farkı taklit etmek için eğitilmesine neden olacak 
 
-Sınıflandırma algoritmaları genellikle doğruluk la değerlendirildiğinden, bir modelin doğruluk puanını kontrol etmek, dengesiz verilerden etkilenip etkilenmediğini belirlemenin iyi bir yoludur. Gerçekten yüksek doğruluk ya da bazı sınıflar için gerçekten düşük doğruluk var mıydı?
+Sınıflandırma algoritmaları genellikle doğrulukla değerlendirildiğinden, bir modelin doğruluk puanı kontrol edilirken, imledengelenmiş verilerden etkilenip etkilenmediğini belirlemek için iyi bir yoldur. Belirli sınıflar için gerçekten yüksek doğruluk veya gerçekten düşük doğruluk mı var?
 
-Buna ek olarak, otomatik ML çalıştırmaları, modelinizin sınıflandırmalarının doğruluğunu anlamanıza ve dengesiz verilerden etkilenecek modelleri belirlemenize yardımcı olabilecek aşağıdaki grafikleri otomatik olarak oluşturur.
+Ayrıca, otomatik ML çalıştırmaları aşağıdaki grafikleri otomatik olarak oluşturur. Bu, modelinizdeki sınıflandırmaların doğruluğunu anlamanıza yardımcı olabilir ve imdenli verilerden etkilenen modelleri tanımlayabilir.
 
 Grafik| Açıklama
 ---|---
-[Karışıklık Matrisi](how-to-understand-automated-ml.md#confusion-matrix)| Doğru sınıflandırılan etiketleri verilerin gerçek etiketlerine göre değerlendirir. 
-[Hassas geri çağırma](how-to-understand-automated-ml.md#precision-recall-chart)| Doğru etiketlerin verilerin bulunan etiket örneklerinin oranına oranını değerlendirir 
-[ROC Eğrileri](how-to-understand-automated-ml.md#roc)| Doğru etiketlerin yanlış pozitif etiketlerin oranına oranını değerlendirir.
+[Karışıklık matrisi](how-to-understand-automated-ml.md#confusion-matrix)| Doğru sınıflandırılan etiketleri verilerin gerçek etiketlerine göre değerlendirir. 
+[Precision-geri çek](how-to-understand-automated-ml.md#precision-recall-chart)| Doğru etiketlerin oranını, verilerin bulunan etiket örneklerinin oranına göre değerlendirir 
+[ROC eğrileri](how-to-understand-automated-ml.md#roc)| Doğru etiketlerin oranını, yanlış pozitif etiketlerin oranına göre değerlendirir.
 
-## <a name="handle-imbalanced-data"></a>Dengesiz verileri işleme 
+## <a name="handle-imbalanced-data"></a>İmdengeli verileri işle 
 
-Makine öğrenimi iş akışını basitleştirme amacının bir parçası olarak, otomatik ML, 
+Machine Learning iş akışını basitleştirmenin bir parçası olarak, otomatik ML, gibi imdengelenmiş verilerle başa çıkmanıza yardımcı olmak için yerleşik yeteneklere sahiptir 
 
-- **Ağırlık sütunu:** otomatik ML, ağırlıklı bir sütunu giriş olarak destekler ve verilerdeki satırların yukarı veya aşağı ağırlıklandırılmasına neden olur ve bu da sınıfı daha fazla veya daha az "önemli" hale getirebilir.
+- **Ağırlık sütunu**: otomatik ml, ağırlıklı bir sütunu giriş olarak destekler, bu da verileri daha fazla veya daha az "önemli" hale getirmek için verilerin ağırlıklı veya aşağı düşmesine neden olabilir.
 
-- Otomatik ML tarafından kullanılan algoritmalar düzgün 20:1,, en yaygın sınıf en az ortak sınıf daha veri 20 kat daha fazla satır olabilir anlamına dengesizlik işleyebilir.
+- Otomatik ML tarafından kullanılan algoritmalar, 20:1 'e kadar dengesizliği doğru şekilde işleyebilir, yani en yaygın sınıf, verilerde en az ortak sınıftan 20 kat daha fazla satıra sahip olabilir.
 
-Aşağıdaki teknikler, dengesiz verileri otomatik ML dışında işlemek için ek seçeneklerdir. 
+Aşağıdaki teknikler, otomatik ML dışında imdengeli verileri işlemek için ek seçeneklerdir. 
 
-- Küçük sınıfları yukarı ya da daha büyük sınıfları aşağı örnekleme yaparak sınıf dengesizliğine bile yeniden örnekleme. Bu yöntemler işlemek ve analiz etmek için uzmanlık gerektirir.
+- Daha küçük sınıfları örnekleyerek veya daha büyük sınıfları aşağı örnekleyerek sınıf dengesizliği olarak yeniden örnekleme yapın. Bu yöntemler, işlemek ve analiz etmek için uzmanlık gerektirir.
 
-- Dengesiz verilerle daha iyi ilgilenen bir performans ölçümü kullanın. Örneğin, F1 puanı ağırlıklı bir kesinlik ve hatırlama ortalamasıdır. Hassas bir sınıflandırıcının kesinliğini ölçer, düşük hassasiyet yüksek sayıda yanlış pozitifi gösterir--, geri çağırma ise bir sınıfın tamlığını ölçer, düşük geri çağırma da yüksek sayıda yanlış negatifi gösterir. 
+- İmdengeli verilerle daha iyi anlaşmalar sağlayan bir performans ölçümü kullanın. Örneğin, F1 puanı ağırlıklı duyarlık ve geri çağırma ortasıdır. Duyarlık, bir sınıflandırıcının exactness--düşük--, duyarlık değeri, bir sınıflandırıcının bir sınıflandırıcısını ölçer, ancak en düşük düzeyde geri çağırma, çok sayıda yanlış negatiflik olduğunu gösterir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Örneklere bakın ve otomatik makine öğrenimini kullanarak nasıl model oluşturup nasıl oluşturup nasıl oluşturup öğrenebilirsiniz:
+Bkz. örnekler ve otomatik makine öğrenimi kullanarak modeller oluşturmayı öğrenme:
 
-+ [Öğreticiyi izleyin: Azure Machine Learning ile bir regresyon modelini otomatik olarak eğitin](tutorial-auto-train-models.md)
++ [Öğreticiyi izleyin: Azure Machine Learning ile regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md)
 
-+ Otomatik eğitim denemesi için ayarları yapılandırın:
-  + Azure Machine Learning stüdyosunda [şu adımları kullanın.](how-to-use-automated-ml-for-ml-models.md)
-  + Python SDK ile [şu adımları kullanın.](how-to-configure-auto-train.md)
++ Otomatik eğitim denemenize yönelik ayarları yapılandırın:
+  + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-use-automated-ml-for-ml-models.md).
+  + Python SDK ile [Bu adımları kullanın](how-to-configure-auto-train.md).
 
 

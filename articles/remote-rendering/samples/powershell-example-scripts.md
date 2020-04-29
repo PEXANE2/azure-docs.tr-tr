@@ -1,52 +1,52 @@
 ---
 title: Örnek PowerShell betikleri
-description: PowerShell komut dosyaları aracılığıyla ön uç nasıl kullanılacağını gösteren örnekler
+description: Ön ucun PowerShell betikleri aracılığıyla nasıl kullanılacağını gösteren örnekler
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80891501"
 ---
 # <a name="example-powershell-scripts"></a>Örnek PowerShell betikleri
 
-Azure Uzaktan İşleme aşağıdaki iki REST API'si sağlar:
+Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
 
-- [Dönüşüm REST API](../how-tos/conversion/conversion-rest-api.md)
+- [Dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md)
 - [Oturum REST API](../how-tos/session-rest-api.md)
 
-[ARR örnekleri deposu,](https://github.com/Azure/azure-remote-rendering) hizmetin REST API'leri ile etkileşim kurmak için *Komut Dosyaları* klasöründe örnek komut dosyaları içerir. Bu makalede, kullanımları açıklanmaktadır.
+[ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , hizmetin REST API 'leriyle etkileşim kurmak için *Scripts* klasöründeki örnek betikleri içerir. Bu makalede kullanımları açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Örnek komut dosyalarını yürütmek için Azure [PowerShell'in](https://docs.microsoft.com/powershell/azure/)işlevsel bir kurulumuna ihtiyacınız vardır.
+Örnek betikleri yürütmek için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)işlevsel kurulumuna ihtiyacınız vardır.
 
 1. Azure PowerShell'i yükleme:
-    1. Yönetici haklarıyla powershell açın
-    1. Çalıştırmak:`Install-Module -Name Az -AllowClobber`
+    1. Yönetici haklarıyla bir PowerShell açın
+    1. Çalışmaz`Install-Module -Name Az -AllowClobber`
 
-1. Komut dosyalarını çalıştırma yla ilgili hatalar alırsanız, [yürütme ilkenizin](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) uygun şekilde ayarlandığından emin olun:
-    1. Yönetici haklarıyla powershell açın
-    1. Çalıştırmak:`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
+1. Betikleri çalıştırma hakkında hata alırsanız [yürütme ilkenizin](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) uygun şekilde ayarlandığından emin olun:
+    1. Yönetici haklarıyla bir PowerShell açın
+    1. Çalışmaz`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
-1. [Azure Depolama hesabı hazırlama](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
+1. [Azure depolama hesabı hazırlama](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
-1. Azure Uzaktan İşlem hesabınızı içeren aboneliğinize giriş yapın:
-    1. PowerShell aç
-    1. Çalıştırın: `Connect-AzAccount` ve ekrandaki yönergeleri izleyin.
+1. Azure uzaktan Işleme hesabınızı içeren aboneliğinizde oturum açın:
+    1. Bir PowerShell açın
+    1. Şunu çalıştırın `Connect-AzAccount` : ve ekrandaki yönergeleri izleyin.
 
 > [!NOTE]
-> Kuruluşunuzun birden fazla aboneliği olması durumunda, SubscriptionId ve Kiracı bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
+> Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
 
-1. [Azure Uzaktan İşleme GithHub deposundan](https://github.com/Azure/azure-remote-rendering) *Scriptler* klasörünü indirin.
+1. [Azure uzaktan Işleme GithHub deposundan](https://github.com/Azure/azure-remote-rendering) *betikler* klasörünü indirin.
 
 ## <a name="configuration-file"></a>Yapılandırma dosyası
 
-`.ps1` Dosyaların yanında doldurmanız gereken `arrconfig.json` bir şey vardır:
+Dosyaların yanında, `.ps1` doldurmanız gereken bir `arrconfig.json` sorun var:
 
 ```json
 {
@@ -74,80 +74,80 @@ Azure Uzaktan İşleme aşağıdaki iki REST API'si sağlar:
 ```
 
 > [!CAUTION]
-> LocalAssetDirectoryPath yolunda çift eğik çizgi kullanarak ters eğik çizgilerden\\\\düzgün bir şekilde kaçtığa emin olun: " ve inputFolderPath ve inputAssetPath gibi diğer tüm yollarda "/" ileri eğik çizgilerini kullanın.
+> Çift ters eğik çizgi kullanarak localassetdirectorypath yolundaki ters eğik çizgileri doğru bir şekilde atladığınızdan emin\\\\olun: "" ve ınputfolderpath ve ınputassetpath gibi tüm diğer yollarda eğik çizgileri "/" kullanın.
 
-### <a name="accountsettings"></a>hesapAyarlar
+### <a name="accountsettings"></a>accountSettings
 
-Bunun `arrAccountId` `arrAccountKey`için ve , [bkz.](../how-tos/create-an-account.md)
-Kullanılabilir `region` [bölgelerin listesine](../reference/regions.md)bakın.
+Ve `arrAccountId` `arrAccountKey`Için bkz. [Azure uzaktan işleme hesabı oluşturma](../how-tos/create-an-account.md).
+İçin `region` [kullanılabilir bölgelerin listesini](../reference/regions.md)görüntüleyin.
 
-### <a name="renderingsessionsettings"></a>renderSessionSettings
+### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-**RenderingSession.ps1**çalıştırmak istiyorsanız bu yapı nın doldurulması gerekir.
+**Renderingsession. ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
 
-- **vmSize:** Sanal makinenin boyutunu seçer. *Standart* veya *premium'u*seçin. Artık ihtiyacınız olmadığında işleme oturumlarını kapatın.
-- **maxLeaseTime:** VM'yi kiralamak istediğiniz süre. Kira süresi dolduğunda kapatılacak. Kiralama süresi daha sonra uzatılabilir (aşağıya bakın).
+- **VMSize:** Sanal makinenin boyutunu seçer. *Standart* veya *Premium*' u seçin. Artık ihtiyacınız olmadığında işleme oturumlarını kapatın.
+- **Maxleasetime:** VM 'nin kiralanmasını istediğiniz süre. Kira süresi dolarsa kapatılacak. Kira süresi daha sonra genişletilebilir (aşağıya bakın).
 
-### <a name="assetconversionsettings"></a>varlıkDönüşüm Ayarları
+### <a name="assetconversionsettings"></a>assetConversionSettings
 
-**Conversion.ps1'i**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
+**Dönüştürme. ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
 
-Ayrıntılar için [bkz.](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
+Ayrıntılar için bkz. [Azure Storage hesabı hazırlama](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
 
-## <a name="script-renderingsessionps1"></a>Komut Dosyası: RenderingSession.ps1
+## <a name="script-renderingsessionps1"></a>Betik: RenderingSession. ps1
 
-Bu komut dosyası, oturumları oluşturmak, sorgulamak ve durdurmak için kullanılır.
+Bu betik, işleme oturumlarını oluşturmak, sorgulamak ve durdurmak için kullanılır.
 
 > [!IMPORTANT]
-> Arrconfig.json'daki *hesap Ayarları* ve *renderSessionSettings* bölümlerini doldurduğundan emin olun.
+> ARRConfig. JSON içindeki *accountsettings* ve *Renderingsessionsettings* bölümlerini doldurduğunuzdan emin olun.
 
-### <a name="create-a-rendering-session"></a>Oluşturma oturumu oluşturma
+### <a name="create-a-rendering-session"></a>İşleme oturumu oluşturma
 
-Tam dolu arrconfig.json ile normal kullanım:
+Tamamen doldurulan ARRConfig. JSON ile normal kullanım:
 
 ```PowerShell
 .\RenderingSession.ps1
 ```
 
-Komut dosyası, belirtilen ayarlarla bir render VM'i döndürmek için [oturum yönetimi REST API'yi](../how-tos/session-rest-api.md) çağırır. Başarı, *bu sessionId*alacak. Daha sonra oturum hazır olana veya bir hata oluşana kadar oturum özelliklerini yoklar.
+Betik, belirtilen ayarlarla bir işleme sanal makinesi çalıştırmak için [oturum yönetimi REST API](../how-tos/session-rest-api.md) çağırır. Başarılı olduğunda, *SessionID*'yi alır. Ardından, oturum hazırlanana veya bir hata gerçekleşene kadar oturum özelliklerini yoklayacaktır.
 
-Alternatif bir **config** dosyası kullanmak için:
+**Alternatif bir yapılandırma** dosyası kullanmak için:
 
 ```PowerShell
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Config dosyasından **tek tek ayarları geçersiz kılabilirsiniz:**
+Yapılandırma dosyasından **bağımsız ayarları geçersiz kılabilirsiniz** :
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-Bir **oturuma yalnızca yoklama olmadan başlamak**için şunları kullanabilirsiniz:
+Yalnızca **yoklama olmadan bir oturum başlatmak**için şunu kullanabilirsiniz:
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
 ```
 
-Komut dosyasının geri alındığı *sessionId* diğer oturum komutlarının çoğuna geçirilmelidir.
+Betiğin aldığı *SessionID* diğer oturum komutlarının çoğuna geçirilmesi gerekir.
 
-### <a name="retrieve-session-properties"></a>Oturum özelliklerini alma
+### <a name="retrieve-session-properties"></a>Oturum özelliklerini al
 
-Bir oturumun özelliklerini almak için çalıştırın:
+Bir oturumun özelliklerini almak için şunu çalıştırın:
 
 ```PowerShell
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-Oturumun `-Poll` *hazır* olmasını veya bir hata oluştuğunu beklemek için kullanın.
+Oturum `-Poll` *başlamaya* veya bir hata oluşuncaya kadar beklemek için kullanın.
 
-### <a name="list-active-sessions"></a>Etkin oturumları listele
+### <a name="list-active-sessions"></a>Etkin oturumları listeleme
 
 ```PowerShell
 .\RenderingSession.ps1 -GetSessions
 ```
 
-### <a name="stop-a-session"></a>Oturumu durdurma
+### <a name="stop-a-session"></a>Oturumu Durdur
 
 ```PowerShell
 .\RenderingSession.ps1 -StopSession -Id <sessionID>
@@ -155,119 +155,119 @@ Oturumun `-Poll` *hazır* olmasını veya bir hata oluştuğunu beklemek için k
 
 ### <a name="change-session-properties"></a>Oturum özelliklerini değiştirme
 
-Şu anda, yalnızca bir oturumun maxLeaseTime'ını değiştirmeyi destekliyoruz.
+Şu anda yalnızca bir oturumun maxLeaseTime değerini değiştirmeyi destekliyoruz.
 
 > [!NOTE]
-> Kiralama süresi her zaman VM oturumunun ilk oluşturulduğu andan itibaren sayılır. Yani oturum kira süresini bir saat daha uzatmak için *maxLeaseTime'ı* bir saat artırın.
+> Kira süresi her zaman, oturum VM 'sinin ilk olarak oluşturulduğu zamandan itibaren sayılır. Bu nedenle, oturum kiralamasını başka bir saate göre uzatmak için *Maxleasetime* değerini bir saat artırın.
 
 ```PowerShell
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
 ```
 
-## <a name="script-conversionps1"></a>Komut Dosyası: Conversion.ps1
+## <a name="script-conversionps1"></a>Betik: dönüştürme. ps1
 
-Bu komut dosyası, giriş modellerini Azure Uzaktan İşleme belirli çalışma zamanı biçimine dönüştürmek için kullanılır.
+Bu betik, giriş modellerini Azure uzaktan Işleme özel çalışma zamanı biçimine dönüştürmek için kullanılır.
 
 > [!IMPORTANT]
-> Arrconfig.json'daki *hesap Ayarları* ve *varlıkDönüşüm Ayarları* bölümlerini doldurduğundan emin olun.
+> ARRConfig. JSON içindeki *accountsettings* ve *assetconversionsettings* bölümlerini doldurduğunuzdan emin olun.
 
-Komut dosyası, hizmetle birlikte depolama hesaplarını kullanmak için iki seçeneği gösterir:
+Betik, depolama hesaplarını hizmeti ile birlikte kullanmak için iki seçeneği gösterir:
 
-- Azure Uzaktan İşlem hesabıyla bağlantılı depolama hesabı
-- Paylaşılan Erişim İmzaları (SAS) aracılığıyla depolamaya erişim sağlama
+- Azure uzaktan Işleme hesabıyla bağlantılı depolama hesabı
+- Paylaşılan erişim Imzaları (SAS) aracılığıyla depolamaya erişim sağlama
 
-### <a name="linked-storage-account"></a>Bağlantılı depolama hesabı
+### <a name="linked-storage-account"></a>Bağlı depolama hesabı
 
-Arrconfig.json'u tamamen doldurduktan ve bir depolama hesabını bağladıktan sonra aşağıdaki komutu kullanabilirsiniz. Depolama hesabınızı bağlamak [Hesap Oluştur'da](../how-tos/create-an-account.md#link-storage-accounts)açıklanmıştır.
+ARRConfig. json ' ı tamamen doldurduktan ve bir depolama hesabını bağladıktan sonra aşağıdaki komutu kullanabilirsiniz. Depolama hesabınızı bağlama, [Hesap oluşturma](../how-tos/create-an-account.md#link-storage-accounts)bölümünde açıklanmaktadır.
 
-Paylaşılan Erişim İmzaları oluşturmaya gerek olmadığından, bağlantılı bir depolama hesabı kullanmak dönüşüm hizmetini kullanmak için tercih edilen yoldur.
+Bağlı depolama hesabı kullanmak, paylaşılan erişim Imzaları oluşturmaya gerek olmadığı için dönüştürme hizmetinin kullanılması için tercih edilen yoldur.
 
 ```PowerShell
 .\Conversion.ps1
 ```
 
-1. Verilen altındaki giriş `assetConversionSettings.modelLocation` blob konteynerine tüm dosyaları yükleyin`inputFolderPath`
-1. [Model dönüşümbaşlatmak](../how-tos/conversion/model-conversion.md) için [model dönüştürme REST API'yi](../how-tos/conversion/conversion-rest-api.md) arayın
-1. Dönüşüm başarılı olana veya başarısız olana kadar dönüşüm durumunu yoklama
-1. Dönüştürülen dosya konumunun çıktı ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu)
+1. İçinde yer alan tüm dosyaları verilen `assetConversionSettings.modelLocation` ' ın altındaki giriş blobu kapsayıcısına yükleyin`inputFolderPath`
+1. Model [dönüştürmeyi](../how-tos/conversion/model-conversion.md) kapatmak için [model dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md) çağırın
+1. Dönüştürme başarılı veya başarısız olana kadar dönüştürme durumunu yoklayın
+1. Dönüştürülmüş dosya konumunun çıkış ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu)
 
-### <a name="access-to-storage-via-shared-access-signatures"></a>Paylaşılan Erişim İmzaları ile depolama alanına erişim
+### <a name="access-to-storage-via-shared-access-signatures"></a>Paylaşılan erişim Imzaları aracılığıyla depolamaya erişim
 
 ```PowerShell
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Bu olacaktır:
+Şunları yapmak gerekir:
 
-1. Yerel dosyayı giriş `assetConversionSettings.localAssetDirectoryPath` blob kapsayıcısından yükleme
-1. Giriş kapsayıcısı için bir SAS URI oluşturma
-1. Çıkış kabı için bir SAS URI oluşturma
-1. [Model dönüşümbaşlatmak](../how-tos/conversion/model-conversion.md) için [model dönüştürme REST API'yi](../how-tos/conversion/conversion-rest-api.md) arayın
-1. Dönüşüm başarılı olana veya başarısız olana kadar dönüşüm durumunu yoklama
-1. Dönüştürülen dosya konumunun çıktı ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu)
-1. Çıkış blob kabında dönüştürülmüş modele bir SAS URI çıktı
+1. Yerel dosyayı öğesinden `assetConversionSettings.localAssetDirectoryPath` giriş blobu kapsayıcısına yükleme
+1. Giriş kapsayıcısı için SAS URI 'SI oluşturma
+1. Çıkış kapsayıcısı için SAS URI 'SI oluşturma
+1. Model [dönüştürmeyi](../how-tos/conversion/model-conversion.md) kapatmak için [model dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md) çağırın
+1. Dönüştürme başarılı veya başarısız olana kadar dönüştürme durumunu yoklayın
+1. Dönüştürülmüş dosya konumunun çıkış ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu)
+1. Çıkış blob kapsayıcısında bir SAS URI 'sini dönüştürülen modele çıkış
 
 ### <a name="additional-command-line-options"></a>Ek komut satırı seçenekleri
 
-Alternatif bir **config** dosyası kullanmak için:
+**Alternatif bir yapılandırma** dosyası kullanmak için:
 
 ```PowerShell
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Yalnızca **yoklama yapmadan model dönüştürmebaşlatmak**için şunları kullanabilirsiniz:
+Yalnızca **yoklama olmadan model dönüştürmeyi başlatmak**için şunu kullanabilirsiniz:
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-Aşağıdaki komut satırı anahtarlarını kullanarak config dosyasından **tek tek ayarları geçersiz kılabilirsiniz:**
+Aşağıdaki komut satırı anahtarlarını kullanarak yapılandırma dosyasından **bağımsız ayarları geçersiz kılabilirsiniz** :
 
-* **Id:** GetConversionStatus ile kullanılan ConversionId
-* **ArrAccountId:** hesap Ayarları arrAccountId
-* **ArrAccountKey:** hesap Ayarları arrAccountKey için geçersiz kılma
-* **Bölge:** hesap Ayarları bölgesi için geçersiz kılma
-* **ResourceGroup:** varlıkDönüşüm Ayarları kaynak Grubu için geçersiz kılma
-* **StorageAccountName:** depolama için geçersiz kılmaHesaba varlıkDönüşüm Ayarları
-* **BlobInputContainerName:** varlık Dönüşüm Ayarları blobInputContainer için geçersiz kılma
-* **LocalAssetDirectoryPath:** yerelAssetDirectoryPath varlıkDönüşüm Ayarları için geçersiz kılma
-* **InputAssetPath:** varlıkDönüşüm Ayarları nın inputAssetPath için geçersiz kılma
-* **BlobOutputContainerName:** varlıkDönüşüm Ayarları blobOutputContainerName için geçersiz kılma
-* **OutputFolderPath:** varlığın outputFolderPath için geçersiz kılmaConversionSettings
-* **OutputAssetFileName:** outputAssetFileName için geçersiz kılmaAssetFileName of assetConversionSettings
+* **Kimliği:** GetConversionStatus ile kullanılan Conversionıd
+* **ArrAccountId:** accountsettings ArrAccountId
+* **ArrAccountKey:** Accountsettings ArrAccountKey için override
+* **Bölge:** accountsettings bölgesi için geçersiz kılma
+* **ResourceGroup:** assetConversionSettings resourcegroup için geçersiz kılma
+* **StorageAccountName:** assetConversionSettings 'In storageAccountName için geçersiz kıl
+* **Blobinputcontainername:** assetConversionSettings 'In blobInputContainer için geçersiz kılma
+* **Localassetdirectorypath:** assetConversionSettings Için localassetdirectorypath geçersiz kılma
+* **Inputassetpath:** assetConversionSettings 'In ınputassetpath için geçersiz kılma
+* **Bloi putcontainername:** assetConversionSettings 'In Bloi putcontainername için geçersiz kılma
+* **Outputfolderpath:** Outputconversionsettings için outputfolderpath için override
+* **Outputassetfilename:** assetConversionSettings 'In outputassetfilename için geçersiz kılma
 
-Örneğin, aşağıdaki gibi verilen seçeneklerden bir dizisini birleştirebilirsiniz:
+Örneğin, aşağıdaki gibi bir dizi verilen seçeneği birleştirebilirsiniz:
 
 ```PowerShell
 .\Conversion.ps1 -LocalAssetDirectoryPath "C:\\models\\box" -InputAssetPath box.fbx -OutputFolderPath another/converted/box -OutputAssetFileName newConversionBox.arrAsset
 ```
 
-### <a name="run-the-individual-conversion-stages"></a>Tek tek dönüşüm aşamalarını çalıştırma
+### <a name="run-the-individual-conversion-stages"></a>Bireysel dönüştürme aşamalarını çalıştırma
 
 İşlemin tek tek adımlarını çalıştırmak istiyorsanız şunları kullanabilirsiniz:
 
-Yalnızca verilen LocalAssetDirectoryPath'ten veri yükleyin
+Yalnızca verilen LocalAssetDirectoryPath 'ten verileri karşıya yükle
 
 ```PowerShell
 .\Conversion.ps1 -Upload
 ```
 
-Yalnızca blob depolama alanına zaten yüklenen bir modelin dönüşüm işlemini başlatın (Upload'u çalıştırmayın, dönüşüm durumunu yoklamayın) Komut dosyası bir *conversionId*döndürür.
+Yalnızca blob depolamaya zaten yüklenmiş bir modelin dönüştürme işlemini başlatın (karşıya yükleme çalıştırılmayın, dönüştürme durumunu yoklamayın) betik bir *Conversionıd*döndürür.
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-Ve bu dönüşümün dönüşüm durumunu aşağıdakileri kullanarak alabilirsiniz:
+Bu dönüştürmenin dönüştürme durumunu şu şekilde alabilirsiniz:
 
 ```PowerShell
 .\Conversion.ps1 -GetConversionStatus -Id <conversionId> [-Poll]
 ```
 
-Dönüştürme `-Poll` yapılana veya bir hata oluşana kadar beklemek için kullanın.
+Dönüştürme `-Poll` işlemi tamamlanana veya bir hata oluştuğundan beklemek için kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Quickstart: Unity ile bir model oluşturma](../quickstarts/render-model.md)
-- [Quickstart: Oluşturma için bir modeli dönüştürme](../quickstarts/convert-model.md)
+- [Hızlı başlangıç: Unity ile model Işleme](../quickstarts/render-model.md)
+- [Hızlı başlangıç: bir modeli işleme için dönüştürme](../quickstarts/convert-model.md)
 - [Model dönüştürme](../how-tos/conversion/model-conversion.md)

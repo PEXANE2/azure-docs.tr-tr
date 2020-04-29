@@ -1,46 +1,46 @@
 ---
-title: Veri kaynaklarından alma - QnA Maker
-description: QnA Maker bilgi tabanı, her QnA çiftiyle ilişkili bir dizi soru-cevap (QnA) kümesi ve isteğe bağlı meta verilerden oluşur.
+title: Veri kaynaklarından içeri aktarma-Soru-Cevap Oluşturma
+description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) kümesi ve isteğe bağlı meta veri kümesinden oluşur.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804291"
 ---
 # <a name="importing-from-data-sources"></a>Veri kaynaklarından içeri aktarma
 
-Bilgi tabanı, ortak URL'ler ve dosyalar tarafından getirilen soru ve yanıt kümelerinden oluşur.
+Bilgi Bankası, genel URL 'Ler ve dosyalar tarafından getirilen soru ve yanıt kümelerinden oluşur.
 
 ## <a name="data-source-locations"></a>Veri kaynağı konumları
 
-İçerik bir veri kaynağından bir bilgi tabanına getirilir. Veri kaynağı konumları, kimlik doğrulaması gerektirmeyen **ortak URL'lerdir veya dosyalardır.**
+İçerik bir veri kaynağından bilgi tabanına getirilir. Veri kaynağı konumları, kimlik doğrulaması gerektirmeyen **Genel URL 'ler veya dosyalardır**.
 
-Kimlik doğrulamayla güvenli olan [SharePoint dosyaları](../how-to/add-sharepoint-datasources.md)özel durumdur. SharePoint kaynakları web sayfaları değil, dosya olmalıdır. URL, '. gibi bir web uzantısı ile biterse. ASPX, SharePoint'ten QnA Maker'a almayacaktır.
+Kimlik doğrulamasıyla güvenli hale getirilen [SharePoint dosyaları](../how-to/add-sharepoint-datasources.md)özel durumdur. SharePoint kaynakları, Web sayfaları değil, dosyalar olmalıdır. URL, gibi bir Web uzantısıyla sonlanıyorsa. ASPX, SharePoint 'ten Soru-Cevap Oluşturma içine aktarılmaz.
 
-## <a name="chit-chat-content"></a>Chit sohbet içeriği
+## <a name="chit-chat-content"></a>CHIT sohbet içeriği
 
-Chit sohbet QnA içerik seti çeşitli dillerde ve konuşma stilleritam bir içerik veri kaynağı olarak sunulmaktadır. Bu bot kişiliği için bir başlangıç noktası olabilir, ve size zaman ve sıfırdan bunları yazma maliyeti kazandıracak. Bu içerik kümesini bilgi tabanınıza [nasıl ekleyeceğinizi](../how-to/chit-chat-knowledge-base.md) öğrenin.
+CHIT sohbeti QnA içerik kümesi, çeşitli dillerde ve konuşma stillerinde tüm içerik veri kaynakları olarak sunulur. Bu, bot 'ın kişiliğine yönelik bir başlangıç noktası olabilir ve bu, bunları sıfırdan yazmanın zaman ve maliyetini kaydeder. Bilgi tabanınızı bu içerik kümesinin [nasıl ekleneceğini](../how-to/chit-chat-knowledge-base.md) öğrenin.
 
-## <a name="structured-data-format-through-import"></a>Alma yoluyla yapılandırılmış veri biçimi
+## <a name="structured-data-format-through-import"></a>İçeri aktarma yoluyla yapılandırılmış veri biçimi
 
-Bilgi tabanının içe aktarılışı, varolan bilgi tabanının içeriğinin yerini alır. İçe aktarma, sorular ve yanıtlar içeren yapılandırılmış `.tsv` bir dosya gerektirir. Bu bilgiler, QnA Maker'ın soru-yanıt kümelerini gruplandırmasına ve bunları belirli bir veri kaynağına bağlamasına yardımcı olur.
+Bilgi bankasını içeri aktarmak, mevcut bilgi bankasındaki içeriğin yerini alır. İçeri aktarma, sorular `.tsv` ve yanıt içeren yapılandırılmış bir dosya gerektirir. Bu bilgiler, soru-cevap kümelerini ve özniteliklerini belirli bir veri kaynağına göre gruplamak Soru-Cevap Oluşturma yardımcı olur.
 
 | Soru  | Yanıt  | Kaynak| Meta veriler (1 anahtar: 1 değer) |
 |-----------|---------|----|---------------------|
-| Soru1 | Cevap1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Soru2 | Cevap2 | Editoryal|    `Key:Value`       |
+| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 | Düzenleme|    `Key:Value`       |
 
-## <a name="structured-multi-turn-format-through-import"></a>Alma yoluyla yapılandırılmış çok dönüşlü biçim
+## <a name="structured-multi-turn-format-through-import"></a>İçeri aktarma aracılığıyla yapılandırılmış çok yönlü biçim
 
-Çok döndürme konuşmalarını `.tsv` dosya biçiminde oluşturabilirsiniz. Biçim, önceki sohbet günlüklerini (QnA Maker'ı kullanmayan diğer işlemlerle) analiz ederek çok döndürülme konuşmalarını oluşturmanızı ve ardından dosyayı otomasyon yoluyla oluşturmanızı `.tsv` sağlar. Varolan bilgi tabanını değiştirmek için dosyayı içe aktarın.
+Çoklu açma konuşmalarını bir `.tsv` dosya biçiminde oluşturabilirsiniz. Biçim, önceki sohbet günlüklerini çözümleyerek (Soru-Cevap Oluşturma kullanmayan diğer işlemlerle) birden çok yönlü konuşmaları oluşturma olanağı sağlar ve ardından `.tsv` dosyayı Otomasyon aracılığıyla oluşturabilir. Mevcut bilgi bankasını değiştirmek için dosyayı içeri aktarın.
 
 > [!div class="mx-imgBorder"]
-> ![Çok döndürüredayalı soru 3 düzeyinin kavramsal modeli](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
+> ![3 düzey çoklu çift soruda kavramsal model](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-Çok dönüşlü sütun, `.tsv`çoklu dönüşe özgü **Istemler'dir.** Excel'de gösterilen bir örnek, `.tsv`çok döndürülen alt çocukları tanımlamak için içerecek bilgileri gösterir:
+Birden çok açma için özel `.tsv`, birden çok yönlü bir sütun, **ister**. Excel 'de `.tsv`gösterilen, çoklu çift alt öğeleri tanımlamak için dahil edilecek bilgileri gösteren bir örnek:
 
 ```JSON
 [
@@ -49,16 +49,16 @@ Bilgi tabanının içe aktarılışı, varolan bilgi tabanının içeriğinin ye
 ]
 ```
 
-**displayOrder** sayısaldır ve **displayText** işaretleme içermemesi gereken metindir.
+**Displayorder** sayısal ve **metinmetni** markaşağı içermemelidir.
 
 > [!div class="mx-imgBorder"]
-> ![Excel'de gösterildiği gibi çok döndürme soru örneği](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
+> ![Excel 'de gösterildiği gibi çok yönlü soru örneği](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
 
-## <a name="export-as-example"></a>Örnek olarak dışa aktarma
+## <a name="export-as-example"></a>Örnek olarak dışarı aktar
 
-`.tsv` QnA çiftinizi dosyada nasıl temsil edeceğinden emin değilseniz:
-* [GitHub'dan bu indirilebilir örneği](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true) kullanma
-* Veya QnA Maker portalında seti oluşturun, kaydedin ve ardından seti nasıl temsil edilecin bir örneği için bilgi tabanını dışa aktarın.
+`.tsv` Dosyada QNA çiftini nasıl temsil ettiğini bilmiyorsanız:
+* Bu [indirilebilir örneği GitHub 'dan](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true) kullan
+* Ya da Soru-Cevap Oluşturma portalında kümeyi oluşturun, ardından kümeyi nasıl temsil ettiğini gösteren bir örnek için Bilgi Bankası 'nı dışarı aktarın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -67,14 +67,14 @@ Bilgi tabanının içe aktarılışı, varolan bilgi tabanının içeriğinin ye
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Yanıtlarınızı biçimlendirmenize yardımcı olması için QnA Maker [Markdown başvurularını](../reference-markdown-format.md) kullanın.
+Yanıtlarınızı biçimlendirmeye yardımcı olması için Soru-Cevap Oluşturma [markın başvurusunu](../reference-markdown-format.md) kullanın.
 
 [Soru-Cevap Oluşturma’ya genel bakış](../Overview/overview.md)
 
-Bir bilgi tabanı oluşturun ve şularla edinin:
+İle bir Bilgi Bankası oluşturun ve düzenleyin:
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-Aşağıdakilerle bir yanıt oluşturun:
+Şunu kullanarak bir yanıt oluşturun:
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

@@ -13,17 +13,17 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
 ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80883822"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Quickstart: Kiracı ayarlama
+# <a name="quickstart-set-up-a-tenant"></a>Hızlı başlangıç: kiracı ayarlama
 
-Microsoft kimlik platformu geliştiricilerin çok çeşitli özel Microsoft 365 ortamlarını ve kimliklerini hedefleyen uygulamalar derlemesine olanak tanır. Microsoft kimlik platformunu kullanmaya başlamak için, uygulamaları kaydedip yönetebilen, Microsoft 365 verilerine erişebilen ve özel Koşullu Erişim ve kiracı kısıtlamalarını dağıtabilen Azure AD kiracı olarak da adlandırılan ortama erişmeniz gerekir.
+Microsoft kimlik platformu geliştiricilerin çok çeşitli özel Microsoft 365 ortamlarını ve kimliklerini hedefleyen uygulamalar derlemesine olanak tanır. Microsoft Identity platform 'u kullanmaya başlamak için, Azure AD kiracısı olarak da adlandırılan bir ortama erişmeniz gerekir. Bu işlem, uygulamaları kaydedebilir ve yönetebilir, Microsoft 365 verilerine erişim sağlayabilir ve özel koşullu erişim ve kiracı kısıtlamaları dağıtabilir.
 
-Kiracı, bir kuruluşun temsilidir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir.
+Kiracı, kuruluşun bir gösterimidir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir.
 
 Her Azure AD kiracısı ayrıdır ve diğer Azure AD kiracılarından ayrılmıştır. Kendi iş ve okul kimlikleri, tüketici kimlikleri (bir Azure AD B2C kiracısıysa) ve uygulama kayıtları gösterimi vardır. Kiracınızın içinde yapılan bir uygulama kaydı, yalnızca kiracınızın veya tüm kiracıların içinden hesapların kimlik doğrulaması yapmasına izin verebilir.
 
@@ -56,14 +56,14 @@ Hesabınızla ilişkilendirilmiş bir kiracınız yoksa, hesap adınızın altı
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Yeni Azure AD kiracısı oluşturma
 
-Azure AD kiracınız yoksa veya geliştirme için yeni bir tane oluşturmak istiyorsanız, [hızlı başlangıç'ı](../fundamentals/active-directory-access-create-new-tenant.md) görün veya [yalnızca dizin oluşturma deneyimini](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)izleyin. Yeni kiracı oluşturmak için aşağıdaki bilgileri sağlamanız gerekecektir:
+Zaten bir Azure AD kiracınız yoksa veya geliştirme için yeni bir tane oluşturmak istiyorsanız [hızlı başlangıç](../fundamentals/active-directory-access-create-new-tenant.md) bölümüne bakın veya yalnızca [Dizin oluşturma deneyimini](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)izleyin. Yeni kiracı oluşturmak için aşağıdaki bilgileri sağlamanız gerekecektir:
 
 - **Kuruluş adı**
 - **İlk etki alanı** - Bu, *.onmicrosoft.com'un bir parçası olacaktır. Etki alanını daha sonra özelleştirebilirsiniz.
 - **Ülke veya bölge**
 
 > [!NOTE]
-> Kiracınızı adlandırırken, alfasayısal karakterler kullanın. Özel karakterlere izin verilmez. Ad 256 karakteri geçmemelidir.
+> Kiracınızı adlandırırken, alfasayısal karakterler kullanın. Özel karakterlere izin verilmez. Ad 256 karakterden uzun olmamalıdır.
 
 ## <a name="social-and-local-accounts"></a>Sosyal ve yerel hesaplar
 
@@ -71,6 +71,6 @@ Sosyal ve yerel hesapların oturumunu açan bir uygulama derlemeye başlamak iç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir uygulamayı kaydedin](quickstart-register-app.md) ve Microsoft kimlik platformuyla tümleştirin. 
-* Kimlik [doğrulamanın temellerini](authentication-scenarios.md)öğrenin.
-* Abonelikler ve Azure AD kiracı arasındaki ilişki hakkında ayrıntılı bilgi için [Azure aboneliklerinin Azure Etkin Dizini ile nasıl](../fundamentals/active-directory-how-subscriptions-associated-directory.md) ilişkilendirilene bakın.
+* [Bir uygulamayı kaydedin](quickstart-register-app.md) ve Microsoft Identity platform ile tümleştirin. 
+* [Kimlik doğrulamanın temellerini](authentication-scenarios.md)öğrenin.
+* Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkilendirilmesi](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .

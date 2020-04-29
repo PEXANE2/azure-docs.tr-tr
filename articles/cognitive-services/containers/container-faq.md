@@ -1,7 +1,7 @@
 ---
-title: Bilişsel Hizmetler konteynersık sorulan sorular (SSS)
+title: Bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)
 titleSuffix: Azure Cognitive Services
-description: Sık sorulan sorular ve cevaplar.
+description: Sık sorulan sorular ve yanıtlar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876515"
 ---
-# <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Bilişsel Hizmetler kapları sık sorulan sorular (SSS)
+# <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)
 
 ## <a name="general-questions"></a>Genel sorular
 
-**S: Neler kullanılabilir?**
+**S: kullanılabilir nedir?**
 
-**C:** [Azure Bilişsel Hizmetleri'ndeki kapsayıcı desteği,](../cognitive-services-container-support.md) geliştiricilerin Azure'da kullanılabilen ancak kapsayıcılaştırmanın [avantajlarıyla](../cognitive-services-container-support.md#features-and-benefits) kullanılabilen aynı akıllı API'leri kullanmasına olanak tanır. Kapsayıcı desteği şu anda Azure Bilişsel Hizmetleri'nin bir alt kümesi için önizlemede kullanılabilir:
+Y **:** Azure bilişsel [Hizmetler 'de kapsayıcı desteği](../cognitive-services-container-support.md) , geliştiricilerin Azure 'Da kullanılabilen akıllı API 'leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Kapsayıcı desteği şu anda Azure bilişsel hizmetler 'in şu parçalar dahil olmak üzere bir alt kümesi için önizleme aşamasında sunulmaktadır:
 
 > [!div class="checklist"]
 > * [Anomali Algılayıcısı][ad-containers]
@@ -33,79 +33,79 @@ ms.locfileid: "80876515"
 > * [Konuşma Hizmeti API’si][sp-containers]
 > * [Metin Analizi][ta-containers]
 
-**S: Bilişsel Hizmetler bulutu ile kapsayıcılar arasında bir fark var mı?**
+**S: bilişsel hizmetler bulutu ve kapsayıcılar arasında herhangi bir fark var mı?**
 
-**A:** Bilişsel Hizmetler kapsayıcıları Bilişsel Hizmetler bulutuna alternatiftir. Kapsayıcılar, ilgili bulut hizmetleriyle aynı özellikleri sunar. Müşteriler kapsayıcıları şirket içinde veya Azure'da dağıtabilir. Çekirdek AI teknolojisi, fiyatlandırma katmanları, API anahtarları ve API imzası kapsayıcı ve ilgili bulut hizmetleri arasında aynıdır. Kapsayıcıları bulut hizmeti eşdeğeri üzerinden seçmenin [özellikleri ve avantajları](../cognitive-services-container-support.md#features-and-benefits) aşağıda verilmiştir.
+Y **:** Bilişsel hizmetler kapsayıcıları bilişsel hizmetler bulutunun bir alternatifidir. Kapsayıcılar, karşılık gelen bulut hizmetleriyle aynı özellikleri sunar. Müşteriler, kapsayıcıları şirket içinde veya Azure 'da dağıtabilir. Temel AI teknolojisi, fiyatlandırma katmanları, API anahtarları ve API imzası, kapsayıcı ve ilgili bulut hizmetleri arasında aynıdır. Burada, bulut hizmeti eşdeğerini üzerinde kapsayıcılar seçmeye yönelik [Özellikler ve avantajlar](../cognitive-services-container-support.md#features-and-benefits) verilmiştir.
 
-**S: Konteynerler tüm Bilişsel Hizmetler için kullanılabilir olacak ve biz beklememiz gereken kaplar sonraki kümesi nelerdir?**
+**S: tüm bilişsel hizmetler için kapsayıcılar kullanılabilir ve Beklendiğimiz bir sonraki kapsayıcı kümesi ne olur?**
 
-**A:** Biz konteyner teklifleri olarak daha fazla Bilişsel Hizmetler kullanılabilir hale getirmek istiyorum. Yeni kapsayıcı sürümleri ve diğer Bilişsel Hizmetler duyuruları hakkında güncelleştirmeler almak için yerel Microsoft hesap yöneticinize başvurun.
+Y **:** Daha fazla bilişsel Hizmetleri kapsayıcı teklifleri olarak kullanılabilir hale getirmek istiyoruz. Yeni kapsayıcı yayınlarına ve diğer bilişsel hizmetler bildirilerinde güncelleştirmeler almak için yerel Microsoft hesabı yöneticinize başvurun.
 
-**S: Bilişsel Hizmetler kapsayıcıları için Hizmet Düzeyi Sözleşmesi (SLA) ne olacak?**
+**S: bilişsel hizmetler kapsayıcıları için hizmet düzeyi sözleşmesi (SLA) ne olacak?**
 
-**A:** Bilişsel Hizmetler kapları bir SLA yok.
+Y **:** Bilişsel hizmetler kapsayıcılarının SLA 'sı yoktur.
 
-Kaynakların Bilişsel Hizmetler kapsayıcı yapılandırmaları müşteriler tarafından denetlenir, bu nedenle Microsoft genel kullanılabilirlik (GA) için bir SLA sunmaz. Müşteriler kapsayıcıları şirket içinde dağıtmakta serbesttir, böylece ana ortamları tanımlarlar.
+Kaynakların bilişsel hizmetler kapsayıcı konfigürasyonları müşteriler tarafından denetlenir, bu nedenle Microsoft genel kullanılabilirlik (GA) için SLA sunmaz. Müşteriler şirket içinde kapsayıcı dağıtmak için ücretsizdir, bu nedenle konak ortamlarını tanımlar.
 
 > [!IMPORTANT]
-> Bilişsel Hizmetler Hizmet Düzeyi Sözleşmeleri hakkında daha fazla bilgi edinmek için [SLA sayfamızı ziyaret edin.](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/)
+> Bilişsel hizmetler hizmet düzeyi sözleşmeleri hakkında daha fazla bilgi edinmek için [SLA sayfamızı ziyaret edin](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
 
-**S: Bu kapsayıcılar egemen bulutlarda kullanılabilir mi?**
+**S: Bu kapsayıcılar bağımsız bulutlarda kullanılabilir mi?**
 
-**A:** Herkes "egemen bulut" terimini bilmiyor, bu yüzden tanımla başlayalım:
+Y **:** Herkes "sogeign Cloud" terimiyle tanıdık değildir, bu nedenle tanımıyla başlayalım:
 
-> "Egemen bulut", [Azure Hükümeti,](../../azure-government/documentation-government-welcome.md) [Azure Almanya](../../germany/germany-welcome.md)ve Azure [China 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) bulutlarından oluşur.
+> "Sogeign Cloud", [Azure Kamu](../../azure-government/documentation-government-welcome.md), [Azure Almanya](../../germany/germany-welcome.md)ve [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) bulutlarından oluşur.
 
-Ne yazık ki, Bilişsel Hizmetler kapsayıcıları yerel egemen bulutlarda *desteklenmez.* Kapsayıcılar bu bulutlarda çalıştırılabilir, ancak bunlar genel buluttan çekilir ve kullanım verilerini genel bitiş noktasına göndermeleri gerekir.
+Ne yazık ki *bilişsel* hizmetler kapsayıcıları, sogeign bulutlarında yerel olarak desteklenmez. Kapsayıcılar bu bulutlarda çalıştırılabilir, ancak genel buluttan çekilir ve kullanım verilerinin genel uç noktaya gönderilmesi gerekir.
 
 ### <a name="versioning"></a>Sürüm Oluşturma
 
-**S: Kapsayıcılar en son sürüme nasıl güncellenir?**
+**S: kapsayıcılar en son sürüme nasıl güncelleştirilir?**
 
-**A:** Müşteriler dağıttıkları kapsayıcıları ne zaman güncelleştireceklerini seçebilirler. Kapsayıcılar, en son sürümü `latest` belirtmek için standart [Docker etiketleri](https://docs.docker.com/engine/reference/commandline/tag/) ile işaretlenir. Müşterilerin, bir resim güncelleştirildiğinde nasıl bilgilendirileceklerine ilişkin ayrıntılar için azure [konteyner kayıt defteri webhook'ları,](../../container-registry/container-registry-webhook.md) kullanıma alınan konteynerlerin en son sürümünü piyasaya sürüldüklerinde çekmelerini öneririz.
+Y **:** Müşteriler, dağıttıkları kapsayıcıları ne zaman güncelleştirebilecekleri seçebilirler. Kapsayıcılar, en son sürümü göstermek `latest` için gibi standart [Docker etiketleriyle](https://docs.docker.com/engine/reference/commandline/tag/) işaretlenir. Müşterilerin, bir görüntü güncelleştirildikten sonra bildirim alma hakkında ayrıntılı bilgi edinmek için [Web kancalarını Azure Container Registry](../../container-registry/container-registry-webhook.md) kullanıma sundukları son sürümünü çekmelerini öneririz.
  
-**S: Hangi sürümler desteklenecek?**
+**S: hangi sürümler desteklenecek?**
 
-**A:** Kapsayıcının geçerli ve son ana sürümü desteklenir. Ancak, müşterilerin en son teknolojiyi elde etmek için güncel kalmalarını öneririz.
+Y **:** Kapsayıcının geçerli ve son ana sürümü desteklenecek. Ancak, müşterilerin en son teknolojiyi almak için güncel kalmasını öneririz.
  
-**S: Güncelleştirmeler nasıl sürümlenir?**
+**S: güncelleştirmeler nasıl sürümlenmiş?**
 
-**A:** Ana sürüm değişiklikleri, API imzada bir kesme değişikliği olduğunu gösterir. Bunun genellikle ilgili Bilişsel Hizmet bulut teklifindeki önemli sürüm değişiklikleriyle çakışacağını tahmin ediyoruz. Küçük sürüm değişiklikleri hata düzeltmeleri, model güncelleştirmeleri veya API imzabir kesme değişiklik yapmaz yeni özellikler gösterir.
+Y **:** Ana sürüm değişiklikleri, API imzasında bir yeni değişiklik olduğunu gösterir. Bunun, genellikle karşılık gelen bilişsel hizmet bulutu sunumundaki ana sürüm değişiklikleriyle ilgili olduğunu tahmin ederiz. İkincil sürüm değişiklikleri, hata düzeltmelerini, model güncelleştirmelerini veya API imzasında bir değişiklik yapmayan yeni özellikleri gösterir.
 
 ## <a name="technical-questions"></a>Teknik sorular
 
-**S: IoT cihazlarında Bilişsel Hizmetler kapsayıcılarını nasıl çalıştırmalıyım?**
+**S: bilişsel hizmetler kapsayıcılarını IoT cihazlarında nasıl çalıştırmalıyım?**
 
-İster güvenilir bir internet bağlantınız olsun, ister bant genişliği maliyetinde tasarruf etmek ister. Veya düşük gecikme süresi gereksinimleri varsa veya yerinde analiz edilmesi gereken hassas verilerle ilgileniyorsanız, [Azure IoT Edge bilişsel hizmetler kapsayıcıları ile](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) bulut ile tutarlılık sağlar.
+Güvenilir bir internet bağlantınız yoksa veya bant genişliği maliyetlerine kaydetmek isteyip istemediğiniz. Ya da düşük gecikme süreli gereksinimleriniz varsa veya sitede çözümlenmesi gereken hassas verilerle uğraşıyorsanız, bilişsel [Hizmetler kapsayıcıları ile Azure IoT Edge](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) , bulut ile tutarlılık sağlar.
 
-**S: Ürün geri bildirimi ni ve özellik önerilerini nasıl sağlarım?**
+**S: ürün geri bildirimi ve özellik önerileri sağlamak Nasıl yaparım? misiniz?**
 
-**A:** Müşteriler endişelerini herkese açık bir şekilde [dile getirmeleri](https://cognitive.uservoice.com/) ve potansiyel sorunların çakıştığı durumlarda aynı şeyi yapan diğer lerini oylayabilmek için teşvik edilir. Kullanıcı ses aracı hem ürün geri bildirimi hem de özellik önerileri için kullanılabilir.
+Y **:** Müşterilerin sorunları herkese açık bir şekilde duymaları ve olası sorunların çakıştığı yerde aynısını yapmış olan diğerlerinin oyunu [oylamalarını](https://cognitive.uservoice.com/) sağlar. Kullanıcı sesli aracı hem ürün geri bildirimi hem de özellik önerileri için kullanılabilir.
 
-**S: Destek için kiminle iletişim kuruyorum?**
+**S: destek için kimler iletişim kuracağım?**
 
-**A:** Müşteri destek kanalları, Bilişsel Hizmetler bulut teklifiyle aynıdır. Tüm Bilişsel Hizmetler kapsayıcıları bize ve topluluk destek müşterilerine yardımcı olacak günlük özellikleri içerir. Ek destek için aşağıdaki seçeneklere bakın.
+Y **:** Müşteri desteği kanalları bilişsel hizmetler bulut teklifiyle aynıdır. Tüm bilişsel hizmetler kapsayıcıları, bize ve topluluk destek müşterilerine yardımcı olacak günlüğe kaydetme özelliklerini içerir. Ek destek için aşağıdaki seçeneklere bakın.
 
-### <a name="customer-support-plan"></a>Müşteri destek planı
+### <a name="customer-support-plan"></a>Müşteri desteği planı
 
-Müşteriler, destek için kime başvuracaklarını görmek için [Azure destek planına](https://azure.microsoft.com/support/plans/) başvurmalıdır.
+Müşteriler destek için kimin iletişim kuradığını görmek için [Azure Destek planına](https://azure.microsoft.com/support/plans/) başvurmalıdır.
 
 ### <a name="azure-knowledge-center"></a>Azure bilgi merkezi
 
-Müşteriler, soruları yanıtlamak ve sorunları desteklemek için [Azure bilgi merkezini](https://azure.microsoft.com/resources/knowledge-center/) keşfetmekte özgürdür.
+Müşteri, soruları yanıtlamak ve sorunları gidermek için [Azure bilgi merkezi](https://azure.microsoft.com/resources/knowledge-center/) 'ni keşfetmeye ücretsizdir.
 
 ### <a name="stack-overflow"></a>Stack Overflow
 
-> [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) profesyonel ve meraklısı programcılar için bir soru ve cevap sitesidir.
+> [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) , profesyonel ve meridik programcıları için bir soru ve yanıt sitesidir.
 
-İhtiyaçlarınıza uygun olası sorular ve yanıtlar için aşağıdaki etiketleri keşfedin.
+Gereksinimlerinize göre uygun olabilecek sorular ve yanıtlar için aşağıdaki etiketleri araştırın.
 
 * [Azure Bilişsel Hizmetler](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
-* [Microsoft Bilişsel](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+* [Microsoft bilişsel](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
 
 **S: Faturalandırma nasıl çalışır?**
 
-**A:** Müşteriler, Bilişsel Hizmetler bulutuna benzer şekilde tüketime göre ücretlendirilir. Kapsayıcıların ölçüm verilerini Azure'a gönderecek şekilde yapılandırılması gerekir ve hareketler buna göre faturalandırılır. Barındırılan ve şirket içi hizmetlerde kullanılan kaynaklar, her iki kullanıma göre sayma, katmanlı fiyatlandırma ile tek kotaya eklenir. Daha fazla ayrıntı için, ilgili teklifin fiyatlandırma sayfasına bakın.
+Y **:** Müşteriler, bilişsel hizmetler bulutuna benzer şekilde tüketimine göre ücretlendirilir. Kapsayıcıların Azure 'a ölçüm verileri gönderecek şekilde yapılandırılması gerekir ve işlemler buna göre faturalandırılır. Barındırılan ve şirket içi hizmetler genelinde kullanılan kaynaklar, her iki kullanımlar için de olmak üzere katmanlı fiyatlandırmayla tek bir kotaya eklenir. Daha fazla ayrıntı için ilgili teklifin fiyatlandırma sayfasına bakın.
 
 * [Anomali Algılayıcısı][ad-containers-billing]
 * [Görüntü İşleme][cv-containers-billing]
@@ -116,23 +116,23 @@ Müşteriler, soruları yanıtlamak ve sorunları desteklemek için [Azure bilgi
 * [Metin Analizi][ta-containers-billing]
 
 > [!IMPORTANT]
-> Bilişsel Hizmetler kapsayıcıları ölçüm için Azure'a bağlı olmadan çalışma lisansı na sahip değildir. Müşterilerin, konteynerlerin fatura bilgilerini her zaman ölçüm hizmetiyle iletmesini sağlaması gerekir. Bilişsel Hizmetler kapsayıcıları müşteri verilerini Microsoft'a göndermez.
+> Bilişsel hizmetler kapsayıcıları, ölçüm için Azure 'a bağlı kalmadan çalıştırılmak üzere lisanslanmaz. Müşterilerin, ödeme bilgilerini her zaman ölçüm hizmetiyle iletişimine olanak tanımak için kapsayıcıların etkinleştirilmesi gerekir. Bilişsel hizmetler kapsayıcıları, müşteri verilerini Microsoft 'a göndermez.
  
-**S: Konteynerler için geçerli destek garantisi nedir?**
+**S: kapsayıcılar için geçerli destek garantisi nedir?**
 
-**A:** Önizlemeler için garanti yoktur. Kapsayıcılar genel kullanılabilirlik (GA) olarak resmen duyurulduğunda Microsoft'un kurumsal yazılımlar için standart garantisi geçerli olacaktır.
+Y **:** Önizlemeler için garanti yoktur. Microsoft 'un kurumsal yazılım için standart garantisi, kapsayıcılar genel kullanım (GA) olarak duyurulduğu zaman geçerlidir.
  
-**S: Internet bağlantısı kaybolduğunda Bilişsel Hizmetler kapsayıcılarına ne olur?**
+**S: internet bağlantısı kesildiğinde bilişsel hizmetler kapsayıcılarına ne olur?**
 
-**A:** Bilişsel Hizmetler kapsayıcıları ölçüm için Azure'a bağlı olmadan çalışma *lisansı na sahip değildir.* Müşterilerin kapsayıcıların ölçüm hizmetiyle her zaman iletişim kurmasını sağlaması gerekir.
+Y **:** Bilişsel hizmetler kapsayıcıları, ölçüm için Azure 'a bağlı kalmadan çalıştırılmak üzere *lisanslanmaz* . Müşterilerin, ölçüm hizmeti ile her zaman iletişim kurması için kapsayıcıları etkinleştirmeleri gerekir.
 
-**S: Kapsayıcı Azure'a bağlanmadan ne kadar süre çalışabilir?**
+**S: kapsayıcı, Azure 'a bağlı olmadan ne kadar süreyle çalışabilir?**
 
-**A:** Bilişsel Hizmetler kapsayıcıları ölçüm için Azure'a bağlı olmadan çalışma *lisansı na sahip değildir.* Müşterilerin kapsayıcıların ölçüm hizmetiyle her zaman iletişim kurmasını sağlaması gerekir.
+Y **:** Bilişsel hizmetler kapsayıcıları, ölçüm için Azure 'a bağlı kalmadan çalıştırılmak üzere *lisanslanmaz* . Müşterilerin, ölçüm hizmeti ile her zaman iletişim kurması için kapsayıcıları etkinleştirmeleri gerekir.
  
-**S: Bu kapsayıcıları çalıştırmak için geçerli donanım nedir?**
+**S: Bu kapsayıcıları çalıştırmak için geçerli donanım ne gerekir?**
 
-**A:** Bilişsel Hizmetler kapsayıcıları, x64 Linux Docker Containers'ı destekleyen uyumlu linux düğümü, VM ve kenar aygıtıçalıştırabilen x64 tabanlı kapsayıcılardır. Hepsi CPU işlemcileri gerektirir. Her konteyner teklifi için minimum ve önerilen yapılandırmalar aşağıda mevcuttur:
+Y **:** Bilişsel hizmetler kapsayıcıları, x64 Linux Docker kapsayıcılarını destekleyen uyumlu bir Linux düğümü, VM ve Edge cihazını çalıştıran x64 tabanlı kapsayıcılardır. Bunların hepsi CPU işlemcileri gerektirir. Her kapsayıcı teklifi için en düşük ve önerilen yapılandırmalara aşağıda ulaşılabilir:
 
 * [Anomali Algılayıcısı][ad-containers-recommendations]
 * [Görüntü İşleme][cv-containers-recommendations]
@@ -142,25 +142,25 @@ Müşteriler, soruları yanıtlamak ve sorunları desteklemek için [Azure bilgi
 * [Konuşma Hizmeti API’si][sp-containers-recommendations]
 * [Metin Analizi][ta-containers-recommendations]
  
-**S: Bu kapsayıcılar şu anda Windows'da desteklenmiş mi?**
+**S: Bu kapsayıcılar Şu anda Windows üzerinde destekleniyor mu?**
 
-**A:** Bilişsel Hizmetler kapsayıcıları Linux kapsayıcılarıdır, ancak Windows'daki Linux kapları için bazı destek vardır. Windows'daki Linux kapsayıcıları hakkında daha fazla bilgi için [Docker belgelerine](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/)bakın.
+Y **:** Bilişsel hizmetler kapsayıcıları Linux kapsayıcılarıdır, ancak Windows üzerinde Linux kapsayıcıları için bazı destek vardır. Windows üzerindeki Linux kapsayıcıları hakkında daha fazla bilgi için bkz. [Docker belgeleri](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/).
  
-**S: Konteynerleri nasıl keşfederim?**
+**S: kapsayıcıları keşfet Nasıl yaparım??**
 
-**A:** Bilişsel Hizmetler kapsayıcıları Azure portalı, Docker hub'ı ve Azure konteyner kayıt defterleri gibi çeşitli konumlarda kullanılabilir. En son kapsayıcı konumları için [konteyner depolarına ve resimlere](../cognitive-services-container-support.md#container-repositories-and-images)bakın.
+Y **:** Bilişsel hizmetler kapsayıcıları Azure portal, Docker Hub ve Azure Container Registry gibi çeşitli konumlarda mevcuttur. En son kapsayıcı konumları için, [kapsayıcı depoları ve görüntüleri](../cognitive-services-container-support.md#container-repositories-and-images)öğesine bakın.
 
-**S: Bilişsel Hizmetler kapsayıcıları AWS ve Google teklifleri ile karşılaştırıldığında nasıl?**
+**S: bilişsel hizmetler kapsayıcıları AWS ve Google teklifleriyle nasıl karşılaştırılmaktadır?**
 
-**A:** Microsoft, önceden eğitilmiş AI modellerini, müşteriler bir bulut hizmeti kullanıyormuş gibi işlem başına basit faturalandırmalı kaplarda hareket ettiren ilk bulut sağlayıcısıdır. Microsoft, karma bulutun müşterilere daha fazla seçenek sağladığına inanıyor.
+Y **:** Microsoft, müşteriler bir bulut hizmeti kullanıyor olsa da, önceden eğitilen AI modellerini işlem başına basit faturalandırmayla taşımaya yönelik ilk bulut sağlayıcıdır. Microsoft Hibrit bulutun müşterilere daha fazla seçenek sunabiliyor.
 
-**S: Kapsayıcıların hangi uyumluluk sertifikaları vardır?**
+**S: kapsayıcılar hangi uyumluluk sertifikalarına sahip?**
 
-**A:** Bilişsel hizmet kapları herhangi bir uyumluluk sertifikaları yok
+Y **:** Bilişsel hizmetler kapsayıcılarının uyumluluk sertifikaları yok
 
-**S: Bilişsel Hizmetler kapları hangi bölgelerde kullanılabilir?**
+**S: bilişsel hizmet kapsayıcıları hangi bölgelerde kullanılabilir?**
 
-**A:** Kapsayıcılar herhangi bir bölgede çalıştırılabilir, ancak anahtara ihtiyaç duyarlar ve ölçüm için Azure'u geri arayabilirler. Bulut Hizmeti için desteklenen tüm bölgeler, kapsayıcıölçüm çağrısı için desteklenir.
+Y **:** Kapsayıcılar herhangi bir bölgedeki herhangi bir yerde çalıştırılabilir, ancak bir anahtara gerek duyar ve ölçüm için Azure 'a geri çağrı yapılır. Bulut hizmeti için desteklenen tüm bölgeler, kapsayıcılar ölçüm çağrısı için desteklenir.
 
 [!INCLUDE [Containers next steps](includes/containers-next-steps.md)]
 

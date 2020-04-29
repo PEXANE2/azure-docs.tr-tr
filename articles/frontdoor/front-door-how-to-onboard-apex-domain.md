@@ -1,6 +1,6 @@
 ---
-title: Varolan bir Ön Kapı - Azure portalına bir kök veya tepe etki alanı
-description: Azure portalını kullanarak varolan bir Ön Kapı'ya kök veya tepe etki alanında nasıl bindirilen öğrenin.
+title: Var olan bir ön kapıya bir kök veya tepesinde etki alanı ekleme-Azure portal
+description: Azure portal kullanarak var olan bir ön kapıya bir kök veya tepesinde etki alanı eklemeyi öğrenin.
 services: front-door
 author: sharad4u
 ms.service: frontdoor
@@ -8,72 +8,72 @@ ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
 ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878893"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Ön Kapınızda bir kök veya tepe etki alanı
-Azure Ön Kapı, özel etki alanlarının bindirilmesi için etki alanı sahipliğini doğrulamak için CNAME kayıtlarını kullanır. Ayrıca, Ön Kapı, Ön Kapı profilinizle ilişkili ön uç IP adresini ortaya çıkarmaz ve bu nedenle amaç Azure Ön Kapı'ya dahil etmekse, apeks etki alanınızı bir IP adresiyle eşlemezsiniz.
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Ön kapıya bir kök veya tepesinde etki alanı ekleme
+Azure ön kapısı, özel etki alanlarını eklemek için etki alanı sahipliğini doğrulamak üzere CNAME kayıtlarını kullanır. Ayrıca, ön kapı, ön kapı profilinizle ilişkili ön uç IP adresini kullanıma sunmaz ve amaç Azure ön kapısına eklemek için tepesinde etki alanınızı bir IP adresiyle eşleyemezsiniz.
 
-DNS protokolü, bölge tepe noktasında CNAME kayıtlarının atanmasını engeller. Örneğin, etki `contoso.com`alanınız; için `somelabel.contoso.com`CNAME kayıtları oluşturabilirsiniz; ancak kendisi için `contoso.com` CNAME oluşturamaz. Bu kısıtlama, Azure Ön Kapı'nın arkasında yük dengeli uygulamaları olan uygulama sahipleri için bir sorun teşkil eder. Ön Kapı profili kullanmak bir CNAME kaydı oluşturulmasını gerektirdiğinden, bölge tepesinden Ön Kapı profilini işaret etmek mümkün değildir.
+DNS protokolü, CNAME kayıtlarının tepesinde bölgesinde atanmasını engeller. Örneğin, etki alanınız ise `contoso.com` için `somelabel.contoso.com`CNAME kayıtları oluşturabilirsiniz; Ancak kendisi için `contoso.com` CNAME oluşturamazsınız. Bu kısıtlama, Azure ön kapısının arkasında yük dengeli uygulamalara sahip olan uygulama sahipleri için bir sorun gösterir. Bir ön kapı profili kullanmak için bir CNAME kaydı oluşturulması gerektiğinden, bölge tepesinde ön kapı profilini işaret etmek mümkün değildir.
 
-Bu sorun, Azure DNS'deki diğer ad kayıtları kullanılarak çözülür. CNAME kayıtlarının aksine, bölge tepe noktasında takma ad kayıtları oluşturulur ve uygulama sahipleri bölge uçlarını ortak uç noktaları olan bir Ön Kapı profiline işaret etmek için bunu kullanabilir. Uygulama sahipleri, DNS bölgesi içindeki herhangi bir başka etki alanı için kullanılan aynı Ön Kapı profiline işaret eder. Örneğin, `contoso.com` ve `www.contoso.com` aynı Ön Kapı profiline işaret edebilir. 
+Bu sorun Azure DNS diğer ad kayıtları kullanılarak çözülebilir. CNAME kayıtlarının aksine, diğer ad kayıtları bölge tepesinde kayıtlarını ortak uç noktalara sahip bir ön kapılı profile işaret etmek için kullanabilir. Uygulama sahipleri, DNS bölgesi içindeki diğer etki alanı için kullanılan aynı ön kapı profilini işaret. Örneğin, `contoso.com` ve `www.contoso.com` aynı ön kapı profilini işaret edebilir. 
 
-Ön Kapı profilinize tepe veya kök etki alanınızı eşleme temel olarak CNAME düzleşme veya DNS takibi gerektirir, bu da DNS sağlayıcısında bir IP adresine ulaşana kadar CNAME girişini özyinelemeli şekilde çözen bir mekanizmadır. Bu işlevsellik, Ön Kapı uç noktaları için Azure DNS tarafından desteklenir. 
+Tepesinde veya kök etki alanınızı ön kapı profilinize eşleyerek, DNS sağlayıcının bir IP adresi ile eşleşene kadar CNAME girişini yinelemeli olarak çözümlediği bir mekanizma olan CNAME düzleştirme veya DNS oluşturma gerekir. Bu işlevsellik, ön kapı uç noktaları için Azure DNS desteklenir. 
 
 > [!NOTE]
-> CNAME düzlemesi veya DNS takibini destekleyen başka DNS sağlayıcıları da vardır, ancak Azure Ön Kapı, etki alanlarını barındırmak için müşterileri için Azure DNS kullanmanızı önerir.
+> CNAME düzleştirme veya DNS ile izleme desteği sunan başka DNS sağlayıcıları da vardır, ancak Azure ön kapısı, kendi etki alanlarını barındırmak için müşterilerinin Azure DNS kullanılmasını önerir.
 
-Azure portalını Ön Kapınızdaki bir tepe etki alanında kullanmak ve TLS sonlandırma sertifikasıyla ilişkilendirerek https'yi etkinleştirebilirsiniz. Apex etki alanları kök veya çıplak etki alanları olarak da adlandırılır.
+Ön kapıya bir tepesinde etki alanı eklemek ve bunu TLS sonlandırmasına yönelik sertifikayla ilişkilendirerek HTTPS 'yi etkinleştirmek için Azure portal kullanabilirsiniz. Tepesinde etki alanları, kök veya Naked etki alanları olarak da adlandırılır.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Ön Kapı profilinizi gösteren bir takma ad kaydı oluşturma
-> * Kök etki alanını Ön Kapıya ekleme
+> * Ön kapı profilinize işaret eden bir diğer ad kaydı oluşturma
+> * Kök etki alanını ön kapıya ekleme
 > * Kök etki alanında HTTPS kurulumu
 
 > [!NOTE]
-> Bu öğretici, zaten oluşturulan bir Ön Kapı profili olması gerekir. [Quickstart:](./quickstart-create-front-door.md) Create a Front Door veya http [ile HTTPS yeniden yönlendirmesi ile](./front-door-how-to-redirect-https.md) bir Ön Kapı oluşturun gibi diğer öğreticilere bakın.
+> Bu öğreticide, önceden oluşturulmuş bir ön kapı profili olması gerekir. Başlamak için [hızlı başlangıç: ön kapı oluşturma](./quickstart-create-front-door.md) veya [http ile https yönlendirmesi arasında ön kapı oluşturma](./front-door-how-to-redirect-https.md) gibi diğer öğreticiler hakkında daha fazla öğreticilere bakın.
 
-## <a name="create-an-alias-record-for-zone-apex"></a>Bölge apeksi için takma ad kaydı oluşturma
+## <a name="create-an-alias-record-for-zone-apex"></a>Bölge tepesinde için diğer ad kaydı oluşturma
 
-1. Etki alanının yerleşik olması için **Azure DNS** yapılandırmasını açın.
-2. Bölge tepe cihazı için kayıt oluşturun veya edin.
-3. Kayıt **türünü** _A_ kaydı olarak seçin ve ardından Diğer Ad **kayıt kümesi**için _Evet'i_ seçin. **Diğer ad türü** _Azure kaynağına_ayarlanmalıdır.
-4. Ön Kapı profilinizin barındırıldığı Azure aboneliğini seçin ve ardından **Azure kaynak** açılır düşüşünden Ön Kapı kaynağını seçin.
-5. Değişikliklerinizi göndermek için **Tamam'ı** tıklatın.
+1. Etki alanının eklendi olması için **Azure DNS** yapılandırma açın.
+2. Bölge tepesinde için kayıt oluşturun veya düzenleyin.
+3. Kayıt **türünü** _bir_ kayıt olarak seçin ve ardından **diğer ad kayıt kümesi**için _Evet_ ' i seçin. **Diğer ad türü** _Azure kaynağı_olarak ayarlanmalıdır.
+4. Ön kapı profilinizin barındırıldığı Azure aboneliğini seçin ve ardından **Azure Kaynak** açılan listesinden ön kapı kaynağını seçin.
+5. Değişikliklerinizi göndermek için **Tamam** ' ı tıklatın.
 
-    ![Bölge tepe alanı için takma ad kaydı](./media/front-door-apex-domain/front-door-apex-alias-record.png)
+    ![Bölge tepesinde için diğer ad kaydı](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. Yukarıdaki adım, Ön Kapı kaynağınızı gösteren bir bölge apeksi kaydı ve ayrıca Ön Kapı `afdverify.contosonews.com`profilinizdeki `afdverify.<name>.azurefd.net` etki alanının onboarding için kullanılacak bir CNAME kaydı 'afdverify' (örnek - ) eşleme oluşturur.
+6. Yukarıdaki adım, ön kapı kaynağınızı ve ayrıca ön kapı profilinizde etki alanını eklemek `afdverify.contosonews.com` `afdverify.<name>.azurefd.net` için kullanılacak CNAME kaydı eşlemesi ' afdverify ' (örnek-) olan bir bölge tepesinde kaydı oluşturacaktır.
 
-## <a name="onboard-the-custom-domain-on-your-front-door"></a>Ön Kapınızdaki özel etki alanında yerleşik
+## <a name="onboard-the-custom-domain-on-your-front-door"></a>Özel etki alanını ön kapıya ekleme
 
-1. Ön Kapı tasarımcısı sekmesinde, yeni bir özel etki alanı eklemek için Frontend ana bilgisayarları bölümündeki '+' simgesine tıklayın.
-2. Özel ana bilgisayar adı alanına kök veya tepe `contosonews.com`etki alanı adını girin, örnek .
-3. Etki alanından Ön Kapınıza cname eşleme doğrulandıktan sonra, özel etki alanını eklemek için **Ekle'yi** tıklatın.
-4. Değişiklikleri göndermek için **Kaydet'i** tıklatın.
+1. Ön kapı Tasarımcısı sekmesinde, ön uç konaklar bölümünde ' + ' simgesine tıklayarak yeni bir özel etki alanı ekleyin.
+2. Özel ana bilgisayar adı alanına kök veya tepesinde etki alanı adını girin, örneğin `contosonews.com`.
+3. Etki alanından ön kapıya yönelik CNAME eşlemesi doğrulandıktan sonra, özel etki alanını eklemek için **Ekle** ' ye tıklayın.
+4. Değişiklikleri göndermek için **Kaydet** ' e tıklayın.
 
 ![Özel etki alanı menüsü](./media/front-door-apex-domain/front-door-onboard-apex-domain.png)
 
-## <a name="enable-https-on-your-custom-domain"></a>Özel etki alanınızda HTTPS'yi etkinleştirme
+## <a name="enable-https-on-your-custom-domain"></a>Özel etki alanınız üzerinde HTTPS 'yi etkinleştirme
 
-1. Eklenen özel etki alanına tıklayın ve **Özel etki alanı HTTPS**bölümünün altında, durumu **Etkin**olarak değiştirin.
-2. _'Kendi sertifikamı kullan'_ için **Sertifika yönetim türünü** seçin.
-
-> [!WARNING]
-> Ön Kapı yönetilen sertifika yönetim türü şu anda tepe veya kök etki alanları için desteklenmez. Ön Kapı için bir tepe veya kök etki alanında HTTPS'yi etkinleştirmek için kullanılabilen tek seçenek, Azure Key Vault'ta barındırılan kendi özel TLS/SSL sertifikanızı kullanmaktır.
-
-3. Bir sonraki adıma geçmeden önce, Web-Üfe'de belirtildiği gibi, Ön Kapı'nın anahtar Vault'unuza erişmesi için doğru izinlere sahip olduğundan emin olun.
-4. Geçerli aboneliğinizden bir **Key Vault hesabı** seçin ve ardından doğru sertifikayla eşlenecek uygun **Gizli** ve **Gizli sürümünü** seçin.
-5. Seçimi kaydetmek için **Güncelleştir'e** tıklayın ve ardından **Kaydet'i**tıklatın.
-6. Birkaç dakika sonra **Yenile'yi** tıklatın ve ardından sertifika sağlamanın ilerlemesini görmek için özel etki alanını yeniden tıklatın. 
+1. Eklenen özel etki alanına tıklayın ve **özel etki alanı https**bölümünde, durumu **etkin**olarak değiştirin.
+2. _' Kendi sertifikamı kullan '_ olarak **sertifika yönetimi türünü** seçin.
 
 > [!WARNING]
-> Apeks etki alanınız için uygun yönlendirme kuralları oluşturduğunuzdan veya etki alanını varolan yönlendirme kurallarına eklediğinizden emin olun.
+> Ön kapı tarafından yönetilen sertifika yönetimi türü, tepesinde veya kök etki alanları için şu anda desteklenmiyor. Ön kapıya yönelik bir tepesinde veya kök etki alanında HTTPS 'yi etkinleştirmek için kullanılabilen tek seçenek, Azure Key Vault barındırılan özel TLS/SSL sertifikanızı kullanmaktır.
+
+3. Bir sonraki adıma geçmeden önce, ön kapıya Kullanıcı arabiriminde belirtildiği şekilde anahtar kasanıza erişmek için doğru izinleri oluşturduğunuzdan emin olun.
+4. Geçerli aboneliğinizden bir **Key Vault hesabı** seçin ve ardından doğru sertifikayla eşlenecek uygun **gizli** ve **gizli sürümü** seçin.
+5. Seçimi kaydetmek için **Güncelleştir** ' e tıklayın ve ardından **Kaydet**' e tıklayın.
+6. Birkaç dakika sonra **Yenile** ' ye tıklayın ve ardından sertifika sağlama ilerleme durumunu görmek için özel etki alanı ' na tıklayın. 
+
+> [!WARNING]
+> Tepesinde etki alanınız için uygun yönlendirme kuralları oluşturduğunuzdan veya etki alanını mevcut yönlendirme kurallarına eklemiş olduğunuzdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı - Azure'un uygulama teslim paketiyle Yük Dengeleme | Microsoft Dokümanlar
-description: Bu makale, Azure'un uygulama teslim paketiyle yük dengelemeyi nasıl önerdiğini öğrenmenize yardımcı olur
+title: Azure 'un uygulama teslim paketiyle Azure ön kapısının yük dengelemesi | Microsoft Docs
+description: Bu makale, Azure 'un uygulama teslim paketiyle yük dengelemeyi nasıl önerdiği hakkında bilgi edinmenize yardımcı olur
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,73 +12,73 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875291"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Azure uygulama teslim paketiyle yük dengeleme
 
 ## <a name="introduction"></a>Giriş
-Microsoft Azure, ağ trafiğinizin nasıl dağıtıldığını ve yük dengeli olduğunu yönetmek için birden çok küresel ve bölgesel hizmet sağlar: Trafik Yöneticisi, Ön Kapı, Uygulama Ağ Geçidi ve Yük Dengeleyicisi.  Azure'un birçok bölgesi ve bölge mimarisinin yanı sıra, bu hizmetleri birlikte kullanmak sağlam, ölçeklenebilir yüksek performanslı uygulamalar oluşturmanıza olanak tanır.
+Microsoft Azure, ağ trafiğinizin nasıl dağıtılacağını ve yük dengelenmesi yönetmek için birden çok genel ve bölgesel hizmet sağlar: Traffic Manager, ön kapı, Application Gateway ve Load Balancer.  Azure 'un pek çok bölgesi ve zikzak mimarisiyle birlikte bu hizmetlerin birlikte kullanılması, güçlü ve ölçeklenebilir yüksek performanslı uygulamalar oluşturmanıza olanak tanır.
 
-![Uygulama Dağıtım Paketi ][1]
+![Uygulama teslim paketi ][1]
  
-Bu hizmetler iki kategoriye ayrılır:
-1. Traffic Manager ve Front Door gibi **genel yük dengeleme hizmetleri,** son kullanıcılarınızdan gelen trafiği bölgesel arka uçlarınıza, bulutlara ve hatta karma şirket içi hizmetlerinize dağıtır. Küresel yük dengeleme, trafiğinizi en yakın hizmet arka nıza yönlendirir ve kullanıcılarınız için her zaman çevrimiçi, maksimum performansı korumak için hizmet güvenilirliği veya performansındaki değişikliklere tepki verir. 
-2. Standart Yük Dengeleyici veya Uygulama Ağ Geçidi gibi **bölgesel yük dengeleme hizmetleri,** sanal makineleriniz (VM'ler) veya bölge hizmet bitiş noktaları arasında sanal ağlar (VNETs) içindeki trafiği dağıtma olanağı sağlar.
+Bu hizmetler iki kategoride bozulur:
+1. Traffic Manager ve ön kapı gibi **küresel Yük Dengeleme Hizmetleri** , son kullanıcılarınızın bulut genelindeki veya hatta karma şirket içi hizmetlerinizin yanı sıra bölgesel arka uçlarınızın genelinde trafiği dağıtır. Küresel Yük Dengeleme, trafiğinizi en yakın hizmet arka ucunuza yönlendirir ve kullanıcılarınız için her zaman açık ve performans performansını sürdürmek üzere hizmet güvenilirliği veya performansındaki değişikliklere tepki verir. 
+2. Standart Load Balancer veya Application Gateway gibi **Bölgesel Yük Dengeleme Hizmetleri** , sanal makineler (VM) veya bir bölgedeki bölgesel hizmet uç noktaları arasında sanal ağlar (VNet) içinde trafik dağıtma yeteneği sağlar.
 
-Uygulamanızdaki küresel ve bölgesel hizmetleri birleştirmek, kullanıcılarınız için iaaS, PaaS veya şirket içi hizmetlerinize trafik yönlendirmek için uçtan uca güvenilir, performanslı ve güvenli bir yol sağlar. Bir sonraki bölümde, bu hizmetlerin her birini açıklarız.
+Uygulamanızda küresel ve bölgesel hizmetler birleştirmek, kullanıcılarınızı IaaS, PaaS veya şirket içi hizmetlerinize yönlendirmek için uçtan uca güvenilir, performanslı ve güvenli bir yol sağlar. Sonraki bölümde, bu hizmetlerin her birini açıklıyoruz.
 
-## <a name="global-load-balancing"></a>Küresel yük dengeleme
-**Trafik Yöneticisi** küresel DNS yük dengeleme sağlar. Gelen DNS isteklerini bakar ve müşterinin seçtiği yönlendirme ilkesine uygun olarak sağlıklı bir arka uçla yanıt verir. Yönlendirme yöntemleri için seçenekler şunlardır:
-- İstekvereni gecikme sonu açısından en yakın arka uca göndermek için performans yönlendirmesi.
-- Tüm trafiği arka uca yönlendirmek için öncelik yönlendirmesi, diğer arka uçlar yedek olarak.
-- Trafiği, her arka uça atanan ağırlıklandırmaya göre dağıtan ağırlıklı yuvarlak-robin yönlendirme.
-- Belirli coğrafi bölgelerde bulunan istek sahiplerinin bu bölgelere eşlenen arka uçlara yönlendirilmesini sağlamak için coğrafi yönlendirme (örneğin, İspanya'dan gelen tüm istekler Fransa Orta Azure bölgesine yönlendirilmelidir)
-- IP adresi aralıklarını arka uçlarla eşlemenize olanak tanıyan alt ağ yönlendirmesi, böylece bu adreslerden gelen isteklerin belirtilen arka uça gönderilmesi (örneğin, kurumsal karargahınızın IP adresi aralığından bağlanan tüm kullanıcılar genel kullanıcılardan farklı web içeriği almalıdır)
+## <a name="global-load-balancing"></a>Küresel Yük Dengeleme
+**Traffic Manager** genel DNS yük dengelemesi sağlar. Müşterinin seçtiği yönlendirme ilkesine uygun olarak, gelen DNS isteklerine bakar ve sağlıklı bir arka uca yanıt verir. Yönlendirme yöntemleri seçenekleri şunlardır:
+- İstek sahibinin gecikme süresi bakımından en yakın arka uca gönderilmesi için performans yönlendirme.
+- Diğer arka uçlarla yedekleme olarak tüm trafiği arka uca yönlendirmek için öncelik yönlendirme.
+- Her bir arka uca atanan ağırlığa göre trafiği dağıtan ağırlıklı hepsini bir kez deneme yönlendirmesi.
+- Coğrafi yönlendirme belirli coğrafi bölgelerde bulunan istek sahipleri bu bölgelere eşlenen arka uçlara yönlendirildiğinden emin olmak için (örneğin, Ispanya 'dan gelen tüm isteklerin Azure bölgesine Fransa Orta yönlendirilmelidir)
+- Bundan sonra gelen isteklerin belirtilen arka uca gönderilmesini sağlamak için IP adresi aralıklarını arka uçlara eşlemenizi sağlayan alt ağ yönlendirme (örneğin, kurumsal HQ 'ın IP adresi aralığından bağlanan tüm kullanıcıların, genel kullanıcılardan farklı web içerikleri alması gerekir)
 
-İstemci doğrudan arka uca bağlanır. Azure Trafik Yöneticisi, arka uç sağlıksız olduğunda algılar ve istemcileri başka bir sağlıklı örneğe yönlendirir. Hizmet hakkında daha fazla bilgi edinmek için [Azure Trafik Yöneticisi](../traffic-manager/traffic-manager-overview.md) belgelerine bakın.
+İstemci doğrudan bu arka uca bağlanır. Azure Traffic Manager, bir arka ucun sağlıksız olduğunu algılar ve sonra istemcileri başka bir sağlıklı örneğe yönlendirir. Hizmet hakkında daha fazla bilgi edinmek için [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) belgelerine bakın.
 
-**Azure Ön Kapı,** genel HTTP yük dengelemesi de dahil olmak üzere dinamik web sitesi hızlandırma (DSA) sağlar.  Bu gelen HTTP istekleri yolları belirtilen ana bilgisayar adı, URL yolu ve yapılandırılmış kurallar için en yakın hizmet arka / bölgeye yolları bakar.  
-Ön Kapı, Microsoft ağının kenarındaki HTTP isteklerini sonlandırır ve uygulama veya altyapı durumu veya gecikme sabunu değişikliklerini algılamak için etkin olarak araştırma zantideler.  Ön Kapı sonra her zaman en hızlı ve kullanılabilir (sağlıklı) arka uç trafik yolları. Hizmet hakkında daha fazla bilgi edinmek için Front Door'un [yönlendirme mimarisi](front-door-routing-architecture.md) ayrıntılarına ve trafik [yönlendirme yöntemlerine](front-door-routing-methods.md) bakın.
+**Azure ön kapısı** , genel HTTP yük dengelemesi dahil olmak üzere dinamik Web sitesi HıZLANDıRMA (DSA) sağlar.  Gelen HTTP isteklerine, belirtilen ana bilgisayar adı, URL yolu ve yapılandırılmış kuralların en yakın hizmet arka ucuna/bölgesine bakar.  
+Ön kapı, Microsoft 'un ağındaki HTTP isteklerini sonlandırır ve uygulama ya da altyapı durumunu veya gecikme süresini algılamak üzere etkin bir şekilde araştırmalar.  Ön kapı daha sonra her zaman trafiği en hızlı ve kullanılabilir (sağlıklı) arka uca yönlendirir. Hizmet hakkında daha fazla bilgi edinmek için ön kapıların [yönlendirme mimarisi](front-door-routing-architecture.md) ayrıntılarına ve [trafik yönlendirme yöntemlerine](front-door-routing-methods.md) bakın.
 
 ## <a name="regional-load-balancing"></a>Bölgesel yük dengeleme
-Uygulama Ağ Geçidi, uygulamanız için çeşitli Katman 7 yük dengeleme özellikleri sunan uygulama dağıtım denetleyicisi (ADC) hizmeti sağlar. Cpu yoğun TLS sonlandırmayı uygulama ağ geçidine boşaltarak müşterilerin web farm üretkenliğini optimize etmesini sağlar. Diğer Katman 7 yönlendirme yetenekleri arasında gelen trafiğin round-robin dağıtımı, çerez tabanlı oturum yakınlığı, URL yol tabanlı yönlendirme ve tek bir uygulama ağ geçidinin arkasında birden çok web sitesini barındırma olanağı yer almaktadır. Uygulama Ağ Geçidi, Internet'e bakan bir ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin birleşimi olarak yapılandırılabilir. Uygulama Ağ Geçidi tamamen Azure tarafından yönetilir, ölçeklenebilir ve yüksek oranda kullanılabilir. Daha iyi yönetilebilirlik için zengin tanılama ve günlüğe kaydetme özellikleri sağlar.
-Yük Dengeleyici, tüm UDP ve TCP protokolleri için yüksek performanslı, düşük gecikmeli Katman 4 yük dengeleme hizmetleri sağlayan Azure SDN yığınının ayrılmaz bir parçasıdır. Gelen ve giden bağlantıları yönetir. Yük dengeleme özelliğine sahip genel ve şirket içi yük uç noktaları yapılandırıp TCP ve HTTP hizmet durumu yoklama seçeneklerini kullanarak gelen bağlantıları arka uç havuz hedefleriyle eşleyebilir ve hizmet kullanılabilirliği sağlayabilirsiniz.
+Application Gateway, uygulamanız için çeşitli katman 7 yük dengeleme özellikleri sunan bir hizmet olarak uygulama teslim denetleyicisi (ADC) sağlar. Müşterilerin, CPU yoğun TLS sonlandırmasını uygulama ağ geçidine devrederek, Web grubu üretkenliğini iyileştirmelerine olanak tanır. Diğer katman 7 yönlendirme özellikleri, gelen trafik, tanımlama bilgisi tabanlı oturum benzeşimi, URL yolu tabanlı Yönlendirme ve tek bir uygulama ağ geçidinin arkasında birden fazla Web sitesini barındırma olanağı içerir. Application Gateway, Internet 'e yönelik ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin bir birleşimi olarak yapılandırılabilir. Application Gateway tamamen Azure tarafından yönetilen, ölçeklenebilir ve yüksek oranda kullanılabilir. Daha iyi yönetilebilirlik için zengin tanılama ve günlüğe kaydetme özellikleri sağlar.
+Load Balancer, tüm UDP ve TCP protokolleri için yüksek performanslı ve düşük gecikmeli katman 4 Yük Dengeleme hizmetleri sunan Azure SDN yığınının ayrılmaz bir parçasıdır. Gelen ve giden bağlantıları yönetir. Yük dengeleme özelliğine sahip genel ve şirket içi yük uç noktaları yapılandırıp TCP ve HTTP hizmet durumu yoklama seçeneklerini kullanarak gelen bağlantıları arka uç havuz hedefleriyle eşleyebilir ve hizmet kullanılabilirliği sağlayabilirsiniz.
 
 
-## <a name="choosing-a-global-load-balancer"></a>Küresel yük dengeleyicisi seçme
-Genel yönlendirme için Trafik Yöneticisi ile Azure Ön Kapısı arasında genel bir yük dengeleyiciseçerken, iki hizmette benzer ve farklı olanı göz önünde bulundurmalısınız.   Her iki hizmet de
-- **Çok coğrafi artıklık:** Bir bölge çökerse, trafik uygulama sahibinin herhangi bir müdahalesi olmadan sorunsuz bir şekilde en yakın bölgeye yönlendirir.
-- **En yakın bölge yönlendirmesi:** Trafik otomatik olarak en yakın bölgeye yönlendirilir
+## <a name="choosing-a-global-load-balancer"></a>Küresel yük dengeleyici seçme
+Küresel yönlendirme için Traffic Manager ile Azure ön kapısı arasında küresel bir yük dengeleyici seçerken, nelerin benzer olduğunu ve iki hizmet hakkında ne olduğunu göz önünde bulundurmanız gerekir.   Her iki hizmet de sağlar
+- **Çoklu coğrafi yedeklilik:** Bir bölge kapalıysa trafik, uygulama sahibinden herhangi bir müdahale olmadan en yakın bölgeye sorunsuz bir şekilde yol açar.
+- **En yakın bölge yönlendirme:** Trafik, en yakın bölgeye otomatik olarak yönlendirilir
 
-</br>Aşağıdaki tabloda Trafik Yöneticisi ile Azure Ön Kapı arasındaki farklar açıklanmaktadır:</br>
+</br>Aşağıdaki tabloda Traffic Manager ve Azure ön kapısı arasındaki farklar açıklanmaktadır:</br>
 
 | Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
-|**Herhangi bir protokol:** Trafik Yöneticisi DNS katmanında çalıştığından, her tür ağ trafiğini yönlendirebilirsiniz; HTTP, TCP, UDP, vb. | **HTTP ivme:** Ön Kapı trafiği Microsoft ağının kenarında yakın.  Bu nedenle, HTTP(S) istekleri, TLS anlaşmasının gecikme süresini azaltan ve AFD'den uygulamanıza sıcak bağlantıları kullanan gecikme süresi ve iş gücü iyileştirmelerini görür.|
-|**Şirket içi yönlendirme:** DNS katmanında yönlendirme ile trafik her zaman noktadan noktaya gider.  Şubenizden şirket içi veri merkezinize yönlendirme doğrudan bir yol alabilir; Trafik Yöneticisi kullanarak kendi ağ bile. | **Bağımsız ölçeklenebilirlik:** Ön Kapı HTTP isteği yle çalıştığından, farklı URL yollarına gelen istekler, kurallara ve her uygulama nın sağlığına göre farklı arka uç / bölgesel servis havuzlarına (mikro hizmetler) yönlendirilebilir.|
-|**Faturabiçimi:** DNS tabanlı faturalandırma, daha yüksek kullanımda maliyeti azaltmak için kullanıcılarınızla ve daha fazla kullanıcıya sahip hizmetler için ölçeklendirilir. |**Satır dışı güvenlik:** Ön Kapı, trafik uygulamanız ulaşmadan önce arka uçlarınızı korumanızı sağlamak için hız sınırlaması ve IP ACL ing gibi kuralları sağlar. 
+|**Herhangi bir protokol:** Traffic Manager DNS katmanında çalıştığından, herhangi bir ağ trafiği türünü yönlendirebilirsiniz; HTTP, TCP, UDP vb. | **Http hızlandırma:** Ön kapı trafiği, Microsoft 'un ağının kenarına göre belirlenir.  Bu nedenle, HTTP (S) istekleri, TLS anlaşması gecikmesini azaltan gecikme süresi ve aktarım hızı iyileştirmeleri ve AFD 'den uygulamanıza sık erişimli bağlantılar sağlar.|
+|**Şirket içi yönlendirme:** Bir DNS katmanında yönlendirme sayesinde trafik her zaman noktadan noktaya gider.  Şube ofisinizden şirket içi veri merkezinize yönlendirme, doğrudan bir yol alabilir; Traffic Manager kullanarak kendi ağınızda bile. | **Bağımsız ölçeklenebilirlik:** Ön kapı HTTP isteğiyle çalıştığından, farklı URL yollarına yönelik istekler kurallara ve her bir uygulama mikro hizmetinin sistem durumuna göre farklı arka uç/bölgesel hizmet havuzlarına (mikro hizmetlere) yönlendirilebilir.|
+|**Faturalama biçimi:** Kullanıcılarınız ve daha fazla kullanıcı içeren hizmetler için DNS tabanlı faturalandırma, daha yüksek kullanımlarda maliyeti azaltır. |**Satır içi güvenlik:** Ön kapı, trafiğin uygulamanıza ulaşmadan önce arka uçlarınızı korumanızı sağlamak için hız sınırlaması ve IP ACL 'leri gibi kurallara olanak sağlar. 
 
-</br>Ön Kapı ile HTTP iş yüklerinin performansı, çalışabilirliği ve güvenlik avantajları nedeniyle, müşterilerin HTTP iş yükleri için Ön Kapı'yı kullanmalarını öneririz.    Trafik Yöneticisi ve Ön Kapı, uygulamanız için tüm trafiğe hizmet etmek için paralel olarak kullanılabilir. 
+</br>Ön kapılı HTTP iş yükleri için performans, çalışma ve güvenlik avantajları nedeniyle, müşterilerin HTTP iş yükleri için ön kapı kullanmasını öneririz.    Traffic Manager ve ön kapı, uygulamanızın tüm trafiğini karşılamak için paralel olarak kullanılabilir. 
 
-## <a name="building-with-azures-application-delivery-suite"></a>Azure'un uygulama teslim paketiyle oluşturma 
-Tüm web sitelerinin, API'lerin, hizmetlerin coğrafi olarak gereksiz olmasını ve kullanıcılarına mümkün olduğunca en yakın (en düşük gecikme) konumdan trafik sunmasını öneririz.  Trafik Yöneticisi, Ön Kapı, Uygulama Ağ Geçidi ve Yük Dengeleyici'nin hizmetlerini birleştirmek, güvenilirliği, ölçeği ve performansı en üst düzeye çıkarmak için coğrafi ve yedekli oluşturmanıza olanak tanır.
+## <a name="building-with-azures-application-delivery-suite"></a>Azure 'un uygulama teslim paketiyle oluşturma 
+Tüm Web sitelerinin, API 'Lerin, hizmetlerin coğrafi olarak yedekli olmasını ve kullanıcılara en yakın (en düşük gecikme süresi) konumundan mümkün olduğunda trafik sunmasını öneririz.  Traffic Manager, ön kapı, Application Gateway ve Load Balancer Hizmetleri birleştirmek, coğrafi olarak ve coğrafi olarak yedekli bir şekilde, güvenilirliği, ölçeği ve performansı en üst düzeye çıkarmak için oluşturmanıza olanak sağlar.
 
-Aşağıdaki diyagramda, genel bir web hizmeti oluşturmak için tüm bu hizmetlerin bir birleşimini kullanan bir örnek hizmeti açıklarız.   Bu durumda, mimar, dosya ve nesne teslimi için genel arka uçlara yönlendirmek için Trafik Yöneticisi'ni kullanırken, diğer tüm istekleri bölgesel Uygulama Ağ Geçitleri'ne yönlendirirken, desen /mağaza/* ile eşleşen URL yollarını Uygulama Hizmetine aktardıkları hizmete genel olarak yönlendirmek için Ön Kapı'yı kullanır.
+Aşağıdaki diyagramda, genel bir Web hizmeti oluşturmak için bu hizmetlerin bir birleşimini kullanan örnek bir hizmet açıklanır.   Bu durumda, mimari, dosya ve nesne teslimi için genel arka uçlara yönlendirmek üzere ön kapı kullanırken,/Store/* düzeniyle eşleşen URL yollarını, diğer tüm istekleri bölgesel uygulama ağ geçitlerine yönlendirirken App Service geçirdikleri hizmete yönlendirirken, mimariyle ilgili genel arka uçları kullanmak için Traffic Manager kullanmıştır.
 
-Bölgede, IaaS hizmetleri için, uygulama geliştiricisi desen /görüntüler/* eşleşen tüm URL'lerin web çiftliğinin geri kalanından farklı özel bir VM havuzundan sunulduğuna karar vermiştir.
+Bölgesinde, IaaS hizmeti için, uygulama geliştiricisi/images/* düzeniyle eşleşen tüm URL 'Lerin, Web grubunun geri kalanından farklı olan özel bir VM havuzundan sunulduğunu kararmıştır.
 
-Ayrıca, dinamik içeriğe hizmet veren varsayılan VM havuzunun yüksek kullanılabilirlik kümesinde barındırılan bir arka uç veritabanıyla konuşması gerekir. Dağıtımın tamamı Azure Kaynak Yöneticisi aracılığıyla ayarlanır.
+Ayrıca, dinamik içeriğe hizmet veren varsayılan VM havuzunun, yüksek kullanılabilirlik kümesinde barındırılan bir arka uç veritabanıyla iletişim sağlaması gerekir. Tüm dağıtım Azure Resource Manager ile ayarlanır.
 
-Aşağıdaki diyagram, bu senaryonun mimarisini gösterir:
+Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
 
-![Uygulama Dağıtım Paketi Detaylı Mimari][2] 
+![Uygulama teslim paketi ayrıntılı mimarisi][2] 
 
 > [!NOTE]
-> Bu örnek, Azure'un sunduğu yük dengeleme hizmetlerinin birçok olası yapılandırmalarından yalnızca biridir. Trafik Yöneticisi, Ön Kapı, Uygulama Ağ Geçidi ve Yük Dengeleyicisi, yük dengeleme ihtiyaçlarınıza en uygun şekilde karıştırılabilir ve eşlenebilir. Örneğin, TLS/SSL boşaltma veya Katman 7 işlemi gerekli değilse, Yük Dengeleyici Sİstem Ağ Geçidi yerine kullanılabilir.
+> Bu örnek, Azure tarafından sunulan Yük Dengeleme hizmetlerinin olası birçok yapılandırmasından yalnızca biridir. Traffic Manager, ön kapı, Application Gateway ve Load Balancer, Yük Dengeleme gereksinimlerinize en iyi şekilde karışabilir ve eşleştirilebilir. Örneğin, TLS/SSL yük boşaltma veya katman 7 işleme gerekli değilse, Load Balancer Application Gateway yerine kullanılabilir.
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

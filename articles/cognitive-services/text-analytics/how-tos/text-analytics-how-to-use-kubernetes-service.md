@@ -1,7 +1,7 @@
 ---
-title: Azure Kubernetes Hizmetini Çalıştırın - Metin Analizi
+title: Azure Kubernetes hizmetini çalıştırma-Metin Analizi
 titleSuffix: Azure Cognitive Services
-description: Text Analytics kapsayıcı görüntüsünü Azure Kubernetes Hizmeti'ne dağıtın ve bir web tarayıcısında test edin.
+description: Metin Analizi kapsayıcı görüntüsünü Azure Kubernetes hizmetine dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 155f32ee76f69fe0f16e7698123381fdc12efd0e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877873"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Azure Kubernetes Hizmetine Metin Analizi kapsayıcısı dağıtma
+# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Azure Kubernetes hizmetine bir Metin Analizi kapsayıcısı dağıtma
 
-Azure Bilişsel Hizmetler Metin [Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) kapsayıcı görüntüsünü Azure Kubernetes Hizmetine (AKS) nasıl dağıtabileceğinizi öğrenin. Bu yordam, bir Metin Analizi kaynağının nasıl oluşturulup oluşturulabildiğini, ilişkili bir duygu analizi görüntüsünün nasıl oluşturulturaz olduğunu ve bir tarayıcıdan ikisinin bu orkestrasyonunun nasıl uygulanış ını gösterir. Kapsayıcıları kullanmak dikkatinizi altyapı yönetiminden uygulama geliştirmeye odaklanmak yerine uzaklaştırmaya kaydırabilir.
+Azure bilişsel Hizmetler [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) kapsayıcı görüntüsünü Azure Kubernetes Service 'e (aks) dağıtmayı öğrenin. Bu yordamda, bir Metin Analizi kaynağı oluşturma, ilişkili bir yaklaşım Analizi görüntüsü oluşturma ve bu iki tarayıcıyı tarayıcıdan nasıl alıştırma yapılacağı gösterilmektedir. Kapsayıcıları kullanmak, dikkat etmeniz gereken altyapıyı, uygulama geliştirmeye odaklanmak yerine altyapıya kadar bir yere kaydırabilirler.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir. Azure Bulut Su Bulutu'nu kullanmayın. Aşağıdakileri yapmanız gerekir:
+Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir. Azure Cloud Shell kullanmayın. Şunlar gerekir:
 
-* Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-* Bir metin editörü, örneğin, [Visual Studio Code](https://code.visualstudio.com/download).
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Bir metin Düzenleyicisi, örneğin [Visual Studio Code](https://code.visualstudio.com/download).
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) yüklendi.
 * [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) yüklendi.
-* Doğru fiyatlandırma katmanına sahip bir Azure kaynağı. Tüm fiyatlandırma katmanları bu kapsayıcıyla çalışmaz:
-    * **Yalnızca** F0 veya standart fiyatlandırma katmanlarına sahip Azure Metin Analizi kaynağı.
-    * S0 fiyatlandırma katmanına sahip **Azure Bilişsel Hizmetler** kaynağı.
+* Doğru fiyatlandırma katmanına sahip bir Azure kaynağı. Fiyatlandırma katmanlarının tümü bu kapsayıcı ile çalışmaz:
+    * Yalnızca F0 veya standart fiyatlandırma katmanlarına sahip **Azure metin analizi** kaynağı.
+    * S0 fiyatlandırma katmanı ile Azure bilişsel **Hizmetler** kaynağı.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -49,7 +49,7 @@ Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli ar
 
 [!INCLUDE [Verify the Language Detection container instance](../includes/verify-language-detection-container.md)]
 
-#### <a name="sentiment-analysis"></a>[Duygusallık Analizi](#tab/sentiment)
+#### <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment)
 
 [!INCLUDE [Sentiment Analysis Kubernetes config and deploy steps](../includes/sentiment-analysis-kubernetes-config-deploy.md)]
 
@@ -59,5 +59,5 @@ Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli ar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Daha fazla [Bilişsel Hizmet kapsayıcısı](../../cognitive-services-container-support.md) kullanın
-* Metin [Analizi ne bağlı servisini](../vs-text-connected-service.md) kullanın
+* Daha fazla bilişsel [Hizmetler kapsayıcısı](../../cognitive-services-container-support.md) kullanın
+* [Metin analizi bağlı hizmetini](../vs-text-connected-service.md) kullanma

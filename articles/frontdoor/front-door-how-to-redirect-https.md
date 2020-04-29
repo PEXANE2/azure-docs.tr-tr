@@ -1,6 +1,6 @@
 ---
-title: Azure portalını kullanarak HTTP ile HTTPS yeniden yönlendirmesi ile bir Ön Kapı oluşturma
-description: Azure portalını kullanarak HTTP'den HTTPS'ye yönlendirilmiş trafiği içeren bir Ön Kapı oluşturmayı öğrenin.
+title: Azure portal kullanarak HTTP ile HTTPS yönlendirmesi arasında ön kapı oluşturma
+description: Azure portal kullanarak HTTP 'den HTTPS 'ye yeniden yönlendirilen trafikle ön kapı oluşturmayı öğrenin.
 services: front-door
 author: sharad4u
 ms.service: frontdoor
@@ -8,104 +8,104 @@ ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
 ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878009"
 ---
-# <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portalını kullanarak HTTP ile HTTPS yeniden yönlendirmesi ile bir Ön Kapı oluşturma
+# <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal kullanarak HTTP ile HTTPS yönlendirmesi arasında ön kapı oluşturma
 
-Azure portalını kullanarak TLS sonlandırma sertifikasına sahip bir [Ön Kapı](front-door-overview.md) oluşturabilirsiniz. YÖNLENDIRME kuralı, HTTP trafiğini HTTPS'ye yönlendirmek için kullanılır.
+TLS sonlandırma sertifikasıyla bir [ön kapı](front-door-overview.md) oluşturmak için Azure Portal kullanabilirsiniz. HTTP trafiğini HTTPS 'ye yönlendirmek için bir yönlendirme kuralı kullanılır.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Varolan bir Web Uygulaması kaynağıyla Ön Kapı Oluşturma
-> * TLS/SSL sertifikasına sahip özel bir etki alanı ekleme 
-> * Özel etki alanında HTTPS yeniden yönlendirmekurulum
+> * Mevcut bir Web uygulaması kaynağıyla ön kapı oluşturma
+> * TLS/SSL sertifikası ile özel etki alanı ekleme 
+> * Özel etki alanında HTTPS yeniden yönlendirme kurulumu
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>Varolan bir Web Uygulaması kaynağıyla Ön Kapı Oluşturma
+## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>Mevcut bir Web uygulaması kaynağıyla ön kapı oluşturma
 
-1. Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
-3. Arama çubuğunu kullanarak **Ön Kapı'yı** arayın ve kaynak türünü bulduğunuzda **Oluştur'u**tıklatın.
-4. Bir abonelik seçin ve sonra varolan bir kaynak grubunu kullanın veya yeni bir tane oluşturun. UI'de istenen konum yalnızca kaynak grubu içindir. Ön Kapı yapılandırmanız Azure Ön [Kapı'nın TÜM POP konumlarında](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)dağıtılır.
+3. Arama çubuğunu kullanarak **ön kapı** araması yapın ve kaynak türünü bulduktan sonra **Oluştur**' a tıklayın.
+4. Bir abonelik seçin ve ardından var olan bir kaynak grubunu kullanın veya yeni bir tane oluşturun. Kullanıcı arabiriminde sorulduğu konum yalnızca kaynak grubu içindir. Ön kapı yapılandırmanız, tüm [Azure ön KAPıSıNıN pop konumlarına](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)dağıtılır.
 
-    ![Yeni Ön Kapı için temel leri yapılandırın](./media/front-door-url-redirect/front-door-create-basics.png)
+    ![Yeni ön kapıya yönelik temelleri yapılandırın](./media/front-door-url-redirect/front-door-create-basics.png)
 
-5. Yapılandırma sekmesini girmek için **İleri'yi** tıklatın. Ön Kapı yapılandırması üç adımda gerçekleşir - varsayılan ön uç ana bilgisayar ekleme, arka uç havuzuna arka uç ekleme ve ardından ön uç ana bilgisayarı için yönlendirme davranışını eşlemek için yönlendirme kuralları oluşturma. 
+5. Yapılandırma sekmesini girmek için **İleri** ' ye tıklayın. Ön kapıya yönelik yapılandırma üç adımda gerçekleşir. varsayılan ön uç konak ekleyerek, arka uç havuzunda arka uçlar ekleyerek ve ardından ön uç ana bilgisayar için yönlendirme davranışını eşlemek üzere yönlendirme kuralları oluşturma. 
 
-     ![Ön Kapı konfigürasyon tasarımcısı](./media/front-door-url-redirect/front-door-designer.png)
+     ![Ön kapı yapılandırma Tasarımcısı](./media/front-door-url-redirect/front-door-designer.png)
 
-6. Frontend**+** ana bilgisayarını oluşturmak için _Frontend ana bilgisayarlarındaki_ ' ' simgesini tıklatın, Ön Kapınız`\<**name**\>.azurefd.net`için varsayılan ön yüz ana cadınız için genel olarak benzersiz bir ad girin ( ). Bir sonraki adıma geçmek için **Ekle'yi** tıklatın.
+6. Ön uç konak**+** oluşturmak Için ön _uç konaklarındaki_ ' ' simgesine tıklayın, ön kapılarınız için varsayılan ön uç ana bilgisayarınız için genel olarak benzersiz bir ad girin`\<**name**\>.azurefd.net`(). Sonraki adıma geçmek için **Ekle** ' ye tıklayın.
 
-     ![Ön uç ana bilgisayar ekleme](./media/front-door-url-redirect/front-door-create-fehost.png)
+     ![Ön uç konağı ekleme](./media/front-door-url-redirect/front-door-create-fehost.png)
 
-7. Arka uç**+** havuzu oluşturmak için _Arka uç havuzlarında_ ' simgesini tıklatın. Arka uç havuzu için bir ad sağlayın ve ardından '**Arka uç ekle'** seçeneğini tıklayın.
-8. _App hizmeti_olarak Arka Uç Ana Bilgisayar Türünü seçin. Web uygulamanızın barındırıldığı aboneliği seçin ve ardından **Backend ana bilgisayar adı**için açılan sayfadan belirli web uygulamasını seçin.
-9. Arka uç kaydetmek için **Ekle'yi** tıklatın ve arka uç havuzu config'ini kaydetmek için yeniden **Ekle'yi** tıklatın.   ![Arka uç havuzuna arka uç ekleme](./media/front-door-url-redirect/front-door-create-backendpool.png)
+7. Arka uç havuzu**+** oluşturmak Için _arka uç havuzlarındaki_ ' ' simgesine tıklayın. Arka uç havuzu için bir ad girin ve ardından '**arka uç Ekle**' seçeneğine tıklayın.
+8. Arka uç konak türünü _App Service_olarak seçin. Web uygulamanızın barındırıldığı aboneliği seçin ve ardından **arka uç ana bilgisayar adı**açılır listesinden belirli bir Web uygulamasını seçin.
+9. Arka ucu kaydetmek için **Ekle** ' ye tıklayın ve arka uç havuzu yapılandırmasını kaydetmek Için yeniden **Ekle** ' ye tıklayın.   ![Arka uç havuzunda arka uç ekleme](./media/front-door-url-redirect/front-door-create-backendpool.png)
 
-10. Rota oluşturmak**+** için _Yönlendirme kurallarındaki_ ' ' simgesini tıklatın. Rota için bir ad sağlayın, 'HttpToHttpsRedirect' deyin ve _ardından Kabul Edilen Protokoller_ alanını **'yalnızca HTTP'** olarak ayarlayın. Uygun ön _uç ana bilgisayar_ seçildiğinden emin olun.  
-11. Rota _Ayrıntıları_ bölümünde, _Rota Türünü_ **Yeniden Yönlendirmek**için ayarlayın, Yönlendirme _türünün_ Bulundu **(302)** olarak ayarlanıp yeniden yönlendirme _protokolünün_ **yalnızca HTTPS'ye**ayarlı olduğundan emin olun. 
-12. HTTP'nin yönlendirme kuralını HTTPS yönlendirmesine kaydetmek için Ekle'yi tıklatın.
-     ![HTTPS yönlendirme rotasına HTTP ekleme](./media/front-door-url-redirect/front-door-redirect-config-example.png)
-13. HTTPS trafiğini işlemek için başka bir yönlendirme kuralı ekleyin. Yönlendirme**+** _kurallarında_ ' ' işaretini tıklatın ve rota için bir ad sağlayın, 'DefaultForwardingRoute' deyin ve sonra _Kabul Edilen Protokoller_ alanını **'yalnızca HTTPS'** olarak ayarlayın. Uygun ön _uç ana bilgisayar_ seçildiğinden emin olun.
-14. Rota Ayrıntıları bölümünde, _Route Type_ to **Forward'u**ayarlayın, sağ arka uç havuzunun seçildiğinden ve _Iletme Protokolü'nün_ yalnızca **HTTPS**olarak ayarlandığından emin olun. 
-15. Yönlendirme isteği için yönlendirme kuralını kaydetmek için Ekle'yi tıklatın.
-     ![HTTPS trafiği için ileri rota ekleme](./media/front-door-url-redirect/front-door-forward-route-example.png)
-16. Ön Kapı profilinizi oluşturmak için **Gözden Geçir + oluştur'u** ve ardından **Oluştur'u**tıklatın. Oluşturulduktan sonra oluşturulan kaynağa gidin.
+10. _Yönlendirme kuralları_ '**+**' simgesine tıklayarak bir yol oluşturun. Yol için bir ad girin, ' HttpToHttpsRedirect ' deyin ve ardından _kabul edilen protokoller_ alanını **' http Only '** olarak ayarlayın. Uygun _ön uç konağın_ seçili olduğundan emin olun.  
+11. _Rota ayrıntıları_ bölümünde _rota türünü_ **yeniden yönlendir**olarak ayarlayın, _yeniden yönlendirme türünün_ **bulunan (302)** olarak ayarlandığından ve _yönlendirme protokolünün_ **yalnızca https**olarak ayarlandığından emin olun. 
+12. HTTP için yönlendirme kuralını HTTPS yeniden yönlendirmeye kaydetmek için Ekle ' ye tıklayın.
+     ![Bir HTTP-HTTPS yeniden yönlendirme yolu ekleyin](./media/front-door-url-redirect/front-door-redirect-config-example.png)
+13. HTTPS trafiğini işlemek için başka bir yönlendirme kuralı ekleyin. _Yönlendirme kurallarında_ '**+**' işaretine tıklayın ve yol için bir ad girin, ' defaultforwardingroute ' deyin ve ardından _kabul edilen protokoller_ alanını **' https Only '** olarak ayarlayın. Uygun _ön uç konağın_ seçili olduğundan emin olun.
+14. Rota ayrıntıları bölümünde, _rota türünü_ **ilet**olarak ayarlayın, doğru arka uç havuzunun seçili olduğundan ve _iletme protokolünün_ **yalnızca https**olarak ayarlandığından emin olun. 
+15. İstek iletimi için yönlendirme kuralını kaydetmek üzere Ekle ' ye tıklayın.
+     ![HTTPS trafiği için bir iletme yolu ekleyin](./media/front-door-url-redirect/front-door-forward-route-example.png)
+16. Ön kapı profilinizi oluşturmak için **gözden geçir + oluştur** ' a ve ardından **Oluştur**' a tıklayın. Oluşturulduktan sonra kaynağa gidin.
 
-## <a name="add-a-custom-domain-to-your-front-door-and-enable-https-on-it"></a>Ön Kapınıza özel bir etki alanı ekleyin ve üzerinde HTTPS'yi etkinleştirin
-Aşağıdaki adımlar, varolan bir Ön Kapı kaynağına nasıl özel bir etki alanı ekleyebileceğinizve ardından http'den https yeniden yönlendirmeye nasıl etkinleştirebileceğinizi sergiler. 
+## <a name="add-a-custom-domain-to-your-front-door-and-enable-https-on-it"></a>Ön kapıya özel bir etki alanı ekleyin ve üzerinde HTTPS 'yi etkinleştirin
+Aşağıdaki adımlarda, var olan bir ön kapıya kaynak üzerinde nasıl özel bir etki alanı ekleyebileceğiniz ve sonra HTTP ile HTTPS yönlendirmesi nasıl etkinleştirileceği gösterilmektedir. 
 
 ### <a name="add-a-custom-domain"></a>Özel etki alanı ekleme
 
-Bu örnekte, `www` alt etki alanı için bir CNAME `www.contosonews.com`kaydı (örneğin, ) ekleyin.
+Bu örnekte, alt `www` etki alanı IÇIN bir CNAME kaydı eklersiniz (örneğin, `www.contosonews.com`).
 
 #### <a name="create-the-cname-record"></a>CNAME kaydı oluşturma
 
-Ön Kapınızın varsayılan ön yüz ana bilgisayarının alt etki alanını`<name>.azurefd.net`eşlemek için bir CNAME kaydı ekleyin (, Ön Kapı profilinizin adı buradadır). `<name>`
+Bir alt etki alanını ön kapısının varsayılan ön uç konağına eşlemek için bir CNAME kaydı ekleyin`<name>.azurefd.net`(, `<name>` burada, ön kapı profilinizin adıdır).
 
-`www.contoso.com` Etki alanı için, örnek olarak, adı `www` eşleyen bir CNAME kaydı `<name>.azurefd.net`ekleyin.
+`www.contoso.com` Etki alanı için, örneğin adını `www` eşleyen bir CNAME kaydı ekleyin `<name>.azurefd.net`.
 
 CNAME kaydını ekledikten sonra, DNS kayıtları sayfası aşağıdaki örnekte gösterildiği gibi görünür:
 
-![Ön Kapıya CNAME özel etki alanı](./media/front-door-url-redirect/front-door-dns-cname.png)
+![CNAME özel etki alanından ön kapıya](./media/front-door-url-redirect/front-door-dns-cname.png)
 
-#### <a name="onboard-the-custom-domain-on-your-front-door"></a>Ön Kapınızdaki özel etki alanında yerleşik
+#### <a name="onboard-the-custom-domain-on-your-front-door"></a>Özel etki alanını ön kapıya ekleme
 
-1. Ön Kapı tasarımcısı sekmesinde, yeni bir özel etki alanı eklemek için Frontend ana bilgisayarları bölümündeki '+' simgesine tıklayın. 
-2. Özel ana bilgisayar adı alanına tam nitelikli özel DNS adını girin, örnek. `www.contosonews.com` 
-3. Etki alanından Ön Kapınıza cname eşleme doğrulandıktan sonra, özel etki alanını eklemek için **Ekle'yi** tıklatın.
-4. Değişiklikleri göndermek için **Kaydet'i** tıklatın.
+1. Ön kapı Tasarımcısı sekmesinde, ön uç konaklar bölümünde ' + ' simgesine tıklayarak yeni bir özel etki alanı ekleyin. 
+2. Özel ana bilgisayar adı alanına, örnek `www.contosonews.com`olarak tam özel DNS adını girin. 
+3. Etki alanından ön kapıya yönelik CNAME eşlemesi doğrulandıktan sonra, özel etki alanını eklemek için **Ekle** ' ye tıklayın.
+4. Değişiklikleri göndermek için **Kaydet** ' e tıklayın.
 
 ![Özel etki alanı menüsü](./media/front-door-url-redirect/front-door-add-custom-domain.png)
 
-### <a name="enable-https-on-your-custom-domain"></a>Özel etki alanınızda HTTPS'yi etkinleştirme
+### <a name="enable-https-on-your-custom-domain"></a>Özel etki alanınız üzerinde HTTPS 'yi etkinleştirme
 
-1. Eklenen özel etki alanına tıklayın ve **Özel etki alanı HTTPS**bölümünün altında, durumu **Etkin**olarak değiştirin.
-2. Sertifika yönetim **türünü,** Ön Kapı tarafından tutulan, yönetilen ve otomatik olarak döndürülen ücretsiz sertifika için _yönetilen Ön Kapı'ya_ bırakabilirsiniz. Azure Key Vault ile depolanan kendi özel TLS/SSL sertifikanızı da kullanmayı seçebilirsiniz. Bu öğretici, Ön Kapı yönetilen sertifika kullanımı varsayar.
-![Özel etki alanı için HTTPS'yi etkinleştirme](./media/front-door-url-redirect/front-door-custom-domain-https.png)
+1. Eklenen özel etki alanına tıklayın ve **özel etki alanı https**bölümünde, durumu **etkin**olarak değiştirin.
+2. **Sertifika yönetimi türünü** , ön kapıya göre tutulan, yönetilen ve oto tarafından döndürülen ücretsiz sertifika Için _yönetilen ön kapı_ olarak ayarlayabilirsiniz. Ayrıca, Azure Key Vault ile depolanan özel TLS/SSL sertifikanızı kullanmayı da seçebilirsiniz. Bu öğreticide, ön kapılı yönetilen sertifikanın kullanılması varsayılmaktadır.
+![Özel etki alanı için HTTPS 'yi etkinleştirme](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
-3. Seçimi kaydetmek için **Güncelleştir'e** tıklayın ve ardından **Kaydet'i**tıklatın.
-4. Birkaç dakika sonra **Yenile'yi** tıklatın ve ardından sertifika sağlamanın ilerlemesini görmek için özel etki alanını yeniden tıklatın. 
+3. Seçimi kaydetmek için **Güncelleştir** ' e tıklayın ve ardından **Kaydet**' e tıklayın.
+4. Birkaç dakika sonra **Yenile** ' ye tıklayın ve ardından sertifika sağlama ilerleme durumunu görmek için özel etki alanı ' na tıklayın. 
 
 > [!WARNING]
-> ÖZEL bir etki alanı için HTTPS'yi etkinleştirmek birkaç dakika sürebilir ve CNAME doğrudan Ön Kapı ana `<name>.azurefd.net`bilgisayarınızla eşlenmezse etki alanı sahipliği doğrulamasına da bağlıdır. [Özel bir etki alanı için HTTPS'yi etkinleştirme](./front-door-custom-domain-https.md)hakkında daha fazla bilgi edinin.
+> Özel bir etki alanı için HTTPS 'nin etkinleştirilmesi birkaç dakika sürebilir ve ayrıca, CNAME doğrudan ön kapı konağınız `<name>.azurefd.net`ile eşlenmişse etki alanı sahipliği doğrulamasına bağlıdır. [Özel bir etki alanı IÇIN https 'yi etkinleştirme](./front-door-custom-domain-https.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="configure-the-routing-rules-for-the-custom-domain"></a>Özel etki alanı için yönlendirme kurallarını yapılandırma
 
-1. Daha önce oluşturulan yönlendirme kuralını tıklatın.
-2. Frontend ana bilgisayarları için açılır yere tıklayın ve etki alanınız için de bu rotayı uygulamak için özel etki alanınızı seçin.
+1. Daha önce oluşturulan yeniden yönlendirme yönlendirme kuralına tıklayın.
+2. Ön uç Konakları açılan listesine tıklayın ve bu yolu etki alanınız için de uygulamak üzere özel etki alanınızı seçin.
 3. **Güncelleştir**’e tıklayın.
-4. Diğer yönlendirme kuralı için de aynı işlemi yapın, diğer, iletme rotanız için özel etki alanı ekleyin.
-5. Değişikliklerinizi göndermek için **Kaydet'i** tıklatın.
+4. Diğer yönlendirme kuralı için de aynı işlemi, diğer bir deyişle, iletme yönlendirmenize özel etki alanını eklemek için de yapın.
+5. Değişikliklerinizi göndermek için **Kaydet** ' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Front Door oluşturmayı](quickstart-create-front-door.md) öğrenin.
 - [Front Door’un nasıl çalıştığını](front-door-routing-architecture.md) öğrenin.
-- [Ön Kapı'da URL yönlendirmesi](front-door-url-redirect.md)hakkında daha fazla bilgi edinin.
+- [Ön kapıda URL yeniden yönlendirme](front-door-url-redirect.md)hakkında daha fazla bilgi edinin.

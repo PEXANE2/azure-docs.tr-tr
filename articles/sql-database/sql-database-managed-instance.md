@@ -1,6 +1,6 @@
 ---
-title: SQL yönetilen örnek genel bakış
-description: Bu makalede, Azure SQL Veritabanı yönetilen örnek açıklanmaktadır.
+title: SQL yönetilen örneğine genel bakış
+description: Bu makalede Azure SQL veritabanı yönetilen örneği açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,327 +12,327 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
 ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879080"
 ---
-# <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı yönetilen örneği nedir?
+# <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği nedir?
 
-Yönetilen örnek, en son SQL Server şirket içi (Enterprise Edition) Veritabanı Motoru ile %100'e yakın uyumluluk sağlayan ve ortak güvenlik endişelerini gideren yerel bir [sanal ağ (VNet)](../virtual-network/virtual-networks-overview.md) uygulaması ve şirket içi SQL Server müşterileri için uygun bir [iş modeli](https://azure.microsoft.com/pricing/details/sql-database/) sağlayan Azure SQL Veritabanı'nın yeni bir dağıtım seçeneğidir. Yönetilen örnek dağıtım modeli, varolan SQL Server müşterilerinin en az uygulama ve veritabanı değişiklikleriyle şirket içi uygulamalarını kaldırmasına ve buluta kaydırmasına olanak tanır. Aynı zamanda, yönetilen örnek dağıtım seçeneği, yönetim ek yükü ve TCO'yu önemli ölçüde azaltan tüm PaaS özelliklerini (otomatik düzeltme ve sürüm [güncelleştirmeleri, otomatik yedeklemeler,](sql-database-automated-backups.md) [yüksek kullanılabilirlik)](sql-database-high-availability.md) korur.
-
-> [!IMPORTANT]
-> Yönetilen örnek dağıtım seçeneğinin şu anda kullanılabildiği bölgelerin listesi için [desteklenen bölgelere](sql-database-managed-instance-resource-limits.md#supported-regions)bakın.
-
-Aşağıdaki diyagram, yönetilen örneklerin temel özelliklerini özetler:
-
-![temel özellikler](./media/sql-database-managed-instance/key-features.png)
-
-Yönetilen örnek dağıtım modeli, şirket içi veya IaaS, kendi kendine inşa edilmiş veya ISV tarafından sağlanan ortamdan mümkün olduğunca düşük geçiş çabasıyla tam olarak yönetilen PaaS bulut ortamına çok sayıda uygulama geçirmek isteyen müşteriler için tasarlanmıştır. Azure'da tam otomatik [leştirilmiş Veri Geçiş Hizmeti 'ni (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) kullanan müşteriler, şirket içi SQL Server'larını şirket içi SQL Server ile uyumluluk ve müşteri örneklerinin yerel VNet desteğiyle tam yalıtım ı sunan yönetilen bir örneğe kaldırabilir ve kaydırabilir.  Yazılım Güvencesi ile, [SQL Server için Azure Karma Avantajı'nı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak yönetilen bir örnekte mevcut lisanslarınızı indirimli fiyatlarla değiştirebilirsiniz.  Yönetilen örnek, yüksek güvenlik ve zengin bir programlanabilirlik yüzeyi gerektiren SQL Server örnekleri için buluttaki en iyi geçiş hedefidir.
-
-Yönetilen örnek dağıtım seçeneği, aşamalı bir sürüm planı aracılığıyla en son şirket içi SQL Server sürümüyle %100'e yakın yüzey alanı uyumluluğu sağlar.
-
-Azure SQL Veritabanı dağıtım seçenekleri arasında karar vermek için: tek veritabanı, havuzlu veritabanı ve yönetilen örnek ve sanal makinede barındırılan SQL [Server, Azure'da SQL Server'ın doğru sürümünü nasıl seçeceğinizi](sql-database-paas-vs-sql-server-iaas.md)görün.
-
-## <a name="key-features-and-capabilities"></a>Temel özellikler ve özellikler
-
-Yönetilen örnek, hem Azure SQL Veritabanı'nda hem de SQL Server Veritabanı Altyapısında kullanılabilen en iyi özellikleri birleştirir.
+Yönetilen örnek, Azure SQL 100 veritabanı 'nın yeni bir dağıtım seçeneğidir ve en son SQL Server şirket içi (Enterprise Edition) veritabanı altyapısı ile, yaygın güvenlik sorunlarını ele alan yerel bir [sanal ağ (VNet)](../virtual-network/virtual-networks-overview.md) uygulamasını ve şirket içi SQL Server müşterileri için uygun bir [iş modelini](https://azure.microsoft.com/pricing/details/sql-database/) sağlar. Yönetilen örnek dağıtım modeli, mevcut SQL Server müşterilerin Şirket içi uygulamalarını en az uygulama ve veritabanı değişiklikleriyle buluta taşıyıp kaydırmaya izin verir. Aynı zamanda, yönetilen örnek dağıtım seçeneği, yönetim yükünü ve TCO 'ları büyük ölçüde azaltan tüm PaaS yeteneklerini (otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri, [otomatik yedeklemeler](sql-database-automated-backups.md), [yüksek kullanılabilirlik](sql-database-high-availability.md) ) korur.
 
 > [!IMPORTANT]
-> Yönetilen bir örnek, çevrimiçi işlemler, otomatik plan düzeltmeleri ve diğer kurumsal performans geliştirmeleri de dahil olmak üzere SQL Server'ın en son sürümünün tüm özellikleriyle çalışır. Kullanılabilir özelliklerin karşılaştırılması [Özellik karşılaştırmasında açıklanmıştır: Azure SQL Veritabanı ile SQL Server.](sql-database-features.md)
+> Yönetilen örnek dağıtım seçeneğinin Şu anda kullanılabildiği bölgelerin listesi için bkz. [Desteklenen bölgeler](sql-database-managed-instance-resource-limits.md#supported-regions).
+
+Aşağıdaki diyagramda yönetilen örneklerin temel özellikleri özetlenmektedir:
+
+![Temel Özellikler](./media/sql-database-managed-instance/key-features.png)
+
+Yönetilen örnek dağıtım modeli, şirket içi veya IaaS, kendiliğinden oluşturulmuş veya ISV tarafından sağlanmış ortamdan çok sayıda uygulamayı, mümkün olduğunca düşük geçiş çabasıyla tam olarak yönetilen PaaS bulut ortamına geçirmek isteyen müşteriler için tasarlanmıştır. Müşteriler, Azure 'da tam otomatik [veri geçiş hizmeti 'ni (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) kullanarak, şirket içi SQL Server, şirket içi SQL Server ile uyumluluğu ve yerel VNET desteğiyle müşteri örneklerinin yalıtımının tamamlanmasını sağlayan yönetilen bir örneğe kaldırıp kaydırabilirler.  Yazılım Güvencesi sayesinde, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak, yönetilen bir örnekteki indirimli ücretler için mevcut lisanslarınızı Exchange 'e dönüştürebilirsiniz.  Yönetilen bir örnek, bulutta yüksek güvenlik ve zengin bir programlama yüzeyi gerektiren SQL Server örnekleri için en iyi geçiş hedefidir.
+
+Yönetilen örnek dağıtım seçeneği amaçlar, aşamalı bir yayın planı aracılığıyla en son şirket içi SQL Server sürümüyle %100 ' a kadar yüzey alanı uyumluluğunu sağlar.
+
+Azure SQL veritabanı dağıtım seçenekleri arasında karar vermek için: tek veritabanı, havuza alınmış veritabanı ve yönetilen örnek ve sanal makinede barındırılan SQL Server, bkz. [Azure 'da SQL Server doğru sürümünü seçme](sql-database-paas-vs-sql-server-iaas.md).
+
+## <a name="key-features-and-capabilities"></a>Temel özellikler ve yetenekler
+
+Yönetilen örnek, hem Azure SQL veritabanı hem de SQL Server veritabanı altyapısında bulunan en iyi özellikleri birleştirir.
+
+> [!IMPORTANT]
+> Yönetilen bir örnek, çevrimiçi işlemler, otomatik plan düzeltmeleri ve diğer kurumsal performans iyileştirmeleri dahil olmak üzere en son SQL Server sürümünün tüm özellikleriyle çalışır. Kullanılabilen özelliklerin bir karşılaştırması, [Özellik Karşılaştırması: Azure SQL veritabanı ve SQL Server](sql-database-features.md)açıklanmıştır.
 
 | **PaaS avantajları** | **İş sürekliliği** |
 | --- | --- |
-|Donanım satın alma ve yönetimi yok <br>Altta yatan altyapıyı yönetmek için yönetim yükü yok <br>Hızlı sağlama ve hizmet ölçekleme <br>Otomatik düzeltme ve sürüm yükseltme <br>Diğer PaaS veri hizmetleriyle entegrasyon |99.99% çalışma süresi SLA  <br>Yüksek [kullanılabilirlik](sql-database-high-availability.md) içinde yerleşik <br>[Otomatik yedeklemelerle](sql-database-automated-backups.md) korunan veriler <br>Müşteri yapılandırılabilir yedekleme bekletme süresi <br>Kullanıcı tarafından başlatılan [yedeklemeler](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Zaman veritabanı geri yükleme](sql-database-recovery-using-backups.md#point-in-time-restore) özelliği noktası |
+|Donanım satın alma ve yönetimi yok <br>Temel altyapıyı yönetmeye yönelik yönetim yükü yok <br>Hızlı sağlama ve hizmet ölçeklendirme <br>Otomatik düzeltme eki uygulama ve sürüm yükseltme <br>Diğer PaaS veri hizmetleriyle tümleştirme |% 99,99 çalışma süresi SLA 'Sı  <br>[Yüksek kullanılabilirlik](sql-database-high-availability.md) için yerleşik <br>[Otomatik yedeklemelerle](sql-database-automated-backups.md) korunan veriler <br>Müşteri yapılandırılabilir yedekleme Bekletme dönemi <br>Kullanıcı tarafından başlatılan [yedeklemeler](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Zaman noktası veritabanı geri yükleme](sql-database-recovery-using-backups.md#point-in-time-restore) özelliği |
 |**Güvenlik ve uyumluluk** | **Yönetim**|
-|Yalıtılmış ortam ([VNet entegrasyonu,](sql-database-managed-instance-connectivity-architecture.md)tek kiracı hizmeti, özel işlem ve depolama) <br>[Saydam veri şifreleme (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD kimlik doğrulaması](sql-database-aad-authentication.md), tek oturum açma desteği <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD sunucu ilkeleri (oturum açmalar)</a>  <br>Azure SQL veritabanıyla aynı uyumluluk standartlarına uyar <br>[SQL denetimi](sql-database-managed-instance-auditing.md) <br>[Gelişmiş Tehdit Koruması](sql-database-managed-instance-threat-detection.md) |Hizmet sağlama ve ölçekleme otomatikleştirmek için Azure Kaynak Yöneticisi API <br>Manuel hizmet sağlama ve ölçekleme için Azure portalı işlevselliği <br>Veri Geçiş Hizmeti
+|Yalıtılmış ortam ([VNET tümleştirmesi](sql-database-managed-instance-connectivity-architecture.md), tek kiracılı hizmet, adanmış işlem ve depolama) <br>[Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD kimlik doğrulaması](sql-database-aad-authentication.md), çoklu oturum açma desteği <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD Server sorumluları (oturum açmalar)</a>  <br>Azure SQL veritabanı ile aynı uyumluluk standartlarına uyar <br>[SQL denetimi](sql-database-managed-instance-auditing.md) <br>[Gelişmiş tehdit koruması](sql-database-managed-instance-threat-detection.md) |Hizmet sağlamayı ve ölçeklendirmeyi otomatikleştirmek için API Azure Resource Manager <br>El ile hizmet sağlama ve ölçeklendirme için Azure portal işlevselliği <br>Veri Geçiş Hizmeti
 
 > [!IMPORTANT]
-> Azure SQL Veritabanı (tüm dağıtım seçenekleri), bir dizi uyumluluk standardına göre onaylanmıştır. Daha fazla bilgi için, SQL Veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Microsoft Azure Güven Merkezi'ne](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) bakın.
+> Azure SQL veritabanı (tüm dağıtım seçenekleri), bir dizi uyumluluk standartlarına karşı sertifikalandırilmiştir. Daha fazla bilgi için SQL veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Microsoft Azure Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ' ne bakın.
 
 Yönetilen örneklerin temel özellikleri aşağıdaki tabloda gösterilmiştir:
 
 |Özellik | Açıklama|
 |---|---|
-| SQL Server sürümü / build | SQL Server Database Engine (en son kararlı) |
-| Yönetilen otomatik yedeklemeler | Evet |
-| Yerleşik örnek ve veritabanı izleme ve ölçümleri | Evet |
-| Otomatik yazılım düzeltme | Evet |
-| En son Veritabanı Altyapısı özellikleri | Evet |
-| Veritabanı başına veri dosyası (ROWS) sayısı | Birden çok |
-| Veritabanı başına günlük dosyası sayısı (LOG) | 1 |
-| VNet - Azure Kaynak Yöneticisi dağıtımı | Evet |
-| VNet - Klasik dağıtım modeli | Hayır |
-| Portal desteği | Evet|
-| Dahili Entegrasyon Hizmeti (SSIS) | Hayır - SSIS, [Azure Veri Fabrikası PaaS'ın](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) bir parçasıdır |
-| Dahili Analiz Hizmeti (SSAS) | Hayır - SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) olduğunu |
-| Dahili Raporlama Hizmeti (SSRS) | Hayır - Bunun yerine [Power BI paginated raporları](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) kullanın veya Azure VM'de SSRS'yi barındırın. Yönetilen Örnek SSRS'yi bir hizmet olarak çalıştıramaz, ancak SQL Server kimlik doğrulaması kullanarak harici bir raporlama sunucusu için SSRS 2019 katalog veritabanlarını barındırabilir. |
+| Sürüm/derleme SQL Server | SQL Server veritabanı altyapısı (en son kararlı) |
+| Yönetilen otomatik yedeklemeler | Yes |
+| Yerleşik örnek ve veritabanı izleme ve ölçümler | Yes |
+| Otomatik yazılım düzeltme eki uygulama | Yes |
+| En son veritabanı altyapısı özellikleri | Yes |
+| Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
+| Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
+| VNet-Azure Resource Manager dağıtımı | Yes |
+| VNet-klasik dağıtım modeli | Hayır |
+| Portal desteği | Yes|
+| Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'in bir parçasıdır |
+| Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
+| Yerleşik raporlama hizmeti (SSRS) | Azure VM 'de [Power BI sayfalandırılmış raporlar](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) veya konak SSRS 'yi kullanın. Yönetilen örnek SSRS 'yi bir hizmet olarak çalıştıramıyor olsa da, SQL Server kimlik doğrulaması kullanarak bir dış raporlama sunucusu için SSRS 2019 Katalog veritabanlarını barındırabilir. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
-Yönetilen örnekler için [vCore tabanlı satın alma modeli,](sql-database-service-tiers-vcore.md) size esneklik, denetim, şeffaflık ve şirket içi iş yükü gereksinimlerini buluta çevirmenin basit bir yolunu sunar. Bu model, iş yükü gereksinimlerinize bağlı olarak işlem, bellek ve depolama yı değiştirmenize olanak tanır. vCore modeli, SQL Server için Azure Karma [Avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)ile yüzde 55'e kadar tasarruf için de uygundur.
+Yönetilen örnekler için [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) , şirket içi iş yükü gereksinimlerini buluta çevirebilmeniz için esneklik, denetim, saydamlık ve kolay bir yol sağlar. Bu model, iş yükü gereksinimlerinize göre işlem, bellek ve depolamayı değiştirmenize olanak sağlar. VCore modeli, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)yüzde 55 tasarruf için de uygundur.
 
-vCore modelinde, nesillerden nesile donanım seçebilirsiniz.
+Sanal çekirdek modelinde, donanım nesilleri arasından seçim yapabilirsiniz.
 
-- **Gen4** Mantıksal CPU'lar Intel E5-2673 v3 (Haswell) 2.4-GHz işlemciler, ekli SSD, fiziksel çekirdekler, çekirdek başına 7 GB RAM ve 8 ve 24 vCores arasında hesaplama boyutları dayanmaktadır.
-- **Gen5** Mantıksal CPU'lar Intel E5-2673 v4 (Broadwell) 2.3-GHz ve Intel SP-8160 (Skylake) işlemciler, hızlı NVMe SSD, hiper dişli mantıksal çekirdek ve 4 ve 80 çekirdek arasındaki işlem boyutları dayanmaktadır.
+- **4. nesil** Mantıksal CPU 'Lar Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri, ekli SSD, fiziksel çekirdekler, çekirdek başına 7 GB RAM ve 8 ila 24 sanal çekirdek arasında işlem boyutları temel alır.
+- **5. nesil** Mantıksal CPU 'Lar Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri, hızlı NVMe SSD, hiper iş parçacıklı mantıksal çekirdek ve 4 ile 80 çekirdekler arasında işlem boyutlarını temel alır.
 
-[Yönetilen örnek kaynak sınırlarında](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)donanım nesilleri arasındaki fark hakkında daha fazla bilgi edinin.
+[Yönetilen örnek kaynak limitlerdeki](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)donanım oluşturmaları arasındaki fark hakkında daha fazla bilgi bulabilirsiniz.
 
-## <a name="managed-instance-service-tiers"></a>Yönetilen örnek hizmet katmanları
+## <a name="managed-instance-service-tiers"></a>Yönetilen örnek hizmeti katmanları
 
-Yönetilen örnek iki hizmet katmanında kullanılabilir:
+Yönetilen örnek iki hizmet katmanlarında kullanılabilir:
 
-- **Genel amaç**: Tipik performans ve IO gecikme şartlarına sahip uygulamalar için tasarlanmıştır.
-- **İş açısından kritik**: Düşük IO gecikme süresi gereksinimlerine ve temel bakım işlemlerinin iş yükü üzerindeki minimum etkisine sahip uygulamalar için tasarlanmıştır.
+- **Genel amaçlı**: tipik performans ve GÇ gecikme gereksinimlerine sahip uygulamalar için tasarlanmıştır.
+- **İş açısından kritik**: düşük GÇ gecikme gereksinimleri ve iş yükünde temeldeki bakım işlemlerinin en az etkisi olan uygulamalar için tasarlanmıştır.
 
-Her iki hizmet katmanı da %99,99 kullanılabilirliği garanti eder ve depolama boyutunu ve işlem kapasitesini bağımsız olarak seçmenize olanak tanır. Azure SQL Veritabanı'nın yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için yüksek [kullanılabilirlik ve Azure SQL Veritabanı'na](sql-database-high-availability.md)bakın.
+Her iki hizmet katmanı da% 99,99 kullanılabilirlik garantisi sağlar ve depolama boyutunu ve işlem kapasitesini bağımsız olarak seçmenizi sağlar. Azure SQL veritabanı 'nın yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz. [yüksek kullanılabilirlik ve Azure SQL veritabanı](sql-database-high-availability.md).
 
 ### <a name="general-purpose-service-tier"></a>Genel amaçlı hizmet katmanı
 
-Aşağıdaki liste, Genel Amaçlı hizmet katmanının temel özelliğini açıklar:
+Aşağıdaki listede Genel Amaçlı hizmet katmanının temel özellikleri açıklanmıştır:
 
-- Tipik performans gereksinimlerine sahip iş uygulamalarının çoğu için tasarım
+- Tipik performans gereksinimleriyle iş uygulamalarının çoğunluğunun tasarımı
 - Yüksek performanslı Azure Blob depolama (8 TB)
-- Güvenilir Azure Blob depolama ve [Azure Hizmet Kumaşı'na](../service-fabric/service-fabric-overview.md) dayalı yerleşik yüksek [kullanılabilirlik](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
+- Güvenilir Azure Blob depolama ve [azure Service Fabric](../service-fabric/service-fabric-overview.md) temel alınarak yerleşik [yüksek kullanılabilirlik](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
 
-Daha fazla bilgi için, [genel amaçlı katmanve](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) [depolama performansı en iyi uygulamaları ve yönetilen örnekleri (genel amaçlı) için hususlar](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/)depolama katmanı bakın.
+Daha fazla bilgi için bkz. [genel amaçlı katmanda depolama katmanı](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) ve [yönetilen örnekler (genel amaçlı) için depolama performansı en iyi uygulamaları ve konuları](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
 [Yönetilen örnek kaynak sınırlarındaki](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)hizmet katmanları arasındaki fark hakkında daha fazla bilgi edinin.
 
-### <a name="business-critical-service-tier"></a>İş Kritik hizmet katmanı
+### <a name="business-critical-service-tier"></a>İş Açısından Kritik hizmet katmanı
 
-Business Critical hizmet katmanı, yüksek IO gereksinimleri olan uygulamalar için oluşturulmuştür. Birkaç yalıtılmış çoğaltma kullanarak hatalara karşı en yüksek esneklik sağlar.
+İş Açısından Kritik hizmet katmanı, yüksek GÇ gereksinimlerine sahip uygulamalar için oluşturulmuştur. Birkaç yalıtılmış çoğaltma kullanarak hatalara en yüksek esnekliği sağlar.
 
-Aşağıdaki liste, İş Açısından Kritik hizmet katmanının temel özelliklerini özetleyilmiştir:
+Aşağıdaki listede İş Açısından Kritik hizmet katmanının temel özellikleri özetlenmektedir:
 
 - En yüksek performans ve HA gereksinimlerine sahip iş uygulamaları için tasarlanmıştır
-- Süper hızlı yerel SSD depolama (Gen4'te 1 TB'a kadar ve Gen5'te 4 TB'a kadar)
-- [Her Zaman Kullanılabilirlik Gruplarına](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) ve [Azure Hizmet Kumaşına](../service-fabric/service-fabric-overview.md)dayalı yerleşik [yüksek kullanılabilirlik.](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)
-- Raporlama ve diğer salt okunur iş yükleri için kullanılabilecek yerleşik ek [salt okunur veritabanı yinelemesi](sql-database-read-scale-out.md)
-- Yüksek performans gereksinimleri ile iş yükü için kullanılabilen [Bellek Içi OLTP](sql-database-in-memory.md)  
+- Süper hızlı yerel SSD depolama (4. nesil üzerinde en fazla 1 TB ve 5. nesil üzerinde 4 TB 'a kadar) ile birlikte gelir
+- [Always on kullanılabilirlik grupları](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) ve [Azure Service Fabric](../service-fabric/service-fabric-overview.md)temel alınarak yerleşik [yüksek kullanılabilirlik](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) .
+- Raporlama ve diğer salt okuma iş yükleri için kullanılabilen, yerleşik ek [salt okuma veritabanı çoğaltması](sql-database-read-scale-out.md)
+- Yüksek performanslı gereksinimlere sahip iş yükü için kullanılabilen [bellek ıçı OLTP](sql-database-in-memory.md)  
 
 [Yönetilen örnek kaynak sınırlarındaki](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)hizmet katmanları arasındaki fark hakkında daha fazla bilgi edinin.
 
 
-## <a name="managed-instance-management-operations"></a>Yönetilen örnek yönetim işlemleri
+## <a name="managed-instance-management-operations"></a>Yönetilen örnek yönetimi işlemleri
 
-Azure SQL Veritabanı yeni yönetilen örnekleri otomatik olarak dağıtmak, örnek özelliklerini güncelleştirmek ve artık gerekmediğinde örnekleri silmek için kullanabileceğiniz yönetim işlemleri sağlar. Bu bölümde yönetim işlemleri ve bunların tipik süreleri hakkında bilgi verilmektedir.
+Azure SQL Veritabanı yeni yönetilen örnekleri otomatik olarak dağıtmak, örnek özelliklerini güncelleştirmek ve artık gerekmediğinde örnekleri silmek için kullanabileceğiniz yönetim işlemleri sağlar. Bu bölümde yönetim işlemleri ve bunların tipik süreleri hakkında bilgi sağlanır.
 
-Azure [Sanal Ağlar (VNets) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md) desteklemek ve müşteriler için yalıtım ve güvenlik sağlamak için yönetilen örnek, müşterinin sanal ağ alt ağında dağıtılan özel bir yalıtılmış sanal makine kümesini temsil eden [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)dayanır. Esasen, boş bir alt ağda yönetilen her örnek dağıtımı yeni bir sanal küme oluşturmayla sonuçlanır.
+[Azure sanal ağları (VNet) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için yönetilen örnek, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eden [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)bağımlıdır. Temelde, boş bir alt ağda bulunan her yönetilen örnek dağıtımı yeni bir sanal küme oluşturma ile sonuçlanır.
 
-Dağıtılan yönetilen örneklerdeki sonraki işlemlerin altta yatan sanal küme üzerinde de etkileri olabilir. Bu, yeni dağıtımlar veya varolan yönetilen örneklerde güncelleştirmeler planlarken dikkate alınması gereken bir ek yükü yle birlikte ek sanal makineler intikal ettiğinden, yönetim işlemlerinin süresini etkiler.
+Dağıtılmış yönetilen örneklerin sonraki işlemlerinin, temel alınan sanal kümesinde de etkileri olabilir. Bu, ek sanal makinelerin dağıtımı, Yeni dağıtımlar veya mevcut yönetilen örneklere güncelleştirmeler planlarken dikkate alınması gereken bir ek yük ile birlikte, yönetim işlemlerinin süresini etkiler.
 
 Tüm yönetim işlemleri aşağıdaki gibi kategorilere ayrılabilir:
 
-- Örnek dağıtım (yeni örnek oluşturma). 
-- Örnek güncelleştirme (vCores veya ayrılmış depolama gibi örnek özelliklerini değiştirme.
+- Örnek dağıtımı (yeni örnek oluşturma). 
+- Örnek Güncelleştirmesi (sanal çekirdekler veya ayrılmış depolama gibi örnek özelliklerini değiştirme.
 - Örnek silme.
 
-Genellikle, sanal kümeler üzerindeki işlemler en uzun sürer. Sanal kümeler üzerindeki işlemlerin süresi değişir – aşağıdaki değerler, mevcut hizmet telemetrisi verilerine göre genellikle bekleyebilirsiniz:
+Genellikle, sanal kümelerdeki işlemler en uzun sürer. Sanal kümelerdeki işlemlerin süresi farklılık gösterir. var olan hizmet telemetri verilerine göre genellikle tahmin edebileceğiniz değerler aşağıda verilmiştir:
 
-- Sanal küme oluşturma. Bu, örnek yönetim işlemlerinde eşzamanlı bir adımdır. **Operasyonların %90'ı 4 saatte tamamlar.**
-- Sanal küme yeniden boyutlandırma (genişletme veya küçültme). Genişletme eşzamanlı bir adımdır, ancak küçülme eşzamanlı olarak gerçekleştirilir (örnek yönetim işlemlerinin süresi üzerinde etkisi olmadan). **Küme genişletmelerinin %90'ı 2,5 saatten kısa sürede tamamlar.**
-- Sanal küme silme. Silme işlemi eşzamanlı bir adımdır, ancak boş bir sanal kümede [el ile başlatılabilir](sql-database-managed-instance-delete-virtual-cluster.md) ve bu durumda eşzamanlı olarak yürütülür. **Sanal küme silmelerin %90'ı 1,5 saatte tamamlar.**
+- Sanal küme oluşturma. Bu örnek yönetim işlemlerinde zaman uyumlu bir adımdır. **işlemlerin %90 ' i 4 saat içinde tamamlanır**.
+- Sanal küme yeniden boyutlandırma (genişletme veya küçültme). Genişleme zaman uyumsuz olarak (örnek yönetim işlemleri süresince etkilenmeden) zaman uyumsuz olarak gerçekleştirilir. **küme genişletmeleri %90, en az 2,5 saat içinde tamamlanır**.
+- Sanal küme silme. Silme zaman uyumsuz bir adımdır, ancak boş bir sanal kümede [el ile de başlatılabilir](sql-database-managed-instance-delete-virtual-cluster.md) , bu durumda eşzamanlı olarak yürütülür. **%90, sanal küme silme işleminin 1,5 saat içinde sona ermesini**.
 
-Ayrıca, örneklerin yönetimi, barındırılan veritabanlarındaki işlemlerden birini de içerebilir ve bu da daha uzun sürelerle sonuçlanır:
+Ayrıca, örneklerin yönetimi barındırılan veritabanlarında gerçekleştirilen işlemlerden birini de içerebilir ve bu da daha uzun süreler elde edebilir:
 
-- Azure Depolama'dan veritabanı dosyaları ekleme. Bu, genel amaçlı hizmet katmanında yukarı veya aşağı ölçekleme hesaplama (vCore) veya depolama alanı gibi eşzamanlı bir adımdır. **Bu operasyonların %90'ı 5 dakikada tamamlar.**
-- Her zaman kullanılabilirlik grup tohumlama üzerinde. Bu, işlem (vCore) veya İş Açısından Kritik hizmet katmanında depolama ölçeklendirmesi gibi ve hizmet katmanını Genel Amaç'tan İş Açısından Kritik 'e (veya tam tersi) değiştirme gibi eşzamanlı bir adımdır. Bu işlemin süresi, toplam veritabanı boyutunun yanı sıra geçerli veritabanı etkinliği (etkin hareket sayısı) ile orantılıdır. Bir örneği güncellerken veritabanı etkinliği toplam süreye önemli fark lar getirebilir. **Bu işlemlerin %90'ı 220 GB / saat veya daha yüksek hızda yürütülür.**
+- Azure depolama 'dan veritabanı dosyaları iliştirme. Bu, Genel Amaçlı hizmet katmanında işlem (vCore) veya depolama ölçeği artırma veya azaltma gibi zaman uyumlu bir adımdır. **Bu işlemlerin %90 ' i 5 dakika içinde tamamlanır**.
+- Always on kullanılabilirlik grubu dengeli dağıtımı. Bu, işlem (sanal çekirdek) veya İş Açısından Kritik hizmet katmanındaki depolama ölçeklendirmesinin yanı sıra hizmet katmanını Genel Amaçlı İş Açısından Kritik (veya tersi) olarak değiştirme gibi zaman uyumlu bir adımdır. Bu işlemin süresi toplam veritabanı boyutuyla ve geçerli veritabanı etkinliğiyle orantılıdır (etkin işlem sayısı). Bir örneği güncelleştirme sırasında veritabanı etkinliği toplam süreye önemli bir varyans getirebilir. **Bu işlemlerin %90 ' i 220 GB/saat veya daha yüksek bir süre içinde yürütülür**.
 
-Aşağıdaki tabloişlemleri ve tipik genel süreleri özetler:
+Aşağıdaki tabloda işlemler ve genel toplam süreler özetlenmektedir:
 
-|Kategori  |İşlem  |Uzun soluklu segment  |Tahmini süre  |
+|Kategori  |İşlem  |Uzun süre çalışan segment  |Tahmini süre  |
 |---------|---------|---------|---------|
-|**Dağıtım** |Boş bir alt ağda ilk örnek|Sanal küme oluşturma|Operasyonların %90'ı 4 saatte bitiyor|
-|Dağıtım |Boş olmayan bir alt ağdaki başka bir donanım oluşturma nın ilk örneği (örneğin, Gen 4 örnekleriolan bir alt ağdaki ilk Gen 5 örneği)|Sanal küme oluşturma*|Operasyonların %90'ı 4 saatte bitiyor|
-|Dağıtım |Boş veya boş olmayan bir alt ağda 4 vCore'un ilk örneği oluşturulması|Sanal küme oluşturma**|Operasyonların %90'ı 4 saatte bitiyor|
-|Dağıtım |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., 3. vb. örnek)|Sanal küme yeniden boyutlandırma|Operasyonların %90'ı 2,5 saatte bitiyor|
-|**Güncelleştir** |Örnek özellik değişikliği (yönetici parolası, AAD girişi, Azure Karma Avantaj bayrağı)|Yok|1 dakikaya kadar|
-|Güncelleştir |Örnek depolama ölçekleme yukarı/aşağı (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını ekleme|Operasyonların %90'ı 5 dakikada bitiyor|
-|Güncelleştir |Örnek depolama ölçeklendirme yukarı/aşağı (İş Kritik hizmet katmanı)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
-|Güncelleştir |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (Genel Amaç)|- Sanal küme yeniden boyutlandırma<br>- Veritabanı dosyalarını ekleme|Operasyonların %90'ı 2,5 saatte bitiyor|
-|Güncelleştir |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (İş Kritik)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
-|Güncelleştir |Örnek ölçek 4 vCores (Genel Amaç)|- Sanal küme yeniden boyutlandırma (ilk kez yapılırsa, sanal küme oluşturma**)<br>- Veritabanı dosyalarını ekleme|Operasyonların %90'ı 4 saat 5 dk**|
-|Güncelleştir |Örnek ölçek 4 vCores (İş Kritik) aşağı|- Sanal küme yeniden boyutlandırma (ilk kez yapılırsa, sanal küme oluşturma**)<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 4 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
-|Güncelleştir |Örnek hizmet katmanı değişikliği (İş Açısından Genel Amaç ve tam tersi)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
-|**Silme**|Örnek silme|Tüm veritabanları için günlük kuyruk yedekleme|%90 operasyonlar 1 dakikaya kadar biter.<br>Not: alt ağdaki son örnek silinirse, bu işlem 12 saat sonra sanal küme silme zamanlayacaktır***|
-|Silme|Sanal küme silme (kullanıcı tarafından başlatılan işlem olarak)|Sanal küme silme|Operasyonların %90'ı 1,5 saate kadar tamamlar|
+|**Dağıtım** |Boş bir alt ağdaki ilk örnek|Sanal küme oluşturma|işlemlerin %90 ' i 4 saat içinde sona ermesini|
+|Dağıtım |Boş olmayan bir alt ağda (örneğin, gen 4 örneklerine sahip bir alt ağdaki ilk Gen 5 örneği) başka bir donanım oluşturma örneği|Sanal küme oluşturma *|işlemlerin %90 ' i 4 saat içinde sona ermesini|
+|Dağıtım |Boş veya boş olmayan bir alt ağda 4 sanal çekirdekler için ilk örnek oluşturma|Sanal küme oluşturma * *|işlemlerin %90 ' i 4 saat içinde sona ermesini|
+|Dağıtım |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., üçüncü, vb. örnek)|Sanal küme yeniden boyutlandırma|2,5 saat içinde işlem bitiş %90|
+|**Güncelleştir** |Örnek özelliği değişikliği (yönetici parolası, AAD oturum açma, Azure Hibrit Avantajı bayrağı)|Yok|En fazla 1 dakika|
+|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını iliştirme|İşlem %90, 5 dakika içinde tamamlanır|
+|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|2,5 saat içinde işlem bitiş %90|
+|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' u 4 saat 5 dakika içinde tamamlanır * *|
+|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm 220 veritabanlarının çekirdeğini sağlamak için 5 saat + saat ile sona|
+|Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|**Silme**|Örnek silme|Tüm veritabanları için günlük kuyruğu yedeklemesi|%90 işlem en fazla 1 dakika içinde tamamlanır.<br>Note: alt ağdaki son örnek silinirse, bu işlem 12 saat sonra sanal küme silmeyi zamanlar * * *|
+|Silme|Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak)|Sanal küme silme|İşlem %90, en fazla 1,5 saat içinde tamamlanır|
 
-\*Sanal küme donanım üretimine göre oluşturulur.
+\*Sanal küme, donanım oluşturma başına oluşturulur.
 
-\*\*4 vCores dağıtım seçeneği Haziran 2019'da piyasaya sürüldü ve yeni bir sanal küme sürümü gerektirir. Hedef alt nette 12 Haziran'dan önce oluşturulmuş örnekleri varsa, 4 vCore örneğini barındırmak için otomatik olarak yeni bir sanal küme dağıtılır.
+\*\*4 2019 Haziran 'da 2 sanal çekirdekler dağıtım seçeneği yayımlanmıştır ve yeni bir sanal küme sürümü gerektirir. Hedef alt ağda 12 Haziran 'dan önce oluşturulan örneklere sahipseniz, 4 sanal çekirdek örneği barındırmak için yeni bir sanal küme otomatik olarak dağıtılacaktır.
 
-\*\*\*12 saat geçerli yapılandırma dır, ancak bu gelecekte değişebilir, bu nedenle ona sıkı bir bağımlılık almayın. Sanal kümeyi daha önce silmeniz gerekiyorsa (örneğin alt ağı serbest bırakmak için), [bkz.](sql-database-managed-instance-delete-virtual-cluster.md)
+\*\*\*12 saat geçerli yapılandırmadır, ancak gelecekte değişebilir, bu yüzden buna çok daha fazla bağımlılık yapmayın. Daha önce bir sanal kümeyi silmeniz gerekiyorsa (örneğin alt ağını serbest bırakmak için), bkz. bir [Azure SQL veritabanı yönetilen örneği silindikten sonra bir alt ağı silme](sql-database-managed-instance-delete-virtual-cluster.md).
 
 ### <a name="instance-availability-during-management"></a>Yönetim sırasında örnek kullanılabilirliği
 
-Yönetilen örnekler, dağıtım ve silme işlemleri sırasında istemci uygulamaları için kullanılamaz.
+Yönetilen örnekler, dağıtım ve silme işlemleri sırasında istemci uygulamalar için kullanılamaz.
 
-Yönetilen örnekler güncelleştirme işlemleri sırasında kullanılabilir, ancak genellikle 10 saniyeye kadar süren güncelleştirmelerin sonunda gerçekleşen başarısızlık nedeniyle kısa bir kapalı kalma süresi vardır. Bunun istisnası, Genel Amaçlı hizmet katmanında ayrılmış depolama alanının güncelleştirildiği ve bunun başarısız olması veya örnek kullanılabilirliğini etkilememesidir.
+Yönetilen örnekler, güncelleştirme işlemleri sırasında kullanılabilir, ancak genellikle 10 saniyeye kadar olan güncelleştirmelerin sonunda gerçekleşen yük devretmenin neden olduğu kısa bir kesinti vardır. Bunun özel durumu, Genel Amaçlı hizmet katmanındaki ayrılmış depolama alanının, yük devretme veya örnek kullanılabilirliğini etkilemediği bir güncelleştirmedir.
 
 > [!IMPORTANT]
-> Bir arıza [süresi, uzun kurtarma süresi](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)nedeniyle veritabanlarında meydana gelen uzun süreli işlemler durumunda önemli ölçüde değişebilir. Bu nedenle, Azure SQL Veritabanı yönetilen örneğinin bilgi işlem veya depolamasını ölçeklendirmek veya uzun süren işlemlerle (veri alma, veri işleme işleri, dizin yeniden oluşturma vb.) hizmet katmanını aynı anda değiştirmek önerilmez. İşlem sonunda gerçekleştirilecek veritabanı başarısızlığı, devam eden hareketleri iptal eder ve uzun kurtarma süresine neden olur.
+> Yük devretme süresi, uzun süre çalışan bir [Kurtarma süresi](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)nedeniyle veritabanlarında gerçekleşen işlemler büyük ölçüde farklılık gösterebilir. Bu nedenle, Azure SQL veritabanı yönetilen örneği 'nin işlem veya depolama alanını ölçeklendirmeniz veya hizmet katmanını uzun süre çalışan işlemler (veri alma, veri işleme işleri, dizin yeniden oluşturma vb.) ile aynı anda değiştirmeniz önerilmez. İşlemin sonunda gerçekleştirilecek veritabanı yük devretmesi, devam eden işlemleri iptal eder ve uzun süren kurtarma zamanına yol açabilir.
 
 > [!TIP]
-> Genel Amaçlı hizmet katmanında ayrılmış depolama alanının güncelleştirimi, başarısızlık veya örnek kullanılabilirliğini etkilemez.
+> Genel Amaçlı hizmet katmanındaki ayrılmış depolama alanının güncelleştirilmesi yük devri veya örnek kullanılabilirliğini etkilemez.
 
-[Hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md) şu anda Azure SQL Veritabanı yönetilen örnekleri için kullanılamaz. Etkinleştirildiğinde, bu özellik, uzun süren işlemlerde bile zaman içinde arıza değişkenliğini önemli ölçüde azaltır.
+[Hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md) , Azure SQL veritabanı yönetilen örnekleri için şu anda kullanılamıyor. Bu özellik etkinleştirildikten sonra, uzun süre çalışan işlemler durumunda bile yük devretme süresinin çeşitliğini önemli ölçüde azaltır.
 
 ### <a name="canceling-management-operations"></a>Yönetim işlemlerini iptal etme
 
-Aşağıdaki tablo, belirli yönetim işlemlerini ve tipik genel süreleri iptal etme yeteneğini özetlemektedir:
+Aşağıdaki tablo belirli yönetim işlemlerini iptal etme ve genel toplam süreleri özetler:
 
-Kategori  |İşlem  |Cancelable  |Tahmini iptal süresi  |
+Kategori  |İşlem  |İptal edilebilir  |Tahmini iptal süresi  |
 |---------|---------|---------|---------|
 |Dağıtım |Örnek oluşturma |Hayır |  |
-|Güncelleştir |Örnek depolama ölçekleme yukarı/aşağı (Genel Amaçlı) |Hayır |  |
-|Güncelleştir |Örnek depolama ölçeklendirme yukarı/aşağı (İş Kritik) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
-|Güncelleştir |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (Genel Amaç) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
-|Güncelleştir |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (İş Kritik) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
-|Güncelleştir |Örnek hizmet katmanı değişikliği (İş Açısından Genel Amaç ve tam tersi) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
+|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |Hayır |  |
+|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
+|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
+|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
+|Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
 |Sil |Örnek silme |Hayır |  |
-|Sil |Sanal küme silme (kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
+|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
 
-Yönetim işlemini iptal etmek için genel bakış bıçağına gidin ve devam eden işlemin bildirim kutusuna tıklayın. Sağ taraftan, devam eden işlemi olan bir ekran görüntülenir ve işlemi iptal etmek için düğme görüntülenir. İlk tıklattıktan sonra, yeniden tıklatmanız ve işlemi iptal etmek istediğinizi onaylamanız istenir.
+Yönetim işlemini iptal etmek için genel bakış dikey penceresine gidin ve devam eden işlem bildirim kutusu ' na tıklayın. Sağ taraftan, devam eden bir ekran görüntülenir ve işlemi iptal etmek için düğme olacaktır. İlk tıkladıktan sonra yeniden tıklamalısınız ve işlemi iptal etmek istediğinizi onaylamanız istenir.
 
 [![](./media/sql-database-managed-instance/canceling-operation.png)](./media/sql-database-managed-instance/canceling-operation.png#lightbox)
 
-İptal isteği gönderildikten ve işlendikten sonra, iptal gönderimi başarılı olup olmadığını bildiren bildirim alırsınız. 
+İptal isteği gönderildikten ve işlendikten sonra, gönderme işlemi başarılı olduysa bildirim alırsınız. 
 
-İptal işlemi nin iptal edilmesi durumunda, yönetim işlemi birkaç dakika içinde iptal edilir ve bu da bir başarısızlıkla sonuçlanır.
+Başarıyı iptal etmek durumunda yönetim işlemi bir hatayla sonuçlanan birkaç dakikada iptal edilir.
 
-![işlem sonucunu iptal etme](./media/sql-database-managed-instance/canceling-operation-result.png)
+![işlem sonucu iptal ediliyor](./media/sql-database-managed-instance/canceling-operation-result.png)
 
-İptal isteği başarısız olursa veya iptal düğmesi etkin değilse, bu yönetim işleminin iptal edilemeyeceğini ve birkaç dakika içinde biteceği anlamına gelir. Yönetim işlemi tamamlanana kadar yürütmeye devam edecektir.
+İptal isteği başarısız olursa veya iptal düğmesi etkin değilse, bu, yönetim işleminin iptal edilemez durumuna girdiği ve birkaç dakika içinde bitebileceği anlamına gelir. Yönetim işlemi tamamlanana kadar yürütmeye devam eder.
 
 > [!IMPORTANT]
-> İptal işlemi şu anda yalnızca Portal'da desteklenir.
+> İptal etme işlemi şu anda yalnızca portalda destekleniyor.
 
 ## <a name="advanced-security-and-compliance"></a>Gelişmiş koruma ve uyumluluk
 
-Yönetilen örnek dağıtım seçeneği, Azure bulutu ve SQL Server Veritabanı Altyapısı tarafından sağlanan gelişmiş güvenlik özelliklerini birleştirir.
+Yönetilen örnek dağıtım seçeneği, Azure Cloud ve SQL Server veritabanı altyapısı tarafından sunulan gelişmiş güvenlik özelliklerini birleştirir.
 
 ### <a name="managed-instance-security-isolation"></a>Yönetilen örnek güvenlik yalıtımı
 
 Yönetilen bir örnek, Azure bulutundaki diğer kiracılardan ek güvenlik yalıtımı sağlar. Güvenlik yalıtımı şunları içerir:
 
-- Azure Express Route veya VPN Ağ Geçidi'ni kullanarak [yerel sanal ağ uygulaması](sql-database-managed-instance-connectivity-architecture.md) ve şirket ortamınıza bağlantı.
-- Varsayılan dağıtımda, SQL uç noktası yalnızca özel bir IP adresi aracılığıyla açıklanır ve özel Azure veya karma ağlardan güvenli bağlantı sağlar.
-- Özel temel altyapı (işlem, depolama) ile tek kiracı.
+- Azure Express Route veya VPN Gateway kullanarak şirket içi ortamınıza [yerel sanal ağ uygulama](sql-database-managed-instance-connectivity-architecture.md) ve bağlantı.
+- Varsayılan dağıtımda, SQL uç noktası yalnızca özel bir IP adresi aracılığıyla sunulur ve özel Azure veya karma ağlardan güvenli bağlantı sağlar.
+- Adanmış temel altyapıya sahip tek kiracılı (işlem, depolama).
 
-Aşağıdaki diyagram, uygulamalarınız için çeşitli bağlantı seçeneklerini özetleyişverilmiştir:
+Aşağıdaki diyagramda uygulamalarınız için çeşitli bağlantı seçenekleri özetlenmektedir:
 
 ![yüksek kullanılabilirlik](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 
-Alt net düzeyinde VNet tümleştirmesi ve ağ ilkesi zorlama hakkında daha fazla bilgi edinmek [için yönetilen örnekler için VNet mimarisine](sql-database-managed-instance-connectivity-architecture.md) bakın ve [uygulamanızı yönetilen bir örne bağlayın.](sql-database-managed-instance-connect-app.md)
+Alt ağ düzeyinde VNet tümleştirmesi ve ağ ilkesi zorlaması hakkında daha fazla bilgi edinmek için bkz. [yönetilen örnekler Için VNET mimarisi](sql-database-managed-instance-connectivity-architecture.md) ve [Uygulamanızı yönetilen bir örneğe bağlama](sql-database-managed-instance-connect-app.md).
 
 > [!IMPORTANT]
-> Güvenlik gereksinimleriniz tarafından izin verilen her yerde, size ek avantajlar getireceğinden, aynı alt ağa birden çok yönetilen örnek yerleştirin. Uzun sağlama süresi, bir alt ağda ilk yönetilen örneği dağıtma maliyetiyle ilişkili olduğundan, aynı alt ağdaki örnekleri harmanlama önemli ölçüde ağ altyapısı bakımını basitleştirir ve örnek sağlama süresini azaltır.
+> Güvenlik gereksinimlerinizin izin verdiği her yerde, daha fazla avantaj sağlayacak şekilde, aynı alt ağa birden fazla yönetilen örnek yerleştirin. Aynı alt ağdaki örneklerin birlikte bulunması, ağ altyapısı bakımını önemli ölçüde basitleştirir ve örnek sağlama süresini azaltır, çünkü uzun kaynak sağlama süresi bir alt ağda ilk yönetilen örneği dağıtma maliyetiyle ilişkili olur.
 
-### <a name="azure-sql-database-security-features"></a>Azure SQL Veritabanı Güvenlik Özellikleri
+### <a name="azure-sql-database-security-features"></a>Azure SQL veritabanı güvenlik özellikleri
 
-Azure SQL Veritabanı, verilerinizi korumak için kullanılabilecek bir dizi gelişmiş güvenlik özelliği sağlar.
+Azure SQL veritabanı, verilerinizi korumak için kullanılabilecek bir dizi gelişmiş güvenlik özelliği sağlar.
 
-- [Yönetilen örnek denetimi](sql-database-managed-instance-auditing.md) veritabanı olaylarını izler ve bunları Azure depolama hesabınıza yerleştirilen bir denetim günlüğü dosyasına yazar. Denetim, mevzuata uygunluğun korunmasına, veritabanı etkinliğini anlamanıza ve iş kaygılarına veya şüpheli güvenlik ihlallerini gösterebilecek tutarsızlıklar ve anormallikler hakkında bilgi edinmeye yardımcı olabilir.
-- Hareket halindeki veri şifreleme - yönetilen bir örnek, Aktarım Katmanı Güvenliği'ni kullanarak hareket halindeki veriler için şifreleme sağlayarak verilerinizi güvence altına alar. Aktarım katmanı güvenliğine ek olarak, yönetilen örnek dağıtım seçeneği, [her zaman şifrelenmiş](/sql/relational-databases/security/encryption/always-encrypted-database-engine)olan uçuş, istirahat ve sorgu işleme sırasında hassas verilerin korunmasını sağlar. Always Encrypted, kritik öneme sahip verilerin çalınması gibi güvenlik ihlallerine karşı sektörde benzersiz koruma sağlayan bir özelliktir. Örneğin, Her Zaman Şifrelenmiş ile, kredi kartı numaraları her zaman veritabanında şifrelenir, hatta sorgu işleme sırasında bile, yetkili personel veya bu verileri işlemek için gereken uygulamalar tarafından kullanım noktasında şifre çözme sağlar.
-- [Gelişmiş Tehdit Koruması,](sql-database-managed-instance-threat-detection.md) hizmette yerleşik olarak veritabanlarına erişmek veya veritabanlarından yararlanmak için olağandışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik zekası katmanı sağlayarak [denetimi](sql-database-managed-instance-auditing.md) tamamlar. Şüpheli etkinlikler, olası güvenlik açıkları ve SQL enjeksiyon saldırılarının yanı sıra anormal veritabanı erişim desenleri hakkında uyarılırsınız. Gelişmiş Tehdit Koruması uyarıları Azure [Güvenlik Merkezi'nden](https://azure.microsoft.com/services/security-center/) görüntülenebilir ve şüpheli etkinliklerin ayrıntılarını sağlayabilir ve tehdidin nasıl araştırılabildiğini ve azaltılabildiğini nasıl değerlendireceğiniz konusunda eylem önerebilir.  
-- [Dinamik veri maskeleme,](/sql/relational-databases/security/dynamic-data-masking) ayrıcalıklı olmayan kullanıcılara maskeleyerek hassas veri maruziyetini sınırlar. Dinamik veri maskeleme, hassas verilerin ne kadarının uygulama katmanı üzerinde en az etkiyle ortaya çıkaracağını belirlemenize olanak sağlayarak hassas verilere yetkisiz erişimi önlemeye yardımcı olur. Veritabanındaki veriler değiştirilmese de, belirli bir sorgunun sonucu kümesinde hassas verileri gizleyen ilke tabanlı bir güvenlik özelliğidir.
-- [Satır düzeyinde güvenlik,](/sql/relational-databases/security/row-level-security) bir sorguyu yürüten kullanıcının özelliklerine (grup üyeliği veya yürütme bağlamı gibi) dayalı olarak veritabanı tablosundaki satırlara erişimi denetlemenize olanak tanır. Satır düzeyi güvenlik (RLS), uygulamanızın güvenlik tasarımını ve kodlama aşamasını kolaylaştırır. RLS, veri satırı erişiminde kısıtlama uygulamanızı sağlar. Örneğin, çalışanların yalnızca departmanlarıyla ilgili veri satırlarına erişebilmelerini sağlamak veya bir veri erişimini yalnızca ilgili verilerle sınırlamak.
-- [Saydam veri şifreleme (TDE),](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) yönetilen örnek veri dosyalarını şifreler, veri leri istirahatte şifreleme olarak bilinir. TDE gerçek zamanlı G/Ç şifrelemeve veri ve günlük dosyalarışifresini gerçekleştirir. Şifreleme, kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (DEK) kullanır. Tüm veritabanlarınızı yönetilen bir durumda saydam veri şifrelemeile koruyabilirsiniz. TDE, SQL Server'ın depolama ortamının çalınmasına karşı korumak için birçok uyumluluk standardı tarafından gerekli olan kanıtlanmış şifreleme teknolojisidir.
+- [Yönetilen örnek denetimi](sql-database-managed-instance-auditing.md) , veritabanı olaylarını izler ve bunları Azure depolama hesabınıza yerleştirilmiş bir denetim günlüğü dosyasına yazar. Denetim, yasal uyumluluğu korumanıza, veritabanı etkinliklerini anlamanıza ve işle ilgili endişeleri veya şüpheli güvenlik ihlallerini gösterebilecek tutarsızlıklar ve bozukluklar elde etmenize yardımcı olabilir.
+- Hareket halinde veri şifreleme-yönetilen bir örnek, Aktarım Katmanı Güvenliği kullanarak hareket halindeki veriler için şifreleme sağlayarak verilerinizin güvenliğini sağlar. Aktarım katmanı güvenliğine ek olarak, yönetilen örnek dağıtımı seçeneği, bekleme sırasında ve [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)ile sorgu işleme sırasında hassas verilerin korunmasını sağlar. Always Encrypted, kritik öneme sahip verilerin çalınması gibi güvenlik ihlallerine karşı sektörde benzersiz koruma sağlayan bir özelliktir. Örneğin, Always Encrypted, kredi kartı numaraları, sorgu işleme sırasında bile veritabanı her zaman şifreli olarak depolanır ve bu da verileri işlemesi gereken yetkili personel veya uygulamalar tarafından kullanım noktasında şifre çözmeye izin verir.
+- [Gelişmiş tehdit koruması](sql-database-managed-instance-threat-detection.md) , bir hizmette yerleşik olarak bulunan ve veritabanlarına yararlanmaya yönelik olağan dışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik bilgileri katmanı sunarak [denetimi](sql-database-managed-instance-auditing.md) tamamlar. Şüpheli etkinlikler, olası güvenlik açıkları ve SQL ekleme saldırıları ve anormal veritabanı erişim desenleri hakkında uyarılırsınız. Gelişmiş tehdit koruması uyarıları [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) 'nden görüntülenebilir ve şüpheli etkinliğin ayrıntılarını sağlayabilir ve tehdidi araştırmak ve hafifletmek için önerilen eylemleri gerçekleştirebilir.  
+- [Dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking) , hassas verileri ayrıcalıksız kullanıcılarla maskeleyerek kısıtlar. Dinamik veri maskeleme, hassas verilerin uygulama katmanında en az etkiyle ne kadar açığa çıkarmasını belirleyebilmenizi sağlayarak gizli verilere yetkisiz erişimin engellenmesine yardımcı olur. Bu, belirlenen veritabanı alanları üzerinde sorgu sonuç kümesindeki gizli verileri gizleyen, ancak veritabanındaki veriler değiştirilmediğinde ilke tabanlı bir güvenlik özelliğidir.
+- [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security) , bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemenizi sağlar (örneğin, Grup üyeliği veya yürütme bağlamı gibi). Satır düzeyi güvenlik (RLS), uygulamanızın güvenlik tasarımını ve kodlama aşamasını kolaylaştırır. RLS, veri satırı erişiminde kısıtlama uygulamanızı sağlar. Örneğin, çalışanların yalnızca departmanlarıyla ilgili veri satırlarına erişmesini veya bir veri erişimini yalnızca ilgili verilerle kısıtlamalarını sağlamak.
+- [Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) , bekleyen verileri şifreleme olarak bilinen yönetilen örnek veri dosyalarını şifreler. TDE, veri ve günlük dosyalarının gerçek zamanlı g/ç şifrelemesini ve şifresini çözmeyi gerçekleştirir. Şifreleme, kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (DEK) kullanır. Yönetilen bir örnekteki tüm veritabanlarınızı, saydam veri şifrelemesi ile koruyabilirsiniz. TDE, depolama ortamının hırsızlığına karşı korunması için birçok uyumluluk standardı tarafından gerekli olan, bekleyen, bekleyen şifreleme teknolojisine sahip SQL Server.
 
-Şifrelenmiş bir veritabanının yönetilen bir örne geçişi, Azure Veritabanı Geçiş Hizmeti (DMS) veya yerel geri yükleme yoluyla desteklenir. Yerel geri yükleme yi kullanarak şifreli bir veritabanını taşımayı planlıyorsanız, varolan TDE sertifikasının SANAL Makine'deki SQL Server'dan veya SQL Server'dan yönetilen bir örne geçişi gerekli bir adımdır. Geçiş seçenekleri hakkında daha fazla bilgi için, [yönetilen örneğe SQL Server örnek geçişi ne](sql-database-managed-instance-migrate.md)bakın.
+Şifrelenmiş bir veritabanının yönetilen bir örneğe geçirilmesi, Azure veritabanı geçiş hizmeti (DMS) veya yerel geri yükleme aracılığıyla desteklenir. Yerel geri yükleme kullanarak şifrelenmiş bir veritabanını geçirmeyi planlıyorsanız, var olan TDE sertifikasının şirket içi SQL Server veya bir sanal makinedeki SQL Server bir yönetilen örneğe geçirilmesi gerekli bir adımdır. Geçiş seçenekleri hakkında daha fazla bilgi için bkz. [yönetilen örneğe SQL Server örnek geçişi](sql-database-managed-instance-migrate.md).
 
-## <a name="azure-active-directory-integration"></a>Azure Etkin Dizin Tümleştirmesi
+## <a name="azure-active-directory-integration"></a>Azure Active Directory tümleştirme
 
-Yönetilen örnek dağıtım seçeneği, Azure Active Directory (AAD) ile tümleşik geleneksel SQL server Database engine logins ve girişleri destekler. Azure AD sunucu ilkeleri (oturum açmalar)**(genel önizleme),** şirket içi ortamınızda kullandığınız şirket içi veritabanı girişlerinin Azure bulut sürümüdür. Azure AD sunucu ilkeleri (oturum açmalar), Azure Active Directory kiracınızdaki kullanıcıları ve grupları, aynı yönetilen örnek teki veritabanı sorguları da dahil olmak üzere herhangi bir örnek düzeyinde işlem gerçekleştirebilen gerçek örnek kapsamlı ilkeler olarak belirtmenize olanak tanır.
+Yönetilen örnek dağıtım seçeneği, Azure Active Directory (AAD) ile tümleştirilmiş geleneksel SQL Server veritabanı altyapısı oturumlarını ve oturum açmaları destekler. Azure AD Server sorumluları (oturum açmalar) (**genel önizleme**), şirket içi ortamınızda kullandığınız şirket içi veritabanı oturumlarının Azure bulut sürümüdür. Azure AD Server sorumluları (oturum açmalar), aynı yönetilen örnek içindeki çapraz veritabanı sorguları dahil olmak üzere, Azure Active Directory kiracınızdan doğru örnek kapsamlı sorumlular olarak Kullanıcı ve grupları belirtmenize olanak tanır.
 
-**External Provider'dan**Azure AD sunucu ilkeleri (oturum açmalar) oluşturmak için yeni bir sözdizimi tanıtıldı. Sözdizimi hakkında daha fazla bilgi için <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN'e</a>bakın ve [yönetilen örnek makaleniz için Azure Etkin Dizin yöneticisi hükmünü gözden geçirin.](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)
+**Dış sağlayıcıdan**Azure AD Server sorumlularını (oturum açma) oluşturmak için yeni bir sözdizimi sunulmuştur. Sözdizimi hakkında daha fazla bilgi için bkz. <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">oturum açma oluşturma</a>ve [yönetilen örnek Için Azure Active Directory Yöneticisi sağlama](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) makalesini gözden geçirme.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory tümleştirmesi ve çok faktörlü kimlik doğrulaması
 
-Yönetilen örnek dağıtım seçeneği, [Azure Active Directory tümleştirmesi](sql-database-aad-authentication.md)ile veritabanı kullanıcısının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak yönetmenize olanak tanır. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory, veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](sql-database-ssms-mfa-authentication-configure.md) (MFA) ve çoklu oturum açma işlemini destekler.
+Yönetilen örnek dağıtım seçeneği, veritabanı kullanıcısı ve diğer Microsoft hizmetlerinin kimliklerini [Azure Active Directory tümleştirmeyle](sql-database-aad-authentication.md)merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory, veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](sql-database-ssms-mfa-authentication-configure.md) (MFA) ve çoklu oturum açma işlemini destekler.
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
-Yönetilen örnek kimlik doğrulaması, kullanıcıların veritabanına bağlanırken kimliklerini nasıl kanıtladığını ifade eder. SQL Veritabanı iki kimlik doğrulaması türünü destekler:  
+Yönetilen örnek kimlik doğrulaması, kullanıcıların veritabanına bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. SQL Veritabanı iki kimlik doğrulaması türünü destekler:  
 
-- **SQL Kimlik Doğrulama**:
+- **SQL kimlik doğrulaması**:
 
-  Bu kimlik doğrulama yöntemi bir kullanıcı adı ve parola kullanır.
-- **Azure Etkin Dizin Kimlik Doğrulaması**:
+  Bu kimlik doğrulama yöntemi bir Kullanıcı adı ve parola kullanır.
+- **Azure Active Directory kimlik doğrulaması**:
 
-  Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır ve yönetilen ve tümleşik etki alanları için desteklenir. [Mümkün olduğunda](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)Etkin Dizin kimlik doğrulaması (tümleşik güvenlik) kullanın.
+  Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır ve yönetilen ve tümleşik etki alanları için desteklenir. [Mümkün olan her durumda](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)Active Directory kimlik doğrulaması (tümleşik güvenlik) kullanın.
 
 ### <a name="authorization"></a>Yetkilendirme
 
-Yetkilendirme, bir kullanıcının Azure SQL Veritabanı içinde neler yapabileceğini ifade eder ve kullanıcı hesabınızın veritabanı rol üyelikleri ve nesne düzeyindeizinler tarafından denetlenir. Yönetilen bir örnek, SQL Server 2017 ile aynı yetkilendirme özelliklerine sahiptir.
+Yetkilendirme, bir kullanıcının bir Azure SQL veritabanında neler yapabileceğini belirtir ve Kullanıcı hesabınızın veritabanı rolü üyelikleri ve nesne düzeyi izinleri tarafından kontrol edilir. Yönetilen bir örnek SQL Server 2017 ile aynı yetkilendirme yeteneklerine sahiptir.
 
 ## <a name="database-migration"></a>Veritabanı geçişi
 
-Yönetilen örnek dağıtım seçeneği, şirket içi veya IaaS veritabanı uygulamalarından toplu veritabanı geçişi olan kullanıcı senaryolarını hedefler. Yönetilen örnek birkaç veritabanı geçiş seçeneklerini destekler:
+Yönetilen örnek dağıtım seçeneği, şirket içi veya IaaS veritabanı uygulamalarından toplu veritabanı geçişi ile Kullanıcı senaryolarını hedefler. Yönetilen örnek birkaç veritabanı geçiş seçeneğini destekler:
 
 ### <a name="back-up-and-restore"></a>Yedekleme ve geri yükleme  
 
-Geçiş yaklaşımı, SQL yedeklemelerinden Azure Blob depolamasına yararlanır. Azure depolama blob'unda depolanan yedeklemeler, [T-SQL RESTORE komutu](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)kullanılarak yönetilen bir örneğe doğrudan geri yüklenebilir.
+Geçiş yaklaşımı SQL yedeklemelerini Azure Blob depolamaya kullanır. Azure Depolama Blobu 'nda depolanan yedeklemeler, [T-SQL restore komutu](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)kullanılarak yönetilen bir örneğe doğrudan geri yüklenebilir.
 
-- Geniş Dünya İthalatçıları - Standart veritabanı yedekleme dosyasının nasıl geri yüklenir olduğunu gösteren hızlı bir başlangıç için, [bkz.](sql-database-managed-instance-get-started-restore.md) Bu hızlı başlangıç, bir yedekleme dosyasını Azure blob depolama alanına yüklemeniz ve Paylaşılan erişim imzası (SAS) anahtarını kullanarak güvenli hale getirmek zorunda olduğunuzu gösterir.
-- URL'den geri yükleme hakkında daha fazla bilgi [için, URL'den Yerel GERI YÜKLEME'ye](sql-database-managed-instance-migrate.md#native-restore-from-url)bakın.
+- Wide World Importers-standart veritabanı yedekleme dosyasının nasıl geri yükleneceğini gösteren bir hızlı başlangıç için bkz. [bir yedekleme dosyasını yönetilen bir örneğe geri yükleme](sql-database-managed-instance-get-started-restore.md). Bu hızlı başlangıçta, bir yedekleme dosyasını Azure Blob depolama alanına yüklemeniz ve paylaşılan erişim imzası (SAS) anahtarı kullanarak güvence altına almanız gerekir.
+- URL 'den geri yükleme hakkında daha fazla bilgi için bkz. [URL 'Den yerel GERI yükleme](sql-database-managed-instance-migrate.md#native-restore-from-url).
 
 > [!IMPORTANT]
-> Yönetilen bir örneğin yedekleri yalnızca yönetilen başka bir örneğe geri yüklenebilir. Bunlar şirket içi BIR SQL Server'a veya tek bir veritabanı/elastik havuza geri yüklenemez.
+> Yönetilen bir örnekten yedeklemeler, yalnızca başka bir yönetilen örneğe geri yüklenebilir. Şirket içi SQL Server veya tek bir veritabanı/elastik havuza geri yüklenemez.
 
 ### <a name="data-migration-service"></a>Veri Geçiş Hizmeti
 
-Azure Veritabanı Geçiş Hizmeti, birden çok veritabanı kaynağından Azure Veri platformlarına en az kapalı kalma süresiyle sorunsuz geçişler sağlamak üzere tasarlanmış tam olarak yönetilen bir hizmettir. Bu hizmet, varolan üçüncü taraf ve SQL Server veritabanlarını Azure SQL Veritabanına (tek veritabanları, elastik havuzlarda havuzlu veritabanları ve yönetilen bir örnekte örnek veritabanları) ve Azure VM'deki SQL Server'a taşımak için gereken görevleri kolaylaştırır. [DMS kullanarak şirket içi veritabanınızı yönetilen örneğe nasıl geçirebilirsiniz.](https://aka.ms/migratetoMIusingDMS)
+Azure veritabanı geçiş hizmeti, birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir. Bu hizmet, var olan üçüncü taraf ve SQL Server veritabanlarını Azure SQL veritabanı 'na (tek veritabanları, elastik havuzlardaki havuza alınmış veritabanları ve yönetilen bir örnekteki örnek veritabanları) ve Azure VM 'de SQL Server taşımak için gereken görevleri basitleştirir. Şirket [içi VERITABANıNıZı DMS kullanarak yönetilen örneğe geçirme](https://aka.ms/migratetoMIusingDMS)konusuna bakın.
 
 ## <a name="sql-features-supported"></a>Desteklenen SQL özellikleri
 
-Yönetilen örnek dağıtım seçeneği, hizmet genel kullanılabilirliğine kadar aşamalı olarak gelen şirket içi SQL Server ile %100'e yakın yüzey alanı uyumluluğu sağlamayı amaçlamaktadır. Bir özellik ve karşılaştırma listesi için, [SQL Veritabanı özellik karşılaştırması](sql-database-features.md)ve yönetilen örneklerdeki T-SQL farklılıklarının bir listesi için SQL [Server'dan yönetilen örnek T-SQL farklılıklarına](sql-database-managed-instance-transact-sql-information.md)bakın.
+Yönetilen örnek dağıtım seçeneği amaçlar, hizmet genel kullanıma sunuluncaya kadar aşamalar halinde SQL Server, şirket içi için %100 Surface alan uyumluluğuna yakın sunmaya olanak sağlar. Özellikler ve karşılaştırma listesi için bkz. [SQL veritabanı özelliği karşılaştırması](sql-database-features.md)ve yönetilen örneklerde t-SQL farkları listesi için SQL Server, bkz. [SQL Server yönetilen örnek T-SQL farklılıkları](sql-database-managed-instance-transact-sql-information.md).
 
-Yönetilen örnek dağıtım seçeneği, SQL 2008 veritabanlarına geriye dönük uyumluluğu destekler. SQL 2005 veritabanı sunucularından doğrudan geçiş desteklenir, geçirilen SQL 2005 veritabanları için uyumluluk düzeyi SQL 2008'e güncelleştirilir.
+Yönetilen örnek dağıtım seçeneği SQL 2008 veritabanlarına geriye dönük uyumluluğu destekler. SQL 2005 veritabanı sunucularından doğrudan geçiş desteklenir, geçirilen SQL 2005 veritabanlarının uyumluluk düzeyi SQL 2008 olarak güncelleştirilir.
   
-Aşağıdaki diyagram, yönetilen örnekte yüzey alanı uyumluluğunu özetler:  
+Aşağıdaki diyagramda, yönetilen örnekteki Surface alanı uyumluluğu özetlenmektedir:  
 
-![Geçiş](./media/sql-database-managed-instance/migration.png)
+![geçiş](./media/sql-database-managed-instance/migration.png)
 
-### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>SQL Server şirket içi ve yönetilen bir örnekte arasındaki temel farklar
+### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>Şirket içinde ve yönetilen bir örnekte SQL Server arasındaki temel farklılıklar
 
-Yönetilen örnek dağıtım seçeneği bulutta her zaman güncel olmaktan yararlanır, bu da şirket içi SQL Server'daki bazı özelliklerin eski, kullanımdan kaldırılmış veya alternatifleri olabileceği anlamına gelir. Araçların belirli bir özelliğin biraz farklı bir şekilde çalıştığını veya hizmetin tam olarak kontrol etmediğiniz bir ortamda çalıştığını tanıması gereken özel durumlar vardır:
+Yönetilen örnek dağıtım seçeneği, bulutta her zaman güncel olmasını sağlar, yani şirket içi SQL Server bazı özellikler kullanımdan kalkmış, kullanımdan kaldırılmakta veya alternatiflere sahip olabilir. Araçların belirli bir özelliğin biraz farklı bir şekilde çalıştığını veya hizmetin tam olarak denetlediğiniz bir ortamda çalıştığını tanıması gerektiğinde belirli durumlar vardır:
 
-- Yüksek kullanılabilirlik, [Always On Availability Groups'a](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)benzer bir teknoloji kullanılarak yerleşik ve önceden yapılandırılmıştır.
-- Otomatik yedeklemeler ve nokta zaman geri yükleme. Müşteri, otomatik `copy-only` yedekleme zincirini engellemeyen yedeklemeler başlatabilir.
-- Yönetilen örnek, tüm ilgili senaryoların farklı şekilde desteklenmesi gerektiği için tam fiziksel yolların belirtilmesine izin vermez: RESTORE DB MOVE ile desteklemez, CREATE DB fiziksel yollara izin vermez, TOPLU INSERT yalnızca Azure Blobs ile çalışır, vb.
-- Yönetilen örnek, Windows kimlik doğrulamasına bulut alternatifi olarak [Azure AD kimlik doğrulamasını](sql-database-aad-authentication.md) destekler.
-- Yönetilen örnek, Bellek İçi OLTP nesneleri içeren veritabanları için XTP dosya grubunu ve dosyalarını otomatik olarak yönetir
-- Yönetilen örnek SQL Server Integration Services 'ı (SSIS) destekler ve SSIS paketlerini depolayan SSIS kataloğunu (SSISDB) barındırabilir, ancak bunlar Azure Veri Fabrikası'nda (ADF) yönetilen bir Azure-SSIS Tümleştirme Çalışma Süresi 'nde (IR) yürütülür, [bkz.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) SQL Veritabanı'ndaki SSIS özelliklerini karşılaştırmak için [bkz.](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)
+- Yüksek kullanılabilirlik, [her zaman açık kullanılabilirlik gruplarıyla](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)benzer bir teknoloji kullanılarak yerleşiktir ve önceden yapılandırılmıştır.
+- Otomatik yedeklemeler ve zaman içinde geri yükleme. Müşteri, otomatik `copy-only` yedekleme zinciriyle kesintiye uğramayan yedeklemeler başlatabilir.
+- Yönetilen örnek tam fiziksel yolların belirtilmesine izin vermiyor, böylece tüm ilgili senaryolar farklı şekilde desteklenmelidir: RESTORE DB MOVE Ile desteklemez, CREATE DB fiziksel yollara izin vermez, BULK INSERT yalnızca Azure Blob 'Ları ile çalışır, vb.
+- Yönetilen örnek, Windows kimlik doğrulamasını bulut alternatifi olarak [Azure AD kimlik doğrulamasını](sql-database-aad-authentication.md) destekler.
+- Yönetilen örnek, bellek Içi OLTP nesneleri içeren veritabanları için XTP dosya grubunu ve dosyalarını otomatik olarak yönetir
+- Yönetilen örnek SQL Server Integration Services (SSIS) destekler ve SSIS paketlerini depolayan SSIS kataloğunu (SSıSDB) barındırabilir, ancak bunlar Azure Data Factory (ADF) içinde yönetilen bir Azure-SSIS Integration Runtime (IR) üzerinde yürütülür. bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). SQL veritabanında SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance).
 
-### <a name="managed-instance-administration-features"></a>Yönetilen örnek yönetim özellikleri
+### <a name="managed-instance-administration-features"></a>Yönetilen örnek yönetimi özellikleri
 
-Yönetilen örnek dağıtım seçeneği, SQL Veritabanı hizmeti bunları sizin için gerçekleştirdiğinden veya bu görevleri büyük ölçüde basitleştirdiği için sistem yöneticisinin yönetim görevlerine daha az zaman harcamasını sağlar. Örneğin, [OS / RDBMS yükleme ve yama,](sql-database-high-availability.md) [dinamik örnek yeniden boyutlandırma ve yapılandırma,](sql-database-single-database-scale.md) [yedekleme,](sql-database-automated-backups.md) [veritabanı çoğaltma](replication-with-sql-database-managed-instance.md) (sistem veritabanları dahil), [yüksek kullanılabilirlik yapılandırmave](sql-database-high-availability.md)sistem ve [performans izleme](../azure-monitor/insights/azure-sql.md) veri akışları yapılandırma.
+Yönetilen örnek dağıtım seçeneği, SQL veritabanı hizmeti bunları sizin için gerçekleştirdiğinden veya bu görevleri büyük ölçüde basitleştirdiği için sistem yöneticisinin yönetim görevlerinde daha az zaman harcamasını sağlar. Örneğin, [Işletim sistemi/RDBMS yükleme ve düzeltme eki uygulama](sql-database-high-availability.md), [dinamik örnek yeniden boyutlandırma ve yapılandırma](sql-database-single-database-scale.md), [yedeklemeler](sql-database-automated-backups.md), [veritabanı çoğaltma](replication-with-sql-database-managed-instance.md) (sistem veritabanları dahil), [yüksek kullanılabilirlik yapılandırması](sql-database-high-availability.md)ve sistem durumu ve [performans izleme](../azure-monitor/insights/azure-sql.md) veri akışlarının yapılandırması.
 
 > [!IMPORTANT]
-> Desteklenen, kısmen desteklenen ve desteklenmeyen özelliklerin listesi için [SQL Veritabanı özelliklerine](sql-database-features.md)bakın. Yönetilen örneklerdeki T-SQL farklılıklarının bir listesi için SQL [Server'dan yönetilen örnek T-SQL farklılıklarına](sql-database-managed-instance-transact-sql-information.md) bakın
+> Desteklenen, kısmen desteklenen ve desteklenmeyen özelliklerin listesi için bkz. [SQL veritabanı özellikleri](sql-database-features.md). Yönetilen örneklerde T-SQL farklarının listesi için SQL Server ve bkz. [yönetilen örnek T-SQL farklılıkları SQL Server](sql-database-managed-instance-transact-sql-information.md)
 
-### <a name="how-to-programmatically-identify-a-managed-instance"></a>Yönetilen bir örneği programlı olarak tanımlama
+### <a name="how-to-programmatically-identify-a-managed-instance"></a>Yönetilen örneği programlı olarak belirleme
 
-Aşağıdaki tablo, uygulamanızın yönetilen örnekle çalıştığını algılamak ve önemli özellikleri almak için kullanabileceğiniz Transact SQL aracılığıyla erişilebilen çeşitli özellikleri gösterir.
+Aşağıdaki tabloda Transact SQL aracılığıyla erişilebilen, uygulamanızın yönetilen örnekle çalıştığını tespit etmek ve önemli özellikleri almak için kullanabileceğiniz çeşitli özellikler gösterilmektedir.
 
 |Özellik|Değer|Açıklama|
 |---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Telif Hakkı (C) 2018 Microsoft Corporation.|Bu değer SQL Veritabanı'ndakiyle aynıdır. Bu, SQL engine sürüm **12'yi** göstermez (SQL Server 2014). Yönetilen örnek her zaman SQL Server'ın en son kullanılabilir RTM sürümüne eşit veya daha yüksek olan en son kararlı SQL motor sürümünü çalıştırılır.  |
-|`SERVERPROPERTY ('Edition')`|SQL Azure|Bu değer SQL Veritabanı'ndakiyle aynıdır.|
-|`SERVERPROPERTY('EngineEdition')`|8|Bu değer, yönetilen bir örneği benzersiz olarak tanımlar.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Aşağıdaki biçimde tam örnek DNS adı:`<instanceName>`. `<dnsPrefix>`.database.windows.net, `<instanceName>` müşteri tarafından sağlanan adın `<dnsPrefix>` bulunduğu yer, adın global DNS adının benzersizliğini garanti eden otomatik olarak oluşturulmuş bir parçası iken (örneğin wcus17662feb9ce98))|Örnek: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@VERSION`|Microsoft SQL Azure (RTM)-12.0.2000.8 2018-03-07 telif hakkı (C) 2018 Microsoft Corporation.|Bu değer SQL veritabanı ile aynıdır. Bu SQL Engine sürüm 12 ' i (SQL Server 2014 **) göstermez.** Yönetilen örnek, SQL Server en son kullanılabilir RTM sürümüne eşit veya ondan yüksek olan en son kararlı SQL altyapısı sürümünü her zaman çalıştırır.  |
+|`SERVERPROPERTY ('Edition')`|SQL Azure|Bu değer SQL veritabanı ile aynıdır.|
+|`SERVERPROPERTY('EngineEdition')`|8|Bu değer, yönetilen bir örneği benzersiz şekilde tanımlar.|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Aşağıdaki biçimde tam örnek DNS adı:`<instanceName>`. `<dnsPrefix>`. Database.Windows.net, burada `<instanceName>` müşterinin `<dnsPrefix>` adı, ad, genel DNS adı benzersizliği (örneğin, "wcus17662feb9ce98") için yeniden tasarlanmıştır.|Örnek: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Yönetilen ilk örneğini nasıl oluşturabilirsiniz öğrenmek için [Quickstart kılavuzuna](sql-database-managed-instance-get-started.md)bakın.
-- Özellikler ve karşılaştırma listesi için [SQL ortak özelliklerine](sql-database-features.md)bakın.
-- VNet yapılandırması hakkında daha fazla bilgi için [yönetilen örnek VNet](sql-database-managed-instance-connectivity-architecture.md)yapılandırması'na bakın.
-- Yönetilen bir örnek oluşturan ve bir yedekleme dosyasından veritabanını geri yükleyen hızlı [bir](sql-database-managed-instance-get-started.md)başlangıç için bkz.
-- Geçiş için Azure Veritabanı Geçiş Hizmeti'ni (DMS) kullanan bir öğretici için, [Yönetilen Örnek Geçişi'ne bakın.](../dms/tutorial-sql-server-to-managed-instance.md)
-- Yerleşik sorun giderme zekasıyla yönetilen örnek veritabanı performansının gelişmiş izlenmesi için Azure [SQL Analytics'i kullanarak Azure SQL Veritabanını Izleyin](../azure-monitor/insights/azure-sql.md)bölümüne bakın.
-- Fiyatlandırma bilgileri için, [SQL Veritabanı yönetilen örnek fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/managed/)bakın.
+- İlk yönetilen örneğinizi oluşturmayı öğrenmek için bkz. [Hızlı Başlangıç Kılavuzu](sql-database-managed-instance-get-started.md).
+- Özellikler ve karşılaştırma listesi için bkz. [SQL ortak özellikleri](sql-database-features.md).
+- VNet yapılandırması hakkında daha fazla bilgi için bkz. [yönetilen örnek VNET yapılandırması](sql-database-managed-instance-connectivity-architecture.md).
+- Yönetilen bir örnek oluşturan ve bir veritabanını bir yedekleme dosyasından geri yükleyen hızlı başlangıç için bkz. [yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md).
+- Geçiş için Azure veritabanı geçiş hizmeti 'ni (DMS) kullanan bir öğretici için bkz. [DMS kullanarak yönetilen örnek geçişi](../dms/tutorial-sql-server-to-managed-instance.md).
+- Yerleşik sorun giderme zekası ile yönetilen örnek veritabanı performansının gelişmiş izlenmesi için bkz. [Azure SQL Analytics kullanarak Azure SQL veritabanını izleme](../azure-monitor/insights/azure-sql.md).
+- Fiyatlandırma bilgileri için bkz. [SQL veritabanı yönetilen örnek fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/managed/).

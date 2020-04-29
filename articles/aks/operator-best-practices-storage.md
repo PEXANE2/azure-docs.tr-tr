@@ -1,102 +1,102 @@
 ---
 title: Depolama ve yedekleme için en iyi uygulamalar
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Hizmetinde (AKS) depolama, veri şifreleme ve yedekleme için küme operatörünün en iyi uygulamaları öğrenin
+description: Azure Kubernetes Service (AKS) ' de depolama, veri şifreleme ve yedeklemeler için küme işletmeni en iyi yöntemlerini öğrenin
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80877907"
 ---
-# <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) depolama ve yedekleme ler için en iyi uygulamalar
+# <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde depolama ve yedeklemeler için en iyi uygulamalar
 
-Azure Kubernetes Hizmeti'nde (AKS) kümeler oluşturur ve yönetirken, uygulamalarınızın genellikle depolama alanına ihtiyacı vardır. Uygulamalara uygun depolama alanını sağlayabilmeniz için bölmelerin performans gereksinimlerini ve erişim yöntemlerini anlamak önemlidir. AKS düğümü boyutu bu depolama seçeneklerini etkileyebilir. Ayrıca, eklenmiş depolama için geri yükleme işlemini yedekleme ve test etmenin yollarını da planlamanız gerekir.
+Azure Kubernetes Service (AKS) içinde kümeler oluşturup yönetirken, uygulamalarınız genellikle depolamaya ihtiyaç duyar. Uygulamalara uygun depolamayı sağlayabilmeniz için, Pod 'nin performans ihtiyaçlarını ve erişim yöntemlerini anlamanız önemlidir. AKS düğüm boyutu bu depolama seçimlerini etkileyebilir. Ayrıca, ekli depolama için geri yükleme işlemini yedekleme ve test etme yollarını da planlamanız gerekir.
 
-Bu en iyi uygulamalar makalesi küme operatörleri için depolama hususları üzerinde duruluyor. Bu makalede, öğrenmek:
+Bu en iyi yöntemler makalesi, küme işleçleri için depolama konularına odaklanır. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Ne tür depolama alanı mevcuttur
-> * Depolama performansı için AKS düğümlerini doğru boyutlandırma
-> * Birimlerin dinamik ve statik sağlanması arasındaki farklar
-> * Veri birimlerinizi yedeklemenin ve korumanın yolları
+> * Hangi tür depolama alanı kullanılabilir?
+> * Depolama performansı için AKS düğümlerini doğru şekilde boyutlandırma
+> * Birimlerin dinamik ve statik sağlanması arasındaki farklılıklar
+> * Veri hacimlerinizi yedekleme ve korumaya yönelik yollar
 
 ## <a name="choose-the-appropriate-storage-type"></a>Uygun depolama türünü seçin
 
-**En iyi uygulama kılavuzu** - Doğru depolama alanını seçmek için uygulamanızın gereksinimlerini anlayın. Üretim iş yükleri için yüksek performanslı, SSD destekli depolama yı kullanın. Birden çok eşzamanlı bağlantı ya da ağ tabanlı depolama alanı için planlayın.
+**En iyi Yöntem Kılavuzu** -doğru depolamayı seçmek için uygulamanızın ihtiyaçlarını anlayın. Üretim iş yükleri için yüksek performanslı, SSD ile desteklenen depolama alanı kullanın. Birden çok eş zamanlı bağlantı gereksinimi olduğunda ağ tabanlı depolama için plan yapın.
 
-Uygulamalar genellikle farklı depolama türleri ve hızları gerektirir. Uygulamalarınızda tek tek bölmelere bağlanan veya birden çok bölmede paylaşılan depolama alanına mı ihtiyacınız var? Depolama, verilere salt okunur erişim veya büyük miktarda yapılandırılmış veri yazmak için mi? Bu depolama gereksinimleri kullanılacak en uygun depolama türünü belirler.
+Uygulamalar genellikle depolama alanının farklı türlerini ve hızlarını gerektirir. Uygulamalarınızın tek tek yığınlara bağlanan veya birden çok sayıda dizin üzerinde paylaşılan depolama alanına ihtiyacı var mı? Depolama, verilere salt okuma erişimi mi, yoksa büyük miktarlarda yapılandırılmış veriler mi? Bu depolama ihtiyacı, kullanılacak en uygun depolama türünü belirlemelidir.
 
-Aşağıdaki tablo, kullanılabilir depolama türlerini ve bunların yeteneklerini özetleyerek:
+Aşağıdaki tabloda kullanılabilir depolama türleri ve bunların özellikleri özetlenmektedir:
 
-| Kullanım örneği | Ses eklentisi | Bir kez okuma/yazma | Yalnızca okunan çok | Çok okuma/yazma | Windows Server kapsayıcı desteği |
+| Kullanım örneği | Birim eklentisi | Bir kez oku/yaz | Salt okunurdur | Okuma/yazma çok | Windows Server kapsayıcısı desteği |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| Paylaşılan yapılandırma       | Azure Dosyaları   | Evet | Evet | Evet | Evet |
-| Yapılandırılmış uygulama verileri        | Azure Diskleri   | Evet | Hayır  | Hayır  | Evet |
-| Yapılandırılmamış veriler, dosya sistemi işlemleri | [BlobFuse][blobfuse] | Evet | Evet | Evet | Hayır |
+| Paylaşılan yapılandırma       | Azure Dosyaları   | Yes | Yes | Yes | Yes |
+| Yapılandırılmış uygulama verileri        | Azure Diskleri   | Yes | Hayır  | Hayır  | Yes |
+| Yapılandırılmamış veriler, dosya sistemi işlemleri | [Blobsigortası][blobfuse] | Yes | Yes | Yes | Hayır |
 
-AKS'deki birimler için sağlanan iki birincil depolama alanı türü Azure Diskleri veya Azure Dosyaları tarafından desteklenir. Güvenliği artırmak için, her iki depolama alanı türü de varsayılan olarak verileri istirahatte şifreleyen Azure Depolama Hizmeti Şifrelemesini (SSE) kullanır. Diskler şu anda AKS düğümü düzeyinde Azure Disk Şifrelemesi kullanılarak şifrelenemez.
+AKS 'teki birimler için belirtilen iki birincil depolama türü, Azure diskleri veya Azure dosyaları tarafından desteklenir. Güvenliği artırmak için her iki depolama türü de, bekleyen verileri şifreleyen varsayılan olarak Azure Depolama Hizmeti Şifrelemesi (SSE) kullanır. Diskler Şu anda AKS düğüm düzeyinde Azure disk şifrelemesi kullanılarak şifrelenemez.
 
-Hem Azure Dosyaları hem de Azure Diskleri Standart ve Premium performans katmanlarında kullanılabilir:
+Hem Azure dosyaları hem de Azure diskleri standart ve Premium performans katmanlarında kullanılabilir:
 
-- *Premium* diskler yüksek performanslı katı hal diskleri (SSD'ler) tarafından desteklenir. Tüm üretim iş yükleri için premium diskler önerilir.
-- *Standart* diskler normal dönen diskler (HDD'ler) tarafından desteklenir ve arşivleme veya seyrek erişilen veriler için iyidir.
+- *Premium* diskler, yüksek performanslı katı hal diskleri (SSD 'ler) tarafından desteklenir. Premium diskler tüm üretim iş yükleri için önerilir.
+- *Standart* diskler normal dönen diskler (HDD 'ler) tarafından desteklenir ve arşiv veya seyrek erişilen veriler için uygundur.
 
-Uygun depolama katmanını seçmek için uygulama performans gereksinimlerini ve erişim desenlerini anlayın. Yönetilen Diskler boyutları ve performans katmanları hakkında daha fazla bilgi için [Azure Yönetilen Diskler'e genel bakış][managed-disks]
+Uygun depolama katmanını seçmek için uygulama performansı ihtiyaçlarını ve erişim düzenlerini anlayın. Yönetilen disk boyutları ve performans katmanları hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış][managed-disks]
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Uygulama gereksinimlerini tanımlamak için depolama sınıfları oluşturma ve kullanma
 
-Kullandığınız depolama türü Kubernetes depolama *sınıfları*kullanılarak tanımlanır. Depolama sınıfı daha sonra bölme veya dağıtım belirtiminde başvurur. Bu tanımlar, uygun depolama alanı oluşturmak ve bölmelere bağlamak için birlikte çalışır. Daha fazla bilgi için [AKS'deki Depolama sınıflarına][aks-concepts-storage-classes]bakın.
+Kullandığınız depolamanın türü, Kubernetes *Depolama sınıfları*kullanılarak tanımlanır. Depolama sınıfına daha sonra Pod veya Deployment belirtiminde başvurulur. Bu tanımlar, uygun depolamayı oluşturmak ve onları pods 'ye bağlamak için birlikte çalışır. Daha fazla bilgi için bkz. [AKS 'de Depolama sınıfları][aks-concepts-storage-classes].
 
-## <a name="size-the-nodes-for-storage-needs"></a>Depolama ihtiyaçları için düğümleri boyutlandırma
+## <a name="size-the-nodes-for-storage-needs"></a>Depolama ihtiyaçlarına yönelik düğümleri Boyutlandır
 
-**En iyi uygulama kılavuzu** - Her düğüm boyutu en fazla sayıda diski destekler. Farklı düğüm boyutları da yerel depolama ve ağ bant genişliği farklı miktarda sağlar. Düğümlerin uygun boyutunu dağıtmak için uygulama taleplerinizi planlayın.
+**En iyi Yöntem Kılavuzu** -her düğüm boyutu en fazla disk sayısını destekler. Farklı düğüm boyutları farklı miktarda yerel depolama ve ağ bant genişliği de sağlar. Uygun düğümlerin boyutunu dağıtmak için uygulamanızın taleplerini planlayın.
 
-AKS düğümleri Azure VM'ler olarak çalışır. Farklı VM türleri ve boyutları mevcuttur. Her VM boyutu, CPU ve bellek gibi farklı miktarda temel kaynak sağlar. Bu VM boyutları, eklenebilir disklerin maksimum sayıda vardır. Depolama performansı, maksimum yerel ve bağlı disk IOPS (saniyede giriş/çıkış işlemleri) için VM boyutları arasında da değişir.
+AKS düğümleri Azure VM 'Leri olarak çalışır. Farklı türlerdeki VM 'ler kullanılabilir. Her VM boyutu, CPU ve bellek gibi farklı bir çekirdek kaynak miktarı sağlar. Bu VM boyutları, eklenebilecek en fazla disk sayısına sahiptir. Depolama performansı Ayrıca, en yüksek yerel ve bağlı disk ıOPS (saniye başına giriş/çıkış işlemleri) için VM boyutları arasında da farklılık gösterir.
 
-Uygulamalarınız depolama çözümü olarak Azure Diskleri gerektiriyorsa, uygun bir düğüm VM boyutu planlayın ve seçin. Bir VM boyutu seçtiğinizde CPU ve bellek miktarı tek faktör değildir. Depolama yetenekleri de önemlidir. Örneğin, hem *Standard_B2ms* hem de *Standard_DS2_v2* VM boyutları benzer miktarda CPU ve bellek kaynakları içerir. Aşağıdaki tabloda gösterildiği gibi olası depolama performansları farklıdır:
+Uygulamalarınız depolama çözümü olarak Azure diskleri gerektiriyorsa, uygun bir düğüm VM boyutunu planlayın ve seçin. Bir VM boyutu seçtiğinizde, CPU ve bellek miktarı tek etken değildir. Depolama özellikleri de önemlidir. Örneğin, hem *Standard_B2ms* hem de *Standard_DS2_v2* VM BOYUTLARı, benzer bir CPU ve bellek kaynakları içerir. Olası depolama performansı, aşağıdaki tabloda gösterildiği gibi farklıdır:
 
-| Düğüm türü ve boyutu | Sanal işlemci | Bellek (GİB) | Maksimum veri diskleri | Maksimum önsüz disk IOPS | Maksimum uncached iş girişi (MBps) |
+| Düğüm türü ve boyutu | Sanal işlemci | Bellek (GiB) | Maksimum veri diskleri | Önbelleğe alınmamış disk ıOPS üst sınırı | Önbelleğe alınmamış maksimum üretilen iş (MBps) |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
-| Standard_B2ms      | 2    | 8            | 4              | 1,920                  | 22.5                           |
-| Standard_DS2_v2    | 2    | 7            | 8              | 6,400                  | 96                             |
+| Standard_B2ms      | 2    | 8            | 4              | 1.920                  | 22,5                           |
+| Standard_DS2_v2    | 2    | 7            | 8              | 6.400                  | 96                             |
 
-Burada, *Standard_DS2_v2* bağlı disk sayısının iki katına izin verir ve IOPS ve disk iştibunu üç ila dört kat daha fazla sağlar. Yalnızca temel işlem kaynaklarına ve karşılaştırıldığında maliyetlere baktıysanız, *Standard_B2ms* VM boyutunu seçebilir ve depolama performansı ve sınırlamaları düşüktür. Depolama kapasitelerini ve performans gereksinimlerini anlamak için uygulama geliştirme ekibinizle birlikte çalışın. AKS düğümlerinin performans gereksinimlerini karşılaması veya aşması için uygun VM boyutunu seçin. VM boyutunu gerektiği gibi ayarlamak için düzenli olarak temel uygulamalar.
+*Standard_DS2_v2* , eklenen disklerin sayısının iki katına izin verır ve IOPS ve disk aktarım hızı için üç-dört kat sağlar. Yalnızca temel işlem kaynaklarına bakıyordu ve maliyetleri karşılaştırdıysanız, *Standard_B2ms* VM boyutunu seçebilir ve yetersiz depolama performansına ve sınırlamalara sahip olabilirsiniz. Depolama kapasitesini ve performans ihtiyaçlarını anlamak için uygulama geliştirme ekibinizle birlikte çalışın. AKS düğümleri için, performans ihtiyaçlarını karşılayacak veya aşacak uygun VM boyutunu seçin. VM boyutunu gerektiği şekilde ayarlamak için düzenli olarak temel uygulamalar.
 
-Kullanılabilir VM boyutları hakkında daha fazla bilgi için [Azure'daki Linux sanal makineleri için Boyutlar'a][vm-sizes]bakın.
+Kullanılabilir VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar][vm-sizes].
 
-## <a name="dynamically-provision-volumes"></a>Dinamik olarak sağlama hacimleri
+## <a name="dynamically-provision-volumes"></a>Dinamik olarak birimleri sağlama
 
-**En iyi uygulama kılavuzu** - Yönetim yükü azaltmak ve ölçeklendirmenize izin vermek için, kalıcı birimler oluşturmayın ve atayın. Dinamik sağlama kullanın. Depolama sınıflarınızda, bölmeler silindikten sonra gereksiz depolama maliyetlerini en aza indirmek için uygun geri alma ilkesini tanımlayın.
+**En iyi Yöntem Kılavuzu** -yönetim yükünü azaltmak ve ölçeklemenize olanak sağlamak için kalıcı birimleri statik olarak oluşturma ve atama. Dinamik sağlamayı kullanın. Depolama sınıflarınızda, bir dizin silindikten sonra gereksiz depolama maliyetlerini en aza indirmek için uygun geri kazanma ilkesini tanımlayın.
 
-Bölmelere depolama alanı eklemeniz gerektiğinde kalıcı birimler kullanırsınız. Bu kalıcı birimler el ile veya dinamik olarak oluşturulabilir. Kalıcı birimlerin el ile oluşturulması, yönetim ek yükü ekler ve ölçeklendirme yeteneğinizi sınırlar. Depolama yönetimini basitleştirmek ve uygulamalarınızın gerektiğinde büyümesine ve ölçeklemesine izin vermek için dinamik kalıcı birim sağlama yı kullanın.
+Depolara depolama eklemeniz gerektiğinde kalıcı birimler kullanırsınız. Bu kalıcı birimler el ile veya dinamik olarak oluşturulabilir. Kalıcı birimlerin el ile oluşturulması yönetim yükünü ekler ve ölçeklendirme yeteneğinizi kısıtlar. Depolama yönetimini basitleştirmek ve uygulamalarınızın gerektikçe büyümesine ve ölçeklendirilmesine izin vermek için dinamik kalıcı birim sağlamayı kullanın.
 
-![Azure Kubernetes Hizmetleri (AKS) kümesinde kalıcı birim talepleri](media/concepts-storage/persistent-volume-claims.png)
+![Azure Kubernetes Services (AKS) kümesinde kalıcı birim talepleri](media/concepts-storage/persistent-volume-claims.png)
 
-Kalıcı bir hacim talebi (PVC), gerektiğinde dinamik olarak depolama oluşturmanıza olanak tanır. Temel Azure diskleri, bölmelerin isteği üzerine oluşturulur. Pod tanımında, oluşturulacak ve belirlenmiş bir montaj yoluna eklenecek bir birim talep esiniz.
+Kalıcı bir birim talebi (PVC) gerektiğinde dinamik olarak depolama oluşturmanızı sağlar. Temel alınan Azure diskleri, bir pod tarafından talep edilen olarak oluşturulur. Pod tanımında, oluşturulacak ve belirlenmiş bir bağlama yoluna iliştirilebilecek bir birim isteyin.
 
-Birim oluşturma ve kullanma ile ilgili kavramlar [için, Kalıcı Birim Talepleri'ne][aks-concepts-storage-pvcs]bakın.
+Birimlerin dinamik olarak oluşturulması ve kullanılması hakkındaki kavramlar için bkz. [kalıcı birimler talepleri][aks-concepts-storage-pvcs].
 
-Bu birimleri iş başında görmek için, [Azure Diskleri][dynamic-disks] veya [Azure Dosyaları][dynamic-files]ile kalıcı bir birimin dinamik olarak nasıl oluşturulup kullanılacağını görün.
+Bu birimleri eylemde görmek için bkz. [Azure diskleri][dynamic-disks] veya [Azure dosyaları][dynamic-files]ile kalıcı bir birimi dinamik olarak oluşturma ve kullanma.
 
-Depolama sınıfı tanımlarınızın bir parçası olarak, uygun *geri alma Politikası'nı*ayarlayın. Bu geri alma Politikası, bölme silindiğinde ve kalıcı birim artık gerekmediğinde, temel Azure depolama kaynağının davranışını denetler. Temel depolama kaynağı silinebilir veya gelecekteki bir bölmeyle kullanılmak üzere saklanabilir. ReclaimPolicy *korumak* veya *silmek*için ayarlayabilirsiniz. Uygulama gereksinimlerinizi anlayın ve kullanılan ve faturalanan kullanılmayan depolama miktarını en aza indirmek için tutulan depolama için düzenli denetimler uygulayın.
+Depolama sınıfı tanımlarınızın bir parçası olarak, uygun *reclaimPolicy*ayarlayın. Bu reclaimPolicy, Pod silindiğinde ve kalıcı birim artık gerekmiyorsa, temel alınan Azure depolama kaynağının davranışını denetler. Temel alınan depolama kaynağı silinebilir veya gelecekteki bir pod ile kullanım için korunabilir. ReclaimPolicy, *sakla* veya *Sil*olarak ayarlanabilir. Uygulama gereksinimlerinizi anlayın ve kullanılan ve faturalandırılmamış kullanılmayan depolama miktarını en aza indirmek için saklanan depolama için düzenli denetimler uygulayın.
 
-Depolama sınıfı seçenekleri hakkında daha fazla bilgi için [depolama geri alma ilkelerine][reclaim-policy]bakın.
+Depolama sınıfı seçenekleri hakkında daha fazla bilgi için bkz. [depolama geri kazanma ilkeleri][reclaim-policy].
 
-## <a name="secure-and-back-up-your-data"></a>Verilerinizi güvenli hale getirin ve yedekle
+## <a name="secure-and-back-up-your-data"></a>Verilerinizin güvenliğini sağlama ve yedekleme
 
-**En iyi uygulama kılavuzu** - Velero veya Azure Site Kurtarma gibi depolama türünüz için uygun bir araç kullanarak verilerinizi yedekleyin. Bu yedeklemelerin bütünlüğünü ve güvenliğini doğrulayın.
+**En iyi Yöntem Kılavuzu** -depolama türü için Velero veya Azure Site Recovery gibi uygun bir aracı kullanarak verilerinizi yedekleyin. Bu yedeklemelerin bütünlüğünü ve güvenliğini doğrulayın.
 
-Uygulamalarınız disklerde veya dosyalarda kalıcı verileri depolayıp tükettiği zaman, bu verilerin düzenli yedeklemelerini veya anlık görüntülerini almanız gerekir. Azure Diskleri yerleşik anlık görüntü teknolojilerini kullanabilir. Anlık görüntü işlemini gerçekleştirmeden önce yazmaları diske yıkamak için uygulamalarınızı aramanız gerekebilir. [Velero,][velero] kalıcı birimleri ek küme kaynakları ve yapılandırmalarla birlikte yedekleyebilir. [Durumları uygulamalarınızdan][remove-state]kaldıramıyorsanız, verileri kalıcı birimlerden yedekleyebilir ve veri bütünlüğünü ve gerekli işlemleri doğrulamak için geri yükleme işlemlerini düzenli olarak sınama.
+Uygulamalarınız disklerde veya dosyalarda kalıcı olarak verileri depolayıp tükettiğinizde, bu verilerin düzenli yedeklemelerini veya anlık görüntülerini almanız gerekir. Azure diskleri, yerleşik anlık görüntü teknolojilerini kullanabilir. Anlık görüntü işlemini gerçekleştirmeden önce, uygulamanızın diske yazma işlemlerini boşaltmaya yönelik arama yapmanız gerekebilir. [Velero][velero] , ek küme kaynakları ve yapılandırmalarının yanı sıra kalıcı birimleri yedekleyebilir. [Uygulamalarınızdan durum kaldıramazsa][remove-state], verileri kalıcı birimlerden yedekleyin ve veri bütünlüğünü ve gerekli işlemleri doğrulamak için geri yükleme işlemlerini düzenli olarak test edin.
 
-Veri yedeklemelerine yönelik farklı yaklaşımların sınırlamalarını ve anlık görüntüden önce verilerinizi sorgulamanız gerekiyorsa, sınırlamaları anlayın. Veri yedeklemeleri, uygulama ortamınızı küme dağıtımıyla geri yüklemenize izin vermez. Bu senaryolar hakkında daha fazla bilgi için, [AKS'de iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalara][best-practices-multi-region]bakın.
+Veri yedeklemelerine yönelik farklı yaklaşımların sınırlamalarını ve anlık görüntüden önce verilerinizi sessiz moda almanız gerekiyorsa anlayın. Veri yedeklemeleri, küme dağıtımının uygulama ortamınızı geri yüklemenize gerek kalmaz. Bu senaryolar hakkında daha fazla bilgi için bkz. [AKS 'de iş sürekliliği ve olağanüstü durum kurtarma Için en iyi uygulamalar][best-practices-multi-region].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, AKS depolama en iyi uygulamaları üzerinde duruldu. Kubernetes depolama temelleri hakkında daha fazla bilgi [için, AKS uygulamaları için Depolama kavramları][aks-concepts-storage]bakın.
+Bu makalede, AKS 'teki en iyi depolama uygulamalarına odaklanılmıştır. Kubernetes 'te depolama temelleri hakkında daha fazla bilgi için bkz. [AKS 'teki uygulamalar Için depolama kavramları][aks-concepts-storage].
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero

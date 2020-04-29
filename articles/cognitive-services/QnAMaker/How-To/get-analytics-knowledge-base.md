@@ -1,7 +1,7 @@
 ---
-title: Bilgi bankası nda analitik - QnA Maker
+title: Bilgi Bankası 'nda analiz-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: QnA Maker hizmetinizin oluşturulması sırasında App Insights'ı etkinleştirdiyseniz, QnA Maker tüm sohbet günlüklerini ve diğer telemetrileri saklar. Sohbet günlüklerinizi App Insights'tan almak için örnek sorguları çalıştırın.
+description: Soru-Cevap Oluşturma, Soru-Cevap Oluşturma hizmetinizin oluşturulması sırasında Application Insights 'ı etkinleştirdiyseniz tüm sohbet günlüklerini ve diğer telemetrileri depolar. Sohbet günlüklerinizi App Insights 'tan almak için örnek sorguları çalıştırın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: diberry
 ms.openlocfilehash: d247c55112bc1c3cd921c0eda8e4ddadd6b5aed9
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878077"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Bilgi bankanız hakkında analizler alma
 
-QnA [Maker, QnA Maker hizmetinizin oluşturulması](./set-up-qnamaker-service-azure.md)sırasında App Insights'ı etkinleştirdiyseniz, tüm sohbet günlüklerini ve diğer telemetrileri depolar. Sohbet günlüklerinizi App Insights'tan almak için örnek sorguları çalıştırın.
+Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./set-up-qnamaker-service-azure.md)sırasında Application Insights 'ı etkinleştirdiyseniz tüm sohbet günlüklerini ve diğer telemetrileri depolar. Sohbet günlüklerinizi App Insights 'tan almak için örnek sorguları çalıştırın.
 
-1. App Insights kaynağınıza gidin.
+1. App Insights kaynağına gidin.
 
-    ![Uygulama öngörüleri kaynağınızı seçin](../media/qnamaker-how-to-analytics-kb/resources-created.png)
+    ![Application Insights kaynağınızı seçin](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. **Günlük (Analytics) seçeneğini belirleyin.** QnA Maker telemetrisini sorgulayabileceğiniz yeni bir pencere açılır.
+2. **Günlük (Analiz)** öğesini seçin. Soru-Cevap Oluşturma Telemetriyi Sorgulayabileceğiniz yeni bir pencere açılır.
 
-3. Aşağıdaki sorguya yapıştırın ve çalıştırın.
+3. Aşağıdaki sorguyu yapıştırın ve çalıştırın.
 
     ```kusto
     requests
@@ -46,9 +46,9 @@ QnA [Maker, QnA Maker hizmetinizin oluşturulması](./set-up-qnamaker-service-az
 
     Sorguyu çalıştırmak için **Çalıştır**'ı seçin.
 
-    [![Kullanıcılardan gelen soruları, yanıtları ve puanı belirlemek için sorguçalıştırma](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
+    [![Kullanıcılardan gelen soruları, yanıtları ve puanı öğrenmek için sorguyu çalıştırın](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>QnA Maker bilgi tabanınızda diğer analizler için sorgular çalıştırın
+## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma bilgi bankasında diğer analizler için sorgular çalıştırma
 
 ### <a name="total-90-day-traffic"></a>Toplam 90 günlük trafik
 
@@ -60,7 +60,7 @@ requests
 | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ```
 
-### <a name="total-question-traffic-in-a-given-time-period"></a>Belirli bir zaman dilimindeki toplam soru trafiği
+### <a name="total-question-traffic-in-a-given-time-period"></a>Belirli bir dönemdeki toplam soru trafiği
 
 ```kusto
 //Total Question Traffic in a given time period
@@ -99,7 +99,7 @@ requests
 | summarize count() by performanceBucket, KbId
 ```
 
-### <a name="unanswered-questions"></a>Yanıtlanmamış sorular
+### <a name="unanswered-questions"></a>Yanıtlanmayan sorular
 
 ```kusto
 // Unanswered questions

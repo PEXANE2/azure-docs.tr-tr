@@ -1,37 +1,37 @@
 ---
-title: Azure Uygulama Öngörülerinde Dağıtılmış İzleme | Microsoft Dokümanlar
-description: OpenCensus projesindeki ortaklığımız aracılığıyla dağıtılmış izleme için Microsoft'un desteği hakkında bilgi sağlar
+title: Azure 'da dağıtılmış Izleme Application Insights | Microsoft Docs
+description: Microsoft 'un, OpenCensus projesindeki ortaklarımız aracılığıyla dağıtılmış izleme desteği hakkında bilgi sağlar
 ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80892266"
 ---
-# <a name="what-is-distributed-tracing"></a>Dağıtılmış İzleme Nedir?
+# <a name="what-is-distributed-tracing"></a>Dağıtılmış Izleme nedir?
 
-Modern bulut ve [mikro hizmet](https://azure.com/microservices) mimarilerinin ortaya çıkışı, kullanılabilirliği ve üretimi artırırken maliyetleri azaltmaya yardımcı olabilecek basit, bağımsız olarak dağıtılabilir hizmetlere yol açmıştır. Ancak bu hareketler, bireysel hizmetlerin bir bütün olarak anlaşılmasını kolaylaştırmış olsa da, genel sistemlerin akıl yürütmesini ve hata ayıklamasını zorlaştırmış.
+Modern bulut ve [mikro hizmet](https://azure.com/microservices) mimarilerinin bir yolu, kullanılabilirliği ve üretilen işi artırırken maliyetleri azaltmaya yardımcı olabilecek basit ve bağımsız olarak dağıtılabilir hizmetlerden oluşan bir artış verdi. Ancak, bu taşımalar tek tek Hizmetleri daha kolay bir şekilde öğrenirken, genel sistemleri bir veya hata ayıklama nedenine daha zor hale getirir.
 
-Yekpare mimarilerde, çağrı yığınlarıyla hata ayıklama yapmaya alıştık. Çağrı yığınları, yürütme akışını (Yöntem C olarak adlandırılan Yöntem B olarak adlandırılan Yöntem B) ve bu çağrıların her biri hakkında ayrıntılar ve parametreleri göstermek için parlak araçlardır. Bu, tek bir işlemde çalışan monolitler veya hizmetler için harikadır, ancak çağrı yalnızca yerel yığındaki bir başvuru değil, bir işlem sınırının ötesindeyken nasıl hata ayıklama yaparız? 
+Tek parçalı mimarilerde, çağrı yığınlarıyla hata ayıklamak için kullanılır. Çağrı yığınları, yürütme akışını göstermek için harika araçlardır (Yöntem C olarak adlandırılan Yöntem B), bu çağrıların her biri hakkındaki ayrıntılar ve parametrelerle birlikte. Bu, tek bir işlemde çalışan tek bir veya daha fazla hizmet için harika, ancak çağrı yalnızca yerel yığında bir başvuruya değil bir işlem sınırında olduğunda hata ayıkladık mi? 
 
-İşte burada dağıtılmış izleme devreye giriyor.  
+Bu, dağıtılmış izlemenin içinde geldiği yerdir.  
 
-Dağıtılmış izleme, modern bulut ve mikro hizmet mimarileri için çağrı yığınlarına eşdeğerdir ve basit bir performans profilleyicisi de eklenir. Azure Monitor'da, dağıtılmış izleme verilerini tüketmek için iki deneyim sağlarız. Birincisi, zaman boyutu eklendiği bir çağrı yığını gibi olan [işlem tanılama](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) görünümüdür. Hareket tanılama görünümü tek bir işlem/istekte görünürlük sağlar ve her istek bazında güvenilirlik sorunlarının ve performans darboğazlarının temel nedenini bulmak için yararlıdır.
+Dağıtılmış izleme, içinde oluşturulan bir uyarlaması performans profil oluşturucusu eklenmesiyle modern bulut ve mikro hizmet mimarileri için çağrı yığınlarının eşdeğeridir. Azure Izleyici 'de, dağıtılmış izleme verilerini tüketmeye yönelik iki deneyim sağlıyoruz. Birincisi, bir zaman boyutu eklenmiş bir çağrı yığını gibi olan [işlem tanılama](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) görünümümüzü. İşlem tanılama görünümü tek bir işlem/istek için görünürlük sağlar ve her istek için güvenilirlik sorunlarının ve performans sorunlarının kök nedenini bulmak için yararlıdır.
 
-Azure Monitor ayrıca, sistemlerin nasıl etkileşime girdiği ve ortalama performans ve hata oranlarının ne olduğu hakkında topolojik bir görünüm göstermek için birçok işlemi bir araya getiren bir [uygulama haritası](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) görünümü de sunar. 
+Azure Izleyici Ayrıca, sistemlerin nasıl etkileşime gireceğini ve ortalama performans ve hata tarifelerinin ne olduğunu gösteren bir topik görünümünü göstermek için birçok işlem toplayan bir [uygulama Haritası](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) görünümü sunar. 
 
-## <a name="how-to-enable-distributed-tracing"></a>Dağıtılmış İzleme Nasıl Etkinleştirilir?
+## <a name="how-to-enable-distributed-tracing"></a>Dağıtılmış Izlemeyi etkinleştirme
 
-Bir uygulamada hizmetler arasında dağıtılmış izlemeyi etkinleştirmek, hizmetin uygulandığı dile göre her hizmete uygun aracıyı, SDK'yı veya kitaplığı eklemek kadar kolaydır.
+Bir uygulamadaki hizmetler genelinde dağıtılmış izlemeyi etkinleştirmek, hizmetin uygulandığı dile göre her bir hizmete uygun aracı, SDK veya kitaplık eklemek kadar basittir.
 
-## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Otomatik enstrümantasyon veya SDK'lar aracılığıyla Uygulama Öngörüleri ile etkinleştirme
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Otomatik izleme veya SDK 'lar aracılığıyla Application Insights aracılığıyla etkinleştirme
 
-.NET, .NET Core, Java, Node.js ve JavaScript için Bulunan Application Insights aracıları ve/veya SDK'ları tüm destek yerel olarak izleme olarak dağıtılır. Her Uygulama Öngörüleri SDK'nın yüklenmesi ve yapılandırılmasına ilişkin talimatlaraşağıda mevcuttur:
+.NET, .NET Core, Java, Node. js ve JavaScript 'In tüm Application Insights aracıları ve/veya SDK 'Ları, dağıtılmış izlemeyi yerel olarak destekler. Her Application Insights SDK 'Yı yükleme ve yapılandırmaya yönelik yönergeler aşağıda verilmiştir:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
@@ -40,20 +40,20 @@ Bir uygulamada hizmetler arasında dağıtılmış izlemeyi etkinleştirmek, hiz
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
-Uygun Uygulama Öngörüleri SDK yüklü ve yapılandırılmış, izleme bilgileri otomatik olarak popüler çerçeveler, kütüphaneler ve teknolojiler için SDK bağımlılık otomatik toplayıcıları tarafından toplanır. Desteklenen teknolojilerin tam listesi Bağımlılık [otomatik toplama belgelerinde](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)kullanılabilir.
+Uygun Application Insights SDK yüklü ve yapılandırılmış olarak, popüler çerçeveler, kitaplıklar ve teknolojiler için izleme bilgileri SDK bağımlılığı otomatik toplayıcılarına göre otomatik olarak toplanır. Desteklenen teknolojilerin tam listesi [bağımlılık otomatik toplama belgelerinde](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)bulunabilir.
 
- Ayrıca, herhangi bir teknoloji [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) bir çağrı ile el ile izlenebilir.
+ Ayrıca, tüm teknolojiler [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)üzerinde [trackdependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) çağrısı ile el ile izlenebilir.
 
-## <a name="enable-via-opencensus"></a>OpenCensus ile etkinleştirme
+## <a name="enable-via-opencensus"></a>OpenCensus aracılığıyla etkinleştir
 
-Application Insights SDK'larına ek olarak, Application Insights [OpenCensus](https://opencensus.io/)aracılığıyla dağıtılmış izlemeyi de destekler. OpenCensus açık kaynak kodlu, satıcı-agnostik, ölçümler toplama ve hizmetler için dağıtılmış izleme sağlamak için kitaplıkların tek dağıtım. Ayrıca, açık kaynak topluluğunun Redis, Memcached veya MongoDB gibi popüler teknolojilerle dağıtılmış izleme olanağı sağlamasına olanak tanır. [Microsoft, OpenCensus'da diğer birçok izleme ve bulut ortağıyla işbirliği yapmaktadır.](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/)
+Application Insights SDK 'lara ek olarak, Application Insights [Opencensus](https://opencensus.io/)aracılığıyla dağıtılmış izlemeyi da destekler. OpenCensus, hizmetler için ölçüm koleksiyonu ve dağıtılmış izleme sağlamak üzere açık kaynaklı, satıcının bağımsız, tek kitaplıkların tek bir dağıtımı olur. Ayrıca, açık kaynak topluluğunun redin, Memcache veya MongoDB gibi popüler teknolojilerle dağıtılmış izlemeyi etkinleştirmesini sağlar. [Microsoft, diğer birçok izleme ve bulut iş ortaklarıyla OpenCensus üzerinde işbirliği](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/)yapıyor.
 
 [Python](opencensus-python.md) 
 
-OpenCensus web sitesi [Python](https://opencensus.io/api/python/trace/usage.html) ve [Go](https://godoc.org/go.opencensus.io)için API başvuru belgelerinin yanı sıra OpenCensus'ı kullanmak için çeşitli kılavuzları da tutar. 
+OpenCensus Web sitesi, [Python](https://opencensus.io/api/python/trace/usage.html) ve [Go](https://godoc.org/go.opencensus.io)için API başvuru belgelerini ve ayrıca opencensus kullanmaya yönelik çeşitli farklı kılavuzların bakımını yapar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [OpenCensus Python kullanım kılavuzu](https://opencensus.io/api/python/trace/usage.html)
-* [Uygulama haritası](./../../azure-monitor/app/app-map.md)
-* [Uçuça performans izleme](./../../azure-monitor/learn/tutorial-performance.md)
+* [OpenCensus Python Kullanım Kılavuzu](https://opencensus.io/api/python/trace/usage.html)
+* [Uygulama eşlemesi](./../../azure-monitor/app/app-map.md)
+* [Uçtan uca performans izleme](./../../azure-monitor/learn/tutorial-performance.md)

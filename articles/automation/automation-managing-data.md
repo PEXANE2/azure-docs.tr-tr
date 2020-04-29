@@ -1,84 +1,84 @@
 ---
 title: Azure Otomasyonu verilerini yönetme
-description: Bu makalede, bir Azure Otomasyon ortamını yönetmek için birden çok konu yer alıyor.  Şu anda Azure Otomasyonu'nda Veri Saklama ve Azure Otomasyonu Olağanüstü Durum Kurtarma'yı yedekleme yi içerir.
+description: Bu makalede, Azure Otomasyonu ortamının yönetilmesi için birden çok konu yer almaktadır.  Şu anda Azure Otomasyonu 'nda veri saklama ve Azure Otomasyonu olağanüstü durum kurtarmayı yedekleme dahil.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984666"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Otomasyonu verilerini yönetme
 
-Bu makalede, Azure Otomasyon ortamında veri yönetimi için birden çok konu içerir.
+Bu makalede, verileri bir Azure Otomasyonu ortamında yönetmeye yönelik birden çok konu yer almaktadır.
 
 >[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="data-retention"></a>Veri saklama
 
-Azure Otomasyonu'nda bir kaynağı sildiğinizde, kalıcı kaldırma işleminden önce denetim amacıyla birkaç gün saklanır. Bu süre zarfında kaynağı göremiyor veya kullanamazsınız. Bu ilke, silinmiş bir Otomasyon hesabına ait kaynaklar için de geçerlidir.
+Azure Otomasyonu 'nda bir kaynağı sildiğinizde, kalıcı kaldırma işleminden önce denetim amaçları için birkaç gün boyunca tutulur. Bu süre içinde kaynağı göremez veya kullanamazsınız. Bu ilke, silinen bir Otomasyon hesabına ait olan kaynaklar için de geçerlidir.
 
-Aşağıdaki tabloda farklı kaynaklar için bekletme ilkesi özetlenmiştir.
+Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 
 | Veriler | İlke |
 |:--- |:--- |
-| Hesaplar |Bir hesap, kullanıcı nın hesabı silmesinden 30 gün sonra kalıcı olarak kaldırılır. |
-| Varlıklar |Bir varlık, kullanıcı nın silmesinden 30 gün sonra veya kullanıcı varlığı elinde bulunduran bir hesabı sildikten 30 gün sonra kalıcı olarak kaldırılır. |
-| DSC Düğümleri |Bir DSC düğümü, Azure portalı veya Windows PowerShell'deki [Kayıt Dışı-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet kullanılarak Bir Otomasyon hesabından kaydedilmeden 30 gün sonra kalıcı olarak kaldırılır. Bir düğüm, kullanıcı düğümü tutan hesabı sildikten 30 gün sonra da kalıcı olarak kaldırılır. |
-| İşler |Bir iş, örneğin, iş tamamlandıktan sonra, durdurulduktan veya askıya alındıktan 30 gün sonra silinir ve kalıcı olarak kaldırılır. |
-| Modüller |Bir modül, kullanıcı nın silmesinden 30 gün sonra veya kullanıcı modülü tutan hesabı sildikten 30 gün sonra kalıcı olarak kaldırılır. |
-| Düğüm Yapılandırmaları/MOF Dosyaları |Yeni bir düğüm yapılandırması oluşturulduktan 30 gün sonra eski bir düğüm yapılandırması kalıcı olarak kaldırılır. |
-| Düğüm Raporları |Düğüm raporu, bu düğüm için yeni bir rapor oluşturulduktan 90 gün sonra kalıcı olarak kaldırılır. |
-| Runbook'lar |Runbook, kullanıcı nın kaynağı silmesinden 30 gün sonra veya kullanıcı nın kaynağı elinde bulunduran hesabı silmesinden 30 gün sonra kalıcı olarak kaldırılır. |
+| Hesaplar |Bir hesap, bir kullanıcı tarafından silindikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
+| Varlıklar |Bir varlık, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı varlığı tutan bir hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
+| DSC düğümleri |DSC düğümü, Windows PowerShell 'de Azure portal veya [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 'ini kullanarak bir Otomasyon hesabından silinen 30 gün sonra kalıcı olarak kaldırılır. Düğüm, düğüm tutan hesabı sildikten sonra 30 gün sonra da kalıcı olarak kaldırılır. |
+| İşler |Bir iş silinir ve değişiklik sonrasında 30 gün sonra kalıcı olarak kaldırılır. Örneğin, iş tamamlandıktan sonra, durdurulur veya askıya alınır. |
+| Modüller |Bir modül, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı modülü tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
+| Düğüm konfigürasyonları/MOF dosyaları |Yeni bir düğüm yapılandırması oluşturulduktan sonra, eski bir düğüm yapılandırması 30 gün sonra kalıcı olarak kaldırılır. |
+| Düğüm raporları |Düğüm raporu, bu düğüm için yeni rapor oluşturulduktan 90 gün sonra kalıcı olarak kaldırılır. |
+| Runbook'lar |Bir runbook, bir Kullanıcı kaynağı sildikten 30 gün sonra veya bir Kullanıcı kaynağı tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 
-Bekletme ilkesi tüm kullanıcılar için geçerlidir ve şu anda özelleştirici olamaz. Ancak, verileri daha uzun süre saklamanız gerekiyorsa, [Azure Otomasyon iş verilerini Azure Monitor günlüklerine iletebilirsiniz.](automation-manage-send-joblogs-log-analytics.md)
+Bekletme ilkesi tüm kullanıcılar için geçerlidir ve şu anda özelleştirilemiyor. Ancak, verileri daha uzun bir süre tutmanız gerekiyorsa [Azure Otomasyonu iş verilerini Azure izleyici günlüklerine iletebilirsiniz](automation-manage-send-joblogs-log-analytics.md).
 
 ## <a name="data-backup"></a>Veri yedekleme
 
-Azure'da bir Otomasyon hesabını sildiğinizde, hesaptaki tüm nesneler silinir. Nesneler runbook'lar, modüller, yapılandırmalar, ayarlar, işler ve varlıkları içerir. Hesap silindikten sonra kurtarılamazlar. Silmeden önce Otomasyon hesabınızın içeriğini yedeklemek için aşağıdaki bilgileri kullanabilirsiniz.
+Azure 'da bir Otomasyon hesabını sildiğinizde, hesaptaki tüm nesneler silinir. Nesneler runbook 'ları, modülleri, konfigürasyonları, ayarları, işleri ve varlıkları içerir. Hesap silindikten sonra kurtarılamaz. Otomasyon hesabınızın içeriğini silmeden önce yedeklemek için aşağıdaki bilgileri kullanabilirsiniz.
 
 ### <a name="runbooks"></a>Runbook'lar
 
-Runbook'larınızı Azure portalını veya Windows PowerShell'deki [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet'i kullanarak komut dosyası dosyalarına dışa aktarabilirsiniz. Bu komut dosyası dosyalarını Azure Otomasyonu'ndaki [Yönet runbook'larında](manage-runbooks.md)belirtildiği gibi başka bir Otomasyon hesabına aktarabilirsiniz.
+Windows PowerShell 'de Azure portal veya [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 'ini kullanarak runbook 'larınızı betik dosyalarına aktarabilirsiniz. Bu komut dosyalarını, [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md)bölümünde anlatıldığı gibi başka bir Otomasyon hesabına içeri aktarabilirsiniz.
 
 ### <a name="integration-modules"></a>Tümleştirme modülleri
 
-Azure Otomasyon'dan tümleştirme modüllerini dışa aktaramazsınız. Bunları Otomasyon hesabı dışında kullanılabilir hale getirmelisiniz.
+Azure Otomasyonu 'ndan tümleştirme modüllerini dışarı aktarabilirsiniz. Onları Otomasyon hesabı dışında kullanılabilir yapmanız gerekir.
 
 ### <a name="assets"></a>Varlıklar
 
-Azure Otomasyon varlıklarını dışa aktaramazsınız: sertifikalar, bağlantılar, kimlik bilgileri, zamanlamalar ve değişkenler. Bunun yerine, bu varlıkların ayrıntılarını not etmek için Azure portalını ve Azure cmdlets'i kullanabilirsiniz. Ardından, başka bir Otomasyon hesabına aktardığınız runbook'lar tarafından kullanılan varlıkları oluşturmak için bu ayrıntıları kullanın.
+Azure Otomasyonu varlıklarını dışarı veremezsiniz: sertifikalar, bağlantılar, kimlik bilgileri, zamanlamalar ve değişkenler. Bunun yerine, Azure portal ve Azure cmdlet 'lerini kullanarak bu varlıkların ayrıntılarını görebilirsiniz. Daha sonra, başka bir Otomasyon hesabına aktardığınız runbook 'lar tarafından kullanılan varlıkları oluşturmak için bu ayrıntıları kullanın.
 
-Cmdlets kullanarak şifrelenmiş değişkenlerin veya kimlik bilgilerinin parola alanlarının değerlerini alamazsınız. Bu değerleri bilmiyorsanız, bunları bir runbook'ta alabilirsiniz. Değişken değerleri almak için [Azure Otomasyonundaki Değişken varlıklar'a](shared-resources/variables.md)bakın. Kimlik bilgisi değerlerini alma hakkında daha fazla bilgi edinmek için [Azure Otomasyonu'ndaki Kimlik Bilgileri varlıklarına](shared-resources/credentials.md)bakın.
+Cmdlet 'leri kullanarak, şifrelenmiş değişkenlerin veya kimlik bilgilerinin parola alanlarının değerlerini alamazsınız. Bu değerleri bilmiyorsanız bir runbook 'ta alabilirsiniz. Değişken değerlerini almak için bkz. [Azure Otomasyonu 'Nda değişken varlıkları](shared-resources/variables.md). Kimlik bilgisi değerlerini alma hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'Da kimlik bilgisi varlıkları](shared-resources/credentials.md).
 
- ### <a name="dsc-configurations"></a>DSC yapılandırmaları
+ ### <a name="dsc-configurations"></a>DSC yapılandırması
 
-DSC yapılandırmalarınızı Azure portalını veya Windows PowerShell'deki [Dışa Aktarma-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-) cmdlet'ini kullanarak komut dosyası dosyalarına dışa aktarabilirsiniz. Bu yapılandırmaları başka bir Otomasyon hesabında n için içe aktarabilir ve kullanabilirsiniz.
+Windows PowerShell 'de Azure portal veya [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
+) cmdlet 'INI kullanarak DSC yapılandırmalarını betik dosyalarına aktarabilirsiniz. Bu konfigürasyonları başka bir Otomasyon hesabında içeri aktarabilir ve kullanabilirsiniz.
 
-## <a name="geo-replication-in-azure-automation"></a>Azure Otomasyonunda Coğrafi çoğaltma
+## <a name="geo-replication-in-azure-automation"></a>Azure Otomasyonu 'nda coğrafi çoğaltma
 
-Azure Otomasyon hesaplarında coğrafi çoğaltma standarttır. Hesabınızı ayarlarken birincil bir bölge seçersiniz. İç Otomasyon coğrafi çoğaltma hizmeti hesaba otomatik olarak ikincil bir bölge atar. Hizmet daha sonra, birincil bölgeden ikincil bölgeye hesap verilerini sürekli olarak yedekler. Birincil ve ikincil bölgelerin tam listesi [İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure Eşli Bölgeler'](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)de bulunabilir. 
+Coğrafi çoğaltma, Azure Otomasyonu hesaplarında standarttır. Hesabınızı ayarlarken bir birincil bölge seçersiniz. İç otomasyon coğrafi çoğaltma hizmeti, hesaba otomatik olarak bir ikincil bölge atar. Hizmet daha sonra birincil bölgedeki hesap verilerini ikincil bölgeye sürekli olarak yedekler. Birincil ve ikincil bölgelerin tam listesi [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşlenmiş bölgeler '](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)de bulunabilir. 
 
-Otomasyon coğrafi çoğaltma hizmeti tarafından oluşturulan yedekleme, Otomasyon varlıklarının, yapılandırmalarının ve benzerlerinin tam bir kopyasıdır. Birincil bölge aşağı iner ve veri kaybederse bu yedekleme kullanılabilir. Birincil bölgeye ait verilerin kaybolması olası durumlarda, Microsoft bu verileri kurtarmaya çalışır. Şirket birincil verileri kurtaramazsa, otomatik hata yı kullanır ve Azure aboneliğiniz aracılığıyla durumu size bildirir. 
+Automation coğrafi çoğaltma hizmeti tarafından oluşturulan yedekleme, Otomasyon varlıklarının, yapılandırmaların ve benzeri tam bir kopyasıdır. Bu yedekleme, birincil bölge aşağı gittiğinde ve verileri kaybederse kullanılabilir. Birincil bir bölgenin verilerinin kaybedilmesi olası olmayan olayda, Microsoft bunu kurtarmaya çalışır. Şirket birincil verileri kurtaramaz, otomatik yük devretme kullanır ve Azure aboneliğinizde bu durumu bilgilendirir. 
 
-Bölgesel bir hata olduğunda Otomasyon coğrafi çoğaltma hizmetine doğrudan dış müşteriler erişemez. Bölgesel arızalar sırasında Otomasyon yapılandırmasını ve runbook'ları korumak istiyorsanız:
+Bir bölgesel hata varsa, Otomasyon coğrafi çoğaltma hizmetine doğrudan dış müşteriler erişemez. Bölgesel hatalarda Otomasyon yapılandırmasını ve Runbook 'larını sürdürmek istiyorsanız:
 
-1. Birincil Otomasyon hesabınızın coğrafi bölgesiyle eşleştirmek için ikinci bir bölge seçin.
+1. Birincil Otomasyon hesabınızın coğrafi bölgesiyle eşleştirmek için bir ikincil bölge seçin.
 
 2. İkincil bölgede bir Otomasyon hesabı oluşturun.
 
-3. Birincil hesapta, runbook'larınızı komut dosyası dosyaları olarak dışa aktarın.
+3. Birincil hesapta, runbook 'larınızı betik dosyası olarak dışarı aktarın.
 
-4. Runbook'ları ikincil bölgedeki Otomasyon hesabınıza aktarın.
+4. Runbook 'ları ikincil bölgedeki Otomasyon hesabınıza aktarın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Otomasyonu'nda güvenli varlıklar hakkında daha fazla bilgi edinmek için [Azure Otomasyonu'nda güvenli varlıkları şifrele'ye](automation-secure-asset-encryption.md)bakın.
+* Azure Automation 'da güvenli varlıklar hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da güvenli varlıkları şifreleme](automation-secure-asset-encryption.md).
 
-* Coğrafi çoğaltma hakkında daha fazla bilgi edinmek [için, bkz.](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)
+* Coğrafi çoğaltma hakkında daha fazla bilgi edinmek için bkz. [etkin coğrafi çoğaltma oluşturma ve kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).

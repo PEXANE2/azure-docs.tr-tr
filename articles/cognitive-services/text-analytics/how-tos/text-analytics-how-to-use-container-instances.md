@@ -1,7 +1,7 @@
 ---
-title: Azure Kapsayıcı Örneklerini Çalıştır - Metin Analizi
+title: Azure Container Instances çalıştırma Metin Analizi
 titleSuffix: Azure Cognitive Services
-description: Metin analizi kapsayıcılarını Azure Kapsayıcı Örneği'ne dağıtın ve bir web tarayıcısında test edin.
+description: Metin analizi kapsayıcılarını Azure Container Instance 'a dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e4b61c6fe2f62745d0f5268221cbb5c84803eb10
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876476"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Azure Kapsayıcı Örneklerine Metin Analizi kapsayıcısı dağıtma
+# <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Azure Container Instances Metin Analizi kapsayıcısını dağıtma
 
-Bilişsel Hizmetler [Metin Analizi][install-and-run-containers] kapsayıcısını Azure [Kapsayıcı Örneklerine][container-instances]nasıl dağıtabileceğinizi öğrenin. Bu yordam, bir Metin Analizi kaynağının oluşturulmasına, ilişkili bir Sentiment Analysis görüntüsünün oluşturulmasına ve ikisinin bir tarayıcıdan bu orkestrasyonunu uygulama yeteneğini örneklemektedir. Kapsayıcıların kullanılması, geliştiricilerin dikkatini altyapı yönetiminden uygulama geliştirmeye odaklanmak yerine uzaklaştırabilir.
+Bilişsel Hizmetler [metin analizi][install-and-run-containers] kapsayıcısını Azure [Container Instances][container-instances]'a dağıtmayı öğrenin. Bu yordam, bir Metin Analizi kaynağın oluşturulmasını, ilişkili bir Yaklaşım Analizi görüntüsünün oluşturulmasını ve bir tarayıcıdan bu iki düzenleme yapma özelliğini de bir şekilde uygulayabilir. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği kullanın. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+* Bir Azure aboneliği kullanın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -37,7 +37,7 @@ Bilişsel Hizmetler [Metin Analizi][install-and-run-containers] kapsayıcısın�
 
 [!INCLUDE [Verify the Language Detection container instance](../includes/verify-language-detection-container.md)]
 
-#### <a name="sentiment-analysis"></a>[Duygusallık Analizi](#tab/sentiment)
+#### <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment)
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
@@ -45,8 +45,8 @@ Bilişsel Hizmetler [Metin Analizi][install-and-run-containers] kapsayıcısın�
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-* Daha fazla [Bilişsel Hizmet Kapsayıcısı](../../cognitive-services-container-support.md) Kullanın
-* Metin [Analizi ne bağlı servisini](../vs-text-connected-service.md) kullanın
+* Daha fazla bilişsel [Hizmetler kapsayıcısı](../../cognitive-services-container-support.md) kullanın
+* [Metin analizi bağlı hizmetini](../vs-text-connected-service.md) kullanma
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

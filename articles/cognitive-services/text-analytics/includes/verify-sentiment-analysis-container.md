@@ -1,7 +1,7 @@
 ---
-title: Duyarlılık Analizi konteyner örneğini doğrulayın
+title: Yaklaşım Analizi kapsayıcı örneğini doğrulama
 titleSuffix: Azure Cognitive Services
-description: Duyarlılık Analizi konteyner örneğini nasıl doğrulayatılabildiğini öğrenin.
+description: Yaklaşım Analizi kapsayıcı örneğini doğrulamayı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,22 +10,22 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: c9b5411c044bb45d284cac0d30705c2b3d40ccd0
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876474"
 ---
-### <a name="verify-the-sentiment-analysis-container-instance"></a>Duyarlılık Analizi konteyner örneğini doğrulayın
+### <a name="verify-the-sentiment-analysis-container-instance"></a>Yaklaşım Analizi kapsayıcı örneğini doğrulama
 
-1. Genel **Bakış** sekmesini seçin ve IP adresini kopyalayın.
-1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcının ana sayfası görüntülenir, bu da kapsayıcının çalıştığını bilmenizi sağlar.
+1. **Genel bakış** sekmesini SEÇIN ve IP adresini kopyalayın.
+1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcının ana sayfası görüntülenir ve bu da kapsayıcının çalıştığını bilmenizi sağlar.
 
-    ![Çalıştığını doğrulamak için kapsayıcı giriş sayfasını görüntüleyin](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![Çalıştığını doğrulamak için kapsayıcı giriş sayfasını görüntüleme](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. Kapsayıcının Swagger sayfasına gitmek için **Servis API Açıklama** bağlantısını seçin.
+1. Kapsayıcının Swagger sayfasına gitmek için **hizmet API 'Si açıklaması** bağlantısını seçin.
 
-1. **POST** API'lerden herhangi birini seçin ve **Tazyit'i**seçin. Parametreler, bu örnek girişi içeren görüntülenir:
+1. **Post** API 'lerinden birini seçin ve **dene**' yi seçin. Parametreler, bu örnek girişi içeren görüntülenir:
 
     ```json
     {
@@ -63,13 +63,13 @@ ms.locfileid: "80876474"
     }
     ```
 
-1. **Set showStats** için `true`.
+1. **Showstats** öğesini olarak `true`ayarlayın.
 
-1. Metnin duyarlılığını belirlemek için **Yürüt'ü** seçin.
+1. Metnin yaklaşımını belirlemek için **Yürüt** ' ü seçin.
 
-    Konteynerde paketlenmiş olan model 0 ile 1 arasında değişen bir skor üretir, 0 negatif duygu ve 1 pozitif duygudur.
+    Kapsayıcıda paketlenmiş model, 0 ile 1 arasında değişen bir puan üretir; burada 0 negatif yaklaşım ve 1 pozitif yaklaşım olur.
 
-    Döndürülen JSON yanıtı güncelleştirilmiş metin girişi için duyarlılık içerir:
+    Döndürülen JSON yanıtı, güncelleştirilmiş metin girişi için yaklaşım içerir:
 
     ```json
     {
@@ -93,4 +93,4 @@ ms.locfileid: "80876474"
     }
     ```
 
-Artık yanıt yükü json verilerinin belgesini `id` özgün istek yük belgesiyle `id`ilişkilendirebiliriz. Daha fazla `0.98` puan çok olumlu bir duygu gösterir.
+Artık yanıt yükünün JSON verilerinin belgesini `id` özgün istek yükü belgesiyle `id`ilişkilendirebiliriz. Daha büyük bir yaklaşım, `0.98` çok fazla pozitif bir yaklaşım olduğunu gösterir.

@@ -1,28 +1,28 @@
 ---
 title: Düzeltilebilir bir ilke dağıtma
-description: Bir müşteriyi Azure'a devredilen kaynak yönetimine nasıl bağlayıp kaynaklarına kendi kiracınız aracılığıyla erişilmesine ve yönetilmesine izin vermeyi öğrenin.
+description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 ms.date: 10/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985176"
 ---
-# <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Devredilen abonelik içinde düzeltilebilen bir ilke dağıtma
+# <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Temsilci bir abonelik içinde düzeltilebilir bir ilke dağıtın
 
-[Azure Deniz Feneri,](../overview.md) hizmet sağlayıcıların devredilen bir abonelik içinde ilke tanımları oluşturmasına ve bu tanımlamaları oluşturmasına olanak tanır. Ancak, bir [düzeltme görevi](../../governance/policy/how-to/remediate-resources.md) kullanan ilkeleri dağıtmak için (diğer bir deyişle, [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) veya [değişiklik](../../governance/policy/concepts/effects.md#modify) efekti ile ilkeler), müşteri kiracı yönetilen bir [kimlik](../../active-directory/managed-identities-azure-resources/overview.md) oluşturmanız gerekir. Bu yönetilen kimlik, şablonu ilke içinde dağıtmak için Azure İlkesi tarafından kullanılabilir. Bu senaryoyu etkinleştirmek için gereken adımlar vardır, hem Azure temsilci kaynak yönetimi için müşteriye bindiğinizde hem de ilkenin kendisini dağıtırken.
+[Azure ışıklı kullanım](../overview.md) , hizmet sağlayıcılarının, temsilci bir abonelik içinde ilke tanımları oluşturmalarına ve düzenlemesine izin verir. Ancak, bir [Düzeltme görevi](../../governance/policy/how-to/remediate-resources.md) (yani, [Deployifnotexists](../../governance/policy/concepts/effects.md#deployifnotexists) veya [değişiklik](../../governance/policy/concepts/effects.md#modify) etkisi olan ilkeler) kullanan ilkeleri dağıtmak için, müşteri kiracısında [yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md) oluşturmanız gerekir. Bu yönetilen kimlik, şablonu ilke içinde dağıtmak için Azure Ilkesi tarafından kullanılabilir. Bu senaryoyu etkinleştirmek için, hem Azure tarafından atanan kaynak yönetimine ilişkin müşteriyi eklediğinizde hem de ilkeyi dağıtırken gereken adımlar vardır.
 
-## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Müşteri kiracısında yönetilen bir kimliğe roller atayabilecek bir kullanıcı oluşturma
+## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Müşteri kiracısında yönetilen bir kimliğe roller atayabilecek bir kullanıcı oluşturun
 
-Azure temsilcikaynak yönetimi için bir müşteriye bindiğinizde, yönetici kiracınızdaki kullanıcıları, kullanıcı gruplarını ve hizmet ilkelerini tanımlayan ve müşteri kiracısında ki devredilen kaynaklara erişebilecek bir parametre dosyasıyla birlikte bir [Azure Kaynak Yöneticisi şablonu](onboard-customer.md#create-an-azure-resource-manager-template) kullanırsınız. Parametreler dosyanızda, bu kullanıcıların her birine **(principalId)** erişim düzeyini tanımlayan yerleşik bir [rol](../../role-based-access-control/built-in-roles.md) **(roleDefinitionId)** atanır.
+Azure tarafından atanan kaynak yönetimi için bir müşteri eklediğinizde, yönetim kiracınızdaki kullanıcıları, Kullanıcı gruplarını ve hizmet sorumlularını, müşteri kiracısında Temsilcili kaynaklara erişebilecek şekilde tanımlayan bir parametreler dosyası ile birlikte bir [Azure Resource Manager şablonu](onboard-customer.md#create-an-azure-resource-manager-template) kullanırsınız. Parametreleriniz dosyasında, bu kullanıcıların (**PrincipalId**) her birine erişim düzeyini tanımlayan [yerleşik bir rol](../../role-based-access-control/built-in-roles.md) (**roledefinitionıd**) atanır.
 
-Bir **principalId'in** müşteri kiracısında yönetilen bir kimlik oluşturmasına izin vermek için, **rolünüDefinitionId'i** **Kullanıcı Erişim Yöneticisi'ne**ayarlamanız gerekir. Bu rol genellikle desteklenmese de, bu özel senaryoda kullanılabilir ve bu izine sahip kullanıcıların yönetilen kimliklere bir veya daha fazla özel yerleşik rol atamasına olanak sağlar. Bu **roller, devredilen RoleDefinitionIds** özelliğinde tanımlanır. Kullanıcı Erişim Yöneticisi veya Sahibi dışında herhangi bir yerleşik rolü buraya ekleyebilirsiniz.
+**PrincipalId** 'nin müşteri kiracısında yönetilen bir kimlik oluşturmasına izin vermek Için, **roledefinitionıd** değerini **Kullanıcı erişimi Yöneticisi**olarak ayarlamanız gerekir. Bu rol genellikle desteklenmekle birlikte, bu özel senaryoda kullanılabilir ve bu izne sahip kullanıcıların yönetilen kimliklere bir veya daha fazla yerleşik rol atamasını sağlar. Bu roller, **Delegatedrotadefinitionıds** özelliğinde tanımlanmıştır. Kullanıcı erişimi Yöneticisi veya sahibi dışında, burada herhangi bir yerleşik rolü ekleyebilirsiniz.
 
-Müşteri gemiye bindikten sonra, bu yetkilendirmede oluşturulan **principalId,** bu yerleşik rolleri müşteri kiracısında yönetilen kimliklere atayabilecektir. Ancak, normalde Kullanıcı Erişim Yöneticisi rolüyle ilişkili başka izinleri olmayacaktır.
+Müşteri eklendi olduktan sonra, bu yetkilendirmede oluşturulan **PrincipalId** , bu yerleşik rolleri müşteri kiracısındaki yönetilen kimliklere atayabilecektir. Ancak, normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izinleri olmayacaktır.
 
-Aşağıdaki örnekte, Kullanıcı Erişim Yöneticisi rolüne sahip bir **principalId** gösterilmektedir. Bu kullanıcı, müşteri kiracısında yönetilen kimliklere iki yerleşik rol atayabilir: Katılımcı ve Log Analytics Katılımcısı.
+Aşağıdaki örnekte, Kullanıcı erişimi yönetici rolüne sahip olacak bir **PrincipalId** gösterilmektedir. Bu Kullanıcı, müşteri kiracısında yönetilen kimliklere iki yerleşik rol atayabilecektir: katkıda bulunan ve Log Analytics katkıda bulunan.
 
 ```json
 {
@@ -36,15 +36,15 @@ Aşağıdaki örnekte, Kullanıcı Erişim Yöneticisi rolüne sahip bir **princ
 }
 ```
 
-## <a name="deploy-policies-that-can-be-remediated"></a>Düzeltilebilen ilkeleri dağıtma
+## <a name="deploy-policies-that-can-be-remediated"></a>Düzeltilenebilir ilkeleri dağıtma
 
-Kullanıcıyı yukarıda açıklandığı gibi gerekli izinlerle oluşturduktan sonra, bu kullanıcı düzeltme görevlerini kullanan müşteri kiracısında ilkeleri dağıtabilir.
+Yukarıda açıklanan izinlerle Kullanıcı oluşturduktan sonra, bu kullanıcı, müşteri kiracısında düzeltme görevleri kullanan ilkeler dağıtabilir.
 
-Örneğin, bu örnekte gösterildiği gibi, müşteri kiracısında Azure Anahtar Kasası kaynaklarında tanılamayı etkinleştirmek [istediğinizi](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)varsayalım. Bu senaryoyu etkinleştirmek için uygun izinlere sahip (yukarıda açıklandığı gibi) yönetici kiracıdaki bir kullanıcı, bir [Azure Kaynak Yöneticisi şablonu](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) dağıtacak.
+Örneğin, bu [örnekte](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)gösterildiği gibi, müşteri kiracısındaki Azure Key Vault kaynaklarında tanılamayı etkinleştirmek istediğinizi varsayalım. Yönetim kiracısındaki bir kullanıcı uygun izinlerle (yukarıda açıklandığı gibi), bu senaryoyu etkinleştirmek için bir [Azure Resource Manager şablonu](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) dağıtır.
 
-Devralınan bir abonelikle kullanılacak ilke atamasını oluşturmanın şu anda Azure portalında değil, API'ler aracılığıyla yapılması gerektiğini unutmayın. Bunu yaparken, **apiVersion** **2019-04-01-önizleme**, yeni **temsilciManagedIdentityResourceId** özelliği ni içeren olarak ayarlanmalıdır. Bu özellik, müşteri kiracısında bulunan yönetilen bir kimliği (Azure temsilci kaynak yönetimine dahil edilmiş bir abonelik veya kaynak grubuna) eklemenize olanak tanır.
+Temsilci olarak kullanılacak ilke atamasının, Azure portal değil, API 'Ler aracılığıyla yapılması gerektiğini unutmayın. Bunu yaparken, **Apiversion** 'ın yeni **Delegatedmanagedıdentityresourceıd** özelliğini içeren **2019-04-01-Preview**olarak ayarlanması gerekir. Bu özellik, müşteri kiracısında bulunan yönetilen bir kimliği (Azure tarafından atanan kaynak yönetimine eklendi bir abonelik veya kaynak grubu) eklemenize olanak tanır.
 
-Aşağıdaki örnek, **bir temsilciManagedIdentityResourceId**ile bir rol atama gösterir.
+Aşağıdaki örnek, bir **Delegatedmanagedıdentityresourceıd**ile bir rol atamasını gösterir.
 
 ```json
 "type": "Microsoft.Authorization/roleAssignments",
@@ -62,9 +62,9 @@ Aşağıdaki örnek, **bir temsilciManagedIdentityResourceId**ile bir rol atama 
 ```
 
 > [!TIP]
-> Benzer bir [örnek,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) devredilen bir aboneye etiket ekleyen veya kaldıran (değişiklik efektini kullanarak) bir ilkenin nasıl dağıtılsüreceğini göstermek için kullanılabilir.
+> [Benzer bir örnek](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) , bir etiketi (değiştirme efektini kullanarak) temsilci bir aboneliğe ekleyen veya kaldıran bir ilkenin nasıl dağıtılacağını göstermek için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [İlkesi](../../governance/policy/index.yml)hakkında bilgi edinin.
-- Azure [kaynakları için yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)hakkında bilgi edinin.
+- [Azure ilkesi](../../governance/policy/index.yml)hakkında bilgi edinin.
+- [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)hakkında bilgi edinin.

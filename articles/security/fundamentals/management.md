@@ -1,6 +1,6 @@
 ---
 title: Azure’da uzaktan yönetim güvenliğini artırma | Microsoft Docs
-description: Bu makalede, bulut hizmetleri, sanal makineler ve özel uygulamalar da dahil olmak üzere Microsoft Azure ortamlarını yönetirken uzaktan yönetim güvenliğini artırmaya yönelik adımlar açıklanmaktadır.
+description: Bu makalede, bulut Hizmetleri, sanal makineler ve özel uygulamalar dahil Microsoft Azure ortamlarını yönetirken uzaktan yönetim güvenliğini geliştirme adımları ele alınmaktadır.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80981316"
 ---
 # <a name="security-management-in-azure"></a>Azure’da Güvenlik Yönetimi
@@ -119,7 +119,7 @@ Uzak Masaüstü Ağ geçidi, güvenlik gereksinimlerini uygulayan ilke tabanlı 
 Genel olarak, bulutla kullanıma yönelik olarak yönetici iş istasyonlarının güvenliğini sağlamaya yardımcı olmak, şirket içi iş istasyonları için kullanılan uygulamalara benzerdir. Örneğin, en aza indirilmiş yapı ve kısıtlayıcı izinler. Bulut yönetiminin bazı benzersiz yönleri uzaktan ya da bant dışı kurumsal yönetime daha yakındır. Bunlar kimlik bilgilerini, gelişmiş güvenlikli uzaktan erişimin ve tehdit algılama ve yanıtın denetlenmesini içerir.
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
-Yönetim araçlarına ve denetim erişim isteklerine erişim için kaynak IP adreslerini sınırlamak amacıyla Azure oturum açma kısıtlamalarını kullanabilirsiniz. Azure'un yönetim istemcilerini (iş istasyonları ve/veya uygulamaları) tanımlamasına yardımcı olmak için, hem SMAPI'yi (Windows PowerShell cmdlets gibi müşteri tarafından geliştirilen araçlar aracılığıyla) hem de Azure portalı, TLS/SSL sertifikalarına ek olarak istemci tarafı yönetim sertifikalarının yüklenmesini gerektirecek şekilde yapılandırabilirsiniz. Yönetici erişiminin multi-factor authentication gerektirmesine de öneriyoruz.
+Yönetim araçlarına ve denetim erişim isteklerine erişim için kaynak IP adreslerini sınırlamak amacıyla Azure oturum açma kısıtlamalarını kullanabilirsiniz. Azure 'un yönetim istemcilerini (iş istasyonları ve/veya uygulamalar) tanımlamasına yardımcı olmak için, TLS/SSL sertifikalarına ek olarak hem SMAPI 'yi (Windows PowerShell cmdlet 'leri gibi müşteri tarafından geliştirilen araçlar aracılığıyla) ve istemci tarafı yönetim sertifikalarının yüklenmesini gerektiren Azure portal yapılandırabilirsiniz. Yönetici erişiminin multi-factor authentication gerektirmesine de öneriyoruz.
 
 Azure’a dağıttığınız bazı uygulamalar veya hizmetler hem son kullanıcı hem de yönetici erişimi için kendi kimlik doğrulama mekanizmalarına sahip olabilirken, diğerleri Azure AD’den faydalanabilir. Kimlik bilgilerini Active Directory Federasyon Hizmetleri (AD FS) aracılığıyla birleştirip birleştirmemenize bağlı olarak, dizin eşitlemeyi kullanmak veya bulutta yalnızca kullanıcı hesaplarını tutmak, [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium’un parçası) kullanmak kaynaklar arasında kimlik yaşam döngülerini yönetmenize yardımcı olur.
 
@@ -138,7 +138,7 @@ Sıkı erişim denetimleri içeren ilke uygulama yönetici eylemlerini yönetebi
 ## <a name="client-configuration"></a>İstemci yapılandırması
 Sağlamlaştırılmış iş istasyonu için üç temel yapılandırma öneririz. Bunlar arasındaki en büyük fark, tüm seçeneklerde benzer güvenlik profili sağlarken, maliyet, kullanılabilirlik ve erişilebilirliktir. Aşağıdaki tabloda her birinin avantajları ve risklerinin kısa bir çözümlemesini sağlar. (“kurumsal PC” ifadesinin, rollerden bağımsız olarak, tüm etki alanı kullanıcıları için dağıtılabilecek standart masaüstü PC yapılandırması anlamına geldiğini unutmayın.)
 
-| Yapılandırma | Yararları | Simgeler |
+| Yapılandırma | Avantajlar | Simgeler |
 | --- | --- | --- |
 | Tek başına sağlamlaştırılmış iş istasyonu |Sıkı denetlenen iş istasyonu |ayrılmış masaüstü bilgisayarlar için daha yüksek maliyet |
 | - | Azaltılmış uygulama açıkları riski |Artan yönetim çabası |
@@ -176,7 +176,7 @@ Bir iş istasyonu kilitlenmiş olduğu için diğer genel güvenlik gereksinimle
 
 | Yapmayın | Yapın |
 | --- | --- |
-| Yönetici erişimi veya diğer sırlar için kimlik bilgilerini e-postayla e-postayla gönder (örneğin, TLS/SSL veya yönetim sertifikaları) |Hesap adlarını ve parolaları sesli olarak ileterek gizliliği koruyun (ancak bunları sesli posta olarak depolamayın), istemci/sunucu sertifikalarının uzaktan yüklemesini gerçekleştirin (şifreli oturum yoluyla), korumalı ağ paylaşımından indirin ya da taşınabilir medya kullanarak el ile dağıtın. |
+| Yönetici erişimi veya diğer gizli dizileri için e-posta kimlik bilgileri verme (örneğin, TLS/SSL veya yönetim sertifikaları) |Hesap adlarını ve parolaları sesli olarak ileterek gizliliği koruyun (ancak bunları sesli posta olarak depolamayın), istemci/sunucu sertifikalarının uzaktan yüklemesini gerçekleştirin (şifreli oturum yoluyla), korumalı ağ paylaşımından indirin ya da taşınabilir medya kullanarak el ile dağıtın. |
 | - | Yaşam döngüsü yönetimi sertifikanızı proaktif olarak yönetin. |
 | Hesap parolalarını şifrelenmemiş ya da karma olmayan uygulama depolama biriminde depolamayın (örneğin, elektronik tablolarda, SharePoint sitelerinde ya da dosya paylaşımlarında). |Güvenlik yönetim ilkeleri ve sistem sağlamlaştırma ilkeleri oluşturun ve bunları geliştirme ortamınıza uygulayın. |
 | - | Azure SSL/TLS sitelerine uygun erişim sağlamak için [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) sertifikası sabitleme kuralları kullanın. |

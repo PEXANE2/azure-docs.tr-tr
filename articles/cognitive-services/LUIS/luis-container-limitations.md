@@ -1,7 +1,7 @@
 ---
-title: Konteyner sınırlamaları - LUIS
+title: Kapsayıcı sınırlamaları-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Desteklenen LUIS kapsayıcı dilleri.
+description: Desteklenen LUSıS kapsayıcı dilleridir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879250"
 ---
-# <a name="language-understanding-luis-container-limitations"></a>Dil Anlama (LUIS) konteyner sınırlamaları
+# <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUSıS) kapsayıcı sınırlamaları
 
-LUIS konteynerler birkaç önemli sınırlamalar vardır. Desteklenmeyen bağımlılıklardan desteklenen dil alt kümesine kadar bu makalede bu kısıtlamalar ayrıntılarıyla anlatılır.
+LUıN kapsayıcıları bazı önemli sınırlamalara sahiptir. Desteklenmeyen bağımlılıklardan, desteklenen dillerin bir alt kümesine, bu makalede bu kısıtlamalar ayrıntılı olarak anlatılmaktadır.
 
 ## <a name="supported-dependencies-for-latest-container"></a>Kapsayıcı için `latest` desteklenen bağımlılıklar
 
-[//build/ 2019'da](https://news.microsoft.com/build2019/)piyasaya sürülen en son LUIS konteyneri aşağıdakileri destekleyecektir:
+[Nbuild/2019](https://news.microsoft.com/build2019/)tarihinde yayınlanan en son Lua kapsayıcısı şunları destekleyecektir:
 
-* [Yeni önceden oluşturulmuş etki alanları:](luis-reference-prebuilt-domains.md)Bu kurumsal odaklı etki alanları varlıklar, örnek söyleyerek ve desenler içerir. Bu etki alanlarını kendi kullanımınız için genişletin.
+* [Yeni önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md): Bu kurumsal odaklı etki alanları varlıklar, örnek söylerin ve desenleri içerir. Bu etki alanlarını kendi kullanım için genişletin.
 
 ## <a name="unsupported-dependencies-for-latest-container"></a>Kapsayıcı için `latest` desteklenmeyen bağımlılıklar
 
-[Kapsayıcı için dışa aktarmak için,](luis-container-howto.md#export-packaged-app-from-luis)DESTEKLENMEYEn bağımlılıkları LUIS uygulamanızdan kaldırmanız gerekir. Kapsayıcı için dışa aktarmayı denediğinizde, LUIS portalı kaldırmanız gereken bu desteklenmeyen özellikleri bildirir.
+[Kapsayıcıyı dışarı aktarmak](luis-container-howto.md#export-packaged-app-from-luis)IÇIN, lusıs uygulamanızdan desteklenmeyen bağımlılıkları kaldırmanız gerekir. Kapsayıcıyı dışarı aktarmaya çalıştığınızda, Lua portalı, kaldırmanız gereken bu desteklenmeyen özellikleri raporlar.
 
-Aşağıdaki bağımlılıklardan herhangi birini **içermiyorsa** BIR LUIS uygulamasını kullanabilirsiniz:
+Aşağıdaki bağımlılıklardan herhangi birini **içermiyorsa** bir Luo uygulaması kullanabilirsiniz:
 
-Desteklenmeyen uygulama yapılandırmaları|Ayrıntılar|
+Desteklenmeyen uygulama yapılandırması|Ayrıntılar|
 |--|--|
-|Desteklenmeyen konteyner kültürleri| Felemenkçe (`nl-NL`)<br>Japonca`ja-JP`( )<br>Almanca sadece [1.0.2 belirteç](luis-language-support.md#custom-tokenizer-versions)ile desteklenir.|
+|Desteklenmeyen kapsayıcı kültürleri| Felemenkçe (`nl-NL`)<br>Japonca (`ja-JP`)<br>Almanca yalnızca [1.0.2 belirteç ayırıcı](luis-language-support.md#custom-tokenizer-versions)ile desteklenir.|
 |Tüm kültürler için desteklenmeyen varlıklar|Tüm kültürler için [KeyPhrase](luis-reference-prebuilt-keyphrase.md) önceden oluşturulmuş varlık|
-|İngilizce (`en-US`) kültürü için desteklenmeyen varlıklar|[GeographyV2](luis-reference-prebuilt-geographyV2.md) önceden oluşturulmuş varlıklar|
-|Konuşma astarı|Dışa bağımlılıklar kapsayıcıda desteklenmez.|
-|Yaklaşım analizi|Dışa bağımlılıklar kapsayıcıda desteklenmez.|
-|Bing yazım denetimi|Dışa bağımlılıklar kapsayıcıda desteklenmez.|
+|Ingilizce (`en-US`) kültürü için desteklenmeyen varlıklar|[GeographyV2](luis-reference-prebuilt-geographyV2.md) önceden oluşturulmuş varlıklar|
+|Konuşma primi|Kapsayıcıda dış bağımlılıklar desteklenmiyor.|
+|Yaklaşım analizi|Kapsayıcıda dış bağımlılıklar desteklenmiyor.|
+|Bing yazım denetimi|Kapsayıcıda dış bağımlılıklar desteklenmiyor.|
 
 ## <a name="languages-supported"></a>Desteklenen diller
 
-LUIS kapsayıcıları, LUIS tarafından [desteklenen dillerin](luis-language-support.md#languages-supported) bir alt kümesini destekler. LUIS kapları aşağıdaki dillerdeki söyleyiyi anlayama yeteneğine sahiptir:
+LUSıS kapsayıcıları, LUYA tarafından [desteklenen dillerin](luis-language-support.md#languages-supported) bir alt kümesini destekler. LUıN kapsayıcıları, aşağıdaki dillerdeki söyleri anlayabilme yeteneğine sahiptir:
 
-| Dil | Yerel Ayar | Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | İfade listesi önerileri | **[Metin analizi](../text-analytics/language-support.md)<br>(Duygu ve<br>Anahtar Kelimeler)|
+| Dil | Yerel Ayar | Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | Tümcecik listesi önerileri | **[Metin Analizi](../text-analytics/language-support.md)<br>(Yaklaşım ve<br>Lerimi|
 |--|--|:--:|:--:|:--:|:--:|
-| Amerikan İngilizcesi | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Amerikan Ingilizcesi | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | Fransızca (Fransa) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Fransızca (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
 | Almanca |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Hintçe | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | İtalyanca |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| Korece |`ko-KR` | ✔️ | ❌ | ❌ | *Yalnızca anahtar tümcecik* |
-| Portekizce (Brezilya) |`pt-BR` | ✔️ | ✔️ | ✔️ | tüm alt kültürler |
+| Korece |`ko-KR` | ✔️ | ❌ | ❌ | Yalnızca *anahtar tümceciği* |
+| Portekizce (Brezilya) |`pt-BR` | ✔️ | ✔️ | ✔️ | tüm alt kültürler değil |
 | İspanyolca (İspanya) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | İspanyolca (Meksika)|`es-MX` | ❌ | ❌ |✔️|✔️|
-| Türkçe | `tr-TR` |✔️| ❌ | ❌ | *Sadece duygusallık* |
+| Türkçe | `tr-TR` |✔️| ❌ | ❌ | *Yalnızca yaklaşım* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

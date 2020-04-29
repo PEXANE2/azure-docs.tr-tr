@@ -1,7 +1,7 @@
 ---
-title: Application Insights'ta hata ayıklama ve sorun giderme makinesi öğrenme boru hatları
+title: Application Insights hata ayıklama ve makine öğrenimi ardışık düzenleri sorunlarını giderme
 titleSuffix: Azure Machine Learning
-description: Eğitim ve toplu puanlama ardışık hatlarınıza günlüğe kaydetme ekleyin ve Uygulama Öngörüleri'nde günlüğe kaydedilmiş sonuçları görüntüleyin.
+description: Eğitim ve Batch Puanlama işlem hatlarınıza günlük kaydı ekleyin ve günlüğe kaydedilen sonuçları Application Insights görüntüleyin.
 services: machine-learning
 author: sanpil
 ms.author: sanpil
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982370"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Application Insights'ta hata ayıklama ve sorun giderme makinesi öğrenme boru hatları
+# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Application Insights hata ayıklama ve makine öğrenimi ardışık düzenleri sorunlarını giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-[OpenCensus](https://opencensus.io/quickstart/python/) python kitaplığı, günlükleri komut dosyalarınızdan Uygulama Öngörüleri'ne yönlendirmek için kullanılabilir. Ardışık ardışık işlerden günlükleri tek bir yerde toplama, sorgular oluşturmanıza ve sorunları tanılamanıza olanak tanır. Uygulama Öngörüleri'ni kullanmak, zaman içinde günlükleri izlemenize ve akışlar arasında ardışık bilgi girişlerini karşılaştırmanıza olanak sağlar.
+[Opencensus](https://opencensus.io/quickstart/python/) Python kitaplığı, günlükleri betiklerinizde Application Insights yönlendirmek için kullanılabilir. İşlem hattı çalıştırmalarının tek bir yerde toplamı toplama, sorgular oluşturmanıza ve sorunları tanılamanıza olanak sağlar. Application Insights kullanmak zaman içinde günlükleri izlemenize ve işlem hattı günlüklerini çalışma genelinde karşılaştırmanıza imkan tanır.
 
-Günlüklerinizin bir kez yer olması, özel durumların ve hata iletilerinin geçmişini sağlar. Application Insights Azure Uyarıları ile tümleştirdiğinden, Uygulama Öngörüleri sorgularını temel alan uyarılar da oluşturabilirsiniz.
+Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geçmişini sağlar. Application Insights Azure uyarıları ile tümleştirilebildiğinden, Application Insights sorgularını temel alan uyarılar da oluşturabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Azure Machine Learning](./how-to-manage-workspace.md) çalışma alanı oluşturmak ve ilk [ardışık hattınızı oluşturmak](./how-to-create-your-first-pipeline.md) için adımları izleyin
-* Azure Machine Learning SDK'yı yüklemek için [geliştirme ortamınızı yapılandırın.](./how-to-configure-environment.md)
-* [OpenCensus Azure MonitörÜ İhracatçı](https://pypi.org/project/opencensus-ext-azure/) paketini yerel olarak yükleyin:
+* [Azure Machine Learning](./how-to-manage-workspace.md) çalışma alanı oluşturma ve [ilk işlem hattınızı oluşturma](./how-to-create-your-first-pipeline.md) adımlarını izleyin
+* Azure Machine Learning SDK 'Yı yüklemek için [geliştirme ortamınızı yapılandırın](./how-to-configure-environment.md) .
+* [Opencensus Azure Izleyici Dışarı Aktarıcı](https://pypi.org/project/opencensus-ext-azure/) paketini yerel olarak yükler:
   ```python
   pip install opencensus-ext-azure
   ```
-* Uygulama [Öngörüleri örneği](../azure-monitor/app/opencensus-python.md) oluşturun (bu doküman, kaynak için bağlantı dizesini alma yla ilgili bilgileri de içerir)
+* Bir [Application Insights örneği](../azure-monitor/app/opencensus-python.md) oluşturun (Bu belge, kaynak için bağlantı dizesini alma hakkında bilgi de içerir)
 
 ## <a name="getting-started"></a>Başlarken
 
-Bu bölüm, Bir Azure Machine Learning ardışık bölümünden OpenCensus'ı kullanmaya özel bir giriştir. Ayrıntılı bir eğitim için [OpenCensus Azure Monitör İhracatçıları](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+Bu bölüm, Azure Machine Learning bir işlem hattından OpenCensus kullanımına özgü bir giriş niteliğindedir. Ayrıntılı bir öğretici için bkz. [Opencensus Azure Izleyici Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Azure ML Ardışık Alanınıza Bir PythonScriptStep ekleyin. [RunConfiguration'ınızı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) opencensus-ext-azure'a bağımlılıkla yapılandırın. Ortam değişkenini `APPLICATIONINSIGHTS_CONNECTION_STRING` yapılandırın.
+Azure ML ardışık düzenine bir PythonScriptStep ekleyin. [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 'nizi opencensus-ext-Azure bağımlılığı ile yapılandırın. `APPLICATIONINSIGHTS_CONNECTION_STRING` Ortam değişkenini yapılandırın.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -72,14 +72,14 @@ pipeline = Pipeline(workspace=ws, steps=[sample_step])
 pipeline.submit(experiment_name="Logging_Experiment")
 ```
 
-`sample_step.py` adlı bir dosya oluşturun. Günlükleri Uygulama Öngörüleri'ne yönlendirmek için AzureLogHandler sınıfını aktarın. Python Günlük kitaplığını da almanız gerekir.
+`sample_step.py` adlı bir dosya oluşturun. Günlükleri Application Insights dolaştırmak için AzureLogHandler sınıfını içeri aktarın. Ayrıca, Python günlük kitaplığını içeri aktarmanız gerekir.
 
 ```python
 from opencensus.ext.azure.log_exporter import AzureLogHandler
 import logging
 ```
 
-Ardından, Python logger'ına AzureLogHandler'ı ekleyin.
+Sonra, AzureLogHandler öğesini Python günlükçüsü öğesine ekleyin.
 
 ```python
 logger = logging.getLogger(__name__)
@@ -91,34 +91,34 @@ logger.addHandler(AzureLogHandler())
 logger.warning("I will be sent to Application Insights")
 ```
 
-## <a name="logging-with-custom-dimensions"></a>Özel Boyutlarla Günlüğe Kaydetme
+## <a name="logging-with-custom-dimensions"></a>Özel boyutlarla günlüğe kaydetme
  
-Varsayılan olarak, Uygulama Öngörüleri'ne iletilen günlükler, çalıştırılan veya denemeyi izlemek için yeterli içeriğe sahip olmaz. Günlükleri tanılama sorunları için eyleme geçirilebilir hale getirmek için ek alanlar gerekir. 
+Varsayılan olarak, Application Insights iletilen Günlükler çalıştırmaya veya denemeye geri dönmek için yeterli içeriğe sahip olmayacaktır. Günlükleri sorunları tanılamak için kullanılabilir hale getirmek için ek alanlar gereklidir. 
 
-Bu alanları eklemek için, günlük iletisine bağlam sağlamak için Özel Boyutlar eklenebilir. Bir örnek, bir kişinin aynı ardışık ardışık çalışmada birden çok adımda günlükleri görüntülemek istemesidir.
+Bu alanları eklemek için, bir günlük iletisine bağlam sağlamak üzere özel boyutlar eklenebilir. Bir örnek, birisi aynı işlem hattı çalıştırmasında birden çok adımda günlükleri görüntülemek istediğinde bir örnektir.
 
-Özel Boyutlar anahtar değeri (dize, dize olarak depolanan) çiftleri bir sözlük oluşturan. Sözlük daha sonra Application Insights'a gönderilir ve sorgu sonuçlarında sütun olarak görüntülenir. Bireysel boyutları [sorgu parametreleri](#additional-helpful-queries)olarak kullanılabilir.
+Özel boyutlar, anahtar-değer (dize, dize) çiftleri sözlüğü yapar. Sözlük daha sonra Application Insights gönderilir ve sorgu sonuçlarında sütun olarak görüntülenir. Tek tek boyutları [sorgu parametresi](#additional-helpful-queries)olarak kullanılabilir.
 
-### <a name="helpful-context-to-include"></a>İçerecek Yararlı Bağlam
+### <a name="helpful-context-to-include"></a>Dahil etmek için yararlı bağlam
 
-| Alan                          | Muhakeme/Örnek                                                                                                                                                                       |
+| Alan                          | Reasoning/örnek                                                                                                                                                                       |
 |--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| parent_run_id                  | Her adıma dalmak yerine tüm adımlar için zaman içinde günlükleri görmek için aynı parent_run_id sahip olanların günlüklerini sorgulayabilir                                        |
-| step_id                        | Bir sorunun dar bir kapsamla nerede oluştuğunu tek tek adıma göre görmek için aynı step_id sahip olanların günlüklerini sorgulayabilir mi?                                                        |
-| step_name                      | Zaman içinde adım performansını görmek için günlükleri sorgulayabilir. Ayrıca portal UI içine dalış olmadan son çalışır için bir step_id bulmak için yardımcı olur                                          |
-| experiment_name                | Zaman içinde deneme performansını görmek için günlükler arasında sorgu yapabilir. Ayrıca portal UI içine dalış olmadan son çalışır için bir parent_run_id veya step_id bulmanıza yardımcı olur                   |
-| run_url                 | Doğrudan geri soruşturma için çalıştırmak için bir bağlantı sağlayabilir. |
+| parent_run_id                  | , Her bir adıma geçmek zorunda kalmak yerine, tüm adımlarda zaman içindeki günlükleri görmek için aynı parent_run_id günlükleri sorgulayabilir.                                        |
+| step_id                        | , Tek tek adımla bir dar kapsam ile bir sorunun nerede oluştuğunu görmek için günlükleri aynı step_id sorgulayabilir.                                                        |
+| step_name                      | , Zaman içinde adım performansını görmek için günlükleri sorgulayabilir. Ayrıca, Portal Kullanıcı arabirimine sorulmadan son çalıştırmalar için bir step_id bulmaya de yardımcı olur                                          |
+| experiment_name                | Zaman içinde deneme performansını görmek için günlüklerde sorgulama yapabilir. Ayrıca, Portal Kullanıcı arabirimine girmeden, son çalıştırmalar için bir parent_run_id veya step_id bulmaya yardımcı olur                   |
+| run_url                 | , Araştırma için doğrudan çalıştırmaya doğrudan geri bağlantı sağlayabilir. |
 
-**Diğer yararlı alanlar**
+**Diğer faydalı alanlar**
 
-Bu alanlar ek kod enstrümantasyonu gerektirebilir ve çalıştırılaç bağlamı tarafından sağlanmaz.
+Bu alanlar ek kod araçları gerektirebilir ve çalıştırma bağlamı tarafından sağlanmamıştır.
 
-| Alan                   | Muhakeme/Örnek                                                                                                                                                                                                           |
+| Alan                   | Reasoning/örnek                                                                                                                                                                                                           |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| build_url/build_version | Dağıtmak için CI/CD kullanıyorsanız, bu alan günlükleri adım ve ardışık işlem mantığını sağlayan kod sürümüyle ilişkilendirebilir. Bu bağlantı, sorunları tanılamaya veya belirli özelliklere (günlük/metrik değerler) sahip modelleri tanımlamaya daha fazla yardımcı olabilir |
-| run_type                       | Farklı model türleri veya eğitim ve puanlama çalıştırmaları arasında ayrım yapabilir |
+| build_url/build_version | Dağıtmak için CI/CD kullanılıyorsa, bu alan günlükleri adım adım ve ardışık düzen mantığını sağlayan kod sürümüyle ilişkilendirebilir. Bu bağlantı, sorunları tanılamaya veya belirli nitelikleri olan modelleri (günlük/ölçüm değerleri) belirlemenize yardımcı olabilir |
+| run_type                       | Farklı model türleri veya eğitim ve Puanlama çalıştırmaları arasında ayrım yapabilir |
 
-### <a name="creating-a-custom-dimensions-dictionary"></a>Özel Boyutlar sözlüğü oluşturma
+### <a name="creating-a-custom-dimensions-dictionary"></a>Özel boyut sözlüğü oluşturma
 
 ```python
 from azureml.core import Run
@@ -138,33 +138,33 @@ custom_dimensions = {
 logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
 ```
 
-## <a name="opencensus-python-logging-considerations"></a>OpenCensus Python günlük hususlar
+## <a name="opencensus-python-logging-considerations"></a>OpenCensus Python günlüğe kaydetme konuları
 
-OpenCensus AzureLogHandler, Python günlüklerini Uygulama Öngörüleri'ne yönlendirmek için kullanılır. Sonuç olarak, Python günlük nüansları dikkate alınmalıdır. Bir logger oluşturulduğunda, varsayılan günlük düzeyi ne kadardır ve günlükleri bu düzeyden daha büyük veya eşit gösterir. Python günlük özelliklerini kullanmak için iyi bir referans [Günlük Yemek Kitabı](https://docs.python.org/3/howto/logging-cookbook.html)olduğunu.
+OpenCensus AzureLogHandler, Python günlüklerini Application Insights yönlendirmek için kullanılır. Sonuç olarak, Python günlüğü nusları göz önünde bulundurulmalıdır. Bir günlükçü oluşturulduğunda, varsayılan bir günlük düzeyi olur ve bu düzeyden daha büyük veya bu düzeye eşit olan günlükleri gösterir. Python günlüğü özelliklerinin kullanılması için iyi bir başvuru, [günlük tanıtım rehberini](https://docs.python.org/3/howto/logging-cookbook.html)kullanmaktır.
 
-OpenCensus kitaplığı için `APPLICATIONINSIGHTS_CONNECTION_STRING` ortam değişkeni gereklidir. Düz metin bağlantı dizelerinin etrafından geçmesini önlemek için bu ortam değişkenini bir boru hattı parametresi olarak geçirmek yerine ayarlamanızı öneririz.
+OpenCensus kitaplığı için `APPLICATIONINSIGHTS_CONNECTION_STRING` ortam değişkeni gereklidir. Düz metin bağlantı dizelerinin etrafında geçiş yapmak için bu ortam değişkenini bir işlem hattı parametresi olarak geçirmek yerine ayarlamayı öneririz.
 
-## <a name="querying-logs-in-application-insights"></a>Uygulama Öngörüleri'nde günlükleri sorgulama
+## <a name="querying-logs-in-application-insights"></a>Application Insights Günlükler sorgulanıyor
 
-Uygulama Öngörüleri'ne yönlendirilen günlükler 'izlemeler' veya 'özel durumlar' altında gösterilecek. Zaman pencerenizi boru hattı çalıştırınızı içerecek şekilde ayarladıknızdan emin olun.
+Application Insights yönlendirilen Günlükler ' izlemeler ' veya ' özel durumlar ' altında görünür. Zaman hattınızı dahil etmek için zaman pencerenizi ayarladığınızdan emin olun.
 
-![Uygulama Öngörüleri Sorgu sonucu](./media/how-to-debug-pipelines-application-insights/traces-application-insights-query.png)
+![Sorgu sonucu Application Insights](./media/how-to-debug-pipelines-application-insights/traces-application-insights-query.png)
 
-Application Insights'taki sonuç, günlük iletisini ve düzeyini, dosya yolunu ve kod satır numarasını gösterir. Ayrıca dahil herhangi bir özel boyutları gösterecektir. Bu resimde, customDimensions sözlüğü önceki [kod örneğindeki](#creating-a-custom-dimensions-dictionary)anahtar/değer çiftlerini gösterir.
+Application Insights sonucu, günlük iletisini ve düzeyini, dosya yolunu ve kod satırı numarasını gösterir. Ayrıca, dahil edilen özel boyutları da gösterir. Bu görüntüde, customDimensions sözlüğü önceki [kod örneğindeki](#creating-a-custom-dimensions-dictionary)anahtar/değer çiftlerini gösterir.
 
-### <a name="additional-helpful-queries"></a>Ek yararlı sorgular
+### <a name="additional-helpful-queries"></a>Ek faydalı sorgular
 
-Aşağıdaki sorgulardan bazıları 'customDimensions.Level' kullanır. Bu önem düzeyleri Python günlüğünün başlangıçta gönderildiği düzeye karşılık gelir. Ek sorgu bilgileri için [Azure Monitör günlük sorgularına](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)bakın.
+Aşağıdaki bazı sorgular ' customDimensions. Level ' kullanır. Bu önem düzeyleri, Python günlüğünün ilk olarak gönderildiği düzeye karşılık gelir. Ek sorgu bilgileri için bkz. [Azure Izleyici günlük sorguları](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
 
 | Kullanım örneği                                                               | Sorgu                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Belirli özel boyut için günlük sonuçları, örneğin 'parent_run_id' | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
-| Son 7 gün içinde yapılan tüm eğitimlerin sonuçlarını günlüğe kaydetme                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |
-| Son 7 güne ait önem düzeyi Hatası ile sonuçları günlüğe kaydetme              | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR'                     |
-| Son 7 gün içinde önem düzeyi Hatası ile günlük sonuçlarının sayısı     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR' \| <br>summarize count()</pre> |
+| Belirli özel boyut için günlük sonuçları, örneğin ' parent_run_id ' | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
+| Son 7 gün içinde tüm eğitime yönelik günlük sonuçları                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |
+| Son 7 gün içindeki severityLevel hatası ile sonuçları günlüğe kaydet              | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR'                     |
+| Son 7 gün içinde severityLevel hatası ile günlük sonuçlarının sayısı     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR' \| <br>summarize count()</pre> |
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Uygulama Öngörüleri örneğinde günlükleri olduktan sonra, sorgu sonuçlarına göre [Azure Monitor uyarılarını](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) ayarlamak için kullanılabilir.
+Application Insights Örneğinizde günlüklerinizi aldıktan sonra, [Azure izleyici uyarılarını](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) sorgu sonuçlarına göre ayarlamak için kullanılabilirler.
 
-Ayrıca, ek öngörüler için sorgulardan sonuçları Azure [Panosuna](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) ekleyebilirsiniz.
+Ayrıca, ek Öngörüler için sorgulardan sonuçları bir [Azure panosuna](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) ekleyebilirsiniz.

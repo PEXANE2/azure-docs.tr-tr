@@ -1,8 +1,8 @@
 ---
-title: Azure Medya Hizmetleri v3 ile iOS için Çevrimdışı FairPlay Akışı
-description: Bu konu genel bir bakış sağlar ve http Live Streaming (HLS) içeriğinizi çevrimdışı modda Apple FairPlay ile dinamik olarak şifrelemek için Azure Medya Hizmetlerinin nasıl kullanılacağını gösterir.
+title: İOS için Azure Media Services v3 ile çevrimdışı FairPlay Akışı
+description: Bu konu, genel bir bakış sağlar ve Apple FairPlay ile HTTP Canlı Akışı (HLS) içeriğinizi çevrimdışı modda dinamik olarak şifrelemek üzere Azure Media Services nasıl kullanacağınızı gösterir.
 services: media-services
-keywords: HLS, DRM, FairPlay Streaming (FPS), Çevrimdışı, iOS 10
+keywords: HLS, DRM, FairPlay Akışı (FPS), çevrimdışı, iOS 10
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -16,64 +16,64 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887223"
 ---
-# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Medya Hizmetleri v3 ile iOS için Çevrimdışı FairPlay Akışı
+# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>İOS için Media Services v3 ile çevrimdışı FairPlay Akışı
 
- Azure Medya Hizmetleri, şunları kapsayan iyi tasarlanmış bir dizi [içerik koruma hizmeti](https://azure.microsoft.com/services/media-services/content-protection/) sağlar:
+ Azure Media Services, aşağıdakileri kapsayan iyi tasarlanmış bir [içerik koruma hizmetleri](https://azure.microsoft.com/services/media-services/content-protection/) kümesi sağlar:
 
 - Microsoft PlayReady
 - Google Widevine
     
-    Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+    Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 - Apple FairPlay
 - AES-128 şifrelemesi
 
-Dijital haklar yönetimi (DRM)/Gelişmiş Şifreleme Standardı (AES) içeriğin şifrelemesi, çeşitli akış protokolleri için istek üzerine dinamik olarak gerçekleştirilir. DRM lisansı/AES şifre çözme anahtar teslim hizmetleri de Media Services tarafından sağlanmaktadır.
+Dijital hak yönetimi (DRM)/Gelişmiş Şifreleme Standardı (AES) içerik şifrelemesi, çeşitli akış protokolleri için istek üzerine dinamik olarak gerçekleştirilir. DRM lisansı/AES şifre çözme anahtar teslim hizmetleri de Media Services tarafından sağlanır.
 
-Çeşitli akış protokolleri üzerinden çevrimiçi akış için içeriği korumanın yanı sıra, korumalı içerik için çevrimdışı mod da sık sık istenen bir özelliktir. Aşağıdaki senaryolar için çevrimdışı mod desteği gereklidir:
+Çeşitli akış protokollerinde çevrimiçi akış için içeriğin korunmasının yanı sıra, korumalı içerik için çevrimdışı mod da çoğunlukla istenen bir özelliktir. Çevrimdışı mod desteği aşağıdaki senaryolar için gereklidir:
 
-* Seyahat sırasında olduğu gibi internet bağlantısı olmadığında oynatma.
-* Bazı içerik sağlayıcılar, bir ülke/bölge sınırının ötesinde DRM lisans teslimine izin verebilir. Kullanıcılar ülke/bölge dışında seyahat ederken içeriği izlemek istiyorlarsa, çevrimdışı indirme gereklidir.
-* Bazı ülkelerde/bölgelerde, internet kullanılabilirliği ve/veya bant genişliği hala sınırlıdır. Kullanıcılar, tatmin edici bir görüntüleme deneyimi için yeterince yüksek bir çözünürlükte içeriği izleyebilmek için önce indirmeyi seçebilir. Bu durumda, sorun genellikle ağ kullanılabilirliği değil, sınırlı ağ bant genişliğidir. Over-the-top (OTT)/çevrimiçi video platformu (OVP) sağlayıcıları çevrimdışı mod desteği talep.
+* Seyahat sırasında olduğu gibi Internet bağlantısı kullanılamadığında kayıttan yürütme.
+* Bazı içerik sağlayıcıları, bir ülke/bölge kenarlığının ötesinde DRM lisans teslimine izin verebilir. Kullanıcılar, ülke/bölge dışına yolculukta içerik izlemek istiyorsam, çevrimdışı indirme gerekir.
+* Bazı ülkelerde/bölgelerde internet kullanılabilirliği ve/veya bant genişliği hala sınırlı olur. Kullanıcılar, tatmin edici bir görüntüleme deneyimi için yeterince yüksek bir çözünürlükte içerik izleyebilmek üzere önce indirmeyi seçebilir. Bu durumda, sorun genellikle ağ kullanılabilirliği ancak sınırlı ağ bant genişliği değildir. Üst düzey (OTT)/çevrimiçi video platformu (OVP) sağlayıcıları, çevrimdışı mod desteği ister.
 
-Bu makale, iOS 10 veya daha yeni çalıştıran aygıtları hedefleyen FairPlay Streaming (FPS) çevrimdışı mod desteğini kapsar. Bu özellik, macOS'ta watchOS, tvOS veya Safari gibi diğer Apple platformları için desteklenmez.
+Bu makalede iOS 10 veya üstünü çalıştıran cihazları hedefleyen FairPlay streaming (FPS) çevrimdışı mod desteği ele alınmaktadır. Bu özellik, macOS 'ta watchOS, tvOS veya Safari gibi diğer Apple platformları için desteklenmez.
 
 > [!NOTE]
-> Çevrimdışı DRM, yalnızca içeriği karşıdan yüklediğinizde lisans için tek bir istekte bulunmak için faturalandırılır. Hatalar faturalandırılmez.
+> Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-FairPlay için çevrimdışı DRM'yi bir iOS 10+ cihazda uygulamadan önce:
+İOS 10 + cihazında FairPlay için çevrimdışı DRM uygulamadan önce:
 
-* FairPlay için çevrimiçi içerik korumayı inceleyin: 
+* FairPlay için çevrimiçi içerik korumasını gözden geçirin: 
 
     - [Apple FairPlay lisansı gereksinimleri ve yapılandırması](fairplay-license-overview.md)
     - [DRM dinamik şifreleme ve lisans teslim hizmetini kullanma](protect-with-drm.md)
-    - Çevrimiçi FPS akışının yapılandırması içeren bir .NET örneği: [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
-* FPS SDK'yı Apple Geliştirici Ağı'ndan edinin. FPS SDK iki bileşeniçerir:
+    - Çevrimiçi FPS akışı yapılandırmasını içeren bir .NET örneği: [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
+* Apple geliştirici ağından FPS SDK 'sını edinin. FPS SDK 'Sı iki bileşen içerir:
 
-    - Anahtar Güvenlik Modülü (KSM), istemci örnekleri, bir belirtim ve bir dizi test vektörü içeren FPS Server SDK.
-    - D işlev belirtimi içeren FPS Dağıtım Paketi ve FPS Sertifikası, müşteriye özel özel anahtar ve Uygulama Gizli Anahtarının nasıl üretileceklerine ilişkin yönergeler. Apple, FPS Dağıtım Paketini yalnızca lisanslı içerik sağlayıcılarına verir.
-* Klon https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git. 
+    - Anahtar güvenlik modülünü (KSM), istemci örneklerini, bir belirtimi ve bir test vektörü kümesini içeren FPS sunucu SDK 'Sı.
+    - G işlevi belirtimini içeren FPS dağıtım paketi, FPS sertifikası, müşteriye özgü özel anahtar ve uygulama gizli anahtarı oluşturma yönergeleriyle birlikte. Apple, FPS dağıtım paketini yalnızca lisanslı içerik sağlayıcılarına yayınlar.
+* Kopyala https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git. 
 
-    FairPlay yapılandırmaları eklemek için [.NET'i kullanarak DRM ile](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) Şifrele'deki kodu değiştirmeniz gerekir.  
+    FairPlay yapılandırması eklemek için [.NET kullanarak DRM Ile şifrelemeden](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) kodu değiştirmeniz gerekir.  
 
-## <a name="configure-content-protection-in-azure-media-services"></a>Azure Medya Hizmetlerinde içerik korumayı yapılandırma
+## <a name="configure-content-protection-in-azure-media-services"></a>Azure Media Services 'da içerik korumasını yapılandırma
 
-[GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) yönteminde aşağıdakileri yapın:
+[Getorcreatecontentkeypolicyasync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) yönteminde şunları yapın:
 
-FairPlay ilkesi seçeneğini yapılandıran koduaçıklamadan ayırın:
+FairPlay ilkesi seçeneğini yapılandıran kodun açıklamasını kaldırın:
 
 ```csharp
 ContentKeyPolicyFairPlayConfiguration fairplayConfig = ConfigureFairPlayPolicyOptions();
 ```
 
-Ayrıca, ContentKeyPolicyOptions listesine CBCS ContentKeyPolicyOption ekleyen kodun yorumsuzluğu
+Ayrıca, CIBH ContentKeyPolicyOption öğesini ContentKeyPolicyOptions listesine ekleyen kodun açıklamasını kaldırın
 
 ```csharp
 options.Add(
@@ -85,9 +85,9 @@ options.Add(
     });
 ```
 
-## <a name="enable-offline-mode"></a>Çevrimdışı modu etkinleştirme
+## <a name="enable-offline-mode"></a>Çevrimdışı modunu etkinleştir
 
-Çevrimdışı modu etkinleştirmek için, özel bir StreamingPolicy oluşturun ve [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563)bir StreamingLocator oluştururken adını kullanın.
+Çevrimdışı modu etkinleştirmek için özel bir StreamingPolicy oluşturun ve [Createstreaminglocatokısync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563)Içinde StreamingLocator oluştururken adını kullanın.
  
 ```csharp
 CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
@@ -116,24 +116,24 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
 
 ```
 
-Artık Medya Hizmetleri hesabınız çevrimdışı FairPlay lisansları sunacak şekilde yapılandırıldı.
+Artık Media Services hesabınız, çevrimdışı FairPlay lisansları sunacak şekilde yapılandırılmıştır.
 
-## <a name="sample-ios-player"></a>Örnek iOS Oynatıcı
+## <a name="sample-ios-player"></a>Örnek iOS oynatıcı
 
-FPS çevrimdışı mod desteği yalnızca iOS 10 ve sonraki saatlerde kullanılabilir. FPS Server SDK (sürüm 3.0 veya sonraki) FPS çevrimdışı modu için belge ve örnek içerir. Özellikle, FPS Server SDK (sürüm 3.0 veya sonraki sürüm) çevrimdışı modile ilgili aşağıdaki iki öğeyi içerir:
+FPS 'nin çevrimdışı mod desteği yalnızca iOS 10 ve üzeri sürümlerde kullanılabilir. FPS sunucu SDK 'Sı (sürüm 3,0 veya üzeri), belge ve FPS çevrimdışı modu için örnek içerir. Özellikle, FPS sunucu SDK 'Sı (sürüm 3,0 veya üzeri), çevrimdışı modla ilgili aşağıdaki iki öğeyi içerir:
 
-* Belge: "FairPlay Streaming ve HTTP Live Streaming ile Çevrimdışı Oynatma." Apple, 14 Eylül 2016. FPS Server SDK sürüm 4.0'da bu belge ana FPS belgesinde birleştirilir.
-* Örnek kod: \FairPlay Streaming Server SDK sürüm 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\. HLSCatalog örnek uygulamasında, çevrimdışı mod özelliklerini uygulamak için aşağıdaki kod dosyaları kullanılır:
+* Belge: "FairPlay streaming ve HTTP Canlı Akışı ile çevrimdışı oynatma." 14 Eylül 2016, elma. FPS, sunucu SDK 'Sı 4,0 sürümünde bu belge ana FPS belgesi ile birleştirilmiştir.
+* Örnek kod: HLSCatalog örneği (Apple 'ın FPS sunucu SDK 'sının parçası), \FairPlay Streaming Server SDK sürümü 3.1 \ geliştirme Ment\client\ HLSCatalog_With_FPS \Hldağılmış Alog\. HLSCatalog örnek uygulamasında, çevrimdışı mod özelliklerini uygulamak için aşağıdaki kod dosyaları kullanılır:
 
-    - AssetPersistenceManager.swift code file: AssetPersistenceManager bu örnekte nasıl yapılacağını gösteren ana sınıftır:
+    - AssetPersistenceManager. Swift kod dosyası: AssetPersistenceManager, bu örnekte nasıl yapılacağını gösteren ana sınıftır:
 
-        - İndirmeleri başlatmak ve iptal etmek ve aygıtlardan varolan varlıkları silmek için kullanılan API'ler gibi HLS akışlarını indirmeyi yönetin.
+        - İndirme işlemini başlatmak ve iptal etmek ve mevcut varlıkları cihazları silmek için kullanılan API 'Ler gibi HLS akışlarını indirmeyi yönetin.
         - İndirme ilerlemesini izleyin.
-    - AssetListTableViewController.swift ve AssetListTableViewCell.swift kod dosyaları: AssetListTableViewController bu örneğin ana arabirimidir. Bir indirmeyi oynatmak, indirmek, silmek veya iptal etmek için örneğin kullanabileceği varlıkların bir listesini sağlar. 
+    - AssetListTableViewController. Swift ve AssetListTableViewCell. Swift kod dosyaları: AssetListTableViewController bu örneğin ana arabirimidir. Örneğin, bir indirmeyi yürütmek, indirmek, silmek veya iptal etmek için kullanabileceği varlıkların bir listesini sağlar. 
 
-Bu adımlar, çalışan bir iOS oynatıcının nasıl ayarlandığını gösterir. FPS Server SDK sürüm 4.0.1'deki HLSCatalog örneğinden başladığınızı varsayarsak, aşağıdaki kod değişikliklerini yapın:
+Bu adımlarda çalışan bir iOS yürütücüsünün nasıl ayarlanacağı gösterilmektedir. FPS sunucu SDK 'Sı 4.0.1 sürümündeki HLSCatalog örneğinden başlattığınız varsayılarak aşağıdaki kod değişikliklerini yapın:
 
-HLSCatalog\Shared\Managers\ContentKeyDelegate.swift'te aşağıdaki `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` kodu kullanarak yöntemi uygulayın. "drmUr" HLS URL'ye atanmış bir değişken olsun.
+Hldağık\shared\managers\contentkeydelegate.exe içinde, aşağıdaki kodu kullanarak yöntemini `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` uygulayın. "DrmUr", HLS URL 'sine atanmış bir değişken olmasına izin verir.
 
 ```swift
     var ckcData: Data? = nil
@@ -166,7 +166,7 @@ HLSCatalog\Shared\Managers\ContentKeyDelegate.swift'te aşağıdaki `requestCont
     return ckcData
 ```
 
-HLSCatalog\Shared\Managers\ContentKeyDelegate.swift'te yöntemi `requestApplicationCertificate()`uygulayın. Bu uygulama, sertifikayı aygıta katıştırıp gömmediğinize (yalnızca ortak anahtar) veya sertifikayı web'de barındırıp barındırmadığınıza bağlıdır. Aşağıdaki uygulama, test örneklerinde kullanılan barındırılan uygulama sertifikasını kullanır. "Sertifika" uygulama sertifikasının URL'sini içeren bir değişken olsun.
+Hldağık\shared\managers\contentkeydelegate.exe içinde, yöntemini `requestApplicationCertificate()`uygulayın. Bu uygulama, sertifikayı aygıtla (yalnızca ortak anahtar) veya sertifikayı Web üzerinde barındırmanıza bağlı olarak değişir. Aşağıdaki uygulama, test örneklerinde kullanılan barındırılan uygulama sertifikasını kullanır. "CertUrl" ın uygulama sertifikasının URL 'sini içeren bir değişken olmasına izin verin.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -182,28 +182,28 @@ func requestApplicationCertificate() throws -> Data {
     }
 ```
 
-Son tümleşik test için hem video URL'si hem de uygulama sertifikası URL'si "Tümleşik Test" bölümünde verilmiştir.
+Son tümleşik test için hem video URL 'SI hem de uygulama sertifikası URL 'SI "tümleşik test" bölümünde verilmiştir.
 
-HLSCatalog\Shared\Resources\Streams.plist'te test video URL'nizi ekleyin. İçerik anahtarı kimliği için, benzersiz değer olarak skd protokolü ile FairPlay lisans edinme URL'sini kullanın.
+Hlstreaalog\shared\resources\streams.exe içinde, test video URL 'nizi ekleyin. İçerik anahtarı KIMLIĞI için, FairPlay lisans alımı URL 'sini, SKD protokolüyle benzersiz değer olarak kullanın.
 
-![Çevrimdışı FairPlay iOS Uygulama Akışları](media/offline-fairplay-for-ios/offline-fairplay-ios-app-streams.png)
+![Çevrimdışı FairPlay iOS uygulama akışları](media/offline-fairplay-for-ios/offline-fairplay-ios-app-streams.png)
 
-Kendi test video URL'nizi, FairPlay lisans edinme URL'nizi ve uygulama sertifikası URL'nizi kullanın. Veya test örnekleri içeren bir sonraki bölüme devam edebilirsiniz.
+Kendi test video URL 'nizi, FairPlay lisans alma URL 'sini ve bunları ayarladıysanız uygulama sertifikası URL 'nizi kullanın. Ya da test örneklerini içeren bir sonraki bölüme devam edebilirsiniz.
 
-## <a name="integrated-test"></a>Entegre test
+## <a name="integrated-test"></a>Tümleşik test
 
-Medya Hizmetleri'ndeki üç test örneği aşağıdaki üç senaryoyu kapsar:
+Media Services üç test örneği aşağıdaki üç senaryoyu kapsar:
 
-* FPS korumalı, video, ses ve alternatif ses parçası
-* FPS korumalı, video ve ses ile, ancak alternatif ses parçası
-* FPS korumalı, yalnızca video ve ses olmadan
+* FPS korumalı, video, ses ve alternatif ses izi ile
+* FPS korumalı, video ve ses ile, ancak alternatif ses parçası yok
+* FPS korumalı, yalnızca video ile ve ses olmadan
 
-Bu [örnekleri,](https://aka.ms/poc#22)azure web uygulamasında barındırılan ilgili uygulama sertifikasıyla bu demo sitesinde bulabilirsiniz.
-FPS Server SDK'nın sürüm 3 veya sürüm 4 örneğinde, bir ana çalma listesi alternatif ses içeriyorsa, çevrimdışı modda yalnızca ses çalar. Bu nedenle, alternatif ses şerit gerekir. Başka bir deyişle, daha önce listelenen ikinci ve üçüncü örnekler çevrimiçi ve çevrimdışı modda çalışır. Listelenen örnek, çevrimiçi akış düzgün çalışırken yalnızca çevrimdışı modda ses çalar.
+Bu örnek, bir Azure Web uygulamasında barındırılan ilgili uygulama sertifikasıyla [Bu tanıtım sitesinde](https://aka.ms/poc#22)bulabilirsiniz.
+FPS sunucu SDK 'sının sürüm 3 veya sürüm 4 örneğinde, ana çalma listesi alternatif ses içeriyorsa, çevrimdışı modda yalnızca ses çalar. Bu nedenle, alternatif sesi çıkarmanız gerekir. Diğer bir deyişle, daha önce listelenen ikinci ve üçüncü örnekler çevrimiçi ve çevrimdışı modda çalışır. İlk olarak listelenen örnek, çevrimiçi akış düzgün şekilde çalışırken yalnızca çevrimdışı modda ses çalar.
 
 ## <a name="faq"></a>SSS
 
-Sık sorulan sorulara bakın [sorun giderme ile yardımcı sağlar.](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)
+Bkz. [sık sorulan sorular sorun giderme hakkında yardım sağlar](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

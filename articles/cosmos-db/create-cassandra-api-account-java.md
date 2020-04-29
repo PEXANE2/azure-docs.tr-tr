@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Cosmos DB Cassandra API hesabı oluşturmak için Java uygulaması oluşturun'
-description: Bu öğretici, Cassandra API hesabı nın nasıl oluşturulup oluşturularak veritabanı nasıI yapılacağını (anahtar alanı olarak da adlandırılır) ve java uygulamasını kullanarak bu hesaba tablo eklemeyi gösterir.
+title: 'Öğretici: Azure Cosmos DB Cassandra API hesabı oluşturmak için Java uygulaması oluşturma'
+description: Bu öğreticide, bir Cassandra API hesabının nasıl oluşturulacağı, bir veritabanının nasıl ekleneceği (keyspace olarak da bilinir) ve bir Java uygulaması kullanılarak bu hesaba bir tablo nasıl ekleneceği gösterilmektedir.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -11,69 +11,69 @@ ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 971f705099ffec22599af83323e5e15d604c4bca
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80983016"
 ---
-# <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Öğretici: Anahtar/değer verilerini depolamak için bir Java uygulaması kullanarak Azure Cosmos DB'de Cassandra API hesabı oluşturun
+# <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Öğretici: anahtar/değer verilerini depolamak için bir Java uygulaması kullanarak Azure Cosmos DB Cassandra API hesabı oluşturma
 
-Geliştirici olarak, anahtar/değer çiftleri kullanan uygulamalarınız olabilir. Anahtar/değer verilerini depolamak için Azure Cosmos DB'deki Cassandra API hesabını kullanabilirsiniz. Bu öğretici, Azure Cosmos DB'de Cassandra API hesabı oluşturmak, veritabanı eklemek (anahtar alanı olarak da adlandırılır) ve tablo eklemek için Java uygulamasının nasıl kullanılacağını açıklar. Java uygulaması, kullanıcı kimliği, kullanıcı adı ve kullanıcı şehri gibi ayrıntıları içeren bir kullanıcı veritabanı oluşturmak için [Java sürücüsünü](https://github.com/datastax/java-driver) kullanır.  
+Bir geliştirici olarak, anahtar/değer çiftleri kullanan uygulamalarınız olabilir. Anahtar/değer verilerini depolamak için Azure Cosmos DB Cassandra API hesabı kullanabilirsiniz. Bu öğreticide, bir Java uygulamasını kullanarak Azure Cosmos DB bir Cassandra API hesabı oluşturma, bir veritabanı ekleme (keyspace olarak da adlandırılır) ve bir tablo ekleme açıklanır. Java uygulaması, Kullanıcı KIMLIĞI, Kullanıcı adı ve Kullanıcı şehri gibi ayrıntıları içeren bir kullanıcı veritabanı oluşturmak için [Java sürücüsünü](https://github.com/datastax/java-driver) kullanır.  
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
 > * Cassandra veritabanı hesabı oluşturma
 > * Hesabın bağlantı dizesini alma
-> * Bir Maven projesi ve bağımlılıkları oluşturma
+> * Maven projesi ve bağımlılıkları oluşturma
 > * Veritabanı ve tablo ekleme
 > * Uygulamayı çalıştırma
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-* Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bir hesap oluşturun. 
+* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun. 
 
-* [Java Geliştirme Kiti'nin (JDK)](/java/azure/jdk/?view=azure-java-stable)en son sürümünü alın. 
+* [Java Development Kit 'in (JDK)](/java/azure/jdk/?view=azure-java-stable)en son sürümünü alın. 
 
-* [Maven](https://maven.apache.org/) ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [kurun.](https://maven.apache.org/install.html) 
+* [Maven](https://maven.apache.org/) Ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [yükleyin](https://maven.apache.org/install.html) . 
   - Ubuntu’da Maven’i yüklemek için `apt-get install maven` komutunu çalıştırabilirsiniz. 
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma 
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın. 
 
-2. **Kaynak** > **Oluştur Veritabanları** > **Azure Cosmos DB'yi**seçin. 
+2. Azure Cosmos DB **kaynak** > **veritabanları** > **Azure Cosmos DB**oluştur ' u seçin. 
 
-3. Yeni **hesap** bölmesine, yeni Azure Cosmos hesabının ayarlarını girin. 
+3. **Yeni hesap** bölmesinde yeni Azure Cosmos hesabının ayarlarını girin. 
 
    |Ayar   |Önerilen değer  |Açıklama  |
    |---------|---------|---------|
-   |Kimlik   |   Benzersiz bir ad girin    | Bu Azure Cosmos hesabını tanımlamak için benzersiz bir ad girin. <br/><br/>cassandra.cosmosdb.azure.com, iletişim noktanızı oluşturmak için sağladığınız kimlikle ekliolduğundan, benzersiz ancak tanımlanabilir bir kimlik kullanın.         |
-   |API    |  Cassandra   |  API, oluşturulacak hesap türünü belirler. <br/> **Cassandra'yı**seçin, çünkü bu makalede Cassandra Query Language (CQL) sözdizimini kullanarak sorgulanabilecek geniş sütunlu bir veritabanı oluşturacaksınız.  |
+   |Kimlik   |   Benzersiz bir ad girin    | Bu Azure Cosmos hesabını tanımlamak için benzersiz bir ad girin. <br/><br/>Cassandra.cosmosdb.azure.com, iletişim noktanızı oluşturmak için sağladığınız KIMLIĞE eklendiği için benzersiz ancak tanımlanabilir bir KIMLIK kullanın.         |
+   |API    |  Cassandra   |  API, oluşturulacak hesap türünü belirler. <br/> **Cassandra**' ı seçin, bu makalede Cassandra sorgu DILI (CQL) sözdizimi kullanılarak sorgulanabilecek geniş sütunlu bir veritabanı oluşturacaksınız.  |
    |Abonelik    |  Aboneliğiniz        |  Bu Azure Cosmos hesabı için kullanmak istediğiniz Azure aboneliğini seçin.        |
    |Kaynak Grubu   | Ad girin    |  **Yeni oluştur**’u seçin ve ardından hesabınız için yeni bir kaynak grubu adı girin. Kolaylık olması için kimliğinizle aynı adı kullanabilirsiniz.    |
-   |Konum    |  Kullanıcılarınıza en yakın bölgeyi seçin    |  Azure Cosmos hesabınızı barındıracak coğrafi konumu seçin. Verilere en hızlı erişimi sağlamak için kullanıcılarınıza en yakın konumu kullanın.    |
+   |Konum    |  Kullanıcılarınıza en yakın bölgeyi seçin    |  Azure Cosmos hesabınızın barındırılacağı coğrafi konumu seçin. Verilere en hızlı erişim sağlamak için kullanıcılarınıza en yakın konumu kullanın.    |
 
    ![Portalla hesap oluşturma](./media/create-cassandra-api-account-java/create-account.png)
 
-4. **Oluştur'u**seçin. <br/>Hesabın oluşturulması birkaç dakika sürer. Kaynak oluşturulduktan sonra, Dağıtım **başarılı** bildirimini portalın sağ tarafında görebilirsiniz.
+4. **Oluştur**’u seçin. <br/>Hesabın oluşturulması birkaç dakika sürer. Kaynak oluşturulduktan sonra, portalın sağ tarafında **dağıtım başarılı** bildirimini görebilirsiniz.
 
 ## <a name="get-the-connection-details-of-your-account"></a>Hesabınızın bağlantı ayrıntılarını alma  
 
-Bağlantı dize bilgilerini Azure portalından alın ve Java yapılandırma dosyasına kopyalayın. Bağlantı dizesi, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır. 
+Azure portal bağlantı dizesi bilgilerini alın ve Java yapılandırma dosyasına kopyalayın. Bağlantı dizesi, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır. 
 
-1. Azure [portalından](https://portal.azure.com/)Azure Cosmos hesabınıza gidin. 
+1. [Azure Portal](https://portal.azure.com/)Azure Cosmos hesabınıza gidin. 
 
-2. Bağlantı **Dize** bölmesi açın.  
+2. **Bağlantı dizesi** bölmesini açın.  
 
 3. **TEMAS NOKTASI**, **BAĞLANTI NOKTASI**, **KULLANICI ADI** ve **BİRİNCİL PAROLA** değerlerini sonraki adımlarda kullanmak üzere kopyalayın.
 
 ## <a name="create-the-project-and-the-dependencies"></a>Projeyi ve bağımlılıkları oluşturma 
 
-Bu makalede kullandığınız Java örnek projesi GitHub'da barındırılır. Bu dokümandaki adımları çalıştırabilir veya [azure-cosmos-db-cassandra-java-getting-started-started](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started) deposundan örneği indirebilirsiniz. 
+Bu makalede kullandığınız Java örnek projesi GitHub ' da barındırılır. Bu belgedeki adımları çalıştırabilir veya örneği [Azure-Cosmos-DB-Cassandra-Java-alma-başlatma](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started) deposundan indirebilirsiniz. 
 
-Dosyaları indirdikten sonra, dosyaiçindeki bağlantı `java-examples\src\main\resources\config.properties` dize bilgilerini güncelleştirin ve çalıştırın.  
+Dosyaları indirdikten sonra, `java-examples\src\main\resources\config.properties` dosyadaki bağlantı dizesi bilgilerini güncelleştirin ve çalıştırın.  
 
 ```java
 cassandra_host=<FILLME_with_CONTACT POINT> 
@@ -82,7 +82,7 @@ cassandra_username=<FILLME_with_USERNAME>
 cassandra_password=<FILLME_with_PRIMARY PASSWORD> 
 ```
 
-Örneği sıfırdan oluşturmak için aşağıdaki adımları kullanın: 
+Sıfırdan örnek oluşturmak için aşağıdaki adımları kullanın: 
 
 1. Terminalden veya komut isteminden, Cassandra-demo adlı yeni bir Maven projesi oluşturun. 
 
@@ -92,29 +92,29 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
  
 2. `cassandra-demo` klasörünü bulun. Metin düzenleyicisi kullanarak, oluşturulmuş olan `pom.xml` dosyasını açın. 
 
-   [Pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) dosyasında gösterildiği gibi Cassandra bağımlılıklarını ekleyin ve projenizin gerektirdiği eklentileri oluşturun.  
+   [Pod. xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) dosyasında gösterildiği gibi, projeniz Için gereken Cassandra bağımlılıklarını ve yapı eklentilerini ekleyin.  
 
 3. `cassandra-demo\src\main` klasörünün altında `resources` adlı yeni bir klasör oluşturun.  Resources klasörünün altına config.properties ve log4j.properties dosyalarını ekleyin:
 
-   - [Config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/config.properties) dosyası, Cassandra API hesabının bağlantı bitiş noktasını ve anahtar değerlerini depolar. 
+   - [Config. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/config.properties) dosyası Cassandra API hesabının bağlantı uç noktasını ve anahtar değerlerini depolar. 
    
-   - [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/log4j.properties) dosyası, Cassandra API ile etkileşim için gereken günlük düzeyini tanımlar.  
+   - [Log4J. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/log4j.properties) dosyası Cassandra API etkileşimde bulunmak için gereken günlük düzeyini tanımlar.  
 
-4. Klasöre `src/main/java/com/azure/cosmosdb/cassandra/` göz atın. Cassandra klasörünün içinde `utils` adlı başka bir klasör oluşturun. Yeni klasörde Cassandra API hesabına bağlanmak için gereken yardımcı program sınıfları depolanır. 
+4. `src/main/java/com/azure/cosmosdb/cassandra/` Klasöre gidin. Cassandra klasörünün içinde `utils` adlı başka bir klasör oluşturun. Yeni klasörde Cassandra API hesabına bağlanmak için gereken yardımcı program sınıfları depolanır. 
 
-   Kümeyi oluşturmak ve Cassandra oturumlarını açıp kapatmak için [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) sınıfını ekleyin. Küme, Azure Cosmos DB'deki Cassandra API hesabına bağlanır ve erişmek için bir oturum döndürür. Config.properties dosyasından bağlantı dizesi bilgisini okumak için [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) sınıfını kullanın. 
+   Kümeyi oluşturmak ve Cassandra oturumlarını açıp kapatmak için [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) sınıfını ekleyin. Küme, Azure Cosmos DB Cassandra API hesabına bağlanır ve erişim için bir oturum döndürür. Config.properties dosyasından bağlantı dizesi bilgisini okumak için [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) sınıfını kullanın. 
 
-5. Java örneği, kullanıcı adı, kullanıcı kimliği ve kullanıcı şehri gibi kullanıcı bilgilerini içeren bir veritabanı oluşturur. Main işlevindeki kullanıcı ayrıntılarına erişmek için get ve set yöntemlerini tanımlamanız gerekir.
+5. Java örneği Kullanıcı adı, Kullanıcı KIMLIĞI ve Kullanıcı şehri gibi Kullanıcı bilgileri içeren bir veritabanı oluşturur. Main işlevindeki kullanıcı ayrıntılarına erişmek için get ve set yöntemlerini tanımlamanız gerekir.
  
-   Get ve Set yöntemleriyle `src/main/java/com/azure/cosmosdb/cassandra/` klasörün altında [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/User.java) sınıfı oluşturun. 
+   Get ve set yöntemleri ile `src/main/java/com/azure/cosmosdb/cassandra/` klasör altında bir [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/User.java) sınıfı oluşturun. 
 
 ## <a name="add-a-database-and-a-table"></a>Veritabanı ve tablo ekleme  
 
-Bu bölümde, CQL kullanarak veritabanı (keyspace) ve tablo nasıl ekleyeceğiniz açıklanmaktadır.
+Bu bölüm, CQL kullanarak bir veritabanının (keyspace) ve tablonun nasıl ekleneceğini açıklar.
 
 1. `src\main\java\com\azure\cosmosdb\cassandra` klasörünün altında `repository` adlı yeni bir klasör oluşturun. 
 
-2. Java `UserRepository` sınıfını oluşturun ve aşağıdaki kodu ekleyin: 
+2. `UserRepository` Java sınıfını oluşturun ve buna aşağıdaki kodu ekleyin: 
 
    ```java
    package com.azure.cosmosdb.cassandra.repository; 
@@ -161,7 +161,7 @@ Bu bölümde, CQL kullanarak veritabanı (keyspace) ve tablo nasıl ekleyeceğin
 
 3. `src\main\java\com\azure\cosmosdb\cassandra` klasörünü bulun ve `examples` adlı yeni bir alt klasör oluşturun.
 
-4. Java `UserProfile` sınıfını oluşturun. Bu sınıf, daha önce tanımladığınız createKeyspace ve createTable yöntemlerini çağıran main yöntemini içerir: 
+4. `UserProfile` Java sınıfını oluşturun. Bu sınıf, daha önce tanımladığınız createKeyspace ve createTable yöntemlerini çağıran main yöntemini içerir: 
 
    ```java
    package com.azure.cosmosdb.cassandra.examples; 
@@ -208,7 +208,7 @@ Bu bölümde, CQL kullanarak veritabanı (keyspace) ve tablo nasıl ekleyeceğin
 
 1. Bir komut istemi veya terminal penceresi açın. Aşağıdaki kod bloğunu yapıştırın. 
 
-   Bu kod, dizin (cd) projeyi oluşturduğunuz klasör yoluna değiştirir. Ardından hedef klasörde `cosmosdb-cassandra-examples.jar` dosyasını oluşturmak için `mvn clean install` komutunu çalıştırır. Son olarak, Java uygulamasını çalıştırır.
+   Bu kod, dizini (CD) projeyi oluşturduğunuz klasör yoluyla değiştirir. Ardından hedef klasörde `cosmosdb-cassandra-examples.jar` dosyasını oluşturmak için `mvn clean install` komutunu çalıştırır. Son olarak, Java uygulamasını çalıştırır.
 
    ```bash
    cd cassandra-demo
@@ -224,7 +224,7 @@ Bu bölümde, CQL kullanarak veritabanı (keyspace) ve tablo nasıl ekleyeceğin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Bir Java uygulamasını kullanarak Azure Cosmos DB'de bir Cassandra API hesabı, bir veritabanı ve bir tablo oluşturmayı öğrendiniz. Şimdi bir sonraki makaleye geçebilirsiniz:
+Bu öğreticide, bir Java uygulaması kullanarak Azure Cosmos DB, veritabanında ve tabloda bir Cassandra API hesabı oluşturmayı öğrendiniz. Şimdi bir sonraki makaleye geçebilirsiniz:
 
 > [!div class="nextstepaction"]
 > [Örnek verileri Cassandra API'si tablosuna yükleme](cassandra-api-load-data.md).

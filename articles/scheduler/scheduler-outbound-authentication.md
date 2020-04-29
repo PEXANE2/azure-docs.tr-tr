@@ -1,6 +1,6 @@
 ---
 title: Giden bağlantı kimlik doğrulaması
-description: Azure Zamanlayıcısı için giden kimlik doğrulamasını nasıl ayarlayıp kaldırılamayı öğrenin
+description: Azure Scheduler için giden kimlik doğrulamasını ayarlama veya kaldırma hakkında bilgi edinin
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,64 +9,64 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878978"
 ---
-# <a name="outbound-authentication-for-azure-scheduler"></a>Azure Zamanlayıcısı için giden kimlik doğrulaması
+# <a name="outbound-authentication-for-azure-scheduler"></a>Azure Scheduler için giden kimlik doğrulaması
 
 > [!IMPORTANT]
-> [Azure Logic Apps,](../logic-apps/logic-apps-overview.md) [kullanımdan kaldırılan](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Zamanlayıcısı'nın yerini alıyor. Zamanlayıcı'da ayarladığınız işlerle çalışmaya devam etmek için lütfen mümkün olan en kısa sürede [Azure Logic Apps'a geçirin.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [devre dışı bırakılmakta](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)olan Azure Scheduler 'ı değiştiriyor. Zamanlayıcı 'da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa sürede [Azure Logic Apps geçirin](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
 >
-> Zamanlayıcı artık Azure portalında kullanılamıyor, ancak işlerinizi ve iş koleksiyonlarınızı yönetebilmeniz için [ŞU anda REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlets'i](scheduler-powershell-reference.md) kullanılabilir durumda kalır.
+> Zamanlayıcı artık Azure portal kullanılamıyor, ancak iş ve iş koleksiyonlarınızı yönetebilmeniz için [REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlet 'leri](scheduler-powershell-reference.md) Şu anda kullanılabilir durumda kalır.
 
-Azure Zamanlayıcısı işlerinin, diğer Azure hizmetleri, Salesforce.com, Facebook ve güvenli özel web siteleri gibi kimlik doğrulaması gerektiren hizmetleri araması gerekebilir. Çağrılan hizmet, Zamanlayıcı işinin istenen kaynaklara erişip erişemeyeceğini belirleyebilir. 
+Azure Scheduler işlerinin, diğer Azure Hizmetleri, Salesforce.com, Facebook ve güvenli özel Web siteleri gibi kimlik doğrulaması gerektiren hizmetleri çağırması gerekebilir. Çağrılan hizmet, Scheduler işinin istenen kaynaklara erişip erişemeyeceğini tespit edebilir. 
 
 Zamanlayıcı bu kimlik doğrulama modellerini destekler: 
 
-* SSL/TLS istemci sertifikalarını kullanırken *müşteri sertifikası* kimlik doğrulaması
-* *Temel* kimlik doğrulama
-* *Active Directory OAuth* kimlik doğrulaması
+* SSL/TLS istemci sertifikaları kullanırken *istemci sertifikası* kimlik doğrulaması
+* *Temel* kimlik doğrulaması
+* *OAuth* kimlik doğrulamasını Active Directory
 
-## <a name="add-or-remove-authentication"></a>Kimlik doğrulama ekleme veya kaldırma
+## <a name="add-or-remove-authentication"></a>Kimlik doğrulaması ekleme veya kaldırma
 
-* Bir Zamanlayıcı işine kimlik doğrulama eklemek için, işi oluşturduğunuzda veya güncellediğinizde, öğeye `authentication` JavaScript Nesne Gösterimi (JSON) alt öğesini `request` ekleyin. 
+* Bir Zamanlayıcı işine kimlik doğrulaması eklemek için, işi oluşturduğunuzda veya güncelleştirdiğinizde `authentication` JAVASCRIPT nesne GÖSTERIMI (JSON) alt öğesini `request` öğesine ekleyin. 
 
-  Yanıtlar, nesnedeki BIR PUT, PATCH veya POST isteği aracılığıyla Zamanlayıcı `authentication` hizmetine aktarılan sırları asla döndürmez. 
-  Yanıtlar gizli bilgileri geçersiz kılacak şekilde ayarlar veya kimlik doğrulaması yapılan varlığı temsil eden genel bir belirteç kullanabilir. 
+  Yanıtlar, `authentication` nesne IÇINDEKI bir put, Patch veya post Isteği aracılığıyla Zamanlayıcı hizmetine geçirilen gizli dizileri hiçbir şekilde döndürmez. 
+  Yanıtlar gizli bilgileri null olarak ayarlar veya kimliği doğrulanmış varlığı temsil eden bir ortak belirteç kullanabilir. 
 
-* Zamanlayıcı işinden kimlik doğrulamasını kaldırmak için, iş üzerinde açıkça bir PUT `authentication` veya PATCH isteği çalıştırın ve nesneyi null olarak ayarlayın. Yanıt, kimlik doğrulama özelliği içermez.
+* Bir Zamanlayıcı işinden kimlik doğrulamasını kaldırmak için, iş üzerinde açıkça bir PUT veya PATCH isteği çalıştırın ve `authentication` nesneyi null olarak ayarlayın. Yanıt herhangi bir kimlik doğrulama özelliği içermemelidir.
 
 ## <a name="client-certificate"></a>İstemci sertifikası
 
-### <a name="request-body---client-certificate"></a>İstek gövdesi - Müşteri sertifikası
+### <a name="request-body---client-certificate"></a>İstek gövdesi-Istemci sertifikası
 
-`ClientCertificate` Modeli kullanarak kimlik doğrulaması eklerken, istek gövdesindeki bu ek öğeleri belirtin.  
+`ClientCertificate` Modeli kullanarak kimlik doğrulaması eklerken, istek gövdesinde bu ek öğeleri belirtin.  
 
 | Öğe | Gerekli | Açıklama |
 |---------|----------|-------------|
-| **kimlik doğrulama** (üst öğe) | SSL/TLS istemci sertifikası kullanmak için kimlik doğrulama nesnesi |
-| **Türü** | Evet | Kimlik doğrulama türü. SSL/TLS istemci sertifikaları için değer `ClientCertificate`. |
-| **Pfx** | Evet | PFX dosyasının temel 64 kodlanmış içeriği |
-| **parola** | Evet | PFX dosyasına erişmek için parola |
+| **kimlik doğrulaması** (üst öğe) | SSL/TLS istemci sertifikası kullanmaya yönelik kimlik doğrulama nesnesi |
+| **türüyle** | Yes | Kimlik doğrulama türü. SSL/TLS istemci sertifikaları için değer `ClientCertificate`. |
+| **Türk** | Yes | PFX dosyasının Base64 ile kodlanmış içeriği |
+| **parola** | Yes | PFX dosyasına erişim parolası |
 ||| 
 
-### <a name="response-body---client-certificate"></a>Yanıt gövdesi - İstemci sertifikası 
+### <a name="response-body---client-certificate"></a>Yanıt gövdesi-Istemci sertifikası 
 
-Bir istek kimlik doğrulama bilgileriyle gönderildiğinde, yanıt bu kimlik doğrulama öğelerini içerir.
+Kimlik doğrulama bilgileriyle bir istek gönderildiğinde, yanıt bu kimlik doğrulama öğelerini içerir.
 
 | Öğe | Açıklama | 
 |---------|-------------| 
-| **kimlik doğrulama** (üst öğe) | SSL/TLS istemci sertifikası kullanmak için kimlik doğrulama nesnesi |
-| **Türü** | Kimlik doğrulama türü. SSL/TLS istemci sertifikaları için değer `ClientCertificate`. |
+| **kimlik doğrulaması** (üst öğe) | SSL/TLS istemci sertifikası kullanmaya yönelik kimlik doğrulama nesnesi |
+| **türüyle** | Kimlik doğrulama türü. SSL/TLS istemci sertifikaları için değer `ClientCertificate`. |
 | **certificateThumbprint** |Sertifikanın parmak izi |
-| **sertifikaSubjectName** |Sertifika konusu ayırt edici ad |
-| **sertifikaSona ermesi** | Sertifikanın son kullanma tarihi |
+| **certificateSubjectName** |Sertifika konusu ayırt edici adı |
+| **certificateExpiration** | Sertifikanın sona erme tarihi |
 ||| 
 
-### <a name="sample-rest-request---client-certificate"></a>Örnek REST isteği - İstemci sertifikası
+### <a name="sample-rest-request---client-certificate"></a>Örnek REST isteği-Istemci sertifikası
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -103,7 +103,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---client-certificate"></a>Örnek REST yanıtı - İstemci sertifikası
+### <a name="sample-rest-response---client-certificate"></a>Örnek REST yanıtı-Istemci sertifikası
 
 ```json
 HTTP/1.1 200 OKCache-Control: no-cache
@@ -161,30 +161,30 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 ## <a name="basic"></a>Temel
 
-### <a name="request-body---basic"></a>İstek gövdesi - Temel
+### <a name="request-body---basic"></a>İstek gövdesi-temel
 
-`Basic` Modeli kullanarak kimlik doğrulaması eklerken, istek gövdesindeki bu ek öğeleri belirtin.
+`Basic` Modeli kullanarak kimlik doğrulaması eklerken, istek gövdesinde bu ek öğeleri belirtin.
 
 | Öğe | Gerekli | Açıklama |
 |---------|----------|-------------|
-| **kimlik doğrulama** (üst öğe) | Temel kimlik doğrulamasını kullanmak için kimlik doğrulama nesnesi | 
-| **Türü** | Evet | Kimlik doğrulama türü. Temel kimlik doğrulaması için `Basic`değer. | 
-| **Username** | Evet | Kimlik doğrulaması için kullanıcı adı | 
-| **parola** | Evet | Kimlik doğrulaması için parola |
+| **kimlik doğrulaması** (üst öğe) | Temel kimlik doğrulaması kullanmak için kimlik doğrulama nesnesi | 
+| **türüyle** | Yes | Kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`. | 
+| **nitelen** | Yes | Kimlik doğrulama için Kullanıcı adı | 
+| **parola** | Yes | Kimlik doğrulaması için parola |
 |||| 
 
-### <a name="response-body---basic"></a>Yanıt gövdesi - Temel
+### <a name="response-body---basic"></a>Yanıt gövdesi-temel
 
-Bir istek kimlik doğrulama bilgileriyle gönderildiğinde, yanıt bu kimlik doğrulama öğelerini içerir.
+Kimlik doğrulama bilgileriyle bir istek gönderildiğinde, yanıt bu kimlik doğrulama öğelerini içerir.
 
 | Öğe | Açıklama | 
 |---------|-------------|
-| **kimlik doğrulama** (üst öğe) | Temel kimlik doğrulamasını kullanmak için kimlik doğrulama nesnesi |
-| **Türü** | Kimlik doğrulama türü. Temel kimlik doğrulaması için `Basic`değer. |
-| **Username** | Kimlik doğrulaması kullanıcı adı |
+| **kimlik doğrulaması** (üst öğe) | Temel kimlik doğrulaması kullanmak için kimlik doğrulama nesnesi |
+| **türüyle** | Kimlik doğrulama türü. Temel kimlik doğrulaması için değer `Basic`. |
+| **nitelen** | Kimliği doğrulanmış Kullanıcı adı |
 ||| 
 
-### <a name="sample-rest-request---basic"></a>Örnek REST isteği - Temel
+### <a name="sample-rest-request---basic"></a>Örnek REST isteği-temel
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -222,7 +222,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---basic"></a>Örnek REST yanıtı - Temel
+### <a name="sample-rest-response---basic"></a>Örnek REST yanıtı-temel
 
 ```json
 HTTP/1.1 200 OK
@@ -277,36 +277,36 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="active-directory-oauth"></a>Aktif Dizin OAuth
+## <a name="active-directory-oauth"></a>Active Directory OAuth
 
-### <a name="request-body---active-directory-oauth"></a>İstek gövdesi - Active Directory OAuth 
+### <a name="request-body---active-directory-oauth"></a>İstek gövdesi-Active Directory OAuth 
 
-`ActiveDirectoryOAuth` Modeli kullanarak kimlik doğrulaması eklerken, istek gövdesindeki bu ek öğeleri belirtin.
+`ActiveDirectoryOAuth` Modeli kullanarak kimlik doğrulaması eklerken, istek gövdesinde bu ek öğeleri belirtin.
 
 | Öğe | Gerekli | Açıklama |
 |---------|----------|-------------|
-| **kimlik doğrulama** (üst öğe) | Evet | ActiveDirectoryOAuth kimlik doğrulaması kullanmak için kimlik doğrulama nesnesi |
-| **Türü** | Evet | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için `ActiveDirectoryOAuth`değer. |
-| **Kiracı** | Evet | Azure AD kiracısının kiracı tanımlayıcısı. Azure AD kiracısının kiracı tanımlayıcısını bulmak için `Get-AzureAccount` Azure PowerShell'de çalıştırın. |
-| **Seyirci** | Evet | Bu `https://management.core.windows.net/`değer' e ayarlanır. | 
-| **Clientıd** | Evet | Azure AD uygulaması için istemci tanımlayıcısı | 
-| **Gizli** | Evet | Belirteci isteyen istemci için gizli | 
+| **kimlik doğrulaması** (üst öğe) | Yes | ActiveDirectoryOAuth kimlik doğrulamasını kullanmaya yönelik kimlik doğrulama nesnesi |
+| **türüyle** | Yes | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. |
+| **Kiracı** | Yes | Azure AD kiracısı için kiracı tanımlayıcısı. Azure AD kiracının kiracı tanımlayıcısını bulmak için Azure PowerShell ' de çalıştırın `Get-AzureAccount` . |
+| **grubu** | Yes | Bu değer olarak `https://management.core.windows.net/`ayarlanır. | 
+| **ClientID** | Yes | Azure AD uygulaması için istemci tanımlayıcısı | 
+| **gizlilikle** | Yes | Belirteci isteyen istemcinin parolası | 
 |||| 
 
-### <a name="response-body---active-directory-oauth"></a>Yanıt gövdesi - Active Directory OAuth
+### <a name="response-body---active-directory-oauth"></a>Yanıt gövdesi-Active Directory OAuth
 
-Bir istek kimlik doğrulama bilgileriyle gönderildiğinde, yanıt bu kimlik doğrulama öğelerini içerir.
+Kimlik doğrulama bilgileriyle bir istek gönderildiğinde, yanıt bu kimlik doğrulama öğelerini içerir.
 
 | Öğe | Açıklama |
 |---------|-------------|
-| **kimlik doğrulama** (üst öğe) | ActiveDirectoryOAuth kimlik doğrulaması kullanmak için kimlik doğrulama nesnesi |
-| **Türü** | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için `ActiveDirectoryOAuth`değer. | 
-| **Kiracı** | Azure AD kiracısının kiracı tanımlayıcısı |
-| **Seyirci** | Bu `https://management.core.windows.net/`değer' e ayarlanır. |
-| **Clientıd** | Azure AD uygulaması için istemci tanımlayıcısı |
+| **kimlik doğrulaması** (üst öğe) | ActiveDirectoryOAuth kimlik doğrulamasını kullanmaya yönelik kimlik doğrulama nesnesi |
+| **türüyle** | Kimlik doğrulama türü. ActiveDirectoryOAuth kimlik doğrulaması için değer `ActiveDirectoryOAuth`. | 
+| **Kiracı** | Azure AD kiracısı için kiracı tanımlayıcısı |
+| **grubu** | Bu değer olarak `https://management.core.windows.net/`ayarlanır. |
+| **ClientID** | Azure AD uygulaması için istemci tanımlayıcısı |
 ||| 
 
-### <a name="sample-rest-request---active-directory-oauth"></a>Örnek REST isteği - Active Directory OAuth
+### <a name="sample-rest-request---active-directory-oauth"></a>Örnek REST isteği-Active Directory OAuth
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -346,7 +346,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---active-directory-oauth"></a>Örnek REST yanıtı - Active Directory OAuth
+### <a name="sample-rest-response---active-directory-oauth"></a>Örnek REST yanıtı-Active Directory OAuth
 
 ```json
 HTTP/1.1 200 OK

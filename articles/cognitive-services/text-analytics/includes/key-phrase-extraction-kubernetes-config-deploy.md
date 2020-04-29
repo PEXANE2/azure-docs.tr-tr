@@ -1,7 +1,7 @@
 ---
-title: Anahtar Tümceme Kubernetes config ve dağıtma adımları
+title: Kubernetes config ve Deploy adımları Anahtar İfade Ayıklama
 titleSuffix: Azure Cognitive Services
-description: Anahtar Tümceme Kubernetes config ve dağıtma adımları
+description: Kubernetes config ve Deploy adımları Anahtar İfade Ayıklama
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,45 +10,45 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 6ef7efe3d48fd20c5141803430260a80395faa82
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877870"
 ---
-### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Anahtar Tümcecik Ayıklama kapsayıcısını bir AKS kümesine dağıtma
+### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Anahtar İfade Ayıklama kapsayıcısını bir AKS kümesine dağıtma
 
-1. Azure CLI'yi açın ve Azure'da oturum açın.
+1. Azure CLı 'yi açın ve Azure 'da oturum açın.
 
     ```azurecli
     az login
     ```
 
-1. AKS kümesinde oturum açın. `your-cluster-name` Değiştirin `your-resource-group` ve uygun değerlerle.
+1. AKS kümesinde oturum açın. Ve `your-cluster-name` `your-resource-group` değerlerini uygun değerlerle değiştirin.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    Bu komut çalıştırıladıktan sonra, aşağıdakilere benzer bir ileti bildirir:
+    Bu komut çalıştıktan sonra şuna benzer bir ileti bildirir:
 
     ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Azure hesabınızda kullanabileceğiniz birden çok aboneliğiniz `az aks get-credentials` varsa ve komut bir hatayla döndürürse, sık karşılaşılan bir sorun yanlış aboneliği kullanıyor olmasıdır. Azure CLI oturumunuzun bağlamını, kaynakları oluşturduğunuz aboneliği kullanacak ve yeniden deneyin.
+    > Azure hesabınızda kullanabileceğiniz birden çok aboneliğiniz varsa ve `az aks get-credentials` komut bir hatayla döndürülürse, yaygın bir sorun, yanlış aboneliği kullanıyor olmanız olabilir. Azure CLı oturumunuzun bağlamını, kaynaklarını oluşturduğunuz aboneliğin aynısını kullanacak şekilde ayarlayın ve yeniden deneyin.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Seçtiğim metin düzenleyicisini açın. Bu örnek, Visual Studio Code kullanır.
+1. İstediğiniz metin düzenleyicisini açın. Bu örnek Visual Studio Code kullanır.
 
     ```console
     code .
     ```
 
-1. Metin düzenleyicisi içinde *keyphrase.yaml*adlı yeni bir dosya oluşturun ve aşağıdaki YAML'yi yapıştırın. Kendi `apikey/value` bilgilerinizle `billing/value` değiştirip değiştirdiğinizden emin olun.
+1. Metin Düzenleyicisi içinde *keyphrase. YAML*adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. Ve `apikey/value` bilgilerinizi kendi bilgileriniz `billing/value` ile değiştirdiğinizden emin olun.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -95,25 +95,25 @@ ms.locfileid: "80877870"
     ```
 
 1. Dosyayı kaydedin ve metin düzenleyicisini kapatın.
-1. Kubernetes `apply` komutunu *anahtar cümlesi.yaml* dosyasıyla hedef olarak çalıştırın:
+1. `apply` *Keyphrase. YAML* dosyası Ile Kubernetes komutunu hedefi olarak çalıştırın:
 
     ```console
     kubectl apply -f keyphrase.yaml
     ```
 
-    Komut dağıtım yapılandırmasını başarıyla uyguladığında, aşağıdaki çıktıya benzer bir ileti görüntülenir:
+    Komut, dağıtım yapılandırmasını başarılı bir şekilde uyguladıktan sonra aşağıdaki çıktıya benzer bir ileti görünür:
 
     ```output
     deployment.apps "keyphrase" created
     service "keyphrase" created
     ```
-1. Bölmenin dağıtıldığını doğrulayın:
+1. Pod 'ın dağıtıldığını doğrulayın:
 
     ```console
     kubectl get pods
     ```
 
-    Bölmenin çalışma durumu için çıktı:
+    Pod 'un çalışma durumunun çıkışı:
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
@@ -126,7 +126,7 @@ ms.locfileid: "80877870"
     kubectl get services
     ```
 
-    Bölmedeki *anahtar tümcecik* hizmetinin çalışma durumu için çıktı:
+    Pod 'da *keyphrase* hizmetinin çalışma durumunun çıkışı:
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

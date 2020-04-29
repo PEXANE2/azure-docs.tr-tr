@@ -1,136 +1,136 @@
 ---
-title: Azure Site Kurtarma ile Azure ile Azure olağanüstü durum kurtarma bağlantısı nın giderme
-description: Azure VM olağanüstü durum kurtarmada bağlantı sorunlarını giderme
+title: Azure Site Recovery ile Azure ile Azure olağanüstü durum kurtarma ile ilgili bağlantı sorunlarını giderme
+description: Azure VM olağanüstü durum kurtarma 'da bağlantı sorunlarını giderme
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884877"
 ---
-# <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure'dan Azure'a VM ağ bağlantısı sorunları yla ilgili sorun giderme
+# <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
 
-Bu makalede, Azure sanal makinelerini (VM) bir bölgeden başka bir bölgeye çoğaltTığınızda ve kurtardığınızda ağ bağlantısıyla ilgili yaygın sorunlar açıklanmaktadır. Ağ gereksinimleri hakkında daha fazla bilgi için [Azure VM'lerini çoğaltmak için bağlantı gereksinimlerine](azure-to-azure-about-networking.md)bakın.
+Bu makalede, Azure sanal makinelerini (VM) bir bölgeden başka bir bölgeye çoğalttığınızda ve kurtardığınızda ağ bağlantısıyla ilgili yaygın sorunlar açıklanmaktadır. Ağ gereksinimleri hakkında daha fazla bilgi için bkz. [Azure VM 'leri çoğaltmaya yönelik bağlantı gereksinimleri](azure-to-azure-about-networking.md).
 
-Site Kurtarma çoğaltmasının çalışması için VM'den belirli URL'lere veya IP aralıklarına giden bağlantı gereklidir. VM'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kurallarını kullanıyorsa, bu sorunlardan biriyle karşılaşabilirsiniz.
+Site Recovery çoğaltmanın çalışması için, VM 'den belirli URL 'Lere veya IP aralıklarına giden bağlantı gerekir. VM 'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa, bu sorunlardan birini görebilirsiniz.
 
 | URL'si | Ayrıntılar |
 |---|---|
-| `*.blob.core.windows.net` | Verilerin VM'den kaynak bölgedeki önbellek depolama hesabına yazılabilmesi için gereklidir. VM'lerinizin tüm önbellek depolama hesaplarını biliyorsanız, belirli depolama hesabı URL'leri için izin listesi kullanabilirsiniz. Örneğin, `cache1.blob.core.windows.net` ve `cache2.blob.core.windows.net` yerine `*.blob.core.windows.net`. |
-| `login.microsoftonline.com` | Site Kurtarma hizmet URL'lerine yetkilendirme ve kimlik doğrulama için gereklidir. |
-| `*.hypervrecoverymanager.windowsazure.com` | VM'den Site Kurtarma hizmeti iletişiminin gerçekleşebilmeleri için gereklidir. Güvenlik duvarı proxy'niz IP'leri destekliyorsa, ilgili _Site Kurtarma IP'sini_ kullanabilirsiniz. |
-| `*.servicebus.windows.net` | Site Kurtarma izleme ve tanılama verilerinin VM'den yazılabilmesi için gereklidir. Güvenlik duvarı proxy'niz IP'leri destekliyorsa, ilgili _Site Kurtarma İzleme IP'sini_ kullanabilirsiniz. |
+| `*.blob.core.windows.net` | Verilerin, VM 'den kaynak bölgedeki önbellek depolama hesabına yazılabilmeleri için gereklidir. Sanal makinelerinize yönelik tüm önbellek depolama hesaplarını biliyorsanız, belirli depolama hesabı URL 'Leri için bir izin verilenler listesi kullanabilirsiniz. Örneğin, `cache1.blob.core.windows.net` ve `cache2.blob.core.windows.net` yerine. `*.blob.core.windows.net` |
+| `login.microsoftonline.com` | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve kimlik doğrulaması için gereklidir. |
+| `*.hypervrecoverymanager.windowsazure.com` | Site Recovery hizmeti iletişiminin sanal makineden gerçekleşebilmesi için gereklidir. Güvenlik Duvarı ara sunucunuz IP 'Leri destekliyorsa, karşılık gelen _SITE Recovery IP_ 'sini kullanabilirsiniz. |
+| `*.servicebus.windows.net` | Site Recovery izleme ve tanılama verilerinin VM 'den yazılabilmesini sağlamak için gereklidir. Güvenlik duvarı proxy 'si, IP 'Leri destekliyorsa, karşılık gelen _Site Recovery Izleme IP_ 'sini kullanabilirsiniz. |
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Kurtarma URL'leri veya IP aralıkları için giden bağlantı (hata kodu 151037 veya 151072)
+## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 'Ler veya IP aralıkları için giden bağlantı (hata kodu 151037 veya 151072)
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>Sorun 1: Azure sanal makinesini Site Kurtarma (151195) ile kaydedileme
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>Sorun 1: Azure sanal makinesi Site Recovery kaydedilemedi (151195)
 
 #### <a name="possible-cause"></a>Olası nedeni
 
-Alan Adı Sistemi (DNS) çözüm hatası nedeniyle Site Kurtarma uç noktalarına bağlantı kurulamaz. Bu sorun, VM üzerinde başarısız olduğunuzda yeniden koruma sırasında daha yaygındır, ancak DNS sunucusuna olağanüstü durum kurtarma (DR) bölgesinden erişilemez.
+Etki alanı adı sistemi (DNS) çözümleme hatası nedeniyle uç noktalara Site Recovery bağlantı oluşturulamıyor. Bu sorun, VM üzerinden yük devretmeye karşın DNS sunucusuna olağanüstü durum kurtarma (DR) bölgesinden ulaşılamadığında yeniden koruma sırasında daha yaygın bir sorundur.
 
 #### <a name="resolution"></a>Çözüm
 
-Özel DNS kullanıyorsanız, DNS sunucusuna olağanüstü durum kurtarma bölgesinden erişilebildiğinden emin olun.
+Özel DNS kullanıyorsanız, olağanüstü durum kurtarma bölgesinden DNS sunucusuna erişilebildiğinden emin olun.
 
-VM'nin özel bir DNS ayarı kullanıp kullanmayıp kullanmamasını denetlemek için:
+VM 'nin özel bir DNS ayarı kullanıp kullanmadığını denetlemek için:
 
-1. **Sanal makineleri** açın ve VM'yi seçin.
-1. VM **Ayarları'na** gidin ve **Ağ'ı**seçin.
-1. **Sanal ağ/alt ağda,** sanal ağın kaynak sayfasını açmak için bağlantıyı seçin.
-1. **Ayarlar'a** gidin ve **DNS sunucularını**seçin.
+1. **Sanal makineleri** açın ve VM 'yi seçin.
+1. VM 'Ler **ayarlarına** gidin ve **ağ**' ı seçin.
+1. **Sanal ağ/alt ağ**' da, sanal ağın kaynak sayfasını açmak için bağlantıyı seçin.
+1. **Ayarlar** ' a gidin ve **DNS sunucuları**' nı seçin.
 
-Sanal makineden DNS sunucusuna erişmeye çalışın. DNS sunucusuna erişilemiyorsa, DNS sunucusu üzerinde başarısız olarak veya DR ağı ile DNS arasındaki site hattını oluşturarak erişilebilir hale getirin.
+DNS sunucusuna sanal makineden erişmeyi deneyin. DNS sunucusu erişilebilir değilse, DNS sunucusu üzerinden yük devrederden veya DR ağı ile DNS arasında site satırı oluşturarak erişilebilir hale getirin.
 
-  :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com hatası":::
+  :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com-hata":::
 
-### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Sorun 2: Site Kurtarma yapılandırması başarısız oldu (151196)
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Sorun 2: Site Recovery yapılandırma başarısız oldu (151196)
 
 > [!NOTE]
-> VM'ler **standart** bir iç yük dengeleyicisinin arkasındaysa, varsayılan olarak Office 365 IP'lerine `login.microsoftonline.com`erişemez. Temel **dahili** yük dengeleyici türüne değiştirin veya Azure [CLI'yi kullanarak Standart Yük Dengeleyicisi'nde yük dengeleme ve giden kuralları yapılandırın](/azure/load-balancer/configure-load-balancer-outbound-cli)makalede belirtildiği gibi giden erişim oluşturun.
+> VM 'Ler **Standart** bir iç yük dengeleyicinin arkasında ise, varsayılan olarak, gibi Office 365 IP 'lerine erişemez `login.microsoftonline.com`. Bunu **temel** iç yük dengeleyici türüne değiştirin veya [Azure CLI kullanarak standart Load Balancer yük dengelemeyi ve giden kuralları yapılandırma](/azure/load-balancer/configure-load-balancer-outbound-cli)makalesinde belirtildiği şekilde giden erişim oluşturun.
 
 #### <a name="possible-cause"></a>Olası nedeni
 
-Office 365 kimlik doğrulama ve kimlik IP4 uç noktalarına bağlantı kurulamaz.
+Office 365 kimlik doğrulaması ve kimlik ıP4 uç noktalarına bir bağlantı kurulamazsa.
 
 #### <a name="resolution"></a>Çözüm
 
-- Azure Site Kurtarma, kimlik doğrulaması için Office 365 IP aralıklarına erişim gerektirir.
-- VM'de giden ağ bağlantısını denetlemek için Azure Ağı güvenlik grubu (NSG) kurallarını /güvenlik duvarı proxy'sini kullanıyorsanız, Office 365 IP aralıklarına iletişime izin verdiniz. Azure AD'ye karşılık gelen tüm IP adreslerine erişimsağlayan [Bir Azure Etkin Dizin (Azure AD) hizmet etiketi](/azure/virtual-network/security-overview#service-tags) tabanlı NSG kuralı oluşturun.
-- Gelecekte Azure AD'ye yeni adresler eklenirse, yeni NSG kuralları oluşturmanız gerekir.
+- Azure Site Recovery, kimlik doğrulaması için Office 365 IP aralıklarına erişim gerektirir.
+- VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy 'si kullanıyorsanız, Office 365 IP aralıklarıyla iletişime izin verildiğinden emin olun. Azure AD 'ye karşılık gelen tüm IP adreslerine erişim sağlayan bir [Azure Active Directory (Azure AD) hizmet etiketi](/azure/virtual-network/security-overview#service-tags) tabanlı NSG kuralı oluşturun.
+- Daha sonra Azure AD 'ye yeni adresler eklenirse, yeni NSG kuralları oluşturmanız gerekir.
 
 ### <a name="example-nsg-configuration"></a>Örnek NSG yapılandırması
 
-Bu örnek, bir VM'nin çoğaltması için NSG kurallarının nasıl yapılandırılabildiğini gösterir.
+Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandırılacağını gösterir.
 
-- Giden bağlantıyı kontrol etmek için NSG kurallarını kullanıyorsanız, gerekli tüm IP adresi aralıkları için 443 bağlantı noktasına HTTPS giden kurallara **izin ver'i** kullanın.
-- Örnek, VM kaynak konumunun **Doğu ABD** ve hedef konumun **Merkezi ABD**olduğunu varsayılır.
+- Giden bağlantıyı denetlemek için NSG kuralları kullanıyorsanız, tüm gerekli IP adresi aralıkları için bağlantı noktası 443 ' e **https giden kuralları ver** ' i kullanın.
+- Örnek, VM kaynak konumunun **Doğu ABD** olduğunu ve hedef konumun **Orta ABD**olduğunu varsayar.
 
-#### <a name="nsg-rules---east-us"></a>NSG kuralları - Doğu ABD
+#### <a name="nsg-rules---east-us"></a>NSG kuralları-Doğu ABD
 
-1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG için bir HTTPS giden güvenlik kuralı oluşturun. Bu örnekte **Hedef servis etiketi**kullanır: _Storage.EastUS_ ve **Hedef bağlantı noktası aralıkları**: _443_.
+1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG için bir HTTPS giden güvenlik kuralı oluşturun. Bu örnek, **hedef hizmet etiketini**kullanır: _Storage. EastUS_ ve **hedef bağlantı noktası aralıkları**: _443_.
 
      :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="depolama etiketi":::
 
-1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG için bir HTTPS giden güvenlik kuralı oluşturun. Bu örnekte **Hedef hizmet etiketi**kullanır: _AzureActiveDirectory_ ve **Hedef bağlantı noktası aralıkları**: _443_.
+1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG için bir HTTPS giden güvenlik kuralı oluşturun. Bu örnek, **hedef hizmet etiketini**kullanır: _AzureActiveDirectory_ ve **hedef bağlantı noktası aralıkları**: _443_.
 
      :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad etiketi":::
 
-1. Hedef konuma karşılık gelen Site Kurtarma IP'leri için HTTPS bağlantı noktası 443 giden kuralları oluşturun:
+1. Hedef konuma karşılık gelen Site Recovery IP 'Leri için HTTPS bağlantı noktası 443 giden kuralları oluşturun:
 
-   | Konum | Site Kurtarma IP adresi | Site Kurtarma izleme IP adresi |
+   | Konum | Site Recovery IP adresi | Site Recovery izleme IP adresi |
    | --- | --- | --- |
    | Orta ABD | 40.69.144.231 | 52.165.34.144 |
 
-#### <a name="nsg-rules---central-us"></a>NSG kuralları - Orta ABD
+#### <a name="nsg-rules---central-us"></a>NSG kuralları-Orta ABD
 
-Bu örnekte, çoğaltmanın hedef bölgeden kaynak bölgeye başarısız sonrası sağlanabilmesi için bu NSG kuralları gereklidir:
+Bu örnekte, çoğaltmanın hedef bölgeden kaynak bölgeye yük devretme sonrası etkinleştirilebilmesi için bu NSG kuralları gereklidir:
 
-1. _Storage.CentralUS_için HTTPS giden güvenlik kuralı oluşturun :
+1. _Storage. merkezileştirme_için https giden güvenlik kuralı oluşturun:
 
-   - **Hedef servis etiketi**: _Storage.CentralUS_
+   - **Hedef hizmet etiketi**: _Storage. merkezde ABD_
    - **Hedef bağlantı noktası aralıkları**: _443_
 
-1. _AzureActiveDirectory_için bir HTTPS giden güvenlik kuralı oluşturun.
+1. _AzureActiveDirectory_IÇIN bir https giden güvenlik kuralı oluşturun.
 
-   - **Hedef servis etiketi**: _AzureActiveDirectory_
+   - **Hedef hizmet etiketi**: _AzureActiveDirectory_
    - **Hedef bağlantı noktası aralıkları**: _443_
 
-1. Site Kurtarma IP'leri için kaynak konuma karşılık gelen HTTPS bağlantı noktası 443 giden kuralları oluşturun:
+1. Kaynak konumuna karşılık gelen Site Recovery IP 'Leri için HTTPS bağlantı noktası 443 giden kuralları oluşturun:
 
-   | Konum | Site Kurtarma IP adresi | Site Kurtarma izleme IP adresi |
+   | Konum | Site Recovery IP adresi | Site Recovery izleme IP adresi |
    | --- | --- | --- |
    | Doğu ABD | 13.82.88.226 | 104.45.147.24 |
 
-### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Sorun 3: Site Kurtarma yapılandırması başarısız oldu (151197)
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Sorun 3: Site Recovery yapılandırma başarısız oldu (151197)
 
 #### <a name="possible-cause"></a>Olası nedeni
 
-Azure Site Kurtarma hizmeti bitiş noktalarına bağlantı kurulamaz.
+Hizmet uç noktalarına Azure Site Recovery bir bağlantı kurulamazsa.
 
 #### <a name="resolution"></a>Çözüm
 
-Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) erişim gerektiriyor. Gerekli IP aralıklarına VM'den erişilebildiğinden emin olun.
+Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) erişim gerektiriyor. Gerekli IP aralıklarının VM 'den erişilebilir olduğundan emin olun.
 
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Sorun 4: Ağ trafiği şirket içi proxy sunucusundan geçtiğinde Azure'dan Azure'a çoğaltma başarısız oldu (151072)
+### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4. sorun: ağ trafiği şirket içi ara sunucu üzerinden geçtiğinde Azure 'dan Azure 'a çoğaltma başarısız oldu (151072)
 
 #### <a name="possible-cause"></a>Olası nedeni
 
-Özel proxy ayarları geçersizdir ve Azure Site Kurtarma Mobilite hizmeti aracısı Internet Explorer'dan (IE) proxy ayarlarını otomatik olarak algılamadı.
+Özel ara sunucu ayarları geçersiz ve Azure Site Recovery Mobility hizmeti Aracısı, proxy ayarlarını Internet Explorer 'dan (IE) otomatik olarak algılamadım.
 
 #### <a name="resolution"></a>Çözüm
 
-1. Mobilite servis aracısı, Windows ve `/etc/environment` Linux'ta IE proxy ayarlarını algılar.
-1. Proxy'yi yalnızca Azure Site Kurtarma Mobilitesi hizmeti için ayarlamayı tercih ederseniz, _proxyinfo.conf_ adresinde bulunan proxy ayrıntılarını sağlayabilirsiniz:
+1. Mobility hizmeti Aracısı Windows ve `/etc/environment` LINUX üzerinde IE 'deki proxy ayarlarını algılar.
+1. Proxy 'yi yalnızca Azure Site Recovery Mobility hizmeti için ayarlamayı tercih ediyorsanız, şu adreste bulunan _ProxyInfo. conf_ dosyasında proxy ayrıntılarını sağlayabilirsiniz:
 
    - **Linux**:`/usr/local/InMage/config/`
    - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
-1. _ProxyInfo.conf_ aşağıdaki _INI_ formatında proxy ayarları olmalıdır:
+1. _ProxyInfo. conf_ _dosyası aşağıdaki ını_ biçiminde proxy ayarlarına sahip olmalıdır:
 
    ```plaintext
    [proxy]
@@ -139,12 +139,12 @@ Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](az
    ```
 
 > [!NOTE]
-> Azure Site Kurtarma Mobilitesi hizmet aracısı yalnızca **kimliği doğrulanmamış yakınlıkları**destekler.
+> Azure Site Recovery Mobility Service Agent yalnızca **kimliği doğrulanmamış proxy 'leri**destekler.
 
 ### <a name="fix-the-problem"></a>Sorunu çözme
 
-Gerekli [URL'lere](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) veya [gerekli IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)izin vermek için, [ağ kılavuz belgesindeki](site-recovery-azure-to-azure-networking-guidance.md)adımları izleyin.
+[Gerekli URL 'lere](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) veya [gerekli IP aralıklarına](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)izin vermek için [Ağ Kılavuzu belgesindeki](site-recovery-azure-to-azure-networking-guidance.md)adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure VM'leri başka bir Azure bölgesine çoğaltma](azure-to-azure-how-to-enable-replication.md)
+[Azure VM 'lerini başka bir Azure bölgesine çoğaltma](azure-to-azure-how-to-enable-replication.md)

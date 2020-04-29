@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Gremlin API ile grafik toplu uygulayıcısı .NET kitaplığını kullanma
-description: Grafik verilerini azure cosmos DB Gremlin API kapsayıcısına büyük ölçüde almak için toplu yürütme kitaplığını nasıl kullanacağınızı öğrenin.
+title: Azure Cosmos DB Gremlin API ile Graf toplu yürütücü .NET kitaplığını kullanma
+description: Grafik verilerini büyük ölçüde Azure Cosmos DB Gremlin API kapsayıcısına aktarmak için toplu yürütücü kitaplığı 'nı nasıl kullanacağınızı öğrenin.
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -9,28 +9,28 @@ ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
 ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982712"
 ---
-# <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API'de toplu işlemler gerçekleştirmek için grafik toplu uygulayıcısı .NET kitaplığını kullanma
+# <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
 
-Bu öğretici, grafik nesnelerini bir Azure Cosmos DB Gremlin API kapsayıcısına almak ve güncelleştirmek için Azure CosmosDB'nin toplu uygulayıcısı .NET kitaplığını kullanma yla ilgili yönergeler sağlar. Bu işlem, vertex ve Edge nesnelerini programlı bir şekilde oluşturmak ve ağ isteği başına birden fazla eklemek için [toplu yürütme kitaplığındaki](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) Grafik sınıfını kullanır. Bu davranış, hem veritabanı hem de yerel bellek kaynaklarını en iyi şekilde kullanmak için toplu yürütme kitaplığı aracılığıyla yapılandırılabilir.
+Bu öğretici, Graph nesnelerini bir Azure Cosmos DB Gremlin API kapsayıcısına aktarmak ve güncelleştirmek için Azure CosmosDB 'nin toplu yürütücü .NET kitaplığı kullanma hakkında yönergeler sağlar. Bu işlem, [toplu yürütücü kitaplığı](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) 'ndaki Graph sınıfını kullanarak her bir ağ isteği için, programlama yoluyla köşe ve kenar nesneleri oluşturmayı sağlar. Bu davranış, hem veritabanı hem de yerel bellek kaynaklarının en iyi şekilde kullanılmasını sağlamak için toplu yürütücü kitaplığı aracılığıyla yapılandırılabilir.
 
-Gremlin sorgularını komutun değerlendirilip teker teker yürütüldüğü bir veritabanına göndermek yerine, toplu yürütme kitaplığını kullanmak yerine nesneleri yerel olarak oluşturmayı ve doğrulamayı gerektirir. Kitaplık, nesneleri oluşturduktan sonra grafik nesnelerini veritabanı hizmetine sıralı bir şekilde göndermenizi sağlar. Bu yöntemle veri alımı hızları 100 kata kadar artırılabilir ve bu da ilk veri geçişi veya düzenli veri taşıma işlemleri için ideal bir yöntem olmasını sağlar. [Azure Cosmos DB Graph toplu yürütme veya örnek uygulamasının](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)GitHub sayfasını ziyaret ederek daha fazla bilgi edinin.
+Bir veritabanına Gremlin sorguları göndermenin aksine, komutun değerlendirildiği ve bir seferde bir kez yürütüldüğü, toplu yürütücü kitaplığının kullanılması bunun yerine nesneleri yerel olarak oluşturmak ve doğrulamak için gerekir. Kitaplık, nesneleri oluşturduktan sonra grafik nesnelerini veritabanı hizmetine sıralı bir şekilde göndermenizi sağlar. Bu yöntemle veri alımı hızları 100 kata kadar artırılabilir ve bu da ilk veri geçişi veya düzenli veri taşıma işlemleri için ideal bir yöntem olmasını sağlar. [Azure Cosmos DB Graph toplu yürütücü örnek uygulamasının](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)GitHub sayfasını ziyaret ederek daha fazla bilgi edinin.
 
 ## <a name="bulk-operations-with-graph-data"></a>Grafik verileriyle toplu işlemler
 
-[Toplu yürütücü kitaplığı,](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) grafik nesneleri oluşturmak ve almak için işlevsellik sağlamak için bir `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` ad alanı içerir. 
+[Toplu yürütücü kitaplığı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) , grafik nesneleri `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` oluşturma ve içeri aktarma işlevselliği sağlayan bir ad alanı içerir. 
 
 Aşağıdaki işlem, veri geçişinin bir Gremlin API kapsayıcısı için nasıl kullanılabileceğini göstermektedir:
 1. Kayıtları veri kaynağından alın.
 2. Alınan kayıtlardan `GremlinVertex` ve `GremlinEdge` nesnesini oluşturun ve bunları bir `IEnumerable` veri yapısına ekleyin. Uygulamanın bu bölümünde veri kaynağının grafik veritabanı olmaması halinde ilişki algılama ve ekleme mantığının uygulanması gerekir.
 3. Grafik nesnelerini koleksiyona eklemek için [Grafik BulkImportAsync metodunu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet) kullanın.
 
-Bu mekanizma, Gremlin istemcisi kullanmaya kıyasla veri geçişinin verimliliğini artırır. Bu geliştirme, verilerin Gremlin ile eklenmesi için uygulamanın doğrulanması, değerlendirilmesi ve ardından veri oluşturmak için yürütülmesi gereken sorguları tek tek gönderilmesi gerektiğindendir. Toplu yürütücü kitaplığı, uygulamadaki doğrulamayı işler ve her ağ isteği için aynı anda birden çok grafik nesnesi gönderir.
+Bu mekanizma, Gremlin istemcisi kullanmaya kıyasla veri geçişinin verimliliğini artırır. Bu geliştirme, verilerin Gremlin ile eklenmesi için uygulamanın doğrulanması, değerlendirilmesi ve ardından veri oluşturmak için yürütülmesi gereken sorguları tek tek gönderilmesi gerektiğindendir. Toplu yürütücü kitaplığı, uygulamadaki doğrulamayı işler ve her bir ağ isteği için aynı anda birden çok Graph nesnesi gönderir.
 
 ### <a name="creating-vertices-and-edges"></a>Köşe ve kenar oluşturma
 
@@ -73,7 +73,7 @@ catch (Exception e)
 }
 ```
 
-Toplu yürütme kitaplığı parametreleri hakkında daha fazla bilgi için [Azure Cosmos DB konusuna Toplu Alma Verileri'ne](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)bakın.
+Toplu yürütücü kitaplığının parametreleri hakkında daha fazla bilgi için, [Azure Cosmos DB konusuna yönelik Bulkımportdata](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)bölümüne bakın.
 
 Yükün `GremlinVertex` ve `GremlinEdge` nesnelerinde oluşturulması gerekir. Bu nesneler şu şekilde oluşturulabilir:
 
@@ -109,18 +109,18 @@ e.AddProperty("customProperty", "value");
 ```
 
 > [!NOTE]
-> Toplu yürütme yardımcı programı, Kenarlar eklemeden önce varolan Vertices'leri otomatik olarak denetlemez. Bu durumun BulkImport görevlerini çalıştırmadan önce uygulamada doğrulanması gerekir.
+> Toplu yürütücü yardımcı programı, kenarları eklemeden önce mevcut köşeleri otomatik olarak denetlemez. Bu durumun BulkImport görevlerini çalıştırmadan önce uygulamada doğrulanması gerekir.
 
 ## <a name="sample-application"></a>Örnek uygulama
 
 ### <a name="prerequisites"></a>Ön koşullar
-* Azure geliştirme iş yüküyle Visual Studio 2019. [Visual Studio 2019 Community Edition'a](https://visualstudio.microsoft.com/downloads/) ücretsiz olarak ulaşabilirsiniz.
-* Azure aboneliği. [Buradan ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db) oluşturabilirsiniz. Alternatif olarak, Azure aboneliği olmadan [Azure Cosmos DB'yi ücretsiz](https://azure.microsoft.com/try/cosmosdb/) olarak deneyin ile bir Cosmos veritabanı hesabı oluşturabilirsiniz.
+* Azure geliştirme iş yüküyle Visual Studio 2019. [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) 'ı ücretsiz kullanmaya başlamanızı sağlayabilirsiniz.
+* Azure aboneliği. [Buradan ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db) oluşturabilirsiniz. Alternatif olarak, [deneme Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) Azure aboneliği olmadan ücretsiz olarak bir Cosmos veritabanı hesabı oluşturabilirsiniz.
 * **Sınırsız koleksiyona** sahip Azure Cosmos DB Gremlin API veritabanı. Bu kılavuz, [.NET ile Azure Cosmos DB Gremlin API'yi](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet) kullanmaya başlamayı göstermektedir.
 * Git. Daha fazla bilgi için [Git indirme sayfasına](https://git-scm.com/downloads) bakın.
 
 ### <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
-Bu öğreticide, GitHub'da barındırılan Azure [Cosmos DB Graph toplu yürütme örneğini](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started) kullanarak başlamak için gereken adımları izleyeceğiz. Bu uygulama, rastgele köşe ve kenar nesneleri oluşturup belirtilen grafik veritabanı hesabına toplu ekleme yapan bir .NET çözümü içerir. Uygulamayı almak için aşağıdaki `git clone` komutunu çalıştırın:
+Bu öğreticide, GitHub 'da barındırılan [Azure Cosmos DB Graph toplu yürütücü örneğini](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started) kullanarak çalışmaya başlama adımlarını takip edeceğiz. Bu uygulama, rastgele köşe ve kenar nesneleri oluşturup belirtilen grafik veritabanı hesabına toplu ekleme yapan bir .NET çözümü içerir. Uygulamayı almak için aşağıdaki `git clone` komutunu çalıştırın:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git
@@ -131,7 +131,7 @@ Bu depo, aşağıdaki dosyalara sahip olan GraphBulkExecutor örneğini içerir:
 Dosya|Açıklama
 ---|---
 `App.config`|Uygulama ve veritabanına özgü parametreler burada belirtilir. Hedef veritabanına ve koleksiyonlara bağlanmak için bu dosyanın değiştirilmesi gerekir.
-`Program.cs`| Bu dosya, `DocumentClient` toplama oluşturma, temizleme işleme ve toplu yürütme istekleri gönderme arkasındaki mantığı içerir.
+`Program.cs`| Bu dosya, `DocumentClient` koleksiyon oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme kavramlarını kapsayan mantığı içerir.
 `Util.cs`| Bu dosya, test verileri oluşturmaya ek olarak veritabanı ve koleksiyonların var olup olmadığını kontrol eden mantığı içeren yardımcı sınıfı içerir.
 
 `App.config` dosyasında aşağıdaki yapılandırma değerleri sağlanabilir:
@@ -155,6 +155,6 @@ Ayar|Açıklama
 3. Grafik veritabanını sorgulayarak sonuçları değerlendirin. `ShouldCleanupOnFinish` seçeneği true olarak ayarlanırsa veritabanı otomatik olarak silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Nuget paket ayrıntıları ve toplu uygulayıcı .NET kitaplığı sürüm notları hakkında bilgi edinmek için [toplu uygulayıcı SDK ayrıntılarına](sql-api-sdk-bulk-executor-dot-net.md)bakın. 
-* Toplu uygulayıcının kullanımını daha da optimize etmek için [Performans İpuçlarına](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) göz atın.
+* NuGet paket ayrıntıları ve toplu yürütücü .NET kitaplığı sürüm notları hakkında bilgi edinmek için bkz. [toplu yürütücü SDK ayrıntıları](sql-api-sdk-bulk-executor-dot-net.md). 
+* Toplu yürütücü kullanımını daha iyi iyileştirmek için [performans ipuçlarına](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) göz atın.
 * Bu ad alanında tanımlanan sınıflar ve metotlar hakkında ayrıntılı bilgi için [BulkExecutor.Graph Başvurusu makalesini](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) gözden geçirin.

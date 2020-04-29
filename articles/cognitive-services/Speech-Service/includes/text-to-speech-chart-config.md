@@ -1,7 +1,7 @@
 ---
-title: Konuşma kapsayıcılarını yükleme
+title: Konuşma kapsayıcılarını yükler
 titleSuffix: Azure Cognitive Services
-description: Metinden konuşmaya dümen grafiği yapılandırma seçeneklerini ayrıntılarıyla anlatır.
+description: Metinden konuşmaya helb grafik yapılandırma seçeneklerinin ayrıntılarını sağlar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 22168974ab8b285413b4fa6e947c05f65a73ae12
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80874371"
 ---
-### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Metinden Konuşmaya (alt grafik: grafikler/textToSpeech)
+### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Metinden konuşmaya (alt grafik: grafikler/textToSpeech)
 
-"Şemsiye" grafiğigeçersiz kılmak için, daha `textToSpeech.` spesifik hale getirmek için herhangi bir parametrenin önekini ekleyin. Örneğin, örneğin ilgili parametre geçersiz kılar, `textToSpeech.numberOfConcurrentRequest` geçersiz `numberOfConcurrentRequest`kılar.
+"Şemsiye" grafiğini geçersiz kılmak için, öneki `textToSpeech.` daha özel hale getirmek için herhangi bir parametreye ekleyin. Örneğin, karşılık gelen parametreyi `textToSpeech.numberOfConcurrentRequest` geçersiz kılacak şekilde geçersiz kılar. `numberOfConcurrentRequest`
 
 |Parametre|Açıklama|Varsayılan|
 | -- | -- | -- |
-| `enabled` | **Metinden konuşmaya** hizmetin etkin olup olmadığı. | `false` |
-| `numberOfConcurrentRequest` | **Metinden konuşmaya** hizmet için eşzamanlı isteklerin sayısı. Bu grafik, bu değere bağlı olarak CPU ve bellek kaynaklarını otomatik olarak hesaplar. | `2` |
-| `optimizeForTurboMode`| Hizmetin metin dosyaları üzerinden metin girişi için en iyi duruma getirilmesi gerekip gerekmediği. Eğer, `true`bu grafik hizmete daha fazla CPU kaynağı tahsis edecektir. | `false` |
-| `image.registry`| **Metinden konuşmaya** docker görüntü kayıt defteri. | `containerpreview.azurecr.io` |
-| `image.repository` | **Metinden konuşmaya** docker görüntü deposu. | `microsoft/cognitive-services-text-to-speech` |
-| `image.tag` | **Metinden konuşmaya** docker görüntü etiketi. | `latest` |
-| `image.pullSecrets` | **Metinden konuşmaya** docker görüntü çekme için görüntü sırları. | |
-| `image.pullByHash`| Docker görüntüsünün karma tarafından çekilip çekilmediği. `image.hash` Gerekirse. `true` | `false` |
-| `image.hash`| **Metinden konuşmaya** docker görüntü karma. Sadece . `image.pullByHash: true`  | |
-| `image.args.eula`(gerekli) | Lisansı kabul ettiğinizi gösterir. Tek geçerli değer`accept` | |
-| `image.args.billing`(gerekli) | Faturalandırma bitiş noktası URI değeri Azure portalının Konuşmaya Genel Bakış sayfasında kullanılabilir. | |
-| `image.args.apikey`(gerekli) | Fatura bilgilerini izlemek için kullanılır. ||
-| `service.type` | **Metinden konuşmaya** hizmetin Kubernetes hizmet türü. Daha fazla ayrıntı için [Kubernetes hizmet türleri yönergelerine](https://kubernetes.io/docs/concepts/services-networking/service/) bakın ve bulut sağlayıcısı desteğini doğrulayın. | `LoadBalancer` |
-| `service.port`|  **Metinden konuşmaya** hizmetinin bağlantı noktası. | `80` |
-| `service.annotations` | Hizmet meta verileri için **metinden konuşmaya** ek açıklamalar. Ek açıklamalar anahtar değer çiftleridir. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
-| `service.autoScaler.enabled` | Yatay [Pod Otomatik Ölçekleyici](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) etkin olup olmadığı. Eğer, `true` `text-to-speech-autoscaler` Kubernetes kümesinde dağıtılır. | `true` |
-| `service.podDisruption.enabled` | Pod [Kesinti Bütçesi](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) etkin olup olmadığı. Eğer, `true` `text-to-speech-poddisruptionbudget` Kubernetes kümesinde dağıtılır. | `true` |
+| `enabled` | **Metin okuma** hizmetinin etkin olup olmadığı. | `false` |
+| `numberOfConcurrentRequest` | **Metinden konuşmaya** hizmeti için eşzamanlı istek sayısı. Bu grafik, CPU ve bellek kaynaklarını bu değere göre otomatik olarak hesaplar. | `2` |
+| `optimizeForTurboMode`| Hizmetin metin dosyaları aracılığıyla metin girişi için iyileştirilmesi gerekip gerekmediği. Bu `true`grafik, hizmete daha fazla CPU kaynağı ayırır. | `false` |
+| `image.registry`| **Metinden konuşmaya** Docker görüntü kayıt defteri. | `containerpreview.azurecr.io` |
+| `image.repository` | **Metinden konuşmaya** Docker görüntü deposu. | `microsoft/cognitive-services-text-to-speech` |
+| `image.tag` | **Metinden konuşmaya** Docker görüntü etiketi. | `latest` |
+| `image.pullSecrets` | **Metinden konuşmaya** Docker görüntüsünü çekmek için görüntü gizli dizileri. | |
+| `image.pullByHash`| Docker görüntüsünün karma tarafından çekilip çekilmediğini belirtir. Varsa `true`, `image.hash` gereklidir. | `false` |
+| `image.hash`| **Metinden konuşmaya** Docker görüntü karması. Yalnızca ne zaman `image.pullByHash: true`kullanılır.  | |
+| `image.args.eula`istenir | Lisansı kabul ettiğinizi gösterir. Geçerli tek değer`accept` | |
+| `image.args.billing`istenir | Faturalandırma uç noktası URI değeri Azure portal konuşmaya Genel Bakış sayfasında kullanılabilir. | |
+| `image.args.apikey`istenir | Faturalandırma bilgilerini izlemek için kullanılır. ||
+| `service.type` | **Metin okuma** hizmeti 'Nin Kubernetes hizmet türü. Daha fazla ayrıntı için bkz. [Kubernetes hizmet türleri yönergeleri](https://kubernetes.io/docs/concepts/services-networking/service/) ve bulut sağlayıcısı desteğini doğrulayın. | `LoadBalancer` |
+| `service.port`|  **Metin okuma** hizmetinin bağlantı noktası. | `80` |
+| `service.annotations` | Hizmet meta verileri için **metinden konuşmaya** ek açıklamaları. Ek açıklamalar anahtar değer çiftleridir. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
+| `service.autoScaler.enabled` | [Yatay Pod otomatik Scaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) 'ın etkinleştirilip etkinleştirilmeyeceğini belirtir. `text-to-speech-autoscaler` Ise `true`, Kubernetes kümesinde dağıtılır. | `true` |
+| `service.podDisruption.enabled` | [Pod kesintisi bütçesinin](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) etkin olup olmadığı. `text-to-speech-poddisruptionbudget` Ise `true`, Kubernetes kümesinde dağıtılır. | `true` |

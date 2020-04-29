@@ -1,79 +1,79 @@
 ---
-title: HTTP tarafından tetiklenen olmayan Azure İşlevlerini el ile çalıştırma
-description: HTTP tetiklenen olmayan bir Azure İşlevlerini çalıştırmak için bir HTTP isteği kullanma
+title: HTTP ile tetiklenen Azure Işlevlerini el ile çalıştırma
+description: Http tarafından tetiklenen bir Azure Işlevi çalıştırmak için HTTP isteği kullanma
 author: craigshoemaker
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: cshoe
 ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80892368"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP ile tetiklenmeyen bir işlevi el ile çalıştırma
 
-Bu makalede, özel olarak biçimlendirilmiş HTTP isteği aracılığıyla, HTTP tarafından tetiklenen olmayan bir işlevin el ile nasıl çalıştırılacağA çalışılmış olması gösterilmektedir.
+Bu makalede, HTTP ile tetiklenen bir işlevin özel olarak biçimlendirilmiş HTTP isteği aracılığıyla el ile nasıl çalıştırılacağı gösterilmektedir.
 
-Bazı bağlamlarda, dolaylı olarak tetiklenen bir Azure İşi"ni "isteğe bağlı" çalıştırmanız gerekebilir.  Dolaylı tetikleyicilere örnek [olarak, zamanlamadaki işlevler](./functions-create-scheduled-function.md) veya başka bir [kaynağın eylemi](./functions-create-storage-blob-triggered-function.md)sonucunda çalışan işlevler verilebilir. 
+Bazı bağlamlarda, dolaylı olarak tetiklenen "isteğe bağlı" bir Azure Işlevi çalıştırmanız gerekebilir.  Dolaylı tetikleyicilere örnek olarak, [başka bir kaynağın eyleminin](./functions-create-storage-blob-triggered-function.md)sonucu olarak çalışan [bir zamanlama](./functions-create-scheduled-function.md) veya işlevlerde işlevler bulunur. 
 
-[Postacı](https://www.getpostman.com/) aşağıdaki örnekte kullanılır, ancak http isteklerini göndermek için [cURL,](https://curl.haxx.se/) [Fiddler](https://www.telerik.com/fiddler) veya benzeri herhangi bir araç kullanabilirsiniz.
+[Postman](https://www.getpostman.com/) aşağıdaki örnekte kullanılır, ancak http istekleri göndermek için [kıvrımlı](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) veya benzer bir aracı kullanabilirsiniz.
 
-## <a name="define-the-request-location"></a>İstek konumunu tanımlama
+## <a name="define-the-request-location"></a>İstek konumunu tanımlayın
 
-HTTP tarafından tetiklenen olmayan bir işlevi çalıştırmak için, işlevi çalıştırmak için Azure'a istek göndermenin bir yolunu niçin yapmanız gerekir. Bu isteği yapmak için kullanılan URL belirli bir form alır.
+HTTP ile tetiklenen bir işlev çalıştırmak için, işlevi çalıştırmak üzere Azure 'a bir istek göndermek için bir yol gerekir. Bu isteği yapmak için kullanılan URL belirli bir formu alır.
 
-![İstek konumunu tanımlayın: ana bilgisayar adı + klasör yolu + işlev adı](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
+![İstek konumunu tanımlayın: Ana bilgisayar adı + klasör yolu + işlev adı](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Ev sahibi adı:** İşlev uygulamasının, işlev uygulamasının adından ve *azurewebsites.net* veya özel etki alanınızdan oluşan genel konumu.
-- **Klasör yolu:** HTTP tarafından tetiklenen olmayan işlevlere http isteği yle erişmek için, isteği *yönetici/işlevler*klasörleri üzerinden göndermeniz gerekir.
-- **Fonksiyon adı:** Çalıştırmak istediğiniz işlevin adı.
+- **Ana bilgisayar adı:** İşlev uygulamasının adı ve *azurewebsites.net* veya özel etki alanınız öğesinden oluşturulan Genel konum.
+- **Klasör yolu:** Http ile tetiklenen işlevlere HTTP isteği aracılığıyla erişmek için, isteği klasörler *yöneticisi/işlevleri*aracılığıyla göndermeniz gerekir.
+- **İşlev adı:** Çalıştırmak istediğiniz işlevin adı.
 
-Bu istek konumunu Postacı'da, işlevi çalıştırmak için Azure'a istekte işlevin ana anahtarıyla birlikte kullanırsınız.
+Bu istek konumunu, Postman 'da, işlevi çalıştırmak için Azure isteği 'ndeki ana anahtarla birlikte kullanırsınız.
 
 > [!NOTE]
-> Yerel olarak çalışırken, işlevin ana anahtarı gerekli değildir. `x-functions-key` Üstbilgiat atlayarak işlevi doğrudan [arayabilirsiniz.](#call-the-function)
+> Yerel olarak çalışırken işlevin ana anahtarı gerekli değildir. Üstbilgiyi atlayarak [işlevi doğrudan çağırabilirsiniz.](#call-the-function) `x-functions-key`
 
-## <a name="get-the-functions-master-key"></a>Fonksiyonun ana anahtarını alın
+## <a name="get-the-functions-master-key"></a>İşlevin ana anahtarını al
 
-Azure portalındaki işlevinize gidin ve **Yönet'e** tıklayın ve **Ana Bilgisayar Anahtarlarını** bulun. Panonuza ana anahtarı kopyalamak için *_master* satırdaki **Kopyala** düğmesini tıklatın.
+Azure portal işlevinizde gelin ve **Yönet** ' e tıklayın ve **konak anahtarlarını** bulun bölümüne tıklayın. Ana anahtarı panonuza kopyalamak için *_master* satırındaki **Kopyala** düğmesine tıklayın.
 
-![İşlev Yönetimi ekranından ana anahtarı kopyalama](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+![Işlev yönetimi ekranından ana anahtarı Kopyala](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-Ana anahtarı kopyaladıktan sonra, kod dosyası penceresine dönmek için işlev adını tıklatın. Ardından, **Günlükler** sekmesine tıklayın. Postacı'dan işlevi el ile çalıştırdığınızda burada günlüğe kaydedilen işlevden iletileri görürsünüz.
+Ana anahtarı kopyaladıktan sonra, kod dosyası penceresine dönmek için işlev adına tıklayın. Sonra, **Günlükler** sekmesine tıklayın. İşlevi Postman 'dan el ile çalıştırdığınızda, bu işlevden iletiler burada günlüğe kaydedilir.
 
 > [!CAUTION]  
-> Ana anahtar tarafından verilen işlev uygulamanızdaki yüksek izinler nedeniyle, bu anahtarı üçüncü taraflarla paylaşmamalı veya bir uygulamada dağıtmamalısınız.
+> Ana anahtar tarafından verilen işlev uygulamanızda yükseltilmiş izinler nedeniyle, bu anahtarı üçüncü taraflarla paylaşmamalıdır veya bir uygulamada dağıtmanız gerekir.
 
 ## <a name="call-the-function"></a>İşlevi çağırın
 
-Postacı'yı açın ve aşağıdaki adımları izleyin:
+Postman 'ı açın ve şu adımları izleyin:
 
-1. URL **metin kutusuna istek konumunu**girin.
-2. HTTP yönteminin **POST**olarak ayarlandığından emin olun.
-3. **Üstbilgi** sekmesine **tıklayın.**
-4. İlk anahtar olarak **x-functions** **tuşu** girin ve ana anahtarı (panodan) **değer** kutusuna yapıştırın.
-5. İkinci **anahtar** olarak **İçerik-Yazın** girin ve **değer**olarak **uygulama/json** girin.
+1. **URL metin kutusuna istek konumunu**girin.
+2. HTTP yönteminin **gönderi**olarak ayarlandığından emin olun.
+3. **Üstbilgiler** sekmesine **tıklayın** .
+4. İlk **anahtar** olarak **x-Functions-Key** girin ve ana anahtarı (panodan) **değer** kutusuna yapıştırın.
+5. İkinci **anahtar** olarak **içerik türü** girin ve **uygulama/JSON** **değerini değer**olarak girin.
 
-    ![Postacı başlıkları ayarları](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    ![Postman üstbilgileri ayarları](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-6. **Vücut** sekmesine **tıklayın.**
-7. İstek için gövde olarak **{ "giriş": "test" }** girin.
+6. **Gövde** sekmesine **tıklayın** .
+7. İsteğin gövdesi olarak **{"Input": "test"}** girin.
 
-    ![Postacı vücut ayarları](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    ![Postman gövde ayarları](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
 8. **Gönder**’e tıklayın.
 
-    ![Postacı ile istek gönderme](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    ![Postman ile istek gönderme](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
-Postacı daha sonra **202 Kabul edilen**bir durum bildirir.
+Postman daha sonra **202 durumunu kabul etti**olarak bildirir.
 
-Ardından, Azure portalındaki işlevinize dönün. *Günlükler* penceresini bulun ve işleve manuel çağrıdan gelen iletileri görürsünüz.
+Sonra, Azure portal işlevinizi geri döndürün. *Günlükler* penceresini bulun ve işleve el ile yapılan çağrıdan gelen iletiler görürsünüz.
 
-![Manuel aramadan fonksiyon günlüğü sonuçları](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+![El ile çağrının işlev günlüğü sonuçları](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler](./functions-test-a-function.md)
-- [Azure İşlevi Olay Izgara yerel hata ayıklama tetikleme](./functions-debug-event-grid-trigger-local.md)
+- [Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle](./functions-debug-event-grid-trigger-local.md)

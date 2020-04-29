@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
 ms.openlocfilehash: f64892193eb6cfcce8f948b54e5557b5fa3d90ab
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878263"
 ---
 ```json
@@ -21,13 +21,13 @@ ms.locfileid: "80878263"
 }
 ```
 
-Aşağıdaki özellikler mevcuttur: `extensionBundle`
+Aşağıdaki özellikler ' de `extensionBundle`mevcuttur:
 
 | Özellik | Açıklama |
 | -------- | ----------- |
-| id | Microsoft Azure İşlevler uzantısı paketleri için ad alanı. |
-| version | Paketin yüklenmesi için sürümü. İşlevler çalışma süresi her zaman sürüm aralığı veya aralığı tarafından tanımlanan maksimum izin verilen sürümü seçer. Yukarıdaki sürüm değeri, 1.0.0'dan 2.0.0'a kadar olan tüm paket sürümlerine izin verir, ancak 2.0.0 dahil değildir. Daha fazla bilgi [için, sürüm aralıklarını belirtmek için aralık gösterimine](/nuget/reference/package-versioning#version-ranges)bakın. |
+| id | Microsoft Azure Işlevleri Uzantısı paketleri için ad alanı. |
+| version | Yüklenecek paket sürümü. Işlevler çalışma zamanı her zaman, sürüm aralığı veya aralığı tarafından tanımlanan izin verilen en fazla sürümü seçer. Yukarıdaki sürüm değeri, 1.0.0 'e kadar tüm paket sürümlerinin 2.0.0 dahil değil, izin vermez. Daha fazla bilgi için bkz. [Sürüm aralıklarını belirtmek için Aralık gösterimi](/nuget/reference/package-versioning#version-ranges). |
 
-Paket değişiminde paket olarak sürümler artış. Büyük sürüm değişiklikleri, paketteki paketler büyük bir sürüm le birlikte artınca oluşur. Paketteki ana sürüm değişiklikleri genellikle Işlevler çalışma zamanının ana sürümündeki bir değişiklikle çakışıyor.  
+Paket sürümleri artıkında paket değişim artışı. Paketteki paketler ana bir sürümle artında ana sürüm değişiklikleri oluşur. Paketteki ana sürüm değişiklikleri genellikle Işlevler çalışma zamanının ana sürümündeki bir değişiklikle birlikte bulunur.  
 
-Varsayılan paket tarafından yüklenen geçerli uzantı kümesi bu [extensions.json dosyasında](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)numaralandırılır.
+Varsayılan paket tarafından yüklenen geçerli uzantılar kümesi, bu [Extensions. json dosyasında](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)numaralandırılır.

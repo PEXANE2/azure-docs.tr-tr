@@ -1,7 +1,7 @@
 ---
-title: Azure Kapsayıcı Örneklerinde Bilgisayar Lı Vizyon kapsayıcısı çalıştırma
+title: Azure Container Instances Görüntü İşleme kapsayıcısını Çalıştır
 titleSuffix: Azure Cognitive Services
-description: Computer Vision kapsayıcısını bir Azure Kapsayıcı Örneği'ne dağıtın ve bir web tarayıcısında test edin.
+description: Görüntü İşleme kapsayıcısını bir Azure Container Instance 'a dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: ecb0b6a6577161a5349d9d701dd6c116f69411f0
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876112"
 ---
-# <a name="deploy-the-computer-vision-container-to-azure-container-instances"></a>Bilgisayar Lı Vizyon kapsayıcısını Azure Kapsayıcı Örneklerine dağıtma
+# <a name="deploy-the-computer-vision-container-to-azure-container-instances"></a>Görüntü İşleme kapsayıcısını Azure Container Instances dağıtma
 
-Bilişsel Hizmetler [Bilgisayar Vizyonu](computer-vision-how-to-install-containers.md) kapsayıcısını Azure Kapsayıcı Örneklerine nasıl [dağıtabileceğinizi](https://docs.microsoft.com/azure/container-instances/)öğrenin. Bu yordam, Bilgisayar Lı Vizyon kaynağının oluşturulmasını gösterir. Sonra ilişkili konteyner görüntü çekme tartışmak. Son olarak, bir tarayıcıdan iki orkestrasyon egzersiz yeteneğini vurgulamak. Kapsayıcıların kullanılması, geliştiricilerin dikkatini altyapı yönetiminden uygulama geliştirmeye odaklanmak yerine uzaklaştırabilir.
+Bilişsel Hizmetler [görüntü işleme](computer-vision-how-to-install-containers.md) kapsayıcısını Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)'a dağıtmayı öğrenin. Bu yordamda Görüntü İşleme kaynağının oluşturulması gösterilmektedir. Ardından, ilişkili kapsayıcı görüntüsünü çekme hakkında tartışın. Son olarak, bir tarayıcıdan ikisini de düzenleme özelliğini vurgulayacağız. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Özel konteyner kayıt defterine erişim isteği
+## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteme
 
 [!INCLUDE [Request access](../../../includes/cognitive-services-containers-request-access.md)]
 

@@ -1,55 +1,55 @@
 ---
 title: Varlık dönüştürme REST API
-description: REST API aracılığıyla bir varlığın nasıl dönüştürülür şekilde dönüştürüldüğünü açıklar
+description: REST API aracılığıyla bir varlığın nasıl dönüştürüleceğini açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887053"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Model dönüştürme REST API’yi kullanma
 
-[Model dönüştürme](model-conversion.md) [hizmeti, REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)üzerinden denetlenir. Bu makalede, dönüşüm hizmeti API ayrıntıları açıklanmaktadır.
+[Model dönüştürme](model-conversion.md) hizmeti bir [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)ile denetlenir. Bu makalede, dönüştürme hizmeti API 'SI ayrıntıları açıklanmaktadır.
 
 ## <a name="regions"></a>Bölgeler
 
-İstekleri göndermek için temel URL'ler için [kullanılabilir bölgelerin listesine](../../reference/regions.md) bakın.
+İsteklerin gönderileceği temel URL 'Ler için [kullanılabilir bölgelerin listesine](../../reference/regions.md) bakın.
 
-## <a name="common-headers"></a>Ortak üstbilgi
+## <a name="common-headers"></a>Ortak üstbilgiler
 
-### <a name="common-request-headers"></a>Ortak istek üstbilgi
+### <a name="common-request-headers"></a>Ortak istek üstbilgileri
 
-Bu üstbilgi tüm istekler için belirtilmelidir:
+Tüm istekler için bu üst bilgiler belirtilmelidir:
 
-- **Yetkilendirme** üstbilgisi ,*[TOKEN*] bir [hizmet erişim belirteci](../tokens.md)olduğu "Taşıyıcı [*TOKEN*]" değerine sahip olmalıdır.
+- **Yetkilendirme** üst bilgisi "taşıyıcı [*belirteç*]" değerine sahip olmalıdır, burada [*belirteç*] bir [hizmet erişim belirtecidir](../tokens.md).
 
-### <a name="common-response-headers"></a>Ortak yanıt üstbilgi
+### <a name="common-response-headers"></a>Ortak yanıt üst bilgileri
 
-Tüm yanıtlar şu üstbilgileri içerir:
+Tüm yanıtlar şu başlıkları içerir:
 
-- **MS-CV** üstbilgisi, hizmet içindeki çağrıyı izlemek için kullanılabilecek benzersiz bir dize içerir.
+- **MS-CV** üst bilgisi, hizmet içindeki çağrıyı izlemek için kullanılabilecek benzersiz bir dize içerir.
 
 ## <a name="endpoints"></a>Uç Noktalar
 
-Dönüştürme hizmeti üç REST API uç noktası sağlar:
+Dönüştürme hizmeti şunları yapmak için üç REST API uç noktası sağlar:
 
-- Azure Uzaktan İşleme hesabınızla bağlantılı bir depolama hesabı kullanarak model dönüştürmeye başlayın. 
-- sağlanan *Paylaşılan Erişim İmzaları (SAS)* kullanarak model dönüştürmebaşlatın.
-- dönüşüm durumunu sorgula
+- Azure uzaktan Işleme hesabınızla bağlantılı bir depolama hesabı kullanarak model dönüştürmeyi başlatın. 
+- Belirtilen *paylaşılan erişim imzalarını (SAS)* kullanarak model dönüştürmeyi başlatın.
+- dönüştürme durumunu sorgulama
 
-### <a name="start-conversion-using-a-linked-storage-account"></a>Bağlantılı bir depolama hesabı kullanarak dönüşüm başlatma
-Azure Uzaktan İşlem Emki Hesabınızın, depolama hesaplarını nasıl bağlayacaklarına ilişkin adımları izleyerek sağlanan depolama [hesabına](../create-an-account.md#link-storage-accounts)erişmesi gerekir.
+### <a name="start-conversion-using-a-linked-storage-account"></a>Bağlı depolama hesabı kullanarak dönüştürmeyi Başlat
+[Depolama hesaplarını bağlama](../create-an-account.md#link-storage-accounts)adımlarını Izleyerek Azure uzaktan işleme hesabınızın, belirtilen depolama hesabına erişimi olması gerekir.
 
 | Uç Nokta | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversions/create | POST |
+| /V1/accounts/**AccountID**/Conversions/Create | POST |
 
-JSON belgesine sarılmış devam eden dönüşümün kimliğini verir. Alan adı "conversionId"dir.
+JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürür. Alan adı "Conversionıd" dir.
 
 #### <a name="request-body"></a>İstek gövdesi
 
@@ -72,21 +72,21 @@ JSON belgesine sarılmış devam eden dönüşümün kimliğini verir. Alan adı
     }
 }
 ```
-### <a name="start-conversion-using-provided-shared-access-signatures"></a>Sağlanan paylaşılan erişim imzalarını kullanarak dönüştürmeyi başlatma
-ARR hesabınız depolama hesabınıza bağlı değilse, bu REST arabirimi *Paylaşılan Erişim İmzalarını (SAS)* kullanarak erişim sağlamanıza olanak tanır.
+### <a name="start-conversion-using-provided-shared-access-signatures"></a>Belirtilen paylaşılan erişim imzalarını kullanarak dönüştürmeye başla
+ARR hesabınız depolama hesabınıza bağlı değilse, bu REST arabirimi *paylaşılan erişim imzaları (SAS)* kullanarak erişim sağlamanıza olanak tanır.
 
 | Uç Nokta | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
+| /V1/accounts/**AccountID**/Conversions/createwithsharedaccesssignature | POST |
 
-JSON belgesine sarılmış devam eden dönüşümün kimliğini verir. Alan adı "conversionId"dir.
+JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürür. Alan adı "Conversionıd" dir.
 
 #### <a name="request-body"></a>İstek gövdesi
 
-İstek gövdesi yukarıdaki REST araması oluşturma ile aynıdır, ancak giriş ve çıktı *Paylaşılan Erişim İmzaları (SAS) belirteçleri*içerir. Bu belirteçler, girişin okunması ve dönüşüm sonucunun yazılması için depolama hesabına erişim sağlar.
+İstek gövdesi, yukarıdaki REST çağrısını oluştur ile aynıdır, ancak giriş ve çıkış *paylaşılan erişim imzaları (SAS) belirteçlerini*içerir. Bu belirteçler, girişi okumak ve dönüştürme sonucunu yazmak için depolama hesabına erişim sağlar.
 
 > [!NOTE]
-> Bu SAS URI belirteçleri tam URI değil, sorgu dizeleri vardır. 
+> Bu SAS URI belirteçleri, tam URI değil, sorgu dizeleridir. 
 
 
 ```json
@@ -110,21 +110,21 @@ JSON belgesine sarılmış devam eden dönüşümün kimliğini verir. Alan adı
 }
 ```
 
-### <a name="poll-conversion-status"></a>Anket dönüştürme durumu
-Yukarıdaki REST çağrılarından biriyle başlayan devam eden bir dönüştürmenin durumu aşağıdaki arabirimi kullanarak sorgulanabilir:
+### <a name="poll-conversion-status"></a>Yoklama dönüştürme durumu
+Yukarıdaki REST çağrılarından biriyle başlatılan devam eden bir dönüştürmenin durumu aşağıdaki arabirim kullanılarak sorgulanabilir:
 
 
 | Uç Nokta | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversions/**conversionId** | GET |
+| /V1/accounts/**AccountID**/Conversions/**conversionıd** | GET |
 
-Aşağıdaki değerlere sahip bir "durum" alanına sahip bir JSON belgesi döndürür:
+Aşağıdaki değerlere sahip olabilir bir "durum" alanı olan bir JSON belgesi döndürür:
 
-- "Koşmak"
-- "Başarı"
-- "Başarısızlık"
+- Çalıştıran
+- Başarılı
+- Hataları
 
-Durum "Hata" ise, hata bilgilerini içeren bir "ileti" alt alanı içeren ek bir "hata" alanı olacaktır. Ek günlükler çıkış kabınıza yüklenir.
+Durum "hata" ise, hata bilgilerini içeren "ileti" alt alanına sahip ek bir "hata" alanı olacaktır. Ek Günlükler, çıkış kapsayıcınıza yüklenecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

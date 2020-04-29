@@ -1,6 +1,6 @@
 ---
-title: ADAL istemci uygulaması hata işleme en iyi uygulamaları | Azure
-description: ADAL istemci uygulamaları için hata işleme kılavuzu ve en iyi uygulamaları sağlar.
+title: ADAL istemci uygulaması hata işleme en iyi uygulamalar | Mavisi
+description: ADAL istemci uygulamaları için hata işleme Kılavuzu ve en iyi uygulamalar sağlar.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,59 +13,59 @@ ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80981078"
 ---
-# <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Etkin Dizin Kimlik Doğrulama Kitaplığı (ADAL) istemcileri için en iyi uygulamaları hata işleme
+# <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) istemcileri için en iyi yöntemler işlenirken hata oluştu
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Bu makalede, kullanıcıların kimliğini doğrulamak için ADAL kullanırken geliştiricilerin karşılaşabileceği hata türü hakkında kılavuz lar sağlanmaktadır. ADAL kullanırken, bir geliştiricinin devreye girip hataları işlemesi gerekebileceği birkaç durum vardır. Uygun hata işleme harika bir son kullanıcı deneyimi sağlar ve son kullanıcının oturum açma sayısını sınırlar.
+Bu makalede, kullanıcıların kimliğini doğrulamak için ADAL kullanılırken geliştiricilerin karşılaşabileceği hataların türü hakkında rehberlik sağlanır. ADAL kullanırken, bir geliştiricinin hata adımları ve hataları işlemesi gerekebilecek birkaç durum vardır. Doğru hata işleme, iyi bir son kullanıcı deneyimi sağlar ve son kullanıcının oturum açması için gereken süreyi kısıtlar.
 
-Bu makalede, ADAL tarafından desteklenen her platform için belirli durumları ve uygulamanızın her servis talebiyle nasıl düzgün şekilde işleyebileceğini inceliyoruz. Hata kılavuzu, ADAL API'leri tarafından sağlanan belirteç edinim desenleri temel alınarak iki daha geniş kategoriye ayrılır:
+Bu makalede, ADAL tarafından desteklenen her platformun belirli durumlarını ve uygulamanızın her bir durumu düzgün bir şekilde nasıl işleyebileceğini araştırıyoruz. Hata Kılavuzu, ADAL API 'Leri tarafından sunulan belirteç alma desenlerine bağlı olarak iki geniş kategoriye ayrılır:
 
-- **AcquireTokenSilent**: İstemci sessizce bir belirteç almaya çalışır (UI yok) ve ADAL başarısız olursa başarısız olabilir. 
-- **Edinme Token**: İstemci sessiz satın alma girişiminde bulunabilir, ancak oturum açma gerektiren etkileşimli istekleri de gerçekleştirebilir.
+- **Acquiretokensilent**: istemci bir belirteci sessizce almaya çalışır (Kullanıcı arabirimi olmadan) ve adal başarısız olursa başarısız olabilir. 
+- **Acquiretoken**: istemci sessiz alımı deneyebilir, ancak oturum açma gerektiren etkileşimli istekleri de gerçekleştirebilir.
 
 > [!TIP]
-> ADAL ve Azure AD kullanırken tüm hataları ve özel durumları günlüğe kaydetmek iyi bir fikirdir. Günlükler yalnızca uygulamanızın genel durumunu anlamak için yararlı olmakla kalmıyor, aynı zamanda daha geniş sorunları hata ayıklarken de önemlidir. Uygulamanız belirli hatalardan kurtulabilir, ancak bunlar çözmek için kod değişiklikleri gerektiren daha geniş tasarım sorunlarına işaret edebilir. 
+> ADAL ve Azure AD kullanırken tüm hataları ve özel durumları günlüğe kaydetmek iyi bir fikirdir. Günlükler yalnızca uygulamanızın genel durumunu anlamak için yararlı değildir, ancak daha geniş sorunlar ayıklandığında de önemlidir. Uygulamanız belirli hatalardan kurtarılarken, çözülmesi için kod değişikliği gerektiren daha geniş tasarım sorunları hakkında ipucu edebilirler. 
 > 
-> Bu belgede kapsanan hata koşullarını uygularken, daha önce açıklanan nedenlerle hata kodunu ve açıklamasını günlüğe kaydetmeniz gerekir. Günlük kodu örnekleri için [Hata ve günlük başvurusuna](#error-and-logging-reference) bakın. 
+> Bu belgede ele alınan hata koşullarını uygularken, daha önce açıklanan nedenlerden dolayı hata kodunu ve açıklamasını günlüğe yazmanız gerekir. Günlüğe kaydetme kodu örnekleri için [hata ve günlüğe kaydetme başvurusu](#error-and-logging-reference) bölümüne bakın. 
 >
 
-## <a name="acquiretokensilent"></a>Satın AlmaTokenSilent
+## <a name="acquiretokensilent"></a>AcquireTokenSilent
 
-AcquireTokenSilent, son kullanıcının Kullanıcı Arabirimi (UI) görmediğine dair garanti veren bir belirteç almaya çalışır. Sessiz edinmenin başarısız olabileceği ve etkileşimli istekler veya varsayılan bir işleyici tarafından ele alınması gereken birkaç durum vardır. Takip eden bölümlerde her vakanın ne zaman ve nasıl işledileceklerine dair ayrıntılara dalıyoruz.
+AcquireTokenSilent, son kullanıcının bir kullanıcı arabirimi (UI) görmediğinden emin olmak için bir belirteç almaya çalışır. Sessiz almanın başarısız olabileceği ve etkileşimli istekler veya varsayılan bir işleyici tarafından işlenmesi gereken birkaç durum vardır. İzleyen bölümlerde her bir durumun ne zaman ve nasıl kullanılacağına ilişkin ayrıntıları inceleyeceğiz.
 
-İşletim sistemi tarafından oluşturulan ve uygulamaya özgü hata işleme gerektiren bir dizi hata vardır. Daha fazla bilgi için hata [ve günlük başvurusu](#error-and-logging-reference)"İşletim Sistemi" hataları bölümüne bakın. 
+İşletim sistemi tarafından oluşturulan ve uygulamaya özel hata işleme gerektirebilecek bir hata kümesi vardır. Daha fazla bilgi için [hata ve günlüğe kaydetme başvurusunda](#error-and-logging-reference)"işletim sistemi" hataları bölümüne bakın. 
 
 ### <a name="application-scenarios"></a>Uygulama senaryoları
 
-- [Yerel istemci](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#native-client) uygulamaları (iOS, Android, .NET Masaüstü veya Xamarin)
-- [Kaynak](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#resource-server) çağıran [Web istemcisi](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#web-client) uygulamaları (.NET)
+- [Yerel istemci](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#native-client) uygulamaları (IOS, Android, .net masaüstü veya Xamarin)
+- Bir [kaynağı](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#resource-server) çağıran [Web istemcisi](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#web-client) uygulamaları (.net)
 
-### <a name="error-cases-and-actionable-steps"></a>Hata örnekleri ve işlem uygulanabilir adımlar
+### <a name="error-cases-and-actionable-steps"></a>Hata durumları ve eyleme dönüştürülebilir adımlar
 
-Temelde, AcquireTokenSilent hataları iki durum vardır:
+Temelde, AcquireTokenSilent hataların iki durumu vardır:
 
 | Case (Olay) | Açıklama |
 |------|-------------|
-| **Büyük/Küçük Harf 1**: Hata etkileşimli oturum açma ile çözülebilir | Geçerli belirteçlerin eksikliğinden kaynaklanan hatalar için etkileşimli bir istek gereklidir. Özellikle, önbellek araması ve geçersiz/süresi dolmuş bir yenileme belirteci çözmek için bir EdinmeToken araması gerektirir.<br><br>Bu gibi durumlarda, son kullanıcının oturum açması istenir. Uygulama, son kullanıcı etkileşiminden (oturum açma düğmesine basmak gibi) sonra veya daha sonra etkileşimli bir istek yapmayı seçebilir. Seçim, uygulamanın istenen davranışına bağlıdır.<br><br>Bu özel durum ve tanılayan hatalar için aşağıdaki bölümdeki kodu görün.|
-| **Örnek 2**: Hata etkileşimli oturum açma ile çözülemez | Ağ ve geçici/geçici hatalar veya diğer hatalar için etkileşimli Bir Edinme Token isteği gerçekleştirmek sorunu çözmez. Gereksiz etkileşimli oturum açma istemleri de son kullanıcıları hayal kırıklığına uğratabilir. ADAL, AcquireTokenSilent hatalarından en çok hata için otomatik olarak tek bir yeniden deneme dener.<br><br>İstemci uygulaması daha sonraki bir noktada yeniden denemeyi de deneyebilir, ancak uygulama davranışına ve istenen son kullanıcı deneyimine ne zaman ve nasıl bağlıdır. Örneğin, uygulama birkaç dakika sonra veya bazı son kullanıcı eylemine yanıt olarak Bir EdinmeTokenSilent yeniden deneme yapabilir. Hemen yeniden deneme, uygulamanın daraltılmasıyla sonuçlanır ve denenmemelidir.<br><br>Aynı hatayla başarısız olan sonraki yeniden deneme, istemcinin hatayı çözmediği için AcquireToken'i kullanarak etkileşimli bir istekte bulunması gerektiği anlamına gelmez.<br><br>Bu özel durum ve tanılayan hatalar için aşağıdaki bölümdeki kodu görün. |
+| **Durum 1**: etkileşimli bir oturum açma ile hata çözülebilir | Geçerli belirteçlerin olmamasından kaynaklanan hatalar için, etkileşimli bir istek gereklidir. Özellikle, önbellek araması ve geçersiz/zaman aşımına uğradı yenileme belirteci, çözümlemek için bir AcquireToken çağrısı gerektirir.<br><br>Bu durumlarda, son kullanıcıdan oturum açması istenir. Uygulama, Son Kullanıcı etkileşiminden sonra etkileşimli bir istek yapmayı tercih edebilir (bir oturum açma düğmesine veya daha sonra bir oturum açma düğmesine vurmayın). Seçim, uygulamanın istenen davranışına bağlıdır.<br><br>Bu özel durum ve bunu tanılayan hatalar için aşağıdaki bölümde yer alan koda bakın.|
+| **Durum 2**: hataya etkileşimli bir oturum açma ile çözümlenemez | Ağ ve geçici/geçici hatalar veya diğer hatalar için, etkileşimli bir AcquireToken isteği gerçekleştirmek sorunu çözmez. Gereksiz oturum açma istemlerinin yanı sıra son kullanıcıları da rahatsız edebilir. ADAL, AcquireTokenSilent hatalarıyla ilgili birçok hata için otomatik olarak tek bir yeniden denemeye çalışır.<br><br>İstemci uygulaması, daha sonraki bir noktada yeniden denemeye da deneyebilir, ancak uygulama davranışına ve istenen son kullanıcı deneyimine ne zaman ve nasıl bağlı olur. Örneğin, uygulama birkaç dakika sonra veya son kullanıcı eylemine yanıt olarak bir AcquireTokenSilent yeniden deneme gerçekleştirebilir. Anında yeniden deneme uygulamanın azaltılmakta olmasının yanı sıra denenmemelidir.<br><br>Aynı hatayla başarısız olan sonraki bir yeniden deneme, hatayı çözemediğinden, istemcinin AcquireToken kullanan etkileşimli bir istek yapması gerektiği anlamına gelmez.<br><br>Bu özel durum ve bunu tanılayan hatalar için aşağıdaki bölümde yer alan koda bakın. |
 
 ### <a name="net"></a>.NET
 
-Aşağıdaki kılavuz, ADAL yöntemleri ile birlikte hata işleme örnekleri sağlar: 
+Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
-- satın AlmaTokenSilentAsync(...)
-- satın AlmaTokenSilentSync(...) 
-- [deprecated] satın TokenSilent(...)
-- [deprecated] satın TokenByRefreshToken(...) 
+- acquireTokenSilentAsync (...)
+- acquireTokenSilentSync (...) 
+- [kullanım dışı] acquireTokenSilent (...)
+- [kullanım dışı] acquireTokenByRefreshToken (...) 
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```csharp
 try{
@@ -102,13 +102,13 @@ catch (AdalException e) {
 
 ### <a name="android"></a>Android
 
-Aşağıdaki kılavuz, ADAL yöntemleri ile birlikte hata işleme örnekleri sağlar: 
+Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
-- satın AlmaTokenSilentSync(...)
-- satın AlmaTokenSilentAsync(...)
-- [deprecated] satın TokenSilent(...)
+- acquireTokenSilentSync (...)
+- acquireTokenSilentAsync (...)
+- [kullanım dışı] acquireTokenSilent (...)
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```java
 // *Inside callback*
@@ -138,11 +138,11 @@ public void onError(Exception e) {
 
 ### <a name="ios"></a>iOS
 
-Aşağıdaki kılavuz, ADAL yöntemleri ile birlikte hata işleme örnekleri sağlar: 
+Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
-- satın almaTokenSilentWithResource(...)
+- acquireTokenSilentWithResource (...)
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```objc
 [context acquireTokenSilentWithResource:[ARGS], completionBlock:^(ADAuthenticationResult *result) {
@@ -170,52 +170,52 @@ Kodunuz aşağıdaki gibi uygulanacaktır:
 }]
 ```
 
-## <a name="acquiretoken"></a>Satın AlmaToken
+## <a name="acquiretoken"></a>AcquireToken
 
-EdinmeToken belirteçleri almak için kullanılan varsayılan ADAL yöntemidir. Kullanıcı kimliğinin gerekli olduğu durumlarda, AcquireToken önce sessizce bir belirteç almaya çalışır, sonra gerekirse Kullanıcı-ı UI görüntüler (PromptBehavior.Never geçirilmediği sürece). Uygulama kimliğinin gerekli olduğu durumlarda, AcquireToken bir belirteç almaya çalışır, ancak son kullanıcı olmadığı için Kullanıcı Aracı'nı göstermez. 
+AcquireToken, belirteçleri almak için kullanılan varsayılan ADAL yöntemidir. Kullanıcı kimliğinin gerekli olduğu durumlarda, AcquireToken öncelikle sessizce bir belirteç almaya çalışır ve gerekirse kullanıcı arabirimini (PromptBehavior. hiçbir zaman geçirilmemişse) görüntüler. Uygulama kimliğinin gerekli olduğu durumlarda, AcquireToken bir belirteç almaya çalışır, ancak son kullanıcı bulunmadığından Kullanıcı ARABIRIMINI göstermez. 
 
-EdinmeToken hatalarını işlerken, hata işleme platformuna ve uygulamanın başarmaya çalıştığı senaryoya bağlıdır. 
+AcquireToken hatalarını işlerken, hata işleme, uygulamanın elde edilmeye çalıştığı platforma ve senaryoya bağlıdır. 
 
-İşletim sistemi, belirli bir uygulamaya bağlı hata işleme gerektiren bir dizi hata da oluşturabilir. Daha fazla bilgi için Hata ve [günlüğe kaydetme başvurusunda](#error-and-logging-reference)"İşletim Sistemi hataları" bilgisine bakın. 
+İşletim sistemi, belirli bir uygulamaya bağımlı hata işleme gerektiren bir hata kümesi de oluşturabilir. Daha fazla bilgi için bkz. "Işletim sistemi hataları" [hata ve günlüğe kaydetme başvurusu](#error-and-logging-reference). 
 
 ### <a name="application-scenarios"></a>Uygulama senaryoları
 
-- Yerel istemci uygulamaları (iOS, Android, .NET Masaüstü veya Xamarin)
-- Kaynak API (.NET) olarak adlandırdığı web uygulamaları
-- Tek sayfauygulamaları (JavaScript)
-- Servise Servis uygulamaları (.NET, Java)
-  - Adına-of-dahil olmak üzere tüm senaryolar,
-  - Belirli senaryoların Adına
+- Yerel istemci uygulamaları (iOS, Android, .NET masaüstü veya Xamarin)
+- Kaynak API 'SI çağıran Web uygulamaları (.NET)
+- Tek sayfalı uygulamalar (JavaScript)
+- Hizmetten hizmete uygulamalar (.NET, Java)
+  - -Adına dahil tüm senaryolar
+  - Yerinde belirli senaryolar
 
-### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Hata örnekleri ve işlem yapılabilir adımlar: Yerel istemci uygulamaları
+### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Hata durumları ve eyleme dönüştürülebilir adımlar: yerel istemci uygulamaları
 
-Yerel bir istemci uygulaması oluşturuyorsanız, ağ sorunları, geçici hatalar ve platforma özgü diğer hatalarla ilgili göz önünde bulundurulması gereken birkaç hata işleme durumu vardır. Çoğu durumda, bir uygulama hemen yeniden deneme yapmamalıdır, ancak oturum açmayı gerektiren son kullanıcı etkileşimini beklemeli. 
+Yerel bir istemci uygulaması oluşturuyorsanız, ağ sorunları, geçici hatalar ve platforma özgü diğer hatalarla ilgili olarak dikkate alınması gereken birkaç hata işleme durumu vardır. Çoğu durumda, bir uygulama anında yeniden denemeler gerçekleştirmemelidir, ancak oturum açma işlemini isteyen son kullanıcı etkileşimini beklemek yerine. 
 
-Tek bir yeniden denemenin sorunu çözebileceği birkaç özel durum vardır. Örneğin, bir kullanıcının bir aygıttaki verileri etkinleştirmesi gerektiğinde veya ilk hatadan sonra Azure AD aracısını karşıdan yüklemeyi tamamladığınızda. 
+Tek bir yeniden deneme sorunu çözebileceği birkaç özel durum vardır. Örneğin, bir kullanıcının bir cihazda verileri etkinleştirmesi gerektiğinde veya ilk hatadan sonra Azure AD Aracısı indirmesi tamamlandığında. 
 
-Hata durumlarında, bir uygulama son kullanıcının yeniden deneme gerektiren bazı etkileşimleri gerçekleştirmesine izin vermek için Kullanıcı Arabirimi sunabilir. Örneğin, aygıt çevrimdışı bir hata için başarısız olduysa, hatayı hemen yeniden denemek yerine Bir Edinme Token yeniden denemesini isteyen bir "Yeniden Oturum Açmayı Deneyin" düğmesi. 
+Bir uygulama, hata durumunda son kullanıcının yeniden denenme isteyen bir etkileşim gerçekleştirmesine izin vermek için Kullanıcı arabirimi sunabilir. Örneğin, cihaz çevrimdışı bir hata için başarısız olduysa, "yeniden oturum açmayı deneyin" düğmesine hemen hatayı yeniden denemek yerine bir AcquireToken yeniden denemesini sorma. 
 
-Yerel uygulamalarda hata işleme iki durumla tanımlanabilir:
+Yerel uygulamalarda hata işleme, iki durum tarafından tanımlanabilir:
 
 |  |  |
 |------|-------------|
-| **Örnek 1**:<br>Yeniden DenemeyeN Hata (çoğu durumda) | 1. Hemen yeniden denemeye çalışmayın. Yeniden deneme gerektiren belirli bir hataya dayalı olarak son kullanıcı kullanıcı arabirimi kullanıcı arasını sunun (örneğin, "Yeniden Oturum Açmayı Deneyin" veya "Azure AD aracısı uygulamasını indirin"). |
-| **Örnek 2**:<br>Yeniden Ölçülebilir Hata | 1. Son kullanıcı başarı yla sonuçlanan bir duruma girmiş olabileceğinden tek bir yeniden deneme gerçekleştirin.<br><br>2. Yeniden deneme başarısız olursa, yeniden deneme gerektiren belirli bir hataya bağlı olarak son kullanıcı kullanıcı kullanıcı arabirimi'ni sunun ("Yeniden oturum açmayı deneyin", "Azure AD aracı uygulamasını indirin" vb.) |
+| **Durum 1**:<br>Yeniden denenmeyen hata (çoğu zaman) | 1. anında yeniden denemeyi denemeyin. Yeniden denemeyi çağıran belirli bir hataya göre Son Kullanıcı Kullanıcı arabirimini sunun (örneğin, "yeniden oturum açmayı deneyin" veya "Azure AD Broker uygulamasını Indirme"). |
+| **Durum 2**:<br>Yeniden denenebilir hata | 1. Son Kullanıcı başarı ile sonuçlanan bir durum girmiş olabileceğinden tek bir yeniden deneme gerçekleştirin.<br><br>2. yeniden deneme başarısız olursa, Son Kullanıcı Kullanıcı arabirimini yeniden denemeyi çağıran özel hataya göre sunun ("yeniden oturum açmayı deneyin", "Azure AD Broker uygulamasını Indir" vb.). |
 
 > [!IMPORTANT]
-> Bir kullanıcı hesabı sessiz bir aramada ADAL'a aktarılır ve başarısız olursa, sonraki etkileşimli istek son kullanıcının farklı bir hesap kullanarak oturum açmasına olanak tanır. Bir kullanıcı hesabı kullanarak başarılı bir Edinme Token'den sonra, uygulamanın oturum açmış kullanıcının uygulamaların yerel kullanıcı nesnesi ile eşleştiğini doğrulaması gerekir. Uyuşmazlık bir özel durum oluşturmaz (Amaç C hariç), ancak kullanıcının kimlik doğrulama isteklerinden önce yerel olarak bilindiği durumlarda (başarısız sessiz arama gibi) göz önünde bulundurulmalıdır.
+> Bir kullanıcı hesabı bir sessiz çağrıda ADAL öğesine geçirilirse ve başarısız olursa, sonraki etkileşimli istek, son kullanıcının farklı bir hesap kullanarak oturum açmasına olanak tanır. Başarılı bir AcquireToken bir kullanıcı hesabı kullanarak, uygulamanın oturum açmış kullanıcının, uygulamaların yerel kullanıcı nesnesiyle eşleşip eşleşmediğini doğrulaması gerekir. Uyuşmazlık bir özel durum oluşturmaz (hedef C dışında), ancak kimlik doğrulama isteklerinden önce (başarısız sessiz çağrı gibi) bir kullanıcının yerel olarak bilinen olduğu durumlarda göz önünde bulundurulmalıdır.
 >
 
 #### <a name="net"></a>.NET
 
-Aşağıdaki kılavuz, sessiz olmayan tüm AcquireToken(...) ile birlikte hata işleme örnekleri sağlar. ADAL yöntemleri, *hariç:* 
+Aşağıdaki kılavuz, tüm sessiz AcquireToken (...) ile birlikte hata işleme örnekleri sağlar ADAL yöntemleri şunları *hariç*: 
 
-- EdinmeTokenAsync(..., IClientAssertionCertification, ...)
-- EdinmeTokenAsync(..., ClientCredential, ...)
-- EdinmeTokenAsync(..., Müşteri İddiası, ...)
-- EdinmeTokenAsync(..., UserAssertion,...)   
+- AcquireTokenAsync (..., ılientassertioncertification,...)
+- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync (..., ClientAssertion,...)
+- AcquireTokenAsync (..., UserAssertion,...)   
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```csharp
 try {
@@ -249,14 +249,14 @@ catch (AdalException e) {
 ```
 
 > [!NOTE]
-> ADAL .NET, AcquireTokenSilent gibi davranışları olan PromptBehavior.Never'i desteklediği için ekstra bir değerlendirmeye sahiptir.
+> ADAL .NET, PromptBehavior 'ı desteklediğine yönelik ek bir konudur. Bu, AcquireTokenSilent gibi davranışa sahiptir.
 >
 
-Aşağıdaki kılavuz, ADAL yöntemleri ile birlikte hata işleme örnekleri sağlar: 
+Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
-- edinmeToken(..., PromptBehavior.Never)
+- acquireToken (..., PromptBehavior. hiç)
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```csharp
     try {acquireToken(…, PromptBehavior.Never);
@@ -286,9 +286,9 @@ catch(AdalServiceException e) {
 
 #### <a name="android"></a>Android
 
-Aşağıdaki kılavuz, sessiz olmayan tüm AcquireToken(...) ile birlikte hata işleme örnekleri sağlar. ADAL yöntemleri. 
+Aşağıdaki kılavuz, tüm sessiz AcquireToken (...) ile birlikte hata işleme örnekleri sağlar ADAL yöntemleri. 
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```java
 AcquireTokenAsync(…);
@@ -315,9 +315,9 @@ public void onError(Exception e) {
 
 #### <a name="ios"></a>iOS
 
-Aşağıdaki kılavuz, sessiz olmayan tüm AcquireToken(...) ile birlikte hata işleme örnekleri sağlar. ADAL yöntemleri. 
+Aşağıdaki kılavuz, tüm sessiz AcquireToken (...) ile birlikte hata işleme örnekleri sağlar ADAL yöntemleri. 
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```objc
 [context acquireTokenWithResource:[ARGS], completionBlock:^(ADAuthenticationResult *result) {
@@ -340,15 +340,15 @@ Kodunuz aşağıdaki gibi uygulanacaktır:
 }]
 ```
 
-### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>Hata durumları ve işlem yapılabilir adımlar: Kaynak API(.NET) olarak adlandıran Web uygulamaları
+### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>Hata durumları ve eyleme dönüştürülebilir adımlar: bir kaynak API 'SI çağıran Web uygulamaları (.NET)
 
-Bir .NET web uygulaması oluşturuyorsanız, aramalar bir kaynak için yetkilendirme kodu kullanarak bir belirteç alır, gereken tek kod genel servis talebi için varsayılan işleyicidir. 
+Çağıran bir .NET Web uygulaması oluşturuyorsanız, bir kaynak için yetkilendirme kodu kullanarak bir belirteç alır, yalnızca genel durum için gereken tek kod varsayılan bir işleyicidir. 
 
-Aşağıdaki kılavuz, ADAL yöntemleri ile birlikte hata işleme örnekleri sağlar: 
+Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
-- EdinmeTokenByAuthorizationCodeAsync(...)
+- AcquireTokenByAuthorizationCodeAsync (...)
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```csharp
 try {
@@ -365,19 +365,19 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Hata durumları ve işlem yapılabilir adımlar: Tek sayfalı uygulamalar (adal.js)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Hata durumları ve eyleme dönüştürülebilir adımlar: tek sayfalı uygulamalar (ADAL. js)
 
-AcquireToken ile adal.js kullanarak tek sayfalık bir uygulama oluşturuyorsanız, hata işleme kodu tipik bir sessiz aramanınkine benzer. Özellikle adal.js, AcquireToken bir UI gösterir asla. 
+AcquireToken ile adal. js ' yi kullanarak tek sayfalı bir uygulama oluşturuyorsanız hata işleme kodu tipik bir sessiz çağrıdan benzerdir. Özellikle adal. js ' de, AcquireToken hiçbir koşulda Kullanıcı arabirimini göstermez. 
 
-Başarısız bir AcquireToken aşağıdaki durumlarda vardır:
+Başarısız bir AcquireToken aşağıdaki durumları içerir:
 
 |  |  |
 |------|-------------|
-| **Örnek 1**:<br>Etkileşimli bir istekle çözülebilir | 1. Giriş() başarısız olursa, hemen yeniden deneme yapmayın. Yalnızca kullanıcı eylemi yeniden denemeyi İstedikten sonra yeniden deneyin.|
-| **Örnek 2**:<br>Etkileşimli bir istekle çözülemez değil. Hata yeniden denilebilir. | 1. Son kullanıcı büyük bir başarı ile sonuçlanan bir duruma girmiş gibi tek bir yeniden deneyin.<br><br>2. Yeniden deneme başarısız olursa, son kullanıcıya yeniden deneme gerektirebilecek belirli bir hataya dayalı bir eylem sunun ("Yeniden oturum açmayı deneyin"). |
-| **Örnek 3**:<br>Etkileşimli bir istekle çözülemez değil. Hata yeniden deneebilir değildir. | 1. Hemen yeniden denemeye çalışmayın. Son kullanıcıya, yeniden deneme yi çağırabilecek belirli bir hataya dayalı bir eylem sunun ("Yeniden Oturum Açmayı Deneyin"). |
+| **Durum 1**:<br>Etkileşimli bir istek ile çözülebilir | 1. oturum açma () başarısız olursa, anında yeniden deneme gerçekleştirmeyin. Yalnızca Kullanıcı eylemi bir yeniden denemeye girdikten sonra yeniden deneyin.|
+| **Durum 2**:<br>Etkileşimli bir istek ile çözümlenemez. Hata yeniden denenebilir. | 1. Son Kullanıcı büyük bir başarı ile sonuçlanan bir durum girdiğinden tek bir yeniden deneme gerçekleştirin.<br><br>2. yeniden deneme başarısız olursa, son kullanıcıyı yeniden denemeyi çağırabilen belirli bir hataya göre bir eylem ile sunun ("yeniden oturum açmayı deneyin"). |
+| **Durum 3**:<br>Etkileşimli bir istek ile çözümlenemez. Hata yeniden denenmedi. | 1. anında yeniden denemeyi denemeyin. Son kullanıcıyı, yeniden deneme çağırabilen belirli bir hataya göre bir eylem ile sunun ("yeniden oturum açmayı deneyin"). |
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```javascript
 AuthContext.acquireToken(…, function(error, errorDesc, token) {
@@ -402,25 +402,25 @@ AuthContext.acquireToken(…, function(error, errorDesc, token) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-service-to-service-applications-net-only"></a>Hata durumları ve işlem yapılabilir adımlar: hizmete yönelik uygulamalar (yalnızca.NET)
+### <a name="error-cases-and-actionable-steps-service-to-service-applications-net-only"></a>Hata durumları ve eyleme dönüştürülebilir adımlar: hizmetten hizmete uygulamalar (yalnızca .NET)
 
-Edinme Token'i kullanan bir servise hizmet uygulaması oluşturuyorsanız, kodunuzu işlemesi gereken birkaç önemli hata vardır. Hatanın tek yolu, hatayı arama uygulamasına geri döndürmek (servis talepleri adına) veya yeniden deneme stratejisi uygulamaktır. 
+AcquireToken kullanan bir hizmet-hizmet uygulaması oluşturuyorsanız, kodunuzun işlemesi gereken birkaç temel hata vardır. Hata için tek yanıt, hatayı çağıran uygulamaya geri döndürmeli (örneğin, şirket içi) veya yeniden deneme stratejisi uygular. 
 
 #### <a name="all-scenarios"></a>Tüm senaryolar
 
-Adına dahil olmak üzere *tüm* hizmet-servis uygulama senaryoları için:
+-Adına dahil olmak üzere *Tüm* hizmetten hizmete uygulama senaryoları için:
 
-- Hemen yeniden denemeye çalışmayın. ADAL, belirli başarısız istekler için tek bir yeniden deneme dener. 
-- Yalnızca bir kullanıcı veya uygulama eylemi yeniden deneme yistemledikten sonra yeniden denemeye devam edin. Örneğin, belirli bir aralıkta çalışan bir daemon uygulaması yeniden denemek için bir sonraki arayla beklemeniz gerekir.
+- Anında yeniden denemeye çalışmayın. ADAL, başarısız olan bazı istekler için tek bir yeniden denemeye çalışır. 
+- Yalnızca bir kullanıcı veya uygulama eylemi bir yeniden denemeye girdikten sonra denemeye devam edin. Örneğin, bazı küme aralıklarında çalışan bir Daemon uygulaması, yeniden denenene kadar bir sonraki aralığa kadar beklemelidir.
 
-Aşağıdaki kılavuz, ADAL yöntemleri ile birlikte hata işleme örnekleri sağlar: 
+Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
-- EdinmeTokenAsync(..., IClientAssertionCertification, ...)
-- EdinmeTokenAsync(...,ClientCredential, ...)
-- EdinmeTokenAsync(...,Müşteri İddiası, ...)
-- EdinmeTokenAsync(...,Kullanıcı İddiası, ...)
+- AcquireTokenAsync (..., ılientassertioncertification,...)
+- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync (..., ClientAssertion,...)
+- AcquireTokenAsync (..., UserAssertion,...)
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```csharp
 try {
@@ -437,15 +437,15 @@ catch (AdalException e) {
 }  
 ```
 
-#### <a name="on-behalf-of-scenarios"></a>Senaryolar adına
+#### <a name="on-behalf-of-scenarios"></a>Şirket adına senaryolar
 
-Hizmete hizmet uygulama senaryoları *adına.*
+*Adına* hizmet-hizmet uygulama senaryoları için.
 
-Aşağıdaki kılavuz, ADAL yöntemleri ile birlikte hata işleme örnekleri sağlar: 
+Aşağıdaki kılavuz, ADAL yöntemleriyle birlikte hata işleme örnekleri sağlar: 
 
-- EdinmeTokenAsync(..., UserAssertion, ...)
+- AcquireTokenAsync (..., UserAssertion,...)
 
-Kodunuz aşağıdaki gibi uygulanacaktır:
+Kodunuz aşağıdaki gibi uygulanır:
 
 ```csharp
 try {
@@ -477,36 +477,36 @@ catch (AdalException e) {
 }
 ```
 
-Bu senaryoyu gösteren tam bir [örnek](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) yaptık.
+Bu senaryoyu gösteren bir [bütün örnek](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) oluşturduk.
 
-## <a name="error-and-logging-reference"></a>Hata ve günlük başvurusu
+## <a name="error-and-logging-reference"></a>Hata ve günlüğe kaydetme başvurusu
 
-### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>Kişisel Tanımlanabilir Bilgileri & Kuruluş Tanımlı Bilgileri Kaydetme 
-Varsayılan olarak, ADAL günlük yakalamaz veya herhangi bir kişisel tanımlanabilir bilgi veya kurumsal tanımlanabilir bilgi günlüğe kaydetmez. Kitaplık, uygulama geliştiricilerin logger sınıfındabir ayarlayıcı aracılığıyla bu açmak için izin verir. Uygulama, kişisel tanımlanabilir bilgileri veya kuruluş tarafından tanımlanabilir bilgileri günlüğe kaydederek, son derece hassas verileri güvenli bir şekilde kullanma ve tüm yasal gerekliliklere uyma sorumluluğunu üstleniyor.
+### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>Kişisel olarak tanımlanabilen bilgileri & kurumsal olarak tanımlanabilen bilgileri günlüğe kaydetme 
+ADAL günlüğü, varsayılan olarak, kişisel olarak tanımlanabilen bilgileri veya kurumsal olarak tanımlanabilen bilgileri yakalamaz veya günlüğe almaz. Kitaplık, uygulama geliştiricilerinin günlükçü sınıfındaki bir ayarlayıcı aracılığıyla bunu açmasına olanak sağlar. Uygulama, kişisel olarak tanımlanabilir bilgileri veya kurumsal olarak tanımlanabilen bilgileri günlüğe kaydederek, yüksek oranda hassas verileri güvenli bir şekilde işlemek ve herhangi bir düzenleme gereksinimleriyle uyumlu olmak için sorumluluk kazanır
 
 ### <a name="net"></a>.NET
 
-#### <a name="adal-library-errors"></a>ADAL kitaplık hataları
+#### <a name="adal-library-errors"></a>ADAL kitaplığı hataları
 
-Belirli ADAL hatalarını keşfetmek [için, azure-activedirectory-library-for-dotnet deposundaki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/8f6d560fbede2247ec0e217a21f6929d4375dcaa/src/ADAL.PCL/Utilities/Constants.cs#L58) kaynak kodu en iyi hata başvurusudur.
+Belirli ADAL hatalarını araştırmak için, [Azure-ActiveDirectory-Library-for-DotNet deposundaki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/8f6d560fbede2247ec0e217a21f6929d4375dcaa/src/ADAL.PCL/Utilities/Constants.cs#L58) kaynak kodu en iyi hata başvurusudur.
 
-#### <a name="guidance-for-error-logging-code"></a>Hata günlüğe kaydetme kodu kılavuzu
+#### <a name="guidance-for-error-logging-code"></a>Hata günlüğü kodu için kılavuz
 
-ADAL .NET günlük, üzerinde çalışılan platforma bağlı olarak değişir. Günlük günlüğe kaydetmeyi etkinleştirme hakkında kod için [Günlük wiki'sine](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) bakın.
+ADAL .NET günlüğü, üzerinde çalışılan platforma bağlı olarak değişir. Günlüğe kaydetmenin nasıl etkinleştirileceği hakkında kod için [günlük wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) bölümüne bakın.
 
 ### <a name="android"></a>Android
 
-#### <a name="adal-library-errors"></a>ADAL kitaplık hataları
+#### <a name="adal-library-errors"></a>ADAL kitaplığı hataları
 
-Belirli ADAL hatalarını keşfetmek [için, azure-activedirectory-library-for-android deposundaki](https://github.com/AzureAD/azure-activedirectory-library-for-android/blob/dev/adal/src/main/java/com/microsoft/aad/adal/ADALError.java#L33) kaynak kodu en iyi hata başvurusudur.
+Belirli ADAL hatalarını araştırmak için, [Azure-ActiveDirectory-Library-for-Android deposundaki](https://github.com/AzureAD/azure-activedirectory-library-for-android/blob/dev/adal/src/main/java/com/microsoft/aad/adal/ADALError.java#L33) kaynak kodu en iyi hata başvurusudur.
 
-#### <a name="operating-system-errors"></a>İşletim Sistemi hataları
+#### <a name="operating-system-errors"></a>İşletim sistemi hataları
 
-Android işletim sistemi hataları ADAL AuthenticationException ile maruz kalır, "SERVER_INVALID_REQUEST" olarak tanımlanabilir ve hata açıklamaları ile daha ayrıntılı olabilir. 
+Android işletim sistemi hataları ADAL içinde AuthenticationException aracılığıyla gösterilir, "SERVER_INVALID_REQUEST" olarak tanımlanabilir ve hata açıklamalarıyla daha ayrıntılı olabilir. 
 
-Yaygın hataların tam listesi ve uygulamanız veya son kullanıcılar bunlarla karşılaştığında hangi adımları niçin atması gerektiğini n [için ADAL Android Wiki'ye](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki)bakın. 
+Yaygın hataların tam listesi ve uygulamanız veya son kullanıcılarınız bu sorunlarla karşılaştığında, [adal Android wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki)' ye başvurun. 
 
-#### <a name="guidance-for-error-logging-code"></a>Hata günlüğe kaydetme kodu kılavuzu
+#### <a name="guidance-for-error-logging-code"></a>Hata günlüğü kodu için kılavuz
 
 ```java
 // 1. Configure Logger
@@ -537,19 +537,19 @@ adb logcat > "C:\logmsg\logfile.txt";
 
 ### <a name="ios"></a>iOS
 
-#### <a name="adal-library-errors"></a>ADAL kitaplık hataları
+#### <a name="adal-library-errors"></a>ADAL kitaplığı hataları
 
-Belirli ADAL hatalarını keşfetmek için [azure-activedirectory-library-for-objc deposundaki](https://github.com/AzureAD/azure-activedirectory-library-for-objc/blob/dev/ADAL/src/ADAuthenticationError.m#L295) kaynak kodu en iyi hata başvurusudur.
+Belirli ADAL hatalarını araştırmak için, [Azure-ActiveDirectory-Library-for-ObjC deposundaki](https://github.com/AzureAD/azure-activedirectory-library-for-objc/blob/dev/ADAL/src/ADAuthenticationError.m#L295) kaynak kodu en iyi hata başvurusudur.
 
 #### <a name="operating-system-errors"></a>İşletim sistemi hataları
 
-oturum açma sırasında kullanıcılar web görünümlerini ve kimlik doğrulamanın doğasını kullanan iOS hataları ortaya çıkabilir. Bunun nedeni TLS hataları, zaman ekmeleri veya ağ hataları gibi koşullar olabilir:
+Kullanıcılar Web görünümlerini ve kimlik doğrulamanın yapısını kullanırken oturum açma sırasında iOS hataları ortaya çıkabilir. Bu durum TLS hataları, zaman aşımları veya ağ hataları gibi koşullardan kaynaklanabilir:
 
-- Yetkilendirme Paylaşımı için oturum açmakalıcı değildir ve önbellek boş görünür. Anahtarlığa şeni şekene şeni ekleyerek çözüm`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
-- NsUrlDomain hata kümesi için eylem uygulama mantığına bağlı olarak değişir. Ele alınabilecek belirli örnekler için [NSURLErrorDomain başvuru belgelerine](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) bakın.
-- ADAL Objective-C ekibi tarafından tutulan yaygın hatalar listesi için [ADAL Obj-C Sık Karşılaşılan Sorunlar](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) bölümüne bakın.
+- Yetkilendirme paylaşımı için, oturum açmalar kalıcı değildir ve önbellek boş görünür. Aşağıdaki kod satırını anahtarlığa ekleyerek çözebilirsiniz:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- NsUrlDomain hata kümesi için eylem, uygulama mantığına göre değişir. İşlenebilen belirli örnekler için [Nsurlerrordomain başvuru belgelerine](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) bakın.
+- ADAL hedefi-C ekibi tarafından tutulan yaygın hataların listesi için [adal obj-c ortak sorunları](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) bölümüne bakın.
 
-#### <a name="guidance-for-error-logging-code"></a>Hata günlüğe kaydetme kodu kılavuzu
+#### <a name="guidance-for-error-logging-code"></a>Hata günlüğü kodu için kılavuz
 
 ```objc
 // 1. Enable NSLogging
@@ -565,7 +565,7 @@ oturum açma sırasında kullanıcılar web görünümlerini ve kimlik doğrulam
 }];
 ```
 
-### <a name="guidance-for-error-logging-code---javascript"></a>Hata günlüğü kodu için kılavuz - JavaScript 
+### <a name="guidance-for-error-logging-code---javascript"></a>Hata günlüğü kodu için kılavuz-JavaScript 
 
 ```javascript
 0: Error1: Warning2: Info3: Verbose
@@ -580,12 +580,12 @@ window.Logging = {
 ## <a name="related-content"></a>İlgili içerik
 
 * [Azure AD Kimlik Doğrulama Kitaplıkları][AAD-Auth-Libraries]
-* [Azure AD Kimlik Doğrulama Senaryoları][AAD-Auth-Scenarios]
-* [Uygulamaları Azure Etkin Dizini ile Tümleştirme][AAD-Integrating-Apps]
+* [Azure AD kimlik doğrulama senaryoları][AAD-Auth-Scenarios]
+* [Uygulamaları Azure Active Directory tümleştirme][AAD-Integrating-Apps]
 
-Geri bildirim sağlamak ve içeriğimizi geliştirmemize ve şekillendirmemize yardımcı olmak için aşağıdaki yorumlar bölümünü kullanın.
+Geri bildirim sağlamak ve içeriğimizi iyileştirmemizi ve şekillendirmemize yardımcı olmak için aşağıdaki açıklamalar bölümünü kullanın.
 
-[!["Microsoft ile oturum aç" düğmesini gösterir][AAD-Sign-In]][AAD-Sign-In]
+[!["Microsoft hesabıyla oturum açın" düğmesini gösterir][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

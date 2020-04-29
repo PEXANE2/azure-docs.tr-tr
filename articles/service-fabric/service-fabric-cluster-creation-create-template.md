@@ -1,39 +1,39 @@
 ---
-title: Azure Hizmet Dokusu küme şablonu oluşturma
-description: Hizmet Kumaşı kümesi için Kaynak Yöneticisi şablonu oluşturmayı öğrenin. İstemci kimlik doğrulaması için güvenliği, Azure Anahtar Kasası'nı ve Azure Etkin Dizinini (Azure AD) yapılandırın.
+title: Azure Service Fabric küme şablonu oluşturma
+description: Bir Service Fabric kümesi için Kaynak Yöneticisi şablonu oluşturmayı öğrenin. İstemci kimlik doğrulaması için güvenliği, Azure Key Vault ve Azure Active Directory (Azure AD) yapılandırın.
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985380"
 ---
-# <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Hizmet Dokusu küme Kaynak Yöneticisi şablonu oluşturma
+# <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric kümesi Kaynak Yöneticisi şablonu oluşturma
 
-[Azure Hizmet Kumaşı kümesi,](service-fabric-deploy-anywhere.md) mikro hizmetlerinizin dağıtıldığı ve yönetildiği ağa bağlı sanal makineler kümesidir. Azure'da çalışan Bir Hizmet Dokusu kümesi Bir Azure kaynağıdır ve Kaynak Yöneticisi kullanılarak dağıtılır, yönetilir ve izlenir.  Bu makalede, Azure'da çalışan bir Hizmet Dokusu kümesi için Kaynak Yöneticisi şablonu nasıl oluşturululur.  Şablon tamamlandığında, [kümeyi Azure'da dağıtabilirsiniz.](service-fabric-cluster-creation-via-arm.md)
+[Azure Service Fabric kümesi](service-fabric-deploy-anywhere.md) , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal makineler kümesidir. Azure 'da çalışan bir Service Fabric kümesi, Azure kaynağıdır ve Kaynak Yöneticisi kullanılarak dağıtılır, yönetilir ve izlenir.  Bu makalede, Azure 'da çalışan bir Service Fabric kümesi için Kaynak Yöneticisi şablonu oluşturma açıklanır.  Şablon tamamlandığında, [kümeyi Azure 'da dağıtabilirsiniz](service-fabric-cluster-creation-via-arm.md).
 
-Küme ilk ayarlandığında küme güvenliği yapılandırılır ve daha sonra değiştirilemez. Küme kurmadan önce [Service Fabric küme güvenlik senaryolarını][service-fabric-cluster-security]okuyun. Azure'da Service Fabric, kümenizi ve uç noktalarını güvence altına almak, istemcileri doğrulamak ve verileri şifrelemek için x509 sertifikasını kullanır. Azure Etkin Dizin iyönetimi bitiş noktalarına erişimi güvence altına almak için de önerilir. Kümeyi oluşturmadan önce Azure AD kiracıları ve kullanıcıları oluşturulmalıdır.  Daha fazla bilgi [için, istemcilerin kimliğini doğrulamak için Azure AD'yi ayarla'yı](service-fabric-cluster-creation-setup-aad.md)okuyun.
+Küme güvenliği, küme ilk kez ayarlandığında yapılandırılır ve daha sonra değiştirilemez. Bir küme ayarlamadan önce [Service Fabric küme güvenliği senaryolarını][service-fabric-cluster-security]okuyun. Azure 'da Service Fabric, kümenizin ve uç noktalarının güvenliğini sağlamak, istemcilerin kimliğini doğrulamak ve verileri şifrelemek için x509 sertifikası kullanır. Yönetim uç noktalarına erişimin güvenliğini sağlamak için de Azure Active Directory önerilir. Kümeyi oluşturmadan önce Azure AD kiracılarının ve kullanıcılarının oluşturulması gerekir.  Daha fazla bilgi için, [istemcilerin kimliğini doğrulamak üzere Azure AD ayarlama](service-fabric-cluster-creation-setup-aad.md)makalesini okuyun.
 
-Üretim iş yüklerini çalıştırmak için bir üretim kümesi dağıtmadan önce, önce [Üretime hazırlık denetim listesini](service-fabric-production-readiness-checklist.md)okuduğunuzdan emin olun.
+Üretim iş yüklerini çalıştırmak için bir üretim kümesi dağıtılmadan önce, ilk olarak [Üretim hazırlığı denetim listesini](service-fabric-production-readiness-checklist.md)okuduğunuzdan emin olun.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>Resource Manager şablonu oluşturma
-Örnek Kaynak Yöneticisi şablonları [GitHub'daki Azure örneklerinde](https://github.com/Azure-Samples/service-fabric-cluster-templates)kullanılabilir. Bu şablonlar küme şablonunuzun başlangıç noktası olarak kullanılabilir.
+Örnek Kaynak Yöneticisi şablonlar [GitHub 'Daki Azure örneklerinde](https://github.com/Azure-Samples/service-fabric-cluster-templates)bulunabilir. Bu şablonlar, küme şablonunuz için bir başlangıç noktası olarak kullanılabilir.
 
-Bu [makalede, beş düğümlü güvenli küme][service-fabric-secure-cluster-5-node-1-nodetype] örnek şablonu ve şablon parametreleri kullanılır. *Azuredeploy.json* ve *azuredeploy.parameters.json'u* bilgisayarınıza indirin ve en sevdiğiniz metin düzenleyicisinde her iki dosyayı da açın.
+Bu makale [beş düğümlü güvenli küme][service-fabric-secure-cluster-5-node-1-nodetype] örnek şablonunu ve şablon parametrelerini kullanır. *Azuredeploy. JSON* ve *azuredeploy. Parameters. JSON* dosyasını bilgisayarınıza indirin ve her iki dosyayı da en sevdiğiniz metin düzenleyicisinde açın.
 
 > [!NOTE]
-> Ulusal bulutlar için (Azure Devlet, Azure Çin, Azure `fabricSettings` Almanya), şablonunuza aşağıdakileri de eklemelisiniz: `AADLoginEndpoint` `AADTokenEndpointFormat` ve `AADCertEndpointFormat`.
+> `fabricSettings` Ulusal bulutlarda (Azure Kamu, Azure Çin, Azure Almanya), aşağıdakileri şablonunuza de eklemeniz gerekir: `AADLoginEndpoint`, `AADTokenEndpointFormat` ve. `AADCertEndpointFormat`
 
-## <a name="add-certificates"></a>Sertifika ekleme
-Sertifika anahtarlarını içeren anahtar kasasına başvurarak küme Kaynak Yöneticisi şablonuna sertifika eklersiniz. Bu anahtar kasa parametrelerini ve değerlerini Kaynak Yöneticisi şablon parametreleri dosyasına ekleyin *(azuredeploy.parameters.json*).
+## <a name="add-certificates"></a>Sertifika ekle
+Sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna sertifikalar eklersiniz. Bu Anahtar Kasası parametrelerini ve değerlerini bir Kaynak Yöneticisi şablon parametreleri dosyasına (*azuredeploy. Parameters. JSON*) ekleyin.
 
-### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Sanal makine ölçeği kümesi osProfile tüm sertifikaları ekleyin
-Kümede yüklü olan her sertifika, ölçek kümesi kaynağının (Microsoft.Compute/virtualMachineScaleSets) **osProfile** bölümünde yapılandırılmalıdır. Bu eylem, kaynak sağlayıcısına sertifikayı VM'lere yüklemesini bildirir. Bu yükleme, hem küme sertifikasını hem de uygulamalarınız için kullanmayı planladığınız uygulama güvenlik sertifikalarını içerir:
+### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Tüm sertifikaları sanal makine ölçek kümesi osProfile 'e Ekle
+Kümede yüklü olan her sertifikanın, ölçek kümesi kaynağının **Osprofile** bölümünde (Microsoft. COMPUTE/virtualMachineScaleSets) yapılandırılması gerekir. Bu eylem, kaynak sağlayıcısına sertifikayı VM 'Lere yüklemesini söyler. Bu yükleme, hem küme sertifikasını hem de uygulamalarınız için kullanmayı planladığınız uygulama güvenlik sertifikalarını içerir:
 
 ```json
 {
@@ -67,11 +67,11 @@ Kümede yüklü olan her sertifika, ölçek kümesi kaynağının (Microsoft.Com
 }
 ```
 
-### <a name="configure-the-service-fabric-cluster-certificate"></a>Hizmet Kumaşı küme sertifikasını yapılandırma
+### <a name="configure-the-service-fabric-cluster-certificate"></a>Service Fabric kümesi sertifikasını yapılandırma
 
-Küme kimlik doğrulama sertifikası, sanal makine ölçeği kümesi kaynağındaki sanal makine ölçeği kümekümeleri için Hizmet Kumaşı küme kaynağında (Microsoft.ServiceFabric/clusters) hem de Hizmet Kumaşı uzantısında yapılandırılmalıdır. Bu düzenleme, Service Fabric kaynak sağlayıcısının küme kimlik doğrulaması ve yönetim bitiş noktaları için sunucu kimlik doğrulaması için kullanılmak üzere yapılandırmasına olanak tanır.
+Küme kimlik doğrulama sertifikası, sanal makine ölçek kümesi kaynağındaki sanal makine ölçek kümeleri için hem Service Fabric küme kaynağında (Microsoft. ServiceFabric/kümeler) hem de Service Fabric uzantısında yapılandırılmalıdır. Bu düzenleme Service Fabric kaynak sağlayıcısının yönetim uç noktaları için küme kimlik doğrulaması ve sunucu kimlik doğrulaması için kullanılmak üzere yapılandırmasını sağlar.
 
-#### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>Sertifika bilgilerini sanal makine ölçeği ayar kaynağı ekleme
+#### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>Sanal Makine Ölçek Kümesi kaynağı sertifika bilgilerini ekleyin
 
 ```json
 {
@@ -104,7 +104,7 @@ Küme kimlik doğrulama sertifikası, sanal makine ölçeği kümesi kaynağınd
 }
 ```
 
-#### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Sertifika bilgilerini Hizmet Kumaşı küme kaynağına ekleme
+#### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Service Fabric küme kaynağına sertifika bilgilerini ekleyin
 
 ```json
 {
@@ -130,12 +130,12 @@ Küme kimlik doğrulama sertifikası, sanal makine ölçeği kümesi kaynağınd
 }
 ```
 
-## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>İstemci erişimi için Azure AD'yi kullanmak için Azure AD yapılandırması ekleme
+## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>İstemci erişimi için Azure AD 'yi kullanmak üzere Azure AD yapılandırması ekleme
 
-Sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna Azure AD yapılandırmasını eklersiniz. Bu Azure AD parametrelerini ve değerlerini Kaynak Yöneticisi şablon parametreleri dosyasına ekleyin (*azuredeploy.parameters.json*). 
+Azure AD yapılandırmasını, sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna eklersiniz. Bu Azure AD parametrelerini ve değerlerini bir Kaynak Yöneticisi şablon parametreleri dosyasına (*azuredeploy. Parameters. JSON*) ekleyin. 
 
 > [!NOTE]
-> Linux'ta, kümeoluşturmadan önce Azure AD kiracıları ve kullanıcıları oluşturulmalıdır.  Daha fazla bilgi [için, istemcilerin kimliğini doğrulamak için Azure AD'yi ayarla'yı](service-fabric-cluster-creation-setup-aad.md)okuyun.
+> Linux 'ta, kümeyi oluşturmadan önce Azure AD kiracılarının ve kullanıcılarının oluşturulması gerekir.  Daha fazla bilgi için, [istemcilerin kimliğini doğrulamak üzere Azure AD ayarlama](service-fabric-cluster-creation-setup-aad.md)makalesini okuyun.
 
 ```json
 {
@@ -164,14 +164,14 @@ Sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak
 }
 ```
 
-## <a name="populate-the-parameter-file-with-the-values"></a>Parametre dosyasını değerlerle doldurma
+## <a name="populate-the-parameter-file-with-the-values"></a>Parametre dosyasını değerlerle doldurun
 
-Son olarak, parametre dosyasını doldurmak için anahtar kasasından ve Azure AD PowerShell komutlarından çıktı değerlerini kullanın.
+Son olarak, parametreler dosyasını doldurmak için anahtar kasası ve Azure AD PowerShell komutlarıyla çıkış değerlerini kullanın.
 
-Azure hizmet kumaşı RM PowerShell modüllerini kullanmayı planlıyorsanız, küme sertifikası bilgilerini doldurmanız gerekmez. Sistemin küme güvenliği için kendi imzalı sertifikasını oluşturmasını istiyorsanız, bunları null olarak saklamanız. 
+Azure Service Fabric RM PowerShell modüllerini kullanmayı planlıyorsanız, küme sertifikası bilgilerini doldurmanıza gerek yoktur. Sistemin küme güvenliği için otomatik olarak imzalanan sertifika oluşturmasını istiyorsanız, bunları null olarak tutmanız yeterlidir. 
 
 > [!NOTE]
-> RM modüllerinin bu boş parametre değerlerini alıp doldurması için, parametreler inadları aşağıdaki adlarla çok eşleşir
+> RM modüllerinin bu boş parametre değerlerini seçmesini ve doldurması için, parametre adları aşağıdaki adlarla çok eşleşir
 
 ```json
 "clusterCertificateThumbprint": {
@@ -188,9 +188,9 @@ Azure hizmet kumaşı RM PowerShell modüllerini kullanmayı planlıyorsanız, k
 },
 ```
 
-Uygulama sertifikalarını kullanıyorsanız veya anahtar kasasına yüklediğiniz varolan bir küme kullanıyorsanız, bu bilgileri alıp doldurmanız gerekir.
+Uygulama sertifikalarını kullanıyorsanız veya anahtar kasasında karşıya yüklediğiniz mevcut bir kümeyi kullanıyorsanız, bu bilgileri almanız ve doldurmanız gerekir.
 
-RM modülleri sizin için Azure AD yapılandırmasını oluşturamaz, bu nedenle müşteri erişimi için Azure AD'yi kullanmayı planlıyorsanız, bu yapılandırmayı doldurmanız gerekir.
+RM modüllerinin sizin için Azure AD yapılandırması oluşturma yeteneği yoktur; bu nedenle, istemci erişimi için Azure AD 'yi kullanmayı planlıyorsanız, doldurmanız gerekir.
 
 ```json
 {
@@ -230,33 +230,33 @@ RM modülleri sizin için Azure AD yapılandırmasını oluşturamaz, bu nedenle
 }
 ```
 
-## <a name="test-your-template"></a>Şablonunuzu test edin
-Kaynak Yöneticisi şablonunuzu parametre dosyasıyla sınamak için aşağıdaki PowerShell komutunu kullanın:
+## <a name="test-your-template"></a>Şablonunuzu test etme
+Kaynak Yöneticisi şablonunuzu bir parametre dosyası ile test etmek için aşağıdaki PowerShell komutunu kullanın:
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
-Sorunlarla karşılaştığınızda ve şifreli iletiler alırsanız, seçenek olarak "Hata Ayıklama"yı kullanın.
+Sorunlarla karşılaşmanıza ve şifreli mesajlar almanıza ve ardından "-Debug" seçeneğini bir seçenek olarak kullanmanız gerekir.
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
-Aşağıdaki diyagram, anahtar kasanızın ve Azure AD yapılandırmanızın Kaynak Yöneticisi şablonunuza nerede uyduğunu gösterir.
+Aşağıdaki diyagramda, anahtar kasanızın ve Azure AD yapılandırmanızın Kaynak Yöneticisi şablonunuz nerede olduğu gösterilmektedir.
 
-![Kaynak Yöneticisi bağımlılık haritası][cluster-security-arm-dependency-map]
+![Kaynak Yöneticisi bağımlılık eşlemesi][cluster-security-arm-dependency-map]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kümeniz için bir şablonunuzun olduğuna göre, [kümeyi Azure'a nasıl dağıtabileceğinizi](service-fabric-cluster-creation-via-arm.md)öğrenin.  Henüz yapmadıysanız, üretim kümesini dağıtmadan önce [Üretime hazırlık denetim listesini](service-fabric-production-readiness-checklist.md) okuyun.
+Kümeniz için bir şablonunuz olduğuna göre, [kümeyi Azure 'a dağıtmayı](service-fabric-cluster-creation-via-arm.md)öğrenin.  Henüz yapmadıysanız, üretim kümesi dağıtılmadan önce [Üretim hazırlığı denetim listesini](service-fabric-production-readiness-checklist.md) okuyun.
 
-Bu makalede dağıtılan kaynakların JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz:
+Bu makalede dağıtılan kaynakların JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz.:
 
-* [Microsoft.ServiceFabric/kümeler](/azure/templates/microsoft.servicefabric/clusters)
-* [Microsoft.Storage/storageHesapları](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAdresleri](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft. ServiceFabric/kümeler](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft. Network/Publicıpaddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->

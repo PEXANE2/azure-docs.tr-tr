@@ -1,39 +1,39 @@
 ---
-title: İş sürekliliği planı - QnA Maker
-description: İş sürekliliği planının birincil amacı, Bot veya onu tüketen uygulama için hiçbir kesinti süresi sağlayacak esnek bir bilgi tabanı bitiş noktası oluşturmaktır.
+title: İş sürekliliği planı-Soru-Cevap Oluşturma
+description: İş sürekliliği planının birincil amacı dayanıklı bir bilgi tabanı uç noktası oluşturmaktır, bu, bot veya onu kullanan uygulama için zaman kaybı olmamasını sağlar.
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: 5d1501ecc42fe948959075cec7d728f6c9df908a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80887086"
 ---
-# <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>QnA Maker hizmetiniz için bir iş sürekliliği planı oluşturun
+# <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Soru-Cevap Oluşturma hizmetiniz için bir iş sürekliliği planı oluşturma
 
-İş sürekliliği planının birincil amacı, Bot veya onu tüketen uygulama için hiçbir kesinti süresi sağlayacak esnek bir bilgi tabanı bitiş noktası oluşturmaktır.
+İş sürekliliği planının birincil amacı dayanıklı bir bilgi tabanı uç noktası oluşturmaktır, bu, bot veya onu kullanan uygulama için zaman kaybı olmamasını sağlar.
 
-## <a name="business-continuity-with-traffic-manager"></a>Trafik yöneticisi ile iş sürekliliği
+## <a name="business-continuity-with-traffic-manager"></a>Traffic Manager ile iş sürekliliği
 
 > [!div class="mx-imgBorder"]
-> ![QnA Maker bcp planı](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+> ![Soru-Cevap Oluşturma bcp planı](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
 
-Yukarıda temsil edildiği gibi üst düzey fikir aşağıdaki gibidir:
+Yukarıda gösterilen üst düzey fikir aşağıdaki gibidir:
 
-1. [Azure eşleştirilmiş bölgelerde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)iki paralel [QnA Maker hizmeti](set-up-qnamaker-service-azure.md) ayarlayın.
+1. [Azure eşlenmiş bölgelerde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)iki paralel [soru-cevap oluşturma hizmeti](set-up-qnamaker-service-azure.md) ayarlayın.
 
-2. Birincil QnA Maker App hizmetinizi [yedekleyip](../../../app-service/manage-backup.md) ikincil kurulumda [geri yükleyin.](../../../app-service/web-sites-restore.md) Bu, her iki kurulumun da aynı ana bilgisayar adı ve anahtarlarıyla çalışmasını sağlar.
+2. Birincil Soru-Cevap Oluşturma App Service 'i [yedekleyin](../../../app-service/manage-backup.md) ve ikincil kuruluma [geri yükleyin](../../../app-service/web-sites-restore.md) . Bu, her iki kurulum 'un aynı ana bilgisayar adı ve anahtarlarla çalışmasını sağlayacaktır.
 
-3. Birincil ve ikincil Azure arama dizinlerini eşit tutun. Azure dizinlerini yedeklemek için github örneğini [buradan](https://github.com/pchoudhari/QnAMakerBackupRestore) kullanın.
+3. Birincil ve ikincil Azure arama dizinlerini eşitlenmiş halde tutun. Azure dizinlerini yedekleme ve geri yükleme işlemlerinin nasıl yapılacağını görmek için [burada](https://github.com/pchoudhari/QnAMakerBackupRestore) GitHub örneğini kullanın.
 
-4. [Sürekli dışa aktarmayı](../../../application-insights/app-insights-export-telemetry.md)kullanarak Uygulama Öngörülerini yedekle.
+4. Application Insights [sürekli dışarı aktarma](../../../application-insights/app-insights-export-telemetry.md)kullanarak yedekleyin.
 
-5. Birincil ve ikincil yığınlar ayarlandıktan sonra, iki uç noktayı yapılandırmak ve yönlendirme yöntemi ayarlamak için [trafik yöneticisini](../../../traffic-manager/traffic-manager-overview.md) kullanın.
+5. Birincil ve ikincil yığınlar kurulduktan sonra, iki uç noktayı yapılandırmak ve bir yönlendirme yöntemi ayarlamak için [Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) 'ı kullanın.
 
-6. Trafik yöneticisi bitiş noktanız için daha önce Güvenli Soketkatmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS) oluşturmanız gerekir. [TLS/SSL sertifikasını](../../../app-service/configure-ssl-bindings.md) Uygulama hizmetlerinizde bağla.
+6. Traffic Manager uç noktanız için önceden Güvenli Yuva Katmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS) oluşturmanız gerekir. Uygulama hizmetlerinize [TLS/SSL sertifikası bağlayın](../../../app-service/configure-ssl-bindings.md) .
 
-7. Son olarak, Bot veya Uygulamanızdaki trafik yöneticisi bitiş noktasını kullanın.
+7. Son olarak, bot veya uygulamanızdaki Traffic Manager uç noktasını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: PowerShell'de RDP kullanıcı adını ve parolasını güncelleştirin
+title: PowerShell 'de RDP Kullanıcı adını ve parolasını güncelleştirme
 description: Azure PowerShell Betiği Örneği - Belirli bir düğüm türünün tüm Service Fabric küme düğümleri için RDP kullanıcı adını ve parolasını güncelleştirin.
 services: service-fabric
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80984938"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Bir kümedeki sanal makinelerin yönetici kullanıcı adını ve parolasını güncelleştirme
@@ -39,13 +39,13 @@ Bu betik şu komutları kullanır: Tablodaki her komut, komuta özgü belgelere 
 
 | Komut | Notlar |
 |---|---|
-| [Al-AzVmss](/powershell/module/az.compute/get-azvmss) | Küme düğümü türünün özelliklerini alır (sanal makine ölçek kümesi).   |
-| [Ekle-AzVmssUzatma](/powershell/module/az.compute/add-azvmssextension)| Sanal makine ölçek kümesine bir uzantı ekler.|
-| [Güncelleme-AzVmss](/powershell/module/az.compute/update-azvmss)|Sanal makine ölçek kümesinin durumunu, yerel bir VMSS nesnesinin durumuna güncelleştirir.|
+| [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | Küme düğümü türünün özelliklerini alır (sanal makine ölçek kümesi).   |
+| [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| Sanal makine ölçek kümesine bir uzantı ekler.|
+| [Güncelleştirme-AzVmss](/powershell/module/az.compute/update-azvmss)|Sanal makine ölçek kümesinin durumunu, yerel bir VMSS nesnesinin durumuna güncelleştirir.|
 
 ## <a name="duration"></a>Süre
 
-Örneğin, beş düğümlü tek bir düğüm türü, kullanıcı adını veya parolayı değiştirmek için 45 ila 60 dakikalık bir süreye sahiptir. 
+Beş düğüm içeren tek düğümlü bir tür, örneğin, Kullanıcı adının veya parolanın değiştirilmesi için 60 45 dakikalık bir süreye sahiptir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,51 +1,51 @@
 ---
-title: Azure İşlevleri için depolama yla ilgili hususlar
-description: Azure İşlevlerinin depolama gereksinimleri ve depolanan verileri şifreleme hakkında bilgi edinin.
+title: Azure Işlevleri için depolama konuları
+description: Azure Işlevlerinin depolama gereksinimlerini ve depolanan verileri şifreleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984172"
 ---
-# <a name="storage-considerations-for-azure-functions"></a>Azure İşlevleri için depolama yla ilgili hususlar
+# <a name="storage-considerations-for-azure-functions"></a>Azure Işlevleri için depolama konuları
 
-Azure İşlevler, bir işlev uygulaması örneği oluşturduğunuzda bir Azure Depolama hesabı gerektirir. Aşağıdaki depolama hizmetleri işlev uygulamanız tarafından kullanılabilir:
+Bir işlev uygulaması örneği oluşturduğunuzda Azure Işlevleri bir Azure depolama hesabı gerektirir. Aşağıdaki depolama hizmetleri, işlev uygulamanız tarafından kullanılabilir:
 
 
-|Depolama hizmeti  | Fonksiyonkullanımı  |
+|Depolama hizmeti  | İşlev kullanımı  |
 |---------|---------|
-| [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)     | Bağlama durumunu ve işlev anahtarlarını koruyun.  <br/>[Ayrıca Dayanıklı İşlevler görev hub'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır. |
-| [Azure Dosyalar](../storage/files/storage-files-introduction.md)  | [İşlev](functions-scale.md#consumption-plan)uygulama kodunuzu Tüketim Planı'nda depolamak ve çalıştırmak için kullanılan dosya paylaşımı. |
-| [Azure Sıra depolama](../storage/queues/storage-queues-introduction.md)     | Dayanıklı [İşlevler'de görev hub'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.   |
-| [Azure Tablo depolama](../storage/tables/table-storage-overview.md)  |  Dayanıklı [İşlevler'de görev hub'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.       |
+| [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)     | Bağlama durumu ve işlev anahtarlarını koruyun.  <br/>Ayrıca [, dayanıklı işlevler görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır. |
+| [Azure Dosyalar](../storage/files/storage-files-introduction.md)  | İşlev uygulaması kodunuzu bir [Tüketim planında](functions-scale.md#consumption-plan)depolamak ve çalıştırmak için kullanılan dosya paylaşma. |
+| [Azure kuyruk depolama](../storage/queues/storage-queues-introduction.md)     | [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.   |
+| [Azure Tablo depolama](../storage/tables/table-storage-overview.md)  |  [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.       |
 
 > [!IMPORTANT]
 > Tüketim barındırma planı kullanılırken işlev kodunuz ve bağlama yapılandırma dosyalarınız ana depolama hesabındaki Azure Dosya depolama alanında saklanır. Ana depolama hesabını sildiğinizde bu içerik silinir ve kurtarılamaz.
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
-Bir işlev uygulaması oluştururken, Blob, Queue ve Tablo depolama alanını destekleyen genel amaçlı bir Azure Depolama hesabı oluşturmanız veya bağlantı kurmanız gerekir. Bunun nedeni, Işlevlerin tetikleyicileri yönetme ve işlev yürütmelerini günlüğe kaydetme gibi işlemler için Azure Depolama'ya dayanmasıdır. Bazı depolama hesapları kuyrukları ve tabloları desteklemez. Bu hesaplar, yalnızca blob depolama hesaplarını, Azure Premium Depolama'yı ve ZRS çoğaltma içeren genel amaçlı depolama hesaplarını içerir. Bu desteklenmeyen hesaplar, bir işlev uygulaması oluşturulurken Depolama Hesabı bıyığınızdan filtrelenir.
+Bir işlev uygulaması oluştururken blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerinin günlüğe kaydedilmesini gibi işlemler için Azure Storage 'ı temel aldığından oluşur. Bazı depolama hesapları kuyrukları ve tabloları desteklemez. Bu hesaplar yalnızca BLOB depolama hesapları, Azure Premium Depolama ve ZRS çoğaltması olan genel amaçlı depolama hesapları içerir. Bu desteklenmeyen hesaplar, bir işlev uygulaması oluştururken depolama hesabı dikey penceresinden filtrelenir.
 
 Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Depolama Hizmetlerine Giriş](../storage/common/storage-introduction.md#core-storage-services). 
 
-İşlev uygulamanızla varolan bir depolama hesabı kullanabiliyorken, bu gereksinimleri karşıladığından emin olmalısınız. İşlev uygulamasının bir parçası olarak oluşturulan depolama hesapları, bu depolama hesabı gereksinimlerini karşılayacak şekilde akış oluşturur.  
+İşlev uygulamanızla mevcut bir depolama hesabını kullanabilirsiniz, ancak bu gereksinimleri karşıladığından emin olmanız gerekir. Bu depolama hesabı gereksinimlerini karşılamak için, işlev uygulaması oluşturma akışının bir parçası olarak oluşturulan depolama hesapları garanti edilir.  
 
-## <a name="storage-account-guidance"></a>Depolama hesabı kılavuzu
+## <a name="storage-account-guidance"></a>Depolama hesabı Kılavuzu
 
-Her işlev uygulamasının çalışması için bir depolama hesabı gerektirir. Bu hesap silinirse işlev uygulamanız çalışmaz. Depolama yla ilgili sorunları gidermek için, [depolama yla ilgili sorunları nasıl giderir'e](functions-recover-storage-account.md)bakın. İşlev uygulamaları tarafından kullanılan Depolama hesabı için aşağıdaki ek hususlar geçerlidir.
+Her işlev uygulamasının çalışması için bir depolama hesabının olması gerekir. Bu hesap silinirse, işlev uygulamanız çalışmaz. Depolama ile ilgili sorunları gidermek için bkz. [depolama ile ilgili sorunları giderme](functions-recover-storage-account.md). Aşağıdaki ek konular, işlev uygulamaları tarafından kullanılan depolama hesabı için geçerlidir.
 
 ### <a name="storage-account-connection-setting"></a>Depolama hesabı bağlantı ayarı
 
-Depolama hesabı bağlantısı [AzureWebJobsStorage uygulama ayarında](./functions-app-settings.md#azurewebjobsstorage)korunur. 
+Depolama hesabı bağlantısı [AzureWebJobsStorage uygulama ayarında](./functions-app-settings.md#azurewebjobsstorage)tutulur. 
 
-Depolama alanı anahtarlarını yeniden oluşturduğunuzda depolama hesabı bağlantı dizesi güncelleştirilmelidir. [Burada depolama anahtarı yönetimi hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+Depolama anahtarlarını yeniden oluşturduğunuzda depolama hesabı bağlantı dizesinin güncellenmesi gerekir. [Depolama anahtarı yönetimi hakkında buradan daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 ### <a name="shared-storage-accounts"></a>Paylaşılan depolama hesapları
 
-Birden çok işlevli uygulamanın aynı depolama hesabını herhangi bir sorun olmadan paylaşması mümkündür. Örneğin, Visual Studio'da Azure Depolama Emülatörü'ni kullanarak birden çok uygulama geliştirebilirsiniz. Bu durumda, emülatör tek bir depolama hesabı gibi davranır. İşlev uygulamanız tarafından kullanılan aynı depolama hesabı, uygulama verilerinizi depolamak için de kullanılabilir. Ancak, bu yaklaşım her zaman bir üretim ortamında iyi bir fikir değildir.
+Birden çok işlevli uygulamanın herhangi bir sorun olmadan aynı depolama hesabını paylaşması mümkündür. Örneğin, Visual Studio 'da Azure Storage öykünücüsü 'nü kullanarak birden çok uygulama geliştirebilirsiniz. Bu durumda, öykünücü tek bir depolama hesabı gibi davranır. İşlev uygulamanız tarafından kullanılan depolama hesabı, uygulama verilerinizi depolamak için de kullanılabilir. Ancak, bu yaklaşım her zaman bir üretim ortamında iyi bir fikir değildir.
 
 ### <a name="optimize-storage-performance"></a>Depolama performansını iyileştirme
 
@@ -53,21 +53,21 @@ Birden çok işlevli uygulamanın aynı depolama hesabını herhangi bir sorun o
 
 ## <a name="storage-data-encryption"></a>Depolama veri şifrelemesi
 
-Azure Depolama, bir depolama hesabındaki tüm verileri istirahat halinde şifreler. Daha fazla bilgi [için, veriler için Azure Depolama şifrelemesi'ne](../storage/common/storage-service-encryption.md)bakın.
+Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md).
 
-Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, blob ve dosya verilerinin şifrelemesi için kullanmak üzere müşteri tarafından yönetilen anahtarları sağlayabilirsiniz. Bu anahtarların depolama hesabına erişebilmesi için Işlevler için Azure Anahtar Kasası'nda bulunması gerekir. Daha fazla bilgi edinmek için Azure [portalını kullanarak Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları yapılandır'a](../storage/common/storage-encryption-keys-portal.md)bakın.  
+Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, blob ve dosya verilerinin şifrelenmesi için kullanmak üzere müşteri tarafından yönetilen anahtarlar sağlayabilirsiniz. Bu anahtarların, depolama hesabına erişebilmeleri için Azure Key Vault ' de mevcut olması gerekir. Daha fazla bilgi için bkz. [Azure Portal kullanarak müşteri tarafından yönetilen anahtarları Azure Key Vault yapılandırma](../storage/common/storage-encryption-keys-portal.md).  
 
-## <a name="mount-file-shares-linux"></a>Dosya paylaşımlarını dağıla (Linux)
+## <a name="mount-file-shares-linux"></a>Bağlama dosyası paylaşımları (Linux)
 
-Mevcut Azure Dosyaları paylaşımlarını Linux işlev uygulamalarınıza monte edebilirsiniz. Linux işlev uygulamanıza bir paylaşım ekleyerek, işlevlerinizdeki mevcut makine öğrenimi modellerinden veya diğer verilerden yararlanabilirsiniz. Linux işlev [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) uygulamanıza varolan bir paylaşım damak için komutu kullanabilirsiniz. 
+Mevcut Azure dosya paylaşımlarını Linux işlev uygulamalarınıza bağlayabilirsiniz. Linux işlev uygulamanıza bir paylaşma bağlayarak, işlevlerinizde mevcut makine öğrenimi modellerini veya diğer verileri kullanabilirsiniz. Komutunu, [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) mevcut bir paylaşımın Linux işlev uygulamanıza bağlamak için kullanabilirsiniz. 
 
-Bu komutta, `share-name` varolan Azure Dosyaları paylaşımının `custom-id` adıdır ve işlev uygulamasına monte edildiğinde paylaşımı benzersiz olarak tanımlayan herhangi bir dize olabilir. Ayrıca, `mount-path` işlev uygulamanızda paylaşıma erişilen yoldur. `mount-path`biçiminde `/dir-name`olmalıdır ve `/home`'ile başlayamaz.
+Bu komutta, `share-name` var olan Azure dosya paylaşımının adıdır ve `custom-id` işlev uygulamasına bağlandığında, bu paylaşımın benzersiz bir şekilde tanımlayan herhangi bir dize olabilir. Ayrıca, `mount-path` işlev uygulamanızda paylaşıma erişildiği yoldur. `mount-path`biçiminde `/dir-name`olmalıdır ve ile `/home`başlayamaz.
 
-Tam bir örnek için, [Python işlev iþlemi uygulaması oluÅ](scripts/functions-cli-mount-files-storage-linux.md)up komut dosyasına bakın ve Azure Dosyalar ışığını bindir. 
+Tüm bir örnek için bkz. [Python işlev uygulaması oluşturma ve Azure dosya paylaşma bağlama](scripts/functions-cli-mount-files-storage-linux.md)içindeki betikler. 
 
-Şu anda, yalnızca bir `storage-type` `AzureFiles` desteklenir. Belirli bir işlev uygulamasına yalnızca beş paylaşım monte edebilirsiniz. Dosya paylaşımını monte etmek, soğuk başlangıç süresini en az 200-300ms, hatta depolama hesabı farklı bir bölgede yken daha da artırabilir.
+Şu anda yalnızca bir `storage-type` `AzureFiles` , desteklenir. Yalnızca belirli bir işlev uygulamasına beş paylaşım bağlayabilirsiniz. Bir dosya paylaşımının bağlanması, en az 200-300ms veya depolama hesabı farklı bir bölgedeyse daha da fazla olan soğuk başlangıç süresini artırabilir.
 
-Monte edilen paylaşım, `mount-path` belirtilen işlev kodunuz tarafından kullanılabilir. Örneğin, ne `mount-path` `/path/to/mount`zaman , aşağıdaki Python örneğinde olduğu gibi, dosya sistemi API'leri tarafından hedef dizine erişebilirsiniz:
+Bağlı paylaşma, `mount-path` belirtilen işlev kodunuz için kullanılabilir. Örneğin, olduğunda `mount-path` `/path/to/mount`, aşağıdaki Python örneğinde olduğu gibi, hedef dizine dosya sistemi API 'leri ile erişebilirsiniz:
 
 ```python
 import os
@@ -78,7 +78,7 @@ files_in_share = os.listdir("/path/to/mount")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure İşlevler barındırma seçenekleri hakkında daha fazla bilgi edinin.
+Azure Işlevleri barındırma seçenekleri hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Azure İşlevleri’ni ölçeklendirme ve barındırma](functions-scale.md)

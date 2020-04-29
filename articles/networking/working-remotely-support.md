@@ -1,6 +1,6 @@
 ---
-title: Azure ağ hizmetlerini kullanarak uzaktan çalışma
-description: Bu sayfa, uzaktan çalışmayı etkinleştirmek için kullanılabilen Azure ağ hizmetlerini nasıl kullanabileceğinizi ve uzaktan çalışan kişi sayısındaki artıştan kaynaklanan trafik sorunlarını nasıl azaltabileceğinizi açıklar.
+title: Azure ağ hizmetleri 'ni kullanarak uzaktan çalışma
+description: Bu sayfa, uzaktan çalışmayı etkinleştirmek için kullanılabilen Azure ağ hizmetleri 'ni nasıl kullanabileceğinizi ve uzaktan çalışan artan sayıda kişiden kaynaklanan trafik sorunlarını nasıl azaltabileceğinizi açıklar.
 services: networking
 author: rambk
 ms.service: virtual-network
@@ -8,88 +8,88 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982863"
 ---
-# <a name="working-remotely-using-azure-networking-services"></a>Azure ağ hizmetlerini kullanarak uzaktan çalışma
+# <a name="working-remotely-using-azure-networking-services"></a>Azure ağ hizmetleri 'ni kullanarak uzaktan çalışma
 
 >[!NOTE]
-> Bu makalede, COVID-19 krizi nedeniyle karşılaşabileceğiniz ağ sorunlarını uzaktan çalışmak ve ağ sorunlarını azaltmak için Azure ağ hizmetleri, Microsoft ağı ve Azure iş ortağı ekosisteminden nasıl yararlanabileceğiniz açıklanmaktadır.
+> Bu makalede, Azure Ağ Hizmetleri, Microsoft ağı ve Azure iş ortağı ekosisteminden yararlanarak uzaktan nasıl çalışabileceğinizi ve COVı-19 çapraz olduğu için kullanıma sunulacak ağ sorunlarını azaltmayı nasıl kullanabileceğiniz açıklanmaktadır.
 
-Bu makalede, kuruluşların kullanıcıları için uzaktan erişim ayarlaması veya mevcut çözümlerini en yoğun kullanım dönemlerinde ek kapasiteyle tamamlaması için kullanabileceği seçenekler açıklanmaktadır. Ağ mimarları aşağıdaki zorluklarla karşı karşıyadır:
+Bu makalede, kuruluşların kullanıcıları için uzaktan erişimi ayarlama veya mevcut çözümlerini, en yüksek kullanım dönemleri sırasında ek kapasiteye göre kullanma amacıyla kullanılabilen seçenekler açıklanmaktadır. Ağ mimarları aşağıdaki güçlüklerle başlatılacaktır:
 
-- Ağ kullanımındaki artışı ele alın.
-- Şirket ve müşterilerinin daha fazla çalışanı için güvenilir-güvenli bağlantı sağlayın.
-- Dünya çapında uzak konumlara bağlantı sağlayın.
+- Ağ kullanımında bir artış ele.
+- Şirketlerinin ve müşterilerinin daha fazla çalışanı için güvenilir güvenli bağlantı sağlayın.
+- Dünya genelindeki uzak konumlara bağlantı sağlayın.
 
-Tüm ağlar (örneğin, özel WAN ve kurumsal çekirdek ağlar) en yüksek uzak çalışan yükünden kaynaklanan tıkanıklıkla karşılaşır. Darboğazlar genellikle sadece ev geniş bant ağları ve şirketlerin şirket içi ağlarıvpn ağ geçitleri bildirilmiştir.
+Tüm ağlar (örneğin, Özel WAN ve şirket çekirdeği ağları), yoğun uzak çalışan yüklerinden oluşan sıkışıklık yaşar. Performans sorunları genellikle yalnızca ev geniş bant ağlarında ve şirket içi şirketlerin ağları için VPN ağ geçitlerinde raporlanır.
 
-Ağ planlayıcıları, farklı trafik türlerinin farklı ağ işleme önceliklerine ve bazı akıllı yük yeniden yönlendirme/dağıtımına ihtiyaç duyduğunu göz önünde bulundurarak darboğazları hafifletmeye ve ağ tıkanıklığını hafifletmeye yardımcı olabilir. Örneğin, doktor-hasta etkileşiminin gerçek zamanlı tele-medecine trafiği yüksek öneme sahiptir ve gecikme/titremeye duyarlıdır. Oysa, depolama lar arasında aynı trafiğin çoğaltılması gecikme duyarlı değildir. Eski trafik, daha yüksek hizmet kalitesiyle en uygun ağ yolu üzerinden yönlendirilmelidir; oysa daha sonraki trafiği en uygun olmayan rota üzerinden yönlendirmek kabul edilebilir.
+Ağ planlayıcıları, farklı trafik türlerinin farklı ağ işleme önceliklerinin ve bazı akıllı yük yeniden yönlendirme/dağıtım tarafından gerekli olduğundan emin olmak için performans sorunlarını kolaylaştırma ve ağ tıkanıklığını hafifletmek için yardımcı olabilir. Örneğin, doktor-hasta etkileşiminin gerçek zamanlı tele-medecine trafiği, yüksek öneme sahip ve gecikme/değişim duyarlı. Öte yandan, aynı trafiğin çoğaltılmalarına göre çoğaltılması duyarlı değildir. Eski trafik, daha yüksek hizmet kalitesiyle en iyi ağ yoluyla yönlendirilmelidir; daha sonraki trafiği, en iyi alt yön aracılığıyla yönlendirmek kabul edilebilir.
 
 
 
-## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>En iyi uygulamalarımızı paylaşmak - Azure ağı elastikiyet ve yüksek kullanılabilirlik için tasarlanmıştır
+## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>En iyi uygulamalarınızı paylaşma-Azure ağı, esneklik ve yüksek kullanılabilirlik için tasarlanmıştır
 
-Azure, kaynakların kullanımındaki ani değişikliklere dayanacak şekilde tasarlanmıştır ve en yüksek kullanım dönemlerinde büyük ölçüde yardımcı olabilir. Ayrıca, Microsoft dünyanın en büyük ağlarından birini tutar ve çalışır. Microsoft'un ağı, farklı hata türlerine dayanabilecek yüksek kullanılabilirlik için tasarlanmıştır: tek bir ağ öğesi hatasından tüm bölgenin başarısızlığına kadar.
+Azure, kaynakların kullanımında ani değişiklikler yapmak için tasarlanmıştır ve en yoğun kullanım dönemlerinde büyük ölçüde yardımcı olabilir. Ayrıca, Microsoft, World ' ı en büyük ağlardan birini korur ve çalışır. Microsoft 'un ağı, farklı türlerde hataları geçersiz kılacak yüksek kullanılabilirlik için tasarlandı: tek bir ağ öğesi hatasından bir bölgenin tamamına yönelik hata verebilir.
 
-Microsoft ağı, Skype ve Takımlar için gecikmeye duyarlı multimedya trafiği, CDN, gerçek zamanlı büyük veri analizi, Azure depolama, Bing ve Xbox dahil olmak üzere farklı ağ trafiği türleri için gereksinimleri karşılamak ve en iyi performansı sağlamak üzere tasarlanmıştır. Farklı trafik türleri için en iyi performansı sağlamak için, Microsoft ağı, kaynaklarının kaynağına mümkün olduğunca yakın bir şekilde geçmesi gereken veya geçmek isteyen tüm trafiği çeker.
+Microsoft ağı, gereksinimleri karşılayacak şekilde tasarlanmıştır ve Skype ve takımlar, CDN, gerçek zamanlı büyük veri analizi, Azure depolama, Bing ve Xbox için hassas multimedya trafiğini geciktir gibi farklı türlerde ağ trafiği için en iyi performansı sağlar. Farklı türlerde trafik için en iyi performansı sağlamak üzere Microsoft ağı, trafiğin kaynağına mümkün olduğunca yakın sürede geçiş yapmak için gereken tüm trafiği onaylar.
 
 >[!NOTE] 
->Aşağıda açıklanan Azure ağ özelliklerini kullanmak, daha iyi bir müşteri ağı deneyimi sağlamak için Microsoft küresel ağının trafik çekim davranışından yararlanır. Microsoft ağının trafik çekim davranışı, en yoğun kullanım dönemlerinde tıkanıklık karşılaşabilecek ilk/son mil ağlarından mümkün olan en kısa sürede trafik yükleme kapalı yardımcı olur.
+>Aşağıda açıklanan Azure ağ özelliklerinin kullanılması, daha iyi bir müşteri ağ deneyimi sağlamak üzere Microsoft Global Network 'ün trafik kaybı davranışını kullanır. Microsoft ağı 'nın trafik atması davranışı, en yoğun kullanım dönemlerinde sıkışıklık yaşayan ilk/son mil ağlardan mümkün olan en kısa sürede trafiği yüklemeye yardımcı olur.
 >
 
 ## <a name="enable-employees-to-work-remotely"></a>Çalışanların uzaktan çalışmasını sağlama
 
-Azure VPN ağ geçidi hem Siteden Siteye (P2S) hem de Siteden Siteye (S2S) VPN bağlantılarını destekler. Azure VPN ağ geçidini kullanarak çalışanınızın bağlantılarını ölçeklendirebilir ve hem Azure'a dağıtılan kaynaklarınıza hem de şirket içi kaynaklarınıza güvenli bir şekilde erişebilirsiniz. Daha fazla bilgi için, [kullanıcıların uzaktan çalışmasını nasıl etkinleştirin.](../vpn-gateway/work-remotely-support.md) 
+Azure VPN Gateway, hem Noktadan siteye (P2S) hem de siteden siteye (S2S) VPN bağlantılarını destekler. Azure VPN ağ geçidini kullanarak, hem Azure dağıtılan kaynaklarınıza hem de şirket içi kaynaklarınıza güvenli bir şekilde erişmek için çalışanların bağlantılarını ölçeklendirebilirsiniz. Daha fazla bilgi için bkz. [Kullanıcıların uzaktan çalışmasını sağlama](../vpn-gateway/work-remotely-support.md). 
 
-Güvenli Sokettünel Protokolü (SSTP) kullanıyorsanız, eşzamanlı bağlantı sayısı 128 ile sınırlıdır. Daha fazla sayıda bağlantı elde etmek için OpenVPN veya IKEv2'ye geçiş yapmanızı öneririz. Daha fazla bilgi için Bkz. [OpenVPN protokolüne geçiş veya SSTP'den IKEv2.](../vpn-gateway/ikev2-openvpn-from-sstp.md
-)
+Güvenli Yuva Tünel Protokolü (SSTP) kullanıyorsanız, eşzamanlı bağlantı sayısı 128 ile sınırlıdır. Daha yüksek sayıda bağlantı almak için, OpenVPN veya Ikev2 'e geçiş yapmanız önerilir. Daha fazla bilgi için bkz. [SSTP 'Den OpenVPN protokolüne veya Ikev2 'ye geçiş](../vpn-gateway/ikev2-openvpn-from-sstp.md
+).
 
-Uzak geliştiriciler, Azure'da dağıtılan kaynaklarınıza erişmek için, VM'lerde genel IP'lere gerek kalmadan güvenli kabuk erişimi (RDP veya SSH) elde etmek için VPN bağlantısı yerine Azure Bastion çözümlerini kullanabilir. Daha fazla bilgi için Azure [Bastion'u kullanarak uzaktan Çalış'a](../bastion/work-remotely-support.md)bakın.
+Azure 'da dağıtılan kaynaklarınıza erişmek için uzak geliştiriciler, erişilen VM 'lerde genel IP 'Ler gerekmeden güvenli kabuk erişimi (RDP veya SSH) almak üzere VPN bağlantısı yerine Azure savunma çözümünü kullanabilir. Daha fazla bilgi için bkz. [Azure savunma kullanarak uzaktan çalışma](../bastion/work-remotely-support.md).
 
-Büyük ölçekli VPN bağlantısını bir araya getirmek, farklı şirket içi küresel konumlardaki kaynaklar arasındaki bağlantıları desteklemek, farklı bölgesel hub ve konuşan sanal ağlar da desteklemek ve birden çok ev geniş bant ağının kullanımını optimize etmek için Azure Virtual WAN'ı kullanabilirsiniz. Daha fazla bilgi için, [ev ihtiyaçları işe hitap etmek için Mücadele bakın? Azure Virtual WAN'ın burada yardımcı olabileceği yer burasıdır.](../virtual-wan/work-remotely-support.md)
+Büyük ölçekli VPN bağlantısını toplayarak, farklı şirket içi küresel konumlarda, farklı bölgesel hub ve bağlı bileşen sanal ağlarında kaynaklar arasındaki herhangi bir bağlantıyı desteklemek ve birden çok ev geniş bant ağının kullanımını iyileştirmek için Azure sanal WAN kullanabilirsiniz. Daha fazla bilgi için bkz. [Ev gereksinimlerden işe yaramaz mi? Azure sanal WAN ' ın yardım edebilir](../virtual-wan/work-remotely-support.md).
 
-Uzak iş gücünü desteklemenin bir diğer yolu da Azure sanal ağınızda barındırılan ve Azure Güvenlik Duvarı ile güvenli bir Sanal Masaüstü Altyapısı (VDI) dağıtmaktır. Örneğin, Windows Sanal Masaüstü (WVD), Azure'da çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir. Windows Sanal Masaüstü ile, ek ağ geçidi sunucuları çalıştırmaya gerek kalmadan Azure aboneliğinizde ölçeklenebilir ve esnek bir ortam ayarlayabilirsiniz. Sadece sanal ağınızdaki WVD sanal makinelerinden sorumlusunuz. Daha fazla bilgi için Azure [Güvenlik Duvarı uzaktan iş desteğine](../firewall/remote-work-support.md)bakın. 
+Uzak bir iş gücünü desteklemeye yönelik başka bir yol da, Azure sanal ağınızda barındırılan bir sanal masaüstü altyapısı (VDı) dağıtmaktır ve bu sayede Azure güvenlik duvarıyla korunmuş olur. Örneğin, Windows sanal masaüstü (WVD), Azure 'da çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir. Windows sanal masaüstü sayesinde, ek ağ geçidi sunucuları çalıştırmaya gerek kalmadan Azure aboneliğinizde ölçeklenebilir ve esnek bir ortam ayarlayabilirsiniz. Yalnızca sanal ağınızdaki WVD sanal makinelerle sorumludur. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Uzaktan çalışma desteği](../firewall/remote-work-support.md). 
 
-Azure'da zengin bir eko sistem ortakları kümesi de vardır. İş ortaklarımız Azure'daki Sanal Cihazlar Ağı da VPN bağlantısının ölçeklendirildirine yardımcı olabilir. Daha fazla bilgi için, [uzak çalışma için Ağ Sanal Cihaz (NVA) hususlar](../vpn-gateway/nva-work-remotely-support.md)bakın.
+Azure 'da ayrıca zengin bir ekonomik sistem iş ortakları kümesi de vardır. Azure 'daki iş ortakları ağ sanal gereçleri, VPN bağlantısının ölçeklendirilmesine de yardımcı olabilir. Daha fazla bilgi için bkz. [Uzaktan çalışma Için ağ sanal gereci (NVA) konuları](../vpn-gateway/nva-work-remotely-support.md).
 
-## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>Çalışanların bağlantısını genel olarak dağıtılan kaynaklara erişmek için genişletme
+## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>Çalışanların bağlantısını küresel olarak dağıtılan kaynaklara erişecek şekilde uzat
 
-Aşağıdaki Azure hizmetleri, çalışanların genel olarak dağıtılan kaynaklarınıza erişmesini sağlamanıza yardımcı olabilir. Kaynaklarınız Azure bölgelerinden herhangi birinde, şirket içi ağlarda ve hatta diğer genel veya özel bulutlarda olabilir. 
+Aşağıdaki Azure Hizmetleri, çalışanların küresel olarak dağıtılan kaynaklarınıza erişmesini sağlamaya yardımcı olabilir. Kaynaklarınız Azure bölgelerinde, şirket içi ağlarda veya hatta diğer genel veya özel bulutlarda olabilir. 
 
-- **Azure sanal ağ eşleme**: Kaynaklarınızı birden fazla Azure bölgesinde dağıtıyorsanız ve/veya birden çok sanal ağ kullanarak uzaktan çalışan çalışanların bağlantılarını toplarsanız, sanal ağ eşlemi kullanarak birden çok Azure sanal ağı arasında bağlantı kurabilirsiniz. Daha fazla bilgi için [Sanal ağ eşleme'ye][VNet-peer]bakın.
+- **Azure sanal ağ eşlemesi**: kaynaklarınızı birden fazla Azure bölgesinde dağıtıp/veya birden fazla sanal ağ kullanarak uzaktan çalışan çalışanların bağlantısını topladıysanız, sanal ağ eşlemesi kullanarak birden çok Azure sanal ağı arasında bağlantı kurabilirsiniz. Daha fazla bilgi için bkz. [sanal ağ eşlemesi][VNet-peer].
 
-- **Azure VPN tabanlı çözüm**: P2S veya S2S VPN ile Azure'a bağlanan uzak çalışanlarınız için, şirket içi ağlarınız ve Azure VPN ağ geçidi arasında S2S VPN yapılandırarak şirket içi ağlara erişimi etkinleştirebilirsiniz. Daha fazla bilgi için [bkz.][S2S]
+- **Azure VPN tabanlı çözüm**: Azure 'a P2S veya S2S VPN aracılığıyla bağlanan uzak çalışanlarınız için, şirket içi ağlarınız ve Azure VPN ağ geçidiniz arasında S2S VPN 'yi yapılandırarak şirket içi ağlara erişimi etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [siteden siteye bağlantı oluşturma][S2S].
 
-- **ExpressRoute**: ExpressRoute özel bakışını kullanarak Azure dağıtımlarınız ile şirket içi altyapınız veya altyapınız arasında ortak konum tesisinde özel bağlantı sağlayabilirsiniz. ExpressRoute, Microsoft'un bakışları aracılığıyla, şirket içi ağınızdan Microsoft'taki ortak uç noktalara erişilmesine de izin verir. ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Internet üzerinden tipik bağlantılara göre daha düşük ve tutarlı gecikmelerle güvenli bağlantı, güvenilirlik, daha yüksek verim sunar. Daha fazla bilgi için bkz. [ExpressRoute'a genel bakış][ExR]. [ExpressRoute iş ortağı ekosistemimizin][ExR-eco] bir parçası olan mevcut ağ sağlayıcınızdan yararlanmak, Microsoft'a geniş bant genişliği bağlantıları elde etme süresini azaltmaya yardımcı olabilir.  [ExpressRoute Direct'i][ExR-D] kullanarak şirket içi ağınızı Doğrudan Microsoft omurgasına bağlayabilirsiniz. ExpressRoute Direct çift 10 Gbps veya 100 Gbps iki farklı hat hızı seçenekleri sunuyor. 
+- **ExpressRoute**: ExpressRoute özel eşlemesini kullanarak Azure dağıtımlarınız ile şirket içi altyapınız veya bir ortak konum tesisinde altyapınızın arasında özel bağlantı sağlayabilirsiniz. ExpressRoute, Microsoft eşlemesi aracılığıyla Microsoft içindeki genel uç noktalara, şirket içi ağınızdan de erişilmesine izin verir. ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Internet üzerinden tipik bağlantılardan daha düşük ve tutarlı gecikme süreleriyle güvenli bağlantı, güvenilirlik, daha yüksek performans sağlar. Daha fazla bilgi için bkz. [ExpressRoute'a genel bakış][ExR]. [ExpressRoute iş ortağımız ekosistemimizin][ExR-eco] zaten bir parçası olan mevcut ağ sağlayıcınızı kullanmak, Microsoft 'a büyük bant genişliği bağlantıları almanın süresini azaltmaya yardımcı olabilir.  [ExpressRoute Direct][ExR-D] kullanarak şirket içi ağınızı doğrudan Microsoft omurgasına bağlayabilirsiniz. ExpressRoute Direct, iki 10 Gbps veya 100 Gbps için iki farklı satır hızı seçeneği sunar. 
 
-- **Azure Virtual WAN**: Azure Virtual WAN, VPN bağlantılarınız ve ExpressRoute devreleriniz arasında sorunsuz birlikte çalışabilirlik sağlar. Azure Virtual WAN daha önce de belirttiğimiz gibi, farklı prem global konumlardaki kaynaklar, farklı bölgesel hub ve konuşan sanal ağlar arasındaki her türlü bağlantıyı da destekler
+- **Azure sanal WAN**: Azure sanal WAN, VPN bağlantılarınız Ile ExpressRoute devreleri arasında kesintisiz birlikte çalışabilirlik sağlar. Daha önce belirtildiği gibi, Azure sanal WAN, farklı bölgesel hub ve bağlı bileşen sanal ağlarında farklı şirket içi küresel konumlarda bulunan kaynaklar arasındaki herhangi bir bağlantıyı da destekler
 
-## <a name="scale-customer-connectivity-to-frontend-resources"></a>Müşteri bağlantısını ön uç kaynaklarına ölçeklendirin
+## <a name="scale-customer-connectivity-to-frontend-resources"></a>Ön uç kaynaklarıyla müşterinin bağlantısını ölçeklendirin
 
-Daha fazla kişinin çevrimiçi olduğu zamanlarda, birçok kurumsal web sitesi artan müşteri trafiğiyle karşılaşır. Azure Application Gateway, artırılmış bu ön uç iş yükünü yönetmenize yardımcı olabilir. Daha fazla bilgi için [Uygulama Ağ Geçidi yüksek trafik desteğine](../application-gateway/high-traffic-support.md)bakın.
+Daha fazla kişinin çevrimiçi olduğu durumlarda, birçok kurumsal web sitesi müşteri trafiğinden daha fazla deneyim yaşar. Azure Application Gateway, bu Artılmış ön uç iş yükünü yönetmeye yardımcı olabilir. Daha fazla bilgi için bkz. [Application Gateway yüksek trafik desteği](../application-gateway/high-traffic-support.md).
 
 ## <a name="microsoft-support-for-multi-cloud-traffic"></a>Çoklu bulut trafiği için Microsoft desteği
 
-Diğer genel bulutlardaki dağıtımlarınız için Microsoft genel bağlantı sağlayabilir. Azure Virtual WAN, VPN veya ExpressRoute bu konuda yardımcı olabilir. Azure'dan diğer bulutlara bağlantı genişletmek için, S2S VPN'i iki bulut arasında yapılandırabilirsiniz. Ayrıca ExpressRoute'u kullanarak Azure'dan diğer genel bulutlara bağlantı oluşturabilirsiniz. Oracle bulutu ExpressRoute iş ortağı ekosisteminin bir parçasıdır. Azure [ve Oracle Cloud Infrastructure arasında doğrudan bir bağlantı kurabilirsiniz.][Az-OCI] ExpressRoute iş ortağı ekosisteminin bir parçası olan çoğu hizmet sağlayıcısı, diğer genel bulutlara özel bağlantı da sunar. Bu hizmet sağlayıcılardan yararlanarak, ExpressRoute aracılığıyla Azure'daki dağıtımlarınız ve diğer bulutlar arasında özel bağlantı kurabilirsiniz.
+Diğer genel bulutlardaki dağıtımlarınız için, Microsoft genel bağlantı sağlayabilir. Azure sanal WAN, VPN veya ExpressRoute bu konuda yardımcı olabilir. Azure 'dan diğer bulutlara bağlantıyı genişletmek için, iki bulut arasında S2S VPN 'yi yapılandırabilirsiniz. Ayrıca ExpressRoute kullanarak Azure 'dan diğer genel bulutlara bağlantı kurabilirsiniz. Oracle bulutu, ExpressRoute iş ortağı ekosisteminin bir parçasıdır. [Azure Ile Oracle bulut altyapısı arasında doğrudan bir iç][Az-OCI]bağlantı kurabilirsiniz. ExpressRoute iş ortağı ekosisteminin bir parçası olan hizmet sağlayıcılarının çoğu ayrıca diğer genel bulutlara özel bağlantı sağlar. Bu hizmet sağlayıcılarından yararlanarak ExpressRoute aracılığıyla Azure ve diğer bulutlarınızla dağıtımlarınız arasında özel bağlantı kurabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde, kullanıcıları uzaktan çalışacak şekilde ölçeklendirmek için farklı Azure ağ özelliklerinin nasıl kullanılabileceğini açıklayabilirsiniz:
+Aşağıdaki makalelerde, farklı Azure ağ özelliklerinin, kullanıcıları uzaktan çalışacak şekilde ölçeklendirmek için nasıl kullanılabileceği açıklanmaktadır:
 
-| **Makale** | **Açıklama** |
+| **Makalenin** | **Açıklama** |
 | --- | --- |
-| [Kullanıcıların uzaktan çalışmasını etkinleştirme](../vpn-gateway/work-remotely-support.md) | Kullanıcılar için uzaktan erişim ayarlamak veya mevcut çözümlerini kuruluşunuz için ek kapasiteyle tamamlamak için kullanılabilir seçenekleri gözden geçirin.|
-| [Ev ihtiyaçları işe hitap etmek için mücadele? Azure Virtual WAN'ın burada yardımcı olabileceği yer burasıdır](../virtual-wan/work-remotely-support.md) | Kuruluşunuzun uzaktan bağlantı gereksinimlerini karşılamak için Azure Virtual WAN'ı kullanın.|
-| [Application Gateway yüksek trafik desteği](../application-gateway/high-traffic-support.md) | Web uygulamalarınız daki trafiği yönetmenin ölçeklenebilir ve güvenli bir yolu için Web Uygulaması Güvenlik Duvarı (WAF) ile Uygulama Ağ Geçidi'ni kullanın. |
-| [Ağ Sanal Cihaz (NVA) uzak çalışma için hususlar](../vpn-gateway/nva-work-remotely-support.md)|Uzaktan erişim çözümleri sağlamak için Azure'da NV'ler kullanma yla ilgili kılavuzu gözden geçirin. |
-| [SSTP'den OpenVPN protokolüne veya IKEv2'ye geçiş](https://go.microsoft.com/fwlink/?linkid=2124112) | OpenVPN protokolüne veya IKEv2'ye geçerek SSTP'nin 128 eşzamanlı bağlantı limitini aşın.|
-| [Azure Bastion'u kullanarak uzaktan çalışma](../bastion/work-remotely-support.md) | Ortak bir IP adresi kullanmadan Azure sanal ağındaki sanal makinelere doğrudan Azure portalında güvenli ve sorunsuz RDP/SSH bağlantısı sağlayın. |
-| [Uzak kullanıcıları desteklemek için karma bağlantı oluşturmak için Azure ExpressRoute'u kullanma](../expressroute/work-remotely-support.md) | Kuruluşunuzdaki kullanıcıların uzaktan çalışmasını sağlamak için hibrit bağlantı için ExpressRoute'u kullanın.|
-| [Azure Güvenlik Duvarı uzaktan çalışma desteği](../firewall/remote-work-support.md)|Azure Güvenlik Duvarı'nı kullanarak Azure sanal ağ kaynaklarınızı koruyun. |
+| [Kullanıcıların uzaktan çalışmasını sağlama](../vpn-gateway/work-remotely-support.md) | Kullanıcılara uzaktan erişim ayarlamak veya mevcut çözümlerini kuruluşunuz için ek kapasiteye göre tamamlamak için kullanılabilir seçenekleri gözden geçirin.|
+| [Ev gereksinimlerden işe yaramaz mi? Burada Azure sanal WAN ' ın yardım edebilir](../virtual-wan/work-remotely-support.md) | Kuruluşunuzun uzak bağlantı ihtiyaçlarını karşılamak için Azure sanal WAN 'ı kullanın.|
+| [Application Gateway yüksek trafik desteği](../application-gateway/high-traffic-support.md) | Web uygulamalarınıza yönelik trafiği yönetmenin ölçeklenebilir ve güvenli bir yolu için Web uygulaması güvenlik duvarı (WAF) ile Application Gateway kullanın. |
+| [Uzaktan çalışma için ağ sanal gereci (NVA) konuları](../vpn-gateway/nva-work-remotely-support.md)|Uzaktan erişim çözümleri sağlamak için Azure 'da NVA 'lar kullanma hakkındaki kılavuzu inceleyin. |
+| [SSTP 'den OpenVPN protokolüne veya Ikev2 'e geçiş](https://go.microsoft.com/fwlink/?linkid=2124112) | OpenVPN protokolüne veya Ikev2 'e geçiş yaparak SSTP 'nin 128 eşzamanlı bağlantı sınırı aşılır.|
+| [Azure savunma kullanarak uzaktan çalışma](../bastion/work-remotely-support.md) | Genel bir IP adresi kullanmadan doğrudan Azure portal Azure sanal ağı içindeki sanal makinelere güvenli ve sorunsuz RDP/SSH bağlantısı sağlayın. |
+| [Uzak kullanıcıları desteklemek üzere karma bağlantı oluşturmak için Azure ExpressRoute kullanma](../expressroute/work-remotely-support.md) | Kuruluşunuzdaki kullanıcıların uzaktan çalışmasını sağlamak için karma bağlantı için ExpressRoute kullanın.|
+| [Azure Güvenlik Duvarı Uzaktan çalışma desteği](../firewall/remote-work-support.md)|Azure Güvenlik Duvarı 'nı kullanarak Azure sanal ağ kaynaklarınızı koruyun. |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

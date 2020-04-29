@@ -1,6 +1,6 @@
 ---
-title: Azure Akışı Analizi önizleme özellikleri
-description: Bu makalede, şu anda önizlemede olan Azure Akış Analizi özellikleri listelenir.
+title: Azure Stream Analytics Önizleme özellikleri
+description: Bu makalede, şu anda önizleme aşamasında olan Azure Stream Analytics özellikleri listelenmektedir.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,63 +8,63 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878315"
 ---
-# <a name="azure-stream-analytics-preview-features"></a>Azure Akışı Analizi önizleme özellikleri
+# <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics Önizleme özellikleri
 
-Bu makalede, Şu anda Azure Akış Analizi için önizlemede olan tüm özellikler özetlenmiştir. Önizleme özelliklerinin üretim ortamında kullanılması önerilmez.
+Bu makale, şu anda Azure Stream Analytics için Önizlemedeki tüm özellikleri özetler. Bir üretim ortamında Önizleme özelliklerinin kullanılması önerilmez.
 
 ## <a name="public-previews"></a>Genel önizlemeler
 
-Aşağıdaki özellikler genel önizlemede yer alıyor. Bu özelliklerden bugün yararlanabilirsiniz, ancak bunları üretim ortamınızda kullanmayın.
+Aşağıdaki özellikler genel önizlemede. Günümüzde bu özelliklerden faydalanabilirsiniz, ancak bunları üretim ortamınızda kullanmayın.
 
-### <a name="online-scaling"></a>Çevrimiçi ölçekleme
+### <a name="online-scaling"></a>Çevrimiçi ölçeklendirme
 
-Çevrimiçi ölçekleme ile, SU tahsisatını değiştirmeniz gerekiyorsa işinizi durdurmanız gerekmez. Çalışan bir işin SU kapasitesini durdurmak zorunda kalmadan artırabilir veya azaltabilirsiniz. Bu, Stream Analytics'in bugün sunduğu uzun soluklu görev açısından kritik boru hatlarının müşteri vaadine dayanmaktadır. Daha fazla bilgi için [bkz.](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus)
+Çevrimiçi ölçeklendirmeyle, SU ayırmayı değiştirmeniz gerekiyorsa işinizi durdurmanız gerekmez. Çalışan bir işin SU kapasitesini, durdurmak zorunda kalmadan artırabilir veya azaltabilirsiniz. Bu, bugün Stream Analytics sunduğu, uzun süreli görev açısından kritik işlem hatları için müşteri taahhüdünü oluşturur. Daha fazla bilgi için bkz. [Azure Stream Analytics akış birimlerini yapılandırma](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus).
 
-### <a name="c-custom-de-serializers"></a>C# özel de-serializers
-Geliştiriciler, Protobuf, XML veya herhangi bir özel biçimde verileri işlemek için Azure Akış Analizi'nin gücünden yararlanabilir. Azure Akış Analizi tarafından alınan olayları seri olmaktan çıkarmak için kullanılabilecek [Özel Seri İzleyicileri](custom-deserializer-examples.md) C#'da uygulayabilirsiniz.
+### <a name="c-custom-de-serializers"></a>C# özel de serileştiriciler
+Geliştiriciler, verileri prototip, XML veya özel bir biçimde işlemek için Azure Stream Analytics gücünden yararlanabilir. C# ' de [özel seri hale getiriciler](custom-deserializer-examples.md) uygulayabilirsiniz ve bu, Azure Stream Analytics tarafından alınan olayların serileştirilmek için kullanılabilir.
 
-### <a name="extensibility-with-c-custom-code"></a>C# özel kodu ile genişletilebilirlik
+### <a name="extensibility-with-c-custom-code"></a>C# özel kodlu genişletilebilirlik
 
-Bulutta veya IoT Edge'de Stream Analytics modülleri oluşturan geliştiriciler özel C# işlevlerini yazabilir veya yeniden kullanabilir ve [bunları kullanıcı tarafından tanımlanan işlevler](stream-analytics-edge-csharp-udf-methods.md)aracılığıyla doğrudan sorguda çağırabilir.
-
-
-### <a name="debug-query-steps-in-visual-studio"></a>Visual Studio'da hata ayıklama sorgu adımları
-
-Visual Studio için Azure Akış Analizi araçlarında yerel test yaparken veri diyagramında ayarlanan ara satırı kolayca önizleyebilirsiniz. 
-
-### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Visual Studio Code'da canlı verilerle yerel test
-
-İşi Azure'a göndermeden önce sorgularınızı yerel makinenizdeki canlı verilere karşı test edebilirsiniz. Her test yinelemesi ortalama 2-3 saniyeden az sürer ve bu da çok verimli bir geliştirme süreciyle sonuçlanır.
-
-### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Akış Analizi için Görsel Stüdyo Kodu
-
-Azure Akış Analizi işleri Visual Studio Code'da yazılabilir. VS [Kodumuz öğretici başlarken](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)bakın.
+Bulutta veya IoT Edge Stream Analytics modülleri oluşturan geliştiriciler özel C# işlevlerini yazabilir veya yeniden kullanabilir ve [Kullanıcı tanımlı işlevler](stream-analytics-edge-csharp-udf-methods.md)aracılığıyla doğrudan sorgu içinde çağırabilir.
 
 
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Azure Machine Learning tarafından yönetilen özel ML modelleri ile gerçek zamanlı yüksek performans puanlama
+### <a name="debug-query-steps-in-visual-studio"></a>Visual Studio 'da sorgu adımlarında hata ayıkla
 
-Azure Akış Analizi, Azure Machine Learning tarafından yönetilen ve kod yazmanızı gerektirmeyen bir iş akışını kullanarak Azure Kubernetes Hizmeti (AKS) veya Azure Kapsayıcı Örnekleri'nde (ACI) barındırılan özel önceden eğitilmiş Machine Learning modellerinden yararlanarak yüksek performanslı, gerçek zamanlı puanlamayı destekler. Önizleme için [kaydolun](https://aka.ms/asapreview1)
+Visual Studio için Azure Stream Analytics araçları 'nda yerel test yaparken, veri diyagramında ara satır kümesini kolayca önizleyebilirsiniz. 
+
+### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Visual Studio Code içindeki canlı verilerle yerel test
+
+İşi Azure 'a göndermeden önce, sorgularınızı yerel makinenizde canlı verilere karşı test edebilirsiniz. Her test yinelemesi ortalama olarak iki ile üç saniyeden az sürer ve çok verimli bir geliştirme süreci elde edilir.
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics için Visual Studio Code
+
+Azure Stream Analytics işleri Visual Studio Code olarak yazılabilir. [Vs Code kullanmaya başlama Öğreticimizi](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)inceleyin.
 
 
-### <a name="live-data-testing-in-visual-studio"></a>Visual Studio'da canlı veri testi
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Azure Machine Learning tarafından yönetilen özel ML modelleriyle gerçek zamanlı yüksek performans Puanlama
 
-Azure Akış Analitiği için Visual Studio araçları, sizi Event Hub veya IoT hub gibi bulut kaynaklarından gelen canlı etkinlik akışlarına karşı sorgularınızı test etmenizi sağlayan yerel test özelliğini geliştirir. [Visual Studio için Azure Akış Analizi araçlarını kullanarak canlı verileri yerel olarak](stream-analytics-live-data-local-testing.md)nasıl test edebilirsiniz öğrenin.
+Azure Stream Analytics, Azure Machine Learning tarafından yönetilen ve Azure Kubernetes Service (AKS) veya Azure Container Instances (acı) ' de barındırılan ve kod yazmanızı gerektirmeyen bir iş akışı kullanarak yüksek performanslı ve gerçek zamanlı Machine Learning Puanlama destekler. Önizleme için [kaydolun](https://aka.ms/asapreview1)
 
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>.NET kullanıcı tanımlı fonksiyonlar IoT Edge
+### <a name="live-data-testing-in-visual-studio"></a>Visual Studio 'da canlı veri testi
 
-.NET standart kullanıcı tanımlı işlevlerle, akış ardınızın bir parçası olarak .NET Standart kodunu çalıştırabilirsiniz. Basit C# sınıfları oluşturabilir veya tam proje ve kitaplıklar içe aktarabilirsiniz. Visual Studio'da tam yazma ve hata ayıklama deneyimi desteklenir. Daha fazla bilgi için [Azure Akış Analitiği Kenarı işleri için Gelişmiş .NET Standart kullanıcı tanımlı işlevleri](stream-analytics-edge-csharp-udf-methods.md)ni ziyaret edin.
+Azure Stream Analytics için Visual Studio Araçları, Olay Hub 'ı veya IoT Hub gibi bulut kaynaklarından canlı etkinlik akışlarına karşı sorguları test etmenizi sağlayan yerel test özelliğini geliştirir. [Visual Studio için Azure Stream Analytics araçları 'nı kullanarak canlı verileri yerel olarak test](stream-analytics-live-data-local-testing.md)etme hakkında bilgi edinin.
+
+
+### <a name="net-user-defined-functions-on-iot-edge"></a>IoT Edge üzerinde .NET Kullanıcı tanımlı işlevler
+
+.NET standardı Kullanıcı tanımlı işlevlerle, akış işlem hattının bir parçası olarak .NET Standard kodu çalıştırabilirsiniz. Basit C# sınıfları oluşturabilir veya tam proje ve kitaplıkları içeri aktarabilirsiniz. Visual Studio 'da tam yazma ve hata ayıklama deneyimi desteklenir. Daha fazla bilgi için [Azure Stream Analytics Edge işleri için Kullanıcı tanımlı .NET Standard geliştirme](stream-analytics-edge-csharp-udf-methods.md)makalesini ziyaret edin.
 
 ## <a name="other-previews"></a>Diğer önizlemeler
 
-Aşağıdaki özellikler istek üzerine önizlemede de kullanılabilir.
+Ayrıca, istek üzerine Önizleme bölümünde aşağıdaki özellikler de mevcuttur.
 
-### <a name="support-for-azure-stack"></a>Azure Yığını desteği
-Azure IoT Edge çalışma zamanında etkinleştirilen bu özellik, Azure Yığını'nda çalışan yerel giriş ve çıktılar için yerel destek (örneğin Olay Hub'ları, IoT Hub'ı, Blob Depolama) gibi özel Azure Yığını özelliklerinden yararlanır. Bu yeni tümleştirme, verilerinizi oluşturulduğu yere yakın analiz ederek gecikmeyi azaltan ve öngörüleri en üst düzeye çıkaran karma mimariler oluşturmanıza olanak tanır.
-Bu özellik, verilerinizi oluşturulduğu yere yakın analiz ederek gecikmeyi azaltan ve öngörüleri en üst düzeye çıkarabilen karma mimariler oluşturmanıza olanak tanır. Bu önizleme için [kaydolmalısınız.](https://aka.ms/asapreview1)
+### <a name="support-for-azure-stack"></a>Azure Stack için destek
+Azure IoT Edge çalışma zamanında etkinleştirilen bu özellik, Azure Stack çalışan yerel girişler ve çıktılar için yerel destek gibi özel Azure Stack özelliklerinden yararlanır (örneğin, Event Hubs, IoT Hub, BLOB depolama). Bu yeni tümleştirme, verilerinizi nerede oluşturulduğu yere çözümleyebilecekleri karma mimariler oluşturmanızı, gecikme süresini azaltmayı ve öngörüleri en üst düzeye çıkarmanızı sağlar.
+Bu özellik, verilerinizin oluşturulduğu yere yakın, gecikme süresini düşürürken ve öngörüleri en üst düzeye çıkarmanızı sağlayan karma mimariler oluşturmanıza olanak sağlar. Bu önizlemeye [kaydolmanız](https://aka.ms/asapreview1) gerekir.

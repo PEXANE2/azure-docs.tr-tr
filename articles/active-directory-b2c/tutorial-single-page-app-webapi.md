@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: Azure AD B2C'yi kullanarak bir Düğüm.js web API'sini koruyun ve tek sayfalık bir uygulamaya (SPA) erişim izni vermek"
+title: "Öğretici: Azure AD B2C kullanarak bir Node. js web API 'sini koruyun ve tek sayfalı bir uygulamaya (SPA) erişim izni verin"
 titleSuffix: Azure AD B2C
-description: Bu eğitimde, Bir Düğüm.js web API'sini korumak ve tek sayfalık bir uygulamadan aramak için Active Directory B2C'yi nasıl kullanacağınızı öğrenin.
+description: Bu öğreticide, bir Node. js web API 'sini korumak ve tek sayfalı bir uygulamadan çağırmak için Active Directory B2C nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,32 +12,32 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 50524159186987b7a30015c878fa3fac949afc79
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875715"
 ---
-# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamadan Bir Düğüm web API'sini koruyun ve erişim izni
+# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamadan Node. js web API 'sine erişim izni verme
 
-Bu öğretici, tek sayfalık bir uygulamadan Azure Active Directory B2C (Azure AD B2C) korumalı Düğüm web API'sini nasıl çağırabileceğinizi gösterir.
+Bu öğreticide, tek sayfalı bir uygulamadan Azure Active Directory B2C (Azure AD B2C) korumalı bir Node. js web API 'sinin nasıl çağrılacağını gösterir.
 
-Bu öğreticide, iki bölümlü bir serinin ikinci:
+Bu öğreticide, ikinci bölümlü bir serinin saniyesi:
 
 > [!div class="checklist"]
-> * Azure AD B2C kiracınızda web API uygulama kaydı oluşturma
-> * Web API'si için kapsamları yapılandırma
-> * Web API'sine izin verme
-> * Kiracınızla çalışmak için web API kodu örneğini değiştirme
+> * Azure AD B2C kiracınızda bir Web API uygulaması kaydı oluşturma
+> * Web API 'SI için Kapsamları yapılandırma
+> * Web API 'sine izin verme
+> * Kiracınızla çalışmak için bir Web API kodu örneğini değiştirme
 
-Bu serinin [ilk öğreticisinde,](tutorial-single-page-app.md) kod örneğini indirdiniz ve Azure AD B2C kiracınızda kullanıcı akışı olan kullanıcılarda oturum açacak şekilde değiştirdiniz.
+Bu serideki [ilk öğreticide](tutorial-single-page-app.md) , kod örneğini indirmiş ve Azure AD B2C kiracınızda Kullanıcı akışı olan kullanıcıların oturum açması için değiştirmiş olursunuz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Tutorial: Azure AD B2C ile tek sayfalık bir uygulamada kimlik doğrulamayı etkinleştirme](tutorial-single-page-app.md) adımlarını ve ön koşulları tamamlayın
-* [Visual Studio Code](https://code.visualstudio.com/) veya başka bir kod düzenleyicisi
+* Öğreticideki adımları ve önkoşulları doldurun [: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme](tutorial-single-page-app.md)
+* [Visual Studio Code](https://code.visualstudio.com/) veya başka bir kod Düzenleyicisi
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="add-a-web-api-application"></a>Web API'si uygulaması ekleme
@@ -46,27 +46,27 @@ Bu serinin [ilk öğreticisinde,](tutorial-single-page-app.md) kod örneğini in
 
 ## <a name="configure-scopes"></a>Kapsamları yapılandırma
 
-Kapsamlar korumalı kaynaklara erişimi yönetmenin bir yolunu sunar. Kapsamlar web API’si tarafından kapsam tabanlı erişim denetimi uygulamak için kullanılır. Örneğin, bazı kullanıcılar hem okuma hem de yazma erişimine sahipken diğer kullanıcıların salt okunur izinleri olabilir. Bu öğreticide, web API'si için hem okuma hem de yazma izinlerini tanımlarsınız.
+Kapsamlar korumalı kaynaklara erişimi yönetmenin bir yolunu sunar. Kapsamlar web API’si tarafından kapsam tabanlı erişim denetimi uygulamak için kullanılır. Örneğin, bazı kullanıcılar hem okuma hem de yazma erişimine sahipken diğer kullanıcıların salt okunur izinleri olabilir. Bu öğreticide Web API 'SI için hem okuma hem de yazma izinlerini tanımlarsınız.
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Tek sayfalı uygulamayı yapılandırırken, kapsamın daha sonraki bir adımda kullanAbilmek için `demo.read` **Kapsamlar** altındaki değeri kaydedin. Tam kapsam değeri `https://contosob2c.onmicrosoft.com/api/demo.read`.
+Tek sayfalı uygulamayı yapılandırırken **Scopes** daha sonraki bir `demo.read` adımda kullanılacak kapsamın kapsamları altındaki değeri kaydedin. Tam kapsam değeri öğesine `https://contosob2c.onmicrosoft.com/api/demo.read`benzerdir.
 
 ## <a name="grant-permissions"></a>İzinleri verme
 
-Başka bir uygulamadan korumalı web API'sini çağırmak için, bu uygulama izinlerini web API'sine vermeniz gerekir.
+Başka bir uygulamadan korumalı bir Web API 'SI çağırmak için, bu uygulama izinlerini Web API 'sine vermeniz gerekir.
 
-Ön koşul öğreticisinde, *webapp1*adında bir web uygulaması oluşturdunuz. Bu öğreticide, bu uygulamayı önceki bölümde oluşturduğunuz web API'sını aramak üzere yapılandırırsınız, *webapi1.*
+Önkoşul öğreticisinde, *WebApp1*adlı bir Web uygulaması oluşturdunuz. Bu öğreticide, *webapi1*önceki bir bölümünde oluşturduğunuz Web API 'sini çağırmak için bu uygulamayı yapılandırırsınız.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Tek sayfalık web uygulamanız artık belirtilen kapsamlar için korumalı web API'sine izin ler verilmiştir. Bir kullanıcı, tek sayfalı uygulamayı kullanmak için Azure AD B2C ile kimlik doğrulaması yaptı. Tek sayfalı uygulama, Azure AD B2C tarafından döndürülen bir erişim belirteciyle korumalı web API'sine erişmek için yetkilendirme izni akışını kullanır.
+Tek sayfalı web uygulamanıza, belirtilen kapsamlar için korunan Web API 'sine izin verildi. Bir kullanıcı tek sayfalı uygulamayı kullanmak üzere Azure AD B2C kimliğini doğrular. Tek sayfalı uygulama, Azure AD B2C tarafından döndürülen bir erişim belirteciyle korunan Web API 'sine erişmek için yetkilendirme verme akışını kullanır.
 
 ## <a name="configure-the-sample"></a>Örneği yapılandırma
 
-Artık web API'si kayıtlı ve kapsamlar tanımladığınıza göre, web API kodunu Azure AD B2C kiracınızla çalışacak şekilde yapılandırın. Bu öğreticide, GitHub'dan indirdiğiniz örnek bir Node.js web API'sını yapılandırırsınız.
+Web API 'SI kayıtlı ve kapsamları tanımladığınıza göre, Web API kodunu Azure AD B2C kiracınızla çalışacak şekilde yapılandırın. Bu öğreticide, GitHub 'dan indirdiğinizde örnek bir Node. js web API 'SI yapılandırırsınız.
 
-Bir [ \*.zip arşivi indirin](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) veya GitHub'dan örnek web API projesini klonla. GitHub'daki [Azure Örnekleri/active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) projesine doğrudan göz atabilirsiniz.
+[Bir \*. zip arşivi indirin](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) veya örnek Web API projesini GitHub 'dan kopyalayın. GitHub 'da doğrudan [Azure-Samples/Active-Directory-B2C-JavaScript-NodeJS-WebApi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) projesine de gidebilirsiniz.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
@@ -74,8 +74,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>Web API’sini yapılandırma
 
-1. Kod düzenleyicinizde *config.js* dosyasını açın.
-1. Daha önce oluşturduğunuz uygulama kaydının değerlerini yansıtacak şekilde değişken değerlerini değiştirin. Ayrıca, `policyName` ön koşulların bir parçası olarak oluşturduğunuz kullanıcı akışını da güncelleyin. Örneğin, *B2C_1_signupsignin1.*
+1. *Config. js* dosyasını kod Düzenleyicinizde açın.
+1. Değişken değerlerini, daha önce oluşturduğunuz uygulama kaydını yansıtacak şekilde değiştirin. Ayrıca, `policyName` önkoşullarını, önkoşulların bir parçası olarak oluşturduğunuz Kullanıcı akışıyla güncelleştirin. Örneğin, *B2C_1_signupsignin1*.
 
     ```javascript
     const clientID = "<your-webapi-application-ID>"; // Application (client) ID
@@ -86,9 +86,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 #### <a name="enable-cors"></a>CORS'yi etkinleştirme
 
-Tek sayfalı uygulamanızın Node.js web API'yi aramasına izin vermek için, WEB API'sinde [CORS'ü](https://expressjs.com/en/resources/middleware/cors.html) etkinleştirmeniz gerekir. Bir üretim uygulamasında, hangi etki alanının istekte bulunduğuna dikkat etmelisiniz, ancak bu öğretici için herhangi bir etki alanından isteklere izin vermelisiniz.
+Tek sayfalı uygulamanızın Node. js web API 'sini çağırmasını sağlamak için, Web API 'sinde [CORS](https://expressjs.com/en/resources/middleware/cors.html) 'yi etkinleştirmeniz gerekir. Bir üretim uygulamasında, hangi etki alanının istek yapmakta olduğu konusunda dikkatli olmanız gerekir, ancak bu öğreticide herhangi bir etki alanından gelen isteklere izin verilir.
 
-CORS'i etkinleştirmek için aşağıdaki ara yazılımı kullanın. Bu öğreticideki Node.js web API kod örneğinde, *index.js* dosyasına zaten eklenmiştir.
+CORS 'yi etkinleştirmek için aşağıdaki ara yazılımı kullanın. Bu öğreticideki Node. js web API kodu örneğinde, zaten *index. js* dosyasına eklenmiştir.
 
 ```javascript
 app.use((req, res, next) => {
@@ -100,20 +100,20 @@ app.use((req, res, next) => {
 
 ### <a name="configure-the-single-page-application"></a>Tek sayfalı uygulamayı yapılandırma
 
-Serinin [önceki öğreticisinden](tutorial-single-page-app.md) tek sayfalık uygulama (SPA), kullanıcı kaydolma ve kaydolma için Azure AD B2C kullanır ve varsayılan olarak *fabrikamb2c* demo kiracıtarafından korunan Node.js web API'sini çağırır.
+Serideki [önceki öğreticideki](tutorial-single-page-app.md) tek sayfalı uygulama (Spa), Kullanıcı kaydı ve oturum açma için Azure AD B2C kullanır ve varsayılan olarak, *fabrikamb2c* demo kiracısı tarafından korunan Node. js web API 'sini çağırır.
 
-Bu bölümde, Azure AD B2C *kiracınız* tarafından korunan (ve yerel makinenizde çalıştırdığınız) Node.js web API'sını aramak için tek sayfalık web uygulamasını güncellersiniz.
+Bu bölümde, tek sayfalı Web uygulamasını, Azure AD B2C *kiracınız* tarafından korunan Node. js web API 'sini (ve yerel makinenizde çalıştırdığınız) çağırmak için güncelleşolursunuz.
 
-SPA'daki ayarları değiştirmek için:
+SPA 'daki ayarları değiştirmek için:
 
-1. Önceki öğreticide indirdiğiniz veya klonladığınız [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] projesinde, *JavaScriptSPA* klasöründeki *apiConfig.js* dosyasını açın.
-1. Örneği daha önce oluşturduğunuz *demo.read* kapsamı ve web API'sının URL'si için URI ile yapılandırın.
-    1. `apiConfig` Tanımda, `b2cScopes` *demo.read* kapsamı (daha önce kaydettiğiniz **Kapsam** değeri) için değeri tam URI ile değiştirin.
-    1. Web API `webApi` uygulamasını daha önceki bir adımda kaydettiğinizde eklediğiniz yeniden yönlendirme URI değerindeki etki alanını değiştirin.
+1. Önceki öğreticide indirdiğiniz veya Klonladığınız [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] projesinde, *javascriptspa* klasörünün Içindeki *apiconfig. js* dosyasını açın.
+1. Örneği için URI ile birlikte yapılandırın. daha önce oluşturduğunuz ve Web API 'sinin URL 'si. *okuma* kapsamı.
+    1. `apiConfig` Tanımında `b2cScopes` değeri *demo. Read* Scope (daha önce KAYDETTIĞINIZ **kapsam** değeri) için tam URI ile değiştirin.
+    1. Bu `webApi` değeri, önceki bir ADıMDA Web API uygulamasını kaydettiğinizde eklediğiniz yeniden yönlendirme URI 'si olarak değiştirin.
 
-    API'ye `/hello` bitiş noktasından erişilebildiğinden, URI'ye */merhaba'yı* bırakın.
+    API 'nin `/hello` uç noktada erişilebilir olduğundan, URI 'de */Hello* ' ı bırakın.
 
-    Tanım `apiConfig` aşağıdaki kod bloğuna benzer, ancak yerine B2C kiracı nın adı `<your-tenant-name>`ile bakmak gerekir:
+    `apiConfig` Tanım aşağıdaki kod bloğuna benzer olmalıdır, ancak bunun yerine B2C kiracınızın adı ile birlikte şöyle görünmelidir `<your-tenant-name>`:
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -123,15 +123,15 @@ SPA'daki ayarları değiştirmek için:
     };
     ```
 
-## <a name="run-the-spa-and-web-api"></a>SPA ve web API'yi çalıştırın
+## <a name="run-the-spa-and-web-api"></a>SPA ve Web API 'sini çalıştırma
 
-Artık tek sayfalı uygulamanın API'ye kapsamlı erişimini sınamaya hazırsınız. Hem Node.js web API'sini hem de örnek JavaScript tek sayfalık uygulamayı yerel makinenizde çalıştırın. Ardından, tek sayfalı uygulamada oturum açın ve korumalı **API'ye** istek başlatmak için Çağrı API düğmesini seçin.
+Artık tek sayfalı uygulamanın API 'ye kapsamlı erişimini test etmeye hazırsınız. Hem Node. js web API 'sini hem de yerel makinenizde örnek JavaScript tek sayfalı uygulamasını çalıştırın. Ardından, tek sayfalı uygulamada oturum açın ve korunan API 'ye bir istek başlatmak için **API çağrısı** düğmesini seçin.
 
-Bu öğreticiyi uyguladığınızda her iki uygulama da yerel olarak çalışıyor olsa da, güvenli kaydolma/kaydolma için Azure AD B2C'yi kullanacak ve korunan web API'sine erişim izni verecek şekilde yapılandırıldınız.
+Bu öğreticiyi izlediğinizde her iki uygulama da yerel olarak çalışıyor olsa da, bunları güvenli kaydolma/oturum açma için Azure AD B2C kullanacak ve korunan Web API 'sine erişim izni verecek şekilde yapılandırdık.
 
-### <a name="run-the-nodejs-web-api"></a>Düğüm.js web API çalıştırın
+### <a name="run-the-nodejs-web-api"></a>Node. js web API 'sini çalıştırma
 
-1. Bir konsol penceresi açın ve Node.js web API örneğini içeren dizine değiştirin. Örneğin:
+1. Bir konsol penceresi açın ve Node. js web API 'SI örneğini içeren dizine geçin. Örneğin:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -152,7 +152,7 @@ Bu öğreticiyi uyguladığınızda her iki uygulama da yerel olarak çalışıy
 
 ### <a name="run-the-single-page-app"></a>Tek sayfalı uygulamayı çalıştırma
 
-1. Başka bir konsol penceresi açın ve JavaScript SPA örneğini içeren dizine değiştirin. Örneğin:
+1. Başka bir konsol penceresi açın ve JavaScript SPA örneğini içeren dizine geçin. Örneğin:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -165,35 +165,35 @@ Bu öğreticiyi uyguladığınızda her iki uygulama da yerel olarak çalışıy
     npm start
     ```
 
-    Konsol penceresi, uygulamanın barındırıldığı yerin bağlantı noktası numarasını görüntüler.
+    Konsol penceresi, uygulamanın barındırıldığı bağlantı noktası numarasını görüntüler.
 
     ```console
     Listening on port 6420...
     ```
 
-1. Uygulamayı `http://localhost:6420` görüntülemek için tarayıcınızda gidin.
+1. Uygulamayı görüntülemek `http://localhost:6420` için tarayıcınızda sayfasına gidin.
 
-    ![Tarayıcıda gösterilen tek sayfalık uygulama örnek uygulaması](./media/tutorial-single-page-app-webapi/tutorial-01-sample-app-browser.png)
+    ![Tarayıcıda gösterilen tek sayfalı uygulama örnek uygulaması](./media/tutorial-single-page-app-webapi/tutorial-01-sample-app-browser.png)
 
-1. [Önceki öğreticide](tutorial-single-page-app.md)kullandığınız e-posta adresini ve parolayı kullanarak oturum açın. Başarılı bir oturum açtıktan `User 'Your Username' logged-in` sonra, iletiyi görmeniz gerekir.
-1. Arama **API düğmesini** seçin. SPA, Azure AD B2C'den yetkilendirme hibesi alır ve oturum açmış kullanıcının adını görüntülemek için korumalı web API'sine erişir:
+1. [Önceki öğreticide](tutorial-single-page-app.md)kullandığınız e-posta adresini ve parolayı kullanarak oturum açın. Başarılı oturum açma sırasında `User 'Your Username' logged-in` iletiyi görmeniz gerekir.
+1. **API çağrısı** düğmesini seçin. SPA, Azure AD B2C bir yetkilendirme izni alır ve ardından, oturum açmış kullanıcının adını göstermek için korunan Web API 'sine erişir:
 
-    ![Kullanıcı adı JSON sonucunu gösteren tarayıcıda TEK Sayfa uygulaması API tarafından döndürülür](./media/tutorial-single-page-app-webapi/tutorial-02-call-api.png)
+    ![API tarafından döndürülen Kullanıcı adı JSON sonucunu gösteren tarayıcıda tek sayfalı uygulama](./media/tutorial-single-page-app-webapi/tutorial-02-call-api.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * Azure AD B2C kiracınızda bir web API uygulama kaydı oluşturma
-> * Web API'si için yapılandırılmış kapsamlar
-> * Web API'sine verilen izinler
-> * Kiracınızla çalışmak için bir web API kodu örneğini değiştirdi
+> * Azure AD B2C kiracınızda bir Web API uygulaması kaydı oluşturuldu
+> * Web API 'SI için yapılandırılmış kapsamlar
+> * Web API 'sine izin verildi
+> * Kiracınızla çalışmak için bir Web API kodu örneğini değiştirme
 
-Artık bir SPA'nın korumalı bir web API'sinden kaynak istediğini gördüğünüze göre, bu uygulama türlerinin birbirleriyle ve Azure AD B2C ile nasıl etkileşimde bulunduğunu daha iyi anlayabilirsiniz.
+Artık bir SPA 'nın korumalı bir Web API 'sinden kaynak isteği gördüğünüze göre, bu uygulama türlerinin birbirleriyle ve Azure AD B2C nasıl etkileşime gireceğini daha ayrıntılı bir şekilde anlayın.
 
 > [!div class="nextstepaction"]
-> [Active Directory B2C >'da kullanılabilecek uygulama türleri](application-types.md)
+> [Active Directory B2C >kullanılabilecek uygulama türleri](application-types.md)
 
 <!-- Links - EXTERNAL -->
 [github-js-spa]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
