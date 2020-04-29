@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel'de gelişmiş çok aşamalı saldırı algılama
-description: Uyarı yorgunluğunu azaltmak ve gelişmiş çok aşamalı saldırı algılamasına dayanan eyleme geçirilebilir olaylar oluşturmak için Azure Sentinel'deki Fusion teknolojisini kullanın.
+title: Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama
+description: Uyarı fatıg 'yi azaltmak ve gelişmiş çok aşamalı saldırı algılamasına dayalı eylem yapılabilir olaylar oluşturmak için Azure Sentinel 'de Fusion teknolojisini kullanın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -13,328 +13,328 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77587932"
 ---
-# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel'de gelişmiş çok aşamalı saldırı algılama
+# <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama
 
 
 > [!IMPORTANT]
-> Azure Sentinel'deki bazı Birleştirme özellikleri şu anda genel önizlemededir.
-> Bu özellikler hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Azure Sentinel 'teki bazı Fusion özellikleri şu anda genel önizlemededir.
+> Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
-Azure Sentinel, makine öğrenimine dayalı Fusion teknolojisini kullanarak, öldürme zincirinin çeşitli aşamalarında gözlenen anormal davranışları ve şüpheli etkinlikleri birleştirerek çok aşamalı saldırıları otomatik olarak algılayabilir. Azure Sentinel daha sonra yakalanması çok zor olacak olaylar oluşturur. Bu olaylar iki veya daha fazla uyarı veya etkinlik kapsar. Tasarım olarak, bu olaylar düşük hacimli, yüksek sadakat ve yüksek öneme sahiptir.
+Azure Sentinel, Machine Learning 'i temel alan Fusion teknolojisini kullanarak çok aşamalı saldırıları otomatik olarak algılayabilir ve bu da sonlandırma zincirinin çeşitli aşamalarında gözlemlenen anormal davranışları ve şüpheli etkinlikleri birleştirerek. Azure Sentinel, daha sonra yakalamak çok zor olan olaylar oluşturur. Bu olaylar iki veya daha fazla uyarıyı veya etkinliği büyük bir şekilde kaydeder. Tasarım yaparak, bu olaylar düşük hacimdir, yüksek uygunlukta ve yüksek öneme sahiptir.
 
-Ortamınız için özelleştirilmiş bu algılama, yalnızca yanlış pozitif oranları azaltmanın yanında, sınırlı veya eksik bilgilere sahip saldırıları da algılayabilir.
+Ortamınız için özelleştirilmiş, bu algılama yalnızca hatalı pozitif oranları azaltmıyor ancak sınırlı veya eksik bilgilere sahip saldırıları tespit edebilir.
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>Gelişmiş çok aşamalı saldırı algılamasını yapılandırma
 
-Bu algılama Varsayılan olarak Azure Sentinel'de etkinleştirilir. Durumu denetlemek veya belki de birden çok uyarıya dayalı olaylar oluşturmak için alternatif bir çözüm kullandığınıziçin devre dışı kalmak için aşağıdaki yönergeleri kullanın:
+Bu algılama, Azure Sentinel 'de varsayılan olarak etkinleştirilmiştir. Durumu denetlemek veya birden çok uyarıyı temel alan olaylar oluşturmak için alternatif bir çözüm kullandığınız için belki de devre dışı bırakmak için aşağıdaki yönergeleri kullanın:
 
 1. Önceden yapmadıysanız, [Azure portal](https://portal.azure.com)da oturum açın
 
-2. Azure **Sentinel** > **Yapılandırma** > **Analitiğine** Gidin
+2. **Azure Sentinel** > **yapılandırma** > **Analizi** ' ne gidin
 
-3. **Etkin kuralları** seçin ve **NAME** sütununda Gelişmiş Çok Aşamalı **Saldırı Algılama'yı** bulun. Bu algılamanın etkin veya devre dışı bırakıldığını doğrulamak için **STATUS** sütununa bakın.
+3. **Etkin kurallar** ' ı seçin ve **ad** sütununda **Gelişmiş çok aşamalı saldırı algılamayı** bulun. Bu algılamanın etkin veya devre dışı olduğunu doğrulamak için **durum** sütununu kontrol edin.
 
-4. Durumu değiştirmek için bu girişi ve **Gelişmiş Çok Aşamalı Saldırı Algılama** bıçağını seçin, **Düzenley'i**seçin.
+4. Durumu değiştirmek için bu girişi seçin ve **Gelişmiş çok aşamalı saldırı algılama** dikey penceresinde **Düzenle**' yi seçin.
 
-5. Kural **oluşturma sihirbazı bıçak,** durum değişikliği sizin için otomatik olarak seçilir, bu nedenle **Sonraki seçin: Gözden geçirin**ve sonra **Kaydet**. 
+5. **Kural oluşturma Sihirbazı** dikey penceresinde durum değişikliği sizin için otomatik olarak seçilir, bu nedenle **İleri**' yi seçin ve ardından **Kaydet**' i seçin. 
 
 Kural şablonları gelişmiş çok aşamalı saldırı algılama için geçerli değildir.
 
 > [!NOTE]
-> Azure Sentinel şu anda makine öğrenim sistemlerini eğitmek için 30 günlük geçmiş verileri kullanmaktadır. Bu veriler, makine öğrenimi ardışık boru hattından geçerken microsoft'un anahtarları kullanılarak her zaman şifrelenir. Ancak, Azure Sentinel çalışma alanınızda CMK'yı etkinleştirdiyseniz, eğitim verileri [Müşteri Yönetilen Anahtarlar (CMK)](customer-managed-keys.md) kullanılarak şifrelenmez. Fusion'ı devre dışı bırakmak için **Azure Sentinel** \> **Configuration** \> **Analytics \> Active kuralları \> Gelişmiş Çok Aşamalı Saldırı Algılama** kurallarına gidin ve **Durum** sütununda Devre Dışı **Bırakma'yı seçin.**
+> Azure Sentinel, makine öğrenimi sistemlerini eğitmek için şu anda 30 günlük geçmiş veri kullanmaktadır. Bu veriler, makine öğrenimi ardışık düzeninde geçerken Microsoft 'un anahtarları kullanılarak her zaman şifrelenir. Ancak, Azure Sentinel çalışma alanınızda CMK 'yı etkinleştirdiyseniz eğitim verileri, [müşteri tarafından yönetilen anahtarlar (CMK)](customer-managed-keys.md) kullanılarak şifrelenmez. Fusion 'un devre dışı bırakılması için **Azure Sentinel** \> **yapılandırma** \> ** \> \> Analizi etkin kurallar gelişmiş çok aşamalı saldırı algılama** ' ya gidin ve **durum** sütununda **devre dışı bırak** ' ı seçin.
 
-## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fusion Palo Alto Networks ve Microsoft Defender ATP kullanarak
+## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Palo Alto Networks ve Microsoft Defender ATP kullanarak Fusion
 
-Bu senaryolar, güvenlik analistleri tarafından kullanılan temel günlüklerden ikisini birleştirir: Palo Alto Networks'ten güvenlik duvarı günlükleri ve Microsoft Defender ATP'den son nokta algılama günlükleri. Aşağıda listelenen tüm senaryolarda, harici bir IP adresi içeren bitiş noktasında şüpheli bir etkinlik algılanır ve bunu harici IP adresinden güvenlik duvarına geri gelen anormal trafik takip eder. Azure Sentinel, Palo Alto günlüklerinde [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak kabul edilir (şüpheli veriler, dosyalar, seller, paketler, taramalar, casus yazılımlar, URL'ler, virüsler, güvenlik açıkları, orman yangını virüsleri, orman yangınları).
+Bu senaryolar, Güvenlik analistleri tarafından kullanılan temel günlüklerin ikisini birleştirir: Palo Alto Networks ve uç nokta algılama günlüklerinden Microsoft Defender ATP. Aşağıda listelenen tüm senaryolarda, bir dış IP adresi içeren bitiş noktasında şüpheli bir etkinlik algılanır, ardından bu, dış IP adresinden güvenlik duvarından geri gelen anormal trafik tarafından izlenir. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar).
 
-### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>TOR anonymization hizmetine ağ isteği ve ardından Palo Alto Networks güvenlik duvarı tarafından işaretlenmiş anormal trafik.
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Anonim olarak çalışan hizmeti olan ağ isteği, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenir.
 
-Bu senaryoda, Azure Sentinel ilk olarak Microsoft Defender Gelişmiş Tehdit Koruması'nın anormal etkinliklere yol açan bir TOR adonymization hizmetiiçin ağ isteği algıladığını bildiren bir uyarı algılar. Bu işlem {time} anda SID ID {sid} ile {hesap adı} adı altında başlatıldı. Bağlantının giden IP adresi {IndividualIp} idi.
-Daha sonra, {TimeGenerated} adresindeki Palo Alto Networks Güvenlik Duvarı tarafından olağandışı bir etkinlik algılandı. Bu, ağınıza kötü amaçlı trafiğin girdiğini gösterir Ağ trafiğinin hedef IP adresi {DestinationIP} olduğunu gösterir.
+Bu senaryoda, Azure Sentinel önce, Microsoft Defender Gelişmiş tehdit koruması 'nın anormal etkinliklere yol açabilecek bir TOR anonim seçme hizmetine bir ağ isteği algıladığını belirten bir uyarı algılar. Bu, {Account Name} hesabı altında {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi.
+Daha sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağandışı etkinlik algılandı. Bu, ağınıza girilen kötü amaçlı trafiğin, ağ trafiği için hedef IP adresinin {Destinationıp} olduğunu gösterir.
 
-Bu senaryo şu anda genel önizlemede.
+Bu senaryo şu anda genel önizlemededir.
 
 
-### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell, Palo Alto Networks güvenlik duvarı tarafından işaretlenmiş anormal trafik takip şüpheli bir ağ bağlantısı yaptı.
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen şüpheli bir ağ bağlantısı yaptı.
 
-Bu senaryoda, Azure Sentinel ilk olarak Microsoft Defender Gelişmiş Tehdit Koruması'nın PowerShell'in Palo Alto Network Güvenlik Duvarı tarafından algılanan anormal bir faaliyete yol açan şüpheli bir ağ bağlantısı yaptığını algıladığını tespit ettiği bir uyarı algılar. Bu işlem{time} anda SID ID {sid} ile {hesap adı} hesabı tarafından başlatıldı. Bağlantının giden IP adresi {IndividualIp} idi. Daha sonra, {TimeGenerated} adresindeki Palo Alto Networks Güvenlik Duvarı tarafından olağandışı bir etkinlik algılandı. Bu, kötü amaçlı trafiğin ağınıza girdiğini gösterir. Ağ trafiği için hedef IP adresi {DestinationIP}'dir.
+Bu senaryoda, Azure Sentinel önce, Microsoft Defender Gelişmiş tehdit koruması 'nın, PowerShell 'in bir Palo Alto ağı güvenlik duvarı tarafından algılanan anormal etkinlikte şüpheli bir ağ bağlantısı yaptığını algıladığını bildiren bir uyarı algılar. Bu, {Account Name} hesabı tarafından {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi. Daha sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağandışı etkinlik algılandı. Bu, kötü amaçlı trafiğin ağınıza girdiği anlamına gelir. Ağ trafiği için hedef IP adresi {Destinationıp}.
 
-Bu senaryo şu anda genel önizlemede.
+Bu senaryo şu anda genel önizlemededir.
 
-### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Palo Alto Networks güvenlik duvarı tarafından işaretlenmiş anormal trafik ardından yetkisiz erişim girişimleri geçmişi ile IP giden bağlantı
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>, Palo Alto Networks güvenlik duvarı tarafından işaretlenen anormal trafik tarafından izlenen, yetkisiz erişim girişimleri geçmişi ile IP 'ye giden bağlantı
 
-Bu senaryoda Azure Sentinel, Microsoft Defender Gelişmiş Tehdit Koruması'nın, Palo Alto tarafından anormal bir faaliyetin algılanmasına yol açan yetkisiz erişim girişimleri geçmişi olan bir IP adresine giden bir bağlantı algıladığını bildiren bir uyarı algılar Ağlar Güvenlik Duvarı. Bu işlem{time} anda SID ID {sid} ile {hesap adı} hesabı tarafından başlatıldı. Bağlantının giden IP adresi {IndividualIp} idi. Bundan sonra, Palo Alto Networks Güvenlik Duvarı tarafından {TimeGenerated} adresinde olağandışı etkinlik algılandı. Bu, kötü amaçlı trafiğin ağınıza girdiğini gösterir. Ağ trafiği için hedef IP adresi {DestinationIP}'dir.
+Bu senaryoda, Azure Sentinel, Microsoft Defender Gelişmiş tehdit koruması 'nın, Palo Alto Networks güvenlik duvarı tarafından algılanan anormal etkinliklere yol açabilecek bir IP adresine giden bağlantı algıladığını belirten bir uyarı algılar. Bu, {Account Name} hesabı tarafından {SID} SID KIMLIĞIYLE {Time} saatinde başlatıldı. Bağlantıya giden IP adresi {Kişiselleştiralip} idi. Bundan sonra, {TimeGenerated} konumundaki Palo Alto Networks güvenlik duvarı tarafından olağan dışı etkinlik algılandı. Bu, kötü amaçlı trafiğin ağınıza girdiği anlamına gelir. Ağ trafiği için hedef IP adresi {Destinationıp}.
 
-Bu senaryo şu anda genel önizlemede.
+Bu senaryo şu anda genel önizlemededir.
 
 
 
-## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Kimlik Koruması ve Microsoft Bulut Uygulama Güvenliğini Kullanarak Füzyon
+## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Kimlik koruması ve Microsoft Cloud App Security kullanarak Fusion
 
-Azure Sentinel, gelişmiş çok aşamalı saldırı algılamasını kullanarak Azure Active Directory Identity Protection ve Microsoft Cloud App Security'deki anormallik olaylarını birleştiren aşağıdaki senaryoları destekler:
+Azure Sentinel, gelişmiş çok aşamalı saldırı algılama kullanarak, Azure Active Directory Kimlik Koruması ve Microsoft Cloud App Security anomali olaylarını birleştiren aşağıdaki senaryoları destekler:
 
-- [Atipik bir konuma imkansız seyahat ve ardından anormal Office 365 etkinliği](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
-- [Yabancı konum için oturum açma etkinliği ve ardından anormal Office 365 etkinliği](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
-- [Enfekte cihazdan giriş etkinliği ve ardından anormal Office 365 etkinliği](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
-- [Anonim IP adresinden oturum açma etkinliği ve ardından anormal Office 365 etkinliği](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
-- [Sızdırılmış kimlik bilgilerine sahip kullanıcıdan gelen oturum açma etkinliği ve ardından anormal Office 365 etkinliği](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
+- [Anormal Office 365 etkinliğinin ardından gelen bir konuma imkansız seyahat](#impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity)
+- [Bilinmeyen konum için oturum açma etkinliği ve anormal Office 365 etkinliği](#sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity)
+- [Virüslü cihazdan sonra gelen oturum açma etkinliği, anormal Office 365 etkinliği](#sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity)
+- [Anonim IP adresinden sonra, anormal Office 365 etkinliğinin oturum açma etkinliği](#sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity)
+- [Kullanıcı tarafından sızdırılan kimlik bilgilerine sahip ve anormal Office 365 etkinliğinin oturum açma etkinliği](#sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity)
 
-Azure AD [Kimlik Koruması veri bağlayıcısı](connect-azure-ad-identity-protection.md) ve [Bulut Uygulaması Güvenliği](connect-cloud-app-security.md) bağlayıcıları yapılandırıldı.
+[Azure AD kimlik koruması Data Connector](connect-azure-ad-identity-protection.md) ve [Cloud App Security](connect-cloud-app-security.md) bağlayıcıları yapılandırılmış olmalıdır.
 
-Bunu izleyen açıklamalarda, Azure Sentinel bu sayfada temsil edilen verilerinizin gerçek değerini parantez içinde değişken olarak görüntüler. Örneğin, \< *hesap adı* yerine bir hesabın gerçek görüntü adı> ve \< *> sayısı* yerine gerçek sayı.
+Aşağıdaki açıklamalarda, Azure Sentinel, bu sayfada temsil edilen verilerinizde bulunan gerçek değeri köşeli ayraç içindeki değişken olarak görüntüler. Örneğin, hesap \< *adı*> yerine hesabın gerçek görünen adı ve \< *sayı*> yerine gerçek sayı.
 
-### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Atipik bir konuma imkansız seyahat ve ardından anormal Office 365 etkinliği
+### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Anormal Office 365 etkinliğinin ardından gelen bir konuma imkansız seyahat
 
-Azure AD Kimlik Koruması'ndan atipik konum uyarılarına ve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarılarına imkansız seyahati birleştiren yedi olası Azure Sentinel olayı vardır:
+Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması ve anormal Office 365 uyarılarından gelen olağan konuma karşı olası bir yolculuızı birleştiren yedi Azure Sentinel olayı vardır:
 
-- **Office 365 posta kutusu nun sızmasına yol açan atipik konumlara imkansız seyahat**
+- **Office 365 posta kutusu için önde gelen konumlara yönelik imkansız seyahat**
     
-    Bu uyarı, \< *hesap adına* göre oturum açma olayının, kullanıcının gelen kutusunda ayarlanmış şüpheli bir gelen kutusu yönlendirme kuralının ardından, atipik bir konum olan,> bir \< *konuma* imkansız bir seyahatten> bir göstergedir.
+    Bu uyarı, bir kullanıcının gelen kutusunda şüpheli bir konum>, \<olağan olmayan bir konum ve şüpheli bir gelen \<kutusu iletme kuralı ayarlanmış bir *konuma*> *hesap adına* göre oturum açma olayının göstergesidir.
     
-    Bu, hesabın gizliliğinin ihlal edildiğini ve posta kutusunun kuruluşunuzdaki bilgileri çıkarmak için kullanıldığını gösterebilir. Kullanıcı \< *hesabı adı*>, gelen tüm e-postaları harici \< *adrese* ileten bir gelen kutusu yönlendirme kuralı nı>.
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>.
 
-- **Şüpheli bulut uygulaması yönetim etkinliğine yol açan atipik konumlara imkansız seyahat**
+- **Şüpheli bulut uygulaması yönetim etkinliğine yönelik olarak önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, hesap \< *adına* göre oturum açma olayının, atipik bir \< *konum* olan> yer> imkansız bir seyahatten> bir göstergedir.
+    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location*
     
-    Ardından, \< *hesap adı*> \< *tek* bir oturumda> yönetim etkinlikleri nin üzerinde gerçekleştirilir.
+    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> çok *sayıda* yönetim etkinliği üzerinden gerçekleştirilir.
 
-- **Toplu dosya silmeişlemine yol açan atipik yerlere imkansız seyahat**
+- **Toplu dosya silmeye yönelik olarak önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, \< *atipik* bir konum olan> \< *konuma*> hesap adına göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı \<, genel bir konum olan> *konuma*> \< *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *nın silinmiş numarası.*
+    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
 
-- **Toplu dosya indirmeye giden atipik yerlere imkansız seyahat**
+- **Toplu dosyanın indirileceği sıradan konumlara yönelik imkansız seyahat**
     
-    Bu uyarı, hesap \< *adına* göre oturum açma olayının, atipik bir \< *konum* olan> yer> imkansız bir seyahatten> bir göstergedir. 
+    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location* 
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> benzersiz dosya *sayısı* üzerinden indirilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
 
-- **Office 365 kimliğe bürünmeye yol açan atipik konumlara imkansız seyahat**
+- **Office 365 kimliğe bürünme için önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, hesap \< *adına* göre oturum açma olayının, atipik bir \< *konum* olan> yer> imkansız bir seyahatten> bir göstergedir. 
+    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location* 
     
-    Ardından, \< *hesap adı*> tek bir\<oturumda kimliğe bürünme etkinliklerinin alışılmadık bir miktarını *(etkinlik sayısı*>) gerçekleştirilmiştir.
+    Daha sonra hesap \< *hesabı adı*>, tek bir oturumdaki kimliğe bürünme\<etkinliklerinin olağan dışı bir miktarını (*etkinlik> sayısı* ) gerçekleştirdi.
 
-- **Toplu dosya paylaşımına yol açan atipik konumlara imkansız seyahat**
+- **Toplu dosya paylaşımına önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, hesap \< *adına* göre oturum açma olayının, atipik bir \< *konum* olan> yer> imkansız bir seyahatten> bir göstergedir. 
+    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location* 
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *sayısı* üzerinde paylaşılır.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
 
-- **Bulut uygulamasında fidye yazılımına yol açan atipik yerlere imkansız seyahat**
+- **Bulut uygulamasındaki fidye 'ya yönelik olarak önde gelen konumlara imkansız seyahat**
     
-    Bu uyarı, hesap \< *adına* göre oturum açma olayının, atipik bir \< *konum* olan> yer> imkansız bir seyahatten> bir göstergedir. 
+    Bu uyarı, \< *hesap adına* göre bir oturum açma olayının, mümkün \<olmayan bir konuma>, genellikle tipik bir konuma> bir göstergesidir. *location* 
     
-    Ardından, \< *hesap adı*>> dosya \< *sayısını* yükledi ve \<toplam> dosya *sayısını* sildi. 
+    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
     
-    Bu etkinlik deseni, olası bir fidye yazılımı saldırısının göstergesidir.
+    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
 
-### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Yabancı konum için oturum açma etkinliği ve ardından anormal Office 365 etkinliği
+### <a name="sign-in-activity-for-unfamiliar-location-followed-by-anomalous-office-365-activity"></a>Bilinmeyen konum için oturum açma etkinliği ve anormal Office 365 etkinliği
 
-Azure AD Kimlik Koruması'ndan gelen yabancı konum uyarıları ve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarıları için oturum açma etkinliğini birleştiren yedi olası Azure Sentinel olayı vardır.
+Azure AD Kimlik Koruması ve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarılarından bilmediğiniz konum uyarıları için oturum açma etkinliğini birleştiren yedi Azure Sentinel olayı vardır.
 
-- **Exchange Online posta kutusu exfiltration giden yabancı bir konumdan oturum açma olayı**
+- **Bilinmeyen bir konumdan Exchange Online posta kutusu için bir oturum açma olayı lider**
     
-    Bu uyarı, \<> *konumdaki* \<hesap> *adına* göre oturum açma olayının, yabancı bir konum olan> ve ardından kullanıcının gelen kutusunda şüpheli bir gelen kutusu yönlendirme kuralının ayarlandığının bir göstergesidir.
+    \<Bu uyarı, *konum*>> \< *hesap adına* göre bir oturum açma olayının göstergesidir ve bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı, tanıdık bir konum.
     
-    Bu, hesabın gizliliğinin ihlal edildiğini ve posta kutusunun kuruluşunuzdaki bilgileri çıkarmak için kullanıldığını gösterebilir. Kullanıcı \< *hesabı adı*>, gelen tüm e-postaları harici \< *adrese* ileten bir gelen kutusu yönlendirme kuralı nı>. 
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>. 
 
-- **Şüpheli bulut uygulaması yönetim etkinliğine yol açan yabancı bir konumdan oturum açma etkinliği**
+- **Bilinmeyen bir konumdan şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma olayı**
     
-    Bu uyarı,> konumundan, yabancı \<bir \< *konumdan* *> hesap adına* göre oturum açma olayının bir göstergesidir. 
+    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı* tek \<bir oturumda> yönetim etkinlik *sayısı* üzerinden gerçekleştirilen hesap adı>.
+    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> yönetim etkinliği *sayısına* göre gerçekleştirilir.
 
-- **Toplu dosya silmeişlemine giden yabancı bir konumdan oturum açma olayı**
+- **Bilmediğiniz bir konumdan toplu dosya silmeye kadar olan oturum açma etkinliği**
     
-    Bu uyarı,> konumundan, yabancı \<bir \< *konumdan* *> hesap adına* göre oturum açma olayının bir göstergesidir. 
+    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *nın silinmiş numarası.*
+    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
 
-- **Toplu dosya indirmeye giden yabancı bir konumdan oturum açma olayı**
+- **Bilinmeyen bir konumdan yığın dosya indirme için bir oturum açma olayı**
     
-    Bu uyarı,> konumundan, yabancı \<bir \< *konumdan* *> hesap adına* göre oturum açma olayının bir göstergesidir. 
+    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> benzersiz dosya *sayısı* üzerinden indirilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
 
-- **Office 365 kimliğe bürünmeye giden yabancı bir konumdan oturum açma etkinliği**
+- **Bilmediğiniz bir konumdan Office 365 kimliğe bürünmeye önde gelen oturum açma olayı**
     
-    Bu uyarı,> konumundan, yabancı \<bir \< *konumdan* *> hesap adına* göre oturum açma olayının bir göstergesidir.
+    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir.
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> farklı hesap *sayısı* üzerinden taklit edilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> farklı hesapların *sayısına* göre kimliğe>.
 
-- **Toplu dosya paylaşımına yol açan yabancı bir konumdan oturum açma olayı**
+- **Bilinmeyen bir konumdan yığın dosya paylaşımına önde gelen oturum açma olayı**
     
-    Bu uyarı,> konumundan, yabancı \<bir \< *konumdan* *> hesap adına* göre oturum açma olayının bir göstergesidir. 
+    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *sayısı* üzerinde paylaşılır.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
 
-- **Bulut uygulamasında fidye yazılımına yol açan yabancı bir konumdan oturum açma etkinliği**
+- **Tanınmayan bir konumdan bulut uygulamasındaki fidye 'ya lider olarak oturum açma etkinliği**
     
-    Bu uyarı,> konumundan, yabancı \<bir \< *konumdan* *> hesap adına* göre oturum açma olayının bir göstergesidir. 
+    \<Bu uyarı, bilinmeyen bir konum olan *konum*>> \< *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*>> dosya \< *sayısını* yükledi ve \<toplam> dosya *sayısını* sildi. 
+    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
     
-    Bu etkinlik deseni, olası bir fidye yazılımı saldırısının göstergesidir.
+    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
-### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Enfekte cihazdan giriş etkinliği ve ardından anormal Office 365 etkinliği
+### <a name="sign-in-activity-from-infected-device-followed-by-anomalous-office-365-activity"></a>Virüslü cihazdan sonra gelen oturum açma etkinliği, anormal Office 365 etkinliği
 
-Azure AD Kimlik Koruması'ndan gelen virüslü aygıt uyarılarıve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarılarının oturum açma etkinliğini birleştiren yedi olası Azure Sentinel olayı vardır:
+Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması ve anormal Office 365 uyarılarından etkilenen cihaz uyarılarından oturum açma etkinliğini birleştiren yedi Azure Sentinel olayı vardır:
 
-- **Office 365 posta kutusu ekine giden virüslü bir cihazdan oturum açma olayı**
+- **Virüslü bir cihazdan Office 365 posta kutusu için lider olarak oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılım bulaşmış olabilecek bir cihazdan> hesap \< *adına* göre oturum açma olayının bir göstergesidir ve ardından kullanıcının gelen kutusunda şüpheli bir gelen kutusu yönlendirme kuralı ayarlanmıştır.
+    Bu uyarı, kötü amaçlı yazılımlardan etkilenen bir cihazdan \< *hesap adına*> bir oturum açma olayının göstergesidir ve bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı ayarlanmış olabilir.
     
-    Bu, hesabın gizliliğinin ihlal edildiğini ve posta kutusunun kuruluşunuzdaki bilgileri çıkarmak için kullanıldığını gösterebilir. Kullanıcı \< *hesabı adı*>, gelen tüm e-postaları harici \< *adrese* ileten bir gelen kutusu yönlendirme kuralı nı>. 
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>. 
 
-- **Şüpheli bulut uygulaması yönetim etkinliğine yol açan virüslü bir cihazdan oturum açma olayı**
+- **Virüslü bir cihazdan şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılım bulaşmış olabilecek bir cihazdan> \< *hesap adına* göre oturum açma olayının bir göstergesidir.
+    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir.
     
-    Ardından, \< *hesap adı* tek \<bir oturumda> yönetim etkinlik *sayısı* üzerinden gerçekleştirilen hesap adı>.
+    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> yönetim etkinliği *sayısına* göre gerçekleştirilir.
 
-- **Toplu dosya silmeişlemine yol açan virüslü bir cihazdan oturum açma olayı**
+- **Virüslü bir cihazdan toplu dosya silmeye kadar lider olan oturum açma olayı**
     
-    Bu uyarı, kötü amaçlı yazılım bulaşmış olabilecek bir cihazdan> \< *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *nın silinmiş numarası.*
+    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
 
-- **Toplu dosya indirmeye giden virüslü bir cihazdan oturum açma olayı**
+- **Virüslü bir cihazdan toplu dosya indirme için lider olan oturum açma olayı**
     
-    Bu uyarı, kötü amaçlı yazılım bulaşmış olabilecek bir cihazdan> \< *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> benzersiz dosya *sayısı* üzerinden indirilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
 
-- **Office 365 kimliğe bürünme sine yol açan virüslü bir cihazdan oturum açma olayı**
+- **Virüslü bir cihazdan Office 365 kimliğe bürünmeye önde gelen oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılım bulaşmış olabilecek bir cihazdan> \< *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> farklı hesap *sayısı* üzerinden taklit edilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> farklı hesapların *sayısına* göre kimliğe>.
 
-- **Toplu dosya paylaşımına yol açan virüslü bir cihazdan oturum açma olayı**
+- **Virüslü bir cihazdan toplu dosya paylaşımına lider olarak oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılım bulaşmış olabilecek bir cihazdan> \< *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *sayısı* üzerinde paylaşılır.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
 
-- **Bulut uygulamasında fidye yazılımına yol açan virüslü bir cihazdan oturum açma olayı**
+- **Etkilenen bir cihazdan, bulut uygulamasındaki fidye 'ya lider olarak oturum açma etkinliği**
     
-    Bu uyarı, kötü amaçlı yazılım bulaşmış olabilecek bir cihazdan> \< *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, kötü amaçlı yazılımlardan etkilenme olasılığı bulunan bir cihazdan \< *hesap adına* göre> bir oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*>> dosya \< *sayısını* yükledi ve \<toplam> dosya *sayısını* sildi. 
+    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
     
-    Bu etkinlik deseni, olası bir fidye yazılımı saldırısının göstergesidir.
+    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
-### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Anonim IP adresinden oturum açma etkinliği ve ardından anormal Office 365 etkinliği
+### <a name="sign-in-activity-from-anonymous-ip-address-followed-by-anomalous-office-365-activity"></a>Anonim IP adresinden sonra, anormal Office 365 etkinliğinin oturum açma etkinliği
 
-Azure AD Kimlik Koruması'ndan gelen anonim IP adresi uyarılarından ve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarılarından oturum açma etkinliğini birleştiren yedi olası Azure Sentinel olayı vardır:
+Microsoft Cloud App Security tarafından oluşturulan Azure AD Kimlik Koruması ve anormal Office 365 uyarılarından anonim IP adresi uyarılarından oturum açma etkinliğini birleştiren yedi Azure Sentinel olayı vardır:
 
-- **Office 365 posta kutusu extrtrtrtrasyonuna yol açan anonim bir IP adresinden oturum açma olayı**
+- **Anonim bir IP adresinden Office 365 posta kutusu için önde gelen oturum açma olayı**
     
-    Bu uyarı,> anonim bir proxy \<IP adresi IP \< *adresinden* hesap *adına* göre> oturum açma olayının ve ardından kullanıcının gelen kutusuna şüpheli bir gelen kutusu yönlendirme kuralının ayarlandığının bir göstergesidir.
+    Bu uyarı, bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme \<kuralı> bir anonim proxy IP adresi \< *IP adresinden*> *hesap adına* göre oturum açma olayının göstergesidir.
     
-    Bu, hesabın gizliliğinin ihlal edildiğini ve posta kutusunun kuruluşunuzdaki bilgileri çıkarmak için kullanıldığını gösterebilir. Kullanıcı \< *hesabı adı*>, gelen tüm e-postaları harici \< *adrese* ileten bir gelen kutusu yönlendirme kuralı nı>. 
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>. 
 
-- **Şüpheli bulut uygulaması yönetim etkinliğine yol açan anonim bir IP adresinden oturum açma olayı**
+- **Anonim bir IP adresinden, şüpheli bulut uygulaması yönetim etkinliğine yönelik oturum açma olayı**
     
-    Bu uyarı,> anonim bir proxy \<IP adresi IP \< *adresinden*> *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı* tek \<bir oturumda> yönetim etkinlik *sayısı* üzerinden gerçekleştirilen hesap adı>.
+    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> yönetim etkinliği *sayısına* göre gerçekleştirilir.
 
-- **Toplu dosya silme işlemine yol açan anonim bir IP adresinden oturum açma olayı**
+- **Anonim bir IP adresinden toplu dosya silmeye kadar bir oturum açma olayı**
     
-    Bu uyarı,> anonim bir proxy \<IP adresi IP \< *adresinden*> *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *nın silinmiş numarası.*
+    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
 
-- **Toplu dosya indirmeye giden anonim bir IP adresinden oturum açma olayı**
+- **Anonim bir IP adresinden yığın dosya indirmelerine kadar bir oturum açma olayı**
     
-    Bu uyarı,> anonim bir proxy \<IP adresi IP \< *adresinden*> *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> benzersiz dosya *sayısı* üzerinden indirilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
 
-- **Office 365 kimliğe bürünmeye yol açan anonim bir IP adresinden oturum açma olayı**
+- **Anonim bir IP adresinden Office 365 kimliğe bürünmeye önde gelen oturum açma olayı**
     
-    Bu uyarı,> anonim bir proxy \<IP adresi IP \< *adresinden*> *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> farklı hesap *sayısı* üzerinden taklit edilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> farklı hesapların *sayısına* göre kimliğe>.
 
-- **Toplu dosya paylaşımına yol açan anonim bir IP adresinden oturum açma olayı**
+- **Anonim bir IP adresinden yığın dosya paylaşımına önde gelen oturum açma olayı**
     
-    Bu uyarı,> anonim bir proxy \<IP adresi IP \< *adresinden*> *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *sayısı* üzerinde paylaşılır.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
 
-- **Bulut uygulamasında fidye yazılımına anonim bir IP adresinden oturum açma etkinliği**
+- **Bulut uygulamasındaki fidye 'ya anonim IP adresinden oturum açma olayı**
     
-    Bu uyarı,> anonim bir proxy \<IP adresi IP \< *adresinden*> *hesap adına* göre oturum açma olayının bir göstergesidir. 
+    Bu uyarı, anonim bir proxy IP \< \<adresi *IP adresi*>> *hesap adına* göre oturum açma olayının göstergesidir. 
     
-    Ardından, \< *hesap adı*>> dosya \< *sayısını* yükledi ve \<toplam> dosya *sayısını* sildi. 
+    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
     
-    Bu etkinlik deseni, olası bir fidye yazılımı saldırısının göstergesidir.
+    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
-### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Sızdırılmış kimlik bilgilerine sahip kullanıcıdan gelen oturum açma etkinliği ve ardından anormal Office 365 etkinliği
+### <a name="sign-in-activity-from-user-with-leaked-credentials-followed-by-anomalous-office-365-activity"></a>Kullanıcı tarafından sızdırılan kimlik bilgilerine sahip ve anormal Office 365 etkinliğinin oturum açma etkinliği
 
-Kullanıcıdan gelen oturum açma etkinliğini Azure AD Kimlik Koruması'ndan sızdırılmış kimlik bilgileri uyarıları ve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarılarıyla birleştiren yedi olası Azure Sentinel olayı vardır:
+Azure AD Kimlik Koruması ve Microsoft Cloud App Security tarafından oluşturulan anormal Office 365 uyarılarından sızdırılan kimlik bilgileri uyarıları olan kullanıcıdan oturum açma etkinliğini birleştiren yedi Azure Sentinel olayı vardır:
 
-- **Office 365 posta kutusu exfiltrasyonuna yol açan sızdırılmış kimlik bilgilerine sahip kullanıcıdan oturum açma olayı**
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan Office 365 posta kutusu için oturum açma etkinliği**
     
-    Bu uyarı, oturum açma olayının, \<kullanıcının gelen kutusunda şüpheli bir gelen kutusu yönlendirme kuralının ayarlandığının> *hesap adına* göre kullanıldığının ve ardından şüpheli bir gelen kutusu yönlendirme kuralının ayarlandığının göstergesidir. 
+    Bu uyarı, \< *hesap adına* göre oturum açma olayının, sızdırılan kimlik bilgilerini> kullanıldığını ve bir kullanıcının gelen kutusunda şüpheli bir gelen kutusu iletme kuralı ayarlandığını belirten bir göstergesidir. 
     
-    Bu, hesabın gizliliğinin ihlal edildiğini ve posta kutusunun kuruluşunuzdaki bilgileri çıkarmak için kullanıldığını gösterebilir. Kullanıcı \< *hesabı adı*>, gelen tüm e-postaları harici \< *adrese* ileten bir gelen kutusu yönlendirme kuralı nı>. 
+    Bu, hesabın güvenliğinin aşıldığını ve bu posta kutusunun kuruluşunuzdaki bilgileri almak için kullanıldığını gösteriyor olabilir. Kullanıcı \< *hesabı adı* , gelen tüm e-postaları> dış adres \< *e-posta adresine* ileten bir gelen kutusu iletme kuralı oluşturdu veya güncelleştirmiş>. 
 
-- **Şüpheli bulut uygulaması yönetim etkinliğine yol açan sızdırılmış kimlik bilgilerine sahip kullanıcıdan oturum açma etkinliği**
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan gelen oturum açma olayı, şüpheli bulut uygulaması yönetim etkinliğine**
     
-    Bu uyarı, oturum açma olayının \< *hesap adına* göre> sızdırılan kimlik bilgilerini kullandığının bir göstergesidir.
+    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir.
     
-    Ardından, \< *hesap adı* tek \<bir oturumda> yönetim etkinlik *sayısı* üzerinden gerçekleştirilen hesap adı>.
+    Daha sonra hesap \< *hesabı adı*>, tek bir \<oturumdaki> yönetim etkinliği *sayısına* göre gerçekleştirilir.
 
-- **Toplu dosya silmeişlemine yol açan sızdırılmış kimlik bilgileriyle Kullanıcı'dan oturum açma olayı**
+- **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından yığın dosyası silinmeye birlikte oturum açma etkinliği**
     
-    Bu uyarı, oturum açma olayının \< *hesap adına* göre> sızdırılan kimlik bilgilerini kullandığının bir göstergesidir.
+    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir.
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *nın silinmiş numarası.*
+    Daha sonra hesap \< *hesabı adı*>, tek \<bir oturumdaki> benzersiz dosya *sayısını* sildi.
 
-- **Toplu dosya indirmeye giden sızdırılmış kimlik bilgileriyle Kullanıcıdan oturum açma olayı**
+- **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından yığın dosyası indirme için oturum açma etkinliği**
     
-    Bu uyarı, oturum açma olayının \< *hesap adına* göre> sızdırılan kimlik bilgilerini kullandığının bir göstergesidir.
+    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir.
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> benzersiz dosya *sayısı* üzerinden indirilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden indirilir>.
 
-- **Office 365 kimliğe bürünmeye yol açan sızdırılmış kimlik bilgilerine sahip kullanıcıdan oturum açma olayı**
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan Office 365 kimliğe bürünme ile oturum açma etkinliği**
     
-    Bu uyarı, oturum açma olayının \< *hesap adına* göre> sızdırılan kimlik bilgilerini kullandığının bir göstergesidir. 
+    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir. 
     
-    Ardından, \< *hesap adı*> tek \<bir oturumda> farklı hesap *sayısı* üzerinden taklit edilir.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> farklı hesapların *sayısına* göre kimliğe>.
 
-- **Toplu dosya paylaşımına yol açan sızdırılmış kimlik bilgileriyle Kullanıcı'dan oturum açma olayı**
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan yığın dosya paylaşımına lider olarak oturum açma etkinliği**
     
-    Bu uyarı, oturum açma olayının \< *hesap adına* göre> sızdırılan kimlik bilgilerini kullandığının bir göstergesidir.
+    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir.
     
-    Ardından, \< *hesap adı*> \<tek bir oturumda> benzersiz dosya *sayısı* üzerinde paylaşılır.
+    Daha sonra hesap \< *hesabı adı* , tek bir oturumdaki \<> benzersiz dosya *sayısı* üzerinden paylaşılır>.
 
-- **Bulut uygulamasında fidye yazılımına sızdırılmış kimlik bilgileriyle Kullanıcıdan oturum açma etkinliği**
+- **Bulut uygulamasındaki fidye 'ya sızdırılan kimlik bilgilerine sahip kullanıcıdan oturum açma olayı**
     
-    Bu uyarı, oturum açma olayının \< *hesap adına* göre> sızdırılan kimlik bilgilerini kullandığının bir göstergesidir. 
+    Bu uyarı, \< *hesap adına* göre oturum açma olayının sızdırılan kimlik bilgilerini> kullandığının göstergesidir. 
     
-    Ardından, \< *hesap adı*>> dosya \< *sayısını* yükledi ve \<toplam> dosya *sayısını* sildi. 
+    Daha sonra hesap \< *hesabı adı*>> dosya \< *sayısı* karşıya yüklendi ve toplam \<> dosya *sayısını* sildi. 
     
-    Bu etkinlik deseni, olası bir fidye yazılımı saldırısının göstergesidir.
+    Bu etkinlik deseninin olası bir fidye yazılımı saldırısı göstergesi vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık gelişmiş çok aşamalı saldırı algılama hakkında daha fazla bilgi edindiğiniziçin, verilerinizde ve olası tehditlerde görünürlük elde etmeyi öğrenmek için aşağıdaki hızlı başlangıçilginizi çekebilir: [Azure Sentinel ile çalışmaya başlayın.](quickstart-get-visibility.md)
+Gelişmiş çok aşamalı saldırı algılama hakkında daha fazla bilgi edindiniz, verilerinizi ve olası tehditleri nasıl algılayacağınızı öğrenmek için aşağıdaki hızlı başlangıç ile ilgileniyor olabilirsiniz: [Azure Sentinel ile çalışmaya](quickstart-get-visibility.md)başlayın.
 
-Sizin için oluşturulan olayları araştırmaya hazırsanız, aşağıdaki öğreticiye bakın: [Azure Sentinel ile ilgili olayları araştırın.](tutorial-investigate-cases.md)
+Sizin için oluşturulan olayları araştırmaya hazırsanız aşağıdaki öğreticiye bakın: [Azure Sentinel ile olayları araştırın](tutorial-investigate-cases.md).
 

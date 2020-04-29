@@ -1,6 +1,6 @@
 ---
-title: Özel DNS Bölgelerini ve Kayıtlarını Koruma - Azure DNS
-description: Bu öğrenme yolunda, Microsoft Azure DNS'deki özel DNS bölgelerini ve kayıt kümelerini korumaya başlayın.
+title: Özel DNS Bölgeleri ve kayıtları koruma-Azure DNS
+description: Bu öğrenme yolunda, Microsoft Azure DNS 'de özel DNS bölgelerini ve kayıt kümelerini korumaya başlayın.
 services: dns
 author: asudbring
 ms.service: dns
@@ -8,37 +8,37 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: da94c9aa97483ab5792e917d6a8f60f846b0722e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77473070"
 ---
-# <a name="how-to-protect-private-dns-zones-and-records"></a>Özel DNS bölgeleri ve kayıtları nasıl korunur?
+# <a name="how-to-protect-private-dns-zones-and-records"></a>Özel DNS bölgelerini ve kayıtlarını koruma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Özel DNS bölgeleri ve kayıtları kritik kaynaklardır. Bir DNS bölgesinin veya tek bir DNS kaydının silinmesi bir hizmet kesintisine neden olabilir. DNS bölgelerinin ve kayıtlarının yetkisiz veya yanlışlıkla yapılan değişikliklere karşı korunması önemlidir.
+Özel DNS bölgeler ve kayıtlar kritik kaynaklardır. Bir DNS bölgesini veya tek bir DNS kaydını silmek, hizmet kesintisi oluşmasına neden olabilir. DNS bölgelerinin ve kayıtlarının yetkisiz veya yanlışlıkla yapılan değişikliklere karşı korunması önemlidir.
 
-Bu makalede, Azure DNS'nin özel DNS bölgelerinizi ve kayıtlarınızı bu tür değişikliklere karşı korumanızı nasıl sağladığı açıklanmaktadır.  Azure Kaynak Yöneticisi tarafından sağlanan iki güçlü güvenlik özelliğini uyguluyoruz: [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) ve kaynak [kilitleri.](../azure-resource-manager/management/lock-resources.md)
+Bu makalede Azure DNS, özel DNS bölgelerinizi ve kayıtlarınızı bu değişikliklere karşı korumanıza nasıl olanak sağladığını açıklamaktadır.  Azure Resource Manager, [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) ve [kaynak kilitleri](../azure-resource-manager/management/lock-resources.md)tarafından sunulan iki güçlü menkul Özellik uygulayacağız.
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Azure Role Tabanlı Erişim Denetimi (RBAC), Azure kullanıcıları, grupları ve kaynakları için ince taneli erişim yönetimi sağlar. RBAC ile, kullanıcıların ihtiyaç duyduğu erişim düzeyini verebilirsiniz. RBAC'ın erişimi yönetmenize nasıl yardımcı olduğu hakkında daha fazla bilgi için [Rol Tabanlı Erişim Denetimi nedir'e](../role-based-access-control/overview.md)bakın.
+Azure rol tabanlı Access Control (RBAC), Azure kullanıcıları, grupları ve kaynakları için ayrıntılı erişim yönetimine izin verebilir. RBAC ile, kullanıcıların ihtiyaç duyduğu erişim düzeyine izin verebilirsiniz. RBAC 'nin erişimi yönetmenize nasıl yardımcı olduğu hakkında daha fazla bilgi için bkz. [rol tabanlı Access Control nedir?](../role-based-access-control/overview.md).
 
-### <a name="the-private-dns-zone-contributor-role"></a>Özel DNS Bölgesi Katılımcısıfatı Rolü
+### <a name="the-private-dns-zone-contributor-role"></a>Özel DNS bölgesi katılımcısı rolü
 
-Özel DNS Bölgesi Katılımcısı rolü, özel DNS kaynaklarını yönetmek için yerleşik bir roldür. Bir kullanıcıya veya gruba uygulanan bu rol, özel DNS kaynaklarını yönetmelerini sağlar.
+Özel DNS bölgesi katılımcısı rolü, özel DNS kaynaklarını yönetmeye yönelik yerleşik bir roldür. Bir kullanıcıya veya gruba uygulanan bu rol, özel DNS kaynaklarını yönetmesine olanak sağlar.
 
-*MyPrivateDNS* kaynak grubu Contoso Corporation için beş bölge içerir. DNS yöneticisine Özel DNS Bölgesi Katılımcısı izinlerinin bu kaynak grubuna verilmesi, bu DNS bölgeleri üzerinde tam denetim sağlar. Gereksiz izinler vermekten kaçınır. DNS yöneticisi sanal makineler oluşturamaz veya durduramaz.
+*Myprivatedns* kaynak grubu, contoso Corporation için beş bölge içerir. Bu kaynak grubuna DNS Yöneticisi Özel DNS bölge katılımcısı izinleri verilmesi, bu DNS bölgeleri üzerinde tam denetim sağlar. Gereksiz izinler verilmesini önler. DNS Yöneticisi sanal makineleri oluşturamaz veya durdurabilir.
 
-RBAC izinleri atamanın en basit yolu [Azure portalı üzerindendir.](../role-based-access-control/role-assignments-portal.md)  
+RBAC izinlerini atamak için en kolay yol [Azure Portal](../role-based-access-control/role-assignments-portal.md)kullanmaktır.  
 
-Kaynak grubu için **Erişim denetimini (IAM)** açın, **Ekle'yi**seçin ve ardından **Özel DNS Bölgesi Katılımcısı** rolünü seçin. İzin vermek için gerekli kullanıcıları veya grupları seçin.
+Kaynak grubu için **erişim denetimi 'ni (IAM)** açın, **Ekle**' yi seçin, sonra **özel DNS bölgesi katılımcısı** rolünü seçin. İzin vermek için gerekli kullanıcıları veya grupları seçin.
 
-![Azure portalı üzerinden kaynak grubu düzeyi RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
+![Azure portal aracılığıyla kaynak grubu düzeyi RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
-İzinler Azure [PowerShell kullanılarak](../role-based-access-control/role-assignments-powershell.md)da verilebilir:
+İzinler, [Azure PowerShell kullanılarak da verilebilir](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell-interactive
 # Grant 'Private DNS Zone Contributor' permissions to all zones in a resource group
@@ -50,7 +50,7 @@ $rol = "Private DNS Zone Contributor"
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg
 ```
 
-Eşdeğer komut, [Azure CLI üzerinden](../role-based-access-control/role-assignments-cli.md)de kullanılabilir:
+Eşdeğer komut [Azure CLI aracılığıyla da kullanılabilir](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli-interactive
 # Grant 'Private DNS Zone Contributor' permissions to all zones in a resource group
@@ -61,17 +61,17 @@ az role assignment create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="private-zone-level-rbac"></a>Özel Bölge seviyesi RBAC
+### <a name="private-zone-level-rbac"></a>Özel bölge düzeyi RBAC
 
-Azure RBAC kuralları bir aboneye, kaynak grubuna veya tek bir kaynağa uygulanabilir. Bu kaynak tek bir DNS bölgesi veya tek bir kayıt kümesi olabilir.
+Azure RBAC kuralları bir aboneliğe, bir kaynak grubuna veya tek bir kaynağa uygulanabilir. Bu kaynak tek bir DNS bölgesi veya tek bir kayıt kümesi olabilir.
 
-Örneğin, kaynak grubu *myPrivateDNS* *bölge private.contoso.com* ve *bir*alt bölge customers.private.contoso.com içerir. CNAME kayıtları her müşteri hesabı için oluşturulur. CNAME kayıtlarını yönetmek için kullanılan yönetici hesabına *customers.private.contoso.com* bölgesinde kayıt oluşturmak için izinler atanır. Hesap yalnızca *customers.private.contoso.com* yönetebilir.
+Örneğin, *Myprivatedns* kaynak grubu *Private.contoso.com* bölgesini ve bir alt bölge *Customers.Private.contoso.com*içerir. CNAME kayıtları her müşteri hesabı için oluşturulur. CNAME kayıtlarını yönetmek için kullanılan yönetici hesabına, *Customers.Private.contoso.com* bölgesinde kayıt oluşturmak için izinler atanır. Hesap yalnızca *Customers.Private.contoso.com* yönetebilir.
 
-Bölge düzeyinde KiRSa izinleri Azure portalı üzerinden verilebilir.  Bölge için **Erişim denetimini (IAM)** açın, **Ekle'yi**seçin ve ardından **Özel DNS Bölgesi Katılımcısı** rolünü seçin. İzin vermek için gerekli kullanıcıları veya grupları seçin.
+Bölge düzeyinde RBAC izinleri Azure portal aracılığıyla verilebilir.  Bölge için **erişim denetimi (IAM)** açın, **Ekle**' yi seçin, sonra **özel DNS bölgesi katılımcısı** rolünü seçin. İzin vermek için gerekli kullanıcıları veya grupları seçin.
 
-![Azure portalı üzerinden DNS Zone düzeyi RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
+![Azure portal ile DNS bölge düzeyi RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
-İzinler Azure [PowerShell kullanılarak](../role-based-access-control/role-assignments-powershell.md)da verilebilir:
+İzinler, [Azure PowerShell kullanılarak da verilebilir](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell-interactive
 # Grant 'Private DNS Zone Contributor' permissions to a specific zone
@@ -85,7 +85,7 @@ $rsc = "Microsoft.Network/privateDnsZones"
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg -ResourceName $zon -ResourceType $rsc
 ```
 
-Eşdeğer komut, [Azure CLI üzerinden](../role-based-access-control/role-assignments-cli.md)de kullanılabilir:
+Eşdeğer komut [Azure CLI aracılığıyla da kullanılabilir](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli-interactive
 # Grant 'Private DNS Zone Contributor' permissions to a specific zone
@@ -96,17 +96,17 @@ az role assignment create \
 --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/privateDnsZones/<zone name>/"
 ```
 
-### <a name="record-set-level-rbac"></a>Rekor seviye RBAC
+### <a name="record-set-level-rbac"></a>Kayıt kümesi düzeyi RBAC
 
-İzinler kayıt kümesi düzeyinde uygulanır.  Kullanıcıya gereksinim duydukları girişlere denetim verilir ve başka değişiklik yapamaz.
+İzinler, kayıt kümesi düzeyinde uygulanır.  Kullanıcıya ihtiyaç duydukları girişlere denetim verilir ve başka bir değişiklik yapamaz.
 
-Kayıt düzeyindeki RBAC izinleri, kayıt kümesi sayfasındaki **Erişim Denetimi (IAM)** düğmesi kullanılarak Azure portalı üzerinden yapılandırılabilir:
+Kayıt kümesi düzeyi RBAC izinleri, kayıt kümesi sayfasındaki **Access Control (IAM)** düğmesi kullanılarak Azure Portal aracılığıyla yapılandırılabilir:
 
-![Azure portalı üzerinden rekor seviye RBAC](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![Azure portal aracılığıyla küme düzeyi RBAC 'yi Kaydet](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![Azure portalı üzerinden rekor seviye RBAC](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![Azure portal aracılığıyla küme düzeyi RBAC 'yi Kaydet](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
-Kayıt düzeyinde ki RBAC izinleri [Azure PowerShell kullanılarak](../role-based-access-control/role-assignments-powershell.md)da verilebilir:
+Kayıt kümesi düzeyi RBAC izinleri, [Azure PowerShell kullanılarak da verilebilir](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell-interactive
 # Grant permissions to a specific record set
@@ -119,7 +119,7 @@ $sco =
 New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -Scope $sco
 ```
 
-Eşdeğer komut, [Azure CLI üzerinden](../role-based-access-control/role-assignments-cli.md)de kullanılabilir:
+Eşdeğer komut [Azure CLI aracılığıyla da kullanılabilir](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli-interactive
 # Grant permissions to a specific record set
@@ -132,11 +132,11 @@ az role assignment create \
 
 ### <a name="custom-roles"></a>Özel roller
 
-Yerleşik Özel DNS Bölgesi Katılımcısı rolü, bir DNS kaynağı üzerinde tam denetim sağlar. Daha ince grenli denetim sağlamak için kendi özel Azure rollerinizi oluşturmak mümkündür.
+Yerleşik Özel DNS bölgesi katılımcısı rolü bir DNS kaynağı üzerinde tam denetim imkanı sunar. Daha ayrıntılı denetim sağlamak için kendi özel Azure rollerinizi oluşturmak mümkündür.
 
-CNAM'ları yönetmek için kullanılan hesaba yalnızca CNAME kayıtlarını yönetme izni verilir. Hesap diğer türlerin kayıtlarını değiştiremiyor. Hesap, bölge silme gibi bölge düzeyinde işlemleri yapamaz.
+CNAMEs 'leri yönetmek için kullanılan hesaba yalnızca CNAME kayıtlarını yönetme izni verilir. Hesap, diğer türlerin kayıtlarını değiştiremiyor. Hesap, bölge silme gibi bölge düzeyindeki işlemleri yapamıyor.
 
-Aşağıdaki örnek, yalnızca CNAME kayıtlarını yönetmek için özel bir rol tanımı gösterir:
+Aşağıdaki örnekte yalnızca CNAME kayıtlarını yönetmek için özel bir rol tanımı gösterilmektedir:
 
 ```json
 {
@@ -162,15 +162,15 @@ Aşağıdaki örnek, yalnızca CNAME kayıtlarını yönetmek için özel bir ro
 }
 ```
 
-Eylemler özelliği aşağıdaki DNS'ye özgü izinleri tanımlar:
+Actions özelliği, aşağıdaki DNS 'e özgü izinleri tanımlar:
 
-* `Microsoft.Network/privateDnsZones/CNAME/*`CNAME kayıtları üzerinde tam kontrol sağlar
-* `Microsoft.Network/privateDNSZones/read`CNAME'nin oluşturulduğu bölgeyi görmenizi sağlayarak DNS özel bölgelerini okuma izni verir, ancak bunları değiştirmez.
+* `Microsoft.Network/privateDnsZones/CNAME/*`CNAME kayıtları üzerinde tam denetim verir
+* `Microsoft.Network/privateDNSZones/read`DNS özel bölgelerini okuma izni verir, ancak bunları değiştirmemelidir, CNAME 'in oluşturulduğu bölgeyi görmenizi sağlar.
 
 > [!NOTE]
-> Kayıt kümelerinin güncelleştirilebilmesine izin verirken, özel bir RBAC rolünün kullanılması etkili bir denetim değildir. Kayıt kümelerinin silinmesini engeller, ancak bunların değiştirilmesini engellemez.  İzin verilen değişiklikler, boş bir kayıt kümesi bırakmak için tüm kayıtları kaldırmak da dahil olmak üzere, kayıt kümesinden kayıt ekleme yi ve kaldırmayı içerir. Bu, DNS çözünürlük bakış açısından ayarlanan kaydı silmeyle aynı etkiye sahiptir.
+> Kayıt kümelerinin güncelleştirilmesini engellemek için özel bir RBAC rolü kullanmak, etkili bir denetim değildir. Kayıt kümelerinin silinmesini engeller, ancak değiştirilmesini engellemez.  İzin verilen değişiklikler, kayıt kümesinden kayıtları ekleme ve kaldırma, boş bir kayıt kümesi bırakmak için tüm kayıtları kaldırma dahil. Bu, kayıt kümesini bir DNS çözünürlüğü bakış açısından silme ile aynı etkiye sahiptir.
 
-Özel rol tanımları şu anda Azure portalı üzerinden tanımlanamaz. Bu rol tanımına dayalı özel bir rol Azure PowerShell kullanılarak oluşturulabilir:
+Özel rol tanımları Şu anda Azure portal aracılığıyla tanımlanamaz. Bu rol tanımına dayalı özel bir rol, Azure PowerShell kullanılarak oluşturulabilir:
 
 ```azurepowershell-interactive
 # Create new role definition based on input file
@@ -178,7 +178,7 @@ Eylemler özelliği aşağıdaki DNS'ye özgü izinleri tanımlar:
 New-AzRoleDefinition -InputFile <file path>
 ```
 
-Azure CLI üzerinden de oluşturulabilir:
+Azure CLı aracılığıyla da oluşturulabilir:
 
 ```azurecli-interactive
 # Create new role definition based on input file
@@ -186,25 +186,25 @@ Azure CLI üzerinden de oluşturulabilir:
 az role create -inputfile <file path>
 ```
 
-Bu makalede daha önce açıklandığı gibi, rol daha sonra yerleşik rollerle aynı şekilde atanabilir.
+Daha sonra bu makalede açıklandığı gibi, rol yerleşik rollerle aynı şekilde atanabilir.
 
-Özel rollerin nasıl oluşturulup yönetilen ve atayınız hakkında daha fazla bilgi için [Azure RBAC'da Özel Roller'e](../role-based-access-control/custom-roles.md)bakın.
+Özel roller oluşturma, yönetme ve atama hakkında daha fazla bilgi için bkz. [Azure RBAC 'de özel roller](../role-based-access-control/custom-roles.md).
 
 ## <a name="resource-locks"></a>Kaynak kilitleri
 
-Azure Kaynak Yöneticisi, kaynakları kilitleme özelliği olan başka bir tür güvenlik denetimini destekler. Kaynak kilitleri kaynağa uygulanır ve tüm kullanıcılar ve roller arasında etkilidir. Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).
+Azure Resource Manager, kaynakları kilitleme özelliği olan başka tür güvenlik denetimini destekler. Kaynak kilitleri kaynağa uygulanır ve tüm kullanıcılar ve roller arasında etkilidir. Daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).
 
-İki tür kaynak kilidi vardır: **CanNotDelete** ve **ReadOnly**. Bu kilit türleri özel bir DNS bölgesine veya tek bir kayıt kümesine uygulanabilir.  Aşağıdaki bölümlerde birkaç yaygın senaryo ve kaynak kilitlerini kullanarak bunları nasıl destekleyeceğiaçıklanmıştır.
+İki tür kaynak kilidi vardır: **Cannotdelete** ve **ReadOnly**. Bu kilit türleri bir Özel DNS bölgesine veya tek bir kayıt kümesine uygulanabilir.  Aşağıdaki bölümlerde bazı yaygın senaryolar ve kaynak kilitleri kullanılarak bunların nasıl destekleyeceği açıklanır.
 
 ### <a name="protecting-against-all-changes"></a>Tüm değişikliklere karşı koruma
 
-Değişikliklerin yapılmasını önlemek için bölgeye ReadOnly kilidi uygulayın. Bu kilit, yeni kayıt kümelerinin oluşturulmasını ve varolan kayıt kümelerinin değiştirilmesini veya silinmesini önler.
+Yapılan değişikliklerin oluşmasını engellemek için, bölgeye salt okunur bir kilit uygulayın. Bu kilit, yeni kayıt kümelerinin oluşturulmasını ve varolan kayıt kümelerinin değiştirilmesini veya silinmesini engeller.
 
-Bölge düzeyi kaynak kilitleri Azure portalı üzerinden oluşturulabilir.  DNS bölge sayfasından **Kilitler'i**seçin ve **+Ekle'yi**seçin:
+Bölge düzeyi kaynak kilitleri Azure portal aracılığıyla oluşturulabilir.  DNS bölgesi sayfasında, **kilitler**' ı seçin ve **+ Ekle**' yi seçin:
 
-![Azure portalı üzerinden bölge düzeyinde kaynak kilitleri](./media/dns-protect-private-zones-recordsets/locks1.png)
+![Azure portal aracılığıyla bölge düzeyi kaynak kilitleri](./media/dns-protect-private-zones-recordsets/locks1.png)
 
-Bölge düzeyinde kaynak kilitleri Azure [PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest)üzerinden de oluşturulabilir:
+Bölge düzeyi kaynak kilitleri [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest)aracılığıyla da oluşturulabilir:
 
 ```azurepowershell-interactive
 # Lock a DNS zone
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Eşdeğer komut, [Azure CLI üzerinden](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create)de kullanılabilir:
+Eşdeğer komut [Azure CLI aracılığıyla da kullanılabilir](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
 
 ```azurecli-interactive
 # Lock a DNS zone
@@ -231,14 +231,14 @@ az lock create \
 --resource-type "privateDnsZones" \
 --resource-group "<resource group name>"
 ```
-### <a name="protecting-individual-records"></a>Tek tek kayıtları koruma
+### <a name="protecting-individual-records"></a>Bireysel kayıtları koruma
 
-Değişiklik yapılmasına karşı ayarlanmış varolan bir DNS kaydını önlemek için, kayıt kümesine ReadOnly kilidi uygulayın.
+Varolan bir DNS kaydının değişikliğe karşı yapılmasını engellemek için kayıt kümesine salt okunur bir kilit uygulayın.
 
 > [!NOTE]
-> CanNotDelete kilidibir kayıt kümesine uygulamak etkili bir denetim değildir. Ayarlanan kaydın silinmesini engeller, ancak değiştirilmesini engellemez.  İzin verilen değişiklikler, boş bir kayıt kümesi bırakmak için tüm kayıtları kaldırmak da dahil olmak üzere, kayıt kümesinden kayıt ekleme yi ve kaldırmayı içerir. Bu, DNS çözünürlük bakış açısından ayarlanan kaydı silmeyle aynı etkiye sahiptir.
+> Kayıt kümesine CanNotDelete kilidi uygulamak, etkili bir denetim değildir. Kayıt kümesinin silinmesini engeller, ancak değiştirilmesini engellemez.  İzin verilen değişiklikler, kayıt kümesinden kayıtları ekleme ve kaldırma, boş bir kayıt kümesi bırakmak için tüm kayıtları kaldırma dahil. Bu, kayıt kümesini bir DNS çözünürlüğü bakış açısından silme ile aynı etkiye sahiptir.
 
-Kayıt kümesi düzeyi kaynak kilitleri şu anda yalnızca Azure PowerShell kullanılarak yapılandırılabilir.  Azure portalında veya Azure CLI'de desteklenmez.
+Kayıt kümesi düzeyi kaynak kilitleri, şu anda yalnızca Azure PowerShell kullanılarak yapılandırılabilir.  Azure portal veya Azure CLı 'de desteklenmez.
 
 Azure PowerShell
 
@@ -255,13 +255,13 @@ New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rnm -ResourceTy
 ```
 ### <a name="protecting-against-zone-deletion"></a>Bölge silmeye karşı koruma
 
-Azure DNS'de bir bölge silindiğinde, bölgedeki tüm kayıt kümeleri silinir.  Bu işlem geri alınamaz. Kritik bir bölgenin yanlışlıkla silmesi, önemli bir iş etkisi yaratma potansiyeline sahiptir.  Kazara bölge silmeye karşı korunmak önemlidir.
+Azure DNS bir bölge silindiğinde, bölgedeki tüm kayıt kümeleri silinir.  Bu işlem geri alınamaz. Yanlışlıkla kritik bir bölgeyi silmenin önemli bir iş etkisi olması olası olur.  Yanlışlıkla bölge silmeye karşı korunması önemlidir.
 
-Bir bölgeye CanNotDelete kilidi uygulamak, bölgenin silinmesini engeller. Kilitler alt kaynaklardan devralınır. Kilit, bölgede bulunan kayıt kümelerinin silinmesini önler. Yukarıdaki notta açıklandığı gibi, kayıtlar hala varolan kayıt kümelerinden kaldırılabilir beri etkisizdir.
+Bir bölgeye CanNotDelete kilidi uygulamak bölgenin silinmesini engeller. Kilitler alt kaynaklar tarafından devralınır. Kilit, bölgedeki tüm kayıt kümelerinin silinmesini engeller. Yukarıdaki notta açıklandığı gibi, kayıtların mevcut kayıt kümelerinden hala kaldırılabileceği için bu, verimsiz değildir.
 
-Alternatif olarak, SOA kayıt kümesi gibi bölgede ayarlanan bir kayda CanNotDelete kilidi uygulayın. Bölge, kayıt kümelerini de silmeden silinmez. Bu kilit bölge silmeye karşı korurken, bölge içindeki kayıt kümelerinin serbestçe değiştirilmesine izin verir. Bölgeyi silme girişiminde bulunulması durumunda, Azure Kaynak Yöneticisi bu kaldırma işlemini algılar. Kaldırma işlemi SOA kayıt kümesini de siler, Azure Kaynak Yöneticisi SOA kilitli olduğu için aramayı engeller.  Hiçbir kayıt kümesi silinmez.
+Alternatif olarak, bölgenin SOA kayıt kümesi gibi bir kayıt kümesine bir CanNotDelete kilidi uygulayın. Bölge, kayıt kümelerini silmeksizin silinmez. Bu kilit bölge silmeye karşı koruma sağlarken bölge içindeki kayıt kümelerinin de serbestçe değiştirilmesini sağlar. Bölgeyi silmeye yönelik bir girişim yapılırsa Azure Resource Manager Bu kaldırma işlemini algılar. Kaldırma işlemi SOA kayıt kümesini de siler, Azure Resource Manager SOA kilitli olduğu için çağrıyı engeller.  Hiçbir kayıt kümesi silinmez.
 
-Aşağıdaki PowerShell komutu verilen bölgenin SOA kaydına karşı cannotdelete kilidi oluşturur:
+Aşağıdaki PowerShell komutu, belirtilen bölgenin SOA kaydında bir CanNotDelete kilidi oluşturur:
 
 ```azurepowershell-interactive
 # Protect against zone delete with CanNotDelete lock on the record set
@@ -274,18 +274,18 @@ $rsg = "<resource group name>"
 
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rnm -ResourceType $rty -ResourceGroupName $rsg
 ```
-Yanlışlıkla bölge silmeönlemek için başka bir seçenek özel bir rol kullanarak. Bu rol, bölgelerinizi yönetmek için kullanılan hesapların bölge silme izinleri olmamasını sağlar. 
+Yanlışlıkla bölge silmeyi engellemek için başka bir seçenek de özel bir rol kullanmaktır. Bu rol, bölgelerinizi yönetmek için kullanılan hesapların bölge silme izinlerine sahip olmamasını sağlar. 
 
-Bir bölgeyi silmeniz gerektiğinde, iki adımlı silme yi zorlayabilirsiniz:
+Bir bölgeyi silmeniz gerektiğinde, iki adımlı bir silmeyi zorunlu kılabilirsiniz:
 
- - İlk olarak, hibe bölgesi silme izinleri
- - İkinci olarak, bölgeyi silmek için izin ler ver.
+ - İlk olarak, bölge silme izinleri verin
+ - İkinci olarak, bölgeyi silmek için izin verin.
 
-Özel rol, bu hesaplar tarafından erişilen tüm bölgeler için çalışır. Abonelik sahibi gibi bölge silme izinleri olan hesaplar yine de yanlışlıkla bir bölgeyi silebilir.
+Özel rol, bu hesaplar tarafından erişilen tüm bölgeler için geçerlidir. Abonelik sahibi gibi bölge silme izinlerine sahip hesaplar yine de yanlışlıkla bir bölgeyi silebilir.
 
-Her iki yaklaşımı da -kaynak kilitleri ve özel roller- aynı anda, DNS bölge korumasına yönelik derinlemesine bir savunma yaklaşımı olarak kullanmak mümkündür.
+Aynı anda, DNS bölgesi korumasına yönelik derinlemesine savunma yaklaşımı olarak hem yaklaşımların kaynak kilitleri hem de özel roller kullanmak mümkündür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* RBAC ile çalışma hakkında daha fazla bilgi için Azure [portalındaki erişim yönetimine başlayın'a](../role-based-access-control/overview.md)bakın.
-* Kaynak kilitleriyle çalışma hakkında daha fazla bilgi için [Azure Kaynak Yöneticisi ile kaynakları kilitle'ye](../azure-resource-manager/management/lock-resources.md)bakın.
+* RBAC ile çalışma hakkında daha fazla bilgi için, [Azure Portal erişim yönetimiyle çalışmaya başlama](../role-based-access-control/overview.md)bölümüne bakın.
+* Kaynak kilitleri ile çalışma hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).

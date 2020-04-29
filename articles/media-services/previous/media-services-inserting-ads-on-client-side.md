@@ -1,6 +1,6 @@
 ---
-title: İstemci tarafına reklam ekleme | Microsoft Dokümanlar
-description: Bu makalede, müşteri tarafında medyanıza nasıl reklam ekilir gösteriş.
+title: İstemci tarafına reklam ekleme | Microsoft Docs
+description: Bu makalede, istemci tarafında medyanıza reklamları nasıl ekleyebileceğiniz gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77565749"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>İstemci tarafına reklam ekleme
-Bu makalede, istemci tarafında çeşitli reklam türleri eklemek için nasıl bilgi içerir.
+Bu makale, istemci tarafında çeşitli tür reklamları ekleme hakkında bilgiler içerir.
 
-Canlı akış videolarında kapalı altyazı ve reklam desteği hakkında bilgi için [Desteklenen Kapalı Altyazı ve Reklam Ekleme Standartları'na](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads)bakın.
+Canlı akış videolarında kapalı açıklamalı altyazı ve ad desteği hakkında daha fazla bilgi için bkz. [desteklenen kapalı açıklamalı altyazı ve ad ekleme standartları](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
 
 > [!NOTE]
-> Azure Media Player şu anda Reklamları desteklemiyor.
+> Azure Media Player şu anda reklamları desteklemiyor.
 > 
 > 
 
-## <a name="inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>Medyanıza Reklam Ekleme
-Azure Medya Hizmetleri, Windows Media Platformu: Player Frameworks aracılığıyla reklam ekleme desteği sağlar. Windows 8, Silverlight, Windows Phone 8 ve iOS aygıtları için reklam destekli oyuncu çerçeveleri kullanılabilir. Her oyuncu çerçevesi, bir oyuncu uygulamasını nasıl uygulayacağınızı gösteren örnek kod içerir. Medyalistenize ekebileceğiniz üç farklı türde reklam vardır: listeniz.
+## <a name="inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>Medyanıza reklamları ekleme
+Azure Media Services, Windows Media platformu: oynatıcı çerçeveleri aracılığıyla ad ekleme desteği sağlar. Windows 8, Silverlight, Windows Phone 8 ve iOS cihazlarda ad desteğine sahip oynatıcı çerçeveleri mevcuttur. Her Player çerçevesi, oynatıcı uygulamasının nasıl uygulanacağını gösteren örnek kod içerir. Medyanıza ekleyebileceğiniz üç farklı tür reklam vardır: listesi.
 
-* **Doğrusal** – ana videoyu duraklatan tam kare reklamlar.
-* **Doğrusal olmayan** – ana video yürütülderken görüntülenen kaplama reklamları, genellikle oynatıcının içine yerleştirilen bir logo veya diğer statik görüntü.
-* **Companion** – oyuncunun dışında görüntülenen reklamlar.
+* **Doğrusal** – ana videoyu duraklatarak tam çerçeve reklamları.
+* **Doğrusal** olmayan – ana video olarak görüntülenen kaplama reklamları, genellikle bir logo veya Player içinde yer alan başka bir statik görüntü oynamıştır.
+* **Yardımcı** – oyuncu dışında görüntülenen reklamlar.
 
-Reklamlar, ana videonun zaman çizgisinin herhangi bir noktasına yerleştirilebilir. Oyuncuya reklamı ne zaman oynatacaklarını ve hangi reklamları niçin oynayacağını söylemelisiniz. Bu, standart XML tabanlı bir dizi dosya kullanılarak yapılır: Video Reklam Hizmeti Şablonu (VAST), Dijital Video Çoklu Reklam Çalma Listesi (VMAP), Media Abstract Sıralama Şablonu (MAST) ve Dijital Video Oynatıcı Reklam Arabirimi Tanımı (VPAID). VAST dosyaları hangi reklamların görüntülenerebiyi belirtir. VMAP dosyaları çeşitli reklamların ne zaman oynatılacaklarını belirtir ve VAST XML içerir. MAST dosyaları, VAST XML de içerebilen reklamları sıralamanın başka bir yoludur. VPAID dosyaları video oynatıcı ile reklam veya reklam sunucusu arasında bir arabirim tanımlar.
+Reklamlar, ana videonun zaman satırındaki herhangi bir noktaya yerleştirilebilir. Player 'ın ad 'yi oynatacak ve hangi reklamları oynatacak hakkında söylemeniz gerekir. Bu, standart bir XML tabanlı dosyalar kümesi kullanılarak yapılır: video ad hizmeti şablonu (büyük), dijital video birden çok ad çalma listesi (VMAP), medya soyut sıralama şablonu (MAST) ve dijital video oynatıcı ad arabirimi tanımı (VÜCRETLI). Büyük dosyalar hangi reklamların gösterileceğini belirtir. VMAP dosyaları, çeşitli reklamları ne zaman oynatacak ve çok sayıda XML içermektir. MAST dosyaları, büyük bir XML de içerebilen reklamları sıralamanın başka bir yoludur. VÜCRETLI dosyalar, video oynatıcı ile ad veya ad sunucusu arasında bir arabirim tanımlar.
 
-Her oyuncu çerçevesi farklı çalışır ve her biri kendi makalesinde ele alınacaktır. Bu makalede, reklam eklemek için kullanılan temel mekanizmalar açıklanmaktadır. Video oynatıcı uygulamaları bir reklam sunucusundan reklam isteğinde bulunur. Reklam sunucusu çeşitli şekillerde yanıt verebilir:
+Her Player Çerçevesi farklı şekilde çalışır ve her biri kendi makalesinde ele alınacaktır. Bu makalede, reklamları eklemek için kullanılan temel mekanizmalar açıklanmaktadır. Video oynatıcı uygulamaları bir ad sunucusundan reklam ister. Ad sunucusu çeşitli yollarla yanıt verebilir:
 
-* VAST dosyayı döndürme
-* Bir VMAP dosyayı döndürme (gömülü VAST ile)
-* MAST dosyalarını döndürme (gömülü VAST ile)
-* VPAID reklamlarıyla VAST dosyalarını döndürme
+* Büyük bir dosya döndür
+* Bir VMAP dosyası (gömülü büyük) döndürün
+* Bir MAST dosyası (gömülü büyük) döndürün
+* VÜCRETLI reklamları olan büyük bir dosya döndürün
 
-### <a name="using-a-video-ad-service-template-vast-file"></a>Görüntülü Reklam Hizmeti Şablonu (VAST) Dosyakullanma
-VAST dosyası, hangi reklam ın veya reklamların görüntülenemeye karar verebolur. Aşağıdaki XML doğrusal bir reklam için VAST dosyasının bir örneğidir:
+### <a name="using-a-video-ad-service-template-vast-file"></a>Video ad hizmet şablonu (büyük) dosyası kullanma
+Büyük bir dosya hangi ad veya reklamları gösterileceğini belirtir. Aşağıdaki XML, doğrusal bir ad için büyük bir dosya örneğidir:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -94,9 +94,9 @@ VAST dosyası, hangi reklam ın veya reklamların görüntülenemeye karar vereb
     </VAST>
 ```
 
-Doğrusal reklam, <**Lineer**> öğesi tarafından açıklanmıştır. Reklamın süresini, olayları izlemeyi, tıklamayı, tıklama izlemeyi ve bir dizi **MediaFile** öğesini belirtir. İzleme olayları <**İzleme Olayları**> öğesi içinde belirtilir ve bir reklam sunucusunun reklamı görüntülerken meydana gelen çeşitli olayları izlemesine olanak sağlar. Bu durumda başlangıç, orta nokta, tamamlama ve genişletme olayları izlenir. Başlangıç olayı, reklam görüntülendiğinde oluşur. Orta nokta olayı, reklamın zaman çizelgesinin en az %50'si görüntülendiğinde oluşur. Olayın tamamı, reklam sonuna kadar yayınlandığında gerçekleşir. Genişletme olayı, kullanıcı video oynatıcıyı tam ekrana genişlettiğinde oluşur. Tıklamalar, <**VideoClicks**> öğesi içindeki <**ClickThrough**> öğesiyle belirtilir ve kullanıcı reklamı tıkladığında görüntülemek üzere bir kaynağa URI belirtir. ClickTracking, ayrıca **<VideoClicks**> öğesi içinde yer alan <**ClickTracking**> öğesinde belirtilir ve kullanıcı reklamı tıkladığında oyuncunun talep etmesi için bir izleme kaynağı belirtir. **MediaFile** <> öğeleri, bir reklamın belirli bir kodlaması hakkında bilgi belirtir. Birden fazla <**MediaFile**> öğesi olduğunda, video oynatıcı platform için en iyi kodlamayı seçebilir.
+Doğrusal ad <**doğrusal**> öğesi tarafından açıklanmıştır. Bu, ad süresini, izleme olaylarını, izleme ' yi ve bir dizi **mediafile** öğesini belirtir. İzleme olayları <**Trackingevents**> öğesi içinde belirtilmiştir ve ad sunucusunun ad görüntülenirken oluşan çeşitli olayları izlemesine izin verir. Bu durumda başlangıç, orta nokta, tamam ve Genişlet olayları izlenir. Ad görüntülendiğinde başlangıç olayı oluşur. Orta nokta olayı, ad zaman çizelgesinin en az %50 ' i görüntülenirken meydana gelir. Tüm olay, ad sonuna kadar çalıştırıldığında oluşur. Kullanıcı video oynatıcıyı tam ekran olarak genişlediğinde genişletme olayı oluşur. Clickthroughs, bir <**videotıklamalar**> öğesi Içinde <**tıklama**> öğesi ile belirtilir ve Kullanıcı ad 'ye tıkladığında görüntülenecek bir kaynağın URI 'sini belirtir. Tıklama Izlemesi, <**Videotıklamalar**> öğesi içinde de bir <**clicktracking**> öğesinde belirtilir ve Kullanıcı ad 'ye tıkladığında, oynatıcının istemesi için bir izleme kaynağı belirtir. <**mediafile**> öğeleri, bir ad 'nin belirli bir kodlamasıyla ilgili bilgileri belirtir. Birden fazla <**mediafile**> öğesi olduğunda, video oynatıcı platformun en iyi kodlamasını seçebilir.
 
-Doğrusal reklamlar belirli bir sırada görüntülenebilir. Bunu yapmak için, `<Ad>` VAST dosyasına ek öğeler ekleyin ve sıra özniteliğini kullanarak sırayı belirtin. Aşağıdaki örnekte bu gösterilmektedir:
+Doğrusal reklamlar belirtilen sırada gösterilebilir. Bunu yapmak için, büyük dosyaya `<Ad>` ek öğeler ekleyin ve sıra özniteliğini kullanarak sırayı belirtin. Aşağıdaki örnekte bu gösterilmektedir:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -143,7 +143,7 @@ Doğrusal reklamlar belirli bir sırada görüntülenebilir. Bunu yapmak için, 
     </VAST>
 ```
 
-Doğrusal olmayan reklamlar `<Creative>` da bir öğede belirtilir. Aşağıdaki örnekte `<Creative>` doğrusal olmayan bir reklamı açıklayan bir öğe gösterilmektedir.
+Doğrusal reklamlar da bir `<Creative>` öğede belirtilir. Aşağıdaki örnekte, doğrusal olmayan `<Creative>` bir ad açıklayan bir öğe gösterilmektedir.
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -160,20 +160,20 @@ Doğrusal olmayan reklamlar `<Creative>` da bir öğede belirtilir. Aşağıdaki
     </Creative>
 ```
 
-Doğrusal **Olmayan Adlar**> öğesi <, her biri doğrusal olmayan bir reklamı tanımlayabilen bir veya daha fazla <**Doğrusal Olmayan**> öğesi içerebilir. **Doğrusal Olmayan** <> öğesi doğrusal olmayan reklam Için kaynak belirtir. Kaynak, <**staticresource**>, <bir **IFrameResource**> veya <bir **HTMLResource**> olabilir. \<**StaticResource**>, HTML olmayan bir kaynağı açıklar ve kaynağın nasıl görüntüleneceğini belirten bir creativeType özniteliği tanımlar:
+<**ilişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal** dizi> öğesi içerebilir. <**Doğrusal** olmayan> öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak <bir **StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**> HTML olmayan bir kaynağı açıklar ve kaynağın nasıl görüntülendiğini belirten bir creativeType özniteliği tanımlar:
 
-Resim/gif, resim/jpeg, resim/png – kaynak html <**img**> etiketinde görüntülenir.
+Image/gif, Image/JPEG, Image/PNG – kaynak bir HTML <**img**> etiketinde görüntülenir.
 
-Uygulama/x-javascript – kaynak HTML <**komut dosyası**> etiketinde görüntülenir.
+Application/x-JavaScript – kaynak, bir HTML <**betik**> etiketinde görüntülenir.
 
-Uygulama/x-shockwave-flash – kaynak bir Flash oynatıcıda görüntülenir.
+Application/x-Shockwave-Flash: kaynak, bir Flash oynatıcıda görüntülenir.
 
-**IFrameResource, IFrame'de** görüntülenebilen bir HTML kaynağını açıklar. **HTMLResource,** bir web sayfasına eklenebilecek bir HTML kodu parçasını açıklar. **İzleme Olaylar,** olay gerçekleştiğinde istekte bulunmak için izleme olaylarını ve URI'yi belirtir. Bu örnekte, acceptInvitation ve collapse olayları izlenir. **Doğrusal Olmayan Ads** öğesi ve çocukları hakkında daha fazla bilgi için IAB.NET/VAST bakın. **TrackingEvents** öğesinin **Doğrusal Olmayan** öğe yerine **Doğrusal Olmayan Ads** öğesi içinde bulunduğunu unutmayın.
+**Idimeresource** , IFRAME içinde GÖRÜNTÜLENEBILEN bir HTML kaynağını açıklar. **HTMLResource** , bir Web sayfasına EKLENEBILEN bir HTML kodu parçasını tanımlar. **Trackingevents** izleme olaylarını ve olay gerçekleştiğinde Istek yapılacak URI 'yi belirtir. Bu örnekte, Acceptınvisyon ve daraltma olayları izlenir. **İlişkisel olmayan ads** öğesi ve alt öğeleri hakkında daha fazla bilgi için bkz. IAB.net/VAST. **Trackingevents** öğesinin, **Doğrusal** olmayan öğe yerine, **nonmetinsiz** bir öğe içinde bulunduğunu unutmayın.
 
-Tamamlayıcı reklamlar bir `<CompanionAds>` öğe içinde tanımlanır. Öğe `<CompanionAds>` bir veya daha `<Companion>` fazla öğe içerebilir. Her `<Companion>` öğe, bir tamamlayıcı reklam `<StaticResource>` `<IFrameResource>`açıklar `<HTMLResource>` ve doğrusal olmayan bir reklamla aynı şekilde belirtilmiş bir , veya içerebilir. VAST dosyası birden çok yardımcı reklam içerebilir ve oynatıcı uygulaması görüntülemek için en uygun reklamı seçebilir. VAST hakkında daha fazla bilgi için [VAST 3.0'a](https://www.iab.net/media/file/VASTv3.0.pdf)bakın.
+Yardımcı reklamlar bir `<CompanionAds>` öğesi içinde tanımlanır. `<CompanionAds>` Öğe bir veya daha fazla `<Companion>` öğe içerebilir. Her `<Companion>` öğe bir yardımcı ad açıklar ve bir, veya `<StaticResource>`içeren `<IFrameResource>`bir, `<HTMLResource>` ya da, doğrusal olmayan bir ad ile aynı şekilde belirtilmiş olabilir. Büyük bir dosya birden çok yardımcı reklam içerebilir ve oynatıcı uygulaması görüntülenecek en uygun ad ' ı seçebilir. Büyük hakkında daha fazla bilgi için bkz. çok [3,0](https://www.iab.net/media/file/VASTv3.0.pdf).
 
-### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Dijital Video Çoklu Reklam Çalma Listesi (VMAP) Dosyakullanma
-Bir VMAP dosyası, reklam sonlarının ne zaman oluştuğunu, her molanın ne kadar süreceğini, mola sırasında kaç reklamın görüntülenebileceğini ve mola sırasında ne tür reklamların görüntülenebileceğini belirtmenize olanak tanır. Tek bir reklam sonu tanımlayan örnek bir VMAP dosyasında aşağıdakiler:
+### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Dijital video çoklu ad çalma listesi (VMAP) dosyası kullanma
+Bir VMAP dosyası, ad sonlarının ne zaman gerçekleşeceğini, her kesmenin ne kadar süreceğine, bir kesme içinde kaç reklam gösterileceğini ve bir kesme sırasında hangi tür reklamları görüntülenebileceğini belirtmenizi sağlar. Aşağıda, tek bir ad kesmeyi tanımlayan örnek bir VMAP dosyası verilmiştir:
 
 ```xml
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -224,34 +224,34 @@ Bir VMAP dosyası, reklam sonlarının ne zaman oluştuğunu, her molanın ne ka
     </vmap:VMAP>
 ```
 
-Bir VMAP dosyası, `<VMAP>` her biri bir `<AdBreak>` reklam sonu tanımlayan bir veya daha fazla öğe içeren bir öğeyle başlar. Her reklam sonu, bir kesme türü, kesme kimliği ve zaman mahsupu belirtir. breakType özniteliği, ara sırasında oynatılabilir reklam türünü belirtir: doğrusal, doğrusal olmayan veya görüntü. Reklamları VAST eşlik eden reklamlara gösterin. Virgül (boşluk yok) ayrılmış listede birden fazla reklam türü belirtilebilir. BreakID, reklam için isteğe bağlı bir tanımlayıcıdır. TimeOffset, reklamın ne zaman görüntüleneceğini belirtir. Aşağıdaki yollardan biriyle belirtilebilir:
+VMAP dosyası, her biri bir `<VMAP>` ad kesmesi tanımlayan bir veya daha `<AdBreak>` fazla öğe içeren bir öğe ile başlar. Her ad kesmesi bir kesme türü, kesme KIMLIĞI ve zaman boşluğu belirtir. BreakType özniteliği, kesme sırasında yürütülebilecek ad türünü belirtir: doğrusal, doğrusal olmayan veya görüntü. Büyük ve çok yardımcı reklamlar için ads haritasını görüntüleyin. Birden çok ad türü, virgülle ayrılmış bir liste (boşluk olmadan) ile belirtilebilir. Breakıd, ad için isteğe bağlı bir tanıtıcıdır. Timekayması, ad ' ın ne zaman gösterileceğini belirtir. Aşağıdaki yollarla belirtilebilir:
 
-1. Zaman – hh:mm:ss veya hh:mm:ss.mmm formatında .mmm milisaniyedir. Bu özniteliğin değeri, video zaman çizelgesinin başlangıcından reklam sonu başına kadar olan zamanı belirtir.
-2. Yüzde – n% formatında nerede n reklam oynatmadan önce oynatmak için video zaman çizelgesi yüzdesi
-3. Başlat/Bitiş – bir reklamın video görüntülenmeden önce veya sonra görüntülenmesi gerektiğini belirtir
-4. Konum – reklam sonlarının zamanlaması bilinmediğinde (örneğin, canlı akışta olduğu gibi reklam sonlarının sırasını belirtir. Her reklam sonu sırası, n'nin tamsayı 1 veya daha büyük olduğu #n biçiminde belirtilir. 1 reklamın ilk fırsatta oynanması gerektiğini, 2 reklamın ikinci fırsatta oynanması gerektiğini ve benzeri anlamına dalıdır.
+1. Time – hh: mm: SS veya ss: DD: ss. mmm biçiminde; burada aaa milisaniyedir. Bu özniteliğin değeri, video zaman çizelgesinin başından ad kesmenin başlangıcına kadar olan süreyi belirtir.
+2. Yüzde: n% biçimindedir; burada n, ad oynatıcının oynatılması için video zaman çizelgesinin yüzdesidir
+3. Başlangıç/bitiş – bir ad, video görüntülenmeden önce veya sonra görüntülenecek şekilde belirtir
+4. Konum – canlı akış gibi ad sonlarının zamanlaması bilinmiyorsa ad sonlarının sırasını belirtir. Her ad kesmenin sırası, n 'nin bir tamsayı 1 veya daha büyük olduğu #n biçiminde belirtilir. 1 ad 'nin ilk fırsatta yürütülmesi gerektiğini belirtir, 2 ad ikinci fırsatta çalınmalıdır ve bu şekilde devam eder.
 
-Öğe `<AdBreak>` içinde, bir <**AdSource**> öğesi olabilir. <**AdSource**> öğesi aşağıdaki öznitelikleri içerir:
+`<AdBreak>` Öğesi içinde, bir <**Adsource**> öğesi olabilir. <**Adsource**> öğesi aşağıdaki öznitelikleri içerir:
 
-1. Id – reklam kaynağı için bir tanımlayıcı belirtir
-2. allowMultipleAds – reklam molası sırasında birden fazla reklamın görüntülenip görüntülenemeyeceğini belirten bir Boolean değeri
-3. takipRedirects - video oynatıcı bir reklam yanıtı içinde yönlendirmeler onur eğer belirtir isteğe bağlı boolean değeri
+1. ID: ad kaynağı için bir tanımlayıcı belirtir
+2. Allowmultipliderleri: ad sonu sırasında birden fazla reklam gösterilip gösterilmeyeceğini belirten bir Boole değeri
+3. Izleme yeniden yönlendirmeleri: video yürütücüsünün bir ad yanıtı içindeki yeniden yönlendirmeleri dikkate almalıdır olduğunu belirten isteğe bağlı bir Boolean değeri
 
-<**AdSource**> öğesi oyuncuya bir satır içinde reklam yanıtı veya bir reklam yanıtına başvuru sağlar. Aşağıdaki öğelerden birini içerebilir:
+<**Adsource**> öğesi, oynatıcı için bir satır içi ad yanıtı veya bir ad yanıtı başvurusu sağlar. Aşağıdaki öğelerden birini içerebilir:
 
-* `<VASTAdData>`Bir VAST reklam yanıtının VMAP dosyasına gömülü olduğunu gösterir
-* `<AdTagURI>`başka bir sistemden bir reklam yanıtı referansbir URI
-* `<CustomAdData>`-engin olmayan bir yanıtı temsil eden rasgele bir dize
+* `<VASTAdData>`VMAP dosyası içine çok büyük bir ad yanıtı gömülü olduğunu belirtir
+* `<AdTagURI>`başka bir sistemden ad yanıtına başvuran bir URI
+* `<CustomAdData>`-çok büyük olmayan yanıtı temsil eden rastgele bir dize
 
-Bu örnekte, vast reklam yanıtı içeren `<VASTAdData>` bir öğeyle sıralı bir reklam yanıtı belirtilir. Diğer öğeler hakkında daha fazla bilgi için [VMAP'e](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)bakın.
+Bu örnekte, büyük bir ad yanıtı içeren bir `<VASTAdData>` öğe ile satır içi ad yanıtı belirtilmiştir. Diğer öğeler hakkında daha fazla bilgi için bkz. [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
-<**AdBreak**> öğesi, bir <**İzleme Olayları**> öğesi de içerebilir. <**İzleme Olayları**> öğesi, reklam molasının başlangıcını veya sonunu veya reklam arasırasında bir hata oluşup oluşmadığını izlemenize olanak tanır. <**İzleme Olayları**> öğesi, her biri bir izleme olayı ve izleme URI'si belirten bir veya daha fazla <**Izleme**> öğesi içerir. Olası izleme olayları şunlardır:
+<**Adbreak**> öğesi bir <**Trackingevents**> öğesi de içerebilir. <**Trackingevents**> öğesi, bir ad sonunun başlangıcını veya sonunu izlemenize veya ad kesmesi sırasında bir hata oluşup oluşmadığını izlemenize olanak sağlar. <**Trackingevents**> öğesi, her biri bir izleme olayı ve bir izleme URI 'si belirten bir veya daha fazla <**izleme**> öğesi içeriyor. Olası izleme olayları şunlardır:
 
-1. breakStart – reklam molasının başlangıcını izler
-2. breakEnd – reklam molasının tamamlanmasını izleme
-3. hata – reklam molası sırasında oluşan bir hatayı izler
+1. breakStart: bir ad kesmenin başlangıcını izler
+2. breakEnd – bir ad kesmenin tamamlanmasını izleme
+3. Hata: ad sonu sırasında oluşan bir hatayı izler
 
-Aşağıdaki örnekte, izleme olaylarını belirten bir VMAP dosyası gösterilmektedir
+Aşağıdaki örnek, izleme olaylarını belirten bir VMAP dosyasını gösterir
 
 ```xml
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -276,10 +276,10 @@ Aşağıdaki örnekte, izleme olaylarını belirten bir VMAP dosyası gösterilm
     </vmap:VMAP>
 ```
 
-<**İzleme Etkinlikleri**> öğesi ve çocukları hakkında daha fazla bilgi için bkz.http://iab.net/VMAP.pdf
+<**Trackingevents**> öğesi ve alt öğeleri hakkında daha fazla bilgi için bkz.http://iab.net/VMAP.pdf
 
-### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Ortam Soyut Sıralama Şablonu (MAST) Dosyakullanma
-MAST dosyası, bir reklamın görüntülendiğinde belirleyen tetikleyicileri belirtmenize olanak tanır. Aşağıda, bir ön rulo reklam, bir orta rulo reklam ve rulo sonrası reklam için tetikleyiciler içeren örnek bir MAST dosyası verilmiştir.
+### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Medya soyut sıralama şablonu (MAST) dosyası kullanma
+Bir MAST dosyası, bir ad görüntülendiğinde tanımlayan Tetikleyicileri belirtmenize olanak tanır. Aşağıda, bir ön alma ad, orta düzey ad ve bir son alma reklamı için Tetikleyiciler içeren bir MAST dosyası verilmiştir.
 
 ```xml
     <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
@@ -325,16 +325,16 @@ MAST dosyası, bir reklamın görüntülendiğinde belirleyen tetikleyicileri be
 ```
 
 
-MAST dosyası, bir **tetikleyici** öğesi içeren bir **MAST** öğesi yle başlar. Öğe, `<triggers>` bir reklamın ne zaman oynatılması gerektiğini tanımlayan bir veya daha fazla **tetikleyici** öğe içerir.
+Bir MAST dosyası bir **Triggers** öğesi Içeren bir **mast** öğesi ile başlar. Öğesi `<triggers>` , bir ad 'nin ne zaman yürütülmesi gerektiğini tanımlayan bir veya daha fazla **tetikleyici** öğesi içerir.
 
-**Tetikleyici** öğesi, bir reklamın ne zaman oynatılmaya başlayacağını belirten bir **başlangıç Koşulları** öğesi içerir. **Başlangıç Koşulları** öğesi bir `<condition>` veya daha fazla öğe içerir. Her `<condition>` biri doğru olarak değerlendirdiğinde, tetikleyicinin sırasıyla bir `<condition>` **başlangıç Koşulları** veya **bitiş Koşulları** öğesi içinde bulunup bulunmayacağına bağlı olarak başlatılır veya iptal edilir. Birden `<condition>` çok öğe bulunduğunda, bunlar örtülü veya olarak kabul edilir, doğru değerlendiren herhangi bir koşul tetikleyici başlatmak için neden olacaktır. `<condition>`elemanları iç içe olabilir. Alt `<condition>` öğeler önceden ayarlandığında, bunlar örtülü olarak kabul edilir VE, tetikleyici başlatmak için tüm koşulların doğru değerlendirmek gerekir. Öğe, `<condition>` koşulu tanımlayan aşağıdaki öznitelikleri içerir:
+**Tetikleyici** öğesi, bir ad 'nin oynatılma başlaması gereken zaman belirten bir **startconditions** öğesi içerir. **Startconditions** öğesi bir veya daha fazla `<condition>` öğe içeriyor. Her biri `<condition>` true olarak değerlendirildiğinde bir tetikleyici başlatılır veya bir `<condition>` **startconditions** veya **endconditions** öğesi içinde olup olmadığına bağlı olarak iptal edilir. Birden çok `<condition>` öğe mevcut olduğunda, örtülü olarak değerlendirilir, true olarak değerlendirilen herhangi bir koşul tetikleyicisinin başlatılmasına neden olur. `<condition>`öğeler iç içe olabilir. Alt `<condition>` öğeler önceden ayarlandığında, örtülü ve olarak değerlendirilir, tetikleyicisinin başlatması için tüm koşulların doğru olarak değerlendirilmesi gerekir. `<condition>` Öğesi, koşulu tanımlayan aşağıdaki öznitelikleri içerir:
 
-1. **türü** – koşul, olay veya özellik türünü belirtir
-2. **adı** – değerlendirme sırasında kullanılacak özellik veya olayın adı
-3. **değeri** – bir mülkün karşısına çıkacak değer
-4. **operatör** – değerlendirme sırasında kullanılacak işlem: EQ (eşit), NEQ (eşit değil), GTR (büyük), GEQ (büyük veya eşit), LT (Az), LEQ (az veya eşit), MOD (modulo)
+1. **tür** – koşulun, etkinliğin veya özelliğin türünü belirtir
+2. **ad** : değerlendirme sırasında kullanılacak özelliğin veya etkinliğin adı
+3. **değer** : bir özelliğin değerlendirileceği değer
+4. **işleç** – değerlendirme sırasında kullanılacak Işlem: EQ (eşittir), NEQ (eşit değildir), GTR (daha büyük), GEQ (büyük veya eşittir), lt (küçüktür), LEQ (küçüktür veya eşittir), mod (mod)
 
-**endConditions** da `<condition>` öğeleri içerir. Bir koşul doğru olarak değerlendirildiğinde tetikleyici sıfırlanır. Öğe, `<trigger>` bir `<sources>` veya daha fazla `<source>` öğe içeren bir öğe de içerir. Öğeler, `<source>` reklam yanıtına uri'yi ve reklam yanıtı türünü tanımlar. Bu örnekte, bir URI VAST yanıtı verilir.
+**Endconditions** öğeleri de `<condition>` içerir. Bir koşul true olarak değerlendirildiğinde tetikleyici sıfırlanır. `<trigger>` Öğesi bir veya daha fazla `<sources>` `<source>` öğe içeren bir öğesi de içerir. `<source>` Öğeleri ad yanıtının URI 'sini ve ad yanıtının türünü tanımlar. Bu örnekte, büyük bir yanıta bir URI verilir.
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -349,10 +349,10 @@ MAST dosyası, bir **tetikleyici** öğesi içeren bir **MAST** öğesi yle baş
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video Oynatıcı-Reklam Arabirim Tanımını Kullanma (VPAID)
-VPAID, çalıştırılabilir reklam birimlerinin bir video oynatıcıyla iletişim kurmasını sağlayan bir API'dir. Bu, son derece etkileşimli reklam deneyimleri sağlar. Kullanıcı reklamla etkileşimkurabilir ve reklam görüntüleyici tarafından gerçekleştirilen eylemlere yanıt verebilir. Örneğin, bir reklam, kullanıcının daha fazla bilgi veya reklamın daha uzun bir sürümünü görüntülemesine olanak tanıyan düğmeleri görüntüleyebilir. Video oynatıcı VPAID API'yi desteklemeli ve çalıştırılabilir reklam API'yi uygulamalıdır. Bir oyuncu bir reklam sunucusundan reklam istediğinde sunucu, VPAID reklamı içeren bir VAST yanıtıyla yanıt verebilir.
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video oynatıcı kullanma-ad arabirimi tanımı (VÜCRETLI)
+VÜCRETLI, yürütülebilir ad birimlerinin bir video oynatıcı ile iletişim kurmasını sağlayan bir API 'dir. Bu, son derece etkileşimli ad deneyimlerine izin verir. Kullanıcı ad ile etkileşime geçebilir ve ad, Görüntüleyici tarafından alınan eylemlere yanıt verebilir. Örneğin, bir ad, kullanıcının daha fazla bilgi veya daha uzun bir sürümü görüntülemesine izin veren düğmeler görüntüleyebilir. Video oynatıcı, VÜCRETLI API 'yi desteklemelidir ve yürütülebilir ad, API 'YI uygulamalıdır. Bir oyuncu bir ad sunucusundan bir ad istediğinde, sunucu, VÜCRETLI ad içeren büyük bir Yanıt ile yanıt verebilir.
 
-Yürütülebilir bir reklam, Adobe Flash™ veya JavaScript gibi bir web tarayıcısında yürütülebilen bir çalışma zamanı ortamında yürütülmesi gereken kodda oluşturulur. Bir reklam sunucusu VPAID reklamı içeren bir VAST yanıtı verdiğinde, `<MediaFile>` öğedeki apiFramework özniteliğinin değeri "VPAID" olmalıdır. Bu özellik, içerdiği reklamın VPAID yürütülebilir bir reklam olduğunu belirtir. Tür özniteliği, "application/x-shockwave-flash" veya "application/x-javascript" gibi çalıştırılabilir mime türüne ayarlanmalıdır. Aşağıdaki XML snippet, `<MediaFile>` VPAID çalıştırılabilir reklam içeren VAST yanıtındaki öğeyi gösterir.
+Bir yürütülebilir ad, Adobe Flash™ veya bir Web tarayıcısında yürütülebilecek JavaScript gibi bir çalışma zamanı ortamında yürütülmesi gereken kodda oluşturulur. Bir ad sunucusu VÜCRETLI ad içeren büyük bir yanıt döndürdüğünde, `<MediaFile>` öğesindeki apiFramework özniteliğinin DEĞERI "vücretli" olmalıdır. Bu öznitelik, kapsanan ad 'nin bir VÜCRETLI yürütülebilir ad olduğunu belirtir. Tür özniteliği yürütülebilir dosyanın MIME türüne ayarlanmalıdır (örneğin, "application/x-Shockwave-Flash" veya "application/x-JavaScript"). Aşağıdaki XML kod parçacığında, VÜCRETLI yürütülebilir ad içeren büyük bir yanıttan `<MediaFile>` öğe gösterilmektedir.
 
 ```xml
     <MediaFiles>
@@ -363,27 +363,27 @@ Yürütülebilir bir reklam, Adobe Flash™ veya JavaScript gibi bir web tarayı
     </MediaFiles>
 ```
 
-Yürütülebilir bir reklam, VAST `<AdParameters>` yanıtındaki `<Linear>` `<NonLinear>` öğe veya öğeler kullanılarak başolarak lanse edilebilir. `<AdParameters>` Öğe hakkında daha fazla bilgi için [VAST 3.0'a](https://www.iab.net/media/file/VASTv3.0.pdf)bakın. VPAID API hakkında daha fazla bilgi için [VPAID 2.0'a](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)bakın.
+Yürütülebilir bir ad, `<AdParameters>` `<Linear>` veya `<NonLinear>` öğeleri içindeki öğesi çok büyük bir yanıtta kullanılarak başlatılabilir. Öğesi hakkında daha fazla bilgi için bkz. çok [3,0.](https://www.iab.net/media/file/VASTv3.0.pdf) `<AdParameters>` VÜCRETLI API hakkında daha fazla bilgi için bkz. [vücretli 2,0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
-## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Reklam Destekli Windows veya Windows Phone 8 Oynatıcı Uygulama
-Microsoft Media Platform: Windows 8 için Player Framework ve Windows Phone 8, çerçeveyi kullanarak bir video oynatıcı uygulamasını nasıl uygulayacağınızı gösteren örnek uygulamalar koleksiyonu içerir. Player Framework'ü ve örnekleri [Windows 8 ve Windows Phone 8 için Player Framework'den](https://playerframework.codeplex.com)indirebilirsiniz.
+## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Ad desteğiyle Windows veya Windows Phone 8 oynatıcı uygulama
+Microsoft medya platformu: Windows 8 ve Windows Phone 8 için oynatıcı Framework, Framework kullanarak bir video oynatıcı uygulamasının nasıl uygulanacağını gösteren örnek uygulamaların bir koleksiyonunu içerir. Oynatıcı çerçevesini ve [Windows 8 Için Player Framework ve Windows Phone 8 '](https://playerframework.codeplex.com)deki örnekleri indirebilirsiniz.
 
-Microsoft.PlayerFramework.Xaml.Samples çözümünü açtığınızda, proje içinde bir dizi klasör görürsünüz. Reklam klasörü, reklam destekli bir video oynatıcı oluşturmakla ilgili örnek kodu içerir. Reklam klasörünün içinde, her biri reklamların nasıl farklı bir şekilde ekyapılacağını gösteren bir dizi XAML/cs dosyası bulunur. Aşağıdaki liste her açıklar:
+Microsoft. PlayerFramework. xaml. Samples çözümünü açtığınızda, proje içinde bir dizi klasör görürsünüz. Reklam klasörü, ad desteğiyle bir video oynatıcı oluşturmayla ilgili örnek kodu içerir. Reklam klasörü içinde her biri farklı bir şekilde reklamları nasıl ekleyebileceğiniz gösteren bir dizi XAML/cs dosyası. Aşağıdaki listede her biri açıklanmaktadır:
 
-* AdPodPage.xaml Bir reklam bölmesini nasıl görüntülenin.
-* AdSchedulingPage.xaml Reklamların nasıl zamanlandığını gösterir.
-* FreeWheelPage.xaml Reklamları zamanlamak için FreeWheel eklentisinin nasıl kullanılacağını gösterir.
-* MastPage.xaml MAST dosyasıyla reklamların nasıl zamanlabildiğini gösterir.
-* ProgrammaticAdPage.xaml Reklamların videoya nasıl programyapılacağını gösterir.
-* ScheduleClipPage.xaml VAST dosyası olmadan bir reklamın nasıl zamanlabildiğini gösterir.
-* VastLinearCompanionPage.xaml doğrusal ve yardımcı bir reklamın nasıl ekyapılacağını gösterir.
-* VastNonLinearPage.xaml Doğrusal olmayan bir reklamın nasıl ekyapılacağını gösterir.
-* VmapPage.xaml VMAP dosyası olan reklamların nasıl belirtilir olduğunu gösterir.
+* Adpod Page. xaml, bir ad Pod 'un nasıl görüntüleneceğini gösterir.
+* AdSchedulingPage. xaml, reklamları zamanlamayı gösterir.
+* FreeWheelPage. xaml, reklamları zamanlamak için FreeWheel eklentisinin nasıl kullanılacağını gösterir.
+* MastPage. xaml, bir MAST dosyası ile reklamları zamanlamayı gösterir.
+* ProgrammaticAdPage. xaml, reklamları programlı bir şekilde bir videoya zamanlamayı gösterir.
+* ScheduleClipPage. xaml, büyük bir dosya olmadan bir ad zamanlamayı gösterir.
+* Vastbir Companionpage. xaml, doğrusal ve yardımcı bir ad eklemenin nasıl yapılacağını gösterir.
+* Vastnonbir. xaml, doğrusal olmayan bir ad eklemeyi gösterir.
+* VmapPage. xaml, bir VMAP dosyası ile reklamları belirtmeyi gösterir.
 
-Bu örneklerin her biri, oynatıcı çerçevesi tarafından tanımlanan MediaPlayer sınıfını kullanır. Örneklerin çoğu, çeşitli reklam yanıt biçimleri için destek ekleyen eklentiler kullanır. ProgrammaticAdPage örneği bir MediaPlayer örneğiyle programlanabilir şekilde etkileşime girer.
+Bu örneklerin her biri, Player çerçevesi tarafından tanımlanan MediaPlayer sınıfını kullanır. Çoğu örnek, çeşitli ad yanıt biçimleri için destek ekleyen eklentileri kullanır. ProgrammaticAdPage örneği programlı olarak bir MediaPlayer örneğiyle etkileşime girer.
 
-### <a name="adpodpage-sample"></a>AdPodPage Örneği
-Bu örnek, bir reklamın ne zaman görüntülenece görüntülenecek olduğunu tanımlamak için AdSchedulerPlugin'i kullanır. Bu örnekte, bir orta rulo reklam beş saniye sonra çalınması planlanıyor. Reklam bölmesi (sırayla görüntülenecek bir reklam grubu) bir reklam sunucusundan döndürülen VAST dosyasında belirtilir. ENGIN dosyasına URI `<RemoteAdSource>` öğesinde belirtilir.
+### <a name="adpodpage-sample"></a>Adpod sayfa örneği
+Bu örnek, bir ad ne zaman görüntüleneceğini tanımlamak için AdSchedulerPlugin kullanır. Bu örnekte, bir orta seviye tanıtım, beş saniyeden sonra çalınmak üzere zamanlandı. Ad sunucusundan döndürülen büyük bir dosyada ad Pod (sırayla görüntülenecek bir reklamlar grubu) belirtilir. Büyük dosya için URI `<RemoteAdSource>` öğesi öğesinde belirtilir.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -405,10 +405,10 @@ Bu örnek, bir reklamın ne zaman görüntülenece görüntülenecek olduğunu t
     </mmppf:MediaPlayer>
 ```
 
-AdSchedulerPlugin hakkında daha fazla bilgi için [Windows 8 ve Windows Phone 8'de Player Framework'de Reklamcılık](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+AdSchedulerPlugin hakkında daha fazla bilgi için bkz. [Windows 8 ve Windows Phone 8 ' de oynatıcı çerçevesinde reklam](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-Bu örnek aynı zamanda AdSchedulerPlugin kullanır. Üç reklam, bir ön rulo reklam, bir rulo reklam ve bir post-roll reklamı planlar. Her reklam için VAST URI bir `<RemoteAdSource>` öğe olarak belirtilir.
+Bu örnek ayrıca AdSchedulerPlugin kullanır. Üç reklam, bir ön uç ad, orta noktadan bir ad ve bir son alma reklamı zamanlar. Her ad için büyük olan URI bir `<RemoteAdSource>` öğede belirtilir.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -442,7 +442,7 @@ Bu örnek aynı zamanda AdSchedulerPlugin kullanır. Üç reklam, bir ön rulo r
 ```
 
 ### <a name="freewheelpage"></a>FreeWheelPage
-Bu örnek, reklam içeriğinin yanı sıra reklam zamanlama bilgilerini belirten bir SmartXML dosyasına işaret eden bir URI belirten bir Kaynak özniteliği belirten FreeWheelPlugin'i kullanır.
+Bu örnek, ad içeriğini ve ad zamanlama bilgilerini belirten bir SmartXML dosyasına işaret eden bir URI belirten bir kaynak özniteliği belirten FreeWheelPlugin 'i kullanır.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -454,7 +454,7 @@ Bu örnek, reklam içeriğinin yanı sıra reklam zamanlama bilgilerini belirten
 ```
 
 ### <a name="mastpage"></a>MastPage
-Bu örnek, mast dosyasını kullanmanıza olanak tanıyan MastSchedulerPlugin'i kullanır. Kaynak özniteliği, MAST dosyasının konumunu belirtir.
+Bu örnek, bir MAST dosyası kullanmanıza izin veren MastSchedulerPlugin kullanır. Kaynak öznitelik, MAST dosyasının konumunu belirtir.
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -464,14 +464,14 @@ Bu örnek, mast dosyasını kullanmanıza olanak tanıyan MastSchedulerPlugin'i 
             </mmppf:MediaPlayer>
 ```
 
-### <a name="programmaticadpage"></a>ProgramlıAdPage
-Bu örnek MediaPlayer ile programlı olarak etkileşime girebeder. ProgrammaticAdPage.xaml dosyası MediaPlayer instantiates:
+### <a name="programmaticadpage"></a>ProgrammaticAdPage
+Bu örnek, program aracılığıyla MediaPlayer ile etkileşime girer. ProgrammaticAdPage. xaml dosyası MediaPlayer 'yi başlatır:
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 ```
 
-ProgrammaticAdPage.xaml.cs dosyası bir AdHandlerPlugin oluşturur, bir reklamın ne zaman görüntüleneceğini belirtmek için bir Zaman Çizelgesi Işaretçisi ekler ve ardından Bir REMOTEAdSource'u VAST dosyasına URI belirten bir RemoteAdSource yükleyen ve sonra reklamı çalan MarkerReached olayı için bir işleyici ekler.
+ProgrammaticAdPage.xaml.cs dosyası bir AdHandlerPlugin oluşturur, bir ad ne zaman görüntüleneceğini belirtmek için bir TimelineMarker ekler ve sonra da büyük bir dosyaya bir URI belirterek RemoteAdSource 'u yükleyen Markerulaşıldı olayı için bir işleyici ekler ve ardından ad yürütülür.
 
 ```csharp
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
@@ -503,8 +503,8 @@ ProgrammaticAdPage.xaml.cs dosyası bir AdHandlerPlugin oluşturur, bir reklamı
             }
 ```
 
-### <a name="scheduleclippage"></a>ProgramClipPage
-Bu örnek, reklamı içeren bir .wmv dosyası belirterek bir ara reklam zamanlamak için AdSchedulerPlugin'i kullanır.
+### <a name="scheduleclippage"></a>Scheduleclipsayfası
+Bu örnek, ad içeren bir. wmv dosyası belirterek bir orta noktadan ad zamanlamak için AdSchedulerPlugin kullanır.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.cloudapp.net/html5/media/bigbuck.mp4">
@@ -529,8 +529,8 @@ Bu örnek, reklamı içeren bir .wmv dosyası belirterek bir ara reklam zamanlam
             </mmppf:MediaPlayer>
 ```
 
-### <a name="vastlinearcompanionpage"></a>VastLinearCompanionPage
-Bu örnek, bitişik bir reklamla orta rulo doğrusal bir reklam zamanlamak için AdSchedulerPlugin'in nasıl kullanılacağını göstermektedir. Öğe `<RemoteAdSource>` VAST dosyasının konumunu belirtir.
+### <a name="vastlinearcompanionpage"></a>Vastdoğrcompanionpage
+Bu örnek, bir yardımcı ad ile orta ölçekli bir ad zamanlamak için AdSchedulerPlugin 'in nasıl kullanılacağını gösterir. `<RemoteAdSource>` Öğesi, büyük dosyanın konumunu belirtir.
 
 ```xml
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -551,8 +551,8 @@ Bu örnek, bitişik bir reklamla orta rulo doğrusal bir reklam zamanlamak için
             </mmppf:MediaPlayer>
 ```
 
-### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-Bu örnek, doğrusal ve doğrusal olmayan bir reklam zamanlamak için AdSchedulerPlugin'i kullanır. VAST dosya konumu `<RemoteAdSource>` öğeyle birlikte belirtilir.
+### <a name="vastlinearnonlinearpage"></a>Vastdoğrnondoğruz sayfası
+Bu örnek, doğrusal ve doğrusal olmayan bir ad zamanlamak için AdSchedulerPlugin kullanır. Büyük dosya konumu `<RemoteAdSource>` öğesi ile belirtilir.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -574,7 +574,7 @@ Bu örnek, doğrusal ve doğrusal olmayan bir reklam zamanlamak için AdSchedule
 ```
 
 ### <a name="vmappage"></a>VMAPPage
-Bu örnek, vmap dosyasını kullanarak reklam zamanlamak için VmapSchedulerPlugin'i kullanır. VMAP dosyasına URI `<VmapSchedulerPlugin>` öğenin Kaynak özniteliği belirtilir.
+Bu örnek, VMAP dosyası kullanarak reklamları zamanlamak için VmapSchedulerPlugin kullanır. VMAP dosyasının URI 'SI, `<VmapSchedulerPlugin>` öğesinin kaynak özniteliğinde belirtilir.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -585,11 +585,11 @@ Bu örnek, vmap dosyasını kullanarak reklam zamanlamak için VmapSchedulerPlug
             </mmppf:MediaPlayer>
 ```
 
-## <a name="implementing-an-ios-video-player-with-ad-support"></a>Reklam Destekli iOS Video Oynatıcı Uygulama
-Microsoft Medya Platformu: iOS için Player Framework, çerçeveyi kullanarak bir video oynatıcı uygulamasını nasıl uygulayacağınızı gösteren örnek uygulamalar koleksiyonu içerir. Player Framework'ü ve örnekleri [Azure Media Player Framework'den](https://github.com/Azure/azure-media-player-framework)indirebilirsiniz. GitHub sayfasında, oyuncu çerçevesi hakkında ek bilgiler ve oyuncu örneğine giriş içeren bir Wiki bağlantısı vardır: [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+## <a name="implementing-an-ios-video-player-with-ad-support"></a>Ad desteğiyle iOS video oynatıcı uygulama
+Microsoft medya platformu: iOS için oynatıcı çatısı, Framework kullanarak bir video oynatıcı uygulamasının nasıl uygulanacağını gösteren örnek uygulamalar koleksiyonunu içerir. Player çerçevesini ve [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)'ten örnekleri indirebilirsiniz. GitHub sayfasında, oynatıcı çerçevesiyle ilgili ek bilgiler içeren bir wiki bağlantısı ve Player örneğine giriş: [Azure Media Player wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
-### <a name="scheduling-ads-with-vmap"></a>VMAP ile Reklam Planlama
-Aşağıdaki örnekte, bir VMAP dosyasını kullanarak reklamların nasıl zamanlanın gösterilmektedir.
+### <a name="scheduling-ads-with-vmap"></a>VMAP ile reklamları zamanlama
+Aşağıdaki örnek, bir VMAP dosyası kullanılarak reklamları zamanlamayı gösterir.
 
 ```csharp
     // How to schedule an Ad using VMAP.
@@ -609,8 +609,8 @@ Aşağıdaki örnekte, bir VMAP dosyasını kullanarak reklamların nasıl zaman
             }
 ```
 
-### <a name="scheduling-ads-with-vast"></a>VAST ile Reklam Planlama
-Aşağıdaki örnek, geç ciltlenmiş bir VAST reklamının nasıl zamanlabildiğini gösterir.
+### <a name="scheduling-ads-with-vast"></a>Büyük ölçekli reklamları zamanlama
+Aşağıdaki örnek, bir geç bağlamanın büyük bir ad olarak nasıl planlanalınacağını göstermektedir.
 
 
 ```csharp
@@ -640,7 +640,7 @@ Aşağıdaki örnek, geç ciltlenmiş bir VAST reklamının nasıl zamanlabildi�
     }
 ```
 
-   Aşağıdaki örnek, erken ciltlenmiş bir VAST reklamının nasıl zamanlabildiğini gösterir.
+   Aşağıdaki örnek, bir erken bağlamanın büyük ad ile nasıl planlanalınacağını göstermektedir.
 
 ```csharp
     //Example:4 Schedule an early binding VAST ad
@@ -669,7 +669,7 @@ Aşağıdaki örnek, geç ciltlenmiş bir VAST reklamının nasıl zamanlabildi�
     }
 ```
 
-Aşağıdaki örnek, Kaba Kesme Düzenleme (RCE) kullanarak bir reklamın nasıl eklenir olduğunu gösterir
+Aşağıdaki örnek, kaba bir kesme düzenlemesi (RCE) kullanılarak nasıl ad ekleneceğini gösterir
 
 ```csharp
     //Example:1 How to use RCE.
@@ -687,7 +687,7 @@ Aşağıdaki örnek, Kaba Kesme Düzenleme (RCE) kullanarak bir reklamın nasıl
     }
 ```
 
-Aşağıdaki örnekte, bir reklam bölmesinin nasıl zamanlanın gösterilmektedir.
+Aşağıdaki örnek, bir ad Pod zamanlamasını gösterir.
 
 ```csharp
     //Example:5 Schedule an ad Pod.
@@ -717,7 +717,7 @@ Aşağıdaki örnekte, bir reklam bölmesinin nasıl zamanlanın gösterilmekted
     }
 ```
 
-Aşağıdaki örnek, yapışkan olmayan bir orta rulo reklamın nasıl zamanlabildiğini gösterir. Yapışkan olmayan bir reklam, görüntüleyenin herhangi bir arayışına bakılmaksızın yalnızca bir kez oynatılır.
+Aşağıdaki örnek, yapışkan olmayan bir orta noktadan ad 'nin nasıl zamanlanıp planlanalınacağını göstermektedir. Yapışkan olmayan bir ad, görüntüleyicinin yaptığı herhangi bir arama ne olursa olsun yalnızca bir kez oynatılır.
 
 ```csharp
     //Example:6 Schedule a single non sticky mid roll Ad
@@ -746,7 +746,7 @@ Aşağıdaki örnek, yapışkan olmayan bir orta rulo reklamın nasıl zamanlabi
     }
 ```
 
-Aşağıdaki örnek, yapışkan bir orta rulo reklamın nasıl zamanlabildiğini gösterir. Video zaman çizelgesinde belirtilen noktaya her ulaşıldığında yapışkan bir reklam görüntülenir.
+Aşağıdaki örnek, bir yapışkan MIN ad zamanlamasını gösterir. Her zaman, video zaman çizelgesinde belirtilen noktaya ulaşıldığında bir yapışkan ad görüntülenir.
 
 ```csharp
     //Example:7 Schedule a single sticky mid roll Ad
@@ -772,7 +772,7 @@ Aşağıdaki örnek, yapışkan bir orta rulo reklamın nasıl zamanlabildiğini
     }
 ```
 
-Aşağıdaki örnekte, rulo sonrası reklamın nasıl zamanlanın gösterilmektedir.
+Aşağıdaki örnek, bir son alma reklamı zamanlamasını gösterir.
 
 ```csharp
     //Example:8 Schedule Post Roll Ad
@@ -794,7 +794,7 @@ Aşağıdaki örnekte, rulo sonrası reklamın nasıl zamanlanın gösterilmekte
     }
 ```
 
-Aşağıdaki örnekte, bir ön rulo reklamın nasıl zamanlanın gösterilmektedir.
+Aşağıdaki örnek, bir ön alma ad zamanlamasını gösterir.
 
 ```csharp
     //Example:9 Schedule Pre Roll Ad
@@ -816,7 +816,7 @@ Aşağıdaki örnekte, bir ön rulo reklamın nasıl zamanlanın gösterilmekted
     }
 ```
 
-Aşağıdaki örnekte, bir orta rulo yer kaplama sıyrık reklamının nasıl zamanlanın gösterilmektedir.
+Aşağıdaki örnek, bir orta seviye kaplama ad zamanlamasının nasıl planlanarak göstermektedir.
 
 ```csharp
     // Example10: Schedule a Mid Roll overlay Ad

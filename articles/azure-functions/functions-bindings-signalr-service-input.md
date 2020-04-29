@@ -1,30 +1,30 @@
 ---
-title: Azure Fonksiyonları SignalR Hizmeti giriş bağlama
-description: Azure İşlevlerinde SignalR hizmeti uç nokta URL'si ve erişim belirteci döndürmeyi öğrenin.
+title: Azure Işlevleri SignalR hizmeti giriş bağlama
+description: Azure Işlevlerinde bir SignalR hizmeti uç noktası URL 'SI ve erişim belirteci döndürmeyi öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77530269"
 ---
-# <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Fonksiyonları için SignalR Hizmeti giriş bağlama
+# <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Işlevleri için SignalR hizmeti giriş bağlaması
 
-İstemci Azure SinyalR Hizmeti'ne bağlanabilmesi için önce hizmet bitiş noktası URL'sini ve geçerli bir erişim belirteci alması gerekir. *SignalRConnectionInfo* giriş bağlama, SignalR Hizmeti uç noktası URL'sini ve hizmete bağlanmak için kullanılan geçerli bir belirteç üretir. Belirteç zaman sınırlı olduğundan ve belirli bir kullanıcının bağlantıya kimliğini doğrulamak için kullanılabildığından, belirteci önbelleğe almamalı veya istemciler arasında paylaşmamalısınız. Bu bağlamayı kullanan bir HTTP tetikleyicisi, bağlantı bilgilerini almak için istemciler tarafından kullanılabilir.
+Bir istemcinin Azure SignalR hizmetine bağlanabilmesi için, hizmet uç noktası URL 'sini ve geçerli bir erişim belirtecini alması gerekir. *Signalrconnectionınfo* giriş bağlaması, SignalR hizmeti uç noktası URL 'sini ve hizmete bağlanmak için kullanılan geçerli bir belirteci üretir. Belirteç zaman sınırlı olduğundan ve belirli bir kullanıcının kimlik doğrulaması için kullanılabilir olduğundan, belirteci önbelleğe almalısınız veya istemciler arasında paylaşamazsınız. Bu bağlamayı kullanan bir HTTP tetikleyicisi, istemciler tarafından bağlantı bilgilerini almak için kullanılabilir.
 
-Bu bağlamanın SignalR istemciSi SDK tarafından kullanılabilecek bir "anlaşma" işlevi oluşturmak için nasıl kullanıldığı hakkında daha fazla bilgi için SignalR Hizmeti kavramları belgelerindeki [Azure Fonksiyonları geliştirme ve yapılandırma makalesine](../azure-signalr/signalr-concept-serverless-development-config.md) bakın.
+Bu bağlamanın bir SignalR istemci SDK 'Sı tarafından tüketilen bir "Negotiate" işlevi oluşturmak için nasıl kullanıldığı hakkında daha fazla bilgi için, SignalR hizmeti kavramları belgelerindeki [Azure işlevleri geliştirme ve yapılandırma makalesine](../azure-signalr/signalr-concept-serverless-development-config.md) bakın.
 
-Kurulum ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [genel bakışa](functions-bindings-signalr-service.md)bakın.
+Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakış](functions-bindings-signalr-service.md).
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
-Aşağıdaki örnekte, giriş bağlamakullanarak SignalR bağlantı bilgilerini alan ve http üzerinden döndüren bir [C# işlevi](functions-dotnet-class-library.md) gösterilmektedir.
+Aşağıdaki örnek, giriş bağlamayı kullanarak SignalR bağlantı bilgilerini alan ve HTTP üzerinden döndüren bir [C# işlevini](functions-dotnet-class-library.md) gösterir.
 
 ```cs
 [FunctionName("negotiate")]
@@ -36,13 +36,13 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
+# <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, *bir function.json* dosyasında SignalR bağlantı bilgileri girişi bağlamayı ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [C# Script işlevini](functions-reference-csharp.md) gösterir.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir.
 
-*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
+İşte, *function. JSON* dosyasındaki veri bağlama:
 
-Örnek function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -54,7 +54,7 @@ Aşağıdaki örnek, *bir function.json* dosyasında SignalR bağlantı bilgiler
 }
 ```
 
-İşte C# Script kodu:
+C# betik kodu aşağıda verilmiştir:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -66,13 +66,13 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, *bir function.json* dosyasında SignalR bağlantı bilgileri girişi bağlamayı ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
 
-*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
+İşte, *function. JSON* dosyasındaki veri bağlama:
 
-Örnek function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -84,7 +84,7 @@ Aşağıdaki örnek, *bir function.json* dosyasında SignalR bağlantı bilgiler
 }
 ```
 
-İşte JavaScript kodu:
+JavaScript kodu aşağıda verilmiştir:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -94,11 +94,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, *bir function.json* dosyasında SignalR bağlantı bilgileri girişi bağlamayı ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı bilgileri giriş bağlamasını ve bağlantı bilgilerini döndürmek için bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir.
 
-*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
+İşte, *function. JSON* dosyasındaki veri bağlama:
 
-Örnek function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -110,7 +110,7 @@ Aşağıdaki örnek, *bir function.json* dosyasında SignalR bağlantı bilgiler
 }
 ```
 
-Python kodu aşağıdavelvere vermiştir:
+Python kodu aşağıda verilmiştir:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -125,7 +125,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki örnek, giriş bağlamayı kullanarak SignalR bağlantı bilgilerini alan ve http üzerinden döndüren bir [Java işlevini](functions-reference-java.md) gösterir.
+Aşağıdaki örnek, giriş bağlamayı kullanarak SignalR bağlantı bilgilerini alan ve HTTP üzerinden döndüren bir [Java işlevini](functions-reference-java.md) gösterir.
 
 ```java
 @FunctionName("negotiate")
@@ -143,15 +143,15 @@ public SignalRConnectionInfo negotiate(
 
 ---
 
-## <a name="authenticated-tokens"></a>Kimlik doğrulaması belirteçleri
+## <a name="authenticated-tokens"></a>Kimliği doğrulanmış belirteçler
 
-İşlev kimlik doğrulaması yapılan bir istemci tarafından tetiklenirse, oluşturulan belirteci için bir kullanıcı kimliği iddiası ekleyebilirsiniz. [Uygulama Hizmeti Kimlik Doğrulaması'nı](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulama ekleyebilirsiniz.
+İşlev kimliği doğrulanmış bir istemci tarafından tetikleniyorsa, oluşturulan belirtece bir kullanıcı KIMLIĞI talebi ekleyebilirsiniz. [App Service kimlik doğrulaması](../app-service/overview-authentication-authorization.md)kullanarak bir işlev uygulamasına kolayca kimlik doğrulaması ekleyebilirsiniz.
 
-Uygulama Hizmeti Kimlik Doğrulaması, `x-ms-client-principal-id` `x-ms-client-principal-name` sırasıyla kimlik doğrulaması yapılan kullanıcının istemci asıl kimliğini ve adını içeren HTTP üstbilgilerini ayarlar.
+App Service kimlik doğrulaması, sırasıyla kimliği `x-ms-client-principal-id` doğrulanmış `x-ms-client-principal-name` kullanıcının istemci asıl kimliğini ve adını içeren ve adlı HTTP üstbilgilerini ayarlar.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
-[Bağlama özelliğini, bağlama ifadesini](./functions-bindings-expressions-patterns.md)kullanarak üstbilgiden değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` `UserId` veya .
+Bağlama ifadesini kullanarak, `UserId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
 
 ```cs
 [FunctionName("negotiate")]
@@ -166,11 +166,11 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
+# <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-[Bağlama özelliğini, bağlama ifadesini](./functions-bindings-expressions-patterns.md)kullanarak üstbilgiden değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` `userId` veya .
+Bağlama ifadesini kullanarak, `userId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
 
-Örnek function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -183,7 +183,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-İşte C# Script kodu:
+C# betik kodu aşağıda verilmiştir:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -197,11 +197,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-[Bağlama özelliğini, bağlama ifadesini](./functions-bindings-expressions-patterns.md)kullanarak üstbilgiden değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` `userId` veya .
+Bağlama ifadesini kullanarak, `userId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
 
-Örnek function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -214,7 +214,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-İşte JavaScript kodu:
+JavaScript kodu aşağıda verilmiştir:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -226,9 +226,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-[Bağlama özelliğini, bağlama ifadesini](./functions-bindings-expressions-patterns.md)kullanarak üstbilgiden değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` `userId` veya .
+Bağlama ifadesini kullanarak, `userId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
 
-Örnek function.json:
+Örnek Function. JSON:
 
 ```json
 {
@@ -241,7 +241,7 @@ module.exports = async function (context, req, connectionInfo) {
 }
 ```
 
-Python kodu aşağıdavelvere vermiştir:
+Python kodu aşağıda verilmiştir:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Bağlama özelliğini, bağlama ifadesini](./functions-bindings-expressions-patterns.md)kullanarak üstbilgiden değere ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}` `userId` veya .
+Bağlama ifadesini kullanarak, `userId` bağlama [ifadesi](./functions-bindings-expressions-patterns.md)ile herhangi bir başlıktaki değere bağlamayı ayarlayabilirsiniz: `{headers.x-ms-client-principal-id}` veya. `{headers.x-ms-client-principal-name}`
 
 ```java
 @FunctionName("negotiate")
@@ -279,4 +279,4 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [SignalR Hizmeti mesajları gönder (Çıkış bağlama)](./functions-bindings-signalr-service-output.md) 
+- [SignalR hizmet iletileri gönderme (çıkış bağlama)](./functions-bindings-signalr-service-output.md) 

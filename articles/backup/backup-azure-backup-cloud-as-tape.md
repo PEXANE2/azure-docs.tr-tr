@@ -1,74 +1,74 @@
 ---
-title: Teyp altyapınızı değiştirme
-description: Azure Yedekleme'nin Azure'da verileri yedeklemenize ve geri yüklemenize olanak tanıyan teyp benzeri anlamtisi nasıl sağladığını öğrenin
+title: Bant altyapınızı değiştirme
+description: Azure Backup Azure 'da verileri yedeklemeve geri yüklemenize olanak tanıyan bant benzeri semantiğini nasıl sağladığını öğrenin
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77425111"
 ---
-# <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uzun süreli depolama alanınızı banttan Azure bulutuna taşıyın
+# <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uzun vadeli depolama alanınızı teypten Azure bulutuna taşıma
 
-Azure Yedekleme ve Sistem Merkezi Veri Koruma Yöneticisi müşterileri şunları yapabilir:
+Azure Backup ve System Center Data Protection Manager müşteriler şunları yapabilir:
 
-* Kuruluş gereksinimlerine en uygun zamanlamalarda verileri yedekle.
-* Yedekleme verilerini daha uzun süre saklar.
-* Azure'u uzun süreli bekletme gereksinimlerinin bir parçası haline getirin (bant yerine).
+* Kurumsal ihtiyaçlarına en uygun olan zamanlamaya göre verileri yedekleyin.
+* Yedekleme verilerini uzun süreler boyunca tutun.
+* Azure 'ı uzun süreli bekletme gereksinimlerinin bir parçası yapın (bant yerine).
 
-Bu makalede, müşterilerin yedekleme ve bekletme ilkelerini nasıl etkinleştirebileceği açıklanmaktadır. Uzun süreli saklama gereksinimlerini karşılamak için teyp kullanan müşteriler artık bu özelliğin kullanılabilirliği yle güçlü ve uygulanabilir bir alternatife sahiptir. Özellik, Azure Yedekleme'nin en son sürümünde etkinleştirilir [(burada](https://aka.ms/azurebackup_agent)mevcuttur). Sistem Merkezi DPM müşterileri, Azure Yedekleme hizmetiyle DPM'yi kullanmadan önce en azından DPM 2012 R2 UR5'e güncelleştirmelidir.
+Bu makalede, müşterilerin yedekleme ve bekletme ilkelerini nasıl etkinleştirebileceği açıklanmaktadır. Uzun süreli bekletme ihtiyaçlarını karşılamak için bantları kullanan müşterilerin artık bu özelliğin kullanılabilirliğine yönelik güçlü ve uygun bir alternatifi vardır. Özellik, Azure Backup en son sürümünde etkinleştirilir ( [burada](https://aka.ms/azurebackup_agent)kullanılabilir). System Center DPM müşterilerinin, Azure Backup hizmetiyle DPM 'yi kullanmadan önce, en azından DPM 2012 R2 UR5 ' ye güncelleştirilmesi gerekir.
 
-## <a name="what-is-the-backup-schedule"></a>Yedekleme Çizelgesi nedir?
+## <a name="what-is-the-backup-schedule"></a>Yedekleme zamanlaması nedir?
 
-Yedekleme zamanlaması yedekleme işleminin sıklığını gösterir. Örneğin, aşağıdaki ekrandaki ayarlar yedeklemelerin her gün 18:00'de ve gece yarısı alındığını gösterir.
+Yedekleme zamanlaması, yedekleme işleminin sıklığını gösterir. Örneğin, aşağıdaki ekran ayarları, yedeklemelerin her gün 18:00 ve gece yarısı alınacağını belirtir.
 
-![Günlük Program](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
+![Günlük zamanlama](./media/backup-azure-backup-cloud-as-tape/dailybackupschedule.png)
 
-Müşteriler ayrıca haftalık yedekleme zamanlayabilir. Örneğin, aşağıdaki ekrandaki ayarlar, yedeklemelerin her pazar & Çarşamba günü saat 09:30 ve 01:00'de alındığını gösterir.
+Müşteriler ayrıca haftalık bir yedekleme zamanlayabilir. Örneğin, aşağıdaki ekrandaki ayarlar, yedeklemelerin her alternatif Pazar &, 9:30 ' da Çarşamba ve 1:00:00'DA alındığını gösterir.
 
-![Haftalık Program](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
+![Haftalık zamanlama](./media/backup-azure-backup-cloud-as-tape/weeklybackupschedule.png)
 
-## <a name="what-is-the-retention-policy"></a>Bekletme İlkesi nedir?
+## <a name="what-is-the-retention-policy"></a>Bekletme Ilkesi nedir?
 
-Bekletme ilkesi, yedeklemenin depolanması gereken süreyi belirtir. Müşteriler, tüm yedekleme noktaları için "düz ilke" belirtmek yerine, yedeklemenin ne zaman alındığına bağlı olarak farklı bekletme ilkeleri belirtebilir. Örneğin, operasyonel bir kurtarma noktası olarak hizmet veren günlük olarak alınan yedekleme noktası 90 gün boyunca korunur. Denetim amacıyla her üç aylık dönem sonunda alınan yedekleme noktası daha uzun bir süre korunur.
+Bekletme ilkesi, yedeklemenin depolanması gereken süreyi belirtir. Tüm yedekleme noktaları için yalnızca bir "düz ilke" belirtmek yerine, müşteriler yedeklemenin ne zaman yapılacağını temel alan farklı bekletme ilkeleri belirtebilir. Örneğin, her gün gerçekleştirilen yedekleme noktası, işlemsel kurtarma noktası olarak işlev gören 90 gün boyunca korunur. Denetim amaçları için her bir çeyreğin sonunda gerçekleştirilen yedekleme noktası, daha uzun bir süre boyunca korunur.
 
 ![Bekletme İlkesi](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
 
-Bu politikada belirtilen toplam "bekletme noktası" sayısı 90 (günlük puan) + 40 (10 yıl için her üç ayda bir) = 130'dur.
+Bu ilkede belirtilen toplam "bekletme noktası" sayısı 90 (günlük puntolar) + 40 (10 yıl boyunca her üç ayda bir) = 130.
 
-## <a name="example--putting-both-together"></a>Örnek – Her ikisini bir araya getirmek
+## <a name="example--putting-both-together"></a>Örnek: her ikisini birlikte yerleştirme
 
-![Örnek Ekran](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
+![Örnek ekran](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Günlük saklama ilkesi**: Günlük alınan yedeklemeler yedi gün boyunca saklanır.
-2. **Haftalık saklama ilkesi**: Cumartesi gece yarısı ve 18:00'de alınan yedeklemeler dört hafta boyunca saklanır.
-3. **Aylık saklama ilkesi**: Her ayın son Cumartesi günü gece yarısı ve 18:00'de alınan yedeklemeler 12 ay boyunca saklanır.
-4. **Yıllık saklama ilkesi**: Her Mart'ın son Cumartesi günü gece yarısı alınan yedeklemeler 10 yıl boyunca saklanır.
+1. **Günlük bekletme ilkesi**: günlük alınan yedeklemeler yedi gün boyunca depolanır.
+2. **Haftalık bekletme ilkesi**: gece yarısı ve 6 PM Cumartesi günü dört hafta boyunca korunur.
+3. **Aylık bekletme ilkesi**: her ayın son Cumartesi günü gece yarısı ve 6 PM 'de alınan yedeklemeler 12 ay boyunca korunur.
+4. **Yıllık bekletme ilkesi**: her Mart 'ın son Cumartesi günü gece yarısından alınan yedeklemeler 10 yıl boyunca korunur.
 
-Önceki diyagramdaki toplam "bekletme noktası" sayısı (müşterinin verileri geri yükleyebileceği noktalar) aşağıdaki gibi hesaplanır:
+Önceki diyagramda bulunan toplam "bekletme noktası" (bir müşterinin verileri geri yükleme) sayısı aşağıdaki şekilde hesaplanır:
 
-* yedi gün boyunca günde iki puan = 14 kurtarma noktası
-* dört hafta boyunca haftada iki puan = 8 kurtarma noktası
-* 12 ay için ayda iki puan = 24 kurtarma noktası
-* yılda bir puan / 10 kurtarma noktası
+* yedi gün için gün başına iki punto = 14 kurtarma noktası
+* dört hafta için hafta başına iki punto = 8 kurtarma noktası
+* 12 ay boyunca ayda iki punto = 24 kurtarma noktası
+* 10 yıl başına yıl başına bir nokta = 10 kurtarma noktası
 
-Toplam kurtarma noktası sayısı 56'dır.
+Toplam kurtarma noktası sayısı 56 ' dir.
 
 > [!NOTE]
-> Azure Yedekleme'yi kullanarak korumalı örnek başına en fazla 9999 kurtarma noktası oluşturabilirsiniz. Korumalı örnek, Azure’a yedeklenen bir bilgisayar, sunucu (fiziksel veya sanal) veya iş yüküdür.
+> Azure Backup kullanarak, korumalı örnek başına en fazla 9999 kurtarma noktası oluşturabilirsiniz. Korumalı örnek, Azure’a yedeklenen bir bilgisayar, sunucu (fiziksel veya sanal) veya iş yüküdür.
 >
 
 ## <a name="advanced-configuration"></a>Gelişmiş yapılandırma
 
-Önceki ekranda **Değiştir'i** tıklatarak, müşteriler bekletme zamanlamalarını belirtmede daha fazla esnekliğe sahiptir.
+Önceki ekranda **Değiştir** 'e tıkladığınızda müşteriler bekletme zamanlamalarını belirtirken daha fazla esneklik sağlar.
 
 ![Değiştir](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Yedekleme hakkında daha fazla bilgi için bkz:
+Azure Backup hakkında daha fazla bilgi için bkz.:
 
 * [Azure Backup'a giriş](backup-introduction-to-azure-backup.md)
 * [Azure Backup'ı deneyin](backup-try-azure-backup-in-10-mins.md)

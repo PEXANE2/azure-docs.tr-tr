@@ -1,7 +1,7 @@
 ---
-title: Arama dizinini yeniden oluşturma
+title: Bir arama dizinini yeniden derle
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama dizinini yenilemek için yeni öğeler ekleyin, varolan öğeleri veya belgeleri güncelleştirin veya eski belgeleri yeniden oluşturma veya kısmi dizini olarak silin.
+description: Bir Azure Bilişsel Arama dizinini yenilemek için yeni öğeler ekleyin, var olan öğeleri veya belgeleri güncelleştirin veya bir tam yeniden oluşturma veya kısmi dizin oluşturma içindeki eski belgeleri silin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,89 +9,89 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77498373"
 ---
-# <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da dizin oluşturma
+# <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir dizini yeniden oluşturma
 
-Bu makalede, Azure Bilişsel Arama dizininin nasıl yeniden oluşturulması gerektiği, yeniden oluşturmanın gerekli olduğu durumlar ve devam eden sorgu istekleri üzerindeki yeniden oluşturmaların etkisini azaltma önerileri açıklanmaktadır.
+Bu makalede bir Azure Bilişsel Arama dizininin nasıl yeniden oluşturulduğu, yeniden oluşturmanın gerekli olduğu koşullar ve devam eden sorgu isteklerinde yeniden oluşturma işlemlerinin etkisini azaltmaya yönelik öneriler açıklanmaktadır.
 
-*Yeniden oluşturma,* tüm alan tabanlı ters dizinler de dahil olmak üzere bir dizinle ilişkili fiziksel veri yapılarını düşürme ve yeniden oluşturma anlamına gelir. Azure Bilişsel Arama'da tek tek alanları düşürüp yeniden oluşturamazsınız. Bir dizin oluşturmak için, tüm alan depolama silinmesi, varolan veya gözden geçirilmiş dizin şemasını temel alınarak yeniden oluşturulması ve ardından dizin itilen veya dış kaynaklardan çekilen verilerle yeniden doldurulması gerekir. 
+*Yeniden oluşturma* , tüm alan tabanlı ters dizinler de dahil olmak üzere bir dizinle ilişkili fiziksel veri yapılarını bırakmayı ve yeniden oluşturmayı gösterir. Azure Bilişsel Arama ' de tek tek alanları bırakamaz ve yeniden oluşturamazsınız. Bir dizini yeniden derlemek için, tüm alan depolamanın silinmesi, var olan veya düzeltilmiş bir dizin şemasına göre yeniden oluşturulması ve sonra dizine gönderilen veya dış kaynaklardan çekilmiş verilerle yeniden doldurulması gerekir. 
 
-Geliştirme sırasında dizinleri yeniden oluşturmak yaygındır, ancak karmaşık türleri ekleme veya önericilere alan ekleme gibi yapısal değişiklikleri karşılamak için üretim düzeyi dizini oluşturmanız da gerekebilir.
+Geliştirme sırasında dizinleri yeniden oluşturmak yaygındır, ancak karmaşık türler ekleme veya öneri araçları 'ye alan ekleme gibi yapısal değişikliklere uyum sağlamak için üretim düzeyinde bir dizini yeniden oluşturmanız gerekebilir.
 
-## <a name="rebuild-conditions"></a>Yeniden koşullar
+## <a name="rebuild-conditions"></a>Koşulları yeniden oluştur
 
-Aşağıdaki koşullardan herhangi biri doğruysa bir dizin bırakın ve yeniden oluşturun. 
+Aşağıdaki koşullardan herhangi biri doğru olduğunda bir dizini bırakıp yeniden oluşturun. 
 
 | Koşul | Açıklama |
 |-----------|-------------|
-| Alan tanımını değiştirme | Alan adı, veri türü veya belirli [dizin özniteliklerini](https://docs.microsoft.com/rest/api/searchservice/create-index) (aranabilir, filtrelenebilir, sıralanabilir, değiştirilebilir) gözden geçirmek tam yeniden oluşturmayı gerektirir. |
-| Bir alana çözümleyici atama | [Çözümleyiciler](search-analyzers.md) bir dizin içinde tanımlanır ve daha sonra alanlara atanır. Bir dizine istediğiniz zaman yeni bir çözümleyici tanımı ekleyebilirsiniz, ancak yalnızca alan oluşturulduğunda bir çözümleyici *atayabilirsiniz.* Bu hem **çözümleyici** hem de **indexAnalyzer** özellikleri için geçerlidir. **searchAnalyzer** özelliği bir özel durumdur (bu özelliği varolan bir alana atayabilirsiniz). |
-| Dizindeki çözümleyici tanımını güncelleştirme veya silme | Dizinin tamamını yeniden oluşturmadığınız sürece dizinteki varolan bir çözümleyici yapılandırmasını (çözümleyici, belirteç, belirteç filtresi veya char filtresi) silemez veya değiştiremezsiniz. |
-| Önericiye alan ekleme | Bir alan zaten varsa ve bunu [Bir Önerenler](index-add-suggesters.md) yapısına eklemek istiyorsanız, dizini yeniden oluşturmanız gerekir. |
-| Alanı silme | Bir alanın tüm izlerini fiziksel olarak kaldırmak için dizini yeniden oluşturmanız gerekir. Hemen yeniden yeniden oluşturma pratik olmadığında, uygulama kodunu "silinen" alana erişimi devre dışı bırakabilecek şekilde değiştirebilir veya sonuç kümesinde hangi alanların temsil edildiğini seçmek için [$select sorgu parametresini](search-query-odata-select.md) kullanabilirsiniz. Fiziksel olarak, alan tanımı ve içeriği, söz konusu alanı atlayan bir şema uyguladığınızda, bir sonraki yeniden yapılana kadar dizinde kalır. |
-| Katmanları değiştirin | Daha fazla kapasiteye ihtiyacınız varsa, Azure portalında yerinde yükseltme yoktur. Yeni bir hizmet oluşturulmalı ve dizinler yeni hizmette sıfırdan oluşturulmalıdır. Bu işlemi otomatikleştirmeye yardımcı olmak için, bu [Azure Bilişsel Arama .NET örnek repo'da](https://github.com/Azure-Samples/azure-search-dotnet-samples) **dizin yedekleme-geri yükleme** örnek kodunu kullanabilirsiniz. Bu uygulama dizinizi bir dizi JSON dosyasına yedekleyecek ve ardından belirttiğiniz bir arama hizmetinde dizini yeniden oluşturur.|
+| Alan tanımını değiştirme | Bir alan adını, veri türünü veya belirli [Dizin özniteliklerini](https://docs.microsoft.com/rest/api/searchservice/create-index) (aranabilir, filtrelenebilir, sıralanabilir, çok yönlü tablo) yeniden düzeltme için tam yeniden oluşturma gerekir. |
+| Bir alana çözümleyici atama | [Çözümleyiciler](search-analyzers.md) bir dizinde tanımlanır ve alanlara atanır. Dizine dilediğiniz zaman yeni bir çözümleyici tanımı ekleyebilirsiniz, ancak alan oluşturulduğunda yalnızca bir çözümleyici *atayabilirsiniz* . Bu, hem **çözümleyici** hem de **ındexanalyzer** özellikleri için geçerlidir. **SearchAnalyzer** özelliği bir özel durumdur (Bu özelliği var olan bir alana atayabilirsiniz). |
+| Bir dizindeki çözümleyici tanımını güncelleştirme veya silme | Tüm dizini yeniden oluşturmadığınız müddetçe, dizinde var olan bir çözümleyici yapılandırmasını (çözümleyici, belirteç Oluşturucu, belirteç filtresi veya char filtresi) silemez veya değiştiremezsiniz. |
+| Öneri aracı bir alan ekleme | Bir alan zaten varsa ve onu bir [Öneri araçları](index-add-suggesters.md) yapısına eklemek istiyorsanız, dizini yeniden oluşturmanız gerekir. |
+| Bir alanı silme | Bir alanın tüm izlemelerini fiziksel olarak kaldırmak için, dizini yeniden oluşturmanız gerekir. Hemen yeniden oluşturma pratik olmadığında, "silinen" alanına erişimi devre dışı bırakmak için uygulama kodunu değiştirebilir veya sonuç kümesinde hangi alanların temsil edileceğini seçmek için [$Select sorgu parametresini](search-query-odata-select.md) kullanabilirsiniz. Fiziksel olarak, söz konusu alanı atlayacağınız bir şemayı uyguladığınızda, alan tanımı ve içerikleri, sonraki yeniden oluşturmaya kadar dizinde kalır. |
+| Katmanları Değiştir | Daha fazla kapasiteye ihtiyacınız varsa Azure portal yerinde yükseltme yoktur. Yeni bir hizmet oluşturulmalıdır ve yeni hizmette dizinlerin sıfırdan oluşturulması gerekir. Bu işlemin otomatikleştirilmesine yardımcı olmak için, bu [Azure bilişsel arama .NET örnek](https://github.com/Azure-Samples/azure-search-dotnet-samples)depodaki **Dizin-yedekleme-geri yükleme** örnek kodunu kullanabilirsiniz. Bu uygulama, dizininizi bir dizi JSON dosyasına yedekleyecek ve sonra belirttiğiniz bir arama hizmetinde dizin oluşturacak.|
 
 ## <a name="update-conditions"></a>Güncelleştirme koşulları
 
-Diğer birçok değişiklik varolan fiziksel yapıları etkilemeden yapılabilir. Özellikle, aşağıdaki değişiklikler bir dizin yeniden *gerektirmez.* Bu değişiklikler için, değişiklikleriniz ile [bir dizin tanımı güncelleştirebilirsiniz.](https://docs.microsoft.com/rest/api/searchservice/update-index)
+Mevcut fiziksel yapıları etkilemeden birçok başka değişiklik yapılabilir. Özellikle, aşağıdaki değişiklikler dizin yeniden *oluşturma gerektirmez.* Bu değişiklikler için, yaptığınız değişikliklerle [bir dizin tanımını güncelleştirebilirsiniz](https://docs.microsoft.com/rest/api/searchservice/update-index) .
 
 + Yeni alan ekleme
-+ Varolan bir alandaki **alınabilen** özniteliği ayarlama
-+ Varolan bir alana **bir searchAnalyzer** ayarlama
++ Varolan bir alanda **alınabilir** özniteliği ayarla
++ Mevcut bir alanda **searchAnalyzer** ayarlama
 + Dizine yeni bir çözümleyici tanımı ekleme
-+ Puanlama profilleri ekleme, güncelleme veya silme
-+ CORS ayarlarını ekleme, güncelleme veya silme
-+ Eş anlamlı haritalar ekleme, güncelleme veya silme
++ Puanlama profilleri ekleme, güncelleştirme veya silme
++ CORS ayarlarını ekleme, güncelleştirme veya silme
++ Eş anlamlı haritaları ekleme, güncelleştirme veya silme
 
-Yeni bir alan eklediğinizde, varolan dizinlenmiş belgelere yeni alan için null değeri verilir. Gelecekteki bir veri yenilemede, dış kaynak verilerinden elde edilen değerler Azure Bilişsel Arama tarafından eklenen null'ların yerini alır. Dizin içeriğini güncelleştirme hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)
+Yeni bir alan eklediğinizde, var olan dizinli belgelere yeni alan için null değer verilir. Gelecekteki bir veri yenilemesinde, dış kaynak verilerinden alınan değerler Azure Bilişsel Arama tarafından eklenen null değerleri değiştirir. Dizin içeriğini güncelleştirme hakkında daha fazla bilgi için bkz. [belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="how-to-rebuild-an-index"></a>Dizin oluşturma
+## <a name="how-to-rebuild-an-index"></a>Bir dizini yeniden derleme
 
-Geliştirme sırasında, indeks şema sık sık değişir. Küçük bir temsili veri kümesiyle silinebilen, yeniden oluşturulabilen ve hızla yeniden yüklenebilen dizinler oluşturarak bunu planlayabilirsiniz.
+Geliştirme sırasında, Dizin şeması sıklıkla değişir. Bunu, küçük bir temsili veri kümesiyle silinebilecek, yeniden oluşturulabilen ve yeniden yüklenmiş dizinler oluşturarak planlayabilirsiniz.
 
-Üretimde bulunan uygulamalar için, sorgu kapalı kalma süresini önlemek için varolan bir dizin yan yana çalışan yeni bir dizin oluşturmanızı öneririz. Uygulama kodunuz yeni dizine yeniden yönlendirme sağlar.
+Zaten üretimde olan uygulamalar için, sorgu kapalı kalma süresini önlemek için mevcut bir dizini yan yana çalıştıran yeni bir dizin oluşturmanız önerilir. Uygulama kodunuz yeni dizine yeniden yönlendirme sağlar.
 
-Dizin oluşturma arka planda çalışmaz ve hizmet devam eden sorgulara karşı ek dizin oluşturma dengeler. Dizin oluşturma sırasında, sorguların zamanında tamamlanındığından emin olmak için portaldaki [sorgu isteklerini izleyebilirsiniz.](search-monitor-queries.md)
+Dizin oluşturma arka planda çalışmaz ve hizmet, devam eden sorgulara karşı ek Dizin oluşturmayı dengeleyebilir. Dizin oluşturma sırasında, sorguların zamanında tamamlanmasını sağlamak için portaldaki [sorgu isteklerini izleyebilirsiniz](search-monitor-queries.md) .
 
-1. Yeniden oluşturma nın gerekli olup olmadığını belirleyin. Yalnızca alan ekliyorsanız veya dizinin alanlarıyla ilgisi olmayan bir bölümünü değiştiriyorsanız, tanımı silmeden, yeniden oluşturmadan ve tam olarak yeniden yüklemeden [güncelleştirmek](https://docs.microsoft.com/rest/api/searchservice/update-index) isteyebilirsiniz.
+1. Yeniden oluşturma gerekli olup olmadığını belirleme. Yalnızca alanlar ekliyorsanız veya alanların ilgisi olmayan bir bölümünü değiştirirseniz, tanımı silmeden, yeniden oluşturmadan ve tamamen yeniden yüklemeden [güncelleştirmeniz](https://docs.microsoft.com/rest/api/searchservice/update-index) yeterlidir.
 
-1. İleride başvuru için ihtiyacınız olması durumunda [dizin tanımı alın.](https://docs.microsoft.com/rest/api/searchservice/get-index)
+1. Daha sonra başvurmak üzere ihtiyacınız olduğunda [bir dizin tanımı alın](https://docs.microsoft.com/rest/api/searchservice/get-index) .
 
-1. Yeni ve eski dizinleri yan yana çalışmadığınızı varsayarak [varolan dizini](https://docs.microsoft.com/rest/api/searchservice/delete-index)bırakın. 
+1. Yeni ve eski dizinleri yan yana çalıştırdığınız varsayılarak, [var olan dizini bırakın](https://docs.microsoft.com/rest/api/searchservice/delete-index). 
 
-   Bu dizini hedefleyen tüm sorgular hemen bırakılır. Bir dizin silmenin geri döndürülemez olduğunu ve alanların toplanması ve diğer yapılar için fiziksel depolamayı yok ettiğini unutmayın. Düşürmeden önce etkileri hakkında düşünmek için duraklatın. 
+   Dizini hedefleyen tüm sorgular hemen bırakılır. Bir dizini silmenin geri alınamaz, alanlar koleksiyonu ve diğer yapılar için fiziksel depolamayı yok etmeyi unutmayın. Uygulamadan önce etkilerini düşünmek için duraklatın. 
 
-1. İsteğin gövdesinin değiştirilmiş veya değiştirilmiş alan tanımlarını içerdiği [gözden geçirilmiş bir dizin oluşturun.](https://docs.microsoft.com/rest/api/searchservice/create-index)
+1. İsteğin gövdesinin değiştirilen veya değiştirilen alan tanımlarını içerdiği [düzeltilmiş bir dizin oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-1. Dizini harici bir kaynaktan gelen [belgelerle yükleyin.](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)
+1. Dizini harici bir kaynaktaki [belgelerle yükleyin](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) .
 
-Dizin oluşturduğunuzda, fiziksel depolama dizin şemaher alan için, her aranabilir alan için oluşturulan ters bir dizin ile ayrılır. Aranamayan alanlar filtrelerde veya ifadelerde kullanılabilir, ancak ters dizinleri yoktur ve tam metin veya bulanık aranabilir değildir. Dizin yeniden oluşturmada, bu ters dizinler silinir ve sağladığınız dizin şemasına göre yeniden oluşturulur.
+Dizini oluştururken, her bir aranabilir alan için bir ters dizin oluşturulan dizin şemasındaki her bir alan için fiziksel depolama ayrılır. Aranabilir olmayan alanlar, filtrelerde veya ifadelerde kullanılabilir, ancak ters dizinler içermez ve tam metin veya benzer şekilde aranabilir değildir. Bir dizin yeniden derlemede, bu ters dizinler silinir ve sağladığınız dizin şemasına göre yeniden oluşturulur.
 
-Dizini yüklediğinizde, her alanın ters dizini, her belgedeki benzersiz, belirteçlenmiş sözcüklerin tümüyle ve karşılık gelen belge kimliklerine bir haritayla doldurulur. Örneğin, bir otel veri kümesini dizine ekbelirlerken, Bir Şehir alanı için oluşturulan ters bir dizin Seattle, Portland ve benzeri terimler içerebilir. Şehir alanında Seattle veya Portland içeren belgeler, belge kimlikleriniterimin yanında listelenir. Herhangi bir [Ekle, Güncelleştir veya Sil](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işleminde, terimler ve belge kimliği listesi buna göre güncelleştirilir.
+Dizini yüklediğinizde, her alanın ters çevrilmiş dizini her belgedeki benzersiz ve simgeleştirilmiş sözcüklerin tümü ile doldurulur ve buna karşılık gelen belge kimliklerine eşlenir. Örneğin, bir oteller veri kümesini dizinlerken, şehir alanı için oluşturulan ters dizin Seattle, Portland ve benzeri terimleri içerebilir. Şehir alanına Seattle veya Portland içeren belgeler, dönem içinde belge KIMLIĞINE göre listelenmiş olacaktır. Herhangi bir [ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işleminde, hüküm ve belge kimliği listesi buna göre güncelleştirilir.
 
 > [!NOTE]
-> Sıkı SLA gereksinimleriniz varsa, geliştirme ve dizine ilişkin bir üretim dizininden tam yalıtımda meydana gelen bu çalışma için özel olarak yeni bir hizmet sağlamayı düşünebilirsiniz. Ayrı bir hizmet, kaynak çekişmesi olasılığını ortadan kaldırarak kendi donanımı üzerinde çalışır. Geliştirme tamamlandığında, sorguları yeni bitiş noktası ve dizinolarak yönlendirerek yeni dizini yerinde bırakır veya özgün Azure Bilişsel Arama hizmetinizde gözden geçirilmiş bir dizin yayımlamak için tamamlanmış kodu çalıştırırdınız. Şu anda kullanıma hazır dizini başka bir hizmete taşımak için bir mekanizma yok.
+> Katı SLA gereksinimleriniz varsa, geliştirme ve dizin oluşturma ile bir üretim dizininden tam yalıtımıyla oluşan yeni bir hizmet sağlamayı düşünebilirsiniz. Ayrı bir hizmet kendi donanımında çalışır ve kaynak çakışması olasılığını ortadan kaldırır. Geliştirme tamamlandığında, yeni dizini yerinde bırakabilir, sorguları yeni uç noktaya ve dizine yönlendirebilir ya da özgün Azure Bilişsel Arama hizmetinizde düzeltilmiş bir dizin yayımlamak için tamamlanmış kodu çalıştırırsınız. Kullanıma kullanım dışı bir dizini başka bir hizmete taşımak için şu anda hiçbir mekanizma yoktur.
 
 ## <a name="check-for-updates"></a>Güncelleştirmeleri denetle
 
-İlk belge yüklenir yüklenmez dizin sorgulamaya başlayabilirsiniz. Bir belgenin kimliğini biliyorsanız, [Arama Belgesi REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) belirli belgeyi döndürür. Daha geniş sınama için, dizin tam yüklenene kadar beklemeniz ve ardından görmeyi beklediğiniz bağlamı doğrulamak için sorguları kullanmanız gerekir.
+İlk belge yüklendikten hemen sonra bir dizini sorgulamaya başlayabilirsiniz. Bir belgenin KIMLIĞINI biliyorsanız, [Arama belgesi REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) belirli belgeyi döndürür. Daha geniş bir test için, Dizin tam olarak yüklenene kadar beklemeniz gerekir ve ardından görmek istediğiniz bağlamı doğrulamak için sorguları kullanabilirsiniz.
 
-Güncelleştirilmiş içeriği denetlemek için [Arama Gezgini'ni](search-explorer.md) veya [Postacı](search-get-started-postman.md) gibi bir Web test aracını kullanabilirsiniz.
+Güncelleştirilmiş içeriği denetlemek için, [Arama Gezgini](search-explorer.md) 'Ni veya [Postman](search-get-started-postman.md) gibi bir Web Testi aracını kullanabilirsiniz.
 
-Bir alan eklediyseniz veya yeniden adlandırıldıysanız, bu alanı döndürmek için [$select](search-query-odata-select.md) kullanın:`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
+Bir alanı eklediyseniz veya yeniden adlandırdıysanız, bu alanı döndürmek için [$Select](search-query-odata-select.md) kullanın:`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Dizin Oluşturucu’ya genel bakış](search-indexer-overview.md)
-+ [Büyük veri kümelerini ölçekte dizine dizine](search-howto-large-index.md)
++ [Büyük veri kümelerini ölçeğe göre dizine at](search-howto-large-index.md)
 + [Portalda dizin oluşturma](search-import-data-portal.md)
-+ [Azure SQL Veritabanı dizinleyici](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure SQL veritabanı Dizin Oluşturucu](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [Azure Cosmos DB dizinleyici](search-howto-index-cosmosdb.md)
-+ [Azure Blob Depolama dizinleyici](search-howto-indexing-azure-blob-storage.md)
-+ [Azure Tablo Depolama dizinleyici](search-howto-indexing-azure-tables.md)
-+ [Azure Bilişsel Aramada Güvenlik](search-security-overview.md)
++ [Azure Blob depolama Dizin Oluşturucu](search-howto-indexing-azure-blob-storage.md)
++ [Azure Tablo depolama Dizin Oluşturucu](search-howto-indexing-azure-tables.md)
++ [Azure Bilişsel Arama güvenliği](search-security-overview.md)

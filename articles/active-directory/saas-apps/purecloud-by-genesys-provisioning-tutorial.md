@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için PureCloud'u Genesys tarafından yapılandırın | Microsoft Dokümanlar"
-description: Genesys tarafından Azure AD'den PureCloud'a kullanıcı hesaplarını otomatik olarak nasıl sağlayıp yok edebilirsiniz öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Genesys tarafından Pureci 'yi yapılandırma | Microsoft Docs"
+description: Genesys tarafından Azure AD 'den Purecm 'ye Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,144 +16,144 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
 ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77370673"
 ---
-# <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Öğretici: PureCloud'u Genesys tarafından otomatik kullanıcı sağlama için yapılandırın
+# <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Genesys tarafından Purecre 'yi yapılandırma
 
-Bu öğretici, otomatik kullanıcı sağlama yapılandırmak için Genesys ve Azure Active Directory (Azure AD) tarafından purecloud gerçekleştirmek için gereken adımları açıklar. Azure AD, yapılandırıldığınızda, Azure AD Sağlama hizmetini kullanarak kullanıcıları ve grupları [Genesys tarafından PureCloud'a](https://www.genesys.com) otomatik olarak hükümler ve hükümlerden arındırMa sağlar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../manage-apps/user-provisioning.md)bkz. 
+Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için Genesys ve Azure Active Directory (Azure AD) tarafından hem Purecyüksek hem de gerçekleştirmeniz gereken adımlar açıklanmaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak [Genesys tarafından](https://www.genesys.com) Kullanıcı ve grupları otomatik olarak temin etmek ve devre dışı bırakmayı sağlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
-> * Genesys tarafından PureCloud'da kullanıcı oluşturma
-> * Artık erişim gerektirmediklerinde Genesys tarafından PureCloud'daki kullanıcıları kaldırın
-> * Kullanıcı özniteliklerini Genesys tarafından Azure AD ve PureCloud arasında senkronize tutma
-> * Genesys tarafından PureCloud'da sağlama grupları ve grup üyelikleri
-> * Genesys tarafından PureCloud'a [tek oturum](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial) açma (önerilir)
+> * Genesys tarafından Pureck 'da Kullanıcı oluşturma
+> * Daha önce erişim gerektirdiklerinde Genesys tarafından Pureci 'daki kullanıcıları kaldır
+> * Genesys tarafından Azure AD ile Pureck arasında eşitlenmiş Kullanıcı özniteliklerini koruyun
+> * Genesys tarafından Purecm 'de grupları ve grup üyeliklerini sağlama
+> * Genesys tarafından [Purecg 'de çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial) (önerilir)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Azure AD kiracı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Sağlama yapılandırma [izniyle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Azure AD'deki bir kullanıcı hesabı (örn. Uygulama Yöneticisi, Bulut Uygulama yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
-* Bir PureCloud [organizasyonu.](https://help.mypurecloud.com/?p=81984)
-* Oauth İstemci oluşturma [izniolan](https://help.mypurecloud.com/?p=24360) bir Kullanıcı.
+* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+* Purecyüksek bir [kuruluş](https://help.mypurecloud.com/?p=81984).
+* OAuth Istemcisi oluşturma [izinlerine](https://help.mypurecloud.com/?p=24360) sahip bir kullanıcı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
-1. Sağlama [hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Kimler in provizyon kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)alınacağını belirleyin.
-3. [Genesys tarafından Azure AD ve PureCloud arasında hangi](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)verilerin haritalanması gerektiğini belirleyin. 
+1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+3. [Genesys tarafından Azure AD Ile Purecre arasında eşlenecek](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)verileri belirleme. 
 
-## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>2. Adım PureCloud'u Genesys tarafından Azure AD ile sağlamayı destekleyecek şekilde yapılandırın
+## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için Genesys tarafından Pureci 'yi yapılandırma
 
-1. PureCloud kuruluşunuzda yapılandırılan bir [Oauth İstemcisi](https://help.mypurecloud.com/?p=188023) oluşturun.
-2. [Oauth istemcinizle](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html)bir belirteç oluşturun.
-3. PureCloud içinde Grup üyeliğini otomatik olarak sağlamak istiyorsanız, PureCloud'da Azure AD'deki grupla aynı ada sahip [Gruplar oluşturmanız](https://help.mypurecloud.com/?p=52397) gerekir.
+1. Purecyüksek kuruluşunuzda yapılandırılmış bir [OAuth istemcisi](https://help.mypurecloud.com/?p=188023) oluşturun.
+2. [OAuth istemcinizle](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html)bir belirteç oluşturun.
+3. Purecm içinde Grup üyeliğini otomatik olarak sağlamak istiyorsanız, Azure AD 'deki gruba aynı adı taşıyan purecm 'de [gruplar oluşturmanız](https://help.mypurecloud.com/?p=52397) gerekir.
 
-## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Genesys tarafından PureCloud ekleyin
+## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD Uygulama Galerisi 'nden Genesys tarafından Porecre 'ler ekleyin
 
-Genesys tarafından PureCloud'a sağlama yı yönetmeye başlamak için Azure AD uygulama galerisinden Genesys tarafından PureCloud ekleyin. PureCloud'u Genesys tarafından SSO için daha önce kurduksanız, aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. [Burada](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)galeriden bir uygulama ekleme hakkında daha fazla bilgi edinin. 
+Azure AD Uygulama Galerisi 'nden Genesys 'e göre Pureci 'yi Genesys 'e göre Purecre 'e yönetmeye başlamak için bir şekilde ekleyin. SSO için Genesys tarafından daha önce Pureck ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Tedarik kapsamına kimlerde olacağını tanımlama 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Sağlama kapsamında kim olacağını tanımlama 
 
-Azure AD sağlama hizmeti, uygulamaya yapılan atamaya ve kullanıcının/ grubun özniteliklerine göre kimin sağlanacak kapsamını kapsamanızı sağlar. Atamaya göre uygulamanız için kimlerin sağlanacak kapsamını seçerseniz, uygulamayı zedelektirler ve kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcı nın veya grubun özelliklerine göre kimlerin sağlanacak kapsamını seçerseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
+Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-* Genesys tarafından purecloud kullanıcıları ve grupları atarken, **Varsayılan Erişim**dışında bir rol seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur ve sağlama günlüklerinde etkin bir şekilde hak sahibi olmadığı şeklinde işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolüyse, ek roller eklemek için [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) güncelleştirebilirsiniz. 
+* Genesys tarafından Purecm 'ye Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-* Küçük başla. Herkese kullanıma başlamadan önce küçük bir kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanmış kullanıcılara ve gruplara ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar için ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-purecloud-by-genesys"></a>5. Adım. Genesys tarafından PureCloud'a otomatik kullanıcı sağlama yı yapılandırma 
+## <a name="step-5-configure-automatic-user-provisioning-to-purecloud-by-genesys"></a>5. Adım. Genesys 'e göre otomatik Kullanıcı sağlamayı otomatik olarak Purecre 'ya yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TestApp'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
-### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>Azure AD'de PureCloud için otomatik kullanıcı sağlamayı Genesys tarafından yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>Azure AD 'de Genesys tarafından otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Genesys tarafından PureCloud'u**seçin.
+2. Uygulamalar listesinde, **Genesys tarafından Purecı**' yi seçin.
 
-    ![Genesys tarafından PureCloud Uygulamalar listesinde bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Genesys bağlantısına göre Purecme bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü altında PureCloud'unuzu Genesys API URL'si ve Oauth Token'ı **sırasıyla Kiracı URL'sine** ve Gizli **Belirteç** alanlarına girdi. API URL' si `{{API Url}}/api/v2/scim/v2` [PureCloud Geliştirici Merkezi'](https://developer.mypurecloud.com/api/rest/index.html)nden PureCloud bölgeniz için API URL'si kullanılarak yapılandırılacaktır. Azure AD'nin Genesys tarafından PureCloud'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Genesys tarafından PureCloud hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, Genesys API URL 'Sine göre Pureck ve **kiracı URL** 'si ve **gizli belirteç** alanlarındaki OAuth belirtecini girin. API URL 'SI, `{{API Url}}/api/v2/scim/v2` [Purecyüksek geliştirici merkezinden purecim](https://developer.mypurecloud.com/api/rest/index.html)bölgenizin API URL 'si kullanılarak olarak yapılandırılır. Azure AD 'nin Genesys tarafından Purecre 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Genesys hesabının yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Sağlama](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** seçin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet'i**seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde, **Azure Active Directory Kullanıcılarını Genesys tarafından PureCloud'a Senkronize et seçeneğini belirleyin.**
+8. **Eşlemeler** bölümü altında, **Genesys tarafından Azure Active Directory Kullanıcıları, Poyana 'yı Pureck olarak eşitler**seçeneğini belirleyin.
 
-9. Azure AD'den PureCloud'a, Genesys tarafından Geliştirilen Kullanıcı Özniteliklerini **Atföz-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Genesys tarafından PureCloud'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. [Eşleşen hedef özniteliği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Genesys API tarafından PureCloud bu özniteliğe göre kullanıcıları filtreleme destekler emin olmanız gerekir. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Maesys tarafından Purecgen 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Genesys tarafından purecr 'teki Kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Genesys API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
      |Öznitelik|Tür|
      |---|---|
      |userName|Dize|
-     |Etkin|Boole|
+     |bkz|Boole|
      |displayName|Dize|
-     |e-postalar[yazın eq "iş"].value|Dize|
+     |e-postalar [tür EQ "iş"]. değer|Dize|
      |başlık|Dize|
-     |phoneNumbers[eq yazın "mobil"].value|Dize|
-     |phoneNumbers[yazın eq "iş"].value|Dize|
-     |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Dize|
-     |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Başvuru|
+     |phoneNumbers [tür EQ "mobil"]. değer|Dize|
+     |phoneNumbers [tür EQ "iş"]. değer|Dize|
+     |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
+     |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Genesys'e göre PureCloud'a Senkronize et'i**seçin.
+10. **Eşlemeler** bölümünde, **Genesys tarafından pureck Ile Azure Active Directory gruplarını eşitler**' ı seçin.
 
-11. Azure AD'den PureCloud'a, Genesys tarafından Özellik **Eşleme** bölümünde senkronize edilen grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Genesys tarafından PureCloud'daki gruplarla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin. Genesys tarafından PureCloud grup oluşturma veya silme desteklemez ve yalnızca grupların güncelleştirilmesini destekler.
+11. **Öznitelik eşleme** bölümünde, Azure AD 'Den Maesys tarafından Purecgen 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Genesys tarafından purecas 'daki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin. Genesys tarafından Purecre, Grup oluşturmayı veya silmeyi desteklemez ve yalnızca grupların güncelleştirilmesini destekler.
 
       |Öznitelik|Tür|
       |---|---|
       |displayName|Dize|
-      |externalId|Dize|
+      |externalID|Dize|
       |üyeler|Başvuru|
 
-12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-13. Genesys tarafından PureCloud için Azure AD sağlama hizmetini etkinleştirmek **için,** **Ayarlar** bölümünde Sağlama Durumunu **Açık** olarak değiştirin.
+13. Azure AD sağlama hizmetini Genesys tarafından Poreck için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **Kapsam'da** istenen değerleri seçerek Genesys tarafından PureCloud'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsamda** Istenen değerleri seçerek Genesys tarafından purecm 'ye sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve grupların ilk eşitleme döngüsünü başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki döngülere göre ilk çevrimin gerçekleşmesi daha uzun sürer. 
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
 
 ## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-* Hangi kullanıcıların başarılı veya başarısız bir şekilde sağlandığını belirlemek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanma
-* Sağlama döngüsünün durumunu ve tamamlanmasına ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin
-* Sağlama yapılandırması sağlıksız bir durumda gibi görünüyorsa, uygulama karantinaya alınır. Karantina durumları hakkında daha fazla bilgi [için burada.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+* Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+* Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
+* Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

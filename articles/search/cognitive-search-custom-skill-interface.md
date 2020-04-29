@@ -1,7 +1,7 @@
 ---
-title: Özel beceriler için arayüz tanımı
+title: Özel yetenekler için arabirim tanımı
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama'daki bir AI zenginleştirme ardışık biriminde web api özel becerisi için özel veri ayıklama arabirimi.
+description: Azure Bilişsel Arama 'de bir AI zenginleştirme ardışık düzeninde Web API özel yeteneği için özel veri ayıklama arabirimi.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77500261"
 ---
-# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama zenginleştirme hattına özel bir beceri ekleme
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzenine özel bir yetenek ekleme
 
-Azure Bilişsel Arama'daki [bir zenginleştirme boru hattı,](cognitive-search-concept-intro.md) [yerleşik bilişsel becerilerin](cognitive-search-predefined-skills.md) yanı sıra, kişisel olarak oluşturduğunuz ve boru hattına eklediğiniz [özel becerilerden](cognitive-search-custom-skill-web-api.md) de bir leştirilebilir. Bu makalede, bir Arabirimi ortaya çıkaran ve bir AI zenginleştirme ardışık birimine dahil edilmesine izin veren özel bir becerinin nasıl oluşturuleceğini öğrenin. 
+Azure Bilişsel Arama 'deki bir [zenginleştirme ardışık düzeni](cognitive-search-concept-intro.md) , yerleşik bilişsel yeteneklerin yanı sıra, kişisel [olarak](cognitive-search-predefined-skills.md) oluşturup işlem hattına eklediğiniz [özel becerileri](cognitive-search-custom-skill-web-api.md) de derlenebilir. Bu makalede, bir, bir AI zenginleştirme işlem hattına dahil edilmesini sağlayan bir arabirimi kullanıma sunan özel bir yetenek oluşturmayı öğrenin. 
 
-Özel bir beceri oluşturmak, içeriğinize özgü dönüşümler eklemeniz için bir yol sağlar. Özel bir beceri, ihtiyacınız olan zenginleştirme adımLarını uygulayarak bağımsız olarak yürütülür. Örneğin, alana özel özel varlıklar tanımlayabilir, iş ve mali sözleşmeleri ve belgeleri farklılaştırmak için özel sınıflandırma modelleri oluşturabilir veya ilgili içerik için ses dosyalarına daha derinlere ulaşmak için konuşma tanıma becerisi ekleyebilirsiniz. Adım adım bir örnek için bkz: [Örnek: AI zenginleştirme için özel bir beceri oluşturma.](cognitive-search-create-custom-skill-example.md)
+Özel bir beceri oluşturmak, içeriğinize benzersiz dönüştürmeler eklemek için bir yol sağlar. Özel bir beceri, gerek duyduğunuz zenginleştirme adımını uygulayarak bağımsız olarak yürütülür. Örneğin, alana özgü özel varlıklar tanımlayabilir, iş ve finansal sözleşmeleri ve belgeleri ayırt etmek için özel sınıflandırma modelleri oluşturabilir veya ilgili içerik için ses dosyalarına daha derin ulaşmak üzere bir konuşma tanıma yeteneği ekleyebilirsiniz. Adım adım bir örnek için bkz. [örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md).
 
- Ne olursa olsun özel yetenek gerektirir, zenginleştirme boru hattının geri kalanına özel bir beceri bağlamak için basit ve net bir arayüz vardır. Bir [skillset'e](cognitive-search-defining-skillset.md) dahil edilmenin tek şartı, girdileri kabul etme ve çıktıları bir bütün olarak beceriler içinde tüketilebilen şekillerde yayılabilme yeteneğidir. Bu makalenin odak noktası, zenginleştirme ardışık alanının gerektirdiği giriş ve çıktı biçimleridir.
+ İhtiyaç duyduğunuz özel bir yetenek, özel bir beceriye, zenginleştirme işlem hattının geri kalanına bağlamak için basit ve açık bir arabirim vardır. Bir [beceri](cognitive-search-defining-skillset.md) eklemek için tek gereksinim, girişleri kabul etme ve çıkışları bir bütün olarak tüketim kapsamında tüketilen yollarla yayma olanağıdır. Bu makalenin odağı, enzenginleştirme ardışık düzeninin gerektirdiği giriş ve çıkış biçimlerinden oluşur.
 
-## <a name="web-api-custom-skill-interface"></a>Web API özel beceri arabirimi
+## <a name="web-api-custom-skill-interface"></a>Web API özel yetenek arabirimi
 
-30 saniyelik bir pencere içinde yanıt döndürmezlerse, varsayılan zaman ekine göre özel WebAPI beceri bitiş noktaları. Dizin oluşturma ardışık gelir ve dizin oluşturma, bu pencerede bir yanıt alınmazsa bir zaman aralaması hatası üretir.  Zaman aşım parametresini ayarlayarak zaman aşımını 230 saniyeye kadar yapılandırmak mümkündür:
+30 saniyelik bir pencerede yanıt döndürmezseniz varsayılan zaman aşımı ile özel WebAPI beceri uç noktaları. Dizin oluşturma işlem hattı zaman uyumludur ve bu pencerede bir yanıt alınmadığında dizin oluşturma zaman aşımı hatası oluşturur.  Zaman aşımı parametresini ayarlayarak zaman aşımını 230 saniyeye kadar yapılandırmak mümkündür:
 
 ```json
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
@@ -34,23 +34,23 @@ Azure Bilişsel Arama'daki [bir zenginleştirme boru hattı,](cognitive-search-c
         "timeout": "PT230S",
 ```
 
-URI'nin güvenli olduğundan emin olun (HTTPS).
+URI 'nin güvenli (HTTPS) olduğundan emin olun.
 
-Şu anda, özel bir beceri ile etkileşim için tek mekanizma bir Web API arabirimi geçer. Web API gereksinimleri bu bölümde açıklanan gereksinimleri karşılamalıdır.
+Şu anda, özel bir beceriyle etkileşimde bulunmak için tek mekanizma bir Web API arabirimi aracılığıyla yapılır. Web API 'sinin bu bölümde açıklanan gereksinimleri karşılaması gerekir.
 
-### <a name="1--web-api-input-format"></a>1. Web API Giriş Biçimi
+### <a name="1--web-api-input-format"></a>1. Web API giriş biçimi
 
-Web API'si işlenecek bir dizi kaydı kabul etmelidir. Her kayıt, Web API'nize sağlanan giriş olan bir "özellik torbası" içermelidir. 
+Web API 'sinin işlenecek bir kayıt dizisini kabul etmesi gerekir. Her kayıt, Web API 'nize girilen giriş olan bir "özellik paketi" içermelidir. 
 
-Sözleşme metninde belirtilen ilk tarihi tanımlayan basit bir zenginleştirici oluşturmak istediğinizi varsayalım. Bu örnekte, beceri sözleşme metni olarak tek bir giriş *sözleşmesiMetni* kabul eder. Beceri de sözleşme tarihi olan tek bir çıktı vardır. Zenginleştiriciyi daha ilginç hale getirmek için, bu *sözleşmeTarihini* çok parçalı karmaşık bir tür şeklinde döndürün.
+Bir sözleşmenin metninde bahsedilen ilk tarihi tanımlayan basit bir zenginlik oluşturmak istediğinizi varsayalım. Bu örnekte, yetenek sözleşme metni olarak tek bir giriş *Contracttext* 'i kabul eder. Bu beceri, sözleşmenin tarihi olan tek bir çıktıya de sahiptir. Daha zengin bir şekilde daha ilginç hale getirmek için, bu *Contractdate* öğesini çok parçalı bir karmaşık türün şekline döndürün.
 
-Web API'niz bir dizi giriş kaydı almaya hazır olmalıdır. *Değerler* dizisinin her üyesi belirli bir kaydın girdisini temsil eder. Her kaydın aşağıdaki öğelere sahip olması gerekir:
+Web API 'niz bir toplu giriş kaydı almaya hazırlanmalıdır. *Values* dizisinin her üyesi belirli bir kayıt için girişi temsil eder. Her kaydın aşağıdaki öğelere sahip olması gerekir:
 
-+ Belirli bir kayıt için benzersiz tanımlayıcı olan bir *kayıt Kimliği* üyesi. Zenginleştiriciniz sonuçları döndürdüğünde, arayanın kayıt sonuçlarını girişleriyle eşleştirebilmesi için bu *kayıt Id'i* sağlaması gerekir.
++ Bir *recordID* üyesi, belirli bir kayıt için benzersiz tanıtıcıdır. Daha zengin bir sonuçları geri döndürürse, çağıranın kayıt sonuçlarıyla aynı şekilde eşleşmesini sağlamak için bu *recordID* sağlaması gerekir.
 
-+ Aslında her kayıt için giriş alanları bir çanta olan bir *veri* üyesi.
++ Her bir kayıt için temel bir giriş alanı paketi olan bir *veri* üyesi.
 
-Yukarıdaki örnekte daha somut olması için, Web API'nizaşağıdaki gibi görünen istekleri beklemelidir:
+Yukarıdaki örnek başına daha somut olması için Web API 'nizin şuna benzer istekleri beklemesi gerekir:
 
 ```json
 {
@@ -81,11 +81,11 @@ Yukarıdaki örnekte daha somut olması için, Web API'nizaşağıdaki gibi gör
     ]
 }
 ```
-Gerçekte, hizmetiniz burada gösterilen üç kayıt yerine yüzlerce veya binlerce kayıtla çağrılabilir.
+Gerçekte, hizmetiniz yalnızca burada gösterilen üçü yerine yüzlerce veya binlerce kayıt ile çağrılabilir.
 
-### <a name="2-web-api-output-format"></a>2. Web API Çıkış Biçimi
+### <a name="2-web-api-output-format"></a>2. Web API 'SI çıkış biçimi
 
-Çıktının biçimi, bir *kayıt Kimliği*ve bir özellik çantası içeren bir kayıt kümesidir 
+Çıktının biçimi, bir *recordID*ve bir özellik paketi içeren bir kayıt kümesidir 
 
 ```json
 {
@@ -116,15 +116,15 @@ Gerçekte, hizmetiniz burada gösterilen üç kayıt yerine yüzlerce veya binle
 }
 ```
 
-Bu özel örnekte yalnızca bir çıktı vardır, ancak birden fazla özellik çıktı olabilir. 
+Bu belirli örnek yalnızca bir çıkışa sahiptir, ancak birden fazla özelliğe de çıkış yapabilirsiniz. 
 
-### <a name="errors-and-warning"></a>Hatalar ve Uyarı
+### <a name="errors-and-warning"></a>Hatalar ve uyarı
 
-Önceki örnekte gösterildiği gibi, her kayıt için hata ve uyarı iletileri döndürebilirsiniz.
+Önceki örnekte gösterildiği gibi, her bir kayıt için hata ve uyarı iletileri döndürebilirsiniz.
 
-## <a name="consuming-custom-skills-from-skillset"></a>Skillset'ten özel beceriler tüketme
+## <a name="consuming-custom-skills-from-skillset"></a>Beceri 'ten özel beceriler kullanma
 
-Bir Web API zenginleştirici oluşturduğunuzda, HTTP üstbilgilerini ve parametrelerini isteğin bir parçası olarak tanımlayabilirsiniz. Aşağıdaki parçacık, istek parametrelerinin ve *isteğe bağlı* HTTP üstbilgilerinin skillset tanımının bir parçası olarak nasıl tanımlanabileceğini gösterir. HTTP üstbilgiler bir gereklilik değildir, ancak becerinize ek yapılandırma özellikleri eklemenize ve bunları beceri tanımından ayarlamanıza olanak sağlar.
+Bir Web API 'SI oluşturduğunuzda, isteğin bir parçası olarak HTTP üst bilgilerini ve parametrelerini tanımlayabilirsiniz. Aşağıdaki kod parçacığında, istek parametrelerinin ve *isteğe bağlı* http üstbilgilerinin beceri tanımının bir parçası olarak nasıl açıklandığı gösterilmektedir. HTTP üstbilgileri bir gereksinim değildir, ancak becerinize ek yapılandırma özellikleri eklemenize ve bunları beceri tanımından ayarlamanıza imkan tanır.
 
 ```json
 {
@@ -156,10 +156,10 @@ Bir Web API zenginleştirici oluşturduğunuzda, HTTP üstbilgilerini ve paramet
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, özel bir beceriyi bir beceriye entegre etmek için gereken arabirim gereksinimleri ele alınmıştır. Özel beceriler ve beceri kompozisyonu hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları tıklayın.
+Bu makalede, özel bir yeteneğin bir beceri ile tümleştirilmesi için gereken arabirim gereksinimleri ele alınmıştır. Özel yetenekler ve beceri kompozisyonu hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara tıklayın.
 
-+ [Güç Becerileri: özel becerilerin deposu](https://github.com/Azure-Samples/azure-search-power-skills)
-+ [Örnek: AI zenginleştirme için özel bir beceri oluşturma](cognitive-search-create-custom-skill-example.md)
-+ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
-+ [Skillset (REST) oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Zenginleştirilmiş alanların haritası nasıl eşlenir?](cognitive-search-output-field-mapping.md)
++ [Güç becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)

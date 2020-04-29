@@ -1,6 +1,6 @@
 ---
 title: Elastik havuz kaynaklarını ölçeklendirme
-description: Bu sayfada Azure SQL Veritabanı'ndaki esnek havuzlar için ölçekleme kaynakları açıklanmaktadır.
+description: Bu sayfada, Azure SQL veritabanı 'nda elastik havuzlara yönelik ölçek kaynakları açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -12,88 +12,88 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
 ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77462607"
 ---
-# <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL Veritabanı'nda esnek havuz kaynaklarını ölçeklendirin
+# <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuz kaynaklarını ölçeklendirme
 
-Bu makalede, Azure SQL Veritabanı'nda elastik havuzlar ve havuzlu veritabanları için kullanılabilir bilgi işlem ve depolama kaynaklarının nasıl ölçeklendirilenanlatılmaktadır.
+Bu makalede, Azure SQL veritabanı 'nda esnek havuzlar ve havuza alınmış veritabanları için kullanılabilen işlem ve depolama kaynaklarının nasıl ölçeklenmesi açıklanmaktadır.
 
-## <a name="change-compute-resources-vcores-or-dtus"></a>İşlem kaynaklarını değiştirme (vCores veya DTUs)
+## <a name="change-compute-resources-vcores-or-dtus"></a>İşlem kaynaklarını değiştirme (sanal çekirdekler veya DTU 'Lar)
 
-Başlangıçta vCores veya eDTUs sayısını seçerek sonra, [Azure portalı](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), veya [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)kullanarak gerçek deneyime dayalı dinamik bir yukarı veya aşağı elastik bir havuz ölçeklendirebilirsiniz.
+Sanal çekirdekler veya eDTU sayısını ilk kez seçtikten sonra, [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [POWERSHELL](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)kullanarak gerçek deneyime bağlı olarak elastik bir havuzun ölçeğini dinamik olarak veya azaltabilirsiniz.
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirme veya hesaplama boyutunu yeniden ölçekleme nin etkisi
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirmenin veya işlem boyutunun yeniden boyutlandırmasından etkileri
 
-Elastik bir havuzun hizmet katmanıveya bilgi işlem boyutunu değiştirmek, tek veritabanlarında olduğu gibi benzer bir deseni izler ve esas olarak aşağıdaki adımları gerçekleştiren hizmeti içerir:
+Elastik havuzun hizmet katmanını veya işlem boyutunu değiştirmek, tek veritabanları için benzer bir model izler ve genellikle aşağıdaki adımları gerçekleştirerek hizmeti içerir:
 
-1. Elastik havuz için yeni bilgi işlem örneği oluşturma  
+1. Elastik havuz için yeni işlem örneği oluştur  
 
-    İstenen servis katmanı ve bilgi işlem boyutu yla elastik havuz için yeni bir bilgi işlem örneği oluşturulur. Bazı hizmet katmanı ve bilgi işlem boyutu değişiklikleri kombinasyonları için, her veritabanının bir kopyası, veri kopyalamayı içeren ve genel gecikmeyi güçlü bir şekilde etkileyebilen yeni bilgi işlem örneğinde oluşturulmalıdır. Ne olursa olsun, veritabanları bu adım sırasında çevrimiçi kalır ve bağlantılar özgün bilgi işlem örneğindeki veritabanlarına yönlendirilmeye devam eder.
+    Elastik havuz için yeni bir işlem örneği, istenen hizmet katmanı ve işlem boyutu ile oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, her bir veritabanının bir kopyasının yeni işlem örneğinde oluşturulması gerekir ve bu da verilerin kopyalanmasını içerir ve genel gecikmeyi kesin bir şekilde etkileyebilir. Ne olursa olsun, bu adım sırasında veritabanları çevrimiçi kalır ve bağlantılar orijinal işlem örneğindeki veritabanlarına yönlendirilmeye devam eder.
 
-2. Bağlantıların yönlendirmesini yeni işlem örneğine değiştirme
+2. Bağlantıların yeni işlem örneğine yönlendirilmesini Değiştir
 
-    Özgün işlem örneğindeki veritabanlarına varolan bağlantılar bırakılır. Yeni işlem örneğindeki veritabanlarına yeni bağlantılar kurulur. Bazı hizmet katmanı ve işlem boyutu değişiklikleri kombinasyonları için veritabanı dosyaları değiştirilir ve geçiş sırasında yeniden eklenir.  Ne olursa olsun, veritabanları genellikle 30 saniyeden kısa ve genellikle yalnızca birkaç saniye için kullanılamadığında anahtar kısa bir hizmet kesintisine neden olabilir. Bağlantılar bırakıldığında uzun süre çalışan hareketler varsa, iptal edilen hareketleri kurtarmak için bu adımın süresi daha uzun sürebilir. [Hızlandırılmış Veritabanı Kurtarma](sql-database-accelerated-database-recovery.md) uzun çalışan hareketleri iptal etkisini azaltabilir.
+    Özgün işlem örneğindeki veritabanlarına yönelik mevcut bağlantılar bırakılır. Yeni işlem örneğindeki veritabanlarına yeni bağlantı oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, veritabanı dosyaları, anahtar sırasında ayrılır ve yeniden eklenir.  Ne olursa olsun, veritabanları genellikle 30 saniyeden kısa bir süre boyunca ve genellikle birkaç saniye boyunca kullanılamadığında kısa bir hizmet kesintiye neden olabilir. Bağlantılar bırakıldığında çalışan uzun süre çalışan işlemler varsa, bu adımın süresi durdurulan işlemleri kurtarmak için daha uzun sürebilir. [Hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md) , uzun süre çalışan işlemleri iptal etme etkisini azaltabilir.
 
 > [!IMPORTANT]
-> İş akışındaki herhangi bir adımda veri kaybolmaz.
+> İş akışındaki herhangi bir adım sırasında hiçbir veri kaybolmaz.
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Değişen hizmet katmanı veya yeniden ölçekleme hesaplama boyutunun gecikmesi
+### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirme veya işlem boyutunu boyutlandırma gecikmesi
 
-Hizmet katmanını değiştirmek veya tek bir veritabanının veya elastik havuzun işlem boyutunu yeniden ölçeklendirmek için tahmini gecikme sayısı aşağıdaki gibi parametrelendirilir:
+Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzun işlem boyutunu yeniden boyutlandırma için beklenen gecikme süresi şu şekilde parametrelenir:
 
-|Hizmet katmanı|Temel tek veritabanı,</br>Standart (S0-S1)|Temel elastik havuz,</br>Standart (S2-S12), </br>Hiper ölçek, </br>Genel Amaçlı tek veritabanı veya elastik havuz|Premium veya Business Critical tek veritabanı veya esnek havuz|
+|Hizmet katmanı|Temel tek veritabanı,</br>Standart (S0-S1)|Temel elastik havuz,</br>Standart (S2-S12), </br>Hiper ölçekli </br>Tek veritabanı veya elastik havuz Genel Amaçlı|Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz|
 |:---|:---|:---|:---|
-|**Temel tek</br> veritabanı, Standart (S0-S1)**|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıile orantılı gecikme</br>&bull;&nbsp;Genellikle, kullanılan alan GB başına 1 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıile orantılı gecikme</br>&bull;&nbsp;Genellikle, kullanılan alan GB başına 1 dakikadan az|
-|**Temel elastik </br>havuz, Standart (S2-S12), </br>Hiperölçek, </br>Genel Amaçlı tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıile orantılı gecikme</br>&bull;&nbsp;Genellikle, kullanılan alan GB başına 1 dakikadan az|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıile orantılı gecikme</br>&bull;&nbsp;Genellikle, kullanılan alan GB başına 1 dakikadan az|
-|**Premium veya Business Critical tek veritabanı veya esnek havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıile orantılı gecikme</br>&bull;&nbsp;Genellikle, kullanılan alan GB başına 1 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıile orantılı gecikme</br>&bull;&nbsp;Genellikle, kullanılan alan GB başına 1 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıile orantılı gecikme</br>&bull;&nbsp;Genellikle, kullanılan alan GB başına 1 dakikadan az|
+|**Temel tek veritabanı,</br> standart (S0-S1)**|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
+|**Temel elastik havuz </br>, standart (S2-S12) </br>, hiper ölçek </br>genel amaçlı tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
+|**Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
 
 > [!NOTE]
 >
-> - Elastik bir havuz için servis katmanının değiştirilmesi veya yeniden hesaplanması durumunda, tahmini hesaplamak için havuzdaki tüm veritabanlarında kullanılan alanın toplamı kullanılmalıdır.
-> - Bir veritabanının elastik bir havuza/elastik havuzdan taşınması durumunda, yalnızca veritabanı tarafından kullanılan alan, elastik havuz tarafından kullanılan alanı değil, gecikmeyi etkiler.
+> - Hizmet katmanını değiştirme veya elastik havuz için işlem yeniden oluşturma durumunda, havuzdaki tüm veritabanları genelinde kullanılan alanın toplamı, tahmini hesaplamak için kullanılmalıdır.
+> - Bir veritabanını elastik bir havuza taşımak durumunda, elastik havuz tarafından kullanılan alana değil, yalnızca veritabanı tarafından kullanılan alan gecikmeyi etkiler.
 >
 > [!TIP]
-> Devam eden işlemleri izlemek için bkz: [SQL REST API'yi kullanarak işlemleri yönetin,](https://docs.microsoft.com/rest/api/sql/operations/list) [CLI kullanarak işlemleri yönetin,](/cli/azure/sql/db/op) [T-SQL'i kullanarak işlemleri izleyin, t-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu iki PowerShell komutunu kullanarak operasyonları izleyin: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirirken veya bilgi işlem boyutunu yeniden ölçekdeğiştirirken göz önünde bulundurulması gereken ek noktalar
+### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirirken veya işlem boyutunu yeniden oluştururken dikkat edilecek ek noktalar
 
-- Elastik bir havuz için vCores veya eDTUs küçültüldüğünde, kullanılan havuz alanı hedef servis katmanı ve havuz eDTUs'larının izin verilen maksimum boyutundan daha küçük olmalıdır.
-- Elastik bir havuz için eDO'ları yeniden ölçeklendirirken, (1) havuzun depolama maksimum boyutu hedef havuz tarafından desteklenirse ve (2) depolama max boyutu hedef havuzun dahil edilen depolama miktarını aşıyorsa, ek depolama maliyeti uygulanır. Örneğin, maksimum boyutu 100 GB olan 100 eDTU Standart havuz 50 eDTU Standart havuza küçültüldüyse, hedef havuz maksimum 100 GB boyutu desteklediği ve dahil edilen depolama miktarı yalnızca 50 GB olduğundan ek depolama maliyeti uygulanır. Yani, ekstra depolama miktarı 100 GB - 50 GB = 50 GB' dır. Ek depolama fiyatlandırması için [SQL Veritabanı fiyatlandırmasına](https://azure.microsoft.com/pricing/details/sql-database/)bakın. Kullanılan alan gerçek miktarı dahil depolama miktarından daha azsa, veritabanı nın maksimum boyutunu dahil edilen tutara indirgeyerek bu ekstra maliyetönlenebilir.
+- Elastik havuz için sanal çekirdekleri veya eDTU 'ları yeniden boyutlandırdığınızda, kullanılan havuzun izin verilen en büyük boyuttan daha küçük olması gerekir ve havuz eDTU 'ları.
+- Elastik havuz için eDTU 'lar yeniden başlatıldığında, (1) havuzun en büyük depolama boyutu hedef havuz tarafından destekleniyorsa ve (2) depolama alanı üst sınırı hedef havuzun dahil edilen depolama miktarını aşarsa, ek bir depolama maliyeti geçerlidir. Örneğin, en fazla 100 GB boyutundaki 100 eDTU standart havuzu bir 50 eDTU standart havuzuna yeniden boyutlandırıldıysa, hedef havuz en büyük boyut olan 100 GB 'ı desteklediğinden ve dahil edilen depolama miktarı yalnızca 50 GB olduğundan, ek bir depolama maliyeti uygulanır. Bu nedenle, ek depolama miktarı 100 GB – 50 GB = 50 GB olur. Ek Depolama fiyatlandırması için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan gerçek alan miktarı, dahil edilen depolama miktarından daha azsa, veritabanının maksimum boyutu dahil edilen tutara azaltılarak bu ek maliyetin önlenebilir olmasını sağlayabilirsiniz.
 
-### <a name="billing-during-rescaling"></a>Yeniden ölçekleme sırasında faturalandırma
+### <a name="billing-during-rescaling"></a>Yeniden oluşturma sırasında faturalandırma
 
-Kullanımdan veya veritabanının bir saatten kısa bir süre için etkin olup olmadığına bakılmaksızın, o saat içinde uygulanan en yüksek hizmet katmanı + bilgi işlem boyutu kullanılarak bir veritabanının var olduğu her saat için faturalandırılırsınız. Örneğin, tek bir veritabanı oluşturur ve beş dakika sonra silerseniz, faturanız bir veritabanı saati için bir ücret yansıtır.
+Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından bağımsız olarak, bu saat boyunca uygulanan en yüksek hizmet katmanı + işlem boyutunu kullanarak bir veritabanının mevcut olduğu her saat için faturalandırılırsınız. Örneğin, tek bir veritabanı oluşturup beş dakika sonra silerseniz faturanız bir veritabanı saati için bir ücret yansıtır.
 
-## <a name="change-elastic-pool-storage-size"></a>Elastik havuz depolama boyutunu değiştirme
+## <a name="change-elastic-pool-storage-size"></a>Elastik havuz depolama boyutunu değiştir
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri almak için bir veritabanını küçültmeniz gerekebilir. Daha fazla bilgi için Azure [SQL Veritabanı'nda dosya alanını yönet'e](sql-database-file-space-management.md)bakın.
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
 
-- Depolama, maksimum boyut sınırına kadar sağlanabilir:
+- Depolama alanı en fazla boyut sınırına sağlanabilir:
 
-  - Standart veya genel amaçlı hizmet katmanlarında depolama için, 10 GB'lık artışlarla boyutu artırın veya azaltın
-  - Premium veya iş açısından kritik hizmet katmanlarında depolama için, 250 GB'lık artışlarla boyutu artırın veya azaltın
-- Elastik bir havuz için depolama, maksimum boyutunu artırarak veya azaltarak sağlanabilir.
-- Elastik bir havuz için depolama fiyatı, servis katmanının depolama birim fiyatıyla çarpımısonucu depolama miktarıdır. Ek depolama fiyatı yla ilgili ayrıntılar için [SQL Veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/)bölümüne bakın.
+  - Standart veya genel amaçlı hizmet katmanlarında depolama için 10 GB 'lik artışlarla boyutu artırın veya azaltın
+  - Premium veya iş açısından kritik hizmet katmanlarında depolama için, boyutu 250 GB 'lik artışlarla artırın veya azaltın
+- Elastik havuz depolama alanı, en büyük boyutu arttırılarak veya azaltılarak sağlanabilir.
+- Elastik havuz için depolama fiyatı, depolama miktarıdır ve hizmet katmanının depolama birimi fiyatıyla çarpılır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri almak için bir veritabanını küçültmeniz gerekebilir. Daha fazla bilgi için Azure [SQL Veritabanı'nda dosya alanını yönet'e](sql-database-file-space-management.md)bakın.
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
-- Elastik bir havuz için eDTU fiyatı, ek ücret ödemeden belirli bir depolama miktarı içerir. Dahil edilen miktarın ötesinde ki ekstra depolama alanı, 250 GB'dan 1 TB'ye kadar artışlarla ve ardından 1 TB'nin ötesinde 256 GB'lık artışlarla maksimum boyut sınırına kadar ek bir maliyet için sağlanabilir. Dahil edilen depolama miktarları ve maksimum boyut sınırları için [elastik havuza bakın: depolama boyutları ve bilgi işlem boyutları.](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)
-- Elastik bir havuz için ekstra [depolama, Azure portalı](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)veya [REST API'yi](https://docs.microsoft.com/rest/api/sql/elasticpools/update)kullanarak maksimum boyutunu artırarak sağlanabilir.
-- Elastik bir havuz için ekstra depolama fiyatı, servis katmanının ekstra depolama birim fiyatıyla çarpılan ekstra depolama miktarıdır. Ek depolama fiyatı yla ilgili ayrıntılar için [SQL Veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/)bölümüne bakın.
+- Elastik havuz için eDTU fiyatı, ek ücret ödemeden belirli miktarda depolama alanı içerir. Dahil edilen miktarın ötesinde daha fazla depolama alanı, 250 GB ile 1 TB arasında artan maksimum boyut sınırına kadar ek bir maliyet ve sonra da 1 TB 'ın üzerinde 256 GB 'lık artışlarla sağlanabilir. Dahil edilen depolama miktarları ve maksimum boyut sınırları için bkz. [elastik havuz: depolama boyutları ve işlem boyutları](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
+- Esnek havuz için ek depolama, [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [POWERSHELL](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)kullanılarak en büyük boyutu arttırılarak sağlanabilir.
+- Elastik havuz için ek depolama alanı fiyatı, ek depolama miktarıdır ve hizmet katmanının ek depolama birimi fiyatıyla çarpılır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri almak için bir veritabanını küçültmeniz gerekebilir. Daha fazla bilgi için Azure [SQL Veritabanı'nda dosya alanını yönet'e](sql-database-file-space-management.md)bakın.
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Genel kaynak sınırları için, [SQL Database vCore tabanlı kaynak limitlerine - elastik havuzlar](sql-database-vcore-resource-limits-elastic-pools.md) ve SQL Veritabanı [DTU tabanlı kaynak sınırları - elastik havuzlar.](sql-database-dtu-resource-limits-elastic-pools.md)
+Genel kaynak sınırları için bkz. [SQL veritabanı sanal çekirdek tabanlı kaynak limitleri-elastik havuzlar](sql-database-vcore-resource-limits-elastic-pools.md) ve [SQL veritabanı DTU tabanlı kaynak limitleri-elastik havuzlar](sql-database-dtu-resource-limits-elastic-pools.md).

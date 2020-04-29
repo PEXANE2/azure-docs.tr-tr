@@ -1,6 +1,6 @@
 ---
-title: B2B işbirliği kullanıcılarının toplu olarak davet için öğretme ölümü - Azure Etkin Dizini | Microsoft Dokümanlar
-description: Bu eğitimde, harici Azure AD B2B işbirliği konuk kullanıcılarına toplu davetiyegöndermek için PowerShell ve CSV dosyasını nasıl kullanacağınızı öğrenirsiniz.
+title: B2B işbirliği kullanıcılarına toplu davet etme öğreticisi-Azure Active Directory | Microsoft Docs
+description: Bu öğreticide, dış Azure AD B2B işbirliği Konuk kullanıcılarına toplu davetiye göndermek için PowerShell ve CSV dosyası kullanmayı öğreneceksiniz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77172663"
 ---
-# <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu olarak davet etmek için PowerShell'i kullanın
+# <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu olarak davet etmek için PowerShell 'i kullanma
 
 Şirket dışındaki ortaklarla çalışmak için Azure Active Directory (Azure AD) B2B işbirliğini kullanıyorsanız, kuruluşunuza aynı anda birden çok konuk kullanıcı davet edebilirsiniz. Bu öğreticide, harici kullanıcılara toplu davet göndermek için PowerShell’in nasıl kullanılacağını öğreneceksiniz. Özellikle aşağıdakileri yapın:
 
@@ -27,7 +27,7 @@ ms.locfileid: "77172663"
 > * Davet göndermek için PowerShell betiğini çalıştırma
 > * Kullanıcıların dizine eklendiğini doğrulama
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -126,7 +126,7 @@ Davet edilen kullanıcıların Azure AD'ye eklendiğini doğrulamak için aşağ
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Listelediğiniz kullanıcıları, *e-posta adresi*#EXT#\@*etki alanında*bir kullanıcı ana adı (UPN) ile görmeniz gerekir. Örneğin, *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, davetiyeleri gönderdiğiniz kuruluş contoso.onmicrosoft.com yerdir.
+Bir Kullanıcı asıl adı (UPN) ile, davet ettiğiniz kullanıcıları *emadresi*#EXT #\@*etki*biçiminde görmeniz gerekir. Örneğin, *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

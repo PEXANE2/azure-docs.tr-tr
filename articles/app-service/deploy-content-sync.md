@@ -1,60 +1,60 @@
 ---
-title: Bulut klasöründeki içeriği eşitleme
-description: OneDrive veya Dropbox gibi bulut klasöründen içerik eşitleme yoluyla uygulamanızı Azure Uygulama Hizmeti'ne nasıl dağıtılacağize gideceğinizi öğrenin.
+title: İçeriği bir bulut klasöründen Eşitle
+description: OneDrive veya Dropbox dahil olmak üzere bir bulut klasöründen içerik eşitlemesi aracılığıyla Azure App Service uygulamanızı nasıl dağıtacağınızı öğrenin.
 ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
 ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77482981"
 ---
-# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>İçeriği bulut klasöründen Azure Uygulama Hizmeti'ne senkronize etme
-Bu makalede, içeriğinizin Dropbox ve OneDrive'dan [Azure Uygulama Hizmeti](https://go.microsoft.com/fwlink/?LinkId=529714) ile nasıl senkronize edilebilmektedir. 
+# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Bir bulut klasöründen içerik eşitleme Azure App Service
+Bu makalede, içeriğinizi Dropbox ve OneDrive 'dan [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) eşitlenecek. 
 
-İsteğe bağlı içerik eşitleme dağıtımı, App Service [Kudu dağıtım motoru](https://github.com/projectkudu/kudu/wiki)tarafından desteklenmektedir. Uygulama kodunuz ve içeriğinizle belirlenmiş bir bulut klasöründe çalışabilir ve ardından bir düğmeyi tıklatarak Uygulama Hizmeti'ne senkronize edebilirsiniz. İçerik eşitleme Kudu build sunucusu kullanır. 
+İsteğe bağlı içerik eşitleme dağıtımı App Service [kudu dağıtım altyapısı](https://github.com/projectkudu/kudu/wiki)tarafından desteklenir. Belirlenen bir bulut klasöründe uygulama kodunuzla ve içeriklerle çalışabilir ve ardından bir düğmeye tıklayarak App Service eşitleyebilirsiniz. İçerik eşitleme, kudu derleme sunucusunu kullanır. 
 
-## <a name="enable-content-sync-deployment"></a>İçerik eşitleme dağıtımını etkinleştirme
+## <a name="enable-content-sync-deployment"></a>İçerik eşitleme dağıtımını etkinleştir
 
-İçerik eşitlemesini etkinleştirmek için [Azure portalındaki](https://portal.azure.com)Uygulama Hizmeti uygulama sayfanıza gidin.
+İçerik eşitlemesini etkinleştirmek için [Azure portal](https://portal.azure.com)App Service uygulama sayfanıza gidin.
 
-Sol menüde **Dağıtım Merkezi** > **OneDrive** veya **Dropbox** > **Yetkilendirme'yi**tıklatın. Yetkilendirme istemlerini izleyin. 
+Sol taraftaki menüden **Deployment Center** > **OneDrive** veya **Dropbox** > **Yetkilendir**' e tıklayın. Yetkilendirme istemlerini izleyin. 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
-OneDrive veya Dropbox ile yalnızca bir kez yetkilendirmeniz gerekir. Zaten yetkiliyseniz, **Devam et'i**tıklatın. Hesabı **Değiştir'i**tıklatarak yetkili OneDrive veya Dropbox hesabını değiştirebilirsiniz.
+Yalnızca OneDrive veya Dropbox ile bir kez yetkilendirme yapmanız gerekir. Zaten yetkiniz varsa **devam**' a tıklamanız yeterlidir. **Hesabı Değiştir**' i tıklatarak yetkili OneDrive veya Dropbox hesabını değiştirebilirsiniz.
 
 ![](media/app-service-deploy-content-sync/continue.png)
 
-**Yapılandırma** sayfasında, eşitlemek istediğiniz klasörü seçin. Bu klasör, OneDrive veya Dropbox'ta aşağıdaki belirtilen içerik yolu altında oluşturulur. 
+**Yapılandır** sayfasında, eşitlenmesini istediğiniz klasörü seçin. Bu klasör, OneDrive veya Dropbox 'ta aşağıdaki belirtilen içerik yolu altında oluşturulur. 
    
 * **OneDrive**:`Apps\Azure Web Apps`
 * **Dropbox**:`Apps\Azure`
 
-Bittiğinde, **Devam et'i**tıklatın.
+İşiniz bittiğinde **devam**' a tıklayın.
 
-**Özet** sayfasında, seçeneklerinizi doğrulayın ve **Bitir'i**tıklatın.
+**Özet** sayfasında, seçeneklerinizi doğrulayıp **son**' a tıklayın.
 
-## <a name="synchronize-content"></a>İçeriği senkronize etme
+## <a name="synchronize-content"></a>İçeriği eşitler
 
-Bulut klasörünüzdeki içeriği Uygulama Hizmeti ile senkronize etmek istediğinizde, **Dağıtım Merkezi** sayfasına geri dön ve **Eşitle'yi**tıklatın.
+Bulut klasörünüzdeki içerikleri App Service eşitlemek istediğinizde, **Dağıtım Merkezi** sayfasına dönün ve **Eşitle**' ye tıklayın.
 
 ![](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
-   > API'lerde temel deki farklılıklar nedeniyle, **OneDrive for Business** şu anda desteklenmez. 
+   > API 'lerde temeldeki farklılıklar nedeniyle, **OneDrive iş** Şu anda desteklenmiyor. 
    > 
    > 
 
-## <a name="disable-content-sync-deployment"></a>İçerik eşitleme dağıtımını devre dışı
+## <a name="disable-content-sync-deployment"></a>İçerik eşitleme dağıtımını devre dışı bırak
 
-İçerik eşitlemeyi devre dışı kalmak için [Azure portalındaki](https://portal.azure.com)Uygulama Hizmeti uygulama sayfanıza gidin.
+İçerik eşitlemesini devre dışı bırakmak için [Azure portal](https://portal.azure.com)App Service uygulama sayfanıza gidin.
 
-Sol menüde **Dağıtım Merkezi** > **Bağlantısını Kes'i**tıklatın.
+Sol menüde **Dağıtım Merkezi** > **bağlantısı kes**' e tıklayın.
 
 ![](media/app-service-deploy-content-sync/disable.png)
 
@@ -63,4 +63,4 @@ Sol menüde **Dağıtım Merkezi** > **Bağlantısını Kes'i**tıklatın.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Yerel Git repo'sundan dağıt](deploy-local-git.md)
+> [Yerel git deposundan dağıtma](deploy-local-git.md)

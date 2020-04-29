@@ -1,6 +1,6 @@
 ---
-title: Linux için Azure Seri Konsolu | Microsoft Dokümanlar
-description: Azure Sanal Makineler ve Sanal Makine Ölçek Setleri için Çift Yönlü Seri Konsol.
+title: Linux için Azure seri konsolu | Microsoft Docs
+description: Azure sanal makineleri ve sanal makine ölçek kümeleri için iki yönlü seri konsol.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,163 +14,163 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77167009"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux için Azure Serial Console
 
-Azure portalındaki Seri Konsol, Linux sanal makineleri (VM' ler) ve sanal makine ölçeği seti örnekleri için metin tabanlı bir konsola erişim sağlar. Bu seri bağlantısı VM veya sanal makine ölçeği kümesi örneğinin ttys0 seri bağlantı noktasına bağlanır ve ağa veya işletim sistemi durumundan bağımsız olarak erişim sağlar. Seri konsola yalnızca Azure portalı kullanılarak erişilebilir ve yalnızca Katılımcı veya VM veya sanal makine ölçeği kümesine erişim rolü olan veya daha yüksek olan kullanıcılar için izin verilir.
+Azure portal seri konsol, Linux sanal makineleri (VM 'Ler) ve sanal makine ölçek kümesi örnekleri için metin tabanlı bir konsola erişim sağlar. Bu seri bağlantı, ağ veya işletim sistemi durumundan bağımsız olarak erişim sağlayan VM veya sanal makine ölçek kümesi örneğinin ttyS0 seri bağlantı noktasına bağlanır. Seri konsoluna yalnızca Azure portal kullanılarak erişilebilir ve yalnızca VM veya sanal makine ölçek kümesine katkıda bulunan veya daha yüksek bir erişim rolüne sahip olan kullanıcılar için izin verilir.
 
-Seri Konsol, VM'ler ve sanal makine ölçeği seti örnekleri için aynı şekilde çalışır. Bu dokümanda, aksi belirtilmedikçe, VM'lere yapılan tüm sözlerle sanal makine ölçeği seti örnekleri dolaylı olarak yer alacaktır.
+Seri konsol, VM 'Ler ve sanal makine ölçek kümesi örnekleri için aynı şekilde çalışmaktadır. Bu belgede, aksi belirtilmediği takdirde VM 'lerdeki tüm bahsetmeler, sanal makine ölçek kümesi örneklerini örtülü olarak içerir.
 
-Windows için Seri Konsol belgeleri [için Windows için Seri Konsol'a](../windows/serial-console.md)bakın.
+Windows için seri konsol belgeleri için bkz. [Windows Için seri konsol](../windows/serial-console.md).
 
 > [!NOTE]
-> Seri Konsol genellikle genel Azure bölgelerinde ve Azure Resmi'nde genel önizlemede kullanılabilir. Azure Çin bulutunda henüz kullanıma sunulmadı.
+> Seri konsol Genel Azure bölgelerinde ve Azure Kamu 'da genel önizlemede kullanılabilir. Henüz Azure Çin bulutu 'nda mevcut değildir.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- VM veya sanal makine ölçeği set örneğiniz kaynak yönetimi dağıtım modelini kullanmalıdır. Klasik dağıtımlar desteklenmez.
+- VM 'niz veya sanal makine ölçek kümesi örneğinizin kaynak yönetimi dağıtım modelini kullanması gerekir. Klasik dağıtımlar desteklenmez.
 
-- Seri konsol kullanan hesabınız, VM ve [önyükleme tanılama](boot-diagnostics.md) depolama hesabı için [Sanal Makine Katılımcısı rolüne](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) sahip olmalıdır
+- Seri konsol kullanan hesabınızda VM ve [önyükleme tanılama](boot-diagnostics.md) depolama hesabı Için [sanal makine katılımcısı rolü](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) olmalıdır
 
-- VM veya sanal makine ölçeği set örneğinizin parola tabanlı bir kullanıcısı olmalıdır. VM erişim uzantısı sıfırlama [parola](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) işlevi ile bir oluşturabilirsiniz. Destek + sorun **giderme** bölümünden **parolayı sıfırla'yı** seçin.
+- VM 'niz veya sanal makine ölçek kümesi örneğinizin parola tabanlı bir kullanıcısı olmalıdır. VM erişimi uzantısının [parola sıfırlama](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) işleviyle bir tane oluşturabilirsiniz. **Destek + sorun giderme** bölümünde **Parolayı Sıfırla** ' yı seçin.
 
-- VM veya sanal makine ölçeği set örneğinizin [önyükleme tanılama özelliği](boot-diagnostics.md) etkin leştirilmiş olmalıdır.
+- VM 'niz veya sanal makine ölçek kümesi örneğinizin [önyükleme tanılaması](boot-diagnostics.md) etkin olmalıdır.
 
-    ![Önyükleme tanılama ayarları](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    ![Önyükleme Tanılama ayarları](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-- Linux dağıtımlarına özel ayarlar için [Seri konsol Linux dağıtım kullanılabilirliğine](#serial-console-linux-distribution-availability)bakın.
+- Linux dağıtımlarına özgü ayarlar için bkz. [Linux dağıtım kullanılabilirliği seri konsol](#serial-console-linux-distribution-availability).
 
-- VM veya sanal makine ölçeği set örneğiniz üzerinde `ttys0`seri çıktı için yapılandırılmalıdır. Bu, Azure resimleri için varsayılan değerdir, ancak bunu özel görüntülerde iki kez denetlemek istersiniz. Ayrıntılar [aşağıda](#custom-linux-images).
+- VM 'niz veya sanal makine ölçek kümesi örneğinizin tarihinde `ttys0`seri çıkış için yapılandırılması gerekir. Bu, Azure görüntüleri için varsayılandır, ancak bunu özel görüntülerde çift denetlemek isteyeceksiniz. Ayrıntılar [aşağıda](#custom-linux-images)verilmiştir.
 
-
-> [!NOTE]
-> Seri konsol, yapılandırılmış bir parolaya sahip yerel bir kullanıcı gerektirir. Yalnızca Bir SSH ortak anahtarıyla yapılandırılan VM'ler veya sanal makine ölçeği kümeleri seri konsolda oturum açamaz. Parolalı yerel bir kullanıcı oluşturmak için, Azure portalında Parolayı **Sıfırla'yı** seçerek portalda bulunan [VMAccess Uzantısı'nı](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)kullanın ve parolalı yerel bir kullanıcı oluşturun.
-> Ayrıca, [tek kullanıcı moduna önyükleme için GRUB kullanarak](./serial-console-grub-single-user-mode.md)hesabınızdaki yönetici parolasını sıfırlayabilirsiniz.
-
-## <a name="serial-console-linux-distribution-availability"></a>Seri Konsol Linux dağıtım durumu
-Seri konsolun düzgün çalışması için konuk işletim sisteminin konsol iletilerini seri bağlantı noktasına okuyup yazacak şekilde yapılandırılması gerekir. Onaylanan çoğu [Azure Linux dağıtımında](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) seri konsol varsayılan olarak yapılandırılır. Azure portalının **Destek + sorun giderme** bölümünde Seri **konsolu** seçilmesi seri konsoluna erişim sağlar.
 
 > [!NOTE]
-> Seri konsolunda bir şey görmüyorsanız, VM'nizde önyükleme tanılamanın etkin olduğundan emin olun. **Enter** tuşuna basmak genellikle seri konsolda hiçbir şeyin görünmediği sorunları giderir.
+> Seri konsol, yapılandırılmış bir parolası olan yerel bir kullanıcı gerektirir. Yalnızca bir SSH ortak anahtarı ile yapılandırılan VM 'Ler veya sanal makine ölçek kümeleri seri konsolunda oturum açamaz. Parolası olan bir yerel kullanıcı oluşturmak için, Azure portal **Parolayı Sıfırla** ' yı seçerek portalda bulunan [VMAccess uzantısını](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)kullanın ve parolası olan bir yerel kullanıcı oluşturun.
+> Ayrıca, [tek kullanıcı modunda önyüklemek IÇIN GRUB 'yi kullanarak](./serial-console-grub-single-user-mode.md)hesabınızdaki yönetici parolasını sıfırlayabilirsiniz.
+
+## <a name="serial-console-linux-distribution-availability"></a>Seri konsol Linux dağıtım kullanılabilirliği
+Seri konsolunun düzgün çalışması için, Konuk işletim sisteminin konsol iletilerini seri bağlantı noktasına okuyup yazacak şekilde yapılandırılması gerekir. En çok onaylanan [Azure Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) varsayılan olarak yapılandırılmış seri konsoluna sahiptir. Azure portal **destek + sorun giderme** bölümünde **seri konsol** seçeneğinin belirlenmesi, seri konsoluna erişim sağlar.
+
+> [!NOTE]
+> Seri konsolunda herhangi bir şey görmüyorsanız, VM 'niz üzerinde önyükleme tanılaması 'nın etkinleştirildiğinden emin olun. **ENTER** tuşuna basmak, genellikle seri konsolda hiçbir şeyin gösterilmediğini ortaya çıkan sorunları düzeltir.
 
 Dağıtım      | Seri konsol erişimi
 :-----------|:---------------------
-Red Hat Enterprise Linux    | Varsayılan olarak seri konsol erişimi etkindir.
-CentOS      | Varsayılan olarak seri konsol erişimi etkindir.
-Debian      | Varsayılan olarak seri konsol erişimi etkindir.
-Ubuntu      | Varsayılan olarak seri konsol erişimi etkindir.
-CoreOS      | Varsayılan olarak seri konsol erişimi etkindir.
-SUSE        | Azure'da kullanılabilen yeni SLES görüntüleri varsayılan olarak seri konsol erişimine sahiptir. Azure'da SLES'in eski sürümlerini (10 veya daha eski) kullanıyorsanız, seri konsolu etkinleştirmek için [KB makalesine](https://www.novell.com/support/kb/doc.php?id=3456486) bakın.
-Oracle Linux        | Varsayılan olarak seri konsol erişimi etkindir.
+Red Hat Enterprise Linux    | Seri konsol erişimi varsayılan olarak etkinleştirilmiştir.
+CentOS      | Seri konsol erişimi varsayılan olarak etkinleştirilmiştir.
+Debian      | Seri konsol erişimi varsayılan olarak etkinleştirilmiştir.
+Ubuntu      | Seri konsol erişimi varsayılan olarak etkinleştirilmiştir.
+CoreOS      | Seri konsol erişimi varsayılan olarak etkinleştirilmiştir.
+SUSE        | Azure 'da kullanılabilen yeni SLES görüntülerine, varsayılan olarak seri konsol erişimi etkinleştirilmiştir. Azure üzerinde SLES 'nin eski sürümlerini (10 veya daha eski sürümler) kullanıyorsanız, seri konsolu 'nu etkinleştirmek için [KB makalesine](https://www.novell.com/support/kb/doc.php?id=3456486) bakın.
+Oracle Linux        | Seri konsol erişimi varsayılan olarak etkinleştirilmiştir.
 
 ### <a name="custom-linux-images"></a>Özel Linux görüntüleri
-Özel Linux VM görüntünüz için seri konsolu etkinleştirmek için, bir terminali çalıştırmak `ttyS0`için dosya */etc/inittab'daki* konsol erişimini etkinleştirin. Örneğin: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Ayrıca ttyS0 bir getty yumurtlamak gerekebilir. Bu yapılabilir `systemctl start serial-getty@ttyS0.service`.
+Özel Linux sanal makinenizin seri konsolunu etkinleştirmek için, */etc/ınittab* dosyasındaki konsol erişimini etkinleştirin ve üzerinde `ttyS0`bir Terminal çalıştırın. Örneğin: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Ayrıca ttyS0 üzerinde bir Getty oluşturmanız gerekebilir. Bu, ile `systemctl start serial-getty@ttyS0.service`yapılabilir.
 
-Ayrıca seri çıktı için hedef olarak ttys0 eklemek isteyeceksiniz. Seri konsoluyla çalışacak özel bir görüntüyü yapılandırma hakkında daha fazla bilgi için Create'deki genel sistem gereksinimlerine bakın [ve Azure'da bir Linux VHD yükleyin.](https://aka.ms/createuploadvhd#general-linux-system-requirements)
+Ayrıca, seri çıkış için hedef olarak ttyS0 eklemek isteyeceksiniz. Özel bir görüntünün seri konsoluyla çalışacak şekilde yapılandırılması hakkında daha fazla bilgi için bkz. [Azure 'da bir LINUX VHD oluşturma ve yükleme](https://aka.ms/createuploadvhd#general-linux-system-requirements)konusunda genel sistem gereksinimleri.
 
-Özel bir çekirdek oluşturuyorsanız, bu çekirdek bayraklarını etkinleştirmeyi `CONFIG_SERIAL_8250=y` düşünün: ve. `CONFIG_MAGIC_SYSRQ_SERIAL=y` Yapılandırma dosyası genellikle */boot/* yolunda bulunur.
+Özel bir çekirdek oluşturuyorsanız, bu çekirdek bayraklarını etkinleştirmeyi göz önünde bulundurun: `CONFIG_SERIAL_8250=y` ve. `CONFIG_MAGIC_SYSRQ_SERIAL=y` Yapılandırma dosyası genellikle */Boot/* Path içinde bulunur.
 
-## <a name="common-scenarios-for-accessing-the-serial-console"></a>Seri Konsola erişmek için sık karşılaşılan senaryolar
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>Seri konsoluna erişmek için yaygın senaryolar
 
-Senaryo          | Seri Konsoldaki Eylemler
+Senaryo          | Seri konsolundaki eylemler
 :------------------|:-----------------------------------------
-Kırık *FSTAB* dosyası | Devam etmek için **Enter** tuşuna basın ve *FSTAB* dosyasını düzeltmek için metin düzenleyicisini kullanın. Bunu yapmak için tek kullanıcı modunda olmanız gerekebilir. Daha fazla bilgi için [fstab sorunlarının nasıl giderilir](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) ve [GRUB ve tek kullanıcı moduna erişmek için seri konsolu kullanma](serial-console-grub-single-user-mode.md)nın seri konsol bölümüne bakın.
-Yanlış güvenlik duvarı kuralları |  Iptables'ı SSH bağlantısını engelleyecek şekilde yapılandırıldıysanız, SSH'ye gerek kalmadan VM'inizle etkileşimkurmak için seri konsolu kullanabilirsiniz. Daha fazla bilgi [iptables man sayfasında](https://linux.die.net/man/8/iptables)bulunabilir.<br>Benzer şekilde, güvenlik duvarınız SSH erişimini engelliyorsa, Seri konsol aracılığıyla VM'ye erişebilir ve güvenlik duvarını yeniden yapılandırabilirsiniz. Daha fazla bilgi [güvenlik duvarılı belgelerde](https://firewalld.org/documentation/)bulunabilir.
-Dosya sistemi bozulması/denetimi | Seri konsolu kullanarak bozuk dosya sistemleriyle ilgili sorun giderme hakkında daha fazla bilgi için dosya sistemi hataları nedeniyle Azure Linux VM'nin seri konsol bölümünün [başlatılamaması](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) bölümüne bakın.
-SSH yapılandırma sorunları | Seri konsoluna erişin ve ayarları değiştirin. Seri konsol, VM'nin ağ bağlantısının çalışmasını gerektirmediği için VM'nin SSH yapılandırmasına bakılmaksızın kullanılabilir. Bir [Azure Linux VM'nin Sorun Giderme SSH bağlantılarında](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)başarısız olan, hatalar dan çıkan veya reddedilen bir sorun giderme kılavuzu kullanılabilir. [Azure'da Bir Linux VM'ye bağlanan sorunlar için Ayrıntılı SSH sorun giderme adımlarında](./detailed-troubleshoot-ssh-connection.md) daha fazla ayrıntı mevcuttur
-Bootloader ile etkileşim | Linux VM'nizde GRUB'a erişmek için VM'inizi seri konsol bıçağının içinden yeniden başlatın. Daha fazla ayrıntı ve dağıtıma özgü bilgiler [için GRUB'a ve tek kullanıcı moduna erişmek için seri konsolu kullan'a](serial-console-grub-single-user-mode.md)bakın.
+Bozuk *FSTAB* dosyası | Devam etmek için **ENTER** tuşuna basın ve *FSTAB* dosyasını onarmak için bir metin düzenleyicisi kullanın. Bunu yapmak için tek kullanıcı modunda olmanız gerekebilir. Daha fazla bilgi için bkz. [fstab sorunlarını giderme](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) ve [seri konsol kullanarak grub ve tek kullanıcı moduna erişme](serial-console-grub-single-user-mode.md).
+Yanlış güvenlik duvarı kuralları |  SSH bağlantısını engellemek için Iptables yapılandırdıysanız, SSH gerekmeden VM 'niz ile etkileşim kurmak için seri konsolu 'nu kullanabilirsiniz. Daha fazla ayrıntı için [Iptables man sayfasında](https://linux.die.net/man/8/iptables)bulabilirsiniz.<br>Benzer şekilde, firewalld 'niz SSH erişimini engelliyorsa, VM 'ye seri konsol aracılığıyla erişebilir ve firewalld 'leri yeniden yapılandırabilirsiniz. Daha fazla ayrıntı, [firewalld belgelerinde](https://firewalld.org/documentation/)bulunabilir.
+Dosya sistemi Bozulması/denetimi | Seri konsol kullanarak bozuk dosya sistemleri sorunlarını giderme hakkında daha fazla ayrıntı için lütfen [Azure LINUX VM](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) 'nin seri konsol bölümüne bakın.
+SSH yapılandırma sorunları | Seri konsoluna erişin ve ayarları değiştirin. Seri konsol, VM 'nin ağ bağlantısının çalışması için gerekli olmadığından VM 'nin SSH yapılandırmasından bağımsız olarak kullanılabilir. Sorun giderme kılavuzu, hata [veren veya reddedilen bir Azure LINUX VM 'sine YÖNELIK SSH bağlantılarında sorun gidermeye](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)yönelik olarak kullanılabilir. [Azure 'da bir LINUX VM 'ye bağlanma sorunları Için AYRıNTıLı SSH sorun giderme adımlarında](./detailed-troubleshoot-ssh-connection.md) daha fazla ayrıntı mevcuttur
+Önyükleme yükleyicisine etkileşim | Linux sanal makinenizin içindeki GRUB 'ye erişmek için VM 'nizi seri konsol dikey penceresinden yeniden başlatın. Daha fazla ayrıntı ve belirli bilgiler için bkz. çevirmeli [ve tek kullanıcı moduna erişmek için seri konsol kullanma](serial-console-grub-single-user-mode.md).
 
-## <a name="disable-the-serial-console"></a>Seri Konsolu devre dışı
+## <a name="disable-the-serial-console"></a>Seri konsolunu devre dışı bırakma
 
-Varsayılan olarak, tüm aboneliklerin seri konsol erişimi etkindir. Seri konsolu abonelik düzeyinde veya VM/sanal makine ölçeği ayar düzeyinde devre dışı bırakabilirsiniz. Ayrıntılı talimatlar için [Azure Seri Konsolu Etkinleştir'i](./serial-console-enable-disable.md)ve devre dışı kaltın'ı ziyaret edin.
+Varsayılan olarak, tüm aboneliklerde seri konsol erişimi etkindir. Seri konsolunu abonelik düzeyinde ya da VM/sanal makine ölçek kümesi düzeyinde devre dışı bırakabilirsiniz. Ayrıntılı yönergeler için [Azure seri konsolunu etkinleştir ve devre dışı bırak](./serial-console-enable-disable.md)' ı ziyaret edin.
 
 ## <a name="serial-console-security"></a>Seri konsol güvenliği
 
 ### <a name="access-security"></a>Erişim güvenliği
-Seri konsola erişim, [Sanal Makine Katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) veya sanal makineye daha yüksek erişim rolü ne sahip kullanıcılarla sınırlıdır. Azure Etkin Dizin kiracınız çok faktörlü kimlik doğrulaması (MFA) gerektiriyorsa, seri konsolunuzun erişimi [Azure portalı](https://portal.azure.com)üzerinden olduğu için seri konsola erişim de MFA'ya ihtiyaç duyar.
+Seri konsol erişimi, sanal makine [katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) veya daha yüksek bir erişim rolüne sahip kullanıcılarla sınırlıdır. Azure Active Directory kiracınız Multi-Factor Authentication (MFA) gerektiriyorsa, seri konsolunun erişimi [Azure Portal](https://portal.azure.com)üzerinden olduğu için seri konsoluna ERIŞIME de MFA gerekir.
 
 ### <a name="channel-security"></a>Kanal güvenliği
-İleri geri gönderilen tüm veriler tel üzerinde şifrelenir.
+İleri ve geri gönderilen tüm veriler kabloda şifrelenir.
 
 ### <a name="audit-logs"></a>Denetim günlükleri
-Seri konsola tüm erişim şu anda sanal makinenin [önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) günlüklerinde günlüğe kaydedilir. Bu günlüklere erişim Azure sanal makine yöneticisine aittir ve denetlenir.
+Seri konsoluna tüm erişim şu anda sanal makinenin [önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) günlüklerinde oturum açtı. Bu günlüklere erişim, Azure sanal makine yöneticisi tarafından sahiplenilir ve denetlenir.
 
 > [!CAUTION]
-> Konsol için erişim parolası günlüğe kaydedilmez. Ancak, konsol içinde çalıştırılan komutlar parolalar, sırlar, kullanıcı adları veya kişisel olarak tanımlanabilir bilgilerin (PII) başka bir biçimini içeriyorsa veya çıktıalıyorsa, bunlar VM önyükleme tanılama günlüklerine yazılır. Seri konsolun kaydırma geri kaydırma işlevinin uygulanmasının bir parçası olarak diğer tüm görünür metinle birlikte yazılır. Bu günlükler daireseldir ve yalnızca tanılama depolama hesabına okuma izni olan kişiler bunlara erişebilir. Sırlar veya KIŞISEL bilgiler içeren herhangi bir veri veya komut giriyorsanız, seri konsol kesinlikle gerekli olmadığı sürece SSH kullanmanızı öneririz.
+> Konsolun hiçbir erişim parolası günlüğe kaydedilmez. Ancak, konsolda çalıştırılan komutlar, parola, gizli dizileri, Kullanıcı adlarını veya herhangi bir kişisel olarak tanımlanabilir bilgi (PII) gibi bir diğer biçimi içeriyorsa, bunlar VM önyüklemesi tanılama günlüklerine yazılır. Seri konsolunun geri Kaydır işlevi uygulamasının bir parçası olarak, diğer tüm görünür metinle birlikte yazılır. Bu Günlükler dairesel ve yalnızca tanılama depolama hesabı için okuma iznine sahip olan bireyler bunlara erişebilir. Gizli dizi ya da PII içeren herhangi bir veri veya komut yerleştiriyorsanız, seri konsol kesinlikle gerekli olmadığı takdirde SSH kullanılması önerilir.
 
-### <a name="concurrent-usage"></a>Eşzamanlı kullanım
-Bir kullanıcı seri konsoluna bağlıysa ve başka bir kullanıcı aynı sanal makineye başarıyla erişim isterse, ilk kullanıcının bağlantısı kesilir ve ikinci kullanıcı aynı oturuma bağlanır.
+### <a name="concurrent-usage"></a>Eşzamanlı Kullanım
+Bir Kullanıcı seri konsoluna bağlandıysa ve başka bir kullanıcı aynı sanal makineye erişim isteğinde bulunursa, ilk kullanıcının bağlantısı kesilir ve ikinci Kullanıcı aynı oturuma bağlanır.
 
 > [!CAUTION]
-> Bu, bağlantısı kesilen bir kullanıcının oturumukapatılamayacağı anlamına gelir. Bağlantıyı kesme üzerine bir oturum açma yı (SIGHUP veya benzeri mekanizmayı kullanarak) uygulama özelliği hala yol haritasındadır. Windows için Özel Yönetim Konsolu'nda (SAC) otomatik bir zaman ayarı etkindir; ancak, Linux için terminal zaman aşım ayarını yapılandırabilirsiniz. Bunu yapmak için `export TMOUT=600` konsolda oturum açmak için kullandığınız kullanıcı için *.bash_profile* veya *.profile* dosyanızı ekleyin. Bu ayar, oturumu 10 dakika sonra zamana göre ayarlar.
+> Bu, bağlantısı kesilen bir kullanıcının oturum açmayacağı anlamına gelir. Bağlantı kesildikten sonra (SıGHUP veya benzer mekanizmayı kullanarak) bir oturum açma zorlaması yapma yeteneği, hala yol haritası üzerinde. Windows için özel yönetim konsolunda (SAC) etkin bir otomatik zaman aşımı vardır; Ancak, Linux için Terminal zaman aşımı ayarını yapılandırabilirsiniz. Bunu yapmak için, konsolunda `export TMOUT=600` oturum açmak üzere kullandığınız kullanıcının *. bash_profile* veya *. Profile* dosyasına ekleyin. Bu ayar 10 dakika sonra oturumu zaman aşımına uğrar.
 
 ## <a name="accessibility"></a>Erişilebilirlik
-Erişilebilirlik, Azure Seri Konsolu için önemli bir odak noktasıdır. Bu amaçla, seri konsolun tamamen erişilebilir olmasını sağladık.
+Erişilebilirlik, Azure seri konsolu için önemli bir odadır. Bu uçta, seri konsolunun tam olarak erişilebilir olduğunu umuyoruz.
 
 ### <a name="keyboard-navigation"></a>Klavye ile gezinme
-Azure portalından seri konsol arabiriminde gezinmek için klavyenizdeki **Sekme** tuşunu kullanın. Konumunuz ekranda vurgulanır. Seri konsol penceresinin odağında bırakmak için klavyenizdeki **Ctrl**+**F6** tuşuna basın.
+Azure portal seri konsol arabiriminde gezinmek için klavyenizde **Tab** tuşunu kullanın. Konumunuz ekranda vurgulanacaktır. Seri konsol penceresinin odağını bırakmak için klavyenizde **CTRL**+**F6** tuşuna basın.
 
-### <a name="use-serial-console-with-a-screen-reader"></a>Seri Konsolu ekran okuyucuyla kullanma
-Seri konsolyerleşik ekran okuyucu desteğine sahiptir. Ekran okuyucu açıkken gezinmek, şu anda seçili olan düğmenin alt metninin ekran okuyucu tarafından yüksek sesle okunmasını sağlar.
+### <a name="use-serial-console-with-a-screen-reader"></a>Bir ekran okuyucuyla seri konsol kullanma
+Seri konsolunda yerleşik ekran okuyucusu desteği vardır. Bir ekran okuyucusu açıkken dolaşma, ekran okuyucu tarafından şu anda seçili olan düğme için alternatif metnin yüksek sesle okunmasıyla izin verir.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
-Seri konsol ve VM'nin işletim sistemiyle ilgili bazı sorunların farkındayız. Linux VM'leri için bu sorunların ve azaltma adımlarının bir listesi aşağıda verilmiştir. Bu sorunlar ve azaltıcı etkenler hem VM'ler hem de sanal makine ölçeği kümesi örnekleri için geçerlidir. Bunlar gördüğünüz hatayla eşleşmiyorsa, [Ortak Seri Konsol hatalarında](./serial-console-errors.md)sık karşılaşılan seri konsol hizmet hatalarını görün.
+Seri konsol ve VM 'nin işletim sistemi ile ilgili bazı sorunları fark ediyoruz. Bu sorunların ve Linux VM 'Leri hafifletme adımlarının bir listesi aşağıda verilmiştir. Bu sorunlar ve azaltmaları, hem VM 'Ler hem de sanal makine ölçek kümesi örnekleri için geçerlidir. Bunlar gördüğünüz hatayla eşleşmiyorsa, yaygın [seri konsol hatalarıyla](./serial-console-errors.md)ortak seri konsol hizmeti hatalarına bakın.
 
 Sorun                           |   Risk azaltma
 :---------------------------------|:--------------------------------------------|
-Bağlantı başlığından sonra **Enter** tuşuna bastığınızda oturum açma istemi görüntülenmez. | GRUB doğru yapılandırılamayabilir. Aşağıdaki komutları çalıştırın: `grub2-mkconfig -o /etc/grub2-efi.cfg` `grub2-mkconfig -o /etc/grub2.cfg`ve/veya . Daha fazla bilgi için [bkz.](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md) Linux'un seri bağlantı noktasına bağlanmamasına neden olan özel bir VM, sertleştirilmiş cihaz veya GRUB config çalıştırıyorsanız bu sorun oluşabilir.
-Seri konsol metni yalnızca ekran boyutunun bir kısmını kaplar (genellikle metin düzenleyicisi kullandıktan sonra). | Seri konsollar pencere boyutu[(RFC 1073)](https://www.ietf.org/rfc/rfc1073.txt)ile ilgili görüşmeleri desteklemez, bu da ekran boyutunu güncelleştirmek için gönderilen SIGWINCH sinyali olmayacağı ve VM'nin terminalinizin boyutu hakkında hiçbir bilgisi olmayacağı anlamına gelir. Komutu sağlamak için xterm veya `resize` benzer bir yardımcı `resize`program yükleyin ve sonra çalıştırın.
-Uzun dizeleri yapıştırma işe yaramaz. | Seri konsol, seri bağlantı noktası bant genişliğinin aşırı yüklenmesini önlemek için terminale yapıştırılan dizelerin uzunluğunu 2048 karakterle sınırlar.
-SLES BYOS görüntülerinde hatalı klavye girişi. Klavye girişi yalnızca ara sıra tanınır. | Bu Plymouth paketi ile ilgili bir sorundur. Bir sıçrama ekranına ihtiyacınız olmadığı ve Plymouth'un Seri Konsol'u kullanma platformunun yeteneğini engellemesi nedeniyle Plymouth Azure'da çalıştırılmamalıdır. Plymouth'u `sudo zypper remove plymouth` çıkarın ve yeniden başlatın. Alternatif olarak, satırın sonuna ekleyerek `plymouth.enable=0` GRUB config çekirdek satırını değiştirin. Bunu [önyükleme sırasında önyükleme girişini düzenleyerek](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)veya GRUB_CMDLINE_LINUX satırını `/etc/default/grub`düzenleyerek, `grub2-mkconfig -o /boot/grub2/grub.cfg`GRUB ile yeniden oluşturarak ve sonra yeniden başlatarak yapabilirsiniz.
+Bağlantı başlığından sonra **ENTER** tuşuna basmak, oturum açma isteminin görüntülenmesine neden olmaz. | GRUB doğru şekilde yapılandırılmamış olabilir. Şu komutları çalıştırın: `grub2-mkconfig -o /etc/grub2-efi.cfg` ve/veya. `grub2-mkconfig -o /etc/grub2.cfg` Daha fazla bilgi için bkz. ENTER tuşuna basarak [hiçbir şey yapılmıyor](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Bu sorun, Linux 'un seri bağlantı noktasına bağlanamamasına neden olan özel bir VM, sağlamlaştırılmış gereç veya GRUB yapılandırması çalıştırıyorsanız oluşabilir.
+Seri konsol metin yalnızca ekran boyutunun bir kısmını kaplar (genellikle bir metin düzenleyicisi kullanarak). | Seri konsolları, pencere boyutu ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)) üzerinde anlaşmaya varılanır, yani güncelleştirme ekranı boyutuna gönderilen SIGWINCH sinyali yoktur ve VM 'nin terminalin boyutuyla ilgili hiçbir bilgisi olmayacaktır. Size `resize` komutu sağlamak için xterm veya benzer bir yardımcı program yükleyip komutunu çalıştırın `resize`.
+Uzun dizeleri yapıştırma işe yaramıyor. | Seri konsol, seri bağlantı noktası bant genişliğinin aşırı yüklenmesini engellemek için, terminale yapıştırılan dizelerin uzunluğunu 2048 karakter olarak sınırlandırır.
+SLES BYOS görüntülerinde klavye girişi Erratic. Klavye girişi yalnızca sporadolarak tanınıyor. | Bu, Plymouth paketiyle ilgili bir sorundur. Plymouth, Azure 'da çalıştırılmamalıdır ve bir giriş ekranına gerek kalmaz ve Plymouth 'in seri konsolu kullanma yeteneğini kesintiye uğratır. Plymouth öğesini `sudo zypper remove plymouth` ve ardından yeniden başlatın. Alternatif olarak, çizginin sonuna ekleyerek `plymouth.enable=0` , grub yapılandırmasının çekirdek satırını değiştirebilirsiniz. Bunu önyükleme [sırasında önyükleme girdisini düzenleyerek](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)veya ' de `/etc/default/grub`GRUB_CMDLINE_LINUX satırı düzenleyerek, grub ile `grub2-mkconfig -o /boot/grub2/grub.cfg`yeniden başlatarak ve sonra yeniden başlatarak yapabilirsiniz.
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**S. Nasıl geribildirim gönderebilirim?**
+**S. nasıl geri bildirim gönderebilirim?**
 
-A. Bir GitHub sorunu oluşturarak https://aka.ms/serialconsolefeedbackgeri bildirim sağlayın. Alternatif olarak (daha az tercih azserialhelp@microsoft.com edilen), geribildirim gönderebilirsiniz üzerinden veya sanal makine kategorisinde https://feedback.azure.com.
+A. Üzerinde https://aka.ms/serialconsolefeedbackbir GitHub sorunu oluşturarak geri bildirim sağlayın. Alternatif olarak (daha az tercih edilen), uygulamasının azserialhelp@microsoft.com https://feedback.azure.comsanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz.
 
-**S. Seri konsol kopyalama/yapıştır'ı destekliyor mu?**
+**S. seri konsol kopyalamayı/yapıştırmayı destekliyor mu?**
 
-A. Evet. Terminale kopyalamak ve yapıştırmak için **Ctrl**+**Shift**+**C** ve **Ctrl**+**Shift**+**V'yi** kullanın.
+A. Evet. Terminale kopyalayıp yapıştırmak için **CTRL**+**SHIFT**+**C** ve **CTRL**+**SHIFT**+**V** kullanın.
 
-**S. SSH bağlantısı yerine seri konsol kullanabilir miyim?**
+**Soru-cevap, SSH bağlantısı yerine seri konsol kullanabilir miyim?**
 
-A. Bu kullanım teknik olarak mümkün gibi görünse de, seri konsolun öncelikle SSH üzerinden bağlantının mümkün olmadığı durumlarda sorun giderme aracı olarak kullanılması amaçlanmıştır. Aşağıdaki nedenlerden dolayı seri konsolun SSH yerine kullanılmasına karşı çıkmanızı öneririz:
+A. Bu kullanım Teknik olarak mümkün görünse de, seri konsolun Öncelikle SSH aracılığıyla bağlantının mümkün olmadığı durumlarda bir sorun giderme aracı olarak kullanılması amaçlanmıştır. Aşağıdaki nedenlerden dolayı seri konsolunun SSH değiştirme olarak kullanılması önerilir:
 
-- Seri konsol, SSH kadar bant genişliğine sahip değildir. Yalnızca metin bağlantısı olduğundan, gui ağırlıklı etkileşimler zordur.
-- Seri konsol erişimi şu anda yalnızca bir kullanıcı adı ve parola kullanılarak mümkündür. SSH tuşları, oturum açma güvenliği açısından kullanıcı adı/parola birleşimlerinden çok daha güvenli olduğundan, Seri konsol üzerinden SSH'yi öneririz.
+- Seri konsol SSH ile çok bant genişliğine sahip değildir. Yalnızca bir salt metin bağlantısı olduğundan, GUI ağır etkileşimler daha zordur.
+- Seri konsol erişim şu anda yalnızca bir Kullanıcı adı ve parola kullanılarak yapılabilir. SSH anahtarları Kullanıcı adı/parola birleşimlerinden çok daha güvenli olduğundan, oturum açma güvenlik perspektifinden, seri konsol üzerinden SSH önerilir.
 
-**S. Aboneliğim için seri konsolu kimler etkinleştirebilir veya devre dışı bırakabilir?**
+**S. Aboneliğimin seri konsolunu kim etkinleştirebilir veya devre dışı bırakabilirim?**
 
-A. Seri konsolu abonelik genelinde bir düzeyde etkinleştirmek veya devre dışı kardık yapmak için, abonelığa yazma izinleriniz olması gerekir. Yazma izni olan roller yönetici veya sahip rollerini içerir. Özel rollerde yazma izinleri de olabilir.
+A. Seri konsolunu abonelik genelinde bir düzeyde etkinleştirmek veya devre dışı bırakmak için abonelik için yazma izinleriniz olmalıdır. Yazma izni olan roller yönetici veya sahip rolleri içerir. Özel rollerin de yazma izinleri olabilir.
 
-**S. VM/sanal makine ölçek setim için seri konsola kimler erişebilir?**
+**S. VM/sanal makine ölçek kümesi için seri konsoluna kimler erişebilir?**
 
-A. Seri konsola erişmek için VM veya sanal makine ölçeği ayarlı sanal makine katılımcısı rolüne veya daha yüksek olması gerekir.
+A. Seri konsoluna erişmek için bir VM veya sanal makine ölçek kümesi için sanal makine katılımcısı rolü veya daha yüksek bir sürüme sahip olmanız gerekir.
 
-**S. Benim seri konsol bir şey görüntülemiyor, ne yapmalıyım?**
+**S. seri konsolum hiçbir şeyi görüntülüyor, ne yapmam gerekir?**
 
-A. Resminiz büyük olasılıkla seri konsol erişimi için yanlış yapılandırılmıştır. Seri konsolu etkinleştirmek için resminizi yapılandırma hakkında daha fazla bilgi için [Seri konsol Linux dağıtım kullanılabilirliğine](#serial-console-linux-distribution-availability)bakın.
+A. Resminiz, seri konsol erişimi için hatalı yapılandırılmış olabilir. Görüntünüzü seri konsolunu etkinleştirecek şekilde yapılandırma hakkında daha fazla bilgi için bkz. [seri konsol Linux dağıtım kullanılabilirliği](#serial-console-linux-distribution-availability).
 
-**S. Seri konsol sanal makine ölçek kümeleri için kullanılabilir mi?**
+**S. sanal makine ölçek kümeleri için seri konsol kullanılabilir mi?**
 
-A. Evet öyle! [Sanal Makine Ölçek Setleri için Seri Konsol'a](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets) bakın
+A. Evet öyle! Bkz. [Sanal Makine Ölçek Kümeleri Için seri konsol](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-**S. VM veya sanal makine ölçeğimi yalnızca SSH anahtar kimlik doğrulamasını kullanarak ayarlarsam, VM/sanal makine ölçeği set örneğime bağlanmak için seri konsolu kullanmaya devam edebilir miyim?**
+**S. VM 'yi veya sanal makine ölçek kümesini yalnızca SSH anahtarı kimlik doğrulaması kullanarak ayarladım, VM/sanal makine ölçek kümesi örneğine bağlanmak için hala seri konsolunu kullanabilir miyim?**
 
-A. Evet. Seri konsolSSH tuşları gerektirmediği için, yalnızca bir kullanıcı adı/parola kombinasyonu ayarlamanız yeterlidir. Bunu, Azure portalında **parolayı sıfırla'yı** seçerek ve seri konsolda oturum açtırmak için bu kimlik bilgilerini kullanarak yapabilirsiniz.
+A. Evet. Seri konsol SSH anahtarları gerektirmediğinden, yalnızca bir Kullanıcı adı/parola bileşimi ayarlamanız gerekir. Bunu, Azure portal **Parolayı Sıfırla** ' yı seçerek ve seri konsolunda oturum açmak için bu kimlik bilgilerini kullanarak yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [GRUB ve tek kullanıcı moduna erişmek](serial-console-grub-single-user-mode.md)için seri konsolu kullanın.
-* [NMI ve SysRq aramaları](serial-console-nmi-sysrq.md)için seri konsolu kullanın.
-* [Çeşitli dağıtımlarda GRUB'u etkinleştirmek](serial-console-grub-proactive-configuration.md) için seri konsolu nasıl kullanacağınızı öğrenin
-* Seri konsol [Windows VM'ler](../windows/serial-console.md)için de kullanılabilir.
-* [Önyükleme tanılama](boot-diagnostics.md)hakkında daha fazla bilgi edinin.
+* [GRUB ve tek kullanıcı moduna erişmek](serial-console-grub-single-user-mode.md)için seri konsolu 'nu kullanın.
+* [NMI ve SysRq çağrıları](serial-console-nmi-sysrq.md)için seri konsolunu kullanın.
+* [Çeşitli yöneticilerin farklı Dağları 'nı etkinleştirmek](serial-console-grub-proactive-configuration.md) için seri konsolunu nasıl kullanacağınızı öğrenin
+* Seri konsol, [Windows VM 'leri](../windows/serial-console.md)için de kullanılabilir.
+* [Önyükleme tanılaması](boot-diagnostics.md)hakkında daha fazla bilgi edinin.
 

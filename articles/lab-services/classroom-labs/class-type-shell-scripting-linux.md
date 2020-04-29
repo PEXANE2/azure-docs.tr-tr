@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Hizmetleri ile bir Linux kabuk komut dosyası laboratuvarı ayarlama | Microsoft Dokümanlar
-description: Linux'ta kabuk komut dosyası yazmayı öğretmek için nasıl bir laboratuvar kurup kurup kurmayı öğrenin.
+title: Azure Lab Services bir Linux Shell betik Laboratuvarı ayarlama | Microsoft Docs
+description: Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarı ayarlamayı öğrenin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,91 +14,91 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77443559"
 ---
-# <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux'ta kabuk komut dosyası öğretmek için bir laboratuvar ayarlayın
-Bu makalede, Linux'ta kabuk komut dosyası öğretmek için nasıl bir laboratuvar kurabileceğinizi gösterilmektedir. Komut dosyası, yöneticilerin yinelenen görevlerden kaçınmasına olanak tanıyan sistem yönetiminin yararlı bir parçasıdır. Bu örnek senaryoda, sınıf geleneksel bash komut dosyalarını ve gelişmiş komut dosyalarını kapsar. Geliştirilmiş komut dosyaları bash komutları ve Ruby birleştiren komut dosyalarıvardır. Bu yaklaşım, Ruby'nin verileri çevreye aktarmasını ve komutların kabukla etkileşimkurmasını sağlar. 
+# <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvar kurun
+Bu makalede, Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarın nasıl ayarlanacağı gösterilmektedir. Komut dosyası, yöneticilerin yinelenen görevleri önlemeyi sağlayan, sistem yönetiminin yararlı bir parçasıdır. Bu örnek senaryoda, sınıfı geleneksel Bash betiklerini ve gelişmiş betikleri içerir. Gelişmiş betikler, Bash komutlarını ve Ruby 'yi birleştiren betiklerdir. Bu yaklaşım, Ruby 'nin kabuğa ve Bash komutlarına karşı etkileşimde bulunmak için veri geçmesini sağlar. 
 
-Bu komut dosyası sınıflarını alan öğrenciler, Linux'un temellerini öğrenmek için bir Linux sanal makine olsun, ve aynı zamanda bash kabuk komut dosyası aşina olsun. Linux sanal makine uzak masaüstü erişimi etkin ve [gedit](https://help.gnome.org/users/gedit/stable/) ve [Visual Studio Code](https://code.visualstudio.com/) metin editörleri yüklü ile birlikte gelir.
+Bu komut dosyası sınıflarını alan öğrenciler Linux 'un temel bilgilerini öğrenmenizi ve Bash Shell komut dosyası hakkında bilgi sahibi olmak için bir Linux sanal makinesi alır. Linux sanal makinesi, uzak masaüstü erişimi etkinleştirilmiş ve [gedit](https://help.gnome.org/users/gedit/stable/) ve [Visual Studio Code](https://code.visualstudio.com/) metin düzenleyicileri yüklüyken birlikte gelir.
 
 ## <a name="lab-configuration"></a>Laboratuvar yapılandırması
-Bu laboratuarı kurmak için başlamak için bir Azure aboneliğine ihtiyacınız var. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun. Azure aboneliğiniz olduktan sonra, Azure Laboratuvar Hizmetleri'nde yeni bir laboratuvar hesabı oluşturabilir veya varolan bir laboratuvar hesabını kullanabilirsiniz. Yeni bir laboratuvar hesabı oluşturmak için aşağıdaki [öğreticiye](tutorial-setup-lab-account.md)bakın: Laboratuvar Hesabı Kurma Öğreticisi.
+Bu Laboratuvarı kurmak için başlamak üzere bir Azure aboneliğine sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Azure aboneliğiniz olduğunda, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilir veya var olan bir laboratuvar hesabını kullanabilirsiniz. Yeni bir laboratuvar hesabı oluşturmak için aşağıdaki öğreticiye bakın: [Laboratuvar hesabı ayarlama öğreticisi](tutorial-setup-lab-account.md).
 
-Laboratuvar hesabını oluşturduktan sonra, laboratuvar hesabında aşağıdaki ayarları etkinleştirin: 
+Laboratuvar hesabını oluşturduktan sonra laboratuvar hesabında aşağıdaki ayarları etkinleştirin: 
 
-| Laboratuvar hesap ayarı | Yönergeler |
+| Laboratuvar hesabı ayarı | Yönergeler |
 | ----------- | ------------ |  
-| Pazar yeri görüntüleri | [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünü laboratuvar hesabınızda kullanmak üzere etkinleştirin. Daha fazla bilgi için laboratuvar [oluşturucularının kullanabileceği Market görüntülerini belirt](specify-marketplace-images.md)ini görün. | 
+| Market görüntüleri | Laboratuar hesabınızda kullanmak için [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünü etkinleştirin. Daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](specify-marketplace-images.md). | 
 
-Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [bu öğreticiizleyin:](tutorial-setup-classroom-lab.md)
+Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu öğreticiyi](tutorial-setup-classroom-lab.md) izleyin:
 
-| Laboratuvar ayarları | Değer/talimatlar | 
+| Laboratuvar ayarları | Değer/yönergeler | 
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük  |
-| VM görüntü | [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
-| Uzak masaüstü bağlantısını etkinleştirme | Etkinleştirmek. <p>Bu ayarı etkinleştirmek, öğretmenlerin ve öğrencilerin uzak masaüstünü (RDP) kullanarak VM'lerine bağlanmasına olanak sağlar. Daha fazla bilgi için bkz: [Azure Lab Services'daki bir laboratuvarda Linux sanal makineleri için uzak masaüstünü etkinleştir.](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm) </p>|
+| VM görüntüsü | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
+| Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin, Uzak Masaüstü (RDP) kullanarak VM 'lerine bağlanmasına imkan tanır. Daha fazla bilgi için bkz. [Azure Lab Services bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'Nü etkinleştirme](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
-## <a name="install-desktop-and-xrdp"></a>Masaüstü ve xrdp yükleme
-[Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsüvarsayılan olarak yüklü uzak masaüstü sunucusuna sahip değildir. Uzak masaüstü protokolü üzerinden bağlanmak için şablon makinesine gereken paketleri yüklemek için [Azure'daki bir Linux VM'ye bağlanmak için Uzak Masaüstü'nü Yükle ve yapılandırma](../../virtual-machines/linux/use-remote-desktop.md) yönergelerini izleyin.
+## <a name="install-desktop-and-xrdp"></a>Masaüstü ve xrdp 'yi yükler
+[Ubuntu server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünde varsayılan olarak uzak masaüstü sunucusu yüklü değil. Uzak Masaüstü Protokolü aracılığıyla bağlanmak üzere şablon makinesinde gerekli olan paketleri yüklemek için, [Uzak Masaüstü 'Nü yüklemek ve yapılandırmak Için Azure 'da bir LINUX VM 'ye bağlanma](../../virtual-machines/linux/use-remote-desktop.md) makalesindeki yönergeleri izleyin.
 
 ## <a name="install-ruby"></a>Ruby’yi yükleme
-Ruby bash komut dosyaları ile kombine edilebilir bir açık kaynak dinamik bir dildir. Bu bölümde `apt-get` [Ruby'nin](https://www.ruby-lang.org/)en son sürümünü yüklemek için nasıl kullanılacağı gösterilmektedir.
+Ruby, Bash betiklerle birleştirilebilecek açık kaynaklı bir dinamik dildir. Bu bölümde, [Ruby](https://www.ruby-lang.org/)'nin en `apt-get` son sürümünü yüklemek için nasıl kullanılacağı gösterilmektedir.
 
-1. Aşağıdaki komutları çalıştırarak güncelleştirmeleri yükleyin:
+1. Aşağıdaki komutları çalıştırarak güncelleştirmeleri yükler:
 
     ```bash
     sudo apt-get update 
     sudo apt-get upgrade 
     ```
-2.  [Ruby'yi](https://www.ruby-lang.org/)yükleyin.  Ruby bash komut dosyaları ile kombine edilebilir bir açık kaynak dinamik bir dildir. 
+2.  [Ruby](https://www.ruby-lang.org/)'yi yükler.  Ruby, Bash betiklerle birleştirilebilecek açık kaynaklı bir dinamik dildir. 
     
     ```bash
     sudo apt-get install ruby-full
     ```
 
-## <a name="install-development-tools"></a>Geliştirme araçlarını yükleme
-Bu bölümde, birkaç metin düzenleyicisinin nasıl yüklenirsiniz gösterilmektedir. Gedit gnome masaüstü ortamı için varsayılan metin düzenleyicisi. Genel amaçlı metin editörü olarak tasarlandı. Visual Studio Code hata ayıklama ve kaynak denetimi tümleştirme desteği içeren bir metin editörüdür.
+## <a name="install-development-tools"></a>Geliştirme araçları 'nı yükler
+Bu bölümde, birkaç metin Düzenleyicisi 'nin nasıl yükleneceği gösterilmektedir. Gedit, GNOME masaüstü ortamı için varsayılan metin düzenleyicisidir. Genel amaçlı metin düzenleyicisi olarak tasarlanmıştır. Visual Studio Code, hata ayıklama ve kaynak denetimi tümleştirmesi için destek içeren bir metin düzenleyicisidir.
 
 > [!NOTE]
-> Birkaç farklı metin editörleri mevcuttur. Visual Studio Code ve gedit sadece iki örnektir.
+> Kullanılabilir birkaç farklı metin Düzenleyicisi vardır. Visual Studio Code ve gedit yalnızca iki örnektir.
 
-1. [Gedit yükleyin.](https://help.gnome.org/users/gedit/stable/)
+1. [Gedit](https://help.gnome.org/users/gedit/stable/)'yi yükler.
 
     ```bash
     sudo apt-get install gedit
     ```
-1. [Visual Studio Kodunu](https://code.visualstudio.com/)Yükleyin.  Visual Studio kodu Snap Store kullanılarak yüklenebilir.  Alternatif yükleme seçenekleri için [Visual Studio Code alternatif indirmelere](https://code.visualstudio.com/#alt-downloads)bakın.
+1. [Visual Studio Code](https://code.visualstudio.com/)'i yükler.  Visual Studio Code, Snap Store kullanılarak yüklenebilir.  Alternatif yükleme seçenekleri için bkz. [Visual Studio Code alternatif İndirmeleri](https://code.visualstudio.com/#alt-downloads).
 
     ```bash
     sudo snap install vscode --classic 
     ```
 
-    Şablon artık güncelleştirildi ve laboratuarı tamamlamak için gereken programlama dili ve geliştirme araçlarına sahiptir. Şablon görüntüsü artık laboratuvarda yayımlanabilir. Şablonu laboratuvarda yayınlamak için şablon **sayfasındayayım** düğmesini seçin.  
+    Şablon artık güncellenir ve Laboratuvarı tamamlaması için gereken programlama diline ve geliştirme araçlarına sahiptir. Şablon görüntüsü artık laboratuvara yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.  
 
 ## <a name="cost"></a>Maliyet 
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz:
  
-20 saatlik planlanan ders süresi ve ödev veya ödevler için 10 saatlik kontenjanı olan 25 öğrenciden oluşan bir sınıf için, laboratuvar fiyatı: 
+20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrenciye sahip bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 
 
-25 öğrenci * (20 + 10) saat * 20 Laboratuvar Birimi * 0,01 USD /saat = 150 USD
+25 öğrenci * (20 + 10) saat * 20 laboratuvar birimi * 0,01 ABD Doları/150 saat
 
-Fiyatlandırma hakkında daha fazla bilgi için aşağıdaki belgede bulunabilir: [Azure Lab Hizmetleri Fiyatlandırması.](https://azure.microsoft.com/pricing/details/lab-services/)
+Fiyatlandırma hakkında daha fazla bilgi için şu belgede bulunabilir: [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Sonuç
-Bu makalede, komut dosyası sınıfları için bir laboratuvar oluşturmak için adımlar boyunca yürüdü. Bu makalede, Linux makinesinde Ruby komut dosyası oluşturma araçları nın ayarlanması üzerinde durulsa da, aynı kurulum Linux'ta Python gibi diğer komut dosyası sınıfları için kullanılabilir.
+Bu makale, komut dosyası sınıfları için Laboratuvar oluşturma adımlarında size yardımcı olacak. Bu makale, Linux makinesinde Ruby betik araçları ayarlamaya odaklanırken, Linux üzerinde Python gibi diğer betik sınıfları için de aynı kurulum kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sonraki adımlar herhangi bir laboratuvar kurmak için ortak:
+Sonraki adımlar herhangi bir laboratuvarı ayarlamak için ortaktır:
 
 - [Kullanıcı ekle](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kota ayarlama](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zamanlama ayarlama](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Öğrencilere e-posta kayıt bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [Öğrenciler Için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users). 
 
 
 

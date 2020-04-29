@@ -1,7 +1,7 @@
 ---
-title: Metin Birleştirme bilişsel beceri
+title: Metin birleştirme Bilişsel Beceri
 titleSuffix: Azure Cognitive Search
-description: Alanlar koleksiyonundan gelen metni tek birleştirilmiş alanda birleştirin. Bu bilişsel beceriyi Azure Bilişsel Arama'daki bir AI zenginleştirme boru hattında kullanın.
+description: Bir alan koleksiyonundan metin birleştirme birleştirilmiş bir alan. Azure Bilişsel Arama 'deki bir AI zenginleştirme ardışık düzeninde bu bilişsel yeteneği kullanın.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162353"
 ---
-#   <a name="text-merge-cognitive-skill"></a>Metin Birleştirme bilişsel beceri
+#   <a name="text-merge-cognitive-skill"></a>Metin birleştirme Bilişsel Beceri
 
-**Metin Birleştirme** becerisi, alan koleksiyonundaki metni tek bir alanda birleştirir. 
+**Metin birleştirme** yeteneği, bir alan koleksiyonundan metni tek bir alanda birleştirir. 
 
 > [!NOTE]
-> Bu beceri Bilişsel Hizmetler API'sine bağlı değildir ve bunu kullanmak için ücret alınmaz. Yine de, günlük günlük zenginleştirmeler az sayıda sizi sınırlayan **Ücretsiz** kaynak seçeneği geçersiz kılmak için, [bilişsel hizmetler kaynak eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir.
+> Bu yetenek bilişsel hizmetler API 'SI ile bağlantılı değildir ve bunu kullanmak için ücretlendirilirsiniz. Yine de bir bilişsel [Hizmetler kaynağı iliştirmelisiniz](cognitive-search-attach-cognitive-services.md), ancak her gün çok az sayıda günlük zenginleştirme için sizi sınırlayan **ücretsiz** Kaynak seçeneğini geçersiz kılabilirsiniz.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.MergeSkill
+Microsoft. yetenekler. Text. Mergeskıll
 
-## <a name="skill-parameters"></a>Beceri parametreleri
+## <a name="skill-parameters"></a>Yetenek parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| eklemePreTag  | Her eklemeden önce eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için `""`değeri .  |
-| insertPostTag | Her eklemeden sonra eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için `""`değeri .  |
+| ınsertpretag  | Her ekleme işleminden önce eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için değerini olarak `""`ayarlayın.  |
+| ınsertposttag | Her ekleme işleminden sonra eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için değerini olarak `""`ayarlayın.  |
 
 
 ##  <a name="sample-input"></a>Örnek giriş
-Bu beceri için kullanılabilir girdi sağlayan bir JSON belge olabilir:
+Bu yetenek için kullanılabilir giriş sağlayan bir JSON belgesi şu olabilir:
 
 ```json
 {
@@ -55,7 +55,7 @@ Bu beceri için kullanılabilir girdi sağlayan bir JSON belge olabilir:
 ```
 
 ##  <a name="sample-output"></a>Örnek çıktı
-Bu örnek, *insertPreTag'ın ,insertPostTag* olarak ayarlı `" "` *insertPostTag* olduğunu varsayarak önceki `""`girişin çıktısını gösterir. 
+Bu örnek, *ınsertpretag* öğesinin olarak ayarlandığı `" "`ve *ınsertposttag* 'in olarak `""`ayarlandığı varsayıldığında, önceki girdinin çıktısını gösterir. 
 
 ```json
 {
@@ -73,9 +73,9 @@ Bu örnek, *insertPreTag'ın ,insertPostTag* olarak ayarlı `" "` *insertPostTag
 
 ## <a name="extended-sample-skillset-definition"></a>Genişletilmiş örnek beceri tanımı
 
-Metin Birleştirme'yi kullanmak için yaygın bir senaryo, görüntülerin metingösterimini (OCR becerisinden metin veya görüntünün alt yazısı) belgenin içerik alanına birleştirmektir. 
+Metin birleştirme kullanmanın yaygın bir senaryosu, görüntülerin metinsel gösterimini (bir OCR becerinden gelen metin veya bir görüntünün resim yazısı) belgenin içerik alanına birleştirmektir. 
 
-Aşağıdaki örnek skillset, belgeye katıştak resimlerden metin ayıklamak için OCR becerisini kullanır. Ardından, her görüntüden hem özgün hem de OKK'lu metin içerecek bir *merged_text* alanı oluşturur. [Burada](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)OCR beceri hakkında daha fazla bilgi edinebilirsiniz.
+Aşağıdaki örnek Beceri, belgeye katıştırılmış görüntülerden metin ayıklamak için OCR becerisi kullanır. Sonra, her görüntüden hem özgün hem de OCRed metin içeren bir *merged_text* alanı oluşturur. [Burada](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)OCR yeteneği hakkında daha fazla bilgi edinebilirsiniz.
 
 ```json
 {
@@ -126,7 +126,7 @@ Aşağıdaki örnek skillset, belgeye katıştak resimlerden metin ayıklamak i�
   ]
 }
 ```
-Yukarıdaki örnekte, normalleştirilmiş görüntüler alanı nın var olduğu varsayar. Normalleştirilmiş görüntüler alanını elde etmek için, aşağıda gösterildiği gibi *Normalleştirilmiş Görüntüler oluşturmak* için dizinleyici tanımınızda *imageAction* yapılandırmasını ayarlayın:
+Yukarıdaki örnekte, normalleştirilmiş görüntüler alanının var olduğu varsayılır. Normalleştirilmiş görüntüler alanını almak için, Indexer tanımınızdaki *ımageaction* yapılandırmasını aşağıda gösterildiği gibi *Generatenormalizediges* olarak ayarlayın:
 
 ```json
 {
@@ -143,5 +143,5 @@ Yukarıdaki örnekte, normalleştirilmiş görüntüler alanı nın var olduğu 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Dizin Oluşturucu Oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

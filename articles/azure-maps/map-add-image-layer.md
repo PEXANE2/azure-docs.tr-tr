@@ -1,6 +1,6 @@
 ---
-title: Haritaya Resim katmanı ekleme | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar Web SDK'sını kullanarak bir resmin haritaya nasıl yer üstü yatıracağınız hakkında bilgi edineceksiniz.
+title: Haritaya görüntü katmanı ekleme | Microsoft Azure haritaları
+description: Bu makalede, harita üzerinde Microsoft Azure haritaları Web SDK 'sını kullanarak bir görüntünün nasıl kaplayacağınızı öğreneceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,24 +10,24 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77209724"
 ---
-# <a name="add-an-image-layer-to-a-map"></a>Haritaya resim katmanı ekleme
+# <a name="add-an-image-layer-to-a-map"></a>Haritaya görüntü katmanı ekleme
 
-Bu makalede, bir görüntüyü sabit bir koordinat kümesine nasıl yerleştirirsiniz gösterilmektedir. Haritalarda yer alabilen farklı resim türlerine birkaç örnek aşağıda verilmiştir:
+Bu makalede bir görüntünün sabit bir koordinat kümesiyle nasıl kaplama yapılacağı gösterilir. Haritalar üzerinde kaplama olabilecek farklı görüntü türlerine birkaç örnek aşağıda verilmiştir:
 
-* İnsansız hava araçlarından çekilen görüntüler
-* Bina kat planları
+* Dronlarla 'den yakalanan görüntüler
+* Floorplanlar oluşturma
 * Geçmiş veya diğer özel harita görüntüleri
-* İş yerlerinin planları
-* Hava radarı görüntüleri
+* İş sitelerinin şemaları
+* Hava durumu radar resimleri
 
 > [!TIP]
-> [ImageLayer,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) bir resmi haritaya kaplamanın kolay bir yoludur. Tarayıcıların büyük bir görüntü yüklemede zorluk çekebileceğini unutmayın. Bu durumda, görüntünüzü kutucuklara bölmeyi ve bunları Bir [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)olarak haritaya yüklemeyi düşünün.
+> Bir [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , bir harita üzerindeki görüntüyü kaplama için kolay bir yoldur. Tarayıcıların büyük bir görüntüyü yükleme güçlüğü olabileceğini unutmayın. Bu durumda, görüntünüzü kutucuklara bölmek ve bir [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)olarak haritaya yüklemek göz önünde bulundurun.
 
 Görüntü katmanı aşağıdaki görüntü biçimlerini destekler:
 
@@ -38,7 +38,7 @@ Görüntü katmanı aşağıdaki görüntü biçimlerini destekler:
 
 ## <a name="add-an-image-layer"></a>Görüntü katmanı ekleme
 
-Aşağıdaki [kod, 1922'de newark, New Jersey haritasının](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) bir resmini haritaya bindirmektedir. [ImageLayer,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) bir görüntüye URL geçirerek oluşturulur ve biçimdeki `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`dört köşenin koordinatları.
+Aşağıdaki kod, haritadaki [1922 ' den bir Newark, New Jersey haritasının](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) bir görüntüsünü yer paylaşımlı olarak yer alır. Bir [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , BIR görüntüye URL geçirerek ve biçimdeki `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`dört köşelerin koordinatları ile oluşturulur.
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -53,31 +53,31 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-Burada, önceki kodun tam çalışan kod örneği vereyim.
+Önceki kodun çalışan kod örneğinin tamamı aşağıda verilmiştir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Basit Görüntü Katmanı' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem Basit Resim <a href='https://codepen.io/azuremaps/pen/eQodRo/'>Katmanına</a> bakın .
+<iframe height='500' scrolling='no' title='Basit görüntü katmanı' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/eQodRo/'>basit görüntü katmanına</a> bakın.
 </iframe>
 
-## <a name="import-a-kml-file-as-ground-overlay"></a>Zemin kaplaması olarak bir KML dosyaalma
+## <a name="import-a-kml-file-as-ground-overlay"></a>KML dosyasını arka plan kaplaması olarak içeri aktarma
 
-Bu örnek, haritaüzerinde bir görüntü katmanı olarak KML yer kaplaması bilgilerinin nasıl ekleyeceğini gösterir. KML yer kaplamaları kuzey, güney, doğu ve batı koordinatları sağlar ve saat yönünün tersine döner. Ancak, görüntü katmanı görüntünün her köşesi için koordinatlar bekler. Bu örnekteki KML yer kaplaması Chartres katedrali içindir ve [Wikimedia'dan](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)temin edilebistir.
+Bu örnek, KML zemin kaplama bilgilerinin haritada görüntü katmanı olarak nasıl ekleneceğini gösterir. KML zemin Yerpaylaşımları, Kuzey, Güney, Doğu ve Batı koordinatları ve saat yönünde bir döndürme sağlar. Ancak, görüntü katmanı görüntünün her köşesi için koordinatları bekler. Bu örnekteki KML zemin kaplaması, Chartres Cathedral içindir ve [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)'dan kaynaklıdır.
 
-Kod, `getCoordinatesFromEdges` [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) sınıfındaki statik işlevi kullanır. KML yer kaplamasının kuzey, güney, doğu, batı ve dönüş bilgilerini kullanarak görüntünün dört köşesini hesaplar.
+Kod, [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) sınıfından `getCoordinatesFromEdges` statik işlevi kullanır. KML zemin kaplamanın Kuzey, Güney, Doğu, Batı ve döndürme bilgilerini kullanarak görüntünün dört köşesini hesaplar.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Görüntü Katmanı Olarak KML Yer Kaplaması' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a>Kalem <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML Yer Kaplamasını</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Haritalar'a göre Görüntü Katmanı olarak görün ( )
+<iframe height='500' scrolling='no' title='Görüntü katmanı olarak KML zemin kaplaması' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. Pen <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML zemin kaplaması</a> , <a href='https://codepen.io'>codepen</a>üzerinde Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() ile görüntü katmanı olarak.
 </iframe>
 
-## <a name="customize-an-image-layer"></a>Resim katmanını özelleştirme
+## <a name="customize-an-image-layer"></a>Görüntü katmanını özelleştirme
 
-Görüntü katmanıbirçok stil seçeneği vardır. İşte bunları denemek için bir araçtır.
+Görüntü katmanında birçok stil seçeneği vardır. İşte denemek için bir araç.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Görüntü Katmanı Seçenekleri' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>CodePen'de Azure Haritalar'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem Görüntü Katmanı <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Seçenekleri</a> <a href='https://codepen.io'>'ne</a>bakın .
+<iframe height='700' scrolling='no' title='Görüntü katmanı seçenekleri' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>resim katmanı seçeneklerine</a> bakın.
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -85,10 +85,10 @@ Görüntü katmanıbirçok stil seçeneği vardır. İşte bunları denemek içi
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
+> [Imagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [ImageLayerSeçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
+> [Imagelayeroptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
 
 Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
 

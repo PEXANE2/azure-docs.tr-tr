@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Yapılandırması anahtar değeri olaylarına tepki verme
-description: Uygulama Yapılandırma olaylarına abone olmak için Azure Olay Ağıt'ı kullanın.
+title: Azure Uygulama yapılandırması anahtar-değer olaylarına yeniden davranıyor
+description: Uygulama yapılandırma olaylarına abone olmak için Azure Event Grid kullanın.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
@@ -8,48 +8,48 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523807"
 ---
-# <a name="reacting-to-azure-app-configuration-events"></a>Azure Uygulama Yapılandırma sı olaylarına tepki verme
+# <a name="reacting-to-azure-app-configuration-events"></a>Azure uygulama yapılandırma olaylarına yeniden davranıma
 
-Azure Uygulama Yapılandırma olayları, uygulamaların anahtar değerlerdeki değişikliklere tepki göstermesini sağlar. Bu karmaşık kod veya pahalı ve verimsiz yoklama hizmetleri gerek kalmadan yapılır. Bunun yerine, etkinlikler [Azure Etkinlik Izgarası](https://azure.microsoft.com/services/event-grid/) üzerinden [Azure İşlevleri,](https://azure.microsoft.com/services/functions/) [Azure Mantık Uygulamaları](https://azure.microsoft.com/services/logic-apps/)ve hatta kendi özel http dinleyiciniz gibi abonelere itilir. Kritik olarak, sadece kullandığınız kadar ödeme.
+Azure uygulama yapılandırma olayları, uygulamaların anahtar değerlerinde değişikliklere tepki vermesini sağlar. Bu, karmaşık kod veya pahalı ve verimsiz yoklama Hizmetleri gerekmeden yapılır. Bunun yerine, olaylar [Azure işlevleri](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)gibi abonelere veya kendi özel http dinleyicinize de [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderilir. Kritik ölçüde, yalnızca kullandığınız kadar ödersiniz.
 
-Azure Uygulama Yapılandırma etkinlikleri, zengin yeniden deneme ilkeleri ve ölü harf teslimatı yoluyla uygulamalarınız için güvenilir teslimat hizmetleri sağlayan Azure Etkinlik Ağıtı'na gönderilir. Daha fazla bilgi için [Olay Izgara iletisi teslimi ve yeniden deneyin.](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)
+Azure uygulama yapılandırma olayları, zengin yeniden deneme ilkeleri ve atılacak mektup teslimi aracılığıyla uygulamalarınıza güvenilir teslim hizmetleri sağlayan Azure Event Grid gönderilir. Daha fazla bilgi edinmek için bkz. [ileti teslimi Event Grid ve yeniden deneyin](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
-Yaygın Uygulama Yapılandırması olay senaryoları, uygulama yapılandırmasının yenilenmesi, dağıtımların tetiklemesine veya yapılandırmaya yönelik iş akışını içerir. Değişiklikler seyrek olduğunda, ancak senaryonuz anında yanıt verme gerektiriyorsa, olay tabanlı mimari özellikle verimli olabilir.
+Ortak uygulama yapılandırma olay senaryoları, uygulama yapılandırmasını yenilemeyi, dağıtımları tetiklemeyi veya herhangi bir yapılandırmaya dayalı iş akışını içerir. Değişiklikler seyrek olduğunda, ancak senaryonuz anında yanıt vermeyi gerektirdiğinde, olay tabanlı mimari özellikle etkili olabilir.
 
-Hızlı bir örnek için Özel bir web bitiş noktasına Route Azure Uygulama Yapılandırma olaylarına bir göz atın [- CLI.](./howto-app-configuration-event.md) 
+[Azure uygulama yapılandırma olaylarını hızlı bir örnek için özel bir Web uç noktasına yönlendir-CLI](./howto-app-configuration-event.md) bölümüne göz atın. 
 
-![Olay Izgara Modeli](./media/event-grid-functional-model.png)
+![Event Grid modeli](./media/event-grid-functional-model.png)
 
-## <a name="available-azure-app-configuration-events"></a>Kullanılabilir Azure Uygulama Yapılandırma etkinlikleri
-Olay [ızgarası,](../event-grid/concepts.md#event-subscriptions) olay iletilerini abonelere yönlendirmek için olay aboneliklerini kullanır. Azure Uygulama Yapılandırma sı, iki tür olay içerebilir:  
+## <a name="available-azure-app-configuration-events"></a>Kullanılabilir Azure uygulama yapılandırma olayları
+Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](../event-grid/concepts.md#event-subscriptions) kullanır. Azure uygulama yapılandırma olay abonelikleri iki tür olay içerebilir:  
 
 > |Olay Adı|Açıklama|
 > |----------|-----------|
-> |`Microsoft.AppConfiguration.KeyValueModified`|Anahtar değeri oluşturulduğunda veya değiştirildiğinde ateşlendi|
-> |`Microsoft.AppConfiguration.KeyValueDeleted`|Anahtar değeri silindiğinde ateşlendi|
+> |`Microsoft.AppConfiguration.KeyValueModified`|Anahtar-değer oluşturulduğunda veya değiştirildiğinde tetiklenir|
+> |`Microsoft.AppConfiguration.KeyValueDeleted`|Anahtar-değer silindiğinde harekete geçirilir|
 
 ## <a name="event-schema"></a>Olay şeması
-Azure Uygulama Yapılandırma etkinlikleri, verilerinizdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft.AppConfiguration" ile başladığı için bir Uygulama Yapılandırması olayını tanımlayabilirsiniz. Olay Izgara olay özelliklerinin kullanımı hakkında ek bilgiler [Olay Grid olay şemasında](../event-grid/event-schema.md)belgelenmiştir.  
+Azure uygulama yapılandırma olayları, verilerdeki değişikliklere yanıt vermek için gereken tüm bilgileri içerir. EventType özelliği "Microsoft. AppConfiguration" ile başladığı için bir uygulama yapılandırma olayını tanımlayabilirsiniz. Event Grid olay özelliklerinin kullanımı hakkında ek bilgiler [Event Grid olay şeması](../event-grid/event-schema.md)'nda belgelenmiştir.  
 
 > |Özellik|Tür|Açıklama|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |konu başlığı|string|Etkinliği yayıtan Uygulama Yapılandırmasının Tam Azure Kaynak Yöneticisi kimliği.|
-> |Konu|string|Olayın konusu olan anahtar değerinin URI'si.|
+> |konu başlığı|string|Olayı gösteren uygulama yapılandırmasının tam Azure Resource Manager kimliği.|
+> |Konu|string|Olayın konusu olan anahtar-değer URI 'SI.|
 > |eventTime|string|Olayın oluşturulduğu tarih/saat, ISO 8601 biçiminde.|
-> |Eventtype|string|"Microsoft.AppConfiguration.KeyValueModified" veya "Microsoft.AppConfiguration.KeyValueDeleted".|
-> |Kimlik|string|Bu olayın benzersiz bir tanımlayıcısı.|
+> |Türü|string|"Microsoft. AppConfiguration. KeyValueModified" veya "Microsoft. AppConfiguration. KeyValueDeleted".|
+> |Kimlik|string|Bu olayın benzersiz tanımlayıcısı.|
 > |dataVersion|string|Veri nesnesinin şema sürümü.|
 > |metadataVersion|string|Üst düzey özelliklerin şema sürümü.|
-> |veri|object|Azure Uygulama Yapılandırması'na özgü olay verilerinin toplanması|
-> |data.key|string|Değiştirilen veya silinen anahtar değerinin anahtarı.|
-> |data.label|string|Değiştirilen veya silinen anahtar değerinin etiketi.|
-> |data.etag|string|Yeni `KeyValueModified` anahtar değerinin eetiketi için. Silinen anahtar değerinin eetiketi için. `KeyValueDeleted`|
+> |veri|object|Azure Uygulama yapılandırmasına özgü olay verileri koleksiyonu|
+> |Data. Key|string|Değiştirilen veya silinen anahtar-değer anahtarı.|
+> |Data. Label|string|Değiştirilen veya silinen anahtar-değer etiketi.|
+> |Data. ETag|string|Yeni `KeyValueModified` anahtar-değer ETag için. Silinen `KeyValueDeleted` anahtar değerinin ETag 'i için.|
 
 KeyValueModified olayına bir örnek aşağıda verilmiştir:
 ```json
@@ -70,21 +70,21 @@ KeyValueModified olayına bir örnek aşağıda verilmiştir:
 
 ```
 
-Daha fazla bilgi için Azure [Uygulama Yapılandırma etkinlikleri şemasına](../event-grid/event-schema-app-configuration.md)bakın.
+Daha fazla bilgi için bkz. [Azure uygulama yapılandırma olayları şeması](../event-grid/event-schema-app-configuration.md).
 
-## <a name="practices-for-consuming-events"></a>Etkinlikleri tüketme uygulamaları
-Uygulama Yapılandırma olaylarını işleyen uygulamalar aşağıdaki uygulamaları izlemelidir:
+## <a name="practices-for-consuming-events"></a>Olayları tüketen uygulamalar
+Uygulama yapılandırma olaylarını işleyen uygulamalar aşağıdaki önerilen yöntemleri izlemelidir:
 > [!div class="checklist"]
-> * Olayları aynı olay işleyicisine yönlendirmek için birden çok abonelik yapılandırılabilir, bu nedenle olayların belirli bir kaynaktan geldiğini varsaymayın. Bunun yerine, uygulamayı yapılandırma örneğinin olayı gönderdiğinden emin olmak için iletinin konusunu denetleyin.
-> * eventType'ı denetleyin ve aldığınız tüm olayların beklediğiniz türler olacağını düşünmeyin.
-> * Nesneler hakkındaki bilgilerinizin hala güncel olup olmadığını anlamak için etag alanlarını kullanın.  
-> * Belirli bir nesnedeki olayların sırasını anlamak için sıralayıcı alanlarını kullanın.
-> * Değiştirilen anahtar değerine erişmek için konu alanını kullanın.
+> * Birden çok abonelik olayları aynı olay işleyicisine yönlendirmek üzere yapılandırılabilir, bu nedenle olayların belirli bir kaynaktan olduğunu varsaymayın. Bunun yerine, olayı gönderen uygulama yapılandırma örneğinin olduğundan emin olmak için iletinin konusunu kontrol edin.
+> * EventType olduğunu kontrol edin ve aldığınız tüm olayların istediğiniz tür olacağını varsaymayın.
+> * Nesneler hakkındaki bilgilerinizin hala güncel olup olmadığını anlamak için ETag alanlarını kullanın.  
+> * Belirli bir nesne üzerindeki olayların sırasını anlamak için sıralayıcı alanlarını kullanın.
+> * Değiştirilen anahtar değere erişmek için konu alanını kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Olay Ağı'sı hakkında daha fazla bilgi edinin ve Azure Uygulama Yapılandırma etkinliklerini deneyin:
+Event Grid hakkında daha fazla bilgi edinin ve Azure uygulama yapılandırma olaylarına bir deneme hakkı verin:
 
 - [Event Grid Hakkında](../event-grid/overview.md)
-- [Azure Uygulama Yapılandırma olaylarını özel bir web bitiş noktasına yönlendirme](./howto-app-configuration-event.md)
+- [Azure uygulama yapılandırma olaylarını özel bir Web uç noktasına yönlendirme](./howto-app-configuration-event.md)

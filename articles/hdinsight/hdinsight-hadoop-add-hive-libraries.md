@@ -1,6 +1,6 @@
 ---
-title: Küme oluşturma sırasında Apache Hive kitaplıkları - Azure HDInsight
-description: Küme oluşturma sırasında bir HDInsight kümesine Apache Hive kitaplıklarını (kavanoz dosyaları) nasıl ekleyeceğinizi öğrenin.
+title: Küme oluşturma sırasında kitaplıklar Apache Hive-Azure HDInsight
+description: Küme oluşturma sırasında bir HDInsight kümesine Apache Hive kitaplıklarının (jar dosyaları) nasıl ekleneceğini öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471032"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight kümenizi oluştururken özel Apache Hive kitaplıkları ekleyin
 
-HDInsight'ta [Apache Hive](https://hive.apache.org/) kitaplıklarını önceden nasıl yükleyeceğinizi öğrenin. Bu belge, küme oluşturma sırasında kitaplıkları önceden yüklemek için Komut Dosyası Eylemi kullanma hakkında bilgi içerir. Bu belgedeki adımları kullanarak eklenen kitaplıklar Hive'da genel olarak kullanılabilir - bunları yüklemek için [ADD JAR'ı](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) kullanmanıza gerek yoktur.
+HDInsight 'ta [Apache Hive](https://hive.apache.org/) kitaplıklarını önceden yüklemeyi öğrenin. Bu belge, küme oluşturma sırasında kitaplıkları önceden yüklemek için bir betik eylemi kullanmayla ilgili bilgiler içerir. Bu belgedeki adımlar kullanılarak eklenen kitaplıklar, Hive içinde genel kullanıma sunulmuştur. yüklemek için [jar Ekle](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) ' nin kullanılmasına gerek yoktur.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Bir küme oluştururken, küme düğümlerini oluşturulurken değiştirmek için Bir Komut Dosyası Eylemi kullanabilirsiniz. Bu belgedeki komut dosyası, kitaplıkların konumu olan tek bir parametreyi kabul eder. Bu konum bir Azure Depolama Hesabı'nda olmalıdır ve kitaplıklar kavanoz dosyaları olarak depolanmalıdır.
+Bir küme oluştururken, küme düğümlerini oluşturuldukları sırada değiştirmek için bir betik eylemi kullanabilirsiniz. Bu belgedeki betik, kitaplıkların konumu olan tek bir parametreyi kabul eder. Bu konum bir Azure depolama hesabında olmalıdır ve kitaplıkların jar dosyaları olarak depolanması gerekir.
 
-Küme oluşturma sırasında, komut dosyası dosyaları sayısallandırır, baş `/usr/lib/customhivelibs/` ve alt düğümlerde dizin için kopyalar, `hive.aux.jars.path` sonra `core-site.xml` dosyadaki özelliğe ekler. Linux tabanlı kümelerde, dosyayı `hive-env.sh` dosyaların konumuyla birlikte güncelleştirir.
+Küme oluşturma sırasında betik, dosyaları numaralandırır, bunları baş ve çalışan düğümlerinde `/usr/lib/customhivelibs/` dizine kopyalar ve ardından bunları `hive.aux.jars.path` `core-site.xml` dosyadaki özelliğine ekler. Linux tabanlı kümeler üzerinde `hive-env.sh` dosya konumuyla birlikte dosyayı da güncelleştirir.
 
-Bu makalede komut dosyası eylem kullanarak **WebHCat**ve **HiveServer2**için bir Hive istemcisi kullanırken kitaplıklar kullanılabilir hale getirir.
+Bu makaledeki betik eyleminin kullanılması, **Web Hcat**ve **HiveServer2**için Hive istemcisi kullanılırken kitaplıkları kullanılabilir hale getirir.
 
-## <a name="the-script"></a>Komut dosyası
+## <a name="the-script"></a>Betik
 
 **Betik konumu**
 
@@ -35,42 +35,42 @@ Bu makalede komut dosyası eylem kullanarak **WebHCat**ve **HiveServer2**için b
 
 ### <a name="requirements"></a>Gereksinimler
 
-* Komut dosyaları hem **Baş düğümlerine** hem de **İşçi düğümlerine**uygulanmalıdır.
+* Betikler hem **baş düğümlere** hem de **çalışan düğümlerine**uygulanmalıdır.
 
-* Yüklemek istediğiniz kavanozlar Azure Blob Depolama'da tek bir **kapta**saklanmalıdır.
+* Yüklemek istediğiniz jar dosyaları dışındaki 'ın Azure Blob depolama alanında **tek bir kapsayıcıda**depolanması gerekir.
 
-* Kavanoz dosyalarıkitaplığını içeren depolama hesabı, oluşturma sırasında HDInsight kümesine **bağlanmalıdır.** Varsayılan depolama hesabı veya __Depolama Hesabı Ayarları__aracılığıyla eklenen bir hesap olmalıdır.
+* Jar dosyalarının kitaplığını içeren depolama hesabı, oluşturma sırasında HDInsight **kümesine bağlanmalıdır.** Bu, varsayılan depolama hesabı ya da __depolama hesabı ayarları__aracılığıyla eklenmiş bir hesap olmalıdır.
 
-* Kapsayıcıya WASB yolu Komut Dosyası Eylem için bir parametre olarak belirtilmelidir. Örneğin, kavanozlar **mystorage**adlı bir depolama hesabında `wasbs://libs@mystorage.blob.core.windows.net/` **libs** adlı bir kapta depolanırsa, parametre .
+* Kapsayıcının ınsıb yolu, komut dosyası eyleminin parametresi olarak belirtilmelidir. Örneğin, JAR dosyaları dışındaki, **depolamam**adlı bir depolama hesabındaki `wasbs://libs@mystorage.blob.core.windows.net/` **LIBS** adlı bir kapsayıcıda depolanıyorsa parametre olur.
 
   > [!NOTE]  
-  > Bu belge, zaten bir depolama hesabı, blob kapsayıcı sıyrık oluşturduğunuzu ve dosyaları bu hesaba yüklediğinizi varsayar.
+  > Bu belge, zaten bir depolama hesabı, blob kapsayıcısı oluşturmuş olduğunuzu ve dosyaları ona yüklediğinizi varsayar.
   >
-  > Bir depolama hesabı oluşturmadıysanız, bunu Azure [portalı](https://portal.azure.com)üzerinden yapabilirsiniz. Daha sonra, hesapta bir kapsayıcı oluşturmak ve ona dosya yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/) gibi bir yardımcı program kullanabilirsiniz.
+  > Bir depolama hesabı oluşturmadıysanız, [Azure Portal](https://portal.azure.com)aracılığıyla bunu yapabilirsiniz. Daha sonra [Azure Depolama Gezgini](https://storageexplorer.com/) gibi bir yardımcı programını kullanarak hesapta bir kapsayıcı oluşturabilir ve dosyaları karşıya yükleyebilirsiniz.
 
-## <a name="create-a-cluster-using-the-script"></a>Komut dosyasını kullanarak küme oluşturma
+## <a name="create-a-cluster-using-the-script"></a>Betiği kullanarak bir küme oluşturma
 
-1. [Linux'taki Provision HDInsight kümelerinde](hdinsight-hadoop-provision-linux-clusters.md)adımları kullanarak bir küme yi sağlamaya başlayın, ancak sağlamayı tamamlamayın. Bu komut dosyasını kullanarak bir küme oluşturmak için Azure PowerShell veya HDInsight .NET SDK'yı da kullanabilirsiniz. Bu yöntemleri kullanma hakkında daha fazla bilgi için, [Bkz.](hdinsight-hadoop-customize-cluster-linux.md) Azure portalı için **Yapılandırma + fiyatlandırma** sekmesinden + komut dosyası ekle **eylemini**seçin.
+1. [Linux 'Ta HDInsight kümeleri sağlama](hdinsight-hadoop-provision-linux-clusters.md)bölümündeki adımları kullanarak bir kümeyi sağlamaya başlayın, ancak sağlamayı tamammayın. Bu betiği kullanarak bir küme oluşturmak için Azure PowerShell veya HDInsight .NET SDK 'sını de kullanabilirsiniz. Bu yöntemleri kullanma hakkında daha fazla bilgi için bkz. [HDInsight kümelerini betik eylemleriyle özelleştirme](hdinsight-hadoop-customize-cluster-linux.md). Azure portal için, **yapılandırma + fiyatlandırma** sekmesinden **+ betik Ekle eylemini**seçin.
 
-1. **Depolama**için, kavanoz dosyalarıkitaplığını içeren depolama hesabı küme için kullanılan hesaptan farklı olacaksa, **ek depolama hesaplarını**tamamlayın.
+1. **Depolama**için, jar dosyalarının kitaplığını içeren depolama hesabı, küme için kullanılan hesaptan farklı olur, **ek depolama hesapları**doldurun.
 
-1. **Komut Dosyası Eylemleri**için aşağıdaki bilgileri sağlayın:
+1. **Betik eylemleri**için aşağıdaki bilgileri sağlayın:
 
     |Özellik |Değer |
     |---|---|
-    |Komut dosyası türü|- Özel|
+    |Betik türü|-Özel|
     |Adı|Kitaplıklar |
-    |Bash script URI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
-    |Düğüm türü(ler)|Baş, İşçi|
-    |Parametreler|KAVANOZLARI içeren konteyner ve depolama hesabına WASB adresini girin. Örneğin, `wasbs://libs@mystorage.blob.core.windows.net/`.|
+    |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
+    |Düğüm türleri|Baş, çalışan|
+    |Parametreler|Cars 'ı içeren kapsayıcı ve depolama hesabına ait olan adresi girin. Örneğin, `wasbs://libs@mystorage.blob.core.windows.net/`.|
 
     > [!NOTE]
-    > Apache Spark 2.1 için, bu `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`bash script URI kullanın: .
+    > Apache Spark 2,1 için şu Bash betiği URI 'sini kullanın: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`.
 
-1. [Linux'taki Provision HDInsight kümelerinde](hdinsight-hadoop-provision-linux-clusters.md)açıklandığı gibi kümeyi sağlamaya devam edin.
+1. [Linux 'Ta HDInsight kümeleri sağlama](hdinsight-hadoop-provision-linux-clusters.md)bölümünde açıklandığı gibi kümeyi sağlamaya devam edin.
 
-Küme oluşturma tamamlandıktan sonra, `ADD JAR` deyimi kullanmak zorunda kalmadan Hive'dan bu komut dosyası na eklenen kavanozları kullanabilirsiniz.
+Küme oluşturma işlemi tamamlandıktan sonra, `ADD JAR` ifadesini kullanmak zorunda kalmadan Hive 'den bu komut dosyası aracılığıyla eklenen jar dosyaları dışındaki 'ı kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hive ile çalışma hakkında daha fazla bilgi için [HDInsight ile Apache Hive kullanın](hadoop/hdinsight-use-hive.md)
+Hive ile çalışma hakkında daha fazla bilgi için bkz. [HDInsight ile Apache Hive kullanma](hadoop/hdinsight-use-hive.md)

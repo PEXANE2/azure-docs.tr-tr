@@ -1,66 +1,66 @@
 ---
-title: Değişiklik akışı tahmincisi kullanın - Azure Cosmos DB
-description: Değişim akışı işlemcinizin ilerlemesini analiz etmek için değişim akışı tahmincisinin nasıl kullanılacağını öğrenin
+title: Değişiklik akışı tahmini Azure Cosmos DB kullanın
+description: Değişiklik akışı işlemcinizin ilerlemesini çözümlemek için değişiklik akışı tahmin aracı 'ı nasıl kullanacağınızı öğrenin
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77585297"
 ---
-# <a name="use-the-change-feed-estimator"></a>Değişiklik akışı tahmincisi kullanma
+# <a name="use-the-change-feed-estimator"></a>Değişiklik akışı tahmin aracı 'ı kullanın
 
-Bu makalede, değişiklik akışı akışı okurken [değişiklik akışı işlemci](./change-feed-processor.md) örneklerinin ilerlemesini nasıl izleyebileceğinizi açıklayınız.
+Bu makalede değişiklik akışını okurken [değişiklik akışı işlemci](./change-feed-processor.md) örneklerinizin ilerlemesini nasıl izleyebileceğinizi açıklar.
 
-## <a name="why-is-monitoring-progress-important"></a>İlerlemenin izlenmesi neden önemlidir?
+## <a name="why-is-monitoring-progress-important"></a>İzleme ilerleme durumu neden önemlidir?
 
-Değişiklik akışı işlemcisi, [değişiklik akışınızda](./change-feed.md) ilerleyen ve değişiklikleri bir temsilci uygulamasına teslim eden bir işaretçi gibi davranır. 
+Değişiklik akışı işlemcisi, [değişiklik akışınızda](./change-feed.md) ileri doğru hareket eden bir işaretçi görevi görür ve değişiklikleri bir temsilci uygulamasına gönderir. 
 
-Değişiklik akışı işlemci dağıtımınız, CPU, bellek, ağ gibi kullanılabilir kaynaklarına bağlı olarak değişiklikleri belirli bir hızda işleyebilir.
+Değişiklik akışı işlemcisi dağıtımı, CPU, bellek, ağ gibi kullanılabilir kaynaklara bağlı olarak belirli bir hızda değişiklik işleyebilir.
 
-Bu oran Azure Cosmos kapsayıcınızda değişikliklerinizin gerçekleşme hızından daha yavaşsa, işlemciniz geride kalmaya başlar.
+Bu oran, değişikliklerinizin Azure Cosmos kapsayıcısında gerçekleştiği orandan daha yavaşsa, işlemcinizin arkasında gecikme olacak şekilde bekleecektir.
 
-Bu senaryoyu tanımlamak, akış işlemcisi dağıtımımızı ölçeklendirmemiz gerekip gerekmeden anlamaya yardımcı olur.
+Bu senaryonun belirlenmesi, değişiklik akışı işlemci dağıtımınızı ölçeklendirmemiz gerektiğini anlamanıza yardımcı olur.
 
-## <a name="implement-the-change-feed-estimator"></a>Değişiklik akışı tahmincisi uygulama
+## <a name="implement-the-change-feed-estimator"></a>Değişiklik akışı tahmin aracı 'ı uygulama
 
-Değişiklik [beslemeişlemcisi](./change-feed-processor.md)gibi, değişiklik besleme tahmincisi de itme modeli olarak çalışır. Tahminci, son işlenen madde (kira kapsayıcısının durumuyla tanımlanan) ile kapsayıcıdaki en son değişiklik arasındaki farkı ölçer ve bu değeri bir temsilciye iter. Ölçümün alındığı aralık, varsayılan değeri 5 saniye olan özelleştirilebilir.
+[Değişiklik akışı işlemcisi](./change-feed-processor.md)gibi değişiklik akışı tahmini, bir gönderme modeli olarak da kullanılır. Tahmin Aracı, son işlenen öğe (kiralamalar kapsayıcısının durumu tarafından tanımlanır) ve kapsayıcıda en son değişiklik arasındaki farkı ölçecek ve bu değeri bir temsilciye göndermeyecektir. Ölçümün alındığı zaman aralığı, varsayılan değer olan 5 saniyeye de özelleştirilebilir.
 
-Örnek olarak, değişiklik beslemeişlemciniz şu şekilde tanımlanırsa:
+Örnek olarak, değişiklik akışı işlemciniz aşağıdaki gibi tanımlanır:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
-İşlemcinin bu şekilde kullandığını `GetChangeFeedEstimatorBuilder` ölçmek için bir tahmincinin başlatılmasının doğru yolu:
+İşlemcinin şu şekilde kullanılması `GetChangeFeedEstimatorBuilder` için bir tahmin aracı başlatmanın doğru yolu:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 
-Hem işlemcinin hem de tahmincinin aynı `leaseContainer` ve aynı adı paylaştığı yer.
+Hem işlemcinin hem de tahmin aracı aynı adı `leaseContainer` ve aynı adı paylaşır.
 
-Diğer iki parametre, işlemci tarafından **okunmayı bekleyen kaç değişiklik** olduğunu ve bu ölçümün alınmasını istediğiniz zaman aralığını temsil eden bir sayı alan temsilcidir.
+Diğer iki parametre, işlemci tarafından **okunmayı bekleyen kaç değişiklik** olduğunu ve bu ölçümün alınmasını istediğiniz zaman aralığını temsil eden bir sayı alacak olan temsilcidir.
 
-Tahmini alan bir temsilciörneği:
+Tahmini alan bir temsilci örneği şunlardır:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
 
-Bu tahmini izleme çözümünüze gönderebilir ve ilerlemenizin zaman içinde nasıl davrandığını anlamak için kullanabilirsiniz.
+Bu tahmini, izleme çözümünüze gönderebilir ve zaman içinde ilerleme durumunun nasıl davrandığınızı anlamak için kullanabilirsiniz.
 
 > [!NOTE]
-> Değişiklik akışı tahmincisinin, değişiklik akışı işlemcinizin bir parçası olarak dağıtılması veya aynı projenin bir parçası olması gerekmez. Bağımsız olabilir ve tamamen farklı bir durumda çalıştırAbilirsiniz. Sadece aynı adı ve kiralama yapılandırması kullanmanız gerekir.
+> Değişiklik akışı tahmin aracı 'ın, değişiklik akışı işlemcinizin bir parçası olarak dağıtılması veya aynı projenin bir parçası olması gerekmez. Bağımsız olabilir ve tamamen farklı bir örnekte çalıştırılabilir. Yalnızca aynı adı ve kira yapılandırmasını kullanması gerekir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [GitHub'da kullanım örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [GitHub'da ek örnekler](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [GitHub 'da kullanım örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [GitHub 'da ek örnekler](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi aşağıdaki makalelerde besleme işlemcisi değiştir hakkında daha fazla bilgi edinmek için devam edebilirsiniz:
+Şimdi aşağıdaki makalelerde akış işlemcisini Değiştir hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Değişiklik besleme işlemcisine genel bakış](change-feed-processor.md)
+* [Değişiklik akışı işlemcisine genel bakış](change-feed-processor.md)
 * [Değişiklik akışı işlemcisi başlangıç zamanı](how-to-configure-change-feed-start-time.md)

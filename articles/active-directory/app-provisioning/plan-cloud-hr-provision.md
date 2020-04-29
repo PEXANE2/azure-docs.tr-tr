@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory kullanıcı sağlama için bulut İk uygulamasını planlayın
-description: Bu makalede, İş Günü ve Başarı Faktörleri gibi bulut İk sistemlerini Azure Etkin Dizini ile tümleştirme dağıtım işlemi açıklanmaktadır. Azure AD'yi bulut İk sisteminizle tümleştirmek, tam bir kimlik yaşam döngüsü yönetim sistemi sağlar.
+title: Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
+description: Bu makalede, Azure Active Directory ile Workday ve başarılı etkenler gibi bulut HR sistemlerini tümleştirme dağıtım süreci açıklanmaktadır. Azure AD 'yi bulut HR sistemiyle tümleştirmek, bir kimlik yaşam döngüsü yönetim sistemiyle sonuçlanır.
 services: active-directory
 author: martincoetzer
 manager: CelesteDG
@@ -13,408 +13,408 @@ ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.openlocfilehash: 28abe2dfa5a1a13ba09e20202180cb5e47d94072
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522441"
 ---
-# <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory kullanıcı sağlama için bulut İk uygulamasını planlayın
+# <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
-Tarihsel olarak, BT personeli çalışanları oluşturmak, güncelleştirmek ve silmek için el ile yöntemlere güvendi. Çalışan verilerini eşitlemek için CSV dosyaları veya özel komut dosyaları yükleme gibi yöntemler kullandılar. Bu sağlama işlemleri hataya yatkın, güvensiz ve yönetilmesi zor.
+Geçmişte, BT personeli çalışanları oluşturmak, güncelleştirmek ve silmek için el ile gerçekleştirilen yöntemlere güvendi. Çalışan verilerini eşitlemek için CSV dosyalarını veya özel betikleri karşıya yükleme gibi yöntemleri kullandık. Bu sağlama işlemlerinde hata açık, güvensiz ve yönetimi zor.
 
-Çalışanların, satıcıların veya şartlı çalışanların kimlik yaşam döngülerini yönetmek için [Azure Active Directory (Azure AD) kullanıcı sağlama hizmeti](../app-provisioning/user-provisioning.md) bulut tabanlı insan kaynakları (İk) uygulamalarıyla entegrasyon sunar. Uygulamalara örnek olarak İş Günü veya SuccessFactors verilebilir.
+Çalışanların, satıcıların veya contentik çalışanların kimlik yaşam döngülerini yönetmek için [Azure Active Directory (Azure AD) Kullanıcı sağlama hizmeti](../app-provisioning/user-provisioning.md) , bulut tabanlı insan kaynakları (hr) uygulamalarıyla tümleştirme sunar. Uygulama örnekleri, Workday veya başarılı faktörleri içerir.
 
-Azure AD, aşağıdaki bulut İk uygulaması (uygulama) iş akışlarını etkinleştirmek için bu tümleştirmeyi kullanır:
+Azure AD, aşağıdaki bulut HR uygulaması (uygulama) iş akışlarını etkinleştirmek için bu tümleştirmeyi kullanır:
 
-- **Kullanıcıları Active Directory'ye sağlama:** Bir bulut İk uygulamasından seçilen kullanıcı kümelerini bir veya daha fazla Active Directory etki alanına sağlama.
-- **Azure AD'ye yalnızca bulut kullanıcıları sağlama:** Active Directory'nin kullanılmadığı senaryolarda, kullanıcıları doğrudan bulut İk uygulamasından Azure AD'ye kaydedin.
-- **Bulut İk uygulamasına geri yazın:** Azure AD'deki e-posta adreslerini ve kullanıcı adı özniteliklerini bulut İk uygulamasına geri yazın.
+- **Kullanıcıları Active Directory sağla:** Bir bulut HR uygulamasındaki seçili kullanıcı kümelerini bir veya daha fazla Active Directory etki alanına sağlayın.
+- **Azure AD 'ye yalnızca bulutta Kullanıcı sağlama:** Active Directory kullanılmayan senaryolarda, kullanıcıları doğrudan Cloud HR uygulamasından Azure AD 'ye sağlayın.
+- **Cloud HR uygulamasına geri yaz:** Azure AD 'den e-posta adreslerini ve Kullanıcı adı özniteliklerini Cloud HR uygulamasına geri yazın.
 
 > [!NOTE]
-> Bu dağıtım planı, Azure AD kullanıcı sağlama ile bulut İk uygulama iş akışlarınızı nasıl dağıtabileceğinizi gösterir. Otomatik kullanıcı sağlamanın yazılıma hizmet (SaaS) uygulamaları olarak nasıl dağıtılacak hakkında bilgi [için](https://aka.ms/deploymentplans/provisioning)bkz.
+> Bu dağıtım planı, Azure AD Kullanıcı sağlama ile bulut HR uygulaması iş akışlarınızı nasıl dağıtacağınızı gösterir. Hizmet olarak yazılım (SaaS) uygulamalarına otomatik Kullanıcı sağlamayı dağıtma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı sağlama dağıtımı planı](https://aka.ms/deploymentplans/provisioning).
 
-## <a name="enabled-hr-scenarios"></a>Etkin İk senaryoları
+## <a name="enabled-hr-scenarios"></a>Etkin HR senaryoları
 
-Azure AD kullanıcı sağlama hizmeti, aşağıdaki İk tabanlı kimlik yaşam döngüsü yönetimi senaryolarının otomasyonuna olanak tanır:
+Azure AD Kullanıcı sağlama hizmeti, aşağıdaki HR tabanlı kimlik yaşam döngüsü yönetimi senaryolarına yönelik Otomasyonu sunar:
 
-- **Yeni çalışan işe alım:** Bulut İk uygulamasına yeni bir çalışan eklendiğinde, bulut İk uygulamasına e-posta adresini ve kullanıcı adı özniteliklerini geri yazma seçeneğiyle Active Directory ve Azure AD'de otomatik olarak bir kullanıcı hesabı oluşturulur.
-- **Çalışan özniteliği ve profil güncelleştirmeleri:** Bulut İk uygulamasında ad, unvan veya yönetici gibi bir çalışan kaydı güncelleştirildiğinde, kullanıcı hesabı Active Directory ve Azure AD'de otomatik olarak güncelleştirilir.
-- **Çalışan sonlandırmaları:** Bulut İk uygulamasında bir çalışanın işine son verildiğinde, kullanıcı hesabı Active Directory ve Azure AD'de otomatik olarak devre dışı bırakılır.
-- **Çalışan yeniden işe:** Bir çalışan bulut İk uygulamasında yeniden işe alındığında, eski hesabı otomatik olarak yeniden etkinleştirilebilir veya Active Directory ve Azure AD'ye yeniden kullanılabilir.
+- **Yeni çalışan işe alım:** Bulut HR uygulamasına yeni bir çalışan eklendiğinde, Active Directory ve Azure AD 'de otomatik olarak bir kullanıcı hesabı oluşturulur. Bu seçenek, e-posta adresi ve Kullanıcı adı özniteliklerini bulut HR uygulamasına geri yazma seçeneğiyle birlikte otomatik olarak oluşturulur.
+- **Çalışan özniteliği ve profil güncelleştirmeleri:** Bulut HR uygulamasında ad, başlık veya yönetici gibi bir çalışan kaydı güncelleştirilirse, Kullanıcı hesapları Active Directory ve Azure AD 'de otomatik olarak güncelleştirilir.
+- **Çalışan sonlandırmaları:** Bulut HR uygulamasında bir çalışan sonlandırıldığında, Kullanıcı hesapları Active Directory ve Azure AD 'de otomatik olarak devre dışı bırakılır.
+- **Çalışan rehires:** Bulut HR uygulamasında bir çalışan yeniden işe alındığında, eski hesapları otomatik olarak yeniden etkinleştirilebilir veya Active Directory ve Azure AD 'ye yeniden sağlanabilir.
 
-## <a name="who-is-this-integration-best-suited-for"></a>Bu entegrasyon kimin için en uygun?
+## <a name="who-is-this-integration-best-suited-for"></a>Bu tümleştirme kim için en uygun?
 
-Azure AD kullanıcı sağlama ile bulut İk uygulaması entegrasyonu, aşağıdaki leri yapan kuruluşlar için idealdir:
+Azure AD Kullanıcı sağlama ile bulut HR uygulaması tümleştirmesi ideal olan kuruluşlar için idealdir:
 
-- Bulut İk kullanıcı sağlama için önceden oluşturulmuş, bulut tabanlı bir çözüm istiyorum.
-- Bulut İk uygulamasından Active Directory veya Azure AD'ye doğrudan kullanıcı sağlama gereksinimi.
-- Bulut İk uygulamasından elde edilen verileri kullanarak kullanıcıların sağlanmasını zorunlu kılmasını zorunlu kınla.
-- Yalnızca bulut İk uygulamasında algılanan değişiklik bilgilerine dayalı olarak, kullanıcıların bir veya daha fazla Active Directory ormanları, etki alanları ve OS'lerle eşitlenmelerini, taşımayı ve bırakmayı zorunlu kılmasını gerektirir.
-- E-posta için Office 365'i kullanın.
+- Bulut HR Kullanıcı sağlama için önceden oluşturulmuş, bulut tabanlı bir çözüm ister.
+- Bulut HR uygulamasından Active Directory veya Azure AD 'ye doğrudan kullanıcı sağlamayı gerektir.
+- Kullanıcılardan bulut HR uygulamasından elde edilen verileri kullanarak sağlanması gerekir.
+- Yalnızca bulut HR uygulamasında algılanan değişiklik bilgilerini temel alan bir veya daha fazla Active Directory ormanlara, etki alanına ve OU 'Lara katılmayı zorunlu kılın.
+- E-posta için Office 365 kullanın.
 
 ## <a name="learn"></a>Öğrenin
 
-Kullanıcı sağlama, sürekli kimlik yönetimi için bir temel oluşturur. Yetkili kimlik verilerine dayanan iş süreçlerinin kalitesini artırır.
+Kullanıcı hazırlama devam eden kimlik yönetimi için bir temel oluşturur. Yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir.
 
 ### <a name="terms"></a>Koşullar
 
-Bu makalede aşağıdaki terimler kullan›r:
+Bu makale aşağıdaki terimleri kullanır:
 
-- **Kaynak sistem**: Azure AD'nin karşıladığı kullanıcı deposu. İş Günü veya SuccessFactors gibi bir bulut İk uygulaması örneğidir.
-- **Hedef sistem**: Azure REKLAM'ın karşılık verdiği kullanıcı deposu. Etkin Dizin, Azure AD, Office 365 veya diğer SaaS uygulamaları bunlara örnek olarak verilebilir.
-- **Joiners-Movers-Leavers süreci**: Bir bulut İk uygulamasını kayıt sistemi olarak kullanarak yeni işe alımlar, transferler ve sonlandırma için kullanılan bir terimdir. Hizmet, hedef sisteme gerekli öznitelikleri başarıyla karşıladığında işlem tamamlar.
+- **Kaynak sistem**: Azure AD tarafından sağlanan kullanıcıların Havuzu. Örnek olarak, Workday veya başarılı etmenler gibi bir bulut HR uygulamasıdır.
+- **Hedef sistem**: Azure AD tarafından sağlanan kullanıcıların deposu. Örnekler şunlardır Active Directory, Azure AD, Office 365 veya diğer SaaS uygulamaları.
+- **Birleştiriciler-Taşımacılar**: BIR bulut HR uygulamasını bir kayıt sistemi olarak kullanarak yeni Hires, aktarımlar ve sonlandırma için kullanılan bir terim. Hizmet, hedef sisteme gerekli öznitelikleri başarıyla sağlarken işlem tamamlanır.
 
 ### <a name="key-benefits"></a>Önemli avantajlar
 
-İk odaklı BT sağlamanın bu özelliği aşağıdaki önemli iş avantajlarını sunar:
+Bu HR-odaklı BT sağlama özelliği, aşağıdaki önemli iş avantajlarını sunmaktadır:
 
-- **Üretkenliği artırın:** Artık kullanıcı hesaplarının ve Office 365 lisanslarının atamasını otomatikleştirebilir ve anahtar gruplara erişim sağlayabilirsiniz. Atamaları otomatikleştirmek, yeni işe alımlara iş araçlarına anında erişim sağlar ve üretkenliği artırır.
-- **Riski yönetin:** Bulut İk uygulamasından gelen verilerle çalışan durumuna veya grup üyeliklerine göre değişiklikleri otomatikleştirerek güvenliği artırabilirsiniz. Değişiklikleri otomatikleştirmek, kullanıcılar kuruluşa geçiş yaptığında veya kuruluştan ayrıldıklarında kullanıcı kimliklerinin ve önemli uygulamalara erişimin otomatik olarak güncelolmasını sağlar.
-- **Adres uygunluğu ve yönetişim:** Azure AD, hem kaynak hem de hedef sistemlerin uygulamaları tarafından gerçekleştirilen kullanıcı sağlama istekleri için yerel denetim günlüklerini destekler. Denetim de, uygulamalara kimlerin erişebildiği tek bir ekrandan izleyebilirsiniz.
-- **Maliyeti yönetin:** Otomatik sağlama, manuel sağlamayla ilişkili verimsizlikleri ve insan hatalarını önleyerek maliyetleri azaltır. Eski ve eski platformlar kullanarak zaman içinde oluşturulmuş özel olarak geliştirilmiş kullanıcı sağlama çözümlerine olan gereksinimi azaltır.
+- **Üretkenliği artırın:** Artık Kullanıcı hesaplarının ve Office 365 lisanslarının atamasını otomatikleştirebilir ve anahtar gruplarına erişim sağlayabilirsiniz. Atamaları otomatik hale getirmek, iş araçlarına yeni bir anında erişim sağlar ve üretkenliği artırır.
+- **Riski yönetin:** Bulut HR uygulamasından gelen verilerle akan çalışanların durum veya grup üyeliklerine göre değişiklikleri otomatikleştirerek güvenliği artırabilirsiniz. Değişikliklerin otomatikleştirilmesi, kullanıcılar kuruluştan geçiş yaparken veya kuruluştan ayrıldığınızda, anahtar uygulamalarına yönelik kullanıcı kimliklerinin ve erişimin otomatik olarak güncelleştirilmesini sağlar.
+- **Adres uyumluluğu ve idare:** Azure AD, hem kaynak hem de hedef sistemlerin uygulamaları tarafından gerçekleştirilen Kullanıcı hazırlama istekleri için yerel denetim günlüklerini destekler. Denetimle, tek bir ekrandan uygulamalara kimlerin erişebileceğini izleyebilirsiniz.
+- **Maliyeti yönetme:** Otomatik sağlama, el ile sağlama ile ilişkili verimsizlikleri ve insan hatasından kaçınarak maliyetleri azaltır. Eski ve süresi geçmiş platformlar kullanılarak zaman içinde oluşturulmuş özel geliştirmiş Kullanıcı sağlama çözümleri gereksinimini azaltır.
 
 ### <a name="licensing"></a>Lisanslama
 
-Bulut İk uygulamasını Azure AD kullanıcı sağlama tümleştirmesine yapılandırmak için geçerli bir [Azure AD Premium lisansına](https://azure.microsoft.com/pricing/details/active-directory/) ve İş Günü veya Başarı Faktörleri gibi bulut İk uygulaması için bir lisansa gereksinim duyarsınız.
+Bulut HR uygulamasını Azure AD Kullanıcı sağlama tümleştirmesi olarak yapılandırmak için, geçerli bir [Azure AD Premium lisansına](https://azure.microsoft.com/pricing/details/active-directory/) ve iş günü veya başarılı faktörlerle bulut HR uygulaması için lisansa sahip olmanız gerekir.
 
-Ayrıca, bulut İk uygulamasından temin edilecek ve Active Directory veya Azure AD'ye sağlanan her kullanıcı için geçerli bir Azure AD Premium P1 veya daha yüksek abonelik lisansına ihtiyacınız var. Bulut İk uygulamasında sahip olunan yanlış sayıda lisans, kullanıcı sağlama sırasında hatalara neden olabilir.
+Ayrıca, bulut HR uygulamasından kaynaklayacağı ve Active Directory ya da Azure AD 'ye sağlanan her kullanıcı için geçerli Azure AD Premium P1 veya daha yüksek bir abonelik lisansı gerekir. Bulut HR uygulamasına ait hatalı sayıda lisans, Kullanıcı sağlama sırasında hatalara yol açabilir.
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-- Azure AD Connect sağlama aracısını yapılandırmak için Azure AD yöneticisi erişimi.
-- Bulut İk uygulamasının test ve üretim örneği.
-- Bir sistem tümleştirme kullanıcısı oluşturmak ve test amacıyla çalışan verilerini sınamak için değişiklikler yapmak için bulut İk uygulamasındayönetici izinleri.
-- Active Directory'ye kullanıcı sağlama için, .NET 4.7.1+ çalışma süresiyle Windows Server 2012 veya daha büyük çalışan bir sunucunun [Azure AD Connect sağlama aracısını](https://go.microsoft.com/fwlink/?linkid=847801)barındırması gerekir.
-- Kullanıcıları Active Directory ve Azure AD arasında eşitlemek için [Azure AD Connect.](../hybrid/whatis-azure-ad-connect.md)
+- Azure AD Connect sağlama aracısını yapılandırmak için Azure AD Genel Yöneticisi erişimi.
+- Bulut HR uygulamasının test ve üretim örneği.
+- Bulut HR uygulamasındaki Yönetici izinleri bir sistem tümleştirme kullanıcısı oluşturur ve test amacıyla çalışan verilerini test etmek için değişiklikler yapar.
+- Active Directory Kullanıcı sağlaması için, [Azure AD Connect sağlama aracısını](https://go.microsoft.com/fwlink/?linkid=847801)barındırmak üzere .NET 4.7.1 + Runtime Ile Windows Server 2012 veya üstünü çalıştıran bir sunucu gerekir.
+- Kullanıcıları Active Directory ve Azure AD arasında eşitlemeye yönelik [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) .
 
 ### <a name="training-resources"></a>Eğitim kaynakları
 
 | **Kaynaklar** | **Bağlantı ve açıklama** |
 |:-|:-|
-| Videolar | [Active Azure Directory'de kullanıcı sağlama nedir?](https://youtu.be/_ZjARPpI6NI) |
-| | [Etkin Azure Dizini'nde kullanıcı sağlama dağıtımı nasıl](https://youtu.be/pKzyts6kfrw) |
-| Öğreticiler | [SaaS uygulamalarının Azure AD ile nasıl tümleştirileneilişkin öğreticiler listesi](../saas-apps/tutorial-list.md) |
-| | [Öğretici: Otomatik kullanıcı sağlama için İş Gününü Yapılandır](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| SSS | [Otomatik kullanıcı sağlama](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
-| | [İş Günü'nden Azure AD'ye sağlama](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| Videolar | [Etkin Azure dizininde kullanıcı hazırlama nedir?](https://youtu.be/_ZjARPpI6NI) |
+| | [Etkin Azure dizininde kullanıcı hazırlama dağıtımı](https://youtu.be/pKzyts6kfrw) |
+| Öğreticiler | [SaaS uygulamalarını Azure AD ile tümleştirme hakkında öğreticiler listesi](../saas-apps/tutorial-list.md) |
+| | [Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| SSS | [Otomatik Kullanıcı sağlama](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| | [Workday 'den Azure AD 'ye sağlama](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Çözüm mimarisi
 
-Aşağıdaki örnekte, ortak karma ortamlar için uçtan uca kullanıcı sağlama çözüm mimarisi açıklanır ve şunları içerir:
+Aşağıdaki örnek, genel karma ortamlar için uçtan uca Kullanıcı sağlama çözüm mimarisini açıklar ve şunları içerir:
 
-- **Bulut İk uygulamasından Active Directory'ye yetkili İk veri akışı.** Bu akışta, Bulut İk uygulaması kiracısında İk etkinliği (Joiners-Movers-Leavers işlemi) başlatılır. Azure AD sağlama hizmeti ve Azure AD Connect sağlama aracısı, bulut İk uygulaması kiracısından Etkin Dizin'e kullanıcı verilerini sağlar. Olaya bağlı olarak, Etkin Dizini'nde işlemleri oluşturmaya, güncelleştirmeye, etkinleştirmeye ve devre dışı etmeye neden olabilir.
-- **Azure AD ile senkronize edin ve şirket içi Active Directory'den bulut İk uygulamasına e-posta ve kullanıcı adı yazın.** Hesaplar Active Directory'de güncelleştirildikten sonra Azure AD Connect aracılığıyla Azure AD ile senkronize edilir. E-posta adresleri ve kullanıcı adı öznitelikleri bulut İk uygulaması kiracısına geri yazılabilir.
+- **Bulut HR uygulamasından Active Directory 'e kadar yetkili ık veri akışı.** Bu akışta, HR olayı (Joiners-broşür-Leavers işlemi), Cloud HR App kiracısında başlatılır. Azure AD sağlama hizmeti ve Azure AD Connect sağlama Aracısı, Kullanıcı verilerini Cloud ık uygulama kiracısından Active Directory olarak temin edin. Olaya bağlı olarak, Active Directory işlemleri oluşturma, güncelleştirme, etkinleştirme ve devre dışı bırakma işlemlerine neden olabilir.
+- **Azure AD ile eşitleyin ve şirket içi Active Directory bulut HR uygulamasına geri e-posta ve Kullanıcı adı yazın.** Hesaplar Active Directory güncelleştirildikten sonra Azure AD ile Azure AD Connect arasında eşitlenir. E-posta adresleri ve Kullanıcı adı öznitelikleri, bulut HR uygulaması kiracıya geri yazılabilir.
 
 ![İş akışı diyagramı](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img1.png)
 
 #### <a name="description-of-workflow"></a>İş akışının açıklaması
 
-Aşağıdaki önemli adımlar diyagramda gösterilir:  
+Diyagramda aşağıdaki anahtar adımları belirtilmiştir:  
 
-1. **İk ekibi** bulut İk uygulaması kiracı işlemleri gerçekleştirir.
-2. **Azure AD sağlama hizmeti,** bulut İk uygulaması kiracısından zamanlanan döngüleri çalıştırır ve Active Directory ile eşitlenmesi için işlenmesi gereken değişiklikleri tanımlar.
-3. **Azure AD sağlama hizmeti,** Etkin Dizin hesabı oluşturma, güncelleştirme, etkinleştirme ve devre dışı etme işlemlerini içeren bir istek yüküyle Azure AD Connect sağlama aracısını çağırır.
-4. **Azure AD Connect sağlama aracısı,** Active Directory hesap verilerini yönetmek için bir hizmet hesabı kullanır.
-5. **Azure AD Connect,** Etkin Dizini'nde güncelleştirmeleri çekmek için delta [eşitleme](../hybrid/how-to-connect-sync-whatis.md) çalıştırın.
-6. **Etkin Dizin** güncelleştirmeleri Azure AD ile senkronize edilir.
-7. **Azure AD sağlama hizmeti,** Azure AD'den bulut İk uygulaması kiracısına e-posta özniteliğini ve kullanıcı adını geri verir.
+1. **HR ekibi** , bulut HR uygulama kiracısında işlemleri gerçekleştirir.
+2. **Azure AD sağlama hizmeti** , bulut HR App kiracısından zamanlanan döngüleri çalıştırır ve Active Directory eşitleme için işlenmesi gereken değişiklikleri belirler.
+3. **Azure AD sağlama hizmeti** , Active Directory hesabı oluşturma, güncelleştirme, etkinleştirme ve devre dışı bırakma işlemlerini içeren bir istek yüküyle Azure AD Connect sağlama aracısını çağırır.
+4. **Azure AD Connect sağlama aracısı** Active Directory hesabı verilerini yönetmek için bir hizmet hesabı kullanır.
+5. **Azure AD Connect** , güncelleştirmeleri Active Directory çekmek için Delta [eşitlemesi](../hybrid/how-to-connect-sync-whatis.md) çalıştırır.
+6. **Active Directory** GÜNCELLEŞTIRMELER Azure AD ile eşitlenir.
+7. **Azure AD sağlama hizmeti** , Azure AD 'den e-posta özniteliği ve Kullanıcı adı ' nı Cloud HR App kiracısına yazar.
 
-## <a name="plan-the-deployment-project"></a>Dağıtım projesini planlama
+## <a name="plan-the-deployment-project"></a>Dağıtım projesini planlayın
 
-Ortamınızda bu dağıtım için strateji belirlerken kuruluş ihtiyaçlarınızı göz önünde bulundurun.
+Ortamınızda bu dağıtımın stratejisini belirlerken kurumsal ihtiyaçlarınızı göz önünde bulundurun.
 
-### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlarla etkileşimde bulunun
+### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuçlar ve sorumluluklar hakkındaki uyumsuz beklentiler nedeniyle bunu yaparlar. Bu tuzaklardan kaçınmak için, [doğru paydaşlarla etkileşimde bulunduğunuzdan emin olun.](https://aka.ms/deploymentplans) Ayrıca, projedeki paydaş rollerinin iyi anlaşıldığından emin olun. Paydaşları ve proje girişlerini ve hesap yeteneklerini belgele.
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri için bu işlem yapılır. Bu sınırları önlemek için, [doğru paydaşları ilgi çekici olduğunuzdan emin olun](https://aka.ms/deploymentplans). Ayrıca, projedeki paydaş rollerinin iyi anlaşıldığından emin olun. Paydaşları ve proje giriş ve accountikleri belgeleyin.
 
-İk kuruluşundan, mevcut İk iş süreçleri ve işçi kimliği artı iş veri işleme gereksinimleri ne kadar girdi sağlayabilir bir temsilci ekleyin.
+IK kuruluştan, mevcut ık iş süreçlerine ve çalışan kimliğine ve iş verileri işleme gereksinimlerine giriş sağlayabilen bir temsilci ekleyin.
 
 ### <a name="plan-communications"></a>İletişimi planlama
 
-İletişim, herhangi bir yeni hizmetin başarısı için çok önemlidir. Deneyimlerinin ne zaman ve nasıl değişeceği hakkında kullanıcılarınızla proaktif olarak iletişim kurun. Sorunlarla karşılaşırsanız nasıl destek kazanacaklarını bildirin.
+İletişim, her yeni hizmetin başarısı için önemlidir. Deneyimlerinizin ne zaman ve nasıl değiştirileceği hakkında kullanıcılarınız ile etkin bir şekilde iletişim kurun. Sorunlarla karşılaştıklarında nasıl destek elde edebileceklerini öğrenin.
 
-### <a name="plan-a-pilot"></a>Bir pilot planlayın
+### <a name="plan-a-pilot"></a>Pilot planı planlayın
 
-Bulut İk uygulamasından İk iş süreçlerini ve kimlik iş akışlarını hedef sistemlere entegre etmek, çözümü üretime dağıtmadan önce önemli miktarda veri doğrulama, veri dönüşümü, veri temizleme ve uçtan uca test gerektirir.
+Bulut HR uygulamasından hedef sistemlere ık iş süreçlerini ve kimlik iş akışlarını tümleştirmek, çözümü üretime dağıtabilmeniz için önemli miktarda veri doğrulaması, veri dönüştürme, veri temizleme ve uçtan uca test gerektirir.
 
-Üretimdeki tüm kullanıcılara ölçeklendirmeden önce ilk yapılandırmayı [pilot ortamda](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) çalıştırın.
+İlk yapılandırmayı üretimdeki tüm kullanıcılara ölçeklendirmadan önce bir [pilot ortamda](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) çalıştırın.
 
-## <a name="select-cloud-hr-provisioning-connector-apps"></a>Bulut İk sağlama bağlayıcısı uygulamalarını seçin
+## <a name="select-cloud-hr-provisioning-connector-apps"></a>Cloud HR sağlama bağlayıcı uygulamalarını seçin
 
-Azure AD sağlama iş akışlarını bulut İk uygulaması ve Active Directory arasında kolaylaştırmak için, Azure AD uygulama galerisinden birden çok sağlama bağlayıcısı uygulaması ekleyebilirsiniz:
+Bulut HR uygulaması ve Active Directory arasında Azure AD sağlama iş akışlarını kolaylaştırmak için Azure AD uygulama galerisinden birden çok sağlama bağlayıcı uygulaması ekleyebilirsiniz:
 
-- **Active Directory kullanıcı sağlama bulut İk uygulaması**: Bu sağlama bağlayıcı uygulaması, bulut İk uygulamasından tek bir Active Directory etki alanına kullanıcı hesabı sağlamasını kolaylaştırır. Birden çok etki alanınız varsa, sağlamanız gereken her Active Directory etki alanı için Azure AD uygulama galerisinden bu uygulamanın bir örneğini ekleyebilirsiniz.
-- **Azure AD kullanıcı sağlama sına Bulut İk uygulaması**: Azure AD Connect, Active Directory kullanıcılarını Azure AD ile senkronize etmek için kullanılması gereken bir araç olsa da, bu sağlama bağlayıcısı uygulaması bulut İk uygulamasından yalnızca bulut KULLANıCıLARının tek bir Azure AD kiracısına sağlanmasını kolaylaştırmak için kullanılabilir.
-- **Cloud HR uygulaması nın geri yazılması**: Bu sağlama bağlayıcısı uygulaması, kullanıcının e-posta adreslerinin Azure AD'den bulut İk uygulamasına geri yazılmasını kolaylaştırır.
+- **Bulut HR uygulaması Kullanıcı sağlamasını Active Directory için**: Bu sağlama bağlayıcı uygulaması, bulut HR uygulamasından tek bir Active Directory etki alanına kullanıcı hesabı sağlamayı kolaylaştırır. Birden çok etki alanınız varsa, sağlamanız gereken her Active Directory etki alanı için Azure AD uygulama galerisinden bu uygulamanın bir örneğini ekleyebilirsiniz.
+- **Bulut HR uygulaması Için Azure AD Kullanıcı sağlama**: Azure AD Connect Active Directory KULLANıCıLARı Azure AD 'ye eşitlemede kullanılması gereken bir araç olmakla kalmaz, bu sağlama bağlayıcı uygulaması yalnızca bulutta bulunan KULLANıCıLARıN bulut HR uygulamasından tek BIR Azure AD kiracısına sağlanması için kullanılabilir.
+- **Cloud HR uygulaması geri yazma**: Bu sağlama bağlayıcı uygulaması, kullanıcının Azure AD 'den bulut HR uygulamasına olan e-posta adreslerini geri yazmasını kolaylaştırır.
 
-Örneğin, aşağıdaki resim, Azure AD uygulama galerisinde bulunan İş Günü bağlayıcı uygulamalarını listeler.
+Örneğin, aşağıdaki görüntüde Azure AD uygulama galerisinde bulunan Workday Bağlayıcısı uygulamaları listelenmektedir.
 
-![Azure Active Directory portal uygulaması galerisi](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img2.png)
+![Azure Active Directory Portal Uygulama Galerisi](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img2.png)
 
-### <a name="decision-flow-chart"></a>Karar akış şeması
+### <a name="decision-flow-chart"></a>Karar akışı grafiği
 
-Hangi bulut İk sağlama uygulamalarının senaryonuzla alakalı olduğunu belirlemek için aşağıdaki karar akış şemasını kullanın.
+Hangi bulut HR sağlama uygulamalarının senaryolarınızla ilgili olduğunu belirlemek için aşağıdaki karar akışı grafiğini kullanın.
 
-![Karar akış şeması](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img3.png)
+![Karar akışı grafiği](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img3.png)
 
-## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>Azure AD Connect sağlama aracıdağıtım topolojisini tasarlayın
+## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>Azure AD Connect sağlama Aracısı dağıtım topolojisini tasarlama
 
-Bulut İk uygulaması ile Active Directory arasındaki sağlama tümleştirmesi dört bileşen gerektirir:
+Bulut HR uygulaması ve Active Directory arasındaki sağlama tümleştirmesi için dört bileşen gerekir:
 
-- Bulut İk uygulaması kiracı
-- Konektör uygulaması sağlama
-- Azure AD Connect sağlama aracısı
+- Cloud ık uygulama kiracısı
+- Bağlayıcı uygulaması sağlanıyor
+- Azure AD Connect sağlama Aracısı
 - Active Directory etki alanı
 
-Azure AD Connect sağlama aracısı dağıtım topolojisi, entegre etmeyi planladığınız bulut İk uygulaması kiracılarının ve Active Directory alt etki alanlarının sayısına bağlıdır. Birden çok Active Directory etki alanınız varsa, bu Etkin Dizin etki alanlarının bitişik veya [ayrı kıvranan](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)olmasına bağlıdır.
+Azure AD Connect sağlama Aracısı dağıtım topolojisi, tümleştirmeyi planladığınız bulut HR uygulama kiracılarının ve Active Directory alt etki alanlarının sayısına bağlıdır. Birden çok Active Directory etki alanı varsa, Active Directory etki alanlarının bitişik veya [ayrık](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)olmasına bağlıdır.
 
-Kararınızı temel alan, dağıtım senaryolarından birini seçin:
+Kararınız temelinde dağıtım senaryolarından birini seçin:
 
-- Tek bulut İk uygulaması kiracı -> güvenilir bir ormanda tek veya birden çok Active Directory alt etki alanı hedef
-- Tek bulut İk uygulaması kiracı -> ayrı bir Active Directory ormanda birden fazla alt etki hedefliyoruz
+- Tek bulut HR App Tenant-> güvenilen bir ormandaki tek veya birden çok Active Directory alt etki alanını hedefleme
+- Tek bulut HR App Tenant-> ayrık Active Directory ormanında birden çok alt etki alanını hedefleme
 
-### <a name="single-cloud-hr-app-tenant---target-single-or-multiple-active-directory-child-domains-in-a-trusted-forest"></a>Tek bulut İk uygulaması kiracı -> güvenilir bir ormanda tek veya birden çok Active Directory alt etki alanı hedef
+### <a name="single-cloud-hr-app-tenant---target-single-or-multiple-active-directory-child-domains-in-a-trusted-forest"></a>Tek bulut HR App Tenant-> güvenilen bir ormandaki tek veya birden çok Active Directory alt etki alanını hedefleme
 
-Aşağıdaki üretim yapılandırmasını öneririz:
-
-|Gereksinim|Öneri|
-|:-|:-|
-|Dağıtılanacak Azure AD Connect sağlama aracılarının sayısı|İki (yüksek kullanılabilirlik ve başarısızlık için)
-|Yapılandırmak için sağlayan bağlayıcı uygulama sayısı|Alt etki alanı başına bir uygulama|
-|Azure AD Connect sağlama aracısı için sunucu ana bilgisayar|Windows 2012 R2+ coğrafi konumlu Active Directory etki alanı denetleyicilerine görüş hattı ile</br>Azure AD Connect hizmetiyle birlikte olabilir|
-
-![Şirket içi acentelere akış](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
-
-### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>Tek bulut İk uygulaması kiracı -> ayrı bir Active Directory ormanda birden fazla alt etki hedefliyoruz
-
-Bu senaryo, kullanıcıları bulut İk uygulamasından ayrı aktif dizin ormanlarında etki alanına sağlamayı içerir.
-
-Aşağıdaki üretim yapılandırmasını öneririz:
+Aşağıdaki üretim yapılandırması önerilir:
 
 |Gereksinim|Öneri|
 |:-|:-|
-|Şirket içinde dağıtılabilmek için Azure AD Connect sağlama aracılarının sayısı|Ayrık Aktif Dizin ormanı başına iki|
-|Yapılandırmak için sağlayan bağlayıcı uygulama sayısı|Alt etki alanı başına bir uygulama|
-|Azure AD Connect sağlama aracısı için sunucu ana bilgisayar|Windows 2012 R2+ coğrafi konumlu Active Directory etki alanı denetleyicilerine görüş hattı ile</br>Azure AD Connect hizmetiyle birlikte olabilir|
+|Dağıtılacak Azure AD Connect sağlama aracılarının sayısı|İki (yüksek kullanılabilirlik ve yük devretme için)
+|Yapılandırılacak sağlama bağlayıcı uygulamalarının sayısı|Alt etki alanı başına bir uygulama|
+|Azure AD Connect sağlama Aracısı için sunucu Konağı|Windows 2012 R2 + etki alanı denetleyicileri Active Directory</br>Azure AD Connect hizmetiyle birlikte çalışabilir|
 
-![Tek bulut İk uygulaması kiracı ayrık Aktif Dizin orman](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
+![Şirket içi aracılara akış](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
 
-### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD Connect sağlama aracıgereksinimleri
+### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>Tek bulut HR App Tenant-> ayrık Active Directory ormanında birden çok alt etki alanını hedefleme
 
-Active Directory kullanıcı sağlama çözümüne bulut İk uygulaması, Windows 2012 R2 veya daha büyük çalıştıran sunucularda bir veya daha fazla Azure AD Connect sağlama aracısı dağıtmanızı gerektirir. Sunucularda en az 4 GB RAM ve .NET 4.7.1+ çalışma süresi olmalıdır. Ana bilgisayar sunucusunun hedef Active Directory etki alanına ağ erişimi olduğundan emin olun.
+Bu senaryo, bulut HR uygulamasından ayrık Active Directory ormanlarındaki etki alanlarına kullanıcı sağlamayı içerir.
 
-Şirket içi ortamı hazırlamak için Azure AD Connect sağlama aracısı yapılandırma sihirbazı aracıyı Azure AD kiracınıza kaydeder, [bağlantı noktalarını açar,](../manage-apps/application-proxy-add-on-premises-application.md#open-ports) [URL'lere erişimsağlar](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls)ve [giden HTTPS proxy yapılandırmasını](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)destekler.
+Aşağıdaki üretim yapılandırması önerilir:
 
-Sağlama aracısı, Etkin Dizin etki alanlarıyla iletişim kurmak için bir hizmet hesabı kullanır. Aracıyı yüklemeden önce, Etkin Dizin Kullanıcıları ve Bilgisayarlarında aşağıdaki gereksinimleri karşılayan bir hizmet hesabı oluşturun:
+|Gereksinim|Öneri|
+|:-|:-|
+|Şirket içinde dağıtılacak Azure AD Connect sağlama aracılarının sayısı|Ayrık Active Directory orman başına iki|
+|Yapılandırılacak sağlama bağlayıcı uygulamalarının sayısı|Alt etki alanı başına bir uygulama|
+|Azure AD Connect sağlama Aracısı için sunucu Konağı|Windows 2012 R2 + etki alanı denetleyicileri Active Directory</br>Azure AD Connect hizmetiyle birlikte çalışabilir|
 
-- Süresi dolmayan bir parola
-- Kullanıcı hesaplarını okumak, oluşturmak, silmek ve yönetmek için yetkin denetim izinleri
+![Tek bulut ık uygulama kiracısı Active Directory ormanı kopuk](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
 
-Sağlama isteklerini işlemesi gereken etki alanı denetleyicilerini seçebilirsiniz. Coğrafi olarak dağıtılmış birkaç etki alanı denetleyiciniz varsa, sağlama aracısını tercih ettiğiniz etki alanı denetleyicileri ile aynı siteye yükleyin. Bu konumlandırma, uçtan uca çözümün güvenilirliğini ve performansını artırır.
+### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD Connect sağlama Aracısı gereksinimleri
 
-Yüksek kullanılabilirlik için birden fazla Azure AD Bağlantısı sağlama aracısı dağıtabilirsiniz. Aynı şirket içi Active Directory etki alanlarını işlemek için aracıyı kaydedin.
+Active Directory Kullanıcı sağlama çözümüne yönelik bulut HR uygulaması, Windows 2012 R2 veya üstünü çalıştıran sunuculara bir veya daha fazla Azure AD Connect sağlama Aracısı dağıtmanızı gerektirir. Sunucular en az 4 GB RAM ve .NET 4.7.1 + çalışma zamanına sahip olmalıdır. Konak sunucusunun hedef Active Directory etki alanına ağ erişimi olduğundan emin olun.
 
-## <a name="plan-scoping-filters-and-attribute-mapping"></a>Kapsam filtreleri ve öznitelik eşleme planı
+Şirket içi ortamı hazırlamak için Azure AD Connect sağlama Aracısı Yapılandırma Sihirbazı aracıyı Azure AD kiracınızla kaydeder, [bağlantı noktaları açar](../manage-apps/application-proxy-add-on-premises-application.md#open-ports), [URL 'lere erişim sağlar](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls)ve [giden HTTPS proxy yapılandırmasını](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)destekler.
 
-Bulut İk uygulamasından Active Directory veya Azure AD'ye sağlama olanağı sağladığınızı, Azure portalı öznitelik eşleme yoluyla öznitelik değerlerini denetler.
+Sağlama Aracısı, Active Directory etki alanlarıyla iletişim kurmak için bir hizmet hesabı kullanır. Aracıyı yüklemeden önce, aşağıdaki gereksinimleri karşılayan Active Directory Kullanıcıları ve Bilgisayarları ' nda bir hizmet hesabı oluşturun:
+
+- Süre sonu olmayan bir parola
+- Kullanıcı hesaplarını okumak, oluşturmak, silmek ve yönetmek için atanan denetim izinleri
+
+Sağlama isteklerini işlemesi gereken etki alanı denetleyicileri seçebilirsiniz. Coğrafi olarak dağıtılmış birkaç etki alanı denetleyiciniz varsa, sağlama aracısını tercih ettiğiniz etki alanı denetleyicileriniz ile aynı siteye yükleyebilirsiniz. Bu konumlandırma, uçtan uca çözümün güvenilirliğini ve performansını geliştirir.
+
+Yüksek kullanılabilirlik için birden fazla Azure AD Connect sağlama Aracısı dağıtabilirsiniz. Aracıyı, aynı şirket içi Active Directory etki alanı kümesini işleyecek şekilde kaydedin.
+
+## <a name="plan-scoping-filters-and-attribute-mapping"></a>Kapsam filtrelerini ve öznitelik eşlemesini planlayın
+
+Bulut HR uygulamasından Active Directory veya Azure AD 'ye sağlamayı etkinleştirdiğinizde, Azure portal öznitelik değerlerini öznitelik eşlemesi aracılığıyla denetler.
 
 ### <a name="define-scoping-filters"></a>Kapsam filtrelerini tanımlama
 
-Bulut İk uygulamasından Active Directory veya Azure AD'ye hangi kullanıcıların sağlanması gerektiğini belirleyen öznitelik tabanlı kuralları tanımlamak için [kapsam filtreleri](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) kullanın.
+Bulut HR uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcıların sağlanması gerektiğini belirleyen öznitelik tabanlı kuralları tanımlamak için [kapsam filtrelerini](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) kullanın.
 
-Birleştiriciler işlemini başlattığınızda, aşağıdaki gereksinimleri toplayın:
+Birleştiriciler sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın:
 
-- Bulut İk uygulaması hem çalışanları hem de şartlı çalışanları gemiye getirmek için kullanılıyor mu?
-- Bulut İk uygulamasını hem çalışanları hem de şartlı çalışanları yönetmek için Azure AD kullanıcı sağlama için kullanmayı planlıyor musunuz?
-- Bulut İk uygulamasını Azure AD kullanıcı sağlama uygulamasına yalnızca bulut İk uygulaması kullanıcılarının bir alt kümesi için sunmayı planlıyor musunuz? Bir örnek yalnızca çalışanlar olabilir.
+- Bulut HR uygulaması, çalışanları ve çalışanların çalışanları üzerinde getirmek için kullanılır mi?
+- Hem çalışanları hem de çalışanların çalışanlarını yönetmek için bulut HR uygulamasını Azure AD Kullanıcı sağlaması için kullanmayı planlıyor musunuz?
+- Bulut HR uygulamasını Azure AD Kullanıcı sağlaması için yalnızca bulut HR uygulaması kullanıcılarının bir alt kümesi için kullanıma almayı planlıyor musunuz? Örnek yalnızca çalışanlar olabilir.
 
-Gereksinimlerinize bağlı olarak, öznitelik eşlemelerini yapılandırdığınızda, **Kaynak Nesne Kapsamı** alanını, Bulut İk uygulamasındaki hangi kullanıcı kümelerinin Active Directory'ye sağlama kapsamında olması gerektiğini seçecek şekilde ayarlayabilirsiniz. Daha fazla bilgi için, yaygın olarak kullanılan kapsam kapsam filtreleri için bulut İk uygulaması öğreticisine bakın.
+Gereksinimlerinize bağlı olarak, öznitelik eşlemelerini yapılandırırken, bulut HR uygulamasındaki Kullanıcı kümelerinin Active Directory sağlama kapsamında olması gerektiğini seçmek için **kaynak nesne kapsamı** alanını ayarlayabilirsiniz. Daha fazla bilgi için bkz. bulut HR uygulama öğreticisi, yaygın olarak kullanılan kapsam filtreleri için.
 
 ### <a name="determine-matching-attributes"></a>Eşleşen öznitelikleri belirleme
 
-Sağlama ile, kaynak ve hedef sistem arasındaki varolan hesapları eşleştirme olanağı elde elabilirsiniz. Bulut İk uygulamasını Azure AD sağlama hizmetiyle tümleştirdiğinizde, bulut İk uygulamasından Active Directory veya Azure AD'ye hangi kullanıcı verilerinin akması gerektiğini belirlemek için [öznitelik eşlemesi yapılandırabilirsiniz.](../app-provisioning/configure-automatic-user-provisioning-portal.md#mappings)
+Sağlama sayesinde, kaynak ve hedef sistem arasındaki mevcut hesapları eşleştirme imkanını alırsınız. Bulut HR uygulamasını Azure AD sağlama hizmeti ile tümleştirdiğinizde, bulut HR uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcı verilerinin akaceğini belirlemek için [öznitelik eşlemesini yapılandırabilirsiniz](../app-provisioning/configure-automatic-user-provisioning-portal.md#mappings) .
 
-Birleştiriciler işlemini başlattığınızda, aşağıdaki gereksinimleri toplayın:
+Birleştiriciler sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın:
 
-- Bu bulut İk uygulamasındaki benzersiz kimlik nedir?
-- Kimlik yaşam döngüsü açısından, yeniden işe alımlarla nasıl başa çıkarsınız? Yeniden işe alınanlar eski çalışan kimliklerini saklar mı?
-- Gelecekteki işe alma işlemlerini işleyip onlar için Active Directory hesaplarını önceden mi oluşturuyorsunuz?
-- Kimlik yaşam döngüsü açısından bakıldığında, çalışandan şartlı işçi dönüşümüne veya başka bir şekilde nasıl başa çıkarabilirsiniz?
-- Dönüştürülmüş kullanıcılar eski Active Directory hesaplarını tutuyor mu yoksa yenilerini mi alacaklar?
+- Bu bulut HR uygulamasındaki her kullanıcıyı tanımlamak için kullanılan benzersiz KIMLIK nedir?
+- Kimlik yaşam döngüsü perspektifinden, yeniden oluşturma işlemlerinin nasıl yapılacağını nasıl işleyeceğinizi? Eski çalışan kimliklerini saklayın mi?
+- Gelecekteki ilerletlerinizi mi işletin, yoksa Active Directory hesapları mı oluşturdunuz?
+- Bir kimlik yaşam döngüsü perspektifinden, çalışanı iş dönüşümünü veya başka bir şekilde nasıl işleyeceğinizi?
+- Dönüştürülmüş kullanıcılar eski Active Directory hesaplarını saklar veya yenilerini alırlar mi?
 
-Gereksinimlerinize bağlı olarak, Azure AD sabit değerler sağlayarak veya [öznitelik eşlemeleri için ifadeler yazarak](../app-provisioning/functions-for-customizing-application-data.md)doğrudan öznitelik-öznitelik eşleme destekler. Bu esneklik, hedeflenen uygulama özniteliğinde nelerin doldurulan ne olduğunu en iyi şekilde kontrol eşimdi. Microsoft Graph [API](../app-provisioning/export-import-provisioning-configuration.md) ve Graph Explorer'ı kullanarak kullanıcı sağlama öznitelik eşlemelerinizi ve şemasını bir JSON dosyasına dışa aktarabilir ve Azure AD'ye geri aktarabilirsiniz.
+Gereksinimlerinize bağlı olarak, Azure AD, öznitelik eşlemeleri için sabit değerler veya [yazma ifadeleri](../app-provisioning/functions-for-customizing-application-data.md)sağlayarak doğrudan öznitelik eşlemesini destekler. Bu esneklik, hedeflenen uygulama özniteliğinde doldurulduğuna ilişkin nihai denetim sağlar. Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için [MICROSOFT Graph API](../app-provisioning/export-import-provisioning-configuration.md) ve Graf Gezginini kullanabilirsiniz.
 
-Varsayılan olarak, benzersiz çalışan kimliğini temsil eden bulut İk uygulamasındaki öznitelik, *Active Directory'deki benzersiz özniteliğe eşlenen* eşleşen öznitelik olarak kullanılır. Örneğin, İş Günü uygulaması senaryosunda, **İş Günü** **İşçi Kimliği** özniteliği Active Directory **employeeID** özniteliğine eşlenir.
+Varsayılan olarak, bulut HR uygulamasındaki benzersiz çalışan KIMLIĞINI temsil eden öznitelik, *Active Directory ' deki Unique özniteliğiyle eşlenen* eşleşen öznitelik olarak kullanılır. Örneğin, Workday App senaryosunda, **Workday** **workerıd** özniteliği Active Directory **ÇalışanNo** özniteliğiyle eşleştirilir.
 
-Birden çok eşleşen öznitelik ayarlayabilir ve eşleşen öncelik atayabilirsiniz. Eşleşen öncelikte değerlendirilirler. Eşleşme bulunur bulunmaz, başka eşleşen öznitelikler değerlendirilmez.
+Birden çok eşleşen öznitelik ayarlayabilir ve eşleşen önceliği atayabilirsiniz. Eşleşen önceliğe göre değerlendirilir. Bir eşleşme bulunur başlamaz, başka eşleşen öznitelikler değerlendirilir.
 
-Varolan [öznitelik eşlemelerini](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)değiştirme veya silme gibi varsayılan öznitelik eşlemelerini de özelleştirebilirsiniz. Ayrıca, işletme gereksinimlerinize göre yeni öznitelik eşlemeleri de oluşturabilirsiniz. Daha fazla bilgi için, haritaya özel özniteliklerin listesi için bulut İk uygulaması öğreticisine [(İş Günü](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) bakın.
+Ayrıca, varolan öznitelik eşlemelerini değiştirme veya silme gibi [varsayılan öznitelik eşlemelerini özelleştirebilirsiniz](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types). Ayrıca, iş gereksinimlerinize göre yeni öznitelik eşlemeleri de oluşturabilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için Cloud HR App öğreticisi ( [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) konusuna bakın.
 
 ### <a name="determine-user-account-status"></a>Kullanıcı hesabı durumunu belirleme
 
-Varsayılan olarak, sağlama bağlayıcısı uygulaması, kullanıcı hesabını etkinleştirip etkinleştirmeyeceğini veya devre dışı edip etmeyeceğini belirlemek için İk kullanıcı profili durumunu Active Directory veya Azure AD'deki kullanıcı hesabı durumuna eşler.
+Varsayılan olarak, sağlama bağlayıcı uygulaması, Kullanıcı hesabının etkinleştirilip etkinleştirilmeyeceğini veya devre dışı bırakılacağını öğrenmek için HR Kullanıcı profili durumunu Active Directory veya Azure AD 'deki Kullanıcı hesabı durumuyla eşler.
 
-Joiners-Leavers işlemini başlattığınızda, aşağıdaki gereksinimleri toplayın.
-
-| İşleme | Gereksinimler |
-| - | - |
-| **Doğrama** | Kimlik yaşam döngüsü açısından, yeniden işe alımlarla nasıl başa çıkarsınız? Yeniden işe alınanlar eski çalışan kimliklerini saklar mı? |
-| | Gelecekteki işe alma işlemlerini işleyip onlar için Active Directory hesaplarını önceden mi oluşturuyorsunuz? Bu hesaplar etkin veya devre dışı bırakılmış durumda mı oluşturuldu? |
-| | Kimlik yaşam döngüsü açısından bakıldığında, çalışandan şartlı işçi dönüşümüne veya başka bir şekilde nasıl başa çıkarabilirsiniz? |
-| | Dönüştürülmüş kullanıcılar eski Active Directory hesaplarını mı tutuyor, yoksa yenilerini mi alacaklar? |
-| **Ayrılanlar** | Fesihler, Active Directory'deki çalışanlar ve şartlı çalışanlar için farklı mı ele alınır? |
-| | Kullanıcı sonlandırma işleminin işlenmesi için hangi etkili tarihler dikkate alınır? |
-| | Çalışan ve bağlı çalışan dönüşümleri varolan Active Directory hesaplarını nasıl etkiler? |
-| | Active Directory'deki Rescind işlemini nasıl işliyorsunuz? Joiner işleminin bir parçası olarak Active Directory'de gelecekteki tarihli işe alımlar oluşturulacaksa, yeniden yapılan işlemlerin ele alınması gerekir. |
-
-Gereksinimlerinize bağlı olarak, Etkin Dizin hesabının veri noktalarının birleşimine bağlı olarak etkin olması veya devre dışı bırakılmış olması için [Azure AD ifadelerini](../app-provisioning/functions-for-customizing-application-data.md) kullanarak eşleme mantığını özelleştirebilirsiniz.
-
-### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>Active Directory kullanıcı özniteliklerine bulut İk uygulaması
-
-Her bulut İk uygulaması, varsayılan bulut İk uygulamasıyla Active Directory haritalamalarına iletir.
-
-Joiners-Movers-Leavers işlemini başlattığınızda, aşağıdaki gereksinimleri toplayın.
+Birleştiriciler-sızıntı sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
 
 | İşleme | Gereksinimler |
 | - | - |
-| **Doğrama** | Active Directory hesap oluşturma işlemi kılavuzu otomatik mi yoksa kısmen otomatik mi? |
-| | Bulut İk uygulamasından Active Directory'ye özel öznitelikleri yaymayı planlıyor musunuz? |
-| **Movers** | Bulut İk uygulamasında bir Movers işlemi gerçekleştiğinde hangi özellikleri işlemek istersiniz? |
-| | Kullanıcı güncelleştirmeleri sırasında belirli bir öznitelik doğrulaması gerçeklebiliyor musunuz? Evet ise, ayrıntıları sağlayın. |
-| **Ayrılanlar** | Fesihler, Active Directory'deki çalışanlar ve şartlı çalışanlar için farklı mı ele alınır? |
-| | Kullanıcı sonlandırma işleminin işlenmesi için hangi etkili tarihler dikkate alınır? |
-| | Çalışan ve bağlı çalışan dönüşümleri varolan Active Directory hesaplarını nasıl etkiler? |
+| **Birleştiriciler** | Kimlik yaşam döngüsü perspektifinden, yeniden oluşturma işlemlerinin nasıl yapılacağını nasıl işleyeceğinizi? Eski çalışan kimliklerini saklayın mi? |
+| | Gelecekteki ilerletlerinizi mi işletin, yoksa Active Directory hesapları mı oluşturdunuz? Bu hesaplar etkin veya devre dışı durumda mı oluşturulmuş? |
+| | Bir kimlik yaşam döngüsü perspektifinden, çalışanı iş dönüşümünü veya başka bir şekilde nasıl işleyeceğinizi? |
+| | Dönüştürülmüş kullanıcılar eski Active Directory hesaplarını saklar veya yenilerini alırlar mi? |
+| **Yük devretme** | Sonlandırmalar, Active Directory çalışanları ve çalışanların çalışanları için farklı şekilde işleniyorlar mı? |
+| | Kullanıcı sonlandırmasını işlemek için hangi etkin tarihler dikkate alınır? |
+| | Çalışan ve çalışanların çalışan dönüştürmeleri mevcut Active Directory hesaplarını nasıl etkiler? |
+| | Active Directory de rescind işlemini nasıl işleirsiniz? Daha sonra Active Directory, birleştirici işlemin bir parçası olarak, bu işlemlerin oluşturulması gerekir. |
 
-Gereksinimlerinize bağlı olarak, eşlemeleri tümleştirme hedeflerinize ulaşmak için değiştirebilirsiniz. Daha fazla bilgi için, haritaya özel özniteliklerin listesi için belirli bulut İk uygulaması öğreticisine [(İş Günü](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) bakın.
+Gereksinimlerinize bağlı olarak, Active Directory hesabının bir veri noktalarının birleşimine göre etkinleştirilmesi veya devre dışı bırakılması için [Azure AD deyimlerini](../app-provisioning/functions-for-customizing-application-data.md) kullanarak eşleme mantığını özelleştirebilirsiniz.
 
-### <a name="generate-a-unique-attribute-value"></a>Benzersiz bir öznitelik değeri oluşturma
+### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>Cloud ık uygulamasını Active Directory Kullanıcı özniteliklerine eşleyin
 
-Birleştiriciler işlemini başlattığınızda, CN, samAccountName ve benzersiz kısıtlamaları olan UPN gibi öznitelikleri ayarladığınızda benzersiz öznitelik değerleri oluşturmanız gerekebilir.
+Her bir bulut HR uygulaması, eşlemeleri Active Directory için varsayılan bulut ık uygulamasıyla birlikte gelir.
 
-Azure AD işlevi [SelectUniqueValues](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) her kuralı değerlendirir ve ardından hedef sistemde benzersizlik için oluşturulan değeri denetler. Örneğin, bkz. [userPrincipalName (UPN) özniteliği için benzersiz değer oluştur.](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute)
+Birleştiriciler-Taşımacılar sürecini başlattığınızda, aşağıdaki gereksinimleri toplayın.
+
+| İşleme | Gereksinimler |
+| - | - |
+| **Birleştiriciler** | Active Directory hesabı oluşturma işlemi el ile, otomatikleştirilmiş veya kısmen otomatikleştirilebilir mi? |
+| | Bulut HR uygulamasından Active Directory 'e özel öznitelikler yaymaya planlansın mı? |
+| **Taşımacılar** | Bulut HR uygulamasında bir Movers işlemi gerçekleştiğinde hangi öznitelikleri işlemek istiyorsunuz? |
+| | Kullanıcı güncelleştirmeleri sırasında belirli öznitelik doğrulamaları gerçekleştirsin mi? Yanıt Evet ise, ayrıntıları sağlayın. |
+| **Yük devretme** | Sonlandırmalar, Active Directory çalışanları ve çalışanların çalışanları için farklı şekilde işleniyorlar mı? |
+| | Kullanıcı sonlandırmasını işlemek için hangi etkin tarihler dikkate alınır? |
+| | Çalışan ve iş çalışanı dönüştürmelerinde var olan Active Directory hesapları nasıl etkiler? |
+
+Gereksinimlerinize bağlı olarak, eşlemeleri tümleştirme hedeflerinize uyacak şekilde değiştirebilirsiniz. Daha fazla bilgi için, eşlenecek özel özniteliklerin bir listesi için belirli bulut HR uygulama öğreticisine ( [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)gibi) bakın.
+
+### <a name="generate-a-unique-attribute-value"></a>Benzersiz bir öznitelik değeri oluştur
+
+Birleştiriciler sürecini başlattığınızda, CN, samAccountName ve benzersiz kısıtlamalara sahip UPN gibi öznitelikleri ayarladığınızda benzersiz öznitelik değerleri oluşturmanız gerekebilir.
+
+Azure AD işlevi [Selectuniquevalues](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) her kuralı değerlendirir ve hedef sistemde benzersizlik için oluşturulan değeri denetler. Bir örnek için bkz. [userPrincipalName (UPN) özniteliği için benzersiz değer oluşturma](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute).
 
 > [!NOTE]
-> Bu işlev şu anda yalnızca Active Directory kullanıcı sağlama Için İş Günü için desteklenir. Diğer sağlama uygulamalarıyla kullanılamaz.
+> Bu işlev şu anda yalnızca Kullanıcı sağlama Active Directory için iş günü için desteklenir. Diğer sağlama uygulamalarıyla birlikte kullanılamaz.
 
-### <a name="configure-active-directory-ou-container-assignment"></a>Etkin Dizin OU konteyner ataması yapılandır
+### <a name="configure-active-directory-ou-container-assignment"></a>Active Directory OU kapsayıcı atamasını yapılandırma
 
-Active Directory kullanıcı hesaplarını iş birimlerine, konumlara ve departmanlara göre kapsayıcılara yerleştirmek yaygın bir gereksinimdir. Bir Movers işlemini başlattığınızda ve denetleyici bir kuruluş değişikliği varsa, kullanıcıyı Active Directory'de bir OU'dan diğerine taşımanız gerekebilir.
+Active Directory Kullanıcı hesaplarını iş birimlerine, konumlarına ve departmanlara göre kapsayıcılara yerleştirmek yaygın bir gereksinimdir. Bir geçiş işlemi başlattığınızda ve bir gözehirde kuruluş değişikliği varsa, kullanıcıyı Active Directory bir OU 'dan diğerine taşımanız gerekebilir.
 
-OU ataması için iş mantığını yapılandırmak için [Switch()](../app-provisioning/functions-for-customizing-application-data.md#switch) işlevini kullanın ve active Directory özniteliği **üst öğesiDistinguishedName**ile eşlenin.
+OU atamasının iş mantığını yapılandırmak ve onu **parentDistinguishedName**Active Directory özniteliğiyle eşlemek için [Switch ()](../app-provisioning/functions-for-customizing-application-data.md#switch) işlevini kullanın.
 
-Örneğin, İk özniteliği **Belediyesi'ne**göre OU'da kullanıcı oluşturmak istiyorsanız, aşağıdaki ifadeyi kullanabilirsiniz:
+Örneğin, kullanıcı OU 'da ık özniteliği **Municipsellik**temelinde oluşturmak istiyorsanız aşağıdaki ifadeyi kullanabilirsiniz:
 
 `
 Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Dallas,OU=Users,DC=contoso,DC=com", "Austin", "OU=Austin,OU=Users,DC=contoso,DC=com", "Seattle", "OU=Seattle,OU=Users,DC=contoso,DC=com", "London", "OU=London,OU=Users,DC=contoso,DC=com")
 `
 
-Bu ifadeyle, Belediye değeri Dallas, Austin, Seattle veya Londra ise, kullanıcı hesabı ilgili OU'da oluşturulur. Eşleşme yoksa, hesap varsayılan OU'da oluşturulur.
+Bu ifadeyle, Municipitesi değeri Dallas, Austin, Seattle veya Londra ise, Kullanıcı hesabı ilgili OU 'da oluşturulur. Eşleşme yoksa, hesap varsayılan OU 'da oluşturulur.
 
-## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Yeni kullanıcı hesaplarının parola teslimi için plan
+## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Yeni Kullanıcı hesaplarının parola teslimini planlayın
 
-Birebir işlemi başlattığınızda, yeni kullanıcı hesaplarının geçici bir parolasını ayarlamanız ve teslim etmeniz gerekir. Bulut İk'dan Azure AD kullanıcı sağlamasına kadar, kullanıcı için azure AD [self servis parola sıfırlama](../authentication/quickstart-sspr.md) (SSPR) özelliğini ilk gün kullanıma sunabilirsiniz.
+Birleştiriciler sürecini başlattığınızda, Yeni Kullanıcı hesaplarının geçici bir parolasını ayarlayıp teslim etmeniz gerekir. Azure AD Kullanıcı sağlama ile bulut HR ile Kullanıcı için Azure AD [self servis parola sıfırlama](../authentication/quickstart-sspr.md) (SSPR) özelliğini bir gün boyunca alabilirsiniz.
 
-SSPR, BT yöneticilerinin kullanıcıların parolalarını sıfırlamalarını veya hesaplarının kilidini açmalarını sağlamak için basit bir araçtır. **Mobil Numara** özniteliğini bulut İk uygulamasından Active Directory'ye sağlayabilir ve Azure AD ile senkronize edebilirsiniz. Mobil **Numara** özniteliği Azure AD'de bulunduktan sonra, kullanıcının hesabı için SSPR'yi etkinleştirebilirsiniz. Ardından ilk gün, yeni kullanıcı kimlik doğrulaması için kayıtlı ve doğrulanmış cep telefonu numarasını kullanabilir.
+SSPR, BT yöneticilerinin kullanıcıların parolalarını sıfırlamalarını veya hesaplarının kilidini açmalarına olanak tanımak için basit bir araçtır. Bulut HR uygulamasından **Mobil sayı** özniteliğini Active Directory ve Azure AD ile eşitlemek için sağlayabilirsiniz. **Cep telefonu numarası** ÖZNITELIĞI Azure AD 'de olduktan sonra, Kullanıcı hesabı için SSPR 'yi etkinleştirebilirsiniz. Ardından, bir gün sonra Yeni Kullanıcı, kimlik doğrulaması için kayıtlı ve doğrulanan mobil numarayı kullanabilir.
 
-## <a name="plan-for-initial-cycle"></a>İlk döngü için plan
+## <a name="plan-for-initial-cycle"></a>İlk döngüyü planlayın
 
-Azure AD sağlama hizmeti ilk kez çalıştığında, bulut İk uygulamasındaki tüm kullanıcı nesnelerinin anlık görüntüsünü oluşturmak için bulut İk uygulamasına karşı bir [başlangıç döngüsü](../app-provisioning/how-provisioning-works.md#initial-cycle) gerçekleştirir. İlk döngüler için alınan süre doğrudan kaynak sistemde kaç kullanıcının bulunduğuna bağlıdır. 100.000'den fazla kullanıcısı olan bazı bulut İk uygulaması kiracılarının ilk döngüsü uzun sürebilir.
+Azure AD sağlama hizmeti ilk kez çalıştırıldığında, bulut HR uygulamasındaki tüm Kullanıcı nesnelerinin anlık görüntüsünü oluşturmak için bulut HR uygulamasına karşı bir [Başlangıç döngüsünü](../app-provisioning/how-provisioning-works.md#initial-cycle) gerçekleştirir. İlk Döngülerde geçen süre, kaynak sistemde kaç kullanıcının var olduğunu doğrudan bağlıdır. 100.000 ' den fazla kullanıcısı olan bazı bulut ık uygulama kiracılarının ilk döngüsünün süresi uzun sürebilir.
 
-**Büyük bulut İk uygulaması kiracıları (30.000 kullanıcı >) için,** ilk döngüyü aşamalı aşamalarda çalıştırın. Artımlı güncelleştirmeleri yalnızca doğru özniteliklerin farklı kullanıcı sağlama senaryoları için Etkin Dizin'de ayarlı olduğunu doğruladıktan sonra başlatın. Siparişi buradan takip edin.
+**Büyük bulut İK uygulama kiracılar (>30.000 kullanıcıları) için,** aşamalı aşamalar içinde ilk döngüyü çalıştırın. Artımlı güncelleştirmeleri yalnızca, farklı Kullanıcı hazırlama senaryoları için Active Directory doğru özniteliklerin ayarlandığını doğruladıktan sonra başlatın. Buradaki sırayı izleyin.
 
-1. İlk döngüyü yalnızca sınırlı sayıda kullanıcı için [kapsam filtresini](#plan-scoping-filters-and-attribute-mapping)ayarlayarak çalıştırın.
-2. Etkin Dizin hesabı sağlama ve ilk çalıştırma için seçilen kullanıcılar için ayarlanan öznitelik değerlerini doğrulayın. Sonuç beklentilerinizi karşılıyorsa, kapsama filtresini giderek daha fazla kullanıcı içerecek şekilde genişletin ve ikinci çalıştırmanın sonuçlarını doğrulayın.
+1. [Kapsam filtresini](#plan-scoping-filters-and-attribute-mapping)ayarlayarak yalnızca sınırlı bir kullanıcı kümesi için başlangıç döngüsünü çalıştırın.
+2. İlk çalıştırma için seçilen kullanıcılar için ayarlanan Active Directory hesap sağlamayı ve öznitelik değerlerini doğrulayın. Sonuç beklentilerinizi karşılıyorsa, daha fazla kullanıcı eklemek ve ikinci çalıştırmanın sonuçlarını doğrulamak için kapsam filtresini genişletin.
 
-Test kullanıcıları için ilk döngünün sonuçlarından memnun olduktan sonra, [artımlı güncelleştirmeleri](../app-provisioning/how-provisioning-works.md#incremental-cycles)başlatın.
+Test kullanıcıları için başlangıç döngüsünün sonuçlarını tatmin ettikten sonra, [Artımlı güncelleştirmeleri](../app-provisioning/how-provisioning-works.md#incremental-cycles)başlatın.
 
-## <a name="plan-testing-and-security"></a>Test ve güvenlik planı
+## <a name="plan-testing-and-security"></a>Test ve güvenlik planlaması
 
-Kullanıcı sağlamayı etkinleştirerek ilk pilottan dağıtımınızın her aşamasında, sonuçların beklendiği gibi test ettiğinizden ve sağlama döngülerini denetlediğinizden emin olun.
+İlk pilot bilgisayardan dağıtımınızın her aşamasında, Kullanıcı sağlamayı etkinleştirerek, sonuçların beklenen şekilde olduğunu ve sağlama döngülerini kontrol etmeyi olduğunuzdan emin olun.
 
-### <a name="plan-testing"></a>Planı testi
+### <a name="plan-testing"></a>Test planı
 
-Bulut İk uygulamasını Azure AD kullanıcı sağlama ile yapılandırdıktan sonra, bu çözümün kuruluşunuzun gereksinimlerini karşılayıp karşılamadığını doğrulamak için test servis taleplerini çalıştırın.
+Bulut HR uygulamasını Azure AD Kullanıcı sağlaması için yapılandırdıktan sonra, bu çözümün kuruluşunuzun gereksinimlerini karşılayıp karşılamadığını doğrulamak için test çalışmalarını çalıştırın.
 
 |Senaryolar|Beklenen sonuçlar|
 |:-|:-|
-|Bulut İk uygulamasında yeni çalışan işe alınır.| - Kullanıcı hesabı Active Directory'de hazırdır.</br>- Kullanıcı Active Directory-etki alanı uygulamalarına giriş yapabilir ve istenen eylemleri gerçekleştirebilir.</br>- Azure AD Connect eşitlemi yapılandırılırsa, kullanıcı hesabı Azure AD'de de oluşturulur.
-|Bulut İk uygulamasında kullanıcı sonlandırılır.|- Kullanıcı hesabı Active Directory'de devre dışı bırakılır.</br>- Kullanıcı Active Directory tarafından korunan hiçbir kurumsal uygulamaya giriş yapamaz.
-|Kullanıcı denetim kuruluşu bulut İk uygulamasında güncellenir.|Öznitelik eşleme özelliğine bağlı olarak, kullanıcı hesabı Active Directory'de bir OU'dan diğerine geçer.|
-|İk, bulut İk uygulamasında kullanıcının yöneticisini güncelleştirir.|Active Directory'deki yönetici alanı yeni yöneticinin adını yansıtacak şekilde güncelleştirilir.|
-|İk yeni bir rol içine bir çalışanı yeniden işe alır.|Davranış, bulut İk uygulamasının çalışan t.c. oluşturmak üzere nasıl yapılandırıldığına bağlıdır:</br>- Eski çalışan kimliği yeniden işe almak için yeniden kullanılırsa, bağlayıcı kullanıcı için varolan Active Directory hesabını etkinleştirir.</br>- Yeniden işe alma yeni bir çalışan kimliği alırsa, bağlayıcı kullanıcı için yeni bir Active Directory hesabı oluşturur.|
-|İk, işçiyi sözleşmeli bir işçiye dönüştürür veya tam tersi.|Yeni persona için yeni bir Active Directory hesabı oluşturulur ve eski hesap dönüşüm geçerlilik tarihinde devre dışı bırakılır.|
+|Yeni çalışan, bulut HR uygulamasında işe alındı.| -Kullanıcı hesabı Active Directory olarak sağlanır.</br>-Kullanıcı Active Directory etki alanı uygulamalarında oturum açabilir ve istenen eylemleri gerçekleştirebilir.</br>-Azure AD Connect eşitleme yapılandırılmışsa, Kullanıcı hesabı Azure AD 'de de oluşturulur.
+|Kullanıcı, bulut HR uygulamasında sonlandırılır.|-Kullanıcı hesabı Active Directory devre dışı bırakıldı.</br>-Kullanıcı Active Directory tarafından korunan tüm kurumsal uygulamalarda oturum açamaz.
+|Kullanıcı gözetim organizasyonu, bulut HR uygulamasında güncelleştirilir.|Öznitelik eşlemesine göre, Kullanıcı hesabı Active Directory bir OU 'dan diğerine gider.|
+|HR, kullanıcının yöneticisini bulut HR uygulamasında güncelleştirir.|Active Directory içindeki yönetici alanı, yeni yöneticinin adını yansıtacak şekilde güncelleştirilir.|
+|HR bir çalışanı yeni bir rol olarak yeniden oluşturur.|Davranış, bulut HR uygulamasının çalışan kimliklerini oluşturmak için nasıl yapılandırıldığına bağlıdır:</br>-Eski çalışan KIMLIĞI bir yeniden işe almak için yeniden kullanılırsa bağlayıcı, Kullanıcı için mevcut Active Directory hesabını izin vermez.</br>-Yeniden Kiralama yeni bir çalışan KIMLIĞI alırsa, bağlayıcı kullanıcı için yeni bir Active Directory hesabı oluşturur.|
+|HR, çalışanı bir sözleşme çalışanına dönüştürür veya tam tersi de geçerlidir.|Yeni kişi için yeni bir Active Directory hesabı oluşturulur ve eski hesap dönüştürme geçerlilik tarihinde devre dışı bırakılır.|
 
-Otomatik kullanıcı sağlama uygulamanızı, belirlediğiniz zaman çizelgelerine göre üretime nasıl dönüştürerinizi belirlemek için önceki sonuçları kullanın.
+Otomatik Kullanıcı hazırlama uygulamanızı, belirlenen zaman çizelgelerinizi temel alarak üretime nasıl geçireceğinizi öğrenmek için önceki sonuçları kullanın.
 
 > [!TIP]
-> Gizlilik ve güvenlik standartlarına uymak için hassas kişisel verileri kaldırmak veya maskelemek için test ortamını üretim verileriyle yenilerken veri azaltma ve veri temizleme gibi teknikler kullanın. 
+> Gizli kişisel verileri, gizlilik ve güvenlik standartlarıyla uyumlu olacak şekilde kaldırmak veya maskelemek için üretim verileriyle test ortamını yenilediğinizde veri azaltma ve veri temizleme gibi teknikler kullanın. 
 
-### <a name="plan-security"></a>Güvenlik planı
+### <a name="plan-security"></a>Plan güvenliği
 
-Yeni bir hizmetin dağıtımının bir parçası olarak bir güvenlik incelemesinin gerekli olması yaygındır. Bir güvenlik incelemesi gerekiyorsa veya yapılmadıysa, hizmet olarak kimliğin genel görünümünü sağlayan birçok Azure AD [teknik incelemesine](https://www.microsoft.com/download/details.aspx?id=36391) bakın.
+Yeni bir hizmet dağıtımının bir parçası olarak bir güvenlik incelemesinin kullanılması yaygındır. Bir güvenlik incelemesi gerekiyorsa veya yürütülmemişse, bir hizmet olarak kimliğe genel bakış sağlayan birçok Azure AD [Teknik](https://www.microsoft.com/download/details.aspx?id=36391) incelemesini inceleyin.
 
-### <a name="plan-rollback"></a>Geri alma planı
+### <a name="plan-rollback"></a>Planı geri alma
 
-Bulut İk kullanıcı sağlama uygulaması, üretim ortamında istenildiği gibi çalışmayabilir. Bu durumda, aşağıdaki geri alma adımları bilinen iyi duruma geri dönmenize yardımcı olabilir.
+Bulut HR Kullanıcı sağlama uygulamasının üretim ortamında istendiği gibi çalışması başarısız olabilir. Bu durumda, aşağıdaki geri alma adımları önceki bilinen iyi duruma geri dönmede size yardımcı olabilir.
 
-1. Etkilenen kullanıcılar veya gruplar üzerinde hangi yanlış işlemlerin gerçekleştirildiğini belirlemek için [sağlama özet raporunu](../app-provisioning/check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal) ve sağlama [günlüklerini](../app-provisioning/check-status-user-account-provisioning.md#provisioning-logs-preview) gözden geçirin. Özet raporu ve günlükleri hakkında daha fazla bilgi için bulut [İk uygulamasını yönet'e](#manage-your-configuration)bakın.
-2. Etkilenen kullanıcıların veya grupların bilinen son iyi durumu, denetim günlükleri sağlama yoluyla veya hedef sistemleri (Azure AD veya Active Directory) gözden geçirerek belirlenebilir.
-3. Bilinen son iyi durum değerlerini kullanarak doğrudan uygulamada etkilenen kullanıcıları veya grupları güncellemek için uygulama sahibiyle birlikte çalışın.
+1. Etkilenen kullanıcılar veya gruplar üzerinde hatalı işlemlerin ne olduğunu belirlemek için [sağlama Özeti raporunu](../app-provisioning/check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal) ve [sağlama günlüklerini](../app-provisioning/check-status-user-account-provisioning.md#provisioning-logs-preview) gözden geçirin. Sağlama Özeti raporu ve günlükleri hakkında daha fazla bilgi için bkz. [Cloud İK uygulama kullanıcı sağlamayı yönetme](#manage-your-configuration).
+2. Etkilenen kullanıcıların veya grupların bilinen son iyi durumu, sağlama denetim günlükleri aracılığıyla veya hedef sistemleri (Azure AD veya Active Directory) inceleyerek belirlenebilir.
+3. En son bilinen iyi durum değerlerini kullanarak uygulamada doğrudan etkilenen kullanıcıları veya grupları güncelleştirmek için uygulama sahibiyle birlikte çalışın.
 
-## <a name="deploy-the-cloud-hr-app"></a>Bulut İk uygulamasını dağıtma
+## <a name="deploy-the-cloud-hr-app"></a>Cloud HR uygulamasını dağıtma
 
-Çözüm gereksinimlerinize uygun bulut İk uygulamasını seçin.
+Çözüm gereksinimlerinize göre hizalanan bulut HR uygulamasını seçin.
 
-**İş Günü**: İş Günü'nden Etkin Dizin ve Azure AD'ye işçi profillerini almak [için](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)bkz. İsteğe bağlı olarak, E-posta adresini ve kullanıcı adını İş Günü'ne geri yazabilirsiniz.
+**Workday**: çalışan profillerini Workday 'den Active Directory ve Azure AD 'ye aktarmak için bkz. [öğretici: otomatik Kullanıcı sağlaması Için Workday 'yi yapılandırma](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). İsteğe bağlı olarak, e-posta adresini ve Kullanıcı adını Workday 'e geri yazabilirsiniz.
 
-## <a name="manage-your-configuration"></a>Yapılandırmanızı yönetme
+## <a name="manage-your-configuration"></a>Yapılandırmanızı yönetin
 
-Azure AD, denetim günlükleri ve raporlar aracılığıyla kuruluşunuzun kullanıcı sağlama kullanımı ve operasyonel durumu hakkında ek bilgiler sağlayabilir.
+Azure AD, kuruluşunuzun Kullanıcı sağlama kullanımı ve denetim günlükleri ve raporları aracılığıyla işletimsel sistem durumu hakkında ek öngörüler sağlayabilir.
 
-### <a name="gain-insights-from-reports-and-logs"></a>Raporlardan ve günlüklerden öngörüler elde edin
+### <a name="gain-insights-from-reports-and-logs"></a>Raporlardan ve günlüklerden öngörü elde edin
 
-Başarılı bir [ilk döngüden](../app-provisioning/how-provisioning-works.md#initial-cycle)sonra, Azure AD sağlama hizmeti, aşağıdaki olaylardan biri meydana gelene kadar, her uygulamaya özgü öğreticilerde tanımlanan aralıklarla, arka arkaya artımlı güncelleştirmeleri süresiz olarak çalıştırmaya devam eder:
+Başarılı bir [Başlangıç döngüsünden](../app-provisioning/how-provisioning-works.md#initial-cycle)sonra, Azure AD sağlama hizmeti, aşağıdaki olaylardan biri gerçekleşene kadar her bir uygulamaya özgü öğreticilerde tanımlanan aralıklarda sonsuza kadar sürekli artımlı güncelleştirmeler çalıştırmaya devam eder:
 
-- Hizmet el ile durdurulur. [Azure portalı](https://portal.azure.com/) veya uygun Microsoft [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) komutu kullanılarak yeni bir başlangıç döngüsü tetiklenir.
-- Öznitelik eşlemeleri veya kapsam filtreleri bir değişiklik nedeniyle yeni bir başlangıç döngüsü tetiklenir.
-- Sağlama işlemi, yüksek hata oranı nedeniyle karantinaya alınır. Dört haftadan fazla karantinada kalır ve bu süre otomatik olarak devre dışı bırakılır.
+- Hizmet el ile durduruldu. [Azure Portal](https://portal.azure.com/) veya uygun [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) komutu kullanılarak yeni bir başlangıç çevrimi tetiklenir.
+- Yeni bir başlangıç çevrimi, öznitelik eşlemelerinde veya kapsam filtrelerinizdeki bir değişikliğe göre tetiklenir.
+- Sağlama işlemi, yüksek hata oranı nedeniyle karantinaya alınır. Dört haftadan uzun bir süre içinde kalır ve bu süre otomatik olarak devre dışıdır.
 
-Bu olayları ve sağlama hizmeti tarafından gerçekleştirilen diğer tüm etkinlikleri gözden geçirmek için, [günlükleri nasıl inceleyip etkinlik sağlama yla ilgili raporlar almayı öğrenin.](../app-provisioning/check-status-user-account-provisioning.md)
+Bu olayları ve sağlama hizmeti tarafından gerçekleştirilen diğer tüm etkinlikleri gözden geçirmek için, [günlükleri incelemeyi ve sağlama etkinliğine ilişkin raporları almayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md).
 
 #### <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
-Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD denetim günlüklerine kaydedilir. Daha fazla analiz için Azure AD denetim günlüklerini Azure Monitor günlüklerine yönlendirebilirsiniz. Azure Monitor günlükleri (Günlük Analizi çalışma alanı olarak da bilinir) ile, olayları bulmak, eğilimleri analiz etmek ve çeşitli veri kaynakları arasında korelasyon gerçekleştirmek için verileri sorgulayabilirsiniz. Pratik kullanıcı senaryolarında Azure AD günlükleri için Azure Monitor günlüklerini kullanmanın avantajlarını öğrenmek için bu [videoyu](https://youtu.be/MP5IaCTwkQg) izleyin.
+Sağlama hizmeti tarafından gerçekleştirilen tüm etkinlikler Azure AD denetim günlüklerine kaydedilir. Azure AD denetim günlüklerini daha fazla analiz için Azure Izleyici günlüklerine yönlendirebilirsiniz. Azure Izleyici günlükleri (Log Analytics çalışma alanı olarak da bilinir) sayesinde, olayları bulmak, eğilimleri çözümlemek ve çeşitli veri kaynakları arasında bağıntı gerçekleştirmek için verileri sorgulayabilirsiniz. Pratik Kullanıcı senaryolarında Azure AD günlükleri için Azure Izleyici günlüklerini kullanmanın avantajlarını öğrenmek için bu [videoyu](https://youtu.be/MP5IaCTwkQg) izleyin.
 
-Ortamınızdaki olayları sağlama yla ilgili [önceden oluşturulmuş raporlara](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) erişmek [için Azure AD etkinlik günlüklerinin günlük analizi görünümlerini](../reports-monitoring/howto-install-use-log-analytics-views.md) yükleyin.
+Ortamınızdaki sağlama olayları etrafında [önceden oluşturulmuş raporlara](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) erişim sağlamak IÇIN [Azure ad etkinlik günlükleri için Log Analytics görünümlerini](../reports-monitoring/howto-install-use-log-analytics-views.md) yükler.
 
-Daha fazla bilgi için Azure [Monitor günlüklerinizle Azure REKLAM etkinlik günlüklerini](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)nasıl analiz edin.
+Daha fazla bilgi için bkz. Azure [izleyici günlüklerinizi Azure ad etkinlik günlüklerini çözümleme](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md).
 
 ### <a name="manage-personal-data"></a>Kişisel verileri yönetme
 
-Windows sunucusuna yüklenen Azure AD Connect sağlama aracısı, Windows etkinlik günlüğünde, bulut İk uygulamanıza bağlı olarak Active Directory öznitelik eşlemelerine bağlı olarak kişisel veriler içerebilecek günlükler oluşturur. Kullanıcı gizliliği yükümlülüklerine uymak için, olay günlüğünü temizlemek ve hiçbir verinin 48 saatten fazla tutulmamasını sağlamak için windows zamanlanmış bir görev ayarlayın.
+Windows Server 'da yüklü olan Azure AD Connect sağlama Aracısı, Windows olay günlüğünde, öznitelik eşlemelerini Active Directory için bulut HR uygulamanıza bağlı olarak kişisel veriler içerebilen Günlükler oluşturur. Kullanıcı gizlilik yükümlülükleriyle uyum sağlamak için, olay günlüğünü temizlemek üzere bir Windows zamanlanmış görevi ayarlayın ve hiçbir veri 48 saatten daha fazla tutulmayacak şekilde emin olun.
 
-Azure AD sağlama hizmeti, herhangi bir veriyi 30 günden fazla depolamadığı, işlemediği veya tutmadığı için raporlar oluşturmaz, analiz yapmaz veya 30 günden fazla öngörü sağlamaz.
+Azure AD sağlama hizmeti, raporlar oluşturmaz, analiz gerçekleştirmez veya 30 günden daha fazla veri depolamadığından, hiçbir veriyi 30 günden daha fazla saklayamadığından, bu verileri bir veya daha fazla öngörü sağlamadığı için
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Sağlama sırasında ortaya çıkan sorunları gidermek için aşağıdaki makalelere bakın:
+Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki makalelere bakın:
 
-- [Kullanıcı sağlamayı azure AD Galerisi uygulamasına yapılandırma sorunu](application-provisioning-config-problem.md)
-- [Bir uygulamayı sağlamak için şirket içi Active Directory'nizden Azure AD'ye bir özniteliği senkronize etme](user-provisioning-sync-attributes-for-mapping.md)
-- [Azure AD Galerisi uygulamasına kullanıcı sağlama süresi birkaç saat veya daha uzun sürüyor](application-provisioning-when-will-provisioning-finish.md)
-- [Kullanıcı sağlamayı Azure Etkin Dizin Galerisi uygulamasına yapılandırırken yönetici kimlik bilgilerini kaydetme sorunu](application-provisioning-config-problem-storage-limit.md)
-- [Azure AD Galerisi uygulamasında hiçbir kullanıcı sağlanmadı](application-provisioning-config-problem-no-users-provisioned.md)
-- [Azure AD Galerisi uygulamasına yanlış kullanıcı kümesi sağlanıyor](application-provisioning-config-problem-wrong-users-provisioned.md)
-- [Aracı sorun giderme için Windows Event Viewer ayarlama](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
-- [Hizmet sorun giderme için Azure portalı Denetim Günlükleri ayarlama](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
-- [AD Kullanıcı Hesabı için günlükleri anlama işlemleri oluşturmak](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
-- [Yönetici güncelleştirme işlemleri için günlükleri anlama](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
-- [Sık karşılaşılan hataları çözme](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
+- [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](application-provisioning-config-problem.md)
+- [Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin](user-provisioning-sync-attributes-for-mapping.md)
+- [Azure AD Galeri uygulamasına Kullanıcı hazırlama saati veya daha fazlasını sürüyor](application-provisioning-when-will-provisioning-finish.md)
+- [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](application-provisioning-config-problem-storage-limit.md)
+- [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](application-provisioning-config-problem-no-users-provisioned.md)
+- [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Windows Olay Görüntüleyicisi aracı sorunlarını giderme için ayarlama](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
+- [Hizmet sorunlarını giderme için Azure portal denetim günlüklerini ayarlama](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
+- [AD Kullanıcı hesabı oluşturma işlemleri için günlükleri anlama](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
+- [Yönetici güncelleştirme işlemlerine yönelik günlükleri anlama](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [Yaygın olarak karşılaşılan hatalar çözümleniyor](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
 - [Öznitelik eşlemeleri için ifadeler yazma](functions-for-customizing-application-data.md)
-- [Azure AD senkronizasyon API'ye genel bakış](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-- [Kapsam dışına çıkan kullanıcı hesaplarının silinmesini atlama](skip-out-of-scope-deletions.md)
-- [Azure AD Connect Provisioning Aracısı: Sürüm sürüm geçmişi](provisioning-agent-release-version-history.md)
+- [Azure AD eşitleme API 'sine genel bakış](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın](skip-out-of-scope-deletions.md)
+- [Azure AD Connect sağlama Aracısı: sürüm yayınlama geçmişi](provisioning-agent-release-version-history.md)

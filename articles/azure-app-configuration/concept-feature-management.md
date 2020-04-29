@@ -1,48 +1,48 @@
 ---
-title: Azure Uygulama Yapılandırması'nı kullanarak özellik yönetimini anlama
-description: Azure Uygulama Yapılandırması'nı kullanarak özellikleri açıp kapatma
+title: Azure Uygulama yapılandırması 'nı kullanarak özellik yönetimini anlama
+description: Azure Uygulama yapılandırması 'nı kullanarak özellikleri açma ve kapatma
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 8227810c154078fc8424b2cadd373394d07e9730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523739"
 ---
 # <a name="feature-management-overview"></a>Özellik yönetimine genel bakış
 
-Geleneksel olarak, yeni bir uygulama özelliği nakliye uygulamanın kendisi tam bir yeniden dağıtım gerektirir. Bir özelliği sınaması genellikle uygulamanın birden çok dağıtımını gerektirir.  Her dağıtım özelliği değiştirebilir veya sınama için farklı müşterilere özelliği ortaya çıkarabilir.  
+Geleneksel olarak, yeni bir uygulama özelliği teslim etmek, uygulamanın kendisi için tamamen yeniden dağıtımı gerektirir. Bir özelliğin test edilmesi genellikle uygulamanın birden çok dağıtımını gerektirir.  Her dağıtım, özelliği değiştirebilir veya test için özelliği farklı müşterilere sunabilir.  
 
-Özellik yönetimi, özellik yayımını kod dağıtımından ayıran ve isteğe bağlı özellik kullanılabilirliği için hızlı değişiklikler sağlayan modern bir yazılım geliştirme uygulamasıdır. Bir özelliğin yaşam döngüsünü dinamik olarak yönetmek için *özellik bayrakları* *(özellik geçişleri,* *özellik anahtarları*vb. olarak da bilinir) adı verilen bir teknik kullanır.
+Özellik Yönetimi, özellik yayınını kod dağıtımından ayrışar ve isteğe bağlı olarak özellik kullanılabilirliğine hızlı değişiklikler sağlayan modern bir yazılım geliştirme uygulamasıdır. Özelliğin yaşam döngüsünü dinamik olarak yönetmek için *özellik bayrakları* ( *özellik* *geçişleri, özellik anahtarları*vb. olarak da bilinir) adlı bir teknik kullanır.
 
-Özellik yönetimi, geliştiricilerin aşağıdaki sorunları gidermesine yardımcı olur:
+Özellik Yönetimi, geliştiricilerin aşağıdaki sorunları ele almanıza yardımcı olur:
 
-* **Kod şube yönetimi**: Şu anda geliştirilmekte olan yeni uygulama işlevselliğini sarmak için özellik bayraklarını kullanın. Bu tür işlevler varsayılan olarak "gizlidir". Tamamlanmamış olsa bile özelliği güvenli bir şekilde sevk edebilirsiniz ve üretimde hareketsiz kalır. *Karanlık dağıtım*olarak adlandırılan bu yaklaşımı kullanarak, her geliştirme döngüsünün sonunda tüm kodunuzu serbest bırakabilirsiniz. Belirli bir özelliğin tamamlanması için birden fazla döngü gerektirdiğinden, artık birden çok geliştirme döngüsünde kod dallarını korumanız gerekmez.
-* **Üretimde Test**: Üretimdeki yeni işlevlere erken erişim sağlamak için özellik bayraklarını kullanın. Örneğin, ekip üyelerine veya dahili beta sınayıcılara erişimi sınırlandırabilirsiniz. Bu kullanıcılar, bir test ortamında simüle edilmiş veya kısmi bir deneyim yerine tam doğruluküretim deneyimini deneyimleyecekler.
-* **Uçuş**: Son kullanıcılara yeni işlevleri aşamalı olarak kullanıma çıkarmak için özellik bayraklarını kullanın. Önce kullanıcı popülasyonunuzun küçük bir yüzdesini hedefleyebilir ve bu yüzdeyi zaman içinde kademeli olarak artırabilirsiniz.
-* **Anında öldürme anahtarı**: Özellik bayrakları, yeni işlevleri serbest bırakmak için doğal bir güvenlik ağı sağlar. Uygulama özelliklerini herhangi bir kodu yeniden dağıtmadan açıp kapatabilirsiniz. Gerekirse, uygulamanızı yeniden oluşturmadan ve yeniden dağıtmadan bir özelliği hızla devre dışı kullanabilirsiniz.
-* **Seçici etkinleştirme**: Kullanıcılarınızı segmente etmek ve her gruba belirli bir özellik kümesi sunmak için özellik bayraklarını kullanın. Yalnızca belirli bir web tarayıcısı üzerinde çalışan bir özelliğiniz olabilir. Yalnızca bu tarayıcının kullanıcılarının özelliği görebilmeleri ve kullanabilmeleri için bir özellik bayrağı tanımlayabilirsiniz. Bu yaklaşımla, desteklenen tarayıcı listesini daha sonra herhangi bir kod değişikliği yapmak zorunda kalmadan kolayca genişletebilirsiniz.
+* **Kod dalı yönetimi**: Geliştirme kapsamında olan yeni uygulama işlevselliğini kaydırmak için özellik bayraklarını kullanın. Bu işlevsellik varsayılan olarak "gizlidir". Tamamlanmamış olsa bile özelliği güvenle gönderebilirsiniz ve üretimde devre dışı kalır. *Koyu dağıtım*olarak adlandırılan bu yaklaşımı kullanarak her bir geliştirme döngüsünün sonunda tüm kodunuzu serbest bırakabilirsiniz. Belirli bir özellik için birden fazla döngü gerektiğinden, artık birden çok geliştirme döngüsünde kod dallarını korumanız gerekmez.
+* **Üretimde test**: üretimde yeni işlevlere erken erişim sağlamak için özellik bayraklarını kullanın. Örneğin, erişimi takım üyelerine veya iç beta sınayıcılarına sınırlayabilirsiniz. Bu kullanıcılar bir test ortamında benzetimli veya kısmi bir deneyim yerine tam uygunlukta üretim deneyimine sahip olur.
+* **Fışıklandırma**: son kullanıcılara artımlı olarak yeni işlevsellik aktarmak için özellik bayraklarını kullanın. Önce Kullanıcı popülasyonunun küçük bir yüzdesini hedefleyebilir ve zaman içinde kademeli olarak bu yüzdeyi artırabilirsiniz.
+* **Anında sonlandırma anahtarı**: özellik bayrakları, yeni işlevselliği serbest bırakmak için devralınmış bir güvenlik ağı sağlar. Herhangi bir kodu yeniden dağıtmaya gerek kalmadan uygulama özelliklerini etkinleştirebilir ve devre dışı bırakabilirsiniz. Gerekirse, uygulamanızı yeniden derlemek ve yeniden dağıtmak zorunda kalmadan bir özelliği hızlıca devre dışı bırakabilirsiniz.
+* **Seçmeli etkinleştirme**: kullanıcılarınızı segmentlere ayırmak ve her gruba belirli bir özellikler kümesi sunmak için özellik bayraklarını kullanın. Yalnızca belirli bir Web tarayıcısında çalışacak bir özelliğe sahip olabilirsiniz. Özellik bayrağını, yalnızca bu tarayıcı kullanıcılarının özelliği görebilmesi ve kullanabilmesi için tanımlayabilirsiniz. Bu yaklaşımda, daha sonra herhangi bir kod değişikliği yapmak zorunda kalmadan desteklenen tarayıcı listesini kolayca genişletebilirsiniz.
 
 ## <a name="basic-concepts"></a>Temel kavramlar
 
-Özellik yönetimiyle ilgili birkaç yeni terim şunlardır:
+Özellik yönetimiyle ilgili birkaç yeni terim aşağıda verilmiştir:
 
-* **Özellik bayrağı**: Özellik *bayrağı,* ikili durumu kapalı veya *kapalı*olan bir değişkendir. Özellik bayrağı da ilişkili bir kod bloğu vardır. Özellik bayrağının durumu, kod bloğunun çalışıp çalıştırmadığını tetikler.
-* Özellik yöneticisi : **Özellik yöneticisi,** bir uygulamadaki tüm özellik bayraklarının yaşam döngüsünü işleyen bir uygulama paketidir. Özellik yöneticisi, özellik bayraklarını önbelleğe alma ve durumlarını güncelleştirme gibi ek işlevler de sağlar.
-* **Filtre**: Filtre, özellik bayrağının durumunu değerlendirmek için bir kuraldır. Olası filtreler kullanıcı gruplarını, aygıt veya tarayıcı türlerini, coğrafi konumları ve zaman pencerelerini içerir.
+* **Özellik bayrağı**: Özellik bayrağı, ikili durumu *Açık* veya *kapalı*olan bir değişkendir. Özellik bayrağının ayrıca ilişkili bir kod bloğu vardır. Özellik bayrağının durumu kod bloğunun çalıştırılıp çalıştırılmadığını tetikler.
+* **Özellik Yöneticisi**: bir özellik Yöneticisi, bir uygulamadaki tüm özellik bayraklarının yaşam döngüsünü işleyen bir uygulama paketidir. Özellik Yöneticisi ayrıca Özellik bayraklarını önbelleğe alma ve durumlarını güncelleştirme gibi ek işlevler de sağlar.
+* **Filtre**: filtre, bir özellik bayrağının durumunu değerlendirmek için bir kuraldır. Olası filtreler Kullanıcı gruplarını, cihaz veya tarayıcı türlerini, coğrafi konumları ve zaman pencerelerini içerir.
 
-Özellik yönetiminin etkin bir şekilde uygulanması, birlikte çalışan en az iki bileşenden oluşur:
+Özellik yönetiminin etkili bir şekilde uygulanması, Concert üzerinde çalışan en az iki bileşenden oluşur:
 
 * Özellik bayraklarını kullanan bir uygulama.
-* Özellik bayraklarını ve geçerli durumlarını depolayan ayrı bir depo.
+* Özellik bayraklarını ve bunların geçerli durumlarını depolayan ayrı bir depo.
 
-## <a name="using-feature-flags-in-your-code"></a>Kodunuzda özellik bayraklarını kullanma
+## <a name="using-feature-flags-in-your-code"></a>Kodunuzda Özellik bayraklarını kullanma
 
-Bir uygulamada özellik bayrakları uygulamak için temel desen basittir. Özellik bayrağı, kodunuzda koşullu bir ifadeyi kontrol eden bir Boolean durum değişkenidir:
+Bir uygulamada Özellik bayraklarını uygulamaya yönelik temel model basittir. Özellik bayrağı, kodunuzda koşullu bir ifadeyi denetleyen bir Boole durum değişkenidir:
 
 ```csharp
 if (featureFlag) {
@@ -50,19 +50,19 @@ if (featureFlag) {
 }
 ```
 
-Statik değerini ayarlayabilirsiniz. `featureFlag`
+Statik olarak `featureFlag` değerini belirleyebilirsiniz.
 
 ```csharp
 bool featureFlag = true;
 ```
 
-Bayrağın durumunu belirli kurallara göre değerlendirebilirsiniz:
+Belirli kurallara göre bayrağın durumunu değerlendirebilirsiniz:
 
 ```csharp
 bool featureFlag = isBetaUser();
 ```
 
-Koşullu uygulama davranışını her iki durum için de ayarlamak için uzatabilirsiniz:
+Her iki durum için de uygulama davranışını ayarlamak üzere koşullu öğesini genişletebilirsiniz:
 
 ```csharp
 if (featureFlag) {
@@ -72,15 +72,15 @@ if (featureFlag) {
 }
 ```
 
-## <a name="feature-flag-repository"></a>Özellik bayrak deposu
+## <a name="feature-flag-repository"></a>Özellik bayrağı deposu
 
-Özellik bayraklarını etkili bir şekilde kullanmak için, bir uygulamada kullanılan tüm özellik bayraklarını haricileştirmeniz gerekir. Bu, uygulamanın kendisini değiştirmeden ve yeniden dağıtmadan özellik bayrağı durumlarını değiştirmenize olanak tanır.
+Özellik bayraklarını etkin bir şekilde kullanmak için, bir uygulamada kullanılan tüm özellik bayraklarını externalize gerekir. Bu, uygulamanın kendisini değiştirmeden ve yeniden dağıtmaya gerek kalmadan Özellik bayrağı durumlarını değiştirmenize olanak sağlar.
 
-Azure Uygulama Yapılandırması, özellik bayrakları için merkezi bir depo sağlar. Farklı özellik bayrakları tanımlamak ve durumlarını hızlı ve güvenli bir şekilde işlemek için kullanabilirsiniz. Daha sonra uygulamanızdan bu özellik bayraklarına kolayca erişmek için çeşitli programlama dili çerçeveleri için Uygulama Yapılandırma kitaplıklarını kullanabilirsiniz.
+Azure Uygulama yapılandırması, özellik bayrakları için merkezi bir depo sağlar. Farklı özellik bayraklarını tanımlamak ve durumlarını hızla ve güvenle işlemek için kullanabilirsiniz. Bundan sonra, bu özellik bayraklarını uygulamanızdan kolayca erişmek için çeşitli programlama dilleri çerçeveleri için uygulama yapılandırma kitaplıklarını kullanabilirsiniz.
 
-[ASP.NET Core uygulamasında özellik bayraklarını kullanmak,](./use-feature-flags-dotnet-core.md) ASP.NET web uygulamanız için özellik bayraklarını uygulamak için .NET Core App Configuration sağlayıcısı ve Özellik Yönetimi kitaplıklarının birlikte nasıl kullanıldığını gösterir.
+[ASP.NET Core uygulamasında Özellik bayraklarını kullanma](./use-feature-flags-dotnet-core.md) , .NET Core uygulama yapılandırma sağlayıcısı ve özellik yönetimi kitaplıklarının, ASP.NET Web uygulamanıza yönelik özellik bayraklarını uygulamak için birlikte nasıl kullanıldığını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core web uygulamasına özellik bayrakları ekleme](./quickstart-feature-flag-aspnet-core.md)  
+> [ASP.NET Core Web uygulamasına özellik bayrakları ekleme](./quickstart-feature-flag-aspnet-core.md)  

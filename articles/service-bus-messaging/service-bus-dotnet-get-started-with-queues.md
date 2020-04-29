@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus kuyrukları ile çalışmaya başlama | Microsoft Docs
-description: Bu eğitimde, bir Hizmet Veri Servisi kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturursunuz.
+description: Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturacaksınız.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -15,27 +15,27 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471746"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus kuyrukları ile çalışmaya başlama
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-Bu eğitimde, bir Hizmet Veri Servisi kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturursunuz.
+Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturacaksınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.
-- Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)kaydolabilirsiniz.
-- Üzerinde çalışmanız gereken bir sıra yoksa, kuyruk oluşturmak için Hizmet Veri Hizmetleri sırası makalesi [oluşturmak için Azure kullan portalındaki](service-bus-quickstart-portal.md) adımları izleyin.
+- Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
+- Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
 
-  - Servis Veri Servisi kuyruklarına hızlı bir genel bakış okuyun.
-  - Hizmet Veri Günü ad alanı oluşturun.
-  - Bağlantı dizesini al.
-  - Servis Veri Servisi kuyruğu oluşturun.
+  - Service Bus kuyruklara hızlı genel bakış konusunu okuyun.
+  - Service Bus ad alanı oluşturun.
+  - Bağlantı dizesini alın.
+  - Service Bus kuyruğu oluşturun.
 
 ## <a name="send-messages-to-the-queue"></a>Kuyruğa ileti gönderme
 
@@ -43,19 +43,19 @@ Kuyruğa ileti göndermek için, Visual Studio'yu kullanarak bir C# konsol uygul
 
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
 
-Visual Studio'u başlatın ve C#için yeni bir **Konsol Uygulaması (.NET Core)** projesi oluşturun. Bu örnekte *coresenderApp*uygulaması adlandırır.
+Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun. Bu örnek, uygulama *Coresenderapp*' i adlandırır.
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet paketi ekleme
 
 1. Yeni oluşturulan projeye sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
-1. **Gözat**'ı seçin. **[Microsoft.Azure.ServiceBus'u](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** arayın ve seçin.
-1. Yüklemeyi tamamlamak için **Yükle'yi** seçin ve Ardından NuGet Paket Yöneticisi'ni kapatın.
+1. **Gözat**'ı seçin. **[Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** araması yapın ve seçin.
+1. Yüklemeyi **gerçekleştirmek için yükleme** ' yi seçin ve ardından NuGet Paket Yöneticisi ' ni kapatın.
 
     ![NuGet paketi seçme][nuget-pkg]
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Kuyruğa ileti göndermek için kod yazma
 
-1. *Program.cs,* sınıf bildiriminden önce ad alanı tanımının en üstüne aşağıdaki `using` ifadeleri ekleyin:
+1. *Program.cs*' de, Sınıf bildiriminden `using` önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using System.Text;
@@ -64,7 +64,7 @@ Visual Studio'u başlatın ve C#için yeni bir **Konsol Uygulaması (.NET Core)*
     using Microsoft.Azure.ServiceBus;
     ```
 
-1. `Program` Sınıfta, aşağıdaki değişkenleri bildirin:
+1. `Program` Sınıfında, aşağıdaki değişkenleri bildirin:
 
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -72,9 +72,9 @@ Visual Studio'u başlatın ve C#için yeni bir **Konsol Uygulaması (.NET Core)*
     static IQueueClient queueClient;
     ```
 
-    `ServiceBusConnectionString` Ad alanı için bağlantı dizenizi değişken olarak girin. Sıra adınızı girin.
+    Ad alanı için Bağlantı dizenizi `ServiceBusConnectionString` değişken olarak girin. Sıra adınızı girin.
 
-1. Yöntemi `Main()` aşağıdaki **async** `Main` yöntemiyle değiştirin. Sıraya ileti `SendMessagesAsync()` göndermek için bir sonraki adımda ekleyeceğiniz yöntemi çağırır. 
+1. `Main()` Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. Kuyruğa ileti göndermek `SendMessagesAsync()` için bir sonraki adımda ekleyeceğiniz yöntemi çağırır. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -94,7 +94,7 @@ Visual Studio'u başlatın ve C#için yeni bir **Konsol Uygulaması (.NET Core)*
         await queueClient.CloseAsync();
     }
     ```
-1. Yöntemden `MainAsync()` hemen sonra, `SendMessagesAsync()` tarafından `numberOfMessagesToSend` belirtilen ileti sayısını gönderme işini yapan aşağıdaki yöntemi ekleyin (şu anda 10 olarak ayarlanır):
+1. Doğrudan `MainAsync()` yönteminden sonra, tarafından `SendMessagesAsync()` `numberOfMessagesToSend` belirtilen ileti sayısını gönderme işini yapan aşağıdaki yöntemi ekleyin (Şu anda 10 ' a ayarlanır):
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -121,7 +121,7 @@ Visual Studio'u başlatın ve C#için yeni bir **Konsol Uygulaması (.NET Core)*
     }
     ```
 
-Program.cs *dosyanızın* nasıl görünmesi gerektiği aşağıda verilmelidir.
+*Program.cs* dosyanız şöyle görünmelidir.
 
 ```csharp
 namespace CoreSenderApp
@@ -183,25 +183,25 @@ namespace CoreSenderApp
 }
 ```
 
-Programı çalıştırın ve Azure portalını kontrol edin.
+Programı çalıştırın ve Azure portal denetleyin.
 
-**Sıra Essentials'ı**görüntülemek için ad alanına **Genel Bakış** penceresinde sıranızın adını seçin.
+Sıra **Essentials 'ı**göstermek için ad alanı **genel bakış** penceresinde kuyruğunuzun adını seçin.
 
-![Sayım ve boyut la alınan iletiler][queue-message]
+![Sayı ve boyut ile alınan iletiler][queue-message]
 
-Sıranın **Etkin ileti sayısı** değeri artık **10'dur.** İletileri almadan bu gönderen uygulamasını her çalıştırdığınızda, bu değer 10 artar.
+Kuyruğun **etkin ileti sayısı** değeri artık **10**' dur. Bu gönderen uygulamayı iletileri almadan her çalıştırdığınızda, bu değer 10 artar.
 
-Sıranın geçerli boyutu, uygulama sıraya her mesaj eklediğinde **Essentials'taki** **CURRENT** değerini artırıyor.
+Kuyruğun geçerli boyutu, uygulamanın sıraya ileti eklemesi her seferinde **Essentials** 'daki **geçerli** değeri arttırır.
 
-Sonraki bölümde bu iletilerin nasıl alınılsüreceğini açıklanır.
+Sonraki bölümde bu iletilerin nasıl alınacağını açıklanmaktadır.
 
 ## <a name="receive-messages-from-the-queue"></a>Kuyruktan ileti alma
 
-Gönderdiğiniz iletileri almak için başka bir **Konsol Uygulaması (.NET Core)** uygulaması oluşturun. Gönderen uygulamasında yaptığınız gibi **Microsoft.Azure.ServiceBus** NuGet paketini yükleyin.
+Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core)** uygulaması oluşturun. Gönderen uygulaması için yaptığınız gibi **Microsoft. Azure. ServiceBus** NuGet paketini yükleyebilirsiniz.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Kuyruktan ileti almak için kod yazma
 
-1. *Program.cs,* sınıf bildiriminden önce ad alanı tanımının en üstüne aşağıdaki `using` ifadeleri ekleyin:
+1. *Program.cs*' de, Sınıf bildiriminden `using` önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using System;
@@ -211,7 +211,7 @@ Gönderdiğiniz iletileri almak için başka bir **Konsol Uygulaması (.NET Core
     using Microsoft.Azure.ServiceBus;
     ```
 
-1. `Program` Sınıfta, aşağıdaki değişkenleri bildirin:
+1. `Program` Sınıfında, aşağıdaki değişkenleri bildirin:
 
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -219,7 +219,7 @@ Gönderdiğiniz iletileri almak için başka bir **Konsol Uygulaması (.NET Core
     static IQueueClient queueClient;
     ```
 
-    `ServiceBusConnectionString` Ad alanı için bağlantı dizenizi değişken olarak girin. Sıra adınızı girin.
+    Ad alanı için Bağlantı dizenizi `ServiceBusConnectionString` değişken olarak girin. Sıra adınızı girin.
 
 1. `Main()` yöntemini aşağıdaki kod ile değiştirin:
 
@@ -246,7 +246,7 @@ Gönderdiğiniz iletileri almak için başka bir **Konsol Uygulaması (.NET Core
     }
     ```
 
-1. Yöntemden `MainAsync()` hemen sonra, ileti işleyicisini kaydeden ve gönderen uygulama tarafından gönderilen iletileri alan aşağıdaki yöntemi ekleyin:
+1. Doğrudan `MainAsync()` yönteminden sonra, ileti işleyicisini kaydeden ve gönderen uygulama tarafından gönderilen iletileri alan aşağıdaki yöntemi ekleyin:
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -302,7 +302,7 @@ Gönderdiğiniz iletileri almak için başka bir **Konsol Uygulaması (.NET Core
     }
     ```
 
-*Program.cs* dosyanızın nasıl görünmesi gerektiği aşağıda verilmelidir:
+*Program.cs* dosyanız şu şekilde görünmelidir:
 
 ```csharp
 namespace CoreReceiverApp
@@ -388,14 +388,14 @@ namespace CoreReceiverApp
 }
 ```
 
-Programı çalıştırın ve portalı tekrar denetleyin. **Etkin ileti sayısı** ve **GÜNCEL** değerleri artık **0'dır.**
+Programı çalıştırın ve portalı tekrar denetleyin. **Etkin ileti sayısı** ve **geçerli** değerler artık **0**' dır.
 
-![İletiler alındıktan sonra sıra][queue-message-receive]
+![İletiler alındıktan sonra kuyruğa al][queue-message-receive]
 
-Tebrikler! Şimdi bir kuyruk oluşturdunuz, bu kuyruğa bir dizi ileti gönderdiniz ve bu iletileri aynı kuyruktan aldınız.
+Tebrikler! Artık bir kuyruk oluşturdunuz, bu kuyruğa bir ileti kümesi gönderdiniz ve bu iletileri aynı kuyruktan almış oldunuz.
 
 > [!NOTE]
-> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına kolayca bağlanmalarını ve ileti varlıklarını yönetmelerini sağlar. Araç, alma/dışa aktarma işlevselliği veya konuları, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar.
+> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus Gezgini kullanıcıların bir Service Bus ad alanına kolayca bağlanmasına ve mesajlaşma varlıklarını yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konuları, kuyrukları, abonelikleri, geçiş hizmetlerini, Bildirim Hub 'larını ve Olay Hub 'larını test etme özelliğini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB'de SELECT yan tümcesi
-description: Azure Cosmos DB için SQL SELECT yan tümcesi hakkında bilgi edinin. SQL'i Azure Cosmos DB JSON sorgu dili olarak kullanın.
+title: Azure Cosmos DB yan tümce SEÇIN
+description: Azure Cosmos DB için SQL SELECT yan tümcesi hakkında bilgi edinin. SQL 'i Azure Cosmos DB JSON sorgu dili olarak kullanın.
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
 ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77469944"
 ---
-# <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB'de SELECT yan tümcesi
+# <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB yan tümce SEÇIN
 
-Her sorgu, ANSI SQL standartlarına göre select yan tümcesi ve isteğe bağlı [FROM](sql-query-from.md) ve [WHERE](sql-query-where.md) yan tümcelerinden oluşur. Genellikle, FROM yan tümcesindeki kaynak numaralandırılır ve WHERE yan tümcesi JSON öğelerinin bir alt kümesini almak için kaynağa bir filtre uygular. SELECT yan tümcesi daha sonra istenen JSON değerlerini seçili listede gösterir.
+Her sorgu, ANSI SQL standartlarına göre, SELECT yan tümcesi ve from ve [WHERE](sql-query-where.md) yan [tümcelerinden](sql-query-from.md) oluşur. Genellikle, FROM yan tümcesindeki kaynak numaralandırılır ve WHERE yan tümcesi JSON öğelerinin bir alt kümesini almak için kaynak üzerinde bir filtre uygular. SELECT yan tümcesi daha sonra seçim listesinde istenen JSON değerlerini projeler.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -40,45 +40,45 @@ SELECT <select_specification>
   
 - `'*'`  
 
-  Değerin herhangi bir değişiklik yapmadan alınması gerektiğini belirtir. Özellikle işlenen değer bir nesneyse, tüm özellikler alınır.  
+  Değerin herhangi bir değişiklik yapılmadan alınması gerektiğini belirtir. Özellikle işlenen değer bir nesnese, tüm özellikler alınır.  
   
 - `<object_property_list>`  
   
-  Alınacak özelliklerin listesini belirtir. Döndürülen her değer, belirtilen özelliklere sahip bir nesne olacaktır.  
+  Alınacak özelliklerin listesini belirtir. Döndürülen her değer, belirtilen özelliklerle bir nesne olacaktır.  
   
 - `VALUE`  
 
-  JSON değerinin tam JSON nesnesi yerine alınması gerektiğini belirtir. Bu, `<property_list>` aksine bir nesnede yansıtılan değeri sarmak değildir.  
+  Tüm JSON nesnesi yerine JSON değerinin alınması gerektiğini belirtir. Bu, aksine `<property_list>` , bir nesnedeki öngörülen değeri sarmaz.  
  
 - `DISTINCT`
   
-  Öngörülen özelliklerin yinelenenlerinin kaldırılması gerektiğini belirtir.  
+  Yansıtılan özelliklerin tekrarların kaldırılması gerektiğini belirtir.  
 
 - `<scalar_expression>`  
 
-  Hesaplanacak değeri temsil eden ifade. Ayrıntılar için [Skaler ifadeler](sql-query-scalar-expressions.md) bölümüne bakın.  
+  Hesaplanacağı değeri temsil eden ifade. Ayrıntılar için bkz. [skaler ifadeler](sql-query-scalar-expressions.md) bölümü.  
 
 ## <a name="remarks"></a>Açıklamalar
 
-Sözdizimi yalnızca `SELECT *` FROM yan tümcesi tam olarak bir diğer ad beyan ettiyse geçerlidir. `SELECT *`hiçbir projeksiyon gerekli olduğunda yararlı olabilir bir kimlik projeksiyonu sağlar. SELECT * yalnızca FROM yan tümcesi belirtilmişse ve yalnızca tek bir giriş kaynağı tanıtılırsa geçerlidir.  
+`SELECT *` SÖZDIZIMI yalnızca from yan tümcesi tam olarak bir diğer ad bildirmişse geçerlidir. `SELECT *`yansıtma gerekmiyorsa yararlı olabilecek bir kimlik projeksiyonu sağlar. SELECT * yalnızca FROM yan tümcesi belirtilmişse ve yalnızca tek bir giriş kaynağı tanıdığında geçerlidir.  
   
-Her `SELECT <select_list>` `SELECT *` ikisi de ve "sözdizimsel şeker" ve alternatif olarak aşağıda gösterildiği gibi basit SELECT ifadeleri kullanılarak ifade edilebilir.  
+`SELECT *` Hem hem de `SELECT <select_list>` "sözdizimsel cukr" ve AŞAĞıDA gösterildiği gibi basit select deyimleri kullanılarak ifade edilebilir.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
-   eşdeğerdir:  
+   eşittir:  
   
    `SELECT from_alias FROM ... AS from_alias ...`  
   
 2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-   eşdeğerdir:  
+   eşittir:  
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki SELECT sorgu `address` örneği `Families` `id` eşleşen `AndersenFamily`eşlerden döner:
+`address` Aşağıdaki SELECT sorgusu örneği, `Families` `id` eşleşmelerin `AndersenFamily`döndürdüğü örnekleri:
 
 ```sql
     SELECT f.address
@@ -98,8 +98,8 @@ Sonuçlar:
     }]
 ```
 
-### <a name="quoted-property-accessor"></a>Teklif edilen özellik erişimcisi
-Teklif edilen özellik işleci [] kullanarak özelliklere erişebilirsiniz. Örneğin, `SELECT c.grade` ve `SELECT c["grade"]` eşdeğerdir. Bu sözdizimi, boşluklar, özel karakterler içeren veya SQL anahtar sözcüğü veya ayrılmış sözcük ile aynı ada sahip bir özellikten kaçmak için yararlıdır.
+### <a name="quoted-property-accessor"></a>Alıntılanmış özellik erişimcisi
+[] Alıntı özelliği işlecini kullanarak özelliklere erişebilirsiniz. Örneğin, `SELECT c.grade` ve `SELECT c["grade"]` eşdeğerdir. Bu sözdizimi, boşluk, özel karakter veya bir SQL anahtar sözcüğüyle veya ayrılmış sözcükle aynı ada sahip bir özelliğin kaçış için yararlıdır.
 
 ```sql
     SELECT f["lastName"]
@@ -107,9 +107,9 @@ Teklif edilen özellik işleci [] kullanarak özelliklere erişebilirsiniz. Örn
     WHERE f["id"] = "AndersenFamily"
 ```
 
-### <a name="nested-properties"></a>İç içe özellikleri
+### <a name="nested-properties"></a>İç içe Özellikler
 
-Aşağıdaki örnekte iki iç `f.address.state` içe `f.address.city`özellikleri projeleri ve .
+Aşağıdaki örnek, `f.address.state` iki iç içe geçmiş özelliği ve `f.address.city`.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -147,7 +147,7 @@ Sonuçlar:
     }]
 ```
 
-Önceki örnekte, SELECT yan tümcesinin bir JSON nesnesi oluşturması gerekir ve örnek anahtar `$1`sağlamadığından, yan tümce örtülü bağımsız değişken değişken adını kullanır. Aşağıdaki sorgu iki örtük bağımsız `$1` `$2`değişken değişkeni döndürür: ve .
+Önceki örnekte, SELECT yan tümcesinin bir JSON nesnesi oluşturması gerekir ve örnek hiçbir anahtar sağladığından, yan tümce örtük bağımsız değişken adını `$1`kullanır. Aşağıdaki sorgu iki örtük bağımsız değişken değişkeni döndürür: `$1` ve `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -169,11 +169,11 @@ Sonuçlar:
       }
     }]
 ```
-## <a name="reserved-keywords-and-special-characters"></a>Ayrılmış anahtar kelimeler ve özel karakterler
+## <a name="reserved-keywords-and-special-characters"></a>Ayrılmış anahtar sözcükler ve özel karakterler
 
-Verileriniz "sipariş" veya "Grup" gibi ayrılmış anahtar kelimelerle aynı adlara sahip özellikler içeriyorsa, bu belgelere karşı yapılan sorgular sözdizimi hatalarına neden olur. Sorguyu başarılı bir şekilde `[]` çalıştırmak için özelliği açıkça karaktere dahil etmelisiniz.
+Verileriniz, "Order" veya "Group" gibi ayrılmış anahtar sözcüklerle aynı adlara sahip özellikler içeriyorsa, bu belgelerde yapılan sorgular sözdizimi hatalarına neden olur. Sorguyu başarılı bir şekilde çalıştırmak için özelliği `[]` karaktere açıkça eklemeniz gerekir.
 
-Örneğin, burada adlandırılmış `order` bir özellik ve özel `price($)` karakterler içeren bir özellik içeren bir belge aşağıda verilmiştir:
+Örneğin, adında `order` bir özelliği ve özel karakterler içeren bir özelliği `price($)` içeren bir belge:
 
 ```json
 {
@@ -190,7 +190,7 @@ Verileriniz "sipariş" veya "Grup" gibi ayrılmış anahtar kelimelerle aynı ad
 }
 ```
 
-`order` Özelliği veya `price($)` özelliği içeren bir sorgu çalıştırıyorsanız, sözdizimi hatası alırsınız.
+`order` Özelliği veya `price($)` özelliği içeren bir sorgu çalıştırırsanız, bir sözdizimi hatası alırsınız.
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -198,13 +198,13 @@ SELECT * FROM c where c.order.orderid = "12345"
 ```sql
 SELECT * FROM c where c.order.price($) > 50
 ```
-Sonuç şudur:
+Sonuç:
 
 `
 Syntax error, incorrect syntax near 'order'
 `
 
-Aşağıdaki gibi aynı sorguları yeniden yazmalısınız:
+Aynı sorguları aşağıdaki gibi yeniden yazmanız gerekir:
 
 ```sql
 SELECT * FROM c WHERE c["order"].orderId = "12345"

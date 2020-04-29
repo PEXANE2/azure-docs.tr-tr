@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Cümle uzunluklarını al - Çevirmen Metin API'
+title: "Hızlı başlangıç: tümce uzunluklarını al-Translator Metin Çevirisi API'si"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Çevirmen Metin API'sini kullanarak cümle uzunluğunu nasıl belirleyeceğinizi öğreneceksiniz.
+description: Bu hızlı başlangıçta, Translator Metin Çevirisi API'si kullanarak tümce uzunluğunu belirlemeyi öğreneceksiniz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: b2569859a039739f2804a180be44e621421f0cd2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525129"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Hızlı başlangıç: Cümle uzunluğunu belirlemek için Çevirmen Metin API'sini kullanın
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Hızlı başlangıç: tümce uzunluğunu öğrenmek için Translator Metin Çevirisi API'si kullanın
 
-Bu hızlı başlangıçta, Çevirmen Metin API'sini kullanarak cümlelerin uzunluğunu nasıl belirleyeceğinizi öğreneceksiniz.
+Bu hızlı başlangıçta Translator Metin Çevirisi API'si kullanarak Tümcelerin uzunluğunu belirlemeyi öğreneceksiniz.
 
 Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 

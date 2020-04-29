@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN Ağ Geçidi: Bir ağ geçidini silme: PowerShell'
-description: Kaynak Yöneticisi dağıtım modelinde PowerShell'i kullanarak sanal ağ ağ ağ geçidini silin.
+title: 'Azure VPN Gateway: ağ geçidini silme: PowerShell'
+description: Kaynak Yöneticisi dağıtım modelinde PowerShell kullanarak bir sanal ağ geçidini silin.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,33 +8,33 @@ ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
 ms.openlocfilehash: f351f14796ec736bd5525f139a518c9a0dd3d19f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162115"
 ---
-# <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell'i kullanarak sanal ağ ağ geçidini silme
+# <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell kullanarak bir sanal ağ geçidini silme
 > [!div class="op_single_selector"]
-> * [Azure portalında](vpn-gateway-delete-vnet-gateway-portal.md)
-> * [Powershell](vpn-gateway-delete-vnet-gateway-powershell.md)
+> * [Azure portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klasik)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 >
 
-VPN ağ geçidi yapılandırması için sanal ağ ağ ağ geçidini silmek istediğinizde kullanabileceğiniz birkaç farklı yaklaşım vardır.
+VPN ağ geçidi yapılandırması için bir sanal ağ geçidini silmek istediğinizde uygulayabileceğiniz birkaç farklı yaklaşım vardır.
 
-- Her şeyi silmek ve baştan başlamak istiyorsanız, bir test ortamında olduğu gibi, kaynak grubunu silebilirsiniz. Bir kaynak grubunu sildiğinizde, grup içindeki tüm kaynakları siler. Bu yöntem yalnızca kaynak grubundaki kaynaklardan herhangi birini tutmak istemiyorsanız önerilir. Bu yaklaşımı kullanarak yalnızca birkaç kaynağı seçarak silemezsiniz.
+- Her şeyi silmek ve baştan başlamak istiyorsanız, bir test ortamı durumunda olduğu gibi, kaynak grubunu silebilirsiniz. Bir kaynak grubunu sildiğinizde, Grup içindeki tüm kaynakları siler. Bu yöntem yalnızca kaynak grubundaki kaynakları tutmak istemiyorsanız önerilir. Bu yaklaşımı kullanarak yalnızca birkaç kaynağı seçmeli olarak silemezsiniz.
 
-- Kaynak grubunuzdaki bazı kaynakları tutmak istiyorsanız, sanal ağ ağ ağ geçidini silerseniz biraz daha karmaşık hale gelir. Sanal ağ ağ ağ geçidini silmeden önce ağ geçidine bağlı olan kaynakları silmeniz gerekir. İzlediğiniz adımlar, oluşturduğunuz bağlantı türüne ve her bağlantı için bağımlı kaynaklara bağlıdır.
+- Kaynak grubunuzdaki bazı kaynakları korumak istiyorsanız, bir sanal ağ geçidini silmek biraz daha karmaşık hale gelir. Sanal ağ geçidini silebilmeniz için önce ağ geçidine bağlı olan tüm kaynakları silmeniz gerekir. İzleyeceğiniz adımlar, oluşturduğunuz bağlantı türüne ve her bağlantı için bağımlı kaynaklara bağlıdır.
 
 ## <a name="before-beginning"></a>Başlamadan önce
 
 
 
-### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. En son Azure Kaynak Yöneticisi PowerShell cmdlets'i indirin.
+### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. en son Azure Resource Manager PowerShell cmdlet 'lerini indirin.
 
-Azure Kaynak Yöneticisi PowerShell cmdlets'in en son sürümünü indirin ve yükleyin. PowerShell cmdlets indirme ve yükleme hakkında daha fazla bilgi için [Azure PowerShell'i nasıl yükleyip yapılandırılatırınız.](/powershell/azure/overview)
+Azure Resource Manager PowerShell cmdlet 'lerinin en son sürümünü indirip yükleyin. PowerShell cmdlet 'lerini indirme ve yükleme hakkında daha fazla bilgi için bkz. [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview).
 
 ### <a name="2-connect-to-your-azure-account"></a>2. Azure hesabınıza bağlanın.
 
@@ -56,71 +56,71 @@ Birden fazla aboneliğiniz varsa, kullanmak istediğiniz aboneliği belirtin.
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="delete-a-site-to-site-vpn-gateway"></a><a name="S2S"></a>Siteden Siteye VPN ağ geçidini silme
+## <a name="delete-a-site-to-site-vpn-gateway"></a><a name="S2S"></a>Siteden siteye VPN ağ geçidini silme
 
-Bir S2S yapılandırması için sanal ağ ağ ağ geçidini silmek için, öncelikle sanal ağ ağ ağ geçidiyle ilgili her kaynağı silmeniz gerekir. Kaynaklar, bağımlılıklar nedeniyle belirli bir sırada silinmelidir. Aşağıdaki örneklerle çalışırken, bazı değerler belirtilmeli, diğer değerler ise çıktı sonucutur. Örneklerde aşağıdaki özel değerleri gösteri amacıyla kullanırız:
+Bir S2S yapılandırmasına yönelik bir sanal ağ geçidini silmek için, önce sanal ağ geçidi ile ilgili olan her kaynağı silmeniz gerekir. Bağımlılıklar nedeniyle kaynakların belirli bir sırada silinmesi gerekir. Aşağıdaki örneklerle çalışırken bazı değerler belirtilmelidir, diğer değerler de çıkış sonucudur. Örnek gösterim amacıyla örneklerde aşağıdaki belirli değerleri kullanıyoruz:
 
 VNet adı: VNet1<br>
-Kaynak Grubu adı: RG1<br>
-Sanal ağ ağ geçidi adı: GW1<br>
+Kaynak grubu adı: RG1<br>
+Sanal ağ geçidi adı: GW1<br>
 
 Aşağıdaki adımlar Kaynak Yöneticisi dağıtım modeli için geçerlidir.
 
-### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Silmek istediğiniz sanal ağ ağ ağ geçidini alın.
+### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. silmek istediğiniz sanal ağ geçidini alın.
 
 ```powershell
 $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Sanal ağ ağ geçidinin bağlantısı olup olmadığını kontrol edin.
+### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. sanal ağ geçidinin herhangi bir bağlantıya sahip olup olmadığını denetleyin.
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 $Conns=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
 
-### <a name="3-delete-all-connections"></a>3. Tüm bağlantıları silin.
+### <a name="3-delete-all-connections"></a>3. tüm bağlantıları silin.
 
-Bağlantıların her birinin silinmesini onaylamanız istenebilir.
+Bağlantıların her birini silme işlemini onaylamanız istenebilir.
 
 ```powershell
 $Conns | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 ```
 
-### <a name="4-delete-the-virtual-network-gateway"></a>4. Sanal ağ ağ ağ geçidini silin.
+### <a name="4-delete-the-virtual-network-gateway"></a>4. sanal ağ geçidini silin.
 
-Ağ geçidinin silinmesini onaylamanız istenebilir. S2S yapılandırmanıza ek olarak bu VNet'te bir P2S yapılandırmanız varsa, sanal ağ ağ ağ geçidini silerseniz, uyarı yapmadan tüm P2S istemcilerinin bağlantısını otomatik olarak keser.
+Ağ geçidini silme işlemini onaylamanız istenebilir. S2S yapılandırmanıza ek olarak bu VNet 'e yönelik bir P2S yapılandırmasına sahipseniz, sanal ağ geçidi silindiğinde tüm P2S istemcilerinin uyarı vermeden otomatik olarak bağlantısı kesilir.
 
 
 ```powershell
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-Bu noktada, sanal ağ ağ ağ geçidiniz silindi. Artık kullanılmayan kaynakları silmek için sonraki adımları kullanabilirsiniz.
+Bu noktada, sanal ağ geçidiniz silindi. Artık kullanılmayan kaynakları silmek için sonraki adımları kullanabilirsiniz.
 
-### <a name="5-delete-the-local-network-gateways"></a>5 Yerel ağ ağ geçitlerini silin.
+### <a name="5-delete-the-local-network-gateways"></a>5 yerel ağ geçitlerini silin.
 
-İlgili yerel ağ ağ ağ geçitlerinin listesini alın.
+Karşılık gelen yerel ağ geçitlerinin listesini alın.
 
 ```powershell
 $LNG=Get-AzLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
 ```
 
-Yerel ağ ağ ağ geçitlerini silin. Yerel ağ ağ geçidinin her birinin silinmesini onaylamanız istenebilir.
+Yerel ağ geçitlerini silin. Yerel ağ geçidinin her birini silme işlemini onaylamanız istenebilir.
 
 ```powershell
 $LNG | ForEach-Object {Remove-AzLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
 ```
 
-### <a name="6-delete-the-public-ip-address-resources"></a>6. Genel IP adresi kaynaklarını silin.
+### <a name="6-delete-the-public-ip-address-resources"></a>6. genel IP adresi kaynaklarını silin.
 
-Sanal ağ ağ geçidinin IP yapılandırmalarını alın.
+Sanal ağ geçidinin IP yapılandırmasını alın.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-Bu sanal ağ ağ geçidi için kullanılan Genel IP adresi kaynaklarının listesini alın. Sanal ağ ağ ağ geçidi etkinse, iki Genel IP adresi görürsünüz.
+Bu sanal ağ geçidi için kullanılan genel IP adresi kaynaklarının listesini alın. Sanal ağ geçidi etkin-etkin ise, iki genel IP adresi görürsünüz.
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
@@ -132,154 +132,154 @@ Genel IP kaynaklarını silin.
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 ```
 
-### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Ağ geçidi alt netini silin ve yapılandırmayı ayarlayın.
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. ağ geçidi alt ağını silin ve yapılandırmayı ayarlayın.
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete-a-vnet-to-vnet-vpn-gateway"></a><a name="v2v"></a>VNet'den VNet VPN ağ geçidine silme
+## <a name="delete-a-vnet-to-vnet-vpn-gateway"></a><a name="v2v"></a>VNet 'ten VNet 'e VPN ağ geçidini silme
 
-V2V yapılandırması için sanal ağ ağ ağ geçidini silmek için, öncelikle sanal ağ ağ ağ geçidiyle ilgili her kaynağı silmeniz gerekir. Kaynaklar, bağımlılıklar nedeniyle belirli bir sırada silinmelidir. Aşağıdaki örneklerle çalışırken, bazı değerler belirtilmeli, diğer değerler ise çıktı sonucutur. Örneklerde aşağıdaki özel değerleri gösteri amacıyla kullanırız:
+Bir V2V yapılandırmasına yönelik bir sanal ağ geçidini silmek için, önce sanal ağ geçidi ile ilgili olan her kaynağı silmelisiniz. Bağımlılıklar nedeniyle kaynakların belirli bir sırada silinmesi gerekir. Aşağıdaki örneklerle çalışırken bazı değerler belirtilmelidir, diğer değerler de çıkış sonucudur. Örnek gösterim amacıyla örneklerde aşağıdaki belirli değerleri kullanıyoruz:
 
 VNet adı: VNet1<br>
-Kaynak Grubu adı: RG1<br>
-Sanal ağ ağ geçidi adı: GW1<br>
+Kaynak grubu adı: RG1<br>
+Sanal ağ geçidi adı: GW1<br>
 
 Aşağıdaki adımlar Kaynak Yöneticisi dağıtım modeli için geçerlidir.
 
-### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Silmek istediğiniz sanal ağ ağ ağ geçidini alın.
+### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. silmek istediğiniz sanal ağ geçidini alın.
 
 ```powershell
 $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Sanal ağ ağ geçidinin bağlantısı olup olmadığını kontrol edin.
+### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. sanal ağ geçidinin herhangi bir bağlantıya sahip olup olmadığını denetleyin.
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
-Sanal ağ ağ ağ geçidine farklı bir kaynak grubunun parçası olan başka bağlantılar da olabilir. Her ek kaynak grubunda ek bağlantılar olup olup deyanabın. Bu örnekte, RG2'den gelen bağlantıları kontrol ediyoruz. Bunu, sanal ağ ağ geçidine bağlantısı olabilecek her kaynak grubu için çalıştırın.
+Farklı bir kaynak grubunun parçası olan sanal ağ geçidine yönelik başka bağlantılar olabilir. Her ek kaynak grubundaki diğer bağlantıları denetleyin. Bu örnekte, RG2 adresinden bağlantıları denetliyoruz. Bunu, sanal ağ geçidine bağlantısı olabilecek her kaynak grubu için çalıştırın.
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
 ```
 
-### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. Her iki yöndeki bağlantıların listesini alın.
+### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. bağlantı listesini her iki yönde de alın.
 
-Bu bir VNet-to-VNet yapılandırması olduğundan, her iki yöndeki bağlantıların listesine ihtiyacınız vardır.
+Bu, VNet 'ten VNet 'e yönelik bir yapılandırma olduğundan her iki yönde de bağlantı listesine ihtiyacınız vardır.
 
 ```powershell
 $ConnsL=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
-Bu örnekte, RG2'den gelen bağlantıları kontrol ediyoruz. Bunu, sanal ağ ağ geçidine bağlantısı olabilecek her kaynak grubu için çalıştırın.
+Bu örnekte, RG2 adresinden bağlantıları denetliyoruz. Bunu, sanal ağ geçidine bağlantısı olabilecek her kaynak grubu için çalıştırın.
 
 ```powershell
  $ConnsR=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "<NameOfResourceGroup2>" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
  ```
 
-### <a name="4-delete-all-connections"></a>4. Tüm bağlantıları silin.
+### <a name="4-delete-all-connections"></a>4. tüm bağlantıları silin.
 
-Bağlantıların her birinin silinmesini onaylamanız istenebilir.
+Bağlantıların her birini silme işlemini onaylamanız istenebilir.
 
 ```powershell
 $ConnsL | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 $ConnsR | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 ```
 
-### <a name="5-delete-the-virtual-network-gateway"></a>5. Sanal ağ ağ ağ geçidini silin.
+### <a name="5-delete-the-virtual-network-gateway"></a>5. sanal ağ geçidini silin.
 
-Sanal ağ ağ geçidinin silinmesini onaylamanız istenebilir. V2V yapılandırmanıza ek olarak VNet'lerinizde P2S yapılandırmaları varsa, sanal ağ ağ geçitlerini silerseniz, uyarı yapmadan tüm P2S istemcilerinin bağlantısını otomatik olarak keser.
+Sanal ağ geçidini silme işlemini onaylamanız istenebilir. V2V yapılandırmanıza ek olarak sanal ağlarınız için P2S yapılandırmaları varsa, sanal ağ geçitlerinin silinmesi uyarı vermeden tüm P2S istemcilerinin bağlantısını otomatik olarak keser.
 
 ```powershell
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-Bu noktada, sanal ağ ağ ağ geçidiniz silindi. Artık kullanılmayan kaynakları silmek için sonraki adımları kullanabilirsiniz.
+Bu noktada, sanal ağ geçidiniz silindi. Artık kullanılmayan kaynakları silmek için sonraki adımları kullanabilirsiniz.
 
-### <a name="6-delete-the-public-ip-address-resources"></a>6. Genel IP adresi kaynaklarını silme
+### <a name="6-delete-the-public-ip-address-resources"></a>6. genel IP adresi kaynaklarını silme
 
-Sanal ağ ağ geçidinin IP yapılandırmalarını alın.
+Sanal ağ geçidinin IP yapılandırmasını alın.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-Bu sanal ağ ağ geçidi için kullanılan Genel IP adresi kaynaklarının listesini alın. Sanal ağ ağ ağ geçidi etkinse, iki Genel IP adresi görürsünüz.
+Bu sanal ağ geçidi için kullanılan genel IP adresi kaynaklarının listesini alın. Sanal ağ geçidi etkin-etkin ise, iki genel IP adresi görürsünüz.
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-Genel IP kaynaklarını silin. Genel IP'nin silinmesini onaylamanız istenebilir.
+Genel IP kaynaklarını silin. Genel IP 'nin silinmesini onaylamanız istenebilir.
 
 ```powershell
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Ağ geçidi alt netini silin ve yapılandırmayı ayarlayın.
+### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. ağ geçidi alt ağını silin ve yapılandırmayı ayarlayın.
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete-a-point-to-site-vpn-gateway"></a><a name="deletep2s"></a>Bir Noktaya Sayfa VPN ağ geçidini silme
+## <a name="delete-a-point-to-site-vpn-gateway"></a><a name="deletep2s"></a>Noktadan siteye VPN ağ geçidini silme
 
-Bir P2S yapılandırması için sanal ağ ağ ağ geçidini silmek için, öncelikle sanal ağ ağ ağ geçidiyle ilgili her kaynağı silmeniz gerekir. Kaynaklar, bağımlılıklar nedeniyle belirli bir sırada silinmelidir. Aşağıdaki örneklerle çalışırken, bazı değerler belirtilmeli, diğer değerler ise çıktı sonucutur. Örneklerde aşağıdaki özel değerleri gösteri amacıyla kullanırız:
+Bir P2S yapılandırmasına yönelik bir sanal ağ geçidini silmek için, önce sanal ağ geçidi ile ilgili olan her kaynağı silmelisiniz. Bağımlılıklar nedeniyle kaynakların belirli bir sırada silinmesi gerekir. Aşağıdaki örneklerle çalışırken bazı değerler belirtilmelidir, diğer değerler de çıkış sonucudur. Örnek gösterim amacıyla örneklerde aşağıdaki belirli değerleri kullanıyoruz:
 
 VNet adı: VNet1<br>
-Kaynak Grubu adı: RG1<br>
-Sanal ağ ağ geçidi adı: GW1<br>
+Kaynak grubu adı: RG1<br>
+Sanal ağ geçidi adı: GW1<br>
 
 Aşağıdaki adımlar Kaynak Yöneticisi dağıtım modeli için geçerlidir.
 
 
 >[!NOTE]
-> VPN ağ geçidini sildiğinizde, bağlı tüm istemcilerin uyarı yapılmadan VNet'ten bağlantısı kesilir.
+> VPN ağ geçidini sildiğinizde, tüm bağlı istemcilerin hiçbir uyarı vermeden VNet bağlantısı kesilir.
 >
 >
 
-### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Silmek istediğiniz sanal ağ ağ ağ geçidini alın.
+### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. silmek istediğiniz sanal ağ geçidini alın.
 
 ```powershell
 $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-### <a name="2-delete-the-virtual-network-gateway"></a>2. Sanal ağ ağ ağ geçidini silin.
+### <a name="2-delete-the-virtual-network-gateway"></a>2. sanal ağ geçidini silin.
 
-Sanal ağ ağ geçidinin silinmesini onaylamanız istenebilir.
+Sanal ağ geçidini silme işlemini onaylamanız istenebilir.
 
 ```powershell
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-Bu noktada, sanal ağ ağ ağ geçidiniz silindi. Artık kullanılmayan kaynakları silmek için sonraki adımları kullanabilirsiniz.
+Bu noktada, sanal ağ geçidiniz silindi. Artık kullanılmayan kaynakları silmek için sonraki adımları kullanabilirsiniz.
 
-### <a name="3-delete-the-public-ip-address-resources"></a>3. Genel IP adresi kaynaklarını silme
+### <a name="3-delete-the-public-ip-address-resources"></a>3. genel IP adresi kaynaklarını silme
 
-Sanal ağ ağ geçidinin IP yapılandırmalarını alın.
+Sanal ağ geçidinin IP yapılandırmasını alın.
 
 ```powershell
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-Bu sanal ağ ağ geçidi için kullanılan Genel IP adreslerinin listesini alın. Sanal ağ ağ ağ geçidi etkinse, iki Genel IP adresi görürsünüz.
+Bu sanal ağ geçidi için kullanılan genel IP adreslerinin listesini alın. Sanal ağ geçidi etkin-etkin ise, iki genel IP adresi görürsünüz.
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
-Genel IP'leri silin. Genel IP'nin silinmesini onaylamanız istenebilir.
+Genel IP 'Leri silin. Genel IP 'nin silinmesini onaylamanız istenebilir.
 
 ```powershell
 $PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
-### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. Ağ geçidi alt netini silin ve yapılandırmayı ayarlayın.
+### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. ağ geçidi alt ağını silin ve yapılandırmayı ayarlayın.
 
 ```powershell
 $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
@@ -288,43 +288,43 @@ Set-AzVirtualNetwork -VirtualNetwork $GWSub
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>Kaynak grubunu silerek VPN ağ geçidini silme
 
-Kaynaklarınızdan herhangi birini kaynak grubunda tutmakla ilgilenmiyorsanız ve baştan başlamak istiyorsanız, tüm kaynak grubunu silebilirsiniz. Bu her şeyi kaldırmak için hızlı bir yoldur. Aşağıdaki adımlar yalnızca Kaynak Yöneticisi dağıtım modeli için geçerlidir.
+Kaynak grubunda kaynaklarınızdan herhangi birini tutmanın endişeniz yoksa ve yalnızca baştan başlamak istiyorsanız, bir kaynak grubunun tamamını silebilirsiniz. Bu, her şeyi kaldırmanın hızlı bir yoludur. Aşağıdaki adımlar yalnızca Kaynak Yöneticisi dağıtım modeli için geçerlidir.
 
-### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. Aboneliğinizdeki tüm kaynak gruplarının listesini alın.
+### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. aboneliğinizdeki tüm kaynak gruplarının bir listesini alın.
 
 ```powershell
 Get-AzResourceGroup
 ```
 
-### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. Silmek istediğiniz kaynak grubunu bulun.
+### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. silmek istediğiniz kaynak grubunu bulun.
 
-Silmek istediğiniz kaynak grubunu bulun ve bu kaynak grubundaki kaynak listesini görüntüleyin. Örnekte, kaynak grubunun adı RG1'dir. Tüm kaynakların listesini almak için örneği değiştirin.
+Silmek istediğiniz kaynak grubunu bulun ve bu kaynak grubundaki kaynakların listesini görüntüleyin. Örnekte, kaynak grubunun adı RG1 ' dir. Tüm kaynakların bir listesini almak için örneği değiştirin.
 
 ```powershell
 Find-AzResource -ResourceGroupNameContains RG1
 ```
 
-### <a name="3-verify-the-resources-in-the-list"></a>3. Listedeki kaynakları doğrulayın.
+### <a name="3-verify-the-resources-in-the-list"></a>3. listedeki kaynakları doğrulayın.
 
-Liste döndürüldüğünde, kaynak grubundaki tüm kaynakların yanı sıra kaynak grubunun kendisini de silmek istediğinizi doğrulamak için listeyi gözden geçirin. Kaynak grubundaki bazı kaynakları tutmak istiyorsanız, ağ geçidinizi silmek için bu makalenin önceki bölümlerindeki adımları kullanın.
+Liste döndürüldüğünde, kaynak grubundaki tüm kaynakları ve kaynak grubunun kendisini silmek istediğinizi doğrulamak için gözden geçirin. Kaynak grubundaki bazı kaynakları tutmak istiyorsanız, bu makalenin önceki bölümlerindeki adımları kullanarak ağ geçidinizi silin.
 
-### <a name="4-delete-the-resource-group-and-resources"></a>4. Kaynak grubunu ve kaynakları silin.
+### <a name="4-delete-the-resource-group-and-resources"></a>4. kaynak grubunu ve kaynakları silin.
 
-Kaynak grubunu ve kaynak grubunda bulunan tüm kaynağı silmek için, örneği değiştirin ve çalıştırın.
+Kaynak grubunu ve kaynak grubunda yer alan tüm kaynakları silmek için, örneği değiştirin ve çalıştırın.
 
 ```powershell
 Remove-AzResourceGroup -Name RG1
 ```
 
-### <a name="5-check-the-status"></a>5. Durumu kontrol edin.
+### <a name="5-check-the-status"></a>5. durumu denetleyin.
 
-Azure'un tüm kaynakları silmesi biraz zaman alır. Bu cmdlet'i kullanarak kaynak grubunuzun durumunu kontrol edebilirsiniz.
+Azure 'un tüm kaynakları silmesi biraz zaman alır. Bu cmdlet 'i kullanarak kaynak grubunuzun durumunu kontrol edebilirsiniz.
 
 ```powershell
 Get-AzResourceGroup -ResourceGroupName RG1
 ```
 
-Döndürülen sonuç 'Başarılı' olarak gösterilmektedir.
+Döndürülen sonuç ' başarılı ' olarak gösterilir.
 
 ```
 ResourceGroupName : RG1

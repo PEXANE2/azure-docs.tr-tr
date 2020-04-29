@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Splashtop ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Splashtop arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Splashtop ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Splashtop arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,165 +16,165 @@ ms.date: 02/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6ecb03130e26d432f0bd10980c7c3553ce9f8b0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77539789"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Öğretici: Splashtop ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Öğretici: Splashtop ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, Splashtop'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Splashtop'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Azure Active Directory (Azure AD) ile Karşılamaüst 'i tümleştirmeyi öğreneceksiniz. Azure AD ile Splashtop tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD'de Splashtop erişimi olan denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Splashtop'ta otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de, Splashtop 'a erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak en iyi şekilde oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Splashtop tek oturum açma (SSO) özellikli abonelik.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Splashtop çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Splashtop **SP** başlatılan SSO destekler
+* Splashtop, **SP** tarafından başlatılan SSO 'yu destekler
 
-* Splashtop'u yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri Koşullu Erişim'den itibaren genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* Splashtop 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-splashtop-from-the-gallery"></a>Galeriden Splashtop ekleme
+## <a name="adding-splashtop-from-the-gallery"></a>Galeriden bir Splashtop ekleme
 
-Splashtop'un Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Splashtop'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Splashtop 'ın Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize bir Splashtop eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Splashtop** yazın.
-1. Sonuç panelinden **Splashtop'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Splashtop** yazın.
+1. Sonuçlar panelinden **Splashtop** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-splashtop"></a>Splashtop için Azure AD oturum açma işlemlerini yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-splashtop"></a>Splashtop için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Splashtop ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Splashtop'taki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Splashtop ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ile Splashtop arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Splashtop ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu, Splashtop ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[Splashtop SSO'yu yapılandırır](#configure-splashtop-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    * **[Splashtop test kullanıcısını oluşturun](#create-splashtop-test-user)** - Splashtop'ta Kullanıcının Azure AD gösterimine bağlı olan B.Simon'ın bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Splashtop SSO 'Yu yapılandırma](#configure-splashtop-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    * Kullanıcının Azure AD gösterimine bağlı olan, Splashtop 'da B. Simon 'ın bir karşılığı olacak şekilde, **[Splashtop test kullanıcısı oluşturun](#create-splashtop-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Splashtop** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla ayarla tek oturum** açmada, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **Splashtop** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarla** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    Oturum **Açma URL** metin kutusuna URL'yi yazın:`https://my.splashtop.com/login/sso`
+    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://my.splashtop.com/login/sso`
 
-1. Splashtop uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterirken, **nameidentifier** **user.userprincipalname**ile eşlenir. TicketManager uygulaması **nameidentifier** **user.mail**ile eşlenir bekliyor, bu yüzden **düzenleme** simgesine tıklayarak öznitelik eşleme düzenlemeniz ve öznitelik eşlemi değiştirmeniz gerekir.
+1. Splashtop uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir, ancak **NameIdentifier** **User. UserPrincipalName**ile eşlenir. Bilet Yöneticisi uygulaması, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 
-1. SAML ile **Ayarla tek oturum** açma bölümünde, **SAML İmza Sertifikası** bölümünde Sertifika **'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarla** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. Kurulum **Splashtop** bölümünde, gereksiniminize göre uygun URL(ler)'i kopyalayın.
+1. **Ayarlama Splashtop** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Splashtop'a erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Splashtop 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Splashtop'u**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Splashtop**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-splashtop-sso"></a>Splashtop SSO'da yapılandırın
+## <a name="configure-splashtop-sso"></a>Splashtop SSO 'yu yapılandırma
 
-Bu bölümde, [Splashtop web portalından](https://my.splashtop.com/login)yeni bir SSO yöntemi için başvurmanız gerekecektir.
-1. Splashtop web portalında, **Hesap bilgisi** / **Ekibi** sekmesine gidin ve Tek **Oturum Açma** bölümünü bulmak için aşağı kaydırın. Ardından **yeni SSO yöntemi için Uygula'yı**tıklatın.
+Bu bölümde, [Splashtop Web portalından](https://my.splashtop.com/login)yenı bir SSO yöntemi uygulamanız gerekir.
+1. Splashtop web portalında, **hesap bilgileri** / **ekibi** sekmesi ' ne gidin, **Çoklu oturum açma** bölümünü bulmak için aşağı kaydırın. Ardından **yenı SSO yöntemi Için Uygula**' ya tıklayın.
 
     ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
-1. Uygulama penceresinde, bir **SSO adı**verin. Örneğin, Yeni Azure, ardından IDP türü olarak **Azure'u** seçin ve Azure portalındaki Splashtop uygulamasından kopyalanan **Giriş URL'si** ve Azure AD **Tanımlayıcısı** ekleyin.
+1. Uygulanan penceresinde bir **SSO adı**verin. Örneğin, yeni Azure, ıDP türü olarak **Azure** ' ı seçin ve Azure Portal ' de Azure AD tanımlayıcısı ' nı ve ' de Splashtop uygulamasından kopyalanmış **Azure ad tanımlayıcısını** **ekleyin.**
 
     ![image](media/splashtop-tutorial/azure-sso-1.png)
 
-1. Sertifika bilgileri için Azure portalındaki Splashtop uygulamasından indirilen sertifika dosyasına sağ tıklayın, Notepad ile güncellenin, ardından içeriği kopyalayın, **İndirme Sertifikası (Base64)** alanına yapıştırın.
+1. Sertifika bilgileri için, Azure portal üzerindeki Splashtop uygulamasından indirilen CERT dosyasına sağ tıklayın, Not defteri ile düzenleyin, sonra içeriği kopyalayın ve **sertifikayı indirin (base64)** alanına yapıştırın.
 
-    ![görüntü](media/splashtop-tutorial/cert-1.png) ![](media/splashtop-tutorial/cert-2.png) ![görüntüsü](media/splashtop-tutorial/azure-sso-2.png)
+    ![![görüntü](media/splashtop-tutorial/cert-1.png) ![](media/splashtop-tutorial/cert-2.png)](media/splashtop-tutorial/azure-sso-2.png)
 
-1. İşte bu kadar! **Kaydet** ve Splashtop SSO doğrulama ekibini tıklatın doğrulama bilgileri için sizinle irtibata geçilecek ve ardından SSO yöntemini etkinleştirin.
+1. İşte bu kadar! **Kaydet** ve SPLASHTOP SSO doğrulama ekibi, doğrulama bilgileri için sizinle iletişim kuracaktır, sonra SSO yöntemini etkinleştirir.
 
 ### <a name="create-splashtop-test-user"></a>Splashtop test kullanıcısı oluşturma
 
-1. SSO yöntemi etkinleştirildikten sonra, tek oturum açma bölümünde etkinleştirmek için lütfen yeni oluşturulan SSO yöntemini kontrol **edin.**
+1. SSO yöntemi etkinleştirildikten sonra, **Çoklu oturum açma** bölümünde etkinleştirmek için lütfen yenı oluşturulan SSO metodunu denetleyin.
 
     ![image](media/splashtop-tutorial/enable.png)
 
-1. Örneğin, `B.Simon@contoso.com` test kullanıcısını yeni oluşturulan SSO yöntemiyle Splashtop ekibinize davet edin.
+1. Test kullanıcısını, örneğin, `B.Simon@contoso.com` yenı oluşturulan SSO yöntemiyle Splashtop ekibinize davet edin.
 
     ![image](media/splashtop-tutorial/invite.png)
 
-1. Ayrıca varolan bir Splashtop hesabını bir SSO hesabına değiştirebilir, [yönergelere](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-)bakabilirsiniz.
+1. Ayrıca, var olan bir Splashtop hesabını bir SSO hesabı olarak değiştirebilirsiniz, bkz. [yönergeler](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 
-1. İşte bu kadar! Splashtop web portalına veya Splashtop Business uygulamasına giriş yapmak için SSO hesabını kullanabilirsiniz.
+1. İşte bu kadar! Bu SSO hesabını kullanarak, Splashtop web portalında veya Splashtop Business uygulamasında oturum açabilirsiniz.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki Splashtop döşemesini tıklattığınızda, SSO'yu kurduğunuz Splashtop'ta otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Splashtop kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Splashtop üzerinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Splashtop'u deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Splashtop 'ı deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Splashtop'u gelişmiş görünürlük ve kontrollerle nasıl koruyabilen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle Splashtop koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

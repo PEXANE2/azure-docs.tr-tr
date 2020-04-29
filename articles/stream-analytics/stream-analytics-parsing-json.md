@@ -1,29 +1,29 @@
 ---
-title: Azure Stream Analytics'te JSON ve AVRO'nun ayrıştı
-description: Bu makalede, diziler, JSON, CSV biçimlendirilmiş veriler gibi karmaşık veri türlerinde nasıl çalışılabilen ler açıklanmaktadır.
+title: Azure Stream Analytics 'de JSON ve AVRO ayrıştırma
+description: Bu makalede, diziler, JSON, CSV biçimli veriler gibi karmaşık veri türlerinde nasıl işlem yapılacağı açıklanır.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77484596"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Akış Analizi'nde Ayrışma JSON ve Avro verileri
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics JSON ve avro verilerini ayrıştırın
 
-Azure Akış Analizi, CSV, JSON ve Avro veri biçimlerindeki işleme olaylarını destekler. Hem JSON hem de Avro verileri yapılandırılmış olabilir ve iç içe nesneler (kayıtlar) ve diziler gibi bazı karmaşık türleri içerebilir. 
+CSV, JSON ve avro veri biçimlerinde olayları işlemeyi destekler Azure Stream Analytics. Hem JSON hem de avro verileri yapılandırılabilir ve iç içe geçmiş nesneler (kayıtlar) ve diziler gibi bazı karmaşık türleri içerebilir. 
 
 >[!NOTE]
->Event Hub Capture tarafından oluşturulan AVRO dosyaları, özel *deserializer* özelliğini kullanmanızı gerektiren belirli bir biçim kullanır. Daha fazla bilgi için bkz. [.NET özel deserializers kullanarak herhangi bir biçimde giriş oku.](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)
+>AVRO Olay Hub 'ı tarafından oluşturulan dosyalar *özel seri hale getirici* özelliğini kullanmanızı gerektiren belirli bir biçimi kullanır. Daha fazla bilgi için bkz. [.NET özel seri hale getiriciler kullanarak herhangi bir biçimde giriş okuma](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
 
 
 
-## <a name="record-data-types"></a>Veri türlerini kaydetme
-Giriş veri akışlarında karşılık gelen biçimler kullanıldığında, kayıt veri türleri JSON ve Avro dizilerini temsil etmek için kullanılır. Bu örnekler, giriş olaylarını JSON formatında okuyan bir örnek sensörü gösterir. Aşağıda tek bir olay örneği verilmiştir:
+## <a name="record-data-types"></a>Veri türlerini Kaydet
+Kayıt veri türleri, giriş veri akışlarında karşılık gelen biçimler kullanıldığında JSON ve avro dizilerini temsil etmek için kullanılır. Bu örneklerde, giriş olaylarını JSON biçiminde okuyan örnek bir algılayıcı gösterilmektedir. Tek bir olay örneği aşağıda verilmiştir:
 
 ```json
 {
@@ -48,8 +48,8 @@ Giriş veri akışlarında karşılık gelen biçimler kullanıldığında, kay�
 }
 ```
 
-### <a name="access-nested-fields-in-known-schema"></a>Bilinen şemada iç içe alanlara erişin
-İç içe alanlara doğrudan sorgunuzdan kolayca erişmek için nokta gösterimi (.) kullanın. Örneğin, bu sorgu, önceki JSON verilerinde Konum özelliği altında Enlem ve Boylam koordinatlarını seçer. Nokta gösterimi, aşağıda gösterildiği gibi birden çok düzeyde gezinmek için kullanılabilir.
+### <a name="access-nested-fields-in-known-schema"></a>Bilinen şemada iç içe geçmiş alanlara erişin
+Doğrudan Sorgunuzla iç içe geçmiş alanlara kolayca erişmek için nokta gösterimini (.) kullanın. Örneğin, bu sorgu önceki JSON verilerinde Location özelliği altındaki Enlem ve boylam koordinatlarını seçer. Nokta gösterimi aşağıda gösterildiği gibi birden çok düzeyde gezinmek için kullanılabilir.
 
 ```SQL
 SELECT
@@ -61,15 +61,15 @@ SELECT
 FROM input
 ```
 
-Sonuç şudur:
+Sonuç:
 
-|Deviceıd|Lat|Uzun|Sıcaklık|Sürüm|
+|DeviceID|[|Kalacağını|Sıcaklık|Sürüm|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
 
-### <a name="select-all-properties"></a>Tüm özellikleri seçin
-'*' joker kartını kullanarak iç içe kaydedilmiş kaydın tüm özelliklerini seçebilirsiniz. Aşağıdaki örneği inceleyin:
+### <a name="select-all-properties"></a>Tüm Özellikleri Seç
+' * ' Joker karakterini kullanarak iç içe geçmiş bir kaydın tüm özelliklerini seçebilirsiniz. Aşağıdaki örneği inceleyin:
 
 ```SQL
 SELECT
@@ -78,18 +78,18 @@ SELECT
 FROM input
 ```
 
-Sonuç şudur:
+Sonuç:
 
-|Deviceıd|Lat|Uzun|
+|DeviceID|[|Kalacağını|
 |-|-|-|
 |12345|47|122|
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Özellik adı değişken olduğunda iç içe olan alanlara erişin
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Özellik adı bir değişken olduğunda iç içe alanlara erişin
 
-Özellik adı değişkense [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) işlevini kullanın. Bu, özellik adlarını zorlamadan dinamik sorgular oluşturmanızı sağlar.
+Özellik adı bir değişken ise [Getrecordpropertyvalue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) işlevini kullanın. Bu özellik adlarını kodlamadan dinamik sorgular oluşturulmasına olanak sağlar.
 
-Örneğin, örnek veri akışının her aygıt sensörü için eşikler içeren **başvuru verileriyle birleştirilmesi** gerektiğini düşünün. Bu tür referans verilerinin bir bölümü aşağıda gösterilmiştir.
+Örneğin, örnek veri akışının her bir cihaz algılayıcısı için eşikler içeren **başvuru verileriyle katılması** gerektiğini düşünün. Bu tür başvuru verilerinin bir parçacığı aşağıda gösterilmiştir.
 
 ```json
 {
@@ -104,7 +104,7 @@ Sonuç şudur:
 }
 ```
 
-Burada amaç, makalenin üst kısmından bu referans verisine örnek veri setimizi birleştirmek ve eşiğinin üzerindeki her sensör ölçüsü için bir olay çıkarmaktır. Bu, yukarıdaki tek olay, birleştirme sayesinde birden fazla sensör kendi eşiklerinin üzerindeyse birden fazla çıkış olayı oluşturabileceği anlamına gelir. Birleştirme olmadan benzer sonuçlar elde etmek için aşağıdaki bölüme bakın.
+Buradaki amaç, makalenin en üstündeki örnek veri kümenizi, bu başvuru verilerine katmaktır ve her bir algılayıcı ölçüsü için eşiğin üstünde bir olay çıktı. Diğer bir deyişle, yukarıdaki tek olayımız, ilgili eşiklerinin üzerinde birden fazla algılayıcı varsa, bu, birleşimde teşekkürler. JOIN olmadan benzer sonuçlara ulaşmak için aşağıdaki bölüme bakın.
 
 ```SQL
 SELECT
@@ -119,19 +119,19 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue** *SensorReadings*özelliği seçer , hangi adı referans verilerinden gelen özellik adı eşleşir. Daha sonra *SensorReadings'in* ilişkili değeri ayıklanır.
+**Getrecordpropertyvalue** , *Sensorreadusing*içindeki özelliği seçer. Bu ad, başvuru verilerinden gelen özellik adı ile eşleşir. Ardından *Sensorreadlılar* 'dan ilişkili değer ayıklanır.
 
-Sonuç şudur:
+Sonuç:
 
-|Deviceıd|Sensör Adı|AlertMessage|
+|DeviceID|SensorName|AlertMessage|
 |-|-|-|
-|12345|Nem oranı|Uyarı : Eşik üstsensörü|
+|12345|Nem oranı|Uyarı: Yukarıdaki algılayıcı eşiğin üstünde|
 
-### <a name="convert-record-fields-into-separate-events"></a>Kayıt alanlarını ayrı olaylara dönüştürme
+### <a name="convert-record-fields-into-separate-events"></a>Kayıt alanlarını ayrı olaylara Dönüştür
 
-Kayıt alanlarını ayrı olaylara dönüştürmek için [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) işlevi ile birlikte [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işlecikullanın.
+Kayıt alanlarını ayrı olaylara dönüştürmek için, [Getrecordproperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) Işleviyle birlikte [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işlecini kullanın.
 
-Özgün örnek verilerle, özellikleri farklı olaylara ayıklamak için aşağıdaki sorgu kullanılabilir.
+Özgün örnek verilerle, aşağıdaki sorgu, özellikleri farklı olaylara ayıklamak için kullanılabilir.
 
 ```SQL
 SELECT
@@ -142,17 +142,17 @@ FROM input as event
 CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 ```
 
-Sonuç şudur:
+Sonuç:
 
-|Deviceıd|Sensör Adı|AlertMessage|
+|DeviceID|SensorName|AlertMessage|
 |-|-|-|
 |12345|Sıcaklık|80|
 |12345|Nem oranı|70|
-|12345|ÖzelSensör01|5|
-|12345|ÖzelSensor02|99|
-|12345|SensörMeta veriler|[nesne Nesnesi]|
+|12345|CustomSensor01|5|
+|12345|CustomSensor02|99|
+|12345|SensorMetadata|[nesne nesnesi]|
 
-[WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)kullanarak, bu olayları farklı hedeflere yönlendirmek mümkündür:
+[İle](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)kullanarak, bu olayları farklı hedeflere yönlendirmek mümkün olur:
 
 ```SQL
 WITH Stage0 AS
@@ -169,15 +169,15 @@ SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
 ```
 
-### <a name="parse-json-record-in-sql-reference-data"></a>SQL başvuru verilerinde Ayrışdırılan JSON kaydı
-Azure SQL Veritabanı'nı işinizde başvuru verisi olarak kullanırken, JSON formatında veri içeren bir sütuna sahip olmak mümkündür. Aşağıda bir örnek gösterilmiştir.
+### <a name="parse-json-record-in-sql-reference-data"></a>SQL başvuru verilerinde JSON kaydını ayrıştırma
+Azure SQL veritabanı 'nı işinizdeki başvuru verileri olarak kullanırken JSON biçiminde veri içeren bir sütun olması mümkündür. Aşağıda bir örnek gösterilmiştir.
 
-|Deviceıd|Veri|
+|DeviceID|Veriler|
 |-|-|
-|12345|{"anahtar" : "value1"}|
-|54321|{"anahtar" : "value2"}|
+|12345|{"Key": "değer1"}|
+|54321|{"Key": "değer2"}|
 
-Basit bir JavaScript kullanıcı tanımlı işlev yazarak *Veri* sütunundaki JSON kaydını ayrıştırabilirsiniz.
+Basit bir JavaScript Kullanıcı tanımlı işlevi yazarak *veri* sütununda JSON kaydını ayrıştırabilirsiniz.
 
 ```javascript
 function parseJson(string) {
@@ -185,7 +185,7 @@ return JSON.parse(string);
 }
 ```
 
-Daha sonra, JSON kayıtlarınız alanlarına erişmek için aşağıda gösterildiği gibi Akış Analizi sorgunuzda bir adım oluşturabilirsiniz.
+Ardından, JSON kayıtlarınızın alanlarına erişmek için aşağıda gösterildiği gibi Stream Analytics sorgunuzda bir adım oluşturabilirsiniz.
 
  ```SQL
  WITH parseJson as
@@ -203,9 +203,9 @@ Daha sonra, JSON kayıtlarınız alanlarına erişmek için aşağıda gösteril
 
 ## <a name="array-data-types"></a>Dizi veri türleri
 
-Dizi veri türleri sıralı bir değer koleksiyonu. Dizi değerleri yle ilgili bazı tipik işlemler aşağıda ayrıntılı olarak açıklanmıştır. Bu [örnekler, GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics), ve [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci işlevlerini kullanın.
+Dizi veri türleri sıralı değerler koleksiyonudur. Dizi değerlerinde bazı tipik işlemler aşağıda ayrıntılı olarak verilmiştir. Bu örnekler, [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [getarrayelements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)ve [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci işlevlerini kullanır.
 
-Burada tek bir olay bir örnektir. Her `CustomSensor03` `SensorMetadata` ikisi de ve tür **dizi**vardır:
+Tek bir olaya bir örnek aşağıda verilmiştir. Her ikisi de `CustomSensor03` dizi türündedir: **array** `SensorMetadata`
 
 ```json
 {
@@ -231,9 +231,9 @@ Burada tek bir olay bir örnektir. Her `CustomSensor03` `SensorMetadata` ikisi d
 }
 ```
 
-### <a name="working-with-a-specific-array-element"></a>Belirli bir dizi öğesi yle çalışma
+### <a name="working-with-a-specific-array-element"></a>Belirli bir dizi öğesiyle çalışma
 
-Dizi öğesini belirli bir dizinte seçin (ilk dizi öğesini seçme):
+Belirtilen dizinde dizi öğesi seçin (ilk dizi öğesini seçerek):
 
 ```SQL
 SELECT
@@ -241,7 +241,7 @@ SELECT
 FROM input
 ```
 
-Sonuç şudur:
+Sonuç:
 
 |firstElement|
 |-|
@@ -255,15 +255,15 @@ SELECT
 FROM input
 ```
 
-Sonuç şudur:
+Sonuç:
 
-|diziUzunluk|
+|arrayLength|
 |-|
 |3|
 
-### <a name="convert-array-elements-into-separate-events"></a>Dizi öğelerini ayrı olaylara dönüştürme
+### <a name="convert-array-elements-into-separate-events"></a>Dizi öğelerini ayrı olaylara Dönüştür
 
-Tüm dizi öğesini tek tek olaylar olarak seçin. [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) yerleşik işlevi ile birlikte [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci, tüm dizi öğelerini tek tek olaylar olarak ayıklar:
+Tek tek olaylar olarak tüm dizi öğelerini seçin. [Getarrayelements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) yerleşik işlevi Ile birlikte [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci, tüm dizi öğelerini ayrı olaylar olarak ayıklar:
 
 ```SQL
 SELECT
@@ -275,9 +275,9 @@ CROSS APPLY GetArrayElements(SensorReadings.CustomSensor03) AS CustomSensor03Rec
 
 ```
 
-Sonuç şudur:
+Sonuç:
 
-|DeviceId|Arrayındex|Arrayvalue|
+|DeviceId|ArrayIndex|ArrayValue|
 |-|-|-|
 |12345|0|12|
 |12345|1|-5|
@@ -292,14 +292,14 @@ FROM input i
 CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
  ```
  
-Sonuç şudur:
+Sonuç:
 
 |DeviceId|smKey|smValue|
 |-|-|-|
 |12345|Üretici|ABC|
 |12345|Sürüm|1.2.45|
 
-Ayıklanan alanların sütunlarda görünmesi gerekiyorsa, [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) işlemine ek olarak [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) sözdizimini kullanarak veri kümesini döndürmek mümkündür. Bu birleştirme, yinelemeyi engelleyen bir [zaman sınırı](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) koşulu gerektirir:
+Ayıklanan alanların sütunlarda görünmesi gerekiyorsa, [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) işlemine ek olarak, [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) sözdizimi kullanılarak veri kümesini Özet hale getirmeniz mümkündür. Bu birleşimin, çoğaltmayı önleyen bir [zaman sınırı](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) koşulu gerekir:
 
 ```SQL
 WITH DynamicCTE AS (
@@ -321,11 +321,11 @@ LEFT JOIN DynamicCTE V ON V.smKey = 'Version' and V.DeviceId = i.DeviceId AND DA
 LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId AND DATEDIFF(minute,i,M) BETWEEN 0 AND 0
 ```
 
-Sonuç şudur:
+Sonuç:
 
-|DeviceId|Lat|Uzun|smVersion|smÜretici|
+|DeviceId|[|Kalacağını|smVersion|smManufacturer|
 |-|-|-|-|-|
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Azure Akış Analizinde Veri Türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Azure Stream Analytics veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

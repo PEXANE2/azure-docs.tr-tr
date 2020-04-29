@@ -1,6 +1,6 @@
 ---
-title: Tehditleri algılamak için Azure Sentinel'de Livestream avlamayı kullanın| Microsoft Dokümanlar
-description: Bu makalede, verileri izlemek için Azure Sentinel'de Livestream avcılık nasıl kullanılacağı açıklanmaktadır.
+title: Tehditleri algılamak için Azure Sentinel 'de Livestream 'i kullanma | Microsoft Docs
+description: Bu makalede, verileri izlemek için Azure Sentinel 'de Livestream 'in nasıl kullanılacağı açıklanır.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,100 +16,100 @@ ms.workload: na
 ms.date: 12/06/2019
 ms.author: yelevin
 ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77582135"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Tehditleri algılamak için Azure Sentinel'de canlı avlanmayı kullanma
+# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Tehditleri algılamak için Azure Sentinel 'de canlı akışı 'i kullanma
 
 > [!IMPORTANT]
-> Azure Sentinel'de canlı yayını avlamak şu anda genel önizlemede dir ve giderek kiracılara yayılıyor.
-> Bu özellik bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Azure Sentinel 'de canlı akışı 'i Şu anda genel önizlemede bulabilirsiniz ve kiracılar için kademeli olarak kullanıma alınıyor.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Olaylar meydana geldikçe yeni oluşturulan sorguları test etmenize, eşleşme bulunduğunda oturumlardan bildirimler almanıza ve gerekirse soruşturma başlatmanıza izin veren etkileşimli oturumlar oluşturmak için canlı yayını avlamayı kullanın. Herhangi bir Log Analytics sorgusukullanarak hızlı bir şekilde canlı akış oturumu oluşturabilirsiniz.
+Yeni oluşturulan sorguları olay meydana geldiğinde test etmenize olanak sağlayan etkileşimli oturumlar oluşturmak, bir eşleşme bulunduğunda oturumlardan bildirimler almak ve gerekirse araştırmalar başlatmak için canlı akışı 'i kullanın. Herhangi bir Log Analytics sorgusunu kullanarak hızlı bir şekilde canlı akış oturumu oluşturabilirsiniz.
 
-- **Olaylar oluştukça yeni oluşturulan sorguları test edin**
+- **Yeni oluşturulan sorguları olay gerçekleştiğinde sına**
     
-    Olaylara etkin olarak uygulanan geçerli kurallarla çakışma olmadan sorguları sınayabilir ve ayarlayabilirsiniz. Bu yeni sorguların beklendiği gibi çalıştığını onayladıktan sonra, oturumu bir uyarıya yükselten bir seçenek seçerek bunları özel uyarı kurallarına yükseltmek kolaydır.
+    Olaylara etkin olarak uygulanan geçerli kurallara herhangi bir çakışma olmadan sorgu test edebilir ve ayarlayabilirsiniz. Bu yeni sorguların beklendiği gibi çalıştığını doğruladıktan sonra, bir uyarıya oturumu destekleyen bir seçenek belirleyerek bunları özel uyarı kurallarına kolayca yükseltebilirsiniz.
 
-- **Tehditler oluştuğunda bilgilendirilme**
+- **Tehditler gerçekleştiğinde bildirim alın**
     
-    Tehdit veri akışlarını toplanan günlük verileriyle karşılaştırabilir ve bir eşleşme oluştuğunda bilgilendirebilirsiniz. Tehdit veri akışları, olası veya geçerli tehditlerle ilgili devam eden veri akışlarıdır, bu nedenle bildirim kuruluşunuz için potansiyel bir tehdit gösterebilir. Özel uyarı kuralını koruma nın genel giderleri olmadan olası bir sorundan haberdar olmak istediğinizde, özel uyarı kuralı yerine canlı akış oturumu oluşturun.
+    Tehdit veri akışlarını toplanmış günlük verileriyle karşılaştırabilir ve bir eşleşme gerçekleştiğinde bilgilendirilirsiniz. Tehdit veri akışları, olası veya geçerli tehditlerle ilgili verilerin devam eden akışlardır ve bu nedenle bildirim, kuruluşunuzun potansiyel bir tehdidi olduğunu gösterebilir. Özel bir uyarı kuralını korumanın fazla olması gerekmeden olası bir sorun hakkında bildirim almak istediğinizde özel bir uyarı kuralı yerine bir canlı akışı oturumu oluşturun.
 
-- **Soruşturma başlatma**
+- **Araştırmamaları Başlat**
     
-    Ana bilgisayar veya kullanıcı gibi bir varlığı içeren etkin bir araştırma varsa, günlük verilerindeki belirli (veya herhangi bir) etkinliği, söz konusu varlıkta oluştuğu gibi görüntüleyebilirsiniz. Bu etkinlik gerçekleştiğinde size bildirilebilir.
+    Konak veya Kullanıcı gibi bir varlıkla ilgili etkin bir araştırma varsa, günlük verilerinde söz konusu varlık üzerinde olduğu gibi belirli (veya herhangi bir) etkinlik görüntüleyebilirsiniz. Bu etkinlik gerçekleştiğinde size bildirilmesini sağlayabilirsiniz.
 
 
-## <a name="create-a-livestream-session"></a>Canlı akış oturumu oluşturma
+## <a name="create-a-livestream-session"></a>Canlı akışı oturumu oluşturma
 
-Varolan bir av sorgusundan canlı akış oturumu oluşturabilir veya oturumunuzu sıfırdan oluşturabilirsiniz.
+Mevcut bir arama sorgusundan canlı akışı oturumu oluşturabilir veya oturumunuzu sıfırdan oluşturabilirsiniz.
 
-1. Azure portalında **Sentinel** > **Threat yönetimi** > **Avı'na**gidin.
+1. Azure Portal, **Sentinel** > **tehdit yönetimi** > **Arayıcı**' a gidin.
 
-2. Bir av sorgusundan canlı akış oturumu oluşturmak için:
+2. Bir hunme sorgusundan canlı akış oturumu oluşturmak için:
     
-    1. **Sorgular** sekmesinden, kullanılacak av sorgusunu bulun.
-    2. Sorguyu sağ tıklatın ve **canlı akışa ekle'yi**seçin. Örnek:
+    1. **Sorgular** sekmesinden kullanılacak arama sorgusunu bulun.
+    2. Sorguya sağ tıklayın ve **canlı akışı 'e Ekle**' yi seçin. Örneğin:
     
     > [!div class="mx-imgBorder"]
-    > ![Azure Sentinel av sorgusundan Livestream oturumu oluşturma](./media/livestream/livestream-from-query.png)
+    > ![Azure Sentinel arama sorgusundan Livestream oturumu oluşturma](./media/livestream/livestream-from-query.png)
 
-3. Sıfırdan canlı yayın oturumu oluşturmak için: 
+3. Sıfırdan bir canlı akışı oturumu oluşturmak için: 
     
     1. **Livestream** sekmesini seçin
-    2. **Canlı yayına git'i**seçin.
+    2. **Canlı akışı 'e git**' i seçin.
     
 4. **Livestream** bölmesinde:
     
-    - Bir sorgudan canlı akışı başlattıysanız, sorguyu gözden geçirin ve yapmak istediğiniz değişiklikleri yapın.
-    - Canlı yayını sıfırdan başlattıysanız, sorgunuzu oluşturun. 
+    - Bir sorgudan canlı akışı 'i başlattıysanız, sorguyu gözden geçirin ve yapmak istediğiniz değişiklikleri yapın.
+    - Sıfırdan canlı akışı 'i başlattıysanız sorgunuzu oluşturun. 
 
-5. Komut çubuğundan **Oynat'ı** seçin.
+5. Komut çubuğundan **oynat** ' ı seçin.
     
-    Komut çubuğunun altındaki durum çubuğu, canlı akış oturumunuzun çalışıp çalışmadığını veya duraklatılmış olup olmadığını gösterir. Aşağıdaki örnekte, oturum çalışıyor:
-    
-    > [!div class="mx-imgBorder"]
-    > ![Azure Sentinel avından canlı akış oturumu oluşturma](./media/livestream/livestream-session.png)
-
-6. Komut çubuğundan **Kaydet'i** seçin.
-    
-    **Duraklat'ı**seçmediğiniz sürece, oturum Azure portalından oturumunuz bitene kadar çalışır.
-
-## <a name="view-your-livestream-sessions"></a>Canlı akış oturumlarınızı görüntüleyin
-
-1. Azure portalında **Sentinel** > **Threat yönetimi** > **Avcılık** > **Livestream** sekmesine gidin.
-
-2. Görüntülemek veya görüntülemek istediğiniz canlı akış oturumunu seçin. Örnek:
+    Komut çubuğunun altındaki durum çubuğu, canlı akışı oturumunuzun çalışıp çalışmadığını veya duraklatılmadığını gösterir. Aşağıdaki örnekte, oturum çalışıyor:
     
     > [!div class="mx-imgBorder"]
-    > ![Azure Sentinel av sorgusundan canlı akış oturumu oluşturma](./media/livestream/livestream-tab.png)
+    > ![Azure Sentinel ile canlı akış oturumu oluşturma](./media/livestream/livestream-session.png)
+
+6. Komut çubuğundan **Kaydet** ' i seçin.
     
-    Seçili canlı akış oturumunuz oynamanız, duraklatmanız, düzenlemeniz ve benzeri için açılır.
+    **Duraklat**' ı seçmezseniz, Azure Portal oturumunuz kapatılana kadar oturum çalışmaya devam eder.
 
-## <a name="receive-notifications-when-new-events-occur"></a>Yeni olaylar oluştuğunda bildirimleri alma
+## <a name="view-your-livestream-sessions"></a>Canlı akışı oturumlarınızı görüntüleyin
 
-Yeni etkinlikler için canlı akış bildirimleri Azure portal bildirimlerini kullandığından, Azure portalını her kullandığınızda bu bildirimleri görürsünüz. Örnek:
+1. Azure Portal, **Sentinel** > **tehdit yönetimi** > **Hunting** > için**Livestream** sekmesine gidin.
 
-![Canlı akış için Azure portalı bildirimi](./media/livestream/notification.png)
+2. Görüntülemek veya düzenlemek istediğiniz canlı akışı oturumunu seçin. Örneğin:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Azure Sentinel arama sorgusundan canlı akışı oturumu oluşturma](./media/livestream/livestream-tab.png)
+    
+    Seçtiğiniz canlı akışı oturumunuz açılarak oynatma, duraklatma, düzenleme gibi bir şekilde açılır.
+
+## <a name="receive-notifications-when-new-events-occur"></a>Yeni olaylar gerçekleştiğinde bildirim alın
+
+Yeni olaylar için canlı akışı bildirimleri Azure Portal bildirimleri kullandığından, Azure Portal her kullanışınızda bu bildirimleri görürsünüz. Örneğin:
+
+![Canlı akışı için Azure Portal bildirimi](./media/livestream/notification.png)
 
 **Livestream** bölmesini açmak için bildirimi seçin.
  
-## <a name="elevate-a-livestream-session-to-an-alert"></a>Canlı akış oturumunu uyarıya yükseltme
+## <a name="elevate-a-livestream-session-to-an-alert"></a>Canlı akış oturumunu bir uyarıya yükseltme
 
-İlgili canlı akış oturumunda komut çubuğundan **uyarmak için Yükseltme'yi** seçerek canlı akış oturumunu yeni bir uyarıya yükseltebilirsiniz:
+İlgili canlı akışı oturumunda komut çubuğundan **uyarıya Yükselt** ' i seçerek, bir canlı akış oturumunu yeni bir uyarıya yükseltebilirsiniz:
 
 > [!div class="mx-imgBorder"]
-> ![Canlı akış oturumunu bir uyarıya yükseltme](./media/livestream/elevate-to-alert.png)
+> ![Canlı akışı oturumunu bir uyarıya yükselt](./media/livestream/elevate-to-alert.png)
 
-Bu eylem, canlı akış oturumu ile ilişkili sorgu ile önceden doldurulur kural oluşturma sihirbazı açar.
+Bu eylem, canlı akışı oturumuyla ilişkili sorguyla önceden doldurulan kural oluşturma Sihirbazı ' nı açar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Sentinel'de canlı avlanmayı nasıl kullanacağınızı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Bu makalede, Azure Sentinel 'de canlı akışı 'i nasıl kullanacağınızı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Proaktif tehditler için avı](hunting.md)
-- [Otomatik avlanma kampanyaları yürütmek için dizüstü bilgisayarları kullanın](notebooks.md)
+- [Tehditler için proaktif araya](hunting.md)
+- [Otomatik arama kampanyalarını çalıştırmak için not defterlerini kullanın](notebooks.md)

@@ -1,7 +1,7 @@
 ---
-title: Depolama hesabı için Son Eşitleme Zamanı özelliğini denetleme
+title: Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin
 titleSuffix: Azure Storage
-description: Coğrafi olarak çoğaltılmış bir depolama hesabı için **Son Eşitleme Zamanı** özelliğini nasıl denetleriz öğrenin. **Son Eşitleme Zamanı** özelliği, birincil bölgeden gelen tüm yazmaların ikincil bölgeye başarıyla yazıldığı son zamanı gösterir.
+description: Coğrafi olarak çoğaltılan bir depolama hesabı için **son eşitleme zamanı** özelliğini nasıl denetleyeceğinizi öğrenin. **Son eşitleme zamanı** özelliği, birincil bölgeden yapılan tüm yazmamaların ikincil bölgeye başarıyla yazıldığı son zamanı gösterir.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,39 +11,39 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 3a406ce6db060b9ff5be7bcadecb6c7ff7e65a1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77165494"
 ---
-# <a name="check-the-last-sync-time-property-for-a-storage-account"></a>Depolama hesabı için Son Eşitleme Zamanı özelliğini denetleme
+# <a name="check-the-last-sync-time-property-for-a-storage-account"></a>Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin
 
-Bir depolama hesabı yapılandırdığınızda, verilerinizin birincil bölgeden yüzlerce mil uzaktaki ikincil bir bölgeye kopyalanmasını belirtebilirsiniz. Coğrafi çoğaltma, birincil bölgede doğal afet gibi önemli bir kesinti durumunda verileriniz için dayanıklılık sağlar. İkincil bölgeye okuma erişimini ayrıca etkinleştirirseniz, birincil bölge kullanılamaz hale gelirse verileriniz okuma işlemleri için kullanılabilir durumda kalır. Birincil bölge yanıt vermiyorsa, uygulamanızı ikincil bölgeden okumaya sorunsuz bir şekilde geçmek için tasarlayabilirsiniz.
+Bir depolama hesabı yapılandırdığınızda, verilerinizin birincil bölgeden yüzlerce mil olan ikincil bir bölgeye kopyalandığını belirtebilirsiniz. Coğrafi çoğaltma, doğal bir olağanüstü durum gibi birincil bölgede önemli bir kesinti olması durumunda verileriniz için dayanıklılık sağlar. İkincil bölgeye okuma erişimi de etkinleştirirseniz, birincil bölge kullanılamaz hale gelirse verileriniz okuma işlemleri için kullanılabilir kalır. Birincil bölge yanıt vermezse, uygulamanızı ikincil bölgeden okumak için sorunsuz bir şekilde çalışacak şekilde tasarlayabilirsiniz.
 
-Coğrafi yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) (önizleme) verilerinizi eşzamanlı olarak ikincil bir bölgeye kopyalar. İkincil bölgeye okuma erişimi için, okuma-erişim coğrafi yedekli depolama (RA-GRS) veya okuma-erişim coğrafi bölge yedekli depolama (RA-GZRS) etkinleştirin. Azure Depolama tarafından sunulan fazlalık için çeşitli seçenekler hakkında daha fazla bilgi için Azure [Depolama artıklığına](storage-redundancy.md)bakın.
+Coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) (Önizleme), her ikisi de verilerinizi zaman uyumsuz olarak ikincil bir bölgeye çoğaltır. İkincil bölgeye okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolamayı (RA-GZRS) etkinleştirin. Azure depolama tarafından sunulan yedekliliğe yönelik çeşitli seçenekler hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](storage-redundancy.md).
 
-Bu makalede, birincil ve ikincil bölgeler arasındaki tutarsızlığı değerlendirebilmeniz için depolama hesabınız için **Son Eşitleme Süresi** özelliğini nasıl denetleyebilirsiniz.
+Bu makalede, birincil ve ikincil bölgeler arasında herhangi bir tutarsızlığı değerlendirebilmeniz için depolama hesabınızın **son eşitleme zamanı** özelliğinin nasıl denetleneceği açıklanır.
 
-## <a name="about-the-last-sync-time-property"></a>Son Eşitleme Zamanı özelliği hakkında
+## <a name="about-the-last-sync-time-property"></a>Son eşitleme zamanı özelliği hakkında
 
-Coğrafi çoğaltma asynchronous olduğundan, birincil bölgeye yazılan verilerin bir kesinti oluştuğu anda ikincil bölgeye henüz yazılmamış olması mümkündür. **Son Eşitleme Zamanı** özelliği, birincil bölgeden gelen verilerin ikincil bölgeye en son ne zaman başarıyla yazıldığını gösterir. Son eşitleme zamanından önce birincil bölgeye yapılan tüm yazılar ikincil konumdan okunabilir. Son eşitleme süresi özelliğinden sonra birincil bölgeye yapılan yazmalar henüz okunabilir veya kullanılamayabilir.
+Coğrafi çoğaltma zaman uyumsuz olduğundan, birincil bölgeye yazılan veriler, bir kesinti gerçekleştiği sırada ikinci bölgeye henüz yazılmadı. **Son eşitleme zamanı** özelliği, birincil bölgedeki verilerin ikincil bölgeye başarıyla yazıldığı anlamına gelir. Birincil bölgeye son eşitleme zamanından önce yapılan tüm yazma işlemleri ikincil konumdan okunmadan kullanılabilir. Son eşitleme zamanı özelliğinden sonra birincil bölgeye yapılan yazma işlemleri, henüz okuma için kullanılamayabilir veya kullanılamıyor olabilir.
 
-**Son Eşitleme Zamanı** özelliği BIR GMT tarih/saat değeridir.
+**Son eşitleme zamanı** ÖZELLIĞI bir GMT Tarih/saat değeri.
 
-## <a name="get-the-last-sync-time-property"></a>Son Eşitleme Zamanı özelliğini alma
+## <a name="get-the-last-sync-time-property"></a>Son eşitleme zamanı özelliğini al
 
-**Son Eşitleme Zamanı** özelliğinin değerini almak için PowerShell veya Azure CLI'yi kullanabilirsiniz.
+**Son eşitleme zamanı** özelliğinin değerini almak için PowerShell veya Azure CLI kullanabilirsiniz.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell ile depolama hesabı için son eşitleme süresini elde etmek için, coğrafi çoğaltma istatistikleri almayı destekleyen bir Azure Depolama önizleme modülü yükleyin. Örneğin:
+PowerShell ile depolama hesabının son eşitleme zamanını almak için, coğrafi çoğaltma istatistiklerini almayı destekleyen bir Azure depolama önizleme modülü yükler. Örneğin:
 
 ```powershell
 Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
 ```
 
-Ardından depolama hesabının **GeoReplicationStats.LastSyncTime** özelliğini kontrol edin. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Ardından depolama hesabının **Georeplicationstats. LastSyncTime** özelliğini denetleyin. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -53,7 +53,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI ile depolama hesabıiçin son eşitleme süresini almak için depolama hesabının **geoReplicationStats.lastSyncTime** özelliğini kontrol edin. `--expand` **geoReplicationStats**altında iç içe özellikleri için değerleri döndürmek için parametreyi kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Azure CLı ile depolama hesabının son eşitleme zamanını almak için depolama hesabının **Georeplicationstats. lastSyncTime** özelliğini denetleyin. `--expand` **Georeplicationstats**altında iç içe yerleştirilmiş özelliklerin değerlerini döndürmek için parametresini kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
 $lastSyncTime=$(az storage account show \
@@ -68,6 +68,6 @@ $lastSyncTime=$(az storage account show \
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Depolama artıklığı](storage-redundancy.md)
+- [Azure depolama artıklığı](storage-redundancy.md)
 - [Depolama hesabı için artıklık seçeneğini değiştirme](redundancy-migration.md)
-- [Okuma erişimi coğrafi yedekli depolama yı kullanarak yüksek kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md)
+- [Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md)

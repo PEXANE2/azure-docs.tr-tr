@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware Çözümü - Özel Bulut'ta vCenter kimlik kaynaklarını ayarlama
-description: VMware yöneticilerinin vCenter'a erişmeleri için Active Directory ile kimlik doğrulaması yapacak Özel Bulut vCenter'ınızı nasıl ayarlayabilirsiniz
+title: CloudSimple tarafından Azure VMware çözümü-özel bulutta vCenter Identity kaynaklarını ayarlama
+description: VMware yöneticilerinin vCenter 'a erişmesi için Active Directory kimlik doğrulaması için özel bulut vCenter ' ın nasıl ayarlanacağını açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,125 +9,125 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77564032"
 ---
-# <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory'yi kullanmak için vCenter kimlik kaynaklarını ayarlama
+# <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory
 
-## <a name="about-vmware-vcenter-identity-sources"></a>VMware vCenter kimlik kaynakları hakkında
+## <a name="about-vmware-vcenter-identity-sources"></a>VMware vCenter Identity kaynakları hakkında
 
-VMware vCenter, vCenter'a erişen kullanıcıların kimlik doğrulamaları için farklı kimlik kaynaklarını destekler.  CloudSimple Private Cloud vCenter'ınız, VMware yöneticilerinizin vCenter'a erişebildiği Active Directory ile kimlik doğrulaması yapacak şekilde ayarlanabilir. Kurulum tamamlandığında, bulut **sahibi** kullanıcı kimlik kaynağından vCenter'a kullanıcıları ekleyebilir.  
+VMware vCenter, vCenter 'a erişen kullanıcıların kimlik doğrulaması için farklı kimlik kaynaklarını destekler.  CloudSimple özel bulut vCenter, VMware yöneticilerinin vCenter 'a erişmesi için Active Directory kimlik doğrulaması yapacak şekilde ayarlanabilir. Kurulum tamamlandığında, **cloudowner** kullanıcısı kimlik kaynağından vCenter 'a kullanıcı ekleyebilir.  
 
-Active Directory etki alanı nızı ve etki alanı denetleyicilerinizi aşağıdaki yollardan herhangi birinde ayarlayabilirsiniz:
+Active Directory etki alanınızı ve etki alanı denetleyicilerinizi aşağıdaki yollarla ayarlayabilirsiniz:
 
-* Şirket içinde çalışan Etkin Dizin etki alanı ve etki alanı denetleyicileri
-* Azure aboneliğinizde sanal makine olarak Azure'da çalışan Etkin Dizin etki alanı ve etki alanı denetleyicileri
-* Özel Bulut'unuzda çalışan yeni Active Directory etki alanı ve etki alanı denetleyicileri
+* Şirket içinde çalışan etki alanı ve etki alanı denetleyicileri Active Directory
+* Azure aboneliğinizde sanal makineler olarak çalışan etki alanı ve etki alanı denetleyicileri Active Directory
+* Özel bulutunuzda çalışan yeni Active Directory etki alanı ve etki alanı denetleyicileri
 * Azure Active Directory hizmeti
 
-Bu kılavuzda, aboneliklerinizde şirket içinde veya sanal makine olarak çalışan Active Directory etki alanı ve etki alanı denetleyicilerini ayarlama görevleri açıklanmaktadır.  Kimlik kaynağı olarak Azure AD'yi kullanmak istiyorsanız, kimlik kaynağını ayarlamayla ilgili ayrıntılı talimatlar için [CloudSimple Private Cloud'daki vCenter için kimlik sağlayıcısı olarak Azure AD'yi kullanın'a](azure-ad.md) bakın.
+Bu kılavuzda, şirket içinde veya aboneliklerinizde sanal makineler çalıştıran etki alanı ve etki alanı denetleyicileri Active Directory ayarlama görevleri açıklanmaktadır.  Azure AD 'yi kimlik kaynağı olarak kullanmak istiyorsanız, kimlik kaynağını ayarlamayla ilgili ayrıntılı yönergeler için [CloudSimple özel bulutu 'Nda vCenter için kimlik sağlayıcısı olarak Azure AD 'Yi kullanma](azure-ad.md) bölümüne bakın.
 
-[Kimlik kaynağı eklemeden](#add-an-identity-source-on-vcenter) [önce, vCenter ayrıcalıklarınızı](escalate-private-cloud-privileges.md)geçici olarak artırın.
+[Bir kimlik kaynağı eklemeden](#add-an-identity-source-on-vcenter)önce [vCenter ayrıcalıklarınızı geçici olarak ilerletin](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Yeni kullanıcılar yalnızca *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group,* *Cloud-Global-Network-Admin-Group* veya *Cloud-Global-VM-Admin-Group'a*eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılır.  *Yöneticiler* grubuna yalnızca hizmet hesapları eklenmelidir ve hizmet hesapları vSphere web UI'da oturum açmak için kullanılmamalıdır.   
+> Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu*için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir ve hizmet hesapları vSphere Web Kullanıcı arabiriminde oturum açmak için kullanılmamalıdır.   
 
 
 ## <a name="identity-source-options"></a>Kimlik kaynağı seçenekleri
 
-* [Tek oturum açma kimlik kaynağı olarak şirket içi Active Directory ekleme](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [Özel Bulutta Yeni Active Directory'yi Ayarlama](#set-up-new-active-directory-on-a-private-cloud)
-* [Azure'da Etkin Dizini Ayarlama](#set-up-active-directory-on-azure)
+* [Çoklu oturum açma kimlik kaynağı olarak şirket içi Active Directory ekleme](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
+* [Özel bulutta yeni Active Directory ayarlama](#set-up-new-active-directory-on-a-private-cloud)
+* [Azure 'da Active Directory ayarlama](#set-up-active-directory-on-azure)
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Tek İşaretli Kimlik Kaynağı Olarak Şirket Içi Etkin Dizini Ekle
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Çoklu oturum açma kimlik kaynağı olarak şirket Içi Active Directory ekleme
 
-Şirket içi Active Directory'nizi Tek Oturum Açma kimlik kaynağı olarak ayarlamak için şunları yapmanız gerekir:
+Şirket içi Active Directory çoklu oturum açma kimlik kaynağı olarak ayarlamak için şunlar gerekir:
 
-* Şirket içi veri merkezinizden Özel Bulut'unuza [site-to-Site VPN bağlantısı.](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
-* Şirket içi DNS sunucu IP'si vCenter ve Platform Services Controller'a (PSC) eklendi.
+* Şirket içi veri merkezinizden özel bulutunuz için [siteden sıteye VPN bağlantısı](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) .
+* VCenter ve platform hizmetleri denetleyicisine (PSC) Şirket içi DNS sunucusu IP 'si eklendi.
 
 Active Directory etki alanınızı ayarlarken aşağıdaki tablodaki bilgileri kullanın.
 
 | **Seçeneği** | **Açıklama** |
 |------------|-----------------|
 | **Adı** | Kimlik kaynağının adı. |
-| **Kullanıcılar için Temel DN** | Kullanıcılar için temel ayırt edici ad. |
-| **Etki alanı adı** | Örneğin etki alanının FQDN'si example.com. Bu metin kutusunda bir IP adresi sağlamayın. |
-| **Etki alanı takma adı** | Etki alanı NetBIOS adı. SSPI kimlik doğrulamalarını kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |
-| **Gruplar için Temel DN** | Gruplar için taban ayırt adı. |
-| **Birincil Sunucu URL'si** | Etki alanı için birincil etki alanı denetleyiciLDAP sunucusu.<br><br>Biçimi `ldap://hostname:port` kullanın `ldaps://hostname:port`veya . Bağlantı noktası genellikle LDAP bağlantıları için 389 ve LDAPS bağlantıları için 636'dır. Active Directory çok etki alanı denetleyicisi dağıtımları için bağlantı noktası genellikle LDAP için 3268 ve LDAPS için 3269'dur.<br><br>Birincil veya ikincil LDAP URL'sinde kullandığınızda `ldaps://` Active Directory sunucusunun LDAPS bitiş noktası için güven oluşturan bir sertifika gereklidir. |
-| **İkincil sunucu URL'si** | Failover için kullanılan ikincil bir etki alanı denetleyicildap sunucusunun adresi. |
-| **Sertifika seçin** | Active Directory LDAP Server veya OpenLDAP Server kimlik kaynağınızla LDAPS kullanmak istiyorsanız, URL `ldaps://` metin kutusuna yazdıktan sonra sertifika seç düğmesi görüntülenir. İkincil bir URL gerekli değildir. |
-| **Username** | Etki alanında, kullanıcılar ve gruplar için Base DN'ye en az salt okunur erişimi olan bir kullanıcının kimliği. |
-| **Parola** | Kullanıcı adı ile belirtilen kullanıcının şifresi. |
+| **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad. |
+| **Etki alanı adı** | Etki alanının FQDN 'SI, örneğin, example.com. Bu metin kutusunda bir IP adresi sağlamaın. |
+| **Etki alanı diğer adı** | Etki alanı NetBIOS adı. SSPI kimlik doğrulamaları kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |
+| **Gruplar için temel DN** | Gruplar için temel ayırt edici ad. |
+| **Birincil sunucu URL 'SI** | Etki alanı için birincil etki alanı denetleyicisi LDAP sunucusu.<br><br>Biçimini `ldap://hostname:port` kullanın `ldaps://hostname:port`. Bağlantı noktası genellikle LDAP bağlantıları için 389 ve LDAPS bağlantıları için 636 ' dir. Birden çok etki alanı denetleyicisi dağıtımı Active Directory için, bağlantı noktası genellikle LDAP için 3268 ve LDAPS için 3269 ' dir.<br><br>Birincil veya ikincil LDAP URL 'sinde kullandığınızda `ldaps://` Active Directory sunucusunun LDAPS uç noktası için güven kuran bir sertifika gerekir. |
+| **İkincil sunucu URL 'SI** | Yük devretme için kullanılan ikincil etki alanı denetleyicisi LDAP sunucusunun adresi. |
+| **Sertifika Seç** | Active Directory LDAP sunucunuz veya OpenLDAP sunucu kimlik kaynağı ile LDAPS kullanmak istiyorsanız, URL metin kutusuna yazdıktan `ldaps://` sonra Sertifika Seç düğmesi görünür. İkincil bir URL gerekli değildir. |
+| **Nitelen** | Etki alanındaki, kullanıcılar ve gruplar için temel DN 'ye yönelik en az salt okuma erişimi olan bir kullanıcının KIMLIĞI. |
+| **Parola** | Kullanıcı adı tarafından belirtilen kullanıcının parolası. |
 
-Önceki tabloda bilgilere sahip olduğunuzda, şirket içi Active Directory'nizi vCenter'da Tek Oturum Açma kimlik kaynağı olarak ekleyebilirsiniz.
+Önceki tabloda yer alan bilgilere sahip olduğunuzda, vCenter 'da çoklu oturum açma kimlik kaynağı olarak şirket içi Active Directory ekleyebilirsiniz.
 
 > [!TIP]
-> [VMware dokümantasyon sayfasında](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)Tek Oturum Açma kimlik kaynakları hakkında daha fazla bilgi bulabilirsiniz.
+> [VMware belgeleri sayfasında](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)çoklu oturum açma kimlik kaynakları hakkında daha fazla bilgi bulabilirsiniz.
 
-## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Özel Bulutta Yeni Active Directory'yi Ayarlama
+## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Özel bulutta yeni Active Directory ayarlama
 
-Özel Bulut'unuzda yeni bir Active Directory etki alanı ayarlayabilir ve tek oturum açma için kimlik kaynağı olarak kullanabilirsiniz.  Etkin Dizin etki alanı, varolan bir Active Directory ormanın bir parçası olabilir veya bağımsız bir orman olarak ayarlanabilir.
+Özel bulutunuzda yeni bir Active Directory etki alanı ayarlayabilir ve onu çoklu oturum açma için bir kimlik kaynağı olarak kullanabilirsiniz.  Active Directory etki alanı, var olan bir Active Directory ormanının bir parçası olabilir veya bağımsız bir orman olarak ayarlanabilir.
 
 ### <a name="new-active-directory-forest-and-domain"></a>Yeni Active Directory orman ve etki alanı
 
-Yeni bir Active Directory ormanı ve etki alanı ayarlamak için şunları yapmanız gerekir:
+Yeni bir Active Directory orman ve etki alanı ayarlamak için şunlar gerekir:
 
-* Microsoft Windows Server'ı çalıştıran bir veya daha fazla sanal makine, yeni Active Directory ormanı ve etki alanı için etki alanı denetleyicileri olarak kullanılır.
+* Yeni Active Directory orman ve etki alanı için etki alanı denetleyicileri olarak kullanmak üzere Microsoft Windows Server çalıştıran bir veya daha fazla sanal makine.
 * Ad çözümlemesi için DNS hizmetini çalıştıran bir veya daha fazla sanal makine.
 
-Ayrıntılı adımlar için [Yeni Windows Server 2012 Active Directory Forest yükle'ye](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) bakın.
+Ayrıntılı adımlar için bkz. [Yeni bir Windows Server 2012 Active Directory ormanı yüklemeyi](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) .
 
 > [!TIP]
-> Hizmetlerin yüksek kullanılabilirliği için, birden çok etki alanı denetleyicisi ve DNS sunucusu ayarlamanızı öneririz.
+> Hizmetlerin yüksek kullanılabilirliği için, birden çok etki alanı denetleyicisi ve DNS sunucusu ayarlamayı öneririz.
 
-Active Directory ormanını ve etki alanını kurduktan sonra, yeni Active Directory'niz için [vCenter'a bir kimlik kaynağı ekleyebilirsiniz.](#add-an-identity-source-on-vcenter)
+Active Directory ormanı ve etki alanını ayarladıktan sonra, yeni Active Directory için [vCenter 'a bir kimlik kaynağı ekleyebilirsiniz](#add-an-identity-source-on-vcenter) .
 
-### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Varolan bir Active Directory ormanında yeni Active Directory etki alanı
+### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Mevcut bir Active Directory ormanında yeni Active Directory etki alanı
 
-Varolan bir Active Directory ormanında yeni bir Active Directory etki alanı ayarlamak için şunları yapmanız gerekir:
+Mevcut bir Active Directory ormanında yeni bir Active Directory etki alanı kurmak için şunlar gerekir:
 
-* Etkin Dizin orman konumunuza Siteden Siteye VPN bağlantısı.
-* DNS Server, varolan Active Directory ormanınızın adını çözümlemek için.
+* Active Directory ormanınızın bulunduğu konumdan siteye VPN bağlantısı.
+* Mevcut Active Directory ormanınızın adını çözümlemek için DNS sunucusu.
 
-Bkz. Ayrıntılı adımlar için [yeni bir Windows Server 2012 Active Directory alt veya ağaç etki alanı yükleyin.](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)
+Ayrıntılı adımlar için bkz. [Yeni Windows Server 2012 Active Directory alt veya ağaç etki alanı yüklemesi](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
 
-Active Directory etki alanını kurduktan sonra, [vCenter'a](#add-an-identity-source-on-vcenter) yeni Active Directory için bir kimlik kaynağı ekleyebilirsiniz.
+Active Directory etki alanını ayarladıktan sonra, yeni Active Directory için [vCenter 'a bir kimlik kaynağı ekleyebilirsiniz](#add-an-identity-source-on-vcenter) .
 
-## <a name="set-up-active-directory-on-azure"></a>Azure'da Etkin Dizini Ayarlama
+## <a name="set-up-active-directory-on-azure"></a>Azure 'da Active Directory ayarlama
 
-Azure'da çalışan Etkin Dizin, şirket içinde çalışan Active Directory'ye benzer.  VCenter'da Azure'da Çalışan Active Directory'yi tek oturum açma kimlik kaynağı olarak ayarlamak için vCenter sunucusu ve PSC'nin Active Directory hizmetlerinin çalıştığı Azure Sanal Ağı'na ağ bağlantısı olması gerekir.  Active Directory Services'in CloudSimple Private Cloud'da çalıştığı Azure sanal ağındaki [ExpressRoute'u kullanarak](azure-expressroute-connection.md) bu bağlantıyı Oluşturabilirsiniz.
+Azure üzerinde çalışan Active Directory, şirket içinde çalışan Active Directory benzerdir.  VCenter 'da çoklu oturum açma kimlik kaynağı olarak Azure 'da çalışan Active Directory ayarlamak için, vCenter Server ve PSC 'nin Active Directory hizmetlerinin çalıştığı Azure sanal ağı ile ağ bağlantısı olması gerekir.  Azure sanal ağ bağlantısı kullanarak bu bağlantıyı, Active Directory hizmetlerinin CloudSimple özel bulutuna çalıştığı Azure sanal ağından [ExpressRoute kullanarak](azure-expressroute-connection.md) kurabilirsiniz.
 
-Ağ bağlantısı kurulduktan sonra, Kimlik Kaynağı olarak eklemek için [Tek Oturum Açma Kimlik Kaynağı olarak Şirket Içi Etkin Dizini Ekle'deki](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) adımları izleyin.  
+Ağ bağlantısı kurulduktan sonra, kimlik kaynağı olarak eklemek için [Şirket içi Active Directory çoklu oturum açma kimlik kaynağı olarak ekleme](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) bölümündeki adımları izleyin.  
 
-## <a name="add-an-identity-source-on-vcenter"></a>vCenter'da kimlik kaynağı ekleme
+## <a name="add-an-identity-source-on-vcenter"></a>VCenter 'a bir kimlik kaynağı ekleme
 
-1. Özel Bulut'unuzdaki [ayrıcalıkları artırın.](escalate-private-cloud-privileges.md)
+1. Özel bulutunuzda [ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md) .
 
-2. Özel Bulut'unuzun vCenter'ında oturum açın.
+2. Özel bulutunuz için vCenter 'da oturum açın.
 
-3. **Ev > İdaresi'ni**seçin.
+3. **Home > yönetimi**' ni seçin.
 
     ![Yönetim](media/OnPremAD01.png)
 
-4. **> Yapılandırmada Tek İşaret'i**seçin.
+4. **Yapılandırma > çoklu oturum açma**seçeneğini belirleyin.
 
     ![Çoklu Oturum Açma](media/OnPremAD02.png)
 
-5. Kimlik **Kaynakları** sekmesini **+** açın ve yeni bir kimlik kaynağı eklemek için tıklatın.
+5. **Kimlik kaynakları** sekmesini açın ve yeni bir **+** kimlik kaynağı eklemek için tıklayın.
 
-    ![Kimlik Kaynakları](media/OnPremAD03.png)
+    ![Kimlik kaynakları](media/OnPremAD03.png)
 
-6. **LDAP Sunucusu Olarak Active Directory'yi** seçin ve **İleri'yi**tıklatın.
+6. **LDAP sunucusu olarak Active Directory** seçin ve **İleri**' ye tıklayın.
 
     ![Active Directory](media/OnPremAD04.png)
 
-7. Ortamınız için kimlik kaynağı parametrelerini belirtin ve **İleri'yi**tıklatın.
+7. Ortamınız için kimlik kaynak parametrelerini belirtin ve **İleri**' ye tıklayın.
 
     ![Active Directory](media/OnPremAD05.png)
 
-8. Ayarları gözden geçirin ve **Bitir'e**tıklayın.
+8. Ayarları gözden geçirin ve **son**' a tıklayın.

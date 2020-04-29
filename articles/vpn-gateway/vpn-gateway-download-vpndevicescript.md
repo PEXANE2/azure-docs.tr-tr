@@ -1,6 +1,6 @@
 ---
-title: S2S VPN bağlantıları için VPN cihaz yapılandırma komut dosyalarını indirin
-description: Bu makale, Azure Kaynak Yöneticisi'ni kullanarak Azure VPN Ağ Geçitleri ile S2S VPN bağlantıları için VPN aygıt yapılandırma komut dosyalarını indirmenize yardımcı olur.
+title: S2S VPN bağlantıları için VPN cihaz yapılandırma betiklerini indirme
+description: Bu makalede, Azure Resource Manager kullanarak Azure VPN ağ geçitleri ile S2S VPN bağlantıları için VPN cihaz yapılandırma betiklerini indirme işlemi adım adım açıklanmaktadır.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
@@ -10,77 +10,77 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
 ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162145"
 ---
-# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN bağlantıları için VPN cihaz yapılandırma komut dosyalarını indirin
+# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN bağlantıları için VPN cihaz yapılandırma betiklerini indirme
 
-Bu makale, Azure Kaynak Yöneticisi'ni kullanarak Azure VPN Ağ Geçitleri ile S2S VPN bağlantıları için VPN aygıt yapılandırma komut dosyalarını indirmenize yardımcı olur. Aşağıdaki diyagram, üst düzey iş akışını gösterir.
+Bu makalede, Azure Resource Manager kullanarak Azure VPN ağ geçitleri ile S2S VPN bağlantıları için VPN cihaz yapılandırma betiklerini indirme işlemi adım adım açıklanmaktadır. Aşağıdaki diyagramda üst düzey iş akışı gösterilmektedir.
 
-![download-script](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
+![İndir-betik](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
 
-Aşağıdaki aygıtların kullanılabilir komut dosyaları vardır:
+Aşağıdaki cihazlarda kullanılabilir betikler var:
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>VPN aygıt yapılandırma komut dosyaları hakkında
+## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>VPN cihaz yapılandırması betikleri hakkında
 
-Tesisler arası VPN bağlantısı, azure VPN ağ geçidi, şirket içi VPN aygıtı ve ikisini birbirine bağlayan bir IPsec S2S VPN tünelinden oluşur. Tipik iş akışı aşağıdaki adımları içerir:
+Şirketler arası VPN bağlantısı, bir Azure VPN ağ geçidinden, şirket içi VPN cihazından ve iki bağlantı kurarak bir IPSec S2S VPN tünelinden oluşur. Tipik iş akışı aşağıdaki adımları içerir:
 
-1. Azure VPN ağ geçidi (sanal ağ ağ geçidi) oluşturma ve yapılandırma
-2. Şirket içi ağınızı ve VPN aygıtınızı temsil eden bir Azure yerel ağ ağ geçidi oluşturma ve yapılandırma
-3. Azure VPN ağ geçidi ile yerel ağ ağ geçidi arasında bir Azure VPN bağlantısı oluşturma ve yapılandırma
-4. Azure VPN ağ geçidiile gerçek S2S VPN tünelini oluşturmak için yerel ağ ağ geçidi tarafından temsil edilen şirket içi VPN aygıtını yapılandırın
+1. Azure VPN ağ geçidi oluşturma ve yapılandırma (sanal ağ geçidi)
+2. Şirket içi ağınızı ve VPN cihazınızı temsil eden bir Azure yerel ağ geçidi oluşturun ve yapılandırın
+3. Azure VPN ağ geçidi ve yerel ağ geçidi arasında bir Azure VPN bağlantısı oluşturma ve yapılandırma
+4. Azure VPN ağ geçidi ile gerçek S2S VPN tüneli oluşturmak için yerel ağ geçidi tarafından temsil edilen şirket içi VPN cihazını yapılandırın
 
-Azure [portalı](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)veya [CLI'yi](vpn-gateway-howto-site-to-site-resource-manager-cli.md)kullanarak 1'den 3'e kadar olan adımları tamamlayabilirsiniz. Son adım, şirket içi VPN aygıtlarının Azure dışında yapılandırılmalarını içerir. Bu özellik, Azure VPN ağ geçidinizin, sanal ağınızın ve şirket içi ağ adresi önekleri ve VPN bağlantı özellikleri, vb. ilgili değerleri içeren VPN aygıtınız için bir yapılandırma komut dosyası indirmenize olanak tanır. Komut dosyasını başlangıç noktası olarak kullanabilir veya komut dosyasını yapılandırma konsolu aracılığıyla doğrudan şirket içi VPN aygıtlarınıza uygulayabilirsiniz.
+Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)veya [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)kullanarak 1 ile 3 arasındaki adımları tamamlayabilirsiniz. Son adım, şirket içi VPN cihazlarının Azure dışında yapılandırılmasını içerir. Bu özellik, Azure VPN ağ geçidinizin, sanal ağınız ve şirket içi ağ adresi öneklerinizin ve VPN bağlantı özelliklerinin, vb. için karşılık gelen değerleriyle VPN cihazınız için bir yapılandırma betiği indirmelerini sağlar. Betiği bir başlangıç noktası olarak kullanabilir veya komut dosyasını yapılandırma konsolu aracılığıyla şirket içi VPN cihazlarınıza doğrudan uygulayabilirsiniz.
 
 > [!IMPORTANT]
-> * Her VPN aygıt yapılandırma komut dosyası için sözdizimi farklıdır ve büyük ölçüde modellere ve firmware sürümlerine bağlıdır. Mevcut şablonlara karşı cihaz modelinize ve sürüm bilgilerinize özel önem verin.
-> * Bazı parametre değerleri aygıtta benzersiz olmalıdır ve aygıta erişmeden belirlenemez. Azure tarafından oluşturulan yapılandırma komut dosyaları bu değerleri önceden doldurur, ancak sağlanan değerlerin cihazınızda geçerli olduğundan emin olmanız gerekir. Örnekler için:
->    * Arayüz numaraları
+> * Her VPN cihaz yapılandırma betiği için sözdizimi farklıdır ve modeller ve bellenim sürümlerine yoğun bir şekilde bağımlıdır. Kullanılabilir şablonlara karşı cihaz modelinize ve sürüm bilgilerine özel dikkat edin.
+> * Bazı parametre değerleri cihazda benzersiz olmalıdır ve cihaza erişilmeden belirlenemez. Azure tarafından oluşturulan yapılandırma betikleri bu değerleri önceden doldurabilir, ancak sunulan değerlerin cihazınızda geçerli olduğundan emin olmanız gerekir. Örnekler için:
+>    * Arabirim numaraları
 >    * Erişim denetim listesi numaraları
 >    * İlke adları veya numaraları, vb.
-> * Komut dosyasını uygulamadan önce doğrulamanız gereken parametreleri bulmak için komut dosyasına katıştırılmış "**REPLACE**" anahtar sözcük anahtar sözcüklerini arayın.
-> * Bazı şablonlar, yapılandırmaları kaldırmak için uygulayabileceğiniz "**CLEANUP**" bölümünü içerir. Temizleme bölümleri varsayılan olarak yorumlanır.
+> * Betiği uygulamadan önce doğrulamanız gereken parametreleri bulmak için komut dosyasına katıştırılmış "**Değiştir**" anahtar sözcüğünü arayın.
+> * Bazı şablonlar, yapılandırmaların kaldırılması için uygulayabileceğiniz bir "**Temizleme**" bölümü içerir. Temizleme bölümleri varsayılan olarak açıklama oluşturulur.
 
-## <a name="download-the-configuration-script-from-azure-portal"></a>Azure portalından yapılandırma komut dosyasını indirin
+## <a name="download-the-configuration-script-from-azure-portal"></a>Yapılandırma betiğini Azure portal indirin
 
-Azure VPN ağ geçidi, yerel ağ ağ geçidi ve ikisini birbirine bağlayan bir bağlantı kaynağı oluşturun. Aşağıdaki sayfa adımları size yol göstersin:
+Bir Azure VPN ağ geçidi, yerel ağ geçidi ve ikisini bağlayan bir bağlantı kaynağı oluşturun. Aşağıdaki sayfa adımlarda size rehberlik eder:
 
 * [Azure portalında Siteden Siteye bağlantı oluşturma](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
-Bağlantı kaynağı oluşturulduktan sonra, VPN aygıt yapılandırma komut dosyalarını indirmek için aşağıdaki yönergeleri izleyin:
+Bağlantı kaynağı oluşturulduktan sonra, VPN cihaz yapılandırma betiklerini indirmek için aşağıdaki yönergeleri izleyin:
 
-1. Bir tarayıcıdan Azure [portalına](https://portal.azure.com) gidin ve gerekirse Azure hesabınızla oturum açın
-2. Oluşturduğunuz bağlantı kaynağına gidin. Tüm bağlantı kaynaklarının listesini "Tüm hizmetler", ardından "NETWORKING" ve "Connections"ı tıklatarak bulabilirsiniz.
+1. Bir tarayıcıdan [Azure Portal](https://portal.azure.com) gidin ve gerekirse Azure hesabınızla oturum açın
+2. Oluşturduğunuz bağlantı kaynağına gidin. "Tüm hizmetler", ardından "ağ" ve "bağlantılar" ' a tıklayarak tüm bağlantı kaynaklarının listesini bulabilirsiniz.
 
     ![bağlantı listesi](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
 
-3. Yapılandırmak istediğiniz bağlantıyı tıklatın.
+3. Yapılandırmak istediğiniz bağlantıya tıklayın.
 
-    ![bağlantıya genel bakış](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
+    ![bağlantı-genel bakış](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
 
-4. Bağlantı genel bakış sayfasında kırmızı renkle vurgulanan "Yapılandırmayı İndir" bağlantısına tıklayın; bu "Yapılandırmayı karşıdan yükleme" sayfasını açar.
+4. Bağlantıya Genel Bakış sayfasında, kırmızı renkle vurgulanmış şekilde "yapılandırmayı karşıdan yükle" bağlantısına tıklayın; "yapılandırmayı karşıdan yükle" sayfası açılır.
 
-    ![indir-komut dosyası-1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
+    ![İndir-komut dosyası-1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
 
-5. VPN aygıtınız için model ailesini ve firmware sürümünü seçin ve ardından "Yapılandırmayı İndir" düğmesine tıklayın.
+5. VPN cihazınız için model aile ve bellenim sürümünü seçin ve ardından "yapılandırmayı Indir" düğmesine tıklayın.
 
-    ![download66-script-2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
+    ![download66-betik-2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
 
-6. İndirilen komut dosyasını (metin dosyası) tarayıcınızdan kaydetmeniz istenir.
-7. Yapılandırma komut dosyasını indirdikten sonra, bir metin düzenleyicisi ile açın ve değiştirilmesi gereken parametreleri tanımlamak ve incelemek için "REPLACE" anahtar sözcükte arama yapın.
+6. İndirdiğiniz betiği (bir metin dosyası) tarayıcınızdan kaydetmeniz istenir.
+7. Yapılandırma betiğini indirdikten sonra, bir metin düzenleyici ile açın ve değiştirilmesini gerekebilecek parametreleri belirlemek ve incelemek için "REPLACE" anahtar sözcüğünü arayın.
 
-    ![edit-script](./media/vpn-gateway-download-vpndevicescript/editscript.png)
+    ![betiği Düzenle](./media/vpn-gateway-download-vpndevicescript/editscript.png)
 
-## <a name="download-the-configuration-script-using-azure-powershell"></a>Azure PowerShell'i kullanarak yapılandırma komut dosyasını indirin
+## <a name="download-the-configuration-script-using-azure-powershell"></a>Yapılandırma betiğini Azure PowerShell kullanarak İndir
 
 
 
-Aşağıdaki örnekte gösterildiği gibi, Azure PowerShell kullanarak yapılandırma komut dosyasını da indirebilirsiniz:
+Ayrıca, aşağıdaki örnekte gösterildiği gibi Azure PowerShell kullanarak yapılandırma betiğini indirebilirsiniz:
 
 ```azurepowershell-interactive
 $RG          = "TestRG1"
@@ -94,10 +94,10 @@ Get-AzVirtualNetworkGatewaySupportedVpnDevice -Name $GWName -ResourceGroupName $
 Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -ResourceGroupName $RG -DeviceVendor Juniper -DeviceFamily Juniper_SRX_GA -FirmwareVersion Juniper_SRX_12.x_GA
 ```
 
-## <a name="apply-the-configuration-script-to-your-vpn-device"></a>Yapılandırma komut dosyasını VPN cihazınıza uygulayın
+## <a name="apply-the-configuration-script-to-your-vpn-device"></a>Yapılandırma betiğini VPN cihazınıza uygulama
 
-Yapılandırma komut dosyasını indirip doğruladıktan sonra, bir sonraki adım komut dosyasını VPN cihazınıza uygulamaktır. Gerçek yordam VPN cihazınızın yapar ve modellerine göre değişir. VPN aygıtlarınız için kullanım kılavuzlarına veya talimat sayfalarına başvurun.
+Yapılandırma betiğini indirip doğruladıktan sonra, bir sonraki adım, betiği VPN cihazınıza uygulamaktır. Gerçek yordam, VPN cihazınızın yaptığı ve modellerinize göre farklılık gösterir. VPN cihazlarınızın işlem kılavuzlarına veya yönerge sayfalarına bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Siteden Siteye bağlantınızı yapılandırmaya](vpn-gateway-howto-site-to-site-resource-manager-portal.md)devam edin.
+[Siteden siteye bağlantınızı](vpn-gateway-howto-site-to-site-resource-manager-portal.md)yapılandırmaya devam edin.

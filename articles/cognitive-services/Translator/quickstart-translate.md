@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Metni çevir - Çevirmen Metni'
+title: 'Hızlı başlangıç: metni çevir-Translator Metin Çevirisi'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Çevirmen Metin API'sini kullanarak metni çevirmeyi öğreneceksiniz.
+description: Bu hızlı başlangıçta, Translator Metin Çevirisi API'si kullanarak metin çevirisini öğreneceksiniz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 3be05a6c4005b79a3fcde6a71e663f5f70d4d61e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525184"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Hızlı başlangıç: Metni çevirmek için Çevirmen Metin API'sini kullanın
+# <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Hızlı başlangıç: metni çevirmek için Translator Metin Çevirisi API'si kullanma
 
-Bu hızlı başlangıçta, Çevirmen Metin REST API'sini kullanarak bir metin dizesini İngilizce'den Almanca, İtalyanca, Japonca ve Tayca'ya nasıl çevireceğinizi öğreneceksiniz.
+Bu hızlı başlangıçta, Translator Metin Çevirisi REST API kullanarak Ingilizce 'den Almanca, Italyanca, Japonca ve Tay dilinde metin dizesini nasıl çevitireceğinizi öğreneceksiniz.
 
 Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 

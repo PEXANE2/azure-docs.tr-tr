@@ -1,47 +1,47 @@
 ---
 title: Azure Lab Services için güvenlik duvarı ayarları
-description: Bilgilerin güvenlik duvarı kurallarına eklenabilmesi için laboratuvardaki sanal makinelerin ortak IP adresini ve bağlantı noktası numarası aralığını nasıl belirleyeceğinizi öğrenin.
+description: Güvenlik duvarı kurallarına eklenmek üzere bir laboratuvardaki sanal makinelerin genel IP adresini ve bağlantı noktası numarası aralığını belirlemeyi öğrenin.
 author: emaher
 ms.author: enewman
 ms.date: 02/14/2020
 ms.topic: article
 ms.service: lab-services
 ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77443473"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Azure Lab Services için güvenlik duvarı ayarları
 
-Her kuruluş veya okul kendi ağlarını kendi ihtiyaçlarına en uygun şekilde kuracak.  Bazen bu, Uzak Masaüstü Protokolü (rdp) veya Güvenli Kabuk (ssh) bağlantılarını kendi ağları dışındaki makinelere engelleyen güvenlik duvarı kurallarını ayarlamayı içerir.  Azure Lab Hizmetleri genel bulutta çalıştığından, öğrencilerin kampüs ağından bağlanırken VM'lerine erişmelerine izin vermek için bazı ekstra yapılandırmalar gerekebilir.
+Her bir kuruluş veya okul, kendi ağını gereksinimlerine en uygun şekilde ayarlar.  Bazen bu, kendi ağı dışındaki makinelere Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) bağlantılarını engelleyen güvenlik duvarı kurallarını ayarlamayı içerir.  Azure Lab Services ortak bulutta çalıştığından, öğrencilerin kampüs ağdan bağlanırken VM 'lerine erişmesine izin vermek için bazı ek yapılandırmalar gerekebilir.
 
-Her laboratuvar da tek bir genel IP adresi ve birden çok bağlantı noktası kullanır.  Tüm VM'ler, hem şablon VM hem de öğrenci VM'leri, bu genel IP adresini kullanır.  Ortak IP adresi, laboratuvar ömrü boyunca değişmez.  Ancak, her VM farklı bir bağlantı noktası numarasına sahip olacaktır.  Bağlantı noktası numaraları 49152 ile 65535 arasında değişmektedir.  Ortak IP adresi ve bağlantı noktası numarasının birleşimi, eğitmen ve öğrencileri doğru VM'ye bağlamak için kullanılır.  Bu makalede, bir laboratuvar tarafından kullanılan belirli genel IP adresi nin nasıl bulunacağı ele alınacaktır.  Bu bilgiler, öğrencilerin VM'lerine erişebilmeleri için gelen ve giden güvenlik duvarı kurallarını güncelleştirmek için kullanılabilir.
+Her laboratuvar tek genel IP adresi ve birden çok bağlantı noktası kullanır.  Hem şablon VM hem de öğrenci VM 'Leri olan tüm VM 'Ler, bu genel IP adresini kullanacaktır.  Genel IP adresi, laboratuvarın ömrü boyunca değişmeyecektir.  Ancak, her VM farklı bir bağlantı noktası numarasına sahip olur.  Bağlantı noktası numaraları 49152 ile 65535 arasında değişir.  Genel IP adresi ve bağlantı noktası numarası birleşimi, eğitmeni ve öğrencileri doğru VM 'ye bağlamak için kullanılır.  Bu makalede, bir laboratuvar tarafından kullanılan belirli genel IP adresinin nasıl bulunacağı ele alınacaktır.  Bu bilgiler, öğrencilerin VM 'lerine erişebilmesi için gelen ve giden güvenlik duvarı kurallarını güncelleştirmek üzere kullanılabilir.
 
 >[!IMPORTANT]
->Her laboratuvar da farklı bir genel IP adresine sahip olacaktır.
+>Her laboratuvarın farklı bir genel IP adresi olur.
 
-## <a name="find-public-ip-for-a-lab"></a>Laboratuvar için genel IP'yi bulma
+## <a name="find-public-ip-for-a-lab"></a>Laboratuvar için genel IP bulma
 
-Her laboratuvar için ortak IP adresleri, Laboratuvar Hizmetleri laboratuvar hesabının **Tüm laboratuvarlar** sayfasında listelenir.  **Tüm laboratuvarlar** sayfasını nasıl bulacağıyilgini öğrenmek için laboratuvar [hesabındaki laboratuvarları nasıl yöneteceğime](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account)bakın.  
+Her bir laboratuvarın genel IP adresleri, Laboratuvar Hizmetleri Laboratuvarı hesabının **Tüm laboratuvarları** sayfasında listelenir.  **Tüm Labs** sayfasını bulma hakkında yönergeler için bkz. [Laboratuvar hesabındaki laboratuvarları yönetme](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
 
 > [!div class="mx-imgBorder"]
-> ![Tüm laboratuvarlar sayfası](../media/how-to-configure-firewall-settings/all-labs-properties.png)
+> ![Tüm Labs sayfası](../media/how-to-configure-firewall-settings/all-labs-properties.png)
 
 >[!NOTE]
->Laboratuvarınızın şablon makinesi henüz yayınlanmadıysa, herkese açık IP adresini görmezsiniz.
+>Laboratuvarınızın şablon makinesi henüz yayınlanmamışsa genel IP adresini görmezsiniz.
 
 ## <a name="conclusion"></a>Sonuç
 
-Artık laboratuvarın halka açık IP adresini biliyoruz.  Gelen ve giden kurallar, kuruluşun genel ip adresi ve bağlantı noktası aralığı 49152-65535 için güvenlik duvarı için oluşturulabilir.  Kurallar güncelleştirildikten sonra, öğrenciler ağ güvenlik duvarı nın erişimini engellemeden VM'lerine erişebilirler.
+Artık laboratuvarın genel IP adresini biliyoruz.  Genel IP adresi ve 49152-65535 numaralı bağlantı noktası aralığı için kuruluşun güvenlik duvarı için gelen ve giden kuralları oluşturulabilir.  Kurallar güncelleştirildikten sonra, öğrenciler ağ güvenlik duvarı erişimi engellenmeksizin VM 'lerine erişebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
 - [Laboratuvar oluşturucunun laboratuvar konumunu seçmesine izin verme](allow-lab-creator-pick-lab-location.md)
-- [Laboratuvarağınızı bir eş sanal ağıyla bağlayın](how-to-connect-peer-virtual-network.md)
-- [Paylaşılan bir resim galerisini laboratuvara ekleme](how-to-attach-detach-shared-image-gallery.md)
-- [Kullanıcıyı laboratuvar sahibi olarak ekleme](how-to-add-user-lab-owner.md)
+- [Laboratuvarınızın ağını eş bir sanal ağla bağlama](how-to-connect-peer-virtual-network.md)
+- [Laboratuvara paylaşılan görüntü Galerisi iliştirme](how-to-attach-detach-shared-image-gallery.md)
+- [Laboratuvar sahibi olarak Kullanıcı ekleme](how-to-add-user-lab-owner.md)
 - [Laboratuvar için güvenlik duvarı ayarlarını görüntüleme](how-to-configure-firewall-settings.md)
 - [Laboratuvar için diğer ayarları yapılandırma](how-to-configure-lab-accounts.md)

@@ -9,59 +9,59 @@ ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77461886"
 ---
-Bu bölümde, [Azure portalını](https://portal.azure.com)kullanarak bir IoT hub'ı nasıl oluşturulacak açıklanmaktadır.
+Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı oluşturma açıklanmaktadır.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Azure ana sayfasından **+ Kaynak Oluştur** düğmesini seçin ve ardından Pazar Yeri **Arama** alanına *IoT Hub'ı* girin.
+1. Azure giriş sayfasından **+ kaynak oluştur** düğmesini seçin ve ardından **Market 'te ara** alanına *IoT Hub* girin.
 
-1. Arama sonuçlarından **IoT Hub'ını** seçin ve ardından **Oluştur'u**seçin.
+1. Arama sonuçlarından **IoT Hub** seçin ve ardından **Oluştur**' u seçin.
 
-1. Temel **Bilgiler** sekmesinde, alanları aşağıdaki gibi tamamlayın:
+1. **Temel bilgiler** sekmesinde, alanları aşağıdaki gibi doldurun:
 
-   - **Abonelik**: Hub'ınız için kullanılacak aboneliği seçin.
+   - **Abonelik**: hub 'ınız için kullanılacak aboneliği seçin.
 
-   - **Kaynak Grubu**: Bir kaynak grubu seçin veya yeni bir grup oluşturun. Yeni bir tane oluşturmak için **yeni oluştur'u** seçin ve kullanmak istediğiniz adı doldurun. Varolan bir kaynak grubunu kullanmak için bu kaynak grubunu seçin. Daha fazla bilgi için [bkz.](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)
+   - **Kaynak grubu**: bir kaynak grubu seçin veya yeni bir tane oluşturun. Yeni bir tane oluşturmak için **Yeni oluştur** ' u seçin ve kullanmak istediğiniz adı girin. Var olan bir kaynak grubunu kullanmak için bu kaynak grubunu seçin. Daha fazla bilgi için bkz. [Azure Resource Manager kaynak gruplarını yönetme](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
-   - **Bölge**: Merkezinizin bulunmasını istediğiniz bölgeyi seçin. Size en yakın konumu seçin. [IoT Hub aygıt akışları](../articles/iot-hub/iot-hub-device-streams-overview.md)gibi bazı özellikler yalnızca belirli bölgelerde kullanılabilir. Bu sınırlı özellikler için desteklenen bölgelerden birini seçmeniz gerekir.
+   - **Bölge**: hub 'ınızın bulunmasını istediğiniz bölgeyi seçin. Size en yakın konumu seçin. [IoT Hub cihaz akışları](../articles/iot-hub/iot-hub-device-streams-overview.md)gibi bazı özellikler yalnızca belirli bölgelerde kullanılabilir. Bu sınırlı Özellikler için desteklenen bölgelerden birini seçmeniz gerekir.
 
-   - **IoT Hub Adı**: Hub'ınız için bir ad girin. Bu adın küresel olarak benzersiz olması gerekir. Girdiğiniz ad kullanılabilir durumdaysa yeşil bir onay işareti görünür.
+   - **IoT Hub adı**: hub 'ınız için bir ad girin. Bu adın küresel olarak benzersiz olması gerekir. Girdiğiniz ad kullanılabilir durumdaysa yeşil bir onay işareti görünür.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Azure portalında hub oluşturma](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   ![Azure portal hub oluşturma](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
-1. Sonraki'ni seçin: Hub'ınızı oluşturmaya devam etmek için **boyut ve ölçeklendi.**
+1. **İleri ' yi seçin:** hub 'ınızı oluşturmaya devam etmek için boyut ve ölçek.
 
-   ![Azure portalını kullanarak yeni bir hub'ın boyutunu ve ölçeğini ayarlama](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
+   ![Azure portal kullanarak yeni bir hub için boyut ve ölçek ayarlama](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
-   Varsayılan ayarları burada kabul edebilirsiniz. İstenirseniz, aşağıdaki alanlardan herhangi birini değiştirebilirsiniz: 
+   Varsayılan ayarları burada kabul edebilirsiniz. İsterseniz, aşağıdaki alanlardan herhangi birini değiştirebilirsiniz: 
 
-    - **Fiyatlandırma ve ölçek katmanı**: Seçtiğiniz katman. İstediğiniz özellik kaç kişiye ve çözümünüz aracılığıyla günde kaç ileti gönderdiğinize bağlı olarak birkaç katman arasından seçim yapabilirsiniz. Ücretsiz katman test ve değerlendirme için tasarlanmıştır. Hub'a 500 aygıtın bağlanmasına ve günde 8.000'e kadar iletiye izin verir. Her Azure aboneliği, ücretsiz katmanda bir IoT hub'ı oluşturabilir. 
+    - **Fiyatlandırma ve ölçek katmanı**: seçtiğiniz katman. İstediğiniz sayıda özelliğe ve her gün çözümünüz aracılığıyla kaç tane ileti gönderdiğinize bağlı olarak çeşitli katmanlardan seçim yapabilirsiniz. Ücretsiz katman, test ve değerlendirme için tasarlanmıştır. 500 cihazların hub 'a ve günde en fazla 8.000 iletiye bağlanmasını sağlar. Her Azure aboneliği ücretsiz katmanda bir IoT Hub 'ı oluşturabilir. 
 
-      IoT Hub aygıt akışları için bir Quickstart üzerinden çalışıyorsanız, boş katmanı seçin.
+      IoT Hub cihaz akışları için bir hızlı başlangıç üzerinden çalışıyorsanız, ücretsiz katmanı seçin.
 
-    - **IoT Hub birimleri**: Günlük birim başına izin verilen ileti sayısı hub'ınızın fiyatlandırma katmanına bağlıdır. Örneğin, hub'ın 700.000 ileti girişini desteklemesini istiyorsanız, iki S1 katmanı birimi seçersiniz.
-    Diğer katman seçenekleri hakkında ayrıntılı bilgi için, [doğru IoT Hub katmanını seçme](../articles/iot-hub/iot-hub-scaling.md)ye bakın.
+    - **IoT Hub birimler**: günlük birim başına izin verilen ileti sayısı, hub 'ın fiyatlandırma katmanına bağlıdır. Örneğin, hub 'ın 700.000 ileti girişini desteklemesini istiyorsanız iki adet S1 katmanı birimi seçersiniz.
+    Diğer katman seçenekleri hakkında daha fazla bilgi için, bkz. [doğru IoT Hub katmanını seçme](../articles/iot-hub/iot-hub-scaling.md).
 
-    - **Azure Güvenlik Merkezi**: IoT ve cihazlarınız için ek bir tehdit koruması katmanı eklemek için bunu açın. Bu seçenek, boş katmandaki hub'lar için kullanılamaz. Bu özellik hakkında daha fazla bilgi için [IoT için Azure Güvenlik Merkezi'ne](https://docs.microsoft.com/azure/asc-for-iot/)bakın.
+    - **Azure Güvenlik Merkezi**: IoT ve cihazlarınıza ek bir tehdit koruması katmanı eklemek için bunu açın. Bu seçenek ücretsiz katmanda hub 'lar için kullanılamaz. Bu özellik hakkında daha fazla bilgi için bkz. [IoT Için Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/asc-for-iot/).
 
-    - **Gelişmiş Ayarlar** > **Aygıttan buluta bölümler**: Bu özellik, aygıttan buluta iletileri iletilerin eşzamanlı okuyucu sayısıyla ilişkilendirir. Hub'ların çoğu yalnızca dört bölüme ihtiyaç duyar.
+    - **Gelişmiş ayarlar** > **cihazdan buluta bölümler**: Bu özellik cihazdan buluta iletileri, iletilerin eşzamanlı okuyucu sayısıyla ilişkilendirir. Çoğu hub 'da yalnızca dört bölüm gereklidir.
 
-1.  **Sonraki'ni seçin: Sonraki** ekrana devam etmek için etiketler.
+1.  Sonraki ekrana devam etmek için **İleri: Etiketler** ' i seçin.
 
-    Etiketler ad/değer çiftleridir. Kaynakları kategorilere ayırmak ve faturalandırmayı birleştirmek için aynı etiketi birden çok kaynağa ve kaynak grubuna atayabilirsiniz. daha fazla bilgi için [Azure kaynaklarınızı düzenlemek için etiketleri kullan'a](../articles/azure-resource-manager/management/tag-resources.md)bakın.
+    Etiketler ad/değer çiftleridir. Kaynakları kategorilere ayırarak ve faturalandırmayı birleştirmek için birden fazla kaynağa ve kaynak grubuna aynı etiketi atayabilirsiniz. daha fazla bilgi için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md).
 
-    ![Azure portalını kullanarak hub için etiket atama](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+    ![Azure portal kullanarak hub için Etiketler atama](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
 
-1.  Sonraki'ni seçin: Seçimlerinizi gözden geçirmek için **Gözden Geçir + oluşturun.** Bu ekrana benzer bir şey görürsünüz, ancak hub'ı oluştururken seçtiğiniz değerlerle. 
+1.  **İleri ' yi seçin:** seçimlerinizi gözden geçirmek için ve Oluştur ' a tıklayın. Bu ekrana benzer bir şey görürsünüz, ancak hub 'ı oluştururken seçtiğiniz değerler vardır. 
 
-    ![Yeni hub oluşturmak için bilgileri gözden geçirme](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+    ![Yeni hub oluşturma bilgilerini gözden geçirin](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
-1.  Yeni hub'ınızı oluşturmak için **Oluştur'u** seçin. Hub'ı oluşturmak birkaç dakika sürer.
+1.  Yeni hub 'ınızı oluşturmak için **Oluştur** ' u seçin. Hub 'ın oluşturulması birkaç dakika sürer.

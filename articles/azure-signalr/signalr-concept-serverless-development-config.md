@@ -1,31 +1,31 @@
 ---
-title: Azure İşlevleri uygulamasını geliştirme & yapılandırma - Azure SignalR
-description: Azure İşlevleri ve Azure SinyalR Hizmeti kullanarak sunucusuz gerçek zamanlı uygulamaların nasıl geliştirilip yapılandırılabildiğini anlatan ayrıntılar
+title: Azure Işlevleri uygulamasını geliştirme & yapılandırma uygulaması-Azure SignalR
+description: Azure Işlevleri ve Azure SignalR hizmeti kullanılarak sunucusuz gerçek zamanlı uygulamalar geliştirmeye ve yapılandırmaya ilişkin ayrıntılar
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523179"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma
 
-Azure İşlevleri uygulamaları, gerçek zamanlı özellikler eklemek için [Azure Sinyal Hizmeti bağlayıcılarından](../azure-functions/functions-bindings-signalr-service.md) yararlanabilir. İstemci uygulamaları, Azure Sinyal Hizmeti'ne bağlanmak ve gerçek zamanlı iletiler almak için çeşitli dillerde kullanılabilen istemci SDK'larını kullanır.
+Azure Işlevleri uygulamaları, gerçek zamanlı yetenekler eklemek için [Azure SignalR hizmeti bağlamalarından](../azure-functions/functions-bindings-signalr-service.md) faydalanabilir. İstemci uygulamaları, Azure SignalR hizmetine bağlanmak ve gerçek zamanlı iletiler almak için birkaç dilde sunulan istemci SDK 'larını kullanır.
 
-Bu makalede, SignalR Hizmeti ile tümleşik bir Azure İşlevi uygulaması geliştirme ve yapılandırma kavramları açıklanmaktadır.
+Bu makalede, SignalR hizmeti ile tümleştirilmiş bir Azure Işlev uygulaması geliştirmeye ve yapılandırmaya yönelik kavramlar açıklanmaktadır.
 
-## <a name="signalr-service-configuration"></a>SignalR Service yapılandırması
+## <a name="signalr-service-configuration"></a>SignalR hizmeti yapılandırması
 
-Azure SignalR Hizmeti farklı modlarda yapılandırılabilir. Azure İşlevleri ile kullanıldığında, hizmetin *Serverless* modunda yapılandırılması gerekir.
+Azure SignalR hizmeti, farklı modlarda yapılandırılabilir. Azure Işlevleri ile kullanıldığında hizmetin *sunucusuz* modda yapılandırılması gerekir.
 
-Azure portalında SignalR Hizmeti kaynağınızın *Ayarlar* sayfasını bulun. Hizmet *modunu* *Serverless*olarak ayarlayın.
+Azure portal, SignalR hizmeti kaynağınızın *Ayarlar* sayfasını bulun. *Hizmet modunu* *sunucusuz*olarak ayarlayın.
 
-![SignalR Servis Modu](media/signalr-concept-azure-functions/signalr-service-mode.png)
+![SignalR hizmeti modu](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
 ## <a name="azure-functions-development"></a>Azure İşlevleri geliştirme
 
@@ -34,40 +34,40 @@ Azure İşlevleri ve Azure SignalR Hizmeti ile oluşturulan sunucusuz bir gerçe
 * Müşterinin geçerli bir SignalR Hizmeti erişim belirteci ve hizmet uç noktası URL’si almak için çağırdığı “negotiate” işlevi
 * İleti gönderen veya grup üyeliğini yöneten bir ya da daha fazla işlev
 
-### <a name="negotiate-function"></a>müzakere fonksiyonu
+### <a name="negotiate-function"></a>Negotiate işlevi
 
-Müşteri uygulaması, Azure SignalR Hizmetine bağlanmak için geçerli bir erişim jetonu gerektirir. Erişim jetonu anonim olabilir veya belirli bir kullanıcı kimliğine kimlik doğrulaması yapılabilir. Sunucusuz SignalR Hizmeti uygulamaları, SignalR Hizmeti bitiş noktası URL'si gibi bir belirteç ve diğer bağlantı bilgilerini elde etmek için "anlaşma" adlı bir HTTP bitiş noktası gerektirir.
+İstemci uygulaması, Azure SignalR hizmetine bağlanmak için geçerli bir erişim belirteci gerektirir. Erişim belirteci, belirli bir kullanıcı KIMLIĞI için anonim veya kimliği doğrulanmış olabilir. Sunucusuz SignalR hizmeti uygulamaları, bir belirteç ve SignalR hizmeti uç noktası URL 'SI gibi diğer bağlantı bilgilerini almak için "Negotiate" adlı bir HTTP uç noktası gerektirir.
 
-Bağlantı bilgileri nesnesini oluşturmak için HTTP tetiklenen Azure İşi'ni ve *SignalRConnectionInfo* giriş bağlamayı kullanın. İşlevin `/negotiate`' de biten bir HTTP rotası olmalıdır.
+Bağlantı bilgileri nesnesini oluşturmak için HTTP ile tetiklenen bir Azure Işlevi ve *Signalrconnectionınfo* giriş bağlaması kullanın. İşlevin ' de `/negotiate`sonlanan bir http yolu olması gerekir.
 
-Müzakere işlevinin nasıl oluşturulacığı hakkında daha fazla bilgi için [ *SignalRConnectionInfo* input bağlayıcı bağışçılıÄ](../azure-functions/functions-bindings-signalr-service-input.md)ına bakın.
+Negotiate işlevinin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [ *Signalrconnectionınfo* giriş bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-input.md).
 
-Kimlik doğrulaması bir belirteç oluşturma hakkında bilgi edinmek [için, Uygulama Hizmeti Kimlik Doğrulamasını Kullanma'ya](#using-app-service-authentication)bakın.
+Kimliği doğrulanmış bir belirteç oluşturma hakkında bilgi edinmek için [App Service kimlik doğrulaması kullanma](#using-app-service-authentication)konusuna bakın.
 
 ### <a name="sending-messages-and-managing-group-membership"></a>İleti gönderme ve grup üyeliğini yönetme
 
-Azure *SignalR* Hizmetine bağlı istemcilere ileti göndermek için SignalR çıkış bağlamayı kullanın. İletileri tüm istemcilere yayınlayabilir veya belirli bir kullanıcı kimliğiyle kimlik doğrulaması yapılan veya belirli bir gruba eklenen bir istemci alt kümesine gönderebilirsiniz.
+Azure SignalR hizmetine bağlı istemcilere ileti göndermek için *SignalR* çıkış bağlamasını kullanın. İletileri tüm istemcilere yayınlayabilirsiniz veya belirli bir kullanıcı KIMLIĞI ile kimliği doğrulanmış veya belirli bir gruba eklenmiş bir istemci alt kümesine gönderebilirsiniz.
 
-Kullanıcılar bir veya daha fazla gruba eklenebilir. Ayrıca, kullanıcıları gruplara/gruplara eklemek veya kaldırmak için *SignalR* çıkış bağlamasını da kullanabilirsiniz.
+Kullanıcılar, bir veya daha fazla gruba eklenebilir. Ayrıca, Grup gruplarına/gruplardan Kullanıcı eklemek veya kaldırmak için *SignalR* çıktı bağlamasını da kullanabilirsiniz.
 
-Daha fazla bilgi için [ *SignalR* çıkış bağlama referansına](../azure-functions/functions-bindings-signalr-service-output.md)bakın.
+Daha fazla bilgi için bkz. [ *SignalR* çıkış bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-output.md).
 
-### <a name="signalr-hubs"></a>Sinyal Merkezi Hub'ları
+### <a name="signalr-hubs"></a>SignalR hub 'Ları
 
-SignalR "hub" kavramına sahiptir. Azure İşlevleri'nden gönderilen her istemci bağlantısı ve her ileti belirli bir hub'a kapsamlıdır. Bağlantılarınızı ve iletilerinizi mantıksal ad alanlarına ayırmak için hub'ları kullanabilirsiniz.
+SignalR 'nin bir "Hub" kavramı vardır. Her istemci bağlantısı ve Azure Işlevlerinden gönderilen her ileti, belirli bir hub 'ın kapsamına alınır. Hub 'ları, bağlantılarınızı ve iletilerinizi mantıksal ad alanlarına ayırmak için bir yol olarak kullanabilirsiniz.
 
-## <a name="client-development"></a>Müşteri geliştirme
+## <a name="client-development"></a>İstemci geliştirme
 
-SignalR istemci uygulamaları, Azure SignalR Hizmeti'ne kolayca bağlanmak ve iletialmak için SignalR istemci SDK'dan birkaç dilden birinde kullanabilir.
+SignalR istemci uygulamaları, Azure SignalR hizmetine kolayca bağlanmak ve ileti almak için çeşitli dillerden birindeki SignalR istemci SDK 'sinden yararlanabilir.
 
-### <a name="configuring-a-client-connection"></a>İstemci bağlantısını yapılandırma
+### <a name="configuring-a-client-connection"></a>İstemci bağlantısı yapılandırma
 
-SignalR Hizmetine bağlanmak için istemcinin aşağıdaki adımlardan oluşan başarılı bir bağlantı anlaşması tamamlaması gerekir:
+SignalR hizmetine bağlanmak için, bir istemcinin aşağıdaki adımlardan oluşan başarılı bir bağlantı görüşmesini tamamlaması gerekir:
 
-1. Geçerli bağlantı bilgilerini elde etmek için yukarıda tartışılan *müzakere* http bitiş noktası için bir istekte bulunun
-1. Hizmet bitiş noktası URL'sini ve *anlaşma* bitiş noktasından elde edilen erişim belirteci'ni kullanarak SignalR Hizmetine bağlanın
+1. Geçerli bağlantı bilgilerini almak için yukarıda ele alınan *Negotiate* HTTP uç noktasına bir istek yapın
+1. Hizmet uç noktası URL 'sini ve *Negotiate* uç noktasından alınan erişim belirtecini kullanarak SignalR hizmetine bağlanma
 
-SignalR istemci SDK'ları zaten anlaşma el sıkışması gerçekleştirmek için gereken mantığı içerir. Müzakere bitiş noktasının URL'sini, `negotiate` segmenti eksi, SDK'nınurl'sine `HubConnectionBuilder`geçirin. JavaScript'te bir örnek aşağıda verilmiştir:
+SignalR istemci SDK 'Ları, anlaşma anlaşmasını gerçekleştirmek için gereken mantığı zaten içeriyor. Negotiate uç noktasının URL 'sini, `negotiate` SEGMENTI, SDK 'nın `HubConnectionBuilder`' ye geçirin. JavaScript 'te bir örnek aşağıda verilmiştir:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -75,37 +75,37 @@ const connection = new signalR.HubConnectionBuilder()
   .build()
 ```
 
-Sözleşmeye göre, SDK URL'ye otomatik olarak eklenir `/negotiate` ve bu url'yi görüşmeye başlamak için kullanır.
+Kural gereği, SDK otomatik olarak URL `/negotiate` 'ye ekler ve anlaşmayı başlatmak için onu kullanır.
 
 > [!NOTE]
-> Bir tarayıcıda JavaScript/TypeScript SDK kullanıyorsanız, İşlev Uygulamanızda [kökenler arası kaynak paylaşımını (CORS) etkinleştirmeniz](#enabling-cors) gerekir.
+> JavaScript/TypeScript SDK bir tarayıcıda kullanıyorsanız, İşlev Uygulaması için [çıkış noktaları arası kaynak paylaşımı 'nı (CORS) etkinleştirmeniz](#enabling-cors) gerekir.
 
-SignalR istemci SDK'nın nasıl kullanılacağı hakkında daha fazla bilgi için dilinizle ilgili belgelere bakın:
+SignalR istemci SDK 'sını kullanma hakkında daha fazla bilgi için, dilinize yönelik belgelere bakın:
 
 * [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
-* [Javascript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
+* [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
 * [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>İstemciden hizmete ileti gönderme
 
-SignalR SDK istemci uygulamalarının bir SignalR hub'ında arka uç mantığını çağırmasına izin vermesine rağmen, Azure İşleriyle SignalR Hizmetini kullandığınızda bu işlevsellik henüz desteklenmez. Azure İşlevlerini çağırmak için HTTP isteklerini kullanın.
+SignalR SDK 'Sı, istemci uygulamalarının bir SignalR hub 'ında arka uç mantığını çağırmasına izin verse de, Azure Işlevleri ile SignalR hizmetini kullandığınızda bu işlevsellik henüz desteklenmez. Azure Işlevleri 'ni çağırmak için HTTP isteklerini kullanın.
 
-## <a name="azure-functions-configuration"></a>Azure Fonksiyonları yapılandırması
+## <a name="azure-functions-configuration"></a>Azure Işlevleri yapılandırması
 
-Azure SinyalR Hizmeti ile tümleşen Azure İşlevi uygulamaları, [sürekli dağıtım,](../azure-functions/functions-continuous-deployment.md) [zip dağıtımı](../azure-functions/deployment-zip-push.md)ve [paketten çalıştırma](../azure-functions/run-functions-from-deployment-package.md)gibi teknikler kullanılarak, herhangi bir tipik Azure İşlevi uygulaması gibi dağıtılabilir.
+Azure SignalR hizmeti ile tümleştirilen Azure Işlevi uygulamaları, [sürekli dağıtım](../azure-functions/functions-continuous-deployment.md), [ZIP dağıtımı](../azure-functions/deployment-zip-push.md)ve [paketten Çalıştır](../azure-functions/run-functions-from-deployment-package.md)gibi teknikler kullanılarak tipik bir Azure işlev uygulaması gibi dağıtılabilir.
 
-Ancak, SignalR Hizmeti bağlamalarını kullanan uygulamalar için birkaç özel husus vardır. İstemci bir tarayıcıda çalışıyorsa, CORS etkinleştirilmelidir. Uygulama kimlik doğrulaması gerektiriyorsa, anlaşma bitiş noktasını App Service Authentication ile tümleştirebilirsiniz.
+Ancak, SignalR hizmeti bağlamalarını kullanan uygulamalar için birkaç özel dikkat edilmesi gerekir. İstemci bir tarayıcıda çalışıyorsa CORS 'nin etkinleştirilmesi gerekir. Uygulama kimlik doğrulaması gerektiriyorsa, Negotiate uç noktasını App Service kimlik doğrulamasıyla tümleştirebilirsiniz.
 
-### <a name="enabling-cors"></a>CORS'u Etkinleştirme
+### <a name="enabling-cors"></a>CORS etkinleştiriliyor
 
-JavaScript/TypeScript istemcisi, bağlantı anlaşmasını başlatmak için anlaşma işlevine HTTP isteklerini yapar. İstemci uygulaması Azure İşlevi uygulamasından farklı bir etki alanında barındırıldığında, İşlev uygulamasında çapraz kaynak paylaşımının (CORS) etkinleştirilmesi gerekir veya tarayıcı istekleri engeller.
+JavaScript/TypeScript istemcisi, bağlantı anlaşmasını başlatmak için Negotiate işlevine HTTP istekleri yapar. İstemci uygulaması, Azure Işlev uygulamasından farklı bir etki alanında barındırılıyorsa, Işlev uygulamasında çıkış noktaları arası kaynak paylaşımı (CORS) etkinleştirilmelidir veya tarayıcı istekleri engeller.
 
-#### <a name="localhost"></a>Localhost
+#### <a name="localhost"></a>E
 
-Yerel bilgisayarınızda İşlev uygulamasını çalıştırırken, CORS'ü etkinleştirmek için `Host` *local.settings.json'a* bir bölüm ekleyebilirsiniz. Bölüme `Host` iki özellik ekleyin:
+Yerel bilgisayarınızda Işlev uygulamasını çalıştırırken CORS 'yi etkinleştirmek için `Host` *yerel. Settings. JSON* öğesine bir bölüm ekleyebilirsiniz. `Host` Bölümünde iki özellik ekleyin:
 
-* `CORS`- istemci uygulamasının kaynağı olan temel URL'yi girin
-* `CORSCredentials`- "Kimlik `true` Bilgileri" isteklerine izin verecek şekilde ayarlayın
+* `CORS`-istemci uygulamanın kaynağı olan temel URL 'YI girin
+* `CORSCredentials`-Bunu `true` "withcredentials" isteklerine izin verecek şekilde ayarlayın
 
 Örnek:
 
@@ -122,24 +122,24 @@ Yerel bilgisayarınızda İşlev uygulamasını çalıştırırken, CORS'ü etki
 }
 ```
 
-#### <a name="cloud---azure-functions-cors"></a>Bulut - Azure İşlerİ CORS
+#### <a name="cloud---azure-functions-cors"></a>Bulut-Azure Işlevleri CORS
 
-Bir Azure İşlevi uygulamasında CORS'i etkinleştirmek için, Azure portalındaki İşlev uygulamanızın *Platform özellikleri* sekmesialtındaki CORS yapılandırma ekranına gidin.
+Azure Işlev uygulamasında CORS 'yi etkinleştirmek için, Azure portal Işlev uygulamanızın *platform özellikleri* SEKMESI altındaki CORS yapılandırma ekranına gidin.
 
 > [!NOTE]
-> CORS yapılandırması henüz Azure İşlevler Linux Tüketim planında kullanıma sunulmadı. CORS'i etkinleştirmek için [Azure API Yönetimi'ni](#cloud---azure-api-management) kullanın.
+> CORS yapılandırması henüz Azure Işlevleri Linux tüketim planında kullanılamıyor. CORS 'yi etkinleştirmek için [Azure API Management](#cloud---azure-api-management) kullanın.
 
-SignalR istemcisinin anlaşma işlevini çağırabilmesi için Access-Control-Allow-Credentials özellikli CORS etkinleştirilmelidir. Etkinleştirmek için onay kutusunu seçin.
+Erişim-denetim-Izin-kimlik bilgileri ile CORS, SignalR istemcisinin Negotiate işlevini çağırması için kimlik bilgilerinin etkinleştirilmesi gerekir. Etkinleştirmek için onay kutusunu işaretleyin.
 
-İzin *Verilen başlangıçlar* bölümünde, web uygulamanızın başlangıç temel URL'sini içeren bir giriş ekleyin.
+*Izin verilen* kaynaklar bölümünde, Web uygulamanızın kaynak temel URL 'sine sahip bir giriş ekleyin.
 
-![CORS'un Yapılandırılması](media/signalr-concept-serverless-development-config/cors-settings.png)
+![CORS 'yi yapılandırma](media/signalr-concept-serverless-development-config/cors-settings.png)
 
-#### <a name="cloud---azure-api-management"></a>Bulut - Azure API Yönetimi
+#### <a name="cloud---azure-api-management"></a>Bulut-Azure API Management
 
-Azure API Yönetimi, varolan arka uç hizmetlerine özellikler ekleyen bir API ağ geçidi sağlar. İşlev uygulamanıza CORS eklemek için kullanabilirsiniz. Bu ödeme başına fiyatlandırma ve aylık ücretsiz hibe ile bir tüketim katmanı sunuyor.
+Azure API Management, mevcut arka uç hizmetlerine yetenekler ekleyen bir API ağ geçidi sağlar. Bunu, işlev uygulamanıza CORS eklemek için kullanabilirsiniz. Bu, eylem başına ödeme fiyatlandırmasına ve aylık ücretsiz erişime sahip bir tüketim katmanı sunar.
 
-[Azure İşlevi uygulamasının](../api-management/import-function-app-as-api.md)nasıl içe aktarılabildiğini öğrenmek için API Yönetimi belgelerine bakın. İçe aktarıladıktan sonra, Access-Control-Allow-Credentials desteğiyle CORS'i etkinleştirmek için gelen bir ilke ekleyebilirsiniz.
+[Azure işlevi uygulamasının nasıl içeri aktarılacağı](../api-management/import-function-app-as-api.md)hakkında bilgi edinmek için API Management belgelerine bakın. İçeri aktarıldıktan sonra, erişim-denetim-Izin verme kimlik bilgileri desteğiyle CORS 'yi etkinleştirmek için bir gelen ilkesi ekleyebilirsiniz.
 
 ```xml
 <cors allow-credentials="true">
@@ -159,17 +159,17 @@ Azure API Yönetimi, varolan arka uç hizmetlerine özellikler ekleyen bir API a
 </cors>
 ```
 
-SignalR istemcilerinizi API Yönetimi URL'sini kullanacak şekilde yapılandırın.
+SignalR istemcilerinizi API Management URL 'sini kullanacak şekilde yapılandırın.
 
-### <a name="using-app-service-authentication"></a>Uygulama Hizmeti Kimlik Doğrulamasını Kullanma
+### <a name="using-app-service-authentication"></a>App Service kimlik doğrulaması kullanma
 
-Azure İşlemeler, Facebook, Twitter, Microsoft Hesabı, Google ve Azure Active Directory gibi popüler sağlayıcıları destekleyen yerleşik kimlik doğrulamaya sahiptir. Bu özellik, kullanıcı kimliğine kimlik doğrulanmış Olan Azure SinyalR Hizmetine bağlantılar oluşturmak için *SignalRConnectionInfo* bağlama ile tümleştirilebilir. Uygulamanız, o kullanıcı kimliğini hedefleyen *SignalR* çıkış bağlamasını kullanarak ileti gönderebilir.
+Azure Işlevleri, Facebook, Twitter, Microsoft hesabı, Google ve Azure Active Directory gibi popüler sağlayıcıları destekleyerek yerleşik kimlik doğrulaması içerir. Bu özellik, bir Kullanıcı KIMLIĞINDE kimlik doğrulaması yapılmış Azure SignalR hizmeti bağlantıları oluşturmak için *Signalrconnectionınfo* bağlamasıyla tümleştirilebilir. Uygulamanız, bu kullanıcı KIMLIĞINI hedefleyen *SignalR* çıkış bağlamasını kullanarak ileti gönderebilir.
 
-Azure portalında, İşlev uygulamanızın *Platform özellikleri* sekmesinde Kimlik *Doğrulama/yetkilendirme* ayarları penceresini açın. Seçtiğiniz bir kimlik sağlayıcısını kullanarak kimlik doğrulamasını yapılandırmak için [Uygulama Hizmeti Kimlik Doğrulaması](../app-service/overview-authentication-authorization.md) için belgeleri izleyin.
+Azure portal, Işlev uygulamanızın *platform özellikleri* sekmesinde *kimlik doğrulama/yetkilendirme* ayarları penceresini açın. Seçtiğiniz kimlik sağlayıcısını kullanarak kimlik doğrulaması yapılandırmak için [App Service kimlik doğrulama](../app-service/overview-authentication-authorization.md) belgelerini izleyin.
 
-Yapılandırıldıktan sonra, kimlik doğrulaması `x-ms-client-principal-name` `x-ms-client-principal-id` http istekleri, sırasıyla kimlik doğrulaması yapılankimliğin kullanıcı adı ve kullanıcı kimliğini içeren üstbilgiler içerir ve üstbilgiler içerir.
+Yapılandırıldıktan sonra kimliği doğrulanmış HTTP istekleri, sırasıyla `x-ms-client-principal-name` kimliği `x-ms-client-principal-id` doğrulanmış kimliğin Kullanıcı adı ve Kullanıcı kimliği bilgilerini içerir.
 
-Bu üstbilgileri *SignalRConnectionInfo* bağlama yapılandırmanızda kimlik doğrulaması bağlantılar oluşturmak için kullanabilirsiniz. Burada `x-ms-client-principal-id` üstbilgi kullanan bir örnek C# müzakere işlevi verilmiştir.
+Kimliği doğrulanmış bağlantılar oluşturmak için, *Signalrconnectionınfo* bağlama yapılandırmanızda bu üst bilgileri kullanabilirsiniz. `x-ms-client-principal-id` Üstbilgiyi kullanan örnek bir C# Negotiate işlevi aşağıda verilmiştir.
 
 ```csharp
 [FunctionName("negotiate")]
@@ -184,7 +184,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-Daha sonra bir SignalR iletisinin `UserId` özelliğini ayarlayarak bu kullanıcıya ileti gönderebilirsiniz.
+Daha sonra, bir SignalR iletisinin `UserId` özelliğini ayarlayarak bu kullanıcıya iletiler gönderebilirsiniz.
 
 ```csharp
 [FunctionName("SendMessage")]
@@ -203,8 +203,8 @@ public static Task SendMessage(
 }
 ```
 
-Diğer diller hakkında bilgi için Azure İşlevleri başvurusu için [Azure Sinyal RHizmeti bağlayıcılarına](../azure-functions/functions-bindings-signalr-service.md) bakın.
+Diğer diller hakkında daha fazla bilgi için bkz. Azure için [Azure SignalR hizmeti bağlamaları](../azure-functions/functions-bindings-signalr-service.md) başvurusu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure İşlevlerini kullanarak sunucusuz SignalR Hizmeti uygulamalarını nasıl geliştirip yapılandırabileceğinizi öğrendiniz. [SignalR Hizmetine genel bakış sayfasındaki](index.yml)hızlı başlangıçlardan veya öğreticilerden birini kullanarak kendiniz bir uygulama oluşturmayı deneyin.
+Bu makalede, Azure Işlevleri 'ni kullanarak sunucusuz SignalR hizmeti uygulamaları geliştirmeyi ve yapılandırmayı öğrendiniz. [SignalR hizmetine genel bakış sayfasında](index.yml)hızlı başlayan veya öğreticilerden birini kullanarak kendiniz bir uygulama oluşturmayı deneyin.

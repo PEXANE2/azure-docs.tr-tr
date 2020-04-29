@@ -6,28 +6,28 @@ ms.date: 09/04/2018
 ms.author: glenga
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 819eed1eb4e32469bf0572a6548f5a2a44091ef0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77279600"
 ---
-Bu tablo, Azure İşlevleri çalışma zamanının ana sürümlerinde desteklenen bağlamaları gösterir:
+Bu tabloda, Azure Işlevleri çalışma zamanının ana sürümlerinde desteklenen bağlamalar gösterilmektedir:
 
 
-| Tür | 1.x | 2.x ve üzeri<sup>1</sup> | Tetikleyici | Giriş | Çıktı |
+| Tür | 'in | 2. x ve üzeri<sup>1</sup> | Tetikleyici | Girdi | Çıktı |
 | ---- | :-: | :-: | :------: | :---: | :----: |
-| [Blob depolama](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
+| [BLOB depolama](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
-| [Etkinlik Hub'ları](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
-| [HTTP & webhooks](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
+| [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
+| [HTTP & Web kancaları](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
 | [IoT Hub](../articles/azure-functions/functions-bindings-event-iot.md)             |✔|✔|✔| |✔|
-| [Microsoft<br/>Graph Excel tabloları](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
-| [Microsoft<br/>Graph OneDrive dosyaları](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
-| [Microsoft<br/>Graph Outlook e-postası](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
-| [Microsoft<br/>Graph etkinlikleri](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
-| [Microsoft<br/>Graph Auth belirteçleri](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
+| [Excel<br/>tablolarını Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
+| [OneDrive<br/>dosyalarını Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
+| [Outlook<br/>e-postası Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
+| [Microsoft Graph<br/>olaylar](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
+| [Microsoft Graph<br/>kimlik doğrulaması belirteçleri](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
 | [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|
 | [Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
 | [Kuyruk depolama](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|
@@ -38,4 +38,4 @@ Bu tablo, Azure İşlevleri çalışma zamanının ana sürümlerinde desteklene
 | [Zamanlayıcı](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
-<sup>1</sup> Sürüm 2.x çalışma süresinden başlayarak, HTTP ve Timer dışındaki tüm bağlamaların kaydedilmesi gerekir. Bkz. [Kayıt bağlama uzantıları.](../articles/azure-functions/functions-bindings-register.md)
+<sup>1</sup> sürüm 2. x çalışma zamanı ile başlayarak, http ve Zamanlayıcı hariç tüm bağlamaların kayıtlı olması gerekir. Bkz. [bağlama uzantılarını kaydetme](../articles/azure-functions/functions-bindings-register.md).

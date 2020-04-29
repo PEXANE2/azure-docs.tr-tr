@@ -10,13 +10,13 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 0c0ab0e62a5d951f0bc0e237f44cf55c5b8e16cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77202105"
 ---
-Blobs yazmak için aşağıdaki türe bağlayabilirsiniz:
+Blob 'ları yazmak için aşağıdaki türlere bağlayabilirsiniz:
 
 * `TextWriter`
 * `out string`
@@ -25,17 +25,17 @@ Blobs yazmak için aşağıdaki türe bağlayabilirsiniz:
 * `Stream`
 * `CloudBlobContainer`<sup>1</sup>
 * `CloudBlobDirectory`
-* `ICloudBlob`<sup>2</sup>
-* `CloudBlockBlob`<sup>2</sup>
-* `CloudPageBlob`<sup>2</sup>
-* `CloudAppendBlob`<sup>2</sup>
+* `ICloudBlob`<sup>iki</sup>
+* `CloudBlockBlob`<sup>iki</sup>
+* `CloudPageBlob`<sup>iki</sup>
+* `CloudAppendBlob`<sup>iki</sup>
 
-<sup>1</sup> `direction` *function.json'da* veya `FileAccess.Read` C# sınıfı kitaplığında "in" bağlamayı gerektirir. Ancak, çalışma zamanının kapsayıcıya blobyükleme gibi yazma işlemleri yapmak için sağladığı kapsayıcı nesnesini kullanabilirsiniz.
+<sup>1</sup> , *function. JSON* `FileAccess.Read` içinde `direction` veya C# sınıf kitaplığında "ın" bağlamasını gerektirir. Ancak, çalışma zamanının blob 'ları kapsayıcıya yükleme gibi yazma işlemleri için sağladığı kapsayıcı nesnesini kullanabilirsiniz.
 
-<sup>2</sup> `direction` *function.json'da* veya `FileAccess.ReadWrite` C# sınıfı kitaplığında "inout" bağlamayı gerektirir.
+<sup>2</sup> , *function. JSON* içinde `FileAccess.ReadWrite` veya `direction` C# sınıf kitaplığında "Inout" bağlamayı gerektirir.
 
-Depolama SDK türlerinden birine bağlanmaya ve bir hata iletisi almaya çalışırsanız, [doğru Depolama SDK sürümüne](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)bir başvurunuz olduğundan emin olun.
+Depolama SDK türlerinden birini bağlamaya çalışırsanız ve bir hata iletisi alırsanız, [doğru depolama SDK sürümüne](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-Async işlevlerinde, parametre `IAsyncCollector` yerine `out` iade değerini kullanın.
+Zaman uyumsuz işlevlerde, dönüş değeri veya `IAsyncCollector` bir `out` parametre yerine kullanın.
 
-`string` Tüm blob içeriği belleğe yüklendiğinden, yalnızca blob boyutu küçükse veya yalnızca gerekirse bağlanma `Byte[]` önerilir. Genellikle, bir `Stream` veya `CloudBlockBlob` tür kullanmak tercih edilir. Daha fazla bilgi için, bu makalenin başlarında [Eşzamanlılık ve bellek kullanımına](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) bakın.
+Veya `Byte[]` ' `string` a bağlama yalnızca BLOB boyutu küçük olduğunda, Blob içeriğinin tamamı belleğe yüklendiği için önerilir. Genellikle, `Stream` veya `CloudBlockBlob` türünde kullanılması tercih edilir. Daha fazla bilgi için bu makalenin önceki kısımlarında yer alarak [Eşzamanlılık ve bellek kullanımı](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) bölümüne bakın.

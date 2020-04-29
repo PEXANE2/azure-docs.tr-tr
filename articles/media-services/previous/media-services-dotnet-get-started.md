@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77566072"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK kullanarak isteğe bağlı içerik göndermeye başlama  
@@ -66,7 +66,7 @@ Modelin tamamını [buradan](https://media.windows.net/API/$metadata?api-version
 Azure Media Services ile çalışırken en sık karşılaşılan senaryolardan biri bit hızı uyarlamalı akış iletmektir. Media Services, bu akış biçimlerinin her birinin önceden paketlenmiş sürümlerini depolamanıza gerek kalmadan, uyarlamalı bit hızı MP4 ile kodlanmış içeriğinizi Media Services tarafından desteklenen akış biçimlerinde (MPEG DASH, HLS, Kesintisiz Akış) tam vaktinde göndermenize olanak tanıyan dinamik paketleme özelliğine sahiptir.
 
 >[!NOTE]
->AMS hesabınız **oluşturulduğunda,** **Durduruldu** durumunda hesabınıza varsayılan akış bitiş noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir.
+>AMS hesabınız oluşturulduğunda hesabınıza **durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir.
 
 Akış uç noktasını başlatmak için aşağıdakileri yapın:
 
@@ -152,11 +152,11 @@ Dosya adını ve yolunu medya dosyanıza göre güncelleştirmeyi unutmayın.
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Yeni varlık oluşturma ve video dosyası yükleme
 
-Media Services’de, dijital dosyalar bir varlığa yüklenir (veya alınır). **Varlık** varlığı video, ses, görüntü, küçük resim koleksiyonları, metin parçaları ve kapalı altyazı dosyaları (ve bu dosyalarla ilgili meta veriler) içerebilir.  Dosyalar yüklendikten sonra, içeriğiniz daha fazla işleme ve akış için bulutta güvenli bir şekilde saklanır. Varlık içindeki dosyalara **Varlık Dosyaları** adı verilir.
+Media Services’de, dijital dosyalar bir varlığa yüklenir (veya alınır). Varlık **varlığı video** , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar karşıya yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır. Varlık içindeki dosyalara **Varlık Dosyaları** adı verilir.
 
 Aşağıda tanımlanan **UploadFile** yöntemi, **CreateFromFile** yöntemini (.NET SDK Uzantılarında tanımlanmıştır) çağırır. **CreateFromFile**, belirtilen kaynak dosyasının yüklendiği yeni bir varlık oluşturur.
 
-**CreateFromFile** yöntemi, aşağıdaki varlık oluşturma seçeneklerinden birini belirtmenize olanak tanıyan **AssetCreationOptions'ı**alır:
+**CreateFromFile** yöntemi, aşağıdaki varlık oluşturma seçeneklerinden birini belirtmenizi sağlayan **AssetCreationOptions**'ı alır:
 
 * **Hiçbiri**: Şifreleme kullanılmaz. Varsayılan değer budur. Bu seçeneği kullandığınızda, içeriğinizin aktarım sırasında ve depolama alanında beklerken korunmadığını unutmayın.
   Aşamalı indirme kullanarak bir MP4 iletmeyi planlıyorsanız bu seçeneği kullanın.

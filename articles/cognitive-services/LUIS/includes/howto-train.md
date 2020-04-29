@@ -11,17 +11,17 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 636669ee4284d218d5ac2c6e2e7cdb37b00b3a5b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77279472"
 ---
 1. LUIS web sitesinin sağ üst kısmından **Train** (Eğitim) düğmesini seçin.
 
     ![Train (Eğitim) düğmesi](../media/train-button-preview.png)
 
-2. Başarıyı onaylayan durumu gördüğünüzde eğitim tamamlanır.
+2. Başarıyı onaylayan durumu gördüğünüzde eğitim tamamlanmıştır.
 
     > [!Tip]
-    > **Bildirimler** sağ üst gezintide kullanılabilir ve bir geçmiş içerir.
+    > **Bildirimler** sağ üst gezinti bölmesinde bulunur ve bir geçmişi içerir.

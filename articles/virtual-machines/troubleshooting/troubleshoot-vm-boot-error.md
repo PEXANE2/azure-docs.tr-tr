@@ -1,6 +1,6 @@
 ---
-title: Linux VM botları Grub Rescue için
-description: Sanal makine bir kurtarma konsoluna girdiği için sanal makine önyükleme de başarısız oldu
+title: Linux VM, grub kurtarma için önyüklenir
+description: Sanal makine bir kurtarma konsolu girdiği için sanal makine önyükleme yapamadı
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -14,59 +14,59 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77561958"
 ---
-# <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM botları Grub Rescue için
+# <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM, grub kurtarma için önyüklenir
 
-Sanal Makinenizin (VM) bir kurtarma konsoluna girdiğini belirledik. Sorun, Linux VM'nizin çekirdek yükseltmesi gibi son zamanlarda uygulanan çekirdek değişiklikleri olduğunda ve önyükleme işlemi sırasında çekirdek hataları nedeniyle artık düzgün başlatılamadığında sorun ortaya çıkar. Önyükleme işlemi sırasında, önyükleme yükleyicisi Linux çekirdeğini bulmaya ve önyükleme denetimini ona teslim etmeye çalıştığında, teslim başarısız olduğunda VM bir kurtarma konsoluna girer.
+Sanal makinenize (VM) bir kurtarma konsolu girdiğinizi belirledik. Bu sorun, Linux VM 'niz çekirdek yükseltmesi gibi son zamanlarda uygulanan çekirdek değişiklikleri olduğunda ve önyükleme işlemi sırasında çekirdek hataları nedeniyle artık düzgün şekilde başlatılamıyorsa oluşur. Önyükleme işlemi sırasında, önyükleme yükleyicisi Linux çekirdeğini bulmaya çalışır ve önyükleme denetimini devre dışı bırakır. iletim başarısız olduğunda VM bir kurtarma konsolu girer.
 
-Gelecekte bir VM'ye bağlanamayacağınızı fark ederseniz, Azure portalındaki önyükleme tanılama bıçağını kullanarak VM'nizin ekran görüntüsünü görüntüleyebilirsiniz. Bu görüntü sorunu tanılamanıza ve nedeninin benzer bir önyükleme hatası olup olmadığını belirlemenize yardımcı olabilir.
+Gelecekte bir VM 'ye bağlanamadıysanız, Azure portal için önyükleme tanılama dikey penceresini kullanarak sanal makinenizin ekran görüntüsünü görüntüleyebilirsiniz. Bu görüntü sorunu tanılamanıza ve nedeninin benzer bir önyükleme hatası olup olmadığını belirlemenize yardımcı olabilir.
 
 ## <a name="recommended-steps"></a>Önerilen adımlar
 
 Aldığınız hataya bağlı olarak aşağıdaki azaltma adımlarını izleyin:
 
-### <a name="error---unknown-filesystem"></a>Hata - Bilinmeyen dosya sistemi
+### <a name="error---unknown-filesystem"></a>Hata-bilinmeyen dosya sistemi
 
-* Hata **Bilinmiyor dosya sistemi**alıyorsanız, bu hata önyükleme bölümü üzerinde bir dosya sistemi bozulması veya yanlış çekirdek yapılandırma kaynaklanabilir.
+* **Bilinmeyen**hata dosyalarını alıyorsanız, bu hata önyükleme bölümünde bir dosya sistemi Bozulması veya yanlış bir çekirdek yapılandırması elde edebilir.
 
-   * Dosya sistemi sorunları için, makalelinux kurtarma adımları [izleyin: Dosya sistemi hataları (fsck, inodes) nedeniyle Linux VM SSH olamaz.](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)
-   * Çekirdek sorunları için, makalelinux Kurtarma adımları [izleyin: El ile çekirdek sorunları ile ilgili olmayan önyükleme sorunları giderme,](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)veya [Linux Kurtarma: Chroot kullanarak Çekirdek sorunları ile ilgili olmayan önyükleme sorunları giderme](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
+   * Dosya sistemi sorunları için [Linux Kurtarma: dosya sistemi hataları nedeniyle LINUX VM 'ye SSH (fsck, ınomdes)](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)makalesindeki adımları izleyin.
+   * Çekirdek sorunları için Linux Kurtarma makalesindeki adımları izleyin [: çekirdek sorunları ile ilgili önyükleme olmayan sorunları el ile düzeltme](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)veya [Linux Kurtarma: chroot kullanarak çekirdek sorunlarıyla ilgili önyükleme dışı sorunları çözme](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
    
-### <a name="error---file-not-found"></a>Hata - Dosya bulunamadı
+### <a name="error---file-not-found"></a>Hata-dosya bulunamadı
 
-* **Hata hata 15 alıyorsanız: Dosya bulunamadı veya ilk RAM disk** veya **initrd/initramfs dosyası bulunamadı,** aşağıdaki adımları izleyin.
+* Hata 15 hata alıyorsanız **: dosya bulunamadı veya Ilk RAM diski** ya da **ınitrd/ınitramfs dosyası bulunamadı**, aşağıdaki adımları izleyin.
 
-    * Eksik dosya `/boot/grub2/grub.cfg` için `initrd/initramfs` veya aşağıdaki işlem ile devam edin:
+    * Eksik dosya `/boot/grub2/grub.cfg` için aşağıdaki işleme `initrd/initramfs` devam edin:
 
-    1. Var `/etc/default/grub` olduğundan ve doğru/istenilen ayarlara sahip olduğundan emin olun. Varsayılan ayarların hangisi olduğunu bilmiyorsanız, çalışan bir VM ile kontrol edebilirsiniz.
+    1. Var `/etc/default/grub` olduğundan ve doğru/istenen ayarlara sahip olduğundan emin olun. Varsayılan ayarları olduğunu bilmiyorsanız, çalışan bir VM ile kontrol edebilirsiniz.
 
-    2. Ardından, yapılandırmasını yeniden oluşturmak için aşağıdaki komutu çalıştırın:`grub2-mkconfig -o /boot/grub2/grub.cfg`
+    2. Sonra, yapılandırmasını yeniden oluşturmak için aşağıdaki komutu çalıştırın:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * Eksik `/boot/grub/menu.lst`dosya ise, bu hata eski işletim sistemi sürümleri için **(RHEL 6.x**, **Centos 6.x** ve **Ubuntu 14.04**) böylece komutları farklı olabilir. Doğru komutların sağlandığından emin olmak için eski bir sunucuyu döndürmeniz ve test etmeniz gerekir.
+   * `/boot/grub/menu.lst`Eksik dosya varsa, bu hata eski işletim sistemi sürümleri (**RHEL 6. x**, **CentOS 6. x** ve **Ubuntu 14,04**) için, komutların farklı olması için kullanılır. Doğru komutların sağlandığından emin olmak için, eski bir sunucu ve test etmeniz gerekir.
 
-### <a name="error---no-such-partition"></a>Hata - Böyle bir bölüm yok
+### <a name="error---no-such-partition"></a>Hata-böyle bir bölüm yok
 
-* Hata alıyorsanız Böyle **bir bölüm yok**, [Case Scenario bakın: "böyle bir bölüm" hata işletim sistemi sürücüsü genişletmeye çalıştıktan sonra VM başlatmak için çalışırken .](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/)
+* **Böyle bir bölüm olmadığında**hata alıyorsanız, [işletim sistemi sürücüsünü GENIŞLETMEYE çalıştıktan sonra VM başlatılmaya çalışılırken "böyle bir bölüm yok" hatası](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/)bölümüne bakın.
 
-### <a name="error---grubcfg-file-not-found"></a>Hata - grub.cfg dosyası bulunamadı
+### <a name="error---grubcfg-file-not-found"></a>Hata-grub. cfg dosyası bulunamadı
 
-* Hata **/boot/grub2/grub.cfg dosyası bulunamadı**alıyorsanız, aşağıdaki adımları izleyin.
+* **/Boot/GRUB2/grub.cfg dosyası bulunamadı**hatasını alıyorsanız aşağıdaki adımları izleyin.
 
-    * Eksik dosya `/boot/grub2/grub.cfg` için `initrd/initramfs` veya aşağıdaki işlem ile devam edin:
+    * Eksik dosya `/boot/grub2/grub.cfg` için aşağıdaki işleme `initrd/initramfs` devam edin:
 
-    1. Var `/etc/default/grub` olduğundan ve doğru/istenilen ayarlara sahip olduğundan emin olun. Varsayılan ayarların hangisi olduğunu bilmiyorsanız, çalışan bir VM ile kontrol edebilirsiniz.
+    1. Var `/etc/default/grub` olduğundan ve doğru/istenen ayarlara sahip olduğundan emin olun. Varsayılan ayarları olduğunu bilmiyorsanız, çalışan bir VM ile kontrol edebilirsiniz.
 
-    2. Ardından, yapılandırmasını yeniden oluşturmak için `grub2-mkconfig -o /boot/grub2/grub.cfg`aşağıdaki komutu çalıştırın: .
+    2. Sonra, yapılandırmasını yeniden oluşturmak için aşağıdaki komutu çalıştırın: `grub2-mkconfig -o /boot/grub2/grub.cfg`.
 
-   * Eksik `/boot/grub/menu.lst`dosya ise, bu hata eski işletim sistemi sürümleri için **(RHEL 6.x**, **Centos 6.x** ve **Ubuntu 14.04**) böylece komutları erteleyebilir. Eski bir sunucuyu döndürün ve doğru komutların sağlandığından emin olmak için onu test edin.
+   * `/boot/grub/menu.lst`Eksik dosya varsa, bu hata eski işletim sistemi sürümleri Için (**RHEL 6. x**, **CentOS 6. x** ve **Ubuntu 14,04**), böylece komutların ertelenmesi gerekir. Eski bir sunucu başlatın ve doğru komutların sağlandığından emin olmak için test edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Sanal Makine Aracısı'na genel bakış](../extensions/agent-windows.md)
+* [Azure sanal makine aracısına genel bakış](../extensions/agent-windows.md)
 * [Windows için sanal makine uzantıları ve özellikleri](../extensions/features-windows.md)
 

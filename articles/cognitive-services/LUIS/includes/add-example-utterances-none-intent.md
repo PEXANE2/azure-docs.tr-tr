@@ -11,25 +11,25 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.author: diberry
 ms.openlocfilehash: 956aa308bf1cb3736c491031239661ec6b295ddb
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77279653"
 ---
-İstemci uygulaması, bir söyleyiş anlamlı veya uygulama için uygun olup olmadığını bilmek gerekir. Bir sözcük istemci uygulaması tarafından yanıtlanması gerekip gerekmeden karar vermek için oluşturma işleminin bir parçası olarak her uygulamaya **Yok** amacı eklenir.
+İstemci uygulamanın, uygulamanın anlamlı veya uygulama için uygun olup olmadığını bilmeleri gerekir. Oluşturma işleminin bir parçası olarak, istemci uygulama tarafından yanıtlanmaması gerekip gerekmediğini tespit etmek için **hiçbiri** amacı her uygulamaya eklenir.
 
-LUIS bir söz için **Yok** niyetini döndürürse, istemci uygulamanız kullanıcının konuşmayı sonlandırmak veya konuşmaya devam etmek için daha fazla yol tarifi vermek isteyip istemediğini sorabilir.
+LUSıS, utterance için **hiçbiri** amacını döndürürse, istemci uygulamanız kullanıcının konuşmayı sonlandırmasını isteyip istemediğini veya konuşmaya devam etmek için daha fazla yol vermesini ister.
 
-**Yok** niyetini boş bırakırsanız, konu etki alanı dışında tahmin edilmesi gereken bir söyleyiş varolan konu etki alanı niyetlerinden birinde tahmin edilir. Sonuç olarak, sohbet botu gibi istemci uygulaması, yanlış bir tahmine dayalı olarak yanlış işlemler gerçekleştirecektir.
+**Hiçbiri** hedefini boş bırakırsanız, konu etki alanı dışında tahmin edilecek bir söylenişi, mevcut konu etki alanı amaçlarınında tahmin edilir. Sonuç olarak, bir sohbet bot gibi istemci uygulamasının yanlış bir tahmine göre hatalı işlemler gerçekleştirmesi gerekir.
 
 1. Sol panelden **Intents** (Amaçlar) öğesini seçin.
 
-1. **None** (Yok) amacını seçin. Kullanıcınızın girebileceği ancak Pizza sipariş uygulamanızla ilgili olmayan üç kelime ekleyin:
+1. **None** (Yok) amacını seçin. Kullanıcılarınızın girebileceği ancak pizza sıralama uygulamanız ile ilgili olmayan üç tür ekleme:
 
-    |`None`örnek söz|
+    |`None`örnek söyleyceler|
     |--|
     |`Barking dogs are annoying`|
     |`Penguins in the ocean`|
 
-    Bu örnekler, konu etki alanınızda beklediğiniz `pizza`kelimeleri `cheese` `crust`, `pickup` `deliver`, , .
+    Bu `pizza`örnekler `cheese` `crust` `pickup` ,,,,,,,,,,,,,,,,,,, `deliver`

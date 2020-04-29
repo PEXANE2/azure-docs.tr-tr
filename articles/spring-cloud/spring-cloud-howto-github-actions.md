@@ -1,27 +1,27 @@
 ---
-title: GitHub Eylemleri ile Azure İlkbahar Bulut CI/CD
-description: GitHub Eylemleri ile Azure Bahar Bulutu için CI/CD iş akışı oluşturma
+title: GitHub eylemleri ile Azure yay bulut CI/CD
+description: GitHub eylemleriyle Azure Spring bulutu için CI/CD iş akışını oluşturma
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77538473"
 ---
-# <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub Eylemleri ile Azure İlkbahar Bulut CI/CD
+# <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub eylemleri ile Azure yay bulut CI/CD
 
-GitHub Eylemleri, otomatik yazılım geliştirme yaşam döngüsü iş akışını destekler. Azure Bahar Bulutu için GitHub Eylemleri ile Azure'u oluşturmak, test etmek, paketlemek, serbest bırakmak ve Azure'a dağıtmak için deponuzda iş akışları oluşturabilirsiniz. 
+GitHub eylemleri otomatik yazılım geliştirme yaşam döngüsü iş akışını destekler. Azure Spring Cloud için GitHub eylemleri sayesinde deponuzda oluşturmak, test etmek, paketlemek, yayınlamak ve Azure 'a dağıtmak için iş akışları oluşturabilirsiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu örnek, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerektirir.
 
-## <a name="set-up-github-repository-and-authenticate"></a>GitHub deposunu ayarlama ve kimlik doğrulaması
-Azure oturum açma eylemini yetkilendirmek için bir Azure hizmet ilkesi kimlik bilgisine ihtiyacınız var. Azure kimlik bilgisi almak için yerel makinenizde aşağıdaki komutları uygulayın:
+## <a name="set-up-github-repository-and-authenticate"></a>GitHub deposunu ayarlama ve kimlik doğrulama
+Azure oturum açma eylemini yetkilendirmek için bir Azure hizmet asıl kimlik bilgisine ihtiyacınız vardır. Azure kimlik bilgilerini almak için yerel makinenizde aşağıdaki komutları yürütün:
 ```
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
@@ -30,7 +30,7 @@ Belirli bir kaynak grubuna erişmek için kapsamı azaltabilirsiniz:
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
-Komut bir JSON nesnesi çıktı olmalıdır:
+Komut bir JSON nesnesinin çıktısını almalıdır:
 ```JSON
 {
     "clientId": "<GUID>",
@@ -41,18 +41,18 @@ Komut bir JSON nesnesi çıktı olmalıdır:
 }
 ```
 
-Bu örnek, GitHub'daki [Piggy Metrics](https://github.com/Azure-Samples/piggymetrics) örneğini kullanır.  Çatal örneği, GitHub deposu sayfasını açın ve **Ayarlar** sekmesini **Secrets** tıklatın. **Add a new secret**
+Bu örnek GitHub 'da [Piggy ölçümler](https://github.com/Azure-Samples/piggymetrics) örneğini kullanır.  Örnek, GitHub deposu sayfasını açın ve **Ayarlar** sekmesi ' ne tıklayın. **gizlilikler** menüsünü açın ve **Yeni bir parola Ekle**' ye tıklayın:
 
- ![Yeni sır ekleme](./media/github-actions/actions1.png)
+ ![Yeni gizli dizi Ekle](./media/github-actions/actions1.png)
 
-Gizli adı `AZURE_CREDENTIALS` ve değerini *GitHub deponuzu ayarlayın ve kimlik doğrulamasını ayarlayın*başlığı altında bulduğunuz JSON dizesine ayarlayın.
+Gizli adını `AZURE_CREDENTIALS` ve değerini, *GitHub deponuzu ayarlama ve kimlik doğrulama*altında bulduğunuz JSON dizesine ayarlayın.
 
  ![Gizli verileri ayarlama](./media/github-actions/actions2.png)
 
-Ayrıca, [GitHub Eylemlerinde Key Vault ile Azure Baharını Authenticate Azure Spring'de](./spring-cloud-github-actions-key-vault.md)açıklandığı gibi, GitHub'daki Key Vault eylemlerinden De Vesa'dan Azure giriş kimlik belgesini de alabilirsiniz.
+GitHub [eylemlerinde Key Vault Ile Azure Spring kimlik doğrulama konusunda](./spring-cloud-github-actions-key-vault.md)açıklandığı gibi, Azure oturum açma kimlik bilgilerini GitHub eylemleriyle Key Vault de alabilirsiniz.
 
-## <a name="provision-service-instance"></a>Sağlama hizmeti örneği
-Azure İlkbahar Bulutu hizmet örneğinizi sağlamak için Azure CLI'yi kullanarak aşağıdaki komutları çalıştırın.
+## <a name="provision-service-instance"></a>Hizmet örneği sağlama
+Azure Spring Cloud Service örneğinizi sağlamak için Azure CLı 'yı kullanarak aşağıdaki komutları çalıştırın.
 ```
 az extension add --name spring-cloud
 az group create --location eastus --name <resource group name>
@@ -62,10 +62,10 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ## <a name="build-the-workflow"></a>İş akışını oluşturma
 İş akışı aşağıdaki seçenekler kullanılarak tanımlanır.
 
-### <a name="prepare-for-deployment-with-azure-cli"></a>Azure CLI ile dağıtıma hazırlanın
-Komut `az spring-cloud app create` şu anda idempotent değil.  Bu iş akışını mevcut Azure İlkbahar Bulutu uygulamalarında ve örneklerinde öneririz.
+### <a name="prepare-for-deployment-with-azure-cli"></a>Azure CLı ile dağıtıma hazırlanma
+Komut `az spring-cloud app create` Şu anda ıdempotent değil.  Bu iş akışını mevcut Azure Spring Cloud Apps ve örnekleri üzerinde öneririz.
 
-Hazırlık için aşağıdaki Azure CLI komutlarını kullanın:
+Hazırlama için aşağıdaki Azure CLı komutlarını kullanın:
 ```
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
@@ -74,8 +74,8 @@ az spring-cloud app create --name auth-service
 az spring-cloud app create --name account-service
 ```
 
-### <a name="deploy-with-azure-cli-directly"></a>Azure CLI ile doğrudan dağıtma
-Dosyayı `.github/workflow/main.yml` depoda oluşturun:
+### <a name="deploy-with-azure-cli-directly"></a>Doğrudan Azure CLı ile dağıtma
+`.github/workflow/main.yml` Dosyayı depoda oluşturun:
 
 ```
 name: AzureSpringCloud
@@ -117,13 +117,13 @@ jobs:
         az spring-cloud app deploy -n account-service --jar-path ${{ github.workspace }}/account-service/target/account-service.jar
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
-### <a name="deploy-with-azure-cli-action"></a>Azure CLI eylemiyle dağıtma
-Az `run` komutu Azure CLI'nin en son sürümünü kullanır. Kesme değişiklikleri varsa, Azure CLI'nin azure/CLI `action`ile belirli bir sürümünü de kullanabilirsiniz. 
+### <a name="deploy-with-azure-cli-action"></a>Azure CLı eylemiyle Dağıtma eylemi
+Az `run` komut en son Azure CLI sürümünü kullanacaktır. Büyük değişiklikler varsa, Azure/CLı `action`ile belirli BIR Azure CLI sürümünü de kullanabilirsiniz. 
 
 > [!Note] 
-> Bu komut yeni bir kapsayıcıda `env` çalışır, bu nedenle çalışmaz ve çapraz eylem dosyası erişimi nde ek kısıtlamalar olabilir.
+> Bu komut yeni bir kapsayıcıda çalışacak, bu nedenle `env` çalışmayacak ve çapraz işlem dosya erişimi ek kısıtlamalara sahip olabilir.
 
-Depoda .github/iş akışı/main.yml dosyasını oluşturun:
+Depoda. GitHub/Workflow/Main. yml dosyasını oluşturun:
 ```
 name: AzureSpringCloud
 on: push
@@ -162,8 +162,8 @@ jobs:
           az spring-cloud app deploy -n auth-service --jar-path $GITHUB_WORKSPACE/auth-service/target/auth-service.jar
 ```
 
-## <a name="deploy-with-maven-plugin"></a>Maven Plugin ile dağıtın
-Başka bir seçenek, Kavanoz'u dağıtmak ve Uygulama ayarlarını güncellemek için [Maven](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven) Eklentisi'ni kullanmaktır. Komut `mvn azure-spring-cloud:deploy` idempotent ve gerekirse otomatik olarak Apps oluşturur. İlgili uygulamaları önceden oluşturmanız gerekmez.
+## <a name="deploy-with-maven-plugin"></a>Maven eklentisi ile dağıtma
+Diğer bir seçenek de Jar 'yi dağıtmak ve uygulama ayarlarını güncelleştirmek için [Maven eklentisini](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-maven) kullanmaktır. Komut `mvn azure-spring-cloud:deploy` ıdempotent ' dir ve gerekirse otomatik olarak uygulamalar oluşturur. İlgili uygulamaları önceden oluşturmanız gerekmez.
 
 ```
 name: AzureSpringCloud
@@ -198,17 +198,17 @@ jobs:
 ```
 
 ## <a name="run-the-workflow"></a>İş akışını çalıştırma
-GitHub **Eylemleri,** GitHub'a `.github/workflow/main.yml` ittikten sonra otomatik olarak etkinleştirilmelidir. Yeni bir commit ittiğiniz zaman eylem tetiklenir. Bu dosyayı tarayıcıda oluşturursanız, eyleminiz zaten çalışır.
+GitHub **Actions** 'a gönderim `.github/workflow/main.yml` yapıldıktan sonra GitHub eylemleri otomatik olarak etkinleştirilmelidir. Yeni bir işleme gönderdiğinizde bu eylem tetiklenir. Bu dosyayı tarayıcıda oluşturursanız, eyleminiz zaten çalıştırılmış olmalıdır.
 
-Eylemin etkinleştirildiğini doğrulamak için GitHub deposu **sayfasındaki Eylemler** sekmesini tıklatın:
+Eylemin etkinleştirildiğini doğrulamak için GitHub Deposu sayfasında **Eylemler** sekmesi ' ne tıklayın:
 
- ![Eylemi etkinleştirme özelliğini doğrula](./media/github-actions/actions3.png)
+ ![Etkin doğrulama eylemi](./media/github-actions/actions3.png)
 
-Örneğin, eyleminiz hatalı çalışıyorsa, Örneğin Azure kimlik belgesini ayarlamadıysanız, hatayı düzelttikten sonra denetimleri yeniden çalıştırabilirsiniz. GitHub deposu **sayfasında, Eylemler'i**tıklatın, belirli iş akışı görevini seçin ve sonra denetimleri yeniden çalıştırmak için **Yeniden Çalıştır denetimleri** düğmesini tıklatın:
+Eylemleriniz hatada çalışıyorsa, örneğin, Azure kimlik bilgisini ayarlamadıysanız, hatayı düzelttikten sonra denetimleri yeniden çalıştırabilirsiniz. GitHub Deposu sayfasında, **Eylemler**' e tıklayın, belirli bir iş akışı görevini seçin ve **sonra denetimleri yeniden çalıştır düğmesine tıklayarak** denetimleri yeniden çalıştırın:
 
- ![Yeniden çalıştırma denetimleri](./media/github-actions/actions4.png)
+ ![Denetimleri yeniden çalıştır](./media/github-actions/actions4.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Spring Cloud GitHub eylemleri için Anahtar Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory hizmet ilkeleri](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
-* [Azure için GitHub Eylemleri](https://github.com/Azure/actions/)
+* [Spring Cloud GitHub eylemleri için Key Vault](./spring-cloud-github-actions-key-vault.md)
+* [Hizmet sorumlularını Azure Active Directory](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
+* [Azure için GitHub eylemleri](https://github.com/Azure/actions/)

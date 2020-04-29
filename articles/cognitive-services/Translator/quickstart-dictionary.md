@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: İki dilli sözlük ile sözcüklere bakın - Çevirmen Metin API'
+title: "Hızlı başlangıç: çift dilli sözlük ile sözcük arama-Translator Metin Çevirisi API'si"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Çevirmen Metin API'sini kullanarak bir dönem için alternatif çevirileri nasıl elde edeceğinizi ve bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
+description: Bu hızlı başlangıçta, bir terim için alternatif çevirileri nasıl alabileceğinizi ve ayrıca Translator Metin Çevirisi API'si kullanarak bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525167"
 ---
-# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Quickstart: İki dilli sözlük ile sözcükleri arayın
+# <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Hızlı başlangıç: çift dilli sözlükte sözcükleri arama
 
-Bu hızlı başlangıçta, Çevirmen Metin API'sini kullanarak bir dönem için alternatif çevirileri nasıl elde edeceğinizi ve bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
+Bu hızlı başlangıçta, bir terim için alternatif çevirileri nasıl alabileceğinizi ve ayrıca Translator Metin Çevirisi API'si kullanarak bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
 
 Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 

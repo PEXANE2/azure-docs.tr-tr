@@ -1,6 +1,6 @@
 ---
-title: Tanılama günlüklerini ayarlama - Azure Etkinlik Hub | Microsoft Dokümanlar
-description: Azure'daki etkinlik merkezleri için etkinlik günlüklerini ve tanılama günlüklerini nasıl ayarlayabilirsiniz öğrenin.
+title: Tanılama günlüklerini ayarlama-Azure Olay Hub 'ı | Microsoft Docs
+description: Azure 'da Olay Hub 'ları için etkinlik günlüklerini ve tanılama günlüklerini ayarlamayı öğrenin.
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -17,76 +17,76 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162319"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure olay hub'ı için tanılama günlüklerini ayarlama
 
-Azure Etkinlik Hub'ları için iki tür günlük görüntüleyebilirsiniz:
+Azure Event Hubs için iki tür günlük görüntüleyebilirsiniz:
 
-* **[Etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Bu günlüklerde bir işte gerçekleştirilen işlemler hakkında bilgi vardır. Günlükler her zaman etkinleştirilir.
-* **[Tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Bir iş ile olur her şeyi daha zengin bir görünüm için tanılama günlükleri yapılandırabilirsiniz. Tanılama günlükleri, iş çalışırken gerçekleşen güncelleştirmeler ve etkinlikler de dahil olmak üzere, iş silinene kadar olan bitene kadar olan etkinlikleri kapsar.
+* **[Etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Bu günlüklerde, bir işte gerçekleştirilen işlemlerle ilgili bilgiler vardır. Günlükler her zaman etkindir.
+* **[Tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: bir işle gerçekleşen her şeyin daha zengin bir görünümü için tanılama günlüklerini yapılandırabilirsiniz. Tanılama günlükleri işi çalışırken gerçekleşen güncelleştirmeler ve etkinlikler dahil olmak üzere işin oluşturulduğu zamandan itibaren etkinlikleri kapsar.
 
 ## <a name="enable-diagnostic-logs"></a>Tanılama günlüklerini etkinleştirme
 
-Tanılama günlükleri varsayılan olarak devre dışı bırakılır. Tanılama günlüklerini etkinleştirmek için aşağıdaki adımları izleyin:
+Tanılama günlükleri varsayılan olarak devre dışıdır. Tanılama günlüklerini etkinleştirmek için şu adımları izleyin:
 
-1.  Azure [portalında](https://portal.azure.com), **İzleme + Yönetim**altında **Tanılama günlüklerini**tıklatın.
+1.  [Azure Portal](https://portal.azure.com), **izleme ve yönetim**altında **tanılama günlükleri**' ne tıklayın.
 
     ![Tanılama günlüklerine bölme gezintisi](./media/event-hubs-diagnostic-logs/image1.png)
 
-2.  İzlemek istediğiniz kaynağı tıklatın.
+2.  İzlemek istediğiniz kaynağa tıklayın.
 
 3.  **Tanılamayı aç**’a tıklayın.
 
-    ![Tanılama günlüklerini açma](./media/event-hubs-diagnostic-logs/image2.png)
+    ![Tanılama günlüklerini aç](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.  **Durum**için , **On'a**tıklayın.
+4.  **Durum**Için, **Açık**' a tıklayın.
 
     ![Tanılama günlüklerinin durumunu değiştirme](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  İstediğinize arşiv hedefini ayarlayın; örneğin, bir depolama hesabı, bir olay merkezi veya Azure Monitor günlükleri.
+5.  İstediğiniz arşiv hedefini ayarlayın; Örneğin, bir depolama hesabı, Olay Hub 'ı veya Azure Izleyici günlükleri.
 
 6.  Yeni tanılama ayarlarını kaydedin.
 
-Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, günlükler yapılandırılan arşiv hedefinde, **Tanılama günlükleri** bölmesinde görünür.
+Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, **tanılama günlükleri** bölmesinde Günlükler yapılandırılan arşiv hedefinde görüntülenir.
 
-Tanılamayı yapılandırma hakkında daha fazla bilgi için [Azure tanı günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md)alameti dir.
+Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure tanılama günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Tanılama günlükleri kategorileri
 
-Olay Hub'ları iki kategoriiçin tanıgünlüklerini yakalar:
+Event Hubs iki kategori için tanılama günlüklerini yakalar:
 
-* **Arşiv Günlükleri**: Olay Hub'ları arşivleri ile ilgili günlükler, özellikle arşiv hataları ile ilgili günlükler.
-* **Operasyonel Günlükler:** Olay Hub'ları işlemleri sırasında neler olduğu hakkında bilgi, özellikle olay merkezi oluşturma, kullanılan kaynaklar ve operasyonun durumu da dahil olmak üzere işlem türü.
+* **Arşiv günlükleri**: Arşiv hatalarıyla ilgili olarak, özellikle de Event Hubs arşivleri ile ilgili Günlükler.
+* **Işletimsel Günlükler**: Olay Hub 'ı oluşturma, kullanılan kaynaklar ve işlemin durumu dahil olmak üzere Event Hubs işlemleri sırasında neler olduğunu, özellikle de işlem türünü içeren bilgiler.
 
-## <a name="diagnostic-logs-schema"></a>Tanılama günlükleri şema
+## <a name="diagnostic-logs-schema"></a>Tanılama günlükleri şeması
 
-Tüm günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her giriş, aşağıdaki bölümlerde açıklanan biçimi kullanan dize alanları vardır.
+Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki bölümlerde açıklanan biçimi kullanan dize alanları vardır.
 
-### <a name="archive-logs-schema"></a>Arşiv günlükleri şema
+### <a name="archive-logs-schema"></a>Arşiv günlükleri şeması
 
 Arşiv günlüğü JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
 Adı | Açıklama
 ------- | -------
-Görevadı | Başarısız olan görevin açıklaması.
-Activityıd | İç kimlik, izleme için kullanılır.
-trackingId | İç kimlik, izleme için kullanılır.
-resourceId | Azure Kaynak Yöneticisi kaynak kimliği.
-eventHub | Olay merkezi tam adı (ad alanı adı içerir).
-Partitionıd | Olay Hub bölümüne yazılıyor.
-arşivAdım | ArşivFlushWriter
-startTime | Başarısızlık başlangıç zamanı.
-Başarısızlık | Hatanın kaç kez oluştuğu.
-süreInSeconds | Başarısızlık süresi.
+Silinecek | Başarısız olan görevin açıklaması.
+Etkinlik kimliği | İzleme için kullanılan iç KIMLIK.
+Trackingıd | İzleme için kullanılan iç KIMLIK.
+resourceId | Azure Resource Manager kaynak KIMLIĞI.
+eventHub | Olay Hub 'ı tam adı (ad alanı adını içerir).
+PartitionID | Yazılan olay hub 'ı bölümü.
+archiveStep | ArchiveFlushWriter
+startTime | Hata başlangıç zamanı.
+kesil | Hatanın oluşma sayısı.
+durationInSeconds | Başarısızlık süresi.
 message | Hata iletisi.
-category | ArşivGünlükleri
+category | ArchiveLogs
 
-Aşağıdaki kod bir arşiv günlüğü JSON dize örneğidir:
+Aşağıdaki kod arşiv günlüğü JSON dizesinin bir örneğidir:
 
 ```json
 {
@@ -105,23 +105,23 @@ Aşağıdaki kod bir arşiv günlüğü JSON dize örneğidir:
 }
 ```
 
-### <a name="operational-logs-schema"></a>Operasyonel günlükler şema
+### <a name="operational-logs-schema"></a>İşletimsel Günlükler şeması
 
-Operasyonel günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
+İşletimsel günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
 Adı | Açıklama
 ------- | -------
-Activityıd | Dahili kimlik, amacı izlemek için kullanılır.
+Etkinlik kimliği | Amacı izlemek için kullanılan iç KIMLIK.
 EventName | İşlem adı.  
-resourceId | Azure Kaynak Yöneticisi kaynak kimliği.
-SubscriptionId | Abonelik Kimliği.
-EventTimeString | Operasyon zamanı.
-Olay Özellikleri | Çalışma özellikleri.
-Durum | Operasyon durumu.
-Çağıran | İşleyiş arayan (Azure portalı veya yönetim istemcisi).
+resourceId | Azure Resource Manager kaynak KIMLIĞI.
+SubscriptionId | Abonelik KIMLIĞI.
+EventTimeString | İşlem süresi.
+EventProperties | İşlem özellikleri.
+Durum | İşlem durumu.
+Çağıran | İşlem (Azure portal veya yönetim istemcisi) çağırıcısı.
 category | OperationalLogs
 
-Aşağıdaki kod, bir işlem günlüğü JSON dizesinin bir örneğidir:
+Aşağıdaki kod, işletimsel günlük JSON dizesinin bir örneğidir:
 
 ```json
 Example:
@@ -139,10 +139,10 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Etkinlik Merkezlerine Giriş](event-hubs-what-is-event-hubs.md)
+- [Event Hubs giriş](event-hubs-what-is-event-hubs.md)
 - [Event Hubs API’sine genel bakış](event-hubs-api-overview.md)
 - Event Hubs kullanmaya başlayın
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

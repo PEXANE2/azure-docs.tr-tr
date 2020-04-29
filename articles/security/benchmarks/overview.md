@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Kıyaslama Genel Bakış
-description: Güvenlik Kıyaslama genel bakış
+title: Azure Güvenlik kıyaslaması genel bakış
+description: Güvenlik kıyaslaması genel bakış
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,24 +9,24 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
 ms.openlocfilehash: 2f4b034948605b0a53a0320863608d284719a96d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77587541"
 ---
-# <a name="overview-of-the-azure-security-benchmark"></a>Azure Güvenlik Kıyaslama'ya Genel Bakış
+# <a name="overview-of-the-azure-security-benchmark"></a>Azure Güvenlik kıyaslamaya genel bakış
 
-Azure Güvenlik Kıyaslama, Azure'daki uygulamalarınızın ve verilerinizin güvenliğini artırmanıza yardımcı olan öneriler içerir.
+Azure Güvenlik kıyaslaması, Azure 'daki uygulamalarınızın ve verilerinizin güvenliğini artırmanıza yardımcı olan öneriler içerir.
 
-Bu Kıyaslama bulut merkezli denetim alanlarına odaklanır. Bu denetimler, Internet Security Merkezi (BDT) Denetimleri Sürüm 7.1 tarafından açıklananlar gibi iyi bilinen güvenlik ölçütleriyle tutarlıdır.
+Bu kıyaslama, bulut merkezli denetim bölümlerine odaklanır. Bu denetimler, Internet güvenliği için orta (CIS) denetimleri sürüm 7,1 ' de açıklananlar gibi iyi bilinen güvenlik değerlendirmeleri ile tutarlıdır.
 
-Aşağıdaki denetimler Azure Güvenlik Kıyaslama'sında kullanılır: 
+Aşağıdaki denetimler Azure Güvenlik kıyaslaması 'nda kullanılır: 
 
-- [Ağ Güvenliği](security-control-network-security.md)
+- [Ağ güvenliği](security-control-network-security.md)
 - [Günlüğe Kaydetme ve İzleme](security-control-logging-monitoring.md)
 - [Kimlik ve Erişim Denetimi](security-control-identity-access-control.md)
-- [Veri Koruma](security-control-data-protection.md)
+- [Veri koruma](security-control-data-protection.md)
 - [Güvenlik Açığı Yönetimi](security-control-vulnerability-management.md)
 - [Envanter ve Varlık Yönetimi](security-control-inventory-asset-management.md)
 - [Güvenli Yapılandırma](security-control-secure-configuration.md)
@@ -35,21 +35,21 @@ Aşağıdaki denetimler Azure Güvenlik Kıyaslama'sında kullanılır:
 - [Olay Yanıtı](security-control-incident-response.md)
 - [Sızma Testleri ve Red Team Alıştırmaları](security-control-penetration-tests-red-team-exercises.md)
 
-[Azure Güvenlik Kıyaslama v1 excel elektronik tablosunu](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)da indirebilirsiniz.
+[Azure Güvenlik kıyaslama v1 Excel elektronik tablosunu](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)da indirebilirsiniz.
 
-## <a name="azure-security-benchmark-recommendations"></a>Azure Güvenlik Kıyaslama Önerileri 
+## <a name="azure-security-benchmark-recommendations"></a>Azure Güvenlik kıyaslama önerileri 
 
 Her öneri aşağıdaki bilgileri içerir: 
 
-- **Azure Kimliği**: Öneriye karşılık gelen Azure Güvenlik Kıyaslama Kimliği. 
-- **BDT Kimliği(ler)**: Bu öneriye karşılık gelen BDT kıyaslama önerisi(ler).  
-- **Sorumluluk**: Bu tavsiyenin uygulanmasından müşteri veya servis sağlayıcının (veya her ikisinin) sorumlu olup olmadığı. Güvenlik sorumlulukları genel bulutta paylaşılır. Bazı güvenlik denetimleri yalnızca bulut hizmeti sağlayıcısı tarafından kullanılabilir ve bu nedenle sağlayıcı bunları ele almakla yükümlüdür. Bunlar genel gözlemlerdir – bazı bireysel hizmetler için sorumluluk, Azure Güvenlik Kıyaslaması'nda listelenenden farklı olacaktır. Bu farklılıklar, tek tek hizmet için temel önerilerde açıklanmıştır. 
-- **Ayrıntılar**: Tavsiyenin gerekçesi ve nasıl uygulanacağı ile ilgili rehberlik bağlantıları. Öneri Azure Güvenlik Merkezi tarafından desteklenirse, bu bilgiler de listelenir.
+- **Azure ID**: öneriye karşılık gelen Azure GÜVENLIK kıyaslama kimliği. 
+- **CIS kimlikleri**: bu öneriye KARŞıLıK gelen CIS kıyaslama önerisi.  
+- **Sorumluluk**: müşterinin veya hizmet sağlayıcının (veya her ikisinin) bu öneriyi uygulamadan sorumlu olup olmadığı. Güvenlik sorumlulukları genel bulutta paylaşılır. Bazı güvenlik denetimleri yalnızca bulut hizmeti sağlayıcısı tarafından kullanılabilir ve bu nedenle sağlayıcı bunların adreslenmesini sağlamaktan sorumludur. Bunlar genel gözlemlerdir: bazı hizmetler için sorumluluk Azure Güvenlik kıyaslaması 'nda listelenenlerden farklı olacaktır. Bu farklılıklar, bireysel hizmet için temel önerilerle açıklanmıştır. 
+- **Ayrıntılar**: önerinin ve nasıl uygulanacağı üzerine kılavuzluk eden bağlantılar için korvaale. Öneri Azure Güvenlik Merkezi tarafından destekleniyorsa, bu bilgiler de listelenecektir.
 
-Ayrıntılı geri bildiriminizi ve Azure Güvenlik Kıyaslama çabalarına aktif katılımınızı bekliyoruz. Benchmark ekibine doğrudan giriş sağlamak istiyorsanız, lütfen formu [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark)'da doldurun.
+Ayrıntılı geri bildiriminiz ve etkin katılım ile Azure Güvenlik kıyaslama çabasında hoş geldiniz. Kıyaslama ekibinin doğrudan girişini sağlamak isterseniz, lütfen formu doldurun [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- İlk güvenlik denetimine bakın: [Ağ Güvenliği](security-control-network-security.md)
-- Azure [Güvenlik Kıyaslama Girişini](introduction.md) Okuyun
-- Azure [Güvenlik Kıyaslama v1 excel elektronik tablosunu](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets) indirin
+- Bkz. ilk güvenlik denetimi: [ağ güvenliği](security-control-network-security.md)
+- [Azure Güvenlik kıyaslaması tanıtım](introduction.md) bilgilerini okuyun
+- [Azure Güvenlik kıyaslama v1 Excel elektronik tablosunu](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets) indirin

@@ -1,6 +1,6 @@
 ---
-title: Azure Ağ İzleyicisi hakkında sık sorulan sorular (SSS) | Microsoft Dokümanlar
-description: Bu makalede, Azure Ağ İzleyicisi hizmeti hakkında sık sorulan sorular yanıtlanmaktadır.
+title: Azure ağ Izleyicisi hakkında sık sorulan sorular (SSS) | Microsoft Docs
+description: Bu makalede, Azure ağ Izleyicisi hizmeti hakkında sık sorulan sorular yanıtlanmaktadır.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,97 +14,97 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
 ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471865"
 ---
-# <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure Ağ İzleyicisi hakkında sık sorulan sorular (SSS)
-[Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) hizmeti, bir Azure sanal ağındaki kaynakların günlüklerini izlemek, tanılamak, görüntülemek ve etkinleştirmek veya devre dışı etmek için bir araç paketi sağlar. Bu makalede, hizmet le ilgili sık sorulan soruları yanıtlar.
+# <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure ağ Izleyicisi hakkında sık sorulan sorular (SSS)
+[Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) hizmeti, bir Azure sanal ağındaki kaynaklara yönelik günlükleri izlemeye, tanılamaya, görüntülemeye ve etkinleştirmeye ve devre dışı bırakacak bir araç paketi sağlar. Bu makalede hizmetle ilgili yaygın soruların yanıtları vardır.
 
 ## <a name="general"></a>Genel
 
 ### <a name="what-is-network-watcher"></a>Ağ İzleyicisi nedir?
-Ağ İzleyicisi, Bir Azure sanal ağındasanal makineler, Sanal Ağlar, Uygulama Ağ Geçitleri, Yük dengeleyicileri ve diğer kaynakları içeren IaaS (Hizmet Olarak Altyapı) bileşenlerinin ağ durumunu izlemek ve onarmak için tasarlanmıştır. PaaS (Hizmet Olarak Platform) altyapılarını izlemek veya web/mobil analitiği almak için bir çözüm değildir.
+Ağ Izleyicisi, sanal makineler, sanal ağlar, uygulama ağ geçitleri, yük dengeleyiciler ve bir Azure sanal ağındaki diğer kaynakları içeren IaaS (hizmet olarak altyapı) bileşenlerinin ağ durumunu izlemek ve onarmak üzere tasarlanmıştır. PaaS (hizmet olarak platform) altyapısını izlemeye veya Web/Mobil Analiz almaya yönelik bir çözüm değildir.
 
-### <a name="what-tools-does-network-watcher-provide"></a>Ağ İzleyicisi hangi araçları sağlar?
-Ağ İzleyicisi üç ana yetenek kümesi sağlar
+### <a name="what-tools-does-network-watcher-provide"></a>Ağ Izleyicisi hangi araçları sağlar?
+Ağ Izleyicisi üç önemli özellik kümesi sağlar
 * İzleme
-  * [Topoloji görünümü,](https://docs.microsoft.com/azure/network-watcher/view-network-topology) sanal ağınızdaki kaynakları ve bunlar arasındaki ilişkileri gösterir.
-  * [Bağlantı İzleyicisi,](https://docs.microsoft.com/azure/network-watcher/connection-monitor) bir VM ile başka bir ağ kaynağı arasındaki bağlantıyı ve gecikmeyi izlemenize olanak tanır.
-  * [Ağ performans monitörü,](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) hibrit ağ mimarileri, Expressroute devreleri ve hizmet/uygulama bitiş noktaları arasında bağlantı ve gecikme süreleri izlemenize olanak tanır.  
+  * [Topoloji görünümü](https://docs.microsoft.com/azure/network-watcher/view-network-topology) , sanal ağınızdaki kaynakları ve bunlar arasındaki ilişkileri gösterir.
+  * [Bağlantı İzleyicisi](https://docs.microsoft.com/azure/network-watcher/connection-monitor) , bir VM ile başka bir ağ kaynağı arasındaki bağlantıyı ve gecikme süresini izlemenizi sağlar.
+  * [Ağ performansı İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) , karma ağ mimarilerinde, ExpressRoute devrelerine ve hizmet/uygulama uç noktalarında bağlantıyı ve gecikme sürelerini izlemenize olanak sağlar.  
 * Tanılama
-  * [IP Akış Doğrulama,](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) trafik filtreleme sorunlarını VM düzeyinde algılamanızı sağlar.
-  * [Next Hop,](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) trafik rotalarını doğrulamanıza ve yönlendirme sorunlarını algılamanıza yardımcı olur.
-  * [Bağlantı Sorunu Giderme,](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) VM ile başka bir ağ kaynağı arasında bir kerelik bağlantı ve gecikme süresi denetimi sağlar.
-  * [Packet Capture,](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) sanal ağınızdaki tüm VM trafiğini yakalamanızı sağlar.
-  * [VPN Sorun Giderme,](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) hata ayıklama sorunlarına yardımcı olmak için VPN ağ geçitlerinizde ve bağlantılarınızda birden çok tanılama denetimi çalıştırın.
+  * [IP akışı doğrulama](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) , bir VM düzeyinde trafik filtreleme sorunlarını algılamanıza olanak tanır.
+  * [Sonraki atlama](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) , trafik yollarını doğrulamanıza ve yönlendirme sorunlarını tespit etmenize yardımcı olur.
+  * [Bağlantı sorunlarını giderme](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) , bir VM ile başka bir ağ kaynağı arasında tek seferlik bir bağlantı ve gecikme denetimi sunar.
+  * [Paket yakalama](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) , sanal AĞıNıZDAKI bir VM 'deki tüm trafiği yakalamanızı sağlar.
+  * [VPN sorun giderme](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) , VPN ağ geçitleriniz ve bağlantılarında hata ayıklamanıza yardımcı olan birden çok tanılama denetimi çalıştırır.
 * Günlüğe Kaydetme
-  * [NSG Akış Günlükleri,](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) Ağ Güvenlik [Gruplarınızdaki (NSG' ler)](https://docs.microsoft.com/azure/virtual-network/security-overview) tüm trafiği kaydetmenizi sağlar
-  * [Trafik Analitiği,](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) NSG Akış Günlüğü verilerinizi işleyerek ağ trafiğinizi görselleştirmenizi, sorgulamanızı, analiz etmenizi ve anlamanızı sağlar.
+  * [NSG akış günlükleri](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) , [ağ güvenlik gruplarındaki (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) tüm trafiği günlüğe kaydetmenize olanak tanır
+  * [Trafik Analizi](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) NSG akış günlüğü verilerinizi işleyerek ağ trafiğinizi görselleştirmenizi, sorgulamanızı, çözümlemenize ve anlamanıza olanak tanır.
 
 
-Daha ayrıntılı bilgi için [Ağ İzleyicisi genel bakış sayfasına](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)bakın.
+Daha ayrıntılı bilgi için bkz. [Ağ İzleyicisi 'ne genel bakış sayfası](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview).
 
 
-### <a name="how-does-network-watcher-pricing-work"></a>Network Watcher fiyatlandırması nasıl çalışır?
-Ağ İzleyicisi bileşenleri ve bunların fiyatlandırması için [Fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/network-watcher/) ziyaret edin.
+### <a name="how-does-network-watcher-pricing-work"></a>Ağ Izleyicisi fiyatlandırması nasıl çalışır?
+Ağ Izleyicisi bileşenleri için [fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/network-watcher/) ve bunların fiyatlandırmasını ziyaret edin.
 
-### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Ağ İzleyicisi hangi bölgelerde desteklenir/kullanılabilir?
-[Azure Hizmeti kullanılabilirlik sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) en son bölgesel kullanılabilirliği görüntüleyebilirsiniz
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Ağ Izleyicisi hangi bölgelerde desteklenir/kullanılabilir?
+[Azure hizmet kullanılabilirliği sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) en son bölgesel kullanılabilirliği görüntüleyebilirsiniz
 
-### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Ağ İzleyicisi kullanmak için hangi izinler gereklidir?
-[Ağ İzleyicisi'ni kullanmak için gereken RBAC izinlerinin listesine](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)bakın. Kaynakları dağıtmak için NetworkWatcherRG'ye katkıda bulunan izinlere ihtiyacınız vardır (aşağıya bakın).
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Ağ Izleyicisi 'ni kullanmak için hangi izinler gereklidir?
+[Ağ İzleyicisi 'ni kullanmak için gereken RBAC izinlerinin](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)listesine bakın. Kaynakları dağıtmak için, NetworkWatcherRG için katkıda bulunan izinlerine sahip olmanız gerekir (aşağıya bakın).
 
 ### <a name="how-do-i-enable-network-watcher"></a>Ağ İzleyicisi'ni nasıl etkinleştirebilirim?
-Ağ İzleyicisi hizmeti her abonelik için [otomatik olarak etkinleştirilir.](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)
+Ağ Izleyicisi hizmeti her abonelik için [otomatik olarak etkinleştirilir](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) .
 
-### <a name="what-is-the-network-watcher-deployment-model"></a>Ağ İzleyicisi dağıtım modeli nedir?
-Ağ İzleyicisi üst kaynağı, her bölgede benzersiz bir örnekle dağıtılır. Adlandırma biçimi: NetworkWatcher_RegionName. Örnek: NetworkWatcher_centralus "Orta ABD" bölgesi için Ağ İzleyicisi kaynağıdır.
+### <a name="what-is-the-network-watcher-deployment-model"></a>Ağ Izleyicisi dağıtım modeli nedir?
+Ağ Izleyicisi üst kaynağı her bölgede benzersiz bir örnekle dağıtılır. Adlandırma biçimi: NetworkWatcher_RegionName. Örnek: NetworkWatcher_centralus, "Orta ABD" bölgesinin ağ Izleyicisi kaynağıdır.
 
 ### <a name="what-is-the-networkwatcherrg"></a>NetworkWatcherRG nedir?
-Ağ İzleyicisi kaynakları, otomatik olarak oluşturulan gizli **NetworkWatcherRG** kaynak grubunda yer alır. Örneğin, NSG Akış Günlükleri kaynağı Ağ İzleyicisi'nin alt kaynağıdır ve NetworkWatcherRG'de etkindir.
+Ağ Izleyicisi kaynakları otomatik olarak oluşturulan gizli **NetworkWatcherRG** kaynak grubunda bulunur. Örneğin, NSG akış günlükleri kaynağı, ağ Izleyicisi 'nin bir alt kaynağıdır ve NetworkWatcherRG ' de etkinleştirilir.
 
-### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Ağ İzleyicisi uzantısını neden yüklemem gerekiyor? 
-Ağ İzleyicisi uzantısı, bir VM'den trafik oluşturması veya engellemesi gereken herhangi bir özellik için gereklidir. 
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Neden ağ Izleyicisi uzantısını yüklemem gerekir? 
+Ağ Izleyicisi uzantısı, bir VM 'den trafik oluşturması veya bu trafiği ele almak için gereken tüm özellikler için gereklidir. 
 
-### <a name="which-features-require-the-network-watcher-extension"></a>Hangi özellikler Ağ İzleyicisi uzantısı gerektirir?
-Paket Yakalama, Bağlantı Sorun Giderme ve Bağlantı İzleyicisi özelliklerinin bulunması için Ağ İzleyicisi uzantısı gerekir.
+### <a name="which-features-require-the-network-watcher-extension"></a>Hangi özellikler ağ Izleyicisi uzantısını gerektiriyor?
+Paket yakalama, bağlantı sorunlarını giderme ve bağlantı Izleyicisi özellikleri için ağ Izleyicisi uzantısının mevcut olması gerekir.
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>Ağ İzleyicisi'ndeki kaynak sınırları nelerdir?
-Tüm sınırlar için [Hizmet sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) sayfasına bakın.  
+### <a name="what-are-resource-limits-on-network-watcher"></a>Ağ izleyicisinden kaynak sınırları nelerdir?
+Tüm sınırlar için [hizmet limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) sayfasına bakın.  
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Neden bölge başına Ağ İzleyicisi'nin yalnızca bir örneğine izin veriliyor? 
-Ağ İzleyicisi sadece bir kez bu özellikleri çalışması için bir abonelik için etkin olması gerekir, bu bir hizmet sınırı değildir.
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Bölge başına yalnızca bir ağ Izleyicisi örneğine izin veriliyor mu? 
+Bu özelliğin çalışması için bir abonelik için ağ Izleyicisi 'nin etkinleştirilmesi yeterlidir, bu bir hizmet sınırı değildir.
 
-### <a name="how-can-i-manage-the-network-watcher-resource"></a>Ağ İzleyicisi Kaynağını nasıl yönetebilirim? 
-Ağ İzleyicisi kaynağı, Ağ İzleyicisi için arka uç hizmetini temsil eder ve azure tarafından tamamen yönetilir. Müşterilerin yönetmesine gerek yoktur. Taşıma gibi işlemler kaynakta desteklenmez. Ancak, [kaynak silinebilir.](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal) 
+### <a name="how-can-i-manage-the-network-watcher-resource"></a>Ağ Izleyicisi kaynağını nasıl yönetebilirim? 
+Ağ Izleyicisi kaynağı, ağ Izleyicisi için arka uç hizmetini temsil eder ve Azure tarafından tam olarak yönetilir. Müşterilerin bunu yönetmesi gerekmez. Kaynak üzerinde taşıma gibi işlemler desteklenmez. Ancak, [kaynak silinebilir](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
 
-## <a name="nsg-flow-logs"></a>NSG Akış Günlükleri
+## <a name="nsg-flow-logs"></a>NSG akış günlükleri
 
-### <a name="what-does-nsg-flow-logs-do"></a>NSG Akış Günlükleri ne yapar?
-Azure ağ kaynakları [Ağ Güvenlik Grupları (NSG' ler)](https://docs.microsoft.com/azure/virtual-network/security-overview)aracılığıyla birleştirilebilir ve yönetilebilir. NSG Akış Günlükleri, NSG'leriniz aracılığıyla tüm trafikle ilgili 5 tuple akış bilgilerini kaydetmenizi sağlar. Ham akış günlükleri, gerektiğinde daha fazla işlenebilecekleri, analiz edilebildikleri, sorgulanabilecekleri veya dışa aktarılabildiği bir Azure Depolama hesabına yazılır.
+### <a name="what-does-nsg-flow-logs-do"></a>NSG akış günlükleri ne yapar?
+Azure ağ kaynakları, [ağ güvenlik grupları (NSG 'ler)](https://docs.microsoft.com/azure/virtual-network/security-overview)ile birleştirilebilir ve yönetilebilir. NSG akış günlükleri, NSG 'larınız aracılığıyla tüm trafikle ilgili 5 demet akış bilgilerini günlüğe Kaydetetkinleştirmenizi sağlar. Ham akış günlükleri, gerektikçe daha fazla işlenebileceği, çözümlenebildiği, sorgulanan veya verilebilecekleri bir Azure depolama hesabına yazılır.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>Güvenlik duvarının arkasındaki Depolama hesabıyla NSG Akış Günlüklerini nasıl kullanırım?
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>Nasıl yaparım? bir güvenlik duvarının arkasındaki depolama hesabıyla NSG akış günlüklerini kullanmak mı istiyorsunuz?
 
-Güvenlik duvarının arkasında bir Depolama hesabı kullanmak için, Güvenilen Microsoft Hizmetleri'nin depolama hesabınıza erişebilmesi için bir özel durum sağlamanız gerekir:
+Bir güvenlik duvarının arkasında bir depolama hesabı kullanmak için, güvenilen Microsoft hizmetlerinin depolama hesabınıza erişmesi için bir özel durum sağlamanız gerekir:
 
-* Portaldaki genel aramada veya [Depolama Hesapları sayfasından](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) depolama hesabının adını yazarak depolama hesabına gidin
+* Portala veya [depolama hesapları sayfasından](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) depolama hesabının adını yazarak depolama hesabına gidin.
 * **AYARLAR** bölümünün altında **Güvenlik duvarları ve sanal ağlar**'ı seçin
-* "Erişime izin ver"de **Seçili ağları**seçin. Ardından **Özel Durumlar**altında , **"Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver"** kutusunu işaretleyin 
+* "Erişime Izin ver" bölümünde **Seçili ağlar**' ı seçin. Ardından, **özel durumlar**altında **"Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver"** seçeneğinin yanındaki kutuyu işaret edin. 
 * Zaten seçiliyse, hiçbir değişiklik yapmanız gerekmez.  
-* Hedef NSG'nizi [NSG Akış Günlükleri genel bakış sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) bulun ve yukarıdaki depolama hesabı seçilerek NSG Akış Günlüklerini etkinleştirin.
+* [NSG akış günlüklerine Genel Bakış sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) hedef NSG 'nizi bulun ve NSG akış günlüklerini yukarıdaki depolama hesabı seçiliyken etkinleştirin.
 
 Birkaç dakika sonra depolama günlüklerini denetleyebilirsiniz; güncelleştirilmiş bir TimeStamp veya yeni oluşturulmuş bir JSON dosyası görmelisiniz.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Hizmet Bitiş Noktası'nın arkasındaki Depolama hesabıyla NSG Akış Günlüklerini nasıl kullanırım?
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Nasıl yaparım? bir hizmet uç noktası arkasında depolama hesabı bulunan NSG akış günlükleri mi kullanıyorsunuz?
 
-NSG Akış Günlükleri, herhangi bir ekstra yapılandırma gerektirmeden Servis Bitiş Noktaları ile uyumludur. Lütfen sanal ağınızdaki [Hizmet Bitiş Noktalarını etkinleştirme öğreticisine](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) bakın.
+NSG akış günlükleri, ek yapılandırma gerektirmeden hizmet uç noktaları ile uyumludur. Lütfen sanal ağınızdaki [hizmet uç noktalarını etkinleştirme öğreticisine](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) bakın.
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Akış günlükleri sürümleri 1 & 2 arasındaki fark nedir?
-Akış Günlükleri sürüm *2, aktarılan* baytlar ve paketler hakkında bilgi depolayarak Akış Durumu kavramını & tanıtıyor. [Devamını oku](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).
+Akış günlükleri sürüm 2, *akış durumu* kavramını tanıtır & aktarılan bayt ve paketler hakkında bilgi depolar. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
- - Network Watcher ile işe başlamanız için bazı eğitimler için [belgelere genel bakış sayfamıza](https://docs.microsoft.com/azure/network-watcher/) gidin.
+ - Ağ izleyicisine başlamanıza yönelik bazı öğreticiler için [belgelerimize genel bakış sayfasına](https://docs.microsoft.com/azure/network-watcher/) gidin.

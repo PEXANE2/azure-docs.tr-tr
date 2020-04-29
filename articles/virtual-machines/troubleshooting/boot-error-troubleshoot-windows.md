@@ -1,6 +1,6 @@
 ---
-title: Azure Sanal Makineler kapatma, Hizmetleri Yeniden Başlatma, Kapatma veya Durdurma | Microsoft Dokümanlar
-description: Bu makale, Azure Windows Sanal Makineler'deki hizmet hatalarını gidermenize yardımcı olur.
+title: Azure sanal makineleri kapatma, yeniden başlatma, kapatma veya hizmetleri durdurma sırasında takıldı | Microsoft Docs
+description: Bu makale, Azure Windows Sanal Makineleri 'de hizmet hatalarını gidermenize yardımcı olur.
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,99 +13,99 @@ ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
 ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77371362"
 ---
-# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM kapatması "Yeniden Başlatma", "Kapatma" veya "Hizmetleri Durdurma" üzerinde takılıp kaldı
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM kapatma, "yeniden başlatılıyor", "kapatılıyor" veya "Hizmetleri durduruluyor" üzerine takılmış
 
-Bu makalede, Microsoft Azure'da bir Windows sanal makinesini (VM) yeniden başlatırken karşılaşabileceğiniz "Yeniden Başlatma", "Kapatma" veya "Hizmetleri durdurma" iletileri sorunlarını gidermek için adımlar sağlanmaktadır.
+Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) yeniden başlattığınızda karşılaşabileceğiniz "yeniden başlatma", "kapatma" veya "hizmetleri durdurma" iletilerinin sorunları çözümlenme adımları sağlanmaktadır.
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM'nin ekran görüntüsünü görüntülemek için [Önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) yöntemini kullandığınızda, ekran görüntüsünün "Yeniden Başlatma", "Kapatma" veya "Hizmetleri durdurma" iletisini görüntülediğini görebilirsiniz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde "yeniden başlatılıyor", "kapatılıyor" veya "Hizmetleri durduruluyor" iletisini görüntülüyor olabilirsiniz.
 
-![Hizmetleri Yeniden Başlatma, Kapatma ve Durdurma Hizmetleri Ekranları](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
+![Hizmet ekranlarını yeniden başlatma, kapatma ve durdurma](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
 ## <a name="cause"></a>Nedeni
 
-Windows, sistem bakım işlemlerini gerçekleştirmek ve güncelleştirmeler, roller ve özellikler gibi değişiklikleri işlemek için kapatma işlemini kullanır. Tamamlanana kadar bu kritik işlemi kesintiye uğratmanız önerilmez. Güncelleştirmelerin/değişikliklerin sayısına ve VM boyutuna bağlı olarak işlem uzun sürebilir. İşlem durdurulursa, işletim sistemi bozulması mümkündür. Sadece aşırı uzun sürüyorsa işlemi yarıda kes.
+Windows, sistem bakım işlemlerini gerçekleştirmek ve güncelleştirmeler, roller ve özellikler gibi değişiklikleri işlemek için kapalı işlemini kullanır. Tamamlanana kadar bu kritik işlemi kesmeniz önerilmez. Güncelleştirme/değişiklik sayısına ve VM boyutuna bağlı olarak, işlem uzun sürebilir. İşlem durdurulmuşsa, işletim sisteminin bozuk olması mümkündür. Yalnızca aşırı uzun sürüyorsa işlemi keser.
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="collect-a-process-memory-dump"></a>İşlem bellek dökümü toplama
+### <a name="collect-a-process-memory-dump"></a>Işlem belleği dökümünü topla
 
-1. [Procdump aracını,](http://download.sysinternals.com/files/Procdump.zip) aynı bölgeden çalışan bir VM'ye bağlı olan yeni veya varolan bir veri diskine indirin.
+1. [ProcDump aracını](http://download.sysinternals.com/files/Procdump.zip) , aynı bölgedeki çalışan bir sanal makineye bağlı yeni veya mevcut bir veri diskine indirin.
 
-2. Çalışan VM'den gerekli dosyaları içeren diski ayırın ve diski bozuk VM'nize takın. Bu diske **Yardımcı Disk**diyoruz.
+2. Çalışan VM 'den gerekli olan dosyaları içeren diski ayırın ve diski bozuk sanal makinenize bağlayın. Bu diski **yardımcı program diskine**arıyoruz.
 
-Aşağıdaki adımları tamamlamak için [Seri Konsol'u](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) kullanın:
+Aşağıdaki adımları gerçekleştirmek için [seri konsol](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) kullanın:
 
-1. İdari bir Powershell açın ve durdurma üzerine asılı olan hizmeti kontrol edin.
+1. Bir yönetim PowerShell açın ve durdurulduğunda askıda olan hizmeti kontrol edin.
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. İdari bir CMD'de, askıda olan hizmetin PID'sini alın.
+2. Bir yönetim CMD ' de askıda bekleyen hizmetin PID 'sini alın.
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. Asılı işlemden <STOPPING SERVICE>bir bellek dökümü örneği alın.
+3. Askıda geçmiş işlemden <STOPPING SERVICE>bir bellek dökümü örneği alın.
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. Şimdi kapatma işlemini kilidini açmak için asılı işlemi öldürmek.
+4. Şimdi kapatma işleminin kilidini açmak için askıda olan işlemi sonlandırın.
 
    ``
    taskkill /PID <PID> /t /f
    ``
 
-Bir kez işletim sistemi yeniden başlar, normal önyükleme, o zaman sadece işletim sistemi tutarlılık ok olduğundan emin olun. Bozulma bildirilirse, disk bozulmadan gelene kadar aşağıdaki komutu çalıştırın:
+İşletim sistemi yeniden başlatıldıktan sonra, normal olarak önyükleniyorsa, işletim sistemi tutarlılığının tamam olduğundan emin olun. Bozulma bildirilmezse, disk bozuluncaya kadar aşağıdaki komutu çalıştırın:
 
 ``
 dism /online /cleanup-image /restorehealth
 ``
 
-Bir işlem bellek dökümü toplamak mümkün değilse veya bu sorun özyinelemeli ve bir kök neden çözümleme gerekiyorsa, aşağıda bir işletim sistemi bellek dökümü toplamaya devam, bir destek isteği açmak için devam edin.
+İşlem belleği dökümünü toplayadıysanız veya bu sorun özyinelemeli ise ve bir kök neden analizi istiyorsanız, aşağıda bir işletim sistemi bellek dökümü toplamaya devam edin, bir destek isteği açmaya devam edin.
 
-### <a name="collect-an-os-memory-dump"></a>İşletim sistemi bellek dökümü toplama
+### <a name="collect-an-os-memory-dump"></a>Bir işletim sistemi bellek dökümü toplayın
 
-Değişikliklerin işlemesini bekledikten sonra sorun çözülmezse, bir bellek döküm dosyası ve iletişim desteği toplamanız gerekir. Dökümü dosyasını toplamak için aşağıdaki adımları izleyin:
+Değişikliklerin işlenmesi beklendikten sonra Sorun çözümlenmezse, bir bellek dökümü dosyası toplayıp desteğe başvurmanız gerekir. Döküm dosyasını toplamak için aşağıdaki adımları izleyin:
 
-**Os diskini kurtarma VM'ine takın**
+**İşletim sistemi diskini bir kurtarma VM 'sine iliştirme**
 
-1. Yedek olarak etkilenen VM'nin işletim sistemi diskinin anlık görüntüsünü alın. Daha fazla bilgi için [bir diskanlık anlık görüntüsüne](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)bakın.
+1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
 
-2. [Os diskini kurtarma VM'sine takın.](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)
+2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
-3. Kurtarma VM uzak masaüstü.
+3. Kurtarma sanal makinesine uzak masaüstü.
 
-4. İşletim sistemi diski şifrelenmişse, bir sonraki adıma geçmeden önce şifrelemeyi kapatmanız gerekir. Daha fazla bilgi için [VM'de önyükleme yapamayan şifreli işletim sistemi diskinin şifresini çözeme bölümüne](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)bakın.
+4. İşletim sistemi diski şifrelenirse, bir sonraki adıma geçmeden önce şifrelemeyi kapatmanız gerekir. Daha fazla bilgi için bkz. [önyükleme YAPıLABILEN VM 'de şifrelenmiş işletim sistemi diskinin şifresini çözme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution).
 
-**Döküm dosyanı bulma ve destek bileti gönderme**
+**Döküm dosyasını bul ve bir destek bileti gönder**
 
-1. Kurtarma VM'inde, bağlı işletim sistemi diskindeki windows klasörüne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi F ise, F:\Windows'a gitmeniz gerekir.
+1. Kurtarma VM 'sinde, bağlı işletim sistemi diskinde Windows klasörü ' ne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi F ise, F:\windowsadresine gitmeniz gerekir.
 
-2. Memory.dmp dosyasını bulun ve ardından döküm dosyasıyla [birlikte bir destek bileti gönderin.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+2. Memory. dmp dosyasını bulun ve ardından döküm dosyası ile [bir destek bileti gönderebilirsiniz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
-Döküm dosyasını bulamıyorsanız, döküm günlüğü ve Seri Konsol'u etkinleştirmek için bir sonraki adımı taşıyın.
+Döküm dosyasını bulamıyorsanız, döküm günlüğünü ve seri konsolunu etkinleştirmek için sonraki adımı taşıyın.
 
-**Döküm günlük ve Seri Konsol etkinleştirme**
+**Döküm günlüğünü ve seri konsolunu etkinleştir**
 
-Döküm günlüğü ve Seri Konsol'u etkinleştirmek için aşağıdaki komut dosyasını çalıştırın.
+Döküm günlüğünü ve seri konsolunu etkinleştirmek için aşağıdaki betiği çalıştırın.
 
-1. Yükseltilmiş komut Istem oturumunu açın (Yönetici olarak çalıştırın).
+1. Yükseltilmiş komut Istemi oturumunu açın (yönetici olarak çalıştır).
 
 2. Şu betiği çalıştırın:
 
-   Bu komut dosyasında, ekli işletim sistemi diskine atanan sürücü harfinin F olduğunu varsayıyoruz.
+   Bu betikte, bağlı işletim sistemi diskine atanan sürücü harfinin F olduğunu varsaytık. bunu sanal makinenizde uygun bir değerle değiştirin.
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -129,9 +129,9 @@ Döküm günlüğü ve Seri Konsol'u etkinleştirmek için aşağıdaki komut do
    reg unload HKLM\BROKENSYSTEM
    ```
 
-3. Diskte, bu VM için seçtiğiniz boyuta bağlı olarak RAM kadar bellek ayırmak için yeterli alan olduğunu doğrulayın.
+3. Bu VM için seçtiğiniz boyuta bağlı olarak RAM 'e kadar bellek ayırmak için diskte yeterli alan olduğunu doğrulayın.
 
-4. Yeterli alan yoksa veya VM büyükse (G, GS veya E serisi), bu dosyanın oluşturulacağı konumu değiştirebilir ve bunu VM'ye bağlı başka bir veri diskine yönlendirebilirsiniz. Konumu değiştirmek için aşağıdaki anahtarı değiştirmeniz gerekir:
+4. Yeterli alan yoksa veya VM büyükse (G, GS veya E serisi), bu dosyanın oluşturulacağı konumu değiştirebilir ve sanal makineye bağlı olan diğer tüm veri diskine başvurabilirsiniz. Konumu değiştirmek için aşağıdaki anahtarı değiştirmeniz gerekir:
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -142,16 +142,16 @@ Döküm günlüğü ve Seri Konsol'u etkinleştirmek için aşağıdaki komut do
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [Os diskini ayırın ve işletim sistemi diskini etkilenen VM'ye yeniden takın.](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)
+5. [İşletim sistemi diskini ayırın ve ardından işletim sistemi diskini ETKILENEN VM 'ye yeniden bağlayın](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
-6. VM'yi başlatın ve Seri Konsol'a erişin.
+6. VM 'yi başlatın ve seri konsoluna erişin.
 
-7. Bellek dökümünü tetiklemek için Maskelemeyen Kesme Gönder'i (NMI) seçin.
+7. Bellek dökümünü tetiklemek için, maskelenemeyen kesme (NMI) Gönder ' i seçin.
 
-   ![Maskelenemeyen Kesme Gönder](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
+   ![Maskelenemeyen kesme gönder](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
 
-8. Os diskini kurtarma VM'ine yeniden takın, döküm dosyasını toplayın.
+8. İşletim sistemi diskini bir kurtarma VM 'sine yeniden ekleyin, döküm dosyasını toplayın.
 
 ## <a name="contact-microsoft-support"></a>Microsoft desteğine başvurma
 
-Döküm dosyasını topladıktan sonra, temel nedenini belirlemek için Microsoft desteğine başvurun.
+Döküm dosyasını topladıktan sonra, kök nedenini öğrenmek için Microsoft desteği 'ne başvurun.

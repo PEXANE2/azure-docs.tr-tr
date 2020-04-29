@@ -1,6 +1,6 @@
 ---
-title: PowerShell kullanarak Azure Güvenlik Duvarı yapılandırmalarını Azure Güvenlik Duvarı ilkesine (önizleme) geçirin
-description: Azure Güvenlik Duvarı yapılandırmalarını Azure Güvenlik Duvarı ilkesine nasıl geçirebilirsiniz (önizleme) öğrenin
+title: PowerShell kullanarak Azure Güvenlik Duvarı yapılandırmasını Azure Güvenlik duvarı ilkesi 'ne (Önizleme) geçirme
+description: Azure Güvenlik duvarı yapılandırmalarının Azure Güvenlik Duvarı ilkesine nasıl geçirileceğinizi öğrenin (Önizleme)
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77443117"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>Powershell kullanarak Azure Güvenlik Duvarı yapılandırmalarını Azure Güvenlik Duvarı ilkesine (önizleme) geçirin
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>PowerShell kullanarak Azure Güvenlik Duvarı yapılandırmasını Azure Güvenlik duvarı ilkesi 'ne (Önizleme) geçirme
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Mevcut Azure Güvenlik Duvarı yapılandırmalarını bir Azure Güvenlik Duvarı ilkesi kaynağına geçirmek için bir Azure PowerShell komut dosyası kullanabilirsiniz. Daha sonra ilkedağıtmak için Azure Güvenlik Duvarı Yöneticisi'ni kullanabilirsiniz.
+Mevcut Azure Güvenlik duvarı yapılandırmalarının bir Azure Güvenlik duvarı ilkesi kaynağına geçirilmesi için bir Azure PowerShell komut dosyası kullanabilirsiniz. Ardından, ilkeyi dağıtmak için Azure Güvenlik Duvarı Yöneticisi 'ni kullanabilirsiniz.
 
-Komut `AZFWMigrationScript.ps1` dosyası, sırasıyla ApplicationRuleCollections, NetworkRuleCollections ve NatRuleCollections için üç RuleCollectionGroup nesnesi içeren bir FirewallPolicy oluşturur. 
+`AZFWMigrationScript.ps1` Betik, sırasıyla Applicationrulecollections, Networkrulecollections ve Natrutacollections Için üç RuleCollectionGroup nesnesine sahip bir FirewallPolicy oluşturur. 
 
-RuleCollectionGroup, gelecekteki genişletilebilirlik için kural koleksiyonları için yeni bir üst düzey gruplandırmadır. Yukarıdaki varsayılanları kullanmak önerilir ve Portal'dan otomatik olarak yapılır.
+RuleCollectionGroup, gelecekteki genişletilebilirlik için kural koleksiyonları için yeni bir üst düzey gruplandırmadır. Yukarıdaki varsayılanlar kullanılması önerilir ve portaldan otomatik olarak yapılır.
 
-Komut dosyasının başında kaynak güvenlik duvarı adı ve kaynak grubu ve hedef ilke adı ve konumu tanımlanır. Bu değerleri kuruluşunuz için uygun şekilde değiştirin.
+Betiğin başlangıcında kaynak güvenlik duvarı adı ve kaynak grubu ile hedef ilke adı ve konumu tanımlanmaktadır. Bu değerleri kuruluşunuz için uygun şekilde değiştirin.
 
-## <a name="migration-script"></a>Geçiş komut dosyası
+## <a name="migration-script"></a>Geçiş betiği
 
-Güvenlik duvarı yapılandırmanızı geçirmek için aşağıdaki komut dosyasını değiştirin.
+Güvenlik duvarı yapılandırmanızı geçirmek için aşağıdaki betiği değiştirin.
 
 ```azurepowershell
 #Input params to be modified as needed
@@ -161,4 +161,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Güvenlik Duvarı Yöneticisi dağıtımı hakkında daha fazla bilgi edinin: [Azure Güvenlik Duvarı Yöneticisi Önizleme dağıtımına genel bakış.](deployment-overview.md)
+Azure Firewall Manager dağıtımı hakkında daha fazla bilgi edinin: [Azure Güvenlik Duvarı Yöneticisi önizleme dağıtımına genel bakış](deployment-overview.md).
