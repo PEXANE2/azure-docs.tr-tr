@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Parametreler (Önizleme) ile Özel Komut oluşturma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, özel komutlar uygulamasına parametreler eklersiniz.
+description: Bu makalede, özel komutlar uygulamasına parametreler ekleyeceksiniz.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,69 +11,69 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 96312bac369cfa5fe3cb8a00fd63ecfbec624918
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80348523"
 ---
-# <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Quickstart: Parametreleri olan Özel Komut oluşturma (Önizleme)
+# <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)
 
-Önceki [makalede,](./quickstart-custom-speech-commands-create-new.md)parametreleri olmadan komutları yanıtlamak için yeni bir Özel Komutlar proje oluşturdu.
+[Önceki makalede](./quickstart-custom-speech-commands-create-new.md), parametreleri olmayan komutlara yanıt vermek için yeni bir özel komutlar projesi oluşturduk.
 
-Bu makalede, bu uygulamayı parametrelerle genişleteceğiz, böylece birden çok aygıtı açıp kapatmayı işleyebilir.
+Bu makalede, bu uygulamayı parametreleri ile genişletecektir ve bu sayede birden çok cihazı açmayı ve kapatmayı işleyebilir.
 
-## <a name="create-parameters"></a>Parametreler Oluştur
+## <a name="create-parameters"></a>Parametre oluştur
 
 1. [Daha önce oluşturduğumuz](./quickstart-custom-speech-commands-create-new.md) projeyi açın
-1. Komut artık açma ve kapama ile ilgileneceği için, Komutu "TurnOnOff" olarak yeniden adlandırın.
-   - Komutun adının üzerine titreyin ve adı değiştirmek için edit simgesini seçin
-1. Kullanıcının aygıtı açmak veya kapatmak isteyip istemediğini görmek için yeni bir parametre oluşturma
-   - Parametreler `+` bölümünün yanındaki simgeyi seçin
+1. Komut şimdi üzerinde işlem yaptığından ve kapatıcağından, komutu "TurnOnOff" olarak yeniden adlandırın.
+   - Komutun adının üzerine gelin ve adı değiştirmek için Düzenle simgesini seçin
+1. Kullanıcının cihazı açmak mı yoksa kapatmak mı istediğini göstermek için yeni bir parametre oluştur
+   - Parametreler bölümünün `+` yanındaki simgeyi seçin
 
    > [!div class="mx-imgBorder"]
-   > ![Parametre oluşturma](media/custom-speech-commands/create-on-off-parameter.png)
+   > ![Parametre oluştur](media/custom-speech-commands/create-on-off-parameter.png)
 
    | Ayar            | Önerilen değer     | Açıklama                                                                                               |
    | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Adı               | Onoff               | Parametreniz için açıklayıcı bir ad                                                                     |
-   | Küresel mi          | unchecked           | Bu parametre için bir değerin projedeki tüm Komutlara genel olarak uygulanıp uygulanmadığını belirten onay kutusu |
-   | Gerekli           | checked             | Komutu tamamlamadan önce bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
-   | Yanıt şablonu  | "- Aylak mı, kapalı mı?"      | Bilinmediğinde bu parametrenin değerini sormak için bir istem                                       |
-   | Tür               | Dize              | Sayı, Dize veya Tarih Saati gibi parametre türü                                               |
-   | Yapılandırma      | String Listesi         | Strings için, String List girişleri olası değerler kümesiyle sınırlandırın                                      |
-   | Dize listesi değerleri | açık, kapama             | String List parametresi için, olası değerler kümesi ve bunların eşanlamlıları                                |
+   | Adı               | Mikrofon               | Parametrağınız için açıklayıcı bir ad                                                                     |
+   | Geneldir          | unchecked           | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
+   | Gerekli           | checked             | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
+   | Yanıt şablonu  | "-Açık veya kapalı mı?"      | Bilinmiyorsa bu parametrenin değerini sormak için bir istem                                       |
+   | Tür               | Dize              | Parametre türü, örneğin sayı, dize veya tarih saat                                               |
+   | Yapılandırma      | Dize listesi         | Dizeler için, bir dize listesi girişleri olası değerler kümesiyle sınırlandırır                                      |
+   | Dize listesi değerleri | açık, kapalı             | Dize listesi parametresi için, olası değerler ve bunların eşanlamlıları kümesi                                |
 
-   - Ardından, aygıtların `+` adını temsil edecek ikinci bir parametre eklemek için simgeyi yeniden seçin. Bu örnekiçin, bir tv ve bir fan
+   - Ardından, cihazların adını `+` temsil etmek üzere ikinci bir parametre eklemek için simgeyi yeniden seçin. Bu örnek için bir TV ve fan
 
    | Ayar            | Önerilen değer       | Açıklama                                                                                               |
    | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Adı               | Konu Cihazı         | Parametreniz için açıklayıcı bir ad                                                                     |
-   | Küresel mi          | unchecked             | Bu parametre için bir değerin projedeki tüm Komutlara genel olarak uygulanıp uygulanmadığını belirten onay kutusu |
-   | Gerekli           | checked               | Komutu tamamlamadan önce bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
-   | Yanıt şablonu  | "- Hangi cihaz?"     | Bilinmediğinde bu parametrenin değerini sormak için bir istem                                       |
-   | Tür               | Dize                | Sayı, Dize veya Tarih Saati gibi parametre türü                                               |
-   | Yapılandırma      | String Listesi           | Strings için, String List girişleri olası değerler kümesiyle sınırlandırın                                      |
-   | Dize listesi değerleri | tv, fan               | String List parametresi için, olası değerler kümesi ve bunların eşanlamlıları                                |
-   | Eş anlamlılar (tv)      | televizyon, televizyon     | Bir String List Parametresinin olası her değeri için isteğe bağlı eşanlamlılar                                      |
+   | Adı               | SubjectDevice         | Parametrağınız için açıklayıcı bir ad                                                                     |
+   | Geneldir          | unchecked             | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
+   | Gerekli           | checked               | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
+   | Yanıt şablonu  | "-Hangi cihaz?"     | Bilinmiyorsa bu parametrenin değerini sormak için bir istem                                       |
+   | Tür               | Dize                | Parametre türü, örneğin sayı, dize veya tarih saat                                               |
+   | Yapılandırma      | Dize listesi           | Dizeler için, bir dize listesi girişleri olası değerler kümesiyle sınırlandırır                                      |
+   | Dize listesi değerleri | TV, fan               | Dize listesi parametresi için, olası değerler ve bunların eşanlamlıları kümesi                                |
+   | Eş anlamlılar (TV)      | televizyon, telefon     | Bir dize listesi parametresinin olası her değeri için isteğe bağlı eş anlamlılar                                      |
 
-## <a name="add-sample-sentences"></a>Örnek Cümleler Ekle
+## <a name="add-sample-sentences"></a>Örnek cümleler ekleyin
 
-Parametrelerle, olası tüm kombinasyonları kapsayan örnek cümleler eklemek yararlıdır. Örnek:
+Parametreler ile, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örneğin:
 
-1. Tam parametre bilgileri -`"turn {OnOff} the {SubjectDevice}"`
-1. Kısmi parametre bilgileri -`"turn it {OnOff}"`
-1. Parametre bilgisi yok -`"turn something"`
+1. Tam parametre bilgisi-`"turn {OnOff} the {SubjectDevice}"`
+1. Kısmi parametre bilgileri-`"turn it {OnOff}"`
+1. Parametre bilgisi yok-`"turn something"`
 
-Farklı miktarda bilgi içeren örnek cümleler, Özel Komutlar uygulamasının hem tek çekimli çözümleri hem de çok döndürürlü çözümleri kısmi bilgilerle çözmesine olanak sağlar.
+Farklı miktarda bilgi içeren örnek cümleler, özel komutlar uygulamasının, kısmi bilgilerle hem tek kararlı çözümler hem de birden çok yönlü çözümlerin çözümlenme yapmasına izin verir.
 
-Bunu göz önünde bulundurarak, örnek cümleleri aşağıda önerildiği gibi parametreleri kullanmak üzere ediniz.
+Göz önünde bulundurularak, parametreleri aşağıda önerildiği şekilde kullanmak için örnek cümleleri düzenleyin.
 
 > [!TIP]
-> Örnek Cümleler düzenleyicisinde parametrelerinize başvurmak için kıvırcık ayraçlar kullanın. - `turn {OnOff} the {SubjectDevice}`Daha önce oluşturulmuş parametrelere başvurmak için sekme tamamlamayı kullanın.
+> Örnek cümleler düzenleyicisinde, parametrelerinizi belirtmek için küme ayraçları kullanın. - `turn {OnOff} the {SubjectDevice}`Daha önce oluşturulmuş parametrelere başvurmak için sekme tamamlamayı kullanın.
 
 > [!div class="mx-imgBorder"]
-> ![Parametreleri ile Örnek Cümleler](media/custom-speech-commands/create-parameter-sentences.png)
+> ![Parametrelere sahip örnek cümleler](media/custom-speech-commands/create-parameter-sentences.png)
 
 ```
 turn {OnOff} the {SubjectDevice}
@@ -83,12 +83,12 @@ turn something {OnOff}
 turn something
 ```
 
-## <a name="add-parameters-to-completion-rule"></a>Tamamlama kuralına parametreler ekleme
+## <a name="add-parameters-to-completion-rule"></a>Tamamlama kuralına parametreler ekleyin
 
-Önceki quickstart'ta oluşturduğunuz Tamamlama [kuralını değiştirin:](./quickstart-custom-speech-commands-create-new.md)
+[Önceki hızlı](./quickstart-custom-speech-commands-create-new.md)başlangıçta oluşturduğunuz tamamlama kuralını değiştirin:
 
-1. Yeni bir Koşul ekleyin ve Gerekli parametreyi seçin. Her `OnOff` ikisini de seçin ve`SubjectDevice`
-1. Kullanılacak `OnOff` Konuşma Yanıtı eylemini `SubjectDevice`ve:
+1. Yeni bir koşul ekleyin ve gerekli parametreyi seçin. Her ikisini `OnOff` de seçin`SubjectDevice`
+1. Ve `OnOff` `SubjectDevice`kullanmak için konuşma yanıtı eylemini düzenleyin:
 
    ```
    - Ok, turning {OnOff} the {SubjectDevice}
@@ -96,19 +96,19 @@ turn something
 
 ## <a name="try-it-out"></a>Deneyin
 
-Test sohbet panelini açın ve birkaç etkileşim deneyin.
+Test sohbeti panelini açın ve birkaç etkileşimi deneyin.
 
-- Giriş: tv'yi kapatın
-- Çıkış: Tamam, tv kapatma
+- Giriş: TV 'yi kapatma
+- Çıkış: Tamam, TV 'yi kapatma
 
-- Giriş: televizyonu kapatın
-- Çıkış: Tamam, tv kapatma
+- Giriş: televizyon kapatma
+- Çıkış: Tamam, TV 'yi kapatma
 
-- Giriş: kapatın
-- Çıktı: Hangi cihaz?
-- Giriş: tv
-- Çıkış: Tamam, tv kapatma
+- Giriş: kapat
+- Çıkış: hangi cihaz?
+- Giriş: TV
+- Çıkış: Tamam, TV 'yi kapatma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Quickstart: Özel Ses ile Özel Komutları Kullanma (Önizleme)](./quickstart-custom-speech-commands-select-custom-voice.md)
+> [Hızlı başlangıç: özel sesle özel komutlar kullanma (Önizleme)](./quickstart-custom-speech-commands-select-custom-voice.md)

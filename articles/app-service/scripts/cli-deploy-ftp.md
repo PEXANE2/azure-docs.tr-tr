@@ -1,6 +1,6 @@
 ---
-title: 'CLI: FTP ile uygulama dosyalarını dağıtma'
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, ftp ile bir uygulama nın nasıl oluşturulup dosyaların nasıl dağıtılanbildiğini gösterir.
+title: 'CLı: uygulama dosyalarını FTP ile dağıtma'
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, bir uygulamanın nasıl oluşturulduğunu ve FTP ile dosya dağıtmayı gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -9,15 +9,15 @@ ms.date: 12/12/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: ccef4443661f9227163b2bbe9cd8a6475f856caa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044892"
 ---
-# <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>Azure CLI kullanarak bir Uygulama Hizmeti uygulaması oluşturun ve FTP ile dosyaları dağıtın
+# <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>Azure CLı kullanarak bir App Service uygulaması oluşturma ve FTP ile dosya dağıtma
 
-Bu örnek komut dosyası, ilgili kaynaklarıyla Birlikte App Service'de bir uygulama oluşturur ve FTP kullanarak statik bir HTML sayfası dağıtır. FTP yüklemesi için betik örnek olarak [cURL](https://en.wikipedia.org/wiki/CURL) kullanır. Dosyalarınızı karşıya yüklemek için herhangi bir FTP aracını kullanabilirsiniz.
+Bu örnek betik, App Service içinde ilgili kaynaklarla bir uygulama oluşturur ve sonra FTP kullanarak statik bir HTML sayfası dağıtır. FTP yüklemesi için betik örnek olarak [cURL](https://en.wikipedia.org/wiki/CURL) kullanır. Dosyalarınızı karşıya yüklemek için herhangi bir FTP aracını kullanabilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,8 +39,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
-| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | Kullanılabilir uygulama dağıtım profilleriiçin ayrıntıları alın. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | Kullanılabilir uygulama dağıtım profillerinin ayrıntılarını alın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

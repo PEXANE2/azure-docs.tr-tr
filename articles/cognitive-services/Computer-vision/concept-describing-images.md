@@ -1,7 +1,7 @@
 ---
-title: Resim açıklamaları - Bilgisayarlı Vizyon
+title: Görüntü açıklamaları-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Bilgisayarlı Görme API'sinin görüntü açıklaması özelliğiyle ilgili kavramlar.
+description: Görüntü İşleme API'si resim açıklaması özelliğiyle ilgili kavramlar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 7bf95a2b49608ef1f031a3b443db92b42cdae624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80244724"
 ---
-# <a name="describe-images-with-human-readable-language"></a>Görüntüleri insan tarafından okunabilir bir dille anlatın
+# <a name="describe-images-with-human-readable-language"></a>İnsan tarafından okunabilen dilin görüntülerini açıklama
 
-Computer Vision bir görüntüyü analiz edebilir ve içeriğini açıklayan insan tarafından okunabilir bir cümle oluşturabilir. Algoritma aslında farklı görsel özelliklere dayalı çeşitli açıklamalar döndürür ve her açıklamaya bir güven puanı verilir. Son çıktı, en yüksekten en düşük güvene doğru sıralanmış açıklamaların bir listesidir.
+Görüntü İşleme bir görüntüyü çözümleyebilir ve içeriğini açıklayan bir insan tarafından okunabilen tümce oluşturabilir. Algoritma aslında farklı görsel özelliklere göre birkaç açıklama döndürür ve her açıklamaya Güvenirlik puanı verilir. Nihai çıktı, en yüksek ve en düşük güvenle sıralanan açıklamaların bir listesidir.
 
-## <a name="image-description-example"></a>Resim açıklaması örneği
+## <a name="image-description-example"></a>Görüntü açıklaması örneği
 
-Aşağıdaki JSON yanıtı, örnek görüntüyü görsel özelliklerine göre açıklarken Computer Vision'ın ne döndürettiğini göstermektedir.
+Aşağıdaki JSON yanıtında, görsel özelliklerine göre örnek resim açıklanırken ne Görüntü İşleme döndürdüğü gösterilmektedir.
 
-![Manhattan'daki binaların siyah beyaz resmi](./Images/bw_buildings.png)
+![Manhattan içindeki binalara ilişkin siyah ve beyaz bir resim](./Images/bw_buildings.png)
 
 ```json
 {
@@ -58,11 +58,11 @@ Aşağıdaki JSON yanıtı, örnek görüntüyü görsel özelliklerine göre a�
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-Görüntü açıklaması özelliği, Görüntü API'sini [Çözümle'nin](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) bir parçasıdır. Bu API'yi yerel bir SDK veya REST aramaları aracılığıyla arayabilirsiniz. `Description` **visualFeatures** sorgu parametresini ekleyin. Daha sonra, tam JSON yanıtı aldığınızda, `"description"` bölümün içeriği için dize ayrıştını.
+Görüntü açıklaması özelliği, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sinin bir parçasıdır. Bu API 'YI yerel bir SDK aracılığıyla veya REST çağrıları aracılığıyla çağırabilirsiniz. `Description` **Visualfeatures** sorgu parametresine dahil edin. Ardından, tam JSON yanıtını aldığınızda, bu dizeyi yalnızca `"description"` bölüm içeriği için ayrıştırın.
 
-* [Hızlı Başlangıç: Bilgisayarlı Vizyon .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Quickstart: Görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
+* [Hızlı başlangıç: Görüntü İşleme .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Görüntüleri etiketleme](concept-tagging-images.md) ve [görüntüleri kategorilere ayırma](concept-categorizing-images.md)ile ilgili kavramları öğrenin.
+[Görüntülerin etiketlenmesi](concept-tagging-images.md) ve [görüntülerin kategorilere ayrılması](concept-categorizing-images.md)ile ilgili kavramları öğrenin.

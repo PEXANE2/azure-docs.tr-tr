@@ -1,6 +1,6 @@
 ---
-title: NFS üzerinden Verileri Azure Veri Kutusu'na kopyalama eğitimi| Microsoft Dokümanlar
-description: NFS ile Azure Veri Kutunuza verileri nasıl kopyalayatıyarı öğrenin
+title: NFS aracılığıyla Azure Data Box veri kopyalama öğreticisi | Microsoft Docs
+description: Azure Data Box NFS aracılığıyla verileri nasıl kopyalayacağınızı öğrenin
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79501832"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Öğretici: Verileri NFS ile Azure Veri Kutusu'na kopyalama
+# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Öğretici: NFS aracılığıyla Azure Data Box verileri kopyalama
 
 Bu öğreticide yerel web arabirimini kullanarak bağlantı kurma, ana bilgisayarınızdan veri kopyalama işlemi anlatılmaktadır.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 2. Data Box’ınızı teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
 3. Data Box üzerinden kopyalamak istediğiniz verileri içeren bir ana bilgisayarınız var. Konak bilgisayarınızda:
     - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
-    - Yüksek hızlı bir ağa bağlı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, 1 GbE veri bağlantısı kullanılabilir, ancak kopyalama hızları etkilenir. 
+    - Yüksek hızlı bir ağa bağlı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10-GbE bağlantı kullanılamıyorsa, 1-GbE veri bağlantısı kullanılabilir ancak kopyalama hızları etkilenecektir. 
 
 ## <a name="connect-to-data-box"></a>Data Box'a bağlanma
 
@@ -78,23 +78,23 @@ Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştire
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
-    **Her zaman paylaşım altında kopyalamak istediğiniz dosyalar için bir klasör oluşturun ve sonra dosyaları bu klasöre kopyalayın.** Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
+    **Her zaman, paylaşımın altında kopyalamak istediğiniz dosyalar için bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
 
 ## <a name="copy-data-to-data-box"></a>Data Box'a veri kopyalama
 
 Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsiniz. Verileri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
-* Verilerin uygun dosya biçimine karşılık gelen paylaşımlara kopyalandığından emin olun. Örneğin blok blobu verilerinin blok blobu paylaşımına kopyalanması gerekir. Sayfa damlalarına VHD'leri kopyalayın. Veri biçimi uygun paylaşım türüyle eşleşmiyorsa verilerin Azure'a yüklenmesi başarısız olur.
+* Verilerin uygun dosya biçimine karşılık gelen paylaşımlara kopyalandığından emin olun. Örneğin blok blobu verilerinin blok blobu paylaşımına kopyalanması gerekir. VHD 'leri sayfa bloblarına kopyalayın. Veri biçimi uygun paylaşım türüyle eşleşmiyorsa verilerin Azure'a yüklenmesi başarısız olur.
 *  Veri kopyalama sırasında veri boyutunun [Azure depolama ve Data Box sınırları](data-box-limits.md) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun. 
 * Data Box tarafından yüklenen verilerin Data Box haricinde başka bir uygulama tarafından da yüklenmesi durumunda yükleme işinde hata oluşabilir ve veri bozulması yaşanabilir.
 * Aynı anda hem SMB hem de NFS kullanmamanızı veya aynı verileri Azure'daki aynı uç hedefe kopyalamamanızı öneririz. Bu gibi durumlarda nihai sonucu kestirmek mümkün olmayabilir.
-* **Her zaman paylaşım altında kopyalamak istediğiniz dosyalar için bir klasör oluşturun ve sonra dosyaları bu klasöre kopyalayın.** Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
-* Veri Kutusu'nda NFS paylaşımından NFS'ye büyük/küçük harf duyarlı dizin ve dosya adları alıyorsanız:
-  * Dava adına korunur.
-  * Dosyalar büyük/küçük harf duyarsız.
+* **Her zaman, paylaşımın altında kopyalamak istediğiniz dosyalar için bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
+* Büyük/küçük harfe duyarlı dizin ve dosya adlarını NFS paylaşımından Data Box:
+  * Durum, ad içinde korunur.
+  * Dosyalar büyük/küçük harfe duyarlıdır.
 
-    Örneğin, kopyalama `SampleFile.txt` ve `Samplefile.Txt`, durumda Veri Kutusu'na kopyalandığında adında korunur, ancak bu aynı dosya olarak kabul edilir gibi ikinci dosya ilkinin üzerine yazacaktır.
-* Veri Kutusu'nun verilerinizi Azure Depolama'ya aktardığını doğrulayana kadar kaynak verilerin bir kopyasını koruduğunuzdan emin olun.
+    Örneğin, ve `Samplefile.Txt`kopyalama yaptıysanız `SampleFile.txt` , bu durum Data Box kopyalanırken saklanır, ancak ikinci dosya aynı dosya olarak kabul edildiği sürece ikinci dosya birincisinin üzerine yazılır.
+* Data Box verilerinizi Azure depolama 'ya aktardığından emin olana kadar kaynak verilerinin bir kopyasını sürdürtığınızdan emin olun.
 
 Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardımcı programı kullanabilirsiniz. Linux için kullanabileceğiniz bazı alternatifler: [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) veya [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -135,7 +135,7 @@ Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardım
      16 paralel kopyayla başlamanızı ve kullanılabilir kaynak durumuna göre iş parçacığı sayısını artırmanızı öneririz.
 
 > [!IMPORTANT]
-> Aşağıdaki Linux dosya türleri desteklenmez: sembolik bağlantılar, karakter dosyaları, blok dosyaları, soketler ve borular. Bu dosya **türleri, gemiye hazırla** adımı sırasında hatalara neden olur.
+> Şu Linux dosya türleri desteklenmez: sembolik bağlantılar, karakter dosyaları, blok dosyaları, yuvalar ve kanallar. Bu dosya türleri **göndermeye hazırlama** adımı sırasında hatalara neden olur.
 
 Kopyalanan dosyaları görüntülemek ve doğrulamak için hedef klasörü açın. Kopyalama işlemi sırasında hatayla karşılaşırsanız sorun giderme için hata dosyalarını indirin. Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
 

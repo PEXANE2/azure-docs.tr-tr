@@ -1,7 +1,7 @@
 ---
-title: Her Zaman Açık VPN kullanıcı tünelini yapılandırma
+title: Her zaman açık VPN Kullanıcı tüneli yapılandırma
 titleSuffix: Azure Virtual WAN
-description: Bu makalede, Virtual WAN'ınız için Her Zaman VPN kullanıcı tünelinin nasıl yapılandırılabildiğini açıklanmaktadır.
+description: Bu makalede, sanal WAN 'niz için Always on VPN Kullanıcı tünelinin nasıl yapılandırılacağı açıklanmaktadır
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: cherylmc
 ms.openlocfilehash: dd5b215b143fbaf487325744a158bb8b05707951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502873"
 ---
-# <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Virtual WAN için Her Zaman VPN kullanıcı tünelini yapılandırma
+# <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Sanal WAN için Always on VPN Kullanıcı tüneli yapılandırma
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bir noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlemeniz gerekir. Talimatlar için aşağıdaki bölümlere bakın:
+Noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlemeniz gerekir. Yönergeler için aşağıdaki bölümlere bakın:
 
 * [P2S yapılandırması oluşturma](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [Hub atamasını değiştirme](virtual-wan-point-to-site-portal.md#edit)
+* [Hub atamasını düzenleme](virtual-wan-point-to-site-portal.md#edit)
 
-## <a name="configure-a-user-tunnel"></a>Kullanıcı tünelini yapılandırma
+## <a name="configure-a-user-tunnel"></a>Kullanıcı tüneli yapılandırma
 
 [!INCLUDE [user tunnel](../../includes/vpn-gateway-vwan-always-on-user.md)]
 
-## <a name="to-remove-a-profile"></a>Profili kaldırmak için
+## <a name="to-remove-a-profile"></a>Bir profili kaldırmak için
 
 Bir profili kaldırmak için aşağıdaki adımları kullanın:
 
@@ -40,10 +40,10 @@ Bir profili kaldırmak için aşağıdaki adımları kullanın:
    C:\> Remove-VpnConnection UserTest  
    ```
 
-1. Bağlantıyı kesin ve Connect onay kutusunu **temizleyin.**
+1. Bağlantının bağlantısını kesin ve **otomatik olarak bağlan** onay kutusunu temizleyin.
 
    ![Temizleme](./media/howto-always-on-user-tunnel/disconnect.jpg)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal WAN hakkında daha fazla bilgi için [SSS](virtual-wan-faq.md)bölümüne bakın.
+Sanal WAN hakkında daha fazla bilgi için bkz. [SSS](virtual-wan-faq.md).

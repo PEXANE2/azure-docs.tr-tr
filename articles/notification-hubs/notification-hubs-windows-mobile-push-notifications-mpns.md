@@ -1,5 +1,5 @@
 ---
-title: Azure Bildirim Hub'larını kullanarak Windows Phone uygulamalarına anında iletme bildirimleri gönderme| Microsoft Dokümanlar
+title: Azure Notification Hubs kullanarak Windows Phone uygulamalara anında iletme bildirimleri gönderin | Microsoft Docs
 description: Bu öğreticide, bir Windows Phone 8 veya Windows Phone 8.1 Silverlight uygulamasına anında iletme bildirimleri göndermek için Azure Notification Hubs'ın nasıl kullanılacağını öğrenirsiniz.
 services: notification-hubs
 documentationcenter: windows
@@ -19,13 +19,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9cad4bfc474ef23492858ed3b0a6447932b589b4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80127076"
 ---
-# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Öğretici: Bildirim Hub'larını kullanarak Windows Phone uygulamalarına anında iletme bildirimleri gönderme
+# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Öğretici: Notification Hubs kullanarak Windows Phone uygulamalara anında iletme bildirimleri gönderin
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -36,7 +36,7 @@ Bu öğreticide, Microsoft Anında İletme Bildirimi Hizmeti'ni (MPNS) kullanara
 > [!NOTE]
 > Notification Hubs Windows Phone SDK'sı, Windows Anında Bildirim Hizmeti'ni (WNS) Windows Phone 8.1 Silverlight uygulamaları ile kullanmayı desteklemez. WNS'yi (MPNS yerine) Windows Phone 8.1 Silverlight uygulamaları ile kullanmak için REST API'ler kullanan [Notification Hubs - Windows Phone Silverlight öğreticisi]'ni izleyin.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bildirim hub’ı oluşturma
@@ -45,7 +45,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği.** Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir Azure hesabı oluşturun.](https://azure.microsoft.com/free/)
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Mobil geliştirme bileşenleri ile Visual Studio 2015 Express](https://www.visualstudio.com/vs/older-downloads/)
 
 Bu öğreticiyi tamamlamak Windows Phone 8 uygulamalarına ilişkin diğer tüm Notification Hubs öğreticileri için önkoşuldur.
@@ -86,7 +86,7 @@ Bu bölümde, bildirim hub’ınıza kendi kendine kaydolan bir Windows Phone uy
 
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
-5. Yöntemin `Application_Launching` üst kısmında aşağıdaki kodu `App.xaml.cs`ekleyin:
+5. Aşağıdaki kodu içindeki `Application_Launching` `App.xaml.cs`yönteminin üst kısmına ekleyin:
 
     ```csharp
     private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -114,13 +114,13 @@ Bu bölümde, bildirim hub’ınıza kendi kendine kaydolan bir Windows Phone uy
     ```
 
    > [!NOTE]
-   > Değer, `MyPushChannel` [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) koleksiyonundaki varolan bir kanalı aramak için kullanılan bir dizindir. Bu koleksiyonda bir tane bulunmuyorsa bu adla yeni bir giriş oluşturun.
+   > Değer `MyPushChannel` , [httpnotificationchannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) koleksiyonundaki mevcut bir kanalı aramak için kullanılan bir dizindir. Bu koleksiyonda bir tane bulunmuyorsa bu adla yeni bir giriş oluşturun.
 
-    Hub'ınızın adını ve önceki bölümde `DefaultListenSharedAccessSignature` belirttiğiniz bağlantı dizesini ekleyin.
+    Hub 'ınızın adını ve önceki bölümde not ettiğiniz adlı `DefaultListenSharedAccessSignature` bağlantı dizesini ekleyin.
     Bu kod, MPNS'den uygulamanın kanal URI'sini alır ve ardından bu kanal URI'sini bildirim hub'ınıza kaydeder. Bu kod ayrıca uygulama her başlatıldığında kanal URI'sinin bildirim hub'ınıza kaydedilmesini garanti eder.
 
    > [!NOTE]
-   > Bu öğretici cihaza bir bildirim gönderir. Bir döşeme bildirimi gönderdiğinde, bunun yerine `BindToShellTile` kanaldaki yöntemi aramanız gerekir. Hem tost hem de kiremit bildirimlerini desteklemek için hem de `BindToShellTile` `BindToShellToast`.
+   > Bu öğretici cihaza bir bildirim gönderir. Bir kutucuk bildirimi gönderdiğinizde, bunun yerine kanalda `BindToShellTile` yöntemini çağırmanız gerekir. Hem bildirim hem de Kutucuk bildirimlerini desteklemek için hem hem `BindToShellTile` de `BindToShellToast`çağırın.
 
 6. Çözüm Gezgini'nde **Özellikler**'i genişletin, `WMAppManifest.xml` dosyasını açın, **Özellikler** sekmesine tıklayın ve **ID_CAP_PUSH_NOTIFICATION** özelliğinin işaretlendiğinden emin olun. Uygulamanız artık anında iletme bildirimleri alabilir.
 
@@ -141,7 +141,7 @@ Bu bölümde, bildirim hub’ınıza kendi kendine kaydolan bir Windows Phone uy
 
     1. **Platformlar** için **Windows Phone**’u seçin.
     2. **Bildirim Türü** için **Bildirim**’i seçin.
-    3. **Gönder'i** seçin
+    3. **Gönder** 'i seçin
     4. Pencerenin en altındaki listede**sonucu** görürsünüz.
 
         ![Test Gönderimi penceresi](./media/notification-hubs-windows-phone-get-started/test-send-window.png)

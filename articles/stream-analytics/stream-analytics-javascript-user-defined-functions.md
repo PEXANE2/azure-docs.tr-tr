@@ -1,6 +1,6 @@
 ---
-title: Azure Akış Analizi JavaScript kullanıcı tanımlı işlevler
-description: Bu makale, Stream Analytics'te JavaScript kullanıcı tanımlı işlevlerine giriştir.
+title: JavaScript Kullanıcı tanımlı işlevleri Azure Stream Analytics
+description: Bu makale, Stream Analytics içindeki JavaScript Kullanıcı tanımlı işlevlere giriş niteliğindedir.
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
@@ -9,59 +9,59 @@ ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 03/23/2020
 ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80235380"
 ---
-# <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Akış Analizi'nde JavaScript kullanıcı tanımlı işlevler
+# <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'de Kullanıcı tanımlı JavaScript işlevleri
  
 Azure Stream Analytics, JavaScript dilinde yazılmış kullanıcı tanımlı işlevleri destekler. JavaScript’in sağladığı **String**, **RegExp**, **Math**, **Array** ve **Date** yöntemlerinden oluşan zengin küme sayesinde Stream Analytics işleriyle karmaşık veri dönüşümlerini oluşturmak daha kolay hale gelir.
 
 ## <a name="overview"></a>Genel Bakış
 
-JavaScript kullanıcı tanımlı işlevleri, dış bağlantı gerektirmeyen, yalnızca bilgi işlem den gelen skaler işlevleri destekler. Bir işlevin dönüş değeri yalnızca skaler (tek) değer olabilir. JavaScript kullanıcı tanımlı işlevini bir işe ekledikten sonra işlevi, yerleşik bir skaler değerli işlev gibi sorgunun herhangi bir yerinde kullanabilirsiniz.
+JavaScript Kullanıcı tanımlı işlevleri, dış bağlantı gerektirmeyen durum bilgisiz, yalnızca işlem olmayan skalar işlevleri destekler. Bir işlevin dönüş değeri yalnızca skaler (tek) değer olabilir. JavaScript kullanıcı tanımlı işlevini bir işe ekledikten sonra işlevi, yerleşik bir skaler değerli işlev gibi sorgunun herhangi bir yerinde kullanabilirsiniz.
 
 JavaScript kullanıcı tanımlı işlevlerini yararlı bulabileceğiniz bazı senaryolar aşağıda verilmiştir:
 * Normal ifade işlevlerine sahip dizeleri ayrıştırma ve düzenleme; örneğin, **Regexp_Replace()** and **Regexp_Extract()**
 * İkili-onaltılık dönüşüm gibi verilerin kodunu çözme ve kodlama
-* JavaScript **Math** işlevleri ile matematik hesaplamaları yapma
-* Sıralama, birleştirme, bulma ve doldurma gibi dizi işlemleri yapma
+* JavaScript **matematik** işlevleriyle matematik ve hesaplamalar yapma
+* Sort, JOIN, Find ve Fill gibi dizi işlemleri yapma
 
-Stream Analytics'te JavaScript kullanıcı tanımlı bir işlevle yapamayacağınız bazı şeyler şunlardır:
-* Örneğin, harici REST uç noktalarını çağırın, ters IP araması yapmak veya dış kaynaktan referans verileri çekme
+Stream Analytics içinde JavaScript Kullanıcı tanımlı işleviyle yapaamıyoruz.
+* Dış REST uç noktalarını çağırma, örneğin ters IP araması yapma veya bir dış kaynaktan başvuru verileri çekme
 * Girdiler/çıktılar üzerinde özel durum serileştirme veya seri durumdan çıkarma işlemi gerçekleştirme
 * Özel toplam değerler oluşturma
 
-**Date.GetDate()** veya **Math.random()** gibi işlevler işlev tanımında engellenmese de, bunları kullanmaktan kaçınmalısınız. Bu işlevler her aradığınızda aynı sonucu **döndürmez** ve Azure Akış Analizi hizmeti işlev çağrıları ve döndürülen sonuçlar dan oluşan bir günlük tutmaz. Bir işlev aynı olaylarda farklı bir sonuç döndürürse, bir iş sizin veya Stream Analytics hizmeti tarafından yeniden başlatıldığında yinelenebilirlik garanti etmez.
+**Date. GetDate ()** veya **Math. random ()** gibi işlevler işlevler tanımında engellenmese de, bunları kullanmaktan kaçının. Bu işlevler, her çağırdığınızda aynı **sonucu döndürmez ve** Azure Stream Analytics hizmeti, işlev etkinleştirmeleri ve döndürülen sonuçları günlüğe kaydetmez. Bir işlev aynı olaylar üzerinde farklı sonuçlar döndürürse, siz veya Stream Analytics hizmeti tarafından bir iş yeniden başlatıldığında yinelenebilirlik garanti edilmez.
 
-## <a name="add-a-javascript-user-defined-function-to-your-job"></a>İşinize JavaScript kullanıcı tanımlı işlev ekleme
+## <a name="add-a-javascript-user-defined-function-to-your-job"></a>İşinize Kullanıcı tanımlı JavaScript işlevi ekleme
 
 > [!NOTE]
-> Bu adımlar, bulutta çalışacak şekilde yapılandırılan Akış Analizi işlerinde çalışır. Akış Analizi işiniz Azure IoT Edge'de çalışacak şekilde yapılandırıldıysa, bunun yerine Visual Studio'yu kullanın ve [C# kullanarak kullanıcı tanımlı işlevi yazın.](stream-analytics-edge-csharp-udf.md)
+> Bu adımlar, bulutta çalışmak üzere yapılandırılmış Stream Analytics işleri üzerinde çalışır. Stream Analytics işiniz Azure IoT Edge çalışacak şekilde yapılandırıldıysa, Visual Studio 'Yu kullanın ve [C# kullanarak Kullanıcı tanımlı işlevi yazın](stream-analytics-edge-csharp-udf.md).
 
-Akış Analizi işinizde JavaScript kullanıcı tanımlı bir işlev oluşturmak için **İş Topolojisi**altında **İş Fonksiyonları'nı** seçin. Ardından, **+Ekle** açılır menüsünden **JavaScript UDF'yi** seçin. 
+Stream Analytics işte JavaScript Kullanıcı tanımlı bir işlev oluşturmak için **Iş topolojisi**altında **işlevler** ' i seçin. Ardından + açılan menü **Ekle** menüsünden **JavaScript UDF** ' ı seçin. 
 
-![JavaScript UDF ekle](./media/javascript/stream-analytics-jsudf-add.png)
+![JavaScript UDF ekleme](./media/javascript/stream-analytics-jsudf-add.png)
 
-Daha sonra aşağıdaki özellikleri sağlamanız ve **Kaydet'i**seçmeniz gerekir.
+Ardından aşağıdaki özellikleri sağlamanız ve **Kaydet**' i seçmeniz gerekir.
 
 |Özellik|Açıklama|
 |--------|-----------|
-|İşlev takma adı|Sorgunuzdaki işlevi çağırmak için bir ad girin.|
-|Çıkış türü|JavaScript kullanıcı tanımlı işleviniz tarafından Stream Analytics sorgunuza döndürülecek yazın.|
-|Fonksiyon tanımı|UdF'niz sorgunuzdan her çağrıldığında yürütülecek JavaScript işlevinizin uygulanması.|
+|İşlev diğer adı|Sorgunuzun işlevini çağırmak için bir ad girin.|
+|Çıkış türü|JavaScript Kullanıcı tanımlı işleviniz tarafından Stream Analytics sorgunuza döndürülecek tür.|
+|İşlev tanımı|UDF 'inizin Sorgunuzla çağrılması her seferinde yürütülecek JavaScript işlevinizin uygulanması.|
 
-## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript UDF'leri test edin ve sorun giderme 
+## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript UDF 'Leri test etme ve sorunlarını giderme 
 
-JavaScript UDF mantığınızı herhangi bir tarayıcıda test edebilir ve hata ayıklayabilirsiniz. Bu kullanıcı tanımlı işlevlerin mantığını hata ayıklama ve sınama şu anda Stream Analytics portalında desteklenmemektedir. İşlev beklendiği gibi çalıştığında, yukarıda belirtildiği gibi Akış Analizi işine ekleyebilir ve doğrudan sorgunuzdan çağırabilirsiniz. [Visual Studio için Stream Analytics araçlarını](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)kullanarak javascript UDF ile sorgu mantığınızı test edebilirsiniz.
+JavaScript UDF mantığınızı herhangi bir tarayıcıda test edebilir ve hatalarını ayıklayabilirsiniz. Kullanıcı tanımlı bu işlevlerin mantığını hata ayıklama ve test etme işlemi şu anda Stream Analytics portalında desteklenmiyor. İşlev beklenen şekilde çalışırsa, yukarıda bahsedilen Stream Analytics işe ekleyebilirsiniz ve ardından doğrudan Sorgunuzla çağırabilirsiniz. [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)'nı kullanarak sorgu mantığınızı JavaScript UDF ile test edebilirsiniz.
 
 JavaScript çalışma zamanı hataları önemli kabul edilir ve Etkinlik günlüğünde öne çıkarılır. Günlüğü almak için Azure portalında işinize gidin ve **Etkinlik günlüğü**’nü seçin.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Bir sorguda JavaScript kullanıcı tanımlı işlevi çağırma
 
-**Udf**ile önceden belirlenmiş işlev diğer adını kullanarak sorgunuzdaki JavaScript işlevini kolayca çağırabilirsiniz. Aşağıda, bir Akış Analizi sorgusunda çağrılan tamsayıya hexadecimal değerleri dönüştüren bir JavaScript UDF örneği verilmiştir.
+**Udf**ile önekli işlev diğer adını kullanarak sorgunuzda JavaScript işlevinizi kolayca çağırabilirsiniz. Onaltılık değerleri bir Stream Analytics sorgusunda Çağrılmakta olan tamsayıya dönüştüren bir JavaScript UDF örneği aşağıda verilmiştir.
 
 ```SQL
     SELECT
@@ -103,7 +103,7 @@ Dizi | Dizi
 Null, Tanımsız | NULL
 Başka bir tür (örneğin, bir işlev veya hata) | Desteklenmiyor (çalışma zamanı hatası ile sonuçlanır)
 
-JavaScript dili büyük/küçük harf duyarlıdır ve JavaScript kodundaki nesne alanlarının gövdesi, gelen verilerdeki alanların kasası ile eşleşmelidir. Uyumluluk düzeyi 1.0 olan işler, alanları SQL SELECT deyiminden küçük harfe dönüştürür. Uyumluluk düzeyi 1.1 ve üzeri altında, SELECT deyimindeki alanlar SQL sorgusunda belirtilen kasayla aynı kasaya sahip olacaktır.
+JavaScript dili, büyük/küçük harfe duyarlıdır ve JavaScript kodundaki nesne alanlarının büyük küçük harf ayrımına uymalıdır. Uyumluluk düzeyi 1,0 olan işler, SQL SELECT deyimindeki alanları küçük harfe dönüştürür. Uyumluluk düzeyi 1,1 ve üzeri sürümlerde, SELECT deyimindeki alanlar SQL sorgusunda belirtilen büyük küçük harflere sahip olacaktır.
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Diğer JavaScript kullanıcı tanımlı işlev desenleri
 
@@ -134,5 +134,5 @@ FROM
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Makine Öğrenimi UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
+* [Machine Learning UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
 * [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)

@@ -1,41 +1,41 @@
 ---
-title: Konteyner grubu için statik IP adresi
-description: Sanal ağda bir kapsayıcı grubu oluşturun ve statik bir ön uç IP adresini kapsayıcı web uygulamasına maruz bırakmak için bir Azure uygulama ağ geçidi kullanın
+title: Kapsayıcı grubu için statik IP adresi
+description: Bir sanal ağda kapsayıcı grubu oluşturun ve bir Azure Application Gateway kullanarak kapsayıcılı bir Web uygulamasına statik bir ön uç IP adresi sunun
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481798"
 ---
-# <a name="expose-a-static-ip-address-for-a-container-group"></a>Kapsayıcı grubu için statik bir IP adresi ortaya çıkarma
+# <a name="expose-a-static-ip-address-for-a-container-group"></a>Bir kapsayıcı grubu için statik IP adresi kullanıma sunma
 
-Bu makalede, bir Azure [uygulama ağ geçidi](../application-gateway/overview.md)kullanarak bir kapsayıcı [grubu](container-instances-container-groups.md) için statik, ortak IP adresi ortaya çıkarmak için bir yol gösterilmektedir. Azure Kapsayıcı Örnekleri'nde çalışan dışa dönük kapsayıcılı bir uygulama için statik bir giriş noktasına ihtiyaç duyduğunuzda aşağıdaki adımları izleyin. 
+Bu makalede, bir Azure [Application Gateway](../application-gateway/overview.md)kullanarak bir [kapsayıcı grubu](container-instances-container-groups.md) IÇIN statik, genel IP adresini açığa çıkarmak için bir yol gösterilmektedir. Azure Container Instances ' de çalışan, bir dış bağlantılı Kapsayıcılı uygulama için statik bir giriş noktasına ihtiyacınız olduğunda bu adımları izleyin. 
 
-Bu makalede, bu senaryo için kaynakları oluşturmak için Azure CLI'yi kullanıyorsunuz:
+Bu makalede, bu senaryoya yönelik kaynakları oluşturmak için Azure CLı 'yi kullanırsınız:
 
-* Azure sanal ağı
-* Küçük bir web uygulaması barındıran [sanal ağda (önizleme)](container-instances-vnet.md) dağıtılan bir kapsayıcı grubu
-* Ortak ön uç IP adresi, ağ geçidinde bir web sitesini barındıracak bir dinleyici ve arka uç kapsayıcı grubuna giden bir rota içeren bir uygulama ağ geçidi
+* Bir Azure sanal ağı
+* Küçük bir Web uygulamasını barındıran [Sanal ağda (Önizleme)](container-instances-vnet.md) dağıtılan bir kapsayıcı grubu
+* Genel ön uç IP adresine sahip bir uygulama ağ geçidi, ağ geçidinde bir Web sitesini barındırmak için bir dinleyici ve arka uç kapsayıcı grubuna bir rota
 
-Uygulama ağ geçidi çalıştığı ve kapsayıcı grubunun ağın devredilen alt ağında kararlı bir özel IP adresi ortaya çıkardığı sürece, kapsayıcı grubuna bu genel IP adresinden erişilebilir.
+Uygulama ağ geçidi çalıştığı ve kapsayıcı grubu, ağın Temsilcili alt ağında kararlı bir özel IP adresi kullanıma sunduğundan, kapsayıcı grubuna bu genel IP adresinden erişilebilir.
 
 > [!NOTE]
-> Azure, ağ geçidinin sağlandığı ve kullanılabilir olduğu süreye ve işlediği veri miktarına bağlı olarak bir uygulama ağ geçidi için ücret lendirilir. [Fiyatlandırmaya](https://azure.microsoft.com/pricing/details/application-gateway/)bakın.
+> Bir uygulama ağ geçidi için, ağ geçidinin sağlandığı ve kullanılabilir olduğu süre miktarına ve işlediği veri miktarına göre Azure ücretleri. Bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/application-gateway/).
 
 ## <a name="create-virtual-network"></a>Sanal ağ oluşturma
 
-Tipik bir durumda, zaten bir Azure sanal ağınız olabilir. Yoksa, aşağıdaki örnek komutlarla gösterildiği gibi bir tane oluşturun. Sanal ağ, uygulama ağ geçidi ve kapsayıcı grubu için ayrı alt ağlara ihtiyaç duyar.
+Tipik bir durumda, zaten bir Azure sanal ağınız olabilir. Bir tane yoksa, aşağıdaki örnek komutlarla gösterildiği gibi bir tane oluşturun. Sanal ağın, uygulama ağ geçidi ve kapsayıcı grubu için ayrı alt ağlara ihtiyacı vardır.
 
-İhtiyacınız varsa, bir Azure kaynak grubu oluşturun. Örnek:
+Gerekiyorsa, bir Azure Kaynak grubu oluşturun. Örneğin:
 
 ```azureci
 az group create --name myResourceGroup --location eastus
 ```
 
-[az ağ vnet komutu oluşturmak][az-network-vnet-create] ile sanal bir ağ oluşturun. Bu komut ağdaki *myAGSubnet* alt ağını oluşturur.
+[Az Network VNET Create][az-network-vnet-create] komutuyla bir sanal ağ oluşturun. Bu komut, ağda *Myagsubnet* alt ağını oluşturur.
 
 ```azurecli
 az network vnet create \
@@ -47,7 +47,7 @@ az network vnet create \
   --subnet-prefix 10.0.1.0/24
 ```
 
-Arka uç kapsayıcı grubu için bir alt ağ oluşturmak için [az ağ vnet subnet oluşturma][az-network-vnet-subnet-create] komutunu kullanın. Burada *myACISubnet*adlı.
+Arka uç kapsayıcı grubu için bir alt ağ oluşturmak için [az Network VNET subnet Create][az-network-vnet-subnet-create] komutunu kullanın. Burada *Myacıubnet*olarak adlandırılmıştır.
 
 ```azurecli
 az network vnet subnet create \
@@ -57,7 +57,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Statik bir genel IP kaynağı oluşturmak için [az ağ public-ip oluşturma][az-network-public-ip-create] komutunu kullanın. Daha sonraki bir adımda, bu adres uygulama ağ geçidinin ön ucu olarak yapılandırılır.
+Statik bir genel IP kaynağı oluşturmak için [az Network public-ip Create][az-network-public-ip-create] komutunu kullanın. Sonraki bir adımda, bu adres uygulama ağ geçidinin ön ucu olarak yapılandırılır.
 
 ```azurecli
 az network public-ip create \
@@ -69,9 +69,9 @@ az network public-ip create \
 
 ## <a name="create-container-group"></a>Kapsayıcı grubu oluştur
 
-Önceki adımda yapılandırdığınız sanal ağda bir kapsayıcı grubu oluşturmak için aşağıdaki [az kapsayıcı oluşturmayı][az-container-create] çalıştırın. 
+Önceki adımda yapılandırdığınız sanal ağda bir kapsayıcı grubu oluşturmak için aşağıdaki [az Container Create][az-container-create] öğesini çalıştırın. 
 
-Grup *myACISubnet* alt ağına dağıtılır ve `aci-helloworld` görüntüyü çeken *ek kapsayıcı* adlı tek bir örnek içerir. Belgelerdeki diğer makalelerde gösterildiği gibi, bu resim, statik bir HTML sayfasına hizmet veren Node.js ile yazılmış küçük bir web uygulamasını paketler. 
+Grup *Myacıubnet* alt ağına dağıtılır ve `aci-helloworld` görüntüyü çeken *AppContainer* adlı tek bir örnek içerir. Belgelerdeki diğer makalelerde gösterildiği gibi, bu görüntü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler. 
 
 ```azurecli
 az container create \
@@ -82,7 +82,7 @@ az container create \
   --subnet myACISubnet
 ```
 
-Başarıyla dağıtıldığında, kapsayıcı grubuna sanal ağda özel bir IP adresi atanır. Örneğin, grubun IP adresini almak için aşağıdaki [az kapsayıcı göster][az-container-show] komutunu çalıştırın:
+Başarıyla dağıtıldığında, kapsayıcı grubuna sanal ağda özel bir IP adresi atanır. Örneğin, aşağıdaki [az Container Show][az-container-show] komutunu ÇALıŞTıRARAK grubun IP adresini alın:
 
 ```azurecli
 az container show \
@@ -103,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-[Uygulama ağ geçidindeki](../application-gateway/quick-create-cli.md)adımları izleyerek sanal ağda bir uygulama ağ geçidi oluşturun. Aşağıdaki [az ağ uygulama ağ geçidi oluşturma][az-network-application-gateway-create] komutu, ortak ön uç IP adresi ve arka uç kapsayıcı grubuna giden bir rota içeren bir ağ geçidi oluşturur. Ağ geçidi ayarları yla ilgili ayrıntılar için [Uygulama Ağ Geçidi belgelerine](/azure/application-gateway/) bakın.
+[Uygulama ağ geçidi hızlı](../application-gateway/quick-create-cli.md)başlangıçdaki adımları izleyerek sanal ağda bir uygulama ağ geçidi oluşturun. Aşağıdaki [az Network Application-Gateway Create][az-network-application-gateway-create] komutu, genel ön uç IP adresine sahip bir ağ geçidi ve arka uç kapsayıcı grubuna bir yol oluşturur. Ağ Geçidi ayarları hakkında daha fazla bilgi için [Application Gateway belgelerine](/azure/application-gateway/) bakın.
 
 ```azurecli
 az network application-gateway create \
@@ -120,13 +120,13 @@ az network application-gateway create \
 ```
 
 
-Azure'un uygulama ağ geçidini oluşturması 15 dakika kadar sürebilir. 
+Azure 'un uygulama ağ geçidini oluşturması 15 dakika kadar sürebilir. 
 
-## <a name="test-public-ip-address"></a>Ortak IP adresini test edin
+## <a name="test-public-ip-address"></a>Ortak IP adresini sına
   
-Artık uygulama ağ geçidinin arkasındaki kapsayıcı grubunda çalışan web uygulamasına erişimi test edebilirsiniz.
+Artık uygulama ağ geçidinin arkasındaki kapsayıcı grubunda çalışan Web uygulamasına erişimi test edebilirsiniz.
 
-Ağ geçidinin ön uç ortak IP adresini almak için [az ağı public-ip show][az-network-public-ip-show] komutunu çalıştırın:
+Ağ geçidinin ön uç genel IP adresini almak için [az Network public-ip show][az-network-public-ip-show] komutunu çalıştırın:
 
 ```azurecli
 az network public-ip show \
@@ -136,17 +136,17 @@ az network public-ip show \
 --output tsv
 ```
 
-Çıktı, genel bir IP adresidir, benzer: `52.142.18.133`.
+Çıkış genel bir IP adresidir, şuna benzer: `52.142.18.133`.
 
-Başarılı bir şekilde yapılandırıldığında çalışan web uygulamasını görüntülemek için tarayıcınızdaki ağ geçidinin genel IP adresine gidin. Başarılı erişim şuna benzer:
+Başarılı bir şekilde yapılandırıldığında çalışan Web uygulamasını görüntülemek için, tarayıcınızda ağ geçidinin genel IP adresine gidin. Başarılı erişim şuna benzerdir:
 
 ![Bir Azure kapsayıcı örneğinde çalışan uygulamayı gösteren tarayıcı ekran görüntüsü](./media/container-instances-application-gateway/aci-app-app-gateway.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir uygulama ağ geçidinin arkasındaki arka uç sunucusu olarak WordPress kapsayıcı örneğini içeren bir kapsayıcı grubu oluşturmak için [hızlı başlangıç şablonuna](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) bakın.
-* Ayrıca, SSL sonlandırma sertifikası içeren bir uygulama ağ geçidini de yapılandırabilirsiniz. Genel [bakışve](../application-gateway/ssl-overview.md) [öğreticiye](../application-gateway/create-ssl-portal.md)bakın.
-* Senaryonuza bağlı olarak, Azure Kapsayıcı Örnekleri ile diğer Azure yük dengeleme çözümlerini kullanmayı düşünün. Örneğin, trafiği birden çok kapsayıcı örneğine ve birden çok bölgeye dağıtmak için [Azure Trafik Yöneticisi'ni](../traffic-manager/traffic-manager-overview.md) kullanın. Bu [blog yazısı](https://aaronmsft.com/posts/azure-container-instances/)bakın.
+* Bir uygulama ağ geçidinin arkasındaki arka uç sunucusu olarak WordPress kapsayıcı örneğiyle bir kapsayıcı grubu oluşturmak için [hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) ' na bakın.
+* Ayrıca, bir uygulama ağ geçidini SSL sonlandırma için bir sertifika ile yapılandırabilirsiniz. [Genel bakış](../application-gateway/ssl-overview.md) ve [öğreticiye](../application-gateway/create-ssl-portal.md)bakın.
+* Senaryonuza bağlı olarak, Azure Container Instances diğer Azure Yük Dengeleme çözümlerini kullanmayı göz önünde bulundurun. Örneğin, trafiği birden çok kapsayıcı örneğine ve birden çok bölgeye dağıtmak için [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) kullanın. Bu [blog gönderisine](https://aaronmsft.com/posts/azure-container-instances/)bakın.
 
 [az-network-vnet-create]:  /cli/azure/network/vnet#az-network-vnet-create
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create

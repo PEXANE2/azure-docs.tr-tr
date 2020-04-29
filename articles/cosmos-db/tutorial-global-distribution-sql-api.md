@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: SQL API için Azure Cosmos DB küresel dağıtım öğreticisi'
-description: "Öğretici: .Net, Java, Python ve diğer çeşitli SDK'larla SQL API'yi kullanarak Azure Cosmos DB global dağıtımını nasıl ayarlayabilirsiniz öğrenin"
+title: "Öğretici: SQL API 'SI için Azure Cosmos DB küresel dağıtım öğreticisi"
+description: "Öğretici: .net, Java, Python ve çeşitli diğer SDK 'lar ile SQL API 'sini kullanarak Azure Cosmos DB genel dağıtımı ayarlamayı öğrenin"
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80295517"
 ---
-# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Öğretici: SQL API'yi kullanarak Azure Cosmos DB global dağıtımını ayarlama
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Öğretici: SQL API 'sini kullanarak genel dağıtım Azure Cosmos DB ayarlama
 
 Bu makalede, Azure portalını kullanarak Azure Cosmos DB genel dağıtımını ayarlama ve sonra SQL API’sini kullanarak bağlanma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
@@ -22,7 +22,7 @@ Bu makale aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
 > * Azure portalını kullanarak genel dağıtımı yapılandırma
-> * [SQL API'leri](sql-api-introduction.md) kullanarak küresel dağıtımı yapılandırma
+> * [SQL API 'lerini](sql-api-introduction.md) kullanarak genel dağıtımı yapılandırma
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
@@ -78,14 +78,14 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Düğüm.js/JavaScript
+## <a name="nodejsjavascript"></a>Node. js/JavaScript
 
 > [!NOTE]
 > Uç noktaların URL’leri, uzun ömürlü sabitler olarak değerlendirilmemelidir. Bu noktada hizmet bunları güncelleştirebilir. SDK bu değişikliği otomatik olarak işler.
 >
 >
 
-Aşağıda Node.js/Javascript için bir kod örneği verilmiştir.
+Node. js/JavaScript için bir kod örneği aşağıda verilmiştir.
 
 ```JavaScript
 // Setting read region selection preference, in the following order -
@@ -100,7 +100,7 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 
 ## <a name="python-sdk"></a>Python SDK'sı
 
-Aşağıdaki kod, Python SDK'yı kullanarak tercih edilen konumların nasıl ayarlanır olduğunu gösterir:
+Aşağıdaki kod, Python SDK kullanarak tercih edilen konumların nasıl ayarlanacağını gösterir:
 
 ```python
 
@@ -110,9 +110,9 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>Java V2 SDK
+## <a name="java-v2-sdk"></a>Java v2 SDK
 
-Aşağıdaki kod, Java SDK'yı kullanarak tercih edilen konumların nasıl ayarlanır olduğunu gösterir:
+Aşağıdaki kod, Java SDK kullanarak tercih edilen konumların nasıl ayarlanacağını gösterir:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -167,11 +167,11 @@ Hizmet, bölgelerin listesini ve çoğaltmalar için karşılık gelen Azure Cos
 
 
 * Tüm PUT, POST ve DELETE istekleri, belirtilen yazma URI’sine gitmelidir
-* Tüm GET'ler ve diğer salt okunur istekler (örneğin sorgular) istemcinin seçiminin herhangi bir bitiş noktasına gidebilir
+* Tüm ve diğer salt okuma istekleri (örneğin sorgular), istemci seçiminin herhangi bir uç noktasına gidebilir
 
 Salt okunur bölgelere yönelik yazma istekleri, HTTP hata kodu 403 (“Yasak”) ile başarısız olur.
 
-Yazma bölgesi istemcinin ilk bulma aşamasından sonra değişirse, sonraki yazma bölgesine yazdığı yazmalar HTTP hata kodu 403 ("Yasak") ile başarısız olur. İstemci daha sonra güncelleştirilmiş yazma bölgesini almak için bölgelerin listesini ALIR (GET).
+Yazma bölgesi istemcinin ilk bulma aşamasından sonra değişirse, önceki yazma bölgesine sonraki yazma işlemleri HTTP hata kodu 403 ("yasak") ile başarısız olur. İstemci daha sonra güncelleştirilmiş yazma bölgesini almak için bölgelerin listesini ALIR (GET).
 
 Hepsi bu kadar. Böylece bu öğretici tamamlanmış olur. [Azure Cosmos DB’deki tutarlılık düzeyleri](consistency-levels.md) bölümünü okuyarak genel olarak çoğaltılan hesabınızın tutarlılığının nasıl yönetileceğini öğrenebilirsiniz. Ayrıca genel veritabanı çoğaltmasının Azure Cosmos DB’de nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure Cosmos DB ile verileri genel olarak dağıtma](distribute-data-globally.md).
 

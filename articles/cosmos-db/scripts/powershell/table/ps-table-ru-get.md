@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Tablo API'sı için iş gücü (RU/s) almak için PowerShell komut dosyası
-description: Azure PowerShell komut dosyası - Tablo API'si için Azure Cosmos DB Get Throughput (RU/s)
+title: Azure Cosmos DB için üretilen iş (RU/s) almak için PowerShell betiği Tablo API'si
+description: Azure PowerShell betiği-Azure Cosmos DB Get üretilen Iş (RU/s) Tablo API'si
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 0129b03e578d00689f085281d0499830e6ba37c2
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365567"
 ---
-# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB için bir tablo için Iş-IşLama (RU/s) alın - Tablo API
+# <a name="get-throughput-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB Tablo API'si için bir tablo için üretilen Iş (RU/sn) Al
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,8 +39,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Al-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Belirtilen Tablo API Tablosunun iş başına geçen değerini alır. |
-|**Azure Kaynak Grupları**| |
+| [Get-Azcosmosdbtableverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | Belirtilen Tablo API'si tablosunun üretilen iş değerini alır. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

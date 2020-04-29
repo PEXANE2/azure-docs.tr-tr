@@ -1,5 +1,5 @@
 ---
-title: Bing Haber Arama Python istemci kitaplığı hızlı başlat
+title: Bing Haber Arama Python istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: c1bd0d86a3fd9d19d67d84b9b05955421373e01e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503884"
 ---
-Python için Bing Haberler Arama istemci kitaplığı ile haber aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Aramaçoğu programlama diliyle uyumlu bir REST API'si olsa da, istemci kitaplığı hizmeti uygulamalarınız için tümleştirmenin kolay bir yolunu sağlar. Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)bulunabilir.
+Python için Bing Haber Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Piton](https://www.python.org/) 2.x veya 3.x
+* [Python](https://www.python.org/) 2. x veya 3. x
 
-Python geliştirmeniz için sanal bir [ortam](https://docs.python.org/3/tutorial/venv.html) kullanmanız önerilir. [Venv modülü](https://pypi.python.org/pypi/virtualenv)ile sanal ortamı kurabilir ve başlatabilirsiniz. Python 2.7 için bir virtualenv yüklemeniz gerekir. Şularla sanal bir ortam oluşturabilirsiniz:
+Python geliştirme için [sanal bir ortam](https://docs.python.org/3/tutorial/venv.html) kullanmanız önerilir. [Venv modülü](https://pypi.python.org/pypi/virtualenv)ile sanal ortamı yükleyebilir ve başlatabilirsiniz. Python 2,7 için bir virtualenv yüklemelisiniz. İle sanal bir ortam oluşturabilirsiniz:
 
 ```console
 python -m venv mytestenv
 ```
 
-Bing Haberler Arama istemci kitaplığı bağımlılıklarını bu komutla yükleyebilirsiniz:
+Bing Haber Arama istemci kitaplığı bağımlılıklarını şu komutla yükleyebilirsiniz:
     
 ```console
 python -m pip install azure-cognitiveservices-search-newssearch
@@ -37,7 +37,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki kitaplıkları aktarın. Abonelik anahtarınız ve arama teriminiz için bir değişken oluşturun.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki kitaplıkları içeri aktarın. Abonelik anahtarınız ve arama teriminiz için bir değişken oluşturun.
 
     ```python
     from azure.cognitiveservices.search.newssearch import NewsSearchClient
@@ -47,7 +47,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     search_term = "Quantum Computing"
     ```
 
-## <a name="initialize-the-client-and-send-a-request"></a>İstemciyi başlatma ve istek gönderme
+## <a name="initialize-the-client-and-send-a-request"></a>İstemciyi başlatıp istek gönder
 
 1. `CognitiveServicesCredentials` örneği oluşturun.
     
@@ -55,7 +55,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     client = NewsSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
-2. Haber Arama API'sine bir arama sorgusu gönderin, yanıtı depolayın.
+2. Haber Arama API 'sine bir arama sorgusu gönderin, yanıtı depolayın.
 
     ```python
     news_result = client.news.search(query=search_term, market="en-us", count=10)
@@ -63,7 +63,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
 
 ## <a name="parse-the-response"></a>Yanıtı ayrıştırma
 
-Herhangi bir arama sonucu bulunursa, ilk web sayfası sonucunu yazdırın:
+Herhangi bir arama sonucu bulunursa, ilk Web sayfası sonucunu Yazdır:
 
 ```python
 if news_result.value:

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: MariaDB için bir Azure Veritabanı Tasarla - Azure CLI'
-description: Bu öğretici, komut satırından Azure CLI kullanarak MariaDB sunucusu ve veritabanı için Azure Veritabanı'nın nasıl oluşturulup yönetilenini açıklar.
+title: 'Öğretici: MariaDB için Azure veritabanı tasarlama-Azure CLı'
+description: Bu öğreticide, komut satırından Azure CLı kullanarak MariaDB sunucusu ve veritabanı için Azure veritabanı 'nın nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79534856"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Öğretici: Azure CLI kullanarak MariaDB için bir Azure Veritabanı tasarla
+# <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Öğretici: Azure CLı kullanarak MariaDB için Azure veritabanı tasarlama
 
-MariaDB için Azure Veritabanı, Microsoft bulutundaki MariaDB Community Edition veritabanı altyapısına dayalı ilişkisel bir veritabanı hizmetidir. Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (komut satırı arabirimi) ve diğer yardımcı programları kullanırsınız:
+MariaDB için Azure veritabanı, Microsoft bulutundaki MariaDB Community Edition veritabanı altyapısını temel alan ilişkisel bir veritabanı hizmetidir. Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (komut satırı arabirimi) ve diğer yardımcı programları kullanırsınız:
 
 > [!div class="checklist"]
 > * MariaDB için Azure Veritabanı oluşturma
@@ -51,9 +51,9 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>MariaDB için Azure Veritabanı sunucusu oluşturma
-`az mariadb server create` Komutu içeren MariaDB sunucusu için bir Azure Veritabanı oluşturun. Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
+`az mariadb server create` Komutuyla bir MariaDB sunucusu Için Azure veritabanı oluşturun. Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
 
-Aşağıdaki örnek, kaynak grubunda `westus` `myresourcegroup` adı olan MariaDB sunucusu için bir `mydemoserver`Azure Veritabanı oluşturur. Sunucunun `myadmin` şeklinde bir oturum açma adı vardır. Bu genel amaçlı, 2 vCores ile Gen 5 sunucu. `<server_admin_password>` değerini kendi değerinizle değiştirin.
+Aşağıdaki örnek, adıyla `westus` `myresourcegroup` `mydemoserver`kaynak grubunda bulunan MariaDB sunucusu için bir Azure veritabanı oluşturur. Sunucunun `myadmin` şeklinde bir oturum açma adı vardır. 2 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. `<server_admin_password>` değerini kendi değerinizle değiştirin.
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
@@ -70,7 +70,7 @@ Bölgeler ve katmanlar için geçerli olan değerleri anlamak için lütfen [fiy
 
 
 ## <a name="configure-firewall-rule"></a>Güvenlik duvarı kuralını yapılandırma
-`az mariadb server firewall-rule create` Komutla MariaDB sunucu düzeyinde güvenlik duvarı kuralı için bir Azure Veritabanı oluşturun. Sunucu düzeyinde güvenlik duvarı kuralı, **mysql** komut satırı aracı veya MySQL Workbench gibi harici bir uygulamanın Azure MariaDB hizmet güvenlik duvarı üzerinden sunucunuza bağlanmasına olanak tanır.
+`az mariadb server firewall-rule create` Komutuyla bir MariaDB sunucu düzeyi güvenlik duvarı kuralı Için Azure veritabanı oluşturun. Sunucu düzeyinde güvenlik duvarı kuralı, **MySQL** komut satırı aracı veya MySQL çalışma ekranı gibi bir dış uygulamanın Azure MariaDB hizmet güvenlik duvarı üzerinden sunucunuza bağlanmasını sağlar.
 
 Aşağıdaki örnek `AllowMyIP` adında ve 192.168.0.1 IP adresinden gelen bağlantılara izin veren bir güvenlik duvarı kuralı oluşturur. IP adresini veya IP adresi aralıklarını bağlandığınız adreslere göre değiştirin.
 
@@ -133,7 +133,7 @@ mysql> USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Veritabanında tablo oluşturma
-Artık MariaDB veritabanı için Azure Veritabanı'na nasıl bağlanabileceğinizi bildiğinize göre, bazı temel görevleri tamamlayın.
+Artık MariaDB veritabanı için Azure veritabanı 'na nasıl bağlanabildiğinizi öğreneceğimize göre bazı temel görevleri tamamlayabilirsiniz.
 
 İlk olarak, bir tablo oluşturun ve bu tabloya bazı veriler yükleyin. Envanter bilgilerini depolayan bir tablo oluşturalım.
 ```sql
@@ -170,7 +170,7 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Bir veritabanını daha önceki bir noktaya geri yükleme
-Bu tabloyu yanlışlıkla sildiğinizi düşünün. Bu işlemi kolayca geri alamazsınız. MariaDB için Azure Veritabanı, son 35 gün içinde herhangi bir zaman noktasına geri dönmenizi ve bu noktayı yeni bir sunucuya geri yüklemenizi sağlar. Bu yeni sunucuyu silinen verilerinizi kurtarmak için kullanabilirsiniz. Şu adımlar, örnek sunucuyu tablo eklenmeden önceki bir noktaya geri yükler.
+Bu tabloyu yanlışlıkla sildiğinizi düşünün. Bu işlemi kolayca geri alamazsınız. MariaDB için Azure veritabanı, son 35 gün içinde herhangi bir noktaya geri dönmenize ve bu zaman noktasını yeni bir sunucuya geri yüklemenize olanak tanır. Bu yeni sunucuyu silinen verilerinizi kurtarmak için kullanabilirsiniz. Şu adımlar, örnek sunucuyu tablo eklenmeden önceki bir noktaya geri yükler.
 
 Geri yüklemek için şu bilgiler gereklidir:
 

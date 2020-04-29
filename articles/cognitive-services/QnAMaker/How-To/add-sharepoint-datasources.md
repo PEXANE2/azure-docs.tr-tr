@@ -1,77 +1,77 @@
 ---
-title: SharePoint dosyaları - QnA Maker
-description: Active Directory ile güvence altına alınabilecek sorular ve yanıtlarla bilgi tabanını zenginleştirmek için bilgi tabanınıza güvenli SharePoint veri kaynakları ekleyin.
+title: SharePoint dosyaları-Soru-Cevap Oluşturma
+description: Bilgi bankasını, Active Directory ile güvenliği sağlanabileceği sorular ve yanıtlar ile zenginleştirerek bilgi bankalarınıza güvenli SharePoint veri kaynakları ekleyin.
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80294871"
 ---
-# <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Bilgi tabanınıza güvenli bir SharePoint veri kaynağı ekleyin
+# <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Bilgi tabanınız için güvenli bir SharePoint veri kaynağı ekleme
 
-Bilgi tabanını Active Directory ile güvence altına alabilecek sorular ve yanıtlarla zenginleştirmek için güvenli bulut tabanlı SharePoint veri kaynaklarını bilgi tabanınıza ekleyin.
+Bilgi bankasını, Active Directory ile güvenliği sağlanabileceği sorular ve yanıtlar ile zenginleştirerek bilgi bankalarınıza güvenli bulut tabanlı SharePoint veri kaynakları ekleyin.
 
-QnA Maker yöneticisi olarak bilgi tabanınıza güvenli bir SharePoint belgesi eklediğinizde, QnA Maker için Etkin Dizin izni istemeniz gerekir. Bu izin, SharePoint erişimi için QnA Maker'a Active Directory yöneticisinden verildikten sonra, yeniden verilmesi gerekmez. Bilgi tabanına eklenen her belge, aynı SharePoint kaynağındaysa yetkilendirmeye gerek duymaz.
+Bilgi tabanınızı Soru-Cevap Oluşturma Yöneticisi olarak güvenli bir SharePoint belgesi eklediğinizde Soru-Cevap Oluşturma için Active Directory izin istemeniz gerekir. Bu izin Active Directory yöneticisinden SharePoint 'e erişim için Soru-Cevap Oluşturma verildiğinde, yeniden verilmesi gerekmez. Bilgi Bankası 'na eklenen her bir sonraki belge, aynı SharePoint kaynağıdır ise yetkilendirmeye ihtiyaç duymayacak.
 
-QnA Maker bilgi bankası yöneticisi Active Directory yöneticisi değilse, bu işlemi tamamlamak için Active Directory yöneticisiyle iletişim kurmanız gerekir.
+Soru-Cevap Oluşturma Bilgi Bankası Yöneticisi Active Directory yöneticisi değilse, bu işlemi tamamlaması için Active Directory Manager ile iletişim kurması gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bulut tabanlı SharePoint - QnA Maker izinler için Microsoft Graph kullanır. SharePoint'iniz şirket içindeyse, Microsoft Graph izinleri belirleyemeyeceğinden SharePoint'ten çıkaramazsınız.
-* URL formatı - QnA Maker yalnızca paylaşım için oluşturulan ve biçime uygun olan SharePoint url'lerini destekler`https://\*.sharepoint.com`
+* Bulut tabanlı SharePoint-Soru-Cevap Oluşturma izinler için Microsoft Graph kullanır. SharePoint şirket içi ise, Microsoft Graph izinleri belirleyemeyeceği için SharePoint 'ten ayıklanamaz.
+* URL biçimi-Soru-Cevap Oluşturma yalnızca paylaşım için oluşturulan ve biçimdeki SharePoint URL 'lerini destekler`https://\*.sharepoint.com`
 
-## <a name="add-supported-file-types-to-knowledge-base"></a>Desteklenen dosya türlerini bilgi tabanına ekleme
+## <a name="add-supported-file-types-to-knowledge-base"></a>Bilgi Bankası 'nda desteklenen dosya türlerini ekleme
 
-Bir SharePoint sitesinden tüm QnA Maker destekli [dosya türlerini](../Concepts/content-types.md) bilgi tabanınıza ekleyebilirsiniz. Dosya kaynağı güvenliyse [izin vermeniz](#permissions) gerekebilir.
+Soru-Cevap Oluşturma tarafından desteklenen tüm [dosya türlerini](../Concepts/content-types.md) , bir SharePoint sitesinden bilgi tabanınızdan ekleyebilirsiniz. Dosya kaynağının güvenliği varsa, [izin](#permissions) vermeniz gerekebilir.
 
-1. SharePoint sitesinin bulunduğu kitaplıktan, dosyanın elips menüsünü seçin. `...`
-1. Dosyanın URL'sini kopyalayın.
+1. SharePoint sitesindeki kitaplıktan, dosyanın üç nokta menüsünü seçin `...`.
+1. Dosyanın URL 'sini kopyalayın.
 
-   ![Dosyanın elips menüsünü seçerek sharepoint dosya URL'sini alın ve ardından URL'yi kopyalayın.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
+   ![Dosyanın üç nokta menüsünü seçip URL 'yi kopyalayarak SharePoint dosya URL 'sini alın.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. QnA Maker portalında, **Ayarlar** sayfasında, [URL'yi](manage-knowledge-bases.md#edit-knowledge-base) bilgi tabanına ekleyin.
+1. Soru-Cevap Oluşturma portalında, **Ayarlar** sayfasında, Bilgi Bankası 'na [URL 'yi ekleyin](manage-knowledge-bases.md#edit-knowledge-base) .
 
-### <a name="images-with-sharepoint-files"></a>SharePoint dosyaları yla görüntüler
+### <a name="images-with-sharepoint-files"></a>SharePoint dosyaları içeren görüntüler
 
-Dosyalarda resim varsa, bunlar ayıklanmaz. Dosya QnA çiftleri içine ayıklandıktan sonra görüntüyü QnA Maker portalından ekleyebilirsiniz.
+Dosyalar görüntüleri içeriyorsa, bunlar ayıklanmaz. Dosya QnA çiftlerine ayıklandıktan sonra, Soru-Cevap Oluşturma portalından görüntüyü ekleyebilirsiniz.
 
-Aşağıdaki işaretleme sözdizimi ile görüntü ekleyin:
+Aşağıdaki markaşağı sözdizimi ile görüntüyü ekleyin:
 
 ```markdown
 ![Explanation or description of image](URL of public image)
 ```
 
-Kare köşeli ayraçlarda `[]`metin, görüntüyü açıklar. Parantez içinde URL, `()`görüntüye doğrudan bağlantıdır.
+Köşeli parantezdeki `[]`metin, görüntüyü açıklar. Parantez `()`içindeki URL, resmin doğrudan bağlantıdır.
 
-QnA çiftini etkileşimli test panelinde, QnA Maker portalında test ettiğinizde, görüntü işaretleme metni yerine görüntülenir. Bu, görüntünün istemci uygulamanızdan genel olarak alınabileceğini doğrular.
+Etkileşimli test panelinde QnA çiftini test ettiğinizde, Soru-Cevap Oluşturma portalında, görüntü, markı metni yerine görüntülenir. Bu, görüntünün istemci uygulamanızdan herkese açık bir şekilde alındığını doğrular.
 
 ## <a name="permissions"></a>İzinler
 
-İzin verme, sharepoint sunucusundan güvenli bir dosya bilgi tabanına eklendiğinde gerçekleşir. SharePoint'in nasıl ayarlıştırılabileceğine ve dosyayı ekleyen kişinin izinlerine bağlı olarak, bu şunları gerektirebilir:
+Bir SharePoint sunucusundan güvenli bir dosya bir bilgi tabanına eklendiğinde izin verilmesi gerçekleşir. SharePoint 'in nasıl ayarlandığına ve dosyayı ekleyen kişinin izinlerine bağlı olarak, bunun gerekebilir:
 
-* ek adım yok - dosyayı ekleyen kişi gereken tüm izinlere sahiptir.
-* hem [bilgi bankası yöneticisi](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) hem de Active [Directory yöneticisi](#active-directory-manager-grant-file-read-access-to-qna-maker)tarafından adımlarla.
+* ek adım yok-dosyayı ekleyen kişi gereken tüm izinlere sahiptir.
+* hem [Bilgi Bankası Yöneticisi](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) hem de [Active Directory Yöneticisi](#active-directory-manager-grant-file-read-access-to-qna-maker)ile adımlar.
 
 Aşağıda listelenen adımlara bakın.
 
-### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>Bilgi bankası yöneticisi: QnA Maker portalına SharePoint veri kaynağı ekleyin
+### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>Bilgi Bankası Yöneticisi: Soru-Cevap Oluşturma portalında SharePoint veri kaynağı ekleme
 
-**QnA Maker yöneticisi** bir bilgi tabanına güvenli bir SharePoint belgesi eklediğinde, bilgi bankası yöneticisi Active Directory yöneticisinin tamamlaması gereken bir izin isteği başlatır.
+**Soru-cevap oluşturma Yöneticisi** bir bilgi tabanına güvenli bir SharePoint belgesi eklediğinde, Bilgi Bankası yöneticisi, Active Directory yöneticisinin tamamlaması gereken bir izin isteği başlatır.
 
-İstek, Active Directory hesabına kimlik doğrulamak için açılan pencereyle başlar.
+İstek bir Active Directory hesabının kimliğini doğrulamak için bir açılır pencere ile başlar.
 
-![Kullanıcı Hesabını Doğrula](../media/add-sharepoint-datasources/authenticate-user-account.png)
+![Kullanıcı hesabının kimliğini doğrulama](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-QnA Maker yöneticisi hesabı seçtikten sonra, Azure Active Directory yöneticisi, QnA Maker uygulamasının (QnA Maker yöneticisi değil) SharePoint kaynağına erişmesine izin vermek için gereken bir bildirim alır. Azure Etkin Dizin yöneticisinin bunu her SharePoint kaynağı için yapması gerekir, ancak bu kaynaktaki her belgeyi yapmaz.
+Soru-Cevap Oluşturma Yöneticisi hesabı seçtikten sonra, Azure Active Directory Yöneticisi SharePoint kaynağına Soru-Cevap Oluşturma uygulamanın (Soru-Cevap Oluşturma Manager değil) erişimine izin vermek gerektiğini belirten bir bildirim alır. Azure Active Directory yöneticisinin bu kaynaktaki her belgeyi değil, her SharePoint kaynağı için bunu yapması gerekir.
 
-### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Etkin dizin yöneticisi: QnA Maker'a dosya okuma izni
+### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active Directory Yöneticisi: Soru-Cevap Oluşturma dosya okuma erişimi verme
 
-Active Directory yöneticisinin (QnA Maker yöneticisi değil) QnA Maker'a sharepoint kaynağına erişmek için bu [bağlantıyı](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) seçerek QnA Maker Portal SharePoint kurumsal uygulamasına dosya okuma izinleri için yetki vermesi gerekir.
+Active Directory Yöneticisi (Soru-Cevap Oluşturma Yöneticisi değil), Soru-Cevap Oluşturma Portal SharePoint Enterprise uygulamasına dosya okuma izinleri sağlamak üzere [Bu bağlantıyı](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) seçerek SharePoint kaynağına erişmek için soru-cevap oluşturma erişim vermelidir.
 
-![Azure Active Directory yöneticisi interaktif olarak izin verir](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
+![Azure Active Directory Yöneticisi izin etkileşimli olarak izin verir](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
 <!--
 The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharePoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`.
@@ -109,19 +109,19 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
     ![Grant required permissions](../media/add-sharepoint-datasources/grant-required-permissions.png)
 -->
-### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>Azure Active Directory yönetici merkezinden erişim izni verme
+### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinden erişim izni verme
 
-1. Active Directory yöneticisi Azure portalında imzalar ve **[Kurumsal uygulamaları](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** açar.
+1. Active Directory Yöneticisi Azure portal oturum açar ve **[Kurumsal uygulamaları](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** açar.
 
-1. `QnAMakerPortalSharePoint` QnA Maker uygulamasını seçin.
+1. `QnAMakerPortalSharePoint` Soru-cevap oluşturma seçin uygulamasını arayın.
 
-    [![Kurumsal uygulamalar listesinde QnAMakerPortalSharePoint ara](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![Kurumsal uygulamalar listesinde QnAMakerPortalSharePoint araması yapın](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. **Güvenlik**altında, **İzinler**gidin. **Organizasyon için Hibe yönetici onayı**seçin.
+1. **Güvenlik**altında **izinler**' e gidin. **Kuruluş için yönetici onayı ver**' i seçin.
 
-    [![Active Directory Admin için kimlik doğrulaması kullanıcıseçin](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+    [![Active Directory Yöneticisi için kimliği doğrulanmış kullanıcı seçin](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
-1. Active Directory için izin verme izinleri olan bir Oturum Açma hesabı seçin.
+1. Active Directory izin verme izinleri olan bir oturum açma hesabı seçin.
 
 
 
@@ -186,4 +186,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi tabanınızda işbirliği yapın](collaborate-knowledge-base.md)
+> [Bilgi bankasında işbirliği yapın](collaborate-knowledge-base.md)

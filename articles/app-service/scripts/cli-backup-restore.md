@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Bir uygulamayı yedeklemeden geri yükleme'
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulamayı yedeklemeden nasıl geri yükleyini gösterir.
+title: 'CLı: bir uygulamayı yedekten geri yükleme'
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, bir uygulamanın bir yedekten nasıl geri yükleneceğini gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -10,13 +10,13 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 8c3c0f4f57d21e5c07867a2c43ce3c3114f79a9b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80058864"
 ---
-# <a name="restore-a-web-app-from-a-backup-using-cli"></a>CLI kullanarak yedekten web uygulamasını geri yükleme
+# <a name="restore-a-web-app-from-a-backup-using-cli"></a>CLı kullanarak bir Web uygulamasını yedekten geri yükleme
 
 Bu örnek betik, App Service’te ilgili kaynaklarıyla birlikte bir web uygulaması oluşturur ve sonra bu web uygulaması için tek seferlik bir yedekleme oluşturur. 
 

@@ -1,7 +1,7 @@
 ---
-title: Metinden metne konuşma için kaynak dil nasıl belirtilir?
+title: Konuşmayı metne dönüştürme için kaynak dilini belirtme
 titleSuffix: Azure Cognitive Services
-description: Speech SDK, konuşmayı metne dönüştürürken kaynak dili belirtmenizi sağlar. Bu makalede, Konuşma hizmetinin kaynak dili bilmesi ve özel bir model hedefi sağlaması için FromConfig ve SourceLanguageConfig yöntemlerinin nasıl kullanılacağı açıklanmaktadır.
+description: Konuşma SDK 'Sı, konuşmayı metne dönüştürürken kaynak dilini belirtmenize olanak tanır. Bu makalede, konuşma hizmetinin kaynak dili bilmesini ve özel bir model hedefi sağlamasını sağlamak için FromConfig ve SourceLanguageConfig yöntemlerinin nasıl kullanılacağı açıklanır.
 services: cognitive-services
 author: susanhu
 manager: nitinme
@@ -12,34 +12,34 @@ ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80235959"
 ---
-# <a name="specify-source-language-for-speech-to-text"></a>Metinden metne konuşma için kaynak dili belirtin
+# <a name="specify-source-language-for-speech-to-text"></a>Konuşmadan metne yönelik kaynak dilini belirtin
 
-Bu makalede, konuşma tanıma için Konuşma SDK'sına aktarılan bir ses girişinin kaynak dilini nasıl belirteceğinizi öğreneceksiniz. Ayrıca, geliştirilmiş tanıma için özel bir konuşma modeli belirtmek için örnek kod sağlanır.
+Bu makalede, konuşma tanıma için konuşma SDK 'sına geçilen bir ses girişi için kaynak dilin nasıl belirtildiğini öğreneceksiniz. Ayrıca, geliştirilmiş tanıma için özel bir konuşma modeli belirtmek üzere örnek kod sağlanır.
 
 ::: zone pivot="programming-language-csharp"
 
-## <a name="how-to-specify-source-language-in-c"></a>C'de kaynak dili nasıl belirtilir? #
+## <a name="how-to-specify-source-language-in-c"></a>C 'de kaynak dilini belirtme #
 
-Bu örnekte, kaynak dil açıkça yapı kullanılarak `SpeechRecognizer` bir parametre olarak sağlanır.
+Bu örnekte, kaynak dili açıkça yapı kullanılarak `SpeechRecognizer` bir parametre olarak sağlanır.
 
 ```csharp
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Bu örnekte, kaynak dil `SourceLanguageConfig`kullanılarak sağlanır. Daha sonra, oluşturmak için `sourceLanguageConfig` `SpeechRecognizer` bir parametre olarak geçirilir.
+Bu örnekte, kaynak dili kullanılarak `SourceLanguageConfig`sunulmaktadır. `sourceLanguageConfig` Ardından, yapı için `SpeechRecognizer` bir parametre olarak geçirilir.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
 var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Bu örnekte, kaynak dil ve özel `SourceLanguageConfig`bitiş noktası kullanılarak sağlanır. Daha sonra, oluşturmak için `sourceLanguageConfig` `SpeechRecognizer` bir parametre olarak geçirilir.
+Bu örnekte, kaynak dili ve özel uç nokta kullanılarak `SourceLanguageConfig`sağlanır. `sourceLanguageConfig` Ardından, yapı için `SpeechRecognizer` bir parametre olarak geçirilir.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -47,29 +47,29 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 ```
 
 >[!Note]
-> `SpeechRecognitionLanguage`ve `EndpointId` set yöntemleri C#'daki `SpeechConfig` sınıftan çıkarılatılır. Bu yöntemlerin kullanımı önerilmez ve bir `SpeechRecognizer`.
+> `SpeechRecognitionLanguage`ve `EndpointId` set yöntemleri C# ' deki `SpeechConfig` sınıftan kullanımdan kaldırılmıştır. Bu yöntemlerin kullanımı önerilmez ve bir `SpeechRecognizer`oluştururken kullanılmamalıdır.
 
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 
 
-## <a name="how-to-specify-source-language-in-c"></a>C++'da kaynak dili nasıl belirtilir?
+## <a name="how-to-specify-source-language-in-c"></a>C++ ' da kaynak dilini belirtme
 
-Bu örnekte, kaynak dil `FromConfig` yöntemi kullanılarak bir parametre olarak açıkça sağlanır.
+Bu örnekte kaynak dili, `FromConfig` yöntemi kullanılarak açıkça bir parametre olarak sağlanır.
 
 ```C++
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-Bu örnekte, kaynak dil `SourceLanguageConfig`kullanılarak sağlanır. Daha sonra, bir parametre `FromConfig` olarak ne `recognizer`zaman oluştururken `sourceLanguageConfig` geçirilir .
+Bu örnekte, kaynak dili kullanılarak `SourceLanguageConfig`sunulmaktadır. `sourceLanguageConfig` Ardından,, oluşturma `FromConfig` sırasında parametresi olarak geçirilir `recognizer`.
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Bu örnekte, kaynak dil ve özel `SourceLanguageConfig`bitiş noktası kullanılarak sağlanır. Parametre `sourceLanguageConfig` olarak `FromConfig` aktarılır. `recognizer`
+Bu örnekte, kaynak dili ve özel uç nokta kullanılarak `SourceLanguageConfig`sağlanır. `sourceLanguageConfig` , Oluşturma `FromConfig` sırasında parametresi olarak geçirilir `recognizer`.
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -77,28 +77,28 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 ```
 
 >[!Note]
-> `SetSpeechRecognitionLanguage`ve `SetEndpointId` C++ ve Java'daki sınıftan `SpeechConfig` amortismana alınan yöntemlerdir. Bu yöntemlerin kullanımı önerilmez ve bir `SpeechRecognizer`.
+> `SetSpeechRecognitionLanguage`ve `SetEndpointId` , C++ ve Java 'daki `SpeechConfig` sınıfından kullanım dışı yöntemlerdir. Bu yöntemlerin kullanımı önerilmez ve bir `SpeechRecognizer`oluştururken kullanılmamalıdır.
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-## <a name="how-to-specify-source-language-in-java"></a>Java'da kaynak dil nasıl belirtilir?
+## <a name="how-to-specify-source-language-in-java"></a>Java 'da kaynak dilini belirtme
 
-Bu örnekte, kaynak dil yeni `SpeechRecognizer`bir .
+Bu örnekte, yeni `SpeechRecognizer`bir oluşturma sırasında kaynak dili açık olarak sağlanır.
 
 ```Java
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Bu örnekte, kaynak dil `SourceLanguageConfig`kullanılarak sağlanır. Daha sonra, yeni `sourceLanguageConfig` `SpeechRecognizer`bir parametre olarak geçirilir.
+Bu örnekte, kaynak dili kullanılarak `SourceLanguageConfig`sunulmaktadır. `sourceLanguageConfig` Ardından, yeni `SpeechRecognizer`bir oluşturma sırasında parametresi olarak geçirilir.
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Bu örnekte, kaynak dil ve özel `SourceLanguageConfig`bitiş noktası kullanılarak sağlanır. Daha sonra, yeni `sourceLanguageConfig` `SpeechRecognizer`bir parametre olarak geçirilir.
+Bu örnekte, kaynak dili ve özel uç nokta kullanılarak `SourceLanguageConfig`sağlanır. `sourceLanguageConfig` Ardından, yeni `SpeechRecognizer`bir oluşturma sırasında parametresi olarak geçirilir.
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -106,22 +106,22 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 ```
 
 >[!Note]
-> `setSpeechRecognitionLanguage`ve `setEndpointId` C++ ve Java'daki sınıftan `SpeechConfig` amortismana alınan yöntemlerdir. Bu yöntemlerin kullanımı önerilmez ve bir `SpeechRecognizer`.
+> `setSpeechRecognitionLanguage`ve `setEndpointId` , C++ ve Java 'daki `SpeechConfig` sınıfından kullanım dışı yöntemlerdir. Bu yöntemlerin kullanımı önerilmez ve bir `SpeechRecognizer`oluştururken kullanılmamalıdır.
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-## <a name="how-to-specify-source-language-in-python"></a>Python'da kaynak dil nasıl belirtilir?
+## <a name="how-to-specify-source-language-in-python"></a>Python 'da kaynak dilini belirtme
 
-Bu örnekte, kaynak dil açıkça yapı kullanılarak `SpeechRecognizer` bir parametre olarak sağlanır.
+Bu örnekte, kaynak dili açıkça yapı kullanılarak `SpeechRecognizer` bir parametre olarak sağlanır.
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-Bu örnekte, kaynak dil `SourceLanguageConfig`kullanılarak sağlanır. Daha sonra, oluşturmak için `SourceLanguageConfig` `SpeechRecognizer` bir parametre olarak geçirilir.
+Bu örnekte, kaynak dili kullanılarak `SourceLanguageConfig`sunulmaktadır. `SourceLanguageConfig` Ardından, yapı için `SpeechRecognizer` bir parametre olarak geçirilir.
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
@@ -129,7 +129,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-Bu örnekte, kaynak dil ve özel `SourceLanguageConfig`bitiş noktası kullanılarak sağlanır. Daha sonra, oluşturmak için `SourceLanguageConfig` `SpeechRecognizer` bir parametre olarak geçirilir.
+Bu örnekte, kaynak dili ve özel uç nokta kullanılarak `SourceLanguageConfig`sağlanır. `SourceLanguageConfig` Ardından, yapı için `SpeechRecognizer` bir parametre olarak geçirilir.
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
@@ -138,47 +138,47 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 ```
 
 >[!Note]
-> `speech_recognition_language`ve `endpoint_id` özellikler Python'daki sınıftan `SpeechConfig` çıkarılatılır. Bu özelliklerin kullanımı önerilmez ve bir `SpeechRecognizer`.
+> `speech_recognition_language`ve `endpoint_id` Özellikler Python 'daki `SpeechConfig` sınıftan kullanımdan kaldırılmıştır. Bu özelliklerin kullanımı önerilmez ve bir `SpeechRecognizer`oluştururken kullanılmamalıdır.
 
 ::: zone-end
 
 ::: zone pivot="programming-language-more"
 
-## <a name="how-to-specify-source-language-in-javascript"></a>Javascript'te kaynak dil nasıl belirtilir?
+## <a name="how-to-specify-source-language-in-javascript"></a>JavaScript 'te kaynak dilini belirtme
 
-İlk adım oluşturmaktır: `SpeechConfig`
+İlk adım `SpeechConfig`şunları oluşturmaktır:
 
 ```Javascript
 var speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionkey", "YourRegion");
 ```
 
-Ardından, sesin kaynak dilini `speechRecognitionLanguage`şu ile belirtin:
+Sonra, sesinizin kaynak dilini belirtin `speechRecognitionLanguage`:
 
 ```Javascript
 speechConfig.speechRecognitionLanguage = "de-DE";
 ```
 
-Tanıma için özel bir model kullanıyorsanız, bitiş noktasını `endpointId`aşağıdakilerle belirtebilirsiniz:
+Tanıma için özel bir model kullanıyorsanız, uç noktayı şu şekilde `endpointId`belirtebilirsiniz:
 
 ```Javascript
 speechConfig.endpointId = "The Endpoint ID for your custom model.";
 ```
 
-## <a name="how-to-specify-source-language-in-objective-c"></a>Objective-C'de kaynak dili nasıl belirtilir?
+## <a name="how-to-specify-source-language-in-objective-c"></a>Amaç-C ' d e kaynak dilini belirtme
 
-İlk adım oluşturmaktır: `speechConfig`
+İlk adım `speechConfig`şunları oluşturmaktır:
 
 ```Objective-C
 SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
 ```
 
-Ardından, sesin kaynak dilini `speechRecognitionLanguage`şu ile belirtin:
+Sonra, sesinizin kaynak dilini belirtin `speechRecognitionLanguage`:
 
 ```Objective-C
 speechConfig.speechRecognitionLanguage = @"de-DE";
 ```
 
-Tanıma için özel bir model kullanıyorsanız, bitiş noktasını `endpointId`aşağıdakilerle belirtebilirsiniz:
+Tanıma için özel bir model kullanıyorsanız, uç noktayı şu şekilde `endpointId`belirtebilirsiniz:
 
 ```Objective-C
 speechConfig.endpointId = @"The Endpoint ID for your custom model.";
@@ -188,8 +188,8 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* Metin konuşma için desteklenen dillerin ve yerel dillerin listesi için [Dil desteğine](language-support.md)bakın.
+* Konuşma için desteklenen dillerin ve yerel ayarların listesi için bkz. [dil desteği](language-support.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma SDK referans belgeleri](speech-sdk.md)
+* [Konuşma SDK başvuru belgeleri](speech-sdk.md)

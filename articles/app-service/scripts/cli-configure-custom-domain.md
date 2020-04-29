@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Özel bir etki alanını bir uygulamayla haritala'
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, özel bir etki alanının bir uygulamayla nasıl eşlendirilebildiğini gösterir.
+title: 'CLı: özel bir etki alanını uygulamayla eşleme'
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, bir uygulamaya özel bir etki alanı eşlemenin nasıl yapılacağını gösterir.
 tags: azure-service-management
 ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
 ms.devlang: azurecli
@@ -8,15 +8,15 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 888e0e66c4dafbe7d2613a4b92b1f7b0dfd55eab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80058595"
 ---
-# <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>CLI'yi kullanarak özel bir etki alanını Uygulama Hizmeti uygulamasıyla eşle
+# <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>CLı kullanarak özel bir etki alanını App Service uygulamayla eşleme
 
-Bu örnek komut dosyası, ilgili kaynakları yla Birlikte App `www.<yourdomain>` Service'de bir uygulama oluşturur ve ardından bu uygulamayla eşlenir.
+Bu örnek betik, App Service içinde ilgili kaynaklarıyla bir uygulama oluşturur ve ardından onunla eşlenir `www.<yourdomain>` .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,8 +38,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Özel bir etki alanını bir Uygulama Hizmeti uygulamasıyla eşler. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Özel bir etki alanını App Service uygulamasına eşler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,71 +1,71 @@
 ---
-title: Bilgi tabanlarını geçir - QnA Maker
-description: Bir bilgi tabanını geçirmek, bir bilgi tabanından dışa aktarmayı, sonra da başka bir bilgi tabanına aktarmayı gerektirir.
+title: Bilgi temellerini geçirme-Soru-Cevap Oluşturma
+description: Bilgi bankasını geçirmek, bir bilgi tabanından dışarı aktarma ve sonra başka bir içeri aktarma gerektirir.
 ms.topic: article
 ms.date: 03/25/2020
 ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80258099"
 ---
-# <a name="migrate-a-knowledge-base-using-export-import"></a>Dışa aktarma-alma kullanarak bilgi tabanını geçirme
+# <a name="migrate-a-knowledge-base-using-export-import"></a>Dışarı aktarma kullanarak Bilgi Bankası geçirme
 
-Geçiş, varolan bir bilgi tabanından yeni bir bilgi tabanı oluşturma sürecidir. Bunu çeşitli nedenlerden dolayı yapabilirsiniz:
+Geçiş, mevcut bir bilgi bankasından yeni bir Bilgi Bankası oluşturma işlemidir. Bu, birkaç nedenden dolayı bunu yapabilirsiniz:
 
-* yedekleme ve geri yükleme işlemi
-* CI/CD boru hattı
-* bölgeleri taşıma
+* Yedekleme ve geri yükleme işlemi
+* CI/CD işlem hattı
+* bölgeleri taşı
 
-Bir bilgi tabanını geçirmek, varolan bir bilgi tabanından dışa aktarmayı, sonra da başka bir bilgi tabanına aktarmayı gerektirir.
+Bilgi bankasını geçirmek, mevcut bir bilgi bankasından dışa aktarma ve sonra başka bir içeri aktarma gerektirir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-* Yeni bir [QnA Maker hizmeti](../How-To/set-up-qnamaker-service-azure.md) ayarlama
+* Başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+* Yeni bir [soru-cevap oluşturma hizmeti](../How-To/set-up-qnamaker-service-azure.md) ayarlama
 
-## <a name="migrate-a-knowledge-base-from-qna-maker"></a>QnA Maker'dan bir bilgi tabanını geçirin
-1. [QnA Maker portalında](https://qnamaker.ai)oturum açın.
-1. Geçirmek istediğiniz kaynak bilgi tabanını seçin.
+## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Bilgi bankasını Soru-Cevap Oluşturma geçirme
+1. [Soru-cevap oluşturma portalında](https://qnamaker.ai)oturum açın.
+1. Geçirmek istediğiniz kaynak Bilgi Bankası ' nı seçin.
 
-1. **Ayarlar** sayfasında, başlangıç bilgi tabanınızın içeriğini içeren bir .tsv dosyasını indirmek için **Bilgi Verme tabanını** seçin - sorular, yanıtlar, meta veriler, izleme istemleri ve bunların ayıklandığı veri kaynağı adları.
+1. **Ayarlar** sayfasında, kaynak Bilgi Bankası 'nizin içeriğini içeren bir. tsv dosyasını indirmek için **Bilgi Bankası 'nı dışarı aktar** ' ı seçin-sorular, yanıtlar, meta veriler, izleme istemleri ve ayıklanan veri kaynağı adları.
 
-1. Üst menüden **bir bilgi tabanı oluştur'u** seçin ve ardından _boş_ bir bilgi tabanı oluşturun. Boş, çünkü oluşturduğunuzda, herhangi bir URL veya dosya eklemeyin. Bunlar, oluşturulduktan sonra, alma adımı sırasında eklenir.
+1. Üstteki menüden **Bilgi Bankası oluştur** ' u seçin ve _boş_ bir Bilgi Bankası oluşturun. Bu, siz oluşturduğunuzda boş bir URL veya dosya ekleyemeyeceklerdir. Bunlar, oluşturulduktan sonra içeri aktarma adımı sırasında eklenir.
 
-    Bilgi tabanını yapılandırın. Yalnızca yeni bilgi bankası adını ayarlayın. Yinelenen adlar desteklenir ve özel karakterler de desteklenir.
+    Bilgi Bankası 'nı yapılandırın. Yalnızca yeni Bilgi Bankası adı ' nı ayarlayın. Yinelenen adlar desteklenir ve özel karakterler de desteklenir.
 
-    Dosyayı içe aktardığınızda bu değerler üzerine yazıldığından, Adım 4'ten hiçbir şey seçmeyin.
+    Dosyayı içeri aktardığınızda değerlerin üzerine yazılacağı için 4. adımdan herhangi bir şey seçmeyin.
 
-1. Adım 5'te **Oluştur'u**seçin.
+1. 5. adımda **Oluştur**' u seçin.
 
-1. Bu yeni bilgi tabanında Ayarlar **sekmesini** açın ve **Bilgi Tabanını Aktar'ı**seçin. Bu, soruları, yanıtları, meta verileri, izleme istemlerini içeri aktarıyor ve çıkarıldıkları veri kaynağı adlarını korur.
+1. Bu yeni Bilgi Bankası 'nda **Ayarlar** sekmesini açın ve **Bilgi Bankası 'nı içeri aktar**' ı seçin. Bu, soruları, yanıtları, meta verileri, izleme istemlerini içeri aktarır ve ayıklanan veri kaynağı adlarını korur.
 
    > [!div class="mx-imgBorder"]
-   > [![İthalat bilgi tabanı](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
+   > [![Bilgi bankasını içeri aktar](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
-1. Test panelini kullanarak yeni bilgi tabanını **test** edin. Bilgi tabanınızı nasıl [test edebilirsiniz](../How-To/test-knowledge-base.md)öğrenin.
+1. Test panelini kullanarak yeni bilgi bankasını **Test** edin. [Bilgi Bankalarınızı test](../How-To/test-knowledge-base.md)etme hakkında bilgi edinin.
 
-1. Bilgi tabanını **yayınlayın** ve bir sohbet botu oluşturun. Bilgi tabanınızı nasıl [yayınlayacağınızı](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)öğrenin.
+1. Bilgi Bankası 'nı **yayımlayın** ve bir sohbet bot oluşturun. [Bilgi tabanınızı yayımlamayı](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)öğrenin.
 
-## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>Programlı QnA Maker bir bilgi tabanı göç
+## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>Bilgi bankasını Soru-Cevap Oluşturma aracılığıyla program aracılığıyla geçirme
 
-Geçiş işlemi aşağıdaki REST API'leri kullanılarak programlanabilir şekilde kullanılabilir:
+Geçiş işlemi, aşağıdaki REST API 'Leri kullanılarak programlı olarak kullanılabilir:
 
 **Dışarı aktar**
 
-* [Bilgi bankası API'sini indirin](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+* [Bilgi Bankası API 'sini indirin](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
 
 **İçeri Aktarma**
 
-* [API'yi değiştirin (aynı bilgi temel kimliğiyle yeniden yükleme)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
-* [API oluşturma (yeni bilgi bankası kimliğiyle yüklenir)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [API değiştirme (aynı Bilgi Bankası KIMLIĞIYLE yeniden yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
+* [API oluştur (yeni Bilgi Bankası KIMLIĞIYLE yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 
 
-## <a name="chat-logs-and-alterations"></a>Sohbet günlükleri ve değişiklikler
-Büyük/küçük harf duyarlı değişiklikler (eşanlamlılar) otomatik olarak alınmaz. Yeni bilgi tabanındaki değişiklikleri taşımak için [V4 API'lerini](https://go.microsoft.com/fwlink/?linkid=2092179) kullanın.
+## <a name="chat-logs-and-alterations"></a>Sohbet günlükleri ve değişiklikleri
+Büyük/küçük harf duyarsız değişiklikleri (eş anlamlılar) otomatik olarak içeri aktarılmaz. Yeni Bilgi Bankası 'ndaki değişiklikleri taşımak için [v4 API 'lerini](https://go.microsoft.com/fwlink/?linkid=2092179) kullanın.
 
-Yeni bilgi tabanı sohbet günlüklerini depolamak için Uygulama Bilgileri kullandığından, sohbet günlüklerini geçirmenin bir yolu yoktur.
+Yeni Bilgi Bankası, sohbet günlüklerini depolamak için Application Insights kullandığından, sohbet günlüklerini geçirme yolu yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

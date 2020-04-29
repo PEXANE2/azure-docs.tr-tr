@@ -1,6 +1,6 @@
 ---
-title: CLI örnek- Failover grubu - Azure SQL Veritabanı elastik havuzu
-description: Azure SQL Veritabanı elastik havuzu oluşturmak, bir başarısız lık grubuna eklemek ve başarısızlığı test etmek için Azure CLI örnek komut dosyası.
+title: CLı örneği-yük devretme grubu-Azure SQL veritabanı elastik havuz
+description: Azure CLı örnek betiği bir Azure SQL veritabanı elastik havuzu oluşturun, bir yük devretme grubuna ekleyin ve yük devretmeyi test edin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: 2d6f18e373327b758e766dffba341c080622301f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061932"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Bir başarısız gruba Azure SQL Veritabanı elastik havuzu eklemek için CLI'yi kullanın
+# <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 
-Bu Azure CLI komut dosyası örneği tek bir veritabanı oluşturur, elastik bir havuza ekler, bir başarısız lık grubu oluşturur ve başarısız lığı sınar.
+Bu Azure CLı betik örneği tek bir veritabanı oluşturur, bunu elastik bir havuza ekler, bir yük devretme grubu oluşturur ve yük devretmeyi sınar.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -48,17 +48,17 @@ Kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdak
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
-| [az sql elastik havuz](/cli/azure/sql/elastic-pool) | Elastik havuz komutları. |
-| [az sql failover-group](/cli/azure/sql/failover-group) | Failover grup komutları. |
+| [az SQL elastik havuz](/cli/azure/sql/elastic-pool) | Elastik havuz komutları. |
+| [az SQL yük devretme-Grup](/cli/azure/sql/failover-group) | Yük devretme grubu komutları. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure/overview).
 
-Ek SQL Veritabanı Azure CLI komut örnekleri [Azure SQL Veritabanı Azure CLI komut dosyaları](../sql-database-cli-samples.md)bulunabilir.
+Ek SQL veritabanı Azure CLı betiği örnekleri, [Azure SQL veritabanı Azure CLI betikleri](../sql-database-cli-samples.md)içinde bulunabilir.

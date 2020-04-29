@@ -1,7 +1,7 @@
 ---
 title: Güvenlik
 titleSuffix: Azure Cognitive Services
-description: Bilişsel Hizmetler kullanımı için çeşitli güvenlik konuları hakkında bilgi edinin.
+description: Bilişsel hizmetler kullanımıyla ilgili çeşitli güvenlik konuları hakkında bilgi edinin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,72 +10,72 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: dapine
 ms.openlocfilehash: c86d806c408c2e8226e632a0b15e1e8729c987f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80131526"
 ---
-# <a name="azure-cognitive-services-security"></a>Azure Bilişsel Hizmetler güvenliği
+# <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
 
-Güvenlik, tüm uygulamaları geliştirirken en önemli öncelik olarak kabul edilmelidir. Yapay zeka nın etkin uygulamalarının başlangıcıyla güvenlik daha da önemlidir. Bu makalede, Azure Bilişsel Hizmetler güvenliğinin aktarım katmanı güvenliğinin kullanımı, kimlik doğrulama ve hassas verilerin güvenli bir şekilde yapılandırılması gibi çeşitli yönleri özetlenmiştir.
+Güvenlik, tüm uygulamalar geliştirilirken en iyi öncelik olarak düşünülmelidir. Yapay zeka etkin uygulamalar içeren başladıkları noktada ile güvenlik daha da önemlidir. Bu makalede, Aktarım Katmanı Güvenliği, kimlik doğrulama ve hassas verileri güvenli bir şekilde yapılandırma gibi çeşitli Azure bilişsel hizmetler güvenliği konuları özetlenmektedir.
 
 ## <a name="transport-layer-security-tls"></a>Aktarım Katmanı Güvenliği (TLS)
 
-HTTP üzerinden açığa çıkan Tüm Bilişsel Hizmetler uç noktaları TLS 1.2'yi uygular. Zorunlu bir güvenlik protokolü ile, Bilişsel Hizmetler bitiş noktası çağırmaya çalışan tüketicilerin bu kurallara uyması gerekir:
+HTTP üzerinden sunulan bilişsel hizmetler uç noktaları, TLS 1,2 ' i zorlar. Zorunlu bir güvenlik protokolüyle, bilişsel hizmetler uç noktasını çağırmaya çalışan tüketiciler şu yönergelere uymalıdır:
 
-* İstemci İşletim Sistemi (OS) TLS 1.2 desteklemek gerekir
-* HTTP araması yapmak için kullanılan dil (ve platform) isteğin bir parçası olarak TLS 1.2'yi belirtmeli
-  * Dil ve platforma bağlı olarak, TLS'nin belirtilmesi örtülü veya açık bir şekilde yapılır
+* İstemci Işletim sisteminin (OS) TLS 1,2 ' i desteklemesi gerekir
+* HTTP çağrısının isteğin bir parçası olarak TLS 1,2 belirtmesini sağlamak için kullanılan dil (ve platform)
+  * Dile ve platforma bağlı olarak, TLS belirtmek örtük olarak veya açık olarak yapılır
 
-.NET kullanıcıları <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">için, Aktarım Katmanı <span class="docon docon-navigate-external x-hidden-focus"> </span>Güvenliği en iyi uygulamaları </a>düşünün.
+.NET kullanıcıları için, <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Aktarım Katmanı Güvenliği en iyi yöntemlerini <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>göz önünde bulundurun.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
-Kimlik doğrulama tartışılırken, birkaç yaygın yanlış anlama vardır. Kimlik doğrulama ve yetkilendirme genellikle birbirleri için karıştırılır. Kimlik de güvenlik önemli bir bileşenidir. Kimlik, <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">bir asıl <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>hakkında bilgi topluluğudur. Kimlik sağlayıcıları (IdP) kimlik doğrulama hizmetlerine kimlik sağlar. Kimlik doğrulama, kullanıcının kimliğini doğrulama eylemidir. Yetkilendirme, belirli bir kimlik için kaynaklara erişim hakları ve ayrıcalıklarının belirtimidir. Bilişsel Hizmetler teklifleri birkaç, rol tabanlı erişim kontrolü (RBAC) içerir. RBAC, el ile yönetim ilkeleriyle ilgili bazı törenleri basitleştirmek için kullanılabilir. Daha fazla ayrıntı için [Azure kaynakları için rol tabanlı erişim denetimine](../role-based-access-control/overview.md)bakın.
+Kimlik doğrulaması tartışırken, yaygın olarak karşılaşılan birkaç yanlış rastlamalar vardır. Kimlik doğrulama ve yetkilendirme genellikle bir diğeri için karıştırılır. Kimlik ayrıca güvenlik ' de bir ana bileşendir. Kimlik, bir <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">sorumlu <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>hakkındaki bilgilerin koleksiyonudur. Kimlik sağlayıcıları (IDP) kimlik doğrulama hizmetlerine kimlikler sağlar. Kimlik doğrulaması, bir kullanıcının kimliğini doğrulama işlemidir. Yetkilendirme, belirli bir kimlik için kaynaklara yönelik erişim haklarının ve ayrıcalıkların belirtiledir. Bilişsel hizmetler tekliflerinden bazıları rol tabanlı erişim denetimi (RBAC) içerir. RBAC, sorumluları el ile yönetme ile ilgili bazı sertifika basitleştirecek şekilde kullanılabilir. Daha fazla ayrıntı için bkz. [Azure kaynakları için rol tabanlı erişim denetimi](../role-based-access-control/overview.md).
 
-Abonelik anahtarları, erişim belirteçleri ve Azure Etkin Dizini (AAD) ile kimlik doğrulama hakkında daha fazla bilgi için <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure Bilişsel<span class="docon docon-navigate-external x-hidden-focus"></span>Hizmetleri'ne yönelik kimlik doğrulama isteklerini</a>görün.
+Abonelik anahtarları, erişim belirteçleri ve Azure Active Directory (AAD) ile kimlik doğrulaması hakkında daha fazla bilgi için bkz. Azure bilişsel <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Hizmetler<span class="docon docon-navigate-external x-hidden-focus"></span>'e yönelik kimlik doğrulama istekleri</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Ortam değişkenleri ve uygulama yapılandırması
 
-Ortam değişkenleri, belirli bir ortamda depolanan ad değeri çiftleridir. Hassas veriler için hardcoded değerleri kullanmanın daha güvenli bir alternatifi, ortam değişkenlerini kullanmaktır. Kodlanmış değerler güvenli değildir ve kaçınılmalıdır.
+Ortam değişkenleri, belirli bir ortam içinde depolanan ad-değer çiftleridir. Hassas veriler için sabit kodlanmış değerler kullanmanın daha güvenli bir alternatifi, ortam değişkenlerini kullanmaktır. Sabit kodlanmış değerler güvenli değildir ve kaçınılmalıdır.
 
 > [!CAUTION]
-> Hassas **not** veriler için kodlanmış değerleri kullanmayın, bunu yapmak önemli bir güvenlik açığıdır.
+> Hassas veriler için sabit kodlanmış **değerler kullanmayın,** bunun yapılması önemli bir güvenlik açığıdır.
 
 > [!NOTE]
-> Ortam değişkenleri düz metinde depolanırken, bir ortama yalıtılır. Bir ortam tehlikeye girerse, çevre ile değişkenler de tehlikeye girer.
+> Ortam değişkenleri düz metin olarak depolanırken, ortamları bir ortama yalıtılmıştır. Bir ortamın güvenliği tehlikeye girerse, ortam ile değişkenler de vardır.
 
-### <a name="set-environment-variable"></a>Ortam değişkenini ayarlama
+### <a name="set-environment-variable"></a>Ortam değişkenini ayarla
 
-Ortam değişkenlerini ayarlamak için aşağıdaki komutlardan birini `ENVIRONMENT_VARIABLE_KEY` kullanın - `value` burada adlandırılmış anahtar ve ortam değişkeninde depolanan değerdir.
+Ortam değişkenlerini ayarlamak için aşağıdaki komutlardan birini kullanın; burada, `ENVIRONMENT_VARIABLE_KEY` adlandırılmış anahtardır ve `value` ortam değişkeninde depolanan değerdir.
 
-# <a name="command-line"></a>[Komut Satırı](#tab/command-line)
+# <a name="command-line"></a>[Komut satırı](#tab/command-line)
 
-Değer göz önüne alındığında, kalıcı ortam değişkeni oluşturun ve atayın.
+Değer verilen kalıcı ortam değişkeni oluşturun ve atayın.
 
 ```CMD
 :: Assigns the env var to the value
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-**Komut Komut Istemi'nin**yeni bir örneğinde, ortam değişkenini okuyun.
+**Komut isteminin**yeni bir örneğinde, ortam değişkenini okuyun.
 
 ```CMD
 :: Prints the env var value
 echo %ENVIRONMENT_VARIABLE_KEY%
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Değer göz önüne alındığında, kalıcı ortam değişkeni oluşturun ve atayın.
+Değer verilen kalıcı ortam değişkeni oluşturun ve atayın.
 
 ```powershell
 # Assigns the env var to the value
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-**Windows PowerShell**yeni bir örnekte, çevre değişkeni okuyun.
+**Windows PowerShell**'in yeni bir örneğinde, ortam değişkenini okuyun.
 
 ```powershell
 # Prints the env var value
@@ -84,14 +84,14 @@ Değer göz önüne alındığında, kalıcı ortam değişkeni oluşturun ve at
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-Değer göz önüne alındığında, kalıcı ortam değişkeni oluşturun ve atayın.
+Değer verilen kalıcı ortam değişkeni oluşturun ve atayın.
 
 ```Bash
 # Assigns the env var to the value
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-**Bash**yeni bir örnekte , çevre değişkeni okuyun.
+**Bash**'in yeni bir örneğinde, ortam değişkenini okuyun.
 
 ```Bash
 # Prints the env var value
@@ -104,15 +104,15 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 ---
 
 > [!TIP]
-> Bir ortam değişkeni ayarladıktan sonra, yeni eklenen ortam değişkenlerinin kullanılabilir olduğundan emin olmak için tümleşik geliştirme ortamınızı (IDE) yeniden başlatın.
+> Bir ortam değişkenini ayarladıktan sonra, yeni eklenen ortam değişkenlerinin kullanılabilir olduğundan emin olmak için tümleşik geliştirme ortamınızı (IDE) yeniden başlatın.
 
-### <a name="get-environment-variable"></a>Ortam değişkenini alın
+### <a name="get-environment-variable"></a>Ortam değişkenini al
 
-Bir ortam değişkenini elde etmek için belleğe okunması gerekir. Kullandığınız dile bağlı olarak, aşağıdaki kod parçacıklarını göz önünde bulundurun. Bu kod parçacıkları, çevre değişkeninin `ENVIRONMENT_VARIABLE_KEY` nasıl alınıp. `value`
+Bir ortam değişkenini almak için, belleğin belleğine okunmalıdır. Kullanmakta olduğunuz dile bağlı olarak, aşağıdaki kod parçacıklarını göz önünde bulundurun. Bu kod parçacıkları, `ENVIRONMENT_VARIABLE_KEY` adlı `value`bir değişkene öğesine verilen ve atayan ortam değişkeninin nasıl alınacağını gösterir.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
-Daha fazla bilgi <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>için bkz.
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>..
 
 ```csharp
 using static System.Environment;
@@ -131,7 +131,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Daha fazla bilgi <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>için bkz.
+Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>..
 
 ```cpp
 #include <stdlib.h>
@@ -146,7 +146,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Daha fazla bilgi <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>için bkz.
+Daha fazla bilgi için bkz <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>..
 
 ```java
 import java.lang.*;
@@ -163,7 +163,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-Daha fazla bilgi <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>için bkz.
+Daha fazla bilgi için bkz <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>..
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -173,7 +173,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-Daha fazla bilgi <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>için bkz.
+Daha fazla bilgi için bkz <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>..
 
 ```python
 import os
@@ -184,7 +184,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-Daha fazla bilgi <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>için bkz.
+Daha fazla bilgi için bkz <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>..
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -196,5 +196,5 @@ NSString* value =
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çeşitli [Bilişsel Hizmetleri](welcome.md) keşfedin
-* [Bilişsel Hizmetler Sanal Ağlar](cognitive-services-virtual-networks.md) hakkında daha fazla bilgi edinin
+* Çeşitli bilişsel [Hizmetleri](welcome.md) inceleyin
+* Bilişsel [Hizmetler sanal ağları](cognitive-services-virtual-networks.md) hakkında daha fazla bilgi edinin

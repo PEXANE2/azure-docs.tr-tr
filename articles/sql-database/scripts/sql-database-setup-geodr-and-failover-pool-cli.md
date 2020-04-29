@@ -1,6 +1,6 @@
 ---
-title: CLI örnek etkin coğrafi çoğaltma havuzlu Azure SQL veritabanı
-description: Azure SQL Veritabanı'nda birleştirilmiş bir veritabanı için etkin coğrafi çoğaltma ayarlamak ve üzerinde başarısız olmak için Azure CLI örnek komut dosyası.
+title: CLı örneği-etkin coğrafi çoğaltma-havuza alınmış Azure SQL veritabanı
+description: Azure SQL veritabanı 'nda havuza alınmış bir veritabanı için etkin Coğrafi çoğaltmayı ayarlamak ve yük devretmek için Azure CLı örnek betiği.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 2646ed98f4a73c69d339df0134e8a565c958c514
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067351"
 ---
-# <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Azure SQL Veritabanı'nda havuza girilmiş bir veritabanı için etkin coğrafi çoğaltma yapılandırmak için CLI'yi kullanın
+# <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda havuza alınmış bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırmak için CLı kullanma
 
-Bu Azure CLI komut dosyası örneği, Azure SQL Veritabanı'nda birleştirilmiş bir veritabanı için etkin coğrafi çoğaltmayı yapılandırır ve veritabanının ikincil yinelemesine göre başarısız olur.
+Bu Azure CLı betik örneği, Azure SQL veritabanı 'nda havuza alınmış bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırır ve veritabanının ikincil çoğaltmasına yük devreder.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -49,14 +49,14 @@ az group delete --name $resource
 az group delete --name $secondaryResource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
-| [az sql elastik havuz](/cli/azure/sql/elastic-pool) | Elastik havuz komutları |
-| [az sql db çoğaltma](/cli/azure/sql/db/replica) | Veritabanı çoğaltma komutları. |
+| [az SQL elastik havuz](/cli/azure/sql/elastic-pool) | Elastik havuz komutları |
+| [az SQL DB Replica](/cli/azure/sql/db/replica) | Veritabanı çoğaltma komutları. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

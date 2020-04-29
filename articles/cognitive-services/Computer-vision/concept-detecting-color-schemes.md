@@ -1,7 +1,7 @@
 ---
-title: Renk düzeni algılama - Bilgisayar Lı
+title: Renk düzeni Algılama-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: BilgisayarLı Görme API'sini kullanarak görüntülerdeki renk düzenini algılamayla ilgili kavramlar.
+description: Görüntü İşleme API'si kullanarak görüntülerde renk düzenini algılamayla ilgili kavramlar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: af0c39ed8211ac2041d143112437ad5d6b384259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80244741"
 ---
-# <a name="detect-color-schemes-in-images"></a>Görüntülerdeki renk düzenlerini algılama
+# <a name="detect-color-schemes-in-images"></a>Görüntülerde renk düzenlerini Algıla
 
-Computer Vision, üç farklı özellik sağlamak için görüntüdeki renkleri analiz eder: baskın ön plan rengi, baskın arka plan rengi ve bir bütün olarak görüntü için baskın renk kümesi. Geri dönen renkler sete aittir: siyah, mavi, kahverengi, gri, yeşil, turuncu, pembe, mor, kırmızı, kahverengi, beyaz ve sarı. 
+Görüntü İşleme, görüntüdeki renkleri çözümleyerek üç farklı öznitelik sağlar: baskın ön plan rengi, baskın arka plan rengi ve resim için bir bütün olarak görüntü için baskın renkler kümesi. Döndürülen renkler kümesine aittir: siyah, mavi, kahverengi, gri, yeşil, turuncu, pembe, mor, kırmızı, deniz mavisi, beyaz ve sarı. 
 
-Computer Vision ayrıca, baskın renkler ve doygunluk kombinasyonuna dayanan görüntüdeki en canlı rengi temsil eden bir vurgu rengi de ayıklar. Vurgu rengi hexadecimal HTML renk kodu olarak döndürülür. 
+Görüntü İşleme, baskın renklerin ve doygunluk birleşimine göre görüntüdeki en canlı rengi temsil eden bir vurgu rengi de ayıklar. Vurgu rengi onaltılık HTML renk kodu olarak döndürülür. 
 
-Computer Vision ayrıca görüntünün siyah beyaz olup olmadığını belirten bir boolean değeri döndürür.
+Görüntü İşleme Ayrıca bir görüntünün siyah ve beyaz olduğunu gösteren bir Boole değeri döndürür.
 
 ## <a name="color-scheme-detection-examples"></a>Renk düzeni algılama örnekleri
 
-Aşağıdaki örnek, örnek görüntünün renk düzenini algılarken Computer Vision tarafından döndürülen JSON yanıtını göstermektedir. Bu durumda, örnek görüntü siyah beyaz bir görüntü değildir, ancak baskın ön plan ve arka plan renkleri siyahtır ve bir bütün olarak görüntünün baskın renkleri siyah ve beyazdır.
+Aşağıdaki örnek, örnek görüntünün renk düzenini algılayarak Görüntü İşleme tarafından döndürülen JSON yanıtını gösterir. Bu durumda, örnek resim siyah ve beyaz bir görüntü değildir, ancak baskın ön plan ve arka plan renkleri siyahtır ve görüntü için baskın renkler siyah ve beyazdır.
 
-![Gün batımında Açık Dağ, bir kişinin silueti ile](./Images/mountain_vista.png)
+![Bir kişinin silueti ile gün içinde Sıradağlar](./Images/mountain_vista.png)
 
 ```json
 {
@@ -52,35 +52,35 @@ Aşağıdaki örnek, örnek görüntünün renk düzenini algılarken Computer V
 
 ### <a name="dominant-color-examples"></a>Baskın renk örnekleri
 
-Aşağıdaki tablo, her örnek görüntü için döndürülen ön planı, arka planı ve görüntü renklerini gösterir.
+Aşağıdaki tabloda, her bir örnek görüntü için döndürülen ön plan, arka plan ve görüntü renkleri gösterilmektedir.
 
 | Görüntü | Baskın renkler |
 |-------|-----------------|
-|![Yeşil arka planlı beyaz bir çiçek](./Images/flower.png)| Ön plan: Siyah<br/>Arka Plan: Beyaz<br/>Renkler: Siyah, Beyaz, Yeşil|
-![İstasyonda çalışan bir tren](./Images/train_station.png) | Ön plan: Siyah<br/>Arka Plan: Siyah<br/>Renkler: Siyah |
+|![Yeşil arka plana sahip beyaz çiçek](./Images/flower.png)| Ön plan: siyah<br/>Arka plan: beyaz<br/>Renkler: siyah, beyaz, yeşil|
+![İstasyon aracılığıyla çalıştırılan eğitme](./Images/train_station.png) | Ön plan: siyah<br/>Arka plan: siyah<br/>Renkler: siyah |
 
-### <a name="accent-color-examples"></a>Vurgu renk örnekleri
+### <a name="accent-color-examples"></a>Vurgu rengi örnekleri
 
- Aşağıdaki tablo, her örnek görüntü için hexadecimal HTML renk değeri olarak döndürülen vurgu rengini gösterir.
+ Aşağıdaki tabloda, her örnek resim için döndürülen vurgu rengi onaltılık HTML renk değeri olarak gösterilmektedir.
 
 | Görüntü | Vurgu rengi |
 |-------|--------------|
-|![Gün batımında bir dağ kayası üzerinde duran bir kişi](./Images/mountain_vista.png) | #BB6D10 |
-|![Yeşil arka planlı beyaz bir çiçek](./Images/flower.png) | #C6A205 |
-|![İstasyonda çalışan bir tren](./Images/train_station.png) | #474A84 |
+|![Bir dağ rock on gün sonra duran bir kişi](./Images/mountain_vista.png) | #BB6D10 |
+|![Yeşil arka plana sahip beyaz çiçek](./Images/flower.png) | #C6A205 |
+|![İstasyon aracılığıyla çalıştırılan eğitme](./Images/train_station.png) | #474A84 |
 
 ### <a name="black--white-detection-examples"></a>Siyah & beyaz algılama örnekleri
 
-Aşağıdaki tabloda örnek görüntülerde Computer Vision'ın siyah beyaz değerlendirmesini gösterilmektedir.
+Aşağıdaki tabloda, örnek görüntülerde Görüntü İşleme siyah ve beyaz değerlendirme gösterilmektedir.
 
-| Görüntü | Siyah & beyaz mı? |
+| Görüntü | Siyah & beyaz? |
 |-------|----------------|
-|![Manhattan'daki binaların siyah beyaz resmi](./Images/bw_buildings.png) | true |
-|![Mavi bir ev ve ön bahçe.](./Images/house_yard.png) | yanlış |
+|![Manhattan içindeki binalara ilişkin siyah ve beyaz bir resim](./Images/bw_buildings.png) | true |
+|![Mavi Ev ve ön bahçe](./Images/house_yard.png) | yanlış |
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-Renk düzeni algılama [özelliği, Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API'sinin bir parçasıdır. Bu API'yi yerel bir SDK veya REST aramaları aracılığıyla arayabilirsiniz. `Color` **visualFeatures** sorgu parametresini ekleyin. Daha sonra, tam JSON yanıtı aldığınızda, `"color"` bölümün içeriği için dize ayrıştını.
+Renk şeması algılama özelliği, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sinin bir parçasıdır. Bu API 'YI yerel bir SDK aracılığıyla veya REST çağrıları aracılığıyla çağırabilirsiniz. `Color` **Visualfeatures** sorgu parametresine dahil edin. Ardından, tam JSON yanıtını aldığınızda, bu dizeyi yalnızca `"color"` bölüm içeriği için ayrıştırın.
 
-* [Hızlı Başlangıç: Bilgisayarlı Vizyon .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Quickstart: Görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
+* [Hızlı başlangıç: Görüntü İşleme .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)

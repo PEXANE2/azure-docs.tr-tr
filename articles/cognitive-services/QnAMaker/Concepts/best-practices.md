@@ -1,145 +1,145 @@
 ---
-title: En iyi uygulamalar - QnA Maker
-description: Bilgi tabanınızı geliştirmek ve uygulamanızı/sohbet botunuzun son kullanıcılarına daha iyi sonuçlar sağlamak için bu en iyi uygulamaları kullanın.
+title: En iyi yöntemler-Soru-Cevap Oluşturma
+description: Bilgi bankaınızı geliştirmek ve uygulamanıza/sohbet bot 'ın son kullanıcılarına daha iyi sonuçlar sağlamak için bu en iyi yöntemleri kullanın.
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80053125"
 ---
-# <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker bilgi tabanının en iyi uygulamaları
+# <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
 
-[Bilgi bankası geliştirme yaşam döngüsü,](../Concepts/development-lifecycle-knowledge-base.md) KB'nizi başından sonuna kadar nasıl yönetecekleriniz konusunda size rehberlik eder. Bilgi tabanınızı geliştirmek ve istemci uygulamanıza veya sohbet botunuzun son kullanıcılarına daha iyi sonuçlar sağlamak için bu en iyi uygulamaları kullanın.
+[Bilgi Bankası geliştirme yaşam döngüsü](../Concepts/development-lifecycle-knowledge-base.md) , KB 'nizi baştan sona nasıl yönetebileceğinizi size rehberlik eder. Bilgi bankanızı geliştirmek ve istemci uygulamanıza veya sohbet bot 'un son kullanıcılarına daha iyi sonuçlar sağlamak için bu en iyi yöntemleri kullanın.
 
 ## <a name="extraction"></a>Ayıklama
 
-QnA Maker hizmeti, Qna'ları içerikten ayıklayan algoritmaları sürekli olarak geliştiriyor ve desteklenen dosya ve HTML biçimleri listesini genişletiyor. Belge türünüze göre veri ayıklama [yönergelerini](../Concepts/content-types.md) izleyin.
+Soru-Cevap Oluşturma hizmet, içerikten QnAs çıkaran ve desteklenen dosya ve HTML biçimlerinin listesini genişlettirecek algoritmaları sürekli olarak geliştirir. Belge türüne göre veri ayıklama [yönergelerini](../Concepts/content-types.md) izleyin.
 
-Genel olarak, SSS sayfaları tek başına olmalı ve diğer bilgilerle birleştirilmemelidir. Ürün kılavuzlarının net başlıkları ve tercihen bir dizin sayfası olmalıdır.
+Genel olarak, SSS sayfaları tek başına olmalıdır ve diğer bilgilerle birleştirilmemelidir. Ürün kılavuzları, açık başlıklar ve tercihen bir dizin sayfası içermelidir.
 
-### <a name="configuring-multi-turn"></a>Çok dönüşlü yapılandırma
+### <a name="configuring-multi-turn"></a>Çoklu açmayı yapılandırma
 
-Çok döndürme etkinleştirilmiş bilgi [tabanınızı oluşturun.](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) Bilgi tabanınız soru hiyerarşisini destekliyorsa veya destekliyorsa, bu hiyerarşi belgeden ayıklanabilir veya belge ayıklandıktan sonra oluşturulabilir.
+Çoklu açma ayıklama özelliği etkinken [Bilgi Bankası 'Nizi oluşturun](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) . Bilgi tabanınız soru hiyerarşisini destekliyorsa veya destekliyorsa, bu hiyerarşi belgeden ayıklanamaz veya belge ayıklandıktan sonra oluşturulmuş olabilir.
 
 ## <a name="creating-good-questions-and-answers"></a>İyi sorular ve yanıtlar oluşturma
 
 ### <a name="good-questions"></a>İyi sorular
 
-En iyi sorular basittir. Her soru için anahtar sözcük veya tümcecik düşünün sonra bu anahtar kelime veya tümcecik için basit bir soru oluşturun.
+En iyi sorular basittir. Her soru için anahtar sözcük veya tümceciği göz önünde bulundurun ve ardından bu anahtar sözcük veya tümceciği için basit bir soru oluşturun.
 
-İhtiyacınız olduğu kadar çok alternatif soru ekleyin, ancak değişiklikleri basit tutun. Sorunun ana amacının bir parçası olmayan daha fazla sözcük veya tümce eklemek QnA Maker'ın eşleşme bulmasına yardımcı olmaz.
+İhtiyaç duyduğunuz sayıda alternatif soru ekleyin, ancak değişiklikleri basit tutun. Sorunun ana hedefinin parçası olmayan daha fazla sözcük veya amaç eklemek Soru-Cevap Oluşturma bir eşleşme bulmaya yardımcı olmaz.
 
 
-### <a name="add-relevant-alternative-questions"></a>İlgili alternatif sorular ekleme
+### <a name="add-relevant-alternative-questions"></a>İlgili alternatif soruları ekleyin
 
-Kullanıcınız, konuşma tarzı bir metin `How do I add a toner cartridge to my printer?` veya '. gibi `toner cartridge`bir anahtar kelime araması ile sorular girebilir. Bilgi tabanı doğru en iyi cevabı döndürmek için her iki soru stilleri olmalıdır. Müşterinin hangi anahtar kelimeleri girdiğinden emin değilseniz, sorguları çözümlemek için Application Insights verilerini kullanın.
+Kullanıcılarınız bir metin stili `How do I add a toner cartridge to my printer?` veya gibi bir anahtar sözcük araması ile soru girebilir. `toner cartridge` Bilgi Bankası, en iyi yanıtı doğru bir şekilde döndürmek için her iki türde soruya sahip olmalıdır. Müşterinin hangi anahtar kelimelerle girileceği emin değilseniz, sorguları çözümlemek için Application Insights veri kullanın.
 
-### <a name="good-answers"></a>İyi cevaplar
+### <a name="good-answers"></a>İyi yanıtlar
 
-En iyi cevaplar basit cevaplar ama çok basit değil. Gibi cevaplar kullanmayın `yes` `no`ve . Yanıtınız diğer kaynaklara bağlantı verecekse veya medya ve bağlantılarla ilgili zengin bir deneyim sağlayacaksa, yanıtları `strictFilters` ayırt etmek için meta veri [etiketlemeyi](../how-to/edit-knowledge-base.md#add-metadata) kullanın ve ardından doğru yanıt sürümünü almak için sorguyu özellikteki meta veri etiketleri ile [gönderin.](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)
+En iyi yanıtlar basit yanıtlardan oluşur ancak çok basittir. `yes` Ve `no`gibi yanıtları kullanmayın. Yanıtlarınızın diğer kaynaklara bağlanması veya medya ve bağlantılarla zengin bir deneyim sağlaması gerekiyorsa, yanıtlar arasında ayrım yapmak için [meta veri etiketlemesini](../how-to/edit-knowledge-base.md#add-metadata) kullanın, ardından doğru yanıt sürümünü almak için [sorguyu](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) `strictFilters` özelliğindeki meta veri etiketleriyle birlikte gönderebilirsiniz.
 
-|Yanıt|Follup-up istemleri|
+|Yanıt|Yukarı açılan istemler|
 |--|--|
-|Klavyedeki güç düğmesiyle Surface dizüstü bilgisayarı kapatın.|* Anahtar kombinasyonları uyku, kapatın ve yeniden başlatın.<br>* Nasıl sert önyükleme bir Yüzey dizüstü bilgisayar<br>* Nasıl bir Yüzey dizüstü bilgisayar için BIOS değiştirmek için<br>* Uyku arasındaki farklar, kapatın ve yeniden|
-|Müşteri hizmetleri telefon, Skype ve kısa mesaj yoluyla günün 24 saati kullanılabilir.|* Satış için iletişim bilgileri.<br> * Ofis ve mağaza yerleri ve saat bir in-person ziyaret için.<br> * Bir Yüzey dizüstü bilgisayar için aksesuarlar.|
+|Klavye üzerindeki güç düğmesiyle yüzey dizüstü bilgisayarınızı kapatın.|* Uyku, kapatma ve yeniden başlatma için anahtar birleşimleri.<br>* Bir yüzey dizüstü bilgisayarı nasıl sabit bir şekilde Önyükle<br>* Yüzey dizüstü bilgisayar için BIOS 'U değiştirme<br>* Uyku, kapatma ve yeniden başlatma arasındaki farklar|
+|Müşteri Hizmetleri, günde 24 saat boyunca telefon, Skype ve kısa mesaj yoluyla kullanılabilir.|* Sales için iletişim bilgileri.<br> * Office ve mağaza konumları ve saatleri bir kişi için ziyaret edin.<br> * Bir yüzey dizüstü bilgisayar için aksesuarlar.|
 
-## <a name="chit-chat"></a>Chit-Sohbet
-Botunuzun daha düşük çabayla daha konuşkan ve ilgi çekici olmasını sağlamak için botunuza chit-chat ekleyin. KB'nizi oluştururken önceden tanımlanmış kişiliklerden kolayca chit-chat veri kümelerini ekleyebilir ve istediğiniz zaman değiştirebilirsiniz. [KB'nize nasıl sohbet ekleyeceğinizi](../How-To/chit-chat-knowledge-base.md)öğrenin.
+## <a name="chit-chat"></a>Chit-sohbet
+Botunuza, düşük çabayla daha fazla konuşma ve ilgi çekici hale getirmek için Chit sohbeti ekleyin. KB 'nizi oluştururken önceden tanımlanmış kişiselleştirimler aracılığıyla kolayca CHIT-chat veri kümeleri ekleyebilir ve bunları dilediğiniz zaman değiştirebilirsiniz. [KB 'nize Chit sohbeti ekleme](../How-To/chit-chat-knowledge-base.md)hakkında bilgi edinin.
 
-Chit-chat [birçok dilde](../how-to/chit-chat-knowledge-base.md#language-support)desteklenir.
+Chit-sohbet [birçok dilde](../how-to/chit-chat-knowledge-base.md#language-support)desteklenmektedir.
 
-### <a name="choosing-a-personality"></a>Kişilik seçimi
-Chit-chat birkaç önceden tanımlanmış kişilikleri için desteklenir:
+### <a name="choosing-a-personality"></a>Kişilik seçme
+Chit-sohbet, önceden tanımlanmış birkaç kişisel için desteklenir:
 
-|Kişilik |QnA Maker Dataset dosyası |
+|Kişilik |Soru-Cevap Oluşturma veri kümesi dosyası |
 |---------|-----|
-|Professional |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
-|Dostu |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
-|Esprili |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
-|Bakım |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
-|Hevesli |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
+|Professional |[qna_chitchat_professional. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Uygun |[qna_chitchat_friendly. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Wtty |[qna_chitchat_witty. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Giriş |[qna_chitchat_caring. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Heyecanlandırdı |[qna_chitchat_enthusiastic. tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-Yanıtlar resmi ve saygısız arasında değişir. Botunuzun tonunu en yakın şekilde seçmelisiniz. [Veri kümelerini](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)görüntüleyebilir ve botunuzun temeli olarak hizmet veren bir tane seçebilir ve ardından yanıtları özelleştirebilirsiniz.
+Yanıtlar, resmi olmayan ve resmi olmayan ve geri alınamaz olarak değişir. Bot için istediğiniz ton ile en yakın olan kişiliğinizi seçmelisiniz. [Veri kümelerini](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)görüntüleyebilir ve botunuzun temeli olarak işlev gören bir tane seçebilir ve ardından yanıtları özelleştirebilirsiniz.
 
-### <a name="edit-bot-specific-questions"></a>Bota özgü soruları edin
-Chit-chat veri kümesinin bir parçası olan ve genel yanıtlarla doldurulmuş bota özgü bazı sorular vardır. Bot bilgilerinizi en iyi şekilde yansıtacak şekilde bu yanıtları değiştirin.
+### <a name="edit-bot-specific-questions"></a>Bot 'a özgü soruları Düzenle
+CHIT-chat veri kümesinin parçası olan ve genel yanıtlarla doldurulmuş bazı bot 'a özgü sorular vardır. Bu yanıtları, bot ayrıntılarınızı en iyi şekilde yansıtacak şekilde değiştirin.
 
-Aşağıdaki chit-chat QnAs'ı daha spesifik hale getirmenizi öneririz:
+Aşağıdaki CHIT-chat QnAs ' i daha belirgin yapmanızı öneririz:
 
 * Kimsin?
-* Ne yapabilirsin ki?
+* Ne yapabilirsiniz?
 * Kaç yaşındasın?
-* Seni kim yarattı?
+* Kim oluşturdunuz?
 * Hello
 
-### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Meta veri etiketiyle özel chit-chat ekleme
+### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Meta veri etiketiyle özel chit-sohbet ekleme
 
-Kendi chit-chat QnA çiftlerinizi eklerseniz, bu yanıtların döndürülmesi için meta veri eklediğinizden emin olun. Meta veri adı/değer `editorial:chitchat`çifti.
+Kendi CHIT-chat QnA çiftlerinden birini eklerseniz, Bu yanıtların döndürüldüğünden meta veri eklediğinizden emin olun. Meta veri adı/değer çifti `editorial:chitchat`.
 
-## <a name="searching-for-answers"></a>Yanıtları arama
+## <a name="searching-for-answers"></a>Yanıtlar aranıyor
 
-GenerateAnswer API, bir kullanıcının sorgusuna en iyi yanıtları aramak için hem soruları hem de yanıtı kullanır.
+GenerateAnswer API 'SI, bir kullanıcının sorgusuna en iyi yanıtları aramak için hem soruları hem de yanıtı kullanır.
 
-### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Soruları yalnızca yanıt alakalı olmadığında arama
+### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Yalnızca yanıt ilgili olmadığında soruları arama
 
-[`RankerType=QuestionOnly`](#choosing-ranker-type) Yanıtları aramak istemiyorsanız kullanın.
+[`RankerType=QuestionOnly`](#choosing-ranker-type) Yanıtları aramak istemiyorsanız öğesini kullanın.
 
-Buna bir örnek, bilgi tabanının yanıt olarak tam formu olan sorular olarak kısaltmaların kataloğu olmasıdır. Yanıtın değeri uygun yanıtı aramak için yardımcı olmayacaktır.
+Bu, Bilgi Bankası 'nın, yanıt olarak tam biçimiyle soru olarak kısaltmalar olarak bir katalog olduğu bir örnektir. Yanıtın değeri, uygun yanıtı aramanıza yardımcı olmaz.
 
-## <a name="rankingscoring"></a>Sıralama / Puanlama
-QnA Maker'ın desteklediği sıralama özelliklerinden en iyi şekilde yararlandığınızdan emin olun. Bunu yapmak, belirli bir kullanıcı sorgusunun uygun bir yanıtla yanıtlanma olasılığını artırır.
+## <a name="rankingscoring"></a>Derecelendirme/Puanlama
+Soru-Cevap Oluşturma, ' nin desteklediği derecelendirme özelliklerinin en iyi kullanımını yaptığınızdan emin olun. Bunun yapılması, belirli bir Kullanıcı sorgusunun uygun bir Yanıtla cevaplanması olasılığını artırır.
 
 ### <a name="choosing-a-threshold"></a>Eşik seçme
 
-Eşik olarak kullanılan varsayılan [güven puanı](confidence-score.md) 0'dır, ancak ihtiyaçlarınıza göre KB'nizin [eşiğini değiştirebilirsiniz.](confidence-score.md#set-threshold) Her KB farklı olduğundan, test etmeli ve KB için en uygun eşik seçin.
+Eşik olarak kullanılan varsayılan [Güvenirlik puanı](confidence-score.md) 0 ' dır, ancak GEREKSINIMLERINIZE göre KB 'nizin [eşiğini değiştirebilirsiniz](confidence-score.md#set-threshold) . Her KB farklı olduğundan, KB 'niz için en uygun eşiği test etmeniz ve seçmeniz gerekir.
 
-### <a name="choosing-ranker-type"></a>Ranker türünü seçme
-Varsayılan olarak, QnA Maker sorular ve yanıtlar aracılığıyla arama. Yalnızca sorular arasında arama yapmak, bir yanıt oluşturmak `RankerType=QuestionOnly` istiyorsanız, GenerateAnswer isteğinin POST gövdesini kullanın.
+### <a name="choosing-ranker-type"></a>Ranker türü seçiliyor
+Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için GenerateAnswer isteğinin GÖNDERI gövdesinde öğesini `RankerType=QuestionOnly` kullanın.
 
-### <a name="add-alternate-questions"></a>Alternatif sorular ekleme
-[Alternatif sorular,](../How-To/edit-knowledge-base.md) kullanıcı sorgusuyla eşleşme olasılığını artırır. Aynı sorunun sorulabileceği birden çok yol olduğunda alternatif sorular yararlıdır. Bu, tümce yapısıve sözcük stilideğişiklikleri içerebilir.
+### <a name="add-alternate-questions"></a>Alternatif sorular ekleyin
+[Alternatif sorular](../How-To/edit-knowledge-base.md) , bir kullanıcı sorgusuyla eşleşme olasılığını artırır. Diğer sorular, aynı sorunun sorulabileceği birden çok yol olduğunda faydalıdır. Bu, tümce yapısında ve Word stilinde değişiklikler içerebilir.
 
 |Özgün sorgu|Alternatif sorgular|Değiştir|
 |--|--|--|
-|Park yeri var mı?|Otoparkın var mı?|cümle yapısı|
- |Merhaba|Yo<br>Hey, orada!|kelime tarzı veya argo|
+|Park, kullanılabilir mi?|Araba Park musunuz?|tümce yapısı|
+ |N|Hecesi<br>Merhaba!|sözcük stili veya argo|
 
 <a name="use-metadata-filters"></a>
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Soruları ve yanıtları filtrelemek için meta veri etiketlerini kullanma
 
-[Meta veriler,](../How-To/edit-knowledge-base.md) istemci uygulamasının tüm yanıtları almaması gerektiğini bilmesi yerine, meta veri etiketlerini temel alan bir kullanıcı sorgusunun sonuçlarını daraltma olanağı ekler. Sorgu aynı olsa bile, bilgi temel yanıtı meta veri etiketine göre farklılık görebilir. Örneğin, restoran şubesinin konumu farklıysa *"park yeri nerede"* farklı bir yanıt alabilir - yani meta veriler *Konum: Seattle* ve *Konum: Redmond'* dur.
+[Meta veriler](../How-To/edit-knowledge-base.md) , bir istemci uygulamanın tüm yanıtları getirmemelidir, ancak meta veri etiketlerine göre bir Kullanıcı sorgusunun sonuçlarını daraltmak için bu özelliği ekler. Bilgi Bankası yanıtı, sorgu aynı olsa bile meta veri etiketine göre farklılık gösterebilir. Örneğin, *"nerede park yeri"* , Restoran dalının konumu farklıysa farklı bir yanıta sahip olabilir. Bu, meta veriler *Konum: Seattle* ve *Konum: Redmond*.
 
-### <a name="use-synonyms"></a>Eş anlamlı ları kullanma
-İngilizce'de eşanlamlılar için bazı destek olsa da, farklı biçim alan anahtar kelimelere eş anlamlı lar eklemek için [Değişiklikler API'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarlı sözcük değişiklikleri kullanın. Eş anlamlılar QnA Maker hizmet düzeyinde eklenir ve hizmetteki tüm bilgi üsleri tarafından paylaşılır.
+### <a name="use-synonyms"></a>Eş anlamlıları kullan
+Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı biçimde olan anahtar sözcüklere eşanlamlı ekler eklemek için [alterler API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Eş anlamlılar Soru-Cevap Oluşturma hizmet düzeyinde eklenir ve hizmetteki tüm bilgi tabanları tarafından paylaşılır.
 
-|Orijinal sözcük|Eş anlamlılar|
+|Özgün sözcük|Eş anlamlılar|
 |--|--|
-|Satın almak|satın alma<br>net bankacılık<br>net bankacılık|
+|satıcıdan|satın alma<br>net-bankacılık<br>net bankacılık|
 
-### <a name="use-distinct-words-to-differentiate-questions"></a>Soruları ayırt etmek için farklı sözcükler kullanın
-QnA Maker'ın bilgi tabanındaki bir soruyla kullanıcı sorgusuyla eşleşen sıralama algoritması, her soru farklı bir gereksinimi ele alıyorsa en iyi şekilde çalışır. Sorular arasında aynı sözcük kümesinin tekrarı, bu sözcüklerle belirli bir kullanıcı sorgusu için doğru yanıtın seçilme olasılığını azaltır.
+### <a name="use-distinct-words-to-differentiate-questions"></a>Soruları ayırt etmek için ayrı sözcükler kullanın
+Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelendirme algoritması, her bir soru farklı bir gereksinim ele alıyorsa en iyi şekilde geçerlidir. Soru-Cevap Oluşturma Sorular arasındaki aynı sözcük kümesinin yinelemesi, bu sözcüklerin bulunduğu belirli bir Kullanıcı sorgusu için doğru yanıtın seçilme olasılığını azaltır.
 
-Örneğin, aşağıdaki soruları içeren iki ayrı Qna'nız olabilir:
+Örneğin, aşağıdaki sorularla iki ayrı QnAs olabilir:
 
 |QnAs|
 |--|
-|park *yeri* nerede|
-|ATM *konumu* nerede|
+|Park *konumu* nerede|
+|Burada ATM *konumudur*|
 
-Bu iki Qna çok benzer sözcüklerle ifade olduğundan, bu benzerlik * `<x>` "nerede konum"* gibi ifade birçok kullanıcı sorguları için çok benzer puanları neden olabilir. Bunun yerine, KB'nizde birçok soruda olabilecek "konum" gibi sözcüklerden kaçınarak *"otopark nerede"* ve *"ATM nerede"* gibi sorgularla açıkça ayırt etmeye çalışın.
+Bu iki QnAs, çok benzer sözcüklerle phrased olduğundan, bu benzerlik, *" `<x>` konum olduğu yer"* gibi phrased çok sayıda kullanıcı sorgusunun çok benzer puanlarını oluşmasına neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek " *Park partisi olan* " ve *"ATM*olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
 
-## <a name="collaborate"></a>İşbirliği
-QnA Maker, kullanıcıların bir bilgi tabanında [işbirliği](../How-to/collaborate-knowledge-base.md) yapmasına olanak tanır. Kullanıcıların bilgi tabanlarına erişmek için Azure QnA Maker kaynak grubuna erişmesi gerekir. Bazı kuruluşlar bilgi tabanı düzenleme ve bakım ını dış kaynaktan sağlamak ve Azure kaynaklarına erişimi korumak isteyebilir. Bu düzenleyici onaylayıcı modeli, farklı aboneliklerde iki özdeş [QnA Maker hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlayarak ve düzenleme-sınama döngüsü için bir tane seçerek yapılır. Sınama tamamlandıktan sonra, bilgi bankası içeriği bir [alma-dışa aktarım](../Tutorials/migrate-knowledge-base.md) işlemiyle onaylayanın QnA Maker hizmetine aktarılır ve sonunda bilgi tabanını yayımlar ve bitiş noktasını günceller.
+## <a name="collaborate"></a>İşbirliği yapma
+Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda [işbirliği](../How-to/collaborate-knowledge-base.md) yapmasına olanak sağlar. Kullanıcıların bilgi tabanlara erişebilmesi için Azure Soru-Cevap Oluşturma kaynak grubuna erişmesi gerekir. Bazı kuruluşlar Bilgi Bankası düzenlemesini ve bakımını dış olarak almak isteyebilir ve yine de Azure kaynaklarına erişimi koruyabilecek. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.
 
 
 
 ## <a name="active-learning"></a>Etkin öğrenme
 
-[Aktif öğrenme,](../How-to/use-active-learning.md) kullanıcı tabanlı sorguların çok çeşitli kalitesi ve miktarına sahip olduğunda alternatif sorular önermenin en iyi işini yapar. İstemci uygulamalarının kullanıcı sorgularının sansür olmadan etkin öğrenme geri bildirim döngüsüne katılmasına izin vermek önemlidir. Sorular QnA Maker portalında önerildiği zaman, **[önerilere göre filtre](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** uygulayabilir, ardından bu önerileri gözden geçirebilir ve kabul edebilir veya reddedebilirsiniz.
+[Etkin öğrenme](../How-to/use-active-learning.md) , çok sayıda kalite ve Kullanıcı tabanlı sorgu miktarına sahip olduğunda alternatif soruların önermesinin en iyi İşlidir. İstemci uygulamalarının Kullanıcı sorgularının, censorgemesiz etkin öğrenme geri bildirim döngüsüne katılmasını sağlamak önemlidir. Soru-Cevap Oluşturma portalında sorular Önerildikten sonra, **[önerilere göre filtreleyerek](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** bu önerileri inceleyip kabul edebilir veya reddedebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

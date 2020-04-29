@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure HDInsight'ta Apache Ambari e-posta bildirimlerini yapılandırın"
-description: Bu makalede, e-posta bildirimleri için Apache Ambari ile SendGrid nasıl kullanılacağı açıklanmaktadır.
+title: "Öğretici: Azure HDInsight 'ta Apache ambarı e-posta bildirimlerini yapılandırma"
+description: Bu makalede, e-posta bildirimleri için bir Apache ambarı ile SendGrid 'in nasıl kullanılacağı açıklanır.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
@@ -8,82 +8,82 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
 ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80082317"
 ---
-# <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Öğretici: Azure HDInsight'ta Apache Ambari e-posta bildirimlerini yapılandırın
+# <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache ambarı e-posta bildirimlerini yapılandırma
 
-Bu eğitimde, SendGrid kullanarak Apache Ambari e-posta bildirimlerini yapılandıracaksınız. [Apache Ambari,](./hdinsight-hadoop-manage-ambari.md) kullanımı kolay bir web Kullanıcı Arabirimi ve REST API sağlayarak bir HDInsight kümesinin yönetimini ve izlenmesini kolaylaştırır. Ambari HDInsight kümelerinde yer alan ve kümeizlemek ve yapılandırma değişiklikleri yapmak için kullanılır. [SendGrid,](https://sendgrid.com/solutions/) özel entegrasyonu kolaylaştıran esnek API'lerin yanı sıra güvenilir işlemsel e-posta teslimi, ölçeklenebilirlik ve gerçek zamanlı analiz sağlayan bulut tabanlı ücretsiz bir e-posta hizmetidir. Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir.
+Bu öğreticide, SendGrid kullanarak Apache ambarı e-posta bildirimlerini yapılandıracaksınız. [Apache ambarı](./hdinsight-hadoop-manage-ambari.md) , kullanımı kolay bir Web Kullanıcı arabirimi ve REST API sağlayarak bir HDInsight kümesinin yönetimini ve izlenmesini basitleştirir. Ambarı HDInsight kümelerine dahil edilmiştir ve kümeyi izlemek ve yapılandırma değişiklikleri yapmak için kullanılır. [SendGrid](https://sendgrid.com/solutions/) , özel tümleştirmeyi kolaylaştıran esnek API 'lerle birlikte güvenilir işlem e-posta teslimi, ölçeklenebilirlik ve gerçek zamanlı analizler sağlayan ücretsiz bir bulut tabanlı e-posta hizmetidir. Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Sendgrid Kullanıcı Adı Edinin
-> * Apache Ambari e-posta bildirimlerini yapılandırma
+> * SendGrid Kullanıcı adı alma
+> * Apache ambarı e-posta bildirimlerini yapılandırma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* SendGrid e-posta hesabı. Talimatlar için [Azure ile SendGrid'i Kullanarak E-posta Gönderme hakkında](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email) bilgi alabiliyorum.
+* SendGrid e-posta hesabı. Yönergeler için bkz. [Azure Ile SendGrid kullanarak e-posta gönderme](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email) .
 
-* Bir HDInsight kümesi. Bkz. [Azure portalını kullanarak Apache Hadoop kümeleri oluşturun.](./hdinsight-hadoop-create-linux-clusters-portal.md)
+* An HDInsight küme. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](./hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="obtain-sendgrid-username"></a>SendGrid Kullanıcı Adını Edinin
+## <a name="obtain-sendgrid-username"></a>SendGrid Kullanıcı adı alma
 
-1. Azure [portalından](https://portal.azure.com)SendGrid kaynağınıza gidin.
+1. [Azure Portal](https://portal.azure.com), SendGrid kaynağına gidin.
 
-1. Genel Bakış sayfasından, hesabınız için SendGrid web sayfasına gitmek için **Yönet'i**seçin.
+1. Hesabınız için SendGrid Web sayfasına gitmek üzere Genel Bakış sayfasında **Yönet**' i seçin.
 
-    ![Azure portalında SendGrid'e genel bakış](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    ![Azure portalında SendGrid 'e genel bakış](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
 
-1. Sol menüden, hesap adınıza gidin ve ardından **Hesap Ayrıntıları.**
+1. Sol menüden hesap adınız ' ne ve ardından **Hesap ayrıntıları**' na gidin.
 
-    ![SendGrid pano navigasyonu](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    ![SendGrid Pano gezintisi](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
 
-1. Hesap **Ayrıntıları** sayfasından **Kullanıcı Adını**kaydedin.
+1. **Hesap ayrıntıları** sayfasında, **Kullanıcı adını**kaydedin.
 
-    ![SendGrid hesap detayları](./media/apache-ambari-email/sendgrid-account-details.png)
+    ![SendGrid hesap ayrıntıları](./media/apache-ambari-email/sendgrid-account-details.png)
 
-## <a name="configure-ambari-e-mail-notification"></a>Ambari e-posta bildirimini yapılandırma
+## <a name="configure-ambari-e-mail-notification"></a>Ambarı e-posta bildirimini yapılandırma
 
-1. Bir web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts`kümenizin adı nerede' `CLUSTERNAME` ye gidin.
+1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts`, Kümenizin adı `CLUSTERNAME` olan ' a gidin.
 
-1. **Eylemler** açılır listesinden **Bildirimleri Yönet'i**seçin.
+1. **Eylemler** açılan listesinden **Bildirimleri Yönet**' i seçin.
 
-1. Uyarı **Bildirimlerini Yönet** penceresinden **+** simgeyi seçin.
+1. **Uyarı bildirimlerini yönet** penceresinde **+** simgesini seçin.
 
-    ![Ambari uyarı bildirimi oluşturmak](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![Ambarı oluşturma uyarı bildirimi](./media/apache-ambari-email/azure-portal-create-notification.png)
 
-1. Uyarı **Bildirimi Oluştur** iletişim kutusundan aşağıdaki bilgileri sağlayın:
+1. **Uyarı bildirimi oluştur** iletişim kutusunda aşağıdaki bilgileri sağlayın:
 
     |Özellik |Açıklama |
     |---|---|
-    |Adı|Bildirim için bir ad sağlayın.|
-    |Gruplar|İstenildiği gibi yapılandırın.|
-    |Severity|İstenildiği gibi yapılandırın.|
+    |Adı|Bildirim için bir ad girin.|
+    |Gruplar|İstediğiniz şekilde yapılandırın.|
+    |Severity|İstediğiniz şekilde yapılandırın.|
     |Açıklama|İsteğe bağlı.|
-    |Yöntem|**E-POSTA'da**bırakın.|
-    |E-posta gönder|Virgülle ayrılmış bildirimleri almak için e-posta(lar) sağlayın.|
+    |Yöntem|**E-postada**bırakın.|
+    |E-posta|Bildirimleri alacak e-postaları virgülle ayırarak belirtin.|
     |SMTP Sunucusu|`smtp.sendgrid.net`|
-    |SMTP Bağlantı Noktası|25 veya 587 (şifrelenmemiş/TLS bağlantıları için).|
-    |E-posta Gönderen|Bir e-posta adresi girin. Adresin gerçek olması gerekmez.|
-    |Kimlik doğrulamayı kullanma|Bu onay kutusunu seçin.|
-    |Kullanıcı adı|SendGrid kullanıcı adını sağlayın.|
-    |Parola|Azure'da SendGrid kaynağını oluşturduğunuzda kullandığınız parolayı sağlayın.|
-    |Şifre Onayı|Parolayı yeniden girin.|
-    |TLS'yi başlat|Bu onay kutusunu seçin|
+    |SMTP bağlantı noktası|25 veya 587 (şifrelenmemiş/TLS bağlantıları için).|
+    |E-posta|Bir e-posta adresi sağlayın. Adresin gerçek olması gerekmez.|
+    |Kimlik doğrulaması kullan|Bu onay kutusunu seçin.|
+    |Kullanıcı adı|SendGrid Kullanıcı adını sağlayın.|
+    |Parola|Azure 'da SendGrid kaynağını oluştururken kullandığınız parolayı girin.|
+    |Parola onayı|Parolayı yeniden girin.|
+    |TLS 'yi Başlat|Bu onay kutusunu seçin|
 
-    ![Ambari uyarı bildirimi oluşturmak](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![Ambarı oluşturma uyarı bildirimi](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
-    **Kaydet'i**seçin. **Uyarı Bildirimlerini Yönet** penceresine geri dönersiniz.
+    **Kaydet**’i seçin. **Uyarı bildirimlerini yönet** penceresine geri dönersiniz.
 
-1. Uyarı **Bildirimlerini Yönet** penceresinden **Kapat'ı**seçin.
+1. **Uyarı bildirimlerini yönet** penceresinde **Kapat**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, SendGrid kullanarak Apache Ambari e-posta bildirimlerini yapılandırmayı öğrendiniz. Apache Ambari hakkında daha fazla bilgi edinmek için aşağıdakileri kullanın:
+Bu öğreticide, SendGrid kullanarak Apache ambarı e-posta bildirimlerinin nasıl yapılandırılacağını öğrendiniz. Apache ambarı hakkında daha fazla bilgi edinmek için aşağıdakileri kullanın:
 
 * [HDInsight kümelerini Apache Ambari Web arabiriminden yönetme](./hdinsight-hadoop-manage-ambari.md)
 

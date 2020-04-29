@@ -1,6 +1,6 @@
 ---
-title: "CLI: Bir uygulamayı Redis'e bağlayın"
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulamayı Redis için bir Azure Önbelleğine nasıl bağlayabilirsiniz şekilde gösterir.
+title: "CLı: bir uygulamayı Redsıs 'e bağlama"
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, bir uygulamanın Redsıs için bir Azure önbelleğine nasıl bağlanacağını gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
@@ -10,15 +10,15 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 27b7040bace80fff5cbcb6a12e4020cfe0c7fc9a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80058634"
 ---
-# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>CLI kullanarak Bir Uygulama Hizmeti uygulamasını Redis için Azure Önbelleğine bağlayın
+# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>CLı kullanarak bir App Service uygulamasını Redsıs için Azure önbelleğine bağlama
 
-Bu örnek komut dosyası, Redis için bir Azure Önbelleği ve Bir Uygulama Hizmeti uygulaması oluşturur. Daha sonra, Redis için Azure Önbelleğini uygulama ayarlarını kullanarak uygulamaya bağlar.
+Bu örnek betik, Redsıs ve App Service uygulaması için bir Azure önbelleği oluşturur. Daha sonra uygulama ayarlarını kullanarak Redsıs için Azure önbelleğini uygulamaya bağlar.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -34,16 +34,16 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya so
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu komut dosyası, bir kaynak grubu, Uygulama Hizmeti uygulaması, Redis için Azure Önbelleği ve ilgili tüm kaynakları oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik, bir kaynak grubu, App Service uygulaması, redin için Azure önbelleği ve tüm ilgili kaynakları oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
-| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Redis örneği için yeni Azure Önbelleği oluşturun. |
-| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Redis örneği için Azure Önbelleği için erişim anahtarlarını listeler. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Bir Uygulama Hizmeti uygulaması için bir uygulama ayarı oluşturur veya günceller. Uygulama ayarları, uygulamanız için ortam değişkenleri olarak kullanıma sunulur. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Redsıs örneği için yeni Azure önbelleği oluşturun. |
+| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Redsıs örneği için Azure önbelleği erişim anahtarlarını listeler. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | App Service uygulaması için bir uygulama ayarı oluşturur veya güncelleştirir. Uygulama ayarları, uygulamanız için ortam değişkenleri olarak kullanıma sunulur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,7 +1,7 @@
 ---
-title: Görüntü türü algılama - Bilgisayar Lı
+title: Görüntü türü algılama-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Bilgisayarlı Görme API'sinin görüntü türü algılama özelliğiile ilgili kavramlar.
+description: Görüntü İşleme API'si görüntü türü algılama özelliği ile ilgili kavramlar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,32 +12,32 @@ ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4e6c2db5333962d7ae43534998ffc1c48b0dba45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80244571"
 ---
-# <a name="detecting-image-types-with-computer-vision"></a>Bilgisayar Görüşü ile görüntü türlerini algılama
+# <a name="detecting-image-types-with-computer-vision"></a>Görüntü İşleme ile görüntü türlerini algılama
 
-Görüntü [API'sini Çözümle](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) ile Computer Vision, görüntünün küçük resim mi yoksa çizgi çizimi mi olduğunu gösteren görüntünün içerik türünü analiz edebilir.
+[Görüntüyü çözümle](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si ile görüntü işleme görüntünün içerik türünü analiz edebilir. Bu, bir resmin küçük resim veya çizgi çizimi olduğunu gösterir.
 
-## <a name="detecting-clip-art"></a>Küçük resmi algılama
+## <a name="detecting-clip-art"></a>Küçük resim algılanıyor
 
-Computer Vision bir görüntüyü analiz eder ve aşağıdaki tabloda açıklandığı gibi görüntünün 0 ile 3 arasında bir ölçekte küçük resim olma olasılığını tanımlar.
+Görüntü İşleme, bir görüntüyü analiz eder ve aşağıdaki tabloda açıklandığı gibi görüntünün bir ölçeğinde 0 ' dan 3 ' e kadar küçük resim olma olasılığını göstermektedir.
 
 | Değer | Anlamı |
 |-------|---------|
 | 0 | Küçük resim değil |
 | 1 | Belirsiz |
-| 2 | Normal klip-resim |
+| 2 | Normal-küçük resim |
 | 3 | İyi klip-resim |
 
 ### <a name="clip-art-detection-examples"></a>Küçük resim algılama örnekleri
 
-Aşağıdaki JSON yanıtları, örnek görüntülerin küçük resim olma olasılığını derecelendirirken Computer Vision'ın ne döndürdediğini gösterir.
+Aşağıdaki JSON yanıtları, örnek görüntülerin küçük resim olma olasılığını derecelendirerek ne Görüntü İşleme döndüğünü gösterir.
 
-![Bir dilim peynirin küçük resim görüntüsü](./Images/cheese_clipart.png)
+![Cheese diliminin küçük resim görüntüsü](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -54,7 +54,7 @@ Aşağıdaki JSON yanıtları, örnek görüntülerin küçük resim olma olası
 }
 ```
 
-![Mavi bir ev ve ön bahçe.](./Images/house_yard.png)
+![Mavi Ev ve ön bahçe](./Images/house_yard.png)
 
 ```json
 {
@@ -71,15 +71,15 @@ Aşağıdaki JSON yanıtları, örnek görüntülerin küçük resim olma olası
 }
 ```
 
-## <a name="detecting-line-drawings"></a>Çizgi çizimlerini algılama
+## <a name="detecting-line-drawings"></a>Çizgi çizimleri algılanıyor
 
-Computer Vision görüntüyü analiz eder ve görüntünün bir çizgi çizimi olup olmadığını belirten bir boolean değeri döndürür.
+Görüntü İşleme bir görüntüyü analiz eder ve görüntünün çizgi çizimi olup olmadığını gösteren bir Boole değeri döndürür.
 
 ### <a name="line-drawing-detection-examples"></a>Çizgi çizim algılama örnekleri
 
-Aşağıdaki JSON yanıtları, örnek görüntülerin çizgi çizimleri olup olmadığını gösterirken Computer Vision'ın ne döndürdüğünü gösterir.
+Aşağıdaki JSON yanıtları, örnek görüntülerin çizgi çizimlerinin olup olmadığını belirten Görüntü İşleme ne getirdiğini gösterir.
 
-![Aslan resmi çizen bir çizgi](./Images/lion_drawing.png)
+![Lion 'ın çizgi çizme resmi](./Images/lion_drawing.png)
 
 ```json
 {
@@ -96,7 +96,7 @@ Aşağıdaki JSON yanıtları, örnek görüntülerin çizgi çizimleri olup olm
 }
 ```
 
-![Yeşil arka planlı beyaz bir çiçek](./Images/flower.png)
+![Yeşil arka plana sahip beyaz çiçek](./Images/flower.png)
 
 ```json
 {
@@ -115,7 +115,7 @@ Aşağıdaki JSON yanıtları, örnek görüntülerin çizgi çizimleri olup olm
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-Görüntü türü algılama özelliği, [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API'sinin bir parçasıdır. Bu API'yi yerel bir SDK veya REST aramaları aracılığıyla arayabilirsiniz. `ImageType` **visualFeatures** sorgu parametresini ekleyin. Daha sonra, tam JSON yanıtı aldığınızda, `"imageType"` bölümün içeriği için dize ayrıştını.
+Görüntü türü algılama özelliği, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sinin bir parçasıdır. Bu API 'YI yerel bir SDK aracılığıyla veya REST çağrıları aracılığıyla çağırabilirsiniz. `ImageType` **Visualfeatures** sorgu parametresine dahil edin. Ardından, tam JSON yanıtını aldığınızda, bu dizeyi yalnızca `"imageType"` bölüm içeriği için ayrıştırın.
 
-* [Hızlı Başlangıç: Bilgisayarlı Vizyon .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Quickstart: Görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
+* [Hızlı başlangıç: Görüntü İşleme .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
