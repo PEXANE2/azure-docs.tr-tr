@@ -1,46 +1,46 @@
 ---
-title: Apache Spark'ı Azure Cosmos DB'ye bağlayın
-description: Apache Spark'ı Azure Cosmos DB'ye bağlamanızı sağlayan Azure Cosmos DB Spark konektörü hakkında bilgi edinin.
+title: Apache Spark Azure Cosmos DB bağlama
+description: Apache Spark Azure Cosmos DB bağlanmanızı sağlayan Azure Cosmos DB Spark Bağlayıcısı hakkında bilgi edinin.
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ramkris
 ms.openlocfilehash: edfaf50b701f64b12f9cf5fcc9ab8d2c6d241d0a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81482186"
 ---
-# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark to Azure Cosmos DB konektörünü kullanarak büyük veri analitiğini hızlandırın
+# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark Azure Cosmos DB bağlayıcısını kullanarak büyük veri analizlerini hızlandırma
 
-Cosmos DB Spark konektörünü kullanarak Azure Cosmos DB'de depolanan verilerle [Spark](https://spark.apache.org/) işlerini çalıştırabilirsiniz. Cosmos toplu iş ve akış işleme için ve düşük gecikme cezası erişimi için bir hizmet katmanı olarak kullanılabilir.
+[Spark](https://spark.apache.org/) işlerini, Cosmos DB Spark bağlayıcısını kullanarak Azure Cosmos DB depolanan verilerle çalıştırabilirsiniz. Cosmos, toplu işlem ve akış işleme için ve düşük gecikmeli erişim için bir hizmet katmanı olarak kullanılabilir.
 
-Azure'da yönetilen Spark kümeleri sağlayan [Azure Databricks](https://azure.microsoft.com/services/databricks) veya [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)ile bağlayıcıyı kullanabilirsiniz. Aşağıdaki tablodesteklenen Spark sürümlerini gösterir.
+Bağlayıcıyı Azure 'da yönetilen Spark kümeleri sağlayan [Azure Databricks](https://azure.microsoft.com/services/databricks) veya [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)ile kullanabilirsiniz. Aşağıdaki tabloda desteklenen Spark sürümleri gösterilmektedir.
 
 | Bileşen | Sürüm |
 |---------|-------|
-| Apache Spark | 2.4.x, 2.3.x, 2.2.x ve 2.1.x |
-| Scala | 2.11 |
-| Azure Databricks çalışma zamanı sürümü | > 3.4 |
+| Apache Spark | 2.4. x, 2.3. x, 2.2. x ve 2.1. x |
+| Scala | 2,11 |
+| Azure Databricks çalışma zamanı sürümü | > 3,4 |
 
 > [!WARNING]
-> Bu bağlayıcı, Azure Cosmos DB'nin çekirdek (SQL) API'sini destekler.
-> MongoDB API için Cosmos DB için [MongoDB Kıvılcım konektörünü](https://docs.mongodb.com/spark-connector/master/)kullanın.
-> Cosmos DB Cassandra API için [Cassandra Spark konektörünü](https://github.com/datastax/spark-cassandra-connector)kullanın.
+> Bu bağlayıcı Azure Cosmos DB Çekirdek (SQL) API 'sini destekler.
+> MongoDB API 'SI için Cosmos DB için [MongoDB Spark bağlayıcısını](https://docs.mongodb.com/spark-connector/master/)kullanın.
+> Cosmos DB Cassandra API için [Cassandra Spark bağlayıcısını](https://github.com/datastax/spark-cassandra-connector)kullanın.
 >
 
 ## <a name="quickstart"></a>Hızlı Başlangıç
 
-* Cosmos DB hesabı kurmak ve bazı verileri doldurmak için [Java SDK ile başlatılan](sql-api-async-java-get-started.md) adımları izleyin.
-* [Azure Databricks'in](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) bir Azure Databricks çalışma alanı ve kümesi kurmaya başladığı adımları izleyin.
-* Artık yeni Not Defterleri oluşturabilir ve Cosmos DB bağlayıcı kitaplığını içe aktarabilirsiniz. Çalışma alanınızı nasıl ayarlayacağınızla ilgili ayrıntılar için [Cosmos DB konektörüyle çalışmaya](#bk_working_with_connector) devam edin.
-* Aşağıdaki bölümde konektör kullanılarak okuma ve yazma ile ilgili parçacıklar bulunmaktadır.
+* Cosmos DB hesabı ayarlamak ve bazı verileri doldurmak için [Java SDK 'sını kullanmaya başlama](sql-api-async-java-get-started.md) bölümündeki adımları izleyin.
+* Azure Databricks bir çalışma alanı ve küme ayarlamaya Başlarken [Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) adımları izleyin.
+* Artık yeni not defterleri oluşturabilir ve Cosmos DB bağlayıcı kitaplığını içeri aktarabilirsiniz. Çalışma alanınızı ayarlama hakkında ayrıntılar için [Cosmos DB Bağlayıcısı Ile çalışmaya](#bk_working_with_connector) atlayın.
+* Aşağıdaki bölümde, bağlayıcıyı kullanarak okuma ve yazma ile ilgili kod parçacıkları vardır.
 
-### <a name="batch-reads-from-cosmos-db"></a>Toplu Cosmos DB okur
+### <a name="batch-reads-from-cosmos-db"></a>Cosmos DB 'ten toplu iş okuma
 
-Aşağıdaki parçacık, PySpark'taki Cosmos DB'den okunacak bir Spark DataFrame'in nasıl oluşturulduğunu gösterir.
+Aşağıdaki kod parçacığında, PySpark içinde Cosmos DB okumak için Spark veri çerçevesinin nasıl oluşturulacağı gösterilmektedir.
 
 ```python
 # Read Configuration
@@ -58,7 +58,7 @@ flights = spark.read.format(
 flights.count()
 ```
 
-Ve Scala'daki aynı kod parçacığı:
+Ve Scala 'da aynı kod parçacığı:
 
 ```scala
 // Import Necessary Libraries
@@ -80,9 +80,9 @@ val flights = spark.read.cosmosDB(readConfig)
 flights.count()
 ```
 
-### <a name="batch-writes-to-cosmos-db"></a>Toplu Cosmos DB yazıyor
+### <a name="batch-writes-to-cosmos-db"></a>Cosmos DB için toplu işlem yazma
 
-Aşağıdaki parçacık PySpark'taki Cosmos DB'ye nasıl bir veri çerçevesi yazılabildiğini gösterir.
+Aşağıdaki kod parçacığında, PySpark içinde Cosmos DB bir veri çerçevesinin nasıl yazılacağı gösterilmektedir.
 
 ```python
 # Write configuration
@@ -99,7 +99,7 @@ flights.write.format("com.microsoft.azure.cosmosdb.spark").options(
     **writeConfig).save()
 ```
 
-Ve Scala'daki aynı kod parçacığı:
+Ve Scala 'da aynı kod parçacığı:
 
 ```scala
 // Write configuration
@@ -117,9 +117,9 @@ import org.apache.spark.sql.SaveMode
 flights.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-### <a name="streaming-reads-from-cosmos-db"></a>Cosmos DB'den akış okumaları
+### <a name="streaming-reads-from-cosmos-db"></a>Cosmos DB akış okuma
 
-Aşağıdaki snippet, Azure Cosmos DB Change Feed'e nasıl bağlanıp okuneceğini gösterir.
+Aşağıdaki kod parçacığında Azure Cosmos DB değişiklik akışına bağlanma ve buradan okuma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 ```python
 # Read Configuration
@@ -143,7 +143,7 @@ changes = (spark
            .options(**readConfig)
            .load())
 ```
-Ve Scala'daki aynı kod parçacığı:
+Ve Scala 'da aynı kod parçacığı:
 
 ```scala
 // Import Necessary Libraries
@@ -168,9 +168,9 @@ val readConfig = Config(Map(
 val df = spark.readStream.format(classOf[CosmosDBSourceProvider].getName).options(readConfig).load()
 ```
 
-### <a name="streaming-writes-to-cosmos-db"></a>Akış Cosmos DB yazıyor
+### <a name="streaming-writes-to-cosmos-db"></a>Cosmos DB için akış yazma
 
-Aşağıdaki parçacık PySpark'taki Cosmos DB'ye nasıl bir veri çerçevesi yazılabildiğini gösterir.
+Aşağıdaki kod parçacığında, PySpark içinde Cosmos DB bir veri çerçevesinin nasıl yazılacağı gösterilmektedir.
 
 ```python
 # Write configuration
@@ -193,7 +193,7 @@ changeFeed = (changes
               .start())
 ```
 
-Ve Scala'daki aynı kod parçacığı:
+Ve Scala 'da aynı kod parçacığı:
 
 ```scala
 // Write configuration
@@ -215,39 +215,39 @@ df
 .options(writeConfig)
 .start()
 ```
-Daha fazla snippets ve sonuna kadar örnekleri, [Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks)bakın.
+Daha fazla kod parçacığı ve uçtan uca örnek, bkz. [Jupyıter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks).
 
-## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a>Konektörle çalışma
+## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a>Bağlayıcıyla çalışma
 
-Konektörü GitHub'da kaynaktan oluşturabilir veya aşağıdaki bağlantılardan Maven'den uber kavanozlarını indirebilirsiniz.
+Bağlayıcıyı GitHub 'da kaynaktan oluşturabilir veya aşağıdaki bağlantılardan Maven 'ten Uber jar dosyaları dışındaki 'ı indirebilirsiniz.
 
 | Spark | Scala | En son sürüm |
 |---|---|---|
-| 2.4.0 | 2.11 | [azure-cosmosdb-spark_2.4.0_2.11_1.4.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar)
-| 2.3.0 | 2.11 | [azure-cosmosdb-spark_2.3.0_2.11_1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
-| 2.2.0 | 2.11 | [azure-cosmosdb-spark_2.2.0_2.11_1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
-| 2.1.0 | 2.11 | [azure-cosmosdb-spark_2.1.0_2.11_1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
+| 2.4.0 | 2,11 | [Azure-cosmosdb-spark_2.4.0 _ 2.11 _ 1.4.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar)
+| 2.3.0 | 2,11 | [Azure-cosmosdb-spark_2.3.0 _ 2.11 _ 1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
+| 2.2.0 | 2,11 | [Azure-cosmosdb-spark_2.2.0 _ 2.11 _ 1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
+| 2.1.0 | 2,11 | [Azure-cosmosdb-spark_2.1.0 _ 2.11 _ 1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
 
 ### <a name="using-databricks-notebooks"></a>Databricks not defterlerini kullanma
 
-Azure Veri Tuğlaları Kılavuzu'ndaki kılavuzu izleyerek > [Azure Cosmos DB Spark konektörünü kullanarak](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html) Databricks çalışma alanınızı kullanarak bir kitaplık oluşturun
+Azure Databricks kılavuzundaki kılavuzu izleyerek Databricks çalışma alanınızı kullanarak bir kitaplık oluşturun > [Azure Cosmos DB Spark bağlayıcısını kullanın](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
 
 > [!NOTE]
-> Azure **Cosmos DB Spark Bağlayıcısı'nı Kullan** sayfası şu anda güncel değil. Altı ayrı kavanozu altı farklı kütüphaneye indirmek yerine, uber kavanozu maven'den https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) indirebilir ve bu kavanozu/kütüphaneyi yükleyebilirsiniz.
+> **Azure Cosmos DB Spark bağlayıcısını kullanma** sayfasının Şu anda güncel olmadığına not edin. Altı ayrı jar dosyaları dışındaki 'ı altı farklı kitaplıklara indirmek yerine, Maven 'den Uber jar 'i indirebilir https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) ve bu tek jar/Library 'yi yükleyebilirsiniz.
 > 
 
-### <a name="using-spark-cli"></a>Kıvılcım-cli kullanma
+### <a name="using-spark-cli"></a>Spark-CLI kullanma
 
-Kıvılcım-cli kullanarak bağlayıcı ile çalışmak için `spark-shell`(yani, `pyspark` `spark-submit`, , ), `--packages` bağlayıcının [maven koordinatları](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11)ile parametre kullanabilirsiniz.
+Spark-CLI (, `spark-shell`,, `pyspark` `spark-submit`) kullanarak bağlayıcı ile çalışmak için, bu `--packages` parametreyi bağlayıcının [Maven koordinatlarıyla](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11)birlikte kullanabilirsiniz.
 
 ```sh
 spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.4.0"
 
 ```
 
-### <a name="using-jupyter-notebooks"></a>Jupyter dizüstü bilgisayarları kullanma
+### <a name="using-jupyter-notebooks"></a>Jupyıter not defterlerini kullanma
 
-HDInsight içinde Jupyter dizüstü bilgisayarları kullanıyorsanız, konektörün maven koordinatlarını belirtmek için kıvılcım sihirli `%%configure` hücrek kullanabilirsiniz.
+HDInsight içinde Jupyıter not defterlerini kullanıyorsanız, bağlayıcının Maven koordinatlarını belirtmek için Spark- `%%configure` Magic hücresini kullanabilirsiniz.
 
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
@@ -259,65 +259,65 @@ HDInsight içinde Jupyter dizüstü bilgisayarları kullanıyorsanız, konektör
 }
 ```
 
-> Ek olarak, bağlayıcı, Apache Spark ve Livy arasındaki olası çakışmaları kaldırmak için `spark.jars.excludes` özeldir.
+> Öğesinin `spark.jars.excludes` dahil edilmesi, bağlayıcı, Apache Spark ve Livy arasındaki olası çakışmaları kaldırmak için özeldir.
 
-### <a name="build-the-connector"></a>Konektörü oluşturun
+### <a name="build-the-connector"></a>Bağlayıcıyı oluşturma
 
-Şu anda, bu `maven` bağlayıcı proje bağımlılıkları olmadan oluşturmak için kullanır, çalıştırabilirsiniz:
+Şu anda bu bağlayıcı proje, `maven` bağımlılık olmadan derlemek için bu şekilde kullanıyor, şunu çalıştırabilirsiniz:
 
 ```sh
 mvn clean package
 ```
 
-## <a name="working-with-our-samples"></a>Örneklerimizle çalışma
+## <a name="working-with-our-samples"></a>Örneklerimizde çalışma
 
-[Cosmos DB Spark GitHub deposunda](https://github.com/Azure/azure-cosmosdb-spark) deneyebileceğiniz aşağıdaki örnek not defterleri ve komut dosyaları vardır.
+[Cosmos DB Spark GitHub deposunda](https://github.com/Azure/azure-cosmosdb-spark) , deneyebileceğiniz aşağıdaki örnek Not defterleri ve betikler bulunur.
 
-* **Spark ve Cosmos DB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html)ile Zamanında Uçuş Performansı : Spark SQL, GraphFrames vitrin hdInsight Jupyter dizüstü bilgisayar hizmeti kullanarak Cosmos DB spark bağlayın ve ML boru hatları kullanarak uçuş gecikmeleri tahmin.
-* **Apache Spark ve Azure Cosmos DB Change Feed ile Twitter Kaynak**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
-* **Cosmos DB Grafikleri sorgulamak için Apache Spark**kullanma : [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
-* **[Azure Veri Tuğlalarını Azure Cosmos DB'ye bağlama.](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** `azure-cosmosdb-spark`  Burada bağlantılı da Zamanında Uçuş Performansı [dizüstü bir](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)Azure Databricks sürümüdür.
-* **[Azure Cosmos DB ve HDInsight (Apache Spark) ile Lambda Architecture](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)**: Cosmos DB ve Spark kullanarak büyük veri boru hatlarını korumanın operasyonel ek yükü azaltabilirsiniz.
+* **Spark ve Cosmos DB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html)ile zaman içinde uçuş performansı: Spark SQL, graphframes 'i göstermek ve ml işlem hatlarını kullanarak uçuş gecikmelerini tahmin etmek için HDInsight Jupyter Not Defteri hizmetini kullanarak Spark 'ı Cosmos DB bağlayın.
+* **Apache Spark ve Azure Cosmos DB değişiklik akışı ile Twitter kaynağı**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
+* **Cosmos DB grafiklerini sorgulamak için Apache Spark kullanma**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
+* Kullanarak `azure-cosmosdb-spark` **[Azure Cosmos DB Azure Databricks bağlama](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** .  Buraya bağlı, Ayrıca, [Şirket Içi uçuş performansı Not defterinin](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)Azure Databricks bir sürümüdür.
+* **[Azure Cosmos DB ve HDInsight Ile lambda mimarisi (Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)**: Cosmos DB ve Spark kullanarak büyük veri işlem hatlarını korumanın işletimsel yükünü azaltabilirsiniz.
 
 ## <a name="more-information"></a>Daha Fazla Bilgi
 
-Biz de dahil `azure-cosmosdb-spark` olmak üzere [wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki) daha fazla bilgi var:
+`azure-cosmosdb-spark` [Wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki) 'de şunlar da dahil olmak üzere daha fazla bilgi sunuyoruz:
 
-* [Azure Cosmos DB Kıvılcım Konektörü Kullanım Kılavuzu](https://github.com/Azure/azure-documentdb-spark/wiki/Azure-Cosmos-DB-Spark-Connector-User-Guide)
-* [Toplama Örnekleri](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
+* [Azure Cosmos DB Spark Bağlayıcısı Kullanıcı Kılavuzu](https://github.com/Azure/azure-documentdb-spark/wiki/Azure-Cosmos-DB-Spark-Connector-User-Guide)
+* [Toplamalar örnekleri](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
 
 ### <a name="configuration-and-setup"></a>Yapılandırma ve Kurulum
 
-* [Kıvılcım Konektörü Yapılandırması](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references)
-* [Cosmos DB Bağlayıcı Kurulumu kıvılcım](https://github.com/Azure/azure-documentdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup) (devam ediyor)
-* [Apache Spark (HDI) ile Power BI Direct Query'yi Azure Cosmos DB'ye yapılandırma](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuring-Power-BI-Direct-Query-to-Azure-Cosmos-DB-via-Apache-Spark-(HDI))
+* [Spark Bağlayıcısı yapılandırması](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references)
+* [Cosmos DB bağlayıcı kurulumuna Spark](https://github.com/Azure/azure-documentdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup) (devam ediyor)
+* [Apache Spark ile Azure Cosmos DB doğrudan sorgu Power BI yapılandırma (HDI)](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuring-Power-BI-Direct-Query-to-Azure-Cosmos-DB-via-Apache-Spark-(HDI))
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-* [Cosmos DB Agregalarını Kullanma](https://github.com/Azure/azure-documentdb-spark/wiki/Troubleshooting:-Using-Cosmos-DB-Aggregates)
-* [Bilinen Sorunlar](https://github.com/Azure/azure-cosmosdb-spark/wiki/Known-Issues)
+* [Cosmos DB toplamaları kullanma](https://github.com/Azure/azure-documentdb-spark/wiki/Troubleshooting:-Using-Cosmos-DB-Aggregates)
+* [Bilinen sorunlar](https://github.com/Azure/azure-cosmosdb-spark/wiki/Known-Issues)
 
 ### <a name="performance"></a>Performans
 
-* [Performans İpuçları](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
-* [Sorgu Test Çalışır](https://github.com/Azure/azure-documentdb-spark/wiki/Query-Test-Runs)
-* [Yazma Test Çalıştırmaları](https://github.com/Azure/azure-cosmosdb-spark/wiki/Writing-Test-Runs)
+* [Performans Ipuçları](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
+* [Sorgu testi çalıştırmaları](https://github.com/Azure/azure-documentdb-spark/wiki/Query-Test-Runs)
+* [Test çalıştırmaları yazılıyor](https://github.com/Azure/azure-cosmosdb-spark/wiki/Writing-Test-Runs)
 
 ### <a name="change-feed"></a>Değişiklik Akışı
 
-* [Azure Cosmos DB Değişiklik Akışı ve Apache Spark kullanarak Akış İşleme Değişiklikleri](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
-* [Yem Demolarını Değiştir](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
-* [Yapılandırılmış Akış Demoları](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
+* [Azure Cosmos DB değişiklik akışını ve Apache Spark kullanarak akış Işleme değişiklikleri](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
+* [Akış tanıtımları değiştirme](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
+* [Yapılandırılmış akış gösterileri](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
 ### <a name="monitoring"></a>İzleme
 
-* [Uygulama öngörüleri ile Kıvılcım işlerinin izlenmesi](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
+* [Application Insights ile Spark işlerini izleme](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Henüz yapmadıysanız, [Azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub deposundan Azure Cosmos DB konektörüne Kıvılcım'ı indirin. Repo'da aşağıdaki ek kaynakları keşfedin:
+Henüz yapmadıysanız, [Azure-cosmosdb-Spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub deposundan Spark Azure Cosmos DB bağlayıcısını indirin. Depoda aşağıdaki ek kaynakları keşfet:
 
-* [Toplama örnekleri](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
-* [Örnek komut dosyaları ve not defterleri](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
+* [Toplamalar örnekleri](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
+* [Örnek betikler ve Not defterleri](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-[Ayrıca Apache Spark SQL, DataFrames ve Datasets Kılavuzu'nu ve](https://spark.apache.org/docs/latest/sql-programming-guide.html)Azure [HDInsight'taki Apache Spark makalesini](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) de gözden geçirmek isteyebilirsiniz.
+Ayrıca, [SQL, DataFrames ve veri kümeleri kılavuzunu](https://spark.apache.org/docs/latest/sql-programming-guide.html)ve [Azure hdınsight 'ta Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) Apache Spark gözden geçirmek isteyebilirsiniz.

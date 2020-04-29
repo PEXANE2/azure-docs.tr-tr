@@ -4,10 +4,10 @@ description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yed
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101336"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasında Azure dosya paylaşımlarını yedekleme
@@ -20,7 +20,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 * Dosya paylaşımlarını bulma ve yedeklemeleri yapılandırma.
 * Bir geri yükleme noktası oluşturmak için isteğe bağlı yedekleme işini çalıştırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Dosya paylaşımının barındırılmasına yönelik depolama hesabıyla aynı bölgede bir [Kurtarma Hizmetleri Kasası](#create-a-recovery-services-vault) oluşturun veya oluşturun.
 * Dosya paylaşımının [Desteklenen depolama hesabı türlerinden](azure-file-share-support-matrix.md)birinde bulunduğundan emin olun.
@@ -72,7 +72,7 @@ Depolama çoğaltma türünü değiştirmek için:
 
     ![Dosya paylaşımları bulunuyor](./media/backup-afs/discovering-file-shares.png)
 
-1. **Dosya paylaşımları** listesinde, yedeklemek istediğiniz bir veya daha fazla dosya paylaşımını seçin. **Tamam ' ı**seçin.
+1. **Dosya paylaşımları** listesinde, yedeklemek istediğiniz bir veya daha fazla dosya paylaşımını seçin. **Tamam**’ı seçin.
 
    ![Dosya paylaşımlarını seçin](./media/backup-afs/select-file-shares.png)
 

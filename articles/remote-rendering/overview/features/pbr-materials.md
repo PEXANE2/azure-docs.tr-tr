@@ -6,83 +6,83 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680264"
 ---
 # <a name="pbr-materials"></a>PBR malzemeleri
 
-*PBR malzemeleri,* Azure Uzaktan İşleme'de desteklenen [malzeme türlerinden](../../concepts/materials.md) biridir. Onlar gerçekçi aydınlatma almalısınız [meshes](../../concepts/meshes.md) için kullanılır.
+*PBR malzemeleri* , Azure uzaktan işlemede desteklenen [malzeme türlerinden](../../concepts/materials.md) biridir. Gerçekçi aydınlatma alması gereken [kafesler](../../concepts/meshes.md) için kullanılırlar.
 
-PBR **P**hysically **B**ased **R**endering anlamına gelir ve malzeme fiziksel olarak makul bir şekilde bir yüzeyin görsel özelliklerini açıklar anlamına gelir, gerçekçi sonuçlar tüm Aydınlatma koşulları altında mümkün olduğu gibi. Çoğu modern oyun motorları ve içerik oluşturma araçları PBR malzemelerini destekler, çünkü gerçek zamanlı görüntüleme için gerçek dünya senaryolarının en iyi yaklaşımları olarak kabul edilirler.
+PBR, **P**HYS, **B**ased **R**endering için temsil eder ve malzemenin, bir yüzeyin görsel özelliklerini fiziksel bir şekilde, her aydınlatma koşullarında gerçekçi sonuçlar olabilmesinden kaynaklanan bir şekilde açıkladığı anlamına gelir. Çoğu modern oyun altyapısı ve içerik oluşturma araçları, gerçek zamanlı işleme için gerçek dünya senaryolarının en iyi şekilde değerlendirildikleri için PBR malzemelerini destekler.
 
-![ARR tarafından işlenen kask glTF örnek modeli](media/helmet.png)
+![ARR tarafından oluşturulan Helmet glTF örnek modeli](media/helmet.png)
 
-Ancak PBR malzemeleri evrensel bir çözüm değildir. Görüntüleme açısına bağlı olarak renkleri farklı yansıtan malzemeler vardır. Örneğin, bazı kumaşlar veya araba boyaları. Bu tür malzemeler standart PBR modeli tarafından işlenmez ve şu anda Azure Uzaktan İşlemtarafından desteklenmez. Buna *İnce Film* (çok katmanlı yüzeyler) ve *Clear-Coat* (otomobil boyaları için) gibi PBR uzantıları dahildir.
+PBR malzemeleri evrensel bir çözüm değildir, ancak. Görüntüleme açısına göre rengi farklı şekilde yansıtan malzemeler vardır. Örneğin, bazı yapılar veya otomobil boyar. Bu tür malzemeler standart PBR modeli tarafından işlenmez ve şu anda Azure uzaktan Işleme tarafından desteklenmemektedir. Bu, *Ince Film* (çok katmanlı yüzeyler) ve *clear-Coat* (otomobil BOYAYMALARı) gibi PBR uzantıları içerir.
 
 ## <a name="common-material-properties"></a>Ortak malzeme özellikleri
 
-Bu özellikler tüm malzemeler için ortaktur:
+Bu özellikler tüm malzemelerde ortaktır:
 
-* **albedoColor:** Bu renk *albedoMap* veya *vertex renkler*gibi diğer renkler ile çarpılır. Bir malzemeüzerinde *saydamlık* etkinse, alfa kanalı opaklığı `1` ayarlamak için kullanılır, `0` anlamı tamamen opak ve anlamı tamamen saydamdır. Varsayılan değer beyazdır.
+* **Albedocolor:** Bu renk, *Albedomap* veya *köşe renkleri*gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, tam donuk ve `1` `0` anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır. Varsayılan değer beyazdır.
 
   > [!NOTE]
-  > Bir PBR malzemesi tamamen saydam olduğunda, mükemmel temiz bir cam parçası gibi, hala çevreyi yansıtır. Güneş gibi parlak noktalar yansımada hala görülebilir. Bu renk [malzemeleri](color-materials.md)için farklıdır.
+  > Bir PBR malzemesi tamamen saydam olduğunda, mükemmel bir cam taş gibi, ortamı yine de yansıtır. Güneş gibi parlak noktalar hala yansıma içinde görünür. Bu [renk malzemeleri](color-materials.md)için farklıdır.
 
-* **albedoMap:** Piksel başına albedo değerleri için [2B doku.](../../concepts/textures.md)
+* **Albedomap:** Piksel başına Albedo değerleri için [2B doku](../../concepts/textures.md) .
 
-* **alphaClipEnabled** ve **alphaClipThreshold:** *alphaClipEnabled* doğruysa, albedo alfa değerinin *alphaClipThreshold'den* daha düşük olduğu tüm pikseller çizilmez. Alfa kırpma bile saydamlık etkinleştirmeden kullanılabilir ve işlemek için çok daha hızlıdır. Alfa kırpılmış malzemeler hala tam opak malzemeler daha işlemek için daha yavaş olsa da. Varsayılan olarak alfa kırpma devre dışı bırakılır.
+* **alphaclipenabled** ve **alphaclipthreshold:** *alphaclipenabled* değeri true ise, Albedo Alpha değerinin *alphaclipthreshold* değerinden düşük olduğu tüm pikseller çizilmez. Alfa kırpması, saydamlığı etkinleştirmeden ve işlemek için çok daha hızlı bir şekilde kullanılabilir. Alfa kırpılan malzemeler, ancak tamamen opak malzemelerden daha yavaş işleme almaya devam etmektedir. Varsayılan olarak Alfa kırpması devre dışıdır.
 
-* **textureCoordinateScale** ve **textureCoordinateOffset:** Ölçek UV doku koordinatları içine çarpılır, ofset eklenir. Dokuları germek ve kaydırmak için kullanılabilir. Varsayılan ölçek (1, 1) ve ofset (0, 0) 'dir.
+* **textureCoordinateScale** ve **TEXTURECOORDINATEOFFSET:** ölçek UV doku koordinatlarına çarpılır, bu da ona eklenir. Dokuları uzatmak ve kaydırmak için kullanılabilir. Varsayılan ölçek (1, 1) ve konum (0, 0).
 
-* **useVertexColor:** Kafes tepe noktası renkleri içeriyorsa ve bu seçenek etkinse, kafeslerin tepe noktası renkleri *albedoColor* ve *albedoMap*ile çarpılır. Varsayılan olarak vertex renkleri devre dışı bırakılır.
+* **Usevertexcolor:** Kafes köşe renkleri içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin köşe renkleri *Albedocolor* ve *Albedomap*ile çarpılır. Varsayılan olarak köşe renkleri devre dışıdır.
 
-* **isDoubleSided:** Çift taraflılık gerçek olarak ayarlanmışsa, kamera arka yüzlerine baksa bile bu malzemeye sahip üçgenler işlenir. PBR malzemeleri için aydınlatma da arka yüzler için düzgün bir şekilde hesaplanır. Varsayılan olarak bu seçenek devre dışı bırakılır. Ayrıca bakınız [Tek taraflı görüntüleme.](single-sided-rendering.md)
+* **ıdoubleyüzlü:** Çift sidebir değer true olarak ayarlanırsa, kamera arka yüzlerine baksa bile bu malzemeden üçgenler işlenir. PBR malzemeleri için aydınlatma, arka yüzlere uygun olarak da hesaplanır. Varsayılan olarak bu seçenek devre dışıdır. Ayrıca bkz. [tek taraflı işleme](single-sided-rendering.md).
 
 ## <a name="pbr-material-properties"></a>PBR malzeme özellikleri
 
-Fiziksel tabanlı render temel fikir Gerçek dünya malzemelerin geniş bir yelpazede taklit etmek için *BaseColor*, *Metalness*ve *Pürüzlülük* özellikleri kullanmaktır. PBR'nin ayrıntılı bir açıklaması bu makalenin kapsamı dışındadır. PBR hakkında daha fazla bilgi için [diğer kaynaklara](http://www.pbr-book.org)bakın. Aşağıdaki özellikler PBR malzemelerine özgüdir:
+Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada malzemelere öykünmek için *Basecolor*, *Metalness*ve *kablık* özelliklerini kullanmaktır. PBR 'nin ayrıntılı bir açıklaması Bu makalenin kapsamı dışındadır. PBR hakkında daha fazla bilgi için bkz. [diğer kaynaklar](http://www.pbr-book.org). Aşağıdaki özellikler, PBR malzemelere özgüdür:
 
-* **baseColor:** PBR malzemelerde *albedo rengi* *temel renk*olarak adlandırılır. Azure Uzaktan İşleme'de *albedo renk* özelliği ortak malzeme özellikleri aracılığıyla zaten mevcut olduğundan, ek temel renk özelliği yoktur.
+* **Basecolor:** PBR malzemeleri ' nde, *Albedo rengi* *temel renk*olarak adlandırılır. Azure uzaktan Işlemede *Albedo Color* özelliği ortak malzeme özellikleri aracılığıyla zaten mevcut olduğundan, ek bir temel renk özelliği yoktur.
 
-* **pürüzlülük** ve **pürüzlülükHarita:** Pürüzlülük yüzeyinne ne kadar pürüzlü veya pürüzsüz olduğunu tanımlar. Pürüzlü yüzeyler ışığı pürüzsüz yüzeylere göre daha fazla yöne dağıtır ve bu da yansımaları keskin den ziyade bulanık laştırır. Değer aralığı `0.0` `1.0`' ndan . Eşit `roughness` olduğunda, `0.0`yansımalar keskin olacaktır. Eşit `roughness` olduğunda, `0.5`yansımalar bulanık laşır.
+* **kabalık** ve **kabonlik** , yüzlü, yüzeyin ne kadar kaba veya düzgün olduğunu tanımlar. Kaba yüzeyler, ışığın keskin yüzeylere göre daha fazla yönde dağılımı ve bu da yansımaları keskin hale getirir. Değer aralığı `0.0` - `1.0`' dır. Eşit `roughness` `0.0`olduğunda, yansımalar keskin olur. `roughness` Eşitse `0.5`, yansıtımları bulanık hale gelir.
 
-  Hem pürüz değeri hem de pürüzlülük haritası sağlanırsa, son değer bu ikisinin ürünü olur.
+  Hem bir kabın değeri hem de bir kabonu eşleme sağlanırsa, son değer iki ürünün çarpımı olur.
 
-* **metalness** ve **metalnessMap:** Fizikte, bu özellik bir yüzeyin iletken veya dielektrik olup olmadığına karşılık gelir. İletken malzemeler farklı yansıtıcı özelliklere sahiptir ve albedo rengi olmayan yansıtıcı olma eğilimindedirler. PBR malzemelerinde bu özellik, bir yüzeyin çevreye ne kadar yansıdığını etkiler. Değerler ' `0.0` `1.0`den ' e kadar Metallik olduğunda, `0.0`albedo rengi tamamen görünür ve malzeme plastik veya seramik gibi görünüyor. Metallik olduğunda, `0.5`boyalı metal gibi görünür. Metallik olduğunda, `1.0`yüzey neredeyse tamamen albedo rengini kaybeder ve sadece çevreyi yansıtır. Örneğin, eğer `metalness` `1.0` ve `roughness` `0.0` sonra bir yüzey gerçek dünya aynası gibi görünüyor.
+* **metalness** ve **metalnessMap:** bu özellik, bir yüzeyin iletken ya da dielektrik olup olmadığına karşılık gelir. İletken malzemeler farklı yansıtmalı özelliklere sahiptir ve Albedo rengi olmadan yansıtıcı olarak eğilimlidir. PBR malzemelerde, bu özellik, çevreleyen ortamı ne kadar bir yüzey yansıttığını etkiler. Değerler ile `1.0`arasında `0.0` değişir. Metalness olduğunda `0.0`, Albedo rengi tamamen görünür olur ve malzemeler plastik ya da ceramikler gibi görünür. Metalness olduğunda `0.5`, boyanmış metal gibi görünür. Metalness `1.0`olduğunda yüzey, Albedo rengini neredeyse kaybeder ve yalnızca surlaları yansıtır. `metalness` Örneğin, `1.0` ve `roughness` `0.0` ise, bir yüzey gerçek dünya yansıtmaya benzer şekilde görünür.
 
-  Hem metallik değeri hem de metallik haritası sağlanırsa, nihai değer bu ikisinin ürünü olacaktır.
+  Hem bir metalness değeri hem de bir metalness eşlemesi sağlanırsa, son değer iki ürünün çarpımı olur.
 
-  ![metallik ve pürüzlülük](./media/metalness-roughness.png)
+  ![metalness ve kablık](./media/metalness-roughness.png)
 
-  Yukarıdaki resimde, sağ alt köşedeki küre gerçek bir metal malzemeye, sol alttaki ise seramik veya plastik gibi görünüyor. Albedo rengi de fiziksel özelliklerine göre değişiyor. Artan pürüzlülükle, malzeme yansıma keskinliğini kaybeder.
+  Yukarıdaki resimde, sağ alt köşedeki Sphere gerçek metal malzemeler gibi görünür ve sol alt, Ceramik veya plastik gibi görünür. Albedo rengi Ayrıca fiziksel özelliklere göre değişiyor. Büyük bir artış sayesinde, malzeme yansıma keskinliğini kaybeder.
 
-* **normalHarita:** İnce taneli ayrıntıları simüle etmek için normal bir [harita](https://en.wikipedia.org/wiki/Normal_mapping) sağlanabilir.
+* **NormalMap:** İnce ayrıntıların benzetimini yapmak için, [normal bir eşleme](https://en.wikipedia.org/wiki/Normal_mapping) sağlanverilebilir.
 
-* **oklüzyonMap** ve **aoScale:** [Ortam tıkanıklığı](https://en.wikipedia.org/wiki/Ambient_occlusion) yarıklı nesneleri tıkanmış alanlara gölgeler ekleyerek daha gerçekçi görünmesini sağlar. Oklüzyon değeri, `1.0`karanlık `0.0` (tıkanmış) anlamına `1.0` gelir ve hiçbir tıkanıklık anlamına gelir , arasında değişir. `0.0` 2B doku oklüzyon eşlemi olarak sağlanırsa, efekt etkin dir ve *aoScale* çarpan olarak hareket eder.
+* **Occlusionmap** ve **aoscale:** [ortam occlusiyon](https://en.wikipedia.org/wiki/Ambient_occlusion) , occluya ve daha gerçekçi alanlara gölge ekleyerek nesnelerin daha gerçekçi görünmesini sağlar. `0.0` Occlusiyon değeri `1.0`, değerinden (occluded) `0.0` anlamına gelir ve `1.0` hiçbir anlamı yoktur. Bir 2B doku bir occlusiyon eşlemesi olarak sağlanıyorsa, efekt etkinleştirilir ve *AOCE ölçeği* bir çarpan gibi davranır.
 
-  ![Oklüzyon Haritası](./media/boom-box-ao2.gif)
+  ![Occlusiyon eşleme](./media/boom-box-ao2.gif)
 
-* **saydam:** PBR malzemeleri için yalnızca bir saydamlık ayarı vardır: etkin olup olmadığı. Opaklık albedo renginin alfa kanalı ile tanımlanır. Etkinleştirildiğinde, yarı saydam yüzeyler çizmek için daha karmaşık bir işleme ardışık hattı çağrılır. Azure Uzaktan İşleme, gerçek [sipariş bağımsız saydamlığı](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT) uygular.
+* **saydam:** PBR malzemeleri için yalnızca bir saydamlık ayarı vardır: etkin veya değildir. Opaklık, Albedo renginin alfa kanalı tarafından tanımlanır. Etkinleştirildiğinde yarı saydam yüzeyler çizmek için daha karmaşık bir işleme işlem hattı çağrılır. Azure uzaktan Işleme, gerçek [sıra bağımsız saydamlığı](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT) uygular.
 
-  Saydam geometriişlemek pahalıdır. Yalnızca bir yüzeyde, örneğin bir ağacın yaprakları için deliklere ihtiyacınız varsa, bunun yerine alfa kırpma kullanmak daha iyidir.
+  Saydam geometri işleme pahalıdır. Yalnızca bir yüzeydeki deliklere ihtiyacınız varsa (örneğin, bir ağacın yaprakları için), bunun yerine Alfa kırpması kullanmak daha iyidir.
 
-  ![Yukarıdaki](./media/transparency.png) resimde Şeffaflık Bildirimi, nasıl sağ-en küre tamamen saydam, ama yansıma hala görülebilir.
+  ![Yukarıdaki](./media/transparency.png) görüntüde, en sağdaki Sphere 'in tamamen saydam olduğu, ancak yansıma hala görünür durumda olan saydamlık bildirimi.
 
   > [!IMPORTANT]
-  > Herhangi bir malzemenin çalışma zamanında opaktan saydama geçmesi gerekiyorsa, işleyici *TileBasedComposition* [oluşturma modunu](../../concepts/rendering-modes.md)kullanmalıdır. Bu sınırlama, başlangıçta saydam malzeme olarak dönüştürülen malzemeler için geçerli değildir.
+  > Çalışma zamanında, herhangi bir malzemenin donuk ' den saydam 'e geçiş olması gerekiyorsa, oluşturucunun *Tilebasedcomposition* [işleme modunu](../../concepts/rendering-modes.md)kullanması gerekir. Bu sınırlama, ile başlamak için saydam malzemeler olarak dönüştürülmüş malzemeler için geçerlidir.
 
 ## <a name="technical-details"></a>Teknik ayrıntılar
 
-Azure Uzaktan İşleme, GGX NDF, Schlick Fresnel ve GGX Smith ile bağlantılı görünürlük terimini Lambert yaygın terimiyle birlikte Cook-Torrance mikro-yönlü BRDF kullanır. Bu model şu anda fiili endüstri standardıdır. Daha ayrıntılı ayrıntılar için, bu makaleye bakın: [Fiziksel tabanlı Rendering - Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure uzaktan Işleme, GGX NDF, Schlick Fresnel düşüşünü ve bir Lambx Smith bağıntılı görünürlük terimi olan Cook-Torrance Micro-model BRDF 'ı ve Lambert dağıtma terimiyle birlikte kullanır. Bu model, şu anda endüstri standardıdır. Daha ayrıntılı bilgi için şu makaleye bakın: [fiziksel tabanlı işleme-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
- Azure Uzaktan İşleme'de kullanılan *Metalness-Pürüzlülük* PBR modeline alternatif olarak *Specular-Glossiness* PBR modeli dir. Bu model daha geniş bir malzeme yelpazesini temsil edebilir. Ancak, daha pahalı ve genellikle gerçek zamanlı durumlarda iyi çalışmıyor.
-*(BaseColor, Metalness)* dönüştürülemeyen *(Diffuse, Specular)* değer çiftleri olduğu gibi *Specular-Glossiness'ten* *Metalness-Pürüzlülüğe* dönüştürmek her zaman mümkün değildir. Tüm *(BaseColor, Metalness)* çiftleri iyi tanımlanmış *(Diffuse, Specular)* çiftleri karşılık beri diğer yönde dönüşüm, daha basit ve daha kesindir.
+ Azure uzaktan Işlemede kullanılan *Metalness-Kabghize* yönelik PBR modelinin bir alternatifi, *Yansımalı* bir ve daha fazla kullanım PBR modelidir. Bu model, daha geniş bir malzeme aralığını temsil edebilir. Ancak, daha pahalıdır ve genellikle gerçek zamanlı durumlarda iyi çalışmaz.
+( *Basecolor, Metalness)* öğesine dönüştürülemeyen *(dağıtılmış, yansımalı)* değer çiftleri olduğu Için, *Yansımalı bir ışıldan* *Metalness-kabıya* dönüştürme her zaman mümkün değildir. Tüm *(Basecolor, Metalness)* çiftleri iyi tanımlanmış *(dağıtılmış, yansımalı)* çiftlerine karşılık geldiğinden, diğer yönde dönüştürme daha basit ve daha kesin bir hale gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Renkli malzemeler](color-materials.md)
-* [Doku](../../concepts/textures.md)
-* [Kafes](../../concepts/meshes.md)
+* [Renk malzemeleri](color-materials.md)
+* [Dokular](../../concepts/textures.md)
+* [Ağ yapıları](../../concepts/meshes.md)

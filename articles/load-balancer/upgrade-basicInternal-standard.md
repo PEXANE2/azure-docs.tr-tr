@@ -1,6 +1,6 @@
 ---
-title: Temel Dahili'den Standart Dahili'ye Yükseltme - Azure Yük Dengeleyicisi
-description: Bu makalede, Azure Dahili Yük Dengeleyicisi'ni Temel SKU'dan Standart SKU'ya nasıl yükseltebilirsiniz
+title: Temel Iç istemciden standart Iç Azure Load Balancer yükseltme
+description: Bu makalede, Azure Iç Load Balancer temel SKU 'dan standart SKU 'ya nasıl yükselteceğiniz gösterilmektedir
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
@@ -8,73 +8,73 @@ ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770379"
 ---
-# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Dahili Yük Dengeleyicisi'ni Yükseltin- Giden Bağlantı Gerekmez
-[Azure Standart Yük Dengeleyici,](load-balancer-overview.md) bölge artıklığı sayesinde zengin bir işlevsellik kümesi ve yüksek kullanılabilirlik sunar. Yük Dengeleyici SKU hakkında daha fazla bilgi edinmek için [karşılaştırma tablosuna](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)bakın.
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekmez
+[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
-Bu makalede, Temel Yük Dengeleyicisi ile aynı yapılandırmaya sahip bir Standart Yük Dengeleyicisi ve Temel Yük Dengeleyicisi'nden Standart Yük Dengeleyicisine geçen bir PowerShell komut dosyası tanıtıştır.
+Bu makalede temel Standart Load Balancer Load Balancer Load Balancer aynı yapılandırmaya sahip bir Standart Load Balancer oluşturan bir PowerShell betiği tanıtılmıştır.
 
 ## <a name="upgrade-overview"></a>Yükseltmeye genel bakış
 
-Aşağıdakileri yapan bir Azure PowerShell komut dosyası kullanılabilir:
+Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
-* Belirttiğiniz konumda standart bir SKU Yük Dengeleyicisi oluşturur. Standart İç Yük Dengeleyicisi tarafından [giden bağlantı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) sağlanmayacağını unutmayın.
-* Temel SKU Yük Dengeleyicisi'nin yapılandırmalarını yeni oluşturulan Standart Yük Dengeleyicisine sorunsuz bir şekilde kopyalar.
-* Özel IP'leri Temel Yük Dengeleyici'nden yeni oluşturulan Standart Yük Dengeleyicisine sorunsuz bir şekilde taşıyın.
-* VM'leri Temel Yük Dengeleyicisinin arka uç havuzundan Standart Yük Dengeleyicisinin arka uç havuzuna sorunsuz bir şekilde taşıyın
+* Belirttiğiniz konumda standart bir Iç SKU Load Balancer oluşturur. Standart Iç Load Balancer [giden bağlantı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) sağlamayacağını unutmayın.
+* Temel SKU 'nun yapılandırmalarının Load Balancer yeni oluşturulan Standart Load Balancer sorunsuzca kopyalar.
+* Özel IP 'Leri temel Load Balancer yeni oluşturulan Standart Load Balancer sorunsuzca taşıyın.
+* VM 'Leri temel Load Balancer arka uç havuzundan sorunsuz bir şekilde Standart Load Balancer arka uç havuzuna taşıyın
 
-### <a name="caveatslimitations"></a>Uyarılar\Sınırlamalar
+### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Komut dosyası yalnızca giden bağlantı gerektirmediği durumlarda İç Yük Dengeleyici yükseltmesi destekler. Bazı VM'leriniz için [giden bağlantıya](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) ihtiyacınız varsa, talimatlar için lütfen bu [sayfaya](upgrade-InternalBasic-To-PublicStandard.md) bakın. 
-* Standart yük dengeleyicisi farklı bir bölgede oluşturulursa, eski bölgede bulunan VM'leri yeni oluşturulan Standart Yük Dengeleyicisi ile ilişkilendiremezsinuz. Bu sınırlamayı aşmak için yeni bölgede yeni bir VM oluşturduğunuzdan emin olun.
-* Yük Dengeleyicinizde ön uç IP yapılandırması veya arka uç havuzu yoksa, komut dosyasını çalıştıran bir hataya çarpma olasılığınız yüksektir. Boş olmadıklarından emin olun.
+* Betik yalnızca giden bağlantı gerekli olmadığında dahili Load Balancer yükseltmesini destekler. Bazı sanal makinelerinize [giden bağlantı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) gerekiyorsa lütfen yönergeler için bu [sayfaya](upgrade-InternalBasic-To-PublicStandard.md) bakın. 
+* Standart yük dengeleyici farklı bir bölgede oluşturulduysa, eski bölgede var olan VM 'Leri yeni oluşturulan Standart Load Balancer ilişkilendiremeyeceksiniz. Bu kısıtlamayı geçici olarak çözmek için yeni bölgede yeni bir VM oluşturun.
+* Load Balancer herhangi bir ön uç IP yapılandırması veya arka uç havuzu yoksa, betiği çalıştırırken bir hatayla karşılaşamayacaksınız. Bunların boş olmadığından emin olun.
 
-## <a name="download-the-script"></a>Komut dosyasını indirin
+## <a name="download-the-script"></a>Betiği indir
 
-[PowerShell Galerisi'nden](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0)geçiş komut dosyasını indirin.
-## <a name="use-the-script"></a>Komut dosyasını kullanma
+[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0)geçiş betiğini indirin.
+## <a name="use-the-script"></a>Betiği kullan
 
-Yerel PowerShell ortamı kurulumunuza ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
+Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
 
-* Azure Az modülleri yüklü değilse veya Azure Az modüllerini kaldırmakta sakınca görmüyorsanız, en iyi seçenek `Install-Script` komut dosyasını çalıştırma seçeneğini kullanmaktır.
-* Azure Az modüllerini saklamanız gerekiyorsa, en iyi seçenek komut dosyasını indirip doğrudan çalıştırmaktır.
+* Azure az modules yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız, en iyi seçenek betiği çalıştırmak için `Install-Script` seçeneğini kullanmaktır.
+* Azure az modules tutmanız gerekiyorsa, en iyi sonuç, betiği indirmek ve doğrudan çalıştırmak olacaktır.
 
-Azure Az modüllerinin yüklü olup olmadığını belirlemek `Get-InstalledModule -Name az`için çalıştırın. Yüklü Az modülleri görmüyorsanız, `Install-Script` yöntemi kullanabilirsiniz.
+Azure az modules yüklü olup olmadığınızı öğrenmek için çalıştırın `Get-InstalledModule -Name az`. Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
 
-### <a name="install-using-the-install-script-method"></a>Install-Script yöntemini kullanarak yükleme
+### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
 
-Bu seçeneği kullanmak için bilgisayarınızda Azure Az modüllerinin yüklü olmaması gerekir. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure Az modüllerini kaldırabilir veya komut dosyasını el ile indirip çalıştırmak için diğer seçeneği kullanabilirsiniz.
+Bu seçeneği kullanmak için, bilgisayarınızda Azure az modules yüklü olmamalıdır. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure az modüller ' i kaldırabilir veya betiği el ile indirmek ve çalıştırmak için diğer seçeneği kullanabilirsiniz.
   
-Komut dosyasını aşağıdaki komutla çalıştırın:
+Betiği aşağıdaki komutla çalıştırın:
 
 `Install-Script -Name AzureILBUpgrade`
 
-Bu komut aynı zamanda gerekli Az modüllerini de yükler.  
+Bu komut ayrıca gerekli az modülleri de yüklüyor.  
 
-### <a name="install-using-the-script-directly"></a>Komut dosyasını kullanarak doğrudan yükleme
+### <a name="install-using-the-script-directly"></a>Betiği kullanarak doğrudan yüklemeyi
 
-Bazı Azure Az modülleriniz yüklüyse ve bunları kaldıramıyorsanız (veya kaldırmak istemiyorsanız), komut dosyası indirme bağlantısındaki **Manuel İndir** sekmesini kullanarak komut dosyasını el ile indirebilirsiniz. Komut dosyası ham nupkg dosyası olarak indirilir. Bu nupkg dosyasından komut dosyasını yüklemek için Bkz. [Manuel Paket İndir.](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)
+Bazı Azure az modülleriniz varsa ve bunları kaldıramıyorsanız (veya kaldırmak istemiyorsanız), betik indirme bağlantısındaki **El Ile indir** sekmesini kullanarak betiği el ile indirebilirsiniz. Betik, ham nupkg dosyası olarak indirilir. Betiği bu nupkg dosyasından yüklemek için bkz. [El Ile paket indirme](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 
 Betiği çalıştırmak için:
 
-1. Azure'a bağlanmak için kullanın. `Connect-AzAccount`
+1. Azure `Connect-AzAccount` 'a bağlanmak için kullanın.
 
-1. Az `Import-Module Az` modüllerini almak için kullanın.
+1. Az `Import-Module Az` modülleri içeri aktarmak için kullanın.
 
 1. Gerekli parametreleri inceleyin:
 
-   * **rgName: [String]: Gerekli** – Bu, mevcut Temel Yük Dengeleyiciniz ve yeni Standart Yük Dengeleyiciniz için kaynak grubudur. Bu dize değerini bulmak için Azure portalına gidin, Temel Yük Bakiyesi kaynağınızı seçin ve yük bakiyesi için **Genel Bakış'ı** tıklatın. Kaynak Grubu bu sayfada yer alır.
-   * **oldLBName: [String]: Gerekli** – Bu yükseltmek istediğiniz mevcut Basic Balancer adıdır. 
-   * **newlocation: [String]: Gerekli** – Bu, Standart Yük Dengeleyicisinin oluşturulacağı yerdir. Diğer mevcut kaynaklarla daha iyi ilişkilendirmek için seçilen Temel Yük Dengeleyicisinin aynı konumunu Standart Yük Dengeleyicisine devretmek önerilir.
-   * **newLBName: [String]: Gerekli** – Bu oluşturulacak Standart Yük Dengeleyicisi'nin adıdır.
-1. Uygun parametreleri kullanarak komut dosyasını çalıştırın. Bitirmesi beş ila yedi dakika sürebilir.
+   * **RgName: [dize]: gerekli** – bu, var olan temel Load Balancer ve yeni standart Load Balancer için kaynak grubudur. Bu dize değerini bulmak için Azure portal gidin, temel Load Balancer kaynağınızı seçin ve yük dengeleyiciye **Genel Bakış ' a** tıklayın. Kaynak grubu bu sayfada bulunur.
+   * **Oldlbname: [dize]: gerekli** – bu, yükseltmek Istediğiniz mevcut temel dengeleyicinizin adıdır. 
+   * **newLocation: [dize]: gerekli** – standart Load Balancer oluşturulacağı konumdur. Diğer mevcut kaynaklarla daha iyi ilişki sağlamak için, seçilen temel Load Balancer aynı konumun Standart Load Balancer aynı konuma devralması önerilir.
+   * **Newlbname: [dize]: gerekli** – bu, oluşturulacak standart Load Balancer adıdır.
+1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
 
-    **Örnek**
+    **Örneğinde**
 
    ```azurepowershell
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
@@ -82,18 +82,18 @@ Betiği çalıştırmak için:
 
 ## <a name="common-questions"></a>Sık sorulan sorular
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell komut dosyasında yapılandırmayı v1'den v2'ye geçirmek için herhangi bir sınırlama var mı?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Yapılandırmayı v1 'den v2 'ye geçirmek için Azure PowerShell betiğiyle ilgili herhangi bir sınırlama var mı?
 
-Evet. Bkz. [Uyarılar/Sınırlamalar.](#caveatslimitations)
+Evet. Bkz. [Uyarılar/sınırlamalar](#caveatslimitations).
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell komut dosyası, temel yük bakiyemden yeni oluşturulan Standart Yük Dengeleyicisi'ne de trafik geçişyapar mı?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell betiği, temel Load Balancer trafik üzerinde yeni oluşturulan Standart Load Balancer da geçiş yapar mi?
 
-Evet trafik göç eder. Trafiği kişisel olarak geçirmek istiyorsanız, VM'leri sizin için taşımayan [bu komut dosyasını](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0) kullanın.
+Evet, trafiği geçirir. Trafiği kişisel olarak geçirmek istiyorsanız, VM 'Leri sizin için taşımayan [bu betiği](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0) kullanın.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Ben bu komut dosyası kullanarak bazı sorunlar la karşılaştı. Nasıl yardım alabilirim?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Bu betiği kullanmayla ilgili bazı sorunlarla karşılaştım. Nasıl yardım alabilirim?
   
-Azure Desteği ile slbupgradesupport@microsoft.combir destek servis talebi açmak için e-posta gönderebilir veya her ikisini de yapabilirsiniz.
+Adresine slbupgradesupport@microsoft.combir e-posta gönderebilir, Azure desteğiyle bir destek talebi açabilir veya her ikisini de yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Standart Yük Dengeleyicisi hakkında bilgi edinin](load-balancer-overview.md)
+[Standart Load Balancer hakkında bilgi edinin](load-balancer-overview.md)

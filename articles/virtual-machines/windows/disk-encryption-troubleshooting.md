@@ -1,6 +1,6 @@
 ---
-title: Azure Disk Şifreleme sorun giderme kılavuzu
-description: Bu makalede, Windows VM'ler için Microsoft Azure Disk Şifrelemesi için sorun giderme ipuçları verilmektedir.
+title: Azure disk şifrelemesi sorun giderme kılavuzu
+description: Bu makalede, Windows VM 'Leri için Microsoft Azure disk şifrelemesi için sorun giderme ipuçları sunulmaktadır.
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -9,43 +9,43 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085697"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Şifreleme sorun giderme kılavuzu
+# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure disk şifrelemesi sorun giderme kılavuzu
 
-Bu kılavuz, kuruluşları Azure Disk Şifrelemesi kullanan BT uzmanları, bilgi güvenliği analistleri ve bulut yöneticileri içindir. Bu makale, disk şifrelemeyle ilgili sorunları giderme de yardımcı olmak içindir.
+Bu kılavuz BT uzmanları, bilgi güvenliği analistleri ve kuruluşları tarafından Azure disk şifrelemesi kullanan bulut yöneticileri içindir. Bu makale, disk şifrelemesiyle ilgili sorunları gidermenize yardımcı olur.
 
-Aşağıdaki adımlardan herhangi birini almadan önce, şifrelemeye çalıştığınız [VM'lerin desteklenen VM boyutları ve işletim sistemleri](disk-encryption-overview.md#supported-vms-and-operating-systems)arasında olduğundan ve tüm ön koşulları yerine getirebildiğinizden emin olun:
+Aşağıdaki adımlardan herhangi birini gerçekleştirmeden önce, şifrelemeye çalıştığınız VM 'Lerin [desteklenen VM boyutları ve işletim sistemleri](disk-encryption-overview.md#supported-vms-and-operating-systems)arasında olduğundan ve tüm önkoşulları karşıladığınızı doğrulayın:
 
 - [Ağ gereksinimleri](disk-encryption-overview.md#networking-requirements)
-- [Grup ilkesi gereksinimleri](disk-encryption-overview.md#group-policy-requirements)
+- [Grup İlkesi gereksinimleri](disk-encryption-overview.md#group-policy-requirements)
 - [Şifreleme anahtarı depolama gereksinimleri](disk-encryption-overview.md#encryption-key-storage-requirements)
 
  
 
-## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Güvenlik duvarının arkasındaki Azure Disk Şifrelemesorununa Sorun Giderme
+## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Güvenlik duvarının arkasında Azure disk şifrelemesi sorunlarını giderme
 
-Bağlantı bir güvenlik duvarı, proxy gereksinimi veya ağ güvenlik grubu (NSG) ayarlarıyla kısıtlandığında, uzantının gerekli görevleri gerçekleştirme yeteneği kesintiye uğrayabilir. Bu bozulma, "VM'de uzantı durumu yok" gibi durum iletilerine neden olabilir. Beklenen senaryolarda şifreleme tamamlanamazsa. İzleyen bölümlerde, araştırabileceğiniz bazı yaygın güvenlik duvarı sorunları vardır.
+Bağlantı bir güvenlik duvarı, proxy gereksinimi veya ağ güvenlik grubu (NSG) ayarları tarafından kısıtlanmışsa, gerekli görevleri gerçekleştirme uzantısının kesintiye uğramayabilir. Bu kesinti, "sanal makine üzerinde uzantı durumu kullanılamıyor" gibi durum iletileri oluşmasına neden olabilir. Beklenen senaryolarda, şifreleme tamamlanamamaktadır. Aşağıdaki bölümlerde araştırmanız gerekebilecek bazı yaygın güvenlik duvarı sorunları bulunmaktadır.
 
 ### <a name="network-security-groups"></a>Ağ güvenlik grupları
-Uygulanan tüm ağ güvenliği grubu ayarları, bitiş noktasının disk şifrelemesi için belgelenmiş ağ yapılandırma [ön koşullarıyla](disk-encryption-overview.md#networking-requirements) karşılayabilmesine izin vermelidir.
+Uygulanan tüm ağ güvenlik grubu ayarları, uç noktanın disk şifrelemesi için belgelenen ağ yapılandırması [önkoşullarını](disk-encryption-overview.md#networking-requirements) karşıladığından hala izin vermelidir.
 
-### <a name="azure-key-vault-behind-a-firewall"></a>Güvenlik duvarının arkasındaki Azure Key Vault
+### <a name="azure-key-vault-behind-a-firewall"></a>Bir güvenlik duvarının arkasında Azure Key Vault
 
-Azure AD kimlik [bilgileriyle](disk-encryption-windows-aad.md#)şifreleme etkinleştirilirken, hedef VM hem Azure Etkin Dizin uç noktalarına hem de Key Vault uç noktalarına bağlantı sağlar. Geçerli Azure Etkin Dizin kimlik doğrulama bitiş [noktaları, Office 365 URL'lerinin](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) 56 ve 59. Anahtar Vault yönergeleri, [güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/general/access-behind-firewall.md)nasıl erişilene ilişkin belgelerde verilmiştir.
+Şifreleme, [Azure AD kimlik bilgileriyle](disk-encryption-windows-aad.md#)etkinleştirildiğinde, hedef VM hem Azure Active Directory uç noktalarına hem de Key Vault uç noktalarına bağlantı kurulmasına izin vermelidir. Geçerli Azure Active Directory kimlik doğrulama uç noktaları, [Office 365 URL 'leri ve IP adresi aralıkları](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) belgelerinin 56 ve 59 bölümlerinde saklanır. Key Vault yönergeler, [bir güvenlik duvarının arkasındaki Azure Key Vault erişme](../../key-vault/general/access-behind-firewall.md)hakkındaki belgelerde sunulmaktadır.
 
-### <a name="azure-instance-metadata-service"></a>Azure Örneği Meta veri Hizmeti 
-VM, yalnızca VM içinden erişilebilen, iyi bilinen, routable olmayan BIR`169.254.169.254`IP adresi () kullanan [Azure Örneği Meta veri hizmet](../windows/instance-metadata-service.md) bitiş noktasına erişebilmeli.  Bu adrese yerel HTTP trafiğini değiştiren proxy yapılandırmaları (örneğin, X-Forwarded-For üstbilgisi eklemek) desteklenmez.
+### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
+VM, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilemeyen IP adresini (`169.254.169.254`) kullanan [Azure örnek meta veri hizmeti](../windows/instance-metadata-service.md) uç noktasına erişebilmelidir.  Yerel HTTP trafiğini bu adrese dönüştüren ara sunucu (örneğin, X-Iletilmiş-for üstbilgisi ekleme) desteklenmez.
 
-## <a name="troubleshooting-windows-server-2016-server-core"></a>Windows Server 2016 Server Core Sorun Giderme
+## <a name="troubleshooting-windows-server-2016-server-core"></a>Windows Server 2016 Server Core sorunlarını giderme
 
-Windows Server 2016 Server Core'da bdehdcfg bileşeni varsayılan olarak kullanılamaz. Bu bileşen, Azure Disk Şifrelemesi tarafından gereklidir. VM'nin ömrü boyunca yalnızca bir kez yapılan işletim sistemi hacminden sistem hacmini bölmek için kullanılır. Bu ikililer daha sonraki şifreleme işlemleri sırasında gerekli değildir.
+Windows Server 2016 Server Core 'da BdeHdCfg bileşeni varsayılan olarak kullanılabilir değildir. Bu bileşen Azure disk şifrelemesi için gereklidir. Sistem birimini, VM 'nin yaşam süresi boyunca yalnızca bir kez yapılan işletim sistemi biriminden ayırmak için kullanılır. Bu ikili dosyalar sonraki şifreleme işlemleri sırasında gerekli değildir.
 
-Bu sorunu çözmek için, aşağıdaki dört dosyayı Bir Windows Server 2016 Veri Merkezi VM'sinden Server Core'da aynı konuma kopyalayın:
+Bu sorunu geçici olarak çözmek için, aşağıdaki dört dosyayı bir Windows Server 2016 veri merkezi VM 'sinden sunucu çekirdeği üzerinde aynı konuma kopyalayın:
 
    ```
    \windows\system32\bdehdcfg.exe
@@ -60,9 +60,9 @@ Bu sorunu çözmek için, aşağıdaki dört dosyayı Bir Windows Server 2016 Ve
    bdehdcfg.exe -target default
    ```
 
-1. Bu komut 550 MB'lık bir sistem bölümü oluşturur. Sistemi yeniden başlatın.
+1. Bu komut, 550 MB 'lik bir sistem bölümü oluşturur. Sistemi yeniden başlatın.
 
-1. Birimleri denetlemek için DiskPart'i kullanın ve sonra devam edin.  
+1. Birimleri denetlemek için DiskPart 'ı kullanın ve ardından devam edin.  
 
 Örneğin:
 
@@ -76,17 +76,17 @@ DISKPART> list vol
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
 
-## <a name="troubleshooting-encryption-status"></a>Sorun giderme şifreleme durumu 
+## <a name="troubleshooting-encryption-status"></a>Şifreleme durumu sorunlarını giderme 
 
-Portal, VM içinde şifresiz hale gelmiştir sonra bile şifreli olarak bir disk görüntüleyebilir.  Bu, daha yüksek düzeydeki Azure Disk Şifreleme yönetimi komutlarını kullanmak yerine diski VM'nin içinden doğrudan şifrelemek için düşük düzeyli komutlar kullanıldığında oluşabilir.  Üst düzey komutlar yalnızca Diskin VM içinden şifresini şifrelemeyi değil, VM dışında da VM ile ilişkili önemli platform düzeyi şifreleme ayarlarını ve uzantı ayarlarını günceller.  Bunlar hizada tutulmazsa, platform şifreleme durumunu bildiremez veya VM'yi düzgün bir şekilde sağamaz.   
+Portal, sanal makine içinde şifrelenmemiş olduktan sonra bile bir disk şifreli olarak görüntülenebilir.  Bu durum, daha yüksek düzeyde Azure disk şifrelemesi yönetim komutları kullanmak yerine, diskin VM içinden doğrudan şifresini kaldırmak için düşük düzey komutlar kullanıldığında meydana gelebilir.  Üst düzey komutlar yalnızca VM 'nin içinden diskin şifresini kaldıramaz, ancak VM 'nin dışında, önemli platform düzeyi şifreleme ayarlarını ve VM ile ilişkili uzantı ayarlarını da güncelleştirir.  Bunlar hizalamayla tutulmazsa, Platform şifreleme durumunu bildiremez veya VM 'yi düzgün şekilde sağlayamaz.   
 
-PowerShell ile Azure Disk Şifrelemesini devre dışı kaldırmak için Devre [Dışı-AzVMDiskŞifreleme'yi](/powershell/module/az.compute/disable-azvmdiskencryption) ve ardından [Remove-AzVMDiskEncryptionExtension'ı](/powershell/module/az.compute/remove-azvmdiskencryptionextension)kullanın. Şifreleme devre dışı bırakılmadan önce Remove-AzVMDiskEncryptionExtension'ı çalıştırmak başarısız olur.
+Azure disk şifrelemesini PowerShell ile devre dışı bırakmak için [Disable-azvmdiskencryption](/powershell/module/az.compute/disable-azvmdiskencryption) ' ı ve ardından [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)' i kullanın. Şifreleme devre dışı olmadan önce Remove-AzVMDiskEncryptionExtension çalıştırma başarısız olur.
 
-CLI ile Azure Disk Şifrelemesini devre dışı kullanabilirsiniz, [az vm şifrelemeyi devre dışı kullanabilirsiniz.](/cli/azure/vm/encryption) 
+CLı ile Azure disk şifrelemesini devre dışı bırakmak için [az VM Encryption Disable](/cli/azure/vm/encryption)seçeneğini kullanın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede, Azure Disk Şifrelemesindeki bazı yaygın sorunlar ve bu sorunları nasıl giderdiğiniz hakkında daha fazla bilgi edinebilirsiniz. Bu hizmet ve özellikleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu belgede, Azure disk şifrelemesi 'nde bazı yaygın sorunlar ve bu sorunları nasıl giderebileceğiniz hakkında daha fazla bilgi edindiniz. Bu hizmet ve özellikleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure Güvenlik Merkezi'nde disk şifreleme uygulayın](../../security-center/security-center-apply-disk-encryption.md)
-- [Azure veri şifrelemesi istirahatte](../../security/fundamentals/encryption-atrest.md)
+- [Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama](../../security-center/security-center-apply-disk-encryption.md)
+- [Bekleyen Azure veri şifrelemesi](../../security/fundamentals/encryption-atrest.md)

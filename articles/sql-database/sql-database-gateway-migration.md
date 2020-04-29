@@ -1,6 +1,6 @@
 ---
-title: Ağ geçidi trafik geçiş bildirimi
-description: Makale, Kullanıcılara Azure SQL Veritabanı Ağ Geçitleri IP adreslerinin geçişi hakkında bildirim sağlar
+title: Ağ Geçidi trafiği geçiş bildirimi
+description: Makale, kullanıcılara Azure SQL veritabanı ağ geçitleri IP adreslerini geçirme hakkında bildirim sağlar
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,21 +11,21 @@ ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
 ms.openlocfilehash: 9e3c33bb7493f07d9fbf19710f21d0114e7abec8
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80757079"
 ---
-# <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Veritabanı trafiğinin yeni ağ geçitlerine geçişi
+# <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 
-Azure altyapısı geliştikçe, Microsoft mümkün olan en iyi müşteri deneyimini sağladığımızdan emin olmak için donanımı düzenli aralıklarla yeniler. Önümüzdeki aylarda, yeni donanım nesilleri üzerine inşa edilmiş Ağ Geçitleri eklemeyi, trafiği onlara geçirmeyi ve sonunda bazı bölgelerde ki eski donanımlar üzerine inşa edilmiş Ağ Geçitlerini devre dışı bırakmayı planlıyoruz.  
+Azure altyapısı gelişdiğinde, Microsoft, olası en iyi müşteri deneyimini sağlamamızı sağlamak için donanımı düzenli olarak yenileyecek. Önümüzdeki aylarda, daha yeni donanım oluşturma, trafiği geçirme ve son olarak bazı bölgelerde daha eski donanımlar üzerinde oluşturulmuş ağ geçitlerinin yetkisini alma planlıyoruz.  
 
-Müşteriler, her bölgede bulunan Ağ Geçitleri'nde yapılacak herhangi bir değişiklikten çok önce e-posta yoluyla ve Azure portalında bilgilendirilecektir. En güncel bilgiler Azure SQL Veritabanı ağ [geçidi IP adresleri](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) tablosunda tutulur.
+Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde yapılan herhangi bir değişikliğe göre Azure portal iyi bir şekilde bildirilir. En güncel bilgiler [Azure SQL veritabanı ağ GEÇIDI IP adresleri](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) tablosunda tutulacaktır.
 
 ## <a name="impact-of-this-change"></a>Bu değişikliğin etkisi
 
-Yeni Ağ Geçitlerine trafik geçişinin ilk turu **14 Ekim 2019'da** aşağıdaki bölgelerde yapılacaktır:
+Trafik geçişinin yeni ağ geçitlerine ilk **turu, aşağıdaki bölgelerde 14 ekim 2019** için zamanlanır:
 - Güney Brezilya
 - Batı ABD
 - Batı Avrupa
@@ -40,24 +40,24 @@ Yeni Ağ Geçitlerine trafik geçişinin ilk turu **14 Ekim 2019'da** aşağıda
 - Doğu ABD 2
 - Doğu Asya
 
-Trafik geçişi, DNS'nin SQL Veritabanınız için çözdüğünortak IP adresini değiştirir.
-Varsa etkilenirsiniz:
-- Şirket içi güvenlik duvarınızdaki belirli bir Ağ Geçidi'nin IP adresini sabit kodladı
-- Microsoft.SQL'i Hizmet Bitiş Noktası olarak kullanan ancak Ağ Geçidi IP adresleriyle iletişim kuramayan alt ağlar
+Trafik geçişi, DNS 'nin SQL veritabanınız için çözümlediği genel IP adresini değiştirecek.
+Şu durumlarda etkilenirsiniz:
+- Şirket içi güvenlik duvarınızdaki belirli bir ağ geçidinin IP adresini sabit olarak kodlanmış
+- Hizmet uç noktası olarak Microsoft. SQL kullanan tüm alt ağlar, ancak ağ geçidi IP adresleriyle iletişim kuramaz
 
-Eğer varsa etkilenmez:
+Şunları yaptıysanız etkilenmeyecektir:
 - Bağlantı ilkesi olarak yeniden yönlendirme
-- Azure'un içinden SQL Veritabanına bağlantılar ve Hizmet Etiketleri kullanma
-- SQL Server için JDBC Driver'ın desteklenen sürümleri kullanılarak yapılan bağlantılarhiçbir etki görmez. Desteklenen JDBC sürümleri [için SQL Server için Microsoft JDBC Sürücüsünü İndir'e](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)bakın.
+- Azure 'un içinden ve hizmet etiketlerini kullanarak SQL veritabanı 'na bağlantı
+- SQL Server için JDBC sürücüsünün desteklenen sürümleri kullanılarak yapılan bağlantılar, hiçbir etkisi görmez. Desteklenen JDBC sürümleri için bkz. [SQL Server Için MICROSOFT JDBC sürücüsü indirme](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
 
-## <a name="what-to-do-you-do-if-youre-affected"></a>Etkilenirseniz ne yapabilirsiniz?
+## <a name="what-to-do-you-do-if-youre-affected"></a>Etkileniyorsanız yapmanız gerekenler
 
-TCP 1433 ve bağlantı noktası aralığı 11000-11999'daki bölgedeki tüm [Azure SQL Veritabanı ağ geçidi IP adresleri](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) için IP adreslerine giden trafiğe izin vermenizi öneririz. Bu öneri, şirket içinde bağlantı kuran istemciler ve Hizmet Bitiş Noktaları üzerinden bağlanan müşteriler için geçerlidir. Bağlantı noktası aralıkları hakkında daha fazla bilgi için [Bağlantı ilkesine](sql-database-connectivity-architecture.md#connection-policy)bakın.
+TCP bağlantı noktası 1433 ' deki bölgedeki tüm [Azure SQL veritabanı ağ GEÇIDI IP adresleri](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) ve 11000-11999 bağlantı noktası ARALıĞı için IP adreslerine giden trafiğe izin vermeniz önerilir. Bu öneri, Şirket içinden bağlanan istemciler ve ayrıca hizmet uç noktaları aracılığıyla bağlanan istemciler için geçerlidir. Bağlantı noktası aralıkları hakkında daha fazla bilgi için bkz. [bağlantı ilkesi](sql-database-connectivity-architecture.md#connection-policy).
 
-Sürüm 4.0'ın altındaki Microsoft JDBC Driver'ı kullanan uygulamalardan yapılan bağlantılar sertifika doğrulamada başarısız olabilir. Microsoft JDBC'nin alt sürümleri, sertifikanın Konu alanında Ortak Ad'a (CN) dayanır. Azaltma, hostNameInCertificate özelliğinin *.database.windows.net olarak ayarlanmasını sağlamaktır. HostNameInCertificate özelliğinin nasıl ayarlandığı hakkında daha fazla bilgi için [bkz.](/sql/connect/jdbc/connecting-with-ssl-encryption)
+4,0 sürümünün altında Microsoft JDBC sürücüsü kullanılarak gerçekleştirilen uygulamalardan yapılan bağlantılar sertifika doğrulaması başarısız olabilir. Microsoft JDBC 'nın daha düşük sürümleri, sertifikanın konu alanında ortak adı (CN) kullanır. Risk azaltma, Hostnameincercertificate özelliğinin *. database.windows.net olarak ayarlandığından emin olunması. Hostnameincercertificate özelliğinin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [şifreleme Ile bağlanma](/sql/connect/jdbc/connecting-with-ssl-encryption).
 
-Yukarıdaki azaltma işe yaramazsa, aşağıdaki URL'yi kullanarak SQL Veritabanı için bir destek isteği dosyala:https://aka.ms/getazuresupport
+Yukarıdaki hafifletme işe yaramazsa, aşağıdaki URL 'YI kullanarak SQL veritabanı için bir destek isteği dosyası kullanın:https://aka.ms/getazuresupport
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure SQL [Bağlantı Mimarisi](sql-database-connectivity-architecture.md) hakkında daha fazla bilgi edinin
+- [Azure SQL bağlantı mimarisi](sql-database-connectivity-architecture.md) hakkında daha fazla bilgi edinin

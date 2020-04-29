@@ -1,54 +1,54 @@
 ---
-title: Azure CLI - Azure Blockchain Hizmeti kullanarak Blockchain Veri Yöneticisini Yapılandırma
-description: Azure CLI'yi kullanarak Azure Blockchain Hizmeti için Bir Blockchain Veri Yöneticisi oluşturma ve yönetme
+title: Azure CLı-Azure blok zinciri hizmeti 'ni kullanarak Blockzincirini yapılandırma Veri Yöneticisi
+description: Azure CLı kullanarak Azure blok zinciri hizmeti için bir blok zinciri Veri Yöneticisi oluşturma ve yönetme
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
 ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254419"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>CLI kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
 
-Blockchain verilerini yakalamak için Azure Blockchain Hizmeti için Blockchain Veri Yöneticisi'ni yapılandırın ve bu bilgileri bir Azure Olay Izgara Konusuna gönderin.
+Blok zinciri verilerini yakalamak için Blockzincirini Veri Yöneticisi blok zinciri için yapılandırma bir Azure Event Grid konusuna gönderin.
 
-Blockchain Veri Yöneticisi örneğini yapılandırmak için şunları
+Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapın:
 
-* Blockchain Yöneticisi örneği oluşturma
-* Azure Blockchain Hizmeti işlem düğümüne giriş oluşturma
-* Azure Olay Izgara Konusuna çıktı oluşturma
-* Blockchain uygulaması ekleme
+* Blok zinciri Yöneticisi örneği oluşturma
+* Azure blok zinciri hizmeti işlem düğümüne giriş oluşturma
+* Azure Event Grid konu başlığına çıkış oluşturma
+* Blok zinciri uygulaması ekleme
 * Örnek başlatma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* En son [Azure CLI'sini](https://docs.microsoft.com/cli/azure/install-azure-cli) yükleyin ve kullanarak `az login`oturum açtı.
-* Tam [Quickstart: Azure Blockchain Hizmeti konsorsiyum ağına bağlanmak için Visual Studio Kodunu kullanın.](connect-vscode.md) Blockchain Data Manager kullanılırken Azure Blockchain Service *Standard* katmanı önerilir.
-* Olay [Izgara Konusu](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) Oluşturma
-* Azure [Etkinlik Kılavuz'undaki Olay işleyicileri](../../event-grid/event-handlers.md) hakkında bilgi edinin
+* En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yı yükleyip kullanarak `az login`oturum açın.
+* [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Blok zinciri Veri Yöneticisi kullanılırken Azure blok zinciri hizmeti *Standart* katmanı önerilir.
+* [Event Grid konu başlığı](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) oluşturma
+* [Azure Event Grid Içindeki olay işleyicileri](../../event-grid/event-handlers.md) hakkında bilgi edinin
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/bash](https://shell.azure.com/bash)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı tercih ederseniz, bu hızlı başlatma azure CLI sürümü 2.0.51 veya sonrası gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye](https://docs.microsoft.com/cli/azure/install-azure-cli)bakın.
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.51 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[az group create](https://docs.microsoft.com/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+[az group create](https://docs.microsoft.com/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
 ```
 
-## <a name="create-instance"></a>Örnek oluşturma
+## <a name="create-instance"></a>Örnek Oluştur
 
-Blockchain Veri Yöneticisi örneği, Azure Blockchain Hizmeti hareket düğümünü izler. Bir örnek, işlem düğümündeki tüm ham blok ve ham hareket verilerini yakalar. Blockchain Data Manager, web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) ve [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) sorgularından döndürülen bilgilerin bir üst kümesi olan **rawblockAndTransactionMsg** iletisi yayınlar.
+Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işlem düğümünü izler. Örnek, işlem düğümünden tüm ham blok ve ham işlem verilerini yakalar. Blok zinciri Veri Yöneticisi web3. ETH [getblock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) ve [GetTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) sorgularından döndürülen bilgilerin bir üst kümesi olan bir **Rawblockandtransactionmsg** iletisi yayımlar.
 
 ``` azurecli
 az resource create \
@@ -61,15 +61,15 @@ az resource create \
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| resource-group | Blockchain Veri Yöneticisi örneğinin oluşturulacağı kaynak grubu adı. |
-| ad | Blockchain Veri Yöneticisi örneğinin adı. |
-| kaynak türü | Blockchain Veri Yöneticisi örneği için kaynak türü **Microsoft.blockchain/watchers'dır.** |
-| tam nesne | Özellikleri gösterir izleyici kaynağı için seçenekler içerir. |
-| properties | İzleyici kaynağıiçin özellikler içeren JSON biçimlendirilmiş dize. Bir dize veya dosya olarak geçirilebilir.  |
+| resource-group | Blok zinciri Veri Yöneticisi örneğinin oluşturulacağı kaynak grubu adı. |
+| ad | Blok zinciri Veri Yöneticisi örneğinin adı. |
+| Kaynak türü | Bir blok zinciri Veri Yöneticisi örneği için kaynak türü **Microsoft. blockzincirde/izleyicileri**. |
+| -Full-Object | Özellikler ' in izleyici kaynağı seçeneklerini içerdiğini gösterir. |
+| properties | İzleyici kaynağının özelliklerini içeren JSON biçimli dize. , Bir dize veya dosya olarak geçirilebilir.  |
 
-### <a name="create-instance-examples"></a>Örnek örnekleri oluşturma
+### <a name="create-instance-examples"></a>Örnek oluşturma örnekleri
 
-**Doğu ABD** bölgesinde bir Blockchain Yöneticisi örneği oluşturmak için JSON yapılandırma örneği.
+**Doğu ABD** bölgesinde bir blok zinciri Yöneticisi örneği oluşturmak için JSON yapılandırma örneği.
 
 ``` json
 {
@@ -82,9 +82,9 @@ az resource create \
 | Öğe | Açıklama |
 |---------|-------------|
 | location | İzleyici kaynağının oluşturulacağı bölge |
-| properties | İzleyici kaynağı oluştururken ayarlatacak özellikler |
+| properties | İzleyici kaynağı oluşturulurken ayarlanacak Özellikler |
 
-Yapılandırma için JSON dizesini kullanarak *mywatcher* adlı bir Blockchain Veri Yöneticisi örneği oluşturun.
+Yapılandırma için JSON dizesi kullanarak *myizleyici* adlı bir blok zinciri veri Yöneticisi örneği oluşturun.
 
 ``` azurecli-interactive
 az resource create \
@@ -95,7 +95,7 @@ az resource create \
                      --properties '{"location":"eastus"}'
 ```
 
-JSON yapılandırma dosyalarını kullanarak *mywatcher* adlı bir Blockchain Veri Yöneticisi örneği oluşturun.
+JSON yapılandırma dosyası kullanarak *myizleyici* adlı bir blok zinciri veri Yöneticisi örneği oluşturun.
 
 ``` azurecli
 az resource create \
@@ -106,9 +106,9 @@ az resource create \
                     --properties @watcher.json
 ```
 
-## <a name="create-input"></a>Giriş oluşturma
+## <a name="create-input"></a>Giriş oluştur
 
-Giriş, Blockchain Veri Yöneticisi'ni Azure Blockchain Hizmeti işlem düğümüne bağlar. Yalnızca işlem düğümüne erişimi olan kullanıcılar bir bağlantı oluşturabilir.
+Bir giriş blok zinciri Veri Yöneticisi bir Azure blok zinciri hizmeti işlem düğümüne bağlar. Yalnızca işlem düğümüne erişimi olan kullanıcılar bir bağlantı oluşturabilir.
 
 ``` azurecli
 az resource create \
@@ -123,17 +123,17 @@ az resource create \
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| resource-group | Kaynak grubu adı nerede giriş kaynağı oluşturmak için. |
+| resource-group | Giriş kaynağının oluşturulacağı kaynak grubu adı. |
 | ad | Girişin adı. |
-| ad alanı | **Microsoft.Blockchain** sağlayıcı ad alanını kullanın. |
-| kaynak türü | Blockchain Data Manager girişi için kaynak türü **girişleridir.** |
-| Üst | Girişin ilişkili olduğu izleyiciye giden yol. Örneğin, **izleyiciler / mywatcher**. |
-| tam nesne | Özellikleri gösterir giriş kaynağı için seçenekler içerir. |
-| properties | Giriş kaynağı için özellikler içeren JSON biçimlendirilmiş dize. Bir dize veya dosya olarak geçirilebilir. |
+| ad alanı | **Microsoft. Blockzincirde** sağlayıcı ad alanını kullanın. |
+| Kaynak türü | Bir blok zinciri Veri Yöneticisi girişi için kaynak türü **giriştir**. |
+| üst | Girişin ilişkilendirildiği izleyicinin yolu. Örneğin, **izleyicileri/myizleyici**. |
+| -Full-Object | Özelliklerin giriş kaynağı için seçenekleri içerdiğini gösterir. |
+| properties | Giriş kaynağının özelliklerini içeren JSON biçimli dize. , Bir dize veya dosya olarak geçirilebilir. |
 
 ### <a name="input-examples"></a>Giriş örnekleri
 
-Blockchain üyesine\>bağlı *Doğu ABD* bölgesinde bir giriş kaynağı \<oluşturmak için Yapılandırma JSON örneği.
+Yapılandırma JSON örneği, \<blok zinciri üyesine\>bağlı *Doğu ABD* bölgesinde bir giriş kaynağı oluşturmak için kullanılır.
 
 ``` json
 {
@@ -150,10 +150,10 @@ Blockchain üyesine\>bağlı *Doğu ABD* bölgesinde bir giriş kaynağı \<olu�
 | Öğe | Açıklama |
 |---------|-------------|
 | location | Giriş kaynağının oluşturulacağı bölge. |
-| inputType | Azure Blockchain Service üyesinin genel muhasebe türü. Şu anda, **Ethereum** desteklenir. |
-| resourceId | Girişin bağlı olduğu hareket düğümü. Abonelik \<\>Kimliği, \<Kaynak\>grubu \<ve\> Blockchain üyesini hareket düğümü kaynağının değerleriyle değiştirin. Giriş, Azure Blockchain Hizmeti üyesi için varsayılan işlem düğümüne bağlanır. |
+| InputType | Azure blok zinciri hizmeti üyesinin defter türü. Şu anda **Ethereum** destekleniyor. |
+| resourceId | Girişin bağlandığı işlem düğümü. Abonelik \<\>kimliği \<, kaynak\>grubu ve \<blok zinciri üyesini\> , işlem düğümü kaynağı değerleri ile değiştirin. Giriş, Azure blok zinciri hizmeti üyesinin varsayılan işlem düğümüne bağlanır. |
 
-Yapılandırma için Bir JSON dizesini kullanarak *myWatcher* için *myInput* adlı bir giriş oluşturun.
+Yapılandırma için JSON dizesi kullanarak *myizleyici* Için *MyInput* adlı bir giriş oluşturun.
 
 ``` azurecli-interactive
 az resource create \
@@ -166,7 +166,7 @@ az resource create \
                    --properties '{"location":"eastus", "properties":{"inputType":"Ethereum","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/BlockchainMembers/<Blockchain member>/transactionNodes/transaction-node"}}}'
 ```
 
-JSON yapılandırma dosyalarını kullanarak *myWatcher* için *myInput* adlı bir giriş oluşturun.
+JSON yapılandırma dosyası kullanarak *myizleyici* Için *MyInput* adlı bir giriş oluşturun.
 
 ``` azurecli
 az resource create \
@@ -178,9 +178,9 @@ az resource create \
                    --properties @input.json
 ```
 
-## <a name="create-output"></a>Çıktı oluşturma
+## <a name="create-output"></a>Çıkış oluştur
 
-Giden bağlantı blockchain verilerini Azure Olay Grid'e gönderir. Blockchain verilerini tek bir hedefe gönderebilir veya blockchain verilerini birden çok hedefe gönderebilirsiniz. Blockchain Veri Yöneticisi, belirli bir Blockchain Veri Yöneticisi örneği için birden çok Olay Izgara Konu giden bağlantıları destekler.
+Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Blok zinciri verilerini tek bir hedefe gönderebilir veya birden çok hedefe blok zinciri verileri gönderebilirsiniz. Blok zinciri Veri Yöneticisi, belirli bir blok zinciri Veri Yöneticisi örneği için birden çok Event Grid konu giden bağlantısını destekler.
 
 ``` azurecli
 az resource create \
@@ -195,17 +195,17 @@ az resource create \
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| resource-group | Çıktı kaynağının oluşturulacağı kaynak grubu adı. |
-| ad | Çıktının adı. |
-| ad alanı | **Microsoft.Blockchain** sağlayıcı ad alanını kullanın. |
-| kaynak türü | Blockchain Data Manager çıktısı için kaynak türü **çıktılardır.** |
-| Üst | Çıktının ilişkili olduğu izleyiciye giden yol. Örneğin, **izleyiciler / mywatcher**. |
-| tam nesne | Özellikleri gösterir çıktı kaynağı için seçenekler içerir. |
-| properties | Çıktı kaynağı için özellikler içeren JSON biçimlendirilmiş dize. Bir dize veya dosya olarak geçirilebilir. |
+| resource-group | Çıkış kaynağının oluşturulacağı kaynak grubu adı. |
+| ad | Çıkışın adı. |
+| ad alanı | **Microsoft. Blockzincirde** sağlayıcı ad alanını kullanın. |
+| Kaynak türü | Bir blok zinciri için kaynak türü Veri Yöneticisi çıkışı **çıktılar**olur. |
+| üst | Çıktının ilişkilendirildiği izleyicinin yolu. Örneğin, **izleyicileri/myizleyici**. |
+| -Full-Object | Özellikler, çıkış kaynağı için seçenekler içerir. |
+| properties | Çıkış kaynağı için özellikler içeren JSON biçimli dize. , Bir dize veya dosya olarak geçirilebilir. |
 
-### <a name="output-examples"></a>Çıktı örnekleri
+### <a name="output-examples"></a>Çıkış örnekleri
 
-Yapılandırma JSON örneği *Doğu ABD* bölgesinde olay ızgarası konu \<\>adlı bir olay ızgara sıcağı konu bağlı bir çıktı kaynağı oluşturmak için.
+Event Grid konusu \<\>adlı bir event Grid konusuna bağlı *Doğu ABD* BÖLGESINDE bir çıkış kaynağı oluşturmak için JSON örneği yapılandırma.
 
 ``` json
 {
@@ -221,11 +221,11 @@ Yapılandırma JSON örneği *Doğu ABD* bölgesinde olay ızgarası konu \<\>ad
 
 | Öğe | Açıklama |
 |---------|-------------|
-| location | Çıktı kaynağının oluşturulacağı bölge. |
-| outputType | Çıkış türü. Şu **anda, EventGrid** desteklenir. |
-| resourceId | Çıktının bağlı olduğu kaynak. Abonelik \<\>Kimliği, \<Kaynak\>grubu \<ve\> Blockchain üyesini olay ızgarası kaynağının değerleriyle değiştirin. |
+| location | Çıkış kaynağının oluşturulacağı bölge. |
+| #b2 | Çıkışın türü. Şu anda **Eventgrid** destekleniyor. |
+| resourceId | Çıktının bağlandığı kaynak. Abonelik \<\>kimliği \<, kaynak\>grubu ve \<blok zinciri üyesini\> olay Kılavuzu kaynağı değerleriyle değiştirin. |
 
-JSON yapılandırma dizesini kullanarak bir olay ızgarası konusuna bağlanan *mywatcher* için *çıktımı* adlandıran bir çıktı oluşturun.
+JSON yapılandırma dizesi kullanarak bir Event Grid konusuna bağlanan *myizleyici* için *MVU put* adlı bir çıktı oluşturun.
 
 ``` azurecli-interactive
 az resource create \
@@ -238,7 +238,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"outputType":"EventGrid","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"}}}'
 ```
 
-JSON yapılandırma dosyasını kullanarak olay ızgarası konusuna bağlanan *mywatcher* için *çıktımı* adlandıran bir çıktı oluşturun.
+JSON yapılandırma dosyası kullanarak bir Event Grid konusuna bağlanan *myizleyici* için *MVU put* adlı bir çıktı oluşturun.
 
 ``` azurecli
 az resource create \
@@ -251,13 +251,13 @@ az resource create \
                    --properties @output.json
 ```
 
-## <a name="add-blockchain-application"></a>Blockchain uygulaması ekle
+## <a name="add-blockchain-application"></a>Blok zinciri uygulaması ekleme
 
-Blockchain uygulaması eklerseniz, Blockchain Data Manager uygulama nın olay ve özellik durumunu çözer. Aksi takdirde, yalnızca ham blok ve ham işlem verileri gönderilir. Blockchain Data Manager, sözleşme dağıtıldığında sözleşme adreslerini de keşfeder. Blockchain Data Manager örneğine birden çok blockchain uygulaması ekleyebilirsiniz.
+Bir blok zinciri uygulaması eklerseniz, blok zinciri uygulama için olay ve özellik durumunun kodunu çözer Veri Yöneticisi. Aksi takdirde, yalnızca ham blok ve ham işlem verileri gönderilir. Blok zinciri Veri Yöneticisi sözleşme dağıtıldığında sözleşme adreslerini de bulur. Bir blok zinciri Veri Yöneticisi örneğine birden çok blok zinciri uygulaması ekleyebilirsiniz.
 
 
 > [!IMPORTANT]
-> Şu anda, Solidity [dizi türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) veya [eşleme türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) bildiren blockchain uygulamaları tam olarak desteklenmez. Dizi veya eşleme türleri olarak bildirilen özellikler *ContractPropertiesMsg* veya *DecodedContractEventsMsg* iletilerinde deşifre edilmez.
+> Şu anda, Solidity [dizi türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) veya [eşleme türlerini](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) bildiren blok zinciri uygulamaları tam olarak desteklenmez. Bir dizi veya eşleme türü olarak tanımlanan özellikler, *Contractpropertiesmsg* veya *Decodedcontracteventsmsg* iletilerinde kodu çözülür.
 
 ``` azurecli
 az resource create \
@@ -274,15 +274,15 @@ az resource create \
 |-----------|-------------|
 | resource-group | Uygulama kaynağının oluşturulacağı kaynak grubu adı. |
 | ad | Uygulamanın adı. |
-| ad alanı | **Microsoft.Blockchain** sağlayıcı ad alanını kullanın. |
-| kaynak türü | Blockchain Data Manager uygulamasının kaynak türü **yapıttır.** |
-| Üst | Uygulamanın ilişkili olduğu izleyiciye giden yol. Örneğin, **izleyiciler / mywatcher**. |
-| tam nesne | Özellikleri gösterir uygulama kaynağı için seçenekler içerir. |
-| properties | JSON biçimlendirilmiş dize uygulama kaynağı için özellikleri içeren. Bir dize veya dosya olarak geçirilebilir. |
+| ad alanı | **Microsoft. Blockzincirde** sağlayıcı ad alanını kullanın. |
+| Kaynak türü | Bir blok zinciri Veri Yöneticisi uygulama için kaynak türü **yapıtdır**. |
+| üst | Uygulamanın ilişkilendirildiği izleyicinin yolu. Örneğin, **izleyicileri/myizleyici**. |
+| -Full-Object | Özellikler, uygulama kaynağı için seçenekler içerir. |
+| properties | Uygulama kaynağının özelliklerini içeren JSON biçimli dize. , Bir dize veya dosya olarak geçirilebilir. |
 
-### <a name="blockchain-application-examples"></a>Blockchain uygulama örnekleri
+### <a name="blockchain-application-examples"></a>Blok zinciri uygulama örnekleri
 
-Yapılandırma JSON *örneği, Doğu ABD* bölgesinde SÖZLEŞME ABI ve bytecode tarafından tanımlanan akıllı bir sözleşme izleyen bir uygulama kaynağı oluşturmak için.
+Configuration JSON örneği, sözleşme ABı ve bytecode tarafından tanımlanan bir akıllı sözleşmeyi izleyen *Doğu ABD* bölgesinde bir uygulama kaynağı oluşturmak için.
 
 ``` json
 {
@@ -304,12 +304,12 @@ Yapılandırma JSON *örneği, Doğu ABD* bölgesinde SÖZLEŞME ABI ve bytecode
 | Öğe | Açıklama |
 |---------|-------------|
 | location | Uygulama kaynağının oluşturulacağı bölge. |
-| Artifacttype | Uygulama türü. Şu anda, **EthereumSmartContract** desteklenir. |
-| abiFileUrl | Akıllı sözleşme ABI JSON dosyası için URL. Sözleşme ABI'si edinme ve URL oluşturma hakkında daha fazla bilgi [Create contract ABI and bytecode URL](data-manager-portal.md#create-contract-abi-and-bytecode-url)için [bkz.](data-manager-portal.md#get-contract-abi-and-bytecode) |
-| bytecodeFileUrl | Bytecode JSON dosyası dağıtılan akıllı sözleşme için URL. Bytecode dağıtılan akıllı sözleşme nin elde edilmesi ve bir URL oluşturma hakkında daha fazla bilgi için [Bkz. Sözleşme ABI ve bytecode alın](data-manager-portal.md#get-contract-abi-and-bytecode) ve [sözleşme ABI ve bytecode URL oluştur.](data-manager-portal.md#create-contract-abi-and-bytecode-url) Not: Blockchain Veri Yöneticisi **dağıtılan bytecode**gerektirir. |
-| queryTargetTypes | Yayımlanmış ileti türleri. **SözleşmeÖzellikleri** belirtilmesi *ContractPropertiesMsg* ileti türü yayınlar. Sözleşme **Olayları** belirtme *DecodedContractEventsMsg* mesaj türü yayınlar. Not: *RawBlockAndTransactionMsg* ve *RawTransactionContractCreationMsg* mesaj türleri her zaman yayınlanır. |
+| artifactType | Uygulamanın türü. Şu anda **Ethereumsmartcontract** destekleniyor. |
+| Abıfileurl | Akıllı sözleşme ABı JSON dosyası URL 'SI. Sözleşme ABı edinme ve bir URL oluşturma hakkında daha fazla bilgi için bkz. [sözleşme ABI ve bytecode 'U alma](data-manager-portal.md#get-contract-abi-and-bytecode) ve [sözleşme ABı ve bytecode URL 'si oluşturma](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| bytecodeFileUrl | Akıllı sözleşme tarafından dağıtılan bytecode JSON dosyası URL 'SI. Akıllı sözleşme dağıtılan ByteCode ve bir URL oluşturma hakkında daha fazla bilgi için bkz. [sözleşme ABI ve bytecode 'U alma](data-manager-portal.md#get-contract-abi-and-bytecode) ve [sözleşme ABı ve bytecode URL 'si oluşturma](data-manager-portal.md#create-contract-abi-and-bytecode-url). Note: blok zinciri Veri Yöneticisi **dağıtılan bytecode**'u gerektirir. |
+| queryTargetTypes | Yayınlanan ileti türleri. **Contractproperties** 'ı belirleme *contractpropertiesmsg* ileti türünü yayımlar. **ContractEvents** yayım *Decodedcontracteventsmsg* ileti türü belirtiliyor. Note: *Rawblockandtransactionmsg* ve *Rawtransactioncontractcreationmsg* ileti türleri her zaman yayımlanır. |
 
-JSON dizesi tarafından tanımlanan akıllı bir sözleşmeyi izleyen *myWatcher* için *myApplication* adlı bir uygulama oluşturun.
+JSON dizesi tarafından tanımlanan akıllı sözleşmeyi izleyen *myizleyici* için *MyApplication* adlı bir uygulama oluşturun.
 
 ``` azurecli-interactive
 az resource create \
@@ -322,7 +322,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"artifactType":"EthereumSmartContract","content":{"abiFileUrl":"<ABI URL>","bytecodeFileUrl":"<Bytecode URL>","queryTargetTypes":["ContractProperties","ContractEvents"]}}}'
 ```
 
-JSON yapılandırma dosyası kullanılarak tanımlanan akıllı bir sözleşmeyi izleyen *mywatcher* için *myApplication* adlı bir uygulama oluşturun.
+JSON yapılandırma dosyası kullanılarak tanımlanan bir akıllı sözleşmeyi izleyen *myizleyici* için *MyApplication* adlı bir uygulama oluşturun.
 
 ``` azurecli
 az resource create \
@@ -335,9 +335,9 @@ az resource create \
                    --properties @artifact.json
 ```
 
-## <a name="start-instance"></a>Başlangıç örneği
+## <a name="start-instance"></a>Örneği Başlat
 
-Çalışırken Blockchain Manager örneği, tanımlanan girdilerdeki blockchain olaylarını izler ve tanımlanan çıktılara veri gönderir.
+Çalışırken, blok zinciri Yöneticisi örneği, tanımlı girişlerden blok zinciri olaylarını izler ve tanımlanan çıkışlara veri gönderir.
 
 ``` azurecli
 az resource invoke-action \
@@ -347,12 +347,12 @@ az resource invoke-action \
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| action | İzleyiciyi çalıştırmak için **başlat'ı** kullanın. |
-| Kimlik | İzleyici kaynak kimliği. Abonelik \<\>Kimliği, \<Kaynak\>grubu \<ve\> İzleyici adını izleyici kaynağının değerleriyle değiştirin.|
+| action | İzleyiciyi çalıştırmak için **Başlat** 'ı kullanın. |
+| ayrılacak | İzleyici kaynak KIMLIĞI. Abonelik \<\>kimliği \<, kaynak\>grubu ve \<izleyici adını\> izleyici kaynağı değerleriyle değiştirin.|
 
-### <a name="start-instance-example"></a>Örnek başlat
+### <a name="start-instance-example"></a>Örnek örneğini Başlat
 
-*Mywatcher*adlı bir Blockchain Veri Yöneticisi örneği başlatın.
+*Myizleyici*adlı bir blok zinciri veri Yöneticisi örneğini başlatın.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -362,7 +362,7 @@ az resource invoke-action \
 
 ## <a name="stop-instance"></a>Örneği durdur
 
-Blockchain Veri Yöneticisi örneğini durdurun.
+Bir blok zinciri Veri Yöneticisi örneğini durdurun.
 
 ``` azurecli
 az resource invoke-action \
@@ -372,12 +372,12 @@ az resource invoke-action \
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| action | İzleyiciyi durdurmak için **dur'u** kullanın. |
-| Kimlik | Gözcünün adı. Abonelik \<\>Kimliği, \<Kaynak\>grubu \<ve\> İzleyici adını izleyici kaynağının değerleriyle değiştirin. |
+| action | İzleyiciyi durdurmak için **Durdur** kullanın. |
+| ayrılacak | İzleyicinin adı. Abonelik \<\>kimliği \<, kaynak\>grubu ve \<izleyici adını\> izleyici kaynağı değerleriyle değiştirin. |
 
-### <a name="stop-watcher-example"></a>İzlemeyi durdurun örneği
+### <a name="stop-watcher-example"></a>İzleyici örneğini durdur
 
-Mywatcher adlı bir örneği *durdurun.*
+*Myizleyici*adlı bir örneği durdurun.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -385,9 +385,9 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/mywatcher
 ```
 
-## <a name="delete-instance"></a>Örneği silme
+## <a name="delete-instance"></a>Örneği Sil
 
-Blockchain Veri Yöneticisi örneğini silin.
+Bir blok zinciri Veri Yöneticisi örneğini silin.
 
 ``` azurecli
 az resource delete \
@@ -398,13 +398,13 @@ az resource delete \
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| resource-group | İzleyicinin kaynak grubu adını silmek. |
-| ad | Silmek için izleyenin adı. |
-| kaynak türü | Blockchain Veri Yöneticisi izleyicisinin kaynak türü **Microsoft.blockchain/watchers'dır.** |
+| resource-group | Silinecek izleyicinin kaynak grubu adı. |
+| ad | Silinecek izleyici adı. |
+| Kaynak türü | Bir blok zinciri Veri Yöneticisi İzleyicisi için kaynak türü **Microsoft. blockzinciridir/izleyicileri**. |
 
-### <a name="delete-instance-example"></a>Örnek örneği silme
+### <a name="delete-instance-example"></a>Örnek örneğini Sil
 
-*myRG* kaynak grubunda *mywatcher* adlı bir örneği silin.
+Myrg kaynak grubundaki *myizleyici* adlı bir *myRG* örneği silin.
 
 ``` azurecli-interactive
 az resource delete \
@@ -415,7 +415,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Blockchain Data Manager ve Azure Cosmos DB'yi kullanarak blockchain işlem iletisi gezgini oluşturan bir sonraki öğreticiyi deneyin.
+Blockzincirini Veri Yöneticisi ve Azure Cosmos DB kullanarak bir blok zinciri işlem iletisi Gezgini oluşturma sonraki öğreticiyi deneyin.
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB'ye veri göndermek için Blok Zinciri Veri Yöneticisi'ni kullanma](data-manager-cosmosdb.md)

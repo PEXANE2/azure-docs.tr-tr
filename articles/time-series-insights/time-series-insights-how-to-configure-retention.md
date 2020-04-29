@@ -1,6 +1,6 @@
 ---
-title: Ortamınızda bekletme yapılandırma nasıl yapılandırılır - Azure Zaman Serisi Öngörüleri | Microsoft Dokümanlar
-description: Azure Zaman Serisi Öngörüleri ortamınızda bekletme yi nasıl yapılandırıştırmayı öğrenin.
+title: Ortamınızda saklama Yapılandırma-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights ortamınızda bekletmenin nasıl yapılandırılacağını öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605061"
 ---
-# <a name="configuring-retention-in-time-series-insights"></a>Zaman Serisi Öngörülerinde bekletme yapılandırma
+# <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights bekletme yapılandırma
 
-Bu makalede, Azure Zaman Serisi Öngörüleri'nde **Veri saklama süresi** ve Depolama sınırı nın **aşıldığı davranışların** nasıl yapılandırılabildiğini açıklanmaktadır.
+Bu makalede, Azure Time Series Insights ' de **veri saklama süresi** ve **depolama sınırı aşıldı davranışının** nasıl yapılandırılacağı açıklanır.
 
 ## <a name="summary"></a>Özet
 
-Her Azure Zaman Serisi Öngörüler ortamının **Veri saklama süresini**yapılandırmak için bir ayarı vardır. Değer 1 ile 400 güne kadar uzanır. Veriler, hangisi önce gerçekleşirse, ortam depolama kapasitesine veya bekletme süresine (1-400) göre silinir.
+Her Azure Time Series Insights ortamının **veri saklama süresini**yapılandırma ayarı vardır. Değer 1 ile 400 gün arasında yayılır. Veriler ortam depolama kapasitesi veya Bekletme süresine (1-400) göre silinir, hangisi önce gelir.
 
-Her Zaman Serisi Öngörüler ortamıek bir ayar **Depolama sınırı aşan davranış**vardır. Bu ayar, bir ortamın maksimum kapasitesine ulaşıldığında giriş ve temizleme davranışını denetler. Aralarından seçim yapabileceğiniz iki davranış vardır:
+Her Time Series Insights ortamında, ek bir **depolama sınırı aşıldı davranışı**vardır. Bu ayar, bir ortamın maksimum kapasitesine ulaşıldığında giriş ve temizleme davranışını denetler. Aralarından seçim yapabileceğiniz iki davranış vardır:
 
-- **Eski verileri temizleme** (varsayılan)
-- **Duraklatma girişi**
+- **Eski verileri temizle** (varsayılan)
+- **Girişi Duraklat**
 
-Bu ayarları daha iyi anlamak için ayrıntılı bilgi [için, Zaman Serisi Öngörüleri'nde Anlama saklamayı gözden geçirin.](time-series-insights-concepts-retention.md)  
+Bu ayarları daha iyi anlamak için ayrıntılı bilgiler için [Time Series Insights ' de saklama](time-series-insights-concepts-retention.md)süresini gözden geçirin.  
 
 ## <a name="configure-data-retention"></a>Veri saklamayı yapılandırma
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Mevcut Time Series Öngörüleri ortamınızı bulun. Azure portalının sol tarafındaki menüdeki **Tüm kaynakları** seçin. Zaman Serisi Görüşleri ortamınızı seçin.
+1. Mevcut Time Series Insights ortamınızı bulun. Azure portal sol tarafındaki menüden **tüm kaynaklar** ' ı seçin. Zaman Serisi Görüşleri ortamınızı seçin.
 
-1. **Ayarlar** başlığı altında **Depolama Yapılandırması'nı**seçin.
+1. **Ayarlar** başlığı altında **depolama yapılandırması**' nı seçin.
 
-    [![Ayarlar altında Depolama Yapılandırması'nı seçin](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
+    [![Ayarlar altında depolama yapılandırması ' nı seçin.](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
-1. Kaydırıcı çubuğunu kullanarak bekletme süresini yapılandırmak veya metin kutusuna bir sayı yazmak için **Veri bekletme süresini (günler içinde)** seçin.
+1. Kaydırma çubuğunu kullanarak bekletme 'yi yapılandırmak için **veri saklama süresini (gün olarak)** seçin veya metin kutusuna bir sayı yazın.
 
-1. Bu yapılandırma maksimum veri olayı miktarını ve veri depolama için toplam depolama kapasitesini etkilediğiiçin **Kapasite** ayarını not edin.
+1. Bu yapılandırma, verileri depolamak için maksimum veri olayı miktarını ve toplam depolama kapasitesini etkilediğinden **Kapasite** ayarını dikkate alın.
 
-1. **Depolama sınırını aşan davranış** ayarını geçiş. **Eski verileri Temizleme** veya Ara **verme** davranışını seçin.
+1. **Depolama sınırı aşıldı davranış** ayarını değiştirin. **Eski verileri temizle** veya giriş davranışını **Duraklat** ' ı seçin.
 
-    [![Girişi duraklatın - kabul edin ve kaydedin.](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
+    [![Girişi duraklatma-kabul etme ve kaydetme.](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
 
-1. Veri kaybının olası risklerini anlamak için belgeleri gözden geçirin. Değişiklikleri yapılandırmak için **Kaydet'i** seçin.
+1. Veri kaybından oluşan olası riskleri anlamak için belgeleri gözden geçirin. Değişiklikleri yapılandırmak için **Kaydet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi için, [Zaman Serisi Öngörüleri'nde anlama tutmayı gözden geçirin.](time-series-insights-concepts-retention.md)
+- Daha fazla bilgi için [Time Series Insights ' de saklama süresini anlama](time-series-insights-concepts-retention.md)konusunu gözden geçirin.
 
-- [Zaman Serisi Öngörüleri ortamınızı nasıl ölçeklendireceklerini](time-series-insights-how-to-scale-your-environment.md)öğrenin.
+- [Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.
 
-- [Çevrenizi planlama](time-series-insights-environment-planning.md)hakkında bilgi edinin.
+- [Ortamınızı planlama](time-series-insights-environment-planning.md)hakkında bilgi edinin.

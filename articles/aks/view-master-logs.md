@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128964"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme
@@ -19,7 +19,7 @@ Azure Kubernetes hizmeti (AKS) ile, *kuas-apiserver* ve *kuin-Controller-Manager
 
 Bu makalede, Azure hesabınızda çalışan mevcut bir AKS kümesi gerekir. Zaten bir AKS kümeniz yoksa, [Azure CLI][cli-quickstart] veya [Azure Portal][portal-quickstart]kullanarak bir tane oluşturun. Azure Izleyici günlükleri hem RBAC hem de RBAC olmayan AKS kümeleriyle birlikte kullanılabilir.
 
-## <a name="enable-resource-logs"></a>Kaynak günlüklerini etkinleştir
+## <a name="enable-resource-logs"></a>Kaynak günlüklerini etkinleştirme
 
 Azure Izleyici günlükleri, birden fazla kaynaktaki verileri toplayıp gözden geçirmesine yardımcı olmak için ortamınıza ilişkin Öngörüler sağlayan bir sorgu dili ve analiz altyapısı sağlar. Çalışma alanı, verileri harmanlamak ve analiz etmek için kullanılır ve Application Insights ve Güvenlik Merkezi gibi diğer Azure hizmetleriyle tümleştirilebilir. Günlükleri çözümlemek üzere farklı bir platform kullanmak için, kaynak günlüklerini bir Azure depolama hesabına veya Olay Hub 'ına göndermek yerine seçebilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici günlükleri nedir?][log-analytics-overview].
 

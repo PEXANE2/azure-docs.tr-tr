@@ -1,6 +1,6 @@
 ---
-title: Microsoft kimlik platformu yönetici onay protokolleri
-description: Kapsamlar, izinler ve onay dahil olmak üzere Microsoft kimlik platformu bitiş noktasında yetkilendirme açıklaması.
+title: Microsoft Identity Platform Yöneticisi onay protokolleri
+description: Microsoft Identity platform uç noktasındaki kapsamlar, izinler ve onay dahil olmak üzere yetkilendirme açıklaması.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,25 +13,25 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868674"
 ---
-# <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft kimlik platformunda yönetici onayı
+# <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda yönetici onayı
 
-Bazı izinler, kiracı içinde verilebilmeleri için yöneticinin onayvermesini gerektirir.  Yönetici onayı bitiş noktasını, tüm kiracıya izin vermek için de kullanabilirsiniz.
+Bazı izinler, bir kiracı içinde verilebilmesi için önce bir yöneticiden izin gerektirir.  Bir kiracının tamamına izin vermek için yönetici onay uç noktasını da kullanabilirsiniz.
 
-## <a name="recommended-sign-the-user-into-your-app"></a>Önerilen: Kullanıcıyı uygulamanızda oturum
+## <a name="recommended-sign-the-user-into-your-app"></a>Önerilir: Kullanıcı uygulamanızda Imzalanın
 
-Genellikle, yönetici onayı bitiş noktasını kullanan bir uygulama oluşturduğunuzda, uygulamanın yöneticinin uygulamanın izinlerini onaylayacağı bir sayfaya veya görünüme ihtiyacı vardır. Bu sayfa, uygulamanın kaydolma akışının, uygulamaayarlarının bir parçası olabilir veya özel bir "bağlantı" akışı olabilir. Çoğu durumda, uygulamanın bu "bağlantı" görünümünü yalnızca bir kullanıcı bir iş veya okul Microsoft hesabıyla oturum açtındıktan sonra göstermesi mantıklıdır.
+Genellikle, yönetici onay uç noktasını kullanan bir uygulama oluşturduğunuzda, uygulamanın, yöneticinin uygulamanın izinlerini onaylayabileceği bir sayfa veya görünüm gerekir. Bu sayfa, uygulamanın kaydolma akışının bir parçası, uygulamanın ayarlarının bir parçası olabilir veya adanmış bir "Connect" akışı olabilir. Çoğu durumda, uygulamanın bu "Bağlan" görünümünü yalnızca bir kullanıcı iş veya okul Microsoft hesabı oturum açtıktan sonra göstermesini mantıklı hale getirir.
 
-Kullanıcıyı uygulamanızda oturum açtığınızda, gerekli izinleri onaylamalarını istemeden önce yöneticinin ait olduğu kuruluşu tanımlayabilirsiniz. Kesinlikle gerekli olmasa da, kuruluş kullanıcılarınız için daha sezgisel bir deneyim oluşturmanıza yardımcı olabilir. Kullanıcıyı oturum alabilmek için [Microsoft kimlik platformu protokol eğitimlerimizi](active-directory-v2-protocols.md)uygulayın.
+Kullanıcıyı uygulamanıza imzaladığınızda, yöneticinin gerekli izinleri onaylamasını istemeden önce sahip olduğu kuruluşu belirleyebilirsiniz. Kesinlikle gerekli olmasa da, kurumsal kullanıcılarınız için daha sezgisel bir deneyim oluşturmanıza yardımcı olabilir. Kullanıcı oturumu açmak için [Microsoft Identity platform protokol öğreticilerimizi](active-directory-v2-protocols.md)izleyin.
 
-## <a name="request-the-permissions-from-a-directory-admin"></a>İzinleri bir dizin yöneticisinden isteme
+## <a name="request-the-permissions-from-a-directory-admin"></a>Dizin yöneticisinden izinleri isteme
 
-Kuruluşunuzun yöneticisinden izin istemeye hazır olduğunuzda, kullanıcıyı Microsoft kimlik platformu *yönetici onayı bitiş noktasına*yönlendirebilirsiniz.
+Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı Microsoft Identity Platform *Yöneticisi onay uç noktasına*yönlendirebilirsiniz.
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -47,18 +47,18 @@ https://graph.microsoft.com/mail.send
 
 | Parametre     | Koşul     | Açıklama                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
-| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. GUID veya dost ad biçiminde sağlanabilir VEYA `organizations` genel olarak örnekte görüldüğü gibi başvurulabilir. Kişisel hesaplar kiracı bağlamı dışında yönetici onayı sağlayamadığıiçin 'ortak' kullanmayın. Kiracıları yöneten kişisel hesaplarla en iyi uyumluluğu sağlamak için, mümkün olduğunda kiracı kimliğini kullanın. |
-| `client_id` | Gerekli | Azure portalı - Uygulama [kayıtlarının](https://go.microsoft.com/fwlink/?linkid=2083908) uygulamanıza atandığı **Uygulama (istemci) Kimliği.** |
-| `redirect_uri` | Gerekli |UYGULAMANIZIN işlemesi için yanıtın gönderilmesini istediğiniz uri'yi yeniden yönlendirin. Uygulama kayıt portalına kaydettiğiniz yönlendirme URL'lerinden biriyle tam olarak eşleşmelidir. |
-| `state` | Önerilen | Belirteç yanıtında da döndürülecek isteğe dahil edilen bir değer. İstediğiniz herhangi bir içerik dizisi olabilir. Kimlik doğrulama isteği oluşmadan önce kullanıcının durumu yla ilgili bilgileri uygulamada kodlamak için durumu (örneğin, üzerinde oldukları sayfa veya görünüm) kullanın. |
-|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik (/.default kullanarak) veya dinamik kapsamlar olabilir.  Bu OIDC kapsamları içerebilir`openid` `profile`( `email`, , . |
+| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü `organizations` gıbı, GUID veya kolay ad biçiminde veya genel olarak başvuruda bulunulan şekilde belirtilebilir. Kişisel hesaplar kiracı bağlamı haricinde yönetici onayı sağlayamadığından ' Common ' kullanmayın. Kiracıların yönetiminde kişisel hesaplarla en iyi uyumluluğu sağlamak için, mümkün olduğunda kiracı KIMLIĞINI kullanın. |
+| `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `redirect_uri` | Gerekli |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
+| `state` | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Kullanıcının uygulamadaki durumuyla ilgili bilgileri, uygulamanın bulunduğu sayfa veya görünüm gibi kimlik doğrulama isteği olmadan önce kodlamak için bu durumu kullanın. |
+|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. |
 
 
-Bu noktada, Azure AD isteği tamamlamak için bir kiracı yöneticinin oturum etmesini gerektirir. Yöneticiden `scope` parametrede istediğiniz tüm izinleri onaylaması istenir.  Statik ( )`/.default`bir değer kullandıysanız, v1.0 yönetici onayı bitiş noktası gibi çalışır ve uygulama için gerekli izinlerde bulunan tüm kapsamlar için onay ister.
+Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, `scope` parametresinde istediğiniz tüm izinleri onaylaması istenir.  Statik (`/.default`) değeri kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.
 
 ### <a name="successful-response"></a>Başarılı yanıt
 
-Yönetici uygulamanızın izinlerini onaylarsa, başarılı yanıt aşağıdaki gibi görünür:
+Yönetici, uygulamanız için izinleri onayladığında, başarılı yanıt şöyle görünür:
 
 ```
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
@@ -66,27 +66,27 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 | Parametre         | Açıklama                                                                                       |
 |------------------:|:-------------------------------------------------------------------------------------------------:|
-| `tenant`| Başvurunuza istediği izinleri GUID biçiminde veren dizin kiracısı.|
-| `state`           | İstekte yer alan ve belirteç yanıtında da döndürülecek bir değer. İstediğiniz herhangi bir içerik dizisi olabilir. Durum, kimlik doğrulama isteği oluşmadan önce kullanıcının durumu yla ilgili bilgileri uygulamada kodlamak için kullanılır(örneğin, üzerinde oldukları sayfa veya görünüm).|
-| `scope`          | Uygulama için erişim izni verilen izinler kümesi.|
-| `admin_consent`   | Olarak `True`ayarlanacak.|
+| `tenant`| Uygulamanıza istenen izinleri (GUID biçiminde) veren dizin kiracısı.|
+| `state`           | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Durum, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce.|
+| `scope`          | Uygulamasına erişim izni verilen izinler kümesi.|
+| `admin_consent`   | , Olarak `True`ayarlanır.|
 
 ### <a name="error-response"></a>Hata yanıtı
 
 `http://localhost/myapp/permissions?error=consent_required&error_description=AADSTS65004%3a+The+resource+owner+or+authorization+server+denied+the+request.%0d%0aTrace+ID%3a+d320620c-3d56-42bc-bc45-4cdd85c41f00%0d%0aCorrelation+ID%3a+8478d534-5b2c-4325-8c2c-51395c342c89%0d%0aTimestamp%3a+2019-09-24+18%3a34%3a26Z&admin_consent=True&tenant=fa15d692-e9c7-4460-a743-29f2956fd429&state=12345`
 
-Başarılı bir yanıtta görülen parametrelere eklenen hata parametreleri aşağıda görülmektedir.
+Başarılı bir yanıtta görülen parametrelere ekleme, hata parametreleri aşağıda gösterildiği gibi görülür.
 
 | Parametre          | Açıklama                                                                                      |
 |-------------------:|:-------------------------------------------------------------------------------------------------:|
-| `error`            | Oluşan hata türlerini sınıflandırmak için kullanılabilecek ve hatalara tepki vermek için kullanılabilecek bir hata kodu dizesi.|
-| `error_description`| Bir geliştiricinin hatanın temel nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi.|
-| `tenant`| Başvurunuza istediği izinleri GUID biçiminde veren dizin kiracısı.|
-| `state`           | İstekte yer alan ve belirteç yanıtında da döndürülecek bir değer. İstediğiniz herhangi bir içerik dizisi olabilir. Durum, kimlik doğrulama isteği oluşmadan önce kullanıcının durumu yla ilgili bilgileri uygulamada kodlamak için kullanılır(örneğin, üzerinde oldukları sayfa veya görünüm).|
-| `admin_consent`   | Bu yanıtın `True` yönetici onay akışında oluştuğunu belirtmek üzere ayarlanır.|
+| `error`            | Oluşan hata türlerini sınıflandırmak için kullanılabilen ve hatalara yanıt vermek için kullanılabilen bir hata kodu dizesi.|
+| `error_description`| Bir geliştiricinin hatanın kök nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi.|
+| `tenant`| Uygulamanıza istenen izinleri (GUID biçiminde) veren dizin kiracısı.|
+| `state`           | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Durum, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce.|
+| `admin_consent`   | , Bu yanıtın yönetici `True` onay akışında oluştuğunu göstermek için olarak ayarlanır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Bir uygulamayı çok kiracı lı olarak nasıl dönüştüreceğinizi](howto-convert-app-to-be-multi-tenant.md) görün
-- Yetkilendirme [kodu hibe akışı sırasında OAuth 2.0 protokol katmanında rızanın nasıl desteklenilebildiğini](v2-oauth2-auth-code-flow.md#request-an-authorization-code)öğrenin.
-- [Çok kiracılı bir uygulamanın daha](active-directory-devhowto-multi-tenant-overview.md) gelişmiş çok katmanlı uygulama modellerini destekleyerek "kullanıcı" ve "yönetici" onayı uygulamak için onay çerçevesini nasıl kullanabileceğini öğrenin.
-- [Azure AD uygulama onay deneyimlerini](application-consent-experience.md) anlama
+- Bkz. [bir uygulamayı çok kiracılı olarak dönüştürme](howto-convert-app-to-be-multi-tenant.md)
+- [Yetkilendirme kodu verme akışı sırasında OAuth 2,0 protokol katmanında izin nasıl desteklendiğini](v2-oauth2-auth-code-flow.md#request-an-authorization-code)öğrenin.
+- Çok kiracılı bir uygulamanın "Kullanıcı" ve "Yönetici" onayını uygulamak için, daha gelişmiş çok katmanlı uygulama düzenlerini desteklemek için [izin çerçevesini nasıl kullanabileceği hakkında](active-directory-devhowto-multi-tenant-overview.md) bilgi edinin.
+- [Azure AD uygulama onayı deneyimlerini](application-consent-experience.md) anlama

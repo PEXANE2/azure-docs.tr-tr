@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 04/22/2020
 ms.author: radeltch
 ms.openlocfilehash: e04b37d0c95f2176581c7d13f3641a13ecddfd8f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101221"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği
@@ -139,7 +139,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. Yük dengeleyiciyi açın, **ön uç IP havuzu**' nu seçin ve **Ekle**' yi seçin.
       1. Yeni ön uç IP havuzunun adını girin (örneğin, **Hana-ön uç**).
       1. **Atamayı** **statik** olarak ayarlayın ve IP adresini (örneğin, **10.0.0.13**) girin.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
       1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuzun IP adresini aklınızda edin.
    
    1. Sonra, bir arka uç havuzu oluşturun:
@@ -157,7 +157,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
       1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
       1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
    
    1. Sonra, Yük Dengeleme kurallarını oluşturun:
    
@@ -167,7 +167,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. **Ha bağlantı noktalarını**seçin.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
 
    > [!Note]
    > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
@@ -178,7 +178,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. Yük dengeleyiciyi açın, **ön uç IP havuzu**' nu seçin ve **Ekle**' yi seçin.
       1. Yeni ön uç IP havuzunun adını girin (örneğin, **Hana-ön uç**).
       1. **Atamayı** **statik** olarak ayarlayın ve IP adresini (örneğin, **10.0.0.13**) girin.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
       1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuzun IP adresini aklınızda edin.
    
    1. Sonra, bir arka uç havuzu oluşturun:
@@ -188,14 +188,14 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. **Sanal makine Ekle**' yi seçin.
       1. Adım 3 ' te oluşturulan kullanılabilirlik kümesini seçin.
       1. SAP HANA kümesinin sanal makinelerini seçin.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
    
    1. Sonra, bir sistem durumu araştırması oluşturun:
    
       1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
       1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
       1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
    
    1. SAP HANA 1,0 için, Yük Dengeleme kurallarını oluşturun:
    
@@ -205,7 +205,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**15 girin.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
       1. Bağlantı noktası 3**03**17 için bu adımları tekrarlayın.
    
    1. SAP HANA 2,0 için, sistem veritabanı için Yük Dengeleme kurallarını oluşturun:
@@ -216,7 +216,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**13 yazın.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
       1. Bağlantı noktası 3**03**14 için bu adımları tekrarlayın.
    
    1. SAP HANA 2,0 için, önce Kiracı veritabanı için Yük Dengeleme kurallarını oluşturun:
@@ -227,7 +227,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
       1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**40 yazın.
       1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
       1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
-      1. **Tamam ' ı**seçin.
+      1. **Tamam**’ı seçin.
       1. Bağlantı noktaları 3**03**41 ve 3**03**42 için bu adımları yineleyin.
 
    SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [SAP HANA kiracı veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) Kılavuzu veya [SAP Note 2388694][2388694]' de [kiracı veritabanlarına yönelik bölüm bağlantılarını](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) okuyun.

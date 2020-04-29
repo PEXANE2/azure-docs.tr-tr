@@ -1,39 +1,39 @@
 ---
 title: .NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
-description: .NET işlevlerinde hizmetleri kaydetmek ve kullanmak için bağımlılık enjeksiyonu nasıl kullanılacağını öğrenin
+description: .NET işlevlerinde Hizmetleri kaydetmek ve kullanmak için bağımlılık ekleme eklemeyi nasıl kullanacağınızı öğrenin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
 ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678450"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
-Azure İşlevler, sınıflar ve bunların bağımlılıkları arasında Denetim [Inversion (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elde etmek için bir teknik olan bağımlılık enjeksiyonu (DI) yazılım tasarım deseni destekler.
+Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetimin (IOC) bir Iç sürümünü](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elde etmek için bir tekniktir olan bağımlılık ekleme (dı) yazılım tasarım modelini destekler.
 
-- Azure İşlevlerinde Bağımlılık enjeksiyonu .NET Çekirdek Bağımlılık Enjeksiyonu özellikleri üzerine kuruludur. [.NET Çekirdek bağımlılık enjeksiyonu](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) ile aşinalık önerilir. Bağımlılıkları nasıl geçersiz kaldığınız ve Tüketim planında Azure İşlevleri ile yapılandırma değerlerinin nasıl okunduğu konusunda farklılıklar vardır.
+- Azure Işlevlerine bağımlılık ekleme, .NET Core bağımlılığı ekleme özellikleri üzerine kurulmuştur. [.NET Core bağımlılığı ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) konusunda benzerlik yapmanız önerilir. Bağımlılıkları geçersiz kılma ve yapılandırma değerlerinin tüketim planında Azure Işlevleri ile nasıl okunduğu konusunda farklılıklar vardır.
 
-- Bağımlılık enjeksiyonu desteği Azure İşlevler 2.x ile başlar.
+- Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bağımlılık enjeksiyonu kullanamadan önce aşağıdaki NuGet paketlerini yüklemeniz gerekir:
+Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemelisiniz:
 
-- [Microsoft.Azure.Functions.Uzantılar](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft. Azure. Functions. uzantıları](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Microsoft.NET.Sdk.Functions paketi](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) sürüm 1.0.28 veya sonrası
+- [Microsoft. net. SDK. Functions paket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) sürümü 1.0.28 veya üzeri
 
-## <a name="register-services"></a>Kayıt hizmetleri
+## <a name="register-services"></a>Hizmetleri Kaydet
 
-Hizmetleri kaydetmek için, bir örneği yapılandırmak ve `IFunctionsHostBuilder` bileşenler eklemek için bir yöntem oluşturun.  Azure İşlevler ana bilgisayarı `IFunctionsHostBuilder` bir örneğini oluşturur ve doğrudan yönteminize aktarAr.
+Hizmetleri kaydetmek için bir `IFunctionsHostBuilder` örneğe bileşen yapılandırmak ve eklemek üzere bir yöntem oluşturun.  Azure Işlevleri ana makinesi bir örneği oluşturur `IFunctionsHostBuilder` ve doğrudan kendi yönteğinize geçirir.
 
-Yöntemi kaydetmek için, `FunctionsStartup` başlangıç sırasında kullanılan tür adını belirten derleme özniteliğini ekleyin.
+Yöntemi kaydetmek için başlangıç sırasında kullanılan tür `FunctionsStartup` adını belirten derleme özniteliğini ekleyin.
 
 ```csharp
 using System;
@@ -64,17 +64,17 @@ namespace MyNamespace
 
 ### <a name="caveats"></a>Uyarılar
 
-Çalışma zamanından önce ve sonra çalışan bir dizi kayıt adımı başlangıç sınıfını işler. Bu nedenle, aşağıdaki öğeleri unutmayın:
+Çalışma zamanı başlangıç sınıfını işleyerek önce ve sonra çalıştırılan bir dizi kayıt adımı. Bu nedenle, aşağıdaki öğeleri aklınızda bulundurun:
 
-- *Başlangıç sınıfı yalnızca kurulum ve kayıt içindir.* Başlatma işlemi sırasında başlangıç sırasında kayıtlı hizmetleri kullanmaktan kaçının. Örneğin, başlangıç sırasında kaydedilmekte olan bir günlüğe kaydetmeye çalışmayın. Kayıt sürecinin bu noktası, hizmetlerinizin kullanıma sunulması için çok erkendir. `Configure` Yöntem çalıştırıladıktan sonra, İşlevler çalışma zamanı, hizmetlerinizin çalışma şeklini etkileyebilecek ek bağımlılıkları kaydetmeye devam eder.
+- *Başlangıç sınıfı yalnızca kurulum ve kayıt için tasarlanmıştır.* Başlangıç işlemi sırasında başlangıçta kayıtlı hizmetleri kullanmaktan kaçının. Örneğin, başlatma sırasında kaydedilen bir günlükçüde bir iletiyi günlüğe almaya çalışmayın. Kayıt sürecinin bu noktası, hizmetlerinizin kullanıma hazır olması için çok erken bir işlemdir. `Configure` Yöntem çalıştırıldıktan sonra işlevler çalışma zamanı, hizmetlerinizin nasıl çalıştığını etkileyebilecek ek bağımlılıklar kaydetmeye devam eder.
 
-- *Bağımlılık enjeksiyon konteyneri yalnızca açıkça kaydedilmiş türleri tutar.* Enjekte edilebilir türleri olarak kullanılabilen tek hizmetler `Configure` yöntemde kurulum ne lerdir. Sonuç olarak, kurulum sırasında `BindingContext` veya `ExecutionContext` enjekte edilebilir türler gibi işlevlere özgü türler kullanılamaz.
+- *Bağımlılık ekleme kapsayıcısı yalnızca açık olarak kayıtlı türleri barındırır*. Yalnızca Injectable türleri olarak kullanılabilen hizmetler, `Configure` yönteminde kurulum olan şeydir. Sonuç olarak, gibi `BindingContext` `ExecutionContext` işlevlere özgü türler kurulum sırasında veya Injectable türleri olarak kullanılamaz.
 
-## <a name="use-injected-dependencies"></a>Enjekte edilmiş bağımlılıkları kullanma
+## <a name="use-injected-dependencies"></a>Eklenen bağımlılıkları kullan
 
-Yapıcı enjeksiyon bağımlılıklarınızı bir işlevde kullanılabilir hale getirmek için kullanılır. Konstrüktör enjeksiyonu kullanımı statik sınıflar kullanmamanızı gerektirir.
+Oluşturucu Ekleme, bağımlılıklarınızı bir işlevde kullanılabilir hale getirmek için kullanılır. Oluşturucu Ekleme kullanımı statik sınıflar kullanmanıza gerek duyar.
 
-Aşağıdaki örnek, `IMyService` bağımlılıkların `HttpClient` VE bağımlılıkların HTTP tarafından tetiklenen bir işleve nasıl enjekte edildiğini göstermektedir. Bu örnek, başlangıçta bir `HttpClient` kayıt için gereken [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) paketini kullanır.
+Aşağıdaki örnek, `IMyService` ve `HttpClient` bağımlılıklarının http ile tetiklenen bir işleve nasıl eklendiğini gösterir. Bu örnek, bir `HttpClient` başlangıç kaydı Için gereken [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) paketini kullanır.
 
 ```csharp
 using System;
@@ -115,27 +115,27 @@ namespace MyNamespace
 }
 ```
 
-## <a name="service-lifetimes"></a>Hizmet ömürleri
+## <a name="service-lifetimes"></a>Hizmet yaşam süreleri
 
-Azure İşlevler uygulamaları, [bağımlılık enjeksiyonu](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)yla aynı hizmet kullanım ömürlerini ASP.NET. Bir Fonksiyonlar uygulaması için farklı hizmet ömürleri aşağıdaki gibi çalışır:
+Azure Işlevleri uygulamaları, [ASP.net bağımlılığı ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)ile aynı hizmet yaşam sürelerini sağlar. Işlevler uygulaması için farklı hizmet yaşam süreleri aşağıdaki gibi davranır:
 
-- **Geçici**: Geçici hizmetler, hizmetin her talebi üzerine oluşturulur.
-- **Kapsamlı**: Kapsamlı hizmet ömrü, bir işlev yürütme ömrüyle eşleşir. Kapsamlı hizmetler yürütme başına bir kez oluşturulur. Yürütme sırasında bu hizmet için daha sonra istekleri varolan hizmet örneğini yeniden kullanın.
-- **Singleton : Singleton**hizmet ömrü ana bilgisayar ömrüyle eşleşir ve bu örnekteki işlev yürütmeleri arasında yeniden kullanılır. Singleton yaşam boyu hizmetleri, örneğin `SqlConnection` bağlantılar ve `HttpClient` istemciler için önerilir.
+- **Geçici**: hizmet istekleri üzerine geçici hizmetler oluşturulur.
+- **Kapsam**: kapsamlı hizmet ömrü bir işlev yürütme ömrü ile eşleşir. Kapsamlı hizmetler, her yürütme için bir kez oluşturulur. Yürütme sırasında o hizmetin sonraki istekleri, var olan hizmet örneğini yeniden kullanır.
+- Tekil **: tek**hizmet ömrü, ana bilgisayar ömrü ile eşleşir ve bu örnekteki işlev Yürütmelerinde yeniden kullanılır. Tek ömür Hizmetleri, bağlantılar ve istemciler için, örneğin `SqlConnection` veya `HttpClient` örnekler için önerilir.
 
-GitHub'da [farklı hizmet kullanım sürelerinden](https://aka.ms/functions/di-sample) bir örnek görüntüleyin veya indirin.
+GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://aka.ms/functions/di-sample) görüntüleyin veya indirin.
 
-## <a name="logging-services"></a>Günlük hizmetleri
+## <a name="logging-services"></a>Günlüğe kaydetme hizmetleri
 
-Kendi günlük sağlayıcınıza ihtiyacınız varsa, özel `ILoggerProvider` bir türü örnek olarak kaydedin. Uygulama Öngörüleri Azure İşlevleri tarafından otomatik olarak eklenir.
+Kendi günlük sağlayıcınıza ihtiyacınız varsa, özel bir türü `ILoggerProvider` örnek olarak kaydedin. Application Insights, Azure Işlevleri tarafından otomatik olarak eklenir.
 
 > [!WARNING]
-> - Çevre tarafından `AddApplicationInsightsTelemetry()` sağlanan hizmetlerle çakışan hizmetleri kaydederken hizmet koleksiyonuna eklemeyin.
-> - Kendi `TelemetryConfiguration` bilgilerinizi veya `TelemetryClient` yerleşik Application Insights işlevini kullanıyorsanız kaydetmeyin. Kendi `TelemetryClient` örneğini yapılandırmanız gerekiyorsa, Azure `TelemetryConfiguration` [İşlerini İzle'de](./functions-monitoring.md#version-2x-and-later-2)gösterildiği gibi enjekte edilen yoluyla bir tane oluşturun.
+> - Ortam tarafından sunulan `AddApplicationInsightsTelemetry()` hizmetlerle çakışan Hizmetleri kaydederken hizmetler koleksiyonuna eklemeyin.
+> - Kendi kendinize `TelemetryConfiguration` kaydolmayın veya `TelemetryClient` yerleşik Application Insights işlevlerini kullanıyorsanız. Kendi `TelemetryClient` örneğinizi yapılandırmanız gerekirse, `TelemetryConfiguration` [Azure işlevlerini izle](./functions-monitoring.md#version-2x-and-later-2)bölümünde gösterildiği gibi eklenmiş şekilde bir tane oluşturun.
 
-### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> ve ILoggerFactory
+### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> ve ıloggerfactory
 
-Ev sahibi, `ILogger<T>` `ILoggerFactory` yapıcılara enjekte edecek ve hizmetleri sunacak.  Ancak, varsayılan olarak bu yeni günlük filtreleri işlev günlükleri dışarı filtrelenir.  Ek filtreleri ve `host.json` kategorileri devre dışı bırakmak için dosyayı değiştirmeniz gerekir.  Aşağıdaki örnek, ana `ILogger<HttpTrigger>` bilgisayar tarafından ortaya çıkacak günlükleri ile bir ekleme gösterir.
+Konak, kurucularına `ILogger<T>` ve `ILoggerFactory` hizmet olarak eklenecek.  Bununla birlikte, varsayılan olarak bu yeni günlük filtreleri işlev günlüklerinden filtrelenecektir.  Ek filtreleri ve kategorileri kabul etmek `host.json` için dosyayı değiştirmeniz gerekir.  Aşağıdaki örnek, ana bilgisayar tarafından `ILogger<HttpTrigger>` açığa çıkarılan bir Günlükler eklemeyi gösterir.
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +160,7 @@ namespace MyNamespace
 }
 ```
 
-Ve `host.json` günlük filtresi ni ekleyen bir dosya.
+Ve günlük `host.json` filtresini ekleyen bir dosya.
 
 ```json
 {
@@ -179,28 +179,28 @@ Ve `host.json` günlük filtresi ni ekleyen bir dosya.
 }
 ```
 
-## <a name="function-app-provided-services"></a>Fonksiyon uygulaması sağlanan hizmetler
+## <a name="function-app-provided-services"></a>İşlev uygulaması tarafından sunulan hizmetler
 
-İşlev ana bilgisayar birçok hizmeti kaydeder. Aşağıdaki hizmetleri uygulamanızda bir bağımlılık olarak almak güvenlidir:
+İşlev Konağı birçok hizmeti kaydeder. Aşağıdaki hizmetler uygulamanızda bir bağımlılık olarak ele alınır:
 
 |Hizmet Türü|Ömür|Açıklama|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Çalışma zamanı yapılandırması|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Ev sahibi örneğinkimliğini sağlamaktan sorumlu|
+|`Microsoft.Extensions.Configuration.IConfiguration`|Adet|Çalışma zamanı yapılandırması|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Adet|Konak örneğinin KIMLIĞINI sağlamaktan sorumlu|
 
-Bağımlılık yapmak istediğiniz başka hizmetler varsa, [bir sorun oluşturun ve bunları GitHub'da önerin.](https://github.com/azure/azure-functions-host)
+Bağımlılığı almak istediğiniz başka hizmetler varsa, [bir sorun oluşturun ve bunları GitHub 'da önerin](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>Ana bilgisayar hizmetlerinin geçersiz kılınması
+### <a name="overriding-host-services"></a>Konak hizmetlerini geçersiz kılma
 
-Ana bilgisayar tarafından sağlanan geçersiz kılma hizmetleri şu anda desteklenmez.  Geçersiz kılmak istediğiniz hizmetler varsa, [bir sorun oluşturun ve bunları GitHub'da önerin.](https://github.com/azure/azure-functions-host)
+Konak tarafından belirtilen geçersiz kılma Hizmetleri şu anda desteklenmiyor.  Geçersiz kılmak istediğiniz hizmetler varsa, [bir sorun oluşturun ve bunları GitHub 'da önerin](https://github.com/azure/azure-functions-host).
 
-## <a name="working-with-options-and-settings"></a>Seçenekler ve ayarlarla çalışma
+## <a name="working-with-options-and-settings"></a>Seçeneklerle ve ayarlarla çalışma
 
-[Uygulama ayarlarında](./functions-how-to-use-azure-function-app-settings.md#settings) tanımlanan değerler, `IConfiguration` başlangıç sınıfındauygulama ayarları değerlerini okumanızı sağlayan bir örnekte kullanılabilir.
+[Uygulama ayarlarında](./functions-how-to-use-azure-function-app-settings.md#settings) tanımlanan değerler, başlangıç sınıfındaki uygulama ayarları `IConfiguration` değerlerini okumanızı sağlayan bir örnekte kullanılabilir.
 
-`IConfiguration` Örnekteki değerleri özel bir türe ayıklayabilirsiniz. Uygulama ayarları değerlerini özel bir türe kopyalamak, bu değerleri enjekte edilebilir hale getirerek hizmetlerinizi test etmeyi kolaylaştırır. Yapılandırma örneğinde okunan ayarlar basit anahtar/değer çiftleri olmalıdır.
+`IConfiguration` Örnekten değerleri özel bir türe ayıklayabilirsiniz. Uygulama ayarları değerlerini özel bir türe kopyalamak, bu değerleri tablo haline getirerek, hizmetlerinizi test etmelerini kolaylaştırır. Yapılandırma örneğine okunan ayarların basit anahtar/değer çiftleri olması gerekir.
 
-Uygulama ayarı ile tutarlı bir özellik içeren aşağıdaki sınıfı düşünün:
+Uygulama ayarıyla tutarlı adlı bir özellik içeren aşağıdaki sınıfı göz önünde bulundurun:
 
 ```csharp
 public class MyOptions
@@ -209,7 +209,7 @@ public class MyOptions
 }
 ```
 
-Ve `local.settings.json` özel ayarı aşağıdaki gibi yapılandırabilecek bir dosya:
+Ve özel `local.settings.json` ayarı aşağıdaki gibi yapılandırabilecek bir dosya:
 ```json
 {
   "IsEncrypted": false,
@@ -219,7 +219,7 @@ Ve `local.settings.json` özel ayarı aşağıdaki gibi yapılandırabilecek bir
 }
 ```
 
-Yöntemin `Startup.Configure` içinden, aşağıdaki kodu `IConfiguration` kullanarak örnekteki değerleri özel türünüze ayıklayabilirsiniz:
+`Startup.Configure` Yöntemi içinde, aşağıdaki kodu kullanarak `IConfiguration` örnekten değerleri özel türüne ayıklayabilirsiniz:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -229,9 +229,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-Yapılandırmadan özel örnek için eşleşen özellik adlarına sahip kopyaları çağırma. `Bind` Seçenekler örneği artık IoC kapsayıcısında bir işlevin içine enjekte edilebilebilir.
+Çağırma `Bind` özelliği, eşleşen özellik adlarına sahip değerleri özel örneğe kopyalar. Options örneği artık bir işleve eklemek için IoC kapsayıcısında kullanılabilir.
 
-Seçenekler nesnesi genel `IOptions` arabirimin bir örneği olarak işleviçine enjekte edilir. Yapılandırmanızda `Value` bulunan değerlere erişmek için özelliği kullanın.
+Options nesnesi, genel `IOptions` arabirimin bir örneği olarak işlevine eklenir. Yapılandırmanızda bulunan `Value` değerlere erişmek için özelliğini kullanın.
 
 ```csharp
 using System;
@@ -248,14 +248,14 @@ public class HttpTrigger
 }
 ```
 
-Seçeneklerle çalışma yla ilgili daha fazla bilgi için [ASP.NET Core'daki Seçenekler desenine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) bakın.
+Seçeneklerle çalışma hakkında daha fazla ayrıntı için [ASP.NET Core Içindeki seçenekler düzenine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) bakın.
 
 > [!WARNING]
-> *Local.settings.json* veya appsettings gibi dosyalardaki değerleri okumaya çalışmaktan *kaçının.{ çevre}.json* Tüketim planı üzerinde. Barındırma altyapısı yapılandırma bilgilerine erişimi olmadığından, tetikleyici bağlantılarla ilgili bu dosyalardan okunan değerler uygulama ölçeklendirildikçe kullanılamaz.
+> *Yerel. Settings. JSON* veya appSettings gibi dosyalardaki değerleri okumaya çalışmadan kaçının *. { Tüketim planında Environment}. JSON* . Barındırma altyapısının yapılandırma bilgilerine erişimi olmadığından, tetikleyici bağlantılarıyla ilgili bu dosyalardan okunan değerler uygulama ölçeklenirken kullanılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 - [İşlev uygulamanızı izleme](functions-monitoring.md)
-- [Fonksiyonlar için en iyi uygulamalar](functions-best-practices.md)
+- [İşlevler için en iyi uygulamalar](functions-best-practices.md)

@@ -1,6 +1,6 @@
 ---
-title: OAuth yetkilendirme kodu akışı - Microsoft kimlik platformu | Azure
-description: OAuth 2.0 kimlik doğrulama protokolünün Microsoft kimlik platformu uygulamasını kullanarak web uygulamaları oluşturun.
+title: OAuth yetkilendirme kodu akışı-Microsoft Identity platform | Mavisi
+description: OAuth 2,0 kimlik doğrulama protokolünün Microsoft Identity platform uygulamasını kullanarak Web uygulamaları oluşturun.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,29 +13,29 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: fcd80c052edf659f93f97800da3112c1f11309cc
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868499"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 yetkilendirme kodu akışı
+# <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
 
-OAuth 2.0 yetkilendirme kodu hibesi, web API'leri gibi korunan kaynaklara erişmek için aygıta yüklenen uygulamalarda kullanılabilir. OAuth 2.0'ın Microsoft kimlik platformu uygulamasını kullanarak mobil ve masaüstü uygulamalarınıza oturum açma ve API erişimi ekleyebilirsiniz. Bu kılavuz dilden bağımsızdır ve Azure açık kaynak kimlik doğrulama [kitaplıklarından](reference-v2-libraries.md)herhangi birini kullanmadan HTTP iletilerinin nasıl gönderilip alınılacağını açıklar.
+OAuth 2,0 yetkilendirme kodu verme, Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihaza yüklenen uygulamalarda kullanılabilir. OAuth 2,0 Microsoft Identity platform uygulamasını kullanarak, mobil ve Masaüstü uygulamalarınıza oturum açma ve API erişimi ekleyebilirsiniz. Bu kılavuz dilden bağımsızdır ve [Azure açık kaynaklı kimlik doğrulama kitaplıklarının](reference-v2-libraries.md)HIÇBIRINI kullanmadan http iletilerinin nasıl gönderileceğini ve alınacağını açıklar.
 
-Bu makalede, uygulamanızdaki protokole karşı doğrudan programlama nın nasıl yapılacağını açıklanmaktadır.  Mümkün olduğunda, [belirteçleri elde etmek ve güvenli web API'lerini aramak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)yerine desteklenen Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) kullanmanızı öneririz.  Ayrıca [MSAL kullanan örnek uygulamalara](sample-v2-code.md)da göz atın.
+Bu makalede, uygulamanızdaki protokolde doğrudan programlanın nasıl yapılacağı açıklanır.  Mümkün olduğunda, [belirteçleri edinmek ve güvenli Web API 'lerini çağırmak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)Için desteklenen Microsoft kimlik doğrulama KITAPLıKLARıNı (msal) kullanmanızı öneririz.  Ayrıca [, msal kullanan örnek uygulamalara](sample-v2-code.md)göz atın.
 
-OAuth 2.0 yetkilendirme kodu akışı, [OAuth 2.0 belirtiminin 4.1 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmıştır. [Web uygulamaları](v2-app-types.md#web-apps) ve [yerel olarak yüklenmiş uygulamalar](v2-app-types.md#mobile-and-native-apps)da dahil olmak üzere uygulama türlerinin çoğunda kimlik doğrulama ve yetkilendirme gerçekleştirmek için kullanılır. Akış, uygulamaların Microsoft kimlik platformu bitiş noktası tarafından güvence altına alınarak güvenilen kaynaklara erişmek için kullanılabilecek access_tokens güvenli bir şekilde edinmesini sağlar.
+OAuth 2,0 yetkilendirme kodu akışı, [oauth 2,0 belirtiminin 4,1 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. [Web uygulamaları](v2-app-types.md#web-apps) ve [yerel olarak yüklenen uygulamalar](v2-app-types.md#mobile-and-native-apps)dahil olmak üzere uygulama türlerinin çoğunda kimlik doğrulama ve yetkilendirme gerçekleştirmek için kullanılır. Flow, uygulamaların Microsoft Identity platform uç noktası tarafından güvenliği sağlanmış kaynaklara erişmek için kullanılabilecek access_tokens güvenli bir şekilde almasına olanak sağlar.
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
-Yüksek düzeyde, bir yerel/mobil uygulama için tüm kimlik doğrulama akışı biraz şuna benzer:
+Yüksek düzeyde, yerel/mobil uygulama için tüm kimlik doğrulama akışı şuna benzer bir bit:
 
-![OAuth Auth Kod Akışı](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
+![OAuth kimlik doğrulama kod akışı](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
-## <a name="request-an-authorization-code"></a>Yetkilendirme kodu isteme
+## <a name="request-an-authorization-code"></a>Yetkilendirme kodu iste
 
-Yetkilendirme kodu akışı, istemcinin kullanıcıyı `/authorize` bitiş noktasına yönlendirmesiyle başlar. Bu istekte, istemci `openid`kullanıcıdan `offline_access` `https://graph.microsoft.com/mail.read ` izin ve izin ister.  Bazı izinler, örneğin bir kuruluşun dizinine kullanarak veri yazmak `Directory.ReadWrite.All`gibi yönetici tarafından kısıtlanır. Uygulamanız bu izinlerden birine kuruluş kullanıcısından erişmesini isterse, kullanıcı uygulamanızın izinlerini onaylama yetkisine sahip olmadığını belirten bir hata iletisi alır. Yönetici tarafından kısıtlanmış kapsamlara erişim isteğinde bulunmak için bunları doğrudan bir şirket yöneticisinden istemeniz gerekir.  Daha fazla bilgi için [Yönetici tarafından kısıtlanmış izinleri](v2-permissions-and-consent.md#admin-restricted-permissions)okuyun.
+Yetkilendirme kodu akışı, kullanıcıyı `/authorize` uç noktaya yönlendiren istemciyle başlar. Bu istekte istemci,, ve `openid` `offline_access` `https://graph.microsoft.com/mail.read ` izinlerini kullanıcıdan ister.  Bazı izinler yönetici kısıtlanıyor, örneğin kullanarak `Directory.ReadWrite.All`bir kuruluşun dizinine veri yazma. Uygulamanız bir kuruluş kullanıcısının bu izinlerinden birine erişim isterse, kullanıcı uygulamanızın izinlerini kabul etmek için yetkilendirilmediğini bildiren bir hata iletisi alır. Yönetici kısıtlı kapsamlara erişim istemek için, bunları doğrudan bir şirket yöneticisinden istemeniz gerekir.  Daha fazla bilgi için [Yönetici kısıtlı izinleri](v2-permissions-and-consent.md#admin-restricted-permissions)okuyun.
 
 ```
 // Line breaks for legibility only
@@ -50,31 +50,31 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Bu isteği yürütmek için aşağıdaki bağlantıyı tıklayın! Oturum açmadan sonra tarayıcınız adres `https://localhost/myapp/` çubuğundaki `code` bir çubukla yeniden yönlendirilmelidir.
+> Bu isteği yürütmek için aşağıdaki bağlantıya tıklayın! Oturum açtıktan sonra, tarayıcınız adres çubuğunda bir `https://localhost/myapp/` `code` ile yeniden yönlendirilmelidir.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | Parametre    | Gerekli/isteğe bağlı | Açıklama |
 |--------------|-------------|--------------|
-| `tenant`    | gerekli    | İstek `{tenant}` yolundaki değer, uygulamada kimlerin oturum açabileceğini denetlemek için kullanılabilir. İzin verilen `common`değerler `organizations` `consumers`, , , ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için [protokol temellerine](active-directory-v2-protocols.md#endpoints)bakın.  |
-| `client_id`   | gerekli    | Azure portalı - Uygulama [kayıtlarının](https://go.microsoft.com/fwlink/?linkid=2083908) uygulamanıza atandığı **Uygulama (istemci) Kimliği.**  |
-| `response_type` | gerekli    | Yetkilendirme `code` kodu akışı için içermelidir.       |
-| `redirect_uri`  | gerekli | Uygulamanızın, kimlik doğrulama yanıtlarının uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portala kaydettiğiniz redirect_uris tam olarak biriyle eşleşmesi gerekir, ancak url'nin kodlanmış olması gerekir. Yerel & mobil uygulamalar için varsayılan değeri `https://login.microsoftonline.com/common/oauth2/nativeclient`kullanmalısınız.   |
-| `scope`  | gerekli    | Kullanıcının onay etmesini istediğiniz [kapsamların](v2-permissions-and-consent.md) alanayrılmış listesi.  İsteğin `/authorize` bacağı için bu, uygulamanızın aramak istediğiniz birden çok web API'sı için onay almasına olanak tanıyan birden çok kaynağı kapsayabilir. |
-| `response_mode`   | Önerilen | Ortaya çıkan belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Aşağıdakilerden biri olabilir:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`kodu, yeniden yönlendirme URI'nizde sorgu dize parametresi olarak sağlar. Örtük akışı kullanarak bir kimlik belirteci talep ediyorsanız, `query` [OpenID spec'te](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtildiği gibi kullanamazsınız. Sadece kodu talep ediyorsanız, `query`, `fragment`veya `form_post`. `form_post`kodu içeren bir POST'u yeniden yönlendirme URI'nize yürütür. Daha fazla bilgi için [OpenID Connect protokolüne](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)bakın.  |
-| `state`                 | Önerilen | Belirteç yanıtında da döndürülecek isteğe dahil edilen bir değer. İstediğiniz herhangi bir içerik dizisi olabilir. Rasgele oluşturulan benzersiz değer genellikle [çapraz site isteği sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Değer, kimlik doğrulama isteği oluşmadan önce kullanıcının durumu yla ilgili bilgileri de uygulamada kodlayabilir( örneğin, üzerinde oldukları sayfa veya görünüm). |
-| `prompt`  | isteğe bağlı    | Gerekli kullanıcı etkileşimi türünü gösterir. Şu anda tek geçerli `login` `none`değerler `consent`, , ve .<br/><br/>- `prompt=login`kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve tek oturum açmayı olumsuzlar.<br/>- `prompt=none`tam tersidir - kullanıcıya herhangi bir etkileşimli istemi nin sunulmamasını sağlar. İstek tek oturum açma yoluyla sessizce tamamlanamazsa, Microsoft kimlik platformu `interaction_required` bitiş noktası bir hata döndürecektir.<br/>- `prompt=consent`kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler ve kullanıcıdan uygulamaya izin vermesini ister.<br/>- `prompt=select_account`oturumda veya hatırlanan tüm hesapları listeleyen tek oturumda hesap seçimi deneyimini veya tamamen farklı bir hesap kullanmayı seçme seçeneğini kesintiye uğratır.<br/> |
-| `login_hint`  | isteğe bağlı    | Kullanıcı adını önceden biliyorsanız, oturum açma sayfasının kullanıcı adı/e-posta adresi alanını önceden doldurmak için kullanılabilir. Genellikle uygulamalar, `preferred_username` talebi kullanarak önceki bir oturum açma dan kullanıcı adını ayıklamış olan yeniden kimlik doğrulama sırasında bu parametreyi kullanır.   |
-| `domain_hint`  | isteğe bağlı    | Biri olabilir `consumers` ya `organizations`da .<br/><br/>Dahil edilirse, kullanıcının oturum açma sayfasında geçtiği e-posta tabanlı bulma işlemini atlar ve bu da biraz daha kolay laştırılmış bir kullanıcı deneyimine yol açacaktır. Uygulamalar genellikle, önceki oturum açma `tid` işlemlerinden bu parametreyi ayıklayarak yeniden kimlik doğrulaması sırasında kullanır. `tid` Talep değeri ise, `9188040d-6c67-4c5b-b112-36a304b66dad`kullanmalısınız. `domain_hint=consumers` Aksi takdirde, kullanın. `domain_hint=organizations`  |
-| `code_challenge_method` | isteğe bağlı    | `code_challenge` Parametreyi `code_verifier` kodlamak için kullanılan yöntem. Aşağıdaki değerlerden biri olabilir:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Dışlanırsa, `code_challenge` dahil edilirse düz metin `code_challenge` olarak kabul edilir. Microsoft kimlik platformu `plain` `S256`hem destekler ve . Daha fazla bilgi için [PKCE RFC'ye](https://tools.ietf.org/html/rfc7636)bakın. |
-| `code_challenge`  | isteğe bağlı | Yerel bir istemciden Proof Key for Code Exchange (PKCE) aracılığıyla yetkilendirme kodu hibelerini güvence altına almak için kullanılır. Dahil `code_challenge_method` edilirse gereklidir. Daha fazla bilgi için [PKCE RFC'ye](https://tools.ietf.org/html/rfc7636)bakın. |
+| `tenant`    | gerekli    | İsteğin `{tenant}` yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common`, `organizations`ve `consumers`kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
+| `client_id`   | gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** .  |
+| `response_type` | gerekli    | , Yetkilendirme `code` kodu akışı için içermelidir.       |
+| `redirect_uri`  | gerekli | Uygulamanızın, kimlik doğrulama yanıtlarının sizin uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz redirect_uris biriyle tam olarak eşleşmesi gerekir. Yerel & mobil uygulamalar için varsayılan değerini kullanmanız gerekir `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
+| `scope`  | gerekli    | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  İsteğin `/authorize` bacağı, bu birden fazla kaynağı kapsayabilir ve uygulamanızın çağırmak istediğiniz birden çok Web API 'si için onay almasını sağlar. |
+| `response_mode`   | Önerilen | Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Aşağıdakilerden biri olabilir:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`kodu, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde `query` kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız, veya `query` `fragment` `form_post`kullanabilirsiniz. `form_post`yeniden yönlendirme URI 'nize kod içeren bir GÖNDERI yürütür. Daha fazla bilgi için bkz. [OpenID Connect Protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
+| `state`                 | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Bu değer Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, kimlik doğrulama isteği gerçekleştirilmeden önce (örneğin, bulunan sayfa veya Görünüm) kodlayabilir. |
+| `prompt`  | isteğe bağlı    | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler, `login` `none`ve `consent`' dir.<br/><br/>- `prompt=login`, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma 'yı yok eder.<br/>- `prompt=none`Bunun tersi, kullanıcının herhangi bir etkileşimli istem ile sunulmayacağını garanti eder. İstek, tek oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir `interaction_required` hata döndürür.<br/>- `prompt=consent`Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler, böylece kullanıcıdan uygulamaya izin vermesini istenir.<br/>- `prompt=select_account`, oturum veya herhangi bir anımsanan hesap ya da başka bir hesap kullanmayı tamamen seçmek için bir seçenek veya herhangi bir hatırlanan hesap seçim deneyimi sunan çoklu oturum açmayı kesintiye uğratacaktır.<br/> |
+| `login_hint`  | isteğe bağlı    | Kullanıcı adının bir süre önce bilinerek Kullanıcı için oturum açma sayfasının Kullanıcı adı/e-posta adresi alanını önceden doldurmanız için kullanılabilir. Genellikle uygulamalar bu parametreyi yeniden kimlik doğrulama sırasında kullanır ve Kullanıcı adını, `preferred_username` talebi kullanarak önceki bir oturum açma işleminden zaten ayıklamış olur.   |
+| `domain_hint`  | isteğe bağlı    | `consumers` Veya `organizations`bunlardan biri olabilir.<br/><br/>Dahil edilse, kullanıcının oturum açma sayfasında, daha kolay bir kullanıcı deneyimi için önde gelen e-posta tabanlı bulma işlemini atlar. Genellikle uygulamalar, önceki bir oturum açma `tid` işleminden çıkartarak bu parametreyi yeniden kimlik doğrulama sırasında kullanacaktır. `tid` Talep değeri ise `9188040d-6c67-4c5b-b112-36a304b66dad`, kullanmanız `domain_hint=consumers`gerekir. Aksi takdirde, `domain_hint=organizations`kullanın.  |
+| `code_challenge_method` | isteğe bağlı    | `code_challenge` Parametresi `code_verifier` için öğesini kodlamak için kullanılan yöntem. Aşağıdaki değerlerden biri olabilir:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Dışlanmazsa, `code_challenge` varsa düz metin `code_challenge` olarak kabul edilir. Microsoft Identity platform hem hem `plain` de `S256`destekler. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
+| `code_challenge`  | isteğe bağlı | Yerel bir istemciden kod değişimi (PKCE) için kanıt anahtarı aracılığıyla yetkilendirme kodu yetkisini güvenli hale getirmek için kullanılır. `code_challenge_method` Dahil ise gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
 
-Bu noktada, kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft kimlik platformu bitiş noktası, kullanıcının `scope` sorgu parametresinde belirtilen izinleri kabul etmesini de sağlar. Kullanıcı bu izinlerden herhangi birini kabul etmediyse, kullanıcıdan gerekli izinleri onaylamasını ister. [İzinlerin, izinlerin ve çok kiracılı uygulamaların ayrıntıları burada verilmiştir.](v2-permissions-and-consent.md)
+Bu noktada, kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platform uç noktası ayrıca kullanıcının `scope` sorgu parametresinde belirtilen izinlere onay aldığından emin olur. Kullanıcı bu izinlerden herhangi birine onay vermediyseniz, kullanıcıdan gerekli izinleri onaylaması istenir. [İzinlerin, izin ve çok kiracılı uygulamaların ayrıntıları burada verilmiştir](v2-permissions-and-consent.md).
 
-Kullanıcı kimlik doğrulaması yaptıktan ve onay verdikten sonra, Microsoft kimlik platformu bitiş `redirect_uri` `response_mode` noktası, parametrede belirtilen yöntemi kullanarak belirtilen uygulamanıza bir yanıt döndürür.
+Kullanıcı kimlik doğrulamasından ve izin verdiğinde, Microsoft Identity platform uç noktası, `redirect_uri` `response_mode` parametresinde belirtilen yöntemi kullanarak, belirtilen şekilde uygulamanıza bir yanıt döndürür.
 
 #### <a name="successful-response"></a>Başarılı yanıt
 
-Başarılı bir `response_mode=query` yanıt kullanarak gibi görünüyor:
+Kullanarak `response_mode=query` başarılı bir yanıt şöyle görünür:
 
 ```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
@@ -84,12 +84,12 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 | Parametre | Açıklama  |
 |-----------|--------------|
-| `code` | Uygulamanın istediği authorization_code. Uygulama, hedef kaynak için bir erişim jetonu istemek için yetkilendirme kodunu kullanabilir. Authorization_codes kısa ömürlüdür, genellikle yaklaşık 10 dakika sonra sona erer. |
-| `state` | İsteğe bir durum parametresi dahil edilirse, yanıtta aynı değer in görünmesi gerekir. Uygulama, istek ve yanıttaki durum değerlerinin aynı olduğunu doğrulamalıdır. |
+| `code` | Uygulamanın istediği authorization_code. Uygulama, hedef kaynak için bir erişim belirteci istemek üzere yetkilendirme kodunu kullanabilir. Authorization_codes kısa süreli, genellikle yaklaşık 10 dakika sonra süresi dolacak. |
+| `state` | İsteğe bir durum parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta durum değerlerinin özdeş olduğunu doğrulamalıdır. |
 
 #### <a name="error-response"></a>Hata yanıtı
 
-Hata yanıtları, uygulamanın `redirect_uri` bunları uygun şekilde işleyebilmeleri için de gönderilebilir:
+Ayrıca, `redirect_uri` uygulamanın bunları uygun şekilde işleyebilmesi için hata yanıtları da gönderilebilir.
 
 ```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
@@ -99,28 +99,28 @@ error=access_denied
 
 | Parametre | Açıklama  |
 |----------|------------------|
-| `error`  | Oluşan hata türlerini sınıflandırmak için kullanılabilecek ve hatalara tepki vermek için kullanılabilecek bir hata kodu dizesi. |
-| `error_description` | Bir geliştiricinin kimlik doğrulama hatasının temel nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi. |
+| `error`  | Oluşan hata türlerini sınıflandırmak için kullanılabilen ve hatalara yanıt vermek için kullanılabilen bir hata kodu dizesi. |
+| `error_description` | Bir geliştiricinin kimlik doğrulama hatasının kök nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi. |
 
-#### <a name="error-codes-for-authorization-endpoint-errors"></a>Yetkilendirme bitiş noktası hataları için hata kodları
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>Yetkilendirme uç noktası hataları için hata kodları
 
-Aşağıdaki tabloda hata yanıtı `error` parametresi döndürülebilir çeşitli hata kodları açıklanır.
+Aşağıdaki tabloda, hata yanıtının `error` parametresinde döndürülebilecek çeşitli hata kodları açıklanmaktadır.
 
-| Hata Kodu  | Açıklama    | İstemci Eylemi   |
+| Hata Kodu  | Açıklama    | İstemci eylemi   |
 |-------------|----------------|-----------------|
-| `invalid_request` | Eksik gerekli parametre gibi protokol hatası. | İsteği düzeltin ve yeniden gönderin. Bu genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır. |
-| `unauthorized_client` | İstemci uygulamasının yetkilendirme kodu istemesine izin verilmez. | Bu hata genellikle istemci uygulaması Azure AD'de kayıtlı değilse veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama, kullanıcıdan uygulamayı yüklemesi ve Azure AD'ye eklemesi için talimat isteyebilir. |
-| `access_denied`  | Kaynak sahibi nin rızası reddedildi  | İstemci uygulaması, kullanıcı izin vermedikçe devam edilemeyecek kullanıcıya bildirebilir. |
-| `unsupported_response_type` | Yetkilendirme sunucusu istekteki yanıt türünü desteklemez. | İsteği düzeltin ve yeniden gönderin. Bu genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır.  |
-| `server_error`  | Sunucu beklenmeyen bir hatayla karşılaştı.| İsteği yeniden deneyin. Bu hatalar geçici koşullardan kaynaklanabilir. İstemci uygulaması kullanıcıya yanıtının geçici bir hata nedeniyle geciktiğini açıklayabilir. |
-| `temporarily_unavailable`   | Sunucu geçici olarak isteği işlemek için çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtının geciktiğini kullanıcıya açıklayabilir. |
-| `invalid_resource`  | Hedef kaynak yok, Azure AD bulamadığı veya doğru şekilde yapılandırılamadığı için geçersizdir. | Bu hata, varsa kaynağın kiracıda yapılandırılmadığını gösterir. Uygulama, kullanıcıdan uygulamayı yüklemesi ve Azure AD'ye eklemesi için talimat isteyebilir. |
-| `login_required` | Çok fazla veya hiç kullanıcı bulunamadı | İstemci sessiz kimlik`prompt=none`doğrulaması istedi ( ), ancak tek bir kullanıcı bulunamadı. Bu, oturumda etkin olan veya kullanıcı olmayan birden çok kullanıcı olduğu anlamına gelebilir. Bu, seçilen kiracıyı dikkate alır (örneğin, iki Azure AD hesabı etkin `consumers` ve bir Microsoft hesabı varsa ve seçilirse, sessiz kimlik doğrulaması çalışır). |
-| `interaction_required` | İstek kullanıcı etkileşimi gerektirir. | Ek bir kimlik doğrulama adımı veya onayı gereklidir. İsteği olmadan `prompt=none`yeniden deneyin. |
+| `invalid_request` | Eksik gerekli bir parametre gibi protokol hatası. | İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır. |
+| `unauthorized_client` | İstemci uygulamasının bir yetkilendirme kodu istemesine izin verilmez. | Bu hata genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
+| `access_denied`  | Kaynak sahibi reddedildi onayı  | İstemci uygulaması, kullanıcıya Kullanıcı tarafından bağlanmadığı takdirde devam edemediği konusunda bildirimde bulunabilir. |
+| `unsupported_response_type` | Yetkilendirme sunucusu istekteki yanıt türünü desteklemiyor. | İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır.  |
+| `server_error`  | Sunucu beklenmeyen bir hatayla karşılaştı.| İsteği yeniden deneyin. Bu hatalar geçici koşullardan kaynaklanabilir. İstemci uygulaması, yanıtı geçici bir hataya geciktiğinde kullanıcıya açıklayabilir. |
+| `temporarily_unavailable`   | Sunucu, isteği işlemek için geçici olarak çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtı geciktirildiği kullanıcıya açıklanmayabilir. |
+| `invalid_resource`  | Hedef kaynak geçersiz, çünkü mevcut değil, Azure AD bu dosyayı bulamıyor veya doğru şekilde yapılandırılmamış. | Bu hata, varsa kaynağın kiracıda yapılandırılmamış olduğunu gösterir. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
+| `login_required` | Çok fazla veya hiç Kullanıcı bulunamadı | İstemci sessiz kimlik doğrulaması (`prompt=none`) istedi, ancak tek bir Kullanıcı bulunamadı. Bu, oturumda etkin olan veya Kullanıcı olmayan birden çok kullanıcı olduğu anlamına gelebilir. Bu, kiracının seçtiği hesabı alır (örneğin, iki Azure AD hesabı etkin ve bir Microsoft hesabı ve `consumers` seçilirse, sessiz kimlik doğrulama çalışır). |
+| `interaction_required` | İstek, Kullanıcı etkileşimi gerektirir. | Ek bir kimlik doğrulama adımı veya onayı gerekir. İsteği olmadan `prompt=none`yeniden deneyin. |
 
-## <a name="request-an-access-token"></a>Erişim jetonu isteme
+## <a name="request-an-access-token"></a>Erişim belirteci isteme
 
-Artık bir authorization_code edindiğinize ve kullanıcı tarafından izin aldığınıza `code` göre, `access_token` istediğiniz kaynak için kullanabilirsiniz. Bunu, bitiş `POST` noktasına bir istek göndererek yapın: `/token`
+Artık bir authorization_code edindiniz ve Kullanıcı tarafından izin verildiğinden, `code` için `access_token` öğesini istenen kaynak için kullanabilirsiniz. `/token` Uç noktaya bir `POST` istek göndererek bunu yapın:
 
 ```HTTP
 // Line breaks for legibility only
@@ -138,22 +138,22 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Postacı bu isteği yürütmeyi deneyin! (Değiştirmeyi unutmayın `code`) [Postacı'da bu isteği çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Bu isteği Postman 'da yürütmeyi deneyin! (Değiştirmeyi unutmayın `code`) [Bu isteği Postman 'da çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 | Parametre  | Gerekli/isteğe bağlı | Açıklama     |
 |------------|-------------------|----------------|
-| `tenant`   | gerekli   | İstek `{tenant}` yolundaki değer, uygulamada kimlerin oturum açabileceğini denetlemek için kullanılabilir. İzin verilen `common`değerler `organizations` `consumers`, , , ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için [protokol temellerine](active-directory-v2-protocols.md#endpoints)bakın.  |
-| `client_id` | gerekli  | Uygulama (istemci) kimliği, [Azure portalı – Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atanır. |
-| `grant_type` | gerekli   | Yetkilendirme `authorization_code` kodu akışı için olmalıdır.   |
-| `scope`      | gerekli   | Alan ayrılmış kapsamlistesi. Bu bacakta istenen kapsamlar, ilk bacakta istenen kapsamların bir alt kümesine veya bir alt kümesine eşdeğer olmalıdır. Kapsamların tümü, OIDC kapsamları ile birlikte tek`profile`bir `openid` `email`kaynaktan olmalıdır ( , , . Kapsamların daha ayrıntılı bir açıklaması için [izinlere, onaya ve kapsamlara](v2-permissions-and-consent.md)bakın. |
-| `code`          | gerekli  | Akışın ilk ayağında elde ettiğiniz authorization_code. |
-| `redirect_uri`  | gerekli  | authorization_code elde etmek için kullanılan aynı redirect_uri değeri. |
-| `client_secret` | web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama sırrı. client_secrets cihazlarda güvenilir bir şekilde depolanamayacağından, uygulama sırrını yerel bir uygulamada kullanmamalısınız. Client_secret sunucu tarafında güvenli bir şekilde depolama olan web uygulamaları ve web API'leri için gereklidir.  İstemci sırrı gönderilmeden önce URL kodlanmış olmalıdır. Daha fazla bilgi için [buraya](https://tools.ietf.org/html/rfc3986#page-12)tıklayın. |
-| `code_verifier` | isteğe bağlı  | Authorization_code elde etmek için kullanılan aynı code_verifier. Yetki kodu hibe isteğinde PKCE kullanılıyorsa gereklidir. Daha fazla bilgi için [PKCE RFC'ye](https://tools.ietf.org/html/rfc7636)bakın. |
+| `tenant`   | gerekli   | İsteğin `{tenant}` yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common`, `organizations`ve `consumers`kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
+| `client_id` | gerekli  | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atandığı uygulama (ISTEMCI) kimliği. |
+| `grant_type` | gerekli   | , Yetkilendirme `authorization_code` kodu akışı için olmalıdır.   |
+| `scope`      | gerekli   | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, ilk Bata istenen kapsamların alt kümesiyle veya buna eşit olmalıdır. Kapsamların tümü tek bir kaynaktan olmalıdır ve OıDC kapsamları (`profile`, `openid`, `email`) ile birlikte. Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
+| `code`          | gerekli  | Akışın ilk Bata elde ettiğiniz authorization_code. |
+| `redirect_uri`  | gerekli  | Authorization_code elde etmek için kullanılan aynı redirect_uri değeri. |
+| `client_secret` | Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets cihazlarda güvenilir bir şekilde depolanamadığı için, yerel bir uygulamada uygulama gizli anahtarını kullanmamanız gerekir. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir.  İstemci parolası gönderilmeden önce URL kodlamalı olmalıdır. Daha fazla bilgi için [buraya](https://tools.ietf.org/html/rfc3986#page-12)tıklayın. |
+| `code_verifier` | isteğe bağlı  | Authorization_code elde etmek için kullanılan aynı code_verifier. Yetkilendirme kodu verme isteğinde PKCE kullanılmışsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Başarılı yanıt
 
-Başarılı bir belirteç yanıtı gibi görünecektir:
+Başarılı bir belirteç yanıtı şöyle görünür:
 
 ```json
 {
@@ -168,16 +168,16 @@ Başarılı bir belirteç yanıtı gibi görünecektir:
 
 | Parametre     | Açıklama   |
 |---------------|------------------------------|
-| `access_token`  | İstenen erişim jetonu. Uygulama, web API gibi güvenli kaynağa kimlik doğrulamak için bu belirteci kullanabilir.  |
-| `token_type`    | Belirteç türü değerini gösterir. Azure AD'nin desteklediği tek tür Taşıyıcıdır |
-| `expires_in`    | Erişim belirteci nin ne kadar süre geçerli olduğu (saniye cinsinden). |
-| `scope`         | access_token için geçerli olan kapsamlar. |
-| `refresh_token` | Bir OAuth 2.0 yenileme belirteci. Uygulama, geçerli erişim belirteci süresi dolduktan sonra ek erişim belirteçleri edinme bu belirteci kullanabilirsiniz. Refresh_tokens uzun ömürlüdür ve uzun süre kaynaklara erişimi korumak için kullanılabilir. Erişim belirteci yenileme hakkında daha fazla ayrıntı için [aşağıdaki bölüme](#refresh-the-access-token)bakın. <br> **Not:** Yalnızca kapsam `offline_access` isteniyorsa sağlanır. |
-| `id_token`      | Bir JSON Web Belirteci (JWT). Uygulama, oturum giren kullanıcı hakkında bilgi istemek için bu belirteç segmentlerinin şifresini çözebilir. Uygulama değerleri önbelleğe alabilir ve görüntüleyebilir, ancak herhangi bir yetkilendirme veya güvenlik sınırları için bunlara güvenmemelidir. id_tokens hakkında daha fazla [`id_token reference`](id-tokens.md)bilgi için bkz. <br> **Not:** Yalnızca kapsam `openid` isteniyorsa sağlanır. |
+| `access_token`  | İstenen erişim belirteci. Uygulama, bir Web API 'SI gibi güvenli kaynak üzerinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.  |
+| `token_type`    | Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür taşıyıcı |
+| `expires_in`    | Erişim belirtecinin geçerli olduğu süre (saniye cinsinden). |
+| `scope`         | Access_token için geçerli olan kapsamlar. |
+| `refresh_token` | Bir OAuth 2,0 yenileme belirteci. Uygulama bu belirteci kullanabilir ve geçerli erişim belirtecinin süresi dolduktan sonra ek erişim belirteçleri elde edebilir. Refresh_tokens uzun ömürlü ve uzun süre boyunca kaynaklara erişimi sürdürmek için kullanılabilir. Erişim belirtecini yenileme hakkında daha fazla ayrıntı için [aşağıdaki bölüme](#refresh-the-access-token)bakın. <br> **Note:** Yalnızca `offline_access` kapsam isteniyorsa sağlandı. |
+| `id_token`      | Bir JSON Web Token (JWT). Uygulama, oturum açan kullanıcı hakkında bilgi istemek için bu belirtecin segmentlerinin kodunu çözebilir. Uygulama değerleri önbelleğe alabilir ve görüntüleyebilir, ancak herhangi bir yetkilendirme veya güvenlik sınırları için bu değere dayanmamalıdır. İd_tokens hakkında daha fazla bilgi için bkz [`id_token reference`](id-tokens.md).. <br> **Note:** Yalnızca `openid` kapsam isteniyorsa sağlandı. |
 
 ### <a name="error-response"></a>Hata yanıtı
 
-Hata yanıtları gibi görünecektir:
+Hata yanıtları şöyle görünür:
 
 ```json
 {
@@ -194,32 +194,32 @@ Hata yanıtları gibi görünecektir:
 
 | Parametre         | Açıklama    |
 |-------------------|----------------|
-| `error`       | Oluşan hata türlerini sınıflandırmak için kullanılabilecek ve hatalara tepki vermek için kullanılabilecek bir hata kodu dizesi. |
-| `error_description` | Bir geliştiricinin kimlik doğrulama hatasının temel nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi. |
-| `error_codes` | Tanılamada yardımcı olabilecek STS'ye özgü hata kodlarının listesi.  |
-| `timestamp`   | Hatanın oluştuğu saat. |
+| `error`       | Oluşan hata türlerini sınıflandırmak için kullanılabilen ve hatalara yanıt vermek için kullanılabilen bir hata kodu dizesi. |
+| `error_description` | Bir geliştiricinin kimlik doğrulama hatasının kök nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi. |
+| `error_codes` | Tanılamada yardımcı olabilecek STS 'ye özgü hata kodlarının bir listesi.  |
+| `timestamp`   | Hatanın oluştuğu zaman. |
 | `trace_id`    | Tanılamada yardımcı olabilecek istek için benzersiz bir tanımlayıcı. |
-| `correlation_id` | Bileşenler arasında tanılamada yardımcı olabilecek istek için benzersiz bir tanımlayıcı. |
+| `correlation_id` | İsteğe ait, bileşenler genelinde tanılamada yardımcı olabilecek benzersiz bir tanımlayıcı. |
 
-### <a name="error-codes-for-token-endpoint-errors"></a>Belirteç bitiş noktası hataları için hata kodları
+### <a name="error-codes-for-token-endpoint-errors"></a>Belirteç uç noktası hataları için hata kodları
 
-| Hata Kodu         | Açıklama        | İstemci Eylemi    |
+| Hata Kodu         | Açıklama        | İstemci eylemi    |
 |--------------------|--------------------|------------------|
-| `invalid_request`  | Eksik gerekli parametre gibi protokol hatası. | İsteği düzeltme ve yeniden gönderme   |
-| `invalid_grant`    | Yetkilendirme kodu veya PKCE kod doğrulayıcısı geçersiz veya süresi dolmuş. | `/authorize` Bitiş noktasına yeni bir istek deneyin ve code_verifier parametresinin doğru olduğunu doğrulayın.  |
-| `unauthorized_client` | Kimliği doğrulanan istemci, bu yetkilendirme hibe türünü kullanma yetkisine izin vermez. | Bu genellikle istemci uygulaması Azure AD'de kayıtlı değilse veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama, kullanıcıdan uygulamayı yüklemesi ve Azure AD'ye eklemesi için talimat isteyebilir. |
-| `invalid_client` | İstem kimlik doğrulaması başarısız oldu.  | İstemci kimlik bilgileri geçerli değil. Düzeltmek için, uygulama yöneticisi kimlik bilgilerini güncelleştirir.   |
-| `unsupported_grant_type` | Yetkilendirme sunucusu yetkilendirme hibe türünü desteklemez. | İstekteki hibe türünü değiştirin. Bu tür hatalar yalnızca geliştirme sırasında ortaya çıkmalıdır ve ilk sınama sırasında algılanmalıdır. |
-| `invalid_resource` | Hedef kaynak yok, Azure AD bulamadığı veya doğru şekilde yapılandırılamadığı için geçersizdir. | Bu, varsa kaynağın kiracıda yapılandırılmadığını gösterir. Uygulama, kullanıcıdan uygulamayı yüklemesi ve Azure AD'ye eklemesi için talimat isteyebilir.  |
-| `interaction_required` | İstek kullanıcı etkileşimi gerektirir. Örneğin, ek bir kimlik doğrulama adımı gereklidir. | İsteği aynı kaynakla yeniden deneyin.  |
-| `temporarily_unavailable` | Sunucu geçici olarak isteği işlemek için çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtının geciktiğini kullanıcıya açıklayabilir. |
+| `invalid_request`  | Eksik gerekli bir parametre gibi protokol hatası. | İsteği onarın ve yeniden gönderin   |
+| `invalid_grant`    | Yetkilendirme kodu veya PKCE kod doğrulayıcısı geçersiz veya süresi doldu. | `/authorize` Uç noktaya yeni bir istek deneyin ve code_verifier parametresinin doğru olduğunu doğrulayın.  |
+| `unauthorized_client` | Kimliği doğrulanmış istemci, bu yetkilendirme verme türünü kullanma yetkisine sahip değil. | Bu durum genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
+| `invalid_client` | İstemci kimlik doğrulaması başarısız oldu.  | İstemci kimlik bilgileri geçerli değil. Bu uygulamayı onarmak için, uygulama Yöneticisi kimlik bilgilerini güncelleştirir.   |
+| `unsupported_grant_type` | Yetkilendirme sunucusu yetkilendirme verme türünü desteklemiyor. | İstekteki izin türünü değiştirin. Bu tür bir hata yalnızca geliştirme sırasında ve ilk test sırasında algılanarak gerçekleştirilmelidir. |
+| `invalid_resource` | Hedef kaynak geçersiz, çünkü mevcut değil, Azure AD bu dosyayı bulamıyor veya doğru şekilde yapılandırılmamış. | Bu, varsa kaynağın kiracıda yapılandırılmamış olduğunu gösterir. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir.  |
+| `interaction_required` | İstek, Kullanıcı etkileşimi gerektirir. Örneğin, ek bir kimlik doğrulama adımı gereklidir. | Aynı kaynakla isteği yeniden deneyin.  |
+| `temporarily_unavailable` | Sunucu, isteği işlemek için geçici olarak çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtı geciktirildiği kullanıcıya açıklanmayabilir. |
 
-## <a name="use-the-access-token"></a>Erişim belirteci kullanma
+## <a name="use-the-access-token"></a>Erişim belirtecini kullanma
 
-Artık başarılı bir şekilde bir `access_token`, `Authorization` üstbilgi de ekleyerek web API'lerine isteklerde belirteç kullanabilirsiniz:
+Artık başarıyla edindiniz `access_token`, bu API 'yi `Authorization` üstbilgiye dahil ederek Web API 'lerine yönelik isteklerde kullanabilirsiniz:
 
 > [!TIP]
-> Postacı bu isteği yürütmek! (Önce `Authorization` üstbilgi değiştir) [Postacı'da bu isteği çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Bu isteği Postman 'da yürütün! (İlk `Authorization` üstbilgiyi değiştir) [Bu isteği Postman 'da çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```HTTP
 GET /v1.0/me/messages
@@ -227,13 +227,13 @@ Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="refresh-the-access-token"></a>Erişim belirteciyenileme
+## <a name="refresh-the-access-token"></a>Erişim belirtecini Yenile
 
-Access_tokens kısa ömürlüdür ve kaynaklara erişmeye devam etmek için süresi dolduktan sonra bunları yenilemeniz gerekir. Bunu, bitiş noktasına başka `POST` bir istek göndererek yapabilirsiniz, `refresh_token` bu kez yerine sağlayan `code` `/token`  Yenileme belirteçleri, istemcinizin zaten onay aldığı tüm izinler için geçerlidir - `scope=mail.read` bu nedenle, bir istek üzerine `scope=api://contoso.com/api/UseResource`verilen bir yenileme belirteci için yeni bir erişim belirteci istemek için kullanılabilir.
+Access_tokens kısa ömürlü ve kaynaklara erişmeye devam etmek için süreleri dolduktan sonra yenilemeniz gerekir. `POST` Bunu, `/token` uç noktasına `refresh_token` başka bir istek göndererek yapabilirsiniz `code`.  Yenileme belirteçleri, istemcinizin zaten onay aldığı tüm izinler için geçerlidir. bu nedenle, için bir istekte `scope=mail.read` verilen yenileme belirteci için `scope=api://contoso.com/api/UseResource`yeni bir erişim belirteci istemek üzere kullanılabilir.
 
-Belirteçleri yenilemenin belirli kullanım ömürleri yoktur. Genellikle, yenileme belirteçleri yaşam sürelerini nispeten uzun. Ancak, bazı durumlarda, yenileme belirteçleri sona erer, iptal edilir veya istenen eylem için yeterli ayrıcalıkları yoksun. Uygulamanızın [belirteç verme bitiş noktası tarafından döndürülen hataları](#error-codes-for-token-endpoint-errors) doğru şekilde beklemesi ve işlemesi gerekir.
+Yenileme belirteçlerinin belirtilen ömürleri yok. Genellikle, yenileme belirteçlerinin yaşam süreleri nispeten uzundur. Ancak, bazı durumlarda belirteçleri yenileme süre sonu, iptal etme veya istenen eylem için yeterli ayrıcalıklara sahip değil. Uygulamanızın [belirteç verme uç noktası tarafından döndürülen hataları](#error-codes-for-token-endpoint-errors) beklemesi ve işlemesi gerekir.
 
-Yeni erişim belirteçleri elde etmek için kullanıldığında yeni belirteçleri iptal olmasa da, eski yenileme belirtecisini atmanız beklenir. [OAuth 2.0 spec](https://tools.ietf.org/html/rfc6749#section-6) diyor ki: "Yetkilendirme sunucusu MAY, bu durumda istemci eski yenileme belirteci atmak ve yeni yenileme belirteci ile değiştirmek gerekir yeni bir yenileme belirteci sorunu. Yetkilendirme sunucusu, istemciye yeni bir yenileme belirteci verdikten sonra eski yenileme belirteci iptal edebilir."
+Yeni erişim belirteçleri elde etmek için kullanıldığında yenileme belirteçleri iptal edilmese de, eski yenileme belirtecini atmayı bekliyorcaksınız. [OAuth 2,0 belirtimi](https://tools.ietf.org/html/rfc6749#section-6) şöyle diyor: "yetkilendirme sunucusu yeni bir yenileme belirteci verebilir, bu durumda istemcinin eski yenileme belirtecini atılması ve yeni yenileme belirteci Ile değiştirmeniz gerekir. Yetkilendirme sunucusu, istemciye yeni bir yenileme belirteci gönderdikten sonra eski yenileme belirtecini iptal edebılır. "
 
 ```HTTP
 // Line breaks for legibility only
@@ -250,21 +250,21 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Postacı bu isteği yürütmeyi deneyin! (Değiştirmeyi unutmayın `refresh_token`) [Postacı'da bu isteği çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Bu isteği Postman 'da yürütmeyi deneyin! (Değiştirmeyi unutmayın `refresh_token`) [Bu isteği Postman 'da çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
 | Parametre     |                | Açıklama        |
 |---------------|----------------|--------------------|
-| `tenant`        | gerekli     | İstek `{tenant}` yolundaki değer, uygulamada kimlerin oturum açabileceğini denetlemek için kullanılabilir. İzin verilen `common`değerler `organizations` `consumers`, , , ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için [protokol temellerine](active-directory-v2-protocols.md#endpoints)bakın.   |
-| `client_id`     | gerekli    | Azure portalı - Uygulama [kayıtlarının](https://go.microsoft.com/fwlink/?linkid=2083908) uygulamanıza atandığı **Uygulama (istemci) Kimliği.** |
-| `grant_type`    | gerekli    | Yetkilendirme `refresh_token` kodu akışının bu ayağı için olmalı. |
-| `scope`         | gerekli    | Alan ayrılmış kapsamlistesi. Bu bacakta istenen kapsamlar, özgün authorization_code istek bacağında istenen kapsamların bir alt kümesine veya bir alt kümesine eşdeğer olmalıdır. Bu istekte belirtilen kapsamlar birden çok kaynak sunucusuna yayılıyorsa, Microsoft kimlik platformu bitiş noktası ilk kapsamda belirtilen kaynak için bir belirteç döndürecektir. Kapsamların daha ayrıntılı bir açıklaması için [izinlere, onaya ve kapsamlara](v2-permissions-and-consent.md)bakın. |
-| `refresh_token` | gerekli    | Akıntının ikinci ayağında elde refresh_token. |
-| `client_secret` | web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama sırrı. client_secrets cihazlarda güvenilir bir şekilde depolanamayacağından, yerel bir uygulamada kullanılmamalıdır. Client_secret sunucu tarafında güvenli bir şekilde depolama olan web uygulamaları ve web API'leri için gereklidir. Bu gizli URL-Kodlanmış olması gerekir, daha fazla bilgi için [buraya](https://tools.ietf.org/html/rfc3986#page-12)tıklayın. |
+| `tenant`        | gerekli     | İsteğin `{tenant}` yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common`, `organizations`ve `consumers`kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).   |
+| `client_id`     | gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `grant_type`    | gerekli    | Yetkilendirme kodu `refresh_token` akışının bu bacağı için olmalıdır. |
+| `scope`         | gerekli    | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, özgün authorization_code isteği balarında istenen kapsamların bir alt kümesiyle eşit olmalıdır. Bu istekte belirtilen kapsamlar birden çok kaynak sunucusuna yayılsa, Microsoft Identity platform uç noktası ilk kapsamda belirtilen kaynak için bir belirteç döndürür. Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
+| `refresh_token` | gerekli    | Akışın ikinci Bada elde ettiğiniz refresh_token. |
+| `client_secret` | Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets, cihazlarda güvenilir bir şekilde depolanamadığı için yerel bir uygulamada kullanılmamalıdır. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir. Bu parolanın URL kodlamalı olması gerekir, daha fazla bilgi için [buraya](https://tools.ietf.org/html/rfc3986#page-12)tıklayın. |
 
 #### <a name="successful-response"></a>Başarılı yanıt
 
-Başarılı bir belirteç yanıtı gibi görünecektir:
+Başarılı bir belirteç yanıtı şöyle görünür:
 
 ```json
 {
@@ -279,12 +279,12 @@ Başarılı bir belirteç yanıtı gibi görünecektir:
 
 | Parametre     | Açıklama         |
 |---------------|-------------------------------------------------------------|
-| `access_token`  | İstenen erişim jetonu. Uygulama, web API gibi güvenli kaynağa kimlik doğrulamak için bu belirteci kullanabilir. |
-| `token_type`    | Belirteç türü değerini gösterir. Azure AD'nin desteklediği tek tür Taşıyıcıdır |
-| `expires_in`    | Erişim belirteci nin ne kadar süre geçerli olduğu (saniye cinsinden).   |
-| `scope`         | access_token için geçerli olan kapsamlar.    |
-| `refresh_token` | Yeni bir OAuth 2.0 yenileme belirteci. Yenileme belirteçlerinizin mümkün olduğunca uzun süre geçerli kalmasını sağlamak için eski yenileme belirteciyle yeni alınan bu yenileme belirteciyle değiştirmelisiniz. <br> **Not:** Yalnızca kapsam `offline_access` isteniyorsa sağlanır.|
-| `id_token`      | İmzasız Bir JSON Web Belirteci (JWT). Uygulama, oturum giren kullanıcı hakkında bilgi istemek için bu belirteç segmentlerinin şifresini çözebilir. Uygulama değerleri önbelleğe alabilir ve görüntüleyebilir, ancak herhangi bir yetkilendirme veya güvenlik sınırları için bunlara güvenmemelidir. id_tokens hakkında daha fazla [`id_token reference`](id-tokens.md)bilgi için bkz. <br> **Not:** Yalnızca kapsam `openid` isteniyorsa sağlanır. |
+| `access_token`  | İstenen erişim belirteci. Uygulama, bir Web API 'SI gibi güvenli kaynak üzerinde kimlik doğrulaması yapmak için bu belirteci kullanabilir. |
+| `token_type`    | Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür taşıyıcı |
+| `expires_in`    | Erişim belirtecinin geçerli olduğu süre (saniye cinsinden).   |
+| `scope`         | Access_token için geçerli olan kapsamlar.    |
+| `refresh_token` | Yeni bir OAuth 2,0 yenileme belirteci. Yenileme belirteçlerinizin mümkün olduğunca geçerli kalmasını sağlamak için eski yenileme belirtecini bu yeni alınan yenileme belirteciyle değiştirmelisiniz. <br> **Note:** Yalnızca `offline_access` kapsam isteniyorsa sağlandı.|
+| `id_token`      | İşaretsiz bir JSON Web Token (JWT). Uygulama, oturum açan kullanıcı hakkında bilgi istemek için bu belirtecin segmentlerinin kodunu çözebilir. Uygulama değerleri önbelleğe alabilir ve görüntüleyebilir, ancak herhangi bir yetkilendirme veya güvenlik sınırları için bu değere dayanmamalıdır. İd_tokens hakkında daha fazla bilgi için bkz [`id_token reference`](id-tokens.md).. <br> **Note:** Yalnızca `openid` kapsam isteniyorsa sağlandı. |
 
 #### <a name="error-response"></a>Hata yanıtı
 
@@ -303,11 +303,11 @@ Başarılı bir belirteç yanıtı gibi görünecektir:
 
 | Parametre         | Açıklama                                                                                        |
 |-------------------|----------------------------------------------------------------------------------------------------|
-| `error`           | Oluşan hata türlerini sınıflandırmak için kullanılabilecek ve hatalara tepki vermek için kullanılabilecek bir hata kodu dizesi. |
-| `error_description` | Bir geliştiricinin kimlik doğrulama hatasının temel nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi.           |
-| `error_codes` |Tanılamada yardımcı olabilecek STS'ye özgü hata kodlarının listesi. |
-| `timestamp` | Hatanın oluştuğu saat. |
+| `error`           | Oluşan hata türlerini sınıflandırmak için kullanılabilen ve hatalara yanıt vermek için kullanılabilen bir hata kodu dizesi. |
+| `error_description` | Bir geliştiricinin kimlik doğrulama hatasının kök nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi.           |
+| `error_codes` |Tanılamada yardımcı olabilecek STS 'ye özgü hata kodlarının bir listesi. |
+| `timestamp` | Hatanın oluştuğu zaman. |
 | `trace_id` | Tanılamada yardımcı olabilecek istek için benzersiz bir tanımlayıcı. |
-| `correlation_id` | Bileşenler arasında tanılamada yardımcı olabilecek istek için benzersiz bir tanımlayıcı. |
+| `correlation_id` | İsteğe ait, bileşenler genelinde tanılamada yardımcı olabilecek benzersiz bir tanımlayıcı. |
 
-Hata kodlarının ve önerilen istemci eyleminin açıklaması [için belirteç bitiş noktası hataları için hata kodlarına](#error-codes-for-token-endpoint-errors)bakın.
+Hata kodlarının ve önerilen istemci eyleminin açıklaması için bkz. [belirteç uç noktası hataları Için hata kodları](#error-codes-for-token-endpoint-errors).

@@ -1,142 +1,142 @@
 ---
-title: Uygulama Öngörüleri ile uygulamanızın durumunu ve kullanımını izleyin
-description: Uygulama Öngörüleri ile başlayın. Şirket içi veya Microsoft Azure uygulamalarınızın kullanımını, kullanılabilirliğini ve performansını analiz edin.
+title: Application Insights ile uygulamanızın sistem durumunu ve kullanımını izleyin
+description: Application Insights kullanmaya başlayın. Şirket içi veya Microsoft Azure uygulamalarınızın kullanımını, kullanılabilirliğini ve performansını analiz edin.
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985074"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web uygulamalarının performansını izleme
 
 
-Uygulamanızın iyi performans gösterdiğinden emin olun ve hataları hızlı bir şekilde öğrenin. [Uygulama Öngörüleri][start] size performans sorunları ve özel durumları hakkında bilgi verir ve temel nedenleri bulmanıza ve tanılamanıza yardımcı olur.
+Uygulamanızın iyi bir şekilde çalıştığından emin olun ve tüm hatalarda hızlıca bilgi edinin. [Application Insights][start] , herhangi bir performans sorunu ve özel durumu hakkında bilgi verir ve temel nedenleri bulmanıza ve tanılamanıza yardımcı olur.
 
-Application Insights hem Java'yı hem de web uygulamaları ve hizmetlerini, WCF hizmetlerini ASP.NET izleyebilir. Şirket içinde, sanal makinelerde veya Microsoft Azure web siteleri olarak barındırılabilirler. 
+Application Insights hem Java hem de ASP.NET Web uygulamaları ve Hizmetleri, WCF hizmetlerini izleyebilir. Şirket içinde, sanal makinelerde veya Microsoft Azure Web siteleri olarak barınabilir. 
 
-İstemci tarafında, Application Insights web sayfalarından ve iOS, Android ve Windows Mağazası uygulamaları da dahil olmak üzere çok çeşitli cihazlardan telemetri alabilir.
+İstemci tarafında, Application Insights Web sayfalarından telemetri alabilir ve iOS, Android ve Windows Mağazası uygulamaları dahil olmak üzere çok çeşitli cihazlar olabilir.
 
-## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Performans izleme yi ayarlama
-Projenize henüz Uygulama Öngörüleri eklemediyseniz (diğer bir şekilde ApplicationInsights.config yoksa), başlamak için şu yollardan birini seçin:
+## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Performans izlemeyi ayarlama
+Projenize henüz Application Insights eklemediyseniz (yani, ApplicationInsights. config yoksa), başlamak için şu yollarla birini seçin:
 
 * [ASP.NET web uygulamaları](../../azure-monitor/app/asp-net.md)
   * [Özel durum izleme ekleme](../../azure-monitor/app/asp-net-exceptions.md)
   * [Bağımlılık izleme ekleme](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE web uygulamaları](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Java EE Web uygulamaları](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Performans ölçümlerini keşfetme
-[Azure portalında,](https://portal.azure.com)uygulamanız için ayarladığınız Application Insights kaynağına göz atın. Genel bakış bıçağı temel performans verilerini gösterir:
+[Azure Portal](https://portal.azure.com), uygulamanız için ayarladığınız Application Insights kaynağına gidin. Genel Bakış dikey penceresinde temel performans verileri gösterilmektedir:
 
-Daha fazla ayrıntı ve daha uzun bir süre için sonuçları görmek için herhangi bir grafiği tıklatın. Örneğin, İstekler döşemesini tıklatın ve ardından bir zaman aralığı seçin:
+Daha fazla ayrıntı görmek için herhangi bir grafiğe tıklayın ve daha uzun bir süre için sonuçları görün. Örneğin, Istekler kutucuğuna tıklayın ve sonra bir zaman aralığı seçin:
 
 ![Daha fazla veri için tıklayın ve bir zaman aralığı seçin](./media/web-monitor-performance/appinsights-48metrics.png)
 
-Hangi ölçümleri görüntüleyeceğini seçmek için bir grafiği tıklatın veya yeni bir grafik ekleyin ve ölçümlerini seçin:
+Hangi ölçümlerin görüntülediğini seçmek için bir grafiğe tıklayın veya yeni bir grafik ekleyin ve onun ölçümlerini seçin:
 
-![Ölçümleri seçmek için grafiği tıklatın](./media/web-monitor-performance/appinsights-61perfchoices.png)
+![Ölçümleri seçmek için bir grafiğe tıklayın](./media/web-monitor-performance/appinsights-61perfchoices.png)
 
 > [!NOTE]
-> Kullanılabilir seçimin tamamını görmek için **tüm ölçümlerin denetimini kaldırın.** Ölçümler gruplara ayrılır; bir grubun herhangi bir üyesi seçildiğinde, yalnızca o grubun diğer üyeleri görünür.
+> Kullanılabilir tam seçimi görmek için **Tüm ölçümlerin Işaretini kaldırın** . Ölçümler gruplar halinde yer almalıdır; bir grubun herhangi bir üyesi seçildiğinde, yalnızca o grubun diğer üyeleri görünür.
 
-## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>Bütün bunlar ne anlama geliyor? Performans kutucukları ve raporları
-Alabileceğiniz çeşitli performans ölçümleri vardır. Uygulama bıçağında varsayılan olarak görünenlerle başlayalım.
+## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>Hepsi ne anlama geliyor? Performans kutucukları ve raporları
+Alabileceğiniz çeşitli performans ölçümleri vardır. Uygulama dikey penceresinde varsayılan olarak görünenler ile başlayalım.
 
 ### <a name="requests"></a>İstekler
-Belirli bir dönemde alınan HTTP isteklerinin sayısı. Yük değişirken uygulamanızın nasıl hissettiğini görmek için bunu diğer raporlardaki sonuçlarla karşılaştırın.
+Belirtilen bir dönemde alınan HTTP isteklerinin sayısı. Yük değiştiğinden uygulamanızın nasıl davranacağını görmek için bunu diğer raporlardaki sonuçlarla karşılaştırın.
 
-HTTP istekleri, sayfalar, veriler ve resimler için tüm GET veya POST isteklerini içerir.
+HTTP istekleri, sayfalar, veriler ve görüntüler için tüm GET veya POST isteklerini içerir.
 
-Belirli URL'ler için sayımlar almak için döşemeyi tıklatın.
+Belirli URL 'Lerin sayısını almak için kutucuğa tıklayın.
 
 ### <a name="average-response-time"></a>Ortalama yanıt süresi
-Uygulamanızı giren bir web isteği ile yanıtın döndürülen yanıtı arasındaki süreyi ölçer.
+Uygulamanızı ve döndürülen yanıtı girerek bir Web isteği arasındaki süreyi ölçer.
 
-Puanlar hareketli bir ortalama gösteriyor. Çok sayıda istek varsa, grafikte belirgin bir tepe noktası veya daldırma olmadan ortalamadan sapan bazı olabilir.
+Noktalara bir hareketli ortalama gösterilmektedir. Çok sayıda istek varsa, grafikte belirgin bir tepe veya DIP olmadan ortalama olan bir miktar olabilir.
 
-Sıra dışı zirvelere bakın. Genel olarak, isteklerde bir artış ile yanıt süresi nin artmasını bekleyin. Artış orantısızsa, uygulamanız CPU veya kullandığı bir hizmetin kapasitesi gibi bir kaynak sınırına çarpabilir.
+Olağan dışı tepe noktaları arayın. Genel olarak, yanıt süresinin artmasıyla bir artış olması beklenir. Artorantısız ise, uygulamanız CPU veya kullandığı bir hizmetin kapasitesi gibi bir kaynak sınırına ulaşmalıdır.
 
-Belirli URL'ler için zaman almak için döşemeyi tıklatın.
+Belirli URL 'Lerin zamanlarını almak için kutucuğa tıklayın.
 
 ![](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>En yavaş istekler
 ![](./media/web-monitor-performance/appinsights-44slowest.png)
 
-Hangi isteklerin performans atonuna gerek duyabileceğini gösterir.
+Hangi isteklerin performans ayarlamaya ihtiyacı olabileceğini gösterir.
 
 ### <a name="failed-requests"></a>Başarısız istekler
 ![](./media/web-monitor-performance/appinsights-46failed.png)
 
-Yakalanmayan özel durumlar atan istek sayısı.
+Yakalanmayan özel durumları oluşturan istek sayısı.
 
-Belirli hataların ayrıntılarını görmek için döşemeyi tıklatın ve ayrıntılarını görmek için tek bir istek seçin. 
+Belirli hataların ayrıntılarını görmek için kutucuğa tıklayın ve ayrıntılarını görmek için tek bir istek seçin. 
 
-Hataların yalnızca temsili bir örneği bireysel denetim için saklanır.
+Bireysel İnceleme için yalnızca temsili bir başarısızlık örneği tutulur.
 
 ### <a name="other-metrics"></a>Diğer ölçümler
-Hangi ölçümleri görüntüleyebilirsiniz görmek için bir grafiği tıklatın ve ardından kullanılabilir tam kümeyi görmek için tüm ölçümleri seçin. Her ölçümün tanımını görmek için (i) tuşuna tıklayın.
+Hangi diğer ölçümleri görebileceğinize bakmak için bir grafiğe tıklayın ve ardından tüm ölçümler seçimini kaldırın ve tüm kullanılabilir kümesini görüntüleyin. Her ölçümün tanımını görmek için (i) seçeneğine tıklayın.
 
-![Tüm kümeyi görmek için tüm ölçümleri seçin](./media/web-monitor-performance/appinsights-62allchoices.png)
+![Tüm kümeyi görmek için tüm ölçümlerin seçimini kaldırın](./media/web-monitor-performance/appinsights-62allchoices.png)
 
-Herhangi bir metrik seçilmesi, aynı grafikte görünamayan diğer lerini devre dışı kılabilir.
+Herhangi bir ölçümü seçmek, aynı grafikte görünmeyen diğerlerini devre dışı bırakır.
 
 ## <a name="set-alerts"></a>Uyarı ayarlama
-Herhangi bir metnin olağandışı değerlerine e-posta ile bildirilmek için bir uyarı ekleyin. E-postayı hesap yöneticilerine veya belirli e-posta adreslerine göndermeyi seçebilirsiniz.
+Herhangi bir ölçümün olağandışı değerlerinin e-postasından haberdar olmak için bir uyarı ekleyin. E-postayı hesap yöneticilerine veya belirli e-posta adreslerine göndermek üzere birini seçebilirsiniz.
 
 ![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
-Kaynağı diğer özelliklerden önce ayarlayın. Performans veya kullanım ölçümlerine ilişkin uyarıları ayarlamak istiyorsanız webtest kaynaklarını seçmeyin.
+Kaynağı diğer özelliklerden önce ayarlayın. Performans veya kullanım ölçümlerinde uyarı ayarlamak istiyorsanız WebTest kaynaklarını seçmeyin.
 
-Eşik değerini girmeniz istenen birimleri not almaya dikkat edin.
+Eşik değerini girmeniz istenecek birimleri göz önünde bulunmamaya dikkat edin.
 
-*Uyarı Ekle düğmesini göremiyorum.* - Bu, salt okunur erişime sahip olduğunuz bir grup hesabı mı? Hesap yöneticisine danışın.
+*Uyarı Ekle düğmesini görmüyorum.* -Bu, salt okuma erişiminizin bulunduğu bir grup hesabıdır misiniz? Hesap yöneticisiyle görüşün.
 
 ## <a name="diagnosing-issues"></a><a name="diagnosis"></a>Sorunları tanılama
-Performans sorunlarını bulmak ve tanılamanız için birkaç ipucu aşağıda verilmiştir:
+Performans sorunlarını bulmak ve tanılamak için birkaç ipucu aşağıda verilmiştir:
 
-* Web siteniz inip yanlış veya yavaş yanıt verirse uyarılacak [web testlerini][availability] ayarlayın. 
-* Hataların veya yavaş yanıtın yükle ilişkili olup olmadığını görmek için İstek sayısını diğer ölçümlerle karşılaştırın.
-* Sorunları belirlemenize yardımcı olmak için kodunuzda [izleme ifadeleri ekleyin ve arayın.][diagnostic]
-* [Canlı Ölçümler Akışı][livestream]ile Web uygulamanızı işletimde izleyin.
-* [Snapshot Debugger][snapshot]ile .NET uygulamanızın durumunu yakalayın.
+* Web siteniz daha sonra yanlış veya yavaş yanıt verirse, [Web testlerini][availability] uyarılmak üzere ayarlayın. 
+* Hataların veya yavaş yanıtın yükleme ile ilgili olup olmadığını görmek için Istek sayısını diğer ölçümlerle karşılaştırın.
+* Kodunuzun sorunlarını belirlemenize yardımcı olması için kodunuzda [Trace deyimlerini ekleyin ve arama][diagnostic] yapın.
+* [Canlı ölçüm akışı][livestream]Web uygulamanızı işlem sırasında izleyin.
+* [Snapshot Debugger][snapshot]ile .net uygulamanızın durumunu yakalayın.
 
-## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Performans araştırması deneyimiyle performans darboğazlarını bulma ve düzeltme
+## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Performans araştırma deneyimiyle performans sorunlarını bulun ve onarın
 
-Web uygulamanızda yavaş performans gösteren işlemleri incelemek için performans araştırması deneyimini kullanabilirsiniz. Belirli bir yavaş işlemi hızlı bir şekilde seçebilir ve yavaş işlemlerin koda indirgenmesine neden olmak için [Profiler'ı](../../azure-monitor/app/profiler.md) kullanabilirsiniz. Seçili işlem için gösterilen yeni süre dağılımını kullanarak, bir bakışta hızlı bir şekilde müşterileriniz için deneyimin ne kadar kötü olduğunu değerlendirebilirsiniz. Her yavaş işlem için kaç kullanıcı etkileşiminizin etkilendiğini görebilirsiniz. Aşağıdaki örnekte, GET Customers/Details işlemiyle ilgili deneyime daha yakından bakmaya karar verdik. Süre dağılımında, üç artış olduğunu görebiliriz. Leftmost başak yaklaşık 400 ms ve büyük duyarlı bir deneyim temsil eder. Orta başak yaklaşık 1.2 s ve vasat bir deneyim temsil eder. Son olarak 3.6'larda, müşterilerimizin memnun kalmalarına neden olabilecek yüzde 99'luk deneyimi temsil eden küçük bir artış daha var. Bu deneyim, aynı operasyon için büyük deneyimden on kat daha yavaştır. 
+Web uygulamanızda yavaş gerçekleştirilen işlemleri gözden geçirmek için performans araştırma deneyimini kullanabilirsiniz. Hızlı bir şekilde belirli bir yavaş işlemi seçebilir ve temel işlem için [Profil Oluşturucu](../../azure-monitor/app/profiler.md) kullanarak yavaş işlemleri koda düşürür. Seçilen işlem için gösterilen yeni süre dağıtımını kullanarak hızlı bir şekilde, yalnızca bir deneyimin müşterileriniz için ne kadar kötü olduğunu değerlendirirsiniz. Her bir yavaş işlem için Kullanıcı etkileşimlerinizin kaç tane etkilendiğinin nasıl etkileneceği hakkında bilgi alabilirsiniz. Aşağıdaki örnekte, müşteriler/Ayrıntılar alma deneyiminden daha yakından göz atalım. Süre dağıtımında, üç ani artışlar olduğunu görebiliriz. En soldaki ani artış 400 MS 'den ve çok fazla yanıt veren deneyimi temsil etmektedir. Orta artış 1,2 ' in etrafında ve bir mediocre deneyimini temsil etmektedir. Son olarak 3,6 s ' de, müşterilerimizin karşılanmamasına neden olan 99. yüzdebirlik deneyimini temsil eden bir küçük ani artış vardır. Bu deneyim, aynı işlem için harika deneyimden on kat daha yavaştır. 
 
-![GET Müşteriler/ Ayrıntılar üç süre ani](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
+![Müşterileri/ayrıntıları al üç süreli ani artışlar](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
-Bu işlem için kullanıcı deneyimlerini daha iyi anlamak için daha geniş bir zaman aralığı seçebiliriz. Daha sonra, işlemin yavaş olduğu belirli bir zaman penceresinde de zaman dilimini daraltabiliriz. Aşağıdaki örnekte, varsayılan 24 saat aralığından 7 günlük zaman aralığına geçtik ve 12.si ile 13'üncü Su arasındaki 9:47 ile 12:47 zaman aralığına yakınlaştırdık. Hem süre dağılımı hem de örnek ve profilci izleme sayısı sağda güncellenmiştir.
+Bu işleme yönelik kullanıcı deneyimlerinden daha iyi bir fikir almak için daha büyük bir zaman aralığı seçebilirsiniz. Daha sonra işlemin yavaş olduğu belirli bir zaman penceresinde de dar bir süre sonra daraltabiliriz. Aşağıdaki örnekte, varsayılan 24 saatlik zaman aralığından 7 gün zaman aralığına geçtik ve 12:47 9:47 sonra 12. ve 13.6. ve 13. Hem süre dağılımı hem de örnek ve profil oluşturucu izlemelerinin sayısı sağ tarafta güncelleştirilmiştir.
 
-![Get Customers/Details bir zaman penceresi ile 7 günlük aralıkta üç süre ani](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![Zaman penceresi ile 7 gün aralığında müşterileri/ayrıntıları üç süre ani artışları alın](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
-Yavaş deneyimleri daraltmak için, bir sonraki 95 ve 99 yüzdelik arasında düşen süreleri yakınlaştırmak. Bunlar, yavaş olan kullanıcı etkileşimlerinin %4'ünü temsil eder.
+Yavaş deneyimler üzerinde daraltmak için, daha sonra 95 ' i ve 99. yüzdebirlik aralığında kalan süreleri yakınlaştırıyoruz. Bunlar, yavaş olan kullanıcı etkileşimlerinin %4 ' i temsil eder.
 
-![Get Customers/Details bir zaman penceresi ile 7 günlük aralıkta üç süre ani](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![Zaman penceresi ile 7 gün aralığında müşterileri/ayrıntıları üç süre ani artışları alın](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
-Artık Profilci izlemeleri düğmesine tıklayarak, Örnekler düğmesine veya temsilci profil oluşturucu izlerine tıklayarak temsili örneklere bakabiliriz. Bu örnekte, ilgi alanı ve aralık süresi içinde GET Customers/Details için toplanan dört izleme vardır.
+Artık, örnek düğmesine tıklayarak ya da profil oluşturucu izlemeleri düğmesine tıklayarak temsil eden profil oluşturucu izlemelerinde temsilci örneklerine bakabiliriz. Bu örnekte, zaman penceresinde müşterileri/ayrıntıları al için toplanan dört izleme vardır.
 
-Bazen sorun kodunuzda değil, kodlarınızın aradığı bir bağımlılıkta olur. Bu tür yavaş bağımlılıkları araştırmak için performans triaj görünümünde Bağımlılıklar sekmesine geçebilirsiniz. Varsayılan olarak performans görünümü ortalamaları eğilim, ancak gerçekten bakmak istediğiniz 95 yüzdelik (veya 99, durumda olgun bir hizmet izliyor). Aşağıdaki örnekte, PUT fabrikamaccount adını verdiğimiz yavaş Azure BLOB bağımlılığına odaklandık. Aynı bağımlılık için yavaş aramalar üç kat daha yavaş iken, 120 ms etrafında kümeleme, 40 ms etrafında iyi deneyimler kümeleme. İlgili işlemin belirgin bir şekilde yavaşlamasına neden olmak için bu çağrıların çoğunu niçin eklemeniz gerekmiyor. Tıpkı İşlemler sekmesinde yaptığınız gibi temsili örnekleri ve profil oluşturucu izlerini delip izleyebilirsiniz.
+Bazen sorun kodunuzda olmaz, bunun yerine kodunuzun çağrı yaptığı bir bağımlılığa sahip olur. Bu tür yavaş bağımlılıkları araştırmak için performans önceliklendirme görünümündeki Bağımlılıklar sekmesine geçiş yapabilirsiniz. Varsayılan olarak, performans görünümü büyük ortalamalar olur, ancak gerçekten de bakmak istediğiniz değer, en fazla 95. yüzdebirlik (veya çok büyük ölçekli bir hizmeti izliyorsanız). Aşağıdaki örnekte, PUT fabrikamaccount ' ı çağırdığımız yavaş Azure BLOB bağımlılığına odaklandık. 40 ms çevresindeki iyi deneyimler sayesinde, aynı bağımlılığa yönelik yavaş çağrılar üç kez daha yavaştır ve 120 MS etrafında kümelenemez. Bu, ilgili işlemin önemli ölçüde yavaşlamasına neden olacak şekilde eklemek için bu çağrıların çoğunu almaz. Aynı şekilde, tıpkı Işlemler sekmesiyle yaptığınız gibi, temsilci örnekleri ve profil oluşturucu izlemelerinin detayına gidebilirsiniz.
 
-![Get Customers/Details bir zaman penceresi ile 7 günlük aralıkta üç süre ani](./media/web-monitor-performance/SlowDependencies95thTrend.png)
+![Zaman penceresi ile 7 gün aralığında müşterileri/ayrıntıları üç süre ani artışları alın](./media/web-monitor-performance/SlowDependencies95thTrend.png)
 
-Performans araştırması deneyimi, odaklanmaya karar verdiniz örnek setin yanı sıra alakalı öngörüler de gösterir. Mevcut tüm öngörülere bakmanın en iyi yolu 30 günlük bir zaman aralığına geçmek ve ardından son bir aydaki tüm işlemlerde öngörüleri görmek için Genel'i seçmektir.
+Performans araştırma deneyimi, odaklanmaya karar verdiğiniz örnek küme üzerinde ilgili öngörüleri gösterir. Tüm mevcut öngörülere baktığınızın en iyi yolu 30 günlük bir zaman aralığına geçiş yapmak ve sonra geçen aya ait tüm işlemlerde öngörüleri görmek için genel ' i seçbilmenizdir.
 
-![Get Customers/Details bir zaman penceresi ile 7 günlük aralıkta üç süre ani](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![Zaman penceresi ile 7 gün aralığında müşterileri/ayrıntıları üç süre ani artışları alın](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
-[Web testleri][availability] - Dünyanın dört bir yanından düzenli aralıklarla uygulamanız için web istekleri gönderilmesini sağlar.
+[Web testlerinde][availability] , dünyanın dört bir yanındaki düzenli aralıklarla uygulamanıza gönderilen Web istekleri vardır.
 
-[Tanılama izlemelerini yakalayın ve arayın][diagnostic] - Sorunları saptamak için izleme çağrıları ekleyin ve sonuçları elemek.
+[Tanılama Izlemelerini yakalama ve arama][diagnostic] -izleme çağrıları ekleyin ve sonuçları sabitleme ile ilgili sorunları giderin.
 
-[Kullanım izleme][usage] - İnsanların uygulamanızı nasıl kullandığını öğrenin.
+[Kullanım izleme][usage] -kullanıcıların uygulamanızı nasıl kullandığını öğrenin.
 
-[Sorun Giderme][qna] - ve Q & A
+[Sorun giderme][qna] ve soru-cevap &
 
 
 

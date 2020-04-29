@@ -1,6 +1,6 @@
 ---
-title: VM'ler için özel IP adreslerini yapılandırma - Azure portalı
-description: Azure portalını kullanarak sanal makineler için özel IP adreslerini nasıl yapılandırıştırmayı öğrenin.
+title: VM 'Ler için özel IP adresleri Yapılandırma-Azure portal
+description: Azure portal kullanarak sanal makineler için özel IP adreslerini yapılandırmayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,117 +15,117 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: 946926a8a805ec3c53ea3c57dc3eded2462f7673
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461557"
 ---
-# <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Azure portalını kullanarak bir VM için özel bir IP adresi yapılandırma
+# <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Azure portal kullanarak bir VM için özel IP adresi yapılandırma
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Aşağıdaki örnek adımlar basit bir ortamın zaten oluşturulmasını bekler. Adımları bu belgede görüntülenen adımları çalıştırmak istiyorsanız, önce [sanal bir ağ oluşturun.](quick-create-portal.md#create-a-virtual-network) Ancak, adım 3'te, bunun yerine şu değerleri kullanın:
+Aşağıdaki örnek adımlarda basit bir ortamın zaten oluşturulması beklenir. Bu belgede görüntülendikleri gibi adımları çalıştırmak istiyorsanız, önce [bir sanal ağ oluşturun](quick-create-portal.md#create-a-virtual-network). Ancak adım 3 ' te şu değerleri kullanın:
 
 | Ayar | Değer |
 | ------- | ----- |
 | Adı | *TestVNet* |
 | Adres alanı | *192.168.0.0/16* |
-| Kaynak grubu | **TestRG** (gerekirse oluşturmak için **yeni oluştur'u** seçin) |
-| Subnet - Adı | *FrontEnd* |
+| Kaynak grubu | **Testrg** (gerekiyorsa, oluşturmak Için **Yeni oluştur** ' u seçin) |
+| Alt ağ adı | *FrontEnd* |
 | Alt Ağ - Adres aralığı | *192.168.1.0/24* |
 
 ## <a name="create-a-vm-for-testing-static-private-ip-addresses"></a>Statik özel IP adreslerini test etmek için bir VM oluşturma
-Kaynak Yöneticisi dağıtım modunda bir VM oluşturduğunuzda, Azure portalını kullanarak statik bir özel IP adresi ayarlayamazsınız. Bunun yerine, önce VM'yi oluşturursunuz. Sonra statik olarak kendi özel IP ayarlayabilirsiniz.
+Kaynak Yöneticisi dağıtım modunda bir VM oluşturduğunuzda, Azure portal kullanarak statik bir özel IP adresi ayarlayamazsınız. Bunun yerine, önce VM 'yi oluşturursunuz. Ardından, özel IP 'sini statik olacak şekilde ayarlayabilirsiniz.
 
-*TestVNet*adlı sanal bir ağın *FrontEnd* alt ağında *DNS01* adında bir VM oluşturmak için aşağıdaki adımları izleyin:
+*Testvnet*adlı bir sanal ağın *ön uç* alt AĞıNDA *DNS01* adlı bir VM oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure [portalı](https://portal.azure.com) menüsünden **kaynak oluştur'u**seçin.
+1. [Azure Portal](https://portal.azure.com) menüsünde **kaynak oluştur**' u seçin.
 
-    ![Kaynak oluşturma, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
-2. **Bilgi İşlem** > **Sanal makinesini**seçin.
+    ![Kaynak oluşturma, Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
+2. **İşlem** > **sanal makinesini**seçin.
 
-    ![VM, Azure portalı oluşturma](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
-3. **Temel**Bilgiler'de, aşağıdaki tabloda açıklandığı gibi öğeleriçin değerleri belirtin. Sonra **Next&nbsp;&nbsp;seçin : Diskler** ve sonra **&nbsp;Sonraki :&nbsp;Ağ**.
+    ![VM oluşturma, Azure portal](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
+3. **Temel bilgiler**bölümünde, aşağıdaki tabloda açıklandığı gibi öğeler için değerler belirtin. Ardından **İleri&nbsp;&nbsp;: diskler** ve sonra **İleri&nbsp;&nbsp;**' yi seçin.
 
     | Öğe | Değer |
     | --- | --- |
     | **Abonelik** | Geçerli aboneliğiniz |
-    | **Kaynak grubu** | **TestRG** (açılır listeden seçin) |
+    | **Kaynak grubu** | **Testrg** (açılan listeden seç) |
     | **Sanal makine adı** | *DNS01* |
-    | **Bölge** | **(Abd) Doğu ABD** |
+    | **Bölge** | **ABD Doğu ABD** |
     | **Görüntü** | **Windows Server 2019 Datacenter** |
-    | **Boyut** | **B1ls** **VM Boyutu** , **Standart** **Sunan** |
-    | **Username** | Yönetici hesabınızın kullanıcı adı |
-    | **Parola** | Yönetici hesabınızın kullanıcı adının şifresi |
-    | **Parolayı onayla** | Parola yine |
+    | **Boyut** | **B1ls**'In **sanal makine boyutu** , **Standart** **sunumu** |
+    | **Nitelen** | Yönetici hesabınızın Kullanıcı adı |
+    | **Parola** | Yönetici hesabınızın Kullanıcı adı için parola |
+    | **Parolayı onayla** | Parolayı yeniden |
 
-    ![Temel bilgiler sekmesi, Sanal makine oluşturma, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
-4. **Ağ'da,** aşağıdaki tabloda açıklandığı gibi öğeler için değerleri belirtin ve sonra **İleri'yi**seçin.
+    ![Temel bilgiler sekmesi, sanal makine oluşturma Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
+4. **Ağ**' da, aşağıdaki tabloda açıklandığı gibi öğeler için değerler belirtin ve ardından **İleri**' yi seçin.
 
     | Öğe | Değer |
     | --- | --- |
     | **Sanal ağ** | **TestVNet** |
     | **Alt ağ** | **FrontEnd** |
 
-    ![Ağ sekmesi, Sanal makine oluşturma, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
-5. **Yönetim,** **Tanıdepolama hesabı**altında, **vnetstorage**seçin. Bu depolama hesabı listede görünmüyorsa, **yeni oluştur'u**seçin , *vnetstorage* **adı** belirtin ve **Tamam'ı**seçin. Son olarak, **Gözden&nbsp;+&nbsp;Geçir'i seçin.**
+    ![Ağ sekmesi, sanal makine oluşturma Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
+5. **Yönetim**bölümünde, **Tanılama depolama hesabı**altında, **vnetstorage**' ı seçin. Bu depolama hesabı listede görünmezse, **Yeni oluştur**' u seçin, *vnetstorage* **adını** belirtin ve **Tamam**' ı seçin. Son olarak, **Gözden&nbsp;+&nbsp;geçirme oluştur**' u seçin.
 
-    ![Yönetim sekmesi, Sanal makine oluşturma, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-management.png)
-6. **Gözden Geçir + oluştur,** genel bakış bilgilerini gözden geçir ve ardından **Oluştur'u**seçin.
+    ![Yönetim sekmesi, sanal makine oluşturma Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-management.png)
+6. **Gözden geçir + oluştur**bölümünde genel bakış bilgilerini gözden geçirin ve ardından **Oluştur**' u seçin.
 
-    ![Gözden geçirme + oluşturma sekmesi, Sanal makine oluşturma, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-review-create.png)
+    ![Gözden geçir + Oluştur sekmesi, sanal makine oluşturma Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-review-create.png)
 
-VM oluşturulduktan sonra aşağıdaki ileti görüntülenir.
+VM oluşturulduktan sonra aşağıdaki ileti görünür.
 
-![Dağıtım tamamlama iletisi, Sanal makine oluşturma, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/deployment-is-complete.png)
+![Dağıtım tamamlama iletisi, sanal makine oluşturma Azure portal](./media/virtual-networks-static-ip-arm-pportal/deployment-is-complete.png)
 
-## <a name="retrieve-private-ip-address-information-for-a-vm"></a>VM için özel IP adresi bilgilerini alma
-Yeni VM'nizin özel IP adresi bilgilerini görüntülemek için:
+## <a name="retrieve-private-ip-address-information-for-a-vm"></a>Bir VM için özel IP adresi bilgilerini alma
+Yeni sanal makinenizin özel IP adresi bilgilerini görüntülemek için:
 
-1. VM'nizi bulmak için [Azure portalına](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. VM 'nizi bulmak için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
 
-    ![Sanal makineler, Arama kutusu, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/search-box-virtual-machines.png)
+    ![Sanal makineler, arama kutusu, Azure portal](./media/virtual-networks-static-ip-arm-pportal/search-box-virtual-machines.png)
 
-2. Yeni VM 'nizin **(DNS01)** adını seçin.
+2. Yeni VM 'nizin adını (**DNS01**) seçin.
 
-    ![Sanal makine listesi, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/virtual-machine-list.png)
+    ![Sanal makine listesi, Azure portal](./media/virtual-networks-static-ip-arm-pportal/virtual-machine-list.png)
 
-3. **Ağ'ı**seçin ve listelenen tek ağ arabirimini seçin.
+3. **Ağ**' ı seçin ve listelenen tek ağ arabirimini seçin.
 
-    ![Ağ arabirimi, ağ, sanal makine, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/networking-network-interface.png)
+    ![Ağ arabirimi, ağ, sanal makine, Azure portal](./media/virtual-networks-static-ip-arm-pportal/networking-network-interface.png)
 
-4. **IP yapılandırmalarını**seçin ve tabloda listelenen IP yapılandırmasını seçin.
+4. **IP yapılandırmaları**' nı seçin ve tabloda listelenen IP yapılandırmasını seçin.
 
-    ![IP yapılandırması, Ağ arabirimi, ağ, sanal makine, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/network-interface-ip-configurations.png)
+    ![IP yapılandırması, ağ arabirimi, ağ, sanal makine, Azure portal](./media/virtual-networks-static-ip-arm-pportal/network-interface-ip-configurations.png)
 
-5. **Özel IP adresi ayarlarında,** **TestVNet/FrontEnd** sanal ağ/alt net altında, **Atama** değerini **(Dinamik** veya **Statik)** ve **IP adresine**not alın.
+5. **Özel IP adresi ayarları**' nda, **Testvnet/ön uç** sanal ağ/alt ağ altında, **atama** değerini (**dinamik** veya **statik**) ve **IP adresini**not edin.
 
-    ![Dinamik veya statik atama, eski özel IP adresi ayarları, IP yapılandırması, Ağ arabirimi, ağ, sanal makine, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-old.png)
+    ![Dinamik veya statik atama, eski özel IP adresi ayarları, IP yapılandırması, ağ arabirimi, ağ, sanal makine, Azure portal](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-old.png)
 
-## <a name="add-a-static-private-ip-address-to-an-existing-vm"></a>Varolan bir VM'ye statik özel IP adresi ekleme
-Yeni VM'nize statik özel BIR IP adresi eklemek için:
+## <a name="add-a-static-private-ip-address-to-an-existing-vm"></a>Var olan bir VM 'ye statik bir özel IP adresi ekleme
+Yeni sanal makinenize statik bir özel IP adresi eklemek için:
 
-1. IP yapılandırma sayfasında, özel IP adresinizin atamasını **Statik**olarak ayarlayın.
-2. Özel **IP adresinizi** *192.168.1.101*olarak değiştirin ve ardından **Kaydet'i**seçin.
+1. IP yapılandırması sayfasında, özel IP adresi atamasını **statik**olarak ayarlayın.
+2. Özel **IP adresinizi** *192.168.1.101*olarak değiştirin ve ardından **Kaydet**' i seçin.
    
-    ![Dinamik veya statik atama, yeni özel IP adresi ayarları, IP yapılandırması, Ağ arabirimi, ağ, sanal makine, Azure portalı](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-new.png)
+    ![Dinamik veya statik atama, yeni özel IP adresi ayarları, IP yapılandırması, ağ arabirimi, ağ, sanal makine, Azure portal](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-new.png)
 
 > [!NOTE]
-> **Kaydet'i** seçtikten sonra atamanın hala **Dinamik**olarak ayarlandığını fark ederseniz, yazdığınız IP adresi zaten kullanılıyor. Başka bir IP adresi deneyin.
+> Atamanın hala **dinamik**olarak ayarlandığını **Kaydet** ' i SEÇTIKTEN sonra, yazdığınız IP adresi zaten kullanımda. Başka bir IP adresi deneyin.
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Statik özel IP adresini VM'den kaldırma
-Statik özel IP adresini VM'nizden kaldırmak için:
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Statik özel IP adresini bir VM 'den kaldırma
+Statik özel IP adresini sanal makinenizde kaldırmak için:
 
-IP yapılandırma sayfasında, özel IP adresinizin atamasını **Dinamik**olarak ayarlayın ve ardından **Kaydet'i**seçin.
+IP yapılandırması sayfasında, özel IP adresi atamasını **dinamik**olarak ayarlayın ve ardından **Kaydet**' i seçin.
 
-## <a name="set-ip-addresses-within-the-operating-system"></a>İşletim sistemi içindeki IP adreslerini ayarlama
+## <a name="set-ip-addresses-within-the-operating-system"></a>İşletim sistemi içinde IP adreslerini ayarla
 
-Bir VM işletim sistemi içinden, Azure VM'ye atanan *özel* IP'yi statik olarak atamamalısınız. VM'lere [çok sayıda IP adresi atamak](virtual-network-multiple-ip-addresses-portal.md)gibi, gerektiğinde özel bir IP'nin statik atamasını yapın. İşletim sistemi içindeki özel IP adresini el ile ayarlarsanız, Azure [ağ arabirimine](virtual-network-network-interface-addresses.md#change-ip-address-settings)atanan özel IP adresiyle eşleştiğinden emin olun. Aksi takdirde, VM'ye bağlantı kaybedebilirsiniz. [Özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları hakkında daha fazla bilgi edinin.
+Bir VM 'nin işletim sistemi içinden, Azure VM 'ye atanan *özel* IP 'yi statik olarak atamamalısınız. [VM 'lere bırçok IP adresi atarken](virtual-network-multiple-ip-addresses-portal.md), gerekli olduğunda yalnızca özel bir IP 'nin statik atamasını yapın. Özel IP adresini işletim sistemi içinde el ile ayarlarsanız, Azure [ağ arabirimine](virtual-network-network-interface-addresses.md#change-ip-address-settings)ATANMıŞ özel IP adresi ile eşleştiğinden emin olun. Aksi takdirde, VM bağlantısını kaybedebilirsiniz. [Özel IP adresi](virtual-network-network-interface-addresses.md#private) ayarları hakkında daha fazla bilgi edinin.
 
-Ayrıca, sanal makinenin işletim sistemi içinde bir Azure sanal makinesine atanan *genel* IP adresini asla el ile atamamalısınız.
+Ayrıca, sanal makinenin işletim sistemi içindeki bir Azure sanal makinesine atanan *genel* IP adresini asla el ile atamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

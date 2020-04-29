@@ -1,6 +1,6 @@
 ---
-title: Azure CDN DDoS Koruma özellikleri | Microsoft Dokümanlar
-description: Microsoft'un Azure CDN'si ek ücret ödemeden DDoS Protection temeli tarafından korunmaktadır
+title: Azure CDN DDoS koruma özellikleri | Microsoft Docs
+description: Microsoft 'tan Azure CDN ek bir ücret ödemeden DDoS koruma temel tarafından korunmaktadır
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: dc7af555bcaf8654ecdb27d804cbef0c2cedb284
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253824"
 ---
-# <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Koruması
+# <a name="azure-cdn-ddos-protection"></a>DDoS koruması Azure CDN
 
-İçerik dağıtım ağı, tasarım gereği DDoS koruması sağlar. Azure CDN, hacimsel saldırıları absorbe etme kapasitesine ek olarak, ek ücret ödemeden aşağıda belirtildiği gibi ek DDoS korumasına sahiptir.
+Bir içerik teslim ağı, tasarıma göre DDoS koruması sağlar. Artışlarını devralarak Volumetric saldırılarına karşı küresel kapasiteye ek olarak, Azure CDN ek bir maliyet olmadan aşağıda özetlenen ek DDoS koruması vardır.
 
-## <a name="azure-cdn-from-microsoft"></a>Microsoft'tan Azure CDN
+## <a name="azure-cdn-from-microsoft"></a>Microsoft 'tan Azure CDN
 
-Microsoft'un Azure [CDN'si Azure Basic DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)tarafından korunmaktadır. Varsayılan olarak microsoft platformundan Azure CDN'ye entegre edilmiştir ve ek ücret ödemeden. Microsoft'un genel olarak dağıtılan ağındaki Azure CDN'nin tam ölçeği ve kapasitesi, her zaman çevrimiçi trafik izleme ve gerçek zamanlı azaltma yoluyla yaygın ağ katmanı saldırılarına karşı savunma sağlar. Temel DDoS koruması, CDN uç noktalarını hedefleyen en yaygın, sık rastlanan Katman 7 DNS Sorgu Sellerine ve Katman 3 ve 4 hacimsel saldırılara karşı da savunma yapar. Bu hizmet, Microsoft'un kurumsal ve tüketici hizmetlerini büyük ölçekli saldırılara karşı koruma da kanıtlanmış bir geçmişe sahiptir.
+Microsoft 'tan Azure CDN [Azure temel DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)tarafından korunmaktadır. Varsayılan olarak ve ek bir ücret ödemeden Microsoft platformundan Azure CDN tümleşiktir. Microsoft 'un küresel olarak dağıtılan ağ Azure CDN tam ölçeği ve kapasitesi, her zaman açık trafik izleme ve gerçek zamanlı risk azaltma aracılığıyla ortak ağ katmanı saldırılarına karşı savunma sağlar. Temel DDoS koruması Ayrıca, CDN uç noktalarını hedefleyen en yaygın, sık karşılaşılan katman 7 DNS sorgu floods ve katman 3 ve 4 Volumetric saldırılarına karşı savunma gerçekleştirebilir. Bu hizmette ayrıca Microsoft 'un kurumsal ve tüketici hizmetlerini büyük ölçekli saldırılara karşı koruyan kanıtlanmış bir izleme kaydı vardır.
 
-## <a name="azure-cdn-from-verizon"></a>Verizon'dan Azure CDN
+## <a name="azure-cdn-from-verizon"></a>Verizon 'dan Azure CDN
 
-Verizon'daki Azure CDN, Verzion'un tescilli DDoS azaltma platformu tarafından korunmaktadır. Varsayılan olarak Verizon'dan Azure CDN'ye entegre edilmiştir ve ek ücret ödemeden. CDN uç noktalarını hedefleyen en yaygın, sık rastlanan Katman 7 DNS Sorgu Sellerine ve Katman 3 ve 4 hacimsel saldırılara karşı temel koruma sağlar.
+Verizon ' dan Azure CDN, verziyon 'ın özel DDoS risk azaltma platformu tarafından korunur. Verizon tarafından varsayılan olarak ve ek bir ücret ödemeden Azure CDN tümleşiktir. En yaygın, sık görülen katman 7 DNS sorgusu floods ve 3. ve 4 Volumetric saldırılarına karşı CDN uç noktalarını hedefleyen temel koruma sağlar.
 
-## <a name="azure-cdn-from-akamai"></a>Akamai'den Azure CDN
+## <a name="azure-cdn-from-akamai"></a>Akamai 'dan Azure CDN
 
-Akamai'nin Azure CDN'si Akamai'nin tescilli DDoS azaltma platformu tarafından korunmaktadır. Varsayılan olarak Akamai'den Azure CDN'ye entegre edilmiştir ve ek ücret ödemeden. CDN uç noktalarını hedefleyen en yaygın, sık rastlanan Katman 7 DNS Sorgu Sellerine ve Katman 3 ve 4 hacimsel saldırılara karşı temel koruma sağlar.
+Akamai ' dan Azure CDN, Akamai 'ın özel DDoS risk azaltma platformu tarafından korunur. Akamai tarafından varsayılan olarak ve ek bir ücret ödemeden Azure CDN tümleşiktir. En yaygın, sık görülen katman 7 DNS sorgusu floods ve 3. ve 4 Volumetric saldırılarına karşı CDN uç noktalarını hedefleyen temel koruma sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

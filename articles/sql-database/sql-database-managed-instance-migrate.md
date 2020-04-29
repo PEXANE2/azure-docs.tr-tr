@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
 ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100286"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine örnek geçişi SQL Server
@@ -143,7 +143,7 @@ Bir veritabanı yedeklemesinin SAS kimlik bilgilerini kullanarak yönetilen örn
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 
-## <a name="monitor-applications"></a>Uygulama izleme
+## <a name="monitor-applications"></a>Uygulamaları izleme
 
 Yönetilen örneğe geçişi tamamladıktan sonra, iş yükünüzün uygulama davranışını ve performansını izlemeniz gerekir. Bu işlem aşağıdaki etkinlikleri içerir:
 - [Yönetilen örnekte çalışan iş yükünün performansını](#compare-performance-with-the-baseline) [, kaynak SQL Server oluşturduğunuz performans temeliyle](#create-performance-baseline)karşılaştırın.

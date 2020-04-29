@@ -564,14 +564,14 @@
             - name: Mevcut VM’yi cloud-init için hazırlama
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: ../../jenkins/overview.md
+          href: /azure/developer/jenkins/overview.md
           items:
             - name: Jenkins sunucusu oluşturma
-              href: ../../jenkins/install-jenkins-solution-template.md
+              href: /azure/developer/jenkins/configure-on-linux-vm.md
             - name: VM aracılarıyla ölçeklendirme
-              href: ../../jenkins/jenkins-azure-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
             - name: Yapıtları Depolama alanında yayımlama
-              href: ../../jenkins/storage-java-jenkins-continuous-integration-solution.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
             - name: Jenkins güvenliğini sağlama
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Kapsayıcıları çalıştırma

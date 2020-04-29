@@ -1,6 +1,6 @@
 ---
-title: Windows için Azure Tanılama Uzantısı
-description: Azure Tanılama Uzantısını kullanarak Azure Windows VM'lerini izleyin
+title: Windows için Azure Tanılama uzantısı
+description: Azure Tanılama uzantısını kullanarak Azure Windows sanal makinelerini izleme
 author: johnkemnetz
 manager: ashwink
 ms.service: virtual-machines-windows
@@ -9,39 +9,39 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869668"
 ---
-# <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM'ler için Azure Tanılama Uzantısı
+# <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 'Leri için Azure Tanılama uzantısı
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
-Azure Tanılama VM uzantısı, Windows VM'nizden performans sayaçları ve olay günlükleri gibi izleme verileri toplamanızı sağlar. Hangi verileri toplamak istediğinizi ve Azure Depolama hesabı veya Azure Etkinlik Hub'ı gibi verilerin nereye gitmesini istediğinizi ayrıntılı olarak belirtebilirsiniz. Bu verileri Azure portalında grafikler oluşturmak veya metrik uyarılar oluşturmak için de kullanabilirsiniz.
+Azure Tanılama VM uzantısı, Windows VM 'nizden performans sayaçları ve olay günlükleri gibi izleme verilerini toplamanıza olanak sağlar. Toplamak istediğiniz verileri ve bir Azure depolama hesabı ya da Azure Olay Hub 'ı gibi verilerin nereye gitmesini istediğinizi belirleyebilirsiniz. Bu verileri, Azure portal grafik oluşturmak veya ölçüm uyarıları oluşturmak için de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Azure Tanılama Uzantısı Windows 10 İstemci, Windows Server 2008 R2, 2012, 2012 R2 ve 2016'ya karşı çalıştırılabilir.
+Azure Tanılama uzantısı Windows 10 Istemcisi, Windows Server 2008 R2, 2012, 2012 R2 ve 2016 karşısında çalıştırılabilir.
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
-Azure TanıLama Uzantısı, hedef sanal makinenin Internet'e bağlı olmasını gerektirir. 
+Azure Tanılama uzantısı, hedef sanal makinenin Internet 'e bağlı olmasını gerektirir. 
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-[Azure Tanı Lama Uzantısı şeması ve özellik değerleri bu belgede açıklanmıştır.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[Azure Tanılama uzantısı şeması ve özellik değerleri bu belgede açıklanmaktadır.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure VM uzantıları Azure Kaynak Yöneticisi şablonlarıyla dağıtılabilir. Önceki bölümde ayrıntılı olarak ayrıntılı olarak kullanılan JSON şeması, Azure Kaynak Yöneticisi şablonu dağıtımı sırasında Azure Tanılama uzantısını çalıştırmak için bir Azure Kaynak Yöneticisi şablonunda kullanılabilir. Bkz. [Windows VM ve Azure Kaynak Yöneticisi şablonlarıyla izleme ve tanılama yı kullan.](extensions-diagnostics-template.md)
+Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Önceki bölümde ayrıntılı JSON şeması, bir Azure Resource Manager şablon dağıtımı sırasında Azure Tanılama uzantısını çalıştırmak için bir Azure Resource Manager şablonunda kullanılabilir. Bkz. [WINDOWS VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma](extensions-diagnostics-template.md).
 
-## <a name="azure-cli-deployment"></a>Azure CLI dağıtımı
+## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 
-Azure CLI, Azure Tanılama uzantısını varolan bir sanal makineye dağıtmak için kullanılabilir. Yukarıdaki uzantı şemasından geçerli JSON ile korunan ayarları ve ayarları özelliklerini değiştirin. 
+Azure CLı, Azure Tanılama uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir. Korumalı ayarlar ve ayarlar özelliklerini yukarıdaki uzantı şemasından geçerli bir JSON ile değiştirin. 
 
 ```azurecli
 az vm extension set \
@@ -55,7 +55,7 @@ az vm extension set \
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-Komut, `Set-AzVMDiagnosticsExtension` Varolan bir sanal makineye Azure Tanılama uzantısını eklemek için kullanılabilir. Ayrıca [Windows çalıştıran sanal bir makinede Azure Tanılama'yı etkinleştirmek için PowerShell'i kullanın.](ps-extensions-diagnostics.md)
+Komut `Set-AzVMDiagnosticsExtension` , Azure tanılama uzantısını var olan bir sanal makineye eklemek için kullanılabilir. Ayrıca bkz. [Windows çalıştıran bir sanal makinede Azure tanılama etkinleştirmek Için PowerShell 'ı kullanma](ps-extensions-diagnostics.md).
 
  
 
@@ -74,18 +74,18 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantı lı dağıtımların durumuyla ilgili veriler Azure portalından ve Azure CLI kullanılarak alınabilir. Belirli bir VM uzantılarının dağıtım durumunu görmek için Azure CLI'yi kullanarak aşağıdaki komutu çalıştırın.
+Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure CLı 'yı kullanarak aşağıdaki komutu çalıştırın.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Azure Tanılama uzantısı için daha kapsamlı bir sorun giderme kılavuzu için [bu makaleye bakın.](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md)
+Azure Tanılama uzantısı için daha kapsamlı bir sorun giderme kılavuzu için [Bu makaleye bakın](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) .
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve destek al'ı seçin. Azure Desteği'ni kullanma hakkında daha fazla bilgi için [Microsoft Azure destek SSS'sini](https://azure.microsoft.com/support/faq/)okuyun.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* [Azure Tanılama Uzantısı hakkında daha fazla bilgi edinin](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Uzantı şema sını ve sürümlerini gözden geçirin](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+* [Azure Tanılama uzantısı hakkında daha fazla bilgi edinin](../../azure-monitor/platform/diagnostics-extension-overview.md)
+* [Uzantı şemasını ve sürümlerini gözden geçirin](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

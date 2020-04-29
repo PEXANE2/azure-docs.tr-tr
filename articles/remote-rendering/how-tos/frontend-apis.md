@@ -1,24 +1,24 @@
 ---
-title: Kimlik doğrulaması için Azure Frontend API'leri
-description: Kimlik doğrulaması için C# frontend API'nin nasıl kullanılacağını açıklar
+title: Kimlik doğrulaması için Azure ön uç API 'Leri
+description: Kimlik doğrulaması için C# ön uç API 'sinin nasıl kullanılacağını açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.openlocfilehash: 04296a3dab61fdb569126abc1bc1f975d69e226d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681356"
 ---
-# <a name="use-the-azure-frontend-apis-for-authentication"></a>Kimlik doğrulama için Azure Frontend API'lerini kullanma
+# <a name="use-the-azure-frontend-apis-for-authentication"></a>Kimlik doğrulaması için Azure Ön Uç API’lerini kullanma
 
-Bu bölümde, kimlik doğrulaması için C# API'nin nasıl kullanılacağıaçıklanacaktır.
+Bu bölümde, kimlik doğrulaması için C# API 'SININ nasıl kullanılacağını anlatmaktadır.
 
-## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
+## <a name="azurefrontendaccountinfo"></a>Azurefrontendaccountınfo
 
-AzureFrontendAccountInfo, SDK'daki bir ```AzureFrontend``` örnek için kimlik doğrulama bilgilerini ayarlamak için kullanılır.
+Azurefrontendaccountınfo SDK 'daki bir ```AzureFrontend``` örnek için kimlik doğrulama bilgilerini ayarlamak üzere kullanılır.
 
 Önemli alanlar şunlardır:
 
@@ -41,29 +41,29 @@ AzureFrontendAccountInfo, SDK'daki bir ```AzureFrontend``` örnek için kimlik d
 
 ```
 
-Etki alanında _bölge_ bölümü [için, size yakın](../reference/regions.md)bir bölge kullanın.
+Etki alanındaki _bölge_ bölümü için, [size yakın bir bölge](../reference/regions.md)kullanın.
 
-Hesap [bilgileri, hesap bilgileri al](create-an-account.md#retrieve-the-account-information) paragrafında açıklandığı şekilde portaldan elde edilebilir.
+Hesap bilgileri, [Hesap bilgilerini alma](create-an-account.md#retrieve-the-account-information) paragrafında açıklandığı gibi portaldan elde edilebilir.
 
-## <a name="azure-frontend"></a>Azure Ön Uç
+## <a name="azure-frontend"></a>Azure ön ucu
 
-İlgili sınıflar ```AzureFrontend``` ve ```AzureSession```. ```AzureFrontend```varlık dönüştürme ve oturum oluşturma oluşturma yı içeren hesap yönetimi ve hesap düzeyi işlevselliği için kullanılır. ```AzureSession```oturum düzeyi işlevselliği için kullanılır ve şunları içerir: oturum güncelleştirme, sorgular, yenileme ve devre dışı bırakma.
+İlgili sınıflar ve ' ```AzureFrontend``` ```AzureSession```dir. ```AzureFrontend```, aşağıdakiler dahil olmak üzere hesap yönetimi ve hesap düzeyi işlevsellik için kullanılır: varlık dönüştürme ve işleme oturumu oluşturma. ```AzureSession```, oturum düzeyi işlevselliği için kullanılır ve şunları içerir: oturum güncelleştirme, sorgular, yenileme ve kullanımdan kaldırma.
 
-Açılan/oluşturulan ```AzureSession``` her biri, onu oluşturan ön uça bir başvuru tutar. Temiz bir şekilde kapanmak için, ön uç ayrılmadan önce tüm oturumların ayrılması gerekir.
+Her açılan/oluşturulan ```AzureSession``` , oluşturulduğu ön uç için bir başvuru tutacaktır. Temiz bir şekilde kapatmak için, ön uç serbest bırakılmadan önce tüm oturumların serbest bırakılmalıdır.
 
-Oturumun ayrılması Azure'daki VM'yi `AzureSession.StopAsync` durdurmaz, açıkça çağrılmalıdır.
+Bir oturumun ayırmayı kaldırma işlemi, Azure 'daki VM 'yi durdurmaz, `AzureSession.StopAsync` açıkça çağrılmalıdır.
 
-Bir oturum oluşturulduktan ve durumu hazır olarak işaretlendikten sonra, uzaktan işleme `AzureSession.ConnectToRuntime`çalışma süresine ' le bağlanabilir.
+Bir oturum oluşturulduktan ve durumu hazırlanıyor olarak işaretlendiğinde, ile `AzureSession.ConnectToRuntime`uzaktan işleme çalışma zamanına bağlanabilir.
 
 ### <a name="threading"></a>İş Parçacığı Oluşturma
 
-Tüm AzureSession ve AzureFrontend async çağrıları ana uygulama iş parçacığında değil, arka plan iş parçacığında tamamlanır.
+Tüm AzureSession ve AzureFrontend zaman uyumsuz çağrıları, ana uygulama iş parçacığında değil, bir arka plan iş parçacığında tamamlanır.
 
-### <a name="conversion-apis"></a>Dönüşüm API'leri
+### <a name="conversion-apis"></a>Dönüştürme API 'Leri
 
-Dönüşüm hizmeti hakkında daha fazla bilgi [için, model dönüşümü REST API'ye](conversion/conversion-rest-api.md)bakın.
+Dönüştürme hizmeti hakkında daha fazla bilgi için bkz. [model dönüştürme REST API](conversion/conversion-rest-api.md).
 
-#### <a name="start-asset-conversion"></a>Varlık dönüştürmeyi başlat
+#### <a name="start-asset-conversion"></a>Varlık dönüştürmeyi Başlat
 
 ``` cs
 private StartConversionAsync _pendingAsync = null;
@@ -89,7 +89,7 @@ void StartAssetConversion(AzureFrontend frontend, string modelName, string model
 }
 ```
 
-#### <a name="get-conversion-status"></a>Dönüşüm durumu alma
+#### <a name="get-conversion-status"></a>Dönüştürme durumunu al
 
 ``` cs
 private ConversionStatusAsync _pendingAsync = null
@@ -113,13 +113,13 @@ void GetConversionStatus(AzureFrontend frontend, string assetId)
 }
 ```
 
-### <a name="rendering-apis"></a>Görüntüleme API'leri
+### <a name="rendering-apis"></a>Oluşturma API 'Leri
 
-Oturum yönetimi hakkında ayrıntılı bilgi için [oturum yönetimi REST API'ye](session-rest-api.md) bakın.
+Oturum yönetimi hakkındaki ayrıntılar için [oturum yönetimi REST API](session-rest-api.md) bakın.
 
-Bir işleme oturumu hizmette dinamik olarak oluşturulabilir veya zaten varolan bir oturum kimliği AzureSession nesnesine 'açılabilir'.
+Bir işleme oturumu, hizmette dinamik olarak oluşturulabilir veya zaten mevcut bir oturum KIMLIĞI, bir AzureSession nesnesi içinde ' açılabilir ' olabilir.
 
-#### <a name="create-rendering-session"></a>Oluşturma oturumu oluşturma
+#### <a name="create-rendering-session"></a>İşleme oturumu oluştur
 
 ``` cs
 private CreateSessionAsync _pendingAsync = null;
@@ -144,9 +144,9 @@ void CreateRenderingSession(AzureFrontend frontend, RenderingSessionVmSize vmSiz
 }
 ```
 
-#### <a name="open-an-existing-rendering-session"></a>Varolan bir işleme oturumunu açma
+#### <a name="open-an-existing-rendering-session"></a>Mevcut bir işleme oturumunu açın
 
-Varolan bir oturumu açmak eşzamanlı bir çağrıdır.
+Mevcut bir oturumu açmak zaman uyumlu bir çağrıdır.
 
 ``` cs
 void CreateRenderingSession(AzureFrontend frontend, string sessionId)
@@ -156,7 +156,7 @@ void CreateRenderingSession(AzureFrontend frontend, string sessionId)
 }
 ```
 
-#### <a name="get-current-rendering-sessions"></a>Geçerli görüntüleme oturumları alma
+#### <a name="get-current-rendering-sessions"></a>Geçerli işleme oturumlarını al
 
 ``` cs
 private SessionPropertiesArrayAsync _pendingAsync = null;
@@ -179,9 +179,9 @@ void GetCurrentRenderingSessions(AzureFrontend frontend)
 }
 ```
 
-### <a name="session-apis"></a>Oturum API'ları
+### <a name="session-apis"></a>Oturum API 'Leri
 
-#### <a name="get-rendering-session-properties"></a>Oluşturma oturumu özelliklerini alma
+#### <a name="get-rendering-session-properties"></a>İşleme oturumu özelliklerini al
 
 ``` cs
 private SessionPropertiesAsync _pendingAsync = null;
@@ -204,7 +204,7 @@ void GetRenderingSessionProperties(AzureSession session)
 }
 ```
 
-#### <a name="update-rendering-session"></a>Oluşturma oturumunu güncelleştirme
+#### <a name="update-rendering-session"></a>İşleme oturumunu Güncelleştir
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -228,7 +228,7 @@ void UpdateRenderingSession(AzureSession session, ARRTimeSpan updatedLease)
 }
 ```
 
-#### <a name="stop-rendering-session"></a>Oturum oluşturmayı durdurma
+#### <a name="stop-rendering-session"></a>İşleme oturumunu durdur
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -251,7 +251,7 @@ void StopRenderingSession(AzureSession session)
 }
 ```
 
-#### <a name="connect-to-arr-inspector"></a>ARR müfettişine bağlanın
+#### <a name="connect-to-arr-inspector"></a>ARR denetçisine bağlanma
 
 ``` cs
 private ArrInspectorAsync _pendingAsync = null;
@@ -289,4 +289,4 @@ void ConnectToArrInspector(AzureSession session, string hostname)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hesap oluşturma](create-an-account.md)
-* [Örnek PowerShell komut dosyaları](../samples/powershell-example-scripts.md)
+* [Örnek PowerShell betikleri](../samples/powershell-example-scripts.md)

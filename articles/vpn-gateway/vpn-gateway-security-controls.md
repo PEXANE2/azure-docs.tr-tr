@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82127862"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN Gateway için güvenlik denetimleri
@@ -42,7 +42,7 @@ Bu makale, Azure VPN Gateway yerleşik olarak bulunan güvenlik denetimlerini be
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik doğrulaması| Yes | Hizmeti yönetmek ve Azure VPN ağ geçidini yapılandırmak için [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) . |
+| Kimlik Doğrulaması| Yes | Hizmeti yönetmek ve Azure VPN ağ geçidini yapılandırmak için [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) . |
 | Yetkilendirme| Yes | [RBAC](../role-based-access-control/overview.md)aracılığıyla yetkilendirmeyi destekler. |
 
 ## <a name="data-protection"></a>Veri koruma

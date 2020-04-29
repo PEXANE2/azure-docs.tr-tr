@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: d2f5d6b6b9500ccd90630e8920c09340658fb76f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100201"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'de laboratuvara Market görüntüsü eklemek için PowerShell 'i kullanma
@@ -27,7 +27,7 @@ Bu örnek PowerShell betiği, Azure DevTest Labs bir laboratuvara Market görün
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Laboratuvar**. Betik, mevcut bir laboratuvarınızın olmasını gerektirir. 
 
 ## <a name="sample-script"></a>Örnek betik

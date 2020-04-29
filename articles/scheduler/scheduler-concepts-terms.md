@@ -10,18 +10,18 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878400"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler kavramları, terminolojisi ve varlıkları
 
 > [!IMPORTANT]
-> [Azure Logic Apps,](../logic-apps/logic-apps-overview.md) [kullanımdan kaldırılan](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Zamanlayıcısı'nın yerini alıyor. Zamanlayıcı'da ayarladığınız işlerle çalışmaya devam etmek için lütfen mümkün olan en kısa sürede [Azure Logic Apps'a geçirin.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [devre dışı bırakılmakta](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)olan Azure Scheduler 'ı değiştiriyor. Zamanlayıcı 'da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa sürede [Azure Logic Apps geçirin](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
 >
-> Zamanlayıcı artık Azure portalında kullanılamıyor, ancak işlerinizi ve iş koleksiyonlarınızı yönetebilmeniz için [ŞU anda REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlets'i](scheduler-powershell-reference.md) kullanılabilir durumda kalır.
+> Zamanlayıcı artık Azure portal kullanılamıyor, ancak iş ve iş koleksiyonlarınızı yönetebilmeniz için [REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlet 'leri](scheduler-powershell-reference.md) Şu anda kullanılabilir durumda kalır.
 
 ## <a name="entity-hierarchy"></a>Varlık hiyerarşisi
 
@@ -40,7 +40,7 @@ En geniş anlamıyla Scheduler REST API'si, varlıkların yönetilmesi için bu 
 
 ### <a name="job-management"></a>İş yönetimi
 
-İş oluşturma ve düzenleme işlemlerini destekler. Açık oluşturma olmaması için tüm işlerin var olan bir iş koleksiyonuna ait olması gerekir. Daha fazla bilgi için bkz. [Scheduler REST API - İşler](https://docs.microsoft.com/rest/api/scheduler/jobs). Bu işlemler için URI adresi aşağıda veda edebilirsiniz:
+İş oluşturma ve düzenleme işlemlerini destekler. Açık oluşturma olmaması için tüm işlerin var olan bir iş koleksiyonuna ait olması gerekir. Daha fazla bilgi için bkz. [Scheduler REST API - İşler](https://docs.microsoft.com/rest/api/scheduler/jobs). Bu işlemler için URI adresi aşağıda verilmiştir:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>İş koleksiyonu yönetimi
 
-Kotalar ve paylaşılan ayarlarla eşleştirilen işlerin ve iş koleksiyonlarının oluşturulmasını ve düzenlenmesini destekler. Örneğin kotalar, maksimum iş sayısını ve en küçük yineleme aralığını belirtir. Daha fazla bilgi için bkz. [Scheduler REST API - İş Koleksiyonları](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Bu işlemler için URI adresi aşağıda veda edebilirsiniz:
+Kotalar ve paylaşılan ayarlarla eşleştirilen işlerin ve iş koleksiyonlarının oluşturulmasını ve düzenlenmesini destekler. Örneğin kotalar, maksimum iş sayısını ve en küçük yineleme aralığını belirtir. Daha fazla bilgi için bkz. [Scheduler REST API - İş Koleksiyonları](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Bu işlemler için URI adresi aşağıda verilmiştir:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>İş geçmişi yönetimi
 
-Geçen iş süresi ve iş yürütme sonuçları gibi 60 günlük iş yürütme geçmişinin alınması için GET işleminin kullanılmasını destekler. Durum ve duruma göre filtreleme için sorgu dizesi parametresi desteği sunar. Daha fazla bilgi için bkz. [Scheduler REST API - İşler - İş Geçmişini Listeleme](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). İşte bu işlem için URI adresi:
+Geçen iş süresi ve iş yürütme sonuçları gibi 60 günlük iş yürütme geçmişinin alınması için GET işleminin kullanılmasını destekler. Durum ve duruma göre filtreleme için sorgu dizesi parametresi desteği sunar. Daha fazla bilgi için bkz. [Scheduler REST API - İşler - İş Geçmişini Listeleme](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Bu işlemin URI adresi aşağıdadır:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure Scheduler, birden fazla iş türünü destekler: 
 
-* VAROLAN bir hizmet veya iş yükü için bitiş noktasına sahip olduğunuzda TLS'yi destekleyen HTTPS işleri de dahil olmak üzere HTTP işleri
+* Mevcut bir hizmet veya iş yükü için uç nokta olduğunda, için TLS 'yi destekleyen HTTPS işleri dahil olmak üzere HTTP işleri
 * Depolama kuyruklarına ileti gönderme gibi Depolama kuyruklarını kullanan iş yükleri için Depolama kuyruğu işleri
 * Service Bus kuyruklarını kullanan iş yükleri için Service Bus kuyruğu işleri
 * Service Bus konularını kullanan iş yükleri için Service Bus konusu işleri
@@ -85,12 +85,12 @@ Bir Scheduler işi genel olarak şu temel bölümlerden oluşur:
 | Öğe | Gerekli | Açıklama | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Hayır | [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) saat dilimi farkına sahip olan işin başlangıç zamanı | 
-| [**Eylem**](#action) | Evet | **errorAction** nesnesi de içerebilecek birincil eylem ayrıntıları | 
+| [**ön**](#action) | Yes | **errorAction** nesnesi de içerebilecek birincil eylem ayrıntıları | 
 | [**errorAction**](#error-action) | Hayır | Birincil eylemin başarısız olması durumunda çalışan ikinci eylemin ayrıntıları |
-| [**Yineleme**](#recurrence) | Hayır | Yinelenen bir işin sıklık ve aralık gibi ayrıntıları | 
+| [**yinelemeyi**](#recurrence) | Hayır | Yinelenen bir işin sıklık ve aralık gibi ayrıntıları | 
 | [**retryPolicy**](#retry-policy) | Hayır | Bir eylemin yeniden deneme sıklığını belirten ayrıntılar | 
-| [**durum**](#state) | Evet | İşin geçerli durumunun ayrıntıları |
-| [**Durum**](#status) | Evet | Hizmet tarafından denetlenen geçerli iş durumu ayrıntıları |
+| [**durum**](#state) | Yes | İşin geçerli durumunun ayrıntıları |
+| [**durumlarına**](#status) | Yes | Hizmet tarafından denetlenen geçerli iş durumu ayrıntıları |
 ||||
 
 Bu örnekte bir HTTP eyleminin kapsamlı iş tanımı gösterilmiştir ve öğeler sonraki bölümlerde ayrıntılı bir şekilde açıklanacaktır: 
@@ -248,16 +248,16 @@ Birincil **eylemde** olduğu gibi, hata eylemi diğer eylemler temelinde basit y
 
 | Özellik | Gerekli | Değer | Açıklama | 
 |----------|----------|-------|-------------| 
-| **Frekans** | **recurrence** kullanıldığında evet | "Minute", "Hour", "Day", "Week", "Month", "Year" | Yinelemeler arası zaman birimi | 
-| **Aralığı** | Hayır | 1-1000 arası, ikisi de dahil | **frequency** nesnesine göre yinelemeler arasındaki zaman birimi sayısını belirleyen pozitif tamsayı | 
-| **Zamanlama** | Hayır | Değişir | Daha karmaşık ve gelişmiş zamanlamaların ayrıntıları. Bkz. **hours**, **minutes**, **weekDays**, **months** ve **monthDays** | 
-| **Saat** | Hayır | 1-24 arası | İşin çalıştırılacağı saati belirten dizi | 
-| **minutes** | Hayır | 0 ile 59 arasında | İşin çalıştırılacağı dakikayı belirten dizi | 
+| **lemiyor** | **recurrence** kullanıldığında evet | "Minute", "Hour", "Day", "Week", "Month", "Year" | Yinelemeler arası zaman birimi | 
+| **aralığında** | Hayır | 1-1000 arası, ikisi de dahil | **frequency** nesnesine göre yinelemeler arasındaki zaman birimi sayısını belirleyen pozitif tamsayı | 
+| **çizelgesini** | Hayır | Değişir | Daha karmaşık ve gelişmiş zamanlamaların ayrıntıları. Bkz. **hours**, **minutes**, **weekDays**, **months** ve **monthDays** | 
+| **saatlerinin** | Hayır | 1-24 arası | İşin çalıştırılacağı saati belirten dizi | 
+| **dakika** | Hayır | 0-59 | İşin çalıştırılacağı dakikayı belirten dizi | 
 | **months** | Hayır | 1-12 arası | İşin çalıştırılacağı ayı belirten dizi | 
 | **monthDays** | Hayır | Değişir | İşin çalıştırılacağı ayın gününü belirten dizi | 
 | **weekDays** | Hayır | "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" | İşin çalıştırılacağı haftanın gününü belirten dizi | 
-| **count** | Hayır | <*Hiçbiri*> | Yineleme sayısı. Varsayılan değer sonsuzdur. **count** ve **endTime** nesnelerini birlikte kullanamazsınız ancak ilk tamamlanan kural uygulanır. | 
-| **endTime** | Hayır | <*Hiçbiri*> | Yinelemenin durdurulacağı tarih ve saat. Varsayılan değer sonsuzdur. **count** ve **endTime** nesnelerini birlikte kullanamazsınız ancak ilk tamamlanan kural uygulanır. | 
+| **biriktirme** | Hayır | <*seçim*> | Yineleme sayısı. Varsayılan değer sonsuzdur. **count** ve **endTime** nesnelerini birlikte kullanamazsınız ancak ilk tamamlanan kural uygulanır. | 
+| **endTime** | Hayır | <*seçim*> | Yinelemenin durdurulacağı tarih ve saat. Varsayılan değer sonsuzdur. **count** ve **endTime** nesnelerini birlikte kullanamazsınız ancak ilk tamamlanan kural uygulanır. | 
 ||||
 
 Bu öğeler hakkında daha fazla bilgi için bkz. [Karmaşık zamanlamalar ve gelişmiş yinelemeler oluşturma](../scheduler/scheduler-advanced-complexity.md).
@@ -278,7 +278,7 @@ Bir Scheduler işinin başarısız olması durumunda Scheduler uygulamasının e
 
 | Özellik | Gerekli | Değer | Açıklama | 
 |----------|----------|-------|-------------| 
-| **retryType** | Evet | **Fixed**, **None** | Bir yenileme ilkesi belirtip (**fixed**) belirtmediğinizi (**none**) belirler. | 
+| **retryType** | Yes | **Fixed**, **None** | Bir yenileme ilkesi belirtip (**fixed**) belirtmediğinizi (**none**) belirler. | 
 | **retryInterval** | Hayır | PT30S | Yeniden deneme girişimleri arasındaki aralığı ve sıklığı [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) belirtir. Minimum değer 15 saniye, maksimum değer ise 18 aydır. | 
 | **retryCount** | Hayır | 4 | Yeniden deneme girişimlerinin sayısını belirtir. Maksimum değer 20'dir. | 
 ||||

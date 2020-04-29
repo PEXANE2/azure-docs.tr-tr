@@ -1,6 +1,6 @@
 ---
-title: Ortamınızı ölçeklendirme - Azure Time Series Öngörüleri| Microsoft Dokümanlar
-description: Azure portalını kullanarak Azure Zaman Serisi Öngörüleri ortamınızı nasıl ölçeklendireceklerini öğrenin.
+title: Ortamınızı ölçeklendirme-Azure Time Series Insights | Microsoft Docs
+description: Azure portal kullanarak Azure Time Series Insights ortamınızı ölçeklendirmeyi öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9604f0c6eeb9d0ac4b7d07f1ab1ba03285fd60fe
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640078"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Zaman Serisi Öngörüleri ortamınızı ölçeklendirme
+# <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights ortamınızı ölçeklendirme
 
-Bu makalede, [Azure portalını](https://portal.azure.com)kullanarak Zaman Serisi Öngörüler ortamınızın kapasitesini nasıl değiştireceğiniz açıklanmaktadır. Kapasite, seçtiğiniz SKU ile ilişkili giriş hızına, depolama kapasitesine ve maliyete uygulanan çarpandır.
+Bu makalede, [Azure Portal](https://portal.azure.com)kullanarak Time Series Insights ortamınızın kapasitesinin nasıl değiştirileceği açıklanır. Kapasite, giriş oranına, depolama kapasitesine ve seçtiğiniz SKU 'la ilişkili maliyete uygulanan çarpandır.
 
-Belirli bir fiyatlandırma SKU'su içindeki kapasiteyi artırmak veya azaltmak için Azure portalını kullanabilirsiniz.
+Belirli bir fiyatlandırma SKU 'SU içindeki kapasiteyi artırmak veya azaltmak için Azure portal kullanabilirsiniz.
 
-Ancak, fiyatlandırma katmanı SKU'yu değiştirmeye izin verilmez. Örneğin, S1 fiyatlandırmaSKU'su olan bir ortam S2'ye dönüştürülemez veya tam tersi.
+Ancak, fiyatlandırma katmanı SKU 'sunda değişiklik yapılmasına izin verilmez. Örneğin, S1 fiyatlandırma SKU 'SU olan bir ortam S2 'e dönüştürülemez veya tam tersi de geçerlidir.
 
 ## <a name="ga-limits"></a>GA sınırları
 
@@ -32,26 +32,26 @@ Ancak, fiyatlandırma katmanı SKU'yu değiştirmeye izin verilmez. Örneğin, S
 
 ## <a name="change-the-capacity-of-your-environment"></a>Ortamınızın kapasitesini değiştirme
 
-1. Azure portalında Time Series Öngörüleri ortamınızı bulun ve seçin.
+1. Azure portal, Time Series Insights ortamınızı bulun ve seçin.
 
-1. Time Series Insights ortamınızın menüsünde **Depolama Yapılandırması'nı**seçin.
+1. Time Series Insights ortamınızın menüsünde **depolama yapılandırması**' nı seçin.
 
-   [![Zaman Serisi Öngörüleri kapasitenizi yapılandırın](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
+   [![Time Series Insights kapasitenizi yapılandırın](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
-1. Giriş hızlarınız ve depolama kapasiteniz için gereksinimleri karşılayan kapasiteyi seçmek için **Kapasite** kaydırıcısını ayarlayın. Değişikliğin etkisini göstermek için **Giriş hızına,** **Depolama kapasitesine**ve **Tahmini maliyet** güncelleştirmesine dinamik olarak dikkat edin.
+1. Giriş hızlarınız ve depolama kapasiteniz için gereksinimleri karşılayan kapasiteyi seçmek için **Kapasite** kaydırıcısını ayarlayın. Değişikliğin etkisini göstermek için, giriş **oranına**, **depolama kapasitesine**ve **Tahmini maliyet** güncelleştirmesine dinamik olarak dikkat edin.
 
-   [![Kapasite kaydırıcısını kullanarak ortamınızı yapılandırın](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
+   [![Kapasite kaydırıcısını kullanarak ortamınızı yapılandırma](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
-   Alternatif olarak, kaydırıcının sağındaki metin kutusuna kapasite çarpanı sayısını yazabilirsiniz.
+   Alternatif olarak, kaydırıcının sağ tarafındaki metin kutusuna kapasite çarpanı sayısını yazabilirsiniz.
 
-1. Ortamı ölçeklendirmek için **Kaydet'i** seçin. İlerleme göstergesi, değişiklik kısa bir süre için yapılana kadar görüntülenir.
+1. Ortamı ölçeklendirmek için **Kaydet** ' i seçin. İlerleme göstergesi, değişiklik kaydedilene kadar anlık olarak görüntülenir.
 
-1. Yeni kapasitenin [azaltmayı önlemek için yeterli](time-series-insights-diagnose-and-solve-problems.md)olduğunu doğrulayın.
+1. [Azaltmayı engellemek için](time-series-insights-diagnose-and-solve-problems.md)yeni kapasitenin yeterli olduğunu doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi için, [Zaman Serisi Öngörüleri'nde anlama tutmayı gözden geçirin.](time-series-insights-concepts-retention.md)
+- Daha fazla bilgi için [Time Series Insights ' de saklama süresini anlama](time-series-insights-concepts-retention.md)konusunu gözden geçirin.
 
-- Azure [Zaman Serisi Öngörüleri'nde veri saklama](time-series-insights-how-to-configure-retention.md)yı yapılandırma hakkında bilgi edinin.
+- [Azure Time Series Insights 'da veri bekletmeyi yapılandırma](time-series-insights-how-to-configure-retention.md)hakkında bilgi edinin.
 
-- [Çevrenizi planlama](time-series-insights-environment-planning.md)hakkında bilgi edinin.
+- [Ortamınızı planlama](time-series-insights-environment-planning.md)hakkında bilgi edinin.

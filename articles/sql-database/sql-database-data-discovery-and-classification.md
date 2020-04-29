@@ -1,6 +1,6 @@
 ---
 title: Veri Bulma ve Sınıflandırma
-description: Azure SQL Veritabanı ve Azure Synapse Analytics için Veri Bulma & Sınıflandırması
+description: Azure SQL veritabanı ve Azure SYNAPSE Analytics için veri bulma & sınıflandırması
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -14,112 +14,112 @@ ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
 ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81766948"
 ---
-# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Veritabanı ve Azure Synapse Analytics için Veri Bulma & Sınıflandırması
+# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için veri bulma & sınıflandırması
 
-Veri Bulma & Sınıflandırması Azure SQL Veritabanı'nda yerleşiktir. Veritabanlarınızdaki hassas verileri keşfetmek, sınıflandırmak, etiketlemek ve raporlamak için gelişmiş özellikler sağlar.
+Veri bulma & sınıflandırması Azure SQL veritabanı 'nda yerleşik olarak bulunur. Veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak için gelişmiş yetenekler sağlar.
 
-En hassas verileriniz iş, mali, sağlık veya kişisel bilgileri içerebilir. Bu verileri keşfetmek ve sınıflandırmak, kuruluşunuzun bilgi koruma yaklaşımında önemli bir rol oynayabilir. Şunlara altyapı sağlayabilir:
+En hassas verileriniz arasında işletme, finans, sağlık hizmetleri veya kişisel bilgiler bulunabilir. Bu verileri bulmak ve sınıflandırmak, kuruluşunuzun bilgi koruma yaklaşımında bir özetleme rolü oynayabilir. Şunlara altyapı sağlayabilir:
 
-- Veri gizliliği standartlarının ve mevzuata uygunluk gerekliliklerinin karşısına çıkmasına yardımcı olmak.
-- Hassas verilere anormal erişim konusunda izleme (denetleme) ve uyarı gibi çeşitli güvenlik senaryoları.
-- Son derece hassas veriler içeren veritabanlarının güvenliğini denetleme ve sertleştirme.
+- Veri gizliliği ve yasal uyumluluk gereksinimleri için standartları karşılamanıza yardımcı olma.
+- Hassas verilere yönelik anormal erişimlerde izleme (denetim) ve uyarı verme gibi çeşitli güvenlik senaryoları.
+- Son derece hassas veriler içeren veritabanlarının güvenliğine erişimi denetleme ve güvenliği artırma.
 
-Veri Bulma & Sınıflandırması, gelişmiş SQL güvenlik yetenekleri için birleşik bir paket olan [Gelişmiş Veri Güvenliği](sql-database-advanced-data-security.md) teklifinin bir parçasıdır. Azure portalının merkezi **SQL Gelişmiş Veri Güvenliği** bölümünden Veri Bulma & Sınıflandırması'na erişebilir ve yönetebilirsiniz.
+Veri bulma & sınıflandırması, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](sql-database-advanced-data-security.md) sunumunun bir parçasıdır. Azure portal Merkezi **SQL gelişmiş veri güvenliği** bölümü aracılığıyla veri bulma & sınıflandırmasına erişip yönetebilirsiniz.
 
 > [!NOTE]
-> Bu makale, Azure SQL Veritabanı ve Azure Synapse Analytics ile ilgilidir. Basitlik için, sql veritabanı nı hem de Azure Synapse'yi ifade etmek için burada *SQL Veritabanı'nı* kullanırız. SQL Server (şirket içi) hakkında bilgi için [SQL Veri Bulma ve Sınıflandırma'ya](https://go.microsoft.com/fwlink/?linkid=866999)bakın.
+> Bu makale Azure SQL veritabanı ve Azure SYNAPSE Analytics ile ilgilidir. Kolaylık olması için SQL *veritabanı* 'Nı burada SQL Database ve Azure SYNAPSE 'e başvuracak şekilde kullanacağız. SQL Server (Şirket içi) hakkında daha fazla bilgi için bkz. [SQL veri bulma ve sınıflandırma](https://go.microsoft.com/fwlink/?linkid=866999).
 
-## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Veri Bulma & Sınıflandırması nedir?
+## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Veri bulma & sınıflandırması nedir?
 
-Veri Bulma & Sınıflandırması bir dizi gelişmiş hizmet ve yeni SQL Veritabanı özellikleri sunar. SQL Veritabanı için yalnızca veritabanını değil, verileri de korumayı amaçlayan yeni bir bilgi koruma paradigması oluşturur. Paradigma şunları içerir:
+Veri bulma & sınıflandırması, bir dizi gelişmiş hizmeti ve yeni SQL veritabanı yeteneklerini tanıtır. Yalnızca veritabanını değil, verileri korumaya ve SQL veritabanı için yeni bir bilgi koruma paradigması oluşturur. Paradigma şunları içerir:
 
-- **Keşif ve öneriler:** Sınıflandırma altyapısı veritabanınızı tarar ve hassas olabilecek veriler içeren sütunları tanımlar. Daha sonra Azure portalı üzerinden önerilen sınıflandırmayı gözden geçirmeniz ve uygulamanız için kolay bir yol sağlar.
+- **Bulma ve öneriler:** Sınıflandırma Altyapısı, veritabanınızı tarar ve potansiyel olarak hassas veriler içeren sütunları tanımlar. Daha sonra, Azure portal aracılığıyla önerilen sınıflandırmayı gözden geçirmek ve uygulamak için kolay bir yol sağlar.
 
-- **Etiketleme:** SQL veritabanı altyapısına eklenen yeni meta veri özniteliklerini kullanarak sütunlara kalıcı olarak duyarlılık sınıflandırma etiketleri uygulayabilirsiniz. Bu meta veriler daha sonra gelişmiş, duyarlılığa dayalı denetim ve koruma senaryoları için kullanılabilir.
+- **Etiketleme:** SQL veritabanı altyapısına eklenen yeni meta veri özniteliklerini kullanarak, duyarlı sınıflandırma etiketlerini kalıcı olarak sütunlara uygulayabilirsiniz. Bu meta veriler daha sonra Gelişmiş, duyarlılık tabanlı denetim ve koruma senaryoları için kullanılabilir.
 
-- **Sorgu sonucu ayarlı duyarlılık:** Sorgu sonuç kümesinin duyarlılığı, denetim amacıyla gerçek zamanlı olarak hesaplanır.
+- **Sorgu sonucu-ayarlanan duyarlılık:** Sorgu sonuç kümesinin duyarlılığı, denetim amaçlarıyla gerçek zamanlı olarak hesaplanır.
 
-- **Görünürlük:** Veritabanı sınıflandırma durumunu Azure portalındaki ayrıntılı bir panoda görüntüleyebilirsiniz. Ayrıca, uyumluluk ve denetim amaçları ve diğer ihtiyaçlar için kullanmak üzere Excel biçiminde bir rapor indirebilirsiniz.
+- **Görünürlük:** Veritabanı sınıflandırması durumunu Azure portal ayrıntılı bir panoda görüntüleyebilirsiniz. Ayrıca, uyumluluk ve denetim amaçlarıyla ve diğer gereksinimlerde kullanmak üzere bir raporu Excel biçiminde indirebilirsiniz.
 
-## <a name="discover-classify-and-label-sensitive-columns"></a><a id="discover-classify-columns"></a>Hassas sütunları keşfedin, sınıflandırın ve etiketle
+## <a name="discover-classify-and-label-sensitive-columns"></a><a id="discover-classify-columns"></a>Hassas sütunları bulma, sınıflandırma ve etiketleme
 
-Bu bölümde aşağıdaki adımları açıklanır:
+Bu bölümde, aşağıdaki adımlar açıklanmaktadır:
 
-- Veritabanınızda hassas veriler içeren sütunları bulma, sınıflandırma ve etiketleme.
-- Veritabanınızın geçerli sınıflandırma durumunu görüntüleme ve raporları dışa aktarma.
+- Veritabanınızdaki hassas verileri içeren sütunları keşfetme, sınıflandırma ve etiketleme.
+- Veritabanınızın geçerli sınıflandırma durumunu görüntüleme ve raporları dışarı aktarma.
 
-Sınıflandırma iki meta veri öznitelikleri içerir:
+Sınıflandırma iki meta veri özniteliği içerir:
 
-- **Etiketler**: Sütunda depolanan verilerin duyarlılık düzeyini tanımlamak için kullanılan ana sınıflandırma öznitelikleri.  
-- **Bilgi türleri**: Sütunda depolanan veri türü hakkında daha ayrıntılı bilgi sağlayan öznitelikler.
+- **Etiketler**: sütunda depolanan verilerin duyarlılık düzeyini tanımlamak için kullanılan ana sınıflandırma öznitelikleri.  
+- **Bilgi türleri**: sütunda depolanan verilerin türü hakkında daha ayrıntılı bilgiler sağlayan öznitelikler.
 
-### <a name="define-and-customize-your-classification-taxonomy"></a>Sınıflandırma taksonominizi tanımlayın ve özelleştirin
+### <a name="define-and-customize-your-classification-taxonomy"></a>Sınıflandırma taksonominizi tanımlama ve özelleştirme
 
-Veri Bulma & Sınıflandırması, yerleşik bir duyarlılık etiketleri kümesi ve yerleşik bir bilgi türleri kümesi ve bulma mantığıyla birlikte gelir. Artık bu taksonomiyi özelleştirebilir ve özel olarak kendi ortamınız için sınıflandırma yapıları derecelendirme kümesi oluşturabilirsiniz.
+Veri bulma & sınıflandırması, yerleşik bir duyarlılık etiketleri kümesi ve yerleşik bir bilgi türleri ve bulma mantığı kümesiyle gelir. Artık bu taksonomiyi özelleştirebilir ve özel olarak kendi ortamınız için sınıflandırma yapıları derecelendirme kümesi oluşturabilirsiniz.
 
-Sınıflandırma taksonomisini tüm Azure kuruluşunuz için tek bir merkezi yerde tanımlar ve özelleştirin. Bu konum, güvenlik politikanızın bir parçası olarak Azure Güvenlik Merkezi'ndedir. [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) Bu görevi yalnızca kuruluşun kök yönetim grubunda yönetim hakları olan biri yapabilir.
+Sınıflandırma taksonominizi Azure kuruluşunuzun tamamı için tek bir yerde tanımlayabilir ve özelleştirebilirsiniz. Bu konum, güvenlik ilkenizin bir parçası olarak [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro)'nde bulunur. Yalnızca kuruluşun kök yönetim grubunda yönetici haklarına sahip bir kişi bu görevi gerçekleştirebilir.
 
-SQL bilgi koruması için ilke yönetiminin bir parçası olarak, özel etiketler tanımlayabilir, sıralayabilir ve bunları seçili bilgi türleri kümesiyle ilişkilendirebilirsiniz. Ayrıca kendi özel bilgi türleri ekleyebilirsiniz ve dize desenleri ile bunları yapılandırmak. Desenler, veritabanlarınızdaki bu veri türünü tanımlamak için bulma mantığına eklenir.
+SQL Information Protection ilke yönetiminin bir parçası olarak özel Etiketler tanımlayabilir, bunları derecelendirip bunları seçili bir bilgi türleri kümesiyle ilişkilendirebilirsiniz. Ayrıca, kendi özel bilgi türlerinizi ekleyebilir ve bunları dize desenleriyle yapılandırabilirsiniz. Desenler, veritabanlarınızdaki bu tür verileri tanımlamak için bulma mantığına eklenir.
 
-[SQL Bilgi Koruma ilkesi nasıl yapılır kılavuzunda](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)ilkenizi özelleştirme ve yönetme hakkında daha fazla bilgi edinin.
+[SQL Information Protection ilkesi nasıl yapılır kılavuzunda](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)ilkenizi özelleştirme ve yönetme hakkında daha fazla bilgi edinin.
 
-Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kullanarak tek tek veritabanlarını sınıflandırmaya devam edebilirsiniz.
+Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kullanarak ayrı veritabanlarını sınıflandırarak devam edebilirsiniz.
 
-### <a name="classify-your-sql-database"></a>SQL veritabanınızı sınıflandırma
+### <a name="classify-your-sql-database"></a>SQL veritabanınızı sınıflandırın
 
-1. [Azure portalına](https://portal.azure.com)gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 
-2. Azure SQL Veritabanı bölmenizde **Güvenlik** başlığı altında **Gelişmiş Veri Güvenliği'ne** gidin. **Gelişmiş veri güvenliği'ni**seçin ve ardından Veri Bulma **& Sınıflandırma** kartını seçin.
+2. Azure SQL veritabanı bölmesinizdeki **güvenlik** başlığı altında **Gelişmiş veri güvenliği** ' ne gidin. **Gelişmiş veri güvenliği**' ni seçin ve ardından **veri bulma & sınıflandırma** kartını seçin.
 
-   ![Azure portalında Gelişmiş Veri Güvenliği bölmesi](./media/sql-data-discovery-and-classification/data_classification.png)
+   ![Azure portal gelişmiş veri güvenliği bölmesi](./media/sql-data-discovery-and-classification/data_classification.png)
 
-3. Veri **bulma & sınıflandırma** sayfasında, **Genel Bakış** sekmesi veritabanının geçerli sınıflandırma durumunun bir özetini içerir. Özet, yalnızca belirli şema parçalarını, bilgi türlerini ve etiketleri göstermek için filtre uygulayabileceğiniz tüm gizli sütunların ayrıntılı bir listesini içerir. Henüz herhangi bir sütun sınıflandırdıysanız, [adım 5'e atlayın.](#step-5)
+3. **Veri bulma & sınıflandırması** sayfasında, **genel bakış** sekmesi veritabanının geçerli sınıflandırma durumunun bir özetini içerir. Özet, yalnızca belirli şema parçalarını, bilgi türlerini ve etiketleri göstermek üzere filtreleyebileceğiniz tüm sınıflandırılan sütunların ayrıntılı bir listesini içerir. Hiçbir sütunu henüz sınıflandırmadıysanız [5. adıma atlayın](#step-5).
 
    ![Geçerli sınıflandırma durumunun özeti](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png)
 
-4. Excel biçiminde bir rapor indirmek için bölmenin üst menüsünde **Dışa** Aktar'ı seçin.
+4. Excel biçiminde bir rapor indirmek için bölmenin üst menüsünde **dışarı aktar** ' ı seçin.
 
-5. <a id="step-5"></a>Verilerinizi sınıflandırmaya başlamak **için, Veri bulma & sınıflandırma** sayfasındaki **Sınıflandırma** sekmesini seçin.
+5. <a id="step-5"></a>Verilerinizi **sınıflandırmayla** başlamak için **veri bulma & sınıflandırma** sayfasında sınıflandırma sekmesini seçin.
 
-    Sınıflandırma altyapısı veritabanınızı hassas olabilecek verileri içeren sütunlar için tarar ve önerilen sütun sınıflandırmalarının bir listesini sağlar.
+    Sınıflandırma Altyapısı, veritabanınızı potansiyel olarak hassas veriler içeren sütunlar için tarar ve önerilen sütun sınıflandırmalarının bir listesini sağlar.
 
 6. Sınıflandırma önerilerini görüntüleyin ve uygulayın:
 
-   - Önerilen sütun sınıflandırmaları listesini görüntülemek için bölmenin altındaki öneriler panelini seçin.
+   - Önerilen sütun sınıflandırmalarının listesini görüntülemek için bölmenin alt kısmındaki öneriler panelini seçin.
 
-   - Belirli bir sütun için bir öneri kabul etmek için, ilgili satırın sol sütunundaki onay kutusunu seçin. Tüm önerileri kabul edilmiş olarak işaretlemek için, öneriler tablosu üstbilgisinde en soldaki onay kutusunu seçin.
+   - Belirli bir sütunun önerisini kabul etmek için ilgili satırın sol sütunundaki onay kutusunu seçin. Tüm önerileri kabul edildi olarak işaretlemek için, öneriler tablosu üstbilgisindeki en soldaki onay kutusunu seçin.
 
-       ![Sınıflandırma önerileri listesinden gözden geçirme ve seçme](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
+       ![Sınıflandırma önerileri listesini gözden geçirin ve seçin](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-   - Seçili önerileri uygulamak için **seçili önerileri kabul et'i**seçin.
+   - Seçili önerileri uygulamak için **Seçili önerileri kabul et**' i seçin.
 
-7. Sütunları el ile, alternatif olarak veya öneri tabanlı sınıflandırmaya ek olarak da sınıflandırabilirsiniz:
+7. Sütunları, alternatif olarak veya öneri tabanlı sınıflandırmanın yanı sıra el ile de sınıflandırabilirsiniz:
 
-   1. Bölmenin üst menüsünde **sınıflandırma ekle'yi** seçin.
+   1. Bölmenin üst menüsünde **Sınıflandırma Ekle** ' yi seçin.
 
-   1. Açılan bağlam penceresinde, sınıflandırmak istediğiniz şema, tablo ve sütunile bilgi türü ve duyarlılık etiketini seçin.
+   1. Açılan bağlam penceresinde, sınıflandırmak istediğiniz şemayı, tabloyu ve sütunu ve bilgi türünü ve duyarlılık etiketini seçin.
 
-   1. Bağlam penceresinin altındaki **sınıflandırmayı ekle'yi** seçin.
+   1. Bağlam penceresinin alt kısmında **Sınıflandırma Ekle** ' yi seçin.
 
-      ![Sınıflandırmak için bir sütun seçin](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
+      ![Sınıflamak için bir sütun seçin](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
-8. Sınıflandırmanızı tamamlamak ve veritabanı sütunlarını yeni sınıflandırma meta verileriyle sürekli etiketlemek (etiketlemek) için pencerenin üst menüsünde **Kaydet'i** seçin.
+8. Sınıflandırmanızı ve kalıcı olarak etiketlemesini (etiketleyerek) Yeni sınıflandırma meta verileri ile veritabanı sütunlarını kullanarak, pencerenin üst menüsünde **Kaydet** ' i seçin.
 
-## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Hassas verilere erişimi denetleme
+## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Gizli verilere erişimi denetleme
 
-Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izleyebilme yeteneğidir. [Azure SQL Veritabanı Denetimi,](sql-database-auditing.md) denetim günlüğüne yeni bir `data_sensitivity_information`alan içerecek şekilde geliştirildi. Bu alan, sorgu tarafından döndürülen verilerin duyarlılık sınıflandırmalarını (etiketleri) kaydeder. Bir örneği aşağıda verilmiştir:
+Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izleme olanağıdır. [Azure SQL veritabanı denetimi](sql-database-auditing.md) , adlı `data_sensitivity_information`denetim günlüğüne yeni bir alan içerecek şekilde geliştirilmiştir. Bu alan, bir sorgu tarafından döndürülen verilerin duyarlılık sınıflandırmalarını (etiketleri) günlüğe kaydeder. Bir örneği aşağıda verilmiştir:
 
 ![Denetim günlüğü](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
 ## <a name="permissions"></a><a id="permissions"></a>İzinler
 
-Bu yerleşik roller, Azure SQL veritabanının veri sınıflandırmasını okuyabilir:
+Bu yerleşik roller, bir Azure SQL veritabanının veri sınıflandırmasını okuyabilir:
 
 - Sahip
 - Okuyucu
@@ -127,67 +127,67 @@ Bu yerleşik roller, Azure SQL veritabanının veri sınıflandırmasını okuya
 - SQL Güvenlik Yöneticisi
 - Kullanıcı Erişimi Yöneticisi
 
-Bu yerleşik roller, Azure SQL veritabanının veri sınıflandırmasını değiştirebilir:
+Bu yerleşik roller, bir Azure SQL veritabanının veri sınıflandırmasını değiştirebilir:
 
 - Sahip
 - Katılımcı
 - SQL Güvenlik Yöneticisi
 
-[Azure kaynakları için RBAC'daki](https://docs.microsoft.com/azure/role-based-access-control/overview)rol tabanlı izinler hakkında daha fazla bilgi edinin.
+[Azure kaynakları Için RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)'de rol tabanlı izinler hakkında daha fazla bilgi edinin.
 
-## <a name="manage-classifications"></a><a id="manage-classification"></a>Sınıflandırmaları yönetme
+## <a name="manage-classifications"></a><a id="manage-classification"></a>Sınıflandırmaları Yönet
 
-Sınıflandırmaları yönetmek için T-SQL, REST API veya PowerShell'i kullanabilirsiniz.
+Sınıflandırmaları yönetmek için T-SQL, REST API veya PowerShell kullanabilirsiniz.
 
-### <a name="use-t-sql"></a>T-SQL'i kullanma
+### <a name="use-t-sql"></a>T-SQL kullanma
 
-Sütun sınıflandırmaları eklemek veya kaldırmak ve tüm veritabanı için tüm sınıflandırmaları almak için T-SQL'i kullanabilirsiniz.
+T-SQL ' i sütun sınıflandırmaları eklemek veya kaldırmak ve tüm veritabanının sınıflandırmalarını almak için kullanabilirsiniz.
 
 > [!NOTE]
-> Etiketleri yönetmek için T-SQL'i kullandığınızda, bir sütuna eklediğiniz etiketlerin kuruluşun bilgi koruma ilkesinde (portal önerilerinde görünen etiket kümesi) bulunduğuna dair bir doğrulama yoktur. Yani, bunu doğrulamak size kalmış.
+> Etiketleri yönetmek için T-SQL kullandığınızda, bir sütuna eklediğiniz etiketlerin, kuruluşun bilgi koruma ilkesinde (portal önerilerinde görünen etiketler kümesi) var olduğunu belirten bir doğrulama yoktur. Bu nedenle, bunu doğrulamak sizin için en iyisidir.
 
-Sınıflandırmalar için T-SQL kullanımı hakkında bilgi için aşağıdaki referanslara bakın:
+Sınıflandırmalar için T-SQL kullanma hakkında daha fazla bilgi için aşağıdaki başvurulara bakın:
 
-- Bir veya daha fazla sütunun sınıflandırMasını eklemek veya güncellemek için: [HASSASİTE SINIFLANDIRILMASI EKLE](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Sınıflandırmayı bir veya daha fazla sütundan kaldırmak için: [DAMLA HASSASİyeSİ SINIFLANDIRILMASI](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- Veritabanındaki tüm sınıflandırmaları görüntülemek için: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Bir veya daha fazla sütunun sınıflandırmasını eklemek veya güncelleştirmek için: [DUYARLıLıK sınıflandırması Ekle](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Sınıflandırmayı bir veya daha fazla sütundan kaldırmak için: [DÜŞÜRÜLME DUYARLıLıK sınıflandırması](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Veritabanındaki tüm sınıflandırmaları görüntülemek için: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>Geri Kalan API'yi kullanın
+### <a name="use-the-rest-api"></a>REST API 'YI kullanma
 
-Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST API'sini kullanabilirsiniz. Yayınlanan REST API aşağıdaki işlemleri destekler:
+Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST API kullanabilirsiniz. Yayımlanan REST API aşağıdaki işlemleri destekler:
 
-- [Oluştur Veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): Belirtilen sütunun duyarlılık etiketini oluşturur veya güncelleştirir.
-- [Delete](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): Belirtilen sütunun duyarlılık etiketini siler.
-- [Öneriyi Devre Dışı:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation)Belirtilen sütundaki duyarlılık önerilerini devre dışı kılabilir.
-- [Öneriyi Etkinleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): Belirtilen sütunda duyarlılık önerilerini sağlar. (Öneriler varsayılan olarak tüm sütunlarda etkinleştirilir.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): Belirtilen sütunun duyarlılık etiketini alır.
-- [Liste Geçerli Veritabanı](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Belirtilen veritabanının geçerli duyarlılık etiketlerini alır.
-- [Veritabanı Tarafından Önerilen Liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Belirtilen veritabanının önerilen duyarlılık etiketlerini alır.
+- [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): belirtilen sütunun duyarlılık etiketini oluşturur veya güncelleştirir.
+- [Sil](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): belirtilen sütunun duyarlılık etiketini siler.
+- [Öneriyi devre dışı bırak](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): belirtilen sütunda duyarlılık önerilerini devre dışı bırakır.
+- [Öneriyi etkinleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): belirtilen sütunda duyarlılık önerilerini etkinleştirir. (Öneriler varsayılan olarak tüm sütunlarda etkindir.)
+- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): belirtilen sütunun duyarlılık etiketini alır.
+- [Geçerli veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): belirtilen veritabanının geçerli duyarlılık etiketlerini alır.
+- [Veritabanı tarafından önerilen liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): belirtilen veritabanının önerilen duyarlılık etiketlerini alır.
 
 ### <a name="use-powershell-cmdlets"></a>PowerShell cmdlet'leri kullanma
-PowerShell'i Azure SQL Veritabanı ve yönetilen örnekler için sınıflandırmaları ve önerileri yönetmek için kullanabilirsiniz.
+Azure SQL veritabanı ve yönetilen örneklerin sınıflandırmalarını ve önerilerini yönetmek için PowerShell 'i kullanabilirsiniz.
 
-#### <a name="powershell-cmdlets-for-sql-database"></a>SQL Veritabanı için PowerShell cmdlets
+#### <a name="powershell-cmdlets-for-sql-database"></a>SQL veritabanı için PowerShell cmdlet 'leri
 
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
 - [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
 - [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
-- [Devre Dışı-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
+- [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-#### <a name="powershell-cmdlets-for-managed-instances"></a>Yönetilen örnekler için PowerShell cmdlets
+#### <a name="powershell-cmdlets-for-managed-instances"></a>Yönetilen örnekler için PowerShell cmdlet 'leri
 
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
 - [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
-- [Devre Dışı-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
+- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Sonraki adımlar
 
-- [Gelişmiş Veri Güvenliği](sql-database-advanced-data-security.md)hakkında daha fazla bilgi edinin.
-- Sınıflandırılmış hassas verilerinize erişimi izlemek ve denetlemek için [Azure SQL Veritabanı Denetimi'ni](sql-database-auditing.md) yapılandırmayı düşünün.
-- Veri bulma ve sınıflandırma içeren bir sunu için bkz [&. Veri Maruz](https://www.youtube.com/watch?v=itVi9bkJUNc).
+- [Gelişmiş veri güvenliği](sql-database-advanced-data-security.md)hakkında daha fazla bilgi edinin.
+- Sınıflandırılan gizli verilerinize erişimi izlemek ve denetlemek için [Azure SQL veritabanı denetimini](sql-database-auditing.md) yapılandırmayı düşünün.
+- Veri bulma ve sınıflandırma içeren bir sunum için bkz. [SQL verilerini korumak & bulma, sınıflandırma ve etiketleme | Veriler kullanıma sunuldu](https://www.youtube.com/watch?v=itVi9bkJUNc).

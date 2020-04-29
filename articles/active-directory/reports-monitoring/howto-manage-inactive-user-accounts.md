@@ -1,6 +1,6 @@
 ---
-title: Azure AD'de etkin olmayan kullanıcı hesapları nasıl yönetilir | Microsoft Dokümanlar
-description: Azure AD'de eskimiş kullanıcı hesaplarını nasıl algılayıp işleyeceğiniz hakkında bilgi edinin
+title: Azure AD 'de etkin olmayan kullanıcı hesaplarını yönetme | Microsoft Docs
+description: Azure AD 'de kullanımdan kalkmış olan kullanıcı hesaplarını algılama ve işleme hakkında bilgi edinin
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,34 +18,34 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56e44059268037cfd839fc7c877c5d6c972dead8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886050"
 ---
-# <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Nasıl Olun: Azure AD'de etkin olmayan kullanıcı hesaplarını yönetme
+# <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de etkin olmayan kullanıcı hesaplarını yönetme
 
-Büyük ortamlarda, çalışanlar bir kuruluştan ayrıldıklarında kullanıcı hesapları her zaman silinmez. BT yöneticisi olarak, bu eski kullanıcı hesaplarını algılamak ve işlemek istersiniz, çünkü bunlar bir güvenlik riski oluşturur.
+Büyük ortamlarda, çalışanlar bir kuruluştan ayrıldığında Kullanıcı hesapları her zaman silinmez. BT Yöneticisi olarak, bir güvenlik riskini temsil ettiğinden, bu kullanımdan kaldırılmış Kullanıcı hesaplarını algılamak ve işlemek istersiniz.
 
-Bu makalede, Azure AD'deki eski kullanıcı hesaplarını işlemek için bir yöntem açıklanmaktadır. 
+Bu makalede, Azure AD 'de eski Kullanıcı hesaplarını işlemeye yönelik bir yöntem açıklanmaktadır. 
 
 ## <a name="what-are-inactive-user-accounts"></a>Etkin olmayan kullanıcı hesapları nelerdir?
 
-Etkin olmayan hesaplar, kuruluşunuz üyeleri tarafından artık kaynaklarınıza erişim sağlamak için gerekli olmayan kullanıcı hesaplarıdır. Etkin olmayan hesaplar için önemli bir tanımlayıcı, ortamınızda oturum açmaiçin *bir süredir* kullanılmamış olmalarıdır. Etkin olmayan hesaplar oturum açma etkinliğine bağlı olduğundan, bunları algılamak için başarılı olan son oturum açma nın zaman damgasını kullanabilirsiniz. 
+Etkin olmayan hesaplar, kaynaklarınıza erişim kazanmak için artık kuruluşunuzun üyeleri tarafından gerekli olmayan kullanıcı hesaplarıdır. Etkin olmayan hesaplara yönelik bir anahtar tanımlayıcı, ortamınızda oturum açmak için *bir süredir* kullanılmalarıdır. Etkin olmayan hesaplar oturum açma etkinliğine bağlı olduğundan, bunları tespit etmek için başarılı olan son oturum açma işleminin zaman damgasını kullanabilirsiniz. 
 
-Bu yöntemin zorluğu, ortamınızın durumunda *bir süre için* ne anlama geldiğini tanımlamaktır. Örneğin, kullanıcılar tatilde oldukları için *bir*ortamda bir süre oturum açamayabilir. Etkin olmayan kullanıcı hesapları için deltanızın ne olduğunu tanımlarken, ortamınızda oturum açmamanız için tüm meşru nedenleri hesaba katmalısınız. Birçok kuruluşta, etkin olmayan kullanıcı hesapları için delta 90 ile 180 gün arasındadır. 
+Bu yöntemin zorluğuyla, ortamınız için ne kadar *bir süre boyunca* ne olacağı tanımlanır. Örneğin, kullanıcılar tatilde olduklarından *bir ortamda bir*ortamda oturum açabilirler. Etkin olmayan kullanıcı hesaplarının ne kadar Delta olduğunu tanımlarken ortamınızda oturum açmadığınız tüm yasal nedenlerle etken yapmanız gerekir. Birçok kuruluşta, etkin olmayan kullanıcı hesapları için Delta 90 ile 180 gün arasındadır. 
 
-Son başarılı oturum açma, kullanıcının kaynaklara sürekli erişim gereksinimine ilişkin potansiyel öngörüler sağlar.  Grup üyeliğine veya uygulama erişimine hala ihtiyaç olup olmadığını veya kaldırılıp kaldırılabileceğini belirlemede yardımcı olabilir. Dış kullanıcı yönetimi için, harici bir kullanıcının kiracı içinde hala etkin olup olmadığını veya temizlenmesi gerektiğini anlayabilirsiniz. 
+Son başarılı oturum açma, bir kullanıcının kaynaklara erişim gereksinimi hakkında potansiyel öngörüler sağlar.  Grup üyeliği veya uygulama erişiminin hala gerekli olduğunu veya kaldırılıp kaldırılmadığını belirlemeye yardımcı olabilir. Dış Kullanıcı yönetimi için, bir dış kullanıcının kiracı içinde hala etkin olup olmadığını veya temizlenmesi gerektiğini anlayabilirsiniz. 
 
     
-## <a name="how-to-detect-inactive-user-accounts"></a>Etkin olmayan kullanıcı hesapları nasıl algılatır?
+## <a name="how-to-detect-inactive-user-accounts"></a>Etkin olmayan kullanıcı hesaplarını algılama
 
-**Microsoft Graph** API'nin **signInActivity** kaynak türüne göre ortaya çıkarılan **son SignInDateTime** özelliğini değerlendirerek etkin olmayan hesapları algılarsınız. Bu özelliği kullanarak, aşağıdaki senaryolar için bir çözüm uygulayabilirsiniz:
+**Microsoft Graph** API 'Sinin **signeylemsizlik** kaynak türü tarafından kullanıma sunulan **lastsignındatetime** özelliğini değerlendirerek etkin olmayan hesapları tespit edersiniz. Bu özelliği kullanarak, aşağıdaki senaryolar için bir çözüm uygulayabilirsiniz:
 
-- **Adlarına göre kullanıcılar**: Bu senaryoda, belirli bir kullanıcıyı ada göre ararsınız, bu da son SignInDate'i değerlendirmenizi sağlar:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Ada göre kullanıcılar**: Bu senaryoda,, Lastsignındate değerini değerlendirmenizi sağlayan belirli bir kullanıcı adına göre arama yapabilirsiniz:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Tarihe göre kullanıcılar**: Bu senaryoda, belirli bir tarihten önce lastSignInDateTime olan kullanıcıların listesini isteyin:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Tarihe göre kullanıcılar**: Bu senaryoda, belirli bir tarihten önce bir Lastsignındatetime değeri olan kullanıcıların listesini istemeniz gerekir:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -54,42 +54,42 @@ Son başarılı oturum açma, kullanıcının kaynaklara sürekli erişim gereks
 
 ## <a name="what-you-need-to-know"></a>Bilmeniz gerekenler
 
-Bu bölümde, son SignInDateTime özelliği hakkında bilmeniz gerekenler listelenebileniz.
+Bu bölümde, Lastsignındatetime özelliği hakkında bilmeniz gerekenler listelenmiştir.
 
-### <a name="how-can-i-access-this-property"></a>Bu tesise nasıl erişebilirim?
+### <a name="how-can-i-access-this-property"></a>Bu özelliğe nasıl erişebilirim?
 
-**SonSignInDateTime** özelliği [Microsoft Graph REST API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signInActivity kaynak türü](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) tarafından ortaya çıkar.   
+**Lastsignındatetime** özelliği, [Microsoft Graph REST API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signeylemsizlik kaynak türü](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) tarafından gösterilir.   
 
-### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Son SignInDateTime özelliği Get-AzureAdUser cmdlet üzerinden kullanılabilir mi?
+### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Lastsignındatetime özelliği Get-AzureAdUser cmdlet 'i aracılığıyla kullanılabilir mi?
 
 Hayır.
 
-### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Özellik için Azure AD'nin hangi sürümüne erişmem gerekir?
+### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Bu özelliğe erişmek için hangi Azure AD sürümüne ihtiyacım var?
 
-Bu özelliğe Azure AD'nin tüm sürümlerinde erişebilirsiniz.
+Bu özelliğe Azure AD 'nin tüm sürümlerinde erişebilirsiniz.
 
-### <a name="what-permission-do-i-need-to-read-the-property"></a>Mülkü okumak için ne gibi izinlere ihtiyacım var?
+### <a name="what-permission-do-i-need-to-read-the-property"></a>Özelliği okumak için hangi izni almam gerekir?
 
 Bu özelliği okumak için aşağıdaki hakları vermeniz gerekir: 
 
-- AuditLogs.Read.All
-- Organizasyon.Read.All  
+- AuditLogs. Read. All
+- Organi. Read. All  
 
 
-### <a name="when-does-azure-ad-update-the-property"></a>Azure AD özelliği ne zaman günceller?
+### <a name="when-does-azure-ad-update-the-property"></a>Azure AD, özelliği güncelleştirne zaman?
 
-Temel veri deposunun güncelleştirmesinde başarılı sonuçlar elde edilen her etkileşimli oturum açma. Genellikle, başarılı oturum açma lar ilgili oturum açma raporunda 10 dakika içinde ortaya çıkar.
+Başarılı olan her etkileşimli oturum açma işlemi, temel alınan veri deposunun bir güncelleştirmesine neden olur. Genellikle, başarılı oturum açma işlemleri, ilgili oturum açma raporunda 10 dakika içinde görünür.
  
 
-### <a name="what-does-a-blank-property-value-mean"></a>Boş bir özellik değeri ne anlama gelir?
+### <a name="what-does-a-blank-property-value-mean"></a>Boş bir özellik değeri ne anlama geliyor?
 
-Son SignInDateTime zaman damgası oluşturmak için başarılı bir oturum açmanız gerekir. LastSignInDateTime özelliği yeni bir özellik olduğundan, aşağıdaki durumlarda son SignInDateTime özelliğinin değeri boş olabilir:
+Bir Lastsignındatetime zaman damgası oluşturmak için başarılı bir oturum açma işlemi gerekir. Lastsignındatetime özelliği yeni bir özellik olduğundan, Lastsignındatetime özelliğinin değeri şu durumlarda boş olabilir:
 
-- Bir kullanıcının son başarılı oturum açma özelliği bu özellik yayımlanmadan önce gerçekleşmişti (1 Aralık 2019).
-- Etkilenen kullanıcı hesabı başarılı bir oturum açma için hiçbir zaman kullanılmadı.
+- Bir kullanıcının son başarılı oturum açma işlemi, bu özellik yayınlanmadan önce gerçekleşti (1 Aralık 2019).
+- Etkilenen Kullanıcı hesabı, başarılı bir oturum açma işlemi için hiç kullanılmadı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sertifikalarla Azure Active Directory raporlama API’sini kullanarak veri alma](tutorial-access-api-with-certificates.md)
-* [Denetim API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Oturum açma faaliyet raporu API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [API başvurusunu denetle](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [Oturum açma Etkinliği raporu API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

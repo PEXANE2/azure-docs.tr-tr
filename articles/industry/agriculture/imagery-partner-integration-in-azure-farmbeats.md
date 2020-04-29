@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 52d817d1029e75837e55c1b942525661ace33f87
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82136949"
 ---
 # <a name="imagery-partner-integration"></a>Görüntüleme iş ortağı tümleştirmesi
@@ -40,7 +40,7 @@ Farmtts 'yi bağlamak için drone iş ortağı yazılımında aşağıdaki kimli
 
 API 'Ler Swagger teknik belgelerini içerir. API 'Ler ve karşılık gelen istekler veya yanıtlar hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Farmtts Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD) kullanır. Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar. 
 

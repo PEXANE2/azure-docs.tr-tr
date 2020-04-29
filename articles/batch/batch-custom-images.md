@@ -4,10 +4,10 @@ description: Uygulamanıza yönelik yazılım ve verilerle işlem düğümleri s
 ms.topic: article
 ms.date: 09/16/2019
 ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117327"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Bir sanal makine havuzu oluşturmak için yönetilen bir görüntü kullanma
@@ -17,7 +17,7 @@ Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü oluştur
 > [!TIP]
 > Çoğu durumda, paylaşılan görüntü Galerisi 'Ni kullanarak özel görüntüler oluşturmanız gerekir. Paylaşılan görüntü Galerisi 'ni kullanarak, havuzları daha hızlı sağlayabilir, daha büyük miktarlarda VM 'Ler ölçeklendirebilir ve VM 'Ler sağlanırken güvenilirliği daha iyi bir şekilde sağlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [paylaşılan görüntü galerisini kullanarak özel bir havuz oluşturma](batch-sig-images.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Yönetilen bir görüntü kaynağı**. Özel bir görüntü kullanarak bir sanal makine havuzu oluşturmak için, Batch hesabıyla aynı Azure aboneliği ve bölgesinde bir yönetilen görüntü kaynağı oluşturmanız veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır. Yönetilen bir görüntüyü hazırlama hakkında daha fazla bilgi ve adım için aşağıdaki bölüme bakın.
   - Oluşturduğunuz her havuz için benzersiz bir özel görüntü kullanın.

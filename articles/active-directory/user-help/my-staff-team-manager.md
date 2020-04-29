@@ -1,6 +1,6 @@
 ---
-title: Personelim ile parolaları ve telefon numaralarını yönetme (önizleme) - Azure AD | Microsoft Dokümanlar
-description: Personelim ile kullanıcılarınızın parolalarını ve telefon numaralarını yönetme
+title: Personel (Önizleme) ile parolaları ve telefon numaralarını yönetme-Azure AD | Microsoft Docs
+description: Kullanıcılarımızla kullanıcılarınızın parolalarını ve telefon numaralarını yönetme
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,103 +14,103 @@ ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: 29c27c876e90bce6a38226f68adf44a26465cfea
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770861"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>Personelim ile kullanıcı yönetimini temsilci (önizleme)
+# <a name="delegate-user-management-with-my-staff-preview"></a>Kullanıcı yönetimini personelime (Önizleme) devretmek
 
-Kuruluşunuz, personelinin gereksinim duydukları uygulamalara erişmelerine yardımcı olmak için kullanıcı yönetimi görevlerini mağaza yöneticisi veya ekip lideri gibi yetkili kişilere devretmek için **Personelimi** kullanabilir. Ekip üyeniz parolayı unuttukları için bir uygulamaya erişemezse üretkenlik kaybolur. Bu aynı zamanda destek maliyetlerini de azaltır ve idari işlemlerinizde darboğaza neden olur.  Personelim ile, hesabına erişemeyen bir ekip üyesi, yönetici yardımı gerektirmeden sadece birkaç tıklamayla yeniden erişebilir.
+Kuruluşunuz, personelin ihtiyaç duydukları uygulamalara erişmesine yardımcı olmak için bir mağaza yöneticisi veya ekip lideri gibi yetkili şekillere Kullanıcı yönetimi görevleri atamak için **personelimi** kullanabilir. Ekip üyesiyseniz bir parolayı unutmaları nedeniyle bir uygulamaya erişemediği için üretkenlik kaybedilir. Bu ayrıca destek maliyetlerini de azaltır ve yönetim süreçlerinizde performans sorunlarına neden olur.  Personeli sayesinde, hesaplarına erişemesiz bir takım üyesi, yönetici yardımı gerekmeden yalnızca birkaç tıklamayla erişim elde edebilir.
 
-## <a name="manage-your-staff-in-my-staff"></a>Personelinizi Personelim'de yönetin
+## <a name="manage-your-staff-in-my-staff"></a>Personelimde personelinizi yönetme
 
-Ekibinizi Personelim'de yönetmek çok kolay. Başlamak için [Personelim'e gidin,](https://aka.ms/mystaff)bir takım veya konum seçin ve ardından bir kullanıcı seçin. Konumlar ve bir konumdaki ekip üyeleri BT yöneticiniz tarafından belirlenir ve bunları değiştiremezsiniz.
+Ekip Üyelerimin personelimde yönetilmesi basittir. Başlamak için [personelime gidin](https://aka.ms/mystaff), bir takım veya konum seçin ve ardından bir kullanıcı seçin. Konumdaki konumlar ve takım üyeleri, BT yöneticiniz tarafından belirlenir ve bunları değiştiremezsiniz.
 
-Birden fazla konum yönetiyorsanız, Personelim'e gittiğinizde, konuma atanan ekip üyesini görmek için bir konum seçmeniz gerekir.
+Birden fazla konum yönetiyorsanız, personelime gittiğinizde konuma atanan Takım üyesini görmek için bir konum seçmeniz gerekir.
 
-Personelime erişmek için henüz yeterli izniniz yoksa, şu mesajı görürsünüz : "Aman tanrım, şu anda Personelimi görme yetkiniz yok gibi görünüyor. Daha fazla bilgi için lütfen yöneticinizle iletişime geçin."
+Personeliniz için yeterli izinlere sahip değilseniz, şu anda personelimi görme yetkiniz yok gibi bir ileti görürsünüz. Daha fazla bilgi için lütfen yöneticinize başvurun. "
 
-### <a name="find-a-staff-member-in-my-staff"></a>Personelim'de bir personel bulun
+### <a name="find-a-staff-member-in-my-staff"></a>Personelimde bir personel üyesi bulun
 
-Yönetmeye başlamadan önce bir personelin profilini açmanız gerekir.
+Bunları yönetmeye başlayabilmeniz için önce bir personel üyesinin profilini açmanız gerekir.
 
 1. [Personelimi açın](https://aka.ms/mystaff) ve gerekirse bir konum seçin.
 
-    ![Personelim'deki bir ekip üyesi için konum seçin](media/my-staff-team-manager/allaus.png)
+    ![Ekipte bir takım üyesi için bir konum seçin](media/my-staff-team-manager/allaus.png)
 
-1. Bir ekip üyesinin profilini açın.
+1. Bir takım üyesinin profilini açın.
 
-    ![Personelim'deki bir konumdaki kullanıcılardan birini seçin](media/my-staff-team-manager/aupage.png)
+    ![Personelimde bir konumdaki kullanıcılardan birini seçin](media/my-staff-team-manager/aupage.png)
 
 ## <a name="reset-a-user-password"></a>Kullanıcı parolasını sıfırlama
 
-Kuruluşunuz size izin verdiyse, personelinizin parolalarını sıfırlayabilirsiniz.
+Kuruluşunuz size izin verdiyse, personel üyelerinizin parolalarını sıfırlayabilirsiniz.
 
-1. [Personelimi Açın.](https://aka.ms/mystaff)
-1. Bir personelin profilini açın.
-1. **Parolayı Sıfırla'yı**seçin.
+1. [Personelimi açın](https://aka.ms/mystaff).
+1. Bir personel üyesinin profilini açın.
+1. **Parolayı Sıfırla**' yı seçin.
 
-    ![Personelim'de kullanıcı parolası sıfırlama](media/my-staff-team-manager/resetpassword1.png)
+    ![Personelimde Kullanıcı parolasını sıfırlama](media/my-staff-team-manager/resetpassword1.png)
 
-1. Yeni parola oluşturun veya girin. Otomatik olarak oluşturulan geçici bir parola gösterilebilir veya kullanıcı için geçici bir parola girmeniz istenebilir.
+1. Yeni parolayı oluşturun veya girin. Otomatik olarak oluşturulmuş geçici bir parola gösteriliyor veya Kullanıcı için geçici bir parola girmeniz istenebilir.
 
-    ![Personelim'de sıfırladıktan sonra geçici kullanıcı parolasını kopyalama](media/my-staff-team-manager/resetpassword2.png)
+    ![Personelimde sıfırlamadan sonra geçici Kullanıcı parolasını kopyalama](media/my-staff-team-manager/resetpassword2.png)
 
-Kullanıcının parolasını sıcandıktan sonra, kullanıcıya geçici parolayı verin. Kullanıcı geçici parolasıyla birlikte kaydolduğunda, parolayı değiştirmeleri gerekir.
+Kullanıcının parolasını sıfırladıktan sonra kullanıcıya geçici bir parola verin. Kullanıcı geçici parolasıyla oturum açtığında, bunları değiştirmesi gerekir.
 
 ## <a name="manage-a-users-phone-number"></a>Kullanıcının telefon numarasını yönetme
 
-Kuruluşunuz size izin verdiyse, personelinizin telefon numaralarını yönetebilirsiniz.
+Kuruluşunuz size izin verdiyse, personel üyelerinizin telefon numaralarını yönetebilirsiniz.
 
-### <a name="add-a-phone-number"></a>Telefon numarası ekleme
+### <a name="add-a-phone-number"></a>Telefon numarası ekleyin
 
-1. [Personelimi Açın.](https://aka.ms/mystaff)
-1. Bir personelin profilini açın.
-1. **Telefon numarası ekle'yi**seçin.
+1. [Personelimi açın](https://aka.ms/mystaff).
+1. Bir personel üyesinin profilini açın.
+1. **Telefon numarası Ekle**' yi seçin.
 
-    ![Personelime kullanıcı telefon numarası ekleme](media/my-staff-team-manager/addphone1.png)
+    ![Personeliniz halinde Kullanıcı telefon numarası Ekle](media/my-staff-team-manager/addphone1.png)
 
-1. Telefon numarasını ekleyin ve **Kaydet'i**seçin.
+1. Telefon numarasını ekleyin ve **Kaydet**' i seçin.
 
-    ![Eklenen kullanıcı telefon numarasını Personelim'e kaydetme](media/my-staff-team-manager/addphone2.png)
+    ![Eklenen Kullanıcı telefon numarasını personelime Kaydet](media/my-staff-team-manager/addphone2.png)
 
-Bir kullanıcı için bir telefon numarası kaydettikten sonra, bu numarayı SMS ile oturum açma, iki aşamalı doğrulama gerçekleştirmek veya kuruluşunuzun ayarlarına bağlı olarak parolalarını sıfırlamak için kullanabilirler.
+Bir kullanıcı için telefon numarası kaydettikten sonra, kuruluşunuzun ayarlarına bağlı olarak SMS ile oturum açmak, iki aşamalı doğrulama gerçekleştirmek veya kendi parolalarını sıfırlamalarını sağlamak için bu kişiler tarafından kullanılabilir.
 
-![Personelime kayıtlı yeni telefon numarası](media/my-staff-team-manager/addphone3.png)
+![Yeni telefon numarası personelim ile kaydedildi](media/my-staff-team-manager/addphone3.png)
 
-### <a name="edit-a-phone-number"></a>Telefon numarasını edin
+### <a name="edit-a-phone-number"></a>Telefon numarasını düzenleme
 
-1. [Personelimi Açın.](https://aka.ms/mystaff)
-1. Bir personelin profilini açın.
-1. **Telefon numarasını edit'i**seçin.
+1. [Personelimi açın](https://aka.ms/mystaff).
+1. Bir personel üyesinin profilini açın.
+1. **Telefon numarasını Düzenle**' yi seçin.
 
-    ![Personelim'deki kullanıcı profilinden Edit'i seçin](media/my-staff-team-manager/editphone2.png)
+    ![Personelimde Kullanıcı profilinden Düzenle ' yi seçin](media/my-staff-team-manager/editphone2.png)
 
-1. Yeni telefon numarasını girin ve **Kaydet'i**seçin.
+1. Yeni telefon numarasını girip **Kaydet**' i seçin.
 
-    ![Personelim'de çalışan bir telefon numarasını edin](media/my-staff-team-manager/editphone1.png)
+    ![Personmy personelin üye telefon numarasını düzenleme](media/my-staff-team-manager/editphone1.png)
 
-### <a name="enable-phone-number-sign-in-for-a-user"></a>Bir kullanıcı için telefon numarası oturum açmayı etkinleştirme
+### <a name="enable-phone-number-sign-in-for-a-user"></a>Kullanıcı için telefon numarası oturum açmayı etkinleştirme
 
-Kuruluşunuzda kullanıcı adı (SMS oturum açma) olarak bir telefon numarası kullanarak oturum açma etkinse, bu kimlik doğrulamasını varolan bir kullanıcı telefon numarasına ekleyebilirsiniz.
+Kuruluşunuzda Kullanıcı adı (SMS oturum açma) olarak bir telefon numarası kullanarak oturum açarsanız, bu kimlik doğrulamasını mevcut bir kullanıcı telefon numarasına ekleyebilirsiniz.
 
-1. [Personelimi Açın.](https://aka.ms/mystaff)
-1. Bir personelin profilini açın.
-1. Ekranın alt kısmında, telefon numaranızla oturum açmanın sizin için kullanılabilir olduğunu belirten bir ileti varsa, işlemi başlatmak için **Etkinleştir'i** seçin. Kullanıcının telefon numarasıyla oturum açması etkinleştirildiyse, bu ileti görüntülenir.
+1. [Personelimi açın](https://aka.ms/mystaff).
+1. Bir personel üyesinin profilini açın.
+1. Ekranın alt kısmında telefon numaranızı bir Kullanıcı adı olarak oturum açmayı söyleyen bir ileti varsa, işleme başlamak için **Etkinleştir** ' i seçin. Bu ileti, Kullanıcı telefon numarasıyla oturum açmak üzere etkinleştirilmişse görüntülenir.
 
-    ![Personelim'deki bir konumda telefonla oturum açma desteklendiğinde iletiyi görün](media/my-staff-team-manager/enableforms1.png)
+    ![Telefonla oturum açma, personelimde bir konumda desteklenme sırasında iletiye bakın](media/my-staff-team-manager/enableforms1.png)
 
-1. Bittiğinde **Tamam'ı** seçin.
+1. İşiniz bittiğinde **Tamam ' ı** seçin.
 
-    ![Personelimdeki bir personel telefon numarasını kaldırma](media/my-staff-team-manager/enableforms2.png)
+    ![Personmy personelin üye telefon numarasını kaldırma](media/my-staff-team-manager/enableforms2.png)
 
 ### <a name="remove-a-phone-number"></a>Telefon numarasını kaldırma
 
-1. [Personelimi Açın.](https://aka.ms/mystaff)
-1. Bir personelin profilini açın.
-1. **Telefon numarasını kaldır'ı**seçin.
-1. Bittiğinde **Sil'i** seçin.
+1. [Personelimi açın](https://aka.ms/mystaff).
+1. Bir personel üyesinin profilini açın.
+1. **Telefon numarasını Kaldır**' ı seçin.
+1. İşiniz bittiğinde **Sil** ' i seçin.
 
-    ![Personelimdeki bir personel telefon numarasını kaldırma](media/my-staff-team-manager/deletephone1.png)
+    ![Personmy personelin üye telefon numarasını kaldırma](media/my-staff-team-manager/deletephone1.png)

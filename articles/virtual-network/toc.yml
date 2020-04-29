@@ -223,16 +223,6 @@
               href: virtual-network-network-interface-addresses.md
     - name: Güvenlik
       items:
-        - name: Ağ güvenlik grupları ile erişimi kısıtlama
-          items:
-            - name: Azure portal
-              href: tutorial-restrict-network-access-to-resources.md
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-            - name: Ağ güvenlik gruplarını yönetme
-              href: manage-network-security-group.md
         - name: Ağ trafiğini filtreleme
           items:
             - name: Azure portal
@@ -271,6 +261,8 @@
           href: manage-ddos-protection.md
         - name: DDos Koruması Standart’a iş ortağı ekleme
           href: ddos-protection-partner-onboarding.md
+        - name: Ağ güvenlik gruplarını yönetme
+          href: manage-network-security-group.md
         - name: Güvenlik senaryoları
           items:
             - name: Sanal gereçlerle ağ güvenliği sağlama

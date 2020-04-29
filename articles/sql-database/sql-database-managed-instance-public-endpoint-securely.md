@@ -1,6 +1,6 @@
 ---
-title: Güvenli yönetilen örnek ortak uç noktaları
-description: Yönetilen bir örnekle Azure'da ortak uç noktaları güvenli bir şekilde kullanın
+title: Güvenli yönetilen örnek genel uç noktaları
+description: Yönetilen bir örnekle Azure 'da genel uç noktaları güvenli bir şekilde kullanın
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,46 +11,46 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
 ms.openlocfilehash: f11c19ba33ee2fbae0fef265371bedad2fe29cb7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684948"
 ---
-# <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Azure SQL Veritabanı yönetilen örneklerini ortak uç noktalarıyla güvenli bir şekilde kullanma
+# <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Genel uç noktalarla güvenli bir şekilde Azure SQL veritabanı yönetilen örneği kullanma
 
-Azure SQL Veritabanı yönetilen [örnekleri, ortak uç noktalar](../virtual-network/virtual-network-service-endpoints-overview.md)üzerinden kullanıcı bağlantısı sağlayabilir. Bu makalede, bu yapılandırmanın nasıl daha güvenli hale getirilen açıklanmaktadır.
+Azure SQL veritabanı yönetilen örnekleri, [genel uç noktalar](../virtual-network/virtual-network-service-endpoints-overview.md)üzerinden Kullanıcı bağlantısı sağlayabilir. Bu makalede, bu yapılandırmanın nasıl daha güvenli hale kullanılacağı açıklanmaktadır.
 
 ## <a name="scenarios"></a>Senaryolar
 
-SQL Veritabanı yönetilen örneği, sanal ağının içinden bağlantıya izin vermek için özel bir bitiş noktası sağlar. Varsayılan seçenek maksimum yalıtım sağlamaktır. Ancak, genel bir bitiş noktası bağlantısı sağlamanız gereken senaryolar vardır:
+SQL veritabanı yönetilen örneği, sanal ağının içinden bağlantıya izin veren özel bir uç nokta sağlar. Varsayılan seçenek, maksimum yalıtımı sağlamaktır. Ancak, genel uç nokta bağlantısı sağlamanız gereken senaryolar vardır:
 
-- Yönetilen örnek, hizmet olarak çok sayıda kiracıya özel platform (PaaS) teklifleri ile tümleştirilmelidir.
-- VPN kullanırken mümkün olandan daha yüksek veri alışverişi veri alışverişine ihtiyacınız vardır.
-- Şirket politikaları, Şirket ağları içinde PaaS yasaklar.
+- Yönetilen örnek, tek kiracılı hizmet olarak platform (PaaS) teklifleriyle tümleştirmelidir.
+- VPN kullanırken mümkün olandan daha yüksek miktarda veri alışverişi yapmanız gerekir.
+- Şirket ilkeleri, şirket ağları içinde PaaS 'yi yasaklar.
 
-## <a name="deploy-a-managed-instance-for-public-endpoint-access"></a>Genel uç nokta erişimi için yönetilen bir örneği dağıtma
+## <a name="deploy-a-managed-instance-for-public-endpoint-access"></a>Ortak uç nokta erişimi için yönetilen bir örnek dağıtma
 
-Zorunlu olmasa da, genel uç nokta erişimine sahip yönetilen bir örnek için ortak dağıtım modeli, özel bir yalıtılmış sanal ağda örnek oluşturmaktır. Bu yapılandırmada, sanal ağ yalnızca sanal küme yalıtımı için kullanılır. Yönetilen örneğin IP adresi alanının bir şirket ağının IP adres alanıyla çakışması önemli değildir.
+Zorunlu olmasa da, genel uç nokta erişimiyle yönetilen bir örnek için ortak dağıtım modeli, örneği ayrılmış bir yalıtılmış sanal ağda oluşturmaktır. Bu yapılandırmada, sanal ağ yalnızca sanal küme yalıtımı için kullanılır. Yönetilen örneğin IP adresi alanının bir kurumsal ağın IP adresi alanıyla örtüştüğü ne olursa olsun.
 
-## <a name="secure-data-in-motion"></a>Güvenli veri hareket halinde
+## <a name="secure-data-in-motion"></a>Hareket halindeki verileri güvenli hale getirme
 
-İstemci sürücü şifrelemeyi destekliyorsa, yönetilen örnek veri trafiği her zaman şifrelenir. Yönetilen örnek le diğer Azure sanal makineleri veya Azure hizmetleri arasında gönderilen veriler Azure'un omurgasını asla bırakmaz. Yönetilen örnekle şirket içi ağ arasında bir bağlantı varsa, Azure ExpressRoute'u kullanmanızı öneririz. ExpressRoute, verileri genel internet üzerinden taşımaktan kaçınmanıza yardımcı olur. Yönetilen örnek özel bağlantı için yalnızca özel eşleme kullanılabilir.
+İstemci sürücüsü şifrelemeyi destekliyorsa, yönetilen örnek veri trafiği her zaman şifrelenir. Yönetilen örnek ile diğer Azure sanal makineleri veya Azure hizmetleri arasında gönderilen veriler hiçbir şekilde Azure 'un omurgasını bırakır. Yönetilen örnek ve şirket içi ağ arasında bağlantı varsa Azure ExpressRoute 'u kullanmanızı öneririz. ExpressRoute, verileri genel İnternet üzerinden taşımadan kaçınmanıza yardımcı olur. Yönetilen örnek özel bağlantısı için yalnızca özel eşleme kullanılabilir.
 
-## <a name="lock-down-inbound-and-outbound-connectivity"></a>Gelen ve giden bağlantıyı kilitleme
+## <a name="lock-down-inbound-and-outbound-connectivity"></a>Gelen ve giden bağlantıyı kilitle
 
-Aşağıdaki diyagram, önerilen güvenlik yapılandırmalarını gösterir:
+Aşağıdaki diyagramda önerilen güvenlik yapılandırması gösterilmektedir:
 
-![Gelen ve giden bağlantının kilitlenmeleri için güvenlik yapılandırmaları](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
+![Gelen ve giden bağlantıyı kilitlemek için güvenlik yapılandırması](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
 
-Yönetilen bir örneğin özel bir [genel bitiş noktası adresi](sql-database-managed-instance-find-management-endpoint-ip-address.md)vardır. İstemci tarafındaki giden güvenlik duvarında ve ağ güvenlik grubu kurallarında, giden bağlantının sınırını sınırlamak için bu genel uç nokta IP adresini ayarlayın.
+Yönetilen bir örnek adanmış bir [genel uç nokta adresine](sql-database-managed-instance-find-management-endpoint-ip-address.md)sahiptir. İstemci tarafı giden güvenlik duvarında ve ağ güvenlik grubu kurallarında, giden bağlantıyı sınırlamak için bu genel uç nokta IP adresini ayarlayın.
 
-Yönetilen örneğin trafiğin güvenilir kaynaklardan geldiğini sağlamak için, tanınmış IP adreslerine sahip kaynaklardan bağlanmanızı öneririz. Bağlantı noktası 3342'de yönetilen örnek ortak bitiş noktasına erişimi sınırlamak için bir ağ güvenlik grubu kullanın.
+Yönetilen örneğe giden trafiğin güvenilen kaynaklardan geldiğinden emin olmak için, iyi bilinen IP adreslerine sahip kaynaklardan bağlanmanız önerilir. 3342 numaralı bağlantı noktasında yönetilen örnek genel uç noktasına erişimi sınırlandırmak için bir ağ güvenlik grubu kullanın.
 
-İstemcilerin şirket içi bir ağdan bağlantı başlatması gerektiğinde, kaynak adresin tanınmış bir IP adresi kümesine çevrildiğinden emin olun. Bunu yapamıyorsanız (örneğin, mobil iş gücü tipik bir senaryodur), [noktadan siteye VPN bağlantıları ve özel bir bitiş noktası](sql-database-managed-instance-configure-p2s.md)kullanmanızı öneririz.
+İstemcilerin şirket içi bir ağdan bağlantı başlatması gerektiğinde, kaynak adresin iyi bilinen bir IP adresi kümesine çevrildiğinden emin olun. Bunu yapmazsanız (örneğin, bir mobil iş gücünün tipik bir senaryo olması halinde), [noktadan sıteye VPN bağlantıları ve özel uç nokta](sql-database-managed-instance-configure-p2s.md)kullanmanızı öneririz.
 
-Bağlantılar Azure'dan başlatılırsa, trafiğin iyi bilinen bir [atanmış sanal IP adresinden](../virtual-network/virtual-networks-reserved-public-ip.md) (örneğin, sanal makine) gelmesini öneririz. Sanal IP (VIP) adreslerini yönetmeyi kolaylaştırmak için [genel IP adresi önekleri](../virtual-network/public-ip-address-prefix.md)kullanmak isteyebilirsiniz.
+Azure 'dan bağlantı başlatılırsa, trafiğin iyi bilinen bir atanan [sanal IP adresinden](../virtual-network/virtual-networks-reserved-public-ip.md) (örneğin, bir sanal makine) gelmesini öneririz. Sanal IP (VIP) adreslerini yönetmeyi daha kolay hale getirmek için [genel IP adresi öneklerini](../virtual-network/public-ip-address-prefix.md)kullanmak isteyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Örnekleri yönetmek için ortak bitiş noktasını nasıl yapılandırılabekleyeceğizi öğrenin: [Genel bitiş noktasını yapılandırma](sql-database-managed-instance-public-endpoint-configure.md)
+- Örnekleri yönetmek için genel uç noktayı yapılandırma hakkında bilgi edinin: [ortak uç noktayı yapılandırma](sql-database-managed-instance-public-endpoint-configure.md)

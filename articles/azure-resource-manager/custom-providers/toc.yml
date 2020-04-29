@@ -23,7 +23,7 @@
       href: tutorial-resource-onboarding.md
 - name: Kavramlar
   items:
-    - name: İlişkilendirmeler için Azure ilkesi
+    - name: İlişkilendirmeler için Azure İlkesi
       href: concepts-built-in-policy.md
     - name: Kaynak ekleme
       href: concepts-resource-onboarding.md

@@ -1,6 +1,6 @@
 ---
-title: OPC Vault sertifika yönetimi hizmeti nasıl dağıtılır - Azure | Microsoft Dokümanlar
-description: OPC Vault sertifika yönetimi hizmetini sıfırdan nasıl dağıtabilirsiniz?
+title: OPC Kasası sertifika yönetimi hizmetini dağıtma-Azure | Microsoft Docs
+description: OPC Kasası sertifika yönetimi hizmetini sıfırdan dağıtma.
 author: mregen
 ms.author: mregen
 ms.date: 08/16/2019
@@ -9,55 +9,55 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686933"
 ---
-# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Vault sertifika yönetim hizmetini oluşturun ve dağıtın
+# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini derleme ve dağıtma
 
-Bu makalede, Azure'da OPC Vault sertifika yönetimi hizmetinin nasıl dağıtılanılacaaçıklanmıştır.
+Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da nasıl dağıtılacağı açıklanır.
 
 > [!NOTE]
-> Daha fazla bilgi için GitHub [OPC Vault deposuna](https://github.com/Azure/azure-iiot-opc-vault-service)bakın.
+> Daha fazla bilgi için GitHub [OPC Kasası deposuna](https://github.com/Azure/azure-iiot-opc-vault-service)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-### <a name="install-required-software"></a>Gerekli yazılımı yükleme
+### <a name="install-required-software"></a>Gerekli yazılımları yükler
 
-Şu anda yapı ve dağıtma işlemi Windows ile sınırlıdır.
-Örneklerin tümü C# .NET Standard için yazılmıştır ve dağıtım için hizmet ve örnekler oluşturmanız gerekir.
-.NET Standard için ihtiyacınız olan tüm araçlar .NET Core araçlarıyla birlikte gelir. Bkz. [.NET Core ile başlayın.](https://docs.microsoft.com/dotnet/articles/core/getting-started)
+Şu anda derleme ve dağıtma işlemi Windows ile sınırlıdır.
+Örnekler, hizmet ve dağıtım için örnek oluşturmanız gereken C# .NET Standard için yazılmıştır.
+.NET Standard için ihtiyacınız olan tüm araçlar .NET Core araçları ile birlikte gelir. Bkz. [.NET Core ile çalışmaya başlama](https://docs.microsoft.com/dotnet/articles/core/getting-started).
 
-1. [Yükleyin .NET Core 2.1+][dotnet-install].
-2. [Docker'ı yükleyin][docker-url] (yalnızca yerel Docker yapısı gerekiyorsa isteğe bağlıdır).
-4. [PowerShell için Azure komut satırı araçlarını yükleyin.][powershell-install]
-5. [Azure aboneliği][azure-free]için kaydolun.
+1. [.NET Core 2.1 + 'Yi yükler][dotnet-install].
+2. [Docker][docker-url] 'ı (isteğe bağlı, yalnızca yerel Docker derlemesi gerekliyse) yükler.
+4. [PowerShell Için Azure komut satırı araçlarını][powershell-install]yükler.
+5. Bir [Azure aboneliğine][azure-free]kaydolun.
 
 ### <a name="clone-the-repository"></a>Depoyu kopyalama
 
-Henüz yapmadıysanız, bu GitHub deposunu klonla. Bir komut istemi veya terminal açın ve aşağıdakileri çalıştırın:
+Henüz yapmadıysanız, bu GitHub deposunu kopyalayın. Bir komut istemi veya Terminal açın ve aşağıdakileri çalıştırın:
 
 ```bash
 git clone https://github.com/Azure/azure-iiot-opc-vault-service
 cd azure-iiot-opc-vault-service 
 ```
 
-Alternatif olarak, repo'yu doğrudan Visual Studio 2017'de kopyalayabilirsiniz.
+Alternatif olarak, depoyu doğrudan Visual Studio 2017 ' de kopyalayabilirsiniz.
 
-### <a name="build-and-deploy-the-azure-service-on-windows"></a>Azure hizmetini Windows'da oluşturma ve dağıtma
+### <a name="build-and-deploy-the-azure-service-on-windows"></a>Windows üzerinde Azure hizmetini derleme ve dağıtma
 
-PowerShell komut dosyası, OPC Vault microservice'i ve uygulamayı dağıtmak için kolay bir yol sağlar.
+PowerShell betiği OPC Kasası mikro hizmetini ve uygulamayı dağıtmanın kolay bir yolunu sağlar.
 
-1. Repo kökünde bir PowerShell penceresi açın. 
-3. Dağıt klasörüne `cd deploy`gidin.
-3. Dağıtılan diğer `myResourceGroup` web sayfalarıyla çakışma olasılığı düşük olan bir ad seçin. Bu makalenin ilerleyen bölümlerinde "Zaten kullanımda olan web sitesi adı" bölümüne bakın.
-5. Etkileşimli yükleme `.\deploy.ps1` için dağıtımı başlatın veya tam komut satırı girin:  
+1. Depo kökünde bir PowerShell penceresi açın. 
+3. Dağıtım klasörüne `cd deploy`gidin.
+3. Diğer dağıtılan Web sayfalarıyla `myResourceGroup` çakışmaya neden olması olası olmayan bir ad seçin. Bu makalenin ilerleyen bölümlerindeki "Web sitesi adı zaten kullanımda" bölümüne bakın.
+5. Etkileşimli yükleme için ile `.\deploy.ps1` dağıtımı başlatın veya tam bir komut satırı girin:  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. Bu dağıtımla geliştirmeyi planlıyorsanız, Swagger UI'yi etkinleştirmek ve hata ayıklama yapılarını dağıtmak için ekleyin. `-development 1`
-6. Aboneliğinizde oturum açmak ve ek bilgi sağlamak için komut dosyasındaki yönergeleri izleyin.
-9. Başarılı bir yapı ve dağıtım işleminden sonra aşağıdaki iletiyi görmeniz gerekir:
+7. Bu dağıtım ile geliştirmeyi planlıyorsanız, Swagger Kullanıcı arabirimini etkinleştirmek `-development 1` ve hata ayıklama yapılarını dağıtmak için ekleyin.
+6. Aboneliğinizde oturum açmak ve ek bilgi sağlamak için betikteki yönergeleri izleyin.
+9. Başarılı bir derleme ve dağıtım işleminden sonra şu iletiyi görmeniz gerekir:
    ```
    To access the web client go to:
    https://myResourceGroup.azurewebsites.net
@@ -73,67 +73,67 @@ PowerShell komut dosyası, OPC Vault microservice'i ve uygulamayı dağıtmak i�
    ```
 
    > [!NOTE]
-   > Sorun durumunda, makalenin daha sonra "Sorun Giderme dağıtım hataları" bölümüne bakın.
+   > Sorun oluşması durumunda, makalenin devamındaki "dağıtım hataları sorunlarını giderme" bölümüne bakın.
 
 8. En sevdiğiniz tarayıcıyı açın ve uygulama sayfasını açın:`https://myResourceGroup.azurewebsites.net`
-8. Dağıtımdan sonra ısınması için web uygulamasına ve OPC Vault mikro hizmetine birkaç dakika verin. Web sayfası, ilk yanıtları alana kadar bir dakikaya kadar ilk kullanıma bağlı kalabilir.
-11. Swagger API'ye göz atmak için:`https://myResourceGroup-service.azurewebsites.net`
-13. Dotnet ile yerel bir GDS `.\myResourceGroup-gds.cmd`sunucusu başlatmak için başlatın. Docker ile `.\myResourceGroup-dockergds.cmd`başla.
+8. Web uygulamasına ve OPC Kasası mikro hizmetine dağıtımdan sonra ısınma için birkaç dakika verin. Web giriş sayfası, ilk yanıtları yapana kadar bir dakika boyunca ilk kullanımda askıda kalabilir.
+11. Swagger API 'sine göz atmak için şunu açın:`https://myResourceGroup-service.azurewebsites.net`
+13. DotNet ile yerel bir GDS sunucusunu başlatmak için başlatın `.\myResourceGroup-gds.cmd`. Docker ile başlatın `.\myResourceGroup-dockergds.cmd`.
 
-Bir yapıyı tam olarak aynı ayarlarla yeniden dağıtmak mümkündür. Böyle bir işlemin tüm uygulama sırlarını yenileyebileceğini ve Azure Etkin Dizin (Azure AD) uygulama kayıtlarındaki bazı ayarları sıfırlayabildiğini unutmayın.
+Bir derlemeyi tamamen aynı ayarlarla yeniden dağıtmak mümkündür. Bu tür bir işlemin tüm uygulama gizli dizilerini yenilediğini ve Azure Active Directory (Azure AD) uygulama kayıtlarında bazı ayarları sıfırlayabileceğini unutmayın.
 
-Ayrıca, sadece web uygulaması ikililerini yeniden dağıtmak da mümkündür. Parametre `-onlyBuild 1`ile, hizmet ve uygulamanın yeni zip paketleri web uygulamalarına dağıtılır.
+Yalnızca Web uygulaması ikili dosyalarını yeniden dağıtmak da mümkündür. Parametresiyle `-onlyBuild 1`, hizmetin yeni ZIP paketleri ve uygulama Web uygulamalarına dağıtılır.
 
-Başarılı dağıtımdan sonra, hizmetleri kullanmaya başlayabilirsiniz. Bkz. [OPC Vault sertifika yönetimi hizmetini yönetin.](howto-opc-vault-manage.md)
+Dağıtım başarılı olduktan sonra Hizmetleri kullanmaya başlayabilirsiniz. Bkz. [OPC Kasası sertifika yönetimi hizmetini yönetme](howto-opc-vault-manage.md).
 
-## <a name="delete-the-services-from-the-subscription"></a>Hizmetleri abonelikten silme
+## <a name="delete-the-services-from-the-subscription"></a>Abonelikten hizmetleri silme
 
 Bunu yapmak için:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Hizmetin dağıtıldığı kaynak grubuna gidin.
 3. **Kaynak grubunu sil**'i seçip onaylayın.
-4. Kısa bir süre sonra, dağıtılan tüm hizmet bileşenleri silinir.
-5. Azure **Active Directory** > **App kayıtlarına**gidin.
-6. Dağıtılan her kaynak grubu için listelenen üç kayıt olmalıdır. Kayıtlarda aşağıdaki isimler `resourcegroup-client`vardır: `resourcegroup-module` `resourcegroup-service`, , . Her kaydı ayrı olarak silin.
+4. Kısa bir süre sonra dağıtılan tüm hizmet bileşenleri silinir.
+5. **Azure Active Directory** > **uygulama kayıtları**gidin.
+6. Dağıtılan her kaynak grubu için üç kayıt listelenmiş olmalıdır. Kayıtlar şu adlara sahiptir: `resourcegroup-client`, `resourcegroup-module`,. `resourcegroup-service` Her kaydı ayrı ayrı silin.
 
-Şimdi dağıtılan tüm bileşenler kaldırılır.
+Artık dağıtılan tüm bileşenler kaldırılır.
 
-## <a name="troubleshooting-deployment-failures"></a>Sorun giderme dağıtım hataları
+## <a name="troubleshooting-deployment-failures"></a>Dağıtım hatalarıyla ilgili sorunları giderme
 
 ### <a name="resource-group-name"></a>Kaynak grubu adı
 
-Kısa ve basit bir kaynak grubu adı kullanın. Ad, kaynakları ve hizmet URL önekini adlandırmak için de kullanılır. Bu nedenle, kaynak adlandırma gereksinimlerine uyması gerekir.  
+Kısa ve basit kaynak grubu adı kullanın. Ad, kaynakları ve hizmet URL önekini adlandırmak için de kullanılır. Bu nedenle, kaynak adlandırma gereksinimleriyle uyumlu olmalıdır.  
 
-### <a name="website-name-already-in-use"></a>Zaten kullanılmakta olan web sitesi adı
+### <a name="website-name-already-in-use"></a>Web sitesi adı zaten kullanımda
 
-Web sitesinin adının zaten kullanılıyor olması mümkündür. Farklı bir kaynak grubu adı kullanmanız gerekir. Dağıtım komut dosyası tarafından kullanılan ana bilgisayar\/adları şunlardır: https: /resourcegroupname.azurewebsites.net ve https:\//resourgroupname-service.azurewebsites.net.
-Hizmetlerin diğer adları kısa ad karmalarının birleşimi tarafından oluşturulur ve diğer hizmetlerle çakışma olasılığı düşüktür.
+Web sitesinin adı zaten kullanımda olabilir. Farklı bir kaynak grubu adı kullanmanız gerekir. Dağıtım betiği tarafından kullanılan ana bilgisayar adları şunlardır: https:\//resourcegroupname.azurewebsites.net ve https:\//resourgroupname-Service.azurewebsites.net.
+Diğer hizmet adları, kısa ad karmalarının birleşimiyle oluşturulmuştur ve diğer hizmetlerle çakışmadan daha düşüktür.
 
 ### <a name="azure-ad-registration"></a>Azure AD kaydı 
 
-Dağıtım komut dosyası, Azure AD'de üç Azure REKLAM uygulamasını kaydetmeye çalışır. Seçili Azure AD kiracısındaki izinlerinize bağlı olarak, bu işlem başarısız olabilir. İki seçenek vardır:
+Dağıtım betiği, Azure AD 'de üç Azure AD uygulamasını kaydetmeye çalışır. Seçili Azure AD kiracısındaki izinlerinize bağlı olarak, bu işlem başarısız olabilir. İki seçenek vardır:
 
-- Kiracılar listesinden bir Azure AD kiracıseçtiyseniz, komut dosyasını yeniden başlatın ve listeden farklı bir tane seçin.
-- Alternatif olarak, başka bir abonelikte özel bir Azure AD kiracısı dağıtın. Komut dosyasını yeniden başlatın ve kullanmak için seçin.
+- Kiracılar listesinden bir Azure AD kiracısı seçerseniz, betiği yeniden başlatın ve listeden farklı bir tane seçin.
+- Alternatif olarak, özel bir Azure AD kiracısını başka bir abonelikte dağıtın. Betiği yeniden başlatın ve kullanmayı seçin.
 
-## <a name="deployment-script-options"></a>Dağıtım komut dosyası seçenekleri
+## <a name="deployment-script-options"></a>Dağıtım betiği seçenekleri
 
-Komut dosyası aşağıdaki parametreleri alır:
+Betik aşağıdaki parametreleri alır:
 
 
 ```
 -resourceGroupName
 ```
 
-Bu, varolan veya yeni bir kaynak grubunun adı olabilir.
+Bu, var olan veya yeni bir kaynak grubunun adı olabilir.
 
 ```
 -subscriptionId
 ```
 
 
-Bu, kaynakların dağıtılacayacağı abonelik kimliğidir. İsteğe bağlıdır.
+Bu, kaynakların dağıtılacağı abonelik KIMLIĞIDIR. İsteğe bağlıdır.
 
 ```
 -subscriptionName
@@ -147,7 +147,7 @@ Alternatif olarak, abonelik adını kullanabilirsiniz.
 ```
 
 
-Bu bir kaynak grubu konumudur. Belirtilirse, bu parametre bu konumda yeni bir kaynak grubu oluşturmaya çalışır. Bu parametre de isteğe bağlıdır.
+Bu bir kaynak grubu konumudur. Belirtilmişse, bu parametre bu konumda yeni bir kaynak grubu oluşturmaya çalışır. Bu parametre Ayrıca isteğe bağlıdır.
 
 
 ```
@@ -161,13 +161,13 @@ Bu, kullanılacak Azure AD kiracısıdır.
 -development 0|1
 ```
 
-Bu geliştirme için dağıtmak tır. Hata ayıklama oluşturmayı kullanın ve ASP.NET ortamını Geliştirme olarak ayarlayın. Uygulamayı `.publishsettings` ve hizmeti doğrudan dağıtmasına izin vermek için Visual Studio 2017'de içe aktarılabilmek için oluşturun. Bu parametre de isteğe bağlıdır.
+Bu, geliştirme için dağıtımaktır. Hata ayıklama derlemesini kullanın ve ASP.NET ortamını geliştirme olarak ayarlayın. Uygulamayı `.publishsettings` ve hizmeti doğrudan dağıtmasını sağlamak Için Visual Studio 2017 ' de içeri aktarma için oluşturun. Bu parametre Ayrıca isteğe bağlıdır.
 
 ```
 -onlyBuild 0|1
 ```
 
-Bu, yalnızca web uygulamalarını yeniden oluşturmak ve yeniden dağıtmak ve Docker kapsayıcılarını yeniden oluşturmaktır. Bu parametre de isteğe bağlıdır.
+Bu, yalnızca Web uygulamalarını yeniden oluşturmak ve yeniden dağıtmak ve Docker kapsayıcılarını yeniden derlemek için kullanılır. Bu parametre Ayrıca isteğe bağlıdır.
 
 [azure-free]:https://azure.microsoft.com/free/
 [powershell-install]:https://azure.microsoft.com/downloads/#powershell
@@ -176,7 +176,7 @@ Bu, yalnızca web uygulamalarını yeniden oluşturmak ve yeniden dağıtmak ve 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık OPC Vault'u sıfırdan dağıtmayı öğrendiğiniz için şunları yapabilirsiniz:
+Artık OPC kasasını sıfırdan dağıtmayı öğrendiğinize göre şunları yapabilirsiniz:
 
 > [!div class="nextstepaction"]
-> [OPC Vault'u Yönet](howto-opc-vault-manage.md)
+> [OPC kasasını yönetme](howto-opc-vault-manage.md)

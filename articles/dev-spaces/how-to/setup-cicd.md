@@ -6,44 +6,44 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Azure DevOps'leri Azure Geliştirme Alanları ile kullanarak sürekli tümleştirme/sürekli dağıtım ayarlamayı öğrenin
-keywords: Docker, Kubernetes, Azure, AKS, Azure Konteyner Hizmeti, konteynerler
+description: Azure Dev Spaces ile Azure DevOps kullanarak sürekli tümleştirme/sürekli dağıtım ayarlamayı öğrenin
+keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
 ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685627"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces ile CI/CD kullanma
 
-Bu makale, Dev Spaces etkinleştirilmiş Azure Kubernetes Hizmetine (AKS) sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlama konusunda size yol göstermektedir. AKS'ye CI/CD, işlenen kod kaynak deponuza itildiğinde uygulama güncellemelerinin otomatik olarak dağıtılmasını sağlar. Geliştirme Spaces etkin küme ile birlikte CI/CD'yi kullanmak yararlıdır, çünkü takımın çalışması için uygulamanın taban çizgisini güncel tutabilir.
+Bu makalede, geliştirme alanları etkinken Azure Kubernetes Service (AKS) ile sürekli tümleştirme/sürekli dağıtım (CI/CD) ayarlama sırasında size kılavuzluk eder. AKS 'e CI/CD, her kaydedilmiş kod kaynak deponuza gönderildiğinde uygulama güncelleştirmelerinin otomatik olarak dağıtılmasını sağlar. CI/CD 'nin bir geliştirme alanları etkinleştirilmiş kümeyle birlikte kullanılması faydalı olur çünkü ekibin bir taban çizgisini takımın birlikte çalışması için güncel tutar.
 
 ![Örnek CI/CD diyagramı](../media/common/ci-cd-simple.png)
 
-Bu makale size Azure DevOps ile rehberlik etse de, aynı kavramlar Jenkins, TeamCity, vb. gibi CI/CD sistemleri için de geçerli olacaktır.
+Bu makalede Azure DevOps ile ilgili yol, ancak Jenkins, TeamCity vb. gibi CI/CD sistemleri için de aynı kavramlar geçerlidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* [Azure Geliştirme Alanları etkinleştirilmiş Azure Kubernetes Hizmeti (AKS) kümesi](../get-started-netcore.md)
-* [Azure Dev Spaces CLI yüklü](upgrade-tools.md)
-* [Proje ile Azure DevOps organizasyonu](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
-* [Azure Kapsayıcı Kayıt Defteri (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
-    * Azure Kapsayıcı Kayıt Defteri [yöneticisi hesap](../../container-registry/container-registry-authentication.md#admin-account) ayrıntıları kullanılabilir
-* [AKS kümenizi Azure Kapsayıcı Kayıt Defterinizden çekmeleri için yetkilendirme](../../aks/cluster-container-registry-integration.md)
+* [Azure Dev Spaces etkin Azure Kubernetes hizmeti (AKS) kümesi](../get-started-netcore.md)
+* [Azure Dev Spaces CLı yüklendi](upgrade-tools.md)
+* [Bir proje ile Azure DevOps organizasyonu](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
+    * Azure Container Registry [yönetici hesabı](../../container-registry/container-registry-authentication.md#admin-account) ayrıntıları kullanılabilir
+* [AKS kümenizi Azure Container Registry çekmek üzere yetkilendirin](../../aks/cluster-container-registry-integration.md)
 
-## <a name="download-sample-code"></a>Örnek kodu indirin
-Zaman aşkına, bizim örnek kod GitHub deposunun bir çatal oluşturalım. Git https://github.com/Azure/dev-spaces ve **Çatal'ı**seç. Çatal işlemi tamamlandıktan sonra, deponun çatallı sürümünü yerel olarak **klonlayın.** Varsayılan olarak _ana_ şube kullanıma alınacaktır, ancak _çatalınız_ sırasında da aktarılması gereken azds_updates dalına zaman kazandıran bazı değişiklikler ekledik. _azds_updates_ şubesi, Dev Spaces öğretici bölümlerinde el ile yapmanızı istediğimiz güncelleştirmelerin yanı sıra CI/CD sisteminin dağıtımını kolaylaştırmak için önceden yapılmış bazı YAML ve JSON dosyalarını içerir. Yerel deponuzdaki `git checkout -b azds_updates origin/azds_updates` _azds_updates_ şubesine göz atın gibi bir komut kullanabilirsiniz.
+## <a name="download-sample-code"></a>Örnek kodu indir
+Bu süre boyunca örnek kod GitHub deponuzun bir çatalını oluşturalım. Adresine gidip https://github.com/Azure/dev-spaces **çatalı**seçin. Çatallı işlem tamamlandıktan sonra, deponun kendi çatallanmış sürümünü yerel olarak **kopyalayın** . _Ana_ dal varsayılan olarak kullanıma sunulacaktır, ancak çatalınızda de aktarılmak üzere _azds_updates_ dalında bazı zaman kazandıran değişiklikler ekledik. _Azds_updates_ dalı, dev Spaces öğretici bölümlerinde el ile yapmanız GEREKTIĞINI ve CI/CD sisteminin dağıtımını kolaylaştırmak için önceden oluşturulmuş bazı YAML ve JSON dosyalarını içeren güncelleştirmeleri içerir. Yerel deponuzdaki azds_updates dalını kullanıma `git checkout -b azds_updates origin/azds_updates` almak için gibi bir _azds_updates_ komut kullanabilirsiniz.
 
-## <a name="dev-spaces-setup"></a>Dev Spaces kurulumu
-Komutu `azds space select` kullanarak _dev_ adlı yeni bir alan oluşturun. _Dev_ alanı, kod değişikliklerinizi zorlamak için CI/CD ardınız tarafından kullanılır. Ayrıca _dev_dayalı _çocuk alanları_ oluşturmak için kullanılacaktır.
+## <a name="dev-spaces-setup"></a>Geliştirme alanları kurulumu
+Komutunu kullanarak dev adlı yeni bir alan oluşturun. _dev_ `azds space select` _Geliştirme_ alanı, CI/CD işlem hattınızda kod değişiklerinizi göndermek için kullanılacaktır. Bu, _dev_temelinde _alt alanlar_ oluşturmak için de kullanılacaktır.
 
 ```cmd
 azds space select -n dev
 ```
 
-Bir üst dev alanı seçmek istendiğinde, _ \<\>hiçbiri'ni_seçin.
+Bir üst dev alanı seçmeniz istendiğinde, _ \<hiçbiri\>_' ni seçin.
 
-Dev alanınız oluşturulduktan sonra, ana bilgisayar sonekini belirlemeniz gerekir. Azure `azds show-context` Dev Spaces Giriş Denetleyicisinin ana bilgisayar sonekini göstermek için komutu kullanın.
+Geliştirme alanınız oluşturulduktan sonra konak sonekini belirlemeniz gerekir. Azure Dev Spaces giriş `azds show-context` denetleyicisinin ana bilgisayar sonekini göstermek için komutunu kullanın.
 
 ```cmd
 $ azds show-context
@@ -52,91 +52,91 @@ Name   ResourceGroup    DevSpace  HostSuffix
 MyAKS  MyResourceGroup  dev       fedcba098.eus.azds.io
 ```
 
-Yukarıdaki örnekte, ana bilgisayar soneki _fedcba098.eus.azds.io._ Bu değer daha sonra sürüm tanımınızı oluştururken kullanılır.
+Yukarıdaki örnekte, ana bilgisayar soneki _fedcba098.EUS.azds.io_. Bu değer daha sonra yayın tanımınızın oluşturulması sırasında kullanılır.
 
-_Geliştirme_ alanı her zaman deponun en son durumunu, bir temeli içerir, böylece geliştiriciler daha büyük uygulama bağlamında yalıtılmış değişikliklerini sınamak için _dev'den_ _alt alan_ oluşturabilirler. Bu kavram Dev Spaces öğreticiler daha ayrıntılı olarak ele alınmıştır.
+Geliştirici _alanı her_ zaman en son bir ana hat durumuna sahip olur, böylece geliştiricilerin _geliştirme_ verilerinden daha büyük bir uygulama bağlamında yalıtılmış değişiklikleri test edebilmesi için _alt_ sınır oluşturabilir. Bu kavram, dev Spaces öğreticilerinde daha ayrıntılı bir şekilde ele alınmıştır.
 
-## <a name="creating-the-build-definition"></a>Yapı tanımıoluşturma
-Azure DevOps takım projenizi bir web tarayıcısında açın ve _Pipelines_ bölümüne gidin. İlk olarak, Azure DevOps sitesinin sağ üst kısmındaki profil fotoğrafınızı tıklayın, önizleme özellikleri bölmesini açın ve _Yeni YAML boru hattı oluşturma deneyimini_devre dışı bırakmak:
+## <a name="creating-the-build-definition"></a>Derleme tanımı oluşturma
+Azure DevOps takım projenizi bir Web tarayıcısında açın ve işlem _hatları_ bölümüne gidin. İlk olarak, Azure DevOps sitesinin sağ üst köşesindeki profil fotoğrafınızı tıklatın, Önizleme özellikleri bölmesini açın ve _yenı YAML ardışık düzen oluşturma deneyimini_devre dışı bırakın:
 
-![Açılış önizleme özellikleri bölmesi](../media/common/preview-feature-open.png)
+![Önizleme özellikleri bölmesi açılıyor](../media/common/preview-feature-open.png)
 
-Devre dışı etme seçeneği:
+Devre dışı bırakma seçeneği:
 
-![Yeni YAML boru hattı oluşturma deneyimi seçeneği](../media/common/yaml-pipeline-preview-feature.png)
+![Yeni YAML ardışık düzen oluşturma deneyimi seçeneği](../media/common/yaml-pipeline-preview-feature.png)
 
 > [!Note]
-> Azure DevOps _Yeni YAML ardışık hat geliştirme deneyimi_ önizleme özelliği, şu anda önceden tanımlanmış yapı ardışık hatları oluşturmayla çakışıyor. Önceden tanımlanmış yapı boru hattımızı dağıtmak için şimdilik devre dışı balmanız gerekir.
+> Azure DevOps _New YAML işlem hattı oluşturma deneyimi_ önizleme özelliği şu anda önceden tanımlanmış derleme işlem hatları oluşturma ile çakışıyor. Önceden tanımlanmış derleme işlem hattımızı dağıtmak için bunu şimdilik devre dışı bırakmanız gerekir.
 
-_azds_updates_ *şubesinde, mywebapi* ve *webfrontend*için gerekli yapı adımlarını tanımlayan basit bir [Azure Pipeline YAML'yi](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) dahil ettik.
+_Azds_updates_ dalında, *mywebapi* ve *webön uç*için gereken derleme adımlarını tanımlayan basit bir [Azure işlem hattı YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) sunuyoruz.
 
-Seçtiğiniz dile bağlı olarak, boru hattı YAML aşağıdakine benzer bir yolda iade edildi:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
+Seçtiğiniz dile bağlı olarak, işlem hattı YAML, şuna benzer bir yolda iade edildi:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
-Bu dosyadan bir Ardışık Hatlar oluşturmak için:
-1. DevOps proje ana sayfanızda, Yapı > Boru Hatları'na gidin.
-1. **Yeni** yapı ardışık bir yapı oluşturma seçeneğini seçin.
-1. Kaynak olarak **GitHub'ı** seçin, gerekirse GitHub hesabınızla yetki verin ve _dev-spaces_ örnek uygulama deposunun çatallı sürümünden _azds_updates_ şubesini seçin.
-1. **Şablonolarak Yapılandırma'yı kod olarak**veya **YAML**olarak seçin.
-1. Şimdi yapı ardışık hattınız için bir yapılandırma sayfası sunulur. Yukarıda belirtildiği gibi **...** düğmesini kullanarak **YAML dosya yolu** için dile özgü yola gidin. Örneğin, `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
+Bu dosyadan bir işlem hattı oluşturmak için:
+1. DevOps proje ana sayfanızda yapılar > işlem hatları ' na gidin.
+1. **Yeni** bir derleme işlem hattı oluşturma seçeneğini belirleyin.
+1. Kaynak olarak **GitHub** ' ı seçin, gerekirse GitHub hesabınızla yetkilendirmeyi yapın ve _Geliştirici-Spaces_ örnek uygulama deposunun dallanmış sürümünden _azds_updates_ dalını seçin.
+1. Şablon olarak **yapılandırmayı kod olarak**veya **YAML**'yi seçin.
+1. Artık derleme işlem hattınız için bir yapılandırma sayfasıyla karşılaşırsınız. Yukarıda belirtildiği gibi, **...** düğmesini kullanarak **YAML dosya yolu** için dile özgü yola gidin. Örneğin, `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. **Değişkenler** sekmesine gidin.
-1. [Azure Kapsayıcı Kayıt Defteri yönetici hesabınızın](../../container-registry/container-registry-authentication.md#admin-account)kullanıcı adı olan _dockerId'i_ değişken olarak el ile ekleyin. (Makalede bahsedilen ön koşullar)
-1. [Azure Konteyner Kayıt Defteri yönetici hesabınızın](../../container-registry/container-registry-authentication.md#admin-account)şifresi olan _dockerPassword'i_ değişken olarak el ile ekleyin. Güvenlik amacıyla _dockerPassword'i_ Gizli olarak (kilit simgesini seçerek) belirttiğinden emin olun.
-1. **& sırayı kaydet'i**seçin.
+1. _Dockerıd_ 'yi, [Azure Container Registry Yönetici hesabınızın](../../container-registry/container-registry-authentication.md#admin-account)Kullanıcı adı olan bir değişken olarak el ile ekleyin. (Makale ön koşulları 'nda bahsedildi)
+1. _Dockerpassword_ öğesini, [Azure Container Registry Yönetici hesabınızın](../../container-registry/container-registry-authentication.md#admin-account)parolası olan bir değişken olarak el ile ekleyin. Güvenlik amacıyla _Dockerpassword_ ' i gizli (kilit simgesini seçerek) olarak belirttiğinizden emin olun.
+1. **& kuyruğu kaydet**' i seçin.
 
-Şimdi otomatik olarak github çatal azds_updates şubesine itti herhangi bir güncelleme için *mywebapi* ve *webfrontend* inşa edecek _bir_ CI çözüm var. Azure portalına giderek, Azure Konteyner Kayıt Defterinizi seçerek ve **Depolar** sekmesine göz atarak Docker görüntülerinin itildiğini doğrulayabilirsiniz. Görüntülerin oluşturulması ve konteyner kayıt defterinizde görünmesi birkaç dakika sürebilir.
+Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir güncelleştirme için *mywebapi* ve *webön uç* 'yi otomatik olarak oluşturacak bir CI çözümünüz vardır. Azure portal giderek, Azure Container Registry seçerek ve **depolar** sekmesine göz atarak Docker görüntülerinin itildiğini doğrulayabilirsiniz. Resimlerin, kapsayıcı kayıt defterinizde oluşturulması ve gösterilmesi birkaç dakika sürebilir.
 
-![Azure Kapsayıcı Kayıt Defteri depoları](../media/common/ci-cd-images-verify.png)
+![Azure Container Registry depoları](../media/common/ci-cd-images-verify.png)
 
-## <a name="creating-the-release-definition"></a>Sürüm tanımını oluşturma
+## <a name="creating-the-release-definition"></a>Yayın tanımı oluşturuluyor
 
-1. DevOps proje ana sayfanızda, Pipelines > Releases sayfasına gidin
-1. Henüz sürüm tanımı içermeyen yepyeni bir DevOps Projesi'nde çalışıyorsanız, devam etmeden önce boş bir sürüm tanımı oluşturmanız gerekir. Varolan bir sürüm tanımı olana kadar İçe Aktarma seçeneği UI'de görüntüalmaz.
-1. Solda + **Yeni** düğmesini tıklatın ve ardından **bir boru hattı nı al'ı**tıklatın.
-1. **Gözat'ı** `samples/release.json` tıklatın ve projenizden seçim inizi seçin.
-1. **Tamam**'a tıklayın. Pipeline bölmesinin sürüm tanımı nı edit sayfasıyla yüklendiğine dikkat edin. Ayrıca, kümeye özgü ayrıntıları gösteren ve hala yapılandırılması gereken bazı kırmızı uyarı simgeleri olduğuna da dikkat edin.
-1. Pipeline bölmesinin solunda, **yapı tonu ekle'yi** tıklatın.
-1. **Kaynak** açılır düşüşünde, daha önce oluşturduğunuz yapı ardışık hattını seçin.
-1. Varsayılan **sürüm**için, **etiketleri olan yapı ardışık etki alanı varsayılan dalından En Son'u**seçin.
+1. DevOps proje ana sayfanızda, işlem hatları > sürümler ' e gidin
+1. Henüz bir yayın tanımı içermeyen yepyeni bir DevOps projesinde çalışıyorsanız, önce devam etmeden önce boş bir yayın tanımı oluşturmanız gerekir. Içeri aktarma seçeneği, var olan bir yayın tanımına sahip olana kadar Kullanıcı arabiriminde görüntülenmez.
+1. Sol tarafta **+ Yeni** düğmesine tıklayın ve ardından Işlem hattını **İçeri Aktar ' a**tıklayın.
+1. **Görüntüle** ' ye tıklayın `samples/release.json` ve projenizden seçin.
+1. **Tamam**'a tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
+1. Ardışık düzen bölmesinin sol tarafında, **yapıt balonu Ekle** ' ye tıklayın.
+1. **Kaynak** açılan listesinde, daha önce oluşturduğunuz derleme işlem hattını seçin.
+1. **Varsayılan sürüm**Için, **en son yapı ardışık düzen varsayılan dalından etiketlerle**' ı seçin.
 1. **Etiketleri** boş bırakın.
-1. Kaynak **takma adını** `drop`' a ayarlayın. **Kaynak diğer ad** değeri önceden tanımlanmış sürüm görevleri tarafından kullanılır, bu nedenle ayarlanmalıdır.
+1. **Kaynak diğer adını** olarak `drop`ayarlayın. **Kaynak diğer adı** değeri, önceden tanımlanmış yayın görevleri tarafından kullanılır, bu nedenle ayarlanması gerekir.
 1. **Ekle**'ye tıklayın.
-1. Şimdi, aşağıda gösterildiği gibi, `drop` yeni oluşturulan yapı kaynağındaki yıldırım simgesine tıklayın:
+1. Şimdi, aşağıda gösterildiği gibi yeni oluşturulan `drop` yapıt kaynağında şimşek simgesini tıklatın:
 
-    ![Açıklama artefaktı sürekli dağıtım kurulumu](../media/common/release-artifact-cd-setup.png)
-1. Sürekli **dağıtım tetikleyicisini**etkinleştirin.
-1. **Pipeline'ın** yanındaki **Görevler** sekmesinin üzerine tıklayın ve _geliştirme_ aşaması görevlerini düzenlemek için _dev'i_ tıklatın.
-1. Bağlantı Türü altında **Azure Kaynak Yöneticisi'nin** seçildiğini **doğrulayın.** ve kırmızı ile vurgulanan üç açılır ![denetimi görürsünüz: Sürüm tanımı kurulumu](../media/common/release-setup-tasks.png)
-1. Azure Dev Spaces ile kullandığınız Azure aboneliğini seçin. **Ayrıca Authorize'u**tıklatmanız gerekebilir.
+    ![Yayın yapıtı sürekli dağıtım kurulumu](../media/common/release-artifact-cd-setup.png)
+1. **Sürekli dağıtım tetikleyicisini**etkinleştirin.
+1. İşlem **hattı** ' nın yanındaki **Görevler** sekmesinin üzerine gelin ve _dev aşama görevlerini_ düzenlemek için _geliştirme_ ' ye tıklayın.
+1. **Azure Resource Manager** **bağlantı türü** altında seçildiğini doğrulayın. kırmızı renkle vurgulanmış üç DropDown denetimini görürsünüz: ![yayın tanımı kurulumu](../media/common/release-setup-tasks.png)
+1. Azure Dev Spaces ile kullanmakta olduğunuz Azure aboneliğini seçin. Ayrıca **Yetkilendir**' e tıklamanız gerekebilir.
 1. Azure Dev Spaces ile kullandığınız kaynak grubunu ve kümeyi seçin.
-1. Agent **iş**tıklayın.
-1. **Agent havuzu**altında **Barındırılan Ubuntu 1604'ü** seçin.
-1. En üstteki **Görevler** seçicinin üzerine oturun, prod sahne görevlerini düzenlemek için _prod'a_ tıklayın. _prod_
-1. Bağlantı Türü altında **Azure Kaynak Yöneticisi'nin** seçildiğini **doğrulayın.** azure dev alanları yla kullandığınız Azure aboneliğini, kaynak grubunu ve kümeyi seçin.
-1. Agent **iş**tıklayın.
-1. **Agent havuzu**altında **Barındırılan Ubuntu 1604'ü** seçin.
-1. Sürümünüzün değişkenlerini güncelleştirmek için **Değişkenler** sekmesini tıklatın.
-1. **DevSpacesHostSonefix** değerini **UPDATE_ME'dan** ana bilgisayar sonekinize güncelleştirin. `azds show-context` Komutu daha önce çalıştırdığınızda ana bilgisayar soneki görüntülenir.
-1. Sağ üstte **Kaydet'i** tıklatın ve **Tamam'** ı tıklatın.
-1. **+ Release** (Kaydet düğmesinin yanında) ve **sürüm oluştur'u**tıklatın.
-1. **Artefaktlar**altında, yapı ardışık etki alanınızdaki en son yapının seçildiğini doğrulayın.
-1. **Oluştur'u**tıklatın.
+1. **Aracı işi**' ne tıklayın.
+1. **Aracı havuzu**altında **barındırılan ubuntu 1604** ' ı seçin.
+1. En üstteki **Görevler** seçicisinin üzerine _gelin, üretim aşaması görevlerini_ düzenlemek için _Üretim_ öğesine tıklayın.
+1. **Azure Resource Manager** **bağlantı türü** altında seçildiğini doğrulayın. ve Azure Dev Spaces ile kullandığınız Azure aboneliğini, kaynak grubunu ve kümeyi seçin.
+1. **Aracı işi**' ne tıklayın.
+1. **Aracı havuzu**altında **barındırılan ubuntu 1604** ' ı seçin.
+1. Yayınlarınızın değişkenlerini güncelleştirmek için **değişkenler** sekmesine tıklayın.
+1. **Devspaceshostsuffix** değerini **UPDATE_ME** ana bilgisayar sonekine güncelleştirin. Daha önce `azds show-context` komutunu çalıştırdığınızda konak soneki görüntülenir.
+1. Sağ üst köşedeki **Kaydet** ' e tıklayıp **Tamam**' a tıklayın.
+1. **+ Release** (Kaydet düğmesinin yanında) seçeneğine tıklayın ve **bir yayın oluşturun**.
+1. **Yapıtlar**bölümünde, derleme işlem hattınızdan en son derlemeyi doğrulayın.
+1. **Oluştur**' a tıklayın.
 
-*Miwebapi* ve *webfrontend* grafiklerini _dev_ üst düzey alanda Kubernetes kümenize dağıtarak otomatik bir sürüm süreci başlayacaktır. Azure DevOps web portalında yayınlanmanızın ilerlemesini izleyebilirsiniz:
+Otomatik bir yayın işlemi başlar, şimdi _geliştirme_ üst düzey alanında *mywebapi* ve *Webön uç* grafiklerini Kubernetes kümenize dağıtacaksınız. Azure DevOps web portalında, yayınınızın ilerlemesini izleyebilirsiniz:
 
-1. **Ardışık Hatlar**altında **Sürümler** bölümüne gidin.
-1. Örnek uygulama için sürüm ardışık hattını tıklatın.
-1. En son sürümün adını tıklayın.
-1. **Aşamalar** altında **dev** kutusunun üzerine tover ve **Günlükleri**tıklatın.
+1. İşlem **hatları**altında **yayınlar** bölümüne gidin.
+1. Örnek uygulama için yayın ardışık düzenine tıklayın.
+1. En son sürümün adına tıklayın.
+1. **Aşamalar** bölümündeki **geliştirme** kutusunun üzerine gelin ve **Günlükler**' e tıklayın.
 
-Sürüm, tüm görevler tamamlandığında yapılır.
+Tüm görevler tamamlandığında yayın yapılır.
 
 > [!TIP]
-> Sürümyükseltme FAILED gibi bir hata iletisi ile başarısız *olursa: koşul bekleyen zamanlanmış,* [Kubernetes panosu kullanarak](../../aks/kubernetes-dashboard.md)kümebölmeleri inceleyerek deneyin. Bölmelerin görüntü "azdsexample.azurecr.io/mywebapi:122" çekmede başarısız gibi hata iletileri ile başlamak için başarısız olduğunu *görürseniz: rpc hatası: kod =\/Bilinmeyen desc = Daemon hata yanıtı: Al https: /azdsexample.azurecr.io/v2/mywebapi/manifests/122: yetkisiz: kimlik doğrulama gerekli*, çünkü küme Azure Konteyner Kayıt Defteri çekmek için yetkili değil olabilir. Azure Kapsayıcı Kayıt Defteri ön [koşulunuzdan yararlanmak için AKS kümenizi yetkilendir'i tamamladığınızdan](../../aks/cluster-container-registry-integration.md) emin olun.
+> Sürüm yükseltme başarısız olduğu bir hata iletisiyle başarısız olursa *: durum beklerken zaman aşımına uğradı*, [Kubernetes panosunu kullanarak](../../aks/kubernetes-dashboard.md)kümenizdeki kümelerinizi inceleyerek deneyin. Pod 'nin *"azdsexample.azurecr.io/mywebapi:122" görüntüsünü çekmek için başarısız olan hata iletileriyle başlayabilmediğini görürseniz: RPC hatası: Code = bilinmeyen DESC = hata programı: Get https:\//azdsexample.azurecr.io/v2/mywebapi/Manifests/122: yetkisiz: kimlik doğrulaması gerekiyor*, bunun nedeni, kümenizin Azure Container Registry çekme yetkisi olmaması olabilir. [AKS kümenizi Azure Container Registry önkoşulinizden çekmek üzere yetkilendirmeyi](../../aks/cluster-container-registry-integration.md) tamamladığınızdan emin olun.
 
-Artık GitHub çatalını dev spaces örnek uygulamalarınız için tam otomatik bir CI/CD ardışık hattınız var. Her zaman işlemek ve kod itin, yapı boru hattı inşa edecek ve özel ACR örneğine *mywebapi* ve *webfrontend* görüntüleri itin. Ardından sürüm ardışık hattı, her uygulama için Miğfer grafiğini Dev Spaces etkin kümenizdeki _dev_ alana dağıtır.
+Artık dev Spaces örnek uygulamalarının GitHub çatalınız için tam otomatik bir CI/CD işlem hattına sahipsiniz. Kodu her işlediğinizde ve gönderişinizde, derleme işlem hattı *mywebapi* ve *webön uç* görüntülerini özel ACR Örneğinizde derleyip göndermeyecektir. Ardından, yayın işlem hattı her bir uygulama için hele grafiğini, dev Spaces özellikli kümenizdeki _dev_ alanına dağıtır.
 
-## <a name="accessing-your-_dev_-services"></a>_Geliştirme_ hizmetlerinize erişim
-Dağıtımdan sonra, *webfrontend'in* _dev_ sürümüne genel bir `http://dev.webfrontend.fedcba098.eus.azds.io`URL ile erişilebilir: . Bu URL'yi komutu `azds list-uri` çalıştırarak bulabilirsiniz: 
+## <a name="accessing-your-_dev_-services"></a>_Geliştirme_ hizmetlerinize erişme
+Dağıtımdan sonra *webön uç* 'nin `http://dev.webfrontend.fedcba098.eus.azds.io` _dev_ sürümüne şu şekilde bir genel URL ile erişilebilir:. Şu `azds list-uri` komutu çalıştırarak bu URL 'yi bulabilirsiniz: 
 
 ```cmd
 $ azds list-uris
@@ -148,19 +148,19 @@ http://dev.webfrontend.fedcba098.eus.azds.io  Available
 
 ## <a name="deploying-to-production"></a>Üretime Dağıtma
 
-Bu öğreticide oluşturulan CI/CD sistemini kullanarak belirli bir sürümü el ile _prod'a_ tanıtmak için:
-1. **Ardışık Hatlar**altında **Sürümler** bölümüne gidin.
-1. Örnek uygulama için sürüm ardışık hattını tıklatın.
-1. En son sürümün adını tıklayın.
-1. Aşamalar altındaki **prod** kutusunun üzerine **titreyin** ve **Dağıt'ı**tıklatın.
+Bu öğreticide oluşturulan CI/CD sistemini kullanarak belirli bir yayını _Üretim_ için el ile yükseltmek için:
+1. İşlem **hatları**altında **yayınlar** bölümüne gidin.
+1. Örnek uygulama için yayın ardışık düzenine tıklayın.
+1. En son sürümün adına tıklayın.
+1. **Aşamalar** altında **Üretim** kutusunun üzerine gelin ve **Dağıt**' a tıklayın.
     ![Üretime yükseltme](../media/common/prod-promote.png)
-1. **Aşamalar** altında tekrar **prod** kutusunun üzerine hover ve **Günlükleri**tıklatın.
+1. **Aşamalar** altında **Üretim** kutusunun üzerine gelin ve **Günlükler**' e tıklayın.
 
-Sürüm, tüm görevler tamamlandığında yapılır.
+Tüm görevler tamamlandığında yayın yapılır.
 
-CI/CD ardışık boru hattının _prod_ hizmetlerine erişim sağlamak için Dev Spaces _prod_ Ingress denetleyicisi yerine bir yük dengeleyicisi kullanır. _Prod_ aşamasında dağıtılan hizmetlere DNS adları yerine IP adresleri olarak erişilebilir. Üretim ortamında, hizmetlerinizi kendi DNS yapılandırmanıza göre barındırmak için kendi Giriş denetleyicinizi oluşturmayı seçebilirsiniz.
+CI/CD işlem hattının _Üretim_ aşaması, _Üretim_ Hizmetleri 'Ne erişim sağlamak üzere dev Spaces giriş denetleyicisi yerine yük dengeleyici kullanır. _Üretim_ aşamasında DAĞıTıLAN hizmetlere DNS adları yerine IP adresleri olarak erişilebilir. Bir üretim ortamında, hizmetlerinizi kendi DNS yapılandırmanıza göre barındırmak için kendi giriş denetleyicinizi oluşturmayı seçebilirsiniz.
 
-Webfrontend hizmetinin IP'sini belirlemek için, günlük çıktısını genişletmek için **Print webfrontend public IP** adımını tıklatın. **Webfrontend** uygulamasına erişmek için günlük çıkışında görüntülenen IP'yi kullanın.
+Web ön uç hizmetinin IP 'sini öğrenmek için, günlük çıktısını genişletmek üzere **Web ön uç genel IP 'Sini Yazdır** adımına tıklayın. **Web ön uç** uygulamasına erişmek için günlük ÇıKTıSıNDA görüntülenecek IP 'yi kullanın.
 
 ```cmd
 ...
@@ -169,21 +169,21 @@ Webfrontend hizmetinin IP'sini belirlemek için, günlük çıktısını genişl
 ...
 ```
 
-## <a name="dev-spaces-instrumentation-in-production"></a>Üretimde Dev Spaces enstrümantasyonu
-Dev Spaces enstrümantasyonu uygulamanızın normal çalışmasına engel _olmayacak_ şekilde tasarlanmış olsa da, üretim iş yüklerinizi Dev Spaces ile etkinleştirilen bir Kubernetes ad alanında çalıştırmanızı öneririz. Bu tür Kubernetes ad alanını kullanmak, `kubectl` CLI'yi kullanarak üretim ad alanınızı oluşturmanız veya CI/CD sisteminizin ilk Miğfer dağıtımı sırasında oluşturmasına izin vermeniz gerektiği anlamına gelir. Dev Spaces aracını kullanarak bir alan _seçmek_ veya başka bir şekilde oluşturmak, bu ad alanına Dev Spaces enstrümantasyonunu ekler.
+## <a name="dev-spaces-instrumentation-in-production"></a>Üretimde dev Spaces izleme
+Geliştirme alanları izleme, uygulamanızın normal çalışma yöntemiyle _değil_ tasarlanmasa da, üretim iş yüklerinizi dev alanları ile etkinleştirilmemiş bir Kubernetes ad alanında çalıştırmayı öneririz. Bu tür Kubernetes ad alanını kullanmak, `kubectl` CLI kullanarak üretim ad alanınızı oluşturmanız ya da CI/CD sisteminizin Ilk helk dağıtımı sırasında bunu oluşturmasına izin vermeniz gerekir. Geliştirme alanları araçlarını kullanarak bir alan _seçme_ veya başka bir şekilde oluşturma, bu ad alanına dev Spaces araçları ekler.
 
-Burada özellik geliştirme, 'dev' ortamı _ve_ üretim, tek bir Kubernetes küme tüm destekleyen bir örnek ad alanı yapısı:
+İşte, tek bir Kubernetes kümesinde Özellik geliştirmeyi, ' dev ' ortamını _ve_ üretimi destekleyen örnek bir ad alanı yapısı:
 
 ![Örnek ad alanı yapısı](../media/common/cicd-namespaces.png)
 
 > [!Tip]
-> Zaten bir `prod` boşluk oluşturduysanız ve yalnızca Onu Dev Spaces enstrümantasyonundan hariç tutmak istiyorsanız (silmeden!), bunu aşağıdaki Dev Spaces CLI komutuyla yapabilirsiniz:
+> Zaten bir `prod` alan oluşturduysanız ve bunu dev Spaces araçları 'ndan dışlamak istiyorsanız (It!), bunu aşağıdaki dev Spaces CLI komutuyla yapabilirsiniz:
 >
 > `azds space remove -n prod --no-delete`
 >
-> Bunu yaptıktan sonra `prod` ad alanındaki tüm bölmeleri silmeniz gerekebilir, böylece Dev Spaces enstrümantasyonu olmadan yeniden oluşturulabilirler.
+> Bunu yaptıktan sonra, geliştirme alanları izleme olmadan yeniden oluşturulabilen `prod` şekilde, ad alanındaki tüm Pod 'leri silmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Geliştirme Alanları'nı kullanarak ekip geliştirme hakkında bilgi edinin](../team-development-netcore.md)
+> [Azure Dev Spaces kullanarak takım geliştirme hakkında bilgi edinin](../team-development-netcore.md)

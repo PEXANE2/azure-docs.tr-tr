@@ -1,6 +1,6 @@
 ---
-title: Verizon Premium kuralları motor maç koşulları azure CDN | Microsoft Dokümanlar
-description: Verizon Premium kuralları motor maç koşulları ndan Azure İçerik Teslim Ağı için başvuru belgeleri.
+title: Verizon Premium kural altyapısından eşleşme koşullarına Azure CDN | Microsoft Docs
+description: Verizon Premium kuralları altyapısı eşleştirme koşullarından Azure Content Delivery Network için başvuru belgeleri.
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,99 +8,99 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253450"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Verizon Premium kuralları motor maç koşulları Azure CDN
+# <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Verizon Premium kural altyapısından eşleşme koşullarına Azure CDN
 
-Bu makalede, Verizon Premium [kuralları altyapısından](cdn-verizon-premium-rules-engine.md)Azure İçerik Dağıtım Ağı (CDN) için kullanılabilir eşleşme koşullarının ayrıntılı açıklamaları listelenmektedir.
+Bu makalede, Verizon Premium [kural altyapısından](cdn-verizon-premium-rules-engine.md)Azure Content DELIVERY Network (CDN) için kullanılabilen eşleşme koşullarının ayrıntılı açıklamaları listelenmektedir.
 
-Kuralın ikinci bölümü maç koşuludur. Eşmatch koşulu, bir dizi özelliğin gerçekleştirileceği belirli istek türlerini tanımlar.
+Bir kuralın ikinci bölümü eşleşme durumudur. Bir eşleşme koşulu, bir özellik kümesinin gerçekleştirileceği belirli istek türlerini tanımlar.
 
-Örneğin, bir eşleşme koşulu kullanabilirsiniz:
+Örneğin, bir eşleşme koşulunu şu şekilde kullanabilirsiniz:
 
-- İçerik isteklerini belirli bir konumda filtreleyin.
-- Belirli bir IP adresinden veya ülke/bölgeden oluşturulan istekleri filtreleyin.
-- Üstbilgi bilgilerine göre istekleri filtreleyin.
+- Belirli bir konumdaki içerik isteklerini filtreleyin.
+- Belirli bir IP adresi veya ülke/bölge tarafından oluşturulan filtre istekleri.
+- İstekleri üst bilgi bilgisine göre filtreleyin.
 
-## <a name="always-match-condition"></a>Her zaman eşleşin koşul
+## <a name="always-match-condition"></a>Her zaman eşleşen koşul
 
-Her Zaman eşleşme koşulu, tüm isteklere varsayılan bir özellik kümesi uygular.
+Her zaman eşleşme koşulu, tüm isteklere varsayılan bir özellik kümesi uygular.
 
 Adı | Amaç
 -----|--------
 [Her zaman](#always) | Tüm isteklere varsayılan bir özellik kümesi uygular.
 
-## <a name="device-match-condition"></a>Aygıt eşleşmesi durumu
+## <a name="device-match-condition"></a>Cihaz eşleştirme koşulu
 
-Cihaz eşleştirme koşulu, özelliklerine göre bir mobil cihazdan gelen istekleri tanımlar.  
-
-Adı | Amaç
------|--------
-[Cihaz](#device) | Bir mobil cihazdan gelen istekleri özelliklerine göre tanımlar.
-
-## <a name="location-match-conditions"></a>Konum eşleşmekoşulları
-
-Konum eşleştirme koşulları, istekte bulunanın konumuna bağlı olarak istekleri tanımlar.
+Cihaz eşleştirme koşulu, bir mobil cihazdan yapılan istekleri özelliklerine göre tanımlar.  
 
 Adı | Amaç
 -----|--------
-[AS Numarası](#as-number) | Belirli bir ağdan kaynaklanan istekleri tanımlar.
+[Cihaz](#device) | Bir mobil cihazdan yapılan istekleri özelliklerine göre tanımlar.
+
+## <a name="location-match-conditions"></a>Konum eşleşme koşulları
+
+Konum eşleşme koşulları, istek sahibinin konumuna göre istekleri belirler.
+
+Adı | Amaç
+-----|--------
+[AS numarası](#as-number) | Belirli bir ağdan kaynaklanan istekleri tanımlar.
 [Ülke](#country) | Belirtilen ülkelerden/bölgelerden kaynaklanan istekleri tanımlar.
 
-## <a name="origin-match-conditions"></a>Başlangıç eşleşmesi koşulları
+## <a name="origin-match-conditions"></a>Kaynak eşleşme koşulları
 
-Origin eşleşme koşulları, İçerik Teslim Ağı depolamasını veya müşteri kökenli bir sunucuyu işaret eden istekleri tanımlar.
+Kaynak eşleşme koşulları Content Delivery Network depolama alanını veya bir müşteri kaynak sunucusunu işaret eden istekleri belirler.
 
 Adı | Amaç
 -----|--------
-[CDN Menşei](#cdn-origin) | İçerik Dağıtım Ağı depolama alanında depolanan içerik isteklerini tanımlar.
-[Müşteri Menşei](#customer-origin) | Belirli bir müşteri kaynağı sunucusunda depolanan içerik isteklerini tanımlar.
+[CDN kaynağı](#cdn-origin) | Content Delivery Network depolamada depolanan içerik için istekleri tanımlar.
+[Müşteri kaynağı](#customer-origin) | Belirli bir müşteri kaynağı sunucusunda depolanan içerik isteklerini tanımlar.
 
-## <a name="request-match-conditions"></a>Maç koşulları isteme
+## <a name="request-match-conditions"></a>İstek eşleştirme koşulları
 
-İstek eşleşmekoşulları, istekleri özelliklerine göre tanımlar.
+Istek eşleştirme koşulları, isteklerini özelliklerine göre belirler.
 
 Adı | Amaç
 -----|--------
 [İstemci IP Adresi](#client-ip-address) | Belirli bir IP adresinden kaynaklanan istekleri tanımlar.
-[Çerez Parametresi](#cookie-parameter) | Belirtilen değer için her istekle ilişkili tanımlama bilgilerini denetler.
-[Çerez Parametresi Regex](#cookie-parameter-regex) | Belirtilen normal ifade için her istekle ilişkili tanımlama bilgilerini denetler.
-[Kenar Adı](#edge-cname) | Belirli bir kenar CNAME'yi işaret eden istekleri tanımlar.
-[Yönlendiren Etki Alanı](#referring-domain) | Belirtilen ana bilgisayar adlarından yönlendirilen istekleri tanımlar.
-[İstek Üstbilgi Literal](#request-header-literal) | Belirtilen üstbilgi kümesini içeren istekleri belirli bir değere tanımlar.
-[İstek Üstbilgi Regex](#request-header-regex) | Belirtilen üstbilgi kümesini içeren istekleri, belirtilen normal ifadeyle eşleşen bir değere tanımlar.
-[İstek Üstbilgi Joker](#request-header-wildcard) | Belirtilen üstbilgi kümesini içeren istekleri, belirtilen desenle eşleşen bir değere tanımlar.
-[Request Yöntemi](#request-method) | İstekleri HTTP yöntemiyle tanımlar.
-[İstek Şeması](#request-scheme) | İstekleri HTTP protokolüne göre tanımlar.
+[Cookie parametresi](#cookie-parameter) | Belirtilen değer için her istekle ilişkili tanımlama bilgilerini denetler.
+[Tanımlama bilgisi parametre Regex](#cookie-parameter-regex) | Belirtilen normal ifade için her istekle ilişkili tanımlama bilgilerini denetler.
+[Edge CNAME](#edge-cname) | Belirli bir Edge CNAME 'e işaret eden istekleri tanımlar.
+[Başvurulan etki alanı](#referring-domain) | Belirtilen ana bilgisayar adlarından başvurulan istekleri tanımlar.
+[İstek üst bilgisi sabit değeri](#request-header-literal) | Belirtilen üst bilgiyi içeren istekleri belirtilen bir değere göre tanımlar.
+[İstek üst bilgisi Regex](#request-header-regex) | Belirtilen üst bilgiyi içeren istekleri belirtilen normal ifadeyle eşleşen bir değere tanımlar.
+[İstek üstbilgisi joker karakteri](#request-header-wildcard) | Belirtilen üst bilgiyi içeren istekleri belirtilen Düzenle eşleşen bir değere belirler.
+[Request Yöntemi](#request-method) | İstekleri HTTP yöntemine göre tanımlar.
+[İstek düzeni](#request-scheme) | İstekleri HTTP protokollerine göre tanımlar.
 
-## <a name="url-match-conditions"></a>URL maç koşulları
+## <a name="url-match-conditions"></a>URL eşleşme koşulları
 
-URL eşleşme koşulları, URL'lerine göre istekleri tanımlar.
+URL eşleştirme koşulları, isteklerini URL 'lerine göre belirler.
 
 Adı | Amaç
 -----|--------
-[URL Yol Dizini](#url-path-directory) | İstekleri göreli yollarıyla tanımlar.
-[URL Yolu Uzantısı](#url-path-extension) | İstekleri dosya adı uzantısına göre tanımlar.
-[URL Yolu Dosya Adı](#url-path-filename) | İstekleri dosya adlarına göre tanımlar.
-[URL Yolu Literal](#url-path-literal) | İsteğin göreli yolunu belirtilen değerle karşılaştırır.
-[URL Yolu Regex](#url-path-regex) | İsteğin göreli yolunu belirtilen normal ifadeyle karşılaştırır.
-[URL Yolu Joker](#url-path-wildcard) | İsteğin göreli yolunu belirtilen desenle karşılaştırır.
-[URL Sorgusu Literal](#url-query-literal) | İsteğin sorgu dizesini belirtilen değerle karşılaştırır.
-[URL Sorgu Parametresi](#url-query-parameter) | Belirtilen sorgu dize parametresini içeren istekleri, belirtilen desenle eşleşen bir değere ayarlar.
-[URL Sorgusu Regex](#url-query-regex) | Belirtilen sorgu dize parametresini içeren istekleri, belirtilen normal ifadeyle eşleşen bir değere ayarlar.
-[URL Sorgusu Joker](#url-query-wildcard) | Belirtilen değeri isteğin sorgu dizesi ile karşılaştırır.
+[URL yolu dizini](#url-path-directory) | İstekleri göreli yoluna göre tanımlar.
+[URL yolu uzantısı](#url-path-extension) | İstekleri dosya adı uzantısına göre tanımlar.
+[URL yolu dosya adı](#url-path-filename) | İstekleri dosya adlarıyla tanımlar.
+[URL yolu sabit değeri](#url-path-literal) | Bir isteğin göreli yolunu belirtilen değerle karşılaştırır.
+[URL yolu Regex](#url-path-regex) | Bir isteğin göreli yolunu belirtilen normal ifadeyle karşılaştırır.
+[URL yolu joker karakteri](#url-path-wildcard) | Bir isteğin göreli yolunu belirtilen düzene göre karşılaştırır.
+[URL sorgusu sabit değeri](#url-query-literal) | Bir isteğin sorgu dizesini belirtilen değerle karşılaştırır.
+[URL sorgu parametresi](#url-query-parameter) | Belirtilen bir düzenle eşleşen bir değere ayarlanan belirtilen sorgu dizesi parametresini içeren istekleri tanımlar.
+[URL sorgu Regex](#url-query-regex) | Belirtilen sorgu dizesi parametresini içeren istekleri belirtilen normal ifadeyle eşleşen bir değere ayarlar.
+[URL sorgusu joker karakteri](#url-query-wildcard) | Belirtilen değeri isteğin sorgu dizesiyle karşılaştırır.
 
-## <a name="reference-for-rules-engine-match-conditions"></a>Kurallar motoru eşleştirme koşulları için başvuru
+## <a name="reference-for-rules-engine-match-conditions"></a>Kural altyapısı eşleştirme koşulları başvurusu
 
 ---
 
 ### <a name="always"></a>Her zaman
 
-Her Zaman eşleşme koşulu, tüm isteklere varsayılan bir özellik kümesi uygular.
+Her zaman eşleşme koşulu, tüm isteklere varsayılan bir özellik kümesi uygular.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -108,26 +108,26 @@ Her Zaman eşleşme koşulu, tüm isteklere varsayılan bir özellik kümesi uyg
 
 ---
 
-### <a name="as-number"></a>AS Numarası
+### <a name="as-number"></a>AS numarası
 
-AS Numarası ağı, özerk sistem numarası (ASN) ile tanımlanır. 
+AS numarası ağı, otonom sistem numarası (ASN) tarafından tanımlanır. 
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, AS Numarası eşleşmesi koşulunun hangi koşullaraltında karşılandığını belirler:
+**Eşleşmeler**/**eşleşmiyor** seçeneği, as numarası eşleşme koşulunun karşılandığı koşulları belirler:
 
-- **Eşleşmeler**: İstemci ağının ASN'sinin belirtilen ASN'lerden biriyle eşleşmesini gerektirir. 
-- **Eşleşmez**: İstemci ağının ASN'sinin belirtilen ASN'lerin hiçbiriyle eşleşmemesi gerektiğini gerektirir.
+- **Eşleşmeler**: ISTEMCI ağının ASN 'Nin belirtilen ASNs 'den biriyle eşleşmesini gerektirir. 
+- **Eşleşmiyor**: ISTEMCI ağının ASN 'Nin belirtilen ASNs ile eşleşmemesi gerekir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Her birini tek bir boşlukla sınırlandırarak birden çok ASN belirtin. Örneğin, 64514 64515 64514 veya 64515 gelen isteklerini.
-- Bazı istekler geçerli bir ASN döndürmeyebilir. Bir soru işareti (?) için geçerli bir ASN belirlenemeyen istekleri eşleşir.
-- İstenilen ağ için ASN'nin tamamını belirtin. Kısmi değerler eşleşmez.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Her birini tek bir boşlukla ayırarak birden çok ASNs belirtin. Örneğin 64514 64515, 64514 veya 64515 ' den gelen isteklerle eşleşir.
+- Belirli istekler geçerli bir ASN döndürmeyebilir. Bir soru işareti (?), geçerli bir ASN 'nin belirlenemediği isteklerle eşleşir.
+- İstediğiniz ağ için tüm ASN 'yi belirtin. Kısmi değerler eşleştirmeyecektir.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -135,19 +135,19 @@ AS Numarası ağı, özerk sistem numarası (ASN) ile tanımlanır.
 
 ---
 
-### <a name="cdn-origin"></a>CDN Menşei
+### <a name="cdn-origin"></a>CDN kaynağı
 
-CDN Origin eşleşmesi koşulu, aşağıdaki koşulların her ikisi de karşılandığında karşılanır:
+Aşağıdaki koşulların her ikisi de karşılandığında CDN kaynak eşleşmesi koşulu karşılanır:
 
-- CDN depolamadan içerik istendi.
-- Uri isteği, bu eşleşme koşulunda tanımlanan içerik erişim noktası türünü (örneğin, /000001) kullanır:
-  - CDN URL'si: İstek URI seçili içerik erişim noktasını içermelidir.
-  - Kenar CNAME URL'si: İlgili kenar CNAME yapılandırması seçili içerik erişim noktasını işaret etmelidir.
+- CDN depolamadaki içerik istendi.
+- İstek URI 'SI, bu eşleştirme koşulunda tanımlanmış içerik erişim noktası türünü (örneğin,/000001) kullanır:
+  - CDN URL 'SI: istek URI 'SI seçilen içerik erişim noktasını içermelidir.
+  - Edge CNAME URL 'SI: karşılık gelen Edge CNAME yapılandırması, seçilen içerik erişim noktasına işaret etmelidir.
   
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- İçerik erişim noktası, istenen içeriğe hizmet etmesi gereken hizmeti tanımlar.
-- Belirli eşleşme koşullarını birleştirmek için BIR AND IF deyimi kullanmayın. Örneğin, BIR CDN Origin eşleşmesi koşulunu Müşteri Kaynağı eşleşme koşuluyla birleştirmek, asla eşleştirilmeyecek bir eşleşme deseni oluşturur. Bu nedenle, iki CDN Origin eşleşme sart koşulu bir AND IF deyimi ile birleştirilemez.
+- İçerik erişim noktası, istenen içeriğe hizmet vermesi gereken hizmeti belirler.
+- Belirli eşleşme koşullarını birleştirmek için ve IF ifadesini kullanmayın. Örneğin, bir müşteri kaynağı eşleştirme koşuluna sahip bir CDN kaynak eşleşmesi koşulunu birleştirmek, hiçbir şekilde eşleştirilememe bir eşleştirme deseninin oluşturulmasını sağlayabilir. Bu nedenle, iki CDN kaynağı eşleşme koşulu bir ve IF ifadesiyle birleştirilemez.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -157,26 +157,26 @@ CDN Origin eşleşmesi koşulu, aşağıdaki koşulların her ikisi de karşıla
 
 ### <a name="client-ip-address"></a>İstemci IP Adresi
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, Istemci IP Adresi eşleşme koşulunun hangi koşullar altında karşılandığını belirler:
+**Eşleşmeler**/**eşleşmiyor** seçeneği, istemci IP adresi eşleşme koşulunun karşılandığı koşulları belirler:
 
-- **Eşleşmeler**: İstemcinin IP adresinin belirtilen IP adreslerinden biriyle eşleşmesini gerektirir. 
-- **Eşleşmez**: İstemcinin IP adresinin belirtilen IP adreslerinin hiçbirine eşleşmemesi gerekmez. 
+- **Eşleşmeler**: istemcinin IP ADRESININ belirtilen IP adreslerinden biriyle eşleşmesini gerektirir. 
+- **Eşleşmiyor**: istemcinin IP ADRESININ belirtilen IP adreslerinden hiçbiriyle eşleşmemesi gerekir. 
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- CIDR gösterimini kullanın.
-- Her birini tek bir boşlukla sınırlandırarak birden çok IP adresi ve/veya IP adresi bloğu belirtin. Örneğin:
-  - **IPv4 örneği**: 1.2.3.4 10.20.30.40 adresten gelen isteklerle 1.2.3.4 veya 10.20.30.40 ile eşleşir.
-  - **IPv6 örneği**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 her iki adresten gelen isteklerle eşleşir 1:2:3:4:5:6:7:8 veya 10:20:30:40:50:60:70:80.
-- IP adresi bloğu sözdizimi, bir ileri eğik çizgi ve önek boyutu ardından temel IP adresidir. Örneğin:
-  - **IPv4 örneği**: 5.5.5.64/26, 5.5.5.64 ile 5.5.5.127 adreslerinden gelen tüm isteklerle eşleşir.
-  - **IPv6 örneği**: 1:2:3:/48 adreslerinden gelen tüm isteklerle eşleşir 1:2:3:0:0:0:0 0 ile 1:2:3:ffff:ffff:ffff:ffff:ffff.ffff.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- CıDR gösterimini kullanın.
+- Her birini tek bir boşlukla ayırarak birden çok IP adresi ve/veya IP adresi bloğu belirtin. Örneğin:
+  - **IPv4 örneği**: 1.2.3.4 10.20.30.40, 1.2.3.4 veya 10.20.30.40 adresinden gelen isteklerle eşleşir.
+  - **IPv6 örneği**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80, 1:2:3:4:5:6:7:8 ya da 10:20:30:40:50:60:70:80 adresinden gelen isteklerle eşleşir.
+- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örneğin:
+  - **IPv4 örneği**: 5.5.5.64/26, 5.5.5.64 ile 5.5.5.127 arası adreslerden gelen isteklerle eşleşir.
+  - **IPv6 örneği**: 1:2:3:/48, 1:2:3:0:0:0:0:0 ile 1:2: 3: ffff: ffff: ffff: ffff: ffff adresinden gelen tüm isteklerle eşleşir.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -184,64 +184,64 @@ CDN Origin eşleşmesi koşulu, aşağıdaki koşulların her ikisi de karşıla
 
 ---
 
-### <a name="cookie-parameter"></a>Çerez Parametresi
+### <a name="cookie-parameter"></a>Cookie parametresi
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, Çerez Parametresi eşleşme sn koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, tanımlama bilgisi parametresi eşleşme koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Bu eşleşme koşulunda tanımlanan değerlerden en az biriyle eşleşen bir değere sahip belirtilen çerezi içerme isteği gerektirir.
-- **Eşleşmez**: İsteğin aşağıdaki ölçütlerden birini karşılamasını gerektirir:
-  - Belirtilen çerezi içermez.
-  - Belirtilen çerezi içerir, ancak değeri bu eşleşme koşulunda tanımlanan değerlerin hiçbiriyle eşleşmez.
+- **Eşleşmeler**: Bu eşleşme koşulunda tanımlanan değerlerden en az biriyle eşleşen bir değere sahip belirtilen tanımlama bilgisini içeren bir istek gerektirir.
+- **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
+  - Belirtilen tanımlama bilgisini içermez.
+  - Belirtilen tanımlama bilgisini içerir, ancak değeri bu eşleşme koşulunda tanımlanan değerlerden hiçbiriyle eşleşmiyor.
   
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Çerez adı:
-  - Yıldız işaretleri (*) dahil olmak üzere joker karakter değerleri, bir çerez adı belirtirken desteklenmedığından, yalnızca tam çerez adı eşleşmeleri karşılaştırma için uygundur.
-  - Bu eşleşme koşulunun örneğine göre yalnızca tek bir çerez adı belirtilebilir.
-  - Çerez adı karşılaştırmaları büyük/küçük harf duyarsızdır.
-- Çerez değeri:
-  - Her birini tek bir boşlukla sınırlandırarak birden çok çerez değeri belirtin.
-  - Çerez değeri [joker karakter değerlerinden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)yararlanabilir.
-  - Joker karakter değeri belirtilmemişse, yalnızca tam bir eşleşme bu eşleşme koşulunu karşılar. Örneğin, "Değer" belirtmek "Değer" ile eşleşir, ancak "Değer1" veya "Değer2" ile eşleşmez.
-  - İsteğin çerez değerine karşı büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük Harf Yoksay** seçeneğini kullanın.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Tanımlama bilgisi adı:
+  - Bir tanımlama bilgisi adı belirtirken yıldız işareti (*) de dahil olmak üzere joker karakter değerleri desteklenmediğinden, yalnızca tam tanımlama bilgisi adı karşılaştırma için uygundur.
+  - Bu eşleşme koşulunun örneği başına yalnızca tek bir tanımlama bilgisi adı belirtilebilir.
+  - Tanımlama bilgisi adı karşılaştırmaları büyük/küçük harfe duyarlıdır.
+- Tanımlama bilgisi değeri:
+  - Her birini tek bir boşlukla ayırarak birden fazla tanımlama bilgisi değeri belirtin.
+  - Bir tanımlama bilgisi değeri, [Joker değerlerden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)yararlanabilir.
+  - Joker karakter değeri belirtilmediyse, bu eşleştirme koşulunu yalnızca tam bir eşleşme karşılar. Örneğin, "Value" belirtildiğinde "Value" ile eşleşir, ancak "değer1" veya "değer2" olarak eşleşmez.
+  - İsteğin tanımlama bilgisine göre büyük/küçük harfe duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **durumu yoksay** seçeneğini kullanın.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 </br>
 
 ---
 
-### <a name="cookie-parameter-regex"></a>Çerez Parametresi Regex
+### <a name="cookie-parameter-regex"></a>Tanımlama bilgisi parametre Regex
 
-Çerez Parametresi Regex maç koşulu bir çerez adı ve değeri tanımlar. İstenilen çerez değerini tanımlamak için [normal ifadeler](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) kullanabilirsiniz.
+Tanımlama bilgisi parametresi Regex Match koşulu, bir tanımlama bilgisi adı ve değeri tanımlar. İstenen tanımlama bilgisi değerini tanımlamak için [Normal ifadeleri](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) kullanabilirsiniz.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, Çerez Parametresi Regex eşleşme koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneğiyle eşleşen tanımlama bilgisi parametresinin hangi koşullarda karşılandığını belirler.
 
-- **Eşleşmeler**: Belirtilen normal ifadeyle eşleşen bir değere sahip belirtilen çerezi içerme isteği gerektirir.
-- **Eşleşmez**: İsteğin aşağıdaki ölçütlerden birini karşılamasını gerektirir:
-  - Belirtilen çerezi içermez.
-  - Belirtilen çerezi içerir, ancak değeri belirtilen normal ifadeyle eşleşmez.
+- **Eşleşmeler**: belirtilen normal ifadeyle eşleşen bir değere sahip belirtilen tanımlama bilgisini içermesi için bir istek gerektirir.
+- **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
+  - Belirtilen tanımlama bilgisini içermez.
+  - Belirtilen tanımlama bilgisini içerir, ancak değeri belirtilen normal ifadeyle eşleşmez.
   
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Çerez adı:
-  - Yıldız işaretleri (*) dahil olmak üzere normal ifadeler ve joker karakter değerleri, çerez adı belirtirken desteklenmedığından, yalnızca tam çerez adı eşleşmeleri karşılaştırma için uygundur.
-  - Bu eşleşme koşulunun örneğine göre yalnızca tek bir çerez adı belirtilebilir.
-  - Çerez adı karşılaştırmaları büyük/küçük harf duyarsızdır.
-- Çerez değeri:
-  - Çerez değeri normal ifadelerden yararlanabilir.
-  - İsteğin çerez değerine karşı büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük Harf Yoksay** seçeneğini kullanın.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Tanımlama bilgisi adı:
+  - Bir tanımlama bilgisi adı belirtirken normal ifadeler ve yıldız işareti (*) de dahil olmak üzere joker değerler desteklenmediğinden, yalnızca tam tanımlama bilgisi adı karşılaştırma için uygundur.
+  - Bu eşleşme koşulunun örneği başına yalnızca tek bir tanımlama bilgisi adı belirtilebilir.
+  - Tanımlama bilgisi adı karşılaştırmaları büyük/küçük harfe duyarlıdır.
+- Tanımlama bilgisi değeri:
+  - Bir tanımlama bilgisi değeri, normal ifadelerden yararlanabilir.
+  - İsteğin tanımlama bilgisine göre büyük/küçük harfe duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **durumu yoksay** seçeneğini kullanın.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -251,39 +251,39 @@ CDN Origin eşleşmesi koşulu, aşağıdaki koşulların her ikisi de karşıla
 
 ### <a name="country"></a>Ülke
 
-Bir ülkeyi ülke koduyla belirtebilirsiniz. 
+Ülke kodu aracılığıyla bir ülke belirtebilirsiniz. 
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, Ülke eşleşmesi koşulunun hangi koşullaraltında karşılandığını belirler:
+**Eşleşmeler**/**eşleşmiyor** seçeneği, ülke eşleşme koşulunun karşılandığı koşulları belirler:
 
-- **Eşleşmeler**: Belirtilen ülke kodu değerlerini içerme isteğini gerektirir. 
-- **Eşleşmez**: İsteğin belirtilen ülke kodu değerlerini içermemesini gerektirir.
+- **Eşleşmeler**: isteğin belirtilen ülke kodu değerlerini içermesini gerektirir. 
+- **Eşleşmiyor**: isteğin belirtilen ülke kodu değerlerini içermemesi gerekir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Her birini tek bir alanla sınırlandırarak birden çok ülke kodu belirtin.
+- Her birini tek bir boşlukla ayırarak birden çok ülke kodu belirtin.
 - Ülke kodu belirtirken joker karakterler desteklenmez.
-- "AB" ve "AP" ülke kodları bu bölgelerdeki tüm IP adreslerini kapsamaz.
-- Belirli istekler geçerli bir ülke kodu döndürmeyebilir. Soru işareti (?) için geçerli bir ülke kodu belirlenemeyen istekleri eşleşir.
-- Ülke kodları büyük/küçük harf duyarlıdır.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- "AB" ve "AP" ülke kodları, bu bölgelerdeki tüm IP adreslerini içermez.
+- Belirli istekler geçerli bir ülke kodu döndürmeyebilir. Bir soru işareti (?), geçerli bir ülke kodunun belirlenemediği isteklerle eşleşir.
+- Ülke kodları büyük/küçük harfe duyarlıdır.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
-#### <a name="implementing-country-filtering-by-using-the-rules-engine"></a>Kurallar altyapısını kullanarak Ülke Filtreleme uygulaması
+#### <a name="implementing-country-filtering-by-using-the-rules-engine"></a>Kural altyapısını kullanarak ülke filtreleme uygulama
 
-Bu eşleşme koşulu, bir isteğin kaynaklandigi konuma göre çok sayıda özelleştirme gerçekleştirmenize olanak tanır. Örneğin, Ülke Filtreleme özelliğinin davranışı aşağıdaki yapılandırma aracılığıyla çoğaltılabilir:
+Bu eşleştirme koşulu, bir isteğin kaynaklandığı konuma göre çok sayıda özelleştirmeler gerçekleştirmenize olanak tanır. Örneğin, ülke filtreleme özelliğinin davranışı aşağıdaki yapılandırma yoluyla çoğaltılabiliyor:
 
-- URL Path Wildcard eşleşmesi: [URL Path Wildcard maç koşulunu](#url-path-wildcard) güvenli olacak dizine ayarlayın. 
-    Tüm çocuklarına erişimin bu kuralla kısıtlanmasından emin olmak için göreli yolun sonuna bir yıldız işareti ekin.
+- URL yolu joker karakter eşleşmesi: [URL yolu joker karakter eşleştirme koşulunu](#url-path-wildcard) güvenliği sağlayacak dizine ayarlayın. 
+    Tüm alt öğelerine erişimin bu kural tarafından kısıtlanmasını sağlamak için göreli yolun sonuna bir yıldız işareti ekleyin.
 
-- Ülke maçı: Ülke maç koşulunu istenilen ülkeler kümesine ayarlayın.
-  - İzin Ver: Ülke eşleşmesi koşulunu, yalnızca belirtilen ülkelerin URL Yolu Joker Kart eşleşmesi koşuluyla tanımlanan konumda depolanan içeriğe erişmesine izin vermek için **Eşleşmiyor** olarak ayarlayın.
-  - Blok: Belirtilen ülkelerin URL Yolu Joker Kart eşleşmesi koşuluyla tanımlanan konumda depolanan içeriğe erişmelerini engellemek için Ülke maç koşulunu **Maçlar** olarak ayarlayın.
+- Ülke eşleşmesi: ülke eşleştirme koşulunu istenen ülke kümesine ayarlayın.
+  - İzin ver: ülke eşleştirme koşulunu, yalnızca belirtilen ülkelerin, URL yolu eşleştirme koşulu tarafından tanımlanan konumda depolanan içeriğe erişmesine izin verecek şekilde **eşleşmez** .
+  - Engelle: belirtilen ülkelerin, URL yolu joker karakter eşleştirme koşulu tarafından tanımlanan konumda depolanan içeriğe erişmesini engellemek için ülke eşleştirme koşulunu **eşleşir** olarak ayarlayın.
 
-- Access'i Reddet (403) Özelliği: Ülke Filtreleme özelliğinin izin veya blok kısmını çoğaltmak için [Access'i Reddet (403) özelliğini](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) etkinleştirin.
+- Erişimi Reddet (403) özelliği: ülke filtreleme özelliğinin izin verme veya engelleme bölümünü çoğaltmak için [erişimi Reddet (403) özelliğini](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) etkinleştirin.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -291,15 +291,15 @@ Bu eşleşme koşulu, bir isteğin kaynaklandigi konuma göre çok sayıda özel
 
 ---
 
-### <a name="customer-origin"></a>Müşteri Menşei
+### <a name="customer-origin"></a>Müşteri kaynağı
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Müşteri Kaynağı eşleşme sn. Içerik CDN URL'si veya seçili müşteri kaynağını gösteren bir kenar CNAME URL'si aracılığıyla istenip istenmediğine bakılmaksızın karşılanır.
-- Kuralla başvurulan müşteri kökenli yapılandırma, Müşteri Kaynağı sayfasından silinemez. Bir müşteri kaynağı yapılandırmasını silmeyi denemeden önce, aşağıdaki yapılandırmaların bu yapılandırmaya başvurmadığından emin olun:
-  - Müşteri Kaynağı eşleşme koşulu
-  - Kenar CNAME yapılandırması
-- Belirli eşleşme koşullarını birleştirmek için BIR AND IF deyimi kullanmayın. Örneğin, Müşteri Kaynağı eşleşme koşulunu CDN Origin eşleşme sn. koşuluyla birleştirmek, asla eşleştirilmeyecek bir eşleşme deseni oluşturur. Bu nedenle, iki Müşteri Kaynağı eşleşme koşulu bir AND IF deyimi ile birleştirilemez.
+- Müşteri kaynağı eşleştirme koşulu, içeriğin bir CDN URL 'SI veya seçili müşteri kaynağına işaret eden bir uç CNAME URL 'SI aracılığıyla istenip istenmediğine bakılmaksızın karşılanır.
+- Bir kural tarafından başvurulan bir müşteri kaynağı yapılandırması, müşteri kaynağı sayfasından silinemez. Müşteri kaynak yapılandırmasını silmeyi denemeden önce, aşağıdaki yapılandırmaların bu yapılandırmaya başvurmadığından emin olun:
+  - Müşteri kaynağı eşleşme koşulu
+  - Bir Edge CNAME yapılandırması
+- Belirli eşleşme koşullarını birleştirmek için ve IF ifadesini kullanmayın. Örneğin, bir müşteri kaynağı eşleşme koşulunu CDN kaynak eşleşmesi durumuyla birleştirmek, hiçbir şekilde eşleştirilememe bir eşleştirme deseninin oluşturulmasını sağlayabilir. Bu nedenle, iki müşteri kökeni eşleşme koşulu bir ve If ifadesiyle birleştirilemez.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -309,64 +309,64 @@ Bu eşleşme koşulu, bir isteğin kaynaklandigi konuma göre çok sayıda özel
 
 ### <a name="device"></a>Cihaz
 
-Cihaz eşleştirme koşulu, özelliklerine göre bir mobil cihazdan gelen istekleri tanımlar. Mobil cihaz algılama [WURFL](http://wurfl.sourceforge.net/)ile elde edilir. 
+Cihaz eşleştirme koşulu, bir mobil cihazdan yapılan istekleri özelliklerine göre tanımlar. Mobil cihaz algılama, [WURFL](http://wurfl.sourceforge.net/)üzerinden sağlanır. 
 
-**Eşler**/**Eşleşmiyor** seçeneği, Aygıt eşleşmesi koşulunun hangi koşullaraltında karşılandığını belirler:
+**Eşleşmeler**/**eşleşmiyor** seçeneği, cihazın eşleşme koşulunun karşılandığı koşulları belirler:
 
-- **Eşleşmeler**: İsteklinin cihazının belirtilen değerle eşleşmesini gerektirir. 
-- **Eşleşmez**: İsteklinin cihazının belirtilen değerle eşleşmemesi gerekir.
+- **Eşleşmeler**: istek sahibinin cihazının belirtilen değerle eşleşmesini gerektirir. 
+- **Eşleşmiyor**: istek sahibinin cihazının belirtilen değerle eşleşmemesi gerekir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Belirtilen değerin büyük/küçük harf duyarlı olup olmadığını belirtmek için **Büyük/Küçük/Sayma** seçeneğini kullanın.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Belirtilen değerin büyük/küçük harfe duyarlı olup olmadığını belirtmek için **durum yoksay** seçeneğini kullanın.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
-#### <a name="string-type"></a>Dize Türü
+#### <a name="string-type"></a>Dize türü
 
-WURFL özelliği genellikle sayıların, harflerin ve sembollerin birleşimini kabul eder. Bu özelliğin esnek yapısı nedeniyle, bu eşleşme koşuluyla ilişkili değerin nasıl yorumlandığını seçmeniz gerekir. Aşağıdaki tabloda kullanılabilir seçenekler kümesi açıklanmaktadır:
+Bir WURFL özelliği genellikle sayıların, harflerin ve simgelerin birleşimini kabul eder. Bu özelliğin esnek yapısı nedeniyle, bu eşleştirme durumuyla ilişkili değerin nasıl yorumlandığını seçmeniz gerekir. Aşağıdaki tabloda kullanılabilir seçenekler kümesi açıklanmaktadır:
 
 Tür     | Açıklama
 ---------|------------
-Literal  | Çoğu karakterin [gerçek değerlerini](cdn-verizon-premium-rules-engine-reference.md#literal-values)kullanarak özel anlam lar almasını önlemek için bu seçeneği belirleyin.
-Joker | Tüm joker karakterlerden[(joker](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)karakter] yararlanmak için bu seçeneği seçin.
-Regex    | [Normal ifadeleri](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)kullanmak için bu seçeneği seçin. Normal ifadeler, bir karakter deseni tanımlamak için yararlıdır.
+Ayarını  | Çoğu karakterin kendi [sabit değerlerini](cdn-verizon-premium-rules-engine-reference.md#literal-values)kullanarak özel anlam almasını engellemek için bu seçeneği belirleyin.
+Liyorsa | Tüm [joker karakter] ([Joker değerlerden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)) yararlanmak için bu seçeneği belirleyin.
+Regex    | [Normal ifadeleri](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)kullanmak için bu seçeneği belirleyin. Normal ifadeler, bir karakter deseninin tanımlanması için faydalıdır.
 
-#### <a name="wurfl-capabilities"></a>WURFL yetenekleri
+#### <a name="wurfl-capabilities"></a>WURFL özellikleri
 
-WURFL özelliği, mobil cihazları açıklayan bir kategoriyi ifade eder. Seçili özellik, istekleri tanımlamak için kullanılan mobil aygıt açıklamasının türünü belirler.
+WURFL özelliği, mobil cihazları açıklayan bir kategoriye başvurur. Seçilen yetenek, istekleri tanımlamak için kullanılan mobil cihaz açıklaması türünü belirler.
 
-Aşağıdaki tabloda WURFL yetenekleri ve kurallar motoru için değişkenleri listeleneb.rö'dur.
+Aşağıdaki tabloda Rules altyapısının WURFL özellikleri ve değişkenleri listelenmektedir.
 
 > [!NOTE]
-> Aşağıdaki **değişkenler, İstemci İstek Üstbilgisini Değiştir** ve **İstemci Yanıtı Üstbilgi** özelliklerini değiştir'de desteklenir.
+> Aşağıdaki değişkenler **Istemci Isteği üst bilgisini Değiştir** ve **Istemci yanıtı üst bilgisi özelliklerini değiştir** ' de desteklenir.
 
 Özellik | Değişken | Açıklama | Örnek değerler
 -----------|----------|-------------|----------------
-Markası | %{wurfl_cap_brand_name} | Aygıtın marka adını gösteren bir dize. | Samsung
-Cihaz İşletim Sistemi | %{wurfl_cap_device_os} | Aygıta yüklü işletim sistemini gösteren bir dize. | IOS
-Cihaz İşletim Sistemi Sürümü | %{wurfl_cap_device_os_version} | Aygıta yüklenen işletim sisteminin sürüm numarasını gösteren dize. | 1.0.1
-Çift Oryantasyon | %{wurfl_cap_dual_orientation} | Aygıtın çift yönlendirmeyi destekleyip desteklemediğini gösteren bir Boolean. | true
-HTML Tercih Edilen DTD | %{wurfl_cap_html_preferred_dtd} | HTML içeriği için mobil aygıtın tercih edilen belge türü tanımını (DTD) gösteren dize. | yok<br/>xhtml_basic<br/>html5
-Görüntü Inlining | %{wurfl_cap_image_inlining} | Aygıtın Base64 kodlanmış görüntüleri destekleyip desteklemediğini gösteren bir Boolean. | yanlış
-Android mi | %{wurfl_vcap_is_android} | Cihazın Android işletim sistemi kullanıp kullanmadığını gösteren bir Boolean. | true
-IOS olduğunu | %{wurfl_vcap_is_ios} | Aygıtın iOS kullanıp kullanmadığını gösteren bir Boolean. | yanlış
-Akıllı TV mi | %{wurfl_cap_is_smarttv} | Aygıtın akıllı tv olup olmadığını gösteren bir Boolean. | yanlış
-Akıllı Telefon mu | %{wurfl_vcap_is_smartphone} | Cihazın akıllı telefon olup olmadığını gösteren bir Boolean. | true
-Tablet mi | %{wurfl_cap_is_tablet} | Aygıtın tablet olup olmadığını gösteren bir Boolean. Bu açıklama işletim sistemi bağımsızdır. | true
-Kablosuz Aygıt mı | %{wurfl_cap_is_wireless_device} | Aygıtın kablosuz aygıt olarak kabul edilip edilemeyeceğini gösteren bir Boolean. | true
-Pazarlama Adı | %{wurfl_cap_marketing_name} | Aygıtın pazarlama adını gösteren dize. | Böğürtlen 8100 İnci
-Mobil Tarayıcı | %{wurfl_cap_mobile_browser} | Aygıttan içerik istemek için kullanılan tarayıcıyı gösteren dize. | Chrome
-Mobil Tarayıcı Sürümü | %{wurfl_cap_mobile_browser_version} | Aygıttan içerik istemek için kullanılan tarayıcının sürümünü gösteren dize. | 31
-Model Adı | %{wurfl_cap_model_name} | Aygıtın model adını gösteren bir dize. | s3
-Aşamalı İndir | %{wurfl_cap_progressive_download} | Aygıtın hala indirilirken ses ve video çalmayı destekleyip desteklemediğini belirten bir Boolean. | true
-Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklendiği yılı ve ayı gösteren dize.<br/><br/>Biçim:`yyyy_mm` | 2013_december
-Çözünürlük Yüksekliği | %{wurfl_cap_resolution_height} | Aygıtın piksel yüksekliğini gösteren bir sonsayı. | 768
-Çözünürlük Genişliği | %{wurfl_cap_resolution_width} | Aygıtın piksel genişliğini gösteren bir sonsayı. | 1024
+Marka adı | % {wurfl_cap_brand_name} | Cihazın marka adını gösteren bir dize. | Samsung
+Cihaz işletim sistemi | % {wurfl_cap_device_os} | Cihaza yüklü işletim sistemini gösteren bir dize. | IOS
+Cihaz İşletim Sistemi Sürümü | % {wurfl_cap_device_os_version} | Cihazda yüklü olan işletim sisteminin sürüm numarasını gösteren bir dize. | 1.0.1
+Çift Yön | % {wurfl_cap_dual_orientation} | Cihazın çift yönlü yönlendirmeyi destekleyip desteklemediğini gösteren bir Boole değeri. | true
+HTML tercih edilen DTD | % {wurfl_cap_html_preferred_dtd} | HTML içeriği için mobil cihazın tercih edilen belge türü tanımını (DTD) gösteren bir dize. | yok<br/>xhtml_basic<br/>HTML5
+Görüntü satır içi | % {wurfl_cap_image_inlining} | Cihazın Base64 kodlamalı görüntüleri destekleyip desteklemediğini gösteren bir Boole değeri. | yanlış
+Android | % {wurfl_vcap_is_android} | Cihazın Android işletim sistemini kullanıp kullanmadığını gösteren bir Boole değeri. | true
+IOS | % {wurfl_vcap_is_ios} | Cihazın iOS kullanıp kullanmadığını gösteren bir Boole değeri. | yanlış
+Akıllı TV | % {wurfl_cap_is_smarttv} | Cihazın akıllı bir TV olup olmadığını gösteren bir Boole değeri. | yanlış
+Smartphone | % {wurfl_vcap_is_smartphone} | Cihazın bir akıllı telefon olup olmadığını gösteren bir Boole değeri. | true
+Tabletdir | % {wurfl_cap_is_tablet} | Cihazın bir tablet olup olmadığını gösteren bir Boole değeri. Bu açıklama işletim sistemine bağımsızdır. | true
+Kablosuz cihaz | % {wurfl_cap_is_wireless_device} | Cihazın kablosuz bir cihaz olarak kabul edilip edilmeyeceğini belirten bir Boole değeri. | true
+Pazarlama adı | % {wurfl_cap_marketing_name} | Cihazın pazarlama adını belirten bir dize. | BlackBerry 8100 armut
+Mobil tarayıcı | % {wurfl_cap_mobile_browser} | Cihazdan içerik istemek için kullanılan tarayıcıyı gösteren bir dize. | Chrome
+Mobil tarayıcı sürümü | % {wurfl_cap_mobile_browser_version} | Cihazdan içerik istemek için kullanılan tarayıcının sürümünü belirten bir dize. | 31
+Model adı | % {wurfl_cap_model_name} | Cihazın model adını gösteren bir dize. | bekletmeden
+Aşamalı Indirme | % {wurfl_cap_progressive_download} | Cihazın, hala indirilmekte olan ses ve video kayıttan yürütmesini destekleyip desteklemediğini belirten bir Boole değeri. | true
+Yayın Tarihi | % {wurfl_cap_release_date} | Cihazın WURFL veritabanına eklendiği yıl ve ayı belirten bir dize.<br/><br/>Formatını`yyyy_mm` | 2013_december
+Çözünürlük yüksekliği | % {wurfl_cap_resolution_height} | Aygıtın yüksekliğini piksel cinsinden belirten bir tamsayı. | 768
+Çözünürlük genişliği | % {wurfl_cap_resolution_width} | Aygıtın genişliğini piksel cinsinden belirten bir tamsayı. | 1024
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -374,19 +374,19 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ---
 
-### <a name="edge-cname"></a>Kenar Adı
+### <a name="edge-cname"></a>Edge CNAME
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Kullanılabilir kenar KNAM'larının listesi, kural altyapısının yapılandırıldığı platform için Kenar KNAMEs sayfasında yapılandırılan kenar KNAM'larla sınırlıdır.
-- Bir kenar CNAME yapılandırmasını silmeyi denemeden önce, Kenar Cname eşleşmesi koşulunun bu yapılandırmaya başvurmadığından emin olun. Bir kuralda tanımlanan Kenar CNAME yapılandırmaları Kenar CNAMEs sayfasından silinemez.
-- Belirli eşleşme koşullarını birleştirmek için BIR AND IF deyimi kullanmayın. Örneğin, Edge Cname eşleşmesi koşulunu Müşteri Kaynağı eşleşme koşuluyla birleştirmek, asla eşleştirilemeyecek bir eşleşme deseni oluşturur. Bu nedenle, iki Kenar Cname eşleşme sart koşulu bir AND IF deyimi ile birleştirilemez.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Kullanılabilir Edge CNAMEs listesi, kural altyapısının yapılandırıldığı platformun Edge CNAMEs sayfasında yapılandırılmış olan Edge CNAMEs 'Ler ile sınırlıdır.
+- Bir Edge CNAME yapılandırmasını silmeyi denemeden önce, bir Edge CNAME eşleşme koşulunun buna başvurmadığından emin olun. Bir kuralda tanımlanmış olan Edge CNAME yapılandırması Edge CNAMEs sayfasından silinemez.
+- Belirli eşleşme koşullarını birleştirmek için ve IF ifadesini kullanmayın. Örneğin, bir Edge CNAME eşleşme koşulunu müşteri kaynağı eşleştirme durumuyla birleştirmek, hiçbir şekilde eşleştirilememe bir eşleştirme deseninin oluşturulmasını sağlayabilir. Bu nedenle, iki Edge CNAME eşleşme koşulları bir AND IF ifadesiyle birleştirilemez.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -394,27 +394,27 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ---
 
-### <a name="referring-domain"></a>Yönlendiren Etki Alanı
+### <a name="referring-domain"></a>Başvurulan etki alanı
 
-İçeriğin istendiği referrer ile ilişkili ana bilgisayar adı, Yönlendiren Etki Alanı koşulunun karşılanıp karşılanmadığını belirler.
+İçeriğin istendiği başvuran ile ilişkili ana bilgisayar adı, başvurulan etki alanı koşulunun karşılanıp karşılanmadığını belirler.
 
-**Eşlemez**/**seçeneği,** Yönlendiren Etki Alanı eşleşmesi koşulunun hangi koşullaraltında karşılandığını belirler:
+**Eşleşmeler**/**eşleşmiyor** seçeneği, başvurulan etki alanı eşleştirme koşulunun karşılandığı koşulları belirler:
 
-- **Eşleşmeler**: Belirtilen değerlerle eşleşecek şekilde başvuran ana bilgisayar adının olmasını gerektirir. 
-- **Eşleşmez**: Başvuran ana bilgisayar adının belirtilen değerle eşleşmemesi için gerekli değildir.
+- **Eşleşmeler**: başvurulan ana bilgisayar adının belirtilen değerlerle eşleşmesini gerektirir. 
+- **Eşleşmiyor**: başvurulan ana bilgisayar adının belirtilen değerle eşleşmemesi gerekir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Her birini tek bir boşlukla sınırlandırarak birden çok ana bilgisayar adı belirtin.
-- Bu eşleşme koşulu [joker karakter değerlerini](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)destekler.
-- Belirtilen değer bir yıldız işareti içermiyorsa, başvuranın ana bilgisayar adı için tam bir eşleşme olmalıdır. Örneğin, "mydomain.com" belirtmek "www.mydomain.com" ile eşleşmez.
-- Büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük/Küçük Harf Seçeneğini Zedele** seçeneğini kullanın.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Her birini tek bir boşlukla ayırarak birden çok konak adı belirtin.
+- Bu eşleştirme koşulu [Joker değerleri](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)destekler.
+- Belirtilen değer bir yıldız işareti içermiyorsa, bu değerin, başvuran ana bilgisayar adı için tam bir eşleşme olması gerekir. Örneğin, "mydomain.com" belirtildiğinde "www.mydomain.com" ile eşleşmez.
+- Büyük/küçük harfe duyarlı bir karşılaştırmanın yapılıp yapılmadığını denetlemek için **durumu yoksay** seçeneğini kullanın.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -422,24 +422,24 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ---  
 
-### <a name="request-header-literal"></a>İstek Üstbilgi Literal
+### <a name="request-header-literal"></a>İstek üst bilgisi sabit değeri
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, İstek Üstbilgi Literal eşleşme koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, istek üst bilgisi değişmez değer eşleşmesi koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen üstbilginin içermesi için istek gerektirir. Değeri, bu eşleşme koşulunda tanımlanan değerle eşleşmelidir.
-- **Eşleşmez**: İsteğin aşağıdaki ölçütlerden birini karşılamasını gerektirir:
-  - Belirtilen üstbilgi içermez.
-  - Belirtilen üstbilgi içerir, ancak değeri bu eşleşme koşulunda tanımlanan ile eşleşmez.
+- **Eşleşmeler**: isteğin belirtilen üstbilgiyi içermesini gerektirir. Değeri, bu eşleşme koşulunda tanımlananla aynı olmalıdır.
+- **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
+  - Belirtilen üstbilgiyi içermez.
+  - Belirtilen üstbilgiyi içeriyor, ancak değeri bu eşleşme koşulunda tanımlı bir değerle eşleşmiyor.
   
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Üstbilgi adı karşılaştırmaları her zaman büyük/küçük harf duyarsızdır. Üstbilgi değeri karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **Büyük/Küçük Harf** Seçeneğini kullanın.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Üst bilgi adı karşılaştırmaları her zaman büyük/küçük harfe duyarlıdır. Üstbilgi değeri karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **durumu yoksay** seçeneğini kullanın.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -447,30 +447,30 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ---  
 
-### <a name="request-header-regex"></a>İstek Üstbilgi Regex
+### <a name="request-header-regex"></a>İstek üst bilgisi Regex
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, İstek Başlığı Regex eşleşmesi koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, istek üstbilgisi Regex ile eşleşen koşulun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen üstbilginin içermesi için istek gerektirir. Değeri, belirtilen [normal ifadede](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)tanımlanan desenle eşleşmelidir.
-- **Eşleşmez**: İsteğin aşağıdaki ölçütlerden birini karşılamasını gerektirir:
-  - Belirtilen üstbilgi içermez.
-  - Belirtilen üstbilgi içerir, ancak değeri belirtilen normal ifadeyle eşleşmez.
+- **Eşleşmeler**: isteğin belirtilen üstbilgiyi içermesini gerektirir. Değeri, belirtilen [normal ifadede](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)tanımlanan Düzenle eşleşmelidir.
+- **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
+  - Belirtilen üstbilgiyi içermez.
+  - Belirtilen üstbilgiyi içeriyor, ancak değeri belirtilen normal ifadeyle eşleşmiyor.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Üstbilgi adı:
-  - Üstbilgi adı karşılaştırmaları büyük/küçük harf duyarsızdır.
+- Üst bilgi adı:
+  - Üstbilgi adı karşılaştırmaları büyük/küçük harfe duyarlıdır.
   - Üstbilgi adındaki boşlukları "%20" ile değiştirin.
-- Üstbilgi değeri:
-  - Üstbilgi değeri normal ifadelerden yararlanabilir.
-  - Üstbilgi değeri karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **Büyük/Küçük Harf** Seçeneğini kullanın.
-  - Eşleşme koşulu, yalnızca bir üstbilgi değeri belirtilen desenlerden en az biriyle tam olarak eşleştiğinde karşılanır.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Üst bilgi değeri:
+  - Üst bilgi değeri, normal ifadelerden yararlanabilir.
+  - Üstbilgi değeri karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **durumu yoksay** seçeneğini kullanın.
+  - Eşleşme koşulu yalnızca bir üst bilgi değeri belirtilen desenlerden en az biriyle tam olarak eşleştiğinde karşılanır.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -478,31 +478,31 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ---
 
-### <a name="request-header-wildcard"></a>İstek Üstbilgi Joker
+### <a name="request-header-wildcard"></a>İstek üstbilgisi joker karakteri
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, İstek Başlığı Wildcard eşleşmesi koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, istek üst bilgisi eşleştirme koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen üstbilginin içermesi için istek gerektirir. Değeri, bu eşleşme koşulunda tanımlanan değerlerden en az biriyle eşleşmelidir.
-- **Eşleşmez**: İsteğin aşağıdaki ölçütlerden birini karşılamasını gerektirir:
-  - Belirtilen üstbilgi içermez.
-  - Belirtilen üstbilgi içerir, ancak değeri belirtilen değerlerin hiçbiriyle eşleşmez.
+- **Eşleşmeler**: isteğin belirtilen üstbilgiyi içermesini gerektirir. Değeri, bu eşleşme koşulunda tanımlanan değerlerden en az biri ile eşleşmelidir.
+- **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
+  - Belirtilen üstbilgiyi içermez.
+  - Belirtilen üstbilgiyi içeriyor, ancak değeri belirtilen değerlerden hiçbiriyle eşleşmiyor.
   
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Üstbilgi adı:
-  - Üstbilgi adı karşılaştırmaları büyük/küçük harf duyarsızdır.
-  - Üstbilgi adındaki boşluklar "%20" ile değiştirilmelidir. Üstbilgi değerindeki boşlukları belirtmek için bu değeri de kullanabilirsiniz.
-- Üstbilgi değeri:
-  - Üstbilgi değeri [joker karakter değerlerinden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)yararlanabilir.
-  - Üstbilgi değeri karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **Büyük/Küçük Harf** Seçeneğini kullanın.
-  - Bu eşleşme koşulu, bir üstbilgi değeri belirtilen desenlerden en az biriyle tam olarak eşleştiğinde karşılanır.
-  - Her birini tek bir boşlukla delerek birden çok değer belirtin.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Üst bilgi adı:
+  - Üstbilgi adı karşılaştırmaları büyük/küçük harfe duyarlıdır.
+  - Üstbilgi adındaki boşluklar "%20" ile değiştirilmelidir. Bu değeri bir üst bilgi değerinde boşluk belirtmek için de kullanabilirsiniz.
+- Üst bilgi değeri:
+  - Üst bilgi değeri, [Joker değerlerden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)yararlanabilir.
+  - Üstbilgi değeri karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **durumu yoksay** seçeneğini kullanın.
+  - Bir üst bilgi değeri belirtilen desenlerden en az biriyle tam olarak eşleştiğinde, bu eşleşme koşulu karşılanır.
+  - Her birini tek bir boşlukla ayırarak birden çok değer belirtin.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -512,7 +512,7 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ### <a name="request-method"></a>Request Yöntemi
 
-İstek Yöntemi eşleşme sn koşulu yalnızca seçili istek yöntemi aracılığıyla varlıklar istendiğinde karşılanır. Kullanılabilir istek yöntemleri şunlardır:
+Istek yöntemi eşleştirme koşulu yalnızca, varlıklar seçili istek yöntemiyle istendiğinde karşılanır. Kullanılabilir istek yöntemleri şunlardır:
 
 - GET
 - HEAD
@@ -521,17 +521,17 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 - PUT
 - DELETE
 - TRACE
-- Bağlamak
+- BAĞLANABILMENIZ
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Varsayılan olarak, ağda önbelleğe alınmış içeriği yalnızca GET isteği yöntemi oluşturabilir. Diğer tüm istek yöntemleri ağ üzerinden tamamlanır.
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Varsayılan olarak, yalnızca GET isteği yöntemi ağ üzerinde önbelleğe alınmış içerik oluşturabilir. Diğer tüm istek yöntemleri ağ üzerinden proxy olarak kullanılır.
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -539,21 +539,21 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ---
 
-### <a name="request-scheme"></a>İstek Şeması
+### <a name="request-scheme"></a>İstek düzeni
 
-İstek Şeması eşleşmesi koşulu yalnızca seçili protokol aracılığıyla varlıklar istendiğinde karşılanır. Kullanılabilir protokoller şunlardır:
+Istek şeması eşleştirme koşulu yalnızca, varlıklar seçili protokol aracılığıyla istendiğinde karşılanır. Kullanılabilir protokoller şunlardır:
 
 - HTTP
 - HTTPS
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-  - Önbellek Dolgusu Tamamlandı
-  - Varsayılan Dahili Max-Age
-  - Kuvvet İç Max-Age
-  - Kaynak Yokyokla No-Önbellek
-  - Dahili Max-Bayat
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+  - Önbellek dolgusunu tamamla
+  - Varsayılan dahili maksimum yaş
+  - Maksimum Iç kullanım süresi
+  - Önbellek yok sayma
+  - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -561,57 +561,57 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ---
 
-### <a name="url-path-directory"></a>URL Yol Dizini
+### <a name="url-path-directory"></a>URL yolu dizini
 
-İstenilen varlığın dosya adını dışlayan göreli yolu ile bir isteği tanımlar.
+Bir isteği, istenen varlığın dosya adını dışlayan göreli yoluna göre tanımlar.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Yol Dizini eşleşmesinin hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu dizin eşleşme koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen URL deseniyle eşleşen dosya adı hariç, göreli bir URL yolu içerme isteği gerektirir.
-- **Eşleşmiyor**: Dosya adı hariç, belirtilen URL deseniyle eşleşmeyen göreli bir URL yolu içerme isteği gerektirir.
+- **Eşleşmeler**: isteğin, belirtilen URL düzeniyle eşleşen dosya adı hariç GÖRELI bir URL yolu içermesini gerektirir.
+- **Eşleşmiyor**: isteğin, belirtilen URL düzeniyle eşleşmeyen, dosya adı hariç GÖRELI bir URL yolu içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- URL karşılaştırmasının içerik erişim noktasından önce mi yoksa sonra mı başlayacağını belirtmek **için Göreli** seçeneğini kullanın. İçerik erişim noktası, yolun Verizon CDN ana bilgisayar adı ile istenen varlığa göreli yol (örneğin, /800001/CustomerOrigin) arasında görünen bölümüdür. Bir konumu sunucu türüne (örneğin, CDN veya müşteri kaynağı) ve müşteri hesap numaranıza göre tanımlar.
+- URL karşılaştırmasının içerik erişim noktası öncesinde veya sonrasında başlayacağını belirtmek için **göreli** ' i kullanın seçeneğini kullanın. İçerik erişim noktası, Verizon CDN ana bilgisayar adı ile istenen varlığın göreli yolu arasında görünen yolun bölümüdür (örneğin,/800001/CustomerOrigin). Sunucu türüne göre bir konum tanımlar (örneğin, CDN veya müşteri kaynağı) ve müşteri hesap numaranız.
 
-   **Göreli** seçeneği için aşağıdaki değerler kullanılabilir:
-  - **Root**: URL karşılaştırma noktasının CDN ana bilgisayar adından hemen sonra başladığını gösterir. 
+   **Göreli** seçenek için aşağıdaki değerler mevcuttur:
+  - **Kök**: URL KARŞıLAŞTıRMA noktasının CDN ana bilgisayar adından hemen sonra başlayacağını gösterir. 
 
-  Örneğin: http:\//wpc.0001. &lt;etki&gt;/alanı**800001/myorigin/myfolder**/index.htm
+  Örneğin: http:\//WPC.exe 01. &lt;etki&gt;/alanı**800001/myorigin/myFolder**/Index.htm
 
-  - **Başlangıç**: URL karşılaştırma noktasının içerik erişim noktasından sonra başladığını gösterir (örneğin, /000001 veya /800001/myorigin). \*.azureedge.net CNAME varsayılan olarak Verizon CDN ana bilgisayar adındaki kaynak dizine göre oluşturulduğundan, Azure CDN **kullanıcılarıNın Başlangıç** değerini kullanması gerekir. 
+  - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. Azureedge.net CNAME, varsayılan olarak Verizon CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
 
-  Örneğin: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder**/index.htm 
+  Örneğin: https:\//&lt;Endpoint&gt;. azureedge.net/**myFolder**/Index.htm 
 
-  Bu URL aşağıdaki Verizon CDN hostname\/puan: http: /wpc.0001. &lt;etki&gt;alanı /800001/myorigin/**myfolder**/index.htm
+  Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder:\/http:/WPC. 0001. &lt;etki&gt;alanı/800001/myorigın/**myFolder**/Index.htm
 
-- Kenarcname URL, URL karşılaştırması öncesinde BIR CDN URL'sine yeniden yazılır.
+- Sınır CNAME URL 'SI, URL karşılaştırmasından önce bir CDN URL 'sine yeniden yazılır.
 
-    Örneğin, aşağıdaki URL'lerin her ikisi de aynı varlığı işaret eder ve bu nedenle aynı URL yoluna sahiptir.
-  - CDN URL:\/http: /wpc.0001. &lt;etki&gt;alanı /800001/CustomerOrigin/path/asset.htm
+    Örneğin, aşağıdaki URL 'lerin her ikisi de aynı varlığı işaret ettikten ve bu nedenle aynı URL yoluna sahip olabilir.
+  - CDN URL 'SI: http\/:/WPC.exe 01. &lt;etki&gt;alanı/800001/CustomerOrigin/Path/Asset.htm
     
-  - Kenar CNAME URL:\//&lt;http: bitiş noktası&gt;.azureedge.net/path/asset.htm
+  - Edge CNAME URL 'si: http\//&lt;:&gt;Endpoint. azureedge.net/Path/Asset.htm
     
     Ek bilgiler:
-  - Özel etki alanı: https:\//my.domain.com/path/asset.htm
+  - Özel etki alanı: https\/:/My.domain.com/path/Asset.htm
     
-    - URL yolu (köke göre): /800001/CustomerOrigin/path/
+    - URL yolu (köke göre):/800001/CustomerOrigin/path/
     
-    - URL yolu (menşee göre): /yol/
+    - URL yolu (kaynağa göre):/Path/
 
-- URL karşılaştırması için kullanılan URL bölümü, istenen varlığın dosya adından hemen önce sona erer. Bu tür yoldaki son karakter, ileriye doğru çizgi çizen son karakterdir.
+- URL karşılaştırması için kullanılan URL 'nin bölümü, istenen varlığın dosya adından hemen önce sona erer. Sondaki eğik çizgi, bu yol türünün son karakteridir.
 
-- URL yolu desenindeki boşlukları "%20" ile değiştirin.
+- URL yol deseninin içindeki tüm boşlukları "%20" ile değiştirin.
 
-- Her URL yolu deseni, her yıldız işaretinin bir veya daha fazla karakterden oluşan bir diziyle eşleştiği bir veya daha fazla yıldız işareti (*) içerebilir.
+- Her bir yıldız işareti bir veya daha fazla karakter dizisiyle eşleştiğinde, her URL yol deseninin bir veya daha fazla yıldız işareti (*) bulunabilir.
 
-- Her birini tek bir alanla sınırlandırarak desendeki birden çok URL yolunu belirtin.
+- Her birini tek bir boşlukla ayırarak, düzende birden fazla URL yolu belirtin.
 
-    Örneğin: */satış/ */marketing/
+    Örneğin: */Sales/*/Pazar/
 
-- URL yol belirtimi [joker karakter değerlerinden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)yararlanabilir.
+- URL yolu belirtimi [Joker değerlerden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)faydalanabilir.
 
-- Büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük/Küçük Harf Seçeneğini Zedele** seçeneğini kullanın.
+- Büyük/küçük harfe duyarlı bir karşılaştırmanın gerçekleştirilip gerçekleştirilmediğini denetlemek için **durumu yoksay** seçeneğini kullanın.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -619,41 +619,41 @@ Yayın Tarihi | %{wurfl_cap_release_date} | Aygıtın WURFL veritabanına eklend
 
 ---
 
-### <a name="url-path-extension"></a>URL Yolu Uzantısı
+### <a name="url-path-extension"></a>URL yolu uzantısı
 
-İstenen varlığın dosya uzantısı tarafından istekleri tanımlar.
+İstekleri istenen varlığın dosya uzantısına göre tanımlar.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Yol Uzantısı eşleşme koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu uzantısının eşleşme koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen desenle tam olarak eşleşen bir dosya uzantısı içermek için isteğin URL'sini gerektirir.
+- **Eşleşmeler**: belirtilen Düzenle tam olarak eşleşen bir dosya uzantısı içermesi IÇIN isteğin URL 'sini gerektirir.
 
-   Örneğin, "htm", "htm" varlıkları eşleşir, ancak "html" varlıkları belirtirseniz.  
+   Örneğin, "htm" belirtirseniz, "htm" varlıkları eşleştirilir ancak "html" varlıkları eşleştirilir.  
 
-- **Eşleşmiyor**: URL isteğinin belirtilen desenle eşleşmeyen bir dosya uzantısı içermesini gerektirir.
+- **Eşleşmiyor**: URL isteğinin belirtilen Düzenle eşleşmeyen bir dosya uzantısı içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- **Değer** kutusunda eşleşecek dosya uzantılarını belirtin. Öncü bir dönemi dahil etmeyin; örneğin, .htm yerine htm kullanın.
+- **Değer** kutusunda eşleştirilecek dosya uzantılarını belirtin. Baştaki nokta eklemeyin; Örneğin,. htm yerine htm kullanın.
 
-- Büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük/Küçük Harf Seçeneğini Zedele** seçeneğini kullanın.
+- Büyük/küçük harfe duyarlı bir karşılaştırmanın gerçekleştirilip gerçekleştirilmediğini denetlemek için **durumu yoksay** seçeneğini kullanın.
 
-- Her uzantıyı tek bir alanla sınırlandırarak birden çok dosya uzantısı belirtin. 
+- Her uzantıyı tek bir boşlukla ayırarak birden çok dosya uzantısı belirtin. 
 
     Örneğin: htm html
 
-- Örneğin, "htm" belirtmek "htm" varlıklarıyla eşleşir, ancak "html" varlıklarıyla eşleşmez.
+- Örneğin, "htm" belirtildiğinde "htm" varlıkları eşleşir, ancak "html" varlıkları eşleşmez.
 
-#### <a name="sample-scenario"></a>Örnek Senaryo
+#### <a name="sample-scenario"></a>Örnek senaryo
 
 Aşağıdaki örnek yapılandırma, bir istek belirtilen uzantılardan biriyle eşleştiğinde bu eşleşme koşulunun karşılandığını varsayar.
 
-Değer belirtimi: asp aspx php html
+Değer belirtimi: ASP aspx PHP HTML
 
-Bu eşleşme koşulu, aşağıdaki uzantılarla biten URL'leri bulduğunda karşılanır:
+Bu eşleştirme koşulu, aşağıdaki uzantılarla biten URL 'Leri bulduğunda karşılanır:
 
-- Asp
-- Aspx
-- .php
+- \
+- .aspx
+- . php
 - .html
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
@@ -662,30 +662,30 @@ Bu eşleşme koşulu, aşağıdaki uzantılarla biten URL'leri bulduğunda karş
 
 ---
 
-### <a name="url-path-filename"></a>URL Yolu Dosya Adı
+### <a name="url-path-filename"></a>URL yolu dosya adı
 
-İstenen varlığın dosya adına göre istekleri tanımlar. Bu eşleşme koşulunun amaçları doğrultusunda, bir dosya adı istenen varlığın adı, bir dönem ve dosya uzantısı (örneğin, index.html) oluşur.
+İstekleri istenen varlığın dosya adına göre tanımlar. Bu eşleşme koşulunun amaçları doğrultusunda, bir dosya adı istenen varlık, bir nokta ve dosya uzantısı (örneğin, index. html) adını içerir.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Yolu Dosya Adı eşleşmesi koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu dosya adı eşleştirme koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: URL yolunda belirtilen desenle eşleşen bir dosya adı içerme isteği gerektirir.
-- **Eşleşmiyor**: Url yolunda belirtilen desenle eşleşmeyen bir dosya adı içerme isteği gerektirir.
+- **Eşleşmeler**: isteğin URL yolunda belirtilen Düzenle eşleşen bir dosya adı içermesini gerektirir.
+- **Eşleşmiyor**: isteğin, belirtilen Düzenle eşleşmeyen URL yolunda bir dosya adı içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük/Küçük Harf Seçeneğini Zedele** seçeneğini kullanın.
+- Büyük/küçük harfe duyarlı bir karşılaştırmanın gerçekleştirilip gerçekleştirilmediğini denetlemek için **durumu yoksay** seçeneğini kullanın.
 
 - Birden çok dosya uzantısı belirtmek için, her uzantıyı tek bir boşlukla ayırın.
 
-    Örneğin: index.htm index.html
+    Örneğin: index. htm index. html
 
 - Dosya adı değerindeki boşlukları "%20" ile değiştirin.
 
-- Dosya adı değeri joker [karakter değerlerinden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)yararlanabilir. Örneğin, her dosya adı deseni, her yıldız işaretinin bir veya daha fazla karakterden oluşan bir diziyle eşleştiği bir veya daha fazla yıldız işaretinden (*) oluşabilir.
+- Dosya adı değeri [Joker değerlerden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)faydalanabilir. Örneğin her bir dosya adı deseninin bir veya daha fazla yıldız işareti (*), her yıldız işareti bir veya daha fazla karakterle eşleşen bir dizi olabilir.
 
-- Joker karakter belirtilmemişse, yalnızca tam bir eşleşme bu eşleşme koşulunu karşılar.
+- Joker karakterler belirtilmemişse, bu eşleştirme koşulunu yalnızca tam bir eşleşme karşılar.
 
-    Örneğin, "presentation.ppt" belirtmek "presentation.ppt" adlı bir varlıkla eşleşir, ancak "presentation.pptx" adlı bir varlıkla eşleşmez.
+    Örneğin, "Presentation. ppt" belirtildiğinde "Presentation. ppt" adlı bir varlıkla eşleşir, ancak "Presentation. pptx" adı yoktur.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -693,48 +693,48 @@ Bu eşleşme koşulu, aşağıdaki uzantılarla biten URL'leri bulduğunda karş
 
 ---
 
-### <a name="url-path-literal"></a>URL Yolu Literal
+### <a name="url-path-literal"></a>URL yolu sabit değeri
 
-Dosya adı da dahil olmak üzere bir isteğin URL yolunu belirtilen değerle karşılaştırır.
+Dosya adı da dahil olmak üzere bir isteğin URL yolunu belirtilen değere karşılaştırır.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Yolu Literal eşleşme koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu sabit değeri eşleşme koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen desenle eşleşen bir URL yolu içerme isteği gerektirir.
-- **Eşleşmiyor**: Belirtilen desenle eşleşmeyen bir URL yolu içerme isteği gerektirir.
+- **Eşleşmeler**: isteğin, belirtilen Düzenle eşleşen bir URL yolu içermesini gerektirir.
+- **Eşleşmiyor**: isteğin, belirtilen Düzenle EŞLEŞMEYEN bir URL yolu içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- URL karşılaştırma noktasının içerik erişim noktasından önce mi yoksa sonra mı başladığını belirtmek **için Göreli** seçeneğini kullanın. 
+- URL karşılaştırma noktasının içerik erişim noktası öncesinde veya sonrasında başlayıp başlamamadığını belirtmek için **göreli** ' ı kullanın. 
 
-    **Göreli** seçeneği için aşağıdaki değerler kullanılabilir:
-  - **Root**: URL karşılaştırma noktasının CDN ana bilgisayar adından hemen sonra başladığını gösterir.
+    **Göreli** seçenek için aşağıdaki değerler mevcuttur:
+  - **Kök**: URL KARŞıLAŞTıRMA noktasının CDN ana bilgisayar adından hemen sonra başlayacağını gösterir.
 
-    Örneğin: http:\//wpc.0001. &lt;etki&gt;/alanı**800001/myorigin/myfolder/index.htm**
+    Örneğin: http:\//WPC.exe 01. &lt;etki&gt;/alanı**800001/myorigin/myFolder/index.htm**
 
-  - **Başlangıç**: URL karşılaştırma noktasının içerik erişim noktasından sonra başladığını gösterir (örneğin, /000001 veya /800001/myorigin). \*.azureedge.net CNAME varsayılan olarak Verizon CDN ana bilgisayar adındaki kaynak dizine göre oluşturulduğundan, Azure CDN **kullanıcılarıNın Başlangıç** değerini kullanması gerekir. 
+  - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. Azureedge.net CNAME, varsayılan olarak Verizon CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
 
-    Örneğin: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
+    Örneğin: https:\//&lt;Endpoint&gt;. azureedge.net/**myFolder/index.htm**
 
-  Bu URL aşağıdaki Verizon CDN hostname\/puan: http: /wpc.0001. &lt;etki&gt;alanı /800001/myorigin/**myfolder/index.htm**
+  Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder:\/http:/WPC. 0001. &lt;etki&gt;alanı/800001/myorigin/**myFolder/index.htm**
 
-- Kenar cname URL'si, URL karşılaştırması öncesinde CDN URL'ye yeniden yazılır.
+- Bir sınır CNAME URL 'SI bir URL karşılaştırmasından önce CDN URL 'sine yeniden yazılır.
 
-Örneğin, aşağıdaki URL'lerin her ikisi de aynı varlığa işaret eder ve bu nedenle aynı URL yoluna sahiptir:
+Örneğin, aşağıdaki URL 'lerin her ikisi de aynı varlığı işaret ettikten ve bu nedenle aynı URL yoluna sahiptir:
 
-- CDN URL:\/http: /wpc.0001. &lt;etki&gt;alanı /800001/CustomerOrigin/path/asset.htm
-- Kenar CNAME URL:\//&lt;http: bitiş noktası&gt;.azureedge.net/path/asset.htm
+- CDN URL 'SI: http\/:/WPC.exe 01. &lt;etki&gt;alanı/800001/CustomerOrigin/Path/Asset.htm
+- Edge CNAME URL 'si: http\//&lt;:&gt;Endpoint. azureedge.net/Path/Asset.htm
 
     Ek bilgiler:
     
-    - URL yolu (kökgöreli): /800001/CustomerOrigin/path/asset.htm
+    - URL yolu (köke göre):/800001/CustomerOrigin/path/asset.htm
    
-    - URL yolu (menşee göre): /path/asset.htm
+    - URL yolu (kaynağa göre):/path/asset.htm
 
-- URL'deki sorgu dizeleri yoksayılır.
-- Büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük/Küçük Harf Seçeneğini Zedele** seçeneğini kullanın.
-- Bu eşleşme koşulu için belirtilen değer, istemci tarafından yapılan tam isteğin göreli yolu ile karşılaştırılır.
+- URL 'deki sorgu dizeleri yok sayılır.
+- Büyük/küçük harfe duyarlı bir karşılaştırmanın gerçekleştirilip gerçekleştirilmediğini denetlemek için **durumu yoksay** seçeneğini kullanın.
+- Bu eşleştirme koşulu için belirtilen değer, istemci tarafından yapılan tam isteğin göreli yoluyla karşılaştırılır.
 
-- Belirli bir dizinde yapılan tüm istekleri eşleştirmek için [URL Yol Dizini'ni](#url-path-directory) veya [URL Path Wildcard](#url-path-wildcard) eşleşme koşulunu kullanın.
+- Belirli bir dizine yapılan tüm istekleri eşleştirmek için [URL yol dizinini](#url-path-directory) veya [URL yolu](#url-path-wildcard) eşleştirme koşulunu kullanın.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -742,32 +742,32 @@ Dosya adı da dahil olmak üzere bir isteğin URL yolunu belirtilen değerle kar
 
 ---
 
-### <a name="url-path-regex"></a>URL Yolu Regex
+### <a name="url-path-regex"></a>URL yolu Regex
 
-İsteğin URL yolunu belirtilen normal [ifadeyle](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)karşılaştırır.
+Bir isteğin URL yolunu belirtilen [normal ifadeyle](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)karşılaştırır.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Path Regex eşleşme koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu Regex ile eşleşen koşulun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen normal ifadeyle eşleşen bir URL yolu içerme isteği gerektirir.
-- **Eşleşmiyor**: Belirtilen normal ifadeyle eşleşmeyen bir URL yolu içerme isteği gerektirir.
+- **Eşleşmeler**: isteğin, belirtilen normal ifadeyle eşleşen bir URL yolu içermesini gerektirir.
+- **Eşleşmiyor**: isteğin, belirtilen normal ifadeyle EŞLEŞMEYEN bir URL yolu içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Kenar cname URL'si, URL karşılaştırması öncesinde BIR CDN URL'sine yeniden yazılır.
+- Bir Edge CNAME URL 'SI, URL karşılaştırmasından önce bir CDN URL 'sine yeniden yazılır.
 
-    Örneğin, her iki URL de aynı varlığa işaret eder ve bu nedenle aynı URL yoluna sahiptir.
+    Örneğin, her iki URL aynı varlığı işaret ettikten ve bu nedenle aynı URL yoluna sahip olabilir.
 
-     - CDN URL:\/http: /wpc.0001. &lt;etki&gt;alanı /800001/CustomerOrigin/path/asset.htm
+     - CDN URL 'SI: http\/:/WPC.exe 01. &lt;etki&gt;alanı/800001/CustomerOrigin/Path/Asset.htm
 
-     - Kenar CNAME URL:\/http: /my.domain.com/path/asset.htm
+     - Edge CNAME URL 'SI: http\/:/My.domain.com/path/Asset.htm
 
     Ek bilgiler:
     
-     - URL yolu: /800001/CustomerOrigin/path/asset.htm
+     - URL yolu:/800001/CustomerOrigin/path/asset.htm
 
-- URL'deki sorgu dizeleri yoksayılır.
+- URL 'deki sorgu dizeleri yok sayılır.
     
-- Büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük/Küçük Harf Seçeneğini Zedele** seçeneğini kullanın.
+- Büyük/küçük harfe duyarlı bir karşılaştırmanın gerçekleştirilip gerçekleştirilmediğini denetlemek için **durumu yoksay** seçeneğini kullanın.
     
 - URL yolundaki boşluklar "%20" ile değiştirilmelidir.
 
@@ -777,65 +777,65 @@ Dosya adı da dahil olmak üzere bir isteğin URL yolunu belirtilen değerle kar
 
 ---
 
-### <a name="url-path-wildcard"></a>URL Yolu Joker
+### <a name="url-path-wildcard"></a>URL yolu joker karakteri
 
-İsteğin göreli URL yolunu belirtilen joker karakter deseniyle karşılaştırır.
+Bir isteğin göreli URL yolunu belirtilen joker karakter düzeniyle karşılaştırır.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Yolu Joker Karakter eşleşmesinin hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL yolu joker karakter eşleşme koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen joker karakter desenine uyan bir URL yolu içerme isteği gerektirir.
-- **Eşleşmiyor**: Belirtilen joker karakter desenine uymayan bir URL yolu içerme isteği gerektirir.
+- **Eşleşmeler**: isteğin, belirtilen joker karakter düzeniyle eşleşen bir URL yolu içermesini gerektirir.
+- **Eşleşmiyor**: isteğin, belirtilen joker karakter düzeniyle EŞLEŞMEYEN bir URL yolu içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- **Seçene göre:** Bu seçenek, URL karşılaştırma noktasının içerik erişim noktasından önce mi yoksa sonra mı başlayacağını belirler.
+- Seçeneğe **göre** : Bu seçenek, URL karşılaştırma noktasının içerik erişim noktası öncesinde veya sonrasında başlayıp başlamadığını belirler.
 
    Bu seçenek aşağıdaki değerlere sahip olabilir:
-     - **Root**: URL karşılaştırma noktasının CDN ana bilgisayar adından hemen sonra başladığını gösterir.
+     - **Kök**: URL KARŞıLAŞTıRMA noktasının CDN ana bilgisayar adından hemen sonra başlayacağını gösterir.
 
-       Örneğin: http:\//wpc.0001. &lt;etki&gt;/alanı**800001/myorigin/myfolder/index.htm**
+       Örneğin: http:\//WPC.exe 01. &lt;etki&gt;/alanı**800001/myorigin/myFolder/index.htm**
 
-     - **Başlangıç**: URL karşılaştırma noktasının içerik erişim noktasından sonra başladığını gösterir (örneğin, /000001 veya /800001/myorigin). \*.azureedge.net CNAME varsayılan olarak Verizon CDN ana bilgisayar adındaki kaynak dizine göre oluşturulduğundan, Azure CDN **kullanıcılarıNın Başlangıç** değerini kullanması gerekir. 
+     - **Kaynak**: URL karşılaştırma noktasının içerik erişim noktası sonrasında başlayacağını belirtir (örneğin,/000001 veya/800001/myorigin). \*. Azureedge.net CNAME, varsayılan olarak Verizon CDN ana bilgisayar dizinindeki kaynak dizine göre oluşturulduğundan, Azure CDN kullanıcıların **kaynak** değerini kullanması gerekir. 
 
-       Örneğin: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
+       Örneğin: https:\//&lt;Endpoint&gt;. azureedge.net/**myFolder/index.htm**
 
-     Bu URL aşağıdaki Verizon CDN hostname\/puan: http: /wpc.0001. &lt;etki&gt;alanı /800001/myorigin/**myfolder/index.htm**
+     Bu URL, şu Verizon CDN ana bilgisayar adına işaret eder:\/http:/WPC. 0001. &lt;etki&gt;alanı/800001/myorigin/**myFolder/index.htm**
 
-- Kenar cname URL'si, URL karşılaştırması öncesinde BIR CDN URL'sine yeniden yazılır.
+- Bir Edge CNAME URL 'SI, URL karşılaştırmasından önce bir CDN URL 'sine yeniden yazılır.
 
-    Örneğin, aşağıdaki URL'lerin her ikisi de aynı varlığa işaret eder ve bu nedenle aynı URL yoluna sahiptir:
-     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-     - Kenar CNAME URL:\//&lt;http: bitiş noktası&gt;.azureedge.net/path/asset.htm
+    Örneğin, aşağıdaki URL 'lerin her ikisi de aynı varlığı işaret ettikten ve bu nedenle aynı URL yoluna sahiptir:
+     - CDN URL 'SI http://wpc.0001.&lt:;d omain&gt;/800001/CustomerOrigin/Path/Asset.htm
+     - Edge CNAME URL 'si: http\//&lt;:&gt;Endpoint. azureedge.net/Path/Asset.htm
     
     Ek bilgiler:
     
-     - URL yolu (kökgöreli): /800001/CustomerOrigin/path/asset.htm
+     - URL yolu (köke göre):/800001/CustomerOrigin/path/asset.htm
     
-     - URL yolu (menşee göre): /path/asset.htm
+     - URL yolu (kaynağa göre):/path/asset.htm
     
-- Her birini tek bir alanla sınırlandırarak birden çok URL yolunu belirtin.
+- Her birini tek bir boşlukla ayırarak birden çok URL yolu belirtin.
 
-   Örneğin: /marketing/asset.* /sales/*.htm
+   Örneğin:/Pazar/Asset. */Sales/*. htm
 
-- URL'deki sorgu dizeleri yoksayılır.
+- URL 'deki sorgu dizeleri yok sayılır.
     
-- Büyük/küçük harf duyarlı bir karşılaştırma yapılıp yapılmadığını denetlemek için **Büyük/Küçük/Küçük Harf Seçeneğini Zedele** seçeneğini kullanın.
+- Büyük/küçük harfe duyarlı bir karşılaştırmanın gerçekleştirilip gerçekleştirilmediğini denetlemek için **durumu yoksay** seçeneğini kullanın.
     
 - URL yolundaki boşlukları "%20" ile değiştirin.
     
-- URL yolu için belirtilen değer [joker karakter değerlerinden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)yararlanabilir. Her URL yolu deseni, her yıldız işaretinin bir veya daha fazla karakterden oluşan bir diziyle eşleşebileceği bir veya daha fazla yıldız işareti (*) içerebilir.
+- URL yolu için belirtilen değer [Joker değerlerden](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)faydalanabilir. Her bir yıldız işareti bir veya daha fazla karakter dizisiyle eşleşiyorsa, her URL yol deseninin bir veya daha fazla yıldız işareti (*) bulunabilir.
 
-#### <a name="sample-scenarios"></a>Örnek Senaryolar
+#### <a name="sample-scenarios"></a>Örnek senaryolar
 
-Aşağıdaki tablodaki örnek yapılandırmalar, bir istek belirtilen URL deseniyle eşleştiğinde bu eşleşme koşulunun karşılandığını varsayar:
+Aşağıdaki tabloda yer alan örnek yapılandırmalarda, bir istek belirtilen URL düzeniyle eşleştiğinde bu eşleşme koşulunun karşılandığı varsayılır:
 
 Değer                   | Göreli    | Sonuç 
 ------------------------|----------------|-------
-*/test.html */test.php  | Kök veya Köken | Bu desen, herhangi bir klasördeki "test.html" veya "test.php" adlı varlıklar için istekle eşleşir.
-/80ABCD/origin/text/*   | Root           | İstenen varlık aşağıdaki ölçütleri karşıladığında bu desen eşleşir: <br />- "Menşe" adı verilen bir müşteri kaynağında bulunmalıdır. <br />- Göreli yol "metin" adlı bir klasörle başlamalıdır. Diğer bir deyişle, istenen varlık "metin" klasöründe veya özyinelemeli alt klasörlerinden birinde bulunabilir.
-*/css/* */js/*          | Kök veya Köken | Bu desen, css veya js klasörü içeren tüm CDN veya kenar CNAME URL'leri ile eşleşir.
-*.jpg *.gif *.png       | Kök veya Köken | Bu desen, .jpg, .gif veya .png ile biten tüm CDN veya kenar CNAME URL'leri ile eşleşir. Bu deseni belirtmenin alternatif bir [yolu, URL Yol Uzantısı eşleşme koşuluyla](#url-path-extension)dır.
-/images/* /media/*      | Kaynak         | Bu desen, göreli yolu "görüntüler" veya "ortam" klasörüyle başlayan CDN veya kenar CNAME URL'leri ile eşleşir. <br />- CDN URL:\/http: /wpc.0001. &lt;etki&gt;alanı /800001/myorigin/images/sales/event1.png<br />- Örnek kenar CNAME\/URL: http: /cdn.mydomain.com/images/sales/event1.png
+*/testpst HTML */test.exe  | Kök veya kaynak | Bu model, herhangi bir klasörde "test. html" veya "test. php" adlı varlıklar için isteklerle eşleştirilir.
+/80ABCD/origin/text/*   | Root           | Bu model, istenen varlık aşağıdaki ölçütlere uyduğunda eşleştirilir: <br />-Bu, "Origin" adlı bir müşteri kaynağı üzerinde bulunmalıdır. <br />-Göreli yol "metin" adlı bir klasörle başlamalıdır. Diğer bir deyişle, istenen varlık "metin" klasöründe ya da özyinelemeli alt klasörlerinden birinde bulunabilir.
+*/CSS/* */js/*          | Kök veya kaynak | Bu model, CSS veya JS klasörü içeren tüm CDN veya Edge CNAME URL 'Leri ile eşleştirilir.
+*. jpg *. gif *. png       | Kök veya kaynak | Bu model,. jpg,. gif veya. png ile biten tüm CDN veya Edge CNAME URL 'Leri ile eşleştirilir. Bu kalıbı belirtmenin alternatif bir yolu, [URL yolu uzantısı eşleşme koşuluna](#url-path-extension)sahiptir.
+/images/*/Media/*      | Kaynak         | Bu model, göreli yolu bir "görüntüler" veya "medya" klasörüyle başlayan CDN veya Edge CNAME URL 'Leri ile eşleştirilir. <br />-CDN URL 'SI: http\/:/wpcpst 01. &lt;etki&gt;alanı/800001/myorigin/images/Sales/Event1.png<br />-Örnek Edge CNAME URL 'SI: http\/:/cdn.mydomain.com/images/Sales/Event1.png
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -843,36 +843,36 @@ Değer                   | Göreli    | Sonuç
 
 ---
 
-### <a name="url-query-literal"></a>URL Sorgusu Literal
+### <a name="url-query-literal"></a>URL sorgusu sabit değeri
 
-İsteğin sorgu dizesini belirtilen değerle karşılaştırır.
+Bir isteğin sorgu dizesini belirtilen değerle karşılaştırır.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Sorgu Literal eşleşme koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL sorgusunun değişmez değer eşleşmesi koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen sorgu dizesine uyan bir URL sorgu dizesi içerme isteği gerektirir.
-- **Eşleşmiyor**: Belirtilen sorgu dizesine uymayan bir URL sorgu dizesi içerme isteği gerektirir.
+- **Eşleşmeler**: isteğin, belirtilen sorgu dizesiyle eşleşen bir URL sorgu dizesi içermesini gerektirir.
+- **Eşleşmiyor**: isteğin, belirtilen sorgu dizesiyle EŞLEŞMEYEN bir URL sorgu dizesi içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Yalnızca tam sorgu dize eşleşmeleri bu eşleşme koşulunu karşılar.
+- Bu eşleşme koşulunu karşılayan yalnızca tam sorgu dizesi eşleşiyor.
     
-- Sorgu dize karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **Büyük/Küçük Harf Yoksay** seçeneğini kullanın.
+- Sorgu dizesi karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **durum yoksay** seçeneğini kullanın.
     
-- Sorgu dizesi değer metnine satır aralığı (?) eklemeyin.
+- Sorgu dizesi değer metnine önde gelen soru işareti (?) eklemeyin.
     
-- Bazı karakterler URL kodlaması gerektirir. URL aşağıdaki karakterleri kodlamak için yüzde simgesini kullanın:
+- Belirli karakterler URL kodlaması gerektirir. Aşağıdaki karakterleri kodlayan URL için yüzde simgesini kullanın:
 
-   Karakter | URL Kodlama
+   Karakter | URL kodlaması
    ----------|---------
    Alan     | %20
    &         | %25
 
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-   - Önbellek Dolgusu Tamamlandı
-   - Varsayılan Dahili Max-Age
-   - Kuvvet İç Max-Age
-   - Kaynak Yokyokla No-Önbellek
-   - Dahili Max-Bayat
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+   - Önbellek dolgusunu tamamla
+   - Varsayılan dahili maksimum yaş
+   - Maksimum Iç kullanım süresi
+   - Önbellek yok sayma
+   - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -880,84 +880,84 @@ Değer                   | Göreli    | Sonuç
 
 ---
 
-### <a name="url-query-parameter"></a>URL Sorgu Parametresi
+### <a name="url-query-parameter"></a>URL sorgu parametresi
 
-Belirtilen sorgu dize parametresini içeren istekleri tanımlar. Bu parametre, belirtilen desenle eşleşen bir değere ayarlanır. İstek URL'sinde sorgu dize parametreleri (örneğin, parametre=değer) bu koşulun karşılanıp karşılanmadığını belirler. Bu eşleme koşulu, bir sorgu dize parametresini adına göre tanımlar ve parametre değeri için bir veya daha fazla değer kabul eder. 
+Belirtilen sorgu dizesi parametresini içeren istekleri tanımlar. Bu parametre, belirtilen bir düzenle eşleşen bir değere ayarlanır. İstek URL 'sindeki sorgu dizesi parametreleri (örneğin, Parameter = değer) bu koşulun karşılanıp karşılanmadığını belirtir. Bu eşleştirme koşulu, bir sorgu dizesi parametresini adına göre tanımlar ve parametre değeri için bir veya daha fazla değeri kabul eder. 
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Sorgu Parametresi eşleşme koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL sorgu parametresi eşleşme koşulunun karşılandığı koşulları belirler.
 
 - **Eşleşmeler**: Bu eşleşme koşulunda tanımlanan değerlerden en az biriyle eşleşen bir değere sahip belirtilen parametreyi içeren bir istek gerektirir.
-- **Eşleşmez**: İsteğin aşağıdaki ölçütlerden birini karşılamasını gerektirir:
-  - Belirtilen parametreyi içermez.
-  - Belirtilen parametreyi içerir, ancak değeri bu eşleşme koşulunda tanımlanan değerlerin hiçbirinde eşleşmez.
+- **Eşleşmiyor**: isteğin aşağıdaki ölçütlerden birini karşıladığından emin olması gerekir:
+  - Belirtilen parametresi içermiyor.
+  - Belirtilen parametreyi içeriyor, ancak değeri bu eşleşme koşulunda tanımlanan değerlerden hiçbiriyle eşleşmiyor.
 
-Bu eşleşme koşulu, parametre adı/değer birleşimlerini belirtmek için kolay bir yol sağlar. Sorgu dize parametresi ile eşleşiyorsanız daha fazla esneklik için [URL Sorgu Joker Karakter](#url-query-wildcard) koşulunu kullanmayı düşünün.
+Bu eşleştirme koşulu, parametre adı/değer birleşimlerini belirtmenin kolay bir yolunu sağlar. Bir sorgu dizesi parametresiyle eşleşen daha fazla esneklik için [URL sorgusu joker karakter](#url-query-wildcard) eşleştirme koşulunu kullanmayı düşünün.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Bu eşleşme koşulunun örneğine göre yalnızca tek bir URL sorgu parametresi adı belirtilebilir.
+- Bu eşleşme koşulunun örneği başına yalnızca tek bir URL sorgu parametresi adı belirtilebilir.
     
-- Bir parametre adı belirtildiğinde joker karakter değerleri desteklenmedığından, karşılaştırma için yalnızca tam parametre adı eşleşmeleri uygundur.
-- Parametre değeri(ler) [joker karakter değerlerini](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)içerebilir.
-   - Her parametre değer deseni, her yıldız işaretinin bir veya daha fazla karakterden oluşan bir diziyle eşleşebileceği bir veya daha fazla yıldız (*) olabilir.
-   - Bazı karakterler URL kodlaması gerektirir. URL aşağıdaki karakterleri kodlamak için yüzde simgesini kullanın:
+- Bir parametre adı belirtildiğinde joker karakter değerleri desteklenmediğinden, yalnızca tam parametre adı karşılaştırma için uygun olur.
+- Parametre değerleri, [Joker değerler](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)içerebilir.
+   - Her bir yıldız işaretiyle bir veya daha fazla karakter dizisiyle eşleşen her bir parametre değeri stili bir veya daha fazla yıldız işareti (*) içerebilir.
+   - Belirli karakterler URL kodlaması gerektirir. Aşağıdaki karakterleri kodlayan URL için yüzde simgesini kullanın:
 
-       Karakter | URL Kodlama
+       Karakter | URL kodlaması
        ----------|---------
        Alan     | %20
        &         | %25
 
-- Her birini tek bir boşlukla sınırlandırarak birden çok sorgu dizesi parametre değerlerini belirtin. Bu eşleşme koşulu, bir istek belirtilen ad/değer birleşimlerinden birini içerdiğinde karşılanır.
+- Her birini tek bir boşlukla ayırarak birden çok sorgu dizesi parametre değeri belirtin. Bir istek belirtilen ad/değer birleşimlerinden birini içerdiğinde, bu eşleşme koşulu karşılanır.
 
    - Örnek 1:
 
      - Yapılandırma:
 
-       ValueA ValueB
+       Değerea ValueB
 
-     - Bu yapılandırma aşağıdaki sorgu dize parametreleri eşleşir:
+     - Bu yapılandırma aşağıdaki sorgu dizesi parametreleriyle eşleşir:
 
-       Parametre1=ValueA
+       Parametre1 = Değerea
     
-       Parametre1=ValueB
+       Parametre1 = ValueB
 
    - Örnek 2:
 
      - Yapılandırma: 
 
-        Değer%20A Değer%20B
+        Değer% 20A değer% 20B
 
-     - Bu yapılandırma aşağıdaki sorgu dize parametreleri eşleşir:
+     - Bu yapılandırma aşağıdaki sorgu dizesi parametreleriyle eşleşir:
 
-       Parametre1=Değer%20A
+       Parametre1 = değer% 20A
 
-       Parametre1=Değer%20B
+       Parametre1 = değer% 20B
 
-- Bu eşleşme koşulu yalnızca belirtilen sorgu dize adı/değer birleşimlerinden en az biriyle tam eşleşme olduğunda karşılanır.
+- Bu eşleştirme koşulu yalnızca belirtilen sorgu dizesi ad/değer birleşimlerinden en az biri ile tam eşleşme olduğunda karşılanır.
 
-   Örneğin, önceki örnekte yapılandırmayı kullanırsanız, "Parameter1=ValueAdd" parametre adı/değer birleşimi eşleşme olarak kabul edilmez. Ancak, aşağıdaki değerlerden birini belirtirseniz, bu ad/değer birleşimi eşleşir:
+   Örneğin, önceki örnekte yapılandırmayı kullanırsanız, "parametre1 = ValueAdd" parametre adı/değer birleşimi eşleşme olarak kabul edilmez. Ancak, aşağıdaki değerlerden birini belirtirseniz, bu ad/değer birleşimiyle eşleşir:
 
    - ValueA ValueB ValueAdd
-   - ValueA* ValueB
+   - ValueA * ValueB
 
-- Sorgu dize karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **Büyük/Küçük Harf Yoksay** seçeneğini kullanın.
+- Sorgu dizesi karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **durum yoksay** seçeneğini kullanın.
     
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-   - Önbellek Dolgusu Tamamlandı
-   - Varsayılan Dahili Max-Age
-   - Kuvvet İç Max-Age
-   - Kaynak Yokyokla No-Önbellek
-   - Dahili Max-Bayat
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+   - Önbellek dolgusunu tamamla
+   - Varsayılan dahili maksimum yaş
+   - Maksimum Iç kullanım süresi
+   - Önbellek yok sayma
+   - İç maksimum-eski
 
 #### <a name="sample-scenarios"></a>Örnek senaryolar
 
-Aşağıdaki örnek, bu seçeneğin belirli durumlarda nasıl çalıştığını gösterir:
+Aşağıdaki örnek, bu seçeneğin belirli durumlarda nasıl çalıştığını göstermektedir:
 
 Adı  | Değer |  Sonuç
 ------|-------|--------
-Kullanıcı  | Abdullah   | İstenen BIR URL için sorgu dizesi "?user=joe" olduğunda bu desen eşleşir.
-Kullanıcı  | *     | İstenen BIR URL'nin sorgu dizesi Kullanıcı parametresi içeriyorsa, bu desen eşleşir.
-Email | Abdullah\* | İstenen BIR URL için sorgu dizesi "Joe" ile başlayan bir E-posta parametresi içerdiğinde bu desen eşleşir.
+Kullanıcı  | Abdullah   | İstenen URL için sorgu dizesi "? User = ali" olduğunda bu model eşleştirilir.
+Kullanıcı  | *     | Bu model, istenen URL için sorgu dizesi bir Kullanıcı parametresi içerdiğinde eşleştirilir.
+E-posta | Abdullah\* | Bu model, istenen bir URL için sorgu dizesi "ali" ile başlayan bir e-posta parametresi içerdiğinde eşleştirilir.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -965,47 +965,47 @@ Email | Abdullah\* | İstenen BIR URL için sorgu dizesi "Joe" ile başlayan bir
 
 ---
 
-### <a name="url-query-regex"></a>URL Sorgusu Regex
+### <a name="url-query-regex"></a>URL sorgu Regex
 
-Belirtilen sorgu dize parametresini içeren istekleri tanımlar. Bu parametre, belirtilen [normal ifadeyle](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)eşleşen bir değere ayarlanır.
+Belirtilen sorgu dizesi parametresini içeren istekleri tanımlar. Bu parametre, belirtilen [normal ifadeyle](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)eşleşen bir değere ayarlanır.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Query Regex eşleşme koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL sorgusu Regex ile eşleşen koşulun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen normal ifadeyle eşleşen bir URL sorgu dizesi içerme isteği gerektirir.
-- **Eşleşmiyor**: Belirtilen normal ifadeyle eşleşmeyen bir URL sorgu dizesi içerme isteği gerektirir.
+- **Eşleşmeler**: isteğin, belirtilen normal ifadeyle eşleşen bir URL sorgu dizesi içermesini gerektirir.
+- **Eşleşmiyor**: isteğin, belirtilen normal ifadeyle EŞLEŞMEYEN bir URL sorgu dizesi içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Yalnızca belirtilen normal ifadeyle tam eşleşmeler bu eşleşme koşulunu karşılar.
+- Belirtilen normal ifadeyle yalnızca tam eşleşmeler bu eşleştirme koşulunu karşılar.
     
-- Sorgu dize karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **Büyük/Küçük Harf Yoksay** seçeneğini kullanın.
+- Sorgu dizesi karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **durum yoksay** seçeneğini kullanın.
     
-- Bu seçeneğin amaçları için, sorgu dizesi sorgu dizesi için soru işareti (?) delimiter sonra ilk karakter ile bir sorgu dizesi başlar.
+- Bu seçeneğin amaçları doğrultusunda sorgu dizesi, sorgu dizesi için soru işareti (?) sınırlayıcısından sonra ilk karakterle başlar.
     
-- Bazı karakterler URL kodlaması gerektirir. URL aşağıdaki karakterleri kodlamak için yüzde simgesini kullanın:
+- Belirli karakterler URL kodlaması gerektirir. Aşağıdaki karakterleri kodlayan URL için yüzde simgesini kullanın:
 
-   Karakter | URL Kodlama | Değer
+   Karakter | URL kodlaması | Değer
    ----------|--------------|------
-   Alan     | %20          | \%20
+   Alan     | %20          | \%2.0
    &         | %25          | \%25
 
-   Yüzde sembollerinin kaçması gerektiğini unutmayın.
+   Yüzde simgelerinin kaçışına sahip olması gerektiğini unutmayın.
 
-- Normal ifadeye bir ters eğik \^çizgi eklemek için çift kaçış özel normal ifade karakterleri (örneğin, $.+).
+- Normal ifadede ters eğik çizgi dahil etmek için, çift kaçış \^özel normal ifade karakterleri (örneğin, $. +).
 
    Örneğin:
 
-   Değer | Olarak yorumlanır 
+   Değer | Yorumlanan 
    ------|---------------
    \\+    | +
    \\\\+   | \\+
 
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-   - Önbellek Dolgusu Tamamlandı
-   - Varsayılan Dahili Max-Age
-   - Kuvvet İç Max-Age
-   - Kaynak Yokyokla No-Önbellek
-   - Dahili Max-Bayat
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+   - Önbellek dolgusunu tamamla
+   - Varsayılan dahili maksimum yaş
+   - Maksimum Iç kullanım süresi
+   - Önbellek yok sayma
+   - İç maksimum-eski
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -1013,50 +1013,50 @@ Belirtilen sorgu dize parametresini içeren istekleri tanımlar. Bu parametre, b
 
 ---
 
-### <a name="url-query-wildcard"></a>URL Sorgusu Joker
+### <a name="url-query-wildcard"></a>URL sorgusu joker karakteri
 
-Belirtilen değer(ler) isteğinin sorgu dizesi ile karşılaştırır.
+Belirtilen değerleri isteğin sorgu dizesine göre karşılaştırır.
 
-**Eşleşmeler**/**Eşleşmez** seçeneği, URL Sorgu Joker Karakter koşulunun hangi koşullar altında karşılandığını belirler.
+**Eşleşmeler**/**eşleşmiyor** seçeneği, URL sorgusunun joker karakter eşleşme koşulunun karşılandığı koşulları belirler.
 
-- **Eşleşmeler**: Belirtilen joker karakter değeriyle eşleşen bir URL sorgu dizesi içerme isteği gerektirir.
-- **Eşleşmiyor**: Belirtilen joker karakter değeriyle eşleşmeyen bir URL sorgu dizesi içerme isteği gerektirir.
+- **Eşleşmeler**: isteğin, belirtilen joker karakterle eşleşen bir URL sorgu dizesi içermesini gerektirir.
+- **Eşleşmiyor**: isteğin, belirtilen joker karakterle EŞLEŞMEYEN bir URL sorgu dizesi içermesini gerektirir.
 
-Önemli bilgiler:
+Anahtar bilgileri:
 
-- Bu seçeneğin amaçları için, sorgu dizesi sorgu dizesi için soru işareti (?) delimiter sonra ilk karakter ile bir sorgu dizesi başlar.
-- Parametre değerleri [joker karakter değerlerini](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)içerebilir:
-   - Her parametre değer deseni, her yıldız işaretinin bir veya daha fazla karakterden oluşan bir diziyle eşleşebileceği bir veya daha fazla yıldız (*) olabilir.
-   - Bazı karakterler URL kodlaması gerektirir. URL aşağıdaki karakterleri kodlamak için yüzde simgesini kullanın:
+- Bu seçeneğin amaçları doğrultusunda sorgu dizesi, sorgu dizesi için soru işareti (?) sınırlayıcısından sonra ilk karakterle başlar.
+- Parametre değerleri [Joker değerler](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)içerebilir:
+   - Her bir yıldız işaretiyle bir veya daha fazla karakter dizisiyle eşleşen her bir parametre değeri stili bir veya daha fazla yıldız işareti (*) içerebilir.
+   - Belirli karakterler URL kodlaması gerektirir. Aşağıdaki karakterleri kodlayan URL için yüzde simgesini kullanın:
 
-     Karakter | URL Kodlama
+     Karakter | URL kodlaması
      ----------|---------
      Alan     | %20
      &         | %25
 
-- Her birini tek bir boşlukla delerek birden çok değer belirtin.
+- Her birini tek bir boşlukla ayırarak birden çok değer belirtin.
 
-   Örneğin: *Parametre1=ValueA ValueB* *ValueB* *Parametres1=ValueC&Parametresi2=ValueD*
+   Örneğin: *parametre1 = ValueA* *Valueb* *parametre1 = Valuec&parametre2 = değer*
 
-- Yalnızca belirtilen sorgu dize desenlerinden en az biriyle tam eşleşmeler bu eşleşme koşulunu karşılar.
+- Bu eşleşme koşulunu karşılayan belirtilen sorgu dizesi desenlerinden en az biri ile yalnızca tam eşleşmeler eşleşiyor.
     
-- Sorgu dize karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **Büyük/Küçük Harf Yoksay** seçeneğini kullanın.
+- Sorgu dizesi karşılaştırmalarının büyük/küçük harf duyarlılığını denetlemek için **durum yoksay** seçeneğini kullanın.
     
-- Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
-   - Önbellek Dolgusu Tamamlandı
-   - Varsayılan Dahili Max-Age
-   - Kuvvet İç Max-Age
-   - Kaynak Yokyokla No-Önbellek
-   - Dahili Max-Bayat
+- Önbellek ayarlarının izlenme şekli nedeniyle, bu eşleştirme koşulu aşağıdaki özelliklerle uyumlu değildir:
+   - Önbellek dolgusunu tamamla
+   - Varsayılan dahili maksimum yaş
+   - Maksimum Iç kullanım süresi
+   - Önbellek yok sayma
+   - İç maksimum-eski
 
 #### <a name="sample-scenarios"></a>Örnek senaryolar
 
-Aşağıdaki örnek, bu seçeneğin belirli durumlarda nasıl çalıştığını gösterir:
+Aşağıdaki örnek, bu seçeneğin belirli durumlarda nasıl çalıştığını göstermektedir:
 
  Adı                 | Açıklama
  ---------------------|------------
-kullanıcı=joe              | İstenen BIR URL için sorgu dizesi "?user=joe" olduğunda bu desen eşleşir.
-\*kullanıcı=\* \*optout=\* | BU desen, CDN URL sorgusu kullanıcı veya devre dışı bırakma parametresi içerdiğinde eşleşir.
+Kullanıcı = ali              | İstenen URL için sorgu dizesi "? User = ali" olduğunda bu model eşleştirilir.
+\*Kullanıcı =\* \*OptOut =\* | CDN URL sorgusu Kullanıcı veya OptOut parametresi içerdiğinde bu model eşleştirilir.
 
 [Başa dön](#reference-for-rules-engine-match-conditions)
 
@@ -1064,7 +1064,7 @@ kullanıcı=joe              | İstenen BIR URL için sorgu dizesi "?user=joe" o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure İçerik Dağıtım Ağı'na genel bakış](cdn-overview.md)
+- [Azure Content Delivery Network genel bakış](cdn-overview.md)
 - [Kural altyapısı başvurusu](cdn-verizon-premium-rules-engine-reference.md)
 - [Kural altyapısı koşullu ifadeleri](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Kural altyapısı özellikleri](cdn-verizon-premium-rules-engine-reference-features.md)

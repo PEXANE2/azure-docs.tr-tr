@@ -5,23 +5,23 @@ ms.date: 04/22/2020
 ms.topic: article
 ms.reviewer: sunri
 ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082535"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Azure Blockchain Workbench verilerini Microsoft Power BI ile kullanma
 
-Microsoft Power BI, Power BI Desktop kullanarak SQL DB veritabanlarından kolayca güçlü [https://www.powerbi.com](https://www.powerbi.com)raporlar oluşturma ve ardından bunları yayımlama olanağı sağlar.
+Microsoft Power BI, Power BI Desktop kullanarak SQL DB veritabanlarından kolayca güçlü raporlar oluşturma ve bunları ' de yayımlama olanağı sağlar [https://www.powerbi.com](https://www.powerbi.com).
 
 Bu makale, Azure Blockchain Workbench'in SQL Veritabanı’na PowerBI Desktop’ın içinden bağlanma, bir rapor oluşturma ve raporu powerbi.com’a dağıtma sürecine ilişkin adım adım bir kılavuz içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Download Power BI Masaüstü](https://powerbi.microsoft.com/desktop/).
+* [Power BI Desktop](https://powerbi.microsoft.com/desktop/)indirin.
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench'teki verilere Güç BI'yi bağlama
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Azure blok zinciri çalışma ekranı 'ndaki verilere Power BI bağlama
 
 1.  Power BI Desktop’ı açın.
 2.  **Veri Al**’ı seçin.
@@ -29,7 +29,7 @@ Bu makale, Azure Blockchain Workbench'in SQL Veritabanı’na PowerBI Desktop’
     ![Verileri alma](./media/data-powerbi/get-data.png)
 3.  Veri kaynağı türleri listesinden **SQL Server**’ı seçin.
 
-4.  İletişim kutusunda sunucu ve veritabanı adını belirtin. Veri içeri aktarmak istediğinizi mi yoksa bir **DirectQuery** mi gerçekleştirmek istediğinizi belirtin. **Tamam'ı**seçin.
+4.  İletişim kutusunda sunucu ve veritabanı adını belirtin. Veri içeri aktarmak istediğinizi mi yoksa bir **DirectQuery** mi gerçekleştirmek istediğinizi belirtin. **Tamam**’ı seçin.
 
     ![SQL Server'ı seçin](./media/data-powerbi/select-sql.png)
 
@@ -43,7 +43,7 @@ Bu makale, Azure Blockchain Workbench'in SQL Veritabanı’na PowerBI Desktop’
 
     ![Gezgin](./media/data-powerbi/navigator.png)
 
-7.  Dahil etmek istediğiniz görünümleri seçin. Gösteri amacıyla, bir sözleşmede gerçekleşen eylemler hakkında ayrıntılı bilgi sağlayan **vwContractAction'u**da dahil ediyoruz.
+7.  Dahil etmek istediğiniz görünümleri seçin. Tanıtım amacıyla, bir sözleşmede gerçekleşen eylemler hakkında ayrıntılı bilgi sağlayan bir, **Cıcontractaction**ekledik.
 
     ![Görünümleri seçin](./media/data-powerbi/select-views.png)
 

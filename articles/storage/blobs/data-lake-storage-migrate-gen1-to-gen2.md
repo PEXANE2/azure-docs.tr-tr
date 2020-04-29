@@ -9,10 +9,10 @@ ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: aa4881aef9f3a9ba5d19fb0b768f13a1eb372296
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131429"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Gen1 'den Gen2 'e geçiş Azure Data Lake Storage
@@ -97,7 +97,7 @@ Bu tablo, Gen1 'in yeteneklerini Gen2 ile karşılaştırır.
 |---|---|---|
 |Veri organizasyonu|[Hiyerarşik ad alanı](data-lake-storage-namespace.md)<br>Dosya ve klasör desteği|[Hiyerarşik ad alanı](data-lake-storage-namespace.md)<br>Kapsayıcı, dosya ve klasör desteği |
 |Coğrafi yedeklilik| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Kimlik doğrulaması|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Paylaşılan erişim anahtarı](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Kimlik Doğrulaması|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Paylaşılan erişim anahtarı](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |Yetkilendirme|Yönetim- [RBAC](../../role-based-access-control/overview.md)<br>Veri – [ACL 'ler](data-lake-storage-access-control.md)|Yönetim – [RBAC](../../role-based-access-control/overview.md)<br>Veri [ACL 'leri](data-lake-storage-access-control.md), [RBAC](../../role-based-access-control/overview.md) |
 |Şifreleme – bekleyen veriler|Sunucu tarafı – [Microsoft tarafından yönetilen](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [müşteri tarafından yönetilen](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) anahtarlarla|Sunucu tarafı – [Microsoft tarafından yönetilen](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [müşteri tarafından yönetilen](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) anahtarlarla|
 |VNET desteği|[Sanal Ağ Tümleştirmesi](../../data-lake-store/data-lake-store-network-security.md)|[Hizmet uç noktaları](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Özel uç noktalar](../common/storage-private-endpoints.md)|

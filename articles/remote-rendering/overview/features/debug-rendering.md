@@ -6,25 +6,25 @@ ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
 ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868152"
 ---
 # <a name="debug-rendering"></a>İşleme Hatalarını Ayıklama
 
-Hata ayıklama API'si, sunucu tarafı oluşturmayı farklı hata ayıklama efektleriyle değiştirmek için bir dizi genel seçenek sağlar.
+Hata ayıklama işleme API 'SI, sunucu tarafı işlemeyi farklı hata ayıklama efektleriyle değiştirecek bir dizi genel seçenek sağlar.
 
-## <a name="available-debug-rendering-effects"></a>Kullanılabilir hata ayıklama efektleri
+## <a name="available-debug-rendering-effects"></a>Kullanılabilir hata ayıklama işleme etkileri
 
 |Ayar                          | Etki                               |
 |---------------------------------|:-------------------------------------|
-|Çerçeve sayacı                    | Çerçevenin sol üst köşesine bir metin kaplaması işler. Metin, işleme gelirleri olarak sürekli olarak artımlı olan geçerli sunucu tarafı çerçeve kimliğini gösterir. |
-|Çokgen sayısı                    | Çerçevenin sol üst köşesine bir metin kaplaması işler. Metin, [sunucu tarafı performans sorguları](performance-queries.md) tarafından sorgulanan aynı değerolan çokgenlerin şu anda işlenen miktarını gösterir| 
-|Tel kafes                        | Etkinleştirilirse, sunucuya yüklenen tüm nesne geometrisi tel kafes modunda işlenir. Bu modda sadece çokgenlerin kenarları rasterized olacaktır. |
+|Çerçeve sayacı                    | Çerçevenin sol üst köşesine bir metin kaplaması oluşturur. Metin, işleme devam ettikçe sürekli olarak artan geçerli sunucu tarafı çerçeve KIMLIĞINI gösterir. |
+|Çokgen sayısı                    | Çerçevenin sol üst köşesine bir metin kaplaması oluşturur. Metin, şu anda işlenmiş poligonları, [sunucu tarafı performans sorgularıyla](performance-queries.md) sorgulanan aynı değeri gösterir| 
+|Kafesi                        | Etkinleştirilirse, sunucuda yüklü olan tüm nesne geometrisi tel çerçeve modunda işlenir. Bu modda yalnızca poligonun kenarları rasterleştirilecektir. |
 
-Aşağıdaki kod bu hata ayıklama efektlerini sağlar:
+Aşağıdaki kod, bu hata ayıklama efektlerini sağlar:
 
 ``` cs
 void EnableDebugRenderingEffects(AzureSession session, bool highlight)
@@ -45,18 +45,18 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 ![Hata ayıklama oluşturma](./media/debug-rendering.png)
 
 > [!NOTE]
-> Tüm hata ayıklama efektleri tüm çerçeveyi etkileyen genel ayarlardır.
+> Tüm hata ayıklama işleme etkileri tüm çerçeveyi etkileyen genel ayarlardır.
 
 ## <a name="use-cases"></a>Uygulama alanları
 
-Hata ayıklama API'si, servis bağlantısının gerçekte düzgün çalıştığını doğrulamak gibi basit hata ayıklama görevleri için tasarlanmıştır. Metin oluşturma seçenekleri, akış aşağı aktarılan video çerçevelerini doğrudan etkiler. Yeni kareler alınıp alınıp alınıp alınıp alınmamasını ve videonun doğru şekilde çözülüp çözülmemesini etkinleştirmek.
+Hata ayıklama işleme API 'si, hizmet bağlantısının gerçekten doğru şekilde çalıştığını doğrulamak gibi basit hata ayıklama görevlerine yöneliktir. Metin işleme seçenekleri, doğrudan akışlı video çerçevelerini doğrudan etkiler. Bunları etkinleştirmek, yeni çerçevelerin alınıp doğru şekilde yeniden çözülerek doğrular.
 
-Ancak, sağlanan etkileri hizmet sağlığı içine herhangi bir ayrıntılı içgözlem vermek yok. Bu kullanım örneği için [Sunucu tarafı performans sorguları](performance-queries.md) önerilir.
+Ancak, sunulan efektler hiçbir ayrıntılı iç denetim hizmet durumu 'na vermez. Bu kullanım örneği için [sunucu tarafı performans sorguları](performance-queries.md) önerilir.
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
-* Metin kaplamalarını etkinleştirmek, çok az performans yüküne neden olmaz.
-* Tel kafes modunu etkinleştirmek önemsiz olmayan bir performans yüküne neden olur, ancak sahneye bağlı olarak değişebilir. Karmaşık sahneler için bu mod, kare hızının 60-Hz hedefinin altına düşmesine neden olabilir.
+* Metin Yerpaylaşımları etkinleştirildiğinde performans yükü yoktur.
+* Tel kafes modunun etkinleştirilmesi, sahneye bağlı olarak değişebileceğinden, önemsiz olmayan bir performans yükü doğurur. Karmaşık sahneler için bu mod, çerçeve hızının 60-Hz hedefinin altına alınmasına neden olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

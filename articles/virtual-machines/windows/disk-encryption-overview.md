@@ -1,6 +1,6 @@
 ---
-title: Windows VM'ler için Azure Disk Şifrelemesini Etkinleştirme
-description: Bu makalede, Windows VM'ler için Microsoft Azure Disk Şifrelemesi etkinleştirme ile ilgili yönergeler sağlanmaktadır.
+title: Windows VM 'Leri için Azure disk şifrelemesini etkinleştirme
+description: Bu makale, Windows VM 'Leri için Microsoft Azure disk şifrelemeyi etkinleştirme hakkında yönergeler sağlar.
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -9,88 +9,88 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8bed34e816207c9f0bd0565abab6af4adbaeb7fd
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82081651"
 ---
-# <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM'ler için Azure Disk Şifrelemesi 
+# <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi 
 
-Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk taahhütlerinizi yerine getirmenize yardımcı olur. Azure sanal makinelerinin (VM) işletim sistemi ve veri diskleri için birim şifrelemesağlamak için Windows'un [Bitlocker](https://en.wikipedia.org/wiki/BitLocker) özelliğini kullanır ve disk şifreleme anahtarlarını ve sırlarını kontrol ve yönetmenize yardımcı olmak için [Azure Key Vault](../../key-vault/index.yml) ile tümleştirilir. 
+Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk taahhütlerinizi yerine getirmenize yardımcı olur. Azure sanal makinelerinin (VM 'Ler) işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un [BitLocker](https://en.wikipedia.org/wiki/BitLocker) özelliğini kullanır ve disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](../../key-vault/index.yml) ile tümleşiktir. 
 
-[Azure Güvenlik Merkezi](../../security-center/index.yml)kullanıyorsanız, şifrelenmemiş VM'leriniz varsa uyarılanırsınız. Uyarılar Yüksek Önem derecesi olarak gösterir ve öneri bu VM'leri şifrelemektir.
+[Azure Güvenlik Merkezi](../../security-center/index.yml)'ni kullanırsanız, şifrelenmeyen VM 'ler varsa uyarılırsınız. Uyarılar yüksek önem derecesine sahiptir ve bu VM 'Leri şifrelemeniz önerilir.
 
 ![Azure Güvenlik Merkezi disk şifreleme uyarısı](../media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
-> - VM'yi şifrelemek için Azure AD ile Azure Disk Şifreleme'yi daha önce kullandıysanız, VM'nizi şifrelemek için bu seçeneği kullanmaya devam etmelisiniz. Ayrıntılar için [Azure AD (önceki sürüm) ile Azure Disk](disk-encryption-overview-aad.md) Şifrelemesi'ne bakın. 
-> - Bazı öneriler veri, ağ veya bilgi işlem kaynağı kullanımını artırarak ek lisans veya abonelik maliyetlerine neden olabilir. Desteklenen bölgelerde Azure'da kaynak oluşturmak için geçerli bir etkin Azure aboneliğiniz olmalıdır.
+> - Bir VM 'yi şifrelemek için Azure AD ile Azure disk şifrelemesi 'ni daha önce kullandıysanız, VM 'nizi şifrelemek için bu seçeneği kullanmaya devam etmeniz gerekir. Ayrıntılar için bkz. [Azure AD ile Azure disk şifrelemesi (önceki sürüm)](disk-encryption-overview-aad.md) . 
+> - Bazı öneriler veri, ağ veya işlem kaynak kullanımını artırabilir, bu da ek lisans veya abonelik maliyetlerine neden olur. Desteklenen bölgelerde Azure 'da kaynak oluşturmak için geçerli bir etkin Azure aboneliğiniz olması gerekir.
 
-Windows için Azure Disk Şifrelemesinin temellerini, Azure CLI hızlı başlatma veya Azure Powershell hızlı başlatma ile Windows VM Oluştur ile birkaç dakika içinde öğrenebilir ve Windows [VM'yi şifreleyebilir ve](disk-encryption-cli-quickstart.md) [şifreleyebilirsiniz.](disk-encryption-powershell-quickstart.md)
+Windows için Azure disk şifrelemesi temellerini yalnızca birkaç dakika içinde [Azure CLI hızlı başlangıç Ile WINDOWS VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md) Ile Windows [VM oluşturma](disk-encryption-powershell-quickstart.md)ve şifreleme hızlı başlangıcı ile öğrenin.
 
-## <a name="supported-vms-and-operating-systems"></a>Desteklenen VM'ler ve işletim sistemleri
+## <a name="supported-vms-and-operating-systems"></a>Desteklenen VM 'Ler ve işletim sistemleri
 
-### <a name="supported-vms"></a>Desteklenen VM'ler
+### <a name="supported-vms"></a>Desteklenen VM 'Ler
 
-Windows VM'ler [çeşitli boyutlarda](sizes-general.md)mevcuttur. Azure Disk Şifreleme, [Temel, A serisi SANAL Makinelerde](https://azure.microsoft.com/pricing/details/virtual-machines/series/)veya 2 GB'dan az belleğe sahip sanal makinelerde kullanılamaz.
+Windows VM 'Leri [çeşitli boyutlarda](sizes-general.md)kullanılabilir. Azure disk şifrelemesi, [temel, A serisi VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)'lerde veya 2 GB 'den az belleğe sahip sanal makinelerde kullanılamaz.
 
-Azure Disk Şifrelemesi, birinci sınıf depolama alanına sahip VM'ler için de kullanılabilir.
+Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
 
-Azure Disk [Şifreleme, Nesil 2 VM'lerde](generation-2.md#generation-1-vs-generation-2-capabilities)ve [Lsv2 serisi VM'lerde](../lsv2-series.md)kullanılamaz). Daha fazla özel durum için [bkz: Azure Disk Şifrelemesi: Desteklenmeyen senaryolar.](disk-encryption-windows.md#unsupported-scenarios)
+Azure disk şifrelemesi [2. nesil VM](generation-2.md#generation-1-vs-generation-2-capabilities)'lerde kullanılabilir değil) ve [Lsv2 serisi VM 'ler](../lsv2-series.md)). Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-windows.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-- Windows istemcisi: Windows 8 ve sonrası.
-- Windows Server: Windows Server 2008 R2 ve sonrası.  
+- Windows istemcisi: Windows 8 ve üzeri.
+- Windows Server: Windows Server 2008 R2 ve üzeri.  
  
 > [!NOTE]
-> Windows Server 2008 R2 şifreleme için .NET Framework 4.5'in yüklenmesini gerektirir; Windows Server 2008 R2 x64 tabanlı sistemler için isteğe bağlı güncelleştirme Microsoft .NET Framework 4.5.2 ile Windows Update'ten yükleyin[(KB2901983).](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)  
+> Windows Server 2008 R2, şifreleme için .NET Framework 4,5 ' nin yüklenmesini gerektirir; Windows Server 2008 R2 x64 tabanlı sistemler için isteğe bağlı güncelleştirme Microsoft .NET Framework 4.5.2 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)) ile Windows Update yüklersiniz.  
 >  
-> Windows Server 2012 R2 Core ve Windows Server 2016 Core, şifreleme için VM'de bdehdcfg bileşeninin yüklenmesini gerektirir.
+> Windows Server 2012 R2 Core ve Windows Server 2016 Core, şifreleme için sanal makinede BdeHdCfg bileşeninin yüklü olmasını gerektirir.
 
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
-Azure Disk Şifrelemesi'ni etkinleştirmek için, VM'lerin aşağıdaki ağ bitiş noktası yapılandırma gereksinimlerini karşılaması gerekir:
-  - Anahtar kasanıza bağlanmak için bir belirteç elde etmek için, Windows VM'nin \[bir\]Azure Etkin Dizin bitiş noktasına login.microsoftonline.com bağlanabilmesi gerekir.
-  - Anahtar kasanızın şifreleme anahtarlarını yazmak için Windows VM'nin anahtar kasa bitiş noktasına bağlanabilmesi gerekir.
-  - Windows VM, Azure uzantı deposunu ve VHD dosyalarını barındıran bir Azure depolama hesabı barındıran bir Azure depolama bitiş noktasına bağlanabilmeli.
-  -  Güvenlik ilkeniz Azure VM'lerinden Internet'e erişimi kısıtlıyorsa, önceki URI'yi çözebilir ve IP'lere giden bağlantıya izin verecek şekilde belirli bir kural yapılandırabilirsiniz. Daha fazla bilgi için [bir güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/general/access-behind-firewall.md)bakın.    
+Azure disk şifrelemeyi etkinleştirmek için VM 'Lerin aşağıdaki ağ uç noktası yapılandırma gereksinimlerini karşılaması gerekir:
+  - Anahtar kasanıza bağlanma belirteci almak için Windows VM 'nin bir Azure Active Directory uç noktasına bağlanabilmesi gerekir. \[Login.microsoftonline.com.\]
+  - Şifreleme anahtarlarını anahtar kasanıza yazmak için Windows VM 'nin Anahtar Kasası uç noktasına bağlanabiliyor olması gerekir.
+  - Windows VM, Azure uzantı deposunu barındıran bir Azure depolama uç noktasına ve VHD dosyalarını barındıran bir Azure depolama hesabına bağlanabilmelidir.
+  -  Güvenlik ilkeniz, Azure VM 'lerinden Internet 'e erişimi sınırlayıp, önceki URI 'yi çözümleyebilir ve IP 'lere giden bağlantılara izin vermek için belirli bir kuralı yapılandırabilirsin. Daha fazla bilgi için bkz. [Azure Key Vault bir güvenlik duvarı arkasında](../../key-vault/general/access-behind-firewall.md).    
 
 
-## <a name="group-policy-requirements"></a>Grup İlkesi gereksinimleri
+## <a name="group-policy-requirements"></a>grup ilkesi gereksinimleri
 
-Azure Disk Şifreleme, Windows VM'leri için BitLocker harici anahtar koruyucusu kullanır. Birleştirilmiş etki alanı için, TPM koruyucularını zorlayan grup ilkelerini itmeyin. "Uyumlu bir TPM olmadan BitLocker'a izin ver" grup ilkesi hakkında bilgi için [Bkz. BitLocker Grup İlkesi Başvurusu.](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)
+Azure disk şifrelemesi, Windows VM 'Leri için BitLocker dış anahtar koruyucusunu kullanır. Etki alanına katılmış VM 'Ler için TPM koruyucuları uygulayan herhangi bir grup ilkesi göndermeyin. "Uyumlu TPM olmadan BitLocker 'a Izin ver" Grup ilkesi hakkında bilgi için bkz. [bitlocker Grup İlkesi başvurusu](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-Özel grup ilkesi ile sanal makinelere katılan etki alanı üzerindeki BitLocker ilkesi aşağıdaki ayarı içermelidir: [BitLocker kurtarma bilgilerinin kullanıcı depolamasını yapılandırın -> 256 bit kurtarma anahtarına izin verin.](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings) Azure Disk Şifreleme, BitLocker için özel grup ilkesi ayarları uyumsuz olduğunda başarısız olur. Doğru ilke ayarı olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye zorlayın (gpupdate.exe /force) ve sonra yeniden başlatma gerekebilir.
+Özel grup ilkesiyle etki alanına katılmış sanal makinelerde BitLocker ilkesi şu ayarı içermelidir: [BitLocker kurtarma bilgileri 'nin Kullanıcı depolamasını yapılandırma-> Izin ver 256-bit kurtarma anahtarı](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). BitLocker için özel Grup İlkesi ayarları uyumsuz olduğunda Azure disk şifrelemesi başarısız olur. Doğru ilke ayarına sahip olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye zorlayın (gpupdate. exe/Force) ve yeniden başlatma gerekebilir.
 
-Etki alanı düzeyinde grup ilkesi BitLocker tarafından kullanılan AES-CBC algoritmasını engellerse Azure Disk Şifrelemesi başarısız olur.
+Etki alanı düzeyi Grup ilkesi, BitLocker tarafından kullanılan AES-CBC algoritmasını engelliyorsa Azure disk şifrelemesi başarısız olur.
 
 ## <a name="encryption-key-storage-requirements"></a>Şifreleme anahtarı depolama gereksinimleri  
 
-Azure Disk Şifreleme, disk şifreleme anahtarlarını ve sırlarını denetlemek ve yönetmek için bir Azure Anahtar Kasası gerektirir. Anahtar kasanız ve VM'leriniz aynı Azure bölgesinde ve abonelikte ikamet etmelidir.
+Azure disk şifrelemesi, disk şifreleme anahtarlarını ve gizli dizileri denetlemek ve yönetmek için bir Azure Key Vault gerektirir. Anahtar kasanızın ve sanal makinelerinizin aynı Azure bölgesinde ve abonelikte bulunması gerekir.
 
-Ayrıntılar için Azure [Disk Şifrelemesi için önemli bir kasa oluşturma ve yapılandırma](disk-encryption-key-vault.md)ya da yapılandırma ya da
+Ayrıntılar için bkz. [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md).
 
 ## <a name="terminology"></a>Terminoloji
-Aşağıdaki tablo, Azure disk şifreleme belgelerinde kullanılan ortak terimlerden bazılarını tanımlar:
+Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yaygın terimler tanımlanmaktadır:
 
 | Terminoloji | Tanım |
 | --- | --- |
-| Azure Key Vault | Key Vault, Federal Bilgi İşlem Standartları (FIPS) onaylı donanım güvenlik modüllerini temel alan bir şifreleme, anahtar yönetim hizmetidir. Bu standartlar, şifreleme anahtarlarınızın ve hassas sırlarınızın korunmasına yardımcı olur. Daha fazla bilgi için [Azure Anahtar Kasası](https://azure.microsoft.com/services/key-vault/) belgelerine ve [Azure Disk Şifrelemesi için önemli bir kasa oluşturma ve yapılandırma](disk-encryption-key-vault.md)ya da yapılandırma'ya bakın. |
-| Azure CLI | [Azure CLI,](/cli/azure/install-azure-cli) komut satırından Azure kaynaklarını yönetmek ve yönetmek için optimize edilebilmektedir.|
-| BitLocker |[BitLocker,](https://technet.microsoft.com/library/hh831713.aspx) Windows VM'lerde disk şifrelemeyi etkinleştirmek için kullanılan, endüstri tarafından tanınan bir Windows birim şifreleme teknolojisidir. |
-| Anahtar şifreleme anahtarı (KEK) | Sırrı korumak veya sarmak için kullanabileceğiniz asimetrik anahtar (RSA 2048). Donanım güvenlik modülü (HSM) korumalı anahtar veya yazılım korumalı anahtar sağlayabilirsiniz. Daha fazla bilgi için [Azure Anahtar Kasası](https://azure.microsoft.com/services/key-vault/) belgelerine ve [Azure Disk Şifrelemesi için önemli bir kasa oluşturma ve yapılandırma](disk-encryption-key-vault.md)ya da yapılandırma'ya bakın. |
-| PowerShell cmdlet'leri | Daha fazla bilgi için Azure [PowerShell cmdlets'e](/powershell/azure/overview)bakın. |
+| Azure Key Vault | Key Vault, Federal bilgi Işleme standartları (FIPS) tarafından doğrulanan donanım güvenlik modüllerini temel alan bir şifreleme, anahtar yönetim hizmetidir. Bu standartlar, şifreleme anahtarlarınızı ve hassas gizli dizileri korumaya yardımcı olur. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
+| Azure CLI | [Azure CLI,](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve yönetmek için iyileştirilmiştir.|
+| BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) , Windows VM 'lerinde disk şifrelemeyi etkinleştirmek için kullanılan sektör tarafından tanınan bir Windows birimi şifreleme teknolojisidir. |
+| Anahtar şifreleme anahtarı (KEK) | Gizli anahtarı korumak veya kaydırmak için kullanabileceğiniz asimetrik anahtar (RSA 2048). Donanım güvenlik modülü (HSM) korumalı bir anahtar veya yazılımla korunan anahtar sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
+| PowerShell cmdlet'leri | Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'leri](/powershell/azure/overview). |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Quickstart - Azure CLI ile Windows VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md)
-- [Quickstart - Azure Powershell ile Windows VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)
+- [Hızlı başlangıç-Azure CLı ile Windows VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md)
+- [Hızlı başlangıç-Azure PowerShell ile Windows VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)
 - [Windows VM'lerinde Azure Disk Şifrelemesi senaryoları](disk-encryption-windows.md)
-- [Azure Disk Şifreleme önkoşullar CLI komut dosyası](https://github.com/ejarvi/ade-cli-getting-started)
-- [Azure Disk Şifreleme PowerShell komut dosyası önkoşullar](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- [Azure disk şifrelemesi önkoşulları CLı betiği](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure disk şifrelemesi önkoşulları PowerShell betiği](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Azure Disk Şifrelemesi için anahtar kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md)
 
 

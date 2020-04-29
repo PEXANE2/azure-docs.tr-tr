@@ -1,6 +1,6 @@
 ---
-title: İş Ortağı Merkezi'nde ticari pazar analizinde Market Öngörüleri panosu
-description: Yayıncıların AppSource ve Azure Marketi'ndeki müşteri etkileşimini ölçmelerine olanak tanıyan pazar yeri web analitiğinin bir özetine erişin.
+title: Iş Ortağı Merkezi 'nde ticari Market Analytics 'teki Market öngörüleri panosu
+description: Yayımcıların AppSource ve Azure Market stoklarının müşteri katılımını ölçmesine olanak sağlayan Market Web Analytics özetine erişin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,137 +8,137 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81251716"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Ticari pazar analizinde Market Öngörüleri panosu
+# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te Market öngörüleri panosu
 
-Bu makale, İş Ortağı Merkezi'ndeki Market İstatistikleri panosu hakkında bilgi sağlar. Bu pano, yayıncıların pazar vitrinlerinde listelenen ilgili ürün ayrıntı sayfaları olan AppSource ve Azure Marketi için müşteri etkileşimini ölçmelerine olanak tanıyan pazar daki web analitiğinin bir özetini görüntüler.
+Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bilgi sağlanmaktadır. Bu pano Market Web Analytics 'in bir özetini görüntüler. Bu, yayımcıların Market storetları: AppSource ve Azure Marketi 'nde listelenen ilgili ürün ayrıntı sayfaları için müşteri etkileşimini ölçmesine olanak sağlar.
 
 ## <a name="marketplace-insights-dashboard"></a>Market İçgörüleri panosu
 
-İş Ortağı Merkezi'ndeki **Market İstatistikleri panosuna** erişmek için Commercial Marketplace altında **[Analiz sekmesini](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** açın.
+**Market Insights panosuna** Iş Ortağı Merkezi 'ne erişmek Için, ticari Market altında **[Çözümle sekmesini](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** açın.
 
-Aşağıdaki öğelerin grafik gösterimlerini görüntüleyebilirsiniz:  
+Aşağıdaki öğelerin grafik sunumlarını görüntüleyebilirsiniz:  
 
-- [Marketplace Insights özeti](#marketplace-insights-summary)
-- [Coğrafyaya göre sayfa ziyaretleri](#page-visits-by-geography)  
-- [Sayfa ziyaretleri ve benzersiz ziyaretçi eğilimi](#page-visits-versus-unique-visitors-trend)
-- [Tok'lu benzersiz ziyaretçilere karşı harekete geçme çağrısı](#call-to-action-versus-unique-visitors-with-ctas)
-- [Teklife göre sayfa ziyaretleri ve eylem çağrısı](#page-visits-and-calls-to-action-by-offers)
-- [Eylem yüzdesi eğilimini arama](#call-to-action-percentage-trend)
-- [Başvuru etki alanları tarafından sayfa ziyaretleri ve eylem çağrıları](#page-visits-and-calls-to-action-by-referral-domains)
-- [Marketplace Insights ayrıntılar tablosu](#marketplace-insights-details-table)
+- [Market öngörüleri Özeti](#marketplace-insights-summary)
+- [Coğrafya tarafından sayfa ziyaretleri](#page-visits-by-geography)  
+- [Sayfa ziyaretleri ve benzersiz ziyaretçi eğilimi karşılaştırması](#page-visits-versus-unique-visitors-trend)
+- [CTAs ile eyleme karşı benzersiz ziyaretçilere çağrı](#call-to-action-versus-unique-visitors-with-ctas)
+- [Sayfa ziyaretleri ve tekliflere göre eyleme çağrı](#page-visits-and-calls-to-action-by-offers)
+- [Eylem yüzdesi eğilimi çağrısı](#call-to-action-percentage-trend)
+- [Sayfa ziyaretleri ve başvuru etki alanlarına göre eyleme çağrılar](#page-visits-and-calls-to-action-by-referral-domains)
+- [Market öngörüleri Ayrıntıları tablosu](#marketplace-insights-details-table)
 
 >[!NOTE]
-> Analitik terminolojinin ayrıntılı tanımları [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
 
-### <a name="insights-dashboard-layout"></a>İstatistikler pano düzeni
+### <a name="insights-dashboard-layout"></a>Öngörüler Pano düzeni
 
-Market ölçümlerini çeşitli şekillerde görüntüleyebilirsiniz:
+Market ölçümlerini çeşitli yollarla görüntüleyebilirsiniz:
 
 - Storefront sekmeleri
 - Sayfa filtreleri
 - Tarih filtreleri
 
-**Storefront sekmeleri**: AppSource & Azure Marketi sekmeleri aracılığıyla tekliflerinizin ölçümlerini ayrı ayrı görüntüleyebilirsiniz. Seçili teklif(ler) için ölçümlerin görselleştirilmesini görmek için sağdaki teklif açılır listesinden teklif(ler)'i seçin. Varsayılan olarak, tüm teklifler seçilir.
+**Storefront sekmeleri**: Azure Marketi sekmeleri appsource & aracılığıyla tekliflerinizin ölçümlerini ayrı olarak görebilirsiniz. Seçili tekliflerle ilgili ölçümlerin bir görselliğini görmek için sağdaki teklif açılan listesinden teklif (ler) i seçin. Varsayılan olarak, tüm teklifler seçilidir.
 
-![İş Ortağı Merkezi Öngörüleri panosu açılır liste teklifi](./media/insights-offer-dropdown.png)
+![İş Ortağı Merkezi Öngörüler panosu teklif açılan listesi](./media/insights-offer-dropdown.png)
 
-**Öngörüler sayfa filtreleri**: Bu filtreler teklif (ürün ayrıntı sayfası) düzeyinde uygulanır. Görüntülemek istediğiniz ölçütler için birden çok filtre seçebilirsiniz. Bu filtre, grafikler ve ayrıntılar da dahil olmak üzere tüm Market İstatistikleri bölümü için geçerlidir.
+**Öngörüler sayfa filtreleri**: Bu filtreler teklif (Ürün Ayrıntısı sayfası) düzeyinde uygulanır. Görüntülemek istediğiniz ölçüt için birden çok filtre seçebilirsiniz. Bu filtre, grafikler ve ayrıntılar dahil olmak üzere tüm Market öngörüleri için geçerlidir.
 
-![İş Ortağı Merkezi Öngörüleri pano sayfası filtreleri](./media/insights-page-filter.png)
+![İş Ortağı Merkezi öngörüleri pano sayfası filtreleri](./media/insights-page-filter.png)
 
-- Teklif Adları yalnızca seçilen tarih aralığında sayfa ziyaretleri olan teklifler için listelenir.  
-- Varsayılan seçim, filtre seçeneklerinin her biri için 'Tümü'
-- Uygulanan filtreler, yapılan seçimler için seçim sayısını gösterir. Uygulanan filtreler varsayılan 'Tümü' seçimi için görüntülenmez.
+- Teklif adları yalnızca seçili tarih aralığında sayfa ziyaret eden teklifler için listelenir.  
+- Filtre seçeneklerinin her biri için varsayılan seçim ' All ' olur
+- Uygulanan filtreler, yapılan seçimler için seçim sayısını gösterir. Uygulanan filtreler varsayılan ' tümü ' seçimi için görüntülenmeyecek.
 
-![İş Ortağı Merkezi Öngörüleri uygulanan filtreler](./media/insights-page-filter-two.png)
+![İş Ortağı Merkezi öngörüleri filtreleri uygulandı](./media/insights-page-filter-two.png)
 
-**İstatistikler tarih filtreleri**: Bu filtre, Tüm Market İstatistikleri bölümü için geçerlidir. Filtreler önceden belirlenmiş tarih aralıkları veya özel bir tarih aralığı içerebilir.
+**Öngörüler tarih filtreleri**: Bu filtre tüm Market öngörüleri bölümüne uygulanır. Filtreler, önceden belirlenmiş tarih aralıkları veya özel bir tarih aralığı içerebilir.
 
-![İş Ortağı Merkezi Öngörüleri tarih filtreleri](./media/insights-date-range.png)
+![İş Ortağı Merkezi öngörüleri tarih filtreleri](./media/insights-date-range.png)
 
-## <a name="marketplace-insights-summary"></a>Marketplace Insights özeti
+## <a name="marketplace-insights-summary"></a>Market öngörüleri Özeti
 
-Pazar yeri öngörüleri özeti **bölümünde, seçilen**tarih aralığı için Sayfa ziyaretleri, **eylem çağrıları**ve Benzersiz **ziyaretçiler** in sayısı görüntülenir.
+Market öngörüleri Özeti bölümünde, seçilen tarih aralığı için **sayfa ziyaretlerinin**sayısı, **eyleme yapılan çağrılar**ve **benzersiz ziyaretçiler** bulunur.
 
 ### <a name="page-visits"></a>Sayfa ziyaretleri
 
-Bu sayı, seçili bir tarih aralığı için teklif sayfasındaki (ürün ayrıntı sayfası) farklı kullanıcı oturumlarının sayısını temsil eder. Kırmızı/yeşil yüzde göstergesi, sayfa ziyaretlerinin büyüme %'sini temsil eder. Eğilim grafiği, sayfa ziyaretlerinin aydan aya sayısını gösterir.
+Bu sayı, seçilen bir tarih aralığı için teklif sayfasındaki (Ürün Ayrıntısı sayfası) farklı kullanıcı oturumlarının sayısını temsil eder. Kırmızı/yeşil yüzde göstergesi, sayfa ziyaretlerinin% büyümesini temsil eder. Eğilim grafiği, sayfa ziyaretlerinin aya göre ayı sayısını temsil eder.
 
 ### <a name="unique-visitors"></a>Benzersiz ziyaretçiler
 
-Bu sayı, sayfa filtresinde seçilen teklif(ler) için seçili tarih aralığındaki farklı ziyaretçi sayısını temsil eder. Bir veya daha fazla ürün ayrıntı sayfasını ziyaret eden bir ziyaretçi tek bir ziyaretçi olarak sayılır.
+Bu sayı, sayfa filtresinde seçilen teklif (ler) i için seçilen tarih aralığı boyunca ayrı ziyaretçi sayısını temsil eder. Bir veya daha fazla ürün ayrıntısı sayfasını ziyaret eden bir ziyaretçi, benzersiz bir ziyaretçi olarak sayılır.
 
-### <a name="call-to-action"></a>Harekete geçme çağrısı
+### <a name="call-to-action"></a>Eyleme çağrı
 
-Bu numara, teklif sayfasında tamamlanan **Eyleme Çağrı** düğmesinin sayısını temsil eder (ürün ayrıntı sayfası). **Şimdi** **Al**, **Ücretsiz deneme**, Bana **Ulaşın**ve **Test drive** düğmeleri seçildiğinde eylem çağrıları sayılır.
+Bu sayı teklif sayfasında (Ürün Ayrıntısı sayfası) tamamlanan eylem düğmesi tıklamaları **çağrısının** sayısını temsil eder. **Şimdi al**, **ücretsiz deneme**, **benimle iletişim**ve **test sürücüsü** düğmeleri seçili olduğunda **eyleme yapılan çağrılar** sayılır.
 
-![İş Ortağı Merkezi Öngörüleri eylem özeti çağrısı](./media/insights-summary.png)
+![İş Ortağı Merkezi öngörüleri eylem özetine çağrı](./media/insights-summary.png)
 
-## <a name="page-visits-by-geography"></a>Coğrafyaya göre sayfa ziyaretleri
+## <a name="page-visits-by-geography"></a>Coğrafya tarafından sayfa ziyaretleri
 
-Aşağıdaki ısı haritası Sayfa **ziyaretlerinin**sayısını, **eylem çağrılarını**ve müşteri **ülkesine göre Benzersiz ziyaretçileri**görüntüler. Daha yüksek sayfa ziyaretleri daha koyu harita renkleriyle, alt sayfa ziyaretleri ise daha açık harita renkleriyle temsil edilir.
+Aşağıdaki ısı haritasını, **sayfa ziyaretlerinin**sayısını, eyleme yapılan **çağrıları**ve **Müşteri ülkesine göre benzersiz ziyaretçileri**görüntüler. Daha büyük sayfa ziyaretlerinin daha koyu eşleme renkleriyle temsil edildiği ve daha küçük sayfa ziyaretlerinin daha açık harita renkleriyle temsil edildiği.
 
-![İş Ortağı Merkezi Öngörüleri coğrafi dağılımı](./media/insights-geography.png)
+![İş Ortağı Merkezi öngörüleri coğrafi yayma](./media/insights-geography.png)
 
-Isı haritası aşağıdaki yetenekleri içerir:
+Isı haritasını aşağıdaki özellikleri içerir:
 
-- Isı **haritası, Sayfa ziyaretlerinin**ayrıntılarını, eylem **çağrılarının** ve belirli bir konumdaki **Benzersiz ziyaretçilerin** ayrıntılarını görüntülemek için tamamlayıcı bir ızgaraya sahiptir; tercih edilirse belirli bir konuma yakınlaştırabilirsiniz.  
-- **Yayılan ülkeler,** müşterilerinizin seçilen tarih aralığında sayfa ziyaretlerini bildirdiği tüm ülkelerin sayısıdır.
-- Haritadaki konumu yakınlaştırmak için ızgarada bir ülkeyi arayabilir ve seçebilirsiniz. Haritada **Ana Sayfa'yı** seçerek orijinal görünüme geri dön.
+- Isı haritasını, **sayfa ziyaretlerinin**ayrıntılarını, belirli bir konumdaki eyleme ve **benzersiz ziyaretçilere** **yapılan çağrıları** görüntülemek için bir ek kılavuz içerir; tercih ederseniz, belirli bir konuma yakınlaştırabilirsiniz.  
+- **Ülke yayma** , müşterilerinizin seçili tarih aralığı boyunca sayfa ziyaretlerini bildirdiği tüm ülkelerin sayısıdır.
+- Haritada konum yakınlaştırmak için kılavuzdaki bir ülkeyi arayabilir ve seçebilirsiniz. Haritada **giriş** ' i seçerek özgün görünüme dönün.
 
-## <a name="page-visits-versus-unique-visitors-trend"></a>Sayfa ziyaretleri ve benzersiz ziyaretçi eğilimi
+## <a name="page-visits-versus-unique-visitors-trend"></a>Sayfa ziyaretleri ve benzersiz ziyaretçi eğilimi karşılaştırması
 
-Aşağıdaki sütunlar, Y ekseninde (grafiğin sol tarafındaki eksen) görüntülenen aylık sayfa ziyaretlerinin sayısını temsil eder. Trend çizgisi, vitrinlerde yayınlanan teklifleriniz için ikincil Y Ekseni'nde (grafiğin sağ tarafındaki eksen) görüntülenen benzersiz ziyaretçilerin aylık eğilimini temsil eder: Azure Marketi ve AppSource.
+Aşağıdaki sütunlar, Y ekseninde (grafiğin sol tarafındaki eksen) görüntülenen aylık sayfa ziyaretlerinin sayısını temsil eder. Eğilim çizgisi, Azure Marketi ve AppSource 'ta yayınlanan tekliflerinize yönelik ikincil Y ekseni (grafiğin sağ tarafındaki eksen) üzerinde, benzersiz ziyaretçilerin aylık eğilimini temsil eder.
 
-![İş Ortağı Merkezi Öngörüleri sayfa ziyaretleri ve benzersiz ziyaretçi trendi](./media/insights-page-vists-unique-visitors.png)
+![İş Ortağı Merkezi Öngörüler sayfası ziyaretleri ve benzersiz ziyaretçi eğilimi](./media/insights-page-vists-unique-visitors.png)
 
-## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>Tok'lu benzersiz ziyaretçilere karşı harekete geçme çağrısı
+## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>CTAs ile eyleme karşı benzersiz ziyaretçilere çağrı
 
-Yığılmış sütunlar, CTA türlerine göre ayrılmış olan aylık eylem çağrılarını (CTA) temsil eder **(Şimdi alın**, **Bana Ulaşın**ve **Ücretsiz Deneme**) ve Y ekseni üzerinde çizilir (sayfanın sol tarafındaki eksen). Eğilim çizgisi, Azure Marketi ve AppSource'da yayınlanan teklifleriniz için ikincil Y Ekseni'nde (grafiğin sağ tarafındaki eksen) görüntülenen CTA'lı benzersiz ziyaretçilerin aylık eğilimini temsil eder.
+Yığılmış sütunlar, CTA türlerine (**Şimdi alın**, **benimle Iletişim kurun**ve **ücretsiz deneme**) göre kırılır ve Y ekseni (sayfanın sol tarafındaki eksen) üzerine çizilerek (CTA) eyleme yapılan aylık çağrıları temsil eder. Eğilim çizgisi, Azure Marketi 'nde ve AppSource 'ta yayınlanan tekliflerinizin ikincil Y ekseni (grafiğin sağ tarafındaki eksen) üzerinde, CTAs ile benzersiz ziyaretçilerin aylık eğilimini temsil eder.
 
-![İş Ortağı Merkezi Öngörüleri, CTA'lı benzersiz ziyaretçilere karşı harekete geçme çağrısı](./media/insights-call-to-action-unique-visitors.png)
+![İş Ortağı Merkezi öngörüleri, CTAs ile benzersiz ziyaretçilere karşı işleme](./media/insights-call-to-action-unique-visitors.png)
 
-## <a name="page-visits-and-calls-to-action-by-offers"></a>Teklife göre sayfa ziyaretleri ve eylem çağrıları
+## <a name="page-visits-and-calls-to-action-by-offers"></a>Teklifler tarafından yapılacak sayfa ziyaretleri ve çağrıları
 
-Dış pasta grafiği, pazarda yayınladığınız ve filtrede seçtiğiniz tekliflere dayalı **olarak Sayfa ziyaretlerinin** dökümünü temsil eder. İç grafik, aynı teklifler için eylem dökümü **Çağrıları'nı** temsil eder.
+Dış pasta grafiği, markette yayımladığınız ve filtrede seçtiğiniz teklifleri temel alarak **sayfa ziyaretlerinin** dökümünü temsil eder. İç grafik, aynı tekliflerle ilgili eylem dökümünü **çağırır** .
 
-![İş Ortağı Merkezi Öngörüleri sayfa ziyaretleri ve tekliflere göre eylem çağrıları](./media/insights-page-visits-and-cta-by-offer.png)
+![İş Ortağı Merkezi Öngörüler sayfası ziyaretleri ve tekliflere göre eyleme çağrı](./media/insights-page-visits-and-cta-by-offer.png)
 
-## <a name="call-to-action-percentage-trend"></a>Eylem yüzdesi eğilimini arama
+## <a name="call-to-action-percentage-trend"></a>Eylem yüzdesi eğilimi çağrısı
 
-**Eylem yüzdesi çağrısı eğilimi,** pazarda yayınlanan teklifler için CTA yüzdesini sunar. CTA % = (CTAs/ sayfa ziyaretleri) * 100.
+**Eylem yüzdesi eğilimi çağrısı** , Market 'te yayınlanan tekliflerin CTA yüzdesini gösterir. CTA% = (CTAs/sayfa ziyaretleri) * 100.
 
-![İş Ortağı Merkezi Öngörüleri eylem yüzdesi eğilimine çağrı](./media/insights-call-to-action-percentage-trend.png)
+![İş Ortağı Merkezi öngörüleri çağrısı-eylem yüzdesi eğilimi](./media/insights-call-to-action-percentage-trend.png)
 
-## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>Başvuru etki alanları tarafından sayfa ziyaretleri ve eylem çağrıları
+## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>Sayfa ziyaretleri ve başvuru etki alanlarına göre eyleme çağrılar
 
-Aşağıdaki grafikte en iyi 50 başvuru etki alanı yer almaktadır. Belirli bir yönlendirme etki alanı nın seçilmesi, sayfa ziyaretlerinin aylık eğilimini ve sağda grafikte eylem çağrıları gösterir.
+Aşağıdaki grafik, ilk 50 başvuru etki alanını gösterir. Belirli bir başvuru etki alanının seçilmesi, sayfa ziyaretlerinin aylık eğilimini ve sağdaki grafik üzerindeki eyleme yapılan çağrıları gösterir.
 
-![İş Ortağı Merkezi Öngörüleri sayfa ziyaretleri ve yönlendirme etki alanları ve kampanyalar tarafından eylem çağrıları](./media/insights-page-visits-call-to-actions.png)
+![İş Ortağı Merkezi Öngörüler sayfası ziyaretleri ve başvuru etki alanları ve kampanyalar tarafından eyleme çağrı](./media/insights-page-visits-call-to-actions.png)
 
-## <a name="marketplace-insights-details-table"></a>Marketplace Insights ayrıntılar tablosu
+## <a name="marketplace-insights-details-table"></a>Market öngörüleri Ayrıntıları tablosu
 
-Bu tablo, sayfa ziyaretlerinin ve seçili tekliflerinizin tarihe göre sıralanmış eylem çağrılarının bir listesini sağlar.
+Bu tabloda, sayfa ziyaretlerinin bir liste görünümü ve seçili tekliflerinizin tarihe göre sıralandığı eyleme yapılan çağrılar verilmektedir.
 
-![İş Ortağı Merkezi Öngörüleri ayrıntılar tablosu](./media/insights-details-page.png)
+![İş Ortağı Merkezi Öngörüler Ayrıntıları tablosu](./media/insights-details-page.png)
 
-- Kayıt sayısı 1000'den küçükse veriler bir CSV dosyasına ayıklanabilir.
-- Kayıt sayısı 1000'in üzerindeyse, dışa aktarılan veriler, önümüzdeki 30 gün boyunca bir indirme sayfasına eşit olarak yerleştirilir.
-- Filtreler, ilgilendiğiniz verileri görüntülemek için uygulanabilir. Veriler Teklif adlarıyla ve Kampanya adlarıyla filtrelenebilir.  
+- Kayıt sayısı 1000 ' den küçükse veriler bir CSV dosyasına ayıklanabilir.
+- Kayıt sayısı 1000 üzerinde ise, verilen veriler sonraki 30 gün boyunca bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
+- İlgilendiğiniz verileri göstermek için filtreler uygulanabilir. Veriler, teklif adlarına ve kampanya adlarına göre filtrelenebilir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş Ortağı Merkezi ticari pazarda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki ticari pazar için Analytics'e](./analytics.md)bakın.
-- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri [için, ticari pazar analizinde Özet Pano'ya](./summary-dashboard.md)bakın.
-- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [ticari pazar analizinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
-- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [ticari pazar analizinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
-- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [ticari pazar analizinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
-- Son 30 gün içinde indirme isteklerinizin bir listesi için, [ticari pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
-- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [ticari pazar analizinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.
-- Ticari pazar analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+- Iş ortağı merkezi ticari marketi 'nde bulunan analiz raporlarına genel bakış için bkz. [Iş Ortağı Merkezi 'nde ticari Market Için analiz](./analytics.md).
+- Teklifinizin Market etkinliklerini özetleyen grafikler, eğilimler ve veri değerleri için bkz. [ticari Market Analytics 'Te Özet Panosu](./summary-dashboard.md).
+- Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](./orders-dashboard.md).
+- Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](./usage-dashboard.md).
+- Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](./customer-dashboard.md).
+- Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'Te panoyu indirme](./downloads-dashboard.md).
+- Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [ticari Market Analytics 'Te derecelendirmeler ve İncelemeler panosu](./ratings-reviews.md).
+- Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](./faq-terminology.md).

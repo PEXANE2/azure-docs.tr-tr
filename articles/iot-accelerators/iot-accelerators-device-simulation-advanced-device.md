@@ -1,6 +1,6 @@
 ---
-title: Gelişmiş bir simüle aygıt modeli oluşturma - Azure| Microsoft Dokümanlar
-description: Bu nasıl yapılmalı kılavuzunda, Aygıt Simülasyonu çözüm hızlandırıcısıyla kullanılmak üzere gelişmiş bir aygıt modeli oluşturmayı öğrenirsiniz.
+title: Gelişmiş bir sanal cihaz modeli oluşturma-Azure | Microsoft Docs
+description: Bu nasıl yapılır kılavuzunda, cihaz benzetimi çözüm hızlandırıcısı ile kullanmak üzere gelişmiş bir cihaz modeli oluşturmayı öğreneceksiniz.
 author: troyhopwood
 manager: timlt
 ms.service: iot-accelerators
@@ -13,21 +13,21 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683822"
 ---
 # <a name="create-an-advanced-device-model"></a>Gelişmiş bir cihaz modeli oluşturma
 
-Bu nasıl yapıltanımlanır kılavuzu, özel bir aygıt modelini tanımlayan JSON ve JavaScript dosyalarını açıklar. Makale, bazı örnek aygıt modeli tanım dosyalarını içerir ve bunları Aygıt Simülasyonu örneğinize nasıl yükleyersiniz gösterir. Testiniz için daha gerçekçi aygıt davranışlarını simüle etmek için gelişmiş aygıt modelleri oluşturabilirsiniz.
+Bu nasıl yapılır kılavuzunda, özel bir cihaz modelini tanımlayan JSON ve JavaScript dosyaları açıklanmaktadır. Makale, bazı örnek cihaz modeli tanım dosyalarını içerir ve bunları cihaz benzetim örneğinize nasıl yükleyeceksiniz. Testiniz için daha gerçekçi cihaz davranışları benzetimi yapmak üzere gelişmiş cihaz modelleri oluşturabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yap'ı kullanma kılavuzundaki adımları izlemek için Azure aboneliğinizde dağıtılmış bir Aygıt Simülasyonu örneği gerekir.
+Bu nasıl yapılır kılavuzundaki adımları izlemek için, Azure aboneliğinizde bir cihaz benzetiminin dağıtılmış örneğine ihtiyacınız vardır.
 
 Cihaz Simülasyonu'nu henüz dağıtmadıysanız, [Azure'da IoT cihaz simülasyonunu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md) hızlı başlangıç kılavuzunu tamamlamalısınız.
 
@@ -37,35 +37,35 @@ Tarayıcınızda Cihaz Simülasyonu'nu çalıştırmak için, önce [Microsoft A
 
 Azure aboneliği kimlik bilgilerinizi kullanarak oturum açmanız istenebilir.
 
-Ardından Dağıt'ta dağıttığınız Aygıt Simülasyonu için **Hazırla'yı** tıklatın ve Azure [quickstart'ta bir IoT aygıt simülasyonu çalıştırın.](quickstart-device-simulation-deploy.md)
+Ardından Azure Hızlı Başlangıç ['ta bir IoT cihaz simülasyonu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md) bölümünde dağıttığınız cihaz simülasyonu kutucuğunda **Başlat** ' a tıklayın.
 
 ## <a name="device-models"></a>Cihaz modelleri
 
-Simüle edilen her aygıt simülasyon davranışını tanımlayan belirli bir aygıt modeline aittir. Bu davranış, telemetri nin ne sıklıkta gönderilecek, ne tür iletiler gönderilenve desteklenen yöntemleri içerir.
+Her sanal cihaz, benzetim davranışını tanımlayan belirli bir cihaz modeline aittir. Bu davranış ne sıklıkla telemetri gönderileceğini, ne tür iletiler gönderileceğini ve desteklenen yöntemleri içerir.
 
-Bir JSON aygıt tanım dosyası ve JavaScript dosyaları kümesi ni kullanarak bir aygıt modeli tanımlarsınız. Bu JavaScript dosyaları rasgele telemetri ve yöntem mantığı gibi simülasyon davranışını tanımlar.
+Bir JSON cihaz tanımı dosyası ve bir JavaScript dosyası kümesi kullanarak bir cihaz modeli tanımlarsınız. Bu JavaScript dosyaları, rastgele telemetri ve Yöntem mantığı gibi benzetim davranışını tanımlar.
 
-Tipik bir aygıt modeli vardır:
+Tipik bir cihaz modeli şunları içerir:
 
-* Her cihaz modeli için bir JSON dosyası (örneğin, elevator.json).
-* Her aygıt modeli için bir JavaScript davranış komut dosyası dosyası dosyası (örneğin, asansör-state.js)
-* Her cihaz yöntemi için bir JavaScript yöntem komut dosyası dosyası (örneğin, asansör-go-down.js)
+* Her cihaz modeli için bir JSON dosyası (örneğin, Asansör. JSON).
+* Her cihaz modeli için bir JavaScript davranış betik dosyası (örneğin, Elevator-State. js)
+* Her cihaz yöntemi için bir JavaScript Yöntem betik dosyası (örneğin, Elevator-Go-Down. js)
 
 > [!NOTE]
-> Tüm aygıt modelleri yöntemleri tanımlamaz. Bu nedenle, bir aygıt modelinde yöntem komut dosyaları olabilir veya olmayabilir. Ancak, tüm aygıt modellerinde bir davranış komut dosyası olmalıdır.
+> Tüm cihaz modelleri Yöntemler tanımlamıyor. Bu nedenle bir cihaz modelinde Yöntem betikleri olabilir veya bulunmayabilir. Ancak, tüm cihaz modellerinin bir davranış betiği olmalıdır.
 
-## <a name="device-definition-file"></a>Aygıt tanım dosyası
+## <a name="device-definition-file"></a>Cihaz tanımı dosyası
 
-Her aygıt tanım dosyası, aşağıdaki bilgiler de dahil olmak üzere benzetimli aygıt modelinin ayrıntılarını içerir:
+Her Cihaz tanımı dosyası, aşağıdaki bilgiler dahil olmak üzere sanal cihaz modelinin ayrıntılarını içerir:
 
-* Aygıt modeli adı: string.
-* Protokol: AMQP | MQTT | HTTP' ye göre.
-* İlk aygıt durumu.
-* Aygıt durumunu niçin yenileyene.
-* Aygıt durumunu yenilemek için hangi JavaScript dosyasını kullanılacak.
-* Her biri belirli bir frekansa sahip, gönderilecek telemetri iletilerinin listesi.
-* Telemetri mesajları şeması, alınan telemetri ayrıştırmak için arka uç uygulaması tarafından kullanılan.
-* Desteklenen yöntemlerin listesi ve her yöntemi simüle etmek için kullanılacak JavaScript dosyası.
+* Cihaz modeli adı: dize.
+* Protokol: AMQP | MQTT | HTTP.
+* İlk cihaz durumu.
+* Cihaz durumunu yenileme sıklığı.
+* Cihaz durumunu yenilemek için kullanılacak JavaScript dosyası.
+* Her biri belirli bir sıklık ile gönderilen telemetri iletilerinin bir listesi.
+* Arka uç uygulaması tarafından alınan telemetrinin ayrıştırılmasında kullanılan telemetri iletilerinin şeması.
+* Desteklenen yöntemlerin bir listesi ve her yöntemin benzetimini yapmak için kullanılacak JavaScript dosyası.
 
 ### <a name="file-schema"></a>Dosya şeması
 
@@ -75,9 +75,9 @@ Her aygıt tanım dosyası, aşağıdaki bilgiler de dahil olmak üzere benzetim
 "SchemaVersion": "1.0.0"
 ```
 
-### <a name="device-model-description"></a>Aygıt modeli açıklaması
+### <a name="device-model-description"></a>Cihaz modeli açıklaması
 
-Aşağıdaki özellikler aygıt modelini açıklar. Her türün benzersiz bir tanımlayıcısı, anlamsal bir sürümü, adı ve açıklaması vardır:
+Aşağıdaki özellikler cihaz modelini anlatmaktadır. Her tür benzersiz bir tanımlayıcıya, anlam sürümüne, bir ada ve açıklamaya sahiptir:
 
 ```json
 "Id": "chiller-01",
@@ -88,15 +88,15 @@ Aşağıdaki özellikler aygıt modelini açıklar. Her türün benzersiz bir ta
 
 ### <a name="iot-protocol"></a>IoT Protokolü
 
-IoT aygıtları farklı protokoller kullanarak bağlanabilir. Simülasyon ya **AMQP**, **MQTT**, ya da **HTTP**kullanmanızı sağlar:
+IoT cihazları, farklı protokoller kullanarak bağlanabilir. Benzetim, **AMQP**, **MQTT**veya **http**kullanarak şunları yapmanızı sağlar:
 
 ```json
 "Protocol": "AMQP"
 ```
 
-### <a name="simulated-device-state"></a>Benzetimli aygıt durumu
+### <a name="simulated-device-state"></a>Sanal cihaz durumu
 
-Her benzetilen aygıtın tanımlanması gereken bir iç durumu vardır. Durum, telemetride bildirilebilen özellikleri de tanımlar. Örneğin, bir soğutucu gibi bir başlangıç durumu olabilir:
+Her bir sanal cihazın, tanımlanması gereken bir iç durumu vardır. Durum ayrıca telemetride raporlanabilmesi gereken özellikleri tanımlar. Örneğin, bir Chil, şöyle bir başlangıç durumuna sahip olabilir:
 
 ```json
 "InitialState": {
@@ -105,7 +105,7 @@ Her benzetilen aygıtın tanımlanması gereken bir iç durumu vardır. Durum, t
 },
 ```
 
-Birkaç sensöre sahip hareketli bir aygıtın daha fazla özelliği olabilir, örneğin:
+Birkaç sensörle taşınan bir cihazın daha fazla özelliği olabilir, örneğin:
 
 ```json
 "InitialState": {
@@ -118,20 +118,20 @@ Birkaç sensöre sahip hareketli bir aygıtın daha fazla özelliği olabilir, �
 }
 ```
 
-Aygıt durumu simülasyon hizmeti tarafından bellekte tutulur ve JavaScript işlevine giriş olarak sağlanır. JavaScript işlevi aşağıdakileri belirleyebilir:
+Cihaz durumu Simülasyon hizmeti tarafından bellekte tutulur ve JavaScript işlevine giriş olarak sağlanır. JavaScript işlevi şunları karar verebilir:
 
-* Durumu yoksaymak ve bazı rasgele veriler oluşturmak için.
-* Belirli bir senaryo için gerçekçi bir şekilde aygıt durumunu güncelleştirmek için.
+* Durumu yoksaymak ve bazı rastgele veriler oluşturmak için.
+* Belirli bir senaryo için cihaz durumunu gerçekçi bir şekilde güncelleştirmek için.
 
-Durumu oluşturan işlev de girdi olarak alır:
+Durumu oluşturan işlevi de giriş olarak alır:
 
-* Cihaz kimliği.
+* Cihaz KIMLIĞI.
 * Cihaz modeli.
-* Geçerli saat. Bu değer, aygıta ve zamana göre farklı veri oluşturmayı mümkün kılar.
+* Geçerli saat. Bu değer, cihaza ve zamana göre farklı veriler oluşturmayı mümkün kılar.
 
 ### <a name="generating-telemetry-messages"></a>Telemetri iletileri oluşturma
 
-Simülasyon hizmeti her aygıt için birkaç telemetri türü gönderebilir. Genellikle, telemetri aygıt durumundan verileri içerir. Örneğin, simüle edilmiş bir oda her 10 saniyede bir sıcaklık ve nem hakkında bilgi gönderebilir. Aygıt durumundan gelen değerlerle otomatik olarak değiştirilen aşağıdaki parçacıktaki yer tutuculara dikkat edin:
+Simülasyon hizmeti her cihaz için birkaç telemetri türü gönderebilir. Genellikle telemetri cihaz durumundan alınan verileri içerir. Örneğin, sanal bir oda her 10 saniyede sıcaklık ve nem hakkında bilgi gönderebilir. Aşağıdaki kod parçacığındaki yer tutucuları, otomatik olarak cihaz durumundaki değerlerle değiştirilmiştir:
 
 ```json
 "Telemetry": [
@@ -152,27 +152,27 @@ Simülasyon hizmeti her aygıt için birkaç telemetri türü gönderebilir. Gen
 ],
 ```
 
-Yer tutucular, **AD'ın** JavaScript **main** işlevi tarafından döndürülen aygıt durumu nesnesinden bir anahtar olduğu özel bir sözdizimi **${NAME}** kullanır. Dizeleri tırnak içinde, sayılar ise tırnak içinde tırnak içinde olmalıdır.
+Yer tutucular, **adı** JavaScript **ana** işlevi tarafından döndürülen cihaz durumu nesnesinden bir anahtar olduğunda, **$ {Name}** özel sözdizimini kullanır. Dizeler tırnak içine alınmalıdır, sayılar memelidir.
 
 #### <a name="message-schema"></a>İleti şeması
 
-Her ileti türüiyi tanımlanmış bir şema olmalıdır. İleti şeması, arka uç uygulamalarının gelen telemetriyi yorumlamak için bilgileri yeniden kullanabilmesi için IoT Hub'a da yayımlanır.
+Her ileti türünün iyi tanımlanmış bir şeması olmalıdır. İleti şeması Ayrıca IoT Hub olarak yayımlanır, böylece arka uç uygulamaları gelen telemetrileri yorumlamak için bilgileri yeniden kullanabilir.
 
-Şema, çeşitli sistemler ve hizmetler arasında kolay ayrıştırma, dönüşüm ve analiz sağlayan JSON biçimini destekler.
+Şema, çeşitli sistemler ve hizmetler arasında kolayca ayrıştırma, dönüştürme ve analizler sağlayan JSON biçimini destekler.
 
-Şemada listelenen alanlar aşağıdaki türlerden olabilir:
+Şemada listelenen alanlar aşağıdaki türlerde olabilir:
 
-* Nesne - JSON kullanılarak seri hale getir
-* İkili - base64 kullanılarak serihale
+* Nesne-JSON kullanılarak serileştirilmiş
+* Base64 kullanılarak ikili seri hale getirilmiş
 * Metin
 * Boole
 * Tamsayı
 * Çift
 * DateTime
 
-### <a name="supported-methods"></a>Desteklenen yöntemler
+### <a name="supported-methods"></a>Desteklenen Yöntemler
 
-Benzetimli aygıtlar yöntem çağrılarına da tepki verebilir, bu durumda bazı mantık lar uygular ve bazı yanıtlar sağlarlar. Simülasyona benzer şekilde, yöntem mantığı bir JavaScript dosyasında depolanır ve aygıt durumuyla etkileşimkurabilir. Örneğin:
+Sanal cihazlar ayrıca yöntem çağrılarına yanıt verebilir, bu durumda bazı mantık yürütür ve bir yanıt sağlar. Simülasyonuna benzer şekilde, yöntem mantığı bir JavaScript dosyasında depolanır ve cihaz durumuyla etkileşime geçebilir. Örneğin:
 
 ```json
 "CloudToDeviceMethods": {
@@ -183,11 +183,11 @@ Benzetimli aygıtlar yöntem çağrılarına da tepki verebilir, bu durumda baz�
 }
 ```
 
-## <a name="create-a-device-definition-file"></a>Aygıt tanım dosyası oluşturma
+## <a name="create-a-device-definition-file"></a>Cihaz tanımı dosyası oluşturma
 
-Bu nasıl-to-kılavuzu size nasıl bir drone için bir cihaz modeli oluşturmak için bakın. İnsansız hava aracı, konum ve irtifayı değiştiren bir koordinat kümesi etrafında rastgele uçacak.
+Bu nasıl yapılır kılavuzunda, bir drone için cihaz modeli oluşturma hakkında bilgi alabilirsiniz. Drone, konum ve yüksekliği değiştiren bir ilk koordinat kümesini rastgele bir şekilde hareket edecektir.
 
-Bir metin editörü içine aşağıdaki JSON kopyalayın ve **drone.json**olarak kaydedin.
+Aşağıdaki JSON 'ı bir metin düzenleyicisine kopyalayın ve **drone. JSON**olarak kaydedin.
 
 ### <a name="device-definition-json-example"></a>Cihaz tanımı JSON örneği
 
@@ -250,19 +250,19 @@ Bir metin editörü içine aşağıdaki JSON kopyalayın ve **drone.json**olarak
 }
 ```
 
-## <a name="behavior-script-files"></a>Davranış komut dosyası dosyaları
+## <a name="behavior-script-files"></a>Davranış betiği dosyaları
 
-Davranış dosyası dosyasındaki kod drone'u hareket ettirir. Komut dosyası, cihazın bellek durumunu manipüle ederek drone'un yüksekliğini ve konumunu değiştirir.
+Davranış betik dosyasındaki kod DRA 'yi taşıtir. Betik, cihazın bellek durumunu düzenleyerek drone 'nin yükseltmesini ve konumunu değiştirir.
 
-JavaScript dosyaları, iki parametre kabul eden bir **ana** işlev olmalıdır:
+JavaScript dosyalarının iki parametreyi kabul eden bir **ana** işlevi olması gerekir:
 
 * Üç özellik içeren bir **bağlam** nesnesi:
-    * **formatı** **yy-MM-dd'T'HH:mm:sszzz**ile bir dize olarak currentTime .
-    * **deviceId**. Örneğin, **Simulated.Elevator.123**.
-    * **deviceModel**. Örneğin, **Asansör**.
-* Önceki çağrıda işlev tarafından döndürülen değer olan bir **durum** nesnesi. Bu aygıt durumu simülasyon hizmeti tarafından korunur ve telemetri iletileri oluşturmak için kullanılır.
+    * **geçerli saat** , **yyyy-aa-gg't'hh: mm: sszzz**biçiminde bir dize olarak.
+    * **DeviceID**. Örneğin, **benzetimli. Asansör. 123**.
+    * **Devicemodel**. Örneğin, **Asansör**.
+* Önceki çağrıda işlevin döndürdüğü değer olan bir **durum** nesnesi. Bu cihaz durumu Simülasyon hizmeti tarafından tutulur ve telemetri iletileri oluşturmak için kullanılır.
 
-**Ana** işlev yeni aygıt durumunu döndürür. Örneğin:
+**Main** işlevi yeni cihaz durumunu döndürür. Örneğin:
 
 ```JavaScript
 function main(context, state) {
@@ -275,11 +275,11 @@ function main(context, state) {
 }
 ```
 
-## <a name="create-a-behavior-script-file"></a>Davranış komut dosyası dosyası dosyası oluşturma
+## <a name="create-a-behavior-script-file"></a>Davranış betik dosyası oluşturma
 
-Aşağıdaki JavaScript'i bir metin düzenleyicisine kopyalayın ve **drone-state.js**olarak kaydedin.
+Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **drone-State. js**olarak kaydedin.
 
-### <a name="device-model-javascript-simulation-example"></a>Cihaz modeli JavaScript simülasyon örneği
+### <a name="device-model-javascript-simulation-example"></a>Cihaz modeli JavaScript benzetim örneği
 
 ```JavaScript
 "use strict";
@@ -400,15 +400,15 @@ function varylocation(latitude, longitude, distance) {
 }
 ```
 
-## <a name="create-a-method-script-file"></a>Yöntem komut dosyası dosyası dosyası oluşturma
+## <a name="create-a-method-script-file"></a>Yöntem betik dosyası oluşturma
 
-Yöntem komut dosyaları davranış komut dosyalarıbenzer. Belirli bir buluttan aygıt yöntemine çağrıldığında aygıt davranışını tanımlarlar.
+Yöntem betikleri davranış betiklerine benzer. Belirli bir buluta cihaz yöntemi çağrıldığında cihaz davranışını tanımlar.
 
-İhA geri çağırma komut dosyası, eve dönen drone'u simüle etmek için İhA'nın koordinatlarını sabit bir noktaya ayarlar.
+Drone geri çekme betiği, DRA 'nın, ana giriş döndüren kurutanın benzetimini yapmak için, kurutun koordinatlarını sabit bir noktaya ayarlar.
 
-Aşağıdaki JavaScript'i bir metin düzenleyicisine kopyalayın ve **droneRecall-method.js**olarak kaydedin.
+Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **droneRecall-method. js**olarak kaydedin.
 
-### <a name="device-model-javascript-simulation-example"></a>Cihaz modeli JavaScript simülasyon örneği
+### <a name="device-model-javascript-simulation-example"></a>Cihaz modeli JavaScript benzetim örneği
 
 ```JavaScript
 "use strict";
@@ -470,11 +470,11 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-## <a name="debugging-script-files"></a>Komut dosyası dosyalarını hata ayıklama
+## <a name="debugging-script-files"></a>Betik dosyalarında hata ayıklama
 
-Çalışan davranış dosyasına hata ayıklama ekleyemeseniz de, **günlük** işlevini kullanarak hizmet günlüğüne bilgi yazmak mümkündür. Sözdizimi hataları için, yorumlayıcı başarısız olur ve günlüğün özel durumu hakkında bilgi yazar.
+Çalışan bir davranış dosyasına bir hata ayıklayıcı iliştiremiyoruz, ancak **log** işlevini kullanarak hizmet günlüğüne bilgi yazmak mümkündür. Sözdizimi hataları için yorumlayıcı başarısız olur ve özel durumla ilgili bilgileri günlüğe yazar.
 
-Günlük örneği:
+Günlüğe kaydetme örneği:
 
 ```JavaScript
 function main(context, state) {
@@ -493,11 +493,11 @@ function main(context, state) {
 }
 ```
 
-## <a name="deploy-an-advanced-device-model"></a>Gelişmiş bir aygıt modelini dağıtma
+## <a name="deploy-an-advanced-device-model"></a>Gelişmiş cihaz modeli dağıtma
 
-Gelişmiş aygıt modelinizi dağıtmak için Aygıt Simülasyonu örneğiniz olan dosyaları yüklersiniz:
+Gelişmiş cihaz modelinizi dağıtmak için, cihaz benzetim örneğinizin dosyalarını karşıya yüklersiniz:
 
-Menü çubuğunda **Cihaz modelleri**'ni seçin. **Aygıt modelleri** sayfası, Aygıt Simülasyonu'nun bu örneğinde bulunan aygıt modellerini listeler:
+Menü çubuğunda **Cihaz modelleri**'ni seçin. Cihaz **modelleri** sayfası, bu cihaz benzetimi örneğinde bulunan cihaz modellerini listeler:
 
 ![Cihaz modelleri](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
@@ -505,18 +505,18 @@ Sayfanın sağ üst köşesindeki **+ Cihaz Modeli Ekle**'ye tıklayın:
 
 ![Cihaz modeli ekleme](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
 
-Gelişmiş aygıt modeli sekmesini açmak için **Gelişmiş'i** tıklatın:
+Gelişmiş **' e** tıklayarak gelişmiş cihaz modeli sekmesini açın:
 
-![Gelişmiş Sekme](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
+![Gelişmiş sekmesi](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
-**Gözat'ı** tıklatın ve oluşturduğunuz JSON ve JavaScript dosyalarını seçin. Üç dosyayı da seçtiğinizden emin olun. Herhangi bir dosya eksikse, doğrulama başarısız olur:
+**Araştır** ' a tıklayın ve oluşturduğunuz JSON ve JavaScript dosyalarını seçin. Üç dosyayı da seçtiğinizden emin olun. Bir dosya eksikse, doğrulama başarısız olur:
 
-![Dosyalara Gözat](media/iot-accelerators-device-simulation-advanced-device/browse.png)
+![Dosyalara gözatamıyorum](media/iot-accelerators-device-simulation-advanced-device/browse.png)
 
-Dosyalarınız doğrulamayı geçiyorsa, **Kaydet'i** tıklatın ve aygıt modeliniz simülasyonda kullanılmaya hazır. Aksi takdirde, hataları düzeltin ve dosyaları yeniden yükleyin:
+Dosyalarınız doğrulamayı geçirirseniz, **Kaydet** ' e tıklayın ve cihaz modeliniz bir simülasyonu içinde kullanılmak üzere hazırlanın. Aksi takdirde, hataları giderin ve dosyaları yeniden karşıya yükleyin:
 
 ![Kaydet](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılmalı kılavuzunda, Aygıt Simülasyonu'nda kullanılan aygıt modeli dosyalarını ve gelişmiş bir aygıt modelinin nasıl oluşturulabileceğinizi öğrendiniz. Daha sonra, [Aygıt Simülasyonu çözüm hızlandırıcısından gönderilen telemetriyi görselleştirmek için Zaman Serisi Öngörülerini](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)nasıl kullanacağınızı keşfetmek isteyebilirsiniz.
+Bu nasıl yapılır kılavuzunda, cihaz benzetiminde kullanılan cihaz modeli dosyaları ve gelişmiş cihaz modeli oluşturma hakkında bilgi edindiniz. Daha sonra, [cihaz benzetimi çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights nasıl kullanacağınızı](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)araştırmak isteyebilirsiniz.

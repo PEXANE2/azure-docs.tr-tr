@@ -1,6 +1,6 @@
 ---
 title: Kullanıcı tanımlı geri yükleme noktaları
-description: SQL havuzu için geri yükleme noktası nasıl oluşturulur.
+description: SQL havuzu için geri yükleme noktası oluşturma.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,25 +12,25 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5c9b7eb1b03b6b6e3721c13f9ebf7da25dd2e376
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745064"
 ---
 # <a name="user-defined-restore-points"></a>Kullanıcı tanımlı geri yükleme noktaları
 
-Bu makalede, PowerShell ve Azure portalını kullanarak Azure Synapse Analytics'teki bir SQL havuzu için kullanıcı tanımlı yeni bir geri yükleme noktası oluşturmayı öğreneceksiniz.
+Bu makalede, PowerShell ve Azure portal kullanarak Azure SYNAPSE Analytics 'te bir SQL havuzu için yeni bir Kullanıcı tanımlı geri yükleme noktası oluşturmayı öğreneceksiniz.
 
-## <a name="create-user-defined-restore-points-through-powershell"></a>PowerShell ile kullanıcı tanımlı geri yükleme noktaları oluşturma
+## <a name="create-user-defined-restore-points-through-powershell"></a>PowerShell aracılığıyla Kullanıcı tanımlı geri yükleme noktaları oluşturma
 
-Kullanıcı tanımlı bir geri yükleme noktası oluşturmak için [Yeni-AzSqlDatabaseRestorePoint](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet'ini kullanın.
+Kullanıcı tanımlı geri yükleme noktası oluşturmak için [New-AzSqlDatabaseRestorePoint](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 'ini kullanın.
 
-1. Başlamadan önce [Azure PowerShell'i yüklediğinizden](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)emin olun.
+1. Başlamadan önce [Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)' yi yüklediğinizden emin olun.
 2. PowerShell’i açın.
-3. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listele.
+3. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listeleyin.
 4. Geri yüklenecek veritabanını içeren aboneliği seçin.
-5. Veri ambarınızın hemen bir kopyası için bir geri yükleme noktası oluşturun.
+5. Veri ambarınızın anlık bir kopyası için geri yükleme noktası oluşturun.
 
 ```Powershell
 
@@ -49,32 +49,32 @@ New-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName 
 
 ```
 
-6. Varolan tüm geri yükleme noktalarının listesine bakın.
+6. Tüm mevcut geri yükleme noktalarının listesine bakın.
 
 ```Powershell
 # List all restore points
 Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 ```
 
-## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>Azure portalı üzerinden kullanıcı tanımlı geri yükleme noktaları oluşturma
+## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>Azure portal aracılığıyla Kullanıcı tanımlı geri yükleme noktaları oluşturma
 
-Azure portalı aracılığıyla kullanıcı tanımlı geri yükleme noktaları da oluşturulabilir.
+Kullanıcı tanımlı geri yükleme noktaları, Azure portal aracılığıyla da oluşturulabilir.
 
-1. [Azure portal](https://portal.azure.com/) hesabınızda oturum açın.
+1. [Azure Portal](https://portal.azure.com/) hesabınızda oturum açın.
 
-2. Geri yükleme noktası oluşturmak istediğiniz SQL havuzuna gidin.
+2. İçin geri yükleme noktası oluşturmak istediğiniz SQL havuzuna gidin.
 
-3. Sol bölmeden **Genel Bakış'ı** seçin, **+ Yeni Geri Yükleme Noktası'nı**seçin. Yeni Geri Yükleme Noktası düğmesi etkin değilse, SQL havuzunun duraklatmadığından emin olun.
+3. Sol bölmeden **genel bakış** ' ı seçin, **+ Yeni geri yükleme noktası**' nı seçin. Yeni geri yükleme noktası düğmesi etkinleştirilmemişse, SQL havuzunun duraklatılmadığından emin olun.
 
-    ![Yeni Geri Yükleme Noktası](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
+    ![Yeni geri yükleme noktası](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
-4. Kullanıcı tanımlı geri yükleme noktanız için bir ad belirtin ve **Uygula'yı**tıklatın. Kullanıcı tanımlı geri yükleme noktalarının varsayılan bekletme süresi yedi gündür.
+4. Kullanıcı tanımlı geri yükleme noktanız için bir ad belirtin ve **Uygula**' ya tıklayın. Kullanıcı tanımlı geri yükleme noktalarının varsayılan saklama süresi yedi gündür.
 
-    ![Geri Yükleme Noktasının Adı](./media/sql-data-warehouse-restore-points/creating-restore-point-11.png)
+    ![Geri yükleme noktasının adı](./media/sql-data-warehouse-restore-points/creating-restore-point-11.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Varolan bir SQL havuzunun geri yüklemesi](sql-data-warehouse-restore-active-paused-dw.md)
-- [Silinen bir SQL havuzunun geri yüklemesi](sql-data-warehouse-restore-deleted-dw.md)
+- [Mevcut bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-active-paused-dw.md)
+- [Silinen bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-deleted-dw.md)
 - [Coğrafi yedekleme SQL havuzundan geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)
 

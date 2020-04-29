@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Çözümlerini CloudSimple Private Cloud ile yönetin
-description: CloudSimple Private Cloud kaynaklarınızı ve etkinliğinizi yönetmek için kullanılabilen yetenekleri açıklar
+title: Azure VMware çözümünü CloudSimple özel bulutuna göre yönetme
+description: CloudSimple özel bulut kaynaklarınızı ve etkinliğinizi yönetmek için kullanılabilen özellikleri açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
@@ -9,15 +9,15 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869296"
 ---
-# <a name="manage-private-cloud-resources-and-activity"></a>Özel Bulut kaynaklarını ve etkinliğini yönetme
+# <a name="manage-private-cloud-resources-and-activity"></a>Özel bulut kaynaklarını ve etkinliğini yönetme
 
-Özel bulutlar CloudSimple portalından yönetilir.  CloudSimple portalındaki durumu, kullanılabilir kaynakları, özel buluttaki etkinliği ve diğer ayarları denetleyin.
+Özel bulutlar CloudSimple portalından yönetilir.  Durumu, kullanılabilir kaynakları, özel buluttaki etkinliği ve CloudSimple portalından diğer ayarları kontrol edin.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -25,70 +25,70 @@ ms.locfileid: "81869296"
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-[CloudSimple portalına](access-cloudsimple-portal.md)erişin.
+[Cloudsimple portalına](access-cloudsimple-portal.md)erişin.
 
-## <a name="view-the-list-of-private-clouds"></a>Özel Bulutlar Listesini Görüntüle
+## <a name="view-the-list-of-private-clouds"></a>Özel bulutlar listesini görüntüleyin
 
-**Kaynaklar** sayfasındaki **Özel Bulutlar** sekmesi aboneliğinizdeki tüm Özel Bulutları listeler. Bilgiler, vSphere kümelerinin adını, sayısını, konumunu, özel bulutun geçerli durumunu ve kaynak bilgilerini içerir.
+**Kaynaklar** sayfasındaki **özel bulutlar** sekmesi aboneliğinizdeki tüm özel bulutları listeler. Bilgiler, vSphere kümelerinin adını, konumunu, özel bulutun geçerli durumunu ve kaynak bilgilerini içerir.
 
-![Özel Bulut sayfası](media/manage-private-cloud.png)
+![Özel bulut sayfası](media/manage-private-cloud.png)
 
-Ek bilgi ve eylemler için bir Özel Bulut seçin.
+Ek bilgi ve eylemler için özel bir bulut seçin.
 
-## <a name="private-cloud-summary"></a>Özel Bulut özeti
+## <a name="private-cloud-summary"></a>Özel bulut Özeti
 
-Seçili Özel Bulut'un kapsamlı bir özetini görüntüleyin.  Özet sayfası, Özel Bulut'ta dağıtılan DNS sunucularını içerir.  Şirket içi DNS sunucularından Özel Bulut DNS sunucularınıza DNS yönlendirmeayarlayabilirsiniz.  DNS iletme hakkında daha fazla bilgi için, [şirket için Özel Bulut vCenter için ad çözümü için DNS'yi yapılandırın'](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)a bakın.
+Seçilen özel bulutun kapsamlı bir özetini görüntüleyin.  Özet sayfası, özel buluta dağıtılan DNS sunucularını içerir.  Şirket içi DNS sunucularından DNS iletmeyi, özel bulut DNS sunucularınıza ayarlayabilirsiniz.  DNS iletimi hakkında daha fazla bilgi için bkz. [Şirket Içinden özel bulut vCenter için ad çözümlemesi IÇIN DNS yapılandırma](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/).
 
-![Özel Bulut Özeti](media/private-cloud-summary.png)
-
-### <a name="available-actions"></a>Kullanılabilir eylemler
-
-* [Başlat vSphere istemcisi](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). Bu Özel Bulut için vCenter'a erişin.
-* [Satın alma düğümleri](create-nodes.md). Bu Özel Bulut'a düğüm ekleyin.
-* [Genişletin.](expand-private-cloud.md) Bu Özel Bulut'a düğüm ekleyin.
-* **Yenileyin.** Bu sayfadaki bilgileri güncelleştirin.
-* **Sil.** Özel Bulut'u istediğiniz zaman silebilirsiniz. **Silmeden önce, tüm sistemleri ve verileri yedeklediğinizden emin olun.** Özel Bulut'u silmek tüm VM'leri, vCenter yapılandırmasını ve verileri siler. Seçili Özel Bulut'un özet bölümünde **Sil'i** tıklatın. Silme işleminden sonra, tüm Özel Bulut verileri güvenli ve son derece uyumlu bir silme işlemiyle silinir.
-* [vSphere ayrıcalıklarını değiştirin.](escalate-private-cloud-privileges.md)  Bu Özel Bulut'taki ayrıcalıklarınızı artırın.
-
-## <a name="private-cloud-vlanssubnets"></a>Özel Bulut VLANS/alt ağları
-
-Seçili Özel Bulut için tanımlı VLAN'ların/alt ağların listesini görüntüleyin.  Liste, özel bulut oluşturulduğunda oluşturulan yönetim VLAN'larını/alt ağlarını içerir.
-
-![Özel Bulut - VLANs/Subnets](media/private-cloud-vlans-subnets.png) 
+![Özel bulut Özeti](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Kullanılabilir eylemler
 
-* [VLANS/Subnets ekleyin.](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/) Bu Özel Bulut'a bir VLAN/alt kümesi ekleyin.
+* [VSphere Istemcisini başlatın](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). Bu özel bulut için vCenter 'a erişin.
+* [Düğümleri satın alın](create-nodes.md). Bu özel buluta düğüm ekleyin.
+* [Öğesini genişletin](expand-private-cloud.md). Bu özel buluta düğüm ekleyin.
+* **Yenileyin**. Bu sayfadaki bilgileri güncelleştirin.
+* **Silin**. Özel bulutu dilediğiniz zaman silebilirsiniz. **Silmeden önce tüm sistemleri ve verileri yedeklediğinizden emin olun.** Özel bir bulutu silmek, tüm VM 'Leri, vCenter yapılandırmasını ve verileri siler. Seçili özel bulutun Özet bölümünde **Sil** ' e tıklayın. Silme sonrasında, tüm özel bulut verileri güvenli ve yüksek oranda uyumlu bir işlem sürecinde silinir.
+* [VSphere ayrıcalıklarını değiştirin](escalate-private-cloud-privileges.md).  Bu özel bulutta ayrıcalıklarınızı ilerletin.
 
-Aşağıdaki eylemler için bir VLAN/Subnet seçin
-* [Güvenlik duvarı tablosunu takın.](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/) Bu Özel Bulut'a bir güvenlik duvarı tablosu takın.
+## <a name="private-cloud-vlanssubnets"></a>Özel bulut VLAN 'LARı/alt ağları
+
+Seçilen özel bulut için tanımlı VLAN/alt ağların listesini görüntüleyin.  Liste, özel bulut oluşturulduğunda oluşturulan yönetim VLAN 'Ları/alt ağlarını içerir.
+
+![Özel bulut-VLAN 'Lar/alt ağlar](media/private-cloud-vlans-subnets.png) 
+
+### <a name="available-actions"></a>Kullanılabilir eylemler
+
+* [VLAN/alt ağlar ekleyin](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/). Bu özel buluta bir VLAN/alt küme ekleyin.
+
+Aşağıdaki eylemler için bir VLAN/subnet seçin
+* [Güvenlik duvarı tablosu ekleyin](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/). Bu özel buluta bir güvenlik duvarı tablosu ekleyin.
 * **Düzenle**
-* **Silme** (yalnızca kullanıcı tanımlı VLAN'lar/Alt ağlar)
+* **Sil** (yalnızca Kullanıcı tanımlı VLAN/alt ağlar)
 
-## <a name="private-cloud-activity"></a>Özel Bulut etkinliği
+## <a name="private-cloud-activity"></a>Özel bulut etkinliği
 
-Seçili Özel Bulut için aşağıdaki bilgileri görüntüleyin.  Etkinlik bilgileri, seçili Özel Bulut için tüm etkinliklerin filtrelenmiş bir listesidir.  Bu sayfa, en fazla 25 yeni etkinlik gösterir.
+Seçilen özel bulut için aşağıdaki bilgileri görüntüleyin.  Etkinlik bilgileri, seçilen özel bulutun tüm etkinliklerinin filtrelenmiş bir listesidir.  Bu sayfada en fazla 25 son etkinlik gösterilmektedir.
 
-* Son uyarılar
+* Son Uyarılar
 * Son olaylar
 * Son görevler
 * Son denetim
 
-![Özel Bulut - Etkinlik](media/private-cloud-activity.png)
+![Özel bulut-etkinlik](media/private-cloud-activity.png)
 
-## <a name="cloud-racks"></a>Bulut Rafları
+## <a name="cloud-racks"></a>Bulut rafları
 
-Bulut rafları, Özel Bulut'unuzun yapı taşlarıdır. Her raf bir kapasite birimi sağlar. CloudSimple, Bir Özel Bulut oluştururken veya genişletirken bulut raflarını seçimlerinize göre otomatik olarak yapılandırır.  Her birinin atandığı Özel Bulut da dahil olmak üzere bulut raflarının tam listesini görüntüleyin.
+Bulut raflar, özel bulutunuzun yapı taşlarıdır. Her raf bir kapasite birimi sağlar. CloudSimple, özel bir bulut oluştururken veya genişletirken seçimlerinize göre bulut raflarını otomatik olarak yapılandırır.  Her birinin atandığı özel bulut dahil olmak üzere bulut raflarının tam listesini görüntüleyin.
 
-![Özel Bulut - Bulut Rafları](media/private-cloud-cloudracks.png)
+![Özel bulut-bulut raflar](media/private-cloud-cloudracks.png)
 
 ## <a name="vsphere-management-network"></a>vSphere Yönetim Ağı
 
-Şu anda Özel Bulut'ta yapılandırılan VMware yönetim kaynakları nın ve sanal makinelerin listesi. Bilgiler, yazılım sürümünü, tam nitelikli alan adını (FQDN) ve kaynakların IP adresini içerir.
+Özel bulutta yapılandırılmış olan VMware yönetim kaynakları ve sanal makinelerin listesi. Bilgiler yazılım sürümünü, tam etki alanı adını (FQDN) ve kaynakların IP adresini içerir.
 
-![Özel Bulut - vSphere Yönetim Ağı](media/private-cloud-vsphere-management-network.png)
+![Özel bulut-vSphere yönetim ağı](media/private-cloud-vsphere-management-network.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure'da VMware sanal makinelerini kullanma](quickstart-create-vmware-virtual-machine.md)
-* [Özel Bulutlar](cloudsimple-private-cloud.md) hakkında daha fazla bilgi edinin
+* [Özel bulutlar](cloudsimple-private-cloud.md) hakkında daha fazla bilgi edinin

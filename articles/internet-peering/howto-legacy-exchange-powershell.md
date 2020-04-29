@@ -1,7 +1,7 @@
 ---
-title: PowerShell'i kullanarak azure kaynağına bakan eski bir Exchange'i dönüştürme
+title: PowerShell kullanarak eski bir Exchange eşlemesini Azure kaynağına dönüştürme
 titleSuffix: Azure
-description: PowerShell'i kullanarak azure kaynağına bakan eski bir Exchange'i dönüştürme
+description: PowerShell kullanarak eski bir Exchange eşlemesini Azure kaynağına dönüştürme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,38 +9,38 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686786"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>PowerShell'i kullanarak azure kaynağına bakan eski bir Exchange'i dönüştürme
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>PowerShell kullanarak eski bir Exchange eşlemesini Azure kaynağına dönüştürme
 
-Bu makalede, PowerShell cmdlets kullanarak bir Azure kaynağına bakan varolan bir eski Exchange'in nasıl dönüştürülür.
+Bu makalede, PowerShell cmdlet 'lerini kullanarak mevcut bir eski Exchange eşlemesinin bir Azure kaynağına nasıl dönüştürüleceği açıklanır.
 
 İsterseniz, Azure [portalını](howto-legacy-exchange-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-* Yapılandırmaya başlamadan önce [ön koşulları](prerequisites.md) ve Exchange bakış [geçiş ini](walkthrough-exchange-all.md) gözden geçirin.
+* Yapılandırmaya başlamadan önce [önkoşulları](prerequisites.md) ve [Exchange eşleme](walkthrough-exchange-all.md) Kılavuzu ' nu gözden geçirin.
 
-### <a name="work-with-azure-powershell"></a>Azure PowerShell ile çalışın
+### <a name="work-with-azure-powershell"></a>Azure PowerShell çalışın
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Azure kaynağına bakan eski bir Exchange'i dönüştürme
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Eski bir Exchange eşlemesini Azure kaynağına dönüştürme
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure hesabınızda oturum açın ve aboneliğinizi seçin
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Dönüşüm için eski Exchange eşlemealın
-Bu örnek, Seattle'daki bakan konumuna bakan eski Exchange'in nasıl alındığını gösterir:
+### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Dönüştürme için eski Exchange eşlemesini al
+Bu örnek, Seattle eşleme konumunda eski Exchange eşlemesinin nasıl alınacağını gösterir:
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering -Kind Exchange -PeeringLocation "Seattle"
 $legacyPeering
 ```
 
-Yanıt aşağıdaki örneğe benzer:
+Yanıt aşağıdaki örneğe benzer şekilde görünür:
 ```powershell
     Kind                     : Exchange
     PeeringLocation          : Seattle
@@ -57,8 +57,8 @@ Yanıt aşağıdaki örneğe benzer:
     ConnectionState          : Active
 ```
 
-### <a name="convert-legacy-peering"></a>Eski eşlemi dönüştürme
-Bu komut, eski Exchange'i azure kaynağına dönüştürmek için kullanılabilir:
+### <a name="convert-legacy-peering"></a>Eski eşlemeyi Dönüştür
+Bu komut, eski Exchange eşlemesini bir Azure kaynağına dönüştürmek için kullanılabilir:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -69,10 +69,10 @@ $legacyPeering[0] | New-AzPeering `
 
 &nbsp;
 > [!IMPORTANT] 
-> Eski bir gözatlandırmayı bir Azure kaynağına dönüştürdüğünüzde, değişiklikler desteklenmez.
+> Eski eşlemeyi bir Azure kaynağına dönüştürdüğünüzde, değişiklikler desteklenmez.
 &nbsp;
 
-Bu örnek yanıt, uçuça sağlamanın başarıyla ne zaman tamamlandığını gösterir:
+Bu örnek yanıt, uçtan uca sağlama başarıyla tamamlandığında gösterilmektedir:
 
 ```powershell
     Name                     : SeattleExchangePeering
@@ -97,8 +97,8 @@ Aşağıdaki komutu çalıştırarak tüm parametrelerin ayrıntılı açıklama
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
-Daha fazla bilgi için [Internet'e bakan SSS'lere](faqs.md)bakın.
+Daha fazla bilgi için bkz. [Internet eşlemesi SSS](faqs.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [PowerShell'i kullanarak Exchange eşlemi oluşturma veya değiştirme](howto-exchange-powershell.md)
+* [PowerShell kullanarak bir Exchange eşlemesi oluşturma veya değiştirme](howto-exchange-powershell.md)

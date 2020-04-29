@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel'de müşteri tarafından yönetilen anahtarları ayarlama| Microsoft Dokümanlar
-description: Azure Sentinel'de müşteri tarafından yönetilen anahtarları (CMK) nasıl ayarlayabilirsiniz öğrenin.
+title: Azure Sentinel 'de müşteri tarafından yönetilen anahtarları ayarlama | Microsoft Docs
+description: Azure Sentinel 'de müşteri tarafından yönetilen anahtarları (CMK) ayarlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,120 +15,120 @@ ms.workload: na
 ms.date: 01/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461642"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel müşteri tarafından yönetilen anahtarı ayarlama
 
 
-Bu makalede, Azure Sentinel için müşteri tarafından yönetilen bir anahtarı (CMK) yapılandırmak için arka plan bilgileri ve adımlar sağlanmaktadır. CMK, azure sentinel'e kaydedilen veya gönderilen tüm verilerin, sizin oluşturduğunuz veya sahip olduğunuz bir Azure Anahtar Kasası anahtarıyla ilgili tüm depolama kaynaklarında şifrelenmesini sağlar.
+Bu makalede, Azure Sentinel için müşteri tarafından yönetilen bir anahtar (CMK) yapılandırma ile ilgili arka plan bilgileri ve adımlar sağlanmaktadır. CMK, Azure Sentinel 'e kaydedilmiş veya gönderilen tüm verilerin, sizin tarafınızdan oluşturulmuş veya size ait bir Azure Key Vault anahtarıyla ilgili tüm depolama kaynaklarında şifrelenmesini sağlar.
 
 > [!NOTE]
-> -   Azure Sentinel CMK özelliği yalnızca **yeni** olan müşterilere sağlanır ve bu özelliğe erişim Azure özellik kaydı tarafından denetlenir.İletişim azuresentinelCMK@microsoft.comkurarak erişim isteğinde bulunabilirsiniz ve kapasite kullanılabilir olduğundan bekleyen istekler onaylanacaktır.
-> -   Azure Sentinel CMK özelliği yalnızca Doğu ABD, Batı ABD 2 ve Güney-Orta ABD bölgelerinde kullanılabilir.
-> -   CMK özelliği yalnızca günde 1 TB veya daha fazla gönderen müşteriler tarafından kullanılabilir. Azure aboneliğinizde CMK sağlamak için Microsoft'a başvurduğunuzda ek fiyatlandırma hakkında bilgi alırsınız. [Log Analytics](../azure-monitor/platform/customer-managed-keys.md#disclaimers) şarjı hakkında daha fazla bilgi edinin.
+> -   Azure Sentinel CMK özelliği yalnızca **Yeni** olan ve bu özelliğe erişim sağlayan müşteriler için Azure Özellik kaydı tarafından denetlenmektedir.İletişim azuresentinelCMK@microsoft.comkurarak erişim isteğinde bulunabilir ve kapasite kullanılabilir olduğunda bekleyen istekler onaylanır.
+> -   Azure Sentinel CMK özelliği yalnızca Doğu ABD, Batı ABD 2 ve Güney Orta ABD bölgelerinde kullanılabilir.
+> -   CMK özelliği yalnızca, günde 1 GB veya daha fazla TB gönderen müşteriler tarafından kullanılabilir. Azure aboneliğinizde CMK sağlamak üzere Microsoft 'a uyguladığınızda, ek fiyatlandırma hakkında bilgi alacaksınız. [Log Analytics](../azure-monitor/platform/customer-managed-keys.md#disclaimers) dolduruluyor hakkında daha fazla bilgi edinin.
 
-## <a name="how-cmk-works"></a>CMK nasıl çalışır? 
+## <a name="how-cmk-works"></a>CMK nasıl kullanılır? 
 
-Azure Sentinel çözümü, günlük koleksiyonu ve özellikleri için birkaç depolama kaynağı kullanır, bunlar arasında Günlük Analizi ve diğer depolama kaynakları yer alır. Azure Sentinel CMK yapılandırmasının bir parçası olarak, ilgili depolama kaynaklarında CMK ayarlarını da yapılandırmanız gerekir. Log Analytics dışındaki depolama kaynaklarına kaydedilen veriler de şifrelenir.
+Azure Sentinel çözümü, günlük toplama ve özellikler için çeşitli depolama kaynakları kullanır, bunlar Log Analytics ve diğer depolama kaynaklarını içerir. Azure Sentinel CMK yapılandırmasının bir parçası olarak, ilgili depolama kaynaklarında CMK ayarlarını da yapılandırmanız gerekir. Log Analytics dışındaki depolama kaynaklarında kaydedilen veriler de şifrelenir.
 
 > [!NOTE]
-> Azure Sentinel'de CMK'yı etkinleştiriseniz, CMK'yı desteklemeyen herhangi bir Genel Önizleme özelliği etkinleştirilmez.
+> Azure Sentinel 'de CMK 'yi etkinleştirirseniz CMK 'yı desteklemeyen tüm genel Önizleme özellikleri etkinleştirilmeyecektir.
 
-## <a name="enable-cmk"></a>CMK'yı etkinleştir 
+## <a name="enable-cmk"></a>CMK 'yi etkinleştir 
 
-CMK'yı sağlamak için aşağıdaki adımları izleyin: 
+CMK sağlamak için şu adımları izleyin: 
 
-1.  Azure Anahtar Kasası ve depolama anahtarı oluşturun.
+1.  Azure Key Vault oluşturun ve anahtarı depolarsınız.
 
-2.  Log Analytics çalışma alanınızda CMK'yı etkinleştirin.
+2.  Log Analytics çalışma alanınızda CMK 'yi etkinleştirin.
 
 3.  Cosmos DB için kaydolun.
 
-4.  Azure Anahtar Kasası örneğinize bir erişim ilkesi ekleyin.
+4.  Azure Key Vault örneğinize bir erişim ilkesi ekleyin.
 
-5.  Azure Sentinel'de CMK'yı etkinleştirin.
+5.  Azure Sentinel 'de CMK 'yi etkinleştirin.
 
-6.  Azure Sentinel'i etkinleştirin.
+6.  Azure Sentinel 'i etkinleştirin.
 
-### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>ADIM 1: Azure Anahtar Kasası oluşturma ve anahtar depolama
+### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>1. Adım: Azure Key Vault oluşturma ve anahtar depolama
 
-1.  [Azure Key Vault kaynağını oluşturun,](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal?view=azs-1910)ardından veri şifrelemeiçin kullanılacak bir anahtar oluşturun veya içe aktarın.
+1.  [Azure Key Vault kaynak oluşturun](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal?view=azs-1910), ardından veri şifrelemesi için kullanılacak bir anahtar oluşturun veya içeri aktarın.
     > [!NOTE]
-    >  Azure Anahtar Kasası, anahtarınızı ve erişimi korumak için kurtarılabilir olarak yapılandırılmalıdır.
+    >  Azure Key Vault anahtarınızı ve erişimini korumak için kurtarılabilir olarak yapılandırılmalıdır.
 
-1.  [Kurtarma seçeneklerini açın:](../key-vault/general/best-practices.md#turn-on-recovery-options)
+1.  [Kurtarma seçeneklerini aç:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   Yumuşak [Silme'nin](../key-vault/general/overview-soft-delete.md) açık olduğundan emin olun.
+    -   [Geçici silmenin](../key-vault/general/overview-soft-delete.md) açık olduğundan emin olun.
 
-    -   Yumuşak silme işleminden sonra bile gizli/kasanın zorla silinmesine karşı korumak için [Temizleme korumasını](../key-vault/general/overview-soft-delete.md#purge-protection) açın.
+    -   Geçici silme işleminden sonra bile gizli dizi/kasaların zorla silinmesine karşı koruma sağlamak için [Temizleme korumasını](../key-vault/general/overview-soft-delete.md#purge-protection) açın.
 
-### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>ADIM 2: Log Analytics çalışma alanınızda CMK'yı etkinleştirin
+### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>2. Adım: Log Analytics çalışma alanınızda CMK 'yi etkinleştirme
 
-Aşağıdaki adımlarda Azure Sentinel çalışma alanı olarak kullanılacak bir CMK çalışma alanı oluşturmak için [Azure Monitor müşteri tarafından yönetilen anahtar yapılandırmasındaki](../azure-monitor/platform/customer-managed-keys.md) yönergeleri izleyin.
+Aşağıdaki adımlarda Azure Sentinel çalışma alanı olarak kullanılacak bir CMK çalışma alanı oluşturmak için [Azure 'da müşteri tarafından yönetilen anahtar yapılandırma](../azure-monitor/platform/customer-managed-keys.md) yönergelerini izleyin.
 
-### <a name="step-3-register-for-cosmos-db"></a>ADIM 3: Cosmos DB'ye kaydolun
+### <a name="step-3-register-for-cosmos-db"></a>3. Adım: Cosmos DB için kaydolun
 
-Azure Sentinel, ek depolama kaynağı olarak Cosmos DB ile çalışır. Cosmos DB'ye kaydolduğunuzdan emin olun.
+Azure Sentinel, Cosmos DB ek bir depolama kaynağı olarak kullanılır. Cosmos DB kaydolduğunuzdan emin olun.
 
-Azure aboneliğiniz için [Azure Cosmos DB](../cosmos-db/how-to-setup-cmk.md#register-resource-provider) kaynak sağlayıcısını kaydetmek için Cosmos DB yönergesine uyun.
+Azure aboneliğinizin Azure Cosmos DB kaynak sağlayıcısını [kaydetmek](../cosmos-db/how-to-setup-cmk.md#register-resource-provider) için Cosmos DB yönergesini izleyin.
 
-### <a name="step-4-add-an-access-policy-to-your-azure-key-vault-instance"></a>ADIM 4: Azure Anahtar Kasası örneğinize bir erişim ilkesi ekleme
+### <a name="step-4-add-an-access-policy-to-your-azure-key-vault-instance"></a>4. Adım: Azure Key Vault örneğine bir erişim ilkesi ekleme
 
-Cosmos DB'den Azure Key Vault örneğinize erişim eklediğinizden emin olun. Azure Cosmos DB sorumlusuyla [Azure Key Vault örneğinize bir erişim ilkesi eklemek için](../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance) Cosmos DB yönergesini izleyin.
+Cosmos DB Azure Key Vault örneğinize erişim eklediğinizden emin olun. Azure Cosmos DB sorumlusu ile [Azure Key Vault örneğinize bir erişim ilkesi eklemek](../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance) için Cosmos DB yönergesini izleyin.
 
-### <a name="step-5-enable-cmk-in-azure-sentinel"></a>ADIM 5: Azure Sentinel'de CMK'yı etkinleştirme
+### <a name="step-5-enable-cmk-in-azure-sentinel"></a>5. Adım: Azure Sentinel 'de CMK 'yi etkinleştirme
 
-Azure Sentinel CMK özelliği, yeni müşterilere yalnızca doğrudan Azure ürün grubundan erişim aldıktan sonra sağlanır. Çözümünüzde CMK'yı etkinleştirmek için Azure Sentinel ekibinden onay almak için Microsoft'taki kişilerinizi kullanın.
+Azure Sentinel CMK özelliği, yalnızca doğrudan Azure ürün grubundan erişim alındıktan sonra yeni müşterilere sağlanır. Çözümünüzde CMK 'yi etkinleştirmek için Azure Sentinel ekibinin onayını almak üzere Microsoft 'taki kişilerinizi kullanın.
 
-Onay aldıktan sonra CMK özelliğini etkinleştirmek için aşağıdaki bilgileri sağlamanız istenir.
+Onay aldıktan sonra CMK özelliğini etkinleştirmek için aşağıdaki bilgileri girmeniz istenir.
 
--  CMK'yı etkinleştirmek istediğiniz çalışma alanı kimliği
+-  CMK 'yi etkinleştirmek istediğiniz çalışma alanı KIMLIĞI
 
--  Anahtar Vault URL' si: Anahtarın "Anahtar Tanımlayıcısını" son ileri eğretme ye kadar kopyalayın:  
+-  Key Vault URL 'SI: anahtarın "anahtar tanımlayıcısını" en son eğik çizgiye kopyalayın:  
     
 
-    ![anahtar tanımlayıcısı](./media/customer-managed-keys/key-identifier.png)
+    ![anahtar tanımlayıcı](./media/customer-managed-keys/key-identifier.png)
 
-    Azure Sentinel ekibi, sağladığınız çalışma alanı için Azure Sentinel CMK özelliğini etkinleştirecektir.
+    Azure Sentinel ekibi, sizin belirttiğiniz çalışma alanınız için Azure Sentinel CMK özelliğini etkinleştirir.
 
--  Azure Sentinel ürün ekibinden bu özelliği kullanmanız için onaylandığınıdoğrulama. Devam etmeden önce buna sahip olmalısınız.
+-  Bu özelliği kullanmayı onaylanan Azure Sentinel ürün ekibinin doğrulanması. Devam etmeden önce bu yapmanız gerekir.
 
-### <a name="step-6-enable-azure-sentinel"></a>ADIM 6: Azure Sentinel'i etkinleştirme
-
-
-Azure portalına gidin ve CMK'yı ayarladığınız çalışma alanında Azure Sentinel'i etkinleştirin. Daha fazla bilgi için Azure [Sentinel Onboarding'e](quickstart-onboard.md)bakın.
-
-## <a name="key-encryption-key-revocation-or-deletion"></a>Anahtar Şifreleme Anahtarı iptali veya silme
+### <a name="step-6-enable-azure-sentinel"></a>6. Adım: Azure Sentinel 'i etkinleştirme
 
 
-Bir kullanıcının anahtar şifreleme anahtarını silerek veya Azure Sentinel'in erişimini kaldırarak iptal etme durumunda, Azure Sentinel değişikliği onurlandıracak ve veriler artık kullanılamıyormuş gibi çalışacaktır. Bu noktada, veri alma, kalıcı yapılandırma değişiklikleri ve olay oluşturma gibi kalıcı depolama kaynaklarını kullanan herhangi bir işlem engellenir. Daha önce depolanan veriler silinmez, ancak erişilemez kalır. Erişilemeyen veriler veri saklama ilkesi tarafından yönetilir ve bu ilke uyarınca tasfiye edilecektir.
+Azure portal gidin ve CMK 'yi ayarladığınız çalışma alanında Azure Sentinel 'i etkinleştirin. Daha fazla bilgi için bkz. [Azure Sentinel ekleme](quickstart-onboard.md).
 
-Şifreleme anahtarı iptal edildikten veya silindikten sonra mümkün olan tek işlem hesap silme işlemidir.
+## <a name="key-encryption-key-revocation-or-deletion"></a>Anahtar şifreleme anahtarı iptali veya silme
 
-İptal edildikten sonra erişim geri yüklenirse, Azure Sentinel verilere erişimi bir saat içinde geri yüklenir.
 
-Azure Monitor'da bunun nasıl çalıştığı hakkında daha fazla şey öğrenmek için Azure [Monitor CMK iptaline](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-revocation)bakın.
+Bir kullanıcının, anahtar şifreleme anahtarını silerek veya Azure Sentinel 'e erişimi bir saat içinde kaldırarak, Azure Sentinel değişikliği kabul eder ve veriler artık kullanılamıyor gibi davranır. Bu noktada, gerçekleştirilen ve veri alımı, kalıcı yapılandırma değişiklikleri ve olay oluşturma gibi kalıcı depolama kaynakları kullanan tüm işlemler engellenir. Daha önce depolanan veriler silinmez, ancak erişilemez kalacak. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bu ilkeye uygun olarak temizlenir.
+
+Şifreleme anahtarı iptal edildikten veya silindikten sonra mümkün olan tek işlem, hesap silme işlemidir.
+
+Erişim İptalden sonra geri yüklenirse, Azure Sentinel bir saat içinde verilere erişimi geri yükler.
+
+Bunun Azure Izleyici 'de nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure izleyici CMK iptali](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-revocation).
 
 ## <a name="key-encryption-key-rotation"></a>Anahtar şifreleme anahtarı döndürme
 
 
-Azure Sentinel ve Log Analytics anahtar döndürmeyi destekler. Bir kullanıcı Key Vault'ta anahtar döndürme gerçekleştirdiğinde, Azure Sentinel yeni anahtarı bir saat içinde destekler.
+Azure Sentinel ve Log Analytics anahtar döndürmeyi destekler. Bir Kullanıcı Key Vault içinde anahtar döndürme gerçekleştirdiğinde, Azure Sentinel bir saat içinde yeni anahtarı destekler.
 
-Anahtar Atlama'da, anahtarın yeni bir sürümünü oluşturarak anahtar döndürme gerçekleştirebilirsiniz:
+Key Vault, anahtarın yeni bir sürümünü oluşturarak anahtar döndürme gerçekleştirebilirsiniz:
 
 ![anahtar döndürme](./media/customer-managed-keys/key-rotation.png)
 
-Anahtarın önceki sürümünü 24 saat sonra devre dışı kullanabilirsiniz veya Azure Key Vault denetim günlükleri artık önceki sürümü kullanan herhangi bir etkinlik göstermedikten sonra.
+Anahtarın önceki sürümünü 24 saat sonra devre dışı bırakabilir veya Azure Key Vault denetim günlükleri artık önceki sürümü kullanan herhangi bir etkinliği göstermez.
 
-Azure Sentinel ve Log Analytics'te aynı anahtarı kullanıyorsanız, anahtar döndürme gerçekleştirmeniz gerekirse, Log Analytics'teki küme kaynağını yeni Azure Key Vault anahtar sürümüyle açıkça güncelleştirmeniz gerekir. Daha fazla bilgi için Azure [Monitor CMK döndürme'ye](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation)bakın.
+Aynı anahtarı Azure Sentinel 'de ve Log Analytics ' de kullanırsanız, anahtar döndürme gerçekleştirmek için Log Analytics küme kaynağını yeni Azure Key Vault anahtarı sürümüyle açıkça güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure izleyici CMK dönüşü](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure Sentinel'de müşteri tarafından yönetilen bir anahtarı nasıl ayarlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
+Bu belgede, Azure Sentinel 'de müşteri tarafından yönetilen bir anahtarın nasıl ayarlanacağını öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
 

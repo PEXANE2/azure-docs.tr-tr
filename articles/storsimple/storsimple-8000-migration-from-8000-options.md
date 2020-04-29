@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi cihazlardan veri geçiş seçenekleri
-description: StorSimple 8000 serisinden veri geçirme seçeneklerine genel bir bakış sağlar.
+title: StorSimple 8000 serisi cihazlarından veri geçiş seçenekleri
+description: StorSimple 8000 serisinden veri geçirme seçeneklerine genel bakış sağlar.
 services: storsimple
 author: priestlg
 ms.service: storsimple
@@ -8,38 +8,38 @@ ms.topic: article
 ms.date: 03/25/2020
 ms.author: v-grpr
 ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767045"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>StorSimple 8000 serisinden veri geçirme seçenekleri
 
 > [!IMPORTANT]
-> 31 Aralık 2022'de StorSimple 8000 serisi destek sonu (EOS) durumuna ulaşacak. StorSimple 8000 serisi müşterilerinin belgede açıklanan alternatiflerden birine geçiş lerini öneririz.
+> 31 Aralık 2022 ' de, StorSimple 8000 serisi destek (EOS) durumunun sonuna ulaşacaktır. StorSimple 8000 serisi müşterilerinin belgede açıklanan alternatifden birine geçiş yapmanızı öneririz.
 
-StorSimple 8000 serisi Aralık 2022'de [Desteğin sonuna](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) ulaşıyor. StorSimple 8000 serisini çalıştıran müşterilerin diğer Azure birinci taraf karma hizmetlerine yükseltme seçeneği vardır. Bu makalede, verileri geçirmek için kullanılabilir Azure karma seçenekleri açıklanmaktadır.
+StorSimple 8000 serisi, Aralık 2022 ' de [destek sonuna](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) ulaşıyor. StorSimple 8000 serisini çalıştıran müşterilerin diğer Azure birinci taraf karma hizmetlerine yükseltme seçeneği vardır. Bu makalede, verileri geçirmek için kullanılabilen Azure hibrit seçenekleri açıklanmaktadır.
 
 ## <a name="migration-options"></a>Geçiş seçenekleri
 
-StorSimple 8000 serisini kullanan müşterilerin Azure veya üçüncü taraf seçenekleri var.
+StorSimple 8000 serisini kullanan müşterilerin Azure veya üçüncü taraf seçenekleri vardır.
 
 ### <a name="azure-options"></a>Azure seçenekleri
 
 #### <a name="migrate-to-azure-file-sync"></a>Azure Dosya Eşitleme’ye Geçiş
 
-Bu yepyeni geçiş seçeneği, müşterilerin kuruluşlarının dosya paylaşımlarını Azure Dosyalarında depolamalarına olanak tanır. Bu dosya paylaşımları daha sonra Azure Dosya Eşitlemi (AFS) kullanılarak şirket içi erişim için merkezileştirilir. AFS bir Windows Server ana bilgisayarda dağıtılabilir. Gerçek veri geçişi daha sonra ana bilgisayar kopyası olarak veya geçiş aracı kullanılarak gerçekleştirilir.
+Bu yepyeni geçiş seçeneği, müşterilerin kuruluşunuzun dosya paylaşımlarını Azure dosyalarında depolamasına olanak sağlar. Bu dosya paylaşımları daha sonra Azure Dosya Eşitleme (AFS) kullanarak şirket içi erişim için merkezi hale getirilmiş. AFS, bir Windows Server konağında dağıtılabilir. Gerçek veri geçişi daha sonra bir konak kopyası olarak veya geçiş aracı kullanılarak gerçekleştirilir.
 
-Verileri Azure Dosya Eşitleme'ye nasıl geçirilir hakkında daha fazla bilgi [için, StorSimple 8100 ve 8600 geçişini Azure Dosya Eşitle'ye](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)gidin.
+Azure Dosya Eşitleme verileri geçirme hakkında daha fazla bilgi için, [Azure dosya eşitleme Için StorSimple 8100 ve 8600 geçişine](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)gidin.
 
 ### <a name="third-party-options"></a>Üçüncü taraf seçenekleri
 
-#### <a name="migrate-to-panzura-freedom-nas"></a>Panzura Özgürlük NAS'a göç edin
+#### <a name="migrate-to-panzura-freedom-nas"></a>Panzura özgürlük 'e geçiş
 
-StorSimple 5000-7000 serisi ve StorSimple 8000 serisi müşteriler verilerini Azure'da tutmak için Panzura Freedom NAS'a geçiş yapmayı seçebilir. Panzura Freedom çözümü, veri merkezlerini, ofisleri, genel ve özel bulutları kapsayan bir NAS çözümü sağlar. Çözüm, NFS, SMB ve mobil istemciler için yerel, karma ve bulut içi veri iş akışlarısağlar.
+StorSimple 5000-7000 Serisi ve StorSimple 8000 serisi müşteriler, verilerini Azure 'da tutmak için Panzura özgürlüğü 'e geçiş yapmak için seçim yapabilir. Panzura özgürlük çözümü, veri merkezlerini, ofislerini, ortak ve özel bulutları kapsayan bir NAS çözümü sağlar. Bu çözüm, NFS, SMB ve mobil istemciler için yerel, karma ve bulut içi veri iş akışlarını mümkün bir şekilde sunar.
 
-Bu göç Panzura tarafından desteklenir ve müşteriler [Panzura web sitesinden](https://panzura.com/migrate-storsimple-panzura/)göç desteği isteyerek başlatabilirsiniz.
+Bu geçiş, Panzura tarafından desteklenir ve müşteriler [panzura Web sitesinden](https://panzura.com/migrate-storsimple-panzura/)geçiş desteği isteyerek çalışmaya başlayabilir.
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity
@@ -61,48 +61,48 @@ Talon makes it easy for StorSimple 5000-7000 customers to continue to leverage t
 Learn more about how to evolve to a cloud-consolidated enterprise at https://www.talonstorage.com/alliances/microsoft-storsimple.
 -->
 
-## <a name="migration---frequently-asked-questions"></a>Geçiş - Sık sorulan sorular
+## <a name="migration---frequently-asked-questions"></a>Geçiş-sık sorulan sorular
 
-### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>S. StorSimple 8000 serisi cihazlar hizmet sonu ne zaman ulaşır?
+### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>S. StorSimple 8000 Series cihazları hizmet sonuna ulaştığında ne zaman?
 
-A. StorSimple 8000 serisi Aralık 2022'de [desteğin sonuna](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) ulaştı. Desteğin sona ermesi, Microsoft'un Aralık 2022'den sonra bu aygıtların hem donanımı hem de yazılımı için artık destek sağlayamadığı anlamına gelir. Aygıtlarınızdan verileri geçirmek için bir plan oluşturmaya başlamanızı öneririz.
+A. StorSimple 8000 serisi [destek,](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) Aralık 2022 ' de sona amaın. Destek sonu, Microsoft 'un bu cihazların hem donanım hem de yazılım için Aralık 2022 ' den sonra destek sağlayamayacağı anlamına gelir. Şimdi cihazlarınızdan verileri geçirmek için bir planı formülle açmanızı öneririz.
 
-### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>S. Azure'da depolamış olduğum verilere ne olur?  
+### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>S. Azure 'da depoladığınız verilere ne olur?  
 
-A. Verileri daha yeni bir hizmete aktardıktan sonra Azure'da kullanmaya devam edebilirsiniz.
+A. Verileri daha yeni bir hizmete geçirdikten sonra Azure 'da kullanmaya devam edebilirsiniz.
 
-### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>S. StorSimple aygıtımda yerel olarak depolamış olduğum verilere ne olur?
+### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>S. StorSimple cihazım üzerinde yerel olarak depoladığınız verilere ne olur?
 
-A. Yerel aygıttaki veriler, geçiş belgelerinde açıklandığı şekilde yeni hizmete kopyalanabilir.
+A. Yerel cihazdaki veriler, geçiş belgelerinde açıklandığı gibi yeni hizmete kopyalanabilir.
 
-### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-8000-series-appliance"></a>S. StorSimple 8000 serisi cihazımı saklamak istersem ne olur?
+### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-8000-series-appliance"></a>S. StorSimple 8000 serisi gerecimi korumak istersem ne olur?
 
-A. Hizmetler çalışmaya devam etse de, Microsoft artık donanım ve yazılım desteği sağlayamaz. Geçiş, iş sürekliliği için şiddetle tavsiye edilir.
+A. Hizmetler çalışmaya devam edebilirken, Microsoft artık donanım ve yazılım desteği sağlayamayacaktır. Geçiş, iş sürekliliği için önerilir.
 
-### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-8000-series-devices"></a>S. StorSimple 8000 serisi cihazlardan veri geçirmek için hangi seçenekler kullanılabilir?
+### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-8000-series-devices"></a>S. StorSimple 8000 serisi cihazlarından verileri geçirmek için hangi seçenekler kullanılabilir?
 
-A. Senaryolarına bağlı olarak, StorSimple 8000 serisi kullanıcıları aşağıdaki geçiş seçeneklerine sahiptir:
+A. Bu senaryoya bağlı olarak, StorSimple 8000 serisi kullanıcıları aşağıdaki geçiş seçeneklerine sahiptir:
 
-* **Azure Dosya Eşitleme:** Azure yerel biçimine geçmek istediğinizde bu seçeneği kullanın. Dosya paylaşımlarının merkezi yönetimi için Azure Dosya Eşitlemeyi'ni kullanabilirsiniz.
+* **Azure dosya eşitleme geçir**: Azure yerel biçimine geçmek istediğinizde bu seçeneği kullanın. Dosya paylaşımlarının merkezi yönetimi için Azure Dosya Eşitleme kullanabilirsiniz.
 
-* **Diğer seçenekler**: Burada listelenmeyen geçiş seçeneklerini tartışmak için Microsoft Destek'e başvurabilirsiniz.
+* **Diğer seçenekler**: burada listelenmeyen geçiş seçeneklerini tartışmak için Microsoft desteği ile iletişim sağlayabilirsiniz.
 
-### <a name="q-is-migration-to-other-storage-solutions-supported"></a>S. Diğer depolama çözümlerine geçiş desteklenir mi?
+### <a name="q-is-migration-to-other-storage-solutions-supported"></a>S. Diğer depolama çözümlerine geçiş destekleniyor mu?
 
-A. Evet. Verilerin ana bilgisayar kopyasını kullanarak diğer depolama çözümlerine geçiş desteklenir.
+A. Evet. Verilerin ana bilgisayar kopyası kullanılarak diğer depolama çözümlerine geçiş desteklenir.
 
-### <a name="q-is-migration-supported-by-microsoft"></a>S. Geçiş Microsoft tarafından desteklenir mi?
+### <a name="q-is-migration-supported-by-microsoft"></a>S. Geçiş Microsoft tarafından destekleniyor mu?
 
-A. 8000 serisinden geçiş tam olarak desteklenen bir işlemdir. Aslında, Microsoft geçiş başlamadan önce Destek'e ulaşmanızı önerir. Geçiş şu anda yardımcı bir işlemdir. StorSimple 8000 serisi cihazınızdan veri aktarmak istiyorsanız, [StorSimple desteğine başvurun.](mailto:storsimp@microsoft.com)
+A. 8000 serisinden geçiş, tam olarak desteklenen bir işlemdir. Aslında, Microsoft, Geçişe başlamadan önce destek 'e ulaşmasını önerir. Geçiş Şu anda yardımlı bir işlemdir. StorSimple 8000 serisi cihazınızdan veri geçirmeyi planlıyorsanız, [StorSimple desteğine başvurun](mailto:storsimp@microsoft.com).
 
-### <a name="q-what-is-the-pricing-model-for-migration-to-azure-file-sync"></a>S. Azure Dosya Eşitlemi için fiyatlandırma modeli nedir?
+### <a name="q-what-is-the-pricing-model-for-migration-to-azure-file-sync"></a>S. Azure Dosya Eşitleme geçişe yönelik fiyatlandırma modeli nedir?
 
-A. Azure Dosya Eşitlemeyi kullanırken, hizmetin abonelik ücretleri geçerli olabilir. Müşteriler ayrıca devam eden depolama maliyetlerini de ödemek zorunda kalacaktır. Bir tahmin için [AFS fiyatlandırmasına]( https://azure.microsoft.com/pricing/details/storage/files/) bakın.
+A. Azure Dosya Eşitleme kullanırken hizmet için abonelik ücretleri uygulanabilir. Müşterilerin, devam eden depolama maliyetlerini de ödeyecektir. Tahmin için [AFS fiyatlandırması]( https://azure.microsoft.com/pricing/details/storage/files/) bölümüne bakın.
 
-### <a name="q-how-long-does-it-take-to-complete-a-migration"></a>S. Bir geçişi tamamlamak ne kadar sürer?
+### <a name="q-how-long-does-it-take-to-complete-a-migration"></a>S. Geçişin tamamlanması ne kadar sürer?
 
-A. Verileri geçirme süresi, veri miktarına ve seçilen yükseltme seçeneğine bağlıdır.
+A. Verilerin geçirilmesi için geçen süre, veri miktarına ve yükseltme seçeneğinin seçili olmasına bağlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [StorSimple 8000 serisindeki verileri Azure Dosya Eşitleme'ye geçirme](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)
+* [StorSimple 8000 serilerinden verileri Azure Dosya Eşitleme 'e geçirme](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)

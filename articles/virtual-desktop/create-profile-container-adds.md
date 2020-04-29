@@ -1,6 +1,6 @@
 ---
-title: FSLogix profil kapsayıcısı oluşturma Azure Dosyaları Etkin Dizin Etki Alanı Hizmetleri - Azure
-description: Bu makalede, Azure Dosyaları ve Azure Etkin Dizin Etki Alanı Hizmetleri içeren bir FSLogix profil kapsayıcısı nasıl oluşturulacak açıklanmaktadır.
+title: FSLogix profili kapsayıcısı Azure dosyaları oluşturma Active Directory Domain Services-Azure
+description: Bu makalede, Azure dosyaları ve Azure Active Directory Domain Services ile FSLogix profil kapsayıcısının nasıl oluşturulacağı açıklanır.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,93 +9,93 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81265778"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Azure Dosyaları ile Bir FSLogix profil kapsayıcısı oluşturma
+# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Azure dosyaları ile FSLogix profil kapsayıcısı oluşturma
 
-Bu makalede, Azure Dosyaları ve Azure Etkin Dizin Etki Alanı Hizmetleri (AD DS) içeren bir FSLogix profil kapsayıcısı nasıl oluşturulacağı gösterilmektedir.
+Bu makalede, Azure dosyaları ve Azure Active Directory Domain Services (AD DS) ile bir FSLogix profil kapsayıcısı oluşturma gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, zaten bir Azure AD DS örneği ayarladınız varsayar. Henüz bir tane yoksa, önce temel [yönetilen etki alanı oluştur'daki](../active-directory-domain-services/tutorial-create-instance.md) yönergeleri izleyin, ardından buraya dönün.
+Bu makalede, zaten bir Azure AD DS örneği ayarlamış olduğunuz varsayılmaktadır. Henüz bir tane yoksa, önce [temel yönetilen etki alanı oluşturma](../active-directory-domain-services/tutorial-create-instance.md) bölümündeki yönergeleri izleyin, sonra buraya geri dönün.
 
 ## <a name="add-azure-ad-ds-admins"></a>Azure AD DS yöneticileri ekleme
 
-Ek yöneticiler eklemek için yeni bir kullanıcı oluşturun ve onlara izin ler verirsiniz.
+Ek yöneticiler eklemek için yeni bir kullanıcı oluşturur ve bunlara izinler verirsiniz.
 
 Yönetici eklemek için:
 
-1. Kenar çubuğundan **Azure Etkin Dizini'ni** seçin, ardından Tüm **kullanıcılar'ı**seçin ve ardından Yeni **kullanıcıyı**seçin.
+1. Kenar çubuğundan **Azure Active Directory** seçin, ardından **tüm kullanıcılar**' ı seçin ve ardından **Yeni Kullanıcı**' yı seçin.
 
-2.  Alanlarına kullanıcı ayrıntılarını girin.
+2.  Alanlara Kullanıcı ayrıntılarını girin.
 
-3. Ekranın sol tarafındaki Azure Etkin Dizin bölmesinde **Gruplar'ı**seçin.
+3. Ekranın sol tarafındaki Azure Active Directory bölmesinde, **gruplar**' ı seçin.
 
-4. **AAD DC Yöneticileri** grubunu seçin.
+4. **AAD DC Yöneticiler** grubunu seçin.
 
-5. Sol bölmede **Üyeler'i**seçin ve ardından ana bölmeye **üye ekle'yi** seçin. Bu, Azure AD'de kullanılabilen tüm kullanıcıların listesini gösterir. Oluşturduğunuz kullanıcı profilinin adını seçin.
+5. Sol bölmede **Üyeler**' i ve ardından ana bölmedeki **üye Ekle** ' yi seçin. Bu, Azure AD 'de mevcut olan tüm kullanıcıların listesini gösterir. Yeni oluşturduğunuz Kullanıcı profilinin adını seçin.
 
-## <a name="set-up-an-azure-storage-account"></a>Azure Depolama hesabı ayarlama
+## <a name="set-up-an-azure-storage-account"></a>Azure depolama hesabı ayarlama
 
-Şimdi Sunucu İleti Bloğu (SMB) üzerinden Azure AD DS kimlik doğrulamasını etkinleştirme zamanı. 
+Artık, sunucu Ileti bloğu (SMB) üzerinden Azure AD DS kimlik doğrulamasını etkinleştirme zamanı. 
 
-Kimlik doğrulamayı etkinleştirmek için:
+Kimlik doğrulamasını etkinleştirmek için:
 
-1. Azure [Depolama hesabı oluştur'daki](../storage/common/storage-account-create.md)yönergeleri izleyerek genel amaçlı bir v2 Azure Depolama hesabı ayarlayın ve dağıtın.
+1. Henüz yapmadıysanız, [Azure Storage hesabı oluşturma](../storage/common/storage-account-create.md)' daki yönergeleri izleyerek genel amaçlı v2 Azure Storage hesabı ayarlayıp dağıtın.
 
-2. Hesabınızı ayarlamayı bitirdikten sonra **kaynağa git'i**seçin.
+2. Hesabınızı ayarlamayı tamamladıktan sonra **Kaynağa Git**' i seçin.
 
-3. Ekranın sol tarafındaki bölmeden **Yapılandırma'yı** seçin ve ardından ana bölmedeki **Azure Dosyaları için Azure Etkin Dizin kimlik doğrulamasını** etkinleştirin. İşiniz bittiğinde **Kaydet**'i seçin.
+3. Ekranın sol tarafındaki bölmeden **yapılandırma** ' yı seçin, sonra ana bölmedeki **Azure dosyaları için Azure Active Directory kimlik doğrulamasını** etkinleştirin. İşiniz bittiğinde **Kaydet**'i seçin.
 
-4. Ekranın sol tarafındaki bölmede **Genel Bakış'ı** seçin ve ardından ana bölmedeki **Dosyalar'ı** seçin.
+4. Ekranın sol tarafındaki bölmede **genel bakış** ' ı seçin, sonra ana bölmedeki **dosyalar** ' ı seçin.
 
-5. **Dosya paylaşımı'nı** seçin ve ekranın sağ tarafında görünen alanlara **Ad** ve **Kota** girin.
+5. **Dosya paylaşma** ' yı seçin ve ekranın sağ tarafında görüntülenen alanlara **adı** ve **kotayı** girin.
 
-## <a name="assign-access-permissions-to-an-identity"></a>Bir kimliğe erişim izinleri atama
+## <a name="assign-access-permissions-to-an-identity"></a>Kimliğe erişim izinleri atama
 
-Diğer kullanıcıların dosya paylaşımınıza erişmek için erişim izinlerine ihtiyacı vardır. Bunu yapmak için, her kullanıcıya uygun erişim izinlerine sahip bir rol atamanız gerekir.
+Diğer kullanıcılara, dosya paylaşımınıza erişmek için erişim izinleri gerekecektir. Bunu yapmak için, her kullanıcıya uygun erişim izinlerine sahip bir rol atamanız gerekir.
 
 Kullanıcılara erişim izinleri atamak için:
 
-1. Azure portalından, Bir Azure Depolama [hesabı oluşturma'da](#set-up-an-azure-storage-account)oluşturduğunuz dosya paylaşımını açın.
+1. Azure portal, [Azure depolama hesabı ayarlama](#set-up-an-azure-storage-account)bölümünde oluşturduğunuz dosya paylaşımından açın.
 
-2. **Erişim Denetimi 'ni (IAM)** seçin.
+2. **Access Control (IAM)** seçeneğini belirleyin.
 
-3. **Rol ataması ekle'yi**seçin.
+3. **Rol ataması Ekle**' yi seçin.
 
-4. Rol **atamaekle** sekmesinde, rol listesinden uygun yerleşik rolü seçin. Uygun izinleri almak için hesap için en azından **Depolama Dosyası Veri SMB Share Contributor'ı** seçmeniz gerekir.
+4. **Rol ataması Ekle** sekmesinde rol listesinden uygun yerleşik rolü seçin. Uygun izinleri almak için hesap için en az **depolama dosya VERI SMB paylaşımında katkıda bulunan** ' ı seçmeniz gerekir.
 
-5. **Access'e erişim atamak**için **Azure Active Directory kullanıcısını, grubunu veya hizmet yöneticisini**seçin.
+5. **Erişim atama**için **Kullanıcı, Grup veya hizmet sorumlusu Azure Active Directory**seçin.
 
-6. Hedef Azure Etkin Dizin kimliği için bir ad veya e-posta adresi seçin.
+6. Hedef Azure Active Directory kimliği için bir ad veya e-posta adresi seçin.
 
-7. **Kaydet'i**seçin.
+7. **Kaydet**’i seçin.
 
-## <a name="get-the-storage-account-access-key"></a>Depolama Hesabı erişim anahtarını alın
+## <a name="get-the-storage-account-access-key"></a>Depolama hesabı erişim anahtarını al
 
-Ardından, Depolama Hesabınız için erişim anahtarını almanız gerekir.
+Daha sonra, depolama hesabınızın erişim anahtarını almanız gerekir.
 
-Depolama Hesabı erişim anahtarını almak için:
+Depolama hesabı erişim anahtarını almak için:
 
-1. Azure portalı kenar çubuğundan **Depolama hesapları'nı**seçin.
+1. Azure portal kenar çubuğundan **depolama hesapları**' nı seçin.
 
-2. Depolama hesapları listesinden, Azure AD DS'yi etkinleştirdiğiniz ve yukarıdaki adımlarda özel rolleri oluşturduğunuz hesabı seçin.
+2. Depolama hesapları listesinden, Azure AD DS 'yi etkinleştirdiğiniz hesabı seçin ve yukarıdaki adımlarda özel rolleri oluşturdunuz.
 
-3. **Ayarlar** **altında, Access tuşlarını** seçin ve **tuşu kopyalayın1**.
+3. **Ayarlar**altında **erişim anahtarları** ' nı seçin ve anahtarı **KEY1**' dan kopyalayın.
 
-4. **Sanal Makineler** sekmesine gidin ve ana bilgisayar havuzunuzun bir parçası olacak herhangi bir VM'yi bulun.
+4. **Sanal makineler** sekmesine gidin ve konak havuzunuzun parçası olacak tüm VM 'leri bulun.
 
-5. **Sanal Makineler (adVM)** altında sanal makinenin (VM) adını seçin ve **Bağlan'ı** seçin
+5. **Sanal makineler (adVM)** altında sanal makınenın (VM) adını seçin ve **Bağlan** ' ı seçin.
 
-    Bu, VM'de kendi kimlik bilgileriyle oturum açmanızı sağlayan bir RDP dosyasını karşıdan yükler.
+    Bu işlem, VM 'de kendi kimlik bilgileriyle oturum açmanıza olanak sağlayan bir RDP dosyası indirir.
 
-    ![Sanal makineye Bağlan penceresinin RDP sekmesinin ekran görüntüsü.](media/rdp-tab.png)
+    ![Sanal makineye bağlan penceresinin RDP sekmesinin ekran görüntüsü.](media/rdp-tab.png)
 
-6. VM'de oturum açtığınızda, yönetici olarak bir komut istemi çalıştırın.
+6. VM 'de oturum açtıktan sonra yönetici olarak bir komut istemi çalıştırın.
 
 7. Şu komutu çalıştırın:
 
@@ -103,10 +103,10 @@ Depolama Hesabı erişim anahtarını almak için:
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - Seçtiğiniz `<desired-drive-letter>` bir sürücü harfiyle değiştirin `y:`(örneğin, ).
-    - Tüm örnekleri `<storage-account-name>` daha önce belirttiğiniz depolama hesabının adıyla değiştirin.
+    - Tercih `<desired-drive-letter>` ettiğiniz bir sürücü harfiyle değiştirin (örneğin, `y:`).
+    - Öğesinin tüm örneklerini, `<storage-account-name>` daha önce belirttiğiniz depolama hesabının adıyla değiştirin.
     - Daha `<share-name>` önce oluşturduğunuz paylaşımın adıyla değiştirin.
-    - Azure'daki depolama hesabı anahtarıyla değiştirin. `<storage-account-key>`
+    - Azure `<storage-account-key>` 'daki depolama hesabı anahtarıyla değiştirin.
 
     Örneğin:  
   
@@ -114,14 +114,14 @@ Depolama Hesabı erişim anahtarını almak için:
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. Kullanıcıya Azure Dosyaları paylaşımına tam erişim hakkı vermek için aşağıdaki komutu çalıştırın.
+8. Kullanıcıya Azure dosya paylaşımının tam erişimini sağlamak için aşağıdaki komutu çalıştırın.
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(f)
      ```
 
-    - Kullanıcının kullanmasını istediğiniz sürücünün harfiyle değiştirin. `<mounted-drive-letter>`
-    - Oturum `<user-email>` ana bilgisayar VM'lerine erişmek için bu profili kullanacak kullanıcının UPN'i ile değiştirin.
+    - Kullanıcının `<mounted-drive-letter>` kullanmasını istediğiniz sürücünün harfiyle değiştirin.
+    - Oturum `<user-email>` ana bilgisayar VM 'lerine erişmek için bu profili kullanacak olan kullanıcının UPN 'si ile değiştirin.
 
     Örneğin:
      
@@ -131,44 +131,44 @@ Depolama Hesabı erişim anahtarını almak için:
 
 ## <a name="create-a-profile-container"></a>Profil kapsayıcısı oluşturma
 
-Artık profilleriniz kullanıma hazır olduğuna göre, bir FSLogix profil konteyneri oluşturalım.
+Artık profilleriniz çalışmaya hazır olduğuna göre, bir FSLogix profil kapsayıcısı oluşturalım.
 
-Bir FSLogix profil kapsayıcısını yapılandırmak için:
+FSLogix profil kapsayıcısını yapılandırmak için:
 
-1. Bu makalenin başında yapılandırdığınız oturum ana bilgisayar VM oturum, sonra [indirin ve FSLogix aracısını yükleyin.](/fslogix/install-ht/)
+1. Bu makalenin başlangıcında yapılandırdığınız oturum ana bilgisayarında oturum açın, ardından [FSLogix aracısını indirip yükleyin](/fslogix/install-ht/).
 
-2. İndirdiğiniz FSLogix aracı dosyasıun zip'ini açın ve **x64** > **Bültenleri'ne**gidin, ardından **FSLogixAppsSetup.exe'yi**açın.
+2. İndirdiğiniz fslogix aracı dosyasını açın ve **x64** > **sürümleri**' ne gidin ve ardından **fslogixappssetup. exe**' yi açın.
 
-3. Yükleyici başlattıktan sonra, **ben lisans şart ve koşullarını kabul seçin.** Varsa, yeni bir anahtar sağlayın.
+3. Yükleyici başlatıldıktan sonra **Lisans hüküm ve koşullarını kabul** ediyorum ' u seçin. Uygulanabiliyorsa, yeni bir anahtar sağlayın.
 
 4. **Yükle**’yi seçin.
 
-5. **Sürücü C'yi**açın, ardından FSLogix aracısının düzgün bir şekilde yüklendiğinden emin olmak için **Program Files** > **FSLogix** > **Apps'a** gidin.
+5. Fslogix aracısının düzgün yüklendiğinden emin olmak için **sürücü C**'yi açın ve **Program Files** > **fslogix** > **uygulamalarına** gidin.
 
      >[!NOTE]
-     > Ana bilgisayar havuzunda birden çok VM varsa, her VM için 1'den 5'e kadar olan adımları yinelemeniz gerekir.
+     > Konak havuzunda birden çok VM varsa, her VM için 1 ile 5 arasındaki adımları tekrarlamanız gerekir.
 
-6. **Kayıt Defteri Düzenleyicisi'ni** (RegEdit) yönetici olarak çalıştırın.
+6. **Kayıt defteri Düzenleyicisi 'ni** (regedit) yönetici olarak çalıştırın.
 
-7. **Bilgisayar** > **HKEY_LOCAL_MACHINE** > **yazılımı** > **FSLogix**gidin , **FSLogix**sağ tıklayın , **Yeni**seçin , ve sonra **Anahtar**seçin .
+7. **Bilgisayar** > **HKEY_LOCAL_MACHINE**HKEY_LOCAL_MACHINE > **software**yazılım > **fslogix**' e gidin, **fslogix**öğesine sağ tıklayın, **Yeni**' yi seçin ve ardından **anahtar**' ı seçin.
 
 8. **Profiller**adlı yeni bir anahtar oluşturun.
 
-9.  **Profiller'e**sağ tıklayın, **Yeni'yi**seçin ve ardından **DWORD (32 bit) Değeri'ni seçin.** **Etkin** değeri adlandırın ve **Veri** değerini **1**olarak ayarlayın.
+9.  **Profiller**' e sağ tıklayın, **Yeni**' yi ve ardından **DWORD (32-bit) değeri** ' ni seçin. Değeri **etkin** olarak adlandırın ve **veri** değerini **1**olarak ayarlayın.
 
-    ![Profiller anahtarının ekran görüntüsü. REG_DWORD dosyası vurgulanır ve Veri değeri 1 olarak ayarlanır.](media/dword-value.png)
+    ![Profiller anahtarının ekran görüntüsü. REG_DWORD dosyası vurgulanır ve veri değeri 1 olarak ayarlanır.](media/dword-value.png)
 
-10. **Profiller'e**sağ tıklayın, **Yeni'yi**seçin ve ardından **Multi-String Değeri'ni**seçin. **VHDLocations** değerini adlandırın ve Veri değeri olarak `\\fsprofile.file.core.windows.net\share` Azure Dosyaları paylaşımı için URI'yi ayarlayın.
+10. **Profiller**' e sağ tıklayın, **Yeni**' yi seçin ve sonra **çok dizeli değer**' i seçin. Değer **Vhdkonumlarını** adlandırın ve veri değeri olarak Azure dosya paylaşımının `\\fsprofile.file.core.windows.net\share` URI 'sini girin.
 
-    ![VHDLocations dosyasını gösteren Profiller anahtarının ekran görüntüsü. Veri değeri, Azure Dosyaları paylaşımı için URI'yi gösterir.](media/multi-string-value.png)
+    ![VHDLocations dosyasını gösteren profiller anahtarının ekran görüntüsü. Veri değeri, Azure dosya paylaşımının URI 'sini gösterir.](media/multi-string-value.png)
 
-## <a name="assign-users-to-a-session-host"></a>Kullanıcıları oturum ana bilgisayara atama
+## <a name="assign-users-to-a-session-host"></a>Kullanıcıları bir oturum konağına atama
 
-Artık kullanıcıları oturum ana bilgisayarınıza atamanız gerekir.
+Artık oturum ana bilgisayarınıza Kullanıcı atamanız gerekir.
 
 Kullanıcıları atamak için:
 
-1. Windows PowerShell'i yönetici olarak çalıştırın ve ardından PowerShell ile Windows Sanal Masaüstünde oturum açmaiçin aşağıdaki cmdlet'i çalıştırın:
+1. Windows PowerShell 'i yönetici olarak çalıştırın ve ardından PowerShell ile Windows sanal masaüstü 'nde oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -181,9 +181,9 @@ Kullanıcıları atamak için:
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-   Kimlik bilgileri istendiğinde, Windows Sanal Masaüstü kiracısına TenantCreator, RDS Owner veya RDS Katılımcı sıfatı verilen kullanıcıyı girin.
+   Kimlik bilgileri istendiğinde, Windows sanal masaüstü kiracısında, TenantCreator, RDS Owner veya RDS katılımcısı rolüne verilen aynı kullanıcıyı girin.
 
-2. Kullanıcıyı uzak masaüstü grubuna atamak için aşağıdaki cmdlets'i çalıştırın:
+2. Kullanıcıyı uzak masaüstü grubuna atamak için aşağıdaki cmdlet 'leri çalıştırın:
 
      ```powershell
      $tenant = "<your-wvd-tenant>"
@@ -197,7 +197,7 @@ Kullanıcıları atamak için:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    Önceki cmdlets gibi, değiştirmek `<your-wvd-tenant>`için `<wvd-pool>`emin `<user-principal>` olun , , ve ilgili değerleri ile.
+    Önceki cmdlet 'ler gibi,, ve `<your-wvd-tenant>` `<wvd-pool>` `<user-principal>` değerlerini de ilgili değerlerle değiştirdiğinizden emin olun.
 
     Örneğin:
 
@@ -215,29 +215,29 @@ Kullanıcıları atamak için:
 
 ## <a name="make-sure-your-profile-works"></a>Profilinizin çalıştığından emin olun
 
-Şimdi tek yapmanız gereken oluşturduğunuz profilin var olduğundan ve beklendiği gibi çalıştığından emin olmaktır.
+Şimdi tüm yapmanız gerekir, oluşturduğunuz profilin varolduğundan ve hedeflenen şekilde çalıştığından emin olun.
 
 Profilinizi doğrulamak için:
 
-1. Bir tarayıcı açın ve [Windows Sanal Masaüstü web istemcisine](https://rdweb.wvd.microsoft.com/webclient/index.html)gidin.
+1. Bir tarayıcı açın ve [Windows Sanal Masaüstü Web istemcisine](https://rdweb.wvd.microsoft.com/webclient/index.html)gidin.
 
 2. Uzak Masaüstü grubuna atanan kullanıcı hesabıyla oturum açın.
 
-3. Kullanıcı oturumu oluşturulduktan sonra Azure portalını açın ve yönetim hesabıyla oturum açın.
+3. Kullanıcı oturumu kurulduktan sonra, Azure portal açın ve bir yönetici hesabıyla oturum açın.
 
-4. Kenar çubuğundan **Depolama hesapları'nı**seçin.
+4. Kenar çubuğundan **depolama hesapları**' nı seçin.
 
-5. Oturum ana bilgisayar havuzunuz için dosya paylaşımı olarak yapılandırdığınız ve Azure AD DS ile etkinleştirdiğiniz depolama hesabını seçin.
+5. Oturum Ana bilgisayar havuzunuz için dosya paylaşma olarak yapılandırdığınız ve Azure AD DS etkinleştirilmiş depolama hesabını seçin.
 
-6. **Dosyalar** simgesini seçin ve ardından paylaşımınızı genişletin.
+6. **Dosyalar** simgesini seçin, sonra paylaşımınızı genişletin.
 
-    Her şey doğru ayarlanmışsa, şu şekilde biçimlendirilmiş bir adiçeren bir **Dizin** görmeniz gerekir: `<user SID>-<username>`.
+    Her şey doğru şekilde ayarlandıysa, şöyle biçimlendirilen bir ada sahip bir **Dizin** görmeniz gerekir: `<user SID>-<username>`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-FSLogix profil kapsayıcıları oluşturmak için alternatif yollar arıyorsanız, aşağıdaki makalelere göz atın:
+FSLogix profil kapsayıcıları oluşturmanın farklı yollarını arıyorsanız, aşağıdaki makalelere göz atın:
 
-- [Dosya paylaşımını kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturun.](create-host-pools-user-profile.md)
-- [Azure NetApp Dosyalarını kullanarak ana bilgisayar havuzu için FSLogix profil kapsayıcısı oluşturma](create-fslogix-profile-container.md)
+- Bir [dosya paylaşımının kullanıldığı konak havuzu için bir profil kapsayıcısı oluşturun](create-host-pools-user-profile.md).
+- [Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma](create-fslogix-profile-container.md)
 
-[FSLogix profil kapsayıcıları ve Azure dosyaları](fslogix-containers-azure-files.md)için FSlogix kapsayıcıları ile ilgili kavramlar hakkında daha ayrıntılı bilgi bulabilirsiniz.
+[Fslogix profil kapsayıcılarındaki ve Azure dosyalarındaki](fslogix-containers-azure-files.md)Azure dosyaları Için fslogix kapsayıcılarıyla ilgili daha ayrıntılı bilgi edinebilirsiniz.

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: caea8d515964510fce432eb0497e3af19ecc1369
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101646"
 ---
 # <a name="update-pricing-tier"></a>Fiyatlandırma katmanını güncelleştirme 
@@ -57,7 +57,7 @@ Bu bölümde, bir konunun fiyatlandırma katmanının veya Azure portal bir etki
 ## <a name="use-azure-cli"></a>Azure CLI kullanma
 Bu bölümde, bir konunun fiyatlandırma katmanını değiştirmek için Azure CLı komutlarının nasıl kullanılacağı gösterilmektedir. Bir etki alanının fiyatlandırma katmanını güncelleştirmek için, bu `az eventgrid domain update` komutu benzer bir biçimde kullanın.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki komutu çalıştırarak CLı için Azure Event Grid uzantısını güncelleştirin: 
 
 ```azurecli-interactive

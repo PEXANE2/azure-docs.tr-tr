@@ -1,6 +1,6 @@
 ---
-title: Java Kullanarak Bir Azure Sanal Makinesi Oluşturma ve Yönetme
-description: Sanal bir makineyi ve tüm destekleyici kaynaklarını dağıtmak için Java ve Azure Kaynak Yöneticisi'ni kullanın.
+title: Java kullanarak bir Azure sanal makinesi oluşturma ve yönetme
+description: Bir sanal makineyi ve tüm destekleyici kaynaklarını dağıtmak için Java ve Azure Resource Manager kullanın.
 services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,31 +9,31 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870021"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java'yı kullanarak Azure'da Windows VM'leri oluşturma ve yönetme
+# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
-[Azure Sanal Makine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) birkaç destekleyici Azure kaynağına ihtiyaç duyar. Bu makalede, Java kullanarak VM kaynakları oluşturma, yönetme ve silme yer alıyor. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+[Azure sanal makinesi](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) birkaç destekleyici Azure kaynağı gerektirir. Bu makalede, Java kullanarak VM kaynaklarını oluşturma, yönetme ve silme konuları ele alınmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Bir Maven projesi oluşturma
-> * Bağımlılıkekleme
-> * Kimlik bilgileri oluşturma
+> * Maven projesi oluşturma
+> * Bağımlılık Ekle
+> * Kimlik bilgileri oluştur
 > * Kaynak oluşturma
 > * Yönetim görevlerini gerçekleştirme
 > * Kaynakları silme
 > * Uygulamayı çalıştırma
 
-Bu adımları yapmak yaklaşık 20 dakika sürer.
+Bu adımların uygulanması yaklaşık 20 dakika sürer.
 
-## <a name="create-a-maven-project"></a>Bir Maven projesi oluşturma
+## <a name="create-a-maven-project"></a>Maven projesi oluşturma
 
-1. Bunu zaten yapmadıysanız, [Java'yı](https://aka.ms/azure-jdks)yükleyin.
-2. [Maven yükleyin.](https://maven.apache.org/download.cgi)
+1. Henüz yapmadıysanız, [Java 'yı](https://aka.ms/azure-jdks)yükleyebilirsiniz.
+2. [Maven](https://maven.apache.org/download.cgi)'i yükler.
 3. Yeni bir klasör ve proje oluşturun:
     
     ```
@@ -43,9 +43,9 @@ Bu adımları yapmak yaklaşık 20 dakika sürer.
     mvn archetype:generate -DgroupId=com.fabrikam -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-## <a name="add-dependencies"></a>Bağımlılıkekleme
+## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-1. Klasörün `testAzureApp` altında, `pom.xml` dosyayı açın ve &lt;uygulamanızın oluşturulmasını etkinleştirmek için projeye&gt; yapı yapılandırmasını ekleyin:
+1. Uygulamanızın yapısını `testAzureApp` etkinleştirmek için klasörü açın `pom.xml` ve derleme yapılandırması ' nı &lt;projeye&gt; ekleyin:
 
     ```xml
     <build>
@@ -61,7 +61,7 @@ Bu adımları yapmak yaklaşık 20 dakika sürer.
     </build>
     ```
 
-2. Azure Java SDK'ya erişmek için gereken bağımlılıkları ekleyin.
+2. Azure Java SDK 'sına erişmek için gereken bağımlılıkları ekleyin.
 
     ```xml
     <dependency>
@@ -108,13 +108,13 @@ Bu adımları yapmak yaklaşık 20 dakika sürer.
 
 3. Dosyayı kaydedin.
 
-## <a name="create-credentials"></a>Kimlik bilgileri oluşturma
+## <a name="create-credentials"></a>Kimlik bilgileri oluştur
 
-Bu adımı başlatmadan önce, [Etkin Dizin hizmet ilkesine](../../active-directory/develop/howto-create-service-principal-portal.md)erişebildiğinizden emin olun. Ayrıca uygulama kimliğini, kimlik doğrulama anahtarını ve daha sonraki bir adımda gereksinim duyduğunuz kiracı kimliğini de kaydetmeniz gerekir.
+Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../active-directory/develop/howto-create-service-principal-portal.md)erişiminizin olduğundan emin olun. Ayrıca, daha sonraki bir adımda ihtiyacınız olan uygulama KIMLIĞI, kimlik doğrulama anahtarı ve kiracı KIMLIĞINI de kaydetmeniz gerekir.
 
 ### <a name="create-the-authorization-file"></a>Yetkilendirme dosyasını oluşturma
 
-1. Adlandırılmış `azureauth.properties` bir dosya oluşturun ve bu özellikleri ekleyin:
+1. Adlı `azureauth.properties` bir dosya oluşturun ve bu özellikleri buna ekleyin:
 
     ```
     subscription=<subscription-id>
@@ -127,20 +127,20 @@ Bu adımı başlatmadan önce, [Etkin Dizin hizmet ilkesine](../../active-direct
     graphURL=https://graph.microsoft.com/
     ```
 
-    ** &lt;Abonelik kimliğiniz&gt; abonelik** tanımlayıcınızla, ** &lt;uygulama kimliğini&gt; ** Active Directory uygulama tanımlayıcısıyla, ** &lt;kimlik doğrulama anahtarını&gt; ** uygulama anahtarıyla ve ** &lt;kiracı&gt; ** kimliğiyle kiracı kimliğiyle değiştirin.
+    Abonelik ** &lt;kimliği&gt; ** , abonelik tanımlayıcıınız, ** &lt;uygulama kimliği&gt; ** Active Directory uygulama tanımlayıcısı, ** &lt;kimlik doğrulama anahtarı&gt; ** ve ** &lt;kiracı tanımlayıcısı ile Kiracı kimliği&gt; ** ile değiştirin.
 
 2. Dosyayı kaydedin.
-3. Kimlik doğrulama dosyasına giden tam yol ile kabuğunuzda AZURE_AUTH_LOCATION adlı bir ortam değişkeni ayarlayın.
+3. Kimlik doğrulama dosyasının tam yolu ile kabukta AZURE_AUTH_LOCATION adlı bir ortam değişkeni ayarlayın.
 
-### <a name="create-the-management-client"></a>Yönetim istemcisini oluşturma
+### <a name="create-the-management-client"></a>Yönetim istemcisi oluşturma
 
-1. Dosyayı `App.java` altında `src\main\java\com\fabrikam` açın ve bu paket deyiminin en üstte olduğundan emin olun:
+1. Altında `App.java` `src\main\java\com\fabrikam` dosyayı açın ve bu paket ifadesinin en üstte olduğundan emin olun:
 
     ```java
     package com.fabrikam.testAzureApp;
     ```
 
-2. Paket deyiminin altına şu alma ekstrelerini ekleyin:
+2. Paket deyimi altında bu içeri aktarma deyimlerini ekleyin:
    
     ```java
     import com.microsoft.azure.management.Azure;
@@ -162,7 +162,7 @@ Bu adımı başlatmadan önce, [Etkin Dizin hizmet ilkesine](../../active-direct
     import java.util.Scanner;
     ```
 
-2. İstekte bulunmak için gereken Active Directory kimlik bilgilerini oluşturmak için bu kodu Uygulama sınıfının ana yöntemine ekleyin:
+2. İstek yapmak için ihtiyaç duyduğunuz Active Directory kimlik bilgilerini oluşturmak için, bu kodu uygulama sınıfının Main yöntemine ekleyin:
    
     ```java
     try {
@@ -182,9 +182,9 @@ Bu adımı başlatmadan önce, [Etkin Dizin hizmet ilkesine](../../active-direct
 
 ### <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 
-Tüm kaynaklar bir [Kaynak grubunda](../../azure-resource-manager/management/overview.md)yer almalıdır.
+Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/overview.md)bulunmalıdır.
 
-Uygulama için değerleri belirtmek ve kaynak grubu oluşturmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
+Uygulamanın değerlerini belirtmek ve kaynak grubunu oluşturmak için, bu kodu Main yöntemindeki try bloğuna ekleyin:
 
 ```java
 System.out.println("Creating resource group...");
@@ -194,11 +194,11 @@ ResourceGroup resourceGroup = azure.resourceGroups()
     .create();
 ```
 
-### <a name="create-the-availability-set"></a>Kullanılabilirlik kümesini oluşturma
+### <a name="create-the-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
-[Kullanılabilirlik kümeleri,](tutorial-availability-sets.md) uygulamanız tarafından kullanılan sanal makineleri korumanızı kolaylaştırır.
+[Kullanılabilirlik kümeleri](tutorial-availability-sets.md) , uygulamanız tarafından kullanılan sanal makineleri korumanıza daha kolay hale getirir.
 
-Kullanılabilirlik kümesini oluşturmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
+Kullanılabilirlik kümesi oluşturmak için, bu kodu Main yöntemindeki try bloğuna ekleyin:
 
 ```java
 System.out.println("Creating availability set...");
@@ -211,7 +211,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>Genel IP adresini oluşturma
 
-Sanal makineyle iletişim kurmak için [genel bir IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) gereklidir.
+Sanal makineyle iletişim kurmak için [Genel BIR IP adresi](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) gerekir.
 
 Sanal makinenin genel IP adresini oluşturmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
 
@@ -225,9 +225,9 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
     .create();
 ```
 
-### <a name="create-the-virtual-network"></a>Sanal ağ oluşturma
+### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
-Sanal bir makine, [Sanal ağın](../../virtual-network/virtual-networks-overview.md)alt ağında olmalıdır.
+Bir sanal makinenin bir [sanal ağın](../../virtual-network/virtual-networks-overview.md)alt ağında olması gerekir.
 
 Bir alt ağ ve sanal ağ oluşturmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
 
@@ -244,9 +244,9 @@ Network network = azure.networks()
 
 ### <a name="create-the-network-interface"></a>Ağ arabirimini oluşturma
 
-Sanal makinenin sanal ağda iletişim kurabilmesi için ağ arabirimine ihtiyacı vardır.
+Sanal bir makine, sanal ağ üzerinde iletişim kurmak için bir ağ arabirimine ihtiyaç duyuyor.
 
-Ağ arabirimi oluşturmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
+Bir ağ arabirimi oluşturmak için, bu kodu Main yöntemindeki try bloğuna ekleyin:
 
 ```java
 System.out.println("Creating network interface...");
@@ -263,9 +263,9 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 
 ### <a name="create-the-virtual-machine"></a>Sanal makineyi oluşturma
 
-Artık tüm destekleyici kaynakları oluşturduğunuziçin, sanal bir makine oluşturabilirsiniz.
+Tüm destekleyici kaynakları oluşturduğunuza göre, bir sanal makine oluşturabilirsiniz.
 
-Sanal makineyi oluşturmak için bu kodu ana yöntemdeki try bloğuna ekleyin:
+Sanal makineyi oluşturmak için, bu kodu Main yöntemindeki try bloğuna ekleyin:
 
 ```java
 System.out.println("Creating virtual machine...");
@@ -287,11 +287,11 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> Bu öğretici, Windows Server işletim sisteminin bir sürümünü çalıştıran sanal bir makine oluşturur. Diğer resimleri seçme hakkında daha fazla bilgi edinmek için [Windows PowerShell ve Azure CLI ile Gezin ve Azure sanal makine resimlerini seçin.](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+> Bu öğretici, Windows Server işletim sisteminin bir sürümünü çalıştıran bir sanal makine oluşturur. Diğer görüntüleri seçme hakkında daha fazla bilgi edinmek için bkz. [Windows PowerShell ve Azure CLI Ile Azure sanal makine görüntülerini gezinme ve seçme](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Pazar yeri görüntüsü yerine varolan bir disk kullanmak istiyorsanız, şu kodu kullanın: 
+Market görüntüsü yerine var olan bir diski kullanmak istiyorsanız, şu kodu kullanın: 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk")
@@ -316,15 +316,15 @@ azure.virtualMachines.define("myVM")
 
 Bir sanal makinenin yaşam döngüsü boyunca, sanal makineyi başlatmak, durdurmak veya silmek gibi yönetim görevleri gerçekleştirmek isteyebilirsiniz. Ayrıca, yinelenen veya karmaşık görevleri otomatikleştirmek için kod oluşturmak isteyebilirsiniz.
 
-VM ile bir şey yapmanız gerektiğinde, bunun bir örneğini almanız gerekir. Bu kodu ana yöntemin try bloğuna ekleyin:
+VM ile herhangi bir şey yapmanız gerektiğinde, bunun bir örneğini almanız gerekir. Bu kodu Main yönteminin try bloğuna ekleyin:
 
 ```java
 VirtualMachine vm = azure.virtualMachines().getByResourceGroup("myResourceGroup", "myVM");
 ```
 
-### <a name="get-information-about-the-vm"></a>VM hakkında bilgi alın
+### <a name="get-information-about-the-vm"></a>VM hakkında bilgi edinme
 
-Sanal makine hakkında bilgi almak için bu kodu ana yöntemdeki try bloğuna ekleyin:
+Sanal makine hakkında bilgi almak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
 
 ```java
 System.out.println("hardwareProfile");
@@ -382,9 +382,9 @@ input.nextLine();
 
 ### <a name="stop-the-vm"></a>VM’yi durdurma
 
-Sanal bir makineyi durdurabilir ve tüm ayarlarını saklayabilirsiniz, ancak bunun için ücretlendirilmeye devam edebilir veya sanal bir makineyi durdurup yerini saptayabilirsiniz. Sanal bir makine devre dışı edildiğinde, onunla ilişkili tüm kaynaklar da ayrılır ve faturalandırma sona erer.
+Bir sanal makineyi durdurabilir ve tüm ayarlarını tutabilir, ancak ücretlendirmeye devam edebilir veya bir sanal makineyi durdurup serbest bırakabilirsiniz. Bir sanal makine serbest bırakıldığında, onunla ilişkili tüm kaynaklar da serbest bırakılır ve faturalandırılır.
 
-Sanal makineyi ayırmadan durdurmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
+Sanal makineyi ayırmayı kaldırmadan durdurmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
 
 ```java
 System.out.println("Stopping vm...");
@@ -393,7 +393,7 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-Sanal makineyi bulmak istiyorsanız, PowerOff çağrısını bu kodla değiştirin:
+Sanal makineyi serbest bırakmak istiyorsanız, bu koda yönelik kapatma çağrısını değiştirin:
 
 ```java
 vm.deallocate();
@@ -401,7 +401,7 @@ vm.deallocate();
 
 ### <a name="start-the-vm"></a>VM’yi başlatma
 
-Sanal makineyi başlatmak için, bu kodu ana yöntemdeki try bloğuna ekleyin:
+Sanal makineyi başlatmak için, bu kodu Main yöntemindeki try bloğuna ekleyin:
 
 ```java
 System.out.println("Starting vm...");
@@ -410,11 +410,11 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="resize-the-vm"></a>VM'yi yeniden boyutlandırın
+### <a name="resize-the-vm"></a>VM 'yi yeniden boyutlandırma
 
-Sanal makineniz için bir boyut alırken dağıtımın birçok yönü göz önünde bulundurulmalıdır. Daha fazla bilgi için [VM boyutlarına](sizes.md)bakın.  
+Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken göz önünde bulundurulmalıdır. Daha fazla bilgi için bkz. [VM boyutları](sizes.md).  
 
-Sanal makinenin boyutunu değiştirmek için, bu kodu ana yöntemdeki try bloğuna ekleyin:
+Sanal makinenin boyutunu değiştirmek için, bu kodu Main yöntemindeki try bloğuna ekleyin:
 
 ```java
 System.out.println("Resizing vm...");
@@ -427,7 +427,7 @@ input.nextLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM’ye veri diski ekleme
 
-Sanal makineye 2 GB boyutunda, LUN 0 lun'a ve önbelleğe alma türüne sahip bir veri diski eklemek için, bu kodu ana yöntemdeki try bloğuna ekleyin:
+2 GB boyutundaki sanal makineye bir veri diski eklemek için, 0 LUN 'unu ve bir tür okumayı önbelleğe alma türünü, bu kodu Main yöntemindeki try bloğuna ekleyin:
 
 ```java
 System.out.println("Adding data disk...");
@@ -440,20 +440,20 @@ input.nextLine();
 
 ## <a name="delete-resources"></a>Kaynakları silme
 
-Azure'da kullanılan kaynaklar için ücretlendirildiğiniz için, artık gerekmeyen kaynakları silmek her zaman iyi bir uygulamadır. Sanal makineleri ve tüm destekleyici kaynakları silmek istiyorsanız, tek yapmanız gereken kaynak grubunu silmektir.
+Azure 'da kullanılan kaynaklar için ücretlendirildiğiniz için, artık gerekli olmayan kaynakları silmek her zaman iyi bir uygulamadır. Sanal makineleri ve tüm destekleyici kaynakları silmek istiyorsanız, tüm yapmanız gerekirse kaynak grubunu silmez.
 
-1. Kaynak grubunu silmek için, bu kodu ana yöntemdeki try bloğuna ekleyin:
+1. Kaynak grubunu silmek için, bu kodu Main yöntemindeki try bloğuna ekleyin:
    
     ```java
     System.out.println("Deleting resources...");
     azure.resourceGroups().deleteByName("myResourceGroup");
     ```
 
-2. App.java dosyasını kaydedin.
+2. App. Java dosyasını kaydedin.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Bu konsol uygulamasının baştan sona tamamen çalışması yaklaşık beş dakika sürer.
+Bu konsol uygulamasının başlangıçtan sonuna kadar tam olarak çalıştırılması yaklaşık beş dakika sürer.
 
 1. Uygulamayı çalıştırmak için bu Maven komutunu kullanın:
 
@@ -461,9 +461,9 @@ Bu konsol uygulamasının baştan sona tamamen çalışması yaklaşık beş dak
     mvn compile exec:java
     ```
 
-2. Kaynakları silmeye başlamak için **Enter** tuşuna basmadan önce, Azure portalındaki kaynakların oluşturulmasını doğrulamak birkaç dakikanızı alabilir. Dağıtım la ilgili bilgileri görmek için dağıtım durumunu tıklatın.
+2. Kaynakları silmeye başlamak üzere **ENTER** tuşuna basmadan önce Azure Portal kaynakların oluşturulmasını doğrulamak birkaç dakika sürebilir. Dağıtım hakkındaki bilgileri görmek için dağıtım durumuna tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Java için Azure kitaplıklarını](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)kullanma hakkında daha fazla bilgi edinin.
+* [Java Için Azure kitaplıklarını](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)kullanma hakkında daha fazla bilgi edinin.
 

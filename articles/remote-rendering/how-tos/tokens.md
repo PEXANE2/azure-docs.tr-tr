@@ -1,48 +1,48 @@
 ---
 title: Hizmet erişim belirteçlerini alma
-description: ARR REST API'lerine erişmek için belirteçlerin nasıl oluşturulacak larını açıklar
+description: ARR REST API 'Lerine erişmek için belirteçlerin nasıl oluşturulacağını açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687077"
 ---
 # <a name="get-service-access-tokens"></a>Hizmet erişim belirteçlerini alma
 
-ARR REST API'lerine erişim yalnızca yetkili kullanıcılar için verilir. Yetkilendirmenizi kanıtlamak için, REST istekleriyle birlikte bir *erişim jetonu* göndermeniz gerekir. Bu belirteçler, bir hesap anahtarı karşılığında *Güvenli Belirteç Hizmeti* (STS) tarafından verilir. Jetonlar 24 saatlik bir **kullanım ömrüne** sahiptir ve bu nedenle kullanıcılara hizmete tam erişim hakkı verilmeden verilebilir.
+ARR REST API 'Lerine erişim yalnızca yetkili kullanıcılar için verilir. Yetkilendirmeyi kanıtlamak için, REST istekleriyle birlikte bir *erişim belirteci* göndermeniz gerekir. Bu belirteçler, bir hesap anahtarı için Exchange 'de *güvenli belirteç hizmeti* (STS) tarafından verilir. Belirteçlerin **süresi 24 saat** olur ve bu nedenle kullanıcılara tam erişim izni vermeden kullanıcılara verilebilir.
 
-Bu makalede, bu tür erişim belirteci oluşturmak için nasıl açıklanmaktadır.
+Bu makalede, bu tür erişim belirtecinin nasıl oluşturulacağı açıklanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Henüz hesabınız yoksa [bir ARR hesabı oluşturun.](create-an-account.md)
+Henüz yoksa bir [ARR hesabı oluşturun](create-an-account.md).
 
 ## <a name="token-service-rest-api"></a>Belirteç hizmeti REST API
 
-Erişim belirteçleri oluşturmak *için, Güvenli Belirteç Hizmeti* tek bir REST API sağlar. ARR STS hizmetinin URL'si https:\//sts.mixedreality.azure.com.
+Erişim belirteçleri oluşturmak için, *güvenli belirteç hizmeti* tek bir REST API sağlar. ARR STS hizmeti URL 'SI: https:\//STS.mixedreality.Azure.com.
 
-### <a name="get-token-request"></a>'Jeton alın' isteği
+### <a name="get-token-request"></a>' Belirteci Al ' isteği
 
 | URI | Yöntem |
 |-----------|:-----------|
-| /accounts/**accountId**/token | GET |
+| /accounts/**AccountID**/Token | GET |
 
 | Üst bilgi | Değer |
 |--------|:------|
-| Yetkilendirme | "Taşıyıcı **hesap Numarası**:**accountKey**" |
+| Yetkilendirme | "Taşıyıcı **AccountID**:**accountkey**" |
 
-AccountId ve *accountKey'i* ilgili verilerinizle değiştirin. *accountKey*
+*AccountID* ve *accountkey* değerlerini ilgili verilerle değiştirin.
 
-### <a name="get-token-response"></a>'Belirteç alın' yanıtı
+### <a name="get-token-response"></a>' Belirteci Al ' yanıtı
 
-| Durum kodu | JSON yükü | Yorumlar |
+| Durum kodu | JSON yükü | Açıklamalar |
 |-----------|:-----------|:-----------|
-| 200 | AccessToken: string | Başarılı |
+| 200 | AccessToken: dize | Başarılı |
 
 | Üst bilgi | Amaç |
 |--------|:------|
@@ -50,7 +50,7 @@ AccountId ve *accountKey'i* ilgili verilerinizle değiştirin. *accountKey*
 
 ## <a name="getting-a-token-using-powershell"></a>PowerShell kullanarak belirteç alma
 
-Aşağıdaki PowerShell kodu, STS'ye gerekli REST isteğinin nasıl gönderilebildiğini göstermektedir. Ardından powershell isteminin belirteci yazdırır.
+Aşağıdaki PowerShell kodu, gerekli REST isteğinin STS 'ye nasıl gönderileceğini gösterir. Ardından belirteci PowerShell komut istemine yazdırır.
 
 ```PowerShell
 $accountId = "<account_id_from_portal>"
@@ -63,10 +63,10 @@ $response = ConvertFrom-Json -InputObject $webResponse.Content
 Write-Output "Token: $($response.AccessToken)"
 ```
 
-Komut dosyası yalnızca, kopyalayabildiğiniz & yapıştırabileceğiniz çıkış belirteci yazdırır. Gerçek bir proje için bu işlemi otomatikleştirmeniz gerekir.
+Komut dosyası, bu belirteci kopyalamak & yapıştırabilirsiniz. Gerçek bir proje için bu işlemi otomatikleştirmelisiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Örnek PowerShell betikleri](../samples/powershell-example-scripts.md)
-* [Azure Frontend API'leri](../how-tos/frontend-apis.md)
+* [Azure ön uç API 'Leri](../how-tos/frontend-apis.md)
 * [Oturum yönetimi REST API](../how-tos/session-rest-api.md)

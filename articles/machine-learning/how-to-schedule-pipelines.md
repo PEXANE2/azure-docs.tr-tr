@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning ardışık hatlarını zamanlama
+title: Azure Machine Learning işlem hatlarını zamanlayın
 titleSuffix: Azure Machine Learning
-description: Python için Azure Machine Learning SDK'yı kullanarak Azure Machine Learning ardışık hatlarını zamanlayın. Zamanlanmış ardışık işlemler, veri işleme, eğitim ve izleme gibi rutin, zaman alan görevleri otomatikleştirmenize olanak tanır.
+description: Python için Azure Machine Learning SDK 'sını kullanarak Azure Machine Learning işlem hatlarını zamanlayın. Zamanlanan işlem hatları, veri işleme, eğitim ve izleme gibi rutin, zaman alan görevleri otomatikleştirmenizi sağlar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,27 +10,27 @@ ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
 ms.openlocfilehash: 8e1e718fa4e6660d72203ac98bb6d427cdba2059
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024566"
 ---
-# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile makine öğrenimi boru hatlarını zamanlayın
+# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile makine öğrenimi işlem hatlarını zamanlayın
 
-Bu makalede, Azure'da çalışacak bir ardışık olarak bir ardışık olarak nasıl zamanlayabileceğinizi öğreneceksiniz. Geçen süreyi veya dosya sistemi değişikliklerini temel alan bir zamanlama oluşturmayı seçebilirsiniz. Zaman tabanlı zamanlamalar, veri kayması izleme gibi rutin görevleri halletmek için kullanılabilir. Değişiklik tabanlı zamanlamalar, yüklenen yeni veriler veya düzenlenen eski veriler gibi düzensiz veya öngörülemeyen değişikliklere tepki vermek için kullanılabilir. Zamanlamaları nasıl oluşturacağınıöğrendikten sonra, bunları nasıl alıp devre dışı bırakacağınız öğrenilir.
+Bu makalede, Azure 'da çalışması için programlı olarak bir işlem hattı zamanlamayı öğreneceksiniz. Geçen süreye veya dosya sistemi değişikliklerine göre bir zamanlama oluşturmayı tercih edebilirsiniz. Zaman tabanlı zamanlamalar, veri kayması için izleme gibi rutin görevlerden yararlanmak için kullanılabilir. Değişiklik tabanlı zamanlamalar, karşıya yüklenen yeni veriler veya düzenlenmekte olan eski veriler gibi düzensiz veya öngörülemeyen değişikliklere tepki vermek için kullanılabilir. Zamanlama oluşturmayı öğrendikten sonra, bunların nasıl alınacağını ve devre dışı bırakılacağı hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://aka.ms/AMLFree)oluşturun.
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 
-* Python için Azure Machine Learning SDK'nın yüklü olduğu bir Python ortamı. Daha fazla bilgi için [bkz.](how-to-use-environments.md)
+* Python için Azure Machine Learning SDK 'nın yüklendiği bir Python ortamı. Daha fazla bilgi için bkz [. eğitim ve dağıtım için yeniden kullanılabilir ortamları oluşturma ve yönetme Azure Machine Learning.](how-to-use-environments.md)
 
-* Yayımlanmış bir boru hattı yla Machine Learning çalışma alanı. [Azure Machine Learning SDK ile makine öğrenimi boru hatlarını oluştur ve çalıştır'da](how-to-create-your-first-pipeline.md)yerleşik olanı kullanabilirsiniz.
+* Yayımlanmış bir işlem hattına sahip Machine Learning çalışma alanı. [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)sırasında yerleşik bir yapılandırma kullanabilirsiniz.
 
-## <a name="initialize-the-workspace--get-data"></a>Veri almak & çalışma alanını başlatma
+## <a name="initialize-the-workspace--get-data"></a>Veri Al & çalışma alanını başlatma
 
-Bir ardışık zamanlamak için çalışma alanınıza, yayımlanmış ardışık alanınızın tanımlayıcısına ve zamanlamayı oluşturmak istediğiniz denemenin adı için bir başvuru yapmanız gerekir. Aşağıdaki kodla bu değerleri alabilirsiniz:
+Bir işlem hattını zamanlamak için çalışma alanınıza bir başvuru, yayımlanan işlem hattının tanımlayıcısı ve zamanlamayı oluşturmak istediğiniz denemenin adı gerekir. Aşağıdaki kodla bu değerleri alabilirsiniz:
 
 ```Python
 import azureml.core
@@ -52,22 +52,22 @@ experiment_name = "MyExperiment"
 pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" 
 ```
 
-## <a name="create-a-schedule"></a>Zamanlama oluşturma
+## <a name="create-a-schedule"></a>Zamanlama Oluştur
 
-Bir ardışık ardışık hattı yinelenen olarak çalıştırmak için bir zamanlama oluşturursunuz. Bir `Schedule` boru hattı, bir deney ve bir tetikleyici ilişkilendirir. Tetikleyici, çalıştırmalar`ScheduleRecurrence` arasındaki beklemeyi açıklayan veya değişiklikleri izlemek için bir dizini belirten bir Datastore yolu olabilir. Her iki durumda da, zamanlamayı oluşturmak için ardışık hatlar tanımlayıcısına ve denemenin adını almanız gerekir.
+Bir işlem hattını yineleme temelinde çalıştırmak için bir zamanlama oluşturacaksınız. Bir `Schedule` işlem hattını, denemeyi ve bir tetikleyiciyi ilişkilendirir. Tetikleyici, çalışma veya değişiklik için`ScheduleRecurrence` izlenecek bir dizin belirten bir veri deposu yolu arasındaki beklemeyi açıklayan bir olabilir. Her iki durumda da, işlem hattı tanımlayıcısı ve zamanlamanın oluşturulacağı denemenin adı gerekir.
 
-Python dosyanızın üst kısmında, `Schedule` ve `ScheduleRecurrence` sınıfları içe aktarın:
+Python dosyanızın en üstünde, `Schedule` ve `ScheduleRecurrence` sınıflarını içeri aktarın:
 
 ```python
 
 from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 ```
 
-### <a name="create-a-time-based-schedule"></a>Zaman tabanlı zamanlama oluşturma
+### <a name="create-a-time-based-schedule"></a>Zamana dayalı zamanlama oluşturma
 
-Oluşturucu `ScheduleRecurrence` aşağıdaki dizeleri olmalıdır gerekli `frequency` bir argüman vardır: "Dakika", "Saat", "Gün", "Hafta", veya "Ay". Ayrıca, zamanlama başlar `interval` arasında birimlerin kaç `frequency` tanesinin atlanması gerektiğini belirten bir tamsayı bağımsız değişkeni gerektirir. İsteğe bağlı bağımsız [değişkenler, ScheduleRecurrence SDK dokümanlarında](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)ayrıntılı olarak belirtildiği gibi başlangıç saatleri hakkında daha spesifik olmanızı sağlar.
+`ScheduleRecurrence` Oluşturucunun, şu dizelerden biri `frequency` olması gereken bir bağımsız değişkeni vardır: "Minute", "Hour", "Day", "Week" veya "month". Ayrıca, zamanlamanın ne kadar `interval` süre sonra `frequency` geçmesi gerektiğini belirten bir tamsayı bağımsız değişkeni gerektirir. İsteğe bağlı bağımsız değişkenler, [SCHEDULERECURRENCE SDK belgeleri](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)içinde açıklandığı gibi başlangıç zamanları hakkında daha fazla bilgi sağlar.
 
-Her `Schedule` 15 dakikada bir çalıştırma başlatan bir çalışma oluşturun:
+Her 15 `Schedule` dakikada bir çalışmayı başlatan bir oluştur:
 
 ```python
 recurrence = ScheduleRecurrence(frequency="Minute", interval=15)
@@ -80,13 +80,13 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>Değişiklik tabanlı zamanlama oluşturma
 
-Dosya değişiklikleri tarafından tetiklenen akdeler zaman tabanlı zamanlamalardan daha verimli olabilir. Örneğin, bir dosya değiştirildiğinde veya veri dizinine yeni bir dosya eklendiğinde ön işleme adımı gerçekleştirmek isteyebilirsiniz. Veri deposundaki değişiklikleri veya veri deposu içindeki belirli bir dizindeki değişiklikleri izleyebilirsiniz. Belirli bir dizini izlerseniz, bu dizinin alt dizini ndeki değişiklikler bir çalıştırmayı _tetiklemez._
+Dosya değişiklikleri tarafından tetiklenen işlem hatları, zaman tabanlı zamanlamalardan daha verimli olabilir. Örneğin, bir dosya değiştirildiğinde veya bir veri dizinine yeni bir dosya eklendiğinde ön işleme adımı yapmak isteyebilirsiniz. Veri deposundaki herhangi bir değişikliği veya veri deposu içindeki belirli bir dizin içindeki değişiklikleri izleyebilirsiniz. Belirli bir dizini izlemenize sonra, bu dizinin alt dizinlerindeki değişiklikler bir çalıştırmayı _tetiklemez_ .
 
-Bir dosya reaktif `Schedule`oluşturmak için, `datastore` [zamanlama.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)için arama parametre ayarlamanız gerekir. Bir klasörü izlemek `path_on_datastore` için bağımsız değişkeni ayarlayın.
+Bir dosya-reaktif `Schedule`oluşturmak için, çağır `datastore` [. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)çağrısında parametresini ayarlamanız gerekir. Bir klasörü izlemek için `path_on_datastore` bağımsız değişkenini ayarlayın.
 
-Bağımsız `polling_interval` değişken, veri deposunun değişiklikler için kontrol edildiği sıklık ları dakikalar içinde belirtmenize olanak tanır.
+`polling_interval` Bağımsız değişkeni, veri deposunun değişiklikler için denetlenme sıklığını dakika cinsinden belirtmenize olanak tanır.
 
-Ardışık etki alanı Bir [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)ile oluşturulmuşsa, `data_path_parameter_name` bağımsız değişkeni ayarlayarak bu değişkeni değiştirilen dosyanın adına ayarlayabilirsiniz.
+İşlem hattı bir [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [pipelineparametresiyle](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)oluşturulmuşsa, `data_path_parameter_name` bağımsız değişkenini ayarlayarak bu değişkeni değiştirilen dosyanın adı olarak ayarlayabilirsiniz.
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -97,30 +97,30 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 
 ### <a name="optional-arguments-when-creating-a-schedule"></a>Zamanlama oluştururken isteğe bağlı bağımsız değişkenler
 
-Daha önce tartışılan bağımsız değişkenlere ek olarak, bağımsız değişkeni `status` etkin olmayan bir zamanlama oluşturacak şekilde `"Disabled"` ayarlayabilirsiniz. Son olarak, ardışık ardışık alt yapının varsayılan hata davranışını geçersiz kılacak bir Boolean'ı geçirmenizi `continue_on_step_failure` sağlar.
+Daha önce ele alınan bağımsız değişkenlere ek olarak, `status` bağımsız değişkenini `"Disabled"` devre dışı bir zamanlama oluşturacak şekilde ayarlayabilirsiniz. Son olarak, `continue_on_step_failure` işlem hattının varsayılan hata davranışını geçersiz kılacak bir Boole değeri geçirmenize olanak sağlar.
 
-### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>Daha karmaşık iş akışları için Azure Mantık Uygulamalarını kullanma
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>Daha karmaşık iş akışları için Azure Logic Apps kullanın
 
-Azure Logic Apps daha karmaşık iş akışlarını destekler ve Azure Machine Learning ardışık iş aktarımlarından çok daha geniş bir şekilde tümleştirilir. Daha fazla bilgi için [Logic App'ten Machine Learning ardışık hattının çalışmasını tetikle'ye](how-to-trigger-published-pipeline.md) bakın.
+Azure Logic Apps daha karmaşık iş akışlarını destekler ve Azure Machine Learning işlem hatlarından çok daha geniş ölçüde tümleşiktir. Daha fazla bilgi için bkz. [mantıksal uygulamadan Machine Learning işlem hattının çalıştırılmasını tetikleme](how-to-trigger-published-pipeline.md) .
 
-## <a name="view-your-scheduled-pipelines"></a>Zamanlanmış ardışık hatlarınızı görüntüleme
+## <a name="view-your-scheduled-pipelines"></a>Zamanlanan işlem hatlarınızı görüntüleyin
 
-Web tarayıcınızda Azure Machine Learning'e gidin. Gezinti panelinin **Uç Noktaları** bölümünden, Pipeline **uç noktalarını**seçin. Bu, çalışma alanında yayınlanan ardışık lıkların listesine götürür.
+Web tarayıcınızda Azure Machine Learning ' a gidin. Gezinti bölmesinin **uç noktalar** bölümünde **ardışık düzen uç noktaları**' nı seçin. Bu sizi çalışma alanında yayınlanan işlem hatları listesine götürür.
 
-![AML boru hatları sayfası](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
+![AML ardışık düzenleri sayfası](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
-Bu sayfada Çalışma Alanı'ndaki tüm ardışık işlerle ilgili özet bilgileri görebilirsiniz: adlar, açıklamalar, durum vb. Boru hattınızı tıklayarak matkap. Ortaya çıkan sayfada, ardışık hattınız hakkında daha fazla ayrıntı vardır ve tek tek çalıştırmaları inceleyebilirsiniz.
+Bu sayfada, çalışma alanındaki tüm işlem hatları hakkında özet bilgileri görebilirsiniz: adlar, açıklamalar, durum ve benzeri. İşlem hattınızı tıklatarak detaya gidin. Sonuç sayfasında, işlem hatınızla ilgili daha fazla ayrıntı vardır ve tek tek çalıştırmalar üzerinde ayrıntıya gidebilirsiniz.
 
-## <a name="deactivate-the-pipeline"></a>Ardışık hattı devre dışı bırakma
+## <a name="deactivate-the-pipeline"></a>İşlem hattını devre dışı bırakma
 
-Yayımlanmış, `Pipeline` ancak zamanlanmamış bir yayına sahipseniz, şu şekilde devre dışı kullanabilirsiniz:
+Yayımlanmış ancak zamanlanmamış bir `Pipeline` ' a sahipseniz, şu ile devre dışı bırakabilirsiniz:
 
 ```python
 pipeline = PublishedPipeline.get(ws, id=pipeline_id)
 pipeline.disable()
 ```
 
-Ardışık hatlar zamanlanmışsa, önce zamanlamayı iptal etmelisiniz. Zamanlamatanımlayıcısını portaldan veya çalıştırarak alın:
+İşlem hattı zamanlanırsa, önce zamanlamayı iptal etmeniz gerekir. Zamanlamadan veya çalıştırarak zamanlamanın tanımlayıcısını alın:
 
 ```python
 ss = Schedule.list(ws)
@@ -128,7 +128,7 @@ for s in ss:
     print(s)
 ```
 
-Devre dışı `schedule_id` kalmak istediğiniz de varsa, çalıştırın:
+Devre dışı bırakmak `schedule_id` istediğiniz bir kez daha çalıştırın:
 
 ```python
 def stop_by_schedule_id(ws, schedule_id):
@@ -139,17 +139,17 @@ def stop_by_schedule_id(ws, schedule_id):
 stop_by_schedule_id(ws, schedule_id)
 ```
 
-Daha sonra `Schedule.list(ws)` tekrar çalıştırırsanız, boş bir liste almalısınız.
+Daha sonra yeniden çalıştırırsanız `Schedule.list(ws)` boş bir liste almanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir ardışık işlem hattını iki farklı şekilde zamanlamak için Python için Azure Machine Learning SDK'yı kullandınız. Bir zamanlama, geçen saat süresine bağlı olarak yinelenir. Bir dosya belirtilen `Datastore` bir dizinde veya o mağazadaki bir dizinde değiştirilirse, diğer zamanlama çalışır. Boru hattını ve tek tek çalıştırmaları incelemek için portalı nasıl kullanacağınızı gördünüz. Son olarak, ardışık programın çalışmayı durdurması için zamanlamayı nasıl devre dışı bırakabileceğinizi öğrendiniz.
+Bu makalede, bir işlem hattını iki farklı şekilde zamanlamak için Python için Azure Machine Learning SDK 'sını kullandınız. Bir zamanlama geçen saat zamanına göre yinelenir. Diğer zamanlama, belirtilen `Datastore` bir dosya veya bu depodaki bir dizin içinde değiştirilirse çalışır. İşlem hattını ve bireysel çalıştırmaları incelemek için portalın nasıl kullanılacağını gördünüz. Son olarak, işlem hattının çalışmayı durdurması için zamanlamayı nasıl devre dışı bırakakullanacağınızı öğrendiniz.
 
 Daha fazla bilgi için bkz.
 
 > [!div class="nextstepaction"]
-> [Toplu puanlama için Azure Machine Learning Pipelines'ı kullanma](tutorial-pipeline-batch-scoring-classification.md)
+> [Batch Puanlama için Azure Machine Learning işlem hatları kullanma](tutorial-pipeline-batch-scoring-classification.md)
 
-* [Boru hatları](concept-ml-pipelines.md) hakkında daha fazla bilgi edinin
-* [Jupyter ile Azure Machine Learning'i keşfetme](samples-notebooks.md) hakkında daha fazla bilgi edinin
+* İşlem [hatları](concept-ml-pipelines.md) hakkında daha fazla bilgi
+* [Jupyıter ile Azure Machine Learning araştırma](samples-notebooks.md) hakkında daha fazla bilgi edinin
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü Depolama Gen2 ile bilinen sorunlar | Microsoft Dokümanlar
-description: Azure Veri Gölü Depolama Gen2'nin sınırlamaları ve bilinen sorunları hakkında bilgi edinin.
+title: Azure Data Lake Storage 2. ile ilgili bilinen sorunlar | Microsoft Docs
+description: Azure Data Lake Storage 2. kısıtlamaları ve bilinen sorunlar hakkında bilgi edinin.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,108 +9,108 @@ ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767967"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2 ile bilinen sorunlar
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
-Bu makalede, Azure Veri Gölü Depolama Gen2'nin sınırlamaları ve bilinen sorunları açıklanmaktadır.
+Bu makalede, Azure Data Lake Storage 2. kısıtlamaları ve bilinen sorunlar açıklanmaktadır.
 
 ## <a name="supported-blob-storage-features"></a>Desteklenen Blob depolama özellikleri
 
-Giderek artan sayıda Blob depolama özelliği artık hiyerarşik ad alanına sahip hesaplarla çalışır. Tam liste için Azure [Veri Gölü Depolama Gen2'de bulunan Blob Depolama özelliklerine](data-lake-storage-supported-blob-storage-features.md)bakın.
+Daha fazla sayıda BLOB depolama özelliği, hiyerarşik bir ad alanı olan hesaplarla çalışır. Tüm liste için, bkz. [Azure Data Lake Storage 2. bulunan BLOB Storage özellikleri](data-lake-storage-supported-blob-storage-features.md).
 
-## <a name="supported-azure-service-integrations"></a>Desteklenen Azure hizmet tümleştirmeleri
+## <a name="supported-azure-service-integrations"></a>Desteklenen Azure hizmeti tümleştirmeleri
 
-Azure Veri Gölü Depolama Gen2, verileri yutmak, analitik gerçekleştirmek ve görsel gösterimler oluşturmak için kullanabileceğiniz birkaç Azure hizmetlerini destekler. Desteklenen Azure hizmetlerinin listesi için, [Azure Veri Gölü Depolama Gen2'yi destekleyen Azure hizmetlerine](data-lake-storage-supported-azure-services.md)bakın.
+Azure Data Lake Storage 2., verileri almak, analiz gerçekleştirmek ve görsel gösterimler oluşturmak için kullanabileceğiniz çeşitli Azure hizmetlerini destekler. Desteklenen Azure hizmetlerinin listesi için bkz. [Azure Data Lake Storage 2. destekleyen Azure hizmetleri](data-lake-storage-supported-azure-services.md).
 
-[Azure Veri Gölü Depolama Gen2'yi destekleyen Azure hizmetlerine](data-lake-storage-supported-azure-services.md)bakın.
+[Azure Data Lake Storage 2. destekleyen Azure hizmetleri](data-lake-storage-supported-azure-services.md)bölümüne bakın.
 
 ## <a name="supported-open-source-platforms"></a>Desteklenen açık kaynaklı platformlar
 
-Çeşitli açık kaynak platformları Data Lake Storage Gen2'yi destekler. Tam liste için bkz: [Azure Veri Gölü Depolama Gen2'yi destekleyen Açık kaynak platformları.](data-lake-storage-supported-open-source-platforms.md)
+Birçok açık kaynak platformu Data Lake Storage 2. destekler. Tüm liste için, bkz. [Azure Data Lake Storage 2. destekleyen açık kaynaklı platformlar](data-lake-storage-supported-open-source-platforms.md).
 
-Bkz. [Azure Veri Gölü Depolama Gen2'yi destekleyen açık kaynak platformlar.](data-lake-storage-supported-open-source-platforms.md)
+[Azure Data Lake Storage 2. destekleyen açık kaynaklı platformlar](data-lake-storage-supported-open-source-platforms.md)bölümüne bakın.
 
-## <a name="blob-storage-apis"></a>Blob depolama API'leri
+## <a name="blob-storage-apis"></a>BLOB depolama API 'Leri
 
-Blob API'leri ve Veri Gölü Depolama Gen2 API'leri aynı veriler üzerinde çalışabilir.
+Blob API 'Leri ve Data Lake Storage 2. API 'Leri aynı verilerde çalışabilir.
 
-Bu bölümde, aynı veriler üzerinde çalışmak için blob API'leri ve Veri Gölü Depolama Gen2 API'leri kullanılarak ilgili sorunlar ve sınırlamalar açıklanmaktadır.
+Bu bölümde, aynı verilerde çalışacak blob API 'Leri ve Data Lake Storage 2. API 'Leri kullanımıyla ilgili sorunlar ve sınırlamalar açıklanmaktadır.
 
-* Bir dosyanın aynı örneğine yazmak için hem Blob API'lerini hem de Veri Gölü Depolama API'lerini kullanamazsınız. Veri Gölü Depolama Gen2 API'lerini kullanarak bir dosyaya yazarsanız, bu dosyanın blokları [Blok Listesi blob](https://docs.microsoft.com/rest/api/storageservices/get-block-list) API'sına yapılan çağrılara görünmez. Veri Gölü Depolama Gen2 API'lerini veya Blob API'lerini kullanarak dosyanın üzerine yazabilirsiniz. Bu, dosya özelliklerini etkilemez.
+* Aynı dosyanın aynı örneğine yazmak için hem blob API 'Leri hem de Data Lake Storage API 'Leri kullanamazsınız. Data Lake Storage 2. API 'Leri kullanarak bir dosyaya yazarsanız, bu dosyanın blokları [Get Block list](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 'sine yapılan çağrılara görünmez. Data Lake Storage 2. API 'leri ya da blob API 'Lerini kullanarak bir dosyanın üzerine yazabilirsiniz. Bu dosya özelliklerini etkilemez.
 
-* [Liste Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) işlemini bir sınır layıcı belirtmeden kullandığınızda, sonuçlar hem dizinleri hem de blobları içerir. Bir sınır layıcı kullanmayı seçerseniz, yalnızca ileri`/`eğik çizgi (). Desteklenen tek delimiter bu.
+* Bir sınırlayıcı belirtmeden [Blobları Listele](https://docs.microsoft.com/rest/api/storageservices/list-blobs) işlemini kullandığınızda, sonuçlar hem dizinleri hem de Blobları içerecektir. Bir sınırlayıcı kullanmayı seçerseniz yalnızca eğik çizgi (`/`) kullanın. Bu, desteklenen tek sınırlayıcıdır.
 
-* Bir dizini silmek için [Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API'sini sil'i kullanırsanız, bu dizin yalnızca boşsa silinir. Bu, Blob API silme dizinlerini özyinelemeli olarak kullanamadığınız anlamına gelir.
+* Bir dizini silmek için [blobu silme](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 'sini kullanırsanız, bu dizin yalnızca boşsa silinir. Bu, blob API 'SI silme dizinlerini yinelemeli olarak kullanamayacağı anlamına gelir.
 
-Bu Blob REST API'leri desteklenmez:
+Bu blob REST API 'Leri desteklenmez:
 
-* [Blob Koyun (Sayfa)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Sayfa Koy](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Sayfa Aralıklarını Alın](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Artımlı Kopya Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [URL'den Sayfa Koy](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Blob Koyun (Ek)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Ek Blok](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [URL'den Ek Engelleme](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Blobu Yerleştir (sayfa)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Yerleştirme sayfası](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Sayfa aralıklarını al](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Artımlı kopya blobu](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [URL 'den sayfa koy](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Blobu Yerleştir (Ekle)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [URL 'den ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-Yönetilmeyen VM diskleri hiyerarşik ad alanına sahip hesaplarda desteklenmez. Depolama hesabında hiyerarşik bir ad alanı etkinleştirmek istiyorsanız, yönetilmeyen VM disklerini hiyerarşik ad alanı özelliği etkin olmayan bir depolama hesabına yerleştirin.
+Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklenmez. Bir depolama hesabında hiyerarşik bir ad alanı etkinleştirmek istiyorsanız, yönetilmeyen VM disklerini hiyerarşik ad alanı özelliği etkin olmayan bir depolama hesabına yerleştirin.
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK'larda, PowerShell'de ve Azure CLI'de dosya sistemi desteği
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK 'lar, PowerShell ve Azure CLı 'da dosya sistemi desteği
 
-- ACL işlemlerini alın ve ayarlayın şu anda özyinelemeli değildir.
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md) desteği genel önizlemededir.
+- Get ve set ACL işlemleri şu anda özyinelemeli değil.
+- [Azure CLI](data-lake-storage-directory-file-acl-cli.md) desteği genel önizlemeye sunuldu.
 
 
-## <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetimi politikaları
+## <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
 
-* Blob anlık görüntüleri silme henüz desteklenmez.  
+* Blob anlık görüntülerini silme henüz desteklenmiyor.  
 
-## <a name="archive-tier"></a>Arşiv Katmanı
+## <a name="archive-tier"></a>Arşiv katmanı
 
 Şu anda arşiv erişim katmanını etkileyen bir hata var.
 
 
-## <a name="blobfuse"></a>Blobfuse
+## <a name="blobfuse"></a>Blobsigortası
 
-Blobfuse desteklenmez.
+Blobsigortası desteklenmez.
 
 <a id="known-issues-tools" />
 
 ## <a name="azcopy"></a>AzCopy
 
-AzCopy sadece en son sürümünü kullanın ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).AzCopy v8.1 gibi AzCopy önceki sürümleri desteklenmez.
+AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.
 
 <a id="storage-explorer" />
 
 ## <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
 
-Yalnızca sürümleri `1.6.0` veya daha yüksek sürümleri kullanın.
+Yalnızca sürümlerini `1.6.0` veya üstünü kullanın.
 
 <a id="explorer-in-portal" />
 
-## <a name="storage-explorer-in-the-azure-portal"></a>Azure portalında Depolama Gezgini
+## <a name="storage-explorer-in-the-azure-portal"></a>Azure portal Depolama Gezgini
 
-ALAK'lar henüz desteklenmedi.
+ACL 'Ler henüz desteklenmiyor.
 
 <a id="third-party-apps" />
 
-## <a name="thirdpartyapplications"></a>Üçüncü taraf uygulamaları
+## <a name="thirdpartyapplications"></a>Üçüncü taraf uygulamalar
 
-Çalışmak için REST API'lerini kullanan üçüncü taraf uygulamalar, Blob API'lerini arayan Veri Gölü Depolama Gen2 Uygulamaları yla kullanırsanız çalışmaya devam eder.
+REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri çağıran Data Lake Storage 2. uygulamalarla birlikte kullandığınızda çalışmaya devam edecektir.
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Erişim denetim listeleri (ACL) ve anonim okuma erişimi
 
-Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verilmişse, ALAK'ların o kapsayıcı veya o kapsayıcıdaki dosyalar üzerinde hiçbir etkisi yoktur.
+Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verildiyse, ACL 'lerin bu kapsayıcıya veya o kapsayıcıdaki dosyalara hiçbir etkisi olmaz.
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Depolama Blob (WASB) sürücüsü (Veri Gölü Depolama Gen2 ile desteklenmez)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Depolama Blobu (. b) sürücüsü (Data Lake Storage 2. ile desteklenmez)
 
-Şu anda, yalnızca Blob API ile çalışmak üzere tasarlanmış WASB sürücüsü, birkaç yaygın senaryoda sorunlarla karşılaşır. Özellikle, hiyerarşik ad alanı etkin depolama hesabına istemci olduğunda. Veri Gölü Depolama'daki çoklu protokol erişimi bu sorunları azaltmaz. 
+Şu anda, yalnızca blob API 'SI ile çalışmak üzere tasarlanan olan, çok sayıda yaygın senaryoda sorunlarla karşılaştığında. Özellikle, hiyerarşik bir ad alanı etkin depolama hesabına yönelik bir istemcudur. Data Lake Storage çoklu protokol erişimi, bu sorunları azaltmaz. 
 
-Şimdilik (ve büyük olasılıkla öngörülebilir bir gelecek) wasb sürücüsünü istemci olarak kullanan müşterileri hiyerarşik ad alanı etkin leştirilmiş bir depolama hesabına desteklemeyiz. Bunun yerine, Hadoop ortamınızda [Azure Blob Dosya Sistemi (ABFS)](data-lake-storage-abfs-driver.md) sürücüsünü kullanmayı tercih etmenizi öneririz. Hadoop şube-3'ten daha önceki bir sürümle şirket içi Hadoop ortamından geçmeye çalışıyorsanız, siz ve kuruluşunuz için doğru yolda sizinle iletişim ebilebilmemiz için lütfen bir Azure Destek bileti açın.
+Kullanım süresi (ve olasılı olma olasılığı yüksektir) için, bir istemci olarak, bir hiyerarşik ad alanı etkin depolama hesabına sahip olan müşterileri desteklemezler. Bunun yerine, Hadoop ortamınızda [Azure blob dosya sistemi (ABFS)](data-lake-storage-abfs-driver.md) sürücüsünü kullanmayı tercih etmenizi öneririz. Hadoop dalı-3 ' ten önceki bir sürüme sahip şirket içi Hadoop ortamından geçiş yapmaya çalışıyorsanız, sizin ve kuruluşunuz için doğru yolda sizinle iletişime geçebilmemiz için lütfen bir Azure destek bileti açın.

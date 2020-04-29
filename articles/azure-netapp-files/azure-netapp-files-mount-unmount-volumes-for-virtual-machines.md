@@ -1,6 +1,6 @@
 ---
-title: Sanal makineler için Azure NetApp Dosyaları ciltlerini dağıla
-description: Azure'daki Windows sanal makineleri veya Linux sanal makineleri için bir ses düzeyini nasıl monte edinveya atmayı öğrenin.
+title: Sanal makineler için Azure NetApp Files birimleri bağlama
+description: Azure 'da Windows sanal makineleri veya Linux sanal makineleri için bir birimi bağlama veya çıkarma hakkında bilgi edinin.
 author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
@@ -8,41 +8,41 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: c439ff8df95d759e96d2fc82356bda8551507e8d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084949"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows veya Linux sanal makineleri için birimi bağlama veya ayırma 
 
-Gerektiğinde Windows veya Linux sanal makineleri için bir birim monte edebilir veya atlayabilirsiniz.  Linux sanal makineleri için montaj talimatları Azure NetApp Files'da mevcuttur.  
+Gerektiğinde Windows veya Linux sanal makineleri için bir birimi bağlayabilir veya kaldırabilirsiniz.  Linux sanal makineleri için bağlama yönergeleri Azure NetApp Files kullanılabilir.  
 
-1. **Birimler** bıçağını tıklatın ve sonra monte etmek istediğiniz birimi seçin. 
-2. Seçili birimden **Yönergeleri Dağı'nı** tıklatın ve sonra sesi takmak için yönergeleri izleyin. 
+1. **Birimler** dikey penceresine tıklayın ve sonra bağlamak istediğiniz birimi seçin. 
+2. Seçili birimdeki **bağlama yönergeleri** ' ne tıklayın ve ardından birimi bağlamak için yönergeleri izleyin. 
 
-    ![Montaj talimatları NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
+    ![Bağlama yönergeleri NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
-    ![Montaj talimatları SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
+    ![Bağlama yönergeleri SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
     
-    NFSv4.1 kullanıyorsanız, dosya sisteminizi takmak için aşağıdaki komutu kullanın:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+    NFSv 4.1 kullanıyorsanız, dosya sisteminizi bağlamak için aşağıdaki komutu kullanın:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
-3. Azure VM başlatıldığında veya yeniden başlatıldığında bir NFS biriminin otomatik olarak monte `/etc/fstab` edilmesini istiyorsanız, ana bilgisayardaki dosyaya bir giriş ekleyin. 
+3. Bir Azure VM başlatıldığında veya yeniden başlatıldığında bir NFS biriminin otomatik olarak bağlanmasını istiyorsanız, konaktaki `/etc/fstab` dosyasına bir giriş ekleyin. 
 
     Örneğin:`$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
-    * `$ANFIP`ses özellikleri bıçak bulunan Azure NetApp Dosyaları hacminin IP adresidir.
-    * `$FILEPATH`Azure NetApp Dosyaları hacminin dışa aktarma yoludur.
-    * `$MOUNTPOINT`NFS dışa aktarmayı monte etmek için kullanılan Linux ana bilgisayarda oluşturulan dizindir.
+    * `$ANFIP`, birim özellikleri dikey penceresinde bulunan Azure NetApp Files biriminin IP adresidir.
+    * `$FILEPATH`Azure NetApp Files biriminin dışarı aktarma yoludur.
+    * `$MOUNTPOINT`, NFS dışarı aktarmayı bağlamak için kullanılan Linux ana bilgisayarında oluşturulan dizindir.
 
-4. NFS kullanarak ses düzeyini Windows'a monte etmek istiyorsanız:
+4. Birimini NFS kullanarak Windows 'a bağlamak istiyorsanız:
 
-    a. Önce bir Unix veya Linux VM'ye ses seviyesini monte edin.  
-    b. Ses `chmod 777` düzeyine karşı a veya `chmod 775` komut çalıştırın.  
-    c. Ses düzeyini Windows'daki NFS istemcisi üzerinden monte edin.
+    a. Öncelikle birimi bir UNIX veya Linux VM 'ye bağlayın.  
+    b. Birimde bir `chmod 777` veya `chmod 775` komutunu çalıştırın.  
+    c. Windows üzerinde NFS istemcisi aracılığıyla birimi bağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma](azure-netapp-files-configure-nfsv41-domain.md)
-* [NFS Sıkça Sorulan Soru](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
-* [Ağ Dosya Sistemi'ne genel bakış](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [NFS SSS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
+* [Ağ dosya sistemine genel bakış](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)

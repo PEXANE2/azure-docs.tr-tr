@@ -6,25 +6,25 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81391837"
 ---
-# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure Yönetilen Uygulamalarda özel rol tanımı yapı
+# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure yönetilen uygulamalarında özel rol tanımı yapıtı
 
-Özel rol tanımı, yönetilen uygulamalarda isteğe bağlı bir yapıdır. Yönetilen uygulamanın işlevlerini gerçekleştirmek için hangi izinlere ihtiyaç olduğunu belirlemek için kullanılır.
+Özel rol tanımı yönetilen uygulamalarda isteğe bağlı bir yapıdır. Yönetilen uygulamanın işlevlerini gerçekleştirmesi için gereken izinleri belirlemek için kullanılır.
 
-Bu makalede, özel rol tanımı artifakı ve yeteneklerine genel bir bakış sağlar.
+Bu makalede özel rol tanımı yapıtı ve özelliklerine genel bir bakış sunulmaktadır.
 
-## <a name="custom-role-definition-artifact"></a>Özel rol tanımı artifakı
+## <a name="custom-role-definition-artifact"></a>Özel rol tanımı yapıtı
 
-Özel rol tanımı artifakı özelRoleDefinition.json adlandırmanız gerekir. Yönetilen bir uygulama tanımı oluşturan .zip paketinde createUiDefinition.json ve mainTemplate.json ile aynı düzeyde yerleştirin. .zip paketini nasıl oluşturup yönetilen bir uygulama tanımıyayımla öğrenmek için [bkz.](publish-service-catalog-app.md)
+CustomRoleDefinition. JSON özel rol tanımı yapıtı adını yazmanız gerekir. Yönetilen bir uygulama tanımı oluşturan. zip paketindeki Createuıdefinition. JSON ve mainTemplate. JSON ile aynı düzeyde yer koyun. . Zip paketini oluşturma ve yönetilen uygulama tanımını yayımlama hakkında bilgi edinmek için bkz [. yönetilen uygulama tanımını yayımlama.](publish-service-catalog-app.md)
 
 ## <a name="custom-role-definition-schema"></a>Özel rol tanımı şeması
 
-customRoleDefinition.json dosyası, bir dizi `roles` rol içeren üst düzey bir özelliğe sahiptir. Bu roller, yönetilen uygulamanın çalışması için gereken izinlerdir. Şu anda yalnızca yerleşik rollere izin verilir, ancak birden çok rol belirtebilirsiniz. Bir rol, rol tanımının kimliğiyle veya rol adı ile başvurulabilir.
+CustomRoleDefinition. JSON dosyası, rol dizisi olan bir en `roles` üst düzey özelliğe sahiptir. Bu roller, yönetilen uygulamanın çalışması için gereken izinlerdir. Şu anda yalnızca yerleşik rollere izin veriliyor, ancak birden çok rol belirtebilirsiniz. Role rol tanımının KIMLIĞI veya rol adı tarafından başvurulabilir.
 
 Özel rol tanımı için örnek JSON:
 
@@ -49,7 +49,7 @@ customRoleDefinition.json dosyası, bir dizi `roles` rol içeren üst düzey bir
 
 ## <a name="roles"></a>Roller
 
-Bir rol a `$.properties.roleName` veya bir `id`oluşur:
+Bir rol ya bir `$.properties.roleName` veya ' den oluşur: `id`
 
 ```json
 {
@@ -61,9 +61,9 @@ Bir rol a `$.properties.roleName` veya bir `id`oluşur:
 ```
 
 > [!NOTE]
-> Alanı `id` veya alanı `roleName` kullanabilirsiniz. Sadece bir tane gerekiyor. Bu alanlar, uygulanması gereken rol tanımını aramak için kullanılır. Her ikisi de sağlanırsa, `id` alan kullanılır.
+> `id` Ya `roleName` da alanını kullanabilirsiniz. Yalnızca bir tane gereklidir. Bu alanlar, uygulanması gereken rol tanımını aramak için kullanılır. Her ikisi de sağlanırsa, `id` alanı kullanılacaktır.
 
 |Özellik|Gerekli mi?|Açıklama|
 |---------|---------|---------|
-|id|Evet|Yerleşik rolün kimliği. Tam kimliği veya sadece GUID'i kullanabilirsiniz.|
-|roleName|Evet|Yerleşik rolün adı.|
+|id|Yes|Yerleşik rolün KIMLIĞI. Tam KIMLIĞI veya yalnızca GUID 'YI kullanabilirsiniz.|
+|roleName|Yes|Yerleşik rolün adı.|

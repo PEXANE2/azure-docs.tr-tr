@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
 ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133606"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ağ hizmetleri 'ne genel bakış
@@ -93,7 +93,7 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı korumaya yardımcı olan ağ hizme
 |Hizmet|Neden kullanılmalıdır?|Senaryo|
 |---|---|---|
 |[DDoS koruması](#ddosprotection) |Fazla IP trafiği ücretlerinden koruma sayesinde uygulamalarınız için yüksek kullanılabilirlik|[Azure DDoS korumasını yönetme](../virtual-network/manage-ddos-protection.md)|
-|[Web uygulaması güvenlik duvarı](#waf)|<p>[Application Gateway Ile Azure WAF](../web-application-firewall/ag/ag-overview.md) , ortak ve özel adres alanındaki varlıklara bölgesel koruma sağlar</p><p>[Ön kapılı Azure WAF](../web-application-firewall/afds/afds-overview.md) , ağ kenarından genel uç noktalara koruma sağlar.</p>|<p>[Bot koruma kurallarını yapılandırma](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Özel yanıt kodunu yapılandırma](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP kısıtlama kurallarını yapılandırma](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Hız limiti kuralını Yapılandır](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Web Uygulaması Güvenlik Duvarı](#waf)|<p>[Application Gateway Ile Azure WAF](../web-application-firewall/ag/ag-overview.md) , ortak ve özel adres alanındaki varlıklara bölgesel koruma sağlar</p><p>[Ön kapılı Azure WAF](../web-application-firewall/afds/afds-overview.md) , ağ kenarından genel uç noktalara koruma sağlar.</p>|<p>[Bot koruma kurallarını yapılandırma](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Özel yanıt kodunu yapılandırma](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP kısıtlama kurallarını yapılandırma](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Hız limiti kuralını Yapılandır](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
 |[Azure Güvenlik Duvarı](#firewall)|Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, bulut tabanlı bir güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe ve sınırsız bulut ölçeklenebilirliğine sahip, tam durum bilgisi olan bir hizmet olarak güvenlik duvarıdır.|<p>[VNET 'te Azure Güvenlik Duvarı dağıtma](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[-Azure Güvenlik duvarını karma ağda dağıtma](../firewall/tutorial-hybrid-ps.md)</p> <p>[Azure Güvenlik Duvarı ile gelen trafiği Filtreleme DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
 |[Ağ güvenlik grupları](#nsg)|Tüm ağ trafiği akışları için VM/alt ağdaki tam ayrıntılı dağıtılmış son düğüm denetimi|[Ağ güvenlik gruplarını kullanarak ağ trafiğini filtreleme](../virtual-network/tutorial-filter-network-traffic.md)|
 |[Sanal ağ hizmet uç noktaları](#serviceendpoints)|Bazı Azure hizmet kaynaklarına ağ erişimini bir sanal ağ alt ağıyla sınırlamanıza olanak sağlar|[PaaS kaynaklarına ağ erişimini kısıtlama](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
@@ -104,7 +104,7 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı korumaya yardımcı olan ağ hizme
 
 ![DDOS Koruması](./media/networking-overview/ddos-protection.png)
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web uygulaması güvenlik duvarı
+### <a name="web-application-firewall"></a><a name="waf"></a>Web Uygulaması Güvenlik Duvarı
 
 [Azure Web uygulaması güvenlik duvarı](../web-application-firewall/overview.md) (WAF), Web UYGULAMALARıNıZ için SQL ekleme ve siteler arası betik oluşturma gibi sık kullanılan Web açıklarından ve güvenlik açıklarına karşı koruma sağlar. Azure WAF, yönetilen kurallar aracılığıyla OWASP ilk 10 güvenlik açığına karşı kullanıma hazır koruma sağlar. Ayrıca müşteriler, kaynak IP aralığına dayalı ek koruma sağlamak için müşteri tarafından yönetilen kurallar ve üstbilgiler, tanımlama bilgileri, form veri alanları veya sorgu dizesi parametreleri gibi özel kurallar da yapılandırabilir.
 

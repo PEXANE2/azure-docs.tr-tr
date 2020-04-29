@@ -1,7 +1,7 @@
 ---
-title: Güvenli bağlantılar sağlamak için güvenli aktarım gerektirir
+title: Güvenli bağlantıları güvence altına almak için güvenli aktarım gerektir
 titleSuffix: Azure Storage
-description: Azure Depolama'daki istekler için güvenli aktarım için nasıl gerekli olduğunu öğrenin. Bir depolama hesabı için güvenli aktarım gerektirdiğinde, güvenli olmayan bir bağlantıdan kaynaklanan tüm istekler reddedilir.
+description: Azure depolama 'ya yönelik istekler için güvenli aktarım yapmayı isteme hakkında bilgi edinin. Bir depolama hesabı için güvenli aktarım gerektiğinde, güvenli olmayan bir bağlantıdan kaynaklanan istekler reddedilir.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,61 +11,61 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870526"
 ---
-# <a name="require-secure-transfer-to-ensure-secure-connections"></a>Güvenli bağlantılar sağlamak için güvenli aktarım gerektirir
+# <a name="require-secure-transfer-to-ensure-secure-connections"></a>Güvenli bağlantıları güvence altına almak için güvenli aktarım gerektir
 
-Depolama hesabınızı yalnızca depolama hesabı için **Güvenli aktarım gerekli** özelliğini ayarlayarak güvenli bağlantılardan gelen istekleri kabul etmek üzere yapılandırabilirsiniz. Güvenli aktarım gerektirdiğinde, güvenli olmayan bir bağlantıdan kaynaklanan tüm istekler reddedilir. Microsoft, tüm depolama hesaplarınız için her zaman güvenli aktarım aparatını gerektirmenizi önerir.
+Depolama hesabınızı, güvenli bağlantılardan gelen istekleri kabul edecek şekilde yapılandırabilir ve depolama hesabı için **Güvenli aktarım gerekli** özelliğini ayarlayabilirsiniz. Güvenli aktarım gerekli olduğunda, güvensiz bir bağlantıdan kaynaklanan istekler reddedilir. Microsoft, tüm depolama hesaplarınız için her zaman güvenli aktarım gerektirmenizi önerir.
 
-Güvenli aktarım gerektiğinde, Https üzerinden Azure Depolama REST API işlemine çağrı yapılmalıdır. HTTP üzerinden yapılan tüm istek reddedilir.
+Güvenli aktarım gerekli olduğunda, HTTPS üzerinden Azure depolama REST API işlemi çağrısı yapılmalıdır. HTTP üzerinden yapılan tüm istekler reddedilir.
 
-Depolama hesabı için güvenli aktarım gerektiğinde, SMB üzerinden Bir Azure Dosyası paylaşımına şifreleme olmadan bağlanmak başarısız olur. Güvenli olmayan bağlantılara örnek olarak, SMB 2.1, SMB 3.0 şifreleme olmadan yapılanlar veya Linux SMB istemcisinin bazı sürümleri verilebilir.
+Depolama hesabı için güvenli aktarım gerektiğinde şifreleme olmadan SMB üzerinden bir Azure dosya paylaşımıyla bağlantı kurma işlemi başarısız olur. Güvenli olmayan bağlantılara örnek olarak, SMB 2,1 üzerinden yapılan, şifrelemeden SMB 3,0 veya Linux SMB istemcisinin bazı sürümleri dahildir.
 
 Varsayılan olarak, bir depolama hesabı oluşturduğunuzda **Güvenli aktarım gerekli** özelliği etkinleştirilir.
 
 > [!NOTE]
-> Azure Depolama özel alan adları için HTTPS'yi desteklemediği için, özel bir etki alanı adı kullanırken bu seçenek uygulanmaz. Ve klasik depolama hesapları desteklenmez.
+> Azure depolama, özel etki alanı adları için HTTPS 'yi desteklemediğinden, özel bir etki alanı adı kullandığınızda bu seçenek uygulanmaz. Ve klasik depolama hesapları desteklenmez.
 
-## <a name="require-secure-transfer-in-the-azure-portal"></a>Azure portalında güvenli aktarım gerektirir
+## <a name="require-secure-transfer-in-the-azure-portal"></a>Azure portal için güvenli aktarım gerektir
 
-[Azure portalında](https://portal.azure.com)bir depolama hesabı oluşturduğunuzda **Güvenli aktarım özelliğini** açabilirsiniz. Varolan depolama hesapları için de etkinleştirebilirsiniz.
+[Azure Portal](https://portal.azure.com)bir depolama hesabı oluşturduğunuzda **Güvenli aktarım gerekli** özelliğini açabilirsiniz. Ayrıca, var olan depolama hesapları için etkinleştirebilirsiniz.
 
-### <a name="require-secure-transfer-for-a-new-storage-account"></a>Yeni bir depolama hesabı için güvenli aktarım gerektirir
+### <a name="require-secure-transfer-for-a-new-storage-account"></a>Yeni bir depolama hesabı için güvenli aktarım gerektir
 
-1. Azure portalında **depolama hesabı oluştur** bölmesini açın.
-1. **Güvenli aktarım gerekli**altında , **Etkin**seçin.
+1. Azure portal **depolama hesabı oluştur** bölmesini açın.
+1. **Güvenli aktarım gerekli**altında, **etkin**' i seçin.
 
-   ![Depolama hesap bıçağı oluşturma](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
+   ![Depolama hesabı oluştur dikey penceresi](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
-### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Varolan bir depolama hesabı için güvenli aktarım gerektirir
+### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Var olan bir depolama hesabı için güvenli aktarım gerektir
 
-1. Azure portalında varolan bir depolama hesabı seçin.
-1. DEPOLAMA hesabı menüsü bölmesinde, **AYARLAR**altında **Configuration'ı**seçin.
-1. **Güvenli aktarım gerekli**altında , **Etkin**seçin.
+1. Azure portal var olan bir depolama hesabını seçin.
+1. Depolama hesabı menü bölmesinde, **Ayarlar**' ın altında **yapılandırma**' yı seçin.
+1. **Güvenli aktarım gerekli**altında, **etkin**' i seçin.
 
-   ![Depolama hesabı menüsü bölmesi](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
+   ![Depolama hesabı menü bölmesi](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
-## <a name="require-secure-transfer-from-code"></a>Koddan güvenli aktarım gerektirir
+## <a name="require-secure-transfer-from-code"></a>Koddan güvenli aktarım gerektir
 
-Programlı olarak güvenli aktarım gerektirmek için, depolama hesabında _destekhttpsTrafficOnly_ özelliğini ayarlayın. Depolama Kaynak Sağlayıcısı REST API'sini, istemci kitaplıklarını veya araçlarını kullanarak bu özelliği ayarlayabilirsiniz:
+Programlı olarak güvenli aktarım gerektirmek için depolama hesabındaki _supportsHttpsTrafficOnly_ özelliğini ayarlayın. Bu özelliği, depolama kaynak sağlayıcısı REST API, istemci kitaplıkları veya araçları kullanarak ayarlayabilirsiniz:
 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
 * [CLI](/cli/azure/storage/account)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
-* [Python SDK](https://pypi.org/project/azure-mgmt-storage)
+* [Python SDK'sı](https://pypi.org/project/azure-mgmt-storage)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
-## <a name="require-secure-transfer-with-powershell"></a>PowerShell ile güvenli transfer gerektirir
+## <a name="require-secure-transfer-with-powershell"></a>PowerShell ile güvenli aktarım gerektir
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu örnek, Azure PowerShell modülü Az sürüm 0.7 veya daha sonra gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps).
+Bu örnek Azure PowerShell modülünü az sürüm 0,7 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps).
 
 Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
 
@@ -91,7 +91,7 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-## <a name="require-secure-transfer-with-azure-cli"></a>Azure CLI ile güvenli aktarım gerektirir
+## <a name="require-secure-transfer-with-azure-cli"></a>Azure CLı ile güvenli aktarım gerektir
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -125,4 +125,4 @@ az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Blob depolama için güvenlik önerileri](../blobs/security-recommendations.md)
+[BLOB depolama için güvenlik önerileri](../blobs/security-recommendations.md)

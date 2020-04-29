@@ -1,6 +1,6 @@
 ---
-title: Ağ Erişim Denetimleri
-description: Erişimi yönetmek ve tek veya havuza alınan bir veritabanını yapılandırmak için Azure SQL Veritabanı ve Veri Ambarı için ağ erişim denetimlerine genel bakış.
+title: Ağ erişim denetimleri
+description: Erişimi yönetmek ve tek veya havuza alınmış bir veritabanını yapılandırmak için Azure SQL veritabanı ve veri ambarı için ağ erişim denetimlerine genel bakış.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,59 +13,59 @@ ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414407"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Veritabanı ve Veri Ambarı ağ erişim denetimleri
+# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
 
 > [!NOTE]
-> Bu makale, Azure SQL sunucusu ve Azure SQL sunucusunda oluşturulan SQL Veritabanı ve SQL Veri Ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
 
 > [!IMPORTANT]
-> Bu makale, **Azure SQL Veritabanı Yönetilen Örnek**için geçerli *değildir.* ağ yapılandırması hakkında daha fazla bilgi için yönetilen [bir örneğe bağlanma](sql-database-managed-instance-connect-app.md) yı görün.
+> Bu *Makale,* **Azure SQL veritabanı yönetilen örneği**için geçerlidir. ağ yapılandırması hakkında daha fazla bilgi için bkz. [yönetilen örneğe bağlanma](sql-database-managed-instance-connect-app.md) .
 
-[Azure portalından](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturduğunuzda, sonuç *biçimi, yourservername.database.windows.net*genel bir bitiş noktasıdır.
+[Azure Portal](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturduğunuzda sonuç, *yourservername.Database.Windows.net*biçiminde genel bir uç noktadır.
 
-Ortak bitiş noktası üzerinden SQL Veritabanına erişime seçici olarak izin vermek için aşağıdaki ağ erişim denetimlerini kullanabilirsiniz:
-- Azure Hizmetlerine İzin Ver: A)'ya ayarlandığında, Azure sınırındaki diğer kaynaklar (örneğin bir Azure Sanal Makinesi) SQL Veritabanı'na erişebilir
+Genel uç nokta aracılığıyla SQL veritabanı erişimine seçmeli olarak izin vermek için aşağıdaki ağ erişim denetimlerini kullanabilirsiniz:
+- Azure hizmetlerine izin ver: açık olarak ayarlandığında Azure sınırının içindeki diğer kaynaklar, örneğin bir Azure sanal makinesi SQL veritabanına erişebilir
 
-- IP güvenlik duvarı kuralları: Belirli bir IP adresinden (örneğin şirket içi makinelerden) bağlantılara açıkça izin vermek için bu özelliği kullanın
+- IP güvenlik duvarı kuralları: belirli bir IP adresinden (örneğin, şirket içi makinelerden) bağlantılara açıkça izin vermek için bu özelliği kullanın
 
-Sanal [Ağlar'dan](../virtual-network/virtual-networks-overview.md) SQL Veritabanı'na özel erişime de izin verebilirsiniz:
-- Sanal Ağ güvenlik duvarı kuralları: Azure sınırı içinde belirli bir Sanal Ağ'dan gelen trafiğe izin vermek için bu özelliği kullanın
+Ayrıca, ile [sanal AĞLARDAN](../virtual-network/virtual-networks-overview.md) SQL veritabanına özel erişime de izin verebilirsiniz:
+- Sanal ağ güvenlik duvarı kuralları: Azure sınırları içindeki belirli bir sanal ağdan gelen trafiğe izin vermek için bu özelliği kullanın
 
-- Özel Bağlantı: Belirli bir Sanal Ağ içinde Azure SQL Server için özel bir bitiş noktası oluşturmak için bu özelliği kullanın
+- Özel bağlantı: belirli bir sanal ağ içindeki Azure SQL Server özel bir uç nokta oluşturmak için bu özelliği kullanın
 
 
 
-Bu erişim denetimlerinin üst düzey bir açıklaması ve ne yaptıkları için aşağıdaki videoyu izleyin:
+Bu erişim denetimlerine ilişkin üst düzey bir açıklama ve ne yapabilecekleri hakkında daha fazla bilgi için aşağıdaki videoya bakın:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
 
 ## <a name="allow-azure-services"></a>Azure hizmetlerine izin ver 
-[Azure portalından](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturulması sırasında bu ayar işaretsiz bırakılır.
+[Azure Portal](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturma sırasında, bu ayar işaretsiz bırakılır.
 
 
 
-Azure SQL Server oluşturulduktan sonra bu ayarı güvenlik duvarı bölmesi aracılığıyla da değiştirebilirsiniz.
+Bu ayarı, Azure SQL Server aşağıdaki gibi oluşturulduktan sonra güvenlik duvarı bölmesi aracılığıyla da değiştirebilirsiniz.
   
- ![Sunucu güvenlik duvarını yönet ekran görüntüsü][2]
+ ![Sunucu güvenlik duvarını yönetme ekran görüntüsü][2]
 
-**ON'da** Azure SQL Server olarak ayarlandığında, Azure sınırı içindeki tüm kaynaklardan gelen ve aboneliğinizin bir parçası olabilecek veya olmayabilir.
+Azure SQL Server olarak ayarlandığında **, Azure sınırının** içindeki tüm kaynaklardan gelen iletişimlere izin verir, bu da aboneliğinizin bir parçası olmayabilir veya olmayabilir.
 
-Çoğu durumda, **ON** ayarı çoğu müşterinin istediğinden daha müsamahakârdır. Bu ayarı **OFF** olarak ayarlamak ve daha kısıtlayıcı IP güvenlik duvarı kuralları veya Sanal Ağ güvenlik duvarı kurallarıyla değiştirmek isteyebilirler. Bunu yapmak, Azure'da VM'lerde çalışan ve VNet'inizin bir parçası olmayan ve dolayısıyla bir Azure IP adresi üzerinden Sql Veritabanı'na bağlanan aşağıdaki özellikleri etkiler.
+Çoğu durumda, **Açık** ayarı, çoğu müşterinin izin verilenden daha fazla izne sahiptir. Bu ayarı **kapalı** olarak ayarlamak ve daha kısıtlayıcı IP güvenlik duvarı kuralları ya da sanal ağ güvenlik duvarı kuralları ile değiştirmek isteyebilir. Bunun yapılması, Azure 'da sanal ağınızın parçası olmayan ve bu nedenle bir Azure IP adresi aracılığıyla SQL veritabanı 'na bağlanan VM 'lerde çalışan aşağıdaki özellikleri etkiler.
 
-### <a name="import-export-service"></a>İthalat İhracat Hizmeti
-**Azure hizmetlerine erişime izin** **ver,' in OFF**olarak ayarlanmasında Dışa Aktarma Hizmeti çalışmıyor. Ancak, bir Azure [VM'den sqlpackage.exe'yi el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFx API'sini kullanarak dışa aktarmayı doğrudan kodunuzda gerçekleştirerek sorunu çözebilirsiniz.
+### <a name="import-export-service"></a>İçeri aktarma hizmeti al
+**Azure hizmetlerine erişime Izin ver** **kapalı**olarak ayarlandığında içeri aktarma hizmeti kullanılamaz. Ancak, [SqlPackage. exe ' yi bir Azure VM 'sinden el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFX API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
 
 ### <a name="data-sync"></a>Data Sync
-The Data eşitleme özelliğini, **KAPALı**olarak ayarlanmış **Azure hizmetlerine erişime izin verme** özelliğini kullanmak için, **Hub** veritabanını barındıran bölge için Sql **hizmet etiketinden** [IP adresleri eklemek](sql-database-server-level-firewall-rule.md) için tek tek güvenlik duvarı kuralı girişleri oluşturmanız gerekir.
-Hub **ve** **Üye** veritabanlarını barındıran mantıksal sunuculara bu sunucu düzeyinde güvenlik duvarı kuralları nı ekleyin (farklı bölgelerde olabilir)
+Veri eşitleme özelliğini **Azure hizmetlerine erişime Izin ver** özelliği **kapalı**olarak kullanmak için, **hub** VERITABANıNı barındıran bölgenin **SQL hizmeti etiketinden** [IP adresleri eklemek](sql-database-server-level-firewall-rule.md) üzere ayrı ayrı güvenlik duvarı kuralı girdileri oluşturmanız gerekir.
+Bu sunucu düzeyi güvenlik duvarı kurallarını hem **hub** 'ı hem de **üye** veritabanlarını (farklı bölgelerde olabilir) barındıran mantıksal sunuculara ekleyin
 
-Batı ABD bölgesi için Sql hizmet etiketine karşılık gelen IP adreslerini oluşturmak için aşağıdaki PowerShell komut dosyasını kullanın
+Batı ABD bölgenin SQL Service etiketine karşılık gelen IP adreslerini oluşturmak için aşağıdaki PowerShell betiğini kullanın
 ```powershell
 PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
 PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
@@ -81,9 +81,9 @@ PS C:\> $sql.Properties.AddressPrefixes
 ```
 
 > [!TIP]
-> Get-AzNetworkServiceTag, Konum parametresini belirtmeye rağmen Sql Service Tag için genel aralığı döndürür. Eşitleme grubunuz tarafından kullanılan Hub veritabanını barındıran bölgeye filtrelediğinden emin olun
+> Get-AzNetworkServiceTag, location parametresini belirtirken sql Service etiketinin genel aralığını döndürür. Eşitleme grubunuz tarafından kullanılan Merkez veritabanını barındıran bölgeye filtre uyguladığınızdan emin olun
 
-PowerShell komut dosyasının çıktısının Classless Inter-Domain Yönlendirme (CIDR) gösteriminde olduğunu ve bunun [get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanarak Başlangıç ve Bitiş IP adresi biçimine dönüştürülmesi gerektiğini unutmayın
+PowerShell betiğinin çıktısının sınıfsız etki alanları arası yönlendirme (CıDR) gösterimi içinde ve [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmesi gerektiğini unutmayın
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
 start        end
@@ -91,7 +91,7 @@ start        end
 52.229.17.64 52.229.17.127
 ```
 
-CIDR'den Başlangıç ve Son IP adresi biçimine tüm IP adreslerini dönüştürmek için aşağıdaki ek adımları yapın.
+CıDR 'ten gelen tüm IP adreslerini başlangıç ve bitiş IP adresi biçimine dönüştürmek için aşağıdaki ek adımları uygulayın.
 
 ```powershell
 PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
@@ -101,59 +101,59 @@ start          end
 13.86.216.128  13.86.216.191
 13.86.216.192  13.86.216.223
 ```
-Artık bunları farklı güvenlik duvarı kuralları olarak ekleyebilir ve ardından **Sunucuya erişmek için Azure hizmetlerine İzin Ver'i** AYARLAYABILIRSINIZ.
+Artık bunları farklı güvenlik duvarı kuralları olarak ekleyebilir ve sonra **Azure hizmetlerinin sunucuya erişmesine Izin ver** seçeneğini ayarlayabilirsiniz.
 
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
-Ip tabanlı güvenlik duvarı, istemci makinelerin IP adreslerini açıkça [ekleyene](sql-database-server-level-firewall-rule.md) kadar veritabanı sunucunuza tüm erişimi engelleyen Azure SQL Server özelliğidir.
+IP tabanlı güvenlik duvarı, istemci makinelerin [IP adreslerini açıkça eklemeene](sql-database-server-level-firewall-rule.md) kadar veritabanı sunucunuza tüm erişimi önleyen bir Azure SQL Server özelliğidir.
 
 
-## <a name="virtual-network-firewall-rules"></a>Sanal Ağ güvenlik duvarı kuralları
+## <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
 
-Azure SQL Server güvenlik duvarı, IP kurallarına ek olarak *sanal ağ kurallarını*da tanımlamanıza olanak tanır.  
-Daha fazla bilgi edinmek [için Azure SQL Veritabanı için Sanal Ağ hizmet bitiş noktalarına ve kurallarına](sql-database-vnet-service-endpoint-rule-overview.md) bakın veya bu videoyu izleyin:
+Azure SQL Server güvenlik duvarı, IP kurallarına ek olarak *sanal ağ kurallarını*tanımlamanızı sağlar.  
+Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı Için sanal ağ hizmet uç noktaları ve kuralları](sql-database-vnet-service-endpoint-rule-overview.md) . bu videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
- ### <a name="azure-networking-terminology"></a>Azure Ağ terminolojisi  
-Sanal Ağ güvenlik duvarı kurallarını keşfederken aşağıdaki Azure Ağ terimlerini unutmayın
+ ### <a name="azure-networking-terminology"></a>Azure ağ terminolojisi  
+Sanal ağ güvenlik duvarı kurallarını araştırırken aşağıdaki Azure ağ koşullarına dikkat edin
 
 **Sanal ağ:** Azure aboneliğinizle ilişkili sanal ağlarınız olabilir 
 
-**Alt ağ:** Sanal ağ **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM'ler) alt ağlara atanır. Bir alt ağ birden çok VM veya diğer işlem düğümleri içerebilir. Sanal ağınızın dışındaki bilgi işlem düğümleri, güvenliğinizi erişime izin verecek şekilde yapılandırmadığınız sürece sanal ağınıza erişemez.
+**Alt ağ:** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
 
-**Sanal Ağ hizmeti bitiş noktası:** [Sanal Ağ hizmeti bitiş noktası,](../virtual-network/virtual-network-service-endpoints-overview.md) özellik değerleri bir veya daha fazla resmi Azure hizmet türü adlarını içeren bir alt ağdır. Bu makalede, SQL Veritabanı adlı Azure hizmetini ifade eden **Microsoft.Sql'in**tür adı ile ilgileniyoruz.
+**Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz.
 
-**Sanal ağ kuralı:** SQL Database sunucunuz için sanal ağ kuralı, SQL Veritabanı sunucunuzun erişim denetim listesinde (ACL) listelenen bir alt ağdır. SQL Veritabanınızın ACL'sinde olmak için alt ağ **Microsoft.Sql** türü adını içermelidir. Sanal ağ kuralı, SQL Veritabanı sunucunuza alt ağdaki her düğümden iletişimkabul etmesini söyler.
+**Sanal ağ kuralı:** SQL veritabanı sunucunuz için bir sanal ağ kuralı, SQL veritabanı sunucunuzun erişim denetim listesinde (ACL) listelenen bir alt ağıdır. SQL veritabanınızın ACL 'sinde olması için alt ağın **Microsoft. SQL** tür adını içermesi gerekir. Bir sanal ağ kuralı, SQL veritabanı sunucunuza alt ağdaki her düğümden gelen iletişimleri kabul etmesini söyler.
 
 
-## <a name="ip-vs-virtual-network-firewall-rules"></a>IP vs. Virtual Network güvenlik duvarı kuralları
+## <a name="ip-vs-virtual-network-firewall-rules"></a>IP-sanal ağ güvenlik duvarı kuralları
 
-Azure SQL Server güvenlik duvarı, iletişimin SQL Veritabanı'na kabul edildiği IP adres aralıklarını belirtmenize olanak tanır. Bu yaklaşım, Azure özel ağının dışındaki kararlı IP adresleri için idealdir. Ancak, Azure özel ağındaki sanal makineler (VM'ler) *dinamik* IP adresleriyle yapılandırılır. VM'niz yeniden başlatıldığında dinamik IP adresleri değişebilir ve sırayla IP tabanlı güvenlik duvarı kuralını geçersiz kılabilir. Bir üretim ortamında, bir güvenlik duvarı kuralı dinamik bir IP adresi belirtmek aptallık olacaktır.
+Azure SQL Server güvenlik duvarı, iletişimlerin SQL veritabanı 'na kabul edileceği IP adresi aralıklarını belirtmenize olanak tanır. Bu yaklaşım, Azure özel ağının dışında olan kararlı IP adresleri için çok uygundur. Ancak, Azure özel ağı içindeki sanal makineler (VM) *dinamik* IP adresleriyle yapılandırılır. Dinamik IP adresleri, VM 'niz yeniden başlatıldığında değişebilir ve IP tabanlı güvenlik duvarı kuralını geçersiz kılar. Bir güvenlik duvarı kuralında, bir üretim ortamında dinamik bir IP adresi belirtmek de bu şekilde yapılır.
 
-VM'niz için *statik* bir IP adresi alarak bu sınırlamayı çözebilirsiniz. Ayrıntılar için, [Azure portalını kullanarak sanal bir makineiçin özel IP adreslerini yapılandırın' a](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)bakın. Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekte yapıldığında maliyetlidir. 
+SANAL ağınız için bir *statik* IP adresi elde ederek bu sınırlamaya geçici bir çözüm bulabilirsiniz. Ayrıntılar için bkz. [Azure Portal kullanarak bir sanal makine için özel IP adreslerini yapılandırma](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki tamamlandığında maliyetli hale gelir. 
 
-Sanal ağ kuralları, Sanal M'lerinizi içeren belirli bir alt ağdan erişimi oluşturmak ve yönetmek için daha kolay bir alternatiftir.
+Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurmak ve yönetmek için daha kolay bir alternatiftir.
 
 > [!NOTE]
-> Henüz bir alt ağ üzerinde SQL Veritabanı olamaz. Azure SQL Veritabanı sunucunuz sanal ağınızdaki bir alt ağda düğümse, sanal ağdaki tüm düğümler SQL Veritabanınızla iletişim kurabilir. Bu durumda, Sanal M'leriniz sanal ağ kurallarına veya IP kurallarına gerek kalmadan SQL Veritabanı ile iletişim kurabilir.
+> Henüz bir alt ağda SQL veritabanınız olamaz. Azure SQL veritabanı sunucunuz, sanal ağınızdaki bir alt ağda bulunan bir düğümse, sanal ağ içindeki tüm düğümler SQL veritabanınıza iletişim kurabilir. Bu durumda, VM 'niz herhangi bir sanal ağ kuralına veya IP kuralına gerek duymadan SQL veritabanı ile iletişim kurabilir.
 
 ## <a name="private-link"></a>Özel Bağlantı 
-Private Link, Azure SQL Server'a özel bir **bitiş noktası**üzerinden bağlanmanızı sağlar. Özel bitiş noktası, belirli bir [Sanal Ağ](../virtual-network/virtual-networks-overview.md) ve Subnet içindeki özel bir IP adresidir.
+Özel bağlantı, Azure SQL Server **özel bir uç nokta**aracılığıyla bağlanmanızı sağlar. Özel uç nokta, belirli bir [sanal ağ](../virtual-network/virtual-networks-overview.md) ve alt ağ içindeki özel bir IP adresidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sunucu düzeyinde BIR IP güvenlik duvarı kuralı oluşturmaya hızlı bir başlangıç için [bkz.](sql-database-single-database-get-started.md)
+- Sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturmaya yönelik hızlı başlangıç için bkz. [Azure SQL veritabanı oluşturma](sql-database-single-database-get-started.md).
 
-- Sunucu düzeyinde bir Vnet güvenlik duvarı kuralı oluşturmaya hızlı bir başlangıç için, [Azure SQL Veritabanı için Sanal Ağ hizmet bitiş noktalarına ve kurallarına](sql-database-vnet-service-endpoint-rule-overview.md)bakın.
+- Sunucu düzeyinde VNET güvenlik duvarı kuralı oluşturmaya yönelik hızlı başlangıç için bkz. [Azure SQL veritabanı Için sanal ağ hizmet uç noktaları ve kuralları](sql-database-vnet-service-endpoint-rule-overview.md).
 
-- Açık kaynak veya üçüncü taraf uygulamalardan bir Azure SQL veritabanına bağlanma konusunda yardım için, [SQL Veritabanı'na Istemci hızlı başlatma kodu örneklerine](https://msdn.microsoft.com/library/azure/ee336282.aspx)bakın.
+- Açık kaynaklı veya üçüncü taraf uygulamalardan bir Azure SQL veritabanına bağlanma konusunda yardım için bkz. [SQL veritabanı Için istemci hızlı başlangıç kodu örnekleri](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
-- Açmanız gereken ek bağlantı noktaları hakkında daha fazla bilgi için **SQL Veritabanı:** [4,5 ADO.NET ve SQL Veritabanı için 1433'ün dışındaki Bağlantı Noktalarının](sql-database-develop-direct-route-ports-adonet-v12.md) dış vs iç bölümüne bakın
+- Açmanız gerekebilecek ek bağlantı noktaları hakkında daha fazla bilgi için bkz **. SQL veritabanı:** [ADO.NET 4,5 ve SQL veritabanı için 1433 ' den sonraki bağlantı noktalarının](sql-database-develop-direct-route-ports-adonet-v12.md) iç içe geçmiş bölümü
 
-- Azure SQL Veritabanı Bağlantısına genel bakış için [bkz.](sql-database-connectivity-architecture.md)
+- Azure SQL veritabanı bağlantısına genel bakış için bkz. [Azure SQL bağlantı mimarisi](sql-database-connectivity-architecture.md)
 
-- Azure SQL Veritabanı güvenliğine genel bakış için [bkz.](sql-database-security-overview.md)
+- Azure SQL veritabanı güvenliğine genel bakış için bkz. [veritabanınızın güvenliğini sağlama](sql-database-security-overview.md)
 
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png

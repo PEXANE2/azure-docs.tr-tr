@@ -1,6 +1,6 @@
 ---
-title: Uygulamayı Azure Sanal Ağı ile tümleştir
-description: Azure Uygulama Hizmeti'ndeki uygulamayı Azure sanal ağlarıyla tümleştirin.
+title: Uygulamayı Azure sanal ağı ile tümleştirme
+description: Uygulamayı Azure sanal ağlarla Azure App Service tümleştirme.
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
@@ -8,144 +8,144 @@ ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770848"
 ---
-# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı azure sanal ağıyla tümleştirme
+# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
 
-Bu makalede, Azure App Service VNet Tümleştirme özelliği ve [Azure Uygulama Hizmeti'ndeki](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanır. [Azure Sanal Ağı][VNETOverview] (VNets) ile Azure kaynaklarınızın çoğunu Internet'e uygun olmayan bir ağa yerleştirebilirsiniz.
+Bu makalede Azure App Service VNet tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanır. [Azure sanal ağ][VNETOverview] (VNet) Ile, Azure kaynaklarınızın çoğunu internet 'e yönlendirilemeyen bir ağa yerleştirebilirsiniz.
 
-Azure Uygulama Hizmeti'nin iki çeşidiyi vardır:
+Azure App Service iki çeşitlemeye sahiptir:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
-## <a name="enable-vnet-integration"></a>VNet Tümleştirmesini Etkinleştir
+## <a name="enable-vnet-integration"></a>VNet tümleştirmesini etkinleştir
 
 > [!NOTE]
-> Linux uygulamalarınız için menüdeki "Ağ Oluşturma" bıçağı devre dışı bırakılırsa (gri renkte yse), bu özellik şu anda kullanılamadığı anlamına gelir.
+> Linux uygulamalarınızın menüsünde "ağ" dikey penceresi devre dışıysa (gri renkte), bu özellik şu anda kullanılamıyor demektir.
 >
 
-1. App Service portalındaki **Ağ** AraBirimi'ne gidin. **VNet Tümleştirmesi**altında, **yapılandırmak için buraya tıklayın'ı**seçin.
+1. App Service portalında **ağ** Kullanıcı arabirimine gidin. **VNET tümleştirmesi**altında, **yapılandırmak Için buraya tıklayın ' ı**seçin.
 
-1. **VNet Ekle'yi**seçin.
+1. **VNET Ekle**' yi seçin.
 
-   ![VNet Tümleştirme'yi seçin][1]
+   ![VNet tümleştirmesini seçin][1]
 
-1. Açılan liste, aynı bölgedeki aboneliğinizdeki Tüm Azure Kaynak Yöneticisi sanal ağlarını içerir. Bunun altında, diğer tüm bölgelerdeki Kaynak Yöneticisi sanal ağların listesi yer alır. Tümleştirmek istediğiniz VNet'i seçin.
+1. Açılır liste, aboneliğinizdeki tüm Azure Resource Manager sanal ağlarını aynı bölgede içerir. Bunun altında, diğer tüm bölgelerdeki Kaynak Yöneticisi sanal ağların bir listesi bulunur. Tümleştirmek istediğiniz sanal ağı seçin.
 
-   ![VNet'i seçin][2]
+   ![VNet 'i seçin][2]
 
-   * VNet aynı bölgedeyse, yeni bir alt ağ oluşturun veya önceden varolan boş bir alt ağ seçin.
-   * Başka bir bölgede bir VNet seçmek için, siteye nokta etkinleştirilmiş bir VNet ağ geçidine sahip olmalısınız.
-   * Klasik bir VNet ile entegre olmak için, **Sanal Ağ** açılır listesini seçmek yerine, **Klasik VNet'e bağlanmak için buraya tıklayın'ı**seçin. İstediğiniz klasik sanal ağı seçin. Hedef VNet'in zaten yer-to-site etkinleştirilmiş bir Sanal Ağ ağ geçidi olmalıdır.
+   * VNet aynı bölgedeyse, yeni bir alt ağ oluşturun veya var olan bir boş alt ağ seçin.
+   * Başka bir bölgedeki VNet seçmek için, site etkin noktadan bir sanal ağ geçidi sağlanmış olmalıdır.
+   * Klasik VNet ile tümleştirme için, **sanal ağ** açılan listesini seçmek yerine, **bir klasik VNET 'e bağlanmak Için buraya tıklayın ' ı**seçin. İstediğiniz klasik sanal ağı seçin. Hedef VNet 'in Noktadan siteye etkin olarak sağlanmış bir sanal ağ geçidi zaten olmalıdır.
 
-    ![Klasik VNet'i Seçin][3]
+    ![Klasik VNet seçin][3]
 
-Tümleştirme sırasında uygulamanız yeniden başlatılır. Tümleştirme tamamlandığında, entegre olduğunuz VNet'in ayrıntılarını görürsünüz.
+Tümleştirme sırasında uygulamanız yeniden başlatılır. Tümleştirme bittiğinde, Tümleştirdiğiniz VNet hakkındaki ayrıntıları görürsünüz.
 
-## <a name="regional-vnet-integration"></a>Bölgesel VNet Entegrasyonu
+## <a name="regional-vnet-integration"></a>Bölgesel VNet tümleştirmesi
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
-### <a name="how-regional-vnet-integration-works"></a>Bölgesel VNet Tümleştirme nasıl çalışır?
+### <a name="how-regional-vnet-integration-works"></a>Bölgesel VNet tümleştirmesinin çalışması
 
-Uygulama Hizmeti'ndeki uygulamalar çalışan rollerinde barındırılır. Temel ve daha yüksek fiyatlandırma planları, aynı işçiler üzerinde çalışan başka hiçbir müşterinin iş yüklerinin olmadığı barındırma planlarına adanmıştır. Bölgesel VNet Tümleştirmesi, temsilci alt netindeki adreslerle sanal arayüzler oluşturarak çalışır. Adres VNet'inizde olduğundan, VNet'inizdeki bir VM gibi VNet'iniz deki veya vNet'iniz aracılığıyla birçok şeye erişebilir. Ağ uygulaması, VNet'inizde VM çalıştırmaktan farklıdır. Bu nedenle bazı ağ özellikleri henüz bu özellik için kullanılamıyor.
+App Service uygulamalar çalışan rollerinde barındırılır. Temel ve daha yüksek fiyatlandırma planları, aynı çalışanlar üzerinde çalışan başka müşteri iş yükleri bulunmayan ayrılmış barındırma planlardır. Bölgesel VNet tümleştirmesi, yetkilendirilmiş alt ağdaki adreslerle sanal arabirimler bağlayarak işe yarar. Kimden adresi sanal ağınız içinde olduğundan, VNET 'iniz içindeki bir VM gibi, sanal ağınız içindeki veya bu nesnelerin çoğuna erişebilir. Ağ uygulama, VNet 'iniz üzerinde bir VM çalıştırtan farklı. Bu özellik için bazı ağ özellikleri henüz kullanılamıyor.
 
-![Bölgesel VNet Tümleştirme nasıl çalışır?][5]
+![Bölgesel VNet tümleştirmesinin çalışması][5]
 
-Bölgesel VNet Tümleştirmesi etkinleştirildiğinde, uygulamanız normal kanallar aracılığıyla internete giden aramaları yapar. Uygulama özellikleri portalında listelenen giden adresler, uygulamanız tarafından hala kullanılan adreslerdir. Uygulamanız için hangi değişiklikler, hizmet uç noktası güvenli hizmetlere yapılan çağrılar veya RFC 1918 adresleri VNet'inize gider. WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanmışsa, tüm giden trafik VNet'inize gönderilebilir.
+Bölgesel VNet tümleştirmesi etkinleştirildiğinde, uygulamanız normal olarak aynı kanallar üzerinden İnternet 'e giden çağrılar yapar. Uygulama özellikleri portalında listelenen giden adresler, uygulamanız tarafından halen kullanılan adreslerdir. Uygulamanız için yapılan değişiklikler hizmet uç noktası güvenliği olan hizmetlere yapılan çağrılardır veya RFC 1918 adresleri sanal ağınıza gider. WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanırsa, tüm giden trafik sanal ağınıza gönderilebilir.
 
-Özellik, çalışan başına yalnızca bir sanal arabirimi destekler. Çalışan başına bir sanal arabirim, Uygulama Hizmeti planı başına bir bölgesel VNet Tümleştirmesi anlamına gelir. Aynı Uygulama Hizmeti planındaki tüm uygulamalar aynı VNet Tümleştirmesini kullanabilir. Ek bir VNet'e bağlanmak için bir uygulamaya ihtiyacınız varsa, başka bir Uygulama Hizmeti planı oluşturmanız gerekir. Kullanılan sanal arabirim, müşterilerin doğrudan erişebilen bir kaynak değildir.
+Özelliği, çalışan başına yalnızca bir sanal arabirimi destekler. Çalışan başına bir sanal arabirim, App Service plan başına bir bölgesel VNet tümleştirmesi anlamına gelir. Aynı App Service planındaki tüm uygulamalar aynı VNet tümleştirmesini kullanabilir. Ek bir sanal ağa bağlanmak için bir uygulamaya ihtiyacınız varsa, başka bir App Service planı oluşturmanız gerekir. Kullanılan sanal arabirim, müşterilerin doğrudan erişimine sahip olduğu bir kaynak değildir.
 
-Bu teknolojinin çalışma şekli doğası gereği, VNet Tümleştirmesi ile kullanılan trafik Azure Ağ İzleyicisi'nde veya NSG akış günlüklerinde görünmüyor.
+Bu teknolojinin nasıl çalıştığı doğası nedeniyle, VNet tümleştirmesiyle kullanılan trafik Azure ağ Izleyicisi veya NSG akış günlüklerinde gösterilmez.
 
-## <a name="gateway-required-vnet-integration"></a>Ağ geçidi gerekli VNet Entegrasyonu
+## <a name="gateway-required-vnet-integration"></a>Ağ Geçidi-gerekli VNet tümleştirmesi
 
-Ağ geçidi gerekli VNet Tümleştirme başka bir bölgedeki bir VNet'e veya klasik bir sanal ağa bağlanmayı destekler. Ağ geçidi gerekli VNet Entegrasyonu:
+Ağ Geçidi gerekli VNet tümleştirmesi, başka bir bölgedeki VNet 'e veya klasik bir sanal ağa bağlanmayı destekler. Ağ Geçidi-gerekli VNet tümleştirmesi:
 
-* Bir uygulamanın aynı anda yalnızca bir VNet'e bağlanmasını sağlar.
-* Bir Uygulama Hizmeti planına en fazla beş VNet'in entegre edilmesini sağlar.
-* Aynı VNet'in, bir Uygulama Hizmeti planı tarafından kullanılabilecek toplam sayıyı etkilemeden, bir Uygulama Hizmeti planında birden çok uygulama tarafından kullanılmasına izin verir. Aynı Uygulama Hizmeti planında aynı VNet'i kullanan altı uygulamanız varsa, bu kullanılan bir VNet olarak sayılır.
-* Ağ geçidindeki SLA nedeniyle %99,9'luk bir SLA'yı destekler.
-* Uygulamalarınızın VNet'in yapılandırıldığının DNS'sini kullanmasını sağlar.
-* Bir uygulamaya bağlanabilmek için SSTP noktadan siteye VPN ile yapılandırılan Sanal Ağ rotası tabanlı bir ağ geçidi gerektirir.
+* Bir uygulamanın aynı anda yalnızca bir VNet 'e bağlanmasını sağlar.
+* App Service bir plan dahilinde tümleştirilecek en fazla beş VNET sağlar.
+* Aynı VNet 'in bir App Service planı tarafından kullanılabilecek toplam sayıyı etkilemeden bir App Service planında birden çok uygulama tarafından kullanılmasını sağlar. Aynı App Service planında aynı VNet 'i kullanan altı uygulamanız varsa, kullanılmakta olan bir VNet olarak sayılır.
+* Ağ geçidinde SLA nedeniyle% 99,9 SLA 'yı destekler.
+* Uygulamalarınızın VNet 'in ile yapılandırıldığı DNS 'i kullanmasına olanak sağlar.
+* Bir uygulamaya bağlanmadan önce SSTP Noktadan siteye VPN ile yapılandırılmış bir sanal ağ yolu tabanlı ağ geçidi gerektirir.
 
-Ağ geçidi gerekli VNet Tümleştirme kullanamazsınız:
+Ağ Geçidi için gerekli VNet tümleştirmesini kullanamazsınız:
 
 * Linux uygulamaları ile.
-* Azure ExpressRoute'a bağlı bir VNet ile.
-* Hizmet uç noktası güvenli kaynaklara erişmek için.
-* Hem ExpressRoute'u hem de siteden siteye veya siteden siteye VPN'leri destekleyen bir birlikte yaşam ağ geçidi yle.
+* Azure ExpressRoute ile bağlantılı bir VNet ile.
+* Hizmet uç noktası güvenliği sağlanmış kaynaklara erişmek için.
+* ExpressRoute ve Noktadan siteye veya siteden siteye VPN 'Leri destekleyen bir birlikte bulunma ağ geçidi ile.
 
 ### <a name="set-up-a-gateway-in-your-azure-virtual-network"></a>Azure sanal ağınızda bir ağ geçidi ayarlama ###
 
-Ağ geçidi oluşturmak için:
+Bir ağ geçidi oluşturmak için:
 
-1. VNet'inizde [bir ağ geçidi alt ağı oluşturun.][creategatewaysubnet]  
+1. Sanal ağınız için [bir ağ geçidi alt ağı oluşturun][creategatewaysubnet] .  
 
-1. [VPN ağ geçidini oluşturun.][creategateway] Rota tabanlı BIR VPN türü seçin.
+1. [VPN ağ geçidini oluşturun][creategateway]. Rota tabanlı VPN türü seçin.
 
-1. [Noktadan siteye adresleri ayarlayın.][setp2saddresses] Ağ geçidi temel SKU'da değilse, IKEV2'nin noktadan siteye yapılandırmada devre dışı bırakılması ve SSTP'nin seçilmesi gerekir. Noktadan siteye adres alanı RFC 1918 adres blokları 10.0.0.0/8, 172.16.0.0/12 ve 192.168.0.0/16 olmalıdır.
+1. [Noktadan siteye adreslerini ayarlayın][setp2saddresses]. Ağ Geçidi temel SKU 'da değilse, ıKEV2 'nin Noktadan siteye yapılandırmasında devre dışı bırakılması ve SSTP 'nin seçili olması gerekir. Noktadan siteye adres alanı, RFC 1918 adres blokları 10.0.0.0/8, 172.16.0.0/12 ve 192.168.0.0/16 adres bloklarından olmalıdır.
 
-App Service VNet Tümleştirmesi ile kullanılmak üzere ağ geçidi oluşturursanız, sertifika yüklemeniz gerekmez. Ağ geçidi oluşturma 30 dakika sürebilir. Ağ geçidi sağlanana kadar uygulamanızı VNet'inizle entegre edemezsiniz.
+Ağ geçidini App Service VNet tümleştirmesiyle kullanılmak üzere oluşturursanız, bir sertifikayı karşıya yüklemeniz gerekmez. Ağ geçidinin oluşturulması 30 dakika sürebilir. Ağ Geçidi sağlanana kadar uygulamanızı VNet ile tümleştiremezsiniz.
 
-### <a name="how-gateway-required-vnet-integration-works"></a>Ağ geçidi gerekli VNet Tümleştirme nasıl çalışır?
+### <a name="how-gateway-required-vnet-integration-works"></a>Ağ geçidine gereken VNet tümleştirmesi nasıl çalışacaktır?
 
-Ağ geçidi gereksinimli VNet Tümleştirme, noktadan noktaya VPN teknolojisinin üzerine inşa edilmiştir. Noktadan siteye VPN'ler, ağa erişimi uygulamayı barındıran sanal makineye sınırlandırıyor. Uygulamaların trafiği yalnızca Hibrit Bağlantılar veya VNet Tümleştirmesi aracılığıyla internete göndermesi kısıtlanır. Uygulamanız ağ geçidi gerekli VNet Tümleştirmesi kullanmak için portalile yapılandırıldığında, ağ geçidi ve uygulama tarafında sertifika oluşturmak ve atamak için sizin adınıza karmaşık bir anlaşma yönetilir. Sonuç olarak, uygulamalarınızı barındırmak için kullanılan çalışanlar, seçilen VNet'teki sanal ağ ağ geçidine doğrudan bağlanabiliyor.
+Ağ Geçidi gerekli VNet tümleştirmesi, Noktadan siteye VPN teknolojisinin üzerine kurulmuştur. Noktadan siteye VPN 'Ler, uygulamayı barındıran sanal makineye ağ erişimini sınırlar. Uygulamalar yalnızca Karma Bağlantılar veya VNet tümleştirmesi aracılığıyla internet 'e trafik gönderecek şekilde kısıtlanır. Uygulamanız, ağ geçidi için gerekli VNet tümleştirmesini kullanmak üzere portalla yapılandırıldığında, ağ geçidinde ve uygulama tarafında sertifika oluşturmak ve atamak için sizin adınıza karmaşık bir anlaşma yönetilir. Sonuç olarak, uygulamalarınızı barındırmak için kullanılan çalışanların seçilen VNet 'teki sanal ağ geçidine doğrudan bağlanabilmesi mümkün olur.
 
-![Ağ geçidi gerekli VNet Tümleştirme nasıl çalışır?][6]
+![Ağ geçidine gereken VNet tümleştirmesi nasıl çalışacaktır?][6]
 
-### <a name="access-on-premises-resources"></a>Şirket içi kaynaklara erişim
+### <a name="access-on-premises-resources"></a>Şirket içi kaynaklara erişme
 
-Uygulamalar, siteden siteye bağlantıları olan VNet'lerle tümleştirerek şirket içi kaynaklara erişebilir. Ağ geçidi için gerekli VNet Tümleştirmesini kullanıyorsanız, şirket içi VPN ağ geçidi yollarınızı noktadan siteye adres bloklarınızla güncelleyin. Siteden siteye VPN ilk ayarlandığında, yapılandırmak için kullanılan komut dosyaları yolları düzgün şekilde ayarlamalıdır. Siteden siteye VPN'inizi oluşturduktan sonra noktadan siteye adresleri eklerseniz, yolları el ile güncelleştirmeniz gerekir. Bunun nasıl yapılacağının ayrıntıları ağ geçidine göre değişir ve burada açıklanmaz. BGP'yi siteden siteye VPN bağlantısıyla yapılandıramazsınız.
+Uygulamalar, siteden siteye bağlantıları olan VNET 'ler ile tümleştirerek şirket içi kaynaklara erişebilir. Ağ Geçidi gerekli VNet tümleştirmesi kullanıyorsanız, şirket içi VPN ağ geçidi yollarınızı Noktadan siteye adres bloklarıyla güncelleştirin. Siteden siteye VPN ilk kez ayarlandığında, yapılandırmak için kullanılan betikler yolları doğru şekilde ayarlayabilmelidir. Siteden siteye VPN 'nizi oluşturduktan sonra Noktadan siteye adresleri eklerseniz, rotaları el ile güncelleştirmeniz gerekir. Bu şekilde, ağ geçidi başına farklılık gösteren ve burada açıklanmayan Ayrıntılar açıklanmaktadır. Siteden siteye VPN bağlantısıyla BGP 'yi yapılandırmamış olabilirsiniz.
 
-Bölgesel VNet Tümleştirme özelliğinin VNet'iniz üzerinden şirket içi kaynaklara ulaşması için ek yapılandırma gerekmez. ExpressRoute veya siteden siteye VPN kullanarak VNet'inizi şirket içi kaynaklara bağlamanız yeterlidir.
+Bölgesel VNet tümleştirme özelliğinin VNet 'iniz aracılığıyla şirket içi kaynaklara ulaşması için ek yapılandırma gerekmez. Sanal ortamınızı ExpressRoute veya siteden siteye VPN kullanarak şirket içi kaynaklara bağlamanız yeterlidir.
 
 > [!NOTE]
-> Ağ geçidi gerekli VNet Tümleştirme özelliği, expressroute ağ geçidi olan bir VNet ile bir uygulama entegre etmez. ExpressRoute ağ geçidi [birlikte yaşam modunda][VPNERCoex]yapılandırılsa bile, VNet Tümleştirmesi çalışmaz. Kaynaklara ExpressRoute bağlantısı üzerinden erişmeniz gerekiyorsa, VNet'inizde çalışan bölgesel VNet Tümleştirme özelliğini veya [Uygulama Hizmet Ortamını][ASE]kullanın.
+> Ağ Geçidi gerekli VNet tümleştirme özelliği, bir uygulamayı ExpressRoute ağ geçidi olan bir VNet ile tümleştirmez. ExpressRoute ağ geçidi, birlikte [bulunma modunda][VPNERCoex]yapılandırılmış olsa bile, VNET tümleştirmesi çalışmaz. Bir ExpressRoute bağlantısı aracılığıyla kaynaklara erişmeniz gerekiyorsa, bölgesel VNet tümleştirme özelliğini veya VNet 'iniz üzerinde çalışan bir [App Service ortamı][ASE]kullanın.
 > 
 > 
 
 ### <a name="peering"></a>Eşleme
 
-Bölgesel VNet Tümleştirmesi ile eşleme kullanıyorsanız, ek yapılandırma yapmanız gerekmez.
+Bölgesel VNet tümleştirmesiyle eşleme kullanırsanız, ek yapılandırma yapmanız gerekmez.
 
-Ağ geçidi gereksinimi olan VNet Tümleştirmesini eşleme yle birlikte kullanıyorsanız, birkaç ek öğe yapılandırmanız gerekir. Uygulamanızla çalışacak şekilde eşlemi yapılandırmak için:
+Ağ Geçidi için gerekli VNet tümleştirmesini eşleme ile kullanırsanız, birkaç ek öğe yapılandırmanız gerekir. Eşleme 'yi uygulamanızla çalışacak şekilde yapılandırmak için:
 
-1. Uygulamanızın bağlandığı VNet'e bir bakış bağlantısı ekleyin. Eşleme bağlantısını eklediğinizde, **sanal ağ erişimine izin ver'i** etkinleştirin ve **iletilen trafiğe İzin Ver** ve ağ geçidi **geçişine izin ver'i**seçin.
-1. Bağlı olduğunuz VNet'e bakan VNet'e bir bakış bağlantısı ekleyin. Hedef VNet'e eşleme bağlantısını eklediğinizde, **sanal ağ erişimine izin ver'i** etkinleştirin ve **iletilen trafiğe İzin Ver'i** ve uzak ağ **geçitlerine izin ver'i**seçin.
-1. Portaldaki Ağ**Networking** > **VNet Tümleştirme** UI'sine uygulama **hizmeti planına** > gidin. Uygulamanızın bağlandığı VNet'i seçin. Yönlendirme bölümünün altında, uygulamanızın bağlı olduğu VNet ile bakan VNet'in adres aralığını ekleyin.
+1. Uygulamanızın bağlandığı VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını eklediğinizde **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **ağ geçidi aktarımına izin verin**.
+1. Bağlı olduğunuz VNet 'e eşlenmekte olan VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını hedef VNet 'e eklediğinizde, **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **uzak ağ geçitlerine izin**verin.
+1. Portalda > **Networking**ağ > **VNET tümleştirmesi** Kullanıcı arabirimine **App Service plan**bölümüne gidin. Uygulamanızın bağlandığı sanal ağı seçin. Yönlendirme bölümünde, uygulamanızın bağlı olduğu VNet ile ilişkilendirilen VNet 'in adres aralığını ekleyin.
 
-## <a name="manage-vnet-integration"></a>VNet Tümleştirmeyi Yönet
+## <a name="manage-vnet-integration"></a>VNet tümleştirmesini yönetme
 
-Bir VNet ile bağlantı kurmak ve bağlantıyı kesmek bir uygulama düzeyindedir. Birden çok uygulama da VNet Tümleştirmesini etkileyebilecek işlemler Uygulama Hizmeti planı düzeyindedir. **Networking** > **VNet Integration** portalı> uygulamadan VNet'inizle ilgili ayrıntıları alabilirsiniz. Benzer bilgileri App Service planı düzeyinde, **App Service planı** > **Networking** > **VNet Integration** portalında görebilirsiniz.
+VNet ile bağlanma ve bağlantı kesilmesi uygulama düzeyindedir. Birden çok uygulama genelinde VNet tümleştirmesini etkileyebilecek işlemler App Service plan düzeyidir. App > **ağ** > **VNET tümleştirme** portalından, VNET 'iniz hakkında ayrıntılı bilgi edinebilirsiniz. **App Service plan** > **ağı** > **VNET tümleştirme** portalındaki App Service plan düzeyinde benzer bilgiler görebilirsiniz.
 
-VNet Tümleştirme örneğinizin uygulama görünümünde alabileceğiniz tek işlem, uygulamanızın bağlantısını şu anda bağlı olduğu VNet ile bağlantısını kesmektir. Uygulamanızın bir VNet bağlantısını kesmek için **Bağlantıyı Kesme'yi**seçin. Bir VNet ile bağlantınızı kestiğinizde uygulamanız yeniden başlatılır. Bağlantının kesilmesi VNet'inizi değiştirmez. Alt ağ veya ağ geçidi kaldırılmadı. Daha sonra VNet'inizi silmek istiyorsanız, önce uygulamanızın bağlantısını VNet'ten ve ağ geçitleri gibi kaynakları silin.
+VNet tümleştirme örneğinizin uygulama görünümünde gerçekleştirebileceğiniz tek işlem, uygulamanızın o anda bağlı olduğu VNet 'ten bağlantısını kesmesidir. Uygulamanızın VNet bağlantısını kesmek için **bağlantıyı kes**' i seçin. VNet bağlantısı kesildiğinde uygulamanız yeniden başlatılır. Bağlantı kesilmesi VNet 'i değiştirmez. Alt ağ veya ağ geçidi kaldırılmaz. Daha sonra sanal ortamınızı silmek istiyorsanız, öncelikle uygulamanızın VNet bağlantısını kesin ve içindeki kaynakları (örneğin, ağ geçitleri) silin.
 
-Uygulama Hizmeti planı VNet Entegrasyon UI, Uygulama Hizmeti planınızdaki uygulamalar tarafından kullanılan tüm VNet entegrasyonlarını gösterir. Her VNet'in ayrıntılarını görmek için ilgilendiğiniz VNet'i seçin. Ağ geçidi gerekli VNet Tümleştirmesi için burada gerçekleştirebileceğiniz iki eylem vardır:
+App Service planı VNet tümleştirmesi Kullanıcı arabirimi, App Service planınızdaki uygulamalar tarafından kullanılan tüm VNet tümleştirmelerini gösterir. Her VNet hakkındaki ayrıntıları görmek için ilgilendiğiniz sanal ağı seçin. Ağ Geçidi için gereken VNet tümleştirmesi için burada gerçekleştirebileceğiniz iki eylem vardır:
 
-* **Eşitleme ağı**: Eşitleme ağı işlemi yalnızca ağ geçidine bağımlı VNet Tümleştirme özelliği için kullanılır. Eşitleme ağı işlemi, sertifikalarınızın ve ağ bilgilerinizin eşit olmasını sağlar. VNet'inizin DNS'sini ekler veya değiştirirseniz, eşitleme ağı işlemi gerçekleştirin. Bu işlem, bu VNet'i kullanan tüm uygulamaları yeniden başlatır.
-* **Rota ekleme**: Rota ekleme, VNet'inize giden trafiği yönlendirir.
+* **Ağ eşitleme**: ağ eşitleme işlemi yalnızca ağ geçidine bağımlı VNET tümleştirme özelliği için kullanılır. Bir eşitleme ağı işleminin gerçekleştirilmesi, sertifikalarınızın ve ağ bilgilerinizin eşitlenmiş olmasını sağlar. VNet 'nizin DNS 'sini ekler veya değiştirirseniz, bir eşitleme ağı işlemi gerçekleştirin. Bu işlem, bu VNet 'i kullanan tüm uygulamaları yeniden başlatır.
+* **Rotalar ekleme**: yollar ekleme giden trafiği sanal ağınıza yönlendirir.
 
-### <a name="gateway-required-vnet-integration-routing"></a>Ağ geçidi gerekli VNet Tümleştirme yönlendirme
-VNet'inizde tanımlanan rotalar, uygulamanızdan VNet'inize trafiği yönlendirmek için kullanılır. VNet'e ek giden trafik göndermek için bu adres bloklarını buraya ekleyin. Bu özellik yalnızca ağ geçidi gerekli VNet Tümleştirmesi ile çalışır. Geçiş geçidi gerekli VNet Tümleştirmesini bölgesel VNet Tümleştirmesi'nde olduğu gibi kullandığınızda rota tabloları uygulama trafiğinizi etkilemez.
+### <a name="gateway-required-vnet-integration-routing"></a>Ağ Geçidi-gerekli VNet tümleştirme yönlendirmesi
+VNet 'iniz üzerinde tanımlanan yollar uygulamanızdan sanal ağınıza giden trafiği yönlendirmek için kullanılır. VNet 'e ek giden trafik göndermek için bu adres bloklarını buraya ekleyin. Bu özellik yalnızca ağ geçidi için gerekli VNet tümleştirmesiyle birlikte kullanılabilir. Ağ Geçidi gerekli VNet tümleştirmesinin bölgesel VNet tümleştirmesiyle gerçekleştirdikleri şekilde kullanılması durumunda yol tabloları uygulama trafiğinizi etkilemez.
 
-### <a name="gateway-required-vnet-integration-certificates"></a>Ağ geçidi gerekli VNet Tümleştirme sertifikaları
-Ağ geçidi gerekli VNet Tümleştirme seve etkinleştirildiğinde, bağlantının güvenliğini sağlamak için gerekli bir sertifika değişimi vardır. Sertifikalarla birlikte DNS yapılandırması, rotalar ve ağı tanımlayan diğer benzer şeyler de vardır.
+### <a name="gateway-required-vnet-integration-certificates"></a>Ağ Geçidi-gerekli VNet tümleştirme sertifikaları
+Ağ Geçidi gerekli VNet tümleştirmesi etkinleştirildiğinde, bağlantının güvenliğini sağlamak için gerekli bir sertifika alışverişi vardır. Sertifikaların yanı sıra, DNS yapılandırması, rotalar ve ağı tanımlayan diğer benzer şeylerdir.
 
-Sertifikalar veya ağ bilgileri değiştirilirse, **Eşitleme Ağı'nı**seçin. **Eşitleme Ağı'nı**seçtiğinizde, uygulamanızla VNet'iniz arasındaki bağlantıda kısa bir kesintiye neden olursunuz. Uygulamanız yeniden başlatılmamasa da, bağlantı kaybı sitenizin düzgün çalışmamasına neden olabilir.
+Sertifikalar veya ağ bilgileri değiştirilirse, **ağı Eşitle**' yi seçin. **Eşitleme ağı**' nı seçtiğinizde, uygulamanız ve sanal ağınız arasında bağlantı için kısa bir kesinti oluşmasına neden olursunuz. Uygulamanız yeniden başlatılana karşın bağlantı kaybı sitenizin düzgün şekilde çalışmamasına neden olabilir.
 
 ## <a name="pricing-details"></a>Fiyatlandırma ayrıntıları
-Bölgesel VNet Tümleştirme özelliği, App Service planı fiyatlandırma katmanı ücretleridışında kullanım için ek bir ücret eve sahiptir.
+Bölgesel VNet tümleştirme özelliğinin, App Service planı fiyatlandırma katmanı ücretlerinden daha fazla kullanım ücreti yoktur.
 
-Ağ geçidi gerekli VNet Tümleştirme özelliğinin kullanımı ile ilgili üç ücret:
+Ağ Geçidi gerekli VNet tümleştirme özelliğinin kullanımıyla ilgili üç ücret vardır:
 
-* **Uygulama Hizmeti planı fiyatlandırma katmanı ücretleri**: Uygulamalarınızın standart, premium veya PremiumV2 Uygulama Hizmeti planında olması gerekir. Bu maliyetler hakkında daha fazla bilgi [için, Uygulama Hizmeti fiyatlandırması][ASPricing]için bkz.
-* **Veri aktarım maliyetleri**: VNet aynı veri merkezinde olsa bile veri çıkış ücreti vardır. Bu ücretler [Veri Aktarımı fiyatlandırma ayrıntılarında][DataPricing]açıklanmıştır.
-* **VPN ağ geçidi maliyetleri**: Sanal ağ ağ geçidinin, noktaya göre VPN için gerekli olan bir maliyeti vardır. Daha fazla bilgi için [VPN ağ geçidi fiyatlandırması][VNETPricing]için bkz.
+* **App Service plan fiyatlandırma katmanı ücretleri**: uygulamalarınızın standart, Premium veya PremiumV2 App Service planlarında olması gerekir. Bu maliyetler hakkında daha fazla bilgi için bkz. [App Service fiyatlandırması][ASPricing].
+* **Veri aktarımı maliyetleri**: VNET aynı veri merkezinde olsa bile veri çıkışı için ücretlendirilir. Bu ücretler [veri aktarımı fiyatlandırma ayrıntılarında][DataPricing]açıklanmaktadır.
+* **VPN Gateway maliyetleri**: Noktadan siteye VPN için gereken sanal ağ geçidi için bir maliyet vardır. Daha fazla bilgi için bkz. [VPN Gateway fiyatlandırması][VNETPricing].
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -153,7 +153,7 @@ Ağ geçidi gerekli VNet Tümleştirme özelliğinin kullanımı ile ilgili üç
 
 ## <a name="automation"></a>Otomasyon
 
-Bölgesel VNet Entegrasyonu için CLI desteği mevcuttur. Aşağıdaki komutlara erişmek [için Azure CLI'yi yükleyin.][installCLI]
+CLı desteği bölgesel VNet tümleştirmesi için kullanılabilir. Aşağıdaki komutlara erişmek için [Azure CLI 'yı yüklemelisiniz][installCLI].
 
         az webapp vnet-integration --help
 
@@ -175,7 +175,7 @@ Bölgesel VNet Entegrasyonu için CLI desteği mevcuttur. Aşağıdaki komutlara
         Commands:
             list : List the virtual network integrations used in an appservice plan.
 
-Ağ geçidi için gerekli VNet Tümleştirmesi için PowerShell'i kullanarak App Service'i bir Azure sanal ağıyla tümleştirebilirsiniz. Çalışmaya hazır bir komut dosyası için Azure [Uygulama Hizmeti'ndeki bir uygulamayı Azure sanal ağına bağlayın'a](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)bakın.
+Ağ Geçidi için gerekli VNet tümleştirmesi için, PowerShell kullanarak App Service bir Azure sanal ağı ile tümleştirebilirsiniz. Bir çalıştırma için, bkz. bir [uygulamayı Azure sanal ağına bağlama Azure App Service](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
 
 
 <!--Image references-->

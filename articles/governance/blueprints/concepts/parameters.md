@@ -1,82 +1,82 @@
 ---
-title: Dinamik planlar oluşturmak için parametreleri kullanma
-description: Statik ve dinamik parametreler ve güvenli ve dinamik planlar oluşturmak için bunları nasıl kullanacağınız hakkında bilgi edinin.
+title: Dinamik şemaları oluşturmak için parametreleri kullanma
+description: Statik ve dinamik parametreler hakkında bilgi edinin ve bunların güvenli ve dinamik planlar oluşturmak için nasıl kullanılacağını öğrenin.
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458497"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
-Çeşitli yapılarla (kaynak grupları, Kaynak Yöneticisi şablonları, ilkeler veya rol atamaları gibi) tam olarak tanımlanmış bir plan, Azure'daki nesnelerin hızlı oluşturulmasını ve tutarlı oluşturulmasını sağlar. Azure Blueprints, bu yeniden kullanılabilir tasarım desenlerinin ve kapsayıcılarının esnek kullanımını etkinleştirmek için parametreleri destekler. Parametre, plan tarafından dağıtılan yapılarüzerindeki özellikleri değiştirmek için hem tanım hem de atama sırasında esneklik oluşturur.
+Çeşitli yapıtlar (örneğin, kaynak grupları, Kaynak Yöneticisi şablonları, ilkeler veya rol atamaları) ile tam olarak tanımlanmış bir şema, Azure 'da nesnelerin hızlı bir şekilde oluşturulmasını ve tutarlı olarak oluşturulmasını sağlar. Bu yeniden kullanılabilir Tasarım desenlerinin ve kapsayıcılarının esnek kullanımını etkinleştirmek için, Azure şemaları parametreleri destekler. Parametresi, şeması tarafından dağıtılan yapıtların özelliklerini değiştirmek için hem tanım hem de atama sırasında esneklik oluşturur.
 
-Basit bir örnek kaynak grubu artifakıdır. Bir kaynak grubu oluşturulduğunda, sağlanması gereken iki gerekli değere sahiptir: ad ve konum. Planınıza bir kaynak grubu eklerken, parametreler yoksa, planın her kullanımı için bu adı ve konumu tanımlarsınız. Bu yineleme, aynı kaynak grubunda yapı oluşturmak için planın her kullanımına neden olur. Bu kaynak grubunun içindeki kaynaklar çoğaltılır ve bir çakışma neden olur.
+Kaynak grubu yapıtı basit bir örnektir. Bir kaynak grubu oluşturulduğunda, sağlanması gereken iki zorunlu değer vardır: ad ve konum. Blueprint verilerinize bir kaynak grubu eklerken, parametreler yoksa, Blueprint 'in her kullanımı için bu adı ve konumu tanımlarsınız. Bu yineleme, aynı kaynak grubunda yapılar oluşturmak için şema 'in her kullanımına neden olur. Bu kaynak grubundaki kaynaklar çoğaltılır ve bir çakışmaya neden olur.
 
 > [!NOTE]
-> İki farklı planın aynı ada sahip bir kaynak grubu içermesi sorun değildir.
-> Plana dahil edilen bir kaynak grubu zaten varsa, plan bu kaynak grubunda ilgili yapıları oluşturmaya devam eder. Bu, aynı ada ve kaynak türüne sahip iki kaynak bir abonelik içinde var olamayacağından çakışma neden olabilir.
+> Aynı ada sahip bir kaynak grubu dahil olmak üzere iki farklı şema için bir sorun değildir.
+> Şemayı içeren bir kaynak grubu zaten mevcutsa, şema bu kaynak grubunda ilgili yapıtları oluşturmaya devam eder. Bu, bir abonelikte aynı ada ve kaynak türüne sahip iki kaynak bulunmadığından bir çakışmaya neden olabilir.
 
-Bu sorunun çözümü parametrelerdir. Azure Blueprints, bir aboneliğe atama sırasında yapının her özelliğinin değerini tanımlamanıza olanak tanır. Parametre, çakışmadan tek bir abonelik içinde kaynak grubu ve diğer kaynaklar oluşturan bir planı yeniden kullanmayı mümkün kılar.
+Bu sorunun çözümü parametrelerdir. Azure şemaları, bir aboneliğe atama sırasında yapıtın her özelliğinin değerini tanımlamanızı sağlar. Parametresi, bir kaynak grubu ve diğer kaynakları çakışma olmadan tek bir abonelik içinde oluşturan bir şema yeniden kullanılmasını mümkün kılar.
 
 ## <a name="blueprint-parameters"></a>Şema parametreleri
 
-REST API aracılığıyla, parametreler planın kendisi üzerinde oluşturulabilir. Bu parametreler, desteklenen yapıtların her birinin parametrelerinden farklıdır. Planda bir parametre oluşturulduğunda, bu plandaki yapılar tarafından kullanılabilir. Kaynak grubunun adlandırılması için önek bir örnek olabilir. Yapı, "çoğunlukla dinamik" bir parametre oluşturmak için plan parametresini kullanabilir. Parametre atama sırasında da tanımlanabildiği için, bu desen adlandırma kurallarına uyacak bir tutarlılık sağlar. Adımlar için statik [parametreleri ayarlama - plan düzeyi parametresi.](#blueprint-level-parameter)
+REST API aracılığıyla parametreler, şema üzerinde oluşturulabilir. Bu parametreler, desteklenen yapıtların her birinde parametrelerden farklıdır. Şema üzerinde bir parametre oluşturulduğunda bu şema, bu şema içindeki yapıtlar tarafından kullanılabilir. Kaynak grubunun adlandırılmasıyla ilgili önek bir örnek olabilir. Yapıt, "çoğunlukla dinamik" bir parametre oluşturmak için şema parametresini kullanabilir. Parametresi atama sırasında da tanımlanabilir, bu model adlandırma kurallarına uygun olabilecek bir tutarlılık sağlar. Adımlar için bkz. [statik parametreleri ayarlama-şema level parametresi](#blueprint-level-parameter).
 
-### <a name="using-securestring-and-secureobject-parameters"></a>secureString ve secureObject parametrelerini kullanma
+### <a name="using-securestring-and-secureobject-parameters"></a>SecureString ve secureObject parametrelerini kullanma
 
-Kaynak Yöneticisi _şablonu yapı,_ **secureString** ve **secureObject** türlerinin parametrelerini desteklerken, Azure Planları her birinin bir Azure Anahtar Kasası ile bağlanmasını gerektirir. Bu güvenlik önlemi, Blueprint ile birlikte sırları depolamanın güvensiz bir şekilde uygulanmasını önler ve güvenli desenlerin istihdamını teşvik eder. Azure Blueprints, bir Kaynak Yöneticisi _şablonu ekskayında_güvenli parametrenin eklenmesini algılayarak bu güvenlik önlemini destekler. Hizmet daha sonra algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında ister:
+Kaynak Yöneticisi Şablon _yapıtı_ **SecureString** ve **secureobject** türlerindeki parametreleri desteklese de Azure şemaları, her birinin bir Azure Key Vault bağlanmasını gerektirir. Bu güvenlik önlemi, gizli dizileri depolar ve güvenli desenlerin çalışmasını teşvik eder. Azure şemaları, Kaynak Yöneticisi şablonu _yapıtında_güvenli parametrelerin dahil edilmesini algılayan bu güvenlik ölçüsünü destekler. Hizmet daha sonra, algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında uyarır:
 
-- Anahtar Vault kaynak kimliği
-- Anahtar Vault gizli adı
+- Key Vault kaynak KIMLIĞI
+- Key Vault gizli dizi adı
 - Key Vault gizli sürümü
 
-Plan ataması **sistem tarafından atanmış yönetilen**bir kimlik kullanıyorsa, başvurulan Anahtar Kasası, plan tanımının atandığı aynı abonelikte _bulunmalıdır._
+Şema ataması **sistem tarafından atanan yönetilen kimlik**kullanıyorsa, başvurulan Key Vault şema tanımının atandığı abonelikte aynı _olması gerekir_ .
 
-Plan ataması **kullanıcı tarafından atanan yönetilen**bir kimlik kullanıyorsa, başvurulan Anahtar Kasası merkezi bir abonelikte _bulunabilir._ Yönetilen kimlik, plan atamasından önce Key Vault'ta uygun haklara hak tanımalıdır.
+Şema ataması **Kullanıcı tarafından atanan yönetilen kimlik**kullanıyorsa, _başvurulan Key Vault merkezi bir abonelikte bulunabilir._ Yönetilen kimliğe, şema atamasından önce Key Vault uygun haklara sahip olmalıdır.
 
 > [!IMPORTANT]
-> Her iki durumda da, **Access ilkeleri** sayfasında yapılandırılan şablon dağıtımı için Anahtar Kasası'nın Azure **Kaynak Yöneticisi'ne erişimi etkinleştirme** olmalıdır. Bu özelliğin nasıl etkinleştirilen yol tarifi için [Bkz. Anahtar Kasası - Şablon dağıtımını etkinleştir.](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)
+> Her iki durumda da, Key Vault **erişim ilkeleri** sayfasında yapılandırılmış **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştir** olmalıdır. Bu özelliğin nasıl etkinleştirileceği hakkında yönergeler için bkz. [Key Vault-şablon dağıtımını etkinleştirme](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
 
-Azure Key Vault hakkında daha fazla bilgi için [Key Vault Genel Bakış'a](../../../key-vault/general/overview.md)bakın.
+Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](../../../key-vault/general/overview.md).
 
 ## <a name="parameter-types"></a>Parametre türleri
 
 ### <a name="static-parameters"></a>Statik parametreler
 
-Planın tanımında tanımlanan bir parametre **değeristatik parametre**olarak adlandırılır, çünkü planın her kullanımı bu statik değeri kullanarak yapıyı dağıtacaktır. Kaynak grubu örneğinde, kaynak grubunun adı anlamlı olmasa da, konum için anlamlı olabilir. Daha sonra, planın her ataması, atama sırasında adı ne olursa olsun, aynı konumda kaynak grubu oluşturur. Bu esneklik, atama sırasında değiştirilebilenlere karşı gerekli olarak tanımladığınız şeyde seçici olmanızı sağlar.
+Şema 'in tanımında tanımlanan bir parametre değerine **statik parametre**denir, çünkü şema 'in her kullanımı yapıyı bu statik değeri kullanarak dağıtacaktır. Kaynak grubu örneğinde, kaynak grubunun adı için anlamlı olmasa da konum için anlamlı olabilir. Ardından, şema 'in her ataması, kaynak grubunu, atama sırasında her ne olursa olsun, aynı konumda oluşturur. Bu esneklik, atama sırasında nelerin değiştirilebileceklerini ve gerekli olarak tanımladıklarınızı seçmenize olanak sağlar.
 
-#### <a name="setting-static-parameters-in-the-portal"></a>Portalda statik parametrelerin ayarlanması
+#### <a name="setting-static-parameters-in-the-portal"></a>Portalda statik parametreleri ayarlama
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 
-1. Varolan bir plana tıklayın ve ardından **planı Edit** OR + **Plan Oluştur'u** tıklatın ve **Temel Bilgiler** sekmesindeki bilgileri doldurun.
+1. Mevcut bir şema öğesine tıklayın ve ardından şemayı **Düzenle** ' ye tıklayın veya **+ şema oluştur** ' a tıklayın ve **temel** bilgiler sekmesindeki bilgileri doldurun.
 
-1. **Sonraki'yi tıklatın: Eserler** VEYA **Eserler** sekmesine tıklayın.
+1. **İleri: yapıtlar** ' e tıklayın veya **yapılar** sekmesine tıklayın.
 
-1. Parametre seçenekleri olan plana eklenen yapılar, **Parametreler** sütununda **doldurulan Y parametrelerinin X'ini** görüntüler. Yapı parametrelerini yeniden diziletmek için yapı satırına tıklayın.
+1. Parametre seçeneklerine sahip şema öğesine eklenen yapılar, **Parameters** sütununda **doldurulmuş X/Y parametrelerini** görüntüler. Yapıt parametrelerini düzenlemek için yapıt satırına tıklayın.
 
-   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Plan tanımındaki plan parametreleri" border="false":::
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Şema tanımında şema parametreleri" border="false":::
 
-1. **Yapıyı Edit** sayfası, tıklanan yapıya uygun değer seçeneklerini görüntüler. Yapıdaki her parametrenin bir başlığı, değer kutusu ve onay kutusu vardır. Kutuyu statik bir **parametre**yapmak için işaretlenmemiş olarak ayarlayın. Aşağıdaki örnekte, yalnızca _Konum,_ işaretlenmeden ve _Kaynak Grubu Adı_ denetlenirken statik bir **parametredir.**
+1. **Yapıtı Düzenle** sayfası, tıklanan yapıya uygun değer seçeneklerini görüntüler. Yapıtın üzerindeki her parametrenin bir başlığı, bir değer kutusu ve bir onay kutusu vardır. Bir **statik parametre**yapmak için kutuyu işaretsiz olarak ayarlayın. Aşağıdaki örnekte, yalnızca _konum_ işaretlenmemiştir ve _kaynak grubu adı_ denetlendiğinden bir **statik parametredir** .
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Bir plan artifakı üzerindeki statik parametreleri planla" border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Şema yapıtı üzerinde şema statik parametrelerini Yazdır" border="false":::
 
-#### <a name="setting-static-parameters-from-rest-api"></a>REST API'den statik parametreleri ayarlama
+#### <a name="setting-static-parameters-from-rest-api"></a>REST API statik parametreleri ayarlama
 
 Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değişkenler bulunur:
 
 - `{YourMG}` - Yönetim grubunuzun adıyla değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
 
-##### <a name="blueprint-level-parameter"></a>Plan düzeyi parametresi
+##### <a name="blueprint-level-parameter"></a>Blueprint düzey parametresi
 
-REST API ile bir plan oluştururken, [plan parametreleri oluşturmak mümkündür.](#blueprint-parameters) Bunu yapmak için aşağıdaki REST API URI ve gövde biçimini kullanın:
+REST API aracılığıyla bir şema oluştururken, [şema parametreleri](#blueprint-parameters)oluşturmak mümkündür. Bunu yapmak için aşağıdaki REST API URI ve gövde biçimini kullanın:
 
 - REST API URI'si
 
@@ -108,8 +108,8 @@ REST API ile bir plan oluştururken, [plan parametreleri oluşturmak mümkündü
   }
   ```
 
-Bir plan düzeyi parametresi oluşturulduktan sonra, bu plana eklenen yapılarda kullanılabilir.
-Aşağıdaki REST API örneği, planüzerinde bir rol atama artifakı oluşturur ve plan düzeyi parametresini kullanır.
+Şema level parametresi oluşturulduktan sonra, bu şema için eklenen yapıtlar üzerinde kullanılabilir.
+Aşağıdaki REST API örnek, şema üzerinde bir rol atama yapıtı oluşturur ve şema Level parametresini kullanır.
 
 - REST API URI'si
 
@@ -130,11 +130,11 @@ Aşağıdaki REST API örneği, planüzerinde bir rol atama artifakı oluşturur
   }
   ```
 
-Bu örnekte, **principalIds** özelliği **sahipleri** plan düzeyi parametre `[parameters('owners')]`sini kullanarak . Plan düzeyi parametresini kullanarak bir yapı üzerinde parametre ayarlama hala statik bir **parametre**örneğidir. Plan düzeyi parametresi plan ataması sırasında ayarlanamaz ve her atamada aynı değerde olacaktır.
+Bu örnekte, **Prenalids** özelliği bir değerini kullanarak **sahipler** şeması ' nı kullanır `[parameters('owners')]`. Bir şema üzerinde bir parametre ayarlamak bir şema düzeyi parametresini kullanarak bir **statik parametre**örneği olmaya devam eder. Şema level parametresi, şema atama sırasında ayarlanamaz ve her atamada aynı değer olacaktır.
 
-##### <a name="artifact-level-parameter"></a>Yapı düzeyi parametresi
+##### <a name="artifact-level-parameter"></a>Yapıt düzeyi parametresi
 
-Bir yapı üzerinde **statik parametreler** oluşturmak benzerdir, ancak `parameters()` işlevi kullanmak yerine düz bir değer alır. Aşağıdaki örnekte iki statik parametre oluşturur, **tagName** ve **tagValue**. Her birinin değeri doğrudan sağlanır ve işlev çağrısı kullanmaz.
+Bir yapıtın üzerinde **statik parametreler** oluşturmak benzerdir, ancak `parameters()` işlevini kullanmak yerine düz bir değer alır. Aşağıdaki örnek iki statik parametre, **TagName** ve **tagvalue**oluşturur. Her bir üzerinde değer doğrudan sağlanır ve bir işlev çağrısı kullanmaz.
 
 - REST API URI'si
 
@@ -164,23 +164,23 @@ Bir yapı üzerinde **statik parametreler** oluşturmak benzerdir, ancak `parame
 
 ### <a name="dynamic-parameters"></a>Dinamik parametreler
 
-Statik parametrenin tersi dinamik bir **parametredir.** Bu parametre planda tanımlanmaz, ancak bunun yerine planın her ataması sırasında tanımlanır. Kaynak grubu örneğinde, dinamik bir **parametrenin** kullanılması kaynak grubu adı için anlamlıdır. Bu plan her atama için farklı bir ad sağlar. Plan işlevleri listesi için [plan işlevleri](../reference/blueprint-functions.md) başvurusuna bakın.
+Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint üzerinde tanımlanmamıştır, ancak bunun yerine Blueprint 'in her ataması sırasında tanımlanmıştır. Kaynak grubu örneğinde, **dinamik bir parametre** kullanımı, kaynak grubu adı için anlamlı hale gelir. Blueprint 'in her ataması için farklı bir ad sağlar. Şema işlevlerinin bir listesi için, bkz. şema [işlevleri](../reference/blueprint-functions.md) başvurusu.
 
-#### <a name="setting-dynamic-parameters-in-the-portal"></a>Portalda dinamik parametrelerin ayarlanması
+#### <a name="setting-dynamic-parameters-in-the-portal"></a>Portalda dinamik parametreleri ayarlama
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Planları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 
-1. Atamak istediğiniz plana sağ tıklayın. **Blueprint Atla'yı** seçin veya atamak istediğiniz plana tıklayın, ardından **Plan** Atla düğmesini tıklatın.
+1. Atamak istediğiniz şema öğesine sağ tıklayın. Şema **ata veya atamak istediğiniz şema '** i seçin, ardından şema **ata** düğmesine tıklayın.
 
-1. Plan **Atama** sayfasında, **Artefakt parametreleri** bölümünü bulun. En az bir **dinamik parametreye** sahip her yapı, yapıyı ve yapılandırma seçeneklerini görüntüler. Planı atamadan önce parametrelere gerekli değerleri sağlayın. Aşağıdaki örnekte, _Ad_ plan atamasını tamamlamak için tanımlanması gereken dinamik bir **parametredir.**
+1. **Şeması ata** sayfasında, **yapıt parametreleri** bölümünü bulun. En az bir **dinamik parametresi** olan her yapıt yapıt ve yapılandırma seçeneklerini görüntüler. Blueprint 'i atamadan önce parametrelere gerekli değerler sağlayın. Aşağıdaki örnekte _ad_ , şema atamasını tamamlayacak şekilde tanımlanması gereken **dinamik bir parametredir** .
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Plan ataması sırasında plan dinamik parametresi" border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Şema ataması sırasında şema dinamik parametresi" border="false":::
 
-#### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API'den dinamik parametrelerin ayarlanması
+#### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API dinamik parametreleri ayarlama
 
-Atama sırasında **dinamik parametrelerin** ayarlanması doğrudan değer girilerek yapılır. [Parametreler()](../reference/blueprint-functions.md#parameters)gibi bir işlev kullanmak yerine, sağlanan değer uygun bir dizedir. Kaynak grubu için yapılar "şablon adı", **adı**ve **konum** özellikleriyle tanımlanır. Dahil edilen yapı için diğer tüm parametreler ** \<\> ** bir ad ve **değer** anahtar çifti ile **parametreler** altında tanımlanır. Plan, atama sırasında sağlanmayan dinamik bir parametre için yapılandırılırsa, atama başarısız olur.
+Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer girilerek yapılır. [Parametreler ()](../reference/blueprint-functions.md#parameters)gibi bir işlev kullanmak yerine, belirtilen değer uygun bir dizedir. Bir kaynak grubunun yapıtları, "şablon adı", **ad**ve **konum** özellikleriyle tanımlanır. Dahil edilen yapıt için diğer tüm parametreler, bir ** \<\> ad** ve **değer** anahtarı çiftiyle **Parametreler** altında tanımlanmıştır. Şema, atama sırasında sağlanmayan dinamik bir parametre için yapılandırılmışsa, atama başarısız olur.
 
 - REST API URI'si
 
@@ -233,7 +233,7 @@ Atama sırasında **dinamik parametrelerin** ayarlanması doğrudan değer giril
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Plan işlevleri](../reference/blueprint-functions.md)listesine bakın.
+- [Şema işlevlerinin](../reference/blueprint-functions.md)listesine bakın.
 - [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
 - [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
