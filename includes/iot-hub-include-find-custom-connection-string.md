@@ -9,30 +9,30 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 6f43bbcd83861f7d39de2aa89bbe035c2ff5b809
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70050460"
 ---
 <!-- This tells how to create a custom shared access policy for your IoT hub and get the connection string for it-->
 
-**Hizmet bağlantısı** ve kayıt **defteri okuma** izinleri veren paylaşılan bir erişim ilkesi oluşturmak ve bu ilke için bir bağlantı dizesi almak için aşağıdaki adımları izleyin:
+**Hizmet Connect** ve **kayıt defteri okuma** izinleri veren ve bu ilke için bir bağlantı dizesi alan bir paylaşılan erişim ilkesi oluşturmak için şu adımları izleyin:
 
-1. Azure [portalında](https://portal.azure.com) **Kaynak gruplarını**seçin. Hub'ınızın bulunduğu kaynak grubunu seçin ve ardından kaynak listesinden hub'ınızı seçin.
+1. [Azure Portal](https://portal.azure.com) **kaynak grupları**' nı seçin. Hub 'ınızın bulunduğu kaynak grubunu seçin ve ardından kaynak listesinden hub 'ınızı seçin.
 
-1. Hub'ınızın sol tarafındaki bölmede **Paylaşılan erişim ilkeleri'ni**seçin.
+1. Hub 'ınızın sol tarafındaki bölmede **paylaşılan erişim ilkeleri**' ni seçin.
 
-1. İlkeler listesinin üst menüsünden **Ekle'yi**seçin.
+1. İlke listesinin üstündeki en üstteki menüden **Ekle**' yi seçin.
 
-1. **Paylaşılan erişim ilkesi ekle**altında, *hizmetAndRegistryRead*gibi ilkeniz için açıklayıcı bir ad girin. **İzinler**altında, **Kayıt Defteri okuma** ve Hizmet **bağlantısı'nı**seçin ve ardından **Oluştur'u**seçin.
+1. **Paylaşılan erişim Ilkesi Ekle**' nin altında, Ilkeniz Için *Serviceandregistryread*gibi açıklayıcı bir ad girin. **İzinler**altında **kayıt defteri okuma** ve **hizmet Connect**' i seçin ve ardından **Oluştur**' u seçin.
 
-    ![Yeni bir paylaşılan erişim ilkesinin nasıl ekleyeceğini göster](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
+    ![Yeni bir paylaşılan erişim ilkesinin nasıl ekleneceğini göster](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
 
-1. İlkeler listesinden yeni ilkenizi seçin.
+1. İlke listesinden yeni ilkenizi seçin.
 
-1. **Paylaşılan erişim tuşları**altında, Bağlantı **dizesi** için kopya simgesini seçin -- birincil anahtar ve değeri kaydedin.
+1. **Paylaşılan erişim anahtarları**altında, **bağlantı dizesi--birincil anahtar** için Kopyala simgesini seçin ve değeri kaydedin.
 
-    ![Bağlantı dizesinin nasıl alınır göster](./media/iot-hub-include-find-custom-connection-string/iot-hub-get-connection-string.png)
+    ![Bağlantı dizesinin nasıl alınacağını göster](./media/iot-hub-include-find-custom-connection-string/iot-hub-get-connection-string.png)
 
-IoT Hub paylaşılan erişim ilkeleri ve izinleri hakkında daha fazla bilgi için [Erişim denetimi ve izinleri](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)bkz.
+IoT Hub paylaşılan erişim ilkeleri ve izinleri hakkında daha fazla bilgi için bkz. [erişim denetimi ve izinleri](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions).

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: danlep
 ms.openlocfilehash: 8444a2a99977f0e8f6324423ea676c7763481a53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67508296"
 ---
-Ay veya gün belirtmek için sayısal değerleri, adları veya ad kısaltmalarını kullanabilirsiniz:
+Ayları veya günleri belirtmek için adların sayısal değerlerini, adlarını veya kısaltmalarını kullanabilirsiniz:
 
-* Günler için sayısal değerler 0 ile 6 arasındadır ve 0 Pazar ile başlar.
-* İsimler İngilizcedir. Örneğin: `Monday`, `January`.
-* İsimler büyük/küçük harf duyarsızdır.
-* Adlar kısaltılabilir. Üç harf önerilen kısaltma uzunluğudur.  Örneğin: `Mon`, `Jan`. 
+* Gün için sayısal değerler 0 ile 6, 1 ise Pazar ile başlar.
+* Adlar Ingilizce 'Dir. Örneğin: `Monday`, `January`.
+* Adlar büyük/küçük harfe duyarlıdır.
+* Adlar kısaltılabilir. Üç harf önerilen kısaltma uzunluktadır.  Örneğin: `Mon`, `Jan`. 

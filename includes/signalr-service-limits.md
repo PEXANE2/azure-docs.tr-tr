@@ -1,6 +1,6 @@
 ---
-title: Azure SignalR Hizmeti tabloyu sınırlandırıyor
-description: Azure SignalR Hizmeti için sistem sınırlarını açıklar.
+title: Azure SignalR hizmeti sınırları tablosu
+description: Azure SignalR hizmeti için sistem sınırlarını açıklar.
 services: signalr
 documentationcenter: signalr
 author: sffamily
@@ -14,21 +14,21 @@ ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
 ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67188772"
 ---
 | Kaynak | Varsayılan limit | Üst sınır | 
 | --- | --- | --- |
-| Ücretsiz katman için örnek başına Azure SignalR Service birimleri |1 |1 |
-| Standart katman için örnek başına Azure SignalR Service birimleri |100 |100 |
-| Ücretsiz katman için bölge başına abonelik başına Azure SignalR Hizmeti birimleri|5 |5 |
-| Bölge başına abonelik başına toplam Azure SinyalR Hizmeti birimi sayısı |150 |Sınırsız |
-| Ücretsiz katman için birim başına günlük bağlantılar |20 |20 |
-| Standart katman için birim başına günlük bağlantılar |1000 |1000|
-| Ücretsiz katman için birim başına günlük iletiler dahil|20.000 |20.000 |
-| Standart katman için birim başına günlük iletiler dahil|1.000.000 |1.000.000 |
+| Ücretsiz katman için örnek başına Azure SignalR hizmet birimleri |1 |1 |
+| Standart katman için örnek başına Azure SignalR hizmet birimleri |100 |100 |
+| Ücretsiz katman için her bölge için abonelik başına Azure SignalR hizmet birimi|5 |5 |
+| Her bölge için abonelik başına toplam Azure SignalR hizmeti birim sayısı |150 |Sınırsız |
+| Ücretsiz katman için günlük birim başına bağlantı |20 |20 |
+| Standart katman için günlük birim başına bağlantı |1000 |1000|
+| Ücretsiz katman için gün başına birim başına dahil edilen ileti|20.000 |20.000 |
+| Standart katman için gün başına birim başına dahil edilen ileti|1.000.000 |1.000.000 |
 
-Aboneliğinizin varsayılan sınırlarında bir güncelleştirme istemek için bir destek bileti açın. 
+Aboneliğinizin varsayılan sınırlarına bir güncelleştirme istemek için bir destek bileti açın. 

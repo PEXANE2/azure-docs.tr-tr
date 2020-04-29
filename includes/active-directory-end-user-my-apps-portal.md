@@ -9,13 +9,13 @@ ms.date: 02/03/2020
 ms.author: lizross
 ms.custom: include file
 ms.openlocfilehash: df529de23b5d964dd80dd9fa5dd17c460a2c4f28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062395"
 ---
 | |
 |--|
-|Yöneticiniz kuruluşunuz için yeni **Uygulamalarım** önizleme deneyimini açtıysa, **artık UygulamalarSayfam** sayfasının üst kısmında hesap bilgilerinizi görüntülemek için hesap simgesini seçtiğinizde bir bağlantı görürsünüz. **Yeni Uygulamalarım deneyimini deneyin'i**seçerseniz, hemen yeni URL'yehttps://myapplications.microsoft.com) (ve güncellenen deneyime) gidersiniz. Bundan sonra, **Uygulamalarım** sayfasına döndüğünüzde otomatik olarak yeni deneyime gidersiniz.<br><br>Yeni deneyimi kullanmayı bırakmak için, **Hesaplarım** sayfamın üst kısmında hesap bilgilerinizi görüntülemek için hesap simgesini seçtiğinizde **Önizlemeyi Bırak'ı** seçebilirsiniz. Hemen eski URL'ye (myapps.microsoft.com) ve deneyime geri dönersiniz. Bundan sonra, **Uygulamalarım** sayfasına her döndüğünüzde, otomatik olarak eski deneyime gidersiniz.|
+|Yöneticiniz, kuruluşunuz için yeni **uygulamalarım** önizleme deneyimimize açıldıysa, bu durumda hesap simgesini seçtiğinizde, **uygulamalarım** sayfasının en üstünde hesap bilgilerinizi görüntülemek için bir bağlantı görürsünüz. **Yeni uygulamalarım deneyimini dene**' yi seçerseniz, hemen yeni URL 'ye (https://myapplications.microsoft.com) ve güncelleştirilmiş deneyimle gidebilirsiniz. Bundan sonra, **uygulamalarım** sayfasına geri döndüğünüzde, otomatik olarak yeni deneyime gidebilirsiniz.<br><br>Yeni deneyimi kullanmayı durdurmak için, bir hesap simgesini seçtiğinizde, **uygulamalarım** sayfasının en üstünde hesap bilgilerini görüntülemek için **Önizleme deneyimini bırak** seçeneğini belirleyebilirsiniz. Hemen eski URL (myapps.microsoft.com) ve deneyime geri döneceksiniz. Bundan sonra, **uygulamalarım** sayfasına her döndüğünüzde, otomatik olarak eski deneyime gidebilirsiniz.|
 |

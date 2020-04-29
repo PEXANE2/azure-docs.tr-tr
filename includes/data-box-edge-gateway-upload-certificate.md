@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 06/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 09d9b5bbf3f9ca7a4eef37891d03c9c865e7f74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67448615"
 ---
-Uygun bir SSL sertifikası, şifreli bilgileri doğru sunucuya göndermenizi sağlar. Şifrelemenin yanı sıra, sertifika kimlik doğrulamasına da izin verir. Cihazın PowerShell arabirimi üzerinden kendi güvenilir SSL sertifikanızı yükleyebilirsiniz.
+Doğru bir SSL sertifikası, doğru sunucuya şifreli bilgiler gönderiyor olmanızı sağlar. Şifrelemenin yanı sıra, sertifika da kimlik doğrulaması için izin verir. Aygıtın PowerShell arabirimi aracılığıyla kendi güvenilen SSL sertifikanızı karşıya yükleyebilirsiniz.
 
-1. [PowerShell arabirimine bağlanın.](#connect-to-the-powershell-interface)
-2. Sertifikayı `Set-HcsCertificate` yüklemek için cmdlet'i kullanın. İstendiğinde, aşağıdaki parametreleri sağlayın:
+1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
+2. Sertifikayı karşıya `Set-HcsCertificate` yüklemek için cmdlet 'ini kullanın. İstendiğinde, aşağıdaki parametreleri sağlayın:
 
-   - `CertificateFilePath`- Sertifika dosyasını *.pfx* formatında içeren paylaşıma giden yol.
-   - `CertificatePassword`- Sertifikayı korumak için kullanılan bir parola.
-   - `Credentials`- Sertifikayı içeren paylaşıma erişmek için kullanıcı adı. İstendiğinde ağ paylaşımının parolasını sağlayın.
+   - `CertificateFilePath`- *. Pfx* biçiminde sertifika dosyasını içeren paylaşımın yolu.
+   - `CertificatePassword`-Sertifikayı korumak için kullanılan parola.
+   - `Credentials`-Sertifikayı içeren paylaşıma erişmek için Kullanıcı adı. İstendiğinde ağ paylaşımının parolasını girin.
 
-     Aşağıdaki örnek, bu cmdlet kullanımını gösterir:
+     Aşağıdaki örnek, bu cmdlet 'in kullanımını gösterir:
 
      ```
      Set-HcsCertificate -Scope LocalWebUI -CertificateFilePath "\\myfileshare\certificates\mycert.pfx" -CertificatePassword "mypassword" -Credential "Username"

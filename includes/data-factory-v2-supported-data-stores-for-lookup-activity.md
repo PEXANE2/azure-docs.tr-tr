@@ -1,6 +1,6 @@
 ---
 title: include dosyası
-description: Arama Etkinliği için desteklenen konektörler
+description: Arama etkinliği için desteklenen bağlayıcılar
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -9,10 +9,10 @@ ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75440464"
 ---
 | Kategori | Veri deposu |
@@ -21,7 +21,7 @@ ms.locfileid: "75440464"
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
 | &nbsp; |[Azure Veri Gezgini](../articles/data-factory/connector-azure-data-explorer.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
-| &nbsp; |[Azure Data Lake Storage 2. Nesil](../articles/data-factory/connector-azure-data-lake-storage.md) |
+| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
 | &nbsp; |[MariaDB için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mariadb.md) |
 | &nbsp; |[MySQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) |
@@ -30,7 +30,7 @@ ms.locfileid: "75440464"
 | &nbsp; |[Azure SQL Veritabanı Yönetilen Örneği](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
 | &nbsp; |[Azure Synapse Analytics (eski adı SQL Veri Ambarı)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Tablo depolama](../articles/data-factory/connector-azure-table-storage.md) |
-| **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
+| **Veritabanınızı** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
@@ -41,14 +41,14 @@ ms.locfileid: "75440464"
 | &nbsp; |[Informix](../articles/data-factory/connector-informix.md) 
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |
 | &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |
-| &nbsp; |[Mysql](../articles/data-factory/connector-mysql.md) |
+| &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) 
 | &nbsp; |[Presto (Önizleme)](../articles/data-factory/connector-presto.md) |
 | &nbsp; |[SAP Business Warehouse Açık Hub'ı](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
-| &nbsp; |[MDX ile SAP İş Ambarı](../articles/data-factory/connector-sap-business-warehouse.md) |
+| &nbsp; |[MDX aracılığıyla SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
 | &nbsp; |[SAP Tablosu](../articles/data-factory/connector-sap-table.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
@@ -80,7 +80,7 @@ ms.locfileid: "75440464"
 | &nbsp; |[Marketo (Önizleme)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (Önizleme)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (Önizleme)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Oracle Service Cloud (Önizleme)](../articles/data-factory/connector-oracle-service-cloud.md) |
+| &nbsp; |[Oracle hizmet bulutu (Önizleme)](../articles/data-factory/connector-oracle-service-cloud.md) |
 | &nbsp; |[PayPal (Önizleme)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (Önizleme)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |

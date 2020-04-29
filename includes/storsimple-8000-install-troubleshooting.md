@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ebe112103bc3eb30239e80095db9bb91a33bebf3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188566"
 ---
 ## <a name="troubleshooting-update-failures"></a>Güncelleştirme hatalarını giderme
 **Yükseltme öncesi denetimlerin başarısız olduğuna dair bir bildirim görürseniz ne yapmalısınız?**
 
-Ön denetim başarısız olursa, sayfanın sonundaki ayrıntılı bildirim çubuğuna baktığınızdan emin olun. Bu, hangi ön denetimin başarısız olduğuna dair yönlendirme sağlar. Örneğin, denetleyici sistem durumu denetimi ve donanım bileşeni sistem durumu denetiminin başarısız olduğuna dair bir bildirim alırsınız. Donanım **>'na**gidin. Her iki denetleyicinin de sağlıklı ve çevrimiçi olduğundan emin olmanız gerekir. Ayrıca, StorSimple aygıtındaki tüm donanım bileşenlerinin bu bıçakta sağlıklı olduğundan emin olmanız gerekir. Ardından güncelleştirmeleri yüklemeyi deneyebilirsiniz. Donanım bileşeni sorunlarını çözemiyorsanız, sonraki adımlar için Microsoft Destek’e başvurmanız gerekecektir.
+Ön denetim başarısız olursa, sayfanın sonundaki ayrıntılı bildirim çubuğuna baktığınızdan emin olun. Bu, hangi ön denetimin başarısız olduğuna dair yönlendirme sağlar. Örneğin, denetleyici sistem durumu denetimi ve donanım bileşeni sistem durumu denetiminin başarısız olduğunu belirten bir bildirim alırsınız. **> donanım durumunu izle**' ye gidin. Her iki denetleyicinin de sağlıklı ve çevrimiçi olduğundan emin olmanız gerekir. Ayrıca, StorSimple cihazındaki tüm donanım bileşenlerinin bu dikey pencerede sağlıklı olarak gösterildiğinden emin olmanız gerekir. Ardından güncelleştirmeleri yüklemeyi deneyebilirsiniz. Donanım bileşeni sorunlarını çözemiyorsanız, sonraki adımlar için Microsoft Destek’e başvurmanız gerekecektir.
 
 **“Güncelleştirmeler yüklenemedi” hata iletisini alırsanız ve hatanın nedeninin belirlemek için verilen tavsiye güncelleme sorun giderme kılavuzuna bakmak olduğunda ne yapmalısınız?**
 

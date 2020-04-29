@@ -9,34 +9,34 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
 ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75541809"
 ---
-1. [Azure Machine Learning stüdyosunda](https://ml.azure.com)oturum açın.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
 
-1. Çalışma alanınızı Enterprise sürümüne yükseltin.
+1. Çalışma alanınızı Enterprise Edition 'a yükseltin.
 
-    Yükseltmeden sonra, tüm görsel arabirim denemeleriniz tasarımcıda boru hattı taslaklarına dönüştürülür.
+    Yükseltmeden sonra tüm görsel arabiriminiz denemeleri, tasarımcıda işlem hattı taslaklarına dönüştürür.
     
     > [!NOTE]
-    > Görsel arabirim web hizmetlerini gerçek zamanlı uç noktalara dönüştürmek için Enterprise sürümüne yükseltme yapmanız gerekmez.
+    > Visual Interface Web hizmetlerini gerçek zamanlı uç noktalara dönüştürmek için Enterprise sürümüne yükseltmeniz gerekmez.
     
-1. Boru hattı taslakları listenizi görüntülemek için çalışma alanının tasarımcı bölümüne gidin. 
+1. İşlem hattı taslakları listenizi görüntülemek için çalışma alanının tasarımcı bölümüne gidin. 
     
-    Dönüştürülmüş web hizmetleri **Endpoints** > **Gerçek zamanlı uç noktalarına**yönlendirilerek bulunabilir.
+    Dönüştürülen Web Hizmetleri, **uç noktalar** > **gerçek zamanlı uç noktalara**gidilerek bulunabilir.
 
-1. Açmak için bir boru hattı taslağı seçin.
+1. Açmak için bir işlem hattı taslağı seçin.
 
-    Dönüştürme işlemi sırasında bir hata varsa, sorunu gidermek için yönergeleri içeren bir hata iletisi görüntülenir. 
+    Dönüştürme işlemi sırasında bir hata oluşursa, sorunu çözme yönergeleriyle birlikte bir hata mesajı görüntülenir. 
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
- El ile ele alınması gereken bilinen geçiş sorunları aşağıda verilmiştir:
+ Aşağıda, el ile ele geçirilmesi gereken bilinen geçiş sorunları verilmiştir:
 
-- **Veri İçe Aktarma** veya **Dışa Aktarma Verileri** modülleri
+- **Veri Içeri aktarma** veya **veri modüllerini dışarı aktarma**
         
-    Denemede bir **İçe Aktarma Verisi** veya **Dışa Aktarma Verisi** modülü varsa, veri depolarını kullanmak için veri kaynağını güncelleştirmeniz gerekir. Bir veri deposu oluşturmayı öğrenmek için [Azure depolama hizmetlerinde Verilere Nasıl Erişilir'e](../articles/machine-learning/how-to-access-data.md)bakın. Bulut depolama hesabı bilgileriniz, kolaylık sağlamak için **İçe Aktarma Verileri** veya **Dışa Aktarma Verileri** modülünün açıklamalarına eklenmiştir. 
+    Deneyde bir veri **Içeri aktarma** veya **veri verme** modülünüzün olması durumunda veri mağazalarını kullanmak için veri kaynağını güncelleştirmeniz gerekir. Bir veri deposu oluşturmayı öğrenmek için bkz. [Azure Storage hizmetlerindeki verilere erişme](../articles/machine-learning/how-to-access-data.md). Bulut depolama hesabı bilgileriniz, kolaylık sağlamak için **verileri Içeri aktarma** veya **verileri dışarı aktarma** modülünün açıklamalarına eklenmiştir. 
       

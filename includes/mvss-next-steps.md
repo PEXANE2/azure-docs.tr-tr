@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: manayar
 ms.openlocfilehash: 633f7f9231e08acdb0e08ee97067d2a469bbdb45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75980190"
 ---
 [Azure Resource Manager belgelerini](../articles/azure-resource-manager/templates/deploy-powershell.md) izleyerek yukarıdaki şablonu dağıtabilirsiniz.
 
-Bu öğretici seriye [temel ölçek kümesi şablonu makalesinden](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)başlayabilirsiniz.
+Bu öğretici serisini [temel ölçek kümesi şablonu makalesinden](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)başlatabilirsiniz.
 
-[Ölçek kümesini varolan bir sanal ağa dağıtmak](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md)için temel ölçek kümesi [şablonunda](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) nasıl değiştirileceksiniz.
+[Ölçek kümesini mevcut bir sanal ağa dağıtmak](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md)için [temel ölçek kümesi şablonunu](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) nasıl değiştireceğiniz hakkında bilgi alabilirsiniz.
 
-Özel bir görüntü yle ölçek kümesini dağıtmak için temel ölçek kümesi [şablonuna](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md)nasıl değiştirilebildiğini görebilirsiniz. [basic scale set template](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)
+[Ölçek kümesini özel bir görüntüyle dağıtmak](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md)için [temel ölçek kümesi şablonunu](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) nasıl değiştireceğiniz hakkında bilgi alabilirsiniz.
 
-Konuk tabanlı otomatik ölçekle bir Linux ölçeği kümesi dağıtmak için temel ölçek kümesi [şablonunda](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)nasıl değiştirileceksiniz. [basic scale set template](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)
+[Bir Linux ölçek kümesini Konuk tabanlı otomatik ölçeklendirme ile dağıtmak](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)için [temel ölçek kümesi şablonunu](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) nasıl değiştireceğiniz hakkında bilgi alabilirsiniz.
 
-Ölçek kümeleri hakkında daha fazla bilgi için [ölçek kümesi genel bakış sayfasına](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)bakın.
+Ölçek kümeleri hakkında daha fazla bilgi için [Ölçek kümesine genel bakış sayfasına](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)bakın.

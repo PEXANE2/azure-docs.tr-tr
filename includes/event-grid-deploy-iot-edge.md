@@ -9,45 +9,45 @@ ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844606"
 ---
-## <a name="deploy-event-grid-iot-edge-module"></a>Olay Izgara IoT Edge modüllerini dağıtın
+## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modülünü dağıt
 
-Modülleri bir IoT Edge aygıtına dağıtmanın çeşitli yolları vardır ve bunların tümü IoT Edge'deki Azure Olay Izgarası için çalışır. Bu makalede, Azure portalından IoT Edge'de Olay Izgarasını dağıtma adımları açıklanmaktadır.
+IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi IoT Edge Azure Event Grid için çalışır. Bu makalede Azure portal IoT Edge Event Grid dağıtma adımları açıklanmaktadır.
 
 >[!NOTE]
-> Bu eğitimde, Etkinlik Izgara modüllerini kalıcılık olmadan dağıtmış olursunuz. Bu, modülü yeniden dağıttığınızda bu öğreticide oluşturduğunuz tüm konuların ve aboneliklerin silineceği anlamına gelir. Kalıcılığı nasıl düzenesin hakkında daha fazla bilgi için aşağıdaki makalelere bakın: [Linux'ta kalıcı durum](../articles/event-grid/edge/persist-state-linux.md) veya [Windows'da kalıcı durum.](../articles/event-grid/edge/persist-state-windows.md) Üretim iş yükleri için Olay Izgara modüllerini kalıcı olarak yüklemenizi öneririz.
+> Bu öğreticide, Event Grid modülünü kalıcı olmadan dağıtacaksınız. Bu öğreticide oluşturduğunuz tüm konuların ve aboneliklerin, modülü yeniden dağıtırken silineceği anlamına gelir. Kalıcılığı ayarlama hakkında daha fazla bilgi için şu makalelere bakın: [Linux 'ta durumu kalıcı hale](../articles/event-grid/edge/persist-state-linux.md) getirin veya [Windows 'da durumu devam](../articles/event-grid/edge/persist-state-windows.md)ettir. Üretim iş yükleri için Event Grid modülünü Kalıcılık ile yüklemenizi öneririz.
 
 >[!IMPORTANT]
-> Bu eğitimde, Olay Izgara modülü istemci kimlik doğrulaması kapalı olarak dağıtılır ve HTTP abonelerine izin verir. Üretim iş yükleri için yalnızca HTTPS isteklerini ve istemci kimlik doğrulaması etkin leştirilmiş aboneleri etkinleştirmenizi öneririz. Olay Izgara modüllerini güvenli bir şekilde yapılandırma hakkında daha fazla bilgi için [Güvenlik ve kimlik doğrulama](../articles/event-grid/edge/security-authentication.md)sına bakın.
+> Bu öğreticide, Event Grid modülü istemci kimlik doğrulaması kapalı ile dağıtılacak ve HTTP abonelerine izin vermeyecektir. Üretim iş yükleri için, istemci kimlik doğrulaması etkinleştirilmiş olarak yalnızca HTTPS isteklerini ve aboneleri etkinleştirmenizi öneririz. Event Grid modülünü güvenli şekilde yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması](../articles/event-grid/edge/security-authentication.md).
  
 ### <a name="select-your-iot-edge-device"></a>IoT Edge cihazınızı seçin
 
-1. [Azure portalında](https://portal.azure.com) oturum açın
-1. IoT Hub'ınıza gidin.
-1. **Otomatik Aygıt Yönetimi** bölümündeki menüden **IoT Edge'i** seçin. 
-1. Aygıtlar listesinden hedef aygıtın kimliğine tıklayın
-1. **Modülleri Ayarlama**'yı seçin. Sayfayı açık tutun. Sonraki bölümdeki adımlarla devam eceksiniz.
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. IoT Hub gidin.
+1. **Otomatik cihaz yönetimi** bölümündeki menüden **IoT Edge** ' yi seçin. 
+1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın
+1. **Modülleri Ayarlama**'yı seçin. Sayfayı açık tutun. Sonraki bölümde bulunan adımlarla devam edersiniz.
 
-### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimini yapılandırma
+### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimi yapılandırma
 
-Dağıtım bildirimi, hangi modüllerin dağıtılabildiğini, modüller arasında verilerin nasıl aktığını ve modülün istenilen özelliklerini açıklayan bir JSON belgesidir. Azure portalında, JSON belgesini el ile oluşturmak yerine dağıtım bildirimi oluşturmada size yol gösteren bir sihirbaz vardır.  Üç adımı vardır: **Modülekleme,** **Rotalar belirt**ve **dağıtımı gözden geçirin.**
+Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
 
 ### <a name="add-modules"></a>Modül ekle
 
-1. Dağıtım **Modülleri** bölümünde Ekle'yi **seçin**
-1. Açılan listedeki modül türlerine göre **IoT Edge Modülünü** seçin
-1. Kapsayıcının adını, görüntüsünü, kapsayıcıyı oluşturma seçeneklerini sağlayın:
+1. **Dağıtım modülleri** bölümünde **Ekle** ' yi seçin.
+1. Açılan listedeki modül türlerinden **IoT Edge modül** ' ı seçin.
+1. Kapsayıcının adını, görüntüsünü, kapsayıcı oluşturma seçeneklerini belirtin:
 
 [!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
-   * **Adı**: eventgridmodule
-   * **Resim URI**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
-   * **Konteyner Oluşturma Seçenekleri**:
+   * **Ad**: eventgridmodule
+   * **Görüntü URI 'si**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Kapsayıcı oluşturma seçenekleri**:
 
     ```json
         {
@@ -67,26 +67,26 @@ Dağıtım bildirimi, hangi modüllerin dağıtılabildiğini, modüller arasın
         }
     ```
 
- 1. **Kaydet'i** tıklatın
- 1. Rotalar bölümüne devam etmek için **İleri'yi** tıklatın
+ 1. **Kaydet** 'e tıklayın
+ 1. Yönlendirmeler bölümüne devam etmek için **İleri** 'ye tıklayın
 
     > [!NOTE]
-    > Kenar aygıtı olarak bir Azure VM kullanıyorsanız, bağlantı noktası 4438'de gelen trafiğine izin vermek için gelen bağlantı noktası kuralını ekleyin. Kuralı ekleme yönergeleri için, [bağlantı noktalarını VM'ye nasıl açacağına](../articles/virtual-machines/windows/nsg-quickstart-portal.md)bakın.
+    > Bir Azure VM 'yi uç cihaz olarak kullanıyorsanız, 4438 numaralı bağlantı noktasında gelen trafiğe izin vermek için bir gelen bağlantı noktası kuralı ekleyin. Kuralı ekleme hakkında yönergeler için bkz. [BIR VM 'ye bağlantı noktalarını açma](../articles/virtual-machines/windows/nsg-quickstart-portal.md).
 
 
-### <a name="setup-routes"></a>Kurulum rotaları
+### <a name="setup-routes"></a>Kurulum yolları
 
- Varsayılan yolları tutun ve inceleme bölümüne devam etmek için **Sonraki'ni** seçin
+ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için **İleri** ' yi seçin.
 
-### <a name="review-deployment"></a>Dağıtımı gözden geçirme
+### <a name="review-deployment"></a>Dağıtımı gözden geçir
 
-1. İnceleme bölümü, önceki iki bölümdeki seçimlerinize göre oluşturulan JSON dağıtım bildirimini gösterir. Listedeki iki modülü gördüğünüzden onaylayın: **$edgeAgent** ve **$edgeHub.** Bu iki modül IoT Edge çalışma süresini oluşturan ve her dağıtımda varsayılan olarak gereklidir.
-1. Dağıtım bilgilerinizi gözden geçirin ve **ardından Gönder'i**seçin.
+1. İnceleme Bölümü, önceki iki bölümdeki seçimlerinize göre oluşturulan JSON dağıtım bildirimini gösterir. Listedeki iki modülü gördüistediğinizi onaylayın: **$edgeAgent** ve **$edgeHub**. Bu iki modül IoT Edge çalışma zamanını yapar ve her dağıtımda gerekli varsayılanlar olur.
+1. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
 
-### <a name="verify-your-deployment"></a>Dağıtımınızı doğrulayın
+### <a name="verify-your-deployment"></a>Dağıtımınızı doğrulama
 
-1. Dağıtımı gönderdikten sonra, IoT hub'ınızın IoT Edge sayfasına geri dönersiniz.
-1. Ayrıntıları açmak için dağıtımla hedeflediğiniz **IoT Edge aygıtını** seçin.
-1. Aygıt ayrıntılarında, Olay Izgara modülünün hem **dağıtımda belirtilen** hem de **aygıt tarafından bildirilen**olarak listelenmiş olduğunu doğrulayın.
+1. Dağıtımı gönderdikten sonra IoT Hub 'ınızın IoT Edge sayfasına dönersiniz.
+1. Bilgilerini açmak için dağıtıma hedeflenmiş **IoT Edge cihazı** seçin.
+1. Cihaz ayrıntılarında Event Grid modülünün hem **dağıtımda** hem de **cihaz tarafından raporlanarak**listelendiğinden emin olun.
 
-Modülün cihazda başlatılması ve ardından IoT Hub'a rapor edilmesi birkaç dakika sürebilir. Güncelleştirilmiş bir durumu görmek için sayfayı yenileyin.
+Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.

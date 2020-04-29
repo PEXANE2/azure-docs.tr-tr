@@ -5,11 +5,11 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/09/2018
 ms.openlocfilehash: 01f9a3c74c555338e99776490ceb4828503cef23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792046"
 ---
-**S**: Varolan ağ geçidimin konumu neden değişti? <br/>
-**C:** 3 Mayıs 2017'den önce oluşturulan ağ geçidi kaynakları, bu ağ geçitlerini oluşturan iş veya okul hesabı için Azure AD kiracısının özgün konumlarına taşındı. Ancak, bu değişiklikler her zamanki gibi çalışmaya devam etmelidir şu anda çalışan mantık uygulamaları etkilememelidir. Ağ geçidinin Mayıs ayındaki genel kullanılabilirliği yle, ağ geçidi kaynak konumları mantık uygulama konumlarından farklı olabilir.
+**S**: var olan ağ geçidimin konumu neden değiştirilsin mi? <br/>
+Y **: 3**Mayıs 2017 tarihinden önce oluşturulan ağ geçidi kaynakları, bu ağ geçitlerini oluşturan iş veya okul hesabı IÇIN Azure AD kiracısının orijinal konumlarına taşınmıştır. Ancak, bu değişiklikler şu anda çalışan mantıksal uygulamaları etkilememelidir, bu da her zamanki gibi çalışmaya devam etmelidir. Ağ geçidinin genel kullanılabilirliği ile, ağ geçidi kaynak konumları mantıksal uygulama konumlarından farklı olabilir.

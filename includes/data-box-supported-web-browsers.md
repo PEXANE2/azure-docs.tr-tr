@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: 2b0149bd2bb46de87b4575ccb5d44836dd74bde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66242134"
 ---
-Burada yerel web ui için desteklenen web tarayıcıları listesidir.
+Yerel Web Kullanıcı arabirimi için desteklenen Web tarayıcılarının bir listesi aşağıda verilmiştir.
 
 | **Tarayıcı** | **Sürümler** | **Ek gereksinimler/notlar** |
 | --- | --- | --- |
-| Google Chrome |En son sürüm |Chrome ile test edilmiştir|
+| Google Chrome |En son sürüm |Chrome ile test edildi|
 | Microsoft Edge |En son sürüm | |
-| Firefox | En son sürüm | FireFox ile test edilmiştir|
-| Internet Explorer |En son sürüm |Oturum açamıyorsanız, tanımlama bilgilerinin ve Javascript'in etkin olup olmadığını kontrol edin. Kullanıcı Bira erişimini etkinleştirmek için, aygıtın tanımlama bilgilerine erişebilmesi için aygıt IP'sini **Gizlilik Eylemleri'ne** ekleyin. |
+| 'U | En son sürüm | FireFox ile test edilmiştir|
+| Internet Explorer |En son sürüm |Oturum açabilmeniz için tanımlama bilgilerinin ve JavaScript 'In etkinleştirilip etkinleştirilmediğini denetleyin. UI erişimini etkinleştirmek için cihazın tanımlama bilgilerine erişebilmesi için cihaz IP 'sini **Gizlilik eylemlerine** ekleyin. |

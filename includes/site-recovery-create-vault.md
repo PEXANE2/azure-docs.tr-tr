@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: fd1a7f133c5719873133554fc2292e94e6fe26a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75980323"
 ---
-1. [Azure portalı](https://portal.azure.com) > **Kurtarma Hizmetleri'nde**oturum açın.
-2. Kaynak > **İzleme + Yönetim** > **Yedekleme ve Site Kurtarma** **Oluştur'u**tıklatın.
-3. **Ad,** tonoz tanımlamak için bir dostu ad belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
-4. [Bir kaynak grubu oluşturun](../articles/azure-resource-manager/templates/deploy-portal.md)veya varolan bir grup seçin. Bir Azure bölgesi belirtin. 
-5. Panodan kasaya hızlı bir şekilde erişmek >  **için, Oluştur panosuna Sabitle'yi**tıklatın.**Create**
+1. [Azure Portal](https://portal.azure.com) > **Kurtarma hizmetlerinde**oturum açın.
+2. **Yedekleme ve Site Recovery** > **izleme ve yönetim** >  **kaynak oluştur ' a**tıklayın.
+3. **Ad**alanında, kasayı tanımlamak için bir kolay ad belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
+4. [Bir kaynak grubu oluşturun](../articles/azure-resource-manager/templates/deploy-portal.md)veya var olan bir grubu seçin. Bir Azure bölgesi belirtin. 
+5. Panodan kasaya hızlıca erişmek için **panoya** > sabitle**Oluştur**' a tıklayın.
 
    ![Yeni kasa](./media/site-recovery-create-vault/new-vault-settings.png)
 
-   Yeni kasa **Pano** > **Tüm kaynaklarda**ve ana **Kurtarma Hizmetleri kasaları** sayfasında görünür.
+   Yeni kasa **Pano** > **tüm kaynaklar**' da ve ana **Kurtarma Hizmetleri kasaları** sayfasında görüntülenir.

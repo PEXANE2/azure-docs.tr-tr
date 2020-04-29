@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188433"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Bulut gerecinde ortak uç noktalar oluşturmak için
@@ -31,7 +31,7 @@ ms.locfileid: "67188433"
 
         Gelen güvenlik kuralı ekle dikey penceresinde:
 
-        1. **Ad**için bitiş noktası için aşağıdaki adı yazın: WinRMHttps.
+        1. **Ad**için şu uç nokta için aşağıdaki adı yazın: WinRMHttps.
         
         2. **Öncelik** için 1000’den küçük bir sayı seçin (varsayılan kuralın önceliği). Değer ne kadar yüksek olursa öncelik o kadar düşük olur.
 

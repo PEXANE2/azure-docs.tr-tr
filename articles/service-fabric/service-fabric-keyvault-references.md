@@ -1,30 +1,30 @@
 ---
-title: Azure Servis Kumaşı - Servis Kumaşı kullanma uygulaması KeyVault referansları
-description: Bu makalede, uygulama sırları için hizmet-kumaş KeyVaultReference desteği nasıl kullanılacağı açıklanmaktadır.
+title: Azure Service Fabric-Service Fabric uygulama Anahtar Kasası başvurularını kullanma
+description: Bu makalede, uygulama gizli dizileri için Service Fabric KeyVaultReference desteğinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76545492"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamaları için KeyVaultReference desteği (önizleme)
+#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric uygulamalar için KeyVaultReference desteği (Önizleme)
 
-Bulut uygulamaları yaparken karşılaşılan yaygın bir sorun, uygulamanızın gerektirdiği sırları güvenli bir şekilde nasıl depolayabilmektir. Örneğin, kapsayıcı depo kimlik bilgilerini keyvault'ta depolamak ve uygulama bildiriminde başvurmak isteyebilirsiniz. Service Fabric KeyVaultReference, Service Fabric Managed Identity kullanır ve keyvault sırlarına başvuruyapmayı kolaylaştırır. Bu makalenin geri kalanı, Service Fabric KeyVaultReference'ın nasıl kullanılacağını ayrıntılarıyla açıklar ve bazı tipik kullanımları içerir.
+Bulut uygulamaları derlerken, uygulamanız için gereken gizli dizileri güvenli bir şekilde nasıl depolayabileceği yaygın bir zorluk vardır. Örneğin, kapsayıcı deposu kimlik bilgilerini anahtar kasasında depolamak ve uygulama bildiriminde buna başvurmak isteyebilirsiniz. Service Fabric KeyVaultReference, Service Fabric yönetilen kimliği kullanır ve keykasagizli dizileri başvurusunu kolaylaştırır. Bu makalenin geri kalanında, KeyVaultReference Service Fabric kullanımı ve bazı tipik kullanımlar yer almaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Uygulama için Yönetilen Kimlik (MIT)
+- Uygulama için yönetilen kimlik (MıT)
     
-    Service Fabric KeyVaultReference desteği uygulamanın Yönetilen Kimliğini kullanır ve bu nedenle KeyVaultReferences'ı kullanmayı planlayan uygulamalar Yönetilen Kimlik'i kullanmalıdır. Uygulamanız için yönetilen kimliği etkinleştirmek için bu [belgeyi](concepts-managed-identity.md) izleyin.
+    Service Fabric KeyVaultReference desteği uygulamanın yönetilen kimliğini kullanır ve bu nedenle KeyVaultReferences 'ı kullanmak için uygulamalar yönetilen kimlik kullanmalıdır. Uygulamanız için yönetilen kimliği etkinleştirmek üzere bu [belgeyi](concepts-managed-identity.md) izleyin.
 
-- Merkezi Secrets Store (CSS).
+- Orta gizli dizi deposu (CSS).
 
-    Merkezi Secrets Store (CSS) Service Fabric şifreli yerel sırlar önbelleğidir. CSS, parola, belirteçler ve anahtarlar gibi hassas verileri bellekte şifrelenmiş tutan yerel bir gizli depo önbelleğidir. KeyVaultReference, bir kez getirilen, CSS önbelleğe alınır.
+    Orta gizli dizi deposu (CSS) Service Fabric şifreli yerel gizli diziler önbelleğidir. CSS, bir parola, belirteç ve anahtar gibi hassas verileri bellekte şifreli olarak tutan bir yerel gizli dizi deposu önbelleğidir. Bir kez getirildikten sonra KeyVaultReference, CSS 'de önbelleğe alınır.
 
-    KeyVaultReference desteği için `fabricSettings` gerekli tüm özellikleri etkinleştirmek için aşağıdaki küme yapılandırmanıza ekleyin.
+    KeyVaultReference desteği için gerekli tüm özellikleri `fabricSettings` etkinleştirmek üzere altındaki küme yapılandırmanıza aşağıda ekleyin.
 
     ```json
     "fabricSettings": 
@@ -60,7 +60,7 @@ Bulut uygulamaları yaparken karşılaşılan yaygın bir sorun, uygulamanızın
     ```
 
     > [!NOTE] 
-    > CSS için ayrı bir şifreleme sertifikası kullanılması önerilir. "CentralSecretService" bölümüne ekleyebilirsiniz.
+    > CSS için ayrı bir şifreleme sertifikası kullanılması önerilir. Bunu "merkezde Secretservice" bölümünün altına ekleyebilirsiniz.
     
 
     ```json
@@ -69,7 +69,7 @@ Bulut uygulamaları yaparken karşılaşılan yaygın bir sorun, uygulamanızın
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-Değişikliklerin etkili olması için, yükseltme küme de ilerledikçe her düğümde Hizmet Kumaşı çalışma zamanının güçlü bir şekilde yeniden başlatılmasını belirtmek için yükseltme ilkesini değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilen sistem hizmetinin başlatılmasını ve her düğümüzerinde çalışmasını sağlar. Aşağıdaki snippet'te forceRestart temel ayardır; ayarların geri kalanı için varolan değerleri kullanın.
+Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kümede ilerledikçe her düğümde Service Fabric çalışma zamanının zorla yeniden başlatılmasını belirtmek için de değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilmiş sistem hizmetinin her düğüm üzerinde başlatılmış ve çalışır olmasını sağlar. Aşağıdaki kod parçacığında, forceRestart önemli ayardır; ayarların geri kalanı için mevcut değerlerinizi kullanın.
 ```json
 "upgradeDescription": {
     "forceRestart": true,
@@ -81,23 +81,23 @@ Değişikliklerin etkili olması için, yükseltme küme de ilerledikçe her dü
     "upgradeTimeout": "12:00:00"
 }
 ```
-- Başvurunun yönetilen kimlik erişim iznini keyvault'a verme
+- Anahtar Kasası 'na uygulamanın yönetilen kimlik erişim iznini verme
 
-    Keyvault'a yönetilen kimlik erişiminin nasıl verilebildiğini görmek için bu [belgeye](how-to-grant-access-other-resources.md) başvurun. Ayrıca, Sistem Atanmış Yönetilen Kimlik kullanıyorsanız, yönetilen kimlik yalnızca uygulama dağıtımından sonra oluşturulur.
+    Anahtar Kasası 'na yönetilen kimlik erişimi vermeyi öğrenmek için bu [belgeye](how-to-grant-access-other-resources.md) başvurun. Ayrıca, sistem tarafından atanan yönetilen kimlik kullanıyorsanız, yönetilen kimlik yalnızca uygulama dağıtımından sonra oluşturulur.
 
-## <a name="keyvault-secret-as-application-parameter"></a>Uygulama parametresi olarak keyvault gizli
-Diyelim ki uygulama nın keyvault'ta saklanan arka uç veritabanı şifresini okuması gerekiyor, Service Fabric KeyVaultReference desteği bunu kolaylaştırıyor. Aşağıdaki örnekte Service Fabric KeyVaultReference desteğini kullanarak keyvault'tan gizli olarak okunur. `DBPassword`
+## <a name="keyvault-secret-as-application-parameter"></a>Uygulama parametresi olarak Anahtar Kasası gizli anahtarı
+Uygulamanın, Anahtar Kasası 'nda depolanan arka uç veritabanı parolasını okuması gerektiğini, Service Fabric KeyVaultReference desteğinin de kolaylaştırdığını varsayalım. Aşağıdaki örnek, `DBPassword` Service Fabric KeyVaultReference desteğini kullanarak keykasasından gizli dizi okur.
 
-- settings.xml'ye bölüm ekle
+- Settings. xml ' ye bir bölüm ekleyin
 
-    Tür `DBPassword` `KeyVaultReference` ve Değer ile parametre tanımlama`<KeyVaultURL>`
+    Türü `DBPassword` `KeyVaultReference` ve değeri olan parametreyi tanımlayın`<KeyVaultURL>`
 
     ```xml
     <Section Name="dbsecrets">
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- ApplicationManifest.xml'deki yeni bölüme başvurun`<ConfigPackagePolicies>`
+- İçindeki ApplicationManifest. xml dosyasındaki yeni bölüme başvurun`<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
@@ -113,9 +113,9 @@ Diyelim ki uygulama nın keyvault'ta saklanan arka uç veritabanı şifresini ok
     </ServiceManifestImport>
     ```
 
-- Uygulamanızda KeyVaultReference'ı kullanma
+- Uygulamanızda KeyVaultReference kullanma
 
-    Servis anında Servis Kumaşı, uygulamanın yönetilen kimliğini kullanarak KeyVaultReference Parametresini çözecektir. Altında `<Section  Name=dbsecrets>` listelenen her parametre, EnvironmentVariable SecretPath tarafından işaret edilen klasörün altında bir dosya olacaktır. Aşağıda C# kod snippet nasıl uygulamanızda DBPassword okumak için gösterir.
+    Hizmet örneklemesi Service Fabric, uygulamanın yönetilen kimliğini kullanarak KeyVaultReference parametresini çözer. Altında `<Section  Name=dbsecrets>` listelenen her bir parametre, EnvironmentVariable SecretPath tarafından işaret edilen klasör altında bir dosya olacaktır. C# kod parçacığı altında, uygulamanızda DBPassword 'ın nasıl okunacağı gösterilmektedir.
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");
@@ -126,11 +126,11 @@ Diyelim ki uygulama nın keyvault'ta saklanan arka uç veritabanı şifresini ok
     }
     ```
     > [!NOTE] 
-    > Kapsayıcı senaryosu için, monte edilecek yeri `secrets` denetlemek için MountPoint'i kullanabilirsiniz.
+    > Kapsayıcı senaryosu için bağlama noktasını kullanarak nerede `secrets` takılmasını kontrol edebilirsiniz.
 
-## <a name="keyvault-secret-as-environment-variable"></a>Çevre değişkeni olarak Keyvault sırrı
+## <a name="keyvault-secret-as-environment-variable"></a>Ortam değişkeni olarak Anahtar Kasası gizli anahtarı
 
-Service Fabric ortam değişkenleri artık KeyVaultReference türünü destekler, aşağıdaki örnekte bir ortam değişkeninin KeyVault'ta depolanan bir gizliye nasıl bağlanılmak üzere değiştirileceği gösterilmektedir.
+Service Fabric ortam değişkenleri artık KeyVaultReference türünü destekliyor. örnek aşağıdaki örnekte, bir ortam değişkeninin Anahtar Kasası 'nda depolanan bir gizli dizi ile nasıl bağlanacağı gösterilmektedir.
 
 ```xml
 <EnvironmentVariables>
@@ -141,8 +141,8 @@ Service Fabric ortam değişkenleri artık KeyVaultReference türünü destekler
 ```C#
 string eventStorePassword =  Environment.GetEnvironmentVariable("EventStorePassword");
 ```
-## <a name="keyvault-secret-as-container-repository-password"></a>Konteyner deposu parolası olarak Keyvault gizli
-KeyVaultReference kapsayıcı Depo Kimlik Bilgileri için desteklenen bir türdür, aşağıdaki örnekte bir keyvault başvurusu kapsayıcı deposu parolası olarak nasıl kullanılacağını gösterir.
+## <a name="keyvault-secret-as-container-repository-password"></a>Kapsayıcı deposu parolası olarak Anahtar Kasası gizli anahtarı
+KeyVaultReference, kapsayıcı havuzunun kimlik bilgileri için desteklenen bir türdür, aşağıdaki örnek, bir Anahtar Kasası başvurusunun kapsayıcı deposu parolası olarak nasıl kullanılacağını göstermektedir.
 ```xml
  <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
@@ -150,12 +150,12 @@ KeyVaultReference kapsayıcı Depo Kimlik Bilgileri için desteklenen bir türd�
       </ContainerHostPolicies>
 ```
 ## <a name="faq"></a>SSS
-- KeyVaultReference desteği için yönetilen kimliğin etkinleştirilmesi gerekir, Yönetilen Kimlik etkinleştirmeden KeyVaultReference kullanılırsa uygulama etkinleştirme başarısız olur.
+- KeyVaultReference desteği için yönetilen kimliğin etkinleştirilmesi gerekir, anahtar Vaultreference yönetilen kimliği etkinleştirmeden kullanılırsa, uygulama etkinleştirme başarısız olur.
 
-- Sistem atanmış kimlik kullanıyorsanız, yalnızca uygulama dağıtıldıktan sonra oluşturulur ve bu dairesel bir bağımlılık oluşturur. Başvurunuz dağıtıldıktan sonra, anahtar kasasına atanan sisteme kimlik erişim izni verebilirsiniz. {cluster}/{application name}/{servicename} adıyla atanan sistemi bulabilirsiniz.
+- Sistem tarafından atanan kimlik kullanıyorsanız, bu, yalnızca uygulama dağıtıldıktan sonra oluşturulur ve bu, döngüsel bir bağımlılık oluşturur. Uygulamanız dağıtıldıktan sonra, Anahtar Kasası 'na sisteme atanmış kimlik erişimi izni verebilirsiniz. Sistem tarafından atanan kimliği {Cluster}/{Application Name}/{ServiceName} adıyla bulabilirsiniz
 
-- Keyvault'un servis kumaş kümenizle aynı abonelikte olması gerekir. 
+- Keykasasının, Service Fabric kümeniz ile aynı abonelikte olması gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure KeyVault Belgeleri](https://docs.microsoft.com/azure/key-vault/)
+* [Azure Keykasası belgeleri](https://docs.microsoft.com/azure/key-vault/)

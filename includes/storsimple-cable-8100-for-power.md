@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188408"
 ---
-#### <a name="to-cable-for-power"></a>Güç için kabloya
-1. Güç ve Soğutma Modüllerinin (PCM) her birinde güç anahtarlarının KAPALı konumda olduğundan emin olun.
-2. Güç kablolarını birincil kasadaki PC'lerin her birine bağlayın.
-3. Güç kablolarını aşağıdaki resimde gösterildiği gibi raf güç dağıtım ünitelerine (PMU) takın. İki PCM'nin ayrı güç kaynakları kullandığından emin olun.
+#### <a name="to-cable-for-power"></a>Güç kablosu için
+1. Güç ve soğutma modüllerinin (PCMs) her birinde bulunan güç anahtarlarının kapalı konumda olduğundan emin olun.
+2. Güç bağıntılarını birincil kasadaki her PCMs 'ye bağlayın.
+3. Aşağıdaki görüntüde gösterildiği gibi, güç bağıntılarını raf güç dağıtımı birimlerine (PDU) ekleyin. İki PCMs 'nin ayrı güç kaynakları kullanmasına dikkat edin.
    
    > [!IMPORTANT]
-   > Sisteminiz için yüksek kullanılabilirlik sağlamak için, aşağıdaki diyagramda gösterilen güç kablolama düzenine kesinlikle uymanızı öneririz. 
+   > Sisteminiz için yüksek kullanılabilirlik sağlamak amacıyla, aşağıdaki diyagramda gösterilen güç kablolama şemasına kesinlikle uymanızı öneririz. 
    > 
    > 
    
-    ![Güç için 2U cihazınızı kablolayın](./media/storsimple-cable-8100-for-power/HCSCableYour2UDeviceforPower.png)
+    ![2U cihazınızı güç için bağlayın](./media/storsimple-cable-8100-for-power/HCSCableYour2UDeviceforPower.png)
    
-    **8100 cihazında güç kablolama**
+    **8100 cihazda güç kabloları**
    
    | Etiketle | Açıklama |
    |:--- |:--- |
@@ -31,6 +31,6 @@ ms.locfileid: "67188408"
    | 2 |Denetleyici 1 |
    | 3 |Denetleyici 0 |
    | 4 |PCM 1 |
-   | 5 |PD'ler |
-4. Sistemi açmak için, her iki PCM'deki güç anahtarlarını A'nın konumuna çevirin.
+   | 5 |PDU |
+4. Sistemi açmak için, her iki PCMs üzerindeki güç anahtarlarını açık konuma çevirin.
 

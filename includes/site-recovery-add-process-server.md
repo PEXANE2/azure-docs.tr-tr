@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188076"
 ---
 1. Azure Site Recovery UnifiedSetup.exe dosyasını başlatın
@@ -19,7 +19,7 @@ ms.locfileid: "67188076"
 3. **Yapılandırma Sunucusu Ayrıntıları**’nda Yapılandırma Sunucusunun IP adresini ve parolayı belirtin.
 
    ![İşlem sunucusu ekleme 2](./media/site-recovery-add-process-server/ps-page-2.png)
-4. **Internet**Ayarları'nda, Configuration Server'da çalışan Sağlayıcının Internet üzerinden Azure Site Kurtarma'ya nasıl bağlandığını belirtin.
+4. **Internet ayarları**' nda, yapılandırma sunucusunda çalışan sağlayıcının ınternet üzerinden Azure Site Recovery nasıl bağlandığını belirtin.
 
    ![İşlem sunucusu ekleme 3](./media/site-recovery-add-process-server/ps-page-3.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "67188076"
 7. **Yükleme Konumu** alanında ikili dosyaları yüklemek ve önbelleği depolamak istediğiniz konumu seçin. Seçtiğiniz sürücü en az 5 GB kullanılabilir disk alanına sahip olmalıdır, ancak en az 600 GB boş alanı olan bir önbellek sürücüsü seçmeniz önerilir.
      ![İşlem sunucusu ekleme 5](./media/site-recovery-add-process-server/ps-page-6.png)
 
-8. **Ağ**Seçimi'nde, Configuration Server'ın çoğaltma verilerini gönderdiği ve aldığı dinleyiciyi (ağ bağdaştırıcısı ve SSL bağlantı noktası) belirtin. Bağlantı noktası 9443, çoğaltma trafiğini gönderip almak için kullanılan varsayılan bağlantı noktasıdır, ancak bu bağlantı noktası numarasını ortamınızın gereksinimlerine uyacak şekilde değiştirebilirsiniz. Bağlantı noktası 9443’e ek olarak, çoğaltma işlemlerini düzenlemek için web sunucusu tarafından kullanılan bağlantı noktası 443 de açılır. Bağlantı noktası 443’ü çoğaltma trafiği göndermek veya almak için kullanmayın.
+8. **Ağ seçimi**' nde, yapılandırma sunucusunun çoğaltma verilerini gönderdiği ve aldığı dinleyiciyi (ağ BAĞDAŞTıRıCıSı ve SSL bağlantı noktası) belirtin. Bağlantı noktası 9443, çoğaltma trafiğini gönderip almak için kullanılan varsayılan bağlantı noktasıdır, ancak bu bağlantı noktası numarasını ortamınızın gereksinimlerine uyacak şekilde değiştirebilirsiniz. Bağlantı noktası 9443’e ek olarak, çoğaltma işlemlerini düzenlemek için web sunucusu tarafından kullanılan bağlantı noktası 443 de açılır. Bağlantı noktası 443’ü çoğaltma trafiği göndermek veya almak için kullanmayın.
 
      ![İşlem sunucusu ekleme 6](./media/site-recovery-add-process-server/ps-page-7.png)
 9. **Özet** alanındaki bilgileri gözden geçirin ve **Yükle**’ye tıklayın. Yükleme tamamlandığında bir parola oluşturulur. Çoğaltmayı etkinleştirdiğinizde bu parola gerekli olacaktır; bu yüzden kopyalayıp güvenli bir yerde saklayın.

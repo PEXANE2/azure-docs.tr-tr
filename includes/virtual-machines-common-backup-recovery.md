@@ -9,34 +9,34 @@ ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188365"
 ---
 ## <a name="azure-backup"></a>Azure Backup
 
-Üretim iş yüklerini çalıştıran Azure VM'lerini yedeklemek için Azure Yedekleme'yi kullanın. Azure Yedekleme, hem Windows hem de Linux VM'leri için uygulama tutarlı yedeklemeleri destekler. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında depolanan kurtarma noktaları oluşturur. Bir kurtarma noktasından geri yükleme yaptığınızda VM’nin tamamını veya belirli dosyaları geri yükleyebilirsiniz. 
+Üretim iş yüklerini çalıştıran Azure VM 'Leri yedeklemek için Azure Backup kullanın. Azure Backup hem Windows hem de Linux VM 'Leri için uygulamayla tutarlı yedeklemeleri destekler. Azure Backup, coğrafi olarak yedekli kurtarma kasalarında depolanan kurtarma noktaları oluşturur. Bir kurtarma noktasından geri yükleme yaptığınızda VM’nin tamamını veya belirli dosyaları geri yükleyebilirsiniz. 
 
-Azure VM'ler için Azure Yedekleme'ye basit ve uygulamalı bir giriş için [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) veya [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md)için "Azure sanal makinelerini yedekle" öğreticisine bakın.
+Azure VM 'Leri için Azure Backup basit, uygulamalı bir giriş için bkz. [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) veya [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md)için "Azure sanal makinelerini yedekleme" öğreticisi.
 
-Azure Yedekleme'nin nasıl çalıştığı hakkında daha fazla bilgi için [VM yedekleme altyapınızı Azure'da planlayın](../articles/backup/backup-azure-vms-introduction.md)
+Azure Backup nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure 'DA VM yedekleme altyapınızı planlayın](../articles/backup/backup-azure-vms-introduction.md)
 
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Azure Site Kurtarma, tüm bölge büyük doğal afet veya yaygın hizmet kesintisi nedeniyle bir kesinti yaşadığında, VM'lerinizi büyük bir felaket senaryosundan korur. Birkaç dakika içinde tek bir tıklamayla uygulamanızı kurtarabilmeniz için Azure Site Kurtarma'yı VM'leriniz için yapılandırabilirsiniz. Seçtiğiniz bir Azure bölgesine çoğaltabilirsiniz, eşleştirilmiş bölgelerle sınırlı değildir. 
+Azure Site Recovery, bir bölgenin büyük doğal olağanüstü durum veya geniş çaplı hizmet kesintisi nedeniyle bir kesinti yaşadığında, VM 'lerinizi önemli bir olağanüstü durum senaryosundan korur. Uygulamanızı birkaç dakika içinde tek bir tıklama ile kurtarabilmeniz için sanal makinelerinize yönelik Azure Site Recovery yapılandırabilirsiniz. Tercih ettiğiniz bir Azure bölgesine çoğaltma yapabilirsiniz, eşleştirilmiş bölgelerle sınırlı değildir. 
 
-Üretim iş yüklerinizi veya devam eden çoğaltmanızı etkilemeden, isteğe bağlı test arızalarıyla olağanüstü durum kurtarma matkaplarını çalıştırabilirsiniz. Birden çok VM üzerinde çalışan tüm uygulamanın başarısızlığını ve başarısızlığını düzenlemek için kurtarma planları oluşturun. Kurtarma planı özelliği Azure otomasyon runbook'larıyla tümleştirilir.
+Olağanüstü durum kurtarma detaylarını, üretim iş yüklerinizi veya devam eden Çoğaltmayı etkilemeden isteğe bağlı yük devretme işlemleri ile gerçekleştirebilirsiniz. Birden çok VM 'de çalışan tüm uygulamanın yük devretme ve yeniden çalışma işlemlerini düzenlemek için kurtarma planları oluşturun. Kurtarma planı özelliği, Azure Otomasyonu runbook 'larla tümleşiktir.
 
-[Sanal makineleri çoğaltarak](https://aka.ms/a2a-getting-started)başlatabilirsiniz. 
+[Sanal makinelerinizi çoğaltarak](https://aka.ms/a2a-getting-started)çalışmaya başlamanızı sağlayabilirsiniz. 
 
 ## <a name="managed-snapshots"></a>Yönetilen anlık görüntüler 
 
-Geliştirme ve test ortamlarında anlık görüntüler, Yönetilen Diskler kullanan VM'leri yedeklemek için hızlı ve basit bir seçenek sağlar. Yönetilen anlık görüntü, yönetilen bir diskin salt okunur tam kopyasıdır. Anlık görüntüler kaynak diskten bağımsız olarak bulunur ve VM'yi yeniden oluşturmak için yeni yönetilen diskler oluşturmak için kullanılabilir. Bunlar, diskin kullanılan bölümüne göre faturalandırılır. Örneğin, 64 GB'lık hükme açık kapasiteye ve 10 GB'lık gerçek kullanılan veri boyutuna sahip yönetilen bir diskin anlık görüntüsünü oluşturursanız, anlık görüntü yalnızca kullanılan 10 GB veri boyutu için faturalandırılır.  
+Geliştirme ve test ortamlarında, anlık görüntüler yönetilen diskleri kullanan VM 'Leri yedeklemeye yönelik hızlı ve basit bir seçenek sağlar. Yönetilen bir anlık görüntü, yönetilen bir diskin salt okunurdur. Anlık görüntüler, kaynak diskten bağımsız olarak bulunur ve bir VM 'yi yeniden oluşturmak için yeni yönetilen diskler oluşturmak için kullanılabilir. Bunlar, diskin kullanılan kısmına göre faturalandırılır. Örneğin, sağlanan 64 GB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GB 'lık gerçek kullanılan veri boyutunu oluşturursanız, anlık görüntü yalnızca 10 GB kullanılan veri boyutu için faturalandırılır.  
 
-Anlık görüntü oluşturma hakkında daha fazla bilgi için bkz:
+Anlık görüntü oluşturma hakkında daha fazla bilgi için bkz.
 
 * [Windows’da Anlık Görüntüler kullanılarak Yönetilen Disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Linux’ta Anlık Görüntüler kullanılarak Yönetilen Disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
@@ -44,4 +44,4 @@ Anlık görüntü oluşturma hakkında daha fazla bilgi için bkz:
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) veya [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md)için "Windows sanal makineler öğreticisini yedekle" adlı sistemi izleyerek Azure Yedekleme'yi deneyebilirsiniz.
+[Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) veya [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md)için "Windows sanal makinelerini yedekleme öğreticisini" izleyerek Azure Backup deneyebilirsiniz.

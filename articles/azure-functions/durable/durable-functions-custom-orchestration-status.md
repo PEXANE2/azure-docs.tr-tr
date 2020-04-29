@@ -1,30 +1,30 @@
 ---
-title: Dayanıklı İşlevlerde özel düzenleme durumu - Azure
-description: Dayanıklı Işlevler için özel orkestrasyon durumunu nasıl yapılandırıp kullanacağınızı öğrenin.
+title: Dayanıklı İşlevler özel düzenleme durumu-Azure
+description: Dayanıklı İşlevler için özel düzenleme durumunu yapılandırmayı ve kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76766263"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Dayanıklı İşlevlerde Özel düzenleme durumu (Azure İşlevleri)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler özel düzenleme durumu (Azure Işlevleri)
 
-Özel orkestrasyon durumu, orkestratör işleviniz için özel bir durum değeri ayarlamanızı sağlar. Bu durum, http [GetStatus API](durable-functions-http-api.md#get-instance-status) veya orkestrasyon istemcisindeki [ `GetStatusAsync` API](durable-functions-instance-management.md#query-instances) aracılığıyla sağlanır.
+Özel düzenleme durumu, Orchestrator işleviniz için özel bir durum değeri ayarlamanıza olanak sağlar. Bu durum [http GetStatus API 'si](durable-functions-http-api.md#get-instance-status) veya Orchestration istemcisindeki [ `GetStatusAsync` API](durable-functions-instance-management.md#query-instances) aracılığıyla sağlanır.
 
 ## <a name="sample-use-cases"></a>Örnek kullanım örnekleri
 
 > [!NOTE]
-> Aşağıdaki örnekler, C# ve JavaScript'te özel durum özelliğinin nasıl kullanılacağını gösterir. C# örnekleri Dayanıklı Fonksiyonlar 2.x için yazılır ve Dayanıklı Fonksiyonlar 1.x ile uyumlu değildir. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Aşağıdaki örnekler C# ve JavaScript 'te özel durum özelliğinin nasıl kullanılacağını göstermektedir. C# örnekleri Dayanıklı İşlevler 2. x için yazılmıştır ve Dayanıklı İşlevler 1. x ile uyumlu değildir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 ### <a name="visualize-progress"></a>İlerlemeyi görselleştirin
 
-İstemciler durum bitiş noktasını yoklayabilir ve geçerli yürütme aşamasını görselleştiren bir ilerleme ui görüntüleyebilir. Aşağıdaki örnek ilerleme paylaşımını gösterir:
+İstemciler, durum bitiş noktasını yoklayabilirler ve geçerli yürütme aşamasını görselleştirtiren bir ilerleme Kullanıcı arabirimi görüntüleyebilir. Aşağıdaki örnek ilerleme paylaşımını gösterir:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,9 +51,9 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-`E1_HelloSequence`orkestratör fonksiyonu:
+`E1_HelloSequence`Orchestrator işlevi:
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-`E1_SayHello`etkinlik fonksiyonu:
+`E1_SayHello`Etkinlik işlevi:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -83,9 +83,9 @@ module.exports = async function(context, name) {
 
 ---
 
-Ve sonra müşteri sadece `CustomStatus` alan "Londra" olarak ayarlanır orkestrasyon çıktısı alacaksınız:
+Daha sonra istemci, düzenleme çıktısını yalnızca `CustomStatus` alan "Londra" olarak ayarlandığında alır:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -118,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -148,15 +148,15 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> JavaScript'te, `customStatus` bir sonraki `yield` veya `return` eylem zamanlandığında alan ayarlanır.
+> JavaScript 'te, `customStatus` alan bir sonraki `yield` veya `return` eylem zamanlandığında ayarlanır.
 
 ---
 
-### <a name="output-customization"></a>Çıktı özelleştirme
+### <a name="output-customization"></a>Çıkış özelleştirmesi
 
-Başka bir ilginç senaryo benzersiz özellikleri veya etkileşimleri dayalı özelleştirilmiş çıktı döndürerek kullanıcıları segmente etmektir. Özel düzenleme durumu yardımıyla, istemci tarafı kodu genel kalır. Tüm ana değişiklikler aşağıdaki örnekte gösterildiği gibi sunucu tarafında gerçekleşecektir:
+Farklı bir ilginç senaryo, benzersiz özelliklere veya etkileşimlere göre özelleştirilmiş çıktı döndürerek kullanıcıları bölümleyerek. Özel düzenleme durumunun yardımıyla, istemci tarafı kodu genel kalır. Aşağıdaki örnekte gösterildiği gibi, tüm ana değişiklikler sunucu tarafında gerçekleşir:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -194,7 +194,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -229,11 +229,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-### <a name="instruction-specification"></a>Yönerge şartnamesi
+### <a name="instruction-specification"></a>Yönerge belirtimi
 
-Orkestratör özel durum üzerinden müşterilerine benzersiz talimatlar sağlayabilir. Özel durum yönergeleri, düzenleme kodundaki adımlara eşlenir:
+Orchestrator, istemcilere özel durum aracılığıyla benzersiz yönergeler verebilir. Özel durum yönergeleri Orchestration kodundaki adımlara eşlenir:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -261,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -292,9 +292,9 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="sample"></a>Örnek
 
-Aşağıdaki örnekte, özel durum ilk olarak ayarlanır;
+Aşağıdaki örnekte, önce özel durum ayarlanır;
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -309,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -327,13 +327,13 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Orkestrasyon çalışırken, dış istemciler bu özel durumu getirebilir:
+Düzenleme çalışırken, dış istemciler şu özel durumu getirebilir:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
-İstemciler aşağıdaki yanıtı alırsınız:
+İstemciler aşağıdaki yanıtı alır:
 
 ```json
 {
@@ -347,7 +347,7 @@ GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
 > [!WARNING]
-> Özel durum yükü, Bir Azure Tablo Depolama sütununa sığabilmesi gerektiğinden UTF-16 JSON metninin 16 KB'si ile sınırlıdır. Daha büyük bir yüke ihtiyacınız varsa harici depolama alanı kullanmanızı öneririz.
+> Özel durum yükü, bir Azure Tablo depolama sütununa sığamayacak olması gerektiğinden, 16 KB 'lık UTF-16 JSON metniyle sınırlandırılmıştır. Daha büyük bir yük gerekiyorsa, dış depolama kullanmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
