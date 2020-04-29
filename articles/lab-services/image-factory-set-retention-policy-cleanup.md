@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'da bekletme ilkesini ayarlama | Microsoft Dokümanlar
-description: Bekletme politikasını nasıl yapılandıracak, fabrikayı nasıl temizleyecek ve DevTest Labs'daki eski görüntüleri nasıl emekli yedireceklerini öğrenin.
+title: Azure DevTest Labs ' de bekletme ilkesi ayarlama | Microsoft Docs
+description: Bir bekletme ilkesi yapılandırmayı, fabrikası temizlemeyi ve eski görüntüleri DevTest Labs 'den devre dışı bırakmayı öğrenin.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,67 +13,67 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: a472c500ee6b968b1459e65e49a352b81e5ea6ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759423"
 ---
-# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Azure DevTest Labs'da bekletme ilkesini ayarlama
-Bu makalede, bir saklama ilkesi nin ayarlanması, fabrikanın temizlenmesi ve kuruluştaki diğer tüm DevTest Labs'ın eski görüntülerinin emekliye ayrılacağı yer alıyor. 
+# <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Azure DevTest Labs 'de bekletme ilkesi ayarlama
+Bu makalede bir bekletme ilkesi ayarlama, fabrikasını Temizleme ve eski görüntüleri kuruluştaki tüm diğer DevTest Labs 'den devre dışı bırakma konuları ele alınmaktadır. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Daha fazla devam etmeden önce bu makaleleri takip ettiğinizden emin olun:
+Devam etmeden önce bu makaleleri izlediğinizden emin olun:
 
 - [Görüntü fabrikası oluşturma](image-factory-create.md)
 - [Azure DevOps’tan bir görüntü fabrikası çalıştırma](image-factory-set-up-devops-lab.md)
 - [Özel görüntüleri birden çok laboratuvara kaydetme ve dağıtma](image-factory-save-distribute-custom-images.md)
 
-Aşağıdaki öğeler zaten yerinde olmalıdır:
+Şu öğeler zaten yerinde olmalıdır:
 
-- Azure DevTest Labs'daki görüntü fabrikası için bir laboratuvar
-- Fabrikanın altın görüntüleri dağıtacağı bir veya daha fazla hedef Azure DevTest Labs
-- Görüntü fabrikasını otomatikleştirmek için kullanılan bir Azure DevOps Projesi.
-- Komut dosyalarını ve yapılandırmayı içeren kaynak kodu konumu (örneğimizde, yukarıda kullanılan aynı DevOps Projesi'nde)
-- Azure Powershell görevlerini düzenlemek için yapı tanımı
+- Azure DevTest Labs görüntü fabrikası için laboratuvar
+- Bir veya daha fazla hedef Azure DevTest Labs fabrikasının altın görüntüleri dağıtacaktır
+- Görüntü fabrikasını otomatikleştirmek için kullanılan bir Azure DevOps projesi.
+- Betikleri ve yapılandırmayı içeren kaynak kodu konumu (örneğimizde, yukarıda kullanılan DevOps projesinde)
+- Azure PowerShell görevlerini düzenlemek için bir derleme tanımı
  
 ## <a name="setting-the-retention-policy"></a>Bekletme ilkesini ayarlama
-Temizleme adımlarını yapılandırmadan önce, DevTest Labs'da kaç tane tarihi görüntü saklamak istediğinizi tanımlayın. [Azure DevOps makalesinden bir görüntü fabrikasıçalıştır'ı](image-factory-set-up-devops-lab.md) takip ettiğinizde, çeşitli yapı Değişkenleri yapılandırıldınız. Bunlardan biri **ImageRetention**oldu. Bu değişkeni `1`, Yani DevTest Labs özel görüntülerin geçmişini sürdürmeyecektir. Yalnızca en son dağıtılan görüntüler kullanılabilir. Bu değişkeni `2`, en son dağıtılan görüntü artı öncekiler olarak değiştirirseniz korunur. Bu değeri, DevTest Labs'da korumak istediğiniz tarihi görüntü sayısını tanımlamak için ayarlayabilirsiniz.
+Temizleme adımlarını yapılandırmadan önce, DevTest Labs 'de kaç geçmiş görüntünün kalmasını istediğinizi tanımlayın. [Azure DevOps 'dan bir görüntü fabrikası Çalıştır](image-factory-set-up-devops-lab.md) makalesini izlediyseniz, çeşitli yapı değişkenlerini yapılandırdınız. Bunlardan biri **ımageretden geliyor**. Bu değişkeni, DevTest `1`Labs özel görüntülerin geçmişini koruyamayacağı anlamına gelen olarak ayarlarsınız. Yalnızca en son dağıtılmış görüntüler kullanılabilir olacaktır. Bu değişkeni olarak `2`değiştirirseniz, en son dağıtılmış görüntü ve önceki geri olanlar korunur. Bu değeri, DevTest Labs içinde sürdürmek istediğiniz geçmiş görüntü sayısını tanımlamak için ayarlayabilirsiniz.
 
-## <a name="cleaning-up-the-factory"></a>Fabrikayı Temizleme
-Fabrikayı temizlemenin ilk adımı, altın görüntü VM'lerini görüntü fabrikasından çıkarmaktır. Önceki komut dosyalarımız gibi bu görevi yapmak için bir komut dosyası vardır. İlk adım, aşağıdaki resimde gösterildiği gibi yapı tanımına başka bir **Azure Powershell** görevi eklemektir:
+## <a name="cleaning-up-the-factory"></a>Fabrikası Temizleme
+Fabrikasını temizlemede ilk adım, altın görüntü sanal makinelerini görüntü fabrikasından kaldırdır. Bu görevi, önceki betiklerimize benzer şekilde yapmak için bir betik vardır. İlk adım, aşağıdaki görüntüde gösterildiği gibi, derleme tanımına başka bir **Azure PowerShell** görevi eklemektir:
 
 ![PowerShell adımı](./media/set-retention-policy-cleanup/powershell-step.png)
 
-Listede yeni bir görev olduğunda, öğeyi seçin ve aşağıdaki resimde gösterildiği gibi tüm ayrıntıları doldurun:
+Listede yeni görevi aldıktan sonra, öğeyi seçin ve aşağıdaki görüntüde gösterildiği gibi tüm ayrıntıları girin:
 
-![Eski görüntüleri temizleme PowerShell görevi](./media/set-retention-policy-cleanup/configure-powershell-task.png)
+![Eski görüntüleri Temizle PowerShell görevi](./media/set-retention-policy-cleanup/configure-powershell-task.png)
 
-Komut dosyası parametreleri şunlardır: `-DevTestLabName $(devTestLabName)`.
+Betik parametreleri: `-DevTestLabName $(devTestLabName)`.
 
-## <a name="retire-old-images"></a>Eski görüntüleri emekli edin 
-Bu görev, yalnızca **ImageRe** yapı değişkeni yle eşleşen bir geçmişi tutarak eski görüntüleri kaldırır. Yapı tanımımıza ek bir **Azure Powershell** oluşturma görevi ekleyin. Eklendikten sonra görevi seçin ve aşağıdaki resimde gösterildiği gibi ayrıntıları doldurun: 
+## <a name="retire-old-images"></a>Eski görüntüleri devre dışı bırak 
+Bu görev, eski görüntüleri kaldırır ve yalnızca **Imageretention** derleme değişkeniyle eşleşen bir geçmişi saklayın. Derleme tanımımız için ek bir **Azure PowerShell** derleme görevi ekleyin. Eklendikten sonra, görevi seçin ve aşağıdaki görüntüde gösterildiği gibi ayrıntıları girin: 
 
-![Eski görüntüleri PowerShell görev emekli](./media/set-retention-policy-cleanup/retire-old-image-task.png)
+![Eski görüntüleri devre dışı bırakma PowerShell görevi](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-Komut dosyası parametreleri şunlardır:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
+Betik parametreleri şunlardır:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
-## <a name="queue-the-build"></a>Yapıyı sıraya tonla
-Yapı tanımını tamamladığınızda, her şeyin çalıştığından emin olmak için yeni bir yapı oluşturun sıraya girin. Yapı başarıyla tamamlandıktan sonra yeni özel görüntüler hedef laboratuarda açılır ve görüntü fabrikası laboratuarını kontrol ederseniz, sağlanan VM'ler görmezsiniz. Ayrıca, daha fazla yapı yığmak için sıraya girederseniz, geliştirme değişkenlerinde ayarlanan bekletme değerine uygun olarak DevTest Labs'dan eski özel görüntüleri emekli yediren temizleme görevlerini görürsünüz.
+## <a name="queue-the-build"></a>Derlemeyi kuyruğa al
+Artık derleme tanımını tamamladığınıza göre, her şeyin çalıştığından emin olmak için yeni bir derleme kuyruğa alın. Derleme başarıyla tamamlandıktan sonra yeni özel görüntüler hedef laboratuvarda görünür ve görüntü fabrikası laboratuvarını denetledikten, sağlanan VM yok görürsünüz. Ayrıca, daha fazla derleme sıranız varsa, derleme değişkenlerinde ayarlanan saklama değerine uygun olarak, DevTest Labs 'den eski özel görüntüleri devre dışı bırakarak temizleme görevlerini görürsünüz.
 
 > [!NOTE]
-> Serinin son makalesinin sonunda yapı ardışık hattını çalıştırdıysanız, yeni bir yapıyı sıraya girmeden önce görüntü fabrikası laboratuvarında oluşturulan sanal makineleri el ile silin.  Manuel temizleme adımı sadece biz her şeyi kurmak ve çalıştığını doğrulamak için gereklidir.
+> Serideki son makalenin sonunda derleme işlem hattını yürütülürse, yeni bir derlemeyi kuyruğa almadan önce görüntü fabrikası laboratuvarında oluşturulan sanal makineleri el ile silin.  El ile temizleme adımı yalnızca her şeyi ayarladığımızda ve çalıştığını doğruladıktan sonra gereklidir.
 
 
 
 ## <a name="summary"></a>Özet
-Artık, isteğe bağlı olarak laboratuvarlarınıza özel görüntüler oluşturabilen ve dağıtabilen çalışan bir görüntü fabrikanız var. Bu noktada, sadece görüntüleri düzgün kurmak ve hedef laboratuvarları tespit meselesi. Önceki makalede belirtildiği gibi, **Configuration** klasörünüzde bulunan **Labs.json** dosyası, hedef laboratuvarların her birinde hangi görüntülerin kullanılabilir hale getirilmesi gerektiğini belirtir. Kuruluşunuza diğer DevTest Labs eklerken, sadece yeni laboratuvar için Labs.json bir giriş eklemeniz gerekir.
+Artık laboratuvarlarınızın talep üzerine özel görüntüler oluşturup dağıtabilecek çalışan bir görüntü fabrikası vardır. Bu noktada, görüntülerinizi doğru bir şekilde ayarlamayı ve hedef laboratuvarları tanımlamayı de amaçlanıyor olmanız yeterlidir. Önceki makalede belirtildiği gibi, **yapılandırma** klasörünüzde bulunan **Labs. JSON** dosyası, hedef laboratuvarların her birinde hangi görüntülerin kullanılabilir hale getirilgerektiğini belirtir. Kuruluşunuza başka DevTest Labs eklerken, yeni laboratuvar için Labs. JSON içine bir giriş eklemeniz yeterlidir.
 
-Fabrikanıza yeni bir görüntü eklemek de kolaydır. Fabrikanıza yeni bir resim eklemek istediğinizde [Azure portalını](https://portal.azure.com)açarsınız, fabrikanızdaki DevTest Labs'a gidin, VM eklemek için düğmeyi seçin ve istediğiniz pazar yeri görüntüsünü ve yapıyı seçin. Yeni VM yapmak için **Oluştur** düğmesini seçmek yerine, **Azure Kaynak Yöneticisi şablonunu görüntüle"yi**seçin ve şablonu deponuzdaki **GoldenImages** klasöründe bir yere .json dosyası olarak kaydedin. Görüntü fabrikanızı bir sonraki çalıştırdığınızda, özel resminizi oluşturur.
+Fabrikanıza yeni bir görüntü eklemek de basittir. Fabrikanıza yeni bir görüntü eklemek istediğinizde [Azure Portal](https://portal.azure.com)açın, Factory DevTest Labs ' e gidin, bir VM eklemek için düğmeyi seçin ve istediğiniz Market görüntüsünü ve yapıtları seçin. Yeni VM 'yi **oluşturmak Için oluştur** düğmesini seçmek yerine, **Azure Resource Manager şablonu görüntüle**' yi seçin ve şablonu, deponuzdaki **goldenımages** klasöründe yer alan bir. JSON dosyası olarak kaydedin. Görüntü fabrikanızı bir sonraki sefer çalıştırdığınızda özel görüntünüzü oluşturacaktır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-1. Görüntü fabrikasını düzenli olarak çalıştırmak için [yapı/sürümünüzü zamanlayın.](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) Fabrikada oluşturulan görüntüleri düzenli olarak yeniler.
-2. Fabrikanız için daha fazla altın görüntü yapın. Ayrıca, VM kurulum görevlerinizin ek parçalarını komut dosyası oluşturmak ve yapıyı fabrika resimlerinize eklemek için [eserler oluşturmayı](devtest-lab-artifact-author.md) da düşünebilirsiniz.
-4. **DistributeImages** komut dosyasını ayrı olarak çalıştırmak için ayrı bir [yapı/sürüm](/azure/devops/pipelines/overview?view=azure-devops-2019) oluşturun. Labs.json'da değişiklik yaptığınızda bu komut dosyasını çalıştırabilir ve tüm görüntüleri yeniden oluşturmak zorunda kalmadan görüntüleri hedef laboratuarlara kopyalayabilirsiniz.
+1. Görüntü fabrikasını düzenli aralıklarla çalıştırmak için [derlemenizi/sürümünüzü zamanlayın](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) . Fabrika tarafından üretilen görüntülerinizi düzenli aralıklarla yeniler.
+2. Fabrikanızın daha fazla altın görüntüsünü oluşturun. Ayrıca sanal makine kurulum görevlerinizin ek parçalarını betiğe ve yapıtları fabrika yansımalarına dahil etmek için [yapıtlar oluşturmayı](devtest-lab-artifact-author.md) düşünebilirsiniz.
+4. **DistributeImages** betiğini ayrı olarak çalıştırmak için [ayrı bir derleme/yayın](/azure/devops/pipelines/overview?view=azure-devops-2019) oluşturun. Labs. json ' da değişiklikler yaptığınızda ve tüm görüntüleri yeniden oluşturmak zorunda kalmadan, hedef laboratuvarlara kopyalanmış resimleri almak için bu betiği çalıştırabilirsiniz.
 

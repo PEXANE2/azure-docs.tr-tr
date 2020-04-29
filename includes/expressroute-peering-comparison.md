@@ -5,17 +5,17 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75437011"
 ---
-|  | **Özel Akran** | **Microsoft Eşlemesi** |  **Kamu Yassı (yeni** devreler için amortismana uy) |
+|  | **Özel Eşleme** | **Microsoft Eşlemesi** |  **Ortak eşleme** (yeni devreler için kullanım dışı) |
 | --- | --- | --- | --- |
-| **Max. # eşleme başına desteklenen önekleri** |Varsayılan olarak 4000, ExpressRoute Premium ile 10.000 |200 |200 |
-| **Desteklenen IP adresi aralıkları** |WAN'ınızdaki geçerli IP adresi. |Size veya bağlantı sağlayıcınıza ait genel IP adresleri. |Size veya bağlantı sağlayıcınıza ait genel IP adresleri. |
-| **AS Numarası gereksinimleri** |Özel ve genel AS numaraları. Kullanmayı seçerseniz, genel AS numarasına sahip olmalısınız. |Özel ve genel AS numaraları. Ancak, ortak IP adreslerinin sahipliğini kanıtlamanız gerekir. |Özel ve genel AS numaraları. Ancak, ortak IP adreslerinin sahipliğini kanıtlamanız gerekir. |
-| **IP protokolleri desteklendi**| IPv4 |  IPv4, IPv6 | IPv4 |
-| **Yönlendirme Arabirimi IP adresleri** |RFC1918 ve genel IP adresleri |Yönlendirme kayıtlarında size kayıtlı genel IP adresleri. |Yönlendirme kayıtlarında size kayıtlı genel IP adresleri. |
-| **MD5 Hash desteği** |Evet |Evet |Evet |
+| **Biçimlendir. eşleme başına desteklenen önek sayısı** |4000 varsayılan olarak, ExpressRoute Premium ile 10.000 |200 |200 |
+| **Desteklenen IP adresi aralıkları** |WAN 'ağınız içindeki geçerli herhangi bir IP adresi. |Size veya bağlantı sağlayıcınıza ait genel IP adresleri. |Size veya bağlantı sağlayıcınıza ait genel IP adresleri. |
+| **Sayı gereksinimleri olarak** |Özel ve ortak AS numaraları. Birini kullanmayı seçerseniz ortak AS numarasına sahip olmanız gerekir. |Özel ve ortak AS numaraları. Ancak, genel IP adreslerinin sahipliğini kanıtlamanız gerekir. |Özel ve ortak AS numaraları. Ancak, genel IP adreslerinin sahipliğini kanıtlamanız gerekir. |
+| **Desteklenen IP protokolleri**| IPv4 |  IPv4, IPv6 | IPv4 |
+| **Yönlendirme arabirimi IP adresleri** |RFC1918 ve genel IP adresleri |Yönlendirme kayıt defterlerinde size kayıtlı genel IP adresleri. |Yönlendirme kayıt defterlerinde size kayıtlı genel IP adresleri. |
+| **MD5 karma desteği** |Yes |Yes |Yes |

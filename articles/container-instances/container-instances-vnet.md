@@ -1,120 +1,120 @@
 ---
-title: Kapsayıcı grubunu Azure sanal ağına dağıtma
-description: Kapsayıcı gruplarını yeni veya varolan bir Azure sanal ağına nasıl dağıttığın öğren.
+title: Kapsayıcı grubunu Azure sanal ağı 'na dağıtma
+description: Yeni veya mevcut bir Azure sanal ağına kapsayıcı grupları dağıtmayı öğrenin.
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
 ms.openlocfilehash: 318576e9b5c5b32bbc993ea16494c938b74bd2f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77200070"
 ---
-# <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Kapsayıcı örneklerini Azure sanal ağına dağıtma
+# <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Azure sanal ağına kapsayıcı örnekleri dağıtma
 
-[Azure Sanal Ağı,](../virtual-network/virtual-networks-overview.md) Azure ve şirket içi kaynaklarınız için güvenli ve özel ağ sağlar. Kapsayıcı gruplarını bir Azure sanal ağına dağıtarak, kapsayıcılarınız sanal ağdaki diğer kaynaklarla güvenli bir şekilde iletişim kurabilir.
+[Azure sanal ağ](../virtual-network/virtual-networks-overview.md) , Azure ve şirket içi kaynaklarınız için güvenli, özel ağ sağlar. Kapsayıcı gruplarını bir Azure sanal ağına dağıtarak, kapsayıcılarınız sanal ağdaki diğer kaynaklarla güvenli bir şekilde iletişim kurabilir.
 
-Azure sanal ağına dağıtılan kapsayıcı grupları şu senaryoları etkinleştirin:
+Bir Azure sanal ağına dağıtılan kapsayıcı grupları, şunun gibi senaryolar sağlar:
 
-* Aynı alt ağdaki konteyner grupları arasında doğrudan iletişim
-* Kapsayıcı örneklerinden sanal ağdaki bir veritabanına [görev tabanlı](container-instances-restart-policy.md) iş yükü çıktısı gönderme
-* Kapsayıcı örnekleri için içeriği sanal ağdaki bir [hizmet bitiş noktasından](../virtual-network/virtual-network-service-endpoints-overview.md) alma
-* Sanal ağdaki sanal makinelerle konteyner iletişimi
-* [VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya ExpressRoute aracılığıyla şirket içi kaynaklarla konteyner [iletişimi](../expressroute/expressroute-introduction.md)
+* Aynı alt ağdaki kapsayıcı grupları arasında doğrudan iletişim
+* Kapsayıcı örneklerinden [görev tabanlı](container-instances-restart-policy.md) iş yükü çıkışını sanal ağdaki bir veritabanına gönderin
+* Sanal ağdaki bir [hizmet uç](../virtual-network/virtual-network-service-endpoints-overview.md) noktasından kapsayıcı örnekleri için içerik alma
+* Sanal ağdaki sanal makinelerle kapsayıcı iletişimi
+* [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](../expressroute/expressroute-introduction.md) aracılığıyla şirket içi kaynaklarla kapsayıcı iletişimi
 
 > [!IMPORTANT]
-> Sanal ağa konteyner grubu dağıtımları genellikle yalnızca aşağıdaki bölgelerdeki üretim iş yükleri için kullanılabilir: **Doğu ABD, Güney Orta ABD ve Batı ABD 2.** Özelliğin kullanılabildiği diğer bölgelerde, sanal ağ dağıtımları şu anda önizlemede dir ve genel kullanılabilirlik yakın gelecekte planlanır. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. 
+> Bir sanal ağa yönelik kapsayıcı grubu dağıtımları, yalnızca şu bölgelerde bulunan üretim iş yükleri için genel kullanıma sunulmuştur: **Doğu ABD, Orta Güney ABD ve Batı ABD 2**. Özelliğin kullanılabildiği diğer bölgelerde, sanal ağ dağıtımları yakın bir tarihte genel kullanıma sunulduğuna göre şu anda önizleme aşamasındadır. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. 
 
 
 ## <a name="virtual-network-deployment-limitations"></a>Sanal ağ dağıtım sınırlamaları
 
-Kapsayıcı gruplarını sanal ağa dağıttığınızda belirli sınırlamalar uygulanır.
+Bir sanal ağa kapsayıcı grupları dağıttığınızda bazı sınırlamalar geçerlidir.
 
-* Kapsayıcı gruplarını bir alt ağa dağıtmak için alt ağ başka kaynak türleri içeremez. Kapsayıcı gruplarını dağıtmadan önce varolan tüm kaynakları varolan bir alt ağdan kaldırın veya yeni bir alt ağ oluşturun.
-* Sanal ağa dağıtılan bir kapsayıcı grubunda yönetilen bir [kimlik](container-instances-managed-identity.md) kullanamazsınız.
-* Sanal ağa dağıtılan bir kapsayıcı grubunda [bir canlılık sondasını](container-instances-liveness-probe.md) veya [hazır bilgi sondasını](container-instances-readiness-probe.md) etkinleştiremezsiniz.
-* İlgili ek ağ kaynakları nedeniyle, bir kapsayıcı grubunu sanal ağa dağıtmak genellikle standart bir kapsayıcı örneğini dağıtmaktan daha yavaştır.
+* Alt ağa kapsayıcı grupları dağıtmak için, alt ağ başka bir kaynak türü içeremez. Mevcut bir alt ağdan kapsayıcı grupları dağıtmadan önce mevcut olan tüm kaynakları kaldırın veya yeni bir alt ağ oluşturun.
+* Bir sanal ağa dağıtılan bir kapsayıcı grubunda [yönetilen bir kimlik](container-instances-managed-identity.md) kullanamazsınız.
+* Bir sanal ağa dağıtılan bir kapsayıcı grubunda, bir veya daha fazla [araştırma](container-instances-liveness-probe.md) veya [hazırlık araştırması](container-instances-readiness-probe.md) etkinleştiremezsiniz.
+* Dahil edilen ek ağ kaynakları nedeniyle, bir kapsayıcı grubunun bir sanal ağa dağıtımı genellikle standart bir kapsayıcı örneği dağıtmaktan daha yavaştır.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
-Kapsayıcı kaynak sınırları, bu bölgelerdeki ağ olmayan kapsayıcı örnekleri için sınırlardan farklı olabilir. Şu anda bu özellik için yalnızca Linux kapsayıcıları desteklenir. Windows desteği planlandı.
+Kapsayıcı kaynak sınırları, bu bölgelerdeki ağa bağlı olmayan kapsayıcı örnekleri için sınırlara göre farklılık gösterebilir. Bu özellik için şu anda yalnızca Linux kapsayıcıları desteklenir. Windows desteği planlanmaktadır.
 
 ### <a name="unsupported-networking-scenarios"></a>Desteklenmeyen ağ senaryoları 
 
-* **Azure Yük Dengeleyicisi** - Ağ üzerinde bulunan bir kapsayıcı grubuna bir Azure Yük Dengeleyicisinin konteyner örneklerinin önüne yerleştirilmesi desteklenmez
+* **Azure Load Balancer** -ağa bağlı bir kapsayıcı grubundaki kapsayıcı örneklerinin önüne bir Azure Load Balancer yerleştirme desteklenmez
 * **Sanal ağ eşleme**
-  * ACI VNet'in bakmakta olduğu ağ ortak bir IP alanı kullanıyorsa VNet eşleme, ACI için çalışmaz. VNet'in çalışması için eşlenen ağın bir RFC 1918 özel IP alanına ihtiyacı vardır. 
-  * VNet'inizi yalnızca bir diğer VNet'e görebilirsiniz
-* **Sanal ağ trafiği yönlendirmesi** - Özel yollar genel IP'lerin etrafında kurulamaz. Rotalar, ACI kaynaklarının dağıtıldığı temsilci alt ağının özel IP alanı içinde ayarlanabilir 
-* **Ağ güvenlik grupları** - Azure Kapsayıcı Örneklerine devredilen bir alt ağa uygulanan NSG'lerde giden güvenlik kuralları şu anda uygulanmıyor 
-* **Genel IP veya DNS etiketi** - Sanal ağa dağıtılan kapsayıcı grupları şu anda kapsayıcıları genel bir IP adresi veya tam nitelikli bir etki alanı adı ile doğrudan internete maruz bırakmayı desteklemiyor
-* **Dahili ad çözümü** - Dahili Azure DNS aracılığıyla sanal ağdaki Azure kaynakları için ad çözümü desteklenmez
+  * ACı VNet 'in eşlenme ağı ortak bir IP alanı kullanıyorsa, sanal ağ eşlemesi, ACI için çalışmaz. VNet eşlemesinin çalışması için eşlenen ağın RFC 1918 özel bir IP alanı olması gerekir. 
+  * VNet 'iniz için yalnızca başka bir VNet 'e sahip olabilirsiniz
+* **Sanal ağ trafiği yönlendirme** -özel yollar genel IP 'lerde ayarlanamaz. Yollar, acı kaynaklarının dağıtıldığı, temsilcili alt ağın özel IP alanı içinde ayarlanabilir 
+* **Ağ güvenlik grupları** -Azure Container Instances atanmış bir alt ağa uygulanan NSG 'lerdeki giden güvenlik kuralları şu anda zorlanmıyor 
+* **Genel IP veya DNS etiketi** -bir sanal ağa dağıtılan kapsayıcı grupları, şu anda KAPSAYıCıLARı genel IP adresi veya tam etki alanı adı ile doğrudan internet 'te kullanıma sunma desteği vermez
+* İç **ad çözümleme** -sanal ağdaki Azure kaynakları için dahili Azure DNS ad çözümlemesi desteklenmez
 
-**Kapsayıcı gruplarını** sanal ağa dağıttıktan sonra ağ kaynağı silme işlemi [için ek adımlar](#delete-network-resources) gerekir.
+**Ağ kaynağı silme** , kapsayıcı gruplarını sanal ağa dağıttıktan sonra [ek adımlar](#delete-network-resources) gerektirir.
 
 ## <a name="required-network-resources"></a>Gerekli ağ kaynakları
 
-Kapsayıcı grupları sanal ağa dağıtmak için gereken üç Azure Sanal Ağ kaynağı vardır: [sanal ağın](#virtual-network) kendisi, sanal ağ içindeki [bir alt ağ](#subnet-delegated) ve ağ [profili.](#network-profile) 
+Kapsayıcı gruplarını bir sanal ağa dağıtmak için gereken üç Azure sanal ağ kaynağı vardır: [sanal ağın](#virtual-network) kendisi, sanal ağ içindeki [atanmış bir alt ağ](#subnet-delegated) ve bir [ağ profili](#network-profile). 
 
 ### <a name="virtual-network"></a>Sanal ağ
 
-Sanal ağ, bir veya daha fazla alt ağ oluşturduğunuz adres alanını tanımlar. Daha sonra Azure kaynaklarını (kapsayıcı grupları gibi) sanal ağınızdaki alt ağlara dağıtırsınız.
+Bir sanal ağ, bir veya daha fazla alt ağ oluşturduğunuz adres alanını tanımlar. Daha sonra Azure kaynaklarını (kapsayıcı grupları gibi) sanal ağınızdaki alt ağlara dağıtırsınız.
 
-### <a name="subnet-delegated"></a>Alt ağ (delege)
+### <a name="subnet-delegated"></a>Alt ağ (temsilci)
 
-Alt ağlar, sanal ağı, içine yerleştirdiğiniz Azure kaynakları tarafından kullanılabilir ayrı adres alanlarına böler. Sanal ağ içinde bir veya birkaç alt ağ oluşturursunuz.
+Alt ağlar sanal ağı, yerleştirdiğiniz Azure kaynakları tarafından kullanılabilen ayrı adres alanlarına bölüler. Bir sanal ağ içinde bir veya birden çok alt ağ oluşturursunuz.
 
-Kapsayıcı grupları için kullandığınız alt ağ yalnızca kapsayıcı grupları içerebilir. Bir kapsayıcı grubunu bir alt ağa ilk dağıttığınızda, Azure, Azure Kapsayıcı Örnekleri'ne alt ağ oluşturan temsilci verir. Bir kez devredildikten sonra, alt ağ yalnızca kapsayıcı grupları için kullanılabilir. Kapsayıcı grupları dışındaki kaynakları devralınan bir alt ağa dağıtmaya çalışırsanız, işlem başarısız olur.
+Kapsayıcı grupları için kullandığınız alt ağ yalnızca kapsayıcı grupları içerebilir. Bir alt ağa ilk kez bir kapsayıcı grubu dağıttığınızda, Azure bu alt ağı Azure Container Instances için devreder. Temsilci seçildikten sonra alt ağ yalnızca kapsayıcı grupları için kullanılabilir. Bir temsilci alt ağına kapsayıcı grupları dışında kaynak dağıtmaya çalışırsanız, işlem başarısız olur.
 
 ### <a name="network-profile"></a>Ağ profili
 
-Ağ profili, Azure kaynakları için bir ağ yapılandırma şablonudur. Kaynak için belirli ağ özelliklerini belirtir, örneğin, dağıtılması gereken alt ağ. Bir kapsayıcı grubunu bir alt ağa (ve dolayısıyla sanal ağa) dağıtmak için [az kapsayıcı oluşturma][az-container-create] komutunu ilk kullandığınızda, Azure sizin için bir ağ profili oluşturur. Daha sonra bu ağ profilini alt ağa gelecekteki dağıtımlar için kullanabilirsiniz. 
+Bir ağ profili, Azure kaynakları için bir ağ yapılandırması şablonudur. Kaynak için belirli ağ özelliklerini belirtir, örneğin, dağıtılması gereken alt ağ. Bir alt ağa (ve dolayısıyla bir sanal ağa) bir kapsayıcı grubu dağıtmak için [az Container Create][az-container-create] komutunu ilk kez kullandığınızda, Azure sizin için bir ağ profili oluşturur. Daha sonra bu ağ profilini alt ağa gelecek dağıtımlar için kullanabilirsiniz. 
 
-Bir alt ağa kapsayıcı grubu dağıtmak için Kaynak Yöneticisi şablonu, YAML dosyası veya programlı bir yöntem kullanmak için, bir ağ profilinin tam Kaynak Yöneticisi kaynak kimliğini sağlamanız gerekir. [Az kapsayıcı oluşturarak][az-container-create]daha önce oluşturulmuş bir profil kullanabilir veya Kaynak Yöneticisi şablonu kullanarak profil oluşturabilirsiniz [(bkz. şablon örneği](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) ve [başvuru).](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles) Daha önce oluşturulmuş bir profilin kimliğini almak için [az ağ profil listesi][az-network-profile-list] komutunu kullanın. 
+Bir alt ağa kapsayıcı grubu dağıtmak için bir Kaynak Yöneticisi şablonu, YAML dosyası ya da bir programlama yöntemi kullanmak için, bir ağ profilinin tam Kaynak Yöneticisi kaynak KIMLIĞI sağlamanız gerekir. Daha önce [az Container Create][az-container-create]kullanılarak oluşturulmuş bir profil kullanabilir veya Kaynak Yöneticisi şablonu kullanarak bir profil oluşturabilirsiniz (bkz. [şablon örneği](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) ve [başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Daha önce oluşturulmuş bir profilin KIMLIĞINI almak için [az Network Profile List][az-network-profile-list] komutunu kullanın. 
 
-Aşağıdaki diyagramda, Azure Kapsayıcı Örnekleri'ne devredilen bir alt ağa birkaç kapsayıcı grubu dağıtılmıştır. Bir alt ağa bir kapsayıcı grubu dağıttıktan sonra, aynı ağ profilini belirterek bu gruba ek kapsayıcı grupları dağıtabilirsiniz.
+Aşağıdaki diyagramda, Azure Container Instances için temsilci atanmış bir alt ağa birkaç kapsayıcı grubu dağıtıldı. Bir alt ağa bir kapsayıcı grubu dağıttıktan sonra, aynı ağ profilini belirterek buna ek kapsayıcı grupları dağıtabilirsiniz.
 
-![Sanal ağ içindeki kapsayıcı grupları][aci-vnet-01]
+![Bir sanal ağ içindeki kapsayıcı grupları][aci-vnet-01]
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
 
-Kapsayıcı gruplarını yeni bir sanal ağa dağıtmak ve Azure'un sizin için gerekli ağ kaynaklarını oluşturmasına veya varolan bir sanal ağa dağıtım almasına izin vermek için [az kapsayıcı oluşturmayı][az-container-create] kullanabilirsiniz. 
+Kapsayıcı gruplarını yeni bir sanal ağa dağıtmak ve Azure 'un sizin için gerekli ağ kaynaklarını oluşturmasına izin vermek veya mevcut bir sanal ağa dağıtmak için [az Container Create][az-container-create] ' i kullanabilirsiniz. 
 
 ### <a name="new-virtual-network"></a>Yeni sanal ağ
 
-Yeni bir sanal ağa dağıtmak ve Azure'un sizin için ağ kaynaklarını otomatik olarak oluşturmasını sağlamak için, [az kapsayıcı oluşturma][az-container-create]işlemini yürütürken aşağıdakileri belirtin:
+Yeni bir sanal ağa dağıtmak ve Azure 'un ağ kaynaklarını sizin için otomatik olarak oluşturmasını sağlamak için [az Container Create][az-container-create]çalıştırdığınızda şunları belirtin:
 
 * Sanal ağın adı
-* CIDR formatında sanal ağ adresi öneki
+* CıDR biçimindeki sanal ağ adresi ön eki
 * Alt ağ adı
-* CIDR formatında alt net adresi öneki
+* CıDR biçimindeki alt ağ adresi öneki
 
-Sanal ağ ve alt ağ adresi önekleri, sırasıyla sanal ağ ve alt ağ için adres alanlarını belirtir. Bu değerler, örneğin `10.0.0.0/16`Sınıfsız Etki Alanları Arası Yönlendirme (CIDR) gösteriminde temsil edilir. Alt ağlarla çalışma hakkında daha fazla bilgi için [bkz.](../virtual-network/virtual-network-manage-subnet.md)
+Sanal ağ ve alt ağ adresi önekleri, sırasıyla sanal ağ ve alt ağ için adres alanlarını belirtir. Bu değerler, örneğin `10.0.0.0/16`, sınıfsız etki alanları arası YÖNLENDIRME (CIDR) gösterimiyle temsil edilir. Alt ağlarla çalışma hakkında daha fazla bilgi için bkz. [sanal ağ alt ağı ekleme, değiştirme veya silme](../virtual-network/virtual-network-manage-subnet.md).
 
-İlk kapsayıcı grubunuzu bu yöntemle dağıttıktan sonra, sanal ağ ve alt ağ adlarını veya Azure'un sizin için otomatik olarak oluşturduğu ağ profilini belirterek aynı alt ağa dağıtabilirsiniz. Azure alt ağı Azure Kapsayıcı Örnekleri'ne devrettiği için, *yalnızca* kapsayıcı gruplarını alt ağa dağıtabilirsiniz.
+İlk kapsayıcı grubunuzu bu yöntemle dağıttıktan sonra, sanal ağ ve alt ağ adlarını veya Azure 'un sizin için otomatik olarak oluşturduğu ağ profilini belirterek aynı alt ağa dağıtım yapabilirsiniz. Azure, Azure Container Instances için alt ağ temsilciyle, alt ağa *yalnızca* kapsayıcı grupları dağıtabilirsiniz.
 
-### <a name="existing-virtual-network"></a>Mevcut sanal ağ
+### <a name="existing-virtual-network"></a>Var olan sanal ağ
 
-Bir kapsayıcı grubunu varolan bir sanal ağa dağıtmak için:
+Mevcut bir sanal ağa bir kapsayıcı grubu dağıtmak için:
 
-1. Varolan sanal ağınızda bir alt ağ oluşturun, kapsayıcı grubunun zaten dağıtıldığı varolan bir alt ağ kullanın veya diğer *tüm* kaynaklardan boşaltılan varolan bir alt ağ kullanın
-1. [Az kapsayıcı oluşturmak][az-container-create] ve aşağıdakilerden birini belirterek bir kapsayıcı grubu dağıtmak:
-   * Sanal ağ adı ve alt net adı
-   * Farklı bir kaynak grubundan sanal ağ kullanmanızı sağlayan sanal ağ kaynağı kimliği ve alt ağ kaynak kimliği
-   * [Az ağ profil listesini][az-network-profile-list] kullanarak elde edebilirsiniz ağ profil adı veya kimliği,
+1. Var olan sanal ağınızda bir alt ağ oluşturun, bir kapsayıcı grubunun zaten dağıtıldığı var olan bir alt ağı kullanın veya diğer *Tüm* kaynakların boşaltılma var olan alt ağını kullanın
+1. [Az Container Create][az-container-create] ile bir kapsayıcı grubu dağıtın ve aşağıdakilerden birini belirtin:
+   * Sanal ağ adı ve alt ağ adı
+   * Farklı bir kaynak grubundan bir sanal ağın kullanılmasına izin veren sanal ağ kaynak KIMLIĞI ve alt ağ kaynak KIMLIĞI
+   * [Az Network Profile List][az-network-profile-list] kullanarak elde alabileceğiniz ağ profili adı veya kimliği
 
-İlk kapsayıcı grubunuzu varolan bir alt ağa dağıttıktan sonra, Azure, Azure Kapsayıcı Örnekleri'ne alt ağ oluşturan temsilci verir. Artık bu alt ağa kapsayıcı grupları dışındaki kaynakları dağıtamazsınız.
+İlk kapsayıcı grubunuzu mevcut bir alt ağa dağıttıktan sonra, Azure bu alt ağı Azure Container Instances için devreder. Artık bu alt ağa kapsayıcı grupları dışındaki kaynakları dağıtamazsınız.
 
 ## <a name="deployment-examples"></a>Dağıtım örnekleri
 
-Aşağıdaki bölümlerde, Azure CLI ile kapsayıcı gruplarının sanal ağa nasıl dağıtılanılabildiğini açıklanmaktadır. Komut örnekleri **Bash** kabuğu için biçimlendirilir. PowerShell veya Command Prompt gibi başka bir kabuk tercih ederseniz, satır devam karakterlerini buna göre ayarlayın.
+Aşağıdaki bölümlerde, Azure CLı ile bir sanal ağa kapsayıcı gruplarının nasıl dağıtılacağı açıklanır. Komut örnekleri **Bash** kabuğu için biçimlendirilir. PowerShell veya komut Istemi gibi başka bir kabuğu tercih ediyorsanız, satır devamlılık karakterlerini uygun şekilde ayarlayın.
 
 ### <a name="deploy-to-a-new-virtual-network"></a>Yeni bir sanal ağa dağıtma
 
-İlk olarak, bir kapsayıcı grubu dağıtın ve yeni bir sanal ağ ve alt ağ için parametreleri belirtin. Bu parametreleri belirttiğiniz zaman, Azure sanal ağ ve alt ağ oluşturur, alt ağı Azure Kapsayıcı örneklerine devreder ve bir ağ profili de oluşturur. Bu kaynaklar oluşturulduktan sonra, kapsayıcı grubunuz alt ağa dağıtılır.
+İlk olarak, bir kapsayıcı grubu dağıtın ve yeni bir sanal ağ ve alt ağ için parametreleri belirtin. Bu parametreleri belirttiğinizde, Azure sanal ağı ve alt ağı oluşturur, alt ağı Azure Container Instances 'a devreder ve ayrıca bir ağ profili oluşturur. Bu kaynaklar oluşturulduktan sonra kapsayıcı grubunuz alt ağa dağıtılır.
 
-Yeni bir sanal ağ ve alt ağ için ayarları belirten aşağıdaki [az kapsayıcı oluşturma][az-container-create] komutunu çalıştırın. Sanal ağdaki kapsayıcı grup dağıtımlarının [kullanılabildiği](#virtual-network-deployment-limitations)bir bölgede oluşturulan bir kaynak grubunun adını sağlamanız gerekir. Bu komut, statik bir web sayfasına hizmet veren küçük bir Node.js web sunucusu çalıştıran ortak Microsoft [aci-helloworld][aci-helloworld] kapsayıcısını dağıtıyor. Sonraki bölümde, aynı alt ağa ikinci bir kapsayıcı grubu dağıtacak ve iki kapsayıcı örneği arasındaki iletişimi sınayacaksınız.
+Yeni bir sanal ağ ve alt ağ için ayarları belirten aşağıdaki [az Container Create][az-container-create] komutunu çalıştırın. Bir sanal ağdaki kapsayıcı grubu dağıtımlarının [kullanılabildiği](#virtual-network-deployment-limitations)bir bölgede oluşturulan bir kaynak grubunun adını sağlamanız gerekir. Bu komut, statik bir Web sayfasına hizmet veren küçük bir Node. js web sunucusu çalıştıran genel Microsoft [aci-HelloWorld][aci-helloworld] kapsayıcısını dağıtır. Sonraki bölümde, aynı alt ağa ikinci bir kapsayıcı grubu dağıtırsınız ve iki kapsayıcı örneği arasındaki iletişimi test edeceksiniz.
 
 ```azurecli
 az container create \
@@ -127,26 +127,26 @@ az container create \
     --subnet-address-prefix 10.0.0.0/24
 ```
 
-Bu yöntemi kullanarak yeni bir sanal ağa dağıttığınızda, ağ kaynakları oluşturulurken dağıtım birkaç dakika sürebilir. İlk dağıtımdan sonra, ek kapsayıcı grubu dağıtımları daha hızlı tamamlar.
+Bu yöntemi kullanarak yeni bir sanal ağa dağıtırken, ağ kaynakları oluşturulurken dağıtım birkaç dakika sürebilir. İlk dağıtımdan sonra ek kapsayıcı grubu dağıtımları daha hızlı tamamlanır.
 
-### <a name="deploy-to-existing-virtual-network"></a>Varolan sanal ağa dağıtma
+### <a name="deploy-to-existing-virtual-network"></a>Var olan sanal ağa dağıt
 
-Artık yeni bir sanal ağa bir kapsayıcı grubu dağıttığınız için, aynı alt ağa ikinci bir kapsayıcı grubu dağıtın ve iki kapsayıcı örneği arasındaki iletişimi doğrulayın.
+Artık yeni bir sanal ağa bir kapsayıcı grubu dağıttığınıza göre, ikinci bir kapsayıcı grubunu aynı alt ağa dağıtıp iki kapsayıcı örneği arasındaki iletişimi doğrularsınız.
 
-İlk olarak, dağıttığınız ilk konteyner grubunun IP adresini, *ek kapsayıcıyı*alın:
+İlk olarak, dağıttığınız ilk kapsayıcı grubunun IP adresini alın, *AppContainer*:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name appcontainer --query ipAddress.ip --output tsv
 ```
 
-Çıktı, konteyner grubunun IP adresini özel alt ağda görüntülemelidir:
+Çıktının özel alt ağdaki kapsayıcı grubunun IP adresini görüntülemesi gerekir:
 
 ```console
 $ az container show --resource-group myResourceGroup --name appcontainer --query ipAddress.ip --output tsv
 10.0.0.4
 ```
 
-Şimdi, `CONTAINER_GROUP_IP` `az container show` komutile aldığınız IP'ye ayarlayın ve aşağıdaki `az container create` komutu uygulayın. Bu ikinci kapsayıcı, *commchecker,* bir Alp Linux `wget` tabanlı görüntü çalışır ve ilk konteyner grubunun özel alt ağ IP adresi karşı yürütür.
+Şimdi, `CONTAINER_GROUP_IP` `az container show` komutuyla aldığınız IP 'ye ayarlayın ve aşağıdaki `az container create` komutu yürütün. Bu ikinci kapsayıcı, *commchecker*, alp Linux tabanlı bir görüntü çalıştırır ve ilk kapsayıcı `wget` grubunun özel alt ağ IP adresine karşı yürütülür.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-here>
@@ -167,7 +167,7 @@ Bu ikinci kapsayıcı dağıtımı tamamlandıktan sonra, yürütüldüğü `wge
 az container logs --resource-group myResourceGroup --name commchecker
 ```
 
-İkinci kapsayıcı ilki ile başarıyla iletişim kuruyorsa, çıktı aşağıdakilere benzer olmalıdır:
+İkinci kapsayıcı birinciyle başarılı bir şekilde iletiyse, çıkış şuna benzer olmalıdır:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name commchecker
@@ -175,32 +175,32 @@ Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
-Günlük çıktısı, `wget` yerel alt ağdaki özel IP adresini kullanarak dizin dosyasını ilk kapsayıcıdan bağlayıp indirebildiğini göstermelidir. İki kapsayıcı grubu arasındaki ağ trafiği sanal ağ içinde kaldı.
+Günlük çıktısı, yerel alt ağdaki `wget` özel IP adresini kullanarak dizin dosyasını ilk kapsayıcıdan bağlanıp indirebilmesinin gerektiğini göstermelidir. İki kapsayıcı grubu arasındaki ağ trafiği sanal ağ içinde kaldı.
 
-### <a name="deploy-to-existing-virtual-network---yaml"></a>Mevcut sanal ağa dağıtın - YAML
+### <a name="deploy-to-existing-virtual-network---yaml"></a>Var olan sanal ağa dağıt-YAML
 
-Yaml dosyası, Kaynak Yöneticisi şablonu veya Python SDK gibi başka bir programyöntemi kullanarak bir kapsayıcı grubunu varolan bir sanal ağa da dağıtabilirsiniz. Sanal ağdaki bir alt ağa dağıtmak için YAML'de birkaç ek özellik belirtirsiniz:
+Ayrıca, bir YAML dosyası, Kaynak Yöneticisi şablonu veya Python SDK ile gibi başka bir programlama yöntemi kullanarak mevcut bir sanal ağa kapsayıcı grubu dağıtabilirsiniz. Bir sanal ağdaki bir alt ağa dağıtmak için, YAML 'de birkaç ek özellik belirtirsiniz:
 
-* `ipAddress`: Konteyner grubunun IP adresi ayarları.
+* `ipAddress`: Kapsayıcı grubu için IP adresi ayarları.
   * `ports`: Varsa açılacak bağlantı noktaları.
   * `protocol`: Açılan bağlantı noktası için protokol (TCP veya UDP).
-* `networkProfile`: Azure kaynağı için sanal ağ ve alt ağ gibi ağ ayarlarını belirtir.
-  * `id`: Tam Kaynak Yöneticisi kaynak `networkProfile`kimliği.
+* `networkProfile`: Bir Azure kaynağı için sanal ağ ve alt ağ gibi ağ ayarlarını belirtir.
+  * `id`: Öğesinin tam Kaynak Yöneticisi kaynak KIMLIĞI `networkProfile`.
 
-Bir kapsayıcı grubunu YAML dosyası olan sanal ağa dağıtmak için öncelikle ağ profilinin kimliğini almanız gerekir. Sanal [ağınızı][az-network-profile-list] ve temsilci alt ağınızı içeren kaynak grubunun adını belirterek az ağ profil listesi komutunu çalıştırın.
+Bir kapsayıcı grubunu bir YAML dosyası içeren bir sanal ağa dağıtmak için, önce ağ profilinin KIMLIĞINI almanız gerekir. Sanal ağınızı ve Temsilcili alt ağını içeren kaynak grubunun adını belirterek [az Network Profile List][az-network-profile-list] komutunu yürütün.
 
 ``` azurecli
 az network profile list --resource-group myResourceGroup --query [0].id --output tsv
 ```
 
-Komutun çıktısı ağ profili için tam kaynak kimliğini görüntüler:
+Komutun çıktısı, ağ profili için tam kaynak KIMLIĞINI görüntüler:
 
 ```console
 $ az network profile list --resource-group myResourceGroup --query [0].id --output tsv
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Ağ profil kimliğini aldıktan sonra, aşağıdaki YAML'yi *vnet-deploy-aci.yaml*adlı yeni bir dosyaya kopyalayın. Altında, `networkProfile` `id` değeri yeni aldığınız kimlikle değiştirin ve dosyayı kaydedin. Bu YAML, sanal ağınızda *appcontaineryaml* adında bir kapsayıcı grubu oluşturur.
+Ağ profili KIMLIĞI ' ne sahip olduktan sonra, aşağıdaki YAML 'yi *VNET-Deploy-aci. YAML*adlı yeni bir dosyaya kopyalayın. Altında `networkProfile`, `id` DEĞERINI az önce aldığınız kimlikle değiştirin, ardından dosyayı kaydedin. Bu YAML, sanal ağınızda *appcontaineryaml* adlı bir kapsayıcı grubu oluşturur.
 
 ```YAML
 apiVersion: '2018-09-01'
@@ -231,13 +231,13 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Az kapsayıcı oluşturma komutu ile kapsayıcı grubunu dağıtın ve parametreiçin YAML dosya adını belirtin: [az container create][az-container-create] `--file`
+Parametre için YAML dosya adını belirterek, kapsayıcı grubunu [az Container Create][az-container-create] komutuyla dağıtın: `--file`
 
 ```azurecli
 az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
 ```
 
-Dağıtım tamamlandıktan sonra, durumunu görüntülemek için [az kapsayıcı göster][az-container-show] komutunu çalıştırın:
+Dağıtım tamamlandıktan sonra, durumunu görüntülemek için [az Container Show][az-container-show] komutunu çalıştırın:
 
 ```console
 $ az container show --resource-group myResourceGroup --name appcontaineryaml --output table
@@ -248,9 +248,9 @@ appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-hel
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-### <a name="delete-container-instances"></a>Kapsayıcı örneklerini silme
+### <a name="delete-container-instances"></a>Kapsayıcı örneklerini Sil
 
-Oluşturduğunuz kapsayıcı örnekleriyle çalışmayı bitirdiğinizde, bunları aşağıdaki komutlarla silin:
+Oluşturduğunuz kapsayıcı örnekleriyle çalışmayı tamamladığınızda, bunları aşağıdaki komutlarla silin:
 
 ```azurecli
 az container delete --resource-group myResourceGroup --name appcontainer -y
@@ -260,12 +260,12 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 ### <a name="delete-network-resources"></a>Ağ kaynaklarını silme
 
-Bu özellik şu anda daha önce oluşturduğunuz ağ kaynaklarını silmek için birkaç ek komut gerektirir. Sanal ağınızı ve alt ağınızı oluşturmak için bu makalenin önceki bölümlerindeki örnek komutları kullandıysanız, bu ağ kaynaklarını silmek için aşağıdaki komut dosyasını kullanabilirsiniz. Komut dosyası, kaynak grubunuzun tek bir ağ profiline sahip tek bir sanal ağ içerdiğini varsayar.
+Bu özellik şu anda daha önce oluşturduğunuz ağ kaynaklarını silmek için birkaç ek komut gerektirir. Sanal ağınızı ve alt ağınızı oluşturmak için bu makalenin önceki bölümlerinde örnek komutları kullandıysanız, bu ağ kaynaklarını silmek için aşağıdaki betiği kullanabilirsiniz. Betik, kaynak grubunuzun tek bir ağ profiliyle tek bir sanal ağ içerdiğini varsayar.
 
-Komut dosyasını yürütmeden `RES_GROUP` önce, değişkeni silinmesi gereken sanal ağ ve alt ağı içeren kaynak grubunun adına ayarlayın. Daha önce önerilen `aci-vnet` adı kullanmadıysanız sanal ağın adını güncelleştirin. Komut dosyası Bash kabuğu için biçimlendirilmiştir. PowerShell veya Command Prompt gibi başka bir kabuk tercih ederseniz, değişken atamave erişime girenleri buna göre ayarlamanız gerekir.
+Betiği yürütmeden önce, `RES_GROUP` değişkenini, silinmesi gereken sanal ağı ve alt ağı içeren kaynak grubu adı olarak ayarlayın. Daha önce önerilen `aci-vnet` adı kullanmıyorsanız, sanal ağın adını güncelleştirin. Komut dosyası bash kabuğu için biçimlendirilir. PowerShell veya komut Istemi gibi başka bir kabuğu tercih ediyorsanız, değişken atamasını ve erişimcileri buna uygun şekilde ayarlamanız gerekir.
 
 > [!WARNING]
-> Bu komut dosyası kaynakları siler! Sanal ağı ve içerdiği tüm alt ağları siler. Bu komut dosyasını çalıştırmadan önce içerdiği alt ağlar da dahil olmak üzere sanal ağdaki kaynaklardan *hiçbirine* artık ihtiyacınız olmadığından emin olun. Silindikten sonra, **bu kaynaklar kurtarılamaz.**
+> Bu betik kaynakları siler! Sanal ağı ve içerdiği tüm alt ağları siler. Bu betiği çalıştırmadan önce, içerdiği tüm alt ağlar da dahil olmak üzere sanal ağdaki kaynakların *hiçbirine* artık ihtiyacınız olmadığından emin olun. **Bu kaynaklar**silindikten sonra kurtarılamaz.
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -285,16 +285,16 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynak Yöneticisi şablonu kullanarak yeni bir sanal ağ, alt ağ, ağ profili ve kapsayıcı grubu dağıtmak için [bkz.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
-)
+Bir Kaynak Yöneticisi şablonu kullanarak yeni bir sanal ağ, alt ağ, ağ profili ve kapsayıcı grubu dağıtmak için bkz. [VNET Ile Azure Kapsayıcı grubu oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+).
 
-Bu makalede, kısa bir süre için de çeşitli sanal ağ kaynakları ve özellikleri ele alınmıştır. Azure Sanal Ağ belgeleri bu konuları kapsamlı bir şekilde kapsamaktadır:
+Bu makalede kısaca çok sayıda sanal ağ kaynağı ve özelliği ele alınmıştır. Azure sanal ağ belgeleri bu konuları kapsamlı bir şekilde ele almaktadır:
 
 * [Sanal ağ](../virtual-network/manage-virtual-network.md)
 * [Alt ağ](../virtual-network/virtual-network-manage-subnet.md)
 * [Hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)
 * [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Ekspres Rota](../expressroute/expressroute-introduction.md)
+* [ExpressRoute](../expressroute/expressroute-introduction.md)
 
 <!-- IMAGES -->
 [aci-vnet-01]: ./media/container-instances-vnet/aci-vnet-01.png

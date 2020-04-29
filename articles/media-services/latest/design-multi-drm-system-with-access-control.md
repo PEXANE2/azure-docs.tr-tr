@@ -1,6 +1,6 @@
 ---
-title: Çoklu DRM içerik koruma sistemi - Azure Media Services v3
-description: Bu makale, Azure Medya Hizmetleri ile çoklu DRM içerik koruma sisteminin nasıl tasarlanabildiğini ayrıntılı olarak açıklar.
+title: Birden çok DRM içerik koruma sistemi-Azure Media Services v3
+description: Bu makaleler, Azure Media Services ile birden çok DRM içerik koruma sisteminin nasıl tasarlanacağını ayrıntılı olarak açıklamaktadır.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -15,343 +15,343 @@ ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77161792"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama 
 
-Bir over-the-top (OTT) veya online akış çözümü için bir Dijital Haklar Yönetimi (DRM) alt sistemi tasarlamak ve oluşturmak karmaşık bir görevdir. Operatörler/çevrimiçi video sağlayıcıları genellikle bu görevi özel DRM hizmet sağlayıcılarına dış kaynak olarak verir. Bu belgenin amacı, bir OTT veya çevrimiçi akış çözümünde uçtan uca drm alt sisteminin bir referans tasarımı ve başvuru uygulamasını sunmaktır.
+Üst düzey (OTT) veya çevrimiçi akış çözümü için dijital Rights Management (DRM) alt sistemi tasarlama ve oluşturma karmaşık bir görevdir. Operatörler/çevrimiçi video sağlayıcıları bu görevi genellikle özelleştirilmiş DRM hizmeti sağlayıcılarına dış olarak sağlar. Bu belgenin amacı, bir OTT veya çevrimiçi akış çözümünde uçtan uca bir DRM alt sisteminin başvuru tasarımını ve başvuru uygulamasını sunmaktır.
 
-Bu belgenin hedeflenen okuyucuları, OTT'nin DRM alt sistemlerinde veya çevrimiçi akış/çoklu ekran çözümlerinde çalışan mühendisler veya DRM alt sistemleriyle ilgilenen okuyuculardır. Varsayım, okuyucuların PlayReady, Widevine, FairPlay veya Adobe Access gibi piyasadaki DRM teknolojilerinden en az birine aşina olduklarıdır.
+Bu belgeye yönelik hedeflenen okuyucular, OTT 'nin DRM alt sistemlerinde veya DRM alt sistemleri ile ilgilenen çevrimiçi akış/çok ekranlı çözümlerin veya okuyucuların çalıştığı mühendislerdir. Bu varsayım, okuyucuların PlayReady, Widevine, FairPlay veya Adobe Access gibi pazardaki DRM teknolojilerinden en az birini öğrenme hızıdır.
 
-Bu tartışmada, multi-DRM ile Azure Medya Hizmetleri tarafından desteklenen 3 DRM'yi de dahil ediyoruz: PlayReady ve Widevine için Ortak Şifreleme (CENC), FairPlay ve AES-128 net anahtar şifrelemesi. Çevrimiçi akış ve OTT endüstrisindeki önemli bir eğilim, çeşitli istemci platformlarında yerli DRM'leri kullanmaktır. Bu eğilim, çeşitli istemci platformları için tek bir DRM ve istemciSI SDK kullanılan önceki bir geçiştir. CENC'yi çok yerel DRM ile kullandığınızda, Hem PlayReady hem de Widevine [Ortak Şifreleme (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) belirtimine göre şifrelenir.
+Bu tartışmada, çoklu DRM tarafından Azure Media Services desteklenen 3 DRMs, PlayReady ve Widevine için Common Encryption (CENC), FairPlay ve AES-128 şifresiz anahtar şifrelemesi için de vardır. Çevrimiçi akış ve OTT sektöründe önemli bir eğilim, çeşitli istemci platformlarında yerel DRMs kullanmaktır. Bu eğilim, bir önceki, çeşitli istemci platformları için tek bir DRM ve istemci SDK 'sını kullanan bir vardiyadır. Multi-Native DRM ile CENC kullandığınızda hem PlayReady hem de Widevine [Common Encryption (ISO/ıec 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) belirtimi başına şifrelenir.
 
-İçerik koruması için yerel çoklu DRM kullanmanın yararları şunlardır:
+İçerik koruma için yerel çoklu DRM kullanmanın avantajları şunlardır:
 
-* Tek bir şifreleme işlemi, yerel DRM'leri ile farklı platformları hedeflemek için kullanıldığından şifreleme maliyetini azaltır.
-* Depolamada yalnızca tek bir kıymet kopyası gerektiğinden varlıkları yönetme maliyetini azaltır.
-* Yerel DRM istemcisi genellikle kendi yerel platformunda ücretsiz olduğundan DRM istemci lisanslama maliyetini ortadan kaldırır.
+* Tek bir şifreleme işlemi, kendi yerel Drtığından farklı platformları hedeflemek için kullanıldığından, şifreleme maliyetini azaltır.
+* Depolama alanında yalnızca tek bir varlık kopyası gerektiğinden, varlıkları yönetme maliyetini azaltır.
+* Yerel DRM istemcisi genellikle yerel platformunda ücretsiz olduğundan, DRM istemci lisanslama maliyetini ortadan kaldırır.
 
-### <a name="goals-of-the-article"></a>Makalenin hedefleri
+### <a name="goals-of-the-article"></a>Makalenin amaçları
 
 Bu makalenin amaçları şunlardır:
 
-* 3 DRM'nin tümlerini (DASH için CENC, HLS için FairPlay ve sorunsuz akış için PlayReady) kullanan bir DRM alt sisteminin referans tasarımını sağlayın.
-* Azure ve Azure Medya Hizmetleri platformunda bir başvuru uygulaması sağlayın.
+* Tüm 3 DRMs 'Leri (DASH için CENC, for HLS için FairPlay ve kesintisiz akış için PlayReady) kullanan bir DRM alt sisteminin başvuru tasarımını sağlayın.
+* Azure ve Azure Media Services platformunda bir başvuru uygulama sağlayın.
 * Bazı tasarım ve uygulama konularını tartışın.
 
-Aşağıdaki tablo, farklı platformlarda yerel DRM desteğini ve farklı tarayıcılarda EME desteğini özetleyebiliriz.
+Aşağıdaki tabloda farklı platformlarda yerel DRM desteği ve farklı tarayıcılarda EME desteği özetlenmektedir.
 
-| **İstemci platformu** | **Yerli DRM** | **EME** |
+| **İstemci platformu** | **Yerel DRM** | **EME** |
 | --- | --- | --- |
-| **Akıllı TV'ler, STB'ler** | PlayReady, Widevine ve/veya diğer | PlayReady ve/veya Widevine için gömülü tarayıcı/EME|
-| **Windows 10** | PlayReady | PlayReady için Microsoft Edge/IE11|
+| **Akıllı TV 'ler, STBs** | PlayReady, Widevine ve/veya diğer | PlayReady ve/veya Widevine için gömülü tarayıcı/EME|
+| **Windows 10** | PlayReady | PlayReady için Microsoft Edge/ıE11|
 | **Android cihazlar (telefon, tablet, TV)** |Widevine |Widevine için Chrome |
-| **iOS** | FairPlay | FairPlay için Safari (iOS 11.2'den beri) |
-| **Macos** | FairPlay | FairPlay için Safari (Mac OS X 10.11+ El Capitan'da Safari 9+'dan beri)|
+| **iOS** | FairPlay | FairPlay için Safari (iOS 11,2 ' den itibaren) |
+| **macOS** | FairPlay | FairPlay için Safari (Mac OS X 10.11 + El Capitan üzerinde Safari 9 + bu yana)|
 | **tvOS** | FairPlay | |
 
-Her DRM için geçerli dağıtım durumu göz önüne alındığında, bir hizmet genellikle tüm uç nokta türlerini en iyi şekilde ele aldığınızdan emin olmak için iki veya üç DRM uygulamak ister.
+Her DRM için dağıtımın geçerli durumunu göz önünde bulundurarak, bir hizmet genellikle iki veya üç DRMs uygulamak istiyor ve en iyi şekilde tüm uç nokta türlerini adreslediğinizden emin olmanızı sağlar.
 
-Çeşitli istemciler üzerinde kullanıcı deneyimi belirli bir seviyeye ulaşmak için hizmet mantığı ve istemci tarafında karmaşıklığı karmaşıklığı arasında bir denge vardır.
+Çeşitli istemcilerde belirli bir kullanıcı deneyimi düzeyine ulaşmak için hizmet mantığının karmaşıklığı ve istemci tarafındaki karmaşıklık arasında bir zorunluluğunu getirir vardır.
 
-Seçiminizi yapmak için şunları aklınızda bulundurun:
+Seçiminizi yapmak için aşağıdakileri göz önünde bulundurun:
 
-* PlayReady, her Windows cihazında, bazı Android cihazlarda yerel olarak uygulanır ve hemen hemen her platformda yazılım SDK'ları aracılığıyla kullanılabilir.
-* Widevine doğal olarak her Android cihazda, Chrome'da ve diğer bazı cihazlarda uygulanır. Widevine ayrıca DASH üzerinden Firefox ve Opera tarayıcılarında da desteklenir.
-* FairPlay iOS, macOS ve tvOS'ta kullanılabilir.
+* PlayReady, her Windows cihazında, bazı Android cihazlarda yerel olarak uygulanır ve neredeyse tüm platformlarda yazılım SDK 'Ları aracılığıyla kullanılabilir.
+* Widevine, her Android cihazında, Chrome 'da ve diğer bazı cihazlarda yerel olarak uygulanır. Wıdevine aynı zamanda Firefox ve Opera tarayıcılarında DASH üzerinde de desteklenir.
+* FairPlay, iOS, macOS ve tvOS üzerinde kullanılabilir.
 
 
-## <a name="a-reference-design"></a>Referans tasarımı
-Bu bölümde, uygulamak için kullanılan teknolojilere agnostik bir başvuru tasarımı sunar.
+## <a name="a-reference-design"></a>Başvuru tasarımı
+Bu bölümde, bunu uygulamak için kullanılan teknolojilerde belirsiz bir başvuru tasarımı sunulmaktadır.
 
-Bir DRM alt sistemi aşağıdaki bileşenleri içerebilir:
+DRM alt sistemi aşağıdaki bileşenleri içerebilir:
 
 * Anahtar yönetimi
-* DRM şifreleme ambalajı
+* DRM şifreleme paketleme
 * DRM lisansı verme
 * Yetkilendirme denetimi/erişim denetimi
 * Kullanıcı kimlik doğrulaması/yetkilendirme
-* Oyuncu uygulaması
-* Kaynak/içerik dağıtım ağı (CDN)
+* Oynatıcı uygulaması
+* Kaynak/içerik teslim ağı (CDN)
 
-Aşağıdaki diyagram, drm alt sistemindeki bileşenler arasındaki üst düzey etkileşimi göstermektedir:
+Aşağıdaki diyagramda, bir DRM alt sistemindeki bileşenler arasındaki üst düzey etkileşim gösterilmektedir:
 
 ![CENC ile DRM alt sistemi](./media/design-multi-drm-system-with-access-control/media-services-generic-drm-subsystem-with-cenc.png)
 
-Tasarımın üç temel katmanı vardır:
+Tasarımda üç temel katman vardır:
 
-* Arka ofis katmanı (siyah) dışarıdan açıklanmaz.
-* Bir DMZ katmanı (koyu mavi) genel olarak karşı karşıya olan tüm uç noktaları içerir.
-* Genel internet katmanı (açık mavi) CDN ve ortak internet üzerinden trafik ile oyuncular içerir.
+* Arka ofis katmanı (siyah) dışarıdan gösterilmez.
+* Bir DMZ katmanı (koyu mavi), herkese açık olan tüm uç noktaları içerir.
+* Genel internet katmanı (açık mavi), genel İnternet genelinde trafiği olan CDN ve oynatıcılar içerir.
 
-Statik veya dinamik şifreleme olup olmadığına bakılmaksızın DRM korumasını kontrol etmek için bir içerik yönetim aracı da olmalıdır. DRM şifreleme girdileri şunlardır:
+Ayrıca, bu dosyanın statik veya dinamik şifreleme olmasına bakılmaksızın DRM korumasını denetlemek için bir içerik yönetim aracı olmalıdır. DRM şifrelemesi için girişler şunları içerir:
 
 * MBR video içeriği
 * İçerik anahtarı
-* Lisans edinme URL'leri
+* Lisans alma URL 'Leri
 
-İşte oynatma sırasında üst düzey akış:
+Kayıttan yürütme süresi boyunca üst düzey akış aşağıda verilmiştir:
 
-* Kullanıcının kimliği doğrulandı.
+* Kullanıcının kimliği doğrulanır.
 * Kullanıcı için bir yetkilendirme belirteci oluşturulur.
-* DRM korumalı içerik (manifesto) oyuncuya indirilir.
-* Oyuncu, lisans sunucularına anahtar bir kimlik ve yetki belirteci ile birlikte bir lisans edinme isteği gönderir.
+* DRM korumalı içerik (bildirim), yürütücüye indirilir.
+* Oynatıcı, bir anahtar KIMLIĞI ve yetkilendirme belirteciyle birlikte lisans sunucularına bir lisans alma isteği gönderir.
 
-Aşağıdaki bölümde anahtar yönetiminin tasarımı tartışılmaktadır.
+Aşağıdaki bölümde, anahtar yönetiminin tasarımı açıklanmaktadır.
 
-| **İçerikAnahtardan varlığa** | **Senaryo** |
+| **ContentKey-varlık** | **Senaryo** |
 | --- | --- |
-| 1'e 1 |En basit dava. En iyi kontrolü sağlar. Ama bu düzenleme genellikle en yüksek lisans teslim maliyeti ile sonuçlanır. En azından, korunan her varlık için bir lisans isteği gereklidir. |
-| 1'den çok |Aynı içerik anahtarını birden çok varlık için kullanabilirsiniz. Örneğin, bir tür veya bir türün alt kümesi (veya film geni) gibi mantıksal bir gruptaki tüm varlıklar için tek bir içerik anahtarı kullanabilirsiniz. |
-| Çok-to-1 |Her varlık için birden çok içerik anahtarı gereklidir. <br/><br/>Örneğin, MPEG-DASH için çoklu DRM ve HLS için dinamik AES-128 şifrelemesi ile dinamik CENC koruması uygulamanız gerekiyorsa, iki ayrı içerik anahtarına ihtiyacınız vardır. Her içerik anahtarının kendi ContentKeyType'ına ihtiyacı vardır. (Dinamik CENC koruması için kullanılan içerik anahtarı için ContentKeyType.CommonEncryption'ı kullanın. Dinamik AES-128 şifrelemesi için kullanılan içerik anahtarı için ContentKeyType.EnvelopeEncryption kullanın.)<br/><br/>Başka bir örnek olarak, DASH içeriğinin CENC korumasında, teorik olarak, video akışını korumak için bir içerik anahtarı ve ses akışını korumak için başka bir içerik anahtarı kullanabilirsiniz. |
-| Çok-çok |Önceki iki senaryonun birleşimi. Aynı varlık grubundaki birden çok varlığın her biri için bir içerik anahtarı kümesi kullanılır. |
+| 1--1 |En basit durum. En yoğun denetimi sağlar. Ancak bu düzenleme genellikle en yüksek lisans teslimat maliyetine neden olur. En azından, korunan her varlık için bir lisans isteği gerekir. |
+| 1-çok |Birden çok varlık için aynı içerik anahtarını kullanabilirsiniz. Örneğin, bir mantıksal gruptaki tüm varlıklar için (örn. bir tarz veya bir tarz alt kümesi (veya film gene), tek bir içerik anahtarı kullanabilirsiniz. |
+| Çoka çok-1 |Her varlık için birden çok içerik anahtarı gereklidir. <br/><br/>Örneğin, MPEG-DASH için çoklu DRM ve HLS için dinamik AES-128 şifrelemesi ile dinamik CENC koruması uygulamanız gerekiyorsa, iki ayrı içerik anahtarınız olması gerekir. Her içerik anahtarı kendi ContentKeyType öğesine ihtiyaç duyuyor. (Dinamik CENC koruması için kullanılan içerik anahtarı için ContentKeyType. CommonEncryption kullanın. Dinamik AES-128 şifrelemesi için kullanılan içerik anahtarı için ContentKeyType. EnvelopeEncryption kullanın.)<br/><br/>Diğer bir örnek olarak, DASH içeriğinin CENC korumasında, teorik olarak, video akışını korumak için bir içerik anahtarı ve ses akışını korumak için başka bir içerik anahtarı kullanabilirsiniz. |
+| Çok-çok |Önceki iki senaryonun birleşimi. Aynı varlık grubundaki birden çok varlık için bir dizi içerik anahtarı kullanılır. |
 
-Göz önünde bulundurulması gereken bir diğer önemli faktör kalıcı ve kalıcı olmayan lisansların kullanımıdır.
+Dikkate alınması gereken diğer önemli etken, kalıcı ve kalıcı olmayan lisansların kullanılması.
 
-Bu hususlar neden önemli?
+Bu hususlar neden önemlidir?
 
-Lisans teslimi için genel bir bulut kullanıyorsanız, kalıcı ve kalıcı olmayan lisansların lisans teslim maliyeti üzerinde doğrudan etkisi vardır. Aşağıdaki iki farklı tasarım örneği aşağıdakileri göstermek için kullanılır:
+Lisans teslimi için genel bir bulut kullanıyorsanız, kalıcı ve kalıcı olmayan lisanslarda lisans teslimat maliyeti üzerinde doğrudan bir etkisi olur. Aşağıdaki iki farklı tasarım çalışması şunları göstermeye yönelik olarak tasarlanmıştır:
 
-* Aylık abonelik: Kalıcı bir lisans ve 1-çok içerik anahtar-varlık eşleme kullanın. Örneğin, tüm çocuk filmleri için şifreleme için tek bir içerik anahtarı kullanırız. Bu durumda:
+* Aylık abonelik: kalıcı bir lisans ve 1 ' den fazla içerik arasında anahtar-varlık eşleştirmesi kullanın. Örneğin, tüm çocuk filmlerine şifreleme için tek bir içerik anahtarı kullanıyoruz. Bu durumda:
 
-    Tüm çocuk filmleri/cihazları için istenen toplam lisans sayısı = 1
+    Tüm çocukların filmler/cihaz = 1 için istenen toplam lisans sayısı
 
-* Aylık abonelik: Kalıcı olmayan bir lisans ve içerik anahtarı ve varlık arasında 1'e 1 eşleme kullanın. Bu durumda:
+* Aylık abonelik: içerik anahtarı ve varlık arasında kalıcı olmayan bir lisans ve 1 ila 1 eşleme kullanın. Bu durumda:
 
-    Tüm çocuk filmleri/cihazları için istenen toplam lisans sayısı = [İzlenen film sayısı] x [oturum sayısı]
+    Tüm çocukların filmler/cihaz = [izlenen Film sayısı] x [oturum sayısı] için istenen toplam lisans sayısı
 
-İki farklı tasarım çok farklı lisans istek desenleri neden. Farklı desenler, lisans teslim hizmeti Medya Hizmetleri gibi genel bir bulut tarafından sağlanıyorsa, farklı lisans teslim maliyetiyle sonuçlanır.
+İki farklı tasarım, çok farklı lisans isteği desenleriyle sonuçlanır. Lisans teslimi hizmeti Media Services gibi bir genel bulut tarafından sağlanıyorsa farklı desenler farklı lisans teslimi maliyetine neden olur.
 
-## <a name="map-design-to-technology-for-implementation"></a>Uygulama için teknolojiye harita tasarımı
-Ardından, genel tasarım, her yapı taşı için hangi teknolojinin kullanılacağını belirterek Azure/Medya Hizmetleri platformundaki teknolojilere eşlenir.
+## <a name="map-design-to-technology-for-implementation"></a>Uygulamayı uygulama için teknolojiye eşleyin
+Daha sonra, genel tasarım, her yapı bloğu için hangi teknolojinin kullanılacağını belirterek Azure/Media Services platformunda teknolojilerle eşlenir.
 
-Aşağıdaki tablo eşleme gösterir.
+Aşağıdaki tabloda eşleme gösterilmektedir.
 
 | **Yapı taşı** | **Teknoloji** |
 | --- | --- |
 | **Oynatıcı** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
-| **Kimlik Sağlayıcısı (IDP)** |Azure Active Directory (Azure AD) |
-| **Güvenli Jeton Hizmeti (STS)** |Azure AD |
-| **DRM koruma iş akışı** |Azure Medya Hizmetleri dinamik koruma |
-| **DRM lisansı verme** |* Medya Hizmetleri lisans teslimi (PlayReady, Widevine, FairPlay) <br/>* Axinom lisans sunucusu <br/>* Özel PlayReady lisans sunucusu |
-| **Kaynak** |Azure Medya Hizmetleri akış bitiş noktası |
-| **Anahtar yönetimi** |Başvuru uygulaması için gerekli değildir |
-| **İçerik yönetimi** |C# konsol uygulaması |
+| **Kimlik sağlayıcısı (ıDP)** |Azure Active Directory (Azure AD) |
+| **Güvenli belirteç hizmeti (STS)** |Azure AD |
+| **DRM koruması iş akışı** |Dinamik koruma Azure Media Services |
+| **DRM lisansı verme** |* Media Services lisans teslimi (PlayReady, Widevine, FairPlay) <br/>* Axinom lisans sunucusu <br/>* Özel PlayReady lisans sunucusu |
+| **Kaynak** |Azure Media Services akış uç noktası |
+| **Anahtar yönetimi** |Başvuru uygulamasında gerekli değildir |
+| **İçerik yönetimi** |Bir C# konsol uygulaması |
 
-Başka bir deyişle, hem IDP hem de STS Azure AD tarafından sağlanır. [Azure Media Player API'si](https://amp.azure.net/libs/amp/latest/docs/) oynatıcı için kullanılır. Hem Azure Medya Hizmetleri hem de Azure Media Player, DASH üzerinden CENC'i, HLS üzerinden FairPlay'i, sorunsuz akış üzerinden PlayReady'yi ve DASH, HLS ve sorunsuz için AES-128 şifrelemesi destekler.
+Diğer bir deyişle, Azure AD tarafından her iki ıDP ve STS sağlanır. Oynatıcı için [Azure Media Player API 'si](https://amp.azure.net/libs/amp/latest/docs/) kullanılır. Hem Azure Media Services hem de Azure Media Player, FairPlay Over HLS, kesintisiz akış üzerinden PlayReady ve DASH, HLS ve Düzgünleştir için AES-128 şifrelemesini destekler.
 
-Aşağıdaki diyagram, önceki teknoloji eşlemeile genel yapısını ve akışını gösterir:
+Aşağıdaki diyagramda, önceki teknoloji eşlemesiyle birlikte genel yapı ve akış gösterilmektedir:
 
-![Medya Hizmetlerinde CENC](./media/design-multi-drm-system-with-access-control/media-services-cenc-subsystem-on-AMS-platform.png)
+![Media Services CENC](./media/design-multi-drm-system-with-access-control/media-services-cenc-subsystem-on-AMS-platform.png)
 
-DRM içerik koruması ayarlamak için içerik yönetimi aracı aşağıdaki girdileri kullanır:
+İçerik yönetimi aracı, DRM içerik korumasını ayarlamak için aşağıdaki girişleri kullanır:
 
-* İçeriği açma
+* İçeriği aç
 * Anahtar yönetiminden içerik anahtarı
-* Lisans edinme URL'leri
-* Azure AD'den hedef kitle, veren ve belirteç talepleri gibi bilgilerin listesi
+* Lisans alma URL 'Leri
+* Azure AD 'deki, hedef kitle, veren ve belirteç talepleri gibi bilgilerin listesi
 
-İçerik yönetimi aracının çıktısı aşağıda veda edinebilirsiniz:
+İçerik yönetim aracının çıktısı aşağıda verilmiştir:
 
-* ContentKeyPolicy kullanılan her drm türü için DRM lisans şablonu açıklar;
-* ContentKeyPolicyRestriction, DRM lisansı verilmeden önce erişim denetimini açıklar
-* Streamingpolicy, akış için DRM - şifreleme modu - akış protokolü - kapsayıcı biçiminin çeşitli kombinasyonlarını açıklar
-* StreamingLocator şifreleme için kullanılan içerik anahtarı/IV'ü ve akış URL'lerini açıklar 
+* ContentKeyPolicy, kullanılan her DRM türü için DRM lisans şablonunu açıklar;
+* ContentKeyPolicyRestriction, bir DRM lisansı verilmeden önce erişim denetimini açıklar
+* Streamingpolicy, akış için DRM şifreleme modu-akış protokolü-kapsayıcı biçiminin çeşitli birleşimlerini açıklar
+* Streamminglocator, şifreleme için kullanılan içerik anahtarını/IV ve akış URL 'Lerini açıklar 
 
-Çalışma süresi ndeki akış şu şekildedir:
+İşte çalışma zamanı sırasında akış:
 
-* Kullanıcı kimlik doğrulaması üzerine bir JWT oluşturulur.
-* JWT'de yer alan iddialardan biri, grup nesnesi KIMLIĞI EntitledUserGroup'u içeren bir grup talebidir. Bu talep, yetkilendirme denetimini geçmek için kullanılır.
-* Oyuncu CENC korumalı içeriğin istemci bildirimini indirir ve aşağıdakileri tanımlar:
-   * Anahtar kimliği.
-   * İçerik DRM korumalıdır.
-   * Lisans edinme URL'leri.
-* Oyuncu desteklenen tarayıcı/DRM'ye dayalı bir lisans edinme isteğinde bulunamaz. Lisans edinme isteğinde, anahtar kimlik ve JWT de gönderilir. Lisans teslim hizmeti JWT'yi ve gerekli lisansı vermeden önce içerdiği talepleri doğrular.
+* Kullanıcı kimlik doğrulamasından sonra bir JWT oluşturulur.
+* JWT içinde yer alan taleplerden biri, EntitledUserGroup Grup nesnesi KIMLIĞINI içeren bir grup talebi. Bu talep, Yetkilendirme denetimini geçirmek için kullanılır.
+* Oynatıcı, CENC korumalı içeriğin istemci bildirimini indirir ve aşağıdakileri tanımlar:
+   * Anahtar KIMLIĞI.
+   * İçerik DRM korumalı.
+   * Lisans alma URL 'Leri.
+* Oynatıcı, desteklenen tarayıcıyı/DRM 'yi temel alan bir lisans alma isteği yapar. Lisans alma isteğinde, anahtar KIMLIĞI ve JWT de gönderilir. Lisans teslimi hizmeti, JWT ve gerekli lisans vermeden önce içerilen talepleri doğrular.
 
 ## <a name="implementation"></a>Uygulama
-### <a name="implementation-procedures"></a>Uygulama prosedürleri
+### <a name="implementation-procedures"></a>Uygulama yordamları
 Uygulama aşağıdaki adımları içerir:
 
-1. Test varlıklarını hazırlayın. Medya Hizmetlerinde parçalanmış MP4'ü çok bit hızında kodlamak/paketleyin. Bu varlık DRM korumalı *değildir.* DRM koruması daha sonra dinamik koruma ile yapılır.
+1. Test varlıklarını hazırlayın. Media Services içinde çoklu bit hızlı parçalanmış MP4 için bir test videosunu kodlayın/paketleyin. Bu varlık DRM korumalı *değil* . DRM koruması, dinamik koruma tarafından daha sonra yapılır.
 
-2. Anahtar kimliği ve içerik anahtarı (isteğe bağlı olarak bir anahtar tohumundan) oluşturun. Bu durumda, birkaç test varlığı için yalnızca tek bir anahtar kimliği ve içerik anahtarı gerektiğinden, anahtar yönetim sistemi gerekli değildir.
+2. Anahtar KIMLIĞI ve içerik anahtarı (isteğe bağlı olarak bir anahtar tohum 'dan) oluşturun. Bu örnekte, birkaç test varlığı için yalnızca tek bir anahtar KIMLIĞI ve içerik anahtarı gerektiğinden, anahtar yönetim sistemi gerekli değildir.
 
-3. Test varlığı için çoklu DRM lisans teslim hizmetlerini yapılandırmak için Medya Hizmetleri API'sini kullanın. Medya Hizmetleri'ndeki lisans hizmetleri yerine şirketinizin veya şirketinizin satıcıları tarafından özel lisans sunucuları kullanıyorsanız, bu adımı atlayabilirsiniz. Lisans teslimini yapılandırırken lisans edinme URL'lerini adımolarak belirtebilirsiniz. Medya Hizmetleri API'si, farklı DRM lisans hizmetleri için yetkilendirme ilkesi kısıtlaması ve lisans yanıt şablonları gibi bazı ayrıntılı yapılandırmaları belirtmek için gereklidir. Şu anda, Azure portalı bu yapılandırma için gerekli ue'yi sağlamaz. API düzeyindebilgi ve örnek kod için [PlayReady ve/veya Widevine dinamik ortak şifrelemesini kullan'a](protect-with-drm.md)bakın.
+3. Test varlığı için çoklu DRM lisans teslimat hizmetlerini yapılandırmak üzere Media Services API 'sini kullanın. Şirketiniz veya şirketinizin satıcısı tarafından Media Services Lisans Hizmetleri yerine özel lisans sunucuları kullanıyorsanız, bu adımı atlayabilirsiniz. Lisans alımı yapılandırırken, adımda lisans edinme URL 'Lerini belirtebilirsiniz. Farklı DRM lisans Hizmetleri için yetkilendirme ilkesi kısıtlaması ve lisans yanıt şablonları gibi bazı ayrıntılı yapılandırmaların belirtilmesi için Media Services API 'SI gereklidir. Bu süre içinde Azure portal, bu yapılandırma için gerekli Kullanıcı arabirimini sağlamaz. API düzeyi bilgi ve örnek kod için bkz. [PlayReady ve/veya Widevine dinamik ortak şifreleme kullanma](protect-with-drm.md).
 
-4. Test kıymeti için varlık teslim ilkesini yapılandırmak için Medya Hizmetleri API'sini kullanın. API düzeyindebilgi ve örnek kod için [PlayReady ve/veya Widevine dinamik ortak şifrelemesini kullan'a](protect-with-drm.md)bakın.
+4. Test varlığı için varlık teslim ilkesini yapılandırmak üzere Media Services API 'sini kullanın. API düzeyi bilgi ve örnek kod için bkz. [PlayReady ve/veya Widevine dinamik ortak şifreleme kullanma](protect-with-drm.md).
 
-5. Azure'da bir Azure AD kiracısı oluşturun ve yapılandırır.
+5. Azure 'da bir Azure AD kiracısı oluşturun ve yapılandırın.
 
-6. Azure AD kiracınızda birkaç kullanıcı hesabı ve grup oluşturun. En az bir "Yetkili Kullanıcı" grubu oluşturun ve bu gruba bir kullanıcı ekleyin. Bu gruptaki kullanıcılar lisans ediniminde yetki denetimini geçer. Bu grupta yer alan kullanıcılar kimlik doğrulama denetimini geçemez ve lisans alamaz. Bu "Hak Sahibi Kullanıcı" grubuna üyelik, Azure AD tarafından yayınlanan JWT'de gerekli grup talebidir. Çoklu DRM lisans teslim hizmetlerini yapılandırDığınızda bu talep gereksinimini adımda belirtirsiniz.
+6. Azure AD kiracınızda birkaç kullanıcı hesabı ve grubu oluşturun. En az bir "hak kazanır" grubu oluşturun ve bu gruba bir kullanıcı ekleyin. Bu gruptaki kullanıcılar, lisans alımı ' nda Yetkilendirme denetimini geçer. Bu grupta bulunmayan kullanıcılar kimlik doğrulama denetimini geçemez ve lisans alamaz. Bu "hak sahibi" grubundaki üyelik, Azure AD tarafından verilen JWT 'daki gerekli gruplar talebinde bulunur. Bu talep gereksinimini, çoklu DRM lisans teslim hizmetlerini yapılandırırken bu adımda belirtirsiniz.
 
-7. Video oynatıcınızı barındırmak için ASP.NET bir MVC uygulaması oluşturun. Bu ASP.NET uygulaması, Azure AD kiracısına karşı kullanıcı kimlik doğrulaması ile korunur. Kullanıcı kimlik doğrulaması sonrasında elde edilen erişim belirteçlerine uygun talepler dahildir. Bu adım için OpenID Connect API'yi öneririz. Aşağıdaki NuGet paketlerini yükleyin:
+7. Video yürütücünüzü barındırmak için bir ASP.NET MVC uygulaması oluşturun. Bu ASP.NET uygulaması, Azure AD kiracısında Kullanıcı kimlik doğrulamasıyla korunuyor. Kullanıcı kimlik doğrulamasından sonra alınan erişim belirteçlerine uygun talepler dahildir. Bu adım için OpenID Connect API 'SI önerilir. Aşağıdaki NuGet paketlerini yükleyin:
 
-   * Yükle-Paket Microsoft.Azure.ActiveDirectory.GraphClient
-   * Install-Paket Microsoft.Owin.Security.OpenIdConnect
-   * Microsoft.Owin.Security.Cookies Yükle-Paket
-   * Install-Paket Microsoft.Owin.Host.SystemWeb
-   * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+   * Install-Package Microsoft. Azure. ActiveDirectory. GraphClient
+   * Install-Package Microsoft. Owin. Security. Openıdconnect
+   * Install-Package Microsoft. Owin. Security. Cookies
+   * Install-Package Microsoft. Owin. Host. SystemWeb
+   * Install-Package Microsoft. IdentityModel. clients. ActiveDirectory
 
-8. Azure Media Player API'sını kullanarak bir [oynatıcı](https://amp.azure.net/libs/amp/latest/docs/)oluşturun. Farklı DRM platformlarında hangi DRM teknolojisini kullanacağımı belirtmek için [Azure Media Player ProtectionInfo API'yi](https://amp.azure.net/libs/amp/latest/docs/) kullanın.
+8. [Azure MEDIA Player API](https://amp.azure.net/libs/amp/latest/docs/)'sini kullanarak bir oyuncu oluşturun. Farklı DRM platformlarında hangi DRM teknolojisinin kullanılacağını belirtmek için [Azure Media Player Protectionınfo API](https://amp.azure.net/libs/amp/latest/docs/) 'sini kullanın.
 
-9. Aşağıdaki tablo test matrisini gösterir.
+9. Aşağıdaki tabloda test matrisi gösterilmektedir.
 
-    | **Drm** | **Tarayıcı** | **Hak sahibi kullanıcı için sonuç** | **Hak sahibi olmayan kullanıcı için sonuç** |
+    | **DRM** | **Tarayıcı** | **Sorumlu kullanıcı için sonuç** | **Sorumlu olmayan kullanıcı için sonuç** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Windows 10'da Microsoft Edge veya Internet Explorer 11 |Başarılı |Başarısız |
-    | **Widevine** |Krom, Firefox, Opera |Başarılı |Başarısız |
-    | **Fairplay** |macOS'ta Safari      |Başarılı |Başarısız |
-    | **AES-128** |En modern tarayıcılar  |Başarılı |Başarısız |
+    | **PlayReady** |Windows 10 ' da Microsoft Edge veya Internet Explorer 11 |Başarıya |Başarısız |
+    | **Widevine** |Chrome, Firefox, Opera |Başarıya |Başarısız |
+    | **FairPlay** |MacOS üzerinde Safari      |Başarıya |Başarısız |
+    | **AES-128** |En modern tarayıcılar  |Başarıya |Başarısız |
 
-ASP.NET bir MVC oynatıcı uygulaması için Azure AD'yi nasıl ayarlayabileceğiniz hakkında bilgi için, [Azure Media Hizmetleri OWIN MVC tabanlı bir uygulamayı Azure Active Directory ile tümleştir'e bakın ve JWT iddialarına göre içerik anahtarı teslimini kısıtlayın.](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+ASP.NET MVC oynatıcı uygulaması için Azure AD ayarlama hakkında daha fazla bilgi için bkz. [Azure Active Directory ile Azure Media Services OWIN MVC tabanlı uygulamayı tümleştirme ve JWT taleplerine göre içerik anahtarı teslimini kısıtlama](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-Daha fazla bilgi için Azure [Medya Hizmetleri'nde JWT belirteç kimlik doğrulaması ve dinamik şifreleme](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)ye bakın.  
+Daha fazla bilgi için, [Azure Media Services ve dinamik şifrelemede JWT belirteci kimlik doğrulaması](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)konusuna bakın.  
 
 Azure AD hakkında bilgi için:
 
-* Geliştirici bilgilerini [Azure Active Directory geliştiricikılavuzunda](../../active-directory/develop/v2-overview.md)bulabilirsiniz.
-* Yönetici bilgilerini Azure [AD kiracı dizininizde yönet'te](../../active-directory/fundamentals/active-directory-administer.md)bulabilirsiniz.
+* Geliştirici bilgilerini [Azure Active Directory geliştirici kılavuzunda](../../active-directory/develop/v2-overview.md)bulabilirsiniz.
+* Yönetici bilgilerini, [Azure AD kiracı dizininizi yönetme](../../active-directory/fundamentals/active-directory-administer.md)bölümünde bulabilirsiniz.
 
-### <a name="some-issues-in-implementation"></a>Uygulamada bazı sorunlar
+### <a name="some-issues-in-implementation"></a>Uygulamadaki bazı sorunlar
 
 Uygulama sorunlarıyla ilgili yardım için aşağıdaki sorun giderme bilgilerini kullanın.
 
-* İhraççı URL'si "/" ile bitmelidir. Hedef kitle oyuncu uygulaması istemci kimliği olmalıdır. Ayrıca, veren URL'nin sonuna "/" ekleyin.
+* Veren URL 'SI "/" ile bitmelidir. Hedef kitle, oynatıcı uygulaması istemci KIMLIĞI olmalıdır. Ayrıca, veren URL 'sinin sonuna "/" ekleyin.
 
         <add key="ida:audience" value="[Application Client ID GUID]" />
         <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
 
-    [JWT Decoder , JWT](http://jwt.calebb.net/)gösterildiği **gibi, aud** ve **iss**bakın:
+    [JWT kod çözücüde](http://jwt.calebb.net/), JWT içinde gösterildiği gibi **AUD** ve **ISS**' yi görürsünüz:
 
-    ![Jwt](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
+    ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
-* Uygulamanın **Yapılandırma** sekmesinde Azure AD'deki uygulamaya izinler ekleyin. İzinler her uygulama için gereklidir, hem yerel hem de dağıtılmış sürümleri.
+* Uygulamanın **Yapılandır** SEKMESINDE Azure AD 'de uygulamaya izinler ekleyin. Her uygulama için hem yerel hem de dağıtılan sürümler için izinler gereklidir.
 
     ![İzinler](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
 
-* Dinamik CENC koruması ayarlarken doğru vereni kullanın.
+* Dinamik CENC korumasını ayarlarken doğru sertifikayı kullanın.
 
         <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
 
-    Aşağıdakiler işe yaramaz:
+    Aşağıdakiler çalışmaz:
 
         <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
 
-    GUID, Azure AD kiracı kimliğidir. GUID, Azure portalındaki **Uç Noktalar** açılır menüsünde bulunabilir.
+    GUID, Azure AD kiracı KIMLIĞIDIR. GUID, Azure portal **uç noktalar** açılır menüsünde bulunabilir.
 
-* Hibe grubu üyeliği ayrıcalıkları talep eder. Azure AD uygulama bildirimi dosyasında aşağıdakilerin olduğundan emin olun: 
+* Grup üyeliği talep ayrıcalıkları verin. Aşağıdakilerin Azure AD uygulama bildirimi dosyasında bulunduğundan emin olun: 
 
-    "groupMembershipClaims": "Tümü" (varsayılan değer null' dur)
+    "Groupmembershipclaim": "All" (varsayılan değer null)
 
-* Kısıtlama gereksinimleri oluştururken uygun TokenType'ı ayarlayın.
+* Kısıtlama gereksinimleri oluştururken uygun TokenType öğesini ayarlayın.
 
         objTokenRestrictionTemplate.TokenType = TokenType.JWT;
 
-    SWT'ye (ACS) ek olarak JWT (Azure AD) desteği eklediğinizden, varsayılan TokenType TokenType.JWT'dir. SWT/ACS kullanıyorsanız, belirteci TokenType.SWT olarak ayarlamanız gerekir.
+    SWT (ACS) ' ye ek olarak JWT (Azure AD) desteği eklediğiniz için varsayılan TokenType, TokenType. JWT ' dir. SWT/ACS kullanırsanız, belirteci TokenType. SWT olarak ayarlamanız gerekir.
 
 ## <a name="the-completed-system-and-test"></a>Tamamlanan sistem ve test
 
-Bu bölüm, oturum açma hesabı almadan önce davranışın temel bir resmini elde edebilmeniz için tamamlanmış uçtan uca sistemde aşağıdaki senaryoları size iletir:
+Bu bölümde, oturum açma hesabı almadan önce davranışın temel bir resmine sahip olmak için tamamlanmış uçtan uca sistemde aşağıdaki senaryolarda izlenecek yol gösterilmektedir:
 
 * Tümleşik olmayan bir senaryoya ihtiyacınız varsa:
 
-    * Medya Hizmetleri'nde barındırılan, korumasız veya DRM korumalı, ancak belirteç kimlik doğrulaması (talep eden kişiye lisans verme) olmadan barındırılan video varlıkları için, oturum açmadan test edebilirsiniz. Video akışınız HTTP'nin üzerindeyse HTTP'ye geçin.
+    * Korumasız veya DRM korumalı, ancak belirteç kimlik doğrulaması olmadan (bir lisans veren) Media Services barındırılan video varlıkları için oturum açmadan test edebilirsiniz. Video akışınızda HTTP üzerinden olması durumunda HTTP 'ye geçin.
 
-* Uçuca tümleşik bir senaryoya ihtiyacınız varsa:
+* Uçtan uca tümleşik bir senaryoya ihtiyacınız varsa:
 
-    * Medya Hizmetlerinde dinamik DRM koruması altındaki video varlıkları için, Azure AD tarafından oluşturulan belirteç kimlik doğrulaması ve JWT ile oturum açmanız gerekir.
+    * Media Services sürümünde dinamik DRM koruması kapsamındaki video varlıkları için, belirteç kimlik doğrulaması ve Azure AD tarafından oluşturulan JWT ile oturum açmanız gerekir.
 
-Oyuncu web uygulaması ve oturum açma için [bu web sitesine](https://openidconnectweb.azurewebsites.net/)bakın.
+Oynatıcı Web uygulaması ve oturum açma için [Bu Web sitesine](https://openidconnectweb.azurewebsites.net/)bakın.
 
 ### <a name="user-sign-in"></a>Kullanıcı oturumu açma
-Uçuça tümleşik DRM sistemini test etmek için bir hesap oluşturulması veya eklenmesi gerekir.
+Uçtan uca tümleşik DRM sistemini test etmek için oluşturulmuş veya eklenmiş bir hesabınız olması gerekir.
 
-Hangi hesap?
+Hesap nedir?
 
-Azure başlangıçta yalnızca Microsoft hesap kullanıcıları tarafından erişime izin verilse de, artık her iki sistemden kullanıcılar erişime izin verir. Azure AD artık tüm Azure özellikleri kimlik doğrulaması için Azure AD'ye güveniyor ve Azure AD kuruluş kullanıcılarının kimlik doğruluğunu doğrulıyor. Azure AD'nin tüketici kullanıcılarının kimliğini doğrulamak için Microsoft hesabı tüketici kimlik sistemine güvendiği bir federasyon ilişkisi oluşturuldu. Sonuç olarak, Azure AD konuk Microsoft hesaplarının yanı sıra yerel Azure AD hesaplarını da doğrulayabilir.
+Azure tarafından yalnızca Microsoft hesabı kullanıcıları tarafından erişime izin verilse de, kullanıcılar artık her iki sistem tarafından erişime izin verilir. Azure AD, Azure AD kimlik doğrulaması için artık güvenilir ve Azure AD kuruluş kullanıcılarının kimliğini doğrular. Azure AD 'nin tüketici kullanıcılarının kimliğini doğrulamak için Microsoft hesabı tüketici kimliği sistemine güvendiği bir Federasyon ilişkisi oluşturulmuştur. Sonuç olarak, Azure AD, Konuk Microsoft hesaplarının yanı sıra yerel Azure AD hesapları için kimlik doğrulaması yapabilir.
 
-Azure AD Microsoft hesap etki alanına güvendiğinden, aşağıdaki etki alanlarından herhangi birini özel Azure AD kiracısına ekleyebilir ve oturum açmaiçin hesabı kullanabilirsiniz:
+Azure AD Microsoft hesabı etki alanına güventiğinden, aşağıdaki etki alanlarından herhangi bir hesabı özel Azure AD kiracısına ekleyebilir ve hesabı kullanarak oturum açabilirsiniz:
 
 | **Etki alanı adı** | **Domain** |
 | --- | --- |
 | **Özel Azure AD kiracı etki alanı** |somename.onmicrosoft.com |
 | **Kurumsal etki alanı** |microsoft.com |
-| **Microsoft hesap etki alanı** |outlook.com, live.com, hotmail.com |
+| **Microsoft hesabı etki alanı** |outlook.com, live.com, hotmail.com |
 
-Sizin için bir hesap oluşturulması veya eklenmesi için yazarlardan herhangi biri ile iletişim kurabilirsiniz.
+Sizin için bir hesap oluşturulmasını veya eklenmesini sağlamak üzere yazarlarla herhangi biriyle iletişim sağlayabilirsiniz.
 
-Aşağıdaki ekran görüntüleri, farklı etki alanı hesapları tarafından kullanılan farklı oturum açma sayfalarını gösterir:
+Aşağıdaki ekran görüntülerinde farklı etki alanı hesapları tarafından kullanılan farklı oturum açma sayfaları gösterilmektedir:
 
-**Özel Azure AD kiracı etki alanı hesabı**: Özel Azure AD kiracı etki alanının özelleştirilmiş oturum açma sayfası.
+**Özel Azure AD kiracı etki alanı hesabı**: özel Azure AD kiracı etki alanının özelleştirilmiş oturum açma sayfası.
 
-![Özel Azure AD kiracı etki alanı hesabı bir](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
+![Özel Azure AD kiracı etki alanı hesabı tek](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Akıllı kartlı Microsoft etki alanı hesabı**: Microsoft kurumsal BT tarafından iki faktörlü kimlik doğrulamayla özelleştirilmiş oturum açma sayfası.
+**Akıllı kart Ile Microsoft etki alanı hesabı**: MICROSOFT kurumsal BT tarafından iki öğeli kimlik doğrulama ile özelleştirilmiş oturum açma sayfası.
 
 ![Özel Azure AD kiracı etki alanı hesabı iki](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft hesabı**: Microsoft hesabının tüketiciler için oturum açma sayfası.
+**Microsoft hesabı**: tüketiciler için Microsoft hesabı oturum açma sayfası.
 
 ![Özel Azure AD kiracı etki alanı hesabı üç](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
-### <a name="use-encrypted-media-extensions-for-playready"></a>PlayReady için Şifreli Ortam Uzantılarını Kullanma
+### <a name="use-encrypted-media-extensions-for-playready"></a>PlayReady için şifreli medya uzantıları kullanma
 
-Windows 8.1 veya sonraki internet explorer 11 ve Windows 10'daki Microsoft Edge tarayıcısı gibi PlayReady desteği için Şifreli Ortam Uzantıları (EME) içeren modern bir tarayıcıda PlayReady, EME'nin temel DRM'sidir.
+Windows 8.1 veya üzeri sürümlerde Internet Explorer 11 ve Windows 10 ' da Microsoft Edge tarayıcısı gibi PlayReady desteği için şifreli Medya Uzantıları (EME) ile modern bir tarayıcıda, PlayReady, EME için temel alınan DRM 'dir.
 
-![PlayReady için EME'yi kullanın](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready1.png)
+![PlayReady için EME kullanma](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready1.png)
 
-Karanlık oynatıcı alanı, PlayReady korumasının korumalı videonun ekran yakalamasını engellemesidir.
+Koyu oynatıcı alanı, PlayReady korumasının, korunan videonun ekran yakalanmasını istemelerini engeller.
 
-Aşağıdaki ekran görüntüsü, oynatıcı eklentilerini ve Microsoft Security Essentials (MSE)/EME desteğini gösterir:
+Aşağıdaki ekran görüntüsünde, oynatıcı eklentileri ve Microsoft Security Essentials (MSE)/EME desteği gösterilmektedir:
 
-![PlayReady için oyuncu eklentileri](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready2.png)
+![PlayReady için oynatıcı eklentileri](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready2.png)
 
-Microsoft Edge'deki EME ve Windows 10'daki Internet Explorer 11, [PlayReady SL3000'ün](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) onu destekleyen Windows 10 aygıtlarında çağrılmasına olanak tanır. PlayReady SL3000 gelişmiş premium içerik akışının (4K, HDR) ve yeni içerik dağıtım modellerinin (gelişmiş içerik için) kilidini açar.
+Windows 10 ' da Microsoft Edge ve Internet Explorer 11 ' deki EME, [PLAYREADY SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) 'in onu destekleyen Windows 10 cihazlarında çağrılmasını sağlar. PlayReady SL3000, gelişmiş Premium içeriğin (4K, HDR) ve yeni içerik teslim modellerinin (Gelişmiş içerik için) akışını kaldırır.
 
-Windows aygıtlarına odaklanmak için PlayReady, Windows aygıtlarında bulunan donanımdaki tek DRM'dir (PlayReady SL3000). Bir akış hizmeti PlayReady'yi EME üzerinden veya Evrensel Windows Platformu uygulaması aracılığıyla kullanabilir ve PlayReady SL3000'i kullanarak başka bir DRM'den daha yüksek bir video kalitesi sunabilir. Tipik olarak, 2K'ya kadar içerik Chrome veya Firefox üzerinden akar ve 4K'ya kadar içerik Microsoft Edge/Internet Explorer 11 veya aynı aygıttaki Evrensel Windows Platformu uygulamasından akar. Tutar, hizmet ayarlarına ve uygulamaya bağlıdır.
+Windows cihazlarına odaklanmak için PlayReady, Windows cihazlarında (PlayReady SL3000) kullanılabilen tek DRM 'dir. Bir akış hizmeti, PlayReady aracılığıyla veya Evrensel Windows Platformu bir uygulamayla PlayReady kullanabilir ve başka bir DRM 'den PlayReady SL3000 kullanarak daha yüksek bir video kalitesi sunabilir. Genellikle, Microsoft Edge/Internet Explorer 11 veya aynı cihazdaki Evrensel Windows Platformu bir uygulama aracılığıyla en çok 10 ' a kadar akış akışı sağlar. Miktar, hizmet ayarlarına ve uygulamaya göre değişir.
 
-#### <a name="use-eme-for-widevine"></a>Widevine için EME kullanın
+#### <a name="use-eme-for-widevine"></a>Widevine için EME kullanma
 
-Windows 10'da Chrome 41+, Windows 8.1, Mac OSX Yosemite ve Android 4.4.4'te Chrome gibi EME/Widevine desteğine sahip modern bir tarayıcıda Google Widevine, EME'nin arkasındaki DRM'dir.
+Android 4.4.4 üzerinde Windows 10, Windows 8.1, Mac OSX Yosemite ve Chrome 'daki Chrome 41 + gibi EME/Widevine desteğiyle modern bir tarayıcıda, Google Widevine, EME 'nin arkasındaki DRM 'dir.
 
-![Widevine için EME kullanın](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine1.png)
+![Widevine için EME kullanma](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine1.png)
 
-Widevine, korumalı videonun ekran yakalamasını engellemez.
+Widevine, korunan videonun ekran yakalanmasını engellemenizi engellemez.
 
-![Widevine için oyuncu eklentileri](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine2.png)
+![Widevine için oynatıcı eklentileri](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine2.png)
 
-#### <a name="use-eme-for-fairplay"></a>FairPlay için EME'yi kullanın
+#### <a name="use-eme-for-fairplay"></a>FairPlay için EME kullanma
 
-Benzer şekilde, Bu test oynatıcıda FairPlay korumalı içeriği macOS veya iOS 11.2 ve sonraki yerlerde test edebilirsiniz.
+Benzer şekilde, FairPlay Protected içeriğini macOS veya iOS 11,2 ve üzeri sürümlerde Safari 'de bu test yürütücüsünde test edebilirsiniz.
 
-"FairPlay"i protectionInfo.type olarak koyduğunuzdan ve FPS AC Path'deki (FairPlay Streaming Application Certificate Path) Uygulama Sertifikanız için doğru URL'yi koyduğunuzdan emin olun.
+"FairPlay" öğesini Protectionınfo olarak yerleştirdiğinizden emin olun. (FairPlay akış uygulaması sertifika yolu), uygulama sertifikanız için doğru URL 'YI girin.
 
-### <a name="unentitled-users"></a>Hak sahibi olmayan kullanıcılar
+### <a name="unentitled-users"></a>Kullanıcıları hak edilmemiş
 
-Bir kullanıcı "Hak Sahibi Kullanıcılar" grubunun bir üyesi değilse, kullanıcı yetkilendirme denetimini geçemez. Çoklu DRM lisans hizmeti daha sonra gösterildiği gibi istenen lisansı vermeyi reddeder. Ayrıntılı açıklama olarak tasarlanmış olan "Lisans edinme başarısız oldu".
+Kullanıcı "kullanıcılar" grubunun üyesi değilse, Kullanıcı Yetkilendirme denetimini geçirmez. Çoklu DRM lisans hizmeti ardından istenen lisansı gösterildiği gibi verilmesinin reddeder. Ayrıntılı açıklama, tasarlanan "lisans alma başarısız oldu" dır.
 
-![Hak sahibi olmayan kullanıcılar](./media/design-multi-drm-system-with-access-control/media-services-unentitledusers.png)
+![Kullanıcıları hak edilmemiş](./media/design-multi-drm-system-with-access-control/media-services-unentitledusers.png)
 
-### <a name="run-a-custom-security-token-service"></a>Özel güvenlik belirteç hizmeti çalıştırın
+### <a name="run-a-custom-security-token-service"></a>Özel bir güvenlik belirteci hizmeti çalıştırma
 
-Özel bir STS çalıştırıyorsanız, JWT özel STS tarafından simetrik veya asimetrik bir anahtar kullanılarak verilir.
+Özel bir STS çalıştırırsanız, JWT bir simetrik ya da asimetrik anahtar kullanılarak özel STS tarafından verilir.
 
-Aşağıdaki ekran görüntüsü, simetrik anahtar (Chrome kullanarak) kullanan bir senaryoyu gösterir:
+Aşağıdaki ekran görüntüsünde simetrik anahtar (Chrome kullanarak) kullanan bir senaryo gösterilmektedir:
 
-![Simetrik anahtarlı özel STS](./media/design-multi-drm-system-with-access-control/media-services-running-sts1.png)
+![Simetrik anahtar ile özel STS](./media/design-multi-drm-system-with-access-control/media-services-running-sts1.png)
 
-Aşağıdaki ekran görüntüsü, X509 sertifikası (Microsoft modern tarayıcısı kullanarak) aracılığıyla asimetrik anahtar kullanan bir senaryoyu gösterir:
+Aşağıdaki ekran görüntüsünde, bir x509 sertifikası aracılığıyla asimetrik anahtar kullanan bir senaryo gösterilmektedir (Microsoft modern tarayıcı kullanılarak):
 
-![Asimetrik anahtarlı özel STS](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
+![Asimetrik anahtarla özel STS](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
 
-Önceki her iki durumda da, kullanıcı kimlik doğrulaması aynı kalır. Azure AD aracılığıyla gerçekleşir. Tek fark, JWT'lerin Azure AD yerine özel STS tarafından verilmiş olmasıdır. Dinamik CENC korumasını yapılandırdığınızda, lisans teslim hizmeti kısıtlaması, simetrik veya asimetrik bir anahtar olan JWT türünü belirtir.
+Her iki durumda da, Kullanıcı kimlik doğrulaması aynı kalır. Azure AD aracılığıyla gerçekleşir. Tek fark, JWTs 'nin Azure AD yerine özel STS tarafından verilme sayısıdır. Dinamik CENC korumasını yapılandırdığınızda, lisans teslimi hizmeti kısıtlaması, bir simetrik veya asimetrik anahtar olan JWT türünü belirtir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sık sorulan sorular](frequently-asked-questions.md)
-* [İçerik koruma genel bakış](content-protection-overview.md)
+* [İçerik korumasına genel bakış](content-protection-overview.md)
 * [DRM ile içeriğinizi koruyun](protect-with-drm.md)

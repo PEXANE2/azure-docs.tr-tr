@@ -9,63 +9,63 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: 9397c5f075c1d6653920d19766d5d6a740294ec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67330738"
 ---
-Kendi sertifikanızı oluşturduğunuzda aşağıdaki CA'lar izin verilir:
+Kendi sertifikanızı oluştururken aşağıdaki CA 'Lara izin verilir:
 
-- AddTrust Harici CA Kökü
-- AlphaSSL Kök CA
+- AddTrust dış CA kökü
+- Harflerden SSL kök CA 'sı
 - AME Infra CA 01
 - AME Infra CA 02
 - Ameroot
 - APCA-DM3P
-- Otomatik Pilot Kök CA
-- Baltimore CyberTrust Kök
-- 3. Sınıf Kamu İlköğretim Sertifika Syon Kurumu
-- COMODO RSA Belgelendirme Kurumu
-- COMODO RSA Domain Doğrulama Güvenli Sunucu CA
-- D-TRUST Kök Sınıf 3 CA 2 2009
-- DigiCert Bulut Hizmetleri CA-1
-- DigiCert Küresel Kök CA
-- DigiCert Yüksek Güvence CA-3
-- DigiCert Yüksek Güvence EV Kök CA
-- DigiCert SHA2 Genişletilmiş Doğrulama Sunucusu CA
-- DigiCert SHA2 Yüksek GüvenceLi Sunucu CA
-- DigiCert SHA2 Güvenli Sunucu CA
-- DST Kök CA X3
-- D-güven Kök Sınıf 3 CA 2 2009
-- Şifreleme Her Yerde DV TLS CA
-- Kök Belgelendirme Yetkilisi'ne Emanet
-- Emanet Kök Sertifikasyon Kurumu - G2
-- Entrust.net Belgelendirme Kurumu (2048)
-- GeoTrust Global CA
-- GeoTrust Birincil Belgelendirme Yetkilisi
-- GeoTrust Birincil Belgelendirme Otoritesi - G2
-- Geotrust RSA CA 2018
-- Globalsign
-- GlobalSign Genişletilmiş Doğrulama CA - SHA256 - G2
-- GlobalSign Organizasyon Doğrulama CA - G2
-- GlobalSign Kök CA
-- Go Daddy Kök Sertifika Otoritesi - G2
-- Go Daddy Güvenli Sertifika Yetkilisi - G2
-- QuoVadis Kök CA2 G3
+- Autopilot kök CA
+- Baltimore Sitrust kökü
+- Sınıf 3 genel birincil sertifika yetkilisi
+- COMODO RSA sertifika yetkilisi
+- COMODO RSA etki alanı doğrulaması güvenli sunucu CA
+- D-TRUST kök sınıfı 3 CA 2 2009
+- DigiCert Cloud Services CA-1
+- DigiCert genel kök CA 'sı
+- DigiCert yüksek güvence CA-3
+- DigiCert yüksek güvence EV kök CA
+- DigiCert SHA2 genişletilmiş doğrulama sunucusu CA 'sı
+- DigiCert SHA2 yüksek güvence sunucu CA 'sı
+- DigiCert SHA2 Secure Server CA
+- DST kök CA x3
+- D-Trust kök sınıfı 3 CA 2 2009
+- Her yerde şifreleme DV TLS CA
+- Kök sertifika yetkilisine güvenin
+- Entrust kök sertifika yetkilisi-G2
+- Entrust.net sertifika yetkilisi (2048)
+- GeoTrust küresel CA
+- Coğrafi güven birincil sertifika yetkilisi
+- GeoTrust birincil sertifika yetkilisi-G2
+- GeoTrust RSA CA 2018
+- GlobalSign
+- GlobalSign Genişletilmiş Doğrulama CA-SHA256-G2
+- GlobalSign kuruluş doğrulama CA-G2
+- GlobalSign kök CA
+- Go Daddy kök sertifika yetkilisi-G2
+- Go Daddy güvenli sertifika yetkilisi-G2
+- Quovadsıs root CA2 G3
 - RapidSSL RSA CA 2018
-- Symantec Sınıf 3 EV SSL CA - G3
-- Symantec Class 3 Güvenli Sunucu CA - G4
-- Microsoft için Symantec Enterprise Mobil Kök
-- Anakök CA Çözülme
-- Anakök CA - G2 Çözülme
-- Çözülme Birincil Kök CA - G3
-- Çözülme RSA CA 2018
-- Çözülme Zaman Damgası CA
-- TrustAsia TLS RSA CA
-- VeriSign Sınıf 3 Genişletilmiş Doğrulama SSL CA
-- VeriSign Sınıf 3 Genişletilmiş Doğrulama SSL SGC CA
-- VeriSign Sınıf 3 Kamu Birincil Sertifikasyon Otoritesi - G5
-- VeriSign International Server CA - Sınıf 3
-- VeriSign Zaman Damgalama Hizmet Kökü
-- VeriSign Evrensel Kök Sertifikasyon Yetkilisi
+- Symantec Class 3 EV SSL CA-G3
+- Symantec Class 3 güvenli sunucu CA-G4
+- Microsoft için Symantec Enterprise Mobile Root
+- Thawte birincil kök CA
+- Thawte birincil kök CA-G2
+- Thawte birincil kök CA-G3
+- Thawte RSA CA 2018
+- Thawte damgalama CA 'sı
+- Trustasıtls RSA CA
+- VeriSign Class 3 Genişletilmiş Doğrulama SSL CA 'sı
+- VeriSign Class 3 Genişletilmiş Doğrulama SSL SGC CA
+- VeriSign sınıfı 3 genel birincil sertifika yetkilisi-G5
+- VeriSign Uluslararası sunucu CA 'sı-sınıf 3
+- VeriSign zaman damgalama hizmeti kökü
+- VeriSign Universal kök sertifika yetkilisi
