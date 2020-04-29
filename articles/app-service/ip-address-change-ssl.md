@@ -1,48 +1,48 @@
 ---
-title: SSL IP adres değişikliğine hazırlanın
-description: SSL IP adresiniz değişecekse, uygulamanızın değişiklikten sonra çalışmaya devam etmesi için ne yapmanız gerektiğini öğrenin.
+title: SSL IP adresi değişikliğine hazırlanma
+description: SSL IP adresiniz değiştirilebiliyorsa, uygulamanızın değişiklikten sonra çalışmaya devam etmesi için ne yapılacağını öğrenin.
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535732"
 ---
-# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>SSL IP adresi değişikliğine nasıl hazırlanım
+# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>SSL IP adresi değişikliğine hazırlanma
 
-Azure Uygulama Hizmeti uygulamanızın SSL IP adresinin değiştiğine dair bir bildirim aldıysanız, mevcut SSL IP adresini serbest bırakmak ve yeni bir adres atamak için bu makaledeki yönergeleri izleyin.
+Azure App Service uygulamanızın SSL IP adresinin değiştiğini belirten bir bildirim aldıysanız, var olan SSL IP adresini serbest bırakmak ve yeni bir tane atamak için bu makaledeki yönergeleri izleyin.
 
-## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>SSL IP adreslerini serbest bırakın ve yenilerini atayın
+## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>SSL IP adreslerini serbest bırakma ve yenilerini atama
 
-1.  Azure [portalını](https://portal.azure.com)açın.
+1.  [Azure Portal](https://portal.azure.com)açın.
 
-2.  Sol daki gezinme menüsünde **Uygulama Hizmetleri'ni**seçin.
+2.  Sol taraftaki gezinti menüsünde **uygulama hizmetleri**' ni seçin.
 
-3.  Uygulama Hizmeti uygulamanızı listeden seçin.
+3.  Listeden App Service uygulamanızı seçin.
 
-4.  **Ayarlar** üstbilgisinin altında, sol gezintideki **SSL ayarlarını** tıklatın.
+4.  **Ayarlar** üst bilgisinde, sol gezinti bölmesinde **SSL ayarları** ' na tıklayın.
 
-1. TLS/SSL bağlamalar bölümünde, ana bilgisayar ad kaydını seçin. Açılan düzenleyicide, **SSL Türü** açılır menüsünde **SNI SSL'yi** seçin ve **Bağlama Ekle'yi**tıklatın. İşlem başarı iletisini gördüğünüzde, varolan IP adresi serbest bırakıldı.
+1. TLS/SSL bağlamaları bölümünde konak adı kaydını seçin. Açılan düzenleyicide, **SSL türü** açılan menüsünde **SNI SSL** ' yi seçin ve **bağlama Ekle**' ye tıklayın. İşlem başarı iletisini gördüğünüzde, var olan IP adresi yayımlandı.
 
-6.  **SSL bağlamaları** bölümünde, yine sertifikayla aynı ana bilgisayar ad kaydını seçin. Açılan düzenleyicide, bu kez **SSL Type** açılır menüsünde **IP Tabanlı SSL'yi** seçin ve **Bağlayıcıekle'yi**tıklatın. İşlem başarı iletisini gördüğünüzde, yeni bir IP adresi edinilmiş olursunuz.
+6.  **SSL bağlamaları** bölümünde, sertifikayla aynı konak adı kaydını seçin. Açılan düzenleyicide, bu kez **SSL türü** açılan menüsünde **IP tabanlı SSL** ' i seçin ve **bağlama Ekle**' ye tıklayın. İşlem başarılı iletisini gördüğünüzde, yeni bir IP adresi aldınız.
 
-7.  Etki Alanı Kayıt Portalınızda (üçüncü taraf DNS Sağlayıcısı veya Azure DNS) bir A kaydı (doğrudan IP adresinizi gösteren DNS kaydı) yapılandırılırsa, varolan IP adresini yeni oluşturulan la değiştirin. Yeni IP adresini sonraki bölümdeki talimatları izleyerek bulabilirsiniz.
+7.  Etki alanı kayıt portalınızda (üçüncü taraf DNS sağlayıcısı veya Azure DNS) bir kayıt (doğrudan IP adresinizi işaret eden DNS kaydı) yapılandırılmışsa, var olan IP adresini yeni oluşturulan bir adresle değiştirin. Sonraki bölümdeki yönergeleri izleyerek yeni IP adresini bulabilirsiniz.
 
-## <a name="find-the-new-ssl-ip-address-in-the-azure-portal"></a>Azure Portalı'nda yeni SSL IP adresini bulun
+## <a name="find-the-new-ssl-ip-address-in-the-azure-portal"></a>Azure portalında yeni SSL IP adresini bulma
 
-1.  Birkaç dakika bekleyin ve ardından [Azure portalını](https://portal.azure.com)açın.
+1.  Birkaç dakika bekleyin ve ardından [Azure Portal](https://portal.azure.com)açın.
 
-2.  Sol daki gezinme menüsünde **Uygulama Hizmetleri'ni**seçin.
+2.  Sol taraftaki gezinti menüsünde **uygulama hizmetleri**' ni seçin.
 
-3.  Uygulama Hizmeti uygulamanızı listeden seçin.
+3.  Listeden App Service uygulamanızı seçin.
 
-4.  **Ayarlar** üstbilgisinin altında, sol gezintideki **Özellikler'i** tıklatın ve Sanal **IP adresi**etiketli bölümü bulun.
+4.  **Ayarlar** üst bilgisinde, sol gezinti bölmesinde **Özellikler** ' e tıklayın ve **sanal IP adresi**etiketli bölümü bulun.
 
 5. IP adresini kopyalayın ve etki alanı kaydınızı veya IP mekanizmanızı yeniden yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure tarafından başlatılan bir IP adresi değişikliğine nasıl hazırlanacağı açıklanmıştır. Azure Uygulama Hizmeti'ndeki IP adresleri hakkında daha fazla bilgi için [Azure Uygulama Hizmeti'nde gelen ve giden IP adreslerine](overview-inbound-outbound-ips.md)bakın.
+Bu makalede, Azure tarafından başlatılan bir IP adresi değişikliğine hazırlanma konusu açıklanmaktadır. Azure App Service IP adresleri hakkında daha fazla bilgi için, bkz. [Azure App Service gelen ve gıden IP adresleri](overview-inbound-outbound-ips.md).

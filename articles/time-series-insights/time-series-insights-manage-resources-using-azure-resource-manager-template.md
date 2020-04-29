@@ -1,6 +1,6 @@
 ---
-title: Azure Kaynak Yöneticisi şablonlarını kullanarak ortamınızı yönetin - Azure Zaman Serisi Öngörüleri | Microsoft Dokümanlar
-description: Azure Kaynak Yöneticisi'ni kullanarak Azure Time Series Öngörüleri ortamınızı programlı olarak nasıl yöneteceklerinizi öğrenin.
+title: Azure Resource Manager şablonlarını kullanarak ortamınızı yönetin-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights ortamınızı Azure Resource Manager kullanarak programlı bir şekilde yönetmeyi öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,46 +12,46 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536327"
 ---
-# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonlarını kullanarak Zaman Serisi Öngörüleri kaynakları oluşturun
+# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Time Series Insights kaynakları oluşturma
 
-Bu makalede, [Azure Kaynak Yöneticisi şablonları,](https://docs.microsoft.com/azure/azure-resource-manager/)PowerShell ve Time Series Insights kaynak sağlayıcısını kullanarak Time Series Insights kaynaklarının nasıl oluşturulup dağıtılanınca açıklanmaktadır.
+Bu makalede [Azure Resource Manager şablonları](https://docs.microsoft.com/azure/azure-resource-manager/), PowerShell ve Time Series Insights kaynak sağlayıcısı kullanılarak Time Series Insights kaynaklarının nasıl oluşturulacağı ve dağıtılacağı açıklanır.
 
 Time Series Insights aşağıdaki kaynakları destekler:
 
    | Kaynak | Açıklama |
    | --- | --- |
-   | Ortam | Zaman Serisi Öngörüleri ortamı, olay aracılarından okunan, depolanan ve sorgu için kullanılabilir hale getirilen olayların mantıksal bir gruplandırmasIdır. Daha fazla bilgi için [Azure Zaman Serisi Öngörüleri ortamınızı planlayın'ı](time-series-insights-environment-planning.md) okuyun |
-   | Olay Kaynağı | Etkinlik kaynağı, Time Series Insights'ın olayları okuduğu ve ortama yutturdığı bir etkinlik aracısına bağlantıdır. Şu anda desteklenen olay kaynakları IoT Hub ve Olay Hub'ıdır. |
-   | Referans Veri Seti | Başvuru veri kümeleri, ortamdaki olaylar hakkında meta veriler sağlar. Başvuru veri kümelerinde meta veriler giriş sırasında olaylarla birleştirilir. Başvuru veri kümeleri, olay anahtar özelliklerine göre kaynak olarak tanımlanır. Başvuru veri kümesini oluşturan gerçek meta veriler veri düzlemi API'leri aracılığıyla yüklenir veya değiştirilir. |
-   | Erişim Politikası | Erişim ilkeleri, veri sorguları verme, ortamdaki başvuru verilerini işleme ve kaydedilen sorguları ve ortamla ilişkili perspektifleri paylaşma izni verir. Daha fazla bilgi için [Azure portalLarını kullanarak Time Series Öngörüleri ortamına veri erişimi ver'i](time-series-insights-data-access.md) okuyun |
+   | Ortam | Time Series Insights ortamı, olay aracılarından okunan, depolanan ve sorgu için kullanılabilir hale getirilen olayların mantıksal gruplandırmasıdır. Daha fazla bilgi için [Azure Time Series Insights ortamınızın planını](time-series-insights-environment-planning.md) okuyun |
+   | Olay Kaynağı | Olay kaynağı, Time Series Insights tarafından ortama okuma ve olayları geri almak için gereken bir olay aracısına bağlantıdır. Şu anda desteklenen olay kaynakları IoT Hub ve Olay Hub 'ı. |
+   | Başvuru veri kümesi | Başvuru veri kümeleri, ortamdaki olaylar hakkında meta veriler sağlar. Başvuru verileri kümelerindeki meta veriler, giriş sırasında olaylarla birleştirilir. Başvuru veri kümeleri, olay anahtarı özelliklerine göre kaynak olarak tanımlanır. Başvuru veri kümesini oluşturan gerçek meta veriler, veri düzlemi API 'Leri aracılığıyla karşıya yüklenir veya değiştirilir. |
+   | Erişim Ilkesi | Erişim ilkeleri, veri sorguları verme, ortamdaki başvuru verilerini işleme ve ortamla ilişkili Kaydedilmiş sorguları ve perspektifleri paylaşma izinleri verir. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](time-series-insights-data-access.md) konusunu okuyun |
 
-Kaynak Yöneticisi şablonu, kaynak grubundaki kaynakların altyapısını ve yapılandırmasını tanımlayan bir JSON dosyasıdır. Aşağıdaki belgeler şablon dosyalarını daha ayrıntılı olarak açıklar:
+Kaynak Yöneticisi şablonu, bir kaynak grubundaki kaynakların altyapısını ve yapılandırmasını tanımlayan bir JSON dosyasıdır. Aşağıdaki belgeler şablon dosyalarını daha ayrıntılı bir şekilde anlatmaktadır:
 
-- [Azure Kaynak Yöneticisi şablon dağıtımı](../azure-resource-manager/templates/overview.md)
+- [Azure Resource Manager şablonu dağıtımı](../azure-resource-manager/templates/overview.md)
 - [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/templates/deploy-powershell.md)
-- [Microsoft.TimeSeriesInsights kaynak türleri](/azure/templates/microsoft.timeseriesinsights/allversions)
+- [Microsoft. Timeseriesınsights kaynak türleri](/azure/templates/microsoft.timeseriesinsights/allversions)
 
-[201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) quickstart şablonu GitHub'da yayınlanır. Bu şablon, Bir Zaman Serisi Öngörüleri ortamı, olay hub'ından olayları tüketecek şekilde yapılandırılan bir alt olay kaynağı ve ortamın verilerine erişim sağlayan ilkelere erişim oluşturur. Varolan bir Olay Hub'ı belirtilmemişse, dağıtımla birlikte bir tane oluşturulur.
+[201-timeseriesınsights-Environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) hızlı başlangıç şablonu GitHub 'da yayımlanır. Bu şablon bir Time Series Insights ortamı, bir olay hub 'ından olayları kullanmak üzere yapılandırılmış bir alt olay kaynağı ve ortam verilerine erişim izni veren ilkelere erişim ilkeleri oluşturur. Mevcut bir olay hub 'ı belirtilmemişse, dağıtım ile bir tane oluşturulur.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="specify-deployment-template-and-parameters"></a>Dağıtım şablonu ve parametrelerini belirtin
 
-Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure Kaynak Yöneticisi şablonu, olay merkezindeki olayları tüketecek şekilde yapılandırılan bir alt olay kaynağı ve ortamın verilerine erişim sağlayan ilkelere erişmek için PowerShell'in nasıl kullanılacağıaçıklanmaktadır. Varolan bir Olay Hub'ı belirtilmemişse, dağıtımla birlikte bir tane oluşturulur.
+Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı oluşturan bir Azure Resource Manager şablonu, bir olay hub 'ından olayları tüketmek üzere yapılandırılmış bir alt olay kaynağı ve ortam verilerine erişim izni veren erişim ilkeleri dağıtımı açıklanmaktadır. Mevcut bir olay hub 'ı belirtilmemişse, dağıtım ile bir tane oluşturulur.
 
-1. Azure PowerShell ile başlarken yönergeleri izleyerek [Azure PowerShell'i yükleyin.](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+1. [Azure PowerShell kullanmaya](https://docs.microsoft.com/powershell/azure/get-started-azureps)başlama yönergelerini izleyerek Azure PowerShell ' i yükler.
 
-1. GitHub'dan [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) şablonunu klonlayın veya kopyalayın.
+1. GitHub 'dan [201-timeseriesınsights-Environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) şablonunu kopyalayın veya kopyalayın.
 
    * Parametre dosyası oluşturma
 
-     Bir parametre dosyası oluşturmak [için, 201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) dosyasını kopyalayın.
+     Bir parametre dosyası oluşturmak için [201-timeseriesınsights-Environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) dosyasını kopyalayın.
 
       [!code-json[deployment-parameters](~/quickstart-templates/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json)]
 
@@ -61,11 +61,11 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
 
      | Parametre | Açıklama |
      | --- | --- |
-     | eventHubNamespaceName | Kaynak olay hub'ının ad alanı. |
-     | eventHubName | Kaynak olay hub'ının adı. |
-     | consumerGroupName | Zaman Serisi Öngörüleri hizmetinin olay merkezindeki verileri okumak için kullanacağı tüketici grubunun adı. **NOT:** Kaynak çekişmesini önlemek için, bu tüketici grubunun Time Series Insights hizmetine adanması ve diğer okuyucularla paylaşılmaması gerekir. |
-     | environmentName | Çevrenin adı. Ad içeremez: `<` `>`, `%` `&`, `:` `\\`, `?` `/`, , , , , ve herhangi bir kontrol karakterleri. Diğer tüm karakterlere izin verilir.|
-     | eventSourceName | Olay kaynağı alt kaynağının adı. Ad içeremez: `<` `>`, `%` `&`, `:` `\\`, `?` `/`, , , , , ve herhangi bir kontrol karakterleri. Diğer tüm karakterlere izin verilir. |
+     | eventHubNamespaceName | Kaynak olay hub 'ının ad alanı. |
+     | eventHubName | Kaynak olay hub 'ının adı. |
+     | consumerGroupName | Time Series Insights hizmetinin Olay Hub 'ından verileri okumak için kullanacağı tüketici grubunun adı. **Note:** Kaynak çekişmesini önlemek için, bu tüketici grubu Time Series Insights hizmetine ayrılmalıdır ve diğer okuyucular ile paylaşılmaz. |
+     | environmentName | Ortamın adı. Ad: `<`, `>` `%` `&`,,, `:`, `\\`, `?`, `/`ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir.|
+     | eventSourceName | Olay kaynağı alt kaynağının adı. Ad: `<`, `>` `%` `&`,,, `:`, `\\`, `?`, `/`ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir. |
 
     <div id="optional-parameters"></div>
 
@@ -73,18 +73,18 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
 
      | Parametre | Açıklama |
      | --- | --- |
-     | mevcutEventHubResourceId | Etkinlik kaynağı üzerinden Time Series Öngörüleri ortamına bağlanacak olan varolan bir Olay Hub'ının isteğe bağlı kaynak kimliği. **NOT:** Şablonu dağıtan kullanıcının Olay Hub'ındaki listkeys işlemini gerçekleştirmek için ayrıcalıkları olması gerekir. Değer geçirilirse, şablon tarafından yeni bir olay hub'ı oluşturulur. |
-     | environmentDisplayName | Ortam adı yerine araç veya kullanıcı arabirimlerinde gösterilen isteğe bağlı bir dostu ad. |
-     | çevreSkuName | Sku'nun adı. Daha fazla bilgi için [Time Series Öngörüler Fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.  |
-     | çevreSkuCapacity | Sku'nun birim kapasitesi. Daha fazla bilgi için [Time Series Öngörüler Fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.|
-     | çevreDataRetentionTime | Ortamın olaylarının en az zaman açıklığı sorgu için kullanılabilir. Değer, örneğin `P30D` 30 günlük bir bekletme ilkesi için ISO 8601 biçiminde belirtilmelidir. |
-     | eventSourceDisplayName | Olay kaynağı adı yerine araç veya kullanıcı arabirimlerinde gösterilen isteğe bağlı bir dostu ad. |
-     | olaySourceTimestampPropertyName | Olay kaynağının zaman damgası olarak kullanılacak olay özelliği. TimestampPropertyName için bir değer belirtilmemişse veya null veya boş dize belirtilmişse, olay oluşturma süresi kullanılır. |
-     | olaySourceKeyName | Zaman Serisi Öngörüleri hizmetinin etkinlik merkezine bağlanmak için kullanacağı paylaşılan erişim anahtarının adı. |
-     | accessPolicyReaderObjectIds | Azure AD'deki kullanıcıların veya uygulamaların, Reader'ın ortama erişmesi gereken nesne iD'lerinin listesi. Hizmet temel objectId **Get-AzADUser** veya **Get-AzADServicePrincipal** cmdlets arayarak elde edilebilir. Azure REKLAM grupları için bir erişim ilkesi oluşturma henüz desteklenmemektedir. |
-     | accessPolicyContributorObjectIds | Azure AD'deki kullanıcıların veya uygulamaların, Katılımcı'nın ortama erişmesi gereken nesne iD'lerinin listesi. Hizmet temel objectId **Get-AzADUser** veya **Get-AzADServicePrincipal** cmdlets arayarak elde edilebilir. Azure REKLAM grupları için bir erişim ilkesi oluşturma henüz desteklenmemektedir. |
+     | Mevcut ınmageventhubresourceıd | Olay kaynağı aracılığıyla Time Series Insights ortamına bağlanacak mevcut bir olay hub 'ının isteğe bağlı kaynak KIMLIĞI. **Note:** Şablonu dağıtmanın Kullanıcı olay hub 'ında ListKeys 'i Al işlemini gerçekleştirme ayrıcalıklarına sahip olmalıdır. Hiçbir değer geçirilmemişse, şablon tarafından yeni bir olay hub 'ı oluşturulur. |
+     | environmentDisplayName | Ortam adı yerine araçları veya kullanıcı arabirimlerini göstermek için isteğe bağlı bir kolay ad. |
+     | environmentSkuName | Sku'nun adı. Daha fazla bilgi için [Time Series Insights fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.  |
+     | Environmentskukapasitesi | SKU 'nun birim kapasitesi. Daha fazla bilgi için [Time Series Insights fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.|
+     | environmentDataRetentionTime | Ortamın olayları sorgu için kullanılabilecek en az TimeSpan değeri. Değer, örneğin `P30D` , 30 günlük bir bekletme ILKESI için ISO 8601 biçiminde belirtilmelidir. |
+     | eventSourceDisplayName | Araç veya olay kaynağı adı yerine kullanıcı arabirimlerinde göstermek için isteğe bağlı bir kolay ad. |
+     | eventSourceTimestampPropertyName | Olay kaynağının zaman damgası olarak kullanılacak olay özelliği. TimestampPropertyName için bir değer belirtilmemişse veya null ya da boş dize belirtilmişse, olay oluşturma saati kullanılacaktır. |
+     | eventSourceKeyName | Time Series Insights hizmetinin Olay Hub 'ına bağlanmak için kullanacağı paylaşılan erişim anahtarının adı. |
+     | Accesspolicyreaderobjectıds | Azure AD 'de, ortama okuyucu erişimi olması gereken kullanıcıların veya uygulamaların nesne kimliklerinin listesi. Hizmet sorumlusu objectID, **Get-AzADUser** veya **Get-AzADServicePrincipal** cmdlet 'leri çağırarak elde edilebilir. Azure AD grupları için bir erişim ilkesi oluşturma henüz desteklenmiyor. |
+     | accessPolicyContributorObjectIds | Azure AD 'deki kullanıcıların veya uygulamaların, ortama katkıda bulunan erişimine sahip olması gereken nesne kimliklerinin listesi. Hizmet sorumlusu objectID, **Get-AzADUser** veya **Get-AzADServicePrincipal** cmdlet 'leri çağırarak elde edilebilir. Azure AD grupları için bir erişim ilkesi oluşturma henüz desteklenmiyor. |
 
-   * Örnek olarak, aşağıdaki parametreler dosyası bir ortam ve varolan bir olay hub'ından olayları okuyan bir olay kaynağı oluşturmak için kullanılır. Ayrıca, Katılımcıya ortama erişim izni veren iki erişim ilkeleri de oluşturur.
+   * Örnek olarak, aşağıdaki parametreler dosyası, mevcut bir olay hub 'ından olayları okuyan bir ortam ve olay kaynağı oluşturmak için kullanılır. Ayrıca, ortama katkıda bulunan erişimi veren iki erişim ilkesi de oluşturur.
 
      ```JSON
      {
@@ -121,14 +121,14 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
 
     * Daha fazla bilgi için [Parametreler](../azure-resource-manager/templates/parameter-files.md) makalesini okuyun.
 
-## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>PowerShell'i kullanarak hızlı başlangıç şablonuna yerel olarak dağıtın
+## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>PowerShell kullanarak hızlı başlangıç şablonunu yerel olarak dağıtma
 
 > [!IMPORTANT]
-> Aşağıda görüntülenen komut satırı işlemleri [Az PowerShell modülunu](https://docs.microsoft.com/powershell/azure/overview)açıklar.
+> Aşağıda gösterildiği komut satırı işlemleri [az PowerShell modülünü](https://docs.microsoft.com/powershell/azure/overview)anlatmaktadır.
 
-1. PowerShell'de Azure hesabınızda oturum açın.
+1. PowerShell 'de Azure hesabınızda oturum açın.
 
-    * PowerShell komut isteminden aşağıdaki komutu çalıştırın:
+    * Bir PowerShell isteminden aşağıdaki komutu çalıştırın:
 
       ```powershell
       Connect-AzAccount
@@ -140,15 +140,15 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
       Get-AzSubscription
       ```
 
-    * Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. Kullanmak `<YourSubscriptionId>` istediğiniz Azure aboneliği için GUID ile değiştirin:
+    * Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. Kullanmak `<YourSubscriptionId>` istediğiniz Azure aboneliğinin GUID 'si ile değiştirin:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
       ```
 
-1. Yoksa yeni bir kaynak grubu oluşturun.
+1. Mevcut değilse yeni bir kaynak grubu oluşturun.
 
-   * Varolan bir kaynak grubunuz yoksa, Yeni Kaynak **Grubu** komutunu içeren yeni bir kaynak grubu oluşturun. Kullanmak istediğiniz kaynak grubunun adını ve konumunu sağlayın. Örneğin:
+   * Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örneğin:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -166,7 +166,7 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
 
 1. Dağıtımı test edin.
 
-   * `Test-AzResourceGroupDeployment` Cmdlet çalıştırarak dağıtım doğrulayın. Dağıtımı sınarken, dağıtımı yürürken tam olarak yaptığınız parametreleri sağlayın.
+   * `Test-AzResourceGroupDeployment` Cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -174,9 +174,9 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
 
 1. Dağıtımı oluşturma
 
-    * Yeni dağıtım oluşturmak için `New-AzResourceGroupDeployment` cmdlet'i çalıştırın ve istendiğinde gerekli parametreleri sağlayın. Parametreler, dağıtımınız için bir ad, kaynak grubunuzun adını ve şablon dosyasının yolunu veya URL'sini içerir. **Mod** parametresi belirtilmemişse, **Artımlı'nın** varsayılan değeri kullanılır. Daha fazla bilgi için [Artımlı ve tam dağıtımları](../azure-resource-manager/templates/deployment-modes.md)okuyun.
+    * Yeni dağıtımı oluşturmak için `New-AzResourceGroupDeployment` cmdlet 'ini çalıştırın ve istendiğinde gerekli parametreleri sağlayın. Parametreler dağıtımınız için bir ad, kaynak grubunuzun adı ve şablon dosyasının yolunu veya URL 'sini içerir. **Mode** parametresi belirtilmemişse, varsayılan **artımlı** değeri kullanılır. Daha fazla bilgi için [artımlı ve tamamlanmış dağıtımları](../azure-resource-manager/templates/deployment-modes.md)okuyun.
 
-    * Aşağıdaki komut, PowerShell penceresinde gerekli beş parametre için sizi ister:
+    * Aşağıdaki komut, PowerShell penceresinde gereken beş parametreyi ister:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -188,13 +188,13 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
       ```
 
-    * Dağıtım cmdlet'ini çalıştırdığınızda satır içinde parametrelerde de kullanabilirsiniz. Komut aşağıdaki gibidir:
+    * Ayrıca, dağıtım cmdlet 'ini çalıştırdığınızda satır içi parametreleri de kullanabilirsiniz. Komut aşağıdaki gibidir:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * [Tam](../azure-resource-manager/templates/deployment-modes.md) bir dağıtım çalıştırmak için **Mod** parametresini **Tamamla**olarak ayarlayın:
+    * [Tüm](../azure-resource-manager/templates/deployment-modes.md) bir dağıtımı çalıştırmak Için, **Mode** parametresini **Tamam**olarak ayarlayın:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -202,7 +202,7 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
 
 1. Dağıtımı doğrulama
 
-    * Kaynaklar başarıyla dağıtılırsa, dağıtımın bir özeti PowerShell penceresinde görüntülenir:
+    * Kaynaklar başarıyla dağıtılırsa, PowerShell penceresinde dağıtımın bir özeti görüntülenir:
 
       ```powershell
        DeploymentName          : MyDemoDeployment
@@ -241,9 +241,9 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
        DeploymentDebugLogLevel :
       ```
 
-1. Azure portalı üzerinden hızlı başlangıç şablonu dağıtma
+1. Hızlı başlangıç şablonunu Azure portal aracılığıyla dağıtma
 
-   * Hızlı başlangıç şablonunun GitHub'daki ana sayfasında **Azure'a Dağıt** düğmesi de yer alıyor. Tıklatıldığında, Azure portalında özel dağıtım sayfası açılır. Bu sayfadan, [gerekli parametrelerden](#required-parameters) veya [isteğe bağlı parametreler](#optional-parameters) tablolarından parametrelerin her biri için değerler girebilir veya seçebilirsiniz. Ayarları doldurduktan sonra Satın **Alma** düğmesini tıklattığınızda şablon dağıtımı başlatılır.
+   * GitHub 'daki hızlı başlangıç şablonunun ana sayfasında ayrıca bir **Azure dağıtımı** düğmesi de bulunur. Tıklandığında, Azure portal özel bir dağıtım sayfası açılır. Bu sayfadan, [gerekli parametrelerden](#required-parameters) veya [isteğe bağlı parametre](#optional-parameters) tablolarından her bir parametre için değer girebilir veya seçebilirsiniz. Ayarları doldurduktan sonra, **satın al** düğmesine tıkladığınızda şablon dağıtımı başlatılır.
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
@@ -252,4 +252,4 @@ Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- REST API'lerini kullanarak Time Series Insights kaynaklarını programlı olarak yönetme hakkında daha fazla bilgi için [Time Series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/)'ı okuyun.
+- REST API 'Leri kullanarak Time Series Insights kaynaklarını programlı olarak yönetme hakkında bilgi için [Time Series Insights yönetimi](https://docs.microsoft.com/rest/api/time-series-insights-management/)makalesini okuyun.

@@ -1,72 +1,72 @@
 ---
-title: Logic Apps'ı kullanarak Azure Uygulama Öngörüleri işlemlerini otomatikleştirin
-description: Mantık uygulamanıza Application Insights bağlayıcısını ekleyerek tekrarlanabilir işlemleri nasıl hızlı bir şekilde otomatikleştirebileceğinizi öğrenin.
+title: Logic Apps kullanarak Azure Application Insights süreçlerini otomatikleştirin
+description: Mantıksal uygulamanıza Application Insights bağlayıcısını ekleyerek tekrarlanabilir işlemleri nasıl hızlı bir şekilde otomatikleştirebileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79473175"
 ---
-# <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps'ı kullanarak Uygulama Öngörüleri süreçlerini otomatikleştirin
+# <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps kullanarak Application Insights süreçlerini otomatikleştirin
 
-Hizmetinizin düzgün çalışıp çalışmadığını kontrol etmek için telemetri verilerinizde aynı sorguları sürekli olarak çalıştırdığınızı mı buluyorsunuz? Eğilimleri ve anormallikleri bulmak için bu sorguları otomatikleştirmek ve sonra bunların etrafında kendi iş akışları oluşturmak için mi arıyorsunuz? Logic Apps için Azure Application Insights bağlayıcısı bu amaç için doğru araçtır.
+Hizmetinizin düzgün çalışıp çalışmadığını denetlemek için telemetri verilerinizde aynı sorguları sürekli olarak çalıştırıp görmenizde emin misiniz? Eğilimleri ve anormallikleri bulmak ve sonra kendi iş akışlarınızı oluşturmak için bu sorguları otomatikleştirmeyi mi düşünüyorsunuz? Logic Apps için Azure Application Insights Bağlayıcısı, bu amaçla doğru araçtır.
 
 > [!NOTE]
-> Azure Uygulama Öngörüleri bağlayıcısı, API anahtarı na ihtiyaç etmek yerine Azure Active Directory ile entegre edilmiş ve ayrıca Bir Log Analytics çalışma alanından veri almanıza olanak tanıyan [Azure Monitor bağlayıcısıyla](../platform/logicapp-flow-connector.md) değiştirildi.
+> Azure Application Insights Bağlayıcısı, bir API anahtarı istemek yerine Azure Active Directory tümleştirilmiş [Azure izleyici Bağlayıcısı](../platform/logicapp-flow-connector.md) ile değiştirilmiştir ve ayrıca bir Log Analytics çalışma alanından veri almanıza izin verir.
 
-Bu tümleştirme yle, tek bir kod satırı yazmadan çok sayıda işlemi otomatikleştirebilirsiniz. Herhangi bir Uygulama Öngörüleri işlemini hızlı bir şekilde otomatikleştirmek için Application Insights konektörünü içeren bir mantık uygulaması oluşturabilirsiniz. 
+Bu tümleştirmeyle, tek bir kod satırı yazmadan çok sayıda işlemi otomatikleştirebilirsiniz. Application Insights sürecini hızla otomatikleştirmek için Application Insights bağlayıcısıyla bir mantıksal uygulama oluşturabilirsiniz. 
 
-Ek eylemler de ekleyebilirsiniz. Azure Uygulama Hizmeti'nin Mantıksal Uygulamalar özelliği yüzlerce eylemi kullanılabilir hale getirir. Örneğin, bir mantık uygulaması kullanarak otomatik olarak bir e-posta bildirimi gönderebilir veya Azure DevOps'lerde bir hata oluşturabilirsiniz. Ayrıca, mantık uygulamanızı oluşturma işlemini hızlandırmaya yardımcı olmak için kullanılabilir birçok [şablondan](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) birini de kullanabilirsiniz. 
+Ek eylemleri de ekleyebilirsiniz. Azure App Service Logic Apps özelliği yüzlerce eylemi kullanılabilir hale getirir. Örneğin, bir mantıksal uygulama kullanarak, otomatik olarak bir e-posta bildirimi gönderebilir veya Azure DevOps 'da bir hata oluşturabilirsiniz. Mantıksal uygulamanızı oluşturma sürecini hızlandırmaya yardımcı olması için kullanılabilen birçok [şablondan](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) birini de kullanabilirsiniz. 
 
-## <a name="create-a-logic-app-for-application-insights"></a>Uygulama Öngörüleri için bir mantık uygulaması oluşturma
+## <a name="create-a-logic-app-for-application-insights"></a>Application Insights için bir mantıksal uygulama oluşturma
 
-Bu eğitimde, bir web uygulamasının verilerindeki öznitelikleri gruplandırmak için Analytics otomatik küme algoritmasını kullanan bir mantık uygulaması oluşturmayı öğrenirsiniz. Akış, sonuçları uygulama öngörüleri analizi ni ve Mantık Uygulamalarını birlikte nasıl kullanabileceğinize dair yalnızca bir örnek olan e-posta yoluyla otomatik olarak gönderir. 
+Bu öğreticide, bir Web uygulamasının verilerinde öznitelikleri gruplandırmak için Analytics oto kümesi algoritmasını kullanan bir mantıksal uygulama oluşturmayı öğreneceksiniz. Akış, sonuçları otomatik olarak e-posta ile gönderir ve Application Insights analizlerini nasıl kullanabileceğinizi ve Logic Apps birlikte nasıl kullanabileceğinizi gösteren bir örnektir. 
 
-### <a name="step-1-create-a-logic-app"></a>Adım 1: Bir mantık uygulaması oluşturma
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. **Kaynak Oluştur'u**tıklatın, **Web + Mobile'ı**seçin ve ardından Mantık **Uygulaması'nı**seçin.
+### <a name="step-1-create-a-logic-app"></a>1. Adım: mantıksal uygulama oluşturma
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Kaynak oluştur ' a**tıklayın, **Web ve mobil**' yi seçin ve ardından **mantıksal uygulama**' yı seçin.
 
-    ![Yeni mantık uygulaması penceresi](./media/automate-with-logic-apps/1createlogicapp.png)
+    ![Yeni mantıksal uygulama penceresi](./media/automate-with-logic-apps/1createlogicapp.png)
 
-### <a name="step-2-create-a-trigger-for-your-logic-app"></a>Adım 2: Mantık uygulamanız için bir tetikleyici oluşturma
-1. Mantık **App Designer** penceresinde, **ortak bir tetikleyici ile Başlat**altında, **Yineleme**seçin.
+### <a name="step-2-create-a-trigger-for-your-logic-app"></a>2. Adım: mantıksal uygulamanız için bir tetikleyici oluşturma
+1. **Logic App Designer** penceresinde, **ortak bir tetikleyiciden başla**' nın altında **yinelenme**' yi seçin.
 
-    ![Mantık Uygulaması Tasarımcısı penceresi](./media/automate-with-logic-apps/2logicappdesigner.png)
+    ![Mantıksal uygulama Tasarımcısı penceresi](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. **Aralık** kutusunda, **1** yazın ve ardından,**Sıklık** kutusu, **Gün'u**seçin.
+1. **Aralık** kutusunda **1** ve sonra**Sıklık** kutusu ' nu, **gün**' yı seçin.
 
-    ![Mantık Uygulama Tasarımcısı "Nüks" penceresi](./media/automate-with-logic-apps/3recurrence.png)
+    ![Logic App Designer "yinelenme" penceresi](./media/automate-with-logic-apps/3recurrence.png)
 
-### <a name="step-3-add-an-application-insights-action"></a>Adım 3: Uygulama Öngörüleri eylemi ekleme
-1. **Yeni adımı**tıklatın.
+### <a name="step-3-add-an-application-insights-action"></a>3. Adım: Application Insights eylem ekleme
+1. **Yeni adım**' a tıklayın.
 
-1. Eylem arama kutusu **seçin'de** **Azure Uygulama Öngörüleri**yazın.
+1. **Eylem seçin** arama kutusuna **Azure Application Insights**yazın.
 
-1. **Eylemler**altında, **Azure Uygulama Öngörüleri - Analytics sorgusunun Visualize'ı**tıklatın.
+1. **Eylemler**' ın altında **Azure Application Insights, analiz sorgusunu görselleştirin**' i tıklatın.
 
-    ![Mantık Uygulama Tasarımcısı "Eylem seçin" penceresi](./media/automate-with-logic-apps/4visualize.png)
+    ![Logic App Designer "eylem seçin" penceresi](./media/automate-with-logic-apps/4visualize.png)
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>Adım 4: Uygulama Öngörüleri kaynağına bağlanma
+### <a name="step-4-connect-to-an-application-insights-resource"></a>4. Adım: Application Insights kaynağına bağlanma
 
-Bu adımı tamamlamak için kaynağınız için bir uygulama kimliği ve API anahtarı gerekir. Aşağıdaki diyagramda gösterildiği gibi bunları Azure portalından alabilirsiniz:
+Bu adımı gerçekleştirmek için, kaynağınız için bir uygulama KIMLIĞI ve bir API anahtarı gerekir. Aşağıdaki diyagramda gösterildiği gibi bunları Azure portal alabilirsiniz:
 
-![Azure portalında uygulama kimliği](./media/automate-with-logic-apps/5apiaccess.png)
+![Azure portal uygulama KIMLIĞI](./media/automate-with-logic-apps/5apiaccess.png)
 
-![Azure portalında uygulama kimliği](./media/automate-with-logic-apps/6apikey.png)
+![Azure portal uygulama KIMLIĞI](./media/automate-with-logic-apps/6apikey.png)
 
-Bağlantınız, uygulama kimliğiniz ve API anahtarı için bir ad sağlayın.
+Bağlantınız, uygulama KIMLIĞI ve API anahtarı için bir ad girin.
 
-![Mantık App Designer akış bağlantı penceresi](./media/automate-with-logic-apps/7connection.png)
+![Logic App Designer akış bağlantısı penceresi](./media/automate-with-logic-apps/7connection.png)
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Adım 5: Analytics sorgusunu ve grafik türünü belirtin
-Aşağıdaki örnekte, sorgu son gün içinde başarısız istekleri seçer ve bunları işlemin bir parçası olarak oluşan özel durumlar ile ilişkilendirer. Analytics, operation_Id tanımlayıcısını temel alan başarısız istekleri ilişkilendirer. Sorgu daha sonra otomatik küme algoritmasını kullanarak sonuçları bölümlere böler. 
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5. Adım: analiz sorgusunu ve grafik türünü belirtme
+Aşağıdaki örnekte sorgu, son gün içindeki başarısız istekleri seçer ve bunları işlemin bir parçası olarak oluşan özel durumlarla ilişkilendirir. Analytics, başarısız istekleri operation_Id tanımlayıcısına göre ilişkilendirir. Sorgu daha sonra sonuçları, oto küme algoritmasını kullanarak kesimler. 
 
-Kendi sorgularınızı oluşturduğunuzda, akışınıza eklemeden önce analytics'te düzgün çalışıp çalışmadıklarını doğrulayın.
+Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce analizler üzerinde düzgün çalıştığını doğrulayın.
 
-1. **Sorgu** kutusuna aşağıdaki Analytics sorgusunu ekleyin:
+1. **Sorgu** kutusuna aşağıdaki analiz sorgusunu ekleyin:
 
     ```
     requests
@@ -79,58 +79,58 @@ Kendi sorgularınızı oluşturduğunuzda, akışınıza eklemeden önce analyti
     | evaluate autocluster()
     ```
 
-1. Grafik **Türü** kutusunda **Html Tablosu'nu**seçin.
+1. **Grafik türü** kutusunda **HTML tablosu**' nu seçin.
 
-    ![Analitik sorgu yapılandırma penceresi](./media/automate-with-logic-apps/8query.png)
+    ![Analiz sorgu yapılandırma penceresi](./media/automate-with-logic-apps/8query.png)
 
-### <a name="step-6-configure-the-logic-app-to-send-email"></a>Adım 6: E-posta göndermek için mantık uygulamasını yapılandırın
+### <a name="step-6-configure-the-logic-app-to-send-email"></a>6. Adım: mantıksal uygulamayı e-posta gönderecek şekilde yapılandırma
 
-1. **Yeni adımı**tıklatın.
+1. **Yeni adım**' a tıklayın.
 
 1. Arama kutusuna **Office 365 Outlook**yazın.
 
-1. **Office 365 Outlook 'u tıklatın - E-posta gönderin.**
+1. **Office 365 Outlook-e-posta gönder ' e**tıklayın.
 
     ![Office 365 Outlook seçimi](./media/automate-with-logic-apps/9sendemail.png)
 
-1. **E-posta gönder** penceresinde aşağıdakileri yapın:
+1. **E-posta gönder** penceresinde şunları yapın:
 
    a. Alıcının e-posta adresini yazın.
 
    b. E-posta için bir konu yazın.
 
-   c. **Gövde** kutusunda herhangi bir yere tıklayın ve ardından sağdaki dinamik içerik menüsünde **Gövde'yi**seçin.
+   c. **Gövde** kutusunda herhangi bir yere tıklayın ve ardından sağ tarafta açılan dinamik Içerik menüsünde **gövde**' yi seçin.
     
-   d. Yeni **parametre bırak'ı ekle'yi** tıklatın ve Ekler ve HTML'yi seçin.
+   d. **Yeni parametre Ekle** açılan düğmesine tıklayın ve ekler ' i ve HTML ' yi seçin.
 
       ![Office 365 Outlook yapılandırması](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Office 365 Outlook yapılandırması](./media/automate-with-logic-apps/11emailparameter.png)
 
-1. Dinamik içerik menüsünde aşağıdakileri yapın:
+1. Dinamik içerik menüsünde şunları yapın:
 
-    a. **Ek Adı'nı**seçin.
+    a. **Ek adı**' nı seçin.
 
-    b. **Ek İçeriği'ni**seçin.
+    b. **Ek içeriğini**seçin.
     
-    c. Is **HTML** kutusunda **Evet'i**seçin.
+    c. Bu **HTML** kutusunda **Evet**' i seçin.
 
-      ![Office 365 e-posta yapılandırma ekranı](./media/automate-with-logic-apps/12emailattachment.png)
+      ![Office 365 e-posta Yapılandırması ekranı](./media/automate-with-logic-apps/12emailattachment.png)
 
-### <a name="step-7-save-and-test-your-logic-app"></a>Adım 7: Mantık uygulamanızı kaydedin ve test edin
-* Değişikliklerinizi kaydetmek için **Kaydet'i** tıklatın.
+### <a name="step-7-save-and-test-your-logic-app"></a>7. Adım: mantıksal Uygulamanızı kaydetme ve test etme
+* Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
 
-Tetikleyicinin mantık uygulamasını çalıştırmasını bekleyebilir veya **Çalıştır'ı**seçerek mantık uygulamasını hemen çalıştırabilirsiniz.
+Tetikleyicinin mantıksal uygulamayı çalıştırmasını bekleyebilir veya **Çalıştır**' ı seçerek mantıksal uygulamayı hemen çalıştırabilirsiniz.
 
-![Mantık uygulaması oluşturma ekranı](./media/automate-with-logic-apps/13save.png)
+![Mantıksal uygulama oluşturma ekranı](./media/automate-with-logic-apps/13save.png)
 
-Mantık uygulamanız çalıştığında, e-posta listesinde belirttiğiniz alıcılar aşağıdaki gibi görünen bir e-posta alır:
+Mantıksal uygulamanız çalıştığında, e-posta listesinde belirttiğiniz alıcılar aşağıdakine benzer bir e-posta alır:
 
-![Mantık uygulaması e-posta iletisi](./media/automate-with-logic-apps/flow9.png)
+![Mantıksal uygulama e-posta iletisi](./media/automate-with-logic-apps/flow9.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Analytics sorguları](../../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
+- [Analiz sorguları](../../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
 - [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) hakkında daha fazla bilgi edinin.
 
 

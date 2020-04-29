@@ -1,6 +1,6 @@
 ---
-title: Web Hizmet Girişi/Çıktısı
-description: Azure Machine Learning tasarımcısındaki web hizmeti modülleri hakkında bilgi edinin (önizleme)
+title: Web Hizmeti Girişi/Çıkışı
+description: Azure Machine Learning tasarımcısında Web hizmeti modülleri hakkında bilgi edinin (Önizleme)
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -10,43 +10,43 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
 ms.openlocfilehash: be940e3ba693270707e22ffc7b9377dbea1df5f8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81462093"
 ---
-# <a name="web-service-inputoutput"></a>Web Hizmet Girişi/Çıktısı
+# <a name="web-service-inputoutput"></a>Web Hizmeti Girişi/Çıkışı
 
-Bu makalede, Azure Machine Learning tasarımcısında **Web Hizmeti Giriş** modülü ve Web Hizmeti **Çıktısı** modülü açıklanmaktadır (önizleme).
+Bu makalede, Azure Machine Learning tasarımcısında **Web hizmeti giriş** modülü ve **Web hizmeti çıkış** modülü (Önizleme) açıklanmaktadır.
 
-**Web Hizmeti Giriş** modülü yalnızca **DataFrameDirectory**türü ile giriş noktasına bağlanabilir. Ve **Web Hizmeti Çıktı** modülü yalnızca veri **çerçevesi dizin**türüne sahip çıkış bağlantı noktasından bağlanabilir. İki modül, **Web Hizmeti** kategorisi altında modül ağacında bulunabilir. 
+**Web hizmeti giriş** modülü, yalnızca **dataframedirectory**türündeki giriş bağlantı noktasına bağlanabilir. Ve **Web hizmeti çıkış** modülü, yalnızca **dataframedirectory**türündeki çıkış bağlantı noktasından bağlanabilir. İki modül, **Web hizmeti** kategorisi altında modül ağacında bulunabilir. 
 
-**Web Hizmeti Giriş** modülü, kullanıcı verilerinin ardışık ardışık ardışık alt ekime nerede girdiğini belirtmek için kullanılır ve **Web Hizmeti Çıktımodülü,** kullanıcı verilerinin gerçek zamanlı çıkarım ardışık bir şekilde nerede döndürülür olduğunu belirtmek için kullanılır.
+**Web hizmeti giriş** modülü, Kullanıcı verilerinin ardışık düzen ve **Web hizmeti çıkış** modülüne nereye girdiğini belirtmek için kullanılır ve Kullanıcı verilerinin gerçek zamanlı bir çıkarım ardışık düzeninde döndürülüp döndürülmeyeceğini gösterir.
 
-## <a name="how-to-use-web-service-inputoutput"></a>Web Hizmeti Girişi/Çıktısı nasıl kullanılır?
+## <a name="how-to-use-web-service-inputoutput"></a>Web hizmeti giriş/çıkış kullanma
 
-- Eğitim ardışık ardışık bilgisayarınızdan gerçek zamanlı bir çıkarım ardışık ardışık kaynak oluşturduğunuzda, kullanıcı verilerinin ardışık ardışık duruma nerede girdiğini ve verilerin nerede döndürüleceğini göstermek için **Web Hizmeti Girişi** ve Web Hizmeti **Çıktısı** modülü otomatik olarak eklenir. 
+- Eğitim işlem hattınızdan gerçek zamanlı bir çıkarım işlem hattı oluşturduğunuzda, Kullanıcı verilerinin işlem hattına girdiğinde ve verilerin döndürüldüğü yeri göstermek için **Web hizmeti giriş** ve **Web hizmeti çıkış** modülü otomatik olarak eklenir. 
 
-    [Gerçek zamanlı çıkarım ardışık bir yol oluşturma](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline)hakkında daha fazla bilgi edinin.
-
-    > [!NOTE]
-    > Otomatik olarak gerçek zamanlı çıkarım boru hattı üreten bir kural tabanlı en iyi çaba sürecidir, doğruluk için hiçbir garanti yoktur. Gereksinimlerinizi karşılamak için **Web Hizmeti Giriş/Çıkış** modüllerini el ile ekleyebilir veya kaldırabilirsiniz. Gerçek zamanlı çıkarım ardışık alanınızda en az bir **Web Hizmeti Giriş** modülü ve bir Web Hizmeti **Çıktı** modülü olduğundan emin olun. Birden çok **Web Hizmeti Girişi** veya **Web Hizmeti Çıktımodülü** varsa, modülün doğru paneline adı girinebileceğiniz benzersiz adlara sahip olduğundan emin olun.
-
-- Ayrıca, teslim edilmemiş ardışık ardınıza Web **Hizmeti Girişi** ve **Web Hizmeti Çıktısı** modülleri ekleyerek gerçek zamanlı bir çıkarım ardışık
+    [Gerçek zamanlı bir çıkarım işlem hattı oluşturma](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline)hakkında daha fazla bilgi edinin.
 
     > [!NOTE]
-    >  Boru hattı türü, ilk gönderdiğiniz anda belirlenir. Bu nedenle, gerçek zamanlı bir çıkarım ardışık nokta oluşturmak istiyorsanız, ilk kez göndermeden önce **Web Hizmet Girişi** ve Web Hizmeti **Çıktısı** modüllerini eklediğinizden emin olun.
+    > Gerçek zamanlı çıkarım ardışık düzenini otomatik olarak oluşturmak, kural tabanlı bir en iyi çaba işlemidir; doğruluk açısından garanti yoktur. Gereksinimlerinizi karşılamak için **Web hizmeti giriş/çıkış** modüllerini el ile ekleyebilir veya kaldırabilirsiniz. Gerçek zamanlı çıkarım ardışık düzeninde en az bir **Web hizmeti giriş** modülünün ve bir **Web hizmeti çıkış** modülünün bulunduğundan emin olun. Birden çok **Web hizmeti girişi** veya **Web hizmeti çıkış** modülünüz varsa, modülün sağ panelinde adı girmek için benzersiz adlara sahip olduklarından emin olun.
 
-   Aşağıdaki örnek, **Execute Python Script** modülünden gerçek zamanlı çıkarım ardışık hattının nasıl oluşturulurunu gösterir. 
+- Ayrıca, gönderilmemiş işlem hattınızı **Web hizmeti girişi** ve **Web hizmeti çıkış** modüllerini ekleyerek el ile gerçek zamanlı bir çıkarım işlem hattı oluşturabilirsiniz.
+
+    > [!NOTE]
+    >  İşlem hattı türü ilk kez gönderdiğinizde belirlenir. Bu nedenle, gerçek zamanlı bir çıkarım işlem hattı oluşturmak istiyorsanız ilk kez göndermeden önce **Web hizmeti girişi** ve **Web hizmeti çıkış** modülünü eklediğinizden emin olun.
+
+   Aşağıdaki örnek, **Python betik** modülünden nasıl el ile gerçek zamanlı çıkarım işlem hattı oluşturulacağını göstermektedir. 
 
    ![Örnek](media/module/web-service-input-output-example.png)
    
-   Ardışık hattı gönderdikten ve çalıştırma başarıyla tamamlandıktan sonra, gerçek zamanlı bitiş noktasını dağıtabilirsiniz.
+   İşlem hattını gönderdikten ve çalıştırma başarıyla tamamlandıktan sonra gerçek zamanlı uç noktayı dağıtabileceksiniz.
    
    > [!NOTE]
-   >  Yukarıdaki örnekte, **Veri Girin el ile** web hizmeti girişi için veri şema sağlar ve gerçek zamanlı bitiş noktasını dağıtmak için gereklidir. Genellikle, veri şemasını sağlamak için web hizmeti **girişinin** bağlı olduğu bağlantı noktasına her zaman bir modül veya veri kümesi bağlamanız gerekir.
+   >  Yukarıdaki örnekte, **verileri el ile** Web hizmeti girişi için veri şeması sağlar ve gerçek zamanlı uç noktanın dağıtımı için gereklidir. Genellikle, veri şemasını sağlamak üzere **Web hizmeti girişinin** bağlı olduğu bağlantı noktasına bir modül veya veri kümesini her zaman bağlamanız gerekir.
    
 ## <a name="next-steps"></a>Sonraki adımlar
-[Gerçek zamanlı bitiş noktasını dağıtma](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint)hakkında daha fazla bilgi edinin.
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın.
+[Gerçek zamanlı uç noktayı dağıtma](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint)hakkında daha fazla bilgi edinin.
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

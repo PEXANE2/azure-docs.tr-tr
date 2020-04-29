@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka için Azure Etkinlik Hub'larıyla ilgili sorun giderme sorunları
-description: Bu makalede, Apache Kafka için Azure Etkinlik Hub'ları ile ilgili sorunları nasıl gidereceğiniz gösterilmektedir
+title: Apache Kafka için Azure Event Hubs sorunlarını giderme
+description: Bu makalede Apache Kafka için Azure Event Hubs ile ilgili sorunların nasıl giderileceği gösterilmektedir
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,68 +13,68 @@ ms.workload: na
 ms.date: 04/01/2020
 ms.author: shvija
 ms.openlocfilehash: 12ddc5fa74b7a1b42bbd64fde9ec3410b1c1e425
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606736"
 ---
-# <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Etkinlik Hub'ları için Apache Kafka sorun giderme kılavuzu
-Bu makalede, Apache Kafka için Olay Hub'ları kullanırken karşılaşabileceğiniz sorunlar için sorun giderme ipuçları verilmektedir. 
+# <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs için sorun giderme kılavuzu Apache Kafka
+Bu makalede, Apache Kafka için Event Hubs kullanırken çalıştırabileceğiniz sorunlar için sorun giderme ipuçları sunulmaktadır. 
 
-## <a name="server-busy-exception"></a>Sunucu Meşgul özel durumu
-Kafka azaltma nedeniyle Server Busy özel durumu alabilirsiniz. AMQP istemcileri ile Olay Hub'ları, hizmet azaltma üzerine sunucu **meşgul** özel durumunu hemen döndürür. "Daha sonra tekrar dene" iletisine eşdeğerdir. Kafka'da mesajlar tamamlanmadan önce geciktirilir. Gecikme uzunluğu, produce/fetch `throttle_time_ms` yanıtında olduğu gibi milisaniye cinsinden döndürülür. Çoğu durumda, bu gecikmiş istekler Olay Hub'ları panolarında ServerBusy özel durumları olarak günlüğe kaydedilmez. Bunun yerine, yanıtın `throttle_time_ms` değeri, girdinin sağlanan kotayı aştığını gösteren bir gösterge olarak kullanılmalıdır.
+## <a name="server-busy-exception"></a>Sunucu meşgul özel durumu
+Kafka azaltma nedeniyle sunucu meşgul özel durumu alabilirsiniz. AMQP istemcileri sayesinde, Event Hubs hemen hizmet azaltmaya göre **sunucu meşgul** özel durumu döndürür. "Daha sonra yeniden dene" iletisiyle eşdeğerdir. Kafka ' de iletiler tamamlanmadan önce gecikiyor. Gecikme uzunluğu, üretim/getirme yanıtında milisaniye `throttle_time_ms` cinsinden döndürülür. Çoğu durumda, bu geciktirilen istekler Event Hubs panolar üzerinde sunucu meşgul özel durumları olarak günlüğe kaydedilmez. Bunun yerine, yanıtın `throttle_time_ms` değeri, üretilen işin sağlanan kotayı aştığı bir gösterge olarak kullanılmalıdır.
 
-Trafik aşırıysa, hizmet aşağıdaki davranışa sahiptir:
+Trafik aşırı ise, hizmet aşağıdaki davranışa sahiptir:
 
-- Ürün isteğinin gecikmesi istek zaman aşımını aşıyorsa, Olay Hub'ları **İlke İhlali** hata kodunu döndürür.
-- Alma isteğinin gecikmesi istek zaman aşımını aşıyorsa, Olay Hub'ları isteği daraltılmış olarak kaydeder ve boş kayıt kümesiyle yanıt verir ve hata kodu yoktur.
+- Bir isteğin gecikmesi, istek zaman aşımını aşarsa, Event Hubs **Ilke ihlali** hata kodu döndürür.
+- Getirme isteğinin gecikmesi istek zaman aşımını aşarsa, Event Hubs isteği kısıtlanacak şekilde günlüğe kaydeder ve boş kayıt kümesiyle yanıt verir ve hata kodu yoktur.
 
-[Adanmış kümelerin](event-hubs-dedicated-overview.md) azaltma mekanizmaları yoktur. Tüm küme kaynaklarınızı tüketebilirsiniz.
+[Adanmış kümeler](event-hubs-dedicated-overview.md) kısıtlama mekanizmalarına sahip değildir. Tüm küme kaynaklarınızı kullanmaya ücretsiz olursunuz.
 
-## <a name="no-records-received"></a>Kayıt alınmaz
-Tüketicilerin herhangi bir kayıt almadığınızı ve sürekli olarak yeniden dengelemelerini görebilirsiniz. Bu senaryoda, tüketiciler herhangi bir kayıt alamadım ve sürekli yeniden dengeleme. Bu olduğunda bir istisna veya hata yoktur, ancak Kafka günlükleri tüketicilerin gruba yeniden katılmaya ve bölümler atamaya çalıştıklarını gösterir. Birkaç olası nedeni vardır:
+## <a name="no-records-received"></a>Hiçbir kayıt alınmadı
+Tüketicileri hiçbir kayıt almaz ve sürekli yeniden dengelemeden karşılaşabilirsiniz. Bu senaryoda, tüketiciler hiçbir kayıt almaz ve sürekli yeniden dengeleyin. Bu durumda özel durum veya hata yoktur, ancak Kafka Günlükler tüketicilerinin gruba yeniden bağlanmaya ve bölüm atamaya çalışırken takıldığını gösterir. Olası birkaç neden vardır:
 
-- Sizin `request.timeout.ms` en az 60000 önerilen değeri ve `session.timeout.ms` en az 30000 önerilen değeri olduğundan emin olun. Bu ayarların çok düşük olması tüketici zaman ayarı neden olabilir, daha sonra yeniden dengelemeneden (daha sonra daha fazla zaman ayarı neden, daha fazla dengeleme neden, vb. 
-- Yapılandırmanız bu önerilen değerlerle eşleşiyorsa ve sürekli yeniden dengeleme görmeye devam ediyorsanız, bir sorunu açmakta çekinmeyin (hata ayıklamanıza yardımcı olabileceğimiz için tüm yapılandırmanızı soruna ekleyin)
+- En azından 60000 ' `request.timeout.ms` un önerilen değeri olan ve en azından 30000 ' `session.timeout.ms` nin önerilen değeri olduğundan emin olun. Bu ayarların çok düşük olması, müşteri zaman aşımları oluşmasına neden olabilir. Bu, daha sonra yeniden dengelemeye neden olur (daha sonra daha fazla zaman aşımı oluşmasına neden olur ve bu da daha fazla zaman 
+- Yapılandırmanız önerilen değerlerle eşleşiyorsa ve yine de sabit yeniden dengeleme görmeye devam ediyorsanız, bir sorun açmaya (hata ayıklamaya yardımcı olabilmemiz için tüm yapılandırmanızı eklediğinizden emin olun)!
 
-## <a name="compressionmessage-format-version-issue"></a>Sıkıştırma/İleti biçimi sürüm sorunu
-Kafka sıkıştırmayı destekler ve Kafka için Etkinlik Hub'ları şu anda desteklemez. İleti biçiminde bir sürümden bahseden `The message format version on the broker does not support the request.`hatalar (örneğin, bir istemci aracılarımıza sıkıştırılmış Kafka mesajları göndermeye çalıştığında) neden olur.
+## <a name="compressionmessage-format-version-issue"></a>Sıkıştırma/Ileti biçimi sürüm sorunu
+Kafka sıkıştırmayı destekler ve şu anda Kafka için Event Hubs. Bir ileti biçimi sürümü (örneğin,) ile ilgili hatalar bir `The message format version on the broker does not support the request.`istemci, aracılarımıza sıkıştırılmış Kafka iletileri göndermeyi denediğinde oluşur.
 
-Sıkıştırılmış veri gerekiyorsa, verilerinizi aracılara göndermeden önce sıkıştırmak ve aldıktan sonra sıkıştırmak geçerli bir geçici çözümdür. İleti gövdesi hizmete yalnızca bir bayt dizisidir, bu nedenle istemci tarafı sıkıştırma/dekompresyon herhangi bir soruna neden olmaz.
+Sıkıştırılmış veriler gerekliyse, aracılarla gönderilmeden önce verilerinizi sıkıştırmak ve aldıktan sonra dosyayı sıkıştırmak geçerli bir geçici çözüm olur. İleti gövdesi yalnızca hizmete yönelik bir bayt dizisidir, bu nedenle istemci tarafı sıkıştırma/açma herhangi bir soruna neden olmaz.
 
 ## <a name="unknownserverexception"></a>UnknownServerException
-Aşağıdaki örneğe benzer Kafka istemci kitaplıklarından bir UnknownServerException alabilirsiniz: 
+Kafka istemci kitaplıklarından aşağıdaki örneğe benzer bir UnknownServerException alabilirsiniz: 
 
 ```
 org.apache.kafka.common.errors.UnknownServerException: The server experienced an unexpected error when processing the request
 ```
 
-Microsoft desteği yle bir bilet açın.  UTC'deki hata ayıklama düzeyinde günlük ve özel durum zaman damgaları, sorunun hata ayıklanmasında yararlıdır. 
+Microsoft desteği ile bir bilet açın.  Hata ayıklama için, UTC 'de hata ayıklama düzeyinde günlüğe kaydetme ve özel durum zaman damgaları yararlı olur. 
 
 ## <a name="other-issues"></a>Diğer sorunlar
-Etkinlik Hub'larında Kafka kullanırken sorunlar görürseniz aşağıdaki öğeleri kontrol edin.
+Event Hubs üzerinde Kafka kullanırken sorunlarla karşılaşırsanız aşağıdaki öğeleri kontrol edin.
 
-- **Güvenlik duvarı trafiği engelleme** - **9093** bağlantı noktasının güvenlik duvarınız tarafından engellenmediğinden emin olun.
-- **TopicAuthorizationException** - Bu özel durum en yaygın nedenleri şunlardır:
+- **Güvenlik duvarı engelleme trafiği** -güvenlik duvarınız tarafından **9093** numaralı bağlantı noktasının engellenmediğinden emin olun.
+- **Topıauthorizationexception** -bu özel durumun en yaygın nedenleri şunlardır:
     - Yapılandırma dosyanızdaki bağlantı dizesinde bir yazım hatası veya
-    - Temel katman ad alanında Kafka için Olay Hub'larını kullanmaya çalışıyorum. Kafka için Etkinlik Hub'ları [yalnızca Standart ve Özel katman ad alanları için desteklenir.](https://azure.microsoft.com/pricing/details/event-hubs/)
-- **Kafka sürüm uyumsuzluğu** - Kafka Ecosystems için Etkinlik Hub'ları Kafka versiyonları 1.0 ve sonrası sürümlerini destekler. Kafka sürüm 0.10 ve daha sonra kafka protokolünün geriye dönük uyumluluğu nedeniyle zaman zaman işe yada bilen bazı uygulamalar, eski API sürümlerini kullanmamanızı şiddetle tavsiye ediyoruz. Kafka sürümleri 0.9 ve önceki sürümleri gerekli SASL protokollerini desteklemez ve Olay Hub'larına bağlanamaz.
-- **Kafka ile tüketirken AMQP üstbilgilerinde garip kodlamalar** - amqp üzerinden bir olay hub'ına olay hub'ına gönderirken, amqp yük başlıkları AMQP kodlamasında seri hale getirilmiştir. Kafka tüketicileri üstbilgileri AMQP'dan deserialize etmezler. Üstbilgi değerlerini okumak için, AMQP üstbilgilerini el ile çöz. Alternatif olarak, Kafka protokolü ile tüketeceğinizi biliyorsanız, AMQP üstbilgilerini kullanmaktan kaçınabilirsiniz. Daha fazla bilgi için [bu GitHub sorununa](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56)bakın.
-- **SASL kimlik doğrulaması** - Çerçevenizin Event Hub'larının gerektirdiği SASL kimlik doğrulama protokolüyle işbirliği yapmak, göze çarptırılmaktan daha zor olabilir. SASL kimlik doğrulama üzerinde çerçevenizin kaynaklarını kullanarak yapılandırmayı giderip gidermediğinize bakın. 
+    - Temel bir katman ad alanı üzerinde Kafka için Event Hubs kullanılmaya çalışılıyor. Kafka için Event Hubs [yalnızca standart ve adanmış katman ad alanları için desteklenir](https://azure.microsoft.com/pricing/details/event-hubs/).
+- **Kafka sürüm uyuşmazlığı** -Kafka ekosistemleri Için Event Hubs Kafka 1,0 sürümlerini ve üstünü destekler. Kafka sürüm 0,10 ve üstünü kullanan bazı uygulamalar, Kafka protokolünün geriye dönük uyumluluğu nedeniyle zaman zaman çalışabilir, ancak eski API sürümlerinin kullanılması önemle önerilir. Kafka sürümleri 0,9 ve öncesi, gerekli SASL protokollerini desteklemez ve Event Hubs bağlanamaz.
+- **Kafka ile KULLANıLıRKEN AMQP üst bilgilerinde garip kodlamalar** , AMQP üzerinden olay hub 'ına olay gönderirken AMQP Encoding içinde herhangi bir AMQP yük üst bilgisi serileştirilir. Kafka tüketicileri AMQP 'deki üstbilgilerin serisini kaldıramıyor. Üst bilgi değerlerini okumak için AMQP üstbilgilerinin el ile kodunu çözün. Alternatif olarak, Kafka protokolü aracılığıyla kullanacağınızı biliyorsanız AMQP üst bilgilerini kullanmaktan kaçınabilirsiniz. Daha fazla bilgi için [Bu GitHub sorununa](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56)bakın.
+- **SASL kimlik doğrulaması** -Event Hubs için gereken SASL kimlik doğrulama protokolü ile işbirliği yapmak, bu gözle buluşmamak daha zor olabilir. SASL kimlik doğrulamasında Framework 'ün kaynaklarını kullanarak yapılandırmanın sorunlarını giderebileceğinizden bkz.. 
 
 ## <a name="limits"></a>Sınırlar
-Apache Kafka vs Olay Hubs Kafka. Çoğunlukla Kafka Ekosistemleri için Etkinlik Hub'ları, Apache Kafka'nın yaptığı gibi varsayılanlara, özelliklere, hata kodlarına ve genel davranışa sahiptir. Bu ikisinin açıkça farklı olduğu (veya Olay Hub'larının Kafka'nın uygulamadığı bir sınır uyguladığı) durumlar aşağıda listelenmiştir:
+Apache Kafka vs. Event Hubs Kafka. Çoğu bölüm için, Kafka ekosistemlerine yönelik Event Hubs aynı varsayılanlar, özellikler, hata kodları ve Apache Kafka olan genel davranışları vardır. Bu iki açıkça farklı olan örnekler (veya Event Hubs Kafka olmayan bir sınır uygular) aşağıda listelenmiştir:
 
-- Özelliğin `group.id` maksimum uzunluğu 256 karakterdir
-- Maksimum boyutu `offset.metadata.max.bytes` 1024 bayt
-- Ofset taahhütleri, maksimum dahili günlük boyutu 1 MB olan bölüm başına 4 arama/saniye ile daraltılır
+- `group.id` Özelliğin uzunluk üst sınırı 256 karakterdir
+- En büyük boyut `offset.metadata.max.bytes` 1024 bayttır
+- En büyük iç günlük boyutu olan 1 MB 'a sahip bölüm başına 4 çağrı/saniye cinsinden fark yürütmeler kısıtlandı
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kafka için Etkinlik Hub'ları ve Etkinlik Hub'ları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
+Kafka için Event Hubs ve Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
 
-- [Etkinlik Hub'ları için Apache Kafka geliştirici kılavuzu](apache-kafka-developer-guide.md)
-- [Etkinlik Hub'ları için Apache Kafka geçiş kılavuzu](apache-kafka-migration-guide.md)
-- [Sık sorulan sorular - Apache Kafka için Etkinlik Hub'ları](apache-kafka-frequently-asked-questions.md)
-- [Önerilen yapılandırmalar](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [Event Hubs için Apache Kafka Geliştirici Kılavuzu](apache-kafka-developer-guide.md)
+- [Event Hubs için Apache Kafka geçiş kılavuzu](apache-kafka-migration-guide.md)
+- [Sık Sorulan Sorular-Apache Kafka için Event Hubs](apache-kafka-frequently-asked-questions.md)
+- [Önerilen yapılandırma](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)

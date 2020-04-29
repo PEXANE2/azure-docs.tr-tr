@@ -1,6 +1,6 @@
 ---
-title: Power BI uygulama oluşturma genel bakış - Azure Marketi
-description: Bu makalede, Microsoft AppSource için bir Power BI uygulaması yayımlamak için üst düzey adımlar açıklanmaktadır. Power BI uygulamanızın ticari pazarda yayınlanması için karşılaması gereken teknik ve iş gereksinimleri de sağlanır.
+title: Power BI uygulama oluşturmaya genel bakış-Azure Marketi
+description: Bu makalede, Microsoft AppSource için Power BI uygulaması yayımlamaya yönelik üst düzey adımlar açıklanmaktadır. Power BI uygulamanızın ticari Market 'te yayımlanmak için karşılaması gereken teknik ve iş gereksinimleri de sağlanır.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,46 +8,46 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732673"
 ---
-# <a name="power-bi-app-creation-overview"></a>Power BI uygulaması oluşturma genel bakış
+# <a name="power-bi-app-creation-overview"></a>Power BI uygulama oluşturmaya genel bakış
 
 > [!IMPORTANT]
-> Power BI uygulama tekliflerinizin yönetimini Cloud Partner Portal'dan İş Ortağı Merkezi'ne taşıyoruz. Tekliflerin izne gelene kadar, lütfen bulut iş ortağı portalının tekliflerinizi yönetmesi için [Power BI uygulama teklifindeki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer) talimatları izleyin.
+> Power BI uygulama tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş ortağı merkezine taşıdık. Tekliflerinizi geçirene kadar lütfen tekliflerinizi yönetmek için Bulut İş Ortağı Portalı [Power BI uygulama teklifinizdeki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer) yönergeleri izleyin.
 
-Bu makalede, Microsoft [AppSource](https://appsource.microsoft.com/)bir Power BI uygulaması yayınlamak için nasıl açıklar. Power BI uygulaması, veri kümeleri, raporlar ve panolar da dahil olmak üzere özelleştirilebilir içerik paketler. Daha sonra Uygulamayı AppSource'u kullanarak diğer Power BI platformlarıyla kullanabilir, geliştirici tarafından izin verilen ayarlamaları ve özelleştirmeleri gerçekleştirebilir ve kendi verilerinize bağlayabilirsiniz.
+Bu makalede, bir Power BI uygulamasının Microsoft [Appsource](https://appsource.microsoft.com/)'a nasıl yayımlanacağı açıklanmaktadır. Power BI uygulama, veri kümeleri, raporlar ve panolar gibi Özelleştirilebilir içerikleri paketler. Daha sonra AppSource kullanarak uygulamayı diğer Power BI platformlarla kullanabilir, geliştirici tarafından izin verilen ayarlamaları ve özelleştirmeleri yapabilir ve kendi verilerinize bağlayabilirsiniz.
 
-## <a name="publishing-benefits"></a>Yararlanma avantajları
+## <a name="publishing-benefits"></a>Yayımlama avantajları
 
-Ticari pazara yayıncılığın faydaları:
+Ticari Market 'e yayımlamanın avantajları:
 
-- Microsoft markasını kullanarak şirketinizi tanıtın.
-- Azure Marketi aracılığıyla AppSource'ta 100 milyondan fazla Office 365 ve Dynamics 365 kullanıcısına ve 200.000'den fazla kuruluşa ulaşma potansiyeline sahip.
-- Bu pazarlardan yüksek kaliteli müşteri adayları alın.
-- Hizmetlerinizin Microsoft alanı ve tele-satış ekipleri tarafından tanıtınır.
+- Microsoft markasını kullanarak şirketinizi yükseltin.
+- AppSource 'ta 100.000.000 ' den fazla Office 365 ve Dynamics 365 kullanıcısı ve Azure Marketi aracılığıyla 200.000 ' ten fazla kuruluşa ulaşın.
+- Bu Pazar yerlerden yüksek kaliteli müşteri adayları alın.
+- Hizmetlerinizin Microsoft alanı ve Telesales ekipleri tarafından yükseltilme.
 
 ## <a name="overview"></a>Genel Bakış
 
-:::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="Power BI uygulamasını yayınlama adımlarına genel bakış" border="false":::
+:::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="Power BI uygulaması yayımlamaya yönelik adımlara genel bakış" border="false":::
 
-Önemli yayımlama adımları şunlardır:
+Bunlar, önemli yayımlama adımlardır:
 
-1. Uygulamanızı Power BI'de oluşturun. Teklifin ana teknik varlığı olan bir paket yükleme bağlantısı alırsınız. İş Ortağı Merkezi'nde teklif oluşturmadan önce test paketini üretim öncesi pakete gönderin. Ayrıntılar için [Power BI uygulamaları nelerdir?](https://docs.microsoft.com/power-bi/service-template-apps-overview)
-2. Resmi ad, açıklama ve logolar gibi pazarlama malzemelerini ekleyin.
-3. Teklifin kullanım koşulları, gizlilik politikası, destek politikası ve kullanıcı yardımı gibi yasal ve destek belgelerini ekleyin.
-4. Teklifi oluşturun: Teklif açıklaması, pazarlama materyalleri, yasal bilgiler, destek bilgileri ve varlık özellikleri de dahil olmak üzere ayrıntıları nızı birlikte vermek için İş Ortağı Merkezi'ni kullanın.
-5. Yayımlama için gönderin.
-6. AppSource'un biniş ekibi tarafından test edildiği, doğruladığı ve uygulamanızı onayladığı İş Ortağı Merkezi'ndeki işlemi izleyin.
-7. Onaylandıktan sonra, uygulamayı test ortamında inceleyin ve yayınlayın. Bu AppSource üzerinde listeleyecek (bu "canlı gider").
-8. Power BI'de paketi üretime gönderin. Ayrıntılar için Power [BI uygulama sürümüne](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)bakın.
+1. Uygulamanızı Power BI oluşturun. Teklif için ana teknik varlık olan bir paket yüklemesi bağlantısı alacaksınız. Teklifi Iş Ortağı Merkezi ' nde oluşturmadan önce test paketini ön üretime gönderin. Ayrıntılar için bkz. [Power BI uygulamalar nelerdir?](https://docs.microsoft.com/power-bi/service-template-apps-overview).
+2. Resmi ad, açıklama ve logo gibi pazarlama malzemeleri ekleyin.
+3. Kullanım koşulları, Gizlilik ilkesi, destek ilkesi ve Kullanıcı Yardımı gibi teklifin yasal ve destek belgelerini de dahil edin.
+4. Teklifi oluşturun: teklif açıklaması, pazarlama malzemeleri, yasal bilgiler, destek bilgileri ve varlık belirtimleri dahil olmak üzere ayrıntıları düzenlemek için Iş ortağı merkezini kullanın.
+5. Yayımlamak için gönderebilirsiniz.
+6. Iş Ortağı Merkezi 'nde, AppSource ekleme ekibinin uygulamanızı test ettiği, doğruladığı ve sertifika doğruladığı süreci izleyin.
+7. Sertifikalandırdıktan sonra, uygulamayı test ortamında inceleyin ve serbest bırakın. Bu, bunu AppSource 'ta listeler ("canlı gidiyor").
+8. Power BI, paketi üretime gönderin. Ayrıntılar için bkz. [Power BI uygulaması sürümünü yönetme](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Şablonlar, ipuçları ve örnekler sağlayan aşağıdaki bağlantıları inceleyin.
+Şablonlar, ipuçları ve örnekler sağlayan aşağıdaki bağlantıları gözden geçirin.
 
 - [Power BI uygulaması oluşturma](https://docs.microsoft.com/power-bi/service-template-apps-create)
 - [Power BI uygulaması yazma ipuçları](https://docs.microsoft.com/power-bi/service-template-apps-tips)
@@ -55,30 +55,30 @@ Ticari pazara yayıncılığın faydaları:
 
 ## <a name="requirements"></a>Gereksinimler
 
-Ticari pazarda yayınlanabilmesi için Power BI uygulama teklifinizin aşağıdaki teknik ve iş gereksinimlerini karşılaması gerekir.
+Ticari Market 'te yayınlanmak üzere Power BI uygulama teklifinizin aşağıdaki teknik ve iş gereksinimlerini karşılaması gerekir.
 
 ### <a name="technical-requirements"></a>Teknik gereksinimler
 
-İhtiyacınız olacak ana teknik varlık bir [Power BI uygulamasıdır.](https://go.microsoft.com/fwlink/?linkid=2028636) Bu, birincil veri kümeleri, raporlar veya panolardan oluşan bir koleksiyondur. Ayrıca isteğe bağlı bağlı hizmetler ve daha önce [içerik paketi](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)olarak bilinen gömülü veri kümeleri içerir. Bu tür uygulama geliştirme hakkında daha fazla bilgi için [Power BI uygulamaları nelerdir bölümüne bakın.](https://go.microsoft.com/fwlink/?linkid=2028636)
+İhtiyacınız olan ana teknik varlık bir [Power BI uygulamasıdır](https://go.microsoft.com/fwlink/?linkid=2028636). Bu, birincil veri kümeleri, raporlar veya panolar koleksiyonudur. Ayrıca, daha önce bir [içerik paketi](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)olarak bilinen isteğe bağlı hizmetleri ve katıştırılmış veri kümelerini içerir. Bu tür bir uygulamayı geliştirme hakkında daha fazla bilgi için bkz. [Power BI uygulamalar nelerdir?](https://go.microsoft.com/fwlink/?linkid=2028636).
 
-#### <a name="get-an-installation-web-address"></a>Yükleme web adresi alma
+#### <a name="get-an-installation-web-address"></a>Yükleme Web adresi alma
 
-Yalnızca Power BI ortamında bir [Power BI](https://powerbi.microsoft.com/) uygulaması oluşturabilirsiniz.
+[Power BI](https://powerbi.microsoft.com/) ortamında yalnızca bir Power BI uygulaması oluşturabilirsiniz.
 
-1. Power BI [Pro lisansı](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)ile oturum açın.
-2. Power BI'de uygulamanızı oluşturun ve test edin.
-3. Uygulama yükleme web adresini aldığınızda, İş Ortağı Merkezi'ndeki **Teknik Yapılandırma** sayfasına ekleyin.
+1. [Power BI Pro lisansıyla](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)oturum açın.
+2. Power BI ' de uygulamanızı oluşturun ve test edin.
+3. Uygulama yükleme Web adresini aldığınızda, Iş Ortağı Merkezi 'nde **Teknik yapılandırma** sayfasına ekleyin.
 
-Uygulamanız Power BI'de oluşturulduktan ve test edildikten sonra, [power bi uygulama teklifi oluşturmak](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)için ihtiyacınız olduğunda uygulama yükleme web adresini kaydedin.
+Uygulamanız Power BI ' de oluşturulup test edildikten sonra, uygulama yükleme Web adresini kaydedin. Bu, [bir Power BI uygulama teklifi oluşturmak](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)için ihtiyaç duyacağınız bir uygulamadır.
 
 ### <a name="business-requirements"></a>İş gereksinimleri
 
-İş gereksinimleri usul, sözleşme ve yasal yükümlülükleri içerir. Şunları yapmalısın:
+İş gereksinimleri, yordamsal, sözleşmeli ve yasal yükümlülükleri içerir. Şunları yapmanız gerekir:
 
-- Kayıtlı bir ticari pazar yeri yayıncısı olun. Kayıtlı değilseniz, [Ticari Pazar Yeri Yayıncı ol'daki](https://docs.microsoft.com/azure/marketplace/become-publisher)adımları izleyin.
-- Uygulama Kaynağı'nda listelenecek teklifinizin ölçütlerini karşılayan içerik sağlayın. Daha fazla bilgi için [Bkz. AppSource'da listeleyecek bir uygulama nız var mı? İşte nasıl](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
-- [Microsoft Gizlilik Bildirimi'ni](https://privacy.microsoft.com/privacystatement)kabul edin ve izleyin.
+- Kayıtlı bir ticari Market yayımcısı olun. Kaydolmadıysanız, [ticari Market yayımcısı haline](https://docs.microsoft.com/azure/marketplace/become-publisher)gelen adımları izleyin.
+- Önerinizi AppSource 'ta listelenecek ölçütlere uyan içeriği sağlayın. Daha fazla bilgi için bkz. [AppSource 'ta bir uygulamayı listelemek için mi? İşte](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
+- [Microsoft gizlilik bildirimi](https://privacy.microsoft.com/privacystatement)'ni kabul edin ve izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İş Ortağı Merkezi'nde Power BI uygulama teklifi oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [Iş Ortağı Merkezi 'nde Power BI uygulama teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

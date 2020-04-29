@@ -7,26 +7,26 @@ keywords: stok, otomasyon, değişiklik, izleme
 ms.date: 01/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617366"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Bir Azure sanal makinesini stok toplama ile yönetme
 
-Bir Azure sanal makinesinin kaynak sayfasından sanal makine için stok izlemeyi etkinleştirebilirsiniz. Bilgisayarlarınızda aşağıdaki stok bilgilerini toplayabilir ve görüntüleyebilirsiniz:
+Bir Azure sanal makinesinin kaynak sayfasından sanal makine için stok izlemeyi etkinleştirebilirsiniz. Bilgisayarlarınızda aşağıdaki envanter bilgilerini toplayabilir ve görüntüleyebilirsiniz:
 
-- Windows yazılımı (Windows uygulamaları ve Windows güncelleştirmeleri), hizmetler, dosyalar ve Kayıt Defteri anahtarları
-- Linux yazılımı (paketler) daemons ve dosyaları
+- Windows yazılımı (Windows Uygulamaları ve Windows güncelleştirmeleri), hizmetler, dosyalar ve kayıt defteri anahtarları
+- Linux yazılımı (paket) Daemon 'ları ve dosyalar
 
 Bu yöntem, stok toplamayı ayarlama ve yapılandırmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure aboneliğiniz yoksa, ücretsiz [bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-Bu makalede, çözümü yapılandırmak için bir VM'niz olduğunu varsayar. Bir Azure sanal makineniz yoksa bir [sanal makine](../virtual-machines/windows/quick-create-portal.md) oluşturun.
+Bu makalede, üzerinde çözümü yapılandırmak için bir VM olduğu varsayılır. Bir Azure sanal makineniz yoksa bir [sanal makine](../virtual-machines/windows/quick-create-portal.md) oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -36,14 +36,14 @@ Bu makalede, çözümü yapılandırmak için bir VM'niz olduğunu varsayar. Bir
 
 1. Azure portalının sol tarafında **Sanal makineler**'i seçin.
 2. Sanal makine listesinden bir sanal makine seçin.
-3. **Kaynak** menüsünde, **İşlemler**altında **Stok'u**seçin.
-4. Veri günlüklerinizi depolamak için bir Günlük Analizi çalışma alanı seçin.
+3. **Kaynak** menüsünde, **işlemler**altında **Envanter**' ı seçin.
+4. Veri günlüklerinizi depolamak için bir Log Analytics çalışma alanı seçin.
     Bu bölge için kullanabileceğiniz bir çalışma alanı yoksa, varsayılan bir çalışma alanı ve otomasyon hesabı oluşturmanız istenir.
 5. Bilgisayarınızı eklemeye başlamak için **Etkinleştir**'i seçin.
 
    ![Ekleme seçeneklerini görüntüleme](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Çözümün etkinleştirildiği durum çubuğunda bildirilir. Bu işlemin tamamlanması 15 dakika sürebilir. Bu süre zarfında, pencereyi kapatabilirsiniz veya açık tutabilirsiniz ve çözüm etkinleştirildiğinde sizi bilgilendirebilir. Dağıtım durumunu bildirimler bölmesinden izleyebilirsiniz.
+    Çözümün etkinleştirildiği durum çubuğunda bildirilir. Bu işlemin tamamlanması 15 dakika sürebilir. Bu süre boyunca pencereyi kapatabilir veya açık tutabilirsiniz ve çözüm etkinleştirildiğinde bunu size bildirir. Dağıtım durumunu bildirimler bölmesinden izleyebilirsiniz.
 
    ![Eklemeden hemen sonra stok çözümünü görüntüleme](./media/automation-vm-inventory/inventory-onboarded.png)
 
@@ -53,11 +53,11 @@ Dağıtım tamamlandığında durum çubuğu kaybolur. Sistem stok verilerini to
 
 Varsayılan olarak yazılım, Windows hizmetleri ve Linux daemon'ları toplama işlemi için yapılandırılmıştır. Windows kayıt defteri ve dosya stoğunu toplamak için stok toplama ayarlarını yapılandırın.
 
-1. Stok sayfasında, sayfanın üst kısmındaki **Ayarları Düzelt'i** tıklatın.
-2. Yeni bir koleksiyon ayarı eklemek **için, Windows Kayıt Defteri,** **Windows Dosyaları**veya Linux **Dosyaları** sekmesini seçerek eklemek istediğiniz ayar kategorisine gidin.
-3. Uygun kategoriyi seçin ve sayfanın üst kısmında **Ekle'yi** tıklatın.
+1. Sayım sayfasında, sayfanın üst kısmındaki **Ayarları Düzenle** ' ye tıklayın.
+2. Yeni bir koleksiyon ayarı eklemek için **Windows kayıt defteri**, **Windows dosyaları**veya **Linux dosyaları** sekmesini seçerek eklemek istediğiniz ayar kategorisine gidin.
+3. Uygun kategoriyi seçin ve sayfanın üst kısmındaki **Ekle** ' ye tıklayın.
 
-Aşağıdaki tablolar, çeşitli kategoriler için yapılandırılabilen her özellik hakkında bilgi sağlar.
+Aşağıdaki tablolarda, çeşitli kategoriler için yapılandırılabilecek her bir özellik hakkında bilgi sağlanır.
 
 ### <a name="windows-registry"></a>Windows Kayıt Defteri
 
@@ -72,60 +72,60 @@ Aşağıdaki tablolar, çeşitli kategoriler için yapılandırılabilen her öz
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Etkin     | Ayarı uygulanırsa doğru ve aksi takdirde False.        |
-|Öğe Adı     | İzlenecek dosyanın dostu adı.        |
+|Etkin     | Ayar uygulanmışsa true, aksi takdirde false.        |
+|Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.       |
-|Yolu girin     | Dosyayı denetleme yolu, örneğin, **c:\temp\myfile.txt**.
+|Yolu girin     | Dosyayı denetme yolu, örneğin, **c:\temp\mydosya.txt**.
 
-### <a name="linux-files"></a>Linux Dosyaları
+### <a name="linux-files"></a>Linux dosyaları
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Etkin     | Ayarı uygulanırsa doğru ve aksi takdirde False.        |
-|Öğe Adı     | İzlenecek dosyanın dostu adı.        |
+|Etkin     | Ayar uygulanmışsa true, aksi takdirde false.        |
+|Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu girin     | Dosya için kontrol yolu, örneğin, **/etc/*.conf**.       |
-|Yol Türü     | İzlenecek öğetürü. Değerler Dosya ve Dizin'dir.        |
-|Özyineleme     | İzlenecek öğe ararken özyineleme kullanılıyorsa doğru ve aksi takdirde False.        |
-|Sudo Kullan     | Madde yi kontrol ederken sudo kullanılıyorsa doğru ve yanlış olur.         |
-|Bağlantılar     | Dizinler arasında geçiş yaparken sembolik bağlantıların nasıl ele alındığına işaret eden değer. Olası değerler şunlardır: <br> Yoksay - Sembolik bağlantıları yoksayar ve başvurulan dosyaları veya dizinleri içermez<br>İzle - Özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosyaları veya dizinleri de içerir<br>Yönet - Sembolik bağlantıları izler ve döndürülen içeriğin işlenmesinde değişiklik yapılmasına olanak sağlar      |
+|Yolu girin     | Dosyayı denetlenecek yol, örneğin, **/etc/*. conf**.       |
+|Yol Türü     | İzlenecek öğenin türü. Değerler dosya ve dizindir.        |
+|Özyineleme     | Bu öğeyi izlenecek öğe ararken, aksi takdirde false ise true.        |
+|Sudo Kullan     | Eğer, öğe denetlenirken, aksi takdirde false olduğunda true.         |
+|Bağlantılar     | Dizin aktarılırken sembolik bağlantıların nasıl ele alınacağını gösteren değer. Olası değerler şunlardır: <br> Yoksay - Sembolik bağlantıları yoksayar ve başvurulan dosyaları veya dizinleri içermez<br>İzle - Özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosyaları veya dizinleri de içerir<br>Yönet - Sembolik bağlantıları izler ve döndürülen içeriğin işlenmesinde değişiklik yapılmasına olanak sağlar      |
 
 ## <a name="manage-machine-groups"></a>Makine gruplarını yönetme
 
-Envanter, Azure Monitor günlüklerinde makine grupları oluşturmanıza ve görüntülemenize olanak tanır. Makine grupları, Azure Monitor günlüklerinde bir sorgu tarafından tanımlanan makine koleksiyonlarıdır.
+Envanter, Azure Izleyici günlüklerinde makine grupları oluşturmanıza ve görüntülemenize olanak sağlar. Makine grupları, Azure Izleyici günlüklerinde bir sorgu tarafından tanımlanan makine koleksiyonlarıdır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Makine gruplarınızı görüntülemek için Stok sayfasındaki **Makine grupları** sekmesini seçin.
+Makine gruplarınızı görüntülemek için, envanter sayfasında **makine grupları** sekmesini seçin.
 
-![Stok sayfasındamakine gruplarını görüntüleme](./media/automation-vm-inventory/inventory-machine-groups.png)
+![Envanter sayfasında makine gruplarını görüntüleme](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-Listeden bir makine grubu seçmek, Makine grupları sayfasını açar. Bu sayfa, makine grubu yla ilgili ayrıntıları gösterir. Bu ayrıntılar, grubu tanımlamak için kullanılan günlük analizi sorgusunu içerir. Sayfanın alt kısmında, bu grubun bir parçası olan makinelerin sayfalı bir listesi yer alır.
+Listeden bir makine grubu seçildiğinde makine grupları sayfası açılır. Bu sayfa makine grubuyla ilgili ayrıntıları gösterir. Bu ayrıntılar, grubu tanımlamak için kullanılan Log Analytics sorgusunu içerir. Sayfanın alt kısmında, bu grubun parçası olan makinelerin Sayfalanmış bir listesidir.
 
-![Makine grubu sayfasını görüntüleme](./media/automation-vm-inventory/machine-group-page.png)
+![Makine grubu sayfasını görüntüle](./media/automation-vm-inventory/machine-group-page.png)
 
-Makine grubunu klonlamak için **+ Klon'u** tıklatın. Gruba grup için yeni bir ad ve takma ad vermelisiniz. Tanım şu anda değiştirilebilir. Sorguyu değiştirdikten sonra, seçilecek makineleri önizlemek için **sorguyu doğrula'yı** tıklatın. Gruptan memnun olduğunuzda, makine grubunu oluşturmak için **Oluştur'u** tıklatın.
+Makine grubunu kopyalamak için **+ Kopyala** ' ya tıklayın. Gruba grup için yeni bir ad ve diğer ad vermeniz gerekir. Tanım şu anda değiştirilebilir. Sorguyu değiştirdikten sonra seçilecek makineleri önizlemek için **sorguyu doğrula** ' ya tıklayın. Gruptan memnun olduğunuzda, makine grubunu oluşturmak için **Oluştur** ' a tıklayın.
 
-Yeni bir makine grubu oluşturmak istiyorsanız, **+ Makine grubu oluşturun'u**tıklatın. Bu düğme, yeni **grubunuzu** tanımlayabileceğiniz bir makine grubu oluştur sayfasını açar. Grubu oluşturmak için **Oluştur**’a tıklayın.
+Yeni bir makine grubu oluşturmak istiyorsanız **+ makine grubu oluştur ' a**tıklayın. Bu düğme, yeni grubunuzu tanımlayabileceğiniz **makine grubu oluştur** sayfasını açar. Grubu oluşturmak için **Oluştur**’a tıklayın.
 
-![Yeni makine grubu oluşturma](./media/automation-vm-inventory/create-new-group.png)
+![Yeni makine grubu oluştur](./media/automation-vm-inventory/create-new-group.png)
 
 ## <a name="disconnect-your-virtual-machine-from-management"></a>Sanal makinenizin yönetim bağlantısını kesme
 
 Sanal makinenizi stok yönetiminden kaldırmak için:
 
 1. Azure portalının sol tarafındaki bölmeden **Log Analytics**'i ve sanal makineyi eklerken kullandığınız çalışma alanını seçin.
-2. Günlük Analitiği sayfasında **Kaynak** menüsünü açın.
-3. **Çalışma Alanı Veri Kaynakları**altında Sanal **Makineler** seçin.
+2. Log Analytics sayfasında, **kaynak** menüsünü açın.
+3. **Çalışma alanı veri kaynakları**altında **sanal makineler** ' i seçin.
 4. Listeden bağlantısını kesmek istediğiniz sanal makineyi seçin. Sanal makinenin yanında, **OMS Bağlantısı** sütunda **Bu çalışma alanı** ifadesini içeren bir yeşil onay işareti bulunur.
 
    >[!NOTE]
-   >Operations Management Suite (OMS) artık Azure Monitor günlükleri olarak adlandırılır.
+   >Operations Management Suite (OMS) artık Azure Izleyici günlükleri olarak adlandırılır.
    
-5. Bir sonraki sayfanın üst kısmında **Bağlantıyı Kesme'yi**tıklatın.
-6. Onay penceresinde, makineyi yönetimden ayırmak için **Evet'i** tıklatın.
+5. Sonraki sayfanın en üstünde **bağlantıyı kes**' e tıklayın.
+6. Onay penceresinde, makinenin yönetimi bağlantısını kesmek için **Evet** ' i tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Sanal makinelerinizdeki dosya ve kayıt defteri ayarlarında yapılan değişiklikleri yönetme hakkında bilgi almak için bkz. [Değişiklik İzleme çözümüyle ortamınızdaki yazılım değişikliklerini izleme](../log-analytics/log-analytics-change-tracking.md).
-* Sanal makinelerinizdeki Windows ve paket güncelleştirmelerini yönetme hakkında bilgi edinmek için [Azure'da Güncelleştirme Yönetimi çözümüne](../operations-management-suite/oms-solution-update-management.md)bakın.
+* Sanal makinelerinizde Windows ve paket güncelleştirmelerini yönetme hakkında bilgi edinmek için bkz. [Azure 'da güncelleştirme yönetimi çözümü](../operations-management-suite/oms-solution-update-management.md).

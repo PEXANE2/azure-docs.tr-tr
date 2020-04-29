@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub aygıt-bulut seçenekleri | Microsoft Dokümanlar
-description: Geliştirici kılavuzu - buluttan buluta iletilerin ne zaman kullanılacağı, bildirilen özellikler veya buluttan aygıta iletişimiçin dosya yüklemenin ne zaman kullanılacağı na ilişkin kılavuz.
+title: Azure IoT Hub cihazdan buluta seçenekleri | Microsoft Docs
+description: Geliştirici Kılavuzu-cihazdan buluta iletileri, bildirilen özellikleri veya buluttan cihaza iletişimler için karşıya dosya yükleme işleminin ne zaman kullanılacağı konusunda rehberlik.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -12,37 +12,37 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733224"
 ---
-# <a name="device-to-cloud-communications-guidance"></a>Aygıt-bulut iletişim kılavuzu
+# <a name="device-to-cloud-communications-guidance"></a>Cihazdan buluta iletişim Kılavuzu
 
-IoT Hub, aygıt uygulamasından çözümün arka ucuna bilgi gönderirken üç seçeneği ortaya çıkarır:
+Cihaz uygulamasından çözüm arka ucuna bilgi gönderirken IoT Hub üç seçenek sunar:
 
-* Zaman serisi telemetri ve uyarılar için [aygıttan buluta iletiler.](iot-hub-devguide-messages-d2c.md)
+* Zaman serisi telemetrisi ve uyarıları için [cihazdan buluta iletiler](iot-hub-devguide-messages-d2c.md) .
 
-* [Aygıt ikizinin,](iot-hub-devguide-device-twins.md) kullanılabilir özellikler, koşullar veya uzun süren iş akışlarının durumu gibi aygıt durumu bilgilerini raporlamak için bildirdiği özellikler. Örneğin, yapılandırma ve yazılım güncelleştirmeleri.
+* [Cihaz ikizi](iot-hub-devguide-device-twins.md) , kullanılabilir özellikler, koşullar veya uzun süre çalışan iş akışlarının durumu gibi raporlama cihazı durum bilgilerini raporlamak için bildirilen özelliklerdir. Örneğin, yapılandırma ve yazılım güncelleştirmeleri.
 
-* Ortam dosyaları ve bant genişliğini kaydetmek için aralıklı olarak bağlanan aygıtlar tarafından yüklenen veya sıkıştırılan büyük telemetri toplu iş için [dosya yüklemeleri.](iot-hub-devguide-file-upload.md)
+* [Dosya yüklemeleri](iot-hub-devguide-file-upload.md) , ara sıra bağlı cihazlar tarafından yüklenen veya bant genişliği tasarrufu için sıkıştırılan büyük telemetri toplu işleri.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Burada çeşitli aygıttan buluta iletişim seçeneklerinin ayrıntılı bir karşılaştırmasI verilmiştir.
+Çeşitli cihazdan buluta iletişim seçeneklerinin ayrıntılı bir karşılaştırması aşağıda verilmiştir.
 
-|  | Cihazdan buluta iletiler | Aygıt ikizinin bildirilen özellikleri | Dosya karşıya yüklemeleri |
+|  | Cihazdan buluta iletiler | Cihaz ikizi bildirilen özellikleri | Dosya karşıya yüklemeleri |
 | ---- | ------- | ---------- | ---- |
-| Senaryo | Telemetri zaman serisi ve uyarıları. Örneğin, 256-KB sensör veri toplu her 5 dakikada bir gönderildi. | Mevcut yetenekler ve koşullar. Örneğin, hücresel veya WiFi gibi geçerli aygıt bağlantı modu. Yapılandırma ve yazılım güncelleştirmeleri gibi uzun süren iş akışlarını eşitleme. | Medya dosyaları. Büyük (genellikle sıkıştırılmış) telemetri toplu iş. |
-| Depolama ve geri alma | IoT Hub tarafından 7 güne kadar geçici olarak saklanır. Sadece sıralı okuma. | IoT Hub tarafından aygıt ikizinde saklanır. [IoT Hub sorgu dilini](iot-hub-devguide-query-language.md)kullanarak alınılabilir. | Kullanıcı tarafından sağlanan Azure Depolama hesabında depolanır. |
-| Boyut | 256 KB'ye kadar mesaj. | Bildirilen maksimum özellik boyutu 32 KB'dir. | Azure Blob Depolama tarafından desteklenen maksimum dosya boyutu. |
-| Frequency | Yüksek. Daha fazla bilgi için [IoT Hub sınırlarına](iot-hub-devguide-quotas-throttling.md)bakın. | Orta. Daha fazla bilgi için [IoT Hub sınırlarına](iot-hub-devguide-quotas-throttling.md)bakın. | Düşük. Daha fazla bilgi için [IoT Hub sınırlarına](iot-hub-devguide-quotas-throttling.md)bakın. |
-| Protokol | Tüm protokollerde mevcuttur. | MQTT veya AMQP kullanılarak kullanılabilir. | Herhangi bir protokol kullanırken kullanılabilir, ancak aygıtta HTTPS gerektirir. |
+| Senaryo | Telemetri süresi serisi ve uyarıları. Örneğin, her 5 dakikada bir 256 KB 'lık algılayıcı veri toplu işi gönderilir. | Kullanılabilir yetenekler ve koşullar. Örneğin, hücresel veya WiFi gibi geçerli cihaz bağlantısı modu. Yapılandırma ve yazılım güncelleştirmeleri gibi uzun süre çalışan iş akışlarını eşitleme. | Medya dosyaları. Büyük (genellikle sıkıştırılmış) telemetri toplu işleri. |
+| Depolama ve alma | En fazla 7 güne kadar IoT Hub tarafından geçici olarak depolanır. Yalnızca sıralı okuma. | Cihaz ikizi IoT Hub tarafından depolanır. [IoT Hub sorgu dili](iot-hub-devguide-query-language.md)kullanılarak alınabilir. | Kullanıcı tarafından belirtilen Azure depolama hesabında depolanır. |
+| Boyut | En çok 256 KB ileti. | Raporlanan en fazla özellik boyutu 32 KB 'tır. | Azure Blob depolama tarafından desteklenen en büyük dosya boyutu. |
+| Frequency | Yüksek. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Orta. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). | Düşük. Daha fazla bilgi için bkz. [IoT Hub sınırları](iot-hub-devguide-quotas-throttling.md). |
+| Protokol | Tüm protokollerde kullanılabilir. | MQTT veya AMQP kullanılarak kullanılabilir. | Herhangi bir protokol kullanılırken kullanılabilir, ancak cihazda HTTPS gerekir. |
 
-Bir uygulamanın hem telemetri zaman serisi olarak hem de uyarı olarak bilgi göndermesi ve aygıtın ikizinde kullanılabilir hale getirmesi gerekebilir. Bu senaryoda, aşağıdaki seçeneklerden birini seçebilirsiniz:
+Uygulamanın hem telemetri süresi serisi hem de uyarı olarak bilgi gönderebilmesi ve cihazı cihaz ikizi kullanılabilir hale getirmek gerekebilir. Bu senaryoda, aşağıdaki seçeneklerden birini belirleyebilirsiniz:
 
-* Cihaz uygulaması aygıttan buluta ileti gönderir ve özellik değişikliğini bildirir.
-* Çözüm arka uç, iletiyi aldığında bilgileri aygıt ikizinin etiketlerinde depolayabilir.
+* Cihaz uygulaması bir cihazdan buluta ileti gönderir ve bir özellik değişikliğini raporlar.
+* Çözüm arka ucu, iletiyi alırken bilgileri Device ikizi 'in etiketlerinde saklayabilir.
 
-Aygıttan buluta iletiler, aygıt ikiz güncelleştirmelerinden çok daha yüksek bir iş elde edilmesini sağladığından, bazen aygıt ikizini her aygıttan buluta ileti için güncelleştirmekten kaçınmak istenir.
+Cihazdan buluta iletiler, Device ikizi güncelleştirmelerinden çok daha yüksek bir aktarım hızını olanaklı hale yaptığından, her cihazdan buluta ileti için Device ikizi ' yi güncelleştirmemek bazen tercih edilir.

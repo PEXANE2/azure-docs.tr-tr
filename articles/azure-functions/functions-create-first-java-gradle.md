@@ -1,23 +1,23 @@
 ---
-title: Azure'da bir işlev yayımlamak için Java ve Gradle'yi kullanma
-description: Java ve Gradle ile Azure'da HTTP tarafından tetiklenen bir işlev oluşturun ve yayımlayın.
+title: Azure 'da bir işlev yayımlamak için Java ve Gradle kullanma
+description: Java ve Gradle ile Azure 'da HTTP ile tetiklenen bir işlev oluşturun ve yayımlayın.
 author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732720"
 ---
-# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Azure'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle'yi kullanın
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle kullanma
 
-Bu makalede, Gradle komut satırı aracıyla Azure İşlevleri'ne bir Java işlevi projesi oluşturma ve yayımlama şekli gösterilmektedir. İşinizi bitirdiğinizde, işlev kodunuz [Azure'da sunucusuz](functions-scale.md#consumption-plan) bir barındırma planında çalışır ve bir HTTP isteği tarafından tetiklenir. 
+Bu makalede, Gradle komut satırı aracıyla Azure Işlevleri 'nde bir Java işlevi projesi oluşturma ve yayımlama işlemi gösterilmektedir. İşiniz bittiğinde, işlev kodunuz Azure 'da [sunucusuz bir barındırma planında](functions-scale.md#consumption-plan) çalışır ve bir http isteği tarafından tetiklenir. 
 
 > [!NOTE]
-> Gradle tercih geliştirme aracı değilse, [Maven,](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java) [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) ve [VS Kodu](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)kullanarak Java geliştiricileri için benzer öğreticiler göz atın.
+> Gradle, tercih edilmemiş geliştirme aracınız değilse [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [IntelliJ fikrini](/azure/developer/java/toolkit-for-intellij/quickstart-functions) ve [vs Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)kullanarak Java geliştiricileri için benzer öğreticilerimize göz atın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -25,24 +25,24 @@ Java kullanarak işlev uygulamaları geliştirebilmeniz için şunlar yüklü ol
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), sürüm 8
 - [Azure CLI]
-- [Azure İşlevler Çekirdek Araçları](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
-- [Gradle](https://gradle.org/), sürüm 4.10 ve üzeri
+- [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
+- [Gradle](https://gradle.org/), sürüm 4,10 ve üzeri
 
-Ayrıca etkin bir Azure aboneliğine de ihtiyacınız var. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Ayrıca etkin bir Azure aboneliğine de ihtiyacınız vardır. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
 > Bu hızlı başlangıcın tamamlanabilmesi için JAVA_HOME ortam değişkeni JDK’nin yükleme konumu olarak ayarlanmalıdır.
 
-## <a name="prepare-a-functions-project"></a>Fonksiyonlar projesi hazırlama
+## <a name="prepare-a-functions-project"></a>Işlevler projesi hazırlama
 
-Örnek projeyi klonlamak için aşağıdaki komutu kullanın:
+Örnek projeyi kopyalamak için aşağıdaki komutu kullanın:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-Azure'a dağıtılırken etki alanı adı çakışmasını önlemek için aşağıdaki bölümü açın `build.gradle` ve aşağıdaki bölümde benzersiz bir adla değiştirin. `appName` 
+' `build.gradle` İ açın ve `appName` Azure 'a dağıtma sırasında etki alanı adı çakışmasını önlemek için aşağıdaki bölümde yer alan öğesini benzersiz bir adla değiştirin. 
 
 ```gradle
 azurefunctions {
@@ -57,20 +57,20 @@ azurefunctions {
 }
 ```
 
-Yeni Function.java dosyasını bir metin düzenleyicisinde *src/main/java* yolundan açın ve oluşturulan kodu gözden geçirin. Bu kod, isteğin gövdesini yansıtan bir [HTTP tetikleme](functions-bindings-http-webhook.md) işlevidir. 
+Yeni Function. Java dosyasını bir metin düzenleyicisinde *src/Main/Java* yolundan açın ve oluşturulan kodu gözden geçirin. Bu kod, isteğin gövdesini yansıtan [http ile tetiklenen](functions-bindings-http-webhook.md) bir işlevdir. 
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
-Oluşturmak için aşağıdaki komutu çalıştırın ve ardından işlev projesini çalıştırın:
+İşlev projesini oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```bash
 gradle jar --info
 gradle azureFunctionsRun
 ```
-Projeyi yerel olarak çalıştırdığınızda Azure İşlevler Temel Araçları'ndan aşağıdaki gibi çıktı görürsünüz:
+Projeyi yerel olarak çalıştırdığınızda Azure Functions Core Tools aşağıdakine benzer bir çıktı görürsünüz:
 
 <pre>
 ...
@@ -84,19 +84,19 @@ Http Functions:
 ...
 </pre>
 
-Yeni bir terminal penceresinde aşağıdaki cURL komutunu kullanarak komut satırından işlevi tetikle:
+Yeni bir Terminal penceresinde aşağıdaki kıvrımlı komutunu kullanarak işlevi komut satırından tetikleyin:
 
 ```bash
 curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 ```
 
-Beklenen çıktı aşağıdaki gibidir:
+Beklenen çıkış şunlardır:
 
 <pre>
 Hello AzureFunctions!
 </pre>
 
-Yerel olarak çalışırken [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) gerekli değildir.  
+Yerel olarak çalıştırılırken [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) gerekli değildir.  
 İşlev kodunu durdurmak için terminalde `Ctrl+C` komutunu kullanın.
 
 > [!div class="nextstepaction"]
@@ -104,14 +104,14 @@ Yerel olarak çalışırken [işlev anahtarı](functions-bindings-http-webhook-t
 
 ## <a name="deploy-the-function-to-azure"></a>İşlevi Azure’a dağıtma
 
-İşlev uygulamanızı ilk dağıttığınızda Azure'da bir işlev uygulaması ve ilgili kaynaklar oluşturulur. Dağıtmadan önce Azure aboneliğinizde oturum açmak için [az giriş](/cli/azure/authenticate-azure-cli) Azure CLI komutunu kullanın. 
+İşlev uygulamanızı ilk kez dağıttığınızda Azure 'da bir işlev uygulaması ve ilgili kaynaklar oluşturulur. Dağıtmadan önce, Azure aboneliğinizde oturum açmak için [az Login](/cli/azure/authenticate-azure-cli) Azure CLI komutunu kullanın. 
 
 ```azurecli
 az login
 ```
 
 > [!TIP]
-> Hesabınız birden çok aboneye erişebiliyorsa, bu oturum için varsayılan aboneliği ayarlamak için [az hesap kümesini](/cli/azure/account#az-account-set) kullanın. 
+> Hesabınız birden çok aboneliğe erişebildeyse, bu oturum için varsayılan aboneliği ayarlamak üzere [az Account set](/cli/azure/account#az-account-set) kullanın. 
 
 Projenizi yeni bir işlev uygulamasına dağıtmak için aşağıdaki komutu kullanın. 
 
@@ -119,43 +119,43 @@ Projenizi yeni bir işlev uygulamasına dağıtmak için aşağıdaki komutu kul
 gradle azureFunctionsDeploy
 ```
 
-Bu, yapı.gradle dosyasındaki değerleri temel alan Azure'da aşağıdaki kaynakları oluşturur:
+Bu, Build. Gradle dosyasındaki değerlere bağlı olarak aşağıdaki kaynakları Azure 'da oluşturur:
 
-+ Kaynak grubu. Sağladığınız _kaynak Grubu_ ile adlandırılır.
-+ Depolama hesabı. Fonksiyonlar tarafından gereklidir. Ad, Depolama hesabı adı gereksinimlerine göre rasgele oluşturulur.
-+ Uygulama Hizmeti planı. Belirtilen _appRegion'daki_işlev uygulamanız için Sunucusuz Tüketim planı barındırma. Ad rasgele oluşturulur.
-+ Fonksiyon uygulaması. İşlevler için dağıtım ve yürütme birimidir. Adı _appName_, rasgele oluşturulan bir sayı ile eklenen. 
++ Kaynak grubu. Sağladığınız _resourceGroup_ ile adlandırılmış.
++ Depolama hesabı. Işlevleri için gereklidir. Ad, depolama hesabı adı gereksinimlerine göre rastgele oluşturulur.
++ Planı App Service. Belirtilen _Appregion_'da işlev uygulamanız için barındırılan sunucusuz tüketim planı. Ad rastgele oluşturulur.
++ İşlev uygulaması. İşlev uygulaması, işlevleriniz için dağıtım ve yürütme birimidir. Ad, rastgele oluşturulmuş bir sayıyla eklenmiş olan _uygulamadır_. 
 
-Dağıtım ayrıca proje dosyalarını paketler ve paketten çalıştırma modu etkinleştirilmiş [zip dağıtımını](functions-deployment-technologies.md#zip-deploy)kullanarak yeni işlev uygulamasına dağıtır.
+Dağıtım ayrıca proje dosyalarını paketleyip, paket Çalıştır modu etkin olan [ZIP dağıtımını](functions-deployment-technologies.md#zip-deploy)kullanarak yeni işlev uygulamasına dağıtır.
 
-Yayınladığımız HTTP tetikleyicisi kullandığından, `authLevel = AuthorizationLevel.FUNCTION`işlev bitiş noktasını HTTP'den aramak için işlev anahtarını almanız gerekir. İşlev anahtarını almanın en kolay yolu [Azure portalıdır.]
+Yayımladığımız HTTP tetikleyicisi kullandığından `authLevel = AuthorizationLevel.FUNCTION`, http üzerinden işlev uç noktasını çağırmak için işlev anahtarını almanız gerekir. İşlev anahtarını almanın en kolay yolu [Azure Portal].
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
 
-## <a name="get-the-http-trigger-url"></a>HTTP tetikleyici URL'sini alın
+## <a name="get-the-http-trigger-url"></a>HTTP tetikleyici URL 'sini al
 
-İşlev anahtarıyla işlevinizi tetiklemek için gereken URL'yi Azure portalından alabilirsiniz. 
+İşlevinizi tetiklemek için gereken URL 'yi, Azure portal işlev anahtarıyla alabilirsiniz. 
 
-1. [Azure portalına]göz atın , oturum açın, işlev uygulamanızın _appName'sini_ sayfanın üst **kısmındaki Arama'ya** yazın ve enter tuşuna basın.
+1. [Azure Portal]gidin, oturum açın, sayfanın üst kısmında **arama** yapmak için işlev uygulamanızın _appname_ öğesini yazın ve ENTER tuşuna basın.
  
-1. İşlev **uygulamanızda, İşlevlerinizi genişletin (Salt oku)** işlevinizi seçin, ardından sağ üstteki **</> İşlev URL'sini alın'ı** seçin. 
+1. İşlev uygulamanızda Işlevler ' i genişletin **(salt okunurdur)**, işlevinizi seçin, sonra **</> Işlev URL 'sini al** ' ı seçin. 
 
     ![Azure portalından işlev URL’sini kopyalama](./media/functions-create-java-maven/get-function-url-portal.png)
 
-1. **Varsayılan (İşlev tuşu) seçin** ve **Kopyala'yı**seçin. 
+1. **Varsayılan (işlev anahtarı)** öğesini seçin ve **Kopyala**' yı seçin. 
 
-Artık işlevinize erişmek için kopyalanan URL'yi kullanabilirsiniz.
+Şimdi, işlevinizi erişmek için kopyalanmış URL 'YI kullanabilirsiniz.
 
-## <a name="verify-the-function-in-azure"></a>Azure'da işlevi doğrulama
+## <a name="verify-the-function-in-azure"></a>Azure 'da işlevi doğrulama
 
-Azure'da çalışan işlev uygulamasını `cURL`kullanarak doğrulamak için aşağıdaki örnekteki URL'yi portaldan kopyaladığınız URL ile değiştirin.
+Kullanarak `cURL`Azure 'da çalışan işlev uygulamasını doğrulamak için, aşağıdaki örnekteki URL 'yi portaldan kopyaladığınız URL ile değiştirin.
 
 ```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-Bu, isteğin gövdesinde olan `AzureFunctions` işlev bitiş noktasına bir POST isteği gönderir. Aşağıdaki yanıtı görürsünüz.
+Bu, isteğin gövdesinde bulunan `AzureFunctions` işlev uç noktasına bir post isteği gönderir. Aşağıdaki yanıtı görürsünüz.
 
 <pre>
 Hello AzureFunctions!
@@ -166,10 +166,10 @@ Hello AzureFunctions!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP tetiklenen işlevi olan bir Java işlevleri projesi oluşturdunuz, yerel makinenizde çalıştırın ve Azure'a dağıttınız. Şimdi, fonksiyonunuzu genişletin ...
+HTTP ile tetiklenen bir işlev içeren bir Java işlevleri projesi oluşturdunuz, yerel makinenizde çalıştırın ve Azure 'a dağıttınız. Şimdi, işlevinizi genişletin...
 
 > [!div class="nextstepaction"]
-> [Azure Depolama sıra çıktısı bağlama ekleme](functions-add-output-binding-storage-queue-java.md)
+> [Azure depolama kuyruğu çıkış bağlaması ekleme](functions-add-output-binding-storage-queue-java.md)
 
 
 [Azure CLI]: /cli/azure

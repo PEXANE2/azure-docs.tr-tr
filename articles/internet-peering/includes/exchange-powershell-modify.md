@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678619"
 ---
-Exchange eşleme için aşağıdaki değişiklik işlemleri desteklenir:
-* Exchange bakan bağlantıları ekleyin.
-* Exchange bakan bağlantılarını kaldırın.
-* Etkin bağlantılara bir IPv4 veya IPv6 oturumu ekleyin.
-* Etkin bağlantılardaki Bir IPv4 veya IPv6 oturumunu kaldırın.
+Exchange eşlemesi için aşağıdaki değişiklik işlemleri desteklenir:
+* Exchange eşleme bağlantıları ekleyin.
+* Exchange eşleme bağlantılarını kaldırın.
+* Etkin bağlantılara IPv4 veya IPv6 oturumu ekleyin.
+* Etkin bağlantılardaki IPv4 veya IPv6 oturumunu kaldırın.
 
 
-### <a name="add-exchange-peering-connections"></a>Exchange eşleme bağlantıları ekleme
+### <a name="add-exchange-peering-connections"></a>Exchange eşleme bağlantıları Ekle
 
-Bu örnekte, varolan bir Exchange eşlenesine nasıl bağlantı ekleyeceğiniz açıklanmaktadır.
+Bu örnek, mevcut bir Exchange eşlemesine bağlantıların nasıl ekleneceğini açıklar.
 
 ```powershell
 
@@ -43,9 +43,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-exchange-peering-connections"></a>Exchange eşleme bağlantılarını kaldırma
+### <a name="remove-exchange-peering-connections"></a>Exchange eşleme bağlantılarını kaldır
 
-Bu örnekte, varolan bir Exchange eşlenesine bağlantıların nasıl kaldırılılabildiğini açıklanmaktadır.
+Bu örnek, mevcut bir Exchange eşlemesinin bağlantılarının nasıl kaldırılacağını açıklar.
 
 ```powershell
 
@@ -73,7 +73,7 @@ Tags              : {}
 
 ```
 
-Aşağıdaki komutta, kaldırmak istediğiniz bağlantı için dizin numarasını 0 yerine girin.
+Aşağıdaki komutta, 0 yerine, kaldırmak istediğiniz bağlantının Dizin numarasını girin.
 
 ```powershell
 
@@ -85,9 +85,9 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılarda IPv4 veya IPv6 oturumu ekleme
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılara IPv4 veya IPv6 oturumu ekleme
 
-Bu örnekte, varolan bir Exchange bağlantısına IPv6 oturumu nasıl ekleyeceğiniz açıklanmaktadır.
+Bu örnek, mevcut bir Exchange bağlantısına bir IPv6 oturumunun nasıl ekleneceğini açıklar.
 
 ```powershell
 
@@ -99,6 +99,6 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılarda Bir IPv4 veya IPv6 oturumunu kaldırma
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılarda IPv4 veya IPv6 oturumu kaldırma
 
-Varolan bir bağlantıdan bir IPv4 veya IPv6 oturumunun kaldırılması şu anda PowerShell'de desteklenmez. Daha fazla bilgi için [Microsoft'a başvurun.](mailto:peeringexperience@microsoft.com)
+Mevcut bir bağlantıdan IPv4 veya IPv6 oturumunun kaldırılması Şu anda PowerShell 'de desteklenmemektedir. Daha fazla bilgi için [Microsoft eşlemesi](mailto:peeringexperience@microsoft.com)'ne başvurun.

@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makine sertifikası - Azure Marketi
-description: Ticari pazarda sanal makine teklifini nasıl test edip göndereceğinizi öğrenin.
+title: Azure sanal makine sertifikası-Azure Marketi
+description: Ticari Market 'te bir sanal makine teklifini test etme ve gönderme hakkında bilgi edinin.
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
@@ -8,50 +8,50 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731120"
 ---
-# <a name="azure-virtual-machine-vm-image-certification"></a>Azure sanal makine (VM) görüntü sertifikası
+# <a name="azure-virtual-machine-vm-image-certification"></a>Azure sanal makinesi (VM) görüntü sertifikası
 
 > [!NOTE]
-> Azure VM tekliflerinizin yönetimini Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne taşıyoruz. Tekliflerin karşısına geçirilene kadar, tekliflerinizi yönetmek için lütfen Bulut İş Ortağı Portalı'nda [Azure Anahtar Kasası için sertifika Oluştur'daki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) yönergeleri izlemeye devam edin.
+> Azure VM tekliflerinizin yönetimini, Bulut İş Ortağı Portalı 'ten Iş ortağı merkezine taşıdık. Tekliflerinizi geçirene kadar, lütfen tekliflerinizi yönetmek için Bulut İş Ortağı Portalı [Azure Key Vault için sertifika oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) bölümündeki yönergeleri izlemeye devam edin.
 
-Bu makalede, en son Azure Marketi yayımlama gereksinimlerini karşıladığından emin olmak için ticari pazarda sanal makine (VM) görüntüsünün nasıl test edilip gönderilen ler açıklanmaktadır.
+Bu makalede, en son Azure Marketi yayımlama gereksinimlerini karşıladığından emin olmak için ticari Market 'te bir sanal makine (VM) görüntüsünün nasıl test edileceğini ve gönderileceği açıklanır.
 
-VM teklifinizi göndermeden önce şu adımları tamamlayın:
+VM teklifinizi göndermeden önce şu adımları uygulayın:
 
-1. Sertifikalar oluşturun ve dağıtın.
-2. Genelleştirilmiş resminizi kullanarak bir Azure VM dağıtın.
-3. Geçerlilikleri çalıştırın.
+1. Sertifikaları oluşturun ve dağıtın.
+2. Genelleştirilmiş görüntünüzü kullanarak bir Azure VM dağıtın.
+3. Doğrulamaları çalıştırın.
 
-## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Azure Anahtar Kasası için sertifika oluşturma ve dağıtma
+## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Azure Key Vault için sertifika oluşturma ve dağıtma
 
-Bu bölümde, Windows Remote Management (WinRM) bağlantısı nın Azure tarafından barındırılan bir sanal makineye ayarlanması için gereken kendi imzalı sertifikaların nasıl oluşturulup dağıtılacaklandığı açıklanmaktadır.
+Bu bölümde, Azure 'da barındırılan bir sanal makineye Windows Uzaktan Yönetimi (WinRM) bağlantısı kurmak için gereken kendinden imzalı sertifikaların nasıl oluşturulacağı ve dağıtılacağı açıklanmaktadır.
 
-### <a name="create-certificates-for-azure-key-vault"></a>Azure Anahtar Kasası için sertifikalar oluşturun
+### <a name="create-certificates-for-azure-key-vault"></a>Azure Key Vault için sertifikalar oluşturma
 
 Bu işlem üç adımdan oluşur:
 
-1. Güvenlik sertifikasını oluşturun.
-2. Sertifikayı depolamak için Azure Anahtar Kasası'nı oluşturun.
-3. Sertifikaları anahtar kasasına saklayın.
+1. Güvenlik sertifikası oluşturun.
+2. Sertifikayı depolamak için Azure Key Vault oluşturun.
+3. Sertifikaları anahtar kasasında depolayın.
 
-Bu çalışma için yeni veya varolan bir Azure kaynak grubu kullanabilirsiniz.
+Bu iş için yeni veya var olan bir Azure Kaynak grubu kullanabilirsiniz.
 
 #### <a name="create-the-security-certificate"></a>Güvenlik sertifikası oluşturma
 
-Sertifika dosyasını (.pfx) yerel bir klasörde oluşturmak için aşağıdaki Azure PowerShell komut dosyasını edin ve çalıştırın. Aşağıdaki tabloda gösterilen parametrelerin değerlerini değiştirin.
+Sertifika dosyasını (. pfx) yerel bir klasörde oluşturmak için aşağıdaki Azure PowerShell betiğini düzenleyin ve çalıştırın. Aşağıdaki tabloda gösterilen parametrelerin değerlerini değiştirin.
 
 | **Parametre** | **Açıklama** |
 | --- | --- |
-| $certroopath | .pfx dosyasını kaydetmek için yerel klasör. |
-| $location | Azure standart coğrafi konumlardan biri. |
-| $vmName | Planlanan Azure sanal makinesinin adı. |
-| $certname | Sertifikanın adı; planlanan VM'nin tam nitelikli alan adı ile eşleşmelidir. |
-| $certpassword | Sertifikalar için parola, planlanan VM için kullanılan parola eşleşmelidir. |
+| $certroopath | . Pfx dosyasının kaydedileceği yerel klasör. |
+| $location | Azure Standart coğrafi konumlarından biri. |
+| $vmName | Planlı Azure sanal makinesinin adı. |
+| $certname | Sertifikanın adı; planlı sanal makinenin tam etki alanı adıyla eşleşmelidir. |
+| $certpassword | Sertifikalar için parola, planlanan VM için kullanılan parolayla eşleşmelidir. |
 | | |
 
 ```PowerShell
@@ -82,14 +82,14 @@ Sertifika dosyasını (.pfx) yerel bir klasörde oluşturmak için aşağıdaki 
 ```
 
 > [!TIP]
-> Çeşitli parametrelerin değerlerini korumak için aynı Azure PowerShell konsol oturumunu bu adımlar sırasında açık ve çalışır durumda tutun.
+> Farklı parametrelerin değerlerini korumak için bu adımlar sırasında aynı Azure PowerShell konsol oturumunu açık ve çalışır durumda tutun.
 
 > [!WARNING]
-> Bu komut dosyalarını kaydederseniz, yalnızca güvenlik bilgileri (parola) içerdiğinden güvenli bir konuma kaydedin.
+> Bu betiği kaydederseniz, güvenlik bilgileri (parola) içerdiğinden, yalnızca güvenli bir konuma kaydedin.
 
-#### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>Sertifikayı depolamak için Azure anahtar kasasını oluşturun
+#### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>Sertifikayı depolamak için Azure Anahtar Kasası oluşturma
 
-Aşağıdaki şablonun içeriğini yerel makinenizdeki bir dosyaya kopyalayın. Aşağıdaki örnek komut dosyasında, `C:\certLocation\keyvault.json`bu kaynak .
+Aşağıdaki şablonun içeriğini yerel makinenizde bir dosyaya kopyalayın. Aşağıdaki örnek betikte bu kaynak `C:\certLocation\keyvault.json`).
 
 ```json
 {
@@ -184,14 +184,14 @@ Aşağıdaki şablonun içeriğini yerel makinenizdeki bir dosyaya kopyalayın. 
 
 ```
 
-Azure Anahtar Kasası ve ilişkili kaynak grubu oluşturmak için aşağıdaki Azure PowerShell komut dosyasını oluşturun ve çalıştırın. Aşağıdaki tabloda gösterilen parametrelerin değerlerini değiştirin
+Bir Azure Key Vault ve ilişkili kaynak grubu oluşturmak için aşağıdaki Azure PowerShell betiğini düzenleyin ve çalıştırın. Aşağıdaki tabloda gösterilen parametrelerin değerlerini değiştirin
 
 | **Parametre** | **Açıklama** |
 | --- | --- |
-| $postfix | Dağıtım tanımlayıcılarına bağlı rasgele sayısal dize. |
-| $rgName | Azure kaynak grubu (RG) adı oluşturmak için. |
-| $location | Azure standart coğrafi konumlardan biri. |
-| $kvTemplateJson | Anahtar kasası için Kaynak Yöneticisi şablonu içeren dosya yolu (keyvault.json). |
+| $postfix | Dağıtım tanımlayıcılarına eklenen rastgele sayısal dize. |
+| $rgName | Oluşturulacak Azure Kaynak grubu (RG) adı. |
+| $location | Azure Standart coğrafi konumlarından biri. |
+| $kvTemplateJson | Anahtar Kasası için Kaynak Yöneticisi şablonu içeren dosyanın yolu (keykasa. JSON). |
 | $kvname | Yeni anahtar kasasının adı.|
 |   |   |
 
@@ -291,9 +291,9 @@ Azure Anahtar Kasası ve ilişkili kaynak grubu oluşturmak için aşağıdaki A
 
 ```
 
-#### <a name="store-the-certificates-to-the-key-vault"></a>Sertifikaları anahtar kasasına saklayın
+#### <a name="store-the-certificates-to-the-key-vault"></a>Sertifikaları anahtar kasasında depolayın
 
-.pfx dosyasında yer alan sertifikaları bu komut dosyasını kullanarak yeni anahtar kasasına saklayın:
+. Pfx dosyasında bulunan sertifikaları bu betiği kullanarak yeni anahtar kasasına depolayın:
 
 ```PowerShell
      $fileName =$certroopath+"\$certname"+".pfx"
@@ -317,13 +317,13 @@ Azure Anahtar Kasası ve ilişkili kaynak grubu oluşturmak için aşağıdaki A
 
 ```
 
-## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Genelleştirilmiş resminizi kullanarak bir Azure VM dağıtma
+## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Genelleştirilmiş görüntünüzü kullanarak bir Azure VM dağıtma
 
-Bu bölümde, yeni bir Azure VM kaynağı oluşturmak için genelleştirilmiş bir VHD görüntüsünün nasıl dağıtılanılacağa açıklanmaktadır. Bu işlem için, sağlanan Azure Kaynak Yöneticisi şablonu ve Azure PowerShell komut dosyasını kullanırız.
+Bu bölümde, yeni bir Azure VM kaynağı oluşturmak için genelleştirilmiş bir VHD görüntüsünün nasıl dağıtılacağı açıklanmaktadır. Bu işlem için, sağlanan Azure Resource Manager şablonu ve Azure PowerShell betiği kullanacağız.
 
-### <a name="prepare-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu hazırlama
+### <a name="prepare-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu hazırlama
 
-VHD dağıtımı için aşağıdaki Azure Kaynak Yöneticisi şablonuna VHDtoImage.json adlı yerel bir dosyayı kopyalayın. Sonraki komut dosyası, bu JSON'ı kullanmak için yerel makinedeki konumu talep edecektir.
+VHD dağıtımı için aşağıdaki Azure Resource Manager şablonunu Vhdtoımage. JSON adlı yerel bir dosyaya kopyalayın. Sonraki betik bu JSON 'ı kullanmak için yerel makinede konum ister.
 
 ```JSON
 {
@@ -558,32 +558,32 @@ VHD dağıtımı için aşağıdaki Azure Kaynak Yöneticisi şablonuna VHDtoIma
 
 ```
 
-Bu parametreler için değerler sağlamak için bu dosyayı edin:
+Bu parametrelerin değerlerini sağlamak için bu dosyayı düzenleyin:
 
 | **Parametre** | **Açıklama** |
 | --- | --- |
-| ResourceGroupName | Varolan Azure kaynak grubu adı. Genellikle, anahtar kasanızla aynı RG'yi kullanın. |
-| Templatefile | VHDtoImage.json dosyasına tam yol adı. |
+| ResourceGroupName | Mevcut Azure Kaynak grubu adı. Genellikle, anahtar kasanız ile aynı RG 'yi kullanın. |
+| TemplateFile | Vhdtoımage. json dosyasının tam yol adı. |
 | userStorageAccountName | Depolama hesabının adı. |
-| sNameForPublicIP | Genel IP için DNS adı; küçük olmalıdır. |
+| Snameforpublicıp | Genel IP için DNS adı; küçük harfle yazılmalıdır. |
 | subscriptionId | Azure abonelik tanımlayıcısı. |
 | Konum | Kaynak grubunun standart Azure coğrafi konumu. |
 | vmName | Sanal makinenin adı. |
 | vaultName | Anahtar kasasının adı. |
 | vaultResourceGroup | Anahtar kasasının kaynak grubu. |
-| sertifikaUrl | Anahtar kasasında depolanan sürüm de dahil olmak üzere sertifikanın web `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`adresi (URL) örneğin: . |
-| vhdUrl | Sanal sabit diskin web adresi. |
+| Sertifika URL 'si | Sertifikanın, anahtar kasasında depolanan sürümü de dahil olmak üzere Web adresi (URL), örneğin: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`. |
+| vhdUrl | Sanal sabit diskin Web adresi. |
 | vmSize | Sanal makine örneğinin boyutu. |
-| publicIPAddressName | Genel IP adresinin adı. |
+| Publicıpaddressname | Genel IP adresinin adı. |
 | virtualNetworkName | Sanal ağın adı. |
 | nicName | Sanal ağ için ağ arabirim kartının adı. |
-| adminUserName | Yönetici hesabının kullanıcı adı. |
+| adminUserName | Yönetici hesabının Kullanıcı adı. |
 | adminPassword | Yönetici parolası. |
 |   |   |
 
 ### <a name="deploy-an-azure-vm"></a>Azure VM dağıtma
 
-Ve değişkenler için değerler sağlamak için `$storageaccount` `$vhdUrl` aşağıdaki komut dosyasını kopyalayın ve edin. Varolan genelleştirilmiş VHD'nizden bir Azure VM kaynağı oluşturmak için çalıştırın.
+`$storageaccount` Ve `$vhdUrl` değişkenleri için değerler sağlamak üzere aşağıdaki betiği kopyalayın ve düzenleyin. Mevcut Genelleştirilmiş VHD 'nizden bir Azure VM kaynağı oluşturmak için yürütün.
 
 ```PowerShell
 
@@ -603,53 +603,53 @@ New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName
 
 ```
 
-## <a name="run-validations"></a>Geçerlilikleri çalıştırma
+## <a name="run-validations"></a>Doğrulamaları Çalıştır
 
 Dağıtılan görüntüde doğrulamaları çalıştırmanın iki yolu vardır:
 
-- Azure Sertifikalı için Sertifika Test Aracını Kullanma
-- Kendi kendini test eden API'yi kullanma
+- Azure Sertifikalı sertifika sınama aracını kullanma
+- Kendi kendine test API 'sini kullanma
 
-### <a name="download-and-run-the-certification-test-tool"></a>Sertifika test aracını indirin ve çalıştırın
+### <a name="download-and-run-the-certification-test-tool"></a>Sertifika test aracını indirme ve çalıştırma
 
-Azure Sertifikalı Sertifika Test Aracı yerel bir Windows makinesinde çalışır, ancak Azure tabanlı bir Windows veya Linux VM'yi sınar. Kullanıcı VM görüntünüzün Microsoft Azure ile kullanılabileceğini ve VHD'nizi hazırlama yla ilgili rehberlik ve gereksinimlerin karşılandığını onaylar. Aracın çıktısı, VM sertifikası istemek için Ortak Merkezi portalına yükleyeceğiniz bir uyumluluk raporudur.
+Azure Sertifikalı sertifika test aracı yerel bir Windows makinesinde çalışır, ancak Azure tabanlı bir Windows veya Linux VM 'yi sınar. Kullanıcı VM Görüntünüzün Microsoft Azure birlikte kullanılabileceğini ve VHD 'nizi hazırlama konusunda rehberlik ve gereksinimlerin karşılandığını gösterir. Aracın çıktısı, VM sertifikası istemek için Iş Ortağı Merkezi portalına yükleyeceksiniz bir uyumluluk rapordur.
 
-1. Azure Sertifikalı için en son Sertifika Test Aracını indirin ve [yükleyin.](https://www.microsoft.com/download/details.aspx?id=44299)
-2. Sertifika aracını açın ve **ardından Yeni Testi Başlat'ı**seçin.
-3. Test **Bilgileri** ekranından, test çalışması için bir **Test Adı** girin.
-4. Windows Server veya Linux gibi VM'niz için **Platform'u** seçin. Platform seçiminiz kalan seçenekleri etkiler.
-5. VM'niz bu veritabanı hizmetini kullanıyorsa, **Azure SQL Veritabanı** için Test onay kutusunu seçin.
+1. [Azure Sertifikalı en son sertifika test aracı](https://www.microsoft.com/download/details.aspx?id=44299)'nı indirip yükleyin.
+2. Sertifika aracını açın ve ardından **Yeni test Başlat**' ı seçin.
+3. **Test bilgileri** ekranında, test çalıştırması Için bir **Test adı** girin.
+4. Windows Server veya Linux VM 'niz için **platformu** seçin. Platform seçiminiz, kalan seçenekleri etkiler.
+5. VM 'niz bu veritabanı hizmetini kullanıyorsa **Azure SQL veritabanı Için test** onay kutusunu seçin.
 
-### <a name="connect-the-certification-tool-to-a-vm-image"></a>Sertifika aracını VM görüntüsüne bağlama
+### <a name="connect-the-certification-tool-to-a-vm-image"></a>Sertifika aracını bir VM görüntüsüne bağlama
 
-Araç, [Azure PowerShell](https://docs.microsoft.com/powershell/) ile Windows tabanlı VM'lere ve [SSH.Net](https://www.ssh.com/ssh/protocol/)aracılığıyla Linux VM'lere bağlanır.
+Araç, [Azure PowerShell](https://docs.microsoft.com/powershell/) ile Windows tabanlı VM 'lere bağlanır ve [SSH.net](https://www.ssh.com/ssh/protocol/)üzerinden Linux VM 'lerine bağlanır.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Sertifika aracını Linux VM görüntüsüne bağlama
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Sertifika aracını bir Linux VM görüntüsüne bağlama
 
-1. **SSH Kimlik Doğrulama** modunu seçin: Parola Kimlik Doğrulaması veya Anahtar Dosyası Kimlik Doğrulaması.
-2. Parola tabanlı kimlik doğrulaması kullanıyorsanız, **VM DNS Adı,** **Kullanıcı adı**ve **Parola**için değerleri girin. Varsayılan **SSH Bağlantı Noktası** numarasını da değiştirebilirsiniz.
+1. **SSH kimlik doğrulama** modunu seçin: parola kimlik doğrulaması veya anahtar dosyası kimlik doğrulaması.
+2. Parola tabanlı kimlik doğrulaması kullanıyorsanız, **VM DNS adı**, **Kullanıcı adı**ve **parola**değerlerini girin. Varsayılan **SSH bağlantı noktası** numarasını da değiştirebilirsiniz.
 
-    ![Azure Sertifikalı Test Aracı, Linux VM Image şifre kimlik doğrulaması](media/avm-cert2.png)
+    ![Azure Sertifikalı test aracı, Linux VM görüntüsünün parola doğrulaması](media/avm-cert2.png)
 
-3. Anahtar dosya tabanlı kimlik doğrulamasını kullanıyorsanız, **VM DNS Adı,** **Kullanıcı adı**ve **Özel anahtar** konumu için değerleri girin. Ayrıca bir **Geçiş Cümlesi** ekleyebilirsiniz veya varsayılan **SSH Bağlantı Noktası** numarasını değiştirebilirsiniz.
+3. Anahtar dosya tabanlı kimlik doğrulaması kullanıyorsanız, **VM DNS adı**, **Kullanıcı adı**ve **özel anahtar** konumu değerlerini girin. Ayrıca bir **parola** dahil edebilir veya varsayılan **SSH bağlantı noktası** numarasını değiştirebilirsiniz.
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Sertifika aracını Windows tabanlı vm görüntüsüne bağlama**
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Sertifika aracını Windows tabanlı bir VM görüntüsüne bağlama**
 
-1. Tam nitelikli **VM DNS adını** girin (örneğin, MyVMName.Cloudapp.net).
-2. **Kullanıcı Adı** ve **Parola**için değerleri girin.
+1. Tam **VM DNS adını** (örneğin, MyVMName.cloudapp.net) girin.
+2. **Kullanıcı adı** ve **parola**değerlerini girin.
 
-    ![Azure Sertifikalı Test Aracı, Windows tabanlı VM Image'ın parola kimlik doğrulaması](media/avm-cert4.png)
+    ![Azure Sertifikalı test aracı, Windows tabanlı VM görüntüsünün parola doğrulaması](media/avm-cert4.png)
 
 ### <a name="run-a-certification-test"></a>Sertifika testi çalıştırma
 
-Sertifika aracında VM görüntünüz için parametre değerlerini verdikten sonra, VM'inize geçerli bir bağlantı oluşturmak için **Test Bağlantısı'nı** seçin. Bağlantı doğrulandıktan sonra testi başlatmak için **İleri'yi** seçin. Test tamamlandığında, test sonuçları bir tabloda gösterilir. Durum sütunu her test için (Geç/Başarısız/Uyarı) gösterir. Testlerden herhangi biri başarısız olursa, resminiz sertifikalı _değildir._ Bu durumda, gereksinimleri ve hata iletilerini gözden geçirin, önerilen değişiklikleri yapın ve testi yeniden çalıştırın.
+VM Görüntünüz için sertifika aracında parametre değerlerini verdikten sonra, sanal makinenize geçerli bir bağlantı oluşturmak için **Bağlantıyı Sına** ' yı seçin. Bir bağlantı doğrulandıktan sonra, testi başlatmak için **İleri** ' yi seçin. Test tamamlandığında, test sonuçları bir tabloda gösterilir. Durum sütununda her test için (başarılı/başarısız/uyarı) gösterilir. Testlerin herhangi biri başarısız olursa, görüntünüz sertifikalı _değildir_ . Bu durumda, gereksinimleri ve hata iletilerini gözden geçirin, önerilen değişiklikleri yapın ve testi yeniden çalıştırın.
 
-Otomatik test tamamlandıktan sonra, **Soru Formu** ekranının iki sekmesinde VM görüntünüz hakkında ek bilgi sağlayın, **Genel Değerlendirme** ve **Çekirdek Özelleştirme**, ve sonra **İleri'yi**seçin.
+Otomatik test tamamlandıktan sonra, **Soru formu** ekranının, **Genel değerlendirme** ve **çekirdek özelleştirmenin**iki sekmesinde VM Görüntünüz hakkında ek bilgiler sağlayın ve ardından **İleri**' yi seçin.
 
-Son ekran, bir Linux VM görüntüsü için SSH erişim bilgileri ve özel durumlar arıyorsanız başarısız değerlendirmeler için bir açıklama gibi daha fazla bilgi sağlamanızı sağlar.
+Son ekran, bir Linux VM görüntüsü için SSH erişim bilgileri gibi daha fazla bilgi ve özel durumlar arıyorsanız, başarısız olan değerlendirmelerin bir açıklamasını sağlar.
 
-Son olarak, test sonuçlarını indirmek için **Rapor Oluştur'u** ve yürütülmüş test örnekleriiçin dosyaları ve soru formuna yanıtlarınız için dosyaları günlüğe kaydedin. Sonuçları VHD'lerinizle aynı kapsayıcıya kaydedin.
+Son olarak, yürütülen test çalışmalarının test sonuçlarını ve günlük dosyalarını, soru formuna yönelik yanıtlarınızla birlikte indirmek için **rapor oluştur** ' u seçin. Sonuçları VHD 'larınız ile aynı kapsayıcıya kaydedin.
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Her VHD için tek tip kaynak tanımlayıcıları (URI) oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Her VHD için bir Tekdüzen Kaynak tanımlayıcısı (URI) oluştur](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)

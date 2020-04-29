@@ -4,10 +4,10 @@ description: Application Insights ile Windows masaüstü uygulamanızın kullan�
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537398"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasik Windows Masaüstü uygulamalarında kullanımı ve performansı izleme
@@ -28,7 +28,7 @@ ms.locfileid: "81537398"
    
     ApplicationInsights.config dosyasını kullanırsanız, bunun özelliklerinin **Build Action = Content, Copy to Output Directory = Copy** olarak ayarlandığından emin olun.
 5. Telemetri göndermek için [API’yi kullanın](../../azure-monitor/app/api-custom-events-metrics.md).
-6. Uygulamanızı çalıştırın ve Azure portalında oluşturduğunuz kaynaktaki telemetriyi görün.
+6. Uygulamanızı çalıştırın ve Azure portal oluşturduğunuz kaynakta Telemetriyi görüntüleyin.
 
 ## <a name="example-code"></a><a name="telemetry"></a>Örnek kod
 ```csharp
@@ -68,11 +68,11 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="override-storage-of-computer-name"></a>Bilgisayar adının depolamayı geçersiz kılma
+## <a name="override-storage-of-computer-name"></a>Bilgisayar adının depolanmasını geçersiz kıl
 
-Varsayılan olarak bu SDK, telemetri yayan sistemin bilgisayar adını toplar ve saklar. Koleksiyonu geçersiz kılmak için bir telemetri Initializer kullanmanız gerekir:
+Varsayılan olarak, bu SDK sistem yayma telemetrinin bilgisayar adını toplayıp depolar. Koleksiyonu geçersiz kılmak için bir telemetri Başlatıcısı kullanmanız gerekir:
 
-**Aşağıdaki gibi özel TelemetryInitializer yazın.**
+**Aşağıdaki gibi özel Telemetryınitializer yazın.**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-Enstrümantasyon anahtarını `Program.cs` `Main()` ayarlayarak aşağıdaki yöntemde başharfi anında belirleyin:
+İzleme anahtarını ayarlamak için aşağıdaki `Program.cs` `Main()` yöntemde başlatıcıyı oluşturun:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

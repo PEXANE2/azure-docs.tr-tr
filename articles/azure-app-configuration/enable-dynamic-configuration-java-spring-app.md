@@ -1,7 +1,7 @@
 ---
-title: Bahar Önyükleme uygulamasında dinamik yapılandırma yı kullanma
+title: Spring Boot uygulamasında dinamik yapılandırma kullanma
 titleSuffix: Azure App Configuration
-description: Bahar Önyükleme uygulamaları için yapılandırma verilerini dinamik olarak nasıl güncelleştirebilirsiniz öğrenin
+description: Spring Boot uygulamaları için yapılandırma verilerini dinamik olarak güncelleştirme hakkında bilgi edinin
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,27 +9,27 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.author: lcozzens
 ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79216751"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Öğretici: Java Spring uygulamasında dinamik yapılandırmayı kullanın
+# <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Öğretici: bir Java Spring uygulamasında dinamik yapılandırma kullanma
 
-App Configuration İlkbahar Önyükleme istemci kitaplığı, bir uygulamanın yeniden başlatılmasına neden olmadan bir dizi yapılandırma ayarını isteğe bağlı olarak güncelleştirmeyi destekler. İstemci kitaplığı, yapılandırma deposuna çok fazla çağrı dan kaçınmak için her ayarı önbelleğe aldı. Yenileme işlemi, önbelleğe alınmış değer süresi dolana kadar, yapılandırma deposundaki değer değişse bile değeri güncelleştirmez. Her istek için varsayılan son kullanma süresi 30 saniyedir. Gerekirse geçersiz kılınabilir.
+Uygulama yapılandırması Spring Boot istemci kitaplığı, bir uygulamanın yeniden başlatılmasına neden olmadan, bir yapılandırma ayarları kümesinin isteğe bağlı olarak güncelleştirilmesini destekler. Yapılandırma deposuna çok fazla çağrı yapmaktan kaçınmak için istemci kitaplığı her ayarı önbelleğe alır. Yenileme işlemi, değeri yapılandırma deposunda değiştiği zaman, önbelleğe alınan değerin süresi doluncaya kadar değeri güncelleştirmez. Her istek için varsayılan sona erme saati 30 saniyedir. Gerekirse, geçersiz kılınabilir.
 
-''s `AppConfigurationRefresh` `refreshConfigurations()` yöntemini arayarak isteğe bağlı güncelleştirilmiş ayarları kontrol edebilirsiniz.
+' In `AppConfigurationRefresh` `refreshConfigurations()` metodunu çağırarak, güncelleştirilmiş ayarları isteğe bağlı olarak denetleyebilirsiniz.
 
-Alternatif olarak, otomatik `spring-cloud-azure-appconfiguration-config-web` yenileme işlemek `spring-web` için bir bağımlılık alır paketi kullanabilirsiniz.
+Alternatif olarak, otomatik yenilemeyi işlemek `spring-cloud-azure-appconfiguration-config-web` `spring-web` için bir bağımlılığı alan paketi kullanabilirsiniz.
 
-## <a name="use-automated-refresh"></a>Otomatik yenileme kullanma
+## <a name="use-automated-refresh"></a>Otomatik yenilemeyi kullan
 
-Otomatik yenilemeyi kullanmak [için, Uygulama Yapılandırması için Bahar Önyükleme hızlı başlat'ını](quickstart-java-spring-app.md)izleyerek oluşturduğunuz uygulama gibi Uygulama Yapılandırması'nı kullanan bir Bahar Önyükleme uygulamasıyla başlayın.
+Otomatik yenilemeyi kullanmak için, uygulama [yapılandırması Için Spring Boot hızlı](quickstart-java-spring-app.md)başlangıcını izleyerek oluşturduğunuz uygulama gibi uygulama yapılandırması kullanan bir Spring Boot uygulamasıyla başlayın.
 
-Sonra, bir metin düzenleyicisi *pom.xml* dosyasını `spring-cloud-azure-appconfiguration-config-web`açın ve için bir `<dependency>` ekleyin.
+Ardından, *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve için `<dependency>` `spring-cloud-azure-appconfiguration-config-web`bir ekleyin.
 
-**Bahar Bulutu 1.1.x**
+**Yay bulutu 1.1. x**
 
 ```xml
 <dependency>
@@ -39,7 +39,7 @@ Sonra, bir metin düzenleyicisi *pom.xml* dosyasını `spring-cloud-azure-appcon
 </dependency>
 ```
 
-**Bahar Bulutu 1.2.x**
+**Yay bulutu 1.2. x**
 
 ```xml
 <dependency>
@@ -49,11 +49,11 @@ Sonra, bir metin düzenleyicisi *pom.xml* dosyasını `spring-cloud-azure-appcon
 </dependency>
 ```
 
-Dosyayı kaydedin, ardından uygulamanızı her zamanki gibi oluşturun ve çalıştırın.
+Dosyayı kaydedin, sonra uygulamanızı her zamanki gibi derleyin ve çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Bahar Önyükleme uygulamanızın Uygulama Yapılandırması'ndan yapılandırma ayarlarını dinamik olarak yenilemesini sağladınız. Uygulama Yapılandırması'na erişimi kolaylaştırmak için Azure yönetilen bir kimliği nasıl kullanacağınızı öğrenmek için bir sonraki öğreticiye devam edin.
+Bu öğreticide, uygulama yapılandırmasından yapılandırma ayarlarını dinamik olarak yenilemek için Spring Boot uygulamanızı etkinleştirdiniz. Azure yönetilen kimliğin uygulama yapılandırmasına erişimi kolaylaştırmak için nasıl kullanılacağını öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)

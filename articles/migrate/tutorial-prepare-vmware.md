@@ -1,158 +1,158 @@
 ---
-title: Azure Geçişi ile değerlendirme/geçiş için VMware VM'leri hazırlayın
-description: Azure Geçişi ile VMware VM'lerinin değerlendirilmesi/geçişi için nasıl hazırlanacağınızı öğrenin.
+title: Azure geçişi ile VMware VM 'lerini değerlendirme/geçiş için hazırlama
+description: Azure geçişi ile VMware VM 'lerinin değerlendirmesi/geçirilmesi için hazırlanma hakkında bilgi edinin.
 ms.topic: tutorial
 ms.date: 04/19/2020
 ms.custom: mvc
 ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81677293"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM'lerini değerlendirme ve Azure'a geçiş için hazırlama
 
-Bu makale, [Azure Geçişi'ni](migrate-services-overview.md)kullanarak şirket içi VMware VM'lerin Azure'a değerlendirilmesi ve/veya geçişi için hazırlanmanıza yardımcı olur.
+Bu makale, [Azure geçişi](migrate-services-overview.md)'ni kullanarak şirket Içi VMware VM 'lerinden Azure 'a değerlendirme ve/veya geçiş için hazırlık yapmanıza yardımcı olur.
 
 
 
-Bu öğretici, VMware VM'leri nasıl değerlendirip geçirteceklerini gösteren bir serinin ilk imasıdır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, VMware VM 'lerini nasıl değerlendirmekte ve geçirebileceğiniz gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure'u Azure Geçir ile çalışmaya hazırlayın.
-> * Azure Geçir:Sunucu Değerlendirmesi aracıyla VMware'i VM değerlendirmesine hazırlayın.
-> * Azure Geçiş:Sunucu Geçişi aracıyla VMware'i VM geçişi için hazırlayın. 
+> * Azure 'u Azure geçişi ile çalışacak şekilde hazırlayın.
+> * Azure geçişi: Sunucu değerlendirmesi aracı ile VM değerlendirmesi için VMware 'yi hazırlayın.
+> * Azure geçişi: sunucu geçiş aracı ile VM 'ye geçiş için VMware 'yi hazırlayın. 
 
 > [!NOTE]
-> Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir. Dağıtım yapmayı öğrendiğiniz zaman ve hızlı bir kavram kanıtı olarak kullanışlıdır. Öğreticiler mümkün olduğunda varsayılan seçenekleri kullanır ve olası tüm ayarları ve yolları göstermez. 
+> Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir. Dağıtım ve hızlı bir kavram kanıtı olarak nasıl ayarlanacağını öğrenirsiniz. Öğreticiler mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. 
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/pricing/free-trial/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
 ## <a name="prepare-azure"></a>Azure’u hazırlama
 
-VMware VM'leri değerlendirebilmeniz veya geçirebilmeniz için bu görevler için Azure'da bu izinlere ihtiyacınız vardır.
+VMware VM 'lerini değerlendirebilmeniz veya geçirebilmeniz için Azure 'da bu görevler için bu izinlere ihtiyacınız vardır.
 
-**Görev** | **Şey** 
+**Görev** | **Bilgileri** 
 --- | --- 
-**Azure Geçiş projesi oluşturma** | Azure hesabınız, proje oluşturmak için Katılımcı veya Sahip izinlerine ihtiyaç duyar. 
-**Kaynak sağlayıcılar kaydedin** | Azure Geçir, VMware VM'leri keşfetmek ve değerlendirmek ve Azure Geçir:Sunucu Değerlendirmesi ile Azure'a geçirmek için hafif bir Azure Geçir cihazı kullanır.<br/><br/> Cihaz kaydı sırasında, kaynak sağlayıcılar cihazda seçilen aboneye kaydedilir. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Kaynak sağlayıcılarını kaydetmek için abonelikte Bir Katılımcı veya Sahip rolüne ihtiyacınız var.
-**Azure AD uygulamaları oluşturma** | Azure Geçiş, cihazı kaydederken Azure Etkin Dizin (Azure AD) uygulamaları oluşturur. <br/><br/> - İlk uygulama, cihazüzerinde çalışan aracılar ile Azure'da çalışan ilgili hizmetleri arasındaki iletişim için kullanılır.<br/><br/> - İkinci uygulama yalnızca aracısız VMware VM geçişi için kullanıcının aboneliğinde oluşturulan KeyVault'a erişmek için kullanılır. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Azure AD uygulamaları (Uygulama Geliştiricisi'nde kullanılabilir) rolü oluşturmak için izinlere ihtiyacınız vardır.
-**Anahtar kasası oluşturma** | Aracısız geçiş kullanarak VMware VM'leri geçirmek için Azure Geçiş, aboneliğinizdeki çoğaltma depolama hesabının erişim anahtarlarını yönetmek için bir Anahtar Kasası oluşturur.<br/><br/> Kasa oluşturmak için, Azure Geçiş projesinin bulunduğu kaynak grubunda rol atama izinlerine ihtiyacınız vardır.
+**Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katkıda bulunan veya sahip izinlerinin olması gerekir. 
+**Kaynak sağlayıcılarını kaydetme** | Azure geçişi, VMware VM 'lerini bulup değerlendirmek ve Azure geçişi: Sunucu değerlendirmesi ile Azure 'a geçirmek için basit bir Azure geçiş gereci kullanır.<br/><br/> Gereç kaydı sırasında kaynak sağlayıcıları, Gereç içinde seçilen aboneliğe kaydedilir. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.
+**Azure AD uygulamaları oluşturma** | Gereci kaydederken Azure geçişi Azure Active Directory (Azure AD) uygulamaları oluşturur. <br/><br/> -İlk uygulama, Gereç üzerinde çalışan aracılar ve Azure üzerinde çalışan ilgili hizmetleri arasındaki iletişim için kullanılır.<br/><br/> -İkinci uygulama, yalnızca kullanıcının aracısız VMware VM geçişine yönelik abonelikte oluşturulan anahtar kasasına erişmek için kullanılır. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Azure AD uygulamaları (uygulama geliştiricisi 'nde bulunur) rolünde oluşturma izinlerine sahip olmanız gerekir.
+**Anahtar kasası oluşturma** | Azure geçişi, aracısız geçiş kullanarak VMware VM 'lerini geçirmek için, erişim anahtarlarını aboneliğinizdeki çoğaltma depolama hesabına yönetmek üzere bir Key Vault oluşturur.<br/><br/> Kasayı oluşturmak için Azure geçişi projesinin bulunduğu kaynak grubunda rol atama izinlerine sahip olmanız gerekir.
 
 
 
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama
 
-1. Azure portalında aboneliği açın ve **Access denetimi (IAM)** seçeneğini belirleyin.
-2. **Erişimi**Denetle'de, ilgili hesabı bulun ve izinleri görüntülemek için bu hesabı tıklatın.
-3. **Katkıda Bulunan** veya **Sahip** İzni niz olmalıdır.
-    - Ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi sizsiniz.
-    - Abonelik sahibi değilseniz, rolü atamak için sahibiyle birlikte çalışın.
+1. Azure portal aboneliğini açın ve **erişim denetimi (IAM)** seçeneğini belirleyin.
+2. **Erişimi denetle**' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın.
+3. **Katkıda bulunan** veya **sahip** izinlerinizin olması gerekir.
+    - Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz.
+    - Abonelik sahibi değilseniz, rolü atamak için sahip ile çalışın.
 
-### <a name="assign-permissions-to-register-the-appliance"></a>Cihazı kaydettirmek için izin ler atama
+### <a name="assign-permissions-to-register-the-appliance"></a>Gereci kaydetmek için izin atama
 
-Cihazı kaydettirmek için, cihaz kaydı sırasında Azure AD uygulamalarını oluşturmak için Azure Geçiş izni atarsınız. İzinler aşağıdaki yöntemlerden biri kullanılarak atanabilir:
+Gereci kaydettirmek için, Azure geçişi 'nin gereç kaydı sırasında Azure AD uygulamalarını oluşturmak üzere izinleri atarsınız. İzinler aşağıdaki yöntemlerden biri kullanılarak atanabilir:
 
-- **Hibe izinleri**: Kiracı/global yönetici, Azure AD uygulamaları oluşturmak ve kaydetmek için kiracıdaki kullanıcılara izin verebilir.
-- **Uygulama geliştiricisi rolünü ata:** Kiracı/genel yönetici, Uygulama Geliştiricisi rolünü (izinlere sahip) hesaba atayabilir.
+- **Izin verme**: Kiracı/Genel yönetici, Kiracıdaki KULLANıCıLARA Azure AD uygulamaları oluşturmak ve kaydolmak için izin verebilir.
+- **Uygulama geliştirici rolü atama**: Kiracı/Genel yönetici, uygulama geliştirici rolünü (izinleri olan) hesaba atayabilir.
 
 > [!NOTE]
-> - Uygulamaların abonelikte yukarıda açıklananlar dışında başka erişim izinleri yoktur.
-> - Bu izinlere yalnızca yeni bir cihaz kaydettirdiğinizde ihtiyacınız vardır. Cihaz kurulduktan sonra izinleri kaldırabilirsiniz.
+> - Uygulamalar, yukarıda açıklananlar dışında başka bir abonelik üzerinde başka erişim izinlerine sahip değildir.
+> - Yalnızca yeni bir gereç kaydettiğinizde bu izinlere ihtiyacınız vardır. Gereç kurulduktan sonra izinleri kaldırabilirsiniz.
 
 
-#### <a name="grant-account-permissions"></a>Hesap izinlerini hibe
+#### <a name="grant-account-permissions"></a>Hesap izinleri verme
 
-Kiracı/global yöneticinin izin vermesini istiyorsanız, bunu aşağıdaki gibi yapın:
+Kiracı/Genel yöneticinin izin vermesini istiyorsanız, bunu aşağıdaki gibi yapın:
 
-1. Azure AD'de, kiracı/global yönetici **Azure Etkin Dizin** > **Kullanıcıları Kullanıcı** > **Ayarları'na**gitmelidir.
-2. Yönetici, **Uygulama kayıtlarını** **Evet**olarak ayarlamalıdır. Bu, hassas olmayan varsayılan bir ayardır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory** > **Users** > Kullanıcı**Kullanıcı ayarları**' na gitmelidir.
+2. Yönetici **uygulama kayıtları** **Evet**olarak ayarlanmalıdır. Bu, hassas olmayan bir varsayılan ayardır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Azure AD izinleri](./media/tutorial-prepare-vmware/aad.png)
 
 
 
-#### <a name="assign-application-developer-role"></a>Uygulama Geliştiricisi rolünü atama
+#### <a name="assign-application-developer-role"></a>Uygulama geliştirici rolü atama
 
-Alternatif olarak, kiracı/genel yönetici Uygulama Geliştiricisi rolünü bir hesaba atayabilir. Bir rol atama hakkında [daha fazla bilgi edinin.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
+Alternatif olarak, kiracı/genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. Rol atama hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) .
 
-### <a name="assign-permissions-to-create-a-key-vault"></a>Anahtar Kasası oluşturmak için izin atama
+### <a name="assign-permissions-to-create-a-key-vault"></a>Key Vault oluşturmak için izin atama
 
-Azure Geçiş'in bir Anahtar Kasası oluşturmasını sağlamak için izinleri aşağıdaki gibi atayın:
+Key Vault oluşturmak için Azure geçişi 'ni etkinleştirmek üzere izinleri aşağıdaki gibi atayın:
 
-1. Azure portalındaki kaynak grubunda **Access denetimi (IAM)** seçeneğini belirleyin.
-2. **Erişimi**Denetle'de, ilgili hesabı bulun ve izinleri görüntülemek için bu hesabı tıklatın.
+1. Azure portal içindeki kaynak grubunda, **erişim denetimi (IAM)** seçeneğini belirleyin.
+2. **Erişimi denetle**' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın.
 
-    - Sunucu değerlendirmesini çalıştırmak için **Katılımcı** izinleri yeterlidir.
-    - Aracısız sunucu geçişini çalıştırmak için **Sahibi** (veya **Katılımcı** ve **Kullanıcı Erişim Yöneticisi)** izinlerine sahip olmalısınız.
+    - Sunucu değerlendirmesini çalıştırmak için, **katkıda bulunan** izinleri yeterlidir.
+    - Aracısız sunucu geçişini çalıştırmak için **sahip** (veya **katkıda bulunan** ve **Kullanıcı erişimi Yöneticisi**) izinlerinizin olması gerekir.
 
-3. Gerekli izinlere sahip değilseniz, bunları kaynak grubu sahibinden isteyin.
-
-
-
-## <a name="prepare-for-vmware-vm-assessment"></a>VMware VM değerlendirmesine hazırlanın
-
-VMware VM değerlendirmesine hazırlanmak için şunları yapmanız gerekir:
-
-- **VMware ayarlarını doğrulayın.** Geçirmek istediğiniz vCenter Server ve VM'lerin gereksinimleri karşıladığından emin olun.
-- **Değerlendirme için bir hesap ayarlayın.** Azure Geçir, vCenter Server'a erişmek ve değerlendirme için VM'leri keşfetmek için bu hesabı kullanır.
-- **Cihaz gereksinimlerini doğrulayın.** Azure Geçiş cihazının dağıtım gereksinimlerini dağıtmadan önce doğrulayın.
-
-### <a name="verify-vmware-settings"></a>VMware ayarlarını doğrulayın
-
-1. [Kontrol et](migrate-support-matrix-vmware.md#vmware-requirements) Değerlendirme için VMware sunucu gereksinimleri.
-2. İhtiyacınız olan bağlantı noktalarının vCenter Server'da açık [olduğundan emin olun.](migrate-support-matrix-vmware.md#port-access)
-3. vCenter Server'da, hesabınızın BIR OVA dosyası kullanarak VM oluşturma izinlerine sahip olduğundan emin olun. Azure Geçir cihazını BIR OVA dosyası kullanarak VMware VM olarak dağıtMış olursunuz.
-
-
-### <a name="set-up-an-account-for-assessment"></a>Değerlendirme için bir hesap ayarlama
-
-Azure Geçir'in değerlendirme ve aracısız geçiş için VM'leri bulmak için vCenter Server'a erişmesi gerekir.
-
-- Uygulamaları keşfetmeyi veya aracısız bir şekilde bağımlılığı görselleştirmeyi planlıyorsanız, **Sanal makineler** > **Konuk İşlemleri**için etkinleştirilen ayrıcalıklarla birlikte salt okunur erişime sahip bir vCenter Server hesabı oluşturun.
-
-  ![vCenter Server hesap ayrıcalıkları](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
-
-- Uygulama bulma ve aracısız bağımlılık görselleştirmesi yapmayı planlamamanız, vCenter Server için salt okunur hesabı ayarlayın.
-
-### <a name="verify-appliance-settings-for-assessment"></a>Değerlendirme için cihaz ayarlarını doğrulayın
-
-Azure Geçir cihazını kurmadan ve bir sonraki öğreticide değerlendirmeye başlamadan önce, cihaz dağıtımına hazırlanın.
-
-1. [Doğrula](migrate-appliance.md#appliance---vmware) Azure Geçiş cihazı gereksinimleri.
-2. Cihazın [genel](migrate-appliance.md#public-cloud-urls) ve [devlet](migrate-appliance.md#government-cloud-urls) bulutlarında erişmeleri gereken Azure URL'lerini gözden geçirin.
-3. Cihazın keşif ve değerlendirme sırasında topladığı [verileri gözden geçirin.](migrate-appliance.md#collected-data---vmware)
-4. Cihaz için bağlantı noktası erişim gereksinimlerini [not](migrate-support-matrix-vmware.md#port-access) edin.
+3. Gerekli izinleriniz yoksa, bunları kaynak grubu sahibinden isteyin.
 
 
 
+## <a name="prepare-for-vmware-vm-assessment"></a>VMware VM değerlendirmesi için hazırlanma
 
-## <a name="prepare-for-agentless-vmware-migration"></a>Aracısız VMware geçişine hazırlanın
+VMware VM değerlendirmesi için hazırlanmak üzere şunları yapmanız gerekir:
 
-VMware VM'lerin [aracısız geçişi](server-migrate-overview.md) için gereksinimleri gözden geçirin.
+- **VMware ayarlarını doğrulayın**. Geçirmek istediğiniz vCenter Server ve VM 'Lerin gereksinimleri karşıladığından emin olun.
+- **Değerlendirme için bir hesap ayarlayın**. Azure geçişi, değerlendirme için VM 'Leri bulmaya yönelik vCenter Server erişmek için bu hesabı kullanır.
+- **Gereç gereksinimlerini doğrulayın**. Dağıtmadan önce Azure geçişi gereci için dağıtım gereksinimlerini doğrulayın.
 
-1. [İnceleme](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) VMware sunucu gereksinimleri.
-2. Azure Geçir'in vCenter Server'a erişmek için ihtiyaç duyduğu [izinleri gözden geçirin.](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)
-3. [İnceleme](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) VMware VM gereksinimleri.
-4. Azure Geçiş cihaz gereksinimlerini [gözden geçirin.](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance)
-5. Genel ve [devlet](migrate-appliance.md#government-cloud-urls) bulutları için gereken URL erişimine dikkat [edin.](migrate-appliance.md#public-cloud-urls)
-6. Bağlantı noktası erişim gereksinimlerini gözden [geçirin.](migrate-support-matrix-vmware-migration.md#agentless-ports)
+### <a name="verify-vmware-settings"></a>VMware ayarlarını doğrulama
 
-## <a name="prepare-for-agent-based-vmware-migration"></a>Aracı tabanlı VMware geçişine hazırlanın
+1. [Denetle](migrate-support-matrix-vmware.md#vmware-requirements) Değerlendirme için VMware sunucusu gereksinimleri.
+2. İhtiyacınız olan bağlantı noktalarının vCenter Server açık [olduğundan emin olun](migrate-support-matrix-vmware.md#port-access) .
+3. VCenter Server, hesabınızın bir OVA dosyası kullanarak VM oluşturma izinlerine sahip olduğundan emin olun. Azure geçişi gereci bir OVA dosyası kullanarak bir VMware VM 'si olarak dağıtırsınız.
 
-VMware VM'lerin [aracı tabanlı geçişi](server-migrate-overview.md) için gereksinimleri gözden geçirin.
 
-1. [İnceleme](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) VMware sunucu gereksinimleri.
-2. [İzinleri gözden geçirin](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) Azure Geçir'in vCenter Server'a erişmesi gerekir.
-2. [İnceleme](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) Geçiş yapmak istediğiniz her VM'ye Mobilite hizmetinin yüklenmesi de dahil olmak üzere VMware VM gereksinimleri.
-3. Aracı tabanlı geçiş bir çoğaltma cihazı kullanır:
-    - Çoğaltma cihazı için dağıtım gereksinimlerini [gözden geçirin.](migrate-replication-appliance.md#appliance-requirements)
-    - Cihaza MySQL yükleme [seçeneklerini gözden geçirin.](migrate-replication-appliance.md#mysql-installation)
-    - Genel ve [devlet](migrate-replication-appliance.md#azure-government-url-access) bulutları için gereken URL erişimine dikkat [edin.](migrate-replication-appliance.md#url-access)
-    - Çoğaltma cihazı için [bağlantı noktası erişim](migrate-replication-appliance.md#port-access) gereksinimlerini gözden geçirin.
+### <a name="set-up-an-account-for-assessment"></a>Değerlendirme için bir hesap ayarlayın
+
+Azure geçişi 'nin değerlendirme ve aracısız geçiş için VM 'Leri bulması için vCenter Server erişmesi gerekir.
+
+- Uygulamaları bulmayı veya bağımlılığı aracısız bir şekilde görselleştirmeyi planlıyorsanız, **sanal makineler** > **Konuk işlemleri**için etkinleştirilen ayrıcalıklarla birlikte salt okuma erişimli bir vCenter Server hesabı oluşturun.
+
+  ![vCenter Server hesabı ayrıcalıkları](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+- Uygulama bulmayı ve aracısız bağımlılık görselleştirmesini yapma planlandıysanız, vCenter Server için salt okunurdur bir hesap ayarlayın.
+
+### <a name="verify-appliance-settings-for-assessment"></a>Değerlendirme için gereç ayarlarını doğrulama
+
+Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan önce, Gereç dağıtımına hazırlanın.
+
+1. [Doğrula](migrate-appliance.md#appliance---vmware) Azure geçiş gereç gereksinimleri.
+2. Gereçlerin [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutlarında erişmesi gereken Azure URL 'lerini gözden geçirin.
+3. Bulma ve değerlendirme sırasında gereç tarafından toplanan [verileri gözden geçirin](migrate-appliance.md#collected-data---vmware) .
+4. Gereç [için bağlantı noktası](migrate-support-matrix-vmware.md#port-access) erişim gereksinimleri.
+
+
+
+
+## <a name="prepare-for-agentless-vmware-migration"></a>Aracısız VMware geçişine hazırlanma
+
+VMware VM 'lerinin [aracısız geçişi](server-migrate-overview.md) için gereksinimleri gözden geçirin.
+
+1. [İnceleme](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) VMware sunucusu gereksinimleri.
+2. VCenter Server erişmek için Azure geçişi 'nin ihtiyaç duyacağı [Izinleri gözden geçirin](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) .
+3. [İnceleme](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) VMware VM 'Leri gereksinimleri.
+4. Azure geçişi gereç gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) .
+5. [Ortak](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) BULUTLARı için gereken URL erişimini aklınızda yapın.
+6. [Bağlantı noktası erişim](migrate-support-matrix-vmware-migration.md#agentless-ports) gereksinimlerini gözden geçirin.
+
+## <a name="prepare-for-agent-based-vmware-migration"></a>Aracı tabanlı VMware geçişine hazırlanma
+
+VMware VM 'lerinin [aracı tabanlı geçişi](server-migrate-overview.md) için gereksinimleri gözden geçirin.
+
+1. [İnceleme](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) VMware sunucusu gereksinimleri.
+2. [Izinleri gözden geçirin](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) Azure geçişi 'nin vCenter Server erişmesi gerekir.
+2. [İnceleme](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) Geçirmek istediğiniz her VM 'ye Mobility hizmetinin yüklenmesi dahil olmak üzere VMware VM gereksinimleri.
+3. Aracı tabanlı geçiş bir çoğaltma gereci kullanır:
+    - Çoğaltma gereci için dağıtım gereksinimlerini [gözden geçirin](migrate-replication-appliance.md#appliance-requirements) .
+    - Gereçte MySQL yükleme [seçeneklerini gözden geçirin](migrate-replication-appliance.md#mysql-installation) .
+    - [Ortak](migrate-replication-appliance.md#url-access) ve [kamu](migrate-replication-appliance.md#azure-government-url-access) BULUTLARı için gereken URL erişimini aklınızda yapın.
+    - Çoğaltma gereci için [bağlantı noktası erişim](migrate-replication-appliance.md#port-access) gereksinimlerini gözden geçirin.
     
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -160,10 +160,10 @@ Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
 > * Azure izinlerini ayarlayın.
-> * Değerlendirme ve geçiş için VMware hazırlanmıştır.
+> * Değerlendirme ve geçiş için VMware hazırlandı.
 
 
-Bir Azure Geçir projesi ayarlamak ve Azure'a geçiş için VMware VM'leri değerlendirmek için ikinci öğreticiye devam edin.
+Azure geçişi projesi ayarlamak ve Azure 'a geçiş için VMware VM 'lerini değerlendirmek için ikinci öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [VMware VM'leri değerlendirin](./tutorial-assess-vmware.md)
+> [VMware VM 'lerini değerlendir](./tutorial-assess-vmware.md)

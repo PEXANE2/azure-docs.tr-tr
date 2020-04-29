@@ -1,8 +1,8 @@
 ---
-title: Media Services tarafından önerilen canlı akış kodlayıcıları - Azure | Microsoft Dokümanlar
-description: Medya Hizmetleri tarafından önerilen şirket içi kodlayıcılar hakkında bilgi edinin
+title: Media Services-Azure tarafından önerilen canlı akış kodlayıcıları | Microsoft Docs
+description: Media Services tarafından önerilen canlı akış şirket içi kodlayıcılar hakkında bilgi edinin
 services: media-services
-keywords: kodlama;kodlayıcılar;ortam
+keywords: kodlama; kodlayıcılar; medya
 author: johndeu
 manager: johndeu
 ms.author: johndeu
@@ -10,103 +10,103 @@ ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641796"
 ---
-# <a name="tested-on-premises-live-streaming-encoders"></a>Şirket içinde test edilmiş canlı akış kodlayıcıları
+# <a name="tested-on-premises-live-streaming-encoders"></a>Sınanan şirket içi canlı akış kodlayıcıları
 
-Azure Medya Hizmetleri'nde, [Canlı Etkinlik](https://docs.microsoft.com/rest/api/media/liveevents) (kanal) canlı akış içeriğini işlemek için bir ardışık hattı temsil eder. Canlı Etkinlik, canlı giriş akışlarını iki şekilde alır.
+Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/media/liveevents) (kanal) canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Canlı olay, canlı giriş akışlarını iki şekilde alır.
 
-* Şirket içinde canlı kodlayıcı, Medya Hizmetleri ile canlı kodlama gerçekleştirmesi etkinleştirilmeyen Live Event'e çok bit hızında RTMP veya Düzgün Akış (parçalanmış MP4) akışı gönderir. Yutulan akışlar, başka bir işleme gerek kalmadan Canlı Etkinlikler'den geçer. Bu **yönteme geçiş**denir. Canlı kodlayıcının istemciye uyarlanabilir bithızı akışına izin vermek için tek bit hızında akış yerine geçiş li canlı bir etkinliğe çok bit hızında akış lar göndermesini öneririz. 
+* Şirket içi bir Live Encoder, Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilmemiş canlı olayına çoklu bit hızlı bir RTMP veya Kesintisiz Akış (parçalanmış MP4) akışı gönderir. Alınan akışlar, daha fazla işlem yapmadan canlı olayları geçer. Bu yönteme **doğrudan geçiş**adı verilir. Canlı kodlayıcının, istemciye Uyarlamalı bit hızında akışa izin vermek için tek bit hızlı bir akış yerine çoklu bit hızına sahip akışlar göndermesini öneririz. 
 
-    Geçiş canlı etkinliği için çok bitrates akışları kullanıyorsanız, oynatma tarafında beklenmeyen davranışları önlemek için video GOP boyutu ve farklı bithızlarında video parçaları eşitlenmelidir.
+    Geçişli canlı etkinlik için Multi-bitücretler akışları kullanıyorsanız, kayıttan yürütme tarafında beklenmeyen bir davranışın olmaması için video GOP boyutu ve farklı bit hızlarındaki video parçaları eşitlenmelidir.
 
   > [!TIP]
-  > Geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
+  > Doğrudan geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
  
-* Şirket içi canlı kodlayıcı, Medya Hizmetleri ile canlı kodlama yı aşağıdaki biçimlerden birinde gerçekleştirebilen Live Event'e tek bit hızında bir akış gönderir: RTMP veya Düzgün Akış (parçalanmış MP4). Live Event daha sonra gelen tek bit hızındaakışı n için çok bit hızında (uyarlanabilir) video akışına canlı kodlama gerçekleştirir.
+* Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilen canlı olaya tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Canlı etkinlik daha sonra, gelen tek bit hızlı akışın çoklu bit hızında (Uyarlamalı) bir video akışına canlı kodlamasını gerçekleştirir.
 
-Bu makalede, şirket içinde test edilmiş canlı akış kodlayıcıları anlatılmaktadır. Şirket içi canlı kodlayıcınızı nasıl doğrulayabilirsiniz hakkında talimatlar için, [şirket içi kodlayıcınızı doğrulayın](become-on-premises-encoder-partner.md)
+Bu makalede, sınanan şirket içi canlı akış kodlayıcıları açıklanmaktadır. Şirket içi Live Encoder ' ı nasıl doğrulayacağınız hakkında yönergeler için bkz. Şirket [içi kodlayıcınızı doğrulama](become-on-premises-encoder-partner.md)
 
-Medya Hizmetleri ile canlı kodlama hakkında ayrıntılı bilgi [için, Medya Hizmetleri v3 ile Canlı akış](live-streaming-overview.md)bakın.
+Media Services ile canlı kodlama hakkında ayrıntılı bilgi için bkz. [Media Services v3 Ile canlı akış](live-streaming-overview.md).
 
 ## <a name="encoder-requirements"></a>Kodlayıcı gereksinimleri
 
-Kodlayıcılar HTTPS veya RTMPS protokollerini kullanırken TLS 1.2'yi desteklemelidir.
+Kodlayıcılar, HTTPS veya RTMPS protokollerini kullanırken TLS 1,2 ' i desteklemelidir.
 
-## <a name="live-encoders-that-output-rtmp"></a>RTMP çıktı canlı kodlayıcılar
+## <a name="live-encoders-that-output-rtmp"></a>RTMP çıkış yapan canlı kodlayıcılar
 
-Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlayıcılardan birinin kullanılmasını önerir. Desteklenen URL düzenleri `rtmp://` veya `rtmps://`.
+Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlayıcılardan birinin kullanılmasını önerir. Desteklenen URL şemaları `rtmp://` veya `rtmps://`.
 
 RTMP üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarlarını kontrol ederek 1935 ve 1936 numaralı giden TCP bağlantı noktalarının açık olduğundan emin olun.<br/><br/>
 RTMPS üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarlarını kontrol ederek 2935 ve 2936 numaralı giden TCP bağlantı noktalarının açık olduğundan emin olun.
 
 > [!NOTE]
-> Kodlayıcılar RTMPS protokollerini kullanırken TLS 1.2'yi desteklemelidir.
+> RTMPS protokolleri kullanılırken kodlayıcılar TLS 1,2 ' i desteklemelidir.
 
 - Adobe Flash Media Live Encoder 3.2
-- [Cambria Canlı 4.3](https://www.capellasystems.net/products/cambria-live/)
-- Elemental Live (sürüm 2.14.15 ve üzeri)
+- [Cambrıa canlı 4,3](https://www.capellasystems.net/products/cambria-live/)
+- Elete canlı (sürüm 2.14.15 ve üzeri)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast (TLS 1.2 gereksinimi nedeniyle sürüm 13.0.2 veya üzeri)
-- Telestream Wirecast S (sadece RTMP desteklenir)
+- Telestream kablolu dönüştürme (TLS 1,2 gereksinimi nedeniyle sürüm 13.0.2 veya üzeri)
+- Telestream kablolu dönüştürme öğeleri (yalnızca RTMP desteklenir)
 - Teradek Slice 756
 - VMIX
 - xStream
-- [Ffmpeg](https://www.ffmpeg.org)
-- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Kahraman 7 ve Kahraman 8
+- [FFmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 ve Hero 8
 - [Restream.io](https://restream.io/)
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Parçalanmış MP4 çıkışı yapan canlı kodlayıcılar
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Parçalanan MP4 veren canlı kodlayıcılar
 
-Medya Hizmetleri, çıktı olarak çok bit hızında Düzgün Akış (parçalanmış MP4) olan aşağıdaki canlı kodlayıcılardan birini kullanmanızı önerir. Desteklenen URL düzenleri `http://` veya `https://`.
+Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçalanmış MP4) sahip aşağıdaki canlı kodlayıcılardan birini kullanmanızı önerir. Desteklenen URL şemaları `http://` veya `https://`.
 
 > [!NOTE]
-> Kodlayıcılar HTTPS protokollerini kullanırken TLS 1.2'yi desteklemelidir.
+> Kodlayıcılar, HTTPS protokollerini kullanırken TLS 1,2 ' i desteklemelidir.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live (TLS 1.2 gereksinimi nedeniyle sürüm 2.14.15 ve üzeri)
+- Dinamik kullanım (TLS 1,2 gereksinimi nedeniyle sürüm 2.14.15 ve üzeri)
 - Envivio 4Caster C4 Gen III 
-- İletişimSelenio MCP3 düşünün
+- Imagine Communications Selenıo MCP3
 - Media Excel Hero Live ve Hero 4K (UHD/HEVC)
-- [Ffmpeg](https://www.ffmpeg.org)
+- [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
->  Birden çok dilde (örneğin, bir İngilizce ses parçası ve bir İspanyolca ses parçası) canlı etkinlikler yayınıyorsanız, bunu, canlı yayını geçişli Canlı Etkinliğe göndermek üzere yapılandırılan Media Excel canlı kodlayıcısı yla gerçekleştirebilirsiniz.
+>  Canlı olayları birden çok dilde (örneğin, bir Ingilizce ses izi ve bir Ispanyolca ses izi) akışdıysanız, canlı akışı bir geçişli canlı olaya göndermek üzere yapılandırılmış medya Excel Live Encoder ile bunu yapabilirsiniz.
 
-## <a name="configuring-on-premises-live-encoder-settings"></a>Şirket içi canlı kodlayıcı ayarlarını yapılandırma
+## <a name="configuring-on-premises-live-encoder-settings"></a>Şirket içi Live Encoder ayarlarını yapılandırma
 
-Canlı etkinlik türünüz için hangi ayarların geçerli olduğu hakkında bilgi için [Canlı Etkinlik türleri karşılaştırması'na](live-event-types-comparison.md)bakın.
+Canlı olay türleriniz için geçerli olan ayarlar hakkında daha fazla bilgi için bkz. [canlı olay türleri karşılaştırması](live-event-types-comparison.md).
 
 ### <a name="playback-requirements"></a>Kayıttan yürütme gereksinimleri
 
-İçeriği oynatmak için hem ses hem de video akışı olmalıdır. Yalnızca video akışının oynatılmı desteklenmez.
+İçeriği kayıttan yürütmek için hem ses hem de video akışının mevcut olması gerekir. Yalnızca video akışının kayıttan yürütülmesi desteklenmez.
 
 ### <a name="configuration-tips"></a>Yapılandırma ipuçları
 
 - Mümkünse kablolu internet bağlantısı kullanın.
-- Bant genişliği gereksinimlerini belirlerken, akış bit hızlarını iki katına çıkar. Zorunlu olmasa da, bu basit kural ağ tıkanıklığının etkisini azaltmaya yardımcı olur.
-- Yazılım tabanlı kodlayıcılar kullanırken, gereksiz programları kapatın.
-- Bastırmaya başladıktan sonra kodlayıcı yapılandırmanızı değiştirmek olay üzerinde olumsuz etkilere sahiptir. Yapılandırma değişiklikleri olayın kararsız olmasına neden olabilir. 
-- Etkinliğinizi ayarlamak için kendinize yeterli zaman verdiğinizden emin olun. Yüksek ölçekli etkinlikler için kuruluma etkinliğinizden bir saat önce başlamanızı öneririz.
-- H.264 video ve AAC ses codec çıkışını kullanın.
-- Video nitelikleri arasında anahtar çerçevesi veya GOP zamansal hizalama olduğundan emin olun.
+- Bant genişliği gereksinimlerini belirlerken, akış bit hızları ' nı çift belirleyin. Zorunlu olmasa da bu basit kural, ağ tıkanıklığı etkisini azaltmaya yardımcı olur.
+- Yazılım tabanlı kodlayıcılar kullanırken gereksiz programları kapatın.
+- Kodlayıcı yapılandırmasını başlattıktan sonra dönüştürme işlemi, olayda olumsuz etkilere sahiptir. Yapılandırma değişiklikleri olayın kararsız hale gelmesine neden olabilir. 
+- Olaylarınızı ayarlamak için kendinize bir zaman kazandırdığınızdan emin olun. Yüksek ölçekli olaylar için, kurulum 'un etkinlikten bir saat öncesine başlamasını öneririz.
+- H., video ve AAC ses codec çıkışını kullanın.
+- Video kalitelerine göre anahtar çerçeve veya GOP zamana bağlı hizalama olduğundan emin olun.
 - Her video kalitesi için benzersiz bir akış adı olduğundan emin olun.
-- Optimum uyarlanabilir bitrate performansı için önerilen sıkı CBR kodlaması kullanın.
+- En iyi Uyarlamalı bit hızı performansı için önerilen katı CBR kodlamasını kullanın.
 
 > [!IMPORTANT]
-> Parçaların buluta yüklenmesi CPU ve IO işlemlerini içerdiğinden makinenin fiziksel durumunu (CPU / Memory / vb. izleyin. Kodlayıcıdaki herhangi bir ayarı değiştirirseniz, değişikliğin etkili olması için kanalları / canlı olayı sıfırladığından emin olun.
+> Parçaların buluta yüklenmesi için CPU ve GÇ işlemleri içeren makinenin (CPU/bellek/vb.) fiziksel durumunu izleyin. Kodlayıcıdaki herhangi bir ayarı değiştirirseniz, değişikliğin etkili olması için kanalları/Canlı olayı sıfırlayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Medya Hizmetleri v3 ile canlı akış](live-streaming-overview.md)
+[Media Services v3 ile canlı akış](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Markete Git Hizmetleri - Microsoft ile işinizi tanıtın | Azure
-description: Markete Git Hizmetleri - Yayıncılar bu bölümde Microsoft ile işinizi nasıl tanıtacaklarını öğrenebilirler.
+title: Go-to-market Services-işinizi Microsoft ile yükseltin | Mavisi
+description: Go-to-market Services-yayımcılar, bu bölümde Microsoft ile işinizi nasıl yükselteceğinizi öğrenebilir.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 01/12/2019
 ms.author: dsindona
 ms.openlocfilehash: fde249f22342ed2a0c50f5fdda3bde9dc2cde183
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685734"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Microsoft ile işletmenizi tanıtma
 
-Pazar ortaklarının Microsoft İş Ortağı Ağı'nın (MPN) bir parçası olması gerekir. BIR MPN üyesi olarak, iş odaklı ek avantajlara erişebilirsiniz. Ağı erişmek için nasıl kullanabileceğinizi görmek için [partner.microsoft.com](https://partner.microsoft.com) ziyaret edin:
+Market iş ortaklarının Microsoft İş Ortağı Ağı (MPN) bir parçası olması gerekir. MPN üyesi olarak, iş odaklı ek avantajlara erişebilirsiniz. Ağı kullanarak şu erişimi nasıl kullanabileceğinizi öğrenmek için [partner.Microsoft.com](https://partner.microsoft.com) ziyaret edin:
 
 * Yeni iş fırsatları.
-* Ekipler veya iş ortakları ile bağlantı kurma.
-* Becerilerinizi geliştirmenize yardımcı olacak çözümler ve eğitim.
+* Ekiplerle veya iş ortaklarıyla bağlantı kurma.
+* Beceri 'nizi büyütmeye yardımcı olacak çözümler ve eğitim.
 
 ## <a name="benefits-and-resources"></a>Avantajlar ve kaynaklar
 
-Teklifinizi veya uygulamanızı tanıtmak ve daha fazla avantaj ve kaynağa erişmek için aşağıdaki tabloyu kullanın:
+Teklifinizi veya uygulamanızı yükseltmek ve daha fazla avantaj ve kaynağa erişmek için aşağıdaki tabloyu kullanın:
 
-| Yararları | Kaynaklar |
+| Avantajlar | Kaynaklar |
 |:--- |:--- |
-| Temel Avantajlarınızı Kullanın | Microsoft İş Ortağı Ağı'nın bir parçası olarak, zamandan ve paradan tasarruf etmenizi sağlayacak bir dizi temel avantaj elde elabilirsiniz. Faydaları size yardımcı olabilir <ul> <li> yeteneklerinizi güçlendirmek, </li> <li> müşterilere daha iyi hizmet ve </li> <li> tam iş potansiyelinize ulaşmak için bağlantılar oluşturun. </li> </ul> Temel avantajlar hakkında daha fazla bilgi için Temel Avantajlar ve Gereksinimler sayfasını ziyaret [edin.](https://partner.microsoft.com/membership/core-benefits#tab-content-1) |
-| Bulut Platformu Uzmanlığınızı Kazanın | Bir uzmanlık kazanmak, <ul> <li> Kendinizi diğer Microsoft iş ortakları arasında farklılaştırın. </li> <li> Pazardaki teknik uzmanlığı ve müşteri başarısını gösterin. </li> </ul> Yetkinlik, Co-Sell gibi birçok önemli ortak program için bir ön koşuldur. Daha fazla bilgi için [Bulut Platformu uzmanlığına](https://partner.microsoft.com/reach-customers/selling-with-microsoft) bakın. |
-| IP Co-Sell Ready ol | IP Co-Sell Ready programı için uygun olabilirsiniz.  Bu program şunları yapmanızı sağlar: <ul> <li> Hedef müşteri fırsatları ve hesap planlaması konusunda Doğrudan Microsoft satıcıları ve diğer iş ortakları ile işbirliği yapın. </li> <li> Çözümünüzü satıcı çözüm kataloğunda Microsoft satıcıları tarafından görünür hale getirme. </li> <li> Microsoft satıcıları sizinle işbirliği ve kazanç için ödüllendirilir. </li> </ul> [Co-Sell Ready programına](https://partner.microsoft.com/reach-customers/selling-with-microsoft) bakın ve uygunluk gereksinimleri de dahil olmak üzere daha fazla bilgi için işletmenizi tanıtın. |
+| Temel avantajlarınızı kullanın | Microsoft İş Ortağı Ağı kapsamında, zamandan ve paradan tasarruf etmenize yardımcı olabilecek bir temel avantajlar kümesi alırsınız. Avantajlar size yardımcı olabilir <ul> <li> olanaklarınızı güçlendirin, </li> <li> müşterilere daha iyi hizmeti sunma ve </li> <li> Tüm iş potansiyelini sağlamak için bağlantı oluşturun. </li> </ul> Temel avantajlar hakkında daha fazla bilgi için, [Temel avantajlar ve gereksinimler](https://partner.microsoft.com/membership/core-benefits#tab-content-1)' i ziyaret edin. |
+| Bulut platformu uzmanlığına sahip olma | Bir uzmanlığa sahip olmak, size yardımcı olur <ul> <li> Bunları diğer Microsoft iş ortakları arasında ayırt edin. </li> <li> Pazardaki teknik uzmanlığın yanı sıra müşteri başarısını gösterir. </li> </ul> Uzmanlığa, ortak satış gibi birçok anahtar ortağı programı için bir önkoşuldur. Daha fazla bilgi için bkz. [bulut platformu uzmanlığına](https://partner.microsoft.com/reach-customers/selling-with-microsoft) bakın. |
+| IP ortak satışı hazırlanıyor | IP ortak satış için uygun programa uygun olabilirsiniz.  Bu program şunları yapmanıza olanak sağlar: <ul> <li> Hedef müşteri fırsatları ve hesap planlama ile doğrudan Microsoft satıcıları ve diğer iş ortaklarıyla işbirliği yapın. </li> <li> Çözümünüzü satıcı çözüm kataloğunda Microsoft satıcıları için görünür hale getirme. </li> <li> Microsoft satıcıları, işbirliği yapmak ve sizinle kazanmak için yeniden tasarlanmıştır. </li> </ul> Uygunluk gereksinimleri dahil daha fazla bilgi için bkz. [ortak satış özellikli program ve Işletmenizi yükseltme](https://partner.microsoft.com/reach-customers/selling-with-microsoft) . |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Pazar daki GTM hizmetleri hakkında daha fazla bilgi edinmek [için pazara git hizmetlerine](https://partner.microsoft.com/reach-customers/gtm)gidin.
+Market GTM Hizmetleri hakkında daha fazla bilgi edinmek için bkz. [pazara yönelik hizmetler](https://partner.microsoft.com/reach-customers/gtm)'e gidin.
 
-Teklifinizi oluşturmak veya tamamlamak için [Ortak Merkezi'nde oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi ' nde oturum açın](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
 
 ---

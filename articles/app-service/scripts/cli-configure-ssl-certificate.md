@@ -1,6 +1,6 @@
 ---
-title: 'CLI: TLS/SSL sertifikasını bir uygulamaya yükleme ve bağlama'
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, özel bir TLS/SSL sertifikasının bir uygulamaya nasıl bağlanılsüreceğini gösterir.
+title: 'CLı: bir uygulamaya TLS/SSL sertifikası yükleme ve bağlama'
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnekte, özel bir TLS/SSL sertifikasının bir uygulamaya nasıl bağlanacağı gösterilmektedir.
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.devlang: azurecli
@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: d1775f3af390bb71b6895dc6d43c5ae574371aef
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81537670"
 ---
-# <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>CLI kullanarak özel bir TLS/SSL sertifikasını Bir Uygulama Hizmeti uygulamasına bağlama
+# <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>CLı kullanarak özel bir TLS/SSL sertifikasını bir App Service uygulamasına bağlama
 
-Bu örnek komut dosyası, ilgili kaynaklarıyla Birlikte Uygulama Hizmeti'nde bir uygulama oluşturur ve ardından özel bir etki alanı adının TLS/SSL sertifikasını ona bağlar. Bu örnekte şunlar gereklidir:
+Bu örnek betik, ilişkili kaynaklarıyla App Service bir uygulama oluşturur, ardından özel bir etki alanı adının TLS/SSL sertifikasını bu sertifikaya bağlar. Bu örnekte şunlar gereklidir:
 
 * Etki alanı kayıt şirketinizin DNS yapılandırma sayfasına erişim.
-* Geçerli bir . PFX dosyasını ve şifresini yüklemek ve bağlamak istediğiniz TLS/SSL sertifikası için.
+* Geçerli bir. Karşıya yüklemek ve bağlamak istediğiniz TLS/SSL sertifikası için PFX dosyası ve parolası.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,10 +41,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Özel bir etki alanını bir Uygulama Hizmeti uygulamasıyla eşler. |
-| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Bir Uygulama Hizmeti uygulamasına TLS/SSL sertifikası yükler. |
-| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Yüklenen TLS/SSL sertifikasını bir App Service uygulamasına bağlar. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Özel bir etki alanını App Service uygulamasına eşler. |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Bir App Service uygulamasına TLS/SSL sertifikası yükler. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Karşıya yüklenen bir TLS/SSL sertifikasını App Service uygulamasına bağlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

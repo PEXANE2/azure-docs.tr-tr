@@ -1,6 +1,6 @@
 ---
-title: Azure Akış Analitiğini Azure Makine Öğrenimi ile tümleştirin
-description: Bu makalede, bir Azure Akış Analizi işinin Azure Machine Learning modelleri ile nasıl tümleştirilen açıklanmaktadır.
+title: Azure Stream Analytics Azure Machine Learning ile tümleştirin
+description: Bu makalede, bir Azure Stream Analytics işinin Azure Machine Learning modelleriyle nasıl tümleştirileceği açıklanır.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -8,60 +8,60 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481980"
 ---
-# <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Akış Analizini Azure Makine Öğrenimi ile Tümleştir (Önizleme)
+# <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
 
-Azure Akış Analizi işlerinizde, akış giriş verileriniz üzerinde gerçek zamanlı puanlama ve tahminler yapmak için makine öğrenimi modellerini kullanıcı tanımlı bir işlev (UDF) olarak uygulayabilirsiniz. [Azure Machine Learning,](../machine-learning/overview-what-is-azure-ml.md) modelleri hazırlamak, eğitmek ve dağıtmak için Tensorflow, scikit-learn veya PyTorch gibi popüler açık kaynak kullanımını sağlar.
+Akış girişi verilerinizde gerçek zamanlı Puanlama ve tahmin işlemleri yapmak için Azure Stream Analytics işlerinizde Kullanıcı tanımlı bir işlev (UDF) olarak makine öğrenimi modelleri uygulayabilirsiniz. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) , modellerinizi geliştirmek, eğitme ve dağıtmak Için TensorFlow, scikit-öğren veya PyTorch gibi popüler açık kaynak araçlarından birini kullanmanıza olanak sağlar.
 
 > [!NOTE]
-> Bu işlevsellik genel önizlemede dir. Bu özelliğe Azure portalından yalnızca [Akış Analizi portalı önizleme bağlantısını](https://aka.ms/asaportalpreview)kullanarak erişebilirsiniz. Bu işlevsellik, Visual Studio [için Stream Analytics araçlarının](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)en son sürümünde de mevcuttur.
+> Bu işlevsellik genel önizlemede. Bu özelliğe yalnızca [Stream Analytics Portal Önizleme bağlantısını](https://aka.ms/asaportalpreview)kullanarak Azure Portal erişebilirsiniz. Bu işlevsellik, [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)'nın en son sürümünde de mevcuttur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Akış Analizi işinize bir işlev olarak bir makine öğrenimi modeli eklemeden önce aşağıdaki adımları tamamlayın:
+Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden önce aşağıdaki adımları uygulayın:
 
-1. Modelinizi bir web hizmeti olarak dağıtmak için Azure Machine [Learning'i](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)kullanın.
+1. [Modelinizi bir Web hizmeti olarak dağıtmak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)için Azure Machine Learning kullanın.
 
-2. Puanlama komut dosyanızda, Azure Machine Learning tarafından şema belirtimi oluşturmak için kullanılan [örnek giriş ve çıktıları](../machine-learning/how-to-deploy-and-where.md#example-entry-script) olmalıdır. Stream Analytics, web hizmetinizin işlev imzasını anlamak için şemayı kullanır.
+2. Puanlama betiğinizin bir şema belirtimi oluşturmak için Azure Machine Learning tarafından kullanılan [örnek girişler ve çıktılar](../machine-learning/how-to-deploy-and-where.md#example-entry-script) olması gerekir. Stream Analytics, Web hizmetinizin işlev imzasını anlamak için şemayı kullanır.
 
-3. Web hizmetinizin JSON seri leştirilmiş verileri kabul edip döndürdiğinden emin olun.
+3. Web hizmetinizin JSON seri hale getirilmiş verileri kabul ettiğinden ve döndürdüğünden emin olun.
 
-4. Yüksek ölçekli üretim dağıtımları için modelinizi [Azure Kubernetes Hizmeti'nde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) dağıtın. Web hizmeti işinizden gelen istek sayısını kaldıramazsa, Stream Analytics işinizin performansı düşürülür ve bu da gecikmeyi etkiler. Azure Kapsayıcı Örnekleri'nde dağıtılan modeller bugün desteklenmez, ancak önümüzdeki aylarda kullanıma sunulacaktır.
+4. Modelinizi [Azure Kubernetes hizmetinde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) yüksek ölçekli üretim dağıtımları için dağıtın. Web hizmeti, işinizden gelen istek sayısını işleyemediğinde, Stream Analytics işinizin performansı düşecek ve bu da gecikmeyi etkiler. Azure Container Instances dağıtılan modeller bugün desteklenmez, ancak önümüzdeki aylarda kullanılabilir hale gelir.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>İşinize bir makine öğrenme modeli ekleyin
 
-Azure Machine Learning işlevlerini Doğrudan Azure portalından Akış Analizi işinize ekleyebilirsiniz.
+Stream Analytics işinize doğrudan Azure portal Azure Machine Learning işlevleri ekleyebilirsiniz.
 
-1. Azure portalındaki Akış Analizi işinize gidin ve İş topolojisi altında İş **topolojisi**altında **İş Işlevleri'ni** seçin. Ardından, + Açılır Menü **ekle** menüsünden Azure **ML Hizmeti'ni** seçin.
+1. Azure portal Stream Analytics işinize gidin ve **iş topolojisi**altında **işlevler** ' i seçin. Ardından, + açılan menü **Ekle** menüsünden **Azure ML hizmeti** ' ni seçin.
 
-   ![Azure ML UDF Ekle](./media/machine-learning-udf/add-azureml-udf.png)
+   ![Azure ML UDF ekleme](./media/machine-learning-udf/add-azureml-udf.png)
 
-2. **Azure Machine Learning Service işlev** formunu aşağıdaki özellik değerleriyle doldurun:
+2. **Azure Machine Learning hizmeti işlev** formunu aşağıdaki özellik değerleriyle doldur:
 
-   ![Azure ML UDF'yi yapılandırma](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![Azure ML UDF 'yi yapılandırma](./media/machine-learning-udf/configure-azureml-udf.png)
 
-Aşağıdaki tabloda, Stream Analytics'teki Azure ML Hizmeti işlevlerinin her özelliği açıklanmaktadır.
+Aşağıdaki tabloda Stream Analytics içindeki Azure ML hizmeti işlevlerinin her bir özelliği açıklanmaktadır.
 
 |Özellik|Açıklama|
 |--------|-----------|
-|İşlev takma adı|Sorgunuzdaki işlevi çağırmak için bir ad girin.|
-|Abonelik|Azure aboneliğiniz...|
-|Azure ML çalışma alanı|Modelinizi web hizmeti olarak dağıtmak için kullandığınız Azure Machine Learning çalışma alanı.|
-|Dağıtımlar|Modelinizi barındıran web hizmeti.|
-|İşlev imzası|Web hizmetinizin imzası API'nin şema belirtiminden çıkarıldı. İmzanız yüklenmezse, şemayı otomatik olarak oluşturmak için puanlama komut dosyanıza örnek giriş ve çıktı sağladığınızı kontrol edin.|
-|Bölüm başına paralel istek sayısı|Bu, yüksek ölçekli iş akışını optimize etmek için gelişmiş bir yapılandırmadır. Bu sayı, işinizin her bir bölümünden web hizmetine gönderilen eşzamanlı istekleri temsil eder. Altı akış birimi (SU) ve daha düşük olan işlerde bir bölüm vardır. 12 SUs ile İşler iki bölüm, 18 SUs üç bölüm ve benzeri var.<br><br> Örneğin, işinizde iki bölüm varsa ve bu parametreyi dörde ayarlarsanız, işinizden web hizmetinize sekiz eşzamanlı istek olacaktır. Genel önizlemenin bu zamanında, bu değer varsayılan olarak 20'ye kadar dır ve güncelleştirilemez.|
-|Maksimum toplu iş sayısı|Bu, yüksek ölçekli iş ortası en iyi duruma geçirmek için gelişmiş bir yapılandırmadır. Bu sayı, web hizmetinize gönderilen tek bir istekte bir araya getirilecek en fazla olay sayısını temsil eder.|
+|İşlev diğer adı|Sorgunuzun işlevini çağırmak için bir ad girin.|
+|Abonelik|Azure aboneliğiniz..|
+|Azure ML çalışma alanı|Modelinizi bir Web hizmeti olarak dağıtmak için kullandığınız Azure Machine Learning çalışma alanı.|
+|Dağıtımlar|Modelinizi barındıran Web hizmeti.|
+|İşlev imzası|API 'nin şema belirtiminden çıkarılan Web hizmetinizin imzası. İmzanız yüklenemezse, otomatik olarak şemayı oluşturmak için Puanlama betiğinizdeki örnek giriş ve çıkış sağladıysanız emin olun.|
+|Bölüm başına paralel istek sayısı|Bu, yüksek ölçekli üretilen işi iyileştirmek için gelişmiş bir yapılandırmadır. Bu sayı, işinizin her bir bölümünden Web hizmetine gönderilen eşzamanlı istekleri temsil eder. Altı akış birimi (SU) ve alt düzeyde olan işlerin bir bölümü vardır. 12 SUs içeren işlerin iki bölümü vardır, 18 SUs üç bölüme sahiptir ve bu şekilde devam eder.<br><br> Örneğin, işiniz iki bölümden oluşabilir ve bu parametreyi dört olarak ayarlarsanız, işiniz Web hizmetinize kadar olan sekiz eşzamanlı istek olacaktır. Bu genel önizleme sırasında, bu değerin varsayılan değeri 20 ' dir ve güncelleştirilemez.|
+|En fazla toplu iş sayısı|Bu, yüksek ölçekli üretilen işi iyileştirmeye yönelik gelişmiş bir yapılandırmadır. Bu sayı, Web hizmetinize gönderilen tek bir istekte birlikte toplanmış en fazla olay sayısını temsil eder.|
 
 ## <a name="supported-input-parameters"></a>Desteklenen giriş parametreleri
 
-Akış Analizi sorgunuz bir Azure Machine Learning UDF'yi çağırdığında, iş web hizmeti için JSON serileştirilmiş bir istek oluşturur. İstek, modele özgü bir şemayı temel alın. Otomatik [olarak bir şema oluşturmak](../machine-learning/how-to-deploy-and-where.md)için puanlama komut dosyasında örnek giriş ve çıktı sağlamanız gerekir. Şema, Stream Analytics'in numpy, pandalar ve PySpark gibi desteklenen veri türlerinden herhangi biri için JSON serileştirilmiş isteği oluşturmasına olanak tanır. Birden çok giriş olayı tek bir istekte bir araya getirilebilir.
+Stream Analytics sorgunuz bir Azure Machine Learning UDF 'yi istediğinde, iş Web hizmetine JSON serileştirilmiş istek oluşturur. İstek, modele özgü bir şemaya dayalıdır. [Otomatik olarak bir şema oluşturmak](../machine-learning/how-to-deploy-and-where.md)için Puanlama betiğinizdeki bir örnek giriş ve çıkış sağlamanız gerekir. Şema, Stream Analytics, sayısal tuş y, Pandas ve PySpark gibi desteklenen veri türlerinden herhangi biri için JSON serileştirilmiş istek oluşturulmasına olanak sağlar. Birden çok giriş olayı tek bir istekte birlikte toplu olarak oluşturulabilir.
 
-Aşağıdaki Akış Analizi sorgusu, Azure Machine Learning UDF'yi nasıl çağırılanabildiğini niçin başlatılabildiğini gösterir:
+Aşağıdaki Stream Analytics sorgusu, bir Azure Machine Learning UDF çağırma örneğidir:
 
 ```SQL
 SELECT udf.score(<model-specific-data-structure>)
@@ -69,15 +69,15 @@ INTO output
 FROM input
 ```
 
-Akış Analizi, Azure Machine Learning işlevleri için yalnızca bir parametre geçmeyi destekler. Verilerinizi makine öğrenimi UDF'sine bir girdi olarak aktarmadan önce hazırlamanız gerekebilir.
+Stream Analytics, yalnızca Azure Machine Learning işlevleri için bir parametre geçirmeyi destekler. Machine Learning UDF 'ye giriş olarak geçirmeden önce verilerinizi hazırlamanız gerekebilir.
 
-## <a name="pass-multiple-input-parameters-to-the-udf"></a>Birden çok giriş parametresini UDF'ye aktarma
+## <a name="pass-multiple-input-parameters-to-the-udf"></a>UDF 'ye birden çok giriş parametresi geçirme
 
-Makine öğrenimi modellerine girişlerin en yaygın örnekleri sayısal diziler ve DataFrame'lerdir. JavaScript UDF kullanarak bir dizi oluşturabilir ve yan tümceyi `WITH` kullanarak JSON serileştirilmiş bir DataFrame oluşturabilirsiniz.
+Makine öğrenimi modellerine yapılan girişlerin en yaygın örnekleri, sayısal olarak y dizileri ve veri çerçevelerdir. JavaScript UDF kullanarak bir dizi oluşturabilir ve `WITH` yan TÜMCESINI kullanarak JSON serileştirilmiş bir veri çerçevesi oluşturabilirsiniz.
 
 ### <a name="create-an-input-array"></a>Giriş dizisi oluşturma
 
-*N* giriş sayısını kabul eden ve Azure Machine Learning UDF'nize girdi olarak kullanılabilecek bir dizi oluşturan bir JavaScript UDF oluşturabilirsiniz.
+*N* sayıda girişi kabul eden BIR JavaScript UDF oluşturabilir ve Azure Machine Learning UDF 'nize giriş olarak kullanılabilecek bir dizi oluşturabilirsiniz.
 
 ```javascript
 function createArray(vendorid, weekday, pickuphour, passenger, distance) {
@@ -87,7 +87,7 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 }
 ```
 
-JavaScript UDF'yi işinize ekledikten sonra, aşağıdaki sorguyu kullanarak Azure Machine Learning UDF'nizi çağırabilirsiniz:
+İşinize JavaScript UDF 'sini ekledikten sonra, aşağıdaki sorguyu kullanarak Azure Machine Learning UDF 'nizi çağırabilirsiniz:
 
 ```SQL
 SELECT udf.score(
@@ -97,7 +97,7 @@ INTO output
 FROM input
 ```
 
-Aşağıdaki JSON bir örnek istektir:
+Aşağıdaki JSON bir örnek istedir:
 
 ```JSON
 {
@@ -108,11 +108,11 @@ Aşağıdaki JSON bir örnek istektir:
 }
 ```
 
-### <a name="create-a-pandas-or-pyspark-dataframe"></a>Pandalar veya PySpark DataFrame oluşturma
+### <a name="create-a-pandas-or-pyspark-dataframe"></a>Pandas veya PySpark DataFrame oluşturma
 
-`WITH` Alttaki şekilde Azure Machine Learning UDF'nize girdi olarak geçirilebilen JSON seri leştirilmiş bir DataFrame oluşturmak için yan tümceyi kullanabilirsiniz.
+`WITH` Yan tümcesini kullanarak aşağıda gösterildiği gıbı Azure Machine Learning UDF 'nize girdi olarak geçirilebilecek JSON serileştirilmiş bir veri çerçevesi oluşturabilirsiniz.
 
-Aşağıdaki sorgu, gerekli alanları seçerek bir DataFrame oluşturur ve Azure Machine Learning UDF'ye giriş olarak DataFrame'i kullanır.
+Aşağıdaki sorgu, gerekli alanları seçerek ve veri çerçevesini Azure Machine Learning UDF için girdi olarak kullanan bir DataFrame oluşturur.
 
 ```SQL
 WITH 
@@ -126,7 +126,7 @@ INTO output
 FROM input
 ```
 
-Aşağıdaki JSON önceki sorgudan bir örnek istektir:
+Aşağıdaki JSON, önceki sorgudan gelen bir istek örneğidir:
 
 ```JSON
 {
@@ -147,27 +147,27 @@ Aşağıdaki JSON önceki sorgudan bir örnek istektir:
 }
 ```
 
-## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Azure Machine Learning UDF'leri için performansı optimize edin
+## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Azure Machine Learning UDF 'Leri için performansı iyileştirme
 
-Modelinizi Azure Kubernetes Hizmetine dağıttığınızda, [kaynak kullanımını belirlemek için modelinizin profilini](../machine-learning/how-to-deploy-and-where.md#profilemodel)oluşturabilirsiniz. Ayrıca, istek oranlarını, yanıt sürelerini ve hata oranlarını anlamak [için dağıtımlarınız için App](../machine-learning/how-to-enable-app-insights.md) Insights'ı etkinleştirebilirsiniz.
+Modelinizi Azure Kubernetes hizmetine dağıttığınızda, [kaynak kullanımını tespit etmek için modelinizin profilini](../machine-learning/how-to-deploy-and-where.md#profilemodel)oluşturabilirsiniz. Ayrıca, istek hızlarını, yanıt sürelerini ve hata hızlarını anlamak için [dağıtımlarınız Için App Insights 'ı etkinleştirebilirsiniz](../machine-learning/how-to-enable-app-insights.md) .
 
-Yüksek olay verime sahip bir senaryonuz varsa, düşük uçtan uca gecikmelerle en iyi performansı elde etmek için Akış Analizi'nde aşağıdaki parametreleri değiştirmeniz gerekebilir:
+Yüksek olay işleme içeren bir senaryonuz varsa, düşük uçtan uca gecikme süreleriyle en iyi performansı elde etmek için Stream Analytics aşağıdaki parametreleri değiştirmeniz gerekebilir:
 
-1. Maksimum parti sayısı.
+1. En fazla yığın sayısı.
 2. Bölüm başına paralel istek sayısı.
 
 ### <a name="determine-the-right-batch-size"></a>Doğru toplu iş boyutunu belirleme
 
-Web hizmetinizi dağıttıktan sonra, 50'den başlayarak ve yüzlerce sırayla artırarak farklı toplu iş boyutlarında örnek istek gönderirsiniz. Örneğin, 200, 500, 1000, 2000 ve benzeri. Belirli bir toplu iş boyutundan sonra yanıtın gecikmesinin arttığını fark edeceksiniz. Yanıt gecikmesinin arttığı nokta, işiniz için maksimum toplu işlem sayısı olmalıdır.
+Web hizmetinizi dağıttıktan sonra, 50 'den başlayan ve yüzlerce sırada artırarak değişen toplu iş boyutlarına örnek istek gönderirsiniz. Örneğin, 200, 500, 1000, 2000 vb. Belirli bir toplu iş boyutundan sonra yanıtın gecikme süresinin arttığına dikkat edin. Yanıt gecikme süresinin arttığı nokta, işiniz için en fazla toplu iş sayısı olmalıdır.
 
 ### <a name="determine-the-number-of-parallel-requests-per-partition"></a>Bölüm başına paralel istek sayısını belirleme
 
-En iyi ölçeklemede, Stream Analytics işin web hizmetinize birden fazla paralel istek gönderebilmeli ve birkaç milisaniye içinde yanıt alabilmeli. Web hizmetinin yanıtının gecikmesi, Stream Analytics işinizin gecikmesini ve performansını doğrudan etkileyebilir. İşinizden web hizmetine yapılan arama uzun zaman alıyorsa, filigran gecikmesinde büyük olasılıkla bir artış göreceksiniz ve biriktirme kaydedilmiş giriş olaylarının sayısında da bir artış görebilirsiniz.
+En uygun ölçekleme sırasında, Stream Analytics işiniz Web hizmetinize birden çok paralel istek gönderebilmelidir ve birkaç milisaniye içinde yanıt alamaz. Web hizmeti yanıtının gecikmesi, Stream Analytics işinizin gecikme ve performansını doğrudan etkileyebilir. İşinizden Web hizmetine yapılan çağrı uzun sürerse, büyük olasılıkla bir gecikme süresi gecikmede bir artış görürsünüz ve ayrıca biriktirme listesindeki giriş olaylarının sayısında bir artış görebilirsiniz.
 
-Bu tür gecikmeyi önlemek için, Azure Kubernetes Service (AKS) [kümenizin doğru sayıda düğüm ve yinelemeyle](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)sağlandığından emin olun. Web hizmetinizin son derece kullanılabilir olması ve başarılı yanıtlar sağlaması çok önemlidir. İşiniz web hizmetinizden kullanılamayan bir hizmet yanıtı (503) alırsa, üstel geri çekimle sürekli olarak yeniden dener. Başarı (200) ve kullanılamayan hizmet (503) dışındaki herhangi bir yanıt, işinizin başarısız bir duruma gitmesine neden olur.
+Bu gecikme süresini engellemek için, Azure Kubernetes hizmeti (AKS) kümenizin [doğru sayıda düğüm ve çoğaltmalarla](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)sağlanmış olduğundan emin olun. Web hizmetinizin yüksek oranda kullanılabilir olması ve başarılı yanıtları döndürmesi önemlidir. İşiniz Web hizmetinizden bir hizmet kullanılamıyor yanıtı (503) alırsa, üstel geri alma ile sürekli olarak yeniden dener. Başarılı (200) ve hizmet kullanılamıyor (503) dışındaki herhangi bir yanıt, işinizin başarısız durumuna geçmesine neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Öğretici: Azure Stream Analytics JavaScript kullanıcı tanımlı işlevleri](stream-analytics-javascript-user-defined-functions.md)
-* [Azure Machine Learning Studio (klasik) işleviyle Stream Analytics işinizi ölçeklendirin](stream-analytics-scale-with-machine-learning-functions.md)
+* [Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevle ölçeklendirin](stream-analytics-scale-with-machine-learning-functions.md)
 

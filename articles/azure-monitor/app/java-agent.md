@@ -1,51 +1,51 @@
 ---
-title: Java web uygulamaları performans izleme - Azure Application Insights
-description: Uygulama Öngörüleri ile Java web sitenizin genişletilmiş performansı ve kullanım izleme.
+title: Java Web Apps performans izleme-Azure Application Insights
+description: Application Insights ile Java Web sitenizin genişletilmiş performansı ve kullanımı izleniyor.
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537551"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java web uygulamalarında bağımlılıkları, yakalanan özel durumları ve yöntem yürütme sürelerini izleyin
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web uygulamalarında bağımlılıkları izleme, özel durumlar ve Yöntem yürütme süreleri
 
 
-[Java web uygulamanızı Application Insights ile enstrümante][java]kullandıysanız, herhangi bir kod değişikliği olmadan daha derin bilgiler edinmek için Java Aracısını kullanabilirsiniz:
+[Java Web uygulamanızı Application Insights][java]olarak belirttiyseniz, herhangi bir kod değişikliği yapmadan daha derin Öngörüler almak Için Java aracısını kullanabilirsiniz:
 
-* **Bağımlılıklar:** Uygulamanızın diğer bileşenlere yaptığı aramalarla ilgili veriler:
-  * **Giden HTTP aramaları** Apache httpClient, OkHttp `java.net.HttpURLConnection` üzerinden yapılan ve yakalanır.
-  * Jedi'ların müşterisi aracılığıyla yapılan **Redis aramaları** yakalanır.
-  * **JDBC sorguları** - MySQL ve PostgreSQL için, arama 10 saniyeden uzun sürerse, aracı sorgu planını bildirir.
+* **Bağımlılıklar:** Uygulamanızın diğer bileşenlere yaptığı çağrılar hakkındaki veriler (şunlar dahil):
+  * Apache HttpClient, OkHttp ve `java.net.HttpURLConnection` Ile YAPıLAN **giden http çağrıları** yakalanır.
+  * Jedsıs istemcisi aracılığıyla yapılan **redsıs çağrıları** yakalanır.
+  * **JDBC sorguları** -MySQL ve PostgreSQL için çağrı 10 saniyeden uzun sürerse, aracı sorgu planını raporlar.
 
-* **Uygulama günlüğü:** Başvuru günlüklerinizi HTTP istekleri ve diğer telemetrilerle yakalayın ve ilişkilendirin
-  * **Log4j 1.2**
+* **Uygulama günlüğü:** HTTP istekleri ve diğer telemetri ile uygulama günlüklerinizi yakalayın ve ilişkilendirin
+  * **Log4J 1,2**
   * **Log4j2**
-  * **Giriş**
+  * **Logback**
 
-* **Daha iyi işlem adlandırma:** (portalda isteklerin toplanması için kullanılır)
-  * **Bahar** - `@RequestMapping`dayalı .
-  * **JAX-RS** - `@Path`dayalı . 
+* **Daha iyi işlem adlandırması:** (portalda isteklerin toplaması için kullanılır)
+  * **Yay** tabanlı `@RequestMapping`.
+  * **Jax-RS** tabanlı `@Path`. 
 
-Java aracısını kullanmak için sunucunuza yüklersiniz. Web uygulamalarınız [Application Insights Java SDK][java]ile birlikte kullanılmalıdır. 
+Java aracısını kullanmak için sunucunuza yüklersiniz. Web uygulamalarınızın [Application Insights Java SDK 'sı][java]ile işaretlenmiş olması gerekir. 
 
-## <a name="install-the-application-insights-agent-for-java"></a>Java için Application Insights aracısını yükleyin
+## <a name="install-the-application-insights-agent-for-java"></a>Java için Application Insights aracısını yükler
 1. Java sunucunuzu çalıştıran makinede [aracıyı indirin](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). İndirdiğiniz Java Aracısı sürümünün Application Insights Java SDK çekirdeği ve web paketlerinin sürümüyle aynı olmasına dikkat edin.
-2. Uygulama sunucusu başlangıç komut dosyasını düzenleme ve aşağıdaki JVM bağımsız değişkenini ekleyin:
+2. Uygulama sunucusu başlangıç betiğini düzenleyin ve aşağıdaki JVM bağımsız değişkenini ekleyin:
    
     `-javaagent:<full path to the agent JAR file>`
    
-    Örneğin, Bir Linux makinesinde Tomcat'ta:
+    Örneğin, bir Linux makinesindeki Tomcat:
    
     `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
 3. Uygulama sunucunuzu yeniden başlatın.
 
 ## <a name="configure-the-agent"></a>Configure the agent
-Adlandırılmış `AI-Agent.xml` bir dosya oluşturun ve aracı JAR dosyasıyla aynı klasöre yerleştirin.
+Adlı `AI-Agent.xml` bir dosya oluşturun ve aracı jar dosyasıyla aynı klasöre yerleştirin.
 
-xml dosyasının içeriğini ayarlayın. İstediğiniz özellikleri eklemek veya atlamak için aşağıdaki örneği edin.
+XML dosyasının içeriğini ayarlayın. İstediğiniz özellikleri eklemek veya atlamak için aşağıdaki örneği düzenleyin.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -75,7 +75,7 @@ xml dosyasının içeriğini ayarlayın. İstediğiniz özellikleri eklemek veya
 </ApplicationInsightsAgent>
 ```
 
-## <a name="additional-config-spring-boot"></a>Ek config (Bahar Önyükleme)
+## <a name="additional-config-spring-boot"></a>Ek yapılandırma (yay önyüklemesi)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
@@ -84,21 +84,21 @@ Azure Uygulama Hizmetleri için aşağıdakileri yapın:
 * Ayarlar > Uygulama Ayarları'nı seçin.
 * Uygulama Ayarları'nın altında yeni bir anahtar değer çifti ekleyin:
 
-Anahtar: `JAVA_OPTS` Değer:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Anahtar: `JAVA_OPTS` değer:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-Java aracısının en son sürümü için, [burada](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)bültenleri kontrol edin. 
+Java aracısının en son sürümü için [buradaki](https://github.com/Microsoft/ApplicationInsights-Java/releases
+)yayınları kontrol edin. 
 
-Aracı, projenizde d:/home/site/wwwroot/ dizininde son bulmasını sağlayacak bir kaynak olarak paketlenmelidir. **Geliştirme Araçları** > **Gelişmiş Araçlar** > **Hata Ayıklama** Konsolu'na giderek ve site dizininin içeriğini inceleyerek aracınızın doğru Uygulama Hizmeti dizininde olduğunu doğrulayabilirsiniz.    
+Aracı, projenizde D:/Home/site/Wwwroot/dizinde bitecek bir kaynak olarak paketlenmesi gerekir. Aracının doğru App Service dizininde olduğunu, **geliştirme araçları** > **Gelişmiş Araçlar** > **hata ayıklama konsolu** ' na giderek ve site dizininin içeriğini inceleyerek emin olabilirsiniz.    
 
-* Ayarları Kaydedin ve uygulamanızı Yeniden başlatın. (Bu adımlar yalnızca Windows'ta çalışan Uygulama Hizmetleri için geçerlidir.)
+* Ayarları Kaydedin ve uygulamanızı Yeniden başlatın. (Bu adımlar yalnızca Windows üzerinde çalışan uygulama hizmetleri için geçerlidir.)
 
 > [!NOTE]
-> AI-Agent.xml ve aracı kavanoz dosyası aynı klasörde olmalıdır. Bunlar genellikle projenin klasöründe `/resources` bir araya yerleştirilir.  
+> AI-Agent. xml ve aracı jar dosyası aynı klasörde olmalıdır. Bunlar genellikle proje `/resources` klasörüne yerleştirilir.  
 
-#### <a name="enable-w3c-distributed-tracing"></a>W3C dağıtılmış izlemeyi etkinleştirme
+#### <a name="enable-w3c-distributed-tracing"></a>W3C dağıtılmış izlemeyi etkinleştir
 
-AI-Agent.xml'e aşağıdakileri ekleyin:
+Aşağıdakileri AI-Agent. xml ' ye ekleyin:
 
 ```xml
 <Instrumentation>
@@ -109,21 +109,21 @@ AI-Agent.xml'e aşağıdakileri ekleyin:
 ```
 
 > [!NOTE]
-> Geriye dönük uyumluluk modu varsayılan olarak etkinleştirilir ve etkinleştirilen W3CBackCompat parametresi isteğe bağlıdır ve yalnızca kapatmak istediğinizde kullanılmalıdır. 
+> Geriye dönük uyumluluk modu varsayılan olarak etkindir ve enableW3CBackCompat parametresi isteğe bağlıdır ve yalnızca kapatmak istediğinizde kullanılmalıdır. 
 
-İdeal olarak, tüm hizmetleriniz W3C protokolünü destekleyen SDK'ların daha yeni sürümüne güncelleştirildiğinde durum böyledir. W3C desteği ile SDK'ların en kısa sürede yeni sürümüne geçmen önerilir.
+İdeal olarak, tüm hizmetlerinizin W3C protokolünü destekleyen SDK 'ların daha yeni bir sürümüne güncelleştirildiği durum söz konusu olabilir. En kısa sürede W3C desteğiyle SDK 'ların daha yeni bir sürümüne taşınması önemle önerilir.
 
-**Hem [gelen](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) hem de giden (aracı) yapılandırmaların** tamamen aynı olduğundan emin olun.
+**Hem [gelen](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) hem de giden (aracı) yapılandırmalarının** tam olarak aynı olduğundan emin olun.
 
 ## <a name="view-the-data"></a>Verileri görüntüleme
-Application Insights kaynağında, birleştirilmiş uzak bağımlılık ve yöntem yürütme süreleri [Performans döşemesinin altında][metrics]görünür.
+Application Insights kaynağında, toplanan uzak bağımlılık ve Yöntem yürütme süreleri [performans kutucuğunun altında][metrics]görüntülenir.
 
-Bağımlılık, özel durum ve yöntem raporlarının tek tek örneklerini aramak için [Arama'yı][diagnostic]açın.
+Bağımlılık, özel durum ve Yöntem raporlarının tek tek örneklerini aramak için [arama][diagnostic]' yı açın.
 
-[Bağımlılık sorunlarını tanılama - daha fazla bilgi edinin.](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)
+[Bağımlılık sorunlarını tanılama-daha fazla bilgi edinin](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Sorularınız mı var? Sorunlarınız mı var?
-* Veri yok mu? [Güvenlik duvarı özel durumlarını ayarlama](../../azure-monitor/app/ip-addresses.md)
+* Veri yok mu? [Güvenlik Duvarı özel durumlarını ayarlama](../../azure-monitor/app/ip-addresses.md)
 * [Java sorun giderme](java-troubleshoot.md)
 
 <!--Link references-->

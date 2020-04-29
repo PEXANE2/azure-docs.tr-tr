@@ -1,7 +1,7 @@
 ---
 title: Otomatik tamamlama ve öneriler
 titleSuffix: Azure Cognitive Search
-description: Bu öğretici, açılır listeyi kullanan kullanıcılardan arama terimi girdisi toplamanın bir yolu olarak otomatik tamamlama ve önerileri gösterir. Mevcut bir otel projesi üzerine inşa edilmiştir.
+description: Bu öğreticide, açılan liste kullanarak kullanıcılardan arama terimi girişini toplamanın bir yolu olarak otomatik tamamlama ve öneriler gösterilmektedir. Mevcut bir oteller projesi üzerinde oluşturur.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,40 +9,40 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81641065"
 ---
-# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# öğretici: Otomatik tamamlama ve öneriler ekleme - Azure Bilişsel Arama
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# öğreticisi: otomatik tamamlama ve öneriler ekleme-Azure Bilişsel Arama
 
-Bir kullanıcı arama kutusuna yazmaya başladığında otomatik tamamlamayı (önceden yazma sorguları ve önerilen belgeler) nasıl uygulayacağınızı öğrenin. Bu öğreticide, otomatik olarak tamamlanan sorguları ve öneri sonuçlarını ayrı ayrı ve sonra birlikte göstereceğiz. Bir kullanıcı, kullanılabilir tüm sonuçları bulmak için yalnızca iki veya üç karakter yazmak zorunda kalabilir.
+Kullanıcı bir arama kutusuna yazmaya başladığında otomatik tamamlamayı (typeahead sorguları ve önerilen belgeler) uygulamayı öğrenin. Bu öğreticide, oto tamamlanmış sorguları ve öneri sonuçlarını ayrı olarak ve sonra birlikte göstereceğiz. Bir kullanıcının kullanılabilir tüm sonuçları bulmak için yalnızca iki veya üç karakter yazmanız gerekebilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
-> * Öneri ekle
-> * Önerilere vurgulama ekleme
-> * Otomatik tamamlama ekleme
-> * Otomatik tamamlama ve önerileri birleştirme
+> * Öneri ekleme
+> * Önerilere vurgulama ekleyin
+> * Otomatik tamamlama Ekle
+> * Otomatik tamamlamayı ve önerileri birleştirme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici bir serinin parçasıdır ve C# Tutorial oluşturulan sayfalama projesi üzerine inşa: [Arama sonuçları pagination - Azure Bilişsel Arama](tutorial-csharp-paging.md).
+Bu öğretici, bir serinin parçasıdır ve C# öğreticisinde oluşturulan sayfalama projesindeki derlemeler [: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md).
 
-Alternatif olarak, bu özel öğretici için çözümü indirebilir ve çalıştırabilirsiniz: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
+Alternatif olarak, bu özel öğreticiye yönelik çözümü indirebilir ve çalıştırabilirsiniz: [3-Add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
 
-## <a name="add-suggestions"></a>Öneri ekle
+## <a name="add-suggestions"></a>Öneri ekleme
 
-Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: önerilerin açılır listesi.
+Kullanıcıya alternatifler sağlamanın en basit durumu ile başlayalım: bir öneriler listesi açılır.
 
-1. index.cshtml dosyasında, `@id` **TextBoxFor** deyimini **azureautosuggest**olarak değiştirin.
+1. İndex. cshtml dosyasında, **TextBoxFor** ifadesinin `@id` **azureautoöner**olarak değiştirilmesi.
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-2. Bu ifadeden sonra, kapanış ** &lt;/div&gt;** sonra, bu komut dosyası girin. Bu komut dosyası, önerilen sonuçların açılır listesini sunmak için açık kaynak jQuery UI kitaplığından [Otomatik Tamamlama widget'ından](https://api.jqueryui.com/autocomplete/) yararlanır. 
+2. Bu bildirimin ardından, kapanış ** &lt;/div&gt;** öğesinden sonra bu betiği girin. Bu betik, önerilen sonuçların açılan listesini sunmak için açık kaynak jQuery kullanıcı arabirimi kitaplığındaki [otomatik tamamlama pencere öğesini](https://api.jqueryui.com/autocomplete/) kullanır. 
 
     ```javascript
     <script>
@@ -57,11 +57,11 @@ Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: öneril
     </script>
     ```
 
-    "Azureautosuggest" kimliği yukarıdaki komut dosyasını arama kutusuna bağlar. Widget'ın kaynak seçeneği, API Öner'i iki sorgu parametresiyle çağıran bir Öner yöntemine ayarlanmıştır: **vurgular** ve **bulanık**, her ikisi de bu örnekte yanlış olarak ayarlanmıştır. Ayrıca, aramayı tetiklemek için en az iki karakter gerekir.
+    "Azureautoöner" KIMLIĞI yukarıdaki betiği arama kutusuna bağlar. Pencere öğesinin kaynak seçeneği, önerilen API 'yi iki sorgu parametresiyle çağıran bir öner metoduna ayarlanır: **vurgular** ve **belirsiz**, her ikisi de bu örnekte false olarak ayarlanmıştır. Ayrıca, aramanın tetiklenmesi için en az iki karakter gerekir.
 
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>Görünüme jQuery komut dosyasına referansekleme
+### <a name="add-references-to-jquery-scripts-to-the-view"></a>Görünüme jQuery betiklerine başvuru ekleme
 
-1. jQuery kitaplığına erişmek için &lt;&gt; görünüm dosyasının baş bölümünü aşağıdaki kodla değiştirin:
+1. JQuery kitaplığına erişmek için, görünüm dosyasının &lt;baş&gt; bölümünü şu kodla değiştirin:
 
     ```cs
     <head>
@@ -76,7 +76,7 @@ Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: öneril
     </head>
     ```
 
-2. Yeni bir jQuery başvurusu sunduğumuz için, _Layout.cshtml dosyasındaki **(Görünümler/Paylaşılan** klasörde) varsayılan jQuery başvurusunu kaldırmamız veya açıklama yapmamız gerekir. Aşağıdaki satırları bulun ve gösterildiği gibi ilk komut dosyası satırı nın dışına yorum yapın. Bu değişiklik, jQuery için çakışan başvuruları önler.
+2. Yeni bir jQuery başvurusu sunduğumuz için, _Layout. cshtml dosyasında ( **Görünümler/paylaşılan** klasöründe) varsayılan jQuery başvurusunu da kaldırmanız veya kullanıma açıklamamız gerekir. Aşağıdaki satırları bulun ve gösterildiği gibi ilk komut satırını açıklama olarak belirleyin. Bu değişiklik jQuery 'e yapılan başvuruları önler.
 
     ```html
     <environment include="Development">
@@ -86,11 +86,11 @@ Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: öneril
     </environment>
     ```
 
-    Şimdi önceden tanımlanmış Otomatik tamamlama jQuery işlevlerini kullanabiliriz.
+    Artık önceden tanımlanmış AutoComplete jQuery işlevlerini kullanabiliriz.
 
-### <a name="add-the-suggest-action-to-the-controller"></a>Denetleyiciye Öner eylemini ekleme
+### <a name="add-the-suggest-action-to-the-controller"></a>Denetleyiciye öner eylemini ekleme
 
-1. Ev denetleyicisinde, **Öner** eylemini ekleyin (sayfa **eyleminden** sonra.
+1. Giriş denetleyicisinde, **öner** eylemini (say, **sayfa** eyleminden sonra) ekleyin.
 
     ```cs
         public async Task<ActionResult> Suggest(bool highlights, bool fuzzy, string term)
@@ -123,34 +123,34 @@ Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: öneril
         }
     ```
 
-    **Üst** parametre, kaç sonuç döndürüleceklerini belirtir (belirtilmemişse varsayılan değer 5'tir). Veri ayarlandığında yapılan olan Azure dizininde bir _önerici_ belirtilir ve bu öğretici gibi bir istemci uygulaması tarafından değil. Bu durumda, önerici "sg" olarak adlandırılır ve **HotelName** alanını arar - başka bir şey değil. 
+    **En üstteki** parametre döndürülecek sonuç sayısını belirtir (belirtilmemişse, varsayılan 5 ' tir). Bir _öneri aracı_ , bu öğretici gibi bir istemci uygulaması tarafından değil, veriler ayarlandığında yapılan Azure dizininde belirtilir. Bu durumda, öneri aracı "SG" olarak adlandırılır ve **Hotelname** alanını arar, başka bir şey değildir. 
 
-    Bulanık eşleştirme, "neredeyse ıskalar"ın çıkışa, bir edit mesafesine kadar dahil olmasını sağlar. **Vurgular** parametresi doğru olarak ayarlanırsa, çıktıya kalın HTML etiketleri eklenir. Bu iki parametreyi bir sonraki bölümde doğru olarak ayarlayacaktır.
+    Benzer eşleştirme, çıkışa, tek bir düzenleme uzaklığına kadar "neredeyse isabetsizlik" sağlar. **Vurgular** parametresi true olarak ayarlanırsa, ÇıKıŞA kalın HTML etiketleri eklenir. Sonraki bölümde bu iki parametreyi true olarak ayarlayacağız.
 
-2. Bazı sözdizimi hataları alabilirsiniz. Bu nedenle, aşağıdaki iki **sini dosyanın** en üstüne kullanarak ifadeleri ekleyin.
+2. Bazı sözdizimi hataları alabilirsiniz. Bu durumda, aşağıdaki iki **using** deyimini dosyanın en üstüne ekleyin.
 
     ```cs
     using System.Collections.Generic;
     using System.Linq;
     ```
 
-3. Uygulamayı çalıştırın. Örneğin "po"yı girdiğinizde çeşitli seçenekler edinirken mi? Şimdi "pa"yı dene.
+3. Uygulamayı çalıştırın. "Po" girerken bir dizi seçenek edinirsiniz, örneğin? Şimdi "PA" i deneyin.
 
-    !["po" yazmak iki öneriyi ortaya çıkarır](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
+    !["Po" yazıldığında iki öneri ortaya çıkarır](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
 
-    Girdiğiniz harflerin bir sözcük başlatması ve yalnızca sözcük içinde yer almayan bir sözcük başlatması _gerektiğine_ dikkat edin.
+    Girdiğiniz harflerin bir kelime başlatması _gerektiğini_ ve yalnızca sözcüğe dahil edilmeyeceğini unutmayın.
 
-4. Görünüm komut dosyasında, **&** bulanık olarak doğru ayarlayın ve uygulamayı yeniden çalıştırın. Şimdi "po" girin. Arama bir harfi yanlış var varsayar dikkat edin!
+4. Görünüm betiği içinde, **&belirsiz** ' i true olarak ayarlayın ve uygulamayı yeniden çalıştırın. Şimdi "Po" yazın. Aramada bir harf yanlış olduğunu varsaydığını unutmayın!
  
-    ![Doğru bulanık ayarlanmış "pa" yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
+    ![Benzer şekilde true olarak ayarlanmış "PA" yazıldığında](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    İlgileniyorsanız, [Azure Bilişsel Arama'daki Lucene sorgu sözdizimi](https://docs.microsoft.com/azure/search/query-lucene-syntax) bulanık aramalarda kullanılan mantığı ayrıntılı olarak açıklar.
+    İlgileniyorsanız, [bilişsel arama Azure 'Daki Lucene sorgu söz dizimi](https://docs.microsoft.com/azure/search/query-lucene-syntax) , benzer aramalarda ayrıntılı olarak kullanılan mantığı açıklamaktadır.
 
-## <a name="add-highlighting-to-the-suggestions"></a>Önerilere vurgulama ekleme
+## <a name="add-highlighting-to-the-suggestions"></a>Önerilere vurgulama ekleyin
 
-**Vurgular** parametresini doğru olarak ayarlayarak önerilerin kullanıcıya görünümünü iyileştirebiliriz. Ancak, önce kalın metin görüntülemek için görünüme bazı kod eklemeniz gerekir.
+**Vurgular** parametresini true olarak ayarlayarak, önerilerin görünümünü iyileştirebiliriz. Ancak, önce kalın metni görüntülemek için görünüme bazı kodlar eklememiz gerekiyor.
 
-1. Görünümde (index.cshtml), yukarıda girdiğiniz **azureautosuggest** komut dosyasından sonra aşağıdaki komut dosyasını ekleyin.
+1. Görünümde (index. cshtml), yukarıda girdiğiniz **azureautoöner betiğinden** sonra aşağıdaki betiği ekleyin.
 
     ```javascript
     <script>
@@ -179,25 +179,25 @@ Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: öneril
     </script>
     ```
 
-2. Şimdi metin kutusunun kimliğini aşağıdaki gibi olacak şekilde değiştirin.
+2. Şimdi, metin kutusunun KIMLIĞINI aşağıdaki şekilde okunacak şekilde değiştirin.
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azuresuggesthighlights" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. Uygulamayı yeniden çalıştırın ve girilen metninizin önerilerde kalın olduğunu görmeniz gerekir. "Pa" yazmayı dene.
+3. Uygulamayı yeniden çalıştırın ve girilen metninizi önerilerle görmeniz gerekir. Söyleyin, "PA" yazmayı deneyin.
  
-    ![Vurgulama ile "pa" yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
+    ![Vurgulamaya sahip "PA" yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
 
-4. Yukarıdaki vurgulama komut dosyasında kullanılan mantık kusursuz değildir. Aynı adla iki kez görünen bir terim girerseniz, kalın sonuçlar istediğiniz gibi değildir. "Mo" yazmayı dene.
+4. Yukarıdaki vurgulama betikte kullanılan mantık, foolkanıt değildir. Aynı ada iki kez görüntülenen bir terim girerseniz, cıvadıklardaki sonuçlar gerçekten istediğiniz gibi değildir. "Mo" yazmayı deneyin.
 
-    Bir geliştiricinin yanıtlaması gereken sorulardan biri, "yeterince iyi" çalışan bir komut dosyasının ne zaman olduğu ve tuhaflıklarının ne zaman ele alınması gerektiğidir. Bu öğreticide daha fazla vurgulama almayacağız, ancak kesin bir algoritma bulmak, verileriniz için etkili değilse vurgulamanın göz önünde bulundurulması gereken bir şeydir. Daha fazla bilgi için [Bkz. Hit vurgulama.](search-pagination-page-layout.md#hit-highlighting)
+    Bir geliştiricinin yanıtlaması gereken sorulardan biri, bir komut dosyası "iyi yeterince" ve ne zaman ele alınması gerektiği hakkında bir sorudır. Bu öğreticide herhangi bir şeyi vurgulamıyoruz, ancak kesin bir algoritma bulunması, vurgulamanın verileriniz için etkin olup olmadığını düşünmeyecek bir şeydir. Daha fazla bilgi için bkz. [isabet vurgulama](search-pagination-page-layout.md#hit-highlighting).
 
-## <a name="add-autocomplete"></a>Otomatik tamamlama ekleme
+## <a name="add-autocomplete"></a>Otomatik tamamlama Ekle
 
-Önerilerden biraz farklı olan başka bir varyasyon, sorgu terimini tamamlayan otomatik tamamlamadır (bazen "ileri de yazı" olarak adlandırılır). Yine, kullanıcı deneyimini geliştirmeden önce, en basit uygulama ile başlayacaktır.
+Önerilerden biraz farklı olan başka bir çeşitleme, bir sorgu terimini tamamlayan otomatik tamamlama (bazen "tür-ileri" olarak adlandırılır). Daha sonra, Kullanıcı deneyimini iyileştirmeye başlamadan önce en basit uygulamayla başlayacağız.
 
-1. Önceki komut dosyalarınızı izleyerek görünüme aşağıdaki komut dosyasını girin.
+1. Önceki betiklerinizin ardından, görünüme aşağıdaki betiği girin.
 
     ```javascript
     <script>
@@ -212,13 +212,13 @@ Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: öneril
     </script>
     ```
 
-2. Şimdi metin kutusunun kimliğini değiştirin, böylece aşağıdaki gibi okur.
+2. Şimdi metin kutusunun KIMLIĞINI değiştirin. bu nedenle, aşağıdaki gibi okur.
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautocompletebasic" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. Ev denetleyicisinde, **örneğin Öner** eyleminin altında **Otomatik Tamamlama** eylemini girmemiz gerekir.
+3. Giriş denetleyicisinde, **öner** eyleminin altında bulunan **otomatik tamamlama** eylemini girmemiz gerekir.
 
     ```cs
         public async Task<ActionResult> AutoComplete(string term)
@@ -241,23 +241,23 @@ Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: öneril
         }
     ```
 
-    Öneriler için yaptığımız gibi otomatik tamamlama aramasında "sg" adı verilen aynı *önerici* işlevini kullandığımıza dikkat edin (bu yüzden sadece otel adlarını otomatik tamamlamaya çalışıyoruz).
+    Öneriler için yaptığımız gibi otomatik tamamlama aramasında "SG" adlı aynı *öneri aracı* işlevini kullandığımızda (yalnızca otel adlarını otomatik tamamlamayı denememiz gerekir) dikkat edin.
 
-    Bir dizi **AutocompleteMode** ayarı vardır ve **OneTermWithContext**kullanıyoruz. Ek seçeneklerin açıklaması için [Otomatik Tamamlama API'sine](https://docs.microsoft.com/rest/api/searchservice/autocomplete) bakın.
+    Bir dizi **AutocompleteMode** ayarı vardır ve **Onetermwithcontext**kullandık. Ek seçeneklerin açıklaması için [otomatik tamamlama API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 'sine bakın.
 
-4. Uygulamayı çalıştırın. Açılan listede görüntülenen seçenekler aralığının tek sözcük olduğuna dikkat edin. "re" ile başlayan sözcükleri yazmayı deneyin. Daha fazla harf yazdıkça seçenek sayısının nasıl azaldığına dikkat edin.
+4. Uygulamayı çalıştırın. Açılan listede görüntülenen seçenek aralığının tek sözcüklerdir. "Re" ile başlayan sözcükleri yazmayı deneyin. Daha fazla harf yazıldığında seçenek sayısının nasıl azaldığına dikkat edin.
 
-    ![Temel otomatik tamamlama ile yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
+    ![Temel otomatik tamamlamada yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
 
-    Haliyle, daha önce çalıştırdığınız öneriler komut dosyası muhtemelen bu otomatik tamamlama komut dosyasından daha yararlıdır. Otomatik tamamlamayı daha kullanıcı dostu hale getirmek için öneri aramasına en iyi şekilde eklenir.
+    Bu, daha önce çalıştırdığınız öneri betiği bu otomatik tamamlama betiğinden daha faydalı olabilir. Otomatik tamamlamayı daha kolay hale getirmek için öneri aramasına en iyi şekilde eklenmeleri gerekir.
 
-## <a name="combine-autocompletion-and-suggestions"></a>Otomatik tamamlama ve önerileri birleştirme
+## <a name="combine-autocompletion-and-suggestions"></a>Otomatik tamamlamayı ve önerileri birleştirme
 
-Otomatik tamamlama ve önerileri birleştirmek seçeneklerimizin en karmaşıkıdır ve muhtemelen en iyi kullanıcı deneyimini sağlar. İstediğimiz şey, yazılmakta olan metinle birlikte, metni otomatik olarak tamamlamak için Azure Bilişsel Arama'nın ilk tercihidir. Ayrıca, açılan liste olarak bir dizi öneri istiyoruz.
+Otomatik tamamlamayı ve önerileri birleştirmek, seçeneklerimizin en karmaşıktır ve muhtemelen en iyi kullanıcı deneyimini sağlar. Ne yaptığımız, yazılan metinle satır içi olarak, metni tekrar tamamlamak için Azure Bilişsel Arama ilk seçidir. Ayrıca, açılan liste olarak bir dizi öneri istiyoruz.
 
-Genellikle "satır içi otomatik tamamlama" veya benzer bir ad olarak adlandırılan bu işlevselliği sunan kitaplıklar vardır. Ancak, bu özelliği yerel olarak uygulayacağız, böylece neler olup bittiğini görebilirsiniz. Bu örnekte önce denetleyici üzerinde çalışmaya başlayacağız.
+Bu işlevi sunan kitaplıklar vardır-genellikle "satır içi otomatik tamamlama" veya benzer bir ad olarak adlandırılır. Bununla birlikte, bu özelliği yerel olarak uygulayacağız, bu sayede neler olduğunu görebiliriz. Bu örnekte ilk olarak denetleyicide çalışmaya başlayacağız.
 
-1. Denetleyiciye, belirli sayıda öneriyle birlikte tek bir otomatik tamamlama sonucu döndüren bir eylem eklememiz gerekir. Biz bu eylem **AutoCompleteAndSuggest**çağıracaktır. Ev denetleyicisinde, diğer yeni eylemlerinizi izleyerek aşağıdaki eylemi ekleyin.
+1. Denetleyiciye yalnızca bir otomatik tamamlama sonucu döndüren bir eylem eklememiz gerekiyor, ancak belirtilen sayıda öneri. Bu eylemi **AutocompleteAndSuggest**çağıracağız. Giriş denetleyicisinde, diğer yeni eylemlerinizi izleyerek aşağıdaki eylemi ekleyin.
 
     ```cs
         public async Task<ActionResult> AutocompleteAndSuggest(string term)
@@ -306,9 +306,9 @@ Genellikle "satır içi otomatik tamamlama" veya benzer bir ad olarak adlandır�
         }
     ```
 
-    Bir otomatik tamamlama **seçeneği, tüm** önerilerin ardından sonuç listesinin en üstünde döndürülür.
+    **Sonuçlar** listesinin en üstünde bir otomatik tamamlama seçeneği döndürülür ve tüm öneriler gelir.
 
-2. Görünümde, önce bir hile uygularız, böylece açık gri bir otomatik tamamlama sözcüğü kullanıcı tarafından girilen cesur metnin hemen altında işlenir. HTML bu amaç için göreli konumlandırma içerir. **TextBoxFor** deyimini (ve &lt;çevresindeki&gt; div ifadelerini) aşağıdaki gibi değiştirin, **altında** ikinci bir arama kutusu nun normal arama kutumuzun hemen altında olduğunu belirterek, bu arama kutusunu varsayılan konumundan 39 piksel çekerek!
+2. Görünümde ilk olarak, açık gri otomatik tamamlama sözcüğünün Kullanıcı tarafından girilen beski metin altında oluşturulması için bir el uyguladık. HTML, bu amaçla Göreli konumlandırmayı içerir. **TextBoxFor** deyimini (ve çevreleyen &lt;div&gt; deyimlerini) aşağıdaki şekilde değiştirin. bu arama kutusu 39 piksel olan bu arama kutusunu varsayılan konumlarından çekerek, aşağıda gösterildiği gibi bir ikinci arama kutusunun normal arama kutusumuza doğru olduğunu unutmayın! **underneath**
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -319,9 +319,9 @@ Genellikle "satır içi otomatik tamamlama" veya benzer bir ad olarak adlandır�
     </div>
     ```
 
-    Bu durumda kimliği yeniden **azureautocomplete** olarak değiştirdiğimizi unutmayın.
+    Bu durumda KIMLIĞI yeniden **azureautotamamlamayı** olarak değiştirdik.
 
-3. Ayrıca görünümde, şimdiye kadar girdiğiniz tüm komut dosyalarından sonra aşağıdaki komut dosyasını girin. Çok fazla şey var.
+3. Ayrıca, bu ana kadar girdiğiniz tüm betiklerin ardından, görünümünde aşağıdaki betiği girin. Tam olarak çok büyük bir şey vardır.
 
     ```javascript
     <script>
@@ -430,38 +430,38 @@ Genellikle "satır içi otomatik tamamlama" veya benzer bir ad olarak adlandır�
     </script>
     ```
 
-    Kullanıcının yazdıklarla eşleşip aynı durumda (üst veya alt) kullanıcı nın yazdığı gibi ("pa" "PA", "pA", "Pa" ararken eşleşirken) temel metni temizlemek için hem temel metni temizlemek **için, hem** de üst üste bindirilen metnin düzgün olması için aralık işlevinin akıllıca kullanıldığına dikkat edin.
+    Aralık işlevinin, kullanıcının yazmasıyla aynı büyük/küçük harf (büyük veya daha düşük) ve Kullanıcı yazarken ("PA" ile "PA", "PA", "PA", arama sırasında "PA" ile eşleşir), ancak çakışan metnin nede olduğu şekilde ("PA" ile) aynı durumu (büyük veya küçük) belirlemek için **Interval** işlevinin zekice kullanımına dikkat edin.
 
-    Daha iyi anlamak için senaryodaki yorumları okuyun.
+    Daha fazla bilgi edinmek için betikteki açıklamaları okuyun.
 
-4. Son olarak, saydam hale getirmek için iki HTML sınıfına küçük bir ayarlama yapmamız gerekir. Hotels.css dosyasındaki **searchBoxForm** ve **searchBox** sınıflarına aşağıdaki satırı ekleyin.
+4. Son olarak, iki HTML sınıfının saydam hale getirmek için küçük bir ayarlama yapmanız gerekir. Aşağıdaki satırı, otel. CSS dosyasındaki **Searchboxform** ve **searchbox** sınıflarına ekleyin.
 
     ```html
         background: rgba(0,0,0,0);
     ```
 
-5. Şimdi uygulamayı çalıştırın. Arama kutusuna "pa" girin. Otomatik tamamlama önerisi olarak "saray"ı ve içinde "pa" içeren iki otel alıyor musunuz?
+5. Şimdi uygulamayı çalıştırın. Arama kutusuna "PA" yazın. "PA" içeren iki otel ile birlikte otomatik tamamlama önerisi olarak "damace" edinirsiniz.
 
-    ![Satır İçi otomatik tamamlama ve önerilerle yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
+    ![Satır içi otomatik tamamlama ve önerilerle yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
 
-6. Otomatik tamamlama önerisini kabul etmek için sekme yapmayı deneyin ve ok tuşlarını ve sekme tuşunu kullanarak öneriler seçmeyi deneyin ve fareyi ve tek bir tıklamayla yeniden deneyin. Komut dosyasının tüm bu durumları düzgün bir şekilde işlettiğini doğrulayın.
+6. Otomatik tamamlama önerisini kabul etmek için sekmeyi ve ok tuşlarını ve Tab tuşunu kullanarak önerileri seçmeyi deneyin, fare ve tek bir tıklama kullanarak yeniden deneyin. Betiğin tüm bu durumları doğru şekilde işlediğini doğrulayın.
 
-    Sizin için bu özelliği sunan bir kütüphanede yüklemek için daha kolay olduğuna karar verebilirsiniz, ama şimdi çalışmak için satır lı otomatik tamamlama almak için en az bir yol biliyorum!
+    Bu özelliği sizin için sunan bir kitaplıkta yüklenmeye daha basit olduğuna karar verebilirsiniz, ancak artık iş için satır içi otomatik tamamlamayı tamamlamak için en az bir yol öğrenirsiniz!
 
 ## <a name="takeaways"></a>Paketler
 
-Bu projeden aşağıdaki paketleri göz önünde bulundurun:
+Bu projeden aşağıdaki bu devralmayı göz önünde bulundurun:
 
-* Otomatik tamamlama ("ileri yazma" olarak da bilinir) ve öneriler, kullanıcının tam olarak ne istediğini bulmak için yalnızca birkaç anahtar yazmasını sağlayabilir.
-* Otomatik tamamlama ve öneriler birlikte çalışan zengin bir kullanıcı deneyimi sağlayabilir.
-* Otomatik tamamlama işlevlerini her zaman tüm giriş biçimleriyle test edin.
-* **setInterval** işlevinin kullanılması, UI öğelerini doğrulamada ve düzeltmede yararlı olabilir.
+* Otomatik tamamlama (aynı zamanda "tür ön" olarak da bilinir) ve öneriler, kullanıcının tam olarak istedikleri şeyi bulmak için yalnızca birkaç anahtar yazmasını sağlayabilir.
+* Otomatik tamamlama ve öneriler birlikte çalışarak, zengin bir kullanıcı deneyimi sağlayabilir.
+* Otomatik tamamlama işlevlerini her zaman tüm giriş formlarıyla test edin.
+* **SetInterval** işlevinin kullanılması, Kullanıcı arabirimi öğelerini doğrulamak ve düzeltmek için yararlı olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki öğreticide, tek bir tıklamayla aramaları daraltmak için yönlerini kullanarak kullanıcı deneyimini geliştirmenin başka bir yolunu görüyoruz.
+Sonraki öğreticide, tek bir tıklama ile aramaları daraltmak için modelleri kullanarak Kullanıcı deneyimini geliştirmenin başka bir yoluna göz atacağız.
 
 > [!div class="nextstepaction"]
-> [C# Tutorial: Gezinmeye yardımcı olmak için yönlerini kullanın - Azure Bilişsel Arama](tutorial-csharp-facets.md)
+> [C# öğreticisi: gezintiye yardımcı olması için modelleri kullanma-Azure Bilişsel Arama](tutorial-csharp-facets.md)
 
 

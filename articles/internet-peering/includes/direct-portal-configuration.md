@@ -9,31 +9,31 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: fda22346a44388248e37473bc7891b8a130569c4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681047"
 ---
-1. **Eşleme Oluştur** sayfasında, **Yapılandırma** sekmesinde, burada gösterildiği gibi kutuları doldurun.
+1. **Eşleme oluştur** sayfasında, **yapılandırma** sekmesinde, kutulara aşağıda gösterildiği gibi kutuyu girin.
 
-    * **Peering türü için** **Doğrudan'ı**seçin.
-    * **Microsoft ağı için** **AS8075'i**seçin. ASN 8069 ile bakanlık oluşturmayın. Özel uygulamalar için ayrılmıştır ve yalnızca [Microsoft peering](mailto:peering@microsoft.com)tarafından kullanılır.
-    * **Temel Ücretsiz**olarak **SKU'yı** seçin. Özel uygulamalar için ayrılmış olduğundan Premium Free'i seçmeyin.
-    * Bakmayı ayarlamak istediğiniz **Metro** konumunu seçin.
+    * **Eşleme türü**için **doğrudan**' yi seçin.
+    * **Microsoft ağı**için **AS8075**öğesini seçin. ASN 8069 ile eşleme oluşturmayın. Özel uygulamalar için ayrılmıştır ve yalnızca [Microsoft eşlemesi](mailto:peering@microsoft.com)tarafından kullanılır.
+    * **SKU 'Yu** **temel ücretsiz**olarak seçin. Premium ücretsiz seçmeyin çünkü özel uygulamalar için ayrılmıştır.
+    * Eşlemeyi ayarlamak istediğiniz **Metro** konumunu seçin.
 
         > [!NOTE]
-        > Seçili **Metro** konumunda Microsoft ile zaten karşılaş bağlantılarınız varsa ve bu konumda eşleme ayarlamak için ilk kez Azure portalını kullanıyorsanız, varolan akran bağlantılarınız gösterildiği gibi **Eşleme bağlantıları** bölümünde listelenir. Microsoft, yeni bağlantılarla birlikte tüm bağlantıları tek bir yerde yönetebilmeniz için bu bakan bağlantıları otomatik olarak bir Azure kaynağına dönüştürür. Daha fazla bilgi için bkz. Portalı [kullanarak bir Azure kaynağına doğrudan bakan bir eskiye dönüştürün.](../howto-legacy-direct-portal.md)
+        > Seçili **Metro** konumunda Microsoft ile zaten eşleme bağlantılarınız varsa ve bu konumda eşleme ayarlamak için Azure Portal kullanıyorsanız, mevcut eşleme bağlantılarınız, gösterilen şekilde **eşleme bağlantıları** bölümünde listelenecektir. Microsoft bu eşleme bağlantılarını, yeni bağlantılarla birlikte tek bir yerde yönetebilmeniz için bir Azure kaynağına otomatik olarak dönüştürür. Daha fazla bilgi için bkz. [portalı kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme](../howto-legacy-direct-portal.md).
         >
 
-1. **Peering bağlantıları**altında, kurmak istediğiniz her yeni bağlantı için satır eklemek için **yeni oluştur'u** seçin.
+1. **Eşleme bağlantıları**altında, **Yeni oluştur** ' u seçerek ayarlamak istediğiniz her yeni bağlantı için bir satır ekleyin.
 
-    * Bağlantı ayarlarını yapılandırmak veya değiştirmek için bir satır Için Düzenle düğmesini seçin.
+    * Bağlantı ayarlarını yapılandırmak veya değiştirmek için, bir satır için Düzenle düğmesini seçin.
 
         > [!div class="mx-imgBorder"]
         > ![Düzenle düğmesi](../media/setup-direct-conf-tab-edit.png)
     
-    * Bir satırı silmek için **, ...**  >  **Sil.**
+    * Bir satırı silmek için... seçeneğini belirleyin **.**  >  **Silin**.
 
         > [!div class="mx-imgBorder"]
         > ![Sil düğmesi](../media/setup-direct-conf-tab-delete.png)
@@ -41,33 +41,33 @@ ms.locfileid: "81681047"
     * Burada gösterildiği gibi, bir bağlantı için tüm ayarları sağlamanız gerekir.
 
          > [!div class="mx-imgBorder"]
-         > ![Doğrudan Eşleme Bağlantısı sayfası](../media/setup-direct-conf-tab-connection.png)
+         > ![Doğrudan eşleme bağlantı sayfası](../media/setup-direct-conf-tab-connection.png)
 
-        1. Bağlantının kurulması gereken **Eşleme tesisini** seçin.
-        1. **Oturum Adresi Sağlayıcısı,** ağınızla Microsoft arasında BGP oturumunu ayarlamak için gereken alt ağı kimin sağladığını belirlemek için kullanılır. Alt ağı sağlayabilirseniz, **Eş'i**seçin. Aksi takdirde, **Microsoft** ve [Microsoft'un bakışlarını](mailto:peering@microsoft.com) seçin, sizinle iletişim eve gelecektir. Bu seçeneğin seçilmesi, Microsoft'un eşleme isteğini işlemesi daha uzun sürer. Bazı durumlarda, Microsoft alt ağlar sağlayamadığı için istek reddi ile sonuçlanır.
-        1. Oturum Adresi **Sağlayıcı** seçeneğini **Eş**olarak seçtiyseniz, sırasıyla **Oturum IPv4 öneki** ve **Oturum IPv6 öneki** kutularındaki önek maskeleriyle birlikte IPv4 ve IPv6 adreslerini girin.
-        1. Sırasıyla **Maksimum reklamı yapılan Maksimum IPv4 adreslerine** ve Maksimum reklamı yapılan **IPv6 adres kutularına** reklam verecekolan IPv4 ve IPv6 önekleri numarasını girin.
-        1. Toplam **bant genişliği** kaydırıcısını bağlantının bant genişliğini yansıtacak şekilde ayarlayın.
-        1. Bağlantı ayarlarınızı kaydetmek için **Kaydet'i** seçin.
+        1. Bağlantının ayarlanması gereken **eşleme tesis** ' ı seçin.
+        1. **Oturum adres sağlayıcısı** , ağınız ile MICROSOFT arasında BGP oturumu ayarlamak için gereken alt ağı kimlerin sağladığını belirlemede kullanılır. Alt ağı sağlayabiliyorsanız, **eş**' i seçin. Aksi takdirde, **Microsoft** ve [Microsoft eşlemesi](mailto:peering@microsoft.com) sizinle iletişim kuracaktır. Bu seçeneğin belirlenmesi Microsoft 'un eşleme isteğini işlemesi için daha uzun sürer. Bazı durumlarda Microsoft, istek reddetme isteğine neden olacak alt ağlar sağlayamayabilir.
+        1. **Oturum adresi sağlayıcısı** seçeneğini **eş**olarak seçtiyseniz, **oturum IPv4 ön eki** ve **oturum IPv6 ön eki** kutularındaki önek maskeleri birlikte IPv4 ve IPv6 adreslerini girin.
+        1. **En fazla tanıtılan IPv4 adreslerinde** ve **en yüksek tanıtılan IPv6 adresi** kutularında duyurmanız gereken IPv4 ve IPv6 ön ekleri sayısını girin.
+        1. **Toplam bant genişliği** kaydırıcısını bağlantının bant genişliğini yansıtacak şekilde ayarlayın.
+        1. Bağlantı ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
 
-1. Microsoft'un ağınızla birlikte bulunduğu herhangi bir tesise, daha önce seçtiğiniz **Metro** içinde daha fazla bağlantı eklemek için önceki adımı yineleyin.
+1. Daha önce seçtiğiniz **Metro** kapsamında Microsoft 'un ağınızla birlikte bulunduğu herhangi bir tesiste daha fazla bağlantı eklemek için önceki adımı tekrarlayın.
 
-1. Gerekli tüm bağlantıları ekledikten sonra **Gözden Geçir + oluştur'u**seçin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Eşleme Yapılandırması sekmesi son](../media/setup-direct-conf-tab-final.png)
-
-1. Portalın girdiğiniz bilgilerin temel doğrulanmasını çalıştırdığına dikkat edin. Üstteki *şerit, son doğrulamayı çalıştıran*iletiyi görüntüler... .
+1. Gerekli tüm bağlantıları ekledikten sonra, **gözden geçir + oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Eşleme Doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
+    > ![Eşleme yapılandırma sekmesi son](../media/setup-direct-conf-tab-final.png)
 
-1. İleti nin *Doğrulama'ya geçirilmesinden*sonra bilgilerinizi doğrulayın. **Oluştur'u**seçerek isteği gönderin. İsteğinizi değiştirmek için **Önceki'yi** seçin ve adımları yineleyin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Akran gönderimi](../media/setup-direct-review-tab-submit.png)
-
-1. İsteği gönderdikten sonra dağıtımın bitmesini bekleyin. Dağıtım başarısız olursa, [Microsoft'a başvurun.](mailto:peering@microsoft.com) Burada gösterildiği gibi başarılı bir dağıtım görüntülenir.
+1. Portalın girdiğiniz bilgilerin temel doğrulamasını çalıştırdığına dikkat edin. Üstteki bir şerit *son doğrulama çalıştıran iletiyi görüntüler...*.
 
     > [!div class="mx-imgBorder"]
-    > ![Akran başarısı](../media/setup-direct-success.png)
+    > ![Eşleme doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
+
+1. *Doğrulama başarılı*olduktan sonra, bilgilerinizi doğrulayın. **Oluştur**seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmek için, **önceki** seçeneğini belirleyip adımları yineleyin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Eşleme gönderimi](../media/setup-direct-review-tab-submit.png)
+
+1. İsteği gönderdikten sonra dağıtımın bitmesini bekleyin. Dağıtım başarısız olursa, [Microsoft eşleme](mailto:peering@microsoft.com)ile iletişime geçin. Başarılı bir dağıtım burada gösterildiği gibi görünür.
+
+    > [!div class="mx-imgBorder"]
+    > ![Eşleme başarısı](../media/setup-direct-success.png)

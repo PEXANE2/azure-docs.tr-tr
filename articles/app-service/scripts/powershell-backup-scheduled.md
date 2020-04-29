@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: Zamanlanmış bir yedekleme oluşturma'
-description: Uygulama Hizmeti'nin dağıtımını ve yönetimini otomatikleştirmek için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulama için zamanlanmış bir yedeklemenin nasıl oluşturulacak olduğunu gösterir.
+title: 'PowerShell: zamanlanmış yedekleme oluşturma'
+description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulama için zamanlanmış yedeklemenin nasıl oluşturulacağını gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
@@ -9,17 +9,17 @@ ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 24723d442cdc684e109dee3270cdfbc217fd4f4c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044618"
 ---
-# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>PowerShell'i kullanarak bir web uygulaması için zamanlanmış yedekleme oluşturma
+# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>PowerShell kullanarak bir Web uygulaması için zamanlanmış yedekleme oluşturma
 
 Bu örnek betik, App Service’te ilgili kaynaklarıyla birlikte bir web uygulaması oluşturur ve sonra bu web uygulaması için zamanlanmış bir yedekleme oluşturur. 
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell'i yükleyin ve ardından Azure ile bağlantı oluşturmak için çalıştırın. `Connect-AzAccount` 
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell yükleyip Azure ile bağlantı oluşturmak için öğesini çalıştırın `Connect-AzAccount` . 
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -43,13 +43,13 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Bir Depolama hesabı oluşturur. |
-| [Yeni-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Bir Azure depolama kapsayıcısı oluşturur. |
+| [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Bir Azure depolama kapsayıcısı oluşturur. |
 | [New-AzStorageContainerSASToken](/powershell/module/az.storage/new-AzStoragecontainersastoken) | Azure depolama kapsayıcısı için bir SAS belirteci oluşturur. |
-| [Yeni-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service planı oluşturur. |
-| [Yeni-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Bir web uygulaması oluşturur. |
-| [Edit-AzWebAppBackupConfiguration](/powershell/module/az.websites/edit-azwebappbackupconfiguration) | Web uygulamasının yedekleme yapılandırmasını düzenler. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service planı oluşturur. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Bir web uygulaması oluşturur. |
+| [-AzWebAppBackupConfiguration öğesini Düzenle](/powershell/module/az.websites/edit-azwebappbackupconfiguration) | Web uygulamasının yedekleme yapılandırmasını düzenler. |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Bir web uygulamasının yedekleme listesini alır. |
-| [Get-AzWebAppBackupYapılandırma](/powershell/module/az.websites/get-azwebappbackupconfiguration) | Web uygulamasının yedekleme yapılandırmasını alır. |
+| [Get-AzWebAppBackupConfiguration](/powershell/module/az.websites/get-azwebappbackupconfiguration) | Web uygulamasının yedekleme yapılandırmasını alır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

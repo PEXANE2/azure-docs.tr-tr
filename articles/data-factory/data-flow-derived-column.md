@@ -1,6 +1,6 @@
 ---
-title: Veri akışını eşlemede türemiş sütun dönüşümü
-description: Veri akışı Türetilmiş Sütun dönüşümeşle azure veri fabrikasında ölçekte verileri nasıl dönüştüreceklerini öğrenin.
+title: Eşleme veri akışında türetilmiş sütun dönüşümü
+description: Eşleme veri akışı türetilmiş sütun dönüşümüyle birlikte Azure Data Factory ölçekli verileri nasıl dönüştürebileceğinizi öğrenin.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606495"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede türemiş sütun dönüşümü
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Eşleme veri akışında türetilmiş sütun dönüşümü
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Veri akışınızda yeni sütunlar oluşturmak veya varolan alanları değiştirmek için türetilen sütun dönüşümunu kullanın.
+Veri akışınızda yeni sütunlar oluşturmak veya mevcut alanları değiştirmek için türetilmiş sütun dönüşümünü kullanın.
 
 ## <a name="derived-column-settings"></a>Türetilmiş sütun ayarları
 
-Varolan bir sütunu geçersiz kılmak için sütun açılır yoluyla sütunu seçin. Aksi takdirde, sütun seçim alanını textbox olarak kullanın ve yeni sütunun adını yazın. Türetilen sütunun ifadesini oluşturmak için, [Veri Akışı İfade oluşturucusu](concepts-data-flow-expression-builder.md)açmak için 'İfade gir' kutusunu tıklatın.
+Varolan bir sütunu geçersiz kılmak için sütun açılan listesinden seçin. Aksi takdirde, sütun seçim alanını bir metin kutusu olarak kullanın ve yeni sütunun adını yazın. Türetilmiş sütunun ifadesini oluşturmak için, ' ifadeyi girin ' kutusuna tıklayarak [veri akışı Ifade oluşturucuyu](concepts-data-flow-expression-builder.md)açın.
 
 ![Türetilmiş sütun ayarları](media/data-flow/dc1.png "Türetilmiş sütun ayarları")
 
-Türetilen sütunlar eklemek için varolan bir sütunun üzerine dokunun ve artı simgesini tıklatın. Sütun **ekle** veya sütun **deseni ekle'yi**seçin. Sütun adlarınız kaynaklarınızdan değişkense sütun desenleri kullanışlı olabilir. Daha fazla bilgi için [sütun desenleri'ne](concepts-data-flow-column-pattern.md)bakın.
+Başka türetilmiş sütunlar eklemek için, varolan bir türetilmiş sütunun üzerine gelin ve artı simgesine tıklayın. **Sütun Ekle** veya **sütun Ekle düzenlerini**seçin. Sütun adları kaynaklarınızdan değişken ise, sütun desenleri yararlı olabilir. Daha fazla bilgi için bkz. [sütun desenleri](concepts-data-flow-column-pattern.md).
 
 ![Yeni türetilmiş sütun seçimi](media/data-flow/columnpattern.png "Yeni türetilmiş sütun seçimi")
 
-## <a name="build-schemas-in-output-schema-pane"></a>Output Schema bölmesinde şema lar oluşturun
+## <a name="build-schemas-in-output-schema-pane"></a>Çıktı şeması bölmesinde şema oluşturma
 
-Şemanıza eklediğiniz ve eklediğiniz sütunlar Output Schema bölmesinde listelenir. Burada basit ve karmaşık veri yapıları oluşturabilirsiniz. Ek alanlar eklemek için **sütun ekle'yi**seçin. Hiyerarşioluşturmak için **alt sütun ekle'yi**seçin.
+Değiştirmekte olduğunuz ve şemanıza eklemekte olduğunuz sütunlar çıktı şeması bölmesinde listelenir. Etkileşimli olarak basit ve karmaşık veri yapıları oluşturabilirsiniz. Ek alanlar eklemek için **sütun Ekle**' yi seçin. Hiyerarşileri derlemek için, **alt sütun Ekle**' yi seçin.
 
-![Alt sütun ekleme](media/data-flow/addsubcolumn.png "Alt Sütun Ekle")
+![Alt sütun Ekle](media/data-flow/addsubcolumn.png "Alt sütun Ekle")
 
-Veri akışında karmaşık türleri işleme hakkında daha fazla bilgi için, [veri akışını eşlemede JSON işleme'ye](format-json.md#mapping-data-flow-properties)bakın.
+Veri akışındaki karmaşık türleri işleme hakkında daha fazla bilgi için bkz. [eşleme veri akışında JSON işleme](format-json.md#mapping-data-flow-properties).
 
-![Karmaşık sütun ekleme](media/data-flow/complexcolumn.png "Sütun ekleme")
+![Karmaşık sütun Ekle](media/data-flow/complexcolumn.png "Sütun ekleme")
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -59,13 +59,13 @@ Veri akışında karmaşık türleri işleme hakkında daha fazla bilgi için, [
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akışı `CleanData` alan `MoviesYear` ve iki türetilmiş sütun oluşturan türemiş bir sütundur. İlk türetilmiş sütun, noter türü olarak Derecelendirme değeriyle sütun `Rating` değiştirir. İkinci türetilmiş sütun, adı 'filmler' ile başlayan her sütunla eşleşen bir desendir. Eşleşen her sütun için, 'movie_' ile önceden belirlenmiş eşleşen sütunun değerine eşit bir sütun `movie` oluşturur. 
+Aşağıdaki örnek, gelen akış `CleanData` `MoviesYear` alan ve iki türetilmiş sütun oluşturan adlı bir türetilmiş sütundur. İlk türetilmiş sütun, sütunun, `Rating` derecelendirme değeri olan sütunu bir tamsayı türü olarak değiştirir. İkinci türetilmiş sütun, adı ' Filmler ' ile başlayan her sütunla eşleşen bir modeldir. Eşleşen her sütun için, ' movie_ ' önekli `movie` eşleşen sütunun değerine eşit olan bir sütun oluşturur. 
 
-Veri Fabrikası UX,bu dönüşüm aşağıdaki resim gibi görünür:
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
-![Türetme örneği](media/data-flow/derive-script1.png "Türetme örneği")
+![Örnek türet](media/data-flow/derive-script1.png "Örnek türet")
 
-Bu dönüşüm için veri akışı komut dosyası aşağıdaki snippet bulunmaktadır:
+Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
 
 ```
 MoviesYear derive(
@@ -79,4 +79,4 @@ MoviesYear derive(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Veri Akışı [İfade dilieşleme](data-flow-expression-functions.md)hakkında daha fazla bilgi edinin.
+- [Eşleme veri akışı ifade dili](data-flow-expression-functions.md)hakkında daha fazla bilgi edinin.

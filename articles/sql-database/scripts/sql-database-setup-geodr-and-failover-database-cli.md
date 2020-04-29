@@ -1,6 +1,6 @@
 ---
-title: CLI örnek etkin coğrafi çoğaltma-tek Azure SQL Veritabanı
-description: Azure SQL Veritabanı'nda tek bir veritabanı için etkin coğrafi çoğaltma ayarlamak ve üzerinde başarısız olmak için Azure CLI örnek komut dosyası.
+title: CLı örneği-etkin coğrafi çoğaltma-tek Azure SQL veritabanı
+description: Azure SQL veritabanı 'nda tek bir veritabanı için etkin Coğrafi çoğaltmayı ayarlamak ve yük devri yapmak için Azure CLı örnek betiği.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 3bc6cbe025854286b0a24a34240396eea16292b6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067407"
 ---
-# <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Azure SQL Veritabanı'nda tek bir veritabanı için etkin coğrafi çoğaltma yapılandırmak için CLI'yi kullanın
+# <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırmak için CLı kullanma
 
-Bu Azure CLI komut dosyası örneği, tek bir veritabanı için etkin coğrafi çoğaltmayı yapılandırır ve veritabanının ikincil bir yinelemesine geçemez.
+Bu Azure CLı betik örneği, tek bir veritabanı için etkin Coğrafi çoğaltmayı yapılandırır ve veritabanının ikincil bir çoğaltmasına yük devreder.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -48,13 +48,13 @@ Kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdak
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
-| [az sql db çoğaltma](/cli/azure/sql/db/replica) | Veritabanı çoğaltma komutları. |
+| [az SQL DB Replica](/cli/azure/sql/db/replica) | Veritabanı çoğaltma komutları. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure'daki RHEL sanal makinelerde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma - Linux Sanal Makineler | Microsoft Dokümanlar
-description: Azure'da RHEL sanal makinelerde SQL Server'da kullanılabilirlik grubu dinleyicisi kurma hakkında bilgi edinin
+title: Azure 'da SQL Server RHEL sanal makinelerinde kullanılabilirlik grubu dinleyicisini yapılandırma-Linux Sanal Makineleri | Microsoft Docs
+description: Azure 'daki RHEL sanal makinelerinde SQL Server bir kullanılabilirlik grubu dinleyicisi ayarlama hakkında bilgi edinin
 ms.service: virtual-machines-linux
 ms.subservice: ''
 ms.topic: tutorial
@@ -9,167 +9,167 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 80557eb3776ba17a4922d1fc384b87419ffbd67e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79096581"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure'daki RHEL sanal makinelerde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma
+# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma
 
 > [!NOTE]
-> Sunulan öğretici **genel önizlemededir.** 
+> Sunulan öğretici **genel önizlemede**. 
 >
-> Bu eğitimde RHEL 7.6 ile SQL Server 2017'yi kullanıyoruz, ancak HA'yı yapılandırmak için RHEL 7 veya RHEL 8'de SQL Server 2019'u kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8'de değişti ve makaleye bakmak, [kullanılabilirlik grubu kaynağı oluşturma](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve doğru komutlar hakkında daha fazla bilgi için RHEL 8 kaynakları oluşturmak isteyeceksiniz.
+> Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak HA 'yi yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için, [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
 
-Bu öğretici, Azure'daki RHEL sanal makinelerde SQL Sunucularınız için kullanılabilirlik grubu dinleyicisi oluşturma adımlarının üzerinden geçecektir. Şunları öğrenirsiniz:
+Bu öğreticide, Azure 'daki RHEL sanal makinelerinde SQL sunucularınız için bir kullanılabilirlik grubu dinleyicisi oluşturma adımları ele alınacaktır. Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> - Azure portalında yük dengeleyicisi oluşturma
-> - Yük dengeleyicisi için arka uç havuzunu yapılandırın
-> - Yük dengeleyicisi için bir sonda oluşturma
-> - Yük dengeleme kurallarını ayarlama
-> - Kümedeki yük dengeleyici kaynağını oluşturma
+> - Azure portal yük dengeleyici oluşturma
+> - Yük Dengeleyici için arka uç havuzunu yapılandırma
+> - Yük Dengeleyici için bir araştırma oluşturun
+> - Yük Dengeleme kurallarını ayarlama
+> - Kümede Yük dengeleyici kaynağı oluşturma
 > - Kullanılabilirlik grubu dinleyicisini oluşturma
-> - Dinleyiciye bağlanmayı test etme
-> - Bir başarısızı test etme
+> - Dinleyiciye bağlanan test
+> - Yük devretmeyi test etme
 
 ## <a name="prerequisite"></a>Önkoşul
 
-Tamamlanmış [ **Öğretici: Azure'daki RHEL sanal makinelerde SQL Server için kullanılabilirlik gruplarını yapılandırma**](sql-server-linux-rhel-ha-stonith-tutorial.md)
+Tamamlanan [ **öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma**](sql-server-linux-rhel-ha-stonith-tutorial.md)
 
-## <a name="create-the-load-balancer-in-the-azure-portal"></a>Azure portalında yük bakiyesini oluşturma
+## <a name="create-the-load-balancer-in-the-azure-portal"></a>Azure portal yük dengeleyiciyi oluşturun
 
-Aşağıdaki yönergeler, Oluştur'dan 1'den 4'e kadar olan adımlara kadar götürür ve [Yük bakiyesi - Azure portalı](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md) [makalesinin Azure portalı bölümündeki yük dengeleyicisini yapılandırın.](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal)
+Aşağıdaki yönergeler, yük [dengeleyici-Azure Portal](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md) makalesinin [Azure Portal bölümünde yük dengeleyiciyi oluşturma ve yapılandırma](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal) üzerinden 1 ile 4 arasındaki adımları adım adım ele alır.
 
 ### <a name="create-the-load-balancer"></a>Yük dengeleyiciyi oluşturma
 
-1. Azure portalında, SQL Server sanal makinelerini içeren kaynak grubunu açın. 
+1. Azure portal, SQL Server sanal makinelerini içeren kaynak grubunu açın. 
 
-2. Kaynak grubunda **Ekle'yi**tıklatın.
+2. Kaynak grubunda, **Ekle**' ye tıklayın.
 
-3. Yük **dengeleyicisini** arayın ve ardından arama sonuçlarında **Microsoft**tarafından yayınlanan **Yük Dengeleyicisini**seçin.
+3. **Yük dengeleyici** araması yapın ve ardından arama sonuçlarında **Microsoft**tarafından yayınlanan **Load Balancer**seçin.
 
-4. Yük **Dengeleyici** silik üzerinde **Oluştur'u**tıklatın.
+4. **Load Balancer** dikey penceresinde **Oluştur**' a tıklayın.
 
-5. Yük **bakiyesi oluştur** iletişim kutusunda, yük bakiyesini aşağıdaki gibi yapılandırın:
+5. **Yük dengeleyici oluştur** iletişim kutusunda yük dengeleyiciyi şu şekilde yapılandırın:
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Yük dengeleyicisini temsil eden bir metin adı. Örneğin, **sqlLB**. |
-   | **Tür** |**Iç** |
+   | **Adı** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
+   | **Tür** |**İç** |
    | **Sanal ağ** |Oluşturulan varsayılan VNet **VM1VNET**olarak adlandırılmalıdır. |
-   | **Alt ağ** |SQL Server örneklerinin içinde olduğu alt ağı seçin. Varsayılan **VM1Subnet**olmalıdır.|
-   | **IP adresi ataması** |**Statik** |
-   | **Özel IP adresi** |Kümede `virtualip` oluşturulan IP adresini kullanın. |
+   | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. Varsayılan değer **VM1Subnet**olmalıdır.|
+   | **IP adresi ataması** |**Se** |
+   | **Özel IP adresi** |Kümede oluşturulan `virtualip` IP adresini kullanın. |
    | **Abonelik** |Kaynak grubunuz için kullanılan aboneliği kullanın. |
-   | **Kaynak grubu** |SQL Server örneklerinin içinde olduğu kaynak grubunu seçin. |
+   | **Kaynak grubu** |SQL Server örneklerinin bulunduğu kaynak grubunu seçin. |
    | **Konum** |SQL Server örneklerinin bulunduğu Azure konumunu seçin. |
 
 ### <a name="configure-the-back-end-pool"></a>Arka uç havuzunu yapılandırma
-Azure arka uç adresi havuzu *arka uç havuzunu*çağırır. Bu durumda, arka uç havuzu kullanılabilirlik grubunuzdaki üç SQL Server örneğinin adresleridir. 
+Azure arka uç adres havuzu *arka uç havuzunu*çağırır. Bu durumda, arka uç havuzu, kullanılabilirlik grubunuzdaki üç SQL Server örneğinin adresleridir. 
 
-1. Kaynak grubunuzda, oluşturduğunuz yük bakiyesini tıklatın. 
+1. Kaynak grubunuzda, oluşturduğunuz yük dengeleyiciye tıklayın. 
 
-2. **Ayarlar'da** **Arka Uç havuzlarına**tıklayın.
+2. **Ayarlar**' da, **arka uç havuzları**' na tıklayın.
 
-3. **Arka uç havuzlarında,** arka uç adresi havuzu oluşturmak için **Ekle'yi** tıklatın. 
+3. Arka uç **havuzlarında**, arka uç adres havuzu oluşturmak için **Ekle** ' ye tıklayın. 
 
-4. **Ad**altında **arka uç ekle havuzunda,** arka uç havuzu için bir ad yazın.
+4. **Arka uç Havuzu Ekle**' de, **ad**' ın altında, arka uç havuzu için bir ad yazın.
 
-5. **Associated altında**, **Sanal makine**seçin. 
+5. **İlişkili**' ın altında, **sanal makine**' yi seçin. 
 
-6. Ortamdaki her sanal makineyi seçin ve her seçimle uygun IP adresini ilişkilendirin.
+6. Ortamdaki her bir sanal makineyi seçin ve uygun IP adresini her seçimle ilişkilendirin.
 
-    :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-backend-pool.png" alt-text="Arka uç havuzu ekleme":::
+    :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-backend-pool.png" alt-text="Arka uç Havuzu Ekle":::
 
-7. **Ekle**’ye tıklayın. 
+7. **Ekle**'ye tıklayın. 
 
-### <a name="create-a-probe"></a>Sonda oluşturma
+### <a name="create-a-probe"></a>Araştırma oluşturma
 
-Sonda, Azure'un hangi SQL Server örneğinin şu anda kullanılabilirlik grubu dinleyicisine sahip olduğunu nasıl doğruladığına bağlıdır. Azure, sondayı oluştururken tanımladığınız bir bağlantı noktasındaki IP adresini temel alan hizmeti inceler.
+Araştırma, Azure 'un şu anda kullanılabilirlik grubu dinleyicisine sahip SQL Server örneklerinden hangisinin olduğunu nasıl doğrulayacağını tanımlar. Azure, araştırmayı oluştururken tanımladığınız bir bağlantı noktasındaki IP adresini temel alarak hizmeti yoklayın.
 
-1. Yük dengeleyici **Ayarları** bıçağında, **Sağlık sondalarını**tıklatın. 
+1. Yük dengeleyici **ayarları** dikey penceresinde **sistem durumu araştırmaları**' na tıklayın. 
 
-2. Sağlık **sondaları** bıçağında **Ekle'yi**tıklatın.
+2. **Sistem durumu araştırmaları** dikey penceresinde **Ekle**' ye tıklayın.
 
-3. **Sonda** ekle bıçağındaki sondayı yapılandırın. Sondayı yapılandırmak için aşağıdaki değerleri kullanın:
+3. Araştırma **Ekle** dikey penceresinde araştırmayı yapılandırın. Araştırmayı yapılandırmak için aşağıdaki değerleri kullanın:
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Sondayı temsil eden bir metin adı. Örneğin, **SQLAlwaysOnEndPointProbe**. |
-   | **Protokolü** |**TCP** |
-   | **Bağlantı noktası** |Kullanılabilir herhangi bir bağlantı noktasını kullanabilirsiniz. Örneğin, *59999*. |
+   | **Adı** |Araştırmayı temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointaraştırması**. |
+   | **Protocol** |**TCP** |
+   | **Bağ** |Kullanılabilir herhangi bir bağlantı noktasını kullanabilirsiniz. Örneğin, *59999*. |
    | **Interval** |*5* |
    | **Sağlıksız durum eşiği** |*2* |
 
 4.  **Tamam**'a tıklayın. 
 
-5. Tüm sanal makinelerinize giriş yapın ve aşağıdaki komutları kullanarak sonda bağlantı noktasını açın:
+5. Tüm sanal makinelerinizde oturum açın ve aşağıdaki komutları kullanarak araştırma bağlantı noktasını açın:
 
     ```bash
     sudo firewall-cmd --zone=public --add-port=59999/tcp --permanent
     sudo firewall-cmd --reload
     ```
 
-Azure sondayı oluşturur ve ardından kullanılabilirlik grubu için hangi SQL Server örneğinin dinleyiciye sahip olduğunu test etmek için kullanır.
+Azure, araştırmayı oluşturur ve ardından onu kullanarak, kullanılabilirlik grubu için hangi SQL Server örneğinin dinleyicisi olduğunu test eder.
 
-### <a name="set-the-load-balancing-rules"></a>Yük dengeleme kurallarını ayarlama
+### <a name="set-the-load-balancing-rules"></a>Yük Dengeleme kurallarını ayarlama
 
-Yük dengeleme kuralları, yük bakiyesi trafiğini SQL Server örneklerine nasıl yönlendirir. Bu yük dengeleyicisi için, üç SQL Server örneğinden yalnızca biri aynı anda kullanılabilirlik grubu dinleyici kaynağına sahip olduğundan, doğrudan sunucu iadesini etkinleştirin.
+Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine nasıl yönlendirdiğini yapılandırır. Bu yük dengeleyici için, aynı anda yalnızca üç SQL Server örneklerinden biri kullanılabilirlik grubu dinleyicisi kaynağına sahip olduğu için doğrudan sunucu döndürmeyi etkinleştirirsiniz.
 
-1. Yük dengeleyici **Ayarları** **bıçağında, Yük dengeleme kurallarını**tıklatın. 
+1. Yük dengeleyici **ayarları** dikey penceresinde **Yük Dengeleme kuralları**' na tıklayın. 
 
-2. Yük **dengeleme kuralları** bıçağında **Ekle'yi**tıklatın.
+2. **Yük Dengeleme kuralları** dikey penceresinde **Ekle**' ye tıklayın.
 
-3. Yük **dengeleme kuralı ekle** kuralında, yük dengeleme kuralını yapılandırın. Aşağıdaki ayarları kullanın: 
+3. **Yük Dengeleme kuralları Ekle** dikey penceresinde, Yük Dengeleme kuralını yapılandırın. Aşağıdaki ayarları kullanın: 
 
    | Ayar | Değer |
    | --- | --- |
-   | **Adı** |Yük dengeleme kurallarını temsil eden bir metin adı. Örneğin, **SQLAlwaysOnEndPointListener**. |
-   | **Protokolü** |**TCP** |
-   | **Bağlantı noktası** |*1433* |
-   | **Arka Uç Bağlantı Noktası** |*1433*. Bu kural **Kayan IP (doğrudan sunucu iadesi)** kullandığından bu değer yoksayılır. |
-   | **Sonda** |Bu yük dengeleyicisi için oluşturduğunuz sondanın adını kullanın. |
+   | **Adı** |Yük Dengeleme kurallarını temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointlistener**. |
+   | **Protocol** |**TCP** |
+   | **Bağ** |*1433* |
+   | **Arka Uç Bağlantı Noktası** |*1433*. Bu kural **kayan IP (doğrudan sunucu dönüşü)** kullandığından bu değer yok sayılır. |
+   | **Yokla** |Bu yük dengeleyici için oluşturduğunuz araştırmanın adını kullanın. |
    | **Oturum kalıcılığı** |**Yok** |
-   | **Boşta zaman/zaman ası (dakika)** |*4* |
-   | **Kayan IP (doğrudan sunucu iadesi)** |**Etkin** |
+   | **Boşta kalma zaman aşımı (dakika)** |*4* |
+   | **Kayan IP (doğrudan sunucu dönüşü)** |**Etkin** |
 
-   :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-load-balancing-rule.png" alt-text="Yük dengeleme kuralı ekleme":::
+   :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-load-balancing-rule.png" alt-text="Yük Dengeleme kuralı ekle":::
 
 4. **Tamam**'a tıklayın. 
-5. Azure yük dengeleme kuralını yapılandırır. Şimdi yük bakiyesi, trafiği kullanılabilirlik grubu için dinleyiciyi barındıran SQL Server örneğine yönlendirecek şekilde yapılandırıldı. 
+5. Azure, Yük Dengeleme kuralını yapılandırır. Artık yük dengeleyici, trafiği kullanılabilirlik grubu için dinleyiciyi barındıran SQL Server örneğine yönlendirmek üzere yapılandırılmıştır. 
 
-Bu noktada, kaynak grubunun tüm SQL Server makinelerine bağlanan bir yük dengeleyicisi vardır. Yük dengeleyicisi ayrıca, herhangi bir makinenin kullanılabilirlik grupları isteklerine yanıt verebilmeleri için SQL Server Always On availability group dinleyicisinin IP adresini de içerir.
+Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengeleyici vardır. Yük dengeleyici Ayrıca, her makinenin kullanılabilirlik grupları için isteklere yanıt verebilmeleri için SQL Server Always on kullanılabilirlik grubu dinleyicisi için bir IP adresi de içerir.
 
-## <a name="create-the-load-balancer-resource-in-the-cluster"></a>Kümedeki yük dengeleyici kaynağını oluşturma
+## <a name="create-the-load-balancer-resource-in-the-cluster"></a>Kümede Yük dengeleyici kaynağı oluşturma
 
-1. Birincil sanal makineye giriş yapın. Azure yük dengeleyici sondası bağlantı noktasını etkinleştirmek için kaynağı oluşturmamız gerekir (örneğimizde 59999 kullanılır). Şu komutu çalıştırın:
+1. Birincil sanal makinede oturum açın. Azure yük dengeleyici araştırma bağlantı noktasını etkinleştirmek için kaynak oluşturmanız gerekir (örneğimizde 59999 kullanılır). Şu komutu çalıştırın:
 
     ```bash
     sudo pcs resource create azure_load_balancer azure-lb port=59999
     ```
 
-1. Kaynağı `virtualip` ve `azure_load_balancer` kaynağı içeren bir grup oluşturun:
+1. `virtualip` Ve `azure_load_balancer` kaynağını içeren bir grup oluşturun:
 
     ```bash
     sudo pcs resource group add virtualip_group azure_load_balancer virtualip
     ```
 
-### <a name="add-constraints"></a>Kısıtlama ekleme
+### <a name="add-constraints"></a>Kısıtlama Ekle
 
-1. Azure yük bakiyesi IP adresi ve AG kaynağının aynı düğümüzerinde çalıştığından emin olmak için bir birlikte konum kısıtlaması yapılandırılmalıdır. Şu komutu çalıştırın:
+1. Azure yük dengeleyici IP adresinin ve AG kaynağının aynı düğümde çalıştığından emin olmak için bir birlikte bulundurma kısıtlaması yapılandırılmalıdır. Şu komutu çalıştırın:
 
     ```bash
     sudo pcs constraint colocation add azure_load_balancer ag_cluster-master INFINITY with-rsc-role=Master
     ```
-1. Azure yük bakiyesi IP adresinden önce AG kaynağının çalışır durumda olduğundan emin olmak için bir sıralama kısıtlaması oluşturun. Birlikte konum kısıtlaması bir sıralama kısıtlaması anlamına gelirken, bu onu zorlar.
+1. Azure yük dengeleyici IP adresinden önce AG kaynağının çalışır ve çalışıyor olduğundan emin olmak için bir sıralama kısıtlaması oluşturun. Birlikte bulundurma kısıtlaması bir sıralama kısıtlaması gösterdiği sürece bu uygulamayı zorlar.
 
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start azure_load_balancer
     ```
 
-1. Kısıtlamaları doğrulamak için aşağıdaki komutu çalıştırın:
+1. Kısıtlamaları doğrulamak için şu komutu çalıştırın:
 
     ```bash
     sudo pcs constraint list --full
@@ -190,7 +190,7 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelerine bağlanan bir yük deng
 
 ## <a name="create-the-availability-group-listener"></a>Kullanılabilirlik grubu dinleyicisini oluşturma
 
-1. Birincil düğümde, SQLCMD veya SSMS'te aşağıdaki komutu çalıştırın:
+1. Birincil düğümde, SQLCMD veya SSMS 'de aşağıdaki komutu çalıştırın:
 
     - Aşağıda kullanılan IP adresini `virtualip` IP adresiyle değiştirin.
 
@@ -203,65 +203,65 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelerine bağlanan bir yük deng
     GO
     ```
 
-1. Her VM düğümüne giriş yapın. Ana bilgisayar dosyasını açmak ve her makinedeki ana `ag1-listener` bilgisayar ad çözünürlüğünü ayarlamak için aşağıdaki komutu kullanın.
+1. Her VM düğümünde oturum açın. Konaklar dosyasını açmak ve her makinede için `ag1-listener` konak adı çözümlemesini ayarlamak için aşağıdaki komutu kullanın.
 
     ```
     sudo vi /etc/hosts
     ```
 
-    **vi** düzenleyicisinde, `i` metin eklemek için girin ve boş bir satıra `ag1-listener`IP'yi ekleyin. Sonra `ag1-listener` IP yanında bir boşluk sonra ekleyin.
+    **VI** düzenleyicisinde metin eklemek için `i` girin ve boş bir satıra, ' nin IP 'sini ekleyin `ag1-listener`. Ardından, `ag1-listener` IP 'nin yanındaki bir alandan sonra ekleyin.
 
     ```output
     <IP of ag1-listener> ag1-listener
     ```
 
-    **Vi** düzenleyiciden çıkmak için önce **Esc** tuşuna basın `:wq` ve sonra dosyayı yazmak için komutu girin ve çıkın. Bunu her düğümde yapın.
+    **VI** düzenleyicisinden çıkmak için, önce **ESC** tuşuna basın ve ardından dosyayı yazıp çıkmak için komutunu `:wq` girin. Bunu her düğümde yapın.
 
-## <a name="test-the-listener-and-a-failover"></a>Dinleyiciyi ve başarısızı test edin
+## <a name="test-the-listener-and-a-failover"></a>Dinleyiciyi ve yük devretmeyi test etme
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Kullanılabilirlik grubu dinleyicisini kullanarak SQL Server'a giriş testi
+### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Kullanılabilirlik grubu dinleyicisini kullanarak SQL Server oturum açma
 
-1. Kullanılabilirlik grubu dinleyici adını kullanarak SQL Server'ın birincil düğümüne giriş yapmak için SQLCMD'yi kullanın:
+1. Kullanılabilirlik grubu dinleyicisi adını kullanarak SQL Server birincil düğümünde oturum açmak için SQLCMD kullanın:
 
-    - Daha önce oluşturulmuş bir giriş kullanın `<YourPassword>` ve doğru parolayla değiştirin. Aşağıdaki örnekte `sa` SQL Server ile oluşturulan giriş kullanır.
+    - Daha önce oluşturulmuş bir oturum açma kullanın ve doğru `<YourPassword>` parolayla değiştirin. Aşağıdaki örnek, SQL Server oluşturulan `sa` oturum açma bilgilerini kullanır.
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
     ```
 
-1. Bağlı olduğunuz sunucunun adını denetleyin. SQLCMD'de aşağıdaki komutu çalıştırın:
+1. Bağlı olduğunuz sunucunun adını denetleyin. SQLCMD 'de şu komutu çalıştırın:
 
     ```sql
     SELECT @@SERVERNAME
     ```
 
-    Çıktınız geçerli birincil düğümü göstermelidir. Eğer bir `VM1` failover test hiç bu olmalıdır.
+    Çıktın geçerli birincil düğümü göstermesi gerekir. Bu, bir `VM1` yük devretmeyi hiç test etmemelisiniz olmalıdır.
 
-    Komutu yazarak SQL `exit` oturumundan çıkın.
+    `exit` Komutunu yazarak SQL oturumundan çıkın.
 
-### <a name="test-a-failover"></a>Bir başarısızı test edin
+### <a name="test-a-failover"></a>Yük devretmeyi test etme
 
-1. Birincil yinelemeveya başka bir yineleme üzerinde `<VM2>` el ile başarısız olmak için aşağıdaki komutu çalıştırın. Sunucu `<VM2>` adınızın değeriyle değiştirin.
+1. Birincil çoğaltmayı `<VM2>` veya başka bir çoğaltmayı el ile yük devretmek için aşağıdaki komutu çalıştırın. Sunucu `<VM2>` adınızın değeriyle değiştirin.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Kısıtlamalarınızı denetlerseniz, el ile başarısız olması nedeniyle başka bir kısıtlamanın eklandığını görürsünüz:
+1. Kısıtlamalarınızı denetederseniz, el ile yük devretme nedeniyle başka bir kısıtlamanın eklendiğini görürsünüz:
 
     ```bash
     sudo pcs constraint list --full
     ```
 
-    Kimlikle `cli-prefer-ag_cluster-master` ilgili bir kısıtlama eklandığını göreceksiniz.
+    KIMLIĞI `cli-prefer-ag_cluster-master` olan bir kısıtlamanın eklendiğini görürsünüz.
 
-1. Aşağıdaki komutu `cli-prefer-ag_cluster-master` kullanarak KIMLIĞI ile kısıtlamayı kaldırın:
+1. Aşağıdaki komutu kullanarak kısıtlamayı KIMLIĞIYLE `cli-prefer-ag_cluster-master` kaldırın:
 
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
     ```
 
-1. Küme kaynaklarınızı komutu `sudo pcs resource`kullanarak denetleyin ve birincil örneğin `<VM2>`şimdi olduğunu görmeniz gerekir.
+1. Komutunu `sudo pcs resource`kullanarak küme kaynaklarınızı kontrol edin ve birincil Örneğin şu anda `<VM2>`olduğunu görmeniz gerekir.
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource
@@ -273,25 +273,25 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelerine bağlanan bir yük deng
         virtualip  (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-1. Dinleyici adını kullanarak birincil yinelemeoturum adabınıza giriş yapmak için SQLCMD'yi kullanın:
+1. Dinleyici adını kullanarak birincil yinelemenizdeki oturum açmak için SQLCMD kullanın:
 
-    - Daha önce oluşturulmuş bir giriş kullanın `<YourPassword>` ve doğru parolayla değiştirin. Aşağıdaki örnekte `sa` SQL Server ile oluşturulan giriş kullanır.
+    - Daha önce oluşturulmuş bir oturum açma kullanın ve doğru `<YourPassword>` parolayla değiştirin. Aşağıdaki örnek, SQL Server oluşturulan `sa` oturum açma bilgilerini kullanır.
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
     ```
 
-1. Bağlı olduğunuz sunucuyu denetleyin. SQLCMD'de aşağıdaki komutu çalıştırın:
+1. Bağlı olduğunuz sunucuyu kontrol edin. SQLCMD 'de şu komutu çalıştırın:
 
     ```sql
     SELECT @@SERVERNAME
     ```
 
-    Artık başarısız olduğunuz VM'ye bağlı olduğunuzu görmeniz gerekir.
+    Artık yük devredilen sanal makineye bağlı olduğunu görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure'daki Yük bakiyeleri hakkında daha fazla bilgi için bkz:
+Azure 'daki yük dengeleyiciler hakkında daha fazla bilgi için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure SQL Server VM'lerde kullanılabilirlik grubu için yük dengeleyicisini yapılandırma](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+> [Azure SQL Server VM 'lerde bir kullanılabilirlik grubu için yük dengeleyici yapılandırma](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)

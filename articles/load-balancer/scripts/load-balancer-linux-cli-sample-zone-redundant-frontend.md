@@ -1,5 +1,5 @@
 ---
-title: Kullanılabilirlik bölgeleri arasında yük bakiyesi VM'leri - Azure CLI - Azure Yük Bakiyesi
+title: Kullanılabilirlik alanları genelinde VM 'Leri yük dengelemesi-Azure CLı-Azure Load Balancer
 description: Bu Azure CLI betik örneğinde, farklı kullanılabilirlik alanlarındaki VM’lerde trafik yük dengelemesi gösterilmektedir
 documentationcenter: load-balancer
 author: asudbring
@@ -11,10 +11,10 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: 3e0c86fdf97ec2882858a0a92e22e020001816cd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79218336"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI betiği örneği: Farklı kullanılabilirlik alanlarındaki VM’lerde yük dengeleme

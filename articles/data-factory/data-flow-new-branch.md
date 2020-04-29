@@ -1,6 +1,6 @@
 ---
-title: Veri akışını eşlemede birden çok dal
-description: Birden çok dalla veri akışını eşlemede veri akışlarını çoğaltma
+title: Eşleme veri akışında birden çok dal
+description: Birden çok Dalla eşleme veri akışında veri akışlarını çoğaltma
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: daebd6a4a00d82706ceda68f94736f21b8fe5a84
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606406"
 ---
-# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Veri akışını eşlemede yeni bir dal oluşturma
+# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Eşleme veri akışı 'nda yeni bir dal oluşturma
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aynı veri akışına karşı birden çok işlem ve dönüşüm kümesi yapmak için yeni bir dal ekleyin. Aynı kaynağı birden çok lavabo için veya kendi kendine biraraya gelen verileri bir araya getirmek için kullanmak istediğinizde yeni bir dal eklemek yararlıdır.
+Aynı veri akışına karşı birden çok işlem ve dönüşüm kümesi yapmak için yeni bir dal ekleyin. Yeni bir dal eklemek, birden çok havuz için aynı kaynağı kullanmak veya bir arada verilerin birlikte katılmasını sağlamak istediğinizde faydalıdır.
 
-Dönüşüm listesinden diğer dönüşümlere benzer yeni bir dal eklenebilir. **Yeni Şube,** yalnızca dallandırmaya çalıştığınız dönüşümü izleyen varolan bir dönüşüm olduğunda eylem olarak kullanılabilir.
+Dönüştürme listesinden diğer dönüştürmelere benzer yeni bir dal eklenebilir. **Yeni dal** yalnızca, dala çalıştığınız dönüşümden sonra var olan bir dönüşüm olduğunda bir eylem olarak kullanılabilir olacaktır.
 
-![Yeni bir dal ekleme](media/data-flow/new-branch2.png "Yeni bir dal ekleme")
+![Yeni dal ekleme](media/data-flow/new-branch2.png "Yeni dal ekleme")
 
-Aşağıdaki örnekte, veri akışı taksi yolculuğu verilerini okuyor. Hem gün hem de satıcı tarafından toplanan çıktı gereklidir. Aynı kaynaktan okunan iki ayrı veri akışı oluşturmak yerine, yeni bir dal eklenebilir. Bu şekilde her iki toplama da aynı veri akışının bir parçası olarak yürütülebilir. 
+Aşağıdaki örnekte veri akışı, TAXI seyahat verilerini okuyor. Hem gün hem de satıcı tarafından toplanan çıkış gereklidir. Aynı kaynaktan okunan iki ayrı veri akışı oluşturmak yerine yeni bir dal eklenebilir. Bu şekilde, her iki toplamaları de aynı veri akışının bir parçası olarak yürütülebilir. 
 
-![Yeni bir dal ekleme](media/data-flow/new-branch.png "Yeni bir dal ekleme")
+![Yeni dal ekleme](media/data-flow/new-branch.png "Yeni dal ekleme")

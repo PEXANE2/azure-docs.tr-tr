@@ -1,6 +1,6 @@
 ---
-title: JSON - Azure Time Series Insights sorgularını şekillendirmek için en iyi uygulamalar | Microsoft Dokümanlar
-description: JSON'u şekillendirerek Azure Time Series Öngörüleri sorgu verimliliğinizi nasıl artıreceğinizi öğrenin.
+title: JSON Azure Time Series Insights sorguları şekillendirmeye yönelik en iyi uygulamalar | Microsoft Docs
+description: JSON 'yi şekillendirerek Azure Time Series Insights sorgu verimliliğini geliştirmeyi öğrenin.
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
@@ -10,58 +10,58 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641286"
 ---
-# <a name="shape-json-to-maximize-query-performance"></a>Sorgu performansını en üst düzeye çıkarmak için JSON'u şekillendirin
+# <a name="shape-json-to-maximize-query-performance"></a>Sorgu performansını en üst düzeye çıkarmak için JSON şekli
 
-Bu makalede, Azure Zaman Serisi Öngörüler sorgularınızın verimliliğini en üst düzeye çıkarmak için JSON'un nasıl şekillendirileceklerine ilişkin kılavuzlar sağlanmaktadır.
+Bu makalede, Azure Time Series Insights sorgularınızın verimliliğini en üst düzeye çıkarmak için JSON nasıl şekillendirilebileceğine ilişkin yönergeler sunulmaktadır.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Depolama ihtiyaçlarınızı karşılayacak şekilde JSON'u şekillendirmek için en iyi uygulamaları öğrenin.</br>
+### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>JSON 'ı depolama ihtiyaçlarınızı karşılayacak şekilde şekillendirmeye yönelik en iyi yöntemleri öğrenin.</br>
 
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Zaman Serisi Öngörüleri'ne olayları nasıl gönderdiğinizi düşünün. Yani, her zaman:
+Time Series Insights için nasıl olay gönderileceğini düşünün. Yani, her zaman şunları yapabilirsiniz:
 
-1. Verileri ağ üzerinden olabildiğince verimli bir şekilde gönderin.
-1. Senaryonuza uygun toplamaları gerçekleştirebilmeniz için verilerinizin bir şekilde depolandığınızdan emin olun.
-1. Zaman Serisi Öngörüleri'nin maksimum özellik sınırlarına ulaşmadığınızdan emin olun:
-   - S1 ortamları için 600 özellik (sütun).
-   - S2 ortamları için 800 özellik (sütun).
-
-> [!TIP]
-> Azure Time Series Öngörüleri Önizlemesinde [sınırları ve planlamayı](time-series-insights-update-plan.md) gözden geçirin.
-
-Aşağıdaki kılavuz, mümkün olan en iyi sorgu performansını sağlamaya yardımcı olur:
-
-1. Etiket kimliği gibi dinamik özellikleri özellik adı olarak kullanmayın. Bu kullanım, maksimum özellik sınırına ulaşmaya katkıda bulunur.
-1. Gereksiz özellikler göndermeyin. Bir sorgu özelliği gerekli değilse, göndermemek en iyisidir. Bu şekilde depolama sınırlamalarını önlersiniz.
-1. Ağ üzerinden statik veri göndermemek için [başvuru verilerini](time-series-insights-add-reference-data-set.md) kullanın.
-1. Ağ üzerinden daha verimli veri göndermek için boyut özelliklerini birden çok olay arasında paylaşın.
-1. Derin dizi yuvalama kullanmayın. Zaman Serisi Öngörüleri, nesneleri içeren en fazla iki iç içe dizi düzeyidestekler. Zaman Serisi Öngörüleri, iletideki dizileri özellik değeri çiftleri ile birden çok olaya dönüştürür.
-1. Tüm veya çoğu olay için yalnızca birkaç önlem varsa, bu ölçüleri aynı nesne içinde ayrı özellikler olarak göndermek daha iyidir. Bunları ayrı olarak göndermek, olay sayısını azaltır ve daha az olayın işlenmesi gerektiğinden sorgu performansını artırabilir. Çeşitli önlemler olduğunda, bunları tek bir özellikte değer olarak göndermek, maksimum özellik sınırına ulaşma olasılığını en aza indirir.
-
-## <a name="example-overview"></a>Örnek genel bakış
-
-Aşağıdaki iki örnek, önceki önerileri vurgulamak için olayların nasıl gönderilebildiğini gösterir. Her örnekten sonra, önerilerin nasıl uygulandığını gözden geçirebilirsiniz.
-
-Örnekler, birden çok aygıtın ölçüm veya sinyal gönderdiği bir senaryoya dayanır. Ölçümler veya sinyaller Akış Hızı, Motor Yağ Basıncı, Sıcaklık ve Nem olabilir. İlk örnekte, tüm aygıtlar arasında birkaç ölçüm vardır. İkinci örnekte birçok aygıt vardır ve her aygıt birçok benzersiz ölçüm gönderir.
-
-## <a name="scenario-one-only-a-few-measurements-exist"></a>Senaryo bir: Yalnızca birkaç ölçüm var
+1. Verileri ağ üzerinden mümkün olduğunca verimli bir şekilde gönderin.
+1. Senaryonuza uygun toplamaları gerçekleştirebilmeniz için verilerinizin bir şekilde depolandığından emin olun.
+1. En fazla Time Series Insights Özellik sınırlarına ulaşamadığınızdan emin olun:
+   - S1 ortamları için 600 özellikleri (sütun).
+   - S2 ortamları için 800 Özellikleri (sütunlar).
 
 > [!TIP]
-> Her ölçüm veya sinyali ayrı bir özellik veya sütun olarak göndermenizi öneririz.
+> Azure Time Series Insights önizlemede [limitleri ve planlamayı](time-series-insights-update-plan.md) gözden geçirin.
 
-Aşağıdaki örnekte, dış dizinin ortak boyut değerlerinin paylaşılan bir bölümünü içerdiği tek bir Azure IoT Hub iletisi vardır. Dış dizi, iletinin verimliliğini artırmak için başvuru verilerini kullanır. Başvuru verileri, her olayla birlikte değişmeyen aygıt meta verilerini içerir, ancak veri çözümlemesi için yararlı özellikler sağlar. Ortak boyut değerlerinin toplu hale ilmesi ve referans verilerinin çalıştırıldığı, kablo üzerinden gönderilen baytlarda tasarruf sağlar ve bu da iletiyi daha verimli hale getirir.
+Aşağıdaki kılavuz mümkün olan en iyi sorgu performansını sağlamanıza yardımcı olur:
 
-Azure bulutuna gönderildiğinde JSON'a seri hale getirilmiş bir [IoT Aygıt İletisi nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) kullanarak Time Series Insights GA ortamınıza gönderilen aşağıdaki JSON yükünü göz önünde bulundurun:
+1. Bir etiket KIMLIĞI gibi dinamik özellikleri özellik adı olarak kullanmayın. Bu kullanım, en fazla özellik sınırına ulaşmak için katkıda bulunur.
+1. Gereksiz özellikler göndermeyin. Sorgu özelliği gerekmiyorsa, bunu göndermemek en iyisidir. Bu şekilde depolama sınırlamalarından kaçınabilirsiniz.
+1. Ağ üzerinden statik veri gönderilmesini önlemek için [başvuru verilerini](time-series-insights-add-reference-data-set.md) kullanın.
+1. Ağ üzerinden verileri daha verimli bir şekilde göndermek için birden çok olay arasında boyut özelliklerini paylaşabilirsiniz.
+1. Derin dizi iç içe geçme kullanmayın. Time Series Insights, nesneleri içeren iç içe geçmiş dizilerin en fazla iki düzeyini destekler. Time Series Insights, iletilerdeki dizileri Özellik değeri çiftleriyle birden çok olaya düzleştirir.
+1. Tüm olaylar için yalnızca birkaç ölçü mevcutsa, bu ölçüleri aynı nesne içinde ayrı özellikler olarak göndermek daha iyidir. Bunları ayrı olarak göndermek olayların sayısını azaltır ve daha az olay işlenmesi gerektiğinden sorgu performansını iyileştirebilirler. Birkaç ölçü olduğunda, tek bir özellikte değer olarak göndermek, en fazla özellik sınırına ulaşma olasılığını en aza indirir.
+
+## <a name="example-overview"></a>Örneğe genel bakış
+
+Aşağıdaki iki örnek, önceki önerileri vurgulamak için olayların nasıl gönderileceğini göstermektedir. Her örneği izleyerek önerilerin nasıl uygulandığını inceleyebilirsiniz.
+
+Örnekler, birden çok cihazın ölçüm veya sinyal gönderen bir senaryoya dayalıdır. Ölçümler veya sinyaller Flow ücreti, altyapı yağ baskısı, sıcaklık ve nem olabilir. İlk örnekte, tüm cihazlarda birkaç ölçüm vardır. İkinci örnekte birçok cihaz vardır ve her bir cihaz birçok benzersiz ölçü gönderir.
+
+## <a name="scenario-one-only-a-few-measurements-exist"></a>Senaryo bir: yalnızca birkaç ölçüm mevcuttur
+
+> [!TIP]
+> Her ölçüyü veya sinyali ayrı bir özellik veya sütun olarak göndermenizi öneririz.
+
+Aşağıdaki örnekte, dış dizinin ortak boyut değerlerinin paylaşılan bir bölümünü içerdiği tek bir Azure IoT Hub iletisi vardır. Dış dizi, iletinin verimliliğini artırmak için başvuru verilerini kullanır. Başvuru verileri, her olayla değişmeyen cihaz meta verilerini içerir, ancak veri analizi için yararlı özellikler sağlar. Ortak boyut değerlerini toplu işleme ve başvuru verileri oluşturma, hat üzerinden gönderilen baytlara kaydedilir ve bu da iletiyi daha verimli hale getirir.
+
+Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) kullanarak Time Series Insights GA ortamınıza GÖNDERILEN aşağıdaki JSON yükünü göz önünde bulundurun:
 
 
 ```JSON
@@ -93,32 +93,32 @@ Azure bulutuna gönderildiğinde JSON'a seri hale getirilmiş bir [IoT Aygıt İ
 ]
 ```
 
-* Anahtar özelliği **deviceId**olan başvuru veri tablosu:
+* Anahtar özelliği **DeviceID**olan başvuru verileri tablosu:
 
-   | deviceId | Messageıd | deviceLocation |
+   | deviceId | Ileti | deviceLocation |
    | --- | --- | --- |
-   | FXXX | HAT\_VERİlerİ | AB |
-   | FYYY | HAT\_VERİlerİ | ABD |
+   | FXXX | SATıR\_verileri | AB |
+   | FYYY | SATıR\_verileri | ABD |
 
-* Zaman Serisi Öngörüler etkinlik tablosu, düzleme sonrası:
+* Time Series Insights olay tablosu, düzleştirme sonrasında:
 
-   | deviceId | Messageıd | deviceLocation | timestamp | Serisi. Akış Hızı ft3/s | Serisi. Motor Yağı Basınç psi |
+   | deviceId | Ileti | deviceLocation | timestamp | ilerindeki. Akış oranı ft3/sn | ilerindeki. Motor yağ basıncı psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | HAT\_VERİlerİ | AB | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
-   | FXXX | HAT\_VERİlerİ | AB | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FYYY | HAT\_VERİlerİ | ABD | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX | SATıR\_verileri | AB | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | SATıR\_verileri | AB | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | SATıR\_verileri | ABD | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
-> - **DeviceId** sütunu, filodaki çeşitli aygıtlar için sütun üstbilgisi olarak hizmet verir. **DeviceId** değerinin kendi özellik adını niçin diğer beş sütunla birlikte 595 (S1 ortamları için) veya 795 (S2 ortamları için) ile sınırlandırır.
-> - Gereksiz özelliklerden (örneğin, yapı ve model bilgileri) kaçınılır. Özellikler gelecekte sorgulanamayacağından, bunları ortadan kaldırmak daha iyi ağ ve depolama verimliliği sağlar.
-> - Referans veriler ağ üzerinden aktarılan bayt sayısını azaltmak için kullanılır. İki öznitelikleri **messageId** ve **deviceLocation** anahtar özelliği **deviceId**kullanılarak birleştirilir. Bu veriler giriş zamanında telemetri verileriyle birleştirilir ve daha sonra sorgulama için Time Series Insights'ta saklanır.
-> - Time Series Insights tarafından desteklenen en fazla iç içe geçme miktarı olan iki iç içe geçme katmanı kullanılır. İç içe gelen dizilerden kaçınmak çok önemlidir.
-> - Ölçüler aynı nesne içinde ayrı özellikler olarak gönderilir, çünkü birkaç ölçü vardır. İşte, **seri. Akış Hızı psi** ve **serisi. Motor Yağı Basınç ft3/s** benzersiz sütunlar vardır.
+> - **DeviceID** sütunu, bir Fleet içindeki çeşitli cihazlar için sütun üst bilgisi görevi görür. **DeviceID** değerinin kendi özellik adı, diğer beş sütunlu ile toplam cihazları 595 (S1 ortamları için) veya 795 (S2 ortamları için) olarak sınırlar.
+> - Gereksiz özellikler engellenir (örneğin, oluşturma ve model bilgisi). Özellikler gelecekte sorgulanmayacak, bunları ortadan kaldıran daha iyi ağ ve depolama verimliliği sağlanır.
+> - Başvuru verileri, ağ üzerinden aktarılan bayt sayısını azaltmak için kullanılır. **MessageID** ve **devicelocation** iki öznitelik, **DeviceID**anahtar özelliği kullanılarak birleştirilir. Bu veriler, giriş zamanında telemetri verileriyle birleştirilir ve daha sonra sorgulamak için Time Series Insights depolanır.
+> - Time Series Insights tarafından desteklenen en yüksek iç içe geçme miktarı olan iki iç içe geçme katmanı kullanılır. Derin iç içe dizilerden kaçınmak önemlidir.
+> - Ölçüler, birkaç ölçü olduğundan aynı nesne içinde ayrı özellikler olarak gönderilir. Burada, **serisi. Akış hızı psi** ve **serisi. Motor yağ basıncı ft3/s** , benzersiz sütunlardır.
 
-## <a name="scenario-two-several-measures-exist"></a>Senaryo iki: Çeşitli önlemler var
+## <a name="scenario-two-several-measures-exist"></a>Senaryo iki: birkaç ölçü mevcuttur
 
 > [!TIP]
-> Ölçümleri "tür", "birim" ve "değer" tuples olarak göndermenizi öneririz.
+> Ölçümleri "tür", "birim" ve "değer" tanımlama grupları olarak göndermenizi öneririz.
 
 Örnek JSON yükü:
 
@@ -163,43 +163,43 @@ Azure bulutuna gönderildiğinde JSON'a seri hale getirilmiş bir [IoT Aygıt İ
 ]
 ```
 
-* Anahtar özelliklere sahip referans veri tablosu **deviceId** ve **series.tagId**:
+* Anahtar özellikleri **DeviceID** ve **Series. TagId**olan başvuru verileri tablosu:
 
-   | deviceId | dizi.tagId | Messageıd | deviceLocation | type | unit |
+   | deviceId | Series. TagId | Ileti | deviceLocation | type | unit |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | HAT\_VERİlerİ | AB | Akış Hızı | ft3/s |
-   | FXXX | oilPressure | HAT\_VERİlerİ | AB | Motor Yağ Basıncı | psi |
-   | FYYY | pumpRate | HAT\_VERİlerİ | ABD | Akış Hızı | ft3/s |
-   | FYYY | oilPressure | HAT\_VERİlerİ | ABD | Motor Yağ Basıncı | psi |
+   | FXXX | porate oranı | SATıR\_verileri | AB | Akış hızı | ft3/s |
+   | FXXX | Oilbasınç | SATıR\_verileri | AB | Motor yağ basıncı | psi |
+   | FYYY | porate oranı | SATıR\_verileri | ABD | Akış hızı | ft3/s |
+   | FYYY | Oilbasınç | SATıR\_verileri | ABD | Motor yağ basıncı | psi |
 
-* Zaman Serisi Öngörüler etkinlik tablosu, düzleme sonrası:
+* Time Series Insights olay tablosu, düzleştirme sonrasında:
 
-   | deviceId | dizi.tagId | Messageıd | deviceLocation | type | unit | timestamp | series.value |
+   | deviceId | Series. TagId | Ileti | deviceLocation | type | unit | timestamp | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | HAT\_VERİlerİ | AB | Akış Hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | HAT\_VERİlerİ | AB | Motor Yağ Basıncı | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | HAT\_VERİlerİ | AB | Akış Hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | HAT\_VERİlerİ | AB | Motor Yağ Basıncı | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | pumpRate | HAT\_VERİlerİ | ABD | Akış Hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | HAT\_VERİlerİ | ABD | Motor Yağ Basıncı | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX | porate oranı | SATıR\_verileri | AB | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | Oilbasınç | SATıR\_verileri | AB | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | porate oranı | SATıR\_verileri | AB | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | Oilbasınç | SATıR\_verileri | AB | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | porate oranı | SATıR\_verileri | ABD | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | Oilbasınç | SATıR\_verileri | ABD | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
-> - DeviceId **deviceId** ve **series.tagId** sütunları, filodaki çeşitli aygıtlar ve etiketler için sütun başlıkları olarak hizmet verir. Her birinin kendi özniteliği olarak kullanılması sorguyu diğer altı sütunla birlikte 594 (S1 ortamları için) veya 794 (S2 ortamları için) toplam aygıtlarıyla sınırlar.
-> - İlk örnekte belirtilen nedenden dolayı gereksiz özelliklerden kaçınıldı.
-> - Referans verileri **deviceId**tanıtarak ağ üzerinden aktarılan bayt sayısını azaltmak için kullanılır , **messageId** ve **deviceLocation**benzersiz çifti için kullanılır. Kompozit anahtar **series.tagId** **türü** ve **birim**benzersiz çifti için kullanılır. Bileşik anahtar **deviceId** ve **series.tagId** çiftinin dört değere başvurmak için kullanılmasını sağlar: **messageId, deviceLocation, type** ve **unit**. Bu veriler giriş zamanında telemetri verileriile birleştirilir. Daha sonra sorgulama için Time Series Insights'ta saklanır.
-> - İlk örnekte belirtilen nedenden dolayı iki iç içe geçme katmanı kullanılır.
+> - **DeviceID** ve **Series. TagId** sütunları, bir Fleet içindeki çeşitli cihazlar ve Etiketler için sütun üst bilgileri olarak görev yapar. Her birinin kendi özniteliği olarak kullanılması, sorguyu 594 (S1 ortamları için) veya 794 (S2 ortamları için) ile diğer altı sütunlu toplam cihaz sayısını sınırlar.
+> - İlk örnekte alıntı yapılan nedenden dolayı gereksiz özellikler atlanmıştı.
+> - Başvuru verileri, benzersiz **MessageID** ve **devicelocation**için kullanılan **DeviceID**'ye bakarak ağ üzerinden aktarılan bayt sayısını azaltmak için kullanılır. Bileşik anahtar **serisi. TagId** , **türü** ve **birimi**benzersiz çifti için kullanılır. Bileşik anahtar, **DeviceID** ve **Series. TagId** çiftinin dört değere başvurmak için kullanılmasına izin verir: **MessageID, devicelocation, Type** ve **Unit**. Bu veriler, giriş zamanında telemetri verileriyle birleştirilir. Daha sonra sorgulamak için Time Series Insights depolanır.
+> - İkinci iç içe geçme katmanı, ilk örnekte alıntı yapılan nedenle kullanılır.
 
-### <a name="for-both-scenarios"></a>Her iki senaryo için de
+### <a name="for-both-scenarios"></a>Her iki senaryo için
 
-Çok sayıda olası değere sahip bir özellik için, her değer için yeni bir sütun oluşturmak yerine tek bir sütun içinde farklı değerler olarak göndermek en iyisidir. Önceki iki örnekten:
+Çok sayıda olası değeri olan bir özellik için, her bir değer için yeni bir sütun oluşturmak yerine, tek bir sütunda ayrı değerler olarak gönderilmesi en iyisidir. Önceki iki örnekten:
 
-  - İlk örnekte, birkaç özelliğin birkaç değeri vardır, bu nedenle her biri ayrı bir özellik yapmak uygundur.
-  - İkinci örnekte, ölçüler tek tek özellikler olarak belirtilmemiştir. Bunun yerine, ortak bir seri özelliği altında bir dizi değer veya ölçüler dir. Yeni anahtar **tagId** gönderilir, düzleştirilmiş tabloda yeni sütun **series.tagId** oluşturur. Yeni özellikler **türü** ve **birimi,** özellik sınırına ulaşılamasın diye başvuru verileri kullanılarak oluşturulur.
+  - İlk örnekte, birkaç özellik birkaç değere sahiptir, bu nedenle her birini ayrı bir özellik yapmak uygun olur.
+  - İkinci örnekte ölçüler ayrı özellikler olarak belirtilmez. Bunun yerine, ortak bir seri özelliği altındaki değer veya ölçülerden oluşan bir dizidir. Yeni anahtar **TagId** gönderilir. Bu, düzleştirilmiş tablodaki New **. TagId** sütununu oluşturur. Yeni Özellikler **türü** ve **birim** , özellik sınırına ulaşılmaması için başvuru verileri kullanılarak oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Buluta IoT Hub aygıt iletileri](../iot-hub/iot-hub-devguide-messages-construct.md)gönderme hakkında daha fazla bilgi edinin.
+- [IoT Hub cihaz iletilerini buluta](../iot-hub/iot-hub-devguide-messages-construct.md)gönderme hakkında daha fazla bilgi edinin.
 
-- Zaman Serisi Öngörüleri veri erişimi REST API'nin sorgu sözdizimi hakkında daha fazla bilgi edinmek için [Azure Zaman Serisi Öngörüleri sorgu sözdizimini](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) okuyun.
+- Time Series Insights veri erişimi REST API sorgu sözdizimi hakkında daha fazla bilgi edinmek için [Azure Time Series Insights sorgu söz dizimini](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) okuyun.
 
-- [Olayları nasıl şekillendireceklerini](./time-series-insights-send-events.md)öğrenin.
+- [Olayları nasıl şekillendirileyeceğinizi](./time-series-insights-send-events.md)öğrenin.

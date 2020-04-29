@@ -1,154 +1,154 @@
 ---
-title: Fiziksel sunucular için bir Azure Geçiş cihazı ayarlama
-description: Fiziksel sunucu değerlendirmesi için bir Azure Geçir cihazını nasıl ayarlayatısınız öğrenin.
+title: Fiziksel sunucular için Azure geçişi gereci ayarlama
+description: Fiziksel sunucu değerlendirmesi için bir Azure geçişi gereci ayarlamayı öğrenin.
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538282"
 ---
-# <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir cihaz ayarlama
+# <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir gereç ayarlama
 
-Bu makalede, Azure Geçir: Sunucu Değerlendirmesi aracıyla fiziksel sunucuları değerlendiriyorsanız Azure Geçir cihazının nasıl ayarlanır.
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi aracı ile fiziksel sunucuları değerlendirmek için Azure geçişi gerecinin nasıl ayarlanacağı açıklanır.
 
-Azure Geçir cihazı, Azure Geçir Sunucusu Değerlendirmesi tarafından aşağıdakileri yapmak için kullanılan hafif bir cihazdır:
+Azure geçişi gereci, aşağıdakileri yapmak için Azure geçişi sunucu değerlendirmesi tarafından kullanılan hafif bir gereç.
 
-- Şirket içi sunucuları keşfedin.
-- Keşfedilen sunucular için meta verileri ve performans verilerini Azure Geçiş Sunucu Değerlendirmesi'ne gönderin.
+- Şirket içi sunucuları bulun.
+- Bulunan sunucular için meta verileri ve performans verilerini Azure geçişi sunucu değerlendirmesi ' ne gönderin.
 
-Azure Geçiş cihazı hakkında [daha fazla bilgi edinin.](migrate-appliance.md)
-
-
-## <a name="appliance-deployment-steps"></a>Cihaz dağıtım adımları
-
-Cihazı kurmak için:
-- Azure portalından Azure Geçir yükleyici komut dosyası içeren sıkıştırılmış bir dosya indirin.
-- Sıkıştırılmış dosyadan içeriğini ayıklayın. PowerShell konsoluna yönetim ayrıcalıklarıyla başlatın.
-- Cihaz web uygulamasını başlatmak için PowerShell komut dosyasını çalıştırın.
-- Cihazı ilk kez yapılandırın ve Azure Geçiş projesine kaydedin.
-
-## <a name="download-the-installer-script"></a>Yükleyici komut dosyasını indirin
-
-Cihaz için sıkıştırılmış dosyayı indirin.
-
-1. **Geçiş Hedefleri** > **Sunucularında** > **Azure Geçir: Sunucu Değerlendirmesi**, **Keşfet'i**tıklatın.
-2. **Discover makinelerinde** >  **Not virtualized/Other****makineleriniz sanallaştırıldı mı?**
-3. Sıkıştırılmış dosyayı indirmek için **İndir'i** tıklatın.
-
-    ![VM'yi İndir](./media/tutorial-assess-physical/download-appliance.png)
+Azure geçişi gereci hakkında [daha fazla bilgi edinin](migrate-appliance.md) .
 
 
-### <a name="verify-security"></a>Güvenliği doğrula
+## <a name="appliance-deployment-steps"></a>Gereç dağıtım adımları
 
-Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını kontrol edin.
+Gereci kurmak için şunları yapın:
+- Azure geçişi yükleyicisi komut dosyasıyla Azure portal sıkıştırılmış bir dosyayı indirin.
+- Sıkıştırılmış dosyadan içerikleri ayıklayın. Yönetim ayrıcalıklarıyla PowerShell konsolunu başlatın.
+- Gereç Web uygulamasını başlatmak için PowerShell betiğini yürütün.
+- Gereci ilk kez yapılandırın ve Azure geçişi projesi ile kaydedin.
+
+## <a name="download-the-installer-script"></a>Yükleyici betiğini indir
+
+Gereç için daraltılmış dosyayı indirin.
+
+1. **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2.  > Makinelerde **bulunan makineler****sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' e tıklayın.
+3. Sıkıştırılmış dosyayı indirmek için **İndir** ' e tıklayın.
+
+    ![VM 'yi indir](./media/tutorial-assess-physical/download-appliance.png)
+
+
+### <a name="verify-security"></a>Güvenliği doğrulama
+
+Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
-2. Sıkıştırılanan dosya için karma oluşturmak için aşağıdaki komutu çalıştırın:
+2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Genel bulut için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - Devlet bulutu için örnek kullanım:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Karma değerleri doğrulayın:
+    - Kamu Bulutu için örnek kullanım:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Karma değerleri doğrula:
  
-    - Genel bulut için (en son cihaz sürümü için):
+    - Genel bulut için (en son gereç sürümü için):
 
         **Algoritma** | **Karma değeri**
           --- | ---
           MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-    - Azure yönetimi için (en son cihaz sürümü için):
+    - Azure Kamu için (en son gereç sürümü için):
 
         **Algoritma** | **Karma değeri**
           --- | ---
           MD5 | f81c155fc4a1409901caea948713913f
 
 
-## <a name="run-the-azure-migrate-installer-script"></a>Azure Geçir yükleyici komut dosyasını çalıştırma
-Yükleyici komut dosyası aşağıdakileri yapar:
+## <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
+Yükleyici betiği şunları yapar:
 
-- Fiziksel sunucu bulma ve değerlendirme için aracılar ve bir web uygulaması yükler.
-- Windows Etkinleştirme Hizmeti, IIS ve PowerShell ISE dahil olmak üzere Windows rollerini yükleyin.
-- IIS yeniden yazılabilir bir modül indirin ve yükler. [Daha fazla bilgi edinin](https://www.microsoft.com/download/details.aspx?id=7435).
-- Azure Geçiş için kalıcı ayar ayrıntılarıyla bir kayıt defteri anahtarını (HKLM) güncelleştirir.
-- Yol altında aşağıdaki dosyaları oluşturur:
-    - **Config Files**: %Programdata%\Microsoft Azure\Config
-    - **Günlük Dosyaları**: %Programdata%\Microsoft Azure\Günlükler
+- Fiziksel sunucu keşfi ve değerlendirmesi için aracıları ve bir Web uygulamasını kurar.
+- Windows etkinleştirme hizmeti, IIS ve PowerShell ıSE dahil Windows rollerini yükler.
+- Bir IIS yeniden yazılabilir modülünü indirip yükler. [Daha fazla bilgi edinin](https://www.microsoft.com/download/details.aspx?id=7435).
+- Azure geçişi için kalıcı ayar ayrıntılarıyla bir kayıt defteri anahtarını (HKLM) güncelleştirir.
+- Yolun altında aşağıdaki dosyaları oluşturur:
+    - **Yapılandırma dosyaları**:%ProgramData%\Microsoft Azure\Config
+    - **Günlük dosyaları**:%ProgramData%\Microsoft Azure\Logs
 
-Komut dosyasını aşağıdaki gibi çalıştırın:
+Betiği aşağıdaki gibi çalıştırın:
 
-1. Sıkıştırılmış dosyayı sunucuda cihazı barındıracak bir klasöre ayıklayın.  Komut dosyasını varolan bir Azure Geçir cihazında bir makinede çalıştırmadığınızdan emin olun.
-2. PowerShell'i yönetim (yüksek) ayrıcalığıyla yukarıdaki sunucuda başlatın.
-3. PowerShell dizinini indirilen sıkıştırılmış dosyadan içeriğin ayıklandığı klasörle değiştirin.
-4. **AzureMigrateInstaller.ps1** adlı komut dosyasını aşağıdaki komutu çalıştırarak çalıştırın:
+1. Sıkıştırılmış dosyayı, Gereç barındıracak sunucuda bir klasöre ayıklayın.  Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
+2. Yönetim (yükseltilmiş) ayrıcalığıyla yukarıdaki sunucuda PowerShell 'i başlatın.
+3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan içeriğin ayıklandığı klasör olarak değiştirin.
+4. Aşağıdaki komutu çalıştırarak **AzureMigrateInstaller. ps1** adlı betiği çalıştırın:
 
     - Genel bulut için:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
     - Azure Kamu için:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-    Komut dosyası, başarılı bir şekilde bittiğinde cihaz web uygulamasını başlatacaktır.
+    Betik, başarıyla tamamlandığında gereç Web uygulamasını başlatacaktır.
 
-Herhangi bir sorunla karşılaşırsanız, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log adresindeki komut dosyası günlüklerine erişebilirsiniz.
+Herhangi bir sorun yaşıyorsanız, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log dosyasına komut dosyası günlüklerine erişebilirsiniz.
 
 
 
-### <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
+### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
-VM cihazının [genel](migrate-appliance.md#public-cloud-urls) ve [resmi](migrate-appliance.md#government-cloud-urls) bulutlar için Azure URL'lerine bağlanabileceğinden emin olun.
+Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
-## <a name="configure-the-appliance"></a>Cihazı yapılandırın
+## <a name="configure-the-appliance"></a>Gereci yapılandırma
 
-Cihazı ilk kez ayarlayın.
+Gereci ilk kez ayarlayın.
 
-1. VM'ye bağlanabilen herhangi bir makinede tarayıcı açın ve cihaz web uygulamasının URL'sini açın: **https:// cihaz adı veya IP*adresi*: 44368**.
+1. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
 
-   Alternatif olarak, uygulama kısayolu tıklayarak masaüstünden uygulamayı açabilirsiniz.
-2. Web uygulamasında > **ön koşulları ayarlayın,** aşağıdakileri yapın:
-    - **Lisans**: Lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
-    - **Bağlantı**: Uygulama, VM'nin internet erişimi ne olduğunu denetler. VM proxy kullanıyorsa:
-        - **Proxy ayarlarını**tıklatın ve proxy adresini ve dinleme http://ProxyIPAddress http://ProxyFQDNbağlantı noktasını formda veya .
+   Alternatif olarak, uygulama kısayoluna tıklayarak uygulamayı masaüstünden açabilirsiniz.
+2. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
+    - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
+    - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
+        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya http://ProxyIPAddress http://ProxyFQDNbiçiminde belirtin.
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
-    - **Zaman eşitleme**: Zaman doğrulanır. VM keşfinin düzgün çalışması için cihazdaki süre internet süresiyle uyumlu olmalıdır.
-    - **Yükleme güncelleştirmeleri**: Azure Geçir Sunucusu Değerlendirmesi, cihazın en son güncelleştirmeleri yüklü olduğunu denetler.
+    - **Zaman eşitleme**: Saat doğrulandı. VM bulmanın düzgün çalışması için gereç süresi internet saatine eşit olmalıdır.
+    - **Güncelleştirmeleri yükleme**: Azure geçişi sunucu değerlendirmesi, gerecin en son güncelleştirmelerin yüklü olduğunu denetler.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Cihazı Azure Geçiş ile kaydedin
+### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. **Giriş Yap'ı**tıklatın. Görünmüyorsa, tarayıcıdaki açılır pencere engelleyicisini devre dışı bıraktığınızdan emin olun.
+1. **Oturum aç**' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
 2. Yeni sekmede, Azure kimlik bilgilerinizi kullanarak oturum açın.
-    - Kullanıcı adınız ve şifrenizle oturum açın.
+    - Kullanıcı adınızla ve parolanızla oturum açın.
     - PIN ile oturum açma desteklenmez.
-3. Başarılı bir şekilde oturum imzaladıktan sonra web uygulamasına geri dön.
-4. Azure Geçiş projesinin oluşturulduğu aboneliği seçin. Sonra projeyi seçin.
-5. Cihaz için bir ad belirtin. Ad 14 karakter veya daha az alfanümerik olmalıdır.
-6. **Kaydol'u**tıklatın.
+3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
+4. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
+5. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
+6. **Kaydol**' a tıklayın.
 
 
-## <a name="start-continuous-discovery"></a>Sürekli keşfi başlatma
+## <a name="start-continuous-discovery"></a>Sürekli bulmayı Başlat
 
-Cihazdan fiziksel sunuculara bağlanın ve keşfi başlatın.
+Gerecden fiziksel sunuculara bağlanın ve bulmayı başlatın.
 
-1. Cihazın sunucuları bulmak için kullanacağı hesap kimlik bilgilerini belirtmek için **Kimlik Bilgileri Ekle'yi** tıklatın.  
-2. Kimlik bilgileri için uygun bir ad olan **İşletim Sistemi'ni**ve kullanıcı adını ve parolayı belirtin. Daha sonra **Ekle**'ye tıklayın.
-Windows ve Linux sunucuları için her biri bir kimlik bilgileri kümesi ekleyebilirsiniz.
-4. **Sunucu ekle'yi**tıklatın ve sunucu ayrıntılarını belirtin- FQDN/IP adresi ve sunucuya bağlanmak için kimlik bilgilerinin dostu adı (satır başına bir giriş).
-3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, bulunabilecek sunucuların listesi gösterilir.
-    - Bir sunucu için doğrulama başarısız olursa, **Durum** sütunundaki simgenin üzerine geçerek hatayı gözden geçirin. Sorunları düzeltin ve yeniden doğrulayın.
-    - Bir sunucukaldırmak için **Sil'>** seçin.
-4. Doğrulamadan sonra **Kaydet'i** tıklatın ve bulma işlemini başlatmak için keşfi başlatın.
+1. Gerecin sunucuları keşfetme için kullanacağı hesap kimlik bilgilerini belirtmek için **kimlik bilgileri ekle** ' ye tıklayın.  
+2. **Işletim sistemini**, kimlik bilgileri için kolay bir adı ve Kullanıcı adını ve parolayı belirtin. Daha sonra **Ekle**'ye tıklayın.
+Her biri Windows ve Linux sunucuları için bir kimlik bilgileri kümesi ekleyebilirsiniz.
+4. Sunucuya bağlanmak için sunucu **Ekle**' ye tıklayın ve sunucu ayrıntılarını BELIRTIN-FQDN/IP adresi ve kimlik bilgilerinin kolay adı (satır başına bir giriş).
+3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, keşfedilebilir sunucu listesi gösterilir.
+    - Bir sunucu için doğrulama başarısız olursa, **durum** sütunundaki simgenin üzerine gelerek hatayı gözden geçirin. Sorunları giderin ve yeniden doğrulayın.
+    - Bir sunucuyu kaldırmak için > **Sil**' i seçin.
+4. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
 
-Bu keşif başlar. Keşfedilen Sanal M'lerin meta verilerinin Azure portalında görünmesi yaklaşık 15 dakika sürer.
+Bu, bulmayı başlatır. Bulunan VM 'lerin meta verilerinde Azure portal görünmesi 15 dakika sürer.
 
-## <a name="verify-servers-in-the-portal"></a>Portaldaki sunucuları doğrulama
+## <a name="verify-servers-in-the-portal"></a>Portalda sunucuları doğrulama
 
-Bulma işlemi bittikten sonra, sunucuların portalda görünip görünmediğini doğrulayabilirsiniz.
+Bulma işlemi tamamlandıktan sonra, sunucuların portalda göründüğünü doğrulayabilirsiniz.
 
-1. Azure Geçir panosunu açın.
-2. **Azure Geçir - Sunucular** > Azure**Geçir: Sunucu Değerlendirme** **sayfasında, Keşfedilen sunucuların**sayısını görüntüleyen simgeyi tıklatın.
+1. Azure geçişi panosunu açın.
+2. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Geçir Sunucu Değerlendirmesi ile [fiziksel sunucuların değerlendirmesini](tutorial-assess-physical.md) deneyin.
+Azure geçişi sunucu değerlendirmesi ile [fiziksel sunucu değerlendirmesi](tutorial-assess-physical.md) yapmayı deneyin.

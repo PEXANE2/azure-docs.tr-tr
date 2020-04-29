@@ -3,12 +3,12 @@ title: Java uygulamalarını her yerde izleyin-Azure Izleyici Application Insigh
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için codeless uygulama performansı izleme. Dağıtılmış izleme ve uygulama haritasını kullanarak sorunlar için temel nedenini bulur.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509219"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641894"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Yapılandırma seçenekleri-Azure Izleyici için Java tek başına aracı Application Insights
 
@@ -33,14 +33,14 @@ Daha fazla ayrıntı için aşağıda daha fazla ayrıntı ve ek yapılandırma 
 
 ## <a name="configuration-file-path"></a>Yapılandırma dosyası yolu
 
-Varsayılan olarak, Application Insights Java 3,0 Önizlemesi yapılandırma dosyasının adlandırıldığını `ApplicationInsights.json`ve ile aynı dizinde bulunmasını bekler. `applicationinsights-agent-3.0.0-PREVIEW.4.jar`
+Varsayılan olarak, Application Insights Java 3,0 Önizlemesi yapılandırma dosyasının adlandırıldığını `ApplicationInsights.json`ve ile aynı dizinde bulunmasını bekler. `applicationinsights-agent-3.0.0-PREVIEW.jar`
 
 Kendi yapılandırma dosya yolunuzu aşağıdakilerden birini kullanarak belirtebilirsiniz
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`ortam değişkeni veya
 * `applicationinsights.configurationFile`Java sistem özelliği
 
-Göreli bir yol belirtirseniz, bulunduğu dizine `applicationinsights-agent-3.0.0-PREVIEW.4.jar` göre çözümlenir.
+Göreli bir yol belirtirseniz, bulunduğu dizine `applicationinsights-agent-3.0.0-PREVIEW.jar` göre çözümlenir.
 
 ## <a name="connection-string"></a>Bağlantı dizesi
 
@@ -150,13 +150,11 @@ Yakalamaya ilgilendiğiniz bazı JMX ölçümleri varsa:
 }
 ```
 
-## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikro ölçer (Spring Boot çalıştırıcı 'daki ölçümler dahil)
+## <a name="micrometer"></a>Micrometer
 
-Uygulamanız [mikro ölçer](https://micrometer.io)kullanıyorsa, Application Insights 3,0 (Önizleme ile başlayarak), artık mikro ölçüm küresel kayıt defterine gönderilen ölçümleri yakalar.
+Varsayılan olarak, uygulamanız [mikro ölçüm](https://micrometer.io)kullanıyorsa, Application Insights 3,0 (Önizleme ile başlayarak), artık kendisini mikro ölçüm küresel kayıt defterine ekler ve mikro ölçüm ölçümlerini yakalar.
 
-Uygulamanız [Spring Boot çalıştırıcı](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)kullanıyorsa, Application Insights 3,0 (Preview ile başlayarak), şimdi Spring Boot çalıştırıcı (mikro ölçüm kullanır, ancak mikro ölçüm küresel kayıt defteri kullanmaz) tarafından yapılandırılan ölçümleri yakalar.
-
-Bu özellikleri devre dışı bırakmak istiyorsanız:
+Bu özelliği devre dışı bırakmak istiyorsanız:
 
 ```json
 {

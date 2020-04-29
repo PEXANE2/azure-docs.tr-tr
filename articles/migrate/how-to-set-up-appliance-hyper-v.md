@@ -1,153 +1,153 @@
 ---
-title: Hyper-V için bir Azure Geçiş cihazı ayarlama
-description: Hyper-V VM'leri değerlendirmek ve geçirmek için bir Azure Geçir cihazını nasıl ayarlayamanızı öğrenin.
+title: Hyper-V için Azure geçişi gereci ayarlama
+description: Hyper-V VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538299"
 ---
-# <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM'ler için bir cihaz ayarlama
+# <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM 'Leri için gereç ayarlama
 
-Hyper-V VM'lerin Azure [Geçir:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracıyla değerlendirilmesi için Azure Geçir cihazını ayarlamak için bu makaleyi izleyin.
+[Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracı ile Hyper-V VM 'lerinin değerlendirmesi Için Azure geçişi gereci ayarlamak için bu makaleyi izleyin.
 
-[Azure Geçir cihazı,](migrate-appliance.md) şirket içi Hyper-V V MM'leri keşfetmek ve VM meta veri/performans verilerini Azure'a göndermek için Azure Geçiş:Sunucu Değerlendirmesi/Geçiş tarafından kullanılan hafif bir cihazdır.
+Azure [geçişi](migrate-appliance.md) gereci, Azure geçişi tarafından kullanılan hafif bir gereçdir: şirket içi Hyper-V VM 'lerini keşfetme ve VM meta verileri/performans verilerini Azure 'a göndermek Için Sunucu değerlendirmesi/geçiş.
 
-Cihazı birkaç yöntem kullanarak dağıtabilirsiniz:
+Gereci birkaç yöntem kullanarak dağıtabilirsiniz:
 
-- İndirilen bir VHD kullanarak Hyper-V VM'de ayarlayın. Bu, bu makalede açıklanan yöntemdir.
-- PowerShell yükleyici komut dosyasına sahip bir Hyper-V VM veya fiziksel makineüzerinde ayarlayın. [Bu yöntem,](deploy-appliance-script.md) VHD kullanarak bir VM ayarlayamıyorsanız veya Azure Devlet'teyseniz kullanılmalıdır.
+- İndirilen bir VHD 'yi kullanarak bir Hyper-V sanal makinesine ayarlayın. Bu, bu makalede açıklanan yöntemdir.
+- Bir PowerShell yükleyici betiği ile bir Hyper-V VM 'sinde veya fiziksel makinede ayarlama yapın. [Bu yöntem](deploy-appliance-script.md) , bir VHD 'yi kullanarak bir VM ayarlayamıyorum veya Azure Kamu kullanıyorsanız kullanılmalıdır.
 
-Cihazı oluşturduktan sonra, Azure Geçiş:Sunucu Değerlendirmesi'ne bağlanıp bağlanabildiğinizi, ilk kez yapılandırıp yapılandırıp kaydedilemediğini kontrol edin ve Azure Geçiş projesine kaydettirebilirsiniz.
+Gereci oluşturduktan sonra Azure geçişi 'ne bağlanıp bağlanamadıktan sonra sunucu değerlendirmesi yapın, ilk kez yapılandırın ve Azure geçişi projesine kaydedin.
 
-## <a name="appliance-deployment-vhd"></a>Cihaz dağıtımı (VHD)
+## <a name="appliance-deployment-vhd"></a>Gereç dağıtımı (VHD)
 
-Cihazı VHD şablonu kullanarak kurmak için:
+Bir VHD şablonu kullanarak gereci ayarlamak için:
 
-- Azure portalından sıkıştırılmış hyper-v vhd indirin.
-- Cihazı oluşturun ve Azure Geçiş Sunucusu Değerlendirmesi'ne bağlanıp bağlanabıp bağlanabıp bağlanamayalı kontrol edin.
-- Cihazı ilk kez yapılandırın ve Azure Geçiş projesine kaydedin.
+- Azure portal sıkıştırılmış bir Hyper-V VHD 'sini indirin.
+- Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
+- Gereci ilk kez yapılandırın ve Azure geçişi projesi ile kaydedin.
 
-## <a name="download-the-vhd"></a>VHD'yi indirin
+## <a name="download-the-vhd"></a>VHD 'YI indirin
 
-Cihaz için sıkıştırılmış VHD şablonuna indirin.
+Gereç için daraltılmış VHD şablonunu indirin.
 
-1. **Geçiş Hedefleri** > **Sunucularında** > **Azure Geçir: Sunucu Değerlendirmesi**, **Keşfet'i**tıklatın.
-2. **Discover makinelerinde** >  **Yes, with Hyper-V****makineleriniz sanallaştırıldı mı?**
-3. VHD dosyasını indirmek için **İndir'i** tıklatın.
+1. **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2.  > Makinelerde **bulunan makinelerde**makineler**sanallaştırılmış mı?**, **Hyper-V ile Evet 'e**tıklayın.
+3. VHD dosyasını indirmek için **İndir** ' e tıklayın.
 
-    ![VM'yi İndir](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![VM 'yi indir](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
 
 
-### <a name="verify-security"></a>Güvenliği doğrula
+### <a name="verify-security"></a>Güvenliği doğrulama
 
-Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını kontrol edin.
+Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
-2. VHD için karma oluşturmak için aşağıdaki komutu çalıştırın
+2. VHD için karma oluşturmak üzere aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  Cihaz sürümü 2.19.11.12 için oluşturulan karma bu [ayarlarla](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)eşleşmelidir.
+3.  Gereç sürümü 2.19.11.12 için, oluşturulan karma bu [ayarlarla](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)eşleşmelidir.
 
 
 
 
-## <a name="create-the-appliance-vm"></a>VM cihazını oluşturun
+## <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
 
-İndirilen dosyayı içe aktarın ve VM'yi oluşturun.
+İndirilen dosyayı içeri aktarın ve VM 'yi oluşturun.
 
-1. Sıkıştırılmış VHD dosyasını Hyper-V ana bilgisayarda, vm cihazını barındıracak bir klasöre ayıklayın. Üç klasör ayıklanır.
-2. Hyper-V Yöneticisi'ni açın. **Eylemlerde,** **Sanal MakineYi İçe Aktar'ı**tıklatın.
+1. Sıkıştırılmış VHD dosyasını Hyper-V konağında gereç sanal makinesini barındıracak bir klasöre ayıklayın. Üç klasör ayıklanır.
+2. Hyper-V Yöneticisi'ni açın. **Eylemler**' de **sanal makineyi içeri aktar**' a tıklayın.
 
-    ![VHD'yi dağıt](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
+    ![VHD dağıtma](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
-2. Sanal Makine > Alma Sihirbazı'nda **başlamadan önce** **İleri'yi**tıklatın.
-3. **Klasörü**Bul'da, çıkarılan VHD'yi içeren klasörü belirtin. Ardından **İleri**’ye tıklayın.
-1. **Sanal Makine Seç'te** **İleri'yi**tıklatın.
-2. **Alma Türü Seç'te,** sanal **makineyi kopyala'yı tıklatın (yeni bir benzersiz kimlik oluşturun)**. Ardından **İleri**’ye tıklayın.
-3. **Hedef Seç'te**varsayılan ayarbırakın. **İleri**’ye tıklayın.
-4. **Depolama Klasörleri'nde**varsayılan ayarı bırakın. **İleri**’ye tıklayın.
-5. **Ağ**Seç'te, VM'nin kullanacağı sanal anahtarı belirtin. Anahtar, Azure'a veri göndermek için internet bağlantısına ihtiyaç duyar.
-6. **Özetle,** ayarları gözden geçirin. Ardından, **Son**'a tıklayın.
-7. Sanal **Makineler>** Hyper-V Manager'da VM'yi başlatın.
+2. Sanal makineyi Içeri aktarma sihirbazında > **başlamadan önce** **İleri**' ye tıklayın.
+3. **Klasörü bul**' da ayıklanan VHD 'yi içeren klasörü belirtin. Ardından **İleri**’ye tıklayın.
+1. **Sanal makine seç**bölümünde **İleri**' ye tıklayın.
+2. **Içeri aktarma türünü seçin**bölümünde **sanal makineyi Kopyala (yenı bir benzersiz kimlik oluştur)** seçeneğine tıklayın. Ardından **İleri**’ye tıklayın.
+3. **Hedef Seç**bölümünde varsayılan ayarı bırakın. **İleri**’ye tıklayın.
+4. **Depolama klasörlerinde**varsayılan ayarı bırakın. **İleri**’ye tıklayın.
+5. **Ağ seçin**bölümünde, VM 'nin kullanacağı sanal anahtarı belirtin. Anahtar, verileri Azure 'a göndermek için internet bağlantısı gerektirir.
+6. **Özet**bölümünde ayarları gözden geçirin. Ardından, **Son**'a tıklayın.
+7. Hyper-V Yöneticisi 'nde **sanal makineler**>, VM 'yi başlatın.
 
 
-### <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
+### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
-VM cihazının [genel](migrate-appliance.md#public-cloud-urls) ve [resmi](migrate-appliance.md#government-cloud-urls) bulutlar için Azure URL'lerine bağlanabileceğinden emin olun.
+Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
-## <a name="configure-the-appliance"></a>Cihazı yapılandırın
+## <a name="configure-the-appliance"></a>Gereci yapılandırma
 
-Cihazı ilk kez ayarlayın. Cihazı VHD yerine komut dosyası kullanarak dağıtirseniz, yordamın ilk iki adımı geçerli değildir.
+Gereci ilk kez ayarlayın. Gereci bir VHD yerine bir komut dosyası kullanarak dağıtırsanız, yordamdaki ilk iki adım geçerli değildir.
 
-1. Sanal **Makineler>** Hyper-V Manager'da VM > **Connect'e**sağ tıklayın.
-2. Cihazın dilini, saatini ve parolasını sağlayın.
-3. VM'ye bağlanabilen herhangi bir makinede tarayıcı açın ve cihaz web uygulamasının URL'sini açın: **https:// cihaz adı veya IP*adresi*: 44368**.
+1. Hyper-V Yöneticisi > **sanal makineler**' de, **bağlan**' a > VM ' ye sağ tıklayın.
+2. Gereç için dil, saat dilimi ve parola sağlayın.
+3. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
 
-   Alternatif olarak, uygulama kısayolu tıklayarak cihaz masaüstünden uygulamayı açabilirsiniz.
-1. Web uygulamasında > **ön koşulları ayarlayın,** aşağıdakileri yapın:
-    - **Lisans**: Lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
-    - **Bağlantı**: Uygulama, VM'nin internet erişimi ne olduğunu denetler. VM proxy kullanıyorsa:
-        - **Proxy ayarlarını**tıklatın ve proxy adresini ve dinleme http://ProxyIPAddress http://ProxyFQDNbağlantı noktasını formda veya .
+   Alternatif olarak, uygulama kısayoluna tıklayarak uygulamayı gereç masaüstünden açabilirsiniz.
+1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
+    - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
+    - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
+        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya http://ProxyIPAddress http://ProxyFQDNbiçiminde belirtin.
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
-    - **Zaman eşitleme**: Zaman doğrulanır. VM keşfinin düzgün çalışması için cihazdaki süre internet süresiyle uyumlu olmalıdır.
-    - **Yükleme güncelleştirmeleri**: Azure Geçir Sunucusu Değerlendirmesi, cihazın en son güncelleştirmeleri yüklü olduğunu denetler.
+    - **Zaman eşitleme**: Saat doğrulandı. VM bulmanın düzgün çalışması için gereç süresi internet saatine eşit olmalıdır.
+    - **Güncelleştirmeleri yükleme**: Azure geçişi sunucu değerlendirmesi, gerecin en son güncelleştirmelerin yüklü olduğunu denetler.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Cihazı Azure Geçiş ile kaydedin
+### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. **Giriş Yap'ı**tıklatın. Görünmüyorsa, tarayıcıdaki açılır pencere engelleyicisini devre dışı bıraktığınızdan emin olun.
+1. **Oturum aç**' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
 2. Yeni sekmede, Azure kimlik bilgilerinizi kullanarak oturum açın.
-    - Kullanıcı adınız ve şifrenizle oturum açın.
+    - Kullanıcı adınızla ve parolanızla oturum açın.
     - PIN ile oturum açma desteklenmez.
-3. Başarılı bir şekilde oturum imzaladıktan sonra web uygulamasına geri dön.
-4. Azure Geçiş projesinin oluşturulduğu aboneliği seçin. Sonra projeyi seçin.
-5. Cihaz için bir ad belirtin. Ad 14 karakter veya daha az alfanümerik olmalıdır.
-6. **Kaydol'u**tıklatın.
+3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
+4. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
+5. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
+6. **Kaydol**' a tıklayın.
 
 
-### <a name="delegate-credentials-for-smb-vhds"></a>Kobİ VHD'ler için temsilci kimlik bilgileri
+### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD 'leri için temsilci kimlik bilgileri
 
-SMB'lerde VHD çalıştırıyorsanız, cihazdan Hyper-V ana bilgisayarlarına kimlik bilgilerini delegasyonuna olanak sağlamalısınız. Bunu cihazdan yapmak için:
+SMB 'lerde VHD 'ler çalıştırıyorsanız, Gereç üzerinden Hyper-V konaklarına kimlik bilgileri temsilcisini etkinleştirmeniz gerekir. Bunu gereç içinden yapmak için:
 
-1. VM cihazında bu komutu çalıştırın. HyperVHost1/HyperVHost2 örnek ana bilgisayar adlarıdır.
+1. Gereç sanal makinesinde bu komutu çalıştırın. HyperVHost1/HyperVHost2, örnek ana bilgisayar adlarıdır.
 
     ```
     Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
     ```
 
-2. Alternatif olarak, cihaz la ilgili Yerel Grup İlkesi Düzenleyicisi'nde bunu yapın:
-    - **Yerel Bilgisayar İlkesi** > **Bilgisayar Yapılandırmasında,** **Yönetim Şablonları** > **Sistem** > **Kimlik Bilgileri Delegasyonu'na**tıklayın.
-    - **Yeni kimlik bilgilerini atamasını İzin ver'e**çift tıklatın ve **Etkin'i**seçin.
-    - **Seçenekler'de,** **Wsman/** önek olarak keşfetmek istediğiniz her Hyper-V ana bilgisayarını **göster'i**tıklatın ve ekleyin.
-    - **Kimlik Bilgileri Delegasyonu'nda,** **ntlm yalnızca sunucu kimlik doğrulaması ile yeni kimlik bilgilerini ataya izin**ver'i çift tıklatın. Yine, **wsman/** önek olarak, listeye keşfetmek istediğiniz her Hyper-V ana bilgisayar ekleyin.
+2. Alternatif olarak, bunu gereç üzerindeki Yerel Grup İlkesi Düzenleyicisi yapın:
+    - **Yerel bilgisayar ilkesi** > **bilgisayar yapılandırması**' nda, **Yönetim Şablonları** > **sistem** > **kimlik bilgileri temsili**' ne tıklayın.
+    - **Yeni kimlik bilgileri aktarımına Izin ver**' e çift tıklayın ve **etkin**' i seçin.
+    - **Seçenekler**' de **göster**' e tıklayın ve bulmayı Istediğiniz her Hyper-V konağını, **WSMan/** as öneki ile listeye ekleyin.
+    - **Kimlik bilgileri temsilcisi**içinde, **yalnızca NTLM sunucu kimlik doğrulamasıyla yeni kimlik bilgileri aktarmaya izin ver**' e çift tıklayın. Daha sonra, bulmayı istediğiniz her Hyper-V konağını, **WSMan/** as öneki ile listeye ekleyin.
 
-## <a name="start-continuous-discovery"></a>Sürekli keşfi başlatma
+## <a name="start-continuous-discovery"></a>Sürekli bulmayı Başlat
 
-Cihazdan Hyper-V ana bilgisayarlarına veya kümelerine bağlanın ve VM keşfini başlatın.
+Gerecden Hyper-V konaklarına veya kümelerine bağlanın ve VM bulmayı başlatın.
 
-1. **Kullanıcı adı** ve **Parola'da,** cihazın VM'leri keşfetmek için kullanacağı hesap kimlik bilgilerini belirtin. Kimlik bilgileri için uygun bir ad belirtin ve **ayrıntıları kaydet'i**tıklatın.
-2. **Ana bilgisayar ekle'yi**tıklatın ve Hyper-V ana bilgisayar/küme ayrıntılarını belirtin.
-3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, her ana bilgisayar/kümede bulunabilecek VM sayısı gösterilir.
-    - Doğrulama bir ana bilgisayar için başarısız olursa, **Durum** sütunundaki simgenin üzerine geçerek hatayı gözden geçirin. Sorunları düzeltin ve yeniden doğrulayın.
-    - Ana bilgisayarları veya kümeleri kaldırmak için **Sil'>** seçin.
-    - Belirli bir ana bilgisayarı kümeden kaldıramazsınız. Yalnızca tüm kümeyi kaldırabilirsiniz.
-    - Kümedeki belirli ana bilgisayarlarla ilgili sorunlar olsa bile, bir küme ekleyebilirsiniz.
-4. Doğrulamadan sonra **Kaydet'i** tıklatın ve bulma işlemini başlatmak için keşfi başlatın.
+1. **Kullanıcı adı** ve **parola**' da, gerecin VM 'leri bulması için kullanacağı hesap kimlik bilgilerini belirtin. Kimlik bilgileri için kolay bir ad belirtin ve **ayrıntıları kaydet**' e tıklayın.
+2. **Konak Ekle**' ye tıklayın ve Hyper-V konağı/küme ayrıntılarını belirtin.
+3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, her bir konakta/kümede keşfedilebilir VM sayısı gösterilir.
+    - Bir konakta doğrulama başarısız olursa, **durum** sütunundaki simgenin üzerine gelerek hatayı gözden geçirin. Sorunları giderin ve yeniden doğrulayın.
+    - Konakları veya kümeleri kaldırmak için > **Sil**' i seçin.
+    - Belirli bir konağı kümeden kaldıramazsınız. Tüm kümeyi yalnızca çıkarabilirsiniz.
+    - Kümedeki belirli konaklarla ilgili sorunlar olsa bile bir küme ekleyebilirsiniz.
+4. Doğrulamadan sonra, bulma işlemini başlatmak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
 
-Bu keşif başlar. Keşfedilen Sanal M'lerin meta verilerinin Azure portalında görünmesi yaklaşık 15 dakika sürer.
+Bu, bulmayı başlatır. Bulunan VM 'lerin meta verilerinde Azure portal görünmesi 15 dakika sürer.
 
 ## <a name="verify-vms-in-the-portal"></a>VM’lerin portalda olup olmadığını doğrulama
 
-Keşif bittikten sonra, VM'lerin portalda göründüğünü doğrulayabilirsiniz.
+Bulma işlemi tamamlandıktan sonra, VM 'Lerin portalda göründüğünü doğrulayabilirsiniz.
 
-1. Azure Geçir panosunu açın.
-2. **Azure Geçir - Sunucular** > Azure**Geçir: Sunucu Değerlendirme** **sayfasında, Keşfedilen sunucuların**sayısını görüntüleyen simgeyi tıklatın.
+1. Azure geçişi panosunu açın.
+2. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Geçir Sunucu Değerlendirmesi ile [Hyper-V değerlendirmesini](tutorial-assess-hyper-v.md) deneyin.
+Azure geçişi sunucu değerlendirmesi ile [Hyper-V değerlendirmesi](tutorial-assess-hyper-v.md) yapmayı deneyin.

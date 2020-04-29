@@ -1,6 +1,6 @@
 ---
-title: Synapse çalışma alanınızı güvenli hale (önizleme)
-description: Bu makalede, synapse çalışma alanında verileri kontrol etmek ve verilere erişim için rolleri ve erişim denetimi nasıl kullanılacağını öğretecektir.
+title: SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
+description: Bu makale, SYNAPSE çalışma alanındaki etkinliklere ve verilere erişimi denetlemek için rolleri ve erişim denetimini nasıl kullanacağınızı öğretir.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -10,165 +10,165 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
 ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606001"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>Synapse çalışma alanınızı güvenli hale (önizleme)
+# <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
 
-Bu makalede, rolleri nasıl kullanacağınızı ve denetim etkinlikleri ve verilere erişim denetimine nasıl erişeceğiniz öğretilir. Bu yönergeleri izleyerek, Azure Synapse Analytics'te erişim denetimi basitleştirilmiştir. Kullanıcıları yalnızca üç güvenlik grubundan birine eklemeniz ve kaldırmanız gerekir.
+Bu makalede, etkinlikleri denetlemek ve verilere erişmek için rolleri ve erişim denetimini nasıl kullanacağınızı öğretir. Bu yönergeleri izleyerek, Azure SYNAPSE Analytics 'teki erişim denetimi basitleştirilmiştir. Yalnızca üç güvenlik grubundan birine Kullanıcı ekleyip kaldırmanız gerekir.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir Synapse çalışma alanını (önizleme) güvenli hale getirmek için, aşağıdaki öğeleri yapılandırma deseni izlersiniz:
+Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşağıdaki öğeleri yapılandırma düzenine uyun:
 
-- Azure rolleri (Sahibi, Katılımcı, vb. gibi yerleşik roller gibi)
-- Synapse rolleri – bu roller Synapse'ye özgüdir ve Azure rollerine dayanmaz. Bu rollerden üçü vardır:
-  - Synapse çalışma alanı yöneticisi
-  - Synapse SQL admin
-  - Sinaps Kıvılcım admin
-- Azure Veri Gölü Depolama Gen 2'deki (ADLSGEN2) veriler için erişim denetimi.
-- Synapse SQL ve Spark veritabanları için erişim denetimi
+- Azure rolleri (örneğin, sahibi, katkıda bulunanlar vb. gibi yerleşik olanlar)
+- SYNAPSE rolleri – bu roller SYNAPSE için benzersizdir ve Azure rollerine dayalı değildir. Şu rollerin üçü vardır:
+  - SYNAPSE çalışma alanı Yöneticisi
+  - SYNAPSE SQL Yöneticisi
+  - SYNAPSE Spark Yöneticisi
+- Azure Data Lake Storage Gen 2 ' deki veriler için erişim denetimi (ADLSGEN2).
+- SYNAPSE SQL ve Spark veritabanları için erişim denetimi
 
-## <a name="steps-to-secure-a-synapse-workspace"></a>Synapse çalışma alanını güvence altına alma adımları
+## <a name="steps-to-secure-a-synapse-workspace"></a>SYNAPSE çalışma alanını güvenli hale getirme adımları
 
-Bu belge, yönergeleri basitleştirmek için standart adlar kullanır. Seçtiğiniz herhangi bir ad ile değiştirin.
+Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları dilediğiniz adlarla değiştirin.
 
 |Ayar | Örnek değer | Açıklama |
 | :------ | :-------------- | :---------- |
-| **Sinaps çalışma alanı** | WS1 |  Synapse çalışma alanının sahip olacağı ad. |
-| **ADLSGEN2 hesabı** | STG1 | Çalışma alanınızla birlikte kullanılacak ADLS hesabı. |
-| **Kapsayıcı** | CNT1 | Çalışma alanının varsayılan olarak kullanacağı STG1'deki kapsayıcı. |
-| **Etkin dizin kiracı** | contoso | etkin dizin kiracı adı.|
+| **SYNAPSE çalışma alanı** | WS1 |  SYNAPSE çalışma alanının sahip olacağı ad. |
+| **ADLSGEN2 hesabı** | STG1 | Çalışma alanınız ile kullanılacak ADLS hesabı. |
+| **Kapsayıcı** | CNT1 | STG1 içinde, çalışma alanının varsayılan olarak kullanacağı kapsayıcı. |
+| **Active Directory kiracısı** | contoso | Active Directory kiracı adı.|
 ||||
 
-## <a name="step-1-set-up-security-groups"></a>ADIM 1: Güvenlik grupları ayarlama
+## <a name="step-1-set-up-security-groups"></a>1. Adım: güvenlik gruplarını ayarlama
 
 Çalışma alanınız için üç güvenlik grubu oluşturun ve doldurun:
 
-- **WS1\_WSAdmins** - çalışma alanı üzerinde tam kontrole ihtiyacı olan kullanıcılar için
-- **WS1\_SparkAdmins** - çalışma alanının Kıvılcım yönleri üzerinde tam kontrole ihtiyacı olan kullanıcılar için
-- **WS1\_SQLAdmins** – çalışma alanının SQL yönleri üzerinde tam denetime ihtiyaç duyan kullanıcılar için
-- **WS1\_SQLAdmins WS1** **\_WSAdmins** ekleme
-- **WS1\_SparkAdmins** **WS1\_WSAdmins** ekle
+- **WS1\_wsadmins** – çalışma alanı üzerinde tamamen denetim gerektiren kullanıcılar için
+- **WS1\_mini Yöneticiler** – çalışma alanının Spark yönleri üzerinde tümüyle denetim gerektiren kullanıcılar için
+- **WS1\_SQLAdmins** – çalışma alanının SQL yönleri üzerinde tümüyle denetim gerektiren kullanıcılar için
+- **WS1\_SQLAdmins** 'e **WS1\_wsadmins** ekleyin
+- **WS1\_wsadmins** 'yi **WS1\_mini Yöneticiler** 'e Ekle
 
-## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>ADIM 2: Veri Gölü Depolama Gen2 hesabınızı hazırlayın
+## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>2. Adım: Data Lake Storage 2. hesabınızı hazırlama
 
-Depolama alanınız hakkındaki bu bilgileri tanımlayın:
+Depolama bilgileriniz hakkında bu bilgileri tanımla:
 
-- Çalışma alanınız için kullanılacak ADLSGEN2 hesabı. Bu belge buna STG1 diyor.  STG1, çalışma alanınız için "birincil" depolama hesabı olarak kabul edilir.
-- Synapse çalışma alanınızın varsayılan olarak kullanacağı WS1 içindeki kapsayıcı. Bu belge buna CNT1 diyor.  Bu kapsayıcı için kullanılır:
-  - Spark tabloları için destek veri dosyalarını depolama
-  - Kıvılcım işleri için yürütme günlükleri
+- Çalışma alanınız için kullanılacak ADLSGEN2 hesabı. Bu belge, STG1 çağırır.  STG1, çalışma alanınız için "birincil" depolama hesabı olarak kabul edilir.
+- WS1 içindeki kapsayıcı, SYNAPSE çalışma alanınızın varsayılan olarak kullanacağı kapsayıcıdır. Bu belge, CNT1 çağırır.  Bu kapsayıcı için kullanılır:
+  - Spark tabloları için yedekleme verileri dosyalarını depolama
+  - Spark işleri için yürütme günlükleri
 
-- Azure portalını kullanarak, güvenlik gruplarını CNT1'de aşağıdaki rolleri atayın
+- Azure portal kullanarak, güvenlik gruplarını CNT1 üzerinde aşağıdaki rolleri atayın
 
-  - **DEPOLAMA Blob Veri Katılımcısı** rolüne **WS1\_WSAdmin'leri** atama
-  - **DEPOLAMA Blob Veri Katılımcısı** rolüne **WS1\_SparkAdmins** atama
-  - **DEPOLAMA Blob Veri Katılımcısı** rolüne **WS1\_SQLAdmins** atama
+  - **Depolama Blobu veri katılımcısı** rolüne **WS1\_wsadmins** atama
+  - **Depolama Blobu veri katılımcısı** rolüne **\_WS1 mini Yöneticiler** atama
+  - **Depolama Blobu veri katılımcısı** rolüne **\_WS1 SQLAdmins** atama
 
-## <a name="step-3-create-and-configure-your-synapse-workspace"></a>ADIM 3: Synapse Çalışma Alanınızı oluşturun ve yapılandırın
+## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. Adım: SYNAPSE çalışma alanınızı oluşturma ve yapılandırma
 
-Azure portalında bir Synapse çalışma alanı oluşturun:
+Azure portal, bir Synapse çalışma alanı oluşturun:
 
 - Çalışma alanını WS1 olarak adlandırın
-- Depolama hesabı için STG1'i seçin
-- "Dosya sistemi" olarak kullanılan kapsayıcı için CNT1'i seçin.
-- Synapse Studio'da WS1'i açın
-- **Erişim Denetimini** **Yönet'i** > seçin güvenlik gruplarını aşağıdaki Synapse rollerine atayın.
-  - SYNApse Workspace yöneticilerine **WS1\_WSAdmin'leri** atama
-  - Synapse Spark yöneticilerine **WS1\_SparkAdmins** atama
-  - Synapse SQL yöneticilerine **WS1\_SQLAdmins** atama
+- Depolama hesabı için STG1 seçin
+- "FileSystem" olarak kullanılmakta olan kapsayıcı için CNT1 seçin.
+- WS1 'i SYNAPSE Studio 'da aç
+- Aşağıdaki SYNAPSE rollerine güvenlik grupları atamak**Access Control** **Yönet** > ' i seçin.
+  - SYNAPSE çalışma alanı yöneticilerine **WS1\_wsadmins** atama
+  - SYNAPSE Spark yöneticilerine **\_WS1 mini Yöneticiler** atama
+  - SYNAPSE SQL yöneticilerine **WS1\_SQLAdmins** atama
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>ADIM 4: Synapse çalışma alanı tarafından kullanılmak üzere Veri Gölü Depolama Gen2 yapılandırma
+## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. Adım: SYNAPSE çalışma alanı tarafından kullanılmak üzere Data Lake Storage 2. yapılandırma
 
-Synapse çalışma alanının, ardışık hatlar çalıştırabilmesi ve sistem görevlerini gerçekleştirebilmesi için STG1 ve CNT1'e erişmesi gerekir.
+SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevleri gerçekleştirmek için STG1 ve CNT1 için erişim gerektirir.
 
-- Azure portalını açın
-- STG1'i bul
-- CNT1'e git
-- WS1 için MSI (Yönetilen Hizmet Kimliği) CNT1'deki **Azure Blob Veri Katılımcısı** rolüne atanmış olduğundan emin olun
-  - Atanmış görmüyorsanız, atayın.
-  - MSI çalışma alanıyla aynı ada sahiptir. Bu durumda, WS1 &quot;&quot;olacaktır.
+- Azure portal açın
+- STG1 bulun
+- CNT1 adresine gidin
+- WS1 için MSI (Yönetilen Hizmet Kimliği) CNT1 üzerinde **Azure blob veri katılımcısı** rolüne atandığından emin olun
+  - Atanmadığını görmüyorsanız, atayın.
+  - MSI, çalışma alanıyla aynı ada sahiptir. Bu durumda, &quot;WS1&quot;olacaktır.
 
-## <a name="step-5-configure-admin-access-for-sql-pools"></a>ADIM 5: SQL havuzları için yönetici erişimini yapılandırma
+## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. Adım: SQL havuzları için yönetici erişimini yapılandırma
 
-- Azure portalını açın
-- WS1'e gidin
-- **Ayarlar**altında, **SQL Active Directory admin'e** tıklayın
-- **Yöneticiyi Ayarla'yı** tıklatın ve WS1\_SQLAdmins'i seçin
+- Azure portal açın
+- WS1 adresine gidin
+- **Ayarlar**altında, **SQL Active Directory Yöneticisi** ' ne tıklayın.
+- **Yönetici ayarla** ' ya tıklayın ve\_WS1 SQLAdmins ' yi seçin
 
-## <a name="step-6-maintaining-access-control"></a>ADIM 6: Erişim denetimini koruma
+## <a name="step-6-maintaining-access-control"></a>6. Adım: erişim denetimini koruma
 
 Yapılandırma tamamlandı.
 
-Artık, kullanıcıların erişimini yönetmek için, kullanıcıları üç güvenlik grubuna ekleyebilir ve kaldırabilirsiniz.
+Artık Kullanıcı erişimini yönetmek için, üç güvenlik grubuna kullanıcı ekleyip çıkarabilirsiniz.
 
-Kullanıcıları Synapse rollerine el ile atayabilirsiniz, ancak bunu yaparsanız, bu işleri tutarlı bir şekilde yapılandırmaz. Bunun yerine, yalnızca güvenlik gruplarına kullanıcıları ekleyin veya kaldırın.
+Kullanıcıları SYNAPSE rollerine el ile atayabilmenize karşın, bunu yaparsanız, her şeyi sürekli olarak yapılandırmaz. Bunun yerine, yalnızca güvenlik gruplarına kullanıcı ekleyin veya bunları kaldırın.
 
-## <a name="step-7-verify-access-for-users-in-the-roles"></a>ADIM 7: Rollerdeki kullanıcılar için erişimi doğrulayın
+## <a name="step-7-verify-access-for-users-in-the-roles"></a>7. Adım: rollerdeki kullanıcılar için erişimi doğrulama
 
-Her roldeki kullanıcıların aşağıdaki adımları tamamlamaları gerekir:
+Her roldeki kullanıcıların aşağıdaki adımları tamamlaması gerekir:
 
-|   | Adım | Çalışma alanı yöneticileri | Kıvılcım yöneticileri | SQL yöneticileri |
+|   | Adım | Çalışma alanı yöneticileri | Spark yöneticileri | SQL yöneticileri |
 | --- | --- | --- | --- | --- |
-| 1 | Parke dosyayı CNT1'e yükleme | EVET | EVET | EVET |
-| 2 | İsteğe bağlı OLARAK SQL kullanarak parke dosyasını okuyun | EVET | NO | EVET |
-| 3 | Kıvılcım havuzu oluşturma | EVET [1] | EVET [1] | NO  |
-| 4 | Parke dosyasını Not Defteri ile okur | EVET | EVET | NO |
-| 5 | Not Defteri'nden bir ardışık kaynak oluşturma ve şimdi çalışacak ardışık hattı tetikle | EVET | NO | NO |
-| 6 | SQL Havuzu oluşturun ve SELECT 1 &quot;gibi bir SQL komut dosyası çalıştırın&quot; | EVET [1] | NO | EVET[1] |
+| 1 | Bir Parquet dosyasını CNT1 'a yükleme | EVET | EVET | EVET |
+| 2 | İsteğe bağlı SQL kullanarak Parquet dosyasını okuyun | EVET | NO | EVET |
+| 3 | Spark havuzu oluşturma | EVET [1] | EVET [1] | NO  |
+| 4 | Parquet dosyasını bir not defteriyle okur | EVET | EVET | NO |
+| 5 | Not defterinden bir işlem hattı oluşturun ve ardışık düzeni şimdi çalışacak şekilde tetikleyin | EVET | NO | NO |
+| 6 | SQL havuzu oluşturun ve 1. &quot;Select gıbı bir SQL betiği çalıştırın&quot; | EVET [1] | NO | EVET [1] |
 
 > [!NOTE]
-> [1] SQL veya Spark havuzları oluşturmak için kullanıcının Synapse çalışma alanında en az Katkıda Bulunan rolü olmalıdır.
+> [1] SQL veya Spark havuzları oluşturmak için kullanıcının SYNAPSE çalışma alanında en az katkıda bulunan rolüne sahip olması gerekir.
 > [!TIP]
 >
-> - Bazı adımlar alameti, role bağlı olarak kasıtlı olarak izin verilmeyecektir.
-> - Güvenlik tam olarak yapılandırılmamışsa bazı görevlerin başarısız olabileceğini unutmayın. Bu görevler tabloda belirtilir.
+> - Role bağlı olarak bazı adımlara izin verilmeyecektir.
+> - Güvenlik tam olarak yapılandırılmamışsa bazı görevlerin başarısız olabileceğini aklınızda bulundurun. Bu görevler tabloda belirtilmiştir.
 
-## <a name="step-8-network-security"></a>ADIM 8: Ağ Güvenliği
+## <a name="step-8-network-security"></a>8. Adım: ağ güvenliği
 
-Çalışma alanı güvenlik duvarını, sanal ağı ve [Özel Bağlantıyı](../../sql-database/sql-database-private-endpoint-overview.md)yapılandırmak için.
+Çalışma alanı güvenlik duvarını, sanal ağı ve [özel bağlantıyı](../../sql-database/sql-database-private-endpoint-overview.md)yapılandırmak için.
 
-## <a name="step-9-completion"></a>ADIM 9: Tamamlanma
+## <a name="step-9-completion"></a>9. Adım: tamamlama
 
-Çalışma alanınız artık tamamen yapılandırılmış ve güvenli.
+Çalışma alanınız artık tam olarak yapılandırılmış ve güvenli hale getirildi.
 
-## <a name="how-roles-interact-with-synapse-studio"></a>Synapse Studio ile roller nasıl etkileşir?
+## <a name="how-roles-interact-with-synapse-studio"></a>Roller SYNAPSE Studio ile nasıl etkileşebilir
 
-Synapse Studio kullanıcı rollerine göre farklı davranacaktır. Kullanıcı uygun erişimi sağlayan rollere atanmazsa, bazı öğeler gizlenebilir veya devre dışı bırakılabilir. Aşağıdaki tablo synapse Studio üzerindeki etkisini özetleyilmiştir.
+SYNAPSE Studio, Kullanıcı rollerine göre farklı davranır. Bir kullanıcı uygun erişimi veren rollere atanmamışsa bazı öğeler gizlenebilir veya devre dışı bırakılabilir. Aşağıdaki tabloda SYNAPSE Studio üzerindeki etkisi özetlenmektedir.
 
-| Görev | Çalışma Alanı Yöneticileri | Kıvılcım yöneticileri | SQL yöneticileri |
+| Görev | Çalışma alanı yöneticileri | Spark yöneticileri | SQL yöneticileri |
 | --- | --- | --- | --- |
-| Açık Synapse Studio | EVET | EVET | EVET |
-| Ana Sayfa merkezini görüntüle | EVET | EVET | EVET |
-| Veri Merkezini Görüntüle | EVET | EVET | EVET |
-| Veri Hub / Bkz. bağlantılı ADLSGen2 hesapları ve konteynerler | EVET [1] | EVET[1] | EVET[1] |
-| Veri Hub / Veritabanlarına Bakın | EVET | EVET | EVET |
-| Veri Hub / Veritabanlarındaki nesneleri gör | EVET | EVET | EVET |
-| SQL havuz veritabanlarında Veri Hub / Erişim verileri | EVET   | NO   | EVET   |
-| SQL isteğe bağlı veritabanlarında Veri Hub / Erişim verileri | EVET [2]  | NO  | EVET [2]  |
-| Veri Hub / Spark veritabanlarındaki verilere erişim | EVET [2] | EVET [2] | EVET [2] |
-| Geliştirme merkezini kullanma | EVET | EVET | EVET |
-| Hub / yazar SQL Scripts geliştirin | EVET | NO | EVET |
-| Hub / yazar Spark İş Tanımları geliştirin | EVET | EVET | NO |
-| Hub / yazar Not Defterleri geliştirin | EVET | EVET | NO |
-| Hub / yazar Dataflows geliştirme | EVET | NO | NO |
-| Orkestral hub'ı kullanma | EVET | EVET | EVET |
-| Hub'ı düzenleme / Boru Hatlarını kullanma | EVET | NO | NO |
-| Yönet Merkezini Kullanma | EVET | EVET | EVET |
-| Hub / SQL havuzlarını yönetme | EVET | NO | EVET |
-| Hub / Kıvılcım havuzlarını yönetin | EVET | EVET | NO |
-| Hub / Tetikleyicileri Yönet | EVET | NO | NO |
-| Hub / Bağlantılı hizmetleri yönetme | EVET | EVET | EVET |
-| Hub /Erişim Denetimini Yönet (kullanıcıları Synapse çalışma alanı rollerine atama) | EVET | NO | NO |
-| Hub / Tümleştirme çalışma sürelerini yönetme | EVET | EVET | EVET |
+| SYNAPSE Studio 'Yu açın | EVET | EVET | EVET |
+| Ana Hub 'ı görüntüle | EVET | EVET | EVET |
+| Veri merkezini görüntüle | EVET | EVET | EVET |
+| Veri hub 'ı/bkz. bağlantılı ADLSGen2 hesapları ve kapsayıcıları | EVET [1] | EVET [1] | EVET [1] |
+| Veri merkezi/bkz. veritabanları | EVET | EVET | EVET |
+| Veri merkezi/veritabanlarındaki nesneleri görüntüle | EVET | EVET | EVET |
+| SQL havuzu veritabanlarındaki veri merkezi/erişim verileri | EVET   | NO   | EVET   |
+| SQL isteğe bağlı veritabanlarında veri merkezi/erişim verileri | EVET [2]  | NO  | EVET [2]  |
+| Spark veritabanlarındaki veri merkezi/erişim verileri | EVET [2] | EVET [2] | EVET [2] |
+| Geliştirme Merkezi 'ni kullanma | EVET | EVET | EVET |
+| Merkez/yazar SQL betikleri geliştirme | EVET | NO | EVET |
+| Merkez/yazar Spark Iş tanımları geliştirme | EVET | EVET | NO |
+| Merkez/yazar not defterleri geliştirme | EVET | EVET | NO |
+| Merkez/yazar veri akışları geliştirin | EVET | NO | NO |
+| Orchestrate merkezini kullanma | EVET | EVET | EVET |
+| Merkeze göre düzenleme/işlem hatlarını kullanma | EVET | NO | NO |
+| Yönetim hub 'ını kullanma | EVET | EVET | EVET |
+| Hub/SQL havuzlarını yönetme | EVET | NO | EVET |
+| Merkez/Spark havuzlarını yönetme | EVET | EVET | NO |
+| Hub/Tetikleyicileri yönetme | EVET | NO | NO |
+| Hub/bağlı hizmetleri yönetme | EVET | EVET | EVET |
+| Hub/Access Control yönetme (kullanıcıları SYNAPSE çalışma alanı rollerine atama) | EVET | NO | NO |
+| Hub/tümleştirme çalışma zamanlarını yönetme | EVET | EVET | EVET |
 
 > [!NOTE]
-> [1] Kapsayıcıdaki verilere erişim, ADLSGen2[2] SQL OD tablolarındaki erişim denetimine bağlıdır ve Spark tabloları verilerini ADLSGen2'de saklar ve erişim ADLSGen2'de uygun izinleri gerektirir.
+> [1] kapsayıcılardaki verilere erişim, ADLSGen2 [2] SQL OD tabloları ve Spark tabloları içindeki erişim denetimine göre verileri ADLSGen2 ' de depolar ve erişim için ADLSGen2 üzerinde uygun izinler gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Synapse Çalışma Alanı](../quickstart-create-workspace.md) Oluşturma
+[SYNAPSE çalışma alanı](../quickstart-create-workspace.md) oluşturma

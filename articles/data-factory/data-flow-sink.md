@@ -1,6 +1,6 @@
 ---
-title: Veri akışını nakışlamada lavabo dönüşümü
-description: Veri akışını eşlemede bir lavabo dönüşümasyon nasıl öğrenin.
+title: Eşleme veri akışında havuz dönüştürme
+description: Eşleme veri akışında bir havuz dönüştürmeyi yapılandırmayı öğrenin.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -10,62 +10,62 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
 ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605975"
 ---
-# <a name="sink-transformation-in-mapping-data-flow"></a>Veri akışını nakışlamada lavabo dönüşümü
+# <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Verilerinizi dönüştürdükten sonra, verileri nizi bir hedef veri kümesine batırabilirsiniz. Her veri akışı en az bir lavabo dönüşümü gerektirir, ancak dönüşüm akışınızı tamamlamak için gerektiği kadar lavaboya yazabilirsiniz. Ek lavabolara yazmak için, yeni dallar ve koşullu bölmeler aracılığıyla yeni akışlar oluşturun.
+Verilerinizi dönüştürdükten sonra, verileri bir hedef veri kümesine havuza alabilirsiniz. Her veri akışı için en az bir havuz dönüştürmesi gerekir, ancak dönüştürme akışınızı tamamlaması için gereken sayıda havuz yazabilirsiniz. Ek havuzlar yazmak için yeni dallar ve koşullu bölmeler aracılığıyla yeni akışlar oluşturun.
 
-Her lavabo dönüşümü tam olarak bir Veri Fabrikası veri kümesi ile ilişkilidir. Veri kümesi, yazmak istediğiniz verinin şeklini ve konumunu tanımlar.
+Her havuz dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişkilendirilir. Veri kümesi, yazmak istediğiniz verilerin şeklini ve konumunu tanımlar.
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Veri akışını eşlemede desteklenen lavabo konektörleri
+## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Eşleme veri akışında desteklenen havuz bağlayıcıları
 
-Şu anda aşağıdaki veri kümeleri bir lavabo dönüşümünde kullanılabilir:
+Şu anda aşağıdaki veri kümeleri bir havuz dönüşümünde kullanılabilir:
     
-* [Azure Blob Depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, Metin, Parke)
-* [Azure Veri Gölü Depolama Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, Metin, Parke)
-* [Azure Veri Gölü Depolama Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, Metin, Parke)
+* [Azure Blob depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
+* [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
+* [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
 * [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
 * [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties)
 * [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Bu bağlayıcılara özgü ayarlar **Ayarlar** sekmesinde bulunur. Bu ayarlardaki bilgiler bağlayıcı belgelerinde bulunur. 
+Bu bağlayıcılara özgü ayarlar, **Ayarlar** sekmesinde bulunur. bu ayarlarla ilgili bilgiler bağlayıcı belgelerinde bulunur. 
 
-Azure Veri Fabrikası [90'dan](connector-overview.md)fazla yerel bağlayıcıya erişebilir. Veri akışınızdan diğer kaynaklara veri yazmak için, veri akışınızı tamamladıktan sonra desteklenen evreleme alanlarından birinden bu verileri yüklemek için Kopyalama Etkinliği'ni kullanın.
+Azure Data Factory, [90 yerel bağlayıcı](connector-overview.md)üzerinde erişime sahiptir. Veri akışınızdan diğer kaynaklara veri yazmak için kopyalama etkinliğini kullanarak veri akışınızı tamamladıktan sonra desteklenen hazırlama alanlarından birindeki verileri yükleyin.
 
-## <a name="sink-settings"></a>Lavabo ayarları
+## <a name="sink-settings"></a>Havuz ayarları
 
-Bir lavabo ekledikten sonra, **Lavabo** sekmesi üzerinden yapılandırın. Burada lavaboyazar veri kümesini seçebilir veya oluşturabilirsiniz. Aşağıda metin sınırlı dosya türleri için farklı Lavabo seçenekleri bir dizi açıklayan bir video:
+Havuz ekledikten sonra, **Havuz** sekmesi aracılığıyla yapılandırın. Burada, havuzlarınızın yazdığı veri kümesini seçebilir veya oluşturabilirsiniz. Aşağıda, metin ile ayrılmış dosya türleri için birçok farklı havuz seçeneği açıklayan bir video verilmiştir:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
 
-![Lavabo ayarları](media/data-flow/sink-settings.png "Lavabo Ayarları")
+![Havuz ayarları](media/data-flow/sink-settings.png "Havuz ayarları")
 
-**Şema kayması:** [Şema Drift,](concepts-data-flow-schema-drift.md) veri fabrikasının sütun değişikliklerini açıkça tanımlamaya gerek kalmadan veri akışlarınızdaki esnek şemaları doğal olarak işleme yeteneğidir. Şema **kaymasına izin** ver'in, lavabo veri şemasında tanımlananın üzerine ek sütunlar yazmasını sağlar.
+**Şema DRFT:** [şema drını](concepts-data-flow-schema-drift.md) , veri akışlarınızda, sütun değişikliklerini açıkça tanımlamaya gerek kalmadan, esnek şemaları yerel olarak işleyebilme yeteneğidir. Havuz veri şemasında tanımlananla ilgili ek sütunları üzerine yazmak için **şema bitsede Izin ver** ' i etkinleştirin.
 
-**Şema doğrulayın:** Şema doğrulama seçilirse, gelen kaynak şemasından herhangi bir sütun kaynak projeksiyonunda bulunmazsa veya veri türleri eşleşmiyorsa veri akışı başarısız olur. Kaynak verilerin tanımlı projeksiyonunuzun sözleşmesini karşıladığını zorlamak için bu ayarı kullanın. Veritabanı kaynak senaryolarında sütun adlarının veya türlerinin değiştiğini bildirmek çok yararlıdır.
+**Şemayı doğrula:** Şemayı doğrula seçilirse, gelen kaynak şemasının herhangi bir sütunu kaynak projeksiyonda bulunamazsa veya veri türleri eşleşmiyorsa veri akışı başarısız olur. Kaynak verilerin tanımlı projeksiyonun sözleşmesini karşıladığından zorlamak için bu ayarı kullanın. Sütun adlarının veya türlerin değiştiğini bildirmek için veritabanı kaynak senaryolarında çok yararlı olur.
 
 ## <a name="field-mapping"></a>Alan eşlemesi
 
-Lavabonun **Eşleme** sekmesinde, Select dönüşümüne benzer şekilde, gelen sütunların yazıldığına karar verebilirsiniz. Varsayılan olarak, sürüklenen sütunlar da dahil olmak üzere tüm giriş sütunları eşlenir. Bu Otomatik **eşleme**olarak bilinir.
+Bir seçim dönüşümüne benzer şekilde, havuzun **eşleme** sekmesinde, hangi gelen sütunların yazılacağını seçebilirsiniz. Varsayılan olarak, düzeltebilecekler sütunları dahil olmak üzere tüm giriş sütunları eşlenir. Bu, **otomatik eşleme**olarak bilinir.
 
-Otomatik eşleciliği kapattığınızda, sabit sütun tabanlı eşlemeler veya kural tabanlı eşlemeler ekleme seçeneğiniz olur. Kural tabanlı eşlemeler, deyim eşleştirmeli ifadeler yazmanıza olanak sağlarken, sabit eşleme mantıksal ve fiziksel sütun adlarını eşler. Kural tabanlı eşleme hakkında daha fazla bilgi için [veri akışını eşlemede sütun desenleri'ne](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)bakın.
+Otomatik eşlemeyi devre dışı bırakırsanız, sabit sütun tabanlı eşlemeler ya da kural tabanlı eşlemeler ekleme seçeneğine sahip olacaksınız. Kural tabanlı eşlemeler, sabit eşleme mantıksal ve fiziksel sütun adlarını eşleyebileceğiniz sırada eşleşen ifadeler yazmanıza izin verir. Kural tabanlı eşleme hakkında daha fazla bilgi için bkz. [eşleme veri akışındaki sütun desenleri](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
 
-## <a name="custom-sink-ordering"></a>Özel lavabo siparişi
+## <a name="custom-sink-ordering"></a>Özel havuz sıralaması
 
-Varsayılan olarak, veriler belirsiz bir sırada birden çok lavaboya yazılır. Dönüştürme mantığı tamamlandığında yürütme motoru verileri paralel olarak yazar ve lavabo sırası her çalıştırmada değişiklik gösterebilir. Lavabo siparişini belirtmek ve tam olarak belirlemek için, veri akışının genel sekmesinde **Özel lavabo siparişini** etkinleştirin. Etkinleştirildiğinde, lavabolar artan sırada sırayla yazılır.
+Varsayılan olarak, veriler belirleyici olmayan bir sırada birden çok havuza yazılır. Dönüştürme mantığı tamamlandığından ve havuz sıralaması her bir çalıştırmayı farklı olabileceğinden, yürütme altyapısı verileri paralel olarak yazar. Havuz sıralamasını belirtmek ve tam olarak belirtmek için, veri akışının Genel sekmesinde **özel havuz sıralamasını** etkinleştirin. Etkinleştirildiğinde, havuzlar artan sırada sırayla yazılır.
 
-![Özel lavabo siparişi](media/data-flow/custom-sink-ordering.png "Özel lavabo siparişi")
+![Özel havuz sıralaması](media/data-flow/custom-sink-ordering.png "Özel havuz sıralaması")
 
-## <a name="data-preview-in-sink"></a>Lavaboda veri önizlemesi
+## <a name="data-preview-in-sink"></a>Havuzda veri önizleme
 
-Hata ayıklama kümesinde veri önizlemesi alırken lavabonuza hiçbir veri yazılmaz. Verilerin nasıl göründüğünün anlık görüntüsü döndürülür, ancak hedefinize hiçbir şey yazılmaz. Lavabonuza veri yazmayı test etmek için, boru hattı tuvalinden bir boru hattı hata ayıklama çalıştırın.
+Bir hata ayıklama kümesinde veri önizlemesi getirilirken, havuzunuzu hiçbir veri yazılmaz. Verilerin nasıl görüneceğine ilişkin bir anlık görüntü döndürülür, ancak hedefe hiçbir şey yazılmayacak. Havuzunuzu veri yazmayı test etmek için işlem hattı tuvalinden bir işlem hattı hata ayıklaması çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık veri akışınızı oluşturduğunuza [göre, ardınıza](concepts-data-flow-overview.md)bir Veri Akışı etkinliği ekleyin.
+Veri akışınızı oluşturduğunuza göre, işlem [hattınızı bir veri akışı etkinliği](concepts-data-flow-overview.md)ekleyin.

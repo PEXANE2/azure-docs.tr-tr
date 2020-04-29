@@ -4,10 +4,10 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
 ms.openlocfilehash: 45dad7d7b176037087e37638db380294521a8e19
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134099"
 ---
 Bu makalede, bir nesne algılama modeli oluşturmak için Go ile Özel Görüntü İşleme SDK 'Yı kullanmaya başlamanıza yardımcı olacak bilgiler ve örnek kod sağlanmaktadır. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi go uygulamanızı oluşturmak için bir şablon olarak kullanın.

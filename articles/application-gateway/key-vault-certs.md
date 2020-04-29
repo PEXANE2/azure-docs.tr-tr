@@ -1,6 +1,6 @@
 ---
-title: Azure Anahtar Kasası sertifikaları ile TLS sonlandırma
-description: HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Azure Uygulama Ağ Geçidi'ni Key Vault ile nasıl entegre edebileceğinizi öğrenin.
+title: Azure Key Vault sertifikalarla TLS sonlandırma
+description: HTTPS özellikli dinleyicilerine eklenen sunucu sertifikaları için Azure Application Gateway Key Vault nasıl tümleştirileceğini öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,56 +8,56 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
 ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617514"
 ---
-# <a name="tls-termination-with-key-vault-certificates"></a>Key Vault sertifikaları ile TLS sonlandırma
+# <a name="tls-termination-with-key-vault-certificates"></a>Key Vault sertifikalarla TLS sonlandırma
 
-[Azure Key Vault,](../key-vault/general/overview.md) sırları, anahtarları ve TLS/SSL sertifikalarını korumak için kullanabileceğiniz platform tarafından yönetilen gizli bir mağazadır. Azure Application Gateway, HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault ile tümleştirmeyi destekler. Bu destek, Uygulama Ağ Geçidi'nin v2 SKU'su ile sınırlıdır.
+[Azure Key Vault](../key-vault/general/overview.md) , gizli dizileri, anahtarları ve TLS/SSL sertifikalarını korumak için kullanabileceğiniz, platform tarafından yönetilen bir gizli depodır. Azure Application Gateway, HTTPS özellikli dinleyicilerine eklenen sunucu sertifikaları için Key Vault tümleştirmeyi destekler. Bu destek, Application Gateway v2 SKU 'SU ile sınırlıdır.
 
-Key Vault entegrasyonu TLS sonlandırma için iki model sunar:
+Key Vault tümleştirme, TLS sonlandırma için iki model sunar:
 
-- Dinleyiciye bağlı TLS/SSL sertifikalarını açıkça sağlayabilirsiniz. Bu model, TLS/SSL sertifikalarını TLS sonlandırma için Uygulama Ağ Geçidi'ne geçirmenin geleneksel yoludur.
-- HTTPS özellikli bir dinleyici oluşturduğunuzda, isteğe bağlı olarak varolan bir Key Vault sertifikasına veya gizliye başvuruda bulunabilirsiniz.
+- Dinleyiciye iliştirilmiş TLS/SSL sertifikaları açıkça sağlayabilirsiniz. Bu model, TLS/SSL sertifikalarını TLS sonlandırma için Application Gateway geçirmek için geleneksel bir yoldur.
+- İsteğe bağlı olarak, HTTPS özellikli bir dinleyici oluştururken Mevcut bir Key Vault sertifikasına veya parolaya bir başvuru sağlayabilirsiniz.
 
-Key Vault ile Uygulama Ağ Geçidi entegrasyonu, şunları dahil olmak üzere birçok avantaj sunar:
+Key Vault ile tümleştirme Application Gateway aşağıdakiler de dahil olmak üzere birçok avantaj sunar:
 
-- TLS/SSL sertifikaları doğrudan uygulama geliştirme ekibi tarafından işlenmediği için daha güçlü güvenlik. Tümleştirme, ayrı bir güvenlik ekibinin şunları yapmasına olanak tanır:
+- Daha güçlü güvenlik, TLS/SSL sertifikaları uygulama geliştirme ekibi tarafından doğrudan işlenmemektedir. Tümleştirme, ayrı bir güvenlik ekibinin şunları yapmasına izin verir:
   * Uygulama ağ geçitlerini ayarlayın.
-  * Uygulama ağ geçidi yaşam döngülerini kontrol edin.
-  * Anahtar kasanızda depolanan sertifikalara erişmek için seçili uygulama ağ geçitlerine izin ver.
-- Varolan sertifikaları anahtar kasanıza alma desteği. Veya güvenilen Key Vault ortaklarından herhangi biriyle yeni sertifikalar oluşturmak ve yönetmek için Key Vault API'lerini kullanın.
-- Anahtar kasanızda depolanan sertifikaların otomatik olarak yenilenmesi desteği.
+  * Uygulama ağ geçidi ömürleri kontrol edin.
+  * Anahtar Kasanızda depolanan sertifikalara erişmek için seçili uygulama ağ geçitlerine izin verin.
+- Mevcut sertifikaları anahtar kasanıza aktarma desteği. Ya da güvenilir Key Vault iş ortaklarıyla yeni sertifikalar oluşturup yönetmek için Key Vault API 'Leri kullanın.
+- Anahtar Kasanızda depolanan sertifikaların otomatik yenilenmesi için destek.
 
-Application Gateway şu anda yalnızca yazılım onaylı sertifikaları destekler. Donanım güvenlik modülü (HSM) onaylı sertifikalar desteklenmez. Uygulama Ağ Geçidi, Anahtar Kasa sertifikalarını kullanacak şekilde yapılandırıldıktan sonra, örnekleri sertifikayı Key Vault'tan alır ve TLS sonlandırma için yerel olarak yükler. Örnekler ayrıca, varsa sertifikanın yenilenmiş bir sürümünü almak için 24 saatlik aralıklarla Key Vault'u da yoklar. Güncelleştirilmiş bir sertifika bulunursa, şu anda HTTPS dinleyicisiyle ilişkili TLS/SSL sertifikası otomatik olarak döndürülür.
+Application Gateway Şu anda yalnızca yazılım tarafından doğrulanan sertifikaları desteklemektedir. Donanım güvenlik modülü (HSM)-doğrulanan sertifikalar desteklenmez. Application Gateway Key Vault sertifikaları kullanacak şekilde yapılandırıldıktan sonra, örnekleri sertifikayı Key Vault alır ve TLS sonlandırma için yerel olarak yükler. Örnekler Ayrıca, varsa sertifikanın yenilenen bir sürümünü almak için 24 saatlik aralıklarla Key Vault yoklama yapılır. Güncelleştirilmiş bir sertifika bulunursa, şu anda HTTPS dinleyicisiyle ilişkili olan TLS/SSL sertifikası otomatik olarak döndürülür.
 
 > [!NOTE]
-> Azure portalı yalnızca KeyVault Sertifikalarını destekler, sırları değil. Uygulama Ağ Geçidi hala KeyVault gelen başvuru sırlarını destekler, ancak powershell, CLI, API, ARM şablonları, vb gibi olmayan Portal kaynakları aracılığıyla. 
+> Azure portal, gizli dizileri değil yalnızca Keykasa sertifikalarını destekler. Application Gateway, anahtar kasasından gizli dizileri de destekler, ancak yalnızca PowerShell, CLı, API, ARM şablonları gibi portal olmayan kaynaklar aracılığıyla desteklenir. 
 
-## <a name="how-integration-works"></a>Tümleştirme nasıl çalışır?
+## <a name="how-integration-works"></a>Tümleştirme nasıl çalışacaktır?
 
-Key Vault ile Uygulama Ağ Geçidi tümleştirmesi üç adımlı yapılandırma işlemi gerektirir:
+Key Vault ile tümleştirme Application Gateway üç adımlı bir yapılandırma işlemi gerektirir:
 
 1. **Kullanıcı tarafından atanan yönetilen kimlik oluşturma**
 
-   Application Gateway'in sizin adınıza Key Vault'tan sertifika almak için kullandığı, kullanıcı tarafından atanmış bir yönetilen kimlik oluşturur veya yeniden kullanırsınız. Daha fazla bilgi için azure [kaynakları için yönetilen kimlikler nedir?](../active-directory/managed-identities-azure-resources/overview.md) Bu adım, Azure Etkin Dizin kiracısında yeni bir kimlik oluşturur. Kimlik, kimliği oluşturmak için kullanılan abonelik tarafından güvenilir.
+   Application Gateway, Kullanıcı tarafından atanan mevcut bir yönetilen kimliği oluşturur veya yeniden kullanabilirsiniz. Bu, Key Vault sertifikaları sizin yerinize almak için kullanır. Daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../active-directory/managed-identities-azure-resources/overview.md). Bu adım Azure Active Directory kiracısında yeni bir kimlik oluşturur. Kimlik, kimlik oluşturmak için kullanılan abonelik tarafından güvenilirdir.
 
-1. **Anahtar kasanızı yapılandırın**
+1. **Anahtar kasanızı yapılandırma**
 
-   Daha sonra varolan bir sertifikayı içe aktarır veya anahtar kasanızda yeni bir sertifika oluşturursunuz. Sertifika, uygulama ağ geçidinde çalışan uygulamalar tarafından kullanılacaktır. Bu adımda, şifresiz, base-64 kodlu PFX dosyası olarak depolanan anahtar kasa sırrını da kullanabilirsiniz. Anahtar kasasındaki sertifika türü nesneleri yle kullanılabilen otomatik yenileme özelliği nedeniyle bir sertifika türü kullanmanızı öneririz. Bir sertifika veya sır oluşturduktan sonra, kimliğin gizliye *erişmesine* izin vermek için anahtar kasasında erişim ilkeleri tanımlarsınız.
+   Daha sonra mevcut bir sertifikayı içeri aktarırsınız veya Anahtar Kasanızda yeni bir sertifika oluşturacaksınız. Sertifika, uygulama ağ geçidi aracılığıyla çalışan uygulamalar tarafından kullanılacaktır. Bu adımda, parola kullanmayan, temel 64 kodlu PFX dosyası olarak depolanan bir Anahtar Kasası gizli anahtarını da kullanabilirsiniz. Anahtar kasasındaki sertifika türü nesneleriyle kullanılabilen otomatik yenileme özelliği nedeniyle bir sertifika türü kullanmanızı öneririz. Bir sertifika veya gizli dizi oluşturduktan sonra, kimliğe gizli dizi *erişimi verilmesini sağlamak* için anahtar kasasında erişim ilkeleri tanımlarsınız.
    
    > [!NOTE]
-   > Uygulama ağ geçidini bir ARM şablonu aracılığıyla, Azure CLI veya PowerShell'i kullanarak veya Azure portalından dağıtılan bir Azure Uygulaması aracılığıyla dağıtıysanız, temel 64 kodlu PFX dosyası olarak anahtar kasasında depolanan SSL sertifikası **parolasız olmalıdır.** Ayrıca, [dağıtım sırasında güvenli parametre değerini geçmek için Azure Anahtar Kasasını Kullan'daki](../azure-resource-manager/templates/key-vault-parameter.md)adımları tamamlamanız gerekir. Özellikle . `enabledForTemplateDeployment` `true`
+   > Application Gateway 'i Azure CLı veya PowerShell kullanarak veya Azure portal dağıtılan bir Azure uygulaması aracılığıyla bir ARM şablonuyla dağıtırsanız, temel 64 kodlu bir PFX dosyası olarak anahtar kasasında depolanan SSL sertifikası **parolasız**olmalıdır. Ayrıca, [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md)adımlarını gerçekleştirmeniz gerekir. Olarak `enabledForTemplateDeployment` `true`ayarlanması özellikle önemlidir.
 
 1. **Uygulama ağ geçidini yapılandırma**
 
-   Önceki iki adımı tamamladıktan sonra, kullanıcı tarafından atanan yönetilen kimliği kullanmak için varolan bir uygulama ağ geçidi ayarlayabilir veya değiştirebilirsiniz. Ayrıca HTTP dinleyicisinin TLS/SSL sertifikasını Key Vault sertifikasının veya gizli kimliğinin tamamını uri'ye işaret etmek için yapılandırabilirsiniz.
+   Önceki iki adımı tamamladıktan sonra, mevcut bir uygulama ağ geçidini Kullanıcı tarafından atanan yönetilen kimliği kullanacak şekilde ayarlayabilir veya değiştirebilirsiniz. HTTP dinleyicisinin TLS/SSL sertifikasını, Key Vault sertifikası veya gizli dizi KIMLIĞI 'nin tüm URI 'sini işaret etmek üzere de yapılandırabilirsiniz.
 
-   ![Anahtar kasa sertifikaları](media/key-vault-certs/ag-kv.png)
+   ![Anahtar Kasası sertifikaları](media/key-vault-certs/ag-kv.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure PowerShell'i kullanarak TLS sonlandırmaişlemini Key Vault sertifikalarıyla yapılandırın](configure-keyvault-ps.md)
+[Azure PowerShell kullanarak TLS sonlandırmasını Key Vault sertifikalarla yapılandırma](configure-keyvault-ps.md)

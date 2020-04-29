@@ -1,5 +1,5 @@
 ---
-title: Bir bölge içindeki yük dengesi VM'leri - Azure CLI
+title: Bir bölgedeki VM 'Leri yük dengelemesi-Azure CLı
 description: Bu Azure CLI betik örneğinde, belirli bir kullanılabilirlik alanındaki VM'lerde trafik yük dengelemesi gösterilmektedir
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,13 +15,13 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: 0ae159b57a89b4238d52d178d59cb79b452e0411
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79214549"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI komut dosyası örneği: Belirli bir kullanılabilirlik bölgesinde VM'lere bakiye trafiği yükleyin
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLı betiği örneği: belirli bir kullanılabilirlik alanı içindeki VM 'lere Yük Dengeleme trafiği
 
 Bu Azure CLI betik örneği, belirli bir kullanılabilirlik alanında yüksek oranda kullanılabilir ve yük dengeli bir yapılandırmada yapılandırılmış birkaç Ubuntu sanal makinesini çalıştırmak için gereken her şeyi oluşturur. Betiği çalıştırdıktan sonra Azure Standart Load Balancer üzerinden erişilebilen bir bölgenin içinde tekli kullanılabilirlik alanlarında yer alan üç sanal makineniz olur. 
 

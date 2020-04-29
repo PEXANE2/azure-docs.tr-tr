@@ -1,6 +1,6 @@
 ---
-title: Dahili kullanıcıları B2B işbirliğine davet edin - Azure AD
-description: İş ortakları, distribütörler, tedarikçiler, satıcılar ve diğer konuklar için dahili kullanıcı hesaplarınız varsa, onları kendi dış kimlik bilgileriyle oturum açmaya veya oturum açmaya davet ederek Azure AD B2B işbirliğine geçiş yapabilirsiniz. PowerShell veya Microsoft Graph davet API'sini kullanın.
+title: Dahili kullanıcıları B2B işbirliğiyle davet etme-Azure AD
+description: İş ortakları, dağıtıcılar, tedarikçiler, satıcılar ve diğer konuklar için dahili kullanıcı hesaplarınız varsa, kendi dış kimlik bilgileriyle veya oturum açmayla oturum açmak üzere davet ederek Azure AD B2B işbirliğiyle geçiş yapabilirsiniz. PowerShell veya Microsoft Graph davet API 'sini kullanın.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,52 +12,52 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 783fc0fa6f6c4e6c918fa3ff5fe0b53a71fa0178
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680169"
 ---
-# <a name="invite-internal-users-to-b2b-collaboration"></a>Dahili kullanıcıları B2B işbirliğine davet etme
+# <a name="invite-internal-users-to-b2b-collaboration"></a>Dahili kullanıcıları B2B işbirliğiyle davet etme
 
 |     |
 | --- |
-| Dahili kullanıcıları B2B işbirliğini kullanmaya davet etmek Azure Active Directory'nin genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın. |
+| B2B işbirliğini kullanmak için dahili kullanıcıları davet etme, Azure Active Directory genel bir önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). |
 |     |
 
-Azure AD B2B işbirliğinin kullanılabilirliğinden önce, kuruluşlar distribütörler, tedarikçiler, satıcılar ve diğer konuk kullanıcılarla iç kimlik bilgileri oluşturarak işbirliği yapabilir. Bunun gibi dahili konuk kullanıcılarınız varsa, Azure AD B2B avantajlarından yararlanabilmeniz için onları B2B işbirliğini kullanmaya davet edebilirsiniz. B2B konuk kullanıcılarınız oturum açabilmek için kendi kimliklerini ve kimlik bilgilerini kullanabilecek ve parolaları korumanız veya hesap yaşam döngülerini yönetmeniz gerekmez.
+Kuruluşlar, Azure AD B2B işbirliğinin kullanılabilirliğine başlamadan önce dağıtıcılar, tedarikçiler, satıcılar ve diğer konuk kullanıcılarla işbirliği yaparak bunlar için iç kimlik bilgilerini ayarlayabilir. Bunun gibi iç Konuk kullanıcılarınız varsa, Azure AD B2B avantajlarından yararlanabilmeniz için bunları B2B işbirliğinin kullanımına davet edebilirsiniz. B2B Konuk kullanıcılarınız, oturum açmak için kendi kimliklerini ve kimlik bilgilerini kullanabiliyor ve parola korumanız veya hesap yaşam döngülerini yönetmeniz gerekmez.
 
-Varolan bir dahili hesaba davet göndermek, kullanıcının nesne kimliğini, UPN'sini, grup üyeliklerini ve uygulama atamalarını korumanızı sağlar. Kullanıcıyı el ile silmeniz ve yeniden davet etmeniz veya kaynakları yeniden atamanız gerekmez. Kullanıcıyı davet etmek için, davet API'sini hem dahili kullanıcı nesnesini hem de konuk kullanıcının e-posta adresini davetle birlikte geçirmek için kullanırsınız. Kullanıcı daveti kabul ettiğinde, B2B hizmeti varolan iç kullanıcı nesnesini bir B2B kullanıcısıyla değiştirir. İleriye dönük olarak, kullanıcıb 2B kimlik bilgilerini kullanarak bulut kaynakları hizmetlerinde oturum açmalıdır. Şirket içi kaynaklara erişmek için dahili kimlik bilgilerini kullanmaya devam edebilirler, ancak iç hesaptaki parolayı sıfırlayarak veya değiştirerek bunu önleyebilirsiniz.
-
-> [!NOTE]
-> Davet tek yönlüdür. Dahili kullanıcıları B2B işbirliğini kullanmaya davet edebilirsiniz, ancak eklendikten sonra B2B kimlik bilgilerini kaldıramazsınız. Kullanıcıyı yalnızca dahili bir kullanıcıya geri getirmek için, kullanıcı nesnesini silmeniz ve yeni bir kullanıcı oluşturmanız gerekir.
-
-Genel önizlemede yken, bu makalede iç kullanıcıları B2B işbirliğine davet etmek için açıklanan yöntem şu durumlarda kullanılamaz:
-
-- Dahili kullanıcıya zaten bir Exchange lisansı atandı.
-- Kullanıcı, dizininizde doğrudan federasyon için ayarlanmış bir etki alanından gelir.
-- Dahili kullanıcı yalnızca buluta açık bir hesaptır ve ana hesabı Azure AD'de değildir.
-
-Bu gibi durumlarda, dahili kullanıcının bir B2B kullanıcısı olarak değiştirilmesi gerekiyorsa, dahili hesabı silmeli ve kullanıcıya B2B işbirliği için bir davet göndermeniz gerekir.
-
-**Şirket içi senkronize kullanıcılar**: Şirket içi ve bulut arasında senkronize edilen kullanıcı hesapları için, şirket içi dizin B2B işbirliğini kullanmaya davet edildikten sonra yetki kaynağı olmaya devam eder. Şirket içi hesapta yaptığınız değişiklikler, hesabı devre dışı bırakmak veya silmesi de dahil olmak üzere bulut hesabıyla eşitlenir. Bu nedenle, yalnızca şirket içi hesabı silerek kullanıcının şirket içi hesabında oturum açmasını engelleyemezsiniz. Bunun yerine, şirket içi hesap parolasını rasgele bir GUID veya bilinmeyen başka bir değere ayarlayabilirsiniz.
-
-## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>Dahili kullanıcıları B2B işbirliğine nasıl davet edilir?
-
-Dahili kullanıcıya B2B daveti göndermek için PowerShell'i veya davet API'sini kullanabilirsiniz. Davet için kullanmak istediğiniz e-posta adresinin dahili kullanıcı nesnesindeki dış e-posta adresi olarak ayarlandığınızdan emin olun.
-
-- Yalnızca bulutkullanıcıiçin, davet için User.OtherMails özelliğindeki e-posta adresini kullanın.
-- Şirket içi senkronize edilmiş bir kullanıcı için, davet için User.Mail özelliğindeki değeri kullanmanız gerekir.
-- Kullanıcının Posta özelliğindeki etki alanının oturum açmada kullandıkları hesapla eşleşmesi gerekir. Aksi takdirde, Takımlar gibi bazı hizmetler kullanıcının kimliğini doğrulayamaz.
-
-Varsayılan olarak, davet kullanıcıya davet edildiklerini bildiren bir e-posta gönderir, ancak bu e-postayı bastırabilir ve bunun yerine kendi e-postanızı gönderebilirsiniz.
+Mevcut bir iç hesaba davetiye göndermek, bu kullanıcının nesne KIMLIĞI, UPN, grup üyelikleri ve uygulama atamalarını korumanızı sağlar. Kullanıcıyı el ile silip yeniden davet etmeniz veya kaynakları yeniden atamanız gerekmez. Kullanıcıyı davet etmek için davet API 'sini kullanarak hem iç Kullanıcı nesnesini hem de Konuk kullanıcının e-posta adresini daveti ile birlikte geçirebilirsiniz. Kullanıcı daveti kabul ettiğinde, B2B hizmeti mevcut iç Kullanıcı nesnesini bir B2B kullanıcısına değiştirir. Bundan sonra Kullanıcı, B2B kimlik bilgilerini kullanarak bulut kaynakları hizmetlerinde oturum açması gerekir. Şirket kaynaklarına erişmek için kendi iç kimlik bilgilerini kullanmaya devam edebilirler, ancak iç hesaptaki parolayı sıfırlayarak veya değiştirerek bunu önleyebilirsiniz.
 
 > [!NOTE]
-> Kendi e-postanızı veya diğer iletişiminizi göndermek için, kullanıcıları sessizce davet etmek ve sonra kendi e-posta iletinizi dönüştürülmüş kullanıcıya göndermek için -SendInvitationMessage:$false ile Yeni AzureADMSInvitation'u kullanabilirsiniz. Bkz. [Azure AD B2B işbirliği API'si ve özelleştirme.](customize-invitation-api.md)
+> Davet tek yönlü. B2B işbirliğini kullanmak için dahili kullanıcıları davet edebilirsiniz, ancak B2B kimlik bilgilerini eklendikten sonra kaldıramazsınız. Kullanıcıyı yalnızca dahili bir kullanıcıya dönüştürmek için Kullanıcı nesnesini silip yeni bir tane oluşturmanız gerekir.
 
-## <a name="use-powershell-to-send-a-b2b-invitation"></a>B2B davetiyesi göndermek için PowerShell'i kullanın
+Genel önizleme aşamasında, bu makalede iç kullanıcıları B2B işbirliğiyle davet etmek için açıklanan Yöntem şu örneklerde kullanılamaz:
 
-Kullanıcıyı B2B işbirliğine davet etmek için aşağıdaki komutu kullanın:
+- İç kullanıcıya zaten bir Exchange lisansı atandı.
+- Kullanıcı, dizininizde doğrudan Federasyon için ayarlanmış bir etki alanıdır.
+- Dahili Kullanıcı yalnızca bulut hesabıdır ve ana hesabı Azure AD 'de değildir.
+
+Bu örneklerde, iç Kullanıcı bir B2B kullanıcısına değiştirilmeli, iç hesabı silmeniz ve kullanıcıya B2B işbirliği için bir davet göndermeniz gerekir.
+
+Şirket **içi eşitlenmiş kullanıcılar**: şirket içi ve bulut arasında eşitlenen Kullanıcı hesapları için şirket içi DIZIN, B2B işbirliği kullanım için davet edildikten sonra yetkili kaynağı olarak kalır. Şirket içi hesapta yaptığınız tüm değişiklikler, hesabı devre dışı bırakma veya silme dahil olmak üzere bulut hesabıyla eşitlenir. Bu nedenle, kullanıcının şirket içi hesabında oturum açmasını engellemez, ancak şirket içi hesabı silerek bulut hesabını korur. Bunun yerine, şirket içi hesap parolasını rastgele bir GUID veya diğer bilinmeyen bir değer olarak ayarlayabilirsiniz.
+
+## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>Dahili kullanıcıları B2B işbirliğiyle davet etme
+
+İç kullanıcıya bir B2B davetiyesi göndermek için PowerShell veya davet API 'sini kullanabilirsiniz. Davet için kullanmak istediğiniz e-posta adresinin iç Kullanıcı nesnesinde dış e-posta adresi olarak ayarlandığından emin olun.
+
+- Yalnızca bulutta bulunan bir kullanıcı için, davet için User. Otherpostalarını özelliğindeki e-posta adresini kullanın.
+- Şirket içi eşitlenmiş Kullanıcı için, davet için User. Mail özelliğindeki değeri kullanmanız gerekir.
+- Kullanıcının posta özelliğindeki etki alanının, oturum açmak için kullandıkları hesapla eşleşmesi gerekir. Aksi takdirde, takımlar gibi bazı hizmetler kullanıcının kimliğini doğrulayamayacaktır.
+
+Varsayılan olarak, davet kullanıcıya davet edildiklerini bildiren bir e-posta gönderir, ancak bunun yerine bu e-postayı engelleyebilir ve kendi kendinize gönderebilirsiniz.
+
+> [!NOTE]
+> Kendi e-postanızı veya başka bir iletişim göndermek için,-SendInvitationMessage: $false ile New-Azureadmsdavetini kullanarak kullanıcıları sessizce davet edebilir ve ardından kendi e-posta iletinizi dönüştürülen kullanıcıya gönderebilirsiniz. Bkz. [Azure AD B2B işbirliği API 'si ve özelleştirmesi](customize-invitation-api.md).
+
+## <a name="use-powershell-to-send-a-b2b-invitation"></a>B2B davetiyesi göndermek için PowerShell 'i kullanma
+
+Kullanıcıyı B2B işbirliği 'ya davet etmek için aşağıdaki komutu kullanın:
 
 ```powershell
 Uninstall-Module AzureADPreview
@@ -67,9 +67,9 @@ $msGraphUser = New-Object Microsoft.Open.MSGraph.Model.User -ArgumentList $ADGra
 New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitationMessage $True -InviteRedirectUrl "http://myapps.microsoft.com" -InvitedUser $msGraphUser
 ```
 
-## <a name="use-the-invitation-api-to-send-a-b2b-invitation"></a>B2B daveti göndermek için davet API'sini kullanma
+## <a name="use-the-invitation-api-to-send-a-b2b-invitation"></a>Bir B2B davetiyesi göndermek için davet API 'sini kullanma
 
-Aşağıdaki örnekte, bir b2B kullanıcısı olarak dahili bir kullanıcıyı davet etmek için davet API'sinin nasıl çağrılması gösteriş verilmiştir.
+Aşağıdaki örnek, bir iç kullanıcıyı B2B kullanıcısı olarak davet etmek için davet API 'sinin nasıl çağrılacağını gösterir.
 
 ```json
 POST https://graph.microsoft.com/v1.0/invitations
@@ -97,8 +97,8 @@ ContentType: application/json
 }
 ```
 
-API'ye verilen yanıt, yeni bir konuk kullanıcıyı dizine davet ettiğinizde aldığınız yanıtla aynıdır.
+Yeni bir konuk kullanıcıyı dizine davet ettiğinizde, API 'ye yönelik yanıt aldığınız yanıttır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [B2B işbirliği daveti itfa](redemption-experience.md)
+- [B2B işbirliği daveti satın alma](redemption-experience.md)

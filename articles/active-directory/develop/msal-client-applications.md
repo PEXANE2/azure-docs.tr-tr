@@ -1,7 +1,7 @@
 ---
-title: Genel ve gizli istemci uygulamaları (MSAL) | Azure
+title: Ortak ve gizli istemci uygulamaları (MSAL) | Mavisi
 titleSuffix: Microsoft identity platform
-description: Microsoft Kimlik Doğrulama Kitaplığı'ndaki (MSAL) ortak istemci ve gizli istemci uygulamaları hakkında bilgi edinin.
+description: Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) ortak istemci ve gizli istemci uygulamaları hakkında bilgi edinin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,39 +14,39 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534321"
 ---
-# <a name="public-client-and-confidential-client-applications"></a>Kamu müşteri ve gizli müşteri uygulamaları
-Microsoft Kimlik Doğrulama Kitaplığı (MSAL), iki tür istemci tanımlar: ortak istemciler ve gizli istemciler. İki istemci türü, yetkilendirme sunucusuyla güvenli bir şekilde kimlik doğrulama ve istemci kimlik bilgilerinin gizliliğini koruma yetenekleriyle ayırt edilir. Buna karşılık, Azure AD Kimlik Doğrulama Kitaplığı (ADAL), *kimlik doğrulama bağlamı* (Azure AD bağlantısı) olarak adlandırılan içeriği kullanır.
+# <a name="public-client-and-confidential-client-applications"></a>Ortak istemci ve gizli istemci uygulamaları
+Microsoft kimlik doğrulama kitaplığı (MSAL) iki tür istemci tanımlar: genel istemciler ve gizli istemciler. İki istemci türü, yetkilendirme sunucusuyla güvenli kimlik doğrulaması yapma ve istemci kimlik bilgilerinin gizliliğini koruma özelliklerine göre ayırt edilir. Buna karşılık, Azure AD kimlik doğrulama kitaplığı (ADAL), *kimlik doğrulama bağlamını* (Azure AD ile bağlantı olan) kullanır.
 
-- **Gizli istemci uygulamaları** sunucularda çalışan uygulamalardır (web uygulamaları, web API uygulamaları, hatta hizmet/daemon uygulamaları). Bunlara erişimin zor olduğu düşünülür ve bu nedenle bir uygulamayı gizli tutabilme yeteneğine sahiptirler. Gizli istemciler yapılandırma zamanı sırlarını saklayabilir. İstemcinin her örneğinin ayrı bir yapılandırması vardır (istemci kimliği ve istemci sırrı dahil). Bu değerleri son kullanıcılar için ayıklamak zordur. Web uygulaması en yaygın gizli istemcidir. İstemci kimliği web tarayıcısı üzerinden açıklanır, ancak gizli sadece arka kanalda geçirilir ve doğrudan maruz asla.
+- **Gizli istemci uygulamaları** sunucular üzerinde çalışan uygulamalardır (Web Apps, Web API Apps, hatta hizmet/Daemon uygulamaları). Erişimin zor olduğu kabul edilir ve bu nedenle bir uygulama gizli dizisi bulundurmaktan sorumludur. Gizli istemciler yapılandırma zamanı gizli dizilerini tutabilir. İstemcinin her örneği ayrı bir yapılandırmaya sahiptir (istemci KIMLIĞI ve istemci parolası dahil). Bu değerler, son kullanıcıların ayıklanmaları zordur. En yaygın gizli istemci bir Web uygulamasıdır. İstemci KIMLIĞI Web tarayıcısı aracılığıyla sunulur, ancak gizli dizi yalnızca arka kanalda geçirilir ve hiçbir şekilde doğrudan gösterilmez.
 
     Gizli istemci uygulamaları: <BR>
-    ![Web](media/msal-client-applications/web-app.png) ![uygulaması Web](media/msal-client-applications/web-api.png) ![API Daemon/service](media/msal-client-applications/daemon-service.png)
+    ![Web uygulaması](media/msal-client-applications/web-app.png) ![Web API](media/msal-client-applications/web-api.png) ![cini/hizmeti](media/msal-client-applications/daemon-service.png)
 
-- **Ortak istemci uygulamaları,** aygıtlarda veya masaüstü bilgisayarlarda veya bir web tarayıcısında çalışan uygulamalardır. Uygulama sırlarını güvenli bir şekilde saklamaları için güvenilir değildir, bu nedenle yalnızca kullanıcı adına web API'lerine erişirler. (Yalnızca genel müşteri akışlarını desteklerler.) Genel müşteriler yapılandırma zamanı sırlarını tutamaz, bu yüzden müşteri sırları yoktur.
+- **Ortak istemci uygulamaları** , cihazlarda veya masaüstü bilgisayarlarda veya bir Web tarayıcısında çalışan uygulamalardır. Uygulama gizliliklerine güvenli bir şekilde devam etmek güvenli değildir, bu nedenle yalnızca Kullanıcı adına Web API 'Lerine erişir. (Yalnızca ortak istemci akışlarını destekler.) Ortak istemciler yapılandırma zamanı gizli dizilerini tutamaz, bu nedenle istemci gizli dizileri yok.
 
-    Genel istemci uygulamaları: <BR>
-    ![Masaüstü](media/msal-client-applications/desktop-app.png) ![uygulaması Browserless](media/msal-client-applications/browserless-app.png) ![API Mobil uygulaması](media/msal-client-applications/mobile-app.png)
+    Ortak istemci uygulamaları: <BR>
+    ![Masaüstü uygulama](media/msal-client-applications/desktop-app.png) ![tarayıcısız API](media/msal-client-applications/browserless-app.png) ![mobil uygulaması](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
-> MSAL.js'de, genel ve gizli istemci uygulamaları arasında ayrım yoktur.  MSAL.js, istemci uygulamalarını kullanıcı aracısı tabanlı uygulamalar, istemci kodunun bir web tarayıcısı gibi bir kullanıcı aracısında yürütüldürün ortak istemcileri olarak temsil eder. Tarayıcı bağlamına açıkça erişilebildiğinden, bu istemciler sırları saklamaz.
+> MSAL. js ' de, ortak ve gizli istemci uygulamalarının bir ayrımı yoktur.  MSAL. js, istemci uygulamalarını, istemci kodunun bir Web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü ortak istemciler olan Kullanıcı Aracısı tabanlı uygulamalar olarak temsil eder. Tarayıcı bağlamı düzgün şekilde erişilebilir olduğundan, bu istemciler gizli dizileri depolamaz.
 
 ## <a name="comparing-the-client-types"></a>İstemci türlerini karşılaştırma
-Ortak istemci ve gizli istemci uygulamaları arasındaki bazı benzerlikler ve farklar şunlardır:
+Ortak istemci ve gizli istemci uygulamaları arasında bazı benzerlikler ve farklılıklar aşağıda verilmiştir:
 
-- Her iki uygulama türü de kullanıcı belirteci önbelleğini korur ve sessizce bir belirteç elde edebilir (belirteç zaten belirteç önbelleğindeyse). Gizli istemci uygulamaları, uygulamanın kendisi için olan belirteçler için bir uygulama belirteç önbelleğine de sahiptir.
-- Her iki uygulama türü de kullanıcı hesaplarını yönetebilir ve kullanıcı belirteci önbelleğinden bir hesap alabilir, tanımlayıcısından bir hesap alabilir veya bir hesabı kaldırabilir.
-- Genel istemci uygulamalarının bir belirteç (dört kimlik doğrulama akışı) edinmenin dört yolu vardır. Gizli istemci uygulamalarının bir belirteci edinmenin üç yolu vardır (ve kimlik sağlayıcısının URL'sini hesaplamanın bir yolu bitiş noktasını yetkilendirmek için). Daha fazla bilgi için [bkz.](msal-acquire-cache-tokens.md)
+- Her iki tür uygulama da bir kullanıcı belirteci önbelleğini korur ve sessizce bir belirteç alabilir (belirteç zaten belirteç önbelleğinde olduğunda). Gizli istemci uygulamalarının, uygulamanın kendisi için olan belirteçler için bir uygulama belirteci önbelleği de vardır.
+- Her iki uygulama türü de Kullanıcı hesabını yönetir ve kullanıcı belirteci önbelleğinden bir hesap alabilir, tanımlayıcısından bir hesap alabilir veya bir hesabı kaldırabilir.
+- Ortak istemci uygulamalarında bir belirteç edinmenin dört yolu vardır (dört kimlik doğrulama akışı). Gizli istemci uygulamalarında belirteç edinmenin üç yolu vardır (ve kimlik sağlayıcısı yetkilendirme uç noktası URL 'sini hesaplamak için bir yol). Daha fazla bilgi için bkz. [belirteçleri](msal-acquire-cache-tokens.md)alma.
 
-ADAL kullandıysanız, ADAL'ın kimlik doğrulama bağlamının aksine, MSAL'da istemci kimliğinin *(uygulama kimliği* veya *uygulama kimliği*olarak da adlandırılır) uygulamanın yapımında bir kez geçirildiğini fark edebilirsiniz. Uygulama bir belirteç edindiğinde yeniden geçirilmesi gerekmez. Bu, hem genel hem de gizli istemci uygulamaları için geçerlidir. Gizli istemci uygulamalarının oluşturucuları da istemci kimlik bilgileri ne aktarılır: kimlik sağlayıcısıyla paylaştıkları sır.
+ADAL kullandıysanız, ADAL 'nin kimlik doğrulama bağlamından farklı olarak, MSAL ' de istemci KIMLIĞI ( *uygulama kimliği* veya uygulama *kimliği*olarak da bilinir) uygulamanın oluşturulmasından bir kez geçirildiğine dikkat edin. Uygulama bir belirteç aldığında yeniden geçirilmesi gerekmez. Bu, hem genel hem de gizli istemci uygulamaları için geçerlidir. Gizli istemci uygulamalarının oluşturucuları, istemci kimlik bilgileri: kimlik sağlayıcısıyla paylaştığı gizli dizi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şunları öğrenin:
 - [İstemci uygulama yapılandırma seçenekleri](msal-client-application-configuration.md)
-- [MSAL.NET kullanarak istemci uygulamalarını anında kullanma](msal-net-initializing-client-applications.md)
-- [MSAL.js kullanarak müşteri uygulamalarını anında kullanma](msal-js-initializing-client-applications.md)
+- [MSAL.NET kullanarak istemci uygulamaları örnekleme](msal-net-initializing-client-applications.md)
+- [MSAL. js kullanarak istemci uygulamalarını örnekleme](msal-js-initializing-client-applications.md)

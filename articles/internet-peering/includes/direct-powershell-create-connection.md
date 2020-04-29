@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 610bac5c08d7f3aa3c93e273bc6573a08ca1239f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680807"
 ---
-Aşağıdaki örnek, Seattle'da 10 Gbps Direct'in nasıl oluşturulabildiğini gösterir.
+Aşağıdaki örnek Seattle 'da 10 Gbps bir doğrudan eşleme oluşturmayı gösterir.
 
-PowerShell cmdlet **New-AzPeeringDirectConnectionObject'i** kullanarak yeni eşleme isteğinde kullanılacak DirectConnection nesnelerini oluşturun.
+Yeni eşleme isteğinde kullanılacak DirectConnection nesneleri oluşturmak için **New-AzPeeringDirectConnectionObject** PowerShell cmdlet 'ini kullanın.
 
-Bu örnek, DirectConnection nesnesi nasıl oluşturulacak gösterilmektedir.
+Bu örnek, DirectConnection nesnesinin nasıl oluşturulacağını gösterir.
 
 ```powershell
 $connection1 = New-AzPeeringDirectConnectionObject `
@@ -32,9 +32,9 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> Önceki örnekte <index> **$peeringLocation[]** <index> değeri seçtiğiniz eşleme konumuna karşılık vermelidir.
+> Önceki örnekteki <index> **$peeringLocation []** <index> değeri, tercih ettiğiniz eşleme konumuna karşılık gelmelidir.
 
-Belirli bir eşleme konumunda artıklığa ihtiyaç duymanız durumunda başka bir bağlantı oluşturun.
+Belirli bir eşleme konumunda artıklık gerekli olduğunda başka bir bağlantı oluşturun.
 
 ```powershell
 $connection2 = New-AzPeeringDirectConnectionObject `
@@ -46,7 +46,7 @@ $connection2 = New-AzPeeringDirectConnectionObject `
     -BandwidthInMbps 10000
 ```
 
-PowerShell cmdlet **New-AzPeering'i** kullanarak yeni bir Doğrudan eşleme oluşturun. Bu komut, burada gösterildiği gibi alınabilir bir ASN kaynak kimliği gerektirir.
+Yeni bir doğrudan eşleme oluşturmak için **New-Azeşleme** PowerShell cmdlet 'ini kullanın. Bu komut, burada gösterildiği gibi alınabilecek bir ASN kaynak KIMLIĞI gerektirir.
 
 
 ```powershell
@@ -60,7 +60,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Bu örnek, istek başarıyla işlendiğinde yanıtı gösterir.
+Bu örnekte, istek başarıyla işlendiğinde yanıt gösterilmektedir.
 
 ```powershell
 
@@ -78,4 +78,4 @@ Bu örnek, istek başarıyla işlendiğinde yanıtı gösterir.
     Tags                 : {}
 
 ```
-Bu çıktıdaki **{subscriptionId}** yerine gerçek abonelik kimliğinin görüntüleneceğini unutmayın.
+Bu çıktıda **{SubscriptionID}** yerine, gerçek abonelik kimliğinin görüntüleneceğini unutmayın.

@@ -1,7 +1,7 @@
 ---
-title: Korumalı web API - genel bakış
+title: Korumalı Web API 'SI-genel bakış
 titleSuffix: Microsoft identity platform
-description: Korumalı bir web API'sini (genel bakış) nasıl oluşturabildiğini öğrenin.
+description: Korumalı bir Web API 'SI (genel bakış) oluşturmayı öğrenin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,28 +13,28 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537211"
 ---
-# <a name="scenario-protected-web-api"></a>Senaryo: Korumalı web API
+# <a name="scenario-protected-web-api"></a>Senaryo: korumalı Web API 'SI
 
-Bu senaryoda, bir web API'sini nasıl ortaya çıkarabileceğinizi öğrenirsiniz. Web API'sini nasıl koruyacağınızı da öğrenirsiniz, böylece yalnızca kimlik doğrulaması yapılan kullanıcılar bu api'ye erişebilir.
+Bu senaryoda, bir Web API 'sini kullanıma sunma hakkında bilgi edineceksiniz. Ayrıca, Web API 'sini yalnızca kimliği doğrulanmış kullanıcıların erişebileceği şekilde nasıl koruyacağınızı öğreneceksiniz.
 
-Web API'nizi kullanmak için, kimlik doğrulaması hem iş hem de okul hesapları olan kullanıcıları etkinleştirmeniz veya Microsoft'un kişisel hesaplarını etkinleştirmeniz gerekir.
+Web API 'nizi kullanmak için hem iş hem de okul hesaplarıyla kimliği doğrulanmış kullanıcıları etkinleştirmeniz ya da Microsoft kişisel hesaplarını etkinleştirmeniz gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="specifics"></a>Özellikleri
+## <a name="specifics"></a>Özelliklerini
 
-Web API'lerini korumak için bilmeniz gereken belirli bilgiler şunlardır:
+Web API 'Lerini korumak için bilmeniz gereken belirli bilgiler aşağıda verilmiştir:
 
-- Uygulama kaydınız en az bir kapsamı ortaya çıkarmalıdır. Web API'nız tarafından kabul edilen belirteç sürümü oturum açma hedef kitlesine bağlıdır.
-- Web API'sinin kod yapılandırması, web API'sı çağrıldığında kullanılan belirteci doğrulamalıdır.
+- Uygulama kaydınız en az bir kapsam kullanıma sunmalıdır. Web API 'niz tarafından kabul edilen belirteç sürümü, oturum açma izleyicisine bağlıdır.
+- Web API 'SININ kod yapılandırması, Web API 'SI çağrıldığında kullanılan belirteci doğrulamalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

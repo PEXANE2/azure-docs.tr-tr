@@ -1,6 +1,6 @@
 ---
-title: Büyük dosya paylaşımlarını etkinleştirme ve oluşturma - Azure Dosyaları
-description: Bu makalede, büyük dosya paylaşımlarını etkinleştirmeyi ve nasıl oluşturabileceğinizi öğreneceksiniz.
+title: Büyük dosya paylaşımlarını etkinleştirme ve oluşturma-Azure dosyaları
+description: Bu makalede, büyük dosya paylaşımlarını etkinleştirme ve oluşturma hakkında bilgi edineceksiniz.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,43 +8,43 @@ ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537687"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
-Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, dosya paylaşımlarınız 100 TiB'ye kadar ölçeklenebilir. Varolan dosya paylaşımlarınız için varolan depolama hesaplarınızda bu ölçeklemesini etkinleştirebilirsiniz.
+Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, dosya paylaşımlarınız 100 TiB 'ye kadar ölçeklenebilir. Mevcut dosya paylaşımlarınız için bu ölçeklendirmeyi mevcut depolama hesaplarınızda etkinleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-- Azure CLI'yi kullanmak istiyorsanız, [en son sürümü yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- Azure PowerShell'i kullanmak istiyorsanız, [en son sürümü yükleyin.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-Şimdilik, yalnızca yerel olarak yedekli depolama (LRS) veya bölge yedekli depolama (ZRS) büyük dosya paylaşımı etkin hesaplarda kullanabilirsiniz. Coğrafi bölge yedekli depolama (GZRS), coğrafi yedekli depolama (GRS) veya okuma erişimi coğrafi yedekli depolama (RA-GRS) kullanamazsınız.
-Bir hesapta büyük dosya paylaşımlarını etkinleştirmek geri döndürülemez bir işlemdir. Etkinleştirdikten sonra hesabınızı GZRS, GRS veya RA-GRS'ye dönüştüremezsiniz.
+Şimdilik, yalnızca yerel olarak yedekli depolama (LRS) veya bölgesel olarak yedekli depolama (ZRS), büyük dosya paylaşımında etkinleştirilmiş hesaplarda kullanabilirsiniz. Coğrafi bölge yedekli depolama (GZRS), coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) kullanamazsınız.
+Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir işlemdir. Bunu etkinleştirdikten sonra, hesabınızı GZRS, GRS veya RA-GRS ' e dönüştüremeyeceksiniz.
 
 ## <a name="create-a-new-storage-account"></a>Yeni depolama hesabı oluşturma
 
 ### <a name="portal"></a>Portal
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Azure portalında **Tüm hizmetler'i**seçin. 
-1. Kaynaklar **listesinde, Depolama Hesapları**girin. Siz yazarken, girişinize göre liste filtreler. **Depolama Hesapları**’nı seçin.
-1. Görünen **Depolama Hesapları** penceresinde **Ekle'yi**seçin.
-1. Depolama hesabı oluşturmak için kullanacağınız aboneliği seçin.
-1. **Kaynak grubu** alanı altında **Yeni oluştur**’u seçin. Yeni kaynak grubunuzun adını girin.
+1. Azure portal, **tüm hizmetler**' i seçin. 
+1. Kaynak listesinde **depolama hesapları**' nı girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Depolama Hesapları**’nı seçin.
+1. Görüntülenen **depolama hesapları** penceresinde **Ekle**' yi seçin.
+1. Depolama hesabını oluşturmak için kullanacağınız aboneliği seçin.
+1. **Kaynak grubu** alanı altında **Yeni oluştur**’u seçin. Yeni kaynak grubunuz için bir ad girin.
 
     ![Portalda kaynak grubu oluşturmayı gösteren ekran görüntüsü](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
-1. Ardından, depolama hesabınız için bir ad girin. Bu ad Azure'da benzersiz olmalıdır. Ad da uzunluğu 3 ila 24 karakter olmalıdır ve sadece sayılar ve küçük harfler olabilir.
+1. Ardından, depolama hesabınız için bir ad girin. AD Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 ile 24 karakter uzunluğunda olmalı ve yalnızca rakamlardan ve küçük harflerden oluşabilir.
 1. Depolama hesabınız için bir konum seçin.
-1. Çoğaltmayı **Yerel olarak yedekli depolama** veya **Bölge yedekli depolama**alanına ayarlayın.
+1. Çoğaltmayı **yerel olarak yedekli depolama** ya da bölgesel olarak **yedekli depolama**olarak ayarlayın.
 1. Bu alanları varsayılan değerlerinde bırakın:
 
    |Alan  |Değer  |
@@ -54,18 +54,18 @@ Bir hesapta büyük dosya paylaşımlarını etkinleştirmek geri döndürüleme
    |Hesap türü     |StorageV2 (genel amaçlı v2)         |
    |Erişim katmanı     |Sık Erişimli         |
 
-1. **Gelişmiş'i**seçin ve ardından Büyük dosya **paylaşımlarının**sağındaki **Etkin** seçenek düğmesini seçin.
+1. **Gelişmiş**' i seçin ve ardından **büyük dosya paylaşımlarının**sağ tarafındaki **etkin** seçenek düğmesini seçin.
 1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
 
-    ![Azure portalındaki yeni bir depolama hesabında "etkin" seçeneği düğmesiyle ekran görüntüsü](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
+    ![Azure portal yeni bir depolama hesabında "etkin" seçenek düğmesi ile ekran görüntüsü](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
 1. **Oluştur**’u seçin.
 
 ### <a name="cli"></a>CLI
 
-İlk olarak, büyük dosya paylaşımlarını etkinleştirmek için [Azure CLI'nin en son sürümünü yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+İlk olarak, büyük dosya paylaşımlarını etkinleştirebilmeniz için [Azure CLI 'nin en son sürümünü yüklemeniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) gerekir.
 
-Büyük dosya paylaşımları etkinleştirilmiş bir depolama hesabı oluşturmak için aşağıdaki komutu kullanın. `<yourStorageAccountName>`Değiştirin `<yourResourceGroup>`, `<yourDesiredRegion>` ve bilgilerinizle.
+Büyük dosya paylaşımları etkin olan bir depolama hesabı oluşturmak için aşağıdaki komutu kullanın. , `<yourStorageAccountName>` `<yourResourceGroup>`Ve `<yourDesiredRegion>` bilgilerinizi ile değiştirin.
 
 ```azurecli-interactive
 ## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
@@ -74,35 +74,35 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 ### <a name="powershell"></a>PowerShell
 
-İlk olarak, büyük dosya paylaşımlarını etkinleştirmek için [PowerShell'in en son sürümünü yükleyin.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
+İlk olarak, büyük dosya paylaşımlarını etkinleştirebilmeniz için [en son PowerShell sürümünü yüklemeniz](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) gerekir.
 
-Büyük dosya paylaşımları etkinleştirilmiş bir depolama hesabı oluşturmak için aşağıdaki komutu kullanın. `<yourStorageAccountName>`Değiştirin `<yourResourceGroup>`, `<yourDesiredRegion>` ve bilgilerinizle.
+Büyük dosya paylaşımları etkin olan bir depolama hesabı oluşturmak için aşağıdaki komutu kullanın. , `<yourStorageAccountName>` `<yourResourceGroup>`Ve `<yourDesiredRegion>` bilgilerinizi ile değiştirin.
 
 ```powershell
 ## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
-## <a name="enable-large-files-shares-on-an-existing-account"></a>Varolan bir hesapta büyük dosya paylaşımlarını etkinleştirme
+## <a name="enable-large-files-shares-on-an-existing-account"></a>Mevcut bir hesapta büyük dosya paylaşımlarını etkinleştir
 
-Ayrıca, varolan hesaplarınızda büyük dosya paylaşımlarını da etkinleştirebilirsiniz. Büyük dosya paylaşımlarını etkinleştiriseniz, GZRS, GRS veya RA-GRS'ye dönüştüremezsinize izin vermezsiniz. Büyük dosya paylaşımlarını etkinleştirmek bu depolama hesabında geri alınamaz.
+Ayrıca, mevcut hesaplarınızda büyük dosya paylaşımlarını etkinleştirebilirsiniz. Büyük dosya paylaşımlarını etkinleştirirseniz, GZRS, GRS veya RA-GRS ' e dönüştüremezsiniz. Bu depolama hesabında büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz.
 
 ### <a name="portal"></a>Portal
 
-1. Azure [portalını](https://portal.azure.com)açın ve büyük dosya paylaşımlarını etkinleştirmek istediğiniz depolama hesabına gidin.
-1. Depolama hesabını açın ve **Yapılandırma'yı**seçin.
-1. **Büyük dosya paylaşımlarında** **Etkin'i** seçin ve ardından **Kaydet'i**seçin.
-1. **Genel Bakış'ı** seçin ve **Yenile'yi**seçin.
+1. [Azure Portal](https://portal.azure.com)açın ve büyük dosya paylaşımlarını etkinleştirmek istediğiniz depolama hesabına gidin.
+1. Depolama hesabını açın ve **yapılandırma**' yı seçin.
+1. **Büyük dosya paylaşımlarında** **etkin** ' i seçin ve ardından **Kaydet**' i seçin.
+1. **Genel bakış** ' ı ve **Yenile**' yi seçin.
 
-![Azure portalındaki varolan bir depolama hesabında Etkin seçeneği düğmesini seçme](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+![Azure portal var olan bir depolama hesabında etkin seçenek düğmesini seçme](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
 
-Artık depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdin. Ardından, artan kapasite ve ölçekavantajlarından yararlanmak için varolan paylaşımın kotasını güncelleştirmeniz gerekir.
+Artık depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiniz. Daha sonra, daha fazla kapasitenin ve ölçeğin avantajlarından yararlanmak için mevcut paylaşımın kotasını güncelleştirmeniz gerekir.
 
-"Büyük dosya paylaşımları henüz hesap için kullanılamıyor" hata iletisini alırsanız, bölgeniz kullanıma sunulmasının ortasında olabilir. Büyük dosya paylaşımları için acil bir ihtiyacınız varsa desteğe başvurun.
+"Hesap için büyük dosya paylaşımları henüz kullanılamıyor" hata iletisini alırsanız, bölgeniz dağıtımı tamamlama ortasında olabilir. Büyük dosya paylaşımları için acil bir gereksinimimiz varsa desteğe başvurun.
 
 ### <a name="cli"></a>CLI
 
-Varolan hesabınızda büyük dosya paylaşımlarını etkinleştirmek için aşağıdaki komutu kullanın. `<yourStorageAccountName>` Değiştirin `<yourResourceGroup>` ve bilgilerinizle değiştirin.
+Mevcut hesabınızda büyük dosya paylaşımlarını etkinleştirmek için aşağıdaki komutu kullanın. Ve `<yourStorageAccountName>` `<yourResourceGroup>` bilgilerinizi ile değiştirin.
 
 ```azurecli-interactive
 az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
@@ -110,29 +110,29 @@ az storage account update --name <yourStorageAccountName> -g <yourResourceGroup>
 
 ### <a name="powershell"></a>PowerShell
 
-Varolan hesabınızda büyük dosya paylaşımlarını etkinleştirmek için aşağıdaki komutu kullanın. `<yourStorageAccountName>` Değiştirin `<yourResourceGroup>` ve bilgilerinizle değiştirin.
+Mevcut hesabınızda büyük dosya paylaşımlarını etkinleştirmek için aşağıdaki komutu kullanın. Ve `<yourStorageAccountName>` `<yourResourceGroup>` bilgilerinizi ile değiştirin.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
 ```
 
-## <a name="create-a-large-file-share"></a>Büyük bir dosya paylaşımı oluşturma
+## <a name="create-a-large-file-share"></a>Büyük bir dosya paylaşma oluşturma
 
 Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdikten sonra, bu hesapta daha yüksek kotalarla dosya paylaşımları oluşturabilirsiniz. 
 
 ### <a name="portal"></a>Portal
 
-Büyük bir dosya paylaşımı oluşturmak, standart bir dosya paylaşımı oluşturmakla hemen hemen aynıdır. Temel fark, 100 TiB'e kadar bir kota ayarlayabiliyor olabilirsiniz.
+Büyük bir dosya paylaşımının oluşturulması, standart bir dosya paylaşımının oluşturulmasıyla neredeyse aynıdır. Temel fark, 100 TiB 'ye kadar bir kota ayarlayabilmeniz gerektiğidir.
 
-1. Depolama hesabınızdan **Dosya paylaşımlarını**seçin.
+1. Depolama hesabınızdan **dosya paylaşımları**' nı seçin.
 1. **+ Dosya paylaşımı**'nı seçin.
-1. Dosya paylaşımınız için bir ad girin. İstediğiniz kota boyutunu da 100 TiB'ye kadar ayarlayabilirsiniz. Ardından **Oluştur**’u seçin. 
+1. Dosya paylaşımınız için bir ad girin. İstediğiniz kota boyutunu 100 TiB 'ye kadar de ayarlayabilirsiniz. Ardından **Oluştur**’u seçin. 
 
-![Ad ve Kota kutularını gösteren Azure portalı Kullanıcı Arabirimi](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
+![Ad ve kota kutularını gösteren Azure portal Kullanıcı arabirimi](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
 ### <a name="cli"></a>CLI
 
-Büyük bir dosya paylaşımı oluşturmak için aşağıdaki komutu kullanın. `<yourStorageAccountName>`Değiştirin `<yourStorageAccountKey>`, `<yourFileShareName>` ve bilgilerinizle.
+Büyük bir dosya paylaşma oluşturmak için aşağıdaki komutu kullanın. , `<yourStorageAccountName>` `<yourStorageAccountKey>`Ve `<yourFileShareName>` bilgilerinizi ile değiştirin.
 
 ```azurecli-interactive
 az storage share create --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName>
@@ -140,7 +140,7 @@ az storage share create --account-name <yourStorageAccountName> --account-key <y
 
 ### <a name="powershell"></a>PowerShell
 
-Büyük bir dosya paylaşımı oluşturmak için aşağıdaki komutu kullanın. `<YourStorageAccountName>`Değiştirin `<YourStorageAccountKey>`, `<YourStorageAccountFileShareName>` ve bilgilerinizle.
+Büyük bir dosya paylaşma oluşturmak için aşağıdaki komutu kullanın. , `<YourStorageAccountName>` `<YourStorageAccountKey>`Ve `<YourStorageAccountFileShareName>` bilgilerinizi ile değiştirin.
 
 ```powershell
 ##Config
@@ -151,21 +151,21 @@ $ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAcco
 New-AzStorageShare -Name $shareName -Context $ctx
 ```
 
-## <a name="expand-existing-file-shares"></a>Varolan dosya paylaşımlarını genişletme
+## <a name="expand-existing-file-shares"></a>Mevcut dosya paylaşımlarını Genişlet
 
-Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdikten sonra, bu hesaptaki varolan dosya paylaşımlarını daha yüksek kotaya da genişletebilirsiniz. 
+Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdikten sonra, söz konusu hesaptaki mevcut dosya paylaşımlarını daha yüksek kota olarak da genişletebilirsiniz. 
 
 ### <a name="portal"></a>Portal
 
-1. Depolama hesabınızdan **Dosya paylaşımlarını**seçin.
-1. Dosya paylaşımınızı sağ tıklatın ve ardından **Kota'yı**seçin.
-1. İstediğiniz yeni boyutu girin ve ardından **Tamam'ı**seçin.
+1. Depolama hesabınızdan **dosya paylaşımları**' nı seçin.
+1. Dosya paylaşımınıza sağ tıklayıp **Kota**' i seçin.
+1. İstediğiniz yeni boyutu girip **Tamam**' ı seçin.
 
-![Varolan dosya paylaşımlarının Kotalı Azure portalı UI](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+![Mevcut dosya paylaşımlarının kotasına sahip Azure portal Kullanıcı arabirimi](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
 ### <a name="cli"></a>CLI
 
-Kotayı en yüksek boyuta ayarlamak için aşağıdaki komutu kullanın. `<yourStorageAccountName>`Değiştirin `<yourStorageAccountKey>`, `<yourFileShareName>` ve bilgilerinizle.
+Kotayı en büyük boyuta ayarlamak için aşağıdaki komutu kullanın. , `<yourStorageAccountName>` `<yourStorageAccountKey>`Ve `<yourFileShareName>` bilgilerinizi ile değiştirin.
 
 ```azurecli-interactive
 az storage share update --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName> --quota 102400
@@ -173,7 +173,7 @@ az storage share update --account-name <yourStorageAccountName> --account-key <y
 
 ### <a name="powershell"></a>PowerShell
 
-Kotayı en yüksek boyuta ayarlamak için aşağıdaki komutu kullanın. `<YourStorageAccountName>`Değiştirin `<YourStorageAccountKey>`, `<YourStorageAccountFileShareName>` ve bilgilerinizle.
+Kotayı en büyük boyuta ayarlamak için aşağıdaki komutu kullanın. , `<YourStorageAccountName>` `<YourStorageAccountKey>`Ve `<YourStorageAccountFileShareName>` bilgilerinizi ile değiştirin.
 
 ```powershell
 ##Config
@@ -187,6 +187,6 @@ Set-AzStorageShareQuota -ShareName $shareName -Context $ctx -Quota 102400
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Windows'da dosya paylaşımını bağlama ve bağlama](storage-how-to-use-files-windows.md)
-* [Linux'ta dosya paylaşımını bağlama ve bağlama](storage-how-to-use-files-linux.md)
-* [macOS'ta dosya paylaşımını bağlama ve bağlama](storage-how-to-use-files-mac.md)
+* [Windows üzerinde bir dosya paylaşımının bağlantısını oluşturma ve bağlama](storage-how-to-use-files-windows.md)
+* [Linux 'ta bir dosya paylaşımının bağlantısını oluşturma ve bağlama](storage-how-to-use-files-linux.md)
+* [MacOS 'ta bir dosya paylaşımının bağlantısını oluşturma ve bağlama](storage-how-to-use-files-mac.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Ağ Geçidi için WAF ilkelerini geçirin
-description: Azure PowerShell'i kullanarak Azure Web Uygulaması Güvenlik Duvarı ilkelerini nasıl geçirtini öğrenin.
+title: Azure Application Gateway için WAF ilkelerini geçirme
+description: Azure PowerShell kullanarak Azure Web uygulaması güvenlik duvarı ilkelerini geçirmeyi öğrenin.
 services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
@@ -8,33 +8,33 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536633"
 ---
-# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell kullanarak Web Uygulaması Güvenlik Duvarı ilkelerini geçirin
+# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell kullanarak Web uygulaması güvenlik duvarı ilkelerini geçirme
 
-Bu komut dosyası, bir WAF config veya özel kurallara özel WAF ilkesitam bir WAF ilkesine geçiş kolaylaştırır. Portalda *WAF ilkesine geçiş*yapan bir uyarı görebilirsiniz veya Geomatch özel kuralları, site başına ve URI WAF başına ilke veya bot azaltma kuralı gibi yeni genel önizleme WAF özelliklerini isteyebilirsiniz. Bu özelliklerden herhangi birini kullanmak için, uygulama ağ geçidinizle ilişkili tam bir WAF ilkesine ihtiyacınız vardır. 
+Bu betik, bir WAF yapılandırması veya özel kurallardan yalnızca WAF ilkesindeki bir tam WAF ilkesi arasında geçiş yapmayı kolaylaştırır. Portalda *WAF ilkesine geçiş*söyleyen bir uyarı görebilirsiniz veya coğrafi eşleşme özel kuralları, site BAŞıNA ve URI başına WAF ilkesi ya da bot Azaltma kuralı kümesi gibi yeni genel ÖNIZLEMESININ WAF özelliklerini de isteyebilirsiniz. Bu özelliklerden herhangi birini kullanmak için, uygulama ağ geçidiniz ile ilişkili tam bir WAF ilkesi gerekir. 
 
-Yeni bir WAF ilkesi oluşturma hakkında daha fazla bilgi için [bkz.](create-waf-policy-ag.md) Geçiş hakkında bilgi için [waf ilkesine geçir'e](create-waf-policy-ag.md#migrate-to-waf-policy)bakın.
+Yeni bir WAF ilkesi oluşturma hakkında daha fazla bilgi için bkz. [Application Gateway Için Web uygulaması güvenlik duvarı Ilkeleri oluşturma](create-waf-policy-ag.md). Geçirme hakkında daha fazla bilgi için bkz. [WAF Ilkesine geçme](create-waf-policy-ag.md#migrate-to-waf-policy).
 
-## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>Geçiş komut dosyasını kullanarak WAF ilkesine geçiş yapmak için
+## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>Geçiş betiği kullanılarak WAF ilkesine geçiş yapmak için
 
-Geçiş komut dosyasını çalıştırmak için aşağıdaki adımları kullanın: 
+Geçiş betiğini çalıştırmak için aşağıdaki adımları kullanın: 
 
-1. Aşağıdaki bulut kabuğu penceresini açın veya portal ın içinden bir tane açın.
-2. Komut dosyasını bulut kabuğu penceresine kopyalayın ve çalıştırın.
-3. Komut dosyası, Abonelik Kimliği, Kaynak Grubu adı, WAF config ile ilişkili Uygulama Ağ Geçidi adı ve oluşturmak için yeni WAF ilkesinin adını sorar. Bu girdileri girdikten sonra, komut dosyası çalışır ve yeni WAF ilkenizi oluşturur
-4. Yeni WAF ilkesini uygulama ağ geçidinizle ilişkilendirin. Portaldaki WAF ilkesine gidin ve **İlişkili Uygulama Ağ Geçitleri** sekmesini seçin. **Associate an Application Gateway**
+1. Aşağıdaki Cloud Shell penceresini açın veya Portal içinden bir tane açın.
+2. Betiği Cloud Shell penceresine kopyalayın ve çalıştırın.
+3. Betik, abonelik KIMLIĞI, kaynak grubu adı, WAF yapılandırmasının ilişkilendirildiği Application Gateway adı ve oluşturulacak yeni WAF ilkesinin adını sorar. Bu girdileri girdikten sonra betik çalışır ve yeni WAF ilkenizi oluşturur
+4. Yeni WAF ilkesini uygulama ağ geçidiniz ile ilişkilendirin. Portalda WAF ilkesine gidin ve **Ilişkili uygulama ağ geçitleri** sekmesini seçin. **Application Gateway Ilişkilendir** ' i SEÇIN ve ardından waf ilkesini ilişkilendirmek için Application Gateway seçin.
 
 > [!NOTE]
-> Aşağıdaki koşullar varsa komut dosyası bir geçişi tamamlamaz:
-> - Tüm kural devre dışı bırakılır. Geçişi tamamlamak için, tüm kural grubunun devre dışı bırakılmadığından emin olun.
-> - *Eşitler ile* bir dışlama girişi(ler) herhangi bir işleç. Geçişi tamamlamak için, *Eşitler herhangi bir* işleç ile dışlama girişlerinin bulunmadığından emin olun.
+> Aşağıdaki koşullar mevcutsa betik bir geçişi tamamlamaz:
+> - Kuralın tamamı devre dışı bırakıldı. Bir geçişi gerçekleştirmek için RuleGroup 'un tamamının devre dışı bırakılmadığından emin olun.
+> - *Eşittir any* işleci olan bir dışlama girişi. Bir geçişi gerçekleştirmek için, *eşittir any* işlecinin hariç tutma girişlerinin mevcut olmadığından emin olun.
 >
-> Daha fazla bilgi için komut dosyasındaki *Doğrulama Girdi* siişlevine bakın.
+> Daha fazla bilgi için, betikteki *ValidateInput* işlevine bakın.
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -219,4 +219,4 @@ Main
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Web Uygulaması Güvenlik Duvarı CRS kural grupları ve kuralları](application-gateway-crs-rulegroups-rules.md)hakkında daha fazla bilgi edinin.
+[Web uygulaması güvenlik duvarı 'nın ilgili kural grupları ve kuralları](application-gateway-crs-rulegroups-rules.md)hakkında daha fazla bilgi edinin.

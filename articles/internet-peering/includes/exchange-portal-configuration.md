@@ -9,33 +9,33 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 268703081a2a40e8bcc665889eaeaf8edd673bfd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680928"
 ---
-1. **Eşleme Oluştur** sayfasında, **Yapılandırma** sekmesinde, gösterildiği gibi kutuları doldurun.
+1. **Eşleme oluştur** sayfasında, **yapılandırma** sekmesinde, kutuları gösterilen şekilde girin.
 
     > [!div class="mx-imgBorder"]
-    > ![Eşleme sayfası Exchange eşleme türü oluşturma](../media/setup-exchange-conf-tab.png)
+    > ![Eşleme sayfası değişim eşleme türü oluştur](../media/setup-exchange-conf-tab.png)
 
-    * **Peering türü için** **Exchange'i**seçin.
-    * **Temel Ücretsiz**olarak **SKU'yı** seçin.
-    * Bakmayı ayarlamak istediğiniz **Metro** konumunu seçin.
+    * **Eşleme türü**için **Exchange**' i seçin.
+    * **SKU 'Yu** **temel ücretsiz**olarak seçin.
+    * Eşlemeyi ayarlamak istediğiniz **Metro** konumunu seçin.
 
         > [!NOTE]
-        > Seçili **Metro** konumunda Microsoft ile zaten karşılaş bağlantılarınız varsa ve portalı bu konumda eşleme ayarlamak için ilk kez kullanıyorsanız, varolan görünen bağlantılarınız gösterildiği gibi **Eşleme bağlantıları** bölümünde listelenir. Microsoft, yeni bağlantılarla birlikte tek bir yerde yönetebilmeniz için bu bakan bağlantıları otomatik olarak bir Azure kaynağına dönüştürür. Daha fazla bilgi için bkz: [Portalı kullanarak azure kaynağına bakan eski bir Exchange'i dönüştürün.](../howto-legacy-exchange-portal.md)
+        > Seçili **Metro** konumunda Microsoft ile zaten eşleme bağlantılarınız varsa ve bu konumda eşlemeyi ilk kez kullanıyorsanız, mevcut eşleme bağlantılarınız, gösterilen şekilde **eşleme bağlantıları** bölümünde listelenecektir. Microsoft, bu eşleme bağlantılarını, yeni bağlantılarla birlikte tek bir yerden yönetebilmeniz için bir Azure kaynağına otomatik olarak dönüştürür. Daha fazla bilgi için bkz. [portalı kullanarak eski Exchange eşlemesini bir Azure kaynağına dönüştürme](../howto-legacy-exchange-portal.md).
         >
 
-1. **Peering bağlantıları**altında, kurmak istediğiniz her yeni bağlantı için satır eklemek için **yeni oluştur'u** seçin.
+1. **Eşleme bağlantıları**altında, **Yeni oluştur** ' u seçerek ayarlamak istediğiniz her yeni bağlantı için bir satır ekleyin.
 
-    * Bağlantı ayarlarını yapılandırmak veya değiştirmek için bir satır Için Düzenle düğmesini seçin.
+    * Bağlantı ayarlarını yapılandırmak veya değiştirmek için, bir satır için Düzenle düğmesini seçin.
 
         > [!div class="mx-imgBorder"]
         > ![Düzenle düğmesi](../media/setup-exchange-conf-tab-edit.png)
 
-    * Bir satırı silmek için **, ...**  >  **Sil.**
+    * Bir satırı silmek için... seçeneğini belirleyin **.**  >  **Silin**.
 
         > [!div class="mx-imgBorder"]
         > ![Sil düğmesi](../media/setup-exchange-conf-tab-delete.png)
@@ -43,31 +43,31 @@ ms.locfileid: "81680928"
     * Burada gösterildiği gibi, bir bağlantı için tüm ayarları sağlamanız gerekir.
 
          > [!div class="mx-imgBorder"]
-         > ![Exchange Peering Connection sayfası](../media/setup-exchange-conf-tab-connection.png)
+         > ![Exchange eşleme bağlantı sayfası](../media/setup-exchange-conf-tab-connection.png)
 
-        1. Bağlantının kurulması gereken **Eşleme tesisini** seçin.
-        1. **IPv4 adresi** ve **IPv6 adres** kutularında, komşu komutunu kullanarak Microsoft yönlendiricilerinde yapılandırılacak iPv4 ve IPv6 adreslerini sırasıyla girin.
-        1. Sırasıyla **Maksimum reklamı yapılan Maksimum IPv4 adreslerine** ve Maksimum reklamı yapılan **IPv6 adres kutularına** reklam verecekolan IPv4 ve IPv6 önekleri numarasını girin.
-        1. Bağlantı ayarlarınızı kaydetmek için **Tamam'ı** seçin.
+        1. Bağlantının ayarlanması gereken **eşleme tesis** ' ı seçin.
+        1. **IPv4 adresi** ve **IPv6 adresi** kutularına, sırasıyla komşu komutu kullanılarak Microsoft yönlendiricilerde yapılandırılacak IPv4 ve IPv6 adreslerini girin.
+        1. **En fazla tanıtılan IPv4 adreslerinde** ve **en yüksek tanıtılan IPv6 adresi** kutularında duyurmanız gereken IPv4 ve IPv6 ön ekleri sayısını girin.
+        1. Bağlantı ayarlarınızı kaydetmek için **Tamam ' ı** seçin.
 
-1. Microsoft'un ağınızla birlikte bulunduğu herhangi bir tesise, daha önce seçilen **Metro** içinde daha fazla bağlantı eklemek için adımı yineleyin.
+1. Daha önce seçilen **Metro** dahilinde, Microsoft 'un ağınızla birlikte bulunduğu herhangi bir tesiste daha fazla bağlantı eklemek için bu adımı tekrarlayın.
 
-1. Gerekli tüm bağlantıları ekledikten sonra **Gözden Geçir + oluştur'u**seçin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Eşleme Yapılandırması sekmesi](../media/setup-exchange-conf-tab-final.png)
-
-1. Portalın girdiğiniz bilgilerin temel doğrulanmasını çalıştırdığına dikkat edin. Üstteki *şerit, son doğrulamayı çalıştıran*iletiyi görüntüler... .
+1. Gerekli tüm bağlantıları ekledikten sonra, **gözden geçir + oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Eşleme Doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
+    > ![Eşleme yapılandırması sekmesi](../media/setup-exchange-conf-tab-final.png)
 
-1. İleti nin *Doğrulama'ya geçirilmesinden*sonra bilgilerinizi doğrulayın. **Oluştur'u**seçerek isteği gönderin. İsteğinizi değiştirmek için **Önceki'yi** seçin ve adımları yineleyin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Akran gönderimi](../media/setup-exchange-review-tab-submit.png)
-
-1. İsteğe göndermeniz inden sonra, dağıtımın tamamlanmasını bekleyin. Dağıtım başarısız olursa, [Microsoft'a başvurun.](mailto:peering@microsoft.com) Burada gösterildiği gibi başarılı bir dağıtım görüntülenir.
+1. Portalın girdiğiniz bilgilerin temel doğrulamasını çalıştırdığına dikkat edin. Üstteki bir şerit *son doğrulama çalıştıran iletiyi görüntüler...*.
 
     > [!div class="mx-imgBorder"]
-    > ![Akran başarısı](../media/setup-direct-success.png)
+    > ![Eşleme doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
+
+1. *Doğrulama başarılı*olduktan sonra, bilgilerinizi doğrulayın. **Oluştur**seçeneğini belirleyerek isteği gönderebilirsiniz. İsteğinizi değiştirmek için, **önceki** seçeneğini belirleyip adımları yineleyin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Eşleme gönderimi](../media/setup-exchange-review-tab-submit.png)
+
+1. İsteği gönderdikten sonra, dağıtımın bitmesini bekleyin. Dağıtım başarısız olursa, [Microsoft eşleme](mailto:peering@microsoft.com)ile iletişime geçin. Başarılı bir dağıtım burada gösterildiği gibi görünür.
+
+    > [!div class="mx-imgBorder"]
+    > ![Eşleme başarısı](../media/setup-direct-success.png)

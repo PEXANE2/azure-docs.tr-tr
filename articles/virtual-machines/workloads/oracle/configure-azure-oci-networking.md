@@ -1,6 +1,6 @@
 ---
-title: Azure ExpressRoute'u Oracle Cloud Altyapısıyla Bağlayın | Microsoft Dokümanlar
-description: Azure ExpressRoute'u Oracle Cloud Infrastructure (OCI) FastConnect ile bağlayın ve bulutlar arası Oracle uygulama çözümlerini etkinleştirin
+title: Azure ExpressRoute 'ı Oracle bulut altyapısıyla bağlama | Microsoft Docs
+description: Platformlar arası Oracle uygulama çözümlerini etkinleştirmek için Azure ExpressRoute 'ı Oracle Cloud Infrastructure (OCı) FastConnect ile bağlama
 documentationcenter: virtual-machines
 author: BorisB2015
 manager: gwallace
@@ -14,95 +14,95 @@ ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: borisb
 ms.openlocfilehash: 70556cbbfefd6ad22ef96ee16065209031ea456c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683766"
 ---
-# <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure ve Oracle Cloud Altyapısı arasında doğrudan bağlantı kurma  
+# <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure ile Oracle bulut altyapısı arasında doğrudan bir iç bağlantı kurma  
 
-Entegre bir [çoklu bulut deneyimi](oracle-oci-overview.md)oluşturmak için Microsoft ve Oracle, [ExpressRoute](../../../expressroute/expressroute-introduction.md) ve [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)üzerinden Azure ve Oracle Bulut Altyapısı (OCI) arasında doğrudan bağlantı sağlar. ExpressRoute ve FastConnect ara bağlantısı sayesinde müşteriler, iki bulut arasında düşük gecikme, yüksek verim ve özel doğrudan bağlantı yaşayabilir.
+[Tümleşik bir çok kiracılı deneyim](oracle-oci-overview.md)oluşturmak için Microsoft ve Oracle, [ExpressRoute](../../../expressroute/expressroute-introduction.md) ve [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)aracılığıyla Azure ile Oracle bulut altyapısı (OCI) arasında doğrudan bağlantı sağlar. ExpressRoute ve FastConnect bağlantısı aracılığıyla müşteriler, iki bulut arasında düşük gecikme süresi, yüksek aktarım hızı, özel doğrudan bağlantı ile karşılaşabilir.
 
 > [!IMPORTANT]
-> Oracle, Azure / Oracle Cloud ara bağlantı çözümünü Mayıs 2020'ye kadar kullanırken bu uygulamaları Azure'da çalışacak şekilde onaylar.
-> * E-İş Paketi
-> * JD Edwards EnterpriseOne
-> * Peoplesoft
-> * Oracle Perakende uygulamaları
-> * Oracle Hyperion Finansal Yönetimi
+> Oracle, bu uygulamaların Azure 'da 2020 Mayıs ' e kadar Azure/Oracle bulut Interconnect çözümünü kullanırken Azure 'da çalışmasını onaylandıracaktır.
+> * E-Iş paketi
+> * JD edi EnterpriseOne
+> * PeopleSoft
+> * Oracle perakende uygulamaları
+> * Oracle Hyperion finans yönetimi
 
-Aşağıdaki resim, ara bağlantının üst düzey bir genel görünümünü gösterir:
+Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış gösterilmektedir:
 
-![Bulutlar arası ağ bağlantısı](media/configure-azure-oci-networking/azure-oci-connect.png)
+![Platformlar arası ağ bağlantısı](media/configure-azure-oci-networking/azure-oci-connect.png)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure ve OCI arasında bağlantı kurmak için etkin bir Azure aboneliğiniz ve etkin bir OCI kiranız olması gerekir.
+* Azure ile OCı arasında bağlantı kurmak için etkin bir Azure aboneliğiniz ve etkin bir OCı kiralamanın olması gerekir.
 
-* Bağlantı, yalnızca Bir Azure ExpressRoute bakış konumu OCI FastConnect'e yakın veya aynı bakış konumuna sahipolduğunda mümkündür. [Bkz. Bölge Kullanılabilirliği](oracle-oci-overview.md#region-availability).
+* Yalnızca bir Azure ExpressRoute eşleme konumunun, OCı FastConnect ile aynı eşleme konumuna eşit olduğu durumlarda bağlantı kurulabilir. [Bölge kullanılabilirliğine](oracle-oci-overview.md#region-availability)bakın.
 
-## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>ExpressRoute ve FastConnect arasında doğrudan bağlantıyı yapılandırma
+## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>ExpressRoute ve FastConnect arasında doğrudan bağlantı yapılandırma
 
-1. Bir kaynak grubu altında Azure aboneliğinizde standart bir ExpressRoute devresi oluşturun. 
-    * ExpressRoute'u oluştururken, hizmet sağlayıcısı olarak **Oracle Cloud FastConnect'i** seçin. ExpressRoute devresi oluşturmak için [adım adım kılavuzuna](../../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)bakın.
-    * Azure ExpressRoute devresi parçalı bant genişliği seçenekleri sağlarken FastConnect 1, 2, 5 veya 10 Gbps'yi destekler. Bu nedenle, ExpressRoute altında bu eşleşen bant genişliği seçeneklerinden birini seçmeniz önerilir.
+1. Kaynak grubu altında Azure aboneliğinizde standart bir ExpressRoute devresi oluşturun. 
+    * ExpressRoute oluştururken, hizmet sağlayıcı olarak **Oracle Cloud FastConnect** ' i seçin. ExpressRoute bağlantı hattı oluşturmak için, bkz. adım adım [Kılavuzu](../../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    * Azure ExpressRoute bağlantı hattı, ayrıntılı bant genişliği seçenekleri sunar, ancak FastConnect 1, 2, 5 veya 10 Gbps 'yi destekler. Bu nedenle, ExpressRoute altındaki bu eşleşen bant genişliği seçeneklerinden birini seçmeniz önerilir.
 
-    ![ExpressRoute devresi oluştur](media/configure-azure-oci-networking/exr-create-new.png)
-1. ExpressRoute Service **anahtarınızı**not edin. FastConnect devrenizi yapılandırırken anahtarı sağlamanız gerekir.
+    ![ExpressRoute devresi oluşturma](media/configure-azure-oci-networking/exr-create-new.png)
+1. ExpressRoute **hizmet anahtarınızı**aklınızda edin. FastConnect devrenizi yapılandırırken anahtarı sağlamanız gerekir.
 
-    ![ExpressRoute Hizmeti anahtarı](media/configure-azure-oci-networking/exr-service-key.png)
+    ![ExpressRoute hizmet anahtarı](media/configure-azure-oci-networking/exr-service-key.png)
 
     > [!IMPORTANT]
-    > ExpressRoute devresi sağlanır karşılanmaz **(Sağlayıcı Durumu** **Sağlanmamış**olsa bile) ExpressRoute ücretleri için faturalandırılırsınız.
+    > ExpressRoute bağlantı hattı sağlandığında ( **sağlayıcı durumu** **sağlanmadığından**bile) ExpressRoute ücretleri için faturalandırılırsınız.
 
-1. Azure sanal ağınızla veya OCI sanal bulut ağı IP Adresi alanınızla örtüşmeyen iki özel IP adresi alanı /30'dan oluşan iki özel IP adresi alanı kazıyın. İlk IP adres alanını birincil adres alanı, ikinci IP adres alanı ise ikincil adres alanı olarak adlandıracağız. FastConnect devrenizi yapılandırırken ihtiyacınız olan adresleri not edin.
-1. Dinamik Yönlendirme Ağ Geçidi (DRG) oluşturun. FastConnect devrenizi oluştururken buna ihtiyacınız olacaktır. Daha fazla bilgi için [Dinamik Yönlendirme Ağ Geçidi](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) belgelerine bakın.
-1. Oracle kiracınızın altında bir FastConnect devresi oluşturun. Daha fazla bilgi için [Oracle belgelerine](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)bakın.
+1. Azure sanal ağınız veya OCı sanal bulut ağı IP adresi alanı ile örtüşmeyen her biri/30 olan iki özel IP adresi alanını carın. İlk IP adresi alanına birincil adres alanı ve ikinci IP adresi alanı ikincil adres alanı olarak başvuracağız. FastConnect devrenizi yapılandırırken ihtiyacınız olan adresleri aklınızda edin.
+1. Dinamik yönlendirme ağ geçidi (DRG) oluşturun. FastConnect devrenizi oluştururken buna ihtiyacınız olacak. Daha fazla bilgi için bkz. [dinamik yönlendirme ağ geçidi](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) belgeleri.
+1. Oracle kiracınız kapsamında bir FastConnect devresi oluşturun. Daha fazla bilgi için [Oracle belgelerine](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)bakın.
   
-    * FastConnect yapılandırması altında, sağlayıcı olarak **Microsoft Azure: ExpressRoute'u** seçin.
-    * Önceki adımda sağladığınız Dinamik Yönlendirme Ağ Geçidi'ni seçin.
-    * Sağlanacak bant genişliğini seçin. En iyi performans için bant genişliği, ExpressRoute devresini oluştururken seçilen bant genişliğiyle eşleşmelidir.
-    * **Sağlayıcı Hizmet Anahtarı'nda**ExpressRoute servis anahtarını yapıştırın.
-    * **Birincil BGP IP Adresi** için önceki adımda oyulmuş ilk /30 özel IP adresi alanını ve **İkincil BGP IP** Adresi için ikinci /30 özel IP adres alanını kullanın.
-        * Oracle BGP IP Adresi (Birincil ve İkincil) için iki aralığın ilk kullanılabilir adresini ve ikinci adresi müşteri BGP IP Adresine (FastConnect perspektifinden) atayın. İlk kullanılabilir IP adresi /30 adres alanındaki ikinci IP adresidir (ilk IP adresi Microsoft tarafından ayrılmıştır).
-    * **Oluştur'u**tıklatın.
-1. Route Table'ı kullanarak Dynamic Routing Gateway aracılığıyla Oracle kiracınız altında FastConnect'i sanal bulut ağına bağlamayı tamamlayın.
-1. Azure'a gidin ve ExpressRoute devreniziçin **Sağlayıcı Durumunun** **Provisioned** olarak değiştirildiğini ve **Azure özel** türünden bir eşleme nin sağlandığını sağlayın. Bu, aşağıdaki adımlar için bir ön koşuldur.
+    * FastConnect yapılandırması altında **Microsoft Azure: sağlayıcı olarak ExpressRoute** ' u seçin.
+    * Önceki adımda sağladığınız dinamik yönlendirme ağ geçidini seçin.
+    * Sağlanacak bant genişliğini seçin. En iyi performans için, bant genişliğinin ExpressRoute bağlantı hattı oluşturulurken seçilen bant genişliğiyle eşleşmesi gerekir.
+    * **Sağlayıcı hizmet anahtarı**' nda ExpressRoute hizmet anahtarını yapıştırın.
+    * **BIRINCIL BGP IP adresi** ve **İkincil BGP IP** adresi için ıkıncı/30 özel IP adresi alanı için önceki bir adımda yer alan Ilk/30 özel IP adresi alanını kullanın.
+        * Oracle BGP IP adresi (birincil ve ikincil) için iki aralığın ilk kullanışlı adresini ve ikinci adresi Müşteri BGP IP adresine (FastConnect perspektifinden) atayın. İlk kullanılan IP adresi/30 adres alanındaki ikinci IP adresidir (ilk IP adresi Microsoft tarafından ayrılmıştır).
+    * **Oluştur**' a tıklayın.
+1. Yönlendirme tablosunu kullanarak, dinamik yönlendirme ağ geçidi aracılığıyla Oracle kiracınız kapsamındaki sanal bulut ağına FastConnect bağlantısını tamamen yapın.
+1. Azure 'a gidin ve ExpressRoute devrenizin **sağlayıcının durumunun** **sağlandı** olarak değiştirildiğinden ve **Azure Private** türünde bir eşlemenin sağlandığından emin olun. Bu, aşağıdaki adımlarla ilgili bir önkoşul değildir.
 
-    ![ExpressRoute sağlayıcı durumu](media/configure-azure-oci-networking/exr-provider-status.png)
-1. **Azure özel** eşleme'yi tıklatın. FastConnect devrenizi kurarken girdiğiniz bilgilere göre, eşleme ayrıntılarının otomatik olarak yapılandırıldığını göreceksiniz.
+    ![ExpressRoute sağlayıcısı durumu](media/configure-azure-oci-networking/exr-provider-status.png)
+1. **Azure özel** eşlemesi ' ne tıklayın. Bu, FastConnect devrenizi ayarlarken girdiğiniz bilgilere göre eşleme ayrıntılarının otomatik olarak yapılandırıldığını görürsünüz.
 
-    ![Özel akran ayarları](media/configure-azure-oci-networking/exr-private-peering.png)
+    ![Özel eşleme ayarları](media/configure-azure-oci-networking/exr-private-peering.png)
 
-## <a name="connect-virtual-network-to-expressroute"></a>Sanal ağı ExpressRoute'a bağlayın
+## <a name="connect-virtual-network-to-expressroute"></a>Sanal ağı ExpressRoute 'a bağla
 
-1. Henüz yapmadıysanız, sanal ağ ve sanal ağ ağ geçidi oluşturun. Ayrıntılar için [adım adım kılavuzuna](../../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)bakın.
-1. [Terraform komut dosyasını](https://github.com/microsoft/azure-oracle/tree/master/InterConnect-2) çalıştırarak veya [ExpressRoute FastPath'i Yapılandırmak](../../../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath)için PowerShell komutunu çalıştırarak sanal ağ ağ ağ geçidi ile ExpressRoute devreniz arasındaki bağlantıyı kurun.
+1. Henüz yapmadıysanız bir sanal ağ ve sanal ağ geçidi oluşturun. Ayrıntılar için bkz. [adım adım Kılavuzu](../../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
+1. [Terrayform betiğini](https://github.com/microsoft/azure-oracle/tree/master/InterConnect-2) çalıştırarak veya [ExpressRoute FastPath 'ı yapılandırmak](../../../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath)için PowerShell komutunu yürüterek sanal ağ geçidi ile ExpressRoute bağlantı hattı arasındaki bağlantıyı ayarlayın.
 
-Ağ yapılandırmasını tamamladıktan sonra, Azure portalındaki ExpressRoute Özel örnek bıçak altında **ARP Records'u al'a** tıklayarak yapılandırmanızın geçerliliğini doğrulayabilir ve **rota tablosunu alabilirsiniz.**
+Ağ yapılandırmasını tamamladıktan sonra, Azure portal ExpressRoute özel eşleme dikey penceresinde **ARP kayıtlarını al** ve **yol al tablosu** ' na tıklayarak yapılandırmanızın geçerliliğini doğrulayabilirsiniz.
 
 ## <a name="automation"></a>Otomasyon
 
-Microsoft, ağ ara bağlantısının otomatik olarak dağıtılmasını sağlamak için Terraform komut dosyaları oluşturmuştur. Terraform komut dosyalarının yürütmeden önce Azure ile kimlik doğrulaması gerekir, çünkü Azure aboneliğinde yeterli izinlere ihtiyaç duyarlar. Kimlik doğrulama, bir [Azure Active Directory hizmet yöneticisi](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) veya Azure CLI kullanılarak gerçekleştirilebilir. Daha fazla bilgi için [Terraform belgelerine](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html)bakın.
+Microsoft, ağ bağlantısı otomatik dağıtımını etkinleştirmek için Teraform betikleri oluşturdu. Terrayform betikleri, Azure aboneliğinde yeterli izinleri gerektirdiğinden yürütmeden önce Azure ile kimlik doğrulaması yapmak için gereklidir. Kimlik doğrulaması, bir [Azure Active Directory hizmet sorumlusu](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) veya Azure CLI kullanılarak gerçekleştirilebilir. Daha fazla bilgi için bkz. [Terrayform belgeleri](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html).
 
-Bu [GitHub deposunda,](https://aka.ms/azureociinterconnecttf)inter-connect'i dağıtmak için Terraform komut dosyaları ve ilgili belgeler bulunabilir.
+Bu [GitHub deposunda](https://aka.ms/azureociinterconnecttf),-Connect ile bağlantı kurmak için Teraform betikleri ve ilgili belgeler bulunabilir.
 
 ## <a name="monitoring"></a>İzleme
 
-Her iki buluta da aracıyükleme, uçtan uca ağın performansını izlemek için Azure Ağ Performans Monitörü'nden [(NPM)](../../../expressroute/how-to-npm.md) yararlanabilirsiniz. NPM, ağ sorunlarını kolayca belirlemenize ve bunların ortadan kaldırılmasına yardımcı olur.
+Her iki bulutda aracı yükleme, uçtan uca ağın performansını izlemek için Azure [ağ performansı İzleyicisi (NPM)](../../../expressroute/how-to-npm.md) özelliğinden yararlanabilirsiniz. NPM, ağ sorunlarını kolayca belirlemenize yardımcı olur ve bunları ortadan kaldırmaya yardımcı olur.
 
-## <a name="delete-the-interconnect-link"></a>Ara bağlantı bağlantısını silme
+## <a name="delete-the-interconnect-link"></a>InterConnect bağlantısını silme
 
-Ara bağlantının silinmesi için, verilen belirli sırada aşağıdaki adımların izlenmesi gerekir. Aksi takdirde "başarısız durum" ExpressRoute devresi neden olur.
+InterConnect 'i silmek için aşağıdaki adımların belirtilen belirli bir sırada izlenmelidir. Bunun yapılmaması, "başarısız durum" ExpressRoute devresine neden olur.
 
-1. ExpressRoute bağlantısını silin. Bağlantınız için sayfadaki **Sil** simgesine tıklayarak bağlantıyı silin. Daha fazla bilgi için [ExpressRoute belgelerine](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet)bakın.
-1. Oracle Cloud Konsolundan Oracle FastConnect'i silin.
+1. ExpressRoute bağlantısını silin. Bağlantınız için sayfadaki **Sil** simgesine tıklayarak bağlantıyı silin. Daha fazla bilgi için bkz. [ExpressRoute belgeleri](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet).
+1. Oracle 'ın bulut konsolundan Oracle FastConnect 'i silin.
 1. Oracle FastConnect devresi silindikten sonra Azure ExpressRoute devresini silebilirsiniz.
 
-Bu noktada, silme ve deprovisioning işlemi tamamlandı.
+Bu noktada, silme ve sağlamayı kaldırma işlemi tamamlanmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* OCI ve Azure arasındaki bulutlar arası bağlantı hakkında daha fazla bilgi için [Oracle belgelerine](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)bakın.
-* Hedeflenen Oracle uygulamaları için Azure üzerinden altyapı dağıtmak ve ağ ara bağlantısını yapılandırmak için [Terraform komut dosyalarını](https://aka.ms/azureociinterconnecttf) kullanın. 
+* OCı ve Azure arasında çapraz bulut bağlantısı hakkında daha fazla bilgi için [Oracle belgelerine](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)bakın.
+* Azure üzerinde hedeflenen Oracle uygulamaları için altyapı dağıtmak üzere [Terrayform betikleri](https://aka.ms/azureociinterconnecttf) kullanın ve ağ bağlantısını yapılandırın. 

@@ -1,6 +1,6 @@
 ---
-title: Veri akışını nakışlamada koşullu bölme dönüşümü
-description: Azure Veri Fabrikası eşleme veri akışındaki koşullu bölme dönüşümunu kullanarak verileri farklı akışlara bölme
+title: Eşleme veri akışında koşullu bölünmüş dönüştürme
+description: Azure Data Factory eşleme veri akışındaki koşullu bölünmüş dönüştürmeyi kullanarak verileri farklı akışlara bölme
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: bd9241e526d7cf42f0697afb8635c085a08c80d8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606476"
 ---
-# <a name="conditional-split-transformation-in-mapping-data-flow"></a>Veri akışını nakışlamada koşullu bölme dönüşümü
+# <a name="conditional-split-transformation-in-mapping-data-flow"></a>Eşleme veri akışında koşullu bölünmüş dönüştürme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Koşullu bölme dönüştürme, veri satırlarını eşleşen koşullara göre farklı akışlara yönlendirir. Koşullu bölme dönüşümü, programlama dilindeki CASE karar yapısına benzer. Dönüştürme ifadeleri değerlendirir ve sonuçlara göre, veri satırını belirtilen akışa yönlendirir.
+Koşullu bölünmüş dönüştürme, veri satırlarını eşleşen koşullara göre farklı akışlara yönlendirir. Koşullu bölünmüş dönüştürme, programlama dilindeki bir CASE karar yapısına benzerdir. Dönüştürme ifadeleri değerlendirir ve sonuçlara dayanarak, veri satırını belirtilen akışa yönlendirir.
 
 ## <a name="configuration"></a>Yapılandırma
 
-Ayardaki **Bölme,** veri satırının ilk eşleşen akışa mı yoksa eşleştiğini her akışa mı aktığını belirler.
+**Bölme açık** ayarı, verilerin satırının ilk eşleşen akışa mı yoksa eşleşen her akışa mı akacağını belirler.
 
-Bölme koşulu için bir ifade girmek için veri akışı ifade oluşturucusu kullanın. Yeni bir koşul eklemek için, varolan bir satırdaki artı simgesine tıklayın. Varsayılan akış, herhangi bir koşulla eşleşmeyen satırlar için de eklenebilir.
+Bölünmüş koşul için bir ifade girmek üzere veri akışı ifade oluşturucusunu kullanın. Yeni bir koşul eklemek için, varolan bir satırdaki artı simgesine tıklayın. Herhangi bir koşulla eşleşmeyen satırlar için varsayılan akış eklenebilir.
 
-![koşullu bölünme](media/data-flow/conditionalsplit1.png "koşullu bölme seçenekleri")
+![Koşullu bölme](media/data-flow/conditionalsplit1.png "Koşullu bölünmüş seçenekler")
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -45,13 +45,13 @@ Bölme koşulu için bir ifade girmek için veri akışı ifade oluşturucusu ku
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akışı `SplitByYear` `CleanData`alan koşullu bir bölme dönüşümüdür. Bu dönüşümün iki `year < 1960` `year > 1980`bölünmüş koşulu vardır ve . `disjoint`veriler ilk eşleşen koşula gittiğinden yanlıştır. İlk koşulla eşleşen her satır `moviesBefore1960`çıkış akışına gider. İkinci koşulla eşleşen kalan tüm satırlar çıkış akışına `moviesAFter1980`gider. Diğer tüm satırlar varsayılan `AllOtherMovies`akış boyunca akar.
+Aşağıdaki örnek, gelen akışı `SplitByYear` `CleanData`alan adlı, koşullu bölünmüş bir dönüşümdir. Bu dönüşümde iki bölünmüş koşul `year < 1960` ve `year > 1980`. `disjoint`veriler ilk eşleşen koşula gittiğinden false. İlk koşulla eşleşen her satır çıkış akışına `moviesBefore1960`gider. İkinci koşulla eşleşen tüm kalan satırlar çıkış akışına `moviesAFter1980`gider. Diğer tüm satırlar varsayılan akış `AllOtherMovies`üzerinden akar.
 
-Veri Fabrikası UX,bu dönüşüm aşağıdaki resim gibi görünür:
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
-![koşullu bölünme](media/data-flow/conditionalsplit1.png "koşullu bölme seçenekleri")
+![Koşullu bölme](media/data-flow/conditionalsplit1.png "Koşullu bölünmüş seçenekler")
 
-Bu dönüşüm için veri akışı komut dosyası aşağıdaki snippet bulunmaktadır:
+Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
 
 ```
 CleanData
@@ -64,4 +64,4 @@ CleanData
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Koşullu bölme ile kullanılan ortak veri akışı dönüşümleri [birleştirme dönüşümü,](data-flow-join.md) [arama dönüşümü](data-flow-lookup.md)ve [seçili dönüşüm](data-flow-select.md)
+Koşullu bölme ile kullanılan ortak veri akışı dönüştürmeleri, [JOIN dönüşümü](data-flow-join.md), [arama dönüşümü](data-flow-lookup.md)ve [seçim dönüşümünüzün](data-flow-select.md)

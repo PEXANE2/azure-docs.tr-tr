@@ -1,26 +1,26 @@
 ---
-title: Kaynaklar için dağıtım sırasını ayarlama
-description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağın başka bir kaynağa bağımlı olarak nasıl ayarlanılabildiğini açıklar.
+title: Kaynaklar için dağıtım sırasını ayarla
+description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535477"
 ---
-# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlama
+# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlayın
 
-Bir kaynağı dağıtırken, dağıtılmadan önce diğer kaynakların var olduğundan emin olmanız gerekebilir. Örneğin, bir SQL veritabanı dağıtmadan önce bir SQL sunucusu gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek tanımlarsınız. **Bağımlı** öğesi ile bir bağımlılık tanımlarsınız veya **başvuru** işlevini kullanırsınız.
+Bir kaynağı dağıtırken, dağıtılmadan önce diğer kaynakların mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir SQL veritabanı dağıtılmadan önce bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek tanımlarsınız. Dependency **DSON** öğesiyle bir bağımlılık tanımlar veya **başvuru** işlevini kullanarak.
 
-Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Yalnızca aynı şablonda dağıtılan kaynaklar için bağımlılıkları tanımlamanız gerekir.
+Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Yalnızca aynı şablonda dağıtılan kaynaklar için bağımlılıklar tanımlamanız gerekir.
 
 ## <a name="dependson"></a>dependsOn
 
-Şablonunuzda, DependsOn öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, her biri bir kaynak adı olan bir JSON dize dizisidir. Dizi [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtılmadığında, Azure Kaynak Yöneticisi kaynağı otomatik olarak gerekli bağımlılıklardan kaldırır.
+Şablonunuzda, Bağımlıdson öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, her biri bir kaynak adı olan dizelerin bir JSON dizisidir. Dizi, [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
 
-Aşağıdaki örnekte, yük bakiyesi, sanal ağ ve birden çok depolama hesabı oluşturan bir döngüye bağlı sanal makine ölçeği kümesi gösterilmektedir. Bu diğer kaynaklar aşağıdaki örnekte gösterilmez, ancak şablonun başka bir yerinde bulunmaları gerekir.
+Aşağıdaki örnek, bir yük dengeleyiciye, sanal ağa ve birden çok depolama hesabı oluşturan bir döngüye bağlı olan bir sanal makine ölçek kümesini gösterir. Bu diğer kaynaklar aşağıdaki örnekte gösterilmez, ancak şablonda başka bir yerde bulunması gerekir.
 
 ```json
 {
@@ -40,9 +40,9 @@ Aşağıdaki örnekte, yük bakiyesi, sanal ağ ve birden çok depolama hesabı 
 }
 ```
 
-Önceki örnekte, **storageLoop**adlı bir kopyalama döngüsü aracılığıyla oluşturulan kaynaklara bir bağımlılık dahildir. Örneğin, Azure [Kaynak Yöneticisi'nde birden çok kaynak örneği oluşturma](copy-resources.md)bölümüne bakın.
+Yukarıdaki örnekte, **Storageloop**adlı bir kopya döngüsüyle oluşturulan kaynaklara bir bağımlılık dahildir. Bir örnek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 
-Bağımlılıkları tanımlarken, belirsizliği önlemek için kaynak sağlayıcısı ad alanı ve kaynak türünü ekleyebilirsiniz. Örneğin, diğer kaynaklarla aynı adlara sahip olabilecek bir yük dengeleyicisini ve sanal ağı netleştirmek için aşağıdaki biçimi kullanın:
+Bağımlılıkları tanımlarken, belirsizlik olmaması için kaynak sağlayıcısı ad alanını ve kaynak türünü dahil edebilirsiniz. Örneğin, diğer kaynaklarla aynı ada sahip olabilecek bir yük dengeleyiciyi ve sanal ağı netleştirmek için aşağıdaki biçimi kullanın:
 
 ```json
 "dependsOn": [
@@ -51,15 +51,15 @@ Bağımlılıkları tanımlarken, belirsizliği önlemek için kaynak sağlayıc
 ]
 ```
 
-Kaynaklarınız arasındaki ilişkileri haritalamak için bağlı olarak kullanmaya meyilli olsanız da, bunu neden yaptığınızı anlamak önemlidir. Örneğin, kaynakların nasıl birbiriyle bağlantılı olduğunu belgelemek için, Bağlı olmak doğru bir yaklaşım değildir. Dağıtımdan sonra bağlı öğe öğesinde hangi kaynakların tanımlandığını sorgulayamadığınız. Kaynak Yöneticisi bağımlılık olan paralel iki kaynakta dağıtmadığından, bağlı olarak kullanma süresini etkileebilirsiniz.
+Kaynaklarınız arasındaki ilişkileri eşlemek için Bağımlılıson ' u kullanmaya da ihtiyacınız olsa da, bunu neden yaptığınızı anlamak önemlidir. Örneğin, kaynakların nasıl birbirine bağlı olduğunu belgelemek için, Bağımlıdson doğru yaklaşım değildir. Dağıtımdan sonra Bağımlıdson öğesinde tanımlanan kaynakları sorgulayamaz. Bağımlılıkların kullanıldığı paralel iki kaynak olarak Kaynak Yöneticisi dağıtmadığından, bağımlılar kullanarak dağıtım süresini etkilersiniz.
 
 ## <a name="child-resources"></a>Alt kaynaklar
 
-Kaynaklar özelliği, tanımlanan kaynakla ilgili alt kaynakları belirtmenize olanak tanır. Alt kaynaklar yalnızca beş seviye derinliğinde tanımlanabilir. Alt kaynak ve üst kaynak arasında örtük dağıtım bağımlılığı oluşturulmadığını unutmayın. Alt kaynağın üst kaynaktan sonra dağıtılması gerekiyorsa, bağımlı özelliğine olan bağımlılığı açıkça belirtmeniz gerekir.
+Resources özelliği, tanımlanmakta olan kaynakla ilgili alt kaynakları belirtmenize olanak tanır. Alt kaynaklar yalnızca beş düzey derinlikli tanımlanmış olabilir. Bir alt kaynak ve üst kaynak arasında örtük bir dağıtım bağımlılığının oluşturulmadığını göz önünde bulundurulmamak önemlidir. Alt kaynağın ana kaynaktan sonra dağıtılması gerekiyorsa, bu bağımlılığı Bağımlıdson özelliği ile açıkça sağlamalısınız.
 
-Her üst kaynak, yalnızca belirli kaynak türlerini alt kaynak olarak kabul eder. Kabul edilen kaynak türleri, ana kaynağın [şablon şemasında](https://github.com/Azure/azure-resource-manager-schemas) belirtilir. Alt kaynak türünün adı, **Microsoft.Web/sites/config** ve **Microsoft.Web/sites/extensions** gibi üst kaynak türünün adını içerir ve **microsoft.Web/sites/extensions microsoft.Web/sites'in**her ikisi de alt kaynaktır.
+Her üst kaynak, alt kaynaklar olarak yalnızca belirli kaynak türlerini kabul eder. Kabul edilen kaynak türleri, üst kaynağın [şablon şemasında](https://github.com/Azure/azure-resource-manager-schemas) belirtilir. Alt kaynak türünün adı, **Microsoft. Web**/ **Sites/config** ve **Microsoft. Web/Sites/Extensions** gibi üst kaynak türünün adını içerir.
 
-Aşağıdaki örnekte bir SQL sunucusu ve SQL veritabanı gösterilmektedir. Veritabanı sunucunun bir alt olmasına rağmen, SQL veritabanı ve SQL sunucusu arasında açık bir bağımlılık tanımlandığına dikkat edin.
+Aşağıdaki örnekte bir SQL Server ve SQL veritabanı gösterilmektedir. Veritabanı sunucusunun bir alt öğesi olsa bile SQL veritabanı ile SQL Server arasında açık bir bağımlılık tanımlandığına dikkat edin.
 
 ```json
 "resources": [
@@ -99,9 +99,9 @@ Aşağıdaki örnekte bir SQL sunucusu ve SQL veritabanı gösterilmektedir. Ver
 ]
 ```
 
-## <a name="reference-and-list-functions"></a>referans ve liste fonksiyonları
+## <a name="reference-and-list-functions"></a>Başvuru ve liste işlevleri
 
-[Başvuru işlevi,](template-functions-resource.md#reference) bir ifadenin değerini diğer JSON adı ve değer çiftlerinden veya çalışma zamanı kaynaklarından türetmesini sağlar. [Liste* işlevleri](template-functions-resource.md#list) bir liste işleminden bir kaynak için döndürme değerleri.  Başvuru ve liste ifadeleri, başvurulan kaynak aynı şablonda dağıtıldığında ve adıyla (kaynak kimliği ne de kaynak kimliği) ile anıldığında, bir kaynağın diğerine bağlı olduğunu dolaylı olarak bildirir. Kaynak kimliğini başvuru veya liste işlevlerine geçirirseniz, örtülü bir başvuru oluşturulmaz.
+[Başvuru işlevi](template-functions-resource.md#reference) , bir ifadenin DEĞERINI diğer JSON adından ve değer çiftlerinden veya çalışma zamanı kaynaklarından türemesini sağlar. [Liste * işlevleri](template-functions-resource.md#list) bir kaynak için bir liste işleminden değerler döndürür.  Başvuru ve liste ifadeleri, başvurulan kaynak aynı şablonda dağıtıldığında ve adı (kaynak KIMLIĞI değil) tarafından başvurulduğu zaman, bir kaynağın başka bir kaynağa bağlı olduğunu dolaylı olarak bildirir. Kaynak KIMLIĞINI başvuru veya liste işlevlerine geçirirseniz, örtük bir başvuru oluşturulmaz.
 
 Başvuru işlevinin genel biçimi:
 
@@ -109,13 +109,13 @@ Başvuru işlevinin genel biçimi:
 reference('resourceName').propertyPath
 ```
 
-listKeys işlevinin genel biçimi:
+ListKeys işlevinin genel biçimi:
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
-Aşağıdaki örnekte, CDN bitiş noktası açıkça CDN profiline bağlıdır ve dolaylı olarak bir web uygulamasına bağlıdır.
+Aşağıdaki örnekte, bir CDN uç noktası açıkça CDN profiline bağımlıdır ve örtülü olarak bir Web uygulamasına bağlıdır.
 
 ```json
 {
@@ -132,26 +132,26 @@ Aşağıdaki örnekte, CDN bitiş noktası açıkça CDN profiline bağlıdır v
     }
 ```
 
-Bağımlılıkları belirtmek için bu öğeyi veya bağımlı öğeyi kullanabilirsiniz, ancak her ikisini de aynı bağımlı kaynak için kullanmanız gerekmez. Mümkün olduğunda, gereksiz bir bağımlılık eklemeyi önlemek için örtülü bir başvuru kullanın.
+Bağımlılıkları belirtmek için bu öğeyi ya da Bağımlıdson öğesini kullanabilirsiniz, ancak aynı bağımlı kaynak için her ikisini de kullanmanız gerekmez. Mümkün olduğunda, gereksiz bir bağımlılık eklemekten kaçınmak için örtük bir başvuru kullanın.
 
-Daha fazla bilgi için [başvuru işlevine](template-functions-resource.md#reference)bakın.
+Daha fazla bilgi için bkz. [başvuru işlevi](template-functions-resource.md#reference).
 
-## <a name="circular-dependencies"></a>Dairesel bağımlılıklar
+## <a name="circular-dependencies"></a>Döngüsel bağımlılıklar
 
-Kaynak Yöneticisi şablon doğrulama sırasında dairesel bağımlılıkları tanımlar. Dairesel bir bağımlılık olduğunu belirten bir hata alırsanız, şablonunuzu herhangi bir bağımlılık gerekip gerekmediğini ve kaldırılıp kaldırılamadığını görmek için değerlendirin. Bağımlılıkları kaldırma işe yaramazsa, bazı dağıtım işlemlerini dairesel bağımlılığa sahip kaynaklardan sonra dağıtılan alt kaynaklara taşıyarak dairesel bağımlılıkları önleyebilirsiniz. Örneğin, iki sanal makine dağıtıyorsanız, ancak her birinin diğerine atıfta bulunan özellikleri ayarlamanız gerektiğini varsayalım. Bunları aşağıdaki sırada dağıtabilirsiniz:
+Kaynak Yöneticisi, şablon doğrulaması sırasında dairesel bağımlılıkları belirler. Döngüsel bağımlılığın olduğunu belirten bir hata alırsanız, herhangi bir bağımlılığın gerekli olup olmadığını ve kaldırılamadığını görmek için şablonunuzu değerlendirin. Bağımlılıkları kaldırmak işe yaramazsa, bazı dağıtım işlemlerini, döngüsel bağımlılığı olan kaynaklardan sonra dağıtılan alt kaynaklara taşıyarak dairesel bağımlılıklardan kaçınabilirsiniz. Örneğin, iki sanal makine dağıttığını, ancak birbirlerine başvuran her bir üzerinde Özellikler ayarlamanız gerektiğini varsayalım. Bunları aşağıdaki sırayla dağıtabilirsiniz:
 
-1. vm1
-2. vm2
-3. VM1'in uzatılması vm1 ve vm2'ye bağlıdır. Uzantı vm2'den aldığı değerleri vm1 olarak ayarlar.
-4. VM2'nin uzatılması vm1 ve vm2'ye bağlıdır. Uzantı vm1'den aldığı değerleri vm2'de ayarlar.
+1. VM1
+2. VM2
+3. VM1 üzerindeki uzantı VM1 ve VM2 'ye bağımlıdır. Uzantı, VM1 'teki VM2 'dan aldığı değerleri ayarlar.
+4. VM2 üzerindeki uzantı VM1 ve VM2 'ye bağımlıdır. Uzantı, VM2 'teki VM1 'dan aldığı değerleri ayarlar.
 
-Dağıtım sırasını değerlendirme ve bağımlılık hatalarını çözme hakkında bilgi için Azure [Kaynak Yöneticisi ile sık karşılaşılan Azure dağıtım hatalarını giderme](common-deployment-errors.md)sorununa bakın.
+Dağıtım sırasını değerlendirme ve bağımlılık hatalarını çözme hakkında bilgi için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](common-deployment-errors.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir öğreticiyi gözden geçirmek için [Bkz. Öğretici: Bağımlı kaynaklara sahip Azure Kaynak Yöneticisi şablonları oluşturun.](template-tutorial-create-templates-with-dependent-resources.md)
-* Bağımlılıkları ayarlarken öneriler için azure [kaynak yöneticisi şablonu en iyi uygulamaları](template-best-practices.md)görün.
-* Dağıtım sırasında sorun giderme bağımlılıkları hakkında bilgi edinmek için Azure [Kaynak Yöneticisi ile sık karşılaşılan Azure dağıtım hatalarını giderme](common-deployment-errors.md)sorununa bakın.
-* Azure Kaynak Yöneticisi şablonları oluşturma hakkında bilgi edinmek için [bkz.](template-syntax.md)
-* Şablondaki kullanılabilir işlevlerin listesi için [Şablon işlevlerine](template-functions.md)bakın.
+* Öğreticiye gitmek için bkz. [öğretici: bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma](template-tutorial-create-templates-with-dependent-resources.md).
+* Bağımlılıkları ayarlarken öneriler için bkz. [Azure Resource Manager şablonu en iyi yöntemleri](template-best-practices.md).
+* Dağıtım sırasında bağımlılıklar sorunlarını giderme hakkında bilgi edinmek için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](common-deployment-errors.md).
+* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
+* Bir şablondaki kullanılabilir işlevlerin listesi için bkz. [Şablon işlevleri](template-functions.md).
 

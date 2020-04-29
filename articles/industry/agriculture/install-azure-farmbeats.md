@@ -1,60 +1,60 @@
 ---
 title: Azure FarmBeats'i yükleme
-description: Bu makalede, Azure aboneliğinizde Azure FarmBeats nasıl yüklenir
+description: Bu makalede, Azure aboneliğinizdeki Azure Farmtts 'nin nasıl yükleneceği açıklanır.
 author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479568"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats'i yükleme
 
-Bu makalede, Azure aboneliğinizde Azure FarmBeats nasıl yüklenir.
+Bu makalede, Azure aboneliğinizdeki Azure Farmtts 'nin nasıl yükleneceği açıklanır.
 
-Azure FarmBeats, Azure Marketi'nde kullanılabilen bir işletmeden işletmeye bir tekliftir. Tarım veri kümelerinin sağlayıcılar arasında toplanmasını ve işlem yapılabilir öngörüler oluşturmasını sağlar. Azure FarmBeats bunu, erimiş veri kümelerine dayalı yapay zeka (AI) veya makine öğrenimi (ML) modelleri oluşturmanıza olanak sağlayarak yapar. Azure FarmBeats'in iki ana bileşeni şunlardır:
+Azure Farm, Azure Marketi 'nde bulunan işletmeden işletmeye yönelik bir tekliftir. Sağlayıcılar genelinde verilerin toplanmasının yanı sıra eyleme dönüştürülebilir içgörüler oluşturulmasına olanak tanıyor. Azure Farm, bu, fkullanılan veri kümelerine göre yapay zeka (AI) veya makine öğrenimi (ML) modelleri oluşturmanızı sağlayarak bunu yapar. Azure Farmtts 'nin iki ana bileşeni şunlardır:
 
-- **Datahub**: Farklı sağlayıcılar arasında çeşitli tarım veri kümelerinin biraraya getirilmesini, normalleştirilmesini ve bağlamsallaştırılmasını sağlayan bir API katmanı.
+- **Datahub**: farklı sağlayıcılardaki çeşitli agriclaral veri kümelerinin toplama, normalleştirme ve şeritleştirmeyi sağlayan bir API katmanı.
 
-- **Hızlandırıcı**: Datahub'ın üzerine inşa edilmiş web uygulaması. Model geliştirme ve görselleştirmenizi hızlandırArak başlatır. Hızlandırıcı, yutulan sensör verilerinin grafik olarak görselleştirilmesini ve model çıktısının harita olarak görselleştirilmesini göstermek için Azure FarmBeats API'lerini kullanır.
+- **Hızlandırıcı**: veri hub 'ının üzerine inşa edilen Web uygulaması. Hızlı bir şekilde model geliştirme ve görselleştirmenizi başlatır. Hızlandırıcı, alınan algılayıcı verilerinin görselleştirmeyi ve model çıkışının harita olarak görselleştirmesini göstermek için Azure Farmınts API 'Lerini kullanır.
 
 ## <a name="general-information"></a>Genel bilgiler
 
-### <a name="components-installed"></a>Bileşenler yüklü
+### <a name="components-installed"></a>Yüklenen bileşenler
 
-Azure FarmBeats'i yüklediğinizde, Azure aboneliğinizde aşağıdaki kaynaklar sağlanmaktadır:
+Azure Farmtts 'yi yüklediğinizde, Azure aboneliğinizde aşağıdaki kaynaklar sağlanır:
 
-| Azure Kaynakları Yüklendi  | Azure FarmBeats bileşeni  |
+| Azure kaynakları yüklendi  | Azure Farmtempts bileşeni  |
 |---------|---------|
-| Application Insights   |      Datahub & Hızlandırıcı      |
-| App Service     |     Datahub & Hızlandırıcı     |
-| App Service Planı   | Datahub & Hızlandırıcı  |
-| API Bağlantısı    |  Datahub       |
-| Redis için Azure Önbelleği       | Datahub      |
-| Azure Cosmos DB   |  Datahub       |
-| Azure Data Factory V2       |     Datahub & Hızlandırıcı      |
-| Azure Batch hesabı    | Datahub   |
-| Azure Key Vault |  Datahub & Hızlandırıcı        |
-| Azure Haritalar Hesabı       |     Hızlandırıcı    |
-| Olay Hub Ad Alanı    |     Datahub      |
-| Logic App      |  Datahub       |
-| Depolama Hesabı      |     Datahub & Hızlandırıcı      |
-| Time Series Insights     |    Datahub    |
+| Application Insights   |      Datahub & Hızlandırıcısı      |
+| App Service     |     Datahub & Hızlandırıcısı     |
+| App Service Planı   | Datahub & Hızlandırıcısı  |
+| API bağlantısı    |  Veri hub 'ı       |
+| Redis için Azure Önbelleği       | Veri hub 'ı      |
+| Azure Cosmos DB   |  Veri hub 'ı       |
+| Azure Data Factory V2       |     Datahub & Hızlandırıcısı      |
+| Azure Batch hesabı    | Veri hub 'ı   |
+| Azure Key Vault |  Datahub & Hızlandırıcısı        |
+| Azure haritalar hesabı       |     Hızlandır    |
+| Olay Hub 'ı ad alanı    |     Veri hub 'ı      |
+| Logic App      |  Veri hub 'ı       |
+| Depolama Hesabı      |     Datahub & Hızlandırıcısı      |
+| Time Series Insights     |    Veri hub 'ı    |
 
 ### <a name="costs-incurred"></a>Tahakkuk eden maliyetler
 
-Azure FarmBeats'in maliyeti, temel Azure hizmetlerinin maliyetinin toplamıdır. Azure hizmetleri için fiyatlandırma bilgileri [Fiyatlandırma Hesaplayıcısı](https://azure.microsoft.com/pricing/calculator)kullanılarak hesaplanabilir. Toplam yüklemenin fiili maliyeti kullanıma bağlı olarak değişir. İki bileşen için sabit durum maliyeti:
+Azure Farmtts 'nin maliyeti, temel alınan Azure hizmetlerinin maliyetinin toplamıdır. Azure hizmetleri fiyatlandırma bilgileri, [Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator)kullanılarak hesaplanabilir. Toplam yüklemenin gerçek maliyeti, kullanıma bağlı olarak değişir. İki bileşen için sabit durum maliyeti:
 
-- Datahub - günde 10 DOLARDAN az
-- Hızlandırıcı - günde 2 DOLARDAN az
+- Veri merkezi-günde $10 ' den az
+- Hızlandırıcı-günde $2 'den az
 
 ### <a name="regions-supported"></a>Desteklenen bölgeler
 
-Şu anda Azure FarmBeats aşağıdaki bölgelerdeki genel bulut ortamlarında desteklenir:
+Şu anda, şu bölgelerde genel bulut ortamlarında Azure Farmtempts desteklenir:
 
 - Doğu Avustralya
 - Orta ABD
@@ -67,145 +67,145 @@ Azure FarmBeats'in maliyeti, temel Azure hizmetlerinin maliyetinin toplamıdır.
 - Doğu Asya
 - Güneydoğu Asya
 
-### <a name="time-taken"></a>Alınan süre
+### <a name="time-taken"></a>Geçen süre
 
-Hazırlama ve yükleme de dahil olmak üzere Azure FarmBeats'in tüm kurulumu bir saatten az sürer.
+Hazırlama ve yükleme dahil olmak üzere tüm Azure Farmtts kurulumu bir saatten kısa sürer.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure FarmBeats'in gerçek yüklemesini başlatmadan önce aşağıdaki adımları tamamlamanız gerekir:
+Azure Farmtts 'nin gerçek yüklemesine başlamadan önce aşağıdaki adımları gerçekleştirmeniz gerekir:
 
-### <a name="verify-permissions"></a>İzinleri Doğrula
+### <a name="verify-permissions"></a>Izinleri doğrulama
 
-Azure FarmBeats'i yüklemek için Azure kiracısında aşağıdaki izinlere ihtiyacınız vardır:
+Azure Farmtts 'yi yüklemek için Azure kiracısında aşağıdaki izinlere sahip olmanız gerekir:
 
-- Kiracı - AAD uygulama yaratıcısı
-- Abonelik - Sahibi
-- FarmBeats'in kurulduğu Kaynak Grubu - Sahibi
+- Kiracı-AAD uygulama Oluşturucu
+- Abonelik-sahip
+- Farmtts 'nin yüklendiği kaynak grubu-sahip
 
-[AAD uygulama adımını oluşturmak](#create-an-aad-application) için ilk iki izin gereklidir. Gerekirse, AAD uygulamasını oluşturmak için uygun izinlere sahip birini alabilirsiniz.
+[AAD uygulama adımını oluşturmak](#create-an-aad-application) için ilk iki izin gerekir. Gerekirse, AAD uygulamasını oluşturmak için uygun izinlere sahip bir kişiye ulaşabilirsiniz.
 
-FarmBeats'i pazardan yükleyen kişinin FarmBeats'in yüklendiği Kaynak Grubu'nun sahibi olması gerekir. Abonelik sahipleri için kaynak grubu oluşturulduğunda bu otomatik olarak gerçekleşir. Diğerleri için lütfen Kaynak Grubu'nu önceden oluşturun ve Abonelik sahibinden sizi Kaynak Grubu'nun sahibi yapmasını isteyin.
+Market 'ten yüklenen Farmtts 'leri çalıştıran kişinin, Farmtts 'nin yüklenmekte olduğu kaynak grubunun sahibi olması gerekir. Abonelik sahipleri için, kaynak grubu oluşturulduğunda bu otomatik olarak gerçekleşir. Diğerleri için lütfen kaynak grubunu önceden oluşturun ve abonelik sahibinden kaynak grubunun sahibini yapmasını isteyin.
 
-Azure portalındaki erişim [izinlerinizi, role dayalı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/check-access)yönergelerini izleyerek doğrulayabilirsiniz.
+[Rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/check-access)yönergelerini izleyerek Azure Portal erişim izinlerinizi doğrulayabilirsiniz.
 
-### <a name="decide-subscription-and-region"></a>Abonelme ve Bölgeye Karar Verin
+### <a name="decide-subscription-and-region"></a>Aboneliğe ve bölgeye karar verme
 
-Azure abonelik kimliğine ve Azure FarmBeats'i yüklemek istediğiniz bölgeye ihtiyacınız vardır. [Bölgeler desteklenen](#regions-supported) bölümünde listelenen bölgelerden birini seçin.
+Azure abonelik KIMLIĞI ve Azure Farmtts 'yi yüklemek istediğiniz bölge gereklidir. [Desteklenen bölgeler](#regions-supported) bölümünde listelenen bölgelerden birini seçin.
 
-**Azure Abonelik Kimliği** ve Azure **Bölgesi'ni**not edin.
+**Azure ABONELIK kimliği** ve **Azure bölgesi**' ni bir yere unutmayın.
 
 ### <a name="create-an-aad-application"></a>AAD uygulaması oluşturma
 
-Azure FarmBeats için Azure Active Directory uygulaması oluşturulması ve kaydedilmesi gerekir. AAD oluşturma komut dosyasını başarıyla çalıştırmak için aşağıdaki izinlere gerek vardır:
+Azure Farmtts, Azure Active Directory uygulama oluşturma ve kaydetme gerektirir. AAD oluşturma betiğini başarılı bir şekilde çalıştırmak için aşağıdaki izinler gereklidir:
 
-- Kiracı - AAD uygulama yaratıcısı
-- Abonelik - Sahibi
+- Kiracı-AAD uygulama Oluşturucu
+- Abonelik-sahip
 
-PowerShell ortamını kullanarak bulut kabuğu örneğinde aşağıdaki adımları çalıştırın. İlk kez kullanan kullanıcılardan bir abonelik seçmeleri ve bir depolama hesabı oluşturmaları istenir. Kurulum alıbını söylendiği gibi tamamlayın.
+PowerShell ortamını kullanarak bir Cloud Shell örneğinde aşağıdaki adımları çalıştırın. Kullanıcılardan önce bir abonelik seçmesi ve bir depolama hesabı oluşturması istenir. Kurulumu belirtildiği gibi doldurun.
 
-1. [AAD uygulama jeneratörkomut dosyasını](https://aka.ms/FarmBeatsAADScript) indirin
+1. [AAD uygulama Oluşturucu betiğini](https://aka.ms/FarmBeatsAADScript) indirin
 
     ```azurepowershell-interactive
         wget -q https://aka.ms/FarmBeatsAADScript -O ./create_aad_script.ps1
     ```
 
-2. Varsayılan olarak, dosya ev dizininize indirilir. Dizine gidin.
+2. Varsayılan olarak, dosya giriş dizininize indirilir. Dizinine gidin.
 
     ```azurepowershell-interactive
         cd
     ```
 
-3. AAD komut dosyasını çalıştırma
+3. AAD betiğini çalıştırma
 
     ```azurepowershell-interactive
         ./create_aad_script.ps1
     ```
 
-4. Komut dosyası aşağıdaki üç girişi ister:
+4. Betik aşağıdaki üç girişi ister:
 
-    - **FarmBeats Web Sitesi Adı**: Bu FarmBeats web uygulaması için benzersiz URL önekidir. Önek zaten alınmışsa, komut dosyası hata çıkarır. Kurulduktan sonra FarmBeats dağıtımınıza https://\<farmbeats-web sitesi adı>.azurewebsites.net adresinden erişebilirsiniz ve\<swagger API'leri farmbeats-web sitesi adı>-api.azurewebsites.net https:// olacaktır.
+    - **Farmtts Web sitesi adı**: Bu, farmtts Web UYGULAMANıZıN benzersiz URL önekidir. Ön ek zaten alınmış olması durumunda, betik hata vermez. Yüklendikten sonra, Farmtts dağıtımınıza https://\<farmınts-website-Name>. azurewebsites.net ve Swagger apı 'leri https://\<farmınts-website-Name>-api.azurewebsites.net konumunda olacak.
 
-    - **Azure giriş kimliği**: FarmBeats yöneticisi olarak eklenmesini istediğiniz kullanıcı için Azure giriş kimliği sağlayın. Bu kullanıcı daha sonra diğer kullanıcılara FarmBeats web uygulaması erişim izni verebilir. Giriş kimliği genellikle formun john.doe@domain.com. Azure UPN de desteklenir.
+    - **Azure oturum açma kimliği**: Farmof 'lar Yöneticisi olarak eklenmesini istediğiniz kullanıcı için Azure oturum açma kimliği sağlayın. Bu Kullanıcı daha sonra, diğer kullanıcılara Farmtempts Web uygulamasına erişim izni verebilir. Oturum açma KIMLIĞI genellikle formdan john.doe@domain.comoluşur. Azure UPN de desteklenir.
 
-    - **Abonelik Kimliği**: Azure FarmBeats'i yüklemek istediğiniz abonelik kimliğidir
+    - **ABONELIK kimliği**: Bu, Azure Farmtts 'yi yüklemek ISTEDIĞINIZ aboneliğin kimliğidir
 
-5. AAD komut dosyasının çalıştırılması yaklaşık 2 dakika sürer ve ekrandaki değerlerin yanı sıra aynı dizindeki bir json dosyasına çıktı verir. Komut dosyasını başka biri çalıştırmışsa, bu çıktıyı sizinle paylaşmalarını isteyin.
+5. AAD betiği, aynı dizindeki bir JSON dosyasına ve hem ekranda hem de değerleri çalıştırmak ve çıktısını almak için 2 dakika sürer. Betiği başka birine çalıştırdıysanız, bu çıktıyı sizinle paylaşmasını isteyin.
 
-### <a name="create-sentinel-account"></a>Sentinel hesabı oluşturma
+### <a name="create-sentinel-account"></a>Sentinel hesabı oluştur
 
-Azure FarmBeats kurulumunuz, Avrupa Uzay Ajansı'nın [Sentinel-2](https://scihub.copernicus.eu/) uydu görevinden çiftliğiniz için uydu görüntüleri almanızı sağlar. Bu kurulumu yapılandırmak için bir Sentinel hesabı gerekir.
+Azure Farmtts kurulumu, Avrupa alan Ajancınızın [Sentinel-2](https://scihub.copernicus.eu/) uydu görev adresinden uydu imalatı almanızı sağlar. Bu kurulumu yapılandırmak için bir Sentinel hesabı gerekir.
 
-Sentinel ile ücretsiz hesap oluşturmak için aşağıdaki adımları izleyin:
+Sentinel ile ücretsiz bir hesap oluşturmak için aşağıdaki adımları izleyin:
 
-1. Resmi [kayıt](https://aka.ms/SentinelRegistration) sayfasına gidin.
-2. Gerekli ayrıntıları (ad, soyad, kullanıcı adı, parola ve e-posta kimliği) sağlayın ve formu doldurun.
-3. Kayıtlı e-posta kimliğine doğrulama bağlantısı gönderilir. E-postada sağlanan bağlantıyı seçin ve doğrulamayı tamamlayın.
+1. Resmi [kaydolma](https://aka.ms/SentinelRegistration) sayfasına gidin.
+2. Gerekli ayrıntıları (ad, soyadı, Kullanıcı adı, parola ve e-posta KIMLIĞI) sağlayın ve formu doldurun.
+3. Kayıtlı e-posta KIMLIĞINE bir doğrulama bağlantısı gönderilir. E-postada sunulan bağlantıyı seçin ve doğrulamayı doldurun.
 
-Kayıt işleminiz tamamlandı. Doğrulama tamamlandıktan sonra **Sentinel Kullanıcı Adınızı** ve Sentinel **Şifrenizi**not alın.
+Kayıt işleminiz tamamlanmıştır. Doğrulama işlemi tamamlandıktan sonra, **Sentinel Kullanıcı adı** ve **Sentinel parolanızı**bir yere göz önünde bulabilirsiniz.
 
 ## <a name="install"></a>Yükleme
 
-FarmBeats'i yüklemeye hazırsınız. Yüklemeyi başlatmak için aşağıdaki adımları izleyin:
+Artık Farmtempts 'yi yüklemeye hazırsınız. Yüklemeyi başlatmak için aşağıdaki adımları izleyin:
 
-1. Azure Portal’da oturum açın. Sağ üst köşede hesabınızı seçin ve Azure FarmBeats'i yüklemek istediğiniz Azure AD kiracısına geçin.
+1. Azure Portal’da oturum açın. Sağ üst köşede hesabınızı seçin ve Azure Farmtts 'yi yüklemek istediğiniz Azure AD kiracısına geçiş yapın.
 
-2. Portal daki Azure Marketi'ne gidin ve Markette **Azure FarmBeats'i** arayın.
+2. Portal 'da Azure Marketi ' ne gidin ve Market 'te **Azure Farmtempts** 'yi arayın.
 
-3. Azure FarmBeats'e genel bakış içeren yeni bir pencere görüntülenir. **Oluştur'u**seçin.
+3. Azure Farmtts 'ye genel bakış içeren yeni bir pencere görüntülenir. **Oluştur**’u seçin.
 
-4. Yeni bir pencere görüntülenir. Azure FarmBeats'i yüklemek istediğiniz doğru aboneliği, kaynak grubunu ve konumu seçerek kaydolma işlemini tamamlayın.
+4. Yeni bir pencere görüntülenir. Azure Farmtts 'yi yüklemek istediğiniz doğru aboneliği, kaynak grubunu ve konumu seçerek kaydolma işlemini tamamlayabilirsiniz.
 
-5. **FarmBeats Hizmet Uyarıları** bölümünde Azure FarmBeats ile ilgili herhangi bir hizmet uyarısı alması gereken e-posta adresini sağlayın. **Bağımlılıklar** Sekmesine geçmek için sayfanın altındaki **İleri'yi** seçin.
+5. **Farmtts hizmet uyarıları** bölümünde Azure farmalerts ile ilgili herhangi bir hizmet uyarısı alması gereken e-posta adresini belirtin. **Bağımlılıklar** sekmesine geçmek için sayfanın alt kısmındaki **İleri ' yi** seçin.
 
-    ![Temel Bilgiler Sekmesi](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
+    ![Temel bilgiler sekmesi](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
 
-6. [AAD komut dosyasının](#create-an-aad-application) çıktısından aad uygulama bölümündeki girişlere tek tek girişleri kopyalayın.
+6. [AAD komut dosyasının](#create-an-aad-application) çıktısından tek tek girdileri AAD uygulaması bölümündeki girişlere kopyalayın.
 
-7. Sentinel [Hesabı](#create-sentinel-account) kullanıcı adını ve parolasını Sentinel Hesabı bölümüne girin. Gözden Geçir + **Oluştur** sekmesine taşımak için **İleri'yi** seçin.
+7. Sentinel hesabı bölümünde [Sentinel hesabının](#create-sentinel-account) Kullanıcı adını ve parolasını girin. **Gözden geçir + oluştur** sekmesine geçmek için **İleri ' yi** seçin.
 
     ![Bağımlılıklar Sekmesi](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
 
-8. Girilen ayrıntılar doğrulandıktan sonra **Tamam'ı**seçin. Kullanım Koşulları sayfası görüntülenir. Koşulları gözden geçirin ve yüklemeyi başlatmak için **Oluştur'u** seçin. Yükleme ilerlemesini takip edebilirsiniz sayfaya yönlendirilir.
+8. Girilen Ayrıntılar doğrulandıktan sonra **Tamam**' ı seçin. Kullanım koşulları sayfası görüntülenir. Koşulları gözden geçirin ve yüklemeyi başlatmak için **Oluştur** ' u seçin. Yükleme ilerlemesini izleyebileceğiniz sayfaya yönlendirilirsiniz.
 
-Yükleme tamamlandıktan sonra, yükleme sırasında sağladığınız web sitesi adına giderek yüklemeyi doğrulayabilir ve\<FarmBeats portalını kullanmaya başlayabilirsiniz: farmbeats-web sitesi adı>.azurewebsites.net https://. Çiftlikler oluşturmak için bir seçenek ile FarmBeats kullanıcı arabirimini görmelisiniz.
+Yükleme tamamlandıktan sonra, yükleme sırasında verdiğiniz web sitesi adına giderek, yüklemeyi doğrulayabilirsiniz ve Farmtempts portalını kullanmaya başlayabilirsiniz: https://\<farmtts-website-Name>. azurewebsites.net. Gruplar oluşturma seçeneği ile Farmtempts Kullanıcı arabirimini görmeniz gerekir.
 
-**Datahub** https://\<FarmBeats-web sitesi-adı>-api.azurewebsites.net/swagger bulunabilir. Burada farklı FarmBeats API nesneleri göreceksiniz ve API'lerde REST işlemleri gerçekleştirmek.
+**Datahub** , https://\<farmtts-website-Name>-api.azurewebsites.net/Swagger adresinde bulunabilir. Burada, farklı Farmtts API nesneleri ve API 'lerde REST işlemleri gerçekleştirmeniz gerekir.
 
 ## <a name="upgrade"></a>Yükseltme
 
-FarmBeats'i en son sürüme yükseltmek için PowerShell ortamını kullanarak bulut kabuğu örneğinde aşağıdaki adımları çalıştırın. Kullanıcının FarmBeats'in yüklü olduğu aboneliğin sahibi olması gerekir.
+Farmtts 'leri en son sürüme yükseltmek için aşağıdaki adımları PowerShell ortamını kullanarak bir Cloud Shell örneğinde çalıştırın. Kullanıcının, Farmtts 'nin yüklü olduğu aboneliğin sahibi olması gerekir.
 
-İlk kez kullanan kullanıcılardan bir abonelik seçmeleri ve bir depolama hesabı oluşturmaları istenir. Kurulum alıbını söylendiği gibi tamamlayın.
+Kullanıcılardan önce bir abonelik seçmesi ve bir depolama hesabı oluşturması istenir. Kurulumu belirtildiği gibi doldurun.
 
-1. Yükseltme [komut dosyasını indirin](https://aka.ms/FarmBeatsUpgradeScript)
+1. [Yükseltme betiğini](https://aka.ms/FarmBeatsUpgradeScript) indir
 
     ```azurepowershell-interactive
         wget –q https://aka.ms/FarmBeatsUpgradeScript -O ./upgrade-farmbeats.ps1
     ```
 
-2. Varsayılan olarak, dosya ev dizininize indirilir. Dizine gidin.
+2. Varsayılan olarak, dosya giriş dizininize indirilir. Dizinine gidin.
 
     ```azurepowershell-interactive
         cd
     ```
 
-3. Yükseltme komut dosyasını çalıştırma
+3. Yükseltme betiğini Çalıştır
 
     ```azurepowershell-interactive
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-input.json dosyasına giden yol isteğe bağlıdır. Belirtilmemişse, komut dosyası gerekli tüm girişleri ister. Yükseltme yaklaşık 30 dakika içinde bitmelidir.
+İnput. json dosyasının yolu isteğe bağlıdır. Belirtilmezse, betik tüm gerekli girişleri ister. Yükseltmenin yaklaşık 30 dakika içinde tamamlanmalıdır.
 
-## <a name="uninstall"></a>Kaldırma
+## <a name="uninstall"></a>Kaldır
 
-Azure FarmBeats Datahub veya Accelerator'ı kaldırmak için aşağıdaki adımları tamamlayın:
+Azure Farmrets veri hub 'ını veya hızlandırıcıyı kaldırmak için aşağıdaki adımları izleyin:
 
-1. Azure portalında oturum açın ve bu bileşenlerin yüklü olduğu **kaynak gruplarını silin.**
+1. Azure portal oturum açın ve bu bileşenlerin yüklendiği **kaynak gruplarını silin** .
 
-2. Azure FarmBeats yüklemesine bağlı **Azure AD uygulamasını silmek** & Azure Etkin Dizini'ne gidin.
+2. Azure Farmtts yüklemesine bağlı **Azure AD uygulamasını silmek** & Azure Active Directory gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure aboneliğinizde Azure FarmBeats'i nasıl yükleyeceğimiz öğrenildi. Şimdi, Azure FarmBeats örneğinize nasıl [kullanıcı ekleyeceğinizi](manage-users-in-azure-farmbeats.md#manage-users) öğrenin.
+Azure aboneliğinizdeki Azure Farmtts 'yi yüklemeyi öğrendiniz. Şimdi Azure Farmtts örneğinize [Kullanıcı eklemeyi](manage-users-in-azure-farmbeats.md#manage-users) öğrenin.

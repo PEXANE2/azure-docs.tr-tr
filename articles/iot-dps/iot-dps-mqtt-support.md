@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Cihaz Sağlama Hizmeti MQTT desteğini anlayın | Microsoft Dokümanlar
-description: Geliştirici kılavuzu - MQTT protokolünü kullanarak Azure IoT Aygıt Sağlama Hizmeti'ne (DPS) aygıta bakan bitiş noktasına bağlanan aygıtlar için destek.
+title: Azure IoT cihaz sağlama hizmeti MQTT desteğini anlama | Microsoft Docs
+description: Geliştirici Kılavuzu-MQTT protokolünü kullanarak Azure IoT cihaz sağlama hizmeti (DPS) cihazına yönelik bir uç noktaya bağlanan cihazlar için destek.
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
@@ -11,79 +11,79 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680686"
 ---
-# <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak DPS'nizle iletişim kurun
+# <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak DPS ile iletişim kurma
 
-DPS, aygıtların DPS aygıt bitiş noktası ile aşağıdakileri kullanarak iletişim kurmasını sağlar:
+DPS, cihazların şu kullanarak DPS cihaz uç noktasıyla iletişim kurmasını sağlar:
 
-* [MQTT v3.1.1](https://mqtt.org/) bağlantı noktası 8883
-* [MQTT v3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127) bağlantı noktası 443 websocket üzerinde.
+* 8883 numaralı bağlantı noktasında [MQTT v 3.1.1](https://mqtt.org/)
+* 443 numaralı bağlantı noktasında WebSocket üzerinden [MQTT v 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127) .
 
-DPS tam özellikli bir MQTT aracısı değildir ve MQTT v3.1.1 standardında belirtilen tüm davranışları desteklemez. Bu makalede, aygıtların DPS ile iletişim kurmak için desteklenen MQTT davranışlarını nasıl kullanabileceği açıklanmaktadır.
+DPS tam özellikli bir MQTT Aracısı değildir ve MQTT v 3.1.1 Standard 'da belirtilen tüm davranışları desteklemez. Bu makalede, cihazların DPS ile iletişim kurmak için desteklenen MQTT davranışlarını nasıl kullanabileceği açıklanır.
 
-DPS ile tüm cihaz iletişimi TLS/SSL kullanılarak güvence altına alınmalıdır. Bu nedenle, DPS bağlantı noktası 1883 üzerinden güvenli olmayan bağlantıları desteklemez.
+DPS ile tüm cihaz iletişimi, TLS/SSL kullanılarak güvenli hale getirilmelidir. Bu nedenle, DPS bağlantı noktası 1883 üzerinden güvenli olmayan bağlantıları desteklemez.
 
  > [!NOTE] 
- > DPS şu anda MQTT protokolü üzerinden TPM [attestation mekanizması](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) nı kullanan aygıtları desteklememektedir.
+ > DPS, MQTT protokolü üzerinden TPM [kanıtlama mekanizmasını](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) kullanan cihazları Şu anda desteklememektedir.
 
-## <a name="connecting-to-dps"></a>DPS'ye bağlanma
+## <a name="connecting-to-dps"></a>DPS 'e bağlanma
 
-Aygıt, aşağıdaki seçeneklerden herhangi birini kullanarak DPS'ye bağlanmak için MQTT protokolünü kullanabilir.
+Bir cihaz, aşağıdaki seçeneklerden herhangi birini kullanarak bir DPS 'e bağlanmak için MQTT protokolünü kullanabilir.
 
-* [Azure IoT Sağlama SDK'larında kitaplıklar.](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks)
+* [Azure IoT sağlama SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks)'larının kitaplıkları.
 * MQTT protokolü doğrudan.
 
-## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>MQTT protokolünü doğrudan kullanma (aygıt olarak)
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>MQTT protokolünü doğrudan kullanma (cihaz olarak)
 
-Bir aygıt Aygıtı SDK'ları kullanamıyorsa, bağlantı noktası 8883'teki MQTT protokolünü kullanarak ortak aygıt uç noktalarına bağlanmaya devam edebilir. **CONNECT** paketinde aygıt aşağıdaki değerleri kullanmalıdır:
+Bir cihaz, cihaz SDK 'larını kullanalamazsanız, bağlantı noktası 8883 üzerindeki MQTT protokolünü kullanarak ortak cihaz uç noktalarına bağlanabilir. **Bağlantı** paketinde, cihaz aşağıdaki değerleri kullanmalıdır:
 
-* **ClientId** alanı için **registrationId'i**kullanın.
+* **ClientID** alanı Için, **RegistrationId**kullanın.
 
-* Kullanıcı **adı** alanı için `{idScope}/registrations/{registration_id}/api-version=2019-03-31`DPS'nin `{idScope}` [idScope'u](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) nerede kullanılır.
+* **Kullanıcı adı** alanı için,, `{idScope}/registrations/{registration_id}/api-version=2019-03-31`, DPS `{idScope}` 'nin [ıdscope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) değeri olan öğesini kullanın.
 
-* **Parola** alanı için bir SAS belirteci kullanın. SAS belirteci biçimi hem HTTPS hem de AMQP protokolleri için aynıdır:
+* **Parola** alanı IÇIN bir SAS belirteci kullanın. SAS belirtecinin biçimi hem HTTPS hem de AMQP protokolleriyle aynıdır:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`ResourceURI biçiminde `{idScope}/registrations/{registration_id}`olmalıdır. İlke adı. `registration`
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`ResourceURI, biçiminde `{idScope}/registrations/{registration_id}`olmalıdır. İlke adı olmalıdır `registration`.
 
   > [!NOTE]
-  > X.509 sertifika kimlik doğrulaması kullanıyorsanız, SAS belirteç parolaları gerekmez.
+  > X. 509.952 sertifikası kimlik doğrulamasını kullanıyorsanız SAS belirteç parolaları gerekmez.
 
-  SAS belirteçlerinin nasıl üretilenhakkında daha fazla bilgi için, [DPS'ye Erişim denetiminin](how-to-control-access.md#security-tokens)güvenlik belirteçleri bölümüne bakın.
+  SAS belirteçleri oluşturma hakkında daha fazla bilgi için bkz. [DPS 'e erişimi denetleme](how-to-control-access.md#security-tokens)güvenlik belirteçleri bölümü.
 
-Aşağıda DPS uygulamasına özgü davranışların bir listesi vetir:
+Aşağıda, DPS uygulamaya özgü davranışların bir listesi verilmiştir:
 
- * DPS, **CleanSession** bayrağının **0**olarak ayarlandığı işlevselliğini desteklemez.
+ * DPS, **Cleansession** bayrağının **0**olarak ayarlanmakta olan işlevleri desteklemez.
 
- * Bir cihaz uygulaması **QoS 2**ile bir konuya abone olduğunda, DPS **SUBACK** paketinde maksimum QoS düzeyi 1 verir. Bundan sonra DPS, QoS 1 kullanarak cihaza iletiler iletilir.
+ * Bir cihaz uygulaması **QoS 2**ile bir konuya abone olduğunda, DPS, **suback** paketinde maksimum QoS düzey 1 ' i verir. Bundan sonra, DPS QoS 1 kullanarak cihaza ileti gönderir.
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL yapılandırması
 
-MQTT protokolünü doğrudan kullanmak için müşterinizin TLS 1.2 üzerinden bağlanması *gerekir.* Bu adımı atlama girişimleri bağlantı hataları ile başarısız oldu.
+MQTT protokolünü doğrudan kullanmak için, istemciniz TLS 1,2 *üzerinden bağlanmalıdır.* Bu adımı atlama denemeleri bağlantı hatalarıyla başarısız olur.
 
 
-## <a name="registering-a-device"></a>Aygıt kaydetme
+## <a name="registering-a-device"></a>Cihaz kaydetme
 
-Bir aygıtı DPS üzerinden kaydetmek için, `$dps/registrations/res/#` bir aygıtın **Konu Filtresi**olarak abone olması gerekir. Konu Filtresi'ndeki `#` çok düzeyli joker karakter yalnızca aygıtın konu adında ek özellikler almasına izin vermek için kullanılır. DPS alt konuların filtrelemesi için joker kartların `#` veya `?` joker kartların kullanımına izin vermez. DPS genel amaçlı bir pub-alt mesajlaşma aracısı olmadığından, yalnızca belgelenen konu adlarını ve konu filtrelerini destekler.
+Bir cihazı DPS 'e kaydetmek için bir cihaz, **Konu filtresi**olarak `$dps/registrations/res/#` kullanarak abone olmalıdır. Konu filtresindeki çok düzeyli joker `#` karakter yalnızca cihazın konu adında ek özellikler almasına izin vermek için kullanılır. DPS, `#` alt konuların filtrelenmesi için veya `?` joker karakterlerinden kullanılmasına izin vermez. DPS genel amaçlı bir yayın-Sub mesajlaşma Aracısı olmadığından, yalnızca belgelenen konu adlarını ve konu filtrelerini destekler.
 
-Cihaz, Konu `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **Adı**olarak dps'ye bir kayıt iletisi yayımlamalıdır. Yük, JSON formatında [Aygıt Kaydı](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) nesnesini içermelidir.
-Başarılı bir senaryoda, aygıt x'in `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` saniyeler içinde yeniden deneme değeri olduğu konu adı hakkında bir yanıt alır. Yanıtın yükü JSON biçiminde [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) nesnesini içerir.
+Cihaz, `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **Konu adı**olarak kullanarak DPS 'e bir Register iletisi yayımlamalıdır. Yük, JSON biçiminde [cihaz kayıt](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) nesnesini içermelidir.
+Başarılı bir senaryoda cihaz, bu `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` konuda x 'in yeniden deneme-sonraki değeri saniye olarak olduğu konu adı üzerinde bir yanıt alır. Yanıtın yükü, JSON biçiminde [Registrationoperationstatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) nesnesini içerecektir.
 
-## <a name="polling-for-registration-operation-status"></a>Kayıt işlem durumu için yoklama
+## <a name="polling-for-registration-operation-status"></a>Kayıt işlemi durumu için yoklama
 
-Cihaz kayıt işleminin sonucunu almak için hizmeti düzenli aralıklarla yoklaması gerekir. Aygıtın yukarıda belirtildiği gibi `$dps/registrations/res/#` konuya zaten abone olduğunu varsayarsak, konu adına `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` bir işlem durumu iletisi yayımlayabilir. Bu iletideki işlem kimliği, önceki adımdaki Kayıt İşlem Durumu yanıt iletisinde alınan değer olmalıdır. Başarılı durumda, hizmet `$dps/registrations/res/200/?$rid={request_id}` konuyla ilgili olarak yanıt verecektir. Yanıtın yükü RegistrationOperationStatus nesnesini içerir. Yanıt kodu, yeniden deneme densonraki döneme eşit bir gecikmeden sonra 202 ise, aygıt hizmeti yoklamaya devam etmelidir. Hizmet 200 durum kodu döndürürse aygıt kayıt işlemi başarılı olur.
+Cihaz, cihaz kayıt işleminin sonucunu almak için hizmeti düzenli aralıklarla yoklamalıdır. Yukarıda belirtildiği gibi, cihazın `$dps/registrations/res/#` konuya zaten abone olduğu varsayılırsa, `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` konu adına bir get OperationStatus iletisi yayımlayabilir. Bu iletideki işlem KIMLIĞI, önceki adımda bulunan RegistrationOperationStatus yanıt iletisinde alınan değer olmalıdır. Başarılı durumda, hizmet `$dps/registrations/res/200/?$rid={request_id}` konuya yanıt verir. Yanıtın yükü RegistrationOperationStatus nesnesini içerecektir. Yanıt kodu, yeniden deneme dönemine eşit bir gecikmeden sonra 202 ise, cihaz hizmeti yoklamaya devam etmelidir. Hizmet bir 200 durum kodu döndürürse cihaz kayıt işlemi başarılı olur.
 
-## <a name="connecting-over-websocket"></a>Websocket üzerinden bağlanma
-Websocket üzerinden bağlanırken, alt protokolü `mqtt`' ni . [RFC 6455](https://tools.ietf.org/html/rfc6455)izleyin.
+## <a name="connecting-over-websocket"></a>WebSocket üzerinden bağlanma
+WebSocket üzerinden bağlanılırken, alt protokolü olarak `mqtt`belirtin. [RFC 6455](https://tools.ietf.org/html/rfc6455)' i izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 MQTT protokolü hakkında daha fazla bilgi edinmek için [MQTT belgelerine](https://mqtt.org/documentation)bakın.
 
-DPS'nin yeteneklerini daha fazla keşfetmek için bkz:
+DPS 'in yeteneklerini daha fazla incelemek için bkz.:
 
-* [IoT DPS Hakkında](about-iot-dps.md)
+* [IoT DPS hakkında](about-iot-dps.md)

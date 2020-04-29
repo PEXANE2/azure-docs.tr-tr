@@ -1,7 +1,7 @@
 ---
-title: 'Çapraz Doğrulama Modeli: Modül başvurusu'
+title: 'Çapraz doğrulama modeli: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Verileri bölümlere alarak sınıflandırma veya regresyon modelleri için parametre tahminlerini çapraz doğrulamak için Azure Machine Learning'de Çapraz Doğrulama Modeli modüllerini nasıl kullanacağınızı öğrenin.
+description: Verileri bölümleyerek sınıflandırma veya regresyon modelleriyle ilgili parametre tahminlerini çapraz doğrulamak için Azure Machine Learning çapraz doğrulama modeli modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,120 +10,120 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477655"
 ---
 # <a name="cross-validate-model"></a>Modeli Çapraz Doğrulama
 
-Bu makalede, Azure Machine Learning tasarımcısında Çapraz Doğrulama Modeli modülünün nasıl kullanılacağı açıklanmaktadır (önizleme). *Çapraz doğrulama,* bir veri kümesinin değişkenliğini ve bu veriler aracılığıyla eğitilmiş herhangi bir modelin güvenilirliğini değerlendirmek için makine öğreniminde sıklıkla kullanılan bir tekniktir.  
+Bu makalede, Azure Machine Learning Tasarımcısı 'nda (Önizleme) çapraz doğrulama modeli modülünün nasıl kullanılacağı açıklanır. *Çapraz doğrulama* , genellikle bir veri kümesinin çeşitliliğini ve bu verilerden eğitilen herhangi bir modelin güvenilirliğini değerlendirmek için makine öğreniminde kullanılan bir tekniktir.  
 
-Çapraz Doğrulama Modeli modülü, eğitimsiz bir sınıflandırma veya regresyon modeliyle birlikte etiketli bir veri kümesini girdi olarak alır. Bu alt kümeleri *(kıvrımlar)* bazı sayıda veri kümesi böler, her kat üzerinde bir model oluşturur ve sonra her kat için doğruluk istatistikleri kümesi döndürür. Tüm kıvrımların doğruluk istatistiklerini karşılaştırarak, veri kümesinin kalitesini yorumlayabilirsiniz. Daha sonra, modelin verilerdeki varyasyonlara karşı duyarlı olup olmadığını anlayabilirsiniz.  
+Çapraz Validate model modülü, bir etiketli veri kümesi olarak, eğitilmiş bir sınıflandırma veya regresyon modeliyle birlikte giriş olarak alır. Veri kümesini bazı alt*kümeler (kat*) halinde böler, her katlama üzerinde bir model oluşturur ve ardından her katlama için bir doğruluk istatistikleri kümesi döndürür. Tüm katların doğruluk istatistiklerini karşılaştıran şekilde, veri kümesinin kalitesini yorumlayabilir. Daha sonra modelin veride çeşitliliğe açık olup olmadığını anlayabilirsiniz.  
 
-Çapraz Doğrulama Modeli, öngörülerin güvenilirliğini değerlendirebilmeniz için veri kümesi için öngörülen sonuçları ve olasılıkları da döndürür.  
+Çapraz doğrulama modeli ayrıca veri kümesi için tahmin edilen sonuçları ve olasılıkların yanı sıra tahmine yönelik güvenilirliği değerlendirebilmeniz için bu veri kümesine ilişkin olasılıklara de döner.  
 
-### <a name="how-cross-validation-works"></a>Çapraz doğrulama nasıl çalışır?
+### <a name="how-cross-validation-works"></a>Çapraz doğrulamanın nasıl çalıştığı
 
-1. Çapraz doğrulama, eğitim verilerini rasgele kıvrımlara böler. 
+1. Çapraz doğrulama, eğitim verilerini rastgele katlara ayırır. 
 
-   Veri kümesini daha önce bölümlemediyseniz algoritma varsayılan olarak 10 kata eşittir. Veri kümesini farklı sayıda kıvrıma bölmek için [Bölüm ve Örnek](partition-and-sample.md) modüllerini kullanabilir ve kaç kıvrım kullanacağınızı belirtebilirsiniz.  
+   Daha önce veri kümesini bölümlendirdiyseniz, algoritma varsayılan olarak 10 katmaz. Veri kümesini farklı sayıda katlara bölmek için [bölüm ve örnek](partition-and-sample.md) modülünü kullanabilir ve kaç tane katın kullanılacağını belirtebilirsiniz.  
 
-2.  Modül, doğrulama için kullanılacak 1 kat daki verileri bir kenara ayırır. (Bu bazen *bekleme kıvrımdenir.)* Modül bir modeli eğitmek için kalan kıvrımları kullanır. 
+2.  Modül, doğrulama için kullanmak üzere verileri 1 kat olarak belirler. (Buna bazen *gizleme katlama*denir.) Modül, bir modeli eğitmek için kalan katları kullanır. 
 
-    Örneğin, beş kıvrım oluşturursanız, modül çapraz doğrulama sırasında beş model oluşturur. Modül, her modeli verilerin beşte dördükullanılarak eğitiyor. Her modeli kalan beşte bir test ediyor.  
+    Örneğin, beş katlama oluşturursanız modül çapraz doğrulama sırasında beş model oluşturur. Modül her modeli, verilerin dört beş bir kısmını kullanarak ilerleder. Her modeli kalan bir beşinci test eder.  
 
-3.  Her kat için modelin test edilmesi sırasında, modül birden çok doğruluk istatistiklerini değerlendirir. Modülün hangi istatistikleri kullandığı, değerlendirdiğiniz modelin türüne bağlıdır. Sınıflandırma modellerini regresyon modellerine göre değerlendirmek için farklı istatistikler kullanılır.  
+3.  Her katlama için modelin testi sırasında, modül birden çok doğruluk istatistiğini değerlendirir. Modülün kullandığı istatistik, değerlendirdiğiniz modelin türüne bağlıdır. Farklı istatistikler, sınıflandırma modellerini ve gerileme modellerini değerlendirmek için kullanılır.  
 
-4.  Tüm kıvrımlar için bina ve değerlendirme işlemi tamamlandığında, Çapraz Doğrulama Modeli bir performans ölçümleri kümesi oluşturur ve tüm veriler için sonuçlar elde eder. Herhangi bir tek kat yüksek veya düşük doğruluk olup olmadığını görmek için bu ölçümleri gözden geçirin. 
+4.  Oluşturma ve değerlendirme işlemi tüm katlara tamamlandığında, çapraz doğrulama modeli bir dizi performans ölçümü oluşturur ve tüm veriler için sonuç elde edilir. Bir tek katın yüksek veya düşük doğrulukta olup olmadığını görmek için bu ölçümleri gözden geçirin. 
 
 ### <a name="advantages-of-cross-validation"></a>Çapraz doğrulamanın avantajları
 
-Bir modeli değerlendirmenin farklı ve yaygın bir yolu, verileri [Split Verileri](split-data.md)kullanarak bir eğitim ve test kümesine bölmek ve ardından eğitim verilerindeki modeli doğrulamaktır. Ancak çapraz doğrulama bazı avantajlar sunar:  
+Bir modeli değerlendirirken farklı ve yaygın bir yolu, verileri [bölünmüş verileri](split-data.md)kullanarak bir eğitime ve test kümesine bölmektir ve ardından eğitim verilerinde modeli doğrular. Ancak çapraz doğrulama bazı avantajlar sunar:  
 
 -   Çapraz doğrulama daha fazla test verisi kullanır.
 
-    Çapraz doğrulama, daha büyük bir veri alanında belirtilen parametrelerle modelin performansını ölçer. Diğer bir nokta, çapraz doğrulama, bir bölüm yerine hem eğitim hem de değerlendirme için tüm eğitim veri kümesini kullanır. Buna karşılık, bir modeli rasgele bir bölmeden oluşturulan verileri kullanarak doğrularsanız, genellikle modeli kullanılabilir verilerin yalnızca yüzde 30'u veya daha azı üzerinde değerlendirirsiniz.  
+    Çapraz doğrulama, modelin performansını daha büyük bir veri alanında belirtilen parametrelerle ölçer. Diğer bir deyişle, çapraz doğrulama bir bölüm yerine hem eğitim hem de değerlendirme için tüm eğitim veri kümesini kullanır. Buna karşılık, bir modeli rastgele bir bölünmeden üretilen verileri kullanarak doğrularsınız, genellikle modeli yalnızca yüzde 30 veya daha az kullanılabilir veri üzerinde değerlendirdiğiniz bir.  
 
-    Ancak, çapraz doğrulama, modeli daha büyük bir veri kümesi üzerinden birden çok kez eğittiği ve doğruladığı için, hesaplama olarak çok daha yoğunolur. Rasgele bir bölmede doğrulamaktan çok daha uzun sürer.  
+    Ancak, çapraz doğrulama, modeli daha büyük bir veri kümesi üzerinden birden çok kez doğruladığından, daha fazla hesaplama yoğunluğu vardır. Rastgele bir bölme üzerinde doğrulamadan çok daha uzun sürer.  
 
 -   Çapraz doğrulama hem veri kümesini hem de modeli değerlendirir.
 
-    Çapraz doğrulama sadece bir modelin doğruluğunu ölçmez. Ayrıca, veri kümesinin ne kadar temsili olduğu ve modelin veri varyasyonları için ne kadar hassas olabileceği hakkında da fikir verir.  
+    Çapraz doğrulama, bir modelin doğruluğunu ölçmez. Ayrıca, veri kümesinin temsilcisinden ne kadar önemli olduğunu ve modelin verilerdeki farklılıklara ne kadar duyarlı olabileceğini de sağlar.  
 
-## <a name="how-to-use-cross-validate-model"></a>Çapraz Doğrulama Modeli nasıl kullanılır?
+## <a name="how-to-use-cross-validate-model"></a>Çapraz doğrulama modelini kullanma
 
-Veri kümeniz büyükse çapraz doğrulamanın çalışması uzun sürebilir.  Bu nedenle, modelinizi oluşturma nın ve test etmenin ilk aşamasında Çapraz Doğrulama Modeli'ni kullanabilirsiniz. Bu aşamada, model parametrelerinin iyiliğini değerlendirebilirsiniz (hesaplama süresinin tolere edilebilir olduğunu varsayarak). Daha sonra [Tren Modeli](train-model.md) ile belirlenen parametreleri kullanarak modelinizi eğitebilir ve değerlendirebilir ve Model modüllerini [değerlendirebilirsiniz.](evaluate-model.md)
+Veri kümeniz büyükse, çapraz doğrulamanın çalışması uzun zaman alabilir.  Bu nedenle, modelinizi oluşturma ve test etme başlangıç aşamasında çapraz doğrulama modelini kullanabilirsiniz. Bu aşamada, model parametrelerinin iyiyiyiyi (hesaplama zamanının toleranable olduğu varsayıldığında) değerlendirebilirsiniz. Daha sonra modeli [eğitme](train-model.md) modeli ile sağlanan parametreleri kullanarak modelinizi eğleyebilir ve değerlendirebilirsiniz ve model modüllerini [değerlendirin](evaluate-model.md) .
 
-Bu senaryoda, Çapraz Doğrulama Modeli'ni kullanarak modeli hem eğitin hem de test edin.
+Bu senaryoda, çapraz doğrulama modelini kullanarak modeli eğitetin ve test edersiniz.
 
-1. Geçiş Onay Modeli modüllerini ardınıza ekleyin. Azure Machine Learning tasarımcısında, Model **Puanlama & Değerlendirme** kategorisinde bulabilirsiniz. 
+1. Ardışık düzene çapraz Validate model modülünü ekleyin. Bunu Azure Machine Learning tasarımcısında bulabilirsiniz, **model puanlama & değerlendirme** kategorisinde bulabilirsiniz. 
 
-2. Herhangi bir sınıflandırma veya regresyon modelinin çıktısını bağlayın. 
+2. Herhangi bir sınıflandırma veya regresyon modelinin çıkışını bağlayın. 
 
-    Örneğin, sınıflandırma için **İki Sınıf Artırılmış Karar Ağacı** kullanıyorsanız, modeli istediğiniz parametrelerle yapılandırın. Ardından, bir bağlayıcıyı sınıflandırıcının **eğitimsiz model** bağlantı noktasından Cross Validate Modeli'nin eşleşen bağlantı noktasına sürükleyin. 
+    Örneğin, sınıflandırma için Iki sınıf tarafından artırılmış bir **karar ağacı** kullanıyorsanız, modeli istediğiniz parametrelerle yapılandırın. Ardından, sınıflandırıcının **eğitilen model** bağlantı noktasındaki bağlayıcıyı çapraz doğrulama modelinin eşleşen bağlantı noktasına sürükleyin. 
 
     > [!TIP] 
-    > Modeli eğitmek zorunda değilsiniz, çünkü Cross-Validate Modeli değerlendirmenin bir parçası olarak modeli otomatik olarak eğitir.  
-3.  Çapraz Doğrulama Modeli'nin **Dataset** bağlantı noktasında, etiketli tüm eğitim veri kümesini bağlayın.  
+    > Çapraz doğrulama modeli, değerlendirmenin bir parçası olarak modeli otomatik olarak yaptığından modeli eğmenize gerek kalmaz.  
+3.  Çapraz doğrulama modelinin **veri kümesi** bağlantı noktasındaki tüm etiketli eğitim veri kümelerini bağlayın.  
 
-4.  Çapraz Doğrulama Modeli'nin sağ panelinde, **sütunu düzelt'i**tıklatın. Sınıf etiketini veya öngörülebilir değeri içeren tek sütunu seçin. 
+4.  Çapraz doğrulama modelinin sağ panelinde, **sütunu Düzenle**' ye tıklayın. Sınıf etiketini veya tahmin edilebilir değeri içeren tek bir sütunu seçin. 
 
-5. Aynı veriler üzerinde birbirini izleyen çalıştırmalar arasında çapraz doğrulama sonuçlarını yinelemek istiyorsanız **Rasgele tohum** parametresi için bir değer ayarlayın.  
+5. Aynı verilerdeki art arda çalıştırılan çalıştırmalar arasında çapraz doğrulama sonuçlarını yinelemek istiyorsanız **rastgele çekirdek** parametresi için bir değer ayarlayın.  
 
-6. Boru hattını gönderin.
+6. İşlem hattını gönderme.
 
-7. Raporların açıklaması için [Sonuçlar](#results) bölümüne bakın.
+7. Raporların açıklaması için [sonuçlar](#results) bölümüne bakın.
 
 ## <a name="results"></a>Sonuçlar
 
-Tüm yinelemeler tamamlandıktan sonra, Çapraz Doğrulama Modeli tüm veri kümesi için puanlar oluşturur. Ayrıca, modelin kalitesini değerlendirmek için kullanabileceğiniz performans ölçümleri de oluşturur.
+Tüm yinelemeler tamamlandıktan sonra, çapraz doğrulama modeli, tüm veri kümesinin puanlarını oluşturur. Ayrıca, modelin kalitesini değerlendirmek için kullanabileceğiniz performans ölçümleri de oluşturur.
 
-### <a name="scored-results"></a>Puanlı sonuçlar
+### <a name="scored-results"></a>Puanlanmış sonuçlar
 
-Modülün ilk çıktısı, bazı öngörülen değerler ve ilgili olasılıklar ile birlikte her satır için kaynak verileri sağlar. 
+Modülün ilk çıktısı, bazı tahmin edilen değerler ve ilgili olasılıkların yanı sıra her satır için kaynak verileri sağlar. 
 
-Sonuçları görüntülemek için, ardışık hatlar, Çapraz Onula Modeli modülüne sağ tıklayın. **Puanlı Sonuçları Görselleştir'i**seçin.
+Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Puanlanmış sonuçları görselleştirin**' i seçin.
 
 | Yeni sütun adı      | Açıklama                              |
 | -------------------- | ---------------------------------------- |
-| Puanlanmış Etiketler        | Bu sütun veri kümesinin sonuna eklenir. Her satır için öngörülen değeri içerir. |
-| Puanlı Olasılıklar | Bu sütun veri kümesinin sonuna eklenir. **Puanlı Etiketlerdeki**değerin tahmini olasılığını gösterir. |
-| Kat Sayısı          | Çapraz doğrulama sırasında her veri satırının atandığı kıvrımın sıfır tabanlı dizinini gösterir. |
+| Puanlanmış Etiketler        | Bu sütun, veri kümesinin sonuna eklenir. Her satır için tahmin edilen değeri içerir. |
+| Puanlanmış olasılıklara | Bu sütun, veri kümesinin sonuna eklenir. Değerin, **puanlanmış etiketlerde**tahmini olasılığını gösterir. |
+| Katlama sayısı          | Çapraz doğrulama sırasında her bir veri satırının atandığı katın sıfır tabanlı dizinini gösterir. |
 
  ### <a name="evaluation-results"></a>Değerlendirme sonuçları
 
-İkinci rapor kıvrımlara göre gruplandırılır. Yürütme sırasında Çapraz Doğrulama Modeli'nin eğitim verilerini *rastgele n* kıvrımlarına ayırdığını unutmayın (varsayılan olarak, 10). Veri kümesi üzerindeki her yinelemede, Çapraz Doğrulama Modeli doğrulama veri kümesi olarak bir kat kullanır. Bir modeli eğitmek için kalan *n-1* kıvrımlarını kullanır. *N* modellerinin her biri diğer tüm kıvrımlarda verilere karşı test edilir.
+İkinci rapor, katlara göre gruplandırılır. Yürütme sırasında, çapraz Validate modelinin eğitim verilerini *n* katlara (varsayılan olarak, 10) rastgele bir şekilde ayırır. Veri kümesinin her yinelemesinde, çapraz doğrulama modeli, doğrulama veri kümesi olarak bir katlama kullanır. Bir modeli eğitmek için kalan *n-1* katlarını kullanır. *N* modellerinin her biri, tüm diğer katların verilerinde test edilir.
 
-Bu raporda, kıvrımlar artan sırada dizin değerine göre listelenir.  Başka bir sütunda sipariş vermek için sonuçları veri kümesi olarak kaydedebilirsiniz.
+Bu raporda, katların dizin değeri, artan sırada listelenir.  Diğer herhangi bir sütunu sıralamak için sonuçları bir veri kümesi olarak kaydedebilirsiniz.
 
-Sonuçları görüntülemek için, ardışık hatlar, Çapraz Onula Modeli modülüne sağ tıklayın. **Değerlendirme sonuçlarını katlayarak Görselleştir'i**seçin.
+Sonuçları görüntülemek için, işlem hattında çapraz doğrulama modeli modülüne sağ tıklayın. **Değerlendirme sonuçlarını katlayarak görselleştirin**' i seçin.
 
 
 |Sütun adı| Açıklama|
 |----|----|
-|Kat sayısı| Her kat için bir tanımlayıcı. Beş kıvrım oluşturduysanız, 0 ile 4 arasında numaralanmış beş veri alt kümesi olacaktır.
-|Katlanmış örnek sayısı|Her kata atanan satır sayısı. Kabaca eşit olmalılar. |
+|Katlama sayısı| Her katlama için bir tanımlayıcı. Beş katlama oluşturduysanız, 0 ile 4 arasında bir beş veri kümesi vardır.
+|Katdaki örneklerin sayısı|Her kata atanan satır sayısı. Bunlar kabaca eşit olmalıdır. |
 
 
-Modül, değerlendirdiğiniz modelin türüne bağlı olarak her kat için aşağıdaki ölçümleri de içerir: 
+Modül, değerlendirdiğiniz modelin türüne bağlı olarak her katlama için aşağıdaki ölçümleri de içerir: 
 
-+ **Sınıflandırma modelleri**: Hassas, geri çağırma, F-skoru, AUC, doğruluk  
++ **Sınıflandırma modelleri**: Precision, geri çek, F PUANı, AUC, doğruluk  
 
-+ **Regresyon modelleri**: Ortalama mutlak hata, kök ortalama kare hata, göreli mutlak hata, göreli kare hata ve belirleme katsayısı
++ **Regresyon modelleri**: Ortalama mutlak hata, kök ortalama kare hatası, göreli mutlak hata, göreli kare hatası ve belirleme katsayısı
 
 
 ## <a name="technical-notes"></a>Teknik notlar  
 
-+ Veri kümelerini çapraz doğrulama için kullanmadan önce normalleştirmek en iyi yöntemdir. 
++ Bunları çapraz doğrulama için kullanmadan önce veri kümelerini normalleştirmek en iyi uygulamadır. 
 
-+ Çapraz Doğrulama Modeli çok daha hesaplama lı yoğundur ve rasgele bölünmüş bir veri kümesi kullanarak modeli doğrulasanız tamamlanması ndan daha uzun sürer. Bunun nedeni Cross Validate Model trenler ve modeli birden çok kez doğrular olmasıdır.
++ Çapraz doğrulama modeli, daha fazla hesaplama açısından çok daha yoğun ve rastgele bölünmüş bir veri kümesi kullanarak modeli doğruladıysanız daha uzun sürer. Bunun nedeni, modelin çapraz doğrulama modelinin, modeli birden çok kez izleme ve doğrulama nedenidir.
 
-+ Modelin doğruluğunu ölçmek için çapraz doğrulama kullandığınızda veri kümesini eğitim ve test kümelerine bölmenize gerek yoktur. 
++ Modelin doğruluğunu ölçmek için çapraz doğrulamayı kullandığınızda veri kümesini eğitim ve test kümelerine bölmeniz gerekmez. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 

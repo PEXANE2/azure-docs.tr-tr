@@ -1,162 +1,162 @@
 ---
 title: Eşleme veri akışı video öğreticileri
-description: Veri akışı kavramlarını eşleme açıklayan video eğitimlerinin listesi
+description: Veri akışı kavramlarını eşleştirmeyi açıklayan video öğreticilerinin listesi
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 04/17/2020
 ms.openlocfilehash: 4dba719453546337f9e5657cbe56755ac1ac9149
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81686246"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Eşleme veri akışı video öğreticileri
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aşağıda, Azure Veri Fabrikası ekibi tarafından oluşturulan veri akışı öğretici videolarının eşleme listesi verilmiştir. 
+Azure Data Factory ekibi tarafından oluşturulan eşleme veri akışı öğreticisi videolarının bir listesi aşağıda verilmiştir. 
 
-Ürüne sürekli güncellemeler yapıldığından, bazı özellikler geçerli Azure Veri Fabrikası kullanıcı deneyimine çeşitli işlevler ekledi veya farklı hale getirdi.
+Ürüne yönelik güncelleştirmeler sürekli olarak yapıldığından, bazı özellikler geçerli Azure Data Factory Kullanıcı deneyimine eklenmiş veya farklı işlevlere sahiptir.
 
 ## <a name="getting-started"></a>Başlarken
 
-[Azure Veri Fabrikası'nda veri akışlarının eşlemesiyle başlarken](http://youtu.be/MFw7t_8tuV4)
+[Azure Data Factory veri akışlarını eşleme ile çalışmaya başlama](http://youtu.be/MFw7t_8tuV4)
 
-## <a name="debugging-and-developing-mapping-data-flows"></a>Hata ayıklama ve haritalama veri akışları geliştirme
+## <a name="debugging-and-developing-mapping-data-flows"></a>Hata ayıklama ve eşleme veri akışları geliştirme
 
-[Hata ayıklama ve haritalama veri akışları test.](https://www.youtube.com/watch?v=3ANxyvDGfjA)
+[Hata ayıklama ve eşleme veri akışları test etme](https://www.youtube.com/watch?v=3ANxyvDGfjA).
 
-[Veri arama](https://www.youtube.com/watch?v=En1ztyh5GaA)
+[Veri araştırması](https://www.youtube.com/watch?v=En1ztyh5GaA)
 
 [Veri önizleme hızlı eylemler](https://www.youtube.com/watch?v=CP0TnNmaLA0)
 
-[Haritalama veri akışı performansını izleme ve yönetme](https://www.youtube.com/watch?v=fktIWdJiqTk)
+[Eşleme veri akışı performansını izleme ve yönetme](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
 [Kıyaslama zamanlamaları](http://youtu.be/6CSbWm4lRhw?hd=1)
 
-## <a name="transformation-overviews"></a>Dönüşüm e-bakışları
+## <a name="transformation-overviews"></a>Dönüşüme genel bakış
 
-[Toplu dönüşüm](http://youtu.be/jdL75xIr98I)
+[Toplu dönüştürme](http://youtu.be/jdL75xIr98I)
 
-[Alter row dönüşümü](https://www.youtube.com/watch?v=4ktoohwptmQ)
+[Değişiklik satırı dönüştürmesi](https://www.youtube.com/watch?v=4ktoohwptmQ)
 
-[Türemiş Sütun dönüşümü](https://www.youtube.com/watch?v=FFCbU4ujCiY)
+[Türetilmiş sütun dönüşümü](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
-[Dönüşüme katılma](https://www.youtube.com/watch?v=zukwayEXRtg)
+[Dönüşümü Birleştir](https://www.youtube.com/watch?v=zukwayEXRtg)
 
-[Kendi kendine birleştirme deseni](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
+[Kendi kendine birleşen desenler](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
 [Arama dönüşümü](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
-[Pivot dönüşümü](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
+[Özet dönüştürme](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
-[Pivot dönüşümü: sürüklenen sütunları eşleme](https://youtu.be/5MygzCX0wnM)
+[Pivot dönüştürme: düzeltebilecekler sütunlarını eşleme](https://youtu.be/5MygzCX0wnM)
 
-[Dönüşümü seçin](http://youtu.be/F9VjQ_YyRyU?hd=1)
+[Dönüşüm seçin](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
-[Dönüşüm seçin: Kural tabanlı eşleme](https://youtu.be/5lf1lh1qMwU)
+[Dönüştürme seçin: kural tabanlı eşleme](https://youtu.be/5lf1lh1qMwU)
 
 [Vekil anahtar dönüşümü](https://www.youtube.com/watch?v=ISpegL9CbTM)
 
-[Birlik dönüşümü](http://youtu.be/_Et6mg1tEr8?hd=1)
+[Birleşim dönüşümü](http://youtu.be/_Et6mg1tEr8?hd=1)
 
-[Unpivot dönüşümü](http://youtu.be/KFYkxcpB8b0?hd=1)
+[Özet olmayan dönüştürme](http://youtu.be/KFYkxcpB8b0?hd=1)
 
-[Pencere Dönüşümü](https://www.youtube.com/watch?v=m6zgbtY5AYQ)
+[Pencere dönüştürme](https://www.youtube.com/watch?v=m6zgbtY5AYQ)
 
-[Filtre Dönüşümü](https://youtu.be/OhbKDOXSfeE)
+[Filtre dönüşümü](https://youtu.be/OhbKDOXSfeE)
 
-[Koşullu Bölme Dönüşümü](http://youtu.be/W1lQHojhKZw?hd=1)
+[Koşullu bölünmüş dönüştürme](http://youtu.be/W1lQHojhKZw?hd=1)
 
-[Dönüşüm Var](http://youtu.be/GS8JVgNBMfs?hd=1)
+[Mevcut dönüştürme](http://youtu.be/GS8JVgNBMfs?hd=1)
 
-[Dinamik Birleştirmeler ve Dinamik Aramalar](https://youtu.be/CMOPPie9bXM)
+[Dinamik birleştirmeler ve dinamik aramalar](https://youtu.be/CMOPPie9bXM)
 
-[Dönüşümü düzleştirmek](https://youtu.be/VY2tFQJoAXE)
+[Dönüştürmeyi Düzleştir](https://youtu.be/VY2tFQJoAXE)
 
-## <a name="source-and-sink"></a>Kaynak ve lavabo
+## <a name="source-and-sink"></a>Kaynak ve havuz
 
-[Okuma ve yazma JSONs](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
+[Jdönemleri okuma ve yazma](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
 
-[Parke ve sınırlı metin dosyaları](https://youtu.be/V_2a60j2Kjo)
+[Parquet ve sınırlandırılmış metin dosyaları](https://youtu.be/V_2a60j2Kjo)
 
-[CosmosDB konektörü](http://youtu.be/plp1etT2ftY?hd=1)
+[CosmosDB Bağlayıcısı](http://youtu.be/plp1etT2ftY?hd=1)
 
-[Sınırlı metin dosyalarında veri türlerini çıkart](https://www.youtube.com/watch?v=nJjRzlFktlA)
+[Veri türlerini sınırlandırılmış metin dosyalarında çıkarçıkar](https://www.youtube.com/watch?v=nJjRzlFktlA)
 
 [Bölümlenmiş dosyaları okuma ve yazma](https://www.youtube.com/watch?v=7Q-db4Qgc4M)
 
-[Birden çok SQL tablolarını dönüştürün ve oluşturun](https://www.youtube.com/watch?v=Sj15Yjwai1A)
+[Birden çok SQL tablosu dönüştürme ve oluşturma](https://www.youtube.com/watch?v=Sj15Yjwai1A)
 
-[Dosyalarınızı veri gölüne bölme](https://youtu.be/VNWv-MvLQ_0)
+[Data Lake 'teki dosyalarınızı bölümleme](https://youtu.be/VNWv-MvLQ_0)
 
-[Veri ambarı yükleme deseni](https://www.youtube.com/watch?v=7mLqwtmeQFg)
+[Veri ambarı yükleme kalıbı](https://www.youtube.com/watch?v=7mLqwtmeQFg)
 
-[Veri gölü dosya çıktıseçenekleri](https://www.youtube.com/watch?v=NAPSbjvSQA8)
+[Data Lake dosyası çıkış seçenekleri](https://www.youtube.com/watch?v=NAPSbjvSQA8)
 
-## <a name="optimizing-mapping-data-flows"></a>Eşleme veri akışlarını en iyi duruma çıkarma
+## <a name="optimizing-mapping-data-flows"></a>Eşleme veri akışlarını iyileştirme
 
 [Veri kökeni](https://www.youtube.com/watch?v=5KvqYF-y93s)
 
 [İyileştirme ipuçları](https://www.youtube.com/watch?v=a2KtwUJngHo)
 
-[Parametrelerle dosyaları yinele](http://youtu.be/uEgz0ptYRDM?hd=1)
+[Dosyaları parametrelerle yineleme](http://youtu.be/uEgz0ptYRDM?hd=1)
 
-[Başlatma sürelerini azaltma](https://youtu.be/FFCbU4ujCiY?t=528)
+[Başlangıç zamanlarını azalt](https://youtu.be/FFCbU4ujCiY?t=528)
 
 [SQL DB performansı](https://youtu.be/iyZT5CY3V_4)
 
 [Günlük kaydı ve denetim](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
-[Çalışma zamanında veri akışı küme boyutunu dinamik olarak optimize edin](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+[Çalışma zamanında veri akışı kümesi boyutunu dinamik olarak iyileştirme](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
-[Veri akışı başlatma sürelerini optimize edin](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+[Veri akışı başlangıç zamanlarını iyileştirme](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
 ## <a name="mapping-data-flow-scenarios"></a>Veri akışı senaryolarını eşleme
 
-[Bulanık aramalar](http://youtu.be/7gdwExjHBbw)
+[Benzer aramalar](http://youtu.be/7gdwExjHBbw)
 
-[Evreleme veri deseni](https://youtu.be/mZLKdyoL3Mo)
+[Hazırlama verisi kalıbı](https://youtu.be/mZLKdyoL3Mo)
 
-[Adres deseni temizleyin](https://youtu.be/axEYbuU3lmw)
+[Adres Temizleme kalıbı](https://youtu.be/axEYbuU3lmw)
 
 [Yinelenenleri kaldırma](https://www.youtube.com/watch?v=OLenvYwg__I)
 
-[Dosyaları birleştirme](http://youtu.be/WbDTBAyYte8)
+[Dosyaları Birleştir](http://youtu.be/WbDTBAyYte8)
 
-[Yavaş değişen boyutlar tip 1: üzerine yazmak](http://youtu.be/Rz2zx5GRbrA)
+[Yavaş değişen boyut türü 1: üzerine yazma](http://youtu.be/Rz2zx5GRbrA)
 
-[Yavaş yavaş değişen boyutlar tip 2: tarih](http://youtu.be/123CptslKvU)
+[Yavaş değişen boyut türü 2: geçmiş](http://youtu.be/123CptslKvU)
 
-[Olgu tablosu yükleme](http://youtu.be/ABG3X9pgFPQ)
+[Olgu tablosu yükleniyor](http://youtu.be/ABG3X9pgFPQ)
 
-[Delta veri yükleme deseni ile SQL Server on-prem'i dönüştürün](https://youtu.be/IN-4v0e7UIs)
+[Delta verileri yükleme düzeniyle SQL Server on-Pred dönüştürme](https://youtu.be/IN-4v0e7UIs)
 
-[Parameterization](https://www.youtube.com/watch?v=vpuuQcFojt8)
+[Parametreleştirme](https://www.youtube.com/watch?v=vpuuQcFojt8)
 
-[Farklı satır & satır sayıları](https://youtu.be/ryYo8UFUgTI)
+[Ayrı satır & satır sayıları](https://youtu.be/ryYo8UFUgTI)
 
-[Kesilme hatalarını işleme](http://youtu.be/sPpcSiKQz34)
+[Kesme hatalarını işleme](http://youtu.be/sPpcSiKQz34)
 
 [Akıllı veri yönlendirme](https://youtu.be/PIGw-Z-0upw)
 
-[Hassas veriler için veri maskeleme](https://www.youtube.com/watch?v=OFd4LeiTmfs)
+[Gizli veriler için veri maskeleme](https://www.youtube.com/watch?v=OFd4LeiTmfs)
 
-[Mantıksal Modeller vs Fiziksel Modeller](http://youtu.be/K5tgzLjEE9Q)
+[Mantıksal modeller ile fiziksel modeller](http://youtu.be/K5tgzLjEE9Q)
 
-[Kaynak veri değişikliklerini algılama](http://youtu.be/CaxIlI7oXfI?hd=1)
+[Kaynak veri değişikliklerini Algıla](http://youtu.be/CaxIlI7oXfI?hd=1)
 
 ## <a name="data-flow-expressions"></a>Veri akışı ifadeleri
 
-[Tarih/Saat ifadeleri](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
+[Tarih/saat ifadeleri](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
 
-[Dizileri ve Büyük/Küçük Harf Bildirimini Bölme](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
+[Dizileri ve Case Ifadesini bölme](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
 
-[Dize enterpolasyonu ve parametreleri ile eğlenceli](https://youtu.be/hb3-cn2CMgM)
+[Dize ilişkilendirme ve parametrelerle eğlence](https://youtu.be/hb3-cn2CMgM)
 
-[Veri Akışı Komut Dosyası Girişi: Kopyalama, Yapıştır, Parçacıklar](https://www.youtube.com/watch?v=3_1I4XdoBKQ)
+[Veri akışı komut dosyası girişi: kopyalama, yapıştırma, kod parçacıkları](https://www.youtube.com/watch?v=3_1I4XdoBKQ)
 
-[Veri Kalitesi İfadeleri](https://www.youtube.com/watch?v=O8gmv5-lXhs)
+[Veri kalitesi Ifadeleri](https://www.youtube.com/watch?v=O8gmv5-lXhs)

@@ -7,64 +7,64 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e5595620a2f888b06ad5b35d2e8a008f23861463
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727235"
 ---
 # <a name="feature-list"></a>Özellik listesi #
-Test edilmiş özelliklerin ve desteklenmeyen özelliklerin listesi aşağıda verilmiştir:
+Sınanan özelliklerin ve desteklenmeyen özelliklerin listesi aşağıda verilmiştir:
 
-|                                         | Test | KıSMEN TEST EDİlMİş | Denenme | Desteklenme -yen | NOTLAR                                                                                                                |
+|                                         | K | KıSMEN TEST EDILDI | TEST EDILMEMIŞ | Desteklenen | NOTLAR                                                                                                                |
 |:----------------------------------------|--------|------------------|----------|-------------|:---------------------------------------------------------------------------------------------------------------------|
 | Kayıttan yürütme                                |        |                  |          |             |                                                                                                                      |
-| Temel İsteğe Bağlı Oynatma                | X      |                  |          |             | Yalnızca Azure Medya Hizmetleri'nden gelen akışları destekler                                                                      |
-| Temel Canlı Oynatma                     | X      |                  |          |             | Yalnızca Azure Medya Hizmetleri'nden gelen akışları destekler                                                                      |
-| AES                                     | X      |                  |          |             | Azure Medya Hizmetleri Anahtar Teslim Hizmetini Destekler                                                                   |
+| Temel Isteğe bağlı kayıttan yürütme                | X      |                  |          |             | Yalnızca Azure Media Services akışlarını destekler                                                                      |
+| Temel canlı kayıttan yürütme                     | X      |                  |          |             | Yalnızca Azure Media Services akışlarını destekler                                                                      |
+| AES                                     | X      |                  |          |             | Azure Media Services anahtar teslim hizmetini destekler                                                                   |
 | Çoklu DRM                               |        | X                |          |             |                                                                                                                      |
-| PlayReady                               | X      |                  |          |             | Azure Medya Hizmetleri Anahtar Teslim Hizmetini Destekler                                                                   |
-| Widevine                                |        | X                |          |             | Manifest'te özetlenen Widevine PSSH kutularını destekler                                                                    |
-| FairPlay                                |        | X                |          |             | Azure Medya Hizmetleri Anahtar Teslim Hizmetini Destekler                                                                   |
-| Teknisyen                                   |        |                  |          |             |                                                                                                                      |
+| PlayReady                               | X      |                  |          |             | Azure Media Services anahtar teslim hizmetini destekler                                                                   |
+| Widevine                                |        | X                |          |             | Bildirimde özetlenen Wıdevine PSSH kutularını destekler                                                                    |
+| FairPlay                                |        | X                |          |             | Azure Media Services anahtar teslim hizmetini destekler                                                                   |
+| Techs                                   |        |                  |          |             |                                                                                                                      |
 | MSE/EME (AzureHtml5JS)                  | X      |                  |          |             |                                                                                                                      |
-| Flash Backback (FlashSS)                | X      |                  |          |             | Tüm özellikler bu teknolojide mevcut değildir.                                                                         |
-| Silverlight Geri Dönüş SilverlightSS      | X      |                  |          |             | Tüm özellikler bu teknolojide mevcut değildir.                                                                         |
-| Yerli HLS Geçiş (Html5)         |        | X                |          |             | Platform kısıtlamaları nedeniyle tüm özellikler bu teknolojide bulunmaz.                                            |
+| Flash geri dönüş (FlashSS)                | X      |                  |          |             | Bu teknik üzerinde tüm özellikler kullanılamaz.                                                                         |
+| Silverlight geri dönüş SilverlightSS      | X      |                  |          |             | Bu teknik üzerinde tüm özellikler kullanılamaz.                                                                         |
+| Yerel HLS geçiş (HTML5)         |        | X                |          |             | Platform kısıtlamaları nedeniyle bu teknik üzerinde tüm özellikler kullanılamaz.                                            |
 | Özellikler                                |        |                  |          |             |                                                                                                                      |
-| API Desteği                             | X      |                  |          |             | Bilinen sorunlar listesine bakın                                                                                                |
-| Temel UI                                | X      |                  |          |                                                                                                                                    |
-| JavaScript ile başlatma       | X      |                  |          |             |                                                                                                                      |
-| Video etiketi yle başlatma        |        | X                |          |             |                                                                                                                      |
-| Segment adresleme - ZamanA Dayalı         | X      |                  |          |             |                                                                                                                      |
-| Segment adresleme - Dizin Tabanlı        |        |                  |          | X           |                                                                                                                      |
-| Segment adresleme - Bayt Tabanlı         |        |                  |          | X           |                                                                                                                      |
-| Azure Medya Hizmetleri URL yeniden yazar       |        | X                |          |             |                                                                                                                      |
-| Erişilebilirlik - Altyazılar ve Altyazılar  |        | X                |          |             |  WebVTT isteğe bağlı desteklenen, canlı CEA 708 kısmen test                                                       |
-| Erişilebilirlik - Anahtarlar                 | X      |                  |          |             |                                                                                                                      |
-| Erişilebilirlik - Yüksek Karşıtlık           |        | X                |          |             |                                                                                                                      |
-| Erişilebilirlik - Sekme Odak               |        | X                |          |             |                                                                                                                      |
-| Hata İletisi                         |        | X                |          |             | Hata iletileri teknisyenler arasında tutarsız                                                                         |
-| Olay Tetikleyici                        | X      |                  |          |             |                                                                                                                      |
-| Tanılama                             |        | X                |          |             | Tanılama bilgileri yalnızca AzureHtml5JS teknolojisinde ve kısmen silverlightss teknolojisinde kullanılabilir. |
-| Özelleştirilebilir Teknik Sipariş                 |        | X                |          |             |                                                                                                                      |
-| Sezgisel - Temel                      | X      |                  |          |             |                                                                                                                      |
-| Sezgisel - Özelleştirme              |        |                  | X        |             | Özelleştirme yalnızca AzureHtml5JS teknolojisiyle kullanılabilir.                                                          |
-| Süreksizlikler                         | X      |                  |          |             |                                                                                                                      |
-| Bitrate'yi seçin                          | X      |                  |          |             | Bu API yalnızca AzureHtml5JS ve FlashSS teknisyenlerinde kullanılabilir.                                                    |
-| Çoklu Ses Akışı                      |        | X                |          |             | Programlı ses anahtarı AzureHtml5JS ve FlashSS teknisyenlerinde desteklenir ve AzureHtml5JS, FlashSS ve yerel Html5 (Safari'de) üzerinden ui seçimi yoluyla kullanılabilir.  Çoğu platform ses akışlarını değiştirmek için aynı codec özel verileri gerektirir (aynı codec, kanal, örnekleme hızı, vb.). |
-| UI Yerelleştirme                         |        | X                |          |             |                                                                                                                      |
-| Çok örnekli Oynatma                 |        |                  |          | X           | Bu senaryo bazı teknisyenler için çalışabilir, ancak şu anda desteklenmeyen ve test edilmemiştir. Ayrıca iframes kullanarak çalışmak için bu alabilirsiniz |
-| Reklam Desteği                             |        | x                |          |             | AMP, AzureHtml5JS teknolojisinde VOD için VAST uyumlu reklam sunucularından orta ve post-roll doğrusal reklamlar eklemeyi destekler |
-| Analiz                               |        | X                |          |             | AMP, seçtiğiniz bir Analytics arka ucuna göndermek için analitik ve tanıolaylarını dinleme olanağı sağlar.  Platform sınırlamaları nedeniyle tüm etkinlikler ve özellikler teknisyenler arasında kullanılamaz.                                                                            |
-| Özel Kaplamalar                            |        |                  | X        |             | Ayarı ayar denetimlerini AMP'de ve kendi HTML ve CSS'nizi kullanarak false'a çevirin.           |
-| Bar Temizleme Ara                      |        |                  |          | X           |                                                                                                                      |
-| Hile-Oyun                              |        |                  |          | X           |                                                                                                                      |
-| Yalnızca Ses                              |        |                  |          | X           | Uyarlanabilir Akış için bazı teknisyenlerde çalışabilir, ancak şu anda desteklenmemektedir ve AzureHtml5JS'de çalışmaz. Platform destekliyorsa, aşamalı MP3 oynatma HTML5 teknolojisi ile çalışabilir.                                                                                                        |
-| Yalnızca Video                              |        |                  |          | X           | Uyarlanabilir Akış için bazı teknisyenlerde çalışabilir, ancak şu anda desteklenmemektedir ve AzureHtml5JS'de çalışmaz.      |
-| Çok Dönemli Sunum               |        |                  |          | X                                                                                                                                  |
-| Birden fazla kamera açısı                  |        |                  |          | X           |                                                                                                                      |
-| Oynatma Hızı                          |        | X                |          |             | Chrome'daki kısmi bir hata nedeniyle mobil durum dışında çoğu senaryoda oynatma hızı desteklenir                 |
+| API desteği                             | X      |                  |          |             | Bilinen sorunlar listesine bakın                                                                                                |
+| Temel Kullanıcı arabirimi                                | X      |                  |          |                                                                                                                                    |
+| JavaScript üzerinden başlatma       | X      |                  |          |             |                                                                                                                      |
+| Video etiketi aracılığıyla başlatma        |        | X                |          |             |                                                                                                                      |
+| Kesim adresleme-zaman tabanlı         | X      |                  |          |             |                                                                                                                      |
+| Kesim adresleme-dizin tabanlı        |        |                  |          | X           |                                                                                                                      |
+| Kesim adresleme-bayt tabanlı         |        |                  |          | X           |                                                                                                                      |
+| Azure Media Services URL yeniden yazıcı       |        | X                |          |             |                                                                                                                      |
+| Erişilebilirlik-açıklamalı alt yazılar ve alt yazılar  |        | X                |          |             |  İsteğe bağlı için WebVTT destekleniyor, canlı CEA 708 kısmen test edildi                                                       |
+| Erişilebilirlik-kısayol tuşları                 | X      |                  |          |             |                                                                                                                      |
+| Erişilebilirlik-Yüksek Karşıtlık           |        | X                |          |             |                                                                                                                      |
+| Erişilebilirlik-sekme odaklı               |        | X                |          |             |                                                                                                                      |
+| Hata Iletisi                         |        | X                |          |             | Techs genelinde hata iletileri tutarsız                                                                         |
+| Olay tetikleme                        | X      |                  |          |             |                                                                                                                      |
+| Tanılama                             |        | X                |          |             | Tanılama bilgileri yalnızca AzureHtml5JS Tech ve SilverlightSS Tech üzerinde kısmen kullanılabilir. |
+| Özelleştirilebilir teknoloji siparişi                 |        | X                |          |             |                                                                                                                      |
+| Buluşsal yöntemler-temel                      | X      |                  |          |             |                                                                                                                      |
+| Buluşsal yöntemler-özelleştirme              |        |                  | X        |             | Özelleştirme yalnızca AzureHtml5JS Tech ile kullanılabilir.                                                          |
+| Süreksizlik                         | X      |                  |          |             |                                                                                                                      |
+| Bit hızı seçin                          | X      |                  |          |             | Bu API yalnızca AzureHtml5JS ve FlashSS Techs üzerinde kullanılabilir.                                                    |
+| Çoklu ses akışı                      |        | X                |          |             | Programlı ses anahtarı AzureHtml5JS ve FlashSS Techs 'de desteklenir ve AzureHtml5JS, FlashSS ve Native HTML5 (Safari 'de) üzerinde kullanıcı arabirimi seçimi aracılığıyla kullanılabilir.  Çoğu platform, ses akışlarını (aynı codec, kanal, örnekleme oranı vb.) değiştirmek için aynı codec özel verilerini gerektirir. |
+| UI yerelleştirme                         |        | X                |          |             |                                                                                                                      |
+| Çok örnekli yürütme                 |        |                  |          | X           | Bu senaryo bazı Techs için çalışabilir, ancak şu anda desteklenmeyen ve test edilmemiş. Bunu iframe 'leri kullanarak da işe alabilirsiniz |
+| Ads desteği                             |        | x                |          |             | AMP, AzureHtml5JS Tech 'de VOD için büyük ölçekli ad sunucularından orta ve sonrası doğrusal reklamların eklenmesini destekler |
+| Analiz                               |        | X                |          |             | AMP, istediğiniz analiz arka ucunu göndermek için analiz ve Tanılama olaylarını dinlemek için olanak sağlar.  Platform sınırlamaları nedeniyle Techs genelinde tüm olaylar ve özellikler kullanılamaz.                                                                            |
+| Özel kaplamalar                            |        |                  | X        |             | AMP 'daki ve kendi HTML ve CSS kullanarak denetimleri yanlış olarak ayarlamayı etkinleştirin.           |
+| Arama çubuğu Temizleme                      |        |                  |          | X           |                                                                                                                      |
+| El ile yürütme                              |        |                  |          | X           |                                                                                                                      |
+| Yalnızca ses                              |        |                  |          | X           | Uyarlamalı akış için bazı Techs ile çalışabilir, ancak şu anda desteklenmez ve AzureHtml5JS içinde çalışmaz. İlerleyen MP3 kayıttan yürütme, platform destekliyorsa HTML5 teknik ile çalışabilir.                                                                                                        |
+| Yalnızca video                              |        |                  |          | X           | Uyarlamalı akış için bazı Techs ile çalışabilir, ancak şu anda desteklenmez ve AzureHtml5JS içinde çalışmaz.      |
+| Çok dönemdeki sunum               |        |                  |          | X                                                                                                                                  |
+| Birden çok kamera açısı                  |        |                  |          | X           |                                                                                                                      |
+| Kayıttan yürütme hızı                          |        | X                |          |             | Kayıttan yürütme hızı, Chrome 'daki kısmi bir hatadan dolayı Mobil durum dışında çoğu senaryoda desteklenir                 |
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
-- [Azure Media Player Quickstart](azure-media-player-quickstart.md)
+- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)

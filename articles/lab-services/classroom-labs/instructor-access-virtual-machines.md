@@ -1,6 +1,6 @@
 ---
-title: Azure Laboratuvar Hizmetlerinde VM'lere erişen eğitmen
-description: Bu makalede, eğitmenlerin öğrenci VM'lerine eğitmen görünümünden nasıl erişebildiği gösterilmektedir. Örneğin, bir öğretim görevlisi bir sınıf için bir eğitmen, diğer sınıflar için bir öğrenci olabilir.
+title: Azure Lab Services sanal makinelere erişen eğitmen
+description: Bu makalede, Eğitmenler 'in öğrenci VM 'lerine eğitmen görünümünden nasıl erişebileceği gösterilmektedir. Örneğin, bir eğitim Yardımcısı, bir sınıf için bir eğitmen, diğer sınıflar için de öğrenci olabilir.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.author: spelluru
 ms.openlocfilehash: c048a2f159784a5bd38f185af29cec314b31824f
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641946"
 ---
-# <a name="access-virtual-machines-as-a-student-from-the-instructor-view"></a>Öğrenci olarak sanal makinelere eğitmen görünümünden erişin
-Bu makalede, eğitmenlerin öğrenci olarak katıldıkları sınıflar için VM'lerine nasıl erişebilecekleri gösterilmektedir. 
+# <a name="access-virtual-machines-as-a-student-from-the-instructor-view"></a>Sanal makinelere eğitmen görünümünden bir öğrenci olarak erişin
+Bu makalede, Eğitmenler, öğrenciler olarak katıldıkları sınıflar için VM 'lerine nasıl erişebilecekleri gösterilmektedir. 
 
-Burada bu özelliğiyardımcı olacak bir senaryodur. Bir öğretim görevlisi bir sınıf için bir eğitmen ama diğer sınıflarda bir öğrencidir. Ve, öğretim eğitmeni görüntülemek ve kendi laboratuvarları gösteren eğitmen görünümünden öğrenci VM'ler erişmek istiyor. 
+Bu özelliğin yardımcı olacağı bir senaryo aşağıda verilmiştir. Eğitim Yardımcısı, bir sınıf için bir eğitmendir, diğer sınıflarda bir öğrenciye sahiptir. Eğitim eğitmeni, kendi sahip oldukları laboratuvarları gösteren eğitmen görünümünden öğrenci VM 'lerini görüntülemek ve bunlara erişmek istiyor. 
 
-## <a name="access-vms-from-instructor-view"></a>Eğitmen görünümünden VM'lere erişin
+## <a name="access-vms-from-instructor-view"></a>Sanal makinelere eğitmen görünümünden erişin
 
-1. Azure Laboratuvar [Hizmetleri web sitesinde](https://labs.azure.com)oturum açın. Sahip olduğun laboratuvarları görüyorsun. Bu laboratuvarlar, kendi oluşturduğunuz laboratuvarlar veya yöneticinin size sahip olarak atadığı laboratuvarlar olabilir. Daha fazla bilgi için, [varolan bir laboratuvara nasıl ek sahipler ekleyeceğiniz](how-to-add-user-lab-owner.md)
-2. Öğrenci olarak katıldığınız sınıflar için VM'lere erişmek için sağ üst köşedeki bilgisayar simgesini seçin. Öğrenci olarak erişebileceğiniz VM'leri gördüğünüzü doğrulayın. Aşağıdaki örnekte, kullanıcı Python laboratuvarı için bir öğretim görevlisi, ancak Java laboratuvarının bir öğrencisidir. Yani, kullanıcı açılan listede Java laboratuvarından VM görür. Kullanıcı VM'yi başlatAbilir ve ona bağlanabilir. 
+1. [Azure Lab Services Web sitesinde](https://labs.azure.com)oturum açın. Sahip olduğunuz laboratuvarları görürsünüz. Bu laboratuvarlar sizin oluşturduğunuz laboratuvarlar veya yönetici tarafından size sahip olarak atanan laboratuvarlar olabilir. Daha fazla bilgi için bkz. [var olan laboratuvara ek sahipler ekleme](how-to-add-user-lab-owner.md)
+2. Öğrenci olarak katılan sınıfların VM 'lerine erişmek için sağ üst köşedeki bilgisayar simgesini seçin. Öğrenci olarak erişebileceğiniz VM 'Leri görtığınızdan emin olun. Aşağıdaki örnekte, Kullanıcı Python Laboratuvarı için bir öğretim Yardımcısı, ancak Java laboratuvarının bir öğrencisi. Bu nedenle, Kullanıcı sanal makineyi açılan listede Java laboratuvarında görür. Kullanıcı sanal makineyi başlatabilir ve ona bağlanabilir. 
     
-    ![Öğrenci VM'lerini erişin](../media/instructors-access-virtual-machines/access-student-virtual-machines.png)
+    ![Öğrenci VM 'lerine erişin](../media/instructors-access-virtual-machines/access-student-virtual-machines.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
 - [Bir VM’ye bağlanma](how-to-use-classroom-lab.md#connect-to-the-vm)
-- [Mac'te RDP kullanarak VM'ye bağlanma](connect-virtual-machine-mac-rdp.md)
-- [Linux sanal makineleri için uzak masaüstü nü kullan](how-to-use-remote-desktop-linux-student.md)
+- [Mac üzerinde RDP kullanarak VM 'ye bağlanma](connect-virtual-machine-mac-rdp.md)
+- [Linux sanal makineleri için Uzak Masaüstü 'nü kullanma](how-to-use-remote-desktop-linux-student.md)

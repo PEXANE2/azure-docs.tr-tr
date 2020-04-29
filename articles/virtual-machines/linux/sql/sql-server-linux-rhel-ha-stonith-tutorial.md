@@ -1,6 +1,6 @@
 ---
-title: Azure'daki RHEL sanal makinelerde SQL Server için kullanılabilirlik gruplarını yapılandırma - Linux Sanal Makineler | Microsoft Dokümanlar
-description: RHEL küme ortamında Yüksek Kullanılabilirlik ayarlama ve STONITH'i kurma hakkında bilgi edinin
+title: Azure 'da SQL Server RHEL sanal makinelerinde kullanılabilirlik grupları yapılandırma-Linux Sanal Makineleri | Microsoft Docs
+description: Bir RHEL küme ortamında yüksek kullanılabilirlik ayarlama ve STONITH ayarlama hakkında bilgi edinin
 ms.service: virtual-machines-linux
 ms.subservice: ''
 ms.topic: tutorial
@@ -9,52 +9,52 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
 ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79096689"
 ---
-# <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure'daki RHEL sanal makinelerde SQL Server için kullanılabilirlik gruplarını yapılandırma 
+# <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 
 > [!NOTE]
-> Sunulan öğretici **genel önizlemededir.** 
+> Sunulan öğretici **genel önizlemede**. 
 >
-> Bu eğitimde RHEL 7.6 ile SQL Server 2017'yi kullanıyoruz, ancak HA'yı yapılandırmak için RHEL 7 veya RHEL 8'de SQL Server 2019'u kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8'de değişti ve makaleye bakmak, [kullanılabilirlik grubu kaynağı oluşturma](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve doğru komutlar hakkında daha fazla bilgi için RHEL 8 kaynakları oluşturmak isteyeceksiniz.
+> Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak HA 'yi yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için, [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> - Yeni bir kaynak grubu, Kullanılabilirlik Seti ve Azure Linux Sanal Makineleri (VM) oluşturun
-> - Yüksek Kullanılabilirliği Etkinleştirme (HA)
-> - Kalp Pili kümesi oluşturma
-> - BIR STONITH aygıtı oluşturarak bir eskrim aracısı yapılandırma
-> - RHEL'de SQL Server ve mssql araçlarını yükleme
-> - SQL Server'ı Her Zaman Kullanılabilirlik Grubunda Yapılandır
-> - Pacemaker kümesindeki kullanılabilirlik grubunu (AG) kaynakları yapılandırma
-> - Bir başarısızlık ve eskrim aracısını test edin
+> - Yeni bir kaynak grubu, kullanılabilirlik kümesi ve Azure Linux Sanal Makineleri (VM) oluşturma
+> - Yüksek kullanılabilirliği etkinleştir (HA)
+> - Paceoluşturucu kümesi oluşturma
+> - Bir TNITH cihazı oluşturarak bir uçum Aracısı yapılandırma
+> - RHEL üzerinde SQL Server ve MSSQL araçları 'nı yükler
+> - SQL Server Always on kullanılabilirlik grubu yapılandırma
+> - Paceoluşturucu kümesindeki kullanılabilirlik grubu (AG) kaynaklarını yapılandırma
+> - Yük devretme ve sınırlama aracısını test etme
 
-Bu öğretici, Azure'da kaynakları dağıtmak için Azure komut satırı arabirimini (CLI) kullanır.
+Bu öğretici, Azure 'da kaynak dağıtmak için Azure komut satırı arabirimi 'ni (CLı) kullanır.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı tercih ederseniz, bu öğretici azure CLI sürüm 2.0.30 veya daha sonra gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.0.30 veya sonraki bir sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak Grubu oluşturma
 
-Birden fazla aboneliğiniz varsa, bu kaynakları dağıtmak istediğiniz [aboneliği ayarlayın.](/cli/azure/manage-azure-subscriptions-azure-cli)
+Birden fazla aboneliğiniz varsa, bu kaynakları dağıtmak istediğiniz [aboneliği ayarlayın](/cli/azure/manage-azure-subscriptions-azure-cli) .
 
-Bir bölgede Kaynak Grubu `<resourceGroupName>` oluşturmak için aşağıdaki komutu kullanın. Seçtiğiniz `<resourceGroupName>` bir ad ile değiştirin. Bu öğretici `East US 2` için kullanıyoruz. Daha fazla bilgi için aşağıdaki [Quickstart'a](../quick-create-cli.md)bakın.
+Bir bölgede kaynak grubu `<resourceGroupName>` oluşturmak için aşağıdaki komutu kullanın. Seçtiğiniz `<resourceGroupName>` bir adla değiştirin. Bu öğretici `East US 2` için kullanıyoruz. Daha fazla bilgi için aşağıdaki [hızlı](../quick-create-cli.md)başlangıca bakın.
 
 ```azurecli-interactive
 az group create --name <resourceGroupName> --location eastus2
 ```
 
-## <a name="create-an-availability-set"></a>Kullanılabilirlik Kümesi Oluşturma
+## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
-Bir sonraki adım, bir Kullanılabilirlik Kümesi oluşturmaktır. Azure Bulut Su Şur'da `<resourceGroupName>` aşağıdaki komutu çalıştırın ve Kaynak Grubu adınız ile değiştirin. Için `<availabilitySetName>`bir ad seçin.
+Bir sonraki adım, bir kullanılabilirlik kümesi oluşturmaktır. Azure Cloud Shell ' de aşağıdaki komutu çalıştırın ve kaynak grubu `<resourceGroupName>` adınızla değiştirin. İçin `<availabilitySetName>`bir ad seçin.
 
 ```azurecli-interactive
 az vm availability-set create \
@@ -64,7 +64,7 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
-Komut tamamlandıktan sonra aşağıdaki sonuçları almalısınız:
+Komut tamamlandıktan sonra aşağıdaki sonuçları almanız gerekir:
 
 ```output
 {
@@ -87,14 +87,14 @@ Komut tamamlandıktan sonra aşağıdaki sonuçları almalısınız:
 }
 ```
 
-## <a name="create-rhel-vms-inside-the-availability-set"></a>Kullanılabilirlik Kümesi içinde RHEL VM'ler oluşturun
+## <a name="create-rhel-vms-inside-the-availability-set"></a>Kullanılabilirlik kümesi içinde RHEL VM 'Leri oluşturma
 
 > [!WARNING]
-> Bir You-As-You-Go (PAYG) RHEL resmi seçer seniz ve Yüksek Kullanılabilirlik (HA) yapılandırmak, aboneliğinizi kaydetmek için gerekli olabilir. Bu, VM için Microsoft Azure RHEL aboneliği ve Red Hat aboneliği için ücretlendirileceksiniz gibi abonelik için iki kez ödeme yapabilirsiniz. Daha fazla bilgi için bkz. https://access.redhat.com/solutions/2458541.
+> Kullandıkça Öde (PAYG) RHEL görüntüsünü seçerseniz ve yüksek kullanılabilirliği (HA) yapılandırırsanız, aboneliğinizi kaydetmeniz gerekebilir. Bu, sanal makine için Microsoft Azure RHEL aboneliği ve Red Hat aboneliği için ücretlendirildiğiniz için abonelik için iki kez ödeme yapılmasına neden olabilir. Daha fazla bilgi için bkz. https://access.redhat.com/solutions/2458541.
 >
-> "Çift faturalı" olmamak için Azure VM'yi oluştururken bir RHEL HA görüntüsü kullanın. RHEL-HA görüntüleri olarak sunulan görüntüler, HA repo önceden etkin leştirilmiş PAYG görüntüleridir.
+> "Çift faturalandırılan" olmaması için, Azure VM oluştururken bir RHEL HA görüntüsü kullanın. RHEL-HA görüntüleri olarak sunulan görüntüler Ayrıca, HA deposu önceden etkin olan PAYG görüntüleridir.
 
-1. HA ile RHEL sunan Sanal Makine (VM) görüntülerinin bir listesini alın:
+1. HA ile RHEL sağlayan sanal makine (VM) görüntülerinin bir listesini alın:
 
     ```azurecli-interactive
     az vm image list --all --offer "RHEL-HA"
@@ -128,17 +128,17 @@ Komut tamamlandıktan sonra aşağıdaki sonuçları almalısınız:
     ]
     ```
 
-    Bu öğretici için, görüntüyü `RedHat:RHEL-HA:7.6:7.6.2019062019`seçiyoruz.
+    Bu öğreticide, görüntüyü `RedHat:RHEL-HA:7.6:7.6.2019062019`seçiyoruz.
 
     > [!IMPORTANT]
-    > Kullanılabilirlik Grubu'nun ayarlanabilmesi için makine adlarının 15 karakterden az olması gerekir. Kullanıcı adı büyük harf karakterleri içeremez ve parolalar 12'den fazla karaktere sahip olmalıdır.
+    > Kullanılabilirlik grubu ayarlamak için makine adları 15 karakterden az olmalıdır. Kullanıcı adı büyük harf karakterleri içeremez ve parolalar 12 karakterden uzun olmalıdır.
 
-1. Kullanılabilirlik Kümesi'nde 3 VM oluşturmak istiyoruz. Aşağıdaki komutta aşağıdakileri değiştirin:
+1. Kullanılabilirlik kümesinde 3 VM oluşturmak istiyoruz. Aşağıdaki komutta aşağıdaki komutu değiştirin:
 
     - `<resourceGroupName>`
     - `<VM-basename>`
     - `<availabilitySetName>`
-    - `<VM-Size>`- Bir örnek "Standard_D16_v3" olacaktır
+    - `<VM-Size>`-Bir örnek "Standard_D16_v3" olabilir
     - `<username>`
     - `<adminPassword>`
 
@@ -157,9 +157,9 @@ Komut tamamlandıktan sonra aşağıdaki sonuçları almalısınız:
     done
     ```
 
-Yukarıdaki komut VM'leri oluşturur ve bu VM'ler için varsayılan bir VNet oluşturur. Farklı yapılandırmalar hakkında daha fazla bilgi için [az vm create](https://docs.microsoft.com/cli/azure/vm) makalesine bakın.
+Yukarıdaki komut, VM 'Leri oluşturur ve bu VM 'Ler için varsayılan bir sanal ağ oluşturur. Farklı yapılandırmalara ilişkin daha fazla bilgi için, [az VM Create](https://docs.microsoft.com/cli/azure/vm) makalesine bakın.
 
-Her VM için komut tamamlandıktan sonra aşağıdakilere benzer sonuçlar almalısınız:
+Her VM için komut tamamlandıktan sonra aşağıdaki gibi sonuçlar almanız gerekir:
 
 ```output
 {
@@ -176,13 +176,13 @@ Her VM için komut tamamlandıktan sonra aşağıdakilere benzer sonuçlar almal
 ```
 
 > [!IMPORTANT]
-> Yukarıdaki komutla oluşturulan varsayılan görüntü varsayılan olarak 32GB işletim sistemi diski oluşturur. Bu varsayılan yüklemeyle yer inme potansiyeliniz olabilir. Örnek olarak 128 GB'lık `az vm create` bir işletim sistemi diski oluşturmak için yukarıdaki `--os-disk-size-gb 128`komuta eklenen aşağıdaki parametreyi kullanabilirsiniz: .
+> Yukarıdaki komutla oluşturulan varsayılan görüntü, varsayılan olarak bir 32 işletim sistemi diski oluşturur. Bu varsayılan yükleme ile muhtemelen boş alan tükeniyor olabilirsiniz. Örnek olarak 128GB ile bir işletim sistemi diski oluşturmak `az vm create` için yukarıdaki komutuna eklenen aşağıdaki parametreyi kullanabilirsiniz: `--os-disk-size-gb 128`.
 >
-> Daha sonra yüklemenize uyum sağlamak için uygun klasör birimlerini genişletmeniz gerekiyorsa [Mantıksal Birim Yöneticisi'ni (LVM) yapılandırabilirsiniz.](../../../virtual-machines/linux/configure-lvm.md)
+> Daha sonra, yüklemenize uyum sağlamak için uygun klasör birimlerini genişletmeniz gerekiyorsa [mantıksal birim Yöneticisi 'ni (LVM) yapılandırabilirsiniz](../../../virtual-machines/linux/configure-lvm.md) .
 
-### <a name="test-connection-to-the-created-vms"></a>Oluşturulan VM'lere test bağlantısı
+### <a name="test-connection-to-the-created-vms"></a>Oluşturulan VM 'Lerle bağlantıyı test etme
 
-Azure Bulut Uyruğu'nda aşağıdaki komutu kullanarak VM1'e veya diğer VMM'lere bağlanın. VM IP'lerinizi bulamıyorsanız, Azure [Bulut BulutU'nda bu Quickstart'ı](../../../cloud-shell/quickstart.md#ssh-into-your-linux-vm)izleyin.
+Azure Cloud Shell ' de aşağıdaki komutu kullanarak VM1 veya diğer VM 'lere bağlanın. VM IP 'larınızı bulamıyorsanız [Azure Cloud Shell bu hızlı](../../../cloud-shell/quickstart.md#ssh-into-your-linux-vm)başlangıcı izleyin.
 
 ```azurecli-interactive
 ssh <username>@publicipaddress
@@ -194,32 +194,32 @@ Bağlantı başarılı olursa, Linux terminalini temsil eden aşağıdaki çıkt
 [<username>@<VM1> ~]$
 ```
 
-SSH oturumundan ayrılmak için yazın. `exit`
+SSH `exit` oturumundan çıkmak için yazın.
 
-## <a name="enable-high-availability"></a>Yüksek Kullanılabilirlik Etkinleştirme
+## <a name="enable-high-availability"></a>Yüksek kullanılabilirliği etkinleştir
 
 > [!IMPORTANT]
-> Öğreticinin bu bölümünü tamamlamak için RHEL ve Yüksek Kullanılabilirlik Eklentisi için bir aboneliğiniz olması gerekir. Önceki bölümde önerilen bir resim kullanıyorsanız, başka bir abonelik kaydetmeniz gerekmez.
+> Öğreticinin bu bölümünü tamamlamaya yönelik bir RHEL ve yüksek kullanılabilirlik eklentisi aboneliğine sahip olmanız gerekir. Önceki bölümde önerilen bir görüntü kullanıyorsanız, başka bir abonelik kaydetmeniz gerekmez.
  
-Her VM düğümüne bağlanın ve HA'yı etkinleştirmek için aşağıdaki kılavuzu izleyin. Daha fazla bilgi [için RHEL için yüksek kullanılabilirlik aboneliğini etkinleştirme bilgisine](/sql/linux/sql-server-linux-availability-group-cluster-rhel#enable-the-high-availability-subscription-for-rhel)bakın.
+Her bir VM düğümüne bağlanın ve HA 'yi etkinleştirmek için aşağıdaki kılavuzu izleyin. Daha fazla bilgi için bkz. [RHEL için yüksek kullanılabilirlik aboneliğini etkinleştirme](/sql/linux/sql-server-linux-availability-group-cluster-rhel#enable-the-high-availability-subscription-for-rhel).
 
 > [!TIP]
-> Makale boyunca her VM'de aynı komutların çalıştırılması gerektiğinden, vm'lerin her birine aynı anda bir SSH oturumu açarsanız daha kolay olacaktır.
+> Aynı komutların her birine aynı anda bir SSH oturumu açarsanız, makale genelinde her bir VM 'de çalıştırılması gerekir.
 >
-> Birden çok `sudo` komutkopyalayıp yapıştırıyorsanız ve parola istenirse, ek komutlar çalışmaz. Her komutu ayrı ayrı çalıştırın.
+> Birden çok `sudo` komutu kopyalayıp yapıştırıyorsanız ve parola istenirse, ek komutlar çalıştırılmaz. Her komutu ayrı ayrı çalıştırın.
 
 
-1. Pacemaker güvenlik duvarı bağlantı noktalarını açmak için her VM'de aşağıdaki komutları çalıştırın:
+1. Pacemaker güvenlik duvarı bağlantı noktalarını açmak için her bir VM 'de aşağıdaki komutları çalıştırın:
 
     ```bash
     sudo firewall-cmd --permanent --add-service=high-availability
     sudo firewall-cmd --reload
     ```
 
-1. Aşağıdaki komutları kullanarak Tüm düğümlerde Pacemaker paketlerini güncelleştirin ve yükleyin:
+1. Aşağıdaki komutları kullanarak pacemaker paketlerini tüm düğümlerde güncelleştirin ve bu paketleri yüklersiniz:
 
     > [!NOTE]
-    > **nmap,** abunuzdaki kullanılabilir IP adreslerini bulmak için bir araç olarak bu komut bloğunun bir parçası olarak yüklenir. **Nmap**yüklemek zorunda değil, ama daha sonra bu öğretici yararlı olacaktır.
+    > **Nmap** , AĞıNıZDA kullanılabilir IP adreslerini bulmak için bir araç olarak bu komut bloğunun bir parçası olarak yüklenir. **Nmap**'i yüklemek zorunda değilsiniz, ancak bu öğreticide daha sonra yararlı olacak.
 
     ```bash
     sudo yum update -y
@@ -227,19 +227,19 @@ Her VM düğümüne bağlanın ve HA'yı etkinleştirmek için aşağıdaki kıl
     sudo reboot
     ```
 
-1. Pacemaker paketlerini yüklerken oluşturulan varsayılan kullanıcının parolasını ayarlayın. Tüm düğümlerde aynı parolayı kullanın.
+1. Paceoluşturucu paketleri yüklenirken oluşturulan varsayılan kullanıcının parolasını ayarlayın. Tüm düğümlerde aynı parolayı kullanın.
 
     ```bash
     sudo passwd hacluster
     ```
 
-1. Ana bilgisayar dosyasını açmak ve ana bilgisayar adı çözümlemesi ayarlamak için aşağıdaki komutu kullanın. Daha fazla bilgi için, ana bilgisayar dosyasını yapılandırma konusunda [AG'yi Yapılandır'](/sql/linux/sql-server-linux-availability-group-configure-ha#prerequisites) a bakın.
+1. Hosts dosyasını açmak ve konak adı çözümlemesini ayarlamak için aşağıdaki komutu kullanın. Daha fazla bilgi için bkz. Hosts dosyasını yapılandırırken [AG](/sql/linux/sql-server-linux-availability-group-configure-ha#prerequisites) 'yi yapılandırma.
 
     ```
     sudo vi /etc/hosts
     ```
 
-    **VI** düzenleyicisinde, `i` metin eklemek için girin ve boş bir satıra ilgili VM'nin **Özel IP'sini** ekleyin. Ardından IP'nin yanındaki boşluktan sonra VM adını ekleyin. Her satırın ayrı bir girişi olmalıdır.
+    **VI** düzenleyicisinde metin eklemek için `i` girin ve boş BIR satıra karşılık gelen VM 'nin **özel IP** 'sini ekleyin. Ardından, IP 'nin yanındaki bir alandan sonra VM adını ekleyin. Her satırın ayrı bir girişi olmalıdır.
 
     ```output
     <IP1> <VM1>
@@ -248,17 +248,17 @@ Her VM düğümüne bağlanın ve HA'yı etkinleştirmek için aşağıdaki kıl
     ```
 
     > [!IMPORTANT]
-    > Yukarıdaki **Özel IP** adresinizi kullanmanızı öneririz. Bu yapılandırmada Genel IP adresinin kullanılması kurulumun başarısız lığa neden olur ve VM'nizi harici ağlara maruz bırakmanızı önermiyoruz.
+    > Yukarıdaki **özel IP** adresinizi kullanmanızı öneririz. Bu yapılandırmadaki genel IP adresinin kullanılması Kurulumun başarısız olmasına neden olur ve sanal makinenizin dış ağlara sunulmasını önermiyoruz.
 
-    **Vi** düzenleyiciden çıkmak için önce **Esc** tuşuna basın `:wq` ve sonra dosyayı yazmak için komutu girin ve çıkın.
+    **VI** düzenleyicisinden çıkmak için, önce **ESC** tuşuna basın ve ardından dosyayı yazıp çıkmak için komutunu `:wq` girin.
 
-## <a name="create-the-pacemaker-cluster"></a>Kalp Pili kümesini oluşturma
+## <a name="create-the-pacemaker-cluster"></a>Paceoluşturucu kümesi oluşturma
 
-Bu bölümde, biz etkinleştirmek ve pcsd hizmeti başlatmak ve daha sonra küme yapılandırmak. Linux'taki SQL Server için küme kaynakları otomatik olarak oluşturulmaz. Kalp pili kaynaklarını el ile etkinleştirmemiz ve oluşturmamız gerekecek. Daha fazla bilgi için, [RHEL için bir failover küme örneği yapılandırma](/sql/linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure#install-and-configure-pacemaker-on-each-cluster-node) makaleye bakın
+Bu bölümde, pcsd hizmetini etkinleştirip başlatacak ve sonra kümeyi yapılandıracağız. Linux üzerinde SQL Server için, küme kaynakları otomatik olarak oluşturulmaz. Pacemaker kaynaklarını el ile etkinleştirip oluşturmanız gerekecektir. Daha fazla bilgi için, [RHEL için yük devretme kümesi örneğini yapılandırma](/sql/linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure#install-and-configure-pacemaker-on-each-cluster-node) makalesine bakın
 
-### <a name="enable-and-start-pcsd-service-and-pacemaker"></a>Pcsd hizmetini ve Kalp Pili'ni etkinleştirin ve başlatın
+### <a name="enable-and-start-pcsd-service-and-pacemaker"></a>Pcsd hizmeti ve Paceyapıcısı etkinleştirme ve başlatma
 
-1. Tüm düğümlerde komutları çalıştırın. Bu komutlar düğümlerin yeniden başlatıldıktan sonra kümeye yeniden katılmasını sağlar.
+1. Komutları tüm düğümlerde çalıştırın. Bu komutlar, yeniden başlatmadan sonra düğümlerin kümeye yeniden eklenmesine izin verir.
 
     ```bash
     sudo systemctl enable pcsd
@@ -266,7 +266,7 @@ Bu bölümde, biz etkinleştirmek ve pcsd hizmeti başlatmak ve daha sonra küme
     sudo systemctl enable pacemaker
     ``` 
 
-1. Varolan küme yapılandırmalarını tüm düğümlerden kaldırın. Şu komutu çalıştırın:
+1. Tüm düğümlerde var olan tüm küme yapılandırmalarını kaldırın. Şu komutu çalıştırın:
 
     ```bash
     sudo pcs cluster destroy 
@@ -275,7 +275,7 @@ Bu bölümde, biz etkinleştirmek ve pcsd hizmeti başlatmak ve daha sonra küme
 
 1. Birincil düğümde, kümeyi ayarlamak için aşağıdaki komutları çalıştırın.
 
-    - Küme düğümlerinin kimliğini doğrulamak için `pcs cluster auth` komutu çalıştırırken, bir parola istenir. Daha önce oluşturulan **hacluster** kullanıcısının parolasını girin.
+    - Küme düğümlerinin kimliğini `pcs cluster auth` doğrulamak için komutunu çalıştırırken sizden bir parola girmeniz istenir. Daha önce oluşturulan **hacluster** kullanıcısının parolasını girin.
 
     ```bash
     sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
@@ -284,13 +284,13 @@ Bu bölümde, biz etkinleştirmek ve pcsd hizmeti başlatmak ve daha sonra küme
     sudo pcs cluster enable --all
     ```
 
-1. Tüm düğümlerin çevrimiçi olup olmadığını kontrol etmek için aşağıdaki komutu çalıştırın.
+1. Tüm düğümlerin çevrimiçi olup olmadığını denetlemek için aşağıdaki komutu çalıştırın.
 
     ```bash
     sudo pcs status
     ```
 
-    Tüm düğümler çevrimiçiyse, aşağıdakilere benzer bir çıktı görürsünüz:
+    Tüm düğümler çevrimiçiyse aşağıdakine benzer bir çıktı görürsünüz:
 
     ```output
     Cluster name: az-hacluster
@@ -317,19 +317,19 @@ Bu bölümde, biz etkinleştirmek ve pcsd hizmeti başlatmak ve daha sonra küme
           pcsd: active/enabled
     ```
 
-1. Canlı kümede beklenen oyları 3'e ayarlayın. Bu komut yalnızca canlı kümeyi etkiler ve yapılandırma dosyalarını değiştirmez.
+1. Canlı kümede beklenen oyları 3 olarak ayarlayın. Bu komut yalnızca canlı kümeyi etkiler ve yapılandırma dosyalarını değiştirmez.
 
-    Tüm düğümlerde, aşağıdaki komutla beklenen oyları ayarlayın:
+    Tüm düğümlerde beklenen oyları aşağıdaki komutla ayarlayın:
 
     ```bash
     sudo pcs quorum expected-votes 3
     ```
 
-## <a name="configure-the-fencing-agent"></a>Eskrim aracısını yapılandırın
+## <a name="configure-the-fencing-agent"></a>Sınırlama aracısını yapılandırma
 
-Bir STONITH cihazı bir eskrim ajanı sağlar. Aşağıdaki talimatlar bu öğretici için değiştirilmiştir. Daha fazla bilgi için [bir STONITH aygıtı oluşturmaya](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#create-stonith-device)bakın.
+Bir STONITH cihazı, bir çevre Aracısı sağlar. Aşağıdaki yönergeler bu öğreticide değiştirilmiştir. Daha fazla bilgi için bkz. [BIR STONITH cihazı oluşturma](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#create-stonith-device).
  
-Azure Çit Aracısı sürümünü denetler ve [güncelleştirdiğinden emin olun.](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#cluster-installation) Aşağıdaki komutu kullanın:
+[Güncelleştirildiğinden emin olmak Için Azure çit aracısının sürümünü denetleyin](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#cluster-installation). Aşağıdaki komutu kullanın:
 
 ```bash
 sudo yum info fence-agents-azure-arm
@@ -353,27 +353,27 @@ License     : GPLv2+ and LGPLv2+
 Description : The fence-agents-azure-arm package contains a fence agent for Azure instances.
 ```
 
-### <a name="register-a-new-application-in-azure-active-directory"></a>Azure Etkin Dizini'nde yeni bir uygulama kaydetme
+### <a name="register-a-new-application-in-azure-active-directory"></a>Azure Active Directory yeni bir uygulama kaydetme
  
  1. Şuraya gidin: https://portal.azure.com
- 2. Azure [Active Directory bıçağını](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)açın. Özellikler'e gidin ve Dizin Kimliğini yazın. Bu,`tenant ID`
- 3. [ **Uygulama kayıtlarını** tıklatın](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
- 4. **Yeni kayıt'ı** tıklatın
- 5. **Yalnızca** bu `<resourceGroupName>-app`kuruluş **dizininde Hesaplar'ı** seçin gibi bir Ad girin
- 6. Uygulama Türü **Web'i**seçin, oturum açma http://localhost) URL'sini girin (örneğin ve Ekle'yi tıklatın. Oturum açma URL'si kullanılmaz ve geçerli bir URL olabilir. Bir kez bittikten sonra, **Kayıt Tıklayın**
- 7. Yeni Uygulama kaydınız için **Sertifikalar ve sırlar** seçin ve **ardından Yeni müşteri sırrını** tıklatın
- 8. Yeni bir anahtar için açıklama girin (istemci sırrı), **asla süresi dolmaz'ı** seçin ve **Ekle'yi** tıklatın
- 9. Sırrın değerini yaz. Hizmet Sorumlusunun şifresi olarak kullanılır
-10. **Genel Bakış**’ı seçin. Başvuru Kimliğini yazın. Hizmet Sorumlusunun kullanıcı adı (aşağıdaki adımlardaki giriş kimliği) olarak kullanılır
+ 2. [Azure Active Directory dikey penceresini](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)açın. Özellikler ' e gidin ve Dizin KIMLIĞINI yazın. Bu,`tenant ID`
+ 3. [ **Uygulama kayıtları** tıklayın](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+ 4. **Yeni kayıt** öğesine tıklayın
+ 5. Gibi `<resourceGroupName>-app`bir **ad** girin, **yalnızca bu kuruluş dizinindeki hesapları** seçin
+ 6. Uygulama türü **Web**' i seçin, bir oturum açma URL 'si girin ( http://localhost) Örneğin, Ekle ' ye tıklayın. Oturum açma URL 'SI kullanılmaz ve geçerli bir URL olabilir. İşiniz bittiğinde **Kaydet** ' e tıklayın.
+ 7. Yeni uygulama kaydınız için **sertifikaları ve gizli** dizileri seçip **yeni istemci parolası** ' na tıklayın.
+ 8. Yeni anahtar için bir açıklama girin (istemci gizli anahtarı), **hiçbir zaman süre sonu** seçeneğini belirleyip **Ekle** ' ye tıklayın
+ 9. Gizli dizi değerini yazın. Hizmet sorumlusu için parola olarak kullanılır
+10. **Genel Bakış**’ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda oturum açma KIMLIĞI) olarak kullanılır
  
-### <a name="create-a-custom-role-for-the-fence-agent"></a>Çit aracısı için özel bir rol oluşturma
+### <a name="create-a-custom-role-for-the-fence-agent"></a>Çit Aracısı için özel bir rol oluşturma
 
-[Azure CLI'yi kullanarak Azure kaynakları için özel bir rol oluşturmak için](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)öğreticiyi izleyin.
+[Azure CLI kullanarak Azure kaynakları için özel bir rol oluşturma](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)öğreticisini izleyin.
 
-Json dosyanız aşağıdakilere benzer olmalıdır:
+JSON dosyanız aşağıdakine benzer şekilde görünmelidir:
 
-- Seçtiğiniz `<username>` bir ad ile değiştirin. Bu, bu rol tanımıoluştururken herhangi bir yineleme önlemek içindir.
-- Azure `<subscriptionId>` Abonelik Kimliğinizle değiştirin.
+- İstediğiniz `<username>` adla değiştirin. Bu rol tanımını oluştururken herhangi bir tekrardan kaçınmaktır.
+- Azure `<subscriptionId>` abonelik Kimliğinizle değiştirin.
 
 ```json
 {
@@ -396,8 +396,8 @@ Json dosyanız aşağıdakilere benzer olmalıdır:
 
 Rolü eklemek için aşağıdaki komutu çalıştırın:
 
-- Dosyanın adı ile değiştirin. `<filename>`
-- Komutu dosyanın kaydettiği klasörün dışındaki bir yoldan yürütüyorsanız, dosyanın klasör yolunu komuta ekleyin.
+- Dosyanın `<filename>` adıyla değiştirin.
+- Komutu, dosyanın kaydedildiği klasörden farklı bir yoldan yürütüyorsunuz, dosyanın klasör yolunu komuta ekleyin.
 
 ```bash
 az role definition create --role-definition "<filename>.json"
@@ -431,51 +431,51 @@ Aşağıdaki çıktıyı görmeniz gerekir:
 }
 ```
 
-### <a name="assign-the-custom-role-to-the-service-principal"></a>Özel rolü Hizmet Sorumlusuna atama
+### <a name="assign-the-custom-role-to-the-service-principal"></a>Hizmet sorumlusuna özel rol atama
 
-Son adımda `Linux Fence Agent Role-<username>` oluşturulan özel rolü Hizmet Sorumlusuna atayın. Artık Sahibi rolünü kullanmayın!
+Son adımda oluşturulan özel `Linux Fence Agent Role-<username>` rolü hizmet sorumlusuna atayın. Sahip rolünü artık kullanmayın!
  
 1. Şuraya gidin: https://portal.azure.com
-2. Tüm [kaynaklar bıçağını](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll) açın
+2. [Tüm kaynaklar dikey penceresini](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll) açın
 3. İlk küme düğümünün sanal makinesini seçin
-4. **Erişim denetimine (IAM)** tıklayın
-5. **Rol ataması ekle'yi** tıklatın
-6. `Linux Fence Agent Role-<username>` **Rol** listesinden rolü seçme
-7. **Seç** listesine, yukarıda oluşturduğunuz uygulamanın adını girin,`<resourceGroupName>-app`
-8. **Kaydet'i** tıklatın
-9. Tüm küme düğümü için yukarıdaki adımları yineleyin.
+4. **Erişim denetimi (IAM)** öğesine tıklayın
+5. **Rol ataması Ekle** ' ye tıklayın
+6. **Rol** listesinden rolü `Linux Fence Agent Role-<username>` seçin
+7. **Seç** listesinde, yukarıda oluşturduğunuz uygulamanın adını girin.`<resourceGroupName>-app`
+8. **Kaydet** 'e tıklayın
+9. Tüm küme düğümü için yukarıdaki adımları tekrarlayın.
 
-### <a name="create-the-stonith-devices"></a>STONITH aygıtlarını oluşturun
+### <a name="create-the-stonith-devices"></a>STONITH cihazlarını oluşturma
 
-Düğüm 1'de aşağıdaki komutları çalıştırın:
+Düğüm 1 ' de aşağıdaki komutları çalıştırın:
 
-- `<ApplicationID>` Başvuru kaydınızdaki kimlik değerini değiştirin.
-- İstemci `<servicePrincipalPassword>` sırrının değeriyle değiştirin.
-- `<resourceGroupName>` Bu öğretici için kullanılan aboneliğinizden Kaynak Grubu'nu değiştirin.
-- Azure `<tenantID>` Aboneliğinizden `<subscriptionId>` ve azure aboneliğinizden ve bu abonelikten değiştirin.
+- Öğesini uygulama `<ApplicationID>` KAYDıNıZDAN kimlik değeri ile değiştirin.
+- Değerini, `<servicePrincipalPassword>` istemci gizli anahtarı ile değiştirin.
+- `<resourceGroupName>` Bu öğretici için kullanılan aboneliğinizdeki kaynak grubuyla değiştirin.
+- `<tenantID>` Ve ' i `<subscriptionId>` Azure aboneliğinizden değiştirin.
 
 ```bash
 sudo pcs property set stonith-timeout=900
 sudo pcs stonith create rsc_st_azure fence_azure_arm login="<ApplicationID>" passwd="<servicePrincipalPassword>" resourceGroup="<resourceGroupName>" tenantId="<tenantID>" subscriptionId="<subscriptionId>" power_timeout=240 pcmk_reboot_timeout=900
 ```
 
-HA hizmetine izin vermek için güvenlik duvarımıza`--add-service=high-availability`zaten bir kural eklediğimiziçin, tüm düğümlerde aşağıdaki güvenlik duvarı bağlantı noktalarını açmaya gerek yoktur: 2224, 3121, 21064, 5405. Ancak, HA ile herhangi bir bağlantı sorunu yaşıyorsanız, HA ile ilişkili bu bağlantı noktalarını açmak için aşağıdaki komutu kullanın.
+HA hizmetine (`--add-service=high-availability`) izin vermek için güvenlik duvarımızı zaten bir kural eklediğimiz için, tüm düğümlerde şu güvenlik duvarı bağlantı noktalarını açmaya gerek yoktur: 2224, 3121, 21064, 5405. Ancak, HA ile herhangi bir türde bağlantı sorunuyla karşılaşıyorsanız, HA ile ilişkili bu bağlantı noktalarını açmak için aşağıdaki komutu kullanın.
 
 > [!TIP]
-> İsteğe bağlı olarak biraz zaman kazanmak için aynı anda bu öğretici tüm bağlantı noktalarını ekleyebilirsiniz. Açılması gereken bağlantı noktaları aşağıdaki göreli bölümlerinde açıklanmıştır. Şimdi tüm bağlantı noktalarını eklemek isterseniz, ek bağlantı noktalarını ekleyin: 1433 ve 5022.
+> İsterseniz bu öğreticideki tüm bağlantı noktalarını bir kez daha ekleyebilirsiniz. Açılması gereken bağlantı noktaları aşağıdaki ilgili bölümlerinde açıklanmıştır. Tüm bağlantı noktalarını şimdi eklemek istiyorsanız, ek bağlantı noktalarını ekleyin: 1433 ve 5022.
 
 ```bash
 sudo firewall-cmd --zone=public --add-port=2224/tcp --add-port=3121/tcp --add-port=21064/tcp --add-port=5405/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
-## <a name="install-sql-server-and-mssql-tools"></a>SQL Server ve mssql araçlarını yükleme
+## <a name="install-sql-server-and-mssql-tools"></a>SQL Server ve MSSQL araçları 'nı yükler
  
-VM'lere SQL Server ve mssql araçlarını yüklemek için aşağıdaki bölümü kullanın. Tüm düğümlerde bu eylemlerin her birini gerçekleştirin. Daha fazla bilgi için [SQL Server'a Red Hat VM yükle](/sql/linux/quickstart-install-connect-red-hat)'ye bakın.
+VM 'Lere SQL Server ve MSSQL araçları yüklemek için aşağıdaki bölümü kullanın. Tüm düğümlerde bu eylemlerin her birini gerçekleştirin. Daha fazla bilgi için bkz. [Red Hat VM 'sini SQL Server](/sql/linux/quickstart-install-connect-red-hat).
 
-### <a name="installing-sql-server-on-the-vms"></a>VM'lere SQL Server Yükleme
+### <a name="installing-sql-server-on-the-vms"></a>VM 'Lere SQL Server yükleme
 
-SQL Server'ı yüklemek için aşağıdaki komutlar kullanılır:
+Aşağıdaki komutlar SQL Server yüklemek için kullanılır:
 
 ```bash
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
@@ -484,9 +484,9 @@ sudo /opt/mssql/bin/mssql-conf setup
 sudo yum install mssql-server-ha
 ```
 
-### <a name="open-firewall-port-1433-for-remote-connections"></a>Uzak bağlantılar için güvenlik duvarı bağlantı noktası 1433'ü açın
+### <a name="open-firewall-port-1433-for-remote-connections"></a>Uzaktan bağlantılar için güvenlik duvarı bağlantı noktası 1433 ' i açın
 
-Uzaktan bağlanmak için VM'de 1433 bağlantı noktasını açmanız gerekir. Her VM'nin güvenlik duvarında bağlantı noktası 1433'ü açmak için aşağıdaki komutları kullanın:
+Uzaktan bağlanmak için VM 'de bağlantı noktası 1433 ' i açmanız gerekir. Her VM 'nin güvenlik duvarında 1433 numaralı bağlantı noktasını açmak için aşağıdaki komutları kullanın:
 
 ```bash
 sudo firewall-cmd --zone=public --add-port=1433/tcp --permanent
@@ -495,7 +495,7 @@ sudo firewall-cmd --reload
 
 ### <a name="installing-sql-server-command-line-tools"></a>SQL Server komut satırı araçlarını yükleme
 
-SQL Server komut satırı araçlarını yüklemek için aşağıdaki komutlar kullanılır. Daha fazla bilgi için [SQL Server komut satırı araçlarını yükleyin.](/sql/linux/quickstart-install-connect-red-hat#tools)
+Aşağıdaki komutlar SQL Server komut satırı araçlarını yüklemek için kullanılır. Daha fazla bilgi için [SQL Server komut satırı araçlarını yüklemeyi](/sql/linux/quickstart-install-connect-red-hat#tools)inceleyin.
 
 ```bash
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
@@ -503,15 +503,15 @@ sudo yum install -y mssql-tools unixODBC-devel
 ```
  
 > [!NOTE] 
-> Kolaylık sağlamak için PATH ortamı değişkeninize /opt/mssql-tools/bin/ ekleyin. Bu, tam yolu belirtmeden araçları çalıştırmanızı sağlar. PATH ortam değişkenini hem oturum açma bilgileriyle başlatılan oturumları hem de etkileşimli/oturum açma bilgisi olmadan başlatılan oturumları için değiştirmek üzere aşağıdaki komutları çalıştırın:</br></br>
+> Kolaylık sağlaması için PATH ortam değişkenine/seçenek/MSSQL-Tools/bin/ekleyin. Bu, tüm yolu belirtmeden araçları çalıştırmanızı sağlar. PATH ortam değişkenini hem oturum açma bilgileriyle başlatılan oturumları hem de etkileşimli/oturum açma bilgisi olmadan başlatılan oturumları için değiştirmek üzere aşağıdaki komutları çalıştırın:</br></br>
 `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile`</br>
 `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc`</br>
 `source ~/.bashrc`
 
 
-### <a name="check-the-status-of-the-sql-server"></a>SQL Server'ın durumunu kontrol edin
+### <a name="check-the-status-of-the-sql-server"></a>SQL Server durumunu kontrol edin
 
-Yapılandırmayı bitirdikten sonra, SQL Server'ın durumunu kontrol edebilir ve çalıştığını doğrulayabilirsiniz:
+Yapılandırma ile işiniz bittiğinde, SQL Server durumunu denetleyebilir ve çalıştığını doğrulayabilirsiniz:
 
 ```bash
 systemctl status mssql-server --no-pager
@@ -530,13 +530,13 @@ Aşağıdaki çıktıyı görmeniz gerekir:
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>SQL Server'ı Her Zaman Kullanılabilirlik Grubunda Yapılandır
+## <a name="configure-sql-server-always-on-availability-group"></a>SQL Server Always on kullanılabilirlik grubu yapılandırma
 
-VM'leriniz için SQL Server Always On Availability Group'u yapılandırmak için aşağıdaki adımları kullanın. Daha fazla bilgi için, [Linux'ta yüksek kullanılabilirlik için SQL Server Always On Availability Group'u yapılandırın](/sql/linux/sql-server-linux-availability-group-configure-ha)
+Sanal makinelerinize yönelik SQL Server Always on kullanılabilirlik grubunu yapılandırmak için aşağıdaki adımları kullanın. Daha fazla bilgi için bkz. [Linux üzerinde yüksek kullanılabilirlik için SQL Server Always on kullanılabilirlik grubu yapılandırma](/sql/linux/sql-server-linux-availability-group-configure-ha)
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>AlwaysOn kullanılabilirlik gruplarını etkinleştirin ve mssql-server'ı yeniden başlatın
+### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>AlwaysOn kullanılabilirlik gruplarını etkinleştirin ve MSSQL-Server 'ı yeniden başlatın
 
-SQL Server örneğini barındıran her düğümde AlwaysOn kullanılabilirlik gruplarını etkinleştirin. Sonra mssql-server'ı yeniden başlatın. Şu betiği çalıştırın:
+SQL Server örneğini barındıran her düğüm üzerinde AlwaysOn kullanılabilirlik grupları 'nı etkinleştirin. Sonra MSSQL-Server ' ı yeniden başlatın. Şu betiği çalıştırın:
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -545,14 +545,14 @@ sudo systemctl restart mssql-server
 
 ### <a name="create-a-certificate"></a>Sertifika oluşturma
 
-Şu anda AG bitiş noktasına AD kimlik doğrulamasını destekliyoruz. Bu nedenle, AG uç nokta şifreleme için bir sertifika kullanmamız gerekir.
+Şu anda AG uç noktasında AD kimlik doğrulamasını desteklemiyoruz. Bu nedenle, AG uç noktası şifrelemesi için bir sertifika kullanılmalıdır.
 
-1. SQL Server Management Studio (SSMS) veya SQL CMD kullanarak **tüm düğümlere** bağlanın. AlwaysOn_health oturumunu etkinleştirmek ve bir ana anahtar oluşturmak için aşağıdaki komutları çalıştırın:
+1. SQL Server Management Studio (SSMS) veya SQL CMD kullanarak **tüm düğümlere** bağlanın. AlwaysOn_health oturumu etkinleştirmek ve bir ana anahtar oluşturmak için aşağıdaki komutları çalıştırın:
 
     > [!IMPORTANT]
-    > SQL Server örneğinize uzaktan bağlanıyorsanız, güvenlik duvarınızda 1433 bağlantı noktasının açık olması gerekir. Ayrıca, her VM için NSG'nizde 1433 bağlantı noktasına gelen bağlantılara izin vermeniz gerekir. Daha fazla bilgi için [bkz.](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)
+    > SQL Server örneğinize uzaktan bağlanıyorsanız, güvenlik duvarınız üzerinde 1433 numaralı bağlantı noktasını açmanız gerekir. Ayrıca, her VM için NSG bağlantı noktası 1433 ' e gelen bağlantılara izin vermeniz gerekir. Daha fazla bilgi için bkz. gelen güvenlik kuralı oluşturmak için [güvenlik kuralı oluşturma](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) .
 
-    - Kendi `<Master_Key_Password>` parolanızla değiştirin.
+    - `<Master_Key_Password>` Yerine kendi parolanızı koyun.
 
 
     ```sql
@@ -562,9 +562,9 @@ sudo systemctl restart mssql-server
     ```
 
  
-1. SSMS veya SQL CMD kullanarak birincil yinelemeye bağlanın. Aşağıdaki komutlar, birincil SQL `/var/opt/mssql/data/dbm_certificate.cer` Server yinelemenizde `var/opt/mssql/data/dbm_certificate.pvk` bir sertifika ve özel bir anahtar oluşturur:
+1. SSMS veya SQL CMD kullanarak birincil çoğaltmaya bağlanın. Aşağıdaki komutlar, birincil SQL Server çoğaltmaınızla `/var/opt/mssql/data/dbm_certificate.cer` `var/opt/mssql/data/dbm_certificate.pvk` ilgili olarak bir sertifika ve bir özel anahtar oluşturacaktır:
 
-    - Kendi `<Private_Key_Password>` parolanızla değiştirin.
+    - `<Private_Key_Password>` Yerine kendi parolanızı koyun.
 
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
@@ -579,19 +579,19 @@ BACKUP CERTIFICATE dbm_certificate
 GO
 ```
 
-Komutu çalıştırarak SQL CMD oturumundan `exit` çıkın ve SSH oturumunuza geri dönün.
+`exit` Komutunu ÇALıŞTıRARAK SQL CMD oturumundan ÇıKıN ve SSH oturumunuza geri dönün.
  
-### <a name="copy-the-certificate-to-the-secondary-replicas-and-create-the-certificates-on-the-server"></a>Sertifikayı ikincil yinelemelere kopyalayın ve sunucuda sertifikaları oluşturun
+### <a name="copy-the-certificate-to-the-secondary-replicas-and-create-the-certificates-on-the-server"></a>Sertifikayı ikincil çoğaltmalara kopyalayın ve sunucuda sertifikaları oluşturun
 
-1. Kullanılabilirlik yinelemelerini barındıracak tüm sunucularda oluşturulan iki dosyayı aynı konuma kopyalayın.
+1. Oluşturulan iki dosyayı, kullanılabilirlik çoğaltmalarını barındıracak tüm sunucularda aynı konuma kopyalayın.
  
-    Birincil sunucuda, sertifikayı `scp` hedef sunuculara kopyalamak için aşağıdaki komutu çalıştırın:
+    Birincil sunucuda, sertifikayı hedef sunuculara kopyalamak için `scp` aşağıdaki komutu çalıştırın:
 
-    - Kullandığınız `<username>` `<VM2>` kullanıcı adı ve hedef VM adı ile değiştirin.
-    - Tüm ikincil yinelemeler için bu komutu çalıştırın.
+    - Ve `<username>` `<VM2>` kullandığınız Kullanıcı adı ve hedef VM adıyla değiştirin.
+    - Tüm ikincil çoğaltmalar için bu komutu çalıştırın.
 
     > [!NOTE]
-    > Koşmak `sudo -i`zorunda değilsiniz, bu da size kök ortamı nı verir. Daha önce bu `sudo` öğreticide yaptığımız gibi her komutun önünde komutu çalıştırabilirsiniz.
+    > Size kök ortam sağlayan, `sudo -i`çalıştırmanız gerekmez. Bu öğreticide daha önce `sudo` yaptığımız gibi komutu yalnızca her komutun önünde çalıştırabilirsiniz.
 
     ```bash
     # The below command allows you to run commands in the root environment
@@ -602,12 +602,12 @@ Komutu çalıştırarak SQL CMD oturumundan `exit` çıkın ve SSH oturumunuza g
     scp /var/opt/mssql/data/dbm_certificate.* <username>@<VM2>:/home/<username>
     ```
 
-1. Hedef Sunucu'da aşağıdaki komutu çalıştırın:
+1. Hedef sunucuda aşağıdaki komutu çalıştırın:
 
-    - Kullanıcı `<username>` adınız ile değiştirin.
-    - Komut `mv` dosyaları veya dizini bir yerden diğerine taşır.
-    - Komut, `chown` dosya, dizin veya bağlantı sahibini ve grubunu değiştirmek için kullanılır.
-    - Tüm ikincil yinelemeler için bu komutları çalıştırın.
+    - Kullanıcı `<username>` adınızla değiştirin.
+    - `mv` Komut dosyaları veya dizini bir konumdan diğerine taşıdıkça.
+    - `chown` Komut, dosya, dizin veya bağlantı sahibini ve grubunu değiştirmek için kullanılır.
+    - Tüm ikincil çoğaltmalar için bu komutları çalıştırın.
 
     ```bash
     sudo -i
@@ -616,7 +616,7 @@ Komutu çalıştırarak SQL CMD oturumundan `exit` çıkın ve SSH oturumunuza g
     chown mssql:mssql dbm_certificate.*
     ```
 
-1. Aşağıdaki Transact-SQL komut dosyası, birincil SQL Server yinelemesi üzerinde oluşturduğunuz yedeklemeden bir sertifika oluşturur. Komut dosyasını güçlü parolalarla güncelleştirin. Şifre çözme parolası, önceki adımda .pvk dosyasını oluşturmak için kullandığınız parolayla aynıdır. Sertifikayı oluşturmak için, tüm ikincil sunucularda SQL CMD veya SSMS kullanarak aşağıdaki komut dosyasını çalıştırın:
+1. Aşağıdaki Transact-SQL betiği, birincil SQL Server çoğaltmasında oluşturduğunuz yedekten bir sertifika oluşturur. Betiği güçlü parolalarla güncelleştirin. Şifre çözme parolası, önceki adımda. PVK dosyasını oluşturmak için kullandığınız paroladır. Sertifikayı oluşturmak için, tüm ikincil sunuculardaki SQL CMD veya SSMS kullanarak aşağıdaki betiği çalıştırın:
 
     ```sql
     CREATE CERTIFICATE dbm_certificate
@@ -628,9 +628,9 @@ Komutu çalıştırarak SQL CMD oturumundan `exit` çıkın ve SSH oturumunuza g
     GO
     ```
 
-### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Tüm yinelemelerde uç noktaları yansıtan veritabanını oluşturma
+### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Tüm çoğaltmalarda veritabanı yansıtma uç noktalarını oluşturma
 
-SQL CMD veya SSMS kullanarak tüm SQL örneklerinde aşağıdaki komut dosyasını çalıştırın:
+SQL CMD veya SSMS kullanarak tüm SQL örneklerinde aşağıdaki betiği çalıştırın:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -646,12 +646,12 @@ ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
 GO
 ```
 
-### <a name="create-the-availability-group"></a>Kullanılabilirlik Grubu Oluşturma
+### <a name="create-the-availability-group"></a>Kullanılabilirlik grubunu oluşturma
 
-SQL CMD veya SSMS kullanarak birincil yinelemeyi barındıran SQL Server örneğine bağlanın. Kullanılabilirlik Grubu oluşturmak için aşağıdaki komutu çalıştırın:
+SQL CMD veya SSMS kullanarak birincil çoğaltmayı barındıran SQL Server örneğine bağlanın. Kullanılabilirlik grubunu oluşturmak için aşağıdaki komutu çalıştırın:
 
-- İstediğiniz Kullanılabilirlik Grubu adı ile değiştirin. `ag1`
-- `<VM1>`,, `<VM2>`ve `<VM3>` değerleri yinelemeleri barındıran SQL Server örneklerinin adlarıyla değiştirin.
+- İstediğiniz `ag1` kullanılabilirlik grubu adıyla değiştirin.
+- `<VM1>`, `<VM2>`Ve `<VM3>` değerlerini, çoğaltmaları barındıran SQL Server örneklerinin adlarıyla değiştirin.
 
 ```sql
 CREATE AVAILABILITY GROUP [ag1]
@@ -684,9 +684,9 @@ ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
 GO
 ```
 
-### <a name="create-a-sql-server-login-for-pacemaker"></a>Pacemaker için BIR SQL Server girişi oluşturma
+### <a name="create-a-sql-server-login-for-pacemaker"></a>Pacemaker için SQL Server oturum açma oluşturma
 
-Tüm SQL Sunucularında Pacemaker için bir SQL girişi oluşturun. Aşağıdaki Transact-SQL bir giriş oluşturur.
+Tüm SQL sunucularında, pacemaker için bir SQL oturum açma oluşturun. Aşağıdaki Transact-SQL bir oturum açma oluşturur.
 
 - Kendi `<password>` karmaşık parolanızla değiştirin.
 
@@ -701,7 +701,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-Tüm SQL Sunucularında, SQL Server girişi için kullanılan kimlik bilgilerini kaydedin. 
+Tüm SQL Server 'Lar üzerinde SQL Server oturum açma için kullanılan kimlik bilgilerini kaydedin. 
 
 1. Dosyayı oluşturun:
 
@@ -709,32 +709,32 @@ Tüm SQL Sunucularında, SQL Server girişi için kullanılan kimlik bilgilerini
     sudo vi /var/opt/mssql/secrets/passwd
     ```
 
-1. Dosyaya aşağıdaki 2 satırı ekleyin:
+1. Aşağıdaki 2 satırı dosyaya ekleyin:
 
     ```bash
     pacemakerLogin
     <password>
     ```
 
-    **Vi** düzenleyiciden çıkmak için önce **Esc** tuşuna basın `:wq` ve sonra dosyayı yazmak için komutu girin ve çıkın.
+    **VI** düzenleyicisinden çıkmak için, önce **ESC** tuşuna basın ve ardından dosyayı yazıp çıkmak için komutunu `:wq` girin.
 
-1. Dosyayı yalnızca köke göre okunabilir hale getirin:
+1. Dosyayı yalnızca köke göre okunabilir hale getirme:
 
     ```bash
     sudo chown root:root /var/opt/mssql/secrets/passwd
     sudo chmod 400 /var/opt/mssql/secrets/passwd
     ```
 
-### <a name="join-secondary-replicas-to-the-availability-group"></a>Kullanılabilirlik grubuna ikincil yinelemelere katılma
+### <a name="join-secondary-replicas-to-the-availability-group"></a>İkincil çoğaltmaları kullanılabilirlik grubuna katın
 
-1. AG'ye ikincil yinelemelere katılmak için, tüm sunucular için güvenlik duvarında 5022 bağlantı noktasını açmanız gerekir. SSH oturumunuzda aşağıdaki komutu çalıştırın:
+1. İkincil çoğaltmaları AG 'ye katmak için, tüm sunucular için güvenlik duvarında 5022 numaralı bağlantı noktasını açmanız gerekir. SSH oturumunda aşağıdaki komutu çalıştırın:
 
     ```bash
     sudo firewall-cmd --zone=public --add-port=5022/tcp --permanent
     sudo firewall-cmd --reload
     ```
 
-1. İkincil yinelemelerinizde, AG'ye katılmak için aşağıdaki komutları çalıştırın:
+1. İkincil çoğaltmalarda, bu komutları AG 'ye katmak için aşağıdaki komutları çalıştırın:
 
     ```sql
     ALTER AVAILABILITY GROUP [ag1] JOIN WITH (CLUSTER_TYPE = EXTERNAL);
@@ -744,7 +744,7 @@ Tüm SQL Sunucularında, SQL Server girişi için kullanılan kimlik bilgilerini
     GO
     ```
 
-1. Birincil yineleme ve her ikincil yinelemede aşağıdaki İşlem-SQL komut dosyasını çalıştırın:
+1. Aşağıdaki Transact-SQL betiğini birincil çoğaltmada ve tüm ikincil çoğaltmalarda çalıştırın:
 
     ```sql
     GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
@@ -754,15 +754,15 @@ Tüm SQL Sunucularında, SQL Server girişi için kullanılan kimlik bilgilerini
     GO
     ```
 
-1. İkincil yinelemeler birleştikten sonra, **Her Zaman Yüksek Kullanılabilirlik** düğümlerini genişleterek bunları SSMS Object Explorer'da görebilirsiniz:
+1. İkincil çoğaltmalar birleştirildikten sonra, **her zaman yüksek kullanılabilirlik** düğümünü genişleterek onları ssms Nesne Gezgini görebilirsiniz:
 
-    ![availability-grup-joined.png](media/sql-server-linux-rhel-ha-stonith-tutorial/availability-group-joined.png)
+    ![Availability-Group-joined. png](media/sql-server-linux-rhel-ha-stonith-tutorial/availability-group-joined.png)
 
-### <a name="add-a-database-to-the-availability-group"></a>Kullanılabilirlik grubuna veritabanı ekleme
+### <a name="add-a-database-to-the-availability-group"></a>Kullanılabilirlik grubuna bir veritabanı ekleme
 
-Veritabanı ekleme [yle ilgili yapılandırma kullanılabilirlik grubu makalesini](/sql/linux/sql-server-linux-availability-group-configure-ha#add-a-database-to-the-availability-group)izleyeceğiz.
+[Veritabanı ekleme hakkında kullanılabilirlik grubunu yapılandır makalesini](/sql/linux/sql-server-linux-availability-group-configure-ha#add-a-database-to-the-availability-group)takip edeceğiz.
 
-Bu adımda aşağıdaki Transact-SQL komutları kullanılır. Birincil yinelemede bu komutları çalıştırın:
+Bu adımda aşağıdaki Transact-SQL komutları kullanılır. Bu komutları birincil çoğaltmada Çalıştır:
 
 ```sql
 CREATE DATABASE [db1]; -- creates a database named db1
@@ -781,7 +781,7 @@ GO
 
 ### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Veritabanının ikincil sunucularda oluşturulduğunu doğrulama
 
-Her ikincil SQL Server yinelemesinde, db1 veritabanının oluşturulup oluşturulmadı ve SYNCHRONIZED durumunda olup olmadığını görmek için aşağıdaki sorguyu çalıştırın:
+Her bir ikincil SQL Server çoğaltmasında, DB1 veritabanının oluşturulup oluşturulmamasından ve EŞITLENMIŞ durumda olup olmadığını görmek için aşağıdaki sorguyu çalıştırın:
 
 ```
 SELECT * FROM sys.databases WHERE name = 'db1';
@@ -789,21 +789,21 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-`synchronization_state_desc` Liste IÇIN SENKRONIZe `db1`ise, bu yinelemeler eşitlenmiş olduğu anlamına gelir. İkinciler birincil `db1` çoğaltma da gösteriliyor.
+`synchronization_state_desc` LISTE için `db1`eşitlendiğinde, çoğaltmaların eşitlendiği anlamına gelir. İkincil öğeler birincil çoğaltmada `db1` gösteriliyor.
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Pacemaker kümesinde kullanılabilirlik grubu kaynakları oluşturma
 
-[Pacemaker kümesindeki kullanılabilirlik grubu kaynaklarını oluşturmak](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)için kılavuzu takip edeceğiz.
+[Pacemaker kümesinde kullanılabilirlik grubu kaynakları oluşturma](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)kılavuzunu takip edeceğiz.
 
-### <a name="create-the-ag-cluster-resource"></a>AG küme kaynağını oluşturma
+### <a name="create-the-ag-cluster-resource"></a>AG kümesi kaynağı oluşturma
 
-1. Kullanılabilirlik grubunda `ag_cluster` `ag1`kaynak oluşturmak için aşağıdaki komutu kullanın.
+1. Kaynak `ag_cluster` kullanılabilirlik grubunda `ag1`oluşturmak için aşağıdaki komutu kullanın.
 
     ```bash
     sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
     ```
 
-1. Aşağıdaki komutu kullanarak devam etmeden önce kaynağınızı kontrol edin ve çevrimiçi olduğundan emin olun:
+1. Aşağıdaki komutu kullanmaya devam etmeden önce kaynağı denetleyip çevrimiçi olduklarından emin olun:
 
     ```bash
     sudo pcs resource
@@ -818,9 +818,9 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     Slaves: [ <VM2> <VM3> ]
     ```
 
-### <a name="create-a-virtual-ip-resource"></a>Sanal BIR IP kaynağı oluşturma
+### <a name="create-a-virtual-ip-resource"></a>Sanal IP kaynağı oluşturma
 
-1. Sanal bir IP kaynağı oluşturmak için ağınızdaki kullanılabilir statik IP adresini kullanın. Komut aracını `nmap`kullanarak bir tane bulabilirsiniz.
+1. Sanal IP kaynağı oluşturmak için ağınızdan kullanılabilir bir statik IP adresi kullanın. Komut aracını `nmap`kullanarak bir tane bulabilirsiniz.
 
     ```bash
     nmap -sP <IPRange>
@@ -828,35 +828,35 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
     ```
 
-1. **Stonith özellikli** özelliği false olarak ayarlayın
+1. **Stonith-Enabled** özelliğini false olarak ayarlayın
 
     ```bash
     sudo pcs property set stonith-enabled=false
     ```
 
-1. Aşağıdaki komutu kullanarak sanal IP kaynağı oluşturun:
+1. Aşağıdaki komutu kullanarak sanal IP kaynağını oluşturun:
 
-    - Aşağıdaki `<availableIP>` değeri kullanılmayan bir IP adresiyle değiştirin.
+    - Aşağıdaki `<availableIP>` değeri kullanılmayan bir IP adresi ile değiştirin.
 
     ```bash
     sudo pcs resource create virtualip ocf:heartbeat:IPaddr2 ip=<availableIP>
     ```
 
-### <a name="add-constraints"></a>Kısıtlamalar Ekle
+### <a name="add-constraints"></a>Kısıtlama Ekle
 
-1. IP adresi ve AG kaynağının aynı düğümüzerinde çalıştığından emin olmak için bir birlikte konum kısıtlaması yapılandırılması gerekir. Şu komutu çalıştırın:
+1. IP adresinin ve AG kaynağının aynı düğümde çalıştığından emin olmak için, bir birlikte bulundurma kısıtlamasının yapılandırılması gerekir. Şu komutu çalıştırın:
 
     ```bash
     sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
     ```
 
-1. AG kaynağının IP adresinden önce çalışır durumda olduğundan emin olmak için bir sipariş kısıtlaması oluşturun. Birlikte konum kısıtlaması bir sıralama kısıtlaması anlamına gelirken, bu onu zorlar.
+1. AĞ kaynağının IP adresinden önce çalışır ve çalışır olmasını sağlamak için bir sıralama kısıtlaması oluşturun. Birlikte bulundurma kısıtlaması bir sıralama kısıtlaması gösterdiği sürece bu uygulamayı zorlar.
 
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start virtualip
     ```
 
-1. Kısıtlamaları doğrulamak için aşağıdaki komutu çalıştırın:
+1. Kısıtlamaları doğrulamak için şu komutu çalıştırın:
 
     ```bash
     sudo pcs constraint list --full
@@ -873,9 +873,9 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     Ticket Constraints:
     ```
 
-### <a name="re-enable-stonith"></a>Yeniden stonith etkinleştirmek
+### <a name="re-enable-stonith"></a>Stonıth 'ı yeniden etkinleştirin
 
-Test için hazırız. Düğüm 1'de aşağıdaki komutu çalıştırarak kümedeki taşitleri yeniden etkinleştirin:
+Test için hazırız. Düğüm 1 ' de aşağıdaki komutu çalıştırarak kümede stonıth 'yi yeniden etkinleştirin:
 
 ```bash
 sudo pcs property set stonith-enabled=true
@@ -883,7 +883,7 @@ sudo pcs property set stonith-enabled=true
 
 ### <a name="check-cluster-status"></a>Küme durumunu denetleme
 
-Küme kaynaklarınızın durumunu aşağıdaki komutu kullanarak denetleyebilirsiniz:
+Aşağıdaki komutu kullanarak küme kaynaklarınızın durumunu kontrol edebilirsiniz:
 
 ```output
 [<username>@VM1 ~]$ sudo pcs status
@@ -914,15 +914,15 @@ Daemon Status:
 
 ## <a name="test-failover"></a>Yük devretme testi
 
-Yapılandırmanın şimdiye kadar başarılı olduğundan emin olmak için, bir başarısızlık test edeceğiz. Daha fazla bilgi için, [Linux'ta Her Zaman Kullanılabilirlik Grubu'nun başarısız lığına](/sql/linux/sql-server-linux-availability-group-failover-ha)bakın.
+Yapılandırmanın şimdiye kadar başarılı olduğundan emin olmak için bir yük devretmeyi test edeceğiz. Daha fazla bilgi için bkz. [Linux 'Ta Always on kullanılabilirlik grubu yük devretmesi](/sql/linux/sql-server-linux-availability-group-failover-ha).
 
-1. Birincil yinelemeüzerinde el ile başarısız olmak `<VM2>`için aşağıdaki komutu çalıştırın. Sunucu `<VM2>` adınızın değeriyle değiştirin.
+1. Birincil çoğaltmanın el ile yük devretmesi için aşağıdaki komutu çalıştırın `<VM2>`. Sunucu `<VM2>` adınızın değeriyle değiştirin.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Kısıtlamalarınızı yeniden denetlerseniz, el ile başarısız olması nedeniyle başka bir kısıtlamanın eklandığını görürsünüz:
+1. Kısıtlamaları yeniden denetederseniz, el ile yük devretme nedeniyle başka bir kısıtlamanın eklendiğini görürsünüz:
 
     ```output
     [<username>@VM1 ~]$ sudo pcs constraint list --full
@@ -936,13 +936,13 @@ Yapılandırmanın şimdiye kadar başarılı olduğundan emin olmak için, bir 
     Ticket Constraints:
     ```
 
-1. Aşağıdaki komutu `cli-prefer-ag_cluster-master` kullanarak KIMLIĞI ile kısıtlamayı kaldırın:
+1. Aşağıdaki komutu kullanarak kısıtlamayı KIMLIĞIYLE `cli-prefer-ag_cluster-master` kaldırın:
 
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
     ```
 
-1. Küme kaynaklarınızı komutu `sudo pcs resource`kullanarak denetleyin ve birincil örneğin `<VM2>`şimdi olduğunu görmeniz gerekir.
+1. Komutunu `sudo pcs resource`kullanarak küme kaynaklarınızı kontrol edin ve birincil Örneğin şu anda `<VM2>`olduğunu görmeniz gerekir.
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource
@@ -958,16 +958,16 @@ Yapılandırmanın şimdiye kadar başarılı olduğundan emin olmak için, bir 
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-## <a name="test-fencing"></a>Test Eskrim
+## <a name="test-fencing"></a>Test sınırlama
 
-Aşağıdaki komutu çalıştırarak STONITH'i test edebilirsiniz. `<VM1>` için `<VM3>`aşağıdaki komutu çalıştırmayı deneyin.
+Aşağıdaki komutu çalıştırarak STONITH 'ı test edebilirsiniz. `<VM1>` İçin `<VM3>`aşağıdaki komutu çalıştırmayı deneyin.
 
 ```bash
 sudo pcs stonith fence <VM3> --debug
 ```
 
 > [!NOTE]
-> Varsayılan olarak, çit eylemi düğümü kapatır ve sonra çıkar. Düğümü yalnızca çevrimdışı getirmek istiyorsanız, komuttaki seçeneği `--off` kullanın.
+> Varsayılan olarak, çit eylemi düğümü kapalı ve sonra açık duruma getirir. Düğümü yalnızca çevrimdışı duruma getirmek istiyorsanız, komutundaki seçeneğini `--off` kullanın.
 
 Aşağıdaki çıktıyı almalısınız:
 
@@ -984,7 +984,7 @@ Bir çit cihazını test etme hakkında daha fazla bilgi için aşağıdaki [Red
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL Sunucularınız için kullanılabilirlik grubu dinleyicisi kullanmak için bir yük dengeleyicisi oluşturmanız ve yapılandırmanız gerekir.
+SQL sunucularınız için bir kullanılabilirlik grubu dinleyicisinden yararlanmak üzere bir yük dengeleyici oluşturmanız ve yapılandırmanız gerekir.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure'daki RHEL sanal makinelerde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma](sql-server-linux-rhel-ha-listener-tutorial.md)
+> [Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma](sql-server-linux-rhel-ha-listener-tutorial.md)

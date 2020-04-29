@@ -1,6 +1,6 @@
 ---
-title: 'Yönetilen örnek: Uzun vadeli yedekleme tutma (PowerShell)'
-description: PowerShell'i kullanarak yönetilen bir Azure SQL Veritabanı örneği için otomatik yedeklemeleri ayrı Azure Blob depolama kaplarında nasıl depolayıp geri yükleyin öğrenin.
+title: 'Yönetilen örnek: uzun süreli yedek saklama (PowerShell)'
+description: PowerShell kullanarak Azure SQL veritabanı yönetilen örneği için ayrı Azure Blob depolama kapsayıcılarında otomatik yedeklemeleri depolamayı ve geri yüklemeyi öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -13,47 +13,47 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/19/2020
 ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677111"
 ---
-# <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Veritabanı yönetilen örnek uzun vadeli yedekleme tutma (PowerShell) yönetme
+# <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL veritabanı yönetilen örneğini yönetme uzun süreli yedek saklama (PowerShell)
 
-Azure SQL Veritabanı yönetilen örneğinde, sınırlı bir genel önizleme özelliği olarak [uzun vadeli bir yedekleme bekletme](sql-database-long-term-retention.md#managed-instance-support) ilkesini (LTR) yapılandırabilirsiniz. Bu, veritabanı yedeklemelerini ayrı Azure Blob depolama kaplarında 10 yıla kadar otomatik olarak tutmanızı sağlar. Daha sonra PowerShell ile bu yedeklemeleri kullanarak bir veritabanı kurtarabilirsiniz.
+Azure SQL veritabanı yönetilen örneği 'nde [uzun süreli bir yedekleme bekletme](sql-database-long-term-retention.md#managed-instance-support) IlkesI (LTR) sınırlı bir genel önizleme özelliği olarak yapılandırabilirsiniz. Bu sayede, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak koruyabilirsiniz. Ardından, bu yedeklemeleri PowerShell ile kullanarak bir veritabanını kurtarabilirsiniz.
 
    > [!IMPORTANT]
-   > Yönetilen örnekler için LTR şu anda sınırlı önizlemededir ve ea ve CSP abonelikleri için duruma göre kullanılabilir. Kayıt talebinde bulunmak için lütfen destek konusu **Yedekleme, Geri Yükleme ve İş Sürekliliği/Uzun vadeli yedekleme tutma**altında bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/) oluşturun. 
+   > Yönetilen örnekler için LTR Şu anda sınırlı önizlemededir ve büyük bir süre içinde EA ve CSP aboneliklerinde kullanılabilir. Kayıt istemek için lütfen **yedekleme, geri yükleme ve Iş sürekliliği/uzun vadeli yedekleme saklama**konuları altında bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/) oluşturun. 
 
 
-Aşağıdaki bölümler, uzun süreli yedekleme bekletme yapılandırmak, Yedeklemeleri Azure SQL depolama alanında görüntülemek ve Azure SQL depolama alanında bir yedeklemeden geri yüklemek için PowerShell'i nasıl kullanacağınızı gösterir.
+Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azure SQL depolamada yedeklemeleri görüntüleme ve Azure SQL depolama 'daki bir yedekten geri yükleme işlemleri gösterilmektedir.
 
-## <a name="rbac-roles-to-manage-long-term-retention"></a>Uzun süreli tutma yönetmek için RBAC rolleri
+## <a name="rbac-roles-to-manage-long-term-retention"></a>Uzun süreli saklama yönetimi için RBAC rolleri
 
-**Get-AzSqlInstanceDatabaseLongTermRetentionBackup** ve **Restore-AzSqlInstanceDatabase**için aşağıdaki rollerden birine sahip olmanız gerekir:
+**Get-AzSqlInstanceDatabaseLongTermRetentionBackup** ve **restore-Azsqlınstancedatabase**için aşağıdaki rollerden birine sahip olmanız gerekir:
 
-- Abonelik Sahibi rolü veya
-- Yönetilen Örnek Katılımcı rolü veya
-- Aşağıdaki izinleri içeren özel rol:
+- Abonelik sahibi rolü veya
+- Yönetilen örnek katılımcısı rolü veya
+- Aşağıdaki izinlerle özel rol:
   - `Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read`
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read`
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read`
 
 **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**için aşağıdaki rollerden birine sahip olmanız gerekir:
 
-- Abonelik Sahibi rolü veya
-- Aşağıdaki izinle özel rol:
+- Abonelik sahibi rolü veya
+- Aşağıdaki izne sahip özel rol:
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
 > [!NOTE]
-> Yönetilen Örnek Katılımcı sıfatının LTR yedeklemelerini silme izni yoktur.
+> Yönetilen örnek katılımcısı rolü, LTR yedeklemeleri silme iznine sahip değil.
 
-RBAC izinleri *abonelik* veya kaynak *grubu* kapsamında verilebilir. Ancak, bırakılan bir örneğe ait LTR yedeklemelerine erişmek için, bu örneğin *abonelik* kapsamında izin verilmesi gerekir.
+*Abonelik* ya da *kaynak grubu* kapsamında RBAC izinleri verilebilir. Ancak, bırakılan bir örneğe ait olan LTR yedeklemelerine erişmek için, bu örneğin *abonelik* kapsamında izin verilmelidir.
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
-## <a name="create-an-ltr-policy"></a>LTR ilkesi oluşturma
+## <a name="create-an-ltr-policy"></a>Bir LTR ilkesi oluşturma
 
 ```powershell
 # get the Managed Instance
@@ -76,9 +76,9 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceNa
     -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
 ```
 
-## <a name="view-ltr-policies"></a>LTR ilkelerini görüntüleyin
+## <a name="view-ltr-policies"></a>LTR ilkelerini görüntüle
 
-Bu örnekte, ltr ilkelerinin bir örnek içinde nasıl listelenebildiğini gösterir
+Bu örnek, bir örnek içinde LTR ilkelerinin nasıl ekleneceğini gösterir
 
 ```powershell
 # gets the current version of LTR policy for the database
@@ -86,18 +86,18 @@ $ltrPolicies = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceN
     -DatabaseName $dbName -ResourceGroupName $resourceGroup
 ```
 
-## <a name="clear-an-ltr-policy"></a>Bir LTR ilkesini temizleme
+## <a name="clear-an-ltr-policy"></a>Bir LTR ilkesini Temizleme
 
-Bu örnek, bir LTR ilkesini veritabanından nasıl temizler
+Bu örnekte, bir veritabanından bir LTR ilkesinin nasıl temizlediğiniz gösterilmektedir
 
 ```powershell
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceName `
    -DatabaseName $dbName -ResourceGroupName $resourceGroup -RemovePolicy
 ```
 
-## <a name="view-ltr-backups"></a>LTR yedeklemelerini görüntüleyin
+## <a name="view-ltr-backups"></a>LTR yedeklemeleri görüntüle
 
-Bu örnekte LTR yedeklemelerinin nasıl listelenebildiğini gösterir.
+Bu örnek, bir örnek içinde LTR yedeklemelerin nasıl ekleneceğini gösterir.
 
 ```powershell
 # get the list of all LTR backups in a specific Azure region
@@ -117,9 +117,9 @@ $ltrBackups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $instan
 $ltrBackups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $instance.Location -InstanceName $instanceName -OnlyLatestPerDatabase
 ```
 
-## <a name="delete-ltr-backups"></a>LTR yedeklemelerini silme
+## <a name="delete-ltr-backups"></a>LTR yedeklemeleri Sil
 
-Bu örnek, bir LTR yedeklemesinin yedekleme listesinden nasıl silinir olduğunu gösterir.
+Bu örnek, yedeklemeler listesinden bir LTR yedeklemenin nasıl silineceğini gösterir.
 
 ```powershell
 # remove the earliest backup
@@ -128,11 +128,11 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resou
 ```
 
 > [!IMPORTANT]
-> LTR yedeklemesi siler. Örnek silindikten sonra bir LTR yedeklemesini silmek için Abonelik kapsamı iznine sahip olmalısınız. 'Uzun süreli bekletme yedeklemesi siler' işlemi için filtre uygulayarak Azure Monitor'da her silme yle ilgili bildirimler ayarlayabilirsiniz. Etkinlik günlüğü, isteğin kim ve ne zaman yapıldığına ilişkin bilgileri içerir. Bkz. Ayrıntılı yönergeler için [etkinlik günlüğü uyarıları oluşturun.](../azure-monitor/platform/alerts-activity-log.md)
+> LTR yedeklemenin silinmesi geri alınamaz. Örnek silindikten sonra bir LTR yedeklemesini silmek için abonelik kapsamı izninizin olması gerekir. Azure Izleyici 'de her silme hakkında bildirimleri, ' uzun süreli bekletme yedeklemesini siler ' işlemi için filtreleyerek ayarlayabilirsiniz. Etkinlik günlüğü, ne zaman ve ne zaman istek yaptığı hakkında bilgiler içerir. Ayrıntılı yönergeler için bkz. [etkinlik günlüğü uyarıları oluşturma](../azure-monitor/platform/alerts-activity-log.md) .
 
-## <a name="restore-from-ltr-backups"></a>LTR yedeklemelerinden geri yükleme
+## <a name="restore-from-ltr-backups"></a>LTR yedeklemelerden geri yükleme
 
-Bu örnek, ltr yedeklemesinden nasıl geri yüklenirlerini gösterir. Not, bu arabirim değişmedi ancak kaynak kimliği parametresi artık LTR yedekleme kaynak kimliği gerektirir.
+Bu örnek, bir LTR yedeğinden nasıl geri yükleneceğini gösterir. Bu arabirim değişmediği halde kaynak kimliği parametresi artık LTR yedekleme kaynağı kimliğini gerektiriyor.
 
 ```powershell
 # restore a specific LTR backup as an P1 database on the instance $instanceName of the resource group $resourceGroup
@@ -141,10 +141,10 @@ Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $ltrBacku
 ```
 
 > [!IMPORTANT]
-> Örnek silindikten sonra bir LTR yedeklemesinden geri yüklemek için, örneğin aboneliğine kapsamlı izinlere sahip olması ve aboneliğin etkin olması gerekir. İsteğe bağlı -ResourceGroupName parametresini de atlamalısınız.
+> Örnek silindikten sonra bir LTR yedeklemesinden geri yüklemek için, örneğin aboneliğine sahip olan ve bu aboneliğin etkin olması gereken izinlere sahip olmanız gerekir. İsteğe bağlı-ResourceGroupName parametresini de atmalısınız.
 
 > [!NOTE]
-> Buradan var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz. [Bkz. zaman geri yükleme stoyonu.](sql-database-recovery-using-backups.md#point-in-time-restore)
+> Buradan var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz. Bkz. [zaman noktası geri yükleme](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

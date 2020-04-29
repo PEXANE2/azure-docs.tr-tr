@@ -1,6 +1,6 @@
 ---
-title: Microsoft kimlik platformu UWP başlıyor | Azure
-description: Evrensel Windows Platformu uygulamalarının (UWP) Microsoft kimlik platformu bitiş noktası tarafından erişim belirteçleri gerektiren bir API'yi nasıl çağırabileceği.
+title: Microsoft Identity platform UWP Başlarken | Mavisi
+description: Evrensel Windows Platformu uygulamalar (UWP), Microsoft Identity platform uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabilirler.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,73 +12,73 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 0dc70aa67a1414c08ec70e2e034f4ab12b194c0a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535953"
 ---
-# <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Evrensel Windows Platformu uygulamasından Microsoft Graph API'yi (XAML) arayın
+# <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Evrensel Windows Platformu uygulamasından Microsoft Graph API çağrısı (XAML)
 
 > [!div renderon="docs"]
 
-Bu kılavuz, yerel bir Evrensel Windows Platformu (UWP) uygulamasının erişim jetonunu nasıl isteyebileceğini açıklar. Uygulama daha sonra Microsoft Graph API çağırır. Kılavuz, Microsoft kimlik platformu bitiş noktasından erişim belirteçleri gerektiren diğer API'ler için de geçerlidir.
+Bu kılavuzda, yerel bir Evrensel Windows Platformu (UWP) uygulamasının bir erişim belirteci isteme yöntemi açıklanmaktadır. Uygulama daha sonra Microsoft Graph API 'sini çağırır. Kılavuz, Microsoft Identity platform uç noktasından erişim belirteçleri gerektiren diğer API 'Ler için de geçerlidir.
 
-Bu kılavuzun sonunda, uygulamanız kişisel hesapları kullanarak korumalı bir API çağırır. Örnekler outlook.com, live.com ve diğerleridir. Uygulamanız ayrıca Azure Etkin Dizini (Azure AD) olan herhangi bir şirket veya kuruluşun iş ve okul hesaplarını da çağırır.
-
->[!NOTE]
-> Bu kılavuz, Evrensel Windows Platformu geliştirme yüklü Visual Studio gerektirir. Bkz. Visual Studio'yı evrensel Windows Platformu uygulamaları geliştirmek için indirmek ve yapılandırmak için yönergeler için [hazırlanın.](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)
+Bu kılavuzun sonunda, uygulamanız kişisel hesapları kullanarak korumalı bir API çağırır. Örnekler şunlardır outlook.com, live.com ve diğerleri. Uygulamanız Ayrıca, Azure Active Directory (Azure AD) olan herhangi bir şirketten veya kuruluştan iş ve okul hesaplarını da çağırır.
 
 >[!NOTE]
-> Microsoft kimlik platformunda yeniyseniz, [Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'yi Ara](quickstart-v2-uwp.md)ile başlamanızı öneririz.
+> Bu kılavuzda Evrensel Windows Platformu geliştirme yüklü Visual Studio gerekir. Evrensel Windows Platformu uygulamalar geliştirmek için Visual Studio 'Yu indirme ve yapılandırma [yönergeleri bölümüne bakın](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) .
+
+>[!NOTE]
+> Microsoft Identity platform 'u yeni kullanmaya başladıysanız, [bir Evrensel Windows platformu (UWP) uygulama hızlı başlangıcı aracılığıyla MICROSOFT Graph API 'Sini çağırmayı](quickstart-v2-uwp.md)öneririz.
 
 ## <a name="how-this-guide-works"></a>Bu kılavuz nasıl çalışır?
 
 ![Bu öğretici tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](./media/tutorial-v2-windows-uwp/uwp-intro.svg)
 
-Bu kılavuz, Microsoft Graph API sorgulayan örnek bir UWP uygulaması oluşturur. Bu senaryo için, Yetkilendirme üstbilgisi kullanılarak HTTP isteklerine bir belirteç eklenir. Microsoft Kimlik Doğrulama Kitaplığı (MSAL), belirteç satın almalarını ve yenilemeleri işler.
+Bu kılavuz Microsoft Graph API 'YI sorgulayan bir örnek UWP uygulaması oluşturur. Bu senaryo için, yetkilendirme üst bilgisi kullanılarak HTTP isteklerine bir belirteç eklenir. Microsoft kimlik doğrulama kitaplığı (MSAL) belirteç alma ve yenileme işlemleri gerçekleştirir.
 
 ## <a name="nuget-packages"></a>NuGet paketleri
 
-Bu kılavuzda aşağıdaki NuGet paketi kullanVet
+Bu kılavuz aşağıdaki NuGet paketini kullanır:
 
 |Kitaplık|Açıklama|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
+|[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
 ## <a name="set-up-your-project"></a>Projenizi ayarlama
 
-Bu bölümde, Windows Desktop .NET uygulamasını (XAML) Microsoft ile Oturum Açma ile tümleştirmek için adım adım yönergeler sağlanıyor. Ardından uygulama, Microsoft Graph API gibi belirteç gerektiren web API'lerini sorgulayabilir.
+Bu bölümde, Microsoft ile oturum açma ile bir Windows Masaüstü .NET uygulaması 'nı (XAML) bütünleştirmek için adım adım yönergeler sağlanmaktadır. Ardından uygulama, Microsoft Graph API gibi bir belirteç gerektiren Web API 'Lerini sorgulayabilir.
 
-Bu kılavuz, Grafik API'sini sorgulayan bir düğme ve oturum dan çıkma düğmesini görüntüleyen bir uygulama oluşturur. Ayrıca, aramaların sonuçlarını içeren metin kutularını da görüntüler.
+Bu kılavuz, Graph API sorgulayan bir düğme ve oturumu kapatmak için bir düğme görüntüleyen bir uygulama oluşturur. Ayrıca, çağrıların sonuçlarını içeren metin kutularını da görüntüler.
 
 > [!NOTE]
-> Bu örneğin Visual Studio projesini oluşturmak yerine indirmek istiyor musunuz? [Bir proje indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) ve kod örneğini çalıştırmadan önce yapılandırmak için [uygulama kayıt](#register-your-application "başvuru kayıt adımı") adımına atlayın.
+> Bu örnek Visual Studio projesini oluşturmak yerine indirmek istiyor musunuz? Kod örneğini çalıştırmadan önce yapılandırmak için [bir proje indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) ve [uygulama kaydı](#register-your-application "uygulama kaydı adımı") adımına atlayın.
 
 ### <a name="create-your-application"></a>Uygulamanızı oluşturma
 
-1. Visual Studio'u açın ve **yeni bir proje oluştur'u**seçin.
-1. **Yeni bir proje oluştur'da**C# için Boş Uygulama **(Evrensel Windows)** seçin ve **İleri'yi**seçin.
-1. **Yeni projenizi yapılandırın,** uygulamayı adlandırın ve **Oluştur'u**seçin.
-1. İstenirse, **Yeni Evrensel Windows Platform Projesi'nde** **Hedef** ve **Minimum** sürümler için herhangi bir sürümü seçin ve **Tamam'ı**seçin.
+1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
+1. **Yeni proje oluştur**' da, C# için **boş uygulama (Evrensel Windows)** öğesini seçin ve **İleri**' yi seçin.
+1. **Yeni projenizi yapılandırın**bölümünde uygulamayı adlandırın ve **Oluştur**' u seçin.
+1. İstenirse, **yeni Evrensel Windows platformu projesinde**, **hedef** ve **En düşük** sürümler Için herhangi bir sürüm seçin ve **Tamam**' ı seçin.
 
-   ![Minimum ve Hedef sürümleri](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
+   ![En düşük ve hedef sürümler](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>Projenize Microsoft Kimlik Doğrulama Kitaplığı ekleme
+### <a name="add-microsoft-authentication-library-to-your-project"></a>Projenize Microsoft kimlik doğrulama Kitaplığı ekleyin
 
-1. Visual Studio'da **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu'nu**seçin.
-1. **Paket Yöneticisi Konsolu** penceresinde aşağıdaki komutu kopyalayıp yapıştırın:
+1. Visual Studio 'da **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+1. Aşağıdaki komutu kopyalayıp **Paket Yöneticisi konsol** penceresine yapıştırın:
 
     ```powershell
     Install-Package Microsoft.Identity.Client
     ```
 
    > [!NOTE]
-   > Bu komut [Microsoft Kimlik Doğrulama Kitaplığı](https://aka.ms/msal-net)yükler. MSAL, Microsoft kimlik platformu tarafından korunan API'lere erişen kullanıcı belirteçlerini edinir, önbelleğe eder ve yeniler.
+   > Bu komut, [Microsoft kimlik doğrulama kitaplığı](https://aka.ms/msal-net)'nı kurar. MSAL Microsoft Identity platform tarafından korunan API 'Lere erişen Kullanıcı belirteçlerini alır, önbelleğe alır ve yeniler.
 
-### <a name="create-your-applications-ui"></a>Uygulamanızın Kullanıcı Tarafından Kullanıcı Tarafından Kullanıcı Tarafından Karşıla'nın oluşturulması
+### <a name="create-your-applications-ui"></a>Uygulamanızın Kullanıcı arabirimini oluşturma
 
-Visual Studio, proje şablonunuzun bir parçası olarak *MainPage.xaml* oluşturur. Bu dosyayı açın ve ardından uygulamanızın **Kılavuz** düğümunu aşağıdaki kodla değiştirin:
+Visual Studio, proje şablonunuzun bir parçası olarak *MainPage. xaml* oluşturur. Bu dosyayı açın ve ardından uygulamanızın **kılavuz** düğümünü aşağıdaki kodla değiştirin:
 
 ```xml
 <Grid>
@@ -95,11 +95,11 @@ Visual Studio, proje şablonunuzun bir parçası olarak *MainPage.xaml* oluştur
 </Grid>
 ```
 
-### <a name="use-msal-to-get-a-token-for-microsoft-graph-api"></a>Microsoft Graph API için belirteç almak için MSAL'ı kullanın
+### <a name="use-msal-to-get-a-token-for-microsoft-graph-api"></a>Microsoft Graph API belirteci almak için MSAL kullanma
 
-Bu bölümde, Microsoft Graph API için bir belirteç almak için MSAL nasıl kullanılacağı nı gösterir. *MainPage.xaml.cs* dosyasında değişiklik yapın.
+Bu bölümde, Microsoft Graph API 'sinin bir belirtecini almak için MSAL nasıl kullanılacağı gösterilmektedir. *MainPage.xaml.cs* dosyasında değişiklik yapın.
 
-1. *MainPage.xaml.cs*olarak, aşağıdaki başvuruları ekleyin:
+1. *MainPage.xaml.cs*' de, aşağıdaki başvuruları ekleyin:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -107,7 +107,7 @@ Bu bölümde, Microsoft Graph API için bir belirteç almak için MSAL nasıl ku
     using System.Threading.Tasks;
     ```
 
-1. Sınıfınızı `MainPage` aşağıdaki kodla değiştirin:
+1. `MainPage` Sınıfınızı aşağıdaki kodla değiştirin:
 
     ```csharp
     public sealed partial class MainPage : Page
@@ -204,25 +204,25 @@ Bu bölümde, Microsoft Graph API için bir belirteç almak için MSAL nasıl ku
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma<a name="more-information"></a>
 
-Yöntem, `AcquireTokenInteractive` kullanıcıların oturum açmasını gerektiren bir pencereyle sonuçlanır. Uygulamalar genellikle kullanıcıların korumalı bir kaynağa erişmek için etkileşimli olarak ilk kez oturum açmalarını gerektirir. Ayrıca, bir belirteci elde etmek için sessiz bir işlem başarısız olduğunda oturum açmaları gerekebilir. Buna bir örnek, bir kullanıcının parolanın süresinin dolmasıdır.
+Yöntemi `AcquireTokenInteractive` , kullanıcılardan oturum açmasını isteyen bir pencere ile sonuçlanır. Uygulamalar genellikle kullanıcıların korumalı bir kaynağa ilk kez erişmesi için kullanıcıların etkileşimli olarak oturum açmasını gerektirir. Ayrıca, bir belirteci almak için sessiz bir işlem başarısız olduğunda oturum açması gerekebilir. Bir Kullanıcı parolasının süresi dolduğunda örnek bir örnektir.
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-Yöntem, `AcquireTokenSilent` herhangi bir kullanıcı etkileşimi olmadan belirteç satın almave yenilemeleri işler. İlk `AcquireTokenInteractive` kez çalıştırıladıktan ve kullanıcıdan kimlik `AcquireTokenSilent` bilgilerini istedikten sonra, daha sonraki aramalar için belirteçleri istemek için yöntemi kullanın. Bu yöntem sessizce belirteçleri elde eder. MSAL belirteç önbelleği ve yenileme işler.
+Yöntemi `AcquireTokenSilent` , Kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. İlk `AcquireTokenInteractive` kez çalıştıktan sonra kullanıcıdan kimlik bilgilerini girmesini isterse, daha sonra çağrılar için belirteçleri `AcquireTokenSilent` istemek üzere yöntemini kullanın. Bu yöntem belirteçleri sessizce devralır. MSAL, belirteç önbelleğini ve yenilemeyi işler.
 
-Sonunda, `AcquireTokenSilent` yöntem başarısız olur. Hata nedenleri arasında, başka bir aygıtta parolalarını imzalayan veya değiştiren bir kullanıcı yer almaktadır. MSAL sorunun etkileşimli bir eylem gerektirdiğini algıladığında, bir `MsalUiRequiredException` özel durum oluşturur. Uygulamanız bu özel durumu iki şekilde işleyebilir:
+Sonuç olarak, `AcquireTokenSilent` yöntem başarısız olur. Hatanın nedeni, başka bir cihazda parolasını imzalayan veya değiştiren bir Kullanıcı içerir. MSAL, sorunun etkileşimli bir eylem gerektirdiğini algıladığında, bir `MsalUiRequiredException` özel durum oluşturur. Uygulamanız bu özel durumu iki şekilde işleyebilir:
 
-* Başvurunuz `AcquireTokenInteractive` hemen arar. Bu çağrı, kullanıcının oturum açmasını istenmesine neden olur. Normalde, kullanıcı için kullanılabilir çevrimdışı içerik bulunmayan çevrimiçi uygulamalar için bu yaklaşımı kullanın. Bu kılavuzlu kurulum tarafından oluşturulan örnek deseni izler. Örneği ilk çalıştırdığınızda iş başında görürsünüz.
+* Uygulamanız hemen çağırır `AcquireTokenInteractive` . Bu çağrı kullanıcıdan oturum açmasını ister. Normalde, Kullanıcı için kullanılabilir çevrimdışı içerik bulunmayan çevrimiçi uygulamalar için bu yaklaşımı kullanın. Bu Kılavuzlu kurulum tarafından oluşturulan örnek, düzeni izler. Örneği ilk kez çalıştırdığınızda eylem olarak görürsünüz.
 
-   Hiçbir kullanıcı uygulamayı kullanmadığından, `accounts.FirstOrDefault()` null değeri içerdiğinden `MsalUiRequiredException` ve bir özel durum atamadığı için.
+   Hiçbir Kullanıcı uygulamayı kullanmadığından, `accounts.FirstOrDefault()` null bir değer içerdiğinden bir `MsalUiRequiredException` özel durum oluşturur.
 
-   Örnekteki kod daha sonra çağırarak `AcquireTokenInteractive`özel durumu işler. Bu çağrı, kullanıcının oturum açmasını istenmesine neden olur.
+   Daha sonra örnekteki kod, çağırarak `AcquireTokenInteractive`özel durumu işler. Bu çağrı kullanıcıdan oturum açmasını ister.
 
-* Uygulamanız, kullanıcılara oturum açmaları gerektiğini gösteren görsel bir gösterge sunar. Daha sonra oturum açmaları için doğru zamanı seçebilirler. Uygulama daha sonra `AcquireTokenSilent` yeniden deneyebilirsiniz. Kullanıcılar kesintiye uğramadan diğer uygulama işlevlerini kullanabilecekse bu yaklaşımı kullanın. Uygulamada çevrimdışı içeriğin kullanılabilir olduğu bir örnektir. Bu durumda, kullanıcılar ne zaman oturum açmaya karar verebilir. Ağ geçici olarak `AcquireTokenSilent` kullanılamadıktan sonra uygulama yeniden denilebilir.
+* Uygulamanız kullanıcıların oturum açması için gereken görsel bir bildirim sunar. Ardından, oturum açmak için doğru zamanı seçebilirsiniz. Uygulama daha sonra yeniden `AcquireTokenSilent` deneyebilir. Kullanıcılar başka uygulama işlevlerini kesintiye uğramadan kullanbiliyor olduğunda bu yaklaşımı kullanın. Uygulamada çevrimdışı içerik kullanılabilir olduğunda örnek bir örnektir. Bu durumda, kullanıcılar oturum açmak istedikleri zaman karar verebilir. Ağ geçici olarak devre `AcquireTokenSilent` dışı olduktan sonra uygulama yeniden deneyebilir.
 
-### <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Yeni elde ettiğiniz belirteci kullanarak Microsoft Graph API'yi arayın
+### <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Yeni Edindiğiniz belirteci kullanarak Microsoft Graph API çağrısı yapın
 
-*MainPage.xaml.cs*aşağıdaki yeni yöntemi ekleyin:
+Aşağıdaki yeni yöntemi *MainPage.xaml.cs*öğesine ekleyin:
 
    ```csharp
    /// <summary>
@@ -252,15 +252,15 @@ Sonunda, `AcquireTokenSilent` yöntem başarısız olur. Hata nedenleri arasınd
     }
    ```
 
- Bu yöntem, `GET` bir `Authorization` üstbilgi kullanarak Grafik API bir istek yapar.
+ Bu yöntem, bir `GET` `Authorization` üst bilgi kullanarak Graph API bir istek yapar.
 
-#### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Korunan API'ye karşı REST çağrısı yapma hakkında daha fazla bilgi
+#### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Korunan bir API 'ye karşı REST çağrısı yapma hakkında daha fazla bilgi
 
-Bu örnek uygulamada, `GetHttpContentWithToken` yöntem bir `GET` belirteç gerektiren korumalı bir kaynağa karşı bir HTTP isteği yapmak. Daha sonra yöntem içeriği arayana döndürür. Bu **yöntem, http yetkilendirme** üstbilgisinde edinilmiş belirteci ekler. Bu örnek için kaynak, kullanıcının profil bilgilerini görüntüleyen Microsoft Graph API **me** bitiş noktasıdır.
+Bu örnek uygulamada `GetHttpContentWithToken` yöntemi, bir belirteç gerektiren korumalı bir `GET` kaynağa karşı http isteği yapar. Sonra yöntem, içeriği çağırana döndürür. Bu yöntem, alınan belirteci **http yetkilendirme** üst bilgisine ekler. Bu örnekte, kaynak, kullanıcının profil bilgilerini görüntüleyen Microsoft Graph API **Me** uç noktasıdır.
 
-### <a name="add-a-method-to-sign-out-the-user"></a>Kullanıcıyı oturum dank etmek için bir yöntem ekleme
+### <a name="add-a-method-to-sign-out-the-user"></a>Kullanıcının oturumunu kapatmak için bir yöntem ekleyin
 
-Kullanıcıyı oturum dışı batmak için *MainPage.xaml.cs*aşağıdaki yöntemi ekleyin:
+Kullanıcının oturumunu kapatmak için, *MainPage.xaml.cs*'e aşağıdaki yöntemi ekleyin:
 
    ```csharp
    /// <summary>
@@ -289,17 +289,17 @@ Kullanıcıyı oturum dışı batmak için *MainPage.xaml.cs*aşağıdaki yönte
    ```
 
 > [!NOTE]
-> MSAL.NET belirteçleri elde etmek veya hesapları işlemek için eşzamanlı yöntemler kullanır. UI iş parçacığındaki UI eylemlerini desteklemeniz gerekir. Bu `Dispatcher.RunAsync` arama ve aramak için önlemler `ConfigureAwait(false)`nedenidir.
+> MSAL.NET, belirteçleri almak veya hesapları işlemek için zaman uyumsuz yöntemler kullanır. UI iş parçacığında Kullanıcı Arabirimi eylemlerini desteklemeniz gerekir. Bu, `Dispatcher.RunAsync` çağrının ve çağrı `ConfigureAwait(false)`önleminden dolayı nedenidir.
 
-#### <a name="more-information-about-signing-out"></a>Oturumdan çıkma hakkında daha fazla bilgi<a name="more-information-on-sign-out"></a>
+#### <a name="more-information-about-signing-out"></a>Oturumu kapatma hakkında daha fazla bilgi<a name="more-information-on-sign-out"></a>
 
-Yöntem, `SignOutButton_Click` kullanıcıyı MSAL kullanıcı önbelleğinden kaldırır. Bu yöntem, MSAL'a geçerli kullanıcıyı unutmasını etkin bir şekilde bildirir. Bir belirteci elde etmek için gelecekteki bir istek yalnızca etkileşimli yse başarılı olur.
+`SignOutButton_Click` Yöntemi, kullanıcıyı msal Kullanıcı önbelleğinden kaldırır. Bu yöntem, MSAL 'in geçerli kullanıcıyı unutmasını etkin bir şekilde söyler. Bir belirteci almak için gelecekteki bir istek, yalnızca etkileşimli olması durumunda başarılı olur.
 
-Bu örnekteki uygulama tek bir kullanıcıyı destekler. MSAL, kullanıcının birden fazla hesapta oturum açabileceği senaryoları destekler. Bir örnek, kullanıcının birden fazla hesabı olan bir e-posta uygulamasıdır.
+Bu örnekteki uygulama, tek bir kullanıcıyı destekler. MSAL, kullanıcının birden fazla hesapta oturum açıp geçirebileceği senaryoları destekler. Örneğin, bir kullanıcının birkaç hesabı bulunan bir e-posta uygulaması.
 
-### <a name="display-basic-token-information"></a>Temel belirteç bilgilerini görüntüleme
+### <a name="display-basic-token-information"></a>Temel belirteç bilgilerini görüntüle
 
-Belirteç le ilgili temel bilgileri görüntülemek için *MainPage.xaml.cs* aşağıdaki yöntemi ekleyin:
+Belirteç hakkındaki temel bilgileri göstermek için *MainPage.xaml.cs* 'e aşağıdaki yöntemi ekleyin:
 
    ```csharp
    /// <summary>
@@ -318,11 +318,11 @@ Belirteç le ilgili temel bilgileri görüntülemek için *MainPage.xaml.cs* aş
 
 #### <a name="more-information"></a>Daha fazla bilgi<a name="more-information-1"></a>
 
-**OpenID Connect** kullanılarak elde edilen kimlik belirteçleri, kullanıcıyla ilgili küçük bir bilgi alt kümesi de içerir. `DisplayBasicTokenInfo`belirtecinde bulunan temel bilgileri görüntüler. Bu bilgiler, kullanıcının görüntü adını ve kimliğini içerir. Ayrıca belirteç ve erişim belirteci kendisini temsil eden dize son kullanma tarihini içerir. Microsoft Graph **API'yi birkaç** kez ara seçeneğini belirlerseniz, aynı belirteci daha sonraki istekler için yeniden kullanıldığını görürsünüz. Ayrıca, MSAL belirteci yenileme zamanının geldiğinde son kullanma tarihinin uzatıldığını da görebilirsiniz.
+**OpenID Connect** KULLANıLARAK alınan kimlik belirteçleri, kullanıcıya yönelik bir dizi bilginin küçük bir alt kümesini de içerir. `DisplayBasicTokenInfo`belirteçte bulunan temel bilgileri görüntüler. Bu bilgiler kullanıcının görünen adını ve KIMLIĞINI içerir. Ayrıca, belirtecin sona erme tarihini ve erişim belirtecinin kendisini temsil eden dizeyi içerir. **MICROSOFT Graph API** düğmesini birkaç kez çağır ' ı seçerseniz, sonraki istekler için aynı belirtecin yeniden kullanılmış olduğunu görürsünüz. Ayrıca MSAL, belirtecin yenileme zamanına karar verdiğinde, süre sonu genişletilmiş tarihini de görebilirsiniz.
 
-### <a name="display-message"></a>İletiyi görüntüleme
+### <a name="display-message"></a>İleti görüntüle
 
-*MainPage.xaml.cs*aşağıdaki yeni yöntemi ekleyin:
+Aşağıdaki yeni yöntemi *MainPage.xaml.cs*öğesine ekleyin:
 
    ```csharp
    /// <summary>
@@ -340,98 +340,98 @@ Belirteç le ilgili temel bilgileri görüntülemek için *MainPage.xaml.cs* aş
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-Şimdi başvurunuzu kaydetmeniz gerekir:
+Şimdi uygulamanızı kaydetmeniz gerekir:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory** > **App kayıtlarını**seçin.
-1. **Yeni kayıt**seçin. *UWP-App-calling-MSGraph*gibi uygulama kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
-1. **Desteklenen hesap türleri**altında, tüm kuruluş **dizininde ve kişisel Microsoft hesaplarında (örneğin Skype, Xbox) Hesapları**seçin ve devam etmek için **Kaydol'u** seçin.
-1. Genel bakış sayfasında, **Uygulama (istemci) kimlik** değerini bulun ve kopyalayın. Visual Studio'ya geri dön, *MainPage.xaml.cs*açın `ClientId` ve değerini bu değerle değiştirin.
+1. **Azure Active Directory** > **uygulama kayıtları**seçin.
+1. **Yeni kayıt**seçeneğini belirleyin. Uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin *UWP-app-çağıran-MSGraph*.
+1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox) hesaplar**' ı seçin ve ardından devam etmek için **Kaydet** ' i seçin.
+1. Genel Bakış sayfasında, **uygulama (istemci) kimlik** değerini bulun ve kopyalayın. Visual Studio 'ya geri dönün, *MainPage.xaml.cs*açın ve değerini `ClientId` bu değerle değiştirin.
 
 Uygulamanız için kimlik doğrulamasını yapılandırın:
 
-1. [Azure portalında](https://portal.azure.com), **Yönet**altında, **Kimlik Doğrulama'yı**seçin.
-1. Yönlendirme **URI'lerinde** | **kamu istemcileri (mobil, masaüstü)** bölümü için **https://login.microsoftonline.com/common/oauth2/nativeclient**Önerilen Yönlendirme URL'leri, kontrol edin.
+1. [Azure Portal](https://portal.azure.com)geri döndüğünüzde, **Yönet**altında **kimlik doğrulaması**' nı seçin.
+1. **Yeniden yönlendirme URI 'lerinde** | **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne **https://login.microsoftonline.com/common/oauth2/nativeclient**bakın.
 1. **Kaydet**’i seçin.
 
 Uygulamanız için API izinlerini yapılandırın:
 
-1. **Yönet**altında, **API izinlerini**seçin.
-1. **İzin ekle'yi** seçin ve ardından **Microsoft API'lerini**seçtiğinizden emin olun.
-1. **Microsoft Graph'ı**seçin.
-1. **Temsilcileştirilmiş izinleri**seçin, *Kullanıcı'yı arayın.Kullanıcı.Read'in* seçildiğini okuyun ve doğrulayın. **User.Read**
-1. Herhangi bir değişiklik yaptıysanız, bunları kaydetmek için **İzin Ekle'yi** seçin.
+1. **Yönet**altında **API izinleri**' ni seçin.
+1. **Izin Ekle** ' yi seçin ve ardından **Microsoft API 'leri**seçtiğinizden emin olun.
+1. **Microsoft Graph**seçin.
+1. **Temsilci izinleri**seçin, Kullanıcı araması yapın *. oku* ve **Kullanıcı. Read** 'in seçili olduğunu doğrulayın.
+1. Herhangi bir değişiklik yaptıysanız, bunları kaydetmek için **Izinleri Ekle** ' yi seçin.
 
-## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>Federe etki alanlarında tümleşik kimlik doğrulamasını etkinleştirme (isteğe bağlı)
+## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>Federasyon etki alanlarında tümleşik kimlik doğrulamasını etkinleştirme (isteğe bağlı)
 
-Federe Azure AD etki alanıyla kullanıldığında Windows Tümleşik Kimlik Doğrulama'yı etkinleştirmek için uygulama bildiriminin ek özellikler sağlaması gerekir. Visual Studio'daki başvurunuza geri dön.
+Windows ile tümleşik kimlik doğrulamasını, Federe bir Azure AD etki alanı ile kullanıldığında etkinleştirmek için, uygulama bildiriminin ek özellikleri etkinleştirmesi gerekir. Visual Studio 'da uygulamanıza geri dönün.
 
-1. *Açık Paket.appxmanifest*.
-1. **Yetenekleri** seçin ve aşağıdaki ayarları etkinleştirin:
+1. *Package. appxmanifest*öğesini açın.
+1. **Özellikleri** seçin ve aşağıdaki ayarları etkinleştirin:
 
-   * **Kurumsal Kimlik Doğrulama**
-   * **Özel Ağlar (İstemci & Sunucusu)**
+   * **Kurumsal kimlik doğrulama**
+   * **Özel ağlar (Istemci & sunucusu)**
    * **Paylaşılan Kullanıcı Sertifikaları**
 
 > [!IMPORTANT]
-> [Tümleşik Windows Kimlik Doğrulama](https://aka.ms/msal-net-iwa) bu örnek için varsayılan olarak yapılandırılmamıştır. İsteyen veya `Enterprise Authentication` `Shared User Certificates` yetenek isteyen uygulamalar, Windows Mağazası tarafından daha yüksek bir doğrulama düzeyi gerektirir. Ayrıca, tüm geliştiriciler daha yüksek doğrulama düzeyini gerçekleştirmek istemez. Bu ayarı yalnızca federe Azure AD etki alanı yla Windows Tümleşik Kimlik Doğrulaması'na ihtiyacınız varsa etkinleştirin.
+> [Tümleşik Windows kimlik doğrulaması](https://aka.ms/msal-net-iwa) Bu örnek için varsayılan olarak yapılandırılmamıştır. İstek `Enterprise Authentication` veya `Shared User Certificates` Özellik ısteyen uygulamalar, Windows Mağazası tarafından daha yüksek bir doğrulama düzeyi gerektirir. Ayrıca, tüm geliştiriciler daha yüksek doğrulama düzeyini gerçekleştirmek istemekdedir. Bu ayarı yalnızca, Federe bir Azure AD etki alanı ile Windows tümleşik kimlik doğrulaması gerekiyorsa etkinleştirin.
 
 ## <a name="test-your-code"></a>Kodunuza test etme
 
-Uygulamanızı test etmek için Visual Studio'da projenizi çalıştırmak için F5'i seçin. Ana pencereniz görüntülenir:
+Uygulamanızı test etmek için F5 ' i seçerek projenizi Visual Studio 'da çalıştırın. Ana pencereniz görüntülenir:
 
 ![Uygulamanın kullanıcı arabirimi](./media/tutorial-v2-windows-uwp/testapp-ui-vs2019.png)
 
-Sınamaya hazır olduğunuzda, **Microsoft Graph API'sini arayın'ı**seçin. Oturum açabilmek için Azure AD kuruluş hesabı veya live.com veya outlook.com gibi bir Microsoft hesabı kullanın. Bir kullanıcı bunu ilk kez çalıştırınca, uygulama kullanıcıdan oturum açmasını isteyen bir pencere görüntüler.
+Sınamaya hazırsanız **MICROSOFT Graph API çağrısı**' nı seçin. Ardından, oturum açmak için bir Azure AD kuruluş hesabı veya live.com veya outlook.com gibi bir Microsoft hesabı kullanın. Kullanıcı bu uygulamayı ilk kez çalıştırdığında, uygulama kullanıcıdan oturum açmasını isteyen bir pencere görüntüler.
 
-### <a name="consent"></a>Izni
+### <a name="consent"></a>İzniniz
 
-Başvurunuzda ilk oturum açğınızda, aşağıdakilere benzer bir onay ekranı yla birlikte sunulur. Erişimi açıkça kabul etmek için **Evet'i** seçin:
+Uygulamanızda ilk kez oturum açtığınızda aşağıdakine benzer bir izin ekranı sunulur. Erişime açık olarak izin vermek için **Evet** ' i seçin:
 
-![Erişim onay ekranı](./media/tutorial-v2-windows-uwp/consentscreen-vs2019.png)
+![Erişim izni ekranı](./media/tutorial-v2-windows-uwp/consentscreen-vs2019.png)
 
 ### <a name="expected-results"></a>Beklenen sonuçlar
 
-**API Çağrı Sonuçları** ekranında Microsoft Graph API çağrısı tarafından döndürülen kullanıcı profili bilgilerini görürsünüz:
+**API çağrı sonuçları** EKRANıNDA Microsoft Graph API çağrısı tarafından döndürülen Kullanıcı profili bilgilerini görürsünüz:
 
-![API Çağrı Sonuçları ekranı](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
+![API çağrı sonuçları ekranı](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
 
-Ayrıca, Belirteç Bilgileri kutusu `AcquireTokenInteractive` aracılığıyla `AcquireTokenSilent` veya **token Info** kutusunda edinilen belirteç le ilgili temel bilgileri de görürsünüz:
+Ayrıca, `AcquireTokenInteractive` **belirteç bilgisi** kutusunda veya `AcquireTokenSilent` aracılığıyla alınan belirteçle ilgili temel bilgileri görürsünüz:
 
 |Özellik  |Biçimlendir  |Açıklama |
 |---------|---------|---------|
-|`Username` |`user@domain.com` |Kullanıcıyı tanımlayan kullanıcı adı.|
-|`Token Expires` |`DateTime` |Belirteç süresinin dolduğu saat. MSAL, belirteci gerektiği gibi yenileyerek son kullanma tarihini uzatar.|
+|`Username` |`user@domain.com` |Kullanıcıyı tanımlayan Kullanıcı adı.|
+|`Token Expires` |`DateTime` |Belirtecin süresinin dolacağı zaman. MSAL, belirteci gerektiği şekilde yenileyerek sona erme tarihini genişletir.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Kapsamlar ve temsilci izinleri hakkında daha fazla bilgi
 
-Microsoft Graph API, kapsamın bir kullanıcının profilini okumasını `user.read` gerektirir. Bu kapsam, Uygulama Kayıt Portalı'na kayıtlı olan her uygulamada varsayılan olarak eklenir. Microsoft Graph için diğer API'ler ve arka uç sunucunuz için özel API'ler ek kapsamlar gerektirebilir. Örneğin, Microsoft Graph API `Calendars.Read` kullanıcının takvimlerini listelemek için kapsamı gerektirir.
+Microsoft Graph API 'SI, `user.read` kapsamın bir kullanıcının profilini okumasını gerektirir. Bu kapsam, uygulama kayıt portalı 'nda kayıtlı olan her uygulamada varsayılan olarak eklenir. Arka uç sunucunuz için Microsoft Graph ve özel API 'Lere yönelik diğer API 'Ler için ek kapsamlar gerekebilir. Örneğin, Microsoft Graph API 'sinin kullanıcının takvimlerini `Calendars.Read` listeme kapsamını belirtmesini gerektirir.
 
-Bir uygulama bağlamında kullanıcının takvimlerine erişmek için, `Calendars.Read` uygulama kayıt bilgilerine temsilci izni ekleyin. Ardından `Calendars.Read` kapsamı `acquireTokenSilent` aramaya ekleyin.
+Kullanıcının takvimlerine bir uygulama bağlamında erişmek için, `Calendars.Read` temsilci iznini uygulama kayıt bilgilerine ekleyin. Ardından `Calendars.Read` kapsamı `acquireTokenSilent` çağrıya ekleyin.
 
 > [!NOTE]
-> Kapsam sayısını artırdıkça kullanıcılardan ek izinler istenebilir.
+> Kapsam sayısını artırdıkça kullanıcılara ek yarışlar istenebilir.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 ### <a name="issue-1"></a>Sorun 1
 
-Federe bir Azure AD etki alanında uygulamanızda oturum açışı yaptığınızda aşağıdaki hata iletilerinden birini alırsınız:
+Uygulamanızda bir federasyon Azure AD etki alanında oturum açtığınızda aşağıdaki hata iletilerinden birini alırsınız:
 
 * İstekte geçerli bir istemci sertifikası bulunamadı.
 * Kullanıcının sertifika deposunda geçerli sertifika bulunamadı.
 * Farklı bir kimlik doğrulama yöntemi seçmeyi yeniden deneyin.
 
-Neden: Kuruluş ve sertifika yetenekleri etkinleştirildi.
+Neden: kuruluş ve sertifika özellikleri etkin değil.
 
-Çözüm: [Federe etki alanlarında (isteğe bağlı) tümleşik kimlik doğrulamasını etkinleştir](#enable-integrated-authentication-on-federated-domains-optional)adımlarını izleyin.
+Çözüm: [Federasyon etki alanlarında tümleşik kimlik doğrulamasını etkinleştirme (isteğe bağlı)](#enable-integrated-authentication-on-federated-domains-optional)bölümündeki adımları uygulayın.
 
 ### <a name="issue-2"></a>Sorun 2
 
-Federal [etki alanlarında tümleşik kimlik doğrulamasını](#enable-integrated-authentication-on-federated-domains-optional) etkinleştirin ve windows hello'yu windows 10 bilgisayarında kullanarak çok faktörlü kimlik doğrulamayapılandırılmış bir ortamda oturum açmayı deneyin. Sertifika listesi sunulur. Ancak, PIN'inizi kullanmayı seçerseniz, PIN penceresi hiçbir zaman sunulmaz.
+[Federasyon etki alanlarında tümleşik kimlik doğrulamasını](#enable-integrated-authentication-on-federated-domains-optional) etkinleştirir ve Multi-Factor Authentication yapılandırılmış bir ortamda oturum açmak için Windows 10 bilgisayarında Windows Hello 'yu kullanmayı deneyin. Sertifika listesi sunulur. Ancak PIN 'inizi kullanmayı seçerseniz, PIN penceresi hiçbir şekilde sunulmaz.
 
-Neden: Bu sorun, Windows 10 masaüstünde çalışan UWP uygulamalarında web kimlik doğrulama aracısının bilinen bir sınırlamasıdır. Windows 10 Mobile'da iyi çalışır.
+Neden: Bu sorun, Windows 10 Masaüstü 'nde çalışan UWP uygulamalarında Web kimlik doğrulama aracısının bilinen bir sınırlamasıdır. Windows 10 Mobile üzerinde sorunsuz bir şekilde çalışıyor.
 
-Geçici Çözüm: **Diğer seçeneklerle Oturum Aç'ı**seçin. Ardından **kullanıcı adı ve parolayla Oturum Aç'ı**seçin. **Parolanızı oluştur'u**seçin. Ardından telefon kimlik doğrulama işleminden geçirin.
+Geçici çözüm: **diğer seçeneklerle oturum aç '** ı seçin. Ardından **Kullanıcı adı ve parolayla oturum aç '** ı seçin. **Parolanızı belirtin**' i seçin. Ardından telefon kimlik doğrulama sürecini gözden geçin.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -1,7 +1,7 @@
 ---
-title: Konuşulan dilleri otomatik olarak tanımlamak için Video Dizinleyici'yi kullanma - Azure
+title: Konuşulan dilleri otomatik olarak tanımlamak için Video Indexer kullanın-Azure
 titleSuffix: Azure Media Services
-description: Bu makalede, Video Indexer dil tanımlama modelinin bir videodaki konuşulan dili otomatik olarak tanımlamak için nasıl kullanıldığı açıklanmaktadır.
+description: Bu makalede, bir videodaki konuşulan dili otomatik olarak tanımlamak için Video Indexer dil tanımlama modelinin nasıl kullanıldığı açıklanmaktadır.
 services: media-services
 author: juliako
 manager: femila
@@ -11,33 +11,33 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687132"
 ---
-# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Dil tanımlama modeliyle konuşulan dili otomatik olarak tanımlama
+# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Dil tanımlama modeliyle konuşulan dili otomatik olarak tanımla
 
-Video Indexer otomatik dil tanımlama (LID), hangi otomatik olarak ses ten konuşulan dil içeriği tanımlama ve baskın tanımlanmış dilde transkripsiyonu için medya dosyası gönderme işlemidir destekler. 
+Video Indexer, otomatik dil kimliğini (kapak) destekler, bu, sesli okunan dil içeriğini otomatik olarak tanımlama ve baskın tanımlanmış dilde kullanılacak medya dosyasını gönderme işlemidir. 
 
-Şu anda LID destekler: İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Çincesi, Japonca, Rusça ve Portekizce (Brezilyaca). 
+Şu anda KAPAĞı şunları destekler: Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Mandarin Çince, Japonca, Rusça ve Portekizce (Brezilya). 
 
-Aşağıdaki [Yönergeler ve sınırlamalar](#guidelines-and-limitations) bölümünü gözden geçirin.
+Aşağıdaki [kılavuz ve sınırlamalar](#guidelines-and-limitations) bölümünü gözden geçirdiğinizden emin olun.
 
-## <a name="choosing-auto-language-identification-on-indexing"></a>Dizin oluşturmada otomatik dil tanımlama seçimi
+## <a name="choosing-auto-language-identification-on-indexing"></a>Dizin oluşturma sırasında otomatik dil tanımlamayı seçme
 
-API'yi kullanarak bir videoyu dizine ekinlerken veya `sourceLanguage` [yeniden dizine](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) alırken, parametredeki `auto detect` seçeneği seçin.
+API 'yi kullanarak bir videoyu dizinleme veya [yeniden dizinlerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , `auto detect` `sourceLanguage` parametresindeki seçeneği belirleyin.
 
-Portalı kullanırken, [Video Indexer](https://www.videoindexer.ai/) ana sayfasındaki **Hesap videolarınıza** gidin ve yeniden dizine almak istediğiniz videonun adının üzerinde durun. Sağ alt köşede yeniden dizin düğmesini tıklatın. Yeniden **dizin video** iletişim kutusunda, Video **kaynak dili** açılır kutusundan *Otomatik algılama'yı* seçin.
+Portalı kullanırken [video Indexer](https://www.videoindexer.ai/) giriş sayfasında **Hesap videolarınıza** gidin ve yeniden dizinlemek istediğiniz videonun adının üzerine gelin. Sağ alt köşede yeniden dizin düğmesine tıklayın. **Yeniden dizin videosu** iletişim kutusunda, **video kaynak dili** açılır listesinden *Otomatik Algıla* ' yı seçin.
 
-![otomatik algılama](./media/language-identification-model/auto-detect.png)
+![Otomatik Algıla](./media/language-identification-model/auto-detect.png)
 
 ## <a name="model-output"></a>Model çıkışı
 
-Video Indexer, o dilin güveni `> 0.6`en olası dile göre videoyu kopyalar. Dil güvenle tanımlanamıyorsa, konuşulan dilin İngilizce olduğunu varsayar. 
+Video Indexer söz konusu dilin güvenilirliği ise, `> 0.6`videoyu en olası dile göre. Dil güvenle tanımlanamıyorsa, konuşulan dilin Ingilizce olduğunu varsayar. 
 
-Model baskın dil öznitelik olarak `sourceLanguage` (kök / video / anlayışlar altında) anlayışlar JSON mevcuttur. Öznitelik altında `sourceLanguageConfidence` karşılık gelen bir güven puanı da mevcuttur.
+Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kullanılabilir (kök/videolar/Öngörüler altında). Karşılık gelen bir güven puanı `sourceLanguageConfidence` özniteliği altında da kullanılabilir.
 
 ```json
 "insights": {
@@ -53,18 +53,18 @@ Model baskın dil öznitelik olarak `sourceLanguage` (kök / video / anlayışla
 
 ## <a name="guidelines-and-limitations"></a>Yönergeler ve sınırlamalar
 
-* Otomatik dil tanımlama (LID) aşağıdaki dilleri destekler: 
+* Otomatik dil tanımlama (kapak) aşağıdaki dilleri destekler: 
 
-    İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Chines, Japonca, Rusça ve Portekizce (Brezilyaca).
-* Video Indexer Arapça (Modern Standart ve Levanten), Hintçe ve Korece'yi desteklese de, bu diller LID'de desteklenmez.
-* Ses yukarıda desteklenen liste dışında diller içeriyorsa, sonuç beklenmeyen.
-* Video Indexer yeterince yüksek bir güven ile`>0.6`dil tanımlayamıyorsa ( ), geri dönüş dili İngilizce'dir.
-* Karışık dillerses içeren dosya için geçerli bir destek yoktur. Ses karışık diller içeriyorsa, sonuç beklenmeyen bir durumdur. 
-* Düşük kaliteli ses model sonuçlarını etkileyebilir.
-* Model, seste en az bir dakikalık konuşma gerektirir.
-* Model spontan bir konuşma konuşma tanımak için tasarlanmıştır (değil sesli komutları, şarkı, vb).
+    İngilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Mandarin, Japonca, Rusça ve Portekizce (Brezilya).
+* Video Indexer, Arapça (modern standart ve Levantine), Hintçe ve Korece 'yi desteklese de bu diller KAPAPLANDA desteklenmez.
+* Ses yukarıda desteklenen listeden farklı diller içeriyorsa sonuç beklenmedik olur.
+* Video Indexer, yüksek oranda güvenilirlikli (`>0.6`) dili tanımlayamıyor, geri dönüş dili İngilizce olur.
+* Karma diller ses içeren dosya için geçerli destek yoktur. Ses karışık diller içeriyorsa, sonuç beklenmedik olur. 
+* Düşük kaliteli ses, model sonuçlarını etkileyebilir.
+* Model, sese en az bir dakikalık konuşma gerektirir.
+* Model, Spontaneous bir konuşmayı tanımak için tasarlanmıştır (ses komutları, Malama, vb.).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Genel bakış](video-indexer-overview.md)
-* [Çok dilli içeriği otomatik olarak tanımlayabilir ve yazıya döktü](multi-language-identification-transcription.md)
+* [Çoklu dil içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md)

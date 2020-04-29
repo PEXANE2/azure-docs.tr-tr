@@ -1,6 +1,6 @@
 ---
-title: Microsoft kimlik platformu Windows UWP quickstart | Azure
-description: Evrensel Windows Platformu (XAML) uygulamasının nasıl erişim jetonu alabildiğini ve Microsoft kimlik platformu bitiş noktası tarafından korunan bir API'yi nasıl arayarak çağırabileceğini öğrenin.
+title: Microsoft Identity Platform Windows UWP hızlı başlangıç | Mavisi
+description: Bir Evrensel Windows Platformu (XAML) uygulamasının bir erişim belirtecini nasıl alabileceğinizi ve Microsoft Identity platform uç noktası tarafından korunan bir API 'YI nasıl çağırabileceğinizi öğrenin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
 ms.openlocfilehash: 362f6d1f4e50e1cc78c8897499b9f6593096162b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81536021"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
-Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel hesapları veya iş ve okul hesapları olan kullanıcılarda nasıl oturum açabileceğini, erişim jetonunu nasıl alabileceğini ve Microsoft Graph API'yi nasıl arayabildiğini gösteren bir kod örneği içerir. (Bkz. örnek bir resim için [nasıl çalışır?)](#how-the-sample-works)
+Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının kullanıcıları kişisel hesaplar veya iş ve okul hesaplarıyla nasıl oturum açıp Microsoft Graph API 'sini çağırabileceğinizi gösteren bir kod örneği içerir. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
@@ -31,7 +31,7 @@ Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel 
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Yeni Azure [portalı - Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs) bölmesine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'e tıklayın.
 > 1. Yönergeleri izleyerek yeni uygulamanızı tek tıkla indirin ve otomatik olarak yapılandırın.
 >
@@ -39,21 +39,21 @@ Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel 
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze eklemek için şu adımları izleyin:
-> 1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 > 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-> 1. Geliştiriciler için Microsoft kimlik platformuna gidin [Uygulama kayıtları](https://aka.ms/MobileAppReg) sayfası.
-> 1. **Yeni kayıt**seçin.
-> 1. Bir uygulama sayfası **kaydedin,** başvurunuzun kayıt bilgilerini girin:
->      - **Ad** bölümüne, örneğin `UWP-App-calling-MsGraph`uygulama kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
+> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://aka.ms/MobileAppReg) sayfasına gidin.
+> 1. **Yeni kayıt**seçeneğini belirleyin.
+> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
+>      - **Ad** bölümünde, örneğin `UWP-App-calling-MsGraph`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
 >      - **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
 >      - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 > 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
-> 1. Yönlendirme **URI'lerinde** | **kamu istemcileri (mobil, masaüstü)** bölümü için **https://login.microsoftonline.com/common/oauth2/nativeclient**Önerilen Yönlendirme URL'leri, kontrol edin.
+> 1. **Yeniden yönlendirme URI 'lerinde** | **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne **https://login.microsoftonline.com/common/oauth2/nativeclient**bakın.
 > 1. **Kaydet**’i seçin.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. Adım: Uygulamanızı yapılandırma
-> Bu hızlı başlatmanın çalışması için kod örneğinin çalışması için, **https://login.microsoftonline.com/common/oauth2/nativeclient**URI'yi yeniden yönlendirme olarak eklemeniz gerekir.
+> Bu hızlı başlangıçta çalışması için kod örneği için yeniden yönlendirme URI 'SI eklemeniz gerekir **https://login.microsoftonline.com/common/oauth2/nativeclient**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
@@ -66,13 +66,13 @@ Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel 
 > [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Visual Studio 2019'u kullanarak projeyi çalıştırın.
+> Visual Studio 2019 kullanarak projeyi çalıştırın.
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Adım 3: Uygulamanız yapılandırıldı ve çalışmaya hazır
-> Projenizi uygulamanızın özellikleriyle yapılandırdık ve çalışmaya hazır.
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor
+> Projenizi uygulamanızın özelliklerinin değerleriyle yapılandırdık ve çalıştırılmaya hazırlanıyor.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -82,8 +82,8 @@ Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel 
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. Adım: Visual Studio projenizi yapılandırma
 >
 > 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
-> 1. Projeyi Visual Studio'da açın. Bir UWP SDK yüklemeniz istenebilir. Bu durumda, kabul et.
-> 1. **MainPage.Xaml.cs** ve alanın değerlerini değiştirin: `ClientId`
+> 1. Projeyi Visual Studio'da açın. UWP SDK 'Yı yüklemek isteyip istemediğiniz sorulabilir. Bu durumda kabul edin.
+> 1. **MainPage.xaml.cs** öğesini düzenleyin ve `ClientId` alanın değerlerini değiştirin:
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";
@@ -92,25 +92,25 @@ Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel 
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 >
 > > [!TIP]
-> > *Uygulama Kimliğinin*değerini bulmak için portaldaki **Genel Bakış** bölümüne gidin
+> > *Uygulama kimliği*değerini bulmak için, portaldaki **genel bakış** bölümüne gidin
 
-#### <a name="step-4-run-your-application"></a>Adım 4: Başvurunuzu çalıştırın
+#### <a name="step-4-run-your-application"></a>4. Adım: uygulamanızı çalıştırma
 
-Windows makinenizde hızlı başlatmayı denemek istiyorsanız:
+Windows makinenizde hızlı başlangıcı denemek istiyorsanız:
 
-1. Visual Studio araç çubuğunda doğru platformu seçin (muhtemelen **x64** veya **x86**, ARM değil). Hedef aygıtın *Aygıttan* *Yerel Makineye* değiştiğini gözlemleceksiniz
-1. Hata Ayıklama'yı seçin | **Hata Ayıklama olmadan başlatın**
+1. Visual Studio araç çubuğunda doğru platformu seçin (büyük olasılıkla **x64** veya **x86**, ARM değil). Hedef cihazın *cihazdan* *yerel makineye* değiştiğini gözlemleyeceksiniz
+1. Hata ayıklamayı Seç | **Hata ayıklama olmadan Başlat**
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
 Bu bölümde hızlı başlangıç hakkında daha fazla bilgi verilmektedir.
 
-### <a name="how-the-sample-works"></a>Örnek nasıl çalışır?
-![Bu hızlı başlatma tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-uwp/uwp-intro.svg)
+### <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
+![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-uwp/uwp-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)), kullanıcıları oturum açma ve güvenlik belirteçleri istemek için kullanılan kitaplıktır. Güvenlik belirteçleri, geliştiriciler için Microsoft Identity platformu tarafından korunan bir API'ye erişmek için kullanılır. MSAL kitaplığını Visual Studio'nun *Paket Yöneticisi Konsolu*'nda aşağıdaki komutu çalıştırarak yükleyebilirsiniz:
+MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)), kullanıcıları oturum açmak ve güvenlik belirteçleri istemek için kullanılan kitaplıktır. Güvenlik belirteçleri, geliştiriciler için Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılır. MSAL kitaplığını Visual Studio'nun *Paket Yöneticisi Konsolu*'nda aşağıdaki komutu çalıştırarak yükleyebilirsiniz:
 
 ```powershell
 Install-Package Microsoft.Identity.Client
@@ -124,7 +124,7 @@ Install-Package Microsoft.Identity.Client
 using Microsoft.Identity.Client;
 ```
 
-Daha sonra, MSAL aşağıdaki kod kullanılarak başharfe işlenir:
+Daha sonra, MSAL aşağıdaki kod kullanılarak başlatılır:
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
@@ -139,15 +139,15 @@ PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>Belirteç isteme
 
-MSAL bir UWP uygulamasında belirteçleri elde `AcquireTokenInteractive` etmek `AcquireTokenSilent`için iki yöntem vardır: ve .
+MSAL, UWP uygulamasında belirteçleri almak için iki yönteme sahiptir: `AcquireTokenInteractive` ve. `AcquireTokenSilent`
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazı durumlarda, kullanıcıların kimlik bilgilerini doğrulamak veya izin vermek için bir açılır pencere aracılığıyla Microsoft kimlik platformu bitiş noktasıyla etkileşime geçmeye zorlanması gerekir. Bazı örnekler:
+Bazı durumlar, kullanıcıların kimlik bilgilerini doğrulamak veya onay vermek üzere bir açılan pencere aracılığıyla Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu kılmalarına gerek duyar. Bazı örnekler:
 
-- Uygulamada ilk kez oturum aç
+- İlk kullanıcılar uygulamada oturum açtığında
 - Parolanın süresi dolduğundan kullanıcıların kimlik bilgilerini yeniden girmesi gerektiğinde
-- Uygulamanız bir kaynağa erişim istediğinde, kullanıcının
+- Uygulamanız bir kaynağa erişim isteğinde bulunduğunda, kullanıcının onay yapması gerekir
 - İki öğeli kimlik doğrulaması gerektiğinde
 
 ```csharp
@@ -157,11 +157,11 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 > |Konumlar:||
 > |---------|---------|
-> | `scopes` | Microsoft Graph veya `{ "user.read" }` `{ "api://<Application ID>/access_as_user" }` özel web API'leri gibi istenen kapsamları içerir. |
+> | `scopes` | Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen `{ "user.read" }` kapsamları içerir. |
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-İlk `AcquireTokenInteractive` `AcquireTokenSilent` yöntemden sonra korumalı kaynaklara erişmek için belirteçleri elde etmek için yöntemi kullanın. Bir kaynağa her erişmesi gerektiğinde kullanıcının kimlik bilgilerini doğrulamasını gerektirmezsiniz. Çoğu zaman herhangi bir kullanıcı etkileşimi olmadan belirteç alımları ve yenileme istediğiniz
+Başlangıç `AcquireTokenInteractive` yönteminden `AcquireTokenSilent` sonra korumalı kaynaklara erişmek için belirteçleri elde etmek için yöntemini kullanın. Bir kaynağa erişmesi gereken her seferinde kullanıcının kimlik bilgilerini doğrulamasını gerektirmek istemezsiniz. Herhangi bir kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri istediğiniz zaman
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -172,8 +172,8 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > |Konumlar: ||
 > |---------|---------|
-> | `scopes` | Microsoft Graph veya `{ "user.read" }` `{ "api://<Application ID>/access_as_user" }` özel web API'leri gibi istenen kapsamları içerir |
-> | `firstAccount` | Önbellekteki ilk kullanıcı hesabını belirtir (MSAL tek bir uygulamada birden çok kullanıcıyı destekler) |
+> | `scopes` | Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen `{ "user.read" }` kapsamları içerir |
+> | `firstAccount` | Önbellekteki ilk kullanıcı hesabını belirtir (MSAL, tek bir uygulamadaki birden çok kullanıcıyı destekler) |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

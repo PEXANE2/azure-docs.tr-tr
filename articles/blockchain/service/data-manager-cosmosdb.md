@@ -1,162 +1,162 @@
 ---
-title: Azure Cosmos DB - Azure Blockchain Hizmetini güncellemek için Blockchain Veri Yöneticisi'ni kullanın
-description: Blockchain verilerini Azure Cosmos DB'ye göndermek için Azure Blockchain Hizmeti için Blockchain Veri Yöneticisi'ni kullanın
+title: Azure Cosmos DB güncelleştirmek için blok zinciri Veri Yöneticisi kullanma-Azure blok zinciri hizmeti
+description: Blok zinciri verilerini Azure Cosmos DB göndermek için Azure blok zinciri hizmeti için blok zinciri Veri Yöneticisi kullanın
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79533190"
 ---
-# <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB'ye veri göndermek için Blockchain Veri Yöneticisi'ni kullanın
+# <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma
 
-Bu eğitimde, Blockchain işlem verilerini Azure Cosmos DB'ye kaydetmek için Azure Blockchain Hizmeti için Blockchain Veri Yöneticisi'ni kullanırsınız. Blockchain Data Manager, Blockchain genel muhasebe verilerini Azure Olay Ağı Konuları'na yakalar, dönüştürür ve sunar. Azure Etkinlik Izgara'dan, Azure Cosmos DB veritabanında belge oluşturmak için bir Azure Logic App bağlayıcısı kullanırsınız. Öğretici ile bittiğinde, Azure Cosmos DB Data Explorer'da blockchain işlem verilerini keşfedebilirsiniz.
+Bu öğreticide, blok zinciri işlem verilerini Azure Cosmos DB kaydetmek üzere Azure blok zinciri hizmeti için blok zinciri Veri Yöneticisi kullanırsınız. Blok Veri Yöneticisi zinciri, blok zinciri defter verilerini Azure Event Grid konularına yakalar, dönüştürür ve sunar. Azure Event Grid, bir Azure Cosmos DB veritabanında belge oluşturmak için Azure Logic App bağlayıcısını kullanırsınız. Öğretici ile işiniz bittiğinde, Azure Cosmos DB Veri Gezgini blok zinciri işlem verilerini keşfedebilirsiniz.
 
-[![Blockchain işlem detayı](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![Blok zinciri işlem ayrıntısı](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * Blockchain Veri Yöneticisi örneği oluşturma
-> * İşlem özelliklerini ve olaylarını çözmek için blockchain uygulaması ekleme
+> * Bir blok zinciri Veri Yöneticisi örneği oluşturma
+> * İşlem özelliklerini ve olayları çözmek için bir blok zinciri uygulaması ekleme
 > * İşlem verilerini depolamak için bir Azure Cosmos DB hesabı ve veritabanı oluşturma
-> * Azure Etkinlik Izgara Sını Azure Cosmos DB'ye bağlamak için Bir Azure Mantık Uygulaması Oluşturun
-> * Bir işlemi blockchain genel muhasebesine gönderme
-> * Azure Cosmos DB'de çözülmüş işlem verilerini görüntüleme
+> * Azure Cosmos DB Azure Event Grid bir konu bağlamak için bir Azure Logic App oluşturun
+> * Bir blok zinciri defterine işlem gönderme
+> * Kodu çözülen işlem verilerini Azure Cosmos DB görüntüle
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Tam [Hızlı Başlatma: Azure portalını veya Quickstart'ı kullanarak blockchain üyesi oluşturun:](create-member.md) [Azure CLI'yi kullanarak bir Azure Blockchain Hizmeti blockchain üyesi oluşturun](create-member-cli.md)
-* Tam [Quickstart: Azure Blockchain Hizmeti konsorsiyum ağına bağlanmak için Visual Studio Kodunu kullanın.](connect-vscode.md) Hızlı başlatma, [Ethereum için Azure Blockchain Geliştirme Kiti'ni](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) yükleyip blockchain geliştirme ortamınızı ayarlamanıza rağmen size yol gösteriyor.
-* Komple [Öğretici: Akıllı sözleşmeler oluşturmak, oluşturmak ve dağıtmak için Visual Studio Kodunu kullanın.](send-transaction.md) Öğretici örnek bir akıllı sözleşme oluşturma yoluyla yürür.
-* Olay [Izgara Konusu](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) Oluşturma
-* Azure [Etkinlik Kılavuz'undaki Olay işleyicileri](../../event-grid/event-handlers.md) hakkında bilgi edinin
+* [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
+* [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Hızlı başlangıç, [Ethereum Için Azure blok zinciri geliştirme seti 'ni](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) yükleyip blok zinciri geliştirme ortamınızı ayarlamayı gösterir.
+* Tüm [öğretici: akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanın](send-transaction.md). Öğreticide, örnek bir akıllı sözleşme oluşturma işlemi adım adım açıklanmaktadır.
+* [Event Grid konu başlığı](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) oluşturma
+* [Azure Event Grid Içindeki olay işleyicileri](../../event-grid/event-handlers.md) hakkında bilgi edinin
 
-## <a name="create-instance"></a>Örnek oluşturma
+## <a name="create-instance"></a>Örnek Oluştur
 
-Blockchain Veri Yöneticisi örneği, bir Azure Blockchain Hizmeti hareket düğümünü bağlar ve izler. Bir örnek, işlem düğümündeki tüm ham blok ve ham hareket verilerini yakalar. Giden bağlantı blockchain verilerini Azure Olay Grid'e gönderir. Örneği oluştururken tek bir giden bağlantıyı yapılandırırsınız.
+Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işlem düğümünü bağlar ve izler. Örnek, işlem düğümünden tüm ham blok ve ham işlem verilerini yakalar. Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Quickstart ön koşulunda oluşturduğunuz Azure Blockchain Hizmeti [üyesine gidin: Azure portalını kullanarak bir blockchain üyesi oluşturun.](create-member.md) **Blockchain Veri Yöneticisi'ni**seçin.
-1. **Ekle'yi**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Önkoşul hızlı başlangıcı ' nda oluşturduğunuz Azure blok zinciri hizmeti üyesine gidin [: Azure Portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md). **Blok zinciri veri Yöneticisi**seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
-    ![Blockchain Veri Yöneticisi Ekle](./media/data-manager-cosmosdb/add-instance.png)
+    ![Blok zinciri ekleme Veri Yöneticisi](./media/data-manager-cosmosdb/add-instance.png)
 
     Şu ayrıntıları girin:
 
     Ayar | Örnek | Açıklama
     --------|---------|------------
-    Adı | mywatcher | Bağlı bir Blockchain Veri Yöneticisi için benzersiz bir ad girin.
-    İşlem düğümü | myblockchainmember | Ön koşulda oluşturduğunuz Azure Blockchain Hizmeti üyesinin varsayılan işlem düğümünün seçeneğini belirleyin.
-    Bağlantı adı | cosmosdb | Blockchain işlem verilerinin gönderildiği giden bağlantının benzersiz bir adını girin.
-    Olay ızgara uç noktası | myTopic | Ön koşulda oluşturduğunuz bir olay ızgarası konusunu seçin. Not: Blockchain Veri Yöneticisi örneği ve olay ızgarası konusu aynı abonelikte olmalıdır.
+    Adı | myizleyici | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin.
+    İşlem düğümü | myblockchainmember | Ön koşul içinde oluşturduğunuz Azure blok zinciri hizmeti üyesinin varsayılan işlem düğümünü seçin.
+    Bağlantı adı | cosmosdb | Blok zinciri işlem verilerinin gönderildiği giden bağlantıya ilişkin benzersiz bir ad girin.
+    Olay Kılavuzu uç noktası | myTopic | Önkoşul bölümünde oluşturduğunuz bir olay Kılavuzu konusu seçin. Note: blok zinciri Veri Yöneticisi örneği ve olay Kılavuzu konusu aynı abonelikte olmalıdır.
 
-1. **Tamam'ı**seçin.
+1. **Tamam**’ı seçin.
 
-    Blockchain Veri Yöneticisi örneği oluşturmak bir dakikadan kısa sürer. Örnek dağıtıldıktan sonra otomatik olarak başlatılır. Çalışan blockchain veri yöneticisi örneği, işlem düğümündeki blockchain olaylarını yakalar ve olay ızgarasına veri gönderir.
+    Bir blok zinciri Veri Yöneticisi örneği oluşturmak bir dakikadan kısa sürer. Örnek dağıtıldıktan sonra otomatik olarak başlatılır. Çalışan bir blok zinciri Veri Yöneticisi örneği, işlem düğümündeki blok zinciri olaylarını yakalar ve olay kılavuzuna veri gönderir.
 
 ## <a name="add-application"></a>Uygulama ekleme
 
-Blockchain Data Manager olay ve özellik durumunu çözebilmek için **helloblockchain** blockchain uygulamasını ekleyin. Blockchain Data Manager uygulama eklemek için akıllı sözleşme ABI ve bytecode dosyası gerektirir.
+Engelleme zincirinin olay ve özellik durumunun kodunu çözen Veri Yöneticisi için **helloblockzincirle** blok zinciri uygulamasını ekleyin. Blok zinciri Veri Yöneticisi, uygulamayı eklemek için akıllı sözleşme ABı ve bytecode dosyası gerektirir.
 
-### <a name="get-contract-abi-and-bytecode"></a>Sözleşme ABI ve bytecode alın
+### <a name="get-contract-abi-and-bytecode"></a>Sözleşme ABı ve bytecode 'u al
 
-SÖZLEŞME ABI akıllı sözleşme arayüzleri tanımlar. Akıllı sözleşmeyle nasıl etkileşime girilir açıklanır. Sözleşme ABI'yi panoya kopyalamak [için Ethereum uzantısı için Azure Blockchain Geliştirme Kiti'ni](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) kullanabilirsiniz.
+Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleşmeyle nasıl etkileşim kuracağınızı açıklar. Contract ABı 'ı panoya kopyalamak için [Ethereum uzantısı Için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) ' ni kullanabilirsiniz.
 
-1. Visual Studio Code explorer bölmesinde, ön koşul Öğreticisinde oluşturduğunuz **helloblockchain** Solidity projesinin **yapı/sözleşme** klasörünü genişletin: [Akıllı sözleşmeler oluşturmak, oluşturmak ve dağıtmak için Visual Studio Code'u kullanın.](send-transaction.md)
-1. Sözleşme meta data JSON dosyasını sağ tıklatın. Dosya adı, **.json** uzantısı tarafından izlenen akıllı sözleşme adıdır.
-1. **Kopya Sözleşmesi ABI'yi**seçin.
+1. Visual Studio Code gezgin bölmesinde, önkoşul öğreticisinde oluşturduğunuz **helloblockzincirleri** Solidity projesinin **Build/Contracts** klasörünü genişletin [: akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanın](send-transaction.md).
+1. Sözleşme meta verileri JSON dosyasına sağ tıklayın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
+1. **Sözleşme ABI Kopyala**' yı seçin.
 
-    ![Copy Contract ABI seçimi ile Visual Studio Code bölmesi](./media/data-manager-cosmosdb/abi-devkit.png)
+    ![Sözleşmeyi Kopyala ABı seçimiyle Visual Studio Code bölmesi](./media/data-manager-cosmosdb/abi-devkit.png)
 
-    SÖZLEŞME ABI panoya kopyalanır.
+    Sözleşme ABı, panoya kopyalanır.
 
-1. **Abi** dizisini JSON dosyası olarak kaydedin. Örneğin, *abi.json*. Dosyayı daha sonraki bir adımda kullanırsınız.
+1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, *ABI. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
 
-Blockchain Veri Yöneticisi, akıllı sözleşme için dağıtılan bytecode'u gerektirir. Dağıtılan bytecode akıllı sözleşme bytecode farklıdır. Bayt kodunu panoya kopyalamak için Azure blockchain geliştirme kiti uzantısını kullanırsınız.
+Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Bytecode 'u panoya kopyalamak için Azure blok zinciri geliştirme seti uzantısını kullanın.
 
-1. Visual Studio Code explorer bölmesinde Solidity projenizin **yapı/sözleşme** klasörünü genişletin.
-1. Sözleşme meta data JSON dosyasını sağ tıklatın. Dosya adı, **.json** uzantısı tarafından izlenen akıllı sözleşme adıdır.
-1. **Hareket Kartkodunu Kopyala'yı**seçin.
+1. Visual Studio Code gezgin bölmesinde, Solidity projenizin **Build/Contracts** klasörünü genişletin.
+1. Sözleşme meta verileri JSON dosyasına sağ tıklayın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
+1. **Işlem bayt kodunu kopyala**' yı seçin.
 
-    ![Copy Transaction Bytecode seçimi ile Visual Studio Code bölmesi](./media/data-manager-cosmosdb/bytecode-devkit.png)
+    ![Copy TRANSACTION bytecode seçimiyle Visual Studio Code bölmesi](./media/data-manager-cosmosdb/bytecode-devkit.png)
 
-    Bayt kodu panoya kopyalanır.
+    Bytecode, panoya kopyalanır.
 
-1. **Bayt kodu** değerini JSON dosyası olarak kaydedin. Örneğin, *bytecode.json*. Dosyayı daha sonraki bir adımda kullanırsınız.
+1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *bytecode. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
 
-Aşağıdaki örnek, VS Code düzenleyicisinde açık *olan abi.json* ve *bytecode.json* dosyalarını gösterir. Dosyalarınız benzer görünmelidir.
+Aşağıdaki örnek, VS Code düzenleyicide açık olan *ABI. JSON* ve *bytecode. JSON* dosyalarını gösterir. Dosyalarınız benzer görünmelidir.
 
-![abi.json ve bytecode.json dosyaları örneği](./media/data-manager-cosmosdb/contract-files.png)
+![ABI. JSON ve bytecode. JSON dosyaları örneği](./media/data-manager-cosmosdb/contract-files.png)
 
-### <a name="create-contract-abi-and-bytecode-url"></a>Sözleşme ABI ve bytecode URL'si oluşturma
+### <a name="create-contract-abi-and-bytecode-url"></a>Sözleşme ABı ve bytecode URL 'SI oluştur
 
-Blockchain Data Manager, bir uygulama eklerken SÖZLEŞME ABI ve bytecode dosyalarına bir URL tarafından erişilebilmelidir. Özel olarak erişilebilen bir URL sağlamak için bir Azure Depolama hesabı kullanabilirsiniz.
+Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve bytecode dosyalarına bir URL tarafından erişilebilmesini gerektirir. Bir Azure depolama hesabı kullanarak özel olarak erişilebilen bir URL sağlayabilirsiniz.
 
 #### <a name="create-storage-account"></a>Depolama hesabı oluştur
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-#### <a name="upload-contract-files"></a>Sözleşme dosyalarını yükleme
+#### <a name="upload-contract-files"></a>Sözleşme dosyalarını karşıya yükle
 
-1. Depolama hesabı için yeni bir kapsayıcı oluşturun. **Kapsayıcı > Kapsayıcı'yı**seçin.
+1. Depolama hesabı için yeni bir kapsayıcı oluşturun. **Kapsayıcı > kapsayıcıları**seçin.
 
     ![Depolama hesabı kapsayıcısı oluşturma](./media/data-manager-cosmosdb/create-container.png)
 
     | Ayar | Açıklama |
     |---------|-------------|
-    | Adı  | Kapsayıcıya bir ad verin. Örneğin, *akıllı sözleşme* |
-    | Genel erişim düzeyi | Özel'i seçin *(anonim erişim yok)* |
+    | Adı  | Kapsayıcıya bir ad verin. Örneğin, *smartcontract* |
+    | Genel erişim düzeyi | *Özel (anonim erişim yok)* seçeneğini belirleyin |
 
 1. Kapsayıcıyı oluşturmak için **Tamam**'ı seçin.
-1. Kapsayıcıyı seçin ve **yükle'yi**seçin.
-1. [Sözleşme ABI'yi al ve bayt kodu](#get-contract-abi-and-bytecode) bölümünde oluşturduğunuz her iki JSON dosyasını seçin.
+1. Kapsayıcıyı seçin ve ardından **karşıya yükle**' yi seçin.
+1. [Sözleşmeyi al ABI ve bytecode](#get-contract-abi-and-bytecode) bölümünde oluşturduğunuz JSON dosyalarını seçin.
 
-    ![Blob yükle](./media/data-manager-cosmosdb/upload-blobs.png)
+    ![Blobu karşıya yükle](./media/data-manager-cosmosdb/upload-blobs.png)
 
-    **Yükle'yi**seçin.
+    **Karşıya yükle**' yi seçin.
 
-#### <a name="generate-url"></a>URL oluştur
+#### <a name="generate-url"></a>URL Oluştur
 
-Her blob için paylaşılan bir erişim imzası oluşturun.
+Her blob için, paylaşılan erişim imzası oluşturun.
 
-1. ABI JSON blob'u seçin.
-1. **SAS Oluştur'u** seçin
-1. İstenilen erişim imza son kullanma tarihini ayarlayın ve ardından **blob SAS belirteci ve URL oluştur'u**seçin.
+1. ABı JSON blob 'unu seçin.
+1. **SAS oluştur** ' u seçin
+1. İstenen erişim imzası süre sonunu ayarlayın **ve ardından blob SAS belirteci oluştur ve URL 'yi**seçin.
 
-    ![SAS belirteci oluşturma](./media/data-manager-cosmosdb/generate-sas.png)
+    ![SAS belirteci oluştur](./media/data-manager-cosmosdb/generate-sas.png)
 
-1. **Blob SAS URL'sini** kopyalayın ve bir sonraki bölüme kaydedin.
-1. Baytkodu JSON blob için [URL oluştur](#generate-url) adımlarını yineleyin.
+1. **BLOB SAS URL 'sini** kopyalayın ve sonraki bölüm için kaydedin.
+1. Bytecode JSON blobu için [URL Oluştur](#generate-url) adımlarını yineleyin.
 
-### <a name="add-helloblockchain-application-to-instance"></a>Örneğine helloblockchain uygulaması ekle
+### <a name="add-helloblockchain-application-to-instance"></a>Örneğe helloblockzincirleri uygulaması ekleme
 
-1. Örnek listesinden Blockchain Veri Yöneticisi örneğini seçin.
-1. **Blockchain uygulamalarını**seçin.
-1. **Ekle'yi**seçin.
+1. Örnek listesinden Blockzincirine Veri Yöneticisi örneğinizi seçin.
+1. **Blok zinciri uygulamaları**' nı seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
-    ![Blockchain uygulaması ekleme](./media/data-manager-cosmosdb/add-application.png)
+    ![Blok zinciri uygulaması ekleme](./media/data-manager-cosmosdb/add-application.png)
 
-    Blockchain uygulamasının adını ve akıllı sözleşme ABI'sini ve bytecode URL'lerini girin.
+    Blok zinciri uygulamasının adını ve akıllı sözleşme ABı ve bytecode URL 'Lerini girin.
 
     Ayar | Açıklama
     --------|------------
-    Adı | Izlemek için blockchain uygulaması için benzersiz bir ad girin.
-    Sözleşme ABI | Sözleşme ABI dosyasına URL yolu. Daha fazla bilgi için [bkz.](#create-contract-abi-and-bytecode-url)
-    Sözleşme Bayt kodu | Bytecode dosyasına URL yolu. Daha fazla bilgi için [bkz.](#create-contract-abi-and-bytecode-url)
+    Adı | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
+    Sözleşme ABı | Sözleşme ABı dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
+    Sözleşme bytecode 'u | Bytecode dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
 
-1. **Tamam'ı**seçin.
+1. **Tamam**’ı seçin.
 
-    Uygulama oluşturulduktan sonra, uygulama blockchain uygulamaları listesinde görünür.
+    Uygulama oluşturulduktan sonra uygulama, blok zinciri uygulamaları listesinde görünür.
 
-    ![Blockchain uygulama listesi](./media/data-manager-cosmosdb/artifact-list.png)
+    ![Blok zinciri uygulama listesi](./media/data-manager-cosmosdb/artifact-list.png)
 
-Azure Depolama hesabını silebilir veya daha fazla blockchain uygulamasını yapılandırmak için kullanabilirsiniz. Azure Depolama hesabını silmek isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, ilişkili depolama hesabını ve kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
+Azure Storage hesabını silebilir veya daha fazla blok zinciri uygulaması yapılandırmak için kullanabilirsiniz. Azure Depolama hesabını silmek isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, ilişkili depolama hesabını ve kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
 
 ## <a name="create-azure-cosmos-db"></a>Azure Cosmos DB oluşturma
 
@@ -164,137 +164,137 @@ Azure Depolama hesabını silebilir veya daha fazla blockchain uygulamasını ya
 
 ### <a name="add-a-database-and-container"></a>Veritabanı ve kapsayıcı ekleme
 
-Bir veritabanı ve kapsayıcı oluşturmak için Azure portalındaki Veri Gezgini'ni kullanabilirsiniz.
+Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabilirsiniz.
 
-1. Azure Cosmos DB hesap sayfanızdaki sol gezintiden **Veri Gezgini'ni** seçin ve ardından Yeni **Kapsayıcı'yı**seçin.
-1. Ekle **kapsayıcı** bölmesine, yeni kapsayıcının ayarlarını girin.
+1. Azure Cosmos DB hesabı sayfanızda sol gezinti **Veri Gezgini** seçin ve ardından **yeni kapsayıcı**' yı seçin.
+1. **Kapsayıcı Ekle** bölmesinde, yeni kapsayıcının ayarlarını girin.
 
-    ![Kapsayıcı ayarları ekleme](./media/data-manager-cosmosdb/add-container.png)
+    ![Kapsayıcı ayarları ekle](./media/data-manager-cosmosdb/add-container.png)
 
     | Ayar | Açıklama
     |---------|-------------|
-    | Veritabanı Kimliği | **Blockchain verilerini** yeni veritabanının adı olarak girin. |
-    | Aktarım hızı | Çıktıyı saniyede **400** istek biriminde (RU/s) bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.|
-    | Kapsayıcı Kimliği | **İletileri** yeni kapsayıcınızın adı olarak girin. |
-    | Bölüm anahtarı | **/MessageType'ı** bölüm anahtarı olarak kullanın. |
+    | Veritabanı Kimliği | Yeni veritabanının adı olarak **blok zinciri-verileri** girin. |
+    | Aktarım hızı | Aktarım hızını saniyede **400** istek BIRIMI (ru/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.|
+    | Kapsayıcı Kimliği | Yeni kapsayıcının adı olarak **iletileri** girin. |
+    | Bölüm anahtarı | Bölüm anahtarı olarak **/MessageType** kullanın. |
 
-1. **Tamam'ı**seçin. Veri Gezgini yeni veritabanını ve oluşturduğunuz kapsayıcıyı görüntüler.
+1. **Tamam**’ı seçin. Veri Gezgini yeni veritabanını ve oluşturduğunuz kapsayıcıyı görüntüler.
 
 ## <a name="create-logic-app"></a>Mantıksal Uygulama oluşturma
 
-Azure Logic Apps, sistemleri ve hizmetleri tümleştirmeniz gerektiğinde iş süreçlerini ve iş akışlarını zamanlamanıza ve otomatikleştirmenize yardımcı olur. Olay Izgarasını Azure Cosmos DB'ye bağlamak için bir mantık uygulaması kullanabilirsiniz.
+Azure Logic Apps, sistemleri ve Hizmetleri tümleştirmeniz gerektiğinde iş süreçlerini ve iş akışlarını zamanlamanıza ve otomatikleştirmenize yardımcı olur. Azure Cosmos DB Event Grid bağlamak için bir mantıksal uygulama kullanabilirsiniz.
 
 1. [Azure portalında](https://portal.azure.com)**Kaynak oluştur** > **Tümleştirme** > **Mantıksal Uygulama**’yı seçin.
-1. Mantık uygulamanızı nerede oluşturacağınıza ilişkin ayrıntıları sağlayın. İşin bittikten sonra **Oluştur'u**seçin.
+1. Mantıksal uygulamanızı nerede oluşturacağınız hakkında ayrıntılı bilgi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
 
-    Mantık uygulamaları oluşturma hakkında daha fazla bilgi için [bkz.](../../logic-apps/quickstart-create-first-logic-app-workflow.md)
+    Mantıksal uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps otomatik iş akışları oluşturma](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Azure uygulamanızı dağıttıktan sonra mantık uygulama kaynağınızı seçin.
-1. Logic Apps Designer'da **Şablonlar**altında **Boş Mantık Uygulaması'nı**seçin.
+1. Azure uygulamanızı dağıtduktan sonra mantıksal uygulama kaynağınızı seçin.
+1. Logic Apps tasarımcısında **Şablonlar**altında **boş mantıksal uygulama**' yı seçin.
 
-### <a name="add-event-grid-trigger"></a>Olay Izgara tetikleyicisi ekle
+### <a name="add-event-grid-trigger"></a>Event Grid tetikleyicisi Ekle
 
-Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her etkinleştirildiğinde Logic Apps altyapısı iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur. Event Grid'den Cosmos DB'ye blockchain işlem verilerini gönderirken Azure Olay Ağı tetikleyicisi kullanın.
+Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her etkinleştirildiğinde Logic Apps altyapısı iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur. Event Grid blok zinciri işlem verilerini Cosmos DB 'e göndermesi için Azure Event Grid tetikleyicisi kullanın.
 
-1. Logic Apps Tasarımcısı'nda **Azure Olay Ağı** bağlayıcısını arayın ve seçin.
-1. **Tetikleyiciler** sekmesinden kaynak **olayı oluştuğunda**seçin.
-1. Olay Izgara Konunuza bir API bağlantısı oluşturun.
+1. Logic Apps tasarımcısında, **Azure Event Grid** bağlayıcısını arayıp seçin.
+1. **Tetikleyiciler** sekmesinden **bir kaynak olay meydana geldiğinde**öğesini seçin.
+1. Event Grid konusundan bir API bağlantısı oluşturun.
 
-    ![Olay ızgara tetikleme ayarları](./media/data-manager-cosmosdb/event-grid-trigger.png)
+    ![Olay Kılavuzu tetikleyici ayarları](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
     | Ayar | Açıklama
     |---------|-------------|
-    | Abonelik | Olay Izgara Konusu'nu içeren aboneliği seçin. |
-    | Kaynak Türü | **Microsoft.EventGrid.Topics'i**seçin. |
-    | Kaynak Adı | Blockchain Veri Yöneticisi'nin işlem veri iletileri gönderdiği Olay Kılavuz Konusu'nun adını seçin. |
+    | Abonelik | Event Grid konusunu içeren aboneliği seçin. |
+    | Kaynak Türü | **Microsoft. EventGrid. konular**' ı seçin. |
+    | Kaynak Adı | Blok zinciri Veri Yöneticisi işlem verileri iletilerini gönderdiği Event Grid konusunun adını seçin. |
 
-### <a name="add-cosmos-db-action"></a>Cosmos DB eylemi ekle
+### <a name="add-cosmos-db-action"></a>Cosmos DB eylem Ekle
 
-Her işlem için Cosmos DB'de belge oluşturmak için bir eylem ekleyin. İletileri kategorilere ayırmak için işlem iletisi türünü bölüm anahtarı olarak kullanın.
+Her işlem için Cosmos DB bir belge oluşturmak için bir eylem ekleyin. İletileri sınıflandırmak için bölüm anahtarı olarak işlem iletisi türünü kullanın.
 
 1. **Yeni adım**'ı seçin.
-1. **Bir eylemi seçin,** **Azure Cosmos DB'yi**arayın.
-1. **Belge oluşturma veya güncelleştirme > Azure Cosmos DB > Eylemleri'ni**seçin.
+1. **Bir eylem seçin**sayfasında **Azure Cosmos DB**aratın.
+1. **Belge oluştur veya güncelleştir > Azure Cosmos DB > eylemler**' i seçin.
 1. Cosmos DB veritabanınıza bir API bağlantısı oluşturun.
 
     ![Cosmos DB bağlantı ayarları](./media/data-manager-cosmosdb/cosmosdb-connection.png)
 
     | Ayar | Açıklama
     |---------|-------------|
-    | Bağlantı Adı | Olay Izgara Konusu'nu içeren aboneliği seçin. |
-    | DocumentDB Hesabı | [Azure Cosmos DB hesap oluşturma](#create-azure-cosmos-db) bölümünde oluşturduğunuz DocumentDB hesabını seçin. |
+    | Bağlantı Adı | Event Grid konusunu içeren aboneliği seçin. |
+    | DocumentDB hesabı | [Azure Cosmos DB hesabı oluştur](#create-azure-cosmos-db) bölümünde oluşturduğunuz DocumentDB hesabını seçin. |
 
-1. Veritabanı ve [kapsayıcı ekle](#add-a-database-and-container) bölümünde daha önce oluşturduğunuz Azure Cosmos DB'niz için Veritabanı **Kimliği** ve **Koleksiyon Kimliği'ni** girin.
+1. Daha önce oluşturduğunuz Azure Cosmos DB veritabanı **kimliğini** ve **koleksiyon kimliğini** [bir veritabanı ve kapsayıcı Ekle](#add-a-database-and-container) bölümünde girin.
 
-1. **Belge** ayarını seçin. Dinamik *içerik* açılır ekle'de **İfade'yi** seçin ve aşağıdaki ifadeyi kopyalayıp yapıştırın:
+1. **Belge** ayarını seçin. *Dinamik Içerik Ekle* açılır penceresinde, **ifade** ' ı seçin ve aşağıdaki ifadeyi kopyalayıp yapıştırın:
 
     ```
     addProperty(triggerBody()?['data'], 'id', utcNow())
     ```
 
-    İfade iletinin veri bölümünü alır ve kimliği zaman damgası değerine ayarlar.
+    İfade, iletinin veri bölümünü alır ve KIMLIĞI bir zaman damgası değerine ayarlar.
 
-1. **Yeni parametre ekle'yi** seçin ve Partition anahtar **değerini**seçin.
-1. Bölüm **anahtar değerini** `"@{triggerBody()['data']['MessageType']}"`' olarak ayarlama Değer çift tırnak işaretleri ile çevrili olmalıdır.
+1. **Yeni parametre Ekle** ' yi seçin ve **bölüm anahtarı değeri**' ni seçin.
+1. **Bölüm anahtarı değerini** olarak `"@{triggerBody()['data']['MessageType']}"`ayarlayın. Değer çift tırnak işareti içine alınmalıdır.
 
-    ![Cosmos DB ayarları ile Mantık Uygulamaları Tasarımcısı](./media/data-manager-cosmosdb/create-action.png)
+    ![Cosmos DB ayarlarla Logic Apps tasarımcı](./media/data-manager-cosmosdb/create-action.png)
 
-    Değer, hareket iletisi türüne bölüm anahtarı ayarlar.
+    Değer, Bölüm anahtarını işlem iletisi türüne ayarlar.
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-Mantık uygulaması Olay Izgara Konu izler. Blockchain Data Manager'dan yeni bir işlem iletisi gönderildiğinde, mantık uygulaması Cosmos DB'de bir belge oluşturur.
+Mantıksal uygulama Event Grid konusunu izler. Blok zinciri Veri Yöneticisi yeni bir işlem iletisi gönderildiğinde, mantıksal uygulama Cosmos DB bir belge oluşturur.
 
-## <a name="send-a-transaction"></a>İşlem gönderme
+## <a name="send-a-transaction"></a>İşlem gönder
 
-Ardından, ne oluşturduğunuzu sınamak için blockchain genel muhasebesine bir hareket gönderin. Önceden koşul Öğretici'de oluşturduğunuz **HelloBlockchain** sözleşmesinin **SendRequest** işlevini [kullanın: Akıllı sözleşmeler oluşturmak, oluşturmak ve dağıtmak için Visual Studio Kodunu kullanın.](send-transaction.md)
+Sonra, oluşturduğunuz şeyi test etmek için blok zinciri defterine bir işlem gönderin. Önkoşul öğreticisinde oluşturduğunuz **Helloblockzincirleri** sözleşmesinin **SendRequest** işlevini kullanın [: akıllı sözleşmeleri oluşturmak, derlemek ve dağıtmak için Visual Studio Code kullanın](send-transaction.md).
 
-1. **SendRequest** işlevini aramak için Azure Blockchain Geliştirme Kiti akıllı sözleşme etkileşim sayfasını kullanın. **HelloBlockchain.sol'a** sağ tıklayın ve menüden **Akıllı Sözleşme Etkileşim Sayfasını Göster'i** seçin.
+1. **SendRequest** işlevini çağırmak Için Azure blok zinciri geliştirme seti Akıllı sözleşme etkileşimi sayfasını kullanın. **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **akıllı sözleşme etkileşimi sayfasını göster** ' i seçin.
 
-    ![Menüden Akıllı Sözleşme Etkileşim sayfasını göster'i seçin](./media/data-manager-cosmosdb/contract-interaction.png)
+    ![Menüden akıllı sözleşme etkileşimi sayfasını göster ' i seçin](./media/data-manager-cosmosdb/contract-interaction.png)
 
-1. **SendRequest** sözleşme eylemini seçin ve **Hello, Blockchain'e girin!** **requestMessage** parametresi için. Bir işlem aracılığıyla **SendRequest** işlevini çağırmak için Yürüt'''ün'u seçin. **Execute**
+1. **SendRequest** sözleşme eylemini seçin ve **Merhaba, blok zinciri! girin!** **RequestMessage** parametresi için. Bir işlem aracılığıyla **SendRequest** işlevini çağırmak için **Yürüt** ' ü seçin.
 
-    ![SendRequest eylemini yürütme](./media/data-manager-cosmosdb/sendrequest-action.png)
+    ![SendRequest eylemini Yürüt](./media/data-manager-cosmosdb/sendrequest-action.png)
 
-SendRequest işlevi **İstek İletisi** ve **Durum** alanlarını ayarlar. **RequestMessage** için geçerli durum **Merhaba, Blockchain**geçti bağımsız değişkendir. **Durum** alan değeri **İstek**kalır.
+SendRequest işlevi **RequestMessage** ve **State** alanlarını ayarlar. **RequestMessage** için geçerli durum, **Hello, blockzincirine**geçirilen bağımsız değişkendir. **Durum** alanı değeri **istek**olarak kalmaya devam eder.
 
-## <a name="view-transaction-data"></a>Hareket verilerini görüntüleme
+## <a name="view-transaction-data"></a>İşlem verilerini görüntüle
 
-Blockchain Veri Yöneticinizi Azure Cosmos DB'ye bağladığınızda, Cosmos DB Veri Gezgini'ndeki blockchain işlem iletilerini görüntüleyebilirsiniz.
+Blockzincirinizi Azure Cosmos DB Veri Yöneticisi bağladığınıza göre, blok zinciri işlem iletilerini Cosmos DB Veri Gezgini görüntüleyebilirsiniz.
 
-1. Cosmos DB Data Explorer görünümüne gidin. Örneğin, **cosmosdb-blockchain > Data Explorer > blockchain-data > Mesajlar > Öğeler.**
+1. Cosmos DB Veri Gezgini görünümüne gidin. Örneğin, **cosmosdb blok zinciri > Veri Gezgini > blok zinciri-veri > iletileri > öğeleri**.
 
     ![Cosmos DB Veri Gezgini](./media/data-manager-cosmosdb/data-explorer.png)
 
-    Veri Gezgini, Cosmos DB veritabanında oluşturulan blockchain veri iletilerini listeler.
+    Veri Gezgini, Cosmos DB veritabanında oluşturulan blok zinciri veri iletilerini listeler.
 
-1. Öğe kimliğini seçerek iletilere göz atın ve eşleşen işlem karmaile iletiyi bulun.
+1. Öğe KIMLIĞI ' ni seçerek ve eşleşen işlem karması ile iletiyi bularak mesajlara göz atabilirsiniz.
 
-    [![Blockchain işlem detayı](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![Blok zinciri işlem ayrıntısı](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
-    Ham işlem iletisi, hareketle ilgili ayrıntıları içerir. Ancak, özellik bilgileri şifrelenir.
+    Ham işlem iletisi işlem hakkında ayrıntılı bilgi içerir. Ancak Özellik bilgileri şifrelenir.
 
-    Blockchain Veri Yöneticisi örneğine HelloBlockchain akıllı sözleşmesini eklediğiniz için, deşifre edilmiş özellik bilgilerini içeren bir **ContractProperties** ileti türü de gönderilir.
+    Helloblockzincirine akıllı sözleşmeyi blok zinciri Veri Yöneticisi örneğine eklediyseniz, kodu çözülmüş Özellik bilgilerini içeren bir **Contractproperties** ileti türü de gönderilir.
 
-1. Hareket için **Sözleşme Özellikleri** iletisini bulun. Listedeki bir sonraki mesaj olmalı.
+1. İşlem için **Contractproperties** iletisini bulun. Bu, listedeki bir sonraki ileti olmalıdır.
 
-    [![Blockchain işlem detayı](./media/data-manager-cosmosdb/properties-msg.png)](./media/data-manager-cosmosdb/properties-msg.png#lightbox)
+    [![Blok zinciri işlem ayrıntısı](./media/data-manager-cosmosdb/properties-msg.png)](./media/data-manager-cosmosdb/properties-msg.png#lightbox)
 
-    **DecodedProperties** dizisi işlemin özelliklerini içerir.
+    **Decodedproperties** dizisi işlemin özelliklerini içerir.
 
-Tebrikler! Blockchain Data Manager ve Azure Cosmos DB'yi kullanarak başarılı bir işlem iletisi gezgini oluşturdunuz.
+Tebrikler! Blok zinciri Veri Yöneticisi ve Azure Cosmos DB kullanarak bir işlem ileti Gezginini başarıyla oluşturdunuz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, bu öğretici için kullandığınız kaynakları ve kaynak gruplarını silebilirsiniz. Kaynak grubunu silmek için:
+Artık gerekli değilse, bu öğretici için kullandığınız kaynakları ve kaynak gruplarını silebilirsiniz. Bir kaynak grubunu silmek için:
 
-1. Azure portalında, sol gezinti bölmesindeki **Kaynak grubuna** gidin ve silmek istediğiniz kaynak grubunu seçin.
-1. **Kaynak grubunu sil**'i seçin. Kaynak grup adını girerek silme işlemini doğrulayın ve **Sil'i**seçin.
+1. Azure portal sol gezinti bölmesindeki **kaynak grubu** ' na gidin ve silmek istediğiniz kaynak grubunu seçin.
+1. **Kaynak grubunu sil**'i seçin. Kaynak grubu adını girip **Sil**' i seçerek silmeyi doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Blockchain genel muhasebeleri ile tümleştirme hakkında daha fazla bilgi edinin.
+Blok zinciri ile tümleştirme hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Azure Logic Apps ile Ethereum Blockchain konektörünü kullanma](ethereum-logic-app.md)
+> [Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanma](ethereum-logic-app.md)

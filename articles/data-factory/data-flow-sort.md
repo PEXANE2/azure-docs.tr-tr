@@ -1,6 +1,6 @@
 ---
-title: Veri akışını eşlemede dönüşümü sıralama
-description: Azure Veri Fabrikası Haritalama Veri Sıralama Dönüşümü
+title: Eşleme veri akışında sıralama dönüşümü
+description: Azure Data Factory eşleme veri sıralama dönüşümü
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606331"
 ---
-# <a name="sort-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede dönüşümü sıralama
+# <a name="sort-transformation-in-mapping-data-flow"></a>Eşleme veri akışında sıralama dönüşümü
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Sıralama dönüştürme, geçerli veri akışında gelen satırları sıralamanızı sağlar. Tek tek sütunları seçebilir ve bunları artan veya azalan sırada sıralayabilirsiniz.
+Sıralama dönüştürmesi, geçerli veri akışındaki gelen satırları sıralamanıza olanak tanır. Sütunları tek tek seçebilir ve artan veya azalan sırada sıralayabilirsiniz.
 
 > [!NOTE]
-> Eşleme veri akışları, verileri birden çok düğüm ve bölüme dağıtan kıvılcım kümelerinde yürütülür. Sonraki bir dönüşümde verilerinizi yeniden bölmeyi seçerseniz, verilerin değiştirilmesi nedeniyle sıralamanızı kaybedebilirsiniz.
+> Eşleme veri akışları, verileri birden çok düğüm ve bölüm arasında dağıtan Spark kümelerinde yürütülür. Verilerinizi sonraki bir dönüşümde yeniden bölümlendirmayı seçerseniz, reshuffling veri nedeniyle sıralıyorsanız kaybedebilirsiniz.
 
 ## <a name="configuration"></a>Yapılandırma
 
-![Ayarları sıralama](media/data-flow/sort.png "Sırala")
+![Sıralama ayarları](media/data-flow/sort.png "Sırala")
 
-**Büyük/küçük harf duyarsız:** Dize veya metin alanlarını sıralarken büyük/küçük/küçük harf göz ardı etmek isteyip istemediğiniz
+**Büyük/küçük harf duyarsız:** Dize veya metin alanlarını sıralarken büyük/küçük harf yoksaymak isteyip istemediğiniz
 
-**Yalnızca Bölümler İçinde Sırala:** Veri akışları kıvılcım üzerinde çalıştırılırken, her veri akışı bölümlere ayrılır. Bu ayar, tüm veri akışını sıralamak yerine verileri yalnızca gelen bölümlerin içinde sıralar. 
+**Yalnızca bölümler Içinde Sırala:** Spark üzerinde veri akışları çalıştırıldığında, her veri akışı bölümlere ayrılır. Bu ayar veri akışının tamamını sıralamak yerine yalnızca gelen bölümlerin içindeki verileri sıralar. 
 
-**Sıralama koşulları:** Sıralamanın hangi sırayla gerçekleşeceğini seçin. Sipariş sıralama önceliğini belirler. Veri akışının başında veya sonunda nulls görünüp görünmeyeceğini seçin.
+**Sıralama koşulları:** Sıralama yaptığınız sütunları ve sıralamanın ne sırada olacağını seçin. Sıra sıralama önceliğini belirler. Null değerleri veri akışının başlangıcında veya sonunda görünüp görünmeyeceğini seçin.
 
-### <a name="computed-columns"></a>Hesaplanmış sütunlar
+### <a name="computed-columns"></a>Hesaplanan sütunlar
 
-Sıralamayı uygulamadan önce bir sütun değerini değiştirmek veya ayıklamak için sütunun üzerine gidin ve "hesaplanmış sütun"u seçin. Bu, sütun değeri kullanmak yerine sıralama işlemi için bir ifade oluşturmak için ifade oluşturucuyu açar.
+Sıralamayı uygulamadan önce bir sütun değerini değiştirmek veya ayıklamak için sütunun üzerine gelin ve "hesaplanan sütun" seçeneğini belirleyin. Bu, bir sütun değeri kullanmak yerine sıralama işlemi için bir ifade oluşturmak üzere ifade oluşturucuyu açar.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -53,9 +53,9 @@ Sıralamayı uygulamadan önce bir sütun değerini değiştirmek veya ayıklama
 
 ### <a name="example"></a>Örnek
 
-![Ayarları sıralama](media/data-flow/sort.png "Sırala")
+![Sıralama ayarları](media/data-flow/sort.png "Sırala")
 
-Yukarıdaki sıralama yapılandırması için veri akışı komut dosyası aşağıdaki kod snippet bulunmaktadır.
+Yukarıdaki sıralama yapılandırması için veri akışı betiği aşağıdaki kod parçacığında bulunur.
 
 ```
 BasketballStats sort(desc(PTS, true),
@@ -64,4 +64,4 @@ BasketballStats sort(desc(PTS, true),
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sıralamadan [sonra, Toplu Dönüştürme'yi](data-flow-aggregate.md) kullanmak isteyebilirsiniz
+Sıralama sonrasında, [Toplam dönüştürmeyi](data-flow-aggregate.md) kullanmak isteyebilirsiniz

@@ -1,6 +1,6 @@
 ---
-title: Ticari pazar için coğrafi kullanılabilirlik ve döviz desteği | Azure Marketi
-description: Ticari pazarda coğrafi kullanılabilirlik
+title: Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği | Azure Marketi
+description: Ticari Market 'te coğrafi kullanılabilirlik
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
 ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687577"
 ---
-# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari pazar için coğrafi kullanılabilirlik ve para birimi desteği
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
-Ticari pazar teklifleri müşterinin fatura adresi tarafından tanımlanan 141 coğrafyada satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ISO 3166 iki basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenir.
+Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141 coğrafi yalarda satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ıso 3166 2 basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenmektedir.
 
-|   Ülke/Bölge Adı               |   ISO-2   |   Para birimi   |
+|   Ülke/bölge adı               |   ISO-2   |   Para birimi   |
 |-------------------------------------|-----------|--------------|
 | Afganistan                         | AF        | USD          |
 | Arnavutluk                             | AL        | USD          |
@@ -48,12 +48,12 @@ Ticari pazar teklifleri müşterinin fatura adresi tarafından tanımlanan 141 c
 | Cabo Verde                          | CV        | USD          |
 | Kayman Adaları                      | KY        | USD          |
 | Şili                               | CL        | USD          |
-| Çin\**                            | CN        | Yok          |
+| Arasında\**                            | CN        | Yok          |
 | Kolombiya                            | CO        | USD          |
 | Kosta Rika                          | CR        | USD          |
 | Fildişi Sahili (Côte d'Ivoire)                       | CI        | USD          |
 | Hırvatistan                             | HR        | EUR          |
-| Curaçao                             | Cw        | USD          |
+| Curaçao                             | FIILI        | USD          |
 | Kıbrıs                              | CY        | EUR          |
 | Çek Cumhuriyeti                      | CZ        | EUR          |
 | Danimarka                             | DK        | DKK          |
@@ -63,7 +63,7 @@ Ticari pazar teklifleri müşterinin fatura adresi tarafından tanımlanan 141 c
 | El Salvador                         | SV        | USD          |
 | Estonya                             | EE        | EUR          |
 | Etiyopya                            | ET        | USD          |
-| Faroe Adaları                       | Fo        | DKK          |
+| Faroe Adaları                       | INFO        | DKK          |
 | Fiji                                | FJ        | AUD          |
 | Finlandiya                             | FI        | EUR          |
 | Fransa                              | GS        | EUR          |
@@ -87,7 +87,7 @@ Ticari pazar teklifleri müşterinin fatura adresi tarafından tanımlanan 141 c
 | Ürdün                              | JO        | USD          |
 | Kazakistan                          | KZ        | USD          |
 | Kenya                               | KE        | USD          |
-| Kore (Güney)                       | KR        | KRW          |
+| Kore dili (Güney)                       | KR        | KRW          |
 | Kuveyt                              | KW        | USD          |
 | Kırgızistan                          | KG        | USD          |
 | Letonya                              | LV        | EUR          |
@@ -148,8 +148,8 @@ Ticari pazar teklifleri müşterinin fatura adresi tarafından tanımlanan 141 c
 | Tunus                             | TN        | USD          |
 | Türkiye                              | TR        | USD          |
 | Türkmenistan                        | TM        | USD          |
-| Vatikan (Kutsal Bak)             | VA        | EUR          |
-| Amerika Birleşik Devletleri Virgin Adaları | VI        | USD          |
+| Vatikan Şehri (Pasee)             | VA        | EUR          |
+| Birleşik Devletler Virgin Adaları | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrayna                             | UA        | USD          |
 | Birleşik Arap Emirlikleri                | AE        | USD          |
@@ -159,11 +159,11 @@ Ticari pazar teklifleri müşterinin fatura adresi tarafından tanımlanan 141 c
 | Özbekistan                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Yemen                               | YE        | USD          |
+| Yemen                               | Vet        | USD          |
 | Zambiya                              | ZM        | USD          |
 | Zimbabve                            | ZW        | USD          |
 |   |   |   |
 
-\*Brezilya'daki müşteriler için, Cloud Solution Providers (CSP) aracılığıyla Pazar USD kullanır.
+\*Brezilya 'daki müşteriler, bulut çözümü sağlayıcıları (CSP) aracılığıyla Market ABD doları kullanır.
 
-\** Ücretsiz ve BYOL VM görüntüleri sadece.
+\** Yalnızca ücretsiz ve KLG VM görüntüleri.

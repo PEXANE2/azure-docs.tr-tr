@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C (MSAL.NET) | Azure
+title: Azure AD B2C (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı ile Azure AD B2C kullanırken belirli hususlar hakkında bilgi edinin.
+description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Azure AD B2C kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,34 +14,34 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: d31cf3a4e024dc59b865d096cbd0829d50f61a1a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81533964"
 ---
-# <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Sosyal kimliklere sahip kullanıcılarda oturum MSAL.NET kullanın
+# <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
 
-[Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c)kullanarak sosyal kimliklere sahip kullanıcılarda oturum açma MSAL.NET kullanabilirsiniz. Azure AD B2C, ilkeler kavramı etrafında oluşturulmuştür. MSAL.NET, bir ilke belirterek bir yetki sağlamak için çevirir.
+[Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c)kullanarak sosyal kimliklerle kullanıcıları oturum açmak için msal.net kullanabilirsiniz. Azure AD B2C, ilke kavramı etrafında oluşturulmuştur. MSAL.NET ' de, bir ilke belirtildiğinde bir yetkili sağlamaya çevrilir.
 
-- Kamu istemcisi başvurusunu anında yaptığınızda, yetkili ilkeyi belirtmeniz gerekir.
-- Bir ilke uygulamak istediğinizde, bir `AcquireTokenInteractive` `authority` parametre içeren bir geçersiz kılma çağırmanız gerekir.
+- Ortak istemci uygulamasını örneklediğinizde, yetkinin ilkesini belirtmeniz gerekir.
+- Bir ilke uygulamak istediğinizde, bir `AcquireTokenInteractive` `authority` parametre içeren bir geçersiz kılma çağrısı yapmanız gerekir.
 
-Bu sayfa MSAL 3.x içindir. MSAL 2.x ile ilgileniyorsanız, lütfen [MSAL 2.x'teki Azure AD B2C özelliklerine](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)bakın.
+Bu sayfa MSAL 3. x içindir. MSAL 2. x ile ilgileniyorsanız, lütfen [msal 2. x içinde Azure AD B2C özellikleri](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)bölümüne bakın.
 
-## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C kiracıve ilke için yetki
+## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C kiracı ve ilke için yetki
 
-Kullanma yetkisi aşağıdaki `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}` leri
+Kullanım yetkisi şu `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}` konumda:
 
-- `azureADB2CHostname`Azure AD B2C kiracısının ve ana bilgisayar `{your-tenant-name}.b2clogin.com`sahibinin adıdır (örneğin),
-- `tenant`Azure AD B2C kiracısının (örneğin, `{your-tenant-name}.onmicrosoft.com`) veya kiracı için GUID'in tam adıdır,
-- `policyName`uygulanacak ilke veya kullanıcı akışının adı (örneğin kaydolma/kaydolmak için "b2c_1_susi" ).
+- `azureADB2CHostname`Azure AD B2C kiracının ve ana bilgisayarın adıdır (örneğin `{your-tenant-name}.b2clogin.com`),
+- `tenant`Azure AD B2C kiracının tam adı (örneğin, `{your-tenant-name}.onmicrosoft.com`) veya KIRACıNıN GUID 'si,
+- `policyName`uygulanacak ilke veya Kullanıcı akışının adı (örneğin, kaydolma/oturum açma için "b2c_1_susi").
 
 Azure AD B2C yetkilileri hakkında daha fazla bilgi için bu [belgelere](/azure/active-directory-b2c/b2clogin)bakın.
 
-## <a name="instantiating-the-application"></a>Uygulamanın anında
+## <a name="instantiating-the-application"></a>Uygulamanın örneğini oluşturma
 
-Uygulamayı yaparken, yetkiyi sağlamanız gerekir.
+Uygulamayı oluştururken, yetkili sağlamanız gerekir.
 
 ```csharp
 // Azure AD B2C Coordinates
@@ -62,9 +62,9 @@ application = PublicClientApplicationBuilder.Create(ClientID)
                .Build();
 ```
 
-## <a name="acquire-a-token-to-apply-a-policy"></a>İlke uygulamak için bir belirteç edinme
+## <a name="acquire-a-token-to-apply-a-policy"></a>İlke uygulamak için belirteç alma
 
-Bir kamu istemcisi uygulamasında Azure AD B2C korumalı bir API için belirteç elde etmek, geçersiz kılmaları bir yetkiliyle kullanmanızı gerektirir:
+Ortak bir istemci uygulamasında Azure AD B2C korunan bir API için belirteç alma, geçersiz kılmaları bir yetkiliyle kullanmanızı gerektirir:
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
@@ -76,9 +76,9 @@ AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
 
 Yeni değer:
 
-- `policy`önceki dizeleri (örneğin) `PolicySignUpSignIn`biri olmak.
-- `ParentActivityOrWindow`Android (Etkinlik) için gereklidir ve windows'daki windows ve iOS'taki UIViewController gibi üst ui'yi destekleyen diğer platformlar için isteğe bağlıdır. Kullanıcı Bilgisi iletişim kutusu hakkında daha fazla bilgi için [bkz.](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)`belirli bir ilke için hesap bulan bir yöntemdir. Örneğin:
+- `policy`önceki dizelerden biri olan (örneğin `PolicySignUpSignIn`).
+- `ParentActivityOrWindow`Android (etkinlik) için gereklidir ve iOS 'daki Windows ve UIViewController gibi üst Kullanıcı arabirimini destekleyen diğer platformlar için isteğe bağlıdır. [Kullanıcı arabirimi iletişim kutusunda](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)daha fazla bilgi görüntüleyin.
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)`, belirli bir ilke için bir hesap bulan bir yöntemdir. Örneğin:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -93,11 +93,11 @@ Yeni değer:
   }
   ```
 
-Bir ilke veya kullanıcı akışı uygulama (örneğin, son kullanıcının profilini düzenlemelerine veya parolasını sıfırlamalarına izin vermek) şu anda . `AcquireTokenInteractive` Bu iki ilke söz konusu olduğunda, döndürülen belirteç / kimlik doğrulama sonucunu kullanmazsınız.
+İlke veya Kullanıcı akışı uygulama (örneğin, son kullanıcının profilini düzenlemesine veya parolalarını sıfırlamasına izin vermek) Şu anda çağırarak `AcquireTokenInteractive`yapılır. Bu iki ilke söz konusu olduğunda, döndürülen belirteç/kimlik doğrulama sonucunu kullanmayın.
 
 ## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>EditProfile ve ResetPassword ilkelerinin özel durumu
 
-Son kullanıcılarınızın sosyal bir kimlikle oturum açarak profillerini yeniden yapılandırdığı bir deneyim sağlamak ve ardından profillerini yeniden oluşturmak istediğinizde, Azure AD B2C Profili Edit ilkesini uygulamak istersiniz. Bunu yapmanın yolu, bu `AcquireTokenInteractive` ilke için belirli bir yetkiliyle `Prompt.NoPrompt` ve hesap seçimi iletişim kutusunun görüntülenmesini önlemek için bir Istem kümesini arayarak (kullanıcı zaten oturum açmış ve etkin bir çerez oturumuna sahip olduğundan) yapmaktır.
+Son kullanıcılarınızın sosyal kimlik ile oturum açıp profilini düzenleyebileceği bir deneyim sağlamak istediğinizde Azure AD B2C profili düzenleme ilkesini uygulamak istiyorsunuz. Bunu yapmanın yolu, bu ilke için belirli `AcquireTokenInteractive` bir yetkiyi çağırarak ve hesap seçimi iletişim kutusunun görüntülenmesini engellemek Için bir istem `Prompt.NoPrompt` (Kullanıcı zaten oturum açmış ve etkin bir tanımlama bilgisi oturumuna sahip olduğu için) olarak ayarlanmıştır.
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -121,15 +121,15 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 ## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>Azure AD B2C ile kaynak sahibi parola kimlik bilgileri (ROPC)
 ROPC akışı hakkında daha fazla bilgi için lütfen bu [belgelere](v2-oauth-ropc.md)bakın.
 
-Uygulamanız bir kullanıcıdan parolalarını sorduğundan bu akış **önerilmez.** Bu sorun hakkında daha fazla bilgi için [bu makaleye](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)bakın.
+Bu akış, bir kullanıcıdan parolasını sormasının güvenli olmadığı için **önerilmez** . Bu sorun hakkında daha fazla bilgi için [Bu makaleye](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)bakın.
 
-Kullanıcı adı/şifre kullanarak, bir dizi şeyden vazgeçersiniz:
-- Modern kimliğin temel ilkeleri: şifre avlanır, yeniden oynanır. Çünkü ele geçirilebilen bir paylaşım sırrı konseptine sahibiz. Bu, parolasız ile uyumsuzdur.
-- MFA yapması gereken kullanıcılar oturum açamaz (etkileşim olmadığı için).
-- Kullanıcılar tek bir oturum açamaz.
+Kullanıcı adı/parola kullanarak bir dizi şey sağlarsınız:
+- Modern kimlik 'in temel anları: parola, daha fazla, yeniden yürütülür. Bu, ele geçirilebilecek bir paylaşılan gizlilik kavramımız için. Bu, passwordless ile uyumsuzdur.
+- MFA yapması gereken kullanıcılar oturum açamaz (hiçbir etkileşim yoktur).
+- Kullanıcılar çoklu oturum açma yapamaz.
 
-### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Azure AD B2C'deki ROPC akışını yapılandırma
-Azure AD B2C kiracınızda yeni bir kullanıcı akışı oluşturun ve **ROPC kullanarak Oturum Aç'ı**seçin. Bu, kiracınız için ROPC ilkesini etkinleştirir. Bkz. Daha fazla ayrıntı için [kaynak sahibi nin parola kimlik bilgilerini yapılandırın.](/azure/active-directory-b2c/configure-ropc)
+### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Azure AD B2C 'de ROPC akışını yapılandırma
+Azure AD B2C kiracınızda yeni bir Kullanıcı akışı oluşturun ve **ROPC kullanarak oturum aç**' ı seçin. Bu, kiracınız için ROPC ilkesini etkinleştirir. Daha fazla ayrıntı için bkz. [kaynak sahibi parola kimlik bilgileri akışını yapılandırma](/azure/active-directory-b2c/configure-ropc) .
 
 `IPublicClientApplication`bir yöntem içerir:
 ```csharp
@@ -140,48 +140,48 @@ AcquireTokenByUsernamePassword(
 ```
 
 Bu yöntem parametre olarak alır:
-- Erişim belirteci istemek için *kapsamlar.*
-- Bir *kullanıcı adı*.
-- Kullanıcı için SecureString *parolası.*
+- İçin erişim belirteci istemek için *kapsamlar* .
+- Bir *Kullanıcı adı*.
+- Kullanıcı için SecureString *parolası* .
 
-ROPC ilkesini içeren yetkisini kullanmayı unutmayın.
+ROPC ilkesini içeren yetkiyi kullanmayı unutmayın.
 
-### <a name="limitations-of-the-ropc-flow"></a>ROPC akışının sınırlamaları
- - ROPC akışı **yalnızca yerel hesaplar için çalışır** (bir e-posta veya kullanıcı adı kullanarak Azure AD B2C'ye kaydolduğunuz yer). Bu akış, Azure AD B2C (Facebook, Google, vb.) tarafından desteklenen kimlik sağlayıcılarından herhangi biri için federating durumunda çalışmaz.
+### <a name="limitations-of-the-ropc-flow"></a>ROPC Flow 'un sınırlamaları
+ - ROPC akışı **yalnızca yerel hesaplar için** (bir e-posta veya Kullanıcı adı kullanarak Azure AD B2C kaydettiğinizde) kullanılabilir. Bu akış, Azure AD B2C (Facebook, Google, vb.) tarafından desteklenen kimlik sağlayıcılarının herhangi birine federasyona eklemek için çalışmaz.
 
-## <a name="google-auth-and-embedded-webview"></a>Google Auth ve Gömülü Web Görünümü
+## <a name="google-auth-and-embedded-webview"></a>Google Auth ve Embedded WebView
 
-Google'ı kimlik sağlayıcısı olarak kullanan bir Azure AD B2C geliştiricisiyseniz, Google [gömülü web görünümlerinden kimlik doğrulamaya](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)izin vermeyince sistem tarayıcısını kullanmanız ağını yeniden komutla komuta bağlıyoruz. Şu `login.microsoftonline.com` anda, Google ile güvenilir bir otoritedir. Bu yetkisini kullanarak gömülü web view ile çalışacaktır. Ancak `b2clogin.com` kullanmak Google'ın güvenilir bir otoritesi değildir, bu nedenle kullanıcılar kimlik doğrulaması yapmayacaktır.
+Bir kimlik sağlayıcısı olarak Google kullanan Azure AD B2C geliştiricisiyseniz, Google ['ın katıştırılmış Web görünümlerinden kimlik doğrulamasına](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)izin vermediği için sistem tarayıcısını kullanın. Şu anda `login.microsoftonline.com` , Google ile güvenilen bir yetkiliniz. Bu yetkilinin kullanılması katıştırılmış WebView ile çalışacaktır. Ancak `b2clogin.com` , Google ile güvenilen bir yetkili değildir, bu nedenle kullanıcılar kimlik doğrulaması yapamaz.
 
-İşler değişirse bu [soruna](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) bir güncelleştirme sağlarız.
+Değişiklik olursa bu [soruna](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) yönelik bir güncelleştirme sağlayacağız.
 
-## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>MSAL.Net'da Azure AD B2C ile önbelleğe alma
+## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>MSAL.Net içinde Azure AD B2C ile önbelleğe alma
 
-### <a name="known-issue-with-azure-ad-b2c"></a>Azure AD B2C ile bilinen sorun
+### <a name="known-issue-with-azure-ad-b2c"></a>Azure AD B2C ile ilgili bilinen sorun
 
-MSAL.Net [belirteç önbelleğini](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)destekler. Belirteç önbelleğe alma anahtarı, Kimlik Sağlayıcı tarafından döndürülen talepleri temel alır. Şu anda MSAL.Net belirteç önbellek anahtarı oluşturmak için iki iddia gerekir:
-- `tid`azure AD Kiracı kimliği ve
+MSAL.Net, [belirteç önbelleğini](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)destekler. Belirteç önbelleğe alma anahtarı, kimlik sağlayıcısı tarafından döndürülen talepleri temel alır. Şu anda MSAL.Net bir belirteç önbellek anahtarı oluşturmak için iki talebe ihtiyaç duyuyor:
+- `tid`Azure AD kiracı KIMLIĞI ve
 - `preferred_username`
 
-Bu iddiaların her ikisi de Azure AD B2C senaryolarının çoğunda eksiktir.
+Çoğu Azure AD B2C senaryosunda bu talepler eksiktir.
 
-Müşteri etkisi, kullanıcı adı alanını görüntülemeye çalışırken, değer olarak "Belirteç yanıtından eksik" alıyor musunuz? Bu durumda, Azure AD B2C'nin sosyal hesaplar ve dış kimlik sağlayıcıları (IDP'ler) ile sınırlamalar nedeniyle preferred_username için IdToken'de bir değer döndürmemesidir. Azure AD, kullanıcının kim olduğunu bildiği için preferred_username için bir değer döndürür, ancak Azure AD B2C için, kullanıcı yerel bir hesapla, Facebook, Google, GitHub vb. ile oturum açabildiğinden, Azure AD B2C için preferred_username için kullanılacak tutarlı bir değer yoktur. MSAL'ın ADAL ile önbellek uyumluluğunu kullanıma samasını engellemek için, IdToken preferred_username için hiçbir şey döndürmediğinde Azure AD B2C hesaplarıyla uğraşırken "Belirteç yanıtından eksik" kullanmaya karar verdik. MSAL, kitaplıklar arasında önbellek uyumluluğunu korumak için preferred_username için bir değer döndürmelidir.
+Müşteri etkisi, Kullanıcı adı alanını görüntülemeye çalışırken, değer olarak "belirteç yanıtında yok" değerini alıyor musunuz? Bu durumda, sosyal hesaplar ve dış kimlik sağlayıcıları (IDPs) ile ilgili sınırlamalar nedeniyle Azure AD B2C, preferred_username için ıdtoken 'da bir değer döndürmemelidir. Kullanıcı bir yerel hesap, Facebook, Google, GitHub vb. ile oturum açacağından, Azure AD Azure AD B2C preferred_username için bir değer döndürür. Azure AD B2C, preferred_username için kullanılacak tutarlı bir değer değildir. MSAL 'in, ADAL ile önbellek uyumluluğunu kullanıma almasını sağlamak için, ıdtoken preferred_username için hiçbir şey döndürdüğünde Azure AD B2C hesaplarıyla ilgilenirken "belirteç yanıtında eksik" seçeneğini kullanmaya karar verdiniz. MSAL, kitaplıklar arasında önbellek uyumluluğunu sürdürmek için preferred_username bir değer döndürmelidir.
 
 ### <a name="workarounds"></a>Geçici Çözümler
 
-#### <a name="mitigation-for-the-missing-tenant-id"></a>Eksik kiracı kimliği için azaltma
+#### <a name="mitigation-for-the-missing-tenant-id"></a>Eksik kiracı KIMLIĞI için risk azaltma
 
-Önerilen geçici çözüm, [Önbelleğe Alma'yı İlke'ye göre](#acquire-a-token-to-apply-a-policy) kullanmaktır
+Önerilen geçici çözüm, [ilkeye göre önbelleğe almayı](#acquire-a-token-to-apply-a-policy) kullanmaktır
 
-Alternatif olarak, `tid` [b2C özel ilkeleri](https://aka.ms/ief)kullanıyorsanız, uygulamaya ek talepler döndürme olanağı sağladığından, talebi kullanabilirsiniz. [Talep Dönüşümü](/azure/active-directory-b2c/claims-transformation-technical-profile) hakkında daha fazla bilgi edinmek için
+Alternatif olarak, `tid` [B2C özel ilkelerini](https://aka.ms/ief)kullanıyorsanız, uygulamaya ek talepler döndürme özelliği sağladığından talebi kullanabilirsiniz. [Talep dönüştürmesi](/azure/active-directory-b2c/claims-transformation-technical-profile) hakkında daha fazla bilgi edinmek için
 
-#### <a name="mitigation-for-missing-from-the-token-response"></a>"Belirteç yanıtından eksik" için azaltma
-Seçeneklerden biri, "ad" iddiasını tercih edilen kullanıcı adı olarak kullanmaktır. İşlem bu [B2C doc](../../active-directory-b2c/user-flow-overview.md) -> "İade talep sütununda, başarılı bir profil düzenleme deneyiminden sonra başvurunuza geri gönderilen yetkilendirme belirteçlerinde iade olmasını istediğiniz talepleri seçin. Örneğin, Görüntü Adı, Posta Kodu'ni seçin."
+#### <a name="mitigation-for-missing-from-the-token-response"></a>"Belirteç yanıtında yok" için azaltma
+Bir seçenek, "ad" talebini tercih edilen Kullanıcı adı olarak kullanmaktır. İşlem bu [B2C belgesi](../../active-directory-b2c/user-flow-overview.md) -> "bölümünde belirtilmiştir" dönüş talebi sütununda, başarılı bir profil düzenlemesi deneyiminden sonra uygulamanıza geri gönderilen yetkilendirme belirteçlerinde döndürülmesini istediğiniz talepleri seçin. Örneğin, görünen ad, posta kodu ' nu seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD B2C uygulamaları için MSAL.NET etkileşimli olarak belirteçleri edinme hakkında daha fazla bilgi aşağıdaki örnekte verilmiştir.
+Azure AD B2C uygulamaları için MSAL.NET ile etkileşimli olarak belirteçleri alma hakkında daha fazla ayrıntı aşağıdaki örnekte verilmiştir.
 
 | Örnek | Platform | Açıklama|
 |------ | -------- | -----------|
-|[aktif-dizin-b2c-xamarin-yerli](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Azure AD B2C üzerinden kullanıcıların kimliğini doğrulamak ve ortaya çıkan belirteçlerle birlikte bir web API'sine erişmek için MSAL.NET nasıl kullanılacağını gösteren basit bir Xamarin Forms uygulaması.|
+|[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Azure AD B2C aracılığıyla kullanıcıların kimliğini doğrulamak ve sonuç belirteçleriyle bir Web API 'sine erişmek için MSAL.NET kullanmayı gösteren basit bir Xamarin Forms uygulaması.|

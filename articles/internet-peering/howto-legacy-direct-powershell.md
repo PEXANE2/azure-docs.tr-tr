@@ -1,7 +1,7 @@
 ---
-title: PowerShell'i kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
+title: PowerShell kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme
 titleSuffix: Azure
-description: PowerShell'i kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
+description: PowerShell kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,31 +9,31 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 5d2a8c910c9e384e137785bc1cd491bc85c7e7a8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678469"
 ---
-# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>PowerShell'i kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
+# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>PowerShell kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme
 
-Bu makalede, PowerShell cmdlets kullanarak varolan bir eski Doğrudan bir Azure kaynağına bakan dönüştürmek için nasıl açıklanmaktadır.
+Bu makalede, PowerShell cmdlet 'lerini kullanarak mevcut bir eski doğrudan eşlemeyi bir Azure kaynağına nasıl dönüştürebileceğiniz açıklanır.
 
 İsterseniz, Azure [portalını](howto-legacy-direct-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-* Yapılandırmaya başlamadan önce [ön koşulları](prerequisites.md) ve Doğrudan bakan [gözden geçirin.](walkthrough-direct-all.md)
+* Yapılandırmaya başlamadan önce [önkoşulları](prerequisites.md) ve [doğrudan eşleme](walkthrough-direct-all.md) kılavuzunu gözden geçirin.
 
-### <a name="work-with-azure-powershell"></a>Azure PowerShell ile çalışın
+### <a name="work-with-azure-powershell"></a>Azure PowerShell çalışın
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>Eski bir Azure kaynağına doğrudan bakış dönüştürme
+## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>Eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure hesabınızda oturum açın ve aboneliğinizi seçin
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-a-legacy-direct-peering-for-conversion"></a><a name= get></a>Dönüşüm için bir eski Doğrudan bakış alın
-Bu örnek, Seattle'a bakan konuma doğrudan bakan bir eskinin nasıl alındığını gösterir.
+### <a name="get-a-legacy-direct-peering-for-conversion"></a><a name= get></a>Dönüştürme için eski bir doğrudan eşleme al
+Bu örnek, Seattle eşleme konumunda nasıl eski bir doğrudan eşleme alınacağını gösterir.
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering `
@@ -79,13 +79,13 @@ ProvisionedBandwidthInMbps : 20000
 ProvisioningState          : Succeeded
 ```
 
-### <a name="convert-a-legacy-direct-peering"></a>Eskiye doğrudan bakmayı dönüştürme
+### <a name="convert-a-legacy-direct-peering"></a>Eski bir doğrudan eşlemeyi Dönüştür
 
 &nbsp;
 > [!IMPORTANT]
-> Eski bir azure kaynağına baktığınızda, değişiklikler desteklenmez. &nbsp;
+> Eski bir eşlemeyi bir Azure kaynağına dönüştürdüğünüzde, değişiklikler desteklenmez. &nbsp;
 
-Eski bir Azure kaynağına doğrudan bakış dönüştürmeyapmak için bu komutu kullanın:
+Eski bir doğrudan eşlemeyi bir Azure kaynağına dönüştürmek için bu komutu kullanın:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -112,14 +112,14 @@ Tags                 : {}
 ```
 
 ## <a name="additional-resources"></a>Ek kaynaklar
-Bu komutu çalıştırarak tüm parametrelerin ayrıntılı açıklamalarını alabilirsiniz:
+Şu komutu çalıştırarak tüm parametrelerin ayrıntılı açıklamalarını alabilirsiniz:
 
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
 
-Daha fazla bilgi için [Internet'e bakan SSS'lere](faqs.md)bakın.
+Daha fazla bilgi için bkz. [Internet eşlemesi SSS](faqs.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [PowerShell'i kullanarak Doğrudan bir eşleme oluşturma veya değiştirme](howto-direct-powershell.md)
+* [PowerShell kullanarak doğrudan eşleme oluşturma veya değiştirme](howto-direct-powershell.md)

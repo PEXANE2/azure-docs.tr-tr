@@ -1,6 +1,6 @@
 ---
-title: Uzaktan izleme çözümünde aygıt şeması - Azure | Microsoft Dokümanlar
-description: Bu makalede, uzaktan izleme çözümünde simüle edilmiş bir aygıtı tanımlayan JSON şeması açıklanmaktadır.
+title: Uzaktan izleme çözümünde cihaz şeması-Azure | Microsoft Docs
+description: Bu makalede, uzaktan izleme çözümünde sanal bir cihazı tanımlayan JSON şeması açıklanmaktadır.
 author: dominicbetts
 manager: philmea
 ms.author: dobett
@@ -12,37 +12,37 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683739"
 ---
 # <a name="understand-the-device-model-schema"></a>Cihaz modeli şemasını anlama
 
-Davranışını sınamak için Uzaktan İzleme çözümünde simüle edilmiş aygıtlar kullanabilirsiniz. Uzaktan İzleme çözümü, simüle edilmiş aygıtları çalıştırmak için bir aygıt simülasyon hizmeti içerir. Uzaktan İzleme çözümünü dağıttığınızda, simüle edilmiş aygıtlar koleksiyonu otomatik olarak karşılanır. Varolan simüle edilmiş aygıtları özelleştirebilir veya kendi aygıtlarınızı oluşturabilirsiniz.
+Davranışını test etmek için uzaktan Izleme çözümünde sanal cihazları kullanabilirsiniz. Uzaktan Izleme çözümü, sanal cihazları çalıştırmak için bir cihaz benzetimi hizmeti içerir. Uzaktan Izleme çözümünü dağıttığınızda, sanal cihazların bir koleksiyonu otomatik olarak sağlanır. Var olan sanal cihazları özelleştirebilir veya kendi oluşturduğunuz cihazları oluşturabilirsiniz.
 
-Bu makalede, benzetilen bir aygıtın yeteneklerini ve davranışlarını belirten aygıt modeli şeması açıklanmaktadır. Aygıt modeli bir JSON dosyasında depolanır.
+Bu makalede, sanal bir cihazın yeteneklerini ve davranışını belirten cihaz modeli şeması açıklanmaktadır. Cihaz modeli bir JSON dosyasında depolanır.
 
 > [!NOTE]
-> Bu cihaz modeli şeması yalnızca aygıt simülasyon hizmetinde barındırılan simüle edilmiş aygıtlar içindir. Gerçek bir aygıt oluşturmak istiyorsanız, [cihazınızı Uzaktan İzleme çözüm hızlandırıcısına bağlayın'](iot-accelerators-connecting-devices.md)a bakın.
+> Bu cihaz modeli şeması yalnızca cihaz benzetimi hizmetinde barındırılan sanal cihazlar içindir. Gerçek bir cihaz oluşturmak istiyorsanız, bkz. [cihazınızı uzaktan izleme çözüm hızlandırıcısına bağlama](iot-accelerators-connecting-devices.md).
 
-Aşağıdaki makaleler geçerli makale ile ilgilidir:
+Aşağıdaki makaleler geçerli makaleyle ilgilidir:
 
-* [Aygıt modeli davranışını uygulayın,](iot-accelerators-remote-monitoring-device-behavior.md) benzetimli aygıtın davranışını uygulamak için kullandığınız JavaScript dosyalarını açıklar.
-* [Yeni bir simüle aygıt oluşturun,](iot-accelerators-remote-monitoring-create-simulated-device.md) her şeyi bir araya getirir ve çözümünüze yeni bir simüle aygıt türünü nasıl dağıtabileceğinizi gösterir.
+* [Cihaz modeli davranışını uygulamak](iot-accelerators-remote-monitoring-device-behavior.md) , sanal bir cihazın davranışını uygulamak Için kullandığınız JavaScript dosyalarını açıklar.
+* [Yeni bir sanal cihaz oluşturma, bir](iot-accelerators-remote-monitoring-create-simulated-device.md) araya getirir ve çözümünüze yeni bir sanal cihaz türü dağıtmayı gösterir.
 
 Bu makalede şunları öğreneceksiniz:
 
 >[!div class="checklist"]
-> * Benzetimli aygıt modelini tanımlamak için JSON dosyası kullanma
-> * Benzetimli aygıtın özelliklerini belirtin
-> * Simüle cihazın gönderdiği telemetriyi belirtin
-> * Aygıtın yanıt olarak yanıtlediği bulut-aygıt yöntemlerini belirtin
+> * Sanal cihaz modeli tanımlamak için JSON dosyası kullanma
+> * Sanal cihazın özelliklerini belirtin
+> * Sanal cihazın gönderdiği Telemetriyi belirtin
+> * Cihazın yanıt verdiği buluttan cihaza yöntemleri belirtin
 
-## <a name="the-parts-of-the-device-model-schema"></a>Cihaz modeli şemasının parçaları
+## <a name="the-parts-of-the-device-model-schema"></a>Cihaz modeli şemasının bölümleri
 
-Chiller veya kamyon gibi her aygıt modeli, simülasyon hizmetinin simüle edebileceği bir aygıt türünü tanımlar. Her aygıt modeli, aşağıdaki üst düzey şema içeren bir JSON dosyasında depolanır:
+Bir chilya da kamyon gibi her bir cihaz modeli benzetim hizmetinin benzetimini gerçekleştirebileceği bir cihaz türü tanımlar. Her cihaz modeli, aşağıdaki üst düzey şemaya sahip bir JSON dosyasında depolanır:
 
 ```json
 {
@@ -67,33 +67,33 @@ Chiller veya kamyon gibi her aygıt modeli, simülasyon hizmetinin simüle edebi
 }
 ```
 
-GitHub'daki [aygıt modelleri klasöründe](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels) varsayılan benzetilen aygıtlar için şema dosyalarını görüntüleyebilirsiniz.
+GitHub 'daki [devicemodeller klasöründe](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels) varsayılan sanal cihazların şema dosyalarını görüntüleyebilirsiniz.
 
-Aşağıdaki tabloda üst düzey şema girişleri açıklanmaktadır:
+Aşağıdaki tabloda en üst düzey şema girdileri açıklanmaktadır:
 
-| Şema girişi | Açıklama |
+| Şema girdisi | Açıklama |
 | -- | --- |
-| `SchemaVersion` | Şema sürümü her `1.0.0` zaman ve bu dosyanın biçimine özgüdür. |
-| `Id` | Bu aygıt modeli için benzersiz bir kimlik. |
-| `Version` | Aygıt modelinin sürümünü tanımlar. |
-| `Name` | Cihaz modeli için uygun bir ad. |
-| `Description` | Aygıt modelinin açıklaması. |
-| `Protocol` | Aygıtın kullandığı bağlantı protokolü. Biri olabilir `AMQP`, `MQTT`ve `HTTP`. |
+| `SchemaVersion` | Şema sürümü her zaman `1.0.0` ve bu dosyanın biçimine özgüdür. |
+| `Id` | Bu cihaz modeli için benzersiz bir KIMLIK. |
+| `Version` | Cihaz modelinin sürümünü tanımlar. |
+| `Name` | Cihaz modeli için kolay bir ad. |
+| `Description` | Cihaz modelinin açıklaması. |
+| `Protocol` | Cihazın kullandığı bağlantı protokolü. `AMQP`, `MQTT`Ve `HTTP`' den biri olabilir. |
 
-Aşağıdaki bölümlerde JSON şemasındaki diğer bölümler açıklayınız:
+Aşağıdaki bölümlerde JSON şemasındaki diğer bölümler açıklanır:
 
 ## <a name="simulation"></a>Benzetim
 
-`Simulation` Bölümde, benzetilen aygıtın iç durumunu tanımlarsınız. Aygıt tarafından gönderilen herhangi bir telemetri değerleri bu aygıt durumunun bir parçası olmalıdır.
+`Simulation` Bölümünde, sanal cihazın iç durumunu tanımlarsınız. Cihaz tarafından gönderilen telemetri değerlerinin bu cihaz durumunun bir parçası olması gerekir.
 
-Aygıt durumunun tanımı iki öğeden oluşur:
+Cihaz durumunun tanımında iki öğe vardır:
 
-* `InitialState`aygıt durumu nesnesinin tüm özellikleri için ilk değerleri tanımlar.
-* `Script`aygıt durumunu güncelleştirmek için bir zamanlamada çalışan bir JavaScript dosyasını tanımlar. Aygıt tarafından gönderilen telemetri değerlerini rasgeleleştirmek için bu komut dosyası dosyasını kullanabilirsiniz.
+* `InitialState`Cihaz durumu nesnesinin tüm özellikleri için başlangıç değerlerini tanımlar.
+* `Script`cihaz durumunu güncelleştirmek için bir zamanlamaya göre çalışan bir JavaScript dosyasını tanımlar. Cihaz tarafından gönderilen telemetri değerlerini rastgele atamak için bu komut dosyasını kullanabilirsiniz.
 
-Aygıt durumu nesnesini güncelleyen JavaScript dosyası hakkında daha fazla bilgi edinmek için [bkz.](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md)
+Cihaz durumu nesnesini güncelleştiren JavaScript dosyası hakkında daha fazla bilgi edinmek için bkz. [cihaz modeli davranışını anlama](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
-Aşağıdaki örnek, benzetilen bir soğutucu aygıtı için aygıt durumu nesnesinin tanımını gösterir:
+Aşağıdaki örnekte, sanal bir chilcihaz için cihaz durumu nesnesinin tanımı gösterilmektedir:
 
 ```json
 "Simulation": {
@@ -115,11 +115,11 @@ Aşağıdaki örnek, benzetilen bir soğutucu aygıtı için aygıt durumu nesne
 }
 ```
 
-Simülasyon hizmeti, aygıt durumunu güncelleştirmek için **chiller-01-state.js** dosyasını her beş saniyede bir çalıştırıyor. GitHub'daki [komut dosyaları klasöründe](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) varsayılan benzetilen aygıtlar için JavaScript dosyalarını görebilirsiniz. Bu JavaScript dosyaları, kural kuralına göre, yöntem davranışlarını uygulayan dosyalardan ayırt etmek için sonek **-duruma** sahiptir.
+Simülasyon hizmeti, cihaz durumunu güncelleştirmek için her beş saniyede bir **Chiller-01-State. js** dosyasını çalıştırır. GitHub 'daki [betikler klasöründe](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) varsayılan sanal cihazların JavaScript dosyalarını görebilirsiniz. Kurala göre, bu JavaScript dosyaları Yöntem davranışlarını uygulayan dosyalardan ayırt edilebilmesi için sonek **durumundadır** .
 
 ## <a name="properties"></a>Özellikler
 
-Şema `Properties` bölümü, aygıt çözüme rapor edilen özellik değerlerini tanımlar. Örneğin:
+Şemanın `Properties` bölümü, cihazın çözüme rapor bildirdiği özellik değerlerini tanımlar. Örneğin:
 
 ```json
 "Properties": {
@@ -130,13 +130,13 @@ Simülasyon hizmeti, aygıt durumunu güncelleştirmek için **chiller-01-state.
 }
 ```
 
-Çözüm başlatıldığında, ui'de kullanılacak `Type` değerlerin bir listesini oluşturmak için tüm benzetilen aygıtları sorgular. Çözüm, aygıtın konumunu panodaki haritaya eklemek için özellikleri `Latitude` ve `Longitude` özelliklerini kullanır.
+Çözüm başladığında, Kullanıcı arabiriminde kullanılacak `Type` değerlerin bir listesini oluşturmak için tüm sanal cihazları sorgular. Çözüm, `Latitude` Pano 'daki haritaya `Longitude` cihaz konumunu eklemek için ve özelliklerini kullanır.
 
 ## <a name="telemetry"></a>Telemetri
 
-Dizi, `Telemetry` simüle edilen aygıtın çözüme gönderdiği tüm telemetri türlerini listeler.
+`Telemetry` Dizi, sanal cihazın çözüme gönderdiği tüm telemetri türlerini listeler.
 
-Aşağıdaki örnek, asansör sensörlerinden gelen verileri içeren `floor` `vibration` `temperature` her 10 saniyede bir JSON telemetri mesajı gönderir:
+Aşağıdaki örnek `floor`, `vibration`, ve `temperature` Asansör sensörlerinden alınan verileri her 10 saniyede bir JSON telemetri iletisi gönderir:
 
 ```json
 "Telemetry": [
@@ -158,21 +158,21 @@ Aşağıdaki örnek, asansör sensörlerinden gelen verileri içeren `floor` `vi
 ]
 ```
 
-`MessageTemplate`benzetilen aygıt tarafından gönderilen JSON iletisinin yapısını tanımlar. Yer tutucular, `MessageTemplate` aygıt `${NAME}` durumu `NAME` [nesnesinden](#simulation)bir anahtar olan sözdizimini kullanır. Dizeleri alıntı yapılmalıdır, sayılar olmamalıdır.
+`MessageTemplate`sanal cihaz tarafından gönderilen JSON iletisinin yapısını tanımlar. İçindeki `MessageTemplate` yer tutucular, `${NAME}` [cihaz durumu nesnesinden](#simulation)bir anahtar `NAME` olan söz dizimini kullanır. Dizeler tırnak içine alınmalıdır, sayılar olmamalıdır.
 
-`MessageSchema`benzetimli aygıt tarafından gönderilen iletinin şema tanımlar. Mesaj şeması, arka uç uygulamalarının gelen telemetriyi yorumlamak için bilgileri yeniden kullanmasını sağlamak için IoT Hub'a da yayınlanır.
+`MessageSchema`sanal cihaz tarafından gönderilen iletinin şemasını tanımlar. İleti şeması, arka uç uygulamalarının gelen telemetrileri yorumlamak için bilgileri yeniden kullanmasına olanak tanımak üzere IoT Hub de yayımlanır.
 
-Şu anda yalnızca JSON ileti şemalarını kullanabilirsiniz. Şemada listelenen alanlar aşağıdaki türlerden olabilir:
+Şu anda yalnızca JSON ileti şemalarını kullanabilirsiniz. Şemada listelenen alanlar aşağıdaki türlerde olabilir:
 
-* Nesne - JSON kullanılarak seri hale getir
-* İkili - base64 kullanılarak serihale
+* Nesne-JSON kullanılarak serileştirilmiş
+* Base64 kullanılarak ikili seri hale getirilmiş
 * Metin
 * Boole
 * Tamsayı
 * Çift
 * DateTime
 
-Farklı aralıklarla telemetri iletileri göndermek için `Telemetry` diziye birden çok telemetri türü ekleyin. Aşağıdaki örnek, her 10 saniyede bir sıcaklık ve nem verilerini ve her dakika ışığın durumunu gönderir:
+Farklı aralıklarda telemetri iletileri göndermek için, `Telemetry` diziye birden çok telemetri türü ekleyin. Aşağıdaki örnek, her 10 saniyede bir sıcaklık ve nem verisi ve her dakika ışığın durumunu gönderir:
 
 ```json
 "Telemetry": [
@@ -204,18 +204,18 @@ Farklı aralıklarla telemetri iletileri göndermek için `Telemetry` diziye bir
 ],
 ```
 
-## <a name="cloudtodevicemethods"></a>CloudtoDevice Yöntemleri
+## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods
 
-Benzetimli bir aygıt, bir IoT hub'ından çağrılan buluttan aygıta yöntemlere yanıt verebilir. Aygıt `CloudToDeviceMethods` modeli şema dosyasındaki bölüm:
+Sanal cihaz, bir IoT Hub 'ından çağrılan buluttan cihaza yöntemlere yanıt verebilir. Cihaz `CloudToDeviceMethods` modeli şema dosyasındaki bölümü:
 
-* Benzetimli aygıtın yanıt verebileceği yöntemleri tanımlar.
+* Sanal cihazın yanıt verebildiği yöntemleri tanımlar.
 * Yürütülecek mantığı içeren JavaScript dosyasını tanımlar.
 
-Benzetimli aygıt, desteklediği yöntemlerin listesini bağlı olduğu IoT hub'ına gönderir.
+Sanal cihaz, bağlandığı IoT Hub 'ına desteklediği yöntemlerin listesini gönderir.
 
-Aygıtın davranışını uygulayan JavaScript dosyası hakkında daha fazla bilgi edinmek için [bkz.](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md)
+Cihazın davranışını uygulayan JavaScript dosyası hakkında daha fazla bilgi edinmek için bkz. [cihaz modeli davranışını anlama](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
-Aşağıdaki örnekte, desteklenen üç yöntem ve bu yöntemleri uygulayan JavaScript dosyaları belirtilir:
+Aşağıdaki örnek, üç desteklenen yöntemi ve bu yöntemleri uygulayan JavaScript dosyalarını belirtir:
 
 ```json
 "CloudToDeviceMethods": {
@@ -234,22 +234,22 @@ Aşağıdaki örnekte, desteklenen üç yöntem ve bu yöntemleri uygulayan Java
 }
 ```
 
-GitHub'daki [komut dosyaları klasöründe](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) varsayılan benzetilen aygıtlar için JavaScript dosyalarını görebilirsiniz. Bu JavaScript dosyaları, kural kuralına göre, bunları durum davranışı uygulayan dosyalardan ayırt etmek için sonek **yöntemine** sahiptir.
+GitHub 'daki [betikler klasöründe](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) varsayılan sanal cihazların JavaScript dosyalarını görebilirsiniz. Kurala göre, bu JavaScript dosyalarının, durum davranışını uygulayan dosyalardan ayırt edilebilmesi için sonek **-yöntemi** vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, kendi özel simüle aygıt modelinizi nasıl oluşturabilirsiniz açıklanmıştır. Bu makalede, nasıl gösterin:
+Bu makalede, kendi özel sanal cihaz modelinizi oluşturma açıklanır. Bu makalede nasıl yapılacağı açıklanır:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Benzetimli aygıt modelini tanımlamak için JSON dosyası kullanma
-> * Benzetimli aygıtın özelliklerini belirtin
-> * Simüle cihazın gönderdiği telemetriyi belirtin
-> * Aygıtın yanıt olarak yanıtlediği bulut-aygıt yöntemlerini belirtin
+> * Sanal cihaz modeli tanımlamak için JSON dosyası kullanma
+> * Sanal cihazın özelliklerini belirtin
+> * Sanal cihazın gönderdiği Telemetriyi belirtin
+> * Cihazın yanıt verdiği buluttan cihaza yöntemleri belirtin
 
-Şimdi JSON şema hakkında öğrendim, önerilen bir sonraki adım nasıl [simüle cihazın davranışını uygulamak](iot-accelerators-remote-monitoring-device-behavior.md)için öğrenmektir.
+JSON şeması hakkında öğrendiğinize göre, önerilen sonraki adım, [sanal cihazınızın davranışını nasıl uygulayacağınızı](iot-accelerators-remote-monitoring-device-behavior.md)öğrenmelidir.
 
-Uzaktan İzleme çözümü hakkında daha fazla geliştirici bilgisi için bkz:
+Uzaktan Izleme çözümü hakkında daha fazla geliştirici bilgisi için bkz.:
 
 * [Geliştirici Başvuru Kılavuzu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
-* [Geliştirici Sorun Giderme Kılavuzu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
+* [Geliştirici sorun giderme kılavuzu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

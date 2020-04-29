@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory portalındaki kullanıcıların listesini indirin | Microsoft Dokümanlar
-description: Azure Active Directory'deki Azure yönetici merkezinde kullanıcı kayıtlarını toplu olarak indirin.
+title: Azure Active Directory portalındaki kullanıcıların bir listesini indirin | Microsoft Docs
+description: Kullanıcı kayıtlarını Azure Yönetim Merkezi 'nde Azure Active Directory ' de toplu olarak indirin.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,72 +14,72 @@ ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b35163387ed4ce71f7a2019835a1d9fdbff3051
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81532670"
 ---
-# <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Azure Active Directory portalındaki kullanıcıların listesini indirin
+# <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Azure Active Directory portalındaki kullanıcıların listesini indirme
 
-Azure Etkin Dizin (Azure AD), toplu kullanıcı alma (oluşturma) işlemlerini destekler.
+Azure Active Directory (Azure AD) toplu Kullanıcı içeri aktarma (oluşturma) işlemlerini destekler.
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Kullanıcıların listesini Azure AD yönetici merkezinden indirmek için, Azure AD'de bir veya daha fazla kuruluş düzeyinde yönetici rolüne atanmış bir kullanıcıyla oturum açmış olmanız gerekir (Kullanıcı Yöneticisi gereken minimum roldür). Konuk davetçi ve uygulama geliştiricisi yönetici rolleri olarak kabul edilmez.
+Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de kuruluş düzeyindeki bir veya daha fazla yönetici rolüne (Kullanıcı Yöneticisi gereken en düşük rol) atanmış bir kullanıcı ile oturum açmanız gerekir. Konuk davetci ve uygulama geliştiricisi yönetici rolleri olarak değerlendirilmez.
 
 ## <a name="to-download-a-list-of-users"></a>Kullanıcı listesini indirmek için
 
-1. Kuruluştaki bir Kullanıcı yöneticisi hesabıyla [Azure REKLAM kuruluşunuzda oturum açın.](https://aad.portal.azure.com)
-2. Azure Etkin Dizini > Kullanıcılar'a gidin. Ardından, her kullanıcının yanındaki sol sütundaki kutuyu işaretleyerek indirmeye eklemek istediğiniz kullanıcıları seçin. Not: Şu anda, dışa aktarma için tüm kullanıcıları seçmenin bir yolu yoktur. Her biri ayrı ayrı seçilmelidir.
-3. Azure AD'de, **Kullanıcıları** > **İndir kullanıcılarını**seçin.
-4. Kullanıcıları **İndir** sayfasında, kullanıcı profili özelliklerini listeleyen bir CSV dosyaalmak için **Başlat'ı** seçin. Hatalar varsa, Toplu işlem sonuçları sayfasındaki sonuç dosyasını indirebilir ve görüntüleyebilirsiniz. Dosya, her hatanın nedenini içerir.
+1. Kuruluştaki bir Kullanıcı Yöneticisi hesabıyla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
+2. Azure Active Directory > kullanıcılara gidin. Ardından, her kullanıcının yanındaki sol sütundaki kutuyu seçerek karşıdan yüklemeye dahil etmek istediğiniz kullanıcıları seçin. Note: Şu anda, dışarı aktarma için tüm kullanıcıları seçmenin bir yolu yoktur. Her birinin tek tek seçilmiş olması gerekir.
+3. Azure AD 'de kullanıcılar**kullanıcıları indirir**' **ı seçin.** > 
+4. **Kullanıcıları indir** sayfasında, Kullanıcı profili özelliklerini listelemek üzere bir CSV dosyası almak için **Başlat** ' ı seçin. Hatalar varsa, sonuçlar dosyasını toplu işlem sonuçları sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
 
-   ![İndirmek istediğiniz kullanıcıların listesini istediğiniz yeri seçin](./media/users-bulk-download/bulk-download.png)
+   ![Listeden indirmek istediğiniz kullanıcıları seçin](./media/users-bulk-download/bulk-download.png)
 
-   İndirme dosyası, filtre uygulanmış kullanıcı listesini içerir.
+   İndirme dosyası, filtrelenmiş Kullanıcı listesini içerecektir.
 
-   Aşağıdaki kullanıcı öznitelikleri dahildir:
+   Aşağıdaki Kullanıcı öznitelikleri dahil edilmiştir:
 
    - userPrincipalName
    - displayName
    - surname
    - posta
    - givenName
-   - Objectıd
-   - Usertype
+   - Uzantının
+   - userType
    - jobTitle
    - bölüm
-   - hesapEtkin
-   - kullanımKonum
-   - Streetaddress
+   - accountEnabled
+   - usageLocation
+   - streetAddress
    - durum
    - ülke
    - physicalDeliveryOfficeName
    - city
-   - Postakodu
-   - Telephonenumber
+   - postalCode
+   - telephoneNumber 'dır
    - mobil
-   - kimlik doğrulamaTelefon Numarası
-   - kimlik doğrulamaAlternativePhoneNumber
-   - kimlik doğrulamaEmail
-   - alternatifEmailAddress
+   - authenticationPhoneNumber
+   - authenticationAlternativePhoneNumber
+   - authenticationEmail
+   - Alternateemaadresi
    - ageGroup
-   - rızaProvidedForMinor
-   - yasalAgeGroupClassification
+   - consentProvidedForMinor
+   - Ligalagegroupclassification
 
 ## <a name="check-status"></a>Durumu kontrol etme
 
-Bekleyen toplu isteklerinizin durumunu Toplu **işlem sonuçları** sayfasında görebilirsiniz.
+Bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları** sayfasında görebilirsiniz.
 
 [![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
 
-## <a name="bulk-download-service-limits"></a>Toplu indirme hizmeti sınırları
+## <a name="bulk-download-service-limits"></a>Hizmet sınırlarını toplu indirme
 
-Kullanıcıların listesini oluşturmak için her toplu etkinlik bir saate kadar çalıştırılabilir. Bu, en az 500.000 kullanıcıdan oluşan bir listenin oluşturulmasını ve indirilmesini sağlar.
+Kullanıcıların bir listesini oluşturmak için her toplu etkinlik, bir saate kadar çalışabilir. Bu, en az 500.000 kullanıcı listesinin oluşturulmasını ve indirilmesini mümkün bir şekilde sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Toplu ekleme kullanıcıları](users-bulk-add.md)
-- [Toplu silme kullanıcıları](users-bulk-delete.md)
-- [Toplu geri yükleme kullanıcıları](users-bulk-restore.md)
+- [Toplu Kullanıcı ekleme](users-bulk-add.md)
+- [Kullanıcıları toplu silme](users-bulk-delete.md)
+- [Kullanıcıları toplu geri yükleme](users-bulk-restore.md)

@@ -1,42 +1,42 @@
 ---
-title: Azure Uygulama Öngörüleri .Net Agent API başvurusu
-description: Uygulama Öngörüleri Aracısı API başvurusu. Web sitesini yeniden dağıtmadan web sitesinin performansını izleyin. Şirket içinde, VM'lerde veya Azure'da barındırılan ASP.NET web uygulamalarıyla çalışır.
+title: Azure Application Insights .net Aracısı API başvurusu
+description: Aracı API başvurusunu Application Insights. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733680"
 ---
-# <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitör Uygulama Öngörüleri Aracı API Başvurusu
+# <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Izleyici Application Insights aracı API 'SI başvurusu
 
-Bu [makalede, Az.ApplicationMonitor PowerShell modülüüyesi](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)bir cmdlet açıklanır.
+Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
 > [!NOTE] 
-> - Başlamak için bir enstrümantasyon anahtarına ihtiyacınız var. Daha fazla bilgi için [bkz.](create-new-resource.md#copy-the-instrumentation-key)
-> - Bu cmdlet, lisans ve gizlilik bildirimimizi gözden geçirmenizi ve kabul lenmenizi gerektirir.
+> - Başlamak için bir izleme anahtarına ihtiyacınız vardır. Daha fazla bilgi için bkz. [kaynak oluşturma](create-new-resource.md#copy-the-instrumentation-key).
+> - Bu cmdlet, lisans ve Gizlilik Bildirimimizi incelemenizi ve kabul etmenizi gerektirir.
 
 > [!IMPORTANT] 
-> Bu cmdlet, Yönetici izinleri ve yüksek yürütme ilkesi içeren bir PowerShell oturumu gerektirir. Daha fazla bilgi için [PowerShell'i yükseltilmiş yürütme ilkesine sahip yönetici olarak çalıştır'a](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy)bakın.
-> - Bu cmdlet, lisans ve gizlilik bildirimimizi gözden geçirmenizi ve kabul lenmenizi gerektirir.
-> - Enstrümantasyon motoru ek ek ek yükü ekler ve varsayılan olarak kapalıdır.
+> Bu cmdlet, yönetici izinlerine sahip bir PowerShell oturumu ve yükseltilmiş bir yürütme ilkesi gerektirir. Daha fazla bilgi için bkz. [yükseltilmiş yürütme Ilkesiyle PowerShell 'i yönetici olarak çalıştırma](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy).
+> - Bu cmdlet, lisans ve Gizlilik Bildirimimizi incelemenizi ve kabul etmenizi gerektirir.
+> - İzleme altyapısı ek yük ekler ve varsayılan olarak kapalıdır.
 
 
-## <a name="enable-instrumentationengine"></a>Etkinleştirme-EnstrümantasyonMotoru
+## <a name="enable-instrumentationengine"></a>Enable-ınstrumentationengine
 
-Bazı kayıt defteri anahtarlarını ayarlayarak enstrümantasyon motorunu etkinleştirir.
-Değişikliklerin etkili olması için IIS'yi yeniden başlatın.
+Bazı kayıt defteri anahtarlarını ayarlayarak izleme altyapısını sunar.
+Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
 
-Enstrümantasyon motoru .NET SDK'lar tarafından toplanan verileri tamamlayabilir.
-Yönetilen bir işlemin yürütülmesini açıklayan olayları ve iletileri toplar. Bu olaylar ve iletiler bağımlılık sonuç kodları, HTTP fiiller ve [SQL komut metni](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)içerir.
+İzleme altyapısı, .NET SDK 'Ları tarafından toplanan verileri tamamlayabilir.
+Yönetilen bir işlemin yürütülmesini tanımlayan olayları ve iletileri toplar. Bu olaylar ve mesajlar bağımlılık sonuç kodlarını, HTTP fiillerini ve [SQL komut metnini](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)içerir.
 
-Aşağıdakiler varsa enstrümantasyon motorunu etkinleştirin:
-- Etkinleştir cmdlet ile izlemeyi zaten etkinleştirdin, ancak enstrümantasyon motorunu etkinleştirmedin.
-- Uygulamanızı .NET SDK'larla el ile belgelediniz ve ek telemetri toplamak istiyorsunuz.
+Şu durumlarda izleme altyapısını etkinleştirin:
+- Enable cmdlet 'i ile izlemeyi zaten etkinleştirdiniz, ancak izleme altyapısını etkinleştirmediniz.
+- Uygulamanızı .NET SDK 'Ları ile el ile gördünüz ve ek telemetri toplamak istiyorsunuz.
 
 ### <a name="examples"></a>Örnekler
 
@@ -46,16 +46,16 @@ PS C:\> Enable-InstrumentationEngine
 
 ### <a name="parameters"></a>Parametreler
 
-#### <a name="-acceptlicense"></a>-Kabul Lisansı
-**Isteğe bağlı.** Başsız yüklemelerde lisans ve gizlilik bildirimini kabul etmek için bu anahtarı kullanın.
+#### <a name="-acceptlicense"></a>-AcceptLicense
+**Seçim.** Gözetimsiz yüklemelerde lisans ve gizlilik bildirimini kabul etmek için bu anahtarı kullanın.
 
-#### <a name="-verbose"></a>-Verbose
-**Ortak parametre.** Ayrıntılı günlükleri çıktıetmek için bu anahtarı kullanın.
+#### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri çıkarmak için bu anahtarı kullanın.
 
 ### <a name="output"></a>Çıktı
 
 
-##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Enstrümantasyon motorunun başarılı bir şekilde etkinleştirilmesinden örnek çıktı
+##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>İzleme altyapısını başarıyla etkinleştirmenin örnek çıkışı
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -64,31 +64,31 @@ Configuring registry for instrumentation engine...
 
 ## <a name="enable-applicationinsightsmonitoring"></a>Enable-ApplicationInsightsMonitoring
 
-Hedef bilgisayarda IIS uygulamalarının kodsuz olarak izlenmesini sağlar.
+Bir hedef bilgisayardaki IIS uygulamalarının birlikte izlenmesini eklemeyi sunar.
 
-Bu cmdlet IIS applicationHost.config değiştirmek ve bazı kayıt anahtarları ayarlayın.
-Ayrıca, her uygulama tarafından kullanılan enstrümantasyon anahtarını tanımlayan bir applicationinsights.ikey.config dosyası oluşturur.
-IIS, redfieldmodule'ı başlangıç olarak yükleyecek ve uygulamalar başladıkça Application Insights SDK'yı uygulamalara enjekte edecektir.
-Değişikliklerinizin etkili olması için IIS'yi yeniden başlatın.
+Bu cmdlet, IIS applicationHost. config dosyasını değiştirecek ve bazı kayıt defteri anahtarlarını ayarlayacaktır.
+Ayrıca, her bir uygulama tarafından kullanılan izleme anahtarını tanımlayan bir ApplicationInsights. Ikey. config dosyası oluşturur.
+IIS, uygulama başlatılırken Application Insights SDK 'Yı uygulamalara ekleyecektir ve RedfieldModule 'u başlangıçta yükler.
+Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
 
-İzlemeyi etkinleştirdikten sonra, uygulamanızın bize telemetri gönderip göndermediğini hızlı bir şekilde kontrol etmek için [Canlı Ölçümler'i](live-stream.md) kullanmanızı öneririz.
+İzlemeyi etkinleştirdikten sonra, uygulamanızın Telemetriyi hızla gönderdiğini denetlemek için [canlı ölçümleri](live-stream.md) kullanmanızı öneririz.
 
 ### <a name="examples"></a>Örnekler
 
-#### <a name="example-with-a-single-instrumentation-key"></a>Tek bir enstrümantasyon tuşu ile örnek
-Bu örnekte, geçerli bilgisayardaki tüm uygulamalara tek bir enstrümantasyon anahtarı atanır.
+#### <a name="example-with-a-single-instrumentation-key"></a>Tek bir izleme anahtarına sahip örnek
+Bu örnekte, geçerli bilgisayardaki tüm uygulamalara tek bir izleme anahtarı atanır.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>Enstrümantasyon anahtar haritası ile örnek
+#### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
 Bu örnekte:
-- `MachineFilter`joker kartı kullanarak geçerli `'.*'` bilgisayarla eşleşir.
-- `AppFilter='WebAppExclude'`bir `null` enstrümantasyon anahtarı sağlar. Belirtilen uygulama enstrümanted olmayacaktır.
-- `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir enstrümantasyon anahtarı atar.
-- `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir enstrümantasyon anahtarı atar.
-- Son `AppFilter` olarak, `'.*'` joker kartı, önceki kurallarla eşleşmeyan tüm web uygulamalarını eşleştirmek ve varsayılan bir enstrümantasyon anahtarı atamak için de kullanır.
+- `MachineFilter``'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
+- `AppFilter='WebAppExclude'`bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
+- `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- Son olarak `AppFilter` , önceki kurallarla `'.*'` eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
 ```powershell
@@ -103,52 +103,52 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="parameters"></a>Parametreler
 
-#### <a name="-instrumentationkey"></a>-EnstrümantasyonAnahtar
-**Gereklidir.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir enstrümantasyon anahtarı sağlamak için bu parametreyi kullanın.
+#### <a name="-instrumentationkey"></a>-Instrumentationkey
+**Gereklidir.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir izleme anahtarı sağlamak için bu parametreyi kullanın.
 
-#### <a name="-instrumentationkeymap"></a>-EnstrümantasyonKeyMap
-**Gereklidir.** Birden çok enstrümantasyon anahtarı ve her uygulama tarafından kullanılan enstrümantasyon anahtarlarının eşlemi sağlamak için bu parametreyi kullanın.
-Birkaç bilgisayar için tek bir yükleme `MachineFilter`komut dosyası ayarlayarak oluşturabilirsiniz.
+#### <a name="-instrumentationkeymap"></a>-Instrumentationkeymap
+**Gereklidir.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
+' İ ayarlayarak `MachineFilter`, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
 
 > [!IMPORTANT]
-> Uygulamalar, kuralların sağlandığı sırada kurallara göre eşleşir. Bu nedenle, önce en özel kuralları ve en genel kuralları en son belirtmelisiniz.
+> Uygulamalar kuralların sağlandığı sırada kurallarla eşleştirecektir. Bu nedenle, önce en özel kuralları ve en son genel kuralları belirtmeniz gerekir.
 
 ##### <a name="schema"></a>Şema
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
-- **MachineFilter,** bilgisayarın veya VM adının gerekli bir C# regex'idir.
-    - '.*' tüm maç olacak
-    - 'ComputerName' yalnızca belirtilen adı tam olan bilgisayarlarla eşleşir.
-- **AppFilter,** IIS Site Adının gerekli bir C# regex'idir. Komut [get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)çalıştırarak sunucunuzda sitelerin bir listesini alabilirsiniz.
-    - '.*' tüm maç olacak
-    - 'SiteAdı' yalnızca IIS Sitesi ile tam adı belirtilen şekilde eşleşir.
-- **InstrumentationKey,** önceki iki filtreyle eşleşen uygulamaların izlenmesini etkinleştirmek için gereklidir.
+- **Machinefilter** BILGISAYARıN veya VM adının gerekli bir C# Regex.
+    - '. * ' tümü eşleşecek
+    - ' ComputerName ' yalnızca tam ada sahip bilgisayarlar ile eşleştirecektir.
+- **Appfilter** , IIS sitesi adının gerekli bir C# Regex. [Get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)komutunu çalıştırarak sunucunuzdaki sitelerin bir listesini alabilirsiniz.
+    - '. * ' tümü eşleşecek
+    - ' SiteName ' yalnızca belirtilen tam ada sahip IIS sitesiyle eşleştirecektir.
+- Önceki iki filtrelerle eşleşen uygulamaların izlenmesini etkinleştirmek için **ınstrumentationkey** gereklidir.
     - İzlemeyi hariç tutmak için kurallar tanımlamak istiyorsanız bu değeri boş bırakın.
 
 
-#### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**Isteğe bağlı.** Enstrümantasyon motorunun yönetilen bir işlemin yürütülmesi sırasında neler olduğuna ilişkin olayları ve iletileri toplamasını sağlamak için bu anahtarı kullanın. Bu olaylar ve iletiler bağımlılık sonuç kodlarını, HTTP fiilleri ve SQL komut metnini içerir.
+#### <a name="-enableinstrumentationengine"></a>-Enableınstrumentationengine
+**Seçim.** İzleme altyapısının yönetilen bir işlemin yürütülmesi sırasında neler olduğunu hakkında olayları ve iletileri toplamasını sağlamak için bu anahtarı kullanın. Bu olaylar ve mesajlar bağımlılık sonuç kodlarını, HTTP fiillerini ve SQL komut metnini içerir.
 
-Enstrümantasyon motoru ek yükü ekler ve varsayılan olarak kapalıdır.
+İzleme altyapısı ek yük ekler ve varsayılan olarak kapalıdır.
 
-#### <a name="-acceptlicense"></a>-Kabul Lisansı
-**Isteğe bağlı.** Başsız yüklemelerde lisans ve gizlilik bildirimini kabul etmek için bu anahtarı kullanın.
+#### <a name="-acceptlicense"></a>-AcceptLicense
+**Seçim.** Gözetimsiz yüklemelerde lisans ve gizlilik bildirimini kabul etmek için bu anahtarı kullanın.
 
-#### <a name="-ignoresharedconfig"></a>-Yok SaygınSharedConfig
-Bir web sunucuları kümeniz olduğunda, paylaşılan bir [yapılandırma](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)kullanıyor olabilirsiniz.
-HttpModülü bu paylaşılan yapılandırmaya enjekte edilemez.
-Bu komut dosyası, ek yükleme adımları gerekli olduğu iletisi ile başarısız olur.
-Bu denetimi yoksaymak ve ön koşulları yüklemeye devam etmek için bu anahtarı kullanın. Daha fazla bilgi için [bkz: bilinen çakışma-iis-paylaşılan yapılandırma](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+#### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
+Bir Web sunucuları kümeniz olduğunda, [paylaşılan bir yapılandırma](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)kullanıyor olabilirsiniz.
+HttpModule bu paylaşılan yapılandırmaya eklenemez.
+Bu betik, ek yükleme adımlarının gerekli olduğu iletiyle başarısız olur.
+Bu denetimi yoksaymak ve önkoşulları yüklemeye devam etmek için bu anahtarı kullanın. Daha fazla bilgi için bkz. [bilinen çakışma-IIS ile paylaşılan-yapılandırma](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
 
-#### <a name="-verbose"></a>-Verbose
-**Ortak parametre.** Ayrıntılı günlükleri görüntülemek için bu anahtarı kullanın.
+#### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri göstermek için bu anahtarı kullanın.
 
 #### <a name="-whatif"></a>-WhatIf 
-**Ortak parametre.** Aslında izleme etkinleştirmeden giriş parametrelerinizi test etmek ve doğrulamak için bu anahtarı kullanın.
+**Ortak parametre.** İzlemeyi gerçekten etkinleştirmeden giriş parametrelerinizi test etmek ve doğrulamak için bu anahtarı kullanın.
 
 ### <a name="output"></a>Çıktı
 
-#### <a name="example-output-from-a-successful-enablement"></a>Başarılı bir etkinleştirmeden örnek çıktı
+#### <a name="example-output-from-a-successful-enablement"></a>Başarılı bir etkinleştirme için örnek çıkış
 
 ```powershell
 Initiating Disable Process
@@ -181,10 +181,10 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="disable-instrumentationengine"></a>Devre Dışı Bırakma-InstrumentationEngine
+## <a name="disable-instrumentationengine"></a>Disable-ınstrumentationengine
 
-Bazı kayıt defteri anahtarlarını kaldırarak enstrümantasyon motorunu devre dışı kaldırır.
-Değişikliklerin etkili olması için IIS'yi yeniden başlatın.
+Bazı kayıt defteri anahtarlarını kaldırarak izleme altyapısını devre dışı bırakır.
+Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
 
 ### <a name="examples"></a>Örnekler
 
@@ -194,13 +194,13 @@ PS C:\> Disable-InstrumentationEngine
 
 ### <a name="parameters"></a>Parametreler 
 
-#### <a name="-verbose"></a>-Verbose
-**Ortak parametre.** Ayrıntılı günlükleri çıktıetmek için bu anahtarı kullanın.
+#### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri çıkarmak için bu anahtarı kullanın.
 
 ### <a name="output"></a>Çıktı
 
 
-##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Enstrümantasyon motorunun başarılı bir şekilde devre dışı bırakılmasından örnek çıktı
+##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>İzleme altyapısını başarıyla devre dışı bırakma örnek çıkışı
 
 ```powershell
 Configuring IIS Environment for instrumentation engine...
@@ -210,10 +210,10 @@ Registry: removing 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WAS[Env
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="disable-applicationinsightsmonitoring"></a>Devre Dışı-UygulamaInsightsİzleme
+## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring
 
-Hedef bilgisayardaki izlemeyi devre dışı kılabilir.
-Bu cmdlet IIS applicationHost.config ve kayıt defteri anahtarlarını kaldırmak için yapılan ları kaldırır.
+Hedef bilgisayarda izlemeyi devre dışı bırakır.
+Bu cmdlet, IIS applicationHost. config ' deki düzenlemeleri kaldırır ve kayıt defteri anahtarlarını kaldırır.
 
 ### <a name="examples"></a>Örnekler
 
@@ -223,13 +223,13 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 
 ### <a name="parameters"></a>Parametreler 
 
-#### <a name="-verbose"></a>-Verbose
-**Ortak parametre.** Ayrıntılı günlükleri görüntülemek için bu anahtarı kullanın.
+#### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri göstermek için bu anahtarı kullanın.
 
 ### <a name="output"></a>Çıktı
 
 
-##### <a name="example-output-from-successfully-disabling-monitoring"></a>İzlemeyi başarıyla devre dışı bırakmaktan örnek çıktı
+##### <a name="example-output-from-successfully-disabling-monitoring"></a>İzlemeyi başarıyla devre dışı bırakarak oluşan örnek çıkış
 
 ```powershell
 Initiating Disable Process
@@ -253,9 +253,9 @@ Successfully disabled Application Insights Status Monitor
 ```
 
 
-## <a name="get-applicationinsightsmonitoringconfig"></a>Get-ApplicationInsightsMonitoringConfig
+## <a name="get-applicationinsightsmonitoringconfig"></a>Get-Applicationınsiısmonitoringconfig
 
-Config dosyasını alır ve değerleri konsola yazdırır.
+Yapılandırma dosyasını alır ve değerleri konsola yazdırır.
 
 ### <a name="examples"></a>Örnekler
 
@@ -265,12 +265,12 @@ PS C:\> Get-ApplicationInsightsMonitoringConfig
 
 ### <a name="parameters"></a>Parametreler
 
-Parametre gerekmez.
+Parametre gerekli değil.
 
 ### <a name="output"></a>Çıktı
 
 
-##### <a name="example-output-from-reading-the-config-file"></a>Config dosyasını okuyarak örnek çıktı
+##### <a name="example-output-from-reading-the-config-file"></a>Yapılandırma dosyasını okumaktan örnek çıkış
 
 ```
 RedfieldConfiguration:
@@ -280,17 +280,17 @@ Filters:
 2)InstrumentationKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault AppFilter: .* MachineFilter: .*
 ```
 
-## <a name="get-applicationinsightsmonitoringstatus"></a>Get-ApplicationInsightsİzlemeDurumu
+## <a name="get-applicationinsightsmonitoringstatus"></a>Get-Applicationınsiısmonitoringstatus
 
 Bu cmdlet Durum İzleyicisi hakkında sorun giderme bilgileri sağlar.
-PowerShell Modülü'nün izleme durumunu, sürümünü incelemek ve çalıştırma işlemini incelemek için bu cmdlet'i kullanın.
-Bu cmdlet, izleme için gerekli olan önemli dosyalar la ilgili sürüm bilgilerini ve bilgilerini raporedecektir.
+Bu cmdlet 'i kullanarak izleme durumunu, PowerShell modülünün sürümünü araştırın ve çalışan işlemi inceleyin.
+Bu cmdlet, izleme için gerekli olan anahtar dosyaları hakkında sürüm bilgilerini ve bilgileri bildirir.
 
 ### <a name="examples"></a>Örnekler
 
-#### <a name="example-application-status"></a>Örnek: Uygulama durumu
+#### <a name="example-application-status"></a>Örnek: uygulama durumu
 
-Web sitelerinin izleme durumunu görüntülemek için komutu `Get-ApplicationInsightsMonitoringStatus` çalıştırın.
+Web sitelerinin izleme `Get-ApplicationInsightsMonitoringStatus` durumunu göstermek için komutunu çalıştırın.
 
 ```powershell
 
@@ -326,16 +326,16 @@ AppAlreadyInstrumented : true
 ```
 
 Bu örnekte;
-- **Makine Tanımlayıcısı,** sunucunuzu benzersiz olarak tanımlamak için kullanılan anonim bir kimliktir. Bir destek isteği oluşturursanız, sunucunuz için günlükleri bulmak için bu kimliğin gerekir.
-- **Varsayılan Web Sitesi** IIS'de Durduruldu
-- **DemoWebApp111** IIS'de başlatıldı, ancak herhangi bir istek almadı. Bu rapor, çalışma işlemi olmadığını gösterir (ProcessId: bulunamadı).
-- **DemoWebApp222** çalışıyor ve izleniyor (Instrumented: true). Kullanıcı yapılandırmadayanarak, Instrumentation Key xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 bu site için eşleşti.
-- **DemoWebApp333,** Application Insights SDK kullanılarak el ile işletilmiştir. Durum İzleyicisi SDK'yı algıladı ve bu siteyi izlemez.
+- **Makine tanımlayıcısı** , sunucunuzu benzersiz şekilde tanımlamak için kullanılan anonım bir tanıtıcıdır. Bir destek isteği oluşturursanız, sunucunuza yönelik günlükleri bulmak için bu KIMLIĞE ihtiyacımız olacak.
+- **Varsayılan Web sItesI** IIS 'de durdurulur
+- **DemoWebApp111** , IIS 'de başlatılmış, ancak hiçbir istek almamıştı. Bu rapor, çalışan bir işlem (ProcessId: bulunamadı) olmadığını gösterir.
+- **DemoWebApp222** çalışıyor ve Izleniyor (belgelenmiş: true). Kullanıcı yapılandırmasına bağlı olarak, bu site için xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 Izleme anahtarı eşleştirildi.
+- **DemoWebApp333** , Application Insights SDK kullanılarak el ile işaretlendi. Durum İzleyicisi SDK algıladı ve bu siteyi izlemez.
 
 
-#### <a name="example-powershell-module-information"></a>Örnek: PowerShell modül bilgileri
+#### <a name="example-powershell-module-information"></a>Örnek: PowerShell modülü bilgileri
 
-Geçerli modül `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` hakkında bilgi görüntülemek için komutu çalıştırın:
+Geçerli modülle `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` ilgili bilgileri göstermek için komutunu çalıştırın:
 
 ```powershell
 
@@ -388,11 +388,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-#### <a name="example-runtime-status"></a>Örnek: Çalışma zamanı durumu
+#### <a name="example-runtime-status"></a>Örnek: çalışma zamanı durumu
 
-Tüm DL'lerin yüklenip yüklenmediğinizi görmek için işlem aracılı bilgisayarda inceleyebilirsiniz. İzleme çalışıyorsa, en az 12 DL yüklenmelidir.
+Tüm dll 'Lerin yüklenip yüklenmediğini görmek için, izlenen bilgisayarda işlemi inceleyebilirsiniz. İzleme çalışıyorsa, en az 12 dll 'nin yüklenmesi gerekir.
 
-Komutu `Get-ApplicationInsightsMonitoringStatus -InspectProcess`çalıştırın:
+Şu komutu `Get-ApplicationInsightsMonitoringStatus -InspectProcess`çalıştırın:
 
 
 ```
@@ -430,57 +430,57 @@ listdlls64.exe -accepteula w3wp
 
 #### <a name="no-parameters"></a>(Parametre yok)
 
-Varsayılan olarak, bu cmdlet web uygulamalarının izleme durumunu bildirir.
-Uygulamanızın başarılı bir şekilde algılanmış olup olmadığını gözden geçirmek için bu seçeneği kullanın.
-Ayrıca, hangi Enstrümantasyon Anahtarının sitenizle eşleşebileceğini de inceleyebilirsiniz.
+Varsayılan olarak, bu cmdlet Web uygulamalarının izleme durumunu rapor eder.
+Uygulamanızın başarıyla işaretlenmiş olup olmadığını gözden geçirmek için bu seçeneği kullanın.
+Ayrıca, sitenizdeki hangi Izleme anahtarının eşleştiğini de inceleyebilirsiniz.
 
 
-#### <a name="-powershellmodule"></a>-PowerShellModülü
-**İsteğe bağlı**. İzleme için gereken DL'lerin sürüm numaralarını ve yollarını bildirmek için bu anahtarı kullanın.
-Application Insights SDK de dahil olmak üzere herhangi bir DLL sürümünü tanımlamanız gerekiyorsa bu seçeneği kullanın.
+#### <a name="-powershellmodule"></a>-PowerShellModule
+**Isteğe bağlı**. İzleme için gerekli olan DLL 'lerin sürüm numaralarını ve yollarını raporlamak için bu anahtarı kullanın.
+Application Insights SDK dahil olmak üzere herhangi bir DLL sürümünü belirlemeniz gerekiyorsa bu seçeneği kullanın.
 
-#### <a name="-inspectprocess"></a>-İnceleme Süreci
+#### <a name="-inspectprocess"></a>-Inspectprocess
 
-**İsteğe bağlı**. IIS'nin çalışıp çalışmadığını bildirmek için bu anahtarı kullanın.
-Ayrıca, gerekli DL'lerin IIS çalışma süresine yüklenip yüklenmeyeceğini belirlemek için harici araçlar indirir.
+**Isteğe bağlı**. IIS 'in çalışıp çalışmadığını raporlamak için bu anahtarı kullanın.
+Ayrıca, gerekli dll 'Lerin IIS çalışma zamanına yüklenip yüklenmediğini anlamak için dış araçları da indirir.
 
 
 Bu işlem herhangi bir nedenle başarısız olursa, bu komutları el ile çalıştırabilirsiniz:
-- iisreset.exe /durum
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. UygulamaInsights"
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
+- ıisreset. exe/status
+- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | Findstr/I "ınstrumentationengine AI. ApplicationInsights
+- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "ınstrumentationengine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
 
-**İsteğe bağlı**. Yalnızca InspectProcess ile kullanılır. Ek araçlar indirilmeden önce görünen kullanıcı istemini atlamak için bu anahtarı kullanın.
+**Isteğe bağlı**. Yalnızca ınspectprocess ile kullanılır. Ek araçlar indirilmeden önce görüntülenen kullanıcı isteğini atlamak için bu anahtarı kullanın.
 
 
-## <a name="set-applicationinsightsmonitoringconfig"></a>Set-ApplicationInsightsMonitoringConfig
+## <a name="set-applicationinsightsmonitoringconfig"></a>Set-Applicationınsiısmonitoringconfig
 
-Config dosyasını tam yeniden yükleme yapmadan ayarlar.
-Değişikliklerinizin etkili olması için IIS'yi yeniden başlatın.
+Tam yeniden yükleme yapmadan yapılandırma dosyasını ayarlar.
+Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
 
 > [!IMPORTANT] 
-> Bu cmdlet, Yönetici izinleri içeren bir PowerShell oturumu gerektirir.
+> Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
 
 
 ### <a name="examples"></a>Örnekler
 
-#### <a name="example-with-a-single-instrumentation-key"></a>Tek bir enstrümantasyon tuşu ile örnek
-Bu örnekte, geçerli bilgisayardaki tüm uygulamalara tek bir enstrümantasyon anahtarı atanır.
+#### <a name="example-with-a-single-instrumentation-key"></a>Tek bir izleme anahtarına sahip örnek
+Bu örnekte, geçerli bilgisayardaki tüm uygulamalara tek bir izleme anahtarı atanacaktır.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>Enstrümantasyon anahtar haritası ile örnek
+#### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
 Bu örnekte:
-- `MachineFilter`joker kartı kullanarak geçerli `'.*'` bilgisayarla eşleşir.
-- `AppFilter='WebAppExclude'`bir `null` enstrümantasyon anahtarı sağlar. Belirtilen uygulama enstrümanted olmayacaktır.
-- `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir enstrümantasyon anahtarı atar.
-- `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir enstrümantasyon anahtarı atar.
-- Son `AppFilter` olarak, `'.*'` joker kartı, önceki kurallarla eşleşmeyan tüm web uygulamalarını eşleştirmek ve varsayılan bir enstrümantasyon anahtarı atamak için de kullanır.
+- `MachineFilter``'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
+- `AppFilter='WebAppExclude'`bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
+- `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
+- Son olarak `AppFilter` , önceki kurallarla `'.*'` eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
 ```powershell
@@ -493,38 +493,38 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 ### <a name="parameters"></a>Parametreler
 
-#### <a name="-instrumentationkey"></a>-EnstrümantasyonAnahtar
-**Gereklidir.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir enstrümantasyon anahtarı sağlamak için bu parametreyi kullanın.
+#### <a name="-instrumentationkey"></a>-Instrumentationkey
+**Gereklidir.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir izleme anahtarı sağlamak için bu parametreyi kullanın.
 
-#### <a name="-instrumentationkeymap"></a>-EnstrümantasyonKeyMap
-**Gereklidir.** Birden çok enstrümantasyon anahtarı ve her uygulama tarafından kullanılan enstrümantasyon anahtarlarının eşlemi sağlamak için bu parametreyi kullanın.
-Birkaç bilgisayar için tek bir yükleme `MachineFilter`komut dosyası ayarlayarak oluşturabilirsiniz.
+#### <a name="-instrumentationkeymap"></a>-Instrumentationkeymap
+**Gereklidir.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
+' İ ayarlayarak `MachineFilter`, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
 
 > [!IMPORTANT]
-> Uygulamalar, kuralların sağlandığı sırada kurallara göre eşleşir. Bu nedenle, önce en özel kuralları ve en genel kuralları en son belirtmelisiniz.
+> Uygulamalar kuralların sağlandığı sırada kurallarla eşleştirecektir. Bu nedenle, önce en özel kuralları ve en son genel kuralları belirtmeniz gerekir.
 
 ##### <a name="schema"></a>Şema
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- **MachineFilter,** bilgisayarın veya VM adının gerekli bir C# regex'idir.
-    - '.*' tüm maç olacak
-    - 'ComputerName' yalnızca belirtilen ada sahip bilgisayarlarla eşleşir.
-- **AppFilter,** bilgisayarın veya VM adının gerekli bir C# regex'idir.
-    - '.*' tüm maç olacak
-    - 'ApplicationName' belirtilen ada sahip yalnızca IIS uygulamalarıyla eşleşir.
-- **InstrumentationKey,** önceki iki filtreyle eşleşen uygulamaların izlenmesini etkinleştirmek için gereklidir.
+- **Machinefilter** BILGISAYARıN veya VM adının gerekli bir C# Regex.
+    - '. * ' tümü eşleşecek
+    - ' ComputerName ' yalnızca belirtilen ada sahip bilgisayarlarla eşleştirecektir.
+- **Appfilter** BILGISAYARıN veya VM adının gerekli bir C# Regex.
+    - '. * ' tümü eşleşecek
+    - ' ApplicationName ' yalnızca belirtilen ada sahip IIS uygulamalarıyla eşleştirecektir.
+- Önceki iki filtrelerle eşleşen uygulamaların izlenmesini etkinleştirmek için **ınstrumentationkey** gereklidir.
     - İzlemeyi hariç tutmak için kurallar tanımlamak istiyorsanız bu değeri boş bırakın.
 
 
-#### <a name="-verbose"></a>-Verbose
-**Ortak parametre.** Ayrıntılı günlükleri görüntülemek için bu anahtarı kullanın.
+#### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri göstermek için bu anahtarı kullanın.
 
 
 ### <a name="output"></a>Çıktı
 
-Varsayılan olarak, çıktı yok.
+Varsayılan olarak, çıkış yok.
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>-InstrumentationKey üzerinden config dosyasını ayarlamaktan örnek verbose çıktı
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>-Instrumentationkey aracılığıyla yapılandırma dosyasını ayarlamadan ayrıntılı çıkış örneği
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -536,7 +536,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>-InstrumentationKeyMap üzerinden config dosyasını ayarlamaktan örnek verbose çıktı
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>-Instrumentationkeymap aracılığıyla yapılandırma dosyasını ayarlamadan ayrıntılı çıkış örneği
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -550,62 +550,62 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="start-applicationinsightsmonitoringtrace"></a>Başlat-UygulamaInsightsMonitoringTrace
+## <a name="start-applicationinsightsmonitoringtrace"></a>Start-Applicationınsiizsmonitoringtrace
 
-Kodsuz ekleme çalışma saatinden [ETW Olayları](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) toplar. Bu cmdlet [PerfView](https://github.com/microsoft/perfview)çalışan bir alternatiftir.
+Kodsuz kullanacaksınız Attach çalışma zamanından [ETW olaylarını](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) toplar. Bu cmdlet [PerfView](https://github.com/microsoft/perfview)çalıştırmaya alternatiftir.
 
-Toplanan olaylar gerçek zamanlı olarak konsola yazdırılır ve bir ETL dosyasına kaydedilir. Çıktı ETL dosyası daha fazla araştırma için [PerfView](https://github.com/microsoft/perfview) tarafından açılabilir.
+Toplanan olaylar, gerçek zamanlı olarak konsola yazdırılır ve bir ETL dosyasına kaydedilir. Çıktı ETL dosyası, daha fazla araştırma için [PerfView](https://github.com/microsoft/perfview) tarafından açılabilir.
 
-Bu cmdlet zaman adedine (varsayılan 5 dakika) ulaşıncaya`Ctrl + C`veya el ile durdurulana kadar çalışır ( ).
+Bu cmdlet, zaman aşımı süresine (varsayılan 5 dakika) ulaşıncaya kadar veya el ile (`Ctrl + C`) durduruluncaya kadar çalışır.
 
 ### <a name="examples"></a>Örnekler
 
-#### <a name="how-to-collect-events"></a>Etkinlikleri nasıl toplarlar?
+#### <a name="how-to-collect-events"></a>Olayları toplama
 
-Normalde, başvurunuzun neden çalındığını araştırmak için olayları toplamanızı isteriz.
+Normalde, uygulamanızın neden görüntülenmediğini araştırmak için olay toplamanızı isteyeceğiz.
 
-Kodsuz ekleme çalışma süresi, IIS başlatıldığında ve uygulamanız başlatıldığında ETW olayları yayacaktır.
+Kodsuz kullanacaksınız Attach çalışma zamanı, IIS başlatıldığında ve uygulamanız başlatıldığında ETW olaylarını yayacaktır.
 
 Bu olayları toplamak için:
-1. Yönetici ayrıcalıklarına sahip cmd konsolunda, IIS'yi ve tüm web uygulamalarını kapatmak için çalıştırın. `iisreset /stop`
-2. Bu cmdlet çalıştırın
-3. Yönetici ayrıcalıklarına sahip cmd konsolunda, IIS'yi başlatmak için çalıştırın. `iisreset /start`
-4. Uygulamanıza göz atmaya çalışın.
-5. Uygulamanız yüklemeyi bitirdikten sonra, uygulamayı`Ctrl + C`el ile durdurabilir veya zaman anına kadar bekleyebilirsiniz.
+1. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, IIS 'yi `iisreset /stop` ve tüm Web uygulamalarını kapatmak için yürütün.
+2. Bu cmdlet 'i Yürüt
+3. Yönetici ayrıcalıklarına sahip bir cmd konsolunda, IIS 'yi `iisreset /start` başlatmak için yürütün.
+4. Uygulamanıza gözatmayı deneyin.
+5. Uygulamanızın yüklenmesi tamamlandıktan sonra, el ile durdurabilirsiniz (`Ctrl + C`) veya zaman aşımı süresini bekleyebilirsiniz.
 
-#### <a name="what-events-to-collect"></a>Hangi etkinliklerin toplanması
+#### <a name="what-events-to-collect"></a>Toplanacak olaylar
 
-Olayları toplarken üç seçeneğiniz var:
-1. Application Insights SDK'dan yayılan olayları toplamak için anahtarı `-CollectSdkEvents` kullanın.
-2. Status Monitor `-CollectRedfieldEvents` ve Redfield Runtime tarafından yayılan olayları toplamak için anahtarı kullanın. Bu günlükler, IIS ve uygulama başlatma tanılama yardımcı olur.
-3. Her iki olay türünü de toplamak için her iki anahtarı da kullanın.
-4. Varsayılan olarak, anahtar belirtilmemişse, her iki olay türü de toplanır.
+Olayları toplarken üç seçeneğiniz vardır:
+1. Application Insights SDK 'dan `-CollectSdkEvents` yayılan olayları toplamak için anahtarını kullanın.
+2. Durum İzleyicisi ve Redfield çalışma zamanı tarafından yayılan olayları toplamak için anahtarını `-CollectRedfieldEvents` kullanın. Bu Günlükler IIS ve uygulama başlangıcını tanılarken yararlı olur.
+3. Her iki olay türünü de toplamak için her iki anahtarı kullanın.
+4. Varsayılan olarak, hiçbir anahtar belirtilmemişse olay türleri toplanacaktır.
 
 
 ### <a name="parameters"></a>Parametreler
 
 #### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**Isteğe bağlı.** Bu komut dosyasının olayları ne kadar süreyle toplaması gerektiğini ayarlamak için bu parametreyi kullanın. Varsayılan değer 5 dakikadır.
+**Seçim.** Bu betiğin olay toplama süresini ayarlamak için bu parametreyi kullanın. Varsayılan değer 5 dakikadır.
 
 #### <a name="-logdirectory"></a>-LogDirectory
-**Isteğe bağlı.** ETL dosyasının çıktı dizini ayarlamak için bu anahtarı kullanın. Varsayılan olarak, bu dosya PowerShell Modülleri dizininde oluşturulur. Tam yol komut dosyası yürütme sırasında görüntülenir.
+**Seçim.** ETL dosyasının çıkış dizinini ayarlamak için bu anahtarı kullanın. Varsayılan olarak, bu dosya PowerShell modülleri dizininde oluşturulur. Tam yol, betik yürütme sırasında görüntülenecektir.
 
 
-#### <a name="-collectsdkevents"></a>-CollectSdkEtkinlikler
-**Isteğe bağlı.** Application Insights SDK olaylarını toplamak için bu anahtarı kullanın.
+#### <a name="-collectsdkevents"></a>-CollectSdkEvents
+**Seçim.** Application Insights SDK olaylarını toplamak için bu anahtarı kullanın.
 
-#### <a name="-collectredfieldevents"></a>-CollectRedfield Etkinlikler
-**Isteğe bağlı.** Durum İzleyicisi ve Redfield çalışma saatinden olayları toplamak için bu anahtarı kullanın.
+#### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
+**Seçim.** Durum İzleyicisi ve Redfield çalışma zamanının olaylarını toplamak için bu anahtarı kullanın.
 
-#### <a name="-verbose"></a>-Verbose
-**Ortak parametre.** Ayrıntılı günlükleri çıktıetmek için bu anahtarı kullanın.
+#### <a name="-verbose"></a>-Ayrıntılı
+**Ortak parametre.** Ayrıntılı günlükleri çıkarmak için bu anahtarı kullanın.
 
 
 
 ### <a name="output"></a>Çıktı
 
 
-#### <a name="example-of-application-startup-logs"></a>Uygulama başlangıç günlükleri örneği
+#### <a name="example-of-application-startup-logs"></a>Uygulama başlangıç günlüklerine örnek
 ```powershell
 PS C:\Windows\system32> Start-ApplicationInsightsMonitoringTrace -ColectRedfieldEvents
 Starting...
@@ -637,18 +637,18 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Sonraki adımlar
 
   Telemetrinizi görüntüleyin:
- - Performansı ve kullanımı izlemek için [ölçümleri keşfedin.](../../azure-monitor/app/metrics-explorer.md)
-- Sorunları tanılamak için [olayları ve günlükleri arayın.](../../azure-monitor/app/diagnostic-search.md)
-- Daha gelişmiş sorgular için [analitiği](../../azure-monitor/app/analytics.md) kullanın.
-- [Panolar oluşturun.](../../azure-monitor/app/overview-dashboard.md)
+ - Performansı ve kullanımı izlemek için [ölçümleri](../../azure-monitor/app/metrics-explorer.md) bulun.
+- Sorunları tanılamak için [olayları ve günlükleri arayın](../../azure-monitor/app/diagnostic-search.md) .
+- Daha gelişmiş sorgular için [analiz](../../azure-monitor/app/analytics.md) kullanın.
+- [Panolar oluşturun](../../azure-monitor/app/overview-dashboard.md).
  
  Daha fazla telemetri ekleyin:
  - Sitenizin canlı kalması için [web testleri oluşturun](monitor-web-app-availability.md).
-- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [web istemcisi telemetrisi ekleyin.](../../azure-monitor/app/javascript.md)
-- İzleme ve günlük aramaları ekleyebilmeniz [için Uygulama Öngörüleri SDK'yı kodunuza ekleyin.](../../azure-monitor/app/asp-net.md)
+- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
+- İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
  
- Application Insights Agent ile daha fazlasını yapın:
- - Uygulama Öngörüleri [Aracısı'nın sorun giderme](status-monitor-v2-troubleshoot.md) kılavuzunu kullanın.
+ Application Insights aracısıyla daha fazlasını yapın:
+ - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
 
 
 

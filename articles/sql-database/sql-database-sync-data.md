@@ -1,6 +1,6 @@
 ---
 title: Data Sync
-description: Bu genel bakış Azure SQL Veri Eşitlemeyi'ni
+description: Bu genel bakış Azure SQL Data Sync tanıtır
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,91 +12,91 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
 ms.openlocfilehash: 8708c458e1064e4b9ea7dc67f1a4d4fbce1547b0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481959"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Verileri birden çok bulut ve şirket içi veritabanları arasında SQL Veri Eşitleme ile eşitleme
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>SQL Data Sync ile birden çok bulutta ve şirket içi veritabanlarında veri eşitleme
 
-SQL Data Sync, seçtiğiniz verileri birden çok SQL veritabanı ve SQL Server örnekleri arasında çift yönlü olarak eşitlemenize olanak tanıyan Azure SQL Veritabanı'nda oluşturulmuş bir hizmettir.
+SQL Data Sync, Azure SQL veritabanı 'nda yerleşik olarak bulunan ve birden çok SQL veritabanı ve SQL Server örneği arasında çift yönlü olan verileri eşitlemenize olanak tanıyan bir hizmettir.
 
 > [!IMPORTANT]
-> Azure SQL Veri Eşitlemesi şu anda Azure SQL Veritabanı Yönetilen Örneği'ni desteklemez.
+> Azure SQL Data Sync Şu anda Azure SQL veritabanı yönetilen örneğini desteklemez.
 
-## <a name="when-to-use-data-sync"></a>Veri Eşitleme ne zaman kullanılır
+## <a name="when-to-use-data-sync"></a>Veri eşitleme ne zaman kullanılır?
 
-Veri Eşitleme, verilerin birkaç Azure SQL veritabanında veya SQL Server veritabanlarında güncel tutulması gereken durumlarda yararlıdır. Veri Eşitleme için ana kullanım örnekleri şunlardır:
+Veri eşitleme, verilerin birkaç Azure SQL veritabanı veya SQL Server veritabanı genelinde güncelleştirilmesi gereken durumlarda faydalıdır. Veri eşitlemeye yönelik başlıca kullanım durumları aşağıda verilmiştir:
 
-- **Karma Veri Senkronizasyonu:** Veri Eşitleme ile, karma uygulamaları etkinleştirmek için verileri şirket içi veritabanlarınız ve Azure SQL veritabanlarınız arasında senkronize edebilirsiniz. Bu özellik, buluta taşınmayı düşünen ve uygulamalarından bazılarını Azure'a koymak isteyen müşterileriçin cazip olabilir.
-- **Dağıtılan Uygulamalar:** Çoğu durumda, farklı veritabanları arasında farklı iş yüklerini ayırmak yararlıdır. Örneğin, büyük bir üretim veritabanınız varsa, ancak bu verilerde raporlama veya analiz iş yükünü çalıştırmanız gerekiyorsa, bu ek iş yükü için ikinci bir veritabanına sahip olmanız yararlı olur. Bu yaklaşım, üretim iş yükünüz üzerindeki performans etkisini en aza indirir. Bu iki veritabanını eşitlenmiş tutmak için Veri Eşitleme'yi kullanabilirsiniz.
-- **Genel Olarak Dağıtılan Uygulamalar:** Birçok işletme çeşitli bölgeleri ve hatta çeşitli ülkeleri/bölgeleri kapsar. Ağ gecikmesini en aza indirmek için verilerinizin size yakın bir bölgede olması en iyisidir. Veri Eşitleme ile, dünyanın çeşitli bölgelerindeki veritabanlarını kolayca senkronize edebilirsiniz.
+- **Karma veri eşitleme:** Veri eşitleme ile, karma uygulamaları etkinleştirmek için verileri şirket içi veritabanlarınız ve Azure SQL veritabanları arasında eşitlenmiş halde tutabilirsiniz. Bu özellik, buluta geçmeyi düşünen ve Azure 'a bazı uygulamaları yerleştirmek istediğiniz müşterileri ele alabilir.
+- **Dağıtılmış uygulamalar:** Birçok durumda, farklı veritabanları arasında farklı iş yüklerini ayırmak yararlı olur. Örneğin, büyük bir üretim veritabanınız varsa, ancak bu verilerde bir raporlama veya analiz iş yükü çalıştırmanız gerekiyorsa, bu ek iş yükü için ikinci bir veritabanı olması yararlı olacaktır. Bu yaklaşım, üretim iş yükünüzün performans etkisini en aza indirir. Bu iki veritabanını eşitlenmiş halde tutmak için veri eşitleme kullanabilirsiniz.
+- **Küresel olarak dağıtılan uygulamalar:** Birçok işletme birçok bölgeye ve hatta birkaç ülkeye/bölgeye yayılamaz. Ağ gecikmesini en aza indirmek için, verilerinizin size yakın bir bölgede olması en iyisidir. Veri eşitleme ile, dünyanın dört bir yanındaki bölgelerde veritabanlarını kolayca koruyabilirsiniz.
 
-Veri Eşitleme aşağıdaki senaryolar için tercih edilen çözüm değildir:
+Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 
-| Senaryo | Bazı önerilen çözümler |
+| Senaryo | Önerilen bazı çözümler |
 |----------|----------------------------|
-| Olağanüstü Durum Kurtarma | [Azure coğrafi yedekyedeklemeleri](sql-database-automated-backups.md) |
-| Okuma Ölçeği | [Yalnızca okunur sorgu iş yüklerini yüklemek için salt okunur yinelemeleri kullanma (önizleme)](sql-database-read-scale-out.md) |
-| ETL (OLTP'den OLAP'a) | [Azure Veri Fabrikası](https://azure.microsoft.com/services/data-factory/) veya [SQL Server Tümleştirme Hizmetleri](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Şirket içi SQL Server'dan Azure SQL Veritabanına geçiş | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
+| Olağanüstü Durum Kurtarma | [Azure coğrafi olarak yedekli yedeklemeler](sql-database-automated-backups.md) |
+| Ölçeği oku | [Salt okunurdur ve salt okuma sorgu iş yüklerinin yükünü dengelemek için salt okuma çoğaltmaları kullanın (Önizleme)](sql-database-read-scale-out.md) |
+| ETL (OLTP-OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) veya [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| Şirket içi SQL Server Azure SQL veritabanı 'na geçiş | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
 |||
 
-## <a name="overview-of-sql-data-sync"></a>SQL Veri Eşitleme Genel Bakış
+## <a name="overview-of-sql-data-sync"></a>SQL Data Sync genel bakış
 
-Veri Eşitleme, Eşitleme Grubu kavramına dayanır. Eşitleme Grubu, eşitlemek istediğiniz bir veritabanı grubudur.
+Veri eşitleme, bir eşitleme grubu kavramını temel alarak. Eşitleme grubu, eşitlemek istediğiniz veritabanlarının bir grubudur.
 
-Veri Eşitleme, verileri eşitlemek için hub ve kollu topoloji kullanır. Eşitleme grubundaki veritabanlarından birini Hub Veritabanı olarak tanımlarsınız. Veritabanlarının geri kalanı üye veritabanlarıdır. Eşitleme yalnızca Hub ve tek tek üyeler arasında gerçekleşir.
+Veri eşitleme, verileri eşitlemek için bir hub ve bağlı bileşen topolojisi kullanır. Eşitleme grubundaki veritabanlarından birini hub veritabanı olarak tanımlarsınız. Veritabanlarının geri kalanı üye veritabanlarıdır. Eşitleme yalnızca Hub ve bireysel Üyeler arasında gerçekleşir.
 
-- **Hub Veritabanı** bir Azure SQL Veritabanı olmalıdır.
-- **Üye veritabanları** SQL Veritabanları, şirket içi SQL Server veritabanları veya Azure sanal makinelerdeki SQL Server örnekleri olabilir.
-- **Eşitleme Veritabanı** meta verileri ve Veri Eşitleme için günlük içerir. Eşitleme Veritabanı, Hub Veritabanı ile aynı bölgede bulunan bir Azure SQL Veritabanı olmalıdır. Eşitleme Veritabanı müşteri tarafından oluşturulur ve müşteriye aittir.
+- **Merkez veritabanı** BIR Azure SQL veritabanı olmalıdır.
+- **Üye VERITABANLARı** SQL veritabanları, şirket içi SQL Server veritabanları ya da Azure sanal makinelerinde SQL Server örnekleri olabilir.
+- **Eşitleme veritabanı** , veri eşitleme için meta verileri ve günlüğü içerir. Eşitleme veritabanı, hub veritabanıyla aynı bölgede bulunan bir Azure SQL veritabanı olmalıdır. Eşitleme veritabanı müşteri tarafından oluşturulur ve müşterinin sahibi olur.
 
 > [!NOTE]
-> Bir şirket içi veritabanını üye veritabanı olarak kullanıyorsanız, [yerel bir eşitleme aracısı yüklemeniz ve yapılandırmanız](sql-database-get-started-sql-data-sync.md#add-on-prem)gerekir.
+> Bir şirket içi veritabanını üye veritabanı olarak kullanıyorsanız, [yerel bir eşitleme Aracısı yükleyip yapılandırmanız](sql-database-get-started-sql-data-sync.md#add-on-prem)gerekir.
 
 ![Veritabanları arasında verileri eşitleme](media/sql-database-sync-data/sync-data-overview.png)
 
-Eşitleme Grubu aşağıdaki özelliklere sahiptir:
+Bir eşitleme grubu aşağıdaki özelliklere sahiptir:
 
-- **Eşitleme Şeması,** hangi verilerin eşitlendiğini açıklar.
-- **Eşitleme Yönü** çift yönlü olabilir veya yalnızca bir yönde akabilir. Diğer bir şey, Eşitleme Yönü *Üye'ye Hub*veya *Üyeden Hub'a*veya her ikisine de hub olabilir.
-- **Eşitleme Aralığı,** eşitlemenin ne sıklıkta oluştuğunu açıklar.
-- **Çakışma Çözümlemesi İlkesi,** *Hub'ın kazanması* veya *Üye kazanması*olabilecek bir grup düzeyi ilkesidir.
+- **Eşitleme şeması** hangi verilerin eşitlendiğini açıklar.
+- **Eşitleme yönü** iki yönlü olabilir veya yalnızca bir yönde akabilir. Diğer bir deyişle, eşitleme yönü *hub*veya *hub 'a üye*ya da her ikisi de olabilir.
+- Eşitleme **aralığı** , eşitlemenin ne sıklıkla oluştuğunu açıklar.
+- **Çakışma çözümleme ilkesi** , *hub WINS* veya *üye WINS*olabilen bir grup düzeyi ilkesidir.
 
-## <a name="how-does-data-sync-work"></a>Veri Eşitleme nasıl çalışır?
+## <a name="how-does-data-sync-work"></a>Veri eşitleme nasıl çalışır?
 
-- **Veri değişikliklerini izleme:** Veri Eşitleme, ekleme, güncelleştirme ve silme tetikleyicilerini kullanarak değişiklikleri izler. Değişiklikler kullanıcı veritabanındaki bir yan tabloya kaydedilir. TOPLU INSERT'in varsayılan olarak tetikleyicileri ateşlemediğini unutmayın. FIRE_TRIGGERS belirtilmemişse, hiçbir ekleme tetikleyicileri yürütme. Veri Eşitleme bu ekler izleyebilirsiniz böylece FIRE_TRIGGERS seçeneği ekleyin. 
-- **Verileri eşitleme:** Veri Eşitleme Hub ve Spoke modelinde tasarlanmıştır. Hub, her üyeyle ayrı ayrı eşitler. Hub'daki değişiklikler üyeye indirilir ve üyeden gelen değişiklikler Hub'a yüklenir.
-- **Çakışmaları çözme:** Veri Eşitleme çakışma çözümü için iki seçenek sağlar, *Hub kazanır* veya *Üye kazanır.*
-  - *Hub kazanır'ı*seçerseniz, hub'daki değişiklikler her zaman üyedeki değişikliklerin üzerine yazılır.
-  - *Üye kazanır*seçerseniz, üye değişiklikleri hub değişiklikleri üzerine yazmak. Birden fazla üye varsa, son değer ilk eşitlenen üyeye bağlıdır.
+- **Veri değişikliklerini izleme:** Veri eşitleme, INSERT, Update ve DELETE tetikleyicilerini kullanarak değişiklikleri izler. Değişiklikler, Kullanıcı veritabanındaki bir yan tabloya kaydedilir. BULK INSERT varsayılan olarak Tetikleyicileri tetikleyeceğini unutmayın. FIRE_TRIGGERS belirtilmemişse, hiçbir ekleme tetikleyicisi yürütülmez. Veri eşitleme 'nin Bu eklemeleri izleyebilmesi için FIRE_TRIGGERS seçeneğini ekleyin. 
+- **Veriler eşitleniyor:** Veri eşitleme, hub ve bağlı bileşen modelinde tasarlanmıştır. Hub her üyeyle tek tek eşitlenir. Hub 'daki değişiklikler üyeye indirilir ve Üyeden yapılan değişiklikler hub 'a yüklenir.
+- **Çakışmalar çözümleniyor:** Veri eşitleme, çakışma çözümü, *Merkez WINS* veya *üye WINS*için iki seçenek sunar.
+  - *Merkez WINS*' i seçerseniz, hub 'daki değişiklikler her zaman üyenin değişikliklerinin üzerine yazar.
+  - *Üye WINS*' i seçerseniz, üyedeki değişiklikler hub 'daki değişiklikler üzerine yazılır. Birden fazla üye varsa, son değer öncelikle hangi üyenin eşitlendiği üzerinde değişir.
 
-## <a name="compare-data-sync-with-transactional-replication"></a>İşlemsel Çoğaltma ile Veri Eşitleme karşılaştırın
+## <a name="compare-data-sync-with-transactional-replication"></a>Veri eşitlemesini Işlemsel çoğaltma ile karşılaştırın
 
 | | Data Sync | İşlem Çoğaltması |
 |---|---|---|
-| Yararları | - Aktif-aktif destek<br/>- Şirket içi ve Azure SQL Veritabanı arasında çift yönlü | - Daha düşük gecikme<br/>- İşlemsel tutarlılık<br/>- Göç sonrası mevcut topolojiyi yeniden kullanma |
-| Dezavantajlar | - 5 dk veya daha fazla gecikme<br/>- İşlemsel tutarlılık yok<br/>- Daha yüksek performans etkisi | - Azure SQL Veritabanı'ndan tek veritabanıveya havuzlu veritabanından yayımlanamıyor<br/>- Yüksek bakım maliyeti |
+| Yararları | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan |
+| Dezavantajlar | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanı tek veritabanı veya havuza alınmış veritabanından yayımlanamıyor<br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started-with-sql-data-sync"></a>SQL Veri Eşitlemeyi ile başlayın
+## <a name="get-started-with-sql-data-sync"></a>SQL Data Sync kullanmaya başlayın
 
-### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portalında Veri Eşitleme'yi ayarlama
+### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 
 - [Azure SQL Data Sync’i ayarlama](sql-database-get-started-sql-data-sync.md)
-- Veri Eşitleme Aracısı - [Azure SQL Veri Eşitleme için Veri Eşitleme Aracısı](sql-database-data-sync-agent.md)
+- Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
 
-### <a name="set-up-data-sync-with-powershell"></a>PowerShell ile Veri Eşitlemeyi'ni ayarlama
+### <a name="set-up-data-sync-with-powershell"></a>PowerShell ile veri eşitlemesini ayarlama
 
 - [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-sql-databases.md)
 - [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-azure-onprem.md)
 
-### <a name="review-the-best-practices-for-data-sync"></a>Veri Eşitleme için en iyi uygulamaları gözden geçirin
+### <a name="review-the-best-practices-for-data-sync"></a>Veri eşitleme için en iyi uygulamaları gözden geçirin
 
 - [Azure SQL Data Sync için en iyi yöntemler](sql-database-best-practices-data-sync.md)
 
-### <a name="did-something-go-wrong"></a>Bir şeyler ters gitti mi?
+### <a name="did-something-go-wrong"></a>Bir sorun oluştu
 
 - [Azure SQL Data Sync ile ilgili sorun giderme](sql-database-troubleshoot-data-sync.md)
 
@@ -104,142 +104,142 @@ Eşitleme Grubu aşağıdaki özelliklere sahiptir:
 
 ### <a name="eventual-consistency"></a>Nihai tutarlılık
 
-Veri Eşitleme tetikleyici tabanlı olduğundan, işlem tutarlılığı garanti değildir. Microsoft, tüm değişikliklerin sonunda yapıldığını ve Veri Eşitlemesi'nin veri kaybına neden olmadığını garanti eder.
+Veri eşitleme, tetikleyici tabanlı olduğundan, işlemsel tutarlılık garanti edilmez. Microsoft, tüm değişikliklerin sonunda yapıldığından ve veri eşitlemenin veri kaybına neden olmadığı garantisi verir.
 
 ### <a name="performance-impact"></a>Performans etkisi
 
-Veri Eşitleme değişiklikleri izlemek için ekleme, güncelleştirme ve silme tetikleyicileri kullanır. Değişiklik izleme için kullanıcı veritabanında yan tablolar oluşturur. Bu değişiklik izleme etkinlikleri veritabanı iş yükünüz üzerinde bir etkiye sahiptir. Gerekirse servis katmanınızı değerlendirin ve yükseltin.
+Veri eşitleme, değişiklikleri izlemek için INSERT, Update ve DELETE tetikleyicilerini kullanır. Değişiklik izleme için Kullanıcı veritabanında yan tablolar oluşturur. Bu değişiklik izleme etkinliklerinin veritabanı iş yükünüz üzerinde bir etkisi vardır. Hizmet katmanınızı değerlendirin ve gerekirse yükseltin.
 
-Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve deprovisioning veritabanı performansını da etkileyebilir.
+Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sağlamayı kaldırma, veritabanı performansını da etkileyebilir.
 
 ## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a>Gereksinimler ve sınırlamalar
 
 ### <a name="general-requirements"></a>Genel gereksinimler
 
-- Her tablonun birincil anahtarı olmalıdır. Birincil anahtarın değerini herhangi bir satırda değiştirmeyin. Birincil anahtar değerini değiştirmeniz gerekiyorsa, satırı silin ve yeni birincil anahtar değeriyle yeniden oluşturun.
+- Her tablo bir birincil anahtara sahip olmalıdır. Herhangi bir satırdaki birincil anahtar değerini değiştirmeyin. Birincil anahtar değerini değiştirmeniz gerekiyorsa, satırı silin ve yeni birincil anahtar değeriyle yeniden oluşturun.
 
 > [!IMPORTANT]
-> Varolan birincil anahtarın değerini değiştirmek aşağıdaki hatalı davranışa neden olur:
-> - Eşitleme herhangi bir sorun bildirmese de hub ve üye arasındaki veriler kaybedilebilir.
-> - İzleme tablosunda birincil anahtar değişikliği nedeniyle kaynaktan var olmayan bir satır olduğundan eşitleme başarısız olabilir.
+> Mevcut bir birincil anahtarın değerini değiştirmek aşağıdaki hatalı davranışa neden olur:
+> - Eşit bir sorun bildirmese de, hub ve üye arasındaki veriler kaybolabilir.
+> - Birincil anahtar değişikliği nedeniyle izleme tablosu kaynaktan mevcut olmayan bir satır içerdiğinden eşitleme başarısız olabilir.
 
 - Anlık görüntü yalıtımı etkinleştirilmelidir. Daha fazla bilgi için bkz. [SQL Server'da Anlık Görüntü Yalıtımı](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Genel sınırlamalar
 
-- Bir tabloda birincil anahtar olmayan bir kimlik sütunu olamaz.
-- Birincil anahtar aşağıdaki veri türlerine sahip olamaz: sql_variant, ikili, varikili, görüntü, xml.
-- Desteklenen kesinlik yalnızca ikinciye geldiğinden, aşağıdaki veri türlerini birincil anahtar olarak kullandığınızda dikkatli olun: saat, datetime, datetime2, datetimeoffset.
-- Nesnelerin adları (veritabanları, tablolar ve sütunlar) yazdırılabilir karakterler dönemi (.), sol kare ayraç ([) veya sağ kare ayraç (]) içeremez.
-- Azure Etkin Dizin kimlik doğrulaması desteklenmez.
-- Aynı ada sahip ancak farklı şema olan tablolar (örneğin, dbo.customers ve sales.customers) desteklenmez.
-- Kullanıcı Tanımlı Veri Türleri içeren sütunlar desteklenmiyor
+- Tablo, birincil anahtar olmayan bir kimlik sütununa sahip olamaz.
+- Birincil anahtar şu veri türlerine sahip olamaz: sql_variant, binary, varbinary, Image, XML.
+- Aşağıdaki veri türlerini birincil anahtar olarak kullanırken dikkatli olun, çünkü desteklenen duyarlık yalnızca ikinci-saat, DateTime, datetime2, DateTimeOffset olur.
+- Nesnelerin (veritabanları, tablolar ve sütunlar) adları, yazdırılabilir karakterler (.), sol köşeli ayraç ([) veya sağ köşeli ayraç (]) içeremez.
+- Azure Active Directory kimlik doğrulaması desteklenmiyor.
+- Aynı ada ancak farklı şemaya (örneğin, dbo. Customers ve Sales. Customers) sahip tablolar desteklenmez.
+- Kullanıcı tanımlı veri türleri olan sütunlar desteklenmiyor
 - Sunucuları farklı abonelikler arasında taşıma desteklenmez. 
 
 #### <a name="unsupported-data-types"></a>Desteklenmeyen veri türleri
 
-- Fılestream
+- Akışı
 - SQL/CLR UDT
-- XMLSchemaCollection (XML destekli)
-- İmleç, RowVersion, Zaman Damgası, Hiyerarşik
+- XMLSchemaCollection (XML destekleniyor)
+- İmleç, RowVersion, timestamp, HierarchyId
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri Eşitleme salt okunur veya sistem tarafından oluşturulan sütunları eşitleme zedemez. Örneğin:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
 
-- Hesaplanmış sütunlar.
-- Zamansal tablolar için sistem tarafından oluşturulan sütunlar.
+- Hesaplanan sütunlar.
+- Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.
 
-#### <a name="limitations-on-service-and-database-dimensions"></a>Hizmet ve veritabanı boyutlarındaki sınırlamalar
+#### <a name="limitations-on-service-and-database-dimensions"></a>Hizmet ve veritabanı boyutlarına ilişkin sınırlamalar
 
-| **Boyutlar**                                                  | **Sınırı**              | **Geçi -ci çözüm**              |
+| **Boyutlarına**                                                  | **Sınırlı**              | **Sorunu**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
-| Herhangi bir veritabanının ait olabileceği maksimum eşitleme grubu sayısı.       | 5                      |                             |
-| Tek bir eşitleme grubunda ki maksimum uç nokta sayısı              | 30                     |                             |
-| Tek bir eşitleme grubunda ki en fazla şirket içi uç nokta sayısı. | 5                      | Birden çok eşitleme grubu oluşturma |
-| Veritabanı, tablo, şema ve sütun adları                       | Ad başına 50 karakter |                             |
-| Eşitleme grubundaki tablolar                                          | 500                    | Birden çok eşitleme grubu oluşturma |
-| Eşitleme grubundaki tablodaki sütunlar                              | 1000                   |                             |
-| Tablodaki veri satır boyutu                                        | 24 Mb                  |                             |
-| Minimum eşitleme aralığı                                           | 5 Dakika              |                             |
+| Herhangi bir veritabanının ait olduğu en fazla eşitleme grubu sayısı.       | 5                      |                             |
+| Tek bir eşitleme grubundaki en fazla uç nokta sayısı              | 30                     |                             |
+| Tek bir eşitleme grubundaki en fazla şirket içi uç nokta sayısı. | 5                      | Birden çok eşitleme grubu oluşturma |
+| Veritabanı, tablo, şema ve sütun adları                       | ad başına 50 karakter |                             |
+| Bir eşitleme grubundaki tablolar                                          | 500                    | Birden çok eşitleme grubu oluşturma |
+| Bir eşitleme grubundaki tablodaki sütunlar                              | 1000                   |                             |
+| Tablodaki veri satırı boyutu                                        | 24 MB                  |                             |
+| En az eşitleme aralığı                                           | 5 dakika              |                             |
 
 > [!NOTE]
-> Yalnızca bir eşitleme grubu varsa, tek bir eşitleme grubunda en fazla 30 uç nokta olabilir. Birden fazla eşitleme grubu varsa, tüm eşitleme gruplarındaki toplam uç nokta sayısı 30'u geçemez. Bir veritabanı birden çok eşitleme grubuna aitse, birden çok uç nokta olarak sayılır, bir değil.
+> Yalnızca bir eşitleme grubu varsa, tek bir eşitleme grubunda 30 ' a kadar uç nokta olabilir. Birden fazla eşitleme grubu varsa, tüm eşitleme gruplarındaki bitiş noktalarının toplam sayısı 30 ' u aşamaz. Bir veritabanı birden çok eşitleme grubuna aitse, birden fazla uç nokta olarak sayılır.
 
-## <a name="faq-about-sql-data-sync"></a>SQL Veri Eşitlemi hakkında SSS
+## <a name="faq-about-sql-data-sync"></a>SQL Data Sync hakkında SSS
 
-### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL Veri Eşitleme hizmeti nin maliyeti nedir
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL Data Sync hizmeti maliyeti ne kadar sürer?
 
-SQL Data Sync hizmetinin kendisi için herhangi bir ücret alınmaz. Ancak, SQL Veritabanı örneğinizin içinde ve dışında veri hareketi için veri aktarım ücretleri toplamaya devam emzebilirsiniz. Daha fazla bilgi için [SQL Veritabanı fiyatlandırması'na](https://azure.microsoft.com/pricing/details/sql-database/)bakın.
+SQL Data Sync hizmetin kendisi için ücret alınmaz. Ancak, SQL veritabanı örneğiniz için ve dışında veri taşıma ücretleri de toplaırsınız. Daha fazla bilgi için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
-### <a name="what-regions-support-data-sync"></a>Veri Eşitlemeyi hangi bölgeleri destekler
+### <a name="what-regions-support-data-sync"></a>Veri eşitlemesini destekleyen bölgeler
 
-SQL Veri Eşitlemi tüm bölgelerde kullanılabilir.
+SQL Data Sync tüm bölgelerde kullanılabilir.
 
-### <a name="is-a-sql-database-account-required"></a>BIR SQL Veritabanı hesabı gerekli mi
+### <a name="is-a-sql-database-account-required"></a>Bir SQL veritabanı hesabı gereklidir
 
-Evet. Hub Veritabanı'nı barındırmak için bir SQL Veritabanı hesabınız olması gerekir.
+Evet. Hub veritabanını barındırmak için bir SQL veritabanı hesabınızın olması gerekir.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Yalnızca SQL Server şirket içi veritabanları arasında eşitlemek için Veri Eşitlemeyi'ni kullanabilir miyim?
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Yalnızca şirket içi SQL Server veritabanları arasında eşitleme yapmak için veri eşitlemeyi kullanabilir miyim
 
-Doğrudan değil. Ancak, Azure'da bir Hub veritabanı oluşturup şirket içi veritabanlarını eşitleme grubuna ekleyerek SQL Server şirket içi veritabanları arasında dolaylı olarak eşitleyebilirsiniz.
+Doğrudan değil. Azure 'da bir hub veritabanı oluşturup daha sonra şirket içi veritabanlarını eşitleme grubuna ekleyerek şirket içi veritabanlarını dolaylı olarak SQL Server eşitleyebilirsiniz.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Farklı aboneliklere ait SQL Veritabanları arasında eşitlemek için Veri Eşitlemeyi'ni kullanabilir miyim?
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Farklı aboneliklere ait olan SQL veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim
 
-Evet. Farklı aboneliklere ait kaynak gruplarına ait SQL Veritabanları arasında eşitleyebilirsiniz.
+Evet. Farklı aboneliklere ait kaynak gruplarına ait olan SQL veritabanları arasında eşitleme yapabilirsiniz.
 
-- Abonelikler aynı kiracıya aitse ve tüm aboneliklere izin verdiyseniz, Azure portalındaki eşitleme grubunu yapılandırabilirsiniz.
-- Aksi takdirde, farklı aboneliklere ait eşitleme üyelerini eklemek için PowerShell'i kullanmanız gerekir.
+- Abonelikler aynı kiracıya aitse ve tüm abonelikler için izniniz varsa, Azure portal eşitleme grubunu yapılandırabilirsiniz.
+- Aksi takdirde, farklı aboneliklere ait olan eşitleme üyelerini eklemek için PowerShell kullanmanız gerekir.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Farklı bulutlara ait SQL Veritabanları arasında eşitlemek için Veri Eşitlemeyi'ni kullanabilir miyim (Azure Genel Bulutu ve Azure China 21Vianet gibi)
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Farklı bulutlara ait SQL veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim (Azure genel bulutu ve Azure Çin 21Vianet gibi)
 
-Evet. Farklı bulutlara ait SQL Veritabanları arasında eşitleyebilirsiniz, farklı aboneliklere ait eşitleme üyeleri eklemek için PowerShell kullanmanız gerekir.
+Evet. Farklı bulutlara ait olan SQL veritabanları arasında eşitleme yapabilirsiniz, farklı aboneliklere ait olan eşitleme üyelerini eklemek için PowerShell kullanmanız gerekir.
 
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Veri Eşitlemeyi'ni üretim veritabanımdaki verileri boş bir veritabanına tohumlamak ve sonra eşitlemek için kullanabilir miyim?
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Veri eşitlemesini, üretim veritabanından boş bir veritabanına veri kaynağı için kullanabilir miyim ve sonra bunları eşitleyebilirsiniz
 
-Evet. Şeayı orijinalinden komut dosyası oluşturarak yeni veritabanında el ile oluşturun. Şemayı oluşturduktan sonra, verileri kopyalamak ve eşitlemek için tabloları eşitleme grubuna ekleyin.
+Evet. Şemayı orijinalden komut dosyasıyla yeni veritabanında el ile oluşturun. Şemayı oluşturduktan sonra, verileri kopyalamak ve eşitlenmiş halde tutmak için tabloları bir eşitleme grubuna ekleyin.
 
-### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Veritabanlarımı yedeklemek ve geri yüklemek için SQL Data Sync kullanmalı mıyım?
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Veritabanlarınızı yedeklemek ve geri yüklemek için SQL Data Sync kullanmalıyım
 
-Verilerinizin yedekini oluşturmak için SQL Data Sync'i kullanmanız önerilmez. SQL Veri Eşitleme eşitlemeleri sürülmediği için zaman içinde belirli bir noktaya yedekleyip geri yükleyemezsiniz. Ayrıca, SQL Veri Eşitlemesi, depolanan yordamlar gibi diğer SQL nesnelerini yedeklemez ve bir geri yükleme işleminin eşdeğerini hızlı bir şekilde yapmaz.
+Verilerinizin yedeğini oluşturmak için SQL Data Sync kullanılması önerilmez. SQL Data Sync eşitlemeler sürümü oluşturulmadığından belirli bir zaman noktasına yedekleme ve geri yükleme yapamazsınız. Ayrıca, SQL Data Sync saklı yordamlar gibi diğer SQL nesnelerini de yedeklememesini ve geri yükleme işleminin hemen eşdeğerini yapmaz.
 
-Önerilen yedekleme tekniğinden biri [için](sql-database-copy.md)bkz.
+Önerilen bir yedekleme tekniği için bkz. [Azure SQL veritabanını kopyalama](sql-database-copy.md).
 
-### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Veri Eşitleme şifreli tablo ve sütunlar
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Veri eşitleme eşitleme şifrelenmiş tabloları ve sütunları
 
-- Bir veritabanı Her Zaman Şifrelenmiş kullanıyorsa, yalnızca *şifrelenmemiş* tabloları ve sütunları eşitleyebilirsiniz. Veri Eşitleme verilerinşifresini çözemediğinden, şifrelenmiş sütunları eşitleme yapamazsınız.
-- Bir sütun Sütun Düzeyi Şifreleme (CLE) kullanıyorsa, satır boyutu 24 Mb'ın maksimum boyutundan küçük olduğu sürece sütunu eşitleyebilirsiniz. Veri Eşitleme, anahtar (CLE) tarafından şifrelenmiş sütunu normal ikili veri olarak ele alar. Diğer eşitleme üyelerindeki verilerin şifresini çözmek için aynı sertifikaya sahip olmanız gerekir.
+- Bir veritabanı Always Encrypted kullanıyorsa, *yalnızca şifrelenmemiş tabloları* ve sütunları eşitleyebilirsiniz. Veri eşitlemesi verilerin şifresini çözemediği için şifrelenmiş sütunları eşitleyemezsiniz.
+- Bir sütun, sütun düzeyinde şifreleme (CLE) kullanıyorsa, satır boyutu en fazla 24 MB boyutundan daha az olduğu sürece sütunu eşitleyebilirsiniz. Veri eşitleme, anahtar (CLE) tarafından şifrelenmiş sütunu normal ikili veriler olarak değerlendirir. Diğer eşitleme üyelerdeki verilerin şifresini çözmek için aynı sertifikaya sahip olmanız gerekir.
 
-### <a name="is-collation-supported-in-sql-data-sync"></a>SQL Veri Eşitleme'de collation desteklenir mi?
+### <a name="is-collation-supported-in-sql-data-sync"></a>SQL Data Sync içinde harmanlama destekleniyor
 
-Evet. SQL Data Sync aşağıdaki senaryolarda harmanlama destekler:
+Evet. SQL Data Sync, aşağıdaki senaryolarda harmanlamayı destekler:
 
-- Seçili eşitleme şema tabloları hub veya üye veritabanlarınızda zaten yoksa, eşitleme grubunu dağıttığınızda, hizmet boş hedef veritabanlarında seçilen harmanlama ayarlarıyla ilgili tabloları ve sütunları otomatik olarak oluşturur.
-- Eşitlenecek tablolar hem hub hem de üye veritabanlarınızda zaten varsa, SQL Veri Eşitlemi, eşitleme grubunu başarıyla dağıtmak için birincil anahtar sütunlarının hub ve üye veritabanları arasında aynı kolatoya sahip olmasını gerektirir. Sütunlarda birincil anahtar sütunları dışında harmanlama kısıtlaması yoktur.
+- Seçili eşitleme şeması tabloları hub 'ınızda veya üye veritabanlarında yoksa, eşitleme grubunu dağıttığınızda, hizmet otomatik olarak ilgili tabloları ve sütunları boş hedef veritabanlarında seçilen harmanlama ayarları ile birlikte oluşturur.
+- Eşitlenecek tablolar hem hub 'ınızdaki hem de üye veritabanlarında zaten mevcutsa, SQL Data Sync eşitleme grubunu başarılı bir şekilde dağıtmak için birincil anahtar sütunlarının hub ve üye veritabanları arasında aynı harmanlamaya sahip olmasını gerektirir. Birincil anahtar sütunlarından farklı sütunlarda harmanlama kısıtlaması yok.
 
-### <a name="is-federation-supported-in-sql-data-sync"></a>SQL Data Sync'de federasyon desteklenir mi?
+### <a name="is-federation-supported-in-sql-data-sync"></a>SQL Data Sync sürümünde Federasyon destekleniyor
 
-Federasyon Kök Veritabanı, SQL Veri Eşitleme Hizmeti'nde herhangi bir sınırlama olmaksızın kullanılabilir. Federe Veritabanı bitiş noktasını SQL Veri Eşitlemesi'nin geçerli sürümüne ekemezsiniz.
+Federasyon kök veritabanı SQL Data Sync hizmetinde herhangi bir kısıtlama olmadan kullanılabilir. Federasyon veritabanı uç noktasını geçerli SQL Data Sync sürümüne ekleyemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="update-the-schema-of-a-synced-database"></a>Eşitlenmiş bir veritabanının şeasını güncelleştirme
+### <a name="update-the-schema-of-a-synced-database"></a>Eşitlenmiş bir veritabanının şemasını güncelleştirme
 
-Eşitleme grubundaki bir veritabanının şemasını güncelleştirmek zorunda mısın? Şema değişiklikleri otomatik olarak çoğaltılamaz. Bazı çözümler için aşağıdaki makalelere bakın:
+Bir eşitleme grubundaki bir veritabanının şemasını güncelleştirmeniz mı gerekiyor? Şema değişiklikleri otomatik olarak çoğaltılmaz. Bazı çözümler için aşağıdaki makalelere bakın:
 
-- [Azure SQL Veri Eşitleme'de şema değişikliklerinin çoğaltılması otomatikleştirin](sql-database-update-sync-schema.md)
+- [Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin](sql-database-update-sync-schema.md)
 - [Mevcut bir eşitleme grubunda eşitleme şemasını güncelleştirmek için PowerShell kullanma](scripts/sql-database-sync-update-schema.md)
 
 ### <a name="monitor-and-troubleshoot"></a>İzleme ve sorun giderme
 
-SQL Data Sync beklendiği gibi yapıyor mu? Etkinliği izlemek ve sorunları gidermek için aşağıdaki makalelere bakın:
+SQL Data Sync beklendiği gibi yapılıyor mu? Etkinliği izlemek ve sorunları gidermek için aşağıdaki makalelere bakın:
 
-- [Azure Monitor günlükleriyle Azure SQL Veri Eşitlemesini Izleyin](sql-database-sync-monitor-oms.md)
+- [Azure Izleyici günlükleri ile Azure SQL Data Sync izleme](sql-database-sync-monitor-oms.md)
 - [Azure SQL Data Sync ile ilgili sorun giderme](sql-database-troubleshoot-data-sync.md)
 
-### <a name="learn-more-about-azure-sql-database"></a>Azure SQL Veritabanı hakkında daha fazla bilgi edinin
+### <a name="learn-more-about-azure-sql-database"></a>Azure SQL veritabanı hakkında daha fazla bilgi
 
-SQL Veritabanı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+SQL veritabanı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [SQL Veritabanı'na Genel Bakış](sql-database-technical-overview.md)
 - [Veritabanı Yaşam Döngüsü Yönetimi](https://msdn.microsoft.com/library/jj907294.aspx)

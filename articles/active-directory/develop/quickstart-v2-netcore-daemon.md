@@ -1,7 +1,7 @@
 ---
-title: Konsol uygulaması kimliğiyle Microsoft Graph araması & belirteç alın | Azure
+title: Belirteç al & konsol uygulama kimliğiyle Microsoft Graph çağırma | Mavisi
 titleSuffix: Microsoft identity platform
-description: Bir jetonu nasıl alacağınızı ve bir .NET Core uygulamasından korunan bir Microsoft Graph API'sini nasıl arayacağınızı öğrenin
+description: Bir belirteci nasıl alabileceğinizi ve .NET Core uygulamasından onunla korunan Microsoft Graph API 'SI çağırmayı öğrenin
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,30 +13,30 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
 ms.openlocfilehash: 0a41165a77ff5f98a6a0bb408da62cb6c4cb35f8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81536089"
 ---
-# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Quickstart: Konsol uygulamasının kimliğini kullanarak bir belirteç edinin ve Microsoft Graph API'yi arayın
+# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Hızlı başlangıç: konsol uygulamasının kimliğini kullanarak bir belirteç alın ve Microsoft Graph API 'sini çağırın
 
-Bu hızlı başlangıçta, uygulamanın kendi kimliğini kullanarak bir erişim jetonuna sahip bir .NET Core uygulaması yazmayı ve ardından dizindeki [kullanıcıların listesini](https://docs.microsoft.com/graph/api/user-list) görüntülemek için Microsoft Graph API'yi arayabilirsiniz. Bu senaryo, başsız, gözetimsiz iş veya windows hizmetinin kullanıcı kimliği yerine bir uygulama kimliğiyle çalışması gereken durumlar için yararlıdır. (Bkz. örnek bir resim için [nasıl çalışır?)](#how-the-sample-works)
+Bu hızlı başlangıçta, uygulamanın kendi kimliğini kullanarak bir erişim belirteci alabilir ve sonra dizindeki [kullanıcıların listesini](https://docs.microsoft.com/graph/api/user-list) göstermek IÇIN Microsoft Graph API 'sini çağırabilmeniz için bir .NET Core uygulaması yazmayı öğreneceksiniz. Bu senaryo, kullanıcının kimliği yerine gözetimsiz, katılımsız iş veya Windows hizmeti 'nin bir uygulama kimliğiyle çalışması gereken durumlar için yararlıdır. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlatma gerektirir [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2).
+Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/dotnet-core/2.2)gerektirir.
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
-> Hızlı başlangıç uygulamanızı başlatmak için iki seçeneğiniz vardır: Express (Aşağıdaki Seçenek 1) ve Manuel (Seçenek 2)
+> Hızlı başlangıç uygulamanızı başlatmak için iki seçeneğiniz vardır: Express (aşağıdaki 1. seçenek) ve manuel (seçenek 2)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Yeni Azure [portalı - Uygulama kayıtları](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) bölmesine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
@@ -46,25 +46,25 @@ Bu hızlı başlatma gerektirir [.NET Core 2.2](https://www.microsoft.com/net/do
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 > 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-> 1. Geliştiriciler için Microsoft kimlik platformuna gidin [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfası.
-> 1. **Yeni kayıt**seçin.
-> 1. Bir başvuru sayfası **kaydedin,** başvurunuzun kayıt bilgilerini girin.
-> 1. **Ad** bölümüne, uygulama nın kullanıcılarına görüntülenecek anlamlı bir uygulama `Daemon-console`adı girin, örneğin , uygulamayı oluşturmak için **Kaydol'u** seçin.
-> 1. Kaydedildikten sonra **Sertifikalar & Sırlar** menüsünü seçin.
-> 1. **İstemci sırları**altında , seçin **+ Yeni istemci gizli**. Bir ad verin ve **Ekle'yi**seçin. Sırrı güvenli bir yerde kopyalayın. Kodunuzda kullanmak için ihtiyacınız olacaktır.
-> 1. Şimdi, **API İzinleri** menüsünü seçin, **+ İzin düğmesi ekle'yi** seçin, **Microsoft Graph'ı**seçin.
-> 1. **Uygulama izinlerini**seçin.
-> 1. **Kullanıcı** düğümü altında **User.Read.All'ı**seçin ve **ardından İzin Ekle'yi** seçin
+> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
+> 1. **Yeni kayıt**seçeneğini belirleyin.
+> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin.
+> 1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `Daemon-console`, uygulamayı oluşturmak için **Kaydet** ' i seçin.
+> 1. Kaydolduktan sonra **sertifikalar & gizlilikler** menüsünü seçin.
+> 1. **İstemci gizli**dizileri altında **+ yeni istemci parolası**' nı seçin. Bir ad verin ve **Ekle**' yi seçin. Parolayı güvenli bir konuma kopyalayın. Kodunuzda kullanmak için ihtiyacınız olacak.
+> 1. Şimdi **API izinleri** menüsünü seçin **+ izin Ekle** düğmesini seçin, **Microsoft Graph**' yi seçin.
+> 1. **Uygulama izinleri**' ni seçin.
+> 1. **Kullanıcı** düğümü altında **User. Read. All**' ı seçin ve ardından **izin Ekle** ' yi seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı indirin ve yapılandırın
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
-> Bu hızlı başlatmanın işe yaraması için bir istemci sırrı oluşturmanız ve Grafik API'nin **User.Read.All** uygulama iznini eklemeniz gerekir.
+> Bu hızlı başlangıçta çalışması için kod örneği için, bir istemci parolası oluşturmanız ve Graph API **Kullanıcı. Read. All** uygulama iznini eklemeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Bu değişiklikleri benim için yapın]()
+> > [Bu değişiklikleri benim için yap]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-netcore-daemon/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
@@ -75,7 +75,7 @@ Bu hızlı başlatma gerektirir [.NET Core 2.2](https://www.microsoft.com/net/do
 > [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Visual Studio 2019'u kullanarak projeyi çalıştırın.
+> Visual Studio 2019 kullanarak projeyi çalıştırın.
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
@@ -87,8 +87,8 @@ Bu hızlı başlatma gerektirir [.NET Core 2.2](https://www.microsoft.com/net/do
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. Adım: Visual Studio projenizi yapılandırma
 >
 > 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
-> 1. Çözümü Visual Studio'da açın - **1-Call-MSGraph\daemon-console.sln** (isteğe bağlı).
-> 1. **Appsettings.json'u** ve alanların `ClientId`değerlerini `Tenant` ve `ClientSecret` aşağıdakileri değiştirin:
+> 1. Visual Studio- **1-Call-MSGraph\daemon-Console.sln** (isteğe bağlı) çözümünü açın.
+> 1. **AppSettings. JSON** öğesini `ClientId` `Tenant` düzenleyin ve alanların değerlerini ve `ClientSecret` aşağıdaki ile değiştirin:
 >
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
@@ -97,34 +97,34 @@ Bu hızlı başlatma gerektirir [.NET Core 2.2](https://www.microsoft.com/net/do
 >    ```
 >   Konumlar:
 >   - `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
->   - `Enter_the_Tenant_Id_Here`- Bu değeri **Kiracı Kimliği** veya **Kiracı adı** ile değiştirin (örneğin, contoso.microsoft.com)
->   - `Enter_the_Client_Secret_Here`- Bu değeri adım 1'de oluşturulan istemci sırrıyla değiştirin.
+>   - `Enter_the_Tenant_Id_Here`-Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
+>   - `Enter_the_Client_Secret_Here`-Bu değeri, 1. adımda oluşturulan istemci gizli anahtarı ile değiştirin.
 
 > [!div renderon="docs"]
 > > [!TIP]
-> > **Uygulama (istemci) kimliği**, **Dizin (kiracı) Kimliği**değerlerini bulmak için, Azure portalındaki uygulamanın Genel **Bakış** sayfasına gidin. Yeni bir anahtar oluşturmak için **Sertifikalar & Sırlar** sayfasına gidin.
+> > **Uygulama (istemci) kimliği**, **Dizin (kiracı) kimliği**değerlerini bulmak Için Azure Portal uygulamanın **genel bakış** sayfasına gidin. Yeni bir anahtar oluşturmak için **sertifikalar & gizlilikler** sayfasına gidin.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-admin-consent"></a>Adım 3: Yönetici onayı
+> #### <a name="step-3-admin-consent"></a>3. Adım: yönetici onayı
 
 > [!div renderon="docs"]
-> #### <a name="step-4-admin-consent"></a>Adım 4: Yönetici onayı
+> #### <a name="step-4-admin-consent"></a>4. Adım: yönetici onayı
 
-Bu noktada uygulamayı çalıştırmayı denerseniz, *HTTP 403 -* Yasak `Insufficient privileges to complete the operation`hata: . Bunun nedeni, yalnızca *uygulama izninin* Yönetici onayı gerektirdiğinden olur, bu da dizininizin genel yöneticisinin uygulamanıza onay vermesi gerektiği anlamına gelir. Rolünüze bağlı olarak aşağıdaki seçeneklerden birini seçin:
+Bu noktada uygulamayı çalıştırmayı denerseniz, *HTTP 403-Yasak* hatası: `Insufficient privileges to complete the operation`' ı alırsınız. Bunun nedeni, *yalnızca uygulama Izinlerinin* yönetici onayı gerektirdiğinden oluşur. Bu, dizininizin genel yöneticisinin uygulamanıza onay vermesi gerektiği anlamına gelir. Rolünüze bağlı olarak aşağıdaki seçeneklerden birini belirleyin:
 
-##### <a name="global-tenant-administrator"></a>Genel kiracı yöneticisi
+##### <a name="global-tenant-administrator"></a>Genel Kiracı Yöneticisi
 
 > [!div renderon="docs"]
-> Genel bir kiracı yöneticiyseniz, Azure Portalı'nın Uygulama Kaydı'ndaki **(Önizleme) API İzinleri** sayfasına gidin ve **{Kiracı Adı} ({Kiracı Adı}** dizininizin adı için Hibe yöneticisi onayı seçin.
+> Küresel kiracı yöneticisiyseniz, Azure portalının uygulama kaydı 'nda (Önizleme) **API izinleri** sayfasına gidin ve **{Tenant Name} Için yönetici onayı ver** ' i seçin (burada {Tenant Name} dizininizin adıdır).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Genel bir yöneticiyseniz, **API İzinleri** sayfasına gidin **Enter_the_Tenant_Name_Here için Grant yönetici onayı** seçin
+> Genel yöneticiyseniz, **API izinleri** sayfasına gidin **Enter_the_Tenant_Name_Here Için yönetici onayı ver** ' i seçin
 > > [!div id="apipermissionspage"]
-> > [API İzinleri sayfasına gidin]()
+> > [API Izinleri sayfasına gidin]()
 
-##### <a name="standard-user"></a>Standart kullanıcı
+##### <a name="standard-user"></a>Standart Kullanıcı
 
-Kiracınızın standart bir kullanıcısıysanız, genel bir yöneticiden uygulamanız için yönetici onayı vermesini istemeniz gerekir. Bunu yapmak için yöneticinize aşağıdaki URL'yi verin:
+Kiracınızın standart bir kullanıcısı kullanıyorsanız, uygulamanız için yönetici onayı vermesini istemek üzere bir genel yönetici yapmanız gerekir. Bunu yapmak için, yöneticinize aşağıdaki URL 'YI verin:
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
@@ -132,17 +132,17 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 > [!div renderon="docs"]
 >> Konumlar:
->> * `Enter_the_Tenant_Id_Here`- Bu değeri **Kiracı Kimliği** veya **Kiracı adı** ile değiştirin (örneğin, contoso.microsoft.com)
+>> * `Enter_the_Tenant_Id_Here`-Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >> * `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 
 > [!NOTE]
-> Önceki URL'yi kullanarak uygulamaya onay verdikten sonra *'AADSTS50011: Uygulama için yanıt adresi kayıtlı değildir'* hatasını görebilirsiniz. Bu uygulama ve URL bir yeniden yönlendirme URI yok çünkü bu olur - lütfen hatayı yoksay.
+> Yukarıdaki URL 'YI kullanarak uygulamaya onay verdikten sonra *' AADSTS50011: uygulama Için hiçbir yanıt adresi kaydedilmedi '* hatasıyla karşılaşabilirsiniz. Bu durum, bu uygulama ve URL 'nin bir yeniden yönlendirme URI 'SI olmadığı için oluşur-lütfen hatayı yoksayın.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-4-run-the-application"></a>Adım 4: Uygulamayı çalıştırın
+> #### <a name="step-4-run-the-application"></a>4. Adım: uygulamayı çalıştırma
 
 > [!div renderon="docs"]
-> #### <a name="step-5-run-the-application"></a>Adım 5: Uygulamayı çalıştırın
+> #### <a name="step-5-run-the-application"></a>5. Adım: uygulamayı çalıştırma
 
 Visual Studio kullanıyorsanız, uygulamayı çalıştırmak için **F5** tuşuna basın, aksi takdirde uygulamayı komut istemi veya konsol aracılığıyla çalıştırın:
 
@@ -152,29 +152,29 @@ dotnet run
 ```
 
 > Konumlar:
-> * *{ProjectFolder}* zip dosyasını ayıkladığınız klasördür. Örnek **C:\Azure-Örnekler\active-directory-dotnetcore-daemon-v2**
+> * *{ProjectFolder}* , ZIP dosyasını ayıkladığınız klasördür. Örnek **C:\Azure-Samples\active-Directory-dotnetcore-Daemon-v2**
 
-Sonuç olarak Azure REKLAM dizininizde bir kullanıcı listesi görmeniz gerekir.
+Sonuç olarak Azure AD dizininizde bulunan kullanıcıların listesini görmeniz gerekir.
 
 > [!IMPORTANT]
-> Bu hızlı başlatma uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci sırrı kullanır. İstemci sırrı, güvenlik nedenleriyle proje dosyalarınıza düz metin olarak eklenmiştir, çünkü uygulamayı üretim uygulaması olarak düşünmeden önce istemci sırrı yerine bir sertifika kullanmanız önerilir. Sertifikanın nasıl kullanılacağı hakkında daha fazla bilgi için bu örnek için GitHub deposunda [bu yönergeleri](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) görün.
+> Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için bu örnekteki GitHub deposunda yer alan [yönergelere](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) bakın.
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
-### <a name="how-the-sample-works"></a>Örnek nasıl çalışır?
-![Bu hızlı başlatma tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+### <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
+![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft.Identity.Client),](https://www.nuget.org/packages/Microsoft.Identity.Client)Microsoft kimlik platformu tarafından korunan bir API'ye erişmek için kullanılan kullanıcı ve istek belirteçleri oturum açmaiçin kullanılan kitaplıktır. Açıklandığı gibi, bu hızlı başlatma, yetkin izinler yerine uygulamanın kendi kimliğini kullanarak belirteçleri ister. Bu durumda kullanılan kimlik doğrulama akışı *[istemci kimlik bilgileri oauth akışı](v2-oauth2-client-creds-grant-flow.md)* olarak bilinir. İstemci kimlik bilgileri akışıile MSAL.NET nasıl kullanılacağı hakkında daha fazla bilgi için [bu makaleye](https://aka.ms/msal-net-client-credentials)bakın.
+MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)), Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılan kullanıcılara ve istek belirteçlerine oturum açmak için kullanılan kitaplıktır. Bu hızlı başlangıç, açıklandığı şekilde, uygulamanın temsilci izinleri yerine kendi kimliğini kullanarak belirteçleri ister. Bu örnekte kullanılan kimlik doğrulama akışı, *[istemci kimlik bilgileri OAuth akışı](v2-oauth2-client-creds-grant-flow.md)* olarak bilinir. İstemci kimlik bilgileri akışı ile MSAL.NET kullanma hakkında daha fazla bilgi için [Bu makaleye](https://aka.ms/msal-net-client-credentials)bakın.
 
- Visual Studio'nun **Paket Yöneticisi Konsolunda**aşağıdaki komutu çalıştırarak MSAL.NET yükleyebilirsiniz:
+ Visual Studio 'nun **Paket Yöneticisi konsolunda**aşağıdaki komutu çalıştırarak msal.net yükleyebilirsiniz:
 
 ```powershell
 Install-Package Microsoft.Identity.Client
 ```
 
-Alternatif olarak, Visual Studio kullanmıyorsanız, projenize MSAL eklemek için aşağıdaki komutu çalıştırabilirsiniz:
+Alternatif olarak, Visual Studio kullanmıyorsanız projenize MSAL eklemek için aşağıdaki komutu çalıştırabilirsiniz:
 
 ```console
 dotnet add package Microsoft.Identity.Client
@@ -200,15 +200,15 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 > | Konumlar: ||
 > |---------|---------|
-> | `config.ClientSecret` | Azure Portalı'ndaki uygulama için oluşturulan istemci sırrıdır. |
+> | `config.ClientSecret` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
 > | `config.ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
-> | `config.Authority`    | (İsteğe bağlı) Kullanıcının kimlik doğrulaması için STS bitiş noktası. Genellikle <https://login.microsoftonline.com/{tenant}> ,{kiracı} kiracınızın veya kiracı Kimliğinizin adı olan genel bulut için.|
+> | `config.Authority`    | Seçim Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle <https://login.microsoftonline.com/{tenant}> {Tenant}, kiracınızın adı veya kiracı kimliğiniz olduğu genel bulut için.|
 
 Daha fazla bilgi için lütfen [başvuru belgelerine `ConfidentialClientApplication` ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet) bakın
 
 ### <a name="requesting-tokens"></a>Belirteç isteme
 
-Uygulamanın kimliğini kullanarak belirteç istemek `AcquireTokenForClient` için şu yöntemi kullanın:
+Uygulamanın kimliğini kullanarak bir belirteç istemek için yöntemi kullanın `AcquireTokenForClient` :
 
 ```csharp
 result = await app.AcquireTokenForClient(scopes)
@@ -217,7 +217,7 @@ result = await app.AcquireTokenForClient(scopes)
 
 > |Konumlar:| |
 > |---------|---------|
-> | `scopes` | İstenilen kapsamları içerir. Gizli istemciler için bu biçim, `{Application ID URI}/.default` istenen kapsamların Azure Portalı'nda ayarlanan uygulama nesnesinde statik olarak tanımlanan kapsamlar `{Application ID URI}` olduğunu `https://graph.microsoft.com`belirtmek için benzer biçimi kullanmalıdır (Microsoft Graph için, işaret eder). Özel web API'leri için, `{Application ID URI}` Azure Portal'ın Uygulama Kaydı'ndaki (Önizleme) **api açığa** çıkarma bölümü altında tanımlanır. |
+> | `scopes` | İstenen kapsamları içerir. Gizli istemciler için, istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi `{Application ID URI}/.default` içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com`). Özel Web API 'Leri için `{Application ID URI}` , Azure portalının uygulama kaydı 'Nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
 
 Daha fazla bilgi için lütfen [başvuru belgelerine `AcquireTokenForClient` ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) bakın
 
@@ -225,22 +225,22 @@ Daha fazla bilgi için lütfen [başvuru belgelerine `AcquireTokenForClient` ](h
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daemon uygulamaları hakkında daha fazla bilgi edinmek için senaryo açılış sayfasına bakın
+Daemon uygulamaları hakkında daha fazla bilgi için bkz. senaryo giriş sayfası
 
 > [!div class="nextstepaction"]
-> [Web API'leri çağıran Daemon uygulaması](scenario-daemon-overview.md)
+> [Web API 'Lerini çağıran Daemon uygulaması](scenario-daemon-overview.md)
 
-Daemon uygulama öğreticisi için bkz:
-
-> [!div class="nextstepaction"]
-> [Daemon .NET Core konsol eğitimi](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
-
-İzinler ve izinler hakkında daha fazla bilgi edinin:
+Daemon uygulaması öğreticisi için bkz.:
 
 > [!div class="nextstepaction"]
-> [İzinler ve İzinler](v2-permissions-and-consent.md)
+> [Daemon .NET Core konsol öğreticisi](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
-Bu senaryonun auth akışı hakkında daha fazla bilgi için Oauth 2.0 istemci kimlik bilgileri akışına bakın:
+İzinler ve onay hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [İstemci kimlik bilgileri Oauth akışı](v2-oauth2-client-creds-grant-flow.md)
+> [İzinler ve onay](v2-permissions-and-consent.md)
+
+Bu senaryoya yönelik kimlik doğrulama akışı hakkında daha fazla bilgi edinmek için bkz. OAuth 2,0 istemci kimlik bilgileri akışı:
+
+> [!div class="nextstepaction"]
+> [İstemci kimlik bilgileri OAuth akışı](v2-oauth2-client-creds-grant-flow.md)

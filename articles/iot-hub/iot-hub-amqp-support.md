@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub AMQP desteğini anlayın | Microsoft Dokümanlar
-description: Geliştirici kılavuzu - AMQP Protokolü'nü kullanarak IoT Hub aygıta ve hizmete bakan uç noktalara bağlanan aygıtlar için destek. Azure IoT aygıt SDK'larında yerleşik AMQP desteği hakkında bilgi içerir.
+title: Azure IoT Hub AMQP desteğini anlayın | Microsoft Docs
+description: Geliştirici Kılavuzu-AMQP protokolünü kullanarak cihaza yönelik ve hizmete yönelik uç noktalara IoT Hub bağlanan cihazlar için destek. Azure IoT cihaz SDK 'lerinde yerleşik AMQP desteği hakkında bilgiler içerir.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -11,32 +11,32 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730745"
 ---
-# <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP Protokolü'nü kullanarak IoT hub'ınızla iletişim kurun
+# <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
-Azure IoT Hub, cihaza bakan ve hizmete bakan uç noktalar aracılığıyla çeşitli işlevler sunmak için [OASIS Advanced Message Queuing Protocol (AMQP) sürüm 1.0'ı](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf) destekler. Bu belge, IoT Hub işlevini kullanmak için bir IoT hub'ına bağlanmak için AMQP istemcilerinin kullanımını açıklar.
+Azure IoT Hub, cihaza yönelik ve hizmete yönelik uç noktalar aracılığıyla çeşitli işlevler sunmak için [Oassıs gelişmiş ileti sıraya alma Protokolü (AMQP) sürüm 1,0](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf) ' ü destekler. Bu belgede IoT Hub işlevselliği kullanmak için bir IoT Hub 'ına bağlanmak üzere AMQP istemcilerinin kullanımı açıklanmaktadır.
 
-## <a name="service-client"></a>Servis istemcisi
+## <a name="service-client"></a>Hizmet istemcisi
 
-### <a name="connect-and-authenticate-to-an-iot-hub-service-client"></a>Bir IoT hub'ına (servis istemcisi) bağlanma ve kimlik doğrulaması yapma
+### <a name="connect-and-authenticate-to-an-iot-hub-service-client"></a>IoT Hub 'ına bağlanma ve kimlik doğrulama (hizmet istemcisi)
 
-Bir IoT hub'ına AMQP kullanarak bağlanmak için, istemci [talep tabanlı güvenlik (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) veya [Basit Kimlik Doğrulama ve Güvenlik Katmanı (SASL) kimlik doğrulamasını](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)kullanabilir.
+İstemci, AMQP kullanarak bir IoT Hub 'ına bağlanmak için, [talep tabanlı güvenlik (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) veya [Basit kimlik doğrulama ve güvenlik katmanı (SASL) kimlik doğrulamasını](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)kullanabilir.
 
 Hizmet istemcisi için aşağıdaki bilgiler gereklidir:
 
 | Bilgi | Değer |
 |-------------|--------------|
-| IoT hub ana bilgisayar adı | `<iot-hub-name>.azure-devices.net` |
+| IoT Hub ana bilgisayar adı | `<iot-hub-name>.azure-devices.net` |
 | Anahtar adı | `service` |
 | Erişim anahtarı | Hizmetle ilişkili birincil veya ikincil anahtar |
-| Paylaşılan erişim imzası | Aşağıdaki biçimde kısa ömürlü paylaşılan erişim `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`imzası: . Bu imzayı oluşturmak için kodu almak [için IoT Hub'ına denetim erişimine](./iot-hub-devguide-security.md#security-token-structure)bakın.
+| Paylaşılan erişim imzası | Aşağıdaki biçimde kısa süreli bir paylaşılan erişim imzası: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Bu imzayı oluşturma kodunu almak için, bkz. [IoT Hub erişimi denetleme](./iot-hub-devguide-security.md#security-token-structure).
 
-Aşağıdaki kod parçacığı, gönderen bağlantısı aracılığıyla bir IoT hub'ına bağlanmak için [Python'daki uAMQP kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır.
+Aşağıdaki kod parçacığı, bir gönderen bağlantısı aracılığıyla bir IoT Hub 'ına bağlanmak için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır.
 
 ```python
 import uamqp
@@ -64,16 +64,16 @@ send_client = uamqp.SendClient(uri, debug=True)
 receive_client = uamqp.ReceiveClient(uri, debug=True)
 ```
 
-### <a name="invoke-cloud-to-device-messages-service-client"></a>Buluttan aygıta iletileri çağırma (servis istemcisi)
+### <a name="invoke-cloud-to-device-messages-service-client"></a>Buluttan cihaza iletileri çağırma (hizmet istemcisi)
 
-Hizmet ile IoT hub'ı ile aygıt ve IoT hub'ı arasındaki buluttan cihaza ileti alışverişi hakkında bilgi edinmek için, [IoT hub'ınızdan buluttan aygıta ileti gönder'e](iot-hub-devguide-messages-c2d.md)bakın. Hizmet istemcisi, aşağıdaki tabloda açıklandığı gibi, ileti göndermek ve aygıtlardan daha önce gönderilen iletiler için geri bildirim almak için iki bağlantı kullanır:
+Hizmet ve IoT Hub ile cihaz ile IoT Hub arasındaki buluttan cihaza ileti alışverişi hakkında bilgi edinmek için bkz. [IoT Hub 'ınızdaki buluttan cihaza Ileti gönderme](iot-hub-devguide-messages-c2d.md). Hizmet istemcisi, aşağıdaki tabloda açıklandığı gibi cihazlarından daha önce gönderilen iletiler için ileti göndermek ve geri bildirim almak üzere iki bağlantı kullanır:
 
 | Oluşturan | Bağlantı türü | Bağlantı yolu | Açıklama |
 |------------|-----------|-----------|-------------|
-| Hizmet | Gönderen bağlantısı | `/messages/devicebound` | Aygıtlar için mukadder olan buluttan cihaza iletiler hizmet tarafından bu bağlantıya gönderilir. Bu bağlantı üzerinden gönderilen `To` iletilerin özelliği hedef aygıtın alıcı `/devices/<deviceID>/messages/devicebound`bağlantı yoluna ayarlanmıştır. |
-| Hizmet | Alıcı bağlantısı | `/messages/serviceBound/feedback` | Hizmet tarafından bu bağlantıdan alınan aygıtlardan gelen tamamlama, reddetme ve terk etme geri bildirim iletileri. Geri bildirim iletileri hakkında daha fazla bilgi için [bkz.](./iot-hub-devguide-messages-c2d.md#message-feedback) |
+| Hizmet | Gönderen bağlantısı | `/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, hizmet tarafından bu bağlantıya gönderilir. Bu bağlantı üzerinden gönderilen iletilerin `To` özelliği hedef cihazın alıcı bağlantı yolu olarak ayarlanır. `/devices/<deviceID>/messages/devicebound` |
+| Hizmet | Alıcı bağlantısı | `/messages/serviceBound/feedback` | Hizmet tarafından bu bağlantıda alınan cihazlardan gelen tamamlama, reddetme ve bırakma geri bildirim iletileri. Geri bildirim iletileri hakkında daha fazla bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
-Aşağıdaki kod snippet python [uAMQP kitaplığı](https://github.com/Azure/azure-uamqp-python)kullanarak bir bulut-to-aygıt iletisi oluşturmak ve bir aygıta göndermek nasıl gösterir.
+Aşağıdaki kod parçacığı, bir buluttan cihaza ileti oluşturmayı ve [Python 'Da Uamqp kitaplığını](https://github.com/Azure/azure-uamqp-python)kullanarak bir cihaza nasıl gönderileceğini gösterir.
 
 ```python
 import uuid
@@ -96,7 +96,7 @@ results = send_client.send_all_messages()
 send_client.close()
 ```
 
-Geri bildirim almak için hizmet istemcisi bir alıcı bağlantısı oluşturur. Aşağıdaki kod snippet [Python uAMQP kitaplığı](https://github.com/Azure/azure-uamqp-python)kullanarak bir bağlantı oluşturmak için nasıl gösterir:
+Hizmet istemcisi geri bildirim almak için bir alıcı bağlantısı oluşturur. Aşağıdaki kod parçacığı, [Python 'Da Uamqp kitaplığı](https://github.com/Azure/azure-uamqp-python)kullanarak bir bağlantının nasıl oluşturulacağını gösterir:
 
 ```python
 import json
@@ -129,29 +129,29 @@ for msg in batch:
         print('unknown message:', msg.properties.content_type)
 ```
 
-Önceki kodda gösterildiği gibi, buluttan cihaza geri bildirim iletisinde bir içerik türü *vardır/vnd.microsoft.iothub.feedback.json*. Orijinal iletinin teslim durumunu çıkarmak için iletinin JSON gövdesindeki özellikleri kullanabilirsiniz:
+Yukarıdaki kodda gösterildiği gibi, buluttan cihaza geri bildirim iletisinde bir tür *Application/vnd. Microsoft. ıothub. feedback. JSON*bulunur. Özgün iletinin teslim durumunu anlamak için iletinin JSON gövdesindeki özellikleri kullanabilirsiniz:
 
-* Geri `statusCode` bildirim gövdesindeki anahtar aşağıdaki değerlerden birine sahiptir: *Başarı*, *Süresi Dolmuş*, *TeslimatCountExceeded*, *Reddedildi*, veya *Tasfiye*.
+* Geri `statusCode` bildirim gövdesindeki anahtar şu değerlerden birine sahip: *başarılı*, *süresi doldu*, *Deliverycountexce,* *reddedildi*veya *temizlendi*.
 
-* Geri `deviceId` bildirim gövdesindeki anahtar, hedef aygıtın kimliğine sahiptir.
+* Geri `deviceId` bildirim gövdesindeki anahtarın hedef cihazın kimliği vardır.
 
-* Geri `originalMessageId` bildirim gövdesindeki anahtar, hizmet tarafından gönderilen orijinal buluttan aygıta iletinin kimliğine sahiptir. Bu teslim durumunu, geri bildirimleri buluttan aygıta iletilerle ilişkilendirmek için kullanabilirsiniz.
+* Geri `originalMessageId` bildirim gövdesindeki anahtar, hizmet tarafından gönderilen orijinal buluttan CIHAZA ileti kimliğini içerir. Bu teslim durumunu, buluttan cihaza iletilerle geri bildirimde bulunmak için kullanabilirsiniz.
 
-### <a name="receive-telemetry-messages-service-client"></a>Telemetri iletileri alma (servis istemcisi)
+### <a name="receive-telemetry-messages-service-client"></a>Telemetri iletileri alma (hizmet istemcisi)
 
-Varsayılan olarak, IoT hub'ınız yutulan aygıt telemetri iletilerini yerleşik bir olay hub'ında depolar. Hizmet istemciniz, depolanan olayları almak için AMQP Protokolünü kullanabilir.
+Varsayılan olarak, IoT Hub 'ınız oluşturulan cihaz telemetri iletilerini yerleşik bir olay hub 'ına depolar. Hizmet istemciniz, depolanan olayları almak için AMQP protokolünü kullanabilir.
 
-Bu amaçla, hizmet istemcisinin öncelikle IoT hub bitiş noktasına bağlanması ve yerleşik olay hub'larına bir yeniden yönlendirme adresi alması gerekir. Hizmet istemcisi daha sonra yerleşik olay hub'ına bağlanmak için sağlanan adresi kullanır.
+Bu amaçla, hizmet istemcisinin öncelikle IoT Hub uç noktasına bağlanması ve yerleşik Olay Hub 'larına bir yeniden yönlendirme adresi alması gerekir. Hizmet istemcisi daha sonra yerleşik Olay Hub 'ına bağlanmak için belirtilen adresi kullanır.
 
-Her adımda, istemci aşağıdaki bilgi parçalarını sunması gerekir:
+Her adımda, istemcinin aşağıdaki bilgi parçalarını sunması gerekir:
 
 * Geçerli hizmet kimlik bilgileri (hizmet paylaşılan erişim imza belirteci).
 
-* İletileri almak istediği tüketici grubu bölümüne iyi biçimlendirilmiş bir yol. Belirli bir tüketici grubu ve bölüm kimliği için `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` yol aşağıdaki biçime `$Default`sahiptir: (varsayılan tüketici grubu).
+* Tüketici grubu bölümünün iletileri almayı amaçladığı, iyi biçimlendirilmiş bir yoldur. Belirli bir tüketici grubu ve bölüm KIMLIĞI için yol şu biçimdedir: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (varsayılan Tüketici grubu `$Default`).
 
-* Bölümdeki bir başlangıç noktasını belirlemek için isteğe bağlı bir filtreleme yüklemi. Bu yüklem bir sıra numarası, ofset veya enqueued zaman damgası şeklinde olabilir.
+* Bölümde bir başlangıç noktası belirlemek için isteğe bağlı bir filtreleme koşulu. Bu koşul sıra numarası, konum veya sıraya alınmış zaman damgası biçiminde olabilir.
 
-Aşağıdaki kod snippet önceki adımları göstermek için [Python uAMQP kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır:
+Aşağıdaki kod parçacığı, önceki adımları göstermek için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır:
 
 ```python
 import json
@@ -215,23 +215,23 @@ for msg in batch:
     print('\t: ' + str(msg.annotations['x-opt-enqueued-time']))
 ```
 
-Belirli bir aygıt kimliği için, IoT hub iletilerini depolamak için hangi bölümü belirlemek için aygıt kimliği karma kullanır. Önceki kod snippet olayların böyle tek bir bölümden nasıl alındığını gösterir. Ancak, tipik bir uygulamanın genellikle tüm olay hub bölmelerinde depolanan olayları alması gerektiğini unutmayın.
+Belirli bir cihaz KIMLIĞI için IoT Hub, iletilerinin hangi bölüme depolanacağını belirleyen cihaz KIMLIĞI karmasını kullanır. Yukarıdaki kod parçacığı, olayların tek bir bölümden nasıl alındığını gösterir. Ancak tipik bir uygulamanın, genellikle tüm olay hub bölümlerinde depolanan olayları alması gerektiğini unutmayın.
 
 ## <a name="device-client"></a>Cihaz istemcisi
 
-### <a name="connect-and-authenticate-to-an-iot-hub-device-client"></a>Bir IoT hub'ına (aygıt istemcisi) bağlanma ve kimlik doğrulaması yapma
+### <a name="connect-and-authenticate-to-an-iot-hub-device-client"></a>Bir IoT Hub 'ına bağlanma ve kimlik doğrulama (cihaz istemcisi)
 
-Bir aygıt AMQP kullanarak bir IoT hub'ına bağlanmak için [talep tabanlı güvenlik (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) veya [Basit Kimlik Doğrulama ve Güvenlik Katmanı (SASL)](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer) kimlik doğrulamasını kullanabilir.
+Bir cihaz, AMQP kullanarak bir IoT Hub 'ına bağlanmak için [talep tabanlı güvenlik (CBS)](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) veya [Basit kimlik doğrulama ve güvenlik katmanı (SASL)](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer) kimlik doğrulaması kullanabilir.
 
-Aygıt istemcisi için aşağıdaki bilgiler gereklidir:
+Cihaz istemcisi için aşağıdaki bilgiler gereklidir:
 
 | Bilgi | Değer |
 |-------------|--------------|
-| IoT hub ana bilgisayar adı | `<iot-hub-name>.azure-devices.net` |
-| Erişim anahtarı | Aygıtla ilişkili birincil veya ikincil anahtar |
-| Paylaşılan erişim imzası | Aşağıdaki biçimde kısa ömürlü paylaşılan erişim `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`imzası: . Bu imzayı oluşturmak için kodu almak [için IoT Hub'ına denetim erişimine](./iot-hub-devguide-security.md#security-token-structure)bakın.
+| IoT Hub ana bilgisayar adı | `<iot-hub-name>.azure-devices.net` |
+| Erişim anahtarı | Cihazla ilişkili birincil veya ikincil anahtar |
+| Paylaşılan erişim imzası | Aşağıdaki biçimde kısa süreli bir paylaşılan erişim imzası: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Bu imzayı oluşturma kodunu almak için, bkz. [IoT Hub erişimi denetleme](./iot-hub-devguide-security.md#security-token-structure).
 
-Aşağıdaki kod parçacığı, gönderen bağlantısı aracılığıyla bir IoT hub'ına bağlanmak için [Python'daki uAMQP kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır.
+Aşağıdaki kod parçacığı, bir gönderen bağlantısı aracılığıyla bir IoT Hub 'ına bağlanmak için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır.
 
 ```python
 import uamqp
@@ -260,19 +260,19 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 send_client = uamqp.SendClient(uri, debug=True)
 ```
 
-Aşağıdaki bağlantı yolları aygıt işlemleri olarak desteklenir:
+Aşağıdaki bağlantı yolları cihaz işlemleri olarak desteklenir:
 
 | Oluşturan | Bağlantı türü | Bağlantı yolu | Açıklama |
 |------------|-----------|-----------|-------------|
-| Cihazlar | Alıcı bağlantısı | `/devices/<deviceID>/messages/devicebound` | Aygıtlar için mukadder olan buluttan cihaza iletiler her hedef aygıt tarafından bu bağlantıdan alınır. |
-| Cihazlar | Gönderen bağlantısı | `/devices/<deviceID>/messages/events` | Aygıttan gönderilen aygıttan buluta iletiler bu bağlantı üzerinden gönderilir. |
+| Cihazlar | Alıcı bağlantısı | `/devices/<deviceID>/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, her hedef cihaz tarafından bu bağlantı üzerinden alınır. |
+| Cihazlar | Gönderen bağlantısı | `/devices/<deviceID>/messages/events` | Bir cihazdan gönderilen cihazdan buluta iletiler, bu bağlantı üzerinden gönderilir. |
 | Cihazlar | Gönderen bağlantısı | `/messages/serviceBound/feedback` | Cihazlar tarafından bu bağlantı üzerinden hizmete gönderilen buluttan cihaza ileti geri bildirimi. |
 
-### <a name="receive-cloud-to-device-commands-device-client"></a>Bulut-aygıt komutları alma (aygıt istemcisi)
+### <a name="receive-cloud-to-device-commands-device-client"></a>Buluttan cihaza komutları alma (cihaz istemcisi)
 
-Aygıtlara gönderilen bulut-aygıt komutları bir `/devices/<deviceID>/messages/devicebound` bağlantıyla gelir. Aygıtlar bu iletileri toplu olarak alabilir ve ileti veri yükünü, ileti özelliklerini, ek açıklamaları veya uygulama özelliklerini gerektiği gibi iletide kullanabilir.
+Cihazlara gönderilen bulut-cihaz komutları bir `/devices/<deviceID>/messages/devicebound` bağlantıya ulaşır. Cihazlar bu iletileri toplu işler halinde alabilir ve iletideki ileti veri yükünü, ileti özelliklerini, ek açıklamaları veya uygulama özelliklerini kullanabilir.
 
-Aşağıdaki kod parçacığı, bir aygıt tarafından buluttan aygıta iletileri almak için [Python'daki uAMQP kitaplığını](https://github.com/Azure/azure-uamqp-python)kullanır.
+Aşağıdaki kod parçacığı, bir cihaz tarafından buluttan cihaza ileti almak için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python)kullanır.
 
 ```python
 # ...
@@ -318,11 +318,11 @@ while True:
               str(msg.annotations['x-opt-sequence-number']))
 ```
 
-### <a name="send-telemetry-messages-device-client"></a>Telemetri iletileri gönderme (aygıt istemcisi)
+### <a name="send-telemetry-messages-device-client"></a>Telemetri iletileri gönderme (cihaz istemcisi)
 
-Ayrıca, AMQP kullanarak bir cihazdan telemetri iletileri gönderebilirsiniz. Aygıt isteğe bağlı olarak uygulama özellikleri sözlüğü veya ileti kimliği gibi çeşitli ileti özellikleri sağlayabilir.
+Ayrıca, AMQP kullanarak bir cihazdan telemetri iletileri gönderebilirsiniz. Cihaz isteğe bağlı olarak, uygulama özellikleri veya ileti KIMLIĞI gibi çeşitli ileti özellikleri için bir sözlük sağlayabilir.
 
-Aşağıdaki kod parçacığı, bir aygıttan aygıttan buluta iletigöndermek için [Python'daki uAMQP kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır.
+Aşağıdaki kod parçacığı, cihazdan buluta iletileri bir cihazdan göndermek için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır.
 
 ```python
 # ...
@@ -365,16 +365,16 @@ for result in results:
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* AmQP bağlantıları, bir ağ hatası veya kimlik doğrulama belirteci (kodda oluşturulan) sona ermesi nedeniyle kesintiye uğrayabilir. Hizmet istemcisi bu koşulları ele almalıdır ve gerekirse bağlantıyı ve bağlantıları yeniden kurmalıdır. Kimlik doğrulama belirteci süresi dolduğunda, istemci belirteci sona ermeden önce proaktif olarak yenileyerek bir bağlantı düşüşünü önleyebilir.
+* Bir ağ hatası veya kimlik doğrulama belirtecinin süresi dolduğunda (kodda oluşturulan) AMQP bağlantıları kesilebilir. Hizmet istemcisi bu koşulları işlemeli ve gerekirse bağlantıyı ve bağlantıları yeniden kuracak. Bir kimlik doğrulama belirtecinin süresi dolarsa, istemci, belirtecinin süresi dolduktan önce önceden yenileyerek bir bağlantı bırakmaya engel olabilir.
 
-* Müşteriniz bazen bağlantı yönlendirmelerini doğru şekilde işleyebilir. Böyle bir işlemi anlamak için AMQP istemci belgelerinize bakın.
+* İstemciniz bazen bağlantı yeniden yönlendirmelerini doğru şekilde işleyebilmelidir. Bu tür bir işlemi anlamak için AMQP istemci belgelerinize bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AMQP Protokolü hakkında daha fazla bilgi edinmek için [AMQP v1.0 belirtimine](https://www.amqp.org/sites/amqp.org/files/amqp.pdf)bakın.
+AMQP protokolü hakkında daha fazla bilgi edinmek için [AMQP v 1.0 belirtimine](https://www.amqp.org/sites/amqp.org/files/amqp.pdf)bakın.
 
-IoT Hub mesajlaşması hakkında daha fazla bilgi edinmek için bkz:
+IoT Hub mesajlaşma hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Buluttan cihaza iletiler](./iot-hub-devguide-messages-c2d.md)
 * [Ek protokoller için destek](iot-hub-protocol-gateway.md)
-* [İleti Telemetri Taşıma (MQTT) Protokolü için Destek](./iot-hub-mqtt-support.md)
+* [Message Queuing telemetri taşıma (MQTT) protokolü için destek](./iot-hub-mqtt-support.md)

@@ -1,7 +1,7 @@
 ---
-title: Azure VM'deki SSH bağlantı sorunlarını giderme | Microsoft Dokümanlar
-description: Linux çalıştıran bir Azure VM için 'SSH bağlantısı başarısız oldu' veya 'SSH bağlantısı reddedildi' gibi sorunları nasıl giderilir?
-keywords: ssh bağlantısı reddedildi, ssh hatası, azure ssh, SSH bağlantısı başarısız oldu
+title: Azure VM 'ye SSH bağlantısı sorunlarını giderme | Microsoft Docs
+description: Linux çalıştıran bir Azure VM için ' SSH bağlantısı başarısız ' veya ' SSH bağlantısı reddedildi ' gibi sorunları giderme.
+keywords: SSH bağlantısı reddedildi, SSH hatası, Azure SSH, SSH bağlantısı başarısız oldu
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
@@ -14,115 +14,115 @@ ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
 ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060658"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Başarısız olan, hata veren veya reddedilen Azure Linux VM SSH bağlantılarıyla ilgili sorunları giderme
-Bu makale, Güvenli Kabuk (SSH) hataları, SSH bağlantı hataları veya Bir Linux sanal makineye (VM) bağlanmaya çalıştığınızda SSH reddedilir nedeniyle oluşan sorunları bulmanıza ve düzeltmenize yardımcı olur. Bağlantı sorunlarını gidermek ve gidermek için Linux için Azure portalını, Azure CLI'yi veya VM Access Extension'ı kullanabilirsiniz.
+Bu makale, bir Linux sanal makinesine (VM) bağlanmaya çalıştığınızda Secure Shell (SSH) hatalarından, SSH bağlantı hatalarından veya SSH 'nin reddetmesi nedeniyle oluşan sorunları bulmanıza ve düzeltmenize yardımcı olur. Bağlantı sorunlarını gidermek ve çözmek için Linux için Azure portal, Azure CLı veya VM erişim uzantısı 'nı kullanabilirsiniz.
 
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve destek **al'ı**seçin. Azure Desteği'ni kullanma hakkında daha fazla bilgi için [Microsoft Azure destek SSS'sini](https://azure.microsoft.com/support/faq/)okuyun.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 
 ## <a name="quick-troubleshooting-steps"></a>Hızlı sorun giderme adımları
-Her sorun giderme adımından sonra VM'ye yeniden bağlanmayı deneyin.
+Her bir sorun giderme adımından sonra sanal makineye yeniden bağlanmayı deneyin.
 
-1. [SSH yapılandırmasını sıfırla.](#reset-config)
-2. [Kullanıcının kimlik bilgilerini sıfırla.](#reset-credentials)
-3. Ağ [güvenlik grubu](../../virtual-network/security-overview.md) kurallarının SSH trafiğine izin verdiği doğrulayın.
-   * SSH trafiğine izin vermek için [bir Ağ Güvenlik Grubu kuralının](#security-rules) bulunduğundan emin olun (varsayılan olarak TCP bağlantı noktası 22).
-   * Azure yük dengeleyicisi kullanmadan bağlantı noktası yeniden yönlendirme / eşleme kullanamazsınız.
-4. [VM kaynak durumunu](../../resource-health/resource-health-overview.md)kontrol edin.
-   * VM'nin sağlıklı olduğundan emin olun.
-   * [Önyükleme tanılama](boot-diagnostics.md)etkinse, VM'nin günlüklerde önyükleme hatalarını bildirmediğini doğrulayın.
-5. [VM'yi yeniden başlatın.](#restart-vm)
-6. [VM'yi yeniden dağıtın.](#redeploy-vm)
+1. [SSH yapılandırmasını sıfırlayın](#reset-config).
+2. Kullanıcının [kimlik bilgilerini sıfırlayın](#reset-credentials) .
+3. [Ağ güvenlik grubu](../../virtual-network/security-overview.md) kurallarının SSH trafiğine izin verdiğinden emin olun.
+   * SSH trafiğine izin vermek için bir [ağ güvenlik grubu kuralı](#security-rules) olduğundan emin olun (varsayılan olarak, TCP bağlantı noktası 22).
+   * Azure yük dengeleyici kullanmadan bağlantı noktası yeniden yönlendirme/eşleme kullanamazsınız.
+4. [VM kaynak durumunu](../../resource-health/resource-health-overview.md)denetleyin.
+   * VM 'nin sağlıklı olduğundan emin olun.
+   * [Önyükleme tanılaması etkinse](boot-diagnostics.md), VM 'nin günlüklerde önyükleme hataları bildirmediğinden emin olun.
+5. [VM 'Yi yeniden başlatın](#restart-vm).
+6. [VM 'yi yeniden dağıtın](#redeploy-vm).
 
-Daha ayrıntılı sorun giderme adımları ve açıklamalar için okumaya devam edin.
+Daha ayrıntılı sorun giderme adımları ve açıklamaları için okumaya devam edin.
 
-## <a name="available-methods-to-troubleshoot-ssh-connection-issues"></a>SSH bağlantı sorunlarını gidermek için kullanılabilir yöntemler
+## <a name="available-methods-to-troubleshoot-ssh-connection-issues"></a>SSH bağlantı sorunlarını gidermek için kullanılabilecek yöntemler
 Aşağıdaki yöntemlerden birini kullanarak kimlik bilgilerini veya SSH yapılandırmasını sıfırlayabilirsiniz:
 
-* [Azure portalı](#use-the-azure-portal) - SSH yapılandırmasını veya SSH anahtarını hızlı bir şekilde sıfırlamanız gerekiyorsa ve Azure araçlarını yüklü yormuyorsanız harika.
-* [Azure VM Seri Konsolu](https://aka.ms/serialconsolelinux) - VM seri konsolu, SSH yapılandırmasına bakılmaksızın çalışır ve VM'inize etkileşimli bir konsol sağlar. Aslında, "Can't SSH" durumları özellikle seri konsolun çözmeye yardımcı olmak için tasarladığı durumlardır. Aşağıda daha fazla ayrıntı bulabilirsiniz.
-* [Azure CLI](#use-the-azure-cli) - komut satırındaysanız, SSH yapılandırmasını veya kimlik bilgilerini hızla sıfırlayın. Klasik bir VM ile çalışıyorsanız, [Azure klasik CLI'yi](#use-the-azure-classic-cli)kullanabilirsiniz.
-* [Azure VMAccessForLinux uzantısı](#use-the-vmaccess-extension) - SSH yapılandırmasını veya kullanıcı kimlik bilgilerini sıfırlamak için json tanım dosyaları oluşturun ve yeniden kullanın.
+* [Azure Portal](#use-the-azure-portal) -SSH YAPıLANDıRMASıNı veya SSH anahtarını hızlıca sıfırlamanız gerekiyorsa ve Azure Araçları yüklü değilse harika.
+* [Azure VM seri konsolu](https://aka.ms/serialconsolelinux) -VM seri konsolu, SSH yapılandırmasına bakılmaksızın çalışır ve sanal makinenize etkileşimli bir konsol sağlar. Aslında, "SSH olamaz" durumları özellikle, seri konsolunun çözmeye yardımcı olmak üzere tasarlanma biçiminde değildir. Aşağıda daha fazla ayrıntı bulabilirsiniz.
+* [Azure CLI](#use-the-azure-cli) -zaten komut SATıRLARALıYORSA, SSH yapılandırmasını veya kimlik bilgilerini hızlıca sıfırlayın. Klasik bir VM ile çalışıyorsanız, [Klasik Azure CLI](#use-the-azure-classic-cli)'yi kullanabilirsiniz.
+* [Azure VMAccessForLinux uzantısı](#use-the-vmaccess-extension) -SSH yapılandırmasını veya Kullanıcı kimlik bilgilerini sıfırlamak için JSON tanım dosyalarını oluşturun ve yeniden kullanın.
 
-Her sorun giderme adımından sonra VM'nize yeniden bağlanmayı deneyin. Hala bağlanamıyorsanız, bir sonraki adımı deneyin.
+Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı deneyin. Hala bağlanamıyorsanız, bir sonraki adımı deneyin.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
-Azure portalı, yerel bilgisayarınıza herhangi bir araç yüklemeden SSH yapılandırmasını veya kullanıcı kimlik bilgilerini sıfırlamanın hızlı bir yolunu sağlar.
+Azure portal, yerel bilgisayarınıza herhangi bir araç yüklemeden SSH yapılandırmasını veya Kullanıcı kimlik bilgilerini sıfırlamanın hızlı bir yolunu sağlar.
 
-Başlamak için Azure portalında VM'nizi seçin. Destek + **Sorun Giderme** bölümüne gidin ve aşağıdaki örnekte olduğu gibi **parolayı sıfırla'yı** seçin:
+Başlamak için Azure portal VM 'nizi seçin. Aşağıdaki örnekte, **destek + sorun giderme** bölümüne gidin ve **Parolayı Sıfırla** ' yı seçin:
 
-![Azure portalında SSH yapılandırmasını veya kimlik bilgilerini sıfırlama](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
+![Azure portal SSH yapılandırmasını veya kimlik bilgilerini sıfırlayın](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
 ### <a name="reset-the-ssh-configuration"></a><a id="reset-config" />SSH yapılandırmasını sıfırlama
-SSH yapılandırmasını sıfırlamak `Reset configuration only` için, önceki ekran görüntüsünde olduğu gibi **Mod** bölümünden seçin ve ardından **Güncelleştir'i**seçin. Bu eylem tamamlandıktan sonra, VM'nize yeniden erişmeye çalışın.
+SSH yapılandırmasını sıfırlamak için, önceki ekran `Reset configuration only` görüntüsünde bulunan **mod** bölümünde ' ı seçin ve ardından **Güncelleştir**' i seçin. Bu eylem tamamlandığında, sanal makinenize erişmeyi yeniden deneyin.
 
 ### <a name="reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />Bir kullanıcının SSH kimlik bilgilerini sıfırlama
-Varolan bir kullanıcının kimlik bilgilerini `Reset SSH public key` sıfırlamak için, önceki ekran görüntüsünde olduğu gibi Mode bölümünden birini veya `Reset password` **Mode** bölümünü seçin. Kullanıcı adını ve SSH anahtarını veya yeni parolayı belirtin ve ardından **Güncelleştir'i**seçin.
+Mevcut bir kullanıcının kimlik bilgilerini sıfırlamak için, önceki ekran görüntüsündeki `Reset SSH public key` gibi `Reset password` **mod** bölümünde veya ' ı seçin. Kullanıcı adını ve bir SSH anahtarını veya yeni parolayı belirtip **Güncelleştir**' i seçin.
 
-Ayrıca bu menüden VM sudo ayrıcalıkları olan bir kullanıcı oluşturabilirsiniz. Yeni bir kullanıcı adı ve ilişkili parola veya SSH anahtarı girin ve sonra **Güncelleştir'i**seçin.
+Bu menüden, sanal makinede sudo ayrıcalıklarına sahip bir kullanıcı da oluşturabilirsiniz. Yeni bir Kullanıcı adı ve ilişkili parola veya SSH anahtarı girip **Güncelleştir**' i seçin.
 
-### <a name="check-security-rules"></a><a id="security-rules" />Güvenlik kurallarını denetleme
+### <a name="check-security-rules"></a><a id="security-rules" />Güvenlik kurallarını denetle
 
-Ağ güvenlik grubundaki bir kuralın sanal bir makineye veya sanal makineden gelen trafiği engelleyip engellemediğikonusunda IP [akış doğrulamasını](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) kullanın. Gelen "İzin Ver" NSG kuralının var olduğundan ve SSH bağlantı noktası için önceliklendirilmesini sağlamak için etkili güvenlik grubu kurallarını da gözden geçirebilirsiniz (varsayılan 22). Daha fazla bilgi için [vm trafik akışını gidermek için etkili güvenlik kurallarını kullanma'ya](../../virtual-network/diagnose-network-traffic-filter-problem.md)bakın.
+Bir ağ güvenlik grubundaki bir kuralın bir sanal makineden gelen veya giden trafiği engelleyip engellemediğini onaylamak için [IP akışı doğrulama](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) kullanın. Ayrıca, gelen "Izin ver" NSG kuralının mevcut olduğundan ve SSH bağlantı noktası (varsayılan 22) için önceliklendirildiğinden emin olmak için etkin güvenlik grubu kurallarını gözden geçirebilirsiniz. Daha fazla bilgi için bkz. [sanal makine trafiği akışı sorunlarını gidermek için etkin güvenlik kurallarını kullanma](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
-### <a name="check-routing"></a>Yönlendirmeyi kontrol edin
+### <a name="check-routing"></a>Yönlendirmeyi denetle
 
-Bir rotanın trafiğin sanal bir makineye veya sanal makineden yönlendirilmesine engel olmadığını doğrulamak için Ağ İzleyicisi'nin [Sonraki atlama](../../network-watcher/network-watcher-check-next-hop-portal.md) özelliğini kullanın. Ayrıca, ağ arabirimi için tüm etkili yolları görmek için etkili yolları gözden geçirebilirsiniz. Daha fazla bilgi için [vm trafik akışını gidermek için etkili yolları](../../virtual-network/diagnose-network-routing-problem.md)kullanma'ya bakın.
+Bir yolun bir sanal makineye veya bir sanal makineye yönlendirilmesini engellemediğini doğrulamak için ağ Izleyicisi 'nin [sonraki atlama](../../network-watcher/network-watcher-check-next-hop-portal.md) özelliğini kullanın. Ayrıca, bir ağ arabirimi için tüm etkin yolları görmek üzere geçerli yolları gözden geçirebilirsiniz. Daha fazla bilgi için bkz. [VM trafik akışı sorunlarını gidermek için geçerli yolları kullanma](../../virtual-network/diagnose-network-routing-problem.md).
 
-## <a name="use-the-azure-vm-serial-console"></a>Azure VM Seri Konsolu'nu kullanma
-[Azure VM Seri Konsolu,](./serial-console-linux.md) Linux sanal makineleri için metin tabanlı bir konsola erişim sağlar. Konsolu, Etkileşimli bir kabuktaki SSH bağlantınızı gidermek için kullanabilirsiniz. Seri Konsol'u kullanmak için [ön koşulları](./serial-console-linux.md#prerequisites) yerine getirebildiğinizden emin olun ve SSH bağlantınızı daha fazla gidermek için aşağıdaki komutları deneyin.
+## <a name="use-the-azure-vm-serial-console"></a>Azure VM seri konsolu 'Nu kullanma
+[Azure VM seri konsolu](./serial-console-linux.md) , Linux sanal makineleri için metin tabanlı bir konsola erişim sağlar. Etkileşimli bir kabukta SSH bağlantınızın sorunlarını gidermek için konsolunu kullanabilirsiniz. Seri konsol kullanma [önkoşullarını](./serial-console-linux.md#prerequisites) karşılatığınızdan emin olun ve SSH bağlantınızın sorunlarını gidermek için aşağıdaki komutları deneyin.
 
-### <a name="check-that-ssh-is-running"></a>SSH'nin çalıştığını kontrol edin
-SSH'nin VM'nizde çalışıp çalışmadığını doğrulamak için aşağıdaki komutu kullanabilirsiniz:
+### <a name="check-that-ssh-is-running"></a>SSH 'nin çalıştığını denetleyin
+SANAL makinenizde SSH 'nin çalışıp çalışmadığını doğrulamak için aşağıdaki komutu kullanabilirsiniz:
 
 ```console
 ps -aux | grep ssh
 ```
 
-Herhangi bir çıktı varsa, SSH çalışır durumdadır.
+Herhangi bir çıkış varsa, SSH çalışır duruma ayarlanır.
 
-### <a name="check-which-port-ssh-is-running-on"></a>SSH'nin hangi bağlantı noktasında çalıştığını denetleme
+### <a name="check-which-port-ssh-is-running-on"></a>SSH 'nin hangi bağlantı noktası üzerinde çalıştığını denetleyin
 
-Hangi bağlantı noktası SSH'nin çalıştığını denetlemek için aşağıdaki komutu kullanabilirsiniz:
+Hangi bağlantı noktası SSH 'nin çalıştığını denetlemek için aşağıdaki komutu kullanabilirsiniz:
 
 ```console
 sudo grep Port /etc/ssh/sshd_config
 ```
 
-Çıktınız şuna benzer:
+Çıktılarınız şöyle görünür:
 
 ```output
 Port 22
 ```
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
-Henüz yapmadıysanız, en son [Azure CLI'sini](/cli/azure/install-az-cli2) yükleyin ve [az giriş'i](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın.
+Henüz yapmadıysanız, en son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın.
 
-Özel bir Linux disk görüntüsü oluşturduysanız ve yüklediyseniz, [Microsoft Azure Linux Aracısı](../extensions/agent-linux.md) sürümünün 2.0.5 veya sonraki sürümlerinin yüklendiğinden emin olun. Galeri görüntüleri kullanılarak oluşturulan VM'ler için bu erişim uzantısı zaten yüklenmiş ve sizin için yapılandırılmıştır.
+Özel bir Linux disk görüntüsü oluşturup karşıya yüklüyorsanız, [Microsoft Azure Linux Aracısı](../extensions/agent-linux.md) sürümü 2.0.5 veya sonraki bir sürümün yüklü olduğundan emin olun. Galeri görüntüleri kullanılarak oluşturulan VM 'Ler için, bu erişim uzantısı zaten yüklenmiş ve sizin için yapılandırılmış.
 
-### <a name="reset-ssh-configuration"></a>SSH yapılandırmayı sıfırlama
-Başlangıçta SSH yapılandırmasını varsayılan değerlere sıfırlamayı ve VM'deki SSH sunucusunu yeniden başlatmayı deneyebilirsiniz. Bu, kullanıcı hesabı adını, parolayı veya SSH anahtarlarını değiştirmez.
-Aşağıdaki örnekte [az vm kullanıcı sıfırlama-ssh](/cli/azure/vm/user) vm üzerinde SSH `myVM` yapılandırmasını sıfırlamak için `myResourceGroup`kullanır. Kendi değerlerinizi aşağıdaki gibi kullanın:
+### <a name="reset-ssh-configuration"></a>SSH yapılandırmasını Sıfırla
+Başlangıçta SSH yapılandırmasını varsayılan değerlere sıfırlamayı ve SSH sunucusunu VM 'de yeniden başlatmayı deneyebilirsiniz. Bu, Kullanıcı hesabı adını, parolayı veya SSH anahtarlarını değiştirmez.
+Aşağıdaki örnek, içinde `myVM` `myResourceGroup`adlı sanal makinede SSH yapılandırmasını sıfırlamak için [az VM User Reset-SSH](/cli/azure/vm/user) kullanır. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Bir kullanıcının SSH kimlik bilgilerini sıfırlama
-Aşağıdaki örnekte [az vm kullanıcı](/cli/azure/vm/user) güncelleştirmesi, 'de `myUsername` `myResourceGroup` `myPassword`adı geçen `myVM` VM'de belirtilen değere ilişkin kimlik bilgilerini sıfırlamak için Kendi değerlerinizi aşağıdaki gibi kullanın:
+Aşağıdaki örnek, ' de adlı `myVM` sanal `myResourceGroup`makinede ' de `myPassword`belirtilen değere kimlik `myUsername` bilgilerini sıfırlamak için [az VM User Update](/cli/azure/vm/user) kullanır. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
      --username myUsername --password myPassword
 ```
 
-SSH anahtar kimlik doğrulamasını kullanıyorsanız, belirli bir kullanıcı için SSH anahtarını sıfırlayabilirsiniz. Aşağıdaki örnekte **az vm access set-linux-user** adlı `~/.ssh/id_rsa.pub` `myUsername`kullanıcı için saklanan SSH anahtarını `myVM` güncellemek için kullanır , vm adlı `myResourceGroup`. Kendi değerlerinizi aşağıdaki gibi kullanın:
+SSH anahtarı kimlik doğrulamasını kullanıyorsanız, belirli bir kullanıcı için SSH anahtarını sıfırlayabilirsiniz. Aşağıdaki örnek, içinde `myUsername` `myVM` `myResourceGroup`adlı VM 'de ADLı Kullanıcı için ' de `~/.ssh/id_rsa.pub` depolanan SSH anahtarını güncelleştirmek için **az VM Access set-Linux-User** kullanır. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -130,10 +130,10 @@ az vm user update --resource-group myResourceGroup --name myVM \
 ```
 
 ## <a name="use-the-vmaccess-extension"></a>VMAccess uzantısını kullanma
-Linux için VM Erişim Uzantısı, gerçekleştirecek eylemleri tanımlayan bir json dosyasında okur. Bu eylemler, SSHD'yi sıfırlamayı, Bir SSH anahtarını sıfırlamayı veya kullanıcı eklemeyi içerir. VMAccess uzantısını aramak için Azure CLI'yi kullanmaya devam edebilirsiniz, ancak istenirse json dosyalarını birden çok VM'de yeniden kullanabilirsiniz. Bu yaklaşım, daha sonra verilen senaryolar için çağrılabilir json dosyalarının bir depo oluşturmanıza olanak sağlar.
+Linux için VM erişimi uzantısı, gerçekleştirilecek eylemleri tanımlayan bir JSON dosyasında okur. Bu eylemler, SSHD 'yi sıfırlamayı, bir SSH anahtarını sıfırlamayı veya bir Kullanıcı eklemeyi içerir. VMAccess uzantısını çağırmak için yine de Azure CLı kullanıyorsunuz, ancak isterseniz JSON dosyalarını birden çok VM genelinde yeniden kullanabilirsiniz. Bu yaklaşım, daha sonra verilen senaryolar için çağrılabilecek bir JSON dosyaları deposu oluşturmanızı sağlar.
 
-### <a name="reset-sshd"></a>SSHD'yi Sıfırla
-Aşağıdaki içerikle `settings.json` birlikte bir dosya oluşturun:
+### <a name="reset-sshd"></a>SSHD 'yi Sıfırla
+Aşağıdaki içerikle adlı `settings.json` bir dosya oluşturun:
 
 ```json
 {
@@ -141,7 +141,7 @@ Aşağıdaki içerikle `settings.json` birlikte bir dosya oluşturun:
 }
 ```
 
-Azure CLI'yi kullanarak, `VMAccessForLinux` json dosyanızı belirterek SSHD bağlantınızı sıfırlamak için uzantıyı ararsınız. Aşağıdaki örnekte, 'de `myVM` `myResourceGroup`adı geçen VM'de SSHD'yi sıfırlamak için az [vm uzantısı kümesi](/cli/azure/vm/extension) kullanır. Kendi değerlerinizi aşağıdaki gibi kullanın:
+Azure CLı 'yı kullanarak JSON dosyanızı belirterek SSHD `VMAccessForLinux` bağlantınızı sıfırlamak için uzantıyı çağırabilirsiniz. Aşağıdaki örnek, içinde `myVM` `myResourceGroup`adlı sanal makinede SSHD 'yi sıfırlamak için [az VM Extension set](/cli/azure/vm/extension) kullanır. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -149,7 +149,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Bir kullanıcının SSH kimlik bilgilerini sıfırlama
-SSHD düzgün çalışıyor gibi görünüyorsa, veren bir kullanıcının kimlik bilgilerini sıfırlayabilirsiniz. Bir kullanıcının parolasını sıfırlamak için `settings.json`. Aşağıdaki örnekte belirtilen değer `myUsername` için kimlik `myPassword`bilgilerini sıfırlar. Kendi değerlerinizi kullanarak `settings.json` dosyanıza aşağıdaki satırları girin:
+SSHD doğru şekilde işlev içeriyorsa, bir Giver kullanıcısına ait kimlik bilgilerini sıfırlayabilirsiniz. Bir kullanıcının parolasını sıfırlamak için adlı `settings.json`bir dosya oluşturun. Aşağıdaki örnek, için `myUsername` kimlik bilgilerini içinde `myPassword`belirtilen değere sıfırlar. Aşağıdaki satırları `settings.json` dosyanıza, kendi değerlerinizi kullanarak girin:
 
 ```json
 {
@@ -157,7 +157,7 @@ SSHD düzgün çalışıyor gibi görünüyorsa, veren bir kullanıcının kimli
 }
 ```
 
-Veya bir kullanıcı için SSH anahtarını sıfırlamak `settings.json`için önce bir dosya oluşturun. Aşağıdaki `myUsername` örnek, `myPassword` `myVM` `myResourceGroup`'de adı geçen VM'de belirtilen değere ilişkin kimlik bilgilerini sıfırlar. Kendi değerlerinizi kullanarak `settings.json` dosyanıza aşağıdaki satırları girin:
+Ya da bir kullanıcının SSH anahtarını sıfırlamak için, önce adlı `settings.json`bir dosya oluşturun. Aşağıdaki `myUsername` örnek, IÇINDE `myPassword` `myVM` `myResourceGroup`adlı sanal makinede ' de belirtilen değere kimlik bilgilerini sıfırlar. Aşağıdaki satırları `settings.json` dosyanıza, kendi değerlerinizi kullanarak girin:
 
 ```json
 {
@@ -165,26 +165,26 @@ Veya bir kullanıcı için SSH anahtarını sıfırlamak `settings.json`için ö
 }
 ```
 
-json dosyanızı oluşturduktan sonra, json `VMAccessForLinux` dosyanızı belirterek SSH kullanıcı kimlik bilgilerinizi sıfırlamak için uzantıyı aramak için Azure CLI'yi kullanın. Aşağıdaki örnek, `myVM` `myResourceGroup`'de adı geçen VM'deki kimlik bilgilerini sıfırlar. Kendi değerlerinizi aşağıdaki gibi kullanın:
+JSON dosyanızı oluşturduktan sonra, JSON dosyanızı belirterek SSH kullanıcı kimlik bilgilerinizi sıfırlama `VMAccessForLinux` uzantısını çağırmak IÇIN Azure CLI ' yi kullanın. Aşağıdaki örnek, içinde `myVM` `myResourceGroup`adlı sanal makinede bulunan kimlik bilgilerini sıfırlar. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
     --name VMAccessForLinux --publisher Microsoft.OSTCExtensions --version 1.2 --settings settings.json
 ```
 
-## <a name="use-the-azure-classic-cli"></a>Azure klasik CLI'yi kullanma
-Henüz yapmadıysanız, [Azure klasik CLI'sini yükleyin ve Azure aboneliğinize bağlanın.](../../cli-install-nodejs.md) Kaynak Yöneticisi modunu aşağıdaki gibi kullandığınızdan emin olun:
+## <a name="use-the-azure-classic-cli"></a>Klasik Azure CLı 'yı kullanma
+Henüz yapmadıysanız, [Azure klasık CLI 'yı yükleyip Azure aboneliğinize bağlanın](../../cli-install-nodejs.md). Kaynak Yöneticisi modunu şu şekilde kullandığınızdan emin olun:
 
 ```azurecli
 azure config mode arm
 ```
 
-Özel bir Linux disk görüntüsü oluşturduysanız ve yüklediyseniz, [Microsoft Azure Linux Aracısı](../extensions/agent-linux.md) sürümünün 2.0.5 veya sonraki sürümlerinin yüklendiğinden emin olun. Galeri görüntüleri kullanılarak oluşturulan VM'ler için bu erişim uzantısı zaten yüklenmiş ve sizin için yapılandırılmıştır.
+Özel bir Linux disk görüntüsü oluşturup karşıya yüklüyorsanız, [Microsoft Azure Linux Aracısı](../extensions/agent-linux.md) sürümü 2.0.5 veya sonraki bir sürümün yüklü olduğundan emin olun. Galeri görüntüleri kullanılarak oluşturulan VM 'Ler için, bu erişim uzantısı zaten yüklenmiş ve sizin için yapılandırılmış.
 
-### <a name="reset-ssh-configuration"></a>SSH yapılandırmayı sıfırlama
-SSHD yapılandırmasının kendisi yanlış yapılandırılmış veya hizmette bir hatayla karşılaşılabilir. SSH yapılandırmasının geçerli olduğundan emin olmak için SSHD'yi sıfırlayabilirsiniz. SSHD'yi sıfırlamak, ilk adımdır.
+### <a name="reset-ssh-configuration"></a>SSH yapılandırmasını Sıfırla
+SSHD yapılandırmasının kendisi yanlış yapılandırılmış olabilir veya hizmet bir hatayla karşılaştı. SSH yapılandırmasının geçerli olduğundan emin olmak için SSHD 'yi sıfırlayabilirsiniz. SSHD 'yi sıfırlamak, uygulamanız gereken ilk sorun giderme adımı olmalıdır.
 
-Aşağıdaki örnek, SSHD'yi kaynak `myVM` grubunda adı verilen `myResourceGroup`bir VM'de sıfırlar. Kendi VM ve kaynak grup adlarınızı aşağıdaki gibi kullanın:
+Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda ADLı BIR VM 'deki SSHD 'yi sıfırlar. Kendi sanal makine ve kaynak grubu adlarınızı aşağıdaki gibi kullanın:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
@@ -192,14 +192,14 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Bir kullanıcının SSH kimlik bilgilerini sıfırlama
-SSHD düzgün çalışıyor gibi görünüyorsa, veren bir kullanıcının parolasını sıfırlayabilirsiniz. Aşağıdaki `myUsername` örnek, `myPassword` `myVM` `myResourceGroup`'de adı geçen VM'de belirtilen değere ilişkin kimlik bilgilerini sıfırlar. Kendi değerlerinizi aşağıdaki gibi kullanın:
+SSHD doğru şekilde işlev içeriyorsa, Giver kullanıcısına ait parolayı sıfırlayabilirsiniz. Aşağıdaki `myUsername` örnek, IÇINDE `myPassword` `myVM` `myResourceGroup`adlı sanal makinede ' de belirtilen değere kimlik bilgilerini sıfırlar. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
      --user-name myUsername --password myPassword
 ```
 
-SSH anahtar kimlik doğrulamasını kullanıyorsanız, belirli bir kullanıcı için SSH anahtarını sıfırlayabilirsiniz. Aşağıdaki örnek, 'de adı verilen `~/.ssh/id_rsa.pub` `myUsername` `myVM` VM'de adı verilen kullanıcı `myResourceGroup`için depolanan SSH anahtarını güncelleştirir. Kendi değerlerinizi aşağıdaki gibi kullanın:
+SSH anahtarı kimlik doğrulamasını kullanıyorsanız, belirli bir kullanıcı için SSH anahtarını sıfırlayabilirsiniz. Aşağıdaki `~/.ssh/id_rsa.pub` örnek, içinde `myUsername` `myVM` `myResourceGroup`adlı sanal makinede adlı Kullanıcı için ' de depolanan SSH anahtarını güncelleştirir. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
@@ -207,15 +207,15 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ```
 
 ## <a name="restart-a-vm"></a><a id="restart-vm" />Bir VM’yi yeniden başlatma
-SSH yapılandırmasını ve kullanıcı kimlik bilgilerini sıradını veya bunu yaparken bir hatayla karşılaştıysanız, altta yatan işlem sorunlarını gidermek için VM'yi yeniden başlatmayı deneyebilirsiniz.
+SSH yapılandırmasını ve Kullanıcı kimlik bilgilerini sıfırladıysanız veya bunu yaparken bir hatayla karşılaşırsanız, arka plandaki işlem sorunlarını gidermek için sanal makineyi yeniden başlatmayı deneyebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalında
-Azure portalını kullanarak bir VM'yi yeniden başlatmak için VM'nizi seçin ve ardından aşağıdaki örnekte olduğu gibi **Yeniden Başlat'ı** seçin:
+### <a name="azure-portal"></a>Azure portal
+Azure portal kullanarak bir VM 'yi yeniden başlatmak için VM 'nizi seçin ve ardından aşağıdaki örnekte olduğu gibi **Yeniden Başlat** ' ı seçin:
 
-![Azure portalında bir VM'yi yeniden başlatma](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
+![Azure portal VM 'yi yeniden başlatma](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Aşağıdaki örnekte az [vm yeniden başlatımı](/cli/azure/vm) `myVM` adlı `myResourceGroup`kaynak grubunda adlı VM'yi yeniden başlatın. Kendi değerlerinizi aşağıdaki gibi kullanın:
+Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi yeniden başlatmak için [az VM restart](/cli/azure/vm) kullanır. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -225,27 +225,27 @@ az vm restart --resource-group myResourceGroup --name myVM
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adı geçen VM'yi yeniden başlatır. Kendi değerlerinizi aşağıdaki gibi kullanın:
+Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi yeniden başlatır. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```console
 azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />VM’yi yeniden dağıtma
-Bir VM'yi Azure'daki başka bir düğüme yeniden dağıtabilirsiniz ve bu da altta yatan ağ sorunlarını düzeltebilir. VM'yi yeniden dağıtma hakkında bilgi için [bkz.](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />Bir VM’yi yeniden dağıtma
+Bir VM 'yi Azure 'daki başka bir düğüme yeniden dağıtabilirsiniz ve bu da temeldeki ağ sorunlarını düzeltebilir. Bir VM 'yi yeniden dağıtma hakkında daha fazla bilgi için bkz. [sanal makineyi yeni Azure düğümüne](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)yeniden dağıtma.
 
 > [!NOTE]
-> Bu işlem bittikten sonra, geçici disk verileri kaybolur ve sanal makine ile ilişkili dinamik IP adresleri güncelleştirilir.
+> Bu işlem tamamlandıktan sonra, kısa ömürlü disk verileri kaybedilir ve sanal makineyle ilişkili dinamik IP adresleri güncellenir.
 >
 >
 
-### <a name="azure-portal"></a>Azure portalında
-Azure portalını kullanarak bir VM'yi yeniden dağıtmak için VM'nizi seçin ve **Destek + Sorun Giderme** bölümüne gidin. Aşağıdaki örnekte olduğu gibi **Yeniden Dağıt'ı** seçin:
+### <a name="azure-portal"></a>Azure portal
+Azure portal kullanarak bir VM 'yi yeniden dağıtmak için VM 'nizi seçin ve **destek + sorun giderme** bölümüne gidin. Aşağıdaki örnekte yeniden **Dağıt** ' ı seçin:
 
-![Azure portalında bir VM'yi yeniden dağıtma](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
+![Azure portal bir VM 'yi yeniden dağıtma](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Aşağıdaki örnek, adlı kaynak grubunda adı geçen `myVM` VM'yi yeniden `myResourceGroup`dağıtmak için [az vm yeniden dağıtıla'yı](/cli/azure/vm) kullanın. Kendi değerlerinizi aşağıdaki gibi kullanın:
+Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi yeniden dağıtmak için [az VM yeniden dağıtma](/cli/azure/vm) kullanır. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM
@@ -253,33 +253,33 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 
 ### <a name="azure-classic-cli"></a>Azure klasik CLI
 
-Aşağıdaki örnek, adlı kaynak grubunda `myVM` adı geçen `myResourceGroup`VM'yi yeniden dağıtır. Kendi değerlerinizi aşağıdaki gibi kullanın:
+Aşağıdaki örnek adlı `myVM` `myResourceGroup`kaynak grubunda adlı sanal makineyi yeniden dağıtır. Kendi değerlerinizi aşağıdaki gibi kullanın:
 
 ```console
 azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="vms-created-by-using-the-classic-deployment-model"></a>Klasik dağıtım modeli kullanılarak oluşturulan VM'ler
+## <a name="vms-created-by-using-the-classic-deployment-model"></a>Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Klasik dağıtım modeli kullanılarak oluşturulan VM'ler için en yaygın SSH bağlantı hatalarını gidermek için aşağıdaki adımları deneyin. Her adımdan sonra VM'ye yeniden bağlanmayı deneyin.
+Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için en yaygın SSH bağlantısı başarısızlıklarını çözümlemek için aşağıdaki adımları deneyin. Her adımdan sonra sanal makineye yeniden bağlanmayı deneyin.
 
-* [Azure portalından](https://portal.azure.com)uzaktan erişimi sıfırla. Azure portalında VM'nizi seçin ve **ardından Uzaktan Sıfırla'yı seçin...** seçeneğini belirleyin.
-* VM’yi yeniden başlatın. Azure [portalında](https://portal.azure.com)VM'nizi seçin ve **Yeniden Başlat'ı**seçin.
+* [Azure Portal](https://portal.azure.com)uzaktan erişimi sıfırlayın. Azure portal VM 'nizi seçin ve ardından **Uzaktan Sıfırla...** seçeneğini belirleyin.
+* VM’yi yeniden başlatın. [Azure Portal](https://portal.azure.com)VM 'nizi seçin ve **Yeniden Başlat**' ı seçin.
 
-* VM'yi yeni bir Azure düğümüne yeniden dağıtın. VM'yi yeniden dağıtma hakkında bilgi için [bkz.](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* VM 'yi yeni bir Azure düğümüne yeniden dağıtın. Bir VM 'yi yeniden dağıtma hakkında daha fazla bilgi için bkz. [sanal makineyi yeni Azure düğümüne yeniden dağıtma](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-    Bu işlem bittikten sonra, geçici disk verileri kaybolur ve sanal makine ile ilişkili dinamik IP adresleri güncellenir.
-* Linux tabanlı [sanal makineler için parola veya SSH sıfırlama yönergelerini](../linux/classic/reset-access-classic.md) izleyin:
+    Bu işlem tamamlandıktan sonra, kısa ömürlü disk verileri kaybedilir ve sanal makineyle ilişkili dinamik IP adresleri güncelleştirilir.
+* [Linux tabanlı sanal makineler için parola veya SSH 'yi sıfırlama](../linux/classic/reset-access-classic.md) bölümündeki yönergeleri izleyin:
 
-  * Parolayı veya SSH tuşunu sıfırla.
-  * Bir *sudo* kullanıcı hesabı oluşturun.
-  * SSH yapılandırmasını sıfırla.
-* Herhangi bir platform sorunu için VM'nin kaynak durumunu kontrol edin.<br>
-     VM'nizi seçin ve **Ayarlar** > Durumu Kontrol'ü aşağı**kaydırın.**
+  * Parolayı veya SSH anahtarını sıfırlayın.
+  * Bir *sudo* Kullanıcı hesabı oluşturun.
+  * SSH yapılandırmasını sıfırlayın.
+* Tüm platform sorunları için VM 'nin kaynak sistem durumunu kontrol edin.<br>
+     VM 'nizi seçin ve aşağı kaydırarak **Ayarlar** > **sistem durumunu denetleyin**.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
-* Sonraki adımları takip ettikten sonra VM'nize hala SSH yapamıyorsanız, sorununuzu gidermek için ek adımları gözden geçirmek için [daha ayrıntılı sorun giderme adımlarını](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) görün.
-* Sorun giderme uygulama erişimi hakkında daha fazla bilgi için Azure [sanal makinesinde çalışan bir uygulamaya Sorun Giderme erişimi](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* Klasik dağıtım modelini kullanarak oluşturulan sorun giderme sanal makineleri hakkında daha fazla bilgi için, [Linux tabanlı sanal makineler için parola veya SSH sıfırlama yı nasıl](../linux/classic/reset-access-classic.md)göreceğiz.
+* Sonraki adımlardan sonra sanal makinenize hala SSH ile erişemiyorsanız, sorununuzu çözmek için ek adımları gözden geçirmek üzere [daha ayrıntılı sorun giderme adımları](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bölümüne bakın.
+* Uygulama erişiminin sorunlarını giderme hakkında daha fazla bilgi için bkz. [Azure sanal makinesinde çalışan bir uygulamaya erişim sorunlarını giderme](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* Klasik dağıtım modeli kullanılarak oluşturulan sanal makinelerin sorunlarını giderme hakkında daha fazla bilgi için bkz. [Linux tabanlı sanal makineler için parola veya SSH sıfırlama](../linux/classic/reset-access-classic.md).

@@ -1,6 +1,6 @@
 ---
 title: Azure App Service erişim kısıtlamaları
-description: Erişim kısıtlamaları belirterek Azure Uygulama Hizmeti'nde uygulamanızı nasıl güvene aldığınızı öğrenin.
+description: Erişim kısıtlamalarını belirterek uygulamanızın Azure App Service güvenliğini nasıl sağlayacağınızı öğrenin.
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
@@ -8,89 +8,89 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639279"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamaları
 
-Erişim kısıtlamaları, uygulamanıza ağ erişimini kontrol eden öncelikli bir sıralı izin/reddet listesi tanımlamanıza olanak tanır. Listede IP adresleri veya Azure Sanal Ağ alt ağları bulunabilir. Bir veya daha fazla giriş olduğunda, listenin sonunda bulunan örtük bir "tüm reddet" vardır.
+Erişim kısıtlamaları, uygulamanıza ağ erişimini denetleyen, öncelikli bir siparişli izin verme/reddetme listesi tanımlamanızı sağlar. Listede IP adresleri veya Azure sanal ağ alt ağları bulunabilir. Bir veya daha fazla giriş olduğunda, listenin sonunda bulunan örtülü bir "Tümünü Reddet" vardır.
 
-Erişim kısıtlamaları özelliği, uygulama hizmetibarındırılan tüm iş yükleri de dahil olmak üzere çalışır; web uygulamaları, API uygulamaları, Linux uygulamaları, Linux konteyner uygulamaları ve Fonksiyonlar.
+Erişim kısıtlamaları özelliği, dahil olmak üzere tüm App Service barındırılan iş yükleri ile çalışır; Web Apps, API Apps, Linux uygulamaları, Linux kapsayıcı uygulamaları ve Işlevleri.
 
-Uygulamanıza bir istekyapıldığında, FROM adresi erişim kısıtlamaları listenizdeki IP adresi kurallarına göre değerlendirilir. FROM adresi, microsoft.web'e hizmet bitiş noktalarıyla yapılandırılan bir alt ağdaysa, kaynak alt ağ erişim kısıtlamaları listenizdeki sanal ağ kurallarıyla karşılaştırılır. Adrese listedeki kurallara göre erişim izni verilmezse, hizmet [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) durum koduyla yanıt verir.
+Uygulamanıza bir istek yapıldığında, KIMDEN adresi erişim kısıtlamaları listenizdeki IP adresi kurallarına göre değerlendirilir. KIMDEN adresi Microsoft. Web 'e hizmet uç noktaları ile yapılandırılmış bir alt ağdaysa kaynak alt ağ, erişim kısıtlamaları listenizdeki sanal ağ kurallarına göre karşılaştırılır. Listedeki kurallara göre adrese erişime izin verilmiyorsa, hizmet bir [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) durum koduyla yanıt verir.
 
-Erişim kısıtlamaları özelliği, kodunuzu çalıştırdığı alt ana bilgisayarların yukarısına gelen Uygulama Hizmeti ön uç rollerinde uygulanır. Bu nedenle, erişim kısıtlamaları etkili ağ ALA'ları vardır.
+Erişim kısıtlamaları özelliği, kodunuzun çalıştırıldığı çalışanların ana bilgisayarlarının yukarı akış olan App Service ön uç rollerinde uygulanır. Bu nedenle, erişim kısıtlamaları etkin bir ağ ACL 'lardır.
 
-Bir Azure Sanal Ağı'ndan (VNet) web uygulamanıza erişimi kısıtlama özelliğine [hizmet bitiş noktaları][serviceendpoints]denir. Hizmet bitiş noktaları, çok kiracılı bir hizmete erişimi seçili alt ağlardan kısıtlamanızı sağlar. Hem ağ tarafında hem de etkinleştirildiği hizmette etkinleştirilmelidir. Bir Uygulama Hizmeti Ortamında barındırılan uygulamalarla trafiği kısıtlamak için çalışmaz. Bir Uygulama Hizmet Ortamındaysanız, IP adresi kurallarıyla uygulamanıza erişimi kontrol edebilirsiniz.
+Bir Azure sanal ağından (VNet) Web uygulamanıza erişimi kısıtlama özelliği, [hizmet uç noktaları][serviceendpoints]olarak adlandırılır. Hizmet uç noktaları, seçilen alt ağlardan çok kiracılı bir hizmete erişimi sınırlamanıza olanak tanır. Hem ağ tarafında hem de etkinleştirildiği hizmette etkin olmalıdır. App Service Ortamı barındırılan uygulamalarla trafiği kısıtlamak için çalışmaz. Bir App Service Ortamı kullanıyorsanız, uygulamanıza erişimi IP adresi kurallarıyla kontrol edebilirsiniz.
 
 ![erişim kısıtlamaları akışı](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
-## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Portalda erişim kısıtlama kuralları ekleme ve düzenleme ##
+## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Portalda erişim kısıtlama kuralları ekleme ve bunları Düzenle ##
 
-Uygulamanıza erişim kısıtlaması kuralı eklemek için, **Ağ**>**Erişim Kısıtlamaları'nı** açmak için menüyü kullanın ve **Access Kısıtlamalarını Yapılandırma'yı** tıklatın
+Uygulamanıza bir erişim kısıtlama kuralı eklemek için, menüyü kullanarak **ağ**>**erişim kısıtlamalarını** açın ve **erişim kısıtlamalarını Yapılandır** ' a tıklayın.
 
-![Uygulama Hizmeti ağ seçenekleri](media/app-service-ip-restrictions/access-restrictions.png)  
+![App Service ağ seçenekleri](media/app-service-ip-restrictions/access-restrictions.png)  
 
-Erişim Kısıtlamaları UI'sinden, uygulamanız için tanımlanan erişim kısıtlama kuralları listesini inceleyebilirsiniz.
+Erişim kısıtlamaları kullanıcı arabiriminden, uygulamanız için tanımlanan erişim kısıtlama kuralları listesini gözden geçirebilirsiniz.
 
-![liste erişim kısıtlamaları](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![erişim kısıtlamalarını Listele](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
-Liste, uygulamanızdaki tüm geçerli kısıtlamaları gösterir. Uygulamanızda VNet kısıtlaması varsa, Microsoft.Web için hizmet bitiş noktaları etkin olup olmadığını tablo gösterir. Uygulamanızda tanımlı bir kısıtlama olmadığında, uygulamanıza her yerden erişilebilir.  
+Listede, uygulamanızdaki tüm geçerli kısıtlamalar gösterilir. Uygulamanızda VNet kısıtlaması varsa, tablo Microsoft. Web için hizmet uç noktalarının etkinleştirilip etkinleştirilmediğini gösterir. Uygulamanızda tanımlı kısıtlama olmadığında, uygulamanız her yerden erişilebilir olacaktır.  
 
 ## <a name="adding-ip-address-rules"></a>IP adresi kuralları ekleme
 
-Yeni bir erişim kısıtlaması kuralı eklemek için **[+] Ekle kuralına** tıklayabilirsiniz. Bir kural eklediğinizde, hemen etkili olur. Kurallar, en düşük sayıdan başlayıp yukarı yada öncelik sırasına göre uygulanır. Tek bir kural bile eklediğinizde yürürlükte olan her şeyi üstü kapalı bir şekilde inkar edebilirsiniz.
+Yeni erişim kısıtlama kuralı eklemek için **[+] kural ekle** seçeneğine tıklayabilirsiniz. Bir kural eklendikten sonra, hemen geçerli olur. Kurallar, en düşük sayıdan başlayıp yukarı giderek öncelik sırasına göre zorlanır. Tek bir kural eklendikten sonra, etkin olan örtük bir reddetme yok.
 
-Bir kural oluştururken, izin ver/reddet ve ayrıca kural türünü seçmeniz gerekir. Ayrıca öncelik değerini ve erişimi kısıtlayan değeri sağlamanız gerekir.  İsteğe bağlı olarak bir ad ve kurala açıklama ekleyebilirsiniz.  
+Bir kural oluştururken, izin ver/Reddet ' i ve ayrıca kural türünü seçmeniz gerekir. Ayrıca öncelik değerini ve erişimi kısıtladığınız şeyleri sağlamanız gerekir.  İsteğe bağlı olarak kurala bir ad ve açıklama ekleyebilirsiniz.  
 
 ![IP erişim kısıtlama kuralı ekleme](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-IP adresi tabanlı bir kural belirlemek için bir IPv4 veya IPv6 türünü seçin. IP Adresi gösterimi, hem IPv4 hem de IPv6 adresleri için CIDR gösteriminde belirtilmelidir. Tam bir adres belirtmek için, ilk dört sekizlinin IP adresinizi temsil ettiği ve /32'nin maske olduğu 1.2.3.4/32 gibi bir şey kullanabilirsiniz. Tüm adresler için IPv4 CIDR gösterimi 0.0.0.0/0'dır. CIDR gösterimi hakkında daha fazla bilgi edinmek için [Sınıfsız Etki Alanları Yönlendirme'yi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)okuyabilirsiniz. 
+IP adresi tabanlı bir kural ayarlamak için bir IPv4 veya IPv6 türü seçin. IPv4 ve IPv6 adresleri için CıDR gösteriminde IP adresi gösterimi belirtilmelidir. Tam bir adres belirtmek için, ilk dört sekizlinin IP adresinizi gösterdiği ve/32 maskedir. 1.2.3.4/32 gibi bir şey kullanabilirsiniz. Tüm adresler için IPv4 CıDR gösterimi 0.0.0.0/0 ' dır. CıDR gösterimi hakkında daha fazla bilgi edinmek için, [sınıfsız etki alanları arası yönlendirmeyi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)okuyabilirsiniz. 
 
 ## <a name="service-endpoints"></a>Hizmet uç noktaları
 
-Hizmet bitiş noktaları, seçili Azure sanal ağ alt ağlarına erişimi kısıtlamanızı sağlar. Belirli bir alt ağa erişimi kısıtlamak için, sanal ağ türüyle bir kısıtlama kuralı oluşturun. Erişime izin vermek veya reddetmek istediğiniz aboneliği, VNet'i ve alt ağı seçebilirsiniz. Seçtiğiniz alt ağ için Microsoft.Web ile hizmet bitiş noktaları zaten etkinleştirilmezse, bunu yapmamasını isteyen kutuyu onaylamadığınız sürece otomatik olarak sizin için etkinleştirilir. Uygulamada etkinleştirmek istediğiniz ancak alt ağda olmayan durum, alt ağda hizmet bitiş noktalarını etkinleştirme izinleriniz olup olmadığıyla büyük ölçüde ilişkilidir. Alt ağda hizmet uç noktalarını etkinleştirecek başka birini bulmanız gerekiyorsa, kutuyu işaretleyebilir ve uygulamanızın daha sonra alt ağda etkinleştirilmesini beklentisiyle hizmet bitiş noktaları için yapılandırabilirsiniz. 
+Hizmet uç noktaları, seçili Azure sanal ağ alt ağlarına erişimi kısıtlamanıza olanak sağlar. Belirli bir alt ağa erişimi kısıtlamak için, bir sanal ağ türüyle bir kısıtlama kuralı oluşturun. Erişimine izin vermek veya erişimi reddetmek istediğiniz abonelik, VNet ve alt ağı seçebilirsiniz. Seçtiğiniz alt ağ için hizmet uç noktaları zaten Microsoft. Web ile etkinleştirilmemişse, bunu yapamamasını isteyen kutuyu görmüyorsanız sizin için otomatik olarak etkinleştirilir. Uygulamada etkinleştirmek istediğiniz durum, alt ağda hizmet uç noktalarını etkinleştirme izinleriniz varsa alt ağın büyük ölçüde ilişkili olduğu durumdur. Alt ağda hizmet uç noktalarını etkinleştirmek için başka bir kişiye ihtiyacınız varsa, kutuyu denetleyebilir ve uygulamanızın alt ağda daha sonra etkinleştirildiği olasılığına içinde hizmet uç noktaları için yapılandırılmış olmasını sağlayabilirsiniz. 
 
 ![VNet erişim kısıtlama kuralı ekleme](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
-Hizmet bitiş noktaları, Bir Uygulama Hizmeti Ortamında çalışan uygulamalara erişimi kısıtlamak için kullanılamaz. Uygulamanız Bir Uygulama Hizmet Ortamındayken, IP erişim kurallarıyla uygulamanıza erişimi kontrol edebilirsiniz. 
+Hizmet uç noktaları, bir App Service Ortamı çalışan uygulamalara erişimi kısıtlamak için kullanılamaz. Uygulamanız bir App Service Ortamı olduğunda, IP erişim kuralları ile uygulamanıza erişimi denetleyebilirsiniz. 
 
-Hizmet bitiş noktalarıyla uygulamanızı Uygulama Ağ Geçitleri veya diğer WAF aygıtlarıyla yapılandırabilirsiniz. Çok katmanlı uygulamaları güvenli arka uçlarla da yapılandırabilirsiniz. Bazı olasılıklar hakkında daha fazla bilgi için [Ağ özellikleri ve Uygulama Hizmeti ve](networking-features.md) Uygulama Ağ Geçidi [tümleştirmesini hizmet bitiş noktalarıyla](networking/app-gateway-with-service-endpoints.md)okuyun.
+Hizmet uç noktaları ile uygulamanızı uygulama ağ geçitleri veya diğer WAF cihazları ile yapılandırabilirsiniz. Ayrıca, çok katmanlı uygulamaları güvenli arka uçlarla da yapılandırabilirsiniz. Bazı olasılıklarla ilgili daha fazla ayrıntı için, [ağ özelliklerini okuyun ve App Service](networking-features.md) ve [hizmet uç noktalarıyla tümleştirme Application Gateway](networking/app-gateway-with-service-endpoints.md).
 
 ## <a name="managing-access-restriction-rules"></a>Erişim kısıtlama kurallarını yönetme
 
-Varolan bir erişim kısıtlaması kuralını yönetmek için herhangi bir satırı tıklatabilirsiniz. Değişiklikler, öncelik sıralamadaki değişiklikler de dahil olmak üzere hemen etkilidir.
+Var olan bir erişim kısıtlama kuralını düzenlemek için herhangi bir satıra tıklayabilirsiniz. Düzenlemeler, öncelik Sıralamalı değişiklikler dahil hemen geçerlidir.
 
-![erişim kısıtlaması kuralını yönetme](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![erişim kısıtlama kuralını düzenleme](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
-Bir kuralı değiştirdiğinizde, IP adresi kuralı ile Sanal Ağ kuralı arasındaki türü değiştiremezsiniz. 
+Bir kuralı düzenlediğinizde bir IP adresi kuralı ve bir sanal ağ kuralı arasındaki türü değiştiremezsiniz. 
 
-![erişim kısıtlaması kuralını yönetme](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![erişim kısıtlama kuralını düzenleme](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-Bir kuralı silmek için kuralınızdaki **...** 'u tıklatın ve sonra **Kaldır'ı**tıklatın.
+Bir kuralı silmek için, kuraldaki **...** öğesine tıklayın ve ardından **Kaldır**' a tıklayın.
 
-![erişim kısıtlaması kuralını silme](media/app-service-ip-restrictions/access-restrictions-delete.png)
+![erişim kısıtlama kuralını Sil](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
 ## <a name="blocking-a-single-ip-address"></a>Tek bir IP adresini engelleme ##
 
-İlk IP Kısıtlama kuralınızı eklerken, hizmet 2147483647 önceliği olan açık bir **Reddet kuralı** ekler. Uygulamada, açık **Reddet tüm** kuralı son kural yürütülür ve açıkça izin **kuralı** kullanılarak izin verilmeyen herhangi bir IP adresine erişimi engeller.
+İlk IP kısıtlama kuralınızı eklerken, hizmet 2147483647 önceliğine sahip bir açık **reddetme** kuralı ekler. Uygulamada, **tüm açık reddetme** kuralı, son kural olarak yürütülür ve **izin verme** kuralı kullanılarak açıkça ızın verilmeyen herhangi bir IP adresine erişimi engeller.
 
-Kullanıcıların tek bir IP adresini veya IP adresi bloğunu açıkça engellemek, ancak diğer her şeye erişmesine izin vermek istedikleri senaryo için, açık bir **Herkese İzin Ver** kuralı eklemek gerekir.
+Kullanıcıların tek bir IP adresini veya IP adresi bloğunu açıkça engellemek istedikleri, ancak başka her şeye izin veren senaryo için, açıkça bir **Tüm kurala Izin verme** kuralı eklemek gereklidir.
 
-![blok tek ip adresi](media/app-service-ip-restrictions/block-single-address.png)
+![tek IP adresini engelle](media/app-service-ip-restrictions/block-single-address.png)
 
 ## <a name="scm-site"></a>SCM sitesi 
 
-Uygulamanıza erişimi kontrol edebilmenin yanı sıra, uygulamanız tarafından kullanılan scm sitesine erişimi de kısıtlayabilirsiniz. Scm sitesi web dağıtmak bitiş noktası ve aynı zamanda Kudu konsoludur. Uygulamadan scm sitesine erişim kısıtlamaları atayabilir veya hem uygulama hem de scm sitesi için aynı seti kullanabilirsiniz. Uygulamanızla aynı kısıtlamalara sahip olacak şekilde kutuyu işaretlediğinizde, her şey boşa bırakılır. Kutunun üzerindeki işaretini kaldırırsanız, scm sitesinde daha önce sahip olduğunuz ayarlar uygulanır. 
+Uygulamanıza erişimi denetleyebilmenin yanı sıra, uygulamanız tarafından kullanılan SCM sitesine erişimi de kısıtlayabilirsiniz. SCM sitesi, Web dağıtımı uç noktasıdır ve kudu konsolundan de bulunur. Uygulamadan SCM sitesine ayrı olarak erişim kısıtlamaları atayabilir veya hem uygulama hem de SCM sitesi için aynı kümeyi kullanabilirsiniz. Uygulamanızı uygulamanızla aynı kısıtlamalara sahip olacak şekilde denetlediğinizde, her şey göz aşımına uğrar. Kutuyu boş bırakırsanız, daha önce SCM sitesinde sahip olduğunuz ayarlar uygulanır. 
 
-![liste erişim kısıtlamaları](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![erişim kısıtlamalarını Listele](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
-## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Erişim kısıtlama kurallarının programlı manipülasyonu ##
+## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Erişim kısıtlama kuralları programlama yoluyla düzenleme ##
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) ve [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) erişim kısıtlamalarını düzenlemek için destek sağlar. Azure CLI kullanarak erişim kısıtlaması ekleme örneği:
+[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) ve [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) , erişim kısıtlamalarını düzenlemeyle ilgili destek içerir. Azure CLı kullanarak erişim kısıtlaması ekleme örneği:
 
 ```azurecli-interactive
 az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
@@ -103,13 +103,13 @@ Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName
     -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
 ```
 
-Değerler, Kaynak Yöneticisi'ndeki uygulama yapılandırmasında ki Bir [Azure REST API](https://docs.microsoft.com/rest/api/azure/) PUT işlemiyle veya Azure Kaynak Yöneticisi şablonu kullanılarak el ile ayarlanabilir. Örnek olarak, gerekli JSON'u eklemek için resources.azure.com kullanabilir ve ipSecurityRestrictions bloğunu edinebilirsiniz.
+Değerler ayrıca, Kaynak Yöneticisi veya Azure Resource Manager şablonu kullanarak uygulama yapılandırmasında bir [Azure REST API](https://docs.microsoft.com/rest/api/azure/) put işlemiyle el ile de ayarlanabilir. Örnek olarak, gerekli JSON 'u eklemek için resources.azure.com kullanabilir ve ıpsecurityrestrictions bloğunu düzenleyebilirsiniz.
 
-Kaynak Yöneticisi'ndeki bu bilgilerin konumu:
+Bu bilgilerin Kaynak Yöneticisi konumu:
 
-management.azure.com/subscriptions/**abonelik kimliği**/kaynakGrupları/ kaynak**grupları**/sağlayıcılar/Microsoft.Web/sites/ web**uygulaması adı**/config/web?api-version=2018-02-01
+management.azure.com/subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grupları**/Providers/Microsoft.Web/Sites/**Web uygulaması adı**/config/Web? api-Version = 2018-02-01
 
-Önceki örnek için JSON sözdizimi:
+Önceki örnek için JSON sözdizimi şöyledir:
 ```json
 {
   "properties": {
@@ -125,14 +125,14 @@ management.azure.com/subscriptions/**abonelik kimliği**/kaynakGrupları/ kaynak
 }
 ```
 
-## <a name="azure-functions-access-restrictions"></a>Azure İşlevler erişim kısıtlamaları
+## <a name="azure-functions-access-restrictions"></a>Azure Işlevleri erişim kısıtlamaları
 
-Uygulama Hizmeti planlarıyla aynı işlevsellik teki işlev uygulamaları için erişim kısıtlamaları da mevcuttur. Erişim kısıtlamalarını etkinleştirmek, izin verilmeyen IP'ler için portal kodu düzenleyicisini devre dışı bırakmaz.
+App Service planlarla aynı işlevselliğe sahip işlev uygulamaları için de erişim kısıtlamaları vardır. Erişim kısıtlamalarını etkinleştirmek, izin verilmeyen IP 'Ler için Portal kod düzenleyicisini devre dışı bırakır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure İşlevleri için erişim kısıtlamaları](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Azure Işlevleri için erişim kısıtlamaları](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
-[Hizmet bitiş noktalarıyla uygulama ağ geçidi tümleştirmesi](networking/app-gateway-with-service-endpoints.md)
+[Hizmet uç noktaları ile Application Gateway tümleştirme](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
 [serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

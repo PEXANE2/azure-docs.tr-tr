@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse için sütun düzeyinde güvenlik nedir?
-description: Sütun Düzeyinde Güvenlik, müşterilerin kullanıcının yürütme bağlamına veya grup üyeliğine dayalı veritabanı tablo sütunlarına erişimi denetlemesine, uygulamanızdaki güvenliğin tasarımını ve kodlanmasıbasitleştirilmesini ve sütun erişimine kısıtlamalar uygulamanıza olanak tanır.
+title: Azure SYNAPSE için sütun düzeyi güvenlik nedir?
+description: Sütun düzeyinde güvenlik, müşterilerin, Kullanıcı yürütme bağlamına veya grup üyeliğine göre veritabanı tablo sütunlarına erişimi denetlemesine, uygulamanızdaki güvenliğin tasarımını ve kodlanmasını basitleştirmeye ve sütun erişimi üzerinde kısıtlamalar uygulamanıza olanak tanır.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -13,24 +13,24 @@ ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687932"
 ---
-# <a name="column-level-security"></a>Sütun düzeyinde Güvenlik
+# <a name="column-level-security"></a>Sütun düzeyinde güvenlik
 
-Sütun Düzeyinde Güvenlik, müşterilerin kullanıcının yürütme bağlamını veya grup üyeliğini temel alan tablo sütunlarına erişimi denetlemesine olanak tanır.
+Sütun düzeyinde güvenlik, müşterilerin, Kullanıcı yürütme bağlamına veya grup üyeliğine göre tablo sütunlarına erişimi denetlemesine olanak tanır.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Bu video yayınlandığından beri [Satır düzeyinde Güvenlik](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Azure Sinaps için kullanılabilir hale geldi.
+Bu videonun gönderildiği [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Azure SYNAPSE için kullanılabilir hale geldi.
 
-Sütun düzeyinde güvenlik, uygulamanızdaki güvenliğin tasarımını ve kodlamasını basitleştirerek hassas verileri korumak için sütun erişimini kısıtlamanıza olanak sağlar. Örneğin, belirli kullanıcıların bölümleriyle ilgili bir tablonun yalnızca belirli sütunlarına erişebilmesini sağlamak. Erişim kısıtlaması mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veritabanı, herhangi bir katmandan veri erişimi denendiği her seferde erişim kısıtlamalarını uygular. Bu kısıtlama, genel güvenlik sisteminizin yüzey alanını azaltarak güvenliğinizi daha güvenilir ve sağlam hale getirir. Buna ek olarak, sütun düzeyinde güvenlik, kullanıcılara erişim kısıtlamaları uygulamak için sütunları filtrelemek için görünüm ler sunma gereksinimini de ortadan kaldırır.
+Sütun düzeyinde güvenlik, uygulamanızda güvenliğin tasarımını ve kodlamasını basitleştirir ve hassas verileri korumak için sütun erişimini kısıtlamanızı sağlar. Örneğin, belirli kullanıcıların departmanıyla ilgili bir tablonun yalnızca belirli sütunlarına erişebilmesini sağlama. Erişim kısıtlama mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veri erişimi herhangi bir katmandan her denendiğinde, veritabanı erişim kısıtlamalarını uygular. Bu kısıtlama, genel güvenlik sisteminizin yüzey alanını azaltarak güvenlik düzeyini daha güvenilir ve sağlam hale getirir. Ayrıca, sütun düzeyinde güvenlik, kullanıcıların erişim kısıtlamalarını kullanıcılara önceden eklemek için sütunları filtrelemeye yönelik görüntüleme gereksinimini ortadan kaldırır.
 
-[GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimi yle sütun düzeyinde güvenlik uygulayabilirsiniz. Bu mekanizma yla hem SQL hem de Azure Etkin Dizin (AAD) kimlik doğrulaması desteklenir.
+[İzin](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ifadesiyle sütun düzeyinde güvenlik uygulayabilirsiniz. Bu mekanizmaya, hem SQL hem de Azure Active Directory (AAD) kimlik doğrulaması desteklenir.
 
-![Cls](./media/column-level-security/cls.png)
+![CLS](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -52,9 +52,9 @@ GRANT <permission> [ ,...n ] ON
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki örnek, tablonun `TestUser` `SSN` `Membership` sütununa erişimin nasıl kısıtlanır olduğunu gösterir:
+Aşağıdaki örnek, `TestUser` `SSN` `Membership` tablosunun sütununa erişimi nasıl kısıtlayabileceğini gösterir:
 
-Sosyal `Membership` güvenlik numaralarını depolamak için kullanılan SSN sütunlu tablo oluşturma:
+Sosyal `Membership` güvenlik numaralarını depolamak IÇIN kullanılan SSK sütunuyla tablo oluşturun:
 
 ```sql
 CREATE TABLE Membership
@@ -66,13 +66,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-Hassas `TestUser` verilere sahip SSN sütunu dışındaki tüm sütunlara erişmene izin verin:
+Hassas `TestUser` verilere sahıp olan SSK sütunu dışındaki tüm sütunlara erişime izin ver:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-SSN `TestUser` sütununa dahil edildiklerinde başarısız olacak şekilde yürütülen sorgular:
+Olarak `TestUser` yürütülen sorgular, SSN sütununu içeriyorsa başarısız olur:
 
 ```sql
 SELECT * FROM Membership;
@@ -81,9 +81,9 @@ SELECT * FROM Membership;
 -- The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="use-cases"></a>Kullanım Örnekleri
+## <a name="use-cases"></a>Kullanım örnekleri
 
-Sütun düzeyinde güvenliğin günümüzde nasıl kullanıldığına dair bazı örnekler:
+Sütun düzeyi güvenliğin bugün nasıl kullanıldığı hakkında bazı örnekler:
 
-- Bir finansal hizmet firması, yalnızca hesap yöneticilerinin müşteri sosyal güvenlik numaralarına (SSN), telefon numaralarına ve diğer kişisel olarak tanımlanabilir bilgilere (PII) erişebilmelerine olanak tanır.
-- Bir sağlık kuruluşu, faturalandırma departmanı üyelerinin bu verileri görüntülemesini engellerken yalnızca doktor ve hemşirelerin hassas tıbbi kayıtlara erişmesine izin verir.
+- Finans hizmetleri firması, yalnızca hesap yöneticilerinin müşteri sosyal güvenlik numaralarına (SSN), telefon numaralarına ve diğer kişisel olarak tanımlanabilen bilgilere (PII) erişmesine izin verir.
+- Bir sağlık hizmetleri sağlayıcısı, yalnızca doktorlarla ve bu verileri, faturalandırma departmanı üyelerinin bu verileri görüntülemesini engellerken gizli tıp kayıtlarına erişime sahip olmasına olanak sağlar.

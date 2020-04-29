@@ -1,56 +1,56 @@
 ---
 title: Azure Geçişi projelerini oluşturma ve yönetme
-description: Azure Geçiş'te projeleri bulun, oluşturun, yönetin ve silin.
+description: Azure geçişi 'nde projeleri bulun, oluşturun, yönetin ve silin.
 ms.topic: how-to
 ms.date: 04/19/2020
 ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676384"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Geçişi projelerini oluşturma ve yönetme
 
-Bu makalede, [Azure Geçiş](migrate-services-overview.md) projeleri nasıl oluşturulup yönetilmeye ve silinir.
+Bu makalede, [Azure geçişi](migrate-services-overview.md) projelerini oluşturma, yönetme ve silme işlemlerinin nasıl yapılacağı açıklanır.
 
 
-## <a name="create-a-project-for-the-first-time"></a>İlk kez bir proje oluşturma
+## <a name="create-a-project-for-the-first-time"></a>İlk kez bir proje oluşturun
 
-Azure Geçiş'i ilk kez ayarladığınızda, bir proje oluşturur ve bir değerlendirme veya geçiş aracı eklersiniz. İlk kez ayarlamak için [bu yönergeleri izleyin.](how-to-add-tool-first-time.md)
+Azure geçişi 'ni ilk kez ayarladığınızda bir proje oluşturur ve bir değerlendirme ya da geçiş aracı eklersiniz. İlk kez ayarlamak için [Bu yönergeleri izleyin](how-to-add-tool-first-time.md) .
 
 ## <a name="create-additional-projects"></a>Ek projeler oluşturma
 
-Zaten bir Azure Geçiş projeniz varsa ve ek bir proje oluşturmak istiyorsanız aşağıdakileri yapın:  
+Zaten bir Azure geçişi projeniz varsa ve ek bir proje oluşturmak istiyorsanız aşağıdakileri yapın:  
 
-1. Azure [genel portalında](https://portal.azure.com) veya [Azure Resmi'nde](https://portal.azure.us) **Azure Geçiş'i**arayın.
-2. Azure Geçir panosu > **Sunucular'da**sağ üst köşede **değiştir'i** seçin.
+1. Azure [genel portalı](https://portal.azure.com) veya [Azure Kamu](https://portal.azure.us)'da **Azure geçişi**' ni arayın.
+2. Azure 'a Pano geçirme > **sunucularında**sağ üst köşedeki **Değiştir** ' i seçin.
 
-   ![Azure Geçiş projesini değiştirme](./media/create-manage-projects/switch-project.png)
+   ![Azure geçişi projesini değiştirme](./media/create-manage-projects/switch-project.png)
 
-3. Yeni bir proje oluşturmak için **buraya tıklayın'** ı seçin.
+3. Yeni bir proje oluşturmak için **buraya tıklayın ' ı**seçin.
 
-   ![İkinci bir Azure Geçiş projesi oluşturma](./media/create-manage-projects/create-new-project.png)
+   ![İkinci bir Azure geçişi projesi oluşturma](./media/create-manage-projects/create-new-project.png)
 
 
 ## <a name="find-a-project"></a>Proje bulma
 
-Aşağıdaki gibi bir proje bulun:
+Projeyi aşağıdaki gibi bulun:
 
-1. Azure [portalında](https://portal.azure.com)Azure **Geçir'i**arayın.
-2. Azure Geçir panosu> **Sunucular'** da sağ üst köşede **değiştir'i** seçin.
+1. [Azure Portal](https://portal.azure.com) **Azure geçişi**' ni arayın.
+2. Azure 'da Pano geçirme > **sunucularında**sağ üst köşedeki **Değiştir** ' i seçin.
 
-    ![Varolan bir Azure Geçiş projesine geçiş](./media/create-manage-projects/switch-project.png)
+    ![Mevcut bir Azure geçişi projesine geç](./media/create-manage-projects/switch-project.png)
 
-3. Uygun aboneliği ve Azure Geçiş projesini seçin.
+3. Uygun aboneliği ve Azure geçişi projesini seçin.
 
 
-Projeyi Azure Geçiş'in [önceki sürümünde](migrate-services-overview.md#azure-migrate-versions) oluşturduysanız, aşağıdaki gibi bulabilirsiniz:
+Projeyi Azure geçişi 'nin [önceki sürümünde](migrate-services-overview.md#azure-migrate-versions) oluşturduysanız, aşağıdaki gibi bulun:
 
-1. Azure [portalında](https://portal.azure.com)Azure **Geçir'i**arayın.
-2. Azure Geçir panosunda, önceki sürümde bir proje oluşturduysanız, eski projelere atıfta bulunan bir başlık görüntülenir. Banner'ı seçin.
+1. [Azure Portal](https://portal.azure.com) **Azure geçişi**' ni arayın.
+2. Azure geçişi panosunda, önceki sürümde bir proje oluşturduysanız, eski projelere başvuran bir başlık görüntülenir. Başlığı seçin.
 
-    ![Varolan projelere erişin](./media/create-manage-projects/access-existing-projects.png)
+    ![Mevcut projelere erişin](./media/create-manage-projects/access-existing-projects.png)
 
 3. Eski projelerin listesini gözden geçirin.
 
@@ -60,31 +60,31 @@ Projeyi Azure Geçiş'in [önceki sürümünde](migrate-services-overview.md#azu
 Aşağıdaki gibi silin:
 
 1. Projenin oluşturulduğu Azure kaynak grubunu açın.
-2. Kaynak grubu sayfasında, **gizli türleri göster'i**seçin.
+2. Kaynak grubu sayfasında **gizli türleri göster**' i seçin.
 3. Silmek istediğiniz geçiş projesini ve ilişkili kaynaklarını seçin.
-    - Kaynak türü **Microsoft.Migrate/migrate projeleridir.**
-    - Kaynak grubu yalnızca Azure Geçiş projesi tarafından kullanılıyorsa, tüm kaynak grubunu silebilirsiniz.
+    - Kaynak türü **Microsoft. Migrate/migrateprojects**.
+    - Kaynak grubu Azure geçişi projesi tarafından özel olarak kullanılıyorsa, tüm kaynak grubunu silebilirsiniz.
 
 
 Şunlara dikkat edin:
 
-- Sildiğinizde, hem proje hem de keşfedilen makinelerle ilgili meta veriler silinir.
-- Azure Geçiş'in eski sürümünü kullanıyorsanız, projenin oluşturulduğu Azure kaynak grubunu açın. Silmek istediğiniz geçiş projesini seçin (kaynak türü **Geçiş projesidir).**
-- Bir Azure Günlük Analizi çalışma alanıyla bağımlılık çözümlemesi kullanıyorsanız:
-    - Sunucu Değerlendirmesi aracına bir Log Analytics çalışma alanı iliştirdiyseniz, çalışma alanı otomatik olarak silinmez. Aynı Log Analytics çalışma alanı birden çok senaryo için kullanılabilir.
+- Sildiğinizde, hem proje hem de bulunan makineler ile ilgili meta veriler silinir.
+- Azure geçişi 'nin eski sürümünü kullanıyorsanız, projenin oluşturulduğu Azure kaynak grubunu açın. Silmek istediğiniz geçişi projeyi (kaynak türü **geçiş projesi**) seçin.
+- Bir Azure Log Analytics çalışma alanıyla bağımlılık Analizi kullanıyorsanız:
+    - Sunucu değerlendirmesi aracına bir Log Analytics çalışma alanı eklediyseniz, çalışma alanı otomatik olarak silinmez. Aynı Log Analytics çalışma alanı birden çok senaryo için kullanılabilir.
     - Log Analytics çalışma alanını silmek istiyorsanız, bunu el ile yapın.
 
 ### <a name="delete-a-workspace-manually"></a>Çalışma alanını el ile silme
 
-1. Projeye bağlı Log Analytics çalışma alanına göz atın.
+1. Projeye bağlı Log Analytics çalışma alanına gidin.
 
-    - Azure Geçiş projesini sildiyseniz, Çalışma alanının bağlantısını **Essentials** > **Server Assessment'da**bulabilirsiniz.
-       ![LA Çalışma](./media/create-manage-projects/loganalytics-workspace.png)Alanı .
+    - Azure geçişi projesini sildiyseniz, **Essentials** > **Sunucu değerlendirmesi**' nde çalışma alanının bağlantısını bulabilirsiniz.
+       ![LA çalışma](./media/create-manage-projects/loganalytics-workspace.png)alanı.
        
-    - Azure Geçir projesini zaten sildiyseniz, Azure portalının sol bölmesinde **Kaynak Grupları'nı** seçin ve çalışma alanını bulun.
+    - Azure geçişi projesini zaten sildiyseniz, Azure portal sol bölmesinde **kaynak grupları** ' nı seçin ve çalışma alanını bulun.
        
-2. Çalışma alanını silmek için [yönergeleri izleyin.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)
+2. Çalışma alanını silmek için [yönergeleri izleyin](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Geçiş projelerine [değerlendirme](how-to-assess.md) veya [geçiş](how-to-migrate.md) araçları ekleyin.
+Azure geçişi projelerine [değerlendirme](how-to-assess.md) veya [geçiş](how-to-migrate.md) araçları ekleyin.

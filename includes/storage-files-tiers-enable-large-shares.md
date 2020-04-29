@@ -9,20 +9,20 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cd7b889560acbe484581f065b641375c222f7ca8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536513"
 ---
-Varsayılan olarak, standart dosya paylaşımları yalnızca 5 TiB'ye kadar yayılabilir, ancak paylaşım sınırı 100 TiB'ye yükseltilebilir. Bunu yapmak için, *büyük dosya paylaşımı* özelliği depolama hesabı düzeyinde etkinleştirilmelidir. Tüm premium dosya paylaşımları 100 TiB'nin tam kapasitesine kadar sağlanması için etkinleştirildiğinden, premium depolama hesapları *(FileStorage* depolama hesapları) büyük dosya paylaşımı özelliği bayrağına sahip değildir.
+Varsayılan olarak, standart dosya paylaşımları yalnızca 5 TiB 'ye kadar yayılabilir, ancak paylaşım sınırı 100 TiB 'ye artırılabilir. Bunu yapmak için, depolama hesabı düzeyinde *büyük dosya paylaşma* özelliğinin etkinleştirilmesi gerekir. Premium Depolama hesapları (*FileStorage* depolama hesapları), tüm Premium dosya paylaşımları tam 100 TİB kapasitesine sağlanması için zaten etkinleştirildiğinden büyük dosya paylaşım özelliği bayrağına sahip değildir.
 
-Yalnızca yerel olarak gereksiz veya bölge gereksiz standart depolama hesaplarında büyük dosya paylaşımlarını etkinleştirebilirsiniz. Büyük dosya paylaşımı özelliği bayrağını etkinleştirdikten sonra, artıklık düzeyini coğrafi yedekli veya coğrafi bölge yedekli depolama yla değiştiremezsiniz.
+Yalnızca yerel olarak yedekli veya bölge yedekli standart depolama hesaplarında büyük dosya paylaşımlarını etkinleştirebilirsiniz. Büyük dosya paylaşma özelliği bayrağını etkinleştirdikten sonra, artıklık düzeyini coğrafi olarak yedekli veya coğrafi bölgeye yedekli depolama olarak değiştiremezsiniz.
 
-Varolan bir depolama hesabında büyük dosya paylaşımlarını etkinleştirmek için, depolama hesabının içindekiler tablosundaki **Yapılandırma** görünümüne gidin ve büyük dosya paylaşımı rocker anahtarını etkin olarak değiştirin:
+Mevcut bir depolama hesabında büyük dosya paylaşımlarını etkinleştirmek için, depolama hesabının İçindekiler tablosundaki **yapılandırma** görünümüne gidin ve büyük dosya paylaşımı rocker anahtarını etkin olarak değiştirin:
 
-![Azure portalında etkinleştirme büyük dosya paylaşımı rocker anahtarının ekran görüntüsü](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
+![Azure portal büyük dosya paylaşımının rocker anahtarının bir ekran görüntüsü](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
 
-PowerShell cmdlet ve [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) Azure CLI komutu aracılığıyla 100 TiB dosya paylaşımını da etkinleştirebilirsiniz. Büyük dosya paylaşımlarını etkinleştirme yle ilgili ayrıntılı talimatlar için [bkz.](../articles/storage/files/storage-files-how-to-create-large-file-share.md)
+Ayrıca, [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) PowerShell cmdlet 'i ve [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) Azure CLI komutu aracılığıyla 100 tib dosya paylaşımlarını da etkinleştirebilirsiniz. Büyük dosya paylaşımlarının etkinleştirilmesi hakkında ayrıntılı yönergeler için bkz. [Enable ve, büyük dosya paylaşımlarını oluşturma](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
 
-Yeni depolama hesaplarında dosya paylaşımları oluşturma hakkında daha fazla bilgi edinmek için Azure [dosya paylaşımı oluşturmaya](../articles/storage/files/storage-how-to-create-file-share.md)bakın.
+Yeni depolama hesaplarında dosya paylaşımları oluşturma hakkında daha fazla bilgi edinmek için bkz. [Azure dosya paylaşımı oluşturma](../articles/storage/files/storage-how-to-create-file-share.md).
