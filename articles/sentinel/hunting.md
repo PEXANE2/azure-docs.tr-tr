@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel'de avlanma özellikleri| Microsoft Dokümanlar
-description: Bu makalede, Azure Sentinel avlanma yeteneklerinin nasıl kullanılacağı açıklanmaktadır.
+title: Azure Sentinel 'de arama özellikleri | Microsoft Docs
+description: Bu makalede, Azure Sentinel arama yeteneklerini kullanma açıklanmaktadır.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -17,130 +17,130 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
 ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686625"
 ---
-# <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel ile tehdit avı
+# <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel ile tehditler için Hunt
 
-Güvenlik tehditleri arama konusunda proaktif olmak isteyen bir araştırmacıysanız, Azure Sentinel kuruluşunuzun veri kaynaklarında güvenlik tehditlerini avlamak için güçlü avlanma arama ve sorgu araçları. Ancak sistemleriniz ve güvenlik cihazlarınız, anlamlı olaylara ayrıştırılması ve filtreleilmesi zor olabilecek dağlarda veri üretir. Güvenlik analistlerinin güvenlik uygulamalarınız tarafından algılanmayan yeni anormallikleri proaktif olarak aramalarına yardımcı olmak için, Azure Sentinel'in yerleşik avlanma sorguları, ağınızda zaten bulunan verilerdeki sorunları bulmak için doğru soruları sormanız için size yol gösteriyor. 
+Güvenlik tehditlerini arama konusunda öngörülü bir araştırmacısı, Azure, kuruluşunuzun veri kaynakları genelinde güvenlik tehditleri aramak için arama ve sorgu araçlarını güçlü bir şekilde ele almak isteyen bir. Ancak, sistemleriniz ve güvenlik gereçleriniz, anlamlı olaylara ayrıştırma ve filtreleme zor olabilecek veri Dağları oluşturur. Güvenlik analistlerinin güvenlik uygulamalarınız tarafından algılanmayan yeni anormaller için güvenli bir şekilde görünmesine yardımcı olmak için, Azure Sentinel ' yerleşik arama sorguları, ağınızda zaten bulunan verilerde sorunları bulmak için doğru soruları sormaya kılavuzluk eder. 
 
-Örneğin, yerleşik bir sorgu altyapınızda çalışan en yaygın işlemler le ilgili veriler sağlar - çalıştırılan her işlem hakkında bir uyarı istemezsiniz, bunlar tamamen masum olabilir, ancak olağandışı bir şey olup olmadığını görmek için zaman zaman sorguya bir göz atmak isteyebilirsiniz. 
+Örneğin, bir yerleşik sorgu, altyapınız üzerinde çalışan en yaygın süreçler hakkında veri sağlar. her çalıştırıldıklarında bir uyarı istemezsiniz, tamamen masum olabilir, ancak olağan dışı bir şey olup olmadığını görmek için zaman içinde sorguya bakmak isteyebilirsiniz. 
 
 
 
-Azure Sentinel avı ile aşağıdaki özelliklerden yararlanabilirsiniz:
+Azure Sentinel ile aşağıdaki özelliklerden yararlanabilirsiniz:
 
-- Yerleşik sorgular: Başlangıç sayfası, başlangıç sayfanızı başlatmak ve tabloları ve sorgu dilini tanımak için önceden yüklenmiş sorgu örnekleri sağlar. Bu yerleşik avcılık sorguları, Microsoft güvenlik araştırmacıları tarafından sürekli olarak geliştirilir, yeni sorgular ekler ve yeni algılamalar aramak ve yeni saldırıların başlangıcını nereden avlayabileceğinizi bulmak için bir giriş noktası sağlamak için varolan sorguları ince ayarlayayım. 
+- Yerleşik sorgular: Başlangıç sayfası başlamanıza başlamak için tasarlanan önceden yüklenmiş sorgu örnekleri sağlar ve tabloları ve sorgu dilini öğrenirsiniz. Bu yerleşik arama sorguları, Microsoft güvenlik araştırmacıları tarafından sürekli olarak geliştirilmiştir, yeni sorgular ekliyor ve yeni saldırıları aramak için bir giriş noktası sağlamak üzere mevcut sorgular için ince ayar yapar ve yeni saldırılar için aramaya nereden başlayacağınızı öğreneceksiniz. 
 
-- IntelliSense ile güçlü sorgu dili: Bir sonraki seviyeye avcılık almak için gereken esneklik sağlayan bir sorgu dili üstüne inşa edilmiştir.
+- IntelliSense ile güçlü sorgu dili: bir sorgu dilinin üzerine kurulmuştur ve bu sayede bir sonraki düzeye kadar erişmeniz gereken esnekliği elde edersiniz.
 
-- Kendi yer imlerinizi oluşturun: Avlanma işlemi sırasında, alışılmadık veya şüpheli görünen eşleşmeler veya bulgular, panolar veya etkinliklerle karşılaşabilirsiniz. Gelecekte onlara geri dönebilmeniz için bu öğeleri işaretlemek için yer imi işlevini kullanın. Yer imleri, soruşturma için bir olay oluşturmak için kullanılacak öğeleri daha sonraya kaydetmenize izin verir. Yer imleri hakkında daha fazla bilgi için [bkz.](hunting.md)
-- Araştırmayı otomatikleştirmek için not defterlerini kullanın: Not defterleri, bir araştırmanın ve avlanmanın adım adım adım yürümek için oluşturabileceğiniz adım adım oyun kitapları gibidir.  Not defterleri, kuruluşunuzdaki diğer kişilerle paylaşılabilen yeniden kullanılabilir bir oyun kitabındaki tüm avlanma adımlarını kapsüller. 
-- Depolanan verileri sorgula: Veriler, sorgulayabilmek için tablolarda erişilebilir. Örneğin, işlem oluşturma, DNS olayları ve diğer birçok olay türünü sorgulayabilirsiniz.
+- Kendi yer işaretlerinizi oluşturun: ara işlem sırasında, tüm eşleşmeler, panolar veya olağandışı ya da şüpheli görünen etkinlikler arasında gelebiliriz. Gelecekte bunlara geri dönebilmeniz için bu öğeleri işaretlemek üzere yer işareti işlevini kullanın. Yer işaretleri, araştırma için bir olay oluşturmak üzere kullanılacak öğeleri daha sonra kaydetmenizi sağlar. Yer işaretleri hakkında daha fazla bilgi için bkz. arama [sırasında yer Işaretlerini kullanma](hunting.md).
+- Araştırmayı otomatikleştirmek için not defterlerini kullanın: Not defterleri, araştırma ve hunın adımlarında gezinmek için oluşturabileceğiniz adım adım PlayBook 'lardır.  Not defterleri, kuruluşunuzdaki diğer kişilerle paylaşılabilen, yeniden kullanılabilir bir PlayBook 'ta bulunan tüm adımları kapsüller. 
+- Depolanan verileri sorgulama: veri, sorgulamanızı sağlamak için tablolarda erişilebilir. Örneğin, işlem oluşturma, DNS olayları ve diğer birçok olay türünü sorgulayabilirsiniz.
 
-- Topluluğa bağlantılar: Ek sorgular ve veri kaynakları bulmak için topluluğun gücünden yararlanın.
+- Topluluk bağlantıları: ek sorgular ve veri kaynakları bulmak için daha fazla topluluğun gücünden yararlanın.
  
-## <a name="get-started-hunting"></a>Avlanmaya başlayın
+## <a name="get-started-hunting"></a>Kullanmaya başlayın
 
-1. Azure Sentinel portalında **Avcılık'ı**tıklatın.
-  ![Azure Sentinel avlanmaya başlıyor](media/tutorial-hunting/hunting-start.png)
+1. Azure Sentinel portalında, **hunme**' ye tıklayın.
+  ![Azure Sentinel, aramaya başlıyor](media/tutorial-hunting/hunting-start.png)
 
-2. **Avcılık** sayfasını açtığınızda, tüm av sorguları tek bir tabloda görüntülenir. Tablo, Microsoft'un güvenlik analistleri ekibi tarafından yazılan tüm sorguların yanı sıra oluşturduğunuz veya değiştirdiğiniz ek sorguları listeler. Her sorgu, ne için avlanır ve ne tür verilerle çalıştığının açıklamasını sağlar. Bu şablonlar çeşitli taktiklerine göre gruplandırılır - sağdaki simgeler ilk erişim, kalıcılık ve sızma gibi tehdit türünü kategorilere ayırın. Bu avlanma sorgusu şablonlarını alanlardan herhangi birini kullanarak filtreleyebilirsiniz. Herhangi bir sorgunuzu sık kullanılanlarınıza kaydedebilirsiniz. Bir sorguyu sık kullanılanlarınıza kaydederek, **Avcılık** sayfasına her erişiğinde sorgu otomatik olarak çalışır. Kendi avcılık sorgunuzu veya klonunuzu oluşturabilir ve varolan bir av sorgusu şablonunu özelleştirebilirsiniz. 
+2. **Hunme** sayfasını açtığınızda, tüm arama sorguları tek bir tabloda görüntülenir. Tabloda Microsoft 'un Güvenlik analistlerinin ekibi tarafından yazılan tüm sorgular ve oluşturduğunuz veya değiştirdiğiniz ek sorgular listelenir. Her sorgu, ne araydıklarından ve üzerinde ne tür verilerin çalıştığı hakkında bir açıklama sağlar. Bu şablonlar çeşitli taktiklerinde gruplandırılır. sağ taraftaki simgeler, tehdit türünü kategorilere ayırarak, ilk erişim, kalıcılık ve exfiltrame gibi. Bu arama şablonlarına, alanlardan herhangi birini kullanarak filtre uygulayabilirsiniz. Sık kullanılanlarınıza herhangi bir sorgu kaydedebilirsiniz. Bir sorguyu sık kullanılanlarınıza **kaydederek, arama sayfasına her** erişildiğinde sorgu otomatik olarak çalışır. Kendi arama sorgunuzu oluşturabilir veya var olan bir sorgu şablonunu kopyalayabilir ve özelleştirebilirsiniz. 
  
-2. Avcılık sayfasından çıkmadan herhangi bir sorguyu çalıştırmak için avcılık sorgusu ayrıntıları sayfasında **sorguyu çalıştır'ı** tıklatın.  Eşleşme sayısı tablo içinde görüntülenir. Avcılık sorguları ve bunların eşleşmeleri listesini gözden geçirin. Öldürme zincirinin hangi aşamada ile ilişkili olduğunu kontrol edin.
+2. Arama sayfasını kapatmadan herhangi bir sorgu çalıştırmak için sorgu ayrıntıları sayfasında **Sorguyu Çalıştır** ' a tıklayın.  Eşleşme sayısı tablo içinde görüntülenir. Sorguların ve bunların eşleşmelerin listesini gözden geçirin. Eşleşmenin ilişkili olduğu sonlandırma zincirindeki aşamayı göz atın.
 
-3. Sorgu ayrıntıları bölmesinde temel sorgunun hızlı bir incelemesini gerçekleştirin veya Sorguyu Log Analytics'te açmak için **sorgu sonucunu görüntüle'yi** tıklatın. Altta, sorgu için eşleşmeleri gözden geçirin.
+3. Sorgu Ayrıntıları bölmesinde temel alınan sorgunun hızlı bir şekilde gözden geçirilmesini gerçekleştirin veya sorguyu Log Analytics açmak için **sorgu sonucunu görüntüle** ' ye tıklayın. En altta, sorguyla ilgili eşleşmeleri gözden geçirin.
 
-4.    Satıra tıklayın ve araştırılacak satırları eklemek için **yer imi** ekle'yi seçin - bunu şüpheli görünen her şey için yapabilirsiniz. 
+4.    Satırı tıklatın ve Araştırılması gereken satırları eklemek için **yer Işareti Ekle** ' yi seçin. bunu, şüpheli görünen her şey için yapabilirsiniz. 
 
-5. Ardından, ana **Avcılık** sayfasına geri dön ve tüm şüpheli etkinlikleri görmek için **Yer İşaretleri** sekmesini tıklatın. 
+5. Ardından, ana **hunme** sayfasına dönün ve tüm şüpheli etkinlikleri görmek Için **yer işaretleri** sekmesine tıklayın. 
 
-6. Bir yer imi seçin ve ardından araştırma deneyimini açmak için **Araştır'ı** tıklatın. Yer imlerini filtreleyebilirsiniz. Örneğin, bir kampanyayı araştırıyorsanız, kampanya için bir etiket oluşturabilir ve ardından kampanyaya göre tüm yer imlerini filtreleyebilirsiniz.
+6. Bir yer işareti seçin ve araştırma deneyimini açmak için **Araştır** ' a tıklayın. Yer işaretlerine filtre uygulayabilirsiniz. Örneğin, bir kampanyayı araştırıyorsanız kampanya için bir etiket oluşturabilir ve sonra tüm yer imlerini kampanyaya göre filtreleyebilirsiniz.
 
-1. Hangi av sorgusunun olası saldırılara ilişkin yüksek değerli bilgiler sağladığını keşfettikten sonra, sorgunuza dayalı özel algılama kuralları oluşturabilir ve bu öngörüleri güvenlik olayı yanıtlayıcılarınıza uyarı olarak sunabilirsiniz.
+1. Hangi arama sorgusunun olası saldırılara karşı yüksek değerli Öngörüler sağladığını belirledikten sonra, sorgunuza göre özel algılama kuralları oluşturabilir ve bu öngörüleri güvenlik olay yanıtlamalarınıza uyarı olarak yüzeyden bırakabilirsiniz.
 
  
 
 ## <a name="query-language"></a>Sorgu dili 
 
-Azure Sentinel'de avlanmak Kusto sorgu diline dayanır. Sorgu dili ve desteklenen işleçler hakkında daha fazla bilgi için Sorgu [Dili Başvurusu'na](/azure/azure-monitor/log-query/get-started-queries)bakın.
+Azure Sentinel 'de arama, kusto sorgu dilini temel alır. Sorgu dili ve desteklenen işleçler hakkında daha fazla bilgi için bkz. [sorgu dili başvurusu](/azure/azure-monitor/log-query/get-started-queries).
 
-## <a name="public-hunting-query-github-repository"></a>Genel avcılık sorgusu GitHub deposu
+## <a name="public-hunting-query-github-repository"></a>Ortak arama GitHub deposu
 
-[Avcılık sorgu deposuna](https://github.com/Azure/Orion)göz atın. Müşterilerimiz tarafından paylaşılan örnek sorgulara katkıda bulunun ve bunları kullanın.
+[Sorgu deposuna](https://github.com/Azure/Orion)göz atın. Müşterilerimiz tarafından paylaşılan örnek sorguları katkıda bulun ve kullanın.
 
  
 
 ## <a name="sample-query"></a>Örnek sorgu
 
-Tipik bir sorgu, tablo adı ile başlar ve \|ardından bir dizi işleç tarafından ayrılmıştır.
+Tipik bir sorgu, bir tablo adıyla başlar ve tarafından \|ayrılmış bir dizi işleç izler.
 
-Yukarıdaki örnekte, Tablo adı SecurityEvent ile başlayın ve gerektiğinde borulu öğeler ekleyin.
+Yukarıdaki örnekte, SecurityEvent adlı tablo adı ' nı başlatın ve gerektiği gibi, ifklu öğeler ekleyin.
 
-1. Yalnızca önceki yedi güne ait kayıtları gözden geçirmek için bir zaman filtresi tanımlayın.
+1. Yalnızca önceki yedi günün kayıtlarını gözden geçirmek için bir zaman filtresi tanımlayın.
 
-2. Yalnızca olay kimliği 4688'i göstermek için sorguya bir filtre ekleyin.
+2. Yalnızca olay KIMLIĞI 4688 ' i göstermek için sorguya bir filtre ekleyin.
 
-3. Yalnızca cscript.exe örneklerini içerecek şekilde CommandLine'daki sorguya bir filtre ekleyin.
+3. Komut satırında sorguya bir filtre ekleyerek yalnızca cscript. exe örnekleri bulunur.
 
-4. Yalnızca keşfetmek istediğiniz sütunları projeleyin ve sonuçları 1000 ile sınırlayın ve **Sorguyu Çalıştır'ı**tıklatın.
-5. Yeşil üçgeni tıklatın ve sorguyu çalıştırın. Sorguyu sınayabilir ve anormal davranışları aramak için çalıştırabilirsiniz.
+4. Yalnızca araştırırken İlgilendiğiniz sütunları ve sonuçları 1000 olarak sınırlamak ve **Sorguyu Çalıştır**' a tıklayın.
+5. Yeşil üçgene tıklayıp sorguyu çalıştırın. Sorguyu test edebilir ve anormal davranışları aramak için çalıştırabilirsiniz.
 
 ## <a name="useful-operators"></a>Yararlı işleçler
 
-Sorgu dili güçlüdür ve birçok kullanılabilir işleçleri vardır, bazı yararlı işleçler burada listelenir:
+Sorgu dili güçlüdür ve birçok kullanılabilir operatör bulunur, bazı yararlı işleçler burada listelenmiştir:
 
-**nerede** - Tabloyu bir yüklemi karşılayan satır alt kümesine filtreleyin.
+**WHERE** -bir koşulu karşılayan satır alt kümesiyle bir tablo filtreleyin.
 
-**özetlemek** - Giriş tablosunun içeriğini toplayan bir tablo üretin.
+**özetleme** -giriş tablosunun içeriğini toplayan bir tablo oluşturur.
 
-**join** - Her tablodan belirtilen sütun(lar) değerlerini eşleştirerek yeni bir tablo oluşturmak için iki tablonun satırlarını birleştirin.
+**birleştirme** -her tablodan belirtilen sütunların değerlerini eşleştirerek yeni bir tablo oluşturmak için iki tablo satırını birleştirin.
 
-**count** - Giriş kayıt kümesindeki kayıt sayısını döndürün.
+**Count** -giriş kayıt kümesindeki kayıt sayısını döndürür.
 
-**üst** - Belirtilen sütunlara göre sıralanmış ilk N kayıtlarını döndürün.
+**top** -belirtilen sütunlara göre sıralanan ilk N kaydı döndürür.
 
-**limit** - Belirtilen satır sayısına kadar dön.
+**limit** -belirtilen sayıda satıra kadar döndürün.
 
-**proje** - Eklemek, yeniden adlandırmak veya bırakmak için sütunları seçin ve yeni açılan sütunlar ekleyin.
+**Proje** -dahil edilecek, yeniden adlandırılacak veya bırakılacak sütunları seçin ve yeni hesaplanan sütunları ekleyin.
 
-**genişletmek** - Hesaplanan sütunlar oluşturun ve bunları sonuç kümesine ekleyin.
+**Genişlet** -hesaplanmış sütunları oluşturun ve sonuç kümesine ekleyin.
 
-**makeset** - Expr'ın grupta aldığı farklı değerler kümesinin dinamik (JSON) dizisini döndürme
+**makeset** -ifadenin grupta aldığı ayrı değerler kümesinin dınamık (JSON) dizisini döndürür
 
-**bul** - Bir tablo kümesi boyunca yüklemle eşleşen satırları bulun.
+**bul** -bir tablo kümesi genelinde bir koşulla eşleşen satırları bulun.
 
-## <a name="save-a-query"></a>Sorgukaydetme
+## <a name="save-a-query"></a>Sorgu kaydetme
 
-Bir sorgu oluşturabilir veya değiştirebilir ve kendi sorgunuz olarak kaydedebilir veya aynı kiracıdaki kullanıcılarla paylaşabilirsiniz.
+Bir sorgu oluşturabilir veya değiştirebilir, kendi sorgunuz olarak kaydedebilir veya aynı Kiracıdaki kullanıcılarla paylaşabilirsiniz.
 
-   ![Sorguyı kaydet](./media/tutorial-hunting/save-query.png)
+   ![Sorguyu Kaydet](./media/tutorial-hunting/save-query.png)
 
-Yeni bir avcılık sorgusu oluşturun:
+Yeni bir hunme sorgusu oluşturun:
 
-1. **Yeni sorgu'ya** tıklayın ve **Kaydet'i**seçin.
-2. Tüm boş alanları doldurun ve **Kaydet'i**seçin.
+1. **Yeni sorgu** ' ya tıklayın ve **Kaydet**' i seçin.
+2. Tüm boş alanları doldurup **Kaydet**' i seçin.
 
    ![Yeni sorgu](./media/tutorial-hunting/new-query.png)
 
-Varolan bir avı sorgusunun klonlanmave değiştirilmesi:
+Var olan bir arama sorgusunu kopyalayın ve değiştirin:
 
-1. Değiştirmek istediğiniz tablodaki av sorgusunu seçin.
-2. Değiştirmek istediğiniz sorgu satırındaki elipsleri (...) seçin ve **Klon sorgusunu**seçin.
+1. Değiştirmek istediğiniz tabloda bulunan sorguyu seçin.
+2. Değiştirmek istediğiniz sorgunun satırındaki üç nokta (...) simgesini seçin ve **sorguyu Kopyala**' yı seçin.
 
-   ![klon sorgusu](./media/tutorial-hunting/clone-query.png)
+   ![sorguyu Kopyala](./media/tutorial-hunting/clone-query.png)
  
 
-3. Sorguyu değiştirin ve **Oluştur'u**seçin.
+3. Sorguyu değiştirin ve **Oluştur**' u seçin.
 
-   ![özel sorgu](./media/tutorial-hunting/custom-query.png)
+   ![Özel sorgu](./media/tutorial-hunting/custom-query.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Azure Sentinel ile bir av araştırması nın nasıl yürütüldgerektiğini öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Bu makalede, Azure Sentinel ile bir araştırma araştırması çalıştırmayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 
-- [Otomatik avlanma kampanyaları yürütmek için dizüstü bilgisayarları kullanın](notebooks.md)
-- [Avlanırken ilginç bilgileri kaydetmek için yer imlerini kullanın](bookmarks.md)
+- [Otomatik arama kampanyalarını çalıştırmak için not defterlerini kullanın](notebooks.md)
+- [Avlarken ilginç bilgileri kaydetmek için yer işaretlerini kullanın](bookmarks.md)

@@ -1,13 +1,13 @@
 ---
-title: 'Quickstart: uygulama oluşturmak - LUIS'
-description: Bu hızlı başlangıç, ışıkları ve cihazları açıp kapatmak `HomeAutomation` için önceden oluşturulmuş etki alanını kullanan bir LUIS uygulamasının nasıl oluşturulup oluşturulabildiğini gösterir. Önceden oluşturulmuş olan bu etki alanı amaçlara, varlıklara ve örnek konuşmalara sahiptir. İşlemi tamamladığınızda bulut üzerinde çalışan bir LUIS uç noktasına sahip olacaksınız.
+title: 'Hızlı başlangıç: uygulama oluşturma-LUSıS'
+description: Bu hızlı başlangıçta, ışıkları ve gereçleri açmak ve kapatmak için önceden oluşturulmuş etki alanını `HomeAutomation` kullanan bir Luo uygulamasının nasıl oluşturulacağı gösterilmektedir. Önceden oluşturulmuş olan bu etki alanı amaçlara, varlıklara ve örnek konuşmalara sahiptir. İşlemi tamamladığınızda bulut üzerinde çalışan bir LUIS uç noktasına sahip olacaksınız.
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80287807"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Hızlı başlangıç: Önceden oluşturulmuş ev otomasyonu uygulamasını kullanma
@@ -21,30 +21,30 @@ Bu hızlı başlangıçta ışıkları ve cihazları açıp kapatmak için önce
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 **Uygulamalarım** sayfasından uygulama oluşturabilir ve yönetebilirsiniz.
 
-1. Uygulamalar listemde, **sohbet için + Yeni uygulamayı**seçin.
+1. Uygulamalarım listesinde, **konuşma için + yeni uygulama**' yı seçin.
 
-1. İletişim kutusunda, uygulamanızı `Home Automation`adlandırın. Kültür olarak **İngilizce'yi** seçin. Açıklama isteğe bağlıdır ve yazma veya tahmin için kullanılmaz. Bir LUIS uygulaması oluştururken tahmin kaynağı da isteğe bağlıdır. **Done** (Bitti) öğesini seçin.
+1. İletişim kutusunda uygulamanızı `Home Automation`adlandırın. Kültür olarak **İngilizce** ' yi seçin. Açıklama isteğe bağlıdır ve yazma veya tahmin için kullanılmaz. Bir LUSıS uygulaması oluştururken tahmin kaynağı da isteğe bağlıdır. **Done** (Bitti) öğesini seçin.
 
-    Uygulamayı LUIS oluşturur. Uygulamanızı üretime yayımladığınızda, uygulamanızın birçok isteği işleyebilir diye bir tahmin kaynağı atamanız gerekir.
+    LUO uygulamayı oluşturur. Uygulamanızı üretime yayımladığınızda, uygulamanızın birçok isteği işleyebilmesi için bir tahmin kaynağı atamanız gerekir.
 
-    ![İletişim kutusunda, uygulamanızı 'Ev Otomasyonu' olarak adlandırın](./media/create-new-app-details.png)
+    ![İletişim kutusunda, uygulamanızın giriş Otomasyonu ' nu adlandırın](./media/create-new-app-details.png)
 
     >[!NOTE]
     >Uygulama oluşturduktan sonra kültür değiştirilemez.
 
 ## <a name="add-prebuilt-domain"></a>Önceden oluşturulmuş etki alanını ekleme
 
-**Önceden oluşturulmuş etki alanlarını** seçin ve **HomeAutomation'ı**arayın. HomeAutomation kartında **etki alanı ekle'yi** seçin.
+**Önceden oluşturulmuş etki alanlarını** seçin ve ardından **homeautomation**' ı arayın. HomeAutomation kartında **etki alanı Ekle** ' yi seçin.
 
-!['Önceden oluşturulmuş etki alanları'nı seçin ve 'HomeAutomation'ı arayın. HomeAutomation kartında 'Etki alanı ekle'yi seçin.](media/luis-quickstart-new-app/home-automation.png)
+![' Önceden oluşturulmuş etki alanları ' ' nı seçin ve ' HomeAutomation ' araması yapın. HomeAutomation kartında ' etki alanı Ekle ' seçeneğini belirleyin.](media/luis-quickstart-new-app/home-automation.png)
 
 Etki alanı başarıyla eklendiğinde önceden oluşturulmuş etki alanı kutusunda **Etki alanını kaldır** düğmesi görüntülenir.
 
 ## <a name="intents-and-entities"></a>Amaçlar ve varlıklar
 
-HomeAutomation etki alanı amaçlarını incelemek için **Niyetler'i** seçin. Önceden oluşturulmuş etki alanı niyetleri örnek söyleyinmeler var.
+HomeAutomation etki alanı amaçlarını gözden geçirmek için **amaçlar** ' ı seçin. Önceden oluşturulmuş etki alanı amaçları, örnek söylenebilir.
 
-![HomeAutomation niyet listesinin ekran görüntüsü](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation niyet listesinin ekran görüntüsü")
+![HomeAutomation amaçları listesinin ekran görüntüsü](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation amaçları listesinin ekran görüntüsü")
 
 > [!NOTE]
 > **Hiçbiri**, tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz.
@@ -60,7 +60,7 @@ HomeAutomation etki alanı amaçlarını incelemek için **Niyetler'i** seçin. 
 ## <a name="test-your-app"></a>Uygulamanızı test etme
 Uygulamanızı eğittikten sonra test edebilirsiniz.
 
-1. Sağ üst gezintiden **Test'i** seçin. 1. Etkileşimli test bölmesine gibi `Turn off the lights` bir test sözcük yazın ve Enter tuşuna basın.
+1. Sağ üst gezinmede **Test** ' i seçin. 1. Etkileşimli test bölmesine benzer `Turn off the lights` bir test söyliği yazın ve ENTER tuşuna basın.
 
     ```
     Turn off the lights
@@ -68,13 +68,13 @@ Uygulamanızı eğittikten sonra test edebilirsiniz.
 
     En yüksek puana sahip olan amacın test konuşması için beklediğiniz amaca karşılık geldiğinden emin olun.
 
-    Bu örnekte, `Turn off the lights` **homeautomation.TurnOff'un**en yüksek puanlama amacı doğru olarak tanımlanır.
+    Bu örnekte, `Turn off the lights` **Homeautomation. turnoff**'un en üst Puanlama hedefi olarak doğru şekilde tanımlanır.
 
     ![Konuşmanın vurgulandığı Test paneli ekran görüntüsü](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
-1. Tahmin hakkında daha fazla bilgi gözden geçirmek için **İncele'yi** seçin.
+1. Tahmin hakkında daha fazla **bilgi için İnceleme** ' yi seçin.
 
-    ![Denetim bilgileriile Test paneliekran görüntüsü](media/luis-quickstart-new-app/test.png)
+    ![İnceleme bilgileriyle test bölmesinin ekran görüntüsü](media/luis-quickstart-new-app/test.png)
 
 1. Test bölmesini kapatın.
 
@@ -86,18 +86,18 @@ Uygulamanızı eğittikten sonra test edebilirsiniz.
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 
-## <a name="query-the-v3-api-prediction-endpoint"></a>V3 API tahmin bitiş noktasını sorgula
+## <a name="query-the-v3-api-prediction-endpoint"></a>V3 API tahmini uç noktasını sorgulama
 
 [!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
-2. Tarayıcı adresi çubuğunda, sorgu dizesi için aşağıdaki ad ve değer çubuklarının URL'de olduğundan emin olun. Sorgu dizesinde değillerse, bunları ekleyin:
+2. Tarayıcı adres çubuğunda, sorgu dizesi için aşağıdaki ad ve değer çubuklarının URL 'de olduğundan emin olun. Sorgu dizesinde yoksa, bunları ekleyin:
 
     |Ad/değer çifti|
     |--|
     |`verbose=true`|
     |`show-all-intents=true`|
 
-3. Tarayıcı adresi çubuğunda, URL'nin sonuna gidin `turn off the living room light` ve _sorgu_ değeri için girin, ardından Enter tuşuna basın.
+3. Tarayıcının adres çubuğunda URL 'nin sonuna gidin ve `turn off the living room light` _sorgu_ değeri için yazın ve ENTER tuşuna basın.
 
     ```json
     {
@@ -188,7 +188,7 @@ Uygulamanızı eğittikten sonra test edebilirsiniz.
     }
     ```
 
-    [V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+    [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

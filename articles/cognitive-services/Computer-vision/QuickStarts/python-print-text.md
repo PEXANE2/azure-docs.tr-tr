@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Yazdırılan metni ayıklayın - REST, Python'
+title: 'Hızlı başlangıç: yazdırılan metni Ayıkla-REST, Python'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Python ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
 services: cognitive-services
@@ -12,29 +12,29 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 7daa630c47fc677f6659fa51cca6583a0b583865
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404376"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Quickstart: Computer Vision REST API ve Python kullanarak yazdırılan metni (OCR) ayıklayın
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Python kullanarak yazdırılan metni (OCR) Ayıkla
 
 > [!NOTE]
-> İngilizce metin ayıklıyorsanız, yeni [Okuma işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı düşünün. [Python quickstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) kullanılabilir. 
+> Ingilizce dil metnini ayıklıyorsanız, yeni [okuma işlemini](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)kullanmayı göz önünde bulundurun. [Python hızlı](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) başlangıcı kullanılabilir. 
 
-Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir görüntüden optik karakter tanıma (OCR) içeren basılı metinler ayıklanırsınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
 
 [MyBinder](https://mybinder.org) üzerinde bir Jupyter not defteri kullanarak bu hızlı başlangıcı adım adım görüntülenecek şekilde çalıştırabilirsiniz. Bağlayıcıyı başlatmak için aşağıdaki düğmeyi seçin:
 
-[![Cilt](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Bağlayıcısı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/try/cognitive-services/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/try/cognitive-services/) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Örneği yerel olarak çalıştırmak istiyorsanız [Python](https://www.python.org/downloads/) yüklenmiş olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT`olarak adlandırılan anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
@@ -106,9 +106,9 @@ plt.show()
 plt.axis("off")
 ```
 
-## <a name="upload-image-from-local-storage"></a>Yerel depolama dan resim yükleme
+## <a name="upload-image-from-local-storage"></a>Yerel depodan görüntü yükleme
 
-Yerel bir görüntüyü çözümlemek istiyorsanız, İçerik Türü üstbilgisini uygulama/sekizli akış olarak ayarlayın ve istek gövdesini JSON verileri yerine bir bayt dizisine ayarlayın.
+Yerel bir görüntüyü çözümlemek istiyorsanız, Content-Type üst bilgisini Application/sekizli-Stream olarak ayarlayın ve istek gövdesini JSON verileri yerine bir bayt dizisi olarak ayarlayın.
 
 ```python
 image_path = "<path-to-local-image-file>"
@@ -226,7 +226,7 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek web sayfası, aşa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, optik karakter tanıma (OCR) gerçekleştirmek için Computer Vision kullanan bir Python uygulamasını keşfedin; akıllı kırpılmış küçük resimler oluşturun; görüntülerdeki görsel özellikleri algılar, kategorilere ayırın, etiketler ve tanımlayın.
+Daha sonra, optik karakter tanıma (OCR) yapmak için Görüntü İşleme kullanan bir Python uygulamasını keşfedebilir; Akıllı kırpılan küçük resimler oluşturun; ve görüntülerde görsel özellikleri tespit edin, kategorilere ayırın, etiketleyin ve tanıtın.
 
 > [!div class="nextstepaction"]
 > [Görüntü İşleme API'si Python Öğreticisi](../Tutorials/PythonTutorial.md)

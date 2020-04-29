@@ -1,6 +1,6 @@
 ---
-title: Veri akışı dönüşümüne genel bakışharitalama
-description: Veri akışını haritalamada bulunan farklı dönüşümlere genel bakış
+title: Eşleme veri akışı dönüşümüne genel bakış
+description: Eşleme veri akışı 'nda bulunan farklı dönüşümlere genel bakış
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
@@ -8,36 +8,36 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606278"
 ---
-# <a name="mapping-data-flow-transformation-overview"></a>Veri akışı dönüşümüne genel bakışharitalama
+# <a name="mapping-data-flow-transformation-overview"></a>Eşleme veri akışı dönüşümüne genel bakış
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Aşağıda, veri akışının eşlemesinde şu anda desteklenen dönüşümlerin bir listesi verilmiştir. Yapılandırma ayrıntılarını öğrenmek için her dönüşüme tıklayın.
+Aşağıda şu anda eşleme veri akışında desteklenen dönüşümlerin bir listesi verilmiştir. Yapılandırma ayrıntılarını öğrenmek için her dönüşüme tıklayın.
 
 | Adı | Kategori | Açıklama |
 | ---- | -------- | ----------- |
-| [Toplama](data-flow-aggregate.md) | Şema değiştirici | Varolan veya hesaplanmış sütunlara göre gruplandırılan SUM, MIN, MAX ve COUNT gibi farklı türde toplamaları tanımlayın. | 
-| [Satırı değiştirme](data-flow-alter-row.md) | Satır değiştiricisi | Satırlara ekleme, silme, güncelleştirme ve yükseltme ilkelerini ayarlayın. |
-| [Koşullu bölme](data-flow-conditional-split.md) | Birden fazla giriş/çıkış | Eşleşen koşullara göre veri satırlarını farklı akışlara yönlendirin. |
-| [Türetilmiş sütun](data-flow-derived-column.md) | Şema değiştirici | yeni sütunlar oluşturun veya veri akışı ifade dilini kullanarak varolan alanları değiştirin. | 
-| [Var](data-flow-exists.md) | Birden fazla giriş/çıkış | Verilerinizin başka bir kaynakta mı yoksa akışta mı var olup olmadığını denetleyin. | 
+| [Toplama](data-flow-aggregate.md) | Şema değiştiricisi | SUM, MIN, MAX ve COUNT gibi farklı toplamalar türlerini, var olan veya hesaplanan sütunlara göre gruplanmış olarak tanımlayın. | 
+| [Satırı değiştirme](data-flow-alter-row.md) | Satır değiştiricisi | Satırlarda INSERT, DELETE, Update ve upsert ilkeleri ayarlayın. |
+| [Koşullu bölme](data-flow-conditional-split.md) | Birden çok giriş/çıkış | Verilerin satırlarını, eşleşen koşullara göre farklı akışlara yönlendirin. |
+| [Türetilmiş sütun](data-flow-derived-column.md) | Şema değiştiricisi | Yeni sütunlar oluşturun veya veri akışı ifade dilini kullanarak mevcut alanları değiştirin. | 
+| [Var](data-flow-exists.md) | Birden çok giriş/çıkış | Verilerinizin başka bir kaynakta veya akışta bulunup bulunmadığını denetleyin. | 
 | [Filtrele](data-flow-filter.md) | Satır değiştiricisi | Bir koşula göre bir satırı filtreleyin. |
-| [Düzleştirme](data-flow-flatten.md) | Şema değiştirici |  Dizi değerlerini JSON gibi hiyerarşik yapıların içindeki dizi değerlerini alın ve tek tek satırlara dönüştürün. |
-| [Katıl](data-flow-join.md) | Birden fazla giriş/çıkış |  İki kaynakveya akıştan gelen verileri birleştirin. |
-| [Arama](data-flow-lookup.md) | Birden fazla giriş/çıkış | Başka bir kaynaktan gelen başvuru verileri. |
-| [Yeni dal](data-flow-new-branch.md) | Birden fazla giriş/çıkış | Aynı veri akışına karşı birden çok işlem kümesi ve dönüşüm uygulayın. |
-| [Pivot](data-flow-pivot.md) | Şema değiştirici | Bir veya daha fazla gruplandırma sütununun ayrı satır değerlerine sahip olduğu toplama, tek tek sütunlara dönüştürülür. |
-| [Seç](data-flow-select.md) | Şema değiştirici | Diğer ad sütunları ve akış adları ve sütunları düşürme veya yeniden sıralama |
+| [Düzleştirme](data-flow-flatten.md) | Şema değiştiricisi |  Dizi değerlerini JSON gibi hiyerarşik yapılar içinde alın ve bunları tek tek satırlara geri alın. |
+| [Katıl](data-flow-join.md) | Birden çok giriş/çıkış |  İki kaynaktan veya akışlardan verileri birleştirin. |
+| [Arama](data-flow-lookup.md) | Birden çok giriş/çıkış | Başka bir kaynaktan başvuru verileri. |
+| [Yeni dal](data-flow-new-branch.md) | Birden çok giriş/çıkış | Aynı veri akışına karşı birden çok işlem ve dönüşüm kümesi uygulayın. |
+| [Pivot](data-flow-pivot.md) | Şema değiştiricisi | Bir veya daha fazla gruplama sütununun ayrı sütunlara dönüştürülmüş ayrı satır değerleri olduğu bir toplama. |
+| [Seç](data-flow-select.md) | Şema değiştiricisi | Diğer ad sütunları ve akış adları ve sütunları bırakma veya yeniden sıralama |
 | [Havuz](data-flow-sink.md) | - | Verileriniz için son hedef |
-| [Sırala](data-flow-sort.md) | Satır değiştiricisi | Geçerli veri akışında gelen satırları sıralama |
+| [Sırala](data-flow-sort.md) | Satır değiştiricisi | Geçerli veri akışındaki gelen satırları Sırala |
 | [Kaynak](data-flow-source.md) | - | Veri akışı için bir veri kaynağı |
-| [Vekil anahtar](data-flow-surrogate-key.md) | Şema değiştirici | İş dışı rasgele anahtar değeri ekleme |
-| [Birliği](data-flow-union.md) | Birden fazla giriş/çıkış | Birden çok veri akışını dikey olarak birleştirme |
-| [Özetlemeyi açma](data-flow-unpivot.md) | Şema değiştirici | Sütunları satır değerlerine döndür |
-| [Pencere](data-flow-window.md) | Şema değiştirici |  Veri akışlarınızdaki sütunların pencere tabanlı toplayıcılarını tanımlayın. |
+| [Vekil anahtar](data-flow-surrogate-key.md) | Şema değiştiricisi | Artan iş dışı bir anahtar değeri ekleyin |
+| [Birleşim](data-flow-union.md) | Birden çok giriş/çıkış | Birden çok veri akışını dikey olarak birleştirme |
+| [Özetlemeyi açma](data-flow-unpivot.md) | Şema değiştiricisi | Sütunları satır değerlerine ekleyin |
+| [Pencere](data-flow-window.md) | Şema değiştiricisi |  Veri akışlarınızın pencere tabanlı toplamalar tanımlayın. |

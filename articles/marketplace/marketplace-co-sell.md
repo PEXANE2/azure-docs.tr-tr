@@ -1,6 +1,6 @@
 ---
-title: Co-sell ortak nişan | Azure Marketi
-description: Microsoft'un iş ortakları için ortak satış programı, geniş bir müşteri tabanına ulaşmanıza ve yeni satışlar oluşturmanıza yardımcı olabilir.
+title: Ortak satış iş ortağı katılımı | Azure Marketi
+description: Microsoft 'un iş ortakları için ortak satış programı, büyük bir müşteri tabanına ulaşmanıza ve yeni satış oluşturmanıza yardımcı olabilir.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,29 +8,29 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 5cae07f02c62db0fbeb4043f9804fffe461ce1a0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684395"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
-Microsoft'un ortak satış programı, iş ortaklarının ortak satış fırsatları üzerinde doğrudan Microsoft ile çalışmasını sağlar. Geniş bir müşteri topluluğuna ulaşabilir ve iş büyümesini hızlandırmaya yardımcı olacak yeni satış fırsatları yaratabilirsiniz.
+Microsoft 'un ortak satış programı, iş ortaklarının doğrudan Microsoft ile ortak satış fırsatları üzerinde çalışmasını sağlar. Müşterilerin büyük bir topluluğuna ulaşabilir ve iş artışını hızlandırmaya yardımcı olabilecek yeni satış fırsatları oluşturabilirsiniz.
 
-## <a name="partner-selling-motions"></a>İş ortağı satış hareketleri
+## <a name="partner-selling-motions"></a>İş ortağı satış modülleri
 
-Üç ortak satış hareketleri vardır:
+Üç iş ortağı satışı vardır:
 
-* *İş ortağı aracılığıyla satış*: Microsoft teknolojisini kendi satıcılarınız aracılığıyla yeniden satabilirsiniz.
-* *Hizmetler birlikte satılır*: Satıcılar ve iş ortakları, projenizi veya yönetilen hizmetleri nizi Microsoft teknolojisiyle satmak için işbirliği yapmaktadır.
-* *IP co-sell*: Satıcılar/ortaklar tekrarlanabilir, paketlenmiş IP çözümünüzü satmak için işbirliği yapmaktadır*.
+* *İş ortağı aracılığıyla satın*alabilirsiniz: Microsoft teknolojisini kendi satıcılarınız aracılığıyla yeniden satabilirsiniz.
+* *Hizmetler ortak satış*: satıcılar ve iş ortakları, Microsoft Technology Embedded ile projenizi veya yönetilen Hizmetleri satmak için işbirliği yapıyor.
+* *IP ortak satışı*: satıcılar/iş ortakları, tekrarlanabilir, paketlenmiş IP çözümünüzü satmak için işbirliği yapıyor.
 
-\*Bu IP ortak satış çözümlerinden bazıları, Microsoft'un saha satış ekipleriyle başarıyla satıldığında ve dağıtıldığında ek teşvikler alabilir.
+\*Bu IP ortak satış çözümlerinin bazıları, Microsoft 'un alan satış ekipleriyle başarıyla satıldığında ve dağıtıldığında ek teşvikleri alabilir.
 
-![Co-satmak olur](./media/marketplace-publishers-guide/marketplace-co-sell.png)
+![Ortak satış gerçekleştiğinde](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Microsoft ile satış](https://partner.microsoft.com/membership/sell-with-microsoft)hakkında daha fazla bilgi edinin.
-- [Partner Center'da Co-sell seçeneği](./partner-center-portal/commercial-marketplace-co-sell.md) hakkında bilgi edinin.
+- [Microsoft ile satma](https://partner.microsoft.com/membership/sell-with-microsoft)hakkında daha fazla bilgi edinin.
+- [Iş Ortağı Merkezi 'Nde ortak satış seçeneği](./partner-center-portal/commercial-marketplace-co-sell.md) hakkında bilgi edinin.

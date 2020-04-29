@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.openlocfilehash: 6cf9be653da2dd587b93724b6e319dc4d20686c2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536462"
 ---
 | Kaynak | Standart dosya paylaşımları | Premium dosya paylaşımları |
 |----------|---------------|------------------------------------------|
-| Dosya paylaşımının minimum boyutu | Minimum yok; gittiğiniz gibi ödeme | 100 GİB; Sağlan |
-| Dosya paylaşımının maksimum boyutu | 100 TiB*, 5 TiB | 100 TiB |
-| Dosya paylaşımındaki dosyanın maksimum boyutu | 1 TiB | 1 TiB |
-| Dosya paylaşımındaki maksimum dosya sayısı | Sınır yok | Sınır yok |
-| Hisse başına maksimum IOPS | 10.000 IOPS*, 1.000 IOPS | 100.000 IOPS |
-| Dosya paylaşımı başına en fazla depolanan erişim ilkeleri sayısı | 5 | 5 |
-| Tek bir dosya paylaşımı için hedef iş girişi | 300 MiB/sn*, 60 MiB/sn'ye kadar,  | Bkz. premium dosya paylaşım girişi ve çıkış değerleri|
-| Tek bir dosya paylaşımı için maksimum çıkış | Bkz. standart dosya paylaşımı hedef iş bilgili | 6.204 MiB/s'ye kadar |
-| Tek bir dosya paylaşımı için maksimum giriş | Bkz. standart dosya paylaşımı hedef iş bilgili | 4.136 MiB/s'ye kadar |
-| Dosya başına maksimum açık tutamaçları | 2.000 açık kulp | 2.000 açık kulp |
-| Maksimum hisse anlık görüntü sayısı | 200 hisse anlık görüntüsü | 200 hisse anlık görüntüsü |
-| Maksimum nesne (dizinler ve dosyalar) ad uzunluğu | 2.048 karakter | 2.048 karakter |
-| Maksimum yol adı bileşeni (\A\B\C\D yolunda, her harf bir bileşendir) | 255 karakter | 255 karakter |
+| Dosya paylaşımının en küçük boyutu | En az; Kullandıkça öde | 100 GiB; oluşturulamadı |
+| Dosya paylaşımının en büyük boyutu | 100 TiB *, 5 TiB | 100 TiB |
+| Dosya paylaşımındaki bir dosyanın en büyük boyutu | 1 TiB | 1 TiB |
+| Dosya paylaşımındaki en fazla dosya sayısı | Sınır yok | Sınır yok |
+| Paylaşma başına maksimum ıOPS | 10.000 ıOPS *, 1.000 ıOPS | 100.000 ıOPS |
+| Dosya paylaşma başına en fazla depolanan erişim ilkesi sayısı | 5 | 5 |
+| Tek bir dosya paylaşımının hedef performansı | en fazla 300 MIB/sn *, en fazla 60 MIB/sn,  | Bkz. Premium dosya paylaşma giriş ve çıkış değerleri|
+| Tek bir dosya paylaşımında maksimum çıkış | Bkz. standart dosya paylaşma hedef işleme | En fazla 6.204 MIB/sn |
+| Tek bir dosya paylaşımının en büyük girişi | Bkz. standart dosya paylaşma hedef işleme | En fazla 4.136 MIB/sn |
+| Dosya başına en fazla açık tanıtıcı | 2.000 açık tanıtıcı | 2.000 açık tanıtıcı |
+| Maksimum paylaşılan anlık görüntü sayısı | 200 paylaşma anlık görüntüleri | 200 paylaşma anlık görüntüleri |
+| En fazla nesne (Dizin ve dosya) adı uzunluğu | 2.048 karakter | 2.048 karakter |
+| En fazla yol adı bileşeni (\A\B\C\D yolunda her bir bir bileşendir) | 255 karakter | 255 karakter |
 
-\*Standart dosya paylaşımlarında varsayılan değer 5 TiB'dir, [bkz.](../articles/storage/files/storage-files-how-to-create-large-file-share.md)
+\*Standart dosya paylaşımlarında varsayılan değer 5 TiB 'dir ve standart dosya paylaşımlarının ölçeğini 100 TiB 'ye kadar artırma hakkında daha fazla bilgi için bkz. [büyük dosya paylaşımlarını etkinleştirme ve oluşturma](../articles/storage/files/storage-files-how-to-create-large-file-share.md) .

@@ -1,16 +1,16 @@
 ---
-title: Java uygulamalarını her yerde izleyin - Azure Monitör Uygulama Öngörüleri
-description: Uygulamayı enstrümanting olmadan herhangi bir ortamda çalışan Java uygulamaları için kodsuz uygulama performans izleme. Dağıtılmış izleme ve uygulama eşlemi kullanarak d sorunlarının temel nedenini bulun.
+title: Java uygulamalarını her yerde izleyin-Azure Izleyici Application Insights
+description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için codeless uygulama performansı izleme. Dağıtılmış izleme ve uygulama haritasını kullanarak sorunlar için temel nedenini bulur.
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641894"
 ---
-# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Yapılandırma seçenekleri - Azure Monitörü Uygulama Öngörüleri için Java bağımsız aracısı
+# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Yapılandırma seçenekleri-Azure Izleyici için Java tek başına aracı Application Insights
 
 
 
@@ -27,34 +27,34 @@ ms.locfileid: "81641894"
 }
 ```
 
-Bağlantı dizesi gereklidir ve rol adı, farklı uygulamalardan aynı Application Insights kaynağına veri gönderdiğinde önemlidir.
+Bağlantı dizesi gereklidir ve farklı uygulamalardan aynı Application Insights kaynağına veri gönderişinizde rol adı önemlidir.
 
-Daha fazla ayrıntı için daha fazla ayrıntı ve ek yapılandırma seçenekleri aşağıda bulabilirsiniz.
+Daha fazla ayrıntı için aşağıda daha fazla ayrıntı ve ek yapılandırma seçenekleri bulacaksınız.
 
-## <a name="configuration-file-path"></a>Yapılandırma dosya yolu
+## <a name="configuration-file-path"></a>Yapılandırma dosyası yolu
 
-Varsayılan olarak, Application Insights Java 3.0 Preview `ApplicationInsights.json`yapılandırma dosyasının adlandırılmasını ve `applicationinsights-agent-3.0.0-PREVIEW.jar`'' ile aynı dizinde bulunmasını bekler.
+Varsayılan olarak, Application Insights Java 3,0 Önizlemesi yapılandırma dosyasının adlandırıldığını `ApplicationInsights.json`ve ile aynı dizinde bulunmasını bekler. `applicationinsights-agent-3.0.0-PREVIEW.jar`
 
-Kendi yapılandırma dosya yolunuzu aşağıdaki
+Kendi yapılandırma dosya yolunuzu aşağıdakilerden birini kullanarak belirtebilirsiniz
 
-* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`çevre değişkeni veya
+* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`ortam değişkeni veya
 * `applicationinsights.configurationFile`Java sistem özelliği
 
-Göreceli bir yol belirtirseniz, bulunduğu dizine `applicationinsights-agent-3.0.0-PREVIEW.jar` göre çözülür.
+Göreli bir yol belirtirseniz, bulunduğu dizine `applicationinsights-agent-3.0.0-PREVIEW.jar` göre çözümlenir.
 
 ## <a name="connection-string"></a>Bağlantı dizesi
 
-Bu gereklidir. Bağlantı dizenizi Application Insights kaynağınızda bulabilirsiniz:
+Bu gereklidir. Bağlantı dizenizi Application Insights kaynağınız için bulabilirsiniz:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Uygulama Öngörüleri Bağlantı Dizesi":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights bağlantı dizesi":::
 
-Ayrıca, çevre değişkenini `APPLICATIONINSIGHTS_CONNECTION_STRING`kullanarak bağlantı dizesini ayarlayabilirsiniz.
+Ayrıca, ortam değişkenini `APPLICATIONINSIGHTS_CONNECTION_STRING`kullanarak bağlantı dizesini de ayarlayabilirsiniz.
 
-## <a name="cloud-role-name"></a>Bulut rol adı
+## <a name="cloud-role-name"></a>Bulut rolü adı
 
-Bulut rol adı, bileşenin uygulama haritasında etiketlemek için kullanılır.
+Uygulama eşlemesindeki bileşeni etiketlemek için bulut rolü adı kullanılır.
 
-Bulut rol adını ayarlamak istiyorsanız:
+Bulut rolü adını ayarlamak istiyorsanız:
 
 ```json
 {
@@ -66,15 +66,15 @@ Bulut rol adını ayarlamak istiyorsanız:
 }
 ```
 
-Bulut rol adı ayarlanmazsa, uygulama haritasında bileşeni etiketlemek için Application Insights kaynağının adı kullanılır.
+Bulut rolü adı ayarlanmamışsa, uygulama eşlemesindeki bileşeni etiketlemek için Application Insights kaynağın adı kullanılır.
 
-Ayrıca, ortam değişkenini `APPLICATIONINSIGHTS_ROLE_NAME`kullanarak bulut rol adını da ayarlayabilirsiniz.
+Ayrıca, ortam değişkenini `APPLICATIONINSIGHTS_ROLE_NAME`kullanarak bulut rolü adını da ayarlayabilirsiniz.
 
 ## <a name="cloud-role-instance"></a>Bulut rolü örneği
 
-Bulut rolü örneği varsayılan olarak makine adına verilir.
+Bulut rolü örneği, varsayılan olarak makine adına sahiptir.
 
-Bulut rol örneğini makine adı yerine farklı bir şeye ayarlamak istiyorsanız:
+Bulut rolü örneğini makine adı yerine farklı bir şekilde ayarlamak istiyorsanız:
 
 ```json
 {
@@ -86,13 +86,13 @@ Bulut rol örneğini makine adı yerine farklı bir şeye ayarlamak istiyorsanı
 }
 ```
 
-Ayrıca, ortam değişkenini `APPLICATIONINSIGHTS_ROLE_INSTANCE`kullanarak bulut rol örneğini de ayarlayabilirsiniz.
+Ayrıca, ortam değişkenini `APPLICATIONINSIGHTS_ROLE_INSTANCE`kullanarak bulut rolü örneğini ayarlayabilirsiniz.
 
 ## <a name="application-log-capture"></a>Uygulama günlüğü yakalama
 
-Application Insights Java 3.0 Preview, Log4j, Logback ve java.util.log üzerinden uygulama günlüğünü otomatik olarak yakalar.
+Application Insights Java 3,0 Preview, uygulama günlüğünü Log4J, Logback ve Java. util. Logging aracılığıyla otomatik olarak yakalar.
 
-Varsayılan `WARN` olarak, düzeyinde veya üzerinde gerçekleştirilen tüm günlük yakalar.
+Varsayılan olarak, `WARN` düzeyinde veya üzerinde gerçekleştirilen tüm günlük kaydını yakalar.
 
 Bu eşiği değiştirmek istiyorsanız:
 
@@ -110,24 +110,24 @@ Bu eşiği değiştirmek istiyorsanız:
 }
 ```
 
-Bunlar, dosyada belirtebileceğiniz geçerli `threshold` değerler ve bunların farklı günlük düzeylerine nasıl karşılık geldiğini: `ApplicationInsights.json`
+Bunlar, `ApplicationInsights.json` dosyada belirtebileceğiniz `threshold` geçerli değerlerdir ve farklı günlük çerçeveleri genelinde günlük düzeylerine nasıl karşılık gelmektedir:
 
-| `threshold`  | Log4j  | Giriş | TEM     |
+| `threshold`  | Log4J  | Logback | TEM     |
 |--------------|--------|---------|---------|
 | KAPALI          | KAPALI    | KAPALI     | KAPALI     |
-| Ölümcül        | Ölümcül  | HATA   | Şiddetli  |
-| HATA/ŞIDDETLI | HATA  | HATA   | Şiddetli  |
-| UYARI/UYARMA | Uyarmak   | Uyarmak    | UYARI |
-| Bilgi         | Bilgi   | Bilgi    | Bilgi    |
-| Config       | HATA AYIKLAMA  | HATA AYIKLAMA   | Config  |
-| HATA AyıkLAMA/İNCE   | HATA AYIKLAMA  | HATA AYIKLAMA   | Iyi    |
-| Ince        | HATA AYIKLAMA  | HATA AYIKLAMA   | Ince   |
-| İz / FINEST | TRACE  | TRACE   | En iyi  |
+| HATAYA        | HATAYA  | HATA   | OLAN  |
+| HATA/ÖNEMLI | HATA  | HATA   | OLAN  |
+| UYAR/UYARı | UYARıR   | UYARıR    | UYARI |
+| BILGISINE         | BILGISINE   | BILGISINE    | BILGISINE    |
+| KURULUMUNUN       | HATA AYIKLAMA  | HATA AYIKLAMA   | KURULUMUNUN  |
+| HATA AYıKLAMA/INCE   | HATA AYIKLAMA  | HATA AYIKLAMA   | AYRıNTı    |
+| ZARIF        | HATA AYIKLAMA  | HATA AYIKLAMA   | ZARIF   |
+| IZLEME/FINEST | TRACE  | TRACE   | FıNEST  |
 | TÜMÜ          | TÜMÜ    | TÜMÜ     | TÜMÜ     |
 
 ## <a name="jmx-metrics"></a>JMX ölçümleri
 
-Yakalamak istediğiniz bazı JMX ölçümleri varsa:
+Yakalamaya ilgilendiğiniz bazı JMX ölçümleri varsa:
 
 ```json
 {
@@ -152,9 +152,9 @@ Yakalamak istediğiniz bazı JMX ölçümleri varsa:
 
 ## <a name="micrometer"></a>Micrometer
 
-Varsayılan olarak, uygulamanız [Mikrometre](https://micrometer.io)kullanıyorsa, Application Insights 3.0 (Preview.2 ile başlayarak) artık kendisini Mikrometre genel kayıt defterine ekler ve Mikrometre ölçümlerini yakalar.
+Varsayılan olarak, uygulamanız [mikro ölçüm](https://micrometer.io)kullanıyorsa, Application Insights 3,0 (Önizleme ile başlayarak), artık kendisini mikro ölçüm küresel kayıt defterine ekler ve mikro ölçüm ölçümlerini yakalar.
 
-Bu özelliği devre dışı kılmış olmak istiyorsanız:
+Bu özelliği devre dışı bırakmak istiyorsanız:
 
 ```json
 {
@@ -172,7 +172,7 @@ Bu özelliği devre dışı kılmış olmak istiyorsanız:
 
 ## <a name="heartbeat"></a>Sinyal
 
-Varsayılan olarak, Application Insights Java 3.0 Önizleme her 15 dakikada bir sinyal ölçümü gönderir. Uyarıları tetiklemek için sinyal ölçümü kullanıyorsanız, bu sinyalin sıklığını artırabilirsiniz:
+Varsayılan olarak, Application Insights Java 3,0 Preview, 15 dakikada bir sinyal ölçümü gönderir. Uyarıları tetiklemek için sinyal ölçümünü kullanıyorsanız, bu sinyal sıklığını artırabilirsiniz:
 
 ```json
 {
@@ -187,16 +187,16 @@ Varsayılan olarak, Application Insights Java 3.0 Önizleme her 15 dakikada bir 
 ```
 
 > [!NOTE]
-> Bu sinyalin sıklığını azaltamazsınız, çünkü sinyal verileri Application Insights kullanımını izlemek için de kullanılır.
+> Sinyal verileri de Application Insights kullanımını izlemek için kullanıldığından, bu sinyalin sıklığını azaltamazsınız.
 
 ## <a name="sampling"></a>Örnekleme
 
-Maliyeti azaltmanız gerekiyorsa örnekleme yararlıdır.
-Örnekleme, aynı işlem kimliğiher zaman aynı örnekleme kararıyla sonuçlanacak şekilde, işlem kimliği (iz kimliği olarak da bilinir) üzerinde bir işlev olarak gerçekleştirilir. Bu, dağıtılmış bir işlemin parçalarını örneklenirken diğer bölümleri örneklenirken almamanızı sağlar.
+Maliyeti azaltmanız gerekiyorsa örnekleme yararlı olur.
+Örnekleme işlem KIMLIĞI üzerinde (izleme KIMLIĞI olarak da bilinir) bir işlev olarak gerçekleştirilir, böylece aynı işlem KIMLIĞI her zaman aynı örnekleme kararına neden olur. Bu, içindeki dağıtılmış bir işlemin parçalarını, diğer bölümleri örneklenirken almanızı sağlar.
 
-Örneğin, örneklemeyi %10 olarak ayarlarsanız, hareketlerinizin yalnızca %10'unu görürsünüz, ancak bu %10'ların her biri tam uçtan uca işlem ayrıntılarına sahip olur.
+Örneğin, örneklemeyi %10 olarak ayarlarsanız, işlemlerinizin yalnızca %10 ' u görürsünüz, ancak bu %10 ' un her biri uçtan uca işlem ayrıntılarına sahip olur.
 
-Örneklemeyi **tüm işlemlerin %10'una** nasıl ayarladığınıza bir örnek verilmiştir - lütfen kullanım durumunuz için doğru olan örnekleme oranını belirlediğinizden emin olun:
+Örneklemeyi **tüm işlemlerin %10** ' a nasıl ayarlayabileceğiniz aşağıda verilmiştir. lütfen kullanım örneği için doğru olan örnekleme oranını ayarladığınızdan emin olun:
 
 ```json
 {
@@ -212,9 +212,9 @@ Maliyeti azaltmanız gerekiyorsa örnekleme yararlıdır.
 }
 ```
 
-## <a name="http-proxy"></a>HTTP Proxy
+## <a name="http-proxy"></a>HTTP proxy 'Si
 
-Uygulamanız bir güvenlik duvarının arkasındaysa ve doğrudan Application Insights'a bağlanamıyorsa [(Bkz. Application Insights tarafından kullanılan IP adresleri),](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)Http proxy'sini kullanmak üzere Application Insights Java 3.0 Önizlemesini yapılandırabilirsiniz:
+Uygulamanız bir güvenlik duvarının arkasındaysa ve Application Insights doğrudan bağlanamıyorsa (bkz. [Application Insights tarafından kullanılan IP adresleri](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), bir http proxy kullanmak için Java 3,0 Preview Application Insights yapılandırabilirsiniz:
 
 ```json
 {
@@ -229,13 +229,13 @@ Uygulamanız bir güvenlik duvarının arkasındaysa ve doğrudan Application In
 }
 ```
 
-## <a name="self-diagnostics"></a>Kendi kendine teşhis
+## <a name="self-diagnostics"></a>Kendi kendine tanılama
 
-"Kendi kendine tanılama", Application Insights Java 3.0 Preview'un dahili günlüğe kaydetmesini ifade eder.
+"Kendi kendine tanılama" Application Insights Java 3,0 Preview 'dan iç günlüğe kaydetme anlamına gelir.
 
-Bu, Application Insights'ın kendisiyle ilgili sorunları tespit etmek ve tanılamanız için yararlı olabilir.
+Bu, Application Insights ile ilgili sorunları saptamak ve tanılamak için yararlı olabilir.
 
-Varsayılan olarak, bu yapılandırmaya `warn`karşılık gelen düzeyi ile konsol günlükleri:
+Varsayılan olarak, bu yapılandırmaya karşılık gelen ve düzeyi `warn`olan konsola kaydedilir:
 
 ```json
 {
@@ -250,9 +250,9 @@ Varsayılan olarak, bu yapılandırmaya `warn`karşılık gelen düzeyi ile kons
 }
 ```
 
-Geçerli seviyeler `OFF` `ERROR`, `WARN` `INFO`, `DEBUG`, `TRACE`, , ve .
+`OFF`Geçerli Düzeyler, `ERROR` `WARN` `INFO` `TRACE`,,, ve. `DEBUG`
 
-Konsola günlüğe kaydetmek yerine bir dosyada oturum açmak istiyorsanız:
+Konsola kaydetmek yerine bir dosyaya oturum açmak istiyorsanız:
 
 ```json
 {
@@ -269,4 +269,4 @@ Konsola günlüğe kaydetmek yerine bir dosyada oturum açmak istiyorsanız:
 }
 ```
 
-Dosya günlüğe kaydetme kullanırken, dosya tıka ıldığında, `maxSizeMB`geçerli günlük dosyasına ek olarak yalnızca en son tamamlanan günlük dosyasını tutarak rollover olur.
+Dosya günlüğü kullanılırken, dosya isabetlerine `maxSizeMB`ulaştıktan sonra, geçerli günlük dosyasına ek olarak yalnızca en son tamamlanan günlük dosyasını tutarak geçiş yapılır.

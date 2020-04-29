@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği kullanıcılarının toplu olarak davet için çalışması - Azure AD
+title: B2B işbirliği kullanıcılarına toplu davet etme öğreticisi-Azure AD
 description: Bu öğreticide, harici Azure AD B2B işbirliği kullanıcılarına toplu davet göndermek için PowerShell ve CSV dosyasının nasıl kullanılacağını öğreneceksiniz.
 services: active-directory
 ms.service: active-directory
@@ -12,69 +12,69 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81603391"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu davet etme
 
-Şirket dışındaki ortaklarla çalışmak için Azure Active Directory (Azure AD) B2B işbirliğini kullanıyorsanız, kuruluşunuza aynı anda birden çok konuk kullanıcı davet edebilirsiniz. Bu eğitimde, dış kullanıcılara toplu davetiye göndermek için Azure portalını nasıl kullanacağınızı öğrenirsiniz. Özellikle aşağıdakileri yapın:
+Şirket dışındaki ortaklarla çalışmak için Azure Active Directory (Azure AD) B2B işbirliğini kullanıyorsanız, kuruluşunuza aynı anda birden çok konuk kullanıcı davet edebilirsiniz. Bu öğreticide, dış kullanıcılara toplu davetiye göndermek için Azure portal kullanmayı öğreneceksiniz. Özellikle aşağıdakileri yapın:
 
 > [!div class="checklist"]
-> * Kullanıcı bilgileri ve davet tercihleri ile virgülden ayrılmış bir değer (.csv) dosyası hazırlamak için **Toplu davet kullanıcılarını** kullanma
-> * .csv dosyasını Azure AD'ye yükleme
+> * Kullanıcı bilgileri ve davetiye tercihleri ile bir virgülle ayrılmış değer (. csv) dosyası hazırlamak için **toplu davet kullanıcılarını** kullanın
+> * . Csv dosyasını Azure AD 'ye yükleyin
 > * Kullanıcıların dizine eklendiğini doğrulama
 
-Azure Etkin Dizin'iniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure Active Directory yoksa, başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Davetleri gönderebileceğiniz iki veya daha fazla test e-posta hesabı olması gerekir. Hesaplar, kuruluşunuzun dışından olmalıdır. Gmail.com veya outlook.com adresleri gibi sosyal hesapları içeren herhangi bir hesap türü kullanabilirsiniz.
 
-## <a name="invite-guest-users-in-bulk"></a>Konuk kullanıcıları toplu olarak davet edin
+## <a name="invite-guest-users-in-bulk"></a>Konuk kullanıcıları toplu olarak davet etme
 
-1. Kuruluşta Kullanıcı yöneticisi olan bir hesapla Azure portalında oturum açın.
-2. Gezinti bölmesinde Azure **Etkin Dizin'i**seçin.
-3. **Yönet**altında, **Kullanıcılar** > **Toplu davet**seçin.
-4. Toplu **davet kullanıcıları** sayfasında, davet özelliklerine sahip geçerli bir .csv dosyası almak için **İndir'i** seçin.
+1. Kuruluşta Kullanıcı Yöneticisi olan bir hesapla Azure portal oturum açın.
+2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
+3. **Yönet**' in altında, **Kullanıcılar** > **toplu davet**' i seçin.
+4. **Kullanıcıları toplu davet et** sayfasında, davet özelliklerine sahip geçerli bir. csv dosyası almak için **İndir** ' i seçin.
 
     ![Toplu davet indirme düğmesi](media/tutorial-bulk-invite/bulk-invite-button.png)
 
-5. .csv dosyasını açın ve her konuk kullanıcı için bir satır ekleyin. Gerekli değerler şunlardır:
+5. . Csv dosyasını açın ve her Konuk Kullanıcı için bir satır ekleyin. Gerekli değerler şunlardır:
 
-   * **Davet edilecek e-posta adresi** - davet alacak kullanıcı
+   * **Davet e-posta adresi** -davet alacak Kullanıcı
 
-   * **Yeniden yönlendirme url'si** - davet edilen kullanıcının daveti kabul ettikten sonra iletildiği URL
+   * **Yeniden yönlendirme URL 'si** -daveti kabul ettikten sonra davet edilen kullanıcının iletildiği URL
 
-    ![Konuk kullanıcıların girdiği bir CSV dosyası örneği](media/tutorial-bulk-invite/bulk-invite-csv.png)
+    ![Konuk kullanıcılar için girilen bir CSV dosyası örneği](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
    > [!NOTE]
-   > **Özelleştirilmiş davet iletisinde** virgül kullanmayın, çünkü iletinin başarıyla ayrıştırılmasını engeller.
+   > İletinin başarıyla ayrıştırılmasını engelleyecek şekilde **özelleştirilmiş davet iletisinde** virgül kullanmayın.
 
 6. Dosyayı kaydedin.
-7. Toplu **davet kullanıcıları** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçtiğinizde,.csv dosyasının doğrulanması başlar. 
-8. Dosya içeriği doğrulandığında, **Dosyanın başarıyla yüklendiğini**görürsünüz. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
-9. Dosyanız doğrulamadan geçtiğinde, davetleri ekleyen Azure toplu işlemini başlatmak için **Gönder'i** seçin. 
-10. İş durumunu görüntülemek **için, her işlemin durumunu görüntülemek için burayı tıklatın'ı**seçin. Veya **Etkinlik** bölümünde **Toplu işlem sonuçlarını** seçebilirsiniz. Toplu işlemdeki her satır öğesi yle ilgili ayrıntılar için **# Success**, **# Failure**veya Toplam **İstek** sütunları altındaki değerleri seçin. Hatalar oluştuysa, hata nedenleri listelenir.
+7. **Toplu davet kullanıcıları** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçtiğinizde,. csv dosyasının doğrulanması başlar. 
+8. Dosya içeriği doğrulandığında, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
+9. Dosyanız doğrulamayı geçtiğinde, davetleri ekleyen Azure toplu işlemini başlatmak için **Gönder** ' i seçin. 
+10. İş durumunu görüntülemek için, **her bir işlemin durumunu görüntülemek üzere buraya tıklayın ' ı**seçin. Ya da **etkinlik** bölümünde **toplu işlem sonuçları** ' nı seçebilirsiniz. Toplu işlemdeki her bir satır öğesi hakkında ayrıntılar için **# Success**, **# Failure**veya **Total Requests** sütunlarının altındaki değerleri seçin. Hatalar oluştuysa, başarısızlık nedenleri listelenecektir.
 
     ![Toplu işlem sonuçları örneği](media/tutorial-bulk-invite/bulk-operation-results.png)
 
-11. İş tamamlandığında, toplu işlemin başarılı olduğuna dair bir bildirim görürsünüz.
+11. İş tamamlandığında toplu işlemin başarılı olduğunu belirten bir bildirim görürsünüz.
 
-## <a name="verify-guest-users-in-the-directory"></a>Dizindeki konuk kullanıcıları doğrulama
+## <a name="verify-guest-users-in-the-directory"></a>Dizindeki Konuk kullanıcıları doğrulama
 
-Eklediğiniz konuk kullanıcıların Azure portalında veya PowerShell'i kullanarak dizinde bulunabiliyor mu olup olmadığını denetleyin.
+Eklediğiniz konuk kullanıcıların Azure portal dizinde mı yoksa PowerShell kullanarak mı bulunduğunu denetleyin.
 
-### <a name="view-guest-users-in-the-azure-portal"></a>Azure portalında konuk kullanıcıları görüntüleme
+### <a name="view-guest-users-in-the-azure-portal"></a>Azure portal Konuk kullanıcıları görüntüleme
 
-1. Kuruluşta Kullanıcı yöneticisi olan bir hesapla Azure portalında oturum açın.
-2. Gezinti bölmesinde Azure **Etkin Dizin'i**seçin.
+1. Kuruluşta Kullanıcı Yöneticisi olan bir hesapla Azure portal oturum açın.
+2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 3. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
-4. **Göster'in**altında yalnızca **Konuk kullanıcıları** seçin ve eklediğiniz kullanıcıların listeli olduğunu doğrulayın.
+4. **Göster**altında **Yalnızca Konuk kullanıcılar** ' ı seçin ve eklediğiniz kullanıcıların listelendiğini doğrulayın.
 
-### <a name="view-guest-users-with-powershell"></a>PowerShell ile konuk kullanıcıları görüntüleyin
+### <a name="view-guest-users-with-powershell"></a>PowerShell ile Konuk kullanıcıları görüntüleme
 
 Şu komutu çalıştırın:
 
@@ -82,13 +82,13 @@ Eklediğiniz konuk kullanıcıların Azure portalında veya PowerShell'i kullana
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Listelediğiniz kullanıcıları, *e-posta adresi*#EXT#\@*etki alanında*bir kullanıcı ana adı (UPN) ile görmeniz gerekir. Örneğin, *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, davetiyeleri gönderdiğiniz kuruluş contoso.onmicrosoft.com yerdir.
+Bir Kullanıcı asıl adı (UPN) ile, davet ettiğiniz kullanıcıları *emadresi*#EXT #\@*etki*biçiminde görmeniz gerekir. Örneğin, *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyaç duyulmadığında, konuk kullanıcının yanındaki onay kutusunu seçip **Sil'i**seçerek Kullanıcılar sayfasındaki Azure portalındaki dizindeki test kullanıcı hesaplarını silebilirsiniz. 
+Artık gerekli değilse, Konuk kullanıcının yanındaki onay kutusunu seçip **Sil**' i seçerek kullanıcılar sayfasındaki Azure Portal dizindeki test Kullanıcı hesaplarını silebilirsiniz. 
 
-Veya bir kullanıcı hesabını silmek için aşağıdaki PowerShell komutunu çalıştırabilirsiniz:
+Ya da bir kullanıcı hesabını silmek için aşağıdaki PowerShell komutunu çalıştırabilirsiniz:
 
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"

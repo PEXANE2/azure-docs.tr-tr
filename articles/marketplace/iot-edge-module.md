@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace IoT Edge Modülleri
-description: Uygulama ve hizmet yayıncıları için Azure Marketi'ndeki IoT Edge Modülü Teklifi.
+title: Azure Marketi IoT Edge modülleri
+description: IoT Edge modülü, uygulama ve hizmet yayımcıları için Azure Marketi 'nde sunulur.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,82 +8,82 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
 ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684331"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge modülleri
 
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformu Azure Bulut tarafından desteklenen bir platformdur.  Bu platform, kullanıcıların doğrudan IoT aygıtlarında çalışacak bulut iş yüklerini dağıtmalarına olanak tanır.  Bir IoT Edge modülü çevrimdışı iş yüklerini çalıştırabilir ve yerel olarak veri analizi yapabilir. Bu teklif türü bant genişliğinden tasarruf etmeye, yerel ve hassas verileri korumaya yardımcı olur ve düşük gecikmeli yanıt süresi sunar.  Artık bu önceden oluşturulmuş iş yüklerinden yararlanmak için seçeneklere sahipsiniz. Şimdiye kadar, Microsoft'un yalnızca bir avuç birinci taraf çözümü mevcuttü.  Kendi özel IoT çözümlerinizi oluşturmak için zaman ve kaynak yatırımı yapmak zorundaydınız.
+[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformu Azure bulutu tarafından desteklenmektedir.  Bu platform, kullanıcıların doğrudan IoT cihazlarında çalışacak bulut iş yüklerini dağıtmasına olanak sağlar.  IoT Edge bir modül çevrimdışı iş yüklerini çalıştırabilir ve veri analizini yerel olarak gerçekleştirebilir. Bu teklif türü, bant genişliğini kaydetmeye, yerel ve hassas verilerin korunmasına yardımcı olur ve düşük Gecikmeli yanıt süresi sağlar.  Artık önceden oluşturulmuş bu iş yüklerinden faydalanmak için seçenekleriniz vardır. Bu aşamada, Microsoft 'tan yalnızca birkaç birinci taraf çözüm kullanıma sunulmuştur.  Kendi özel IoT çözümlerinizi oluşturmak için zaman ve kaynakları yatırım yapmanız gerekiyordu.
 
-[Azure Marketi'nde IoT Edge modüllerini](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)tanıtarak, artık yayıncıların çözümlerini IoT kitlesine sunması ve satması için tek bir varış noktamız var. IoT geliştiricileri, çözüm geliştirmeçalışmalarını hızlandırmak için sonuçta yetenekleri bulabilir ve satın alabilir.  
+[Azure Marketi 'ndeki IoT Edge modüllerine](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)giriş yaparak artık yayımcıların IoT hedef kitlesi için çözümlerini kullanıma sunma ve satma amacıyla tek bir hedef sunuyoruz. IoT geliştiricileri, son olarak çözüm geliştirmeyi hızlandırmaya yönelik yetenekler bulabilir ve satın alabilir.  
 
-## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Azure Marketi'ndeki IoT Edge modüllerinin temel avantajları:
+## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modüllerinin önemli avantajları:
 
-| **Yayıncılar için**    | **Müşteriler için (IoT geliştiricileri)**  |
+| **Yayımcılar için**    | **Müşteriler için (IoT geliştiricileri)**  |
 | :------------------- | :-------------------|
-| IoT Edge çözümleri oluşturmak ve dağıtmak isteyen milyonlarca geliştiriciye ulaşın.  | Güvenli ve test edilmiş bileşenler kullanma nın güveniyle bir IoT Edge çözümü oluşturun. |
-| Bir kez yayımlayın ve kapsayıcıları destekleyen herhangi bir IoT Edge donanımı arasında çalıştırın. | Belirli ihtiyaçlar için 1. ve 3. |
-| Esnek faturalandırma seçenekleriyle para kazanma <ul> <li> Ücretsiz ve Kendi Lisans (BYOL) getirin. </li> </ul> | Seçtiğiniz faturalandırma modelleri ile alışveriş yapın. <ul> <li> Ücretsiz ve Kendi Lisans (BYOL) getirin. </li> </ul> |
+| IoT Edge çözümleri derlemek ve dağıtmak isteyen milyonlarca geliştiricilere ulaşın.  | Güvenli ve test edilmiş bileşenleri kullanma güveniyle bir IoT Edge çözümü oluşturun. |
+| Bir kez yayımlayın ve kapsayıcıları destekleyen tüm IoT Edge donanımları üzerinde çalıştırın. | Belirli gereksinimlere göre 1. ve 3. taraf IoT Edge modüllerini bularak ve dağıtarak pazarlamaya yönelik süreyi azaltın. |
+| Esnek faturalandırma seçenekleriyle monetize <ul> <li> Ücretsiz ve kendi lisansınızı getirin (KLG). </li> </ul> | Satın alımları, fatura modellerinizi tercih ettiğiniz şekilde yapın. <ul> <li> Ücretsiz ve kendi lisansınızı getirin (KLG). </li> </ul> |
 
 ## <a name="what-is-an-iot-edge-module"></a>IoT Edge modülü nedir?
 
-Azure IoT Edge, modül ler biçiminde iş mantığını kenarda dağıtmanızı ve yönetmenize olanak tanır. Azure IoT Edge modülleri, IoT Edge tarafından yönetilen en küçük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Akış Analizi gibi), üçüncü taraf hizmetleri veya çözüme özel kodunuzu içerebilir. IoT Edge modülleri hakkında daha fazla bilgi edinmek için Azure [IoT Edge modüllerini anlayın.](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)
+Azure IoT Edge, çalışma mantığını uç üzerinde modüller biçiminde dağıtmanıza ve yönetmenize olanak tanır. Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft Hizmetleri (Azure Stream Analytics gibi), 3. taraf hizmetleri veya kendi çözüme özgü kodunuzla bulunabilir. IoT Edge modüller hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge modülleri anlama](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
 
-**Konteyner teklif türü ile IoT Edge modül teklif türü arasındaki fark nedir?**
+**Kapsayıcı teklif türü ve IoT Edge modülü teklif türü arasındaki fark nedir?**
 
-IoT Edge modül teklif türü, Bir IoT Edge aygıtında çalışan belirli bir kapsayıcı türüdür. IoT Edge bağlamında çalışmak için varsayılan yapılandırma ayarlarıyla birlikte gelir ve isteğe bağlı olarak IoT Edge modülü SDK'yı IoT Edge çalışma süresiyle entegre etmek için kullanır.
+IoT Edge modülü teklif türü, bir IoT Edge cihazında çalışan belirli bir kapsayıcı türüdür. IoT Edge bağlamında çalıştırılacak varsayılan yapılandırma ayarlarıyla birlikte gelir ve isteğe bağlı olarak IoT Edge çalışma zamanına tümleştirilecek IoT Edge modülü SDK 'sını kullanır.
 
 ## <a name="publishing-your-iot-edge-module"></a>IoT Edge modülünüzü yayımlama
 
-**Doğru vitrini seçme**
+**Doğru storefront seçme**
 
-IoT Edge Modülleri yalnızca Azure Marketi'nde yayınlanır, AppSource geçerli değildir.  Farklar ve vitrinler arasında hedef kitle hakkında daha fazla bilgi [için, çözümünüz için yayımlama seçeneğini belirlemeye](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)bakın.
+IoT Edge modüller yalnızca Azure Marketi 'Nde yayımlanır, AppSource uygulanmaz.  İzleme farklılıkları ve hedef kitleler hakkında daha fazla bilgi için bkz. [çözümünüz için yayımlama seçeneğini belirleme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
  
-**Faturalama seçenekleri**
+**Faturalandırma seçenekleri**
 
-Pazar şu anda IoT Edge modülleri için **Ücretsiz** ve **Kendi Lisansını Getir (BYOL)** fatura seçeneklerini desteklemektedir.
+Market şu anda **ücretsiz** olarak destekler ve IoT Edge modüller Için **kendi LISANSıNı getir (KLG)** faturalandırma seçenekleridir.
  
 **Yayımlama seçenekleri**
 
-Her durumda, IoT Edge modülleri **Transact** yayımlama seçeneğini seçmelidir.  Yayımlama seçenekleri hakkında daha fazla ayrıntı için [bir yayımlama seçeneği seçin.](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)  
+Her durumda IoT Edge modüller **Transact** yayımlama seçeneğini seçmelidir.  Yayımlama seçenekleri hakkında daha fazla bilgi için bkz. [yayımlama seçeneği seçme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) .  
 
-## <a name="eligibility-criteria"></a>Uygunluk Kriterleri
+## <a name="eligibility-criteria"></a>Uygunluk ölçütleri
 
-Microsoft Azure Marketi anlaşmalarının ve ilkelerinin tüm koşulları IoT Edge modül teklifleri için geçerlidir.  Ayrıca, IoT Edge modülleri için ön koşullar ve teknik gereksinimler vardır.  
+Microsoft Azure Market sözleşmelerinin ve ilkelerin tüm koşulları IoT Edge modül teklifleri için geçerlidir.  Ayrıca, IoT Edge modüller için önkoşulları ve teknik gereksinimleri vardır.  
 
-**Ön koşul**
+**Önkoşulların önkoşulları**
 
-Azure Marketi'nde bir IoT Edge modülü yayınlamak için aşağıdaki ön koşulları karşılamanız gerekir:
+Azure Marketi 'Nde bir IoT Edge modülünü yayımlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
-- Ortak Merkezi'ne erişim. Daha fazla bilgi için [Azure Marketi ve AppSource yayımlama kılavuzuna](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)bakın.
-- IoT Edge modülünüzü bir Azure Kapsayıcı Kayıt Defteri'nde barındırın. 
-- IoT Edge modül meta verilerinizin (kapsamlı olmayan liste) gibi hazır olması: 
+- Iş Ortağı Merkezi 'ne erişin. Daha fazla bilgi için bkz. [Azure Marketi ve AppSource Yayımlama Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+- IoT Edge modülünüzü bir Azure Container Registry barındırın. 
+- IoT Edge modülünüzün meta verileri (ayrıntılı olmayan liste) için hazırlayın: 
     - Bir başlık
-    - Açıklama (HTML biçiminde)
-    - Logo görüntüsü (PNG formatı ve 40x40px, 90x90px, 115x115px, 255x115px dahil sabit görüntü boyutları)
-    - Kullanım süresi ve gizlilik politikası
-    - Varsayılan modül yapılandırması (rota, istenen ikiz özellikler, createOptions, ortam değişkenleri)
+    - Bir açıklama (HTML biçiminde)
+    - Logo resmi (PNG biçimi ve 40x40px, 90x90px, 115x115px, 255x115px dahil)
+    - Kullanım Koşulları ve Gizlilik ilkesi
+    - Varsayılan modül yapılandırması (Route, ikizi istenen özellikler, createOptions, ortam değişkenleri)
     - Belgeler
     - Destek kişileri
 
-**Teknik Gereksinimler**
+**Teknik gereksinimler**
 
-Bir IoT Edge Modülü için temel teknik gereksinimler, azure marketinde sertifikalandırılabilmesi ve yayımlanabilmesi için [IoT Edge modülü teknik varlıklarınızı hazırla'da](./partner-center-portal/create-iot-edge-module-asset.md)ayrıntılı olarak açıklanmaktadır.
+Azure Market 'te sertifikalı ve yayımlanmış olması için bir IoT Edge modülü için birincil teknik gereksinimler, [IoT Edge modülü teknik varlıklarınızı hazırlama](./partner-center-portal/create-iot-edge-module-asset.md)bölümünde ayrıntılı olarak açıklanmıştır.
 
-## <a name="documentation-and-resources"></a>Dokümantasyon ve Kaynaklar
+## <a name="documentation-and-resources"></a>Belgeler ve kaynaklar
 
-[Bir IoT Edge modülü teklifi oluşturun](./partner-center-portal/azure-iot-edge-module-creation.md) -- İş Ortağı Merkezi'nde yeni bir IoT Edge modülü teklifi yayınlama adımları.
+[IoT Edge bir modül teklifi oluşturun](./partner-center-portal/azure-iot-edge-module-creation.md) --Iş Ortağı Merkezi 'nde yeni bir IoT Edge modülü teklifi yayımlama adımları.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Eğer bunu yapmadıysanız,
+Daha önce yapmadıysanız,
 
-- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
+- Market hakkında [bilgi edinin](https://azuremarketplace.microsoft.com/sell) .
 
-İş Ortağı Merkezi'ne kaydolmak ve yeni bir teklif oluşturmaya başlamak veya mevcut bir teklif üzerinde çalışmaya başlamak,
+Iş Ortağı Merkezi 'ne kaydolmak ve yeni bir teklif oluşturmaya veya var olan bir teklif üzerinde çalışmaya başlamak için
 
-- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) oturum açın.
-- Bir IoT Edge modülü teklifinin nasıl yayımlanabileceği hakkında bilgi için [bir IoT Edge modülü teklifi oluşturun.](./partner-center-portal/azure-iot-edge-module-creation.md)
+- Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) ' nde oturum açın.
+- Bir IoT Edge modülü teklifini yayımlama hakkında bilgi için bkz. [IoT Edge modülü teklifi oluşturma](./partner-center-portal/azure-iot-edge-module-creation.md) .
