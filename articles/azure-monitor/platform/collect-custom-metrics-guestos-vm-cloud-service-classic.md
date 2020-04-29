@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor ölçümleri veritabanına klasik Bulut Hizmetleri ölçümleri gönderme
-description: Azure klasik Bulut Hizmetleri için Konuk İşletim Sistemi performans ölçümlerini Azure Monitor metrik deposuna gönderme işlemini açıklar.
+title: Azure Izleyici ölçümleri veritabanına klasik Cloud Services ölçümleri gönderme
+description: Azure Izleyici ölçüm deposuna Azure klasik Cloud Services için konuk işletim sistemi performans ölçümlerini gönderme işlemini açıklar.
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
@@ -8,58 +8,58 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77655814"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Konuk İşletim Sistemi ölçümlerini Azure Monitor metrik deposu klasik Bulut Hizmetleri'ne gönderin 
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Izleyici ölçüm deposunda klasik Cloud Services Konuk işletim sistemi ölçümleri gönderme 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitör [Tanılama uzantısı](diagnostics-extension-overview.md)ile sanal makine, bulut hizmeti veya Hizmet Kumaşı kümesinin bir parçası olarak çalışan konuk işletim sisteminden (Konuk İşletim Sistemi) ölçümlerve günlükler toplayabilirsiniz. Uzantı, telemetriyi [birçok farklı konuma gönderebilir.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Azure Izleyici [Tanılama uzantısı](diagnostics-extension-overview.md)ile, bir sanal makinenin, bulut hizmetinin veya Service Fabric kümenin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplayabilirsiniz. Uzantı [birçok farklı konuma](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) telemetri gönderebilir.
 
-Bu makalede, Azure klasik Bulut Hizmetleri için Konuk İşletim Sistemi performans ölçümlerini Azure Monitor metrik deposuna gönderme işlemi açıklanmaktadır. Diagnostics sürüm 1.11'den başlayarak, ölçümleri standart platform ölçümlerinin zaten toplandığı Azure Monitor ölçüm mağazasına doğrudan yazabilirsiniz. 
+Bu makalede, Azure Izleyici ölçüm deposuna Azure klasik Cloud Services için konuk işletim sistemi performans ölçümlerini gönderme işlemi açıklanır. Tanılama sürüm 1,11 ' den başlayarak, ölçümleri doğrudan Azure Izleyici ölçümleri deposuna yazabilirsiniz; burada standart platform ölçümleri zaten toplanır. 
 
-Bunları bu konumda depolamak, platform ölçümleri için kullanabileceğiniz eylemlere erişmenize olanak tanır. Eylemler neredeyse gerçek zamanlı uyarı, grafik, yönlendirme, REST API'den erişim ve daha fazlasını içerir.  Geçmişte, Tanılama uzantısı Azure Depolama'ya yazdı, ancak Azure Monitor veri deposuna yazmadı.  
+Bu konumda depolamak, platform ölçümleri için kullanabileceğiniz eylemlere erişmenizi sağlar. Eylemler, neredeyse gerçek zamanlı uyarı, grafik, yönlendirme, REST API erişimi ve daha fazlasını içerir.  Geçmişte, tanılama uzantısı Azure depolama 'ya yazdı, ancak Azure Izleyici veri deposuna değil.  
 
-Bu makalede özetlenen işlem yalnızca Azure Bulut Hizmetleri'ndeki performans sayaçları için çalışır. Diğer özel ölçümler için çalışmaz. 
+Bu makalede özetlenen işlem yalnızca Azure Cloud Services performans sayaçları için geçerlidir. Diğer özel ölçümler için çalışmaz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliğinizde [bir hizmet yöneticisi veya yardımcı yönetici](../../cost-management-billing/manage/add-change-subscription-administrator.md) olmalısınız. 
+- Azure aboneliğinizde bir [Hizmet Yöneticisi veya ortak yönetici](../../cost-management-billing/manage/add-change-subscription-administrator.md) olmanız gerekir. 
 
-- Aboneliğiniz [Microsoft.Insights'a](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)kayıtlı olmalıdır. 
+- Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir. 
 
-- [Azure PowerShell](/powershell/azure) veya Azure [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) yüklü olması gerekir.
+- [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) yüklemiş olmanız gerekir.
 
-- Bulut Hizmetiniz özel [ölçümleri destekleyen](metrics-custom-overview.md#supported-regions)bir bölgede olmalıdır.
+- Bulut hizmetiniz [özel ölçümleri destekleyen bir bölgede](metrics-custom-overview.md#supported-regions)olmalıdır.
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Bulut hizmeti ve depolama hesabı sağlama 
 
-1. Klasik bir bulut hizmeti oluşturun ve dağıtın. Azure Bulut Hizmetleri ve ASP.NET ile [başlatılan](../../cloud-services/cloud-services-dotnet-get-started.md)bir örnek klasik Bulut Hizmetleri uygulaması ve dağıtımı bulabilirsiniz. 
+1. Klasik bir bulut hizmeti oluşturun ve dağıtın. [Azure Cloud Services ve ASP.NET ile çalışmaya başlama adlı](../../cloud-services/cloud-services-dotnet-get-started.md)örnek bir klasik Cloud Services uygulaması ve dağıtımı bulabilirsiniz. 
 
-2. Varolan bir depolama hesabı kullanabilir veya yeni bir depolama hesabı dağıtabilirsiniz. Depolama hesabının oluşturduğunuz klasik bulut hizmetiyle aynı bölgede olması en iyisidir. Azure portalında, Depolama **hesapları** kaynak bıçağına gidin ve ardından **Keys'i**seçin. Depolama hesabı adını ve depolama hesabı anahtarını not alın. Daha sonraki adımlarda bu bilgilere ihtiyacınız olacak.
+2. Mevcut bir depolama hesabını kullanabilir veya yeni bir depolama hesabı dağıtabilirsiniz. Depolama hesabının, oluşturduğunuz klasik bulut hizmeti ile aynı bölgede olması en iyisidir. Azure portal **depolama hesapları** kaynağı dikey penceresine gidin ve **anahtarlar**' ı seçin. Depolama hesabı adını ve depolama hesabı anahtarını bir yere göz atın. Sonraki adımlarda bu bilgilere ihtiyacınız olacaktır.
 
    ![Depolama hesabı anahtarları](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/storage-keys.png)
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma 
 
-[Kaynaklara erişebilen bir Azure Active Directory uygulaması ve hizmet ilkesi oluşturmak için Kullanım portalındaki](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)yönergeleri kullanarak Azure Etkin Dizin kiracınızda bir hizmet ilkesi oluşturun. Bu süreçten geçerken aşağıdakileri not edin: 
+Azure Active Directory kiracınızda, [kaynaklara erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için Portal kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)bölümündeki yönergeleri kullanarak bir hizmet ilkesi oluşturun. Bu işlemi yaparken aşağıdakilere göz önünde olabilirsiniz: 
 
-- Oturum açma URL'si için herhangi bir URL koyabilirsiniz.  
-- Bu uygulama için yeni istemci sırrı oluşturun.  
-- Anahtarı ve istemci kimliğini sonraki adımlarda kullanmak üzere kaydedin.  
+- Oturum açma URL 'si için herhangi bir URL 'YI yerleştirebilirsiniz.  
+- Bu uygulama için yeni bir istemci gizli dizisi oluşturun.  
+- Daha sonraki adımlarda kullanmak üzere anahtarı ve istemci KIMLIĞINI kaydedin.  
 
-Önceki adımda oluşturulan uygulamaya *İzleme Ölçümleri Yayıncıizinlerini* karşı ölçümler ibareleri vermek istediğiniz kaynağa verin. Uygulamayı birçok kaynağa karşı özel ölçümler yaramak için kullanmayı planlıyorsanız, bu izinleri kaynak grubu veya abonelik düzeyinde verebilirsiniz.  
+Uygulamanın, ölçümleri sunmak istediğiniz kaynak için önceki adım *Izleme ölçümleri yayımcı* izinlerinde oluşturulmasını sağlayın. Uygulamayı birçok kaynağa karşı özel ölçümleri yayan kullanmayı planlıyorsanız, bu izinleri kaynak grubu veya abonelik düzeyinde verebilirsiniz.  
 
 > [!NOTE]
-> Tanılama uzantısı, Azure Monitörü'ne karşı kimlik doğrulamak ve bulut hizmetiniz için ölçümler oluşturmak için hizmet ilkesini kullanır.
+> Tanılama uzantısı, Azure Izleyicisine göre kimlik doğrulaması yapmak ve bulut hizmetinize yönelik ölçümleri göstermek için hizmet sorumlusunu kullanır.
 
-## <a name="author-diagnostics-extension-configuration"></a>Yazar Tanılama uzantısı yapılandırması 
+## <a name="author-diagnostics-extension-configuration"></a>Tanılama uzantısı yapılandırmasını yaz 
 
-Diagnostics uzantılı yapılandırma dosyanızı hazırlayın. Bu dosya, Tanılama uzantısının bulut hizmetiniz için toplaması gereken günlükleri ve performans sayaçlarını belirler. Aşağıda örnek bir Tanılama yapılandırma dosyası verem:  
+Tanılama uzantısı yapılandırma dosyanızı hazırlayın. Bu dosya, tanılama uzantısının bulut hizmetiniz için hangi günlükleri ve performans sayaçlarını toplayacağını belirler. Aşağıda örnek bir tanılama yapılandırma dosyası verilmiştir:  
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?> 
@@ -101,7 +101,7 @@ Diagnostics uzantılı yapılandırma dosyanızı hazırlayın. Bu dosya, Tanıl
 </DiagnosticsConfiguration> 
 ```
 
-Tanılama dosyanızın "SinksConfig" bölümünde yeni bir Azure Monitor lavabosu tanımlayın: 
+Tanılama dosyanızın "SinksConfig" bölümünde yeni bir Azure Izleyici havuzu tanımlayın: 
 
 ```XML
   <SinksConfig> 
@@ -114,7 +114,7 @@ Tanılama dosyanızın "SinksConfig" bölümünde yeni bir Azure Monitor lavabos
   </SinksConfig> 
 ```
 
-Yapılandırma dosyanızın toplanacak performans sayaçlarını listelediğiniz bölümüne Azure Monitör lavabosu ekleyin. Bu giriş, belirttiğiniz tüm performans sayaçlarının metrik olarak Azure Monitor'a yönlendirilmesini sağlar. İhtiyaçlarınıza göre performans sayaçları ekleyebilir veya kaldırabilirsiniz. 
+Yapılandırma dosyanızın toplanacak performans sayaçlarını listelersiniz bölümünde Azure Izleyici havuzunu ekleyin. Bu giriş, belirttiğiniz tüm performans sayaçlarının Azure Izleyici 'ye ölçüm olarak yönlendirilmesini sağlar. Gereksinimlerinize göre performans sayaçlarını ekleyebilir veya kaldırabilirsiniz. 
 
 ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -123,7 +123,7 @@ Yapılandırma dosyanızın toplanacak performans sayaçlarını listelediğiniz
     </PerformanceCounters>
 ```
 
-Son olarak, özel yapılandırmada bir *Azure Monitör Hesabı* bölümü ekleyin. Daha önce oluşturduğunuz hizmet inanın istemci kimliğini ve sırrını girin. 
+Son olarak, özel yapılandırma ' da bir *Azure Izleyici hesabı* ekleyin bölümü. Daha önce oluşturduğunuz hizmet sorumlusu istemci KIMLIĞINI ve gizli anahtarını girin. 
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
@@ -137,11 +137,11 @@ Son olarak, özel yapılandırmada bir *Azure Monitör Hesabı* bölümü ekleyi
 </PrivateConfig> 
 ```
 
-Bu tanılama dosyanı yerel olarak kaydedin.  
+Bu tanılama dosyasını yerel olarak kaydedin.  
 
 ## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Tanılama uzantısını bulut hizmetinize dağıtma 
 
-PowerShell'i başlatın ve Azure'da oturum açın. 
+PowerShell 'i başlatın ve Azure 'da oturum açın. 
 
 ```powershell
 Login-AzAccount 
@@ -154,40 +154,40 @@ $storage_account = <name of your storage account from step 3>
 $storage_keys = <storage account key from step 3> 
 ```
 
-Benzer şekilde, tanılama dosya yolunu aşağıdaki komutu kullanarak bir değişkene ayarlayın:
+Benzer şekilde, aşağıdaki komutu kullanarak tanılama dosya yolunu bir değişkene ayarlayın:
 
 ```powershell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
 
-Aşağıdaki komut kullanılarak yapılandırılan Azure Monitor lavabosuyla tanılama dosyasıyla Tanılama uzantısını bulut hizmetinize dağıtın:  
+Tanılama uzantısını aşağıdaki komut kullanılarak yapılandırılmış Azure Izleyici havuzu ile tanılama dosyası ile bulut hizmetinize dağıtın:  
 
 ```powershell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
 
 > [!NOTE] 
-> Tanılama uzantısıyüklemesinin bir parçası olarak bir depolama hesabı sağlamak yine de zorunludur. Tanılama config dosyasında belirtilen tüm günlükler veya performans sayaçları belirtilen depolama hesabına yazılır.  
+> Tanılama uzantısının yüklenmesinin parçası olarak bir depolama hesabı sağlanması hala zorunludur. Tanılama yapılandırma dosyasında belirtilen tüm Günlükler veya performans sayaçları, belirtilen depolama hesabına yazılır.  
 
-## <a name="plot-metrics-in-the-azure-portal"></a>Azure portalında çizim ölçümleri 
+## <a name="plot-metrics-in-the-azure-portal"></a>Azure portal ölçümleri çizme 
 
 1. Azure portalına gidin. 
 
-   ![Ölçümler Azure portalı](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
+   ![Ölçümler Azure portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
-2. Sol menüde **Monitör'ü seçin.**
+2. Sol taraftaki menüden Izleyici ' yi seçin **.**
 
-3. **Monitör** **bıçağında, Ölçümler Önizleme** sekmesini seçin.
+3. **İzleyici** dikey penceresinde **ölçüm önizlemesi** sekmesini seçin.
 
-4. Kaynaklar açılır menüsünde, klasik bulut hizmetinizi seçin.
+4. Kaynaklar açılan menüsünde, klasik bulut hizmetinizi seçin.
 
-5. Ad boşlukları açılır menüsünde **azure.vm.windows.guest'i**seçin. 
+5. Ad alanları açılan menüsünde **Azure. VM. Windows. Guest**' yi seçin. 
 
-6. Ölçümler açılır menüsünde, **Kullanımda Bellek\Taahhüt Lütmet Baytlarını**seçin. 
+6. Ölçümler açılan menüsünde, **Bellek\kaydedilmiş bayt kullanımda**' yı seçin. 
 
-Belirli bir rol veya rol örneği tarafından kullanılan toplam belleği görüntülemek için boyut filtreleme ve bölme özelliklerini kullanırsınız. 
+Belirli bir rol veya rol örneği tarafından kullanılan toplam belleği görüntülemek için boyut filtreleme ve bölme yeteneklerini kullanın. 
 
- ![Ölçümler Azure portalı](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
+ ![Ölçümler Azure portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

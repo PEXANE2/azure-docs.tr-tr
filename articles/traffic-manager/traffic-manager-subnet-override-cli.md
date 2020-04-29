@@ -1,6 +1,6 @@
 ---
-title: Azure CLI kullanarak Azure Trafik Yöneticisi alt net geçersiz kılma | Microsoft Dokümanlar
-description: Bu makalede, Trafik Yöneticisi alt net geçersiz kılma nın, trafiği bitiş noktası eşlemelerine önceden tanımlanmış IP aralığı üzerinden son kullanıcı IP adresine göre bir uç noktasına yönlendirmek için Trafik Yöneticisi profilinin yönlendirme yöntemini geçersiz kılmak için nasıl kullanılabileceğini anlamanıza yardımcı olacaktır.
+title: Azure CLı kullanarak Azure Traffic Manager alt ağı geçersiz kılma | Microsoft Docs
+description: Bu makale, uç nokta eşlemelerine önceden tanımlanmış IP aralığı aracılığıyla Son Kullanıcı IP adresini temel alarak trafiği bir uç noktaya yönlendirmek üzere bir Traffic Manager profilinin yönlendirme yöntemini geçersiz kılmak için Traffic Manager alt ağ geçersiz kılmanın nasıl kullanılabileceğini anlamanıza yardımcı olur.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -10,30 +10,30 @@ ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: rohink
 ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938463"
 ---
-# <a name="traffic-manager-subnet-override-using-azure-cli"></a>Azure CLI kullanarak Trafik Yöneticisi alt net geçersiz kılma
+# <a name="traffic-manager-subnet-override-using-azure-cli"></a>Azure CLı kullanarak alt ağ geçersiz kılma Traffic Manager
 
-Trafik Yöneticisi alt net geçersiz kılma, bir profilin yönlendirme yöntemini değiştirmenize olanak tanır.  Geçersiz kılmanın eklenmesi, son kullanıcının IP adresine bağlı olarak trafiği, önceden tanımlanmış bir IP aralığıyla uç nokta eşlemesi ile yönlendirir. 
+Traffic Manager alt ağ geçersiz kılma, bir profilin yönlendirme yöntemini değiştirmenize izin verir.  Bir geçersiz kılma eklenmesi, son kullanıcının IP adresine göre trafiği uç nokta eşleme için önceden tanımlanmış bir IP aralığına göre yönlendirdirecektir. 
 
-## <a name="how-subnet-override-works"></a>Alt ağ geçersiz kılma nasıl çalışır?
+## <a name="how-subnet-override-works"></a>Alt ağ geçersiz kılma çalışması
 
-Alt ağ geçersiz kılmaları bir trafik yöneticisi profiline eklendiğinde, Trafik Yöneticisi önce son kullanıcının IP adresi için bir alt net geçersiz kılma olup olmadığını denetler. Biri bulunursa, kullanıcının DNS sorgusu ilgili bitiş noktasına yönlendirilir.  Eşleme bulunamazsa, Trafik Yöneticisi profilin özgün yönlendirme yöntemine geri döner. 
+Bir Traffic Manager profiline alt ağ geçersiz kılmaları eklendiğinde, Traffic Manager önce son kullanıcının IP adresi için bir alt ağ geçersiz kılma olup olmadığını kontrol eder. Bir tane bulunursa, kullanıcının DNS sorgusu ilgili uç noktaya yönlendirilir.  Bir eşleme bulunamazsa, Traffic Manager profilin özgün yönlendirme yöntemine geri dönecektir. 
 
-IP adresi aralıkları CIDR aralıkları (örneğin, 1.2.3.0/24) veya adres aralıkları (örneğin, 1.2.3.4-5.6.7.8) olarak belirtilebilir. Her uç noktayla ilişkili IP aralıkları bu uç noktaya özgü olmalıdır. IP aralıklarının farklı uç noktalar arasında çakışması, profilin Trafik Yöneticisi tarafından reddedilmesine neden olur.
+IP adresi aralıkları CıDR aralıkları (örneğin, 1.2.3.0/24) veya adres aralıkları (örneğin, 1.2.3.4-5.6.7.8) olarak belirtilebilir. Her bitiş noktasıyla ilişkili IP aralıkları bu uç nokta için benzersiz olmalıdır. Farklı uç noktalar arasındaki IP aralıklarının çakışması, profilin Traffic Manager tarafından reddedilmesine neden olur.
 
-Alt ağı geçersiz kılan iki tür yönlendirme profili vardır:
+Alt ağ geçersiz kılmalarını destekleyen iki tür yönlendirme profili vardır:
 
-* **Coğrafi** - Trafik Yöneticisi DNS sorgusunun IP adresi için bir alt ağ geçersiz kılma bulursa, son noktanın durumu ne olursa olsun sorguyu bitiş noktasına yönlendirir.
-* **Performans** - Trafik Yöneticisi DNS sorgusunun IP adresi için bir alt ağ geçersiz kılma bulursa, trafiği yalnızca sağlıklıysa bitiş noktasına yönlendirir.  Alt ağ bitiş ucunu geçersiz kılma sağlıklı değilse Trafik Yöneticisi performans yönlendirme sezgisel geri düşecek.
+* **Coğrafi** -TRAFFIC Manager, DNS sorgusunun IP adresi için bir alt ağ geçersiz kılma işlemi bulursa, uç noktanın sistem durumunun ne olduğunu her ne olursa sorguyu uç noktaya yönlendirir.
+* **Performans** -Traffic Manager DNS sorgusunun IP adresi için bir alt ağ geçersiz kılma bulduğunda, trafiği yalnızca sağlıklı olması durumunda uç noktaya yönlendirir.  Alt ağ geçersiz kılma uç noktasının sağlıklı olmaması durumunda Traffic Manager, performans yönlendirmesi buluşsal noktasına geri dönecektir.
 
-## <a name="create-a-traffic-manager-subnet-override"></a>Trafik Yöneticisi alt ağ geçersiz kılma oluşturma
+## <a name="create-a-traffic-manager-subnet-override"></a>Traffic Manager alt ağ geçersiz kılma oluşturma
 
-Trafik Yöneticisi alt ağ geçersiz kılma oluşturmak için, geçersiz kılmanın alt ağlarını Trafik Yöneticisi bitiş noktasına eklemek için Azure CLI'yi kullanabilirsiniz.
+Bir Traffic Manager alt ağ geçersiz kılma oluşturmak için Azure CLı kullanarak, geçersiz kılma için alt ağları Traffic Manager uç noktasına ekleyebilirsiniz.
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -41,8 +41,8 @@ Trafik Yöneticisi alt ağ geçersiz kılma oluşturmak için, geçersiz kılman
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.28 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Trafik Yöneticisi bitiş noktasını alt ağ geçersiz kılma yla güncelleştirin.
-Az ağ trafiği yöneticisi bitiş [noktası güncelleştirmesiyle](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)bitiş noktanızı güncelleştirmek için Azure CLI'yi kullanın.
+## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Traffic Manager uç noktasını alt ağ geçersiz kılma ile güncelleştirin.
+[Az Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)ile uç noktanızı güncelleştirmek IÇIN Azure CLI 'yi kullanın.
 
 ```azurecli
 
@@ -64,7 +64,7 @@ az network traffic-manager endpoint update \
 
 ```
 
-[AZ ağ trafik yöneticisi uç noktası güncelleştirmesini](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) **--kaldır** seçeneğiyle çalıştırarak IP adresi aralıklarını kaldırabilirsiniz.
+IP adresi aralıklarını, [az Network Traffic-Manager uç noktası güncelleştirmesini](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) **--Remove** seçeneğiyle çalıştırarak kaldırabilirsiniz.
 
 ```azurecli
 
@@ -77,6 +77,6 @@ az network traffic-manager endpoint update \
 
 ```
 ## <a name="next-steps"></a>Sonraki Adımlar
-Trafik Yöneticisi [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
+Traffic Manager [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
 
-[Subnet trafik yönlendirme yöntemi](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method) hakkında bilgi edinin
+[Alt ağ trafiği-yönlendirme yöntemi](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method) hakkında bilgi edinin

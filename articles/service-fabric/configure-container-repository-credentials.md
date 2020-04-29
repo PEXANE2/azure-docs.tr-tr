@@ -1,19 +1,19 @@
 ---
-title: Azure Hizmet Kumaşı - Konteyner depo kimlik bilgilerini yapılandırma
-description: Konteyner kayıt defterinden görüntüleri indirmek için depo kimlik bilgilerini yapılandırma
+title: Azure Service Fabric-kapsayıcı deposu kimlik bilgilerini yapılandırma
+description: Kapsayıcı kayıt defterinden görüntü indirmek için depo kimlik bilgilerini yapılandırma
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76934987"
 ---
-# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Kapsayıcı görüntüleri indirmek için uygulamanız için depo kimlik bilgilerini yapılandırma
+# <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Kapsayıcı görüntülerini indirmek için uygulamanızın depo kimlik bilgilerini yapılandırma
 
-Uygulama bildiriminizin bölümüne `RepositoryCredentials` `ContainerHostPolicies` ekleyerek kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırın. Hizmetin konteyner görüntüsünü depodan indirmesine olanak tanıyan konteyner kayıt defterinizin (aşağıdaki örnekte*myregistry.azurecr.io)* hesap ve parolaekleyin.
+Uygulama bildiriminizde `RepositoryCredentials` `ContainerHostPolicies` bölümüne ekleyerek kapsayıcı kayıt defteri kimlik doğrulamasını yapılandırın. Kapsayıcının kayıt defteri için hesap ve parolayı (aşağıdaki örnekte*myregistry.azurecr.io* ) ekleyerek hizmetin kapsayıcı görüntüsünü depodan indirmesini sağlar.
 
 ```xml
 <ServiceManifestImport>
@@ -29,13 +29,13 @@ Uygulama bildiriminizin bölümüne `RepositoryCredentials` `ContainerHostPolici
 ```
 
 Kümenin tüm düğümlerine dağıtılan bir şifreleme sertifikası kullanarak depo parolasını şifrelemeniz önerilir. Service Fabric hizmet paketi kümeye dağıttığında, şifre metninin şifresini çözmek için şifreleme sertifikası kullanılır. Parolanın şifre metni Invoke-ServiceFabricEncryptText cmdlet’i kullanılarak oluşturulur ve bu metin ApplicationManifest.xml dosyasına eklenir.
-Sertifikalar ve şifreleme semantikleri hakkında daha fazla şey için [Gizli Yönetim'e](service-fabric-application-secret-management.md) bakın.
+Sertifikalar ve şifreleme semantiği hakkında daha fazla bilgi için bkz. [gizli yönetim](service-fabric-application-secret-management.md) .
 
-## <a name="configure-cluster-wide-credentials"></a>Küme genelindekimlik bilgilerini yapılandırma
+## <a name="configure-cluster-wide-credentials"></a>Küme genelinde kimlik bilgilerini yapılandırma
 
-Hizmet Kumaşı, varsayılan depo kimlik bilgileri olarak kullanılabilecek küme genelindeki kimlik bilgilerini uygulamalara göre yapılandırmanıza olanak tanır.
+Service Fabric, uygulamalar tarafından varsayılan depo kimlik bilgileri olarak kullanılabilecek küme genelinde kimlik bilgilerini yapılandırmanızı sağlar.
 
-`UseDefaultRepositoryCredentials` Bu özellik, ApplicationManifest.xml'e `ContainerHostPolicies` bir `true` veya değerli öznitelik `false` eklenerek etkinleştirilebilir veya devre dışı edilebilir.
+Bu özellik `UseDefaultRepositoryCredentials` , ApplicationManifest. `ContainerHostPolicies` XML içine `true` veya `false` değeri ile özniteliği eklenerek etkinleştirilebilir veya devre dışı bırakılabilir.
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +49,14 @@ Hizmet Kumaşı, varsayılan depo kimlik bilgileri olarak kullanılabilecek küm
 </ServiceManifestImport>
 ```
 
-Service Fabric daha `Hosting` sonra, bu bölümün altındaki ClusterManifest'te belirtilebilen varsayılan depo kimlik bilgilerini kullanır.  Ise `UseDefaultRepositoryCredentials` `true`, Hizmet Kumaş ClusterManifest aşağıdaki değerleri okur:
+Service Fabric daha sonra, `Hosting` bölümünün altındaki clustermanifest içinde belirtilenebilir varsayılan depo kimlik bilgilerini kullanır.  `UseDefaultRepositoryCredentials` İse `true`, Service Fabric clustermanifest öğesinden aşağıdaki değerleri okur:
 
-* DefaultContainerRepositoryAccountName (string)
-* VarsayılanKonteyner RepositoryPassword (string)
-* IsDefaultContainerRepositoryPasswordEncrypted (bool)
-* VarsayılanKonteynerRepositoryPasswordType (string)
+* DefaultContainerRepositoryAccountName (dize)
+* Defaultcontainerdepotorpassword (dize)
+* Idefaultcontainerdepotorypasswordencrypted (bool)
+* Defaultcontainerdepotorypasswordtype (dize)
 
-Burada ClusterManifestTemplate.json dosyasındaki `Hosting` bölüme neler eklenebilir bir örnektir. Bu `Hosting` bölüm küme oluşturmada veya daha sonra yapılandırma yükseltmesinde eklenebilir. Daha fazla bilgi için Azure [Hizmet Kumaşı küme ayarlarını değiştir](service-fabric-cluster-fabric-settings.md) ve [Azure Hizmet Kumaşı uygulama sırlarını yönet](service-fabric-application-secret-management.md)
+ClusterManifestTemplate. JSON dosyasındaki `Hosting` bölümünün içine eklenebilecekleri bir örnek aşağıda verilmiştir. Bölüm `Hosting` , küme oluşturmaya veya daha sonra bir yapılandırma yükseltmesinde eklenebilir. Daha fazla bilgi için bkz. [azure Service Fabric küme ayarlarını değiştirme](service-fabric-cluster-fabric-settings.md) ve [Azure Service Fabric uygulama gizli dizilerini yönetme](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -89,19 +89,19 @@ Burada ClusterManifestTemplate.json dosyasındaki `Hosting` bölüme neler eklen
 ]
 ```
 
-## <a name="use-tokens-as-registry-credentials"></a>Belirteçleri kayıt defteri kimlik bilgileri olarak kullanma
+## <a name="use-tokens-as-registry-credentials"></a>Belirteçleri kayıt defteri kimlik bilgileri olarak kullan
 
-Service Fabric, konteynerleriniz için resim indirmek için belirteçleri kimlik bilgileri olarak kullanmayı destekler.  Bu özellik, kayıt defterine kimlik doğrulamak üzere ayarlanmış temel sanal makine ölçeğinin *yönetilen kimliğinden* yararlanarak kullanıcı kimlik bilgilerini yönetme gereksinimini ortadan kaldırır.  Daha fazla bilgi [için Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) hakkında bilgi edinin.  Bu özelliği kullanmak için aşağıdaki adımları n için gerektirir:
+Service Fabric, kapsayıcılarınızın görüntülerini indirmek için belirteçlerin kimlik bilgileri olarak kullanılmasını destekler.  Bu özellik, kayıt defterine kimlik doğrulaması yapmak ve Kullanıcı kimlik bilgilerini yönetme gereksinimini ortadan kaldırmak için temel alınan sanal makine ölçek kümesinin *yönetilen kimliğini* kullanır.  Daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) .  Bu özelliğin kullanılması aşağıdaki adımları gerektirir:
 
-1. VM için *Sistem Atanmış Yönetilen Kimliğin* etkin olduğundan emin olun.
+1. VM için *sistem tarafından atanan yönetilen kimliğin* etkinleştirildiğinden emin olun.
 
-    ![Azure portalı: Sanal makine ölçeği belirleme kimlik seçeneği oluşturma](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+    ![Azure portal: sanal makine ölçek kümesi kimliği oluşturma seçeneği](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
-2. Kayıt defterinden görüntüleri çekmek/okumak için ayarlanan sanal makine ölçeğine izin ver. Azure portalındaki Azure Konteyner Kayıt Defteri'nizin Erişim Denetimi (IAM) bıçağından, sanal makineniz için bir *rol ataması* ekleyin:
+2. Kayıt defterinden görüntüleri çekmek/okumak için sanal makine ölçek kümesine izin verin. Azure portal Azure Container Registry Access Control (ıAM) dikey penceresinde, sanal makineniz için bir *rol ataması* ekleyin:
 
-    ![ACR'ye VM ilkesi ekleme](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
+    ![ACR 'ye VM sorumlusu ekleme](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. Ardından, uygulama bildiriminizi değiştirin. `ContainerHostPolicies` Bölümde, öznitelik `‘UseTokenAuthenticationCredentials=”true”`ekleyin.
+3. Sonra, uygulama bildiriminizde değişiklik yapın. `ContainerHostPolicies` Bölümünde özniteliğini `‘UseTokenAuthenticationCredentials=”true”`ekleyin.
 
     ```xml
       <ServiceManifestImport>
@@ -116,8 +116,8 @@ Service Fabric, konteynerleriniz için resim indirmek için belirteçleri kimlik
     ```
 
     > [!NOTE]
-    > Doğru `UseDefaultRepositoryCredentials` olarak ayarlanan `UseTokenAuthenticationCredentials` bayrak dağıtım sırasında hataya neden olur.
+    > True olarak `UseDefaultRepositoryCredentials` `UseTokenAuthenticationCredentials` ayarlanan bayrak, dağıtım sırasında hataya neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kapsayıcı kayıt defteri kimlik doğrulaması](../container-registry/container-registry-authentication.md)hakkında daha fazla şey görün.
+* [Kapsayıcı kayıt defteri kimlik doğrulaması](../container-registry/container-registry-authentication.md)hakkında daha fazla bilgi.

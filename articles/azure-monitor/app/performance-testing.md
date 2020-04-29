@@ -1,57 +1,57 @@
 ---
-title: Azure Application Insights ile performans ve yük testi | Microsoft Dokümanlar
-description: Azure Application Insights ile performans ve yükleme testleri ayarlama
+title: Azure Application Insights performans ve yük testi | Microsoft Docs
+description: Azure Application Insights performans ve yük testlerini ayarlama
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669871"
 ---
 # <a name="performance-testing"></a>Performansı test etme
 
 > [!NOTE]
-> Bulut tabanlı yük testi hizmeti amortismana kaldırıldı. Amortisman, hizmet kullanılabilirliği ve alternatif hizmetler hakkında daha fazla bilgiyi [burada](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)bulabilirsiniz.
+> Bulut tabanlı yük testi hizmeti kullanımdan kaldırılmıştır. Kullanımdan kaldırma, hizmet kullanılabilirliği ve alternatif hizmetler hakkında daha fazla bilgi [bulabilirsiniz.](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)
 
-Application Insights, web siteleriniz için yük testleri oluşturmanıza olanak tanır. [Kullanılabilirlik testleri](monitor-web-app-availability.md)gibi, dünyanın dört bir yanındaki Azure test aracılarından temel istekler veya [çok adımlı istekler](availability-multistep.md) gönderebilirsiniz. Performans testleri, 20.000'e kadar eşzamanlı kullanıcıyı 60 dakikaya kadar simüle etmenizi sağlar.
+Application Insights, Web siteleriniz için yük testleri oluşturmanıza olanak sağlar. [Kullanılabilirlik testleri](monitor-web-app-availability.md)gibi, dünyanın dört bir yanındaki Azure test aracılarından temel istekleri veya [çok adımlı istekleri](availability-multistep.md) gönderebilirsiniz. Performans testleri, en fazla 20.000 dakikaya kadar eşzamanlı 60 kullanıcının benzetimini yapmanıza olanak sağlar.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
-Performans testi oluşturmak için öncelikle bir Uygulama Öngörüleri kaynağı oluşturmanız gerekir. Zaten bir kaynak oluşturduysanız sonraki bölüme devam edin.
+Bir performans testi oluşturmak için önce bir Application Insights kaynağı oluşturmanız gerekir. Zaten bir kaynak oluşturduysanız bir sonraki bölüme ilerleyin.
 
-Azure portalından, **bir kaynak** > **Geliştirici Araçları** > **Uygulama Öngörüleri** Oluştur'u seçin ve bir Uygulama Öngörüleri kaynağı oluşturun.
+Azure Portal **kaynak** > oluştur**Geliştirici Araçları** > **Application Insights** ve bir Application Insights kaynağı oluştur ' u seçin.
 
 ## <a name="configure-performance-testing"></a>Performans testini yapılandırma
 
-Performans testi ni ilk kez **oluşturuyorsanız, Organizasyon Ayarla'yı** seçin ve performans testlerinizin kaynağı olması için bir Azure DevOps kuruluşu seçin.
+İlk kez performans testi oluşturuyorsanız, **kuruluş ayarla** ' yı seçin ve performans testleriniz için kaynak olacak bir Azure DevOps organizasyonu seçin.
 
-**Yapılandırma**altında, **Performans Testi'ne** gidin ve test oluşturmak için **Yeni'yi** tıklatın.
+**Yapılandır**altında **performans testi** ' ne gidin ve **Yeni** ' ye tıklayarak bir test oluşturun.
 
 ![En azından web sitenizin URL'sini doldurma](./media/performance-testing/new-performance-test.png)
 
-Temel bir performans testi oluşturmak için, bir test türü **Manuel Test** seçin ve testiniz için istenen ayarları doldurun.
+Temel bir performans testi oluşturmak için, **El Ile test** bir test türü seçin ve testiniz için istenen ayarları doldurun.
 
 |Ayar| En yüksek değer
 |----------|------------|
-| Kullanıcı Yükü | 20.000 |
-| Süre (Dakika)  | 60 |  
+| Kullanıcı yükü | 20.000 |
+| Süre (dakika)  | 60 |  
 
-Testiniz oluşturulduktan sonra **Testi Çalıştır'ı**tıklatın.
+Testiniz oluşturulduktan sonra **Test Çalıştır**' a tıklayın.
 
-Test tamamlandıktan sonra, aşağıdaki sonuçlara benzer sonuçlar görürsünüz:
+Test tamamlandıktan sonra aşağıdaki sonuçlara benzer sonuçlar görürsünüz:
 
 ![Test Sonuçları](./media/performance-testing/test-results.png)
 
-## <a name="configure-visual-studio-web-test"></a>Visual Studio web testini yapılandır
+## <a name="configure-visual-studio-web-test"></a>Visual Studio Web testini yapılandırma
 
-Application Insights gelişmiş performans testi yetenekleri Visual Studio performans ve yük testi projelerinin üzerine inşa edilmiştir.
+Application Insights gelişmiş performans testi özellikleri, Visual Studio performans ve yük testi projelerinin üzerine kurulmuştur.
 
 ![Visual Studio ](./media/performance-testing/visual-studio-test.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Çok adımlı web testleri](availability-multistep.md)
-* [Url ping testleri](monitor-web-app-availability.md)
+* [URL ping testleri](monitor-web-app-availability.md)

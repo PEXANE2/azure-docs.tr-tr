@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor görünüm tasarımcısından çalışma kitaplarına dönüşüm yaygın görevler
+title: Azure Izleyici Görünüm Tasarımcısı çalışma kitapları dönüştürme ortak görevler
 description: ''
 author: austonli
 ms.author: aul
@@ -7,50 +7,50 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658753"
 ---
-# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Tasarımcıyı çalışma kitaplarıdönüştürme ortak görevleri ne kadar görüntüleme
-[Görünüm tasarımcısı,](view-designer.md) Azure Monitor'un, Log Analytics çalışma alanınızdaki grafikler, listeler ve zaman çizelgeleriyle verileri görselleştirmenize yardımcı olacak özel görünümler oluşturmanıza olanak tanıyan bir özelliğidir. Bunlar aşamalı olarak devre dışı ediliyor ve ek işlevsellik sağlayan çalışma kitaplarıyla değiştiriliyor. Bu makalede, görünümleri çalışma kitaplarına dönüştürmede yaygın olan görevler ayrıntılarıyla anlatılır.
+# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Tasarımcıyı çalışma kitaplarına göre dönüştürme ortak görevleri
+[Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve ek işlevsellik sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, görünümler çalışma kitaplarına dönüştürülürken ortak olan görevler ayrıntılı olarak açıklanır.
 
 
-## <a name="quickstart-with-preset-view-designer-templates"></a>Önceden ayarlanmış görünüm tasarımcısı şablonları ile hızlı başlatma
+## <a name="quickstart-with-preset-view-designer-templates"></a>Önceden ayarlanmış görünüm tasarımcı şablonlarıyla hızlı başlangıç
 
-Log Analytics çalışma alanlarındaki çalışma kitaplarında görünüm tasarımcısındaki bazı görünümlerle eşleşecek şekilde şablonlar zaten bulunmaktadır. Tasarımcı **Kılavuzlarını Görüntüle** kategorisi altında, seçenekleriniz hakkında bilgi edinmek veya önceden ayarlanmış şablonlardan birini seçmek için **Tasarımcı Geçiş Kılavuzunu** Görüntüle'yi seçin.
+Log Analytics çalışma alanlarındaki çalışma kitaplarında zaten Görünüm Tasarımcısı 'ndaki görünümlerden bazılarını eşleştirmek için oluşturulmuş şablonlar var. **Görünüm Tasarımcısı kılavuzlar** kategorisi altında seçenekleriniz hakkında bilgi edinmek Için **Tasarımcı geçiş kılavuzunu görüntüle** ' yi seçin veya önceden ayarlanmış şablonlardan birini seçin.
 
-![Örnek şablonlar](media/view-designer-conversion-tasks/templates.png)
+![Örnek Şablonlar](media/view-designer-conversion-tasks/templates.png)
 
-## <a name="enabling-time-range-filter"></a>Zaman aralığı filtresini etkinleştirme
-Görünüm tasarımcısı yerleşik varsayılan zaman aralığı filtresine sahiptir, ancak çalışma kitaplarında bu ayar varsayılan olarak etkinleştirilemez. Çalışma kitapları, kullanıcıların veri günlükleri için daha uygun olabilecek kendi zaman aralığı filtrelerini oluşturmalarına olanak sağlar. Filtreyi oluşturmak için adımlar aşağıda listelenmiştir:
+## <a name="enabling-time-range-filter"></a>Zaman aralığı Filtresi etkinleştiriliyor
+Görünüm tasarımcısının yerleşik bir varsayılan zaman aralığı filtresi vardır ancak, çalışma kitaplarında bu ayar varsayılan olarak etkinleştirilmemiştir. Çalışma kitapları, kullanıcıların veri günlüklerine daha uygun olabilecek kendi zaman aralığı filtrelerini oluşturmalarına olanak tanır. Filtre oluşturma adımları aşağıda listelenmiştir:
 
-**Parametreleri Ekle** seçeneğini belirleyin. Varsayılan **Stil** *Pills*olarak ayarlanır.
+**Parametre Ekle** seçeneğini belirleyin. Varsayılan **Stil** , *Pills*olarak ayarlanır.
 
-![Param Ekle](media/view-designer-conversion-tasks/add-param.png)
+![Parametre Ekle](media/view-designer-conversion-tasks/add-param.png)
 
- **Parametre Ekle düğmesini** seçin.
+ **Parametre Ekle** düğmesini seçin.
 
 ![Parametre Ekle](media/view-designer-conversion-tasks/add-parameter.png)
 
-Kenar çubuğu menüsünden, **Parametre adı** textbox'ında *TimeRange*yazın. **Parametre Türünü** *Zaman Aralığı Seçici*olarak ayarlayın. Gerekli **onay** kutusunu seçin.
+Kenar çubuğu menüsünde, **parametre adı** metin kutusuna *timerange*yazın. **Parametre türünü** *zaman aralığı Seçicisi*olarak ayarlayın. **Gerekli?** onay kutusunu seçin.
 
-![Parametre Menüsü](media/view-designer-conversion-tasks/parameter-menu.png)
+![Parametre menüsü](media/view-designer-conversion-tasks/parameter-menu.png)
 
-Parametreyi kenar çubuğu menüsünün sol üst köşesinde kaydedin. Açılır bırakma işlemini varsayılan olarak *unset* olarak bırakabilir veya *24 saat*gibi varsayılan bir **TimeRange** değeri seçebilirsiniz. **Bitti Düzenleme'yi**seçin.
+Parametreyi kenar çubuğu menüsünün sol üst köşesine kaydedin. Açılan listeyi varsayılan olarak *ayarı* varsayılan olarak bırakır veya *24 saat*gibi varsayılan bir **timerange** değeri seçebilirsiniz. **Düzenle**seçeneğini belirleyin.
 
-Parametreler, parametre adınızın etrafına kıvırcık ayraçlar {} ekleyerek sorgularda kullanılabilir. Parametreler hakkında daha fazla bilgi [Çalışma Kitapları belgelerinde parametreler hakkında](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)bulunabilir.
+Parametreler, parametre adınızın çevresine küme ayraçları {} ekleyerek sorgularda kullanılabilir. Parametreler hakkında daha fazla ayrıntı, [Parametreler hakkında çalışma kitapları belgelerinde](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)bulunabilir.
 
-## <a name="updating-queries-with-the-timerange-parameter"></a>Zaman Aralığı parametresi ile sorguları güncelleştirme
+## <a name="updating-queries-with-the-timerange-parameter"></a>TimeRange parametresiyle sorguları güncelleştirme
 
-### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>Seçenek 1: Zaman Aralığı açılır tarihinden TimeRange'i seçin
+### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>Seçenek 1: zaman aralığı açılan menüsünde TimeRange öğesini seçin
 
-![Zaman Parametresi](media/view-designer-conversion-tasks/time-parameter.png)
+![Time parametresi](media/view-designer-conversion-tasks/time-parameter.png)
 
-### <a name="option-2-update-your-log-queries"></a>Seçenek 2: Günlük sorgularınızı güncelleme
+### <a name="option-2-update-your-log-queries"></a>2. seçenek: günlük sorgularınızı güncelleştirme
 
-Sorgunuzda satırı ekleyin: `| where TimeGenerated {TimeRange}` aşağıdaki örnekte olduğu gibi:
+Sorgunuzda aşağıdaki örnekte `| where TimeGenerated {TimeRange}` olduğu gibi satırı ekleyin:
 
 Özgün sorgu
 ```KQL
@@ -65,16 +65,16 @@ search *
 | summarize count() by Type
 ```
 
-## <a name="including-a-list"></a>Liste Dahil
-Görünüm tasarımcısı görünümlerinin çoğu bir liste içerir ve bu standart listeyi çalışma kitabında yeniden oluşturabilirsiniz.
+## <a name="including-a-list"></a>Liste ekleme
+Görünüm Tasarımcısı görünümlerinin çoğu bir liste içerir ve bu standart listeyi bir çalışma kitabında yeniden oluşturabilirsiniz.
 
-![Döşeme listesi](media/view-designer-conversion-tasks/tile-list.png)
+![Kutucuk Listesi](media/view-designer-conversion-tasks/tile-list.png)
 
-Hücre seçeneklerinden sorgu **ekle'yi** tıklatarak görselleştirme ekleyin.
+Hücre seçeneklerinde **Sorgu Ekle** ' ye tıklayarak bir görselleştirme ekleyin.
 
-![Param Ekle](media/view-designer-conversion-tasks/add-param.png)
+![Parametre Ekle](media/view-designer-conversion-tasks/add-param.png)
 
-Görünüm tasarımcısı, Özgün örnekteki sözdizimiyle eşleşen varsayılan bir sorgu kullanır. Bu, sorguyu aşağıdaki örnekte olduğu gibi güncelleştirilmiş forma değiştirerek güncellenebilir:
+Görünüm Tasarımcısı, özgün örnekteki sözdizimiyle eşleşen varsayılan bir sorgu kullanır. Bu, aşağıdaki örnekte olduğu gibi sorgu güncelleştirilmiş formla değiştirilerek güncelleştirilemeyebilir:
 
 Özgün sorgu
 ```KQL
@@ -88,12 +88,12 @@ search *
 | summarize Count = count() by Type
 ```
 
-Bu, aşağıdakilere benzer bir liste oluşturur:
+Bu, şuna benzer bir liste oluşturur:
 
-![Liste Örneği](media/view-designer-conversion-tasks/list-example.png)
+![Liste örneği](media/view-designer-conversion-tasks/list-example.png)
 
-## <a name="enabling-sparklines"></a>Sparklines etkinleştirme
-Izgaralar için ortak bir özellik, zaman içinde çeşitli veri desenleri özetlemek için Sparklines eklemektir. Görünüm tasarımcısı, çalışma kitaplarında olduğu gibi tüm listeler için **Sparklines'ı Etkinleştir** özelliğini sunar. Görünüm tasarımcısıyla eşleşen verilerinize Çizgiler eklemek için, aşağıdaki örnekte olduğu gibi verileri özgün sorgunuzla birleştirin:
+## <a name="enabling-sparklines"></a>Mini grafikleri etkinleştirme
+Kılavuzlar için ortak bir özellik, zaman içinde çeşitli veri düzenlerini özetlemek üzere mini grafikler eklemektir. Görünüm Tasarımcısı, çalışma kitapları gibi tüm listeler için **mini grafikleri etkinleştir** özelliğini sunar. Verilerinize, görünüm tasarımcısına uyan mini grafikler eklemek için aşağıdaki örnekte gösterildiği gibi verileri özgün Sorgunuzla birleştirin:
 
 Özgün sorgu
 ```KQL
@@ -110,49 +110,49 @@ search *
 | project Type, AggregatedValue, Trend
 ```
 
-**Sütun Ayarlarını**seçin.
-![Sütun Ayarları](media/view-designer-conversion-tasks/column-settings.png)
+**Sütun ayarlarını**seçin.
+![Sütun ayarları](media/view-designer-conversion-tasks/column-settings.png)
 
-Sütun **işleyici** açılır düşüşünü Bir *Kıvılcım alanı*olarak güncelleştirin.
-![Sparklines](media/view-designer-conversion-tasks/sparkline.png)
+**Sütun Oluşturucu** açılan listesini *Spark alanı*olarak güncelleştirin.
+![Mini grafikler](media/view-designer-conversion-tasks/sparkline.png)
 
-Ayarlarınızı kaydedin ve tablonuzu bir ışıltı içerecek şekilde güncelleştirmek için sorguyu yeniden çalıştırın.
+Tablonuzu bir mini grafik içerecek şekilde güncelleştirmek için ayarları kaydedin ve sorguyu yeniden çalıştırın.
 
-Elde edilen ızgara aşağıdakilere benzer: ![Sparkline örneği](media/view-designer-conversion-tasks/sparkline-example.png)
+Elde edilen kılavuz şuna benzer: ![mini grafik örneği](media/view-designer-conversion-tasks/sparkline-example.png)
 
 ## <a name="advanced-cell-settings"></a>Gelişmiş hücre ayarları
-Görünüm tasarımcısını yansıtmak için, çalışma kitabı hücrelerinin boyutunu değiştirme veya günlüklere pin ve dış bağlantılar ekleme gibi görevleri gerçekleştirebilirsiniz.
+Görünüm tasarımcısını yansıtmak için, çalışma kitabı hücrelerinin boyutunu değiştirme veya PIN 'ler ile dış bağlantıları günlüğe ekleme gibi görevleri gerçekleştirebilirsiniz.
 
-Gelişmiş **Ayarlar'a** erişmek için her hücrenin altındaki vites simgesini seçin.
+**Gelişmiş ayarlara** erişmek için, her hücrenin altındaki dişli simgesini seçin.
 
 ![Gelişmiş ayarlar](media/view-designer-conversion-tasks/advanced-settings.png)
 
-Bu, çeşitli seçenekleriçeren bir menü görüntüler:
+Bu, çeşitli seçeneklerle bir menü görüntüler:
 
 ![Gelişmiş ayarlar ayarları](media/view-designer-conversion-tasks/advanced-settings-settings.png)
 
-Harici bir sorguya pin ve bağlantı eklemek için ilgili onay kutularını seçin. Hücrenize bir başlık eklemek **için, Grafik başlığı** bölümüne istediğiniz başlığı yazın.
+Bir dış sorguya bir PIN ve bağlantı eklemek için ilgili onay kutularını seçin. Hücreye bir başlık eklemek için, istediğiniz başlığı **grafik başlığı** bölümüne yazın.
 
-Varsayılan olarak herhangi bir çalışma kitabı hücresi tüm sayfa genişliğini kapacak şekilde ayarlanmıştır, ancak gelişmiş **ayarlar** menüsünün **Stil** sekmesi altında hücreyi ölçekleyerek bunu ayarlayabilirsiniz
+Varsayılan olarak, tüm çalışma kitapları hücresi sayfa genişliğinin tamamını alacak şekilde ayarlanır, ancak bunu, **Gelişmiş ayarlar** menüsünün **Stil** sekmesi altında hücreyi aşağı ölçeklendirerek yapabilirsiniz.
 
 ![Gelişmiş ayarlar stili](media/view-designer-conversion-tasks/advanced-settings-style.png)
 
  
 ## <a name="additional-parameters"></a>Ek parametreler
-Çalışma kitabınızda yeni bir parametre oluşturmak için **Parametre Ekle'yi** seçin. 
+Çalışma kitabınızda yeni bir parametre oluşturmak için **parametre Ekle** ' yi seçin. 
 
-Abonelik seçmek için, yan menüdeki **Parametre ad** alanına *Abonelik* yazın ve **Parametre türü** açılır menüsünden Abonelik *Seçici'yi* seçin
+Bir abonelik seçmek için, yan menüdeki **parametre adı** alanına *abonelik* yazın ve **parametre türü** açılan listesinden *abonelik seçici* ' yi seçin.
 
-![Abonelik Menüsü](media/view-designer-conversion-tasks/subscription-filter.png)
+![Abonelik menüsü](media/view-designer-conversion-tasks/subscription-filter.png)
 
-Kaynak seçmek için, yan menüdeki **Parametre ad** alanına *Kaynak* yazın ve **Parametre türü** açılır menüsünden Kaynak *Seçici'yi* seçin.
+Kaynak seçmek için, yan menüdeki **parametre adı** alanına *kaynak* yazın ve **parametre türü** açılan listesinden *kaynak seçici* ' yi seçin.
 
-![Kaynak Menüsü](media/view-designer-conversion-tasks/resource-filter.png)
+![Kaynak menüsü](media/view-designer-conversion-tasks/resource-filter.png)
 
-Bu, çeşitli aboneliklerinize ve kaynaklarınıza erişmenize izin vermek için açılır bilgiler ekler.
+Bu, çeşitli aboneliklerinize ve kaynaklarınıza erişmenizi sağlamak için açılan listeleri ekleyecektir.
 
-![Abonelik Kaynak Açılır Bırakma](media/view-designer-conversion-tasks/subscription-resource.png)
+![Abonelik kaynak açılan kutusu](media/view-designer-conversion-tasks/subscription-resource.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Döşeme dönüşümleri](view-designer-conversion-tiles.md)
+- [Kutucuk dönüştürmeleri](view-designer-conversion-tiles.md)

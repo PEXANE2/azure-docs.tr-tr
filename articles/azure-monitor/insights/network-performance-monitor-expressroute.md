@@ -1,103 +1,103 @@
 ---
-title: Azure Günlük Analizi'nde Ağ Performans Monitörü çözümü | Microsoft Dokümanlar
-description: Azure ExpressRoute üzerinden şube ofisleriniz ile Azure arasında uça,5 bağlantı ve performansı izlemek için Ağ Performans Monitörü'ndeki ExpressRoute Monitor özelliğini kullanın.
+title: Azure Log Analytics Ağ Performansı İzleyicisi çözümü | Microsoft Docs
+description: Azure ExpressRoute üzerinden şubeleriniz ve Azure arasındaki uçtan uca bağlantıyı ve performansı izlemek için Ağ Performansı İzleyicisi ExpressRoute Izleyici özelliğini kullanın.
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77660759"
 ---
-# <a name="expressroute-monitor"></a>ExpressRoute Monitör
+# <a name="expressroute-monitor"></a>ExpressRoute Izleyicisi
 
-Ağ Performans İzleyicisi'ndeki Azure ExpressRoute [Monitörü](network-performance-monitor.md) özelliğini kullanarak, şubeleriniz ile Azure Arasında Azure ExpressRoute üzerinden uça bağlantı ve performansı izleyebilirsiniz. Önemli avantajları şunlardır: 
+Azure ExpressRoute üzerinden, şube ofisleriniz ve Azure arasındaki uçtan uca bağlantıyı ve performansı izlemek için [ağ performansı İzleyicisi](network-performance-monitor.md) Azure ExpressRoute izleyici özelliğini kullanabilirsiniz. Temel avantajlar şunlardır: 
 
-- Aboneliğinizle ilişkili ExpressRoute devrelerinin otomatik algılaması.
-- ExpressRoute için devrede bant genişliği kullanımı, kaybı ve gecikme sinin, bakmanın ve Azure Sanal Ağ düzeyinin izlenmesi.
-- ExpressRoute devrelerinizin ağ topolojisinin keşfi.
+- Aboneliğinizle ilişkili ExpressRoute devreleri için oto algılama.
+- ExpressRoute için devre, eşleme ve Azure sanal ağ düzeyinde bant genişliği kullanımını, kaybı ve gecikme süresini izleme.
+- ExpressRoute Devrelerinizin ağ topolojisini bulma.
 
-![ExpressRoute Monitör](media/network-performance-monitor-expressroute/expressroute-intro.png)
+![ExpressRoute Izleyicisi](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>Yapılandırma 
-Ağ Performans Monitörü için yapılandırmayı açmak [için, Ağ Performans Monitörü çözümünü](network-performance-monitor.md) açın ve **Yapılandır'ı**seçin.
+Ağ Performansı İzleyicisi yapılandırmasını açmak için [ağ performansı İzleyicisi çözümünü](network-performance-monitor.md) açın ve **Yapılandır**' ı seçin.
 
 ### <a name="configure-network-security-group-rules"></a>Ağ güvenlik grubu kurallarını yapılandırma 
-Azure'da Ağ Performans İzleyicisi üzerinden izleme için kullanılan sunucular için, ağ güvenlik grubu (NSG) kurallarını, Ağ Performans Monitörü tarafından sentetik işlemler için kullanılan bağlantı noktasında TCP trafiğine izin verecek şekilde yapılandırın. Varsayılan bağlantı noktası 8084'dür. Bu yapılandırma, Azure VM'lerine yüklenen Log Analytics aracısının şirket içi bir izleme aracısıyla iletişim kurmasını sağlar. 
+Azure 'daki Ağ Performansı İzleyicisi aracılığıyla izleme için kullanılan sunucular için, yapay işlemler için Ağ Performansı İzleyicisi tarafından kullanılan bağlantı noktasında TCP trafiğine izin vermek üzere ağ güvenlik grubu (NSG) kurallarını yapılandırın. Varsayılan bağlantı noktası 8084 ' dir. Bu yapılandırma, Azure VM 'lerinde yüklü Log Analytics aracısının şirket içi izleme aracısıyla iletişim kurmasına izin verir. 
 
-NSG'ler hakkında daha fazla bilgi için [Ağ güvenlik gruplarına](../../virtual-network/manage-network-security-group.md)bakın. 
+NSG 'ler hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
-> Bu adıma devam etmeden önce şirket içi sunucu aracısını ve Azure sunucu aracısını yükleyin ve EnableRules.ps1 PowerShell komut dosyasını çalıştırın. 
+> Bu adımla devam etmeden önce şirket içi sunucu aracısını ve Azure sunucu aracısını yükleyip EnableRules. ps1 PowerShell betiğini çalıştırın. 
 
  
-### <a name="discover-expressroute-peering-connections"></a>ExpressRoute bakan bağlantılarını keşfedin 
+### <a name="discover-expressroute-peering-connections"></a>ExpressRoute eşleme bağlantılarını bul 
  
-1. **ExpressRoute Peerings** görünümünü seçin.
-2. Azure aboneliğindeki sanal ağlara bağlı tüm ExpressRoute özel eşlemelerini bu Azure Log Analytics çalışma alanına bağlı olarak keşfetmek için **Şimdi Keşfet'i** seçin.
+1. **ExpressRoute eş** görünümü görünümünü seçin.
+2. Bu Azure Log Analytics çalışma alanıyla bağlantılı Azure aboneliğindeki sanal ağlara bağlı olan tüm ExpressRoute özel eşayarlarını öğrenmek için **Şimdi bul** ' u seçin.
 
     >[!NOTE]
-    > Çözüm şu anda yalnızca ExpressRoute özel bakışlarını keşfediyor. 
+    > Çözüm şu anda yalnızca ExpressRoute özel eşayarlarını bulur. 
 
     >[!NOTE]
-    > Yalnızca bu Log Analytics çalışma alanıyla bağlantılı abonelikle ilişkili sanal ağlara bağlı özel eşlemeler keşfedilir. ExpressRoute bu çalışma alanına bağlı abonelik dışındaki sanal ağlara bağlıysa, bu aboneliklerde bir Log Analytics çalışma alanı oluşturun. Ardından, bu bakışları izlemek için Ağ Performans Monitörü'ni kullanın. 
+    > Yalnızca bu Log Analytics çalışma alanıyla bağlantılı abonelikle ilişkili sanal ağlara bağlı özel eşlemeler bulunur. ExpressRoute, bu çalışma alanına bağlı aboneliğin dışındaki sanal ağlara bağlıysa, bu aboneliklerde bir Log Analytics çalışma alanı oluşturun. Sonra bu eşlemeleri izlemek için Ağ Performansı İzleyicisi kullanın. 
 
-    ![ExpressRoute Monitor yapılandırması](media/network-performance-monitor-expressroute/expressroute-configure.png)
+    ![ExpressRoute Izleyicisi yapılandırması](media/network-performance-monitor-expressroute/expressroute-configure.png)
  
-   Keşif tamamlandıktan sonra, keşfedilen özel bakan bağlantıları bir tabloda listelenir. Bu eşlemeler için izleme başlangıçta devre dışı bırakılmış bir durumdadır. 
+   Bulma işlemi tamamlandıktan sonra bulunan özel eşleme bağlantıları bir tabloda listelenir. Bu eşler için izleme başlangıçta devre dışı durumda. 
 
-### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>ExpressRoute eşleme bağlantılarının izlenmesini etkinleştirin 
+### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>ExpressRoute eşleme bağlantılarının izlenmesini etkinleştir 
 
 1. İzlemek istediğiniz özel eşleme bağlantısını seçin.
-2. Sağdaki bölmede, **bu Eşleme** onay kutusunu İzle'yi seçin. 
-3. Bu bağlantı için sistem durumu olayları oluşturmak istiyorsanız, **bu eşleme için Sistem Durumu İzlemesini Etkinleştir'i**seçin. 
-4. İzleme koşullarını seçin. Eşik değerlerini girerek sistem durumu etkinliği oluşturma için özel eşikler ayarlayabilirsiniz. Koşulun değeri, eşleme bağlantısı için seçili eşiğinin üzerine çıktığında, bir sistem durumu olayı oluşturulur. 
-5. Bu karşılayaçıkan bağlantıyı izlemek için kullanmak istediğiniz izleme aracılarını seçmek için **Aracı ekle'yi** seçin. Bağlantının her iki ucuna da aracı lar eklediğinizden emin olun. Bu eşleme bağlı sanal ağda en az bir aracı gerekir. Ayrıca bu bakışla bağlantılı en az bir şirket içi temsilciye de ihtiyacınız vardır. 
-6. Yapılandırmayı kaydetmek için **Kaydet'i** seçin. 
+2. Sağdaki bölmede **Bu eşlemeyi izle** onay kutusunu seçin. 
+3. Bu bağlantı için sistem durumu olayları oluşturmak istiyorsanız **Bu eşleme Için sistem durumu Izlemeyi etkinleştir**' i seçin. 
+4. İzleme koşullarını seçin. Eşik değerlerini girerek sistem durumu olayı oluşturma için özel eşikler ayarlayabilirsiniz. Koşulun değeri, eşleme bağlantısı için seçili eşiğin üstünde olduğunda bir sistem durumu olayı oluşturulur. 
+5. Bu eşleme bağlantısını izlemek için kullanmayı düşündüğünüz izleme aracılarını seçmek için **aracıları Ekle** ' yi seçin. Bağlantının her iki ucunun de aracılarını eklediğinizden emin olun. Bu eşlemeye bağlı sanal ağda en az bir aracı olması gerekir. Ayrıca, bu eşlemeye bağlı en az bir şirket içi aracının olması gerekir. 
+6. Yapılandırmayı kaydetmek için **Kaydet** ' i seçin. 
 
    ![ExpressRoute izleme yapılandırması](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
 
-Kuralları etkinleştirdikten ve değerleri ve aracıları seçtikten sonra, değerlerin doldurulması ve **ExpressRoute İzleme** kutucukların görünmesi için 30 ila 60 dakika bekleyin. İzleme kutularını gördüğünüzde, ExpressRoute devreleriniz ve bağlantı kaynaklarınız artık Ağ Performans Monitörü tarafından izlenir. 
+Kuralları etkinleştirdikten ve değerleri ve aracıları seçtikten sonra, değerlerin doldurulması ve **ExpressRoute izleme** kutucuklarının görünmesi için 30 ila 60 dakika bekleyin. İzleme kutucuklarını gördüğünüzde, ExpressRoute devrelerinizi ve bağlantı kaynaklarınızı artık Ağ Performansı İzleyicisi tarafından izlenir. 
 
 >[!NOTE]
-> Bu özellik, yeni sorgu diline yükseltilmiş çalışma alanlarında güvenilir bir şekilde çalışır.
+> Bu özellik, yeni sorgu diline yükseltilen çalışma alanları üzerinde güvenilir bir şekilde çalışabilir.
 
 ## <a name="walkthrough"></a>Kılavuz 
 
-Ağ Performans İzleyicisi panosu, ExpressRoute devrelerinin ve bakan bağlantılarının genel görünümünü gösterir. 
+Ağ Performansı İzleyicisi panosu, ExpressRoute devreleri ve eşleme bağlantılarının sistem durumuna genel bir bakış gösterir. 
 
-![Ağ Performans Monitörü panosu](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
+![Ağ Performansı İzleyicisi panosu](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
 
 ### <a name="circuits-list"></a>Devreler listesi 
 
-İzlenen tüm ExpressRoute devrelerinin listesini görmek için ExpressRoute devreleri döşemesini seçin. Bir devre seçebilir ve sistem durumu durumunu, paket kaybı, bant genişliği kullanımı ve gecikme sonu için eğilim grafiklerini görüntüleyebilirsiniz. Grafikler etkileşimli. Grafikleri çizmek için özel bir zaman penceresi seçebilirsiniz. Fareyi, yakınlaştırmak ve ince taneli veri noktalarını görmek için grafikteki bir alanın üzerine sürükleyin. 
+Tüm izlenen ExpressRoute devrelerinin listesini görmek için ExpressRoute devreleri kutucuğunu seçin. Bir devre seçebilir ve sistem durumunu, paket kaybı için eğilim grafiklerini, bant genişliği kullanımını ve gecikmeyi görüntüleyebilirsiniz. Grafikler etkileşimlidir. Grafikleri çizmek için özel bir zaman penceresi seçebilirsiniz. Farenizi yakınlaştırmak için grafikteki bir alanın üzerine sürükleyin ve hassas veri noktalarına bakın. 
 
 ![ExpressRoute devreleri listesi](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
-### <a name="trends-of-loss-latency-and-throughput"></a>Kayıp eğilimleri, gecikme ve iş artışı 
+### <a name="trends-of-loss-latency-and-throughput"></a>Kayıp, gecikme süresi ve aktarım hızı eğilimleri 
 
-Bant genişliği kullanımı, gecikme sonu ve kayıp grafikleri etkileşimlidir. Fare denetimlerini kullanarak bu grafiklerin herhangi bir bölümüne yakınlaştırabilirsiniz. Ayrıca, diğer aralıklar için bant genişliği, gecikme ve kayıp verilerini de görebilirsiniz. **Eylemler** düğmesinin altındaki sol üstte **Tarih/Saat'i**seçin. 
+Bant genişliği kullanımı, gecikme süresi ve kayıp grafikleri etkileşimlidir. Fare denetimlerini kullanarak, bu grafiklerin herhangi bir bölümüne yakınlaştırabilirsiniz. Ayrıca, diğer aralıkların bant genişliği, gecikme süresi ve kayıp verilerini de görebilirsiniz. **Eylemler** düğmesinin altındaki sol üst köşedeki **Tarih/saat**' i seçin. 
 
 ![ExpressRoute gecikmesi](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
-### <a name="peerings-list"></a>Eşlemeler listesi 
+### <a name="peerings-list"></a>Eşleme listesi 
 
-Özel bakış üzerinden sanal ağlara yapılan tüm bağlantıların listesini getirmek için panodaki **Özel Eşler** döşemesini seçin. Burada, sanal ağ bağlantısı seçebilir ve sistem durumu durumunu, paket kaybı, bant genişliği kullanımı ve gecikme sonu için eğilim grafiklerini görüntüleyebilirsiniz. 
+Sanal ağlara yönelik tüm bağlantıların bir listesini özel eşleme üzerinden getirmek için panoda **özel eş** oluşturma kutucuğunu seçin. Burada, bir sanal ağ bağlantısı seçebilir ve sistem durumunu, paket kaybı için eğilim grafiklerini, bant genişliği kullanımını ve gecikme süresini görüntüleyebilirsiniz. 
 
 ![ExpressRoute eşlemeleri](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 
 ### <a name="circuit-topology"></a>Devre topolojisi 
 
-Devre topolojisini görüntülemek için **Topoloji** karo'yu seçin. Bu eylem seçili devre veya bakan topoloji görünümüne götürür. Topoloji diyagramı ağdaki her kesim için gecikme yitirme sağlar ve her katman 3 atlama diyagramın bir düğüm ile temsil edilir. Atlama seçimi, atlama hakkında daha fazla ayrıntı ortaya çıkarır. Şirket içi atlamaları içerecek şekilde görünürlük düzeyini artırmak için kaydırıcı çubuğunu **FILTERS'in**altına taşıyın. Kaydırıcı çubuğunu sola veya sağa taşımak, topoloji grafiğindeki atlama sayısını artırır veya azaltır. Her segmentteki gecikme, ağınızdaki yüksek gecikmeli kesimlerin daha hızlı yalıtılmış olarak yalıtMasına olanak tanır.
+Devre topolojisini görüntülemek için **topoloji** kutucuğunu seçin. Bu eylem sizi seçili Devre veya eşlemenin topoloji görünümüne götürür. Topoloji diyagramı, ağdaki her segment için gecikme süresi sağlar ve her katman 3 atlama, diyagramın bir düğümü ile temsil edilir. Bir atlama seçildiğinde atlama hakkında daha fazla ayrıntı ortaya çıkarlar. Şirket içi atlamaları dahil etmek için görünürlük düzeyini artırmak üzere kaydırıcı çubuğunu **Filtreler**altına taşıyın. Kaydırıcı çubuğunu sola veya sağa taşımak, topoloji grafiğindeki atlama sayısını artırır veya azaltır. Her bir kesimde gecikme süresi görünür ve bu, ağınızda yüksek gecikmeli kesimleri daha hızlı yalıtımına olanak tanır.
 
 ![ExpressRoute topolojisi](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
-### <a name="detailed-topology-view-of-a-circuit"></a>Bir devrenin ayrıntılı topoloji görünümü 
+### <a name="detailed-topology-view-of-a-circuit"></a>Devrenin ayrıntılı topoloji görünümü 
 
 Bu görünüm, sanal ağ bağlantılarını gösterir. 
 
@@ -105,39 +105,39 @@ Bu görünüm, sanal ağ bağlantılarını gösterir. 
  
 ## <a name="diagnostics"></a>Tanılama 
 
-Ağ Performans İzleyicisi, birkaç devre bağlantısı sorunlarını tanılamanıza yardımcı olur. Görebileceğiniz sorunlardan bazıları aşağıda listelenmiştir.
+Ağ Performansı İzleyicisi, birkaç devre bağlantı sorununu tanılamanıza yardımcı olur. Görebileceğiniz bazı sorunlar aşağıda listelenmiştir.
 
-**LogAnalytics**aracılığıyla bildirim kodlarını görebilir ve uyarıları üzerlerinde ayarlayabilirsiniz. **NPM Diagnostics** sayfasında tetiklenen her tanılama iletisinin açıklamalarını görebilirsiniz.
+Bildirim kodlarını görebilir ve **günlüğe Loganalytics**aracılığıyla uyarılar ayarlayabilirsiniz. **NPM tanılama** sayfasında, tetiklenen her tanılama iletisi için açıklamaları görebilirsiniz.
 
-| Bildirim Kodu (Günlükler) | Açıklama |
+| Bildirim kodu (Günlükler) | Açıklama |
 | --- | --- |
-| 5501 | ExpressRoute devresinin ikincil bağlantısı üzerinden geçileme |
-| 5502 | ExpressRoute devresinin birincil bağlantısı üzerinden geçiş yapamamak |
-| 5503 | Çalışma alanına bağlı abonelik için devre bulunamadı | 
-| 5508 | Yol için herhangi bir devreden trafiğin geçip geçmediğini belirleyememek |
-| 5510 | Trafik istenilen devreden geçmiyor | 
-| 5511 | Trafik amaçlanan sanal ağdan geçmiyor | 
+| 5501 | ExpressRoute devresinin ikincil bağlantısı üzerinden geçiş yapılamıyor |
+| 5502 | ExpressRoute devresinin birincil bağlantısı üzerinden geçiş yapılamıyor |
+| 5503 | Çalışma alanına bağlı abonelik için devre bulunmadı | 
+| 5508 | Trafiğin yol için herhangi bir devreden geçirilip geçirilmediğini belirleme |
+| 5510 | Trafik, hedeflenen devre üzerinden geçirilmiyor | 
+| 5511 | Trafik, hedeflenen sanal ağ üzerinden geçirilmiyor | 
 
-**Devre devre düştü.** Ağ Performans İzleyicisi, şirket içi kaynaklarınız ve Azure sanal ağlarınız arasındaki bağlantı kaybolur kaybolmaz sizi size haber vetir. Bu bildirim, kullanıcı yükseltmeleri almadan ve kapalı kalma süresini azaltmadan önce proaktif eylemde bulunmanıza yardımcı olur.
+**Devre dışı.** Ağ Performansı İzleyicisi, şirket içi kaynaklarınız ve Azure sanal ağlarınız arasındaki bağlantı kaybolduğu anda sizi uyarır. Bu bildirim, Kullanıcı ilerleme almadan ve kapalı kalma süresini azaltmadan önce proaktif işlem yapmanıza yardımcı olur.
 
-![ExpressRoute devresi devre soldu](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
+![ExpressRoute bağlantı hattı devre dışı](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
  
 
-**Trafik amaçlanan devreden akmıyor.** Ağ Performans İzleyicisi, trafik amaçlanan ExpressRoute devresi üzerinden akmadığı nda sizi haber leştirir. Devre devre kapanıyorsa ve trafik yedek rotadan akıyorsa bu sorun olabilir. Yönlendirme sorunu varsa da olabilir. Bu bilgiler, yönlendirme ilkelerinizdeki yapılandırma sorunlarını proaktif olarak yönetmenize ve en iyi ve güvenli rotanın kullanıldığından emin olsanız yardımcı olur. 
+**Trafik amaçlanan bağlantı hattı üzerinden akar.** Ağ Performansı İzleyicisi, trafiği amaçlanan ExpressRoute bağlantı hattı üzerinden akan her durumda bilgilendirir. Bu sorun, devre dışı bırakılırsa ve trafik yedekleme yolu üzerinden akar meydana gelir. Ayrıca, bir yönlendirme sorunu olduğunda da gerçekleşebilir. Bu bilgiler, yönlendirme ilkelerinizin yapılandırma sorunlarını önceden yönetmenize ve en uygun ve güvenli yolun kullanıldığından emin olmanıza yardımcı olur. 
 
  
 
-**Trafik birincil devreden akmıyor.** Ağ Performans İzleyicisi, ikincil ExpressRoute devresi üzerinden trafik aktığında sizi haberleştirir. Bu durumda herhangi bir bağlantı sorunu yaşamasanız da, birincil devreyle ilgili sorunları proaktif olarak gidermek sizi daha iyi hazır hale getirir. 
+**Birincil bağlantı hattı üzerinden akan trafik.** Ağ Performansı İzleyicisi, trafiğin ikincil ExpressRoute bağlantı hattı üzerinden akışı yapıldığında size bildirir. Bu durumda herhangi bir bağlantı sorunlarıyla karşılaşmayasanız da, birincil bağlantı sorunlarını giderme konusunda sorunları daha iyi hazırlamanızı sağlar. 
 
  
 ![ExpressRoute trafik akışı](media/network-performance-monitor-expressroute/expressroute-traffic-flow.png)
 
 
-**Pik kullanım nedeniyle bozulma.** Azure iş yükü bozulmasının bant genişliği kullanımındaki en yüksek düşüşten kaynaklanıp kaynaklanmadığını belirlemek için bant genişliği kullanım eğilimini gecikme eğilimiyle ilişkilendirebilirsiniz. O zaman buna göre harekete geçebilirsiniz.
+**Yoğun kullanım nedeniyle azalma.** Bant genişliği kullanımı eğilimini gecikme eğilimi ile ilişkilendirip, Azure iş yükü düşüşünün bant genişliği kullanımının en yoğun olup olmadığını belirleyebilirsiniz. Daha sonra eyleme uygun bir işlem yapabilirsiniz.
 
 ![ExpressRoute bant genişliği kullanımı](media/network-performance-monitor-expressroute/expressroute-peak-utilization.png)
 
  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlükleri arayın.](../../azure-monitor/log-query/log-query-overview.md)
+Ayrıntılı ağ performansı veri kayıtlarını görüntülemek için [günlüklerde arama](../../azure-monitor/log-query/log-query-overview.md) yapın.

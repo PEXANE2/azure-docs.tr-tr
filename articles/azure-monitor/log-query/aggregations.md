@@ -1,31 +1,31 @@
 ---
-title: Azure Monitor günlük sorgularında toplamalar| Microsoft Dokümanlar
-description: Verilerinizi çözümlemek için yararlı yollar sunan Azure Monitor günlük sorgularında toplama işlevlerini açıklar.
+title: Azure Izleyici günlük sorgularıyla toplamalar | Microsoft Docs
+description: Verilerinizi analiz etmenin yararlı yollarını sunan Azure Izleyici günlük sorgularının toplama işlevlerini açıklar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670313"
 ---
-# <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor günlük sorgularında toplamalar
+# <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki toplamalar
 
 > [!NOTE]
-> [Analytics portalı ile başlayın](get-started-portal.md) ve bu dersi tamamlamadan önce [sorgularla başlayın'ı](get-started-queries.md) tamamlamanız gerekir.
+> [Analiz portalını kullanmaya başlama](get-started-portal.md) ve bu dersi tamamlamadan önce [sorguları](get-started-queries.md) kullanmaya başlama işlemini tamamlamanız gerekir.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Bu makalede, verilerinizi çözümlemek için yararlı yollar sunan Azure Monitor günlük sorgularında toplama işlevleri açıklanmaktadır. Bu işlevlerin tümü, giriş tablosunun `summarize` toplu sonuçlarıyla bir tablo üreten işleçle çalışır.
+Bu makalede, verilerinizi analiz etmenin yararlı yollarını sunan Azure Izleyici günlük sorgularının toplama işlevleri açıklanmaktadır. Bu işlevler, giriş tablosunun toplanmış `summarize` sonuçlarını içeren bir tablo üreten işleçle çalışır.
 
-## <a name="counts"></a>Sayar
+## <a name="counts"></a>Kapsam
 
 ### <a name="count"></a>count
-Herhangi bir filtre uygulandıktan sonra sonuç kümesindeki satır sayısını sayın. Aşağıdaki örnek, Son 30 dakikadaki _Perf_ tablosundaki toplam satır sayısını döndürür. Sonuç, belirli bir ad atadığınız sürece *count_* adlı bir sütunda döndürülür:
+Herhangi bir filtre uygulandıktan sonra sonuç kümesindeki satır sayısını say. Aşağıdaki örnek, son 30 dakikadan itibaren _performans_ tablosundaki toplam satır sayısını döndürür. Sonuç, belirli bir ad atamadıkça *count_* adlı bir sütunda döndürülür:
 
 
 ```Kusto
@@ -40,7 +40,7 @@ Perf
 | summarize num_of_records=count() 
 ```
 
-Zaman çizelgesi görselleştirmesi zaman içinde bir eğilim görmek için yararlı olabilir:
+Zaman içinde bir eğilim görmek için bir timechart görselleştirmesi yararlı olabilir:
 
 ```Kusto
 Perf 
@@ -49,13 +49,13 @@ Perf
 | render timechart
 ```
 
-Bu örnekten elde edilen çıktı, perf kayıt sayısı eğilim çizgisini 5 dakikalık aralıklarla gösterir:
+Bu örnekteki çıktı, performans kayıt sayısı eğilim çizgisini 5 dakika olarak gösterir:
 
-![Sayma eğilimi](media/aggregations/count-trend.png)
+![Sayı eğilimi](media/aggregations/count-trend.png)
 
 
-### <a name="dcount-dcountif"></a>dcount, dcountif
-Belirli `dcount` `dcountif` bir sütundaki farklı değerleri kullanın ve sayın. Aşağıdaki sorgu, son bir saat içinde kaç farklı bilgisayarın sinyal atışını gönderdiğini değerlendirir:
+### <a name="dcount-dcountif"></a>DCount, değersay
+Belirli `dcount` bir `dcountif` sütundaki farklı değerleri saymak için ve kullanın. Aşağıdaki sorgu, son bir saat içinde kaç farklı bilgisayarın sinyal gönderdiğini değerlendirir:
 
 ```Kusto
 Heartbeat 
@@ -63,7 +63,7 @@ Heartbeat
 | summarize dcount(Computer)
 ```
 
-Yalnızca kalp atışlarını gönderen Linux bilgisayarlarını saymak için şunları kullanın: `dcountif`
+Yalnızca sinyal gönderen Linux bilgisayarları saymak için şunu kullanın `dcountif`:
 
 ```Kusto
 Heartbeat 
@@ -71,8 +71,8 @@ Heartbeat
 | summarize dcountif(Computer, OSType=="Linux")
 ```
 
-### <a name="evaluating-subgroups"></a>Alt grupların değerlendirilmesi
-Verilerinizdeki alt gruplarda sayım veya diğer toplamaları gerçekleştirmek `by` için anahtar kelimeyi kullanın. Örneğin, her ülkede/bölgede kalp atışları gönderen farklı Linux bilgisayarlarının sayısını saymak için:
+### <a name="evaluating-subgroups"></a>Alt gruplar değerlendiriliyor
+Verilerinizde alt gruplar üzerinde bir sayı veya diğer toplamalar gerçekleştirmek için `by` anahtar sözcüğünü kullanın. Örneğin, her ülkede/bölgede sinyal gönderen ayrı Linux bilgisayar sayısını saymak için:
 
 ```Kusto
 Heartbeat 
@@ -89,7 +89,7 @@ Heartbeat
 |Hollanda      | 2                   |
 
 
-Verilerinizin daha küçük alt gruplarını analiz etmek `by` için bölüme ek sütun adları ekleyin. Örneğin, OSType'a göre her ülkeden/bölgeden farklı bilgisayarları saymak isteyebilirsiniz:
+Verilerinizin daha küçük alt grupları çözümlemek için `by` bölümüne ek sütun adları ekleyin. Örneğin, her bir ülke/bölgeden her OSType için ayrı bilgisayarları saymak isteyebilirsiniz:
 
 ```Kusto
 Heartbeat 
@@ -97,11 +97,11 @@ Heartbeat
 | summarize distinct_computers=dcountif(Computer, OSType=="Linux") by RemoteIPCountry, OSType
 ```
 
-## <a name="percentiles-and-variance"></a>Yüzdelik dilimleri ve varyans
-Sayısal değerleri değerlendirirken, yaygın bir uygulama `summarize avg(expression)`kullanarak ortalama. Ortalamalar, yalnızca birkaç vakayı karakterize eden aşırı değerlerden etkilenir. Bu sorunu gidermek için, daha az `median` hassas `variance`işlevleri kullanabilirsiniz veya .
+## <a name="percentiles-and-variance"></a>Yüzdebirlik değeri ve varyans
+Sayısal değerleri değerlendirirken, yaygın olarak kullanılan bir uygulama, kullanarak `summarize avg(expression)`bunları ortalama bir uygulamadır. Ortalamalar yalnızca birkaç durumu niteleyen Extreme değerlerinden etkilenir. Bu sorunu gidermek için, veya `median` `variance`gibi daha az hassas işlevler kullanabilirsiniz.
 
-### <a name="percentile"></a>Yüzdebirlik
-Ortanca değeri bulmak için, `percentile` yüzdelik belirterek değeri olan işlevi kullanın:
+### <a name="percentile"></a>Özelliğindeki
+Ortanca değerini bulmak için, yüzdebirlik değerini belirtmek `percentile` için fonksiyonunu bir değerle kullanın:
 
 ```Kusto
 Perf
@@ -110,7 +110,7 @@ Perf
 | summarize percentiles(CounterValue, 50) by Computer
 ```
 
-Ayrıca, her biri için toplu bir sonuç elde etmek için farklı yüzdeler belirtebilirsiniz:
+Ayrıca, her biri için toplanan bir sonuç almak için farklı yüzdebirlik değeri belirtebilirsiniz:
 
 ```Kusto
 Perf
@@ -119,7 +119,7 @@ Perf
 | summarize percentiles(CounterValue, 25, 50, 75, 90) by Computer
 ```
 
-Bu, bazı bilgisayar CPU'larının benzer ortanca değerlere sahip olduğunu gösterebilir, ancak bazıları ortanca etrafında sabit olsa da, diğer bilgisayarlar çok daha düşük ve daha yüksek CPU değerleri bildirmiş, yani ani artışlar yaşamıştır.
+Bu, bazı bilgisayar CPU 'ların benzer ortanca değerleri olduğunu gösterebilir, ancak bazıları ortanca etrafında kararlı olmakla kalmaz, diğer bilgisayarlar ani artışlar yaştıkları anlamına gelir.
 
 ### <a name="variance"></a>Varyans
 Bir değerin varyansını doğrudan değerlendirmek için standart sapma ve varyans yöntemlerini kullanın:
@@ -131,7 +131,7 @@ Perf
 | summarize stdev(CounterValue), variance(CounterValue) by Computer
 ```
 
-CPU kullanımının kararlılığını analiz etmenin iyi bir yolu, stdev'i ortanca hesaplamayla birleştirmektir:
+CPU kullanımının kararlılığını çözümlemenin iyi bir yolu, STDSAPMA değerini ortanca hesaplamayla birleştirmekte.
 
 ```Kusto
 Perf
@@ -140,7 +140,7 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-Azure Monitor günlük verileriyle [Kusto sorgu dilini](/azure/kusto/query/) kullanmak için diğer derslere bakın:
+Azure Izleyici günlük verileriyle [kusto sorgu dilini](/azure/kusto/query/) kullanmaya yönelik diğer derslere bakın:
 
 - [Dize işlemleri](string-operations.md)
 - [Tarih ve saat işlemleri](datetime-operations.md)

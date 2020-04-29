@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme kılavuzu - Azure DNS
-description: Bu öğrenme yolunda, Azure DNS ile sık karşılaşılan sorunları gidermeye başlayın
+title: Sorun giderme kılavuzu-Azure DNS
+description: Bu öğrenme yolunda, Azure DNS ile ilgili sık karşılaşılan sorunları gidermeye başlayın
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76939038"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS sorun giderme kılavuzu
 
-Bu makalede, sık karşılaşılan Azure DNS soruları için sorun giderme bilgileri sağlanmaktadır.
+Bu makale, yaygın Azure DNS soruları için sorun giderme bilgileri sağlar.
 
-Bu adımlar sorununuzu çözmezse, sorununuzu [MSDN'deki topluluk destek forumumuzda](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)da arayabilir veya gönderebilirsiniz. Veya bir Azure destek isteği açabilirsiniz.
+Bu adımlar sorununuzu gidermezse, [MSDN 'deki topluluk desteği forumumuzda](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)sorununuzu arayabilir veya gönderebilirsiniz. Ya da bir Azure destek isteği açabilirsiniz.
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>DNS bölgesi oluşturamıyorum
 
 Sık karşılaşılan sorunları çözmek için aşağıdaki adımlardan birini veya daha fazlasını deneyin:
 
-1.  Hata nedenini belirlemek için Azure DNS denetim günlüklerini gözden geçirin.
-2.  Her DNS bölge adı, kaynak grubu içinde benzersiz olmalıdır. Diğer bir süre, aynı ada sahip iki DNS bölgesi kaynak grubunu paylaşamaz. Farklı bir bölge adı veya farklı bir kaynak grubu kullanmayı deneyin.
+1.  Hata nedenini öğrenmek için Azure DNS Denetim günlüklerini gözden geçirin.
+2.  Her DNS bölge adı, kaynak grubu içinde benzersiz olmalıdır. Diğer bir deyişle, aynı ada sahip iki DNS bölgesi bir kaynak grubunu paylaşamaz. Farklı bir bölge adı veya farklı bir kaynak grubu kullanmayı deneyin.
 3.  "{subscription id} aboneliğinde izin verilen en fazla bölge sayısına ulaştınız veya bu sayıyı aştınız." şeklinde bir hata görebilirsiniz. Farklı bir Azure aboneliği kullanın, bazı bölgeleri silin veya Azure Desteği ile iletişim kurarak abonelik sınırınızı yükseltin.
-4.  "'{zone name}' bölgesi mevcut değil." şeklinde bir hata görebilirsiniz. Bu hata Azure DNS’in bu DNS bölgesi için ad sunucularını ayıramadığı anlamına gelir. Farklı bir bölge adı kullanmayı deneyin. Veya alan adı sahibiyseniz, sizin için ad sunucuları ayırmak için Azure desteğine başvurabilirsiniz.
+4.  "'{zone name}' bölgesi mevcut değil." şeklinde bir hata görebilirsiniz. Bu hata Azure DNS’in bu DNS bölgesi için ad sunucularını ayıramadığı anlamına gelir. Farklı bir bölge adı kullanmayı deneyin. Ya da etki alanı adı sahibiyseniz, sizin için ad sunucuları ayırmak üzere Azure desteği ile iletişim kurabildirebilirsiniz.
 
 
 ### <a name="recommended-articles"></a>Önerilen makaleler
@@ -40,11 +40,11 @@ Sık karşılaşılan sorunları çözmek için aşağıdaki adımlardan birini 
 
 Sık karşılaşılan sorunları çözmek için aşağıdaki adımlardan birini veya daha fazlasını deneyin:
 
-1.  Hata nedenini belirlemek için Azure DNS denetim günlüklerini gözden geçirin.
+1.  Hata nedenini öğrenmek için Azure DNS Denetim günlüklerini gözden geçirin.
 2.  Kayıt kümesi zaten var mı?  Azure DNS, kayıt *kümelerini* kullanarak kayıtları yönetir. Bu kümeler, aynı ada ve aynı türe sahip kayıtların koleksiyonudur. Zaten aynı ada ve türe sahip bir kayıt varsa buna benzer bir kayıt daha eklemek için mevcut kayıt kümesini düzenlemeniz gerekir.
-3.  DNS bölgesinin tepesinde (bölgenin “kökünde”) kayıt oluşturmaya mı çalışıyorsunuz? Böyle bir kayıt oluşturmaya çalışıyorsanız DNS kuralına göre, kayıt adı olarak ‘@’ karakterini kullanmanız gerekir. Ayrıca, DNS standartlarının bölge tepe noktasında CNAME kayıtlarına izin vermediğini unutmayın.
-4.  CNAME çakışmanız mı var?  DNS standartları, başka bir türdeki bir kayıtla aynı ada sahip bir CNAME kaydına izin vermez. Bir CNAME’iniz varsa aynı ada sahip farklı türden bir kayıt oluşturamazsınız.  Benzer şekilde, ad farklı türden mevcut bir kayıtla eşleşiyorsa CNAME oluşturulamaz. Diğer kaydı kaldırarak veya farklı bir kayıt adı seçerek çakışmayı giderin.
-5.  Bir DNS bölgesinde izin verilen kayıt kümesi sayısının sınırına mı ulaştınız? Kayıt kümelerinin geçerli sayısı ve kayıt kümelerinin maksimum sayısı, Azure portalda bölgenin 'Özellikler' seçeneğinin altında gösterilir. Bu sınıra ulaştıysanız, bu bölge için kayıt kümesi sınırınızı yükseltmek için bazı kayıt kümelerini silin veya Azure Desteği'ne başvurun ve ardından yeniden deneyin. 
+3.  DNS bölgesinin tepesinde (bölgenin “kökünde”) kayıt oluşturmaya mı çalışıyorsunuz? Böyle bir kayıt oluşturmaya çalışıyorsanız DNS kuralına göre, kayıt adı olarak ‘@’ karakterini kullanmanız gerekir. Ayrıca, DNS standartlarının tepesinde bölgesinde CNAME kayıtlarına izin vermediğini unutmayın.
+4.  CNAME çakışmanız mı var?  DNS standartları, diğer bir tür kaydıyla aynı ada sahip bir CNAME kaydına izin vermez. Bir CNAME’iniz varsa aynı ada sahip farklı türden bir kayıt oluşturamazsınız.  Benzer şekilde, ad farklı türden mevcut bir kayıtla eşleşiyorsa CNAME oluşturulamaz. Diğer kaydı kaldırarak veya farklı bir kayıt adı seçerek çakışmayı giderin.
+5.  Bir DNS bölgesinde izin verilen kayıt kümesi sayısının sınırına mı ulaştınız? Kayıt kümelerinin geçerli sayısı ve kayıt kümelerinin maksimum sayısı, Azure portalda bölgenin 'Özellikler' seçeneğinin altında gösterilir. Bu sınıra ulaştıysanız, bazı kayıt kümelerini silin veya bu bölge için kayıt kümesi sınırınızı artırmak üzere Azure desteğine başvurun, sonra yeniden deneyin. 
 
 
 ### <a name="recommended-articles"></a>Önerilen makaleler
@@ -91,7 +91,7 @@ Azure DNS, DNS kayıtlarını kayıt kümeleri olarak yönetir. Bu kümeler, ayn
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure [DNS bölgeleri ve kayıtları](dns-zones-records.md) hakkında bilgi edinin
-* Azure DNS'yi kullanmaya başlamak [için, bir DNS bölgesi oluşturmayı](dns-getstarted-create-dnszone-portal.md) ve [DNS kayıtları oluşturmayı](dns-getstarted-create-recordset-portal.md)öğrenin.
-* Varolan bir DNS bölgesini geçirmek için, [bir DNS bölge dosyasını nasıl içe aktarıp dışa aktarılanmayı](dns-import-export.md)öğrenin.
+* [Azure DNS bölgeler ve kayıtlar](dns-zones-records.md) hakkında bilgi edinin
+* Azure DNS kullanmaya başlamak için, [DNS bölgesi oluşturmayı](dns-getstarted-create-dnszone-portal.md) ve [DNS kayıtları oluşturmayı](dns-getstarted-create-recordset-portal.md)öğrenin.
+* Var olan bir DNS bölgesini geçirmek için [BIR DNS bölge dosyasını içeri ve dışarı aktarmayı](dns-import-export.md)öğrenin.
 

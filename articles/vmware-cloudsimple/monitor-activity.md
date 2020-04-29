@@ -1,7 +1,7 @@
 ---
-title: Özel Bulut etkinliğini izleme
+title: Özel bulut etkinliğini izle
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Uyarılar, etkinlikler, görevler ve denetim de dahil olmak üzere CloudSimple ortamına göre Azure VMware Çözümü'ndeki etkinlikte bulunan bilgileri açıklar.
+description: Azure VMware çözümünde, uyarılar, olaylar, görevler ve denetim dahil olmak üzere CloudSimple ortamı tarafından kullanılabilen bilgiler açıklanmaktadır.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/13/2019
@@ -10,107 +10,107 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77019681"
 ---
-# <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>CloudSimple etkinliğine göre VMware Çözümünü izleyin
+# <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>CloudSimple etkinliğine göre VMware çözümünü izleme
 
-CloudSimple etkinlik günlükleri, CloudSimple portalında yapılan işlemlerhakkında bir fikir sağlar.  Liste uyarıları, olayları, görevleri ve denetimi içerir.  Kim, ne zaman ve hangi işlemlerin gerçekleştirildiyi belirlemek için etkinlik günlüklerini kullanın.  Etkinlik günlükleri, kullanıcı tarafından yapılan okuma işlemlerini içermez.
+CloudSimple etkinlik günlükleri CloudSimple Portal 'da gerçekleştirilen işlemlere bir öngörüler sağlar.  Listede uyarılar, olaylar, görevler ve denetim bulunur.  Hangi işlemlerin ne zaman ve ne zaman yapılacağını belirlemek için etkinlik günlüklerini kullanın.  Etkinlik günlükleri, bir kullanıcı tarafından gerçekleştirilen okuma işlemlerini içermez.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-[CloudSimple portalına](access-cloudsimple-portal.md)erişin.
+[Cloudsimple portalına](access-cloudsimple-portal.md)erişin.
 
 ## <a name="activity-information"></a>Etkinlik bilgileri
 
-Etkinlik sayfalarına erişmek için yan menüde **Etkinlik'i** seçin.
+Etkinlik sayfalarına erişmek için yan menüdeki **etkinlik** ' i seçin.
 
 ![Etkinlik sayfasına genel bakış](media/activity-page-overview.png)
 
-Etkinlik sayfasındaki etkinliklerle ilgili ayrıntıları görüntülemek için etkinliği seçin. Sağ tarafta bir detay paneli açılır. Paneldeki eylemler etkinliğin türüne bağlıdır. Paneli kapatmak için **X'i** tıklatın.
+Etkinlik sayfasındaki etkinliklerin ayrıntılarını görüntülemek için etkinliğini seçin. Sağ tarafta bir Ayrıntılar bölmesi açılır. Paneldeki eylemler etkinlik türüne bağlıdır. Paneli kapatmak için **X** simgesini tıklatın.
 
-Ekranı sıralamak için sütun üstbilgisini tıklatın.  Sütunları görüntülemek için belirli değerler için filtreleyebilirsiniz.  **CSV** simgesi olarak İndir'e tıklayarak etkinlik raporunu indirin.
+Görüntüyü sıralamak için bir sütun başlığına tıklayın.  Görüntülenecek belirli değerler için sütunları filtreleyebilirsiniz.  **CSV olarak indir** simgesine tıklayarak Etkinlik raporunu indirin.
 
 ## <a name="alerts"></a>Uyarılar
 
-Uyarılar, CloudSimple ortamınızdaki herhangi bir önemli etkinliğin bildirimleridir.  Uyarılar, faturalandırmayı veya kullanıcı erişimini etkileyen olayları içerir.
+Uyarılar, CloudSimple ortamınızdaki önemli etkinliklerin bildirimidir.  Uyarılar, faturalandırma veya Kullanıcı erişimini etkileyen olayları içerir.
 
-Uyarıları kabul etmek ve listeden kaldırmak için listeden bir veya daha fazlasını seçin ve **Kabul Et'i**tıklatın.
+Uyarıları doğrulamak ve listeden kaldırmak için listeden bir veya daha fazla seçim yapın ve **Onayla**' ya tıklayın.
 
-Uyarılar için aşağıdaki bilgi sütunları kullanılabilir. **Sütunları Edit'e** tıklayın ve görüntülemek istediğiniz sütunları seçin.
+Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları Düzenle** ' ye tıklayın ve görüntülemek istediğiniz sütunları seçin.
 
 | Sütun | Açıklama |
 ------------ | ------------- |
-| Uyarı Türü | Uyarı kategorisi.|
-| Zaman | Uyarının oluştuğu saat. |
+| Uyarı türü | Uyarı kategorisi.|
+| Zaman | Uyarının gerçekleştiği zaman. |
 | Severity | Uyarının önemi.|
-| Kaynak Adı | Özel Bulut adı gibi kaynağa atanan ad. |
-| Kaynak Türü | Kaynak kategorisi: Özel Bulut, Bulut Raf. |
+| Kaynak Adı | Kaynağa atanan, özel bulut adı gibi ad. |
+| Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Kaynak kimliği | Kaynağın tanımlayıcısı. |
-| Açıklama | Uyarıyı neyin tetiklediğinin açıklaması. |
-| Onaylandı | Uyarının kabul edilip edilmediğine dair bir belirti. |
+| Açıklama | Uyarının tetiklendiği açıklama. |
+| Onaylandı | Uyarının kabul edilip edilmeyeceğini belirtir. |
 
 ## <a name="events"></a>Olaylar
 
-Olaylar, CloudSimple portalında kullanıcı ve sistem etkinliğini gösterir. Etkinlikler sayfası, belirli bir kaynakla ilişkili etkinliği ve etkisinin önem derecesini listeler.
+Olaylar CloudSimple portalında Kullanıcı ve sistem etkinliğini gösterir. Olaylar sayfası, belirli bir kaynakla ilişkili etkinliği ve etkinin önem derecesini listeler.
 
-Uyarılar için aşağıdaki bilgi sütunları kullanılabilir. **Sütunları Edit'e** tıklayın ve görüntülemek istediğiniz sütunları seçin.
+Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları Düzenle** ' ye tıklayın ve görüntülemek istediğiniz sütunları seçin.
 
 | Sütun | Açıklama |
 ------------ | ------------- |
-| Zaman | Olayın oluştuğu tarih ve saat. |
+| Zaman | Olayın gerçekleştiği tarih ve saat. |
 | Olay Türü | Olayı tanımlayan sayısal kod. |
-| Severity | Olay şiddeti.|
-| Kaynak Adı | Özel Bulut adı gibi kaynağa atanan ad. |
-| Kaynak Türü | Kaynak kategorisi: Özel Bulut, Bulut Raf. |
-| Açıklama | Uyarıyı neyin tetiklediğinin açıklaması. |
+| Severity | Olay önem derecesi.|
+| Kaynak Adı | Kaynağa atanan, özel bulut adı gibi ad. |
+| Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
+| Açıklama | Uyarının tetiklendiği açıklama. |
 
 ## <a name="tasks"></a>Görevler
 
-Görevler, tamamlanması 30 saniye veya daha uzun sürmesi beklenen Özel Bulut etkinlikleridir. (30 saniyeden kısa sürmesi beklenen etkinlikler yalnızca olay olarak bildirilir.) Özel Bulut'unuzun görevlerinin ilerlemesini izlemek için Görevler sayfalarını açın.
+Görevler, 30 saniye veya daha fazla tamamlanması beklenen özel bulut etkinlikleridir. (30 saniyeden az olması beklenen etkinlikler yalnızca olaylar olarak raporlanır.) Özel bulutunuzun görevlerinin ilerlemesini izlemek için görevler sayfalarını açın.
 
-Uyarılar için aşağıdaki bilgi sütunları kullanılabilir. **Sütunları Edit'e** tıklayın ve görüntülemek istediğiniz sütunları seçin.
+Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları Düzenle** ' ye tıklayın ve görüntülemek istediğiniz sütunları seçin.
 
 | Sütun | Açıklama |
 ------------ | ------------- |
-| Görev Kimliği | Görev için benzersiz tanımlayıcı. |
+| Görev Kimliği | Görevin benzersiz tanımlayıcısı. |
 | İşlem | Görevin gerçekleştirdiği eylem. |
-| Kullanıcı | Görevi tamamlamak için atanan kullanıcı. |
+| Kullanıcı | Görevi tamamlamaya yönelik Kullanıcı atandı. |
 | Kaynak Adı | Kaynağa atanan ad. |
-| Kaynak Türü | Kaynak kategorisi: Özel Bulut, Bulut Raf. |
+| Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Kaynak kimliği | Kaynağın tanımlayıcısı. |
-| Başlangıç | Görev için başlangıç zamanı. |
-| End | Göreviçin bitiş zamanı. |
+| Başlat | Görevin başlangıç zamanı. |
+| End | Görevin bitiş saati. |
 | Durum | Geçerli görev durumu. |
-| Geçen Süre | Görevin tamamlanması (tamamlandıysa) veya şu anda almakta olduğu süre (devam ediyorsa). |
-| Açıklama | Görev tanımı. |
+| Geçen Süre | Görevin tamamlanması (tamamlandıysa) veya şu anda (devam ediyorsa) alınması için geçen süre. |
+| Açıklama | Görev açıklaması. |
 
 ## <a name="audit"></a>Denetim
 
-Denetim günlükleri kullanıcı etkinliğini izler. Tüm kullanıcıların kullanıcı etkinliğini izlemek için denetim günlüklerini kullanabilirsiniz.
+Denetim günlükleri Kullanıcı etkinliğini izler. Tüm kullanıcılar için Kullanıcı etkinliğini izlemek üzere Denetim günlüklerini kullanabilirsiniz.
 
-Uyarılar için aşağıdaki bilgi sütunları kullanılabilir. **Sütunları Edit'e** tıklayın ve görüntülemek istediğiniz sütunları seçin.
+Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları Düzenle** ' ye tıklayın ve görüntülemek istediğiniz sütunları seçin.
 
 | Sütun | Açıklama |
 ------------ | ------------- |
-| Zaman | Denetim giriş saati. |
+| Zaman | Denetim girişinin saati. |
 | İşlem | Görevin gerçekleştirdiği eylem. |
 | Kullanıcı | Göreve atanan kullanıcı. |
 | Kaynak Adı | Kaynağa atanan ad. |
-| Kaynak Türü | Kaynak kategorisi: Özel Bulut, Bulut Raf. |
+| Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Kaynak kimliği | Kaynağın tanımlayıcısı. |
-| Sonuç | **Başarı**gibi etkinliğin sonucu. |
-| Geçen Süre | Görevi tamamlama zamanı. |
+| Sonuç | Etkinliğin sonucu, örneğin **başarılı**. |
+| Geçen Süre | Görevin tamamlanma zamanı. |
 | Açıklama | Eylemin açıklaması. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure'da VMware sanal makinelerini kullanma](quickstart-create-vmware-virtual-machine.md)
-* [Özel Bulutlar](cloudsimple-private-cloud.md) hakkında daha fazla bilgi edinin
+* [Özel bulutlar](cloudsimple-private-cloud.md) hakkında daha fazla bilgi edinin

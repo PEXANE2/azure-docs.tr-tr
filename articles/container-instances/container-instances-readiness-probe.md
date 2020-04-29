@@ -1,29 +1,29 @@
 ---
-title: Konteyner örneğinde hazırlık sondasını ayarlama
-description: Azure Kapsayıcı Örnekleri'ndeki kapsayıcıların yalnızca hazır olduklarında istek aldığından emin olmak için sondayı nasıl yapılandırıştırmayı öğrenin
+title: Kapsayıcı örneği üzerinde hazırlık araştırması ayarlama
+description: Azure Container Instances içindeki kapsayıcıların istekleri yalnızca hazırlandıklarında almasını sağlamak için bir araştırma yapılandırmayı öğrenin
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76935689"
 ---
 # <a name="configure-readiness-probes"></a>Hazır olma yoklamalarını yapılandırma
 
-Trafiğe hizmet veren kapsayıcı uygulamaları için, kapsayıcınızın gelen istekleri işlemeye hazır olduğunu doğrulamak isteyebilirsiniz. Azure Kapsayıcı Örnekleri, kapsayıcınıza belirli koşullar altında erişilemesin diye yapılandırmaları içerecek hazır sondaları destekler. Hazırlık sondası [Bir Kubernetes hazırlık sondası gibi davranmaz.](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) Örneğin, bir kapsayıcı uygulamasının başlangıç sırasında büyük bir veri kümesiyüklemesi gerekebilir ve bu süre içinde istek almasını istemezsin.
+Trafiğe sunan Kapsayıcılı uygulamalar için, kapsayıcının gelen istekleri işlemeye hazırlanmaya yönelik olduğunu doğrulamak isteyebilirsiniz. Azure Container Instances, kapsayıcınıza belirli koşullar altında erişilebilmesi için yapılandırma eklemek üzere hazırlık araştırmalarını destekler. Hazırlık araştırması bir [Kubernetes hazırlık araştırması](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)gibi davranır. Örneğin, bir kapsayıcı uygulamasının başlangıç sırasında büyük bir veri kümesi yüklemesi ve bu süre içinde istek almasını istemediğiniz bir işlem olması gerekebilir.
 
-Bu makalede, bir kapsayıcı yalnızca sonda başarılı olduğunda trafik alır, böylece bir hazır sonda içeren bir kapsayıcı grubu nasıl dağıtılanın açıklar.
+Bu makalede, bir hazırlık araştırması içeren bir kapsayıcı grubunun nasıl dağıtılacağı açıklanır. bu sayede bir kapsayıcının yalnızca araştırma başarılı olduğunda trafik almasını sağlar.
 
-Azure Kapsayıcı Örnekleri, sağlıksız bir kapsayıcının otomatik olarak yeniden başlatılmasına neden olacak şekilde yapılandırabileceğiniz [canlılık sondalarını](container-instances-liveness-probe.md)da destekler.
+Azure Container Instances Ayrıca, sağlıksız bir kapsayıcının otomatik olarak yeniden başlatılmasına neden olacak şekilde yapılandırabileceğiniz [lizleştirme yoklamalarını](container-instances-liveness-probe.md)da destekler.
 
 > [!NOTE]
-> Şu anda sanal ağa dağıtılan bir kapsayıcı grubunda hazır sonda kullanamazsınız.
+> Şu anda bir sanal ağa dağıtılan bir kapsayıcı grubunda hazırlık araştırması kullanamazsınız.
 
 ## <a name="yaml-configuration"></a>YAML yapılandırması
 
-Örnek olarak, hazırlık `readiness-probe.yaml` sondası içeren aşağıdaki parçacıkiçeren bir dosya oluşturun. Bu dosya, küçük bir web uygulaması çalıştıran bir kapsayıcıdan oluşan bir kapsayıcı grubunu tanımlar. Uygulama genel `mcr.microsoft.com/azuredocs/aci-helloworld` görüntüden dağıtılır. Bu kapsayıcı uygulaması, Azure CLI ve diğer hızlı başlangıçlar [kullanılarak Azure'daki bir kapsayıcı örneğinde](container-instances-quickstart.md) de gösterilmiştir.
+Örnek olarak, bir hazırlık araştırması `readiness-probe.yaml` içeren aşağıdaki kod parçacığına sahip bir dosya oluşturun. Bu dosya, küçük bir Web uygulaması çalıştıran bir kapsayıcıdan oluşan bir kapsayıcı grubunu tanımlar. Uygulama, ortak `mcr.microsoft.com/azuredocs/aci-helloworld` görüntüden dağıtılır. Bu Kapsayıcılı uygulama, Azure CLı ve diğer hızlı başlangıçlarla [Azure 'da bir kapsayıcı örneği dağıtma](container-instances-quickstart.md) bölümünde de gösterilmiştir.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,53 +63,53 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Başlat komutu
 
-Dağıtım, kapsayıcı `command` ilk çalışmaya başladığında çalışan bir başlangıç komutunu tanımlayan bir özellik içerir. Bu özellik bir dizi dize kabul eder. Bu komut, web uygulamasının çalıştığı ancak kapsayıcının hazır olmadığı bir zamanı simüle eder. 
+Dağıtım, kapsayıcının ilk `command` kez çalışmaya başladığı zaman çalışan bir başlangıç komutu tanımlayan bir özelliği içerir. Bu özellik bir dize dizisini kabul eder. Bu komut, Web uygulamasının çalıştığı ancak kapsayıcının hazırlanmadığında bir zaman benzetimini yapar. 
 
-İlk olarak, bir kabuk oturumu `node` başlar ve web uygulamasını başlatmak için bir komut çalıştırın. Ayrıca 240 saniye boyunca uyku komutu başlatır ve ardından `ready` `/tmp` dizin içinde çağrılan bir dosya oluşturur:
+İlk olarak, bir kabuk oturumu başlatır ve Web uygulamasını `node` başlatmak için bir komut çalıştırır. Ayrıca, 240 saniye boyunca uyku moduna geçmek için bir komut başlatır, sonrasında `ready` `/tmp` dizin içinde adlı bir dosya oluşturulur:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 ```
 
-### <a name="readiness-command"></a>Hazırlık komutu
+### <a name="readiness-command"></a>Hazır olma komutu
 
-Bu YAML dosyası, `readinessProbe` hazırlık `exec` denetimi olarak hareket eden bir hazırlık komutunu destekleyen bir dosya tanımlar. Bu örnek hazır komutu, `ready` dizininde `/tmp` dosyanın varlığını sınar.
+Bu YAML dosyası, hazırlık `readinessProbe` denetimi görevi gören `exec` bir hazır olma komutunu destekleyen bir tanımlar. Bu örnek, `ready` `/tmp` dizindeki dosyanın mevcut olması için komut testlerini hazır olarak onaylar.
 
-`ready` Dosya yoksa, hazırlık komutu sıfır olmayan bir değerle çıkar; kapsayıcı çalışmaya devam ediyor, ancak erişilenemiyor. Komut çıkış kodu 0 ile başarıyla çıktığında, kapsayıcıya erişilmeye hazırdır. 
+`ready` Dosya mevcut olmadığında, hazır olma komutu sıfır olmayan bir değerle çıkar; kapsayıcı çalışmaya devam eder, ancak erişilemez. Komut 0 çıkış koduyla başarıyla çıktığında, kapsayıcıya erişilmeye hazırlanın. 
 
-Özellik `periodSeconds` hazır komutu her 5 saniyede bir yürütülmesi gerektiğini belirtir. Hazır prob konteyner grubunun ömrü boyunca çalışır.
+`periodSeconds` Özelliği, hazırlık komutunun her 5 saniyede bir yürütülmesi gerektiğini belirler. Hazırlık araştırması, kapsayıcı grubunun ömrü boyunca çalışır.
 
 ## <a name="example-deployment"></a>Örnek dağıtım
 
-Önceki YAML yapılandırmasına sahip bir kapsayıcı grubunu dağıtmak için aşağıdaki komutu çalıştırın:
+Önceki YAML yapılandırmasıyla bir kapsayıcı grubu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file readiness-probe.yaml
 ```
 
-## <a name="view-readiness-checks"></a>Hazırlık denetimlerini görüntüleme
+## <a name="view-readiness-checks"></a>Hazırlık denetimlerini görüntüle
 
-Bu örnekte, ilk 240 saniye boyunca, dosyanın `ready` varlığını denetler zaman hazırlık komutu başarısız olur. Durum kodu, kapsayıcının hazır olmadığını niçin döndürür.
+Bu örnekte, ilk 240 saniye boyunca, `ready` dosyanın varlığını denetlediğinde hazırlık komutu başarısız olur. Durum kodu, kapsayıcının hazırlantığına işaret eder.
 
-Bu etkinlikler Azure portalından veya Azure CLI'den görüntülenebilir. Örneğin, portal, hazırlık komutu başarısız olduktan sonra tetiklenen tür `Unhealthy` deki olayları gösterir. 
+Bu olaylar Azure portal veya Azure CLı 'dan görüntülenebilir. Örneğin, Portal, hazır olma komutu başarısız olduğunda `Unhealthy` , bu türdeki olayların tetiklenmesini gösterir. 
 
-![Portal sağlıksız olay][portal-unhealthy]
+![Portalın sağlıksız olayı][portal-unhealthy]
 
-## <a name="verify-container-readiness"></a>Kapsayıcı hazır durumunu doğrulama
+## <a name="verify-container-readiness"></a>Kapsayıcının hazır olduğunu doğrulama
 
-Kapsayıcıyı işe başladıktan sonra, başlangıçta erişilemediğini doğrulayabilirsiniz. Tedarikten sonra, konteyner grubunun IP adresini alın:
+Kapsayıcıyı başlattıktan sonra, başlangıçta erişilebilir durumda olmadığından emin olabilirsiniz. Sağlamadıktan sonra kapsayıcı grubunun IP adresini alın:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name readinesstest --query "ipAddress.ip" --out tsv
 ```
 
-Hazırlık sondası başarısız olurken siteye erişmeye çalışın:
+Hazırlık araştırması başarısız olsa da siteye erişmeyi deneyin:
 
 ```bash
 wget <ipAddress>
 ```
 
-Çıktı, sitenin başlangıçta erişilemediğini gösterir:
+Çıkış, siteyi başlangıçta erişilebilir olmadığını gösterir:
 ```
 $ wget 192.0.2.1
 --2019-10-15 16:46:02--  http://192.0.2.1/
@@ -117,7 +117,7 @@ Connecting to 192.0.2.1... connected.
 HTTP request sent, awaiting response... 
 ```
 
-240 saniye sonra, hazır komutu başarılı, konteyner sinyalhazırdır. Şimdi, komutu `wget` çalıştırdığınızda, başarılı olur:
+240 saniye sonra, hazırlık komutu başarılı olur ve kapsayıcının hazır olduğunu işaret edin. Şimdi, `wget` komutunu çalıştırdığınızda başarılı olur:
 
 ```
 $ wget 192.0.2.1
@@ -132,15 +132,15 @@ index.html.1                       100%[========================================
 2019-10-15 16:49:38 (113 MB/s) - ‘index.html.1’ saved [1663/1663] 
 ```
 
-Kapsayıcı hazır olduğunda, bir web tarayıcısı kullanarak IP adresine göz atarak web uygulamasına da erişebilirsiniz.
+Kapsayıcı hazırsanız, bir Web tarayıcısı kullanarak IP adresine göz atarak Web uygulamasına da erişebilirsiniz.
 
 > [!NOTE]
-> Hazır prob konteyner grubunun ömrü boyunca devam eder. Hazırlık komutu daha sonra başarısız olursa, kapsayıcıya yeniden erişilemez hale gelir. 
+> Hazırlık araştırması, kapsayıcı grubunun ömrü boyunca çalışmaya devam eder. Hazırlık komutu daha sonra başarısız olursa kapsayıcının yeniden erişilemez hale gelir. 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hazırlık sondası, bağımlı kapsayıcılardan oluşan çok kapsayıcılı grupları içeren senaryolarda yararlı olabilir. Çok kapsayıcı senaryoları hakkında daha fazla bilgi için [Azure Kapsayıcı Örnekleri'ndeki Kapsayıcı gruplarına](container-instances-container-groups.md)bakın.
+Hazır olma durumu araştırması, bağımlı kapsayıcılardan oluşan çok Kapsayıcılı grupları kapsayan senaryolarda yararlı olabilir. Çok Kapsayıcılı senaryolar hakkında daha fazla bilgi için [Azure Container Instances Içindeki kapsayıcı grupları](container-instances-container-groups.md)konusuna bakın.
 
 <!-- IMAGES -->
 [portal-unhealthy]: ./media/container-instances-readiness-probe/readiness-probe-failed.png

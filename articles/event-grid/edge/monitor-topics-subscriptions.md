@@ -1,6 +1,6 @@
 ---
-title: Konuları ve etkinlik aboneliklerini izleyin - Azure Event Grid IoT Edge | Microsoft Dokümanlar
-description: Konuları ve etkinlik aboneliklerini izleme
+title: Konuları ve olay aboneliklerini izleme-Azure Event Grid IoT Edge | Microsoft Docs
+description: Konuları ve olay aboneliklerini izleme
 author: banisadr
 ms.author: babanisa
 ms.reviewer: spelluru
@@ -9,19 +9,19 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77086666"
 ---
-# <a name="monitor-topics-and-event-subscriptions"></a>Konuları ve etkinlik aboneliklerini izleme
+# <a name="monitor-topics-and-event-subscriptions"></a>Konuları ve olay aboneliklerini izleme
 
-Kenardaki Olay Izgarası, [Prometheus fuar biçiminde](https://prometheus.io/docs/instrumenting/exposition_formats/)konular ve olay abonelikleri için bir dizi ölçüm ortaya çıkarır. Bu makalede, kullanılabilir ölçümler ve bunları etkinleştirmek için nasıl açıklanmaktadır.
+Event Grid Edge 'de, [Prometheus Exposition biçimindeki](https://prometheus.io/docs/instrumenting/exposition_formats/)konular ve olay abonelikleri için bir dizi ölçüm kullanıma sunar. Bu makalede, kullanılabilir ölçümler ve bunların nasıl etkinleştirileceği açıklanır.
 
-## <a name="enable-metrics"></a>Ölçümleri etkinleştirme
+## <a name="enable-metrics"></a>Ölçümleri etkinleştir
 
-`metrics__reporterType` Ortam değişkenini `prometheus` kapsayıcıdaki seçeneklere ayarlayarak modülü ölçümler ibareleri yatacak şekilde yapılandırın:
+`metrics__reporterType` Ortam değişkenini kapsayıcı oluşturma seçeneklerinde olarak `prometheus` ayarlayarak ölçümleri yayma için modülü yapılandırın:
 
  ```json
         {
@@ -40,32 +40,32 @@ Kenardaki Olay Izgarası, [Prometheus fuar biçiminde](https://prometheus.io/doc
         }
  ```    
 
-Ölçümler http ve `5888/metrics` `4438/metrics` https için modülün kullanılabilir olacaktır. Örneğin, `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` http için. Bu noktada, bir metrik modülü bu [örnek mimaride](https://github.com/veyalla/ehm)olduğu gibi ölçümleri toplamak için bitiş noktasını yoklayabilir.
+Ölçümler, http ve `5888/metrics` `4438/metrics` https için modülünde kullanılabilir olacaktır. Örneğin, `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` http için. Bu noktada, ölçüm modülü bu [örnek mimaride](https://github.com/veyalla/ehm)olduğu gibi ölçümleri toplamak için uç noktayı yoklayabilirler.
 
 ## <a name="available-metrics"></a>Mevcut ölçümler
 
-Hem konular hem de etkinlik abonelikleri, etkinlik teslimi ve modül performansı hakkında bilgi vermek için ölçümler yontarak.
+Hem konular hem de olay abonelikleri, olay teslimi ve modül performansı hakkında Öngörüler sunmak için ölçümleri yayar.
 
 ### <a name="topic-metrics"></a>Konu ölçümleri
 
 | Ölçüm | Açıklama |
 | ------ | ----------- |
-| Alınan Etkinlikler | Konuyla ilgili yayınlanan etkinlik sayısı
-| Eşsiz Etkinlikler | Olay Aboneliğiyle eşleşmeyen ve bırakılan konuya göre yayınlanan etkinlik sayısı
-| Başarı İstekleri | Konu tarafından alınan gelen yayımlama isteklerinin sayısı
-| SystemErrorRequests | İç sistem hatası nedeniyle başarısız olan gelen yayımlama isteklerinin sayısı
-| UserErrorRequests | Gelen yayımlama isteklerindeki numara, hatalı biçimlendirilmiş JSON gibi kullanıcı hatası nedeniyle başarısız oldu
-| SuccessRequestLatencyMs | İstek yanıtı gecikmesi milisaniye cinsinden yayımlama
+| Alınan olayları | Konuya yayınlanan olay sayısı
+| UnmatchedEvents | Konuya yayımlanan ve olay aboneliğiyle eşleşmeyen ve bırakılan olay sayısı
+| Başarılı Istek sayısı | Konu tarafından alınan gelen yayımlama isteği sayısı
+| SystemErrorRequests | İç sistem hatası nedeniyle başarısız olan gelen yayımlama isteği sayısı
+| UserErrorRequests | Hatalı biçimlendirilmiş JSON gibi Kullanıcı hatası nedeniyle gelen yayımlama isteklerinin sayısı başarısız oldu
+| Başarılı Istek | Milisaniye cinsinden yayımlama isteği yanıt gecikmesi
 
 
-### <a name="event-subscription-metrics"></a>Olay abonelik ölçümleri
+### <a name="event-subscription-metrics"></a>Olay aboneliği ölçümleri
 
 | Ölçüm | Açıklama |
 | ------ | ----------- |
-| TeslimatBaşarı Sayıları | Yapılandırılan bitiş noktasına başarıyla teslim edilen olay sayısı
-| TeslimatBaşarısızlık Sayıları | Yapılandırılan bitiş noktasına teslim edilmeyen olay sayısı
-| TeslimatBaşarıLatencyMs | Milisaniye cinsinden başarıyla teslim edilen olayların gecikmesi
-| TeslimatFailureLatencyMs | Olayların teslim hatalarının milisaniye cinsinden gecikmesi
-| SystemDelayForFirstattemptms | Milisaniye cinsinden ilk teslimat denemesinden önceki olayların sistem gecikmesi
-| TeslimatDenemeSayısı | Olay teslim girişimleri nin sayısı - başarı ve başarısızlık
-| Süresi Dolmuş Sayımlar | Süresi dolan ve yapılandırılan bitiş noktasına teslim edilmeyen olayların sayısı
+| Deliverybaşarılı sayısı | Yapılandırılmış uç noktaya başarıyla teslim edilen olay sayısı
+| DeliveryFailureCounts | Yapılandırılmış uç noktaya teslim edilemedi olay sayısı
+| Deliveryms | Milisaniye olarak başarıyla teslim edilen olayların gecikmesi
+| Deliveryfailurelat, MS | Milisaniye cinsinden olayların teslim hatalarının gecikmesi
+| SystemDelayForFirstAttemptMs | İlk teslim denemesinden önce olayların sistem gecikmesi (milisaniye olarak)
+| Ityattemptscount | Olay teslim denemesi sayısı-başarılı ve başarısız
+| ExpiredCounts | Zaman aşımına uğradığı ve yapılandırılan uç noktaya teslim edilmemiş olay sayısı

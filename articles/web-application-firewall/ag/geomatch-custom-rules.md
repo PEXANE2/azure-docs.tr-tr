@@ -1,6 +1,6 @@
 ---
-title: Azure Web Uygulama Güvenlik Duvarı (WAF) Geomatch özel kuralları
-description: Bu makale, Azure Uygulama Ağ Geçidi'ndeki Web Uygulaması Güvenlik Duvarı (WAF) geomatch özel kurallarına genel bir bakıştır.
+title: Azure Web uygulaması güvenlik duvarı (WAF) Geomatch özel kuralları
+description: Bu makalede, Azure Application Gateway 'de Web uygulaması güvenlik duvarı (WAF) geomatch özel kurallarına genel bir bakış sunulmaktadır.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,24 +8,24 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76961094"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (önizleme)
+# <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (Önizleme)
 
-Özel kurallar, uygulamalarınızın ve güvenlik ilkelerinizin tam gereksinimlerine uygun özel kurallar oluşturmanıza olanak sağlar. Artık web uygulamalarınıza erişimi ülkeye/bölgeye göre kısıtlayabilirsiniz. Tüm özel kurallarda olduğu gibi, bu mantık uygulamanızın gereksinimlerine uygun diğer kurallarla birleştirilebilir.
+Özel kurallar, uygulamalarınızın ve Güvenlik ilkelerinizin tam ihtiyaçlarını karşılamak için özel kurallar oluşturmanıza olanak sağlar. Şimdi, Web uygulamalarınıza olan erişimi ülkeye/bölgeye göre kısıtlayabilirsiniz. Tüm özel kurallarda olduğu gibi, bu mantık uygulamanızın ihtiyaçlarını karşılamak için diğer kurallarla birlikte iade edilebilir.
 
-Coğrafi filtreleme özel kuralı oluşturmak için, Maç Türü olarak *Coğrafi konum'u* seçin ve ardından uygulamanızdan izin vermek/engellemek istediğiniz ülkeyi veya ülkeleri seçin. Daha fazla bilgi [için Powershell'de özel kuralların ve](configure-waf-custom-rules.md) daha fazla özel kural örneğinin (create-custom-waf-rules.md) nasıl oluşturulabildiğini görün.
+Coğrafi filtreleme özel kuralı oluşturmak için, eşleşme türü olarak *coğrafi konum* ' u seçmeniz yeterlidir ve sonra uygulamanızda izin vermek/engellemek istediğiniz ülkeyi veya ülkeleri seçin. Daha fazla bilgi için bkz. [PowerShell 'de özel kurallar oluşturma](configure-waf-custom-rules.md) ve daha fazla özel kural örnekleri (Create-Custom-WAF-Rules.MD).
 
 > [!IMPORTANT]
 > Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="country-codes"></a>Ülke kodları
 
-Geomatch işleci kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke kodlarından biri olabilir. 
+Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke kodlarından herhangi biri olabilir. 
 
 |Ülke kodu | Ülke adı |
 | ----- | ----- |
@@ -50,7 +50,7 @@ Geomatch işleci kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke
 | BH | Bahreyn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Aziz Barthélemy|
+| BL | Saint Barthélimy|
 | BN | Barış Yurdu Brunei Devleti|
 | BO | Bolivya|
 | BR | Brezilya|
@@ -209,4 +209,4 @@ Geomatch işleci kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ülke
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel kuralları öğrendikten [sonra, kendi özel kurallarınızı oluşturun.](create-custom-waf-rules.md)
+Özel kurallar hakkında bilgi aldıktan sonra [kendi özel kurallarınızı oluşturun](create-custom-waf-rules.md).

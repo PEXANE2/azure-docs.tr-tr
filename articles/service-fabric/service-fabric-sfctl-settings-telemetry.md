@@ -1,57 +1,57 @@
 ---
-title: Azure Servis Kumaş CLI- sfctl ayarları telemetri
-description: Azure Service Fabric komut satırı arabirimi sfctl hakkında bilgi edinin. sfctl telemetri yapılandırmak için komutların listesini içerir.
+title: Azure Service Fabric CLı-sfctl ayarları telemetrisi
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Sfctl telemetrisini yapılandırmaya yönelik komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76903021"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
-Telemetri ayarlarını bu sfctl örneğine yerel olarak yapılandırın.
+Bu sfctl örneğine yerelde telemetri ayarlarını yapılandırın.
 
-Sfctl telemetri parametreleri veya değerleri, sfctl sürümü, işletim sistemi türü, python sürümü, komutun başarı veya hatası olmadan komut adı toplar, hata iletisi döndürülür.
+Sfctl telemetrisi parametresiz komut adı ya da değerleri, Sfctl sürümü, işletim sistemi türü, Python sürümü, komutun başarısı veya başarısızlığı, döndürülen hata iletisi.
 
 ## <a name="commands"></a>Komutlar
 
 |Komut|Açıklama|
 | --- | --- |
-| set-telemetri | Telemetriyi açın veya kapatın. |
+| Set-telemetri | Telemetriyi açın veya kapatın. |
 
-## <a name="sfctl-settings-telemetry-set-telemetry"></a>sfctl ayarları telemetri set-telemetri
+## <a name="sfctl-settings-telemetry-set-telemetry"></a>sfctl ayarları telemetri kümesi-telemetri
 Telemetriyi açın veya kapatın.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --kapalı | Telemetriyi kapatın. |
-| --üzerinde | Telemetriyi aç. Varsayılan değer budur. |
+| --kapalı | Telemetriyi devre dışı bırakın. |
+| --Açık | Telemetriyi açın. Varsayılan değer budur. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ### <a name="examples"></a>Örnekler
 
-Telemetriyi kapatın.
+Telemetriyi devre dışı bırakın.
 
 ```
 sfctl settings telemetry set_telemetry --off
 ```
 
-Telemetriyi aç.
+Telemetriyi açın.
 
 ```
 sfctl settings telemetry set_telemetry --on
@@ -59,5 +59,5 @@ sfctl settings telemetry set_telemetry --on
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Servis Kumaş ı CLI'yi [ayarlayın.](service-fabric-cli.md)
-- [Örnek komut dosyalarını](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI'yi nasıl kullanacağınızı öğrenin.
+- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
+- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

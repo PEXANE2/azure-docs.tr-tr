@@ -1,6 +1,6 @@
 ---
-title: Sık karşılaşılan sorunlar - Azure Veritabanı Geçiş Hizmeti
-description: Azure Veritabanı Geçiş Hizmeti'ni kullanmayla ilişkili yaygın bilinen sorunları/hataları nasıl gidereceklerini öğrenin.
+title: Yaygın sorunlar-Azure veritabanı geçiş hizmeti
+description: Azure veritabanı geçiş hizmeti 'ni kullanmayla ilgili yaygın olarak bilinen sorunların/hataların nasıl giderileceği hakkında bilgi edinin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,83 +12,83 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77649116"
 ---
-# <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Sık karşılaşılan Azure Veritabanı Geçiş Hizmeti sorunlarını ve hatalarını giderme
+# <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Yaygın Azure veritabanı geçiş hizmeti sorunlarını ve hatalarını giderme
 
-Bu makalede, Azure Veritabanı Geçiş Hizmeti kullanıcılarının karşılaşabileceği bazı sık karşılaşılan sorunlar ve hatalar açıklanmaktadır. Makale, bu sorunların ve hataların nasıl çözüleceği hakkında da bilgiler içerir.
+Bu makalede, Azure veritabanı geçiş hizmeti kullanıcılarının üzerinde gelebilmesi için bazı yaygın sorunlar ve hatalar açıklanmaktadır. Makalede ayrıca bu sorunların ve hataların nasıl çözümleneceği hakkında bilgiler yer alır.
 
-## <a name="migration-activity-in-queued-state"></a>Sıralı durumda geçiş etkinliği
+## <a name="migration-activity-in-queued-state"></a>Sıraya alınmış durumda geçiş etkinliği
 
-Bir Azure Veritabanı Geçiş Hizmeti projesinde yeni etkinlikler oluşturduğunuzda, etkinlikler sıraya girerken kalır.
-
-| Nedeni         | Çözüm |
-| ------------- | ------------- |
-| Bu sorun, Azure Veritabanı Geçiş Hizmeti örneği aynı anda çalışan devam eden görevler için maksimum kapasiteye ulaştığında ortaya çıkmaktadır. Kapasite kullanılabilir hale gelene kadar herhangi bir yeni etkinlik sıraya alınır. | Veri Geçiş Hizmeti örneğini doğrulayın projeler arasında çalışan etkinlikler var. Yürütme için sıraya otomatik olarak eklenen yeni etkinlikler oluşturmaya devam edebilirsiniz. Varolan çalışan etkinliklerden herhangi biri tamamlanır tamamlanmaz, sonraki sıraya sıralanan etkinlik çalışmaya başlar ve durum otomatik olarak çalışma durumuna dönüşür. Sıralı etkinliğin geçişini başlatmak için ek bir eylem yapmanız gerekmez.<br><br> |
-
-## <a name="max-number-of-databases-selected-for-migration"></a>Geçiş için seçilen en yüksek veritabanları sayısı
-
-Azure SQL Veritabanı'na veya Azure SQL Veritabanı yönetilen bir örneğe geçmek için veritabanı geçiş projesi için bir etkinlik oluştururken aşağıdaki hata oluşur:
-
-* **Hata**: Geçiş ayarları doğrulama hatası", "errorDetail":"Geçiş için 'Veritabanları'nın maksimum '4' nesnelerinden daha fazlası seçilmiştir."
+Azure veritabanı geçiş hizmeti projesinde yeni etkinlikler oluşturduğunuzda, etkinlikler sıraya alınmış durumda kalır.
 
 | Nedeni         | Çözüm |
 | ------------- | ------------- |
-| Bu hata, tek bir geçiş etkinliği için dörtten fazla veritabanı seçtiğinizde görüntülenir. Şu anda, her geçiş etkinliği dört veritabanları ile sınırlıdır. | Geçiş etkinliği başına dört veya daha az veritabanları seçin. Paralel olarak dörtten fazla veritabanını geçirmeniz gerekiyorsa, Azure Veritabanı Geçiş Hizmeti'nin başka bir örneğini sağleyin. Şu anda, her abonelik en fazla iki Azure Veritabanı Geçiş Hizmeti örneğini destekler.<br><br> |
+| Bu sorun, Azure veritabanı geçiş hizmeti örneği eşzamanlı olarak çalışan devam eden görevler için maksimum kapasiteye eriştiğinde oluşur. Her yeni etkinlik, kapasite kullanılabilir olana kadar sıraya alınır. | Veri geçiş hizmeti örneğinin projeler arasında çalışan etkinlikleri olduğunu doğrulayın. Yürütülmek üzere otomatik olarak kuyruğa eklenen yeni etkinlikler oluşturmaya devam edebilirsiniz. Mevcut çalışan etkinliklerden herhangi biri tamamlandıktan hemen sonra, sıradaki sıradaki etkinlik çalışmaya başlar ve durum çalışma durumuna otomatik olarak değişir. Sıraya alınan etkinliğin geçişine başlamak için başka bir işlem yapmanız gerekmez.<br><br> |
 
-## <a name="errors-for-mysql-migration-to-azure-mysql-with-recovery-failures"></a>MySQL'in Kurtarma hatalarıyla Azure MySQL'e geçişi nde hatalar
+## <a name="max-number-of-databases-selected-for-migration"></a>Geçiş için seçilen en fazla veritabanı sayısı
 
-Azure Veritabanı Geçiş Hizmeti'ni kullanarak MySQL'den MySQL için Azure Veritabanı'na geçiş yaptığınızda, geçiş etkinliği aşağıdaki hatayla başarısız olur:
+Azure SQL veritabanı 'na veya Azure SQL veritabanı yönetilen örneğine geçmek üzere bir veritabanı geçiş projesi için etkinlik oluşturulurken aşağıdaki hata oluşur:
 
-* **Hata**: Veritabanı geçiş hatası - Task 'TaskID' [n] ardışık kurtarma hataları nedeniyle askıya alındı.
-
-| Nedeni         | Çözüm |
-| ------------- | ------------- |
-| Bu hata, geçiş yapan kullanıcı çoğaltma istemcisi, REPLICATION REPLICA ve SUPER (MySQL 5.6.6'dan önceki sürümler) çoğaltma admin rolü ve/veya ayrıcalıkları eksik olduğunda oluşabilir.<br><br><br><br><br><br><br><br><br><br><br><br><br> | Kullanıcı hesabı için [ön koşul ayrıcalıklarının](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) MySQL örneği için Azure Veritabanı'nda doğru şekilde yapılandırıldığından emin olun. Örneğin, gerekli ayrıcalıklara sahip 'geçirici' adlı bir kullanıcı oluşturmak için aşağıdaki adımlar izlenebilir:<br>1. 'gizli' DİlİlİlEn KULLANICI migrateuser@'% <br>2. db_name.* üzerindeki tüm ayrıcalıkları 'gizli' olarak tanımlanan 'migrateuser'@'%' için tanıyın; daha fazla veritabanlarına erişim sağlamak için bu adımı yineleme <br>3. Hibe çoğaltma köle üzerinde *.* 'gizli' ile tanımlanan 'migrateuser'@'%' için;<br>4. Hibe çoğaltma istemcisi *üzerinde .* 'gizli' ile tanımlanan 'migrateuser'@'%' için;<br>5. Flush ayrıcalıkları; |
-
-## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmetini durdurmaya çalışırken hata
-
-Azure Veritabanı Geçiş Hizmeti örneğini durdururken aşağıdaki hatayı alırsınız:
-
-* **Hata**: Hizmet Durdurulamadı. Hata: {'error':{'code':'InvalidRequest','message':'Şu anda bir veya birden fazla etkinlik çalışıyor. Hizmeti durdurmak için, etkinlikler tamamlanana kadar bekleyin veya bu etkinlikleri el ile durdurun ve yeniden deneyin.'}}
+* **Hata**: geçiş ayarları doğrulama hatası "," ErrorDetail ":" en fazla ' 4 ' taneden fazla sayıda ' veritabanı ' nesnesi geçiş için seçildi. "
 
 | Nedeni         | Çözüm |
 | ------------- | ------------- |
-| Bu hata, durdurmaya çalıştığınız hizmet örneğinin geçiş projelerinde hala çalışan veya mevcut olan etkinlikleri içerdiğinde görüntülenir. <br><br><br><br><br><br> | Durdurmaya çalıştığınız Azure Veritabanı Geçiş Hizmeti örneğinde çalışan etkinlik olmadığından emin olun. Hizmeti durdurmaya çalışmadan önce etkinlikleri veya projeleri de silebilirsiniz. Aşağıdaki adımlar, tüm çalışan görevleri silerek geçiş hizmeti örneğini temizlemek için projelerin nasıl kaldırılacak olduğunu gösterir:<br>1. Install-Module -Adı AzureRM.DataMigration <br>2. Giriş-AzureRmAccount <br>3. Select-AzureRmSubscription -SubscriptionName "\<alt Adı>" <br> 4. Remove-AzureRmDataMigrationProject \<-Ad projeAdı> \<-ResourceGroupName \<rgName> -ServiceName serviceName> -DeleteRunningTaskTask |
+| Bu hata, tek bir geçiş etkinliği için dörtten fazla veritabanı seçtiğinizde görüntülenir. Varsa, her geçiş etkinliği dört veritabanı ile sınırlıdır. | Geçiş etkinliği başına dört veya daha az veritabanı seçin. Paralel olarak dörtten fazla veritabanı geçirmeniz gerekiyorsa, Azure veritabanı geçiş hizmeti 'nin başka bir örneğini sağlayın. Şu anda her abonelik en fazla iki Azure veritabanı geçiş hizmeti örneğini destekler.<br><br> |
 
-## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti'ni başlatmaya çalışırken hata
+## <a name="errors-for-mysql-migration-to-azure-mysql-with-recovery-failures"></a>Azure MySQL 'e kurtarma hatalarıyla yönelik MySQL geçişi hataları
 
-Azure Veritabanı Geçiş Hizmeti örneğini başlatırken aşağıdaki hatayı alırsınız:
+Azure veritabanı geçiş hizmeti 'ni kullanarak MySQL 'ten MySQL için Azure veritabanı 'na geçiş yaptığınızda, geçiş etkinliği aşağıdaki hatayla başarısız olur:
 
-* **Hata**: Hizmet Başlat'ta başarısız olur. Hata: {'errorDetail':'Hizmet başlatılamamış, lütfen Microsoft desteğine başvurun'}
+* **Hata**: veritabanı geçiş hatası-[n] Art arda kurtarma hataları nedeniyle ' TaskID ' görevi askıya alındı.
 
 | Nedeni         | Çözüm |
 | ------------- | ------------- |
-| Önceki örnek dahili olarak başarısız olduğunda bu hata görüntülenir. Bu hata nadiren oluşur ve mühendislik ekibi bunun farkındadır. <br> | Başlatamadığınız hizmet örneğini silin ve ardından değiştirmek için yeni bir hizmet sağlayın. |
+| Bu hata, geçişi yapan kullanıcının ReplicationAdmin rolünü ve/veya çoğaltma ISTEMCISI, çoğaltma ÇOĞALTMASı ve süper (MySQL 5.6.6 'dan önceki sürümler) ayrıcalıklarına sahip olmadığı durumlarda meydana gelebilir.<br><br><br><br><br><br><br><br><br><br><br><br><br> | Kullanıcı hesabı için [Önkoşul ayrıcalıkların](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) , MySQL Için Azure veritabanı örneği üzerinde doğru şekilde yapılandırıldığından emin olun. Örneğin, aşağıdaki adımlar, gerekli ayrıcalıklara sahip ' migrateuser ' adlı bir kullanıcı oluşturmak için izlenebilir:<br>1. ' gizli ' Ile tanımlanan '% ' Kullanıcı migrateuser@ oluşturun; <br>2. db_name. * ' de ' gizli ' tarafından tanımlanan ' migrateuser ' @ '% ' öğesine tüm ayrıcalıkları verin; daha fazla veritabanına erişim vermek için bu adımı tekrarlayın <br>3. çoğaltma bağımlı ' i verin *.* ' gizli ' ile tanımlanan ' migrateuser ' @ '% '<br>4. çoğaltma istemcisine izin verin *.* ' gizli ' ile tanımlanan ' migrateuser ' @ '% '<br>5. Temizleme ayrıcalıkları; |
 
-## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>SQL'i Azure SQL DB yönetilen örneğe geçirerken veritabanını geri alma hatası
+## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti durdurulmaya çalışılırken hata oluştu
 
-SQL Server'dan Azure SQL Veritabanı yönetilen bir örneğe çevrimiçi geçiş yaptığınızda, kesme aşağıdaki hatayla başarısız olur:
+Azure veritabanı geçiş hizmeti örneğini durdururken şu hatayı alırsınız:
 
-* **Hata**: Geri Yükleme İşlemi Id 'operationId' işlemi için başarısız oldu. Kod 'AuthorizationFailed', İleti 'clientId' nesne id 'objectId' ile 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsync/read' kapsamı üzerinde eylem gerçekleştirmek için yetkiye sahip değildir '/abonelikler/subscriptionId'.'.
+* **Hata**: hizmet durdurulamadı. Hata: {'error':{'code':'InvalidRequest','message':'Şu anda bir veya birden fazla etkinlik çalışıyor. Hizmeti durdurmak için etkinlikler tamamlanana kadar bekleyin veya bu etkinlikleri el ile durdurun ve yeniden deneyin. '}}
+
+| Nedeni         | Çözüm |
+| ------------- | ------------- |
+| Bu hata, durdurmaya çalıştığınız hizmet örneği, hala çalışmakta olan veya geçiş projelerinde bulunan etkinlikleri içerdiğinde görüntülenir. <br><br><br><br><br><br> | Durdurmaya çalıştığınız Azure veritabanı geçiş hizmeti örneğinde çalışan bir etkinlik bulunmadığından emin olun. Ayrıca, hizmeti durdurmayı denemeden önce etkinlikleri veya projeleri de silebilirsiniz. Aşağıdaki adımlarda, çalışan tüm görevleri silerek geçiş hizmeti örneğini temizlemek için projelerin nasıl kaldırılacağı gösterilmektedir:<br>1. Install-Module-Name Azurerd. DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-SubscriptionName "\<subName>" <br> 4. Remove-AzureRmDataMigrationProject-Name \<ProjectName>-resourcegroupname \<RgName>-ServiceName \<ServiceName>-DeleteRunningTask |
+
+## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti başlatılmaya çalışılırken hata oluştu
+
+Azure veritabanı geçiş hizmeti örneğini başlatırken aşağıdaki hatayı alıyorsunuz:
+
+* **Hata**: hizmet başlatılamıyor. Hata: {' errorDetail ': ' hizmet başlatılamadı, lütfen Microsoft desteği 'ne başvurun '}
+
+| Nedeni         | Çözüm |
+| ------------- | ------------- |
+| Bu hata, önceki örnek dahili olarak başarısız olduğunda görüntülenir. Bu hata nadiren oluşur ve mühendislik ekibi bunun farkında değildir. <br> | Başlayacağınız hizmetin örneğini silin ve ardından yenisini koymak için yeni bir tane sağlayın. |
+
+## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>SQL Azure SQL VERITABANı yönetilen örneği 'ne geçirilirken veritabanı geri yüklenirken hata oluştu
+
+Azure SQL veritabanı yönetilen örneğine SQL Server çevrimiçi geçiş gerçekleştirdiğinizde, tam geçişi aşağıdaki hatayla başarısız olur:
+
+* **Hata**: ' operationId ' işlem kimliği için geri yükleme işlemi başarısız oldu. ' AuthorizationFailed ' kodu, ' ObjectID ' nesne kimliğine sahip ' ClientID ' istemcisinin '/Subscriptions/SubscriptionID ' kapsamı üzerinde ' Microsoft. SQL/Locations/managedDatabaseRestoreAzureAsyncOperation/Read ' eylemini gerçekleştirme yetkisi yok.
 
 | Nedeni         | Çözüm    |
 | ------------- | ------------- |
-| Bu hata, SQL Server'dan Azure SQL Veritabanı yönetilen örneğine çevrimiçi geçiş için kullanılan uygulama ilkesinin abonelikte katkıda bulunma izni olmadığını gösterir. Şu anda Yönetilen Örnek ile yapılan bazı API çağrıları, geri yükleme işlemi için abonelik için bu izni gerektirir. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Kullanılan `Get-AzureADServicePrincipal` uygulama kimliğinin görüntü `-ObjectId` adını listelemek için hata iletisinden edinilebilen PowerShell cmdlet'ini kullanın.<br><br> Bu uygulamanın izinlerini doğrulayın ve abonelik düzeyinde [katılımcı rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olduğundan emin olun. <br><br> Azure Veritabanı Geçiş Hizmeti Mühendisliği Ekibi, abonelikteki geçerli katkıda bulunan rolden gerekli erişimi kısıtlamak için çalışmaktadır. Katkıda bulunan rolün kullanımına izin vermeyen bir iş gereksiniminiz varsa, ek yardım için Azure desteğine başvurun. |
+| Bu hata, SQL Server 'den bir Azure SQL veritabanı yönetilen örneğine çevrimiçi geçiş için kullanılan uygulama sorumlusunun, abonelik üzerinde katkıda bulunan iznine sahip olmadığını gösterir. Mevcut olan yönetilen örnekle bazı API çağrıları geri yükleme işlemi için abonelikte bu izni gerektirir. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Kullanılan uygulama `Get-AzureADServicePrincipal` kimliğinin görünen adını `-ObjectId` listelemek için hata iletisinden kullanılabilir PowerShell cmdlet 'ini kullanın.<br><br> Bu uygulama için izinleri doğrulayın ve abonelik düzeyinde [katkıda bulunan rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) sahip olduğundan emin olun. <br><br> Azure veritabanı geçiş hizmeti mühendislik ekibi, abonelik üzerindeki geçerli katkıda bulunma rolünden gerekli erişimi kısıtlamak için çalışmaktadır. Katkıda bulunma rolünün kullanılmasına izin veren bir iş gereksinimiyle karşılaşırsanız, ek yardım için Azure desteğine başvurun. |
 
-## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti ile ilişkili NIC'yi serken hata
+## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile ilişkili NIC silinirken hata oluştu
 
-Azure Veritabanı Geçiş Hizmetiile ilişkili bir Ağ Arabirimi Kartını silmeye çalıştığınızda, silme girişimi bu hatayla başarısız olur:
+Azure veritabanı geçiş hizmeti ile ilişkili bir ağ arabirimi kartını silmeye çalıştığınızda, silme girişimi şu hatayla başarısız olur:
 
-* **Hata**: NIC'yi kullanan DMS hizmeti nedeniyle Azure Veritabanı Geçiş Hizmetiile ilişkili NIC'yi silemez
+* **Hata**: NIC 'YI kullanan DMS hizmeti nedeniyle Azure veritabanı geçiş hizmeti Ile ilişkili NIC silinemiyor
 
 | Nedeni         | Çözüm    |
 | ------------- | ------------- |
-| Bu sorun, Azure Veritabanı Geçiş Hizmeti örneği hala mevcut olabilir ve NIC tüketen olur. <br><br><br><br><br><br><br><br> | Bu NIC'i silmek için, hizmet tarafından kullanılan NIC'yi otomatik olarak silen DMS hizmet örneğini silin.<br><br> **Önemli**: Silinen Azure Veritabanı Geçiş Hizmeti örneğinin çalışan bir etkinlik olmadığından emin olun.<br><br> Azure Veritabanı Geçiş Hizmeti örneğiyle ilişkili tüm projeler ve etkinlikler silindikten sonra hizmet örneğini silebilirsiniz. Hizmet örneği tarafından kullanılan NIC, hizmet silme işleminin bir parçası olarak otomatik olarak temizlenir. |
+| Bu sorun, Azure veritabanı geçiş hizmeti örneği hala mevcut olduğunda ve NIC 'yi tükediğinde oluşur. <br><br><br><br><br><br><br><br> | Bu NIC 'yi silmek için, hizmet tarafından kullanılan NIC 'yi otomatik olarak silen DMS hizmeti örneğini silin.<br><br> **Önemli**: silinmekte olan Azure veritabanı geçiş hizmeti örneğinin çalışan etkinlikleri olmadığından emin olun.<br><br> Azure veritabanı geçiş hizmeti örneğiyle ilişkili tüm projeler ve Etkinlikler silindikten sonra, hizmet örneğini silebilirsiniz. Hizmet örneği tarafından kullanılan NIC, hizmet silme işleminin bir parçası olarak otomatik olarak temizlenir. |
 
 ## <a name="connection-error-when-using-expressroute"></a>ExpressRoute kullanırken bağlantı hatası oluştu
 
@@ -96,37 +96,37 @@ Azure Veritabanı Geçiş Hizmeti proje sihirbazında kaynağa bağlanmayı dene
 
 | Nedeni         | Çözüm    |
 | ------------- | ------------- |
-| [ExpressRoute](https://azure.microsoft.com/services/expressroute/)kullanırken, Azure Veritabanı Geçiş Hizmeti, hizmetle ilişkili Sanal Ağ alt ağında üç hizmet bitiş noktası sağlamayı [gerektirir:](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)<br> -- Servis Veri Günü bitiş noktası<br> -- Depolama bitiş noktası<br> -- Hedef veritabanı bitiş noktası (örneğin SQL bitiş noktası, Cosmos DB bitiş noktası)<br><br><br><br><br> | Kaynak ve Azure Veritabanı Geçiş Hizmeti arasında ExpressRoute bağlantısı için gerekli hizmet bitiş noktalarını [etkinleştirin.](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) <br><br><br><br><br><br><br><br> |
+| [ExpressRoute](https://azure.microsoft.com/services/expressroute/)kullanılırken, Azure veritabanı geçiş hizmeti, hizmetle Ilişkili sanal ağ alt ağında üç hizmet uç noktası sağlanması [gerekir](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) :<br> --Service Bus uç noktası<br> --Depolama uç noktası<br> --Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası)<br><br><br><br><br> | Kaynak ve Azure veritabanı geçiş hizmeti arasında ExpressRoute bağlantısı için gerekli hizmet uç noktalarını [etkinleştirin](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) . <br><br><br><br><br><br><br><br> |
 
-## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL veritabanını MySQL için Azure DB'ye geçirerken bekleme zaman sonu hatasını kilitleme
+## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL için Azure DB 'ye bir MySQL veritabanını geçirirken kilit bekleme zaman aşımı hatası
 
-Bir MySQL veritabanını Azure Veritabanı Geçiş Hizmeti aracılığıyla MySQL örneği için bir Azure Veritabanına geçirdiğinizde, geçiş, kilit bekleme zaman sonu hatasını aşağıdaki şekilde başarısız olur:
+Azure veritabanı geçiş hizmeti aracılığıyla bir MySQL veritabanını MySQL için Azure veritabanı örneğine geçirdiğinizde, geçiş aşağıdaki kilit bekleme zaman aşımı hatasıyla başarısız olur:
 
-* **Hata**: Veritabanı geçiş hatası - Dosya yüklemek için başarısız - dosya 'n' RetCode için yükleme işlemi başlatmak için başarısız: SQL_ERROR SqlState: HY000 NativeError: 1205 Mesaj: [MySQL][ODBC Driver][mysqld] Kilit bekleme zaman aşımı aşıldı; hareketi yeniden başlatmayı deneyin
-
-| Nedeni         | Çözüm    |
-| ------------- | ------------- |
-| Bu hata, geçiş sırasında kilit bekleme zaman ası nedeniyle geçiş başarısız olduğunda oluşur. | Sunucu parametresi **'innodb_lock_wait_timeout'** değerini artırmayı düşünün. İzin verilen en yüksek değer 1073741824'dür. |
-
-## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>Dinamik bağlantı noktası veya adlandırılmış örnek kullanırken kaynak SQL Server'a bağlanma hatası
-
-Azure Veritabanı Geçiş Hizmeti'ni adlandırılmış örnek veya dinamik bir bağlantı noktasında çalışan SQL Server kaynağına bağlamaya çalıştığınızda, bağlantı bu hatayla başarısız olur:
-
-* **Hata**: -1 - SQL bağlantısı başarısız oldu. SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir değildi. Örnek adının doğru olduğunu ve SQL Server'ın uzak bağlantılara izin verecek şekilde yapılandırıldığından doğrulayın. (sağlayıcı: SQL Ağ Arayüzleri, hata: 26 - Hata Konumlandırma Server/Instance Specified)
+* **Hata**: veritabanı geçiş hatası-dosya yüklenemedi-' n ' dosyası için yükleme Işlemi başlatılamadı recode: SQL_ERROR SQLSTATE: HY000 nativeerror: 1205 ileti: [MySQL] [ODBC sürücüsü] [mysqld] kilit bekleme zaman aşımı aşıldı; işlemi yeniden başlatmayı deneyin
 
 | Nedeni         | Çözüm    |
 | ------------- | ------------- |
-| Bu sorun, Azure Veritabanı Geçiş Hizmeti'nin bağlanmaya çalıştığı kaynak SQL Server örneğinde dinamik bir bağlantı noktası olduğunda veya adlandırılmış bir örnek kullandığında ortaya çıkan bir sorundur. SQL Server Browser hizmeti, adlandırılmış bir örniğe gelen bağlantılar veya dinamik bir bağlantı noktası kullanırken UDP bağlantı noktası 1434'ü dinler. Dinamik bağlantı noktası, SQL Server hizmeti her yeniden başlatınher zaman değişebilir. SQL Server Configuration Manager'da ağ yapılandırması yoluyla bir örniğe atanan dinamik bağlantı noktasını denetleyebilirsiniz.<br><br><br> |Azure Veritabanı Geçiş Hizmeti'nin UDP bağlantı noktası 1434'teki kaynak SQL Server Browser hizmetine ve dinamik olarak atanan TCP bağlantı noktası aracılığıyla SQL Server örneğine bağlanabildiğinizi doğrulayın. |
+| Geçiş sırasında kilit bekleme zaman aşımı nedeniyle geçiş başarısız olduğunda bu hata oluşur. | **' İnnodb_lock_wait_timeout '** sunucu parametresinin değerini artırmayı düşünün. İzin verilen en yüksek değer 1073741824 ' dir. |
 
-## <a name="additional-known-issues"></a>Bilinen ek sorunlar
+## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>Dinamik bağlantı noktası veya adlandırılmış örnek kullanılırken kaynak SQL Server bağlanılırken hata oluştu
 
-* [Azure SQL Veritabanı'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [MySQL için Azure Veritabanına çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [PostgreSQL için Azure Veritabanına çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+Azure veritabanı geçiş hizmeti 'ni adlandırılmış örnek veya dinamik bir bağlantı noktası üzerinde çalışan SQL Server kaynağına bağlamayı denediğinizde, bağlantı şu hatayla başarısız olur:
+
+* **Hata**:-1-SQL bağlantısı başarısız oldu. SQL Server ile bağlantı kurulmaya çalışılırken ağ ile ilişkili veya örneğe özgü bir hata oluştu. Sunucu bulunamadı veya erişilebilir değildi. Örnek adının doğru olduğundan ve SQL Server uzak bağlantılara izin verecek şekilde yapılandırıldığından emin olun. (sağlayıcı: SQL ağ arabirimleri, hata: 26-belirtilen sunucu/örnek bulunurken hata oluştu)
+
+| Nedeni         | Çözüm    |
+| ------------- | ------------- |
+| Bu sorun, Azure veritabanı geçiş hizmeti 'nin bağlanmaya çalışacağı kaynak SQL Server örneğinin dinamik bir bağlantı noktasına sahip olması veya adlandırılmış bir örnek kullanılması durumunda meydana gelir. SQL Server Browser hizmeti, adlandırılmış bir örneğe gelen bağlantılar için veya dinamik bir bağlantı noktası kullanırken UDP bağlantı noktası 1434 ' i dinler. SQL Server hizmeti yeniden başlatıldığında dinamik bağlantı noktası değişebilir. SQL Server Yapılandırma Yöneticisi ağ yapılandırması aracılığıyla bir örneğe atanmış dinamik bağlantı noktasını kontrol edebilirsiniz.<br><br><br> |Azure veritabanı geçiş hizmeti 'nin UDP bağlantı noktası 1434 ' deki kaynak SQL Server Browser hizmetine ve SQL Server örneğine, uygun şekilde dinamik olarak atanmış TCP bağlantı noktası üzerinden bağlanıp bağlanamadiğini doğrulayın. |
+
+## <a name="additional-known-issues"></a>Bilinen diğer sorunlar
+
+* [Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
+* [MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
+* [PostgreSQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Makaleyi görüntüleyin [Azure Veritabanı Geçiş Hizmeti PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
-* Makaleyi görüntüleyin [Azure portalını kullanarak MySQL için Azure Veritabanı'ndaki sunucu parametreleri nasıl yapılandırılabilirsiniz.](https://docs.microsoft.com/azure/mysql/howto-server-parameters)
-* Makaleyi [görüntüleyin Azure Veritabanı Geçiş Hizmeti'ni kullanmak için ön koşullara genel bakış.](https://docs.microsoft.com/azure/dms/pre-reqs)
-* Azure [Veritabanı Geçiş Hizmeti'ni kullanma hakkında SSS'ye](https://docs.microsoft.com/azure/dms/faq)bakın.
+* [Azure veritabanı geçiş hizmeti PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)makalesini görüntüleyin.
+* [Azure Portal kullanarak MySQL Için Azure veritabanı 'nda sunucu parametrelerini yapılandırma](https://docs.microsoft.com/azure/mysql/howto-server-parameters)makalesini görüntüleyin.
+* [Azure veritabanı geçiş hizmeti 'ni kullanmaya yönelik önkoşullara genel bakış](https://docs.microsoft.com/azure/dms/pre-reqs)makalesini görüntüleyin.
+* [Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS](https://docs.microsoft.com/azure/dms/faq)bölümüne bakın.

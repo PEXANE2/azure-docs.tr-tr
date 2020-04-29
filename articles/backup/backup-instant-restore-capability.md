@@ -1,74 +1,74 @@
 ---
-title: Azure Anında Geri Yükleme Özelliği
-description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için Azure Anında Geri Yükleme Özelliği ve SSS'leri
+title: Azure anında geri yükleme özelliği
+description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için Azure anında geri yükleme özelliği ve SSS
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705437"
 ---
-# <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Yedekleme Anında Geri Yükleme özelliğiyle gelişmiş yedekleme ve performans geri yükleme
+# <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
 > [!NOTE]
-> Kullanıcılardan gelen geri bildirimlere dayanarak, Azure Yığını işleviyle ilgili karışıklığı azaltmak için **VM yedekleme yığını V2'yi** **Anında Geri Yükleme** olarak yeniden adlandırıyoruz.
-> Azure yedekleme kullanıcılarının tümü artık **Anında Geri Yükleme'ye**yükseltildi.
+> Kullanıcılardan gelen geri bildirimlere bağlı olarak, Azure Stack işlevlerle karışıklık azaltmak için **VM yedekleme yığını v2** 'Yi **anında geri yüklemeye** yeniden adlandırdık.
+> Tüm Azure Backup kullanıcıları artık **anında geri yüklemeye**yükseltildi.
 
-Anında Geri Yükleme için yeni model aşağıdaki özellik geliştirmeleri sağlar:
+Anında geri yükleme için yeni model aşağıdaki özellik geliştirmelerini sağlar:
 
-* Veri aktarımının tamamlanmasını beklemeden, kurtarma için kullanılabilen yedekleme işinin bir parçası olarak alınan anlık görüntüleri kullanma yeteneği. Geri yüklemeyi tetiklemeden önce anlık görüntünün kasaya kopyalanması için bekleme süresini azaltır.
-* Anlık görüntüleri varsayılan olarak iki gün boyunca yerel olarak saklayarak yedekleme ve geri yükleme sürelerini azaltır. Bu varsayılan anlık görüntü tutma değeri 1 ila 5 gün arasındaki herhangi bir değer için yapılandırılabilir.
-* 32 TB'a kadar disk boyutlarını destekler. Disklerin yeniden boyutlandırılması Azure Yedekleme tarafından önerilmez.
-* Standart HDD diskler ve Premium SSD disklerle birlikte Standart SSD diskleri destekler.
-* Geri yüklenirken yönetilmeyen bir VM orijinal depolama hesapları (disk başına) kullanma yeteneği. Bu yetenek, VM'de depolama hesapları arasında dağıtılan diskler olsa bile vardır. Çok çeşitli VM yapılandırmaları için geri yükleme işlemlerini hızlandırAr.
-* Anında Geri Yükleme ile premium depolama alanı kullanan VM'lerin yedeklemesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılmış depolama alanının *%50* boş alanını ayırmanızı öneririz. %50 boş alan, ilk yedekleme tamamlandıktan sonra yedeklemeler için bir gereklilik değildir.
+* Kasaya veri aktarımını beklemek zorunda kalmadan kurtarma için kullanılabilen bir yedekleme işinin parçası olarak alınan anlık görüntüleri kullanma özelliği. Geri yüklemeyi tetiklemeden önce anlık görüntülerin kasaya kopyalaması için bekleme süresini azaltır.
+* , Varsayılan olarak iki gün boyunca anlık görüntüleri yerel olarak tutarak yedekleme ve geri yükleme sürelerini azaltır. Bu varsayılan anlık görüntü saklama değeri 1 ila 5 gün arasında bir değere yapılandırılabilir.
+* 32 TB 'a kadar disk boyutlarını destekler. Disklerin yeniden boyutlandırılması Azure Backup önerilmez.
+* , Standart HDD disklerle ve Premium SSD disklerle birlikte Standart SSD diskleri destekler.
+* Geri yükleme sırasında, yönetilmeyen VM 'Lerin orijinal depolama hesaplarını (disk başına) kullanma özelliği. Bu özellik, VM 'nin depolama hesapları arasında dağıtılan diskleri olduğunda bile vardır. Çok çeşitli VM yapılandırmalarının geri yükleme işlemlerini hızlandırır.
+* Hızlı geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra %50 boş alan yedeklemeler için bir gereksinim değildir.
 
-## <a name="whats-new-in-this-feature"></a>Bu özellikteki yenilikler
+## <a name="whats-new-in-this-feature"></a>Bu özelliğindeki yenilikler
 
-Şu anda, yedekleme işi iki aşamadan oluşur:
+Şu anda yedekleme işi iki aşamadan oluşur:
 
-1. VM anlık görüntüsü alıyorum.
-2. Azure Kurtarma Hizmetleri kasasına Bir VM anlık görüntüsü aktarma.
+1. VM anlık görüntüsü alınıyor.
+2. VM anlık görüntüsünü Azure kurtarma hizmetleri kasasına aktarma.
 
-Kurtarma noktası, yalnızca aşama 1 ve 2 tamamlandıktan sonra oluşturulur. Bu yükseltmenin bir parçası olarak, anlık görüntü tamamlanır tamamlanmaz bir kurtarma noktası oluşturulur ve anlık görüntü türündeki bu kurtarma noktası aynı geri yükleme akışını kullanarak geri yükleme gerçekleştirmek için kullanılabilir. Azure portalındaki bu kurtarma noktasını kurtarma noktası türü olarak "anlık görüntü" kullanarak tanımlayabilirsiniz ve anlık görüntü kasaya aktarıldıktan sonra kurtarma noktası türü "anlık görüntü ve kasa" olarak değişir.
+Bir kurtarma noktası yalnızca 1 ve 2. aşama tamamlandıktan sonra oluşturulan olarak değerlendirilir. Bu yükseltmenin bir parçası olarak, anlık görüntü tamamlandıktan hemen sonra bir kurtarma noktası oluşturulur ve bu anlık görüntü türü kurtarma noktası, aynı geri yükleme akışını kullanarak geri yükleme işlemi gerçekleştirmek için kullanılabilir. Bu kurtarma noktasını, kurtarma noktası türü olarak "Snapshot" kullanarak Azure portal tanımlayabilir ve anlık görüntü kasaya aktarıldıktan sonra, kurtarma noktası türü "anlık görüntü ve kasa" olarak değişir.
 
-![VM yedekleme yığını Kaynak Yöneticisi dağıtım modelinde yedekleme işi-- depolama ve kasa](./media/backup-azure-vms/instant-rp-flow.png)
+![VM yedekleme yığınında yedekleme işi Kaynak Yöneticisi dağıtım modeli--depolama ve kasa](./media/backup-azure-vms/instant-rp-flow.png)
 
-Varsayılan olarak, anlık görüntüler iki gün boyunca saklanır. Bu özellik, geri yükleme sürelerini azaltarak bu anlık görüntülerden geri yükleme sağlar. Verileri kasadan dönüştürmek ve kopyalamak için gereken süreyi azaltır.
+Varsayılan olarak, anlık görüntüler iki gün boyunca tutulur. Bu özellik geri yükleme sürelerini kesip bu anlık görüntülerden geri yükleme işlemine izin verir. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır.
 
-## <a name="feature-considerations"></a>Özellik hususları
+## <a name="feature-considerations"></a>Özellik konuları
 
-* Anlık görüntüler, kurtarma noktası oluşturmayı artırmak ve geri yükleme işlemlerini hızlandırmak için disklerle birlikte depolanır. Sonuç olarak, bu dönemde çekilen anlık görüntülere karşılık gelen depolama maliyetlerini görürsünüz.
-* Artımlı anlık görüntüler sayfa lekeleri olarak depolanır. Yönetilmeyen diskleri kullanan tüm kullanıcılar, yerel depolama hesaplarında depolanan anlık görüntüler için ücretlendirilir. Yönetilen VM yedeklemeleri tarafından kullanılan geri yükleme noktası koleksiyonları temel depolama düzeyinde blob anlık görüntüleri kullandığından, yönetilen diskler için blob anlık görüntü fiyatlandırmasına karşılık gelen maliyetleri görürsünüz ve bunlar artımlıdır.
-* Premium depolama hesapları için, anlık kurtarma noktaları için çekilen anlık görüntüler, ayrılan alanın 10-TB sınırına doğru sayılır.
-* Geri yükleme gereksinimlerine göre anlık görüntü tutma yapılandırma küçümünü nşa Gereksinime bağlı olarak, anlık görüntü tutmayı aşağıda açıklandığı gibi yedekleme ilkesi bıçağında en az bir gün olarak ayarlayabilirsiniz. Bu, sık sık geri yükleme yapmazsanız anlık görüntü tutma için maliyet tasarrufu yardımcı olacaktır.
-* Bu bir tek yönlü yükseltme, bir kez Anında geri yükleme yükseltilmiş, geri gidemez.
+* Anlık görüntüler, kurtarma noktası oluşturmayı artırmak ve geri yükleme işlemlerini hızlandırmak için disklerle birlikte depolanır. Sonuç olarak, bu süre boyunca alınan anlık görüntülere karşılık gelen depolama maliyetlerini görürsünüz.
+* Artımlı anlık görüntüler sayfa Blobları olarak depolanır. Yönetilmeyen diskleri kullanan tüm kullanıcılar yerel depolama hesabında depolanan anlık görüntüler için ücretlendirilir. Yönetilen VM yedeklemeleri tarafından kullanılan geri yükleme noktası koleksiyonları, temel alınan depolama düzeyinde blob anlık görüntüleri kullandığından, yönetilen diskler için blob anlık görüntü fiyatlandırmasına karşılık gelen maliyetleri görürsünüz ve bunlar artımlı olur.
+* Premium Depolama hesapları için, anlık kurtarma noktaları için gerçekleştirilen anlık görüntüler, ayrılan alan 10 TB 'lık sınırına doğru sayılır.
+* Anlık görüntü bekletmesini geri yükleme ihtiyaçlarına göre yapılandırma olanağı elde edersiniz. Gereksinime bağlı olarak, aşağıda açıklandığı gibi yedekleme ilkesi dikey penceresinde anlık görüntü bekletmesini en az bir güne ayarlayabilirsiniz. Bu, sık geri yükleme gerçekleştirmezseniz anlık görüntü bekletme için maliyeti kaydetmenize yardımcı olur.
+* Bu tek yönlü bir yükseltmenize ve anında geri yüklemeye yükseltildikten sonra geri dönemezsiniz.
 
 >[!NOTE]
->Bu anında geri yükleme yükseltmesi ile, tüm müşterilerin anlık görüntü saklama süresi **(yeni ve mevcut her ikisi de dahil)** iki günlük varsayılan değerolarak ayarlanır. Ancak, gereksiniminize göre süreyi 1 ila 5 gün arasında herhangi bir değere ayarlayabilirsiniz.
+>Bu anlık geri yükleme yükseltmesinde, tüm müşterilerin (**yeni ve var olan**) anlık görüntü saklama süresi iki günün varsayılan bir değerine ayarlanır. Bununla birlikte, gereksiniminize göre süresini 1 ila 5 gün arasında bir değere ayarlayabilirsiniz.
 
 ## <a name="cost-impact"></a>Maliyet etkisi
 
-Artımlı anlık görüntüler, anında kurtarma için kullanılan VM'nin depolama hesabında depolanır. Artımlı anlık görüntü, anlık görüntü nün kapladığınız alanın, anlık görüntü oluşturulduktan sonra yazılan sayfaların işgal ettiği alana eşit olduğu anlamına gelir. Faturalandırma hala anlık görüntü tarafından işgal GB başına kullanılan alan için, ve GB başına fiyat [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/managed-disks/)belirtilen aynıdır. Yönetilmeyen diskler kullanan VM'ler için anlık görüntüler her diskin VHD dosyasının menüsünde görülebilir. Yönetilen diskler için anlık görüntüler, belirlenmiş bir kaynak grubunda geri yükleme noktası toplama kaynağında depolanır ve anlık görüntülerin kendileri doğrudan görünmez.
+Artımlı anlık görüntüler, anlık kurtarma için kullanılan sanal makinenin depolama hesabında depolanır. Artımlı anlık görüntü, bir anlık görüntünün kapladığı alanın, anlık görüntü oluşturulduktan sonra yazılan sayfaların kapladığı alana eşit olduğu anlamına gelir. Faturalandırma, anlık görüntünün kapladığı GB başına kullanılan alan için hala ve GB başına fiyat, [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/managed-disks/)belirtilen şekilde aynıdır. Yönetilmeyen diskler kullanan VM 'Ler için, anlık görüntüler her diskin VHD dosyasının menüsünde görülebilir. Yönetilen diskler için anlık görüntüler, belirlenen bir kaynak grubundaki bir geri yükleme noktası koleksiyonu kaynağında depolanır ve anlık görüntülerin kendisi doğrudan görünür olmaz.
 
 >[!NOTE]
-> Anlık görüntü tutma, haftalık ilkeler için 5 güne sabitlenir.
+> Anlık görüntü saklama, haftalık ilkeler için 5 güne kadar düzeltilir.
 
-## <a name="configure-snapshot-retention"></a>Anlık görüntü tutma yapılandırma
+## <a name="configure-snapshot-retention"></a>Anlık görüntü bekletmeyi yapılandırma
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-Azure portalında, **Anında Geri Yükleme** bölümünün altındaki **VM Yedekleme İlkesi** bıçağına eklenen bir alan görebilirsiniz. Belirli yedekleme ilkesiyle ilişkili tüm VM'ler için Anlık Görüntü Bekletme süresini **VM Yedekleme İlkesi** bıçağından değiştirebilirsiniz.
+Azure portal, **anlık geri yükleme** bölümünün altındaki **VM yedekleme ilkesi** dikey penceresinde eklenen bir alanı görebilirsiniz. Belirli bir yedekleme ilkesiyle ilişkili tüm VM 'Ler için **VM yedekleme ilkesi** dikey penceresinde anlık görüntü saklama süresini değiştirebilirsiniz.
 
-![Anında Geri Yükleme Özelliği](./media/backup-azure-vms/instant-restore-capability.png)
+![Anında geri yükleme özelliği](./media/backup-azure-vms/instant-restore-capability.png)
 
 ### <a name="using-powershell"></a>PowerShell’i kullanma
 
 >[!NOTE]
-> Az PowerShell sürüm 1.6.0'dan itibaren PowerShell'i kullanarak politikadaki anlık görüntü tutma süresini güncelleyebilirsiniz
+> Az PowerShell Version 1.6.0 onenlerden itibaren, PowerShell kullanarak ilkede anlık geri yükleme anlık görüntü bekletme süresini güncelleştirebilirsiniz
 
 ```powershell
 $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
@@ -76,49 +76,49 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-Her ilke için varsayılan anlık görüntü tutma iki gün olarak ayarlanır. Kullanıcı değeri en az 1 ve en fazla beş gün olarak değiştirebilir. Haftalık ilkeler için anlık görüntü tutma beş güne sabitlenir.
+Her ilke için varsayılan anlık görüntü bekletme iki güne ayarlanır. Kullanıcı değeri en az 1 ve en fazla beş gün olarak değiştirebilir. Haftalık ilkeler için, anlık görüntü bekletme beş güne sabitlenmiştir.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="what-are-the-cost-implications-of-instant-restore"></a>Anında geri yüklemenin maliyet etkileri nelerdir?
+### <a name="what-are-the-cost-implications-of-instant-restore"></a>Anlık geri yüklemenin maliyet etkileri nelerdir?
 
-Anlık görüntüler, kurtarma noktası oluşturmayı hızlandırmak ve işlemleri geri yüklemek için disklerle birlikte depolanır. Sonuç olarak, VM yedekleme ilkesinin bir parçası olarak seçilen anlık görüntü tutma alanına karşılık gelen depolama maliyetlerini görürsünüz.
+Anlık görüntüler, kurtarma noktası oluşturma ve geri yükleme işlemlerinin hızlandırılmasına yönelik disklerle birlikte depolanır. Sonuç olarak, VM yedekleme ilkesinin bir parçası olarak seçilen anlık görüntü bekletmesine karşılık gelen depolama maliyetlerini görürsünüz.
 
-### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Premium Depolama hesaplarında, anında kurtarma noktası için çekilen anlık görüntüler 10-TB anlık görüntü sınırını kaplar mı?
+### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Premium Depolama hesaplarında, anlık kurtarma noktası için alınan anlık görüntüler 10 TB 'lik anlık görüntü sınırını kaplasın mı?
 
-Evet, premium depolama hesapları için anlık kurtarma noktası için çekilen anlık görüntüler, ayrılan anlık görüntü alanının 10 TB'sini kaplar.
+Evet, Premium Depolama hesaplarında, anlık kurtarma noktası için alınan anlık görüntüler 10 TB ayrılmış anlık görüntü alanı kaplar.
 
-### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Beş günlük süre boyunca anlık görüntü tutma nasıl çalışır?
+### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>Anlık görüntü bekletme, beş günlük dönemde nasıl çalışır?
 
-Her gün yeni bir anlık görüntü alınır, sonra beş ayrı artımlı anlık görüntü vardır. Anlık görüntünün boyutu, çoğu durumda %2-7 civarında olan veri karmaşası bağlıdır.
+Her gün yeni bir anlık görüntü çekilirken, beş ayrı Artımlı anlık görüntü vardır. Anlık görüntünün boyutu, %2 ' nin %7 ' si etrafında olan veri dalgalanmasına bağlıdır.
 
-### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Anlık geri yükleme anlık görüntüsü artımlı bir anlık görüntü mü yoksa tam anlık görüntü mü?
+### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Anlık geri yükleme, artımlı bir anlık görüntü veya tam anlık görüntü mi?
 
-Anında geri yükleme özelliğinin bir parçası olarak alınan anlık görüntüler, artımlı anlık görüntülerdir.
+Anlık geri yükleme özelliğinin bir parçası olarak alınan anlık görüntüler, artımlı anlık görüntülerdir.
 
 ### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Anında geri yükleme özelliği nedeniyle yaklaşık maliyet artışını nasıl hesaplayabilirim?
 
-VM'nin karmaşaya bağlı. Sabit bir durumda, maliyet artışı = Anlık görüntü tutma süresi GB başına VM depolama maliyeti başına günlük churn olduğunu varsayabiliriz.
+Bu, VM 'nin dalgalanmasına bağlıdır. Kararlı bir durumda, maliyet artışı = anlık görüntü saklama süresi GB başına VM depolama maliyeti başına günlük dalgalanması olduğunu varsayabilirsiniz.
 
-### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Bir geri yükleme noktası için kurtarma türü "Anlık görüntü ve tonoz" ise ve ben bir geri yükleme işlemi gerçekleştirmek, hangi kurtarma türü kullanılacak?
+### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Geri yükleme noktası için kurtarma türü "anlık görüntü ve kasa" ise ve geri yükleme işlemi gerçekleştirdiğimde, hangi kurtarma türü kullanılacaktır?
 
-Kurtarma türü "anlık görüntü ve kasa" ise, geri yükleme otomatik olarak kasadan yapılan geri yükleme ile karşılaştırıldığında çok daha hızlı olacak yerel anlık görüntü, yapılır.
+Kurtarma türü "anlık görüntü ve kasa" ise, geri yükleme işlemi, kasadan yapılan geri yükleme ile karşılaştırıldığında çok daha hızlı olacak şekilde yerel anlık görüntüden otomatik olarak yapılır.
 
-### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Anlık görüntü (Tier1) bekletme döneminden daha az geri yükleme noktası (Tier 2) bekletme süresini seçersem ne olur?
+### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Geri yükleme noktası bekletme süresi (katman 2), anlık görüntü (Katman1) saklama süresinden daha az olursa ne olur?
 
-Anlık görüntü (Tier1) silinmedikçe, yeni model geri yükleme noktasının (Tier2) silinmesine izin vermez. Anlık bekletme döneminden daha büyük geri yükleme noktası (Tier2) bekletme süresini zamanlamanızı öneririz.
+Anlık görüntü (Katman1) silinene kadar yeni model geri yükleme noktasını silmeye izin vermez (Katman2). Geri yükleme noktası (Katman2) bekletme dönemini, anlık görüntü saklama süresinden daha büyük bir süre içinde zamanlamayı öneririz.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Yedekleme ilkesindeki ayarlı bekletme döneminden sonra bile anlık görüntüm neden var?
+### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Yedekleme ilkesindeki bekletme süresinden sonra bile anlık görüntüm neden var?
 
-Kurtarma noktası anlık görüntü varsa ve bu mevcut en son RP ise, bir sonraki başarılı yedekleme olana kadar tutulur. Bu, bugün en az bir en son RP'nin vm'deki bir sorun nedeniyle tüm yedeklemelerin başarısız olması durumunda her zaman hazır bulunmayı zorunlu kılan tasarlanmış "çöp toplama" (GC) politikasına göre dir. Normal senaryolarda, RP'ler son kullanma tarihinden en fazla 24 saat sonra temizlenir.
+Kurtarma noktasında anlık görüntü varsa ve en son RP varsa, bir sonraki başarılı yedekleme olana kadar tutulur. Bu, şu anda, sanal makinenin bir sorunu nedeniyle tüm yedeklemelerin daha fazla başarısız olması durumunda, her zaman en az bir en son RP 'nin her zaman mevcut olmasını sağlayacak olan, tasarlanan "çöp toplama" (GC) ilkesine göre belirlenir. Normal senaryolarda RPs, süresi dolduktan sonra en fazla 24 saat içinde temizlenir.
 
-### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Anında Geri Yükleme işlevine ihtiyacım yok. Devre dışı tutulabilir mi?
+### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Anlık geri yükleme işlevselliğine ihtiyacım yok. Devre dışı bırakılabilir mi?
 
-Anında geri yükleme özelliği herkes için etkinleştirilir ve devre dışı tutulamaz. Anlık görüntü tutma yı en aza indirebilirsiniz.
+Anlık geri yükleme özelliği herkes için etkin ve devre dışı bırakılamaz. Anlık görüntü bekletmesini en az bir güne azaltabilirsiniz.
 
 >[!NOTE]
-> **Azure Yedekleme artık seçici disk yedeklemesini destekler ve Azure Sanal Makine yedekleme çözümlerini kullanarak geri yüklemeyi destekler.**
+> **Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.**
 >
->Bugün Azure Yedekleme, Sanal Makine yedekleme çözümlerini kullanarak VM'deki tüm diskleri (İşletim Sistemi ve verileri) birlikte yedeklemeyi destekler. Diski dışlama işleviyle, VM'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneğine sahip olursunuz. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve uygun maliyetli bir çözüm sağlar. Her kurtarma noktası yedekleme işlemine dahil edilen disklerin verilerini içerir ve bu da geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesini geri yüklemenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yüklemek için geçerlidir.
+>Günümüzde, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (Işletim sistemi ve veri) yedeklenmesini destekler Azure Backup. Disk dışlama işlevselliğiyle, bir VM 'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneği alırsınız. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası, yedekleme işlemine dahil edilen disklerin verilerini içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yükleme için geçerlidir.
 >
->**Önizleme için kaydolmak için, bize yazınAskAzureBackupTeam@microsoft.com**
+>**Önizlemeye kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com**

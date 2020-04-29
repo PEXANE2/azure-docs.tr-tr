@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware Çözümü - Access vSphere istemcisi
-description: Özel Bulut'unuzun vCenter'ına nasıl erişilenleri açıklar.
+title: CloudSimple-Access vSphere Client tarafından Azure VMware çözümü
+description: Özel bulutunuzun vCenter 'a nasıl erişebileceğinizi açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/30/2019
@@ -9,62 +9,62 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77022673"
 ---
-# <a name="access-your-private-cloud-vcenter-portal"></a>Özel Bulut vCenter portalınıza erişin
+# <a name="access-your-private-cloud-vcenter-portal"></a>Özel bulut vCenter portala erişin
 
-Özel Bulut vCenter portalınızı Azure portalından veya CloudSimple portalından başlatabilirsiniz.  vCenter portalı, Özel Bulut'unuzda VMware altyapısını yönetmenize olanak tanır.
+Özel bulut vCenter portalınızı Azure portal veya CloudSimple portalından başlatabilirsiniz.  vCenter portalı, VMware altyapısını özel bulutunuzda yönetmenizi sağlar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-VCenter portalına erişmek için ağ bağlantısı oluşturulmalı ve DNS ad çözümlemesi etkinleştirilmelidir.  Aşağıdaki seçeneklerden herhangi birini kullanarak Özel Bulut'unuza ağ bağlantısı kurabilirsiniz.
+VCenter portalına erişmek için ağ bağlantısı kurulması ve DNS ad çözümlemesinin etkinleştirilmesi gerekir.  Aşağıdaki seçeneklerden herhangi birini kullanarak özel bulutla ağ bağlantısı kurabilirsiniz.
 
-* [ExpressRoute'u kullanarak şirket içinde CloudSimple'a bağlanın](on-premises-connection.md)
-* [CloudSimple Private Cloud'unuza VPN bağlantısı yapılandırma](set-up-vpn.md)
+* [ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma](on-premises-connection.md)
+* [CloudSimple özel bulutunuz için bir VPN bağlantısı yapılandırma](set-up-vpn.md)
 
-Özel Bulut VMware altyapı bileşenlerinizin DNS ad çözünürlüğünü ayarlamak [için, şirket içi iş istasyonlarından Özel Bulut vCenter erişimi için ad çözümü için DNS'yi Yapılandır'a](on-premises-dns-setup.md) bakın
+Özel bulut VMware altyapı bileşenlerinizin DNS ad çözümlemesini ayarlamak için bkz. [Şirket içi iş Istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi IÇIN DNS yapılandırma](on-premises-dns-setup.md)
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="access-vcenter-from-azure-portal"></a>Azure portalından vCenter'a erişin
+## <a name="access-vcenter-from-azure-portal"></a>Azure portal 'dan vCenter 'a erişme
 
-Azure portalınızdan Özel Bulut'unuzun vCenter portalını başlatabilirsiniz.
+Azure portal ' dan özel bulutunuzun vCenter Portal 'ı başlatabilirsiniz.
 
 1. **Tüm Hizmetler**’i seçin.
 
-2. **CloudSimple Services'ı**arayın.
+2. **Cloudsimple Hizmetleri**için arama yapın.
 
-3. Bağlanmak istediğiniz Özel Bulut'un CloudSimple hizmetini seçin.
+3. Bağlanmak istediğiniz özel bulutunuzun CloudSimple hizmetini seçin.
 
-4. Genel **Bakış** sayfasında **VMware Özel Bulutları Görüntüle'yi** tıklatın
+4. **Genel bakış** sayfasında, **VMware özel bulutlarını görüntüle** ' ye tıklayın.
 
     ![CloudSimple hizmetine genel bakış](media/cloudsimple-service-overview.png)
 
-5. Özel Bulutlar listesinden Özel Bulut'u seçin ve **vSphere İstemci Başlat'ı**tıklatın.
+5. Özel bulutlar listesinden özel bulutu seçin ve **vSphere Istemcisini Başlat**' a tıklayın.
 
-    ![VSphere İstemciyi Başlat](media/cloudsimple-service-launch-vsphere-client.png)
+    ![VSphere Istemcisini Başlat](media/cloudsimple-service-launch-vsphere-client.png)
 
-## <a name="access-vcenter-from-cloudsimple-portal"></a>CloudSimple portalından vCenter'a erişin
+## <a name="access-vcenter-from-cloudsimple-portal"></a>CloudSimple portalından vCenter 'a erişme
 
-CloudSimple portalından Özel Bulut'unuzun vCenter portalını başlatabilirsiniz.
+CloudSimple Portal ' dan özel bulutunuzun vCenter Portal 'ı başlatabilirsiniz.
 
-1. [CloudSimple portalınıza](access-cloudsimple-portal.md)erişin.
+1. [Cloudsimple portala](access-cloudsimple-portal.md)erişin.
 
-2. **Kaynaklardan** erişmek istediğiniz Özel Bulut'u seçin ve **Başlat vSphere İstemci'sini**tıklatın.
+2. **Kaynaklarda** , erişmek Istediğiniz özel bulutu seçin ve **vSphere istemcisini Başlat**' a tıklayın.
 
-    ![vSphere İstemciyi Başlat - Kaynaklar](media/cloudsimple-portal-resources-launch-vcenter.png)
+    ![VSphere Istemcisini başlatma-kaynaklar](media/cloudsimple-portal-resources-launch-vcenter.png)
 
-3. Ayrıca, özel bulutunuzun özet ekranından vCenter portalını da başlatabilirsiniz.
+3. Ayrıca özel bulutunuzun Özet ekranından vCenter Portalı ' nı da başlatabilirsiniz.
 
-    ![vSphere İstemciyi Başlat - Özet](media/cloudsimple-resources-summary-launch-vcenter.png)
+    ![VSphere Istemcisini başlatma-Özet](media/cloudsimple-resources-summary-launch-vcenter.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel Bulutlarınız için V'ler/alt ağlar oluşturun ve yönetin](create-vlan-subnet.md)
-* [VMware vCenter CloudSimple Özel Bulut izin modeli](learn-private-cloud-permissions.md)
+* [Özel bulutlarınız için VLAN 'Lar/alt ağlar oluşturun ve yönetin](create-vlan-subnet.md)
+* [CloudSimple özel bulut izin modeli VMware vCenter](learn-private-cloud-permissions.md)

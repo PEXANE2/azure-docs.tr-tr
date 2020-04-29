@@ -1,30 +1,30 @@
 ---
 title: Akıllı grupları yönetme
-description: Uyarı örnekleriniz üzerinden oluşturulan Akıllı Grupları Yönetme
+description: Uyarı örneklerinizin üzerinden oluşturulan akıllı grupları yönetme
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
 ms.openlocfilehash: d7077e51282864f1208080838a1bb94ddd773b7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667474"
 ---
 # <a name="manage-smart-groups"></a>Akıllı grupları yönetme
 
-[Akıllı gruplar,](https://aka.ms/smart-groups) kullanıcının artık her bir uyarıyı tek tek yönetmek yerine akıllı grupları yönetebilmeleri için uyarıları birlikte oluşturma veya benzerlik temelinde gruplandırmak için makine öğrenimi algoritmalarını kullanır. Bu makale, Azure Monitor'da akıllı gruplara nasıl erişeceğiniz ve kullanılacağı konusunda size yol açacaktır.
+[Akıllı gruplar](https://aka.ms/smart-groups) , Kullanıcı tarafından her uyarıyı ayrı ayrı yönetmek yerine akıllı grupları yönetebilmek için makine öğrenimi algoritmalarının yanı sıra ortak oluşma veya benzerliği temel alınarak uyarıları gruplamak için kullanılır. Bu makale, Azure Izleyici 'de akıllı gruplara erişme ve bunları kullanma konusunda size yol gösterecektir.
 
-1. Uyarı örnekleriniz için oluşturulan Akıllı Grupları görmek için
+1. Uyarı örneklerinizin oluşturduğu akıllı grupları görmek için şunlardan birini yapabilirsiniz:
 
-     1. **Uyarılar Özeti** sayfasından **Akıllı Gruplar'a** tıklayın    
+     1. **Uyarı Özeti** sayfasından **akıllı gruplar** 'a tıklayın    
     ![İzleme](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
     
-     1. Tüm Uyarılar sayfasından Akıllı Gruplar ait Uyarılar'a tıklayın   
+     1. Tüm uyarılar sayfasından akıllı gruplara göre uyarılar ' a tıklayın   
      ![İzleme](./media/alerts-managing-smart-groups/sg-all-alerts.jpg)
 
-2. Bu, sizi uyarı örnekleriniz üzerinden oluşturulan tüm Akıllı Gruplar için liste görünümüne götürür. Birden çok uyarıyı emetmek yerine, artık akıllı gruplarla başa çıkabilirsiniz.   
+2. Bu sizi uyarı örneklerinizin üzerinden oluşturulan tüm akıllı grupların liste görünümüne götürür. Daha fazla uyarı almak yerine, artık bunun yerine akıllı gruplarla uğraşmanız gerekir.   
 ![İzleme](./media/alerts-managing-smart-groups/sg-list.jpg)
 
-3. Herhangi bir Smart Group'a tıkladığınızda, üye uyarılarıyla birlikte gruplandırma nedenini görebileceğiniz ayrıntılar sayfası açılır. Bu toplama, birden çok uyarıyı elemek yerine tekil bir akıllı grupla başa çıkmanızı sağlar.   
+3. Herhangi bir akıllı gruba tıkladığınızda, üye uyarılarıyla birlikte gruplandırma nedenini görebileceğiniz Ayrıntılar sayfası açılır. Bu toplama, birden fazla uyarı aracılığıyla değil, tekil bir akıllı grup ile ilgilenmenize olanak tanır.   
 ![İzleme](./media/alerts-managing-smart-groups/sg-details.jpg)

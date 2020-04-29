@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Visitly'i yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını Ziyaret'e otomatik olarak sağlamak ve yok etmek için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Visitly yapılandırma | Microsoft Docs'
+description: Visitly 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,151 +16,151 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063181"
 ---
-# <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Ziyaret'i yapılandırın
+# <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Visitly yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları veya grupları Ziyaret'e otomatik olarak sağlamak ve etkisiz leştirmek üzere yapılandırmak için Ziyaret ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirdiğiniz adımları göstermektir.
+Bu öğreticinin amacı, Visitly ve Azure Active Directory (Azure AD) ' de gerçekleştirdiğiniz adımları göstermek için Azure AD 'yi otomatik olarak sağlamak ve Visitly 'e Kullanıcı veya grupları sağlamak üzere yapılandırmak için kullanabilirsiniz.
 
 > [!NOTE]
-> Bu öğretici, Azure AD kullanıcı sağlama hizmetinin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar için, [Azure Etkin Dizini ile hizmet olarak yazılım (SaaS) uygulamalarında kullanıcı sağlama ve bunları](../app-provisioning/user-provisioning.md)ayrıştırma konusunda otomatikleştir'e bakın.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için, [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md)konusuna bakın.
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bölümüne bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracı
-* [Bir Ziyaretçi kiracı](https://www.visitly.io/pricing/)
-* Yönetici izinleri ile Ziyaret'te bir kullanıcı hesabı
+* Bir Azure AD kiracısı
+* [Bir Visitly kiracısı](https://www.visitly.io/pricing/)
+* Yönetici izinlerine sahip Visitly 'de bir kullanıcı hesabı
 
-## <a name="assign-users-to-visitly"></a>Kullanıcıları Ziyaret'e atama 
+## <a name="assign-users-to-visitly"></a>Visitly 'e Kullanıcı atama 
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların veya grupların Ziyaret'e erişmeye ihtiyacı olduğuna karar verin. Ardından, bu kullanıcıları veya grupları buradaki yönergeleri izleyerek Ziyaret'e atayın:
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların Visitly 'e erişmesi gerektiğine karar verin. Ardından buradaki yönergeleri izleyerek bu kullanıcıları veya grupları Visitly ' ye atayın:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-visitly"></a>Kullanıcıları Ziyaret'e atamak için önemli ipuçları 
+## <a name="important-tips-for-assigning-users-to-visitly"></a>Visitly 'e Kullanıcı atamaya yönelik önemli ipuçları 
 
-* Otomatik kullanıcı sağlama yapılandırmasını test etmek için Ziyaret'e tek bir Azure AD kullanıcısı atamanızı öneririz. Ek kullanıcılar veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Visitly 'e tek bir Azure AD kullanıcısı atamanızı öneririz. Ek kullanıcılar veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı Ziyaret'e atadığınızda, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Visitly 'e bir Kullanıcı atadığınızda, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. Varsayılan erişim rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="set-up-visitly-for-provisioning"></a>Sağlama için Ziyaret'i ayarlama
+## <a name="set-up-visitly-for-provisioning"></a>Sağlama için Visitly ayarlama
 
-Azure AD ile otomatik kullanıcı sağlama için Ziyaret'i yapılandırmadan önce, Visitly'de etki alanları arası kimlik yönetimi (SCIM) sağlama sistemini etkinleştirmeniz gerekir.
+Visitly 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Visitly üzerinde etki alanları arası kimlik yönetimi (SCıM) sağlaması için sistemi etkinleştirmeniz gerekir.
 
-1. [Visitly'de](https://app.visitly.io/login)oturum açın. **Tümleştirmeler** > **Ana Bilgisayar Eşitlemesi'ni**seçin.
+1. [Visitly](https://app.visitly.io/login)'de oturum açın. **Tümleştirmeler** > **ana bilgisayar eşitlemesini**seçin.
 
-    ![Ana Bilgisayar Eşitleme](media/Visitly-provisioning-tutorial/login.png)
+    ![Konak eşitleme](media/Visitly-provisioning-tutorial/login.png)
 
-2. Azure **AD** bölümünü seçin.
+2. **Azure AD** bölümünü seçin.
 
-    ![Azure REKLAM bölümü](media/Visitly-provisioning-tutorial/integration.png)
+    ![Azure AD bölümü](media/Visitly-provisioning-tutorial/integration.png)
 
-3. **API Anahtarını**kopyalayın. Bu değerler, Azure portalındaki Ziyaret uygulamanızın **Sağlama** sekmesindeki **Gizli Belirteç** kutusuna girilir.
+3. **API anahtarını**kopyalayın. Bu değerler, Azure portal Visitly uygulamanızın **sağlama** sekmesindeki **gizli belirteç** kutusuna girilir.
 
     ![API Anahtarı](media/Visitly-provisioning-tutorial/token.png)
 
 
-## <a name="add-visitly-from-the-gallery"></a>Galeriden Ziyaret Ekle
+## <a name="add-visitly-from-the-gallery"></a>Galeriden Visitly ekleme
 
-Azure AD ile otomatik kullanıcı sağlama için Ziyaret'i yapılandırmak için, Azure REKLAM uygulama galerisinden yönetilen SaaS uygulamaları listenize Ziyaret'i ekleyin.
+Visitly 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üzere, Azure AD Uygulama Galerisi 'nden yönetilen SaaS uygulamaları listenize Visitly ekleyin.
 
-Azure AD uygulama galerisinden Ziyaret eklemek için aşağıdaki adımları izleyin.
+Azure AD Uygulama Galerisi 'nden Visitly eklemek için aşağıdaki adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com)sol daki gezinti bölmesinde **Azure Etkin Dizin'i**seçin.
+1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' ı seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **Sonuçlar**panelinde Ziyaret et , **Ziyaret** et'i ve ardından uygulamayı eklemek için Ekle'yi'yi girin'i girin. **Add**
+4. Arama kutusuna **Visitly**yazın, sonuçlar panelinde **Visitly** ' yi seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
 
-    ![Sonuç listesinde ziyaret edin](common/search-new-app.png)
+    ![Sonuç listesinde Visitly](common/search-new-app.png)
 
-## <a name="configure-automatic-user-provisioning-to-visitly"></a>Otomatik kullanıcı sağlamayı Ziyaret'e yapılandırma 
+## <a name="configure-automatic-user-provisioning-to-visitly"></a>Visitly 'e otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı veya grup atamalarına dayalı olarak Ziyaret'teki kullanıcıları veya grupları oluşturmak, güncelleştirmek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup atamalarını temel alarak Visitly içinde kullanıcıları veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> Ziyaret için SAML tabanlı tek oturum açmayı etkinleştirmek için, [Ziyaret tek oturum açma öğreticisindeki](Visitly-tutorial.md)yönergeleri izleyin. Tek oturum açma, bu iki özellik birbirini tamamlasa da, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir.
+> Visitly için SAML tabanlı çoklu oturum açmayı etkinleştirmek için, [Visitly çoklu oturum açma öğreticisindeki](Visitly-tutorial.md)yönergeleri izleyin. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
 
-### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Azure AD'de Ziyaret için otomatik kullanıcı sağlama yapılandırma
+### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Azure AD 'de Visitly için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları** > Seçin**Tüm uygulamalar**.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
 
     ![Tüm uygulamalar](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Ziyaret et'i**seçin.
+2. Uygulamalar listesinde **Visitly**' yi seçin.
 
-    ![Uygulamalar listesindeki Ziyaret bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Visitly bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Sağlama Modu Otomatik olarak ayarlanmış](common/provisioning-automatic.png)
+    ![Sağlama modu otomatik olarak ayarlandı](common/provisioning-automatic.png)
 
-5. Yönetici Kimlik Bilgileri bölümü altında, sırasıyla Kiracı `https://api.visitly.io/v1/usersync/SCIM` **URL'sinde** ve **Gizli Belirteç'te**daha önce alınan VE **API Anahtar** değerlerini giriş. Azure AD'nin Ziyaret'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** seçin. Bağlantı başarısız olursa, Ziyaret hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici kimlik bilgileri bölümünde `https://api.visitly.io/v1/usersync/SCIM` , sırasıyla **kiracı URL 'Si** ve **gizli belirteç**içinde alınan ve **API anahtar** değerlerini girin. Azure AD 'nin Visitly 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Visitly hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-posta** kutusuna, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin. Bir **hata olduğunda e-posta gönder bildirimini** seçin onay kutusunu seçin.
+6. **Bildirim e-postası** kutusunda, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin. **Bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet'i**seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Ziyaret Etmek Üzere Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Visitly olarak eşitler**' ı seçin.
 
-    ![Ziyaretçi eşlemeleri](media/visitly-provisioning-tutorial/usermapping.png)
+    ![Visitly Kullanıcı eşlemeleri](media/visitly-provisioning-tutorial/usermapping.png)
 
-9. Azure AD'den **Atnitelik Eşlemeleri** bölümünde Ziyaret'e eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Ziyaret'teki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik gerçekleştirmek için **Kaydet'i** seçin.
+9. **Öznitelik eşlemeleri** bölümünde Azure AD 'den Visitly 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Visitly içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Ziyaret edilen kullanıcı öznitelikleri](media/visitly-provisioning-tutorial/userattribute.png)
+    ![Visitly Kullanıcı öznitelikleri](media/visitly-provisioning-tutorial/userattribute.png)
 
-10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisindeki yönergeleri izleyin.
+10. Kapsam filtrelerini yapılandırmak için [kapsam filtresi öğreticisindeki](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)yönergeleri izleyin.
 
-11. Ziyaret için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
+11. Visitly için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçici Durum Değiştirildi](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek, Ziyaret'e sağlamak istediğiniz kullanıcıları veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek Visitly için sağlamak istediğiniz kullanıcıları veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-13. Hükmetmeye hazır olduğunuzda **Kaydet'i**seçin.
+13. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
-    ![Sağlama yapılandırması kaydetme](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların veya grupların ilk eşitlemisini başlatır. İlk eşitlemenin gerçekleştirilimi sonraki eşitlemelerden daha uzun sürer. Kullanıcıların veya grupların sağlanmasının ne kadar süreceği hakkında daha fazla bilgi için [bkz.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcıların veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin sonraki eşitlemeler daha uzun sürer. Kullanıcıların veya grupların sağlaması için ne kadar süreceği hakkında daha fazla bilgi için bkz. [Kullanıcı sağlama ne kadar sürer?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Azure AD sağlama hizmeti tarafından Ziyaret'te gerçekleştirilen tüm eylemleri açıklayan ilerleme durumunu izlemek ve sağlama faaliyet raporunuza gelen bağlantıları izlemek için **Geçerli Durum** bölümünü kullanabilirsiniz. Daha fazla bilgi için [bkz.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) Azure AD sağlama günlüklerini okumak için [otomatik kullanıcı hesabı sağlama hakkında raporlama'ya](../app-provisioning/check-status-user-account-provisioning.md)bakın.
+İlerlemeyi izlemek ve Visitly üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunuzun bağlantılarını izlemek için **geçerli durum** bölümünü kullanabilirsiniz. Daha fazla bilgi için bkz. [Kullanıcı hazırlama durumunu denetleme](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Azure AD sağlama günlüklerini okumak için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="connector-limitations"></a>Konektör sınırlamaları
+## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-Ziyaret, sabit silmeleri desteklemez. Her şey sadece silin yumuşak.
+Visitly, sabit silmeleri desteklemez. Her şey yalnızca geçici silme amaçlıdır.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

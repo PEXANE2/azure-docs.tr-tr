@@ -1,6 +1,6 @@
 ---
-title: Azure Monitör metrik grafik örneği
-description: Azure Monitor verilerinizi görselleştirme hakkında bilgi edinin.
+title: Azure Izleyici ölçüm grafiği örneği
+description: Azure Izleyici verilerinizi görselleştirmeyi öğrenin.
 author: vgorbenko
 services: azure-monitor
 ms.topic: conceptual
@@ -8,49 +8,49 @@ ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77660879"
 ---
-# <a name="metric-chart-examples"></a>Metrik grafik örnekleri 
+# <a name="metric-chart-examples"></a>Ölçüm grafiği örnekleri 
 
-Azure platformu, çoğu boyutları olan [binden fazla ölçüm](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)sunar. Boyut [filtrelerini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)kullanarak, [bölme](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)uygulayarak, grafik türünü kontrol ederek ve grafik ayarlarını ayarlayarak, altyapınızın ve uygulamalarınızın durumu hakkında bilgi sağlayan güçlü tanılama görünümleri ve panolar oluşturabilirsiniz. Bu makalede, [Ölçümler Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) kullanarak oluşturabileceğiniz grafiklerin bazı örneklerini gösterir ve bu grafiklerin her birini yapılandırmak için gerekli adımları açıklar.
+Azure platformu, çoğu boyut içeren, binlerce [ölçüm üzerinde](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)sunulur. [Boyut filtrelerini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)kullanarak, [bölme](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), grafik türünü denetleme ve grafik ayarlarını ayarlama yoluyla, altyapınızın ve uygulamalarınızın sistem durumuna ilişkin Öngörüler sağlayan güçlü tanılama görünümleri ve panolar oluşturabilirsiniz. Bu makalede, [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) kullanarak oluşturabileceğiniz grafiklerin bazı örnekleri gösterilmektedir ve bu grafiklerin her birini yapılandırmak için gereken adımları açıklar.
 
-Harika grafik örneklerinizi dünyayla paylaşmak ister misiniz? GitHub'daki bu sayfaya katkıda bulunun ve kendi grafik örneklerinizi burada paylaşın!
+Harika grafik örneklerinizi dünya ile paylaşmak ister misiniz? GitHub 'da bu sayfaya katkıda bulunun ve kendi grafik örneklerinizi burada paylaşabilirsiniz!
 
-## <a name="website-cpu-utilization-by-server-instances"></a>Sunucu örneklerine göre web sitesi CPU kullanımı
+## <a name="website-cpu-utilization-by-server-instances"></a>Sunucu örneklerine göre Web sitesi CPU kullanımı
 
-Bu grafik, bir Uygulama Hizmeti için CPU'nun kabul edilebilir aralıkta olup olmadığını gösterir ve yükün düzgün dağıtılıp dağıtılmadığını belirlemek için onu kolayca ayırır. Grafikten uygulamanın 06:00'dan önce tek bir sunucu örneğinde çalıştığını ve daha sonra başka bir örnek ekleyerek ölçeklendirildiğini görebilirsiniz.
+Bu grafik, bir App Service için CPU 'nun kabul edilebilir aralık dahilinde olup olmadığını gösterir ve yükün doğru bir şekilde dağıtılıp dağıtılmadığını anlamak için örneğe göre böler. Uygulamanın 6 ' dan önce tek bir sunucu örneğinde çalıştığını ve sonra başka bir örnek ekleyerek ölçeği artırılacağını görebilirsiniz.
 
-![Sunucu örneğine göre ortalama işlemci yüzdesinin çizgi grafiği](./media/metric-chart-samples/cpu-by-instance.png)
+![Sunucu örneğine göre ortalama CPU yüzdesi satır grafiği](./media/metric-chart-samples/cpu-by-instance.png)
 
-### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılabilen?
+### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılır?
 
-Uygulama Hizmeti kaynağınızı seçin ve **CPU Yüzdesi** ölçümünü bulun. Ardından **Uygula'ya** tıklayın ve **Örnek** boyutunu seçin.
+App Service kaynağını seçin ve **CPU yüzdesi** ölçüsünü bulun. Ardından **bölme Uygula** ' ya tıklayın ve **örnek** boyutunu seçin.
 
 ## <a name="application-availability-by-region"></a>Bölgeye göre uygulama kullanılabilirliği
 
-Hangi coğrafi konumlarda sorun yaşadığını belirlemek için uygulamanızın bölgeye göre kullanılabilirliğini görüntüleyin. Bu grafik, Application Insights kullanılabilirlik ölçümlerini gösterir. İzlenen uygulamanın Doğu ABD veri merkezinden kullanılabilirlik ile ilgili bir sorun olmadığını görebilirsiniz, ancak Batı ABD ve Doğu Asya'dan kısmi bir kullanılabilirlik sorunu yaşıyor.
+Hangi coğrafi konumların sorun yaşadığını belirlemek için uygulamanızın bölgeye göre kullanılabilirliğini görüntüleyin. Bu grafik Application Insights kullanılabilirlik ölçümünü gösterir. İzlenen uygulamanın Doğu ABD veri merkezinde kullanılabilirliğiyle ilgili bir sorun olmadığını görebilirsiniz, ancak Batı ABD ve Doğu Asya kısmi bir kullanılabilirlik sorunu yaşar.
 
 ![Konumlara göre ortalama kullanılabilirlik grafiği](./media/metric-chart-samples/availability-run-location.png)
 
-### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılabilen?
+### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılır?
 
-Öncelikle web siteniz için [Application Insights kullanılabilirlik](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) izleme açmanız gerekir. Bundan sonra, Application Insights kaynağınızı seçin ve Kullanılabilirlik metrikünü seçin. **Run konumu** boyutuna bölme uygulayın.
+Önce Web siteniz için [Application Insights kullanılabilirlik](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) izlemeyi açmanız gerekir. Bundan sonra Application Insights kaynağını seçin ve kullanılabilirlik ölçümünü seçin. **Çalışma konumu** boyutunda bölme uygulayın.
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>API adına göre depolama hesabı hareketlerinin hacmi
+## <a name="volume-of-storage-account-transactions-by-api-name"></a>API adına göre depolama hesabı işlemleri hacmi
 
-Depolama hesabı kaynağınız fazla işlem hacmiyle karşınızdadır. Fazla yükten hangi API'nin sorumlu olduğunu belirlemek için hareket metriklerini kullanabilirsiniz. Aşağıdaki grafiğin filtreleme ve bölmede aynı boyutla yapılandırıldığına dikkat edin, görünümü yalnızca ilgi çekici API çağrılarına daraltmak için:
+Depolama hesabı kaynağınız fazla miktarda işlem hacimde yaşıyor. Fazla yükün hangi API 'nin sorumlu olduğunu belirlemek için işlem ölçümünü kullanabilirsiniz. Aşağıdaki grafiğin filtrelemede aynı boyut (API adı) ile yapılandırıldığını ve görünümü yalnızca ilgilendiğiniz API çağrılarına daraltmak için böltiğine dikkat edin:
 
-![API hareketlerinin çubuk grafiği](./media/metric-chart-samples/transactions-by-api.png)
+![API işlemlerinin çubuk grafiği](./media/metric-chart-samples/transactions-by-api.png)
 
-### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılabilen?
+### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılır?
 
-Metrik seçicide, depolama hesabınızı ve **Hareketler** metrik'ini seçin. Grafik türünü **Çubuk grafiğine**değiştirin. **Bölme uygula'yı** tıklatın ve boyut **API adını**seçin. Ardından Ekle **filtresine** tıklayın ve **API ad** boyutunu bir kez daha seçin. Filtre iletişim kutusunda, grafikte çizmek istediğiniz API'leri seçin.
+Ölçüm seçicide depolama hesabınızı ve **işlem** ölçümünü seçin. Grafik türünü **çubuk grafik**olarak değiştirin. **Bölmeyi Uygula** ' ya tıklayın ve boyut **API 'si adını**seçin. Sonra **Filtre Ekle** ' ye tıklayın ve **API adı** boyutunu bir kez daha seçin. Filtre iletişim kutusunda, grafiğe çizmek istediğiniz API 'Leri seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Monitör [çalışma kitapları](../../azure-monitor/app/usage-workbooks.md) hakkında bilgi edinin
-* [Metrik Explorer](metrics-charts.md) hakkında daha fazla bilgi edinin
+* Azure Izleyici [çalışma kitapları](../../azure-monitor/app/usage-workbooks.md) hakkında bilgi edinin
+* [Ölçüm Gezgini](metrics-charts.md) hakkında daha fazla bilgi edinin

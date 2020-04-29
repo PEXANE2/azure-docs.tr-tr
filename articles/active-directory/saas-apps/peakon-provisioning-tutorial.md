@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile Peakon otomatik kullanıcı sağlama yapılandırma | Microsoft Dokümanlar'
-description: Azure Active Directory'yi, kullanıcı hesaplarını Peakon'a otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory Peakon otomatik Kullanıcı sağlamasını yapılandırma | Microsoft Docs'
+description: Peakon 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,94 +16,94 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: 0a67dc8069ee71305a47bd5d2a724a61cec234a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063421"
 ---
-# <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Peakon'u yapılandır
+# <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Peakon yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Peakon'a otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Peakon ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Peakon 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Peakon ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
->  Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+>  Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten bulunduğunu varsayar
 
 * Azure AD kiracısı.
-* [Bir Peakon kiracı.](https://peakon.com/us/pricing/)
-* Yönetici izinleri olan Peakon'daki bir kullanıcı hesabı.
+* [Bir Peakon kiracısı](https://peakon.com/us/pricing/).
+* Yönetici izinlerine sahip Peakon içinde bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-peakon"></a>Peakon'a kullanıcı atama
+## <a name="assigning-users-to-peakon"></a>Peakon 'e Kullanıcı atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Peakon'a erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları aşağıdaki talimatları izleyerek Peakon'a atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Peakon 'e erişmesi gerektiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Peakon 'e atayabilirsiniz:
 
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-peakon"></a>Peakon'a kullanıcı atamak için önemli ipuçları 
+## <a name="important-tips-for-assigning-users-to-peakon"></a>Peakon 'e Kullanıcı atamaya yönelik önemli ipuçları 
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için Peakon'a tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Peakon 'e tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Peakon'a bir kullanıcı atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Peakon 'e atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="set-up-peakon-for-provisioning"></a>Sağlama için Peakon'u ayarlama
+## <a name="set-up-peakon-for-provisioning"></a>Sağlama için Peakon ayarlama
 
-1.  [Peakon Yönetici Konsolunuzda](https://app.Peakon.com/login)oturum açın. **Yapılandırma'ya**tıklayın. 
+1.  [Peakon Yönetici konsolunuza](https://app.Peakon.com/login)oturum açın. **Yapılandırma**' ya tıklayın. 
 
     ![Peakon Yönetici Konsolu](media/Peakon-provisioning-tutorial/Peakon-admin-configuration.png)
 
-2.  **Tümleştirmeleri**seçin.
+2.  **Tümleştirmeler**' i seçin.
     
-    ![Peakon-çalışan-hükmü](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
+    ![Peakon-çalışan-sağlama](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
 
-3.  **Çalışan Sağlama'yı etkinleştirin.**
+3.  **Çalışan sağlamasını**etkinleştirin.
 
-    ![Peakon-çalışan-hükmü](media/Peakon-provisioning-tutorial/peakon05.png)
+    ![Peakon-çalışan-sağlama](media/Peakon-provisioning-tutorial/peakon05.png)
 
-4.  **SCIM 2.0 URL** ve **OAuth Bearer Token**değerlerini kopyalayın. Bu değerler, Azure portalındaki Peakon uygulamanızın Sağlama sekmesinde **Kiracı URL'si** ve Gizli **Belirteç** alanına girilir.
+4.  **SCIM 2,0 URL 'si** ve **OAuth taşıyıcı belirtecinin**değerlerini kopyalayın. Bu değerler, Azure portal Peakon uygulamanızın sağlama sekmesinde bulunan **kiracı URL 'si** ve **gizli belirteç** alanına girilecektir.
 
-    ![Peakon Oluştur Jetonu](media/Peakon-provisioning-tutorial/peakon04.png)
+    ![Peakon belirteci oluştur](media/Peakon-provisioning-tutorial/peakon04.png)
 
-## <a name="add-peakon-from-the-gallery"></a>Galeriden Peakon ekle
+## <a name="add-peakon-from-the-gallery"></a>Galeriden Peakon ekleme
 
-Azure AD ile otomatik kullanıcı sağlama için Peakon'u yapılandırmak için, Azure AD uygulama galerisinden Yönetilen SaaS uygulamaları listenize Peakon eklemeniz gerekir.
+Peakon 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üzere, Azure AD Uygulama Galerisi 'nden yönetilen SaaS uygulamaları listenize Peakon eklemeniz gerekir.
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, Sonuç panelinde **Peakon'u**girin, **Peakon'u** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **Peakon**yazın, sonuçlar panelinde **Peakon** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Sonuç listesinde peakon](common/search-new-app.png)
+    ![Sonuç listesinde Peakon](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-peakon"></a>Otomatik kullanıcı sağlamayı Peakon'a yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-peakon"></a>Peakon 'e otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Peakon'daki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Peakon içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
 > [!TIP]
-> [Ayrıca Peakon Tek oturum](peakon-tutorial.md)açma öğreticisinde verilen talimatları izleyerek Peakon için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
+> Ayrıca, [Peakon çoklu oturum açma öğreticisinde](peakon-tutorial.md)sunulan yönergeleri Izleyerek, PEAKON için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Azure AD'de Peakon için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Azure AD 'de Peakon için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Peakon'u**seçin.
+2. Uygulamalar listesinde **Peakon**' yi seçin.
 
     ![Uygulamalar listesindeki Peakon bağlantısı](common/all-applications.png)
 
@@ -111,48 +111,48 @@ Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak P
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü altında, sırasıyla **Kiracı URL'sinde** ve **Gizli Belirteç'te** daha önce alınan **SCIM 2.0 URL** ve **OAuth Bearer Token** değerlerini girdi. Azure AD'nin Peakon'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Peakon hesabınızda Yönetici izinleri olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, sırasıyla **kiracı URL 'Si** ve **gizli belirteç** ' de bulunan **SCIM 2,0 URL 'sini** ve **OAuth taşıyıcı belirteci** değerlerini girin. Azure AD 'nin Peakon 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Peakon hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**'e tıklayın.
+8. **Kaydet**’e tıklayın.
 
-9. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Peakon'a Senkronize Et'i**seçin.
+9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Peakon olarak eşitler**' ı seçin.
 
-    ![Peakon Kullanıcı Eşlemeleri](media/Peakon-provisioning-tutorial/Peakon-user-mappings.png)
+    ![Peakon Kullanıcı eşlemeleri](media/Peakon-provisioning-tutorial/Peakon-user-mappings.png)
 
-10. **Öznitelik Eşleme** bölümünde Azure AD'den Peakon'a eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Peakon'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+10. **Öznitelik eşleme** bölümünde Azure AD 'den Peakon 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Peakon içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Peakon Kullanıcı Öznitelikleri](media/Peakon-provisioning-tutorial/Peakon-user-attributes.png)
+    ![Peakon Kullanıcı öznitelikleri](media/Peakon-provisioning-tutorial/Peakon-user-attributes.png)
 
-12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
     
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Peakon'daki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemeyi izlemek ve sağlama etkinlik raporuna olan bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. Peakon üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="connector-limitations"></a>Konektör sınırlamaları
+## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* Peakon'daki tüm özel kullanıcı öznitelikleri Peakon'un özel SCIM `urn:ietf:params:scim:schemas:extension:peakon:2.0:User`kullanıcı uzantısından genişletilmelidir.
+* Peakon ' deki tüm özel kullanıcı özniteliklerinin, `urn:ietf:params:scim:schemas:extension:peakon:2.0:User`Peakon 'ıN özel SCIM Kullanıcı uzantısından genişletilmesi gerekir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

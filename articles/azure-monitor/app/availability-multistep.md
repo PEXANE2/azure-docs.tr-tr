@@ -1,45 +1,45 @@
 ---
-title: Çok aşamalı web testleriyle izleme - Azure Uygulama Öngörüleri
-description: Azure Application Insights ile web uygulamalarınızı izlemek için çok aşamalı web testleri ayarlayın
+title: Çok adımlı Web testleri ile izleme-Azure Application Insights
+description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlayın
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77655949"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
-Çok adımlı web testleri aracılığıyla bir web sitesiyle kaydedilen URL dizisini ve web sitesiyle etkileşimleri izleyebilirsiniz. Bu makale, Visual Studio Enterprise ile çok adımlı bir web testi oluşturma sürecinde size yol verecektir.
+Çok adımlı Web testleri aracılığıyla bir Web sitesiyle kaydedilmiş bir URL ve etkileşim dizisini izleyebilirsiniz. Bu makale, Visual Studio Enterprise ile çok adımlı bir Web testi oluşturma sürecinde size yol gösterecektir.
 
 > [!NOTE]
-> Çok aşamalı web testleri Visual Studio webtest dosyalarına bağlıdır. Visual Studio 2019'un webtest işlevselliği ile son sürüleceği [duyuruldu.](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) Yeni özellikler eklenmemekle birlikte Visual Studio 2019'daki webtest işlevselliğinin halen desteklenmeye devam ettiğini ve ürünün destek yaşam döngüsü boyunca desteklenmeye devam edeceğini anlamak önemlidir. Azure Monitor ürün [ekibi, burada](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)çok aşamalı kullanılabilirlik testlerinin geleceğiyle ilgili soruları ele almıştır.  
+> Çok adımlı Web testleri, Visual Studio WebTest dosyalarına bağımlıdır. Visual Studio 2019 ' nin, WebTest işlevselliğiyle ilgili son sürüm olacağı [duyurulmuştur](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) . Yeni özellik eklenmadığında, Visual Studio 2019 ' deki WebTest işlevinin hala desteklenmekte olduğunu ve ürünün destek yaşam döngüsü sırasında desteklenmeye devam edecek olduğunu anlamak önemlidir. Azure Izleyici ürün ekibi, [buradaki](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)çok adımlı kullanılabilirlik testlerinin geleceği hakkında sorular buldu.  
 
 ## <a name="pre-requisites"></a>Ön koşullar
 
-* Visual Studio 2017 Enterprise veya daha büyük.
-* Visual Studio web performansı ve yük test araçları.
+* Visual Studio 2017 Enterprise veya üzeri.
+* Visual Studio Web performansı ve yük testi araçları.
 
-Test araçlarını önceden bulmak için gereklidir. Başlat **Visual Studio Installer** > **Bireysel bileşenleri** > **Hata ayıklama ve Web**performansı ve yük test > **araçları**test.
+Test araçlarını önkoşul olarak belirlemek için. **Hata ayıklama ve** > **Web performansını ve yük testi araçlarını**test etmek **Visual Studio yükleyicisi** > **bireysel bileşenleri** > başlatın.
 
-![Web performansı ve yük test araçları için öğenin yanındaki onay kutusuyla seçilen tek tek bileşenlerle Visual Studio yükleyici arabirimi ekran görüntüsü](./media/availability-multistep/web-performance-load-testing.png)
+![Web performans ve yük testi araçları için öğenin yanında bir onay kutusu ile seçili tek bileşenlere sahip Visual Studio Installer Kullanıcı arabiriminin ekran görüntüsü](./media/availability-multistep/web-performance-load-testing.png)
 
 > [!NOTE]
-> Çok adımlı web testlerinin bunlarla ilişkili ek maliyetleri vardır. Daha fazla bilgi için [resmi fiyatlandırma kılavuzuna başvurun.](https://azure.microsoft.com/pricing/details/application-insights/)
+> Çok adımlı Web testlerinde bunlarla ilişkili ek maliyetler vardır. Daha fazla bilgi edinmek için [resmi fiyatlandırma kılavuzuna](https://azure.microsoft.com/pricing/details/application-insights/)başvurun.
 
-## <a name="record-a-multi-step-web-test"></a>Çok adımlı web testi kaydetme 
+## <a name="record-a-multi-step-web-test"></a>Çok adımlı bir Web testini kaydetme 
 
 > [!WARNING]
-> Artık çok adımlı kaydediciyi kullanmanızı önermiyoruz. Kaydedici temel etkileşimleri ile statik HTML sayfaları için geliştirilmiştir ve modern web sayfaları için işlevsel bir deneyim sağlamaz.
+> Artık multi-step kaydedicisinin kullanılması önerilmez. Kaydedici, temel etkileşimleri olan statik HTML sayfaları için geliştirilmiştir ve modern web sayfaları için işlevsel bir deneyim sağlamıyor.
 
-Visual Studio web testleri oluşturma kılavuzu için [resmi Visual Studio 2019 belgelerine](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)başvurun.
+Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual studio 2019 belgelerine](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)bakın.
 
-## <a name="upload-the-web-test"></a>Web testini yükleme
+## <a name="upload-the-web-test"></a>Web testini karşıya yükleyin
 
-1. Kullanılabilirlik bölmesindeki Application Insights portalında > Test türü**Çok adımlı web testini****Test type** >  **oluştur'u**seçin.
+1. Kullanılabilirlik bölmesindeki Application Insights portalında, **Test** > **test türü** > **çoklu adım Web testi**oluştur ' u seçin.
 
 2. Test konumlarını, sıklığını ve uyarı parametrelerini ayarlayın.
 
@@ -47,40 +47,40 @@ Visual Studio web testleri oluşturma kılavuzu için [resmi Visual Studio 2019 
 
 |Ayar| Açıklama
 |----|----|----|
-|**Test frekansı**| Testin her test konumundan ne sıklıkta çalıştırıldığını ayarlar. Beş dakikalık varsayılan sıklıkta ve beş test konumuyla, siteniz ortalama olarak dakikada bir test edilir.|
-|**Test konumları**| Sunucularımızın URL'nize web istekleri gönderdiği yerlerdir. Web sitenizdeki sorunları ağ sorunlarından ayırt edebileceğinizden emin olmak için **önerilen minimum test yeri sayısı beştir.** En fazla 16 konum seçebilirsiniz.
+|**Sınama sıklığı**| Testin her test konumundan ne sıklıkla çalıştırılacağını ayarlar. Beş dakikalık varsayılan sıklıkta ve beş test konumuyla, siteniz ortalama olarak dakikada bir test edilir.|
+|**Test konumları**| , Sunucularımızın URL 'nize Web istekleri gönderdiğimiz yerdir. Web sitenizdeki sorunları ağ sorunlarından ayırabilmeniz için **en az önerilen test konumu sayısı beş ' dir** . En fazla 16 konum seçebilirsiniz.
 
-### <a name="success-criteria"></a>Başarı kriterleri
+### <a name="success-criteria"></a>Başarı ölçütleri
 
 |Ayar| Açıklama
 |----|----|----|
-| **Test zaman** |Yavaş yanıtlar hakkında uyarılmak için bu değeri azaltın. Yanıtlar sitenizden bu süre içinde alınmadıysa test başarısız sayılır. **Ayrıştırık bağımlı isteklerini**seçtiyseniz, bu dönemde tüm resimler, stil dosyaları, komut dosyaları ve diğer bağımlı kaynaklar alınmış olmalıdır.|
-| **HTTP yanıtı** | Başarı olarak sayılan döndürülen durum kodu. 200, normal web sayfası döndürüldüğünü belirten koddur.|
-| **İçerik eşleşmesi** | "Hoş geldin!" gibi bir ip. Her yanıtta büyük küçük harfe duyarlı bir tam eşleşme oluştuğunu test edebiliriz. Joker karakter bulunmayan düz bir dize olmalıdır. Sayfanızın içeriği değişirse bunu güncelleştirmeniz gerektiğini unutmayın. **Yalnızca İngilizce karakterler içerik eşleştirmesi ile desteklenir** |
+| **Test zaman aşımı** |Yavaş yanıtlar hakkında uyarı almak için bu değeri azaltın. Yanıtlar sitenizden bu süre içinde alınmadıysa test başarısız sayılır. **Bağımlı Istekleri Ayrıştır**' ı seçtiyseniz tüm görüntüler, stil dosyaları, betikler ve diğer bağımlı kaynaklar bu süre içinde alınmış olmalıdır.|
+| **HTTP yanıtı** | Başarılı olarak sayılan döndürülen durum kodu. 200, normal web sayfası döndürüldüğünü belirten koddur.|
+| **İçerik eşleşmesi** | "Hoş geldiniz!" gibi bir dize Her yanıtta büyük küçük harfe duyarlı bir tam eşleşme oluştuğunu test edebiliriz. Joker karakter bulunmayan düz bir dize olmalıdır. Sayfanızın içeriği değişirse bunu güncelleştirmeniz gerektiğini unutmayın. **İçerik eşleşmesi ile yalnızca Ingilizce karakterler desteklenir** |
 
 ### <a name="alerts"></a>Uyarılar
 
 |Ayar| Açıklama
 |----|----|----|
-|**Gerçek zamanlı ya da yakın (Önizleme)** | Yakın zamanlı uyarıları kullanmanızı öneririz. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
-|**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıları kullanmamızı önermiyoruz.|
-|**Uyarı konum eşiği**|En az 3/5 konum öneririz. Uyarı konum eşiği ile test konumlarının sayısı arasındaki en uygun ilişki, en az beş test konumuna sahip test **konumlarının uyarı konum eşik** = **sayısıdır - 2.**|
+|**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
+|**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile test konumlarından oluşan** **Uyarı konum eşiği** = sayısıdır-2.|
 
 ## <a name="configuration"></a>Yapılandırma
 
-### <a name="plugging-time-and-random-numbers-into-your-test"></a>Testinize zaman ve rasgele sayılar takma
+### <a name="plugging-time-and-random-numbers-into-your-test"></a>Testinize zaman ve rastgele sayılar takma
 
 Dış bir kaynağa ait stoklar gibi zamana bağımlı veriler alan bir aracı test ettiğinizi varsayalım. Web testinizi kaydettiğinizde, belirli zamanları kullanmanız gerekse de, bunları testin parametreleri (StartTime ve EndTime) olarak ayarlarsınız.
 
-![Benim awesome stok uygulaması ekran görüntüsü](./media/availability-multistep/app-insights-72webtest-parameters.png)
+![Başar hisse senedi uygulaması ekran görüntüsü](./media/availability-multistep/app-insights-72webtest-parameters.png)
 
 Testi çalıştırdığınızda, EndTime her zaman geçerli zaman, StartTime da 15 dakika öncesi olmalıdır.
 
-Web Test Tarihi Saat Eklentisi, parametreleme sürelerini işlemenin yolunu sağlar.
+Web testi tarih saat eklentisi Parametreleştirme süresini işlemek için bir yol sağlar.
 
 1. İstediğiniz her değişken parametre değeri için bir web testi eklentisi ekleyin. Web testi araç çubuğunda, **Web Testi Eklentisi Ekle**’yi seçin.
     
-    ![Web Testi Eklentisi Ekle](./media/availability-multistep/app-insights-72webtest-plugin-name.png)
+    ![Web testi eklentisi Ekle](./media/availability-multistep/app-insights-72webtest-plugin-name.png)
     
     Bu örnekte, Tarih Saat Eklentisinin iki örneğini kullanacağız. Bir örnek "15 dakika önce" için, bir örnek de "şimdi" için.
 
@@ -100,22 +100,22 @@ Kullanıcılarınız uygulamanızda oturum açarsa, oturum açma benzetimi için
 
 Her durumda, uygulamanızda yalnızca test amacıyla bir hesap oluşturmalısınız. Mümkünse, web testlerinin gerçek kullanıcıları etkileme olasılığını önlemek için test hesabının izinlerini kısıtlayın.
 
-**Basit kullanıcı adı ve şifre** Her zamanki gibi bir web testi kaydedin. Önce tanımlama bilgilerini silin.
+**Basit Kullanıcı adı ve parola** Bir Web testini her zamanki şekilde kaydedin. Önce tanımlama bilgilerini silin.
 
 **SAML kimlik doğrulaması**
 
 |Özellik adı| Açıklama|
 |----|-----|
-| İzleyici Uri | SAML belirteci için seyirci URI.  Bu, ACS ad alanı ve ana bilgisayar adı da dahil olmak üzere Access Control Service (ACS) için URI'dir. |
-| Sertifika Şifresi | Gömülü özel anahtara erişim sağlayacak istemci sertifikasının parolası. |
-| Müşteri Sertifikası  | Base64 kodlanmış formatında özel anahtarlı istemci sertifikası değeri. |
-| Ad Tanımlayıcısı | Belirteci için ad tanımlayıcısı |
-| Sonra Değil | Belirteç geçerli olacak zaman ası.  Varsayılan değer 5 dakikadır. |
-| Önce Değil | Geçmişte oluşturulan bir belirteç için zaman dilimi geçerli olacaktır (zaman eğriliklerini ele almak için).  Varsayılan değer (negatif) 5 dakikadır. |
-| Hedef Bağlam Parametre Adı | Oluşturulan iddiayı alacak bağlam parametresi. |
+| Hedef kitle Uri 'Si | SAML belirteci için hedef kitle URI 'SI.  Bu, ACS ad alanı ve ana bilgisayar adı da dahil olmak üzere Access Control Service (ACS) URI 'sidir. |
+| Sertifika parolası | Katıştırılmış özel anahtara erişim sağlayacak istemci sertifikası parolası. |
+| İstemci sertifikası  | Base64 kodlamalı biçimde özel anahtara sahip istemci sertifikası değeri. |
+| Ad Tanımlayıcısı | Belirtecin ad tanımlayıcısı |
+| Sonra Değil | Belirtecin geçerli olacağı TimeSpan.  Varsayılan değer 5 dakikadır. |
+| Önce Değil | Geçmişte oluşturulan belirtecin geçerli olacağı TimeSpan değeri geçerli olacaktır (zaman eğilerini gidermek için).  Varsayılan değer (negatif) 5 dakikadır. |
+| Hedef bağlam parametresi adı | Oluşturulan onayı alacak bağlam parametresi. |
 
 
-**İstemci sırrı** Uygulamanızda istemci sırrı içeren bir oturum açma rotası varsa, bu rotayı kullanın. Azure Active Directory (AAD), gizli anahtarla oturum açmayı sağlayan bir hizmet örneğidir. AAD’de gizli anahtar, Uygulama Anahtarı’dır.
+**İstemci parolası** Uygulamanızda, bir istemci gizli anahtarı içeren bir oturum açma yolu varsa, bu yolu kullanın. Azure Active Directory (AAD), gizli anahtarla oturum açmayı sağlayan bir hizmet örneğidir. AAD’de gizli anahtar, Uygulama Anahtarı’dır.
 
 Aşağıda uygulama anahtarı kullanan bir Azure web uygulaması için web testi örneği verilmiştir:
 
@@ -124,7 +124,7 @@ Aşağıda uygulama anahtarı kullanan bir Azure web uygulaması için web testi
 Gizli anahtar (AppKey) kullanarak AAD’den belirteç alın.
 Yanıttan taşıyıcı belirteci ayıklayın.
 Yetkilendirme üst bilgisinde taşıyıcı belirteç kullanarak API çağırın.
-Web testinin gerçek bir istemci olduğundan emin olun - yani AAD'de kendi uygulaması vardır - ve clientId + uygulama anahtarını kullanın. Test altındaki hizmetinizin AAD'de de kendi uygulaması vardır: bu uygulamanın appID URI'si kaynak alanındaki web testine yansıtılır.
+Web testinin gerçek bir istemci olduğundan emin olun; diğer bir deyişle, AAD 'de kendi uygulamasına sahiptir ve Clıtıd + uygulama anahtarını kullanın. Test kapsamındaki hizmetiniz de AAD 'de kendi uygulamasına sahiptir: Bu uygulamanın AppID URI 'SI, kaynak alanındaki Web testinde yansıtılır.
 
 ### <a name="open-authentication"></a>Açık Kimlik Doğrulaması
 Microsoft veya Google hesabınızla oturum açma, bir açık kimlik doğrulaması örneğidir. OAuth kullanan çok sayıda uygulama, alternatif gizli anahtar da sağlar; bu nedenle ilk taktiğiniz bu olasılığın incelenmesi olmalıdır.
@@ -139,9 +139,9 @@ Belirteçleri parametreleyin; belirteç kimlik doğrulayıcıdan döndürüldü�
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Özel [sorun giderme makalesi](troubleshoot-availability.md).
+Adanmış [sorun giderme makalesi](troubleshoot-availability.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kullanılabilirlik Uyarıları](availability-alerts.md)
-* [Url ping web testleri](monitor-web-app-availability.md)
+* [Kullanılabilirlik uyarıları](availability-alerts.md)
+* [URL ping Web testleri](monitor-web-app-availability.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Trafik Yöneticisi'ni kullanarak performans trafiği yönlendirme yöntemini yapılandırma | Microsoft Dokümanlar
-description: Bu makalede, trafik yöneticisinin en düşük gecikme gecikmesi ile bitiş noktasına yönlendirecek şekilde nasıl yapılandırılabildiğini açıklamaktadır.
+title: Azure Traffic Manager kullanarak performans trafiği yönlendirme yöntemini yapılandırma | Microsoft Docs
+description: Bu makalede, trafiği en düşük gecikme süresine sahip uç noktaya yönlendirmek üzere Traffic Manager nasıl yapılandırılacağı açıklanmaktadır
 services: traffic-manager
 manager: twooley
 documentationcenter: ''
@@ -13,41 +13,41 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
 ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938768"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Performans trafiği yönlendirme yöntemini yapılandırma
 
-Performans trafiği yönlendirme yöntemi, istemcinin ağından gelen en düşük gecikme yle trafiği bitiş noktasına yönlendirmenize olanak tanır. Genellikle, en düşük gecikme gecikmesi ile veri merkezi coğrafi mesafe en yakın. Bu trafik yönlendirme yöntemi, ağ yapılandırmasında veya yükünde gerçek zamanlı değişiklikleri hesaba katamaz.
+Performans trafiği yönlendirme yöntemi, trafiği uç noktaya yönlendirmenizi sağlar ve istemcinin ağındaki en düşük gecikme süresine sahip olursunuz. Genellikle en düşük gecikme süresine sahip veri merkezi, coğrafi uzaklığın en yakınsıdır. Bu trafik yönlendirme yöntemi, ağ yapılandırmasındaki veya yükteki gerçek zamanlı değişiklikleri hesaba alamaz.
 
 ##  <a name="to-configure-performance-routing-method"></a>Performans yönlendirme yöntemini yapılandırmak için
 
 1. Bir tarayıcıdan [Azure portalında](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz denemeye](https://azure.microsoft.com/free/) kaydolabilirsiniz. 
-2. Portalın arama çubuğunda, Trafik **Yöneticisi profillerini** arayın ve ardından yönlendirme yöntemini yapılandırmak istediğiniz profil adını tıklatın.
-3. Trafik **Yöneticisi profil** bıçak bölümünde, yapılandırmanıza eklemek istediğiniz bulut hizmetlerinin ve web sitelerinin mevcut olduğunu doğrulayın.
-4. **Ayarlar** bölümünde Yapılandırma'yı ve **Yapılandırma** bıçağını **aşağıdaki**gibi tamamlayın:
-    1. **Trafik yönlendirme yöntemi ayarları**için, Yönlendirme **yöntemi** için **Performans'ı**seçin.
-    2. Bu profildeki tüm uç nokta için **Bitiş Noktası monitör ayarlarını** aşağıdaki gibi ayarlayın:
-        1. Uygun **Protokolü**seçin ve **Bağlantı Noktası** numarasını belirtin. 
-        2. **Yol** için bir */* ileri eğik çizgi . Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. İleri ye doğru çizgi "/" göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu ima eder.
-        3. Sayfanın üst kısmında **Kaydet'i**tıklatın.
-5.  Yapılandırmanızdaki değişiklikleri aşağıdaki gibi test edin:
-    1.  Portalın arama çubuğunda, Trafik Yöneticisi profil adını arayın ve görüntülenen sonuçlarda Trafik Yöneticisi profilini tıklatın.
-    2.  Trafik **Yöneticisi** profil bıçak, **Genel Bakış'ı**tıklatın.
-    3.  **Trafik Yöneticisi profil** bıçağı, yeni oluşturduğunuz Trafik Yöneticisi profilinizin DNS adını görüntüler. Bu, yönlendirme türüne göre belirlendiği şekilde doğru uç noktaya yönlendirilen almak için herhangi bir istemci (örneğin, bir web tarayıcısı kullanarak ona yönlendirilerek) tarafından kullanılabilir. Bu durumda, tüm istekler istemcinin ağından en düşük gecikme yle bitiş noktasına yönlendirilir.
-6. Trafik Yöneticisi profiliniz çalışmaya başladıktan sonra, yetkili DNS sunucunuzdaki DNS kaydını şirket alan adınızı Trafik Yöneticisi etki alanı adına işaret etmek için düzenleme.
+2. Portalın arama çubuğunda **Traffic Manager profillerini** arayın ve ardından yönlendirme yöntemini yapılandırmak istediğiniz profil adına tıklayın.
+3. **Traffic Manager profili** dikey penceresinde, yapılandırmanıza dahil etmek istediğiniz bulut hizmetlerinin ve Web sitelerinin mevcut olduğunu doğrulayın.
+4. **Ayarlar** bölümünde **yapılandırma**' ya tıklayın ve **yapılandırma** dikey penceresinde aşağıdaki gibi tamamlanır:
+    1. **Trafik yönlendirme yöntemi ayarları**Için, **yönlendirme yöntemi** için **performans**' ı seçin.
+    2. Bu profildeki tüm uç noktaları için aynı **uç nokta izleyici ayarlarını** aşağıdaki şekilde ayarlayın:
+        1. Uygun **Protokolü**seçin ve **bağlantı noktası** numarasını belirtin. 
+        2. **Yol** için eğik çizgi */* yazın. Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. Eğik çizgi "/", göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu gösterir.
+        3. Sayfanın üst kısmında **Kaydet**' e tıklayın.
+5.  Yapılandırmanızda yaptığınız değişiklikleri aşağıdaki gibi test edin:
+    1.  Portalın arama çubuğunda Traffic Manager profili adını arayın ve görüntülenen sonuçlarda Traffic Manager profiline tıklayın.
+    2.  **Traffic Manager** profili dikey penceresinde **Genel Bakış ' a**tıklayın.
+    3.  **Traffic Manager profili** dikey penceresi, yeni oluşturduğunuz TRAFFIC Manager profilinizin DNS adını görüntüler. Bu, yönlendirme türü tarafından belirlendiği şekilde doğru uç noktaya yönlendirilmek için herhangi bir istemci tarafından (örneğin, bir Web tarayıcısı kullanılarak gezinilirken) kullanılabilir. Bu durumda tüm istekler, istemcinin ağındaki en düşük gecikme süresine sahip uç noktaya yönlendirilir.
+6. Traffic Manager profiliniz çalışmaya başladıktan sonra, yetkili DNS sunucunuzdaki DNS kaydını düzenleyerek şirket etki alanı adınızı Traffic Manager etki alanı adına getirin.
 
-![Trafik Yöneticisi'ni kullanarak performans trafiği yönlendirme yöntemini yapılandırma][1]
+![Traffic Manager kullanarak performans trafiği yönlendirme yöntemini yapılandırma][1]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ağırlıklı trafik yönlendirme yöntemi](traffic-manager-configure-weighted-routing-method.md) hakkında bilgi edinin.
 - [Öncelik yönlendirme yöntemi](traffic-manager-configure-priority-routing-method.md) hakkında bilgi edinin.
 - [Coğrafi yönlendirme yöntemi](traffic-manager-configure-geographic-routing-method.md) hakkında bilgi edinin.
-- [Trafik Yöneticisi ayarlarını](traffic-manager-testing-settings.md)nasıl test edebilirsiniz öğrenin.
+- [Traffic Manager ayarlarını test](traffic-manager-testing-settings.md)etme hakkında bilgi edinin.
 
 <!--Image references-->
 [1]: ./media/traffic-manager-performance-routing-method/traffic-manager-performance-routing-method.png

@@ -1,6 +1,6 @@
 ---
-title: Çok değerli trafik yönlendirmeyi yapılandırma - Azure Trafik Yöneticisi
-description: Bu makalede, Trafik Yöneticisi'nin trafiği A/AAAA uç noktalarına yönlendirmek için nasıl yapılandırılabildiğini açıklanmaktadır.
+title: Çoklu değer trafik yönlendirmeyi Yapılandırma-Azure Traffic Manager
+description: Bu makalede, trafiği bir/AAAA uç noktalarına yönlendirmek üzere Traffic Manager nasıl yapılandırılacağı açıklanmaktadır.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,40 +13,40 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
 ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938772"
 ---
-# <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Trafik Yöneticisi'nde Çok Değerli yönlendirme yöntemini yapılandırma
+# <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager çoklu değer yönlendirme yöntemini yapılandırma
 
-Bu makalede, MultiValue trafik yönlendirme yönteminin nasıl yapılandırılabildiğini açıklanmaktadır. **Çok değerli** trafik yönlendirme yöntemi, birden çok sağlıklı uç noktayı döndürmenize olanak tanır ve istemcilerin başka bir DNS araması yapmak zorunda kalmadan yeniden deneme seçenekleri olduğundan uygulamanızın güvenilirliğini artırmaya yardımcı olur. MultiValue yönlendirme, yalnızca IPv4 veya IPv6 adresleri kullanılarak tüm uç noktaları belirtilen profiller için etkinleştirilir. Bu profil için bir sorgu alındığı zaman, tüm sağlıklı uç noktalar belirtilen yapılandırılabilir maksimum iade sayısına göre döndürülür. 
+Bu makalede, çok değerli trafik yönlendirme yönteminin nasıl yapılandırılacağı açıklanır. Çoklu **değer** trafik yönlendirme yöntemi, birden çok sağlıklı uç nokta döndürmenizi sağlar ve istemcilerin başka bir DNS araması yapmak zorunda kalmadan yeniden denemek için daha fazla seçenek olduğundan uygulamanızın güvenilirliğini artırmaya yardımcı olur. Çoklu değer yönlendirme yalnızca IPv4 veya IPv6 adresleri kullanılarak belirtilen tüm uç noktalarına sahip profiller için etkindir. Bu profil için bir sorgu alındığında, tüm sağlıklı uç noktalar belirtilen yapılandırılabilir maksimum dönüş sayısına göre döndürülür. 
 
 >[!NOTE]
-> Şu anda IPv4 veya IPv6 adreslerini kullanarak uç noktaları eklemek yalnızca **Dış** türün uç noktaları için desteklenir ve dolayısıyla MultiValue yönlendirmesi yalnızca bu uç noktalar için desteklenir.
+> Şu anda, IPv4 veya IPv6 adreslerini kullanarak uç noktaları eklemek yalnızca **dış** türündeki uç noktalar için desteklenir ve bu nedenle çok değerli yönlendirme yalnızca söz konusu uç noktalar için desteklenir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-Trafik Yöneticisi profili için bir kaynak grubu oluşturun.
-1. Azure portalının sol bölmesine **Kaynak gruplarını**seçin.
-2. **Kaynak gruplarında,** sayfanın üst kısmında **Ekle'yi**seçin.
-3. **Kaynak grup adına,** *myResourceGroupTM1*adında bir ad yazın. **Kaynak grubu konumu**için Doğu **ABD'yi**seçin ve ardından **Tamam'ı**seçin.
+Traffic Manager profili için bir kaynak grubu oluşturun.
+1. Azure portal sol bölmesinde **kaynak grupları**' nı seçin.
+2. **Kaynak grupları**' nda, sayfanın üst kısmında **Ekle**' yi seçin.
+3. **Kaynak grubu adı**alanına bir ad *myResourceGroupTM1*yazın. **Kaynak grubu konumu**için **Doğu ABD**' yi seçin ve ardından **Tamam**' ı seçin.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
-En düşük gecikme ile bitiş noktasına göndererek kullanıcı trafiğini yönlendiren bir Trafik Yöneticisi profili oluşturun.
+En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı trafiğini yönlendiren bir Traffic Manager profili oluşturun.
 
-1. **Networking** > Ekranın sol üst tarafında, **kaynak** > Oluştur**Trafik Yöneticisi profili** > **Oluştur'u**seçin.
-2. **Trafik Yöneticisi Oluştur profilinde,** girin veya seçin, aşağıdaki bilgileri, kalan ayarlar için varsayılanları kabul edin ve sonra **Oluştur'u**seçin:
+1. Ekranın sol üst kısmında,**profil** > **Oluştur**Traffic Manager **kaynak** > **ağı** > oluştur ' u seçin.
+2. **Traffic Manager profili oluştur**' da, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve **Oluştur**' u seçin:
     
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Adı                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
-    | Yönlendirme yöntemi          | Çok **değerli** yönlendirme yöntemini seçin.                                       |
+    | Yönlendirme yöntemi          | **Çoklu değer** yönlendirme yöntemini seçin.                                       |
     | Abonelik            | Aboneliğinizi seçin.                          |
-    | Kaynak grubu          | *MyResourceGroupTM1'i*seçin. |
+    | Kaynak grubu          | *MyResourceGroupTM1*öğesini seçin. |
     | Konum                | Bu ayar, kaynak grubunun konumunu ifade eder ve genel olarak dağıtılacak Traffic Manager profilini etkilemez.                              |
    |        |           | 
   
@@ -54,7 +54,7 @@ En düşük gecikme ile bitiş noktasına göndererek kullanıcı trafiğini yö
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
 
-Önceki adımda oluşturduğunuz MultiValue Traffic Manager profiline harici uç nokta olarak iki IP adresi ekleyin.
+Önceki adımda oluşturduğunuz çoklu değer Traffic Manager profiline dış uç noktalar olarak iki IP adresi ekleyin.
 
 1. Portalın arama çubuğunda önceki bölümde oluşturduğunuz Traffic Manager profili adını arayın ve görüntülenen sonuçların arasından bu profili seçin.
 2. **Traffic Manager profili** sayfasının **Ayarlar** bölümünde **Uç noktalar**'a ve ardından **Ekle**'ye tıklayın.
@@ -64,10 +64,10 @@ En düşük gecikme ile bitiş noktasına göndererek kullanıcı trafiğini yö
     | ---                     | ---                                                |
     | Tür                    | Dış uç nokta                                   |
     | Adı           | myEndpoint1                                        |
-    | Tam nitelikli alan adı (FQDN) veya IP           | Bu Trafik Yöneticisi profiline eklemek istediğiniz bitiş noktasının Genel IP adresini yazın                         |
+    | Tam etki alanı adı (FQDN) veya IP           | Bu Traffic Manager profiline eklemek istediğiniz uç noktanın genel IP adresini yazın                         |
     |        |           |
 
-4. **Tam nitelikli etki alanı adı (FQDN) veya IP**için *myEndpoint2*adlı başka bir bitiş noktası eklemek için 2 ve 3 adımlarını yineleyin, ikinci bitiş noktasının genel IP adresini girin.
+4. **Tam etki alanı adı (FQDN) veya IP**için *myEndpoint2*adlı başka bir uç nokta eklemek üzere 2 ve 3. adımları yineleyin, ıkıncı uç noktanın genel IP adresini girin.
 5. Her iki uç noktanın eklenmesi tamamlandığında, **Çevrimiçi** izleme durumuyla birlikte **Traffic Manager profili** bölümünde gösterilir.
 
    ![Traffic Manager uç noktası ekleme](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)

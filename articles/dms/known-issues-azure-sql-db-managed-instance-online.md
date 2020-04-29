@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Veritabanı'na çevrimiçi geçişlerle ilgili bilinen sorunlar ve sınırlamalar yönetilen örnek
-description: Azure SQL Veritabanı yönetilen örneğe çevrimiçi geçişlerle ilişkili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
+title: Azure SQL veritabanı yönetilen örneği ile çevrimiçi geçişlerle ilgili bilinen sorunlar ve sınırlamalar
+description: Azure SQL veritabanı yönetilen örneği 'ne çevrimiçi geçişlerle ilişkili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,56 +12,56 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 88e2b5894686ee93caecf33e04940803eb75f394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77648674"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları yönetilen örnek
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği 'ne çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
-SQL Server'dan Azure SQL Veritabanı yönetilen örneğine çevrimiçi geçişlerle ilişkili bilinen sorunlar ve sınırlamalar aşağıda açıklanmıştır.
+SQL Server ile Azure SQL veritabanı yönetilen örneği arasındaki çevrimiçi geçişlerle ilişkili bilinen sorunlar ve sınırlamalar aşağıda açıklanmaktadır.
 
 > [!IMPORTANT]
-> SQL Server'ın Azure SQL Veritabanı'na çevrimiçi geçişleri ile SQL_variant veri türlerinin geçişi desteklenmez.
+> Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerde SQL_variant veri türlerinin geçirilmesi desteklenmez.
 
 ## <a name="backup-requirements"></a>Yedekleme gereksinimleri
 
-- **Checksum'lu yedeklemeler**
+- **Sağlama toplamı olan yedeklemeler**
 
-    Azure Veritabanı Geçiş Hizmeti, şirket içi veritabanlarınızı SQL Veritabanı yönetilen örneğine geçirmek için yedekleme ve geri yükleme yöntemini kullanır. Azure Veritabanı Geçiş Hizmeti yalnızca checksum kullanılarak oluşturulan yedeklemeleri destekler.
+    Azure veritabanı geçiş hizmeti, şirket içi veritabanlarınızı SQL veritabanı yönetilen örneğine geçirmek için yedekleme ve geri yükleme yöntemini kullanır. Azure veritabanı geçiş hizmeti yalnızca sağlama toplamı kullanılarak oluşturulan yedeklemeleri destekler.
 
-    [Yedekleme veya Geri Yükleme Sırasında Yedekleme Denetimleri Etkinleştirme veya Devre Dışı Kalım (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
+    [Yedekleme veya geri yükleme sırasında yedekleme sağlama toplamlarını etkinleştirme veya devre dışı bırakma (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
     > [!NOTE]
-    > Veritabanı yedeklemelerini sıkıştırma ile alırsanız, açıkça devre dışı bırakılmadığı sürece denetim aracı varsayılan bir davranıştır.
+    > Veritabanı yedeklerini sıkıştırma ile alırsanız, açıkça devre dışı bırakılmadığı takdirde sağlama toplamı varsayılan davranıştır.
 
-    Çevrimdışı geçişlerde, eğer seçerseniz **Azure Veritabanı Geçiş Hizmeti'ne izin verecektir...** sonra Azure Veritabanı Geçiş Hizmeti, denetimler seçeneği etkinleştirilmiş veritabanı yedeklemesini alır.
+    Çevrimdışı geçişlerde, **Azure veritabanı geçiş hizmeti 'ne izin vereceğim...**' yi seçerseniz, Azure veritabanı geçiş hizmeti, veritabanı yedeklemesini sağlama toplamı seçeneği etkin olacak şekilde alır.
 
-- **Yedekleme ortamı**
+- **Yedekleme medyası**
 
-    Her yedeklemeyi ayrı bir yedekleme ortamına (yedekleme dosyaları) aldığından emin olun. Azure Veritabanı Geçiş Hizmeti, tek bir yedekleme dosyasına eklenen yedeklemeleri desteklemez. Yedekleme dosyalarını ayırmak için tam yedekleme alın ve yedeklemeleri günlüğe kaydedin.
+    Her yedeklemeyi ayrı bir yedekleme ortamında (yedekleme dosyaları) aldığınızdan emin olun. Azure veritabanı geçiş hizmeti, tek bir yedekleme dosyasına eklenen yedeklemeleri desteklemez. Yedekleme dosyalarını ayırmak için tam yedekleme ve günlük yedeklemeleri yapın.
 
-## <a name="data-and-log-file-layout"></a>Veri ve günlük dosya düzeni
+## <a name="data-and-log-file-layout"></a>Veri ve günlük dosyası düzeni
 
-- **Günlük dosyalarının sayısı**
+- **Günlük dosyası sayısı**
 
-    Azure Veritabanı Geçiş Hizmeti, birden çok günlük dosyası olan veritabanlarını desteklemez. Birden çok günlük dosyanız varsa, bunları tek bir işlem günlüğü dosyasında küçültün ve yeniden düzenleyin. Boş olmayan dosyaları günlüğe kaydetmek için uzaktan kumanda edemediğinden, önce günlük dosyasını yedeklemeniz gerekir.
+    Azure veritabanı geçiş hizmeti birden çok günlük dosyası olan veritabanlarını desteklemez. Birden çok günlük dosyanız varsa, bunları daraltın ve tek bir işlem günlük dosyasında yeniden düzenleyin. Boş olmayan dosyaları günlüğe uzak olmadığınızdan, önce günlük dosyasını yedeklemeniz gerekir.
 
 ## <a name="sql-server-features"></a>SQL Server özellikleri
 
-- **FileStream/FileTables**
+- **FILESTREAM/dosya tabloları**
 
-    SQL Veritabanı yönetilen örnek şu anda FileStream ve FileTables desteklemiyor. Bu özelliklere bağlı iş yükleri için Azure VM'lerinde çalışan SQL Sunucularını Azure hedefiniz olarak seçmenizi öneririz.
+    SQL veritabanı yönetilen örneği şu anda FILESTREAM ve FileTables 'ı desteklemiyor. Bu özelliklere bağımlı olan iş yükleri için Azure hedefi olarak Azure VM 'lerinde çalışan SQL Server 'Lar için tercih etmenizi öneririz.
 
-- **Bellek tabloları**
+- **Bellek içi tablolar**
 
-    In-memory OLTP, SQL Veritabanı yönetilen örnek için Premium ve İş Kritik katmanlarında kullanılabilir; Genel Amaç katmanı bellek içi OLTP'yi desteklemez.
+    Bellek içi OLTP, SQL veritabanı yönetilen örneği için Premium ve İş Açısından Kritik katmanlarında kullanılabilir; Genel Amaçlı katmanı bellek Içi OLTP 'Yi desteklemez.
 
 ## <a name="migration-resets"></a>Geçiş sıfırlamaları
 
 - **Dağıtımlar**
 
-    SQL Veritabanı yönetilen örnek otomatik yama ve sürüm güncellemeleri ile bir PaaS hizmetidir. SQL Veritabanı yönetilen örneğinin geçişi sırasında, kritik olmayan güncelleştirmeler 36 saate kadar yardımcı olur. Daha sonra (ve kritik güncelleştirmeler için), geçiş kesintiye uğrarsa, işlem tam bir geri yükleme durumuna sıfırlanır.
+    SQL veritabanı yönetilen örneği, otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri içeren bir PaaS hizmetidir. SQL veritabanı yönetilen örneğinizin geçirilmesi sırasında kritik olmayan güncelleştirmeler 36 saate kadar yardımcı olur. Daha sonra (ve kritik güncelleştirmeler için), geçiş kesintiye uğratılıyor ise işlem tam geri yükleme durumuna sıfırlanır.
 
-    Geçiş kesme yalnızca tam yedekleme geri yüklendikten ve tüm günlük yedeklemelerini yakaladıktan sonra çağrılabilir. Üretim geçişi kesintileriniz etkileniyorsa, [Azure DMS Geri Bildirim takma adı ile](mailto:dmsfeedback@microsoft.com)iletişime geçin.
+    Tam geçişi geçişi yalnızca tam yedekleme geri yüklendikten sonra çağrılabilir ve tüm günlük yedeklemeleriyle yapılır. Üretim geçişiniz etkileniyorsa [Azure DMS geri bildirim diğer adı](mailto:dmsfeedback@microsoft.com)ile iletişime geçin.

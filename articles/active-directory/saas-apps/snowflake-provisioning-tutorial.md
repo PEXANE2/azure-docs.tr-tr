@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Snowflake'i yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını Snowflake'e otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için kar tanesi yapılandırma | Microsoft Docs'
+description: "' Nin kar/veya Kullanıcı hesaplarını otomatik olarak sağlaması ve serbest bırakmak üzere Azure Active Directory nasıl yapılandırılacağını öğrenin."
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,159 +16,159 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 2c5d91894ba35233f3fbebffdff9104edcfdd27b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063173"
 ---
-# <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Snowflake'i yapılandırın
+# <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için kar ke 'yi yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Snowflake'e otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için SnowFlake ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları kar/veya grupları otomatik olarak sağlamak ve serbest bırakmak üzere yapılandırmak için kar ve Azure Active Directory (Azure AD) ' de gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [Bir Kar Tanesi kiracı.](https://www.Snowflake.com/pricing/)
-* Yönetici izinleri olan Snowflake'deki bir kullanıcı hesabı.
+* [Bir kar tanesi kiracısı](https://www.Snowflake.com/pricing/).
+* Kar ortamında yönetici izinleriyle bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-snowflake"></a>Kullanıcıları Snowflake'e atama
+## <a name="assigning-users-to-snowflake"></a>Kullanıcıları kar alanına atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Snowflake'e erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları burada talimatları izleyerek Snowflake'e atayabilirsiniz:
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların kar/veya gruplarının erişimine ihtiyacı olduğuna karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları kar için atayabilirsiniz:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-snowflake"></a>Kullanıcıları Snowflake'e atamak için önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-snowflake"></a>Kullanıcıları kar alanına atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için Snowflake'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek üzere kar için tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Snowflake'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı kar alanına atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="setup-snowflake-for-provisioning"></a>Kurulum Snowflake sağlama için
+## <a name="setup-snowflake-for-provisioning"></a>Sağlama için kar ke ayarla
 
-Azure AD ile otomatik kullanıcı sağlama için Snowflake'i yapılandırmadan önce, Snowflake'te SCIM sağlamayı etkinleştirmeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için kar \ ' ı yapılandırmadan önce, kar için SCıM sağlamasını etkinleştirmeniz gerekecektir.
 
-1. Snowflake Yönetici Konsolunuzda oturum açın. Vurgulanan çalışma sayfasına aşağıda gösterilen sorguyu girin ve **Çalıştır'ı**tıklatın.
+1. Kar Yönetici Konsolu 'nda oturum açın. Aşağıda gösterilen çalışma sayfasında gösterilen sorguyu girin ve **Çalıştır**' a tıklayın.
 
-    ![Snowflake Yönetici Konsolu](media/Snowflake-provisioning-tutorial/image00.png)
+    ![Kar tanesi Yönetici Konsolu](media/Snowflake-provisioning-tutorial/image00.png)
 
-2.  Snowflake kiracınız için bir SCIM Erişim Jetonu oluşturulur. Almak için, aşağıda vurgulanan bağlantıyı tıklatın.
+2.  Kar tanesi kiracınız için bir SCıM erişim belirteci oluşturulacaktır. Bunu almak için aşağıda vurgulanan bağlantıya tıklayın.
 
-    ![Kar Tanesi SCIM Ekle](media/Snowflake-provisioning-tutorial/image01.png)
+    ![Kar tanesi ekleme SCıM](media/Snowflake-provisioning-tutorial/image01.png)
 
-3. Oluşturulan belirteç değerini kopyalayın ve **Bitti'yi**tıklatın. Bu değer, Azure portalındaki Kar Tanesi uygulamanızın Sağlama sekmesinde **Gizli Belirteç** alanına girilir.
+3. Oluşturulan belirteç değerini kopyalayın ve **bitti**' ye tıklayın. Bu değer, Azure portal kar uygulama uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
 
-    ![Kar Tanesi SCIM Ekle](media/Snowflake-provisioning-tutorial/image02.png)
+    ![Kar tanesi ekleme SCıM](media/Snowflake-provisioning-tutorial/image02.png)
 
-## <a name="add-snowflake-from-the-gallery"></a>Galeriden Snowflake ekle
+## <a name="add-snowflake-from-the-gallery"></a>Galeriden kar Ekle
 
-Azure AD ile otomatik kullanıcı sağlama için Snowflake'i yapılandırmak için Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize Snowflake eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlamaya yönelik kar kümesini yapılandırmak için Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize Addkar etmeniz gerekir.
 
-**Azure AD uygulama galerisinden Snowflake eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD Uygulama Galerisi 'nden kar tanesi eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Kar Tanesi'ni**girin, sonuç panelinde **Snowflake'i** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **kar tanesi**' ni girin, sonuçlar panelinde **kar** tanesi ' ni seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Kar tanesi sonuç listesinde](common/search-new-app.png)
+    ![Sonuçlar listesinde kar tanesi](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-snowflake"></a>Otomatik kullanıcı sağlamayı Snowflake olarak yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-snowflake"></a>Kar tanesi için otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Snowflake'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak kar grubundaki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca Snowflake için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz , [Snowflake Tek oturum](Snowflake-tutorial.md)açma öğreticisinde verilen talimatları izleyerek. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
+> Ayrıca, [kar tanesi çoklu oturum açma öğreticisinde](Snowflake-tutorial.md)sunulan yönergeleri izleyerek kar için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Azure AD'de Snowflake için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Azure AD 'de kar için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Snowflake'i**seçin.
+2. Uygulamalar listesinde, **kar tanesi**' ni seçin.
 
-    ![Uygulamalar listesindeki Snowflake bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesinde kar tanesi bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici Kimlik Bilgileri bölümü `https://<Snowflake Account URL>/scim/v2` altında, kiracı URL'sini girdi. Kiracı URL'sinin bir örneği:`https://acme.snowflakecomputing.com/scim/v2`
+5. Yönetici kimlik bilgileri bölümünün altında, kiracı `https://<Snowflake Account URL>/scim/v2` URL 'sini girin. Kiracı URL 'sine bir örnek:`https://acme.snowflakecomputing.com/scim/v2`
 
-6. **Gizli Belirteç'te**daha önce alınan **SCIM Kimlik Doğrulama Belirteci** değerini girdi. Azure AD'nin Snowflake'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Snowflake hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+6. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin kar alanına bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, kar için hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**'e tıklayın.
+8. **Kaydet**’e tıklayın.
 
-9. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Kar Tanesine Senkronize Et'i**seçin.
+9. **Eşlemeler** bölümü altında, **kullanıcıları kar alarak Azure Active Directory eşitler**' ı seçin.
 
-    ![Snowflake Kullanıcı Haritalamaları](media/Snowflake-provisioning-tutorial/user-mapping.png)
+    ![Kar tanesi Kullanıcı eşlemeleri](media/Snowflake-provisioning-tutorial/user-mapping.png)
 
-10. **Öznitelik Eşleme** bölümünde Azure AD'den Snowflake'e eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için Snowflake'teki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+10. **Öznitelik eşleme** bölümünde, Azure AD 'den kar tanesi ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için kar tanesi içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Snowflake Kullanıcı Özellikleri](media/Snowflake-provisioning-tutorial/user-attribute.png)
+    ![Kar tanesi Kullanıcı öznitelikleri](media/Snowflake-provisioning-tutorial/user-attribute.png)
 
-11. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Kar Tanesine Senkronize**Et'i seçin.
+11. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını kar/zaman olarak eşitler**' ı seçin.
 
-    ![Kar Tanesi Grubu Haritalamaları](media/Snowflake-provisioning-tutorial/group-mapping.png)
+    ![Kar tanesi grup eşlemeleri](media/Snowflake-provisioning-tutorial/group-mapping.png)
 
-12. **Öznitelik Eşleme** bölümünde Azure AD'den Snowflake'e eşitlenen grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Snowflake'teki gruplarla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+12. **Öznitelik eşleme** bölümünde Azure AD 'den kar tanesi ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için kar tanesi içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Kar Tanesi Grubu Özellikleri](media/Snowflake-provisioning-tutorial/group-attribute.png)
+    ![Kar tanesi grubu öznitelikleri](media/Snowflake-provisioning-tutorial/group-attribute.png)
 
-13. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+13. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-14. Snowflake için Azure AD sağlama hizmetini etkinleştirmek için **Ayarlar** bölümünde **Sağlama Durumunu** **Açık** olarak değiştirin.
+14. Kar tanesi için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-15. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Kar Tanesi'ne sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın. Bu seçenek kullanılamıyorsa, lütfen Yönetici Kimlik Bilgileri altında gerekli alanları yapılandırın, **Kaydet'i** tıklatın ve sayfayı yenileyin. 
+15. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek kar için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın. Bu seçenek kullanılamıyorsa, lütfen yönetici kimlik bilgileri altında gerekli alanları yapılandırın, **Kaydet** ' e tıklayın ve sayfayı yenileyin. 
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-16. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+16. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-    Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Kaydedilen ilerlemeyi izlemek ve Kar Tanesi'ndeki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+    Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Azure AD sağlama hizmeti tarafından kar tanesi üzerinde gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna yönelik bağlantıları izleyebilirsiniz.
 
-    Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için bkz: [Otomatik kullanıcı hesabı sağlama hakkında Raporlama](../app-provisioning/check-status-user-account-provisioning.md)
+    Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md)
 
-## <a name="connector-limitations"></a>Konektör sınırlamaları
+## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* Kar tanesi oluşturulan SCIM belirteçleri 6 ay içinde sona erer. Provizyon eşitlemelerinin çalışmaya devam edebilmesi için, bunların süresi dolmadan önce yenilenmesi gerektiğini unutmayın. 
+* Kar tanesi tarafından oluşturulan SCıM belirteçleri 6 ay içinde sona erer. Sağlama eşitlenmesinin çalışmaya devam etmesine izin vermek için bunların süreleri dolmadan önce yenilenmesi gerektiğini unutmayın. 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamayı yönetme.](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporlar alacağınızı öğrenin.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri incelemeyi ve sağlama etkinliğinde rapor almayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md).

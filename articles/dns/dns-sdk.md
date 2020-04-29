@@ -1,7 +1,7 @@
 ---
-title: .NET SDK'yı kullanarak DNS bölgeleri ve kayıt kümeleri oluşturma
+title: .NET SDK kullanarak DNS bölgeleri ve kayıt kümeleri oluşturma
 titleSuffix: Azure DNS
-description: Bu öğrenme yolunda, .NET SDK'yı kullanarak Azure DNS'de DNS bölgeleri ve kayıt kümeleri oluşturmaya başlayın.
+description: Bu öğrenme yolunda, .NET SDK kullanarak Azure DNS ' de DNS bölgeleri ve kayıt kümeleri oluşturmaya başlayın.
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -15,42 +15,42 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938857"
 ---
-# <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK'yı kullanarak DNS bölgeleri ve kayıt kümeleri oluşturma
+# <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK kullanarak DNS bölgeleri ve kayıt kümeleri oluşturma
 
-.NET DNS Management kitaplığı yla DNS SDK'yı kullanarak DNS bölgeleri, kayıt kümeleri ve kayıtları oluşturmak, silmek veya güncelleştirmek için işlemleri otomatikleştirebilirsiniz. Tam bir Visual Studio projesi [burada mevcuttur.](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)
+.NET DNS Yönetim Kitaplığı ile DNS SDK 'sını kullanarak DNS bölgelerini, kayıt kümelerini ve kayıtları oluşturma, silme veya güncelleştirme işlemlerini otomatik hale getirebilirsiniz. Tam bir Visual Studio projesi burada bulunabilir [.](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)
 
-## <a name="create-a-service-principal-account"></a>Hizmet ana hesabı oluşturma
+## <a name="create-a-service-principal-account"></a>Hizmet sorumlusu hesabı oluşturma
 
-Genellikle, Azure kaynaklarına programlı erişim, kendi kullanıcı kimlik bilgileriniz yerine özel bir hesap aracılığıyla verilir. Bu özel hesaplara 'hizmet sorumlusu' hesapları denir. Azure DNS SDK örnek projesini kullanmak için öncelikle bir hizmet ana hesabı oluşturmanız ve doğru izinleri atabilmeniz gerekir.
+Genellikle, Azure kaynaklarına programlı erişim, kendi Kullanıcı kimlik bilgileriniz yerine adanmış bir hesap aracılığıyla verilir. Bu adanmış hesaplara ' hizmet sorumlusu ' hesapları denir. Azure DNS SDK örnek projesini kullanmak için, önce bir hizmet sorumlusu hesabı oluşturmanız ve doğru izinleri atamanız gerekir.
 
-1. Bir hizmet temel hesabı oluşturmak için [bu yönergeleri](../active-directory/develop/howto-authenticate-service-principal-powershell.md) izleyin (Azure DNS SDK örnek projesi parola tabanlı kimlik doğrulaması varsayar.)
-2. Bir kaynak grubu oluşturun[(şu şekilde).](../azure-resource-manager/templates/deploy-portal.md)
-3. Hizmet ana hesabı 'DNS Zone Katılımcısı' izinlerini kaynak grubuna vermek için Azure RBAC'ı kullanın[(şu şekilde .)](../role-based-access-control/role-assignments-portal.md)
-4. Azure DNS SDK örnek projesini kullanıyorsanız, 'program.cs' dosyasını aşağıdaki gibi düzenlediyseniz:
+1. Bir hizmet sorumlusu hesabı oluşturmak için [Bu yönergeleri](../active-directory/develop/howto-authenticate-service-principal-powershell.md) izleyin (Azure DNS SDK örnek projesi parola tabanlı kimlik doğrulamasını varsayar.)
+2. Bir kaynak grubu oluşturun ([burada](../azure-resource-manager/templates/deploy-portal.md)).
+3. Kaynak grubuna hizmet sorumlusu hesabına ' DNS bölgesi katılımcısı ' izinleri vermek için Azure RBAC kullanın ([nasıl yapılır](../role-based-access-control/role-assignments-portal.md).)
+4. Azure DNS SDK örnek projesi kullanıyorsanız, ' program. cs ' dosyasını aşağıdaki gibi düzenleyin:
 
-   * 1. adımda kullanılan `tenantId` `clientId` , (hesap kimliği `secret` olarak da bilinir), `subscriptionId` (hizmet anapara hesap parolası) için doğru değerleri ekleyin.
-   * Adım 2'de seçilen kaynak grubu adını girin.
-   * Seçtiğiniz bir DNS bölge adını girin.
+   * (Hesap kimliği olarak da bilinir `tenantId`) için doğru değerleri, `secret` (hizmet sorumlusu hesap parolası) ve `subscriptionId` adım 1 ' de kullanılan şekilde ekleyin. `clientId`
+   * 2. adımda seçilen kaynak grubu adını girin.
+   * Tercih ettiğiniz bir DNS bölgesi adı girin.
 
-## <a name="nuget-packages-and-namespace-declarations"></a>NuGet paketleri ve namespace bildirimleri
+## <a name="nuget-packages-and-namespace-declarations"></a>NuGet paketleri ve ad alanı bildirimleri
 
-Azure DNS .NET SDK'yı kullanmak için **Azure DNS Yönetim Kitaplığı** NuGet paketini ve diğer gerekli Azure paketlerini yüklemeniz gerekir.
+Azure DNS .NET SDK 'sını kullanmak için **Azure DNS Yönetim Kitaplığı** NuGet paketini ve diğer gerekli Azure paketlerini yüklemeniz gerekir.
 
-1. **Visual Studio'da**bir proje veya yeni bir proje açın.
-2. **Araçlara** **>** gidin **NuGet Paket Yöneticisi** **>** **Çözüm için NuGet Paketlerini Yönetin...**.
-3. **Gözat'ı**tıklatın, **ön sürüm ön** kutusunu ekle'yi etkinleştirin ve arama kutusuna **Microsoft.Azure.Management.Dns** yazın.
-4. Paketi seçin ve Visual Studio projenize eklemek için **Yükle'yi** tıklatın.
-5. Aşağıdaki paketleri yüklemek için yukarıdaki işlemi yineleyin: **Microsoft.Rest.ClientRuntime.Azure.Authentication** ve **Microsoft.Azure.Management.ResourceManager**.
+1. **Visual Studio**'da bir proje veya yeni proje açın.
+2. **Araçlar** **>** **NuGet Paket Yöneticisi** **>** **çözüm için NuGet Paketlerini Yönet...** seçeneğine gidin.
+3. **Araştır**' a tıklayın, **ön sürümü dahil et** onay kutusunu etkinleştirin ve arama kutusuna **Microsoft. Azure. Management. DNS** yazın.
+4. Paketi seçin ve Visual Studio projenize eklemek için **yüklemek** üzere tıklayın.
+5. Aşağıdaki paketleri de yüklemek için yukarıdaki işlemi tekrarlayın: **Microsoft. Rest. ClientRuntime. Azure. Authentication** ve **Microsoft. Azure. Management. ResourceManager**.
 
 ## <a name="add-namespace-declarations"></a>Ad alanı bildirimleri ekleme
 
-Aşağıdaki ad alanı bildirimleri ekleme
+Aşağıdaki ad alanı bildirimlerini ekleyin
 
 ```cs
 using Microsoft.Rest.Azure.Authentication;
@@ -60,7 +60,7 @@ using Microsoft.Azure.Management.Dns.Models;
 
 ## <a name="initialize-the-dns-management-client"></a>DNS yönetim istemcisini başlatma
 
-DNS `DnsManagementClient` bölgelerini ve kayıt kümelerini yönetmek için gerekli yöntemleri ve özellikleri içerir.  Aşağıdaki kod hizmet ana hesabına giriş ve `DnsManagementClient` bir nesne oluşturur.
+, `DnsManagementClient` DNS bölgelerini ve kayıt kümelerini yönetmek için gereken yöntemleri ve özellikleri içerir.  Aşağıdaki kod, hizmet sorumlusu hesabına kaydedilir ve bir `DnsManagementClient` nesnesi oluşturur.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -69,16 +69,16 @@ var dnsClient = new DnsManagementClient(serviceCreds);
 dnsClient.SubscriptionId = subscriptionId;
 ```
 
-## <a name="create-or-update-a-dns-zone"></a>Bir DNS bölgesi oluşturma veya güncelleştirme
+## <a name="create-or-update-a-dns-zone"></a>DNS bölgesi oluşturma veya güncelleştirme
 
-Bir DNS bölgesi oluşturmak için, önce DNS bölge parametrelerini içerecek bir "Bölge" nesnesi oluşturulur. DNS bölgeleri belirli bir bölgeye bağlı olmadığından, konum 'genel' olarak ayarlanır. Bu örnekte, bölgeye bir [Azure Kaynak Yöneticisi 'etiketi'](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) de eklenir.
+DNS bölgesi oluşturmak için ilk olarak DNS bölgesi parametrelerini içeren bir "bölge" nesnesi oluşturulur. DNS bölgeleri belirli bir bölgeye bağlı olmadığından, konum ' Global ' olarak ayarlanır. Bu örnekte, bölgesine bir [Azure Resource Manager ' Tag '](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) de eklenir.
 
-Azure DNS'de bölgeyi gerçekten oluşturmak veya güncelleştirmek için, bölge `DnsManagementClient.Zones.CreateOrUpdateAsyc` parametrelerini içeren bölge nesnesi yönteme geçirilir.
+Azure DNS bölgeyi gerçekten oluşturmak veya güncelleştirmek için, bölge parametrelerini içeren bölge nesnesi `DnsManagementClient.Zones.CreateOrUpdateAsyc` yöntemine geçirilir.
 
 > [!NOTE]
-> DnsManagementClient üç çalışma modunu destekler: senkron ('CreateOrUpdate'), asynchronous ('CreateOrUpdateAsync'), veya HTTP yanıtına erişim eki olan asenkron ('CreateOrUpdateWithHttpMessagesAsync').  Uygulama gereksinimlerinize bağlı olarak bu modlardan herhangi birini seçebilirsiniz.
+> DnsManagementClient üç işlem modunu destekler: zaman uyumlu (' CreateOrUpdate '), zaman uyumsuz (' CreateOrUpdateAsync ') veya HTTP yanıtına erişimi olan zaman uyumsuz (' CreateOrUpdateWithHttpMessagesAsync ').  Uygulama gereksinimlerinize bağlı olarak bu modlardan herhangi birini seçebilirsiniz.
 
-Azure DNS, [Etags](dns-getstarted-create-dnszone.md)adı verilen iyimser eşzamanlılığı destekler. Bu örnekte, 'If-None-Match' üstbilgisi için "*" belirtilmesi, Azure DNS'ye zaten yoksa bir DNS bölgesi oluşturmasını söyler.  Verilen kaynak grubunda zaten ad verilen bir bölge varsa arama başarısız olur.
+Azure DNS, [ETags](dns-getstarted-create-dnszone.md)adlı iyimser eşzamanlılığı destekler. Bu örnekte, ' If-None-Match ' üst bilgisi için "*" belirtildiğinde, bir tane yoksa bir DNS bölgesi oluşturmak Azure DNS söyler.  Verilen kaynak grubunda verilen ada sahip bir bölge zaten varsa, çağrı başarısız olur.
 
 ```cs
 // Create zone parameters
@@ -97,11 +97,11 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 ## <a name="create-dns-record-sets-and-records"></a>DNS kayıt kümeleri ve kayıtları oluşturma
 
-DNS kayıtları bir kayıt kümesi olarak yönetilir. Kayıt kümesi, bir bölge içinde aynı ada ve kayıt türüne sahip bir kayıt kümesidir.  Kayıt kümesi adı, tam nitelikli DNS adı değil, bölge adı ile görelidir.
+DNS kayıtları bir kayıt kümesi olarak yönetilir. Kayıt kümesi, bir bölge içindeki aynı ada ve kayıt türüne sahip bir kayıt kümesidir.  Kayıt kümesi adı, tam DNS adı değil, bölge adı ile ilişkilidir.
 
-Bir kayıt kümesi oluşturmak veya güncelleştirmek için bir "RecordSet" parametreleri nesnesi oluşturulur ve .'ye `DnsManagementClient.RecordSets.CreateOrUpdateAsync`geçirilir. DNS bölgelerinde olduğu gibi, üç çalışma modu vardır: senkron ('CreateOrUpdate'), asynchronous ('CreateOrUpdateAsync'), veya HTTP yanıtına erişim eki olan eşzamanlı ('CreateOrUpdateWithHttpMessagesAsync').
+Bir kayıt kümesi oluşturmak veya güncelleştirmek için, bir "kayıt kümesi" parametreler nesnesi oluşturulup öğesine `DnsManagementClient.RecordSets.CreateOrUpdateAsync`geçirilir. DNS bölgelerinde olduğu gibi, üç işlem modu vardır: zaman uyumlu (' CreateOrUpdate '), zaman uyumsuz (' CreateOrUpdateAsync ') veya HTTP yanıtına erişimi olan zaman uyumsuz (' CreateOrUpdateWithHttpMessagesAsync ').
 
-DNS bölgelerinde olduğu gibi, kayıt kümeleri üzerindeki işlemler arasında iyimser eşzamanlılık desteği de yer alır.  Bu örnekte, ne 'If-Match' ne de 'If-None-Match' belirtilmediğından, kayıt kümesi her zaman oluşturulur.  Bu çağrı, bu DNS bölgesinde aynı ada ve kayıt türüne sahip varolan tüm kayıtların üzerine yazar.
+DNS bölgelerinde olduğu gibi, kayıt kümelerindeki işlemler iyimser eşzamanlılık desteğini içerir.  Bu örnekte, ' IF-Match ' veya ' If-None-Match ' belirtilmemişse, kayıt kümesi her zaman oluşturulur.  Bu çağrı, bu DNS bölgesindeki aynı ada ve kayıt türüne sahip olan tüm mevcut kayıt kümesini geçersiz kılar.
 
 ```cs
 // Create record set parameters
@@ -121,17 +121,17 @@ recordSetParams.Metadata.Add("user", "Mary");
 var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zoneName, recordSetName, RecordType.A, recordSetParams);
 ```
 
-## <a name="get-zones-and-record-sets"></a>Bölgeleri ve kayıt kümelerini alın
+## <a name="get-zones-and-record-sets"></a>Bölgeleri ve kayıt kümelerini al
 
-Ve `DnsManagementClient.Zones.Get` `DnsManagementClient.RecordSets.Get` yöntemler sırasıyla tek tek bölgeleri ve kayıt kümelerini alır. RecordSets, türüne, adına ve içinde bulunduğu bölge ve kaynak grubuna göre tanımlanır. Bölgeler adlarına ve içinde bulunduğu kaynak grubuna göre tanımlanır.
+`DnsManagementClient.Zones.Get` Ve `DnsManagementClient.RecordSets.Get` yöntemleri sırasıyla tek tek bölgeleri ve kayıt kümelerini alır. Kayıt kümeleri, türü, adı ve içerdikleri bölge ve kaynak grubu tarafından tanımlanır. Bölgeler, adı ve içerdikleri kaynak grubu tarafından tanımlanır.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
 ```
 
-## <a name="update-an-existing-record-set"></a>Varolan bir kayıt kümesini güncelleştirme
+## <a name="update-an-existing-record-set"></a>Mevcut bir kayıt kümesini güncelleştirme
 
-Varolan bir DNS kayıt kümesini güncelleştirmek için önce kayıt kümesini alın, sonra kayıt kümesi içeriğini güncelleştirin, sonra değişikliği gönderin.  Bu örnekte, 'If-Match' parametresinde ayarlanan alınan kayıttan 'Etag' olarak belirtiriz. Eşzamanlı bir işlem bu arada ayarlanan kaydı değiştirmişse, arama başarısız olur.
+Var olan bir DNS kayıt kümesini güncelleştirmek için, önce kayıt kümesini alın, sonra kayıt kümesi içeriğini güncelleştirin ve ardından değişikliği iletin.  Bu örnekte, ' IF-Match ' parametresinde alınan kayıt kümesinden ' ETag ' öğesini belirttik. Eşzamanlı bir işlem, bu sırada kayıt kümesini değiştirdiyseniz çağrı başarısız olur.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -144,11 +144,11 @@ recordSet.ARecords.Add(new ARecord("5.6.7.8"));
 recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zoneName, recordSetName, RecordType.A, recordSet, recordSet.Etag);
 ```
 
-## <a name="list-zones-and-record-sets"></a>Liste bölgeleri ve kayıt kümeleri
+## <a name="list-zones-and-record-sets"></a>Bölgeleri ve kayıt kümelerini listeleme
 
-Bölgeleri listelemek için, belirli bir kaynak grubundaki tüm bölgeleri veya belirli bir Azure aboneliğindeki tüm bölgeleri (kaynak grupları arasında) listelemeyi destekleyen *DnsManagementClient.Zone.List...* yöntemlerini kullanın. Kayıt kümelerini listelemek için, belirli bir bölgede tüm kayıt kümelerini veya yalnızca belirli bir türdeki kayıt kümelerini listelemeni destekleyen *DnsManagementClient.RecordSets.List...* yöntemlerini kullanın.
+Bölgeleri listelemek için, belirli bir kaynak grubundaki tüm bölgeleri veya belirli bir Azure aboneliğindeki tüm bölgeleri (kaynak grupları arasında) listelemeyi destekleyen *Dnsmanagementclient. Zones. List...* yöntemlerini kullanın. Kayıt kümelerini listelemek için, belirli bir bölgedeki tüm kayıt kümelerini veya yalnızca belirli bir türdeki kayıt kümelerini listelemeyi destekleyen *Dnsmanagementclient. Recordset. List...* Methods öğesini kullanın.
 
-Bölgeleri ve kayıt kümelerini listelerken, sonuçların paginated olabileceğine dikkat edin.  Aşağıdaki örnek, sonuçların sayfaları aracılığıyla nasıl yinelenir gösterilmektedir. (Sayfalamayı zorlamak için yapay olarak küçük bir sayfa boyutu '2' kullanılır; uygulamada bu parametre atlanmalıdır ve varsayılan sayfa boyutu kullanılmalıdır.)
+Sonuçlar ve kayıt kümeleri listelendiğinde sonuçların sayfalandırılmış olabileceğini unutmayın.  Aşağıdaki örnek, sonuçların sayfalarında nasıl yineleme yapılacağını gösterir. (Yapay küçük sayfa boyutu ' 2 ', sayfalama zorlamak için kullanılır; uygulamada bu parametre atlanmalı ve varsayılan sayfa boyutu kullanılmalıdır.)
 
 ```cs
 // Note: in this demo, we'll use a very small page size (2 record sets) to demonstrate paging
@@ -166,4 +166,4 @@ while (page.NextPageLink != null)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [DNS .NET SDK'nın](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)nasıl kullanılacağına ilişkin diğer örnekleri içeren azure DNS .NET SDK örnek projesini ve diğer DNS kayıt türlerine ilişkin örnekleri indirin.
+Diğer DNS kayıt türlerine yönelik örnekler de dahil olmak üzere Azure DNS .NET SDK 'sını kullanma hakkında daha fazla örnek içeren [Azure DNS .NET SDK örnek projesini](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)indirin.

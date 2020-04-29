@@ -1,75 +1,75 @@
 ---
-title: PagerDuty ile Azure hizmeti sistem durumu uyarıları gönderme
-description: Hizmet sağlığı olayları yla ilgili kişiselleştirilmiş bildirimleri PagerDuty örneğinize alın.
+title: Pagerharcı ile Azure hizmet durumu uyarılarını gönderin
+description: Pagerharcı örneğiniz için hizmet sistem durumu olayları hakkında kişiselleştirilmiş bildirimler alın.
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77654078"
 ---
-# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Web hooks kullanarak PagerDuty ile Azure hizmet durumu uyarıları gönderme
+# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Web kancalarını kullanarak Pagerharcı ile Azure hizmet durumu uyarıları gönderme
 
-Bu makalede, bir webhook kullanarak PagerDuty aracılığıyla Azure hizmet sistem durumu bildirimlerini nasıl ayarlayabileceğiniz gösterilmektedir. [PagerDuty'nin](https://www.pagerduty.com/)özel Microsoft Azure tümleştirme türünü kullanarak, yeni veya mevcut PagerDuty hizmetlerinize Hizmet Durumu uyarıları zahmetsizce ekleyebilirsiniz.
+Bu makalede, bir Web kancası kullanarak Pagerharcı aracılığıyla Azure hizmet durumu bildirimlerini ayarlama konusu gösterilmektedir. [Pagerharcı](https://www.pagerduty.com/)'ın özel Microsoft Azure tümleştirme türünü kullanarak, yeni veya mevcut pagerharcı hizmetlerine hizmet durumu uyarılarını kolayca ekleyebilirsiniz.
 
-## <a name="creating-a-service-health-integration-url-in-pagerduty"></a>PagerDuty'de hizmet durumu tümleştirme URL'si oluşturma
-1.  [PagerDuty](https://www.pagerduty.com/) hesabınıza kaydolduğunuzdan ve hesabınızda oturum açtığınızdan emin olun.
+## <a name="creating-a-service-health-integration-url-in-pagerduty"></a>Pagerharcı 'de hizmet durumu tümleştirme URL 'SI oluşturma
+1.  Kaydolduğunuzdan ve [Pagerharcı](https://www.pagerduty.com/) hesabınızda oturum açtığınızdan emin olun.
 
-1.  PagerDuty'deki **Hizmetler** bölümüne gidin.
+1.  Pagerharcı içindeki **Hizmetler** bölümüne gidin.
 
-    ![PagerDuty'deki "Hizmetler" bölümü](./media/webhook-alerts/pagerduty-services-section.png)
+    ![Pagerharcı 'teki "Hizmetler" bölümü](./media/webhook-alerts/pagerduty-services-section.png)
 
-1.  **Yeni Hizmet Ekle'yi** seçin veya ayarlamış olduğunuz mevcut bir hizmeti açın.
+1.  **Yeni hizmet ekle** ' yi seçin veya ayarlamış olduğunuz mevcut bir hizmeti açın.
 
-1.  **Tümleştirme Ayarları'nda**aşağıdakileri seçin:
+1.  **Tümleştirme ayarları**' nda, aşağıdakileri seçin:
 
-    a. **Tümleştirme Türü**: Microsoft Azure
+    a. **Tümleştirme türü**: Microsoft Azure
 
-    b. **Entegrasyon**Adı \<: Adı\>
+    b. **Tümleştirme adı**: \<ad\>
 
-    ![PagerDuty'de "Entegrasyon Ayarları"](./media/webhook-alerts/pagerduty-integration-settings.png)
+    ![Pagerharcı 'de "tümleştirme ayarları"](./media/webhook-alerts/pagerduty-integration-settings.png)
 
-1.  Gerekli diğer alanları doldurun ve **Ekle'yi**seçin.
+1.  Tüm gerekli alanları doldurun ve **Ekle**' yi seçin.
 
-1.  Bu yeni tümleştirmeyi açın ve **Tümleştirme URL'sini**kopyalayın ve kaydedin.
+1.  Bu yeni tümleştirmeyi açın ve **TÜMLEŞTIRME URL**'sini kopyalayıp kaydedin.
 
-    ![PagerDuty'de "Entegrasyon URL'si"](./media/webhook-alerts/pagerduty-integration-url.png)
+    ![Pagerharcı 'de "tümleştirme URL 'SI"](./media/webhook-alerts/pagerduty-integration-url.png)
 
-## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Azure portalında PagerDuty kullanarak bir uyarı oluşturma
+## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Azure portal Pagerharcı kullanarak uyarı oluşturma
 ### <a name="for-a-new-action-group"></a>Yeni bir eylem grubu için:
-1. [Azure portalını kullanarak yeni bir eylem grubu için hizmet durumu bildiriminde uyarı oluşturma'da](../azure-monitor/platform/alerts-activity-log-service-notifications.md)1'den 8'e kadar olan adımları izleyin.
+1. [Azure Portal kullanarak yeni bir eylem grubu için hizmet durumu bildiriminde uyarı oluşturma](../azure-monitor/platform/alerts-activity-log-service-notifications.md)bölümünde 1 ile 8 arasındaki adımları izleyin.
 
-1. **Eylemler**listesinde tanımlayın:
+1. **Eylem**listesinde tanımlayın:
 
-    a. **Eylem Türü:** *Webhook*
+    a. **Eylem türü:** *Web kancası*
 
-    b. **Ayrıntılar:** Daha önce kaydettiğiniz PagerDuty **Tümleştirme** URL'si.
+    b. **Ayrıntılar:** Daha önce kaydettiğiniz Pagerharcı **tümleştirme URL 'si** .
 
-    c. **Adı:** Webhook'un adı, takma adı veya tanımlayıcısı.
+    c. **Ad:** Web kancası adı, diğer ad veya tanımlayıcı.
 
-1. Uyarıyı oluşturmak için yapıldığında **Kaydet'i** seçin.
+1. Uyarıyı oluşturmak için işiniz bittiğinde **Kaydet** ' i seçin.
 
-### <a name="for-an-existing-action-group"></a>Varolan bir eylem grubu için:
-1. Azure [portalında,](https://portal.azure.com/) **Monitör'ü**seçin.
+### <a name="for-an-existing-action-group"></a>Mevcut bir eylem grubu için:
+1. [Azure Portal](https://portal.azure.com/), **İzle**' yi seçin.
 
-1. **Ayarlar** bölümünde Eylem **gruplarını**seçin.
+1. **Ayarlar** bölümünde **eylem grupları**' nı seçin.
 
-1. Yeniden yapmak istediğiniz eylem grubunu bulun ve seçin.
+1. Düzenlemek istediğiniz eylem grubunu bulun ve seçin.
 
-1. **Eylemler**listesine ekle:
+1. **Eylem**listesine ekle:
 
-    a. **Eylem Türü:** *Webhook*
+    a. **Eylem türü:** *Web kancası*
 
-    b. **Ayrıntılar:** Daha önce kaydettiğiniz PagerDuty **Tümleştirme** URL'si.
+    b. **Ayrıntılar:** Daha önce kaydettiğiniz Pagerharcı **tümleştirme URL 'si** .
 
-    c. **Adı:** Webhook'un adı, takma adı veya tanımlayıcısı.
+    c. **Ad:** Web kancası adı, diğer ad veya tanımlayıcı.
 
-1. Eylem grubunu güncelleştirmek için yapıldığında **Kaydet'i** seçin.
+1. Eylem grubunu güncelleştirmek için işiniz bittiğinde **Kaydet** ' i seçin.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Http POST isteği ile webhook tümleştirmenizi test etme
-1. Göndermek istediğiniz hizmet durumu yükü oluşturun. [Azure etkinlik günlüğü uyarıları için Webhooks'ta](../azure-monitor/platform/activity-log-alerts-webhook.md)örnek bir hizmet durumu webhook yükü bulabilirsiniz.
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Web kancası tümleştirmenizi bir HTTP POST isteği aracılığıyla test etme
+1. Göndermek istediğiniz hizmet durumu yükünü oluşturun. [Azure etkinlik günlüğü uyarıları Için Web kancalarında](../azure-monitor/platform/activity-log-alerts-webhook.md)örnek bir hizmet durumu Web kancası yükü bulabilirsiniz.
 
 1. Aşağıdaki gibi bir HTTP POST isteği oluşturun:
 
@@ -80,12 +80,12 @@ Bu makalede, bir webhook kullanarak PagerDuty aracılığıyla Azure hizmet sist
 
     BODY        <service health payload>
     ```
-1. "Olay kimliğinizi" içeren bir ileti almalısınız. `202 Accepted`
+1. "Olay KIMLIĞINIZI" `202 Accepted` içeren bir ileti içeren bir iletisi almalısınız.
 
-1. Tümleştirmenizin başarıyla ayarlandığını doğrulamak için [PagerDuty'e](https://www.pagerduty.com/) gidin.
+1. Tümleştirmenin başarıyla ayarlandığını onaylamak için [Pagerharcı](https://www.pagerduty.com/) 'e gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Mevcut sorun yönetim sistemleri için webhook bildirimlerini nasıl yapılandırıştırılamayı](service-health-alert-webhook-guide.md)öğrenin.
-- Etkinlik [günlüğü uyarısı webhook şema](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
-- Hizmet [durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
+- [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin.
+- [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
+- [Hizmet durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
 - [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.

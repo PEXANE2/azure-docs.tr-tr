@@ -1,109 +1,109 @@
 ---
-title: Canlı Ölçümler Akışı yla Tanılama - Azure Uygulama Öngörüleri
-description: Web uygulamanızı özel ölçümlerle gerçek zamanlı olarak izleyin ve sorunları hatalar, izlemeler ve olaylarla dolu canlı bir yayınla tanıtın.
+title: Canlı Ölçüm Akışı ile tanılama-Azure Application Insights
+description: Özel ölçümler sayesinde web uygulamanızı gerçek zamanlı olarak izleyin ve canlı arızaların, izlemelerin ve olayların bir akışı ile ilgili sorunları tanılayın.
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670109"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçümler Akışı: 1 saniyegecikmeyle izleme & Tanılama
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçüm Akışı: Izleme & Tanıla, 1 saniyelik gecikme
 
-[Application Insights'tan](../../azure-monitor/app/app-insights-overview.md)Canlı Ölçümler Akışı'nı kullanarak canlı, üretim içi web uygulamanızın atan kalbini incen. Hizmetinizi rahatsız etmeden gerçek zamanlı olarak izlemek için ölçümleri ve performans sayaçlarını seçin ve filtreleyin. Örnek başarısız isteklerden ve özel durumlardan yığın izlerini inceleyin. [Profiler](../../azure-monitor/app/profiler.md)ile birlikte , [Anlık görüntü hata ayıklayıcı](../../azure-monitor/app/snapshot-debugger.md). Canlı Ölçümler Akışı, canlı web siteniz için güçlü ve non-invaziv bir tanı aracı sağlar.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md)canlı ölçüm akışı kullanarak canlı, üretim dışı Web uygulamanızın beyana olan bölümünü araştırma. Hizmetinize herhangi bir olumsuz bakış olmadan, ölçümleri ve performans sayaçlarını gerçek zamanlı olarak izlemek için seçin ve filtreleyin. Örnek başarısız isteklerin ve özel durumların yığın izlemelerini inceleyin. [Profil Oluşturucu](../../azure-monitor/app/profiler.md), [anlık görüntü hata ayıklayıcısı](../../azure-monitor/app/snapshot-debugger.md)ile birlikte. Canlı Ölçüm Akışı, Canlı Web siteniz için güçlü ve yerleşik olmayan bir tanılama aracı sağlar.
 
-Canlı Ölçümler Akışı ile şunları yapabilirsiniz:
+Canlı Ölçüm Akışı, şunları yapabilirsiniz:
 
-* Performans ve hata sayılarını izleyerek bir düzeltmeyi serbest bırakılırken doğrulayın.
-* Test yüklerinin etkisini izleyin ve sorunları canlı tanıkoyun.
-* İzlemek istediğiniz ölçümleri seçip filtreleyerek belirli test oturumlarına odaklanın veya bilinen sorunları filtreleyin.
-* Özel durum izlerini olduğu gibi alın.
-* En alakalı KP'leri bulmak için filtrelerle denemeler uygulayın.
-* Herhangi bir Windows performans sayacını canlı izleyin.
-* Sorun yaşayan bir sunucuyu kolayca tanımlayın ve tüm KPI/live akışını sadece o sunucuya filtreleyin.
+* Performans ve hata sayılarını izleyerek, yayımlanırken bir sorunu doğrulayın.
+* Test yüklerinin etkisini izleyin ve sorunları canlı olarak tanılayın.
+* İzlemek istediğiniz ölçümleri seçip filtreleyerek, belirli test oturumlarına odaklayın veya bilinen sorunları filtreleyebilirsiniz.
+* Özel durum izlemeleri gerçekleştikleri sürece alın.
+* En ilgili KPI 'Ları bulmak için filtrelerle denemeler yapın.
+* Tüm Windows performans sayaçlarını canlı izleyin.
+* Sorun yaşayan bir sunucuyu kolayca tanımlayabilir ve tüm KPI/canlı beslemesini yalnızca o sunucuya filtreleyin.
 
-[![Canlı Ölçümler Akış videosu](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![Canlı Ölçüm Akışı videosu](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-Canlı Ölçümler şu anda ASP.NET, ASP.NET Core, Azure İşlevler, Java ve Node.js uygulamaları için desteklenir.
+Canlı ölçümler Şu anda ASP.NET, ASP.NET Core, Azure Işlevleri, Java ve Node. js uygulamaları için desteklenmektedir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
-1. [Uygulama Öngörüleri'ni](../../azure-monitor/azure-monitor-app-hub.yml) web uygulamanıza henüz yüklemediyseniz, bunu şimdi yapın.
-2. Standart Application Insights paketlerine ek olarak [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) Canlı Ölçümler akışını etkinleştirmek için gereklidir.
-3. Application Insights **paketinin en son sürümüne güncelleştirin.** Visual Studio'da projenize sağ tıklayın ve **Nuget paketlerini yönet'i**seçin. **Güncelleştirmeler** sekmesini açın ve tüm Microsoft.ApplicationInsights.* paketlerini seçin.
+1. Henüz [Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) Web uygulamanıza yüklemediyseniz, bunu şimdi yapın.
+2. Standart Application Insights paketlerine ek olarak, canlı ölçüm akışını etkinleştirmek için [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) gereklidir.
+3. Application Insights paketinin **en son sürümüne güncelleştirin** . Visual Studio 'da projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Güncelleştirmeler** sekmesini açın ve tüm Microsoft. ApplicationInsights. * paketlerini seçin.
 
     Uygulamanızı yeniden dağıtın.
 
-3. Azure [portalında](https://portal.azure.com)uygulamanız için Application Insights kaynağını açın ve ardından Live Stream'i açın.
+3. [Azure Portal](https://portal.azure.com), uygulamanız için Application Insights kaynağını açın ve ardından canlı akış ' yı açın.
 
-4. Filtrelerinizde müşteri adları gibi hassas verileri kullanabiliyorsanız [denetim kanalını güvenli hale verin.](#secure-the-control-channel)
+4. Filtrelerinizin müşteri adları gibi hassas verileri kullanacaksanız [Denetim kanalını güvenli hale](#secure-the-control-channel) getirin.
 
-### <a name="no-data-check-your-server-firewall"></a>Veri yok mu? Sunucu güvenlik duvarınızı kontrol edin
+### <a name="no-data-check-your-server-firewall"></a>Veri yok mu? Sunucu güvenlik duvarınızı denetleyin
 
-Sunucularınızın güvenlik duvarında [Live Metrics Stream için giden bağlantı noktalarının](../../azure-monitor/app/ip-addresses.md#outgoing-ports) açık olup olduğunu kontrol edin.
+[Canlı ölçüm akışı giden bağlantı noktalarını](../../azure-monitor/app/ip-addresses.md#outgoing-ports) , sunucularınızın güvenlik duvarında açık olduğunu kontrol edin.
 
-## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Canlı Ölçümler Akışı'nın Metrics Explorer ve Analytics'ten farkı nedir?
+## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Canlı Ölçüm Akışı Ölçüm Gezgini ve analiz 'den farklı midir?
 
-| |Canlı Akış | Ölçümler Explorer ve Analitik |
+| |Canlı Akış | Ölçüm Gezgini ve analiz |
 |---|---|---|
-|Gecikme süresi|Bir saniye içinde görüntülenen veriler|Dakikalar içinde toplanır|
-|Bekletme yok|Veriler grafikteyken devam eder ve sonra atılır|[Veriler 90 gün boyunca saklanır](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|İsteğe bağlı|Canlı Ölçümleri açarken veriler akışlanır|SDK yüklendiğinde ve etkinleştirildiğinde veriler gönderilir|
+|Gecikme süresi|Bir saniye içinde görünen veriler|Dakikada toplanan|
+|Saklama yok|Veriler grafikte olduğu sırada devam ettirir ve sonra atılır|[90 gün boyunca tutulan veriler](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|İsteğe bağlı|Canlı ölçümleri açtığınızda veriler akışa kaydedilir|SDK her yüklendiğinde ve etkinleştirildiğinde veriler gönderilir|
 |Ücretsiz|Canlı Akış verileri için ücret alınmaz|[Fiyatlandırmaya](../../azure-monitor/app/pricing.md) tabi
-|Örnekleme|Seçilen tüm ölçümler ve sayaçlar iletilir. Hatalar ve yığın izleri örneklenir. Telemetriİşlemciler uygulanmaz.|Olaylar [örneklenebilir](../../azure-monitor/app/api-filtering-sampling.md)|
-|Kontrol kanalı|Filtre kontrol sinyalleri SDK'ya gönderilir. Bu kanalı korumanızı öneririz.|İletişim tek yönlüdür, portala|
+|Örnekleme|Tüm seçili ölçümler ve sayaçlar iletilir. Arızalar ve yığın izlemeleri örneklenir. TelemetryProcessors uygulanmıyor.|Olaylar [örneklenebilir](../../azure-monitor/app/api-filtering-sampling.md)|
+|Denetim kanalı|Filtre denetim sinyalleri SDK 'ya gönderilir. Bu kanalın güvenli olmasını öneririz.|İletişim, portala tek bir yoldur|
 
-## <a name="select-and-filter-your-metrics"></a>Ölçümlerinizi seçin ve filtreleyin
+## <a name="select-and-filter-your-metrics"></a>Ölçümlerinizi seçme ve filtreleme
 
-(ASP.NET, ASP.NET Core ve Azure İşleriyle (v2))
+(ASP.NET, ASP.NET Core ve Azure Işlevleri (v2) ile kullanılabilir.)
 
-Portaldan herhangi bir Uygulama Öngörüleri telemetrisi üzerinde rasgele filtreler uygulayarak özel KPI canlı izleyebilirsiniz. Grafiklerden herhangi birini ne zaman fare yle yendiğinizi gösteren filtre denetimini tıklatın. Aşağıdaki grafik, URL ve Süre özniteliklerindeki filtrelerle özel bir İstek sayısı KPI'sını çizer. Zaman içinde herhangi bir noktada belirttiğiniz ölçütlerle eşleşen canlı bir telemetri yayını gösteren Akış Önizleme bölümüyle filtrelerinizi doğrulayın.
+Portaldan herhangi bir Application Insights telemetrisine rastgele filtreler uygulayarak özel KPI 'ları izleyebilirsiniz. Grafiklerin herhangi birini fareyle fareyle gösteren filtre denetimine tıklayın. Aşağıdaki grafik, URL ve Duration özniteliklerinin filtrelerine sahip özel bir Istek sayısı KPI 'SI çizdirme. Herhangi bir zamanda belirttiğiniz ölçütlere uyan bir telemetri canlı akışını gösteren akış önizleme bölümüyle filtrelerinizi doğrulayın.
 
-![Özel İstek KPI](./media/live-stream/live-stream-filteredMetric.png)
+![Özel Istek KPI 'si](./media/live-stream/live-stream-filteredMetric.png)
 
-Kont'tan farklı bir değeri izleyebilirsiniz. Seçenekler, herhangi bir Uygulama Öngörüleri telemetrisi olabilecek akış türüne bağlıdır: istekler, bağımlılıklar, özel durumlar, izlemeler, olaylar veya ölçümler. Bu kendi [özel ölçüm](../../azure-monitor/app/api-custom-events-metrics.md#properties)olabilir:
+Count 'tan farklı bir değeri izleyebilirsiniz. Seçenekler, hiçbir Application Insights telemetri olabilecek akış türüne bağlıdır: istekler, bağımlılıklar, özel durumlar, izlemeler, olaylar veya ölçümler. Kendi [özel ölçümünüzün](../../azure-monitor/app/api-custom-events-metrics.md#properties)olabilir:
 
 ![Değer Seçenekleri](./media/live-stream/live-stream-valueoptions.png)
 
-Application Insights telemetrisine ek olarak, akış seçeneklerinden bunu seçerek ve performans sayacının adını sağlayarak herhangi bir Windows performans sayacını da izleyebilirsiniz.
+Application Insights telemetriye ek olarak, akış seçeneklerinden birini seçerek ve performans sayacının adını sağlayarak herhangi bir Windows performans sayacını da izleyebilirsiniz.
 
-Canlı ölçümler iki noktada toplanır: her sunucuda yerel olarak ve daha sonra tüm sunucularda. İlgili açılır düşüşlerde diğer seçenekleri seçerek varsayılanı değiştirebilirsiniz.
+Canlı ölçümler iki noktaya toplanır: yerel olarak her bir sunucuda ve sonra tüm sunucularda. Varsayılan ayarları, ilgili açılan kutudan diğer seçenekleri seçerek değiştirebilirsiniz.
 
-## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Örnek Telemetri: Özel Canlı Tanı etkinlikleri
-Varsayılan olarak, olayların canlı akışı başarısız istekve bağımlılık çağrıları, özel durumlar, olaylar ve izleme örneklerini gösterir. Uygulanan ölçütleri zaman içinde herhangi bir noktada görmek için filtre simgesini tıklatın. 
+## <a name="sample-telemetry-custom-live-diagnostic-events"></a>Örnek telemetri: özel canlı tanılama olayları
+Varsayılan olarak, canlı olay akışı, başarısız isteklerin ve bağımlılık çağrılarının, özel durumların, olayların ve izlemelerin örneklerini gösterir. İstediğiniz zaman herhangi bir noktada uygulanan ölçütü görmek için filtre simgesine tıklayın. 
 
-![Varsayılan canlı besleme](./media/live-stream/live-stream-eventsdefault.png)
+![Varsayılan canlı akış](./media/live-stream/live-stream-eventsdefault.png)
 
-Ölçümlerde olduğu gibi, Uygulama Öngörüleri telemetri türlerinden herhangi biri için herhangi bir rasgele ölçüt belirtebilirsiniz. Bu örnekte, belirli istek hataları, izlemeler ve olaylar seçiyoruz. Ayrıca tüm özel durumları ve bağımlılık hatalarını da seçiyoruz.
+Ölçümlerde olduğu gibi, Application Insights telemetri türlerinden herhangi birine herhangi bir rastgele ölçüt de belirtebilirsiniz. Bu örnekte, belirli istek başarısızlıklarını, izlemeleri ve olayları seçiyoruz. Ayrıca tüm özel durumlar ve bağımlılık arızaları de seçeceğiz.
 
-![Özel canlı yayın](./media/live-stream/live-stream-events.png)
+![Özel canlı akış](./media/live-stream/live-stream-events.png)
 
-Not: Şu anda, Özel Durum iletisi tabanlı ölçütler için en dıştaki özel durum iletisini kullanın. Önceki örnekte, iç özel durum iletisi ile iyi huylu özel durum filtrelemek için ("<--" delimiter izler) "Istemci bağlantısı kesildi." "Hata okuma isteği içeriği" ölçütlerini içermeyen bir ileti kullanın.
+Note: Şu anda, özel durum ileti tabanlı ölçütler için en dıştaki özel durum iletisini kullanın. Yukarıdaki örnekte, iç özel durum iletisi ile zararsız özel durumunu filtrelemek için ("<--" sınırlayıcı) "istemcinin bağlantısı kesildi." bir ileti kullanın-"istek içeriği okunurken hata" ölçütü içerir.
 
-Bir öğeyi tıklatarak canlı yayında bir öğenin ayrıntılarını görün. Yayını **Duraklat'ı** tıklatarak veya yalnızca aşağı kaydırarak veya bir öğeyi tıklatarak duraklatabilirsiniz. Canlı yayın, en üste geri kaydırıldıktan sonra veya duraklatılmışken toplanan öğelerin sayacına tıklayarak devam edecektir.
+Canlı akıştaki bir öğenin ayrıntılarına tıklayarak bakınız. **Duraklat** ' a tıklayarak veya yalnızca aşağı kaydırarak ya da bir öğeye tıklayarak akışı duraklatabilirsiniz. Canlı akış, başa doğru kaydırdıktan veya duraklatıldığında toplanan öğe sayaçından tıklandıktan sonra sürdürülecek.
 
-![Örneklenmiş canlı hatalar](./media/live-stream/live-metrics-eventdetail.png)
+![Örneklenmiş canlı arızalar](./media/live-stream/live-metrics-eventdetail.png)
 
-## <a name="filter-by-server-instance"></a>Sunucu örneğine göre filtreleme
+## <a name="filter-by-server-instance"></a>Sunucu örneğine göre filtrele
 
-Belirli bir sunucu rolü örneğini izlemek istiyorsanız, sunucuya göre filtre uygulayabilirsiniz.
+Belirli bir sunucu rolü örneğini izlemek isterseniz, sunucuya göre filtre uygulayabilirsiniz.
 
-![Örneklenmiş canlı hatalar](./media/live-stream/live-stream-filter.png)
+![Örneklenmiş canlı arızalar](./media/live-stream/live-stream-filter.png)
 
-## <a name="secure-the-control-channel"></a>Kontrol kanalını güvenli hale
-Belirlediğiniz özel filtreler ölçütleri, Uygulama Öngörüleri SDK'daki Canlı Ölçümler bileşenine geri gönderilir. Filtreler, customerID'ler gibi hassas bilgiler içerebilir. Enstrümantasyon anahtarına ek olarak kanalı gizli bir API tuşu ile güvenli hale getirebilirsiniz.
-### <a name="create-an-api-key"></a>API Anahtarı Oluşturma
+## <a name="secure-the-control-channel"></a>Denetim kanalının güvenliğini sağlama
+Belirttiğiniz özel filtreler ölçütü, Application Insights SDK 'sindeki canlı ölçümler bileşenine geri gönderilir. Filtreler potansiyel olarak CustomerIDs gibi hassas bilgileri içerebilir. İzleme anahtarına ek olarak, kanalı gizli bir API anahtarı ile güvenli hale getirebilirsiniz.
+### <a name="create-an-api-key"></a>API anahtarı oluşturma
 
-![API anahtarı oluşturma](./media/live-stream/live-metrics-apikeycreate.png)
+![API anahtarı oluştur](./media/live-stream/live-metrics-apikeycreate.png)
 
-### <a name="add-api-key-to-configuration"></a>Yapılandırmaya API anahtarı ekleme
+### <a name="add-api-key-to-configuration"></a>Yapılandırmaya API anahtarı Ekle
 
 ### <a name="classic-aspnet"></a>Klasik ASP.NET
 
-applicationinsights.config dosyasında, AuthenticationApiKey'i QuickPulseTelemetryModule'e ekleyin:
+ApplicationInsights. config dosyasında, QuickPulseTelemetryModule öğesine AuthenticationApiKey ekleyin:
 ``` XML
 
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
@@ -111,7 +111,7 @@ applicationinsights.config dosyasında, AuthenticationApiKey'i QuickPulseTelemet
 </Add>
 
 ```
-Veya kod olarak, QuickPulseTelemetryModule ayarlayın:
+Veya kodda, QuickPulseTelemetryModule üzerinde ayarlayın:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
@@ -149,13 +149,13 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ### <a name="azure-function-apps"></a>Azure İşlev Uygulamaları
 
-Azure İşlev Uygulamaları (v2) için, kanalı bir API anahtarıyla güvence altına almak bir ortam değişkeni ile gerçekleştirilebilir.
+Azure Işlev uygulamaları (v2) için bir API anahtarı ile kanalın güvenliğinin sağlanması bir ortam değişkeniyle gerçekleştirilebilir.
 
-Application Insights kaynağınızın içinden bir API anahtarı oluşturun ve İşlev Uygulamanız için **Uygulama Ayarları'na** gidin. **Yeni ayar ekle'yi** seçin `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` ve API anahtarınıza karşılık gelen bir ad ve değer girin.
+Application Insights kaynağınız içinden bir API anahtarı oluşturun ve İşlev Uygulaması **uygulama ayarları** ' na gidin. **Yeni ayar Ekle** ' yi seçin ve bir ad `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` ve API anahtarınıza karşılık gelen bir değer girin.
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (Core SDK 2.3.0 veya daha büyük ASP.NET Uygulama Öngörüleri Gerektirir)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0 veya üzerini gerektirir)
 
-startup.cs dosyanızı aşağıdaki gibi değiştirin:
+Startup.cs dosyanızı aşağıdaki şekilde değiştirin:
 
 İlk ekleme
 
@@ -163,47 +163,47 @@ startup.cs dosyanızı aşağıdaki gibi değiştirin:
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 ```
 
-Sonra ConfigureServices yöntemi içinde ekleyin:
+Ardından, ConfigureServices yönteminin içinde şunu ekleyin:
 
 ```csharp
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
-Ancak, tüm bağlı sunucuları tanır ve güvenirseniz, kimliği doğrulanmış kanal olmadan özel filtreleri deneyebilirsiniz. Bu seçenek altı ay boyunca kullanılabilir. Bu geçersiz kılma, her yeni oturumda veya yeni bir sunucu çevrimiçi olduğunda gereklidir.
+Bununla birlikte, tüm bağlı sunucuları tanıyor ve güveniyorsanız, kimlik doğrulamalı kanal olmadan özel filtreleri deneyebilirsiniz. Bu seçenek altı ay boyunca kullanılabilir. Bu geçersiz kılma her yeni oturum için veya yeni bir sunucu çevrimiçi olduğunda gereklidir.
 
-![Canlı Ölçümler Auth seçenekleri](./media/live-stream/live-stream-auth.png)
+![Canlı ölçümler kimlik doğrulama seçenekleri](./media/live-stream/live-stream-auth.png)
 
 >[!NOTE]
->Filtre ölçütlerinde CustomerID gibi hassas olabilecek bilgileri girmeden önce kimlik doğrulaması yapılan kanalı ayarlamanızı öneririz.
+>Filtre ölçütlerinde MüşteriNo gibi potansiyel hassas bilgileri girmeden önce kimliği doğrulanmış kanalı ayarlamanızı kesinlikle öneririz.
 >
 
-## <a name="supported-features-table"></a>Desteklenen özellikler tablosu
+## <a name="supported-features-table"></a>Desteklenen Özellikler tablosu
 
-| Dil                         | Temel Ölçümler       | Performans ölçümleri | Özel filtreleme    | Örnek telemetri    | CPU işlemine göre bölünür |
+| Dil                         | Temel ölçümler       | Performans ölçümleri | Özel filtreleme    | Örnek telemetri    | İşleme göre CPU bölme |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
-| .NET                             | Desteklenen (V2.7.2+) | Desteklenen (V2.7.2+) | Desteklenen (V2.7.2+) | Desteklenen (V2.7.2+) | Desteklenen (V2.7.2+)  |
-| .NET Çekirdek (hedef=.NET Framework)| Desteklenen (V2.4.1+) | Desteklenen (V2.4.1+) | Desteklenen (V2.4.1+) | Desteklenen (V2.4.1+) | Desteklenen (V2.4.1+)  |
-| .NET Çekirdek (hedef=.NET Çekirdek)     | Desteklenen (V2.4.1+) | Destekleniyor*          | Desteklenen (V2.4.1+) | Desteklenen (V2.4.1+) | **Desteklenmiyor**    |
-| Azure Fonksiyonları v2               | Destekleniyor           | Destekleniyor           | Destekleniyor           | Destekleniyor           | **Desteklenmiyor**    |
-| Java                             | Desteklenen (V2.0.0+) | Desteklenen (V2.0.0+) | **Desteklenmiyor**   | **Desteklenmiyor**   | **Desteklenmiyor**    |
-| Node.js                          | Desteklenen (V1.3.0+) | Desteklenen (V1.3.0+) | **Desteklenmiyor**   | Desteklenen (V1.3.0+) | **Desteklenmiyor**    |
+| .NET                             | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +) | Desteklenen (V 2.7.2 +)  |
+| .NET Core (Target =. NET Framework)| Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +)  |
+| .NET Core (Target =. NET Core)     | Desteklenen (V 2.4.1 +) | Destekleniyor*          | Desteklenen (V 2.4.1 +) | Desteklenen (V 2.4.1 +) | **Desteklenmiyor**    |
+| Azure Işlevleri v2               | Destekleniyor           | Destekleniyor           | Destekleniyor           | Destekleniyor           | **Desteklenmiyor**    |
+| Java                             | Desteklenen (V 2.0.0 +) | Desteklenen (V 2.0.0 +) | **Desteklenmiyor**   | **Desteklenmiyor**   | **Desteklenmiyor**    |
+| Node.js                          | Desteklenen (V 1.3.0 +) | Desteklenen (V 1.3.0 +) | **Desteklenmiyor**   | Desteklenen (V 1.3.0 +) | **Desteklenmiyor**    |
 
-Temel ölçümler istek, bağımlılık ve özel durum oranını içerir. Performans ölçümleri (performans sayaçları) bellek ve CPU içerir. Örnek telemetri, başarısız istekler ve bağımlılıklar, özel durumlar, olaylar ve izlemeler için ayrıntılı bilgi akışını gösterir.
+Temel ölçümler istek, bağımlılık ve özel durum oranını içerir. Performans ölçümleri (performans sayaçları) bellek ve CPU içerir. Örnek telemetri, başarısız istekler ve bağımlılıklar, özel durumlar, olaylar ve izlemelerle ilgili ayrıntılı bilgilerin akışını gösterir.
 
- \*PerfCounters desteği .NET Core'un .NET Framework'ü hedeflemeyan sürümlerine göre biraz farklılık gösterir:
+ \*PerfCounters desteği, .NET Core 'un .NET Framework hedefleyemediğinden biraz farklılık gösterir:
 
-- PerfCounters ölçümleri, Windows için Azure Uygulama Hizmeti'nde çalışırken desteklenir. (AspNetCore SDK Sürüm 2.4.1 veya üzeri)
-- PerfCounters, uygulama ANY Windows makinelerinde çalışırken desteklenir (VM veya Bulut Hizmeti veya On-prem vb.) (AspNetCore SDK Sürüm 2.7.1 veya üzeri), ancak .NET Core 2.0 veya daha yüksek hedefleyen uygulamalar için.
-- PerfCounters, uygulama en son beta sürümünde ANYWHERE (Linux, Windows, Linux, konteynerler, vb. için uygulama hizmeti) çalıştırıldığında desteklenir ( AspNetCore SDK Sürüm 2.8.0-beta1 veya üzeri), ancak .NET Core 2.0 veya daha yüksek hedefleyen uygulamalar için.
+- PerfCounters ölçümleri, Windows için Azure App Service çalıştırılırken desteklenir. (AspNetCore SDK sürümü 2.4.1 veya üzeri)
+- Uygulama herhangi bir Windows makinesinde (VM veya bulut hizmeti ya da şirket içi vb.) çalışırken PerfCounters desteklenir. (AspNetCore SDK Version 2.7.1 veya üzeri), ancak .NET Core 2,0 veya üstünü hedefleyen uygulamalar için.
+- Uygulama her yerde (Linux, Windows, Linux için App Service, kapsayıcılar, vb.) en son beta sürümünde çalışırken PerfCounters desteklenir (ör. AspNetCore SDK Version 2.8.0-Beta1 veya üzeri), ancak .NET Core 2,0 veya üstünü hedefleyen uygulamalar için.
 
-Varsayılan olarak Canlı Ölçümler Düğüm.js SDK'da devre dışı bırakılır. Canlı Ölçümleri etkinleştirmek `setSendLiveMetrics(true)` için, SDK'yı ilk olarak [yapılandırma yöntemlerinize](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) ekleyin.
+Varsayılan olarak, canlı ölçümler Node. js SDK 'sında devre dışıdır. Canlı ölçümleri etkinleştirmek için SDK 'Yı `setSendLiveMetrics(true)` başlatırken [yapılandırma yöntemlerinize](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) ekleyin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Veri yok mu? Uygulamanız korumalı bir ağdaysa: Live Metrics Stream, diğer Uygulama Öngörüleri telemetrisinden farklı IP adresleri kullanır. Bu [IP adreslerinin](../../azure-monitor/app/ip-addresses.md) güvenlik duvarınızda açık olduğundan emin olun.
+Veri yok mu? Uygulamanız korumalı bir ağda ise: Canlı Ölçüm Akışı diğer Application Insights telemetrisinden farklı IP adresleri kullanır. [Bu IP adreslerinin](../../azure-monitor/app/ip-addresses.md) güvenlik duvarınızdaki açık olduğundan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Uygulama Öngörüleri ile kullanımı izleme](../../azure-monitor/app/usage-overview.md)
-* [Tanılama Arama'yı Kullanma](../../azure-monitor/app/diagnostic-search.md)
+* [Application Insights ile kullanımı izleme](../../azure-monitor/app/usage-overview.md)
+* [Tanılama aramasını kullanma](../../azure-monitor/app/diagnostic-search.md)
 * [Profil Oluşturucu](../../azure-monitor/app/profiler.md)
 * [Anlık görüntü hata ayıklayıcısı](../../azure-monitor/app/snapshot-debugger.md)

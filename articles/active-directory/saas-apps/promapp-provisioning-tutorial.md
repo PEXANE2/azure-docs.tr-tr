@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Promapp'ı yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını Promapp'a otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Promapp 'yi yapılandırma | Microsoft Docs"
+description: Promapp 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,96 +16,96 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
 ms.openlocfilehash: 1a4a27846196e7eb134b834647b2a2d65672f385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77061026"
 ---
-# <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Promapp'ı yapılandır
+# <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Promapp 'yi yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Promapp'a otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Promapp ve Azure Active Directory 'de (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Promapp 'ye otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Promapp ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracı
-* [Bir Promapp kiracı](https://www.promapp.com/licensing/)
-* Yönetici izinleri olan Promapp'taki bir kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Promapp kiracısı](https://www.promapp.com/licensing/)
+* Yönetici izinlerine sahip Promapp içindeki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-promapp"></a>Kullanıcıları Promapp'a atama
+## <a name="assigning-users-to-promapp"></a>Kullanıcıları Promapp 'ye atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Promapp'a erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki talimatları izleyerek Promapp'a atayabilirsiniz:
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Promapp erişimine ihtiyacı olduğuna karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Promapp 'ye atayabilirsiniz:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-promapp"></a>Promapp'a kullanıcı atamak için önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-promapp"></a>Promapp 'ye Kullanıcı atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için Promapp'a tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Promapp 'ye tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Promapp'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Promapp 'ye atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="setup-promapp-for-provisioning"></a>Sağlama için Kurulum Promapp
+## <a name="setup-promapp-for-provisioning"></a>Sağlama için Promapp kurulumu
 
-1. [Promapp Yönetici Konsolunuzda](https://freetrial.promapp.com/axelerate/Login.aspx)oturum açın. Kullanıcı adı altında **Profilim'e**gidin.
+1. [Promapp Yönetici konsolunuza](https://freetrial.promapp.com/axelerate/Login.aspx)oturum açın. Kullanıcı adı altında, **Profilim**'e gidin.
 
     ![Promapp Yönetici Konsolu](media/promapp-provisioning-tutorial/admin.png)
 
-2.  **Access Belirteçleri** altında **Belirteç Oluştur** düğmesini tıklatın.
+2.  **Erişim belirteçleri** altında **belirteç oluştur** düğmesine tıklayın.
 
-    ![Promapp SCIM ekle](media/promapp-provisioning-tutorial/addtoken.png)
+    ![Promapp SCıM Ekle](media/promapp-provisioning-tutorial/addtoken.png)
 
-3.  **Açıklama** alanında herhangi bir ad sağlayın ve **Kapsam** açılır menüsünden **Scim'i** seçin. Kaydet simgesine tıklayın.
+3.  **Açıklama** alanına bir ad verin ve **kapsam** açılan menüsünden **SCIM** ' i seçin. Kaydet simgesine tıklayın.
 
-    ![Promapp İsim Ekle](media/promapp-provisioning-tutorial/addname.png)
+    ![Promapp ad Ekle](media/promapp-provisioning-tutorial/addname.png)
 
-4.  Erişim jetonunu kopyalayın ve görüntülediğiniz tek zaman bu olacağından kaydedin. Bu değer, Azure portalındaki Promapp uygulamanızın Sağlama sekmesinde Gizli Belirteç alanına girilir.
+4.  Erişim belirtecini kopyalayın ve tek bir zaman görüntüleyebilmeniz için kaydedin. Bu değer, Azure portal Promapp uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
-    ![Promapp Belirteç Oluştur](media/promapp-provisioning-tutorial/token.png)
+    ![Promapp oluşturma belirteci](media/promapp-provisioning-tutorial/token.png)
 
-## <a name="add-promapp-from-the-gallery"></a>Galeriden Promapp ekle
+## <a name="add-promapp-from-the-gallery"></a>Galeriden Promapp ekleme
 
-Promapp'ı Azure AD ile otomatik kullanıcı sağlama için yapılandırmadan önce, Promapp'ı Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için Promapp 'yi yapılandırmadan önce Azure AD uygulama galerisindeki Promapp 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Promapp eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD Uygulama Galerisi 'nden Promapp eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Promapp'ı**girin , sonuç panelinde **Promapp'ı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **Promapp**girin, sonuçlar panelinde **Promapp** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Sonuç listesindeki promapp](common/search-new-app.png)
+    ![Sonuç listesinde Promapp](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-promapp"></a>Otomatik kullanıcı sağlamayı Promapp'a yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-promapp"></a>Promapp 'ye otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Promapp'taki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Promapp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca [Promapp Tek oturum](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial)açma öğreticisinde verilen talimatları izleyerek Promapp için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, bu iki özellik birbirini tamamlasa da, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir.
+> Promapp [Çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial)sunulan yönergeleri Izleyerek PROMAPP için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
 
-### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Azure AD'de Promapp için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Azure AD 'de Promapp için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Promapp'ı**seçin.
+2. Uygulamalar listesinde **Promapp**' yi seçin.
 
     ![Uygulamalar listesindeki Promapp bağlantısı](common/all-applications.png)
 
@@ -113,52 +113,52 @@ Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak P
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü `https://api.promapp.com/api/scim` altında, **Kiracı URL'ye**giriş . **Gizli Belirteç'te**daha önce alınan **SCIM Kimlik Doğrulama Belirteci** değerini girdi. Azure AD'nin Promapp'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Promapp hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://api.promapp.com/api/scim` **kiracı URL 'sini**girin. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin Promapp 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Promapp hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Promapp'a Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Promapp ' ye eşitler**' ı seçin.
 
-    ![Promapp Kullanıcı Haritalamaları](media/promapp-provisioning-tutorial/usermappings.png)
+    ![Promapp Kullanıcı eşlemeleri](media/promapp-provisioning-tutorial/usermappings.png)
 
-9. Azure AD'den Promapp'a eşitlenen kullanıcı özniteliklerini **Öznitelik Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Promapp'taki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Promapp 'ye eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Promapp içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Promapp Kullanıcı Özellikleri](media/promapp-provisioning-tutorial/userattributes.png)
+    ![Promapp Kullanıcı öznitelikleri](media/promapp-provisioning-tutorial/userattributes.png)
 
-11. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+11. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-12. Promapp için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
+12. Promapp için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-13. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Promapp'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+13. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Promapp 'ye sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-14. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+14. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Promapp'taki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemeyi izlemek ve sağlama etkinlik raporuna olan bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. Promapp üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporuna yönelik bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 

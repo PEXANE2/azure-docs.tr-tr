@@ -1,7 +1,7 @@
 ---
-title: "PowerShell: SQL Server'ı SQL yönetilen örneğine geçirin"
+title: 'PowerShell: SQL Server SQL yönetilen örneğine geçirin'
 titleSuffix: Azure Database Migration Service
-description: Azure PowerShell ve Azure Veritabanı Geçiş Hizmeti'ni kullanarak şirket içi SQL Server'dan Azure SQL Veritabanı'na geçiş yapmayı öğrenin.
+description: Azure PowerShell ve Azure veritabanı geçiş hizmeti 'ni kullanarak şirket içi SQL Server Azure SQL veritabanı yönetilen örneği 'ne geçirmeyi öğrenin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,79 +13,79 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77650733"
 ---
-# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>PowerShell & Azure Veritabanı Geçiş Hizmeti ile SQL Server'ı SQL Veritabanı'na geçirin
+# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti & PowerShell ile SQL veritabanı yönetilen örneği 'ne SQL Server geçirme
 
-Bu makalede, Sql Server 2005 veya üzeri bir şirket içi örneğine yüklenen **Adventureworks2016** veritabanını Microsoft Azure PowerShell kullanarak yönetilen bir Azure SQL Veritabanı'na geçirebilirsiniz. Microsoft Azure PowerShell'deki `Az.DataMigration` modülü kullanarak veritabanlarını şirket içi BIR SQL Server örneğinden Azure SQL Veritabanı yönetilen bir örneğe geçirebilirsiniz.
+Bu makalede, Microsoft Azure PowerShell kullanarak bir Azure SQL veritabanı yönetilen örneğine SQL Server 2005 veya üzeri bir şirket içi örneğine geri yüklenen **Adventureworks2016** veritabanını geçirmiş olursunuz. Bir şirket içi SQL Server örneğinden veritabanlarını, `Az.DataMigration` Microsoft Azure PowerShell modülünü kullanarak BIR Azure SQL veritabanı yönetilen örneğine geçirebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Bir kaynak grubu oluşturun.
 > * Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
-> * Azure Veritabanı Geçiş Hizmeti örneğinde bir geçiş projesi oluşturun.
+> * Azure veritabanı geçiş hizmeti örneğinde bir geçiş projesi oluşturun.
 > * Geçişi çalıştırma.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Bu makalede, hem çevrimiçi hem de çevrimdışı geçişlerin nasıl gerçekleştirilene kadar gerçekleştirilene ilişkin ayrıntılar yer almaktadır.
+Bu makale, hem çevrimiçi hem de çevrimdışı geçişleri gerçekleştirme hakkında ayrıntılı bilgi içerir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu adımları tamamlamak için şunları yapmanız gerekir:
+Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 * [SQL Server 2016 veya üzeri](https://www.microsoft.com/sql-server/sql-server-downloads) (herhangi bir sürüm).
-* **AdventureWorks2016** veritabanının yerel bir kopyası, [buradan](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)indirebilirsiniz.
-* SQL Server Express yüklemesi ile varsayılan olarak devre dışı bırakılan TCP/IP protokolünü etkinleştirmek için. [Sunucu Ağı Protokolünü Etkinleştir veya Devre Dışı Kılarak](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)Makale'yi izleyerek TCP/IP protokolünü etkinleştirin.
-* [Veritabanı altyapısına erişmek için Windows Güvenlik Duvarınızı yapılandırmak için.](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)
-* Azure aboneliği. Hesabınız yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
-* Azure SQL Veritabanı yönetilen bir örnek. Bir Azure SQL Veritabanı yönetilen örnek oluştur makalede ayrıntıları izleyerek [bir Azure SQL Veritabanı yönetilen örnek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)oluşturabilirsiniz.
-* Veri Geçiş [Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 veya daha sonra indirmek ve yüklemek için.
-* Azure Veritabanı Geçiş Hizmeti'ne [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza site bağlantısı sağlayan Azure Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Bir Microsoft Azure Sanal Ağı.
-* SQL Server geçiş değerlendirmesi gerçekleştiren makalede açıklandığı gibi, Veri Geçişi Yardımcısı'nı kullanarak şirket içi veritabanınızın ve şema geçişinizin tamamlanmış [bir değerlendirmesi.](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
-* `Az.DataMigration` [Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)kullanarak Modülü (sürüm 0.7.2 veya sonraki sürüm) PowerShell Galerisi'nden indirmek ve yüklemek için.
-* Kaynak SQL Server örneğine bağlanmak için kullanılan kimlik bilgilerinin [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) iznine sahip olduğundan emin olmak için.
-* Hedeflenen Azure SQL Veritabanı yönetilen örneğine bağlanmak için kullanılan kimlik bilgilerinin hedef Azure SQL Veritabanı yönetilen örnek veritabanlarında CONTROL DATABASE iznine sahip olduğundan emin olmak için.
+* [Burada](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)indirmek üzere kullanılabilen **AdventureWorks2016** veritabanının yerel bir kopyası.
+* SQL Server Express yükleme ile varsayılan olarak devre dışı bırakılan TCP/IP protokolünü etkinleştirmek için. [Sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)MAKALESINI izleyerek TCP/IP protokolünü etkinleştirin.
+* [Windows Güvenlik duvarınızı veritabanı altyapısı erişimi için](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)yapılandırmak için.
+* Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+* Azure SQL veritabanı yönetilen örneği. Azure SQL [veritabanı yönetilen örneği oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)makalesindeki ayrıntıyı IZLEYEREK Azure SQL veritabanı yönetilen örneği oluşturabilirsiniz.
+* [Data Migration Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 veya sonraki bir sürümünü indirip yükleyin.
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak Azure veritabanı geçiş hizmeti 'ni şirket içi kaynak sunucularınız için siteden siteye bağlantı ile sağlayan Azure Resource Manager dağıtım modeli kullanılarak oluşturulan Microsoft Azure sanal ağ.
+* [SQL Server geçiş değerlendirmesi gerçekleştirme](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)makalesinde açıklandığı gibi Data Migration Yardımcısı kullanarak şirket içi veritabanınızın ve şema geçişinin tamamlanmış değerlendirmesi.
+* PowerShell Galerisi `Az.DataMigration` modülünü (sürüm 0.7.2 veya üzeri), [Install-Module PowerShell cmdlet 'ini](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)kullanarak indirip yükleyin.
+* Kaynak SQL Server örneğine bağlanmak için kullanılan kimlik bilgilerinin [DENETIM sunucusu](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) iznine sahip olduğundan emin olmak için.
+* Hedef Azure SQL veritabanı yönetilen örneğine bağlanmak için kullanılan kimlik bilgilerinin hedef Azure SQL veritabanı yönetilen örnek veritabanlarında DENETIM VERITABANı iznine sahip olduğundan emin olmak için.
 
     > [!IMPORTANT]
-    > Çevrimiçi geçişler için Azure Etkin Dizin kimlik bilgilerinizi zaten ayarlamış olmalısınız. Daha fazla bilgi için, [kaynaklara erişebilen bir Azure REKLAM uygulaması ve hizmet ilkesi oluşturmak için portalı kullan](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)makalesine bakın.
+    > Çevrimiçi geçişler için Azure Active Directory kimlik bilgilerinizi ayarlamış olmanız gerekir. Daha fazla bilgi için, [kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)makalesine bakın.
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure aboneliğinizde oturum açın
 
-PowerShell'i kullanarak Azure aboneliğinizde oturum açın. Daha fazla bilgi için [Azure PowerShell ile oturum aç](https://docs.microsoft.com/powershell/azure/authenticate-azureps)makalesini görün.
+PowerShell kullanarak Azure aboneliğinizde oturum açın. Daha fazla bilgi için [Azure PowerShell oturum açma](https://docs.microsoft.com/powershell/azure/authenticate-azureps)makalesine bakın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir kapsayıcıdır.
+Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Komutu [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) kullanarak bir kaynak grubu oluşturun.
+[`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) Komutunu kullanarak bir kaynak grubu oluşturun.
 
-Aşağıdaki örnek, *Doğu ABD* bölgesinde *myResourceGroup* adında bir kaynak grubu oluşturur.
+Aşağıdaki örnek, *Doğu ABD* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturur.
 
 ```powershell
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti örneği oluşturma
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti örneği oluşturma
 
-Cmdlet'i kullanarak Azure Veritabanı Geçiş `New-AzDataMigrationService` Hizmeti'nin yeni örneğini oluşturabilirsiniz.
-Bu cmdlet aşağıdaki gerekli parametreleri bekler:
+`New-AzDataMigrationService` Cmdlet 'Ini kullanarak Azure veritabanı geçiş hizmeti 'nin yeni bir örneğini oluşturabilirsiniz.
+Bu cmdlet aşağıdaki gerekli parametreleri bekliyor:
 
-* *Azure Kaynak Grubu adı.* Komutu, [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) daha önce gösterildiği gibi bir Azure Kaynak grubu oluşturmak ve adını parametre olarak sağlamak için kullanabilirsiniz.
-* *Servis adı*. Azure Veritabanı Geçiş Hizmeti için istenen benzersiz hizmet adına karşılık gelen dize.
+* *Azure Kaynak grubu adı*. Komutunu, daha [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) önce gösterildiği gibi bir Azure Kaynak grubu oluşturmak ve adını bir parametre olarak sağlamak için kullanabilirsiniz.
+* *Hizmet adı*. Azure veritabanı geçiş hizmeti için istenen benzersiz hizmet adına karşılık gelen dize.
 * *Konum*. Hizmetin konumunu belirtir. Batı ABD veya Güneydoğu Asya gibi bir Azure veri merkezi konumu belirtin.
-* *Sku*. Bu parametre DMS Sku adına karşılık gelir. Şu anda desteklenen Sku isimleri *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
-* *Sanal Subnet Tanımlayıcısı*. Bir alt ağ oluşturmak [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) için cmdlet kullanabilirsiniz.
+* *SKU 'su*. Bu parametre, DMS SKU adına karşılık gelir. Şu anda desteklenen SKU adları *Basic_1vCore*, *Basic_2vCores* *GeneralPurpose_4vCores*.
+* *Sanal alt ağ tanımlayıcısı*. Bir alt ağ oluşturmak için [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) cmdlet 'ini kullanabilirsiniz.
 
-Aşağıdaki örnek, *MyVNET* adlı bir sanal ağ ve *MySubnet*adlı bir alt ağ kullanarak *Doğu ABD* bölgesinde bulunan kaynak grubu *MyDMS'de* *MyDMS* adlı bir hizmet oluşturur.
+Aşağıdaki örnek, *Myvnet* adlı bir sanal ağ ve *mysubnet*adlı bir alt ağ kullanarak *Doğu ABD* bölgesinde bulunan *Mydmsresourcegroup* kaynak grubunda *mydms* adlı bir hizmet oluşturur.
 
 > [!IMPORTANT]
-> Aşağıdaki kod snippet' i, Premium SKU'ya dayalı Azure Veritabanı Geçiş Hizmeti örneği gerektirmeyen çevrimdışı geçiş içindir. Çevrimiçi geçiş için -Sku parametresinin değeri premium SKU içermelidir.
+> Aşağıdaki kod parçacığı, Premium SKU 'ya dayalı bir Azure veritabanı geçiş hizmeti örneği gerektirmeyen çevrimdışı geçiş içindir. Çevrimiçi geçiş için-SKU parametresinin değeri bir Premium SKU içermelidir.
 
 ```powershell
 $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
@@ -101,18 +101,18 @@ $service = New-AzDms -ResourceGroupName myResourceGroup `
 
 ## <a name="create-a-migration-project"></a>Geçiş projesi oluşturma
 
-Bir Azure Veritabanı Geçiş Hizmeti örneği oluşturduktan sonra bir geçiş projesi oluşturun. Azure Veritabanı Geçiş Hizmeti projesi, hem kaynak hem de hedef örnekler için bağlantı bilgilerinin yanı sıra projenin bir parçası olarak geçirmek istediğiniz veritabanlarının listesini gerektirir.
+Azure veritabanı geçiş hizmeti örneği oluşturduktan sonra bir geçiş projesi oluşturun. Azure veritabanı geçiş hizmeti projesi hem kaynak hem de hedef örneklerin yanı sıra projenin bir parçası olarak geçirmek istediğiniz veritabanlarının listesini gerektirir.
 
-### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Kaynak ve hedef bağlantılar için Veritabanı Bağlantı Bilgileri nesnesi oluşturma
+### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Kaynak ve hedef bağlantıları için bir veritabanı bağlantı bilgileri nesnesi oluşturma
 
-Aşağıdaki parametreleri bekleyen cmdlet'i `New-AzDmsConnInfo` kullanarak bir Veritabanı Bağlantı Bilgisi nesnesi oluşturabilirsiniz:
+Aşağıdaki parametreleri bekleyen `New-AzDmsConnInfo` cmdlet 'ini kullanarak bir veritabanı bağlantı bilgisi nesnesi oluşturabilirsiniz:
 
-* *ServerType*. Örneğin, SQL, Oracle veya MySQL gibi istenen veritabanı bağlantısı türü. SQL Server ve Azure SQL için SQL'i kullanın.
-* *Veri Kaynağı*. Bir SQL Server örneğinin veya Azure SQL Veritabanı örneğinin adı veya IP'si.
-* *AuthType*. SqlAuthentication veya WindowsAuthentication olabilir bağlantı için kimlik doğrulama türü.
-* *TrustServerCertificate*. Bu parametre, güveni doğrulamak için sertifika zincirini yürürken kanalın şifrelenip şifrelenmediğini gösteren bir değer ayarlar. Değer olabilir `$true` veya `$false`.
+* *SunucuTürü*. İstenen veritabanı bağlantısı türü (örneğin, SQL, Oracle veya MySQL). SQL Server ve Azure SQL için SQL kullanın.
+* *Veri kaynağı*. Bir SQL Server örneğinin veya Azure SQL veritabanı örneğinin adı veya IP 'si.
+* *AuthType*. SqlAuthentication veya WindowsAuthentication olabilen bağlantı için kimlik doğrulaması türü.
+* *TrustServerCertificate*. Bu parametre, güveni doğrulamak üzere sertifika zincirini atlayarak kanalın şifrelenip şifrelenmeyeceğini belirten bir değer ayarlar. Değer `$true` veya `$false`olabilir.
 
-Aşağıdaki örnek, sql kimlik doğrulaması kullanarak *MySourceSQLServer* adlı bir kaynak SQL Server için bir Bağlantı Bilgisi nesnesi oluşturur:
+Aşağıdaki örnek, SQL kimlik doğrulaması kullanarak *Mysourcessqlserver* adlı bir kaynak SQL Server Için bir bağlantı bilgileri nesnesi oluşturur:
 
 ```powershell
 $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -121,7 +121,7 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-Sonraki örnek, SQL kimlik doğrulaması kullanarak 'targetmanagedinstance.database.windows.net' adlı bir Azure SQL Veritabanı yönetilen örnek sunucusu için Bağlantı Bilgisi oluşturulmasını gösterir:
+Sonraki örnekte, SQL kimlik doğrulaması kullanarak ' targetmanagedinstance.database.windows.net ' adlı bir Azure SQL veritabanı yönetilen örnek sunucusu için bağlantı bilgilerinin oluşturulması gösterilmektedir:
 
 ```powershell
 $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -132,18 +132,18 @@ $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
 
 ### <a name="provide-databases-for-the-migration-project"></a>Geçiş projesi için veritabanları sağlama
 
-Projenin oluşturulması `AzDataMigrationDatabaseInfo` için parametre olarak sağlanabilecek Azure Veritabanı Geçiş Hizmeti projesinin bir parçası olarak veritabanlarını belirten nesnelerin bir listesini oluşturun. Oluşturmak için cmdlet `New-AzDataMigrationDatabaseInfo` `AzDataMigrationDatabaseInfo`kullanabilirsiniz.
+Azure veritabanı geçiş hizmeti `AzDataMigrationDatabaseInfo` projesi 'nin bir parçası olarak veritabanlarını belirten nesnelerin bir listesini oluşturun ve bu proje oluşturmak için parametre olarak temin edilebilir. Oluşturmak `New-AzDataMigrationDatabaseInfo` `AzDataMigrationDatabaseInfo`için cmdlet 'ini kullanabilirsiniz.
 
-Aşağıdaki örnek, `AzDataMigrationDatabaseInfo` **AdventureWorks2016** veritabanı için proje oluşturur ve proje oluşturma için parametre olarak sağlanacak listeye ekler.
+Aşağıdaki örnek, **AdventureWorks2016** veritabanı `AzDataMigrationDatabaseInfo` için projeyi oluşturur ve proje oluşturma için parametre olarak sağlanacak listeye ekler.
 
 ```powershell
 $dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks
 $dbList = @($dbInfo1)
 ```
 
-### <a name="create-a-project-object"></a>Proje nesnesi oluşturma
+### <a name="create-a-project-object"></a>Proje nesnesi oluştur
 
-Son olarak, Daha önce oluşturulmuş kaynak ve hedef bağlantıları ve geçiş `New-AzDataMigrationProject` için veritabanları listesini kullanarak *Doğu ABD'de* bulunan *MyDMSProject* adlı bir Azure Veritabanı Geçiş Hizmeti projesi oluşturabilirsiniz.
+Son olarak, kullanarak `New-AzDataMigrationProject` *Doğu ABD* bulunan *mydmsproject* adlı bir Azure veritabanı geçiş hizmeti projesi oluşturabilir ve önceden oluşturulan kaynak ve hedef bağlantıları ve geçirilecek veritabanlarının listesini ekleyebilirsiniz.
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
@@ -159,13 +159,13 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
 
 ## <a name="create-and-start-a-migration-task"></a>Geçiş görevi oluşturma ve başlatma
 
-Ardından, bir Azure Veritabanı Geçiş Hizmeti görevi oluşturun ve başlatın. Bu görev, hem kaynak hem de hedef için bağlantı kimlik bilgisinin yanı sıra geçirilecek veritabanı tablolarının listesini ve ön koşul olarak oluşturulan projeyle birlikte zaten sağlanan bilgileri gerektirir.
+Ardından, bir Azure veritabanı geçiş hizmeti görevi oluşturun ve başlatın. Bu görev hem kaynak hem de hedef için bağlantı kimlik bilgilerinin yanı sıra geçirilecek veritabanı tablolarının listesini ve bir önkoşul olarak oluşturulan projeyle zaten sağlanmış olan bilgileri gerektirir.
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Kaynak ve hedef için kimlik bilgisi parametreleri oluşturma
 
-[PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesneolarak bağlantı güvenlik kimlik bilgileri oluşturun.
+Bağlantı güvenliği kimlik bilgilerini [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesnesi olarak oluşturun.
 
-Aşağıdaki örnek, hem kaynak hem de hedef bağlantılar için *PSKdential* nesnelerin oluşturulmasını gösterir ve parolaları dize değişkenleri *olarak $sourcePassword* ve *$targetPassword*sağlar.
+Aşağıdaki örnek, hem kaynak hem de hedef bağlantılar için *PSCredential* nesnelerinin oluşturulmasını gösterir ve bu da *$sourcePassword* dize değişkenleri olarak parolalar sağlar *$targetPassword*.
 
 ```powershell
 $secpasswd = ConvertTo-SecureString -String $sourcePassword -AsPlainText -Force
@@ -174,9 +174,9 @@ $secpasswd = ConvertTo-SecureString -String $targetPassword -AsPlainText -Force
 $targetCred = New-Object System.Management.Automation.PSCredential ($targetUserName, $secpasswd)
 ```
 
-### <a name="create-a-backup-fileshare-object"></a>Yedek FileShare nesnesi oluşturma
+### <a name="create-a-backup-fileshare-object"></a>Yedek FileShare nesnesi oluştur
 
-Artık, Azure Veritabanı Geçiş Hizmeti'nin cmdlet'i kullanarak kaynak veritabanı yedeklemelerini alabileceği yerel Kobİ ağ paylaşımını temsil eden bir FileShare nesnesi `New-AzDmsFileShare` oluşturun.
+Şimdi, `New-AzDmsFileShare` Azure veritabanı geçiş hizmeti 'nin cmdlet 'i kullanarak kaynak veritabanı yedeklemelerini atabileceğiniz yerel SMB ağ paylaşımını temsil eden bir FileShare nesnesi oluşturun.
 
 ```powershell
 $backupPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
@@ -186,11 +186,11 @@ $backupFileSharePath="\\10.0.0.76\SharedBackup"
 $backupFileShare = New-AzDmsFileShare -Path $backupFileSharePath -Credential $backupCred
 ```
 
-### <a name="create-selected-database-object"></a>Seçili veritabanı nesnesi oluşturma
+### <a name="create-selected-database-object"></a>Seçili veritabanı nesnesi oluştur
 
-Bir sonraki adım `New-AzDmsSelectedDB` cmdlet kullanarak kaynak ve hedef veritabanları seçmektir.
+Sonraki adım `New-AzDmsSelectedDB` cmdlet 'ini kullanarak kaynak ve hedef veritabanlarını seçtir.
 
-Aşağıdaki örnek, tek bir veritabanını SQL Server'dan Azure SQL Veritabanı yönetilen bir örneğe geçirmek içindir:
+Aşağıdaki örnek, SQL Server bir Azure SQL veritabanı yönetilen örneğine tek bir veritabanının geçirilmesi içindir:
 
 ```powershell
 $selectedDbs = @()
@@ -200,7 +200,7 @@ $selectedDbs += New-AzDmsSelectedDB -MigrateSqlServerSqlDbMi `
   -BackupFileShare $backupFileShare `
 ```
 
-Tüm BIR SQL Server örneğinin Azure SQL Veritabanı yönetilen örneğine kaldırma ve kaydırma ihtiyacı varsa, kaynaktan tüm veritabanlarını almak için bir döngü aşağıda verilmiştir. Aşağıdaki örnekte, $Server, $SourceUserName ve $SourcePassword için kaynak SQL Server ayrıntılarınızı sağlayın.
+Bir SQL Server örneğinin tamamı Azure SQL veritabanı yönetilen örneği için bir yükseltme ve kaydırma işlemi gerekiyorsa, kaynaktan tüm veritabanlarını alma döngüsü aşağıda verilmiştir. Aşağıdaki örnekte, $Server, $SourceUserName ve $SourcePassword için kaynak SQL Server ayrıntılarınızı sağlayın.
 
 ```powershell
 $Query = "(select name as Database_Name from master.sys.databases where Database_id>4)";
@@ -219,9 +219,9 @@ $selectedDbs += New-AzureRmDmsSelectedDB -MigrateSqlServerSqlDbMi `
       }
 ```
 
-### <a name="sas-uri-for-azure-storage-container"></a>Azure Depolama Konteyneri için SAS URI
+### <a name="sas-uri-for-azure-storage-container"></a>Azure depolama kapsayıcısı için SAS URI 'SI
 
-Azure Veritabanı Geçiş Hizmeti'ne hizmetin yedekleme dosyalarını yüklediği depolama hesabı kapsayıcısına erişim sağlayan SAS URI içeren değişken oluşturun.
+Azure veritabanı geçiş hizmeti 'ni, hizmetin yedekleme dosyalarını karşıya yükleyen depolama hesabı kapsayıcısına erişimi sağlayan SAS URI 'sini içeren bir değişken oluşturun.
 
 ```powershell
 $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%3A33Z&se=2019-07-14T18%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=qKlSA512EVtest3xYjvUg139tYSDrasbftY%3D"
@@ -229,35 +229,35 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 
 ### <a name="additional-configuration-requirements"></a>Ek yapılandırma gereksinimleri
 
-Ele almanız gereken birkaç ek gereksinim vardır, ancak bunlar çevrimdışı veya çevrimiçi geçiş gerçekleştirip gerçekleştirmediğinize bağlı olarak farklılık gösterir.
+Bilmeniz gereken birkaç ek gereksinim vardır, ancak çevrimdışı veya çevrimiçi geçiş gerçekleştirdiğinize bağlı olarak farklılık gösterir.
 
 #### <a name="offline-migrations"></a>Çevrimdışı geçişler
 
 Yalnızca çevrimdışı geçişler için aşağıdaki ek yapılandırma görevlerini gerçekleştirin.
 
-* **Oturum açma ları seçin.** Aşağıdaki örnekte gösterildiği gibi geçirilecek giriş listesi oluşturun:
+* **Oturum açmalar**' ı seçin. Aşağıdaki örnekte gösterildiği gibi geçirilecek bir oturum açma listesi oluşturun:
 
     ```powershell
     $selectedLogins = @("user1", "user2")
     ```
 
     > [!IMPORTANT]
-    > Şu anda, Azure Veritabanı Geçiş Hizmeti yalnızca geçiş sql oturumlarını destekler.
+    > Şu anda Azure veritabanı geçiş hizmeti yalnızca SQL oturum açmaları geçirmeyi destekliyor.
 
-* **Aracı işleri seçin.** Aşağıdaki örnekte gösterildiği gibi geçirilecek aracı işlerinin listesini oluşturun:
+* **Aracı Işlerini seçin**. Aşağıdaki örnekte gösterildiği gibi geçirilecek aracı işlerinin listesini oluşturun:
 
     ```powershell
     $selectedAgentJobs = @("agentJob1", "agentJob2")
     ```
 
     > [!IMPORTANT]
-    > Şu anda Azure Veritabanı Geçiş Hizmeti yalnızca T-SQL alt sistem iş adımlarını içeren işleri destekler.
+    > Azure veritabanı geçiş hizmeti şu anda yalnızca T-SQL alt sistemi iş adımları olan işleri destekliyor.
 
 #### <a name="online-migrations"></a>Çevrimiçi geçişler
 
 Yalnızca çevrimiçi geçişler için aşağıdaki ek yapılandırma görevlerini gerçekleştirin.
 
-* **Azure Active Directory Uygulamasını Yapılandırma**
+* **Azure Active Directory uygulamasını yapılandırma**
 
     ```powershell
     $pwd = "Azure App Key"
@@ -266,54 +266,54 @@ Yalnızca çevrimiçi geçişler için aşağıdaki ek yapılandırma görevleri
     $app = New-AzDmsAdApp -ApplicationId $appId -AppKey $AppPasswd
     ```
 
-* **Depolama Kaynağını Yapılandırma**
+* **Depolama kaynağını yapılandırma**
 
     ```powershell
     $storageResourceId = "Storage Resource Id"
     ```
 
-### <a name="create-and-start-the-migration-task"></a>Geçiş görevini oluşturma ve başlatma
+### <a name="create-and-start-the-migration-task"></a>Geçiş görevi oluşturma ve başlatma
 
-Geçiş `New-AzDataMigrationTask` görevi oluşturmak ve başlatmak için cmdlet'i kullanın.
+Bir geçiş `New-AzDataMigrationTask` görevi oluşturmak ve başlatmak için cmdlet 'ini kullanın.
 
 #### <a name="specify-parameters"></a>Parametreleri belirtin
 
 ##### <a name="common-parameters"></a>Ortak Parametreler
 
-Çevrimdışı veya çevrimiçi geçiş gerçekleştirip gerçekleştirmediğinize bakılmaksızın, `New-AzDataMigrationTask` cmdlet aşağıdaki parametreleri bekler:
+Çevrimdışı veya çevrimiçi geçiş gerçekleştirmekten bağımsız olarak, `New-AzDataMigrationTask` cmdlet aşağıdaki parametreleri bekler:
 
-* *Görev Türü*. SQL Server için oluşturulacak geçiş görevi nin türünden Sql SQL Veritabanı Yönetilen Örnek geçiş türü *nezimmeteSqlSqlSqlDbMi* bekleniyor. 
-* *Kaynak Grup Adı*. Görevi oluşturacak azure kaynak grubunun adı.
-* *ServiceName*. Görevin oluşturulabilmek için Azure Veritabanı Geçiş Hizmeti örneği.
-* *Proje Adı*. Görevoluşturmak için Azure Veritabanı Geçiş Hizmeti projesinin adı. 
-* *Görev Adı*. Oluşturulacak görevin adı. 
-* *Kaynak Bağlantı*. Kaynak SQL Server bağlantısını temsil eden AzDmsConnInfo nesnesi.
-* *TargetConnection*. Hedef Azure SQL Veritabanı Yönetilen Örnek bağlantısını temsil eden AzDmsConnInfo nesnesi.
-* *Kaynak Cred*. Kaynak sunucuya bağlanmak için [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesne.
-* *TargetCred*. Hedef sunucuya bağlanmak için [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesne.
-* *SelectedDatabase*. Kaynak ve hedef veritabanı eşlemi temsil eden AzDataMigrationSelectedDB nesne.
-* *BackupFileShare*. Azure Veritabanı Geçiş Hizmeti'nin kaynak veritabanı yedeklemelerini götürebileceği yerel ağ paylaşımını temsil eden FileShare nesnesi.
-* *Yedek BlobSasUri*. Azure Veritabanı Geçiş Hizmeti'ne, hizmetin yedekleme dosyalarını yüklediği depolama hesabı kapsayıcısına erişim sağlayan SAS URI. Blob kapsayıcısı için SAS URI değerini almayı öğrenin.
-* *SelectedLogins*. Geçirilecek seçili girişlerin listesi.
-* *SelectedAgentİşler*. Geçirilecek seçili aracı işlerinin listesi.
+* *TaskType*. SQL Server Azure SQL veritabanı yönetilen örneği geçiş türü için oluşturulacak geçiş görevinin türü *Migratesqlserversqldbmı* bekleniyor. 
+* *Kaynak grubu adı*. Görevin oluşturulacağı Azure Kaynak grubunun adı.
+* *ServiceName*. Görevin oluşturulacağı Azure veritabanı geçiş hizmeti örneği.
+* *ProjectName*. Görevin oluşturulacağı Azure veritabanı geçiş hizmeti projesinin adı. 
+* *Görevadı*. Oluşturulacak görevin adı. 
+* *SourceConnection*. Kaynak SQL Server bağlantısını temsil eden Azdmsconnınfo nesnesi.
+* *TargetConnection*. Hedef Azure SQL veritabanı yönetilen örnek bağlantısını temsil eden Azdmsconnınfo nesnesi.
+* *Sourcecred*. Kaynak sunucuya bağlanmak için [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesnesi.
+* *Targetkimlik bilgileri*. Hedef sunucuya bağlanmak için [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) nesnesi.
+* *Selecteddatabase*. Kaynak ve hedef veritabanı eşlemesini temsil eden AzDataMigrationSelectedDB nesnesi.
+* *Backupfileshare*. Azure veritabanı geçiş hizmetinin kaynak veritabanı yedeklemelerini atabileceğiniz yerel ağ paylaşımını temsil eden FileShare nesnesi.
+* *Backupblobsasurı*. Azure veritabanı geçiş hizmeti 'ni, hizmetin yedekleme dosyalarını karşıya yükleyen depolama hesabı kapsayıcısına erişim sağlayan SAS URI 'SI. Blob kapsayıcısı için SAS URI değerini almayı öğrenin.
+* *SelectedLogins*. Geçirilecek seçili oturum açma işlemleri listesi.
+* *SelectedAgentJobs*. Geçirilecek seçili aracı işlerinin listesi.
 
 ##### <a name="additional-parameters"></a>Ek parametreler
 
-Cmdlet `New-AzDataMigrationTask` ayrıca, gerçekleştirdiğiniz geçiş türüne, çevrimdışı veya çevrimiçi parametreleri de bekler.
+`New-AzDataMigrationTask` Cmdlet 'i Ayrıca, gerçekleştirdiğiniz geçiş türü, çevrimdışı veya çevrimiçi olan parametreleri de bekliyor.
 
-* **Çevrimdışı geçişler.** Çevrimdışı geçişler için `New-AzDataMigrationTask` cmdlet de aşağıdaki parametreleri bekler:
+* **Çevrimdışı geçişler**. Çevrimdışı geçişlerde, `New-AzDataMigrationTask` cmdlet aşağıdaki parametreleri de bekler:
 
-  * *SelectedLogins*. Geçirilecek seçili girişlerin listesi.
-  * *SelectedAgentİşler*. Geçirilecek seçili aracı işlerinin listesi.
+  * *SelectedLogins*. Geçirilecek seçili oturum açma işlemleri listesi.
+  * *SelectedAgentJobs*. Geçirilecek seçili aracı işlerinin listesi.
 
-* **Çevrimiçi geçişler**. Çevrimiçi geçişler için `New-AzDataMigrationTask` cmdlet de aşağıdaki parametreleri bekler.
+* **Çevrimiçi geçişler**. Çevrimiçi geçişlerde, `New-AzDataMigrationTask` cmdlet aşağıdaki parametreleri de bekler.
 
-* *AzureActiveDirectoryApp*. Aktif Dizin Uygulaması.
-* *DepolamaKaynak KIMLIĞI*. Depolama Hesabı kaynak kimliği.
+* *AzureActiveDirectoryApp*. Active Directory uygulama.
+* *Storageresourceıd*. Depolama hesabının kaynak KIMLIĞI.
 
 #### <a name="create-and-start-an-offline-migration-task"></a>Çevrimdışı geçiş görevi oluşturma ve başlatma
 
-Aşağıdaki örnek **myDMSTask**adlı çevrimdışı bir geçiş görevi oluşturur ve başlatır:
+Aşağıdaki örnek, **myDMSTask**adlı bir çevrimdışı geçiş görevi oluşturur ve başlatır:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
@@ -334,7 +334,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
 
 #### <a name="create-and-start-an-online-migration-task"></a>Çevrimiçi geçiş görevi oluşturma ve başlatma
 
-Aşağıdaki örnek **myDMSTask**adlı bir çevrimiçi geçiş görevi oluşturur ve başlatır:
+Aşağıdaki örnek, **myDMSTask**adlı bir çevrimiçi geçiş görevi oluşturur ve başlatır:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
@@ -359,7 +359,7 @@ Geçişi izlemek için aşağıdaki görevleri gerçekleştirin.
 
 1. Tüm geçiş ayrıntılarını $CheckTask adlı bir değişkende birleştirin.
 
-    Geçişle ilişkili özellikler, durum ve veritabanı bilgileri gibi geçiş ayrıntılarını birleştirmek için aşağıdaki kod parçacıklarını kullanın:
+    Geçişle ilişkili özellikler, durum ve veritabanı bilgileri gibi geçiş ayrıntılarını birleştirmek için aşağıdaki kod parçacığını kullanın:
 
     ```powershell
     $CheckTask= Get-AzDataMigrationTask     -ResourceGroupName myResourceGroup `
@@ -371,9 +371,9 @@ Geçişi izlemek için aşağıdaki görevleri gerçekleştirin.
     Write-Host ‘$CheckTask.ProjectTask.Properties.Output’
     ```
 
-2. Geçiş `$CheckTask` görevinin geçerli durumunu almak için değişkeni kullanın.
+2. Geçiş görevinin `$CheckTask` geçerli durumunu almak için değişkenini kullanın.
 
-    Geçiş görevinin geçerli durumunu almak için `$CheckTask` değişkeni kullanmak için, aşağıdaki örnekte gösterildiği gibi görevin durum özelliğini sorgulayarak çalışan geçiş görevini izleyebilirsiniz:
+    Geçiş görevinin geçerli `$CheckTask` durumunu almak üzere değişkenini kullanmak için, aşağıdaki örnekte gösterildiği gibi görevin durum özelliğini sorgulayarak çalışan geçiş görevini izleyebilirsiniz:
 
     ```powershell
     if (($CheckTask.ProjectTask.Properties.State -eq "Running") -or ($CheckTask.ProjectTask.Properties.State -eq "Queued"))
@@ -390,13 +390,13 @@ Geçişi izlemek için aşağıdaki görevleri gerçekleştirin.
     }
     ```
 
-## <a name="performing-the-cutover-online-migrations-only"></a>Kesme gerçekleştirme (yalnızca çevrimiçi geçişler)
+## <a name="performing-the-cutover-online-migrations-only"></a>Tam geçişi gerçekleştirme (yalnızca çevrimiçi geçişler)
 
-Çevrimiçi geçişle, tam bir yedekleme ve veritabanlarıgeri yükleme gerçekleştirilir ve ardından BackupFileShare'de depolanan İşlem Günlüklerini geri yükleme çalışmaları devam eder.
+Çevrimiçi bir geçişle, veritabanlarının tam yedeklemesi ve geri yüklenmesi gerçekleştirilir ve sonra iş, BackupFileShare içinde depolanan Işlem günlüklerini geri yüklemeye devam eder.
 
-Azure SQL Veritabanı yönetilen bir örnekteki veritabanı en son verilerle güncelleştirildiğinde ve kaynak veritabanıyla eşitlendiğinde, bir kesme gerçekleştirebilirsiniz.
+Azure SQL veritabanı yönetilen örneğindeki veritabanı en son verilerle güncelleştirildiği ve kaynak veritabanıyla eşitlenmiş olduğunda, bir cutover gerçekleştirebilirsiniz.
 
-Aşağıdaki örnek, kesme\geçiştamamlayacaktır. Kullanıcılar kendi takdirine bağlı olarak bu komutu kullanırlar.
+Aşağıdaki örnek cutover\migrationtamamlanacaktır. Kullanıcılar bu komutu kendi takdirine göre çağırır.
 
 ```powershell
 $command = Invoke-AzDmsCommand -CommandType CompleteSqlMiSync `
@@ -407,9 +407,9 @@ $command = Invoke-AzDmsCommand -CommandType CompleteSqlMiSync `
                                -DatabaseName "Source DB Name"
 ```
 
-## <a name="deleting-the-instance-of-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti örneğini silme
+## <a name="deleting-the-instance-of-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti örneğini silme
 
-Geçiş tamamlandıktan sonra Azure Veritabanı Geçiş Hizmeti örneğini silebilirsiniz:
+Geçiş işlemi tamamlandıktan sonra Azure veritabanı geçiş hizmeti örneğini silebilirsiniz:
 
 ```powershell
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
@@ -417,8 +417,8 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Ek geçiş senaryoları (kaynak/hedef çiftleri) hakkında bilgi için Microsoft [Veritabanı Geçiş Kılavuzu'na](https://datamigration.microsoft.com/)bakın.
+Diğer geçiş senaryoları (kaynak/hedef çiftleri) hakkında daha fazla bilgi için bkz. Microsoft [veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Makalede Azure Veritabanı Geçiş Hizmeti hakkında daha fazla bilgi [edinin.](https://docs.microsoft.com/azure/dms/dms-overview)
+Azure veritabanı geçiş hizmeti nedir [?](https://docs.microsoft.com/azure/dms/dms-overview)makalesinde Azure veritabanı geçiş hizmeti hakkında daha fazla bilgi edinin.

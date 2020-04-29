@@ -1,6 +1,6 @@
 ---
-title: Hizmet Kumaş Azure Kaynak Yöneticisi dağıtım korkulukları
-description: Bu makalede, Bir Hizmet Dokusu kümesini Azure Kaynak Yöneticisi aracılığıyla dağıtırken yapılan yaygın hatalara ve bunlardan nasıl kaçınılacaklarına genel bir bakış sunulmaktadır.
+title: Service Fabric Azure Resource Manager dağıtım guardrayları
+description: Bu makalede, Azure Resource Manager aracılığıyla Service Fabric kümesi dağıtımında yapılan yaygın hatalara ve bunların nasıl önleneceğini gösteren bir genel bakış sunulmaktadır.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
 ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368569"
 ---
-# <a name="service-fabric-guardrails"></a>Servis Kumaş korkulukları 
-Bir Hizmet Kumaşı kümesi dağıtılırken, zayıflayıcılar devreye alınır ve bu da geçersiz küme yapılandırması durumunda Azure Kaynak Yöneticisi dağıtımında başarısız olur. Aşağıdaki bölümler, sık karşılaşılan küme yapılandırma sorunlarına ve bu sorunları azaltmak için gereken adımlara genel bir bakış sağlar. 
+# <a name="service-fabric-guardrails"></a>Service Fabric guardrayları 
+Bir Service Fabric kümesi dağıtımında, guardrayları yerinde konur, bu da geçersiz bir küme yapılandırması durumunda Azure Resource Manager dağıtımı başarısız olur. Aşağıdaki bölümler, yaygın küme yapılandırma sorunlarına ve bu sorunları azaltmak için gereken adımlara genel bir bakış sağlar. 
 
 ## <a name="durability-mismatch"></a>Dayanıklılık uyumsuzluğu
 ### <a name="overview"></a>Genel Bakış
-Hizmet Dokusu düğümü türü için dayanıklılık değeri, Azure Kaynak Yöneticisi şablonunun iki farklı bölümünde tanımlanır. Sanal Makine Ölçeği, Sanal Makine Ölçeği Kümesi kaynağının uzantı bölümü ve Hizmet Kumaşı küme kaynağının Düğüm Türü bölümü. Bu bölümlerdeki dayanıklılık değerinin eşleşmesi bir gereksinimdir, aksi takdirde kaynak dağıtımı başarısız olur.
+Service Fabric düğüm türü için dayanıklılık değeri, Azure Resource Manager şablonunun iki farklı bölümünde tanımlanmıştır. Sanal makine ölçek kümesi kaynağının sanal makine ölçek kümesi uzantısı bölümü ve Service Fabric kümesi kaynağının düğüm türü bölümü. Bu bölümlerdeki dayanıklılık değerinin eşleşmesi bir gereksinimdir, aksi takdirde kaynak dağıtımı başarısız olur.
 
-Aşağıdaki bölümde, Sanal Makine Ölçeği Kümesi uzantı dayanıklılık ayarı ile Servis Kumaş Düğümü Tipi dayanıklılık ayarı arasındaki dayanıklılık uyuşmazlığı örneğini içerir:  
+Aşağıdaki bölümde, sanal makine ölçek kümesi uzantısı dayanıklılığı ayarı ve Service Fabric düğüm türü dayanıklılığı ayarı arasında bir dayanıklılık uyumsuzluğu örneği verilmiştir:  
 
-**Sanal Makine Ölçeği Ayarlı dayanıklılık ayarı**
+**Sanal makine ölçek kümesi dayanıklılık ayarı**
 ```json 
 {
   "extensions": [
@@ -41,7 +41,7 @@ Aşağıdaki bölümde, Sanal Makine Ölçeği Kümesi uzantı dayanıklılık a
 }
 ```
 
-**Servis Kumaş düğümü tipi dayanıklılık ayarı** 
+**Service Fabric düğüm türü dayanıklılık ayarı** 
 ```json
 {
   "nodeTypes": [
@@ -56,32 +56,32 @@ Aşağıdaki bölümde, Sanal Makine Ölçeği Kümesi uzantı dayanıklılık a
 ```
 
 ### <a name="error-messages"></a>Hata iletileri
-* Sanal Makine Ölçeği Ayardayanıklılık uyuşmazlığı geçerli Servis Kumaş Düğümü Tipi dayanıklılık düzeyiyle eşleşmiyor
-* Sanal Makine Ölçeği Ayar dayanıklılığı hedef Servis Kumaş Düğümü Tipi dayanıklılık düzeyine uymuyor
-* Sanal Makine Ölçeği Ayarlı dayanıklılık, geçerli Servis Kumaş dayanıklılık düzeyine veya hedef Servis Kumaş Düğümü Tipi dayanıklılık düzeyine uyuyor 
+* Sanal makine ölçek kümesi dayanıklılık uyumsuzluğu geçerli Service Fabric düğüm türü dayanıklılık düzeyiyle eşleşmiyor
+* Sanal makine ölçek kümesi dayanıklılığı, hedef Service Fabric düğüm türü dayanıklılık düzeyiyle eşleşmiyor
+* Sanal makine ölçek kümesi dayanıklılığı, geçerli Service Fabric dayanıklılık düzeyiyle veya hedef Service Fabric düğüm türü dayanıklılık düzeyiyle eşleşiyor 
 
 ### <a name="mitigation"></a>Risk azaltma
-Yukarıdaki hata iletilerinden herhangi biri tarafından belirtilen dayanıklılık uyuşmazlığını düzeltmek için:
-1. Değerlerin eşleşdiğinden emin olmak için Azure Kaynak Yöneticisi şablonunun Sanal Makine Ölçeği Kümesi uzantısı veya Hizmet Kumaş Düğümü Türü bölümündeki dayanıklılık düzeyini güncelleştirin.
-2. Azure Kaynak Yöneticisi şablonu güncelleştirilmiş değerlerle yeniden dağıtın.
+Yukarıdaki hata iletilerinin herhangi biri tarafından belirtilen bir dayanıklılık uyuşmazlığını onarmak için:
+1. Değerlerin eşleştiğinden emin olmak için, Azure Resource Manager şablonunun sanal makine ölçek kümesi uzantısında veya Service Fabric düğüm türü bölümünde dayanıklılık düzeyini güncelleştirin.
+2. Azure Resource Manager şablonunu güncelleştirilmiş değerlerle yeniden dağıtın.
 
 
-## <a name="seed-node-deletion"></a>Tohum düğümü silme 
+## <a name="seed-node-deletion"></a>Çekirdek düğüm silme 
 ### <a name="overview"></a>Genel Bakış
-Hizmet Kumaşı kümesi, kümenin birincil düğüm türünde çalışan sistem hizmetlerinin yineleme sayısını belirlemek için kullanılan bir [güvenilirlik katmanı](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) özelliğine sahiptir. Gerekli yineleme lerin sayısı, kümenin birincil düğüm türünde tutulması gereken en az düğüm sayısını belirler. Birincil düğüm türündeki düğüm sayısı güvenilirlik katmanı için gereken minimumun altına düşerse, küme kararsız hale gelir.  
+Service Fabric kümenin, kümenin birincil düğüm türünde çalışan sistem hizmetleri çoğaltmaları sayısını belirlemede kullanılan bir [güvenilirlik katmanı](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) özelliği vardır. Gerekli çoğaltmaların sayısı, kümenin birincil düğüm türünde tutulması gereken düğüm sayısı alt sınırını belirleyecek. Birincil düğüm türündeki düğümlerin sayısı güvenilirlik katmanı için gerekli en düşük değerin altına gittiğinde, küme kararsız hale gelir.  
 
 ### <a name="error-messages"></a>Hata iletileri 
-Tohum düğümü kaldırma işlemi algılandı ve reddedilecek. 
-* Bu işlem, kümede kalan yalnızca {0} potansiyel tohum düğümlerinin {1} kalmasına neden olurken, en az olarak gereklidir.
-* Tohum {0} düğümlerinin {1} çıkarılması, kümenin tohum düğümü yeter sayısının azalması nedeniyle düşmesine neden olur. Bir seferde çıkarılabilen en fazla tohum {2}düğümü sayısı.
+Çekirdek düğüm kaldırma işlemi algılandı ve reddedilecek. 
+* Bu işlem yalnızca {0} olası çekirdek düğümlerinin kümede kalmasına neden olur, {1} ancak en az bir değer gerekir.
+* Çekirdek {0} düğümlerin dışına kaldırılması, {1} çekirdek düğüm çekirdeği kaybı nedeniyle kümenin düşmesine neden olur. Tek seferde kaldırılabileceği en fazla çekirdek düğüm sayısı {2}.
  
 ### <a name="mitigation"></a>Risk azaltma 
-Birincil düğüm türünizin kümenizde belirtilen güvenilirlik için yeterli Sanal Makineye sahip olduğundan emin olun. Sanal Makine Ölçeği Kümesi'ni verilen güvenilirlik katmanı için minimum düğüm sayısının altına getirecekse Sanal Makine'yi kaldıramazsınız.
-* Güvenilirlik katmanı doğru bir şekilde belirtilirse, güvenilirlik katmanı için gerektiğinde birincil düğüm türünde yeterli düğüme sahip olduğundan emin olun. 
-* Güvenilirlik katmanı yanlışsa, Sanal Makine Ölçeği Kümesi işlemlerini başlatmadan önce güvenilirlik düzeyini düşürmek için Hizmet Kumaşı kaynağında bir değişiklik başlatın ve tamamlanmasını bekleyin.
-* Güvenilirlik katmanı Bronz ise, kümenizi incelikle küçültmek için lütfen aşağıdaki [adımları](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) izleyin.
+Birincil düğüm türü, kümenizde belirtilen güvenilirlik için yeterli sanal makineye sahip olduğundan emin olun. Sanal makine ölçek kümesini, belirtilen güvenilirlik katmanı için en az sayıda düğüm altına getirecek şekilde bir sanal makineyi kaldıracaksınız.
+* Güvenilirlik katmanı doğru şekilde belirtilmişse, güvenilirlik katmanı için gereken birincil düğüm türünde yeterli düğüme sahip olduğunuzdan emin olun. 
+* Güvenilirlik katmanı yanlış ise, herhangi bir sanal makine ölçek kümesi işlemini başlatmadan önce güvenilirlik düzeyini düşürmek için Service Fabric kaynağında bir değişiklik başlatın ve bunun tamamlanmasını bekleyin.
+* Güvenilirlik katmanı bronz ise, kümenizi dikkatlice ölçeklendirmek için lütfen bu [adımları](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Windows Server çalıştıran VM'lerde veya bilgisayarlarda küme [oluşturma: Windows Server için Hizmet Kumaşı küme oluşturma](service-fabric-cluster-creation-for-windows-server.md)
-* Linux çalıştıran VM'lerde veya bilgisayarlarda küme oluşturma: [Linux kümesi oluşturma](service-fabric-cluster-creation-via-portal.md)
-* Sorun Giderme Hizmet Kumaşı: [Sorun giderme kılavuzları](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* VM 'lerde veya Windows Server çalıştıran bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)
+* VM 'lerde veya Linux çalıştıran bilgisayarlarda küme oluşturma: [Linux kümesi oluşturma](service-fabric-cluster-creation-via-portal.md)
+* Sorun giderme Service Fabric: [sorun giderme kılavuzu](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

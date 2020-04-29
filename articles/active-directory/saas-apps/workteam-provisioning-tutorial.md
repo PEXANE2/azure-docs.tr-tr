@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Workteam'i yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını Workteam'e otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Iş ekibini yapılandırma | Microsoft Docs'
+description: Iş ekibine Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,95 +16,95 @@ ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: e9b1e93cf543836b282525c53756752630d5e4f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062815"
 ---
-# <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Workteam'i yapılandır
+# <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Iş ekibini yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Workteam'e otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Workteam ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Iş ekibine otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için, Workteam ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [Bir Workteam kiracı](https://workte.am/pricing.html)
-* Workteam'de Yönetici izinleri olan bir kullanıcı hesabı.
+* [Bir Iş ekibi kiracısı](https://workte.am/pricing.html)
+* Yönetici izinlerine sahip Workteam 'teki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-workteam"></a>Kullanıcıları Workteam'e atama 
+## <a name="assigning-users-to-workteam"></a>Kullanıcıları Iş ekibine atama 
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Workteam'e erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki yönergeleri izleyerek Workteam'e atayabilirsiniz:
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Iş ekibine erişimine ihtiyacı olduğuna karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Iş ekibine atayabilirsiniz:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-workteam"></a>Kullanıcıları Workteam'e atamak için önemli ipuçları 
+## <a name="important-tips-for-assigning-users-to-workteam"></a>Kullanıcıları Iş ekibine atamaya yönelik önemli ipuçları 
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için Workteam'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için, Iş ekibine tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Workteam'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Iş ekibine atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="setup-workteam--for-provisioning"></a>Sağlama için Kurulum Workteam
+## <a name="setup-workteam--for-provisioning"></a>Sağlama için Iş ekibini ayarla
 
-Workteam'i Azure AD ile otomatik kullanıcı sağlama için yapılandırmadan önce Workteam'de SCIM sağlamayı etkinleştirmeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için Iş ekibini yapılandırmadan önce, Workteam üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [Workteam'e](https://app.workte.am/account/signin)giriş yapın. Kuruluş ayarları**AYARLARI'nı** **Organization settings** > tıklatın.
+1. [Iş ekibine](https://app.workte.am/account/signin)oturum açın. **Kuruluş ayarları** > **ayarları**' na tıklayın.
 
     ![Workteam](media/workteam-provisioning-tutorial/settings.png)
 
-2. Dibe doğru ilerleyin ve Workteam'in sağlama yeteneklerini etkinleştirin.
+2. En Alta kaydırın ve Iş ekibinin sağlama yeteneklerini etkinleştirin.
 
     ![Workteam](media/workteam-provisioning-tutorial/icon.png)
 
-3. Temel **Url'yi** ve **Taşıyıcı Belirteci'ni**kopyalayın. Bu değerler, Azure portalındaki Workteam uygulamanızın Sağlama sekmesinde **Kiracı URL'si**ve Gizli **Belirteç** alanına girilir.
+3. **Temel URL 'yi** ve **taşıyıcı belirtecini**kopyalayın. Bu değerler, Azure portal Iş ekibi uygulamanızın sağlama sekmesinde **kiracı URL 'si**ve **gizli belirteç** alanına girilir.
 
     ![Workteam](media/workteam-provisioning-tutorial/scim.png)
 
 
-## <a name="add-workteam--from-the-gallery"></a>Galeriden Workteam ekleme
+## <a name="add-workteam--from-the-gallery"></a>Galeriden Iş ekibi ekleyin
 
-Workteam'i Azure AD ile otomatik kullanıcı sağlama için yapılandırmak için, Workteam'i Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için Iş ekibini yapılandırmak üzere, Azure AD uygulama galerisindeki Iş ekibini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Workteam eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD uygulama galerisinden Iş ekibi eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Workteam'i**girin , sonuç panelinde **Workteam'i** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna, **çalışma ekibi**' ni girin, sonuçlar panelinde **iş ekibi** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-    ![Sonuç listesindeki workteam](common/search-new-app.png)
+    ![Sonuç listesinde iş ekibi](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-workteam"></a>Otomatik kullanıcı sağlamayı Workteam'e yapılandırma  
+## <a name="configuring-automatic-user-provisioning-to-workteam"></a>Otomatik Kullanıcı sağlamasını Iş ekibine yapılandırma  
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Workteam'deki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Iş ekibinizdeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında kılavuzluk eder.
 
 > [!TIP]
-> Workteam [Single sign-on öğreticisinde](workteam-tutorial.md)verilen yönergeleri izleyerek, Workteam için SAML tabanlı tek oturum açma'yı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini birbiriyle dışa
+> Ayrıca, [Workteam çoklu oturum açma öğreticisinde](workteam-tutorial.md)belirtilen yönergeleri Izleyerek workteam için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
 
-### <a name="to-configure-automatic-user-provisioning-for-workteam--in-azure-ad"></a>Azure AD'de Workteam için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-workteam--in-azure-ad"></a>Azure AD 'de Iş ekibine yönelik otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Workteam'i**seçin.
+2. Uygulamalar listesinde, **çalışma ekibi**' ni seçin.
 
     ![Uygulamalar listesindeki Workteam bağlantısı](common/all-applications.png)
 
@@ -112,51 +112,51 @@ Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak W
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici Kimlik Bilgileri bölümü ne olursa, sırasıyla **Kiracı URL'sinde** ve **Gizli Belirteç'te** daha önce alınan **Temel URL** ve **Taşıyıcı Belirteci** değerlerini girdi. Azure AD'nin Workteam'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Workteam hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici kimlik bilgileri bölümünde, önceki **kiracı URL 'si** ve **parola belirteci** sırasıyla alınan **temel URL** 'yi ve **taşıyıcı belirteç** değerlerini girin. Azure AD 'nin Iş ekibine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Iş ekibi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Workteam'e Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları iş ekibine eşitler**' ı seçin.
 
-    ![Workteam Kullanıcı Eşlemeleri](media/workteam-provisioning-tutorial/usermapping.png)
+    ![İş ekibi Kullanıcı eşlemeleri](media/workteam-provisioning-tutorial/usermapping.png)
 
-9. Azure AD'den Workteam'e eşitlenen kullanıcı özniteliklerini **Öznitelik Eşleme** bölümünde gözden geçirin. **Eşleşme** özellikleri olarak seçilen öznitelikler, güncelleştirme işleri için Workteam' deki kullanıcı hesaplarıyla çalışmak için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den iş ekibine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için workteam 'teki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Workteam Kullanıcı Öznitelikleri](media/workteam-provisioning-tutorial/userattribute.png)
+    ![İş ekibi Kullanıcı öznitelikleri](media/workteam-provisioning-tutorial/userattribute.png)
 
-11. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+11. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-12. Workteam için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
+12. Iş ekibine yönelik Azure AD sağlama hizmetini etkinleştirmek için, **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-13. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Workteam'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+13. **Ayarlar** bölümünde **kapsam** içindeki Istenen değerleri seçerek, iş ekibine sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-14. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+14. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. İlk eşitlemenin gerçekleştirilimi sonraki eşitlemelerden daha uzun sürer. Kullanıcıların ve/veya grupların sağlanmasının ne kadar süreceğü hakkında daha fazla bilgi için, [kullanıcıların sağlanmasının ne kadar süreceğini](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)görün.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin sonraki eşitlemeler daha uzun sürer. Kullanıcıların ve/veya grupların sağlaması için ne kadar süreceğine ilişkin daha fazla bilgi için bkz. [kullanıcıları sağlamak için ne kadar sürer](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Workteam'deki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerleme durumunu izlemek ve sağlama faaliyet raporunuza gelen bağlantıları izlemek için **Geçerli Durum** bölümünü kullanabilirsiniz. Daha fazla bilgi için [bkz.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) Azure AD sağlama günlüklerini okumak için [otomatik kullanıcı hesabı sağlama hakkında raporlama'ya](../app-provisioning/check-status-user-account-provisioning.md)bakın.
+İlerlemeyi izlemek için **geçerli durum** bölümünü kullanabilir ve iş ekibinizdeki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunuzun bağlantılarını izleyebilirsiniz. Daha fazla bilgi için bkz. [Kullanıcı hazırlama durumunu denetleme](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Azure AD sağlama günlüklerini okumak için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

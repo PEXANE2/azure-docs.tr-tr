@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Zscaler One'ı yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını Zscaler One'a otomatik olarak sağlamak ve yok etmek için nasıl yapılandırılamayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Zscaler 'yi yapılandırma | Microsoft Docs"
+description: Kullanıcı hesaplarını otomatik olarak sağlamak ve, Zscaler 'ya yeniden sağlamak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,156 +16,156 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064181"
 ---
-# <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Zscaler One'ı yapılandırın
+# <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler 'ı yapılandırma
 
-Bu öğretici, Azure AD'yi kullanıcıları ve grupları Zscaler One'a otomatik olarak sağlamak ve etkisiz katmak üzere yapılandırmak için Zscaler One ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirecek adımları gösterir.
+Bu öğreticide, Azure AD 'yi otomatik olarak sağlamak ve Kullanıcı ve grupları Zscaler 'ya yeniden sağlamak üzere yapılandırmak için Zscaler bir ve Azure Active Directory (Azure AD) içinde gerçekleştirme adımları gösterilmektedir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD kullanıcı sağlama hizmetinin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında bilgi için [bkz.](../active-directory-saas-app-provisioning.md)
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../active-directory-saas-app-provisioning.md).
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdakilere sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo şunları olduğunu varsayar:
 
 * Azure AD kiracısı.
-* Bir Zscaler Bir kiracı.
-* Yönetici izinleri olan Zscaler One'da bir kullanıcı hesabı.
+* Zscaler bir kiracı.
+* Yönetim izinlerine sahip Zscaler içindeki bir kullanıcı hesabı.
 
 > [!NOTE]
-> Azure AD sağlama tümleştirmesi Zscaler One SCIM API'ye dayanır. Bu API, Kurumsal pakete sahip hesaplar için Zscaler One geliştiricileri tarafından kullanılabilir.
+> Azure AD sağlama tümleştirmesi, Zscaler One SCıM API 'sini kullanır. Bu API, kurumsal pakete sahip hesaplara yönelik bir geliştirici için kullanılabilir.
 
-## <a name="add-zscaler-one-from-the-azure-marketplace"></a>Azure Marketinden Zscaler Bir Ekle
+## <a name="add-zscaler-one-from-the-azure-marketplace"></a>Azure Marketi 'nden Zscaler ekleyin
 
-Azure AD ile otomatik kullanıcı sağlama için Zscaler One'ı yapılandırmadan önce, Azure Marketi'nden Zscaler One'ı yönetilen SaaS uygulamaları listenize ekleyin.
+Zscaler 'ı Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize Zscaler ' ı ekleyin.
 
-Pazar Yeri'nden Zscaler One eklemek için aşağıdaki adımları izleyin.
+Market 'ten Zscaler eklemek için aşağıdaki adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com)soldaki gezinti bölmesinde **Azure Etkin Dizini'ni**seçin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki gezinti bölmesinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin simgesi](common/select-azuread.png)
+    ![Azure Active Directory simgesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmında **Yeni uygulama'yı** seçin.
+3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** ' yı seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Zscaler One** girin ve sonuç panelinden **Zscaler One'ı** seçin. Uygulamayı eklemek için **Ekle'yi**seçin.
+4. Arama kutusuna **Zscaler One** girin ve sonuç panelinden **Zscaler** ' ı seçin. Uygulamayı eklemek için **Ekle**' yi seçin.
 
-    ![Zscaler Bir sonuç listesinde](common/search-new-app.png)
+    ![Sonuç listesinde Zscaler](common/search-new-app.png)
 
-## <a name="assign-users-to-zscaler-one"></a>Kullanıcıları Zscaler One'a atama
+## <a name="assign-users-to-zscaler-one"></a>Kullanıcıları Zscaler 'a atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların veya grupların Zscaler One'a erişmeye ihtiyacı olduğuna karar verin. Bu kullanıcıları veya grupları Zscaler One'a atamak için, [bir kullanıcıyı veya grubu kurumsal bir uygulamaya atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)yönergelerini izleyin.
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların Zscaler 'ya erişmesi gerektiğini belirleyin. Bu kullanıcıları veya grupları Zscaler 'ya atamak için, [Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)' daki yönergeleri izleyin.
 
-### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>Zscaler One'a kullanıcı atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>Kullanıcıları Zscaler 'ya atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını test etmek için Zscaler One'a tek bir Azure AD kullanıcısı atamanızı öneririz. Daha sonra ek kullanıcılar veya gruplar atayabilirsiniz.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Zscaler 'ya tek bir Azure AD kullanıcısı atamanız önerilir. Daha sonra ek kullanıcı veya grup atayabilirsiniz.
 
-* Bir kullanıcıyı Zscaler One'a atadığınızda, atama iletişim kutusunda geçerli bir uygulamaya özgü rolü seçin. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Zscaler 'ya atadığınızda atama iletişim kutusunda varsa uygulamaya özgü geçerli herhangi bir rolü seçin. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="configure-automatic-user-provisioning-to-zscaler-one"></a>Otomatik kullanıcı sağlamayı Zscaler One olarak yapılandırın
+## <a name="configure-automatic-user-provisioning-to-zscaler-one"></a>Otomatik Kullanıcı sağlamasını Zscaler 'ya yapılandırma
 
-Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size yol gösteriş eder. Azure AD'deki kullanıcı veya grup atamalarına dayalı olarak Zscaler One'daki kullanıcıları veya grupları oluşturmak, güncelleştirmek ve devre dışı kalmak için kullanın.
+Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehberlik eder. Azure AD 'de Kullanıcı veya grup atamalarını temel alan Zscaler 'da kullanıcıları veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için kullanın.
 
 > [!TIP]
-> Ayrıca Zscaler One için SAML tabanlı tek oturum açmayı da etkinleştirebilirsiniz. [Zscaler One tek oturum açma öğreticiyönergeleri](zscaler-One-tutorial.md)izleyin. Tek oturum açma, bu iki özellik birbirini tamamlasa da, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir.
+> Ayrıca, Zscaler için SAML tabanlı çoklu oturum açmayı etkinleştirebilirsiniz. [Zscaler tek bir oturum açma öğreticisindeki](zscaler-One-tutorial.md)yönergeleri izleyin. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
 
-### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Azure AD'de Zscaler One için otomatik kullanıcı sağlama yapılandırma
+### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Azure AD 'de Zscaler için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal uygulamaları** > seçin**Tüm uygulamalar** > **Zscaler Bir**.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar** > **Zscaler**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Zscaler One'ı**seçin.
+2. Uygulamalar listesinde **Zscaler One**öğesini seçin.
 
-    ![Uygulamalar listesindeki Zscaler Bir bağlantı](common/all-applications.png)
+    ![Uygulamalar listesinde Zscaler bir bağlantı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
-    ![Zscaler Bir Sağlama](./media/zscaler-one-provisioning-tutorial/provisioning-tab.png)
+    ![Zscaler bir sağlama](./media/zscaler-one-provisioning-tutorial/provisioning-tab.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
-    ![Zscaler Bir Sağlama Modu](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
+    ![Zscaler bir sağlama modu](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümünde, **Kiracı URL'sini** ve **Gizli Belirteç** kutularını Adım 6'da açıklandığı gibi Zscaler One hesabınızın ayarlarıyla doldurun.
+5. **Yönetici kimlik bilgileri** bölümü altında, **kiracı URL 'si** ve gizli dizi **belirteci** kutularını, 6. adımda anlatıldığı gibi Zscaler hesabınız için ayarlarla birlikte girin.
 
-6. Kiracı URL'sini ve gizli jetonu elde etmek için Zscaler One portalı Kullanıcı Arabirimi'ndeki **Yönetim** > **Kimlik Doğrulama Ayarları'na** gidin. **Kimlik Doğrulama Türü**altında **SAML'yi**seçin.
+6. Kiracı URL 'sini ve gizli anahtarı almak için, tek bir Portal Kullanıcı arabirimindeki **Yönetim** > **kimlik doğrulaması ayarları** ' na gidin. **Kimlik doğrulama türü**altında **SAML**' yi seçin.
 
-    ![Zscaler One Kimlik Doğrulama Ayarları](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
+    ![Zscaler bir kimlik doğrulama ayarları](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
-    a. YapılSAML seçeneklerini açmak için **YAPıya'yı** **SAML'yi** seçin.
+    a. **SAML Yapılandır seçeneklerini açmak** Için **SAML Yapılandır** ' ı seçin.
 
-    ![Zscaler Bir Yapılandırılan SAML](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
+    ![Zscaler bir SAML Yapılandır](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. **Temel URL** ve **Taşıyıcı Belirteç'teki**ayarları almak için **SCIM Tabanlı Sağlama'yı etkinleştir'i** seçin. Ardından ayarları kaydedin. Azure portalında **Temel URL** ayarını **Kiracı URL'sine** kopyalayın. Taşıyıcı **Belirteci** ayarını Azure portalında **Gizli Belirteç** olarak kopyalayın.
+    b. **Temel URL** ve **taşıyıcı belirteçteki**ayarları almak Için **SCIM tabanlı sağlamayı etkinleştir** ' i seçin. Sonra ayarları kaydedin. **Taban URL** ayarını Azure Portal **kiracı URL** 'sine kopyalayın. **Taşıyıcı belirteç** ayarını Azure Portal **gizli belirteç** olarak kopyalayın.
 
-7. Adım 5'te gösterilen kutuları doldurduktan sonra, Azure AD'nin Zscaler One'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** seçin. Bağlantı başarısız olursa, Zscaler One hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+7. 5. adımda gösterilen kutuları doldurduktan sonra, Azure AD 'nin Zscaler 'a bağlanabildiğine emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Zscaler hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Zscaler Bir Test Bağlantısı](./media/zscaler-one-provisioning-tutorial/test-connection.png)
+    ![Zscaler bir test bağlantısı](./media/zscaler-one-provisioning-tutorial/test-connection.png)
 
-8. Bildirim **E-posta** kutusuna, sağlama hatası bildirimlerini almak için kişinin veya grubun e-posta adresini girin. Bir **hata olduğunda e-posta gönder bildirimini** seçin onay kutusunu seçin.
+8. **Bildirim e-postası** kutusunda, sağlama hatası bildirimlerini alacak kişinin veya grubun e-posta adresini girin. **Bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Zscaler Bir Bildirim E-posta](./media/zscaler-one-provisioning-tutorial/notification.png)
+    ![Zscaler bir bildirim e-postası](./media/zscaler-one-provisioning-tutorial/notification.png)
 
-9. **Kaydet'i**seçin.
+9. **Kaydet**’i seçin.
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Zscaler One'a Senkronize Et'i**seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zscaler ile eşitler**' ı seçin.
 
-    ![Zscaler Bir kullanıcı senkronizasyonu](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
+    ![Zscaler bir Kullanıcı eşitlemesi](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
 
-11. **Öznitelik Eşlemeleri** bölümünde Azure AD'den Zscaler One'a eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Zscaler One'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişikliği kaydetmek için **Kaydet'i**seçin.
+11. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, bir güncelleştirme Işlemleri Için Zscaler içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet**' i seçin.
 
-    ![Zscaler Bir eşleşen kullanıcı öznitelikleri](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
+    ![Zscaler eşleşen bir kullanıcı özniteliği](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
 
-12. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Zscaler One'a Senkronize Et'i**seçin.
+12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscaler ile eşitler**' ı seçin.
 
-    ![Zscaler Bir grup senkronizasyonu](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
+    ![Zscaler bir grup eşitleme](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
 
-13. **Öznitelik Eşlemeleri** bölümünde Azure AD'den Zscaler One'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Zscaler One'daki gruplarla eşleştirilmesi için kullanılır. Herhangi bir değişikliği kaydetmek için **Kaydet'i**seçin.
+13. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, tek bir güncelleştirme Işlemleri Için Zscaler içindeki grupları eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet**' i seçin.
 
-    ![Zscaler Bir eşleşen grup öznitelikleri](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
+    ![Zscaler bir eşleşen Grup özniteliği](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Kapsam filtrelerini yapılandırmak [için, kapsam filtresi](./../active-directory-saas-scoping-filters.md)öğreticisindeki yönergeleri izleyin.
+14. Kapsam filtrelerini yapılandırmak için [kapsam filtresi öğreticisindeki](./../active-directory-saas-scoping-filters.md)yönergeleri izleyin.
 
-15. **Ayarlar** bölümündeZscaler One için Azure AD sağlama hizmetini etkinleştirmek **için, Sağlama Durumunu** **A'da**olarak değiştirin.
+15. Zscaler için Azure AD sağlama hizmetini etkinleştirmek üzere, **Ayarlar** bölümünde **sağlama durumunu** **Açık**olarak değiştirin.
 
-    ![Zscaler Bir Sağlama Durumu](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
+    ![Zscaler bir sağlama durumu](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 
-16. Zscaler One'a sağlamak istediğiniz kullanıcıları veya grupları tanımlayın. **Ayarlar** bölümünde, **Kapsam'ta**istediğiniz değerleri seçin.
+16. Zscaler 'a sağlamak istediğiniz kullanıcıları veya grupları tanımlayın. **Ayarlar** bölümünde, **kapsam**içinde istediğiniz değerleri seçin.
 
-    ![Zscaler Bir Kapsam](./media/zscaler-one-provisioning-tutorial/scoping.png)
+    ![Zscaler bir kapsam](./media/zscaler-one-provisioning-tutorial/scoping.png)
 
-17. Hükmetmeye hazır olduğunuzda **Kaydet'i**seçin.
+17. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
-    ![Zscaler Bir Kaydet](./media/zscaler-one-provisioning-tutorial/save-provisioning.png)
+    ![Zscaler One kaydetme](./media/zscaler-one-provisioning-tutorial/save-provisioning.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların veya grupların ilk eşitlemisini başlatır. İlk eşitlemenin gerçekleştirilemi daha sonraki eşitlemelerden daha uzun sürüyor. Azure AD sağlama hizmeti çalıştığı sürece yaklaşık her 40 dakikada bir oluşur. 
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcıların veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra eşitlenmesi daha uzun sürer. Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşir. 
 
-İlerlemeyi izlemek ve sağlama faaliyet raporuna bağlı bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz. Rapor, Azure AD sağlama hizmeti tarafından Zscaler One'da gerçekleştirilen tüm eylemleri açıklar.
+İlerleme durumunu izlemek ve sağlama etkinliği raporunun bağlantılarını izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz. Rapor, Zscaler üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklar.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında bilgi için bkz: [Otomatik kullanıcı hesabı sağlama hakkında Raporlama.](../active-directory-saas-provisioning-reporting.md)
+Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../active-directory-saas-provisioning-reporting.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-one-provisioning-tutorial/tutorial-general-01.png

@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri REST API çağrıları için Postacı'yı yapılandır
-description: Bu makalede, Media Services REST API çağrıları için Postacı nasıl yapılandırılabilen açıklanmaktadır.
+title: Azure Media Services REST API'si çağrıları için Postman yapılandırma
+description: Bu makalede, Media Services REST API çağrıları için Postman 'ın nasıl yapılandırılacağı açıklanır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 11c9c26e7c0f36e1e3dba732e90a6aef95e6ee14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76694999"
 ---
-# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Medya Hizmetleri v2 REST API aramaları için Postacı yapılandırma  
+# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services V2 REST API çağrıları için Postman yapılandırma  
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-Bu öğretici, **Postacı'yı** Azure Medya Hizmetleri (AMS) REST API'lerini aramak için kullanılabileceğini nasıl yapılandırabileceğinizi gösterir. Öğretici **postacı**içine çevre ve toplama dosyaları nasıl içe aktarılmayı gösterir. Koleksiyon, Azure Medya Hizmetleri (AMS) REST API'leri olarak adlandırdığı HTTP isteklerinin gruplanmış tanımlarını içerir. Ortam dosyası, koleksiyon tarafından kullanılan değişkenleri içerir.
+Bu öğreticide, Azure Media Services (AMS) REST API 'Lerini çağırmak için kullanılacak **Postman** 'ın nasıl yapılandırılacağı gösterilmektedir. Öğreticide ortam ve koleksiyon dosyalarının **Postman**'a nasıl aktarılacağı gösterilmektedir. Koleksiyon, Azure Media Services (AMS) REST API 'Lerini çağıran HTTP isteklerinin gruplandırılmış tanımlarını içerir. Ortam dosyası, koleksiyon tarafından kullanılan değişkenleri içerir.
 
-Bu ortam ve koleksiyon, Azure Medya Hizmetleri REST API'leri ile çeşitli görevlerin nasıl başarılabildiğini gösteren makalelerde kullanılır.
+Bu ortam ve koleksiyon, Azure Media Services REST API 'Leri ile çeşitli görevlerin nasıl elde alınacağını gösteren makalelerde kullanılır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -37,13 +37,13 @@ Bu ortam ve koleksiyon, Azure Medya Hizmetleri REST API'leri ile çeşitli göre
 
 ## <a name="configure-the-environment"></a>Ortamı yapılandırma 
 
-1. AMS öğreticilerinde kullanılan ortam değişkenlerini içeren bir .json dosyası oluşturun. Dosyayı adlandırın (örneğin, **AzureMediaServices.postman_environment.json).** Dosyayı açın ve bu kod listesinden Postacı ortamını tanımlayan kodu [yapıştırın.](postman-environment.md) 
+1. AMS öğreticilerinde kullanılan ortam değişkenlerini içeren bir. JSON dosyası oluşturun. Dosyayı adlandırın (örneğin, **Azudüzeltici Aservices. postman_environment. JSON**). Dosyayı açın ve Postman ortamını tanımlayan kodu [Bu kod](postman-environment.md)listesinden yapıştırın. 
 2. **Postman**'ı açın.
 3. Ekranın sağ tarafında **Ortamı yönet** seçeneğini belirleyin.
 
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-create-env.png)
 4. **Ortamı yönet** iletişim kutusunda **İçe aktar**'ı tıklatın.
-5. **AzureMediaServices.postman_environment.json** dosyasına göz atın ve seçin.
+5. **Azudüzeltici Aservices. postman_environment. JSON** dosyasına gözatıp seçin.
 6. **AzureMedia** ortamı eklenir.
 7. İletişim kutusunu kapatın.
 8. **AzureMedia** ortamını seçin.
@@ -52,12 +52,12 @@ Bu ortam ve koleksiyon, Azure Medya Hizmetleri REST API'leri ile çeşitli göre
 
 ## <a name="configure-the-collection"></a>Koleksiyonu yapılandırma
 
-1. Bir **dosyayı** Medya Hizmetleri'ne yüklemek için gereken tüm işlemleri içeren bir .json dosyası oluşturun. Dosyayı adlandırın (örneğin, **AzureMediaServicesOperations.postman_collection.json).** Dosyayı açın ve bu kod listesinden **Postacı** koleksiyonunu tanımlayan kodu [yapıştırın.](postman-collection.md)
+1. Media Services bir dosyayı karşıya yüklemek için gereken tüm işlemlerle **Postman** koleksiyonunu içeren bir. JSON dosyası oluşturun. Dosyayı adlandırın (örneğin, **Azudüzeltici Aservicesoperations. postman_collection. JSON**). Dosyayı açın ve **Postman** koleksiyonunu tanımlayan kodu [Bu kod](postman-collection.md)listesinden yapıştırın.
 2. Koleksiyon dosyasını içe aktarmak için **İçe Aktar**'ı tıklatın.
-3. **AzureMediaServicesOperations.postman_collection.json** dosyasını seçin.
+3. **Azudüzeltici Aservicesoperations. postman_collection. JSON** dosyasını seçin.
 
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-import-collection.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Yükleme varlıkları](media-services-rest-upload-files.md) makalesine göz atın.  
+[Varlık yükle](media-services-rest-upload-files.md) makalesine göz atın.  

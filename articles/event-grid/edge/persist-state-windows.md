@@ -1,6 +1,6 @@
 ---
-title: Windows'da kalıcı durum - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
-description: Windows'da durum devam
+title: Windows-Azure Event Grid IoT Edge durumu devam ettir | Microsoft Docs
+description: Windows 'da durumu kalıcı yap
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77086616"
 ---
-# <a name="persist-state-in-windows"></a>Windows'da durum devam
+# <a name="persist-state-in-windows"></a>Windows 'da durumu kalıcı yap
 
-Olay Izgara modülünde oluşturulan konular ve abonelikler varsayılan olarak kapsayıcı dosya sisteminde depolanır. Kalıcılık olmadan, modül yeniden dağıtılırsa, oluşturulan tüm meta veriler kaybolur. Dağıtımlar ve yeniden başlatmalar arasında verileri korumak için, verileri kapsayıcı dosya sisteminin dışında kalıcı olarak devam etmiş olmanız gerekir. 
+Event Grid modülünde oluşturulan konular ve abonelikler varsayılan olarak kapsayıcı dosya sisteminde saklanır. Kalıcı olmadan, modül yeniden dağıtılırsa oluşturulan tüm meta veriler kaybedilir. Dağıtımlar ve yeniden başlatmalar genelinde verileri korumak için verileri kapsayıcı dosya sisteminin dışında kalıcı hale getirmeniz gerekir. 
 
-Varsayılan olarak yalnızca meta veriler kalıcıdır ve olaylar gelişmiş performans için bellekte depolanır. Olay kalıcılığını da etkinleştirmek için kalıcı olaylar bölümünü izleyin.
+Varsayılan olarak yalnızca meta veriler kalıcıdır ve olaylar, daha iyi performans için bellekte depolanır. Olay kalıcılığını da sağlamak için kalıcı olaylar bölümünü izleyin.
 
-Bu makalede, Windows dağıtımlarında kalıcılık ile Olay Kılavuz modülü dağıtmak için gereken adımları sağlar.
+Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülünü dağıtmak için gereken adımlar sağlanmaktadır.
 
 > [!NOTE]
->Olay Izgara modülü, Windows'da düşük ayrıcalıklı bir kullanıcı **olan ContainerUser** olarak çalışır.
+>Event Grid modülü Windows 'da düşük ayrıcalıklı bir Kullanıcı **containeruser** olarak çalışır.
 
-## <a name="persistence-via-volume-mount"></a>Hacim montajı ile kalıcılık
+## <a name="persistence-via-volume-mount"></a>Birim bağlama aracılığıyla Kalıcılık
 
-[Docker birimleri](https://docs.docker.com/storage/volumes/) dağıtımlar arasında verileri korumak için kullanılır. Bir birim takmak için docker komutlarını kullanarak oluşturmanız, kapsayıcının okuyabilmesi, ona yazabilmesi ve modülü dağıtması için izin vermeniz gerekir.
+[Docker birimleri](https://docs.docker.com/storage/volumes/) , dağıtımları genelinde verileri korumak için kullanılır. Bir birimi bağlamak için Docker komutlarını kullanarak oluşturmanız gerekir, kapsayıcının bu komutları okuyabilmesi, yazabilmesi ve sonra modülün dağıtılması için izin vermeniz gerekir.
 
 1. Aşağıdaki komutu çalıştırarak bir birim oluşturun:
 
@@ -42,7 +42,7 @@ Bu makalede, Windows dağıtımlarında kalıcılık ile Olay Kılavuz modülü 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
    ```
-1. Aşağıdaki komutu çalıştırarak birim eşlemlerin eşettiği ana bilgisayar dizinini alın
+1. Aşağıdaki komutu çalıştırarak birimin eşlendiği konak dizinini alın
 
     ```sh
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
@@ -54,7 +54,7 @@ Bu makalede, Windows dağıtımlarında kalıcılık ile Olay Kılavuz modülü 
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
    ```
 
-   Örnek Çıktı:-
+   Örnek çıkış:-
 
    ```json
    [
@@ -69,15 +69,15 @@ Bu makalede, Windows dağıtımlarında kalıcılık ile Olay Kılavuz modülü 
           }
    ]
    ```
-1. **Mountpoint** tarafından işaret edilen **Mountpoint** değere Kullanıcılar grubunu aşağıdaki gibi ekleyin:
-    1. Dosya Gezgini'ni başlatın.
-    1. **Mountpoint**tarafından işaret edilen klasöre gidin.
-    1. Sağ tıklatın ve sonra **Özellikler'i**seçin.
+1. **Bağlama noktası** tarafından işaret edilen değere **Kullanıcı** grubunu aşağıdaki gibi ekleyin:
+    1. Dosya gezginini başlatın.
+    1. **Bağlama noktası**tarafından işaret edilen klasöre gidin.
+    1. Sağ tıklayın ve ardından **Özellikler**' i seçin.
     1. **Güvenlik**’i seçin.
-    1. *Grup veya kullanıcı adları **altında, Edit'i**seçin.
-    1. **Ekle,** Gir, `Users` **Adları Denetle'yi**seçin ve **Tamam'ı**seçin.
-    1. *Kullanıcılar için İzinler*altında, **Değiştir'i**seçin ve **Tamam'ı**seçin.
-1. Bu birimi bağlamak ve Azure portalından Olay Izgara modüllerini yeniden dağıtmak için **Binds'i** kullanın
+    1. Grup veya Kullanıcı adları altında **Düzenle**' yi seçin.
+    1. **Ekle**' `Users`yi seçin, **adları denetle**' yi seçin ve **Tamam**' ı seçin.
+    1. *Kullanıcılar Için izinler*altında **Değiştir**' i seçin ve **Tamam**' ı seçin.
+1. Bu birimi bağlamak ve Azure portal Event Grid modülünü yeniden dağıtmak için **bağlamalar** kullanın
 
    Örneğin,
 
@@ -112,7 +112,7 @@ Bu makalede, Windows dağıtımlarında kalıcılık ile Olay Kılavuz modülü 
     ```
 
    >[!IMPORTANT]
-   >Bağlama değerinin ikinci bölümünü değiştirmeyin. Modüldeki belirli bir konumu işaret eden bir nokta. Pencerelerde Olay Izgara modülü için, **C olmalıdır:\\uygulama\\metadataDb**.
+   >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C:\\\\App metadatadb**olmalıdır.
 
 
     Örneğin,
@@ -148,11 +148,11 @@ Bu makalede, Windows dağıtımlarında kalıcılık ile Olay Kılavuz modülü 
     }
     ```
 
-## <a name="persistence-via-host-directory-mount"></a>Ev sahibi dizini montajı ile kalıcılık
+## <a name="persistence-via-host-directory-mount"></a>Konak Dizin bağlama aracılığıyla Kalıcılık
 
-Bir ses düzeyi monte etmek yerine, ana bilgisayar sisteminde bir dizin oluşturabilir ve bu dizini monte edebilirsiniz.
+Bir birim bağlamak yerine, ana bilgisayar sisteminde bir dizin oluşturabilir ve bu dizini bağlayabilirsiniz.
 
-1. Aşağıdaki komutu çalıştırarak ana bilgisayar dosya sisteminde bir dizin oluşturun.
+1. Aşağıdaki komutu çalıştırarak konak dosya sisteminde bir dizin oluşturun.
 
    ```sh
    mkdir <your-directory-name-here>
@@ -163,7 +163,7 @@ Bir ses düzeyi monte etmek yerine, ana bilgisayar sisteminde bir dizin oluştur
    ```sh
    mkdir C:\myhostdir
    ```
-1. Dizininizi monte etmek ve Olay Ağı modüllerini Azure portalından yeniden dağıtmak için **Binds'i** kullanın.
+1. Dizininizi bağlamak ve Event Grid modülünü Azure portal yeniden dağıtmak için **bağlamalar** ' i kullanın.
 
     ```json
     {
@@ -176,7 +176,7 @@ Bir ses düzeyi monte etmek yerine, ana bilgisayar sisteminde bir dizin oluştur
     ```
 
     >[!IMPORTANT]
-    >Bağlama değerinin ikinci bölümünü değiştirmeyin. Modüldeki belirli bir konumu işaret eden bir nokta. Pencerelerdeki Olay Izgara modülü için **\\C:\\app metadataDb**olmalıdır.
+    >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C:\\\\App metadatadb**olmalıdır.
 
     Örneğin,
 
@@ -210,17 +210,17 @@ Bir ses düzeyi monte etmek yerine, ana bilgisayar sisteminde bir dizin oluştur
          }
     }
     ```
-## <a name="persist-events"></a>Olayları devam etti
+## <a name="persist-events"></a>Etkinlikleri kalıcı yap
 
-Olay kalıcılığını etkinleştirmek için, öncelikle yukarıdaki bölümleri kullanarak birim montaj veya ana bilgisayar dizini montajı yoluyla olayların kalıcılığını etkinleştirmeniz gerekir.
+Olay kalıcılığını etkinleştirmek için, önce yukarıdaki bölümleri kullanarak birim bağlama veya ana bilgisayar Dizin bağlama aracılığıyla olay kalıcılığını etkinleştirmeniz gerekir.
 
-Kalıcı olaylar hakkında dikkat edilmesi gereken önemli şeyler:
+Kalıcı olaylar hakkında dikkat etmeniz gereken önemli noktalar:
 
-* Kalıcı olaylar, Etkinlik Aboneliği bazında etkinleştirilir ve bir birim veya dizin monte edildikten sonra kabul edilir.
-* Olay kalıcılığı, oluşturma zamanında bir Olay Aboneliği'nde yapılandırılır ve Olay Aboneliği oluşturulduktan sonra değiştirilemez. Olay kalıcılığını geçişyapmak için Olay Aboneliğini silmeniz ve yeniden oluşturmanız gerekir.
-* Kalıcı olaylar bellek işlemlerine göre hemen hemen her zaman daha yavaştır, ancak hız farkı sürücünün özelliklerine son derece bağlıdır. Hız ve güvenilirlik arasındaki denge tüm mesajlaşma sistemleri doğasında ama sadece büyük ölçekte fark olur.
+* Kalıcı olaylar, olay başına abonelik temelinde etkinleştirilir ve bir birim veya dizin bağlandıktan sonra kabul edilir.
+* Olay kalıcılığı, oluşturma zamanında bir olay aboneliğinde yapılandırılır ve olay aboneliği oluşturulduktan sonra değiştirilemez. Olay kalıcılığını değiştirmek için olay aboneliğini silip yeniden oluşturmanız gerekir.
+* Kalıcı olaylar, bellek işlemlerinden neredeyse her zaman daha yavaştır, ancak hız farkı, sürücünün özelliklerine oldukça bağlıdır. Hız ve güvenilirlik arasındaki zorunluluğunu getirir tüm mesajlaşma sistemlerine sahiptir ancak büyük ölçekte yalnızca fark edilebilir hale gelir.
 
-Etkinlik Aboneliği'nde olay kalıcılığını `persistencePolicy` etkinleştirmek için: `true`
+Olay aboneliğindeki olay kalıcılığını etkinleştirmek için şu şekilde `persistencePolicy` `true`ayarlayın:
 
  ```json
         {

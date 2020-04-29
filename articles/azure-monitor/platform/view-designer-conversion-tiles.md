@@ -1,5 +1,5 @@
 ---
-title: Çalışma kitapları döşeme dönüşümlerine Azure Monitor görünüm tasarımcısı
+title: Azure Izleyici Görünüm Tasarımcısı çalışma kitapları kutucuk dönüştürmeleri
 description: ''
 author: austonli
 ms.author: aul
@@ -7,29 +7,29 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658635"
 ---
-# <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor görünüm tasarımcı döşemesi dönüşümleri
-[Görünüm tasarımcısı,](view-designer.md) Azure Monitor'un, Log Analytics çalışma alanınızdaki grafikler, listeler ve zaman çizelgeleriyle verileri görselleştirmenize yardımcı olacak özel görünümler oluşturmanıza olanak tanıyan bir özelliğidir. Bunlar aşamalı olarak devre dışı ediliyor ve ek işlevsellik sağlayan çalışma kitaplarıyla değiştiriliyor. Bu makalede, çalışma kitaplarına farklı kutucuklar dönüştürme için ayrıntılar sağlar.
+# <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Izleyici Görünüm Tasarımcısı kutucuk dönüştürmeleri
+[Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve ek işlevsellik sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, farklı kutucukları çalışma kitaplarına dönüştürmeye ilişkin ayrıntılar sağlanmaktadır.
 
-## <a name="donut--list-tile"></a>Donut & liste karo
+## <a name="donut--list-tile"></a>Halka & listesi kutucuğu
 
-![Donut Listesi](media/view-designer-conversion-tiles/donut-list.png)
+![Halka listesi](media/view-designer-conversion-tiles/donut-list.png)
 
-Çalışma kitaplarındaki donut & listesi döşemesini yeniden oluşturmak iki ayrı görselleştirme içerir. Çörek kısmı için iki seçenek vardır.
-Sorgu **ekle'yi** seçerek her iki başlangıç için de özgün sorguyu görünüm tasarımcısından hücreye yapıştırın.
+Çalışma kitaplarında halka & listesi kutucuğunu yeniden oluşturmak iki ayrı görselleştirmeyi içerir. Halka bölümü için iki seçenek vardır.
+Her iki başlatma için de **Sorgu Ekle** ' ye ve özgün sorguyu görünüm tasarımcısından hücreye yapıştırın.
 
-**Seçenek 1:** **Visualization** açılan menüsünden Pasta ![ **Grafiği'ni** seçin: Pasta grafiği görselleştirme menüsü](media/view-designer-conversion-tiles/pie-chart.png)
+**Seçenek 1:** **Görselleştirme** açılan menüsünde ![ **pasta grafik** seçin: pasta grafik görselleştirme menüsü](media/view-designer-conversion-tiles/pie-chart.png)
 
-**Seçenek 2:** **Visualization** açılır tarafından `| render piechart` **sorguya göre ayarla'yı** seçin ve sorguya ekleyin:
+**Seçenek 2:** **Görselleştirme** açılan menüsünde **sorguya göre ayarla** ' yı seçin ve `| render piechart` sorguya ekleyin:
 
- ![Görselleştirme Menüsü](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Görselleştirme menüsü](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Örnek**
+**Örneğinde**
 
 Özgün sorgu
 ```KQL
@@ -46,16 +46,16 @@ search *
 | render piechart
 ```
 
-Liste oluşturmak ve sparklines'ı etkinleştirmek [için, ortak görevler](view-designer-conversion-tasks.md)hakkındaki makaleye bakın.
+Bir liste oluşturmak ve mini grafikleri etkinleştirmek için [ortak görevlerle](view-designer-conversion-tasks.md)ilgili makaleye bakın.
 
-Donut & listesinin çalışma kitaplarında nasıl yeniden yorumlanabildiğini bir örnek aşağıda verilmiştir:
+Aşağıda, halka & listesi kutucuğunun çalışma kitaplarında yeniden nasıl yorumlanabilecek bir örnek verilmiştir:
 
-![Donut listesi çalışma kitapları](media/view-designer-conversion-tiles/donut-workbooks.png)
+![Halka listesi çalışma kitapları](media/view-designer-conversion-tiles/donut-workbooks.png)
 
-## <a name="line-chart--list-tile"></a>Liste & grafik döşeme
-![Çizgi grafiği Listesi](media/view-designer-conversion-tiles/line-list.png) 
+## <a name="line-chart--list-tile"></a>Çizgi grafik & liste kutucuğu
+![Çizgi grafik listesi](media/view-designer-conversion-tiles/line-list.png) 
 
-Satır grafiği bölümünü yeniden oluşturmak için sorguyu aşağıdaki gibi güncelleştirin:
+Çizgi grafik bölümünü yeniden oluşturmak için sorguyu aşağıdaki gibi güncelleştirin:
 
 Özgün sorgu
 ```KQL
@@ -69,17 +69,17 @@ search *
 | make-series Count = count() default=0 on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by Type
 ```
 
-Çizgi grafiğini görselleştirmek için iki seçenek vardır
+Çizgi grafiği görselleştirmeye yönelik iki seçenek vardır
 
-**Seçenek 1:** **Visualization** açılır listesinden **Satır grafiğini** seçin:
+**Seçenek 1:** **Görselleştirme** açılan menüsünden **çizgi grafik** ' i seçin:
  
- ![Çizgi grafiği Menü](media/view-designer-conversion-tiles/line-visualization.png)
+ ![Çizgi grafik menüsü](media/view-designer-conversion-tiles/line-visualization.png)
 
-**Seçenek 2:** **Visualization** açılır tarafından `| render linechart` **sorguya göre ayarla'yı** seçin ve sorguya ekleyin:
+**Seçenek 2:** **Görselleştirme** açılan menüsünde **sorguya göre ayarla** ' yı seçin ve `| render linechart` sorguya ekleyin:
 
- ![Görselleştirme Menüsü](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Görselleştirme menüsü](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Örnek**
+**Örneğinde**
 
 ```KQL
 search * 
@@ -87,17 +87,17 @@ search *
 | render linechart_
 ```
 
-Liste oluşturmak ve sparklines'ı etkinleştirmek [için, ortak görevler](view-designer-conversion-tasks.md)hakkındaki makaleye bakın.
+Bir liste oluşturmak ve mini grafikleri etkinleştirmek için [ortak görevlerle](view-designer-conversion-tasks.md)ilgili makaleye bakın.
 
-Aşağıda, satır grafiği & liste döşemesinin çalışma kitaplarında nasıl yeniden yorumlanananadana bir örnek verilmiştir:
+Aşağıda, çizgi grafik & listesi kutucuğunun çalışma kitaplarında yeniden nasıl yorumlanabilecek bir örnek verilmiştir:
 
 ![Çizgi grafik listesi çalışma kitapları](media/view-designer-conversion-tiles/line-workbooks.png)
 
-## <a name="number--list-tile"></a>Sayı & liste döşemesi
+## <a name="number--list-tile"></a>& listesi kutucuğu sayısı
 
- ![Döşeme listesi](media/view-designer-conversion-tiles/tile-list-example.png)
+ ![Kutucuk Listesi](media/view-designer-conversion-tiles/tile-list-example.png)
 
-Sayı döşemesi için sorguyu aşağıdaki gibi güncelleştirin:
+Sayı kutucuğu için sorguyu aşağıdaki gibi güncelleştirin:
 
 Özgün sorgu
 ```KQL
@@ -112,25 +112,25 @@ search *
 | summarize Count = count()
 ```
 
-Visualization açılır düşüşünü **Kutucuklar** olarak değiştirin ve ardından **Döşeme Ayarları'nı**seçin.
- ![Çini Görselleştirme](media/view-designer-conversion-tiles/tile-visualization.png)
+Görselleştirme açılan menüsünü **döşemeler** olarak değiştirip **kutucuk ayarları**' nı seçin.
+ ![Kutucuk görselleştirmesi](media/view-designer-conversion-tiles/tile-visualization.png)
 
-**Başlık** bölümünü boş bırakın ve **Sol'u**seçin. **Kullanım sütunu** için değeri değiştirme: **Count**ve **Column Renderer** için **Büyük Sayı**:
+**Başlık** bölümünü boş bırakın ve **sol**' u seçin. **Kullanım sütunu:** **Count**ve **sütun oluşturucuyu** **büyük sayı**olarak değiştirin:
 
-![Döşeme Ayarları](media/view-designer-conversion-tiles/tile-settings.png)
+![Kutucuk ayarları](media/view-designer-conversion-tiles/tile-settings.png)
 
  
-Liste oluşturmak ve sparklines'ı etkinleştirmek [için, ortak görevler](view-designer-conversion-tasks.md)hakkındaki makaleye bakın.
+Bir liste oluşturmak ve mini grafikleri etkinleştirmek için [ortak görevlerle](view-designer-conversion-tasks.md)ilgili makaleye bakın.
 
-Aşağıdaki, & liste döşemesinin çalışma kitaplarında nasıl yeniden yorumlanabildiğini bir örnektir:
+Aşağıda, sayı & listesi kutucuğunun çalışma kitaplarında yeniden nasıl yorumlanabilecek bir örnek verilmiştir:
 
-![Sayı Listesi Çalışma Kitapları](media/view-designer-conversion-tiles/number-workbooks.png)
+![Sayı listesi çalışma kitapları](media/view-designer-conversion-tiles/number-workbooks.png)
 
 ## <a name="timeline--list"></a>Zaman çizelgesi ve Liste
 
- ![Zaman Çizelgesi Listesi](media/view-designer-conversion-tiles/time-list.png)
+ ![Zaman çizelgesi listesi](media/view-designer-conversion-tiles/time-list.png)
 
-Zaman çizelgesi için sorgunuzu aşağıdaki gibi güncelleyin:
+Zaman çizelgesi için sorgunuzu aşağıdaki şekilde güncelleştirin:
 
 Özgün sorgu
 ```KQL
@@ -144,20 +144,20 @@ search *
 | summarize Count = count() by Computer, bin(TimeGenerated,{TimeRange:grain})
 ```
 
-Sorguyu çubuk grafik olarak görselleştirmek için iki seçenek vardır:
+Sorguyu çubuk grafik olarak görselleştirmeye yönelik iki seçenek vardır:
 
-**Seçenek 1:** **Visualization** açılır listesinden Çubuk ![ **grafiği** ni seçin: Barchart görselleştirme](media/view-designer-conversion-tiles/bar-visualization.png)
+**Seçenek 1:** **Görselleştirme** açılan menüsünde **çubuk grafik** ' i seçin ![: bargrafik görselleştirmesi](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**Seçenek 2:** **Visualization** açılır tarafından `| render barchart` **sorguya göre ayarla'yı** seçin ve sorguya ekleyin:
+**Seçenek 2:** **Görselleştirme** açılan menüsünde **sorguya göre ayarla** ' yı seçin ve `| render barchart` sorguya ekleyin:
 
  ![Görselleştirme menüsü](media/view-designer-conversion-tiles/set-by-query.png)
 
  
-Liste oluşturmak ve sparklines'ı etkinleştirmek [için, ortak görevler](view-designer-conversion-tasks.md)hakkındaki makaleye bakın.
+Bir liste oluşturmak ve mini grafikleri etkinleştirmek için [ortak görevlerle](view-designer-conversion-tasks.md)ilgili makaleye bakın.
 
-Aşağıdaki zaman çizelgesi & liste döşemesi çalışma kitaplarında yeniden nasıl yorumlanabileceği bir örnektir:
+Aşağıda, zaman çizelgesi & listesi kutucuğunun çalışma kitaplarında yeniden nasıl yorumlanabilecek bir örnek verilmiştir:
 
-![Zaman Çizelgesi Listesi Çalışma Kitapları](media/view-designer-conversion-tiles/time-workbooks.png)
+![Zaman çizelgesi listesi çalışma kitapları](media/view-designer-conversion-tiles/time-workbooks.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

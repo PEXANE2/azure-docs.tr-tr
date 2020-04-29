@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Storegate'i yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını Storegate'e otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Storegate 'i yapılandırma | Microsoft Docs"
+description: Kullanıcı hesaplarını Storeg'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,119 +16,119 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: Zhchia
 ms.openlocfilehash: 72903a36f88f9092ce1d203b557003083407320b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064266"
 ---
-# <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Storegate'i yapılandır
+# <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Storegate yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Storegate'e otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Storegate ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi otomatik olarak sağlamak ve devre dışı bırakmak üzere Kullanıcı ve/veya grupları otomatik olarak sağlamak üzere yapılandırmak için, Storegate ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracı
-* [Bir Storegate kiracı](https://www.storegate.com)
-* Yönetici izinleri olan bir Storegate'deki kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Bir Storegate kiracısı](https://www.storegate.com)
+* Yönetici izinleriyle bir Storegüzerinde Kullanıcı hesabı.
 
-## <a name="assign-users-to-storegate"></a>Kullanıcıları Storegate'e atama
+## <a name="assign-users-to-storegate"></a>Kullanıcıları Storeg'e ata
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için atamalar adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen atama adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Storegate'e erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki yönergeleri izleyerek Storegate'e atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Storeg'e erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Storeg'e atayabilirsiniz:
 
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-storegate"></a>Kullanıcıları Storegate'e atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-storegate"></a>Kullanıcıları Stokmaya atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için Storegate'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının Storeg'e atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Storegate'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Storeg'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="set-up-storegate-for-provisioning"></a>Sağlama için Storegate'i ayarlama
+## <a name="set-up-storegate-for-provisioning"></a>Sağlama için Storegate ayarlama
 
-Azure AD ile otomatik kullanıcı sağlama için Storegate'i yapılandırmadan önce, Storegate'den bazı sağlama bilgileri almanız gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için storeg'ü yapılandırmadan önce, bazı sağlama bilgilerini storegden almanız gerekir.
 
-1. [Storegate Yönetici Konsolunuzda](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) oturum açın ve sağ üst köşedeki kullanıcı simgesine tıklayarak ayarlara gidin ve **Hesap Ayarları'nı**seçin.
+1. [Storegate Yönetici konsolunuza](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) oturum açın ve sağ üst köşedeki Kullanıcı simgesine tıklayarak ayarlar ' a gidin ve **Hesap ayarları**' nı seçin.
 
-    ![Storegate EKLE SCIM](media/storegate-provisioning-tutorial/admin.png)
+    ![SCıM ekleme](media/storegate-provisioning-tutorial/admin.png)
 
-2. Ayarlar içinde **Takım > Ayarları'na** gidin ve Tek oturum **açma** bölümünde geçiş anahtarının açık olduğunu doğrulayın.
+2. Ayarlar içinde **takım > ayarlar** ' a gidin ve **Çoklu oturum açma** bölümünde geçiş anahtarının açık olduğunu doğrulayın.
 
-    ![Storegate ayarları](media/storegate-provisioning-tutorial/team.png)
+    ![Ayarları Sonlandır](media/storegate-provisioning-tutorial/team.png)
 
-    ![Storegate geçiş düğmesi](media/storegate-provisioning-tutorial/sso.png)
+    ![İki durumlu düğme](media/storegate-provisioning-tutorial/sso.png)
 
-3. Kiracı **URL'sini** ve **Belirteci'ni**kopyalayın. Bu değerler, Azure portalındaki Storegate uygulamanızın Sağlama sekmesinde sırasıyla **Kiracı URL'sine** ve **Gizli Belirteç** alanlarına girilir. 
+3. **Kiracı URL 'sini** ve **belirtecini**kopyalayın. Bu değerler, Azure portal Storegate uygulamanızın sağlama sekmesinde sırasıyla **kiracı URL 'si** ve **gizli belirteç** alanlarına girilir. 
 
-    ![Storegate Oluştur Jetonu](media/storegate-provisioning-tutorial/token.png)
+    ![Oluşturma belirteci oluştur](media/storegate-provisioning-tutorial/token.png)
 
-## <a name="add-storegate-from-the-gallery"></a>Galeriden Storegate ekle
+## <a name="add-storegate-from-the-gallery"></a>Galeriden Storegate ekleme
 
-Azure AD ile otomatik kullanıcı sağlama için Storegate'i yapılandırmak için, Azure AD uygulama galerisinden Yönetilen SaaS uygulamaları listenize Storegate eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için storegu yapılandırmak üzere, Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize Storegate öğesini eklemeniz gerekir.
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **storegate**girin , sonuçlar panelinde **Storegate** seçin. 
+4. Arama **kutusuna, Sonlandır ' ı girin,** sonuçlar panelinde **storegate** ' i seçin. 
 
-    ![Sonuç listesinde depola](common/search-new-app.png)
+    ![Sonuçlar listesinde durduruluyor](common/search-new-app.png)
 
-5. Sizi **Storegate'in** giriş sayfasına yönlendirecek Storegate için Kaydol düğmesini seçin. 
+5. **Storegate** düğmesini seçerek, sizi storeg'in oturum açma sayfasına yönlendirecektir. 
 
-    ![Storegate OIDC Ekle](media/storegate-provisioning-tutorial/signup.png)
+    ![Storegate OıDC Add](media/storegate-provisioning-tutorial/signup.png)
 
-6.  [Storegate Yönetici Konsolunuzda](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) oturum açın ve sağ üst köşedeki kullanıcı simgesine tıklayarak ayarlara gidin ve **Hesap Ayarları'nı**seçin.
+6.  [Storegate Yönetici konsolunuza](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) oturum açın ve sağ üst köşedeki Kullanıcı simgesine tıklayarak ayarlar ' a gidin ve **Hesap ayarları**' nı seçin.
 
-    ![Storegate giriş](media/storegate-provisioning-tutorial/admin.png)
+    ![Oturum açma durduruluyor](media/storegate-provisioning-tutorial/admin.png)
 
-7. Ayarlar takım **> Ayarları'na** gidin ve Tek oturum açma bölümünde geçiş anahtarına tıklayın, bu onay akışını başlatacaktır. **Etkinleştir'e**tıklayın.
+7. Ayarlar içinde **takım > ayarlar** ' a gidin ve çoklu oturum açma bölümünde geçiş anahtarı ' na tıklayın, bu onay akışını başlatır. **Etkinleştir**' e tıklayın.
 
-    ![Storegate ekibi](media/storegate-provisioning-tutorial/team.png)
+    ![Takım durduruluyor](media/storegate-provisioning-tutorial/team.png)
 
-    ![Storegate sso](media/storegate-provisioning-tutorial/sso.png)
+    ![SSO durduruluyor](media/storegate-provisioning-tutorial/sso.png)
 
-    ![Storegate etkinleştirme](media/storegate-provisioning-tutorial/activate.png)
+    ![Etkinleştirme durduruluyor](media/storegate-provisioning-tutorial/activate.png)
 
-8. Storegate bir OpenIDConnect uygulaması olduğundan, Microsoft iş hesabınızı kullanarak Storegate'e giriş yapmayı seçin.
+8. Storeg, bir Openıdconnect uygulaması olduğundan, Microsoft iş hesabınızı kullanarak Storeg'i açmak için oturum açmayı seçin.
 
-    ![Storegate OIDC girişi](media/storegate-provisioning-tutorial/login.png)
+    ![OIDC oturumu storeg](media/storegate-provisioning-tutorial/login.png)
 
-9. Başarılı bir kimlik doğrulamadan sonra, onay sayfası için onay istemini kabul edin. Uygulama daha sonra otomatik olarak kiracınıza eklenir ve Storegate hesabınıza yönlendirilirsiniz.
+9. Başarılı bir kimlik doğrulamasından sonra, onay sayfasının onay isteğini kabul edin. Uygulama daha sonra kiracınıza otomatik olarak eklenir ve Storegate hesabınıza yönlendirilirsiniz.
 
-    ![Storegate OSB Onayı](media/storegate-provisioning-tutorial/accept.png)
+    ![OIDC onayı storeg](media/storegate-provisioning-tutorial/accept.png)
 
-## <a name="configure-automatic-user-provisioning-to-storegate"></a>Otomatik kullanıcı sağlamayı Storegate olarak yapılandırın 
+## <a name="configure-automatic-user-provisioning-to-storegate"></a>Otomatik Kullanıcı sağlamayı Storeg'e yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Storegate'deki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak Storegiçindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında size kılavuzluk eder.
 
 > [!NOTE]
-> Storegate'in SCIM bitiş noktası hakkında daha fazla bilgi edinmek için [buna](https://en-support.storegate.com/article/step-by-step-instruction-how-to-enable-azure-provisioning-to-your-storegate-team-account/)bakın.
+> Storeg'in SCıM uç noktası hakkında daha fazla bilgi edinmek için [buna](https://en-support.storegate.com/article/step-by-step-instruction-how-to-enable-azure-provisioning-to-your-storegate-team-account/)bakın.
 
-### <a name="to-configure-automatic-user-provisioning-for-storegate-in-azure-ad"></a>Azure AD'de Storegate için otomatik kullanıcı sağlama yapılandırmak için
+### <a name="to-configure-automatic-user-provisioning-for-storegate-in-azure-ad"></a>Azure AD 'de Storeg'in otomatik Kullanıcı sağlamasını yapılandırmak için
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Storegate'i**seçin.
+2. Uygulamalar listesinde, **Storegate**' i seçin.
 
     ![Uygulamalar listesindeki Storegate bağlantısı](common/all-applications.png)
 
@@ -136,51 +136,51 @@ Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak S
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü `https://dialpad.com/scim` altında, **Kiracı URL'ye**giriş . **Gizli Belirteç'te**Storegate'ten daha önce aldığınız ve kaydettiğiniz değeri girdiniz. Azure AD'nin Storegate'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Storegate hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://dialpad.com/scim` **kiracı URL 'sini**girin. Daha önce aldığınız ve daha önce **gizli bir belirteçte**daha önce kaydettiğiniz değeri girin. Azure AD 'nin Storeg'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Storegate hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Depolamak için Azure Etkin Dizin Kullanıcılarını Eşitle'yi**seçin.
+8. **Eşlemeler** bölümünde, **kullanıcıları stokmak için Azure Active Directory eşitlemeyi**seçin.
 
-    ![Storegate Kullanıcı Eşlemeleri](media/storegate-provisioning-tutorial/usermappings.png)
+    ![Kullanıcı eşlemelerini stoate](media/storegate-provisioning-tutorial/usermappings.png)
 
-9. Azure AD'den Storegate'e, **Öznitelik Eşleme** bölümünde eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleşme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemi için Storegate' deki kullanıcı hesaplarıyla çalışmak için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den storegile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Storegate içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Storegate Kullanıcı Öznitelikleri](media/storegate-provisioning-tutorial/userattributes.png)
+    ![Kullanıcı özniteliklerini stoate](media/storegate-provisioning-tutorial/userattributes.png)
 
-10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-11. Storegate için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Kisa** **Durumu'nu Açık** olarak değiştirin.
+11. Azure AD sağlama hizmetini Storegiçin etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Storegate'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek stokmek için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Kaydetme **Ayrıntıları** bölümünü, ilerlemeyi izlemek ve Storegate'teki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Azure AD sağlama hizmeti tarafından durdurulmakta olan tüm eylemleri açıklayan etkinlik raporuna yönelik bağlantıları izleyebilirsiniz.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

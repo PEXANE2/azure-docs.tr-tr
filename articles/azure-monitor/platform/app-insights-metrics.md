@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights günlük tabanlı ölçümler | Microsoft Dokümanlar
-description: Bu makalede, desteklenen toplamalar ve boyutlarla Azure Uygulama Öngörüleri ölçümleri listelenir. Günlük tabanlı ölçümlerle ilgili ayrıntılar, temel Kusto sorgu ekstrelerini içerir.
+title: Azure Application Insights günlük tabanlı ölçümler | Microsoft Docs
+description: Bu makalede, desteklenen toplamalar ve boyutlarla Azure Application Insights ölçümleri listelenmektedir. Günlük tabanlı ölçümler hakkındaki ayrıntılar, temeldeki kusto sorgu deyimlerini içerir.
 author: vgorbenko
 services: azure-monitor
 ms.topic: reference
@@ -8,48 +8,48 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664924"
 ---
-# <a name="application-insights-log-based-metrics"></a>Uygulama Öngörüleri günlük tabanlı ölçümler
+# <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
-Application Insights günlük tabanlı ölçümler, izlenen uygulamalarınızın durumunu analiz edeyim, güçlü panolar oluşturmanıza ve uyarıları yapılandırmanıza sağlar. İki tür ölçüm vardır:
+Application Insights günlük tabanlı ölçümler, izlenen uygulamalarınızın durumunu analiz etmenize, güçlü panolar oluşturmanıza ve uyarıları yapılandırmanıza olanak tanır. İki çeşit ölçüm vardır:
 
-* Sahnenin arkasındaki [günlük tabanlı ölçümler,](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) depolanan olaylardaki [Kusto sorgularına](https://docs.microsoft.com/azure/kusto/query/) çevrilir.
+* Sahnenin arkasındaki [günlük tabanlı ölçümler](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) , depolanan olaylardaki [kusto sorgularına](https://docs.microsoft.com/azure/kusto/query/) çevrilir.
 * [Standart ölçümler](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) önceden toplanmış zaman serisi olarak depolanır.
 
-Standart ölçümler toplama sırasında önceden toplanmış olduğundan, sorgu sırasında daha iyi performansa *sahiptirler.* Bu onları pano ve gerçek zamanlı uyarı için daha iyi bir seçim yapar. *Günlük tabanlı ölçümler* daha fazla boyuta sahiptir ve bu da onları veri analizi ve geçici tanılama için üstün seçenek yapar. Ölçümler gezgininde günlük tabanlı ve standart ölçümler arasında geçiş yapmak için [ad alanı seçicisini](metrics-getting-started.md#create-your-first-metric-chart) kullanın. [metrics explorer](metrics-getting-started.md)
+Koleksiyon sırasında *Standart ölçümler* önceden toplanmış olduğundan, sorgu zamanında daha iyi performansa sahip olurlar. Bu, dinamik olarak ve gerçek zamanlı uyarı oluşturma için daha iyi bir seçenek sunar. *Günlük tabanlı ölçümler* daha fazla boyuta sahiptir. Bu, veri analizi ve geçici Tanılamalar için üst seçenek sağlar. [Ölçüm Gezgini](metrics-getting-started.md)'nde günlük tabanlı ve standart ölçümler arasında geçiş yapmak için [ad alanı seçiciyi](metrics-getting-started.md#create-your-first-metric-chart) kullanın.
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>Bu makaledeki sorguları yorumlama ve kullanma
 
-Bu makalede, desteklenen toplamave boyutları ile ölçümleri listeler. Günlük tabanlı ölçümlerle ilgili ayrıntılar, temel Kusto sorgu ekstrelerini içerir. Kolaylık sağlamak için, her sorgu, zaman parçalı, grafik türü ve bazen de değişiklik gerekmeden Log Analytics'te sorguyu kullanarak basitleştiren boyut bölme için varsayılanları kullanır.
+Bu makalede, desteklenen toplamalar ve boyutlarla ölçümler listelenir. Günlük tabanlı ölçümler hakkındaki ayrıntılar, temeldeki kusto sorgu deyimlerini içerir. Kolaylık olması için, her sorgu zaman ayrıntı düzeyi, grafik türü için varsayılan değerleri kullanır ve bazı durumlarda Log Analytics sorgu kullanımını kolaylaştıran boyutları böyor.
 
-[Ölçümler explorer'da](metrics-getting-started.md)aynı ölçüt çizdiğinizde, varsayılan yoktur - sorgu grafik ayarlarınıza göre dinamik olarak ayarlanır:
+Ölçüm [Gezgini](metrics-getting-started.md)'nde aynı ölçümü çizerseniz varsayılan yoktur; sorgu, grafik ayarlarınıza göre dinamik olarak ayarlanır:
 
-- Seçili **Zaman aralığı,** yalnızca seçilen zaman aralığından olayları seçmek için ek bir *zaman damgası...* yan tümcesine çevrilir. Örneğin, en son 24 saat için veri gösteren bir grafik, sorgu *| nerede zaman damgası > önce (24 saat)* içerir.
+- Seçilen **zaman aralığı** , yalnızca seçilen zaman aralığından olayları seçmek için ek bir *WHERE timestamp...* yan tümcesine çevrilir. Örneğin, en son 24 saat için verileri gösteren bir grafik, sorgu *| WHERE zaman damgası > önce (24 h)*' i içerir.
 
-- Seçilen **Zaman parçalı son** özetlemek içine konur *... bin(zaman damgası, [zaman tanesi])* maddesi ile.
+- Seçilen **zaman ayrıntı düzeyi** nihai özetlemeye yerleştirsin *... by bin (zaman damgası, [zaman çizgisi])* yan tümcesi.
 
-- Seçili **Filtre** boyutları ek *yan* tümcelere çevrilir.
+- Seçili herhangi bir **filtre** boyutu, diğer *WHERE* yan tümcelerlerine çevrilir.
 
-- Seçili **Bölünmüş grafik** boyutu, fazladan özetlenebilir özelliğe çevrilir. Örneğin, grafiğinizi *konuma*göre bölerseniz ve 5 dakikalık bir zaman ayırıcısını kullanarak çizim ilerlerseniz, *özetlenen* yan tümce özetlenir... * bin (zaman damgası, 5 m), yer*.
+- Seçili **bölünmüş grafik** boyutu fazladan bir özetleme özelliğine çevrilir. Örneğin, grafiğinizi *konuma*göre bölüerseniz ve 5 dakikalık bir zaman ayrıntı düzeyi kullanarak çizim yaparsanız, *özetleme* yan tümcesi özetlenir *... bin (zaman damgası, 5 milyon), konum*.
 
 > [!NOTE]
-> Kusto sorgu dilinde yeniyseniz, kusto ifadelerini kopyalayıp Log Analytics sorgu bölmesine herhangi bir değişiklik yapmadan yapıştırarak başlarsınız. Temel grafiği görmek için **Çalıştır'ı** tıklatın. Sorgu dilinin sözdizimini anlamaya başladığınızda, küçük değişiklikler yapmaya başlayabilir ve değişikliğinizin etkisini görebilirsiniz. Kendi verilerinizi [keşfetmek, Log Analytics](../../azure-monitor/log-query/get-started-portal.md) ve [Azure Monitor'un](../../azure-monitor/overview.md)tüm gücünü gerçekleştirmeye başlamak için harika bir yoldur.
+> Kusto sorgu diline yeni başladıysanız, kusto deyimlerini kopyalayıp Log Analytics sorgu bölmesine hiçbir değişiklik yapmadan başlayabilirsiniz. Temel grafiği görmek için **Çalıştır** ' a tıklayın. Sorgu dilinin söz dizimini anlamaya başladığınızda, küçük değişiklikler yapmaya başlayabilir ve yaptığınız değişikliğin etkisini görebilirsiniz. Kendi verilerinizi keşfetmek, [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) ve [Azure izleyici](../../azure-monitor/overview.md)'nin tam gücünü yapmaya başlamak için harika bir yoldur.
 
 ## <a name="availability-metrics"></a>Kullanılabilirlik ölçümleri
 
-Kullanılabilirlik kategorisindeki ölçümler, web uygulamanızın durumunu dünyanın dört bir yanındaki noktalardan gözlendiği gibi görmenizi sağlar. [Kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) bu kategorideki ölçümleri kullanmaya başlayacak şekilde yapılandırın.
+Kullanılabilirlik kategorisindeki ölçümler, Web uygulamanızın durumunu dünyanın dört bir yanındaki noktalarda gözlemleyerek görmenizi sağlar. [Kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) bu kategorideki herhangi bir ölçümü kullanmaya başlamak üzere yapılandırın.
 
-### <a name="availability-availabilityresultsavailabilitypercentage"></a>Kullanılabilirlik (availabilitySonuçlar/kullanılabilirlikPercentage)
-*Kullanılabilirlik* ölçümü, web test çalıştırmalarının herhangi bir sorun algılamamış yüzdesini gösterir. Mümkün olan en düşük değer 0'dır ve bu da tüm web test çalıştırmalarının başarısız olduğunu gösterir. 100 değeri, tüm web test çalıştırmalarının doğrulama ölçütlerini geçtiği anlamına gelir.
+### <a name="availability-availabilityresultsavailabilitypercentage"></a>Kullanılabilirlik (Kullanılabilirbilityresults/Kullanılabilirbilitypercentage)
+*Kullanılabilirlik* ölçümü, herhangi bir sorunu algılamadığınız Web testi çalışmalarının yüzdesini gösterir. Olası en düşük değer 0 ' dır. Bu, tüm Web testinin çalıştığını gösterir. 100 değeri, tüm Web testinin doğrulama ölçütlerini geçirdiğini gösterir.
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Yüzde|Ortalama|Çalışma konumu, Test adı|
+|Yüzde|Ortalama|Çalıştırma konumu, test adı|
 
 ```Kusto
 availabilityResults 
@@ -57,13 +57,13 @@ availabilityResults
 | render timechart
 ```
 
-### <a name="availability-test-duration-availabilityresultsduration"></a>Kullanılabilirlik test süresi (availabilityResults/duration)
+### <a name="availability-test-duration-availabilityresultsduration"></a>Kullanılabilirlik testi süresi (Kullanılabilirbilityresults/Duration)
 
-*Kullanılabilirlik test süresi* ölçümü, web testinin çalışması için ne kadar zaman aldığını gösterir. Çok [adımlı web testleri](../../azure-monitor/app/availability-multistep.md)için metrik, tüm adımların toplam yürütme süresini yansıtır.
+*Kullanılabilirlik testi süresi* ölçümü, Web testinin çalışması için ne kadar zaman sürdüğünü gösterir. [Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md)için, ölçüm tüm adımların toplam yürütme süresini yansıtır.
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Milisaniye|Ortalama, Min, Max|Çalışma yeri, Test adı, Test sonucu
+|Mayacak|Ortalama, en düşük, en fazla|Çalıştırma konumu, test adı, test sonucu
 
 ```Kusto
 availabilityResults
@@ -73,13 +73,13 @@ availabilityResults
 | render timechart
 ```
 
-### <a name="availability-tests-availabilityresultscount"></a>Kullanılabilirlik testleri (availabilityResults/count)
+### <a name="availability-tests-availabilityresultscount"></a>Kullanılabilirlik testleri (Kullanılabilirbilityresults/Count)
 
-*Kullanılabilirlik testleri* ölçümü, Azure Monitor tarafından çalıştırılan web testlerinin sayısını yansıtır.
+*Kullanılabilirlik testleri* ölçümü, Azure izleyici tarafından çalıştırılan Web testlerinin sayısını yansıtır.
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Sayı|Sayı|Çalışma yeri, Test adı, Test sonucu|
+|Sayı|Sayı|Çalıştırma konumu, test adı, test sonucu|
 
 ```Kusto
 availabilityResults
@@ -89,16 +89,16 @@ availabilityResults
 
 ## <a name="browser-metrics"></a>Tarayıcı ölçümleri
 
-Tarayıcı ölçümleri, Application Insights JavaScript SDK tarafından gerçek son kullanıcı tarayıcılarından toplanır. Kullanıcılarınızın web uygulamanızla ilgili deneyimleri hakkında harika bilgiler sağlarlar. Tarayıcı ölçümleri genellikle örneklenmemiştir, bu da örnekleme yoluyla çarpıtılabilecek sunucu tarafındaki ölçümlere kıyasla kullanım sayılarında daha yüksek hassasiyet sağladıkları anlamına gelir.
+Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application Insights JavaScript SDK 'Sı tarafından toplanır. Kullanıcılarınızın web uygulamanızla ilgili deneyimi hakkında harika öngörüler sağlar. Tarayıcı ölçümleri genellikle örneklenir, yani örnekleme tarafından çarpıtılmış olan sunucu tarafı ölçümleriyle karşılaştırıldığında kullanım numaralarının daha yüksek hassasiyetini sağlar.
 
 > [!NOTE]
-> Tarayıcı ölçümlerini toplamak için uygulamanızın Application [Insights JavaScript SDK](../../azure-monitor/app/javascript.md)ile birlikte çalınması gerekir.
+> Tarayıcı ölçümlerini toplamak için uygulamanızın [Application Insights JavaScript SDK 'sı](../../azure-monitor/app/javascript.md)ile işaretlenmiş olması gerekir.
 
-### <a name="browser-page-load-time-browsertimingstotalduration"></a>Tarayıcı sayfası yükleme süresi (browserTimings/totalDuration)
+### <a name="browser-page-load-time-browsertimingstotalduration"></a>Tarayıcı sayfa yükleme süresi (Browserzamanlamalar/totalDuration)
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, Min, Max|None|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -110,11 +110,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="client-processing-time-browsertimingprocessingduration"></a>İstemci işlem süresi (browserTiming/processingDuration)
+### <a name="client-processing-time-browsertimingprocessingduration"></a>İstemci işlem süresi (Browserzamanlaması/processingDuration)
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, Min, Max|None|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -126,11 +126,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Sayfa yükleme ağı bağlanma süresi (browserTimings/networkDuration)
+### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Sayfa yükleme ağ bağlantı süresi (Browserzamanlamalar/networkDuration)
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, Min, Max|None|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -142,11 +142,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Yanıt süresi alma (browserTimings/receiveDuration)
+### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Yanıt süresini alma (Browserzamanlamalar/receiveDuration)
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, Min, Max|None|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -158,11 +158,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="send-request-time-browsertimingssendduration"></a>İstek süresi gönderme (browserTimings/sendDuration)
+### <a name="send-request-time-browsertimingssendduration"></a>Gönderme isteği süresi (Browserzamanlamalar/sendDuration)
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|
 |---|---|---|
-|Milisaniye|Ortalama, Min, Max|None|
+|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
 
 ```Kusto
 browserTimings
@@ -176,15 +176,15 @@ browserTimings
 
 ## <a name="failure-metrics"></a>Hata ölçümleri
 
-**Hatalar'daki** ölçümler, işleme istekleri, bağımlılık çağrıları ve atılan özel durumlarla ilgili sorunları gösterir.
+**Hatalarda** ölçümler, işleme istekleri, bağımlılık çağrıları ve oluşturulan özel durumlarla ilgili sorunları gösterir.
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a>Tarayıcı özel durumları (özel durumlar/tarayıcı)
 
-Bu metrik, tarayıcıda çalışan uygulama kodundan atılan özel durumların sayısını yansıtır. Yalnızca ```trackException()``` Uygulama Öngörüleri API çağrısıyla izlenen özel durumlar metrikte yer alıyor.
+Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum sayısını yansıtır. Ölçüsüne yalnızca bir ```trackException()``` Application Insights API çağrısıyla izlenen özel durumlar dahildir.
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|Notlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|None|Günlük tabanlı **sürüm, Toplam** toplama yı kullanır|
+|Sayı|Sayı|Hiçbiri|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -193,13 +193,13 @@ exceptions
 | render barchart
 ```
 
-### <a name="dependency-call-failures-dependenciesfailed"></a>Bağımlılık çağrı hataları (bağımlılıklar/başarısız)
+### <a name="dependency-call-failures-dependenciesfailed"></a>Bağımlılık çağrısı sorunları (bağımlılıklar/başarısız)
 
 Başarısız bağımlılık çağrılarının sayısı.
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|Notlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|None|Günlük tabanlı **sürüm, Toplam** toplama yı kullanır|
+|Sayı|Sayı|Hiçbiri|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 dependencies
@@ -208,13 +208,13 @@ dependencies
 | render barchart
 ```
 
-### <a name="exceptions-exceptionscount"></a>Özel durumlar (özel durumlar/sayım)
+### <a name="exceptions-exceptionscount"></a>Özel durumlar (özel durumlar/sayı)
 
-Uygulama Öngörüleri için bir özel durum günlüğe her zaman, SDK'nın [trackException() yöntemine](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) bir çağrı vardır. Özel Durumlar ölçümü günlüğe kaydedilmiş özel durumlar sayısını gösterir.
+Application Insights için bir özel durum kaydettiğinizde, SDK 'nın [trackexception () yöntemine](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) bir çağrı vardır. Özel durumlar ölçümü, günlüğe kaydedilen özel durumların sayısını gösterir.
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|Notlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rol adı, Bulut rol örneği, Aygıt türü|Günlük tabanlı **sürüm, Toplam** toplama yı kullanır|
+|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -222,13 +222,13 @@ exceptions
 | render barchart
 ```
 
-### <a name="failed-requests-requestsfailed"></a>Başarısız istekler (istekler/başarısız)
+### <a name="failed-requests-requestsfailed"></a>Başarısız istekler (istek/başarısız)
 
-*Başarısız*olarak işaretlenmiş izlenen sunucu isteklerinin sayısı. Varsayılan olarak, Application Insights SDK, HTTP yanıt kodu 5xx veya 4xx'i başarısız bir istek olarak döndüren her sunucu isteğini otomatik olarak işaretler. Bu mantığı, istek telemetri öğesinin *başarı* özelliğini özel bir [telemetri başharfinde](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)değiştirerek özelleştirebilirsiniz.
+*Başarısız*olarak işaretlenen izlenen sunucu isteklerinin sayısı. Varsayılan olarak, Application Insights SDK, HTTP yanıt kodu 5 xx veya 4xx döndüren her sunucu isteğini başarısız bir istek olarak otomatik olarak işaretler. [Özel bir telemetri başlatıcısında](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)istek telemetri öğesinin *başarı* özelliğini değiştirerek bu mantığı özelleştirebilirsiniz.
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|Notlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rolü örneği, Bulut rol adı, Gerçek veya sentetik trafik, İstek performansı, Yanıt kodu|Günlük tabanlı **sürüm, Toplam** toplama yı kullanır|
+|Sayı|Sayı|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 requests
@@ -239,11 +239,11 @@ requests
 
 ### <a name="server-exceptions-exceptionsserver"></a>Sunucu özel durumları (özel durumlar/sunucu)
 
-Bu metrik, sunucu özel durumlarının sayısını gösterir.
+Bu ölçüm, sunucu özel durumlarının sayısını gösterir.
 
-|Ölçü birimi|Desteklenen toplamalar|Önceden birleştirilmiş boyutlar|Notlar|
+|Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rol adı, Bulut rol örneği|Günlük tabanlı **sürüm, Toplam** toplama yı kullanır|
+|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -254,9 +254,9 @@ exceptions
 
 ## <a name="performance-counters"></a>Performans sayaçları
 
-[Application Insights tarafından toplanan sistem performans sayaçlarına](../../azure-monitor/app/performance-counters.md)erişmek için **Performans sayaçları** kategorisindeki ölçümleri kullanın.
+[Application Insights tarafından toplanan sistem performans sayaçlarına](../../azure-monitor/app/performance-counters.md)erişmek için **performans sayaçları** kategorisindeki ölçümleri kullanın.
 
-### <a name="available-memory-performancecountersavailablememory"></a>Kullanılabilir bellek (performanceCounters/availableMemory)
+### <a name="available-memory-performancecountersavailablememory"></a>Kullanılabilir bellek (performanceCounters/kullanılabilirliği Blememory)
 
 ```Kusto
 performanceCounters
@@ -286,7 +286,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-request-rate-performancecountersrequestspersecond"></a>HTTP istek oranı (performanceCounters/requestsPerSecond)
+### <a name="http-request-rate-performancecountersrequestspersecond"></a>HTTP istek hızı (performanceCounters/requestsPerSecond)
 
 ```Kusto
 performanceCounters
@@ -296,7 +296,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>Uygulama kuyruğundaki HTTP istekleri (performanceCounters/requestsInQueue)
+### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>Uygulama kuyruğundaki HTTP istekleri (performanceCounters/Requestsınqueue)
 
 ```Kusto
 performanceCounters
@@ -306,13 +306,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-cpu-performancecountersprocesscpupercentage"></a>İşlem CPU 'su (performanceSayaçlar/prosesCpuPercentage)
+### <a name="process-cpu-performancecountersprocesscpupercentage"></a>İşlem CPU 'SU (performanceCounters/processCpuPercentage)
 
-Metrik, izlenen uygulamanızı barındıran işlem tarafından toplam işlemci kapasitesinin ne kadarının tüketilir olduğunu gösterir.
+Ölçüm, izlenen uygulamanızı barındıran işlem tarafından toplam işlemci kapasitesinin ne kadarının tüketildiğini gösterir.
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Yüzde|Ortalama, Min, Max|Bulut rolü örneği
+|Yüzde|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 ```Kusto
 performanceCounters
@@ -322,11 +322,11 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>Proses IO oranı (performanceCounters/processIOBytesPerSecond)
+### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>İşlem GÇ oranı (performanceCounters/Processıobitespersecond)
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Saniyede bayt|Ortalama, Min, Max|Bulut rolü örneği
+|Bayt/saniye|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 ```Kusto
 performanceCounters
@@ -336,13 +336,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>Özel baytişlemleri işleme (performanceCounters/processPrivateBytes)
+### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>İşlem özel baytları (performanceCounters/processPrivateBytes)
 
-İzlenen işlemin verileri için ayırdığı paylaşılmayan bellek miktarı.
+İzlenen işlemin verileri için ayırdığı, paylaşılmayan bellek miktarı.
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Bayt|Ortalama, Min, Max|Bulut rolü örneği
+|Bayt|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 ```Kusto
 performanceCounters
@@ -352,16 +352,16 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="processor-time-performancecountersprocessorcpupercentage"></a>İşlemci süresi (performanceCounters/processorCpuPercentage)
+### <a name="processor-time-performancecountersprocessorcpupercentage"></a>İşlemci zamanı (performanceCounters/processorCpuPercentage)
 
-Izlenen sunucu örneğinde çalışan *tüm* işlemler tarafından CPU tüketimi.
+İzlenen sunucu örneğinde çalışan *Tüm* IŞLEMLERE göre CPU tüketimi.
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Yüzde|Ortalama, Min, Max|Bulut rolü örneği
+|Yüzde|Ortalama, en düşük, en fazla|Bulut rolü örneği
 
 >[!NOTE]
-> İşlemci zaman ölçümü Azure Uygulama Hizmetleri'nde barındırılan uygulamalar için kullanılamaz. Uygulama Hizmetlerinde barındırılan web uygulamalarının CPU kullanımını izlemek için [İşlem CPU](#process-cpu-performancecountersprocesscpupercentage) metrik'ini kullanın.
+> İşlemci zamanı ölçümü, Azure Uygulama Hizmetleri 'nde barındırılan uygulamalar için kullanılamaz. Uygulama hizmetlerinde barındırılan Web uygulamalarının CPU kullanımını izlemek için [Işlem CPU](#process-cpu-performancecountersprocesscpupercentage) ölçüsünü kullanın.
 
 ```Kusto
 performanceCounters
@@ -373,9 +373,9 @@ performanceCounters
 
 ## <a name="server-metrics"></a>Sunucu ölçümleri
 
-### <a name="dependency-calls-dependenciescount"></a>Bağımlılık çağrıları (bağımlılıklar/sayım)
+### <a name="dependency-calls-dependenciescount"></a>Bağımlılık çağrıları (bağımlılıklar/sayı)
 
-Bu metrik bağımlılık çağrılarının sayısı ile ilgilidir.
+Bu ölçüm, bağımlılık çağrılarının sayısıyla ilgili olarak yapılır.
 
 ```Kusto
 dependencies
@@ -385,7 +385,7 @@ dependencies
 
 ### <a name="dependency-duration-dependenciesduration"></a>Bağımlılık süresi (bağımlılıklar/süre)
 
-Bu metrik bağımlılık çağrılarının süresini ifade eder.
+Bu ölçüm, bağımlılık çağrılarının süresini ifade eder.
 
 ```Kusto
 dependencies
@@ -398,9 +398,9 @@ dependencies
 | render timechart
 ```
 
-### <a name="server-requests-requestscount"></a>Sunucu istekleri (istekler/sayım)
+### <a name="server-requests-requestscount"></a>Sunucu istekleri (istek/sayı)
 
-Bu metrik, web uygulamanız tarafından alınan gelen sunucu isteklerinin sayısını yansıtır.
+Bu ölçüm, Web uygulamanız tarafından alınan gelen sunucu isteklerinin sayısını yansıtır.
 
 ```Kusto
 requests
@@ -408,9 +408,9 @@ requests
 | render barchart
 ```
 
-### <a name="server-response-time-requestsduration"></a>Sunucu yanıt süresi (istekler/süre)
+### <a name="server-response-time-requestsduration"></a>Sunucu yanıt süresi (istek/süre)
 
-Bu metrik, sunucuların gelen istekleri işlemesi için geçen süreyi yansıtır.
+Bu ölçüm, sunucuların gelen istekleri işlemesi için geçen süreyi yansıtır.
 
 ```Kusto
 requests
@@ -425,9 +425,9 @@ requests
 
 ## <a name="usage-metrics"></a>Ölçümleri kullanma
 
-### <a name="page-view-load-time-pageviewsduration"></a>Sayfa görünümü yükleme süresi (sayfa Görünümleri/süresi)
+### <a name="page-view-load-time-pageviewsduration"></a>Sayfa görünümü yükleme süresi (pageViews/Duration)
 
-Bu metrik, PageView olaylarının yüklenmesi için geçen süreyi ifade eder.
+Bu ölçüm, PageView olaylarının yüklenmesi için geçen süre miktarını ifade eder.
 
 ```Kusto
 pageViews
@@ -440,9 +440,9 @@ pageViews
 | render barchart
 ```
 
-### <a name="page-views-pageviewscount"></a>Sayfa görünümleri (sayfa Görünümleri/sayısı)
+### <a name="page-views-pageviewscount"></a>Sayfa görünümleri (pageViews/Count)
 
-TrackPageView() Application Insights API ile günlüğe kaydedilen PageView olaylarının sayısı.
+TrackPageView () Application Insights API ile günlüğe kaydedilen PageView olaylarının sayısı.
 
 ```Kusto
 pageViews
@@ -450,9 +450,9 @@ pageViews
 | render barchart
 ```
 
-### <a name="sessions-sessionscount"></a>Oturumlar (oturumlar/sayım)
+### <a name="sessions-sessionscount"></a>Oturumlar (oturum/sayı)
 
-Bu metrik, farklı oturum kimliklerinin sayısını ifade eder.
+Bu ölçüm, farklı oturum kimliklerinin sayısını ifade eder.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -461,9 +461,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="traces-tracescount"></a>İzler (izlemeler/sayım)
+### <a name="traces-tracescount"></a>İzlemeler (izlemeler/sayım)
 
-TrackTrace() Application Insights API çağrısıyla günlüğe kaydedilen izleme ifadelerinin sayısı.
+TrackTrace () Application Insights API çağrısıyla günlüğe kaydedilen izleme deyimlerinin sayısı.
 
 ```Kusto
 traces
@@ -471,9 +471,9 @@ traces
 | render barchart
 ```
 
-### <a name="users-userscount"></a>Kullanıcılar (kullanıcılar/sayım)
+### <a name="users-userscount"></a>Kullanıcılar (Kullanıcı/sayı)
 
-Uygulamanıza erişen farklı kullanıcı sayısı. Bu ölçümün doğruluğu, telemetri örneklemesi ve filtreleme kullanılarak önemli ölçüde etkilenebilir.
+Uygulamanıza erişen farklı kullanıcı sayısı. Bu ölçümün doğruluğu, telemetri örnekleme ve filtreleme kullanılarak önemli ölçüde etkilenebilir.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -482,9 +482,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="users-authenticated-usersauthenticated"></a>Kullanıcılar, Kimlik Doğrulaması (kullanıcılar/kimlik doğrulaması)
+### <a name="users-authenticated-usersauthenticated"></a>Kullanıcılar, kimliği doğrulanmış (kullanıcılar/kimlik doğrulamalı)
 
-Uygulamanızda kimlik doğrulaması yapılan farklı kullanıcı sayısı.
+Uygulamanızda kimliği doğrulanan farklı kullanıcı sayısı.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings

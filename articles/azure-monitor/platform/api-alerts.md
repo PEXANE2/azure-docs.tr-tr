@@ -1,50 +1,50 @@
 ---
-title: Günlük Analizi Niyokası'nı Kullanma
-description: Log Analytics Alert REST API, Log Analytics'in bir parçası olan Log Analytics'te uyarılar oluşturmanıza ve yönetmenize olanak tanır.  Bu makalede, API ayrıntıları ve farklı işlemleri gerçekleştirmek için çeşitli örnekler sağlar.
+title: Log Analytics uyarı REST API kullanma
+description: Log Analytics uyarı REST API, Log Analytics bir parçası olan Log Analytics uyarı oluşturmanıza ve yönetmenize olanak sağlar.  Bu makalede API ayrıntıları ve farklı işlemler gerçekleştirmeye yönelik birkaç örnek sağlanmaktadır.
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77665009"
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API ile Log Analytics'te uyarı kuralları oluşturma ve yönetme 
+# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API ile Log Analytics uyarı kuralları oluşturma ve yönetme 
 
-Log Analytics Alert REST API, Log Analytics'te uyarılar oluşturmanıza ve yönetmenize olanak tanır.  Bu makalede, API ayrıntıları ve farklı işlemleri gerçekleştirmek için çeşitli örnekler sağlar.
+Log Analytics uyarı REST API Log Analytics uyarı oluşturmanıza ve yönetmenize olanak sağlar.  Bu makalede API ayrıntıları ve farklı işlemler gerçekleştirmeye yönelik birkaç örnek sağlanmaktadır.
 
 > [!IMPORTANT]
-> [Daha önce duyurulduğu](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)gibi, 1 Haziran *2019'dan* sonra oluşturulan günlük analitik çalışma alanı(lar) **yalnızca** Azure scheduledQueryRules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), [Azure Resource Mananger Template](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)kullanarak uyarı kurallarını yönetebilecektir. Müşteriler, azure monitor scheduledQueryRules'dan varsayılan olarak yararlanmak ve yerel PowerShell cmdlets'i kullanma becerisi, kurallarda artan geri dönüş süresi, ayrı kaynak grubunda veya abonelikte kurallar oluşturulması ve çok daha fazlası gibi birçok [yeni avantaj](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) elde etmek için eski çalışma alanları için tercih ettikleri uyarı kuralı yönetimi araçlarını kolayca [değiştirebilirler.](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)
+> [Daha önce duyurulduğu](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)gibi, *1 Haziran 2019* tarihinden sonra oluşturulan Log Analytics çalışma alanı (ler), **yalnızca** Azure Scheduledqueryrules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), [Azure Resource mananger şablonu](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell cmdlet 'ini](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)kullanarak uyarı kurallarını yönetebilecektir. Müşteriler, daha eski çalışma alanları için [tercih edilen uyarı kuralı yönetimi kullanımını](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) kolayca değiştirebilir ve yerel PowerShell cmdlet 'lerini kullanma yeteneği, kurallarda daha fazla geçiş süresi dönemi ve ayrı kaynak grubunda veya abonelikte kural oluşturma gibi birçok [yeni avantaj](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) elde edebilir.
 
-Log Analytics Search REST API yeniden kullanılabilir ve Azure Kaynak Yöneticisi REST API üzerinden erişilebilir. Bu belgede, Azure Kaynak Yöneticisi API'sini başlatmayı kolaylaştıran açık kaynak kodlu komut satırı aracı [ARMClient'ı](https://github.com/projectkudu/ARMClient)kullanarak API'ye PowerShell komut satırından erişilen örnekler bulacaksınız. ARMClient ve PowerShell'in kullanımı, Log Analytics Search API'sine erişmek için birçok seçenekten biridir. Bu araçlarla, Yeniden Kullanılabilen Azure Kaynak Yöneticisi API'sini kullanarak Analytics'i günlüğe kaydedebilir ve bunların içinde arama komutları gerçekleştirebilirsiniz. API, arama sonuçlarını programlı olarak birçok farklı şekilde kullanmanıza olanak tanıyan Arama sonuçlarını JSON biçiminde çıktına göre elde edecektir.
+Log Analytics arama REST API yeniden yapılır ve Azure Resource Manager REST API aracılığıyla erişilebilir. Bu belgede, API 'nin, Azure Resource Manager API 'yi çağırmayı kolaylaştıran açık kaynaklı bir komut satırı aracı olan [Armclient](https://github.com/projectkudu/ARMClient)kullanarak bir PowerShell komut satırından erişildiği örnekleri bulacaksınız. ARMClient ve PowerShell kullanımı, Log Analytics arama API 'sine erişmek için birçok seçenekten biridir. Bu araçlarla, Log Analytics çalışma alanlarına çağrılar yapmak ve bunlar içinde arama komutları gerçekleştirmek için RestleAzure Resource Manager API 'sinden yararlanabilirsiniz. API, arama sonuçlarını size JSON biçiminde çıktı olarak, arama sonuçlarını programlama yoluyla birçok farklı şekilde kullanmanıza olanak sağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Şu anda, uyarılar yalnızca Log Analytics'te kaydedilmiş bir aramayla oluşturulabilir.  Daha fazla bilgi için [Log Search REST API'sine](../../azure-monitor/log-query/log-query-overview.md) başvurabilirsiniz.
+Şu anda, uyarılar yalnızca Log Analytics bir kayıtlı aramayla oluşturulabilir.  Daha fazla bilgi için [günlük aramasına REST API](../../azure-monitor/log-query/log-query-overview.md) bakabilirsiniz.
 
 ## <a name="schedules"></a>Zamanlamalar
-Kaydedilen bir aramanın bir veya daha fazla zamanlaması olabilir. Zamanlama, aramanın ne sıklıkta çalıştırıldığını ve ölçütlerin tanımlandığı zaman aralığını tanımlar.
-Zamanlamaların özellikleri aşağıdaki tabloda dır.
+Kayıtlı aramada bir veya daha fazla zamanlama olabilir. Zamanlama, aramanın ne sıklıkla çalıştırılacağını ve ölçütlerin tanımlandığı zaman aralığını tanımlar.
+Zamanlamalarda aşağıdaki tablodaki özellikler vardır.
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Interval |Aramanın ne sıklıkta yürütüldürün. Dakikalar içinde ölçülür. |
-| QueryTimeSpan |Ölçütlerin değerlendirildiği zaman aralığı. Interval'a eşit veya daha büyük olmalıdır. Dakikalar içinde ölçülür. |
-| Sürüm |ÖBM sürümü kullanılıyor.  Şu anda, bu her zaman 1 olarak ayarlanmalıdır. |
+| Interval |Aramanın ne sıklıkta çalıştırıldığı. Dakikalar içinde ölçülür. |
+| QueryTimeSpan |Ölçütlerin değerlendirildiği zaman aralığı. Değere eşit veya ondan büyük olmalıdır. Dakikalar içinde ölçülür. |
+| Sürüm |Kullanılmakta olan API sürümü.  Şu anda bu her zaman 1 olarak ayarlanmalıdır. |
 
-Örneğin, 15 dakikalık aralıklı ve 30 dakikalık bir Zaman Aralığı olan bir olay sorgusu düşünün. Bu durumda, sorgu her 15 dakikada bir çalıştırılır ve ölçütler 30 dakikalık bir süre boyunca doğru çözmeye devam ederse bir uyarı tetiklenir.
+Örneğin, 15 dakikalık bir zaman aralığı ve 30 dakikalık bir TimeSpan değeri ile bir olay sorgusu düşünün. Bu durumda, sorgu 15 dakikada bir çalıştırılır ve ölçütler 30 dakikalık bir Aralık üzerinde true olarak çözümlenmeye devam ederseniz bir uyarı tetiklenir.
 
-### <a name="retrieving-schedules"></a>Zamanlamaları alma
-Kaydedilmiş bir aramanın tüm zamanlamalarını almak için Get yöntemini kullanın.
+### <a name="retrieving-schedules"></a>Zamanlamalar alınıyor
+Kayıtlı bir aramanın tüm zamanlamalarını almak için get yöntemini kullanın.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
 
-Kaydedilmiş bir arama için belirli bir zamanlama almak için zamanlama kimliğiyle Get yöntemini kullanın.
+Kayıtlı bir arama için belirli bir zamanlamayı almak üzere bir zamanlama KIMLIĞIYLE GET yöntemini kullanın.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
-Aşağıda bir zamanlama için örnek bir yanıt ver.
+Bir zamanlama için örnek yanıt aşağıda verilmiştir.
 
 ```json
 {
@@ -61,88 +61,88 @@ Aşağıda bir zamanlama için örnek bir yanıt ver.
 ```
 
 ### <a name="creating-a-schedule"></a>Zamanlama oluşturma
-Yeni bir zamanlama oluşturmak için benzersiz bir zamanlama kimliğiyle Put yöntemini kullanın.  İki zamanlama, kaydedilmiş farklı aramalarla ilişkilendirilse ler bile aynı kimliğe sahip olamaz.  Log Analytics konsolunda bir zamanlama oluşturduğunuzda, zamanlama kimliği için bir GUID oluşturulur.
+Yeni bir zamanlama oluşturmak için Put metodunu benzersiz bir zamanlama KIMLIĞIYLE kullanın.  Farklı kaydedilmiş aramalarla ilişkilendirilseler de iki zamanlama aynı KIMLIĞE sahip olamaz.  Log Analytics konsolunda bir zamanlama oluşturduğunuzda, zamanlama KIMLIĞI için bir GUID oluşturulur.
 
 > [!NOTE]
-> Günlük Analizi API'si ile oluşturulan tüm kaydedilen aramaların, zamanlamaların ve eylemlerin adı küçük olmalıdır.
+> Log Analytics API 'SI ile oluşturulan tüm kayıtlı aramaların, zamanlamaların ve eylemlerin adı küçük harfle yazılmalıdır.
 
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
-### <a name="editing-a-schedule"></a>Zamanlama düzenleme
-Bu zamanlamayı değiştirmek için aynı kaydedilmiş arama için varolan bir zamanlama kimliğiyle Put yöntemini kullanın; aşağıdaki örnekte zamanlama devre dışı bırakılır. İsteğin gövdesi zamanlamanın *eetiketini* içermelidir.
+### <a name="editing-a-schedule"></a>Zamanlamayı Düzenle
+Bu zamanlamayı değiştirmek için aynı kayıtlı arama için mevcut bir zamanlama KIMLIĞIYLE put metodunu kullanın; Aşağıdaki örnekte zamanlamanın devre dışı bırakılması. İsteğin gövdesi, zamanlamanın *ETag* öğesini içermelidir.
 
       $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
       armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 
 ### <a name="deleting-schedules"></a>Zamanlamaları silme
-Zamanlamayı silmek için zamanlama kimliğiyle Sil yöntemini kullanın.
+Zamanlamayı silmek için bir zamanlama KIMLIĞIYLE Delete metodunu kullanın.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
 
 ## <a name="actions"></a>Eylemler
-Zamanlamada birden çok eylem olabilir. Bir eylem, posta gönderme veya runbook başlatma gibi gerçekleştirmek için bir veya daha fazla işlem tanımlayabilir veya bir aramanın sonuçlarının bazı ölçütlerle ne zaman eşleşebileceğini belirleyen bir eşik tanımlayabilir.  Bazı eylemler, eşik karşılandığında işlemlerin gerçekleştirileceği şekilde her ikisini de tanımlar.
+Bir zamanlamada birden çok eylem olabilir. Bir eylem, e-posta gönderme veya Runbook başlatma gibi bir veya daha fazla işlemi gerçekleştirebilir veya bir aramanın sonuçlarının bazı ölçütlerle eşleştiğini belirleyen bir eşik tanımlayabilir.  Eşik karşılandığında işlemlerin gerçekleştirilmesi için bazı eylemler her ikisini de tanımlayacaktır.
 
-Tüm eylemlerin özellikleri aşağıdaki tabloda vardır.  Farklı uyarı türleri, aşağıda açıklanan farklı ek özelliklere sahiptir.
+Tüm eylemler aşağıdaki tablodaki özelliklere sahiptir.  Farklı Uyarı türleri, aşağıda açıklanan farklı ek özelliklere sahiptir.
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| `Type` |Eylem türü.  Şu anda olası değerler Alert ve Webhook'tır. |
-| `Name` |Uyarının adını görüntüleyin. |
-| `Version` |ÖBM sürümü kullanılıyor.  Şu anda, bu her zaman 1 olarak ayarlanmalıdır. |
+| `Type` |Eylemin türü.  Şu anda olası değerler uyarı ve Web kancası ' dir. |
+| `Name` |Uyarı için görünen ad. |
+| `Version` |Kullanılmakta olan API sürümü.  Şu anda bu her zaman 1 olarak ayarlanmalıdır. |
 
-### <a name="retrieving-actions"></a>Eylemleri alma
+### <a name="retrieving-actions"></a>Eylemler alınıyor
 
-Bir zamanlama için tüm eylemleri almak için Get yöntemini kullanın.
+Bir zamanlamaya yönelik tüm eylemleri almak için get yöntemini kullanın.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
 
-Bir zamanlama için belirli bir eylem almak için eylem kimliği ile Get yöntemini kullanın.
+Bir zamanlamaya yönelik belirli bir eylemi almak için eylem KIMLIĞIYLE al yöntemini kullanın.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
 
-### <a name="creating-or-editing-actions"></a>Eylemler oluşturma veya düzenleme
-Yeni bir eylem oluşturmak için zamanlamaya özgü bir eylem kimliğiyle Put yöntemini kullanın.  Log Analytics konsolunda bir eylem oluşturduğunuzda, bir GUID eylem kimliği içindir.
+### <a name="creating-or-editing-actions"></a>Eylemleri oluşturma veya Düzenle
+Yeni bir eylem oluşturmak için, zamanlamaya özgü bir eylem KIMLIĞIYLE put metodunu kullanın.  Log Analytics konsolunda bir eylem oluşturduğunuzda, eylem KIMLIĞI için bir GUID olur.
 
 > [!NOTE]
-> Günlük Analizi API'si ile oluşturulan tüm kaydedilen aramaların, zamanlamaların ve eylemlerin adı küçük olmalıdır.
+> Log Analytics API 'SI ile oluşturulan tüm kayıtlı aramaların, zamanlamaların ve eylemlerin adı küçük harfle yazılmalıdır.
 
-Bu zamanlamayı değiştirmek için aynı kaydedilmiş arama için varolan bir eylem kimliğiyle Put yöntemini kullanın.  İsteğin gövdesi zamanlamanın eetiketini içermelidir.
+Bu zamanlamayı değiştirmek için aynı kayıtlı arama için var olan bir eylem KIMLIĞIYLE put metodunu kullanın.  İsteğin gövdesi, zamanlamanın ETag öğesini içermelidir.
 
-Yeni bir eylem oluşturmak için istek biçimi eylem türüne göre değişir, bu nedenle bu örnekler aşağıdaki bölümlerde sağlanır.
+Yeni bir eylem oluşturmak için istek biçimi, bu örneklerin aşağıdaki bölümlerde sağlanması için eylem türüne göre farklılık gösterir.
 
 ### <a name="deleting-actions"></a>Eylemleri silme
 
-Bir eylemi silmek için eylem kimliğiyle Sil yöntemini kullanın.
+Eylemi silmek için eylem KIMLIĞIYLE Delete yöntemini kullanın.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
 
-### <a name="alert-actions"></a>Uyarı Eylemleri
-Zamanlama'da bir ve yalnızca bir Uyarı eylemi olmalıdır.  Uyarı eylemlerinde aşağıdaki tablodaki bölümlerden biri veya birkaçı bulunmaktadır.  Her biri aşağıda daha ayrıntılı olarak açıklanmıştır.
+### <a name="alert-actions"></a>Uyarı eylemleri
+Zamanlamanın bir ve yalnızca bir uyarı eylemi olması gerekir.  Uyarı eylemleri aşağıdaki tabloda yer aldığı bir veya daha fazla bölümden oluşur.  Her biri aşağıda daha ayrıntılı olarak açıklanmıştır.
 
 | Section | Açıklama | Kullanım |
 |:--- |:--- |:--- |
-| Eşik |Eylemin ne zaman çalıştırılırken ölçütleri.| Azure'a genişletilmeden önce veya sonra her uyarı için gereklidir. |
-| Severity |Tetiklendiğinde uyarıyı sınıflandırmak için kullanılan etiket.| Azure'a genişletilmeden önce veya sonra her uyarı için gereklidir. |
-| Önle |Bildirimleri durdurma seçeneği. | Azure'a genişletilmeden önce veya sonra her uyarı için isteğe bağlıdır. |
-| Eylem Grupları |E-Postalar, Kobİ'ler, Sesli Aramalar, Webhook'lar, Otomasyon Runbook'ları, ITSM Bağlayıcıları vb. gibi gerekli eylemlerin belirtildiği Azure ActionGroup'un ideleri| Uyarılar Azure'a genişletildikten sonra gerekli|
-| Eylemleri Özelleştir|ActionGroup'tan belirli eylemler için standart çıktıyı değiştirme| Her uyarı için isteğe bağlı, uyarılar Azure'a genişletildikten sonra kullanılabilir. |
+| Eşik |Eylemin çalıştırılacağı ölçüt.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
+| Severity |Tetiklendikten sonra uyarıyı sınıflandırmak için kullanılan etiket.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
+| Önle |Uyarı bildirimlerini durdurma seçeneği. | Azure 'a genişletildiklerinde veya sonrasında her uyarı için isteğe bağlı. |
+| Eylem Grupları |-E-postalar, SMSs, sesli çağrılar, Web kancaları, Otomasyon Runbook 'Ları, ıTSM bağlayıcıları vb. gibi eylemlerin gerekli olduğu Azure ActionGroup 'un kimlikleri.| Uyarılar Azure 'a genişletildiğinde gereklidir|
+| Eylemleri özelleştirme|ActionGroup 'tan seçme eylemleri için Standart çıktıyı değiştirme| Her uyarı için isteğe bağlı, uyarılar Azure 'a uzatıldıktan sonra kullanılabilir. |
 
-### <a name="thresholds"></a>Eşik
-Bir Uyarı eyleminde bir ve yalnızca bir eşik olmalıdır.  Kaydedilen bir aramanın sonuçları, bu aramayla ilişkili bir eylemdeki eşikle eşleştiğinde, bu eylemdeki diğer işlemler çalıştırılır.  Bir eylem, eşik içermeyen diğer türlerin eylemleri ile kullanılabilen yalnızca bir eşik de içerebilir.
+### <a name="thresholds"></a>Leriyle
+Bir uyarı eylemi bir ve yalnızca bir eşiğe sahip olmalıdır.  Kayıtlı bir aramanın sonuçları, bu aramayla ilişkili bir Eylemdeki eşikle eşleşiyorsa, söz konusu Eylemdeki diğer tüm süreçler çalıştırılır.  Bir eylem, eşik içermeyen diğer türlerdeki eylemlerle kullanılabilmesi için yalnızca bir eşik de içerebilir.
 
-Eşikler aşağıdaki tabloda özelliklere sahiptir.
+Eşikler aşağıdaki tablodaki özelliklere sahiptir.
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| `Operator` |Eşik karşılaştırması için işleç. <br> gt = Büyük <br> lt = Daha Az |
-| `Value` |Eşik değeri. |
+| `Operator` |Eşik karşılaştırması için işleç. <br> gt = büyüktür <br> lt = küçüktür |
+| `Value` |Eşiğin değeri. |
 
-Örneğin, 15 dakikalık aralıklı bir olay sorgusu, 30 dakikalık bir Zaman Aralığı ve 10'dan büyük bir Eşik düşünün. Bu durumda, sorgu her 15 dakikada bir çalıştırılır ve 30 dakikalık bir süre içinde oluşturulan 10 olayı döndürürse bir uyarı tetiklenir.
+Örneğin, bir olay sorgusunu 15 dakika, 30 dakikalık bir zaman aralığı ve 10 ' dan büyük bir eşik değeri ile düşünün. Bu durumda, sorgu 15 dakikada bir çalıştırılır ve 30 dakikalık bir Aralık üzerinden oluşturulan 10 olay döndürülürse bir uyarı tetiklenir.
 
-Aşağıda, yalnızca eşiği olan bir eylem için örnek bir yanıt vereme işlenir.  
+Yalnızca bir eşiğe sahip bir eylem için örnek yanıt aşağıda verilmiştir.  
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -155,26 +155,26 @@ Aşağıda, yalnızca eşiği olan bir eylem için örnek bir yanıt vereme işl
         "Version": 1
     }
 
-Zamanlama için yeni bir eşik eylemi oluşturmak için benzersiz bir eylem kimliğiyle Put yöntemini kullanın.  
+Bir zamanlamaya yönelik yeni bir eşik eylemi oluşturmak için, benzersiz bir eylem KIMLIĞIYLE put metodunu kullanın.  
 
     $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-Bir zamanlama için eşik eylemini değiştirmek için varolan bir eylem kimliğiyle Put yöntemini kullanın.  İsteğin gövdesi eylemin eetiketini içermelidir.
+Bir zamanlama için eşik eylemini değiştirmek üzere mevcut eylem KIMLIĞIYLE Put yöntemini kullanın.  İsteğin gövdesi eylemin ETag öğesini içermelidir.
 
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
 #### <a name="severity"></a>Severity
-Log Analytics, daha kolay yönetim ve triyaj sağlamak için uyarılarınızı kategorilere ayırmanızı sağlar. Tanımlanan Uyarı şiddeti: bilgilendirme, uyarı ve kritik. Bunlar, Azure Uyarıları'nın normalleştirilmiş önem derecesine aşağıdaki şekilde eşlenir:
+Log Analytics, daha kolay yönetim ve önceliklendirme sağlamak için uyarılarınızı kategoriler halinde sınıflandırmanızı sağlar. Tanımlanan uyarı önem derecesi: bilgilendirici, uyarı ve kritik. Bunlar şu şekilde Azure uyarılarının normalleştirilmiş önem derecesine eşlenir:
 
-|Günlük Analitik Önem Düzeyi  |Azure Önem Düzeyi Uyarılar  |
+|Log Analytics önem düzeyi  |Azure uyarıları önem düzeyi  |
 |---------|---------|
 |`critical` |Sev 0|
 |`warning` |Sev 1|
 |`informational` | Önem Derecesi 2|
 
-Aşağıda, yalnızca bir eşik ve önem derecesi olan bir eylem için örnek bir yanıt vereme verilir. 
+Yalnızca eşik ve önem derecesine sahip bir eylem için örnek yanıt aşağıda verilmiştir. 
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -187,22 +187,22 @@ Aşağıda, yalnızca bir eşik ve önem derecesi olan bir eylem için örnek bi
         "Severity": "critical",
         "Version": 1    }
 
-Önem derecesi olan bir zamanlama için yeni bir eylem oluşturmak için benzersiz bir eylem kimliğiyle Put yöntemini kullanın.  
+Önem derecesine sahip bir zamanlamaya yönelik yeni bir eylem oluşturmak için, özel bir eylem KIMLIĞIYLE put metodunu kullanın.  
 
     $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
-Zamanlama için önem verme eylemini değiştirmek için varolan bir eylem kimliğiyle Put yöntemini kullanın.  İsteğin gövdesi eylemin eetiketini içermelidir.
+Bir zamanlamaya yönelik önem derecesini değiştirmek için, mevcut bir eylem KIMLIĞIYLE Put yöntemini kullanın.  İsteğin gövdesi eylemin ETag öğesini içermelidir.
 
     $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
 #### <a name="suppress"></a>Önle
-Günlük Analizi tabanlı sorgu uyarıları, eşik her karşılaştığında veya aşıldığında ateşlenir. Sorguda ima edilen mantığa bağlı olarak, bu uyarının bir dizi aralık için işten atılmasına ve dolayısıyla bildirimlerin de sürekli olarak gönderilmesine neden olabilir. Bu tür bir senaryoyu önlemek için, bir kullanıcı, Bildirim kuralı için ikinci kez çalıştırılmadan önce Log Analytics'e öngörülen süreyi beklemesini bildiren Suppress seçeneğini ayarlayabilir. Yani bastırma 30 dakika için ayarlanırsa; sonra uyarı ilk kez ateş ve yapılandırılmış bildirimleri gönderir. Ancak daha sonra 30 dakika bekleyin, uyarı kuralı için bildirim tekrar kullanılmadan önce. Ara dönemde, uyarı kuralı çalışmaya devam eder - bu dönemde uyarı kuralı kaç kez çalıştırılacağına bakılmaksızın yalnızca bildirim Log Analytics tarafından belirtilen süre boyunca bastırılır.
+Log Analytics tabanlı sorgu uyarıları, her eşiğin karşılandığı veya aşıldığı her seferinde tetiklenir. Sorguda kapsanan mantığa göre, bu durum bir dizi Aralık için harekete geçirildiğinde ve bu bildirimin sürekli olarak gönderilmesine neden olabilir. Böyle bir senaryoyu önlemek için, bir Kullanıcı, uyarı kuralının ikinci kez tetikleneceği bir süre için beklemek üzere Log Analytics, engelleme seçeneğini ayarlayabilir. Bu nedenle, gizleme 30 dakika için ayarlandıysa ardından uyarı ilk kez başlatılır ve yapılandırılan bildirimleri gönderir. Ancak, uyarı kuralı için bildirim yeniden kullanılmadan önce 30 dakika bekleyin. Ara dönemde, uyarı kuralının bu dönemde kaç kez tetiklendiğine bakılmaksızın, uyarı kuralı yalnızca belirli bir süre için Log Analytics tarafından bastırılır.
 
-Log Analytics uyarı kuralının bastırma özelliği, *Azaltma* değeri ve *DurationInMinutes* değerini kullanarak bastırma süresi kullanılarak belirtilir.
+Log Analytics uyarı kuralının özelliğini Gizle değeri, *daraltma* değeri ve gizleme dönemi kullanılarak *DurationInMinutes* değeri kullanılarak belirtilir.
 
-Aşağıda yalnızca bir eşik, önem derecesi ve bastırma özelliği olan bir eylem için örnek bir yanıt
+Yalnızca eşik, önem derecesi ve gizleme özelliği olan bir eylem için örnek yanıt aşağıda verilmiştir
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -218,22 +218,22 @@ Aşağıda yalnızca bir eşik, önem derecesi ve bastırma özelliği olan bir 
         "Severity": "critical",
         "Version": 1    }
 
-Önem derecesi olan bir zamanlama için yeni bir eylem oluşturmak için benzersiz bir eylem kimliğiyle Put yöntemini kullanın.  
+Önem derecesine sahip bir zamanlamaya yönelik yeni bir eylem oluşturmak için, özel bir eylem KIMLIĞIYLE put metodunu kullanın.  
 
     $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
-Zamanlama için önem verme eylemini değiştirmek için varolan bir eylem kimliğiyle Put yöntemini kullanın.  İsteğin gövdesi eylemin eetiketini içermelidir.
+Bir zamanlamaya yönelik önem derecesini değiştirmek için, mevcut bir eylem KIMLIĞIYLE Put yöntemini kullanın.  İsteğin gövdesi eylemin ETag öğesini içermelidir.
 
     $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>Eylem Grupları
-Azure'daki tüm uyarılar, eylemleri işlemek için varsayılan mekanizma olarak Eylem Grubu'nu kullanın. Action Group ile eylemlerinizi bir kez belirtebilir ve ardından eylem grubunu Azure genelinde birden çok uyarıyla ilişkilendirebilirsiniz. Gerek kalmadan, tekrar tekrar aynı eylemleri ilan etmek. Eylem Grupları, e-posta, SMS, Sesli Arama, ITSM Bağlantısı, Otomasyon Runbook, Webhook URI ve daha fazlası dahil olmak üzere birden çok eylemi destekler. 
+Tüm uyarılar Azure 'da, eylemleri işlemek için varsayılan mekanizma olarak eylem grubunu kullanın. Eylem grubuyla, eylemlerinizi bir kez belirtebilir ve ardından Eylem grubunu Azure 'da birden çok uyarı ile ilişkilendirebilirsiniz. Gerek olmadan, aynı eylemleri tekrar tekrar tekrar bildirmek için. Eylem grupları e-posta, SMS, sesli çağrı, ıTSM bağlantısı, Otomasyon Runbook 'u, Web kancası URI ve daha fazlasını içeren birden çok eylemi destekler 
 
-Uyarılarını Azure'a genişleten kullanıcılar için bir zamanlama, bir uyarı oluşturabilmek için artık Eylem Grubu ayrıntılarının eşikle birlikte geçirilmesi gerekir. E-posta ayrıntıları, Webhook URL'leri, Runbook Otomasyonu ayrıntıları ve diğer Eylemler, bir uyarı oluşturmadan önce bir Eylem Grubu tarafında tanımlanması gerekir; portalda [Azure Monitor'dan Eylem Grubu](../../azure-monitor/platform/action-groups.md) oluşturabilir veya [Eylem Grubu API'sini](https://docs.microsoft.com/rest/api/monitor/actiongroups)kullanabilir.
+Uyarıları Azure 'a genişletmiş olan kullanıcılar için bir zamanlama, bir uyarı oluşturabilmek için artık bir zamanlayıcı ile birlikte Işlem grubu ayrıntılarının geçirilmesini sağlamalıdır. E-posta ayrıntıları, Web kancası URL 'Leri, runbook Otomasyon ayrıntıları ve diğer eylemler, bir uyarı oluşturmadan önce bir eylem grubu içinde tanımlanmalıdır. Portal 'da [Azure izleyici 'den bir eylem grubu](../../azure-monitor/platform/action-groups.md) oluşturabilir veya [eylem grubu API 'sini](https://docs.microsoft.com/rest/api/monitor/actiongroups)kullanabilirsiniz.
 
-Eylem grubunun bir uyarıya ilişkilendirme sini eklemek için, uyarı tanımında eylem grubunun benzersiz Azure Kaynak Yöneticisi Kimliğini belirtin. Örnek bir örnek resim aşağıda verilmiştir:
+Eylem grubunun bir uyarıya ilişkilendirmesini eklemek için, uyarı tanımındaki eylem grubunun benzersiz Azure Resource Manager KIMLIĞINI belirtin. Örnek bir çizim aşağıda verilmiştir:
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -253,21 +253,21 @@ Eylem grubunun bir uyarıya ilişkilendirme sini eklemek için, uyarı tanımın
         "Version": 1
       },
 
-Varolan Eylem Grubu'nu bir zamanlama yla ilişkilendirmek için benzersiz bir eylem kimliğiyle Put yöntemini kullanın.  Aşağıda, bir örnek kullanım örneği verem.
+Zaten var olan eylem grubunu bir zamanlama için ilişkilendirmek üzere, put metodunu benzersiz bir eylem KIMLIĞIYLE kullanın.  Aşağıda örnek bir kullanım çizimi verilmiştir.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-Zamanlama yla ilişkili bir Eylem Grubunu değiştirmek için varolan bir eylem kimliğiyle Put yöntemini kullanın.  İsteğin gövdesi eylemin eetiketini içermelidir.
+Bir zamanlama ile ilişkili bir eylem grubunu değiştirmek için Put yöntemini mevcut bir eylem KIMLIĞIYLE birlikte kullanın.  İsteğin gövdesi eylemin ETag öğesini içermelidir.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-#### <a name="customize-actions"></a>Eylemleri Özelleştir
-Varsayılan eylemlerle, bildirimler için standart şablonu ve biçimi izleyin. Ancak kullanıcı, Eylem Grupları tarafından denetlenebilse ler bile bazı eylemleri özelleştirebilir. Şu anda, e-posta konusu ve Webhook Yükü için özelleştirme mümkündür.
+#### <a name="customize-actions"></a>Eylemleri özelleştirme
+Varsayılan eylemler için standart şablonu ve bildirimler için biçimi izleyin. Ancak Kullanıcı, eylem grupları tarafından denetlenseler bile bazı eylemleri özelleştirebilir. Şu anda, e-posta konusu ve Web kancası yükü için özelleştirme mümkündür.
 
-##### <a name="customize-e-mail-subject-for-action-group"></a>Eylem Grubu için E-Posta Konusunu Özelleştir
-Varsayılan olarak, uyarılar için e-posta `<AlertName>` konusu: Uyarı Bildirimi için. `<WorkspaceName>` Ancak bu, gelen kutunuzda filtre kurallarını kolayca kullanmanıza olanak sağlamak için belirli sözcükleri veya etiketleri kullanabileceğiniz şekilde özelleştirilebilir. Özelleştir e-posta üstbilgisi ayrıntılarının aşağıdaki örnekte olduğu gibi ActionGroup ayrıntılarıyla birlikte gönderilmesi gerekir.
+##### <a name="customize-e-mail-subject-for-action-group"></a>Eylem grubu için e-posta konusunu Özelleştir
+Varsayılan olarak, uyarılar için e-posta konusu: uyarı bildirimi `<AlertName>` `<WorkspaceName>`. Ancak bu, özel sözcüklere veya etiketlere yönelik olarak kolayca filtre kuralları kullanmanıza olanak tanımak için özelleştirilebilir. Aşağıdaki örnekte olduğu gibi, e-posta üst bilgisini Özelleştir ayrıntılarının ActionGroup ayrıntıları ile birlikte gönderilmesi gerekir.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -288,20 +288,20 @@ Varsayılan olarak, uyarılar için e-posta `<AlertName>` konusu: Uyarı Bildiri
         "Version": 1
       },
 
-Zaten var olan Eylem Grubu'nu zamanlama için özelleştirmeyle ilişkilendirmek için benzersiz bir eylem kimliğiyle Put yöntemini kullanın.  Aşağıda, bir örnek kullanım örneği verem.
+Zaten var olan eylem grubunu bir zamanlama için özelleştirme ile ilişkilendirmek üzere put metodunu benzersiz bir eylem KIMLIĞIYLE birlikte kullanın.  Aşağıda örnek bir kullanım çizimi verilmiştir.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-Zamanlama yla ilişkili bir Eylem Grubunu değiştirmek için varolan bir eylem kimliğiyle Put yöntemini kullanın.  İsteğin gövdesi eylemin eetiketini içermelidir.
+Bir zamanlama ile ilişkili bir eylem grubunu değiştirmek için Put yöntemini mevcut bir eylem KIMLIĞIYLE birlikte kullanın.  İsteğin gövdesi eylemin ETag öğesini içermelidir.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-##### <a name="customize-webhook-payload-for-action-group"></a>Eylem Grubu için Webhook Yükünü Özelleştir
-Varsayılan olarak, günlük analitiği için Action Group aracılığıyla gönderilen webhook sabit bir yapıya sahiptir. Ama bir webhook bitiş noktası gereksinimlerini karşılamak için, desteklenen belirli değişkenler kullanarak JSON yükü özelleştirebilirsiniz. Daha fazla bilgi için günlük [uyarı kuralları için Webhook eylemine](../../azure-monitor/platform/alerts-log-webhook.md)bakın. 
+##### <a name="customize-webhook-payload-for-action-group"></a>Eylem grubu için Web kancası yükünü özelleştirme
+Varsayılan olarak, Log Analytics için eylem grubu aracılığıyla gönderilen Web kancasının sabit bir yapısı vardır. Ancak bir tane, Web kancası uç noktasının gereksinimlerini karşılamak için desteklenen belirli değişkenleri kullanarak JSON yükünü özelleştirebilir. Daha fazla bilgi için bkz. [günlük uyarısı kuralları Için Web kancası eylemi](../../azure-monitor/platform/alerts-log-webhook.md). 
 
-Webhook'u özelleştir ayrıntılarının ActionGroup ayrıntılarıyla birlikte gönderilmesi gerekir ve eylem grubu içinde belirtilen tüm Webhook URI'ye uygulanır; aşağıdaki örnekte olduğu gibi.
+Web kancası ayrıntılarının özelleştirilmesi, ActionGroup ayrıntıları ile birlikte gönderilmesi gerekir ve eylem grubu içinde belirtilen tüm Web kancası URI 'sine uygulanır; Aşağıdaki örnekte olduğu gibi.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -323,12 +323,12 @@ Webhook'u özelleştir ayrıntılarının ActionGroup ayrıntılarıyla birlikte
         "Version": 1
       },
 
-Zaten var olan Eylem Grubu'nu zamanlama için özelleştirmeyle ilişkilendirmek için benzersiz bir eylem kimliğiyle Put yöntemini kullanın.  Aşağıda, bir örnek kullanım örneği verem.
+Zaten var olan eylem grubunu bir zamanlama için özelleştirme ile ilişkilendirmek üzere put metodunu benzersiz bir eylem KIMLIĞIYLE birlikte kullanın.  Aşağıda örnek bir kullanım çizimi verilmiştir.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-Zamanlama yla ilişkili bir Eylem Grubunu değiştirmek için varolan bir eylem kimliğiyle Put yöntemini kullanın.  İsteğin gövdesi eylemin eetiketini içermelidir.
+Bir zamanlama ile ilişkili bir eylem grubunu değiştirmek için Put yöntemini mevcut bir eylem KIMLIĞIYLE birlikte kullanın.  İsteğin gövdesi eylemin ETag öğesini içermelidir.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
@@ -336,7 +336,7 @@ Zamanlama yla ilişkili bir Eylem Grubunu değiştirmek için varolan bir eylem 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Log Analytics'te [günlük aramaları yapmak için REST API'sini](../../azure-monitor/log-query/log-query-overview.md) kullanın.
-* Azure [monitöründe günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md) hakkında bilgi edinin
-* Azure [monitöründe günlük uyarı kurallarını oluşturma, yönetme veya yönetme](../../azure-monitor/platform/alerts-log.md)
+* Log Analytics ' de [günlük aramalarını gerçekleştirmek için REST API](../../azure-monitor/log-query/log-query-overview.md) kullanın.
+* [Azure izleyici 'de günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md) hakkında bilgi edinin
+* [Azure izleyici 'de günlük uyarı kuralları oluşturma, düzenleme veya yönetme](../../azure-monitor/platform/alerts-log.md)
 

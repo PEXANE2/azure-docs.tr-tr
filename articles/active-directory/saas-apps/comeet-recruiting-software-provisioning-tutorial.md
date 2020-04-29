@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Comeet Recruiting YazılımLarını yapılandırın | Microsoft Dokümanlar'
-description: Azure Active Directory'yi, kullanıcı hesaplarını Comeet Recruiting Software'e otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için birlikte bulunan Işe alma yazılımlarını yapılandırın | Microsoft Docs'
+description: Işe alma yazılımlarını birlikte karşılamak üzere Kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,142 +16,142 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: f427fb75cfaeda79b037c327992e4ad482a7e689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058348"
 ---
-# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Comeet Recruiting Software yapılandırma
+# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için birlikte bulunan Işe alma yazılımlarını yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Comeet Recruiting Software'e otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Comeet Recruiting Software ve Azure Active Directory (Azure AD) için gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupların Işe alma yazılımlarını karşılamak üzere otomatik olarak sağlaması ve sağlaması için otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak üzere, sağlama yazılımı ve Azure Active Directory (Azure AD) ile birlikte gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracı
-* [Bir Comeet İşe Yazılım kiracı](https://www.comeet.co/)
-* Yönetici izinleri ile Comeet Recruiting Software bir kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Cokarşılayan bir Işe alma yazılım kiracısı](https://www.comeet.co/)
+* Yönetici izinleriyle Işbirliği yazılımlarını içeren bir kullanıcı hesabı.
 
-## <a name="add-comeet-recruiting-software-from-the-gallery"></a>Galeriden Comeet Recruiting Yazılım ekle
+## <a name="add-comeet-recruiting-software-from-the-gallery"></a>Galeriden ortak bir Işe alma yazılımı ekleyin
 
-Azure AD ile otomatik kullanıcı sağlama için Comeet İşe Alma Yazılımı yapılandırmadan önce, Yönetilen SaaS uygulamaları listenize Azure AD uygulama galerisinden Comeet İşe Alma Yazılımı eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için birlikte bulunan Işe alma yazılımlarını yapılandırmadan önce, Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize Cokarşılayan Işe alma yazılımını eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Comeet Recruiting Yazılımı eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD uygulama galerisinden ortak bir Işe alma yazılımı eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **Comeet Recruiting Software**girin , sonuç panelinde **Comeet Recruiting Software** seçin ve sonra uygulama eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna, **birlikte bulunan Işe alma yazılımını**girin, sonuçlar panelinde **ortak işe alma yazılımını** seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Comeet İşe Yazılım sonuç listesinde](common/search-new-app.png)
+    ![Sonuç listesinde işbirliği yazılımlarını birlikte karşılayın](common/search-new-app.png)
 
-## <a name="assigning-users-to-comeet-recruiting-software"></a>Kullanıcıları Comeet Recruiting Software'e atama
+## <a name="assigning-users-to-comeet-recruiting-software"></a>Kullanıcıları, Işe alma yazılımına birlikte buluşmak üzere atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Comeet Recruiting Software'e erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları burada talimatları izleyerek Comeet Recruiting Software'e atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Işe alma yazılımlarını birlikte karşılaması için erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları, Işe alma yazılımlarını birlikte karşılamak üzere atayabilirsiniz:
 
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-comeet-recruiting-software"></a>Comeet Recruiting Software kullanıcıları atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-comeet-recruiting-software"></a>Işe alma yazılımlarını birlikte karşılamak için Kullanıcı atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının Comeet Recruiting Software'e atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek üzere Işe alma yazılımının birlikte sağlanması için tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Comeet Recruiting Software'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı, Işe alma yazılımına birlikte buluşmak üzere atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Otomatik kullanıcı sağlamanın Comeet Recruiting Software'e yapılandırılması 
+## <a name="configuring-automatic-user-provisioning-to-comeet-recruiting-software"></a>Işe alma yazılımının birlikte sağlanması için otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı Olarak Comeet İşe Alma Yazılımındaki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size rehberlik eder.
+Bu bölümde, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup atamalarını Azure AD 'de Kullanıcı ve/veya grup atamalarına göre yapılandırma, güncelleştirme ve devre dışı bırakma adımlarını adım adım kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca Comeet Recruiting Software için SAML tabanlı tek oturum açma yı etkinleştirmeyi de seçebilirsiniz, [Comeet Recruiting Software tek oturum](comeetrecruitingsoftware-tutorial.md)açma öğreticisinde verilen talimatları izleyerek. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
+> Ayrıca, işbirliği yazılımı [Çoklu oturum açma öğreticisinde](comeetrecruitingsoftware-tutorial.md)yer alan yönergeleri Izleyerek, işbirliği yazılımı için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Azure AD'de Comeet Recruiting Software için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Azure AD 'de birlikte bulunan Işe alma yazılımının otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Comeet Recruiting Software'i**seçin.
+2. Uygulamalar listesinde, **Işbirliği yazılımlarını birlikte karşılayın**' i seçin.
 
-    ![Uygulamalar listesinde Comeet İşe Yazılım bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki ortak Işe alma yazılımı bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü altında, Basamak 6'da açıklandığı şekilde Comeet Recruiting Software hesabınızın **Kiracı URL'sini** ve **Gizli Belirteci'ni** girin.
+5. **Yönetici kimlik bilgileri** bölümünde, adım 6 ' da açıklandığı şekilde, **kiracı URL 'Sini** ve cokarşılayan Işe alma yazılımınızın hesabının **gizli belirtecini** girin.
 
-6. [Comeet Recruiting Software yönetici konsolunda,](https://app.comeet.co/) **Microsoft Azure'> > Orijinallik > Comeet > Ayarları'na**gidin ve Şirket **değeriniz için Gizli Belirteci'yi** Azure AD'deki **Gizli Belirteç** alanına kopyalayın.
+6. [Işbirliği yazılım yönetim konsolu 'nu birlikte karşılayın](https://app.comeet.co/) **> ayarları > kimlik doğrulama > Microsoft Azure**ve **Şirket değeri Için gızlı belirteç** ' nı Azure AD 'deki **gizli belirteç** alanına kopyalayın.
 
-    ![Comeet İşe Yazılım Sağlama](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
+    ![Cokarşılar Işe alma yazılımı sağlama](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
-7. Adım 5'te gösterilen alanları doldurarak, Azure AD'nin Comeet Recruiting Software'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Comeet Recruiting Software hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+7. Adım 5 ' te gösterilen alanlar doldurulmaya yardımcı olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Cokarşılayan Işe alma yazılım hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Belirteç](common/provisioning-testconnection-token.png)
 
-8. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet**'e tıklayın.
+9. **Kaydet**’e tıklayın.
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Comeet'e Senkronize Et'i**seçin.
+10. **Eşlemeler** bölümünde, **Kullanıcı Azure Active Directory Kullanıcıları birlikte karşılamaları için Synchronize**' ı seçin.
 
-    ![Comeet İşe Yazılım Kullanıcı Haritalama](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
+    ![Cokarşılar Işe alma yazılımı Kullanıcı eşlemeleri](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
-11. Azure AD'den **Atrit Eşleme** bölümünde Comeet Recruiting Software'e senkronize edilen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Comeet Recruiting Software'deki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+11. Azure AD 'den eşitlenen Kullanıcı özniteliklerini, **öznitelik eşleme** bölümünde Işe alma yazılımının Işbirliği yazılımlarını karşılamak için gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için birlikte bulunan Işe alma yazılımının kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Comeet İşe Yazılım Grubu Özellikleri](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
+    ![Cokarşılar Işe alma yazılım grubu öznitelikleri](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
-12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-13. Comeet Recruiting Software için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde Sağlama Durumunu **Ayarı** olarak değiştirin. **Settings**
+13. Azure AD sağlama hizmetini Cokarşılayan Işe alma yazılımı için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **Kapsam'da** istenen değerleri seçerek Comeet Recruiting Software'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Işe alma yazılımlarını birlikte karşılamak için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Kaydedilen ilerlemeyi izlemek ve Comeet Recruiting Software'deki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlantılar izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek ve sağlama için Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik raporuna yönelik bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="connector-limitations"></a>Bağlayıcı Sınırlamaları
+## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* Comeet Recruiting Software şu anda grupları desteklememektedir.
+* Cokarşılayan Işe alma yazılımı şu anda grupları desteklemiyor.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 

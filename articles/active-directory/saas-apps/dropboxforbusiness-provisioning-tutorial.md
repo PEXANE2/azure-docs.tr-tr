@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Dropbox for Business'ı yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını Otomatik olarak sağlama ve şirket başına bırakma işlemlerini Dropbox for Business'a otomatik olarak sağlamak üzere nasıl yapılandırılamayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Iş Dropbox 'ı yapılandırın | Microsoft Docs"
+description: Kullanıcı hesaplarını Iş için otomatik olarak sağlamak ve devre dışı bırakmak üzere Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,150 +16,150 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 3acc2c271e590bddb13aaa01498f404da4340036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058468"
 ---
-# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Dropbox'ı İş için yapılandır
+# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Iş Dropbox 'ı yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi otomatik olarak sağlama ve kullanıcıları ve/veya grupları İş Için Dropbox'a sağlama ve bunları sağlamadan çıkarmak üzere yapılandırmak için Dropbox for Business ve Azure Active Directory 'de (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Kullanıcı ve/veya grupları otomatik olarak sağlamak ve devre dışı bırakmak için Azure AD 'yi yapılandırmak üzere Iş için Dropbox ve Azure Active Directory (Azure AD) ' de gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracı
-* [İş kiracı için bir Dropbox](https://www.dropbox.com/business/pricing)
-* Yönetici izinleri olan Dropbox for Business'taki bir kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Iş kiracısı için Dropbox](https://www.dropbox.com/business/pricing)
+* Yönetici izinlerine sahip Iş için Dropbox 'ta bir kullanıcı hesabı.
 
-## <a name="add-dropbox-for-business-from-the-gallery"></a>Galeriden İşletmeler için Dropbox ekle
+## <a name="add-dropbox-for-business-from-the-gallery"></a>Galeriden Iş için Dropbox ekleyin
 
-Azure AD ile otomatik kullanıcı sağlama için Dropbox for Business'ı yapılandırmadan önce, Azure AD uygulama galerisinden Yönetilen SaaS uygulamaları listenize Dropbox'ı İşletme için eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için Iş için Dropbox 'u Iş için yapılandırmadan önce, Azure AD Uygulama Galerisi 'nden yönetilen SaaS uygulamaları listenize Iş için Dropbox eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden İşletmeler için Dropbox eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD uygulama galerisinden Iş için Dropbox eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **İşletmeler için Dropbox'ı**girin, sonuç panelinde **İşletmeler için Dropbox'ı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Ara kutusuna **iş Için Dropbox**' u girin, sonuçlar panelinde **iş için Dropbox** ' u seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Sonuç listesinde İşletmeler için Dropbox](common/search-new-app.png)
+    ![Sonuç listesinde Iş için Dropbox](common/search-new-app.png)
 
-## <a name="assigning-users-to-dropbox-for-business"></a>İş için Dropbox'a kullanıcı atama
+## <a name="assigning-users-to-dropbox-for-business"></a>Iş için Dropbox 'a Kullanıcı atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların İş Için Dropbox'a erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları dropbox for Business'a buradaki talimatları izleyerek atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Iş için Dropbox 'a erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Iş için Dropbox 'a atayabilirsiniz:
 
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>İş için Dropbox'a kullanıcı atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Iş için Dropbox 'a Kullanıcı atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için tek bir Azure AD kullanıcısının Dropbox for Business'a atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek üzere Iş için Dropbox 'a tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Dropbox for Business'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Iş için Dropbox 'a bir Kullanıcı atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="configuring-automatic-user-provisioning-to-dropbox-for-business"></a>İş için Dropbox için otomatik kullanıcı sağlama yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-dropbox-for-business"></a>Iş için Dropbox 'a otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına bağlı olarak Dropbox for Business'taki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Iş için Dropbox 'ta bulunan kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında kılavuzluk eder.
 
 > [!TIP]
-> Dropbox for Business tek oturum açma [öğreticisinde](dropboxforbusiness-tutorial.md)verilen talimatları izleyerek, Dropbox for Business için SAML tabanlı tek oturum açma'yı da etkinleştirmeyi seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
+> İş için Dropbox tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Bu işlem [Için Dropbox for Business Single oturum açma öğreticisinde](dropboxforbusiness-tutorial.md)sunulan talimatları takip edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>Azure AD'de Dropbox for Business için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>Azure AD 'de Iş için Dropbox otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, İşletmeler **için Dropbox'ı**seçin.
+2. Uygulamalar listesinde, **iş Için Dropbox**' u seçin.
 
-    ![Uygulamalar listesindeki İşletmeler için Dropbox bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesinde Iş için Dropbox bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümünde **Yetkiver'i**tıklatın. Yeni bir tarayıcı penceresinde İşletmeler için Bir Dropbox giriş iletişim kutusu açar.
+5. **Yönetici kimlik bilgileri** bölümünde **Yetkilendir**' e tıklayın. Yeni bir tarayıcı penceresinde Iş oturum açma iletişim kutusu açılır.
 
     ![Sağlama ](common/provisioning-oauth.png)
 
-6. Azure AD iletişim **kutusuna bağlanmak için Business için Dropbox'a Oturum** Aç'ta, Şirket için Dropbox'ınızda oturum açın ve kimliğinizi doğrulayın.
+6. Iş için **Dropbox 'Ta Azure AD iletişim kutusuyla bağlantı sağlamak için** , iş kiracınızda Dropbox 'ta oturum açın ve kimliğinizi doğrulayın.
 
-    ![İş oturum açma için Dropbox](media/dropboxforbusiness-provisioning-tutorial/dropbox01.png)
+    ![Iş oturumu açma için Dropbox](media/dropboxforbusiness-provisioning-tutorial/dropbox01.png)
 
-7. 5 ve 6 adımlarını tamamladıktan sonra, Azure AD'nin İşletmeler için Dropbox'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Dropbox for Business hesabınızda Yönetici izinleri olduğundan emin olun ve yeniden deneyin.
+7. 5 ve 6. adımları tamamladıktan sonra, Azure AD 'nin Iş için Dropbox 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa Iş hesabınız için Dropbox 'ın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Belirteç](common/provisioning-testconnection-oauth.png)
 
-8. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet**'e tıklayın.
+9. **Kaydet**’e tıklayın.
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Dropbox'a Senkronize Et'i**seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Dropbox**' a eşitler ' ı seçin.
 
-    ![Dropbox Kullanıcı Eşlemeleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-mapping.png)
+    ![Dropbox Kullanıcı eşlemeleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-mapping.png)
 
-11. **Öznitelik Eşleme** bölümünde Azure AD'den Dropbox'a eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Dropbox'taki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde Azure AD 'den Dropbox 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Dropbox 'taki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Dropbox Kullanıcı Özellikleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-attributes.png)
+    ![Dropbox Kullanıcı öznitelikleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-attributes.png)
 
-12. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Dropbox'a Senkronize Et'i**seçin.
+12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Dropbox 'a eşitler**' ı seçin.
 
-    ![Dropbox Grup Eşlemeleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-mapping.png)
+    ![Dropbox grubu eşlemeleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-mapping.png)
 
-13. **Öznitelik Eşleme** bölümünde Azure AD'den Dropbox'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemi için Dropbox' taki grupların çünüm etmek için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+13. **Öznitelik eşleme** bölümünde Azure AD 'den Dropbox 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Dropbox 'taki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Dropbox Grup Öznitelikleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-attributes.png)
+    ![Dropbox grubu öznitelikleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-attributes.png)
 
-14. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-15. Dropbox için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Ayarı** olarak değiştirin.
+15. Dropbox için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-16. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Dropbox'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+16. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek Dropbox 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-17. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+17. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Kaydetme **Ayrıntıları** bölümünü, ilerlemeyi izlemek ve Dropbox'taki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinlik raporuna bağlı bağlantıları izlemek için kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek ve Dropbox 'ta Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna yönelik bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="connector-limitations"></a>Bağlayıcı Sınırlamaları
+## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
  
-* Dropbox davet edilen kullanıcıların askıya alınması nı desteklemez. Davet edilen bir kullanıcı askıya alınırsa, bu kullanıcı silinir.
+* Dropbox, davet edilen kullanıcıların askıya alınmasını desteklemez. Davet edilen bir Kullanıcı askıya alınırsa, bu kullanıcı silinir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 

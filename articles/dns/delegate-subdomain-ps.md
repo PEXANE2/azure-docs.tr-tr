@@ -1,6 +1,6 @@
 ---
-title: Bir alt etki alanını temsilci - Azure PowerShell - Azure DNS
-description: Bu öğrenme yolu ile Azure PowerShell'i kullanarak bir Azure DNS alt etki alanını atamaya başlayın.
+title: Bir alt etki alanı temsilcisi-Azure PowerShell Azure DNS
+description: Bu öğrenme yoluyla, Azure PowerShell kullanarak bir Azure DNS alt etki alanı için temsilci seçmeye başlayın.
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,50 +8,50 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: 7e019afaae98422b8d5a3c8fa7a5f79e26c6a149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76937700"
 ---
-# <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell'i kullanarak bir Azure DNS alt etki alanı temsilci
+# <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure DNS alt etki alanı temsilcisi seçme
 
-Bir DNS alt etki alanını devretmek için Azure PowerShell'i kullanabilirsiniz. Örneğin, contoso.com etki alanına sahipseniz, *mühendislik* adı verilen bir alt etki alanını, contoso.com bölgesinden ayrı olarak yönetebileceğiniz başka bir ayrı bölgeye devredebilirsiniz.
+DNS alt etki alanı atamak için Azure PowerShell kullanabilirsiniz. Örneğin, contoso.com etki alanına sahipseniz, *mühendislik* adlı bir alt etki alanını contoso.com bölgesinden ayrı olarak yönetebilmeniz için farklı bir bölgeye atayabilirsiniz.
 
-İsterseniz, [Azure Portalı'nı](delegate-subdomain.md)kullanarak bir alt etki alanı devralabilirsiniz.
+İsterseniz, [Azure portalını](delegate-subdomain.md)kullanarak bir alt etki alanı için temsilci seçebilirsiniz.
 
 > [!NOTE]
-> Contoso.com bu makale boyunca örnek olarak kullanılır. contoso.com yerine kendi etki alanı adınızı yazın.
+> Bu makalenin tamamında bir örnek olarak Contoso.com kullanılır. contoso.com yerine kendi etki alanı adınızı yazın.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bir Azure DNS alt etki alanını devretmek için öncelikle ortak etki alanınızı Azure DNS'ye devretmeniz gerekir. Ad sunucularınızı temsilci olarak nasıl yapılandıracağınıza ilişkin talimatlar için [azure DNS'ye bir etki alanı devretme](./dns-delegate-domain-azure-dns.md) bilgisini görün. Etki alanınız Azure DNS bölgenize devredildikten sonra alt etki alanınızı devredebilirsiniz.
+Azure DNS bir alt etki alanı atamak için, önce genel etki alanınızı Azure DNS olarak vermelisiniz. Ad sunucularınızı temsilci olarak yapılandırma hakkında yönergeler için bkz. [Azure DNS etki alanı verme](./dns-delegate-domain-azure-dns.md) . Etki alanınız Azure DNS bölgenize atandıktan sonra, alt etki alanınızı temsil edebilirsiniz.
 
-## <a name="create-a-zone-for-your-subdomain"></a>Alt etki alanınız için bir bölge oluşturma
+## <a name="create-a-zone-for-your-subdomain"></a>Alt etki alanı için bir bölge oluşturun
 
-İlk olarak, **mühendislik** alt etki alanı için bölge oluşturun.
+İlk olarak, **mühendislik** alt etki alanı için bölgeyi oluşturun.
 
 `New-AzDnsZone -ResourceGroupName <resource group name> -Name engineering.contoso.com`
 
-## <a name="note-the-name-servers"></a>Ad sunucularını not edin
+## <a name="note-the-name-servers"></a>Ad sunucularına göz önünde
 
-Ardından, mühendislik alt etki alanı için dört ad sunucularını not edin.
+Ardından, mühendislik alt etki alanı için dört ad sunucusu ' nu aklınızda yapın.
 
 `Get-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -RecordType NS`
 
 ## <a name="create-a-test-record"></a>Test kaydı oluşturma
 
-Test için kullanılacak mühendislik bölgesinde bir **A** kaydı oluşturun.
+Test için kullanılacak mühendislik bölgesinde **bir** kayıt oluşturun.
 
    `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`.
 
 ## <a name="create-an-ns-record"></a>NS kaydı oluşturma
 
-Ardından, contoso.com bölgesindeki **mühendislik** bölgesi için bir ad sunucusu (NS) kaydı oluşturun.
+Sonra, contoso.com bölgesindeki **mühendislik** bölgesi için bir ad sunucusu (NS) kaydı oluşturun.
 
 ```azurepowershell
 $Records = @()
@@ -62,14 +62,14 @@ $Records += New-AzDnsRecordConfig -Nsdname <name server 4 noted previously>
 $RecordSet = New-AzDnsRecordSet -Name engineering -RecordType NS -ResourceGroupName <resource group name> -TTL 3600 -ZoneName contoso.com -DnsRecords $Records
 ```
 
-## <a name="test-the-delegation"></a>Delegasyonu test edin
+## <a name="test-the-delegation"></a>Temsilciyi test etme
 
-Delegasyonu test etmek için nslookup'u kullanın.
+Temsilciyi test etmek için nslookup 'ı kullanın.
 
 1. PowerShell penceresini açın.
-2. Komut isteminde, yazın`nslookup www.engineering.contoso.com.`
-3. Adresi gösteren **10.10.10.10'u**gösteren yetkili olmayan bir yanıt almalısınız.
+2. Komut isteminde şunu yazın:`nslookup www.engineering.contoso.com.`
+3. **10.10.10.10**adresini gösteren yetkili olmayan bir yanıt almanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure'da barındırılan hizmetler için ters DNS'yi nasıl yapılandırabileceğinizi](dns-reverse-dns-for-azure-services.md)öğrenin.
+[Azure 'da barındırılan hizmetler için ters DNS yapılandırmayı](dns-reverse-dns-for-azure-services.md)öğrenin.

@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için DocuSign'ı yapılandırın| Microsoft Dokümanlar"
-description: Azure Active Directory ve DocuSign arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için DocuSign 'ı yapılandırma | Microsoft Docs"
+description: Azure Active Directory ve DocuSign arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,88 +16,88 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058187"
 ---
-# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için DocuSign'ı yapılandırın
+# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için DocuSign 'ı yapılandırma
 
-Bu öğreticinin amacı, Azure AD'den DocuSign'a kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamadan çıkarmak için DocuSign ve Azure AD'de gerçekleştirmeniz gereken adımları size göstermektir.
+Bu öğreticinin amacı, Azure AD 'den DocuSign 'a Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için DocuSign ve Azure AD 'de gerçekleştirmeniz gereken adımları gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, zaten aşağıdaki öğelere sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
-*   Azure Etkin dizin kiracı.
-*   DocuSign tek oturum açma özellikli abonelik.
-*   Ekip Yöneticisi izinleri ile DocuSign'daki bir kullanıcı hesabı.
+*   Azure Active Directory kiracısı.
+*   Bir DocuSign çoklu oturum açma etkin aboneliği.
+*   Ekip Yöneticisi izinleri ile DocuSign içindeki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-docusign"></a>Kullanıcıları DocuSign'a atama
+## <a name="assigning-users-to-docusign"></a>Kullanıcıları DocuSign 'a atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için "atamalar" adlı bir kavram kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya "atanmış" kullanıcılar ve gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
 
-Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki kullanıcıların ve/veya grupların DocuSign uygulamanıza erişilmesi gereken kullanıcıları temsil edeceğine karar vermeniz gerekir. Karar verildikten sonra, bu kullanıcıları docuSign uygulamanıza aşağıdaki talimatları izleyerek atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların DocuSign uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları DocuSign uygulamanıza atayabilirsiniz:
 
-[Bir kurumsal uygulamaya kullanıcı veya grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-docusign"></a>Kullanıcıları DocuSign'a atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-docusign"></a>DocuSign 'e Kullanıcı atamaya yönelik önemli ipuçları
 
-*   Sağlama yapılandırmasını sınamak için DocuSign'a tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar daha sonra atanabilir.
+*   Sağlama yapılandırmasını test etmek için, DocuSign 'a tek bir Azure AD kullanıcısının atanması önerilir. Daha sonra ek kullanıcılar atanabilir.
 
-*   Bir kullanıcıyı DocuSign'a atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan Erişim" rolü sağlama için çalışmaz.
+*   Bir kullanıcıyı DocuSign 'a atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
 > [!NOTE]
-> Azure AD, Docusign uygulamasıyla grup sağlamayı desteklemez, yalnızca kullanıcılar kullanılabilir.
+> Azure AD, Docusign uygulamasıyla grup sağlamayı desteklemez, yalnızca kullanıcılar sağlanabilir.
 
-## <a name="enable-user-provisioning"></a>Kullanıcı Sağlama'yı etkinleştirme
+## <a name="enable-user-provisioning"></a>Kullanıcı sağlamayı etkinleştir
 
-Bu bölüm, Azure REKLAM'ınızı DocuSign'ın kullanıcı hesabı sağlama API'sine bağlamanız ve sağlama hizmetini, Azure AD'deki kullanıcı ve grup atamasına göre DocuSign'da atanmış kullanıcı hesapları oluşturacak, güncelleştirecek ve devre dışı edecek şekilde yapılandırmanız yoluyla size yol gösteriş yapar.
+Bu bölümde, Azure AD 'nizi DocuSign 'ın Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasını temel alan DocuSign 'da atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için nasıl yapılandıracağınız konusunda kılavuzluk eder.
 
 > [!Tip]
-> [Azure portalında](https://portal.azure.com)sağlanan yönergeleri izleyerek DocuSign için SAML tabanlı Tek Oturum Açma özelliğini de seçebilirsiniz. Tek oturum açma, otomatik sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
+> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek, DocuSign için SAML tabanlı çoklu oturum açmayı da tercih edebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-user-account-provisioning"></a>Kullanıcı hesabı sağlama yapılandırmak için:
+### <a name="to-configure-user-account-provisioning"></a>Kullanıcı hesabı sağlamayı yapılandırmak için:
 
-Bu bölümün amacı, Active Directory kullanıcı hesaplarının DocuSign'a kullanıcı sağlamasını nasıl etkinleştireceklerini ana hatlarını ortaya çıkarmaktır.
+Bu bölümün amacı, Kullanıcı hesaplarının Active Directory Kullanıcı tarafından bir DocuSign 'a nasıl etkinleştirileceğini özetler.
 
-1. Azure [portalında,](https://portal.azure.com)Tüm uygulamalar > **Azure Active Directory > Enterprise Apps'a** göz atın.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
 
-1. Tek oturum açma için DocuSign'ı zaten yapılandırmışsanız, arama alanını kullanarak DocuSign örneğinizi arayın. Aksi takdirde, uygulama galerisinde **DocuSign'ı ekle** ve arama'yı seçin. **DocuSign** Arama sonuçlarından DocuSign'ı seçin ve uygulama listenize ekleyin.
+1. Çoklu oturum açma için zaten DocuSign yapılandırdıysanız, arama alanını kullanarak DocuSign örneğinizi arayın. Aksi takdirde, **Ekle** ' yi seçin ve uygulama galerisinde **Docusign** için arama yapın. Arama sonuçlarından DocuSign ' ı seçin ve uygulama listenize ekleyin.
 
-1. DocuSign örneğini seçin ve ardından **Sağlama** sekmesini seçin.
+1. DocuSign örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. Sağlama **Modunu** **Otomatik**olarak ayarlayın. 
+1. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
 
-    ![Sağlama](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/docusign-provisioning-tutorial/provisioning.png)
 
-1. Yönetici **Kimlik Bilgileri** bölümünün altında aşağıdaki yapılandırma ayarlarını sağlayın:
+1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
    
-    a. Yönetici **Kullanıcı Adı** metin kutusuna, DocuSign.com atanan Sistem **Yöneticisi** profiline sahip bir DocuSign hesap adı yazın.
+    a. **Yönetici Kullanıcı adı** metin kutusuna Docusign.com atanmış **Sistem Yöneticisi** profiline sahip bir Docusign hesap adı yazın.
    
-    b. Yönetici **Parolası** metin kutusuna, bu hesabın parolasını yazın.
+    b. **Yönetici parolası** metin kutusuna bu hesabın parolasını yazın.
 
-1. Azure portalında, Azure AD'nin DocuSign uygulamanıza bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın.
+1. Azure portal, Azure AD 'nin DocuSign uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın.
 
-1. Bildirim **E-postası** alanına, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin.
+1. **Bildirim e-postası** alanına, sağlama hatası bildirimleri alması gereken kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin.
 
-1. **Kaydet'i tıklatın.**
+1. Kaydet ' e tıklayın **.**
 
-1. Eşlemeler bölümünde, **DocuSign için Azure Etkin Dizin Kullanıcılarını Eşitle'yi seçin.**
+1. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları DocuSign Ile eşitler** ' ı seçin.
 
-1. **Öznitelik Eşlemeleri** bölümünde, Azure AD'den DocuSign'a senkronize edilen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için DocuSign'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için Kaydet düğmesini seçin.
+1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den DocuSign 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için DocuSign içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
-1. DocuSign için Azure AD sağlama hizmetini etkinleştirmek için, **On** Ayarlar bölümünde **Sağlama Durumunu**
+1. DocuSign için Azure AD sağlama hizmetini etkinleştirmek üzere ayarlar bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-1. **Kaydet'i tıklatın.**
+1. Kaydet ' e tıklayın **.**
 
-Kullanıcılar ve Gruplar bölümünde DocuSign'a atanan tüm kullanıcıların ilk eşitlemasını başlatır. İlk eşitlemenin gerçekleştirilemi, hizmet yürütülürken yaklaşık her 40 dakikada bir meydana gelen sonraki eşitlemelerden daha uzun sürüyor. DocuSign uygulamanızda sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemeyi izlemek ve sağlama etkinlik günlüklerine olan bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+Kullanıcılar ve Gruplar bölümünde DocuSign 'a atanan tüm kullanıcıların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve kaynak hazırlama uygulamanızın sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izleyebilirsiniz.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](tutorial-list.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Tek Oturum Açma'yı Yapılandır](docusign-tutorial.md)
+* [Çoklu oturum açmayı yapılandırma](docusign-tutorial.md)

@@ -1,7 +1,7 @@
 ---
-title: Azure'da İç Içe Trafik Yöneticisi Profilleri
+title: Azure 'da iç içe Traffic Manager profilleri
 titleSuffix: Azure Traffic Manager
-description: Bu makalede, Azure Trafik Yöneticisi'nin 'İç Içe Profiller' özelliği açıklanmaktadır
+description: Bu makalede, Azure Traffic Manager ' Iç Içe profil ' özelliği açıklanmaktadır
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -14,106 +14,106 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: rohink
 ms.openlocfilehash: 282099cb274c1ea872a0df9c2753a939ef31421f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938566"
 ---
 # <a name="nested-traffic-manager-profiles"></a>İç İçe Traffic Manager profilleri
 
-Trafik Yöneticisi, Trafik Yöneticisi'nin son kullanıcıdan hangi bitiş noktasının trafik alması gerektiğini nasıl seçeceğini denetlemenize olanak tanıyan bir dizi trafik yönlendirme yöntemi içerir. Daha fazla bilgi için [Trafik Yöneticisi trafik yönlendirme yöntemlerine](traffic-manager-routing-methods.md)bakın.
+Traffic Manager, her bir son kullanıcıdan gelen trafiği hangi uç noktanın alacağını Traffic Manager denetlemenize olanak tanıyan bir dizi trafik yönlendirme yöntemini içerir. Daha fazla bilgi için bkz. [Traffic Manager trafik-yönlendirme yöntemleri](traffic-manager-routing-methods.md).
 
-Her Trafik Yöneticisi profili nde tek bir trafik yönlendirme yöntemi belirtilir. Ancak, tek bir Trafik Yöneticisi profili tarafından sağlanan yönlendirmedaha karmaşık trafik yönlendirme gerektiren senaryolar vardır. Birden fazla trafik yönlendirme yönteminin avantajlarını birleştirmek için Trafik Yöneticisi profillerini iç içe çekebilirsiniz. İç içe profiller, daha büyük ve daha karmaşık uygulama dağıtımlarını desteklemek için varsayılan Trafik Yöneticisi davranışını geçersiz kılmanızı sağlar.
+Her Traffic Manager profili tek bir trafik yönlendirme yöntemini belirtir. Ancak, tek bir Traffic Manager profili tarafından sağlanmış olan yönlendirmeden daha karmaşık trafik yönlendirmesi gerektiren senaryolar vardır. Birden fazla trafik yönlendirme yönteminin avantajlarını birleştirmek için Traffic Manager profillerini iç içe geçirebilirsiniz. İç içe geçmiş profiller, daha büyük ve daha karmaşık uygulama dağıtımlarını desteklemek için varsayılan Traffic Manager davranışını geçersiz kılmanızı sağlar.
 
-Aşağıdaki örnekler, iç içe gelişmiş Trafik Yöneticisi profillerinin çeşitli senaryolarda nasıl kullanılacağını göstermektedir.
+Aşağıdaki örneklerde, çeşitli senaryolarda iç içe geçmiş Traffic Manager profillerinin nasıl kullanılacağı gösterilmektedir.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Örnek 1: 'Performans' ve 'Ağırlıklı' trafik yönlendirmesi birleştirme
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Örnek 1: ' Performance ' ve ' ağırlıklı ' trafik yönlendirmeyi birleştirme
 
-Bir uygulamayı aşağıdaki Azure bölgelerinde dağıtdığınızı varsayalım: Batı ABD, Batı Avrupa ve Doğu Asya. Trafiği kullanıcıya en yakın bölgeye dağıtmak için Trafik Yöneticisi'nin 'Performans' trafik yönlendirme yöntemini kullanırsınız.
+Bir uygulamayı şu Azure bölgelerinde dağıttığınızı varsayalım: Batı ABD, Batı Avrupa ve Doğu Asya. Trafiği kullanıcıya en yakın bölgeye dağıtmak için Traffic Manager ' Performance ' trafik yönlendirme yöntemini kullanırsınız.
 
-![Tek Trafik Yöneticisi profili][4]
+![Tek Traffic Manager profili][4]
 
-Şimdi, bir güncelleştirmeyi daha yaygın olarak kullanıma sunmadan önce hizmetinizle sınamak istediğinizi varsayalım. Küçük bir trafik yüzdesini test dağıtımınıza yönlendirmek için 'ağırlıklı' trafik yönlendirme yöntemini kullanmak istiyorsunuz. Test dağıtımını Batı Avrupa'daki varolan üretim dağıtımının yanında ayarlarsınız.
+Şimdi, daha kapsamlı bir şekilde kullanıma sunulmadan önce hizmetinize bir güncelleştirmeyi test etmek istediğinizi varsayalım. Test dağıtımınıza küçük bir trafik yüzdesini yönlendirmek için ' ağırlıklı ' trafik-yönlendirme yöntemini kullanmak istiyorsunuz. Test dağıtımını, Batı Avrupa içindeki mevcut üretim dağıtımıyla birlikte ayarlarsınız.
 
-Hem 'Ağırlıklı' hem de 'Performans trafiği yönlendirmeyi tek bir profilde birleştiremezsiniz. Bu senaryoyu desteklemek için, iki Batı Avrupa uç noktasını ve 'Ağırlıklı' trafik yönlendirme yöntemini kullanarak bir Trafik Yöneticisi profili oluşturursunuz. Ardından, bu 'alt' profili 'üst' profiline bir bitiş noktası olarak eklersiniz. Üst profil hala Performans trafiği yönlendirme yöntemini kullanır ve bitiş noktası olarak diğer genel dağıtımları içerir.
+Tek bir profilde hem ' ağırlıklı ' hem de ' performans trafiği-yönlendirmeyi birleştiremezsiniz. Bu senaryoyu desteklemek için, iki Batı Avrupa uç noktasını ve ' ağırlıklı ' trafik-yönlendirme yöntemini kullanarak bir Traffic Manager profili oluşturursunuz. Sonra, bu ' alt ' profilini ' üst ' profiline bir uç nokta olarak eklersiniz. Üst profil hala performans trafiği-yönlendirme yöntemini kullanır ve diğer genel dağıtımları uç noktalar olarak içerir.
 
-Aşağıdaki diyagramda bu örnek gösteriş verilmiştir:
+Aşağıdaki diyagramda Bu örnek gösterilmektedir:
 
 ![İç İçe Traffic Manager profilleri][2]
 
-Bu yapılandırmada, üst profil üzerinden yönlendirilen trafik, trafiği normal olarak bölgeler arasında dağıtır. Batı Avrupa'da iç içe geçen profil, trafiği belirlenen ağırlıklara göre üretim ve test bitiş noktalarına dağıtır.
+Bu yapılandırmada, üst profille yönlendirilen trafik, trafiği normal şekilde bölgeler arasında dağıtır. Batı Avrupa içinde, iç içe profil, atanan ağırlığa göre trafiği üretim ve test uç noktalarına dağıtır.
 
-Üst profil 'Performans' trafik yönlendirme yöntemini kullandığında, her bitiş noktasına bir konum atanması gerekir. Bitiş noktasını yapılandırdığınızda konum atanır. Dağıtımınıza en yakın Azure bölgesini seçin. Azure bölgeleri, Internet Gecikme Tablosu tarafından desteklenen konum değerleridir. Daha fazla bilgi için [Trafik Yöneticisi 'Performans' trafik yönlendirme yöntemine](traffic-manager-routing-methods.md#performance)bakın.
+Üst profil ' Performance ' trafik-yönlendirme yöntemini kullandığında, her bir uç noktaya bir konum atanması gerekir. Uç noktasını yapılandırdığınızda konum atanır. Dağıtımınıza en yakın Azure bölgesini seçin. Azure bölgeleri, Internet gecikme süresi tablosu tarafından desteklenen konum değerleridir. Daha fazla bilgi için bkz. [' Performance ' trafik-yönlendirme yöntemi Traffic Manager](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Örnek 2: İç Içe Profillerde Uç Nokta izleme
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Örnek 2: Iç Içe profillerde uç nokta izleme
 
-Trafik Yöneticisi, her hizmet bitiş noktasının durumunu etkin bir şekilde izler. Bir bitiş noktası sağlıksızsa, Traffic Manager hizmetinizin kullanılabilirliğini korumak için kullanıcıları alternatif uç noktalara yönlendirir. Bu uç nokta izleme ve başarısız davranış tüm trafik yönlendirme yöntemleri için geçerlidir. Daha fazla bilgi için [Trafik Yöneticisi Uç Nokta İzleme'ye](traffic-manager-monitoring.md)bakın. Uç nokta izleme iç içe profiller için farklı çalışır. İç içe profillerde, üst profil doğrudan çocuk üzerinde sistem durumu denetimleri yapmaz. Bunun yerine, alt profilin son noktalarının durumu, alt profilin genel durumunu hesaplamak için kullanılır. Bu sistem durumu bilgileri iç içe profil hiyerarşisini yayıştırılır. Üst profil, trafiği alt profile yönlendirip yönlendirmeyeceğini belirlemek için bu toplu durumu kullanır. İç içe profillerin sistem durumu izleme yle ilgili tüm ayrıntılar için [SSS](traffic-manager-FAQs.md#traffic-manager-nested-profiles) bölümüne bakın.
+Traffic Manager her bir hizmet uç noktasının durumunu etkin bir şekilde izler. Bir uç nokta sağlıksız ise, Traffic Manager hizmetinizin kullanılabilirliğini korumak için kullanıcıları alternatif uç noktalara yönlendirir. Bu uç nokta izleme ve yük devretme davranışı tüm trafik yönlendirme yöntemleri için geçerlidir. Daha fazla bilgi için bkz. [Traffic Manager uç nokta izleme](traffic-manager-monitoring.md). Uç nokta izleme, iç içe profiller için farklı şekilde çalışır. İç içe profiller sayesinde, üst profil doğrudan alt üzerinde sistem durumu denetimleri gerçekleştirmez. Bunun yerine, alt profilin genel durumunu hesaplamak için alt profilin uç noktalarının sistem durumu kullanılır. Bu durum bilgileri, iç içe geçmiş profil hiyerarşisinin yayılmıştır. Üst profil, trafiğin alt profile yönlendirip yönlendirmeyeceğini anlamak için bu toplanmış sistem durumunu kullanır. İç içe geçmiş profillerin sistem durumu izlemeyle ilgili ayrıntılı bilgi için [SSS](traffic-manager-FAQs.md#traffic-manager-nested-profiles) bölümüne bakın.
 
-Önceki örneğe dönersek, Batı Avrupa'daki üretim dağıtımının başarısız olduğunu varsayalım. Varsayılan olarak, 'alt' profili tüm trafiği test dağıtımına yönlendirir. Sınama dağıtımı da başarısız olursa, üst profil tüm alt uç noktaları sağlıksız olduğundan alt profilin trafik almamasını belirler. Ardından, üst profil trafiği diğer bölgelere dağıtır.
+Önceki örneğe dönerek Batı Avrupa içindeki üretim dağıtımının başarısız olduğunu varsayalım. Varsayılan olarak, ' alt ' profili tüm trafiği test dağıtımına yönlendirir. Test dağıtımı da başarısız olursa, üst profil tüm alt uç noktaları sağlıksız olduğundan alt profilin trafik almamalı olduğunu belirler. Daha sonra, üst profil trafiği diğer bölgelere dağıtır.
 
-![İç içe profil failover (varsayılan davranış)][3]
+![İç içe profil yük devretme (varsayılan davranış)][3]
 
-Bu anlaşmadan memnun olabilirsin. Ya da Batı Avrupa'daki tüm trafiğin artık sınırlı bir alt ayar trafiği yerine test dağıtımına gideceğinden endişe duyabilirsiniz. Test dağıtımının durumu ne olursa olsun, Batı Avrupa'daki üretim dağıtımı başarısız olduğunda diğer bölgelere gitmek te başarısız olmak istersiniz. Bu başarısıznoktayı etkinleştirmek için, alt profili üst profilde bir bitiş noktası olarak yapılandırırken 'MinChildEndpoints' parametresini belirtebilirsiniz. Parametre, alt profildeki kullanılabilir uç noktaların en az sayısını belirler. Varsayılan değer '1'dir. Bu senaryo için MinChildEndpoints değerini 2 olarak ayarlarsınız. Bu eşiğin altında, üst profil tüm alt profilin kullanılamaz olduğunu kabul eder ve trafiği diğer uç noktalara yönlendirir.
+Bu düzenleme ile memnun olabilirsiniz. Ya da Batı Avrupa için tüm trafiğin artık sınırlı bir alt küme trafiği yerine test dağıtımına gittiğinin endişeniz olabilir. Test dağıtımının sistem durumu ne olursa olsun, Batı Avrupa ' deki üretim dağıtımı başarısız olduğunda diğer bölgelere yük devretmek istersiniz. Bu yük devretmeyi etkinleştirmek için alt profili üst profilde bir uç nokta olarak yapılandırırken ' MinChildEndpoints ' parametresini belirtebilirsiniz. Parametresi, alt profildeki kullanılabilir uç noktaların minimum sayısını belirler. Varsayılan değer ' 1 '. Bu senaryo için MinChildEndpoints değerini 2 olarak ayarlarsınız. Bu eşiğin altında, üst profil tüm alt profilin kullanılamaz olduğunu varsayar ve trafiği diğer uç noktalara yönlendirir.
 
-Aşağıdaki şekil bu yapılandırmayı göstermektedir:
+Aşağıdaki şekilde bu yapılandırma gösterilmektedir:
 
-!['MinChildEndpoints' = 2 ile İç Içe Profil failover][4]
+![' MinChildEndpoints ' ile iç içe profil yük devretmesi = 2][4]
 
 > [!NOTE]
-> 'Öncelik' trafik yönlendirme yöntemi tüm trafiği tek bir bitiş noktasına dağıtır. Bu nedenle, minChildEndpoints ayarında çocuk profili için '1' dışında çok az amaç vardır.
+> ' Priority ' trafik-yönlendirme yöntemi tüm trafiği tek bir uç noktaya dağıtır. Bu nedenle, alt profil için ' 1 ' dışındaki bir MinChildEndpoints ayarında çok az amaç vardır.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Örnek 3: 'Performans' trafik yönlendirmesinde öncelikli başarısız bölgeler
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Örnek 3: ' performans ' trafiği yönlendirmesinde öncelikli yük devretme bölgeleri
 
-'Performans' trafik yönlendirme yöntemi için varsayılan davranış, farklı coğrafi konumlarda uç noktaları nız olduğunda, son kullanıcıların en düşük ağ gecikmesi açısından "en yakın" bitiş noktasına yönlendirilmesidir.
+' Performance ' trafik-yönlendirme yönteminin varsayılan davranışı, farklı coğrafi konumlarda uç noktalarınız olduğunda, son kullanıcıların en düşük ağ gecikmesi açısından "en yakın" uç noktaya yönlendirilmesidir.
 
-Ancak, Batı Avrupa trafiğinin Batı ABD'ye devrinin başarısız olmasını ve trafiği yalnızca her iki uç nokta kullanılamıyorsa diğer bölgelere yönlendirdiğinizi varsayalım. Bu çözümü, 'Öncelik' trafik yönlendirme yöntemine sahip bir alt profil kullanarak oluşturabilirsiniz.
+Ancak, Batı ABD için Batı Avrupa trafiği yük devretmesini tercih ettiğinizi ve her iki uç nokta de kullanılamadığı zaman yalnızca diğer bölgelere doğrudan trafik yönlendirdiğini varsayalım. Bu çözümü, ' Priority ' trafik yönlendirme yöntemiyle bir alt profil kullanarak oluşturabilirsiniz.
 
-![Tercihli arıza ile 'Performans' trafik yönlendirme][6]
+![Tercihe bağlı yük devretme ile ' performans ' trafiği yönlendirme][6]
 
-Batı Avrupa bitiş noktası Batı ABD bitiş noktasından daha yüksek önceliğe sahip olduğundan, her iki uç nokta da çevrimiçi olduğunda tüm trafik Batı Avrupa bitiş noktasına gönderilir. Batı Avrupa başarısız olursa, trafik Batı ABD'ye yönlendirilir. İç içe profille, trafik doğu Asya'ya yönlendirilir ancak hem Batı Avrupa hem de Batı ABD başarısız olduğunda.
+Batı Avrupa uç noktası Batı ABD uç noktasından daha yüksek önceliğe sahip olduğundan, her iki uç nokta de çevrimiçi olduğunda tüm trafik Batı Avrupa uç noktasına gönderilir. Batı Avrupa başarısız olursa, trafiği Batı ABD yönlendirilir. İç içe geçmiş profille, trafik yalnızca Batı Avrupa ve Batı ABD başarısız olduğunda Doğu Asya yönlendirilir.
 
-Bu deseni tüm bölgeler için yineleyebilirsiniz. Üst profildeki üç uç noktayı da her biri öncelikli bir hata dizisi sağlayan üç alt profille değiştirin.
+Bu kalıbı tüm bölgeler için tekrarlayabilirsiniz. Üst profildeki üç bitiş noktasını, her biri öncelikli bir yük devretme sırası sağlayan üç alt profille değiştirin.
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Örnek 4: Aynı bölgedeki birden çok uç nokta arasında 'Performans' trafik yönlendirmesini denetleme
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Örnek 4: aynı bölgedeki birden fazla uç nokta arasında ' performans ' trafiği yönlendirmeyi denetleme
 
-'Performans' trafik yönlendirme yönteminin belirli bir bölgede birden fazla bitiş noktası olan bir profilde kullanıldığını varsayalım. Varsayılan olarak, o bölgeye yönlendirilen trafik, o bölgedeki tüm kullanılabilir uç noktalara eşit olarak dağıtılır.
+Belirli bir bölgede birden fazla uç noktaya sahip bir profilde ' Performance ' trafik-yönlendirme yönteminin kullanıldığını varsayın. Varsayılan olarak, bu bölgeye yöneltilen trafik bu bölgedeki tüm kullanılabilir uç noktalar arasında eşit olarak dağıtılır.
 
-!['Performans' trafik yönlendirme bölge içi trafik dağılımı (varsayılan davranış)][7]
+![' Performans ' trafik yönlendirme-bölge içi trafik dağıtımı (varsayılan davranış)][7]
 
-Batı Avrupa'da birden çok uç nokta eklemek yerine, bu uç noktalar ayrı bir alt profilde eklenir. Alt profil, Batı Avrupa'daki tek bitiş noktası olarak ebeveyne eklenir. Alt profildeki ayarlar, o bölgede öncelik tabanlı veya ağırlıklı trafik yönlendirmesini etkinleştirerek Batı Avrupa ile trafik dağılımını denetleyebilir.
+Batı Avrupa birden fazla uç nokta eklemek yerine, bu uç noktalar ayrı bir alt profile alınır. Alt profil, Batı Avrupa ' deki tek uç nokta olarak üst öğeye eklenir. Alt profildeki ayarlar, bu bölge içinde öncelik tabanlı veya ağırlıklı trafik yönlendirmeyi etkinleştirerek Batı Avrupa ile trafik dağılımını denetleyebilir.
 
-![Özel bölge içi trafik dağılımı ile 'Performans' trafik yönlendirmesi][8]
+![Özel bölge içi trafik dağıtımı ile ' performans ' trafiği yönlendirme][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Örnek 5: Uç nokta başına izleme ayarları
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Örnek 5: uç nokta başına izleme ayarları
 
-Trafiği eski bir şirket içi web sitesinden Azure'da barındırılan bulut tabanlı yeni bir sürüme sorunsuz bir şekilde geçirmek için Trafik Yöneticisi'ni kullandığınızı varsayalım. Eski site için, site durumunu izlemek için ana sayfa URI'yi kullanmak istiyorsunuz. Ancak yeni Bulut tabanlı sürüm için, ek denetimler içeren özel bir izleme sayfası (yol '/monitor.aspx') uyguluyorsunuz.
+Eski şirket içi bir Web sitesinden gelen trafiği Azure 'da barındırılan yeni bir bulut tabanlı sürüme sorunsuz bir şekilde geçirmek için Traffic Manager kullandığınızı varsayalım. Eski site için, site durumunu izlemek üzere giriş sayfası URI 'sini kullanmak istersiniz. Ancak bulut tabanlı yeni sürüm için, ek denetimler içeren özel bir izleme sayfası (yol '/Monitor.aspx ') uyguız.
 
-![Trafik Yöneticisi uç nokta izleme (varsayılan davranış)][9]
+![Uç nokta izleme Traffic Manager (varsayılan davranış)][9]
 
-Trafik Yöneticisi profilindeki izleme ayarları, tek bir profildeki tüm uç noktalara uygulanır. İç içe profillerde, farklı izleme ayarlarını tanımlamak için site başına farklı bir alt profil kullanırsınız.
+Bir Traffic Manager profilindeki izleme ayarları, tek bir profildeki tüm uç noktalar için geçerlidir. İç içe profiller sayesinde, farklı izleme ayarlarını tanımlamak için her site için farklı bir alt profil kullanırsınız.
 
-![Uç nokta ayarları başına trafik yöneticisi uç nokta izleme][10]
+![Uç nokta başına ayarlarla uç nokta izleme Traffic Manager][10]
 
 ## <a name="faqs"></a>SSS
 
-* [İç içe profilleri nasıl yapılandırıyorum?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+* [İç içe geçmiş profilleri yapılandırmak Nasıl yaparım??](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
 
-* [Trafik Yöneticisi kaç kat iç içe geçmeyi destekler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Trafik Yöneticisi kaç tane iç içe geçme katmansın destekler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Aynı Trafik Yöneticisi profilinde iç içe geçen alt profillerle diğer uç nokta türlerini karıştırabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Aynı Traffic Manager profilinde, iç içe geçmiş alt profillerle diğer uç nokta türlerini karışık yapabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [İç içe profiller için faturalandırma modeli nasıl uygulanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Fatura modeli, Iç Içe geçmiş profiller için nasıl uygulanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [İç içe profiller için bir performans etkisi var mı?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [İç içe geçmiş profiller için bir performans etkisi var mı?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
 
-* [Trafik Yöneticisi, üst profilde iç içe bir uç noktanın durumunu nasıl hesaplar?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Traffic Manager bir üst profilde iç içe geçmiş bir uç noktanın durumunu nasıl hesaplamıştır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Trafik Yöneticisi profilleri](traffic-manager-overview.md) hakkında daha fazla bilgi edinin
+[Traffic Manager profilleri](traffic-manager-overview.md) hakkında daha fazla bilgi edinin
 
-Trafik Yöneticisi profilini nasıl [oluşturabilirsiniz](traffic-manager-create-profile.md) öğrenin
+[Traffic Manager profili oluşturmayı](traffic-manager-create-profile.md) öğrenin
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

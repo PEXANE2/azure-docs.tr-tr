@@ -1,6 +1,6 @@
 ---
-title: Kuruluşlarınızı Hesabım portalından yönetin - Azure AD
-description: Hesabım portalının Kuruluşlar sayfasından iş veya okul hesabınıza bağlı kuruluşları görüntüleme ve bırakma.
+title: Kuruluşlarımı Hesabım portalından yönetme-Azure AD
+description: Hesap portalımın kuruluşlar sayfasında iş veya okul hesabınıza bağlı kuruluşları görüntüleme ve bırakma.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062481"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Bağlı kuruluşlarınızı Kuruluşlar sayfasından yönetme
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Kuruluşlar sayfasından bağlı kuruluşları yönetin
 
-**Hesabım** portalının **Kuruluşlar** sayfası, iş veya okul hesabınıza bağlı kuruluşları (genellikle kuruluşunuzun adı) yönetmenize yardımcı olur. **Kuruluşlar** sayfasında gösterilen iki tür kuruluş vardır:
+**Hesabım** portalının **kuruluşlar** sayfası, iş veya okul hesabınıza bağlı kuruluşları (genellikle kuruluşunuzun adı) yönetmenize yardımcı olur. **Kuruluşlar** sayfasında gösterilen iki tür kuruluş vardır:
 
-- **Ev organizasyonu.** Ev kuruluşunuz, iş veya okul hesabınızın sahibi olan kuruluştur. Ev organizasyonundan ayrılamazsın.
+- **Ana kuruluş.** Ev kuruluşunuz, iş veya okul hesabınızın sahibi olan kuruluştur. Ana kuruluşunuzu bırakamazsınız.
 
     >[!NOTE]
-    > Atanmış bir Ev kuruluşunuz yoksa, ilişkili kuruluşların izini içeren Kuruluşlar'ı belirten tek bir başlık görürsünüz.
+    > Atanmış bir ana kuruluşunuz yoksa, yalnızca ilişkili kuruluşlarınızın listesini içeren kuruluşlar belirten tek bir başlık görürsünüz.
 
-- **Diğer organizasyonlar.** Diğer kuruluşlar, iş veya okul hesabınızı kullanarak daha önce oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini istediğiniz zaman terk edebilirsiniz.
+- **Diğer kuruluşlar.** Diğer kuruluşlar, daha önce iş veya okul hesabınızı kullanarak oturum açtığınız herhangi bir gruptur. Bu kuruluşlardan herhangi birini dilediğiniz zaman bırakabilirsiniz.
 
 >[!Important]
->Bu makale, bir çalışma veya okul hesabına bağlı kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılar için tasarlanmıştır. Çalışanlarınız ve diğer kullanımlar için grup ve kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, [Enterprise kullanıcı yönetimi belgelerine](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index)bakın.
+>Bu makale, bir iş veya okul hesabına bağlı kuruluş bilgilerini güncelleştirmeye çalışan kullanıcılara yöneliktir. Çalışanlarınız ve diğer kullanımlar için Grup ve Kullanıcı yönetimi hakkında bilgi arayan bir yöneticiyseniz, bkz. [Kurumsal Kullanıcı yönetimi belgeleri](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
 
-## <a name="view-your-organizations"></a>Kuruluşlarınızı görüntüleyin
+## <a name="view-your-organizations"></a>Kuruluşlarınızı görüntüleme
 
-1. İş veya okul hesabınızda oturum açın ve ardındanhttps://myprofile.microsoft.com/) **Hesabım** sayfasına gidin.
+1. İş veya okul hesabınızda oturum açın ve ardından **Hesabım** (https://myprofile.microsoft.com/) sayfasına gidin.
 
-2. Sol gezinti bölmesinden **Kuruluşlar'ı** seçin veya **Kuruluşlar** bloğundan **Kuruluşları Yönet** bağlantısını seçin.
+2. Sol gezinti bölmesinden **kuruluşlar** ' ı seçin veya **kuruluşlar bloğundan kuruluşları** **Yönet** bağlantısını seçin.
 
-    ![Vurgulanan Kuruluşlar bağlantılarını gösteren Hesabım sayfam](media/my-account-portal/my-account-portal-organizations.png)
+    ![Vurgulanan kuruluşların bağlantılarını gösteren Hesabım sayfası](media/my-account-portal/my-account-portal-organizations.png)
 
-3. **Ev kuruluşunuz**için bilgileri gözden geçirin.
+3. **Ana kuruluşunuzun**bilgilerini gözden geçirin.
 
-    ![Organizasyonlar sayfası](media/my-account-portal/my-account-portal-organization-page.png)
+    ![Kuruluşlar sayfası](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Hesabınıza bağlı tüm kuruluşları tanıdığınızdan emin olmak için diğer ilişkili kuruluşlarınızı gözden geçirin.
+4. Diğer ilişkili kurumlarınızı gözden geçirerek hesabınıza bağlı tüm kuruluşları tanıdığınızdan emin olun.
 
 ## <a name="leave-an-organization"></a>Kuruluştan ayrılma
 
-Ev kuruluşunuz olmayan herhangi bir kuruluştan ayrılabilirsiniz.
+Ana kuruluşunuz olmayan herhangi bir kuruluştan ayrılırsanız.
 
 >[!Important]
->Bir organizasyondan yanlışlıkla ayrılırsan, bunu geri alabilen bir yolu yoktur. O kuruluşun yöneticisinin sizi tekrar davet etmesini beklemeniz gerekir.
+>Bir kuruluştan yanlışlıkla ayrılırsanız geri alma yöntemi yoktur. Bu kuruluşun yöneticisinin sizi tekrar davet etmesini beklemeniz gerekir.
 
-- Ayrılmak istediğiniz kuruluşun yanındaki **Bırak kuruluşunu** seçin ve ardından ayrılmak istediğinizi onaylamak için **Bırak'ı** seçin.
+- Bırakmak istediğiniz kuruluşun yanındaki **kuruluşu bırak** ' ı seçin ve sonra çıkmak istediğinizi onaylamak için **bırak** ' ı seçin.
 
-    ![Vurgulanmış bırak organizasyon bağlantısına sahip kuruluşlar sayfası](media/my-account-portal/my-account-portal-organizations-leave.png)
+    ![Vurgulanan kuruluşu bırak bağlantısına sahip kuruluşlar sayfası](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kuruluşlarınızı görüntüledikten sonra şunları yapabilirsiniz:
+Kuruluşları görüntüledikten sonra şunları yapabilirsiniz:
 
 - [Güvenlik bilgilerinizi](user-help-security-info-overview.md)görüntüleyin veya yönetin.
 
 - Bağlı [cihazlarınızı](my-account-portal-devices-page.md)görüntüleyin veya yönetin.
 
-- Oturum [açma etkinliğinizi](my-account-portal-sign-ins-page.md)görüntüleyin.
+- [Oturum açma etkinliğinizi](my-account-portal-sign-ins-page.md)görüntüleyin.
 
-- Kuruluşunuzun [gizlilikle ilgili verilerinizi](my-account-portal-privacy-page.md)nasıl kullandığını görüntüleyin.
+- Kuruluşunuzun [gizlilikle ilgili verilerinizi nasıl kullandığını](my-account-portal-privacy-page.md)görüntüleyin.

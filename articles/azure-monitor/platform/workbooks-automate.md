@@ -1,6 +1,6 @@
 ---
-title: Azure Monitör Çalışma Kitapları ve Azure Kaynak Yöneticisi Şablonları
-description: Azure Kaynak Yöneticisi Şablonları aracılığıyla dağıtılan önceden oluşturulmuş ve özel parametrelendirilmiş Azure Monitör Çalışma Kitapları ile karmaşık raporlamayı basitleştirin
+title: Azure Izleyici çalışma kitapları ve Azure Resource Manager şablonları
+description: Azure Resource Manager şablonları aracılığıyla dağıtılan önceden oluşturulmuş ve özel parametreli Azure Izleyici çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658413"
 ---
-# <a name="programmatically-manage-workbooks"></a>Çalışma kitaplarını programlı bir şekilde yönetme
+# <a name="programmatically-manage-workbooks"></a>Program aracılığıyla çalışma kitaplarını yönetme
 
-Kaynak sahipleri, Kaynak Yöneticisi şablonları aracılığıyla çalışma kitaplarını programlı bir şekilde oluşturma ve yönetme seçeneğine sahiptir. 
+Kaynak sahipleri, Kaynak Yöneticisi şablonları aracılığıyla çalışma kitaplarını oluşturma ve yönetme seçeneğine sahiptir. 
 
-Bu, aşağıdaki gibi senaryolarda yararlı olabilir:
-* Kaynak dağıtımlarıyla birlikte org veya etki alanına özel analiz raporlarının dağıtılması. Örneğin, yeni uygulamalarınız veya sanal makineleriniz için org'a özgü performans ve hata çalışma kitapları dağıtabilirsiniz.
-* Varolan kaynaklar için çalışma kitaplarını kullanarak standart raporlar veya panolar dağıtma.
+Bu, aşağıdaki senaryolarda yararlı olabilir:
+* Kaynak dağıtımlarıyla birlikte kuruluş veya etki alanına özgü analiz raporları dağıtma. Örneğin, yeni uygulamalarınız veya sanal makineleriniz için kuruluş 'e özgü performans ve hata çalışma kitapları dağıtabilirsiniz.
+* Mevcut kaynaklar için çalışma kitaplarını kullanarak standart raporları veya panoları dağıtma.
 
-Çalışma kitabı istenilen alt/kaynak grubunda ve Kaynak Yöneticisi şablonlarında belirtilen içerikle oluşturulur.
+Çalışma kitabı istenen alt/kaynak grubu içinde ve Kaynak Yöneticisi şablonlarında belirtilen içerikle oluşturulur.
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Çalışma kitaplarını dağıtmak için Azure Kaynak Yöneticisi şablonu
-1. Programlı olarak dağıtmak istediğiniz bir çalışma kitabı açın.
-2. İş kitabını _düzenleme_ araç çubuğu öğesini tıklatarak düzenleme moduna geçin.
-3. Araç çubuğundaki düğmeyi _</>_ kullanarak Gelişmiş _Düzenleyici'yi_ açın.
-4. Düzenleyicide Şablon _Türü'nden_ _Kaynak Yöneticisi şablonuna_geçin.
-5. Oluşturmak için Kaynak Yöneticisi şablonu düzenleyicide gösterir. İçeriği kopyalayın ve olduğu gibi kullanın veya hedef kaynağı da dağıtan daha büyük bir şablonla birleştirin.
+## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Çalışma kitaplarını dağıtmak için Azure Resource Manager şablonu
+1. Programlı olarak dağıtmak istediğiniz bir çalışma kitabını açın.
+2. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
+3. Araç çubuğundaki _Advanced Editor_ _</>_ düğmesini kullanarak Gelişmiş Düzenleyici açın.
+4. Düzenleyicide, _şablon türünü_ _Kaynak Yöneticisi şablona_değiştirin.
+5. Oluşturmak için Kaynak Yöneticisi şablonu düzenleyicide görüntülenir. İçeriği kopyalayın ve olduğu gibi kullanın ya da hedef kaynağı dağıtan daha büyük bir şablonla birleştirin.
 
-    ![Çalışma kitabı içinden Kaynak Yöneticisi şablonu nasıl alınır gösteren resim](./media/workbooks-automate/programmatic-template.png)
+    ![Çalışma kitabı Kullanıcı arabirimi içinden Kaynak Yöneticisi şablonunun nasıl alınacağını gösteren resim](./media/workbooks-automate/programmatic-template.png)
 
-## <a name="sample-azure-resource-manager-template"></a>Örnek Azure Kaynak Yöneticisi şablonu
-Bu şablon, 'Merhaba Dünya' görüntüleyen basit bir çalışma kitabının nasıl dağıtılangerektiğini gösterir.
+## <a name="sample-azure-resource-manager-template"></a>Örnek Azure Resource Manager şablonu
+Bu şablon ' Merhaba Dünya! ' görüntüleyen basit bir çalışma kitabının nasıl dağıtılacağını gösterir
 ```json
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -101,27 +101,27 @@ Bu şablon, 'Merhaba Dünya' görüntüleyen basit bir çalışma kitabının na
 
 | Parametre | Açıklama |
 | :------------- |:-------------|
-| `workbookDisplayName` | Galeri'de veya Kaydedilmiş Liste'de kullanılan çalışma kitabının dostu adı. Kaynak grubu ve kaynak kapsamında benzersiz olması gerekir |
-| `workbookType` | Çalışma kitabının altında gösterilecek galeri. Desteklenen değerler çalışma kitabı, `tsg`Azure Monitör, vb. içerir. |
-| `workbookSourceId` | Çalışma kitabının ilişkilendirileceği kaynak örneğinin kimliği. Yeni çalışma kitabı bu kaynak örneğiile ilgili olarak gösterilecek - _örneğin, Kaynak'ın Çalışma Kitabı_altındaki içerik tablosunda. Çalışma kitabınızın Azure Monitor'daki çalışma kitabı galerisinde gösterilmesini istiyorsanız, kaynak kimliği yerine _Azure Monitor_ dizesini kullanın. |
-| `workbookId` | Bu çalışma kitabı örneği için benzersiz kılavuz. Yeni bir kılavuz oluşturmak için _[newGuid()]_ kullanın. |
-| `kind` | Oluşturulan çalışma kitabının paylaşıldığını veya özel olup olmadığını belirtmek için kullanılır. Paylaşılan çalışma kitapları için _paylaşılan_ değeri ve özel kitaplar için _kullanıcıyı_ kullanın. |
-| `location` | Çalışma kitabının oluşturulacağı Azure konumu. Kaynak grubuyla aynı konumda oluşturmak için _[resourceGroup().location]_ kullanın |
-| `serializedData` | Çalışma kitabında kullanılacak içeriği veya yükü içerir. Değeri almak için çalışma kitaplarındaki Kaynak Yöneticisi şablonuna yardımcı olun |
+| `workbookDisplayName` | Galeri veya kayıtlı listede kullanılan çalışma kitabının kolay adı. Kaynak grubunun ve kaynağın kapsamında benzersiz olması gerekir |
+| `workbookType` | Çalışma kitabının altında gösterilecek Galeri. Desteklenen değerler çalışma kitabı, `tsg`, Azure izleyici vb. içerir. |
+| `workbookSourceId` | Çalışma kitabının ilişkilendirileceği kaynak örneğinin KIMLIĞI. Yeni çalışma kitabı bu kaynak örneğiyle ilgili görünür. Örneğin, _çalışma kitabı_altındaki içeriğin kaynak tablosu. Çalışma kitabınızın Azure Izleyici 'deki çalışma kitabı galerisinde görünmesini istiyorsanız, kaynak KIMLIĞI yerine _Azure izleyici_ dize kullanın. |
+| `workbookId` | Bu çalışma kitabı örneği için benzersiz GUID. Otomatik olarak yeni bir GUID oluşturmak için _[NewGuid ()]_ kullanın. |
+| `kind` | Oluşturulan çalışma kitabının paylaşılıp paylaşıldığını veya özel olduğunu belirtmek için kullanılır. Paylaşılan çalışma kitapları ve _Kullanıcı_ için _paylaşılan_ değeri özel olanlar için kullanın. |
+| `location` | Çalışma kitabının oluşturulacağı Azure konumu. Kaynak grubuyla aynı konumda oluşturmak için _[resourceGroup (). Location]_ kullanın |
+| `serializedData` | Çalışma kitabında kullanılacak içeriği veya yükü içerir. Değeri almak için çalışma kitapları Kullanıcı arabirimindeki Kaynak Yöneticisi şablonunu kullanın |
 
 ### <a name="workbook-types"></a>Çalışma kitabı türleri
-Çalışma kitabı türleri, yeni çalışma kitabı örneğinin altında hangi çalışma kitabı galerisi nin görüneceğini belirtir. Seçeneklere şunlar dahildir:
+Çalışma kitabı türleri hangi çalışma kitabı galerisinin türünü yeni çalışma kitabı örneğinin gösterileceğini belirtir. Seçeneklere şunlar dahildir:
 
 | Tür | Galeri konumu |
 | :------------- |:-------------|
-| `workbook` | Uygulama Öngörüleri Çalışma Kitapları galerisi, Azure Monitörü vb. dahil olmak üzere çoğu raporda kullanılan varsayılan değerdir.  |
-| `tsg` | Application Insights'taki Sorun Giderme Kılavuzları galerisi |
-| `usage` | Uygulama Öngörülerinde _Kullanım_ Altında _Daha Fazla_ Galeri |
+| `workbook` | Application Insights, Azure Izleyici vb. çalışma kitapları Galerisi de dahil olmak üzere çoğu raporda kullanılan varsayılan değer.  |
+| `tsg` | Application Insights 'de sorun giderme kılavuzu Galerisi |
+| `usage` | Application Insights _kullanımı_ altında _daha fazla_ Galeri |
 
 ### <a name="limitations"></a>Sınırlamalar
-Teknik nedenlerden dolayı, bu mekanizma Uygulama Öngörüleri _Çalışma Kitapları_ galerisinde çalışma kitabı örnekleri oluşturmak için kullanılamaz. Bu sınırlamayı ele almaya çalışıyoruz. Bu arada, Application Insights ile ilgili çalışma kitaplarını dağıtmak `tsg`için Sorun Giderme Kılavuzu galerisini (çalışma kitabıTürü: ) kullanmanızı öneririz.
+Teknik bir nedenle, bu mekanizma Application Insights çalışma _kitapları_ galerisinde çalışma kitabı örnekleri oluşturmak için kullanılamaz. Bu sınırlamayı ele almak için çalışıyoruz. Bu arada, Application Insights ilgili çalışma kitaplarını dağıtmak için sorun giderme kılavuzu galerisini (workbookType: `tsg`) kullanmanızı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeni [Azure Depolama Monitörü deneyimine](../insights/storage-insights-overview.md)güç sağlamak için çalışma kitaplarının nasıl kullanıldığını keşfedin.
+Yeni [Azure Izleyicisini depolama deneyimi için](../insights/storage-insights-overview.md)desteklemek üzere çalışma kitaplarının nasıl kullanıldığını keşfedebilirsiniz.
 

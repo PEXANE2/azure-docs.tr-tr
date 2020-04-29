@@ -1,115 +1,115 @@
 ---
-title: Azure İşlevlerinde Tüketim planı maliyetlerini tahmin etme
-description: Azure'da bir Tüketim planında işlev uygulamanızı çalıştırırken karşılaşabileceğiniz maliyetleri nasıl daha iyi tahmin edebilirsiniz öğrenin.
+title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
+description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76963997"
 ---
-# <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerinin tahmini
+# <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
-Şu anda Azure İşlevleri'nde çalışan bir uygulama için üç tür barındırma planı vardır ve her planın kendi fiyatlandırma modeli vardır: 
+Azure Işlevleri 'nde çalışan bir uygulama için şu anda üç tür barındırma planı vardır: her plan kendi fiyatlandırma modeline sahiptir: 
 
 | Planlama | Açıklama |
 | ---- | ----------- |
-| [**Tüketim**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştığı süre için ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz bir hibe]fiyatlandırma[sayfası] içerir.|
-| [**Premium**](functions-scale.md#premium-plan) | Tüketim planıyla aynı özellikleri ve ölçekleme mekanizmasını sağlar, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına bağlıdır. Daha fazla bilgi için Azure [İşlevler Premium planına](functions-premium-plan.md)bakın. |
-| [**Özel (Uygulama Hizmeti)**](functions-scale.md#app-service-plan) <br/>(temel katman veya daha yüksek) | Özel VM'lerde veya yalıtımda çalışmanız gerektiğinde, özel görüntüler kullanın veya fazla Uygulama Hizmeti planı kapasitenizi kullanmak istediğinizde. [Düzenli Uygulama Hizmeti planı faturalandırmasını](https://azure.microsoft.com/pricing/details/app-service/)kullanır. Maliyet, seçtiğiniz fiyatlandırma katmanına bağlıdır.|
+| [**Mine**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
+| [**Premium**](functions-scale.md#premium-plan) | Tüketim planıyla aynı özellikleri ve ölçeklendirme mekanizmasını, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](functions-premium-plan.md). |
+| [**Adanmış (App Service)**](functions-scale.md#app-service-plan) <br/>(temel katman veya daha yüksek) | Adanmış VM 'lerde veya yalıtımda çalıştırmanız gerektiğinde, özel görüntüleri kullanın veya fazla App Service planı kapasitenizi kullanmak isteyebilirsiniz. [Düzenli App Service planı faturalandırmasını](https://azure.microsoft.com/pricing/details/app-service/)kullanır. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir.|
 
-İşlev performansınızı ve maliyet gereksinimlerinizi en iyi destekleyen planı seçtiniz. Daha fazla bilgi edinmek için Azure [İşlevlerini ölçeklendirme ve barındırma](functions-scale.md)'ya bakın.
+İşlev performansınızı ve maliyet gereksinimlerinizi en iyi şekilde destekleyen planı seçtiniz. Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](functions-scale.md).
 
-Bu makale, değişken maliyetlerle sonuçladığından, yalnızca Tüketim planıyla ilgilidir. Bu [makalede, Tüketim planı maliyet faturalandırma SSS](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) makalesinin yerini almaktadır.
+Bu makale, değişken maliyetleriyle sonuçlandığından yalnızca tüketim planıyla ilgilidir. Bu makale, [Tüketim planı maliyet faturalama SSS](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) makalesinin yerini alır.
 
-Dayanıklı Fonksiyonlar, Tüketim planında da çalıştırılabilir. Dayanıklı İşlevler kullanırken maliyet hususları hakkında daha fazla bilgi edinmek için, [Bkz. Dayanıklı Fonksiyonlar faturalandırma.](./durable/durable-functions-billing.md)
+Dayanıklı İşlevler, bir tüketim planında da çalıştırılabilir. Dayanıklı İşlevler kullanırken maliyet konuları hakkında daha fazla bilgi için, bkz. [dayanıklı işlevler faturalandırma](./durable/durable-functions-billing.md).
 
 ## <a name="consumption-plan-costs"></a>Tüketim planı maliyetleri
 
-Tek bir işlev yürütmeyürütme *maliyeti* *GB-saniye*cinsinden ölçülür. Yürütme maliyeti, bellek kullanımı ile yürütme süresi birleştirilerek hesaplanır. Daha uzun süre çalışan bir işlev, daha fazla bellek tüketen bir işlev gibi daha fazla maliyeti. 
+Tek bir işlev yürütmenin yürütme *ücreti* *GB saniye*cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bellek tüketen bir işlev olduğu gibi daha uzun maliyetler için çalışan bir işlev. 
 
-İşlev tarafından kullanılan bellek miktarının sabit kaldığı bir durum düşünün. Bu durumda, maliyet hesaplanması basit çarpma olduğunu. Örneğin, işlevinizin 3 saniye boyunca 0,5 GB tükettiğinizi varsayın. O zaman yürütme `0.5GB * 3s = 1.5 GB-seconds`maliyeti. 
+İşlev tarafından kullanılan bellek miktarının sabit kaldığından bir durum düşünün. Bu durumda, maliyeti hesaplamak basit çarpma olur. Örneğin, işlevinizin 3 saniye boyunca 0,5 GB tükettiğini varsayalım. Ardından yürütme maliyeti olur `0.5GB * 3s = 1.5 GB-seconds`. 
 
-Bellek kullanımı zaman içinde değiştiğinden, hesaplama aslında zaman içinde bellek kullanımının ayrılmaz bir parçasıdır.  Sistem bu hesaplamayı, işlemin bellek kullanımını (alt işlemlerle birlikte) düzenli aralıklarla örnekleyerek yapar. [Fiyatlandırma sayfasında]belirtildiği gibi, bellek kullanımı en yakın 128 MB kovayu yuvarlanır. İşleminiz 160 MB kullanırken, 256 MB ücretlendirilirsiniz. Hesaplama, aynı işlemde birden çok eşzamanlı işlev yürütmesi olan eşzamanlılığı dikkate alır.
+Bellek kullanımı zaman içinde değiştiği için, hesaplama temelde bellek kullanımının zaman içindeki integrali olur.  Sistem, düzenli aralıklarla işlemin bellek kullanımını (alt işlemlerle birlikte) örnekleyerek bu hesaplamayı yapar. [Fiyatlandırma sayfasında]belirtildiği gibi, bellek kullanımı en yakın 128 MB 'lık sepete yuvarlanır. İşleminiz 160 MB kullanıyorsa, 256 MB üzerinden ücretlendirilirsiniz. Hesaplama, aynı işlemde birden çok eş zamanlı işlev yürütmesi olan eşzamanlılık hesabı ' na geçer.
 
 > [!NOTE]
-> CPU kullanımı yürütme maliyetinde doğrudan dikkate alınmasa da, işlevin yürütme süresini etkilediğinde maliyet üzerinde bir etkisi olabilir.
+> CPU kullanımı doğrudan yürütme maliyetinde düşünülmediğinde, işlevin yürütme süresini etkilediğinde maliyeti etkileyebilir.
 
 ## <a name="other-related-costs"></a>Diğer ilgili maliyetler
 
-İşlevlerinizi herhangi bir planda çalıştırmanın toplam maliyetini tahmin ederken, İşlevler çalışma zamanının her biri ayrı olarak faturalanan birkaç başka Azure hizmeti kullandığını unutmayın. İşlev uygulamaları için fiyatlandırma hesaplanırken, diğer Azure hizmetleriyle tümlolan tümtetikleyiciler ve bağlamalar, bu ek hizmetleri oluşturmanızı ve ödemenizi gerektirir. 
+İşlevlerinizi herhangi bir planda çalıştırmanın genel maliyetini tahmin edildiğinde, Işlevler çalışma zamanının her biri ayrı olarak faturalandırılan çeşitli Azure hizmetlerini kullandığını unutmayın. İşlev uygulamaları için fiyatlandırma hesaplanırken, diğer Azure hizmetleriyle tümleşen tüm tetikleyiciler ve bağlamalar, bu ek hizmetler için oluşturmanız ve ödemeniz gerekir. 
 
-Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin yürütme maliyetinin yanı sıra bant genişliği ve ek hizmetlerin maliyetidir. 
+Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin yürütme maliyetleridir ve bant genişliği ile ek hizmetler maliyetlidir. 
 
-İşlev uygulamanızın ve ilgili hizmetlerin genel maliyetlerini tahmin ederken Azure [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/?service=functions)kullanın. 
+İşlev uygulamanızın ve ilgili hizmetlerin genel maliyetlerinin tahmin edildiğinde [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/?service=functions)' ı kullanın. 
 
 | İlgili maliyet | Açıklama |
 | ------------ | ----------- |
-| **Depolama hesabı** | Her işlev uygulaması, [ayrı olarak faturalandırılan](https://azure.microsoft.com/pricing/details/storage/)ilişkili bir Genel Amaçlı [Azure Depolama hesabınız](../storage/common/storage-introduction.md#types-of-storage-accounts)olması gerekir. Bu hesap, çalışma zamanı işlevleri tarafından dahili olarak kullanılır, ancak depolama tetikleyicileri ve bağlamaları için de kullanabilirsiniz. Depolama hesabınız yoksa, işlev uygulaması oluşturulduğunda sizin için bir tane oluşturulur. Daha fazla bilgi için [Depolama hesabı gereksinimlerine](storage-considerations.md#storage-account-requirements)bakın.|
-| **Uygulama Bilgileri** | Fonksiyonlar, işlev uygulamalarınız için yüksek performanslı bir izleme deneyimi sağlamak için [Uygulama Öngörüleri'ne](../azure-monitor/app/app-insights-overview.md) dayanır. Gerekli olmasa da, [Uygulama Öngörüleri tümleştirmesini etkinleştirmelisiniz.](functions-monitoring.md#enable-application-insights-integration) Telemetri verilerinin ücretsiz olarak verilmesi her ay dahildir. Daha fazla bilgi için [Azure Monitörü fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/monitor/)bakın. |
-| **Ağ bant genişliği** | Aynı bölgedeki Azure hizmetleri arasında veri aktarımı için ödeme yapmazsınız. Ancak, başka bir bölgeye veya Azure dışında giden veri aktarımları için maliyete neden olabilirsiniz. Daha fazla bilgi için [Bant Genişliği fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/bandwidth/)bakın. |
+| **Depolama hesabı** | Her işlev uygulaması, [ayrı olarak faturalandırılan](https://azure.microsoft.com/pricing/details/storage/)ilişkili bir genel amaçlı [Azure depolama hesabına](../storage/common/storage-introduction.md#types-of-storage-accounts)sahip olmanızı gerektirir. Bu hesap, Işlevler çalışma zamanı tarafından dahili olarak kullanılır, ancak bunu depolama Tetikleyicileri ve bağlamaları için de kullanabilirsiniz. Depolama hesabınız yoksa, işlev uygulaması oluşturulduğunda sizin için bir tane oluşturulur. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](storage-considerations.md#storage-account-requirements).|
+| **Uygulama Bilgileri** | İşlevler, işlev uygulamalarınız için yüksek performanslı bir izleme deneyimi sağlamak üzere [Application Insights](../azure-monitor/app/app-insights-overview.md) bağımlıdır. Gerekli olmasa da [Application Insights tümleştirmeyi etkinleştirmelisiniz](functions-monitoring.md#enable-application-insights-integration). Her ay Telemetri verilerinin ücretsiz olarak verilmesi dahildir. Daha fazla bilgi edinmek için bkz. [Azure Monitor fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/monitor/). |
+| **Ağ bant genişliği** | Aynı bölgedeki Azure hizmetleri arasında veri aktarımı için ödeme yapmazsınız. Ancak, giden veri aktarımları için başka bir bölgeye veya Azure dışında maliyetlerine tabi olabilirsiniz. Daha fazla bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
 ## <a name="behaviors-affecting-execution-time"></a>Yürütme süresini etkileyen davranışlar
 
 İşlevlerinizin aşağıdaki davranışları yürütme süresini etkileyebilir:
 
-+ **Tetikleyiciler ve bağlamalar**: [İşlev bağlamalarınıza](functions-triggers-bindings.md) giriş okumak ve çıktı yazmak için alınan süre yürütme süresi olarak sayılır. Örneğin, işleviniz bir Azure depolama kuyruğuna ileti yazmak için bir çıktı bağlama kullanırsa, yürütme süreniz, işlev maliyetinin hesaplanmasına dahil olan iletiyi kuyruğa yazmak için gereken süreyi içerir. 
++ **Tetikleyiciler ve bağlamalar**: [işlev Bağlamalarınızın](functions-triggers-bindings.md) giriş ve yazma çıktısından alınması için geçen süre, yürütme süresi olarak sayılır. Örneğin, işleviniz bir Azure depolama kuyruğuna ileti yazmak için bir çıkış bağlaması kullandığında, yürütme süresi, ileti maliyeti hesaplamasına dahil edilen iletiyi sıraya yazmak için geçen süreyi içerir. 
 
-+ **Eş zamanlı yürütme**: Işlevinizin bir async isteğinin`await` (C#'da) sonuçlarını beklediği süre yürütme süresi olarak sayılır. GB saniyehesaplaması, işlevin başlangıç ve bitiş saatini ve bu dönemdeki bellek kullanımını temel alır. CPU etkinliği açısından bu süre içinde neler oluyor hesaplamada hesaba katılmıyor. [Dayanıklı Fonksiyonlar](durable/durable-functions-overview.md)kullanarak eşzamanlı işlemler sırasında maliyetleri düşürebilirsiniz. Orkestratör lük te seve seve harcanan zaman için faturalandırılmamanız.
++ **Zaman uyumsuz yürütme**: işlevinizin zaman uyumsuz bir isteğin sonuçları için beklediği zaman (`await` C# ' de) yürütme süresi olarak sayılır. GB saniyelik hesaplama, işlevin başlangıç ve bitiş zamanına ve bu döneme ait bellek kullanımına göre belirlenir. CPU etkinliği açısından bu sürenin üzerinde neler olduğu, hesaplamaya hiçbir şekilde bölünmez. [Dayanıklı işlevler](durable/durable-functions-overview.md)kullanarak, zaman uyumsuz işlemler sırasında maliyetleri azaltabilirsiniz. Orchestrator işlevlerinde beklemeleri sırasında harcanan zaman için faturalandırılırsınız.
 
-## <a name="view-execution-data"></a>Yürütme verilerini görüntüleme
+## <a name="view-execution-data"></a>Yürütme verilerini görüntüle
 
-[Faturanızda,](/azure/billing/billing-download-azure-invoice) **toplam yürütmelerin maliyetle** ilgili verilerini - İşlevler ve **Yürütme Süresi - Fonksiyonlar'ı**ve fiili faturalanan maliyetleri görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemine ait aylık bir toplamdır. 
+[Faturanızda](/azure/billing/billing-download-azure-invoice), **Toplam yürütme-Işlev** ve **yürütme süresi-işlevlerinin**maliyet ile ilgili verilerini, gerçek fatura maliyetleriyle birlikte görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemi için aylık bir topladır. 
 
-İşlevlerinizin maliyet etkisini daha iyi anlamak için, işlev uygulamalarınız tarafından oluşturulan maliyetle ilgili ölçümleri görüntülemek için Azure Monitor'u kullanabilirsiniz. Bu verileri almak için [Azure portalındaki] [Azure Monitor ölçümleri gezginini](../azure-monitor/platform/metrics-getting-started.md) veya REST API'lerini kullanabilirsiniz.
+İşlevlerinizin maliyet etkisini daha iyi anlamak için, Azure Izleyici 'yi kullanarak işlev uygulamalarınız tarafından şu anda oluşturulan maliyetlerle ilgili ölçümleri görüntüleyebilirsiniz. Bu verileri almak için [Azure Portal] veya REST API 'Lerinde [Azure izleyici ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) 'ni kullanabilirsiniz.
 
-### <a name="monitor-metrics-explorer"></a>İzleme ölçümleri gezgini
+### <a name="monitor-metrics-explorer"></a>Ölçüm Gezginini izleme
 
-Tüketim planı işlev uygulamalarınız için maliyetle ilgili verileri grafik biçiminde görüntülemek için [Azure Monitor ölçümleri gezginini](../azure-monitor/platform/metrics-getting-started.md) kullanın. 
+Tüketim planı işlev uygulamalarınızın maliyet ile ilgili verilerini grafik biçiminde görüntülemek için [Azure izleyici ölçümleri Gezginini](../azure-monitor/platform/metrics-getting-started.md) kullanın. 
 
-1. Arama hizmetlerinde [Azure portalının] en **üstünde, kaynaklar ve dokümanlar** `monitor` **Hizmetler**altında **Monitör'ü** arayın ve seçin.
+1. **Arama Hizmetleri, kaynaklar ve docs** 'daki [Azure Portal] üst kısmında, **Hizmetler**' in altında **izleme** ' yi arayın `monitor` ve seçin.
 
-1. Soldaki **Ölçümler'i** > seçin**Bir kaynak seçin,** ardından işlev uygulamanızı seçmek için resmin altındaki ayarları kullanın.
+1. Sol tarafta **ölçümler** > **' i seçin ve ardından**işlev uygulamanızı seçmek için görüntünün altındaki ayarları kullanın.
 
-    ![İşlev uygulama kaynağınızı seçin](media/functions-consumption-costing/select-a-resource.png)
+    ![İşlev uygulaması kaynağını seçin](media/functions-consumption-costing/select-a-resource.png)
 
       
     |Ayar  |Önerilen değer  |Açıklama  |
     |---------|---------|---------|
-    | Abonelik    |  Aboneliğiniz  | İşlev uygulamanızla abonelik.  |
+    | Abonelik    |  Aboneliğiniz  | İşlev uygulamanıza sahip abonelik.  |
     | Kaynak grubu     | Kaynak grubunuz  | İşlev uygulamanızı içeren kaynak grubu.   |
-    | Kaynak türü     |  Uygulama Hizmetleri | İşlev uygulamaları Monitor'da Uygulama Hizmetleri örnekleri olarak gösterilir. |
-    | Kaynak     |  İşlev uygulamanız  | İzlenecek fonksiyon uygulaması.        |
+    | Kaynak türü     |  Uygulama Hizmetleri | İşlev uygulamaları, Monitor 'daki App Services örnekleri olarak gösterilir. |
+    | Kaynak     |  İşlev uygulamanız  | İzlenecek işlev uygulaması.        |
 
-1. İzlenecek kaynak olarak işlev uygulamanızı seçmek için **Uygula'yı** seçin.
+1. İşlev uygulamanızı izlenecek kaynak olarak seçmek için **Uygula** ' yı seçin.
 
-1. **Metrik'ten,** **Toplama**Için **İşlev Yürütme Sayısı** ve **Toplamı'nı** seçin. Bu, seçilen dönemdeki yürütme sayımlarının toplamını grafiğe ekler.
+1. **Ölçüm**'Den, **toplama**için **işlev yürütme sayısı** ve **toplamı** ' nı seçin. Bu, seçilen dönemdeki yürütme sayılarının toplamını grafiğe ekler.
 
-    ![Grafiğe eklemek için bir fonksiyon uygulaması ölçümü tanımlama](media/functions-consumption-costing/monitor-metrics-add-metric.png)
+    ![Grafiğe eklemek için bir işlevler uygulama ölçümü tanımlayın](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
-1. **İşlev Yürütme Birimleri'ni** grafiğe eklemek için metrik ve yineleme adımlarını 2-4 **ekle'yi** seçin. 
+1. Grafiğe **Işlev yürütme birimleri** eklemek Için **ölçüm Ekle** ve 2-4 adımlarını tekrarlayın ' i seçin. 
 
-Elde edilen grafik, seçilen zaman aralığındaki her iki yürütme ölçümünün toplamlarını içerir ve bu durumda iki saattir.
+Elde edilen grafik, seçilen zaman aralığındaki her iki yürütme ölçümlerinin toplamını içerir. Bu durumda iki saattir.
 
-![Fonksiyon yürütme sayımlarının ve yürütme birimlerinin grafiği](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
+![İşlev yürütme sayıları ve yürütme birimlerinin grafiği](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
 
-Yürütme birimlerinin sayısı yürütme sayısından çok daha büyük olduğundan, grafik yalnızca yürütme birimlerini gösterir.
+Yürütme birimlerinin sayısı, yürütme sayısından çok daha fazla olduğu için grafik yalnızca yürütme birimlerini gösterir.
 
-Bu grafik, MB milisaniye cinsinden `Function Execution Units` ölçülen iki saatlik bir süre içinde toplam 1,11 milyar tüketilen gösterir. GB saniyesine dönüştürmek için 1024000'e bölün. Bu örnekte, işlev `1110000000 / 1024000 = 1083.98` uygulaması GB saniye tüketildi. Bu değeri alabilir ve zaten yürütme süresi herhangi bir ücretsiz hibe kullandım varsayarak, bu iki saat in maliyeti verir [Fonksiyonlar fiyatlandırma sayfası][fiyatlandırma sayfasında]yürütme süresi geçerli fiyat ile çarpabilirsiniz. 
+Bu grafik, MB cinsinden ölçülen, `Function Execution Units` iki saatlik bir dönemde tüketilen toplam 1.110.000.000 sayısını gösterir. GB saniyeye dönüştürmek için 1024000 ile bölün. Bu örnekte, işlev uygulaması GB-saniye `1110000000 / 1024000 = 1083.98` tüketilebilir. Bu değeri alabilir ve [işlevler fiyatlandırma sayfası][fiyatlandırma sayfasındaki]geçerli yürütme süresi fiyatına göre çarpıp, size bu iki saatin maliyetini sağlayan, size herhangi bir ücretsiz yürütme süresi verdiğini kabul eden bir ücret verir. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI'nin](/cli/azure/) ölçümleri almak için komutları vardır. CLI'yi yerel bir komut ortamından veya doğrudan [Azure Bulut Bulutu'nu](../cloud-shell/overview.md)kullanarak portaldan kullanabilirsiniz. Örneğin, aşağıdaki [az monitör ölçümleri listesi](/cli/azure/monitor/metrics#az-monitor-metrics-list) komutu, daha önce kullanılan aynı zaman diliminde saatlik verileri döndürür.
+[Azure CLI](/cli/azure/) , ölçümleri almak için komutlar içerir. CLı 'yi yerel bir komut ortamından veya [Azure Cloud Shell](../cloud-shell/overview.md)kullanarak doğrudan portaldan kullanabilirsiniz. Örneğin, aşağıdaki [az Monitor ölçümleri List](/cli/azure/monitor/metrics#az-monitor-metrics-list) komutu, daha önce kullanılan aynı zaman dilimine göre saatlik verileri döndürür.
 
-Komutu çalıştıran Azure abonelik kimliğinizle değiştirdiğinizden `<AZURE_SUBSCRIPTON_ID>` emin olun.
+Komutunu çalıştıran Azure abonelik `<AZURE_SUBSCRIPTON_ID>` Kimliğiniz ile değiştirdiğinizden emin olun.
 
 ```azurecli-interactive
 az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
 ```
 
-Bu komut, aşağıdaki örnek gibi görünen bir JSON yükünü döndürür:
+Bu komut, aşağıdaki örnekte olduğu gibi görünen bir JSON yükü döndürür:
 
 ```json
 {
@@ -188,15 +188,15 @@ Bu komut, aşağıdaki örnek gibi görünen bir JSON yükünü döndürür:
   ]
 }
 ```
-Bu özel `2019-09-11T21:46` `2019-09-11T23:18`yanıt, uygulamanın 11100000000 MB milisaniye (1083,98 GB-saniye) tüketdiğini gösterir.
+Bu belirli yanıt `2019-09-11T23:18`, uygulamasının öğesinden `2019-09-11T21:46` , uygulamanın 1110000000 MB-milisaniye (1083,98 GB-saniye) tükettiğini gösterir.
 
 ## <a name="determine-memory-usage"></a>Bellek kullanımını belirleme
 
-İşlev yürütme birimleri yürütme süresi ve bellek kullanımının bir birleşimidir, bu da bellek kullanımını anlamak için zor bir metrik oluşturur. Bellek verileri şu anda Azure Monitor tarafından kullanılabilen bir metrik değildir. Ancak, uygulamanızın bellek kullanımını optimize etmek istiyorsanız, Application Insights tarafından toplanan performans sayacı verilerini kullanabilir.  
+İşlev yürütme birimleri, yürütme süresi ve bellek kullanımınızın bir birleşimidir ve bu da bellek kullanımını anlamak için zor bir ölçüm sağlar. Bellek verileri şu anda Azure Izleyici aracılığıyla kullanılabilen bir ölçüm değildir. Ancak, uygulamanızın bellek kullanımını iyileştirmek isterseniz, Application Insights tarafından toplanan performans sayacı verilerini kullanabilir.  
 
-Bunu daha önce yapmadıysanız, [işlev uygulamanızda Uygulama Öngörüleri'ni etkinleştirin.](functions-monitoring.md#enable-application-insights-integration) Bu tümleştirme etkinleştirildiğinde, [bu telemetri verilerini portalda](functions-monitoring.md#query-telemetry-data)sorgulayabilirsiniz.  
+Daha önce yapmadıysanız, [işlev uygulamanızda Application Insights etkinleştirin](functions-monitoring.md#enable-application-insights-integration). Bu tümleştirme etkinken, [portalda bu telemetri verilerini sorgulayabilirsiniz](functions-monitoring.md#query-telemetry-data).  
 
-**İzleme**altında, **Günlükleri (Analytics)** seçin, ardından aşağıdaki telemetri sorgusunu kopyalayın ve sorgu penceresine yapıştırın ve **Çalıştır'ı**seçin. Bu sorgu, örnekalınan her zamantoplam bellek kullanımını döndürür.
+**İzleme**altında **Günlükler (Analiz)** öğesini seçin, ardından aşağıdaki telemetri sorgusunu kopyalayın ve sorgu penceresine yapıştırın ve **Çalıştır**' ı seçin. Bu sorgu, her örneklenmiş zamanda toplam bellek kullanımını döndürür.
 
 ```
 performanceCounters
@@ -204,20 +204,20 @@ performanceCounters
 | project timestamp, name, value
 ```
 
-Sonuçlar aşağıdaki örnek gibi görünür:
+Sonuçlar aşağıdaki örneğe benzer şekilde görünür:
 
 | zaman \[damgası UTC\]          | ad          | value       |
 |----------------------------|---------------|-------------|
-| 09.12.2019, 01:05:14\.947 | Özel Baytlar | 209,932,288 |
-| 09.12.2019, 01:06:14\.994 | Özel Baytlar | 212,189,184 |
-| 09.12.2019, 01:06:30\.010 | Özel Baytlar | 231,714,816 |
-| 09.12.2019, 01:07:15\.040 | Özel Baytlar | 210,591,744 |
-| 09.12.2019, 01:12:16\.285 | Özel Baytlar | 216,285,184 |
-| 09.12.2019, 01:12:31\.376 | Özel Baytlar | 235,806,720 |
+| 9/12/2019, 1:05:14\.947 | Özel baytlar | 209.932.288 |
+| 9/12/2019, 1:06:14\.994 | Özel baytlar | 212.189.184 |
+| 9/12/2019, 1:06:30\.010 | Özel baytlar | 231.714.816 |
+| 9/12/2019, 1:07:15\.040 | Özel baytlar | 210.591.744 |
+| 9/12/2019, 1:12:16\.285 | Özel baytlar | 216.285.184 |
+| 9/12/2019, 1:12:31\.376 | Özel baytlar | 235.806.720 |
 
-## <a name="function-level-metrics"></a>İşlev düzeyinde ölçümler
+## <a name="function-level-metrics"></a>İşlev düzeyi ölçümleri
 
-Azure Monitor, işlevler için işlev uygulaması olan kaynak düzeyindeki ölçümleri izler. Application Insights tümleştirmesi ölçümleri işlev başına temel alarak yayır. Bir işlevin ortalama süresini almak için örnek bir analiz sorgusu aşağıda verilmiştir:
+Azure Izleyici, kaynak düzeyindeki ölçümleri izler, bu Işlevler işlev uygulamadır. Application Insights tümleştirme ölçümleri işlev başına temelinde yayar. Bir işlevin ortalama süresini almak için örnek bir analiz sorgusu aşağıda verilmiştir:
 
 ```
 customMetrics
@@ -226,16 +226,16 @@ customMetrics
 | summarize averageDurationMilliseconds=avg(averageDuration) by name
 ```
 
-| ad                       | ortalamaDurationMilliseconds |
+| ad                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16\.087 087 087                     |
+| QueueTrigger AvgDurationMs | 16\.087                     |
 | QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationMs | 8\.522 sayılı                      |
+| QueueTrigger MinDurationMs | 8\.522                      |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Fonksiyon uygulamalarını izleme hakkında daha fazla bilgi edinin](functions-monitoring.md)
+> [İşlev uygulamalarını Izleme hakkında daha fazla bilgi edinin](functions-monitoring.md)
 
 [fiyatlandırma sayfası]:https://azure.microsoft.com/pricing/details/functions/
-[Azure portalında]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

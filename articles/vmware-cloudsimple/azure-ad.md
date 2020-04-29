@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware Çözümü - Özel Bulut'ta kimlik kaynağı olarak Azure AD'yi kullanın
-description: Azure'dan CloudSimple'a erişen kullanıcıların kimliğini doğrulamak için CloudSimple Private Cloud'unuzda bir kimlik sağlayıcısı olarak Azure AD'nin nasıl ekleyeceğiniz açıklanır
+title: CloudSimple tarafından Azure VMware çözümü-özel bulutta kimlik kaynağı olarak Azure AD kullanın
+description: Azure 'da CloudSimple 'a erişen kullanıcıların kimliğini doğrulamak için CloudSimple özel bulutunuzda bir kimlik sağlayıcısı olarak Azure AD 'nin nasıl ekleneceğini açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,100 +9,100 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77564593"
 ---
-# <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple Private Cloud'da vCenter için kimlik sağlayıcısı olarak Azure AD'yi kullanma
+# <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple özel bulutu 'nda vCenter için kimlik sağlayıcısı olarak Azure AD kullanma
 
-CloudSimple Private Cloud vCenter'ınızı, VMware yöneticilerinizin vCenter'a erişebilmek için Azure Active Directory (Azure AD) ile kimlik doğrulaması yapacak şekilde ayarlayabilirsiniz. Tek oturum açma kimlik kaynağı ayarlandıktan **sonra, bulut sahibi** kullanıcı kimlik kaynağından vCenter'a kullanıcı ekleyebilir.  
+VMware yöneticilerinin vCenter 'a erişmesi için Azure Active Directory (Azure AD) ile kimlik doğrulaması yapmak üzere CloudSimple özel bulut vCenter ' yi ayarlayabilirsiniz. Çoklu oturum açma kimlik kaynağı kurulduktan sonra, **cloudowner** kullanıcısı kimlik kaynağından vCenter 'a kullanıcı ekleyebilir.  
 
-Active Directory etki alanı nızı ve etki alanı denetleyicilerinizi aşağıdaki yollardan herhangi birinde ayarlayabilirsiniz:
+Active Directory etki alanınızı ve etki alanı denetleyicilerinizi aşağıdaki yollarla ayarlayabilirsiniz:
 
-* Şirket içinde çalışan Etkin Dizin etki alanı ve etki alanı denetleyicileri
-* Azure aboneliğinizde sanal makine olarak Azure'da çalışan Etkin Dizin etki alanı ve etki alanı denetleyicileri
-* CloudSimple Private Cloud'unuzda çalışan yeni Active Directory etki alanı ve etki alanı denetleyicileri
+* Şirket içinde çalışan etki alanı ve etki alanı denetleyicileri Active Directory
+* Azure aboneliğinizde sanal makineler olarak çalışan etki alanı ve etki alanı denetleyicileri Active Directory
+* CloudSimple özel bulutunuzda çalışan yeni Active Directory etki alanı ve etki alanı denetleyicileri
 * Azure Active Directory hizmeti
 
-Bu kılavuzda, Azure AD'yi kimlik kaynağı olarak ayarlamak için gereken görevler açıklanmaktadır.  Azure'da çalışan şirket içi Active Directory veya Active Directory'yi kullanma hakkında daha fazla bilgi için, kimlik kaynağını ayarlamada ayrıntılı yönergeler için [Active Directory'yi kullanmak üzere vCenter kimlik kaynaklarını ayarlama](set-vcenter-identity.md) konusuna bakın.
+Bu kılavuzda, Azure AD 'yi kimlik kaynağı olarak ayarlamak için gereken görevler açıklanmaktadır.  Şirket içi Active Directory veya Azure 'da çalışan Active Directory kullanma hakkında bilgi için, kimlik kaynağını ayarlamayla ilgili ayrıntılı yönergeler için [Active Directory kullanmak üzere vCenter Identity kaynaklarını ayarlama](set-vcenter-identity.md) bölümüne bakın.
 
 ## <a name="about-azure-ad"></a>Azure AD hakkında
 
-Azure AD, Microsoft çok kiracılı, bulut tabanlı dizin ve kimlik yönetimi hizmetidir.  Azure AD, kullanıcıların Azure'da farklı hizmetlere kimlik doğrulamaları ve erişmeleri için ölçeklenebilir, tutarlı ve güvenilir bir kimlik doğrulama mekanizması sağlar.  Ayrıca, azure AD'yi kimlik doğrulama/kimlik kaynağı olarak kullanması için tüm üçüncü taraf hizmetleri için güvenli LDAP hizmetleri sağlar.  Azure AD, Özel Bulut'u yöneten kullanıcılar için Özel Bulut'unuza erişim sağlamak için kullanılabilecek temel dizin hizmetleri, gelişmiş kimlik yönetimi ve uygulama erişim yönetimini bir araya getirir.
+Azure AD, Microsoft çok kiracılı, bulut tabanlı dizin ve kimlik yönetimi hizmetidir.  Azure AD, kullanıcıların kimliğini doğrulamak ve Azure 'da farklı hizmetlere erişmek için ölçeklenebilir, tutarlı ve güvenilir bir kimlik doğrulama mekanizması sağlar.  Ayrıca, Azure AD 'yi bir kimlik doğrulama/kimlik kaynağı olarak kullanmak üzere herhangi bir üçüncü taraf hizmeti için Güvenli LDAP hizmetleri sağlar.  Azure AD, özel bulutu yöneten kullanıcılar için özel bulutunuzun erişimine izin vermek üzere kullanılabilen temel dizin hizmetlerini, Gelişmiş kimlik idare ve uygulama erişim yönetimini birleştirir.
 
-Azure AD'yi vCenter ile kimlik kaynağı olarak kullanmak için Azure AD ve Azure AD etki alanı hizmetlerini ayarlamanız gerekir. Aşağıdaki talimatları izleyin:
+Azure AD 'yi vCenter ile bir kimlik kaynağı olarak kullanmak için Azure AD ve Azure AD etki alanı Hizmetleri 'ni ayarlamanız gerekir. Aşağıdaki yönergeleri izleyin:
 
-1. [Azure AD ve Azure AD etki alanı hizmetleri nasıl ayarlanır?](#set-up-azure-ad-and-azure-ad-domain-services)
-2. [Özel Bulut vCenter'ınızda kimlik kaynağı nasıl ayarlayınız?](#set-up-an-identity-source-on-your-private-cloud-vcenter)
+1. [Azure AD ve Azure AD etki alanı Hizmetleri 'ni ayarlama](#set-up-azure-ad-and-azure-ad-domain-services)
+2. [Özel bulut vCenter 'unuzda bir kimlik kaynağı ayarlama](#set-up-an-identity-source-on-your-private-cloud-vcenter)
 
 ## <a name="set-up-azure-ad-and-azure-ad-domain-services"></a>Azure AD ve Azure AD etki alanı hizmetlerini ayarlama
 
-Başlamadan önce, Global Administrator ayrıcalıklarıyla Azure aboneliğinize erişmeniz gerekir.  Aşağıdaki adımlar genel yönergeler verir. Ayrıntılar Azure belgelerinde bulunur.
+Başlamadan önce, genel yönetici ayrıcalıklarıyla Azure aboneliğinize erişmeniz gerekir.  Aşağıdaki adımlar genel yönergeler sağlar. Ayrıntılar Azure belgelerinde bulunur.
 
 ### <a name="azure-ad"></a>Azure AD
 
 > [!NOTE]
-> Azure AD'niz zaten varsa, bu bölümü atlayabilirsiniz.
+> Zaten Azure AD varsa, bu bölümü atlayabilirsiniz.
 
-1. [Azure AD belgelerinde](../active-directory/fundamentals/get-started-azure-ad.md)açıklandığı şekilde aboneliğinizde Azure AD'yi ayarlayın.
-2. [Azure Active Directory Premium'a Kaydolun'da](../active-directory/fundamentals/active-directory-get-started-premium.md)açıklandığı gibi aboneliğinizde Azure Active Directory Premium'u etkinleştirin.
-3. [Azure Etkin Dizini'ne özel bir etki alanı adı ekle'de](../active-directory/fundamentals/add-custom-domain.md)açıklandığı gibi özel bir etki alanı adı ayarlayın ve özel alan adı doğrulayın.
-    1. Azure'da sağlanan bilgilerle etki alanı kayıt şirketinizde bir DNS kaydı ayarlayın.
+1. Azure AD [belgelerinde](../active-directory/fundamentals/get-started-azure-ad.md)açıklandığı gibi ABONELIĞINIZDE Azure AD 'yi ayarlayın.
+2. [Azure Active Directory Premium kaydolma](../active-directory/fundamentals/active-directory-get-started-premium.md)konusunda açıklandığı gibi aboneliğinizde Azure Active Directory Premium etkinleştirin.
+3. Özel bir etki alanı adı ayarlayın ve [Azure Active Directory için](../active-directory/fundamentals/add-custom-domain.md)özel etki alanı adı ekleme bölümünde açıklandığı gibi özel etki alanı adını doğrulayın.
+    1. Azure 'da belirtilen bilgileri kullanarak etki alanı kayıt şirketinizde bir DNS kaydı ayarlayın.
     2. Özel etki alanı adını birincil etki alanı olarak ayarlayın.
 
-İsteğe bağlı olarak diğer Azure AD özelliklerini yapılandırabilirsiniz.  Bunlar, Azure AD ile vCenter kimlik doğrulamasını etkinleştirmek için gerekli değildir.
+İsterseniz diğer Azure AD özelliklerini yapılandırabilirsiniz.  Bunlar, Azure AD ile vCenter kimlik doğrulamasını etkinleştirmek için gerekli değildir.
 
-### <a name="azure-ad-domain-services"></a>Azure AD etki alanı hizmetleri
+### <a name="azure-ad-domain-services"></a>Azure AD etki alanı Hizmetleri
 
 > [!NOTE]
-> Bu, Azure AD'yi vCenter için bir kimlik kaynağı olarak etkinleştirmek için önemli bir adımdır.  Herhangi bir sorundan kaçınmak için, tüm adımların doğru gerçekleştirildiğinden emin olun.
+> Bu, Azure AD 'yi vCenter için kimlik kaynağı olarak etkinleştirmeye yönelik önemli bir adımdır.  Herhangi bir sorunu önlemek için tüm adımların doğru gerçekleştirildiğinden emin olun.
 
-1. [Azure portalını kullanarak Azure Etkin Dizin etki alanı hizmetlerini etkinleştir'de](../active-directory-domain-services/active-directory-ds-getting-started.md)açıklandığı gibi Azure AD etki alanı hizmetlerini etkinleştirin.
-2. [Azure portalını kullanarak Azure Etkin Dizin Etki Alanı Hizmetlerini Etkinleştir'de](../active-directory-domain-services/active-directory-ds-getting-started-network.md)açıklandığı gibi Azure AD etki alanı hizmetleri tarafından kullanılacak ağı ayarlayın.
-3. [Azure portalını kullanarak Azure Etkin Dizin Etki Alanı Hizmetlerini Etkinleştir'de](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)açıklandığı gibi Azure AD Etki Alanı Hizmetlerini yönetmek için Yönetici Grubu'nu yapılandırın.
-4. Azure Etkin [Dizin Etki Alanı Hizmetlerini Etkinleştir'de](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)açıklandığı gibi Azure AD Etki Alanı Hizmetleriniz için DNS ayarlarını güncelleştirin.  Internet üzerinden AD'ye bağlanmak istiyorsanız, Azure AD etki alanı hizmetlerinin genel IP adresi için DNS kaydını etki alanı adına ayarlayın.
-5. Kullanıcılar için parola karma eşitlemesini etkinleştirin.  Bu adım, NT LAN Yöneticisi (NTLM) ve Kerberos kimlik doğrulaması için gereken parola kalıplarının Azure AD Etki Alanı Hizmetlerine eşitlenmesine olanak tanır. Parola karma eşitlemesini ayarladıktan sonra kullanıcılar, şirket kimlik bilgileri ile yönetilen etki alanında oturum açabilir. Bkz. [Azure Etkin Dizin Etki Alanı Hizmetleri için parola karma senkronizasyonunu etkinleştir.](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)
-    1. Yalnızca bulut kullanıcıları varsa, parola açıkhanelerinin NTLM veya Kerberos tarafından gerekli biçimde depolanmasıiçin <a href="http://myapps.microsoft.com/" target="_blank">Azure AD erişim panelini</a> kullanarak parolalarını değiştirmeleri gerekir.  [Yalnızca bulut kullanıcı hesapları için yönetilen etki alanınıza parola karma senkronizasyonunu etkinleştirme](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)yönergelerini izleyin.  Bu adım, Azure portalı veya Azure AD PowerShell cmdlets kullanarak Azure REKLAM dizininizde oluşturulan tüm kullanıcılar ve tüm yeni kullanıcılar için yapılmalıdır. Azure AD etki alanı hizmetlerine erişim gerektiren kullanıcıların parolayı değiştirmek için <a href="http://myapps.microsoft.com/" target="_blank">Azure AD erişim panelini</a> kullanması ve profillerine erişmesi gerekir.
+1. [Azure Portal kullanarak Azure Active Directory etki alanı Hizmetleri 'Ni etkinleştirme](../active-directory-domain-services/active-directory-ds-getting-started.md)bölümünde açıklandığı gıbı Azure AD etki alanı Hizmetleri 'ni etkinleştirin.
+2. Azure AD etki alanı Hizmetleri tarafından [, Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../active-directory-domain-services/active-directory-ds-getting-started-network.md)bölümünde açıklandığı gibi kullanılacak ağı ayarlayın.
+3. [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)bölümünde açıklandığı gibi Azure AD Domain Services yönetmek Için yönetici grubunu yapılandırın.
+4. Azure AD Domain Services için DNS ayarlarını, [etkinleştirme Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)' de açıklandığı gibi güncelleştirin.  Internet üzerinden AD 'ye bağlanmak istiyorsanız, Azure AD etki alanı Hizmetleri genel IP adresi için DNS kaydını etki alanı adına ayarlayın.
+5. Kullanıcılar için parola karma eşitlemesini etkinleştirin.  Bu adım, NT LAN Manager (NTLM) ve Kerberos kimlik doğrulaması için gereken parola karmalarının Azure AD Domain Services için eşitlenmesini sağlar. Parola karma eşitlemesini ayarladıktan sonra kullanıcılar, şirket kimlik bilgileri ile yönetilen etki alanında oturum açabilir. Bkz. [Azure Active Directory Domain Services parola karma eşitlemesini etkinleştirme](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+    1. Yalnızca bulutta bulunan kullanıcılar varsa, parola karmalarının NTLM veya Kerberos tarafından istenen biçimde depolanmasını sağlamak için <a href="http://myapps.microsoft.com/" target="_blank">Azure AD erişim paneli</a> ' ni kullanarak parolalarını değiştirmeleri gerekir.  [Yalnızca bulutta yer alan Kullanıcı hesapları için yönetilen etki alanınız için parola karma eşitlemesini etkinleştirme](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)konusundaki yönergeleri izleyin.  Bu adım, Azure AD dizininizde Azure portal veya Azure AD PowerShell cmdlet 'lerini kullanarak oluşturulan tek tek kullanıcılar ve tüm yeni kullanıcılar için yapılmalıdır. Azure AD etki alanı Hizmetleri 'ne erişmesi gereken kullanıcıların, <a href="http://myapps.microsoft.com/" target="_blank">Azure AD erişim panelini</a> kullanması ve parolayı değiştirmesi için profiline erişmesi gerekir.
 
         > [!NOTE]
         > Kuruluşunuz yalnızca bulutta yer alan bir kullanıcı hesabına sahipse Azure Active Directory Domain Services'i kullanması gereken tüm kullanıcıların parolalarını değiştirmesi gerekir. Yalnızca bulutta yer alan bir kullanıcı hesabı, Azure portal veya Azure AD PowerShell cmdlet’leri kullanılarak Azure AD dizininizde oluşturulmuş bir hesaptır. Bu tür kullanıcı hesapları şirket içi dizinden eşitlenmez.
 
-    2. Şirket içi Etkin dizininizdeki parolaları eşitlüyorsanız, [Etkin Dizin belgelerindeki](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)adımları izleyin.
+    2. Parolaları şirket içi Active Directory 'nizden eşitliyorsanız, [Active Directory belgelerindeki](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)adımları izleyin.
 
-6.  Azure AD Etki Alanı Hizmetleri yönetilen bir etki [alanı için Güvenli LDAP'yi (LDAPS) yapılandırmada](../active-directory-domain-services/tutorial-configure-ldaps.md)açıklandığı şekilde Azure Active Directory Etki Alanı Hizmetlerinizde güvenli LDAP'yi yapılandırın.
-    1. Azure konusunda açıklandığı gibi güvenli LDAP tarafından kullanılmak üzere bir sertifika yükleyin [güvenli LDAP için bir sertifika edinin.](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)  CloudSimple, vCenter'ın sertifikaya güvenebileceğinden emin olmak için sertifika yetkilisi tarafından verilen imzalı bir sertifika kullanmanızı önerir.
-    2. Azure AD Etki [Alanı Hizmetleri yönetilen etki alanı için güvenli LDAP'yi (LDAPS) etkinleştirme](../active-directory-domain-services/tutorial-configure-ldaps.md)açıklandığı gibi güvenli LDAP'yi etkinleştirin.
-    3. Kimlik kaynağını yapılandırırken vCenter ile kullanılmak üzere sertifikanın ortak kısmını (özel anahtar olmadan) .cer formatında kaydedin.
-    4. Azure AD etki alanı hizmetlerine Internet erişimi gerekiyorsa, 'Internet üzerinden LDAP'ye güvenli erişime izin verin' seçeneğini etkinleştirin.
-    5. TCP bağlantı noktası için Azure AD Etki Alanı hizmetleri NSG için gelen güvenlik kuralını ekleyin 636.
+6.  [Azure AD Domain Services yönetilen bir etki alanı için GÜVENLI LDAP (LDAPS) yapılandırma](../active-directory-domain-services/tutorial-configure-ldaps.md)başlığı altında açıklandığı gibi Azure ACTIVE DIRECTORY DOMAIN SERVICES Güvenli LDAP 'i yapılandırın.
+    1. Güvenli LDAP [için bir sertifika edinin](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)ve Azure konu başlığı altında açıklandığı gibi Güvenli LDAP tarafından kullanılmak üzere bir sertifikayı karşıya yükleyin.  CloudSimple, vCenter 'un sertifikaya güvendiğinden emin olmak için bir sertifika yetkilisi tarafından verilen imzalı bir sertifikayı kullanmanızı önerir.
+    2. [Azure AD Domain Services yönetilen bir etki alanı için Güvenli LDAP (LDAPS) etkinleştirme](../active-directory-domain-services/tutorial-configure-ldaps.md)bölümünde açıklandığı gıbı Güvenli LDAP 'yi etkinleştirin.
+    3. Kimlik kaynağını yapılandırırken, sertifikanın genel bölümünü (özel anahtar olmadan). cer biçiminde, vCenter ile kullanmak üzere kaydedin.
+    4. Azure AD etki alanı hizmetlerine Internet erişimi gerekliyse, ' internet üzerinden LDAP 'a güvenli erişime Izin ver ' seçeneğini etkinleştirin.
+    5. TCP bağlantı noktası 636 için Azure AD etki alanı Hizmetleri NSG için gelen güvenlik kuralını ekleyin.
 
-## <a name="set-up-an-identity-source-on-your-private-cloud-vcenter"></a>Özel Bulut vCenter'ınızda bir kimlik kaynağı ayarlama
+## <a name="set-up-an-identity-source-on-your-private-cloud-vcenter"></a>Özel bulut vCenter 'unuzda bir kimlik kaynağı ayarlama
 
-1. Private Cloud vCenter'ınız için [ayrıcalıkları artırın.](escalate-private-cloud-privileges.md)
-2. Kimlik kaynağının ayarlanması için gereken yapılandırma parametrelerini toplayın.
+1. Özel bulut vCenter için [ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md) .
+2. Kimlik kaynağının kurulması için gereken yapılandırma parametrelerini toplayın.
 
     | **Seçeneği** | **Açıklama** |
     |------------|-----------------|
     | **Adı** | Kimlik kaynağının adı. |
-    | **Kullanıcılar için Temel DN** | Kullanıcılar için temel ayırt edici ad.  Azure AD için `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` şu `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`leri kullanın: Örnek: .|
-    | **Etki alanı adı** | Örneğin etki alanının FQDN'si example.com. Bu metin kutusunda bir IP adresi sağlamayın. |
-    | **Etki alanı takma adı** | *(isteğe bağlı)* Etki alanı NetBIOS adı. SSPI kimlik doğrulamalarını kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |
-    | **Gruplar için Temel DN** | Gruplar için taban ayırt adı. Azure AD için `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` şu leri kullanın: Örnek:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Birincil Sunucu URL'si** | Etki alanı için birincil etki alanı denetleyiciLDAP sunucusu.<br><br>Biçimi `ldaps://hostname:port`kullanın. Bağlantı noktası, LDAPS bağlantıları için genellikle 636'dır. <br><br>Birincil veya ikincil LDAP URL'sinde kullandığınızda `ldaps://` Active Directory sunucusunun LDAPS bitiş noktası için güven oluşturan bir sertifika gereklidir. |
-    | **İkincil sunucu URL'si** | Failover için kullanılan ikincil bir etki alanı denetleyicildap sunucusunun adresi. |
-    | **Sertifika seçin** | Active Directory LDAP Server veya OpenLDAP Server kimlik kaynağınızla LDAPS kullanmak istiyorsanız, URL `ldaps://` metin kutusuna yazdıktan sonra sertifika seç düğmesi görüntülenir. İkincil bir URL gerekli değildir. |
-    | **Username** | Etki alanında, kullanıcılar ve gruplar için Base DN'ye en az salt okunur erişimi olan bir kullanıcının kimliği. |
-    | **Parola** | Kullanıcı adı ile belirtilen kullanıcının şifresi. |
+    | **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad.  Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` örnek: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
+    | **Etki alanı adı** | Etki alanının FQDN 'SI, örneğin, example.com. Bu metin kutusunda bir IP adresi sağlamaın. |
+    | **Etki alanı diğer adı** | *(isteğe bağlı)* Etki alanı NetBIOS adı. SSPI kimlik doğrulamaları kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |
+    | **Gruplar için temel DN** | Gruplar için temel ayırt edici ad. Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` örnek:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Birincil sunucu URL 'SI** | Etki alanı için birincil etki alanı denetleyicisi LDAP sunucusu.<br><br>Biçimini `ldaps://hostname:port`kullanın. Bağlantı noktası genellikle LDAPS bağlantıları için 636 ' dir. <br><br>Birincil veya ikincil LDAP URL 'sinde kullandığınızda `ldaps://` Active Directory sunucusunun LDAPS uç noktası için güven kuran bir sertifika gerekir. |
+    | **İkincil sunucu URL 'SI** | Yük devretme için kullanılan ikincil etki alanı denetleyicisi LDAP sunucusunun adresi. |
+    | **Sertifika Seç** | Active Directory LDAP sunucunuz veya OpenLDAP sunucu kimlik kaynağı ile LDAPS kullanmak istiyorsanız, URL metin kutusuna yazdıktan `ldaps://` sonra Sertifika Seç düğmesi görünür. İkincil bir URL gerekli değildir. |
+    | **Nitelen** | Etki alanındaki, kullanıcılar ve gruplar için temel DN 'ye yönelik en az salt okuma erişimi olan bir kullanıcının KIMLIĞI. |
+    | **Parola** | Kullanıcı adı tarafından belirtilen kullanıcının parolası. |
 
-3. Ayrıcalıklar arttıktan sonra Özel Bulut vCenter'ınızda oturum açın.
-4. Azure Active Directory'yi kimlik kaynağı olarak ayarlamak için önceki adımdaki değerleri kullanarak [vCenter'daki bir kimlik kaynağı ekle](set-vcenter-identity.md#add-an-identity-source-on-vcenter) yönergeleriizleyin.
-5. VMware konusunda açıklandığı gibi Azure AD'den kullanıcıları/grupları vCenter gruplarına [ekleyin Üyeyi vCenter Tek Oturum Açma Grubuna ekleyin.](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)
+3. Ayrıcalıkların ilerletiden sonra özel bulut vCenter 'unuzda oturum açın.
+4. Azure Active Directory bir kimlik kaynağı olarak ayarlamak için önceki adımdaki değerleri kullanarak [vCenter 'da kimlik kaynağı ekleme](set-vcenter-identity.md#add-an-identity-source-on-vcenter) bölümündeki yönergeleri izleyin.
+5. [Bir vCenter çoklu oturum açma grubuna üye ekleme](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)VMware konusunda açıklandığı gibi, Azure AD 'den vCenter gruplarına kullanıcı/grup ekleyin.
 
 > [!CAUTION]
-> Yeni kullanıcılar yalnızca *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group,* *Cloud-Global-Network-Admin-Group* veya *Cloud-Global-VM-Admin-Group'a*eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılır.  *Yöneticiler* grubuna yalnızca hizmet hesapları eklenmelidir.
+> Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu*için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel Bulut izni modeli hakkında bilgi edinin](learn-private-cloud-permissions.md)
+* [Özel bulut izin modeli hakkında bilgi edinin](learn-private-cloud-permissions.md)

@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware Çözümü - Şirket içinde CloudSimple VPN ağ geçidine yüksek kullanılabilirlik yapılandırma
-description: Şirket içi ortamınızdan yüksek kullanılabilirlik için yüksek kullanılabilirlik bağlantısını nasıl yapılandırıştırılabildiğini açıklar, yüksek kullanılabilirlik için etkinleştirilen CloudSimple VPN ağ geçidine
+title: CloudSimple tarafından Azure VMware çözümü-Şirket içinden CloudSimple VPN Gateway 'e yüksek kullanılabilirlik yapılandırın
+description: Şirket içi ortamınızdaki yüksek kullanılabilirliğe sahip bir bağlantının yüksek kullanılabilirlik için etkin bir CloudSimple VPN Gateway 'e nasıl yapılandırılacağını açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,42 +9,42 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025274"
 ---
-# <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Şirket içi cloudsimple VPN ağ geçidine yüksek kullanılabilirlik bağlantısını yapılandırma
+# <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Şirket içinden CloudSimple VPN Gateway 'e yüksek kullanılabilirliğe sahip bir bağlantı yapılandırın
 
-Ağ yöneticileri, şirket içi ortamlarından CloudSimple VPN ağ geçidine kadar yüksek kullanılabilirlikte bir IPsec Site-to-Site VPN bağlantısını yapılandırabilir.
+Ağ yöneticileri, şirket içi ortamlarından bir CloudSimple VPN Gateway 'e yüksek kullanılabilirliğe sahip bir IPSec siteden siteye VPN bağlantısı yapılandırabilir.
 
-Bu kılavuz, bir IPsec Site-to-Site VPN yüksek kullanılabilirlik bağlantısı için şirket içi bir güvenlik duvarı yapılandırmak için adımlar sunar. Ayrıntılı adımlar şirket içi güvenlik duvarı türüne özgüdir. Örnek olarak, bu kılavuz iki tür güvenlik duvarı için adımlar sunar: Cisco ASA ve Palo Alto Networks.
+Bu kılavuzda, bir IPSec siteden siteye VPN yüksek kullanılabilirlik bağlantısı için bir şirket içi güvenlik duvarı yapılandırma adımları sunulmaktadır. Ayrıntılı adımlar, şirket içi güvenlik duvarının türüne özeldir. Örnek olarak, bu kılavuzda iki tür güvenlik duvarının adımları sunulmaktadır: Cisco ASA ve Palo Alto Networks.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Şirket içi güvenlik duvarını yapılandırmadan önce aşağıdaki görevleri tamamlayın.
+Şirket içi güvenlik duvarını yapılandırmadan önce aşağıdaki görevleri doldurun.
 
-1. Kuruluşunuzun gerekli düğümleri [sağladığını](create-nodes.md) ve en az bir CloudSimple Private Cloud oluşturduğunu doğrulayın.
-2. Şirket içi ağınızla CloudSimple Private Cloud'unuz arasında [Siteden Siteye VPN ağ geçidini yapılandırın.](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
+1. Kuruluşunuzun gerekli düğümleri [sağladığından](create-nodes.md) ve en az bir Cloudsimple özel bulutu oluşturduğunu doğrulayın.
+2. Şirket içi ağınız ve CloudSimple özel bulutunuz arasında [siteden sıteye VPN ağ geçidi yapılandırın](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) .
 
-Desteklenen faz 1 ve aşama 2 teklifleri için [VPN ağ geçitlerine genel bakışa](cloudsimple-vpn-gateways.md) bakın.
+Desteklenen Aşama 1 ve Aşama 2 teklifleri için [VPN ağ geçitlerine genel bakış](cloudsimple-vpn-gateways.md) konusuna bakın.
 
-## <a name="configure-on-premises-cisco-asa-firewall"></a>Şirket içi Cisco ASA güvenlik duvarLarını yapılandırma
+## <a name="configure-on-premises-cisco-asa-firewall"></a>Şirket içi Cisco ASA güvenlik duvarını yapılandırma
 
-Bu bölümdeki talimatlar Cisco ASA sürüm 8.4 ve sonrası için geçerlidir. Yapılandırma örneğinde, Cisco Adaptive Security Appliance Software Version 9.10 IKEv1 modunda dağıtılır ve yapılandırılır.
+Bu bölümdeki yönergeler Cisco ASA sürüm 8,4 ve üzeri için geçerlidir. Yapılandırma örneğinde, Cisco Uyarlamalı güvenlik gereci yazılım sürüm 9,10 dağıtılır ve IKEv1 modunda yapılandırılır.
 
-Siteden Siteye VPN'in çalışması için, şirket içi Cisco ASA VPN ağ geçidinin dış arabiriminde CloudSimple birincil ve ikincil genel IP'den (peer IP) UDP 500/4500 ve ESP 'ye (IP protokolü 50) izin vermelisiniz.
+Siteden siteye VPN 'nin çalışması için, şirket içi Cisco ASA VPN Gateway 'in dış arabirimindeki CloudSimple birincil ve ikincil genel IP 'den (eş IP) UDP 500/4500 ve ESP 'ye (IP protokolü 50) izin vermeniz gerekir.
 
-### <a name="1-configure-phase-1-ikev1"></a>1. Faz 1 'i yapılandırın (IKEv1)
+### <a name="1-configure-phase-1-ikev1"></a>1.1. aşama (IKEv1) yapılandırma
 
-Dış arabirimde faz 1'i (IKEv1) etkinleştirmek için Cisco ASA güvenlik duvarına aşağıdaki CLI komutunu girin.
+Dış arabirimde Aşama 1 ' i (IKEv1) etkinleştirmek için Cisco ASA güvenlik duvarında aşağıdaki CLı komutunu girin.
 
 ```crypto ikev1 enable outside```
 
-### <a name="2-create-an-ikev1-policy"></a>2. IkEv1 politikası oluşturma
+### <a name="2-create-an-ikev1-policy"></a>2. bir IKEv1 ilkesi oluşturma
 
-Karma, kimlik doğrulama, Diffie-Hellman grubu, ömür boyu ve şifreleme için kullanılacak algoritmaları ve yöntemleri tanımlayan bir IKEv1 ilkesi oluşturun.
+Karma, kimlik doğrulama, Diffie-Hellman grubu, ömür ve şifreleme için kullanılacak algoritmaları ve yöntemleri tanımlayan bir IKEv1 ilkesi oluşturun.
 
 ```
 crypto ikev1 policy 1
@@ -55,9 +55,9 @@ group 2
 lifetime 28800
 ```
 
-### <a name="3-create-a-tunnel-group"></a>3. Tünel grubu oluşturma
+### <a name="3-create-a-tunnel-group"></a>3. bir tünel grubu oluşturun
 
-IPsec öznitelikleri altında bir tünel grubu oluşturun. [Siteden Siteye VPN ağ geçidinizi yapılandırırken](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)ayarladığınız eş IP adresini ve önceden paylaşılan tüneli yapılandırın.
+IPSec öznitelikleri altında bir tünel grubu oluşturun. [Siteden sıteye VPN ağ geçidinizi yapılandırırken](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)AYARLADıĞıNıZ eş IP adresini ve tünel önceden paylaşılan anahtarını yapılandırın.
 
 ```
 tunnel-group <primary peer ip> type ipsec-l2l
@@ -69,47 +69,47 @@ tunnel-group <secondary peer ip> ipsec-attributes
 ikev1 pre-shared-key *****
 ```
 
-### <a name="4-configure-phase-2-ipsec"></a>4. Faz 2 'yi (IPsec) yapılandırın
+### <a name="4-configure-phase-2-ipsec"></a>4. Aşama 2 (IPSec) yapılandırma
 
-Faz 2'yi (IPsec) yapılandırmak için, şifrelenecek ve tünel oluşturulacak trafiği tanımlayan bir erişim denetim listesi (ACL) oluşturun. Aşağıdaki örnekte, ilgi trafiği şirket içi yerel alt ağdan (10.16.1.0/24) Özel Bulut uzak alt ağına (192.168.0.0/24) gelen tünelden dir. Siteler arasında birden çok alt ağ varsa, ACL birden çok giriş içerebilir.
+Aşama 2 ' yi (IPSec) yapılandırmak için, şifrelenecek ve Tünellenen trafiği tanımlayan bir erişim denetim listesi (ACL) oluşturun. Aşağıdaki örnekte, ilgilendiğiniz trafik şirket içi yerel alt ağdan (10.16.1.0/24) özel bulut uzak alt ağına (192.168.0.0/24) kaynaklıdır. Siteler arasında birden çok alt ağ varsa ACL birden çok giriş içerebilir.
 
-Cisco ASA sürümleri 8.4 ve sonraki sürümlerde, ağlar, alt ağlar, ana bilgisayar IP adresleri veya birden çok nesne için kapsayıcı görevi veren nesneler veya nesne grupları oluşturulabilir. Uzak alt ağlar için yerel ve bir nesne için bir nesne oluşturun ve bunları kripto ACL ve NAT deyimleri için kullanın.
+Cisco ASA 8,4 ve üzeri sürümlerde, ağlar, alt ağlar, ana bilgisayar IP adresleri veya birden çok nesne için kapsayıcı olarak görev yapan nesneler veya nesne grupları oluşturulabilir. Uzak alt ağların yerel ve bir nesnesi için bir nesne oluşturun ve bunları şifre ACL 'SI ve NAT deyimleri için kullanın.
 
-#### <a name="define-an-on-premises-local-subnet-as-an-object"></a>Şirket içi yerel alt ağı nesne olarak tanımlama
+#### <a name="define-an-on-premises-local-subnet-as-an-object"></a>Şirket içi yerel alt ağı bir nesne olarak tanımlama
 
 ```
 object network AZ_inside
 subnet 10.16.1.0 255.255.255.0
 ```
 
-#### <a name="define-the-cloudsimple-remote-subnet-as-an-object"></a>CloudSimple uzak alt netini nesne olarak tanımlama
+#### <a name="define-the-cloudsimple-remote-subnet-as-an-object"></a>CloudSimple uzak alt ağını bir nesne olarak tanımlama
 
 ```
 object network CS_inside
 subnet 192.168.0.0 255.255.255.0
 ```
 
-#### <a name="configure-an-access-list-for-the-traffic-of-interest"></a>İlgi çekici trafik için bir erişim listesini yapılandırma
+#### <a name="configure-an-access-list-for-the-traffic-of-interest"></a>İlgilendiğiniz trafik için bir erişim listesi yapılandırın
 
 ```
 access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 ```
 
-### <a name="5-configure-the-transform-set"></a>5. Dönüştürme kümesini yapılandırın
+### <a name="5-configure-the-transform-set"></a>5. dönüşüm kümesini yapılandırın
 
-Anahtar sözcüğü ```ikev1```içermesi gereken dönüştürme kümesini (TS) yapılandırın. TS'de belirtilen şifreleme ve karma [öznitelikler, CloudSimple VPN ağ geçitleri için Varsayılan yapılandırmada](cloudsimple-vpn-gateways.md)listelenen parametrelerle eşleşmelidir.
+Anahtar sözcüğünü ```ikev1```içeren dönüştürme KÜMESINI (TS) yapılandırın. TS 'lerde belirtilen şifreleme ve karma öznitelikleri, [CloudSimple VPN Gateway 'ler Için varsayılan yapılandırmada](cloudsimple-vpn-gateways.md)listelenen parametrelerle eşleşmelidir.
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
 ```
 
-### <a name="6-configure-the-crypto-map"></a>6. Kripto haritasını yapılandırın
+### <a name="6-configure-the-crypto-map"></a>6. şifre eşlemesini yapılandırma
 
-Bu bileşenleri içeren kripto haritasını yapılandırın:
+Şu bileşenleri içeren şifre haritasını yapılandırın:
 
 * Eş IP adresi
-* İlgi trafiğini içeren tanımlı ACL
-* Dönüştürme Seti
+* İlgilendiğiniz trafiği içeren tanımlı ACL
+* Dönüşüm kümesi
 
 ```
 crypto map mymap 1 set peer <primary peer ip> <secondary peer ip>
@@ -117,187 +117,187 @@ crypto map mymap 1 match address ipsec-acl
 crypto map mymap 1 set ikev1 transform-set devtest39
 ```
 
-### <a name="7-apply-the-crypto-map"></a>7. Kripto haritasını uygulayın
+### <a name="7-apply-the-crypto-map"></a>7. şifre eşlemesini uygulama
 
-Kripto haritayı dış arabirimde uygulayın:
+Dış arabirimde şifre eşlemesini uygulama:
 
 ```crypto map mymap interface outside```
 
-### <a name="8-confirm-applicable-nat-rules"></a>8. Geçerli NAT kurallarını onaylayın
+### <a name="8-confirm-applicable-nat-rules"></a>8. geçerli NAT kurallarını onaylayın
 
-Aşağıda kullanılan NAT kuralı dır. VPN trafiğinin başka bir NAT kuralına tabi olmadığından emin olun.
+Aşağıda, kullanılan NAT kuralı verilmiştir. VPN trafiğinin başka bir NAT kuralına tabi olmadığından emin olun.
 
 ```nat (inside,outside) source static AZ_inside AZ_inside destination static CS_inside CS_inside```
 
-### <a name="sample-ipsec-site-to-site-vpn-established-output-from-cisco-asa"></a>Örnek IPsec Site-to-Site VPN Cisco ASA çıktı kurdu
+### <a name="sample-ipsec-site-to-site-vpn-established-output-from-cisco-asa"></a>Cisco ASA 'den konuma, IPSec siteden siteye VPN tarafından belirlenen çıkış
 
-Faz 1 çıktısı:
+Aşama 1 çıkışı:
 
-![Cisco ASA güvenlik duvarı için Faz 1 çıkışı](media/ha-vpn-connection-cisco-phase1.png)
+![Cisco ASA güvenlik duvarı için Aşama 1 çıkışı](media/ha-vpn-connection-cisco-phase1.png)
 
-Faz 2 çıktı:
+2. aşama çıkışı:
 
-![Cisco ASA güvenlik duvarı için Aşama 2 çıkışı](media/ha-vpn-connection-cisco-phase2.png)
+![Cisco ASA güvenlik duvarı için aşama 2 çıkışı](media/ha-vpn-connection-cisco-phase2.png)
 
-## <a name="configure-on-premises-palo-alto-networks-firewall"></a>Şirket içi Palo Alto Networks güvenlik duvarLarını yapılandırma
+## <a name="configure-on-premises-palo-alto-networks-firewall"></a>Şirket içi Palo Alto Networks güvenlik duvarını yapılandırma
 
-Bu bölümdeki talimatlar Palo Alto Networks sürüm 7.1 ve sonrası için geçerlidir. Bu yapılandırma örneğinde, Palo Alto Networks VM-Serisi Yazılım Sürüm 8.1.0 ikev1 modunda dağıtılır ve yapılandırılır.
+Bu bölümdeki yönergeler, Palo Alto Networks sürüm 7,1 ve üzeri için geçerlidir. Bu yapılandırma örneğinde, Palo Alto Networks VM Serisi yazılım sürümü 8.1.0 dağıtılır ve IKEv1 modunda yapılandırılır.
 
-Siteden Siteye VPN'in çalışması için, şirket içi Palo Alto Networks ağ geçidinin dış arabiriminde CloudSimple birincil ve ikincil genel IP'den (eş IP) UDP 500/4500 ve ESP'ye (IP protokolü 50) izin vermelisiniz.
+Siteden siteye VPN 'nin çalışması için, şirket içi Palo Alto Networks ağ geçidinin dış arabirimindeki CloudSimple birincil ve ikincil genel IP 'den (eş IP) UDP 500/4500 ve ESP 'ye (IP protokolü 50) izin vermelisiniz.
 
-### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. Birincil ve ikincil tünel arabirimleri oluşturma
+### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. birincil ve ikincil tünel arabirimleri oluşturma
 
-Palo Alto güvenlik duvarında oturum açın, **Ağ** > **Arabirimleri** > **Tünel** > **Ekle'yi**seçin, aşağıdaki alanları yapılandırın ve **Tamam'ı**tıklatın.
+Palo Alto güvenlik duvarında oturum açın, **ağ** > **arabirimleri** > **tünel** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
-* Arayüz Adı. İlk alan 'tünel' anahtar kelimesi ile otomatik olarak doldurulur. Bitişik alana, 1 ile 9999 arasında herhangi bir sayı girin. Bu arabirim, şirket içi veri merkezi ile Özel Bulut arasında Siteden Siteye trafiği taşımak için birincil tünel arabirimi olarak kullanılacaktır.
-* Yorum. Tünelin amacının kolay tanımlanması için yorum girin
-* Netflow Profili. Varsayılan olarak bırakın.
-* Config. Arayüz Atama: Sanal Yönlendirici: **Varsayılan ı**seçin. 
-        Güvenlik Bölgesi: Güvenilen LAN trafiği için bölgeyi seçin. Bu örnekte, LAN trafiği için bölgenin adı 'Güven'dir.
-* IPv4' den. Birincil tünel arabirimine atanacak ve tünelleri izlemek için kullanılacak olan (daha sonra açıklanacak) ortamınızda çakışmayan kullanılmamış /32 ip adresini **ekle'yi** tıklatın.
+* Arabirim adı. İlk alan ' Tunnel ' anahtar sözcüğüyle tekrar doldurulur. Bitişik alana, 1 ile 9999 arasında bir sayı girin. Bu arabirim, şirket içi veri merkezi ve özel bulut arasında siteden siteye trafiği taşımak için birincil bir tünel arabirimi olarak kullanılacaktır.
+* Açıklamanın. Tünelin amacının kolay tanımlanması için açıklama girin
+* Netflow profili. Varsayılan olarak bırakın.
+* Kurulumunun. Arabirimi ata: sanal yönlendirici: **varsayılan**' ı seçin. 
+        Güvenlik bölgesi: güvenilen LAN trafiği için bölgeyi seçin. Bu örnekte, LAN trafiği için bölgenin adı ' Trust ' olur.
+* IPv4. **Ekle** ' ye tıklayın ve ortamınızda, birincil tünel arabirimine atanacak ve tünelleri izlemek için kullanılacak olan, çakışmayan kullanılmamış/32 IP adresini ekleyin.
 
-Bu yapılandırma yüksek kullanılabilirlik VPN için olduğundan, iki tünel arabirimi gereklidir: bir birincil ve bir ikincil. İkincil tünel arabirimini oluşturmak için önceki adımları yineleyin. Farklı bir tünel kimliği ve kullanılmayan farklı bir /32 ip adresi seçin.
+Bu yapılandırma yüksek kullanılabilirliğe sahip bir VPN için olduğundan, iki tünel arabirimi gereklidir: bir birincil ve bir ikincil. İkinci tünel arabirimini oluşturmak için önceki adımları tekrarlayın. Farklı bir tünel KIMLIĞI ve kullanılmayan farklı/32 IP adresini seçin.
 
-### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Siteden Siteye VPN üzerinden ulaşılacak Özel Bulut alt ağları için statik rotalar ayarlama
+### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. özel bulut alt ağlarının siteden siteye VPN üzerinden ulaşılmasına izin vermek için statik yollar ayarlayın
 
-Şirket içi alt ağların CloudSimple özel bulut alt ağlarına ulaşması için rotalar gereklidir.
+Yönlendiriciler, şirket içi alt ağların CloudSimple özel bulut alt ağlarına ulaşması için gereklidir.
 
-**Ağ** > **Sanal Yönlendiriciler** > *varsayılan* > **Statik Yolları** > **Ekle'yi**seçin, aşağıdaki alanları yapılandırın ve **Tamam'ı**tıklatın.
+**Ağ** > **sanal yönlendiricileri** > *varsayılan* > **Add** **OK****Static Routes**statik yollar Ekle ' yi seçin, aşağıdaki alanları yapılandırın ve Tamam ' ı tıklatın. > 
 
-* Adı. Rotanın amacının kolayca tanımlanması için herhangi bir ad girin.
-* Hedef. Şirket içinde S2S tünel arabirimleri üzerinden ulaşılacak CloudSimple özel bulut alt ağlarını belirtin
-* Arabirim. Açılan alt kattan adım-1'de (Bölüm-2) oluşturulan birincil tünel arabirimini seçin. Bu örnekte, tünel.20'dir.
-* Sonraki Hop. **Hiçbiri** seçeneğini belirtin.
-* Yönetici Mesafesi. Varsayılan olarak bırakın.
-* Metrik. 1 ile 65535 arasında herhangi bir değer girin. Anahtar, birincil tünel arabirimine karşılık gelen rota için, eski rotayı tercih eden ikincil tünel arabirimine karşılık gelen rota için daha düşük metrik girmektir. Tünel.20'nin metrik değeri 20 ise, tünel için 30 metrik değeri ise, tünel.20 tercih edilir.
-* Rota Tablosu. Varsayılan olarak bırakın.
-* BFD Profili. Varsayılan olarak bırakın.
+* Ada. Yolun amacının kolay tanımlanması için herhangi bir ad girin.
+* Hedefine. Şirket içinden S2S tünel arabirimleri üzerinden ulaşılmış olan CloudSimple özel bulut alt ağlarını belirtin
+* Arayüz. Açılan menüden 1. adım (Bölüm-2) içinde oluşturulan birincil tünel arabirimini seçin. Bu örnekte, Tunnel. 20 ' dir.
+* Sonraki atlama. **Hiçbiri** seçeneğini belirtin.
+* Yönetici uzaklığı. Varsayılan olarak bırakın.
+* Ölçüt. 1 ile 65535 arasında bir değer girin. Bu anahtar, önceki yolu tercih eden yol ile ilgili ikincil tünel arabirimine kıyasla, birincil tünel arabirimine karşılık gelen yolun daha düşük ölçüsünü girmelidir. Tunnel. 20 ' nin, Tunnel için 30 ölçüm değerinin aksine 20 ölçüm değeri vardır. 30, Tunnel. 20 tercih edilir.
+* Yol tablosu. Varsayılan olarak bırakın.
+* BFD profili. Varsayılan olarak bırakın.
 * Yol izleme. İşaretlemeden bırakın.
 
-Özel Bulut alt ağlarının ikincil tünel arabirimi üzerinden ikincil/yedekleme rotası olarak kullanması için başka bir rota oluşturmak için önceki adımları yineleyin. Bu kez, birincil rotaiçin farklı tünel kimliği ve daha yüksek bir metrik seçin.
+İkincil tünel arabirimi aracılığıyla ikincil/yedekleme yolu olarak kullanılacak özel bulut alt ağlarının başka bir yolunu oluşturmak için önceki adımları tekrarlayın. Bu kez, birincil yol için farklı bir tünel KIMLIĞI ve daha yüksek bir ölçüm seçin.
 
-### <a name="3-define-the-cryptographic-profile"></a>3. Şifreleme profilini tanımlayın
+### <a name="3-define-the-cryptographic-profile"></a>3. şifreleme profilini tanımlayın
 
-IKEv1 Faz 1'de VPN tünellerinin kurulumu için kullanılacak tanımlama, kimlik doğrulama ve şifreleme protokollerini ve algoritmalarını belirten bir şifreleme profili tanımlayın.
+IKEv1 Phase 1 ' deki VPN tünellerini ayarlamak için kullanılacak tanımlama, kimlik doğrulama ve şifreleme için protokolleri ve algoritmaları belirten bir şifreleme profili tanımlayın.
 
-**Ağ** > **Genişletme Ağ Profillerini** > Seçin**IKE Crypto** > **Add,** aşağıdaki alanları yapılandırın ve **Tamam'ı**tıklatın.
+**Ağ** > **Genişlet ağ profilleri** > **Ike şifre** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
-* Adı. IKE kripto profilinin herhangi bir adını girin.
-* DH Grubu. **Ekle'yi** tıklatın ve uygun DH grubunu seçin.
-* Şifreleme. **Ekle'yi** tıklatın ve uygun şifreleme yöntemini seçin.
-* Kimlik doğrulaması. **Ekle'yi** tıklatın ve uygun kimlik doğrulama yöntemini seçin.
-* Anahtar ömrü. Varsayılan olarak bırakın.
-* IKEv2 Kimlik Doğrulama Çoklu. Varsayılan olarak bırakın.
+* Ada. IKE şifreleme profilinin adını girin.
+* DH grubu. **Ekle** ' ye tıklayın ve uygun DH grubunu seçin.
+* Şifreleme. **Ekle** ' ye tıklayın ve uygun şifreleme yöntemini seçin.
+* Kimlik doğrulaması. **Ekle** ' ye tıklayın ve uygun kimlik doğrulama yöntemini seçin.
+* Anahtar yaşam süresi. Varsayılan olarak bırakın.
+* Ikev2 kimlik doğrulaması birden çok. Varsayılan olarak bırakın.
 
-### <a name="4-define-ike-gateways"></a>4. IKE ağ geçitlerini tanımlama
+### <a name="4-define-ike-gateways"></a>4. ıKE ağ geçitlerini tanımlayın
 
-VPN tünelinin her iki ucundaki eşler arasında iletişim kurmak için IKE ağ geçitlerini tanımlayın.
+VPN tünelinin her bir ucunda bulunan eşler arasında iletişim kurmak için ıKE ağ geçitlerini tanımlayın.
 
-**Ağ** > **Genişletme Ağ Profillerini** > Seçin**IKE Ağ Geçitleri** > **Ekle,** aşağıdaki alanları yapılandırın ve **Tamam'ı**tıklatın.
+**Ağ** > **Genişlet ağ profilleri** > **Ike ağ geçitleri** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
-Genel sekme:
+Genel sekmesi:
 
-* Adı. Birincil CloudSimple VPN eşile bakılması için IKE ağ geçidinin adını girin.
+* Ada. Birincil CloudSimple VPN eşi ile birlikte kullanılacak olan ıKE ağ geçidinin adını girin.
 * Sürüm. **Yalnızca IKEv1 modunu**seçin.
-* Adres Türü. **IPv4** seçin.
-* Arabirim. Genel karşı karşıya veya dış arabirimi seçin.
-* Yerel IP Adresi. Varsayılan olarak bırakın.
-* Eş IP Adresi Türü. **IP'yi**seçin.
-* Akran Adresi. Birincil CloudSimple VPN eş IP adresini girin.
-* Kimlik doğrulaması. **Önceden Paylaşılan Anahtarı**seçin.
-* Önceden paylaşılan Anahtar / Önceden Paylaşılan Key'i onaylayın. CloudSimple VPN ağ geçidi anahtarıyla eşleşecek önceden paylaşılan anahtarı girin.
+* Adres türü. **IPv4** seçin.
+* Arayüz. Herkese açık veya dış arabirimi seçin.
+* Yerel IP adresi. Varsayılan olarak bırakın.
+* Eş IP adresi türü. **IP**'yi seçin.
+* Eş adresi. Birincil CloudSimple VPN eşi IP adresini girin.
+* Kimlik doğrulaması. **Önceden paylaşılan anahtar**' ı seçin.
+* Önceden paylaşılan anahtar/önceden paylaşılan anahtarı onayla. CloudSimple VPN Gateway anahtarıyla eşleşmesi için önceden paylaşılan anahtarı girin.
 * Yerel kimlik. Şirket içi Palo Alto güvenlik duvarının genel IP adresini girin.
-* Akran Tanımlama. Birincil CloudSimple VPN eş IP adresini girin.
+* Eş kimliği. Birincil CloudSimple VPN eşi IP adresini girin.
 
 Gelişmiş Seçenekler sekmesi:
 
-* Pasif Modu etkinleştirin. İşaretlemeden bırakın.
-* NAT Geçişi'ni etkinleştirin. Şirket içi Palo Alto güvenlik duvarı herhangi bir NAT aygıtının arkasında değilse, kontrolsüz bırakın. Aksi takdirde, onay kutusunu seçin.
+* Pasif modu etkinleştirin. İşaretlemeden bırakın.
+* NAT geçişini etkinleştirin. Şirket içi Palo Alto güvenlik duvarı herhangi bir NAT cihazının arkasında değilse, işaretini kaldırın. Aksi takdirde, onay kutusunu seçin.
 
-IKEv1:
+IKEv1
 
-* Değişim modu. **Ana**seçin.
-* IKE Kripto Profili. Daha önce oluşturduğunuz IKE Crypto profilini seçin. Parçalamayı Etkinleştir kutusunu işaretlenmemiş bırakın.
-* Ölü Akran Algılama. Kutuyu işaretsiz bırakın.
+* Exchange modu. **Ana**öğesini seçin.
+* IKE şifre profili. Daha önce oluşturduğunuz ıKE şifre profilini seçin. Parçalanmayı etkinleştir kutusunu işaretlenmemiş olarak bırakın.
+* Kullanılmayan eş algılama. Kutuyu işaretlenmemiş olarak bırakın.
 
-İkincil IKE ağ geçidini oluşturmak için önceki adımları yineleyin.
+İkincil ıKE ağ geçidini oluşturmak için önceki adımları tekrarlayın.
 
-### <a name="5-define-ipsec-crypto-profiles"></a>5. IPSEC Kripto profillerini tanımlayın
+### <a name="5-define-ipsec-crypto-profiles"></a>5. ıPSEC şifreleme profillerini tanımlama
 
-**Ağ** > **Genişlet Ağ Profillerini** > **IPSEC Crypto** > **Ekle'yi**seçin, aşağıdaki alanları yapılandırın ve **Tamam'ı**tıklatın.
+**Ağ** > **Genişlet ağ profilleri** > **IPSec şifre** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
-* Adı. IPsec kripto profili için bir ad girin.
-* IPsec Protokolü. **ESP'yi**seçin.
-* Şifreleme. **Ekle'yi** tıklatın ve uygun şifreleme yöntemini seçin.
-* Kimlik doğrulaması. **Ekle'yi** tıklatın ve uygun kimlik doğrulama yöntemini seçin.
-* DH Grubu. **No-pfs**seçin.
+* Ada. IPSec şifre profili için bir ad girin.
+* IPsec protokolü. **ESP**'yi seçin.
+* Şifreleme. **Ekle** ' ye tıklayın ve uygun şifreleme yöntemini seçin.
+* Kimlik doğrulaması. **Ekle** ' ye tıklayın ve uygun kimlik doğrulama yöntemini seçin.
+* DH grubu. **PFS yok**' u seçin.
 * Ömür. 30 dakika olarak ayarlayın.
-* Etkinleştirmek. Kutuyu işaretsiz bırakın.
+* Etkinleştirebilir. Kutuyu işaretlenmemiş olarak bırakın.
 
-İkincil CloudSimple VPN eş olarak kullanılacak başka bir IPsec kripto profili oluşturmak için önceki adımları yineleyin. Aynı IPSEC Crypto profili hem birincil hem de ikincil IPsec tünelleri için de kullanılabilir (aşağıdaki yordamı görün)
+İkinci CloudSimple VPN eşi olarak kullanılacak başka bir IPSec şifre profili oluşturmak için önceki adımları tekrarlayın. Aynı ıPSEC şifre profili, hem birincil hem de ikincil IPSec tünelleri (aşağıdaki yordama bakın) için de kullanılabilir.
 
-### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. Tünel izleme için monitör profillerini tanımlayın
+### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. tünel izleme için izleyici profillerini tanımlayın
 
-**Ağ** > **Genişletme Ağ Profillerini** > Genişlet**İzle'****Monitor** > yi seçin, aşağıdaki alanları yapılandırın ve **Tamam'ı**tıklatın.
+**Ağ** > **Genişlet ağ profilleri** > **izleyici** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
-* Adı. Hataya proaktif tepki vermek için tünel izleme için kullanılacak Monitör profilinin herhangi bir adını girin.
-* Eylem. **Üzerinden Başarısız'ı**seçin.
-* Aralığı. **3**değerini girin.
-* Eşik öğesini seçin. **Değeri girin 7**.
+* Ada. Hata için öngörülü yeniden işlem için tünel izlemesi için kullanılacak Izleyici profilinin adını girin.
+* Ön. **Yük devret**' i seçin.
+* Aralığında. **3**değerini girin.
+* Eşik öğesini seçin. **7**değerini girin.
 
-### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. Birincil ve ikincil IPsec tünelleri kurmak.
+### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. birincil ve ikincil IPSec tünellerini ayarlayın.
 
-**Ağ** > **IPsec Tünelleri** > **Ekle'yi**seçin, aşağıdaki alanları yapılandırın ve **Tamam'ı**tıklatın.
+**Ağ** > **IPSec tünelleri** > **Ekle**' yi seçin, aşağıdaki alanları yapılandırın ve **Tamam**' ı tıklatın.
 
-Genel sekme:
+Genel sekmesi:
 
-* Adı. Birincil CloudSimple VPN eşile eşlenecek birincil IPSEC tüneli için herhangi bir ad girin.
-* Tünel Arayüzü. Birincil tünel arabirimini seçin.
-* Türü. Varsayılan olarak bırakın.
-* Adres Türü. **IPv4** seçin.
-* IKE Geçidi. Birincil IKE ağ geçidini seçin.
-* IPsec Kripto Profili. Birincil IPsec profilini seçin. **Gelişmiş seçenekleri göster'i**seçin.
-* Yeniden Oynatma Koruması'nı etkinleştirin. Varsayılan olarak bırakın.
-* TOS Üstbilgisini kopyalayın. Kutuyu işaretsiz bırakın.
-* Tünel Monitörü. Kutuyu kontrol et.
-* Hedef IP. Siteden Siteye bağlantısı üzerinden izin verilen CloudSimple Private Cloud alt ağına ait herhangi bir IP adresi girin. Palo Alto'daki tünel arabirimlerinin (tünel.20 - 10.64.5.2/32 ve tünel.30 - 10.64.6.2/32 gibi) Siteden Siteye VPN üzerinden CloudSimple Private Cloud IP adresine ulaşmasına izin verildiğinden emin olun. Proxy tbm'leri için aşağıdaki yapılandırmaya bakın.
-* Profil. Monitör profilini seçin.
+* Ada. Birincil CloudSimple VPN eşi ile ilişkilendirilen birincil ıPSEC tüneli için herhangi bir ad girin.
+* Tünel arabirimi. Birincil tünel arabirimini seçin.
+* Türüyle. Varsayılan olarak bırakın.
+* Adres türü. **IPv4** seçin.
+* IKE ağ geçidi. Birincil ıKE ağ geçidini seçin.
+* IPSec şifre profili. Birincil IPSec profilini seçin. **Gelişmiş seçenekleri göster**' i seçin.
+* Yeniden yürütmeyi korumayı etkinleştirin. Varsayılan olarak bırakın.
+* TOS üst bilgisini kopyala. Kutuyu işaretlenmemiş olarak bırakın.
+* Tünel Izleyici. Kutuyu işaretleyin.
+* Hedef IP. Siteden siteye bağlantı üzerinden izin verilen CloudSimple özel bulut alt ağına ait herhangi bir IP adresi girin. Palo Alto 'daki tünel arabirimlerinin (Tunnel. 20-10.64.5.2/32 ve Tunnel. 30-10.64.6.2/32 gibi), siteden siteye VPN üzerinden CloudSimple özel bulut IP adresine erişmesine izin verildiğinden emin olun. Proxy kimlikleri için aşağıdaki yapılandırmaya bakın.
+* Profilinizi. İzleyici profilini seçin.
 
-Proxy IDs sekmesi: **IPv4** > **Ekle'yi** tıklatın ve aşağıdakileri yapılandırın:
+Proxy kimlikleri sekmesi: **IPv4** > **Ekle** ' ye tıklayın ve aşağıdakileri yapılandırın:
 
-* Proxy kimliği. İlginç trafik için herhangi bir ad girin. Bir IPsec tünelinde taşınan birden fazla Proxy bilgisayarı olabilir.
-* Yerel. Siteden Siteye VPN üzerinden Özel Bulut alt ağlarıyla iletişim kurmasına izin verilen şirket içi yerel alt ağları belirtin.
-* Uzaktan. Yerel alt ağlarla iletişim kurmasına izin verilen Özel Bulut uzak alt ağlarını belirtin.
-* Protokolü. **Herhangi bir**.
+* Proxy KIMLIĞI. İlginç trafik için herhangi bir ad girin. Tek bir IPSec tünelinde yürütülen birden çok proxy kimliği olabilir.
+* Yerel. Siteden siteye VPN üzerinden özel bulut alt ağları ile iletişim kurmasına izin verilen şirket içi yerel alt ağları belirtin.
+* Uzak. Yerel alt ağlarla iletişim kurmasına izin verilen özel bulut uzak alt ağlarını belirtin.
+* Protocol. **Herhangi birini**seçin.
 
-İkincil CloudSimple VPN eş için kullanmak üzere başka bir IPsec tüneli oluşturmak için önceki adımları yineleyin.
+İkincil CloudSimple VPN eşi için kullanılmak üzere başka bir IPSec tüneli oluşturmak için önceki adımları tekrarlayın.
 
 ## <a name="references"></a>Başvurular
 
-Cisco ASA'da NAT'nin yapılandırılması:
+Cisco ASA üzerinde NAT yapılandırma:
 
-<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa84/configuration/guide/asa_84_cli_config/nat_objects.html" target="_blank">Cisco ASA 5500 Serisi Yapılandırma Kılavuzu</a>
+<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa84/configuration/guide/asa_84_cli_config/nat_objects.html" target="_blank">Cisco ASA 5500 serisi yapılandırma kılavuzu</a>
 
-Cisco ASA'da IKEv1 ve IKEv2 özellikleri desteklenmiştir:
+Cisco ASA üzerinde desteklenen IKEv1 ve IKEv2 öznitelikleri:
 
-<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa90/configuration/guide/asa_90_cli_config/vpn_ike.html#21661" target="_blank">Cisco ASA Serisi CLI Yapılandırma Kılavuzu</a>
+<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa90/configuration/guide/asa_90_cli_config/vpn_ike.html#21661" target="_blank">Cisco ASA serisi CLı yapılandırma kılavuzu</a>
 
-Cisco ASA'da IPsec Site-To-Site VPN'ini sürüm 8.4 ve sonrası ile yapılandırma:
+8,4 ve üzeri sürümleriyle Cisco ASA üzerinde IPSec siteden siteye VPN 'yi yapılandırma:
 
-<a href="https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/119141-configure-asa-00.html#anc8" target="_blank">IKEv1 IPsec Site-To-Site Tünellerini ASA'da ASDM veya CLI ile yapılandırın</a>
+<a href="https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/119141-configure-asa-00.html#anc8" target="_blank">ASA üzerinde ASDM veya CLı ile IKEv1 IPSec siteden siteye tünellerini yapılandırma</a>
 
-Cisco Adaptive Security Appliance sanal (ASAv) Azure'da yapılandırma:
+Azure 'da Cisco Uyarlamalı güvenlik gereç sanal (ASAv) yapılandırma:
 
-<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa96/asav/quick-start-book/asav-96-qsg/asav-azure.html" target="_blank">Cisco Adaptive Security Virtual Appliance (ASAv) quickstart Kılavuzu</a>
+<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa96/asav/quick-start-book/asav-96-qsg/asav-azure.html" target="_blank">Cisco Uyarlamalı güvenlik sanal gereç (ASAv) Hızlı Başlangıç Kılavuzu</a>
 
-Palo Alto'da Proxy T'lerle Siteden Siteye VPN'i yapılandırma:
+Palo Alto 'da proxy kimlikleri ile siteden siteye VPN 'i yapılandırma:
 
-[Siteden Siteye VPN'i Ayarlama](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn#)
+[Siteden siteye VPN ayarlama](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn#)
 
-Tünel monitörü kurulumu:
+Tünel izleyicisini ayarlama:
 
-[Tünel İzlemeyi Ayarlama](https://docs.paloaltonetworks.com/pan-os/7-1/pan-os-admin/vpns/set-up-tunnel-monitoring.html)
+[Tünel Izlemeyi ayarlama](https://docs.paloaltonetworks.com/pan-os/7-1/pan-os-admin/vpns/set-up-tunnel-monitoring.html)
 
-IKE ağ geçidi veya IPsec tünel işlemleri:
+IKE Gateway veya IPSec tünel işlemleri:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn/enabledisable-refresh-or-restart-an-ike-gateway-or-ipsec-tunnel#" target="_blank">Bir IKE Ağ Geçidi veya IPsec Tünelini Etkinleştirme/Devre Dışı Kaldırma, Yenileme veya Yeniden Başlatma</a>
+<a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn/enabledisable-refresh-or-restart-an-ike-gateway-or-ipsec-tunnel#" target="_blank">Bir ıKE ağ geçidini veya IPSec tüneli etkinleştirme/devre dışı bırakma, yenileme veya yeniden başlatma</a>

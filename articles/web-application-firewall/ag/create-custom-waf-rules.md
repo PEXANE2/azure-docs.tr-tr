@@ -1,7 +1,7 @@
 ---
 title: V2 özel kuralları oluşturma ve kullanma
 titleSuffix: Azure Web Application Firewall
-description: Bu makalede, Azure Uygulama Ağ Geçidi'nde Web Uygulama Güvenlik Duvarı (WAF) v2 özel kurallarının nasıl oluşturulacağına ilişkin bilgiler verilmektedir.
+description: Bu makalede, Azure Application Gateway 'de Web uygulaması güvenlik duvarı (WAF) v2 özel kuralları oluşturma hakkında bilgi sağlanır.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -9,28 +9,28 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368313"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Uygulama Ağ Geçidi'nde Web Uygulaması Güvenlik Duvarı v2 özel kuralları oluşturma ve kullanma
+# <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Web uygulaması güvenlik duvarı v2 özel kurallarını oluşturma ve kullanma Application Gateway
 
-Azure Application Gateway'deki Web Uygulama Güvenlik Duvarı (WAF) v2, web uygulamaları için koruma sağlar. Bu koruma, Açık Web Uygulama Güvenlik Projesi (OWASP) Temel Kural Kümesi (CRS) tarafından sağlanır. Bazı durumlarda, özel gereksinimlerinizi karşılamak için kendi özel kurallarınızı oluşturmanız gerekebilir. WAF özel kuralları hakkında daha fazla bilgi için bkz: [Özel web uygulaması güvenlik duvarı kurallarına genel bakış.](custom-waf-rules-overview.md)
+Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) v2, Web uygulamaları için koruma sağlar. Bu koruma, Open Web Application Security Project (OWASP) çekirdek kural kümesi (CCR) tarafından sağlanır. Bazı durumlarda, özel gereksinimlerinizi karşılamak için kendi özel kurallarınızı oluşturmanız gerekebilir. WAF özel kuralları hakkında daha fazla bilgi için bkz. [özel Web uygulaması güvenlik duvarı kurallarına genel bakış](custom-waf-rules-overview.md).
 
-Bu makalede, v2 WAF ile oluşturabileceğiniz ve kullanabileceğiniz bazı örnek özel kurallar gösterilmektedir. Azure PowerShell'i kullanarak özel bir kuralla WAF'yi nasıl dağıtılayınız öğrenmek için Azure [PowerShell'i kullanarak Web Uygulama Güvenlik Duvarı özel kurallarını yapılandırma kuralına](configure-waf-custom-rules.md)bakın.
+Bu makalede, v2 WAF 'niz ile oluşturabileceğiniz ve kullanabileceğiniz bazı örnek özel kurallar gösterilmektedir. Azure PowerShell kullanarak bir WAF 'yi özel bir kuralla dağıtmayı öğrenmek için, bkz. [Azure PowerShell kullanarak Web uygulaması güvenlik duvarı özel kurallarını yapılandırma](configure-waf-custom-rules.md).
 
 >[!NOTE]
-> Uygulama ağ geçidiniz WAF katmanını kullanmıyorsa, başvuru ağ geçidini WAF katmanına yükseltme seçeneği doğru bölmede görünür.
+> Uygulama ağ geçidiniz WAF katmanını kullanmıyor ise, uygulama ağ geçidini WAF katmanına yükseltme seçeneği sağ bölmede görüntülenir.
 
-![WAF'ı etkinleştir][fig1]
+![WAF 'yi etkinleştir][fig1]
 
 ## <a name="example-1"></a>Örnek 1
 
-Web sitenizi taramaengellemek istediğiniz *evilbot* adında bir bot olduğunu biliyorum. Bu durumda, istek üstbilgilerinde Kullanıcı Aracısı *evilbot'u* engellersiniz.
+Web sitenizde gezinmeyi engellemek istediğiniz *evilbot* adlı bir bot olduğunu bilirsiniz. Bu durumda, istek üst bilgilerinde Kullanıcı Aracısı *evbotu* 'yı engellemelisiniz.
 
-Mantık: p
+Logic: p
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -52,7 +52,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Ve burada ilgili JSON:
+Buna karşılık gelen JSON şu şekildedir:
 
 ```json
   {
@@ -76,11 +76,11 @@ Ve burada ilgili JSON:
   }
 ```
 
-Bu özel kuralı kullanarak dağıtılan bir WAF görmek için Azure [PowerShell'i kullanarak bir Web Uygulaması Güvenlik Duvarı özel kuralını yapılandırma'ya](configure-waf-custom-rules.md)bakın.
+Bu özel kural kullanılarak dağıtılan bir WAF 'yi görmek için bkz. [Azure PowerShell kullanarak Web uygulaması güvenlik duvarı özel kuralını yapılandırma](configure-waf-custom-rules.md).
 
 ### <a name="example-1a"></a>Örnek 1a
 
-Aynı şeyi normal bir ifade kullanarak gerçekleştirebilirsiniz:
+Bir normal ifade kullanarak aynı şeyi gerçekleştirebilirsiniz:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -102,7 +102,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Ve ilgili JSON:
+Ve karşılık gelen JSON:
 
 ```json
   {
@@ -128,7 +128,7 @@ Ve ilgili JSON:
 
 ## <a name="example-2"></a>Örnek 2
 
-GeoMatch operatörlerini kullanarak ABD'den gelen trafiğe izin vermek istiyorsunuz:
+GeoMatch işlecini kullanarak BIZIMLE gelen trafiğe izin vermek istiyorsunuz:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -149,7 +149,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Allow
 ```
 
-Ve ilgili JSON:
+Ve karşılık gelen JSON:
 
 ```json
   {
@@ -179,9 +179,9 @@ Ve ilgili JSON:
 
 198.168.5.0/24 aralığındaki IP adreslerinden gelen tüm istekleri engellemek istiyorsunuz.
 
-Bu örnekte, IP adresleri aralığından gelen tüm trafiği engellersiniz. Kuralın adı *myrule1* ve öncelik 10 olarak ayarlanır.
+Bu örnekte, bir IP adres aralığından gelen tüm trafiği engellemelisiniz. Kuralın adı *myrule1* ve öncelik 10 olarak ayarlanır.
 
-Mantık: p
+Logic: p
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -201,7 +201,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-İşte ilgili JSON's:
+Buna karşılık gelen JSON şu şekildedir:
 
 ```json
   {
@@ -225,13 +225,13 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-İlgili CRS kuralı:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Karşılık gelen yukarı ve kuralları:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-4"></a>Örnek 4
 
-Bu örnekiçin, User-Agent *evilbot*ve aralığında trafik engellemek istiyorum 192.168.5.0/24. Bunu başarmak için iki ayrı eşleşme koşulu oluşturabilir ve her ikisini de aynı kurala koyabilirsiniz. Bu, Kullanıcı Aracısı başlığındaki *evilbot* **ve** 192.168.5.0/24 aralığındaki IP adreslerinin eşlenebilmesini sağlarsa, istek engellenir.
+Bu örnek için, Kullanıcı Aracısı *evbotbot*'ı ve 192.168.5.0/24 aralığındaki trafiği engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, 192.168.5.0/24 aralığındaki Kullanıcı Aracısı üst bilgisinde **ve** IP adreslerinde bulunan her iki taraf da *eşleştiriliyorsa* , isteğin engellenmesini sağlar.
 
-Mantık: p **ve** q
+Logic: p **ve** q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -262,7 +262,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
    -Action Block
 ```
 
-İşte ilgili JSON's:
+Buna karşılık gelen JSON şu şekildedir:
 
 ```json
 { 
@@ -301,9 +301,9 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-5"></a>Örnek 5
 
-Bu örnekte, istek IP adres aralığı *192.168.5.0/24*dışında ysa veya kullanıcı aracı sıyrık dizesi *chrome* değilse (kullanıcı Chrome tarayıcısını kullanmıyorsa) engellemek istersiniz. Bu mantık kullandığından **veya,** iki koşul aşağıdaki örnekte görüldüğü gibi ayrı kurallar halindedir. *myrule1* ve *myrule2* hem trafiği engellemek için maç gerekir.
+Bu örnekte, isteğin *192.168.5.0/24*IP adresi aralığının dışında veya Kullanıcı Aracısı dizesinin *Chrome* olmadığından (Kullanıcı Chrome tarayıcısını kullanmıyor anlamına gelir) engellemek isteyebilirsiniz. Bu mantık **veya**kullandığından, iki koşul aşağıdaki örnekte görüldüğü gibi ayrı kurallarda bulunur. trafiği engellemek için *myrule1* ve *myrule2* öğelerinin her ikisinin de eşleşmesi gerekir.
 
-Mantık: **değil** (p **ve** q) = p **veya değil** q. **not**
+Logic: **Not** (p **ve** q) = **not** p değil **veya** q değil.
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -341,7 +341,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Ve ilgili JSON:
+Ve karşılık gelen JSON:
 
 ```json
 {
@@ -388,9 +388,9 @@ Ve ilgili JSON:
 
 ## <a name="example-6"></a>Örnek 6
 
-Özel SQLI engellemek istiyorum. Burada kullanılan mantık **veya**, ve tüm değerleri *RequestUri*olduğundan, *MatchValues* tüm virgül ayrılmış bir listede olabilir.
+Özel SQLI 'ı engellemek istiyorsunuz. Burada kullanılan mantık **veya**, tüm değerler *RequestUri*'de olduğundan, tüm *matchvalues* , virgülle ayrılmış bir listede olabilir.
 
-Mantık: p **veya** q **veya** r
+Logic: p **veya** q **ya da** r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -409,7 +409,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-İlgili JSON:
+Karşılık gelen JSON:
 
 ```json
   {
@@ -486,7 +486,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-İlgili JSON:
+Karşılık gelen JSON:
 
 ```json
   {
@@ -545,6 +545,6 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel kurallarınızı oluşturduktan sonra, WAF günlüklerinizi nasıl görüntülediğinizi öğrenebilirsiniz. Daha fazla bilgi için [Uygulama Ağ Geçidi tanılama](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)bakın.
+Özel kurallarınızı oluşturduktan sonra WAF günlüklerinizi görüntülemeyi öğrenebilirsiniz. Daha fazla bilgi için bkz. [tanılama Application Gateway](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ../media/create-custom-waf-rules/1.png

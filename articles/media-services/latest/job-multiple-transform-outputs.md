@@ -1,6 +1,6 @@
 ---
-title: Birden çok dönüştürme çıkışıyla bir Azure Medya Hizmetleri işi oluşturun
-description: Bu konu, birden çok dönüştürme çıktısı içeren bir Azure Medya Hizmetleri işinin nasıl oluşturulurolduğunu gösterir.
+title: Birden çok dönüştürme çıkışına sahip bir Azure Media Services işi oluşturma
+description: Bu konu, birden çok dönüştürme çıkışına sahip bir Azure Media Services işinin nasıl oluşturulacağını göstermektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,23 +12,23 @@ ms.topic: article
 ms.date: 02/17/2020
 ms.author: juliako
 ms.openlocfilehash: dbbeeb33ee46b37ec920fe598483c332d3439689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77563147"
 ---
-# <a name="create-a-job-with-multiple-transform-outputs"></a>Birden çok dönüştürme çıkışı olan bir iş oluşturma
+# <a name="create-a-job-with-multiple-transform-outputs"></a>Birden çok dönüşüm çıkışına sahip bir iş oluşturma
 
-Bu konu, iki Dönüştürme Çıkışıyla Dönüşüm'ün nasıl oluşturulabildiğini gösterir. İlki, girişin yerleşik [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) önceden ayarlanmış uyarlanabilir bithızı akışı için kodlanmış olması için çağrıda bulunur. İkincisi, giriş videosundaki ses sinyalinin [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)ile işlenmesini gerektiriyor. Dönüşüm oluşturulduktan sonra, videonuzu buna göre işleyecek bir iş gönderebilirsiniz. Bu örnekte iki Dönüşüm Çıktısı belirttiğimiz için, iki İş Çıktısı belirtmemiz gerekir. Her iki İş Çıktısını da aynı Varlığa yönlendirmeyi (aşağıda gösterildiği gibi) seçebilir veya sonuçların ayrı Varlıklara yazılmasını sağlayabilirsiniz.
+Bu konu, iki dönüşüm çıkışına sahip bir dönüşümün nasıl oluşturulacağını gösterir. İlk bir giriş, yerleşik bir uyarlamalı [akış](encoding-concept.md#builtinstandardencoderpreset) ön ayarı ile Uyarlamalı bit hızı akışı için kodlanacak şekilde çağrı yapılır. İkinci bir, giriş videosunda ses sinyalini, [audioanalizin önayarıyla](analyzing-video-audio-files-concept.md#built-in-presets)işlenecek şekilde çağırır. Dönüşüm oluşturulduktan sonra, videonuzu uygun şekilde işleyecek bir iş gönderebilirsiniz. Bu örnekte, iki dönüşüm çıkışı belirttiğimiz için iki Iş çıkışı belirtmemiz gerekir. Her iki Iş çıkışını aynı kıymete (aşağıda gösterildiği gibi) doğrudan yönlendirmeye veya sonuçların ayrı varlıklara yazılmasına izin verebilirsiniz.
  
 
 > [!TIP]
-> Geliştirmeye başlamadan önce, [Media Services v3 API'leri ile Geliştirme'yi](media-services-apis-overview.md) gözden geçirin (API'lere erişim, adlandırma kuralları vb. hakkında bilgi içerir)
+> Geliştirmeye başlamadan önce, [Media Services v3 API 'leri Ile geliştirmeyi](media-services-apis-overview.md) Inceleyin (API 'lere erişme hakkında bilgi, adlandırma kuralları vb.)
 
 ## <a name="create-a-transform"></a>Dönüşüm oluşturma
 
-Aşağıdaki kod, iki çıkış üreten bir dönüşümün nasıl oluşturulabildiğini gösterir.
+Aşağıdaki kod, iki çıkış üreten bir dönüşümün nasıl oluşturulacağını gösterir.
 
 ```csharp
 private static async Task<Transform> GetOrCreateTransformAsync(
@@ -65,9 +65,9 @@ private static async Task<Transform> GetOrCreateTransformAsync(
     return transform;
 }
 ```
-## <a name="submit-a-job"></a>İş gönderme
+## <a name="submit-a-job"></a>İş gönder
 
-HTTPS URL girişi ve iki iş çıktısı olan bir iş oluşturun.
+HTTPS URL girişi ile ve iki iş çıktılarına sahip bir iş oluşturun.
 
 ```csharp
 private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
@@ -131,8 +131,8 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 ```
 ## <a name="job-error-codes"></a>İş hata kodları
 
-[Bkz. Hata kodları.](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+Bkz. [hata kodları](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[.NET kullanarak Azure Medya Hizmetleri v3 örnekleri](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 
+[.NET kullanarak Azure Media Services v3 örnekleri](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 

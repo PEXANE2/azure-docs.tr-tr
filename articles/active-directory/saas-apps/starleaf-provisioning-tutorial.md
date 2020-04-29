@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için StarLeaf'i yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını StarLeaf'e otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Staryaprak yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını Staryaprak 'ya otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,145 +16,145 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064315"
 ---
-# <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için StarLeaf'i yapılandır
+# <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Staryaprak yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları StarLeaf'e otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için StarLeaf ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Staryaprak 'ya otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Staryaprak ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
->  Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+>  Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [Bir StarLeaf kiracı.](https://www.starleaf.com/solutions/)
-* Yönetici izinli StarLeaf'teki bir kullanıcı hesabı.
+* [Bir Staryaprak kiracısı](https://www.starleaf.com/solutions/).
+* Yönetici izinlerine sahip Staryaprak 'da bir kullanıcı hesabı.
 
-## <a name="assign-users-to-starleaf"></a>Kullanıcıları StarLeaf'e atama
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için atamalar adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+## <a name="assign-users-to-starleaf"></a>Kullanıcıları Staryaprak 'a ata
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen atama adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve grupların StarLeaf'e erişmesi gerektiğine karar vermelisiniz. Daha sonra bu yönergeleri izleyerek kullanıcıları ve grupları [StarLeaf'e](../manage-apps/assign-user-or-group-access-portal.md)atayabilirsiniz.
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve grupların Staryaprak 'a erişmesi gerektiğine karar vermeniz gerekir. Ardından, [Bu yönergeleri](../manage-apps/assign-user-or-group-access-portal.md)izleyerek, Kullanıcı ve grupları staryaprak 'a atayabilirsiniz.
 
-## <a name="important-tips-for-assigning-users-to-starleaf"></a>Kullanıcıları StarLeaf'e atamak için önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-starleaf"></a>Staryaprağı 'e Kullanıcı atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için StarLeaf'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Staryaprak 'a tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı StarLeaf'e atadığınızda, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Staryaprak 'a atadığınızda, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. Varsayılan erişim rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="set-up-starleaf-for-provisioning"></a>Tedarik için StarLeaf'i ayarlama
+## <a name="set-up-starleaf-for-provisioning"></a>Sağlama için Staryaprak ayarlama
 
-Azure AD ile otomatik kullanıcı sağlama için StarLeaf'i yapılandırmadan önce, SCIM sağlamayı StarLeaf'te yapılandırmanız gerekir:
+Azure AD ile otomatik Kullanıcı sağlaması için Staryaprak yapılandırmadan önce, Staryaprak 'da SCıM sağlamasını yapılandırmanız gerekir:
 
-1. [StarLeaf Yönetici Konsolunuzda](https://portal.starleaf.com/#page=login)oturum açın. **Tümleştirmelere** > Git**Tümleştirme ekle.**
+1. [Staryaprak yönetici konsolunda](https://portal.starleaf.com/#page=login)oturum açın. **Tümleştirmelere** > gidin**tümleştirme Ekle**.
 
-    ![StarLeaf SCIM ekle](media/starleaf-provisioning-tutorial/image00.png)
+    ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Microsoft Azure Etkin Dizini olacak **Türü** seçin. **Ad'a**uygun bir ad girin. **Uygula**’ya tıklayın.
+2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**’ya tıklayın.
 
-    ![StarLeaf SCIM ekle](media/starleaf-provisioning-tutorial/image01.png)
+    ![Staryaprak SCıM Ekle](media/starleaf-provisioning-tutorial/image01.png)
 
-3.  Daha sonra **SCIM temel** URL'si ve **Access belirteç** değerleri görüntülenir. Bu değerler, Azure portalındaki StarLeaf uygulamanızın Sağlama sekmesindeki **Kiracı URL'sine** ve **Gizli Belirteç** alanlarına girilir. 
+3.  **SCIM temel URL 'si** ve **erişim belirteci** değerleri görüntülenecektir. Bu değerler, Azure portal Staryaprak uygulamanızın sağlama sekmesinde **kiracı URL 'si** ve **gizli belirteç** alanlarına girilir. 
 
-    ![StarLeaf Oluştur Belirteci](media/starleaf-provisioning-tutorial/image02.png)
+    ![Staryaprak oluşturma belirteci](media/starleaf-provisioning-tutorial/image02.png)
 
-## <a name="add-starleaf-from-the-gallery"></a>Galeriden StarLeaf ekleyin
+## <a name="add-starleaf-from-the-gallery"></a>Galeriden Staryaprak ekleyin
 
-Azure AD ile otomatik kullanıcı sağlama için StarLeaf'i yapılandırmak için, Yönetilen SaaS uygulamaları listenize Azure AD uygulama galerisinden StarLeaf eklemeniz gerekir.
+Staryaprak 'u Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üzere, Azure AD uygulama galerisindeki Staryaprak 'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden StarLeaf eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD Uygulama Galerisi 'nden Staryaprak eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **StarLeaf**girin, sonuç panelinde **StarLeaf'i** seçin.
-    ![Sonuç listesinde StarLeaf](common/search-new-app.png)
+4. Arama kutusuna **Staryaprak**yazın, sonuçlar panelinde **staryaprak** ' ı seçin.
+    ![Sonuç listesinde Staryaprak](common/search-new-app.png)
 
-## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Otomatik kullanıcı sağlamayı StarLeaf'e yapılandırma
+## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Staryaprak için otomatik Kullanıcı sağlamayı yapılandırma
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak StarLeaf'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryaprak 'da kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **StarLeaf'i**seçin.
+2. Uygulamalar listesinde, **Staryaprak**' u seçin.
 
-    ![Uygulamalar listesindeki StarLeaf bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Staryaprak bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici Kimlik Bilgileri bölümü altında, sırasıyla **Kiracı URL'sinde** ve **Gizli Belirteç'te** daha önce alınan **SCIM Base URL** ve Access **Belirteci** değerlerini girin. Azure AD'nin StarLeaf'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, StarLeaf hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici kimlik bilgileri bölümünde, sırasıyla **kiracı URL 'si** ve **gizli belirteç** ' de bulunan **SCIM temel URL 'sini** ve **erişim belirteci** değerlerini girin. Azure AD 'nin Staryaprak 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Staryaprak hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** denetleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve bir **hata oluştuğunda e-posta bildirimi gönder** ' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını StarLeaf'e Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Staryaprak olarak eşitler**' ı seçin.
 
-    ![StarLeaf Oluştur Belirteci](media/starleaf-provisioning-tutorial/usermapping.png)
+    ![Staryaprak oluşturma belirteci](media/starleaf-provisioning-tutorial/usermapping.png)
 
-9. **Öznitelik Eşleme** bölümünde Azure AD'den StarLeaf'e eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için StarLeaf'teki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den staryaprak 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için staryaprak 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![StarLeaf Oluştur Belirteci](media/starleaf-provisioning-tutorial/userattribute.png)
-
-
-10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+    ![Staryaprak oluşturma belirteci](media/starleaf-provisioning-tutorial/userattribute.png)
 
 
-11. StarLeaf için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Açık** olarak değiştirin.
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek StarLeaf'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+11. Staryaprak için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+12. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek staryaprak 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. İlerlemeyi izlemek ve StarLeaf'teki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için bkz: [Otomatik kullanıcı hesabı sağlama hakkında Raporlama](../app-provisioning/check-status-user-account-provisioning.md)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-## <a name="connector-limitations"></a>Konektör sınırlamaları
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve staryaprak ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna ilişkin bağlantıları izleyebilirsiniz.
 
-* StarLeaf şu anda grup sağlamayı desteklemiyor. 
-* **StarLeaf, e-posta** ve **kullanıcı Adı** değerlerinin aynı kaynak değerine sahip olmasını gerektirir.
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md)
+
+## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
+
+* Staryaprak Şu anda grup sağlamayı desteklemiyor. 
+* Staryaprak, aynı kaynak değerine sahip olmak için **e-posta** ve **Kullanıcı adı** değerleri gerektirir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Günlükleri nasıl [inceleyip sağlama etkinliği yle ilgili raporlar alacağınızı](../app-provisioning/check-status-user-account-provisioning.md)öğrenin.
+* [Günlükleri incelemeyi ve sağlama etkinliğinde rapor almayı](../app-provisioning/check-status-user-account-provisioning.md)öğrenin.

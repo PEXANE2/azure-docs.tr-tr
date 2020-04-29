@@ -1,6 +1,6 @@
 ---
-title: Azure Servis Veri Servisi premium ve standart katmanlar
-description: Bu makalede, Azure Hizmet Veri Servisi'nin standart ve premium katmanları açıklanmaktadır. Bu katmanları karşılaştırır ve teknik farklılıklar sağlar.
+title: Azure Service Bus Premium ve Standart katmanlar
+description: Bu makalede, Azure Service Bus standart ve Premium katmanları açıklanmaktadır. Bu katmanları karşılaştırır ve teknik farklılıklar sağlar.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774558"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium ve Standart Mesajlaşma katmanları
 
 Kuyruklar ve konu başlıkları gibi varlıkları içeren Service Bus Mesajlaşma, kuruluşun mesajlaşma işlevlerini bulut ölçeğinde zengin yayımla-abone ol semantiği ile birleştirir. Service Bus Mesajlaşması birçok gelişmiş bulut çözümü için iletişimin temel öğesi olarak kullanılır.
 
-Servis Veri Servisi Mesajlaşmasının *Premium* katmanı, görev açısından kritik uygulamalar için ölçek, performans ve kullanılabilirlik konusunda yaygın müşteri isteklerini giderir. Üretim senaryoları için Premium katman önerilir. Özellikler kümeleri neredeyse aynı olsa da, Service Bus Mesajlaşma hizmetinin bu iki katmanı farklı kullanım durumlarına göre tasarlanmıştır.
+Service Bus mesajlaşma 'nın *Premium* katmanı, görev açısından kritik uygulamalar için ölçek, performans ve kullanılabilirlik bakımından ortak müşteri isteklerine yöneliktir. Üretim senaryoları için Premium katman önerilir. Özellikler kümeleri neredeyse aynı olsa da, Service Bus Mesajlaşma hizmetinin bu iki katmanı farklı kullanım durumlarına göre tasarlanmıştır.
 
 Aşağıdaki tabloda bazı üst düzey farklılıklar vurgulanmıştır.
 
@@ -37,9 +37,9 @@ Aşağıdaki tabloda bazı üst düzey farklılıklar vurgulanmıştır.
 | İş yükünün ölçeğini artırma veya azaltma |Yok |
 | İleti boyutu 1 MB’a kadar |İleti boyutu 256 KB’a kadar |
 
-**Service Bus Premium Mesajlaşma Hizmeti**, CPU'da ve bellek düzeyinde kaynak yalıtımına olanak sağladığından her müşterinin iş yükü yalıtımlı şekilde çalışır. Bu kaynak kapsayıcısı *mesajlaşma birimi* olarak adlandırılır. Her premium ad alanı, en az bir mesajlaşma birimi için ayrılmıştır. Her Service Bus Premium ad alanı için 1, 2, 4 veya 8 mesajlaşma birimi satın alabilirsiniz. Tek bir iş yükü veya varlık birden çok ileti birimine yayılabilir ve ileti birimi sayısı değiştirilebilir. Sonuç olarak, Service Bus tabanlı çözümünüz için tahmin edilebilir ve tekrarlanabilir bir performans elde edersiniz.
+**Service Bus Premium Mesajlaşma Hizmeti**, CPU'da ve bellek düzeyinde kaynak yalıtımına olanak sağladığından her müşterinin iş yükü yalıtımlı şekilde çalışır. Bu kaynak kapsayıcısı *mesajlaşma birimi* olarak adlandırılır. Her premium ad alanı, en az bir mesajlaşma birimi için ayrılmıştır. Her Service Bus Premium ad alanı için 1, 2, 4 veya 8 mesajlaşma birimi satın alabilirsiniz. Tek bir iş yükü veya varlık birden çok mesajlaşma birimini kapsayabilir ve mesaj birimlerinin sayısı her zaman değiştirilebilir. Sonuç olarak, Service Bus tabanlı çözümünüz için tahmin edilebilir ve tekrarlanabilir bir performans elde edersiniz.
 
-Daha tahmin edilebilir ve kullanılabilir olmasının yanı sıra bu performans, daha hızlıdır. Service Bus Premium Messaging, Azure Etkinlik [Hub'larında](https://azure.microsoft.com/services/event-hubs/)tanıtılan depolama motoruna dayanmaktadır. Premium Mesajlaşma sayesinde, en yüksek performans Standart katmanda olduğundan daha hızlıdır.
+Daha tahmin edilebilir ve kullanılabilir olmasının yanı sıra bu performans, daha hızlıdır. [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'da tanıtılan depolama altyapısında Premium mesajlaşma derlemelerini Service Bus. Premium Mesajlaşma sayesinde, en yüksek performans Standart katmanda olduğundan daha hızlıdır.
 
 ## <a name="premium-messaging-technical-differences"></a>Premium Mesajlaşmanın teknik farklılıkları
 
@@ -55,49 +55,49 @@ Premium mesajlaşma tamamen yalıtılmış bir çalışma zamanı ortamında ça
 
 Standart mesajlaşma altında çalışan bir kodunuz varsa ve Premium katmanı ile bağlantı noktası oluşturmak istiyorsanız, [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) özelliğinin **false** (varsayılan değer) olarak ayarlandığından emin olun.
 
-## <a name="premium-messaging-resource-usage"></a>Premium Mesajlaşma kaynak kullanımı
-Genel olarak, bir varlık üzerinde herhangi bir işlem CPU ve bellek kullanımına neden olabilir. Bu işlemlerden bazıları şunlardır: 
+## <a name="premium-messaging-resource-usage"></a>Premium mesajlaşma kaynak kullanımı
+Genel olarak, bir varlıktaki herhangi bir işlem CPU ve bellek kullanımına neden olabilir. Bu işlemlerden bazıları şunlardır: 
 
-- Kuyruklar, konular ve abonelikler üzerindeki CRUD (Oluştur, Al, Güncelle ve Sil) işlemleri gibi yönetim işlemleri.
+- Kuyruklar, konular ve aboneliklerde CRUD (oluşturma, alma, güncelleştirme ve silme) işlemleri gibi yönetim işlemleri.
 - Çalışma zamanı işlemleri (ileti gönderme ve alma)
-- İzleme işlemleri ve uyarılar
+- İşlemleri ve Uyarıları izleme
 
-Ek CPU Ve bellek kullanımı olsa da ek olarak fiyatlandırılır değildir. Premium İleti katmanı için ileti birimi için tek bir fiyat vardır.
+Ek CPU ve bellek kullanımı da buna ek olarak fiyatlandırılmamalıdır. Premium mesajlaşma katmanı için, ileti birimi için tek bir fiyat vardır.
 
-CPU ve bellek kullanımı aşağıdaki nedenlerle izlenir ve size görüntülenir: 
+CPU ve bellek kullanımı aşağıdaki nedenlerden dolayı izlenir ve size görüntülenir: 
 
-- Sistem içlerinde şeffaflık sağlama
+- Sistem iç işlevleri için saydamlık sağlama
 - Satın alınan kaynakların kapasitesini anlayın.
-- Büyütmeye/küçültmeye karar vermenize yardımcı olan kapasite planlaması.
+- Ölçeği artırma/azaltma kararı vermenize yardımcı olan kapasite planlaması.
 
-## <a name="messaging-unit---how-many-are-needed"></a>Mesajlaşma birimi - Kaç tane gereklidir?
+## <a name="messaging-unit---how-many-are-needed"></a>Mesajlaşma Birimi-kaç tane gerekir?
 
-Azure Hizmet Veri Servisi Premium ad alanı sağlarken, ayrılan ileti birimi sayısının belirtilmesi gerekir. Bu ileti birimleri ad alanına ayrılan ayrılmış kaynaklardır.
+Azure Service Bus Premium ad alanı sağlanırken, ayrılan mesajlaşma birimlerinin sayısı belirtilmelidir. Bu mesajlaşma birimleri, ad alanına ayrılan ayrılmış kaynaklardır.
 
-Service Bus Premium ad alanına ayrılan ileti birimi sayısı, iş yüklerindeki değişime (artış veya azalış) faktöre **dinamik olarak ayarlanabilir.**
+Service Bus Premium ad alanına ayrılan mesajlaşma birimi sayısı, iş yüklerindeki değişikliğin (artış veya azaldıkça) **dinamik olarak** çarpılabilecek şekilde ayarlanabilir.
 
-Mimariniz için ileti birimi sayısına karar verirken göz önünde bulundurulması gereken birkaç faktör vardır:
+Mimariniz için Mesajlaşma Birimi sayısına karar verirken dikkate alınması gereken birkaç etken vardır:
 
-- Ad alanınıza ayrılmış ***1 veya 2 ileti birimiyle*** başlayın.
-- Ad alanınız için [Kaynak kullanım ölçümleri](service-bus-metrics-azure-monitor.md#resource-usage-metrics) içindeki CPU kullanım ölçümlerini incein.
-    - CPU kullanımı ***%20'nin altındaysa,*** ad alanınıza ayrılan ileti birimi sayısını ***küçültebilirsiniz.***
-    - CPU kullanımı ***%70'in üzerindeyse,*** uygulamanız ad alanınıza ayrılan ileti birimi sayısını ***ölçeklemeden*** yararlanır.
+- Ad alanınız için ayrılmış ***1 veya 2 mesajlaşma birimi*** ile başlayın.
+- Ad alanınız için [kaynak kullanım ölçümleri](service-bus-metrics-azure-monitor.md#resource-usage-metrics) içindeki CPU kullanım ölçümlerini inceleyin.
+    - CPU kullanımı ***%20***' nin altındaysa, ad alanınız için ayrılan mesajlaşma birimi sayısını ***ölçeklendirebilirsiniz*** .
+    - CPU kullanımı ***%70 üzerinde***ise, uygulamanız ad alanınız için ayrılan mesajlaşma birimlerinin sayısını ***ölçeklendirmeden*** yarar sağlar.
 
-Hizmet Veri Birimi ad alanlarına ayrılan kaynakları ölçekleme işlemi Azure [Otomasyon Runbook'ları](../automation/automation-quickstart-create-runbook.md)kullanılarak otomatikleştirilebilir.
+Bir Service Bus ad alanına ayrılan kaynakları ölçeklendirme işlemi, [Azure Otomasyonu runbook 'ları](../automation/automation-quickstart-create-runbook.md)kullanılarak otomatikleştirilebilir.
 
 > [!NOTE]
-> Ad alanına ayrılan kaynakların **ölçekleilmesi** önleyici veya reaktif olabilir.
+> Ad alanına ayrılan kaynakların **ölçeklendirilmesi** preemptive veya reaktif olabilir.
 >
->  * **Preemptive**: Ek iş yükü bekleniyorsa (mevsimsellik veya eğilimler nedeniyle), iş yükleri çarpmadan önce ad alanına daha fazla ileti birimi ayırmaya devam edebilirsiniz.
+>  * **Preemptive**: ek iş yükü bekleniyorsa (mevsimsellik veya eğilimleri nedeniyle), iş yüklerinden önce ad alanına daha fazla mesajlaşma birimi ayırmaya devam edebilirsiniz.
 >
->  * **Reaktif**: Kaynak kullanım ölçümleri incelenerek ek iş yükleri tanımlanırsa, artan talebi birleştirmek için ad alanına ek kaynaklar ayrılabilir.
+>  * **Reaktif**: kaynak kullanım ölçümlerini sağlayarak ek iş yükleri tanımlanmışsa, artan talebi birleştirmek için ad alanına ek kaynaklar ayrılabilir.
 >
-> Servis Otobüsü için faturalandırma sayaçları saatliktir. Ölçekleme durumunda, yalnızca bu saatler için ek kaynaklar için ödeme.
+> Service Bus için faturalandırma ölçüleri her saat için faturalandırılır. Ölçeği artırma durumunda, yalnızca bunların kullanıldığı saatlere ait Ek kaynaklar için ödeme yaparsınız.
 >
 
 ## <a name="get-started-with-premium-messaging"></a>Premium Mesajlaşmayı kullanmaya başlama
 
-Premium Mesajlaşma ile çalışmaya başlamak kolaydır ve süreç Standart Mesajlaşma ile benzerlik gösterir. [Azure Portal](https://portal.azure.com)'da [ad alanı oluşturarak](service-bus-create-namespace-portal.md) başlayın. **Fiyatlandırma katmanı**altında **Premium'u** seçtiğinizden emin olun. Her bir katman hakkında daha fazla bilgi almak için **Fiyatlandırma ayrıntılarının tamamını görüntüle**'ye tıklayın.
+Premium Mesajlaşma ile çalışmaya başlamak kolaydır ve süreç Standart Mesajlaşma ile benzerlik gösterir. [Azure Portal](https://portal.azure.com)'da [ad alanı oluşturarak](service-bus-create-namespace-portal.md) başlayın. **Fiyatlandırma katmanı**altında **Premium** ' u seçtiğinizden emin olun. Her bir katman hakkında daha fazla bilgi almak için **Fiyatlandırma ayrıntılarının tamamını görüntüle**'ye tıklayın.
 
 ![create-premium-namespace][create-premium-namespace]
 
@@ -107,9 +107,9 @@ Ayrıca [Azure Resource Manager şablonlarını kullanarak premium ad alanları]
 
 Service Bus Mesajlaşma hizmeti hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara bakın:
 
-* [Azure Hizmet Veri Servisi Premium Mesajlaşma (blog gönderisi) tanıtımı](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Azure Hizmet Veri Servisi Premium Mesajlaşma (Channel9) Tanıtımı](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [Servis Veri Servisi Mesajlaşma genel bakış](service-bus-messaging-overview.md)
+* [Azure Service Bus Premium mesajlaşma tanıtımı (blog gönderisi)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Azure Service Bus Premium mesajlaşma tanıtımı (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
+* [Service Bus mesajlaşmaya genel bakış](service-bus-messaging-overview.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: Azure Haritalar topluluğu Açık kaynak projeleri | Microsoft Azure Haritaları
-description: Microsoft Azure Haritalar platformu için koordine edilen açık kaynak projeleri.
+title: Azure haritalar topluluk açık kaynaklı projeler | Microsoft Azure haritaları
+description: Microsoft Azure Maps Platformu için açık kaynak projeler koordine edilir.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
@@ -10,43 +10,43 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77048908"
 ---
-# <a name="azure-maps-community---open-source-projects"></a>Azure Haritalar topluluğu - Açık kaynak projeleri
+# <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
 
-Bu açık kaynak, topluluk odaklı girişimler, Azure Haritalar ekibi tarafından oluşturulur ve sürdürülmektedir. Standart ürün veya hizmet tekliflerinin bir parçası değildir.
+Bu açık kaynaklı ve topluluk odaklı girişimler, Azure haritalar ekibi tarafından oluşturulur ve sürdürülür. Standart ürün veya hizmet tekliflerinin bir parçası değildir.
 
-Aşağıda en popüler Azure Haritalar açık kaynak projelerinden ve örneklerinden bazıları listelemektedir.
+Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler listelenmiştir.
 
 | Proje Adı | Açıklama |
 |-|-|
-| [Azure Haritalar Kod Örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web tabanlı uygulamalarda Azure Haritalar'ı kullanmak için kod örnekleri koleksiyonu. |
-| [Azure Haritalar Gov Bulut Kodu Örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Kamu Bulutu aracılığıyla Azure Haritalar'ı kullanmak için kod örnekleri koleksiyonu. |
-| [Azure Haritalar & Azure Aktif Dizin Örnekleri](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure Haritalar'da Azure Etkin Dizininnasıl kullanılacağını gösteren örnekler topluluğu. | 
-| [Azure Haritalar'ı kullanarak IoT uzamsal analiz gerçekleştirme](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Uzay ve zamanda meydana gelen ilgili olayları izleme ve yakalama yaygın bir IoT senaryosudur. |
-| [Azure Haritalar Jupyter Notebook örnekleri](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Azure Haritalar REST hizmetlerini kullanan python örnekleri koleksiyonu. |
-| [Bot Framework - İlgi Noktası becerisi](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | İlgi Alanı Becerisi, Azure Bot Hizmeti ve Bot Framework ile Azure Haritalar'ı kullanan sanal asistana İçN ile ilgili özellikler sağlar. |
+| [Azure haritalar kod örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web tabanlı uygulamalarda Azure Maps kullanmaya yönelik kod örnekleri koleksiyonu. |
+| [Azure Maps gov bulut kodu örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Kamu Bulutu aracılığıyla Azure Maps kullanmaya yönelik kod örnekleri koleksiyonu. |
+| [Azure haritalar & Azure Active Directory örnekleri](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure haritalar ile Azure Active Directory kullanmayı gösteren örnekler koleksiyonu. | 
+| [Azure Haritalar'ı kullanarak IoT uzamsal analiz gerçekleştirme](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Boşluk ve saat içinde oluşan ilgili olayları izlemek ve yakalamak, yaygın bir IoT senaryosudur. |
+| [Azure haritalar Jupyter Notebook örnekleri](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Azure haritalar REST hizmetlerini kullanarak Python örnekleri koleksiyonu. |
+| [Bot Framework-Ilgilendiğiniz beceri noktası](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Ilgilendiğiniz beceri noktası Azure bot hizmeti ve bot Framework ile Azure haritalar 'ı kullanarak sanal bir yardımcıya yönelik POı ile ilgili yetenekler sağlar. |
 
-Topluluk oluşturulan açık kaynak projeleri içeren daha uzun bir liste [burada](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) mevcuttur
+Topluluk tarafından oluşturulan açık kaynaklı projeleri içeren daha uzun bir [liste bulunabilir](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)
 
-## <a name="supportability-of-open-source-projects"></a>Açık kaynak projelerinin desteklenebilirliği
+## <a name="supportability-of-open-source-projects"></a>Açık kaynaklı projelerin desteklenebilirliği
 
-Aşağıdaki ifadeler, oluşturulan ve sürdürülen açık kaynak projeleri ve örnekleri olan Azure Haritaları'nın tümünde geçerlidir:
+Oluşturulan ve açık kaynaklı projeler ve örnekler için aşağıdaki deyimler geçerlidir:
 
-- Azure Haritalar açık kaynak projeleri ve örnekleri Microsoft ve topluluk tarafından oluşturulur.
-- Azure Haritalar açık kaynak projeleri ve örnekleri Microsoft ve topluluk tarafından korunur.
-- Azure Haritalar açık kaynak projeleri ve örnekleri desteklenen ve önerilen teknikleri kullanır.
-- Azure Haritalar açık kaynak projeleri ve örnekleri bir topluluk girişimidir – başkalarının yararına girişim üzerinde çalışan ve normal günlük işlerine de sahip olan kişiler.
-- Azure Haritalar açık kaynak projeleri ve örnekleri bir ürün DeğİlDİr ve bu nedenle Premier Destek veya diğer resmi destek kanalları tarafından desteklenmez.
-- Azure Haritalar açık kaynak projeleri ve örnekleri, Microsoft tarafından topluluk tarafından topluluk desteğiyle yapılan diğer açık kaynak projeleri gibi benzer şekillerde desteklenir.
+- Azure haritalar açık kaynaklı projeler ve örnekler, Microsoft ve topluluk tarafından oluşturulur.
+- Azure haritalar açık kaynaklı projeler ve örnekler, Microsoft ve topluluk tarafından korunur.
+- Azure haritalar açık kaynaklı projeler ve örnekler desteklenen ve önerilen teknikleri kullanır.
+- Azure haritalar açık kaynaklı projeler ve örnekler, bir topluluk girişimidir. girişim üzerinde çalışan ve diğer kullanıcıların da normal gün işleri de vardır.
+- Azure haritalar açık kaynaklı projeler ve örnekler bir ürün DEĞILDIR ve bu nedenle Premier Destek veya diğer resmi destek kanalları tarafından desteklenmez.
+- Azure haritalar açık kaynaklı projeler ve örnekler, Microsoft tarafından topluluk tarafından sağlanan destek ile gerçekleştirilen diğer açık kaynaklı projelerle benzer yollarla desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla açık kaynak Azure Haritalar projesi bulun.
+Daha fazla açık kaynaklı Azure haritalar projesi bulun.
 
 > [!div class="nextstepaction"]
 > [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)

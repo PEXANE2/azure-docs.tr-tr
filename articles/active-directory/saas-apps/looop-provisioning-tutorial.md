@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Looop'u yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını Looop'a otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Gevop yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını Gevyana sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,164 +16,164 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e3e25a8c27b9a5c1bc1e7673300ac8aca9377c08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77057456"
 ---
-# <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Looop'u yapılandırın
+# <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Gevteri yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Looop'a otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Looop ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Gevşekilde sağlamak ve devre dışı bırakmak üzere yapılandırmak için, Gevteri ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracı
-* [Bir Looop kiracı](https://www.looop.co/pricing/)
-* Yönetici izinleri olan bir Looop'ta bir kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Bir Gevteri kiracısı](https://www.looop.co/pricing/)
+* Yönetici izinleriyle bir Gevteri üzerinde kullanıcı hesabı.
 
-## <a name="assign-users-to-looop"></a>Kullanıcıları Looop'a atama
+## <a name="assign-users-to-looop"></a>Gevteri 'e Kullanıcı atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için atamalar adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen atama adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Looop'a erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları burada talimatları izleyerek Looop'a atayabilirsiniz:
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Gevteri 'e erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Gevteri 'e atayabilirsiniz:
 
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-looop"></a>Looop'a kullanıcı atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-looop"></a>Gevteri 'e Kullanıcı atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için Looop'a tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının Gevylede atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Looop'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Gevteri 'e atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="set-up-looop-for-provisioning"></a>Tedarik için Looop'u ayarlama
+## <a name="set-up-looop-for-provisioning"></a>Sağlama için Gevteri ayarla
 
-Azure AD ile otomatik kullanıcı sağlama için Looop'u yapılandırmadan önce, Looop'tan bazı sağlama bilgileri almanız gerekir.
+Azure AD ile otomatik Kullanıcı hazırlama için gevyleop 'ı yapılandırmadan önce, bazı sağlama bilgilerini gevyleden almanız gerekir.
 
-1. [Looop Yönetici Konsolunuzda](https://app.looop.co/#/login) oturum açın ve **Hesap'ı**seçin. **Hesap Ayarları** altında **Kimlik Doğrulama'yı**seçin.
+1. [Gevpop yönetim konsolunuza](https://app.looop.co/#/login) oturum açın ve **Hesap**' ı seçin. **Hesap ayarları** altında **kimlik doğrulaması**' nı seçin.
 
-    ![Looop SCIM ekle](media/looop-provisioning-tutorial/admin.png)
+    ![Gevteri SIM Ekle](media/looop-provisioning-tutorial/admin.png)
 
-2. **SCIM Tümleştirmesi**altında **Yeniden Ayarla Belirteci'ni** tıklatarak yeni bir belirteç oluşturun.
+2. **SCIM tümleştirmesi**altında **belirteci Sıfırla** ' ya tıklayarak yeni bir belirteç oluşturun.
 
-    ![Looop SCIM ekle](media/looop-provisioning-tutorial/resettoken.png)
+    ![Gevteri SIM Ekle](media/looop-provisioning-tutorial/resettoken.png)
 
-3. **SCIM Bitiş Noktası'nı** ve **Belirteci**kopyalayın. Bu değerler, Azure portalındaki Looop uygulamanızın Sağlama sekmesindeki **Kiracı URL'si** ve Gizli **Belirteç** alanlarına girilir. 
+3. **SCIM uç noktasını** ve **belirtecini**kopyalayın. Bu değerler, Azure portal **Gevrme** uygulamanızın sağlama sekmesinde **kiracı URL 'Si** ve gizli belirteç alanlarına girilir. 
 
-    ![Looop Oluştur Belirteci](media/looop-provisioning-tutorial/token.png)
+    ![Gevteri oluşturma belirteci oluştur](media/looop-provisioning-tutorial/token.png)
 
-## <a name="add-looop-from-the-gallery"></a>Galeriden Looop ekle
+## <a name="add-looop-from-the-gallery"></a>Galeriden Gevteri ekleyin
 
-Looop'u Azure AD ile otomatik kullanıcı sağlama için yapılandırmak için, Yönetilen SaaS uygulamaları listenize Azure AD uygulama galerisinden Looop'u eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için Gevfiop 'yi yapılandırmak için Azure AD uygulama galerisindeki bir Gevteri yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **Looop**girin , sonuç panelinde **Looop** seçin. 
+4. Arama kutusuna **gevleop**girin, sonuçlar panelinde **gevleop** ' ı seçin. 
 
-    ![Sonuç listesinde Looop](common/search-new-app.png)
+    ![Sonuçlar listesinde gevteri](common/search-new-app.png)
 
-5. Sizi Looop'un giriş sayfasına yönlendirecek **Olan Looop için Kaydol** düğmesini seçin. 
+5. Sizi gevrme 'nin oturum açma sayfasına yönlendiren, **Gevrop Için kaydolun** düğmesini seçin. 
 
-    ![Looop OIDC Ekle](media/looop-provisioning-tutorial/signup.png)
+    ![Gevşop OıDC Add](media/looop-provisioning-tutorial/signup.png)
 
-6. Looop bir OpenIDConnect uygulaması olduğundan, Microsoft iş hesabınızı kullanarak Looop'a giriş yapmayı seçin.
+6. Gevteri bir Openıdconnect uygulaması olduğu için Microsoft iş hesabınızı kullanarak Gevşekilde oturum açmayı seçin.
 
-    ![Looop OIDC giriş](media/looop-provisioning-tutorial/msftlogin.png)
+    ![Gevşop OıDC oturumu](media/looop-provisioning-tutorial/msftlogin.png)
 
-7. Başarılı bir kimlik doğrulamadan sonra, onay sayfası için onay istemini kabul edin. Uygulama daha sonra otomatik olarak kiracınıza eklenecek ve Looop hesabınıza yönlendirileceksiniz.
+7. Başarılı bir kimlik doğrulamasından sonra, onay sayfasının onay isteğini kabul edin. Uygulama daha sonra kiracınıza otomatik olarak eklenir ve Gevleop hesabınıza yönlendirilirsiniz.
 
-    ![Looop OIDc Onayı](media/looop-provisioning-tutorial/accept.png)
+    ![Gevşop OIDC onayı](media/looop-provisioning-tutorial/accept.png)
 
-## <a name="configure-automatic-user-provisioning-to-looop"></a>Looop için otomatik kullanıcı sağlama yapılandırma 
+## <a name="configure-automatic-user-provisioning-to-looop"></a>Gevteri için otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Looop'taki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol açar.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı ve/veya Grup atamaları temelinde bulunan kullanıcıları ve/veya grupları Gevşekilde oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
-### <a name="to-configure-automatic-user-provisioning-for-looop-in-azure-ad"></a>Azure AD'de Looop için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-looop-in-azure-ad"></a>Azure AD 'de Gevteri 'in otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulama listesinde **Looop'u**seçin.
+2. Uygulamalar listesinde, **Gevteri**' ı seçin.
 
-    ![Uygulamalar listesindeki Looop bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Gevteri bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü `https://<organisation_domain>.looop.co/scim/v2` altında, **Kiracı URL'ye**giriş . Örneğin, `https://demo.looop.co/scim/v2`. **Gizli**Jeton'da Looop'tan daha önce aldığınız ve kaydettiğiniz değeri girdiniz. Azure AD'nin Looop'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Looop hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://<organisation_domain>.looop.co/scim/v2` **kiracı URL 'sini**girin. Örneğin, `https://demo.looop.co/scim/v2`. Daha önce aldığınız ve **gizli bir belirteçte**daha önce bulunan bir değeri girin. Azure AD ' ın Gevteri 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Gevteri hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Looop'a Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları gevşekilde zamanla**' yı seçin.
 
-    ![Looop Kullanıcı Haritalamaları](media/looop-provisioning-tutorial/usermappings.png)
+    ![Gevteri Kullanıcı eşlemeleri](media/looop-provisioning-tutorial/usermappings.png)
 
-9. Azure AD'den Looop'a eşitlenen kullanıcı özniteliklerini **Öznitelik Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Looop'taki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den yedekop 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için, Gevvop 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Looop Kullanıcı Özellikleri](media/looop-provisioning-tutorial/userattributes.png)
+    ![Gevteri Kullanıcı öznitelikleri](media/looop-provisioning-tutorial/userattributes.png)
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Meta Ağlar Bağlayıcısına Senkronize Et'i**seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını meta Networks Bağlayıcısı olarak eşitler**' ı seçin.
 
-    ![Looop Grup Haritalamaları](media/looop-provisioning-tutorial/groupmappings.png)
+    ![GEVME grubu eşlemeleri](media/looop-provisioning-tutorial/groupmappings.png)
 
-11. Azure AD'den Meta Networks Connector'a, **Öznitelik Eşleme** bölümünde senkronize edilen grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Meta Networks Connector'daki gruplarla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde Azure AD 'Den meta Networks bağlayıcısına eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için meta ağlar bağlayıcısında grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Looop Grup Özellikleri](media/looop-provisioning-tutorial/groupattributes.png)
+    ![GEVME grubu öznitelikleri](media/looop-provisioning-tutorial/groupattributes.png)
 
-10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-11. Looop için Azure AD sağlama hizmetini etkinleştirmek için Ayarlar bölümünde **Sağlama Durumunu** **Açık** olarak değiştirin. **Settings**
+11. Azure AD sağlama hizmetini Gevteri için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **Kapsam'da** istenen değerleri seçerek Looop'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **kapsam** Içinde istenen değerleri seçerek GEVME sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Kaydetme **Ayrıntıları** bölümünü, ilerlemeyi izlemek ve Looop'taki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. Devam eden işlemleri izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanarak, Gevylede Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklar.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 
 

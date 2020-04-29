@@ -1,50 +1,50 @@
 ---
-title: ServiceNow ile Azure hizmet durumu uyarıları gönderme
-description: ServiceNow örneğinize hizmet sağlığı olayları yla ilgili kişiselleştirilmiş bildirimler alın.
+title: ServiceNow ile Azure hizmet durumu uyarılarını gönderme
+description: ServiceNow örneğiniz için hizmet sistem durumu olayları hakkında kişiselleştirilmiş bildirimler alın.
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77654112"
 ---
-# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Web hooks kullanarak ServiceNow ile Azure hizmet durumu uyarıları gönderme
+# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Web kancalarını kullanarak ServiceNow ile Azure hizmet durumu uyarıları gönderme
 
-Bu makalede, bir webhook kullanarak ServiceNow ile Azure hizmet durumu uyarıları nasıl entegre ettiğinizi gösterir. ServiceNow örneğinizle webhook tümleştirmesini ayarladıktan sonra, Azure hizmet sorunları sizi etkilediğinde varolan bildirim altyapınız aracılığıyla uyarılar alırsınız. Bir Azure Hizmet Durumu uyarısı her yangında ServiceNow'un Komut Dosyası REST API'si aracılığıyla bir web hook çağırır.
+Bu makalede, bir Web kancası kullanarak Azure hizmet durumu uyarılarını ServiceNow ile tümleştirme gösterilmektedir. ServiceNow örneğinizle Web kancası tümleştirmesini ayarladıktan sonra, Azure hizmet sorunları sizi etkiliyorsa mevcut bildirim altyapınızı kullanarak uyarılar alırsınız. Azure hizmet durumu uyarısı her tetiklendiğinde ServiceNow 'ın komut dosyalı REST API aracılığıyla bir Web kancası çağırır.
 
-## <a name="creating-a-scripted-rest-api-in-servicenow"></a>ServiceNow'da komut dosyası yla yazılmış BIR REST API oluşturma
+## <a name="creating-a-scripted-rest-api-in-servicenow"></a>ServiceNow 'da komut dosyalı REST API oluşturma
 
-1.  [ServiceNow](https://www.servicenow.com/) hesabınıza kaydolduğunuzdan ve hesabınızda oturum açtığınızdan emin olun.
+1.  Kaydolduğunuzdan ve [ServiceNow](https://www.servicenow.com/) hesabınızda oturum açtığınızdan emin olun.
 
-1.  ServiceNow'daki **Sistem Web Hizmetleri** bölümüne gidin ve Komut Dosyası REST **API'lerini**seçin.
+1.  ServiceNow içindeki **sistem Web Hizmetleri** bölümüne gidin ve **Betikleştirilmiş REST API 'leri**seçin.
 
-    ![ServiceNow'daki "Komut Dosyası Web Hizmeti" bölümü](./media/webhook-alerts/servicenow-sws-section.png)
+    ![ServiceNow 'daki "komut dosyalı Web hizmeti" bölümü](./media/webhook-alerts/servicenow-sws-section.png)
 
-1.  Yeni bir Komut Dosyası REST hizmeti oluşturmak için **Yeni'yi** seçin.
+1.  Yeni bir komut dosyalı REST hizmeti oluşturmak için **Yeni** ' yi seçin.
  
-    ![ServiceNow'da "Yeni Komut Dosyası REST API" düğmesi](./media/webhook-alerts/servicenow-new-button.png)
+    ![ServiceNow 'daki "yeni komut dosyalı REST API" düğmesi](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  REST API'nize bir **Ad** ekleyin ve `azureservicehealth` **API Kimliğini** 'ye ayarlayın.
+1.  REST API bir **ad** ekleyin ve **API kimliğini** olarak `azureservicehealth`ayarlayın.
 
 1.  **Gönder**’i seçin.
 
-    ![ServiceNow'daki "REST API Ayarları"](./media/webhook-alerts/servicenow-restapi-settings.png)
+    ![ServiceNow içindeki "REST API ayarları"](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-1.  Oluşturduğunuz REST API'sini seçin ve **Kaynaklar** sekmesinin altında **Yeni'yi**seçin.
+1.  Oluşturduğunuz REST API seçin ve **kaynaklar** sekmesinde **Yeni**' yi seçin.
 
-    ![ServiceNow'daki "Kaynak Sekmesi"](./media/webhook-alerts/servicenow-resources-tab.png)
+    ![ServiceNow içindeki "kaynak sekmesi"](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  Yeni kaynağınızı `event` **adlandırın** ve `POST`HTTP yöntemini '' olarak **değiştirin.**
+1.  Yeni kaynağınızı **adlandırın** `event` ve **http yöntemini** olarak `POST`değiştirin.
 
-1.  **Script** bölümünde, aşağıdaki JavaScript kodunu ekleyin:
+1.  **Betik** bölümünde aşağıdaki JavaScript kodunu ekleyin:
 
     >[!NOTE]
-    >Aşağıdaki komut `<secret>`dosyasında`<group>`,, ve `<email>` değeri güncelleştirmeniz gerekir.
-    >* `<secret>`bir GUID gibi rasgele bir dize olmalıdır
+    >Aşağıdaki betikte `<secret>`,`<group>`ve `<email>` değerini güncelleştirmeniz gerekir.
+    >* `<secret>`GUID gibi bir rastgele dize olmalıdır
     >* `<group>`olayı atamak istediğiniz ServiceNow grubu olmalıdır
-    >* `<email>`olayı (isteğe bağlı) atamak istediğiniz belirli kişi olmalıdır
+    >* `<email>`olayı atamak istediğiniz belirli kişi olmalıdır (isteğe bağlı)
     >
 
     ```javascript
@@ -131,52 +131,52 @@ Bu makalede, bir webhook kullanarak ServiceNow ile Azure hizmet durumu uyarılar
     })(request, response);
     ```
 
-1.  Güvenlik sekmesinde, uncheck **Kimlik Doğrulaması Gerektirir** ve **Gönder'i**seçin. Ayarlanan bu `<secret>` API yerine korur.
+1.  Güvenlik sekmesinde **, onay işaretini** kaldırın ve **Gönder**' i seçin. Ayarladığınız `<secret>` ayarlar, bunun yerine bu API 'yi korur.
 
-    ![ServiceNow'daki "Kimlik Doğrulama Gerektirir" onay kutusu](./media/webhook-alerts/servicenow-resource-settings.png)
+    ![ServiceNow 'da "kimlik doğrulaması gerektirir" onay kutusu](./media/webhook-alerts/servicenow-resource-settings.png)
 
-1.  Scripted REST API'leri bölümünde, yeni REST API'niz için **Temel API Yolunu** bulmalısınız:
+1.  Komut dosyalı REST API 'Leri bölümüne geri döndüğünüzde, yeni REST API için **temel API yolunu** bulmanız gerekir:
 
-     ![ServiceNow'daki "Temel API Yolu"](./media/webhook-alerts/servicenow-base-api-path.png)
+     ![ServiceNow 'da "temel API yolu"](./media/webhook-alerts/servicenow-base-api-path.png)
 
-1.  Tam Tümleştirme URL'niz şu şekilde görünür:
+1.  Tam tümleştirme URL 'niz şöyle görünür:
         
          https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
 
-## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Azure portalında ServiceNow'u kullanarak bir uyarı oluşturma
+## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Azure portal ServiceNow kullanarak uyarı oluşturma
 ### <a name="for-a-new-action-group"></a>Yeni bir eylem grubu için:
-1. Yeni bir eylem grubuyla bir uyarı oluşturmak için [bu makalede](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 1'den 8'e kadar olan adımları izleyin.
+1. Yeni bir eylem grubuyla bir uyarı oluşturmak için [Bu makaledeki](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 1 ' den 8 ' e kadar olan adımları izleyin.
 
-1. **Eylemler**listesinde tanımlayın:
+1. **Eylem**listesinde tanımlayın:
 
-    a. **Eylem Türü:** *Webhook*
+    a. **Eylem türü:** *Web kancası*
 
-    b. **Ayrıntılar:** Daha önce kaydettiğiniz ServiceNow **Tümleştirme** URL'si.
+    b. **Ayrıntılar:** Daha önce kaydettiğiniz ServiceNow **tümleştirme URL 'si** .
 
-    c. **Adı:** Webhook'un adı, takma adı veya tanımlayıcısı.
+    c. **Ad:** Web kancası adı, diğer ad veya tanımlayıcı.
 
-1. Uyarıyı oluşturmak için yapıldığında **Kaydet'i** seçin.
+1. Uyarıyı oluşturmak için işiniz bittiğinde **Kaydet** ' i seçin.
 
-### <a name="for-an-existing-action-group"></a>Varolan bir eylem grubu için:
-1. Azure [portalında,](https://portal.azure.com/) **Monitör'ü**seçin.
+### <a name="for-an-existing-action-group"></a>Mevcut bir eylem grubu için:
+1. [Azure Portal](https://portal.azure.com/), **İzle**' yi seçin.
 
-1. **Ayarlar** bölümünde Eylem **gruplarını**seçin.
+1. **Ayarlar** bölümünde **eylem grupları**' nı seçin.
 
-1. Yeniden yapmak istediğiniz eylem grubunu bulun ve seçin.
+1. Düzenlemek istediğiniz eylem grubunu bulun ve seçin.
 
-1. **Eylemler**listesine ekle:
+1. **Eylem**listesine ekle:
 
-    a. **Eylem Türü:** *Webhook*
+    a. **Eylem türü:** *Web kancası*
 
-    b. **Ayrıntılar:** Daha önce kaydettiğiniz ServiceNow **Tümleştirme** URL'si.
+    b. **Ayrıntılar:** Daha önce kaydettiğiniz ServiceNow **tümleştirme URL 'si** .
 
-    c. **Adı:** Webhook'un adı, takma adı veya tanımlayıcısı.
+    c. **Ad:** Web kancası adı, diğer ad veya tanımlayıcı.
 
-1. Eylem grubunu güncelleştirmek için yapıldığında **Kaydet'i** seçin.
+1. Eylem grubunu güncelleştirmek için işiniz bittiğinde **Kaydet** ' i seçin.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Http POST isteği ile webhook tümleştirmenizi test etme
-1. Göndermek istediğiniz hizmet durumu yükü oluşturun. [Azure etkinlik günlüğü uyarıları için Webhooks'ta](../azure-monitor/platform/activity-log-alerts-webhook.md)örnek bir hizmet durumu webhook yükü bulabilirsiniz.
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Web kancası tümleştirmenizi bir HTTP POST isteği aracılığıyla test etme
+1. Göndermek istediğiniz hizmet durumu yükünü oluşturun. [Azure etkinlik günlüğü uyarıları Için Web kancalarında](../azure-monitor/platform/activity-log-alerts-webhook.md)örnek bir hizmet durumu Web kancası yükü bulabilirsiniz.
 
 1. Aşağıdaki gibi bir HTTP POST isteği oluşturun:
 
@@ -187,12 +187,12 @@ Bu makalede, bir webhook kullanarak ServiceNow ile Azure hizmet durumu uyarılar
 
     BODY        <service health payload>
     ```
-1. "Olay oluşturuldu" iletisiyle bir `200 OK` yanıt almalısınız.
+1. "Olay oluşturuldu" `200 OK` iletisiyle bir yanıt almanız gerekir.
 
-1. Tümleştirmenizin başarıyla ayarlandığını doğrulamak için [ServiceNow'a](https://www.servicenow.com/) gidin.
+1. Tümleştirmenin başarıyla ayarlandığını onaylamak için [ServiceNow](https://www.servicenow.com/) 'a gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Mevcut sorun yönetim sistemleri için webhook bildirimlerini nasıl yapılandırıştırılamayı](service-health-alert-webhook-guide.md)öğrenin.
-- Etkinlik [günlüğü uyarısı webhook şema](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
-- Hizmet [durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
+- [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin.
+- [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
+- [Hizmet durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
 - [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.

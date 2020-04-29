@@ -1,64 +1,64 @@
 ---
 title: Akıllı gruplar
-description: Akıllı Gruplar, uyarı gürültüsünü azaltmanıza yardımcı olan uyarı ların toplayıcılarıdır
+description: Akıllı gruplar, uyarı gürültüsünü azaltmanıza yardımcı olan uyarıların toplamalarına sahiptir
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77665502"
 ---
 # <a name="smart-groups"></a>Akıllı gruplar
 
-Uyarılarla uğraşırken karşılaşılan ortak bir sorun, gerçekte neyin önemli olduğunu bulmak için gürültüyü elemektir - akıllı gruplar bu soruna çözüm olarak tasarlanmıştır.  
+Uyarı ile ilgilenirken sık görülen bir zorluk, önemli olan ve akıllı grupların bu soruna çözüm olarak ne amaçla düşünülbildiğini öğrenmek için gürültü aracılığıyla karmaşıklaştırır.  
 
-Akıllı gruplar, tek bir sorunu temsil eden ilgili uyarıları birleştirmek için makine öğrenme algoritmaları kullanılarak otomatik olarak oluşturulur.  Bir uyarı oluşturulduğunda, algoritma bunu geçmiş desenler, benzer özellikler ve benzer yapı gibi bilgilere dayalı olarak yeni bir akıllı gruba veya varolan bir akıllı gruba ekler. Örneğin, bir abonelikteki birkaç sanal makinede % CPU aynı anda birçok bireysel uyarıya yol açarsa ve bu tür uyarılar geçmişte herhangi bir zamanda birlikte oluştuysa, bu uyarılar büyük olasılıkla tek bir Smart Group'ta gruplandırılır ve potansiyel ortak kök neden. Bu, bir birinin sorun giderme uyarıları için, akıllı grupların yalnızca ilgili uyarıları tek bir toplu birim olarak yöneterek gürültüyü azaltmalarına izin vermekle kaçtığı, aynı zamanda onları uyarıları için olası ortak kök nedenlerine yönlendiren anlamına gelir.
+Akıllı gruplar, tek bir sorunu temsil eden ilgili uyarıları birleştirmek için makine öğrenimi algoritmaları kullanılarak otomatik olarak oluşturulur.  Bir uyarı oluşturulduğunda, algoritma onu yeni bir akıllı gruba veya geçmiş desenler, benzer özellikler ve benzer yapı gibi bilgilere göre mevcut bir akıllı gruba ekler. Örneğin, bir abonelikteki birkaç sanal makinede bulunan% CPU aynı anda birden çok ayrı uyarı ile önde gelen bir şekilde gerçekleşirse ve bu uyarılar geçmişte bir yerde gerçekleştiyse, bu uyarılar büyük olasılıkla tek bir akıllı grupta gruplandırılır ve bu da olası bir ortak kök nedeni önerir. Diğer bir deyişle, bir sorun giderme uyarısı için, akıllı gruplar yalnızca ilgili uyarıları tek bir toplu birim olarak yöneterek paraziti azaltmalarına izin vermez, bu da bunlara, uyarıları için olası ortak ana nedenlerle kılavuzluk eder.
 
-Şu anda algoritma yalnızca bir abonelik içindeki aynı izleme hizmetinden gelen uyarıları dikkate alır. Akıllı gruplar bu konsolidasyon sayesinde uyarı gürültüsünün %99'a kadarını azaltabilir. Akıllı grup ayrıntıları sayfasında uyarıların bir gruba dahil edilmesinin nedenini görüntüleyebilirsiniz.
+Şu anda algoritma yalnızca bir abonelik içindeki aynı izleyici hizmetinden gelen uyarıları kabul eder. Akıllı gruplar, bu birleştirme sırasında en fazla %99 uyarı gürültüsünü azaltabilir. Uyarıların bir gruba dahil edildiğini akıllı Grup ayrıntıları sayfasında görebilirsiniz.
 
-Akıllı grupların ayrıntılarını görüntüleyebilir ve durumu uyarılarla nasıl yapabileceğinize benzer şekilde ayarlayabilirsiniz. Her uyarı bir ve tek akıllı grubun üyesidir. 
+Akıllı grupların ayrıntılarını görüntüleyebilir ve durumu benzer şekilde uyarılarla birlikte ayarlayabilirsiniz. Her uyarı bir ve yalnızca bir akıllı grubun üyesidir. 
 
-## <a name="smart-group-state"></a>Akıllı grup durumu
+## <a name="smart-group-state"></a>Akıllı Grup durumu
 
-Akıllı grup durumu, çözüm sürecini akıllı grup düzeyinde yönetmenize olanak tanıyan uyarı durumuna benzer bir kavramdır. Uyarı durumuna benzer şekilde, akıllı bir grup oluşturulduğunda, **Onaylanan** veya **Kapalı**olarak değiştirilebilen **Yeni** durum vardır.
+Akıllı Grup durumu, uyarı durumuna yönelik benzer bir kavramdır ve bu, çözümleme işlemini akıllı bir grup düzeyinde yönetmenize olanak sağlar. Uyarı durumuna benzer şekilde, bir akıllı grup oluşturulduğunda, bu, **onaylanan** veya **Kapatılan**olarak değiştirilebilen **Yeni** bir durum içerir.
 
 Aşağıdaki akıllı grup durumları desteklenir.
 
 | Durum | Açıklama |
 |:---|:---|
-| Yeni | Sorun yeni algılandı ve henüz gözden geçirilmedi. |
-| Onaylandı | Bir yönetici akıllı grubu gözden geçirdi ve üzerinde çalışmaya başladı. |
-| Closed | Sorun çözüldü. Akıllı bir grup kapatıldıktan sonra, başka bir duruma değiştirerek yeniden açabilirsiniz. |
+| Yeni | Sorun algılandı ve henüz gözden geçirilmedi. |
+| Onaylandı | Bir yönetici akıllı grubu incelendi ve üzerinde çalışmaya başladı. |
+| Closed | Sorun çözüldü. Bir akıllı grup kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
-[Akıllı grubunuzun durumunu nasıl değiştireceğinizi öğrenin.](https://aka.ms/managing-alert-smart-group-states)
+[Akıllı grubunuzun durumunu değiştirme hakkında bilgi edinin.](https://aka.ms/managing-alert-smart-group-states)
 
 > [!NOTE]
->  Akıllı bir grubun durumunu değiştirmek, tek tek üye uyarılarının durumunu değiştirmez.
+>  Bir akıllı grubun durumunun değiştirilmesi, bağımsız üye uyarılarının durumunu değiştirmez.
 
-## <a name="smart-group-details-page"></a>Akıllı grup ayrıntıları sayfası
+## <a name="smart-group-details-page"></a>Akıllı Grup ayrıntıları sayfası
 
-Akıllı grup ayrıntı sayfası, akıllı bir grup seçtiğinizde görüntülenir. Grubu oluşturmak için kullanılan mantık da dahil olmak üzere akıllı grup hakkında ayrıntılar sağlar ve durumunu değiştirmenize olanak tanır.
+Akıllı Grup Ayrıntısı sayfası, bir akıllı grup seçtiğinizde görüntülenir. Bu, grubu oluşturmak için kullanılan düşünme dahil olmak üzere akıllı grup hakkında ayrıntılar sağlar ve durumunu değiştirmenizi sağlar.
  
-![Akıllı grup detayı](media/alerts-smartgroups-overview/smart-group-detail.png)
+![Akıllı Grup Ayrıntısı](media/alerts-smartgroups-overview/smart-group-detail.png)
 
 
-Akıllı grup ayrıntı sayfası aşağıdaki bölümleri içerir.
+Akıllı Grup Ayrıntısı sayfası aşağıdaki bölümleri içerir.
 
 | Section | Açıklama |
 |:---|:---|
-| Uyarılar | Akıllı gruba dahil edilen tek tek uyarıları listeler. Uyarı ayrıntı sayfasını açmak için bir uyarı seçin. |
-| Geçmiş | Akıllı grup tarafından gerçekleştirilen her eylemi ve bu grupta yapılan değişiklikleri listeler. Bu, şu anda durum değişiklikleri ve uyarı üyelik değişiklikleri ile sınırlıdır. |
+| Uyarılar | Akıllı gruba dahil olan bireysel uyarıları listeler. Uyarı ayrıntısı sayfasını açmak için bir uyarı seçin. |
+| Geçmiş | Akıllı grup tarafından gerçekleştirilen her eylemi ve üzerinde yapılan değişiklikleri listeler. Bu, şu anda durum değişiklikleri ve uyarı üyeliği değişiklikleri ile sınırlıdır. |
 
-## <a name="smart-group-taxonomy"></a>Akıllı grup taksonomi
+## <a name="smart-group-taxonomy"></a>Akıllı grup sınıflandırması
 
-Akıllı bir grubun adı ilk uyarısının adıdır. Akıllı bir grup oluşturamaz veya yeniden adlandıramazsınız.
+Bir akıllı grubun adı, ilk uyarısının adıdır. Akıllı grup oluşturamaz veya yeniden adlandıramazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Akıllı grupları yönetme](https://aka.ms/managing-smart-groups)
-- [Uyarınızı ve akıllı grup durumunuzu değiştirme](https://aka.ms/managing-alert-smart-group-states)
+- [Uyarınızı ve akıllı grup durumunu değiştirme](https://aka.ms/managing-alert-smart-group-states)
 
 

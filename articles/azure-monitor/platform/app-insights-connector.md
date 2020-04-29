@@ -1,272 +1,272 @@
 ---
-title: Azure Uygulama Öngörüleri uygulama verilerini görüntüleyin | Microsoft Dokümanlar
-description: Performans sorunlarını tanılamak ve Uygulama Öngörüleri ile izlendiğinde kullanıcıların uygulamanızla ne yaptığını anlamak için Application Insights Bağlayıcısı çözümünü kullanabilirsiniz.
+title: Azure Application Insights uygulama verilerini görüntüleme | Microsoft Docs
+description: Application Insights Bağlayıcısı çözümünü kullanarak performans sorunlarını tanılamanıza ve Application Insights ile izlendiğinde hangi kullanıcıların uygulamanızla ne yaptığını anlayabilmeniz için kullanabilirsiniz.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77665174"
 ---
-# <a name="application-insights-connector-management-solution-deprecated"></a>Uygulama Öngörüleri Bağlayıcı yönetimi çözümü (Amortismana Uğradı)
+# <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
 
-![Uygulama Öngörüleri simgesi](./media/app-insights-connector/app-insights-connector-symbol.png)
+![Application Insights simgesi](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Kaynaklar arası [sorguların](../../azure-monitor/log-query/cross-workspace-query.md)desteğiyle, Uygulama Öngörüleri Bağlayıcısı yönetimi çözümü artık gerekli değildir. Azure ticari bulutu için 15 Ocak 2019'da resmen devreden OMS portalı ile birlikte Azure Marketi'nden kaldırıldı. Azure ABD Devlet bulutu için 30 Mart 2019'da kullanımdan kaldırılacaktır.
+> [Çapraz kaynak sorguları](../../azure-monitor/log-query/cross-workspace-query.md)desteğiyle Application Insights Bağlayıcısı yönetim çözümü artık gerekli değildir. Azure ticari bulut için 15 Ocak 2019 tarihinde kullanımdan kaldırılan OMS portalı ile birlikte kullanımdan kaldırılmıştır ve Azure Marketi 'nden kaldırılmıştır. Azure ABD Kamu Bulutu için 30 Mart 2019 ' de kullanımdan kaldırılacaktır.
 >
->Mevcut bağlantılar 30 Haziran 2019'a kadar çalışmaya devam edecektir.  OMS portalı amortismanı ile, varolan bağlantıları yapılandırmanın ve portaldan kaldırmanın bir yolu yoktur. Mevcut bağlantıları kaldırmak için PowerShell'i kullanma yla ilgili bir komut dosyası için aşağıdaki [PowerShell ile konektörü kaldırma](#removing-the-connector-with-powershell) yabakın.
+>Mevcut bağlantılar 30 Haziran 2019 ' e kadar çalışmaya devam edecektir.  OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Mevcut bağlantıları kaldırmak için PowerShell 'i kullanma konusunda bir betik için aşağıdaki [PowerShell ile bağlayıcıyı kaldırma](#removing-the-connector-with-powershell) bölümüne bakın.
 >
->Birden çok uygulama için Uygulama Öngörüleri günlük verilerini sorgulama kılavuzu için [bkz.](../log-query/unify-app-resource-data.md) OMS portalı amortismanı hakkında daha fazla bilgi için [Azure'a taşınan OMS portalına](../../azure-monitor/platform/oms-portal-transition.md)bakın.
+>Birden çok uygulama için Application Insights günlük verilerini sorgulama konusunda rehberlik için bkz. [birden çok Azure izleyicisini Application Insights kaynağı](../log-query/unify-app-resource-data.md)birleştirme. OMS portalının kullanımdan kaldırılması hakkında daha fazla bilgi için bkz. [OMS portalı Azure 'a taşınıyor](../../azure-monitor/platform/oms-portal-transition.md).
 >
 > 
 
-Applications Insights Bağlayıcısı çözümü, uygulama [istatistikleri](../../azure-monitor/app/app-insights-overview.md)ile izlendiğinde performans sorunlarını tanılamanıza ve kullanıcıların uygulamanızla ne yaptığını anlamanıza yardımcı olur. Geliştiricilerin Application Insights'ta gördükleri aynı uygulama telemetrisinin görünümleri Log Analytics'te mevcuttur. Ancak, Application Insights uygulamalarınızı Log Analytics ile entegre ettiğinizde, operasyon ve uygulama verilerinin tek bir yerde olmasıyla uygulamalarınızın görünürlüğü artar. Aynı görünümlere sahip olmak, uygulama geliştiricilerinizle işbirliği yapmaya yardımcı olur. Ortak görünümler, hem uygulama hem de platform sorunlarını algılama ve çözme süresini azaltmaya yardımcı olabilir.
+Uygulama öngörüleri Bağlayıcısı çözümü, performans sorunlarını tanılamanıza ve [Application Insights](../../azure-monitor/app/app-insights-overview.md)ile izlendiğinde hangi kullanıcıların uygulamanızla ne yaptığını anlamanıza yardımcı olur. Application Insights ' de geliştiricilerin göreceği aynı uygulama telemetrisine ilişkin Görünümler Log Analytics sunulmaktadır. Ancak, Application Insights uygulamalarınızı Log Analytics tümleştirdiğinizde, uygulamalarınızın görünürlüğü işlem ve uygulama verileri tek bir yerde bulundurarak artar. Aynı görünümlerin olması, uygulama geliştiricilerinizle işbirliği yapmanıza yardımcı olur. Ortak görünümler, hem uygulama hem de platform sorunlarını tespit etmek ve çözümlemek için süreyi azaltmaya yardımcı olabilir.
 
 Çözümü kullandığınızda şunları yapabilirsiniz:
 
-- Farklı Azure aboneliklerinde olsalar bile tüm Application Insights uygulamalarınızı tek bir yerde görüntüleyin
-- Altyapı verilerini uygulama verileriyle ilişkilendirme
+- Farklı Azure aboneliklerinde olsalar dahi, tüm Application Insights uygulamalarınızı tek bir yerde görüntüleyin
+- Altyapı verilerinin uygulama verileriyle ilişkilendirilmesi
 - Günlük aramasında perspektiflerle uygulama verilerini görselleştirin
-- Azure portalındaki Log Analytics verilerinden Application Insights uygulamanıza dönüş
+- Azure portal Application Insights uygulamanıza Log Analytics verilerden Özet
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connected-sources"></a>Bağlı kaynaklar
 
-Diğer Log Analytics çözümlerinin aksine, uygulamalar için aracılar tarafından veri toplanmaz. Çözüm tarafından kullanılan tüm veriler doğrudan Azure'dan gelir.
+Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından Application Insights Bağlayıcısı için toplanmaz. Çözüm tarafından kullanılan tüm veriler doğrudan Azure 'dan gelir.
 
 | Bağlı Kaynak | Destekleniyor | Açıklama |
 | --- | --- | --- |
-| [Windows aracıları](../../azure-monitor/platform/agent-windows.md) | Hayır | Çözüm, Windows aracılarından bilgi toplamaz. |
-| [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır | Çözüm, Linux ajanlarından bilgi toplamaz. |
+| [Windows aracıları](../../azure-monitor/platform/agent-windows.md) | Hayır | Çözüm Windows aracılarından bilgi toplamaz. |
+| [Linux aracıları](../../azure-monitor/learn/quick-collect-linux-computer.md) | Hayır | Çözüm, Linux aracılarından bilgi toplamaz. |
 | [SCOM yönetim grubu](../../azure-monitor/platform/om-agents.md) | Hayır | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
-| [Azure depolama hesabı](collect-azure-metrics-logs.md) | Hayır | Çözüm, Azure depolamadan bilgi toplamaz. |
+| [Azure depolama hesabı](collect-azure-metrics-logs.md) | Hayır | Çözüm, Azure Storage 'dan bilgi toplamaz. |
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Application Insights Bağlayıcı bilgilerine erişmek için bir Azure aboneliğiniz olması gerekir
-- En az bir yapılandırılmış Uygulama Öngörüleri kaynağınız olmalıdır.
-- Application Insights kaynağının sahibi veya katılımcısı olmalısınız.
+- Application Insights Bağlayıcısı bilgilerine erişmek için bir Azure aboneliğinizin olması gerekir
+- En az bir yapılandırılmış Application Insights kaynağınız olmalıdır.
+- Application Insights kaynağın sahibi veya katılımcısı olmanız gerekir.
 
 ## <a name="configuration"></a>Yapılandırma
 
-1. Azure Web Apps Analytics çözümlerini [Azure pazar alanından](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) veya [Çözüm Galerisi'nden Log Analytics Ekle çözümlerinde](../../azure-monitor/insights/solutions.md)açıklanan işlemi kullanarak etkinleştirin.
-2. [Azure portalına](https://portal.azure.com)göz atın. Application Insights'ı açmak için **tüm hizmetleri** seçin. Ardından, Uygulama Öngörüleri'ni arayın. 
-3. **Abonelikler**altında, Application Insights kaynaklarına sahip bir abonelik seçin ve ardından **Ad**altında bir veya daha fazla uygulama seçin.
-4. **Kaydet**'e tıklayın.
+1. Azure Web Apps Analytics çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 'nden veya [Çözüm Galerisi Log Analytics çözümleri ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
+2. [Azure Portal](https://portal.azure.com)gidin. Application Insights açmak için **tüm hizmetler** ' i seçin. Sonra, Application Insights için arama yapın. 
+3. **Abonelikler**' in altında Application Insights kaynaklara sahip bir abonelik seçin ve ardından **ad**' ın altında bir veya daha fazla uygulama seçin.
+4. **Kaydet**’e tıklayın.
 
-Yaklaşık 30 dakika içinde veriler kullanılabilir hale gelir ve Application Insights döşemesi aşağıdaki resim gibi verilerle güncelleştirilir:
+Yaklaşık 30 dakika içinde, veriler kullanılabilir hale gelir ve Application Insights kutucuğu aşağıdaki görüntüde olduğu gibi verilerle güncelleştirilir:
 
-![Uygulama Öngörüleri döşemesi](./media/app-insights-connector/app-insights-tile.png)
+![Application Insights kutucuğu](./media/app-insights-connector/app-insights-tile.png)
 
-Akılda tutulması gereken diğer noktalar:
+Göz önünde bulundurmanız gereken diğer noktaları:
 
 - Application Insights uygulamalarını yalnızca bir Log Analytics çalışma alanına bağlayabilirsiniz.
-- Temel veya [Kurumsal Uygulama Öngörüleri kaynaklarını](https://azure.microsoft.com/pricing/details/application-insights) yalnızca Log Analytics'e bağlayabilirsiniz. Ancak, Log Analytics'in Ücretsiz katmanını kullanabilirsiniz.
+- [Temel veya kurumsal Application Insights kaynaklarını](https://azure.microsoft.com/pricing/details/application-insights) yalnızca Log Analytics bağlayabilirsiniz. Ancak, Log Analytics ücretsiz katmanını kullanabilirsiniz.
 
 ## <a name="management-packs"></a>Yönetim paketleri
 
-Bu çözüm, bağlı yönetim gruplarına herhangi bir yönetim paketi yüklemez.
+Bu çözüm bağlı yönetim gruplarına herhangi bir yönetim paketi yüklemez.
 
-## <a name="use-the-solution"></a>Çözümü kullanın
+## <a name="use-the-solution"></a>Çözümü kullanma
 
-Aşağıdaki bölümlerde, uygulamalarınızdaki verileri görüntülemek ve bunlarla etkileşimde kalmak için Application Insights panosunda gösterilen bıçakları nasıl kullanabileceğiniz açıklanmaktadır.
+Aşağıdaki bölümlerde, uygulamalarınızdaki verileri görüntülemek ve bunlarla etkileşim kurmak için Application Insights panosunda gösterilen dikey pencereleri nasıl kullanabileceğiniz açıklanır.
 
-### <a name="view-application-insights-connector-information"></a>Uygulama Öngörüleri Bağlayıcı bilgilerini görüntüleyin
+### <a name="view-application-insights-connector-information"></a>Application Insights Bağlayıcısı bilgilerini görüntüle
 
-Aşağıdaki **bıçakları** görmek için Application Insights panosunu açmak için Application **Insights** döşemesini tıklatın.
+Aşağıdaki dikey pencereleri görmek için **Application Insights** panosunu açmak üzere **Application Insights** kutucuğuna tıklayın.
 
 ![Application Insights panosu](./media/app-insights-connector/app-insights-dash01.png)
 
 ![Application Insights panosu](./media/app-insights-connector/app-insights-dash02.png)
 
-Pano, tabloda gösterilen bıçakları içerir. Her dikey pencerede, dikey pencerenin belirtilen kapsam ve zaman aralığına yönelik ölçütleriyle eşleşen en fazla 10 öğe listelenir. Bıçağın altındaki tüm kayıtları **gör'ü** tıklattığınızda veya bıçak başlığını tıklattığınızda tüm kayıtları döndüren bir günlük araması çalıştırabilirsiniz.
+Pano, tabloda gösterilen dikey pencereleri içerir. Her dikey pencerede, dikey pencerenin belirtilen kapsam ve zaman aralığına yönelik ölçütleriyle eşleşen en fazla 10 öğe listelenir. Dikey pencerenin en altında bulunan **Tümünü göster** ' e tıkladığınızda veya dikey pencere başlığına tıkladığınızda tüm kayıtları döndüren bir günlük araması çalıştırabilirsiniz.
 
 
 | **Sütun** | **Açıklama** |
 | --- | --- |
-| Uygulamalar - Başvuru sayısı | Uygulama kaynaklarındaki uygulama sayısını gösterir. Ayrıca uygulama adlarını ve her biri için uygulama kayıtlarının sayısını listeler. Bir günlük aramasını çalıştırmak için numarayı tıklatın<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Ana bilgisayar başına uygulama kayıtlarını, telemetri türüne göre kayıtları ve türüne göre tüm verileri (son güne göre) gösteren uygulama için günlük araması çalıştırmak için bir uygulama adını tıklatın. |
-| Veri Hacmi – Veri gönderen ana bilgisayarlar | Veri gönderen bilgisayar ana bilgisayarlarının sayısını gösterir. Ayrıca, her ana bilgisayar için bilgisayar ana bilgisayarlarını ve kayıt sayısını listeler. Bir günlük aramasını çalıştırmak için numarayı tıklatın<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Ana bilgisayar başına uygulama kayıtlarını, telemetri türüne göre kayıtları ve türüne göre tüm verileri (son güne göre) gösteren ana bilgisayar için günlük aramasını çalıştırmak için bir bilgisayar adını tıklatın. |
-| Kullanılabilirlik – Webtest sonuçları | Geçiş veya başarısız olduğunu gösteren web test sonuçları için halka grafiği gösterir. Günlük aramasını çalıştırmak için grafiği tıklatın<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Sonuçlar, tüm testler için geçiş ve hata sayısını gösterir. Tüm Web Uygulamalarını son dakika trafiğiyle gösterir. Başarısız web testlerinin ayrıntılarını gösteren günlük aramasını görüntülemek için bir uygulama adını tıklatın. |
-| Sunucu İstekleri – Saat başına istekler | Çeşitli uygulamalar için sunucu isteklerinin saat başına bir çizgi grafiğini gösterir. Zaman içinde bir nokta için istek alan ilk 3 uygulamayı görmek için grafikteki bir çizginin üzerine takın. Ayrıca, istek alan uygulamaların listesini ve seçilen döneme ait istek sayısını da gösterir. <br><br>Çeşitli uygulamalar için sunucu isteklerinin saat başına daha ayrıntılı bir çizgi grafiğini gösteren bir günlük araması çalıştırmak için <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> grafiği tıklatın. <br><br> İsteklerin listesini, zaman içinde istek <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> ve istek süresi için grafikleri ve istek yanıt kodlarının listesini gösteren bir günlük araması çalıştırmak için listedeki bir uygulamayı tıklatın.   |
-| Hatalar – Saat başına başarısız istekler | Saat başına başarısız uygulama isteklerinin bir çizgi grafiğini gösterir. Zaman içinde bir nokta için başarısız istekleri ile ilk 3 uygulamaları görmek için grafik üzerinde gezinmek. Ayrıca, her biri için başarısız istek sayısına sahip uygulamaların listesini de gösterir. Başarısız uygulama isteklerinin daha <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> ayrıntılı bir çizgi grafiğini gösteren bir günlük araması çalıştırmak için grafiği tıklatın. <br><br>Başarısız istekleri, zaman içinde başarısız isteklerin grafiklerini ve istek süresini ve başarısız istek yanıt kodlarının listesini gösteren bir günlük aramasını çalıştırmak için <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> listedeki bir öğeyi tıklatın. |
-| İstisnalar – Saat başına özel durumlar | Saat başına özel durumların bir çizgi grafiğini gösterir. Zaman içinde bir nokta için istisnalar dışında ilk 3 uygulamaları görmek için grafiğin üzerine tover. Ayrıca, her biri için özel durum sayısı olan uygulamaların listesini gösterir. Özel durumların daha ayrıntılı bir <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> bağlantı grafiğini gösteren bir günlük araması çalıştırmak için grafiği tıklatın. <br><br>Özel durumların listesini, zaman içinde özel <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> durumlara yönelik grafikleri ve başarısız istekleri gösteren günlük aramasını çalıştırmak için listedeki bir öğeyi ve özel durum türlerinin listesini tıklatın.  |
+| Uygulamalar-uygulama sayısı | Uygulama kaynaklarındaki uygulamaların sayısını gösterir. Ayrıca uygulama adlarını ve her biri için uygulama kaydı sayısını listeler. Günlük araması çalıştırmak için sayıya tıklayın<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Uygulama başına uygulama kayıtlarını, telemetri türüne göre kayıtları ve tüm verileri türe göre (son güne göre) gösteren uygulama için bir uygulama adı ' na tıklayın. |
+| Veri hacmi – verileri gönderen konaklar | Veri gönderen bilgisayar ana bilgisayarlarının sayısını gösterir. Ayrıca, her bir konak için bilgisayar ana bilgisayarlarını ve kayıt sayısını listeler. Günlük araması çalıştırmak için sayıya tıklayın<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Konak başına uygulama kayıtlarını, telemetri türüne göre kayıtları ve tüm verileri türe göre (son güne göre) gösteren bir günlük araması çalıştırmak için bir bilgisayar adına tıklayın. |
+| Kullanılabilirlik – WebTest sonuçları | Pass veya fail belirten Web test sonuçları için halka grafiği gösterir. Günlük araması çalıştırmak için grafiğe tıklayın<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Sonuçlar tüm testler için geçen geçiş sayısını ve başarısızlığı gösterir. Son dakikadaki trafikle birlikte tüm Web Apps gösterir. Başarısız Web testlerinin ayrıntılarını gösteren bir günlük aramasını görüntülemek için bir uygulama adına tıklayın. |
+| Sunucu Istekleri – saat başına Istek | Çeşitli uygulamalar için saat başına sunucu isteklerinin çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik istekleri alan ilk 3 uygulamayı görmek için grafikteki bir çizginin üzerine gelin. Ayrıca, istek alan uygulama ve seçilen döneme ait istek sayısını gösteren bir liste gösterir. <br><br>Çeşitli uygulamalar için saat başına sunucu isteklerinin daha ayrıntılı <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> bir çizgi grafiğini gösteren bir günlük araması çalıştırmak için grafiğe tıklayın. <br><br> İstek listesini, zaman içindeki isteklere yönelik grafikleri, istek süresini ve <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> istek yanıt kodlarının listesini gösteren bir günlük araması çalıştırmak için listeden bir uygulamaya tıklayın.   |
+| Hata – saat başına başarısız istek | Saat başına başarısız uygulama isteklerinin çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik başarısız isteklere sahip ilk 3 uygulamayı görmek için grafiğin üzerine gelin. Ayrıca, her biri için başarısız istek sayısı olan uygulamaların listesini gösterir. Başarısız uygulama isteklerinin daha ayrıntılı bir çizgi grafiğini gösteren <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> bir günlük araması çalıştırmak için grafiğe tıklayın. <br><br>Başarısız istekleri, zaman içinde başarısız isteklere yönelik grafikleri ve başarısız istek <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> yanıt kodlarının listesini gösteren bir günlük araması çalıştırmak için listedeki bir öğeye tıklayın. |
+| Özel durumlar – saat başına özel durumlar | Saat başına özel durumların çizgi grafiğini gösterir. Zaman içinde bir noktaya yönelik özel durumlarla ilk 3 uygulamayı görmek için grafiğin üzerine gelin. Ayrıca, her biri için özel durum sayısına sahip uygulamaların listesini gösterir. Özel durumların daha ayrıntılı bir bağlantı grafiğini gösteren bir <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> günlük araması çalıştırmak için grafiğe tıklayın. <br><br>Bir özel durum listesi, zaman içinde özel durumlar ve başarısız istekler <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> için grafikler ve özel durum türlerinin bir listesi gösteren bir günlük araması çalıştırmak için listedeki bir öğeye tıklayın.  |
 
-### <a name="view-the-application-insights-perspective-with-log-search"></a>Günlük aramaile Uygulama Öngörüleri perspektifini görüntüleyin
+### <a name="view-the-application-insights-perspective-with-log-search"></a>Günlük aramayla Application Insights perspektifini görüntüleme
 
-Panodaki herhangi bir öğeyi tıklattığınızda, aramada gösterilen bir Uygulama Öngörüleri perspektifi görürsünüz. Perspektif, seçilen telemetri türüne dayalı genişletilmiş bir görselleştirme sağlar. Yani, farklı telemetri türleri için görselleştirme içeriği değişiklikleri.
+Panodaki herhangi bir öğeye tıkladığınızda, aramada gösterilen Application Insights perspektifini görürsünüz. Perspektif, seçilen telemetri türüne göre genişletilmiş bir görselleştirme sağlar. Bu nedenle, görselleştirme içeriği farklı telemetri türlerine göre değişir.
 
-Uygulamalar çubuğunda herhangi bir yeri tıklattığınızda, varsayılan **Uygulamalar** perspektifini görürsünüz.
+Uygulamalar dikey penceresinde herhangi bir yere tıkladığınızda varsayılan **uygulamaların** perspektifini görürsünüz.
 
-![Uygulama Öngörüleri Uygulamaları perspektifi](./media/app-insights-connector/applications-blade-drill-search.png)
+![Application Insights uygulamaları perspektifi](./media/app-insights-connector/applications-blade-drill-search.png)
 
-Perspektif, seçtiğiniz uygulamanın genel görünümünü gösterir.
+Perspektif, seçtiğiniz uygulamaya bir genel bakış gösterir.
 
-**Kullanılabilirlik** bıçağı, web test sonuçlarını ve ilgili başarısız istekleri görebileceğiniz farklı bir perspektif görünümü gösterir.
+**Kullanılabilirlik** dikey penceresinde Web testi sonuçlarını ve ilgili başarısız istekleri görebileceğiniz farklı bir perspektif görünümü gösterilmektedir.
 
-![Uygulama Öngörüleri Kullanılabilirlik perspektifi](./media/app-insights-connector/availability-blade-drill-search.png)
+![Application Insights kullanılabilirlik perspektifi](./media/app-insights-connector/availability-blade-drill-search.png)
 
-**Sunucu İstekleri** veya **Hataları** bıçaklarında herhangi bir yeri tıklattığınızda, perspektif bileşenleri size isteklerle ilgili bir görselleştirme sağlamak için değişir.
+**Sunucu istekleri** veya **arızaların** dikey penceresinde herhangi bir yere tıkladığınızda, perspektif bileşenleri, isteklerle ilgili bir görselleştirme sağlamak üzere değişir.
 
-![Uygulama Öngörüleri Hatalar bıçak](./media/app-insights-connector/server-requests-failures-drill-search.png)
+![Application Insights arızalar dikey penceresi](./media/app-insights-connector/server-requests-failures-drill-search.png)
 
-**Özel Durumlar** bıçağının herhangi bir yerine tıkladığınızda, özel durumlara göre uyarlanmış bir görselleştirme görürsünüz.
+**Özel durumlar** dikey penceresinde herhangi bir yere tıkladığınızda, özel durumlara uyarlanmış bir görselleştirme görürsünüz.
 
-![Uygulama Öngörüleri İstisnalar bıçak](./media/app-insights-connector/exceptions-blade-drill-search.png)
+![Application Insights özel durumlar dikey penceresi](./media/app-insights-connector/exceptions-blade-drill-search.png)
 
-Bir şeyi tıklayıp tıklatmadığınızdan bağımsız olarak, Arama **sayfasının** kendisi içinde, **Uygulama** Öngörüleri verilerini döndüren tüm sorgular Uygulama Öngörüleri perspektifini gösterir. Örneğin, Application Insights verilerini görüntüleyorsanız, **&#42;** sorgusu perspektif sekmesini aşağıdaki resim gibi gösterir:
+Tek bir **Application Insights Bağlayıcısı** panosuna tıklamasından bağımsız olarak, **arama** sayfasının kendisi içinde Application Insights verileri döndüren herhangi bir sorgu Application Insights perspektifini gösterir. Örneğin, Application Insights verileri görüntülüyorsanız, **&#42;** bir sorgu aşağıdaki görüntüde olduğu gibi perspektif sekmesini de gösterir:
 
 ![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
-Perspektif bileşenleri arama sorgusuna bağlı olarak güncelleştirilir. Bu, verileri görmenizi sağlayan herhangi bir arama alanını kullanarak sonuçları filtreleyebilirsiniz:
+Perspektif bileşenleri, arama sorgusuna göre güncelleştirilir. Bu, sonuçları, verileri görebileceğiniz bir arama alanı kullanarak filtreleyebileceğiniz anlamına gelir:
 
 - Tüm uygulamalarınız
-- Tek bir seçili uygulama
-- Bir uygulama grubu
+- Tek Seçili uygulama
+- Uygulama grubu
 
-### <a name="pivot-to-an-app-in-the-azure-portal"></a>Azure portalındaki bir uygulamaya dönüş
+### <a name="pivot-to-an-app-in-the-azure-portal"></a>Azure portal bir uygulamaya Özet
 
-Uygulama Öngörüleri Bağlayıcı bıçakları, *Azure portalını kullandığınızda*seçili Application Insights uygulamasına dönebilmeniz için tasarlanmıştır. Çözümü, bir uygulamayı sorun gidermenize yardımcı olan üst düzey bir izleme platformu olarak kullanabilirsiniz. Bağlı uygulamalarınızdan herhangi birinde olası bir sorun gördüğünüzde, Log Analytics aramasında bu sorunu inceleyebilir veya doğrudan Application Insights uygulamasına dönebilirsiniz.
+Application Insights Bağlayıcısı Blade *, Azure Portal kullandığınızda*seçili Application Insights uygulamasına Özet uygulamanızı sağlamak üzere tasarlanmıştır. Çözümü, bir uygulamanın sorunlarını gidermenize yardımcı olan üst düzey bir izleme platformu olarak kullanabilirsiniz. Bağlı uygulamalarınızdan birinde olası bir sorun gördüğünüzde, Log Analytics arama ' da ayrıntısına gidebilir veya doğrudan Application Insights uygulamasına özetleyebilirsiniz.
 
-Pivot için, her satırın sonunda görünen elipsler **(...**) 'yi tıklatın ve **Uygulama Öngörüleri'nde Aç'ı**seçin.
+Özet 'e, her satırın sonunda görüntülenen üç noktaya (**...**) tıklayın ve **Application Insights aç**' ı seçin.
 
 >[!NOTE]
->**Uygulama Öngörüleri'nde Açık,** Azure portalında kullanılamıyor.
+>**Application Insights Içinde aç** Azure portal kullanılamıyor.
 
-![Uygulama Öngörülerinde Açık](./media/app-insights-connector/open-in-app-insights.png)
+![Application Insights aç](./media/app-insights-connector/open-in-app-insights.png)
 
 ### <a name="sample-corrected-data"></a>Örnek düzeltilmiş veriler
 
-Application Insights, telemetri trafiğini azaltmaya yardımcı olmak için *[örnekleme düzeltmesi](../../azure-monitor/app/sampling.md)* sağlar. Application Insights uygulamanızda örneklemeyi etkinleştirdiğinizde, hem Uygulama Öngörüleri'nde hem de Log Analytics'te depolanan daha az sayıda giriş elde elabilirsiniz. Veri tutarlılığı **Application Insights Bağlayıcı** sı ve perspektiflerinde korunurken, özel sorgularınız için örneklenmiş verileri el ile düzeltmeniz gerekir.
+Application Insights telemetri trafiğini azaltmaya yardımcı olmak için *[örnekleme düzeltmesi](../../azure-monitor/app/sampling.md)* sağlar. Application Insights uygulamanızda örnekleme etkinleştirdiğinizde, hem Application Insights hem de Log Analytics içinde depolanan daha az sayıda giriş alırsınız. **Application Insights Bağlayıcısı** sayfasında ve perspektiflerde veri tutarlılığı korunurken, özel sorgularınız için örneklenmiş verileri el ile düzeltmeniz gerekir.
 
-Burada bir günlük arama sorgusunda örnekleme düzeltme bir örnektir:
+Günlük arama sorgusunda örnekleme düzeltmesinin bir örneği aşağıda verilmiştir:
 
 ```
 ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by TelemetryType
 ```
 
-**Örneklenmiş Sayım** alanı tüm girişlerde bulunur ve girişin temsil ettiği veri noktalarının sayısını gösterir. Application Insights uygulamanız için örneklemeyi açarsanız, **Örneklenmiş Sayı** 1'den büyüktür. Uygulamanızın oluşturduğu gerçek giriş sayısını saymak için **Örneklenmiş Sayım** alanlarını toplamı.
+**Örneklenmiş sayı** alanı tüm girdilerde bulunur ve girişin temsil ettiği veri noktalarının sayısını gösterir. Application Insights uygulamanız için örnekleme açarsanız, **örneklenmiş sayı** 1 ' den büyük olur. Uygulamanızın oluşturduğu girişlerin gerçek sayısını saymak için **örneklenmiş sayı** alanlarını toplayın.
 
-Örnekleme yalnızca uygulamanızın oluşturduğu toplam giriş sayısını etkiler. Bu alanlar temsil edilen girişlerin ortalamasını gösterdiğinden, **RequestDuration** veya **AvailabilityDuration** gibi metrik alanlar için örneklemeyi düzeltmeniz gerekmez.
+Örnekleme yalnızca uygulamanızın oluşturduğu toplam giriş sayısını etkiler. Bu alanlar, temsil edilen girdilerin ortalamasını gösterdiği için **RequestDuration** veya **kullanılabilirlik süresi** gibi ölçüm alanları için örnekleme düzeltmeniz gerekmez.
 
 ## <a name="input-data"></a>Giriş verileri
 
 Çözüm, bağlı Application Insights uygulamalarınızdan aşağıdaki telemetri veri türlerini alır:
 
 - Kullanılabilirlik
-- Özel durumlar
+- Özel Durumlar
 - İstekler
-- Sayfa görünümleri – Çalışma alanınızın sayfa görüntülemelerini alabilmesi için uygulamalarınızı bu bilgileri toplamak üzere yapılandırmanız gerekir. Daha fazla bilgi için [Bkz. PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Özel etkinlikler – Çalışma alanınızın özel etkinlikler alması için uygulamalarınızı bu bilgileri toplamak üzere yapılandırmanız gerekir. Daha fazla bilgi için [TrackEvent'e](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)bakın.
+- Sayfa görünümleri: çalışma alanınızın sayfa görünümlerini alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
+- Özel olaylar: çalışma alanınızın özel olayları alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Trackevent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-Veriler, Kullanıma sunulduğunda Log Analytics tarafından Application Insights'tan alınır.
+Veriler, kullanılabilir hale geldiği için Application Insights Log Analytics tarafından alınır.
 
 ## <a name="output-data"></a>Çıktı verileri
 
-Her giriş verisi türü için *applicationinsights* *türüne* sahip bir kayıt oluşturulur. ApplicationInsights kayıtlarıaşağıdaki bölümlerde gösterilen özelliklere sahiptir:
+Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt oluşturulur. ApplicationInsights kayıtları, aşağıdaki bölümlerde gösterilen özelliklere sahiptir:
 
 ### <a name="generic-fields"></a>Genel alanlar
 
 | Özellik | Açıklama |
 | --- | --- |
 | Tür | ApplicationInsights |
-| Müşteri IP |   |
+| ClientIP |   |
 | TimeGenerated | Kaydın zamanı |
-| ApplicationID | Application Insights uygulamasının enstrümantasyon anahtarı |
-| ApplicationName | Uygulama Öngörüleri uygulamasının adı |
-| RoleInstance | Sunucu ana bilgisayarkimliği |
-| DeviceType | İstemci aygıtı |
-| Ekran Çözünürlüğü |   |
-| Kıta | Talebin kaynaklandığı kıta |
-| Ülke | Talebin kaynaklandığı ülke/bölge |
-| Eyaleti | İsteğin kaynağı olan il, eyalet veya yerel |
-| Şehir | Talebin kaynaklandığı şehir veya kasaba |
-| isSentetik | İsteğin bir kullanıcı tarafından mı yoksa otomatik yöntemle mi oluşturulduğunu gösterir. True = otomatik yöntem veya false = kullanıcı oluşturulan |
-| Örnekleme Hızı | Portala gönderilen SDK tarafından oluşturulan telemetri yüzdesi. Aralık 0.0-100.0. |
-| Örneklenmiş Sayma | 100/(Örnekleme Oranı). Örneğin, 4&gt; = 25% |
-| ısauthenticated | Doğru veya yanlış |
-| OperationID | Aynı işlem kimliğine sahip öğeler portalda İlgili Öğeler olarak gösterilir. Genellikle istek kimliği |
-| ParentOperationID | Üst işlemin kimliği |
+| ApplicationID | Application Insights uygulamasının izleme anahtarı |
+| ApplicationName | Application Insights uygulamasının adı |
+| Roleınstance | Sunucu konağının KIMLIĞI |
+| DeviceType | İstemci cihazı |
+| Ekran çözünürlüğü |   |
+| Kıta | İsteğin başlatıldığı kıta |
+| Ülke | İsteğin kaynaklandığı ülke/bölge |
+| İl | İsteğin kaynaklandığı bölge, eyalet veya yerel ayar |
+| Şehir | İsteğin kaynaklandığı şehir veya kent |
+| Isyapay | İsteğin bir kullanıcı veya otomatik yöntem tarafından oluşturulup oluşturulmayacağını gösterir. True = otomatik Yöntem veya yanlış = Kullanıcı tarafından oluşturulan |
+| SamplingRate | Portala gönderilen SDK tarafından oluşturulan telemetri yüzdesi. Aralık 0.0-100.0. |
+| Örnekledcount | 100/(SamplingRate). Örneğin, 4 =&gt; %25 |
+| IsAuthenticated | True veya false |
+| OperationId | Aynı işlem KIMLIĞINE sahip öğeler portalda Ilgili öğeler olarak gösterilir. Genellikle istek KIMLIĞI |
+| Parentoperationıd | Üst işlemin KIMLIĞI |
 | ThrottledRequests |   |
-| SessionId | İsteğin oluşturulduğu oturumu benzersiz olarak tanımlamak için GUID |
+| SessionId | İsteğin oluşturulduğu oturumu benzersiz şekilde tanımlamak için GUID |
 | SourceSystem | ApplicationInsights |
 
-### <a name="availability-specific-fields"></a>Kullanılabilirlik özel alanlar
+### <a name="availability-specific-fields"></a>Kullanılabilirliğine özgü alanlar
 
 | Özellik | Açıklama |
 | --- | --- |
-| TelemetriTipi | Kullanılabilirlik |
-| AvailabilityTestName | Web testinin adı |
-| AvailabilityRunLocation | Http isteğinin coğrafi kaynağı |
-| Kullanılabilirlik Sonucu | Web testinin başarı sonucunu gösterir |
-| Kullanılabilirlik Mesajı | Web sınaması ekli ileti |
-| Kullanılabilirlik Sayısı | 100/(Örnekleme Oranı). Örneğin, 4&gt; = 25% |
-| DataSizeMetricValue | 1.0 veya 0.0 |
-| VeriBoyutMetricCount | 100/(Örnekleme Oranı). Örneğin, 4&gt; = 25% |
-| KullanılabilirlikSüresi | Web test süresinin milisaniye cinsinden süresi |
-| AvailabilityDurationCount | 100/(Örnekleme Oranı). Örneğin, 4&gt; = 25% |
-| Kullanılabilirlik Değeri |   |
-| KullanılabilirlikMetricCount |   |
-| AvailabilityTestid | Web testi için benzersiz GUID |
-| KullanılabilirlikZaman Damgası | Kullanılabilirlik testinin kesin zaman damgası |
-| KullanılabilirlikDurationMin | Örneklenen kayıtlar için bu alan, temsil edilen veri noktaları için minimum web test süresini (milisaniye) gösterir |
-| AvailabilityDurationMax | Örneklenen kayıtlar için bu alan, temsil edilen veri noktaları için maksimum web test süresini (milisaniye) gösterir |
-| AvailabilityDurationStdDev | Örneklenen kayıtlar için, bu alan temsil edilen veri noktaları için tüm web test süreleri (milisaniye) arasındaki standart sapmayı gösterir |
-| KullanılabilirlikMin |   |
-| AvailabilityMax |   |
-| AvailabilityStdDev | &nbsp;  |
+| TelemetryType | Kullanılabilirlik |
+| Kullanılabilirliği olan Bilitytestname | Web testinin adı |
+| Kullanılabilirliği | Http isteğinin coğrafi kaynağı |
+| Kullanılabilirlik sonucu | Web testinin başarı sonucunu gösterir |
+| Kullanılabilirliği olan Bilitymessage | Web testine eklenen ileti |
+| Kullanılabilirlik sayısı | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| DataSizeMetricValue | 1,0 veya 0,0 |
+| DataSizeMetricCount | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| Kullanılabilirlik süresi | Web testi süresinin milisaniye cinsinden süresi |
+| AvailabilityDurationCount | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| Kullanılabilirlik değeri |   |
+| Kullanılabilirliği |   |
+| Kullanılabilirliği | Web testi için benzersiz GUID |
+| Kullanılabilirlik zaman damgası | Kullanılabilirlik testinin kesin zaman damgası |
+| AvailabilityDurationMin | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için en düşük Web testi süresini (milisaniye) gösterir |
+| AvailabilityDurationMax | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için en yüksek Web testi süresini (milisaniye) gösterir |
+| AvailabilityDurationStdDev | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için tüm Web testi süreleri (milisaniye) arasındaki standart sapmayı gösterir |
+| Kullanılabilirliği en düşük |   |
+| Kullanılabilirliği en fazla |   |
+| Kullanılabilirliği STDSAPMA StdDev | &nbsp;  |
 
-### <a name="exception-specific-fields"></a>Özel özel alanlar
+### <a name="exception-specific-fields"></a>Özel duruma özel alanlar
 
 | Tür | ApplicationInsights |
 | --- | --- |
-| TelemetriTipi | Özel durum |
-| Özel Durum Türü | Özel durum türü |
-| Özel Durum Yöntemi | Özel durum oluşturan yöntem |
-| Özel Durum Montajı | Derleme çerçeve ve sürümü yanı sıra ortak anahtar belirteci içerir |
-| Özel Durum Grubu | Özel durum türü |
-| Özel durumele | Özel durumu işleyen düzeyi gösterir |
-| Özel Durum Sayısı | 100/(Örnekleme Oranı). Örneğin, 4&gt; = 25% |
-| Özel Durum Mesajı | Özel durum iletisi |
-| Özel Durum Yığını | Özel durum tam yığını |
-| ExceptionHasStack | Doğru, özel durum bir yığın varsa |
+| TelemetryType | Özel durum |
+| Türü | Özel durumun türü |
+| ExceptionYöntemi | Özel durumu oluşturan yöntemi |
+| ExceptionAssembly | Derleme, çerçeveyi ve sürümü ve ortak anahtar belirtecini içerir |
+| ExceptionGroup | Özel durumun türü |
+| ExceptionHandledAt | Özel durumu ele alan düzeyi gösterir |
+| ExceptionCount | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| ExceptionMessage | Özel durumun iletisi |
+| ExceptionStack | Özel durumun tam yığını |
+| ExceptionHasStack | Özel durumun bir yığını varsa doğru |
 
 
 
-### <a name="request-specific-fields"></a>İstek özel alanlar
+### <a name="request-specific-fields"></a>İsteğe özgü alanlar
 
 | Özellik | Açıklama |
 | --- | --- |
 | Tür | ApplicationInsights |
-| TelemetriTipi | İstek |
-| Yanıt Kodu | Istemciye gönderilen HTTP yanıtı |
-| İstekBaşarı | Başarı veya başarısızlığı gösterir. True veya false. |
-| RequestID | İsteği benzersiz bir şekilde tanımlamak için kimlik |
-| İstek Adı | GET/POST + URL tabanı |
-| İstekSüresi | İstek süresinin saniye cinsinden süresi |
-| URL'si | Ana bilgisayar dahil olmayan isteğin URL'si |
-| Host | Web sunucusu ana bilgisayar |
-| URLBase | İsteğin tam URL'si |
+| TelemetryType | İstek |
+| Yanıt kodu | İstemciye gönderilen HTTP yanıtı |
+| RequestSuccess | Başarılı veya başarısız olduğunu gösterir. True veya false. |
+| RequestID | İsteği benzersiz olarak tanımlamak için KIMLIK |
+| RequestName | Al/postala + URL tabanı |
+| RequestDuration | İstek süresinin saniye cinsinden süresi |
+| URL'si | Konağın dahil olmadığı isteğin URL 'SI |
+| Ana bilgisayar | Web sunucusu Konağı |
+| URL tabanı | İsteğin tam URL 'SI |
 | ApplicationProtocol | Uygulama tarafından kullanılan protokol türü |
-| İstek Sayısı | 100/(Örnekleme Oranı). Örneğin, 4&gt; = 25% |
-| İstekSüre Sayısı | 100/(Örnekleme Oranı). Örneğin, 4&gt; = 25% |
-| İstekDurationMin | Örneklenen kayıtlar için bu alan, temsil edilen veri noktaları için en az istek süresini (milisaniye) gösterir. |
-| RequestDurationMax | Örneklenen kayıtlar için bu alan, temsil edilen veri noktaları için maksimum istek süresini (milisaniye) gösterir |
-| İstekDurationStdDev | Örneklenen kayıtlar için bu alan, temsil edilen veri noktaları için tüm istek süreleri (milisaniye) arasındaki standart sapmayı gösterir |
+| Istek sayısı | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| RequestDurationCount | 100/(örnekleme hızı). Örneğin, 4 =&gt; %25 |
+| RequestDurationMin | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için en düşük istek süresini (milisaniye) gösterir. |
+| RequestDurationMax | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için en fazla istek süresini (milisaniye) gösterir |
+| RequestDurationStdDev | Örneklenmiş kayıtlar için bu alan, gösterilen veri noktaları için tüm istek süreleri (milisaniye) arasındaki standart sapmayı gösterir |
 
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 
-Bu çözümde panoda gösterilen örnek günlük aramaları kümesi yoktur. Ancak, açıklamalar içeren örnek günlük arama [sorguları, Uygulama Öngörülerini Görüntüle Bağlayıcı bilgi](#view-application-insights-connector-information) bölümünde gösterilir.
+Bu çözüm, panoda gösterilen bir örnek günlük aramaları kümesine sahip değil. Ancak, açıklama içeren örnek günlük arama sorguları, [görüntüleme Application Insights Bağlayıcısı bilgileri](#view-application-insights-connector-information) bölümünde gösterilir.
 
-## <a name="removing-the-connector-with-powershell"></a>PowerShell ile konektörü kaldırma
-OMS portalı amortismanı ile, varolan bağlantıları yapılandırmanın ve portaldan kaldırmanın bir yolu yoktur. Aşağıdaki PowerShell komut dosyasıyla varolan bağlantıları kaldırabilirsiniz. Bu işlemi gerçekleştirmek için çalışma alanının sahibi veya katılımcısı ve Application Insights kaynağının okuyucusu olmalısınız.
+## <a name="removing-the-connector-with-powershell"></a>Bağlayıcı PowerShell ile kaldırılıyor
+OMS portalının kullanımdan kaldırılması sayesinde, mevcut bağlantıları portaldan yapılandırmanın ve kaldırmanın bir yolu yoktur. Mevcut bağlantıları aşağıdaki PowerShell betiğinden kaldırabilirsiniz. Bu işlemi gerçekleştirmek için çalışma alanı ve Application Insights kaynak okuyucu sahibi veya katılımcısı olmanız gerekir.
 
 ```powershell
 $Subscription_app = "App Subscription Name"
@@ -283,7 +283,7 @@ Set-AzContext -SubscriptionId $Subscription_workspace
 Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
-REST API çağrısı nı çağıran aşağıdaki PowerShell komut dosyasını kullanarak uygulamaların listesini alabilirsiniz. 
+Bir REST API çağrısını çağıran aşağıdaki PowerShell betiğini kullanarak uygulamaların listesini alabilirsiniz. 
 
 ```powershell
 Connect-AzAccount
@@ -304,13 +304,13 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Bu komut dosyası, Azure Etkin Dizin'e karşı kimlik doğrulama için bir taşıyıcı kimlik doğrulaması belirteci gerektirir. Bu belirteci almak için bir yolu [REST API dokümantasyon sitesinde](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)bir makale kullanıyor. **Tazyi'yi** tıklatın ve Azure aboneliğinize giriş yapın. Aşağıdaki resimde gösterildiği **gibi,** taşıyıcı belirteci İstek Önizleme'den kopyalayabilirsiniz.
+Bu betik, Azure Active Directory karşı kimlik doğrulaması için bir taşıyıcı kimlik doğrulama belirteci gerektirir. Bu belirteci almanın bir yolu [REST API belgeleri sitesindeki](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)bir makaleyi kullanmaktır. **Dene** ' ye tıklayın ve Azure aboneliğinizde oturum açın. Aşağıdaki görüntüde gösterildiği gibi, **Istek önizlemeden** taşıyıcı belirtecini kopyalayabilirsiniz.
 
 
 ![Taşıyıcı belirteci](media/app-insights-connector/bearer-token.png)
 
 
-Ayrıca, günlük sorgusu kullanan uygulamaların listesini de alabilirsiniz:
+Ayrıca, bir günlük sorgusu kullanan uygulamaların bir listesini alabilirsiniz:
 
 ```Kusto
 ApplicationInsights | summarize by ApplicationName
@@ -318,4 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Uygulama Öngörüleri uygulamalarınız için ayrıntılı bilgileri görüntülemek için [Günlük Arama'yı](../../azure-monitor/log-query/log-query-overview.md) kullanın.
+- Application Insights uygulamalarınızın ayrıntılı bilgilerini görüntülemek için [günlük araması](../../azure-monitor/log-query/log-query-overview.md) 'nı kullanın.

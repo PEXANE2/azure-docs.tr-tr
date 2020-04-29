@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Politikalarımı Yapılandırın | Microsoft Dokümanlar'
-description: Azure Active Directory'yi, kullanıcı hesaplarını myPolicies'e otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için myPolicies yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını myPolicies 'e otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,86 +16,86 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 353da826b6e339d40a5d85bbf63caac5bf7094f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77061378"
 ---
-# <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için myPolicies'i yapılandır
+# <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için myPolicies yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları myPolicies'e otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Politikalarım ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Kullanıcı ve/veya grupları myPolicies 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere Azure AD 'yi yapılandırmak için myPolicies ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [MyPolicies kiracı.](https://mypolicies.com/index.html#section10)
-* Yönetici izinleri olan politikalarımdaki bir kullanıcı hesabı.
+* [MyPolicies kiracısı](https://mypolicies.com/index.html#section10).
+* Yönetici izinlerine sahip myPolicies içindeki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-mypolicies"></a>Kullanıcıları Politikalarıma Atama
+## <a name="assigning-users-to-mypolicies"></a>Kullanıcıları myPolicies 'a atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların myPolicies'e erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki yönergeleri izleyerek myPolicies'e atayabilirsiniz:
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların myPolicies 'e erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları myPolicies 'e atayabilirsiniz:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-mypolicies"></a>Kullanıcıları myPolicies'e atamak için önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-mypolicies"></a>MyPolicies 'e Kullanıcı atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için myPolicies'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için myPolicies 'e tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Politikalarım'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı myPolicies 'e atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="setup-mypolicies-for-provisioning"></a>Sağlama için myPolicies'i kurulum
+## <a name="setup-mypolicies-for-provisioning"></a>Sağlama için myPolicies kurulum
 
-Azure AD ile otomatik kullanıcı sağlama için Politikalarımı yapılandırmadan önce, Politikalarım'da SCIM sağlamayı etkinleştirmeniz gerekir.
+Azure AD ile otomatik Kullanıcı hazırlama için Ilkelerinizi yapılandırmadan önce myPolicies üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. SCIM sağlama yapılandırmak **support@mypolicies.com** için gereken gizli belirteci elde etmek için myPolicies temsilcinize ulaşın.
+1. SCıM sağlamasını yapılandırmak için gereken gizli belirteci **support@mypolicies.com** almak Için, mypolicies temsilcinize ulaşın.
 
-2.  myPolicies temsilcisi tarafından sağlanan belirteç değerini kaydedin. Bu değer, Azure portalındaki myPolicies uygulamanızın Sağlama sekmesinde **Gizli Belirteç** alanına girilir.
+2.  MyPolicies temsilcisi tarafından sunulan belirteç değerini kaydedin. Bu değer, Azure portal myPolicies uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
 
 ## <a name="add-mypolicies-from-the-gallery"></a>Galeriden myPolicies ekleme
 
-Azure AD ile otomatik kullanıcı sağlama için Politikalarımı yapılandırmak için, myPolicies'i Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için myPolicies yapılandırmak üzere, Azure AD uygulama galerisindeki myPolicies öğesini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Politikalarımı eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD Uygulama Galerisi ' nden myPolicies eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **benimİlkeler'leri**girin, sonuç panelinde **politikalarım'ı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **mypolicies**yazın, sonuçlar panelinde **mypolicies** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![sonuç listesindeki myPolicies](common/search-new-app.png)
+    ![Sonuçlar listesindeki myPolicies](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-mypolicies"></a>Otomatik kullanıcı sağlamayı myPolicies'e yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-mypolicies"></a>Otomatik Kullanıcı sağlamayı myPolicies 'e yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Politikalarımdaki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre myPolicies içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
-> MyPolicies Tek oturum açma [öğreticisinde](mypolicies-tutorial.md)verilen yönergeleri izleyerek, myPolicies için SAML tabanlı tek oturum açma'yı da etkinleştirmeyi seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
+> [Mypolicies çoklu oturum açma öğreticisinde](mypolicies-tutorial.md)belirtilen yönergeleri Izleyerek mypolicies için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Azure AD'deki Politikalarım için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Azure AD 'de myPolicies için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar **listesinde, myPolicies'i**seçin.
+2. Uygulamalar listesinde, **Mypolicies**' ı seçin.
 
     ![Uygulamalar listesindeki myPolicies bağlantısı](common/all-applications.png)
 
@@ -103,59 +103,59 @@ Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak P
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümünde, `https://<myPoliciesCustomDomain>.mypolicies.com/scim` MyPolicies `<myPoliciesCustomDomain>` özel etki alanınız kiracı **URL'ye** giriş. myPolicies müşteri etki alanınızı URL'nizden alabilirsiniz.
-Örnek: `<demo0-qa>`.mypolicies.com.
+5. **Yönetici kimlik bilgileri** bölümünde, mypolicies `https://<myPoliciesCustomDomain>.mypolicies.com/scim` özel etki alanınız olan `<myPoliciesCustomDomain>` **kiracı URL 'sine** giriş yapın. MyPolicies müşteri etki alanınızı URL 'nizden elde edebilirsiniz.
+Örnek: `<demo0-qa>`. mypolicies.com.
 
-6. **Gizli Belirteç'te,** daha önce alınan belirteç değerini girin. Azure AD'nin politikalarıma bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, myPolicies hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+6. **Gizli belirteç**' de, daha önce alınan belirteç değerini girin. Azure AD 'nin Ilkelerinize bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, myPolicies hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**'e tıklayın.
+8. **Kaydet**’e tıklayın.
 
-9. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Politikalarımla Senkronize Et'i**seçin.
+9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Mypolicies**' a eşitler ' ı seçin.
 
-    ![myPolicies Kullanıcı Eşlemeleri](media/mypolicies-provisioning-tutorial/usermapping.png)
+    ![myPolicies Kullanıcı eşlemeleri](media/mypolicies-provisioning-tutorial/usermapping.png)
 
-10. Azure AD'den MyPolicies'e eşitlenen kullanıcı özniteliklerini **Atnitelik Eşleme** bölümünde gözden geçirin. **Eşleşme** özellikleri olarak seçilen öznitelikler, sınır düşünme işlemleri için Kullanım PolitikalarımLarındaki kullanıcı hesaplarıyla çalğ Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+10. **Öznitelik eşleme** bölümünde, Azure AD 'Den mypolicies ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için mypolicies içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![myPolicies Kullanıcı Eşlemeleri](media/mypolicies-provisioning-tutorial/userattribute.png)
+    ![myPolicies Kullanıcı eşlemeleri](media/mypolicies-provisioning-tutorial/userattribute.png)
 
-11. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+11. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-12. İlkelerim için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
+12. MyPolicies için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-13. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Politikalarımı sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+13. **Ayarlar** bölümünde **kapsam** Içinde Istenen değerleri seçerek mypolicies 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-14. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+14. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Verileri izlemek ve Azure AD sağlama hizmeti tarafından politikalarım da gerçekleştirilen tüm eylemleri açıklayan sağlama etkinlik raporuna bağlı bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanarak mypolicies ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklar.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="connector-limitations"></a>Konektör sınırlamaları
+## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* myPolicies her zaman **userName,** **e-posta** ve **externalId**gerektirir.
-* myPolicies, kullanıcı öznitelikleri için sabit silmeleri desteklemez.
+* myPolicies her zaman **Kullanıcı adı**, **e-posta** ve **externalId**gerektirir.
+* myPolicies, Kullanıcı öznitelikleri için sabit silmeleri desteklemez.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)

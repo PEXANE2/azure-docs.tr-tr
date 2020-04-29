@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için RFPIO'yı yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi, kullanıcı hesaplarını RFPIO'ya otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için RFıO yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını RFıO 'a otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,158 +16,158 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 6ae423305b39c1335b5db1cd893d5f817be1929b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77060873"
 ---
-# <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için RFPIO'yı yapılandırın
+# <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için RFıO yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları RFPIO'ya otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için RFPIO ve Azure Active Directory 'de (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları RFıO 'ya otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için RFıO ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [Bir RFPIO kiracı](https://www.rfpio.com/product/).
-* Yönetici izinleri olan RFPIO'da bir kullanıcı hesabı.
+* [BIR RFıO kiracısı](https://www.rfpio.com/product/).
+* Yönetim izinleriyle RFıO 'daki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-rfpio"></a>Kullanıcıları RFPIO'ya atama
+## <a name="assigning-users-to-rfpio"></a>Kullanıcıları RFıO 'a atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların RFPIO'ya erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki talimatları izleyerek RFPIO'ya atayabilirsiniz:
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların RFıO 'ya erişmesi gerektiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları RFıO 'a atayabilirsiniz:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-rfpio"></a>Kullanıcıları RFPIO'ya atamak için önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-rfpio"></a>RFıO 'ya Kullanıcı atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için tek bir Azure AD kullanıcısının RFPIO'ya atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için, RFıO 'ya tek bir Azure AD kullanıcısı atanmalıdır. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı RFPIO'ya atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı RFıO 'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="setup-rfpio-for-provisioning"></a>Sağlama için KURULUM RFPIO
+## <a name="setup-rfpio-for-provisioning"></a>Sağlama için RFıO kurulumu
 
-Azure AD ile otomatik kullanıcı sağlama için RFPIO'yu yapılandırmadan önce, RFPIO'da SCIM sağlamayı etkinleştirmeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlama için RFıO yapılandırmadan önce, RFıO üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1.  RFPIO Yönetici Konsolunuzda oturum açın. Yönetici konsolunun sol alt **kısmında, Kiracı'ya**tıklayın.
+1.  RFıO Yönetici konsolunuza oturum açın. Yönetici konsolunun sol alt kısmında **kiracı**' ya tıklayın.
 
-    ![RFPIO Yönetici Konsolu](media/rfpio-provisioning-tutorial/aadtest0.png)
+    ![RFıO Yönetici Konsolu](media/rfpio-provisioning-tutorial/aadtest0.png)
 
-2.  **Kuruluş Ayarları'nı**tıklatın.
+2.  **Kuruluş ayarları**' na tıklayın.
     
-    ![RFPIO Yönetici](media/rfpio-provisioning-tutorial/aadtest.png)
+    ![RFıO Yöneticisi](media/rfpio-provisioning-tutorial/aadtest.png)
 
-3.  **KULLANICI YÖNETİmİ** > **GÜVENLİğİ** > **SCIM**gidin.
+3.  **Kullanıcı yönetimi** > **güvenlik** > **SCIM**bölümüne gidin.
 
-    ![RFPIO SCIM ekle](media/rfpio-provisioning-tutorial/scim.png)
+    ![RFıO Add SCıM](media/rfpio-provisioning-tutorial/scim.png)
 
-4.  Otomatik **Kullanıcı Sağlama'nın** etkin olduğundan emin olun. **SCIM API TOKEN OLUŞTUR'a**tıklayın.
+4.  **Otomatik Kullanıcı sağlama** özelliğinin etkinleştirildiğinden emin olun. **SCıM API belirteci oluştur**' a tıklayın.
 
-    ![RFPIO Belirteç Oluştur](media/rfpio-provisioning-tutorial/generate.png)
+    ![RFıO oluşturma belirteci](media/rfpio-provisioning-tutorial/generate.png)
 
-5.  Bu belirteç güvenlik amacıyla yeniden görüntülenmeyecek gibi **SCIM API Belirteci** kaydedin. Bu değer, Azure portalındaki RFPIO uygulamanızın Sağlama sekmesinde **Gizli Belirteç** alanına girilir.
+5.  **SCIM API belirtecini** , bu belirteç güvenlik amacıyla yeniden görüntülenmeyecek şekilde kaydedin. Bu değer, Azure portal RFıO uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
 
-    ![RFPIO Belirteç Oluştur](media/rfpio-provisioning-tutorial/auth.png)
+    ![RFıO oluşturma belirteci](media/rfpio-provisioning-tutorial/auth.png)
 
-## <a name="add-rfpio-from-the-gallery"></a>Galeriden RFPIO ekleme
+## <a name="add-rfpio-from-the-gallery"></a>Galeriden RFıO ekleme
 
-Azure AD ile otomatik kullanıcı sağlama için RFPIO'yu yapılandırmak için, Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize RFPIO eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için RFıO yapılandırmak üzere, Azure AD uygulama galerisindeki RFıO 'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden RFPIO eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD uygulama galerisinden RFıO eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **RFPIO**girin, sonuç panelinde **RFPIO'yu** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **rfıo**girin, sonuçlar panelinde **rfıo** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Sonuç listesinde KI RFPIO](common/search-new-app.png)
+    ![Sonuçlar listesinde RFıO](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-rfpio"></a>Otomatik kullanıcı sağlamanın RFPIO'ya yapılandırılması 
+## <a name="configuring-automatic-user-provisioning-to-rfpio"></a>RFıO için otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak RFPIO'daki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan RFıO 'daki kullanıcıları ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca RFPIO tek oturum açma [öğreticisinde](rfpio-tutorial.md)verilen talimatları izleyerek RFPIO için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
+> Rfıo [Çoklu oturum açma öğreticisinde](rfpio-tutorial.md)belirtilen yönergeleri izleyerek rfıo için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-automatic-user-provisioning-for-rfpio-in-azure-ad"></a>Azure AD'de RFPIO için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-rfpio-in-azure-ad"></a>Azure AD 'de RFıO için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **RFPIO'yu**seçin.
+2. Uygulamalar listesinde **Rfıo**' yı seçin.
 
-    ![Uygulamalar listesindeki RFPIO bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki RFıO bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` altında, **Kiracı URL'ye**giriş . Örnek bir `https://Azure-test1.rfpio.com/rfpserver/scim/v2`değer. **Gizli Belirteç'te**daha önce alınan **SCIM API Belirteci** değerini girdi. Azure AD'nin RFPIO'ya bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, RFPIO hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` **kiracı URL 'sini**girin. Örnek bir değer `https://Azure-test1.rfpio.com/rfpserver/scim/v2`. **Gizli belirteçte**daha önce alınan **SCIM API belirteç** değerini girin. Azure AD 'nin RFıO 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, RFıO hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını RFPIO ile Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Rfıo ile eşitler**' ı seçin.
 
-    ![RFPIO Kullanıcı Eşlemeleri](media/rfpio-provisioning-tutorial/usermapping.png)
+    ![RFıO Kullanıcı eşlemeleri](media/rfpio-provisioning-tutorial/usermapping.png)
 
-9. **Öznitelik Eşleme** bölümünde Azure AD'den RFPIO'ya eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için RFPIO'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde Azure AD 'den rfıo 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için rfıo 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![RFPIO Kullanıcı Özellikleri](media/rfpio-provisioning-tutorial/userattributes.png)
+    ![RFıO Kullanıcı öznitelikleri](media/rfpio-provisioning-tutorial/userattributes.png)
 
-10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-11. RFPIO için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
+11. RFıO için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek RFPIO'ya sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek rfıo 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. İlerlemeyi izlemek ve RFPIO'daki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve rfıo ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna yönelik bağlantıları izleyebilirsiniz.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="connector-limitations"></a>Bağlayıcı Sınırlamaları
+## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* RFPIO şu anda sağlayan grupları desteklemez.
+* RFıO Şu anda grupları sağlamayı desteklemez.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
