@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ST_DISTANCE
-description: Azure Cosmos DB'de ST_DISTANCE SQL sistem işlevi hakkında bilgi edinin.
+description: Azure Cosmos DB ST_DISTANCE SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/12/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 02844569137a46ea030b2189191b84a9db24ed22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537304"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB)
- İki GeoJSON Noktası, Çokgen, ÇokGen veya LineString ifadesi arasındaki mesafeyi döndürür. Daha fazla bilgi için [Geospatial ve GeoJSON konum verileri](sql-query-geospatial-intro.md) makalesine bakın.
+ İki GeoJSON noktası, Çokgen, MultiPolygon veya LineString ifadeleri arasındaki mesafeyi döndürür. Daha fazla bilgi edinmek için bkz. [Jeo-uzamsal ve GeoJSON konum verileri](sql-query-geospatial-intro.md) makalesi.
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,15 +26,15 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *spatial_expr*  
-   Geçerli bir GeoJSON Noktası, Çokgen veya LineString nesne si ifade midir.  
+   Geçerli bir GeoJSON noktası, çokgen veya LineString nesne ifadesi.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Mesafeyi içeren sayısal bir ifade verir. Bu varsayılan başvuru sistemi için metre cinsinden ifade edilir.  
+  Mesafeyi içeren sayısal bir ifade döndürür. Bu, varsayılan başvuru sistemi için ölçü cinsinden ifade edilir.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, yerleşik işlevi kullanarak belirtilen konuma 30 km mesafedeki `ST_DISTANCE` tüm aile belgelerinin nasıl döndürüleceklerini gösterir. .  
+  Aşağıdaki örnek, `ST_DISTANCE` yerleşik işlevi kullanılarak belirtilen konumun 30 km içinde olan tüm aile belgelerinin nasıl döndürülyapılacağını gösterir. .  
   
 ```sql
 SELECT f.id
@@ -52,10 +52,10 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem fonksiyonu [bir jeouzamsal indeks](index-policy.md#spatial-indexes)yararlanacaktır.
+Bu sistem işlevi, [Jeo-uzamsal dizinden](index-policy.md#spatial-indexes)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Mekansal işlevler Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Uzamsal işlevler Azure Cosmos DB](sql-query-spatial-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

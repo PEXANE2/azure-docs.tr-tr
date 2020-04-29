@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 ile Canlı akışa Genel Bakış | Microsoft Dokümanlar
-description: Bu makalede, Azure Media Services v3 kullanarak canlı akışa genel bir bakış sunulur.
+title: Azure Media Services v3 ile canlı akışa genel bakış | Microsoft Docs
+description: Bu makalede, Azure Media Services v3 kullanarak canlı akışa genel bakış sunulmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,68 +14,68 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
 ms.openlocfilehash: e2c4e5b6c10b06d82a1933962cb2d97e031876a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80068015"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
 
-Azure Medya Hizmetleri, müşterilerinize Azure bulutu üzerinde canlı etkinlikler sunmanızı sağlar. Medya Hizmetleri ile canlı etkinliklerinizi yayınlamak için aşağıdakilere ihtiyacınız var:  
+Azure Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanıza olanak sağlar. Canlı olaylarınızın Media Services akışını sağlamak için şunlar gerekir:  
 
-- Canlı olayı yakalamak için kullanılan bir kamera.<br/>Kurulum fikirleri için, [Basit ve taşınabilir olay video dişli kurulum]( https://link.medium.com/KNTtiN6IeT)göz atın.
+- Canlı etkinliği yakalamak için kullanılan bir kamera.<br/>Kurulum fikirleri için [basit ve taşınabilir olay video dişli kurulumuna]( https://link.medium.com/KNTtiN6IeT)göz atın.
 
-    Bir kameraya erişiminiz yoksa, [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) gibi araçlar bir video dosyasından canlı yayın oluşturmak için kullanılabilir.
-- Kameradan (veya dizüstü bilgisayar gibi başka bir cihazdan) gelen sinyalleri Medya Hizmetleri'ne gönderilen bir katkı akışına dönüştüren canlı video kodlayıcısı. Katkı akışı, SCTE-35 işaretçileri gibi reklamla ilgili sinyalleri içerebilir.<br/>Önerilen canlı akış kodlayıcılarının listesi [için, canlı akış kodlayıcıları](recommended-on-premises-live-encoders.md)bölümüne bakın. Ayrıca, bu bloggöz atın: [OBS ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
-- Canlı olayı müşterilerinize veya daha fazla dağıtım için CDN'ye yutmanızı, önizlemenizi, paketlemenizi, kaydetmenizi, şifrelemenizi ve yayınlamanızı sağlayan Medya Hizmetleri bileşenleri.
+    Bir kameraya erişiminiz yoksa, [Telestream kablolu dönüştürme](https://www.telestream.net/wirecast/overview.htm) gibi araçlar bir video dosyasından canlı bir akış oluşturmak için kullanılabilir.
+- Bir kameradan (veya dizüstü bilgisayar gibi başka bir cihazdan) sinyalleri Media Services gönderilen bir katkı akışına dönüştüren canlı bir video Kodlayıcısı. Katkı akışı, reklamları ile ilgili, SCTE-35 işaretçileri gibi sinyalleri içerebilir.<br/>Önerilen canlı akış kodlayıcıları listesi için bkz. [canlı akış kodlayıcılar](recommended-on-premises-live-encoders.md). Ayrıca, bu bloga göz atın: [OBS Ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
+- Media Services ' deki bileşenler, canlı etkinliği müşterilerinize alma, önizleme, paketleme, kaydetme, şifreleme ve yayınlaymanıza, daha fazla dağıtım için bir CDN 'ye yönelik bir CDN 'ye yönelik olarak.
 
-Bu makalede, Medya Hizmetleri ve diğer ilgili makalelere bağlantılar ile canlı akış genel bir bakış ve rehberlik sağlar.
+Bu makale, Media Services ile canlı akış ve diğer ilgili makalelerin bağlantılarıyla ilgili genel bakış ve kılavuzluk sağlar.
  
 > [!NOTE]
-> [Azure portalını](https://portal.azure.com/) v3 Live [Events'i](live-events-outputs-concept.md)yönetmek, v3 [Varlıklarını](assets-concept.md)görüntülemek, API'lere erişim hakkında bilgi almak için kullanabilirsiniz. Diğer tüm yönetim görevleri için (örneğin, Dönüşümler ve İşler), [REST API,](https://docs.microsoft.com/rest/api/media/) [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve Işler) için [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
-## <a name="dynamic-packaging"></a>Dinamik Ambalaj
+## <a name="dynamic-packaging"></a>Dinamik paketleme
 
-Medya Hizmetleri ile, canlı akışlarınızı [MPEG DASH, HLS ve Sorunsuz Akış biçimlerinde,](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) hizmete gönderilen katkı akışından önizlemenize ve yayınlamanıza olanak tanıyan [Dinamik Ambalaj'dan](dynamic-packaging-overview.md)yararlanabilirsiniz. Görüntüleyenleriniz canlı yayını herhangi bir HLS, DASH veya Smooth Streaming uyumlu oyuncuyla oynatabilir. Bu protokollerden herhangi birinde akışınızı sağlamak için web veya mobil uygulamalarınızda [Azure Media Player'ı](https://amp.azure.net/libs/amp/latest/docs/index.html) kullanabilirsiniz.
+Media Services ile, canlı akışlarınızı, hizmet 'e gönderilen katkı akışından [MPEG Dash, HLS ve kesintisiz akış biçimlerinde](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) önizleme ve yayınlama olanağı sağlayan [dinamik paketlemeden](dynamic-packaging-overview.md)yararlanabilirsiniz. Görüntüleyicilerinizin her türlü HLS, ÇIZGI veya Kesintisiz Akış uyumlu oyuncularla canlı akışı kayıttan yürütebileceği. Bu protokollerden herhangi birine akışını sunmak için Web veya mobil uygulamalarınızda [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) kullanabilirsiniz.
 
-## <a name="dynamic-encryption"></a>Dinamik Şifreleme
+## <a name="dynamic-encryption"></a>Dinamik şifreleme
 
-Dinamik şifreleme, canlı veya isteğe bağlı içeriğinizi AES-128 veya üç büyük dijital haklar yönetimi (DRM) sisteminden herhangi biriyle dinamik olarak şifrelemenize olanak tanır: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Medya Hizmetleri ayrıca yetkili müşterilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisansları sunmak için bir hizmet sağlar. Daha fazla bilgi için [Dinamik şifreleme'ye](content-protection-overview.md)bakın.
+Dinamik şifreleme, etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifrelemenize olanak sağlar: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
 
 > [!NOTE]
-> Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+> Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="dynamic-manifest"></a>Dinamik Manifesto
+## <a name="dynamic-manifest"></a>Dinamik bildirim
 
-Dinamik filtreleme, oyunculara gönderilen parça, biçim, bitrates ve sunum zaman pencerelerinin sayısını denetlemek için kullanılır. Daha fazla bilgi için [filtrelere ve dinamik bildirimlere](filters-dynamic-manifest-overview.md)bakın.
+Dinamik filtreleme, oyunculara gönderilen iz, biçim, bitme ve sunum süresi pencerelerinin sayısını denetlemek için kullanılır. Daha fazla bilgi için bkz. [filtreler ve dinamik bildirimler](filters-dynamic-manifest-overview.md).
 
-## <a name="live-event-types"></a>Canlı Etkinlik türleri
+## <a name="live-event-types"></a>Canlı olay türleri
 
-[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Canlı olay, geçiş (şirket *pass-through* içi canlı kodlayıcı birden çok bit hızı akışı gönderir) veya *canlı kodlama* (şirket içi canlı kodlayıcı tek bir bit hızı akışı gönderir) olarak ayarlanabilir. Medya Hizmetleri v3'te canlı akış hakkında ayrıntılı bilgi için [Canlı Etkinlikler ve Canlı Çıktılar'a](live-events-outputs-concept.md)bakın.
+[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Canlı bir olay, *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) veya *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bkz. [canlı olaylar ve canlı çıktılar](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Geçiş
 
 ![doğrudan geçiş](./media/live-streaming/pass-through.svg)
 
-Geçiş **live event**kullanırken, birden çok bitrate video akışı oluşturmak ve Live Event (RTMP veya parçalanmış MP4 giriş protokolü kullanarak) katkı akışı olarak göndermek için şirket içinde canlı kodlayıcı güveniyor. Canlı Etkinlik daha sonra gelen video akışlarını daha fazla kodlama yapmadan dinamik paketleyiciye (Streaming Endpoint) taşır. Böyle bir geçiş Live Event uzun süren canlı etkinlikler veya 24x365 doğrusal canlı akış için optimize edilmiştir. 
+Geçiş **canlı olayını**kullanırken, çoklu bit hızı video akışı oluşturmak için şirket içi Live Encoder ' ı kullanır ve canlı olaya katkı akışı olarak (RTMP veya PARÇALANMıŞ-MP4 giriş protokolünü kullanarak) gönderebilirsiniz. Canlı etkinlik daha sonra gelen video akışlarını dinamik paketlemeden (akış uç noktası) daha fazla kodlama olmadan taşır. Bu tür bir geçişli canlı etkinlik, uzun süreli canlı etkinlikler veya 24x365 doğrusal canlı akış için iyileştirilmiştir. 
 
 ### <a name="live-encoding"></a>Live encoding  
 
 ![gerçek zamanlı kodlama](./media/live-streaming/live-encoding.svg)
 
-Medya Hizmetleri ile bulut kodlamakullanırken, şirket içi canlı kodlayıcınızı, Canlı Etkinlik'e (RTMP veya parçalanmış MP4 giriş protokolü kullanarak) katkı akışı (32Mbps'ye kadar toplam) olarak tek bir bit hızı videosu gönderecek şekilde yapılandırırsınız. Live Event, gelen tek bit hızı akışını, teslimatı iyileştirmek için farklı çözünürlüklerde [birden çok bit hızıvideo akışına](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) dönüştürür ve MPEG-DASH, Apple HTTP Live Streaming (HLS) ve Microsoft Smooth Streaming gibi endüstri standardı protokoller aracılığıyla oynatma aygıtlarına teslim edilebilmektedir. 
+Media Services ile bulut kodlaması kullanırken, şirket içi Live Encoder ' ı canlı olaya (RTMP veya parçalanmış-MP4 giriş protokolünü kullanarak) katkı akışı (en fazla 32Mbps toplama) olarak tek bir bit hızlı video gönderecek şekilde yapılandırırsınız. Canlı olay aktarıcı, gelen tek [bit hızı akışını, her zaman](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) hızlı bir şekılde ve MPEG-Dash, Apple http canlı akışı (HLS) ve Microsoft kesintisiz akış gibi endüstri standardı protokoller aracılığıyla oynatma için kullanılabilir hale getirir. 
 
-### <a name="live-transcription-preview"></a>Canlı transkripsiyon (önizleme)
+### <a name="live-transcription-preview"></a>Canlı döküm (Önizleme)
 
-Canlı transkripsiyon, Live Events ile geçirilebilen veya canlı kodlama olan bir özelliktir. Daha fazla bilgi için [canlı transkripsiyona](live-transcription.md)bakın. Bu özellik etkinleştirildiğinde, hizmet, gelen sesteki konuşulan sözcükleri metne dönüştürmek için Bilişsel Hizmetler'in [Metinden Metine Konuşma](../../cognitive-services/speech-service/speech-to-text.md) özelliğini kullanır. Bu metin daha sonra MPEG-DASH ve HLS protokollerinde video ve ses ile birlikte teslim için kullanılabilir hale getirilir.
+Canlı döküm, doğrudan geçiş ya da canlı kodlama olan canlı olaylarla kullanabileceğiniz bir özelliktir. Daha fazla bilgi için bkz. [canlı](live-transcription.md)döküm. Bu özellik etkinleştirildiğinde, hizmet bilişsel hizmetler 'in [konuşmadan metne](../../cognitive-services/speech-service/speech-to-text.md) özelliğini kullanarak gelen seslerdeki konuşulan kelimeleri metne dönüştürür. Bu metin daha sonra MPEG-DASH ve HLS protokollerinde video ve ses ile birlikte teslim için kullanılabilir hale getirilir.
 
 > [!NOTE]
-> Şu anda, canlı transkripsiyon West US 2'de önizleme özelliği olarak kullanılabilir.
+> Şu anda, canlı döküm Batı ABD 2 ' de önizleme özelliği olarak sunulmaktadır.
 
 ## <a name="live-streaming-workflow"></a>Canlı akış iş akışı
 
-Media Services v3'teki canlı akış iş akışını anlamak için öncelikle aşağıdaki kavramları gözden geçirmeniz ve anlamanız gerekir: 
+Media Services v3 sürümünde canlı akış iş akışını anlamak için öncelikle aşağıdaki kavramları gözden geçirmeniz ve anlamanız gerekir: 
 
 - [Akış Uç Noktaları](streaming-endpoint-concept.md)
 - [Canlı Etkinlikler ve Canlı Çıkışlar](live-events-outputs-concept.md)
@@ -83,52 +83,52 @@ Media Services v3'teki canlı akış iş akışını anlamak için öncelikle a�
 
 ### <a name="general-steps"></a>Genel adımlar
 
-1. Medya Hizmetleri **hesabınızda, Akış Bitiş Noktası'nın** (Origin) çalışırken olduğundan emin olun. 
-2. Canlı [Etkinlik](live-events-outputs-concept.md)Oluşturun. <br/>Olayı oluştururken, otomatik başlatmayı belirtebilirsiniz. Alternatif olarak, akışı başlatmaya hazır olduğunuzda etkinliği başlatabilirsiniz.<br/> Otomatik başlatma doğru ayarlandığında, Live Event oluşturulduktan hemen sonra başlatılır. Faturalandırma, Canlı Etkinlik çalışmaya başlar başlamaz başlar. Daha fazla faturalandırmayı durdurmak için Canlı Etkinlik kaynağında Durdur'u açıkça aramalısınız. Daha fazla bilgi için [Canlı Etkinlik durumları ve faturalandırma konusuna](live-event-states-billing.md)bakın.
-3. En yüksek URL'yi alın ve şirket içi kodlayıcınızı katkı akışını göndermek için URL'yi kullanacak şekilde yapılandırın.<br/>[Bkz. önerilen canlı kodlayıcılar](recommended-on-premises-live-encoders.md).
-4. Önizleme URL'sini alın ve kodlayıcıdan gelen girişin gerçekten alındığını doğrulamak için kullanın.
-5. Yeni bir **Varlık** nesnesi oluşturun. 
+1. Media Services hesabınızda, **akış uç noktasının** (Origin) çalıştığından emin olun. 
+2. Canlı bir [olay](live-events-outputs-concept.md)oluşturun. <br/>Olayı oluştururken, başlatmayı belirtebilirsiniz. Alternatif olarak, akışı başlatmaya hazırsanız olayını başlatabilirsiniz.<br/> Autostart değeri true olarak ayarlandığında, canlı olay oluşturulduktan sonra hemen başlatılır. Faturalandırma, canlı olay çalışmaya başladıktan hemen sonra başlar. Daha fazla faturalandırmayı durdurmak için canlı olay kaynağında durdurmayı açıkça çağırmanız gerekir. Daha fazla bilgi için bkz. [canlı olay durumları ve faturalandırma](live-event-states-billing.md).
+3. Gelen URL 'leri alın ve şirket içi kodlayıcınızı, katkı akışını göndermek için URL 'YI kullanacak şekilde yapılandırın.<br/>Bkz. [Önerilen canlı kodlayıcılar](recommended-on-premises-live-encoders.md).
+4. Kodlayıcının girişinin gerçekten alındığını doğrulamak için önizleme URL 'sini alın ve kullanın.
+5. Yeni bir **varlık** nesnesi oluşturun. 
 
-    Her Canlı Çıktı, videoyu ilişkili Azure blob depolama kapsayıcısına kaydetmek için kullandığı bir varlıkla ilişkilidir. 
-6. Canlı **Çıktı** oluşturun ve akış varlık ta arşivlenebilir şekilde oluşturduğunuz varlık adını kullanın.
+    Her canlı çıktı bir varlıkla ilişkilendirilir ve bu, videoyu ilişkili Azure Blob depolama kapsayıcısına kaydetmek için kullanır. 
+6. Canlı bir **çıktı** oluşturun ve akışın kıymete arşivlenmesi için oluşturduğunuz varlık adını kullanın.
 
-    Canlı Çıktılar oluşturmayla başlar ve silindiğinde durur. Canlı Çıktıyı sildiğinizde, varlıktaki dayanak varlığı ve içeriği silmezsiniz.
-7. [Yerleşik Akış İlkesi türleri](streaming-policy-concept.md)ile bir Akış **Bulucu** oluşturun.
+    Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. Canlı çıktıyı sildiğinizde, ilgili varlık ve varlığın içeriğini silmezsiniz.
+7. [Yerleşik akış ilkesi türleriyle](streaming-policy-concept.md)bir **akış Bulucu** oluşturun.
 
-    Canlı Çıktıyı yayımlamak için ilişkili varlık için bir Akış Bulucu oluşturmanız gerekir. 
-8. Kullanılacak URL'leri geri almak için **Akış Bulucu'daki** yolları listele (bunlar deterministiktir).
-9. Akış yapmak istediğiniz **Akış Bitiş Noktası** (Origin) için ana bilgisayar adını alın.
-10. Tam URL'yi almak için adım 8'deki URL'yi 9.
-11. **Canlı Etkinliğinizi** görüntülenebilir hale getirmekten vazgeçmek istiyorsanız, etkinliği akışı durdurmanız ve **Akış Bulucu'yu**silmeniz gerekir.
+    Canlı çıktıyı yayımlamak için ilişkili varlık için bir akış Bulucu oluşturmanız gerekir. 
+8. Kullanılacak URL 'Leri geri almak için **akış bulucunun** yollarını listeleyin (bunlar belirleyici 'dir).
+9. Akışı yapmak istediğiniz **akış uç noktası** (başlangıç) için ana bilgisayar adını alın.
+10. Tam URL 'yi almak için, adım 8 ' deki URL 'YI adım 9 ' daki ana bilgisayar adı ile birleştirin.
+11. **Canlı olaylarınızın** görüntülenmesini durdurmak isterseniz, olay akışını durdurup **akış bulucuyu**silmeniz gerekir.
 12. Olayların akışla aktarılmasını tamamlayıp önceden sağlanan kaynakları temizlemek istediğinizde aşağıdaki yordamı izleyin.
 
     * Kodlayıcıdan akışı göndermeyi durdurun.
-    * Canlı Etkinliği Durdurun. Canlı Etkinlik durdurulduktan sonra herhangi bir ücrete tabi olmayacaktır. Tekrar başlatmanız gerektiğinde, aynı alma URL’sine sahip olacağından kodlayıcıyı yeniden yapılandırmanız gerekmez.
-    * Canlı olayınızın arşivini isteğe bağlı bir akış olarak sunmaya devam etmek istemiyorsanız Akış Uç Noktanızı durdurabilirsiniz. Canlı Etkinlik durdurulmuş durumdaysa, herhangi bir ücrete tabi olmayacaktır.
+    * Canlı etkinliği durdurun. Canlı etkinlik durdurulduktan sonra ücret ödemeyecektir. Tekrar başlatmanız gerektiğinde, aynı alma URL’sine sahip olacağından kodlayıcıyı yeniden yapılandırmanız gerekmez.
+    * Canlı olayınızın arşivini isteğe bağlı bir akış olarak sunmaya devam etmek istemiyorsanız Akış Uç Noktanızı durdurabilirsiniz. Canlı etkinlik durdurulmuş durumdaysa, hiçbir ücret ödemeyecektir.
 
-Canlı çıktının arşivlediği varlık, canlı çıktı silindiğinde otomatik olarak isteğe bağlı bir varlık haline gelir. Canlı bir olay durdurulmadan önce tüm canlı çıktıları silmeniz gerekir. İsteğe bağlı bir bayrak [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) kullanarak durakta canlı çıktıları otomatik olarak kaldırabilirsiniz. 
+Canlı çıktının Arşivlenmesi gereken varlık, canlı çıktı silindiğinde otomatik olarak isteğe bağlı bir varlık haline gelir. Canlı bir olay durdurulmadan önce tüm canlı çıktıları silmeniz gerekir. Durdurulduğunda canlı çıktıları otomatik olarak kaldırmak için, bir [Removeoutputsonstop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) isteğe bağlı bayrağını kullanabilirsiniz. 
 
 > [!TIP]
-> [Bkz. Canlı akış öğretici,](stream-live-tutorial-with-api.md)makale yukarıda açıklanan adımları uygulayan kodu inceler.
+> [Canlı akış öğreticisine](stream-live-tutorial-with-api.md)bakın. makalede yukarıda açıklanan adımları uygulayan kod incelandı.
 
 ## <a name="other-important-articles"></a>Diğer önemli makaleler
 
 - [Önerilen gerçek zamanlı kodlayıcılar](recommended-on-premises-live-encoders.md)
 - [Bulut DVR kullanma](live-event-cloud-dvr.md)
-- [Live Event türleri özellik karşılaştırması](live-event-types-comparison.md)
+- [Canlı olay türleri özelliği karşılaştırması](live-event-types-comparison.md)
 - [Durumlar ve faturalandırma](live-event-states-billing.md)
 - [Gecikme süresi](live-event-latency.md)
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-Sık [sorulan sorular](frequently-asked-questions.md#live-streaming) makalesine bakın.
+[Sık sorulan sorular](frequently-asked-questions.md#live-streaming) makalesine bakın.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde, güncellemeler alın
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Canlı akış quickstart] (live-events-wirecast-quickstart.md)
-* [Canlı akış eğitimi](stream-live-tutorial-with-api.md)
-* [Medya Hizmetleri v2'den v3'e geçiş için geçiş kılavuzu](migrate-from-v2-to-v3.md)
+* [Canlı akış Hızlı Başlangıç] (live-events-wirecast-quickstart.md (
+* [Canlı akış öğreticisi](stream-live-tutorial-with-api.md)
+* [Media Services V2 'den v3 'e geçmek için geçiş kılavuzu](migrate-from-v2-to-v3.md)

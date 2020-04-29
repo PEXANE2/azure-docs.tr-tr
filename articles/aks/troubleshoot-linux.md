@@ -1,7 +1,7 @@
 ---
 title: Linux performans araçları
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Hizmetini (AKS) kullanırken sık karşılaşılan sorunları nasıl gidereceğinizi ve nasıl çözeceğinizi öğrenin
+description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 services: container-service
 author: alexeldeib
 ms.service: container-service
@@ -9,58 +9,58 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77925611"
 ---
-# <a name="linux-performance-troubleshooting"></a>Linux Performans Sorun Giderme
+# <a name="linux-performance-troubleshooting"></a>Linux performans sorunlarını giderme
 
-Linux makinelerinde kaynak tükenmesi yaygın bir konudur ve belirtiler geniş bir yelpazede tezahür edebilir. Bu belge, bu tür sorunları tanılamaya yardımcı olmak için kullanılabilir araçların üst düzey bir genel bakış sağlar.
+Linux makinelerde kaynak tükenmesi, yaygın bir sorundur ve çok çeşitli belirtilerle bildirimde bulunabilir. Bu belge, bu tür sorunları tanılamaya yardımcı olmak için kullanılabilen araçlara yüksek düzeyde bir genel bakış sağlar.
 
-Bu araçların çoğu, yuvarlama çıktısı üretmek için bir aralık kabul eder. Bu çıktı biçimi genellikle lekeleme desenleri çok daha kolay hale getirir. Kabul edildiği durumlarda, örnek çağırma `[interval]`içerir.
+Bu araçların birçoğu, sıralı çıkış oluşturmak için bir aralığı kabul eder. Bu çıkış biçimi genellikle, biriktirme desenleri çok daha kolay hale gelir. Kabul edildiğinde, örnek çağırma dahil `[interval]`edilir.
 
-Bu araçların çoğu geniş bir geçmişe ve geniş bir yapılandırma seçeneğikümesine sahiptir. Bu sayfa, sık karşılaşılan sorunları vurgulamak için yalnızca basit bir çağrı alt kümesi sağlar. Kanonik bilgi kaynağı her zaman her araç için referans belgeleridir. Bu belgeler burada sağlanandan çok daha kapsamlı olacaktır.
+Bu araçların çoğunda kapsamlı bir geçmiş ve geniş bir yapılandırma seçenekleri kümesi vardır. Bu sayfa, yaygın sorunları vurgulamak için yalnızca basit bir çağırma alt kümesi sağlar. Kurallı bilgi kaynağı her bir araç için her zaman başvuru belgesidir. Bu belge, burada sağlandıklarınızın çok daha kapsamlı olacaktır.
 
 ## <a name="guidance"></a>Rehber
 
-Performans sorunlarını araştırma yaklaşımınızda sistematik olun. Use (kullanım, doygunluk, hatalar) ve RED (oran, hatalar, süre) olmak üzere iki yaygın yaklaşım dır. RED genellikle istek tabanlı izleme hizmetleri bağlamında kullanılır. USE genellikle kaynakları izlemek için kullanılır: bir makinedeki her kaynak için, kullanımı, doygunluğu ve hataları izleyin. Herhangi bir makinedeki dört ana kaynak cpu, bellek, disk ve ağdır. Bu kaynaklardan herhangi biri için yüksek kullanım, doygunluk veya hata oranları sistemle ilgili olası bir sorunu gösterir. Bir sorun olduğunda, temel nedeni araştırın: disk IO gecikme sonları neden yüksek? Diskler veya sanal makine SKU daraltılmış mı? Aygıtlara hangi işlemler ve hangi dosyalara yazıyorum?
+Performans sorunlarını araştırmaya yönelik yaklaşımınıza sistematik bir çözüm olun. Yaygın olarak kullanılan iki yaklaşım (kullanım, doygunluk, hatalar) ve kırmızı (oran, hatalar, süre). RED genellikle, istek tabanlı izleme için hizmetler bağlamında kullanılır. KULLANıM genellikle kaynakları izlemek için kullanılır: bir makinedeki her kaynak için, kullanımı, doygunluğu ve hataları izleyin. Herhangi bir makinedeki dört ana kaynak türü CPU, bellek, disk ve ağ ' dir. Bu kaynakların herhangi birine yönelik yüksek kullanım, doygunluk veya hata ücretleri sistemle ilgili olası bir sorunu gösterir. Bir sorun olduğunda, kök nedenini araştırın: neden disk GÇ gecikme süresi yüksek? Diskler veya sanal makine SKU 'SU kısıtlandı mı? Cihazlara hangi süreçler yazıyor ve dosyalar?
 
-Tanılamak için sık karşılaşılan sorunlara ve göstergelere bazı örnekler:
-- IOPS azaltma: cihaz başına IOPS ölçmek için iostat kullanın. Tek bir diskin sınırının üzerinde olmadığından ve tüm disklerin toplamının sanal makine için sınırdan daha az olduğundan emin olun.
-- Bant genişliği azaltma: IOPS için iostat kullanın, ancak okuma/yazma iş bkullanımını ölçme. Hem cihaz başına hem de toplam iş artışının bant genişliği sınırlarının altında olduğundan emin olun.
-- SNAT tükenmesi: Bu SAR yüksek aktif (giden) bağlantılar olarak tezahür edebilir. 
-- Paket kaybı: Bu, gönderilen/alınan sayıma göre TCP retransmit sayısı ile proxy ile ölçülebilir. Her `sar` `netstat` ikisi de ve bu bilgileri gösterebilir.
+Yaygın sorunlara ve bunları tanılamaya yönelik göstergelerine örnek olarak şunlar verilebilir:
+- IOPS daraltma: cihaz başına ıOPS 'yi ölçmek için Iostat kullanın. Tek bir diskin sınırının üzerinde olmadığından emin olun ve tüm disklerin toplamı, sanal makine limitinden daha düşük.
+- Bant genişliği azaltma: ıOPS için Iostat kullanın, ancak okuma/yazma verimini ölçmeye devam edin. Hem cihaz başına hem de toplam verimlilik bant genişliği sınırlarının altında olduğundan emin olun.
+- SNAT tükenmesi: Bu, çın 'de yüksek etkin (giden) bağlantılar olarak bildirimde bulunabilir. 
+- Paket kaybı: Bu, gönderilen/alınan sayımla ilişkili TCP yeniden aktarım sayısı aracılığıyla proxy ile ölçülebilir. `netstat` Her ikisi de `sar` bu bilgileri gösterebilir.
 
 ## <a name="general"></a>Genel
 
-Bu araçlar genel amaçlıdır ve temel sistem bilgilerini kapsar. Onlar daha fazla araştırma için iyi bir başlangıç noktasıdır.
+Bu araçlar genel amaçlı ve temel sistem bilgilerini kapsar. Bunlar, daha fazla araştırma için iyi bir başlangıç noktasıdır.
 
-### <a name="uptime"></a>Uptime
+### <a name="uptime"></a>hizmet
 
 ```
 $ uptime
  19:32:33 up 17 days, 12:36,  0 users,  load average: 0.21, 0.77, 0.69
 ```
 
-çalışma süresi sistem çalışma süresi ve 1, 5 ve 15 dakikalık yük ortalamaları sağlar. Bu yük ortalamaları kabaca iş yapan veya tamamlanması için kesintisiz çalışma bekleyen iş parçacıkları karşılık gelir. Mutlak olarak bu sayıları yorumlamak zor olabilir, ancak zaman içinde ölçülen bize yararlı bilgiler söyleyebilir:
+çalışma zamanı, sistem çalışma süresi ve 1, 5 ve 15 dakikalık yükün ortalamasını sağlar. Bu yükün yaklaşık olarak iş yapan iş parçacıklarında karşılık gelir veya kesintisiz çalışmanın tamamlanmasını bekler. Mutlak olarak bu sayıların yorumlanması zor olabilir, ancak yararlı bilgileri bize bildirebilecekleri zaman içinde ölçülür:
 
-- 1 dakikalık ortalama > 5 dakikalık ortalama yük artıyor demektir.
-- 1 dakikalık ortalama < 5 dakikalık ortalama, yükün azaldığı anlamına gelir.
+- 1 dakikalık ortalama > 5 dakikalık ortalama yükün artması anlamına gelir.
+- 1 dakikalık ortalama < 5 dakikalık ortalama yükün azaltılması anlamına gelir.
 
-çalışma süresi, bilgilerin neden kullanılmadığını da aydınlatabilir: kullanıcı makineye erişemeden önce sorun kendi başına veya yeniden başlatılarak çözülmüş olabilir.
+çalışma süresi Ayrıca bilgilerin neden kullanılabilir durumda olduğunu da gösterebilir: sorun, kullanıcının makineye erişebilmesi için kendi başına veya bir yeniden başlatma ile çözümlenebilir.
 
-Kullanılabilir CPU iş parçacığı sayısından daha yüksek yük ortalamaları, belirli bir iş yüküyle ilgili bir performans sorununu gösterebilir.
+Yük ortalamaları, kullanılabilir CPU iş parçacığı sayısından daha yüksek bir performans sorunu olduğunu gösterebilir.
 
-### <a name="dmesg"></a>Dmesg
+### <a name="dmesg"></a>dmesg
 
 ```
 $ dmesg | tail 
 $ dmesg --level=err | tail
 ```
 
-dmesg çekirdek tampon döker. OOMKill gibi olaylar çekirdek arabelleği bir giriş ekleyin. Dmesg günlüklerinde BIR OOMKill veya diğer kaynak tükenme sebunu bulma, bir sorunun güçlü bir göstergesidir.
+dmesg, çekirdek arabelleğini döker. Oomkıll gibi olaylar çekirdek arabelleğine bir giriş ekleyin. Dmesg günlüklerinde Oomkıll veya diğer kaynak tükenme iletilerinin bulunması bir sorunun güçlü göstergesidir.
 
 ### <a name="top"></a>üst
 
@@ -78,17 +78,17 @@ KiB Swap:        0 total,        0 free,        0 used. 62739060 avail Mem
      ...
 ```
 
-`top`geçerli sistem durumuna geniş bir genel bakış sağlar. Üstbilgiler bazı yararlı toplu bilgiler sağlar:
+`top`geçerli sistem durumuna ilişkin kapsamlı bir genel bakış sağlar. Üst bilgiler bazı yararlı toplu bilgiler sağlar:
 
-- görev durumu: koşma, uyuma, durma.
-- CPU kullanımı, bu durumda çoğunlukla boşta zaman gösteren.
-- toplam, ücretsiz ve kullanılan sistem belleği.
+- görevlerin durumu: çalışıyor, Uyuyan, durduruldu.
+- Bu durumda çoğunlukla boşta kalma süresini gösteren CPU kullanımı.
+- Toplam, ücretsiz ve kullanılan sistem belleği.
 
-`top`kısa ömürlü süreçleri kaçırabilir; gibi `htop` alternatifler `atop` ve bu eksikliklerin bazılarını giderirken benzer arayüzler sağlar.
+`top`kısa süreli süreçler kaçırmayabilir; benzeri `htop` Yöntemler ve `atop` Bu eksiklikleri düzelterek benzer arabirimler sağlar.
 
 ## <a name="cpu"></a>CPU
 
-Bu araçlar CPU kullanım bilgilerini sağlar. Bu, özellikle desenlerin tespit edilebildiği haddeleme çıktısı ile kullanışlıdır.
+Bu araçlar CPU kullanım bilgilerini sağlar. Bu özellikle, desenlerin kolayca spot bir şekilde olacağı, sıralı çıktı ile kullanışlıdır.
 
 ### <a name="mpstat"></a>mpstat
 
@@ -108,7 +108,7 @@ Linux 4.15.0-1064-azure (aks-main-10212767-vmss000001)  02/10/20        _x86_64_
 19:49:04       7    1.98    0.00    0.99    0.00    0.00    0.00    0.00    0.00    0.00   97.03
 ```
 
-`mpstat`benzer CPU bilgilerini üste yazdırır, ancak CPU iş parçacığına göre ayrılmıştır. Tüm çekirdekleri aynı anda görmek, örneğin tek bir dişli uygulama %100 kullanımda tek bir çekirdek kullandığında, son derece dengesiz CPU kullanımını algılamak için yararlı olabilir. Bu sorunu, sistemdeki tüm CPU'lar üzerinde toplandığında fark etmek daha zor olabilir.
+`mpstat`benzer CPU bilgilerini üste yazdırır, ancak CPU iş parçacığı tarafından bölünür. Tüm çekirdekleri aynı anda görmek, yüksek oranda kullanılabilir CPU kullanımını algılamak için faydalı olabilir. Örneğin, tek bir iş parçacıklı uygulama bir çekirdekli %100 kullanım aşamasında bir çekirdek kullanır. Bu sorun, sistemdeki tüm CPU 'Larda Toplandığınızda daha zor olabilir.
 
 ### <a name="vmstat"></a>vmstat
 
@@ -119,11 +119,11 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat`benzer bilgiler `mpstat` `top`sağlar ve, CPU (r sütunu), bellek istatistikleri ve her iş durumunda harcanan CPU zamanının yüzdesi bekleyen işlemlerin sayısını numaralandırma.
+`vmstat`benzer bilgiler `mpstat` ve `top`, CPU (r sütunu), bellek istatistikleri ve her iş durumunda harcanan CPU zamanının yüzde sayısını numaralandırma sağlar.
 
 ## <a name="memory"></a>Bellek
 
-Bellek çok önemli ve neyse ki kolay, kaynak izlemektir. Bazı araçlar, cpu ve bellek `vmstat`gibi hem de rapor edebilirsiniz. Ama gibi `free` araçlar hala hızlı hata ayıklama için yararlı olabilir.
+Bellek çok önemli ve takip etmek için çok daha kolay ve kaynak. Bazı araçlar, gibi `vmstat`CPU ve bellek rapor edebilir. Ancak, benzer `free` araçlar hızlı hata ayıklama için hala faydalı olabilir.
 
 ### <a name="free"></a>serbest
 
@@ -134,11 +134,11 @@ Mem:          64403        2338       42485           1       19579       61223
 Swap:             0           0           0
 ```
 
-`free`kullanılan ve boş bellek hakkında temel bilgileri sunar. `vmstat`haddeleme çıktısı sağlama yeteneği nden dolayı temel bellek analizi için bile daha yararlı olabilir.
+`free`Toplam belleğin yanı sıra kullanılan ve boş bellek hakkındaki temel bilgileri sunar. `vmstat`, sıralı çıkış sağlayabilme özelliği nedeniyle temel bellek analizi için bile daha kullanışlı olabilir.
 
 ## <a name="disk"></a>Disk
 
-Bu araçlar disk IOPS'yi, bekleme sıralarını ve toplam iş artışlarını ölçer. 
+Bu araçların disk ıOPS 'si, bekleme sıraları ve toplam verimlilik ölçümüdür. 
 
 ### <a name="iostat"></a>iostat
 
@@ -157,31 +157,31 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat`disk kullanımına ilişkin derin bilgiler sağlar. Bu çağrı, `-x` uzun istatistikler `-y` için geçer, önyükleme beri ilk çıktı `1 1` yazdırma sistemi ortalamaları atlamak için, ve biz 1 saniyelik aralık istiyorum belirtmek için, çıkış bir blok sonra biten. 
+`iostat`disk kullanımı hakkında ayrıntılı öngörüler sağlar. Bu çağrı, `-x` önyüklemeden bu yana ilk `-y` çıktıyı yazdırma sistem ortalamaları 'nı atlamak ve `1 1` bir çıkış blobundan sonra sona ermek üzere 1 saniyelik zaman aralığını belirtmek için genişletilmiş istatistikleri geçer. 
 
-`iostat`birçok yararlı istatistik ortaya çıkarır:
+`iostat`birçok yararlı istatistik sunar:
 
-- `r/s`ve `w/s` saniyede okur ve saniyede yazar. Bu değerlerin toplamı IOPS'dir.
-- `rkB/s`ve `wkB/s` kilobaytlar saniyede okunur/yazılır. Bu değerlerin toplamı iş bölümüdür.
-- `await`sıraya alınan istekler için milisaniye cinsinden ortalama iowait süresidir.
-- `avgqu-sz`sağlanan aralık üzerindeki ortalama sıra boyutudur.
+- `r/s`ve `w/s` saniye başına okuma ve yazma işlemleri. Bu değerlerin toplamı ıOPS 'dir.
+- `rkB/s`ve `wkB/s` saniye başına kilobayt okuma/yazma. Bu değerlerin toplamı üretilen iş sayısıdır.
+- `await`, kuyruğa alınan istekler için milisaniye olarak ortalama ıowaıt süresi.
+- `avgqu-sz`, belirtilen Aralık üzerinde ortalama sıra boyutudur.
 
-Azure VM'de:
+Bir Azure VM 'de:
 
-- ve tek `r/s` `w/s` bir blok aygıtı için toplamı, bu diskin SKU sınırlarını aşamaz.
-- ve tek `rkB/s` `wkB/s` bir blok aygıtı için toplamı, bu diskin SKU sınırlarını aşamaz
-- tüm blok `r/s` `w/s` aygıtlarının toplamı VM SKU sınırlarını aşamaz.
-- tüm blok `rkB/s` aygıtları için 'wkB/s toplamı VM SKU sınırlarını aşamaz.
+- tek bir blok `r/s` cihaz `w/s` için ve toplamı, diskin SKU sınırları aşmayabilir.
+- tek bir blok `rkB/s` cihaz `wkB/s` için ve toplamı, diskin SKU sınırları aşmayabilir
+- tüm blok cihazları `r/s` için `w/s` ve toplamı, VM SKU 'sunun sınırlarını aşamaz.
+- tüm blok cihazlar `rkB/s` için ve ' wkb/s TOPLAMı, VM SKU 'sunun sınırlarını aşamaz.
 
-İşletim sistemi diskinin kapasitesine karşılık gelen en küçük SKU'nun yönetilen diski olarak sayıldığını unutmayın. Örneğin, 1024GB işletim sistemi diski Bir P30 diske karşılık gelir. Kısa ömürlü işletim sistemi diskleri ve geçici diskler tek tek disk sınırları yoktur; bunlar sadece tam VM limitleri ile sınırlıdır.
+İşletim sistemi diskinin, kapasitesine karşılık gelen en küçük SKU 'nun yönetilen diski olarak sayıldığını unutmayın. Örneğin, bir 1024GB işletim sistemi diski bir P30 diskine karşılık gelir. Kısa ömürlü işletim sistemi disklerinin ve geçici disklerin ayrı disk limitleri yoktur; Bunlar yalnızca tam VM limitleriyle sınırlıdır.
 
-Bekleyen veya avgqu-sz sıfır olmayan değerleri de IO çekişme iyi göstergelervardır.
+Await veya avgqu-SZ ' y i sıfır olmayan değerleri de GÇ çakışması 'nın iyi göstergeleri.
 
 ## <a name="network"></a>Ağ
 
-Bu araçlar, iş aktarımı, iletim hataları ve kullanım gibi ağ istatistiklerini ölçer. Daha derin analizler, sıkışıklık ve bırakılan paketler hakkında ince taneli TCP istatistiklerini ortaya çıkarabilir.
+Bu araçlar aktarım hızı, iletim arızaları ve kullanım gibi ağ istatistiklerini ölçer. Daha derin analiz, sıkışıklık ve bırakılan paketlere ilişkin ayrıntılı TCP istatistikleri sunabilir.
 
-### <a name="sar"></a>Sar
+### <a name="sar"></a>b
 
 ```
 $ sar -n DEV [interval]
@@ -199,10 +199,10 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar`analiz geniş bir yelpazede için güçlü bir araçtır. Bu örnek, ağ istatistiklerini ölçme yeteneğini kullansa da, CPU ve bellek tüketimini ölçmek için eşit derecede güçlüdür. Bu örnek, `sar` `-n` ağ çıktısını `DEV` aygıt tarafından görüntüleyen (ağ aygıtı) anahtar sözcük lerini belirtmek için bayrakla çağrır.
+`sar`, çok çeşitli analizler için güçlü bir araçtır. Bu örnekte ağ istatistiklerini ölçme özelliği kullanılırken, CPU ve bellek tüketimini ölçmek için eşit derecede güçlüdür. Bu örnek, `sar` `DEV` ( `-n` ağ aygıtı) anahtar sözcüğünü belirtmek için bayrağıyla çağırır ve ağ aktarım hızını cihaza göre görüntüler.
 
-- Belirli bir `rxKb/s` `txKb/s` aygıtın toplam iş bölümü ve toplamıdır. Bu değer, sağlanan Azure NIC için sınırı aştığında, makinedeki iş yükleri artan ağ gecikmesi ile karşılaşır.
-- `%ifutil`belirli bir cihaz için kullanımını ölçer. Bu değer %100'e yaklaştıkça, iş yükleri ağ gecikmesi artırılır.
+- `rxKb/s` Ve `txKb/s` toplamı, belirli bir cihaz için toplam aktarım hızı. Bu değer, sağlanan Azure NIC 'in sınırını aştığında, makinedeki iş yükleri daha fazla ağ gecikmesi yaşar.
+- `%ifutil`belirli bir cihaz için kullanımı ölçer. Bu değer %100 yaklaşırsa, iş yükleri artan ağ gecikmesi ile karşılaşacaktır.
 
 ```
 $ sar -n TCP,ETCP [interval]
@@ -221,9 +221,9 @@ Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s
 Average:         0.00      0.00      0.00      0.00      0.00
 ```
 
-Bu çağrı, `sar` `TCP,ETCP` TCP bağlantılarını incelemek için anahtar kelimeleri kullanır. Son satırın üçüncü sütunu olan "retrans", tcp saniyede yeniden iletim sayısıdır. Bu alan için yüksek değerler güvenilir olmayan bir ağ bağlantısını gösterir. Birinci ve üçüncü satırlarda "etkin" yerel aygıttan kaynaklanan bir bağlantı anlamına gelirken, "uzak" gelen bir bağlantıyı gösterir.  Azure'da sık karşılaşılan bir sorun, algılamaya yardımcı olabilecek `sar` SNAT bağlantı noktası tükenmesidir. Sorun, yerel olarak başlatılan TCP bağlantılarının yüksek oranda olması nedeniyle SNAT bağlantı noktası tükenmesi yüksek "etkin" değerler olarak tezahür eder.
+Bu çağırma, `sar` `TCP,ETCP` TCP bağlantılarını incelemek için anahtar kelimeleri kullanır. Son satırın üçüncü sütunu, "retrans", saniye başına TCP yeniden iletim sayısıdır. Bu alan için yüksek değerler, güvenilir olmayan bir ağ bağlantısını gösterir. İlk ve üçüncü satırlarda, "etkin" yerel cihazdan kaynaklanan bir bağlantı anlamına gelir, ancak "uzak" gelen bir bağlantıyı gösterir.  Azure 'daki yaygın bir sorun, algılamaya yardımcı `sar` olabilecek SNAT bağlantı noktası tükenmesi ' dır. Bu sorun yüksek oranda giden, yerel olarak başlatılmış bir TCP bağlantısı nedeniyle, SNAT bağlantı noktası tükenmesi yüksek "etkin" değerler olarak bildirimde bulunur.
 
-Bir `sar` aralık aldığından, yuvarlanma çıktısını yazdırır ve ardından çağırmadan elde edilen ortalama sonuçları içeren son çıktı satırlarını yazdırır.
+Bir `sar` Aralık alır, sıralı çıktıyı yazdırır ve sonra, çağrının ortalama sonucunu içeren son çıktı satırlarını yazdırır.
 
 ### <a name="netstat"></a>Netstat
 
@@ -323,4 +323,4 @@ IpExt:
     InECT0Pkts: 14
 ```
 
-`netstat`burada özet çıktı ile çağrılan, ağ istatistikleri geniş bir yelpazede içe dönük olabilir. Konuya bağlı olarak burada birçok yararlı alanlar vardır. TCP bölümündeki yararlı alanlardan biri "başarısız bağlantı denemeleri"dir. Bu, SNAT bağlantı noktası tükenmesinin veya giden bağlantıları oluşturan diğer sorunların bir göstergesi olabilir. Yüksek oranda yeniden aktarılan segmentler (ayrıca TCP bölümü altında) paket teslimiyle ilgili sorunları gösterebilir. 
+`netstat`, burada Özet çıktı ile çağrılan çok çeşitli ağ istatistiklerini introspect sağlayabilir. Soruna bağlı olarak burada çok sayıda yararlı alan vardır. TCP bölümündeki bir faydalı alan "başarısız bağlantı denemeleri" olur. Bu, SNAT bağlantı noktası tükenmesi veya giden bağlantılar oluşturma sorunları hakkında bir gösterge olabilir. Yüksek oranda yeniden aktarılan parçaların (TCP bölümünde de) paket tesliminde sorunlar olduğunu gösterebilir. 

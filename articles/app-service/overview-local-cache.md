@@ -1,64 +1,64 @@
 ---
 title: Yerel önbellek
-description: Azure Uygulama Hizmeti'nde yerel önbelleğin nasıl çalıştığını ve uygulamanızın yerel önbelleğinin durumunu nasıl etkinleştireceğinizi, yeniden boyutlandıracağını ve sorgulayacağınıöğrenin.
+description: Yerel önbelleğin Azure App Service nasıl çalıştığını ve uygulamanızın yerel önbelleğinin durumunu etkinleştirme, yeniden boyutlandırma ve sorgulama hakkında bilgi edinin.
 tags: optional
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78227891"
 ---
-# <a name="azure-app-service-local-cache-overview"></a>Azure App Service Yerel Önbellek'e genel bakış
+# <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
 > [!NOTE]
-> Yerel önbellek, Windows [Kapsayıcıları](app-service-web-get-started-windows-container.md) veya Linux'taki Uygulama Hizmeti gibi Işlev uygulamalarında veya kapsayıcı Uygulama Hizmeti [uygulamalarında](containers/app-service-linux-intro.md)desteklenmez.
+> Yerel önbellek, [Windows kapsayıcıları](app-service-web-get-started-windows-container.md) veya [Linux üzerinde App Service](containers/app-service-linux-intro.md)gibi işlev uygulamalarında veya Kapsayıcılı App Service uygulamalarda desteklenmez.
 
 
-Azure Uygulama Hizmeti içeriği Azure Depolama'da depolanır ve içerik paylaşımı olarak dayanıklı bir şekilde ortaya çıkar. Bu tasarım çeşitli uygulamalarla çalışmak üzere tasarlanmıştır ve aşağıdaki özelliklere sahiptir:  
+Azure App Service içerik Azure Storage 'da depolanır ve bir içerik paylaşımında dayanıklı bir biçimde ortaya çıkmış olur. Bu tasarımın çeşitli uygulamalarla çalışması amaçlanmıştır ve aşağıdaki özniteliklere sahiptir:  
 
-* İçerik, uygulamanın birden çok sanal makine (VM) örneğinde paylaşılır.
-* İçerik dayanıklıdır ve çalışan uygulamalarla değiştirilebilir.
-* Günlük dosyaları ve tanılama veri dosyaları aynı paylaşılan içerik klasörü altında kullanılabilir.
-* Yeni içerik yayımlama doğrudan içerik klasörünü güncelleştirir. Aynı içeriği SCM web sitesi ve çalışan uygulama aracılığıyla hemen görüntüleyebilirsiniz (genellikle ASP.NET gibi bazı teknolojiler, en son içeriği almak için bazı dosya değişikliklerinde bir uygulamayı yeniden başlatmayı başlatır).
+* İçerik, uygulamanın birden çok sanal makine (VM) örneği arasında paylaşılır.
+* İçerik dayanıklı olabilir ve uygulamalar çalıştırılarak değiştirilebilir.
+* Günlük dosyaları ve tanılama veri dosyaları aynı paylaşılan içerik klasörü altında bulunabilir.
+* Yeni içerik yayımlandığında içerik klasörü doğrudan güncelleştirilir. Aynı içeriği SCM Web sitesi ve çalışan uygulama aracılığıyla hemen görüntüleyebilirsiniz (genellikle ASP.NET gibi bazı teknolojiler, en son içeriği almak için bazı dosya değişikliklerinde uygulama yeniden başlatması başlatır).
 
-Birçok uygulama bu özelliklerden birini veya tümlerini kullanırken, bazı uygulamaların yüksek kullanılabilirlik ile çalıştırabilecekleri yüksek performanslı, salt okunur içerik deposuna ihtiyacı vardır. Bu uygulamalar, belirli bir yerel önbelleğin VM örneğinden yararlanabilir.
+Birçok uygulama bu özelliklerden birini veya tümünü kullanırken, bazı uygulamalar yalnızca yüksek kullanılabilirliğe sahip olan yüksek performanslı, salt okunurdur bir içerik deposuna ihtiyaç duyar. Bu uygulamalar, belirli bir yerel önbelleğin bir VM örneğinden yararlanabilir.
 
-Azure App Service Local Cache özelliği, içeriğinizin web rol görünümünü sağlar. Bu içerik, depolama alanı içeriğinizin yerinde eş zamanlı olarak oluşturulan bir yazma önbelleğidir. Önbellek hazır olduğunda, site önbelleğe alınmış içeriğe karşı çalışacak şekilde değiştirilir. Yerel Önbellekte çalışan uygulamaların aşağıdaki avantajları vardır:
+Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü görünümünü sağlar. Bu içerik, zaman uyumsuz olarak site başlatması oluşturulan depolama içeriğinizin yazma-atma önbelleğidir. Önbellek hazırsa, site önbelleğe alınan içeriğe karşı çalışmaya geçiş yapılır. Yerel önbellekte çalışan uygulamalar aşağıdaki avantajlara sahiptir:
 
-* Azure Depolama'daki içeriğe erişirken oluşan gecikmelerden etkilenmezler.
-* İçerik paylaşımına hizmet veren sunucularda meydana gelen Azure Depolama ile planlanan yükseltmelere veya planlanmamış kesinti sürelerine ve diğer aksaklıklara karşı bağışıktırlar.
-* Depolama payı değişiklikleri nedeniyle daha az uygulama yeniden başlatmaları var.
+* Bunlar, Azure depolama 'daki içeriğe erişirken oluşan gecikmelerin dengeskalarına göre yapılır.
+* Bunlar, planlı yükseltmelere veya planlanmamış aşağı saatlere ve içerik paylaşımında sunan sunucularda gerçekleşen Azure depolama ile ilgili diğer kesintilere karşı bir şekilde etkilenmez.
+* Depolama paylaşımının değişikliklerinden dolayı daha az uygulama yeniden başlatmaları vardır.
 
-## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Yerel önbelleğin Uygulama Hizmeti davranışını nasıl değiştirdiği
-* _D:\ev,_ uygulama başlatıldığında VM örneğinde oluşturulan yerel önbelleğe işaret ediyor. _D:\yerel_ geçici VM özel depolama işaret etmeye devam ediyor.
-* Yerel önbellek, paylaşılan içerik deposunun _/site_ ve _/site uzantıları_ klasörlerinin sırasıyla _D:\home\site_ ve _D:\home\site uzantılarında_bir defalık bir kopyasını içerir. Uygulama başlatıldığında dosyalar yerel önbelleğe kopyalanır. Her uygulama için iki klasörün boyutu varsayılan olarak 300 MB ile sınırlıdır, ancak bunu 2 GB'a kadar artırabilirsiniz. Kopyalanan dosyalar yerel önbelleğin boyutunu aşarsa, Uygulama Hizmeti yerel önbelleği sessizce yok sayar ve uzak dosya paylaşımından okunur.
-* Yerel önbellek okuma-yazma dır. Ancak, uygulama sanal makineleri hareket ettirdiğinde veya yeniden başlatıldığında herhangi bir değişiklik atılır. İçerik deposunda görev açısından kritik verileri depolayan uygulamalar için yerel önbelleği kullanmayın.
-* _D:\home\LogFiles_ ve _D:\home\Data_ günlük dosyaları ve uygulama verileri içerir. İki alt klasör VM örneğinde yerel olarak depolanır ve düzenli olarak paylaşılan içerik deposuna kopyalanır. Uygulamalar, bu klasörlere yazarak günlük dosyalarını ve verilerini devam ettir. Ancak, paylaşılan içerik deposuna kopya en iyi çabadır, bu nedenle günlük dosyalarının ve verilerinin bir VM örneğinin ani bir şekilde çökmesi nedeniyle kaybolması mümkündür.
-* [Günlük akışı](troubleshoot-diagnostic-logs.md#stream-logs) en iyi çaba kopya etkilenir. Akışlı günlüklerde bir dakikaya kadar gecikme gözlemleyebilirsiniz.
-* Paylaşılan içerik deposunda, yerel önbelleği kullanan uygulamalar için _LogFiles_ ve _Data_ klasörlerinin klasör yapısında bir değişiklik vardır. Artık içinde "benzersiz tanımlayıcı" + zaman damgasının adlandırma desenini izleyen alt klasörler vardır. Alt klasörlerin her biri, uygulamanın çalıştığı veya çalıştığı bir VM örneğine karşılık gelir.
-* _D:\home'daki_ diğer klasörler yerel önbellekte kalır ve paylaşılan içerik deposuna kopyalanmaz.
-* Desteklenen herhangi bir yöntemle uygulama dağıtımı doğrudan dayanıklı paylaşılan içerik deposuna yayınlanır. Yerel önbellekteki _D:\home\site_ ve _D:\home\site uzantıları_ klasörlerini yenilemek için uygulamanın yeniden başlatılması gerekir. Yaşam döngüsünü sorunsuz hale getirmek için, bu makaledeki bilgileri daha sonra görün.
-* SCM sitesinin varsayılan içerik görünümü paylaşılan içerik deposuolmaya devam eder.
+## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Yerel önbelleğin App Service davranışını nasıl değiştirdiği
+* _D:\home_ , uygulama başlatıldığında VM örneğinde oluşturulan yerel önbelleğe işaret eder. _D:\Local_ , VM 'ye özgü geçici depolamaya işaret etmeye devam ediyor.
+* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başlatıldığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 300 MB ile sınırlıdır, ancak bunu 2 GB 'a kadar artırabilirsiniz. Kopyalanan dosyalar yerel önbelleğin boyutunu aşarsa App Service sessizce yerel önbelleği yoksayar ve uzak dosya paylaşımından okur.
+* Yerel önbellek okuma-yazma ' dır. Ancak, uygulama sanal makineleri taşıdığında veya yeniden başlatıldığında herhangi bir değişiklik atılır. Görev açısından kritik verileri içerik deposunda depolayan uygulamalar için yerel önbellek kullanmayın.
+* _D:\home\logfiles_ ve _d:\home\data_ günlük dosyalarını ve uygulama verilerini içerir. İki alt klasör, sanal makine örneğinde yerel olarak depolanır ve paylaşılan içerik deposuna düzenli olarak kopyalanır. Uygulamalar, günlük dosyalarını ve verileri bu klasörlere yazarak kalıcı hale getirebilirler. Ancak, paylaşılan içerik deposuna yapılan kopya en iyi çaba olduğundan, bir VM örneğinin ani kilitlenmesi nedeniyle günlük dosyaları ve verilerin kaybedilmesi mümkündür.
+* [Günlük akışı](troubleshoot-diagnostic-logs.md#stream-logs) , en iyi çaba kopyasından etkilenir. Akışlı günlüklerde bir dakikalık gecikmeye kadar gözlemleyebilirsiniz.
+* Paylaşılan içerik deposunda, yerel önbelleği kullanan uygulamalar için _LogFiles_ ve _veri_ klasörlerinin klasör yapısında bir değişiklik vardır. Burada "benzersiz tanımlayıcı" ve zaman damgasının adlandırma modelini izleyen alt klasörler vardır. Alt klasörlerin her biri, uygulamanın çalıştığı veya çalıştırıldığı bir VM örneğine karşılık gelir.
+* _D:\home_ 'taki diğer klasörler yerel önbellekte kalır ve paylaşılan içerik deposuna kopyalanmaz.
+* Desteklenen herhangi bir yöntem aracılığıyla uygulama dağıtımı, doğrudan kalıcı paylaşılan içerik deposuna yayınlar. Yerel önbellekteki _D:\home\site_ ve _D:\home\siteextensions_ klasörlerini yenilemek için uygulamanın yeniden başlatılması gerekiyor. Yaşam döngüsünü sorunsuz hale getirmek için bu makalenin ilerleyen kısımlarında bulunan bilgilere bakın.
+* SCM sitesinin varsayılan içerik görünümü, paylaşılan içerik deposundan olmaya devam eder.
 
-## <a name="enable-local-cache-in-app-service"></a>Uygulama Hizmetinde Yerel Önbelleği Etkinleştir
-Ayrılmış uygulama ayarlarının bir birleşimini kullanarak Yerel Önbellek'i yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
+## <a name="enable-local-cache-in-app-service"></a>App Service 'de yerel önbelleği etkinleştir
+Yerel önbelleği, ayrılmış uygulama ayarları birleşimini kullanarak yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
 
-* [Azure portalında](#Configure-Local-Cache-Portal)
+* [Azure portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
-### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portalını kullanarak Yerel Önbelleği yapılandırma
+### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portal kullanarak yerel önbelleği yapılandırma
 <a name="Configure-Local-Cache-Portal"></a>
 
-Bu uygulama ayarını kullanarak Web uygulaması başına Yerel Önbellek'i etkinleştirin:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına temelinde etkinleştirin:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-![Azure portalı uygulama ayarları: Yerel Önbellek](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
+![Azure portal App Settings: yerel önbellek](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
-### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Azure Kaynak Yöneticisi'ni kullanarak Yerel Önbelleği yapılandırma
+### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Azure Resource Manager kullanarak yerel önbelleği yapılandırma
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```json
@@ -82,34 +82,34 @@ Bu uygulama ayarını kullanarak Web uygulaması başına Yerel Önbellek'i etki
 ...
 ```
 
-## <a name="change-the-size-setting-in-local-cache"></a>Yerel Önbellek'te boyut ayarını değiştirme
-Varsayılan olarak, yerel önbellek boyutu **300**MB'dır. Buna, içerik deposundan kopyalanan /site ve /site uzantıları klasörlerinin yanı sıra yerel olarak oluşturulan günlükleri ve veri klasörleri de dahildir. Bu sınırı artırmak için uygulama `WEBSITE_LOCAL_CACHE_SIZEINMB`ayarını kullanın. Boyutu uygulama başına **2 GB'a** (2000 MB) kadar artırabilirsiniz.
+## <a name="change-the-size-setting-in-local-cache"></a>Yerel önbellekteki boyut ayarını değiştir
+Varsayılan olarak, yerel önbellek boyutu **300 MB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için uygulama ayarını `WEBSITE_LOCAL_CACHE_SIZEINMB`kullanın. Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz.
 
-## <a name="best-practices-for-using-app-service-local-cache"></a>Uygulama Hizmeti Yerel Önbelleği kullanmak için en iyi uygulamalar
-[Hazırlama Ortamları](../app-service/deploy-staging-slots.md) özelliğiyle birlikte Yerel Önbellek kullanmanızı öneririz.
+## <a name="best-practices-for-using-app-service-local-cache"></a>App Service yerel önbellek kullanmaya yönelik en iyi uygulamalar
+Yerel önbelleği, [hazırlama ortamları](../app-service/deploy-staging-slots.md) özelliğiyle birlikte kullanmanızı öneririz.
 
-* **Üretim** *sticky* yuvanıza değeri `WEBSITE_LOCAL_CACHE_OPTION` `Always` olan yapışkan uygulama ayarını ekleyin. `WEBSITE_LOCAL_CACHE_SIZEINMB`Kullanıyorsanız, üretim yuvanıza yapışkan bir ayar olarak da ekleyin.
-* Bir **Evreleme** yuvası oluşturun ve Evreleme yuvanıza yayınlayın. Üretim yuvası için Yerel Önbellek'in avantajlarından yararlanırsanız, evreleme için sorunsuz bir yapı dağıtma-test yaşam döngüsü sağlamak için genellikle hazırlama yuvasını Yerel Önbellek'i kullanacak şekilde ayarlamazsınız.
-* Sitenizi Evreleme yuvanıza karşı test edin.  
-* Hazır olduğunuzda, Evreleme ve Üretim yuvalarınız arasında bir [takas işlemi](../app-service/deploy-staging-slots.md#Swap) düzenleyin.  
-* Yapışkan ayarlar ad ve yapışkan bir yuva içerir. Böylece Evreleme yuvası Üretim'e dönüştürüldüğünde, Yerel Önbellek uygulaması ayarlarını devralır. Yeni değiştirilen Üretim yuvası birkaç dakika sonra yerel önbelleğe karşı çalışacak ve takas tan sonra yuva ısınmasının bir parçası olarak ısıtılır. Bu nedenle, yuva değişimi tamamlandığında, Üretim yuvanız yerel önbelleğe göre çalışır.
+* Değeri `Always` **Üretim** yuvasına ekleyerek *yapışkan* uygulama ayarını `WEBSITE_LOCAL_CACHE_OPTION` ekleyin. Kullanıyorsanız `WEBSITE_LOCAL_CACHE_SIZEINMB`, üretim yuvasına yapışkan bir ayar olarak da ekleyin.
+* **Hazırlama** yuvası oluşturun ve hazırlama yuvalamanıza yayımlayın. Hazırlama yuvasını, üretim yuvası için yerel önbelleğin avantajlarından yararlanmanız durumunda, hazırlama için sorunsuz bir yapı-dağıtma-test yaşam döngüsünü etkinleştirmek üzere yerel önbellek kullanacak şekilde ayarlayamazsınız.
+* Sitenizi hazırlama yuvasıyla test edin.  
+* Hazırsanız, hazırlama ve üretim yuvalarınız arasında bir [değiştirme işlemi](../app-service/deploy-staging-slots.md#Swap) yapın.  
+* Yapışkan ayarlar bir yuvaya bir yuva adı ve yapışkan olarak verilebilir. Bu nedenle, hazırlama yuvası üretime takas edildiğinde yerel önbellek uygulama ayarlarını devralır. Yeni takas edilen üretim yuvası, birkaç dakika sonra yerel önbellekte çalışır ve değiştirme sonrasında yuva ısınma bir parçası olarak görünür olur. Bu nedenle, yuva takası tamamlandığında, üretim yuva yerel önbellekte çalışır.
 
 ## <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
 
-### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Yerel Önbellek'in uygulamama uygulanıp uygulanmadığını nasıl anlayabilirim?
-Uygulamanızın yüksek performanslı ve güvenilir bir içerik deposuna ihtiyacı varsa, çalışma zamanında kritik verileri yazmak için içerik deposunu kullanmıyorsa ve toplam boyutu 2 GB'dan azsa, yanıt "evet"! /site nizin ve /site uzantıları klasörlerinizin toplam boyutunu elde etmek için site uzantısını kullanabilirsiniz "Azure Web Apps Disk Kullanımı."
+### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Yerel önbelleğin uygulamam için geçerli olup olmadığını nasıl anlayabilirim?
+Uygulamanızın yüksek performanslı, güvenilir bir içerik deposu olması gerekiyorsa, çalışma zamanında kritik verileri yazmak için içerik deposunu kullanmaz ve toplam boyutta 2 GB 'den küçükse yanıt "Evet" olur! /SITE ve/siteextensions klasörlerinizin toplam boyutunu almak için, "Azure Web Apps disk kullanımı" site uzantısını kullanabilirsiniz.
 
-### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Sitemin Yerel Önbellek'i kullanmaya geçiş olup olmadığını nasıl anlayabilirim?
-Hazırlama Ortamları ile Yerel Önbellek özelliğini kullanıyorsanız, Yerel Önbellek ısıtılana kadar takas işlemi tamamlanmaz. Sitenizin Yerel Önbellekle karşı olup olmadığını kontrol etmek için, alt işlem ortamı değişkenini `WEBSITE_LOCALCACHE_READY`denetleyebilirsiniz. Birden çok durumda alt işlem ortamı değişkenine erişmek için [alt işlem ortamı değişken](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) sayfasındaki yönergeleri kullanın.  
+### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Sitemin yerel önbellek kullanmaya geçmiş olup olmadığını nasıl anlayabilirim?
+Yerel önbellek özelliğini hazırlama ortamları ile kullanıyorsanız, yerel önbellek çarpana kadar değiştirme işlemi tamamlanmaz. Sitenizin yerel önbelleğe karşı çalışıp çalışmadığını denetlemek için çalışan işlem ortamı değişkenini `WEBSITE_LOCALCACHE_READY`kontrol edebilirsiniz. Çalışan işlem ortamı değişkenine birden çok örnek üzerinde erişmek için [çalışan işlem ortamı değişkeni](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) sayfasındaki yönergeleri kullanın.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ben sadece yeni değişiklikler yayınladı, ama benim uygulama onları yok gibi görünüyor. Neden?
-Uygulamanız Yerel Önbellek kullanıyorsa, en son değişiklikleri almak için sitenizi yeniden başlatmanız gerekir. Üretim sitesinde değişiklik yayınlamak istemiyor musunuz? Önceki en iyi uygulamalar bölümündeki yuva seçeneklerine bakın.
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Yeni değişiklikler yayımladım, ancak Uygulamam bunlara sahip görünmüyor. Neden?
+Uygulamanız yerel önbellek kullanıyorsa, en son değişiklikleri almak için sitenizi yeniden başlatmanız gerekir. Bir üretim sitesindeki değişiklikleri yayınlamak istemiyor musunuz? Önceki en iyi yöntemler bölümündeki yuva seçeneklerine bakın.
 
-### <a name="where-are-my-logs"></a>Kütüklerim nerede?
-Yerel Önbellek ile günlükleriniz ve veri klasörleriniz biraz farklı görünür. Ancak, alt klasörlerinizin yapısı, alt klasörlerin "benzersiz VM tanımlayıcısı" + zaman damgası biçiminde bir alt klasörün altına yer leşmesi dışında aynı kalır.
+### <a name="where-are-my-logs"></a>Günlüklerim nerede?
+Yerel önbellek ile günlüklerinizi ve veri klasörlerinizi biraz farklı bir şekilde görünür. Ancak, alt klasörlerin yapısı aynı kalır, ancak alt klasörler "benzersiz VM tanımlayıcısı" ve zaman damgası biçiminde bir alt klasör altına alınır.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Yerel Önbellek etkinleştirilmiş, ancak uygulamam yine de yeniden başlatılıyor. Bunun nedeni nedir? Yerel Önbellek'in sık sık uygulama yeniden başlatmaya yardımcı olduğunu düşündüm.
-Yerel Önbellek, depolama yla ilgili uygulamanın yeniden başlatılmasını önlemeye yardımcı olur. Ancak, uygulamanız VM'nin planlanan altyapı yükseltmeleri sırasında yeniden başlatılabilir. Yerel Önbellek etkinleştirilmiş ile karşılaştığınız genel uygulama yeniden başlatılır daha az olmalıdır.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Yerel Önbelleğim etkin, ancak Uygulamam hala yeniden başlatıldı. Bunun nedeni nedir? Sık kullanılan uygulama yeniden başlatmalarının bulunduğu yerel önbellek hakkında yardım ediyorum.
+Yerel önbellek, depolamayla ilgili uygulama yeniden başlatmalarının engellenmesine yardımcı olur. Bununla birlikte, uygulamanız hala sanal makinenin planlanan altyapı yükseltmeleri sırasında yeniden başlatmaları devam edebilir. Yerel önbellek etkinken karşılaşabileceğiniz genel uygulama yeniden başlatmaları daha az olmalıdır.
 
-### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Yerel Önbellek, dizinlerin daha hızlı yerel sürücüye kopyalanmasını dışlıyor mu?
-Depolama içeriğini kopyalayan adımın bir parçası olarak, depo adlı tüm klasör hariç tutulur. Bu, site içeriğinizin uygulamanın günlük çalışmasında gerek meyebilecek bir kaynak denetim deposu içerebileceği senaryolara yardımcı olur. 
+### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Yerel önbellek, tüm dizinlerin daha hızlı yerel sürücüye kopyalanmasını mi dışlıyor?
+Depolama içeriğini kopyalayan adımın bir parçası olarak, depo adlı herhangi bir klasör hariç tutulur. Bu, site içeriğiniz uygulamanın gün için günlük işlem için gerekli olmayan bir kaynak denetimi deposu içerebilen senaryolara yardımcı olur. 

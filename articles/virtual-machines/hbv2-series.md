@@ -1,6 +1,6 @@
 ---
-title: HBv2 serisi - Azure Sanal Makineler
-description: HBv2 serisi VM'ler için teknik özellikler.
+title: HBv2-Series-Azure sanal makineleri
+description: HBv2 serisi VM 'Ler için Özellikler.
 services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
@@ -8,32 +8,32 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: amverma
 ms.openlocfilehash: eea649610ca53ccbb98b5ca361555280dcd3dafe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164806"
 ---
 # <a name="hbv2-series"></a>HBv2 serisi
 
-HBv2 serisi VM'ler, akışkandin dinamiği, sonlu elemanlar analizi ve rezervuar simülasyonu gibi bellek bant genişliğine göre yönlendirilen uygulamalar için optimize edilmiştir. HBv2 VM'lerde 120 AMD EPYC 7742 işlemci çekirdeği, CPU çekirdeği başına 4 GB RAM ve eşzamanlı çoklu iş parçacığı yoktur. Her HBv2 VM 340 GB/sn bellek bant genişliği ve 4 teraFLOPS kadar FP64 bilgisayar sağlar.
+HBv2 serisi VM 'Ler, akıcı Dynamics, sınırlı öğe analizi ve rezervoır benzetimi gibi bellek bant genişliğine göre çalışan uygulamalar için iyileştirilmiştir. HBv2 VM 'Ler özelliği 120 AMD EPIC 7742 işlemci çekirdekleri, CPU çekirdeği başına 4 GB RAM ve eşzamanlı çoklu iş parçacığı yok. Her HBv2 VM, en fazla 340 GB/sn bellek bant genişliği ve en fazla 4 işlem FP64 işlem sağlar.
 
-Premium Depolama: Desteklenen
+Premium Depolama: desteklenir
 
-Canlı Geçiş: Desteklenmiyor
+Dinamik Geçiş: desteklenmiyor
 
-Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
-| Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/s | Temel CPU frekansı (GHz) | Tüm çekirdek frekansı (GHz, tepe) | Tek çekirdekli frekans (GHz, tepe) | RDMA performansı (Gb/s) | MPI desteği | Geçici depolama (GB) | Maksimum veri diskleri | Maksimum Ethernet NIC'leri |
+| Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB120rs_v2 | 120 | AMD EPYC 7V12 | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | Tümü | 480 + 960 | 8 | 1 |
+| Standard_HB120rs_v2 | 120 | AMD EPYıC 7V12 | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | Tümü | 480 + 960 | 8 | 1 |
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaç](sizes-general.md)
+- [Genel amaçlı](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
@@ -42,4 +42,4 @@ Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

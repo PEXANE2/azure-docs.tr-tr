@@ -1,5 +1,5 @@
 ---
-title: Azure Red Hat OpenShift'te güvenlik bağlamı kısıtlamalarını yönetme | Microsoft Dokümanlar
+title: Azure Red Hat OpenShift 'te güvenlik bağlamı kısıtlamalarını yönetme | Microsoft Docs
 description: Azure Red Hat OpenShift küme yöneticileri için güvenlik bağlamı kısıtlamaları
 services: container-service
 author: troy0820
@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063168"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Azure Red Hat OpenShift'te güvenlik bağlamı kısıtlamalarını yönetme 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 'te güvenlik bağlamı kısıtlamalarını yönetme 
 
-Güvenlik bağlamı kısıtlamaları (SCC'ler), küme yöneticilerinin bölme izinlerini denetlemesine olanak sağlar. Bu API türü hakkında daha fazla bilgi edinmek [için SCC'lerin mimari belgelerine](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)bakın. CLI'yi kullanarak scc'leri normal API nesneleri olarak yönetebilirsiniz.
+Güvenlik bağlamı kısıtlamaları (SCCs), küme yöneticilerinin pods izinlerini denetlemesine olanak tanır. Bu API türü hakkında daha fazla bilgi edinmek için bkz. [SCCs için mimari belgeleri](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). CLı kullanarak, örneğiniz içindeki SCCs 'YI normal API nesneleri olarak yönetebilirsiniz.
 
-## <a name="list-security-context-constraints"></a>Güvenlik bağlamı kısıtlamalarını listele
+## <a name="list-security-context-constraints"></a>Güvenlik bağlamı kısıtlamalarını listeleme
 
-Geçerli bir SCC listesini almak için şu komutu kullanın: 
+Geçerli SCCs listesini almak için şu komutu kullanın: 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>Güvenlik bağlamı kısıtlamaları için nesneyi inceleme
+## <a name="examine-an-object-for-security-context-constraints"></a>Bir nesneyi güvenlik bağlamı kısıtlamaları için inceleyin
 
-Belirli bir SCC'yi `oc get` `oc describe`incelemek `oc edit`için,  Örneğin, **kısıtlı** SCC'yi incelemek için şu komutu kullanın:
+Belirli bir SCC 'i incelemek için, `oc get`veya `oc describe` `oc edit`kullanın.  Örneğin, **Kısıtlanmış** SCC 'yi incelemek için şu komutu kullanın:
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

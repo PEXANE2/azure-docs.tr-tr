@@ -1,39 +1,39 @@
 ---
-title: Azure VM'deki profil web uygulamaları - Application Insights Profiler
-description: Application Insights Profiler'ı kullanarak Azure VM'deki profil web uygulamaları.
+title: Azure VM 'de Web Apps profili oluşturma-Application Insights Profiler
+description: Application Insights Profiler kullanarak bir Azure VM 'de Web Apps profili oluşturma.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671588"
 ---
-# <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Bir Azure sanal makinesinde çalışan profil web uygulamaları veya Application Insights Profiler kullanarak ayarlanan sanal makine ölçeği
+# <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler kullanarak bir Azure sanal makinesinde veya bir sanal makine ölçek kümesinde çalışan Web uygulamaları profili oluşturma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Uygulama Öngörüleri Profil Oluşturucusu'yu bu hizmetlere de dağıtabilirsiniz:
-* [Azure Uygulama Hizmeti](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+Ayrıca, bu hizmetlerde Azure Application Insights Profiler dağıtabilirsiniz:
+* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Profiler'ı sanal makinede veya sanal makine ölçeği kümesine dağıtma
-Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçeği setinizde Uygulama Öngörüleri Profil oluşturucusu nasıl çalıştırılabilirsiniz. Profiler, VM'ler için Azure Tanılama uzantısı ile yüklenir. Uzantıyı Profiler'ı çalıştırmak için yapılandırın ve Uygulama Öngörüleri SDK'sını uygulamanız içine oluşturun.
+## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Bir sanal makine veya sanal makine ölçek kümesi üzerinde profil oluşturucu dağıtma
+Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçek kümesinde çalışan Application Insights Profiler nasıl alınacağı gösterilmektedir. Profiler, VM 'Ler için Azure Tanılama Uzantısı ile yüklenir. Uzantıyı profil oluşturucu çalıştıracak şekilde yapılandırın ve uygulamanızda Application Insights SDK 'Yı derleyin.
 
-1. Uygulama Öngörüleri SDK'yı [ASP.NET uygulamanıza](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)ekleyin.
+1. Application Insights SDK 'sını [ASP.net uygulamanıza](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)ekleyin.
 
-   İsteklerinizin profillerini görüntülemek için, Uygulama Öngörüleri'ne istek telemetrisi göndermeniz gerekir.
+   İsteklerinizin profillerini görüntülemek için Application Insights istek Telemetriyi göndermeniz gerekir.
 
-1. Azure Tanılama uzantısını VM'nizde yükleyin. Tam Kaynak Yöneticisi şablonu örnekleri için bkz:  
+1. Azure Tanılama uzantısı 'nı sanal makinenize yükler. Tam Kaynak Yöneticisi şablon örnekleri için bkz.:  
    * [Sanal makine](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
    * [Sanal makine ölçek kümesi](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
     
-     Önemli kısmı WadCfg'deki ApplicationInsightsProfilerSink'tir. Azure Tanılama'nın Profiler'ın iKey'inize veri göndermesini sağlaması için bu bölüme bir lavabo daha ekleyin.
+     Anahtar bölümü WadCfg içindeki Applicationınsightsprofilersink ' dir. Ikey 'e veri göndermek için profil oluşturucuyu etkinleştirmek Azure Tanılama için bu bölüme başka bir havuz ekleyin.
     
      ```json
      "SinksConfig": {
@@ -50,11 +50,11 @@ Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçeği seti
      },
      ```
 
-1. Değiştirilmiş ortam dağıtım tanımını dağıtın.  
+1. Değiştirilen ortam dağıtım tanımını dağıtın.  
 
-   Değişikliklerin uygulanması genellikle powershell cmdlets veya Visual Studio aracılığıyla tam bir şablon dağıtımı veya bulut hizmeti tabanlı yayımlama içerir.  
+   Değişikliklerin uygulanması genellikle tam şablon dağıtımı veya PowerShell cmdlet 'leri ya da Visual Studio aracılığıyla bulut hizmeti tabanlı yayımlama içerir.  
 
-   Aşağıdaki PowerShell komutları, yalnızca Azure Tanılama uzantısına dokunan varolan sanal makineler için alternatif bir yaklaşımdır. Get-AzVMDiagnosticsExtension komutu tarafından döndürülen config'e daha önce bahsedilen ProfilerSink'i ekleyin. Ardından güncelleştirilmiş config'i Set-AzVMDiagnosticsExtension komutuna geçirin.
+   Aşağıdaki PowerShell komutları, yalnızca Azure Tanılama uzantısına dokunarak var olan sanal makinelere yönelik alternatif bir yaklaşımdır. Daha önce bahsedilen ProfilerSink öğesini Get-Azvmdiagnosticsextenma komutu tarafından döndürülen yapılandırmaya ekleyin. Ardından, güncelleştirilmiş yapılandırmayı set-Azvmdiagnosticsextenma komutuna geçirin.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()
@@ -65,14 +65,14 @@ Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçeği seti
     Set-AzVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-1. Amaçlanan uygulama [IIS](https://www.microsoft.com/web/downloads/platform.aspx)üzerinden çalışıyorsa, Windows özelliğini etkinleştirin. `IIS Http Tracing`
+1. Hedeflenen uygulama [IIS](https://www.microsoft.com/web/downloads/platform.aspx)aracılığıyla çalışıyorsa, `IIS Http Tracing` Windows özelliğini etkinleştirin.
 
-   a. Ortama uzaktan erişim kurun ve ardından [Windows özellik ekle]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) penceresini kullanın. Veya PowerShell'de (yönetici olarak) aşağıdaki komutu çalıştırın:  
+   a. Ortama uzaktan erişim oluşturun ve ardından [Windows Özellikleri Ekle]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) penceresini kullanın. Veya PowerShell (yönetici olarak) içinde aşağıdaki komutu çalıştırın:  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b. Uzaktan erişim kurmak bir sorunsa, aşağıdaki komutu çalıştırmak için [Azure CLI'yi](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) kullanabilirsiniz:  
+   b. Uzaktan erişim için bir sorun varsa, aşağıdaki komutu çalıştırmak için [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 'yi kullanabilirsiniz:  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
@@ -80,38 +80,38 @@ Bu makalede, Azure sanal makinenizde (VM) veya Azure sanal makine ölçeği seti
 
 1. Uygulamanızı dağıtın.
 
-## <a name="set-profiler-sink-using-azure-resource-explorer"></a>Azure Kaynak Gezgini'ni kullanarak Profiler Lavabosu'nı ayarlama
-Uygulama Öngörüleri Profil oluşturucusu portalından ayarlamanın henüz bir yolu yok. Yukarıda açıklandığı gibi powershell kullanmak yerine, lavaboyu ayarlamak için Azure Kaynak Gezgini'ni kullanabilirsiniz. Ancak, VM'yi tekrar dağıtırsanız lavabo kaybolur. Bu ayarı korumak için VM'yi dağıtırken kullandığınız config'i güncelleştirmeniz gerekir.
+## <a name="set-profiler-sink-using-azure-resource-explorer"></a>Profil Oluşturucu havuzunu Azure Kaynak Gezgini kullanarak ayarlama
+Application Insights Profiler havuzunu portaldan ayarlamak için henüz bir yol yoktur. PowerShell 'i yukarıda açıklanan şekilde kullanmak yerine, havuzu ayarlamak için Azure Kaynak Gezgini kullanabilirsiniz. Ancak, VM 'yi yeniden dağıtırsanız havuzun kaybedildiğini aklınızda olursunuz. Bu ayarı korumak için VM dağıtımı yaparken kullandığınız yapılandırmayı güncelleştirmeniz gerekir.
 
-1. Sanal makineniz için yüklenen uzantıları görüntüleyerek Windows Azure Tanılama uzantısının yüklü olup olmadığını denetleyin.  
+1. Sanal makineniz için yüklü uzantıları görüntüleyerek Windows Azure Tanılama uzantısının yüklü olduğundan emin olun.  
 
-    ![WAD uzantısı yüklü olup olmadığını denetleyin][wadextension]
+    ![WAD uzantısının yüklenip yüklenmediğini denetle][wadextension]
 
-2. VM'niz için VM Diagnostics uzantısını bulun. [https://resources.azure.com](https://resources.azure.com)Git. Kaynak grubunuzu, Microsoft.Compute virtualMachines'i, sanal makine adını ve uzantılarını genişletin.  
+2. VM 'niz için VM tanılama uzantısını bulun. Adresine gidin [https://resources.azure.com](https://resources.azure.com). Kaynak grubunuzu, Microsoft. COMPUTE virtualMachines, sanal makine adı ve uzantıları ' nı genişletin.  
 
-    ![Azure Kaynak Gezgini'nde WAD config'ine gidin][azureresourceexplorer]
+    ![Azure Kaynak Gezgini 'de WAD config 'e gidin][azureresourceexplorer]
 
-3. WadCfg altında SinksConfig düğüm uygulama insights Profiler lavabo ekleyin. Zaten bir SinksConfig bölümünüz yoksa, bir tane eklemeniz gerekebilir. Ayarlarınızda uygun Uygulama Öngörüleri iKey'i belirttiğinizden emin olun. Sağ üst köşede Okuma/Yazma ve mavi 'Edit' düğmesine basmak için kaşifler modunu değiştirmeniz gerekir.
+3. WadCfg altındaki SinksConfig düğümüne Application Insights Profiler havuzunu ekleyin. Önceden bir SinksConfig bölümü yoksa, bir tane eklemeniz gerekebilir. Ayarlarınızda uygun Application Insights iKey değerini belirttiğinizden emin olun. Araştırıcılar modunu sağ üst köşeye okumak/yazmak ve mavi ' Düzenle ' düğmesine basmanız gerekir.
 
-    ![Uygulama Öngörüleri Profiloluşturucu Lavabo Ekle][resourceexplorersinksconfig]
+    ![Application Insights Profiler Havuzu Ekle][resourceexplorersinksconfig]
 
-4. Config'i düzenlemeyi bitirdiğinizde 'Put' tuşuna basın. Put başarılı olursa, ekranın ortasında yeşil bir denetim görüntülenir.
+4. Yapılandırmayı düzenledikten sonra ' Put ' düğmesine basın. Put başarılı olursa, ekranın ortasında yeşil bir onay işareti görünür.
 
-    ![Değişiklikleri uygulamak için put isteği gönderme][resourceexplorerput]
-
-
+    ![Değişiklikleri uygulamak için PUT isteği gönder][resourceexplorerput]
 
 
 
 
-## <a name="can-profiler-run-on-on-premises-servers"></a>Profiler şirket içi sunucularda çalıştırılabilir mi?
-Şirket içi sunucular için Application Insights Profiler'ı destekleme planımız yoktur.
+
+
+## <a name="can-profiler-run-on-on-premises-servers"></a>Şirket içi sunucularda profil oluşturucu çalıştırılabilir mi?
+Şirket içi sunucular için Application Insights Profiler desteklemeyi planlıyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Uygulamanıza trafik oluşturun (örneğin, [kullanılabilirlik testi](monitor-web-app-availability.md)başlatın). Ardından, izlemelerin Uygulama Öngörüleri örneğine gönderilmeye başlaması için 10 ila 15 dakika bekleyin.
-- Azure portalındaki [Profiler izlemelerine](profiler-overview.md?toc=/azure/azure-monitor/toc.json) bakın.
-- Sorun giderme Profiler sorunlarıyla ilgili yardım için [Profiler sorun giderme](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)konusuna bakın.
+- Uygulamanıza trafik oluşturun (örneğin, bir [Kullanılabilirlik testi](monitor-web-app-availability.md)başlatın). Ardından, izlemelerin Application Insights örneğine gönderilmesi için 10 ila 15 dakika bekleyin.
+- Azure portal [Profil Oluşturucu izlemeleri](profiler-overview.md?toc=/azure/azure-monitor/toc.json) bölümüne bakın.
+- Profil Oluşturucu sorunlarını gidermeye yönelik yardım için bkz. [Profil Oluşturucu sorun giderme](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
 
 [azureresourceexplorer]: ./media/profiler-vm/azure-resource-explorer.png
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png

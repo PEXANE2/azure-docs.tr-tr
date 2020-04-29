@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect bulut sağlama aracısı: Otomatik yükseltme | Microsoft Dokümanlar'
-description: Bu makalede, Azure AD Connect bulut sağlama aracısında yerleşik otomatik yükseltme özelliği açıklanmaktadır.
+title: 'Azure AD Connect bulut sağlama Aracısı: otomatik yükseltme | Microsoft Docs'
+description: Bu makalede, Azure AD Connect bulut sağlama aracısında yerleşik otomatik yükseltme özelliği açıklanır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,34 +16,34 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f09b2fc685881aa8a7bd87b6a855c657af9ef43d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78190322"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect bulut sağlama aracısı: Otomatik yükseltme
+# <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect bulut sağlama Aracısı: otomatik yükseltme
 
-Azure Active Directory (Azure AD) Connect bulut sağlama aracıyüklemenizin otomatik yükseltme özelliğiyle her zaman güncel olduğundan emin olmak kolaydır.
+Azure Active Directory (Azure AD) bulut sağlama Aracısı yüklemesinin her zaman güncel olduğundan emin olmak otomatik yükseltme özelliği ile oldukça kolaydır.
 
-Aracı burada yüklenir: "Program dosyaları\Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe"
+Aracı buraya yüklendi: "program files\Azure AD Connect sağlama Danışmanı T\aadconnectprovisioningagent.exe"
 
-Sürümünüzü doğrulamak için, çalıştırılabilir ve seçili özellikleri ve ardından ayrıntıları sağ tıklatın.
+Sürümünüzü doğrulamak için, yürütülebilir dosyaya sağ tıklayın ve Özellikler ' i ve ardından Ayrıntılar ' ı seçin.
 
 ![Aracı dosyası sürümü](media/how-to-automatic-upgrade/agent1.png)
 
-Aracı verici güncelleyici burada yüklenir: "Program dosyaları\Azure AD Connect Provisioning Agent Updater\AzureADConnectAgentUpdater.exe"
+Aracı güncelleştiricisi buradan yüklendi: "program files\Azure AD Connect sağlama Aracısı Updater\AzureADConnectAgentUpdater.exe"
 
-Sürümünüzü doğrulamak için, çalıştırılabilir ve seçili özellikleri ve ardından ayrıntıları sağ tıklatın.
+Sürümünüzü doğrulamak için, yürütülebilir dosyaya sağ tıklayın ve Özellikler ' i ve ardından Ayrıntılar ' ı seçin.
 
-![Aracı verici güncelleyici sürümü](media/how-to-automatic-upgrade/agent2.png)
+![Aracı Güncelleştirici sürümü](media/how-to-automatic-upgrade/agent2.png)
 
 ## <a name="uninstall-the-agent"></a>Aracıyı kaldırın
-Aracıyı kaldırmak **için, bir programı kaldır veya değiştir** ve aşağıdakileri kaldırın:
+Aracıyı kaldırmak için, **Kaldır ' a gidin veya bir programı değiştirin** ve şunları kaldırın:
 
-- **Microsoft Azure AD Bağlantı Aracısı Güncelleyici**
-- **Microsoft Azure AD Connect Sağlama Aracısı**
-- **Microsoft Azure AD Connect Sağlama Aracısı Paketi**
+- **Microsoft Azure AD Aracısı güncelleştiricisi bağlama**
+- **Microsoft Azure AD sağlama aracısına bağlanma**
+- **Microsoft Azure AD sağlama Aracısı paketini bağlama**
 
 ![Aracı kaldırma](media/how-to-automatic-upgrade/agent3.png)
 

@@ -1,57 +1,57 @@
 ---
-title: İş sürekliliği - MariaDB için Azure Veritabanı
-description: MariaDB hizmeti için Azure Veritabanı'nı kullanırken iş sürekliliği (zamanında geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme) hakkında bilgi edinin.
+title: İş sürekliliği-MariaDB için Azure veritabanı
+description: MariaDB hizmeti için Azure veritabanı kullanılırken iş sürekliliği (belirli bir noktaya geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme) hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79532400"
 ---
-# <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'nda iş sürekliliğini anlama
+# <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda iş sürekliliğini anlama
 
-Bu makalede, MariaDB için Azure Veritabanı'nın iş sürekliliği ve olağanüstü durum kurtarma için sağladığı özellikler açıklanmaktadır. Veri kaybına veya veritabanınızın ve uygulamanızın kullanılamamasına neden olabilecek yıkıcı olaylardan kurtarma seçenekleri hakkında bilgi edinin. Bir kullanıcı veya uygulama hatası veri bütünlüğünü etkilediğinde, bir Azure bölgesinde kesinti olduğunda veya uygulamanız bakım gerektirdiğinde ne yapmanız gerektiğini öğrenin.
+Bu makalede, MariaDB için Azure veritabanı 'nın iş sürekliliği ve olağanüstü durum kurtarma için sağladığı yetenekler açıklanır. Veri kaybına neden olabilecek veya veritabanınızın ve uygulamanızın kullanılamaz hale gelmesine neden olabilecek kurtarmayan olaylardan kurtarmaya yönelik seçenekler hakkında bilgi edinin. Bir kullanıcı veya uygulama hatası veri bütünlüğünü etkiliyorsa, bir Azure bölgesinin kesintiye neden olması veya uygulamanızın bakım gerektirmesi durumunda ne yapılacağını öğrenin.
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>İş sürekliliği sağlamak için kullanabileceğiniz özellikler
 
-MariaDB için Azure Veritabanı, otomatik yedeklemeler ve kullanıcıların coğrafi geri yükleme başlatma olanağı nı içeren iş sürekliliği özellikleri sağlar. Her biri Tahmini Kurtarma Süresi (ERT) ve olası veri kaybı için farklı özelliklere sahiptir. Bu seçenekleri anladıktan sonra, aralarından birini seçebilir ve bunları farklı senaryolar için birlikte kullanabilirsiniz. İş sürekliliği planınızı geliştirirken, uygulamanın rahatsız edici olaydan sonra tamamen iyileşmesi için kabul edilebilir maksimum zamanı anlamanız gerekir - bu sizin Kurtarma Süresi Hedefinizdir (RTO). Ayrıca, uygulamanın yıkıcı olaydan sonra kurtarma yaparken kaybetmeyi tolere edebileceği en yüksek son veri güncelleştirmesi miktarını (zaman aralığı) anlamanız gerekir - bu sizin Kurtarma Noktası Hedefinizdir (RPO).
+MariaDB için Azure veritabanı otomatik yedeklemeleri ve kullanıcıların coğrafi geri yükleme başlatma özelliğini içeren iş sürekliliği özellikleri sağlar. Her birinin tahmini kurtarma süresi (ERT) ve olası veri kaybı için farklı özellikleri vardır. Bu seçenekleri anladıktan sonra aralarında seçim yapabilir ve bunları farklı senaryolar için birlikte kullanabilirsiniz. İş sürekliliği planınızı geliştirdikçe, kurtarma süresi hedefiniz (RTO) bu şekilde kesintiye uğradıktan sonra uygulama tamamen kurtarmadan önce kabul edilebilir maksimum süreyi anlamanız gerekir. Ayrıca, kurtarma noktası hedefiniz (RPO) olduğundan, uygulamanın, kesintiye uğratan sonra kurtarma sırasında kaybedilmesi için en yüksek veri güncelleştirme miktarını (zaman aralığı) anlamanız gerekir.
 
-Aşağıdaki tablo, kullanılabilir özellikler için ERT ve RPO'yu karşılaştırır:
+Aşağıdaki tabloda, kullanılabilir özellikler için ERT ve RPO karşılaştırılır:
 
-| **Özellik** | **Temel** | **Genel Amaç** | **Bellek için iyileştirilmiş** |
+| **Özellik** | **Temel** | **Genel Amaçlı** | **Bellek için iyileştirilmiş** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Yedekten belirli bir noktaya geri yükleme | Bekletme süresi içindeki herhangi bir geri yükleme noktası | Bekletme süresi içindeki herhangi bir geri yükleme noktası | Bekletme süresi içindeki herhangi bir geri yükleme noktası |
-| Coğrafi olarak çoğaltılan yedeklemelerden coğrafi geri yükleme | Desteklenmiyor | ERT < 12 saat<br/>RPO < 1 saat | ERT < 12 saat<br/>RPO < 1 saat |
+| Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
+| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmiyor | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
-> Sunucuyu silerseniz, sunucuda bulunan tüm veritabanları da silinir ve kurtarılamaz. Silinen bir sunucugeri yükleyemezsiniz.
+> Sunucuyu silerseniz, sunucuda bulunan tüm veritabanları da silinir ve kurtarılamaz. Silinen bir sunucuyu geri yükleyemezsiniz.
 
-## <a name="recover-a-server-after-a-user-or-application-error"></a>Kullanıcı veya uygulama hatasından sonra sunucu kurtarma
+## <a name="recover-a-server-after-a-user-or-application-error"></a>Bir kullanıcı veya uygulama hatasından sonra bir sunucuyu kurtarma
 
-Bir sunucuyu çeşitli yıkıcı olaylardan kurtarmak için hizmetin yedeklerini kullanabilirsiniz. Kullanıcı yanlışlıkla bazı verileri silebilir, yanlışlıkla önemli bir tabloyu bırakabilir ve hatta tüm veritabanını bırakabilir. Bir uygulama yanlışlıkla bir uygulama hatası nedeniyle kötü veri ile iyi verilerin üzerine yazabilir, ve benzeri.
+Bir sunucuyu çeşitli kesintiye uğratan kurtarmak için hizmetin yedeklemelerini kullanabilirsiniz. Bir kullanıcı yanlışlıkla bazı verileri silebilir, yanlışlıkla önemli bir tabloyu bırakabilir, hatta tüm veritabanını bile bırakabilir. Bir uygulama, bir uygulama hatası nedeniyle yanlışlıkla hatalı verilerle iyi verilerin üzerine yazabilir ve bu şekilde devam edebilir.
 
-Sunucunuzun bir kopyasını zamanında zamanında geri yükleme gerçekleştirebilirsiniz. Bu nokta, sunucunuz için yapılandırdığınız yedekleme bekletme süresi içinde olmalıdır. Veriler yeni sunucuya geri yüklendikten sonra, özgün sunucuyu yeni yüklenen sunucuyla değiştirebilir veya geri yüklenen sunucudan gerekli verileri özgün sunucuya kopyalayabilirsiniz.
+Sunucunuzun bir kopyasını zaman içinde bilinen iyi bir noktada oluşturmak için bir zaman içinde geri yükleme gerçekleştirebilirsiniz. Bu nokta, sunucunuz için yapılandırdığınız yedekleme saklama süresi içinde olmalıdır. Veriler yeni sunucuya geri yüklendikten sonra, özgün sunucuyu yeni geri yüklenen sunucuyla değiştirebilir veya gerekli verileri geri yüklenen sunucudan özgün sunucuya kopyalayabilirsiniz.
 
 ## <a name="recover-from-an-azure-regional-data-center-outage"></a>Azure bölgesel veri merkezi kesintisinden kurtarma
 
-Çok sık olmasa da Azure veri merkezlerinde kesintiler yaşanabilir. Bir kesinti meydana geldiğinde, yalnızca birkaç dakika sürebilir, ancak saatlerce sürebilir bir iş kesintiye neden olur.
+Çok sık olmasa da Azure veri merkezlerinde kesintiler yaşanabilir. Bir kesinti oluştuğunda, en son birkaç dakika içinde bir iş kesintilerine neden olabilir, ancak saat için en son zaman alabilir.
 
-Bir seçenek, veri merkezi kesintisi sona erdiğinde sunucunuzun çevrimiçi olmasını beklemektir. Bu, sunucunun belirli bir süre için çevrimdışı olmasını göze alabilen uygulamalar için çalışır, örneğin bir geliştirme ortamı. Veri merkezinin kesintisi olduğunda, kesintinin ne kadar süreceğini bilemezsiniz, bu nedenle bu seçenek yalnızca sunucunuza bir süre ihtiyacınız yoksa çalışır.
+Bir seçenek, veri merkezi kesintisi olduğunda sunucunuzun çevrimiçi duruma gelmesini bekleyeyöneliktir. Bu, örneğin bir geliştirme ortamı gibi belirli bir süre için sunucunun çevrimdışı olmasını sağlayan uygulamalar için geçerlidir. Veri merkezi bir kesinti olduğunda, kesintiden en son ne kadar süre sürdüğünü bilemezsiniz, bu nedenle bu seçenek yalnızca sunucunuza bir süredir ihtiyacınız yoksa işe yarar.
 
-Diğer seçenek, MariaDB'nin coğrafi yedekli yedeklemeleri kullanarak sunucuyu geri yükleyen coğrafi geri yükleme özelliği için Azure Veritabanı'nı kullanmaktır. Bu yedeklemelere, sunucunuzun barındırılan bölgesi çevrimdışı olsa bile erişilebilir. Bu yedeklemelerden başka bir bölgeye geri yüklenebilir ve sunucunuzu yeniden çevrimiçi duruma getirebilirsiniz.
+Diğer seçenek de, coğrafi olarak yedekli yedeklemeler kullanarak sunucuyu geri yükleyen MariaDB 'nin coğrafi geri yükleme özelliği için Azure veritabanı 'nı kullanmaktır. Bu yedeklemeler, sunucunuzun barındırıldığı bölge çevrimdışı olduğunda bile erişilebilir. Bu yedeklerden başka bir bölgeye geri yükleme yapabilir ve sunucunuzu yeniden çevrimiçi hale getirebilirsiniz.
 
 > [!IMPORTANT]
-> Coğrafi geri yükleme, yalnızca sunucuya coğrafi yedekli yedekleme depolama alanı sağlamanız halinde mümkündür.
+> Coğrafi geri yükleme yalnızca, sunucuyu coğrafi olarak yedekli yedekleme depolama alanı ile sağladıysanız mümkündür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Otomatik yedeklemeler hakkında daha fazla bilgi edinmek [için, MariaDB için Azure Veritabanı'ndaki Yedeklemeler'e](concepts-backup.md)bakın.
-- Azure portalını kullanarak bir noktaya geri yüklemek için, [Azure portalını kullanarak veritabanını bir noktaya geri yükleme konusuna](howto-restore-server-portal.md)bakın.
+- Otomatik yedeklemeler hakkında daha fazla bilgi edinmek için bkz. [MariaDB Için Azure veritabanı 'Nda yedeklemeler](concepts-backup.md).
+- Azure portal kullanarak bir noktaya geri yüklemek için, bkz. [Azure Portal kullanarak veritabanını zaman noktasına geri yükleme](howto-restore-server-portal.md).
 
 <!--
 - To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 

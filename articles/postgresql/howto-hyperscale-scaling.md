@@ -1,51 +1,51 @@
 ---
-title: Ölçek sunucu grubu - Hyperscale (Citus) - PostgreSQL için Azure Veritabanı
-description: Artan yükle başa çıkmak için sunucu grubu belleği, disk ve CPU kaynaklarını ayarlama
+title: Ölçek sunucu grubu-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
+description: Daha fazla yük ile başa çıkmak için sunucu grubu belleği, disk ve CPU kaynaklarını ayarlayın
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 3/16/2020
 ms.openlocfilehash: fa48ca287c248155a0271b5134be782d8db1c785
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063109"
 ---
-# <a name="scale-a-hyperscale-citus-server-group"></a>Bir Hyperscale (Citus) sunucu grubunu ölçeklendirin
+# <a name="scale-a-hyperscale-citus-server-group"></a>Hiper ölçek (Citus) sunucu grubunu ölçeklendirme
 
-PostgreSQL için Azure Veritabanı - Hyperscale (Citus), artan yükle başa çıkmak için self servis ölçeklendirme sağlar. Azure portalı, yeni alt düğümler eklemeyi ve varolan düğümlerin vCore'larını artırmayı kolaylaştırır.
+PostgreSQL için Azure veritabanı-Hyperscale (Citus), daha fazla yük ile başa çıkmak için self servis Ölçeklendirmesi sağlar. Azure portal, yeni çalışan düğümleri eklemeyi ve mevcut düğümlerin sanal çekirdeğini artırmayı kolaylaştırır.
 
-## <a name="add-worker-nodes"></a>İşçi düğümleri ekleme
+## <a name="add-worker-nodes"></a>Çalışan düğümleri Ekle
 
-Düğüm eklemek için, Hyperscale (Citus) sunucu grubunuzun **Yapıla** sekmesine gidin.  **İşçi düğümü sayısı** için kaydırıcıyı sürüklemek değeri değiştirir.
+Düğüm eklemek için, Hyperscale (Citus) sunucu grubundaki **Yapılandır** sekmesine gidin.  **Çalışan düğümü sayısı** için kaydırıcıyı sürüklemek değeri değiştirir.
 
-![Kaynak kaydırıcıları](./media/howto-hyperscale-scaling/01-sliders-workers.png)
+![Kaynak sürgüleri](./media/howto-hyperscale-scaling/01-sliders-workers.png)
 
-Değiştirilen değerin etkili olması için **Kaydet** düğmesini tıklatın.
+Değiştirilen değerin etkili olması için **Kaydet** düğmesine tıklayın.
 
 > [!NOTE]
-> Artırıldıktan ve kaydedildikten sonra, kaydırıcı kullanılarak alt düğüm sayısı azaltılamaz.
+> Arttırıldıktan ve kaydedildikten sonra, çalışan düğümlerinin sayısı kaydırıcı kullanılarak azaltılemez.
 
-### <a name="rebalance-shards"></a>Yeniden dengeleme parçaları
+### <a name="rebalance-shards"></a>Parçaları yeniden dengeleme
 
-Yeni eklenen düğümlerden yararlanmak için dağıtılmış tablo [kırıklarını](concepts-hyperscale-distributed-data.md#shards)yeniden dengelemeniz gerekir, bu da bazı parçaları mevcut düğümlerden yeni düğümlere taşımak anlamına gelir. İlk olarak, yeni işçilerin tedariki başarıyla tamamladığını doğrulayın. Sonra psql ile küme koordinatörü düğümbağlanarak ve çalışan, shard rebalancer başlatın:
+Yeni eklenen düğümlerin avantajlarından yararlanmak için, [Dağıtılmış tablo parçaları](concepts-hyperscale-distributed-data.md#shards)'nı yeniden dengelemeniz gerekir, bu da bazı parçaları mevcut düğümlerden yeni olanlara taşımak anlamına gelir. İlk olarak, yeni çalışanların sağlamayı başarıyla bitirdiğini doğrulayın. Ardından, psql ile küme Düzenleyicisi düğümüne bağlanarak ve çalıştıran parça yeniden dengeleyiciyi başlatın:
 
 ```sql
 SELECT rebalance_table_shards('distributed_table_name');
 ```
 
-İşlev, `rebalance_table_shards` bağımsız değişkeninde adı geçen tablonun [birlikte konum](concepts-hyperscale-colocation.md) grubundaki tüm tabloları yeniden dengeler. Böylece her dağıtılmış tablo için işlevi aramak zorunda kalmadığınızı, her bir konum grubundan temsili bir tabloya çağırmanız gerekir.
+İşlevi, bağımsız değişkeninde adlı tablonun birlikte bulundurma [grubundaki tüm](concepts-hyperscale-colocation.md) tabloları yeniden dengeler. `rebalance_table_shards` Bu nedenle, her dağıtılmış tablo için işlevi çağırmanız gerekmez, bunu her bir birlikte bulundurma grubundan temsili bir tabloda çağırmanız yeterlidir.
 
-## <a name="increase-or-decrease-vcores-on-nodes"></a>Düğümlerde vCore'ları artırma veya azaltma
+## <a name="increase-or-decrease-vcores-on-nodes"></a>Düğümlerdeki sanal çekirdekleri artırma veya azaltma
 
 > [!NOTE]
-> Bu özellik şu anda önizleme sürümündedir. Sunucu grubunuzun düğümleri için vCore'larda değişiklik isteğinde bulunmak için lütfen [Azure desteğine başvurun.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+> Bu özellik şu anda önizleme sürümündedir. Sunucu grubunuzdaki düğümlerin sanal çekirdekler üzerinde değişiklik istemek için lütfen [Azure desteğine başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-Yeni düğümeklemeye ek olarak, varolan düğümlerin yeteneklerini artırabilirsiniz. İşlem kapasitesinin yukarı ve aşağı ayarlanması, performans denemelerine ve trafik taleplerinde kısa veya uzun vadeli değişiklikler için yararlı olabilir.
+Yeni düğümler eklemenin yanı sıra, mevcut düğümlerin yeteneklerini de artırabilirsiniz. İşlem kapasitesini yukarı ve aşağı ayarlamak, performans denemeleri ve trafik taleplerine yönelik kısa veya uzun süreli değişiklikler için yararlı olabilir.
 
-Tüm alt düğümler için vCores değiştirmek için, **Yapılandırma (işçi düğümü başına)** altında **vCores** kaydırıcısını ayarlayın. Koordinatör düğümün vCore'ları bağımsız olarak ayarlanabilir. **Koordinatör düğümü**altında **yapılandırmayı değiştir** bağlantısını tıklatın. Koordinatörün vCores ve Depolama kapasitesi için kaydırıcıları ile bir iletişim kutusu görüntülenir. Kaydırıcıları istediğiniz gibi değiştirin ve **Tamam'ı**seçin.
+Tüm çalışan düğümlerinin sanal çekirdeğini değiştirmek için **yapılandırma (çalışan düğümü başına)** altındaki **vçekirdekler** kaydırıcısını ayarlayın. Düzenleyici düğümünün sanal çekirdekleri bağımsız olarak ayarlanabilir. **Düzenleyici düğümü**altındaki **yapılandırma Değiştir** bağlantısına tıklayın. Düzenleyicinin sanal çekirdekleri ve depolama kapasitesi için kaydırıcıların bulunduğu bir iletişim kutusu görüntülenir. Sürgüleri istediğiniz şekilde değiştirin ve **Tamam**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

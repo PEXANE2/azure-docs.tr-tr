@@ -1,7 +1,7 @@
 ---
 title: Gösterge Değerlerine dönüştürme
 titleSuffix: Azure Machine Learning
-description: Kategorik değerler içeren sütunları bir dizi ikili gösterge sütununa dönüştürmek için Azure Machine Learning'de Gösterge Değerlerine Dönüştür modülünün nasıl kullanılacağını öğrenin.
+description: Kategorik değerlerini içeren sütunları bir dizi ikili gösterge sütununa dönüştürmek için Azure Machine Learning gösterge değerlerini Dönüştür modülünün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,111 +10,111 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477672"
 ---
 # <a name="convert-to-indicator-values"></a>Gösterge Değerlerine dönüştürme
-Bu makalede, Azure Machine Learning tasarımcısının bir modülü açıklanmaktadır.
+Bu makalede bir Azure Machine Learning Designer modülü açıklanmaktadır.
 
-Kategorik değerler içeren sütunları bir dizi ikili gösterge sütununa dönüştürmek için Azure Machine Learning tasarımcısında **Gösterge Değerlerine Dönüştür** modüllerini kullanın.  
+Kategorik değerlerini içeren sütunları bir dizi ikili gösterge sütununa dönüştürmek için Azure Machine Learning tasarımcısında **gösterge değerlerini Dönüştür** modülünü kullanın.  
 
-Bu modül aynı zamanda gösterge değerlerine dönüştürmek için kullanılan dönüşümün bir tanımını da ortaya çıkar. Bu dönüşümü, [Dönüşüm Uygula](apply-transformation.md) modüllerini kullanarak aynı şema olan diğer veri kümelerinde yeniden kullanabilirsiniz.
+Bu modül aynı zamanda gösterge değerlerine dönüştürmek için kullanılan dönüşümün tanımını da verir. Bu dönüştürmeyi, [dönüştürme modülünü Uygula](apply-transformation.md) ' yı kullanarak aynı şemaya sahip diğer veri kümelerinde yeniden kullanabilirsiniz.
 
-## <a name="how-to-configure-convert-to-indicator-values"></a>Convert to Indicator Değerlerine Yapılandırma nasıl yapılandırılır?
+## <a name="how-to-configure-convert-to-indicator-values"></a>Gösterge değerlerine dönüştürme yapılandırma
 
-1.  Dönüşüm **Gösterge Değerlerini** bulun ve boru hattı taslağınıza sürükleyin. Bu modülü Veri **Dönüşümü** kategorisinde bulabilirsiniz.
+1.  **Gösterge değerlerini Dönüştür** ' ü bulun ve ardışık düzen taslağınızla sürükleyin. Bu modülü, **veri dönüştürme** kategorisi altında bulabilirsiniz.
     > [!NOTE]
-    > Hedef sütun(lar)ı kategorik olarak işaretlemek için **İndiciator Değerlerine Dönüştür** modülünden önce [Meta Verileri Edit](edit-metadata.md) modüllerini kullanabilirsiniz.
+    > Hedef sütunları kategorik olarak işaretlemek için, **ındiciator değerlerini Dönüştür** modülüne göre [verileri Düzenle](edit-metadata.md) modülünü kullanabilirsiniz.
 
-1. Dönüştürme yi **Gösterge Değerlerine dönüştür** modülünü dönüştürmek istediğiniz sütunları içeren veri kümesine bağlayın. 
+1. **Gösterge değerlerini Dönüştür** modülüne dönüştürmek istediğiniz sütunları içeren veri kümesine bağlayın. 
 
-1. Bir veya daha fazla kategorik sütun seçmek için **Sütunu Edit'i** seçin.
+1. Bir veya daha fazla kategorik sütun seçmek için **sütunu Düzenle** ' yi seçin.
 
-1. **Yalnızca** yeni Boolean sütunlarını çıktırmak **istiyorsanız, Üzerine Yaz kategorik sütunlar** seçeneğini belirleyin. Varsayılan olarak, bu değer kapalıdır.
+1. **Yalnızca** yeni Boole sütunlarının çıktısını almak istiyorsanız **kategorik sütunların üzerine yaz** seçeneğini belirleyin. Varsayılan olarak, bu değer kapalıdır.
     
 
     > [!TIP]
-    >  Üzerine yazma seçeneğini seçerseniz, kaynak sütun gerçekte silinmez veya değiştirilmez. Bunun yerine, yeni sütunlar oluşturulur ve çıktı veri kümesinde sunulur ve kaynak sütun çalışma alanında kullanılabilir kalır. Özgün verileri görmeniz gerekiyorsa, kaynak sütunu geri eklemek için istediğiniz zaman [Sütun Ekle](add-columns.md) modüllerini kullanabilirsiniz.
+    >  Üzerine yazma seçeneğini belirlerseniz, kaynak sütun aslında silinmez veya değiştirilmez. Bunun yerine, yeni sütunlar oluşturulur ve çıkış veri kümesinde sunulur ve kaynak sütunu çalışma alanında kullanılabilir kalır. Özgün verileri görmeniz gerekirse, kaynak sütunu yeniden eklemek için istediğiniz zaman [sütun Ekle](add-columns.md) modülünü kullanabilirsiniz.
 
-1. Boru hattını gönderin.
+1. İşlem hattını gönderme.
 
 ## <a name="results"></a>Sonuçlar
 
-Bir sunucunun yüksek, orta veya düşük hata olasılığına sahip olup olmadığını gösteren puanları olan bir sütununuz olduğunu varsayalım.  
+Bir sunucunun yüksek, orta veya düşük bir hata olup olmadığını belirten puanlarla bir sütununuz olduğunu varsayalım.  
 
-| Sunucu Kimliği | Hata puanı |
+| Sunucu KIMLIĞI | Başarısızlık puanı |
 | --------- | ------------- |
 | 10301     | Düşük           |
 | 10302     | Orta        |
 | 10303     | Yüksek          |
 
-**Gösterge Değerlerine Dönüştür'ü**uyguladığınız zaman, tasarımcı tek bir etiket sütununu Boolean değerlerini içeren birden çok sütuna dönüştürür:  
+**Gösterge değerlerine Dönüştür**uyguladığınızda, tasarımcı tek bir etiket sütununu, Boolean değerler içeren birden çok sütuna dönüştürür:  
 
-| Sunucu Kimliği | Hata puanı - Düşük | Başarısızlık puanı - Orta | Başarısızlık puanı - Yüksek |
+| Sunucu KIMLIĞI | Başarısızlık puanı-düşük | Başarısızlık puanı-orta | Başarısızlık puanı-yüksek |
 | --------- | ------------------- | ---------------------- | -------------------- |
 | 10301     | 1                   | 0                      | 0                    |
 | 10302     | 0                   | 1                      | 0                    |
 | 10303     | 0                   | 0                      | 1                    |
 
-Dönüşüm şu şekilde çalışır:  
+Dönüştürmenin nasıl çalıştığı aşağıda verilmiştir:  
 
--   Riski açıklayan **Hata puanı** sütununda yalnızca üç olası değer (Yüksek, Orta ve Düşük) vardır ve eksik değer yoktur. Yani, tam olarak üç yeni sütun oluşturulur.  
+-   Riski açıklayan **başarısızlık puanı** sütununda yalnızca üç olası değer vardır (yüksek, orta ve düşük) ve eksik değer yoktur. Bu nedenle, tam olarak üç yeni sütun oluşturulur.  
 
--   Yeni gösterge sütunları, kaynak sütunun sütun başlıkları ve değerleri temel alınarak bu deseni kullanır: * \<kaynak sütun>- \<veri değeri>. *  
+-   Yeni gösterge sütunları, bu model kullanılarak kaynak sütunun sütun başlıklarına ve değerlerine göre adlandırılır: * \<kaynak sütun>- \<veri değeri>*.  
 
--   Her sunucunun yalnızca bir risk derecelendirmesi olabileceğinden, tam olarak bir gösterge sütununda 1 ve diğer tüm gösterge sütunlarında 0 olmalıdır.  
+-   Her sunucunun yalnızca bir risk derecelendirmesi olduğundan, tam olarak bir gösterge sütununda 1 ve diğer tüm gösterge sütunlarında 0 olmalıdır.  
 
-Artık üç gösterge sütunlarını bir makine öğrenme modelinde özellik olarak kullanabilirsiniz.
+Artık üç gösterge sütununu bir makine öğrenimi modelinde özellikler olarak kullanabilirsiniz.
 
-Modül iki çıktı döndürür:
+Modül iki çıkış döndürüyor:
 
-- **Sonuç veri kümesi**: Dönüştürülmüş gösterge değerleri sütunları olan bir veri kümesi. Temizleme için seçilmemiş sütunlar da "geçirilir".
-- **Gösterge değerleri dönüştürme**: Çalışma alanınızda kaydedilebilen ve daha sonra yeni verilere uygulanabilen gösterge değerlerine dönüştürmek için kullanılan veri dönüşümü.
+- **Sonuç veri kümesi**: dönüştürülmüş gösterge değerleri sütunları olan bir veri kümesi. Temizleme için seçilmemiş sütunlar da "geçirilir".
+- **Gösterge değerleri dönüştürmesi**: çalışma alanınıza kaydedilebilecek ve yeni verilere daha sonra uygulanabilen gösterge değerlerine dönüştürmek için kullanılan bir veri dönüştürmesi.
 
-## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Kaydedilen gösterge değerleri işlemini yeni verilere uygulama
+## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Yeni verilere kaydedilmiş bir gösterge değerleri işlemi uygulama
 
-Gösterge değerleri işlemlerini sık sık yinelemeniz gerekiyorsa, veri işleme adımlarınızı aynı veri kümesiyle yeniden kullanmak için *dönüştürme* olarak kaydedebilirsiniz. Bu, sık sık yeniden içe aktarmanız ve ardından aynı şema olan verileri temizlemeniz gerekiyorsa yararlıdır.
+Gösterge değerleri işlemlerini sıklıkla tekrarlamanız gerekirse, veri işleme adımlarınızı aynı veri kümesiyle yeniden kullanmak için bir *dönüşüm* olarak kaydedebilirsiniz. Bu, sık sık yeniden içeri aktarmanız ve ardından aynı şemaya sahip verileri temizleyebilmeniz yararlı olur.
 
-1. Dönüşüm [Uygula](apply-transformation.md) modüllerini ardınıza ekleyin.
+1. İşlem hattınızda [dönüştürme modülünü Uygula](apply-transformation.md) ' yı ekleyin.
 
-1. Temizlemek istediğiniz veri kümesini ekleyin ve veri kümesini sağ giriş bağlantı noktasına bağlayın.
+1. Temizlemek istediğiniz veri kümesini ekleyin ve veri kümesini sağ taraftaki giriş bağlantı noktasına bağlayın.
 
-1. Tasarımcının sol bölmesinde **Veri Dönüşümü** grubunu genişletin. Kaydedilen dönüşümü bulun ve boru hattına sürükleyin.
+1. Tasarımcı 'nın sol bölmesindeki **veri dönüştürme** grubunu genişletin. Kaydedilen dönüştürmeyi bulun ve ardışık düzene sürükleyin.
 
-1. Kaydedilen dönüşümü [Dönüşüm Uygula'nın](apply-transformation.md)sol giriş bağlantı noktasına bağlayın.
+1. Kaydedilen dönüşümü, [dönüşüm Uygula](apply-transformation.md)'nın sol giriş bağlantı noktasına bağlayın.
 
-   Kaydedilmiş bir dönüşüm uyguladığınız zaman, hangi sütunların dönüştürüleceklerini seçemezsiniz. Bunun nedeni, dönüşümün tanımlanmış olması ve özgün işlemde belirtilen veri türlerine otomatik olarak uygulanmış olmasıdır.
+   Kaydedilen bir dönüşüm uyguladığınızda, hangi sütunların dönüştürüluygulanacağını seçemezsiniz. Bunun nedeni, dönüştürmenin tanımlanması ve özgün işlemde belirtilen veri türlerine otomatik olarak uygulanmaları.
 
-1. Boru hattını gönderin.
+1. İşlem hattını gönderme.
  
 ## <a name="technical-notes"></a>Teknik notlar  
 
-Bu bölümde uygulama ayrıntıları, ipuçları ve sık sorulan soruların yanıtları içerir.
+Bu bölümde, sık sorulan soruların uygulama ayrıntıları, ipuçları ve yanıtları yer almaktadır.
 
 ### <a name="usage-tips"></a>Kullanım ipuçları
 
--   Yalnızca kategorik olarak işaretlenmiş sütunlar gösterge sütunlarına dönüştürülebilir. Aşağıdaki hatayı görürseniz, seçtiğiniz sütunlardan birinin kategorik olmaması olasıdır:  
+-   Yalnızca kategorik olarak işaretlenen sütunlar gösterge sütunlarına dönüştürülebilir. Aşağıdaki hatayı görürseniz, seçtiğiniz sütunlardan biri kategorik değildir:  
 
-     Hata 0056: Ad \<sütun adı> sütun una sahip sütun izin verilen bir kategoride değildir.  
+     Hata 0056: ad \<sütunu adı> olan sütun izin verilen bir kategoride değil.  
 
-     Varsayılan olarak, dize sütunlarının çoğu dize özellikleri olarak işlenir, bu nedenle Meta [Verileri Edit'i](edit-metadata.md)kullanarak bunları açıkça kategorik olarak işaretlemeniz gerekir.  
+     Varsayılan olarak, çoğu dize sütunu dize özellikleri olarak işlenir, bu nedenle bunları doğrudan [düzenleme meta verilerini](edit-metadata.md)kullanarak kategorik olarak işaretlemeniz gerekir.  
 
--   Gösterge sütunlarına dönüştürebileceğiniz sütun sayısında sınır yoktur. Ancak, her değer sütunu birden çok gösterge sütunu verim alabildiği için, aynı anda sadece birkaç sütunu dönüştürmek ve gözden geçirmek isteyebilirsiniz.  
+-   Gösterge sütunlarına dönüştürebileceğiniz sütun sayısı için bir sınır yoktur. Ancak, her bir değer sütunu birden çok gösterge sütunu sağlayabildiğinden, tek seferde yalnızca birkaç sütunu dönüştürüp gözden geçirmek isteyebilirsiniz.  
 
--   Sütun eksik değerler içeriyorsa, eksik kategori için bu adla birlikte ayrı bir gösterge sütunu oluşturulur: * \<kaynak sütun>- Eksik*  
+-   Sütun eksik değerler içeriyorsa, eksik kategori için bu adla ayrı bir gösterge sütunu oluşturulur: * \<kaynak sütun>-eksik*  
 
--   Gösterge değerlerine dönüştürdüğünüz sütun sayılar içeriyorsa, bunlar da diğer özellik sütunları gibi kategorik olarak işaretlenmelidir. Bunu yaptıktan sonra, sayılar ayrık değerler olarak kabul edilir. Örneğin, MPG değerlerine sahip sayısal bir sütununuz varsa, her ayrı kıvrık değer için yeni bir gösterge sütunu oluşturulur:  
+-   Gösterge değerlerine dönüştürdüğünüz sütun sayı içeriyorsa, bunların diğer özellik sütunları gibi kategorik olarak işaretlenmesi gerekir. Bunu yaptıktan sonra, sayılar ayrık değerler olarak değerlendirilir. Örneğin, yaklaşık olarak 25 ile 30 arasında değişen bir sayısal sütununuz varsa, her ayrık değer için yeni bir gösterge sütunu oluşturulur:  
 
-    | Marka       | Karayolu mpg -25 | Karayolu mpg -26 | Karayolu mpg -27 | Karayolu mpg -28 | Karayolu mpg -29 | Otoyol mpg -30 |
+    | Marka       | Highway MPG-25 | Highway MPG-26 | Highway MPG-27 | Highway MPG-28 | Highway MPG-29 | Highway MPG-30 |
     | ---------- | --------------- | --------------- | --------------- | --------------- | --------------- | --------------- |
-    | Contoso Arabalar | 0               | 0               | 0               | 0               | 0               | 1               |
+    | Contoso otomobilleri | 0               | 0               | 0               | 0               | 0               | 1               |
 
-- Veri setinize çok fazla boyut eklememek için. Önce sütundaki değer sayısını kontrol etmenizi ve verileri uygun şekilde ölçmenizi veya ölçmenizi öneririz.  
+- Veri kümenize çok fazla boyut eklemekten kaçınmak için. İlk olarak sütundaki değer sayısını kontrol etmenizi ve verileri uygun şekilde gözden geçirin.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

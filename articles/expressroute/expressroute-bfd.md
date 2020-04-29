@@ -1,6 +1,6 @@
 ---
-title: "Azure ExpressRoute: BFD'yi yapılandırın"
-description: Bu makalede, bir ExpressRoute devresinin özel olarak bakması üzerinde BFD (Çift Yönlü Yönlendirme Algılaması) nasıl yapılandırılabilmek için talimatlar verilmektedir.
+title: "Azure ExpressRoute: BFD 'yi yapılandırma"
+description: Bu makale, bir ExpressRoute devresine ait özel eşleme üzerinde BFD (çift yönlü Iletim algılama) yapılandırma hakkında yönergeler sağlar.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 11/1/2018
 ms.author: rambala
 ms.openlocfilehash: 378b639e89ffd46f6b32d7004f934104dd4b5407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064849"
 ---
-# <a name="configure-bfd-over-expressroute"></a>BFD'yi ExpressRoute üzerinden yapılandır
+# <a name="configure-bfd-over-expressroute"></a>ExpressRoute üzerinde BFD 'yi yapılandırma
 
-ExpressRoute, hem özel hem de Microsoft'un bakışları üzerinden Çift Yönlü Yönlendirme Algılamasını (BFD) destekler. BFD'yi ExpressRoute üzerinden etkinleştirerek, Microsoft Enterprise edge (MSEE) aygıtları ile ExpressRoute devresini (CE/PE) sonlandırdığınızdaki yönlendiriciler arasındaki bağlantı hatası algılamasını hızlandırabilirsiniz. ExpressRoute'u Müşteri Kenarı yönlendirme aygıtları veya İş Ortağı Kenarı yönlendirme aygıtları üzerinden sonlandırabilirsiniz (yönetilen Katman 3 bağlantı hizmetiyle gittiyseniz). Bu belge, BFD gereksinimi ve ExpressRoute üzerinden BFD'nin nasıl etkinleştirilen konusunda size yol göstersin.
+ExpressRoute, hem özel hem de Microsoft eşlemesi üzerinden çift yönlü Iletme algılamayı (BFD) destekler. ExpressRoute üzerinde BFD 'yi etkinleştirerek, Microsoft Enterprise Edge (MSEE) cihazları ile ExpressRoute devresini (CE/PE) sonlandıran yönlendiriciler arasında bağlantı hatası algılamayı yönlendirebilirsiniz. ExpressRoute 'u, müşteri Edge yönlendirme cihazları veya Iş ortağı Edge yönlendirme cihazları üzerinden sonlandırabilirsiniz (yönetilen katman 3 bağlantı hizmeti ile karşılaşırsanız). Bu belge BFD gereksinimi boyunca size yol gösterir ve ExpressRoute üzerinde BFD 'yi nasıl etkinleştireceğinizi açıklar.
 
-## <a name="need-for-bfd"></a>BFD ihtiyacı
+## <a name="need-for-bfd"></a>BFD gereksinimi
 
-Aşağıdaki diyagram, BfD'yi ExpressRoute devresi üzerinden etkinleştirme avantajını gösterir: [![1]][1]
+Aşağıdaki diyagramda, ExpressRoute bağlantı hattı üzerinde BFD 'yi etkinleştirme avantajı gösterilmektedir: [![1]][1]
 
-ExpressRoute devresini Katman 2 bağlantıları veya yönetilen Katman 3 bağlantıları yla etkinleştirebilirsiniz. Her iki durumda da, ExpressRoute bağlantı yolunda bir veya daha fazla Layer-2 aygıtı varsa, yoldaki bağlantı hatalarını algılama sorumluluğu üstteki BGP'ye ait.
+ExpressRoute devresini katman 2 bağlantıları veya yönetilen katman 3 bağlantılarıyla etkinleştirebilirsiniz. Her iki durumda da ExpressRoute bağlantı yolunda bir veya daha fazla katman 2 cihaz varsa, yoldaki bağlantı hatalarının algılanmasının sorumluluğu, çok sayıda BGP ile sonuçlanır.
 
-MSEE cihazlarında, BGP canlı tutar ve bekleme süresi genellikle sırasıyla 60 ve 180 saniye olarak yapılandırılır. Bu nedenle, bir bağlantı arızası sonrasında herhangi bir bağlantı hatası algılamak ve alternatif bağlantı trafiği geçmek için üç dakika kadar sürer.
+MSEE cihazlarında, BGP KeepAlive ve tutma zamanı genellikle sırasıyla 60 ve 180 saniye olarak yapılandırılır. Bu nedenle, bir bağlantı hatasının ardından bağlantı başarısızlığının algılanması ve trafiği alternatif bağlantıya geçirmek üç dakika sürer.
 
-Daha düşük BGP tutma ve bekleme süresini müşteri kenarı eşleme aygıtında yapılandırarak BGP zamanlayıcılarını denetleyebilirsiniz. BGP zamanlayıcıları iki eşleme aygıtı arasında uyumsuzsa, eşler arasındaki BGP oturumu daha düşük zamanlayıcı değerini kullanır. BGP canlı tutma üç saniye, bekleme süresi ise onlarca saniye sırasına göre ayarlanabilir. Ancak, protokol işlem yoğun olduğundan, BGP zamanlayıcılarını agresif bir şekilde ayarlamak daha az tercih edilir.
+İstemci Edge eşleme cihazında daha düşük BGP canlı tutmayı ve bekleme süresini yapılandırarak BGP zamanlayıcılarını kontrol edebilirsiniz. BGP zamanlayıcıları iki eşleme cihazı arasında uyuşmdaysanız, eşler arasındaki BGP oturumu düşük Zamanlayıcı değerini kullanacaktır. BGP KeepAlive, en az üç saniye, en fazla saniye cinsinden bir bekleme süresi olarak ayarlanabilir. Ancak, protokol işlem yoğun olduğundan BGP zamanlayıcıları kararlılığı daha az tercih edilir.
 
-Bu senaryoda, BFD yardımcı olabilir. BFD, ikinci dönem altı zaman aralığında düşük havai bağlantı hatası algılaması sağlar. 
+Bu senaryoda BFD yardımcı olabilir. BFD, alt/saniye bir zaman aralığında düşük ek yük hata algılaması sağlar. 
 
 
-## <a name="enabling-bfd"></a>BFD'yi etkinleştirme
+## <a name="enabling-bfd"></a>BFD 'yi etkinleştirme
 
-BFD, MSEE'lerde yeni oluşturulan tüm ExpressRoute özel eşleme arabirimleri altında varsayılan olarak yapılandırılır. Bu nedenle, BFD'yi etkinleştirmek için, YALNıZCA CEs/P'lerinizde (hem birincil hem de ikincil aygıtlarınızda) BFD'yi yapılandırmanız gerekir. BFD yapılandırma iki adımlı bir işlemdir: BFD'yi arabirimüzerinde yapılandırmanız ve ardından BGP oturumuna bağlamanız gerekir.
+BFD, tüm yeni oluşturulan ExpressRoute özel eşleme arabirimlerini MSEE altında varsayılan olarak yapılandırılır. Bu nedenle BFD 'yi etkinleştirmek için, her ikisi de her ikisi de (hem birincil hem de ikincil cihazlarınızda) BFD 'yi yapılandırmanız gerekir. BFD 'nin yapılandırması iki adımlı bir işlemdir: arabirimdeki BFD 'yi yapılandırmanız ve ardından BGP oturumuna bağlamanız gerekir.
 
-Aşağıda bir ÖRNEK CE/PE (Cisco IOS XE kullanarak) yapılandırması gösterilmiştir. 
+Örnek bir CE/PE (Cisco IOS XE kullanılarak) yapılandırma aşağıda gösterilmiştir. 
 
     interface TenGigabitEthernet2/0/0.150
        description private peering to Azure
@@ -55,26 +55,26 @@ Aşağıda bir ÖRNEK CE/PE (Cisco IOS XE kullanarak) yapılandırması gösteri
        exit-address-family
 
 >[!NOTE]
->BFD'yi zaten var olan özel bir bakış altında etkinleştirmek için; eğer akran sıfırlamak gerekir. Bkz. [ExpressRoute eşlemelerini sıfırla][ResetPeering]
+>Zaten var olan bir özel eşleme altında BFD 'yi etkinleştirmek için; eşlemeyi sıfırlamanız gerekir. Bkz. [ExpressRoute eşayarlarını sıfırlama][ResetPeering]
 >
 
-## <a name="bfd-timer-negotiation"></a>BFD Zamanlayıcı Müzakeresi
+## <a name="bfd-timer-negotiation"></a>BFD Zamanlayıcı anlaşması
 
-BFD eşler arasında, iletim hızını iki eşin daha yavaş belirler. MSEEs BFD iletim/alma aralıkları 300 milisaniye olarak ayarlanır. Belirli senaryolarda, aralık 750 milisaniye daha yüksek bir değerde ayarlanabilir. Daha yüksek değerleri yapılandırarak, bu aralıkları daha uzun olmaya zorlayabilirsiniz; ama, daha kısa değil.
+BFD eşleri arasında iki eşin daha yavaş olması iletim hızını belirlemektir. MSEE BFD iletim/alma aralıkları 300 milisaniyeye ayarlanır. Belirli senaryolarda, Aralık 750 milisaniyelik daha yüksek bir değerde ayarlanabilir. Daha yüksek değerleri yapılandırarak, bu aralıkları daha uzun olacak şekilde zorlayabilirsiniz; Ancak, daha kısa değildir.
 
 >[!NOTE]
->Geo-gereksiz ExpressRoute devrelerini yapılandırmışsanız veya Siteden Siteye IPSec VPN bağlantısını yedekleme olarak kullanıyorsanız; BFD'yi etkinleştirmek, ExpressRoute bağlantı hatası sonrasında daha hızlı başarısız lığa yardımcı olur. 
+>Coğrafi olarak yedekli ExpressRoute devreleri yapılandırdıysanız veya yedekleme olarak siteden siteye IPSec VPN bağlantısı kullanıyorsanız; BFD 'nin etkinleştirilmesi ExpressRoute bağlantı hatasından sonra hızlı bir şekilde yük devretmeye yardımcı olur. 
 >
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Daha fazla bilgi veya yardım için aşağıdaki bağlantılara göz atın:
+Daha fazla bilgi veya yardım için aşağıdaki bağlantıları inceleyin:
 
-- [ExpressRoute bağlantı hattı oluşturma ve değiştirme][CreateCircuit]
+- [ExpressRoute bağlantı hattını oluşturma ve değiştirme][CreateCircuit]
 - [Bir ExpressRoute bağlantı hattı için yönlendirmeyi oluşturma ve değiştirme][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-bfd/BFD_Need.png "BFD bağlantı hatası kesinti süresini hızlandırır"
+[1]: ./media/expressroute-bfd/BFD_Need.png "BFD bağlantı hatası kesinti süresi"
 
 <!--Link References-->
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 

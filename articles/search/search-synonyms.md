@@ -1,7 +1,7 @@
 ---
-title: Arama dizini üzerinden sorgu genişletme için eşanlamlı
+title: Arama dizini üzerinde sorgu genişletmesi için eş anlamlılar
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama dizinindeki arama sorgusunun kapsamını genişletmek için eşanlamlı bir eşleme oluşturun. Kapsam, bir listede sağladığınız eşdeğer terimleri içerecek şekilde genişletilir.
+description: Bir Azure Bilişsel Arama dizininde arama sorgusunun kapsamını genişletmek için bir eş anlamlı eşleme oluşturun. Kapsam, bir listede sağladığınız eşdeğer terimleri içerecek şekilde belirlenir.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,47 +9,47 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78194351"
 ---
-# <a name="synonyms-in-azure-cognitive-search"></a>Azure Bilişsel Aramada Eş Anlamlı
+# <a name="synonyms-in-azure-cognitive-search"></a>Azure Bilişsel Arama eş anlamlılar
 
-Arama motorlarında eşanlamlılar, kullanıcının terimi gerçekten sağlamasına gerek kalmadan, sorgunun kapsamını dolaylı olarak genişleten eşdeğer terimleri ilişkilendirir. Örneğin, "köpek" ve "köpek" ve "köpek" eşanlamlı dernekleri göz önüne alındığında, "köpek", "köpek" veya "köpek" içeren herhangi bir belge sorgu kapsamına girer.
+Arama altyapılarındaki eş anlamlılar, kullanıcının terimi gerçekten sağlaması gerekmeden bir sorgunun kapsamını örtülü olarak genişletmekte olan eşdeğer terimleri ilişkilendirir. Örneğin, "köpek" teriminin ve "Canine" ve "pupkopyala" teriminin eşanlamlısı, "köpek", "Canine" veya "pupkopyala" gibi tüm belgeler, sorgunun kapsamı içinde yer alacak.
 
-Azure Bilişsel Arama'da eş anlamlı genişletme sorgu zamanında yapılır. Varolan işlemleri kesintiye uğratmadan bir hizmete eş anlamlı eşlem eşler ekleyebilirsiniz. Dizin yeniden gerek kalmadan bir alan tanımına **eşanlamlı** haritalar ekleyebilirsiniz.
+Azure Bilişsel Arama 'de, eş anlamlı genişletmesi sorgu zamanında yapılır. Mevcut işlemlere kesinti olmadan, bir hizmete eş anlamlı eşlemeler ekleyebilirsiniz. Dizini yeniden derlemek zorunda kalmadan, bir alan tanımına bir **eş anlamlı Eşeşlemeler** özelliği ekleyebilirsiniz.
 
-## <a name="create-synonyms"></a>Eş anlamlı lar oluşturma
+## <a name="create-synonyms"></a>Eş anlamlı oluştur
 
-Eşanlamlı oluşturmak için portal desteği yoktur, ancak REST API veya .NET SDK'yı kullanabilirsiniz. REST ile başlamak için [Postacı'yı kullanmanızı](search-get-started-postman.md) ve bu API'yi kullanarak isteklerin formülasyonlarını kullanmanızı öneririz: [Eş Anlamlı Haritalar Oluştur.](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) C# geliştiricileri [için, C# kullanarak Azure Bilişsel Arama'da Eş Anlamlı Ekle](search-synonyms-tutorial-sdk.md)ile yola çıkabilirsiniz.
+Eş anlamlıları oluşturmak için portal desteği yoktur, ancak REST API veya .NET SDK 'sını kullanabilirsiniz. REST ile çalışmaya başlamak için bu API 'YI kullanarak isteklerin [Postman](search-get-started-postman.md) ve formüllerinin kullanılması önerilir: [eş anlamlı haritalar oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). C# geliştiricileri için, [C# kullanarak Azure bilişsel arama 'Da eşanlamlı ekleme](search-synonyms-tutorial-sdk.md)ile çalışmaya başlayın.
 
-İsteğe bağlı olarak, hizmet tarafında şifreleme-at-rest için [müşteri tarafından yönetilen anahtarları](search-security-manage-encryption-keys.md) kullanıyorsanız, bu korumayı eşanlamlı haritanızın içeriğine uygulayabilirsiniz.
+İsteğe bağlı olarak, hizmet tarafı şifreleme için [müşteri tarafından yönetilen anahtarlar](search-security-manage-encryption-keys.md) kullanıyorsanız, bu korumayı eş anlamlı Haritalarınızın içeriğine uygulayabilirsiniz.
 
-## <a name="use-synonyms"></a>Eş anlamlı ları kullanma
+## <a name="use-synonyms"></a>Eş anlamlıları kullan
 
-Azure Bilişsel Arama'da eş anlamlı destek, tanımladığınız ve hizmetinize yüklediğiniz eşanlamlı haritalara dayanır. Bu haritalar bağımsız bir kaynak (dizinler veya veri kaynakları gibi) oluşturur ve arama hizmetinizdeki herhangi bir dizinde aranabilir alan tarafından kullanılabilir.
+Azure Bilişsel Arama 'de, eş anlamlı destek, sizin tanımladığınız ve hizmetinize yüklediğiniz eş anlamlılar haritalarını temel alır. Bu haritalar bağımsız bir kaynak (dizinler veya veri kaynakları gibi) oluşturur ve arama hizmetinizdeki herhangi bir dizinde aranabilir bir alan tarafından kullanılabilir.
 
-Eşanlamlı haritalar ve dizinler bağımsız olarak korunur. Eş anlamlı bir harita tanımladıktan ve hizmetinize yükledikten sonra, alan tanımına **eş anlamlı** Haritalar adı verilen yeni bir özellik ekleyerek alandaki eş anlamlı özelliği etkinleştirebilirsiniz. Eşanlamlı eşlemi oluşturma, güncelleştirme ve silme işlemi her zaman bir tam belge işlemidir, yani eşanlamlı haritanın bölümlerini artımlı olarak oluşturamazsınız, güncelleyemez veya silemezsiniz. Tek bir girişi bile güncelleştirmek yeniden yükleme gerektirir.
+Eş anlamlı haritalar ve dizinler bağımsız olarak korunur. Bir eş anlamlı eşleme tanımladıktan ve bu dosyayı hizmetinize yükledikten sonra, alan tanımında eş anlamlılar özelliğini **, eş anlamlılar adlı yeni** bir özellik ekleyerek etkinleştirebilirsiniz. Bir eş anlamlı eşleme oluşturmak, güncelleştirmek ve silmek her zaman bir tam belge işlemidir. Bu, eş anlamlı eşleme parçalarını artımlı olarak oluşturamaz, güncelleştiremez veya silemezsiniz. Tek bir girdinin güncelleştirilmesi, yeniden yükleme gerektirir.
 
-Eş anlamlıları arama uygulamanıza dahil etmek iki aşamalı bir işlemdir:
+Eş anlamlıları arama uygulamanıza eklemek iki adımlı bir işlemdir:
 
-1.  Aşağıdaki API'ler aracılığıyla arama hizmetinize eş anlamlı bir eşlenim haritası ekleyin.  
+1.  Aşağıdaki API 'Ler aracılığıyla arama hizmetinize bir eş anlamlı eşleme ekleyin.  
 
-2.  Dizin tanımındaki eşanlamlı eşleni eşlemi kullanmak için aranabilir bir alanı yapılandırın.
+2.  Dizin tanımında eş anlamlı eşlemeyi kullanmak için aranabilir bir alan yapılandırın.
 
-Arama uygulamanız için birden çok eşanlamlı eşanlamlı harita oluşturabilirsiniz (örneğin, uygulamanız çok dilli bir müşteri tabanını destekliyorsa dile göre). Şu anda, bir alan yalnızca bunlardan birini kullanabilirsiniz. Bir alanın eşanlamlısı Haritalar özelliğini istediğiniz zaman güncelleştirebilirsiniz.
+Arama uygulamanız için birden fazla eş anlamlı harita oluşturabilirsiniz (örneğin, uygulamanız çok dilli müşteri temelini destekliyorsa, dile göre). Şu anda bir alan yalnızca birini kullanabilir. Bir alanın eş eşlemler özelliğini dilediğiniz zaman güncelleştirebilirsiniz.
 
-### <a name="synonymmaps-resource-apis"></a>Eş anlamlı Haritalar Kaynak API'leri
+### <a name="synonymmaps-resource-apis"></a>Eş eşlemler kaynak API 'Leri
 
-#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>POST veya PUT'u kullanarak hizmetinizin altında eş anlamlı bir harita ekleyin veya güncelleyin.
+#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>POST veya PUT kullanarak hizmetiniz altına bir eş anlamlı harita ekleyin veya güncelleştirin.
 
-Eş anlamlı haritalar POST veya PUT aracılığıyla servise yüklenir. Her kural yeni satır karakteri ('\n') ile sınırlandırılmalıdır. Ücretsiz bir hizmette eş anlamlı harita başına en fazla 5.000 kural ve diğer tüm SUS'larda harita başına 20.000 kural tanımlayabilirsiniz. Her kural en fazla 20 genişletme olabilir.
+Eş anlamlı eşlemeler POST veya PUT aracılığıyla hizmete yüklenir. Her kural yeni satır karakteriyle (' \n ') sınırlandırmalıdır. Tüm diğer SKU 'Larda, ücretsiz bir hizmette ve eşleme başına 20.000 kurallarında en fazla 5.000 kural tanımlayabilirsiniz. Her kural en fazla 20 genişleme sahip olabilir.
 
-Eş anlamlı haritalar aşağıda açıklanan Apache Solr biçiminde olmalıdır. Farklı bir biçimde varolan bir eş anlamlı sözlüğünüz varsa ve doğrudan kullanmak istiyorsanız, lütfen [UserVoice'ta](https://feedback.azure.com/forums/263029-azure-search)bize bildirin.
+Eş anlamlı eşlemeler aşağıda açıklanan Apache Solr biçiminde olmalıdır. Farklı bir biçimde mevcut bir eş anlamlı sözlüğü varsa ve bunu doğrudan kullanmak istiyorsanız [UserVoice](https://feedback.azure.com/forums/263029-azure-search)'ta bize bildirin.
 
-Aşağıdaki örnekte olduğu gibi HTTP POST'u kullanarak yeni bir eş anlamlı harita oluşturabilirsiniz:
+Aşağıdaki örnekte olduğu gibi, HTTP POST kullanarak yeni bir eş anlamlı eşleme oluşturabilirsiniz:
 
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
@@ -62,7 +62,7 @@ Aşağıdaki örnekte olduğu gibi HTTP POST'u kullanarak yeni bir eş anlamlı 
           Washington, Wash., WA => WA\n"
     }
 
-Alternatif olarak, PUT'u kullanabilir ve URI'deki eş anlamlı harita adını belirtebilirsiniz. Eşanlamlı harita yoksa, oluşturulur.
+Alternatif olarak, koy ' u kullanabilir ve URI üzerinde eş anlamlı eşleme adını belirtebilirsiniz. Eş anlamlı eşleme yoksa, oluşturulur.
 
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
@@ -74,38 +74,38 @@ Alternatif olarak, PUT'u kullanabilir ve URI'deki eş anlamlı harita adını be
           Washington, Wash., WA => WA\n"
     }
 
-##### <a name="apache-solr-synonym-format"></a>Apache Solr eşanlamlı biçimi
+##### <a name="apache-solr-synonym-format"></a>Apache Solr eş anlamlı biçimi
 
-Solr biçimi eşdeğer ve açık eşanlamlı eşlemeleri destekler. Eşleme kuralları, bu belgede açıklanan Apache Solr'un açık kaynak eşanlamlı filtresi belirtimine bağlıdır: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Aşağıda eşdeğer eşanlamlılar için bir örnek kuraldır.
+Solr biçimi eşdeğer ve açık eş anlamlı eşlemelerini destekler. Eşleme kuralları, bu belgede açıklanan Apache Solr 'nin açık kaynaklı eş anlamlı filtre belirtimine uyar: [eşanlamlı Ymfilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Eşdeğer eş anlamlılar için örnek bir kural aşağıda verilmiştir.
 ```
 USA, United States, United States of America
 ```
 
-Yukarıdaki kuralla, bir arama sorgusu "ABD" veya "Amerika Birleşik Devletleri" veya "Amerika Birleşik Devletleri" genişletecektir.
+Yukarıdaki kuralla birlikte "USA" arama sorgusu "ABD" veya "Birleşik Devletler" ya da "Birleşik Devletler" olarak genişletilir.
 
-Açık eşleme bir ok "=>" ile gösterilir. Belirtildiğinde, "=>"nin sol tarafına uyan bir arama sorgusunun terim sırası, sağ taraftaki alternatiflerle değiştirilir. Aşağıdaki kural göz önüne alındığında, arama sorguları "Washington", "Wash." veya "WA" tüm "WA" için yeniden yazılacaktır. Açık eşleme yalnızca belirtilen yönde geçerlidir ve bu durumda "WA" sorgusunu "Washington" olarak yeniden yazmaz.
+Açık eşleme bir ok "=>" ile gösterilir. Belirtildiğinde, "=>" öğesinin sol tarafıyla eşleşen bir arama sorgusunun terim sırası, sağ taraftaki alternatiflerle birlikte değişir. Aşağıdaki kural verildiğinde, "Washington", "yıkama" sorguları üzerinde arama yapın. ya da "WA" tümü "WA" olarak yeniden yazılır. Açık eşleme yalnızca belirtilen yönde geçerlidir ve bu durumda "WA" sorgusunu "Washington" olarak yeniden yazmaz.
 ```
 Washington, Wash., WA => WA
 ```
 
-#### <a name="list-synonym-maps-under-your-service"></a>Eş anlamlı haritaları hizmetinizde listeleyin.
+#### <a name="list-synonym-maps-under-your-service"></a>Hizmetiniz altındaki eş anlamlı haritaları listeleyin.
 
     GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
-#### <a name="get-a-synonym-map-under-your-service"></a>Hizmetinizde eş anlamlı bir harita alın.
+#### <a name="get-a-synonym-map-under-your-service"></a>Hizmetiniz altında bir eş anlamlı eşleme alın.
 
     GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
-#### <a name="delete-a-synonyms-map-under-your-service"></a>Hizmetinizin altındaki eşanlamlı lar haritasını silin.
+#### <a name="delete-a-synonyms-map-under-your-service"></a>Hizmetiniz altındaki bir eş anlamlı eşlemeyi silin.
 
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Dizin tanımındaki eşanlamlı eşleni eşlemi kullanmak için aranabilir bir alanı yapılandırın.
+### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Dizin tanımında eş anlamlı eşlemeyi kullanmak için aranabilir bir alan yapılandırın.
 
-Yeni bir alan özelliği **eşanlamlısı** Haritalar aranabilir bir alan için kullanılacak eşanlamlı bir eşlenim eşanlamlı belirtmek için kullanılabilir. Eşanlamlı haritalar hizmet düzeyi kaynaklarıdır ve hizmet altında bir dizinin herhangi bir alanı tarafından başvurulabilir.
+Yeni bir alan özelliği olan eşanlamlı bir alan için kullanılacak bir eş anlamlı eşleme belirtmek için, **eş** anlamlılar özelliği kullanılabilir. Eş anlamlı eşlemeler hizmet düzeyi kaynaklardır ve hizmet altındaki bir dizinin herhangi bir alanı tarafından başvurulabilir.
 
     POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
     api-key: [admin key]
@@ -139,24 +139,24 @@ Yeni bir alan özelliği **eşanlamlısı** Haritalar aranabilir bir alan için 
        ]
     }
 
-**eş anlamlısı Haritalar,** 'Edm.String' veya 'Collection(Edm.String)' türündeki aranabilir alanlar için belirtilebilir.
+' Edm. String ' veya ' Collection (EDM. String) ' türündeki aranabilir alanlar için **eş anlamlı** alanları belirtilebilir.
 
 > [!NOTE]
-> Alan başına yalnızca bir eşanlamlı haritanız olabilir. Birden fazla eşanlamlı harita kullanmak istiyorsanız, lütfen [UserVoice'ta](https://feedback.azure.com/forums/263029-azure-search)bize bildirin.
+> Alan başına yalnızca bir eş anlamlı eşlemeye sahip olabilirsiniz. Birden çok eş anlamlı eşleme kullanmak istiyorsanız lütfen [UserVoice](https://feedback.azure.com/forums/263029-azure-search)üzerinde bize bildirin.
 
-## <a name="impact-of-synonyms-on-other-search-features"></a>Eş anlamlıların diğer arama özellikleri üzerindeki etkisi
+## <a name="impact-of-synonyms-on-other-search-features"></a>Diğer arama özelliklerinde eş anlamlıların etkisi
 
-Eşanlamlı özelliği orilet işleci ile eşanlamlı orijinal sorgu yeniden yazar. Bu nedenle, hit vurgulama ve puanlama profilleri özgün terimi ve eşanlamlıları eşdeğer olarak ele alar.
+Eş anlamlılar özelliği, veya işleciyle birlikte eşanlamlı olan özgün sorguyu yeniden yazar. Bu nedenle, isabet vurgulama ve Puanlama profillerinin özgün terim ve eş anlamlıları eşdeğer olarak kabul eder.
 
-Eşanlamlı özelliği arama sorguları için geçerlidir ve filtreler veya fasonlar için geçerli değildir. Benzer şekilde, öneriler yalnızca özgün terime dayanır; eşanlamlı eşleşmeleri yanıtta görünmez.
+Eş anlamlı özelliği arama sorguları için geçerlidir ve filtreler veya modeller için geçerli değildir. Benzer şekilde, öneriler yalnızca özgün terime dayalıdır; eş anlamlı eşleşmeler yanıtta görünmez.
 
-Eşanlamlı genişletmeler joker karakter arama terimleri için geçerli değildir; önek, bulanık ve regex terimleri genişletilmez.
+Joker karakter arama terimleri için eş anlamlı genişletmeleri uygulanmaz; ön ek, belirsiz ve Regex terimleri genişletilmedi.
 
-Eşanlamlı genişletme ve joker karakter, regex veya bulanık aramalar uygulayan tek bir sorgu yapmanız gerekiyorsa, sorguları OR sözdizimini kullanarak birleştirebilirsiniz. Örneğin, eşanlamlıları basit sorgu sözdizimi için joker karakterlerle `<query> | <query>*`birleştirmek için terim .
+Eş anlamlı genişletme ve joker karakter, Regex veya benzer aramalar uygulayan tek bir sorgu yapmanız gerekiyorsa, veya söz dizimini kullanarak sorguları birleştirebilirsiniz. Örneğin, basit sorgu söz dizimi için eş anlamlıları joker karakterlerle birleştirmek için, terimi olur `<query> | <query>*`.
 
-Geliştirme (üretim dışı) bir ortamda varolan bir dizininiz varsa, eş anlamlılar eklemenin skor profilleri, hit vurgulama ve öneriler üzerindeki etkisi de dahil olmak üzere arama deneyimini nasıl değiştirdiğini görmek için küçük bir sözlükle denemeler yapın.
+Geliştirme (üretim dışı) ortamında var olan bir dizininiz varsa, eş anlamlılar eklemenin, arama deneyimini nasıl değiştirdiğinden, Puanlama profilleri, isabet vurgulama ve öneriler de dahil olmak üzere küçük bir sözlükten deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Eş anlamlı harita oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)
+> [Eş anlamlı eşleme oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)

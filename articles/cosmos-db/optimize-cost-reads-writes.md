@@ -1,50 +1,50 @@
 ---
-title: Azure Cosmos DB'de okuma ve yazma maliyetini optimize etme
-description: Bu makalede, veriler üzerinde okuma ve yazma işlemleri gerçekleştirirken Azure Cosmos DB maliyetlerinin nasıl azaltılacak açıklanmaktadır.
+title: Azure Cosmos DB okuma ve yazma maliyetini en iyi duruma getirme
+description: Bu makalede, veriler üzerinde okuma ve yazma işlemleri gerçekleştirirken Azure Cosmos DB maliyetlerinin nasıl azaltılacağı açıklanmaktadır.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: 725876594a7e7c5f3b3a02802f487dc5fdfb64dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535944"
 ---
-# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de maliyeti en iyi duruma getirin ve yazar
+# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Azure Cosmos DB 'de okuma ve yazma maliyetlerini iyileştirin
 
-Bu makalede, Azure Cosmos DB'den veri okumak ve yazmak için gereken maliyetin nasıl hesaplandığı açıklanmaktadır. Okuma işlemleri öğeleri alma işlemleri ve yazma işlemleri öğeleri ekleme, değiştirme, silme ve yükseltme içerir.  
+Bu makalede Azure Cosmos DB verileri okumak ve yazmak için gereken maliyetin nasıl hesaplandığı açıklanır. Öğelerin ve yazma işlemlerinde Get işlemlerine yönelik okuma işlemleri, öğelerin INSERT, Replace, DELETE ve upsert öğelerini içerir.  
 
 ## <a name="cost-of-reads-and-writes"></a>Okuma ve yazma maliyeti
 
-Azure Cosmos DB, sağlanan bir iş ortası modelini kullanarak, iş sonu ve gecikme sonu açısından öngörülebilir performansı garanti eder. Sağlanan iş başı, [istek birimleri](request-units.md) açısından saniyede veya RU/s olarak temsil edilir. İstek Birimi (RU), cpu, bellek, IO, vb. gibi bir isteği gerçekleştirmek için gereken bilgi işlem kaynakları üzerinde mantıksal bir soyutlamadır. Sağlanan iş sonu (RUs) bir kenara bırakılır ve öngörülebilir iş sonu ve gecikme saðlamak için konteynerveya veritabanınıza adanmýr. Sağlanan iş ortası, Azure Cosmos DB'nin öngörülebilir ve tutarlı performans, garantili düşük gecikme sonu ve her ölçekte yüksek kullanılabilirlik sağlamasına olanak tanır. İstek birimleri, bir uygulamanın kaç kaynağa ihtiyacı olduğu yla ilgili mantığı basitleştiren normalleştirilmiş para birimini temsil eder. 
+Azure Cosmos DB, sağlanan aktarım hızı modeli kullanılarak üretilen iş ve gecikme süresi bakımından öngörülebilir performansı güvence altına alır. Sağlanan aktarım hızı, saniye başına [Istek birimi](request-units.md) veya ru/sn cinsinden temsil edilir. Istek birimi (RU), bir isteği gerçekleştirmek için gerekli olan CPU, bellek, GÇ vb. işlem kaynakları üzerinde mantıksal bir soyutlamadır. Sağlanan aktarım hızı (ru), öngörülebilir aktarım hızı ve gecikme süresi sağlamak için kapsayıcı veya veritabanınıza ayrılır. Sağlanan aktarım hızı, Azure Cosmos DB her ölçekte öngörülebilir ve tutarlı performans, garantili düşük gecikme süresi ve yüksek kullanılabilirlik sağlamasına olanak sağlar. İstek birimleri, bir uygulamanın ihtiyacı olan kaynak sayısını kolaylaştıran normalleştirilmiş para birimini temsil eder. 
 
-İstek birimlerini okuma ve yazma arasında ayırt etmeyi düşünmenize gerek yoktur. İstek birimlerinin birleşik para birimi modeli, hem okuma hem de yazma için aynı verim kapasitesini birbirinin yerine kullanmak için verimlilik oluşturur. Aşağıdaki tablo, 1 KB ve 100 KB boyutundaki maddeler için RU/s açısından okuma ve yazma maliyetini gösterir.
+Okuma ve yazma işlemleri arasında istek birimlerini farklılaştırmayı düşünmek zorunda değilsiniz. İstek birimlerinin Birleşik para birimi modeli, birbirinin yerine, hem okuma hem de yazma işlemleri için aynı verimlilik kapasitesini kullanır. Aşağıdaki tabloda, 1 KB ve 100 KB boyutundaki öğeler için RU/s bakımından okuma ve yazma maliyeti gösterilmektedir.
 
-|**Öğe Boyutu**  |**Bir okuma maliyeti** |**Bir yazma maliyeti**|
+|**Öğe boyutu**  |**Bir okuma maliyeti** |**Bir yazma maliyeti**|
 |---------|---------|---------|
-|1 KB |1 RU |5 RUs |
-|100 KB |10 RU |50 Rus |
+|1 KB |1 RU |5 ru |
+|100 KB |10 RU |50 ru |
 
-Boyutu 1 KB olan bir öğeyi okuma bir RU maliyeti. 1-KB olan bir öğeyazma beş RUs maliyeti. Varsayılan oturum [tutarlılık düzeyini](consistency-levels.md)kullanırken okuma ve yazma maliyetleri uygulanabilir.  RUs'lar etrafında göz önünde bulundurulması gereken hususlar şunlardır: madde boyutu, özellik sayısı, veri tutarlılığı, dizine eklenmiş özellikler, dizin oluşturma ve sorgu desenleri.
+Boyut maliyetlerinde 1 KB olan bir öğeyi okumak bir RU. 1 KB 'lik maliyette beş ru olan bir öğe yazılıyor. Okuma ve yazma maliyetleri, varsayılan oturum [tutarlılığı düzeyi](consistency-levels.md)kullanılırken geçerlidir.  Ru 'daki hususlar şunlardır: öğe boyutu, özellik sayısı, veri tutarlılığı, dizinli özellikler, dizin oluşturma ve sorgu desenleri.
 
-## <a name="optimize-the-cost-of-writes-and-reads"></a>Yazma ve okuma maliyetini optimize edin
+## <a name="optimize-the-cost-of-writes-and-reads"></a>Yazma ve okuma maliyetlerini iyileştirin
 
-Yazma işlemlerini gerçekleştirirken, saniyede gereken yazma sayısını desteklemek için yeterli kapasite sağlamanız gerekir. SDK, portal, CLI yazılarını gerçekleştirmeden önce kullanarak verilen iş buzun artabilir ve yazmalar tamamlandıktan sonra elde edilen iş buzun azaltılmasını sağlayabilirsiniz. Yazma dönemi için iş kaynağınız, verilen veriler için gereken minimum iş kaynağının yanı sıra başka iş yükü çalışmadığını varsayarak ekle iş yükü için gereken iş yükü dür. 
+Yazma işlemleri gerçekleştirdiğinizde, saniye başına gereken yazma sayısını desteklemek için yeterli kapasite sağlamanız gerekir. Yazma işlemini gerçekleştirmeden önce SDK, Portal, CLı kullanarak sağlanan aktarım hızını artırabilir ve ardından yazma işlemleri tamamlandıktan sonra aktarım hızını azaltabilirsiniz. Yazma dönemi için üretilen iş hacmi, belirtilen veriler için gereken en düşük aktarım hızı ve başka iş yükünün çalışmadığı varsayılarak ekleme iş yükü için gereken aktarım hızı olur. 
 
-Diğer iş yüklerini aynı anda çalıştırıyorsanız(örneğin, sorgula/oku/güncelle/sil) bu işlemler için gereken ek istek birimlerini de eklemeniz gerekir. Yazma işlemleri fiyat sınırlıysa, Azure Cosmos DB SDK'ları kullanarak yeniden deneme/geri tepme ilkesini özelleştirebilirsiniz. Örneğin, küçük bir istek oranı oranı sınırlı olana kadar yükü artırabilirsiniz. Oran sınırı oluşursa, istemci uygulaması belirtilen yeniden deneme aralığı için fiyat sınırlayıcı istekleri ni geri almalıdır. Yazmaları yeniden denemeden önce, yeniden denemeler arasında en az miktarda zaman aralığına sahip olmalısınız. Yeniden deneme ilkesi desteği SQL .NET, Java, Node.js ve Python SDK'larına ve .NET Core SDK'larının desteklenen tüm sürümlerine dahildir. 
+Diğer iş yüklerini eşzamanlı olarak çalıştırıyorsanız (örneğin, sorgu/okuma/güncelleştirme/silme), bu işlemler için gereken ek istek birimlerini de eklemeniz gerekir. Yazma işlemleri hız sınırlıysa, Azure Cosmos DB SDK 'Ları kullanarak yeniden deneme/geri alma ilkesini özelleştirebilirsiniz. Örneğin, küçük bir isteklerin hız sınırlı olana kadar yükü artırabilirsiniz. Oran sınırı oluşursa, istemci uygulama, belirtilen yeniden deneme aralığı için hız sınırlama isteklerinde yeniden kapatılmalıdır. Yazmaları yeniden denemeden önce, denemeler arasındaki en az bir zaman aralığı miktarına sahip olmalısınız. Yeniden deneme ilkesi desteği, SQL .NET, Java, Node. js ve Python SDK 'larına ve .NET Core SDK 'larının tüm desteklenen sürümlerine dahildir. 
 
-Ayrıca Azure Cosmos DB'ye veri toplu olarak ekleyebilir veya desteklenen herhangi bir kaynak veri deposundan [Azure Veri Fabrikası'nı](../data-factory/connector-azure-cosmos-db.md)kullanarak verileri Azure Cosmos DB'ye kopyalayabilirsiniz. Azure Veri Fabrikası, veri yazarken en iyi performansı sağlamak için Azure Cosmos DB Toplu API ile yerel olarak tümleşir.
+Ayrıca, [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)kullanarak desteklenen kaynak veri mağazalarından Azure Cosmos DB Azure Cosmos DB veya verileri toplu olarak ekleyebilirsiniz. Azure Data Factory, veri yazarken en iyi performansı sağlamak için Azure Cosmos DB toplu API ile yerel olarak tümleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha sonra aşağıdaki makalelerle Azure Cosmos DB'de maliyet optimizasyonu hakkında daha fazla bilgi edinebilirsiniz:
+Daha sonra, aşağıdaki makalelerle Azure Cosmos DB maliyet iyileştirmesi hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Geliştirme ve test için Optimizasyon](optimize-dev-test.md) hakkında daha fazla bilgi edinin
-* [Azure Cosmos DB faturanızı anlama](understand-your-bill.md) hakkında daha fazla bilgi edinin
-* [İş memat maliyetini optimize etme](optimize-cost-throughput.md) hakkında daha fazla bilgi edinin
-* [Depolama maliyetini optimize etme](optimize-cost-storage.md) hakkında daha fazla bilgi edinin
-* [Sorguların maliyetini optimize etme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
-* [Çok bölgeli Azure Cosmos hesaplarının maliyetini optimize etme](optimize-cost-regions.md) hakkında daha fazla bilgi edinin
+* [Geliştirme ve test Için iyileştirme](optimize-dev-test.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB Faturanızı Anlama](understand-your-bill.md) hakkında daha fazla bilgi edinin
+* [Verimlilik maliyetini iyileştirme](optimize-cost-throughput.md) hakkında daha fazla bilgi edinin
+* [Depolama maliyetini iyileştirme](optimize-cost-storage.md) hakkında daha fazla bilgi edinin
+* [Sorguların maliyetini En Iyi duruma getirme](optimize-cost-queries.md) hakkında daha fazla bilgi edinin
+* [Çok bölgeli Azure Cosmos hesaplarının maliyetini En Iyi duruma getirme](optimize-cost-regions.md) hakkında daha fazla bilgi edinin

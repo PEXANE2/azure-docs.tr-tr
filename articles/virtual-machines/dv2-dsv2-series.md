@@ -1,6 +1,6 @@
 ---
-title: Dv2 ve Dsv2 serisi - Azure Sanal Makineler
-description: Dv2 ve Dsv2 serisi VM'ler için teknik özellikler.
+title: Dv2 ve Dsv2 serisi-Azure sanal makineleri
+description: Dv2 ve Dsv2 serisi VM 'Ler için Özellikler.
 services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 808b14f118e842cb9e52d110075f92ba25a343c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164432"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 ve DSv2 serisi
 
-Orijinal D serisinin bir devamı olan Dv2 ve Dsv2 serisi, daha güçlü bir Işlemci ve en iyi cpu-to-bellek yapılandırmasına sahiptir ve bunları çoğu üretim iş yükü için uygun hale getirir. Dv2 serisi D serisi yaklaşık% 35 daha hızlıdır. Dv2 serisi Intel Turbo Boost Technology 2.0 ile Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) veya Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+Özgün D serisi için bir takip olan dv2 ve Dsv2-Series, daha güçlü bir CPU ve en iyi CPU 'ya sahip bir yapılandırma ve bunları üretim iş yüklerinin çoğu için uygun hale getirir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Dv2 serisi, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
 ## <a name="dv2-series"></a>Dv2 Serisi
 
-Dv2 serisi boyutları Intel® Xeon® 8171M 2.1GHz (Skylake) veya Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) veya Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) işlemcileri ile Intel Turbo Boost Technology 2.0 ile çalışır.
+Dv2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü)® veya Intel® 2,4 Xeon® E5-2673 v4 2,3 GHz (Haswell) işlemcileri üzerinde çalışır.
 
 ACU: 210-250
 
-Premium Depolama: Desteklenmiyor
+Premium Depolama: desteklenmiyor
 
-Premium Depolama önbelleğe alma: Desteklenmiyor
+Premium depolama önbelleği: desteklenmiyor
 
-Canlı Geçiş: Desteklenen
+Dinamik Geçiş: destekleniyor
 
-Bellek Koruma Güncelleştirmeleri: Desteklenen
+Güncelleştirmeleri koruyan bellek: desteklenir
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama iş boku: IOPS/Okuma MBps/Yazma MBps | Maksimum veri diskleri | Kaynak: IOPS | Max NIC'ler/Beklenen ağ bant genişliği (Mbps) |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | Maksimum veri diskleri | Aktarım hızı: ıOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D1_v2 | 1  | 3,5 | 50  | 3000/46/23    | 4  | 4x500  | 2/750   |
 | Standard_D2_v2 | 2  | 7   | 100 | 6000/93/46    | 8  | 8x500  | 2/1500  |
@@ -42,19 +42,19 @@ Bellek Koruma Güncelleştirmeleri: Desteklenen
 
 ## <a name="dsv2-series"></a>DSv2 serisi
 
-DSv2 serisi boyutları Intel® Xeon® 8171M 2.1GHz (Skylake) veya Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) veya Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) işlemcileri Intel Turbo Boost Technology 2.0 ile çalışır ve premium depolama kullanır.
+DSv2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (2,3®® ufuk Gölü) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve Premium depolama kullanır.
 
 ACU: 210-250
 
-Premium Depolama: Desteklenen
+Premium Depolama: desteklenir
 
-Premium Depolama önbelleğe alma: Desteklenen
+Premium depolama önbelleği: desteklenir
 
-Canlı Geçiş: Desteklenen
+Dinamik Geçiş: destekleniyor
 
-Bellek Koruma Güncelleştirmeleri: Desteklenen
+Güncelleştirmeleri koruyan bellek: desteklenir
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama işliği: IOPS/MBps (GiB'de önbellek boyutu) | Maksimum cached disk işçıktısı: IOPS/MBps | Max NIC'ler/Beklenen ağ bant genişliği (Mbps) |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_DS1_v2 | 1  | 3,5 | 7   | 4  | 4000/32 (43)    | 3200/48   | 2/750   |
 | Standard_DS2_v2 | 2  | 7   | 14  | 8  | 8000/64 (86)    | 6400/96   | 2/1500  |
@@ -66,7 +66,7 @@ Bellek Koruma Güncelleştirmeleri: Desteklenen
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaç](sizes-general.md)
+- [Genel amaçlı](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
@@ -75,4 +75,4 @@ Bellek Koruma Güncelleştirmeleri: Desteklenen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

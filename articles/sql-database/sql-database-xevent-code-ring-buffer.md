@@ -1,6 +1,6 @@
 ---
-title: XEvent Zil Arabellek kodu
-description: Azure SQL Veritabanı'nda Zil Arabelleği hedefi nin kullanımıyla kolay ve hızlı hale getirilen bir Transact-SQL kod örneği sağlar.
+title: XEvent halka arabellek kodu
+description: Azure SQL veritabanı 'nda halka arabelleği hedefini kullanarak kolay ve hızlı hale getirilen bir Transact-SQL kod örneği sağlar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,52 +12,52 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: ad98b61d6339388551af93671b3d4d892942f4e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79213976"
 ---
-# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Veritabanı'nda genişletilmiş olaylar için Zil Arabelleği hedef kodu
+# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL veritabanı 'nda genişletilmiş olaylar için halka arabelleği hedef kodu
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Bir test sırasında uzun bir olay için bilgileri yakalamanın ve bildirmenin en kolay hızlı yolu için tam bir kod örneği istiyorsunuz. Genişletilmiş olay verileri için en kolay hedef [Halka Arabellek hedefidir.](https://msdn.microsoft.com/library/ff878182.aspx)
+Sınama sırasında genişletilmiş bir olay için en kolay hızlı bir şekilde bilgi yakalamak ve raporlamak için bir kod örneği istersiniz. Genişletilmiş olay verileri için en kolay hedef, [halka arabelleği hedefidir](https://msdn.microsoft.com/library/ff878182.aspx).
 
-Bu konu, bir Transact-SQL kod örneği sunar:
+Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 
-1. Gösterilen verilerle bir tablo oluşturur.
-2. **Sqlserver.sql_statement_starting**gibi varolan genişletilmiş bir olay için bir oturum oluşturur.
+1. Göstermek üzere verileri içeren bir tablo oluşturur.
+2. Var olan genişletilmiş bir olay için, örneğin **SqlServer. sql_statement_starting**için bir oturum oluşturur.
    
-   * Olay belirli bir Güncelleştirme dizesi içeren SQL deyimleri ile sınırlıdır: **deyimi LIKE '%UPDATE sekmesiÇalışan%'**.
-   * Olayın çıktısını, **yani package0.ring_buffer**türü Ndeki Bir Hedef'e göndermeyi seçer.
+   * Olay, belirli bir Update dize içeren SQL deyimleriyle sınırlıdır: **'% Update tabEmployee% ' gibi bir deyim**.
+   * Olayın çıkışını halka arabelleği türünde bir hedefe göndermeyi seçer, yani **package0. ring_buffer**.
 3. Olay oturumunu başlatır.
-4. Birkaç basit SQL UPDATE deyimi ni yayınlar.
-5. Zil Arabelleği'nden olay çıktısını almak için bir SQL SELECT deyimi yayınlar.
+4. Birkaç basit SQL UPDATE deyimi yayınlar.
+5. Halka arabelleğinden olay çıktısını almak için bir SQL SELECT ifadesiyle karşılaşır.
    
-   * **sys.dm_xe_database_session_targets** ve diğer dinamik yönetim görünümleri (DMV) birleştirilir.
-6. Olay oturumunu durdurur.
-7. Kaynaklarını serbest bırakmak için Ring Arabellek hedefini düşürür.
-8. Etkinlik oturumunu ve demo tablosunu düşürür.
+   * **sys. dm_xe_database_session_targets** ve diğer dinamik yönetim görünümleri (DMVs) birleştirilir.
+6. Olay oturumunu sonlandırır.
+7. , Kaynaklarını serbest bırakmak için halka arabelleği hedefini bırakır.
+8. Olay oturumunu ve tanıtım tablosunu bırakır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği [Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
-* Tablo oluşturabileceğiniz herhangi bir veritabanı.
+* İçinde tablo oluşturabileceğiniz herhangi bir veritabanı.
   
-  * İsteğe bağlı olarak birkaç dakika içinde [bir **AdventureWorksLT** gösteri veritabanı oluşturabilirsiniz.](sql-database-get-started.md)
-* SQL Server Management Studio (ssms.exe), ideal olarak en son aylık güncelleme sürümü. 
-  En son ssms.exe indirebilirsiniz:
+  * İsteğe bağlı olarak, dakikalar içinde [bir **AdventureWorksLT** demo veritabanı oluşturabilirsiniz](sql-database-get-started.md) .
+* SQL Server Management Studio (SSMS. exe), en son aylık güncelleştirme sürümünü idealdir. 
+  En son SSMS. exe ' yi şuradan indirebilirsiniz:
   
-  * Konu [Başlıklı SQL Server Management Studio İndir](https://msdn.microsoft.com/library/mt238290.aspx).
-  * [İndirmek için doğrudan bir bağlantı.](https://go.microsoft.com/fwlink/?linkid=616025)
+  * [SQL Server Management Studio indirme](https://msdn.microsoft.com/library/mt238290.aspx)başlıklı konu.
+  * [İndirmenin doğrudan bağlantısı.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Kod örneği
 
-Çok küçük bir değişiklikle, aşağıdaki Zil Buffer kodu örneği Azure SQL Veritabanı veya Microsoft SQL Server'da çalıştırılabilir. Aradaki fark, Adım 5'teki FROM yan tümcesinde kullanılan bazı dinamik yönetim görünümleri (DMV) adına '_database' düğümünün varlığıdır. Örnek:
+Çok küçük değişikliklerle, aşağıdaki halka arabelleği kod örneği Azure SQL veritabanı veya Microsoft SQL Server üzerinde çalıştırılabilir. Bu fark, 5. adımdaki FROM yan tümcesinde kullanılan, bazı dinamik yönetim görünümlerinin (DMVs) adında bulunan ' _database ' düğümünün varlığına sahip olur. Örneğin:
 
-* sys.dm_xe<strong>_database</strong>_session_targets
-* sys.dm_xe_session_targets
+* sys. dm_xe<strong>_database</strong>_session_targets
+* sys. dm_xe_session_targets
 
 &nbsp;
 
@@ -214,15 +214,15 @@ GO
 
 &nbsp;
 
-## <a name="ring-buffer-contents"></a>Zil Arabellek içeriği
+## <a name="ring-buffer-contents"></a>Halka arabelleği içerikleri
 
-Kod örneğini çalıştırmak için ssms.exe kullandık.
+Kod örneğini çalıştırmak için SSMS. exe ' yi kullandık.
 
-Sonuçları görüntülemek için sütun başlığının altındaki hücreyi tıklattık **target_data_XML.**
+Sonuçları görüntülemek için **target_data_XML**sütun başlığı altındaki hücreyi tıkladık.
 
-Daha sonra sonuç bölmesinde sütun başlığının altındaki **hücreyi**tıklattık target_data_XML. Bu tıklatma, ssms.exe'de sonuç hücresinin içeriğinin XML olarak görüntülendiği başka bir dosya sekmesi oluşturmuştur.
+Ardından sonuçlar bölmesinde, sütun üst bilgisi **target_data_XML**altındaki hücreyi tıkladık. Bu, SSMS. exe ' de, sonuç hücresinin içeriğinin XML olarak görüntülendiği başka bir dosya sekmesi oluşturmuştur.
 
-Çıktı aşağıdaki blokta gösterilir. Uzun görünüyor, ama sadece ** \<** iki olay>elemanlarıdır.
+Çıktı aşağıdaki blokta gösterilmiştir. Uzun görünüyor ancak yalnızca iki ** \<olay>** öğesi.
 
 &nbsp;
 
@@ -314,9 +314,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 ```
 
 
-#### <a name="release-resources-held-by-your-ring-buffer"></a>Halka Arabelleği tarafından tutulan kaynakları serbest bırakma
+#### <a name="release-resources-held-by-your-ring-buffer"></a>Zil arabelleğinde tutulan yayın kaynakları
 
-Zil Buffer'ınızla işiniz bittiğinde, bu bellek teni kaldırabilir ve aşağıdaki gibi bir **ALTER** veren kaynaklarını serbest bırakabilirsiniz:
+Halka arabelleğinden işiniz bittiğinde, bunu kaldırabilir ve aşağıdaki gibi bir **değişiklik** veren kaynaklarını serbest bırakabilirsiniz:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -326,7 +326,7 @@ GO
 ```
 
 
-Olay oturumunuzun tanımı güncelleştirildi, ancak düşürülmedi. Daha sonra olay oturumunuza Halka Arabelleği'nin başka bir örneğini ekleyebilirsiniz:
+Olay oturumunuzun tanımı güncelleştirildi, ancak bırakılmadı. Daha sonra, bir halka arabelleğinin başka bir örneğini olay oturumunuza ekleyebilirsiniz:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -341,13 +341,13 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
-Azure SQL Veritabanı'ndaki genişletilmiş etkinliklerin birincil konusu:
+Azure SQL veritabanı 'nda genişletilmiş olaylara yönelik birincil konu:
 
-* [Sql Veritabanı'nda,](sql-database-xevent-db-diff-from-svr.md)Azure SQL Veritabanı ile Microsoft SQL Server arasında farklılık gösteren genişletilmiş olayların bazı yönlerini karşılaştıran genişletilmiş olay değerlendirmeleri.
+* [SQL veritabanı 'nda](sql-database-xevent-db-diff-from-svr.md), Azure SQL veritabanı arasında farklı olan genişletilmiş olayların bazı yönlerini, Microsoft SQL Server karşı değişen genişletilmiş olay konuları.
 
-Genişletilmiş olaylar için diğer kod örnek konuları aşağıdaki bağlantılarda mevcuttur. Ancak, örneğin Microsoft SQL Server ile Azure SQL Veritabanı'nı hedefleyip hedeflemediğini görmek için herhangi bir örneği düzenli olarak denetlemeniz gerekir. Ardından, örneği çalıştırmak için küçük değişiklikler gerekip gerekmediğine karar verebilirsiniz.
+Genişletilmiş olaylara yönelik diğer kod örnek konuları aşağıdaki bağlantılarda bulunabilir. Ancak, örnek hedeflerin Azure SQL veritabanı 'na karşı Microsoft SQL Server için her bir örneğe düzenli olarak göz atın. Daha sonra örneği çalıştırmak için küçük değişiklikler gerekip gerekmediğine karar verebilirsiniz.
 
-* Azure SQL Veritabanı için kod örneği: [SQL Veritabanı'ndaki genişletilmiş olaylar için Olay Dosyası hedef kodu](sql-database-xevent-code-event-file.md)
+* Azure SQL veritabanı için kod örneği: [SQL veritabanı 'nda genişletilmiş olaylar Için Olay dosyası hedef kodu](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

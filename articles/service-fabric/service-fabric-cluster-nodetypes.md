@@ -1,44 +1,44 @@
 ---
 title: Düğüm türleri ve sanal makine ölçek kümeleri
-description: Azure Hizmet Kumaş düğümü türlerinin sanal makine ölçek kümeleri ile nasıl ilişkili olduğunu ve ölçek kümesi örneğine veya küme düğümüne uzaktan nasıl bağlanış bekleyeceğinizi öğrenin.
+description: Azure Service Fabric düğüm türlerinin sanal makine ölçek kümeleriyle ilişkilerini ve bir ölçek kümesi örneğine veya küme düğümüne uzaktan nasıl bağlanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
 ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78199725"
 ---
-# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Hizmet Kumaş düğümü türleri ve sanal makine ölçek setleri
+# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 
-[Sanal makine ölçek kümeleri](/azure/virtual-machine-scale-sets) bir Azure bilgi işlem kaynağıdır. Sanal makineler koleksiyonunu bir küme olarak dağıtmak ve yönetmek için ölçek kümelerini kullanabilirsiniz. Azure Hizmet Kumaşı kümesinde tanımladığınız her düğüm türü tam olarak bir ölçek kümesi ayarlar: birden çok düğüm türü aynı ölçek kümesi tarafından desteklenemez ve bir düğüm türü (çoğu durumda) birden çok ölçek kümeleri tarafından desteklenmemelidir. Bunun bir istisnası, yinelemeler orijinalden yükseltilmiş ölçek kümesine geçirilirken geçici olarak `nodeTypeRef` aynı değere sahip iki ölçek kümeniz olduğunda, bir düğüm türünü [dikey ölçeklendirme](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) nin nadir bir durumudur.
+[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Bir Azure Service Fabric kümesinde tanımladığınız her düğüm türü, tam olarak bir ölçek kümesi ayarlar: birden çok düğüm türü aynı ölçek kümesi tarafından yedeklenmez ve tek bir düğüm türü, birden fazla ölçek kümesi tarafından yedeklenmemelidir (çoğu durumda). Bu durum, bir düğüm türünü [dikey olarak ölçeklendirirken](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) nadir bir durumdur, ancak çoğaltmalar orijinalden yükseltilen ölçek kümesine geçirildiğinde aynı `nodeTypeRef` değere sahip iki ölçek kümesi olur.
 
-Service Fabric çalışma süresi, *Microsoft.Azure.ServiceFabric* Virtual Machine uzantısı tarafından belirlenen ölçekteher sanal makineye yüklenir. Bağımsız olarak her düğüm türünü yukarı veya aşağı ölçeklendirebilir, her küme düğümünde çalışan OS SKU'yu değiştirebilir, farklı bağlantı noktaları kümelerini açabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
+Service Fabric çalışma zamanı, ölçek kümesindeki her bir sanal makineye *Microsoft. Azure. ServiceFabric* sanal makine uzantısı tarafından yüklenir. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
 
-Aşağıdaki şekilde *FrontEnd* ve *BackEnd*adlı iki düğüm türü olan bir küme gösterir. Her düğüm türübeş düğüm vardır.
+Aşağıdaki şekilde, *ön uç* ve *arka uç*adında iki düğüm türüne sahip bir küme gösterilmektedir. Her düğüm türünün beş düğümü vardır.
 
 ![İki düğüm türü olan bir küme][NodeTypes]
 
-## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Sanal makine ölçeğini düğümlere ayarla
+## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Sanal makine ölçek kümesi örneklerini düğümlere eşle
 
-Önceki şekilde gösterildiği gibi, ölçek kümesi örnekleri örneğinde başlar 0 ve sonra 1 artar. Numaralandırma düğüm adlarında yansıtılır. Örneğin, düğüm BackEnd_0 BackEnd ölçek kümesinin örnek 0'dır. Bu özel ölçek kümesi, BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 ve BackEnd_4 adlı beş örneği vardır.
+Yukarıdaki şekilde gösterildiği gibi, ölçek kümesi örnekleri 0 ' dan başlar ve sonra 1 ' i arttırır. Numaralandırma, düğüm adlarında yansıtılır. Örneğin, düğüm BackEnd_0 arka uç ölçek kümesinin 0 örneğidir. Bu ölçek kümesinde BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 ve BackEnd_4 adlı beş örnek vardır.
 
-Bir ölçek kümesini ölçeklendirdiğinizde, yeni bir örnek oluşturulur. Yeni ölçek kümesi örnek adı genellikle ölçek kümesi adı artı bir sonraki örnek numarasıdır. Bizim örneğimizde, BackEnd_5.
+Ölçek kümesi ölçeğini ölçeklendirirseniz, yeni bir örnek oluşturulur. Yeni ölçek kümesi örnek adı genellikle ölçek kümesi adı ve sonraki örnek sayısıdır. Örneğimizde, BackEnd_5.
 
-## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Harita ölçeği, yük dengeleyicilerini düğüm türlerine ve ölçek kümelerine göre ayarla
+## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Harita ölçek kümesi yük dengeleyiciler için düğüm türleri ve ölçek kümeleri
 
-Kümenizi Azure portalında dağıttıysanız veya örnek Azure Kaynak Yöneticisi şablonunu kullandıysanız, kaynak grubu altındaki tüm kaynaklar listelenir. Her ölçek kümesi veya düğüm türü için yük dengeleyicilerini görebilirsiniz. Yük dengeleyici adı aşağıdaki biçimi kullanır: **&lt;LB-&gt;düğüm türü adı.** Aşağıdaki şekilde gösterildiği gibi LB-sfcluster4doc-0 örnek:
+Kümenizi Azure portal dağıttıysanız veya örnek Azure Resource Manager şablonunu kullandıysanız, bir kaynak grubundaki tüm kaynaklar listelenir. Her ölçek kümesi veya düğüm türü için yük dengeleyicileri görebilirsiniz. Yük dengeleyici adı şu biçimi kullanır: **lb-&lt;node tür adı&gt;**. Aşağıdaki şekilde gösterildiği gibi LB-sfcluster4doc-0 bir örnektir:
 
 ![Kaynaklar][Resources]
 
-## <a name="service-fabric-virtual-machine-extension"></a>Servis Kumaş Sanal Makine Uzantısı
+## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric sanal makine uzantısı
 
-Service Fabric Virtual Machine Extension, Service Fabric'i Azure Sanal Makinelere takmak ve Düğüm Güvenliğini yapılandırmak için kullanılır.
+Service Fabric sanal makine uzantısı, Azure sanal makinelerine Service Fabric önyüklemek ve düğüm güvenliğini yapılandırmak için kullanılır.
 
-Aşağıdaki Hizmet Kumaş Sanal Makine uzantısı bir snippet olduğunu:
+Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmiştir:
 
 ```json
 "extensions": [
@@ -70,31 +70,31 @@ Aşağıdaki Hizmet Kumaş Sanal Makine uzantısı bir snippet olduğunu:
    },
 ```
 
-Özellik açıklamaları şunlardır:
+Özellik açıklamaları aşağıda verilmiştir:
 
-| **Adı** | **İzin Verilen Değerler** | **Rehberlik veya Kısa Açıklama** |
+| **Adı** | **İzin Verilen Değerler** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
 | ad | string | Uzantı için benzersiz ad |
-| type | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode" | OS Hizmet Kumaşı'nın |
-| autoUpgradeMinorVersion | true veya false | SF Runtime Minor Sürümlerinin Otomatik Yükseltmesini Etkinleştir |
-| yayımcı | Microsoft.Azure.ServiceFabric | Service Fabric uzantıcısının adı |
-| kümeEndpont | string | URI:PORT'dan Yönetim bitiş noktasına |
-| düğümTypeRef | string | düğümTürü adı |
-| dayanıklılıkSeviye | bronz, gümüş, altın, platin | Değişmez Azure Altyapısının duraklatılması için izin verilen süre |
-| parallelJobs'ı etkinleştirme | true veya false | VM'yi kaldırma ve VM'yi paralel olarak aynı ölçekte yeniden başlatma gibi İşlem Paralel İşler'i etkinleştirme |
+| type | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode" | Önyükleme Service Fabric işletim sistemini tanımlar |
+| autoUpgradeMinorVersion | true veya false | SF çalışma zamanı alt sürümlerinin otomatik yükseltmesini etkinleştir |
+| yayımcı | Microsoft. Azure. ServiceFabric | Service Fabric uzantısı yayımcısının adı |
+| clusterEndpont | string | URI: yönetim uç noktası bağlantı noktası |
+| nodeTypeRef | string | NodeType adı |
+| Dur, Itylevel | Bronz, gümüş, altın, Platinum | Sabit Azure altyapısını duraklatmaya izin verilen süre |
+| enableParallelJobs | true veya false | Aynı ölçek kümesindeki sanal makineyi kaldır ve sanal makineyi yeniden Başlat gibi hesaplama ParallelJobs 'ı etkinleştir |
 | nicPrefixOverride | string | "10.0.0.0/24" gibi alt ağ öneki |
-| commonNames | dize[] | Yüklü küme sertifikalarının ortak adları |
-| x509StoreName | string | Yüklü küme sertifikasının bulunduğu Mağazanın Adı |
-| typeHandlerVersion | 1.1 | Uzantı sürümü. 1.0 klasik uzantısı sürümü 1.1 yükseltmek için tavsiye edilir |
-| dataPath | string | Service Fabric sistem hizmetleri ve uygulama verileri için durumu kaydetmek için kullanılan sürücüye giden yol.
+| Ortak adlar | String [] | Yüklü küme sertifikalarının ortak adları |
+| x509StoreName | string | Yüklü küme sertifikasının bulunduğu deponun adı |
+| typeHandlerVersion | 1.1 | Uzantının sürümü. 1,0 için klasik uzantı sürümünün 1,1 sürümüne yükseltilmesi önerilir |
+| Veri yolu | string | Service Fabric sistem hizmetleri ve uygulama verileri için durumu kaydetmek için kullanılan sürücünün yolu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* ["Herhangi bir yerde dağıt" özelliğine genel bakışı ve Azure tarafından yönetilen kümelerle karşılaştırmaya](service-fabric-deploy-anywhere.md)bakın.
-* Küme [güvenliği](service-fabric-cluster-security.md)hakkında bilgi edinin.
-* Belirli bir ölçek kümesi örneğine [uzaktan bağlanma](service-fabric-cluster-remote-connect-to-azure-cluster-node.md)
-* Dağıtımdan sonra küme [VM'lerde RDP bağlantı noktası aralığı değerlerini güncelleştirme](./scripts/service-fabric-powershell-change-rdp-port-range.md)
-* Küme VM'leri için [yönetici kullanıcı adını ve parolasını değiştirme](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md)
+* ["Her yerde dağıtma" özelliğine genel bakış ve Azure tarafından yönetilen kümelerle karşılaştırma](service-fabric-deploy-anywhere.md)konusuna bakın.
+* [Küme güvenliği](service-fabric-cluster-security.md)hakkında bilgi edinin.
+* Belirli bir ölçek kümesi örneğine [uzak bağlantı](service-fabric-cluster-remote-connect-to-azure-cluster-node.md)
+* Dağıtımdan sonra küme VM 'lerinde [RDP bağlantı noktası aralığı değerlerini Güncelleştir](./scripts/service-fabric-powershell-change-rdp-port-range.md)
+* Küme VM 'Leri için [Yönetici Kullanıcı adını ve parolasını değiştirme](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md)
 
 <!--Image references-->
 [NodeTypes]: ./media/service-fabric-cluster-nodetypes/NodeTypes.png

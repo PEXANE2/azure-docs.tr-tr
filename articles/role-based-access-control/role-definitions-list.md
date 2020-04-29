@@ -1,6 +1,6 @@
 ---
-title: Azure portalı, Azure PowerShell, Azure CLI veya REST API'sını kullanarak Azure RBAC'daki rol tanımlarını listele | Microsoft Dokümanlar
-description: Azure portalı, Azure PowerShell, Azure CLI veya REST API'yi kullanarak Azure RBAC'da yerleşik ve özel rolleri nasıl listeleyeceğimiz öğrenin.
+title: Azure RBAC 'de Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak rol tanımlarını listeleyin | Microsoft Docs
+description: Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak Azure RBAC 'te yerleşik ve özel rolleri nasıl listeleyeceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,41 +15,41 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062997"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>Azure RBAC'da rol tanımlarını listele
+# <a name="list-role-definitions-in-azure-rbac"></a>Azure RBAC 'de rol tanımlarını listeleyin
 
-Rol tanımı, okuma, yazma ve silme gibi gerçekleştirilebilecek izinler topluluğudur. Genelde buna rol denir. [Azure rol tabanlı erişim denetiminde (RBAC)](overview.md) 120'den fazla [yerleşik role](built-in-roles.md) sahiptir veya kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure kaynaklarına erişim izni vermek için kullanabileceğiniz yerleşik ve özel rollerin nasıl listelenebildiği açıklanmaktadır.
+Rol tanımı, okuma, yazma ve silme gibi gerçekleştirilebileceği izinlerin bir koleksiyonudur. Genellikle bir rol olarak adlandırılır. [Azure rol tabanlı erişim denetimi (RBAC)](overview.md) , 120 [yerleşik rolüne](built-in-roles.md) sahiptir veya kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure kaynaklarına erişim izni vermek için kullanabileceğiniz yerleşik ve özel rollerin nasıl listeleneceğini açıklanmaktadır.
 
-Azure Etkin Dizini için yönetici rollerinin listesini görmek için [Azure Etkin Dizini'nde Yönetici rol izinlerine](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bakın.
+Azure Active Directory için Yönetici rollerinin listesini görmek için, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
 
-## <a name="azure-portal"></a>Azure portalında
+## <a name="azure-portal"></a>Azure portal
 
-### <a name="list-all-roles"></a>Tüm rolleri listele
+### <a name="list-all-roles"></a>Tüm rolleri Listele
 
-Azure portalındaki tüm rolleri listelemek için aşağıdaki adımları izleyin.
+Azure portal tüm rolleri listelemek için aşağıdaki adımları izleyin.
 
-1. Azure portalında **Tüm hizmetler'i** tıklatın ve ardından herhangi bir kapsamı seçin. Örneğin, **Yönetim gruplarını,** **Abonelikleri,** **Kaynak gruplarını**veya bir kaynağı seçebilirsiniz.
+1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından herhangi bir kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları**veya bir kaynak seçebilirsiniz.
 
-1. Belirli kaynağı tıklatın.
+1. Belirli kaynağa tıklayın.
 
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
-1. Tüm yerleşik ve özel rollerin listesini görmek için **Roller** sekmesini tıklatın.
+1. Tüm yerleşik ve özel rollerin listesini görmek için **Roller** sekmesine tıklayın.
 
-   Geçerli kapsamda her role atanan kullanıcı ve grup sayısını görebilirsiniz.
+   Geçerli kapsamdaki her bir role atanan kullanıcı ve grup sayısını görebilirsiniz.
 
    ![Rolleri listesi](./media/role-definitions-list/roles-list.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-### <a name="list-all-roles"></a>Tüm rolleri listele
+### <a name="list-all-roles"></a>Tüm rolleri Listele
 
-Azure PowerShell'deki tüm rolleri listelemek için [Get-AzRoleDefinition'ı](/powershell/module/az.resources/get-azroledefinition)kullanın.
+Azure PowerShell tüm rolleri listelemek için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)komutunu kullanın.
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, Description
@@ -69,9 +69,9 @@ Automation Operator                               Automation Operators are able 
 ...
 ```
 
-### <a name="list-a-role-definition"></a>Rol tanımını listelama
+### <a name="list-a-role-definition"></a>Rol tanımı listeleme
 
-Belirli bir rolün ayrıntılarını listelemek için [Get-AzRoleDefinition'ı](/powershell/module/az.resources/get-azroledefinition)kullanın.
+Belirli bir rolün ayrıntılarını listelemek için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)komutunu kullanın.
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name>
@@ -92,9 +92,9 @@ NotDataActions   : {}
 AssignableScopes : {/}
 ```
 
-### <a name="list-a-role-definition-in-json-format"></a>JSON biçiminde bir rol tanımı listele
+### <a name="list-a-role-definition-in-json-format"></a>JSON biçiminde bir rol tanımı listeleme
 
-JSON biçiminde bir rol listelemek için [Get-AzRoleDefinition'ı](/powershell/module/az.resources/get-azroledefinition)kullanın.
+JSON biçiminde bir rol listelemek için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)komutunu kullanın.
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | ConvertTo-Json
@@ -126,9 +126,9 @@ PS C:\> Get-AzRoleDefinition "Contributor" | ConvertTo-Json
 }
 ```
 
-### <a name="list-permissions-of-a-role-definition"></a>Rol tanımının izinlerini listele
+### <a name="list-permissions-of-a-role-definition"></a>Rol tanımının listeleme izinleri
 
-Belirli bir rolün izinlerini listelemek için [Get-AzRoleDefinition'ı](/powershell/module/az.resources/get-azroledefinition)kullanın.
+Belirli bir rolün izinlerini listelemek için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)komutunu kullanın.
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | FL Actions, NotActions
@@ -164,15 +164,15 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 
 ## <a name="azure-cli"></a>Azure CLI
 
-### <a name="list-all-roles"></a>Tüm rolleri listele
+### <a name="list-all-roles"></a>Tüm rolleri Listele
 
-Azure CLI'deki tüm rolleri listelemek için [az rol tanım listesini](/cli/azure/role/definition#az-role-definition-list)kullanın.
+Azure CLı 'deki tüm rolleri listelemek için [az role Definition List](/cli/azure/role/definition#az-role-definition-list)kullanın.
 
 ```azurecli
 az role definition list
 ```
 
-Aşağıdaki örnekte, kullanılabilir tüm rol tanımlarının adı ve açıklaması listelenmektedir:
+Aşağıdaki örnekte, tüm kullanılabilir rol tanımlarının adı ve açıklaması listelenmektedir:
 
 ```azurecli
 az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
@@ -195,7 +195,7 @@ az role definition list --output json | jq '.[] | {"roleName":.roleName, "descri
 ...
 ```
 
-Aşağıdaki örnekte yerleşik rollerin tümü listelenir.
+Aşağıdaki örnek tüm yerleşik rolleri listeler.
 
 ```azurecli
 az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
@@ -221,15 +221,15 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-a-role-definition"></a>Rol tanımını listelama
+### <a name="list-a-role-definition"></a>Rol tanımı listeleme
 
-Bir rolün ayrıntılarını listelemek için [az rol tanım listesini](/cli/azure/role/definition#az-role-definition-list)kullanın.
+Rolün ayrıntılarını listelemek için [az role Definition List](/cli/azure/role/definition#az-role-definition-list)kullanın.
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-Aşağıdaki örnekte *Katılımcı* rol tanımı listelenebilmektedir:
+Aşağıdaki örnek, *katkıda bulunan* rol tanımını listeler:
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -267,9 +267,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-### <a name="list-permissions-of-a-role-definition"></a>Rol tanımının izinlerini listele
+### <a name="list-permissions-of-a-role-definition"></a>Rol tanımının listeleme izinleri
 
-Aşağıdaki örnekte, Yalnızca Katılımcı rolün *eylemleri* ve *eylemleri* listelenebvardır. *Contributor*
+Aşağıdaki örnek, *katkıda bulunan* rolünün yalnızca *eylemlerini* ve *notActions* listeler.
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -288,7 +288,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-Aşağıdaki örnekte, *Sanal Makine Katılımcısı* rolünün yalnızca eylemleri listeleneb.'dir.
+Aşağıdaki örnek yalnızca *sanal makine katılımcısı* rolünün eylemlerini listeler.
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -316,7 +316,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ### <a name="list-role-definitions"></a>Rol tanımlarını listeleme
 
-Rol tanımlarını listelemek için [Rol Tanımları - Liste](/rest/api/authorization/roledefinitions/list) REST API'sını kullanın. Sonuçlarınızı hassaslaştırmak için bir kapsam ve isteğe bağlı bir filtre belirtirsiniz.
+Rol tanımlarını listelemek için, [rol tanımları-liste](/rest/api/authorization/roledefinitions/list) REST API kullanın. Sonuçlarınızı iyileştirmek için bir kapsam ve isteğe bağlı bir filtre belirtirsiniz.
 
 1. Aşağıdaki istekle başlayın:
 
@@ -324,7 +324,7 @@ Rol tanımlarını listelemek için [Rol Tanımları - Liste](/rest/api/authoriz
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
     ```
 
-1. URI *içinde{scope}* rolünün tanımlarını listelemek istediğiniz kapsamla değiştirin.
+1. URI içinde, *{scope}* değerini rol tanımlarını listelemek istediğiniz kapsamla değiştirin.
 
     > [!div class="mx-tableFixed"]
     > | Kapsam | Tür |
@@ -334,19 +334,19 @@ Rol tanımlarını listelemek için [Rol Tanımları - Liste](/rest/api/authoriz
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Kaynak grubu |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Kaynak |
 
-    Önceki örnekte, microsoft.web bir Uygulama Hizmeti örneğine başvuran bir kaynak sağlayıcısıdır. Benzer şekilde, diğer kaynak sağlayıcılarını kullanabilir ve kapsamı belirtebilirsiniz. Daha fazla bilgi için Azure [Kaynak sağlayıcıları ve türleri ve](../azure-resource-manager/management/resource-providers-and-types.md) desteklenen Azure Kaynak Yöneticisi kaynak sağlayıcısı [işlemlerine](resource-provider-operations.md)bakın.  
+    Önceki örnekte, Microsoft. Web bir App Service örneğine başvuran bir kaynak sağlayıcıdır. Benzer şekilde, diğer herhangi bir kaynak sağlayıcısını kullanabilir ve kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md) ve desteklenen [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md).  
      
-1. Rol tanımı listesini filtrelemek için uygulamak istediğiniz koşulla *{filter}* değiştirin.
+1. *{Filter}* değerini, rol tanımı listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
     > | Filtre | Açıklama |
     > | --- | --- |
-    > | `$filter=atScopeAndBelow()` | Belirtilen kapsam ve alt kapsamlar için rol tanımlarını listeler. |
-    > | `$filter=type+eq+'{type}'` | Belirtilen türdeki rol tanımlarını listeler. Rol türü olabilir `CustomRole` `BuiltInRole`veya . |
+    > | `$filter=atScopeAndBelow()` | Belirtilen kapsam ve tüm alt kapsamlar için rol tanımlarını listeler. |
+    > | `$filter=type+eq+'{type}'` | Belirtilen türdeki rol tanımlarını listeler. Rol türü `CustomRole` veya `BuiltInRole`olabilir. |
 
-### <a name="list-a-role-definition"></a>Rol tanımını listelama
+### <a name="list-a-role-definition"></a>Rol tanımı listeleme
 
-Belirli bir rolün ayrıntılarını listelemek için [Rol Tanımlarını - Alın](/rest/api/authorization/roledefinitions/get) veya Rol Tanımlarını - Id REST API'ye göre [alın'](/rest/api/authorization/roledefinitions/getbyid) ı kullanın.
+Belirli bir rolün ayrıntılarını listelemek için [rol tanımlarını kullanın-Get](/rest/api/authorization/roledefinitions/get) veya [role Definitions-kimliğe göre Al](/rest/api/authorization/roledefinitions/getbyid) REST API.
 
 1. Aşağıdaki istekle başlayın:
 
@@ -354,13 +354,13 @@ Belirli bir rolün ayrıntılarını listelemek için [Rol Tanımlarını - Alı
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-    Dizin düzeyinde bir rol tanımı için bu isteği kullanabilirsiniz:
+    Dizin düzeyindeki bir rol tanımı için bu isteği kullanabilirsiniz:
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. URI *içinde,{scope}* rolünü nisması listelemek istediğiniz kapsamla değiştirin.
+1. URI içinde, *{scope}* değerini rol tanımını listelemek istediğiniz kapsamla değiştirin.
 
     > [!div class="mx-tableFixed"]
     > | Kapsam | Tür |
@@ -370,11 +370,11 @@ Belirli bir rolün ayrıntılarını listelemek için [Rol Tanımlarını - Alı
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Kaynak grubu |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Kaynak |
      
-1. *{roleDefinitionId}* ile rol tanımı tanımlayıcısını değiştirin.
+1. *{Roledefinitionıd}* değerini rol tanımı tanımlayıcısı ile değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure kaynakları için yerleşik roller](built-in-roles.md)
 - [Azure kaynakları için özel roller](custom-roles.md)
-- [Azure RBAC ve Azure portalı kullanarak rol atamalarını listele](role-assignments-list-portal.md)
-- [Azure RBAC ve Azure portalını kullanarak rol atamaları ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure RBAC ve Azure portal kullanarak rol atamalarını listeleyin](role-assignments-list-portal.md)
+- [Azure RBAC ve Azure portal kullanarak rol atamaları ekleme veya kaldırma](role-assignments-portal.md)

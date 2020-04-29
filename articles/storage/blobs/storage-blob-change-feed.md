@@ -1,6 +1,6 @@
 ---
-title: Azure Blob Depolama 'da özet akışı değiştirme (Önizleme) | Microsoft Dokümanlar
-description: Azure Blob Depolama'da özet akışı günlüklerini değiştirme ve bunları nasıl kullanacağınız hakkında bilgi edinin.
+title: Azure Blob depolamada akışı değiştirme (Önizleme) | Microsoft Docs
+description: Azure Blob depolamada değişiklik akışı günlüklerini ve bunların nasıl kullanılacağını öğrenin.
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
@@ -9,108 +9,108 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: ac111b06d578a0e9af8581ef2e8caeccfc4a291e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536896"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob Depolama'da özet akışı desteğini değiştirme (Önizleme)
+# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada akış desteğini değiştirme (Önizleme)
 
-Değişiklik akışının amacı, depolama hesabınızdaki blob'larda ve blob meta verilerinde meydana gelen tüm değişikliklerin işlem günlüklerini sağlamaktır. Değişiklik akışı, bu değişikliklerin **sıralı,** **garantili,** **dayanıklı,** **değişmez,** **salt okunur** günlük sağlar. İstemci uygulamaları bu günlükleri akış tasnus veya toplu iş modunda herhangi bir zamanda okuyabilir. Değişiklik akışı, Blob Depolama hesabınızda meydana gelen olayları düşük bir maliyetle işleyen verimli ve ölçeklenebilir çözümler oluşturmanıza olanak tanır.
+Değişiklik akışı amacı, bloblarda oluşan tüm değişikliklerin işlem günlüklerini ve Depolama hesabınızdaki blob meta verilerini sağlamaktır. Değişiklik akışı, bu değişikliklerin **sıralı**, **garantili**, **dayanıklı**, **sabit**ve **salt** yazılır günlüklerini sağlar. İstemci uygulamaları, akış veya toplu işlem modunda bu günlükleri dilediğiniz zaman okuyabilir. Değişiklik akışı, BLOB depolama hesabınızda gerçekleşen değişiklik olaylarını düşük bir maliyetle işleyen etkili ve ölçeklenebilir çözümler oluşturmanıza olanak sağlar.
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
-Değişiklik akışı, standart [blob fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) maliyetiyle depolama hesabınızdaki özel bir kapta [blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) olarak depolanır. Bu dosyaların bekletme süresini gereksinimlerinize göre denetleyebilirsiniz (Geçerli sürümün [koşullarına](#conditions) bakın). Değişiklik [olayları, Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtiminde kayıtlar olarak değişiklik akışına eklenir: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili biçim. Bu biçim Hadoop ekosistemi, Akış Analizi ve Azure Veri Fabrikası'nda yaygın olarak kullanılır.
+Değişiklik akışı, standart [BLOB fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) maliyetinde Depolama hesabınızdaki özel bir kapsayıcıda [BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) olarak depolanır. Gereksinimlerinize göre bu dosyaların bekletme süresini denetleyebilirsiniz (geçerli yayının [koşullarına](#conditions) bakın). Değişiklik olayları, [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtiminde kayıt olarak değişiklik akışına eklenir: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili bir biçimdir. Bu biçim, Hadoop ekosisteminde, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır.
 
-Bu günlükleri eşit olarak, artımlı veya tam olarak işleyebilirsiniz. Herhangi bir sayıda istemci uygulaması, değişim akışını paralel olarak ve kendi hızlarında bağımsız olarak okuyabilir. [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) veya [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) gibi analytics uygulamaları, günlükleri doğrudan Avro dosyaları olarak tüketebilir ve bu da bunları düşük maliyetle, yüksek bant genişliğiyle ve özel bir uygulama yazmak zorunda kalmadan işlemenizi sağlar.
+Bu günlükleri zaman uyumsuz, artımlı veya tam olarak işleyebilirsiniz. Herhangi bir sayıda istemci uygulaması değişiklik akışını paralel olarak ve kendi hızda okuyabilir. [Apache detaya gitme](https://drill.apache.org/docs/querying-avro-files/) veya [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) gibi analitik uygulamalar, günlükleri doğrudan avro dosyaları olarak tüketebilir, bu da bunları yüksek bant genişliğine sahip ve özel bir uygulama yazmak zorunda kalmadan düşük maliyetli bir şekilde işlemenizi sağlar.
 
-Özet akışı desteğini değiştir, verileri değişen nesnelere göre işleyen senaryolar için uygundur. Örneğin, uygulamalar şunları yapabilir:
+Değişiklik akışı desteği, değiştirilen nesnelere göre verileri işleyen senaryolar için uygundur. Örneğin, uygulamalar şunları yapabilir:
 
-  - İkincil dizini güncelleştirin, önbellek, arama motoru veya diğer içerik yönetimi senaryolarıyla eşitleyin.
+  - İkincil bir dizini güncelleştirin, önbellek, arama motoru veya diğer içerik yönetimi senaryolarıyla eşitler.
   
-  - Akışlı bir şekilde veya toplu modda nesnelerinizde meydana gelen değişikliklere dayalı iş analitiği öngörülerini ve ölçümlerini ayıklayın.
+  - Bir akış veya toplu modda nesnelerinize gerçekleşen değişikliklere göre iş analizi öngörülerini ve ölçümlerini ayıklayın.
   
-  - Kurumsal veri yönetimi için güvenlik, uyumluluk veya istihbarat için, belirli bir süre boyunca nesnelerinizdeki değişiklikleri depolayın, denetleyin ve analiz edin.
+  - Şirket veri yönetimi için güvenlik, uyumluluk veya zeka için, nesnelerdeki değişiklikleri istediğiniz zaman boyunca depolayın, denetleyin ve çözümleyin.
 
-  - Olağanüstü durum yönetimi veya uyumluluk için hesabınızdaki nesne durumunu yedeklemek, yansıtmak veya çoğaltmak için çözümler oluşturun.
+  - Olağanüstü durum yönetimi veya uyumluluk için hesabınızdaki nesne durumunu yedeklemeye, yansıtmaya veya çoğaltmaya yönelik çözümler oluşturun.
 
-  - Olayları değiştirmek için tepki veren veya oluşturulan veya değiştirilen nesneyi temel alan yürütmeleri zamanlayan bağlı uygulama ardışık lıkları oluşturun.
+  - Oluşturulan veya değiştirilen nesneye göre değişiklik olaylarına tepki veren veya yürütmeleri zamanlamaya dayalı bağlantılı uygulama işlem hatları oluşturun.
 
 > [!NOTE]
-> Değişiklik akışı, bir blob'da meydana gelen değişikliklerin dayanıklı, sıralı günlük modelini sağlar. Değişiklikler, değişiklik akışı günlüğünde birkaç dakika içinde yazılır ve kullanıma sunulmuştur. Uygulamanız olaylara bundan çok daha hızlı tepki verecekse, bunun yerine [Blob Depolama olaylarını](storage-blob-event-overview.md) kullanmayı düşünün. [Blob Depolama Etkinlikleri,](storage-blob-event-overview.md) Azure İşlevlerinizin veya uygulamalarınızın bir blob'da meydana gelen değişikliklere hızlı bir şekilde tepki göstermesini sağlayan gerçek zamanlı tek seferlik etkinlikler sağlar. 
+> Değişiklik akışı, blob 'a gerçekleşen değişikliklerin dayanıklı ve sıralı bir günlük modelini sağlar. Değişiklikler yazılır ve değişiklik akışı günlüğünde değişiklik için birkaç dakika içinde kullanılabilir hale getirilir. Uygulamanızın olaylara çok daha hızlı yanıt vermesini istiyorsanız, bunun yerine [BLOB Storage olaylarını](storage-blob-event-overview.md) kullanmayı göz önünde bulundurun. [BLOB depolama olayları](storage-blob-event-overview.md) , Azure işlevlerinizin veya uygulamalarınızın blob 'da oluşan değişikliklere hızlı bir şekilde tepki vermesini sağlayan gerçek zamanlı bir kerelik olaylar sağlar. 
 
-## <a name="enable-and-disable-the-change-feed"></a>Değişiklik akışını etkinleştirme ve devre dışı
+## <a name="enable-and-disable-the-change-feed"></a>Değişiklik akışını etkinleştirme ve devre dışı bırakma
 
-Değişiklikleri yakalamaya ve kaydetmeye başlamak için depolama hesabınızdaki değişiklik akışını etkinleştirmeniz gerekir. Değişiklikleri yakalamayı durdurmak için değişiklik akışını devre dışı bırakın. Portal veya Powershell'de Azure Kaynak Yöneticisi şablonlarını kullanarak değişiklikleri etkinleştirebilir ve devre dışı kullanabilirsiniz.
+Değişiklikleri yakalamaya ve kaydetmeye başlamak için depolama hesabınızda değişiklik akışını etkinleştirmeniz gerekir. Değişiklikleri yakalamayı durdurmak için değişiklik akışını devre dışı bırakın. Portalda veya PowerShell 'de Azure Resource Manager şablonlarını kullanarak değişiklikleri etkinleştirebilir ve devre dışı bırakabilirsiniz.
 
-Değişiklik akışını etkinleştirdiğinizde aklınızda bulundurmanız gereken birkaç şey aşağıda verebilirsiniz.
+Değişiklik akışını etkinleştirdiğinizde göz önünde bulundurmanız gereken birkaç nokta aşağıda verilmiştir.
 
-- Her depolama hesabında blob hizmeti için yalnızca bir değişiklik akışı vardır ve **$blobchangefeed** kapsayıcıda saklanır.
+- Her depolama hesabındaki blob hizmeti için yalnızca bir değişiklik akışı vardır ve **$blobchangefeed** kapsayıcısında depolanır.
 
-- Oluşturma, Güncelleştirme ve Sil değişiklikleri yalnızca blob hizmet düzeyinde yakalanır.
+- Oluşturma, güncelleştirme ve silme değişiklikleri yalnızca blob hizmeti düzeyinde yakalanır.
 
-- Değişiklik akışı, hesapta oluşan kullanılabilir tüm olaylar için *yapılan tüm* değişiklikleri yakalar. İstemci uygulamaları, olay türlerini gerektiği gibi filtreleyebilir. (Geçerli sürümün [koşullarına](#conditions) bakın).
+- Değişiklik akışı, hesapta oluşan tüm kullanılabilir olaylar için *Tüm* değişiklikleri yakalar. İstemci uygulamaları, gereken şekilde olay türlerini filtreleyebilir. (Geçerli yayının [koşullarına](#conditions) bakın).
 
-- Yalnızca GPv2 ve Blob depolama hesapları Akış Değiştir'i etkinleştirebilir. Premium BlockBlobStorage hesapları ve hiyerarşik ad alanı etkin hesapları şu anda desteklenmez. GPv1 depolama hesapları desteklenmez, ancak kesinti olmadan GPv2'ye yükseltilebilir, daha fazla bilgi için [GPv2 depolama hesabına yükseltme](../common/storage-account-upgrade.md) konusuna bakın.
+- Yalnızca GPv2 ve BLOB depolama hesapları değişiklik akışını etkinleştirebilir. Premium blok Blobstorage hesapları ve hiyerarşik ad alanı etkinleştirilmiş hesaplar Şu anda desteklenmemektedir. GPv1 depolama hesapları desteklenmez, ancak kapalı kalma süresi olmadan GPv2 sürümüne yükseltilebilir. daha fazla bilgi için bkz. [GPv2 Storage hesabına yükseltme](../common/storage-account-upgrade.md) .
 
 > [!IMPORTANT]
-> Değişiklik akışı genel önizlemede dir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bu makalenin [koşullar](#conditions) bölümüne bakın. Önizlemeye kaydolmak için bu makalenin [abonelik bölümünüzü kaydedin](#register) bölümüne bakın. Depolama hesaplarınızda değişiklik akışını etkinleştirebilmeniz için aboneliğinizi kaydetmeniz gerekir.
+> Değişiklik akışı genel önizlemededir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bu makalenin [koşullar](#conditions) bölümüne bakın. Önizlemeye kaydolmak için bu makalenin [aboneliğinizi kaydetme](#register) bölümüne bakın. Depolama hesaplarınızda değişiklik akışını etkinleştirebilmeniz için aboneliğinizi kaydetmeniz gerekir.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portalını kullanarak depolama hesabınızdaki yayını değiştirme'yi etkinleştirin:
+Azure portal kullanarak depolama hesabınızda değişiklik akışını etkinleştirin:
 
-1. Azure [portalında](https://portal.azure.com/)depolama hesabınızı seçin. 
+1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin. 
 
-2. **Blob Hizmeti**altında **Veri Koruma** seçeneğine gidin.
+2. **BLOB hizmeti**altındaki **veri koruma** seçeneğine gidin.
 
-3. **Blob değiştirme akışı** altında **Etkin'i** tıklatın
+3. **BLOB değişiklik akışı** altında **etkin** öğesine tıklayın
 
-4. Veri Koruması ayarlarınızı onaylamak için **Kaydet** düğmesini seçin
+4. Veri koruma ayarlarınızı onaylamak için **Kaydet** düğmesini seçin
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell'i kullanarak beslemeyi değiştirmeyi etkinleştirin:
+PowerShell kullanarak akışı değiştirme özelliğini etkinleştir:
 
-1. En son PowershellGet'i yükleyin.
+1. En son PowershellGet 'i yükler.
 
    ```powershell
    Install-Module PowerShellGet –Repository PSGallery –Force
    ```
 
-2. Powershell konsolu kapatın ve yeniden açın.
+2. ' I kapatın ve ardından PowerShell konsolunu yeniden açın.
 
-3. **Az.Storage** önizleme modüllerini yükleyin.
+3. **Az. Storage** Preview modülünü yükler.
 
    ```powershell
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
    ```
 
-4. `Connect-AzAccount` Komutla Azure aboneliğinizde oturum açın ve kimlik doğrulaması için ekrandaki yönergeleri izleyin.
+4. `Connect-AzAccount` Komutuyla Azure aboneliğinizde oturum açın ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
 
    ```powershell
    Connect-AzAccount
    ```
 
-5. Depolama hesabınız için akış değiştirmeyi etkinleştirin.
+5. Depolama hesabınızın değişiklik akışını etkinleştirin.
 
    ```powershell
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
 ### <a name="template"></a>[Şablon](#tab/template)
-Azure portalı üzerinden mevcut depolama hesabınızdaki akış değiştirme'yi etkinleştirmek için Azure Kaynak Yöneticisi şablonu kullanın:
+Azure portal aracılığıyla mevcut depolama hesabınızda değişiklik akışını etkinleştirmek için bir Azure Resource Manager şablonu kullanın:
 
-1. Azure portalında **kaynak oluştur'u**seçin.
+1. Azure portal **kaynak oluştur**' u seçin.
 
 2. **Market içinde ara** alanına **şablon dağıtımı** yazın ve **ENTER** tuşuna basın.
 
-3. **[Özel bir şablon dağıt'ı](https://portal.azure.com/#create/Microsoft.Template)** seçin ve ardından **düzenleyicide kendi şablonunuzu oluşturun'u**seçin.
+3. **[Özel bir şablon dağıt](https://portal.azure.com/#create/Microsoft.Template)**' ı seçin ve ardından **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
 
-4. Şablon düzenleyicisinde, aşağıdaki json'a yapıştırın. Yer `<accountName>` tutucuyu depolama hesabınızın adı ile değiştirin.
+4. Şablon Düzenleyicisi 'nde aşağıdaki JSON öğesine yapıştırın. `<accountName>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
    ```json
    {
@@ -131,30 +131,30 @@ Azure portalı üzerinden mevcut depolama hesabınızdaki akış değiştirme'yi
    }
    ```
     
-5. **Kaydet** düğmesini seçin, hesabın kaynak grubunu belirtin ve ardından şablonu dağıtmak ve değişiklik akışını etkinleştirmek için **Satın Alma** düğmesini seçin.
+5. **Kaydet** düğmesini seçin, hesabın kaynak grubunu belirtin ve ardından şablonu dağıtmak ve değişiklik akışını etkinleştirmek Için **satın al** düğmesini seçin.
 
 ---
 
-## <a name="consume-the-change-feed"></a>Değişiklik akışını tüketin
+## <a name="consume-the-change-feed"></a>Değişiklik akışını tüketme
 
-Değişiklik akışı birkaç meta veri ve günlük dosyaları üretir. Bu dosyalar depolama hesabının **$blobchangefeed** kapsayıcısında bulunur. 
+Değişiklik akışı birkaç meta veri ve günlük dosyası üretir. Bu dosyalar, depolama hesabının **$blobchangefeed** kapsayıcısında bulunur. 
 
 > [!NOTE]
-> Geçerli sürümde, **$blobchangefeed** kapsayıcısı Azure Depolama Gezgini'nde veya Azure portalında görünmez. Şu anda ListContainers API'yi aradiğinizde $blobchangefeed kapsayıcıyı göremezsiniz ancak lekeleri görmek için doğrudan kapsayıcının üzerinde ListBlobs API'sini arayabilirsiniz.
+> Geçerli yayında **$blobchangefeed** kapsayıcısı Azure Depolama Gezgini veya Azure Portal görünür değil. Şu anda ListContainers API 'sini çağırdığınızda $blobchangefeed kapsayıcısını göremezsiniz, ancak Blobları görmek için Listblobları API 'sini doğrudan kapsayıcıda çağırabilirsiniz.
 
-İstemci uygulamalarınız, besleme işlemcisi SDK ile birlikte sağlanan blob change feed işlemci kitaplığını kullanarak değişiklik akışını tüketebilir. 
+İstemci uygulamalarınız, değişiklik akışı işlemcisi SDK 'Sı ile birlikte sunulan blob değişiklik akışı işlemci kitaplığını kullanarak değişiklik akışını kullanabilir. 
 
-Bkz. [Azure Blob Depolama'daki akış günlüklerini değiştir.](storage-blob-change-feed-how-to.md)
+Bkz. [Azure Blob depolamada işlem değişiklik akışı günlükleri](storage-blob-change-feed-how-to.md).
 
-## <a name="understand-change-feed-organization"></a>Değişiklik besleme kuruluşunu anlama
+## <a name="understand-change-feed-organization"></a>Değişiklik akışı organizasyonunu anlama
 
 <a id="segment-index"></a>
 
 ### <a name="segments"></a>Kesimler
 
-Değişiklik akışı, **saatlik** *bölümlerhalinde* düzenlenen ancak birkaç dakikada bir eklenen ve güncelleştirilen değişikliklerin günlüğüdür. Bu segmentler yalnızca o saatte meydana gelen blob değişiklik olayları olduğunda oluşturulur. Bu, istemci uygulamanızın tüm günlükte arama yapmak zorunda kalmadan belirli zaman aralıklarında gerçekleşen değişiklikleri tüketmesini sağlar. Daha fazla bilgi için [Teknik Özellikler'e](#specifications)bakın.
+Değişiklik akışı, **saatlik** *kesimlerde* düzenlenmiş, ancak birkaç dakikada bir eklenen ve güncellenen bir değişiklik günlüğü olur. Bu segmentler yalnızca o saat içinde oluşan blob değişiklik olayları olduğunda oluşturulur. Bu, istemci uygulamanızın tüm günlük içinde arama yapmak zorunda kalmadan belirli zaman aralıklarında oluşan değişiklikleri kullanmasını sağlar. Daha fazla bilgi edinmek için bkz. [Özellikler](#specifications).
 
-Değişiklik akışının kullanılabilir bir saatlik kesimi, bu kesimiçin değişiklik akışı dosyalarına giden yolları belirten bir bildirim dosyasında açıklanır. Sanal dizinin `$blobchangefeed/idx/segments/` listesi, zamana göre sıralanan bu segmentleri gösterir. Segmentin yolu, segmentin temsil ettiği saatlik zaman aralığının başlangıcını açıklar. Bu listeyi, ilginizi çeken günlüklerin kesimlerini filtrelemek için kullanabilirsiniz.
+Değişiklik akışına ait kullanılabilir saatlik bir kesim, bu segmentin değişiklik akışı dosyalarının yollarını belirten bir bildirim dosyasında açıklanmıştır. `$blobchangefeed/idx/segments/` Sanal dizin listesi bu segmentleri zamana göre sıralanmış olarak gösterir. Segmentin yolu, segmentin gösterdiği saatlik zaman aralığının başlangıcını açıklar. Sizi ilgilendiren günlüklerin segmentlerini filtrelemek için bu listeyi kullanabilirsiniz.
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
@@ -166,9 +166,9 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> Değişiklik `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` akışını etkinleştirdiğinizde otomatik olarak oluşturulur. Bu dosyayı güvenle yoksayabilirsiniz. Her zaman boş bir başlatma dosyasıdır. 
+> , `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` Değişiklik akışını etkinleştirdiğinizde otomatik olarak oluşturulur. Bu dosyayı güvenle yoksayabilirsiniz. Her zaman boş bir başlatma dosyasıdır. 
 
-Segment bildirimi dosyası`meta.json`( ) `chunkFilePaths` özellikteki bu kesim için değişiklik akışı dosyalarının yolunu gösterir. Aşağıda, segment bildirimi dosyasının bir örneği verilmiştir.
+Segment bildirim dosyası (`meta.json`), `chunkFilePaths` özelliğindeki bu segmentin değişiklik akışı dosyalarının yolunu gösterir. Segment bildirim dosyasına bir örnek aşağıda verilmiştir.
 
 ```json
 {
@@ -199,17 +199,17 @@ Segment bildirimi dosyası`meta.json`( ) `chunkFilePaths` özellikteki bu kesim 
 ```
 
 > [!NOTE]
-> Kapsayıcı, `$blobchangefeed` yalnızca hesabınızdaki değişiklik akışı özelliğini etkinleştirdikten sonra görüntülenir. Kapsayıcıdaki lekeleri listeleyebilmeniz için değişiklik akışını etkinleştirdikten sonra birkaç dakika beklemeniz gerekir. 
+> `$blobchangefeed` Kapsayıcı yalnızca hesabınızda değişiklik akışı özelliğini etkinleştirdikten sonra görünür. Kapsayıcıda blob 'ları listelebilmeniz için önce değişiklik akışını etkinleştirdikten sonra birkaç dakika beklemeniz gerekir. 
 
 <a id="log-files"></a>
 
 ### <a name="change-event-records"></a>Olay kayıtlarını değiştirme
 
-Değişiklik akışı dosyaları bir dizi değişiklik olayı kaydı içerir. Her değişiklik olay kaydı, tek bir blob'a yapılan bir değişikliğe karşılık gelir. Kayıtlar seri hale getirilir ve [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) format belirtimi kullanılarak dosyaya yazılır. Kayıtlar Avro dosya biçimi belirtimi kullanılarak okunabilir. Bu biçimde dosyaları işlemek için kullanılabilir birkaç kitaplık vardır.
+Değişiklik akışı dosyaları bir dizi değişiklik olay kaydını içerir. Her değişiklik olay kaydı, tek bir Blobun bir değişikliğe karşılık gelir. Kayıtlar serileştirilir ve [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtimi kullanılarak dosyaya yazılır. Kayıtlar avro dosya biçimi belirtimi kullanılarak okunabilir. Bu biçimdeki dosyaları işlemek için kullanabileceğiniz çeşitli kitaplıklar vardır.
 
-Değişiklik akışı dosyaları `$blobchangefeed/log/` [ek blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)olarak sanal dizinde saklanır. Her yolun altındaki ilk değişiklik `00000` akışı dosyasının dosya `00000.avro`adı olacaktır (Örneğin). Bu yola eklenen sonraki her günlük dosyasının adı 1 artacaktır `00001.avro`(Örneğin: ).
+Değişiklik akışı dosyaları, `$blobchangefeed/log/` sanal dizinde [ekleme Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)olarak depolanır. Her yolun altındaki ilk değişiklik akışı dosyası dosya adında olacaktır `00000` (örneğin `00000.avro`). Bu yola eklenen her bir sonraki günlük dosyasının adı 1 ile artacaktır (örneğin: `00001.avro`).
 
-Json'a dönüştürülen değişiklik akışı dosyasından değişiklik olay kaydına bir örnek verilmiştir.
+Değişiklik akışı dosyasından JSON 'a dönüştürülmüş değişiklik olay kaydı örneği aşağıda verilmiştir.
 
 ```json
 {
@@ -238,32 +238,32 @@ Json'a dönüştürülen değişiklik akışı dosyasından değişiklik olay ka
 }
 ```
 
-Her özelliğin açıklaması [için, Blob Depolama için Azure Olay Izgara olay şemasına](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)bakın.
+Her bir özelliğin açıklaması için bkz. [BLOB depolama için Azure Event Grid olay şeması](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties).
 
 > [!NOTE]
-> Bir kesimiçin değişiklik akışı dosyaları, bir kesim oluşturulduktan sonra hemen görünmez. Gecikme süresi, değişiklik akışından birkaç dakika sonra gerçekleşen değişiklik akışının yayımlama gecikmesi normal aralığı içindedir.
+> Bir kesim için değişiklik akışı dosyaları bir segment oluşturulduktan sonra hemen görünmez. Gecikme süresi, değişikliğin birkaç dakika içinde olan değişiklik akışında bulunan normal Yayımlanma zaman aralığı içindedir.
 
 <a id="specifications"></a>
 
 ## <a name="specifications"></a>Belirtimler
 
-- Değişiklik olayları kayıtları yalnızca değişiklik akışına eklenir. Bu kayıtlar ekledikten sonra değişmez dir ve kayıt konumu kararlıdır. İstemci uygulamaları, değişiklik akışının okuma konumunda kendi denetim noktalarını koruyabilir.
+- Değişiklik olayları kayıtları yalnızca değişiklik akışına eklenir. Bu kayıtlar eklendikten sonra sabit ve kayıt konumu kararlı olur. İstemci uygulamaları, değişiklik akışındaki okuma konumunda kendi denetim noktalarını koruyabilir.
 
-- Değişiklik olay kayıtları, değişikliğin birkaç dakika sıcağısı içinde eklenir. İstemci uygulamaları, akış erişimi için eklenen kayıtları başka bir zamanda toplu olarak tüketmeyi seçebilir.
+- Değişiklik olay kayıtları, değişikliğin birkaç dakikalık bir sırası içine eklenir. İstemci uygulamaları, akış erişimi veya toplu olarak herhangi bir zamanda eklendiği için kayıtları tüketmek üzere seçim yapabilir.
 
-- Değişiklik olay kayıtları **blob başına**değişiklik sırasına göre sıralanır. Blobs'taki değişiklik sırası Azure Blob Depolama'da tanımlanmamıştır. Önceki segmentteki tüm değişiklikler sonraki segmentlerde herhangi bir değişiklikden önceyapılır.
+- Değişiklik olay kayıtları, **BLOB başına**değişiklik sırasına göre sıralanır. Blob 'larda değişiklik sırası, Azure Blob depolamada tanımsızdır. Önceki kesimdeki tüm değişiklikler sonraki kesimlerdeki değişikliklerden önceye ait.
 
-- Değişiklik olay kayıtları [Apache Avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtimi kullanılarak günlük dosyasına seri hale getirilir.
+- Değişiklik olay kayıtları, [Apache avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtimi kullanılarak günlük dosyasına serileştirilir.
 
-- Olay kayıtlarını, `eventType` iç sistem `Control` kayıtlarının iç sistem kayıtları olduğu ve hesabınızdaki nesnelere yapılan bir değişikliği yansıtmadığı yerlerde değiştirin. Bu kayıtları güvenle yoksayabilirsiniz.
+- Öğesinin `Control` değeri olan olay kayıtlarını `eventType` değiştirme, iç sistem kayıtlardır ve hesabınızdaki nesnelerde yapılan değişiklikleri yansıtmaz. Bu kayıtları güvenle yoksayabilirsiniz.
 
-- Özellik çantasındaki `storageDiagnonstics` değerler yalnızca dahili kullanım içindir ve uygulamanız tarafından kullanılmak üzere tasarlanmaz. Uygulamalarınızın bu verilere bir sözleşme bağımlılığı olmamalıdır. Bu özellikleri güvenle yoksayabilirsiniz.
+- `storageDiagnonstics` Özellik çantasındaki değerler yalnızca dahili kullanım içindir ve uygulamanız tarafından kullanılmak üzere tasarlanmamıştır. Uygulamalarınızın bu verilere yönelik bir sözleşme bağımlılığı olması gerekmez. Bu özellikleri güvenle yoksayabilirsiniz.
 
-- Segment tarafından temsil edilen süre **yaklaşık** 15 dakikalık sınırlar ile. Bu nedenle, tüm kayıtların belirli bir süre içinde tüketilmesini sağlamak için, ardışık önceki ve sonraki saat segmentini tüketin.
+- Segment tarafından temsil edilen zaman, 15 dakikalık sınırlara göre **yaklaşık** olur. Bu nedenle, belirli bir süre içinde tüm kayıtların tüketimini sağlamak için, ardışık önceki ve sonraki saat segmentini kullanın.
 
-- Her kesim, yayımlama `chunkFilePaths` veri akışını yönetmek için günlük akışının iç bölümlemesi nedeniyle farklı sayıda olabilir. Her `chunkFilePath` birinde günlük dosyaları birbirini dışlayan lekeler içerdiği garanti edilir ve yineleme sırasında blob başına değişiklik sırasını ihlal etmeden paralel olarak tüketilebilir ve işlenebilir.
+- Her segment, yayımlama aktarım hızını yönetmek için `chunkFilePaths` günlük akışının iç bölümlenmesi nedeniyle farklı bir sayıda olabilir. Her `chunkFilePath` birinde bulunan günlük dosyalarının birbirini dışlayan blob 'lar içermesi garanti edilir ve yineleme sırasında blob başına değişiklik sıralamasını ihlal etmeden paralel olarak tüketilebilir ve işlenebilir.
 
-- Segmentler durum olarak `Publishing` başlar. Kayıtların bölüme eklemi tamamlandıktan sonra, `Finalized`bu. `$blobchangefeed/meta/Segments.json` Dosyadaki `LastConsumable` özelliğin tarihinden sonra tarihli herhangi bir segmentteki dosyaları günlüğe kaydedin, başvurunuz tarafından tüketilmemelidir. Dosyadaki `LastConsumable` `$blobchangefeed/meta/Segments.json` özelliğin bir örneği aşağıda verilmiştir:
+- Kesimlerde `Publishing` durum başlangıcı vardır. Kayıtların segmente eklenmesi tamamlandıktan sonra, olacaktır `Finalized`. `$blobchangefeed/meta/Segments.json` Dosyadaki `LastConsumable` özelliğin tarihinden sonra tarihli tüm kesimlerdeki günlük dosyaları, uygulamanız tarafından tüketilmemelidir. İşte bir `LastConsumable` `$blobchangefeed/meta/Segments.json` dosyadaki özelliğe bir örnek:
 
 ```json
 {
@@ -283,22 +283,22 @@ Her özelliğin açıklaması [için, Blob Depolama için Azure Olay Izgara olay
 
 <a id="register"></a>
 
-## <a name="register-your-subscription-preview"></a>Aboneliğinizi kaydedin (Önizleme)
+## <a name="register-your-subscription-preview"></a>Aboneliğinizi kaydetme (Önizleme)
 
 Değişiklik akışı yalnızca genel önizlemede olduğundan, özelliği kullanmak için aboneliğinizi kaydetmeniz gerekir.
 
-### <a name="register-by-using-powershell"></a>PowerShell'i kullanarak kaydolun
+### <a name="register-by-using-powershell"></a>PowerShell kullanarak kaydetme
 
-PowerShell konsolunda şu komutları çalıştırın:
+Bir PowerShell konsolunda şu komutları çalıştırın:
 
 ```powershell
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
    
-### <a name="register-by-using-azure-cli"></a>Azure CLI'yi kullanarak kaydolun
+### <a name="register-by-using-azure-cli"></a>Azure CLı kullanarak kaydolun
 
-Azure Bulut Su Bulutu'nda şu komutları çalıştırın:
+Azure Cloud Shell, şu komutları çalıştırın:
 
 ```azurecli
 az feature register --namespace Microsoft.Storage --name Changefeed
@@ -309,28 +309,28 @@ az provider register --namespace 'Microsoft.Storage'
 
 ## <a name="conditions-and-known-issues-preview"></a>Koşullar ve bilinen sorunlar (Önizleme)
 
-Bu bölümde, değişiklik akışının geçerli genel önizlemesinde bilinen sorunlar ve koşullar açıklanmaktadır. 
-- Önizleme için, westcentralus veya westus2 bölgelerindeki depolama hesabınız için değişiklik akışını etkinleştirmeden önce [aboneliğinizi kaydetmeniz](#register) gerekir. 
-- Değişiklik akışı yalnızca oluşturma, güncelleştirme, silme ve kopyalama işlemlerini yakalar. Meta veri güncelleştirmeleri şu anda önizlemede yakalanan değil.
-- Herhangi bir değişiklik için olay kayıtlarını değiştir, değişiklik akışınızda birden fazla kez görünebilir.
-- Üzerlerinde zamana dayalı bekletme ilkesi ayarlayarak değişiklik akışı günlüğü dosyalarının kullanım ömrünü henüz yönetemezsiniz ve lekeleri silemezsiniz 
-- Günlük `url` dosyasının özelliği şu anda her zaman boş.
-- segments.json dosyasının `LastConsumable` özelliği, değişiklik akışının tamamlediği ilk kesimi listelemiyor. Bu sorun yalnızca ilk kesim sonuçlandıktan sonra oluşur. İlk saatten sonraki tüm sonraki bölümler `LastConsumable` mülkte doğru bir şekilde yakalanır.
-- ListContainers API'yi aradiğinizde şu anda **$blobchangefeed** kapsayıcıyı göremezsiniz ve kapsayıcı Azure portalında veya Depolama Gezgini'nde görünmüyor
-- Daha önce bir [hesap başarısızmı](../common/storage-disaster-recovery-guidance.md) başlatan depolama hesaplarının günlük dosyasının görünmemesiyle ilgili sorunlar olabilir. Gelecekteki herhangi bir hesap başarısızları önizleme sırasında günlük dosyasını da etkileyebilir.
+Bu bölümde, değişiklik akışında geçerli genel önizlemede bulunan bilinen sorunlar ve koşullar açıklanmaktadır. 
+- Önizleme için, westcentralus veya westus2 bölgelerinde depolama hesabınızın değişiklik akışını etkinleştirebilmeniz için önce [aboneliğinizi kaydetmeniz](#register) gerekir. 
+- Değişiklik akışı yalnızca oluşturma, güncelleştirme, silme ve kopyalama işlemlerini yakalar. Meta veri güncelleştirmeleri Şu anda önizlemede yakalanmıyor.
+- Değişiklik akışınızda tek bir değişikliğin değişiklik olay kayıtları birden çok kez görüntülenebilir.
+- Zaman tabanlı bekletme ilkesi ayarlayarak değişiklik akışı günlük dosyalarının yaşam süresini henüz yönetemezsiniz ve Blobları silemezsiniz 
+- Günlük `url` dosyasının özelliği şu anda her zaman boştur.
+- Segment `LastConsumable` . json dosyasının özelliği, değişiklik akışı 'nın sonlandırabildiği ilk parçayı listelemez. Bu sorun yalnızca ilk kesim sonlandırıldıktan sonra oluşur. İlk saatin ardından gelen tüm bölümler, `LastConsumable` özellikte doğru bir şekilde yakalanır.
+- Şu anda ListContainers API 'sini çağırdığınızda **$blobchangefeed** kapsayıcısını göremez ve kapsayıcı Azure portal veya Depolama Gezgini gösterilmez
+- Daha önce bir [Hesap yük devretmesini](../common/storage-disaster-recovery-guidance.md) Başlatan depolama hesaplarında, günlük dosyası görünmediğinden ilgili sorunlar olabilir. Gelecekteki tüm hesap yük devretme işlemleri, önizleme sırasında günlük dosyasını da etkileyebilir.
 
 ## <a name="faq"></a>SSS
 
-### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Değişim akışı ile Depolama Analizi günlüğü arasındaki fark nedir?
-Analytics günlüklerinde tüm işlemlerde başarılı ve başarısız isteklerle tüm okuma, yazma, listeleme ve silme işlemlerinin kayıtları vardır. Analytics günlükleri en iyi çabadır ve sipariş garantisi yoktur.
+### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Değişiklik akışı ve Depolama Analizi günlüğe kaydetme arasındaki fark nedir?
+Analiz günlüklerinde tüm işlemlerde başarılı ve başarısız isteklerle tüm okuma, yazma, listeleme ve silme işlemlerinin kayıtları vardır. Analiz günlükleri en iyi çabadır ve hiçbir sıralama garanti edilmez.
 
-Değişiklik akışı, bozuk para oluşturma, değişiklik ve silme gibi başarılı mutasyonların veya hesabınızdaki değişikliklerin işlem günlüğü sağlayan bir çözümdür. Değişiklik akışı, blob başına başarılı değişiklikler sırasına göre kaydedilecek ve görüntülenecek tüm olayları garanti eder, böylece çok sayıda okuma işleminden veya başarısız isteklerden gelen gürültüyü filtrelemeniz gerekmez. Değişiklik akışı temelde belirli garantiler gerektiren uygulama geliştirme için tasarlanmış ve optimize edilebilmektedir.
+Değişiklik akışı, başarılı mutasyonların veya hesabınızda blob oluşturma, değiştirme ve silme gibi değişiklikler için işlem günlüğü sağlayan bir çözümdür. Değişiklik akışı, tüm olayların blob başına başarılı değişiklikler sırasına göre kaydedilmesini ve görüntülenmesini sağlar; bu nedenle, çok büyük hacimli okuma işlemleri veya başarısız istekler için paraziti filtrelemeniz gerekmez. Değişiklik akışı temel olarak tasarlanır ve belirli garanti gerektiren uygulama geliştirmesi için iyileştirilmiştir.
 
-### <a name="should-i-use-change-feed-or-storage-events"></a>Yayını değiştir veya Depolama olaylarını kullanmalı mıyım?
-Akış değiştir ve [Blob depolama olayları](storage-blob-event-overview.md) aynı teslim güvenilirliği garantisi ile aynı bilgileri sağladığından, temel fark olay kayıtlarının gecikmesi, siparişi ve depolanması olduğu için her iki özellikten de yararlanabilirsiniz. Değişiklik akışı, değişiklikleri birkaç dakika içinde günlük kayıtları yayımlar ve aynı zamanda blob başına değişiklik işlemleri sırasını garanti eder. Depolama olayları gerçek zamanlı olarak itilir ve sipariş verilmeyebilir. Değişiklik akışı olayları, depolama hesabınızda, kendi tanımlı bekletme niz ile salt okunur kararlı günlükler olarak saklanırken, depolama olayları bunları açıkça depolamadığınız sürece olay işleyicisi tarafından tüketilecek geçicidir. Akış değiştir ile, herhangi bir sayıda uygulamanız blob API'lerini veya SDK'larını kullanarak günlükleri kendi kolaylıklarıyla tüketebilir. 
+### <a name="should-i-use-change-feed-or-storage-events"></a>Değişiklik akışı veya depolama olaylarını kullanmalıyım mi?
+Hem değişiklik akışı hem de [BLOB depolama olayları](storage-blob-event-overview.md) ile aynı bilgileri, olay kayıtlarının gecikmesi, sıralaması ve depolanması ile aynı teslimat güvenilirliği garantisi ile birlikte sağlayabilirsiniz. Değişiklik akışı, değişikliği birkaç dakika içinde günlüğe kaydeder ve ayrıca blob başına değişiklik işlemleri sırasını garanti eder. Depolama olayları gerçek zamanlı olarak gönderilir ve sıralanmayabilir. Değişiklik akışı olayları, depolama hesabınızda, kendi tanımladığınız saklama ile Salt okunabilir tutarlı Günlükler olarak depolanır, ancak depolama olayları açıkça depolamadığınız sürece olay işleyicisi tarafından tüketilmeye devam edilir. Değişiklik akışı ile, herhangi bir sayıda uygulamanız blob API 'Leri veya SDK 'Ları kullanarak günlükleri kendi rahatında kullanabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir .NET istemci uygulaması kullanarak değişiklik akışını nasıl okuyeceğiniz hakkında bir örneğe bakın. Bkz. [Azure Blob Depolama'daki akış günlüklerini değiştir.](storage-blob-change-feed-how-to.md)
-- Olaylara gerçek zamanlı olarak nasıl tepki vereceğinizi öğrenin. [Bkz. Blob Depolama olaylarına tepki](storage-blob-event-overview.md) verme
-- Tüm istekler için hem başarılı hem de başarısız işlemler için ayrıntılı günlük bilgileri hakkında daha fazla bilgi edinin. Bkz. [Azure Depolama analitiği günlüğe kaydetme](../common/storage-analytics-logging.md)
+- .NET istemci uygulaması kullanarak değişiklik akışını okuma hakkında bir örnek için bkz.. Bkz. [Azure Blob depolamada işlem değişiklik akışı günlükleri](storage-blob-change-feed-how-to.md).
+- Olaylara gerçek zamanlı olarak tepki verme hakkında bilgi edinin. Bkz. [BLOB depolama olaylarına yeniden davranma](storage-blob-event-overview.md)
+- Tüm istekler için hem başarılı hem de başarısız işlemler için ayrıntılı günlük bilgileri hakkında daha fazla bilgi edinin. Bkz. [Azure Storage Analytics günlüğe kaydetme](../common/storage-analytics-logging.md)

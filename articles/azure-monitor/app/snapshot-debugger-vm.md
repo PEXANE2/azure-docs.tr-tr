@@ -1,31 +1,31 @@
 ---
-title: Azure Hizmet Kumaşı, Bulut Hizmeti ve Sanal Makinelerde .NET uygulamaları için Anlık Görüntü Hata Ayıklama'yı etkinleştirin | Microsoft Dokümanlar
-description: Azure Hizmet Kumaşı, Bulut Hizmeti ve Sanal Makinelerdeki .NET uygulamaları için Anlık Görüntü Hata Ayıklama'yı etkinleştirme
+title: Azure Service Fabric, bulut hizmeti ve sanal makinelerde .NET uygulamaları için Snapshot Debugger etkinleştirme | Microsoft Docs
+description: Azure Service Fabric, bulut hizmeti ve sanal makinelerde .NET uygulamaları için Snapshot Debugger etkinleştirme
 ms.topic: conceptual
 author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671363"
 ---
-# <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Azure Hizmet Kumaşı, Bulut Hizmeti ve Sanal Makinelerdeki .NET uygulamaları için Anlık Görüntü Hata Ayıklama'yı etkinleştirme
+# <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Azure Service Fabric, bulut hizmeti ve sanal makinelerde .NET uygulamaları için Snapshot Debugger etkinleştirme
 
-ASP.NET veya ASP.NET temel uygulamanız Azure Uygulama Hizmeti'nde çalışıyorsa, [Application Insights portal sayfası üzerinden Anlık Görüntü Hata Ayıklayıcı'sını etkinleştirmeniz](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)önerilir. Ancak, uygulamanız özelleştirilmiş bir Anlık Görüntü Hata Ayıklayıcı yapılandırması veya .NET çekirdeğinin önizleme sürümü gerektiriyorsa, bu yönerge, [Application Insights portal sayfasından etkinleştirme](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)yönergelerine ***ek olarak*** izlenmelidir.
+ASP.NET veya ASP.NET Core uygulamanız Azure App Service çalışıyorsa [Application Insights portalı sayfası aracılığıyla Snapshot Debugger etkinleştirmeniz](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)önemle önerilir. Bununla birlikte, uygulamanız özelleştirilmiş bir Snapshot Debugger yapılandırması veya .NET Core 'un önizleme sürümünü gerektiriyorsa, bu yönergeyi [Application Insights portalı sayfasında etkinleştirmeye](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)yönelik yönergelere ***ek*** olarak gelmelidir.
 
-Uygulamanız Azure Hizmet Kumaşı, Bulut Hizmeti, Sanal Makineler veya şirket içi makinelerde çalışıyorsa, aşağıdaki talimatlar kullanılmalıdır. 
+Uygulamanız Azure Service Fabric, bulut hizmeti, sanal makineler veya şirket içi makinelerde çalışıyorsa, aşağıdaki yönergelerin kullanılması gerekir. 
     
-## <a name="configure-snapshot-collection-for-aspnet-applications"></a>ASP.NET uygulamalar için anlık görüntü koleksiyonunu yapılandırma
+## <a name="configure-snapshot-collection-for-aspnet-applications"></a>ASP.NET uygulamaları için anlık görüntü toplamayı yapılandırma
 
-1. Henüz yapmadıysanız, [web uygulamanızda Uygulama Öngörüleri'ni etkinleştirin.](../../azure-monitor/app/asp-net.md)
+1. Henüz yapmadıysanız [Web uygulamanızda Application Insights etkinleştirin](../../azure-monitor/app/asp-net.md).
 
-2. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini uygulamanıza ekleyin.
+2. Uygulamanıza [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyin.
 
-3. Gerekirse, [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)eklendi Snapshot Debugger yapılandırması özelleştirilmiş . Varsayılan Anlık Görüntü Hata Ayıklama yapılandırması çoğunlukla boştur ve tüm ayarlar isteğe bağlıdır. Varsayılan yapılandırmaya eşdeğer bir yapılandırmayı gösteren bir örnek aşağıda verilmiştir:
+3. Gerekirse, [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasına eklenen Snapshot Debugger yapılandırması özelleştirilir. Varsayılan Snapshot Debugger yapılandırması çoğunlukla boştur ve tüm ayarlar isteğe bağlıdır. Varsayılan yapılandırmaya bir yapılandırma eşdeğerini gösteren bir örnek aşağıda verilmiştir:
 
     ```xml
     <TelemetryProcessors>
@@ -59,31 +59,31 @@ Uygulamanız Azure Hizmet Kumaşı, Bulut Hizmeti, Sanal Makineler veya şirket 
     </TelemetryProcessors>
     ```
 
-4. Anlık görüntüler yalnızca Application Insights'a bildirilen özel durumlar üzerinde toplanır. Bazı durumlarda (örneğin, .NET platformunun eski sürümleri), portaldaki anlık görüntülerle özel durumları görmek için [özel durum koleksiyonunu yapılandırmanız](../../azure-monitor/app/asp-net-exceptions.md#exceptions) gerekebilir.
+4. Anlık görüntüler yalnızca Application Insights bildirilen özel durumlarla toplanır. Bazı durumlarda (örneğin, .NET platformunun daha eski sürümleri), portalda anlık görüntülerle özel durumları görmek için [özel durum toplamayı yapılandırmanız](../../azure-monitor/app/asp-net-exceptions.md#exceptions) gerekebilir.
 
 
-## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>Core 2.0 veya üzeri ASP.NET kullanarak uygulamalar için anlık görüntü koleksiyonunu yapılandırma
+## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>ASP.NET Core 2,0 veya üstünü kullanarak uygulamalar için anlık görüntü toplamayı yapılandırma
 
-1. Henüz [yapmadıysanız, ASP.NET Core web uygulamanızda Uygulama Öngörülerini etkinleştirin.](../../azure-monitor/app/asp-net-core.md)
+1. Henüz yapmadıysanız, [ASP.NET Core Web uygulamanızda Application Insights etkinleştirin](../../azure-monitor/app/asp-net-core.md).
 
     > [!NOTE]
-    > Uygulamanızın Microsoft.ApplicationInsights.AspNetCore paketinin 2.1.1 sürümüne veya daha yeni sürümüne atıfta olduğundan emin olun.
+    > Uygulamanızın Microsoft. ApplicationInsights. AspNetCore paketinin sürüm 2.1.1 veya daha yeni bir sürüme başvurduğundan emin olun.
 
-2. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini uygulamanıza ekleyin.
+2. Uygulamanıza [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyin.
 
-3. Snapshot Collector'ın `Startup` telemetri işlemcisini eklemek ve yapılandırmak için uygulamanızın sınıfını değiştirin.
-    1. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paket sürümü 1.3.5 veya üzeri kullanılırsa, `Startup.cs`aşağıdaki ifadeleri kullanarak ekleyin.
+3. Snapshot Collector telemetri işlemcisini eklemek `Startup` ve yapılandırmak için uygulamanızın sınıfını değiştirin.
+    1. [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketi sürüm 1.3.5 veya üzeri kullanılıyorsa, aşağıdaki using deyimlerini öğesine `Startup.cs`ekleyin.
 
        ```csharp
             using Microsoft.ApplicationInsights.SnapshotCollector;
        ```
 
-       `Startup` 'deki sınıftaki ConfigureServices yönteminin sonuna aşağıdakileri `Startup.cs`ekleyin.
+       İçinde `Startup` `Startup.cs`sınıfındaki ConfigureServices yönteminin sonuna aşağıdakileri ekleyin.
 
        ```csharp
             services.AddSnapshotCollector((configuration) => Configuration.Bind(nameof(SnapshotCollectorConfiguration), configuration));
        ```
-    2. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paket sürümü 1.3.4 veya altında kullanılırsa, `Startup.cs`aşağıdaki ifadeleri kullanarak ekleyin.
+    2. [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketi sürüm 1.3.4 veya sonraki bir sürümü kullanılırsa, aşağıdaki using deyimlerini öğesine `Startup.cs`ekleyin.
 
        ```csharp
        using Microsoft.ApplicationInsights.SnapshotCollector;
@@ -92,7 +92,7 @@ Uygulamanız Azure Hizmet Kumaşı, Bulut Hizmeti, Sanal Makineler veya şirket 
        using Microsoft.ApplicationInsights.Extensibility;
        ```
     
-       Aşağıdaki `SnapshotCollectorTelemetryProcessorFactory` sınıfı sınıfa `Startup` ekleyin.
+       Aşağıdaki `SnapshotCollectorTelemetryProcessorFactory` sınıfı `Startup` sınıfına ekleyin.
     
        ```csharp
        class Startup
@@ -112,7 +112,7 @@ Uygulamanız Azure Hizmet Kumaşı, Bulut Hizmeti, Sanal Makineler veya şirket 
            }
            ...
         ```
-        Başlangıç `SnapshotCollectorConfiguration` ardışık hattına ve `SnapshotCollectorTelemetryProcessorFactory` hizmetleri ekleyin:
+        Başlangıç ardışık `SnapshotCollectorConfiguration` düzenine `SnapshotCollectorTelemetryProcessorFactory` ve hizmetlerini ekleyin:
     
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
@@ -129,7 +129,7 @@ Uygulamanız Azure Hizmet Kumaşı, Bulut Hizmeti, Sanal Makineler veya şirket 
        }
        ```
 
-4. Gerekirse, appsettings.json'a SnapshotCollectorConfiguration bölümü ekleyerek Snapshot Debugger yapılandırmasını özelleştirebilirsiniz. Anlık Görüntü Hata Ayıklama yapılandırmasındaki tüm ayarlar isteğe bağlıdır. Varsayılan yapılandırmaya eşdeğer bir yapılandırmayı gösteren bir örnek aşağıda verilmiştir:
+4. Gerekirse, appSettings. json ' a bir SnapshotCollectorConfiguration bölümü ekleyerek Snapshot Debugger yapılandırmasını özelleştirdiniz. Snapshot Debugger yapılandırmasındaki tüm ayarlar isteğe bağlıdır. Varsayılan yapılandırmaya bir yapılandırma eşdeğerini gösteren bir örnek aşağıda verilmiştir:
 
    ```json
    {
@@ -149,13 +149,13 @@ Uygulamanız Azure Hizmet Kumaşı, Bulut Hizmeti, Sanal Makineler veya şirket 
    }
    ```
 
-## <a name="configure-snapshot-collection-for-other-net-applications"></a>Diğer .NET uygulamaları için anlık görüntü koleksiyonunu yapılandırma
+## <a name="configure-snapshot-collection-for-other-net-applications"></a>Diğer .NET uygulamaları için anlık görüntü toplamayı yapılandırma
 
-1. Uygulamanız Uygulama Öngörüleri ile zaten belirtilmiş değilse, [Uygulama Öngörülerini etkinleştirerek ve enstrümantasyon anahtarını ayarlayarak](../../azure-monitor/app/windows-desktop.md)başlayın.
+1. Uygulamanız zaten Application Insights ile görüntülenmemişse, [Application Insights etkinleştirerek ve izleme anahtarını ayarlayarak](../../azure-monitor/app/windows-desktop.md)çalışmaya başlayın.
 
-2. Uygulamanıza [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyin.
+2. Uygulamanıza [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyin.
 
-3. Anlık görüntüler yalnızca Application Insights'a bildirilen özel durumlar üzerinde toplanır. Bunları bildirmek için kodunuzu değiştirmeniz gerekebilir. Özel durum işleme kodu uygulamanızın yapısına bağlıdır, ancak bir örnek aşağıdadır:
+3. Anlık görüntüler yalnızca Application Insights bildirilen özel durumlarla toplanır. Kodunuzu raporlamak için kodunuzda değişiklik yapmanız gerekebilir. Özel durum işleme kodu uygulamanızın yapısına bağlıdır, ancak aşağıda bir örnek verilmiştir:
     ```csharp
    TelemetryClient _telemetryClient = new TelemetryClient();
 
@@ -177,6 +177,6 @@ Uygulamanız Azure Hizmet Kumaşı, Bulut Hizmeti, Sanal Makineler veya şirket 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Uygulamanızda bir özel durum tetikleyebilen trafik oluşturun. Ardından, anlık görüntünün Uygulama Öngörüleri örneğine gönderilmesi için 10 ila 15 dakika bekleyin.
-- Azure portalındaki [anlık görüntülere](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) bakın.
-- Anlık Görüntü Hata Ayıklama sorunlarıyla ilgili yardım için Bkz. Anlık Hata [Ayıklama sorun giderme.](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)
+- Uygulamanıza bir özel durum tetikleyebilmesi için trafik oluşturun. Ardından, anlık görüntülerin Application Insights örneğine gönderilmesi için 10 ila 15 dakika bekleyin.
+- Azure portal [anlık görüntüleri](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) görüntüleyin.
+- Sorunları giderme Snapshot Debugger konusunda yardım için bkz. [Snapshot Debugger sorun giderme](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).

@@ -1,127 +1,127 @@
 ---
-title: Cosmos DB için Azure Monitörü ile Azure Cosmos DB'yi izleyin (önizleme)| Microsoft Dokümanlar
-description: Bu makalede, Cosmos DB sahiplerine CosmosDB hesaplarıyla ilgili performans ve kullanım sorunlarını hızlı bir şekilde anlamalarını sağlayan Cosmos DB için Azure Monitörü açıklanmaktadır.
+title: Cosmos DB için Azure Izleyici ile Azure Cosmos DB izleme (Önizleme) | Microsoft Docs
+description: Bu makalede, CosmosDB hesaplarıyla performans ve kullanım sorunlarını hızlı bir şekilde anlamak için Cosmos DB sahipler sağlayan Cosmos DB özelliği için Azure Izleyicisi açıklanmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
 ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78250670"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure Monitörünü keşfedin (önizleme)
+# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure Izleyicisini keşfet (Önizleme)
 
-Azure Cosmos DB için Azure Monitor (önizleme), tüm Azure Cosmos DB kaynaklarınızın genel performansını, hatalarını, kapasitesini ve operasyonel durumunu birleşik bir etkileşimli deneyimle görüntüleyebilir. Bu makale, bu yeni izleme deneyiminin faydalarını ve deneyimi kuruluşunuzun benzersiz gereksinimlerine uyacak şekilde nasıl değiştirebileceğinizi ve uyarlayabileceğinizi anlamanıza yardımcı olacaktır.   
+Azure Cosmos DB için Azure Izleyici (Önizleme), Birleşik etkileşimli bir deneyime göre tüm Azure Cosmos DB kaynaklarınızın genel performans, başarısızlık, kapasite ve işlemsel sistem durumunun bir görünümünü sağlar. Bu makale, bu yeni izleme deneyiminin avantajlarını ve bu deneyimi kuruluşunuzun benzersiz ihtiyaçlarına uyacak şekilde nasıl değiştirebileceğiniz ve uyarlayabileceğinizi anlamanıza yardımcı olur.   
 
 ## <a name="introduction"></a>Giriş
 
-Deneyime dalmadan önce, bilgiyi nasıl sunduğunu ve görselleştirdiğini anlamalısınız. 
+Deneyime girmeden önce, bilgilerin nasıl sunulduklarını ve görselleştirir. 
 
-Bu sunar:
+Şunları sağlar:
 
-* Azure Cosmos DB kaynaklarınızın **ölçek perspektifinde,** yalnızca değerlendirmek istediğiniz abonelikleri ve kaynakları seçerek kapsama olanağı yla, tüm aboneliklerinizde tek bir konumda.
+* Tek bir konumdaki tüm aboneliklerinizde Azure Cosmos DB kaynaklarınızın **Ölçek perspektifinde** , yalnızca değerlendirmede ilgilendiğiniz abonelikler ve kaynaklarla seçmeli kapsam yapabilme özelliği ile.
 
-* Sorunları tanılamaya veya kategoriye göre ayrıntılı analizler gerçekleştirmeye yardımcı olmak için belirli bir Azure CosmosDB kaynağının **analizini ayrıntılı** olarak analiz edin - kullanım, hatalar, kapasite ve işlemler. Bu seçeneklerden herhangi birini seçmek, ilgili Azure Cosmos DB ölçümlerinin ayrıntılı bir görünümünü sağlar.  
+* Sorunları tanılamaya veya kategori kullanımı, hataları, kapasiteyi ve işlemlere göre ayrıntılı analiz gerçekleştirmeye yardımcı olması için belirli bir Azure CosmosDB kaynağının **detaya gitme Analizi** . Bu seçeneklerden herhangi birini seçmek, ilgili Azure Cosmos DB ölçümlerinin derinlemesine bir görünümünü sağlar.  
 
-* **Özelleştirilebilir** - Bu deneyim, hangi ölçümlerin görüntülendiğini değiştirmenize, sınırlarınızla uyumlu eşikleri değiştirmenize ve ardından özel bir çalışma kitabına kaydetmenize olanak tanıyan Azure Monitor çalışma kitabı şablonlarının üzerine inşa edilmiştir. Çalışma kitaplarındaki grafikler daha sonra Azure panolarına sabitlenebilir.  
+* **Özelleştirilebilir** -bu deneyim, Azure izleyici çalışma kitabı şablonlarının üzerine kurulmuştur. bu deneyim, hangi ölçümlerin görüntülendiğini değiştirmenize, Sınırlarınızla hizalı olan eşikleri değiştirmenize veya ayarlamanıza ve sonra özel bir çalışma kitabına kaydetmenizi sağlar. Çalışma kitaplarındaki grafikler daha sonra Azure panolarına sabitlenebilir.  
 
-Bu özellik herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez, bu Azure Cosmos DB ölçümleri varsayılan olarak toplanır.
+Bu özellik herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez; bu Azure Cosmos DB ölçümleri varsayılan olarak toplanır.
 
 >[!NOTE]
->Bu özelliğe erişmek için herhangi bir ücret alınmaz ve yalnızca Azure Monitor [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/monitor/) sayfasında açıklandığı gibi, yapılandırmanız veya etkinleştirdiğiniz Azure Monitor temel özellikleri için ücretlendirilirsiniz.
+>Bu özelliğe erişmek için ücret alınmaz ve [Azure izleyici fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/monitor/) sayfasında açıklandığı gibi, yalnızca yapılandırdığınız veya etkinleştirdiğiniz Azure izleyici temel özellikleri için ücretlendirilirsiniz.
 
 ## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için kullanım ve performans ölçümlerini görüntüleme
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansını görüntülemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. **Monitör'ü** arayın ve **Monitör'ü**seçin.
+2. **İzleme** araması yapın ve **izleyiciyi**seçin.
 
-    !["Monitör" sözcüğünün ve hız göstergesi tarzı görüntüye sahip "Monitör" hizmetlerinin "Monitör" yazan açılır kutusunu arama](./media/cosmosdb-insights-overview/search-monitor.png)
+    !["Monitor" sözcüğünün bulunduğu ve bir hızölçer Style görüntüsüyle Hizmetleri "Monitor" adlı bir açılan pencerede arama kutusu](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. **Cosmos DB 'yi seçin (önizleme)**.
+3. **Cosmos DB (Önizleme)** öğesini seçin.
 
-    ![Cosmos DB genel çalışma kitabının ekran görüntüsü](./media/cosmosdb-insights-overview/cosmos-db.png)
+    ![Cosmos DB genel bakış çalışma kitabının ekran görüntüsü](./media/cosmosdb-insights-overview/cosmos-db.png)
 
 ### <a name="overview"></a>Genel Bakış
 
-**Genel Bakış'ta**tablo, etkileşimli Azure Cosmos DB ölçümlerini görüntüler. Sonuçları, aşağıdaki açılır listelerden seçtiğiniz seçeneklere göre filtreleyebilirsiniz:
+**Genel bakışta**, tabloda etkileşimli Azure Cosmos DB ölçümleri görüntülenir. Aşağıdaki açılan listelerden seçtiğiniz seçeneklere göre sonuçlara filtre uygulayabilirsiniz:
 
-* **Abonelikler** - yalnızca Azure Cosmos DB kaynağı olan abonelikler listelenir.  
+* **Abonelikler** -yalnızca bir Azure Cosmos DB kaynağına sahip abonelikler listelenir.  
 
-* **Cosmos DB** - Tümünü, bir alt kümeyi veya tek bir Azure Cosmos DB kaynağını seçebilirsiniz.
+* **Cosmos DB** -tümü, bir alt küme veya tek bir Azure Cosmos DB kaynağı seçebilirsiniz.
 
-* **Zaman Aralığı** - varsayılan olarak, yapılan ilgili seçimlere göre son 4 saatlik bilgileri görüntüler.
+* **Zaman aralığı** -varsayılan olarak, yapılan ilgili seçimlere göre son 4 saati bilgileri görüntüler.
 
-Açılan listelerin altındaki sayaç döşemesi, seçilen aboneliklerde toplam Azure Cosmos DB kaynağı sayısının toplamıdır. Çalışma kitabında hareket ölçümlerini bildiren sütunlar için koşullu renk kodlama veya ısı haritaları vardır. En derin renk en yüksek değere sahiptir ve daha açık bir renk en düşük değerlere dayanır. 
+Aşağı açılan listelerin altındaki sayaç kutucuğu, Azure Cosmos DB kaynakların toplam sayısı seçili aboneliklerdir. Çalışma kitabındaki, işlem ölçümlerini rapor eden sütunlar için koşullu renk kodlaması veya heavmaps vardır. En büyük renk en yüksek değere sahiptir ve en düşük değere göre daha açık bir renge sahiptir. 
 
-Azure Cosmos DB kaynaklarından birinin yanında açılır ok seçmek, tek tek veritabanı kapsayıcı düzeyindeperformans ölçümlerinin bir dökümünü ortaya çıkarır:
+Azure Cosmos DB kaynaklarından birinin yanındaki açılan oku seçmek, tek veritabanı kapsayıcısı düzeyindeki performans ölçümlerinin bir dökümünü açığa çıkarır:
 
-![Tek tek veritabanı kapsayıcılarını ve ilişkili performans dökümünü ortaya çıkaran genişletilmiş açılır bırakma](./media/cosmosdb-insights-overview/container-view.png)
+![Genişletilmiş açılan liste, tek tek veritabanı kapsayıcıları ve ilişkili performans dökümünü](./media/cosmosdb-insights-overview/container-view.png)
 
-Mavi ile vurgulanan Azure Cosmos DB kaynak adını seçmek, sizi ilişkili Azure Cosmos DB hesabı için varsayılan **Genel Bakış'a** götürür. 
+Mavi renkle vurgulanmış Azure Cosmos DB kaynak adının seçilmesi, sizi ilişkili Azure Cosmos DB hesabı için varsayılan **genel bakışa** götürür. 
 
 ### <a name="failures"></a>Hatalar
 
-Sayfanın üst kısmında **hatalar** seçin ve çalışma kitabı şablonunun **Hatalar** bölümü açılır. Bu istekleri oluşturan yanıtların dağıtımı ile toplam istekleri gösterir:
+Sayfanın üst kısmındaki **hataların** yanı sıra çalışma kitabı şablonunun **arızalarının** bir kısmı açılır. Bu, istekleri oluşturan yanıtların dağıtımına göre toplam istek olduğunu gösterir:
 
-![HTTP istek türüne göre arıza ile hataların ekran görüntüsü](./media/cosmosdb-insights-overview/failures.png)
+![HTTP istek türüne göre dökümdeki hataların ekran görüntüsü](./media/cosmosdb-insights-overview/failures.png)
 
 | Kod      |  Açıklama       | 
 |-----------|:--------------------|
-| `200 OK`  | Aşağıdaki REST operasyonlarından biri başarılı oldu: </br>- Bir kaynak alın. </br> - Bir kaynak üzerine KOYUN. </br> - Post bir kaynak üzerinde. </br> - Saklanan yordamı yürütmek için depolanan yordam kaynağı na post.|
-| `201 Created` | Kaynak oluşturmak için bir POST işlemi başarılı olur. |
-| `404 Not Found` | İşlem, artık var olmayan bir kaynak üzerinde hareket etmeye çalışıyor. Örneğin, kaynak zaten silinmiş olabilir. |
+| `200 OK`  | Aşağıdaki REST işlemlerinden biri başarılı oldu: </br>-Bir kaynağa ULAŞıN. </br> -Bir kaynağa koyun. </br> -Bir kaynakta GÖNDERIN. </br> -Saklı yordamı yürütmek için bir saklı yordam kaynağını GÖNDERIN.|
+| `201 Created` | Kaynak oluşturmak için bir gönderme işlemi başarılı. |
+| `404 Not Found` | İşlem, artık mevcut olmayan bir kaynak üzerinde işlem yapmaya çalışıyor. Örneğin, kaynak zaten silinmiş olabilir. |
 
-Durum kodlarının tam listesi için [Azure Cosmos DB HTTP durum kodu makalesine başvurun.](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)
+Durum kodlarının tam listesi için [Azure Cosmos DB http durum kodu makalesine](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)başvurun.
 
 ### <a name="capacity"></a>Kapasite
 
-Sayfanın üst kısmında **Kapasite'yi** seçin ve çalışma kitabı şablonunun **Kapasite** bölümü açılır. Kaç belgeye sahip olduğunuzu, zaman içinde belge büyümenizi, veri kullanımınızı ve kalan toplam kullanılabilir depolama alanı miktarını gösterir.  Bu, olası depolama ve veri kullanımı sorunlarını belirlemeye yardımcı olmak için kullanılabilir.
+Sayfanın üst kısmındaki **kapasiteyi** seçin ve çalışma kitabı şablonunun **Kapasite** kısmı açılır. Sahip olduğunuz belge sayısını, belgenizin zaman içinde büyümesini, veri kullanımını ve bıraktığınız toplam kullanılabilir depolama miktarını gösterir.  Bu, olası depolama ve veri kullanımı sorunlarını belirlemenize yardımcı olmak için kullanılabilir.
 
 ![Kapasite çalışma kitabı](./media/cosmosdb-insights-overview/capacity.png) 
 
-Genel bakış çalışma kitabında olduğu gibi, **Abonelik** sütunundaki Bir Azure Cosmos DB kaynağının yanındaki açılır oranı seçmek, veritabanını oluşturan tek tek kapsayıcıların bir dökümünü ortaya çıkarır.
+Genel Bakış çalışma kitabında olduğu gibi, **abonelik** sütunundaki bir Azure Cosmos DB kaynağının yanındaki açılan aşağı seçme, veritabanını oluşturan bağımsız kapsayıcıların bir dökümünü açığa çıkarır.
 
 ### <a name="operations"></a>İşlemler 
 
-Sayfanın üst kısmında **Kiİşlemeler'i** seçin ve çalışma kitabı şablonunun **İşlemler** bölümü açılır. Bu, isteklerinizin yapılan istek türüne göre ayrıldığını görmenizi sağlar. 
+Sayfanın üst kısmındaki **işlemler** ' i seçin ve çalışma kitabı şablonunun **işlemler** bölümü açılır. Bu, isteklerinizi yapılan istek türlerine göre kırarak görmenizi sağlar. 
 
-Yani aşağıdaki örnekte ağırlıklı `eastus-billingint` olarak okuma istekleri alıyor, ancak yükseltme ve istekoluşturmak az sayıda bakın. Yalnızca `westeurope-billingint` istek perspektifinden okunurken, çalışma kitabının şu anda zaman aralığı parametresi üzerinden yalnızca son dört saat içinde yalnızca okunur.
+Bu `eastus-billingint` nedenle aşağıdaki örnekte, ağırlıklı okuma isteklerinin alınması, ancak az sayıda büyük miktarda ve oluşturma isteği ile ilgili bilgi edinebilirsiniz. `westeurope-billingint` , Bir istek perspektifinden, en az son dört saat içinde, çalışma kitabının zaman aralığı parametresi aracılığıyla şu anda kapsama alınmış olduğu, salt okunurdur.
 
 ![İşlemler çalışma kitabı](./media/cosmosdb-insights-overview/operation.png) 
 
-## <a name="pin-export-and-expand"></a>Sabitleme, dışa aktarma ve genişletme
+## <a name="pin-export-and-expand"></a>Sabitle, dışarı aktar ve Genişlet
 
-Bölümün sağ üst kısmındaki toka simgesini seçerek metrik bölümlerden herhangi birini [Azure Panosu'na](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) sabitleyebilirsiniz.
+Bölümün sağ üst köşesindeki raptiye simgesini seçerek ölçüm bölümlerinin herhangi birini bir [Azure panosuna](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) sabitleyebilirsiniz.
 
-![Pano örneğine metrik kesit pini](./media/cosmosdb-insights-overview/pin.png)
+![Ölçüm bölümü panoya sabitle örneği](./media/cosmosdb-insights-overview/pin.png)
 
-Verilerinizi Excel biçimine aktarmak için, toka simgesinin solundaki aşağı ok simgesini seçin.
+Verilerinizi Excel biçiminde dışarı aktarmak için raptiye simgesinin solundaki aşağı ok simgesini seçin.
 
-![Çalışma kitabı simgesini dışa aktarma](./media/cosmosdb-insights-overview/export.png)
+![Çalışma kitabı simgesini dışarı aktar](./media/cosmosdb-insights-overview/export.png)
 
-Çalışma kitabındaki tüm açılır görünümleri genişletmek veya daraltmak için dışa aktarma simgesinin solundaki genişletme simgesini seçin:
+Çalışma kitabındaki tüm açılan görünümleri genişletmek veya daraltmak için dışa aktarma simgesinin solundaki genişlet simgesini seçin:
 
-![Çalışma kitabı simgesini genişletme](./media/cosmosdb-insights-overview/expand.png)
+![Çalışma kitabı simgesini Genişlet](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure Monitörünü Özelleştir (önizleme)
+## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure Izleyicisini özelleştirme (Önizleme)
 
-Bu deneyim Azure Monitor çalışma kitabı şablonlarının üzerine kurulduğundan, değiştirilmiş sürümünüzün bir kopyasını özelleştirilmiş bir çalışma kitabına **özelleştirve** > **Edit** **kaydedebilirsiniz.** 
+Bu deneyim, Azure izleyici çalışma kitabı şablonlarının üzerine inşa edildiğinden, değiştirilmiş sürümünüzün bir kopyasını **Customize** > **düzenleme** ve bir kopyasını özel çalışma kitabına **kaydetme** olanağınız vardır. 
 
-![Çubuğu özelleştir](./media/cosmosdb-insights-overview/customize.png)
+![Çubuğu Özelleştir](./media/cosmosdb-insights-overview/customize.png)
 
-Çalışma kitapları, sizin için özel olan **Raporlarım** bölümünde veya kaynak grubuna erişimi olan herkesin erişebileceği **Paylaşılan Raporlar** bölümünde bir kaynak grubuna kaydedilir. Özel çalışma kitabını kurtardıktan sonra, başlatmak için çalışma kitabı galerisine gitmeniz gerekir.
+Çalışma kitapları, sizin için özel **Raporlarım** bölümünde veya kaynak grubuna erişimi olan herkesin erişebileceği **paylaşılan raporlar** bölümünde bir kaynak grubuna kaydedilir. Özel çalışma kitabını kaydettikten sonra başlatmak için çalışma kitabı galerisine gitmeniz gerekir.
 
-![Komut çubuğundan çalışma kitabı galerisini başlatın](./media/cosmosdb-insights-overview/gallery.png)
+![Çalışma kitabı galerisini komut çubuğundan Başlat](./media/cosmosdb-insights-overview/gallery.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sorunları algılamaya yardımcı olmak için otomatik uyarı ayarlamak için [metrik uyarıları](../platform/alerts-metric.md) ve hizmet [durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications.md) yapılandırın.
+* Sorunları algılamaya yardımcı olmak üzere otomatik uyarı ayarlamak için [ölçüm uyarılarını](../platform/alerts-metric.md) ve [hizmet durumu bildirimlerini](../../service-health/alerts-activity-log-service-notifications.md) yapılandırın.
 
-* Çalışma kitaplarının desteklemek için tasarladığı senaryoları öğrenin, yeni raporları nasıl yazarken ve özelleştirin ve [Azure Monitor çalışma kitaplarıyla etkileşimli raporlar oluştur'u](../app/usage-workbooks.md)gözden geçirerek daha fazlasını öğrenin.
+* Çalışma kitaplarının desteklemek için tasarlandıkları senaryoları, mevcut raporların yeni nasıl yazılacağını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../app/usage-workbooks.md)konusunu gözden geçirin.

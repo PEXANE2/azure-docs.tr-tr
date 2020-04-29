@@ -1,44 +1,44 @@
 ---
 title: Azure Spring Cloud uygulama günlüklerini gerçek zamanlı olarak akışla aktarma
-description: Uygulama günlüklerini anında görüntülemek için günlük akışı nasıl kullanılır?
+description: Uygulama günlüklerini anında görüntülemek için günlük akışını kullanma
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78192209"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud uygulama günlüklerini gerçek zamanlı olarak akışla aktarma
-Azure Bahar Bulutu, sorun giderme için gerçek zamanlı uygulama konsolgünlükleri almak için Azure CLI'de günlük akışısağlar. Ayrıca [tanılama ayarları ile günlükleri ve ölçümleri analiz](./diagnostic-services.md)edebilirsiniz.
+Azure yay bulutu, sorun giderme amacıyla gerçek zamanlı uygulama konsolu günlüklerini almak için Azure CLı 'de günlük akışı sağlar. Ayrıca, [günlükleri ve ölçümleri tanılama ayarlarıyla çözümleyebilirsiniz](./diagnostic-services.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bahar Bulutu için [Azure CLI uzantısını,](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) minimum sürüm 0.2.0'ı yükleyin.
-* Çalışan bir uygulama ile **Azure Bahar Bulut** örneği, örneğin Bahar Bulut [uygulaması](./spring-cloud-quickstart-launch-app-cli.md).
+* Yay bulutu için [Azure CLI uzantısı](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) 'nı, en düşük sürüm 0.2.0 'yi yükler.
+* Çalışan bir uygulamayla **Azure Spring Cloud** örneği, örneğin [Spring Cloud App](./spring-cloud-quickstart-launch-app-cli.md).
 
 > [!NOTE]
->  ASC CLI uzantısı sürüm 0.2.0'dan 0.2.1'e güncelleştirilir. Bu değişiklik günlük akışı için komutun `az spring-cloud app log tail`sözdizimini etkiler: `az spring-cloud app logs`, hangi tarafından değiştirilir: . Komut: `az spring-cloud app log tail` gelecekteki bir sürümde amortismana alınacaktır. 0.2.0 sürümünü kullanıyorsanız, 0.2.1'e yükseltebilirsiniz. İlk olarak, komutu ile `az extension remove -n spring-cloud`eski sürümü kaldırın: .  Sonra, komutu ile 0.2.1 yükleyin: `az extension add -n spring-cloud`.
+>  ASC CLı uzantısı, 0.2.0 sürümünden 0.2.1 sürümüne güncelleştirilir. Bu değişiklik `az spring-cloud app log tail`, şu şekilde değiştirilecek olan günlük akışı komutunun sözdizimini etkiler: `az spring-cloud app logs`. Komut: `az spring-cloud app log tail` gelecek bir sürümde kullanım dışı olacaktır. Sürüm 0.2.0 kullanıyorsanız, 0.2.1 sürümüne yükseltebilirsiniz. İlk olarak, eski sürümü şu komutla kaldırın: `az extension remove -n spring-cloud`.  Sonra, 0.2.1 komutunu şu komutla yüklersiniz: `az extension add -n spring-cloud`.
 
-## <a name="use-cli-to-tail-logs"></a>Kuyruk günlükleri için CLI'yi kullanma
+## <a name="use-cli-to-tail-logs"></a>Günlükleri kuyruk için CLı kullanma
 
-Kaynak grubuve hizmet örneği adınızı tekrar tekrar belirtmekten kaçınmak için varsayılan kaynak grup adınızı ve küme adınızı ayarlayın.
+Kaynak grubunuzu ve hizmet örneği adınızı tekrar tekrar belirtmeyi önlemek için varsayılan kaynak grubu adınızı ve küme adınızı ayarlayın.
 ```
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
-Aşağıdaki örneklerde, kaynak grubu ve hizmet adı komutları atlanır.
+Aşağıdaki örneklerde, komutlarda kaynak grubu ve hizmet adı atlanır.
 
 ### <a name="tail-log-for-app-with-single-instance"></a>Tek örnekli uygulama için kuyruk günlüğü
-Auth-service adlı bir uygulamanın yalnızca bir örneği varsa, uygulama örneğinin günlüğünü aşağıdaki komutla görüntüleyebilirsiniz:
+Auth-Service adlı bir uygulamanın yalnızca bir örneği varsa, uygulama örneğinin günlüğünü aşağıdaki komutla görüntüleyebilirsiniz:
 ```
 az spring-cloud app logs -n auth-service
 ```
-Bu günlükleri döndürecek:
+Bu işlem günlükleri döndürür:
 ```
 ...
 2020-01-15 01:54:40.481  INFO [auth-service,,,] 1 --- [main] o.apache.catalina.core.StandardService  : Starting service [Tomcat]
@@ -49,10 +49,10 @@ Bu günlükleri döndürecek:
 ...
 ```
 
-### <a name="tail-log-for-app-with-multiple-instances"></a>Birden çok örnekli uygulama için kuyruk günlüğü
-Adlı `auth-service`uygulama için birden çok örnek varsa, `-i/--instance` seçeneği kullanarak örnek günlüğünü görüntüleyebilirsiniz. 
+### <a name="tail-log-for-app-with-multiple-instances"></a>Birden çok örneğe sahip uygulama için kuyruk günlüğü
+Adlı `auth-service`uygulama için birden çok örnek varsa, `-i/--instance` seçeneğini kullanarak örnek günlüğünü görüntüleyebilirsiniz. 
 
-İlk olarak, aşağıdaki komutu ile uygulama örnek adlarını alabilirsiniz.
+İlk olarak, aşağıdaki komutla uygulama örneği adlarını alabilirsiniz.
 
 ```
 az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
@@ -66,16 +66,16 @@ auth-service-default-12-75cc4577fc-pw7hb  Running   UP
 auth-service-default-12-75cc4577fc-8nt4m  Running   UP
 auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
-Ardından, bir uygulama örneğinin günlüklerini seçenek `-i/--instance` seçeneğiyle akışlayabilirsiniz:
+Ardından, bir uygulama örneğinin günlüklerini seçenek `-i/--instance` seçeneğiyle akışla aktarabilirsiniz:
 
 ```
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
-Azure portalından uygulama örneklerinin ayrıntılarını da alabilirsiniz.  Azure Bahar Bulutu hizmetinizin sol gezinti bölmesinde **Uygulamalar'ı** seçtikten sonra **Uygulama Örnekleri'ni**seçin.
+Ayrıca Azure portal uygulama örneklerinin ayrıntılarını alabilirsiniz.  Azure Spring Cloud Service 'in sol gezinti bölmesinde **uygulamalar** ' ı seçtikten sonra **uygulama örnekleri**' ni seçin.
 
-### <a name="continuously-stream-new-logs"></a>Sürekli olarak yeni günlükleri akış
-Varsayılan olarak, `az spring-cloud ap log tail` yalnızca uygulama konsoluna aktarılan varolan günlükleri yazdırır ve sonra çıkar. Yeni günlükleri akış istiyorsanız, ekle -f (--takip):  
+### <a name="continuously-stream-new-logs"></a>Yeni günlükleri sürekli olarak akışla
+Varsayılan olarak, `az spring-cloud ap log tail` yalnızca uygulama konsoluna akan mevcut günlükleri yazdırır ve sonra çıkar. Yeni Günlükler akışı yapmak istiyorsanız, Add-f (--izleyin):  
 
 ```
 az spring-cloud app logs -n auth-service -f
@@ -87,7 +87,7 @@ az spring-cloud app logs -h
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri ve ölçümleri tanılama ayarlarıyla analiz edin](./diagnostic-services.md)
+* [Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme](./diagnostic-services.md)
 
  
 

@@ -1,6 +1,6 @@
 ---
-title: TLS 1.2'yi desteklemeyen uygulamaların neden olduğu sorun giderme sorunları | Microsoft Dokümanlar
-description: TLS 1.2'yi desteklemeyen uygulamaların neden olduğu sorun giderme sorunları
+title: TLS 1,2 ' i desteklemeyen uygulamaların neden olduğu sorunları giderme | Microsoft Docs
+description: TLS 1,2 desteklemeyen uygulamaların neden olduğu sorunları giderme
 services: cloud-services
 documentationcenter: ''
 author: mimckitt
@@ -15,30 +15,30 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 6153b9d5e8ef11412b0dd53a15c565becfa1c8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053763"
 ---
-# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1.2'yi desteklemeyen sorun giderme uygulamaları
-Bu makalede, eski TLS protokollerinin (TLS 1.0 ve 1.1) nasıl etkinleştirilen yanı sıra Windows Server 2019 bulut hizmeti web ve çalışan rollerindeki ek protokolleri desteklemek için eski şifreleme paketlerinin nasıl uygulanacağı açıklanmaktadır. 
+# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1,2 desteklemeyen uygulamaların sorunlarını giderme
+Bu makalede, eski TLS protokollerinin (TLS 1,0 ve 1,1) nasıl etkinleştirileceği ve Windows Server 2019 bulut hizmeti Web ve çalışan rolleri üzerinde ek protokolleri desteklemek üzere eski şifre paketlerinin uygulanması açıklanmaktadır. 
 
-TLS 1.0 ve TLS 1.1'i amortismana katmak için adımlar atarken, müşterilerimizin amortismanlarını planlayana kadar eski protokolleri ve şifre paketlerini desteklemeleri gerekebileceğini anlıyoruz.  Bu eski değerleri yeniden etkinleştirmenizi önermesek de, müşterilere yardımcı olmak için kılavuzlar salıyoruz. Müşterilerimizi, bu makalede özetlenen değişiklikleri uygulamadan önce gerileme riskini değerlendirmeye teşvik ediyoruz. 
+TLS 1,0 ve TLS 1,1 ' nin kullanım dışı bırakılması sırasında müşterilerimizin, kullanımdan kalkmayı planlayabilmeleri için eski protokolleri ve şifre paketlerini desteklemesi gerekebilecek bazı adımları anladık.  Bu eski değerleri yeniden etkinleştirmenizi önermeyiz, ancak müşterilere yardımcı olmaya yönelik rehberlik sunuyoruz. Müşterilerin bu makalede özetlenen değişiklikleri uygulamadan önce gerileme riskini değerlendirmelerini öneririz. 
 
 > [!NOTE]
-> Guest OS Family 6 sürümü, TLS 1.0 ve 1.1'i açıkça devre dışı bırakarak ve belirli bir şifre paketi kümesi ni tanımlayarak TLS 1.2'yi uygular. Guest OS aileleri hakkında daha fazla bilgi için [Guest OS yayın haberlerine](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases) bakın
+> Konuk işletim sistemi ailesi 6 sürümü, TLS 1,0 ve 1,1 'i açıkça devre dışı bırakarak ve belirli bir şifre paketleri kümesi tanımlayarak TLS 1,2 ' i zorlar. Konuk işletim sistemi aileleri hakkında daha fazla bilgi için bkz. [Konuk işletim sistemi sürüm haberleri](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
 
 
-## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>TLS 1.0, TLS 1.1 ve üzeri şifre ler için destek bırakma 
-Microsoft, sınıfının en iyisi şifrelemeyi kullanma taahhüdümüzü desteklemek için, 2017 Haziran ayında TLS 1.0 ve 1.1'den uzak geçiş başlatma planlarını açıkladı.   Bu ilk duyurudan bu yana Microsoft, 2020'nin ilk yarısında Microsoft Edge ve Internet Explorer 11'in desteklenen sürümlerinde varsayılan olarak 1.0 ve 1.1'i devre dışı düşürme niyetimizi duyurdu.  Apple, Google ve Mozilla'dan gelen benzer duyurular, sektörün gidişatını gösteriyor.   
+## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>TLS 1,0, TLS 1,1 ve daha eski şifre paketlerinin desteğini bırakma 
+Microsoft, sınıfının en iyisi şifrelemeyi kullanma taahhüdünü desteklemek için, Microsoft 2017 'un Haziran 'da TLS 1,0 ve 1,1 ' den uzağa geçiş başlatması için planlar duyurmuştur.   Bu ilk duyuru söz konusu olduğunda, Microsoft, Microsoft Edge ve Internet Explorer 11 ' in desteklenen sürümlerinde varsayılan olarak Aktarım Katmanı Güvenliği 'ni (TLS) 1,0 ve 1,1 ' 2020 nin ilk yarısında devre dışı bırakma amacımızı duyurdu.  Apple, Google ve Mozilla 'daki benzer Duyurular sektörün işaret olduğu yönü belirtir.   
 
-Daha fazla bilgi için Microsoft [Azure'da TLS 1.2'ye hazırlanma](https://azure.microsoft.com/updates/azuretls12/)
+Daha fazla bilgi için bkz. [MICROSOFT Azure TLS 1,2 Için hazırlanma](https://azure.microsoft.com/updates/azuretls12/)
 
 ## <a name="tls-configuration"></a>TLS yapılandırması  
-Windows Server 2019 bulut sunucusu görüntüsü, kayıt defteri düzeyinde TLS 1.0 ve TLS 1.1 devre dışı bırakılmış olarak yapılandırılır. Bu, Windows'un bu sürümüne dağıtılan uygulamaların VE TLS anlaşması için Windows yığınını kullanan uygulamaların TLS 1.0 ve TLS 1.1 iletişimine izin vermeyeceği anlamına gelir.   
+Windows Server 2019 Cloud Server görüntüsü, TLS 1,0 ile yapılandırılmıştır ve kayıt defteri düzeyinde TLS 1,1 devre dışı bırakılır. Bu, Windows 'un bu sürümüne dağıtılan ve TLS için Windows Stack ile ilgili uygulamaların TLS 1,0 ve TLS 1,1 iletişimine izin vermeyeceği anlamına gelir.   
 
-Sunucu ayrıca sınırlı sayıda şifreleme paketiyle birlikte gelir: 
+Sunucu Ayrıca sınırlı bir şifre paketleri kümesiyle birlikte gelir: 
 
 ```
     TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 
@@ -51,9 +51,9 @@ Sunucu ayrıca sınırlı sayıda şifreleme paketiyle birlikte gelir:
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Adım 1: TLS 1.0 ve TLS 1.1'i etkinleştirmek için PowerShell komut dosyası oluşturun 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>1. Adım: TLS 1,0 ve TLS 1,1 ' i etkinleştirmek için PowerShell betiğini oluşturma 
 
-Eski protokolleri ve şifreleme paketlerini etkinleştiren bir komut dosyası oluşturmak için aşağıdaki kodu örnek olarak kullanın. Bu dokümantasyonun amaçları için, bu komut dosyasının adı: **TLSsettings.ps1**. Daha sonraki adımlarda kolay erişim için bu komut dosyalarını yerel masaüstünüzde saklayın. 
+Eski protokolleri ve şifre paketlerini sağlayan bir komut dosyası oluşturmak için aşağıdaki kodu örnek olarak kullanın. Bu belgenin amaçları doğrultusunda, bu betiğin adı: **Tlssettings. ps1**. Sonraki adımlarda kolay erişim için bu betiği yerel masaüstünüzde depolayın. 
 
 
 ```Powershell
@@ -273,9 +273,9 @@ If ($reboot) {
 }
 ```
 
-## <a name="step-2-create-a-command-file"></a>Adım 2: Komut dosyası oluşturma 
+## <a name="step-2-create-a-command-file"></a>2. Adım: komut dosyası oluşturma 
 
-Aşağıdaki leri kullanarak **RunTLSSettings.cmd** adlı bir CMD dosyası oluşturun. Daha sonraki adımlarda kolay erişim için bu komut dosyalarını yerel masaüstünüzde saklayın. 
+Aşağıdaki kullanılarak **Runtlssettings. cmd** ADLı bir cmd dosyası oluşturun. Sonraki adımlarda kolay erişim için bu betiği yerel masaüstünüzde depolayın. 
 
 ```cmd
 SET LOG_FILE="%TEMP%\StartupLog.txt"
@@ -300,9 +300,9 @@ EXIT /B %ERRORLEVEL%
 
 ```
 
-## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>Adım 3: Başlangıç görevini rolün hizmet tanımına (csdef) ekleme 
+## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>Adım 3: başlangıç görevini rolün hizmet tanımına (csdef) ekleme 
 
-Varolan hizmet tanımı dosyanıza aşağıdaki snippet'i ekleyin. 
+Aşağıdaki kod parçacığını mevcut hizmet tanımı dosyanıza ekleyin. 
 
 ```
     <Startup> 
@@ -311,7 +311,7 @@ Varolan hizmet tanımı dosyanıza aşağıdaki snippet'i ekleyin.
     </Startup> 
 ```
 
-Burada hem işçi rolünü hem de web rolünü gösteren bir örnek verilmiştir. 
+Çalışan rolünü ve Web rolünü gösteren bir örnek aşağıda verilmiştir. 
 
 ```
 <?xmlversion="1.0"encoding="utf-8"?> 
@@ -341,27 +341,27 @@ Burada hem işçi rolünü hem de web rolünü gösteren bir örnek verilmiştir
 </ServiceDefinition> 
 ```
 
-## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Adım 4: Komut dosyalarını Bulut Hizmetinize ekleme 
+## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>4. Adım: komut dosyalarını bulut hizmetinize ekleme 
 
-1) Visual Studio'da WebRol veya WorkerRole'nize sağ tıklayın
-2) **Ekle**’yi seçin
-3) **Varolan Öğeyi** Seçin
-4) Dosya gezgininde, **TLSsettings.ps1** ve **RunTLSSettings.cmd** dosyalarını depoladığınız masaüstünüze gidin 
-5) Bulut Hizmetleri projenize eklemek için iki dosyayı seçin
+1) Visual Studio 'da WebRole veya WorkerRole öğesine sağ tıklayın
+2) **Ekle** 'yi seçin
+3) **Varolan öğeyi** Seç
+4) Dosya Gezgini 'nde, **Tlssettings. ps1** ve **runtlssettings. cmd** dosyalarını depoladığınız masaüstünüzde gezinin 
+5) Cloud Services projenize eklemek için iki dosyayı seçin
 
-## <a name="step-5-enable-copy-to-output-directory"></a>Adım 5: Çıktı Dizinine Kopyalamayı Etkinleştir
+## <a name="step-5-enable-copy-to-output-directory"></a>5. Adım: çıkış dizinine kopyalamayı etkinleştirme
 
-Visual Studio'dan itilen her güncellemeyle komut dosyalarının yüklendiğinden emin olmak için Copy *to Output Directory* ayarı *Her Zaman Kopyala* olarak ayarlanmalıdır
+Betiklerin Visual Studio 'dan gönderilen her güncelleştirme ile karşıya yüklendiğinden emin olmak için *Çıkış Dizinine Kopyala* ayarının *her zaman Kopyala* olarak ayarlanması gerekir
 
-1) WebRol veya WorkerRole altında, RunTLSSettings.cmd sağ tıklayın
-2) **Özellikleri** Seçin
-3) Özellikler sekmesinde, Her Zaman *Kopyala" için Çıktı Dizini* kopyala"yı değiştirin *Copy Always"*
-4) **TLSsettings.ps1** için adımları tekrarlayın
+1) WebRole veya WorkerRole altında RunTLSSettings. cmd öğesine sağ tıklayın
+2) **Özellikleri** seçin
+3) Özellikler sekmesinde, *her zaman kopyalamak* Için *Çıkış Dizinine Kopyala* ' yı değiştirin.
+4) **Tlssettings. ps1** için adımları yineleyin
 
-## <a name="step-6-publish--validate"></a>Adım 6: Yayımla & Doğrulama
+## <a name="step-6-publish--validate"></a>6. Adım: yayımlama & doğrulama
 
-Yukarıdaki adımlar tamamlandığından, güncelleştirmeyi mevcut Bulut Hizmetinizde yayınlayın. 
+Yukarıdaki adımlar tamamlandığına göre, güncelleştirmeyi mevcut bulut hizmetinize yayımlayın. 
 
-Uç noktalarınızın TLS durumunu doğrulamak için [SSLLabs'ı](https://www.ssllabs.com/) kullanabilirsiniz 
+Uç noktalarınızın TLS durumunu doğrulamak için [Ssllabs](https://www.ssllabs.com/) kullanabilirsiniz 
 
  

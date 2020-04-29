@@ -1,27 +1,27 @@
 ---
-title: Azure Tanılama verilerini Uygulama Öngörülerine Gönderme
-description: Uygulama Öngörüleri'ne veri göndermek için Azure Tanılama genel yapılandırmasını güncelleştirin.
+title: Azure Tanılama verileri Application Insights gönderin
+description: Application Insights verileri göndermek için Azure Tanılama genel yapılandırmayı güncelleştirin.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672336"
 ---
-# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Bulut Hizmeti, Sanal Makine veya Hizmet Kumaşı tanı verilerini Uygulama Öngörülerine Gönderin
-Bulut hizmetleri, Sanal Makineler, Sanal Makine Ölçeği Setleri ve Hizmet Kumaşı, veri toplamak için Azure Tanılama uzantısını kullanır.  Azure tanılama, Verileri Azure Depolama tablolarına gönderir.  Ancak, Azure Tanılama uzantısı 1,5 veya daha sonrasını kullanarak verilerin tamamını veya bir alt kümesini başka konumlara aktarabilirsiniz.
+# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Bulut hizmeti, sanal makine veya Service Fabric tanılama verilerini Application Insights gönderin
+Bulut Hizmetleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric tümü, veri toplamak için Azure Tanılama uzantısını kullanır.  Azure tanılama, verileri Azure depolama tablolarına gönderir.  Ancak, Azure Tanılama uzantısı 1,5 veya sonraki bir sürümü kullanarak, verilerin tamamını veya bir alt kümesini diğer konumlara de kanal oluşturarak aktarabilirsiniz.
 
-Bu makalede, Azure Tanılama uzantısından Uygulama Öngörüleri'ne nasıl veri gönderilen veriler açıklanmaktadır.
+Bu makalede, Azure Tanılama uzantısından verilerin Application Insights nasıl gönderileceği açıklanır.
 
-## <a name="diagnostics-configuration-explained"></a>Tanılama yapılandırması açıklandı
-Azure tanılama uzantısı 1.5, tanılama verilerini gönderebileceğiniz ek konumlar olan lavabolar tanıtıldı.
+## <a name="diagnostics-configuration-explained"></a>Tanılama yapılandırması açıklanıyor
+Azure tanılama uzantısı 1,5, tanılama verilerini gönderebileceğiniz ek konumlar olan havuzlar tarafından kullanıma sunulmuştur.
 
-Uygulama Öngörüleri için bir lavabonun örnek yapılandırması:
+Application Insights için bir havuzun örnek yapılandırması:
 
 ```XML
 <SinksConfig>
@@ -56,35 +56,35 @@ Uygulama Öngörüleri için bir lavabonun örnek yapılandırması:
     ]
 }
 ```
-- **Lavabo** *adı* özniteliği, lavaboyu benzersiz olarak tanımlayan bir dize değeridir.
+- **Havuz** *adı* özniteliği, havuzu benzersiz bir şekilde tanımlayan bir dize değeridir.
 
-- **ApplicationInsights** öğesi, Azure tanılama verilerinin gönderildiği Uygulama öngörüleri kaynağının enstrümantasyon anahtarını belirtir.
-    - Varolan bir Application Insights kaynağınız yoksa, kaynak oluşturma ve enstrümantasyon anahtarını alma hakkında daha fazla bilgi için [yeni bir Uygulama Öngörüleri kaynağı oluşturma](../../azure-monitor/app/create-new-resource.md ) bilgisine bakın.
-    - Azure SDK 2.8 ve sonraki bir Bulut Hizmeti geliştiriyorsanız, bu enstrümantasyon anahtarı otomatik olarak doldurulur. Değer, Bulut Hizmeti projesini paketlemede **APPINSIGHTS_INSTRUMENTATIONKEY** hizmet yapılandırma ayarını temel ayarıdır. Bkz. [Bulut Hizmetleri yle Uygulama Öngörülerini Kullan.](../../azure-monitor/app/cloudservices.md)
+- **ApplicationInsights** öğesi, Azure tanılama verilerinin gönderildiği Application Insights kaynağının izleme anahtarını belirtir.
+    - Mevcut bir Application Insights kaynağınız yoksa, kaynak oluşturma ve izleme anahtarını alma hakkında daha fazla bilgi için bkz. [Yeni bir Application Insights kaynağı oluşturma](../../azure-monitor/app/create-new-resource.md ) .
+    - Azure SDK 2,8 ve üzeri bir bulut hizmeti geliştiriyorsanız, bu izleme anahtarı otomatik olarak doldurulur. Değer, bulut hizmeti projesi paketlerken **APPINSIGHTS_INSTRUMENTATIONKEY** hizmeti yapılandırma ayarını temel alır. Bkz. [Cloud Services ile Application Insights kullanma](../../azure-monitor/app/cloudservices.md).
 
-- **Kanallar** öğesi bir veya daha fazla **Kanal** öğesi içerir.
-    - *Ad* özniteliği benzersiz olarak bu kanala başvurur.
-    - *Günlük düzeyi* özniteliği, kanalın izin verdiği günlük düzeyini belirtmenize olanak tanır. En az bilgi sırasına göre kullanılabilir günlük düzeyleri şunlardır:
+- **Channels** öğesi bir veya daha fazla **Kanal** öğesi içeriyor.
+    - *Name* özniteliği bu kanala benzersiz bir şekilde başvurur.
+    - *LogLevel* özniteliği, kanalın izin verdiği günlük düzeyini belirtmenizi sağlar. En çok en az bilgi için kullanılabilir günlük düzeyleri şunlardır:
         - Ayrıntılı
         - Bilgi
         - Uyarı
         - Hata
         - Kritik
 
-Kanal filtre gibi davranır ve hedef lavaboya göndermek için belirli günlük düzeylerini seçmenize olanak tanır. Örneğin, ayrıntılı günlükleri toplayıp depolama alanına gönderebilir, ancak yalnızca Hataları lavaboya gönderebilirsiniz.
+Bir kanal filtre gibi davranır ve hedef havuza göndermek için belirli günlük düzeylerini seçmenize olanak sağlar. Örneğin, ayrıntılı Günlükler toplayabilir ve bunları depolamaya gönderebilir, ancak yalnızca havuza hata gönderebilirsiniz.
 
-Aşağıdaki grafik bu ilişkiyi gösterir.
+Aşağıdaki grafikte bu ilişki gösterilmektedir.
 
-![Tanılama Genel Yapılandırma](media/diagnostics-extension-to-application-insights/AzDiag_Channels_App_Insights.png)
+![Tanılama genel yapılandırması](media/diagnostics-extension-to-application-insights/AzDiag_Channels_App_Insights.png)
 
-Aşağıdaki grafik, yapılandırma değerlerini ve nasıl çalıştıklarını özetler. Hiyerarşide farklı düzeylerde yapılandırmaya birden çok lavabo ekleyebilirsiniz. En üst düzeydeki lavabo küresel bir ayar gibi davranır ve tek tek öğede belirtilen olan bu küresel ayarın geçersiz kılınması gibi davranır.
+Aşağıdaki grafik yapılandırma değerlerini ve bunların nasıl çalıştığını özetler. Yapılandırmaya, hiyerarşideki farklı düzeylerde birden çok havuz dahil edebilirsiniz. En üst düzeydeki havuz genel ayar olarak davranır ve bireysel öğesinde belirtilen tek öğe, bu genel ayarda geçersiz kılma gibi davranır.
 
-![Uygulama Öngörüleri ile Tanılama Yapılandırması](media/diagnostics-extension-to-application-insights/Azure_Diagnostics_Sinks.png)
+![Application Insights ile tanılama havuzları yapılandırması](media/diagnostics-extension-to-application-insights/Azure_Diagnostics_Sinks.png)
 
-## <a name="complete-sink-configuration-example"></a>Komple lavabo yapılandırma örneği
-Burada ortak yapılandırma dosyasının tam bir örneği
-1. tüm hataları Application Insights'a gönderir **(DiagnosticMonitorConfiguration** düğümünde belirtilir)
-2. ayrıca Uygulama Günlükleri **(Günlükler** düğümünde belirtilir) için Verbose düzey günlükleri gönderir.
+## <a name="complete-sink-configuration-example"></a>Havuz yapılandırma örneğini doldurun
+Ortak yapılandırma dosyasının bir örneği aşağıda verilmiştir
+1. tüm hataları Application Insights gönderir ( **Diagnosticmonitorconfiguration** düğümünde belirtilen)
+2. Ayrıca, uygulama günlükleri için ayrıntılı düzey Günlükler gönderir ( **Günlükler** düğümünde belirtilir).
 
 ```XML
 <WadCfg>
@@ -170,7 +170,7 @@ Burada ortak yapılandırma dosyasının tam bir örneği
 ```
 Önceki yapılandırmada aşağıdaki satırlar aşağıdaki anlamlara sahiptir:
 
-### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Azure tanılama tarafından toplanan tüm verileri gönderme
+### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Azure tanılama tarafından toplanan tüm verileri gönder
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
@@ -182,7 +182,7 @@ Burada ortak yapılandırma dosyasının tam bir örneği
 }
 ```
 
-### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Yalnızca hata günlüklerini Application Insights lavaboya gönderme
+### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Application Insights havuzuna yalnızca hata günlükleri Gönder
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
@@ -194,7 +194,7 @@ Burada ortak yapılandırma dosyasının tam bir örneği
 }
 ```
 
-### <a name="send-verbose-application-logs-to-application-insights"></a>Verbose uygulama günlüklerini Application Insights'a gönderme
+### <a name="send-verbose-application-logs-to-application-insights"></a>Ayrıntılı uygulama günlüklerini Application Insights gönder
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
@@ -208,12 +208,12 @@ Burada ortak yapılandırma dosyasının tam bir örneği
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- **Kanallar yalnızca performans sayaçlarını değil, yalnızca günlük türü.** Performans sayacı öğesi içeren bir kanal belirtirseniz, bu kanal yoksayılır.
-- **Bir kanalın günlük düzeyi, Azure tanılama tarafından toplananlar için günlük düzeyini aşamaz.** Örneğin, Günlükler öğesindeki Uygulama Günlüğü hatalarını toplayamaz ve Verbose günlüklerini Uygulama Öngörüsü lavabosuna göndermeye çalışamazsınız. *ZamanlanmışTransferLogLevelFilter* özniteliği her zaman lavaboya göndermeye çalıştığınız günlüklerden eşit veya daha fazla günlük toplamalıdır.
-- **Azure tanılama uzantısı tarafından toplanan blob verilerini Application Insights'a gönderemezsiniz.** Örneğin, *Dizinler* düğümü altında belirtilen herhangi bir şey. Kilitlenme Dökümleri için gerçek kilitlenme dökümü blob depolamaya gönderilir ve yalnızca kilitlenme dökümünün oluşturulduğuna dair bir bildirim Application Insights'a gönderilir.
+- **Yalnızca kanallar performans sayaçlarını değil, günlük türünü günlüğe kaydeder.** Performans sayacı öğesiyle bir kanal belirtirseniz, bu yok sayılır.
+- **Kanal için günlük düzeyi, Azure tanılama tarafından toplanmakta olan günlük düzeyini aşamaz.** Örneğin, Günlükler öğesinde uygulama günlüğü hatalarını toplayamazsınız ve ayrıntılı günlükleri Application Insight havuzuna göndermeye çalışın. *Scheduledtransferloglevelfilter* özniteliği her zaman bir havuza gönderilmeye çalıştığınız günlüklere göre eşit veya daha fazla günlük toplamalıdır.
+- **Azure tanılama uzantısı tarafından toplanan blob verilerini Application Insights için gönderemezsiniz.** Örneğin, *dizinler* düğümü altında belirtilen her şey. Kilitlenme dökümlerinde, gerçek kilitlenme dökümü blob depolamaya gönderilir ve yalnızca kilitlenme dökümünün oluşturulduğu bir bildirim Application Insights gönderilir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* Azure [tanılama bilgilerinizi](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) Uygulama Öngörüleri'nde nasıl görüntüleyin öğrenin.
-* Uygulamanız için Azure tanılama uzantısını etkinleştirmek için [PowerShell'i](../../cloud-services/cloud-services-diagnostics-powershell.md) kullanın.
-* Uygulamanız için Azure tanılama uzantısını etkinleştirmek için [Visual Studio'yu](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) kullanın
+* Application Insights [Azure tanılama bilgilerinizi görüntülemeyi](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) öğrenin.
+* Uygulamanızın Azure tanılama uzantısını etkinleştirmek için [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) 'i kullanın.
+* Uygulamanız için Azure tanılama uzantısını etkinleştirmek üzere [Visual Studio 'yu](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) kullanma
 

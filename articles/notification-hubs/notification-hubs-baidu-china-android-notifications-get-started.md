@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536998"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu kullanarak Azure Notification Hubs ile çalışmaya başlama
@@ -42,7 +42,7 @@ Bu öğretici için aşağıdakiler gereklidir:
 Başlamak için aşağıdakileri yapın:
 
 1. Bir Baidu hesabı oluşturun.
-2. Bir Baidu bulut itme projesi oluşturun ve API anahtarı ve gizli anahtarını not edin.
+2. Baidu bulut anında iletme projesi oluşturun ve API anahtarını ve gizli anahtarı bir yere göz önünde yapın.
 
 ## <a name="configure-a-new-notification-hub"></a>Yeni bir bildirim hub'ı yapılandırma
 
@@ -68,7 +68,7 @@ Erişim bağlantı bilgileri penceresindeki `DefaultListenSharedAccessSignature`
 
 2. Uygulama Adı girin ve Gereken Minimum SDK Sürümü değerinin API 16: Android 4.1 olarak belirlendiğinden emin olun. **Ayrıca lütfen paketinizin adının (应用包名) Baidu Bulut Anında İletme Portalı’nda aynı olduğundan emin olun**
 
-    ![Azure Bildirim Hub'ları - Baidu](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Min SDK1 Azure Bildirim Hub'ları - Baidu Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs-Baidu min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs-Baidu min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. İleri'ye tıklayın ve Etkinlik Oluştur penceresi görünene kadar sihirbazı izlemeye devam edin. Boş Etkinlik değerinin seçildiğinden emin olun ve son olarak yeni bir Android Uygulaması oluşturmak için Son'u seçin.
 
@@ -93,7 +93,7 @@ Erişim bağlantı bilgileri penceresindeki `DefaultListenSharedAccessSignature`
     }
     ```
 
-    Liste çakışmasını önlemek için, proje `Manifest.xml` dosyasına aşağıdaki kodu ekleyin:
+    Liste çakışmasını önlemek için, aşağıdaki kodu projenin `Manifest.xml` dosyasına ekleyin:
 
     ```xml
     <manifest package="YOUR.PACKAGE.NAME"
@@ -112,11 +112,11 @@ Erişim bağlantı bilgileri penceresindeki `DefaultListenSharedAccessSignature`
 
     ![Azure Notification Hubs - Baidu SDK Kitaplıkları](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. Projenin `libs` klasöründe, dosyaya `pushervice-x.y.z.jar` sağ tıklayın; Bu kitaplığı projeye eklemek için **Kitaplık Olarak Ekle'yi** seçin.
+7. Projenin `libs` klasöründe, `pushervice-x.y.z.jar` dosyaya sağ tıklayın; Bu kitaplığı projeye dahil etmek için **kitaplık olarak ekle** ' yi seçin.
 
     ![Azure Notification Hubs - Baidu Kitaplık Olarak Ekleme](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
-8. Android projesinin `AndroidManifest.xml` dosyasını açın ve Baidu SDK tarafından gerekli izinleri ekleyin. **`YOURPACKAGENAME` yerine paketinizin adını yazın**.
+8. Android projesinin `AndroidManifest.xml` dosyasını açın ve Baidu SDK 'sının gerektirdiği izinleri ekleyin. **`YOURPACKAGENAME` yerine paketinizin adını yazın**.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -485,5 +485,5 @@ Bir test bildirimi göndermek için [Azure portalının] hata ayıklama sekmesin
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Anında İletme Android SDK’sını]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure portalında]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [Baidu portal]: https://www.baidu.com/

@@ -1,6 +1,6 @@
 ---
-title: Azure Bulut Hizmetleri Tanımı Şeması (.cscfg Dosyası) | Microsoft Dokümanlar
-description: Bir hizmet yapılandırması (.cscfg) dosyası, her rol, yapılandırma değerleri ve bir rol için sertifika parmak izleri için kaç rol örneği dağıtılanın caiz olduğunu belirtir.
+title: Azure Cloud Services Tanım Şeması (. cscfg dosyası) | Microsoft Docs
+description: Bir hizmet yapılandırma (. cscfg) dosyası, bir rol için her rol, yapılandırma değeri ve sertifika parmak izlerinin kaç rol örneğinin dağıtılacağını belirtir.
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
@@ -10,22 +10,22 @@ caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534754"
 ---
-# <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Bulut Hizmetleri Config Schema (.cscfg Dosyası)
-Hizmet yapılandırma dosyası, hizmetteki her rol için dağıtılabilen rol örneklerinin sayısını, yapılandırma ayarlarının değerlerini ve bir rolle ilişkili sertifikalar için parmak izlerini belirtir. Hizmet Sanal Ağın bir parçasıysa, ağ için yapılandırma bilgilerinin hizmet yapılandırma dosyasında ve sanal ağ yapılandırma dosyasında sağlanması gerekir. Hizmet yapılandırma dosyası için varsayılan uzantısı .cscfg'dir.
+# <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services config şeması (. cscfg dosyası)
+Hizmet yapılandırma dosyası, hizmette her bir rol için dağıtılacak rol örneği sayısını, herhangi bir yapılandırma ayarlarının değerlerini ve bir rolle ilişkili tüm sertifikalar için parmak izlerini belirtir. Hizmet bir sanal ağın parçasıysa, hizmet yapılandırma dosyasında ve sanal ağ yapılandırma dosyasında ağ için yapılandırma bilgilerinin sağlanması gerekir. Hizmet yapılandırma dosyası için varsayılan uzantı. cscfg ' dir.
 
-Hizmet modeli [Bulut Hizmeti (klasik) Definition Schema](schema-csdef-file.md)tarafından açıklanmıştır.
+Hizmet modeli, [bulut hizmeti (klasik) Tanım Şeması](schema-csdef-file.md)tarafından açıklanmıştır.
 
-Varsayılan olarak, Azure Tanılama yapılandırma şeması dosyası `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` dizine yüklenir. Azure `<version>` [SDK'nın](https://azure.microsoft.com/downloads/)yüklü sürümüyle değiştirin.
+Varsayılan olarak, Azure Tanılama yapılandırma şema dosyası `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` dizine yüklenir. `<version>` [Azure SDK](https://azure.microsoft.com/downloads/)'nın yüklü sürümüyle değiştirin.
 
-Bir hizmetteki rolleri yapılandırma hakkında daha fazla bilgi için [Bulut Hizmeti modelinin ne olduğunu](cloud-services-model-and-package.md)görün.
+Bir hizmette rolleri yapılandırma hakkında daha fazla bilgi için bkz. [bulut hizmeti modeli nedir?](cloud-services-model-and-package.md).
 
-## <a name="basic-service-configuration-schema"></a>Temel Hizmet Yapılandırma Şeması
+## <a name="basic-service-configuration-schema"></a>Temel hizmet yapılandırma şeması
 Hizmet yapılandırma dosyasının temel biçimi aşağıdaki gibidir.
 
 ```xml
@@ -43,24 +43,24 @@ Hizmet yapılandırma dosyasının temel biçimi aşağıdaki gibidir.
 ```
 
 ## <a name="schema-definitions"></a>Şema tanımları
-Aşağıdaki konular `ServiceConfiguration` öğe için şema açıklar:
+Aşağıdaki konular, `ServiceConfiguration` öğesinin şemasını anlatmaktadır:
 
 - [Rol Şeması](schema-cscfg-role.md)
 - [NetworkConfiguration Şeması](schema-cscfg-networkconfiguration.md)
 
-## <a name="service-configuration-namespace"></a>Hizmet YapılandırmaSı Ad Alanı
-Hizmet yapılandırma dosyası için XML ad `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`alanı: .
+## <a name="service-configuration-namespace"></a>Hizmet yapılandırması ad alanı
+Hizmet yapılandırma dosyasının XML ad alanı: `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`.
 
-##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a>ServiceConfiguration Öğesi
-Öğe, `ServiceConfiguration` hizmet yapılandırma dosyasının üst düzey öğesidir.
+##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a>ServiceConfiguration öğesi
+`ServiceConfiguration` Öğesi, hizmet yapılandırma dosyasının en üst düzey öğesidir.
 
-Aşağıdaki tabloda `ServiceConfiguration` öğenin öznitelikleri açıklanmaktadır. Tüm öznitelikler dize türleridir.
+Aşağıdaki tablo, `ServiceConfiguration` öğesinin özniteliklerini açıklar. Tüm öznitelik değerleri dize türleridir.
 
 | Öznitelik | Açıklama |
 | --------- | ----------- |
-|Hizmetadı|Gereklidir. Bulut hizmetinin adı. Burada verilen ad, hizmet tanımı dosyasında belirtilen adla eşleşmelidir.|
-|osFamily|İsteğe bağlı. Bulut hizmetinde rol örnekleri üzerinde çalışacak Konuk İşletim Sistemi'ni belirtir. Desteklenen Konuk İşletim Sistemi sürümleri hakkında daha fazla bilgi için [Azure Konuk İşletim Sistemi Sürümleri ve SDK Uyumluluk](cloud-services-guestos-update-matrix.md)Matrisi'ne bakın.<br /><br /> Bir `osFamily` değer eklemezseniz ve `osVersion` özniteliği belirli bir Konuk İşletim Sistemi sürümüne ayarlamadıysanız, varsayılan değeri 1 kullanılır.|
-|osVersion|İsteğe bağlı. Konuk İşletim Sistemi'nin bulut hizmetindeki rol örnekleriüzerinde çalışacak sürümünü belirtir. Konuk İşletim Sistemi sürümleri hakkında daha fazla bilgi için [Azure Konuk İşletim Sistemi Sürümleri ve SDK Uyumluluk](cloud-services-guestos-update-matrix.md)Matrisi'ne bakın.<br /><br /> Konuk İşletim Sistemi'nin otomatik olarak en son sürüme yükseltilmesi gerektiğini belirtebilirsiniz. Bunu yapmak için, özniteliğin `osVersion` değerini `*`. `*`Ayarlandığında, rol örnekleri belirtilen işletim sistemi ailesi için Konuk İşletim Sistemi'nin en son sürümü kullanılarak dağıtılır ve Konuk İşletim Sistemi'nin yeni sürümleri yayımlandığında otomatik olarak yükseltilir.<br /><br /> Belirli bir sürümü el ile `Configuration String` belirtmek için, [Azure Konuk İşletim Sistemi Sürümleri](cloud-services-guestos-update-matrix.md)ve SDK Uyumluluk Matrisi'nin **Gelecek, Geçerli ve Geçici Konuk İşletim Sistemi Sürümleri** bölümündetablodan kullanın.<br /><br /> Öznitelik için `osVersion` varsayılan değer `*`.|
-|şemaVersiyon|İsteğe bağlı. Hizmet Yapılandırma şemasının sürümünü belirtir. Şema sürümü Visual Studio SDK'nın birden fazla sürümü yan yana yüklenirse şema doğrulama için kullanılacak doğru SDK araçlarını seçmenize olanak tanır. Şema ve sürüm uyumluluğu hakkında daha fazla bilgi için Azure [Konuk İşletim Sistemi Sürümleri ve SDK Uyumluluk Matrisi'ne](cloud-services-guestos-update-matrix.md) bakın|
+|HizmetAdı|Gereklidir. Bulut hizmetinin adı. Burada verilen ad, hizmet tanımı dosyasında belirtilen adla eşleşmelidir.|
+|osFamily|İsteğe bağlı. Bulut hizmetindeki rol örneklerinde çalıştırılacak Konuk işletim sistemini belirtir. Desteklenen Konuk işletim sistemi sürümleri hakkında daha fazla bilgi için bkz. [Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi](cloud-services-guestos-update-matrix.md).<br /><br /> Bir `osFamily` değer eklemezseniz ve `osVersion` özniteliği belirli bir konuk işletim sistemi sürümüne ayarlamayın, varsayılan 1 değeri kullanılır.|
+|osVersion|İsteğe bağlı. Bulut hizmetindeki rol örneklerinde çalıştırılacak Konuk işletim sisteminin sürümünü belirtir. Konuk işletim sistemi sürümleri hakkında daha fazla bilgi için bkz. [Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi](cloud-services-guestos-update-matrix.md).<br /><br /> Konuk işletim sisteminin en son sürüme otomatik olarak yükseltilmesi gerektiğini belirtebilirsiniz. Bunu yapmak için `osVersion` özniteliğinin değerini olarak `*`ayarlayın. Olarak `*`ayarlandığında, rol örnekleri belirtilen işletim sistemi ailesi için konuk işletim sisteminin en son sürümü kullanılarak dağıtılır ve konuk işletim sisteminin yeni sürümleri serbest bırakıldığında otomatik olarak yükseltilir.<br /><br /> Belirli bir sürümü el ile belirtmek için `Configuration String` [Azure Konuk işletim SISTEMI sürümleri ve SDK uyumluluk matrisi](cloud-services-guestos-update-matrix.md)' nin **gelecek, güncel ve geçici Konuk işletim sistemi sürümleri** bölümündeki tablosundan öğesini kullanın.<br /><br /> `osVersion` Özniteliği için varsayılan değer `*`.|
+|schemaVersion|İsteğe bağlı. Hizmet yapılandırma şemasının sürümünü belirtir. Şema sürümü, Visual Studio 'nun birden fazla SDK sürümü yan yana yüklenirse şema doğrulaması için kullanılacak doğru SDK araçlarını seçmesine olanak sağlar. Şema ve sürüm uyumluluğu hakkında daha fazla bilgi için bkz. [Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi](cloud-services-guestos-update-matrix.md)|
 
-Hizmet yapılandırma dosyası bir `ServiceConfiguration` öğe içermelidir. Öğe `ServiceConfiguration` herhangi bir sayıda `Role` öğe ve `NetworkConfiguration` sıfır veya 1 öğe içerebilir.
+Hizmet yapılandırma dosyasında bir `ServiceConfiguration` öğe bulunmalıdır. `ServiceConfiguration` Öğesi herhangi bir sayıda `Role` öğe ve sıfır veya 1 `NetworkConfiguration` öğe içerebilir.

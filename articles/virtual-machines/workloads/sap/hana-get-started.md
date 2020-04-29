@@ -1,6 +1,6 @@
 ---
-title: SAP HANA'nın Azure sanal makinelere kurulumu | Microsoft Dokümanlar'
-description: AZURE VM'lere SAP HANA yükleme kılavuzu
+title: Azure sanal makinelerinde SAP HANA yüklemesi | Microsoft Docs '
+description: Azure VM 'lerine SAP HANA Yükleme Kılavuzu
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -16,86 +16,86 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
 ms.openlocfilehash: e017e082472e7a4a2fab6a2845e52d3dc7acc460
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123359"
 ---
-# <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>SAP HANA'nın Azure sanal makinelere kurulumu
+# <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA yüklemesi
 ## <a name="introduction"></a>Giriş
-Bu kılavuz, Azure sanal makinelerinde HANA'yı başarıyla dağıtmak için doğru kaynakları işaret etmenize yardımcı olur. Bu kılavuz, bir Azure VM'ye SAP HANA'yı yüklemeden önce denetlemeniz gereken dokümantasyon kaynaklarına yönlendirecektir. Böylece, Azure VM'lerde SAP HANA'nın desteklenen yapılandırmasıyla bitirmek için doğru adımları gerçekleştirebilirsiniz.  
+Bu kılavuz, Azure sanal makinelerinde HANA 'yı başarıyla dağıtmak için doğru kaynaklara işaret etmenize yardımcı olur. Bu kılavuz, bir Azure VM 'ye SAP HANA yüklemeden önce denetlemeniz gereken belge kaynaklarına işaret ediyor. Bu nedenle, Azure VM 'lerinde SAP HANA desteklenen bir yapılandırmayla sona erdirmek için doğru adımları gerçekleştirebileceksiniz.  
 
 > [!NOTE]
-> Bu kılavuzda, SAP HANA'nın Azure VM'lerine dağıtımları açıklanmaktadır. SAP HANA'nın HANA'nın büyük örneklerine nasıl dağıtılanabildiğini öğrenmek için [Azure'da SAP HANA'yı (Büyük Örnekler) nasıl yükleyip yapılandırılabilirsiniz.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
+> Bu kılavuzda, Azure VM 'lerine SAP HANA dağıtımları açıklanmaktadır. SAP HANA HANA büyük örneklerine dağıtma hakkında daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) nasıl yüklenir ve yapılandırılır](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation).
  
 ## <a name="prerequisites"></a>Ön koşullar
-Bu kılavuz da aşina olduğunuzu varsayar:
-* SAP HANA ve SAP NetWeaver ve nasıl şirket içinde bunları yüklemek için.
-* SAP HANA ve SAP uygulama örnekleriAzure'da nasıl yüklenir ve çalıştırılabilen.
-* Belgelenen kavramlar ve yordamlar:
-   * Azure Sanal Ağ planlamave Azure Depolama kullanımını içeren Azure'da SAP dağıtımı planlaması. [Azure Sanal Makinelerde SAP NetWeaver '](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) a bakın - Planlama ve uygulama kılavuzu
-   * Dağıtım ilkeleri ve Azure'da VM dağıtma yolları. [SAP için Azure Sanal Makineler dağıtımına](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide) bakın
-   * SAP HANA için yüksek kullanılabilirlik kavramları, [Azure sanal makineleri için SAP HANA'da belgelenen yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+Bu kılavuzda, hakkında bilgi sahibi olduğunuz varsayılır:
+* SAP HANA ve SAP NetWeaver ve bunların Şirket içinde nasıl yükleneceği.
+* Azure 'da SAP HANA ve SAP uygulama örnekleri yüklemek ve çalıştırmak.
+* ' De belgelenen kavramlar ve yordamlar:
+   * Azure sanal ağ planlaması ve Azure depolama kullanımını içeren Azure 'da SAP dağıtımını planlama. Bkz. [Azure sanal makineler 'de SAP NetWeaver-planlama ve uygulama kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
+   * Azure 'da VM dağıtmanın yolları ve dağıtım ilkeleri. Bkz. [SAP Için Azure sanal makineleri dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
+   * [Azure sanal makineler için yüksek kullanılabilirlik SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview) belgelenen SAP HANA için yüksek kullanılabilirlik kavramları
 
-## <a name="step-by-step-before-deploying"></a>Dağıtmadan önce adım adım
-Bu bölümde, BIR Azure sanal makinede SAP HANA yükleme ile başlamadan önce gerçekleştirmeniz gereken farklı adımlar listelenir. Sipariş numaralandırılır ve bu şekilde numaralandırılmış olarak takip edilmelidir:
+## <a name="step-by-step-before-deploying"></a>Dağıtılmadan önce adım adım
+Bu bölümde, Azure sanal makinesine SAP HANA yüklemesine başlamadan önce gerçekleştirmeniz gereken farklı adımlar listelenmiştir. Sıra numaralandırılır ve şu şekilde numaralandırılmalıdır:
 
-1. Azure'da olası dağıtım senaryolarının tümü desteklenmez. Bu nedenle, SAP HANA dağıtımınızda aklınızda olan senaryo için [Azure sanal makine destekli senaryolarda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) BELGE SAP iş yükünü denetlemeniz gerekir. Senaryo listelenmiyorsa, test edilmemiştir ve sonuç olarak desteklenmez varsaymanız gerekir
-2. SAP HANA dağıtımınız için bellek gereksiniminiz hakkında kabaca bir fikriniz olduğunu varsayarsak, uygun bir Azure VM bulmanız gerekir. SAP Destek [Notu #1928533](https://launchpad.support.sap.com/#/notes/1928533)belgelenen SAP NetWeaver için sertifikalı olan tüm VM'ler SAP HANA sertifikalı değildir. SAP HANA sertifikalı Azure VM'ler için gerçeğin [kaynağı, SAP HANA donanım dizini](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)web sitesidir. **S** ile başlayan birimler Azure VM'leri değil [HANA Büyük Örnekler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) birimleridir.
-3. Farklı Azure VM türleri, SUSE Linux veya Red Hat Linux için farklı minimum işletim sistemi sürümlerine sahiptir. Web sitesi [SAP HANA donanım dizini](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure), Bu birimin ayrıntılı veri almak için SAP HANA sertifikalı birimlerin listesinde bir giriş tıklamanız gerekir. Desteklenen HANA iş yükünün yanı sıra, SAP HANA için bu birimlerile desteklenen işletim sistemi sürümleri listelenir
-4. İşletim sistemi sürümleri itibariyle, belirli minimum çekirdek sürümlerini göz önünde bulundurmanız gerekir. Bu minimum sürümler bu SAP destek notlarında belgelenmiştir:
-    - [SAP HANA Yedekleme#2814271 SAP destek notu, Azure'da Checksum Hatası ile başarısız oldu](https://launchpad.support.sap.com/#/notes/2814271)
-    - [ZAMANLAYıCı Geri Dönüş Nedeniyle Potansiyel Performans Düşüşü #2753418 SAP destek notu](https://launchpad.support.sap.com/#/notes/2753418)
-    - [SAP destek notu #2791572 Azure'da Hyper-V için Eksik VDSO Desteği Nedeniyle Performans Bozulması](https://launchpad.support.sap.com/#/notes/2791572)
-4. Tercih edilen sanal makine türü için desteklenen işletim sistemi sürümüne bağlı olarak, istediğiniz SAP HANA sürümübu işletim sistemi sürümüyle desteklenip desteklenmediğini kontrol etseniz gerekir. Sap HANA bültenlerinin farklı İşletim Sistemi sürümlerine sahip destek matrisi için [SAP destek notunu #2235581](https://launchpad.support.sap.com/#/notes/2235581) okuyun.
-5. Azure VM türü, işletim sistemi sürümü ve SAP HANA sürümünden geçerli bir kombinasyon bulmuş olabileceğiniz için SAP Ürün Kullanılabilirlik Matrisi'ni iade etmeniz gerekir. SAP Kullanılabilirlik Matrisi'nde, SAP HANA veritabanınıza karşı çalıştırmak istediğiniz SAP ürününüzün desteklenip desteklenmediğini öğrenebilirsiniz.
+1. Tüm olası dağıtım senaryoları Azure 'da desteklenmez. Bu nedenle, SAP HANA dağıtımınızla birlikte aklınızda bulundurmanız gereken senaryoya yönelik [Azure sanal makinesi desteklenen senaryolarında belge SAP iş yükünü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) denetlemeniz gerekir. Senaryo listede yoksa, test edilmemiş olduğunu ve bir sonuç olarak desteklenmediğini varsaymak gerekir
+2. SAP HANA dağıtımınız için bellek gereksiniminiz hakkında kaba bir fikriniz olduğunu varsayarsak, bir Azure VM 'ye bir sığdırma eklemeniz gerekir. SAP NetWeaver için sertifikalı tüm VM 'Ler, [sap destek not #1928533](https://launchpad.support.sap.com/#/notes/1928533)bölümünde belgelendiği gibi, SAP HANA sertifikalı değildir. SAP HANA sertifikalı Azure VM 'lerinin Truth kaynağı, Web sitesi [SAP HANA donanım dizinidir](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). **S** ile başlayan birimler, Azure VM 'leri değil, [Hana büyük örnek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) birimleridir.
+3. Farklı Azure VM türlerinde SUSE Linux veya Red Hat Linux için farklı en düşük işletim sistemi sürümleri vardır. Web sitesi [SAP HANA donanım dizini](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)' nde, bu birimin ayrıntılı verilerini almak için SAP HANA sertifikalı birimler listesindeki bir girişe tıklamanız gerekir. Desteklenen HANA iş yükünün yanı sıra, SAP HANA için bu birimlerle desteklenen işletim sistemi sürümleri listelenir
+4. İşletim sistemi sürümleri itibariyle, bazı en düşük çekirdek sürümlerini göz önünde bulundurmanız gerekir. Bu en düşük yayınlar, bu SAP destek notlarında belgelenmiştir:
+    - [SAP destek notuna #2814271 SAP HANA yedekleme, sağlama hatası ile Azure 'da başarısız oluyor](https://launchpad.support.sap.com/#/notes/2814271)
+    - [SAP destek notuna #2753418 süreölçer geri dönüşü nedeniyle olası performans düşüşü](https://launchpad.support.sap.com/#/notes/2753418)
+    - [Azure 'da Hyper-V Için eksik VDSO desteği nedeniyle SAP destek notuna #2791572 performans düşüşü](https://launchpad.support.sap.com/#/notes/2791572)
+4. Tercih edilen sanal makine türü için desteklenen IŞLETIM sistemi sürümüne bağlı olarak, istediğiniz SAP HANA sürümünün bu işletim sistemi sürümünde desteklenip desteklenmediğini denetlemeniz gerekir. Farklı Işletim sistemi sürümleri ile SAP HANA sürümlerinin destek matrisi için [#2235581 sap destek dekontunu](https://launchpad.support.sap.com/#/notes/2235581) okuyun.
+5. Azure VM türü, işletim sistemi sürümü ve SAP HANA sürümünün geçerli bir birleşimini bullemeyebilirsiniz, SAP ürün kullanılabilirliği matrisini iade etmeniz gerekir. SAP kullanılabilirliği matrisinde, SAP HANA veritabanınıza karşı çalıştırmak istediğiniz SAP ürününün desteklenip desteklenmediğini öğrenebilirsiniz.
 
 
-## <a name="step-by-step-vm-deployment-and-guest-os-considerations"></a>Adım adım VM dağıtımı ve konuk İşletim Sistemi konuları
-Bu aşamada, HANA'yı yüklemek için VM(ler)i dağıtan adımlardan geçmeniz ve kurulumdan sonra seçilen işletim sistemini en iyi duruma getirmeniz gerekir.
+## <a name="step-by-step-vm-deployment-and-guest-os-considerations"></a>Adım adım VM dağıtımı ve konuk işletim sistemi konuları
+Bu aşamada, sanal makineleri yüklemek için VM 'leri dağıtmaya yönelik adımları uygulamanız gerekir ve son olarak, yüklemeden sonra seçilen işletim sistemini en iyileştirmelisiniz.
 
-1. Azure galerisinden temel görüntüyü seçti. SAP HANA için kendi işletim sistemi görüntünüzoluşturmak istiyorsanız, başarılı bir SAP HANA kurulumu için gerekli olan tüm farklı paketleri bilmeniz gerekir. Aksi takdirde, Azure resim galerisinden SAP veya SAP HANA için SUSE ve Red Hat görüntülerinin kullanılması önerilir. Bu görüntüler, başarılı bir HANA yüklemesi için gerekli paketleri içerir. İşletim sistemi sağlayıcısıyla olan destek sözleşmenize bağlı olarak, kendi lisansınızı getirdiğiniz bir resim seçmeniz gerekir. Veya destek içeren bir işletim sistemi görüntüsü seçin
-2. Kendi lisansınızı getirmenizi gerektiren bir konuk işletim sistemi görüntüsü seçtiyseniz, en son düzeltme ekine sahip olve uygulayabilmeniz için işletim sistemi görüntüsünü aboneliğinize kaydetmeniz gerekir. Bu adım kamu internet erişimi gerektirecektir. Örneğin Azure'da bir SMT sunucusunun özel örneğini ayarlamadığınız sürece.
-3. VM'nin ağ yapılandırmasını belirleyin. [Azure'daki SAP HANA altyapı yapılandırmaları ve işlemleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)nde daha fazla bilgi okuyabilirsiniz. Azure'daki sanal ağ kartlarına atayabileceğiniz ağ iş başı kotası olmadığını unutmayın. Sonuç olarak, trafiği farklı vNIC'ler üzerinden yönlendirmenin tek amacı güvenlik hususlarına bağlıdır. Birden çok vNIC üzerinden trafik yönlendirme karmaşıklığı ve güvenlik yönleri tarafından uygulanan gereksinimleri arasında desteklenebilir bir uzlaşma bulmak için size güveniyoruz.
-3. VM dağıtıldıktan ve kaydedildikten sonra en son düzeltme em'lerini işletim sistemine uygulayın. Kendi aboneliğinize kayıtlı. Ya da işletim sistemi desteği içeren bir görüntü seçtiyseniz VM'nin düzeltme eki nerelere zaten erişebilmeli. 
-4. SAP HANA için gerekli melodileri uygulayın. Bu melodiler bu SAP destek notlarında listelenir:
+1. Azure Galerisi 'nden temel görüntüyü seçin. SAP HANA için kendi işletim sistemi görüntünüzü derlemek istiyorsanız, başarılı bir SAP HANA yüklemesi için gerekli olan tüm farklı paketleri bilmeniz gerekir. Aksi takdirde, SAP için SUSE ve Red Hat görüntülerinin Azure görüntü Galerisi 'nden SAP HANA kullanılması önerilir. Bu görüntüler, başarılı bir HANA yüklemesi için gereken paketleri içerir. İşletim sistemi sağlayıcısıyla destek sözleşmeniz temelinde, kendi lisansınızı getiren bir görüntü seçmeniz gerekir. Ya da destek içeren bir işletim sistemi görüntüsü seçin
+2. Kendi lisansınızı yapmanızı gerektiren bir konuk işletim sistemi görüntüsü seçtiyseniz, en son düzeltme eklerini indirebilmeniz ve uygulayabilmeniz için işletim sistemi görüntüsünü aboneliğinize kaydetmeniz gerekir. Bu adım, genel internet erişimi gerektirir. Özel örneğinizi (örneğin, Azure 'da bir SMT sunucusu) ayarlamadığınız müddetçe.
+3. VM 'nin ağ yapılandırmasına karar verin. [Azure 'da altyapı yapılandırmalarının ve işlemlerinin SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)belgede daha fazla bilgi edinebilirsiniz. Azure 'daki sanal ağ kartlarına atayabileceğiniz hiçbir ağ işleme kotası olmadığını aklınızda bulundurun. Sonuç olarak, trafiği farklı vNIC 'ler aracılığıyla yönlendirmeye yönelik tek amaç, güvenlik konularını temel alır. Çoklu sanal NIC 'ler aracılığıyla trafik yönlendirme karmaşıklığı ve güvenlik yönleri tarafından zorlanan gereksinimler arasında desteklenebilir uzlaşması bulmanıza güveniyoruz.
+3. VM dağıtıldıktan ve kaydedildikten sonra işletim sistemine en son düzeltme eklerini uygulayın. Kendi aboneliğiniz ile kaydedilir. Ya da işletim sistemi desteği içeren bir görüntü seçtiğinizde, sanal makinenin zaten bu düzeltme eklerine erişimi olması gerekir. 
+4. SAP HANA için gereken uyarlayan 'yi uygulayın. Bu tunlar, bu SAP destek notlarında listelenmiştir:
 
-    - [SAP destek notu #2694118 - Red Hat Enterprise Linux HA Eklentisi Azure'da](https://launchpad.support.sap.com/#/notes/2694118)
-    - [SAP destek notu #1984787 - SUSE LINUX Enterprise Server 12: Kurulum notları](https://launchpad.support.sap.com/#/notes/1984787) 
-    - [SAP destek notu #2578899 - SUSE Linux Enterprise Server 15: Kurulum Notu](https://launchpad.support.sap.com/#/notes/2578899)
-    - [SAP destek notu #2002167 - Red Hat Enterprise Linux 7.x: Kurulum ve Yükseltme](https://launchpad.support.sap.com/#/notes/0002002167)
-    - [SAP destek notu #2292690 - SAP HANA DB: RHEL 7 için önerilen işletim sistemi ayarları](https://launchpad.support.sap.com/#/notes/0002292690) 
-    -  [SAP destek notu #2772999 - Red Hat Enterprise Linux 8.x: Kurulum ve Yapılandırma](https://launchpad.support.sap.com/#/notes/2772999) 
-    -  [SAP destek notu #2777782 - SAP HANA DB: RHEL 8 için önerilen Işletim Sistemi Ayarları](https://launchpad.support.sap.com/#/notes/2777782)
-    -  [SAP destek notu #2455582 - Linux: GCC 6.x ile derlenen SAP uygulamalarını çalıştırmak](https://launchpad.support.sap.com/#/notes/0002455582)
-    -  [SAP destek notu #2382421 - HANA ve OS Düzeyinde Ağ Yapılandırmasını Optimize Etme](https://launchpad.support.sap.com/#/notes/2382421)
+    - [SAP destek notunun #2694118-Azure 'da Red Hat Enterprise Linux HA eklentisi](https://launchpad.support.sap.com/#/notes/2694118)
+    - [SAP destek notu #1984787-SUSE LINUX Enterprise Server 12: yükleme notları](https://launchpad.support.sap.com/#/notes/1984787) 
+    - [SAP destek notunun #2578899-SUSE Linux Enterprise Server 15: yükleme notunun](https://launchpad.support.sap.com/#/notes/2578899)
+    - [SAP destek notunun #2002167-Red Hat Enterprise Linux 7. x: yükleme ve yükseltme](https://launchpad.support.sap.com/#/notes/0002002167)
+    - [SAP destek notunun #2292690-SAP HANA DB: RHEL 7 için önerilen işletim sistemi ayarları](https://launchpad.support.sap.com/#/notes/0002292690) 
+    -  [SAP destek notunun #2772999-Red Hat Enterprise Linux 8. x: yükleme ve yapılandırma](https://launchpad.support.sap.com/#/notes/2772999) 
+    -  [SAP destek notunun #2777782-SAP HANA DB: RHEL 8 için önerilen işletim sistemi ayarları](https://launchpad.support.sap.com/#/notes/2777782)
+    -  [SAP destek notunun #2455582-Linux: GCC 6. x ile derlenen SAP uygulamaları çalıştırma](https://launchpad.support.sap.com/#/notes/0002455582)
+    -  [SAP destek notunun #2382421-ağ yapılandırmasını HANA ve işletim sistemi düzeyinde Iyileştirme](https://launchpad.support.sap.com/#/notes/2382421)
 
-1. SAP HANA için Azure depolama türünü seçin. Bu adımda, SAP HANA yüklemesi için depolama düzenine karar vermeniz gerekir. Ekli Azure diskleri veya yerel Azure NFS paylaşımlarını kullanacaksınız. Kullanılabilecek farklı Azure depolama türlerinin desteklenen veya desteklenen Azure depolama türleri ve kombinasyonları [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)belgelenmiştir. Başlangıç noktası olarak belgelenen yapılandırmaları alın. Üretim dışı sistemler için daha düşük iş ortası veya IOPS yapılandırmak mümkün olabilir. Üretim amacıyla, biraz daha fazla iş ve IOPS yapılandırmanız gerekebilir.
-2. M-Serisi veya Mv2 Serisi VM'leri kullanırken DBMS işlem günlüklerini veya redo günlüklerini içeren birimleriniz için [Azure Yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) yapılandırdığınızdan emin olun. Belgelenmiş olarak Yazma Hızlandırıcısı ile ilgili sınırlamaların farkında olun.
-2. Dağıtılan VM(ler)'de [Azure Hızlandırılmış Ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) etkinleştirilip etkinleştirilmediğini denetleyin.
+1. SAP HANA için Azure depolama türünü seçin. Bu adımda, SAP HANA yüklemesi için depolama düzenine karar vermeniz gerekir. Bağlı Azure disklerini ya da yerel Azure NFS paylaşımlarını kullanacaksınız. Azure depolama, kullanılabilir olan veya desteklenen farklı Azure Depolama türleri bileşimleri, [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)belgelenmiştir. Başlangıç noktası olarak belgelenen konfigürasyonları alın. Üretim dışı sistemler için, daha düşük aktarım hızı veya ıOPS yapılandırabilirsiniz. Üretim amacıyla, biraz daha fazla üretilen iş ve ıOPS yapılandırmanız gerekebilir.
+2. [Azure yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) 'YI, DBMS işlem günlüklerini içeren birimleriniz için yapılandırdığınızdan emin olun veya M serisi veya Mv2 serisi VM kullanırken günlükleri yineleyin. Yazma Hızlandırıcısı açıklanan sınırlamalara göz önünde bulundurun.
+2. Dağıtılan VM 'ler üzerinde [Azure hızlandırılmış ağ oluşturma](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) özelliğinin etkinleştirilip etkinleştirilmediğini denetleyin.
 
 > [!NOTE]
-> Farklı sap-tune profillerindeki veya notlarda açıklandığı gibi tüm komutlar Azure'da başarılı bir şekilde çalıştırılamaz. Temel Azure ana bilgisayar donanımının güç modu değiştirilemediğinden, VM'lerin güç modunu manipüle edecek komutlar genellikle bir hatayla geri döner.
+> Farklı SAP-ayarla profillerindeki veya notlarda açıklanan komutların tamamı Azure 'da başarıyla çalıştırılabilir. Temel alınan Azure ana bilgisayar donanımının güç modu işlenemediğinden, VM 'lerin güç modunu işleyen komutlar genellikle bir hatayla birlikte döndürülür.
 
-## <a name="step-by-step-preparations-specific-to-azure-virtual-machines"></a>Azure sanal makinelerine özel adım adım hazırlıklar
-Azure özelliklerinden biri, SAP Ana Bilgisayar Aracısı için izleme verileri sunan bir Azure VM uzantısının yüklenmesidir. Bu izleme uzantısı yükleme ile ilgili ayrıntılar belgelenmiştir:
+## <a name="step-by-step-preparations-specific-to-azure-virtual-machines"></a>Azure sanal makinelerine özgü adım adım hazırlıklar
+Azure özelliklerinden biri, SAP konak aracısına ilişkin izleme verilerini sağlayan bir Azure VM uzantısının yüklemesidir. Bu izleme uzantısının yüklenmesiyle ilgili ayrıntılar şu şekilde belgelenmiştir:
 
--  [SAP Note 2191498,](https://launchpad.support.sap.com/#/notes/2191498/E) Azure'da Linux VM'lerle SAP gelişmiş izlemeyi tartışıyor 
--  [SAP Note 1102124](https://launchpad.support.sap.com/#/notes/1102124/E) Linux'ta SAPOSCOL hakkında bilgi tartışıyor 
--  [SAP Note 2178632,](https://launchpad.support.sap.com/#/notes/2178632/E) Microsoft Azure'da SAP için temel izleme ölçümlerini tartışıyor
--  [SAP NetWeaver için Azure Sanal Makineler dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
+-  [SAP Note 2191498](https://launchpad.support.sap.com/#/notes/2191498/E) , Azure 'Da Linux VM 'lerle SAP gelişmiş izlemeyi tartışır 
+-  [SAP Note 1102124](https://launchpad.support.sap.com/#/notes/1102124/E) , LINUX 'TA SAPOSCOL hakkında bilgi açıklar 
+-  [SAP Note 2178632](https://launchpad.support.sap.com/#/notes/2178632/E) MICROSOFT Azure üzerinde SAP için önemli izleme ölçümlerini açıklar
+-  [SAP NetWeaver için Azure sanal makineler dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
-## <a name="sap-hana-installation"></a>SAP HANA kurulumu
-Azure sanal makineleri dağıtıldı ve işletim sistemleri kayıtlı ve yapılandırılmış, SAP yükleme göre SAP HANA yükleyebilirsiniz. Bu dokümantasyona ulaşmak için iyi bir başlangıç olarak, bu SAP web sitesi [HANA kaynakları](https://www.sap.com/products/hana/implementation/resources.html) ile başlayın
+## <a name="sap-hana-installation"></a>SAP HANA yükleme
+Dağıtılan Azure sanal makineleri ve işletim sistemleri kayıtlı ve yapılandırılmışsa, SAP HANA SAP yüklemesine göre yükleyebilirsiniz. Bu belgeleri kullanmaya başlamak iyi bir başlangıç olarak, bu SAP web sitesi [Hana kaynaklarıyla](https://www.sap.com/products/hana/implementation/resources.html) başlayın
 
-Azure Premium Depolama veya Ultra diskin doğrudan bağlı disklerini kullanan SAP HANA ölçeklendirme yapılandırmaları [için, Azure'daki SAP HANA altyapı yapılandırmaları ve işlemleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#configuring-azure-infrastructure-for-sap-hana-scale-out) belgesindeki ayrıntıları okuyun
+Azure Premium Depolama veya ultra disk 'in doğrudan bağlı disklerini kullanan SAP HANA genişleme yapılandırması için, [Azure 'da altyapı yapılandırmalarının ve işlemlerinin SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#configuring-azure-infrastructure-for-sap-hana-scale-out) belgedeki özellikleri okuyun
 
 
-## <a name="additional-resources-for-sap-hana-backup"></a>SAP HANA yedeklemesi için ek kaynaklar
-Azure VM'lerde SAP HANA veritabanlarını yedekleme hakkında bilgi için bkz:
-* [Azure Sanal Makinelerde SAP HANA için yedekleme kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-* [DOSYA DÜZEYINDE SAP HANA Azure Yedekleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+## <a name="additional-resources-for-sap-hana-backup"></a>SAP HANA yedekleme için ek kaynaklar
+Azure VM 'lerinde SAP HANA veritabanlarının yedeklenmesi hakkında daha fazla bilgi için, bkz.:
+* [Azure sanal makinelerinde SAP HANA için yedekleme Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+* [Dosya düzeyinde Azure Backup SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Belgeleri okuyun:

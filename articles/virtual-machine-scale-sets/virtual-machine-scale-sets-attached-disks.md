@@ -1,6 +1,6 @@
 ---
-title: Azure Sanal Makine Ölçeği Eklenmiş Veri Diskleri Kümeler
-description: Belirli kullanım örneklerinin ana hatlarıyla sanal makine ölçek kümeleri ile ekli veri disklerinin nasıl kullanılacağını öğrenin.
+title: Azure sanal makine ölçek kümeleri eklenen veri diskleri
+description: Sanal makine ölçek kümeleriyle eklenen veri disklerini, belirli kullanım durumlarının anahatları aracılığıyla nasıl kullanacağınızı öğrenin.
 author: avirishuv
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/25/2017
 ms.author: avverma
 ms.openlocfilehash: 6e39a8ffb24b0cca720890e3d00a55d1e58fadc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123367"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure sanal makine ölçek kümeleri ve bağlı veri diskleri
@@ -86,12 +86,12 @@ Bir Linux kümesinde veri disklerini otomatik olarak hazırlamak için şunları
 
 
 ## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Önceden doldurulmuş veri disklerini mevcut bir ölçek kümesine ekleme
-Ölçek kümesi modelinde belirtilen veri diskleri her zaman boştur. Ancak bir ölçek kümesindeki belirli bir VM’ye var olan bir veri diski ekleyebilirsiniz. Verileri ölçek kümesindeki tüm VM'lere yaymak isterseniz, veri diskinizi çoğaltabilir ve ölçek kümesindeki her VM'ye ekleyebilir veya verileri içeren ve bu özel görüntüden ayarlanan ölçeği sağlayan özel bir görüntü oluşturabilirsiniz veya Azure Dosyaları veya benzer bir veri depolama teklifi kullanabilirsiniz.
+Ölçek kümesi modelinde belirtilen veri diskleri her zaman boştur. Ancak bir ölçek kümesindeki belirli bir VM’ye var olan bir veri diski ekleyebilirsiniz. Ölçek kümesindeki tüm VM 'Ler arasında veri yaymak isterseniz, veri diskinizi çoğaltabilir ve ölçek kümesindeki her bir VM 'ye ekleyebilir ya da verileri içeren özel bir görüntü oluşturabilir veya Azure dosyalarını veya benzer bir veri depolama teklifini kullanabilirsiniz.
 
 
 ## <a name="additional-notes"></a>Ek notlar
 Azure Yönetilen diskleri ve ölçek kümesi bağlı veri diskleri için destek, Microsoft.Compute API’sinin [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) veya üstü sürümlere eklenmiştir.
 
-Ölçek kümelerinde eklenmiş veri diskleri için Azure portal desteği sınırlıdır. Gereksinimlerinize bağlı olarak, bağlı diskleri yönetmek için Azure şablonları, CLI, PowerShell, SDK’lar ve REST API kullanabilirsiniz.
+Ölçek kümelerinde eklenen veri diskleri için Azure portal desteği sınırlıdır. Gereksinimlerinize bağlı olarak, bağlı diskleri yönetmek için Azure şablonları, CLI, PowerShell, SDK’lar ve REST API kullanabilirsiniz.
 
 

@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670874"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio Eğilimlerini Çözümleme
@@ -52,16 +52,16 @@ Application Insights Eğilimleri, uygulamanızın telemetrisinden bir zaman dizi
 
 Hangi telemetri türlerini görüntüleyeceğinizi ayarlamak için pencerenin üstündeki denetimleri kullanın. İlk olarak ilgilendiğiniz telemetri türlerini seçin:
 
-* **Telemetri Türü** - Sunucu istekleri, özel durumlar, bağımlılıklar veya özel olaylar
+* **Telemetri türü** -sunucu istekleri, özel durumlar, bağımlılıklar veya özel olaylar
 * **Zaman Aralığı** - Son 30 dakika ile son 3 gün arasında herhangi bir yer
 * **Gruplandırma Ölçütü** - Özel durum türü, sorun kimliği, ülke/bölge ve daha fazlası.
 
-Ardından, sorguyu çalıştırmak için **Telemetri'yi Çözümle'yi** tıklatın.
+Ardından, sorguyu çalıştırmak için **Telemetriyi çözümle** ' ye tıklayın.
 
 Görseldeki baloncuklar arasında gezinmek için:
 
 * Bir baloncuğa tıklayarak seçtiğinizde pencerenin altındaki filtreler güncelleştirilir ve yalnızca belirli bir süre içinde oluşan olaylar özetlenir
-* Arama aracına gitmek ve bu süre içinde gerçekleşen tüm tek tek telemetri olaylarını görmek için bir balonu çift tıklatın
+* Arama aracına gitmek ve bu süre içinde gerçekleşen tüm telemetri olaylarını görüntülemek için kabarcığa çift tıklayın
 * Baloncuğun görseldeki seçimini kaldırmak için Ctrl tuşuna basıp tıklayın.
 
 > [!TIP]
@@ -70,7 +70,7 @@ Görseldeki baloncuklar arasında gezinmek için:
 > 
 
 ## <a name="filter"></a>Filtre
-Pencerenin altındaki filtre denetimleri ile daha özel eğilimleri bulun. Bir filtre uygulamak için adına tıklayın. Telemetrinizin belirli bir yönünde gizlenmiş olabilecek eğilimleri bulmak için farklı filtreler arasında hızlıca geçiş yapabilirsiniz. Özel Durum Türü gibi bir boyutta bir filtre uygularsanız, diğer boyutlardaki filtreler gri renkte görünseler bile tıklanabilir kalır. Filtreyi uygulamadan çıkarmak için yeniden tıklatın. Aynı yönde birden fazla filtreyi seçmek için Ctrl tuşuna basıp tıklayın.
+Pencerenin altındaki filtre denetimleri ile daha özel eğilimleri bulun. Bir filtre uygulamak için adına tıklayın. Telemetrinizin belirli bir yönünde gizlenmiş olabilecek eğilimleri bulmak için farklı filtreler arasında hızlıca geçiş yapabilirsiniz. Özel durum türü gibi bir boyutta filtre uygularsanız, diğer boyutlardaki filtreler gri renkte görünmesine rağmen tıklatılabilir kalır. Bir filtrenin uygulanmasını kaldırmak için, tekrar tıklayın. Aynı yönde birden fazla filtreyi seçmek için Ctrl tuşuna basıp tıklayın.
 
 ![Eğilim filtreleri](./media/visual-studio-trends/TrendsFiltering-750.png)
 
@@ -86,7 +86,7 @@ Bu filtrelerden birini kaldırmak için yöne ilişkin **Seçili filtreleri kald
 ![Birden fazla filtre](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Anormallikleri bulma
-Eğilimler aracı, aynı zaman dizisindeki diğer baloncuklara kıyasla anormal olan olayların baloncuklarını vurgulayabilir. Görünüm Türü açılır listesinde **Zaman aralığındaki sayımlar (anomalileri vurgula)** veya **Zaman aralığındaki yüzdeler (anomalileri vurgula)** seçeneğini belirleyin. Kırmızı baloncuklar anormaldir. Anomaliler, son iki zaman diliminde meydana gelen sayımların/yüzdelerin standart sapmasının 2,1 katını aşan sayımlara/yüzdelere sahip kabarcıklar olarak tanımlanır (son 24 saati görüntülerseniz 48 saat, vb.).
+Eğilimler aracı, aynı zaman dizisindeki diğer baloncuklara kıyasla anormal olan olayların baloncuklarını vurgulayabilir. Görünüm Türü açılır listesinde **Zaman aralığındaki sayımlar (anomalileri vurgula)** veya **Zaman aralığındaki yüzdeler (anomalileri vurgula)** seçeneğini belirleyin. Kırmızı baloncuklar anormaldir. Bozukluklar, geçmiş iki dönemde gerçekleşen sayımlar/yüzdeler için 2,1 kez (son 24 saati görüntülerken, 48 saat, vb.) standart sapmadan, sayısı/yüzdeleri aşan kabarcıklar olarak tanımlanır.
 
 ![Renkli noktalar anomalileri gösterir](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

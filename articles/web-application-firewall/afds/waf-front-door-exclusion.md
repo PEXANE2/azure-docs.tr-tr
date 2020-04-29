@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı 'daki Web uygulaması güvenlik duvarı hariç tutma listeleri - Azure portalı
-description: Bu makalede, Azure portalı ile Azure Ön'teki dışlama listeleri yapılandırması hakkında bilgi verilmektedir.
+title: Azure ön kapıdaki Web uygulaması güvenlik duvarı dışlama listeleri-Azure portal
+description: Bu makalede, Azure portal ile Azure 'da dışlama listeleri yapılandırması hakkında bilgi sağlanır.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,44 +8,44 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77925936"
 ---
-# <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Ön Kapı Hizmeti dışlama listeleri ile Web Uygulama Güvenlik Duvarı (WAF) 
+# <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Ön kapı hizmeti dışlama listeleriyle Web uygulaması güvenlik duvarı (WAF) 
 
-Bazen Web Uygulaması Güvenlik Duvarı (WAF), uygulamanız için izin vermek istediğiniz bir isteği engelleyebilir. Örneğin, Active Directory kimlik doğrulama için kullanılan belirteçleri ekler. Bu belirteçler, WAF kurallarından yanlış pozitif itetikleyebilecek özel karakterler içerebilir. WAF dışlama listeleri, waf değerlendirmesinden belirli istek özniteliklerini atlayasınız.  Bir dışlama listesi [PowserShell,](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0) [Azure CLI,](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add) [Rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)veya Azure portalı kullanılarak yapılandırılabilir. Aşağıdaki örnekte Azure portal yapılandırması gösterilmektedir. 
-## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Azure portalını kullanarak dışlama listelerini yapılandırma
-**Yönetilen kurallar** uyarınca WAF portalından **dışlamaları yönetme**
+Bazen Web uygulaması güvenlik duvarı (WAF), uygulamanız için izin vermek istediğiniz bir isteği engelleyebilirler. Örneğin Active Directory, kimlik doğrulaması için kullanılan belirteçleri ekler. Bu belirteçler, WAF kurallarından yanlış pozitif bir pozitif tetikleyebildiği özel karakterler içerebilir. WAF dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar.  Bir dışlama listesi [Psershell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure CLı](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)veya Azure Portal kullanılarak yapılandırılabilir. Aşağıdaki örnek Azure portal yapılandırmasını gösterir. 
+## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Dışlama listelerini Azure portal kullanarak yapılandırma
+Özel **durumları yönetme** işlemi, WAF portalından **yönetilen kurallar** altında erişilebilir
 
-![Dışlamayı](../media/waf-front-door-exclusion/exclusion1.png)
-![yönetexclusion_add yönet](../media/waf-front-door-exclusion/exclusion2.png)
+![Dışlama](../media/waf-front-door-exclusion/exclusion1.png)
+![yönetme exclusion_add yönetme](../media/waf-front-door-exclusion/exclusion2.png)
 
- Örnek bir dışlama ![listesi: exclusion_define yönet](../media/waf-front-door-exclusion/exclusion3.png)
+ Örnek bir dışlama listesi: ![Yönet exclusion_define](../media/waf-front-door-exclusion/exclusion3.png)
 
-Bu örnek, *kullanıcı* üstbilgi alanındaki değeri dışlar. Geçerli bir istek, SQL enjeksiyon kuralını tetikleyen bir dize içeren *kullanıcı* alanını içerebilir. WAF kuralının alandaki hiçbir şeyi değerlendirmemesi için bu durumda *kullanıcı* parametresini hariç tutabilirsiniz.
+Bu örnek, *Kullanıcı* üstbilgisi alanındaki değeri dışlar. Geçerli bir istek, bir SQL ekleme kuralını tetikleyen bir dize içeren *Kullanıcı* alanı içerebilir. Bu durumda, WAF kuralının alanındaki herhangi bir şeyi değerlendirmemesi için *Kullanıcı* parametresini dışarıda bırakabilirsiniz.
 
-Dışlama listelerine ada göre aşağıdaki öznitelikler eklenebilir. Kullandığınız alanların değerleri WAF kurallarına göre değerlendirilmez, ancak adları değerlendirilir. Dışlama listeleri, alanın değerinin denetimini kaldırır.
+Aşağıdaki öznitelikler ada göre dışlama listelerine eklenebilir. Kullandığınız alanların değerleri WAF kurallarına göre değerlendirilmez, ancak adları değerlendirilir. Dışlama Listeleri alanın değerinin incelemesini kaldırır.
 
-* Üstbilgi adı isteme
-* Çerez adı isteği
-* Sorgu dize args adı
-* İstek gövde sonrası args adı
+* İstek üst bilgisi adı
+* İstek tanımlama bilgisi adı
+* Sorgu dizesi bağımsız değişkenleri adı
+* İstek gövdesi Post bağımsız değişkenleri adı
 
-Tam istek üstbilgisi, gövde, çerez veya sorgu dize özniteliği eşleşmesi belirtebilirsiniz.  Veya isteğe bağlı olarak kısmi eşleşmeleri belirtebilirsiniz. Aşağıdaki işleçler desteklenen maç ölçütleridir:
+Tam bir istek üst bilgisi, gövde, tanımlama bilgisi veya sorgu dizesi özniteliği eşleşmesi belirtebilirsiniz.  Ya da isteğe bağlı olarak kısmi eşleşmeler belirtebilirsiniz. Aşağıdaki işleçler desteklenen eşleşme ölçütleridir:
 
-- **Equals**: Bu işleç tam bir eşleşme için kullanılır. Örneğin, **bearerToken**adlı bir üstbilgi seçmek için, **bearerToken**olarak seçici kümesi ile eşitler işleci kullanın.
-- **Başlangıç**: Bu işleç, belirtilen seçici değeriyle başlayan tüm alanları eşler.
-- **Biter**: Bu işleç belirtilen seçici değeri ile biten tüm istek alanları eşleşir.
-- **Contains**: Bu işleç, belirtilen seçici değeri içeren tüm istek alanlarıyla eşleşir.
-- **Eşittir any**: Bu işleç tüm istek alanlarıyla eşleşir. * seçici değeridir.
+- **Eşittir**: Bu işleç tam eşleşme için kullanılır. Örneğin, **yataya**adı adlı bir üst bilgi seçmek için, Selector 'un **yataya**kümesi olarak ayarlandığı Equals işlecini kullanın.
+- **Ile başlar**: Bu işleç, belirtilen Seçici değeriyle başlayan tüm alanlarla eşleşir.
+- **Şununla biter**: Bu işleç, belirtilen Seçici değeriyle biten tüm istek alanlarıyla eşleşir.
+- **Contains**: Bu işleç, belirtilen Seçici değerini içeren tüm istek alanlarıyla eşleşir.
+- **Eşittir any**: Bu işleç tüm istek alanlarıyla eşleşir. * Seçici değeridir.
 
-Üstbilgi ve çerez adları büyük/küçük harf duyarsızdır.
+Üst bilgi ve tanımlama bilgisi adları büyük/küçük harfe duyarlıdır.
 
-Dışlama listesini yönetilen kural kümesiiçindeki tüm kurallara, belirli bir kural grubu için kurallara veya önceki örnekte gösterildiği gibi tek bir kurala uygulayabilirsiniz. 
+Dışlama listesini, yönetilen kural kümesi içindeki tüm kurallara, belirli bir kural grubu için kurallara veya önceki örnekte gösterildiği gibi tek bir kurala uygulayabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-WAF ayarlarınızı yapılandırdıktan sonra, WAF günlüklerinizi nasıl görüntülediğinizi öğrenin. Daha fazla bilgi için [Ön Kapı tanılama](../afds/waf-front-door-monitor.md)bakın.
+WAF ayarlarınızı yapılandırdıktan sonra, WAF günlüklerinizi görüntülemeyi öğrenin. Daha fazla bilgi için bkz. [ön kapı tanılama](../afds/waf-front-door-monitor.md).

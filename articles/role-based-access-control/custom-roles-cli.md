@@ -1,6 +1,6 @@
 ---
-title: Azure CLI kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme | Microsoft Dokümanlar
-description: Azure CLI'yi kullanarak Azure kaynakları için rol tabanlı erişim denetimi (RBAC) ile özel rolleri nasıl listeleyiştir, oluşturabilirsiniz, güncelleştirin veya silebilirsiniz.
+title: Azure CLı kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme | Microsoft Docs
+description: Azure CLı kullanarak Azure kaynakları için rol tabanlı erişim denetimi (RBAC) ile özel rolleri listeleme, oluşturma, güncelleştirme veya silme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,33 +15,33 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 44676f7b92c2bcd30612295840054ab2f0c0cf12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062223"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Azure CLI'yi kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme
+# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Azure CLı kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme
 
 > [!IMPORTANT]
-> Bir yönetim grubu `AssignableScopes` eklemek şu anda önizlemededir.
+> ' Ye `AssignableScopes` bir yönetim grubu eklemek Şu anda önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure [kaynakları için yerleşik roller](built-in-roles.md) kuruluşunuzun özel gereksinimlerini karşılamazsa, kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure CLI kullanarak özel rollerin nasıl listelenebildiğini, oluşturularak, güncelleştirilenveya silininin açıklanmaktadır.
+[Azure kaynaklarına yönelik yerleşik roller](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure CLı kullanılarak özel rolleri listeleme, oluşturma, güncelleştirme veya silme işlemlerinin nasıl yapılacağı açıklanır.
 
-Özel bir rolün nasıl oluşturulaca biliyor olun adım adım öğretici için [Bkz.](tutorial-custom-role-cli.md)
+Özel rol oluşturma hakkında adım adım bir öğretici için bkz. [öğretici: Azure CLI kullanarak Azure kaynakları için özel rol oluşturma](tutorial-custom-role-cli.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Özel roller oluşturmak için şunları yapmanız gerekir:
+Özel Roller oluşturmak için şunlar gerekir:
 
 - [Sahip](built-in-roles.md#owner) veya [Kullanıcı Erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi özel rol oluşturma izni
-- [Azure Bulut Kabuğu](../cloud-shell/overview.md) veya [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) veya [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="list-custom-roles"></a>Özel rolleri listeleme
 
-Atama için kullanılabilen özel rolleri listelemek için [az rol tanım listesini](/cli/azure/role/definition#az-role-definition-list)kullanın. Aşağıdaki örnekler, geçerli abonelikteki tüm özel rolleri listeleyir.
+Atama için kullanılabilen özel rolleri listelemek için [az role Definition List](/cli/azure/role/definition#az-role-definition-list)kullanın. Aşağıdaki örneklerde, geçerli abonelikteki tüm özel roller listelenmektedir.
 
 ```azurecli
 az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
@@ -68,15 +68,15 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 ...
 ```
 
-## <a name="list-a-custom-role-definition"></a>Özel rol tanımını listelama
+## <a name="list-a-custom-role-definition"></a>Özel bir rol tanımı listeleme
 
-Özel bir rol tanımı nı listelemek için [az rol tanımı listesini](/cli/azure/role/definition#az-role-definition-list)kullanın. Bu, yerleşik bir rol için kullanacağınız komutun aynısI.
+Özel bir rol tanımı listelemek için [az role Definition List](/cli/azure/role/definition#az-role-definition-list)kullanın. Bu, yerleşik bir rol için kullandığınız komuttur.
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-Aşağıdaki örnekte *Sanal Makine Operatörü* rol tanımı listeleilmektedir:
+Aşağıdaki örnek, *sanal makine operatörü* rol tanımını listeler:
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator"
@@ -118,7 +118,7 @@ az role definition list --name "Virtual Machine Operator"
 ]
 ```
 
-Aşağıdaki örnekte, *Sanal Makine Operatörü* rolünün yalnızca eylemleri listelenebedilir:
+Aşağıdaki örnek yalnızca *sanal makine operatörü* rolünün eylemlerini listeler:
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
@@ -142,15 +142,15 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
 
 ## <a name="create-a-custom-role"></a>Özel rol oluşturma
 
-Özel bir rol oluşturmak için [az rol tanımı nı](/cli/azure/role/definition#az-role-definition-create)kullanın. Rol tanımı JSON açıklaması veya JSON açıklaması içeren bir dosyaya giden bir yol olabilir.
+Özel bir rol oluşturmak için [az role Definition Create](/cli/azure/role/definition#az-role-definition-create)kullanın. Rol tanımı bir JSON açıklaması veya JSON açıklaması içeren bir dosyanın yolu olabilir.
 
 ```azurecli
 az role definition create --role-definition <role_definition>
 ```
 
-Aşağıdaki örnek, Sanal Makine *Operatörü*adlı özel bir rol oluşturur. Bu özel rol, *Microsoft.Compute,* *Microsoft.Storage*ve *Microsoft.Network* kaynak sağlayıcılarının tüm okuma işlemlerine erişim atar ve sanal makineleri başlatmak, yeniden başlatmak ve izlemek için erişim atar. Bu özel rol iki abonelikte kullanılabilir. Bu örnek, giriş olarak bir JSON dosyakullanır.
+Aşağıdaki örnek, *sanal makine işleci*adlı özel bir rol oluşturur. Bu özel rol, *Microsoft. COMPUTE*, *Microsoft. Storage*ve *Microsoft. Network* kaynak sağlayıcılarının tüm okuma işlemlerine erişim atar ve sanal makinelere başlatma, yeniden başlatma ve izleme erişimi atar. Bu özel rol iki abonelik için kullanılabilir. Bu örnek, bir JSON dosyasını girdi olarak kullanır.
 
-vmoperator.json
+vmoperator. JSON
 
 ```json
 {
@@ -185,15 +185,15 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ## <a name="update-a-custom-role"></a>Özel rolü güncelleştirme
 
-Özel bir rolü güncelleştirmek için, önce rol tanımını almak için [az rol tanımı listesini](/cli/azure/role/definition#az-role-definition-list) kullanın. İkinci olarak, rol tanımında istenen değişiklikleri yapın. Son olarak, güncelleştirilmiş rol tanımını kaydetmek için [az rol tanımı güncelleştirmesini](/cli/azure/role/definition#az-role-definition-update) kullanın.
+Özel bir rolü güncelleştirmek için öncelikle rol tanımını almak üzere [az role Definition List](/cli/azure/role/definition#az-role-definition-list) öğesini kullanın. İkinci olarak, rol tanımında istenen değişiklikleri yapın. Son olarak, güncelleştirilmiş rol tanımını kaydetmek için [az role Definition Update](/cli/azure/role/definition#az-role-definition-update) kullanın.
 
 ```azurecli
 az role definition update --role-definition <role_definition>
 ```
 
-Aşağıdaki örnek, *Microsoft.Insights/diagnosticSettings/işlemini* *Sanal Makine* Operatörü `AssignableScopes` özel rolüne `Actions` bir yönetim grubu ekler ve ekler. Bir yönetim grubu `AssignableScopes` eklemek şu anda önizlemededir.
+Aşağıdaki örnek, `Actions` ' a *Microsoft. Insights/diagnosticsettings/* Operation öğesini ekler ve *sanal makine operatörü* özel `AssignableScopes` rolü için öğesine bir yönetim grubu ekler. ' Ye `AssignableScopes` bir yönetim grubu eklemek Şu anda önizlemededir.
 
-vmoperator.json
+vmoperator. JSON
 
 ```json
 {
@@ -230,13 +230,13 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ## <a name="delete-a-custom-role"></a>Özel rolü silme
 
-Özel bir rolü silmek için [az rol tanımı silme'yi](/cli/azure/role/definition#az-role-definition-delete)kullanın. Silmek için rolü belirtmek için rol adını veya rol kimliğini kullanın. Rol kimliğini belirlemek için [az rol tanım listesini](/cli/azure/role/definition#az-role-definition-list)kullanın.
+Özel bir rolü silmek için [az role Definition Delete](/cli/azure/role/definition#az-role-definition-delete)kullanın. Silinecek rolü belirtmek için rol adını veya rol KIMLIĞINI kullanın. Rol KIMLIĞINI öğrenmek için [az role Definition List](/cli/azure/role/definition#az-role-definition-list)kullanın.
 
 ```azurecli
 az role definition delete --name <role_name or role_id>
 ```
 
-Aşağıdaki örnek, *Sanal Makine Operatörü* özel rolünü siler.
+Aşağıdaki örnek, *sanal makine operatörü* özel rolünü siler.
 
 ```azurecli
 az role definition delete --name "Virtual Machine Operator"
@@ -244,6 +244,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Azure CLI'yi kullanarak Azure kaynakları için özel bir rol oluşturma](tutorial-custom-role-cli.md)
+- [Öğretici: Azure CLı kullanarak Azure kaynakları için özel bir rol oluşturma](tutorial-custom-role-cli.md)
 - [Azure kaynakları için özel roller](custom-roles.md)
-- [Azure Kaynak Yöneticisi kaynak sağlayıcısı işlemleri](resource-provider-operations.md)
+- [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

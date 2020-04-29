@@ -1,6 +1,6 @@
 ---
-title: Kapsama alanını oluşturma | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar'a sahip bölgeler hakkında bilgi edinin ve işlenen ayrıntılar düzeyiyle birlikte kapsama alanı oluşturulabilir.
+title: İşleme kapsamı | Microsoft Azure haritaları
+description: Bu makalede, işleme kapsamına sahip bölgeler hakkında bilgi edinmek için, işlenen ayrıntıların düzeyiyle birlikte Microsoft Azure.
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -9,30 +9,30 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536760"
 ---
-# <a name="azure-maps-render-coverage"></a>Azure Haritalar kapsama alanını oluşturma
+# <a name="azure-maps-render-coverage"></a>Azure haritalar işleme kapsamı
 
-Azure Haritalar, haritalar oluşturmak için hem raster karoları hem de vektör kutucuklarını kullanır. En düşük çözünürlükte, tüm dünya tek bir kiremit sığar. En yüksek çözünürlükte, tek bir döşeme 38 metrekareyi temsil eder. Haritayı yakınlaştırdıkça kıtalar, bölgeler, şehirler ve tek tek sokaklar hakkında daha fazla ayrıntı görürsünüz. Döşemeler hakkında daha fazla bilgi için [Yakınlaştırma düzeyleri ve döşeme ızgarası'na](zoom-levels-and-tile-grid.md)bakın.
+Azure haritalar haritalar oluşturmak için hem raster kutucukları hem de vektör kutucukları kullanır. En düşük çözünürlükte, dünyanın tamamı tek bir kutucuğa sığar. En yüksek çözünürlükte, tek bir kutucuk 38 kare metreyi temsil eder. Haritada yakınlaştırdığınızda, kıtalar, bölgeler, şehirler ve bireysel Streets hakkında daha fazla ayrıntı görürsünüz. Kutucuklar hakkında daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
 
-Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tablolar, her bölge için işleyebilir bilgi düzeyini ayrıntılı olarak ayrıntıya getirmektedir.
+Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Aşağıdaki tablolar her bölge için işleyebilmeniz için bilgi düzeyini ayrıntılandırır.
 
 ## <a name="legend"></a>Açıklama
 
 | Sembol | Anlamı |
 |--------|---------|
-| ✓ | Bölge ayrıntılı verilerle temsil edilir.   |
-| Ø | Bölge basitleştirilmiş verilerle temsil edilir. |
+| ✓ | Bölge, ayrıntılı verilerle temsil edilir.   |
+| Ø | Bölge, Basitleştirilmiş verilerle temsil edilir. |
 
 
 ## <a name="africa"></a>Afrika 
 
 
-| Ülke/Bölge | Raster Fayans Birleşik | Vektör Karoları Birleştirilmiş |
+| Ülke/Bölge | Raster kutucukları Birleşik | Vektör kutucukları Birleşik |
 | ------ | :------------------: | :------------------: |
 | Cezayir                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -74,8 +74,8 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Nijerya                          | ✓ | ✓ |
 | Reunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
-| Saint Helena, Yükseliş ve Tristan da Cunha | ✓ | Ø |
-| São Tomé ve Príncipe            | ✓ | Ø |
+| Saint Helena, Ascension ve Tristan da Cunha | ✓ | Ø |
+| Sao Tome ve Principe            | ✓ | Ø |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Somali                          | ✓ | ✓ |
@@ -92,7 +92,7 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-| Ülke/Bölge | Raster Fayans Birleşik | Vektör Karoları Birleştirilmiş |
+| Ülke/Bölge | Raster kutucukları Birleşik | Vektör kutucukları Birleşik |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua ve Barbuda       | ✓ | ✓ |
@@ -102,7 +102,7 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Barbados                  | ✓ | ✓ |
 | Beliz                    | ✓ | ✓ |
 | Bermuda                   | ✓ | ✓ |
-| Bolivya Plurinational Eyaleti | ✓ | ✓ |
+| Bolivya 'nın plurinsel durumu | ✓ | ✓ |
 | Bonaire, Sint Eustatius ve Saba | ✓ | ✓ |
 | Brezilya                    | ✓ | ✓ |
 | Kanada                    | ✓ | ✓ |
@@ -135,11 +135,11 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Peru                      | ✓ | ✓ |
 | Porto Riko               | ✓ | ✓ |
 | Quebec (Kanada)           | ✓ | ✓ |
-| Aziz Barthélemy          | ✓ | ✓ |
+| Saint Barthélimy          | ✓ | ✓ |
 | Saint Kitts ve Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
-| Saint Martin (Fransızca)     | ✓ | ✓ |
-| Aziz Pierre ve Miquelon | ✓ | ✓ |
+| Saint MARTIN (Fransızca)     | ✓ | ✓ |
+| Saint Pierre ve Miquelon | ✓ | ✓ |
 | Saint Vincent ve Grenadinler | ✓ | ✓ |
 | Sint Maarten (Felemenkçe)      | ✓ | ✓ |
 | Güney Georgia ve Güney Sandwich Adaları | ✓ | ✓ |
@@ -154,7 +154,7 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 
 ## <a name="asia"></a>Asya 
 
-| Ülke/Bölge | Raster Fayans Birleşik | Vektör Karoları Birleştirilmiş |
+| Ülke/Bölge | Raster kutucukları Birleşik | Vektör kutucukları Birleşik |
 | ------ | :------------------: | :------------------: |
 | Afganistan               |   | Ø |
 | Bahreyn                   | ✓ | ✓ |
@@ -201,14 +201,14 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Timor-Leste               |   | Ø |
 | Türkmenistan              |   | Ø |
 | Birleşik Arap Emirlikleri      | ✓ | ✓ |
-| Amerika Birleşik Devletleri Küçük Dış Adalar |   | Ø |
+| Birleşik Devletler küçük harici Adaları |   | Ø |
 | Özbekistan                |   | Ø |
 | Vietnam                   | ✓ | ✓ |
 | Yemen                     | ✓ | ✓ |
 
 ## <a name="oceania"></a>Okyanusya
 
-| Ülke/Bölge | Raster Fayans Birleşik | Vektör Karoları Birleştirilmiş |
+| Ülke/Bölge | Raster kutucukları Birleşik | Vektör kutucukları Birleşik |
 | ------ | :------------------: | :------------------: |
 | Amerikan Samoası            |   | ✓ |
 | Avustralya                 | ✓ | ✓ |
@@ -238,7 +238,7 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 
 ## <a name="europe"></a>Avrupa
 
-| Ülke/Bölge | Raster Fayans Birleşik | Vektör Karoları Birleştirilmiş |
+| Ülke/Bölge | Raster kutucukları Birleşik | Vektör kutucukları Birleşik |
 | ------ | :------------------: | :------------------: |
 | Arnavutluk                   | ✓ | ✓ |
 | Andorra                   | ✓ | ✓ |
@@ -247,7 +247,7 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Azerbaycan                | ✓ | Ø |
 | Belarus                   | Ø | ✓ |
 | Belçika                   | ✓ | ✓ |
-| Bosna Hersek        | ✓ | ✓ |
+| Bosna-Hersek        | ✓ | ✓ |
 | Bulgaristan                  | ✓ | ✓ |
 | Hırvatistan                   | ✓ | ✓ |
 | Kıbrıs                    | ✓ | ✓ |
@@ -288,7 +288,7 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Sırbistan                    | ✓ | ✓ |
 | Slovakya                  | ✓ | ✓ |
 | Slovenya                  | ✓ | ✓ |
-| Güney Kurils           | ✓ | ✓ |
+| Güney Küıls           | ✓ | ✓ |
 | İspanya                     | ✓ | ✓ |
 | Svalbard                  | ✓ | ✓ |
 | İsveç                    | ✓ | ✓ |
@@ -296,10 +296,10 @@ Ancak, Haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Türkiye                    | ✓ | ✓ |
 | Ukrayna                   | ✓ | ✓ |
 | Birleşik Krallık            | ✓ | ✓ |
-| Vatikan              | ✓ | ✓ |
+| Vatikan şehri              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Haritalar oluşturma hakkında daha fazla bilgi için [Yakınlaştırma düzeyleri ve döşeme ızgarası'na](zoom-levels-and-tile-grid.md)bakın.
+Azure haritalar işleme hakkında daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
 
-[Haritalar yönlendirme hizmetinin kapsama alanları](routing-coverage.md)hakkında bilgi edinin. 
+[Haritalar yönlendirme hizmeti için kapsam bölgeleri](routing-coverage.md)hakkında bilgi edinin. 

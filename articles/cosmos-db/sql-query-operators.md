@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB için SQL sorgu operatörleri
+title: Azure Cosmos DB için SQL sorgu işleçleri
 description: Azure Cosmos DB tarafından desteklenen eşitlik, karşılaştırma ve mantıksal işleçler gibi SQL işleçleri hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
@@ -7,103 +7,103 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: tisande
 ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063566"
 ---
-# <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB'deki operatörler
+# <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB işleçler
 
-Bu makalede, Azure Cosmos DB tarafından desteklenen çeşitli işleçler ayrıntıları.
+Bu makalede Azure Cosmos DB tarafından desteklenen çeşitli işleçler ayrıntılı olarak açıklanır.
 
-## <a name="equality-and-comparison-operators"></a>Eşitlik ve Karşılaştırma Operatörleri
+## <a name="equality-and-comparison-operators"></a>Eşitlik ve karşılaştırma Işleçleri
 
-Aşağıdaki tablo, SQL API'de iki JSON türü arasındaki eşitlik karşılaştırmalarının sonucunu gösterir.
+Aşağıdaki tabloda, iki JSON türü arasındaki SQL API 'sindeki eşitlik karşılaştırmalarının sonucu gösterilmektedir.
 
-| **Op** | **Tanımsız** | **Null** | **Boole** | **Numarası** | **Dize** | **Nesne** | **Dizi** |
+| **Üs** | **Tanımlayan** | **Değer** | **Boole** | **Sayısından** | **Dize** | **Nesne** | **Dizi** |
 |---|---|---|---|---|---|---|---|
-| **Tanımsız** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız |
-| **Null** | Tanımsız | **Tamam** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız |
-| **Boole** | Tanımsız | Tanımsız | **Tamam** | Tanımsız | Tanımsız | Tanımsız | Tanımsız |
-| **Numarası** | Tanımsız | Tanımsız | Tanımsız | **Tamam** | Tanımsız | Tanımsız | Tanımsız |
-| **Dize** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | **Tamam** | Tanımsız | Tanımsız |
-| **Nesne** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | **Tamam** | Tanımsız |
-| **Dizi** | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | Tanımsız | **Tamam** |
+| **Tanımlayan** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
+| **Değer** | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
+| **Boole** | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
+| **Sayısından** | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan |
+| **Dize** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan |
+| **Nesne** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan |
+| **Dizi** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** |
 
-Türler arasında `>`veya `>=` `!=`iki `<`nesne `<=`veya dizi arasında karşılaştırma gibi karşılaştırma `Undefined`işleçleri için üretir.  
+`>` `>=`, `!=` `<=`,, Ve gibi karşılaştırma işleçleri için, türler arasında veya iki nesne veya dizi arasında karşılaştırma üretir `Undefined` `<`  
 
-Skaler ifadenin sonucu `Undefined`ise, öğe eşit `Undefined` `true`olmadığından, sonuca dahil değildir.
+Skaler ifadenin sonucu ise `Undefined`, eşit `Undefined` `true`olmadığı için öğe sonuca dahil değildir.
 
-## <a name="logical-and-or-and-not-operators"></a>Mantıksal (VE, VEYA ve Değİl) işleçleri
+## <a name="logical-and-or-and-not-operators"></a>Mantıksal (ve, OR ve NOT) işleçleri
 
-Mantıksal işleçler Boolean değerleri üzerinde çalışır. Aşağıdaki tablolar bu işleçler için mantıksal doğruluk tablolarını gösterir:
+Mantıksal işleçler Boole değerleri üzerinde çalışır. Aşağıdaki tablolarda bu işleçler için mantıksal Truth tabloları gösterilmektedir:
 
-**VEYA operatörü**
+**OR işleci**
 
-`true` Koşullardan biri `true`.
+Koşullardan `true` biri olduğunda döndürür `true`.
 
-|  | **True** | **False** | **Tanımsız** |
+|  | **True** | **False** | **Tanımlayan** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |True |False |Tanımsız |
-| **Tanımsız** |True |Tanımsız |Tanımsız |
+| **False** |True |False |Tanımlayan |
+| **Tanımlayan** |True |Tanımlayan |Tanımlayan |
 
-**VE operatörü**
+**AND işleci**
 
-Her `true` iki ifade `true`de .
+Her `true` iki ifadenin de ne `true`zaman olduğunu döndürür.
 
-|  | **True** | **False** | **Tanımsız** |
+|  | **True** | **False** | **Tanımlayan** |
 | --- | --- | --- | --- |
-| **True** |True |False |Tanımsız |
+| **True** |True |False |Tanımlayan |
 | **False** |False |False |False |
-| **Tanımsız** |Tanımsız |False |Tanımsız |
+| **Tanımlayan** |Tanımlayan |False |Tanımlayan |
 
-**NOT operatörü**
+**NOT işleci**
 
 Herhangi bir Boolean ifadesinin değerini tersine çevirir.
 
-|  | **Değil** |
+|  | **BAŞLATıLMADı** |
 | --- | --- |
 | **True** |False |
 | **False** |True |
-| **Tanımsız** |Tanımsız |
+| **Tanımlayan** |Tanımlayan |
 
 **İşleç Önceliği**
 
-Mantıksal işleçler `OR`, `AND`ve `NOT` öncelik düzeyi aşağıda gösterilmiştir:
+Mantıksal işleçler `OR` `AND`, ve `NOT` aşağıda gösterilen öncelik düzeyine sahiptir:
 
-| **Işleç** | **Öncelik** |
+| **İşleç** | **Öncelik** |
 | --- | --- |
-| **Değil** |1 |
-| **Ve** |2 |
-| **Veya** |3 |
+| **BAŞLATıLMADı** |1 |
+| **'** |2 |
+| **VEYA** |3 |
 
 ## <a name="-operator"></a>* işleci
 
-Özel işleç * tüm öğeyi olduğu gibi projeler. Kullanıldığında, yansıtılan tek alan olmalıdır. Benzer `SELECT * FROM Families f` bir sorgu geçerlidir, ancak `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` geçerli değildir.
+* Özel işleci, tüm öğeyi olduğu gibi projeler. Kullanıldığında, tek bir öngörülen alan olması gerekir. Benzer `SELECT * FROM Families f` bir sorgu geçerli, ancak `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` geçerli değil.
 
-## <a name="-and--operators"></a>? Ve?? işleçler
+## <a name="-and--operators"></a>? ve?? işleçler
 
-C# ve JavaScript gibi programlama dillerinde olduğu gibi koşullu ifadeler oluşturmak için Ternary (?) ve Coalesce (??) işleçlerini kullanabilirsiniz.
+C# ve JavaScript gibi programlama dillerinde olduğu gibi, Koşullu ifadeler oluşturmak için üçlü (?) ve birleşim (??) işleçlerini kullanabilirsiniz.
 
-Bunu kullanabilir misin? operatör anında yeni JSON özellikleri inşa etmek. Örneğin, aşağıdaki sorgu sınıf düzeylerini `elementary` veya `other`aşağıdakileri sınıflar:
+Kullanabilirsiniz. anında yeni JSON özellikleri oluşturmaya yönelik operatör. Örneğin, aşağıdaki sorgu, sınıf düzeylerini veya `elementary` `other`içine sınıflandırır:
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
      FROM Families.children[0] c
 ```
 
-Ayrıca aramaları yuva olabilir? işleci, aşağıdaki sorguda olduğu gibi: 
+Ayrıca, çağrılarını iç içe geçirebilirsiniz. işlecini, aşağıdaki sorguda olduğu gibi: 
 
 ```sql
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high") AS gradeLevel
     FROM Families.children[0] c
 ```
 
-Diğer sorgu işleçleri gibi, ? başvurulan özellikler eksikse veya karşılaştırılan türler farklıysa, işleç öğeleri hariç tutar.
+Diğer sorgu işleçleri gibi? başvurulan Özellikler eksikse veya karşılaştırılan türler farklıysa işleç öğeleri dışlar.
 
-Kullanın ?? yarı yapılandırılmış veya karma türdeki verilere karşı sorgu yaparken bir maddedeki bir özelliği etkin bir şekilde denetlemek için işleç. Örneğin, varsa veya `lastName` `surname` `lastName` yoksa aşağıdaki sorgu döndürür.
+??? yarı yapılandırılmış veya karma tür verilere göre sorgulama yaparken bir öğedeki özelliği etkin bir şekilde denetlemek için işleç. Örneğin, aşağıdaki sorgu varsa döndürür `lastName` veya `surname` `lastName` yoksa.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName

@@ -1,26 +1,26 @@
 ---
-title: En az kapalı kalma süresi geçişi - MySQL için Azure Veritabanı
-description: Bu makalede, Azure Veritabanı Geçiş Hizmeti'ni kullanarak MySQL veritabanının MySQL veritabanıiçin Azure Veritabanı'na en az kesintiyle nasıl gerçekleştirilebildiğini açıklamaktadır.
+title: En az kapalı kalma süresi geçişi-MySQL için Azure veritabanı
+description: Bu makalede, Azure veritabanı geçiş hizmeti kullanılarak MySQL için Azure veritabanı 'na bir MySQL veritabanının en düşük kapalı kalma süresinin nasıl gerçekleştirileceği açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: df818fa4106aec341607d8142b2a672699b8e9d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063354"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanına en az kapalı kalma süresi geçişi
-[Azure Veritabanı Geçiş Hizmeti](https://aka.ms/get-dms) (DMS) için yeni tanıtılan sürekli **eşitleme özelliğini** kullanarak MySQL için Azure Veritabanı'na mySQL geçişlerini en az kapalı kalma süresiyle gerçekleştirebilirsiniz. Bu işlevsellik, uygulamatarafından tahakkuk eden kapalı kalma süresini sınırlar.
+# <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na en düşük kesinti süresi geçişi
+[Azure veritabanı geçiş hizmeti](https://aka.ms/get-dms) (DMS) için yeni sunulan **sürekli eşitleme özelliğini** kullanarak, MySQL Için Azure veritabanı 'na MySQL geçişleri gerçekleştirebilirsiniz. Bu işlevsellik, uygulama tarafından tahakkuk eden kesinti süresini sınırlandırır.
 
 ## <a name="overview"></a>Genel Bakış
-Azure DMS, mysql için şirket içi ilk yüklemenizi Azure Veritabanı'na gerçekleştirir ve uygulama çalışmaya devam ederken yeni işlemleri sürekli olarak Azure ile eşitler. Veriler hedef Azure tarafında yakaladıktan sonra, uygulamayı kısa bir süre (minimum kapalı kalma süresi) durdurursunuz, son veri toplusunu beklersiniz (uygulama yeni bir trafik almak için etkili bir şekilde kullanılamayana kadar uygulamayı durdurun) hedefte yukarı ve ardından bağlantı dizenizi Azure'a işaret etmek için güncelleştirin. İşinizi bitirdiğinizde, uygulamanız Azure'da canlı olacak!
+Azure DMS, şirket içi şirketinizin ilk yükünü MySQL için Azure veritabanı 'na uygular ve uygulama çalışmaya devam ederken yeni işlemleri sürekli olarak Azure 'a eşitler. Veriler hedef Azure tarafında tamamlandıktan sonra, uygulamayı kısa bir süre (en düşük kapalı kalma süresi) durdurur, son veri toplu iş için bekleyin (uygulamanın yeni bir trafiği almak için etkin hale gelene kadar uygulamayı durdurmanız gerekir) ve ardından Bağlantı dizenizi Azure 'a işaret etmek üzere güncelleştirin. İşiniz bittiğinde, uygulamanız Azure 'da canlı olacaktır!
 
-![Azure Veritabanı Geçiş Hizmeti ile sürekli eşitleme](./media/howto-migrate-online/ContinuousSync.png)
+![Azure veritabanı geçiş hizmeti ile sürekli eşitleme](./media/howto-migrate-online/ContinuousSync.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Videoyu [kolayca MySQL/PostgreSQL uygulamalarını MySQL/MySQL](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201)için Azure Veritabanı'na nasıl geçirildirilebildiğini gösteren bir demo içeren Azure yönetilen hizmetine geçirin.
-- [DMS kullanarak MySQL çevrimiçi için MySQL Veritabanına Geçir](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)in öğreticisine bakın.
+- MySQL uygulamalarının MySQL için Azure veritabanı 'na nasıl geçirileceğini gösteren bir demo içeren [MySQL/PostgreSQL uygulamalarını Azure yönetilen hizmetine kolayca geçirin](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201).
+- [DMS kullanarak MySQL Için MySQL for MySQL 'e Azure veritabanı 'Na geçiş](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)öğreticisine bakın.

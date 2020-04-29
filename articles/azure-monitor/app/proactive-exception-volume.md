@@ -1,30 +1,30 @@
 ---
-title: Özel durum hacminde anormal artış - Azure Uygulama Öngörüleri
-description: Özel durum hacmindeki olağandışı desenler için Azure Uygulama İstatistikleri'nde Smart Detection ile uygulama özel durumlarını izleyin.
+title: Özel durum hacminde olağan dışı artış-Azure Application Insights
+description: Özel durum hacminde olağan dışı desenler için Azure Application Insights 'te akıllı algılama ile uygulama özel durumlarını izleyin.
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671775"
 ---
-# <a name="abnormal-rise-in-exception-volume-preview"></a>Özel durum hacminde anormal artış (önizleme)
+# <a name="abnormal-rise-in-exception-volume-preview"></a>Özel durum biriminde olağan dışı artış (Önizleme)
 
-Uygulama Öngörüleri, uygulamanızda atılan özel durumları otomatik olarak analiz eder ve özel durum telemetrinizdeki olağandışı desenler hakkında sizi uyarabilir.
+Application Insights uygulamanızda oluşturulan özel durumları otomatik olarak analiz eder ve özel durum telemetrinizdeki olağan dışı desenler hakkında sizi uyarabilir.
 
-Bu özellik, uygulamanız için [özel durum raporlaması yapılandırmadışında](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) özel bir kurulum gerektirmez. Uygulamanız yeterli özel durum telemetrisi oluşturduğunda etkindir.
+Bu özellik, uygulamanız için [özel durum raporlamayı yapılandırmadan](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) farklı bir kurulum gerektirmez. Uygulamanız yeterli sayıda özel durum telemetrisi oluşturduğunda etkin olur.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Bu tür bir akıllı algılama bildirimini ne zaman alacağım?
-Uygulamanız, önceki yedi gün içinde hesaplanan bir taban çizgisiyle karşılaştırıldığında, bir gün içinde belirli bir türdeki özel durumların sayısında anormal bir artış sergiliyorsa, bu tür bir bildirim alabilirsiniz.
-Uygulama kullanımınızda doğal bir büyüme göz önünde bulundurularak, özel durum sayısındaki artışı tespit etmek için makine öğrenimi algoritmaları kullanılmaktadır.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Bu tür akıllı algılama bildirimini ne zaman alabilirim?
+Bu tür bir bildirime, uygulamanız bir gün içinde belirli bir tür özel durum sayısında, önceki yedi gün içinde hesaplanan bir taban çizgisine kıyasla olağan dışı bir artış yaşanıyorsa elde edebilirsiniz.
+Makine öğrenimi algoritmaları, uygulama kullanımınızın doğal bir büyümesini hesaba katlarken özel durum sayısı artışı algılamak için kullanılır.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Uygulamamın kesinlikle bir sorunu mu var?
-Hayır, bildirim, uygulamanızın kesinlikle bir sorunu olduğu anlamına gelmez. Aşırı sayıda özel durum genellikle bir uygulama sorunu işaret etse de, bu özel durumlar iyi huylu olabilir ve uygulamanız tarafından doğru şekilde işlenebilir.
+## <a name="does-my-app-definitely-have-a-problem"></a>Uygulamamın kesinlikle bir sorunu var mı?
+Hayır, bir bildirim uygulamanızın kesinlikle bir sorun olduğu anlamına gelmez. Aşırı sayıda özel durum genellikle bir uygulama sorununa işaret etse de, bu özel durumlar sizin uygulamanız tarafından zararsız olabilir ve doğru şekilde işlenebilir.
 
 ## <a name="how-do-i-fix-it"></a>Nasıl düzeltebilirim?
-Bildirimler tanılama sürecinde desteklemek için tanılama bilgilerini içerir:
-1. **Önceliklendirme.** Bildirim, kaç kullanıcının veya kaç isteğin etkilendiğini gösterir. Bu, soruna öncelik atamanıza yardımcı olabilir.
-2. **Kapsam.** Sorun tüm trafiği mi etkiliyor, yoksa sadece bir operasyonu mu? Bu bilgiler bildirimden elde edilebilir.
-3. **Tanılamak.** Algılama, özel durum atıldığı yöntem ve özel durum türü hakkında bilgiler içerir. Sorunu daha fazla tanılamanıza yardımcı olmak için, destekleyici bilgilere bağlantı veren ilgili öğeleri ve raporları da kullanabilirsiniz.
+Bildirimler tanılama sürecinde desteklanacak tanılama bilgilerini içerir:
+1. **Değerlendirme.** Bildirim, kaç kullanıcının veya kaç isteğin etkilendiğini gösterir. Bu, soruna bir öncelik atamanıza yardımcı olabilir.
+2. **Kapsam.** Sorun tüm trafiği etkiliyor mu, yoksa yalnızca bir işlem mi? Bu bilgiler bildirimden elde edilebilir.
+3. **Tanın.** Algılama, özel durumun oluşturulduğu yöntemin yanı sıra özel durum türü hakkında bilgiler içerir. Sorunu daha da tanılamanıza yardımcı olması için, destek bilgilerine bağlanan ilgili öğeleri ve raporları da kullanabilirsiniz.

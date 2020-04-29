@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files için Kobİ performansı hakkında SSS| Microsoft Dokümanlar
-description: Azure NetApp Files için SMB performansı yla ilgili sık sorulan soruları yanıtlar.
+title: Azure NetApp Files için SMB performansı hakkında SSS | Microsoft Docs
+description: Azure NetApp Files için SMB performansı hakkında sık sorulan soruları yanıtlar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,110 +15,110 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
 ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460458"
 ---
-# <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Azure NetApp Dosyaları için Kobİ performansı hakkında SSS'ler
+# <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Azure NetApp Files için SMB performansı hakkında SSS
 
-Bu makalede, Azure NetApp Dosyaları için Kobİ performansı en iyi uygulamaları hakkında sık sorulan soruları (SSS) yanıtlar.
+Bu makalede, Azure NetApp Files yönelik SMB performansı en iyi uygulamaları hakkında sık sorulan sorular (SSS) yanıtlanmaktadır.
 
-## <a name="is-smb-multichannel-enabled-in-smb-shares"></a>Kobİ hisselerinde Kobİ Çok Kanallı etkin midir? 
+## <a name="is-smb-multichannel-enabled-in-smb-shares"></a>SMB paylaşımlarında SMB çok kanallı etkin mi? 
 
-Evet, SMB Multichannel varsayılan olarak etkinleştirilir ve ocak 2020 başlarında bir değişiklik gerçekleşir. Tüm Kobİ hisseleri önceden tarihlenmiş varolan Kobİ hacimleri özelliği etkinleştirilmiş ve tüm yeni oluşturulan hacimleri de oluşturma sırasında özelliği etkin olacaktır. 
+Evet, çok kanallı SMB varsayılan olarak etkindir ve bir değişiklik, Ocak 2020 ' de erken olarak gerçekleştirilir. Mevcut SMB birimlerinde önceden geçen tüm SMB paylaşımları özelliği etkinleştirilmiştir ve yeni oluşturulan tüm birimlerde özelliği oluşturma sırasında de etkinleştirilir. 
 
-SMB Çok Kanallı işlevsellilikten yararlanmak için özellik etkinleştirmeden önce kurulan herhangi bir SMB bağlantısının sıfırlanmasının gerekir. Sıfırlamak için, SMB paylaşımını kesebilir ve yeniden bağlayabilirsiniz.
+Çok kanallı SMB işlevselliğinin avantajlarından yararlanmak için, özellik etkinleştirmeden önce kurulan tüm SMB bağlantıları sıfırlanmalıdır. Sıfırlamak için SMB paylaşımının bağlantısını kesebilir ve yeniden bağlanabilirsiniz.
 
-## <a name="is-rss-supported"></a>RSS desteklendi mi?
+## <a name="is-rss-supported"></a>RSS destekleniyor mu?
 
-Evet, Azure NetApp Files alma tarafı ölçekleme (RSS) destekler.
+Evet, Azure NetApp Files alma tarafı ölçeklendirmeyi (RSS) destekler.
 
-SMB Multichannel etkin ken, bir SMB3 istemcisi Azure NetApp Files SMB sunucusuna tek bir RSS yeteneğine sahip bir ağ arabirimi kartı (NIC) üzerinden birden çok TCP bağlantısı kurar. 
+SMB çok kanallı özelliği etkinken, bir SMB3 istemcisi, tek RSS özellikli bir ağ arabirimi kartı (NIC) üzerinden Azure NetApp Files SMB sunucusuna birden fazla TCP bağlantısı kurar. 
 
-## <a name="which-windows-versions-support-smb-multichannel"></a>Hangi Windows sürümleri Kobİ Çoklu Kanal'ı destekler?
+## <a name="which-windows-versions-support-smb-multichannel"></a>Hangi Windows sürümleri çok kanallı SMB 'yi destekliyor?
 
-Windows, en iyi performansı sağlamak için Windows 2012'den beri SMB Multichannel'ı desteklemiştir.  Ayrıntılar için [SMB Çok Kanallı'yı dağıt'a](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) ve [SMB Çok Kanallı'nın temellerine](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/) bakın. 
+En iyi performansı etkinleştirmek için Windows 2012 ' den itibaren çok kanallı SMB 'yi destekliyordu.  Ayrıntılar için bkz. SMB [çok kanallı ve çok KANALLı SMB temelleri](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/) [dağıtma](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) . 
 
 
-## <a name="does-my-azure-virtual-machine-support-rss"></a>Azure sanal makinem RSS'yi destekliyor mu?
+## <a name="does-my-azure-virtual-machine-support-rss"></a>Azure Sanal makinem RSS 'yi destekliyor mu?
 
-Azure sanal makine NIC'lerinizin RSS'yi destekleyip desteklemedigini görmek için komutu `Get-SmbClientNetworkInterface` aşağıdaki gibi çalıştırın ve alanı `RSS Capable`kontrol edin: 
+Azure sanal makinenizin NIC 'lerinin RSS 'yi desteklemesini sağlamak için komutu `Get-SmbClientNetworkInterface` aşağıdaki gibi çalıştırın ve alanı `RSS Capable`kontrol edin: 
 
 ![Azure sanal makinesi için RSS desteği](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
-## <a name="does-azure-netapp-files-support-smb-direct"></a>Azure NetApp Files SMB Direct'i destekliyor mu?
+## <a name="does-azure-netapp-files-support-smb-direct"></a>Azure NetApp Files doğrudan erişimli SMB 'yi destekliyor mu?
 
-Hayır, Azure NetApp Files SMB Direct'i desteklemez. 
+Hayır, Azure NetApp Files doğrudan erişimli SMB desteklemez. 
 
-## <a name="what-is-the-benefit-of-smb-multichannel"></a>Kobİ Çok Kanallı'nın faydası nedir? 
+## <a name="what-is-the-benefit-of-smb-multichannel"></a>Çok kanallı SMB avantajı nedir? 
 
-SMB Çok Kanallı özelliği, bir SMB3 istemcisinin tek bir ağ arabirimi kartı (NIC) veya birden çok NIC üzerinden bağlantı havuzu oluşturmasına ve bunları tek bir SMB oturumu için istek göndermek için kullanmasına olanak tanır. Buna karşılık, tasarım gereği, SMB1 ve SMB2 istemcinin bir bağlantı kurmasını ve bu bağlantı üzerinden belirli bir oturum için tüm SMB trafiğini göndermesini gerektirir. Bu tek bağlantı, tek bir istemciden elde edilebilen genel iletişim kuralı performansını sınırlar.
+Çok kanallı SMB özelliği, bir SMB3 istemcisinin tek bir ağ arabirimi kartı (NIC) veya birden fazla NIC üzerinden bağlantı havuzu kurmasını ve bunları tek bir SMB oturumu için istekleri gönderecek şekilde kullanmasını sağlar. Buna karşılık, tasarım, SMB1 ve SMB2, istemcinin bir bağlantı kurmasını ve belirli bir oturum için tüm SMB trafiğini bu bağlantı üzerinden göndermesini gerektirir. Bu tek bağlantı, tek bir istemciden elde edilebilir genel protokol performansını sınırlandırır.
 
-## <a name="should-i-configure-multiple-nics-on-my-client-for-smb"></a>SMB için istemcimde birden fazla NIC yapılandırmalı mıyım?
+## <a name="should-i-configure-multiple-nics-on-my-client-for-smb"></a>SMB için istemcimde birden çok NIC yapılandırmam gerekir mi?
 
-Hayır. SMB istemcisi, SMB sunucusu tarafından döndürülen NIC sayısıyla eşleşir.  Her depolama birimine bir ve yalnızca bir depolama bitiş noktasından erişilebilir.  Bu, herhangi bir SMB ilişkisi için yalnızca bir NIC kullanılacağı anlamına gelir.  
+Hayır. SMB istemcisi, SMB sunucusu tarafından döndürülen NIC sayısıyla eşleştirecektir.  Her depolama birimine bir ve yalnızca bir depolama uç noktasından erişilebilir.  Bu, belirli bir SMB ilişkisi için yalnızca bir NIC 'nin kullanılacağı anlamına gelir.  
 
-Aşağıdaki çıktının `Get-SmbClientNetworkInterace` da gösterdiği gibi, sanal makinenin 15 ve 12 olmak üzere iki ağ arabirimi vardır.  Aşağıda iki `Get-SmbMultichannelConnection`RSS özellikli NICS olmasına rağmen, sMB payı ile bağlantılı olarak yalnızca 12 arabirimi kullanılır; arabirim 15 kullanılmaz.
+`Get-SmbClientNetworkInterace` Aşağıdaki çıktıda gösterildiği gibi, sanal makinenin iki ağ arabirimi vardır--15 ve 12.  Aşağıda gösterildiği gibi `Get-SmbMultichannelConnection`, iki RSS özellikli NIC olsa da, yalnızca SMB paylaşımıyla bağlantılı olarak arabirim 12 kullanılır; 15. arabirim kullanımda değil.
 
-![RSS özellikli NICS](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
+![RSS özellikli NIC 'ler](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
-## <a name="is-nic-teaming-supported-in-azure"></a>NIC Teaming Azure'da desteklendi mi?
+## <a name="is-nic-teaming-supported-in-azure"></a>Azure 'da NIC ekibi oluşturma destekleniyor mu?
 
-NIC Ekip Çalışması Azure'da desteklenmez. Azure sanal makinelerinde birden çok ağ arabirimi desteklenmiş olsa da, bunlar fiziksel bir yapı yerine mantıksal bir yapıyı temsil eder. Bu nedenle, hiçbir hata toleransı sağlar.  Ayrıca, bir Azure sanal makinesinin kullanabileceği bant genişliği, herhangi bir ağ arabirimi için değil, makinenin kendisi için hesaplanır.
+NIC ekibi oluşturma, Azure 'da desteklenmez. Azure sanal makinelerinde birden çok ağ arabirimi desteklense de, fiziksel bir yapı yerine bir mantıksal temsil eder. Bu nedenle, hata toleransı vermez.  Ayrıca, bir Azure sanal makinesi için kullanılabilen bant genişliği, tek bir ağ arabirimi değil, makinenin kendisi için hesaplanır.
 
-## <a name="whats-the-performance-like-for-smb-multichannel"></a>Kobİ Multichannel için performans nasıl?
+## <a name="whats-the-performance-like-for-smb-multichannel"></a>Çok kanallı SMB gibi performans nedir?
 
-Aşağıdaki testler ve grafikler, Kobİ Çok Kanallı'nın tek örnekli iş yüklerinde gücünü gösterir.
+Aşağıdaki testler ve grafiklerde, tek örnekli iş yükleri üzerinde çok kanallı SMB 'nin gücü gösterilmektedir.
 
-### <a name="random-io"></a>Rastgele I/O  
+### <a name="random-io"></a>Rastgele g/ç  
 
-SMB Çok kanallı istemci üzerinde devre dışı bırakılırken, SAF 8-KiB okuma ve yazma testleri FIO ve 40-GiB çalışma seti kullanılarak gerçekleştirildi.  SMB payı, RSS ağ `1`arabirimi ayarları başına SMB istemci bağlantı sayısı artışlarıyla,`4``8`her`16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>`test arasında, , , , . Testler, G/Ç yoğun `4` iş yükleri için varsayılan ayarın yeterli olduğunu gösterir; artış `8` ve `16` hiçbir etkisi yoktu. 
+İstemcide çok kanallı SMB devre dışı bırakıldığında, FIO ve 40-GiB çalışma kümesi kullanılarak saf 8-KiB okuma ve yazma testleri gerçekleştirildi.  SMB paylaşımının her `1`bir`4``8``16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>`test arasında ayrılması,,,,,,,,,,,,,,,,,,,,,,,,,, Testler, g/ç yoğunluklu iş yükleri `4` için varsayılan ayarının yeterli olduğunu gösterir; `8` ile `16` arttırılarak hiçbir etkisi yoktur. 
 
-Komut, `netstat -na | findstr 445` ek bağlantıların. `1` `4` `8` `16`  Perfmon `Per Processor Network Activity Cycles` istatistiği tarafından doğrulanan (bu makalede yer almayan) her test sırasında smb için dört CPU çekirdeği tam olarak kullanılmıştır.
+Bu komut `netstat -na | findstr 445` , `1` ile arasında `4` `8` ve arasında yapılan artışlarla daha fazla bağlantı kurulmasını sağlar `16`.  Her test sırasında her bir sınama `Per Processor Network Activity Cycles` sırasında SMB IÇIN dört CPU çekirdeği tam olarak kullanıldı (Bu makaleye dahil değildir.)
 
-![Rastgele G/Ç testleri](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
+![Rastgele g/ç testleri](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 
-Azure sanal makinesi SMB (veya NFS) depolama G/Ç sınırlarını etkilemez.  Aşağıda gösterildiği gibi, D16 örnek türü önbelleğe alınmış depolama IOPS için 32.000 ve önbelleğe edilmemiş depolama IOPS için 25.600 sınırlı bir orana sahiptir.  Ancak, yukarıdaki grafik SMB üzerinde önemli ölçüde daha fazla G / O gösterir.
+Azure sanal makinesi, SMB (veya NFS) depolama g/ç sınırlarını etkilemez.  Aşağıda gösterildiği gibi, D16 örnek türünün önbelleğe alınmış depolama ıOPS için 32.000 sınırlı bir oranı ve önbelleğe alınmamış depolama ıOPS için 25.600 vardır.  Ancak, yukarıdaki grafik SMB üzerinde önemli ölçüde g/ç gösterir.
 
-![Rastgele G/Ç karşılaştırması](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
+![Rastgele g/ç karşılaştırması](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
 
-### <a name="sequential-io"></a>Sıralı IO 
+### <a name="sequential-io"></a>Sıralı GÇ 
 
-Yukarıda açıklanan rastgele G/Ç testlerine benzer testler 64-KiB sıralı G/Ç ile yapılmıştır. RSS ağ arabirimi başına 4' ötesinde istemci bağlantı sayısındaki artışlar rastgele G/Ç üzerinde belirgin bir etkiye sahip olmasa da, aynı durum sıralı G/Ç için geçerli değildir. Aşağıdaki grafikte de görüldüğü gibi, her artış, okuma iş sayısındaki karşılık gelen artışla ilişkilidir. Yazma iş boyutu, Azure tarafından her örnek türü/boyutu için yerleştirilen ağ bant genişliği kısıtlamaları nedeniyle düz kaldı. 
+Yukarıda açıklanan rastgele g/ç testlerine benzer testler, 64-KiB sıralı g/ç ile gerçekleştirildi. Her RSS ağ arabirimi başına istemci bağlantı sayısı arttıkça 4 ' ün üzerinde artım rastgele g/ç üzerinde belirgin bir etkiye sahip olsa da, aynı sıra sıralı g/ç için geçerli değildir. Aşağıdaki grafikte gösterildiği gibi, her artış okuma aktarım hızı ile ilgili bir artış ile ilişkilendirilir. Azure tarafından her örnek türü/boyutu için yerleştirilmiş olan ağ bant genişliği kısıtlamaları nedeniyle yazma performansı düz kaldı. 
 
-![Sıralı G/Ç testleri](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
+![Sıralı g/ç testleri](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
 
-Azure, her sanal makine türüne/boyutuna ağ hızı sınırları yerleştirir. Oran sınırı yalnızca giden trafiğe uygulanır. Sanal bir makinede bulunan NIC sayısının, makinenin kullanabileceği toplam bant genişliği miktarıyla hiçbir ilgisi yoktur.  Örneğin, D16 örnek türü 8000 Mbps (1.000 MiB/s) bir empoze ağ sınırı vardır.  Yukarıdaki sıralı grafiğin gösterdiği gibi, sınır giden trafiği etkiler (yazar) ancak çok kanallı okumaları etkilemez.
+Azure, her bir sanal makine türü/boyutu için ağ oranı sınırlarını koyar. Hız limiti yalnızca giden trafiğe uygulanır. Bir sanal makinede bulunan NIC 'lerin sayısı, makinenin kullanabildiği toplam bant genişliği miktarına uygun değildir.  Örneğin, D16 örnek türü, 8000 Mbps (1.000 MiB/sn) ağ sınırına sahiptir.  Yukarıdaki sıralı grafik gösterdiği gibi sınır, giden trafiği (yazma) etkiler ancak çok kanallı okumaları etkilemez.
 
-![Sıralı G/Ç karşılaştırması](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+![Sıralı g/ç karşılaştırması](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
 
-## <a name="is-accelerated-networking-recommended"></a>Hızlandırılmış Ağ önerilir?
+## <a name="is-accelerated-networking-recommended"></a>Hızlandırılmış ağ önerilir mi?
 
-Maksimum performans için, [Hızlandırılmış Ağ'ı](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) mümkün olduğunca yapılandırmanız önerilir. Aşağıdaki hususları göz önünde bulundurun:  
+En yüksek performans için mümkün olan yerlerde [hızlandırılmış ağ](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) yapılandırmanız önerilir. Aşağıdaki noktaları göz önünde bulundurun:  
 
-* Azure portalı, bu özelliği destekleyen sanal makineler için varsayılan olarak Hızlandırılmış Ağ'ı sağlar.  Ancak, Ansible ve benzeri yapılandırma araçları gibi diğer dağıtım yöntemleri olmayabilir.  Hızlandırılmış Ağ etkinleştirilememesi bir makinenin performansını sekteye erdirebilir.  
-* Hızlandırılmış Ağ bir örnek türü veya boyutu için destek eksikliği nedeniyle sanal bir makinenin ağ arabiriminde etkin değilse, daha büyük örnek türleri ile devre dışı kalır. Bu gibi durumlarda manuel müdahaleye ihtiyacınız olacaktır.
+* Azure portal, bu özelliği destekleyen sanal makineler için varsayılan olarak hızlandırılmış ağa izin verebilir.  Ancak, anormal ve benzer yapılandırma araçları gibi diğer dağıtım yöntemleri de olmayabilir.  Hızlandırılmış ağı etkinleştirme hatası, makinenin performansını hobble sağlayabilir.  
+* Bir sanal makinenin ağ arabiriminde hızlandırılmış ağ etkinleştirilmemişse, örnek türü veya boyutu için destek olmaması gerekir, daha büyük örnek türleriyle devre dışı kalır. Bu durumlarda el ile müdahale etmeniz gerekir.
 
-## <a name="are-jumbo-frames-supported"></a>Jumbo çerçeveler desteklenir mi?
+## <a name="are-jumbo-frames-supported"></a>Jumbo çerçeveleri destekleniyor mu?
 
-Jumbo çerçeveler Azure sanal makineleriyle desteklenmez.
+Azure sanal makinelerinde jumbo çerçeveleri desteklenmez.
 
-## <a name="is-smb-signing-supported"></a>Kobİ İmzalama desteklendi mi? 
+## <a name="is-smb-signing-supported"></a>SMB Imzalama destekleniyor mu? 
 
-Kobİ protokolü, dosya ve yazdırma paylaşımı ve uzak Windows yönetimi gibi diğer ağ işlemleri için temel sağlar. SMB protokolü, geçiş sırasında Kobİ paketlerini değiştiren ortadaki adam saldırılarını önlemek için Kobİ paketlerinin dijital olarak imzalanmasını destekler. 
+SMB protokolü, dosya ve yazıcı paylaşımı ve uzak Windows yönetimi gibi diğer ağ işlemleri için temel sağlar. Geçiş sırasında SMB paketlerini değiştiren bağlantıyı izinsiz izleme saldırıları engellemek için SMB protokolü, SMB paketlerinin dijital imzalanmasını destekler. 
 
-SMB İmzalama, Azure NetApp Files tarafından desteklenen tüm Kobİ protokolü sürümleri için desteklenir. 
+SMB Imzalama, Azure NetApp Files tarafından desteklenen tüm SMB protokol sürümleri için desteklenir. 
 
-## <a name="what-is-the-performance-impact-of-smb-signing"></a>Kobİ İmzalama'nın performans etkisi nedir?  
+## <a name="what-is-the-performance-impact-of-smb-signing"></a>SMB Imzalanmasının performans etkisi nedir?  
 
-SMB İmzalama'nın Kobİ performansı üzerinde zararlı bir etkisi vardır. Performans bozulmasının diğer olası nedenleri arasında, her paketin dijital olarak imzalanması, aşağıdaki perfmon çıkışının gösterdiği gibi ek istemci tarafındaki CPU'yu tüketir. Bu durumda, Core 0, Kobİ İmzalama da dahil olmak üzere SMB'den sorumlu görünür.  Önceki bölümdeki çok kanallı olmayan ardışık okuma iş verme rakamlarıyla yapılan bir karşılaştırma, Kobİ İmzalama'nın genel iş ortasını 875MiB/s'den yaklaşık 250MiB/s'ye düşürduğunu gösterir. 
+SMB Imzalama, SMB performansının üzerine bir çok değerli etkiye sahiptir. Performans düşüşünün diğer olası nedenleri arasında, her bir paketin dijital imzalanması, aşağıdaki Perfmon çıktısı olarak ek istemci tarafı CPU kullanır. Bu durumda, SMB Imzalama da dahil olmak üzere SMB 'den sorumlu olan çekirdek 0 görünür.  Önceki bölümde çok kanallı sıralı okuma üretilen iş numaralarıyla bir karşılaştırma SMB Imzasının, 875MiB/sn 'den yaklaşık 250MiB/sn 'ye kadar olan genel aktarım hızını azalttığını gösterir. 
 
-![Kobİ İmzalama performans etkisi](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
+![SMB Imzalama performansı etkisi](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure NetApp Dosyaları Hakkında SSS](azure-netapp-files-faqs.md)
-- Azure [NetApp Dosyaları: SMB Dosya Paylaşımları için Yönetilen Kurumsal Dosya Paylaşımları'na](https://cloud.netapp.com/hubfs/Resources/ANF%20SMB%20Quickstart%20doc%20-%2027-Aug-2019.pdf?__hstc=177456119.bb186880ac5cfbb6108d962fcef99615.1550595766408.1573471687088.1573477411104.328&__hssc=177456119.1.1573486285424&__hsfp=1115680788&hsCtaTracking=cd03aeb4-7f3a-4458-8680-1ddeae3f045e%7C5d5c041f-29b4-44c3-9096-b46a0a15b9b1) bakın.
+- [Azure NetApp Files hakkında SSS](azure-netapp-files-faqs.md)
+- Azure NetApp Files ile SMB dosya paylaşımları kullanma hakkında [SMB Iş yükleri için Azure NetApp Files: yönetilen kurumsal dosya paylaşımları](https://cloud.netapp.com/hubfs/Resources/ANF%20SMB%20Quickstart%20doc%20-%2027-Aug-2019.pdf?__hstc=177456119.bb186880ac5cfbb6108d962fcef99615.1550595766408.1573471687088.1573477411104.328&__hssc=177456119.1.1573486285424&__hsfp=1115680788&hsCtaTracking=cd03aeb4-7f3a-4458-8680-1ddeae3f045e%7C5d5c041f-29b4-44c3-9096-b46a0a15b9b1) ' na bakın.

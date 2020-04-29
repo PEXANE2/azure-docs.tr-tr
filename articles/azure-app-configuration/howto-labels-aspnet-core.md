@@ -1,5 +1,5 @@
 ---
-title: Ortam başına yapılandırmayı kullanma
+title: Ortam başına yapılandırma kullan
 titleSuffix: Azure App Configuration
 description: Ortam başına yapılandırma değerlerini sağlamak için etiketleri kullanma
 ms.service: azure-app-configuration
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
 ms.openlocfilehash: d1a3323154fc73b453e041a064cfcd36299b8a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80056793"
 ---
-# <a name="use-labels-to-enable-different-configurations-for-different-environments"></a>Farklı ortamlar için farklı yapılandırmalar etkinleştirmek için etiketleri kullanma
+# <a name="use-labels-to-enable-different-configurations-for-different-environments"></a>Farklı ortamlarda farklı yapılandırmaların etkinleştirilmesi için etiketleri kullanma
 
-Birçok uygulamanın farklı ortamlar için farklı yapılandırmalar kullanması gerekir. Bir uygulamanın arka uç veritabanı için kullanılacak bağlantı dizesini tanımlayan bir yapılandırma değeri olduğunu varsayalım. Uygulamanın geliştiricileri üretimde kullanılanveritabanından farklı bir veritabanı kullanır. Uygulama geliştirmeden üretime geçtikçe uygulama tarafından kullanılan veritabanı bağlantı dizesi değiştirilmelidir.
+Birçok uygulamanın farklı ortamlar için farklı konfigürasyonlar kullanması gerekir. Bir uygulamanın, arka uç veritabanı için kullanılacak bağlantı dizesini tanımlayan bir yapılandırma değeri olduğunu varsayalım. Uygulamanın geliştiricileri üretimde kullanılan farklı bir veritabanını kullanır. Uygulama geliştirmeden üretime taşınıyor gibi uygulama tarafından kullanılan veritabanı bağlantı dizesi de değişiklik vermelidir.
 
-Azure Uygulama Yapılandırması'nda, aynı anahtar için farklı değerler tanımlamak için *etiketlerk* kullanabilirsiniz. Örneğin, *Geliştirme* ve *Üretim*için farklı değerlere sahip tek bir anahtar tanımlayabilirsiniz. App Configuration'a bağlanırken hangi etiketin yüklenebileceğini belirtebilirsiniz.
+Azure Uygulama yapılandırmasında, aynı anahtar için farklı değerler tanımlamak üzere *etiketleri* kullanabilirsiniz. Örneğin, *geliştirme* ve *Üretim*için farklı değerlerle tek bir anahtar tanımlayabilirsiniz. Uygulama yapılandırmasına bağlanırken hangi etiketlerin yükleneceğini belirtebilirsiniz.
 
-Bu işlevselliği göstermek için [Quickstart: Azure App Configuration ile ASP.NET Core uygulaması oluşturarak](./quickstart-aspnet-core-app.md) geliştirme ve üretim için farklı yapılandırma ayarlarını kullanacağız. Lütfen devam etmeden önce hızlı bir şekilde başlatın.
+Bu işlevselliği göstermek için hızlı başlangıçta oluşturulan Web uygulamasını değiştireceksiniz: geliştirme ve üretim için farklı yapılandırma ayarlarını kullanmak üzere [Azure Uygulama yapılandırmasıyla bir ASP.NET Core uygulaması oluşturma](./quickstart-aspnet-core-app.md) . Devam etmeden önce lütfen hızlı başlangıcı doldurun.
 
-## <a name="specify-a-label-when-adding-a-configuration-value"></a>Yapılandırma değeri eklerken etiket belirtin
+## <a name="specify-a-label-when-adding-a-configuration-value"></a>Yapılandırma değeri eklenirken bir etiket belirtin
 
-Azure portalında Configuration **Explorer'a** gidin ve hızlı başlangıçta oluşturduğunuz *TestApp:Ayarlar:FontColor* anahtarını bulun. Bağlam menüsünü seçin ve ardından **Değer Ekle'yi**tıklatın.
+Azure portal, **yapılandırma Gezgini** ' ne gidin ve hızlı başlangıçta oluşturduğunuz *TestApp: Settings: fontcolor* anahtarını bulun. Bağlam menüsünü seçin ve ardından **Değer Ekle**' ye tıklayın.
 
 > [!div class="mx-imgBorder"]
-> ![Değer Ekle menü öğesi](media/labels-add-value.png)
+> ![Değer menü öğesi Ekle](media/labels-add-value.png)
 
-Değer **Ekle** **ekranına, kırmızının** **değerini** ve **Bir Geliştirme** **Etiketini** girin. **İçerik türünü** boş bırakın. **Uygula**’yı seçin.
+**Değer Ekle** ekranında, **kırmızı** ve bir **geliştirme** **etiketi** **değeri** girin. **İçerik türünü** boş bırak. **Uygula**’yı seçin.
 
-## <a name="loading-configuration-values-with-a-specified-label"></a>Konfigürasyon değerlerini belirli bir etiketle yükleme
+## <a name="loading-configuration-values-with-a-specified-label"></a>Yapılandırma değerleri belirtilen etiketle yükleniyor
 
-Varsayılan olarak, Azure Uygulama Yapılandırması yalnızca etiketsiz yapılandırma değerlerini yükler. Yapılandırma değerleriniz için etiketler tanımladıysanız, App Configuration'a bağlanırken kullanılacak etiket(ler)'i belirtmek istersiniz.
+Azure Uygulama yapılandırması, varsayılan olarak yalnızca etiketi olmayan yapılandırma değerlerini yükler. Yapılandırma değerleriniz için Etiketler tanımladıysanız, uygulama yapılandırmasına bağlanılırken kullanılacak etiketleri belirtmek isteyeceksiniz.
 
-Son bölümde, *Geliştirme* ortamı için farklı bir yapılandırma değeri oluşturdunuz. Uygulamanın `HostingEnvironment.EnvironmentName` şu anda hangi ortamda çalıştığını dinamik olarak belirlemek için değişkeni kullanırsınız. Daha fazla bilgi için [ASP.NET](/aspnet/core/fundamentals/environments)bkz.
+Son bölümde, *geliştirme* ortamı için farklı bir yapılandırma değeri oluşturdunuz. Bu `HostingEnvironment.EnvironmentName` değişkeni, uygulamanın hangi ortamda çalışmakta olduğunu dinamik olarak tespit etmek için kullanırsınız. Daha fazla bilgi için bkz. [ASP.NET Core birden çok ortam kullanma](/aspnet/core/fundamentals/environments).
 
-Çevre adını `Select` yönteme geçirerek geçerli ortama karşılık gelen etiketle yapılandırma değerlerini yükleyin:
+Yapılandırma değerlerini, ortam adını `Select` yöntemine geçirerek geçerli ortama karşılık gelen etiketle yükleyin:
 
 ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -59,30 +59,30 @@ Son bölümde, *Geliştirme* ortamı için farklı bir yapılandırma değeri ol
 ```
 
 > [!IMPORTANT]
-> Yukarıdaki kod snippet, App Configuration bağlantı dizesini . `AppConfigConnectionString` Bu ortam değişkeninin düzgün ayarlandıkundan emin olun.
+> Yukarıdaki kod parçacığı, uygulama yapılandırma bağlantı dizesini adlı `AppConfigConnectionString`bir ortam değişkeninden yükler. Bu ortam değişkeninin doğru ayarlandığından emin olun.
 
-Yöntem `Select` iki kez çağrılır. İlk seferinde, yapılandırma değerlerini etiketsiz yükler. Daha sonra, geçerli ortama karşılık gelen etiketile yapılandırma değerlerini yükler. Bu ortama özgü değerler, etiketsiz karşılık gelen değerleri geçersiz kılar. Her anahtar için ortama özgü değerleri tanımlamanız gerekmez. Bir anahtarın geçerli ortama karşılık gelen bir etiketi olan bir değeri yoksa, etiketsiz değer kullanılır.
+`Select` Yöntemi iki kez çağrılır. İlk kez, hiçbir etiketi olmayan yapılandırma değerlerini yükler. Ardından, yapılandırma değerlerini geçerli ortama karşılık gelen etiketle yükler. Bu ortama özgü değerler etiketi olmayan karşılık gelen değerleri geçersiz kılar. Her anahtar için ortama özgü değerler tanımlamanız gerekmez. Bir anahtar, geçerli ortama karşılık gelen etikete sahip bir değere sahip değilse, etiketi olmayan değer kullanılır.
 
 ## <a name="testing-in-different-environments"></a>Farklı ortamlarda test etme
 
-Farklı yapılandırma değerlerini sınamak `launchSettings.json` için dosyayı `Properties` dizin altında açın. Girişi `config` ' `profiles`nin altında bulun. `environmentVariables` Bölümde, değişkeni `ASPNETCORE_ENVIRONMENT` ' `Production`ye ayarlayın.
+Farklı yapılandırma değerlerini test etmek için, `launchSettings.json` dosyayı `Properties` dizin altında açın. Altında `config` `profiles`girişi bulun. `environmentVariables` Bölümünde, `ASPNETCORE_ENVIRONMENT` değişkenini olarak `Production`ayarlayın.
 
-Yeni değerler kümesi yle uygulamanızı oluşturun ve çalıştırın.
+Yeni değerler ayarlandığında uygulamanızı derleyin ve çalıştırın.
 
 ```dotnetcli
 dotnet build
 dotnet run
 ```
 
-'ye `http://localhost:5000`gitmek için bir web tarayıcısı kullanın. Yazı tipi renginin siyah olduğunu fark edeceksiniz.
+Gezinmek için bir Web tarayıcısı kullanın `http://localhost:5000`. Yazı tipi renginin siyah olduğunu fark edeceksiniz.
 
-![Üretim yapılandırması ile çalışan web uygulaması](media/labels-website-prod.png)
+![Üretim yapılandırması ile çalışan Web uygulaması](media/labels-website-prod.png)
 
-Şimdi `launchSettings.json` değişkeni `ASPNETCORE_ENVIRONMENT` ' `Development`ne ayarlamak için güncelleştir `dotnet run` komutunu yeniden çalıştırın. Yazı tipi renginin artık kırmızı olduğunu fark edeceksiniz. Bunun nedeni, uygulamanın artık `TestApp:Settings:FontColor` `Development` etikete sahip olanın değerini kullanmasıdır. Diğer tüm yapılandırma değerleri üretim değerleriyle aynı kalır.
+Şimdi `launchSettings.json` `ASPNETCORE_ENVIRONMENT` değişkenini olarak `Development`ayarlamak için güncelleştirin. `dotnet run` komutunu yeniden çalıştırın. Yazı tipi renginin artık kırmızı olduğunu fark edeceksiniz. Bunun nedeni, uygulamanın artık `TestApp:Settings:FontColor` `Development` etiketine sahip olan değerini kullanmadır. Diğer tüm yapılandırma değerleri, üretim değerleriyle aynı kalır.
 
-![Geliştirme yapılandırması ile çalışan web uygulaması](media/labels-website-dev.png)
+![Geliştirme yapılandırmasıyla çalışan Web uygulaması](media/labels-website-dev.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core'da Yapılandırma](/aspnet/core/fundamentals/configuration/)
+> [ASP.NET Core yapılandırma](/aspnet/core/fundamentals/configuration/)

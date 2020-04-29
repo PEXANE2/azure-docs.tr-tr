@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight'ta Iş kümesine iş göndermek için Livy Spark'ı kullanın
-description: Spark işlerini bir Azure HDInsight kümesine uzaktan göndermek için Apache Spark REST API'yi nasıl kullanacağınızı öğrenin.
+title: Azure HDInsight 'ta Spark kümesine iş göndermek için Livy Spark kullanma
+description: Spark işlerini bir Azure HDInsight kümesine uzaktan göndermek için Apache Spark REST API nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78206291"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>HDInsight Spark kümesine uzak işleri göndermek için Apache Spark REST API’sini kullanma
 
-Bir Azure HDInsight Spark kümesine uzak işleri göndermek için kullanılan [Apache Livy](https://livy.incubator.apache.org/), Apache Spark REST API, nasıl kullanılacağını öğrenin. Ayrıntılı belgeler için [Bkz. Apache Livy](https://livy.incubator.apache.org/docs/latest/rest-api.html).
+Uzak işleri bir Azure HDInsight Spark kümesine göndermek için kullanılan Apache Spark REST API [Apache Livy](https://livy.incubator.apache.org/)'ı nasıl kullanacağınızı öğrenin. Ayrıntılı belgeler için bkz. [Apache Livy](https://livy.incubator.apache.org/docs/latest/rest-api.html).
 
-Etkileşimli Kıvılcım kabukları çalıştırmak veya Spark'ta çalıştırılmak üzere toplu iş göndermek için Livy'yi kullanabilirsiniz. Bu makalede, toplu iş göndermek için Livy kullanma hakkında görüşmeler. Bu makaledeki parçacıklar, Livy Spark bitiş noktasına REST API çağrıları yapmak için cURL'yi kullanır.
+Etkileşimli Spark kabukları çalıştırmak veya Spark üzerinde çalıştırılacak toplu işleri göndermek için Livy 'ı kullanabilirsiniz. Bu makale toplu işleri göndermek için Livy kullanma hakkında konuşur. Bu makaledeki kod parçacıkları, Livy Spark uç noktasına REST API çağrısı yapmak için kıvrımlı kullanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
-## <a name="submit-an-apache-livy-spark-batch-job"></a>Bir Apache Livy Spark toplu iş gönder
+## <a name="submit-an-apache-livy-spark-batch-job"></a>Apache Livy Spark toplu işi gönderme
 
-Toplu iş göndermeden önce, uygulama jarını kümeyle ilişkili küme depolama alanına yüklemeniz gerekir. Bunu yapmak için, bir komut satırı yardımcı programı olan [AzCopy](../../storage/common/storage-use-azcopy.md)’yi kullanabilirsiniz. Veri yüklemek için kullanabileceğiniz çeşitli diğer istemciler vardır. [HDInsight'ta Apache Hadoop işleri için Upload verilerinde](../hdinsight-upload-data.md)onlar hakkında daha fazla bilgi bulabilirsiniz.
+Bir toplu iş göndermeden önce, uygulama jar öğesini kümeyle ilişkili küme depolamasına yüklemeniz gerekir. Bunu yapmak için, bir komut satırı yardımcı programı olan [AzCopy](../../storage/common/storage-use-azcopy.md)’yi kullanabilirsiniz. Veri yüklemek için kullanabileceğiniz çeşitli başka istemciler vardır. [HDInsight 'ta Apache Hadoop işleri Için karşıya yükleme verilerinde](../hdinsight-upload-data.md)daha fazla bilgi bulabilirsiniz.
 
 ```cmd
 curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
@@ -35,19 +35,19 @@ curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -
 
 ### <a name="examples"></a>Örnekler
 
-* Kavanoz dosyası küme depolama (WASBS) üzerinde ise
+* Jar dosyası küme depolamadaki (GB)
 
     ```cmd  
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-* Jar dosya adını ve sınıf adını giriş dosyasının bir parçası olarak geçirmek istiyorsanız (bu örnekte, input.txt)
+* Jar dosya adını ve ClassName bir giriş dosyasının parçası olarak geçirmek istiyorsanız (Bu örnekte, input. txt)
 
     ```cmd
     curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>Kümeüzerinde çalışan Livy Spark toplu işserileri hakkında bilgi alın
+## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>Küme üzerinde çalışan Livy Spark toplu işleri hakkında bilgi alın
 
 Söz dizimi:
 
@@ -57,19 +57,19 @@ curl -k --user "admin:password" -v -X GET "https://<spark_cluster_name>.azurehdi
 
 ### <a name="examples"></a>Örnekler
 
-* Kümeüzerinde çalışan tüm Livy Spark toplu toplarını almak istiyorsanız:
+* Kümede çalışan tüm Livy Spark toplu işlerini almak istiyorsanız:
 
     ```cmd
     curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches"
     ```
 
-* Belirli bir toplu iş kimliğiyle belirli bir toplu iş almak istiyorsanız
+* Belirli bir toplu iş KIMLIĞINE sahip belirli bir toplu işi almak istiyorsanız
 
     ```cmd
     curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
     ```
 
-## <a name="delete-a-livy-spark-batch-job"></a>Livy Spark toplu iş silme
+## <a name="delete-a-livy-spark-batch-job"></a>Livy Spark toplu işini silme
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.azurehdinsight.net/livy/batches/{batchId}"
@@ -77,42 +77,42 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.a
 
 ### <a name="example"></a>Örnek
 
-Toplu iş kimliği `5`ile toplu iş silme.
+Toplu iş KIMLIKLI `5`bir Batch işi siliniyor.
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/5"
 ```
 
-## <a name="livy-spark-and-high-availability"></a>Livy Kıvılcım ve yüksek kullanılabilirlik
+## <a name="livy-spark-and-high-availability"></a>Livy Spark ve yüksek kullanılabilirlik
 
-Livy küme üzerinde çalışan Spark işleri için yüksek kullanılabilirlik sağlar. İşte birkaç örnek.
+Livy, kümede çalışan Spark işleri için yüksek kullanılabilirlik sağlar. Birkaç örnek aşağıda verilmiştir.
 
-* Bir Spark kümesine uzaktan bir iş gönderdikten sonra Livy hizmeti düşerse, iş arka planda devam eder. Livy geri döndüğünde, işin durumunu geri yükler ve geri bildirir.
-* HDInsight için jupyter dizüstü bilgisayarlar arka uçta Livy tarafından desteklenmektedir. Bir not defteri bir Spark işi çalıştırıyorsa ve Livy hizmeti yeniden başlatılırsa, not defteri kod hücrelerini çalıştırmaya devam eder.
+* Bir Spark kümesine uzaktan bir iş gönderdikten sonra Livy hizmeti aşağı gittiğinde, iş arka planda çalışmaya devam eder. Livy yedeklenme durumunda işin durumunu geri yükler ve rapor geri alır.
+* HDInsight için jupyıter Not defterleri arka uçta Livy ile desteklenir. Bir not defteri bir Spark işi çalıştırıyorsa ve Livy hizmeti yeniden başlatılırsa, Not defteri kod hücrelerini çalıştırmaya devam eder.
 
-## <a name="show-me-an-example"></a>Bana bir örnek göster
+## <a name="show-me-an-example"></a>Bir örnek göster
 
-Bu bölümde, toplu iş göndermek, işin ilerlemesini izlemek ve sonra silmek için Livy Spark'ı kullanan örneklere bakıyoruz. Bu örnekte kullandığımız uygulama, bağımsız [bir Scala uygulaması oluşturun ve HDInsight Spark kümesinde çalıştırmak için](apache-spark-create-standalone-application.md)makalede geliştirilen uygulamadır. Burada varsayalım:
+Bu bölümde, toplu işi göndermek, işin ilerlemesini izlemek ve sonra silmek için Livy Spark kullanma örneklerine bakacağız. Bu örnekte kullandığımız uygulama, [tek başına bir Scala uygulaması oluşturma ve HDInsight Spark kümesinde çalıştırma](apache-spark-create-standalone-application.md)makalesinde geliştirilen bir uygulamadır. Buradaki adımlarda şunu varsayın:
 
-* Uygulama kavanozu üzerinde kümeyle ilişkili depolama hesabına zaten kopyaladınız.
-* Bu adımları denediğiniz bilgisayarda CuRL yüklü.
+* Uygulama jar üzerinden kümeyle ilişkili depolama hesabına zaten kopyaladınız.
+* Bu adımları denediğiniz bilgisayarda yüklü olan bilgisayara Kıvyorsunuz.
 
 Aşağıdaki adımları uygulayın:
 
-1. Kullanım kolaylığı için ortam değişkenlerini ayarlayın. Bu örnek, bir Windows ortamını temel alınarak, değişkenleri ortamınız için gerektiği gibi gözden geçirin. Değiştirin `CLUSTERNAME` `PASSWORD` ve uygun değerlerle değiştirin.
+1. Kullanım kolaylığı için ortam değişkenlerini ayarlayın. Bu örnek, bir Windows ortamını temel alır, ortamınız için gerektiğinde değişkenleri gözden geçirin. Ve `CLUSTERNAME` `PASSWORD` değerlerini uygun değerlerle değiştirin.
 
     ```cmd
     set clustername=CLUSTERNAME
     set password=PASSWORD
     ```
 
-1. Livy Spark'ın kümede çalıştığını doğrulayın. Bunu, çalışan toplu işlerden oluşan bir liste alarak yapabiliriz. Livy'yi ilk kez kullanarak bir iş çalıştırıyorsanız, çıktı sıfır döndürülmelidir.
+1. Küme üzerinde Livy Spark 'ın çalıştığını doğrulayın. Bu işlemi, çalışan toplu işlerin bir listesini alarak yapabiliriz. İlk kez Livy kullanarak bir iş çalıştırıyorsanız, çıkış sıfır döndürmelidir.
 
     ```cmd
     curl -k --user "admin:%password%" -v -X GET "https://%clustername%.azurehdinsight.net/livy/batches"
     ```
 
-    Aşağıdaki parçacıkbenzer bir çıktı almalısınız:
+    Aşağıdaki kod parçacığına benzer bir çıktı almalısınız:
 
     ```output
     < HTTP/1.1 200 OK
@@ -126,15 +126,15 @@ Aşağıdaki adımları uygulayın:
     {"from":0,"total":0,"sessions":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Çıktıdaki son satırın **toplam:0**, çalışan toplu iş yok gibi yazdığına dikkat edin.
+    Çıktıda son satırın, çalışan toplu işlem olmayan **0**olarak nasıl göründüğünü fark edin.
 
-1. Şimdi bir toplu iş gönderelim. Aşağıdaki parçacık, kavanoz adını ve sınıf adını parametre olarak geçirmek için bir giriş dosyası (input.txt) kullanır. Bu adımları bir Windows bilgisayardan çalıştırıyorsanız, giriş dosyası kullanmak önerilir yaklaşımdır.
+1. Şimdi bir toplu iş göndermemize izin verin. Aşağıdaki kod parçacığı, jar adını ve sınıf adını parametreler olarak geçirmek için bir giriş dosyası (Input. txt) kullanır. Bu adımları bir Windows bilgisayarından çalıştırıyorsanız, bir giriş dosyası kullanılması önerilen yaklaşımdır.
 
     ```cmd
     curl -k --user "admin:%password%" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://%clustername%.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-    Dosya **girişi.txt'deki** parametreler aşağıdaki gibi tanımlanır:
+    **Input. txt** dosyasındaki parametreler aşağıdaki gibi tanımlanır:
 
     ```text
     { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
@@ -155,9 +155,9 @@ Aşağıdaki adımları uygulayın:
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Çıktının son satırında nasıl durum yazdığına dikkat **edin:başlangıç**. Ayrıca, **id:0**diyor. İşte, **0** toplu iş kimliğidir.
+    Çıktının son satırının **durum: başlangıç**olarak nasıl göründüğünü unutmayın. Ayrıca, **ID: 0**olur. Burada, **0** toplu iş kimliğidir.
 
-1. Artık toplu iş kimliğini kullanarak bu belirli toplu iş durumunu alabilirsiniz.
+1. Artık toplu iş KIMLIĞINI kullanarak bu belirli toplu işin durumunu alabilirsiniz.
 
     ```cmd
     curl -k --user "admin:%password%" -v -X GET "https://%clustername%.azurehdinsight.net/livy/batches/0"
@@ -177,9 +177,9 @@ Aşağıdaki adımları uygulayın:
     {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Çıktı şimdi **durumu gösterir:başarı,** hangi iş başarıyla tamamlandığını göstermektedir.
+    Çıktı şimdi, işin başarıyla tamamlandığını öneren **durum: başarılı**' i gösterir.
 
-1. İsterseniz, artık toplu işlemi silebilirsiniz.
+1. İsterseniz, toplu işi de silebilirsiniz.
 
     ```cmd
     curl -k --user "admin:%password%" -v -X DELETE "https://%clustername%.azurehdinsight.net/livy/batches/0"
@@ -199,15 +199,15 @@ Aşağıdaki adımları uygulayın:
     {"msg":"deleted"}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Çıktının son satırı, toplu iş sayısının başarıyla silindiğini gösterir. Bir işi silerken, çalışırken, aynı zamanda işi de öldürür. Tamamlanmış, başarılı bir şekilde veya başka bir şekilde tamamlanmış bir işi silerseniz, iş bilgilerini tamamen siler.
+    Çıktının son satırı, toplu işin başarıyla silindiğini gösterir. Bir işi silme, çalışırken de işi de işten çıkar. Tamamlanmış, başarıyla veya başka bir şekilde tamamlanan bir işi silerseniz, iş bilgilerini tamamen siler.
 
-## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>HDInsight 3.5 sürümüyle başlayan Livy yapılandırmagüncellemeleri
+## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>HDInsight 3,5 sürümünden başlayarak Livy yapılandırma güncelleştirmeleri
 
-HDInsight 3.5 kümeleri ve üzeri, varsayılan olarak, örnek veri dosyalarına veya kavanozlarına erişmek için yerel dosya yollarının kullanımını devre dışı bırakılır. Kümedeki `wasbs://` kavanozlara veya örnek veri dosyalarına erişmek için yolu kullanmanızı öneririz.
+HDInsight 3,5 kümeleri ve üzeri, varsayılan olarak, örnek veri dosyalarına veya jars 'e erişmek için yerel dosya yollarının kullanımını devre dışı bırakır. Kümeden jar dosyaları dışındaki veya örnek veri `wasbs://` dosyalarına erişmek için yolu kullanmanızı öneririz.
 
-## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Azure sanal ağındaki bir küme için Livy işleri gönderme
+## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki bir küme için Livy iş gönderme
 
-Bir Azure Sanal Ağı'nın içinden bir HDInsight Spark kümesine bağlanırsanız, kümedeki Livy'ye doğrudan bağlanabilirsiniz. Böyle bir durumda, Livy bitiş noktası `http://<IP address of the headnode>:8998/batches`için URL'dir. Burada, **8998** Livy küme headnode üzerinde çalışan bağlantı noktasıdır. Halka açık olmayan bağlantı noktalarındaki hizmetlere erişim hakkında daha fazla bilgi için, [HDInsight'ta Apache Hadoop hizmetleri tarafından kullanılan Bağlantı Noktaları'na](../hdinsight-hadoop-port-settings-for-services.md)bakın.
+Bir Azure sanal ağının içinden bir HDInsight Spark kümesine bağlanıyorsanız, kümedeki Livy 'a doğrudan bağlanabilirsiniz. Böyle bir durumda, Livy uç noktasının URL 'SI `http://<IP address of the headnode>:8998/batches`. Burada **8998** , küme headnode üzerinde, Livy 'ın çalıştırıldığı bağlantı noktasıdır. Genel olmayan bağlantı noktalarında hizmetlere erişme hakkında daha fazla bilgi için bkz. [HDInsight üzerinde Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları](../hdinsight-hadoop-port-settings-for-services.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

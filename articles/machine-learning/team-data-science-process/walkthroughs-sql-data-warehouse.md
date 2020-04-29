@@ -1,6 +1,6 @@
 ---
-title: T-SQL, Python ile SQL Veri Ambarı Üzerine Analitik - Takım Veri Bilimi Süreci
-description: Tahmine dayalı analitik yapmak için SQL Veri Ambarı'nın kullanımından geçen örnekler.
+title: T-SQL, Python-Team Data Science Işlemi ile SQL veri ambarı Analizi
+description: Tahmine dayalı analiz yapmak için SQL veri ambarı kullanımını izlenecek örnekler.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,26 +12,26 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128160"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure'da T-SQL ve Python'u kullanarak SQL Veri Ambarı veri bilimi gözden geçirme
+# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>SQL veri ambarı veri bilimi, Azure 'da T-SQL ve Python kullanarak izlenecek yollar
 
-Bu gözden geçirmeler, tahmine dayalı analizler yapmak için SQL Veri Ambarı'nı kullanır. Ekip Veri Bilimi Sürecinde belirtilen adımları izlerler. Ekip Veri Bilimi Sürecine genel bir bakış için [bkz.](overview.md) SQL Veri Ambarı'na giriş için Azure [SQL Veri Ambarı nedir'e bakın?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Bu yönergeler, tahmine dayalı analiz yapmak için SQL veri ambarı 'nı kullanır. Bunlar, Team Data Science Işleminde özetlenen adımları izler. Ekip veri bilimi sürecine genel bir bakış için bkz. [veri bilimi işlemi](overview.md). SQL veri ambarı 'na giriş için bkz. [Azure SQL veri ambarı nedir?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Ekip Veri Bilimi İşlemi'ni yürüten ek veri bilimi gözden geçirmeleri, kullandıkları **platforma** göre gruplandırılır. Bu örneklerin bir öğeleştirme için [Takım Veri Bilimi İşlemi'ni yürüten Walkthroughs'a](walkthroughs.md) bakın.
+Ekip veri bilimi sürecini yürütecek olan ek veri bilimi talimatları, kullandıkları **platforma** göre gruplandırılır. Bu örneklerin bir öğesi için [ekip veri bilimi sürecini yürüten Izlenecek yollara](walkthroughs.md) bakın.
 
 
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>SQL Veri Ambarı ile T-SQL ve IPython dizüstü bilgisayarlarını kullanarak taksi ipuçlarını tahmin etme
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>SQL veri ambarı ile T-SQL ve IPython not defterlerini kullanarak TAXI ipuçlarını tahmin edin
 
-[SQL Veri Ambarı'nı Kullan,](sqldw-walkthrough.md) SQL Veri Ambarı (SQL DW) kullanarak makine öğrenimi sınıflandırması ve regresyon modellerini nasıl oluşturabileceğinizi ve dağıtabileceğinizi gösterir.  Veriler halka açık bir NYC taksi gezisi ve ücret veri setivardır.
+[SQL veri ambarı kullan izlenecek yolu](sqldw-walkthrough.md) , SQL veri AMBARı (SQL DW) kullanarak makine öğrenimi sınıflandırması ve gerileme modellerini nasıl oluşturup dağıtacağınızı gösterir.  Veriler herkese açık bir NYC taksi seyahat ve tarifeli havayolu veri kümesi.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ekip Veri Bilimi Süreci'ni oluşturan temel bileşenlerin tartışılması [için, Takım Veri Bilimi Süreci'ne genel bakış](overview.md)bölümüne bakın.
+Ekip veri bilimi sürecini oluşturan anahtar bileşenleriyle ilgili bir tartışma için bkz. [Team Data Science işlemine genel bakış](overview.md).
 
-Ekip Veri Bilimi Süreci yaşam döngüsünü tartışmak [için, Bkz. Takım Veri Bilimi Süreci yaşam döngüsü.](lifecycle.md) Bu yaşam döngüsü, projelerin genellikle yürütüldüğünde takip ettiği adımları, başından sonuna kadar özetler. 
+Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler ve bu da projeler genellikle yürütüldüğünde izler. 

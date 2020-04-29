@@ -1,7 +1,7 @@
 ---
-title: CDN tümleştirmesi ile içeriği akışla aktarın
+title: CDN tümleştirmesi ile içerik akışı
 titleSuffix: Azure Media Services
-description: CDN tümleştirmesi ile içerik akışı nın yanı sıra ön alma ve Origin-Assist CDN-Prefetch hakkında bilgi edinin.
+description: CDN tümleştirmesinin yanı sıra önceden getirme ve kaynak Yardımcısı CDN-önceden getirme ile akış içeriği hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,148 +13,148 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128061"
 ---
-# <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içeriği akışla aktarın
+# <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
 
 Azure Content Delivery Network (CDN), dünya genelindeki stratejik olarak yerleştirilen fiziksel düğümlerde içeriği önbelleğe alarak, yüksek bant genişliği içeriğinin hızlı bir şekilde kullanıcılara teslimi konusunda geliştiricilere genel bir çözüm sunar.  
 
-CDN, bir Media Services [Streaming Endpoint'ten (başlangıç)](streaming-endpoint-concept.md) codec başına, akış protokolü başına, bit hızı başına, kapsayıcı biçimi başına ve şifreleme/DRM başına akışlı içeriği önbelleğe alır. Codec-streaming protokol-kapsayıcı biçimi-bitrate-şifrelemeher birleşimi için ayrı bir CDN önbelleği olacaktır.
+CDN, her codec için bir Media Services [akış uç noktası (başlangıç)](streaming-endpoint-concept.md) , her akış protokolü, her bir bir kapsayıcı biçimi başına ve ŞIFRELEME/DRM başına bir akış uç noktası (Origin) akışı Her codec-akış protokolü birleşimi için-bit hızı-şifreleme, ayrı bir CDN önbelleği olacaktır.
 
-Popüler içerik, video parçası önbelleğe alındıkça doğrudan CDN önbelleğinden sunulur. Genellikle aynı şeyi izleyen çok sayıda kişi olduğundan, canlı içeriğin önbelleğe alınması olasıdır. İsteğe bağlı içerik biraz yanıltıcı olabilir, çünkü popüler, bazıları da popüler olmayan içeriklere sahip olabilir. Bunların hiçbirinin popüler olmadığı milyonlarca video varlığınız varsa (haftada sadece bir veya iki izleyici) ancak tüm farklı videoları izleyen binlerce kişi varsa, CDN çok daha az etkili hale gelir.
+Video parçası önbelleğe alındığı sürece popüler içerik doğrudan CDN önbelleğinden sunulacaktır. Tam olarak aynı şeyi izleyen çok sayıda kişi olduğu için canlı içeriğin önbelleğe alınması olasıdır. Çok daha popüler ve bazıları olmayan bazı içeriklere sahip olabileceğinden isteğe bağlı içerik biraz karmaşık olabilir. Bunlardan hiçbirinin popüler olduğu milyonlarca video varlığınız varsa (yalnızca bir veya iki Görüntüleyici), ancak tüm farklı videoları izlerken binlerce insan varsa, CDN çok daha az etkili hale gelir.
 
-Ayrıca, uyarlanabilir akışın nasıl çalıştığını da göz önünde bulundurmanız gerekir. Her video parçası kendi varlığı olarak önbelleğe alınmış. Örneğin, belirli bir videonun ilk kez izlenişini düşünün. İzleyici burada ve orada sadece birkaç saniye izlerken etrafında atlar, yalnızca kişinin CDN önbelleğe almak ne izledim ile ilişkili video parçaları. Uyarlanabilir akış ile genellikle 5 ila 7 farklı bitrates video var. Bir kişi bir bitat izliyorsa ve diğeri farklı bir bithızı izliyorsa, her biri CDN'de ayrı ayrı önbelleğe alınmış demektir. İki kişi aynı bitrate izliyor olsa bile, farklı protokoller üzerinden akış olabilir. Her protokol (HLS, MPEG-DASH, Düzgün Akış) ayrı olarak önbelleğe alınr. Böylece her bit hızı ve protokol ayrı ayrı önbelleğe alınır ve yalnızca istenen video parçaları önbelleğe alınır.
+Ayrıca, uyarlamalı akışın nasıl çalıştığını göz önünde bulundurmanız gerekir. Her bir video parçası kendi varlığı olarak önbelleğe alınır. Örneğin, belirli bir videonun ilk kez nasıl izlenen hakkında düşünün. Görüntüleyici burada yalnızca birkaç saniye izlemeyi atlar ve burada yalnızca, izlenen kişilerin CDN 'de önbelleğe alınması ile ilişkili video parçaları vardır. Uyarlamalı akış sayesinde genellikle 5 ile 7 arasında farklı bit fiyatları vardır. Bir kişi bir bit hızı izlerken ve başka bir kişi farklı bir bit hızı izlerse, her biri CDN 'de ayrı olarak önbelleğe alınır. İki kişi aynı bit hızını izliyor olsa da, farklı protokollerde akış olabilir. Her protokol (HLS, MPEG-DASH, Kesintisiz Akış) ayrı olarak önbelleğe alınır. Böylece her bit hızı ve protokol ayrı olarak önbelleğe alınır ve yalnızca istenen video parçaları önbelleğe alınır.
 
-Medya Hizmetleri [akışı bitiş noktasında](streaming-endpoint-concept.md)CDN'yi etkinleştirip etkinleştirmeye karar verirken, beklenen görüntüleyenlerin sayısını göz önünde bulundurun. CDN yalnızca içeriğiniz için çok sayıda görüntüleyen bekliyorsanız yardımcı olur. Görüntüleyenlerin maksimum eşzamanlılığı 500'den düşükse, CDN eşzamanlılıkla en iyi ölçeklendirildiklerinden CDN'nin devre dışı sayılması önerilir.
+Media Services [akış uç NOKTASıNDA](streaming-endpoint-concept.md)CDN 'nin etkinleştirilip etkinleştirilmeyeceğini saptarken, beklenen görüntüleyiciler sayısını göz önünde bulundurun. CDN, yalnızca içeriğiniz için birçok Görüntüleyici bekliyorsanız yardımcı olur. Görüntüleyicilerin en fazla eşzamanlılık 500 ' den düşükse, CDN 'nin eşzamanlılık ile en iyi şekilde ölçeklendirilmiş olduğundan CDN 'yi devre dışı bırakmanız önerilir.
 
-Bu konu [CDN tümleştirme](#enable-azure-cdn-integration)sağlayan tartışır. Ayrıca prefetching (etkin önbelleğe alma) ve [Origin-Assist CDN-Prefetch](#origin-assist-cdn-prefetch) kavramını açıklar.
+Bu konu, [CDN tümleştirmesini](#enable-azure-cdn-integration)etkinleştirmeyi tartışır. Ayrıca, önceden getirme (etkin önbelleğe alma) ve [kaynak-yardım CDN-önceden getirme](#origin-assist-cdn-prefetch) kavramını da açıklar.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* CDN'yi etkinleştirseniz de etkinleştirmeseniz de [akış bitiş noktası](streaming-endpoint-concept.md) `hostname` ve akış URL'si aynı kalır.
-* İçeriğinizi CDN'li veya CDN'siz test etme yeteneğine ihtiyacınız varsa, CDN etkin olmayan başka bir akış bitiş noktası oluşturun.
+* [Akış uç noktası](streaming-endpoint-concept.md) `hostname` ve akış URL 'si, CDN 'yi etkinleştirip etkinleştirmeksizin aynı kalır.
+* İçeriğinizi CDN ile veya CDN olmadan test etmek istiyorsanız, CDN etkin olmayan başka bir akış uç noktası oluşturun.
 
-## <a name="enable-azure-cdn-integration"></a>Azure CDN tümleştirmesini etkinleştirme
+## <a name="enable-azure-cdn-integration"></a>Azure CDN tümleştirmeyi etkinleştir
 
 > [!IMPORTANT]
-> Deneme veya öğrenci Azure hesapları için CDN'yi etkinleştiremezsiniz.
+> Deneme veya öğrenci Azure hesapları için CDN 'yi etkinleştiremezsiniz.
 >
-> CDN tümleştirmesi Federal Hükümet ve Çin bölgeleri dışındaki tüm Azure veri merkezlerinde etkinleştirilir.
+> CDN tümleştirmesi, Federal kamu ve Çin bölgeleri dışındaki tüm Azure veri merkezlerinde etkinleştirilir.
 
-Akış bitiş noktası CDN etkinleştirilmiş olarak sağlandıktan sonra, akış bitiş noktasını CDN bitiş ucuna eşlemek için DNS güncelleştirmesi yapılmadan önce Medya Hizmetleri'nde tanımlanmış bir bekleme süresi vardır.
+CDN etkinken bir akış uç noktası sağlandıktan sonra, akış uç noktasını CDN uç noktası ile eşlemek için DNS güncelleştirme işlemi yapılmadan önce Media Services tanımlı bir bekleme süresi vardır.
 
-Daha sonra CDN'yi devre dışı/etkinleştirmek istiyorsanız, akış bitiş noktanızın **durdurulmuş** durumda olması gerekir. Azure CDN tümleştirmesinin etkinleştirilmesi ve değişikliklerin tüm CDN AP'leri arasında etkin olması iki saat kadar sürebilir. Ancak, akış bitiş noktanızı başlatmave akış son noktasından kesintisiz olarak başlatabilirsiniz. Tümleştirme tamamlandıktan sonra akış CDN'den teslim edilir. Sağlama döneminde, akış bitiş noktanız **başlangıç** durumunda olacaktır ve bozulmuş performans gözlemleebilirsiniz.
+Daha sonra CDN 'yi devre dışı bırakmak/etkinleştirmek istiyorsanız, akış uç noktanızın **durdurulmuş** durumda olması gerekir. Azure CDN tümleştirmenin etkinleştirilmesi ve değişikliklerin tüm CDN pop 'larda etkin olması iki saate kadar sürebilir. Ancak, akış uç noktasından kesintiler olmadan akış uç noktanızı ve akışı başlatabilirsiniz. Tümleştirme tamamlandıktan sonra, akış CDN 'den dağıtılır. Sağlama süresi boyunca, akış uç noktanız **Başlangıç** durumunda olur ve performans düşüklüğü gözlemleyebilirsiniz.
 
-Standart akış uç noktası oluşturulduğunda, Varsayılan olarak Standart Verizon ile yapılandırılır. Premium Verizon veya Standart Akamai sağlayıcılarını REST API'lerini kullanarak yapılandırabilirsiniz.
+Standart akış uç noktası oluşturulduğunda, standart Verizon ile varsayılan olarak yapılandırılır. REST API 'Lerini kullanarak Premium Verizon veya standart Akamai sağlayıcılarını yapılandırabilirsiniz.
 
-Azure CDN ile Azure Medya Hizmetleri entegrasyonu, standart akış uç noktaları için **Verizon'dan Azure CDN'de** uygulanır. Premium akış bitiş noktaları tüm **Azure CDN fiyatlandırma katmanları ve sağlayıcıları**kullanılarak yapılandırılabilir.
+Azure CDN ile tümleştirme Azure Media Services standart akış uç noktaları için **Verizon 'tan Azure CDN** uygulanır. Premium akış uç noktaları, tüm **Azure CDN fiyatlandırma katmanları ve sağlayıcıları**kullanılarak yapılandırılabilir.
 
 > [!NOTE]
-> Azure CDN hakkında ayrıntılı bilgi için [CDN'ye genel bakış'a](../../cdn/cdn-overview.md)bakın.
+> Azure CDN hakkındaki ayrıntılar için bkz. [CDN 'ye genel bakış](../../cdn/cdn-overview.md).
 
-## <a name="determine-if-a-dns-change-was-made"></a>DNS değişikliği yapIlip yapılmadığını belirleme
+## <a name="determine-if-a-dns-change-was-made"></a>DNS değişikliğinin yapıldığını belirleme
 
-DNS değişikliğinin akış bitiş noktasında yapIlip yapılmadığını (trafik Azure CDN'sine yönlendiriliyor) kullanarak <https://www.digwebinterface.com>belirleyebilirsiniz. Sonuçlarda azureedge.net alan adlarını görürseniz, trafik şimdi CDN'ye işaret ediliyor.
+Kullanarak <https://www.digwebinterface.com>bir akış uç noktasında (trafiğin Azure CDN yönlendirilmekte) DNS değişikliği yapıldığını belirleyebilirsiniz. Sonuçlarda azureedge.net etki alanı adları görürseniz, trafik artık CDN 'ye işaret ediyor.
 
-## <a name="origin-assist-cdn-prefetch"></a>Origin-Assist CDN-Prefetch
+## <a name="origin-assist-cdn-prefetch"></a>Kaynak-yardımcı CDN-önceden getirme
 
-CDN önbelleğe alma reaktif bir işlemdir. CDN bir sonraki nesnenin ne isteyeceğini tahmin edebilirse, CDN bir sonraki nesneyi proaktif olarak isteyebilir ve önbelleğe alabilir. Bu işlemle, tüm (veya çoğu) için performansı artıran bir önbellek isabet elde edebilirsiniz.
+CDN önbelleği, reaktif bir işlemdir. CDN bir sonraki nesnenin isteneceğini tahmin edebildiyse, CDN bir sonraki nesneyi proaktif olarak isteyebilir ve önbelleğe alabilir. Bu işlemle, nesnelerin tümü (veya çoğu) için, performansı artıran bir önbellek okuması elde edebilirsiniz.
 
-Prefetching kavramı, bu yakın oyuncu tarafından talep edilecek beklentisiyle "internet kenarında" nesneleri konumlandırmak için çaba, böylece oyuncuya bu nesneyi teslim etmek için zaman azaltarak.
+Önceden getirme kavramı, olasılığına içindeki "internet Edge" de nesneleri, bu nesnenin Player tarafından istenme süresini azaltarak, bu sayede bu nesneyi yürütücüye sunmaya yönelik süreyi azaltan bir konuma konumlandırır.
 
-Bu amaca ulaşmak için, akış uç noktası (başlangıç) ve CDN'nin birkaç şekilde el ele çalışması gerekir:
+Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile birkaç yolla çalışması gerekir:
 
-- Medya Hizmetleri menşei, CDN'yi bir sonraki nesneyi önceden getirmek için bilgilendirmek için "istihbarat" (Origin-Assist) olmalıdır.
-- CDN prefetch ve önbelleğe alma (CDN-prefetch parçası) yok. CDN de bir prefetch ya da düzenli bir fetch olup olmadığını kökeni bilgilendirmek için "istihbarat" olması gerekir, 404 yanıtları işlemek, ve sonsuz prefetch döngü önlemek için bir yol.
+- Media Services kaynağı, bir sonraki nesneyi önceden getirme için CDN 'e bildirmek üzere "zeka" (Origin-yardım) içermelidir.
+- CDN, önceden getirme ve önbelleğe alma (CDN-önceden getirme bölümü) yapar. CDN 'nin bir önceden getirme veya düzenli getirme, 404 yanıtlarını işleme ve sonsuz önceden getirme döngüsünden kaçınmak için bir yol olduğunu bildirmek üzere "zeka" sahip olması gerekir.
 
 ### <a name="benefits"></a>Avantajlar
 
-*Origin-Assist CDN-Prefetch* özelliğinin avantajları şunları içerir:
+*Kaynak-yardım CDN-önceden getirme* özelliğinin avantajları şunları içerir:
 
-- Prefetch, oynatma sırasında beklenen video segmentlerini kenarda önceden konumlandırarak, izleyicinin gecikme süresini azaltarak ve video segmenti indirme sürelerini iyileştirerek video oynatma kalitesini artırır. Bu, daha hızlı video başlatma süresi ve daha düşük yeniden arabelleğe alma oluşumları ile sonuçlanır.
-- Bu kavram genel CDN kökenli senaryo için geçerlidir ve medya ile sınırlı değildir.
-- Akamai bu özelliği [Akamai Cloud Embed (ACE)](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html)'ye ekledi.
+- Önceden getirme, kayıttan yürütme sırasında beklenen video segmentlerini önceden konumlandırarak, görüntüleyiciye gecikme süresini azaltarak ve video segmenti karşıdan yükleme sürelerini geliştirerek video kayıttan yürütme kalitesini geliştirir. Bu, daha hızlı video başlangıç zamanına ve düşük yeniden arabelleğe alma oluşumlarına neden olur.
+- Bu kavram, genel CDN-Origin senaryosu için geçerlidir ve medya ile sınırlı değildir.
+- Akamai bu özelliği [Akamai Cloud embed (ACE)](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html)öğesine ekledi.
 
 > [!NOTE]
-> Bu özellik, Medya Hizmetleri akış bitiş noktası ile entegre Akamai CDN için henüz geçerli değildir. Ancak, önceden varolan bir Akamai sözleşmesi olan ve Akamai CDN ile Medya Hizmetleri menşei arasında özel entegrasyon gerektiren Medya Hizmetleri müşterileri için kullanılabilir.
+> Bu özellik henüz Media Services akış uç noktası ile tümleşik Akamai CDN için geçerli değildir. Ancak, önceden var olan bir Akamai sözleşmesi olan ve Akamai CDN ile Media Services kaynağı arasında özel tümleştirme gerektiren Media Services müşteriler için kullanılabilir.
 
 ### <a name="how-it-works"></a>Nasıl çalışır?
 
-`Origin-Assist CDN-Prefetch` Üstbilgi için CDN desteği (hem canlı hem de isteğe bağlı video akışı için) Akamai CDN ile doğrudan sözleşmesi olan müşteriler tarafından kullanılabilir. Bu özellik, Akamai CDN ve Medya Hizmetleri kökeni arasındaki aşağıdaki HTTP üstbilgi alışverişini içerir:
+`Origin-Assist CDN-Prefetch` Üst BILGILER için CDN desteği (hem canlı hem de video isteğe bağlı akış Için) Akamai CDN ile doğrudan sözleşme sahibi olan müşteriler tarafından kullanılabilir. Özelliği, Akamai CDN ve Media Services kaynağı arasındaki aşağıdaki HTTP üst bilgi alışverişlerini içerir:
 
-|HTTP üstbilgi|Değerler|Gönderen|Alıcı|Amaç|
+|HTTP üstbilgisi|Değerler|Gönderen|Alıcı|Amaç|
 | ---- | ---- | ---- | ---- | ----- |
-|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (varsayılan) veya 0 |CDN|Kaynak|CDN'nin ön getirme etkin olduğunu belirtmek için.|
-|`CDN-Origin-Assist-Prefetch-Path`| Örnek: <br/>Parçalar(video=1400000000,format=mpd-time-cmaf)|Kaynak|CDN|CDN'ye ön alma yolu sağlamak için.|
-|`CDN-Origin-Assist-Prefetch-Request`|1 (ön alma isteği) veya 0 (normal istek)|CDN|Kaynak|CDN'den gelen isteği belirtmek için bir ön getirmedir.|
+|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (varsayılan) veya 0 |CDN|Kaynak|CDN 'nin önceden hazırlık özelliğinin etkin olduğunu göstermek için.|
+|`CDN-Origin-Assist-Prefetch-Path`| Örnek: <br/>Parçalar (video = 1400000000, Format = MPD-Time-cmaf)|Kaynak|CDN|CDN 'ye önceden getirme yolu sağlamak için.|
+|`CDN-Origin-Assist-Prefetch-Request`|1 (önceden getirme isteği) veya 0 (normal istek)|CDN|Kaynak|CDN 'den gelen isteğin bir önceden getirme olduğunu belirtmek için.|
 
-Üstbilgi değişiminin bir bölümünü çalışırken görmek için aşağıdaki adımları deneyebilirsiniz:
+Üst bilgi değişimi 'nin bir parçasını eylemde görmek için aşağıdaki adımları deneyebilirsiniz:
 
-1. Bir ses veya video bölümü veya parçası için Medya Hizmetleri'nin kaynağına istekte bulunmak için Postacı veya cURL'yi kullanın. İsteğe üstbilgi `CDN-Origin-Assist-Prefetch-Enabled: 1` eklediğinizden emin olun.
-2. Yanıtta, değeri olarak göreceli `CDN-Origin-Assist-Prefetch-Path` bir yolu olan üstbilgi görmeniz gerekir.
+1. Bir ses veya video segmenti veya parçası için Media Services kaynağına bir istek vermek üzere Postman veya kıvrımlı kullanın. Üst bilgiyi `CDN-Origin-Assist-Prefetch-Enabled: 1` isteğe eklediğinizden emin olun.
+2. Yanıtta, üst bilgiyi `CDN-Origin-Assist-Prefetch-Path` değeri olarak göreli bir yol görmeniz gerekir.
 
 ### <a name="supported-streaming-protocols"></a>Desteklenen akış protokolleri
 
-Özellik, `Origin-Assist CDN-Prefetch` canlı ve isteğe bağlı akış için aşağıdaki akış protokollerini destekler:
+`Origin-Assist CDN-Prefetch` Özelliği, canlı ve isteğe bağlı akış için aşağıdaki akış protokollerini destekler:
 
 * HLS v3
 * HLS v4
 * HLS CMAF
-* DASH (BOS)
+* TIRE (CSF)
 * TIRE (CMAF)
-* Düzgün akış
+* Kesintisiz Akış
 
 ### <a name="faqs"></a>SSS
 
-* CdN prefetch 404 almak için bir prefetch yolu URL geçersiz se, ne olur?
+* CDN önceden getirme işlemi 404 olarak bir önceden getirme yolu URL 'SI geçersizse ne olur?
 
-    CDN yalnızca 10 saniye (veya diğer yapılandırılmış değer) için bir 404 yanıtı önbelleğe alacak.
+    CDN yalnızca 10 saniye (veya yapılandırılmış diğer değer) için 404 yanıtını önbelleğe alacak.
 
-* İsteğe bağlı bir videonuz olduğunu varsayalım. CDN-prefetch etkinse, bu özellik, bir istemci ilk video segmentini istediğinde, sonraki tüm video segmentlerini aynı bithızında önceden getirmek için bir döngü başlatacağı anlamına gelir mi?
+* İsteğe bağlı bir videonuz olduğunu varsayalım. CDN-önceden getirme etkinse, bu özellik bir istemci ilk video kesimini istediğinde, önceden getirme işlemi aynı bit hızında sonraki tüm video segmentlerini önceden getirme döngüsünü başlatır.
 
-    Hayır, CDN-prefetch yalnızca istemci tarafından başlatılan bir istek/yanıttan sonra yapılır. CDN-prefetch, bir prefetch döngüsünden kaçınmak için hiçbir zaman bir prefetch tarafından tetiklenmez.
+    Hayır, CDN-önceden getirme yalnızca istemci tarafından başlatılan bir istek/yanıt sonrasında yapılır. CDN-önceden getirme, önceden getirme döngüsünden kaçınmak için hiçbir şekilde önceden getirme tarafından tetiklenmez.
 
-* Origin-Assist CDN-Prefetch özelliği her zaman açık mıdır? Nasıl açılabilir/kapatılabilir?
+* Kaynak-CDN-önceden getirme özelliği her zaman açık olur mi? Nasıl açılıp kapatılabilir?
 
-    Bu özellik varsayılan olarak kapalıdır. Müşterilerin Akamai API üzerinden açmaları gerekmektedir.
+    Bu özellik varsayılan olarak kapalıdır. Müşterilerin Akamai API aracılığıyla açık olması gerekir.
 
-* Canlı akış için, bir sonraki bölüm veya parça henüz kullanılamıyorsa Origin-Assist'e ne olur?
+* Canlı akış için, sonraki segment veya parça henüz kullanılamıyorsa, kaynak yardımı 'nda ne olur?
 
-    Bu durumda, Medya Hizmetleri kaynağı üstbilgi sağlamaz `CDN-Origin-Assist-Prefetch-Path` ve CDN-prefetch oluşmaz.
+    Bu durumda Media Services kaynağı üst bilgi sağlamaz `CDN-Origin-Assist-Prefetch-Path` ve CDN-önceden getirme gerçekleşmeyecektir.
 
-* Dinamik `Origin-Assist CDN-Prefetch` bildirim filtreleri ile nasıl çalışır?
+* Dinamik bildirim `Origin-Assist CDN-Prefetch` filtreleriyle nasıl çalışır?
 
-    Bu özellik, bildirim filtresinden bağımsız olarak çalışır. Bir sonraki parça filtre penceresinden çıktığında, URL'si ham istemci bildirimine bakarak da bulunur ve cdn ön alma yanıtı üstbilgisi olarak döndürülür. Yani CDN DASH / HLS / Pürüzsüz tezahür filtrelenmiş bir parçanın URL alırsınız. Ancak, bu parça oyuncu tarafından tutulan DASH/HLS/Smooth manifestosuna dahil olmadığından (oyuncu o parçanın varlığını bilmez) bu parçayı almak için CDN'ye get isteğinde bulunmaz.
+    Bu özellik bildirim filtresinden bağımsız olarak çalışmaktadır. Sonraki parça bir filtre penceresinin dışında olduğunda, ham istemci bildirimine bakarak ve sonra CDN önceden getirme yanıt üst bilgisi olarak döndürüldüğünden URL 'SI yine de bulunur. Bu nedenle CDN, DASH/HLS/Düzgünleştir bildiriminden filtrelenmiş bir parçanın URL 'sini alır. Ancak, oynatıcı bu parçayı getirmek için hiçbir şekilde CDN 'ye bir GET isteği oluşturmaz, çünkü bu parça Player tarafından tutulan DASH/HLS/düzgün bildirimde yer almamaktadır (oyuncu bu parçanın varlığını bilmez).
 
-* DASH MPD/HLS çalma listesi/Düzgün manifesto önceden alınabilir mi?
+* DASH/HLS çalma listesi/Düzgünleştir bildirimi önceden getirilsin mi?
 
-    Hayır, DASH MPD, HLS ana çalma listesi, HLS varyant çalma listesi veya düzgün manifest URL prefetch üstbilgisine eklenmez.
+    No, DASH MPD, HLS ana oynatma listesi, HLS Variant çalma listesi veya düz bildirim URL 'SI önceden getirme başlığına eklenmez.
 
-* Prefetch URL'leri göreceli veya mutlak mı?
+* Önceden hazırlık URL 'Leri göreli veya mutlak mı?
 
-    Akamai CDN her ikisine de izin verirken, Medya Hizmetleri menşei yalnızca ön alma yolu için göreli URL'ler sağlar, çünkü mutlak URL'leri kullanmanın belirgin bir yararı yoktur.
+    Akamai CDN her ikisine de izin veriyorsa, mutlak URL 'Ler kullanmanın hiçbir avantajı olmadığından Media Services kaynağı yalnızca önceden getirme yolu için göreli URL 'Ler sağlar.
 
-* Bu özellik DRM korumalı içeriklerle çalışıyor mu?
+* Bu özellik, DRM korumalı içerikle birlikte çalışıyor mu?
 
-    Evet, bu özellik HTTP düzeyinde çalıştığından, herhangi bir kesimi/parçayı çözmez veya ayrıştırmaz. İçeriğin şifrelenip şifrelenmemesi önemli değildir.
+    Evet, bu özellik HTTP düzeyinde çalıştığından, hiçbir segmenti/parçayı çözmez veya ayrıştırır. İçeriğin şifrelenip şifrelenmediği konusunda dikkatli değildir.
 
-* Bu özellik Server Side Reklam Ekleme (SSAI) ile çalışır mı?
+* Bu özellik sunucu tarafı ad eklemesi (SSAı) ile çalışıyor mu?
     
-    SSAI, Medya Hizmetleri kökenli kaynak içeriğin zaman damgasını değiştirmediğinden, orijinal/ana içerik (reklam eklemeden önceki orijinal video içeriği) çalışır. Bu özelliğin reklam içeriğiyle çalışıp çalışmadığına bağlı olarak, reklam kaynağının Origin-Assist'i destekleyip desteklemediğine bağlıdır. Örneğin, reklam içeriği Azure Medya Hizmetleri'nde de (aynı veya ayrı kaynak) barındırılıyorsa, reklam içeriği de önceden alınır.
+    Asıl/ana içerik (ad ekleme öncesi orijinal video içeriği) için geçerlidir, çünkü SSAı kaynak içeriğin zaman damgasını Media Services kaynağından değiştirmemektedir. Bu özelliğin ad içeriğiyle çalışıp çalışmadığını, ad kaynağının kaynak-Yardım ' a destekleyip desteklemediğini belirtir. Örneğin, ad içeriği de Azure Media Services (aynı veya ayrı bir kaynak) içinde barındırılıyorsa, ad içerikleri de önceden getirilir.
 
-* Bu özellik UHD/HEVC içeriğinde çalışıyor mu?
+* Bu özellik UıHD/HEVC içeriğiyle çalışıyor mu?
 
     Evet.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde, güncellemeler alın
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Akış Bitiş Noktası (kaynak)](streaming-endpoint-concept.md) belgesini gözden geçirdiğinizden emin olun.
-* Bu [depodaki](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) örnek, varsayılan akış bitiş noktasının .NET ile nasıl başlatılabildiğini gösterir.
+* [Akış uç noktası (başlangıç)](streaming-endpoint-concept.md) belgesini gözden geçirdiğinizden emin olun.
+* [Bu depodaki](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) örnek, .NET ile varsayılan akış uç noktasının nasıl başlatılacağını gösterir.

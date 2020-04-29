@@ -1,6 +1,6 @@
 ---
-title: Kaynak Yöneticisi şablonu kullanarak Azure'da tanılama ayarı oluşturma
-description: Azure platform günlüklerini Azure Monitör Günlükleri, Azure depolama alanı veya Azure Etkinlik Hub'larına iletmek için Kaynak Yöneticisi şablonu kullanarak tanı lama ayarları oluşturun.
+title: Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma
+description: Azure platformu günlüklerini Azure Izleyici günlüklerine, Azure depolama 'ya veya Azure Event Hubs iletmek için bir Kaynak Yöneticisi şablonu kullanarak tanılama ayarları oluşturun.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,31 +8,31 @@ ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672438"
 ---
-# <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure'da tanılama ayarı oluşturma
-Azure Monitor'daki [tanıayarları,](diagnostic-settings.md) Azure kaynakları ve bağlı oldukları Azure platformu tarafından toplanan [Platform günlüklerinin](platform-logs-overview.md) nereye gönderilen yeri belirtir. Bu makalede, farklı hedeflere platform günlükleri toplamak için tanılama ayarları oluşturmak ve yapılandırmak için bir [Azure Kaynak Yöneticisi şablonu](../../azure-resource-manager/templates/template-syntax.md) kullanmak için ayrıntılar ve örnekler sağlar.
+# <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma
+Azure Izleyici 'de [Tanılama ayarları](diagnostic-settings.md) Azure kaynakları tarafından toplanan [Platform günlüklerinin](platform-logs-overview.md) ve bağımlı oldukları Azure platformunun nereden gönderileceğini belirtir. Bu makalede, farklı hedeflere platform günlüklerini toplamak için tanılama ayarlarını oluşturmak ve yapılandırmak üzere bir [Azure Resource Manager şablonu](../../azure-resource-manager/templates/template-syntax.md) kullanmak için Ayrıntılar ve örnekler sağlanmaktadır.
 
 > [!NOTE]
-> Diğer Azure kaynakları için tanı ayarları gibi PowerShell veya CLI kullanarak Azure Etkinliği günlüğü için [bir tanılama ayarı oluşturamadığınız](diagnostic-settings.md) için, bu makaledeki bilgileri kullanarak Etkinlik günlüğü için bir Kaynak Yöneticisi şablonu oluşturun ve şablonu PowerShell veya CLI kullanarak dağıtın.
+> Diğer Azure kaynakları için Tanılama ayarları gibi PowerShell veya CLı kullanarak Azure etkinlik günlüğü için [bir tanılama ayarı oluşturamıyoruz](diagnostic-settings.md) , bu makaledeki bilgileri kullanarak etkinlik günlüğü için bir kaynak yöneticisi şablonu oluşturun ve şablonu POWERSHELL veya CLI kullanarak dağıtın.
 
 ## <a name="deployment-methods"></a>Dağıtım yöntemleri
-PowerShell ve CLI dahil olmak üzere geçerli bir yöntemi kullanarak Kaynak Yöneticisi şablonlarını dağıtabilirsiniz. Etkinlik günlüğü için tanı ayarları CLI veya `az deployment create` `New-AzDeployment` PowerShell için kullanarak bir aboneye dağıtılmalıdır. Kaynak günlükleri için tanı lama ayarları, `az group deployment create` CLI `New-AzResourceGroupDeployment` veya PowerShell için kullanan bir kaynak grubuna dağıtılmalıdır.
+PowerShell ve CLı dahil geçerli herhangi bir yöntemi kullanarak Kaynak Yöneticisi şablonlarını dağıtabilirsiniz. Etkinlik günlüğü için tanılama ayarlarının CLı veya `az deployment create` `New-AzDeployment` PowerShell için kullanarak bir aboneliğe dağıtılması gerekir. Kaynak günlükleri için Tanılama ayarları, CLı veya `az group deployment create` `New-AzResourceGroupDeployment` PowerShell için kullanarak bir kaynak grubuna dağıtmalıdır.
 
-Ayrıntılar [için Kaynak Yöneticisi şablonları ve Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) ile kaynakları dağıt ve Kaynak Yöneticisi [şablonları ve Azure CLI ile kaynakları dağıtın.](../../azure-resource-manager/templates/deploy-cli.md) 
+Ayrıntılar için bkz. [Kaynak Yöneticisi şablonlarıyla kaynakları dağıtma ve Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) ve [Kaynak Yöneticisi ŞABLONLARı ve Azure CLI ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md) . 
 
 
 
 
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
-Kaynak günlükleri için şablona `<resource namespace>/providers/diagnosticSettings` bir tür kaynağı ekleyin. Özellikler bölümü, [Tanılama Ayarları - Oluştur veya Güncelleştir'de](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)açıklanan biçimi izler. Toplamak `category` istediğiniz `logs` kaynak için geçerli kategorilerin her biri için bölümde bir tane sağlayın. Kaynak `metrics` [ölçümleri](metrics-supported.md)destekliyorsa, aynı hedeflere kaynak ölçümleri toplamak için özelliği ekleyin.
+Kaynak günlükleri için, şablona türünde `<resource namespace>/providers/diagnosticSettings` bir kaynak ekleyin. Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. Toplamak istediğiniz `category` kaynak için `logs` geçerli kategorilerin her biri için bölümünde bir sağlar. Kaynak ölçümlerini `metrics` [destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplayacak özelliği ekleyin.
 
-Aşağıda, belirli bir kaynak için bir Günlük Analizi çalışma alanına, depolama hesabına ve olay hub'ına kaynak günlüğü kategorisi toplayan bir şablon izlenir.
+Aşağıda, belirli bir kaynak için bir Log Analytics çalışma alanına, depolama hesabına ve Olay Hub 'ına bir kaynak günlüğü kategorisi toplayan bir şablon verilmiştir.
 
 ```json
 "resources": [
@@ -69,7 +69,7 @@ Aşağıda, belirli bir kaynak için bir Günlük Analizi çalışma alanına, d
 
 
 ### <a name="example"></a>Örnek
-Aşağıda, kaynak günlüklerinin bir olay hub'ına, bir depolama hesabına ve Günlük Analizi çalışma alanına akışını sağlayan otomatik ölçeklendirme ayarı için tanılama ayarı oluşturan bir örnek verilmiştir.
+Aşağıda, kaynak günlüklerinin bir olay hub 'ına, depolama hesabına ve Log Analytics çalışma alanına akışını sağlayan bir otomatik ölçeklendirme ayarı için bir tanılama ayarı oluşturan bir örnek verilmiştir.
 
 ```json
 {
@@ -144,7 +144,7 @@ Aşağıda, kaynak günlüklerinin bir olay hub'ına, bir depolama hesabına ve 
 ```
 
 ## <a name="activity-log"></a>Etkinlik günlüğü
-Azure Etkinliği günlüğü için bir kaynak `Microsoft.Insights/diagnosticSettings`ekleyin. Kullanılabilir kategoriler Etkinlik [Günlüğündeki Kategoriler'de](activity-log-view.md#categories-in-the-activity-log)listelenir. Aşağıda, tüm Etkinlik günlüğü kategorilerini Bir Günlük Analizi çalışma alanı, depolama hesabı ve etkinlik hub'ına toplayan bir şablon izlenir.
+Azure etkinlik günlüğü için türünde `Microsoft.Insights/diagnosticSettings`bir kaynak ekleyin. Kullanılabilir Kategoriler, [etkinlik günlüğündeki kategorilerde](activity-log-view.md#categories-in-the-activity-log)listelenmiştir. Aşağıda, tüm etkinlik günlüğü kategorilerini bir Log Analytics çalışma alanına, depolama hesabına ve Olay Hub 'ına toplayan bir şablon verilmiştir.
 
 
 ```json
@@ -237,5 +237,5 @@ Azure Etkinliği günlüğü için bir kaynak `Microsoft.Insights/diagnosticSett
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure'daki platform günlükleri](platform-logs-overview.md)hakkında daha fazla bilgi edinin.
+* [Azure 'da platform günlükleri](platform-logs-overview.md)hakkında daha fazla bilgi edinin.
 * [Tanılama ayarları](diagnostic-settings.md)hakkında bilgi edinin.

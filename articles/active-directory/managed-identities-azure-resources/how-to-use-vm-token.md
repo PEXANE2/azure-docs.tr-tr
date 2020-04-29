@@ -1,6 +1,6 @@
 ---
-title: Erişim jetonuna erişmek için sanal bir makinede yönetilen kimlikleri kullanma - Azure AD
-description: OAuth erişim jetonunu elde etmek için sanal makinelerde Azure kaynakları için yönetilen kimlikleri kullanmak için adım adım talimatlar ve örnekler.
+title: Erişim belirteci almak için bir sanal makinede Yönetilen kimlikler kullanma-Azure AD
+description: Bir OAuth erişim belirteci almak için bir sanal makinelerde Azure kaynakları için yönetilen kimliklerin kullanılmasına yönelik adım adım yönergeler ve örnekler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,55 +16,55 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a58103bad3914bd0c0c6e70f8e3d2882271e1070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049203"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Bir erişim jetonu edinmek için Azure kaynaklarının azure kaynakları için yönetilen kimlikler nasıl kullanılır? 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Erişim belirteci almak için bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler kullanma 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Azure kaynakları için yönetilen kimlikler, Azure Etkin Dizini'nde otomatik olarak yönetilen bir kimlik le Azure hizmetlerine olanak sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmetin kimliğini doğrulamak için kullanabilirsiniz. 
+Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz. 
 
-Bu makalede, belirteç edinimi için çeşitli kod ve komut dosyası örneklerinin yanı sıra belirteç sona erme ve HTTP hataları işleme gibi önemli konularda rehberlik sağlar. 
+Bu makalede, belirteç alımı için çeşitli kod ve betik örnekleri ve ayrıca belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda rehberlik sağlanır. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Bu makalede Azure PowerShell örneklerini kullanmayı planlıyorsanız, [Azure PowerShell'in](/powershell/azure/install-az-ps)en son sürümünü yüklediğinizden emin olun.
+Bu makaledeki Azure PowerShell örnekleri kullanmayı planlıyorsanız, [Azure PowerShell](/powershell/azure/install-az-ps)en son sürümünü yüklediğinizden emin olun.
 
 
 > [!IMPORTANT]
-> - Bu makaledeki tüm örnek kod/komut dosyası, istemcinin Azure kaynakları için yönetilen kimliklere sahip sanal bir makinede çalıştığını varsayar. VM'inize uzaktan bağlanmak için Azure portalındaki sanal makine "Bağlan" özelliğini kullanın. VM'de Azure kaynakları için yönetilen kimlikleri etkinleştirme yle ilgili ayrıntılar için, Azure portalını veya varyant makalelerinden birini (PowerShell, CLI, şablon veya Azure SDK kullanarak) [kullanarak VM'deki Azure kaynakları için yönetilen kimlikleri yapılandır'](qs-configure-portal-windows-vm.md)a bakın. 
+> - Bu makaledeki tüm örnek kod/betik, istemcinin Azure kaynakları için yönetilen kimliklere sahip bir sanal makinede çalıştığını varsayar. VM 'nize uzaktan bağlanmak için Azure portal sanal makine "Bağlan" özelliğini kullanın. Bir VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirme hakkında daha fazla bilgi için bkz. Azure portal veya varyant makalelerinden birini [kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md)(POWERSHELL, CLI, bir şablon veya BIR Azure SDK kullanarak). 
 
 > [!IMPORTANT]
-> - Azure kaynakları için yönetilen kimliklerin güvenlik sınırı, üzerinde kullanıldığı kaynaktır. Sanal bir makinede çalışan tüm kodlar/komut dosyaları, üzerinde bulunan yönetilen kimlikler için belirteçleri isteyebilir ve alabilir. 
+> - Azure kaynakları için yönetilen kimliklerin güvenlik sınırı, kullanıldığı kaynaktır. Bir sanal makinede çalışan tüm kod/betikler, üzerinde kullanılabilir olan tüm yönetilen kimlikler için belirteçleri isteyebilir ve alabilir. 
 
 ## <a name="overview"></a>Genel Bakış
 
-İstemci uygulaması, belirli bir kaynağa erişmek için Yalnızca Uygulama [uygulamasına erişim](../develop/developer-glossary.md#access-token) için yönetilen kimlikler isteyebilir. Belirteç, [Azure kaynakları hizmeti ilkesinin yönetilen kimliklerine dayanır.](overview.md#how-does-the-managed-identities-for-azure-resources-work) Bu nedenle, istemcinin kendi hizmet ilkesi altında bir erişim belirteci elde etmek için kendini kaydetmesi gerekmez. Belirteç, [istemci kimlik bilgilerini gerektiren hizmet-servis aramalarında](../develop/v2-oauth2-client-creds-grant-flow.md)taşıyıcı belirteci olarak kullanım için uygundur.
+Bir istemci uygulaması, belirli bir kaynağa erişmek için yalnızca Azure kaynakları için Yönetilen kimlikler, [yalnızca uygulama erişim belirteci](../develop/developer-glossary.md#access-token) isteyebilir. Belirteç, [Azure kaynakları hizmet sorumlusu için yönetilen kimliklere dayalıdır](overview.md#how-does-the-managed-identities-for-azure-resources-work). Bu nedenle, istemcinin kendi hizmet sorumlusu altında erişim belirteci almak için kendisini kaydetmesi gerekmez. Belirteç, [istemci kimlik bilgileri gerektiren hizmetten hizmete çağrılar](../develop/v2-oauth2-client-creds-grant-flow.md)için bir taşıyıcı belirteci olarak kullanım için uygundur.
 
 |  |  |
 | -------------- | -------------------- |
-| [HTTP kullanarak bir belirteç alın](#get-a-token-using-http) | Azure kaynakları belirteç bitiş noktası için yönetilen kimlikler için protokol ayrıntıları |
-| [.NET için Microsoft.Azure.Services.AppAuthentication kitaplığını kullanarak bir belirteç alın](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Microsoft.Azure.Services.AppAuthentication kitaplığını bir .NET istemcisinden kullanma örneği
-| [C kullanarak belirteç alın #](#get-a-token-using-c) | Bir C# istemcisinden Azure kaynakları için yönetilen kimlikleri kullanma örneği REST bitiş noktası |
-| [Java kullanarak bir belirteç alın](#get-a-token-using-java) | Bir Java istemcisinden Azure kaynakları IÇIN yönetilen kimlikleri kullanma örneği REST bitiş noktası |
-| [Go'u kullanarak bir belirteç alın](#get-a-token-using-go) | Azure kaynakları için yönetilen kimlikleri kullanma örneği REST bitiş noktası bir Go istemcisinden |
-| [Azure PowerShell'i kullanarak belirteç elde etme](#get-a-token-using-azure-powershell) | Bir PowerShell istemcisinden Azure kaynakları IÇIN yönetilen kimlikleri kullanma örneği REST bitiş noktası |
-| [CURL kullanarak belirteç alma](#get-a-token-using-curl) | Bir Bash/CURL istemcisinden Azure kaynakları için yönetilen kimlikleri kullanma örneği REST bitiş noktası |
-| Belirteç önbelleğe alma | Süresi dolmuş erişim belirteçlerini işleme kılavuzu |
-| [Hata işleme](#error-handling) | Azure kaynakları belirteç uç noktası için yönetilen kimliklerden döndürülen HTTP hatalarını işleme kılavuzu |
-| [Azure hizmetleri için kaynak it'leri](#resource-ids-for-azure-services) | Desteklenen Azure hizmetleri için kaynak t.c. nereden ulaşabilirsiniz? |
+| [HTTP kullanarak belirteç al](#get-a-token-using-http) | Azure kaynakları belirteç uç noktası için Yönetilen kimlikler protokol ayrıntıları |
+| [.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanarak bir belirteç alın](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | .NET istemcisinden Microsoft. Azure. Services. AppAuthentication kitaplığını kullanma örneği
+| [C kullanarak belirteç al #](#get-a-token-using-c) | Bir C# istemcisinden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| [Java kullanarak belirteç edinme](#get-a-token-using-java) | Java istemcisinden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| [Go kullanarak belirteç alın](#get-a-token-using-go) | Bir go istemcisinden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| [Azure PowerShell kullanarak belirteç alın](#get-a-token-using-azure-powershell) | PowerShell istemcisinden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| [KıVRıMLı kullanarak belirteç alın](#get-a-token-using-curl) | Bir bash/KıVRıMLı istemciden Azure kaynakları REST uç noktası için Yönetilen kimlikler kullanma örneği |
+| Belirteç önbelleğe alma işleme | Süre dolma erişim belirteçlerini işlemeye yönelik kılavuz |
+| [Hata işleme](#error-handling) | Azure kaynakları belirteç uç noktası için yönetilen kimliklerden döndürülen HTTP hatalarını işlemeye yönelik kılavuz |
+| [Azure hizmetleri için kaynak kimlikleri](#resource-ids-for-azure-services) | Desteklenen Azure hizmetleri için kaynak kimliklerinin nereden alınacağı |
 
-## <a name="get-a-token-using-http"></a>HTTP kullanarak bir belirteç alın 
+## <a name="get-a-token-using-http"></a>HTTP kullanarak belirteç al 
 
-Erişim jetonu edinmenin temel arabirimi REST'e dayanır ve VM'de çalışan ve HTTP REST aramaları yapabilen herhangi bir istemci uygulaması için erişilebilir hale getirir. Bu, istemcinin sanal makinede bir bitiş noktası kullanması (Azure AD bitiş noktası nı karşılaştırması) dışında Azure AD programlama modeline benzer.
+Erişim belirteci almak için temel arabirim, geri kalanı temel alarak, VM üzerinde çalışan ve HTTP REST çağrısı yapan tüm istemci uygulamaları için erişilebilir hale getirir. Bu, istemci sanal makinede bir uç nokta (Azure AD uç noktası) kullandığından Azure AD programlama modeline benzer.
 
-Azure Örneği Meta veri hizmeti (IMDS) bitiş noktasını kullanarak örnek istek *(önerilir)*:
+Azure Instance Metadata Service (ıMDS) uç noktasını kullanan örnek istek *(önerilir)*:
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -72,16 +72,16 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| `GET` | Son noktadan veri almak istediğinizi belirten HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
-| `http://169.254.169.254/metadata/identity/oauth2/token` | Örnek Meta veri hizmeti için Azure kaynakları bitiş noktası için yönetilen kimlikler. |
-| `api-version`  | IMDS bitiş noktası için API sürümünü gösteren bir sorgu dize parametresi. Lütfen API `2018-02-01` sürümünü veya daha büyük kullanın. |
-| `resource` | Hedef kaynağın App ID URI'sini gösteren bir sorgu dize parametresi. Ayrıca verilen belirteci `aud` (hedef kitle) iddiasıgörünür. Bu örnek, Bir Uygulama Kimliği URI'si olan Azure `https://management.azure.com/`Kaynak Yöneticisi'ne erişmek için bir belirteç istiyor. |
-| `Metadata` | Sunucu Tarafı İstek Sahteciliği (SSRF) saldırısına karşı bir azaltma olarak Azure kaynakları için yönetilen kimlikler tarafından gerekli bir HTTP istek üstbilgi alanı. Bu değer, tüm küçük harfle "true" olarak ayarlanmalıdır. |
-| `object_id` | (İsteğe bağlı) Belirteci istediğiniz yönetilen kimliğin object_id gösteren bir sorgu dize parametresi. VM'nizde birden çok kullanıcı tarafından atanmış yönetilen kimlik varsa gereklidir.|
-| `client_id` | (İsteğe bağlı) Bir sorgu dize parametresi, için belirteç istediğiniz yönetilen kimliğin client_id gösteren. VM'nizde birden çok kullanıcı tarafından atanmış yönetilen kimlik varsa gereklidir.|
-| `mi_res_id` | (İsteğe bağlı) Belirteci istediğiniz yönetilen kimliğin mi_res_id (Azure Kaynak Kimliği) belirten bir sorgu dize parametresi. VM'nizde birden çok kullanıcı tarafından atanmış yönetilen kimlik varsa gereklidir. |
+| `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
+| `http://169.254.169.254/metadata/identity/oauth2/token` | Instance Metadata Service için Azure kaynakları için Yönetilen kimlikler uç noktası. |
+| `api-version`  | IMDS uç noktası için API sürümünü gösteren bir sorgu dizesi parametresi. Lütfen API sürümünü `2018-02-01` veya üstünü kullanın. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister `https://management.azure.com/`. |
+| `Metadata` | Sunucu tarafı Isteği forgery (SSRF) saldırılarına karşı risk azaltma olarak Azure kaynakları için Yönetilen kimlikler için gereken bir HTTP istek üst bilgisi alanı. Bu değer, tüm küçük durumlarda "true" olarak ayarlanmalıdır. |
+| `object_id` | Seçim Belirteci istediğiniz yönetilen kimliğin object_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
+| `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
+| `mi_res_id` | Seçim Belirteci istediğiniz yönetilen kimliğin mi_res_id (Azure Kaynak KIMLIĞI) belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir. |
 
-Azure kaynakları VM Extension Endpoint için yönetilen kimlikleri kullanarak örnek istek *(Ocak 2019'da amortisman için planlanmıştır)*:
+Azure kaynakları için yönetilen kimlikleri kullanan örnek istek VM Uzantısı uç noktası *(2019 Ocak 'ta kullanımdan kaldırma için planlanmış)*:
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -90,12 +90,12 @@ Metadata: true
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| `GET` | Son noktadan veri almak istediğinizi belirten HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
-| `http://localhost:50342/oauth2/token` | 50342 varsayılan bağlantı noktası olan ve yapılandırılabilir olan Azure kaynakları bitiş noktası için yönetilen kimlikler. |
-| `resource` | Hedef kaynağın App ID URI'sini gösteren bir sorgu dize parametresi. Ayrıca verilen belirteci `aud` (hedef kitle) iddiasıgörünür. Bu örnek, Bir Uygulama Kimliği URI'si olan Azure `https://management.azure.com/`Kaynak Yöneticisi'ne erişmek için bir belirteç istiyor. |
-| `Metadata` | Sunucu Tarafı İstek Sahteciliği (SSRF) saldırısına karşı bir azaltma olarak Azure kaynakları için yönetilen kimlikler tarafından gerekli bir HTTP istek üstbilgi alanı. Bu değer, tüm küçük harfle "true" olarak ayarlanmalıdır.|
-| `object_id` | (İsteğe bağlı) Belirteci istediğiniz yönetilen kimliğin object_id gösteren bir sorgu dize parametresi. VM'nizde birden çok kullanıcı tarafından atanmış yönetilen kimlik varsa gereklidir.|
-| `client_id` | (İsteğe bağlı) Bir sorgu dize parametresi, için belirteç istediğiniz yönetilen kimliğin client_id gösteren. VM'nizde birden çok kullanıcı tarafından atanmış yönetilen kimlik varsa gereklidir.|
+| `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
+| `http://localhost:50342/oauth2/token` | Azure kaynakları için Yönetilen kimlikler uç noktası, burada 50342 varsayılan bağlantı noktasıdır ve yapılandırılabilir. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Ayrıca, verilen belirtecin `aud` (hedef kitle) talebinde de görüntülenir. Bu örnek, uygulama KIMLIĞI URI 'SI olan Azure Resource Manager erişmek için bir belirteç ister `https://management.azure.com/`. |
+| `Metadata` | Sunucu tarafı Isteği forgery (SSRF) saldırılarına karşı risk azaltma olarak Azure kaynakları için Yönetilen kimlikler için gereken bir HTTP istek üst bilgisi alanı. Bu değer, tüm küçük durumlarda "true" olarak ayarlanmalıdır.|
+| `object_id` | Seçim Belirteci istediğiniz yönetilen kimliğin object_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
+| `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
 
 Örnek yanıt:
 
@@ -115,19 +115,19 @@ Content-Type: application/json
 
 | Öğe | Açıklama |
 | ------- | ----------- |
-| `access_token` | İstenen erişim jetonu. Güvenli bir REST API'yi ararken, belirteç `Authorization` istek üstbilgi alanına "taşıyıcı" belirteci olarak katıştırılmış ve API'nin arayanın kimliğini doğrulaması sağlar. | 
-| `refresh_token` | Azure kaynakları için yönetilen kimlikler tarafından kullanılmaz. |
-| `expires_in` | Erişim belirteci nin verildiği tarihten itibaren süresi dolmadan önce geçerli olmaya devam eden saniye sayısı. Verme zamanı belirteç `iat` iddiasında bulunabilir. |
-| `expires_on` | Erişim belirteci süresi dolduğunda zaman aşımı. Tarih, "1970-01-01T0:0:0Z UTC" saniye sayısı olarak temsil edilir (belirteç `exp` talebine karşılık gelir). |
-| `not_before` | Erişim belirteci etkin olduğunda zaman alanı ve kabul edilebilir. Tarih, "1970-01-01T0:0:0Z UTC" saniye sayısı olarak temsil edilir (belirteç `nbf` talebine karşılık gelir). |
-| `resource` | Erişim belirteci için istenen ve isteğin `resource` sorgu dize parametresi ile eşleşen kaynak. |
-| `token_type` | "Taşıyıcı" erişim belirteci olan belirteci türü, hangi kaynak bu belirteç taşıyıcısı erişim verebilir anlamına gelir. |
+| `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
+| `refresh_token` | Azure kaynakları için Yönetilen kimlikler tarafından kullanılmıyor. |
+| `expires_in` | Erişim belirtecinin, verme zamanından önce geçerli olmaya devam etmesi için geçmesi gereken saniye sayısı. Verme süresi belirtecin `iat` talebinde bulunabilir. |
+| `expires_on` | Erişim belirtecinin süresi dolduğu zaman aralığı. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin `exp` talebine karşılık gelir) için saniye sayısı olarak gösterilir. |
+| `not_before` | Erişim belirteci yürürlüğe girer ve kabul edilebilir. Tarih, "1970-01-01T0:0: 0Z UTC" (belirtecin `nbf` talebine karşılık gelir) için saniye sayısı olarak gösterilir. |
+| `resource` | İsteğin `resource` sorgu dizesi parametresiyle eşleşen erişim belirtecinin istendiği kaynak. |
+| `token_type` | "Taşıyıcı" erişim belirteci olan belirtecin türü, bu, kaynağın bu belirtecin taşıyıcının erişim izni verebileceği anlamına gelir. |
 
-## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>.NET için Microsoft.Azure.Services.AppAuthentication kitaplığını kullanarak bir belirteç alın
+## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanarak bir belirteç alın
 
-.NET uygulamaları ve işlevleri için, Azure kaynakları için yönetilen kimliklerle çalışmanın en basit yolu Microsoft.Azure.Services.AppAuthentication paketidir. Bu kitaplık ayrıca Visual Studio, [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)veya Active Directory Integrated Authentication'daki kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak test etmenize olanak tanır. Bu kitaplıkla yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft.Azure.Services.AppAuthentication başvurusuna](/azure/key-vault/service-to-service-authentication)bakın. Bu bölümde, kodunuzda kitaplık la nasıl başlanıncayasınız gösterilmektedir.
+.NET uygulamaları ve işlevleri için, Azure kaynakları için Yönetilen kimlikler ile çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketidir. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusuna](/azure/key-vault/service-to-service-authentication)bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
 
-1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet paketlerine başvurularınızı uygulamanıza ekleyin.
+1. Uygulamanıza [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasa](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet paketlerine başvurular ekleyin.
 
 2.  Uygulamanıza aşağıdaki kodu ekleyin:
 
@@ -141,9 +141,9 @@ Content-Type: application/json
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Microsoft.Azure.Services.AppAuthentication ve sunduğu işlemler hakkında daha fazla bilgi edinmek için [Microsoft.Azure.Services.AppAuthentication başvurusu](/azure/key-vault/service-to-service-authentication) ve [Azure kaynakları .NET örneği için yönetilen kimliklere sahip Uygulama Hizmeti ve KeyVault'a](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)bakın.
+Microsoft. Azure. Services. AppAuthentication ve sunduğu işlemler hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler .net örneği Ile](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet) [Microsoft. Azure. Services. appauthentication başvurusu](/azure/key-vault/service-to-service-authentication) ve App Service ve keykasası.
 
-## <a name="get-a-token-using-c"></a>C kullanarak belirteç alın #
+## <a name="get-a-token-using-c"></a>C kullanarak belirteç al #
 
 ```csharp
 using System;
@@ -176,7 +176,7 @@ catch (Exception e)
 
 ```
 
-## <a name="get-a-token-using-java"></a>Java kullanarak bir belirteç alın
+## <a name="get-a-token-using-java"></a>Java kullanarak belirteç edinme
 
 Java kullanarak bir belirteç almak için bu [JSON kitaplığını](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core/2.9.4) kullanın.
 
@@ -220,7 +220,7 @@ class GetMSIToken {
 }
 ```
 
-## <a name="get-a-token-using-go"></a>Go'u kullanarak bir belirteç alın
+## <a name="get-a-token-using-go"></a>Go kullanarak belirteç alın
 
 ```
 package main
@@ -298,18 +298,18 @@ func main() {
 }
 ```
 
-## <a name="get-a-token-using-azure-powershell"></a>Azure PowerShell'i kullanarak belirteç elde etme
+## <a name="get-a-token-using-azure-powershell"></a>Azure PowerShell kullanarak belirteç alın
 
-Aşağıdaki örnek, Bir PowerShell istemcisinden Azure kaynakları REST bitiş noktası için yönetilen kimliklerin nasıl kullanılacağını gösterir:
+Aşağıdaki örnek, bir PowerShell istemcisinden Azure kaynakları REST uç noktası için yönetilen kimliklerin nasıl kullanılacağını gösterir:
 
-1. Bir erişim jetonu edinin.
-2. Azure Kaynak Yöneticisi REST API'yi aramak ve VM hakkında bilgi almak için erişim belirteci'ni kullanın. Abonelik kimliğinizi, kaynak grup adınızı ve sanal makine `<SUBSCRIPTION-ID>` `<RESOURCE-GROUP>`adınızı `<VM-NAME>`sırasıyla , ve , için değiştirin.
+1. Erişim belirteci alın.
+2. Bir Azure Resource Manager REST API çağırmak ve VM hakkında bilgi almak için erişim belirtecini kullanın. Abonelik kimliğinizi, kaynak grubu adını ve sanal makine adını sırasıyla, ve `<SUBSCRIPTION-ID>` `<RESOURCE-GROUP>` `<VM-NAME>`için değiştirdiğinizden emin olun.
 
 ```azurepowershell
 Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Headers @{Metadata="true"}
 ```
 
-Erişim belirteci nin yanıttan ayrışdırılaması ile ilgili örnek:
+Yanıttan erişim belirtecini ayrıştırmaya ilişkin örnek:
 ```azurepowershell
 # Get an access token for managed identities for Azure resources
 $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' `
@@ -325,14 +325,14 @@ echo $vmInfoRest
 
 ```
 
-## <a name="get-a-token-using-curl"></a>CURL kullanarak belirteç alma
+## <a name="get-a-token-using-curl"></a>KıVRıMLı kullanarak belirteç alın
 
 ```bash
 curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
 ```
 
 
-Erişim belirteci nin yanıttan ayrışdırılaması ile ilgili örnek:
+Yanıttan erişim belirtecini ayrıştırmaya ilişkin örnek:
 
 ```bash
 response=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s)
@@ -342,67 +342,67 @@ echo The managed identities for Azure resources access token is $access_token
 
 ## <a name="token-caching"></a>Belirteç önbelleğe alma
 
-Azure kaynakları alt sisteminin yönetilen kimlikleri (Azure kaynakları VM Uzantısı için IMDS/yönetilen kimlikler) önbellek belirteçleri olsa da, kodunuzda belirteç önbelleği uygulamanızı öneririz. Sonuç olarak, kaynağın belirteç süresinin dolduğunu gösterdiği senaryolar için hazırlanmanız gerekir. 
+Kullanılmakta olan Azure kaynakları alt sistemi için Yönetilen kimlikler (Azure kaynakları VM uzantısı için ıDS/Yönetilen kimlikler) önbellek belirteçleri yapar, ayrıca kodunuzda belirteç önbelleğe alma işlemini de uygulamanızı öneririz. Sonuç olarak, kaynağın belirtecin dolduğunu gösterdiği senaryolar için hazırlanmalısınız. 
 
-Azure AD'ye yapılan telefon görüşmeleri yalnızca aşağıdaki anda sonuçlanmaktadır:
-- önbellek miss Azure kaynakları alt sistem önbelleği için yönetilen kimliklerde belirteç nedeniyle oluşur
-- önbelleğe alınmış belirteç süresi doldu
+Yalnızca şu durumlarda Azure AD 'ye yönelik hat üzeri aramalar:
+- Azure kaynakları alt sistemi önbelleği için yönetilen kimliklerden belirteç olmaması nedeniyle önbellek isabetsizliği meydana geldi
+- önbelleğe alınan belirtecin geçerliliği zaman aşımına uğradı
 
 ## <a name="error-handling"></a>Hata işleme
 
-Azure kaynakları bitiş noktası için yönetilen kimlikler, HTTP yanıt iletisi üstbilgisinin durum kodu alanı üzerinden 4xx veya 5xx hataları gibi hataları bildirir:
+Azure kaynakları için Yönetilen kimlikler uç noktası, HTTP yanıt iletisi üstbilgisinin durum kodu alanı aracılığıyla 4xx veya 5xx hatası olarak hata verir:
 
-| Durum Kodu | Hata Nedeni | Nasıl Başa Çıkılabilen |
+| Durum Kodu | Hata nedeni | Nasıl Idare edilecek |
 | ----------- | ------------ | ------------- |
-| 404 Bulunamadı. | IMDS bitiş noktası güncelleniyor. | Üstel Backoff ile yeniden deneyin. Aşağıdaki kılavuza bakın. |
-| 429 Çok fazla istek. |  IMDS Azaltma sınırına ulaşıldı. | Üstel Backoff ile yeniden deneyin. Aşağıdaki kılavuza bakın. |
-| Istekte 4xx Hata. | İstek parametrelerinden biri veya birkaçı yanlıştı. | Tekrar denemeyin.  Daha fazla bilgi için hata ayrıntılarını inceleyin.  4xx hataları tasarım zamanı hatalarıdır.|
-| Hizmetten 5xx Geçici hata. | Azure kaynakları alt sistemi veya Azure Etkin Dizin için yönetilen kimlikler geçici bir hatayı döndürür. | En az 1 saniye bekledikten sonra yeniden denemek güvenlidir.  Çok hızlı veya çok sık yeniden denerseniz, IMDS ve/veya Azure AD bir oran sınırı hatası döndürebilir (429).|
-| timeout | IMDS bitiş noktası güncelleniyor. | Üstel Backoff ile yeniden deneyin. Aşağıdaki kılavuza bakın. |
+| 404 bulunamadı. | IDS uç noktası güncelleştiriliyor. | Expontential geri alma ile yeniden deneyin. Aşağıdaki rehbere bakın. |
+| 429 çok fazla istek. |  IDS kısıtlama sınırına ulaşıldı. | Üstel geri alma ile yeniden deneyin. Aşağıdaki rehbere bakın. |
+| istekte 4xx hatası. | İstek parametrelerinden biri veya daha fazlası hatalıydı. | Yeniden denemeyin.  Daha fazla bilgi için hata ayrıntılarını inceleyin.  4 xx hata tasarım zamanı hatalardır.|
+| 5xx hizmetten geçici bir hata. | Azure kaynakları için Yönetilen kimlikler alt sistem veya Azure Active Directory geçici bir hata döndürdü. | En az 1 saniye bekledikten sonra yeniden denemek güvenlidir.  Çok hızlı veya çok sık yeniden deneme yaparsanız, ıDS ve/veya Azure AD bir hız sınırı hatası döndürebilir (429).|
+| timeout | IDS uç noktası güncelleştiriliyor. | Expontential geri alma ile yeniden deneyin. Aşağıdaki rehbere bakın. |
 
-Bir hata oluşursa, ilgili HTTP yanıt gövdesi hata ayrıntıları ile JSON içerir:
+Bir hata oluşursa, karşılık gelen HTTP yanıt gövdesi hata ayrıntılarına sahip JSON içerir:
 
 | Öğe | Açıklama |
 | ------- | ----------- |
 | error   | Hata tanımlayıcısı. |
-| error_description | Hata nın ayrıntılı açıklaması. **Hata açıklamaları herhangi bir zamanda değişebilir. Hata açıklamasındaki değerlere göre dalları kod yazmayın.**|
+| error_description | Hatanın ayrıntılı açıklaması. **Hata açıklamaları herhangi bir zamanda değişebilir. Hata açıklamasındaki değerlere göre dalların kodunu yazma.**|
 
 ### <a name="http-response-reference"></a>HTTP yanıt başvurusu
 
-Bu bölüm, olası hata yanıtlarını belgeler. "200 Tamam" durumu başarılı bir yanıttır ve erişim belirteci yanıt gövdesi JSON'da, access_token öğesinde bulunur.
+Bu bölüm olası hata yanıtlarını belgeler. Bir "200 OK" durumu başarılı bir yanıt ve erişim belirteci access_token öğesinde JSON yanıt gövdesi içinde yer alır.
 
 | Durum kodu | Hata | Hata Açıklaması | Çözüm |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Kötü İstek | invalid_resource | AADSTS50001: * \<URI\> * adlı uygulama * \<kiracı-ID\>* adlı bulunamadı. Bu, uygulama kiracının yöneticisi tarafından yüklenmediyse veya kiracıdaki herhangi bir kullanıcı tarafından onaylanmışsa gerçekleşebilir. Kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz.\ | (Sadece Linux) |
-| 400 Kötü İstek | bad_request_102 | Gerekli meta veri üstbilgisi belirtilmedi | `Metadata` İstek üstbilgi alanı isteğinizde eksik veya yanlış biçimlendirilmiş. `true`Değer, tüm küçük harf olarak belirtilmelidir. Bir örnek için önceki REST bölümündeki "Örnek istek"e bakın.|
-| 401 Yetkisiz | unknown_source | Bilinmeyen * \<Kaynak URI\>* | HTTP GET isteğiniz IN'in doğru biçimlendirilmiş olduğunu doğrulayın. Kısım `scheme:host/resource-path` ' olarak `http://localhost:50342/oauth2/token`belirtilmelidir. Bir örnek için önceki REST bölümündeki "Örnek istek"e bakın.|
-|           | invalid_request | İstek gerekli bir parametre eksik, geçersiz bir parametre değeri içerir, birden fazla kez bir parametre içerir veya başka bir şekilde yanlış biçimlendirilmiştir. |  |
-|           | unauthorized_client | İstemci bu yöntemi kullanarak bir erişim belirteci istemeye yetkili değildir. | Uzantıyı aramak için yerel geri dönüş kullanmayan bir istek veya Azure kaynaklarının kimliklerini doğru yapılandırılmamış bir VM'de kaynaklanır. VM yapılandırması ile ilgili yardıma ihtiyacınız varsa, [Azure portalını kullanarak Bir VM'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) yada düzenleme hakkında bilgi bulundu. |
+| 400 Hatalı Istek | invalid_resource | AADSTS50001: * \<\> URI* adlı uygulama, * \<Kiracı kimliği\>* adlı kiracıda bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulama isteğinizi yanlış kiracıya göndermiş olabilirsiniz. \ | (Yalnızca Linux) |
+| 400 Hatalı Istek | bad_request_102 | Gerekli meta veri üst bilgisi belirtilmedi | İsteğiniz için `Metadata` istek üst bilgisi alanı eksik ya da yanlış biçimlendirilmiş. Değer, her küçük örnekte, `true`olarak belirtilmelidir. Bir örnek için önceki REST bölümünde "örnek istek" başlığına bakın.|
+| 401 Yetkisiz | unknown_source | Bilinmeyen kaynak * \<URI 'si\>* | HTTP GET istek URI 'nizin doğru biçimlendirildiğinden emin olun. `scheme:host/resource-path` Bölüm olarak `http://localhost:50342/oauth2/token`belirtilmelidir. Bir örnek için önceki REST bölümünde "örnek istek" başlığına bakın.|
+|           | invalid_request | İstekte gerekli bir parametre eksik, geçersiz bir parametre değeri içeriyor, birden fazla parametre içeriyor veya başka şekilde hatalı biçimlendirilmiş. |  |
+|           | unauthorized_client | İstemci bu yöntemi kullanarak bir erişim belirteci isteme yetkisine sahip değil. | Uzantıyı çağırmak için yerel geri döngüyü kullanmayan bir istek veya Azure kaynakları için doğru şekilde yapılandırılmış bir yönetilen kimliği olmayan bir VM 'de neden oldu. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın. |
 |           | access_denied | Kaynak sahibi veya yetkilendirme sunucusu isteği reddetti. |  |
-|           | unsupported_response_type | Yetkilendirme sunucusu bu yöntemi kullanarak bir erişim belirteci elde desteklemiyor. |  |
-|           | invalid_scope | İstenen kapsam geçersiz, bilinmiyor veya biçimsiz. |  |
-| 500 Dahili sunucu hatası | Bilinmeyen | Etkin dizinden belirteç alınamadı. Ayrıntılar için dosya * \<yolundaki günlüklere bakın\>* | VM'de Azure kaynakları için yönetilen kimliklerin etkinleştirildiğini doğrulayın. VM yapılandırması ile ilgili yardıma ihtiyacınız varsa, [Azure portalını kullanarak Bir VM'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) yada düzenleme hakkında bilgi bulundu.<br><br>Ayrıca, HTTP GET istek URI'nizin özellikle sorgu dizesinde belirtilen kaynak URI'nin doğru biçimlendirilmiş olduğunu da doğrulayın. Bir örnek için önceki REST bölümündeki "Örnek istek"e veya bir hizmet listesi ve ilgili kaynak kimliklerinin [Azure AD kimlik doğrulamasını destekleyen Azure hizmetlerine](services-support-msi.md) bakın.
+|           | unsupported_response_type | Yetkilendirme sunucusu, bu yöntemi kullanarak bir erişim belirteci edinmeyi desteklemez. |  |
+|           | invalid_scope | İstenen kapsam geçersiz, bilinmiyor veya hatalı biçimlendirilmiş. |  |
+| 500 iç sunucu hatası | bilinmeyen | Active Directory 'den belirteç alınamadı. Ayrıntılar için bkz. * \<dosya yolundaki Günlükler\>* | Azure kaynakları için yönetilen kimliklerin VM 'de etkinleştirildiğini doğrulayın. VM yapılandırması için yardıma ihtiyacınız varsa [Azure Portal kullanarak VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md) konusuna bakın.<br><br>Ayrıca, HTTP GET istek URI 'nizin, özellikle de sorgu dizesinde belirtilen kaynak URI 'sinin doğru biçimlendirildiğinden emin olun. Örneğin önceki REST bölümünde yer alan "örnek isteği" veya hizmetlerin bir listesi ve bunların ilgili kaynak kimlikleri için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](services-support-msi.md) bölümüne bakın.
 
-## <a name="retry-guidance"></a>Kılavuzu yeniden deneyin 
+## <a name="retry-guidance"></a>Yeniden deneme Kılavuzu 
 
-404, 429 veya 5xx hata kodu alırsanız yeniden denemeniz önerilir (yukarıdaki [hata işleme](#error-handling) ye bakın).
+404, 429 veya 5xx hata kodu alırsanız yeniden denemeniz önerilir (bkz. Yukarıdaki [hata işleme](#error-handling) ).
 
-Azaltma limitleri, IMDS bitiş noktasına yapılan arama ların sayısı için geçerlidir. Azaltma eşiği aşıldığında, IMDS bitiş noktası, azaltma etkinken diğer istekleri sınırlar. Bu süre zarfında, IMDS bitiş noktası HTTP durum kodu 429'u ("Çok fazla istek") döndürecek ve istekler başarısız olur. 
+Azaltma sınırları, ıMDS uç noktasına yapılan çağrıların sayısı için geçerlidir. Daraltma eşiği aşıldığında, azaltma etkin durumdayken ıDS uç noktası diğer istekleri sınırlandırır. Bu süre boyunca, ıMDS uç noktası 429 ("çok fazla istek") HTTP durum kodunu döndürür ve istekler başarısız olur. 
 
-Yeniden deneme için aşağıdaki stratejiyi öneririz: 
+Yeniden denemek için aşağıdaki stratejiyi öneririz: 
 
-| **Yeniden deneme stratejisi** | **Ayarlar** | **Değer** | **Nasıl çalışır?** |
+| **Yeniden deneme stratejisi** | **Ayarlar** | **Deðerler** | **Nasıl çalışır?** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |Yeniden deneme sayısı<br />En düşük geri alma<br />En yüksek geri alma<br />Delta geri alma<br />İlk hızlı yeniden deneme |5<br />0 sn<br />60 sn<br />2 sn<br />yanlış |Deneme 1 - 0 sn gecikme<br />Deneme 2 - yaklaşık 2 sn gecikme<br />Deneme 3 - yaklaşık 6 sn gecikme<br />Deneme 4 - yaklaşık 14 sn gecikme<br />Deneme 5 - yaklaşık 30 sn gecikme |
 
-## <a name="resource-ids-for-azure-services"></a>Azure hizmetleri için kaynak it'leri
+## <a name="resource-ids-for-azure-services"></a>Azure hizmetleri için kaynak kimlikleri
 
-Azure AD'yi destekleyen ve Azure kaynakları ve ilgili kaynak kimlikleri için yönetilen kimliklerle sınanmış kaynakların listesi için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetlerine](services-support-msi.md) bakın.
+Azure AD [kimlik doğrulamasını](services-support-msi.md) destekleyen ve Azure kaynakları için Yönetilen kimlikler ve bunlara karşılık gelen kaynak kimlikleri ile test edilmiş bir kaynak listesi için bkz. Azure hizmetleri.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure VM'de Azure kaynakları için yönetilen kimlikleri etkinleştirmek [için, Azure portalını kullanarak Bir VM'de Azure kaynakları için yönetilen kimlikleri yapılandırma'ya](qs-configure-portal-windows-vm.md)bakın.
+- Azure VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmek üzere, [Azure Portal kullanarak BIR VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-portal-windows-vm.md)konusuna bakın.
 
 
 

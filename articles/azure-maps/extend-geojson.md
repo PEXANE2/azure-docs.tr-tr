@@ -1,6 +1,6 @@
 ---
-title: Genişletilmiş GeoJSON geometrileri | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar'ın GeoJSON spektrumlarını belirli geometrileri temsil edecek şekilde nasıl genişlettiklerini öğreneceksiniz.
+title: Genişletilmiş GeoJSON geometrileri | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure eşlemelerinin coğrafi JSON belirtimini belirli geometriler temsil edecek şekilde nasıl genişlettiğini öğreneceksiniz.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -9,51 +9,51 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276406"
 ---
 # <a name="extended-geojson-geometries"></a>Genişletilmiş GeoJSON geometrileri
 
-Azure Haritalar, coğrafi özellikler içinde ve boyunca arama yapmak için güçlü API'lerin bir listesini sağlar. Bu API'ler coğrafi özellikleri temsil eden standart [GeoJSON spec'e][1] bağlıdır.  
+Azure Maps, coğrafi özelliklerin içinde ve üzerinde arama yapmak için güçlü API 'lerin bir listesini sağlar. Bu API 'Ler, coğrafi özellikleri temsil eden standart [geojson][1] belirtimine uyar.  
 
-[GeoJSON spec][1] yalnızca aşağıdaki geometrileri destekler:
+[Geojson belirtimi][1] yalnızca aşağıdaki geometrileri destekler:
 
-* Geometrycollection
-* Linestring
-* Multilinestring
-* Çoklu
-* Multipolygon
-* Nokta
-* Çokgen
+* GeometryCollection
+* LineString
+* MultiLineString
+* Noktalı
+* MultiPolygon
+* Seçeneğinin
+* Gen
 
-Bazı Azure Haritalar API'ları [GeoJSON spec'in][1]bir parçası olmayan geometrileri kabul eder. Örneğin, [İç Geometri](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) IÇINDE Ara API Daire ve Çokgenler kabul eder.
+Bazı Azure Maps API 'Leri, [geojson belirtiminin][1]parçası olmayan geometrileri kabul eder. Örneğin, geometri API 'si [Içinde arama](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) , daire ve çokgenler kabul eder.
 
-Bu makalede, Azure Haritalar'ın [GeoJSON spektrumlarını][1] belirli geometrileri temsil edecek şekilde nasıl genişlettiklerine ilişkin ayrıntılı bir açıklama sağlanmaktadır.
+Bu makalede, Azure eşlemelerinin belirli geometrileri göstermek için [geojson belirtimini][1] nasıl genişlettiği hakkında ayrıntılı bir açıklama sunulmaktadır.
 
 ## <a name="circle"></a>Daire
 
-Geometri `Circle` [GeoJSON spec][1]tarafından desteklenmez. Bir daireyi temsil etmek için bir `GeoJSON Point Feature` nesne kullanırız.
+`Circle` Geometri, [geojson belirtimi][1]tarafından desteklenmiyor. Bir daireyi temsil `GeoJSON Point Feature` etmek için bir nesnesi kullanıyoruz.
 
-Nesne kullanılarak temsil edilen bir `Circle` geometri aşağıdaki koordinatları ve özellikleri __içermelidir:__ `GeoJSON Feature`
+Nesnesini kullanarak temsil edilen bir `Circle` geometri aşağıdaki koordinatları ve __özellikleri içermelidir:__ `GeoJSON Feature`
 
 - Merkez
 
-    Dairenin ortası bir `GeoJSON Point` nesne kullanılarak temsil edilir.
+    Dairenin merkezi bir `GeoJSON Point` nesne kullanılarak temsil edilir.
 
 - Yarıçap
 
-    Dairenin özellikleri `radius` kullanılarak `GeoJSON Feature`temsil edilir. Yarıçap değeri _metre_ olarak ve türünde `double`olmalıdır.
+    Dairenin `radius` özellikleri kullanılarak `GeoJSON Feature`temsil edilir. Yarıçap değeri _Ölçü_ cinsindendir ve türünde `double`olmalıdır.
 
 - SubType
 
-    Daire geometrisi de `subType` özelliği içermelidir. Bu özellik `GeoJSON Feature`'özelliklerinin bir parçası olmalı ve değeri _Circle_ olmalıdır
+    Daire geometrisi `subType` özelliği de içermelidir. Bu özellik, `GeoJSON Feature`özelliklerinin bir parçası olmalıdır ve değeri _daire_ olmalıdır
 
 #### <a name="example"></a>Örnek
 
-Bir `GeoJSON Feature` nesneyi kullanarak daireyi şu şekilde temsil eve göndereceğiz. Daireyi enlemde ortalayalım: 47.639754 ve boylam: -122.126986 ve 100 metreye eşit bir yarıçap atayalım:
+Bir `GeoJSON Feature` nesneyi kullanarak bir daireyi nasıl temsil ettiğini aşağıda bulabilirsiniz. Bu çemberi Enlem: 47,639754 ve Boylam:-122,126986 ' ye kadar daire ortalayalım ve bu değere bir Radius atamak için 100.
 
 ```json            
 {
@@ -71,17 +71,17 @@ Bir `GeoJSON Feature` nesneyi kullanarak daireyi şu şekilde temsil eve gönder
 
 ## <a name="rectangle"></a>Dikdörtgen
 
-Geometri `Rectangle` [GeoJSON spec][1]tarafından desteklenmez. Dikdörtgeni `GeoJSON Polygon Feature` temsil etmek için bir nesne kullanırız. Dikdörtgen uzantısı öncelikle Web SDK'nın çizim araçları modülü tarafından kullanılır.
+`Rectangle` Geometri, [geojson belirtimi][1]tarafından desteklenmiyor. Bir dikdörtgeni temsil `GeoJSON Polygon Feature` etmek için bir nesnesi kullanıyoruz. Dikdörtgen uzantısı öncelikle web SDK 'nın çizim araçları modülü tarafından kullanılır.
 
-Nesne kullanılarak temsil edilen bir `Rectangle` geometri aşağıdaki koordinatları ve özellikleri __içermelidir:__ `GeoJSON Polygon Feature`
+Nesnesini kullanarak temsil edilen bir `Rectangle` geometri aşağıdaki koordinatları ve __özellikleri içermelidir:__ `GeoJSON Polygon Feature`
 
-- Köşe
+- Elerinden
 
-    Dikdörtgenin köşeleri bir `GeoJSON Polygon` nesnenin koordinatları kullanılarak temsil edilir. Her köşe için bir tane olmak üzere beş koordinat olmalı. Ve, çokgen halkasını kapatmak için ilk koordinatla aynı olan beşinci koordinat. Bu koordinatların hizalanmış olduğu ve geliştiricinin bunları istendiği gibi döndürebileceği varsayılır.
+    Dikdörtgenin köşeleri `GeoJSON Polygon` nesnenin koordinatları kullanılarak temsil edilir. Her köşede birer tane olmak üzere beş koordinat olmalıdır. Ve çokgen halkasını kapatmak için ilk koordinat ile aynı olan beşinci bir koordinat. Bu koordinatların hizalandığından ve geliştiricinin istenen şekilde döndürebildiğinden emin olacak.
 
 - SubType
 
-    Dikdörtgen geometrisi de `subType` özelliği içermelidir. Bu özellik `GeoJSON Feature`'özelliklerinin bir parçası olmalı ve değeri _Dikdörtgen_ olmalıdır
+    Dikdörtgen geometrisi `subType` özelliği de içermelidir. Bu özellik, özelliklerinin bir parçası `GeoJSON Feature`olmalıdır ve değeri _dikdörtgen_ olmalıdır
 
 ### <a name="example"></a>Örnek
 
@@ -100,12 +100,12 @@ Nesne kullanılarak temsil edilen bir `Rectangle` geometri aşağıdaki koordina
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Haritalar'da GeoJSON verileri hakkında daha fazla bilgi edinin:
+Azure haritalar 'da coğrafi JSON verileri hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Geofence GeoJSON biçimi](geofence-geojson.md)
 
-Azure Haritalar ve konum zekası uygulamalarıyla ilişkili yaygın teknik terimler sözlüğü gözden geçirin:
+Azure haritalar ve konum zekası uygulamalarıyla ilişkili ortak teknik terimlerin sözlüğünü gözden geçirin:
 
 > [!div class="nextstepaction"]
 > [Azure Haritalar sözlüğü](glossary.md)

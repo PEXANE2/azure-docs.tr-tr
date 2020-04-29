@@ -1,6 +1,6 @@
 ---
-title: Azure Bulut Hizmetleri Def. LoadBalancerProbe Şeması | Microsoft Dokümanlar
-description: LoadBalancerProbe tanımlanan müşteri, rol örneklerindeki uç noktaların bir sağlık sondasýr. Hizmet tanımı dosyasındaki web veya çalışan rolleri ile birleştirir.
+title: Azure Cloud Services def. Loadbalanceraraştırma şeması | Microsoft Docs
+description: Müşteri tanımlı Loadbalanceraraştırması, rol örneklerinde uç noktaların durum araştırmasına sahiptir. Bir hizmet tanım dosyasındaki Web veya çalışan rolleriyle birleştirir.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,28 +10,28 @@ caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
 ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537355"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Bulut Hizmetleri Tanımı LoadBalancerProbe Schema
-Yük dengeleyici sondası, rol örneklerindeki UDP uç noktalarının ve uç noktalarının müşteri tanımlı sağlık sondasýr. Bağımsız `LoadBalancerProbe` bir unsur değildir; bir hizmet tanımı dosyasındaki web rolü veya çalışan rolüyle birleştirilir. A `LoadBalancerProbe` birden fazla rol tarafından kullanılabilir.
+# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services Definition Loadbalanceraraştırma şeması
+Yük dengeleyici araştırması, bir müşteri tarafından tanımlanan UDP uç noktaları ve uç noktaların rol örneklerinde bir sistem durumu araştırmasına sahiptir. `LoadBalancerProbe` Tek başına bir öğe değil; bir hizmet tanım dosyasında web rolü veya çalışan rolü ile birleştirilir. Bir `LoadBalancerProbe` , birden fazla rol tarafından kullanılabilir.
 
-Hizmet tanımı dosyasının varsayılan uzantısı .csdef'tir.
+Hizmet tanım dosyası için varsayılan uzantı. csdef ' dir.
 
-## <a name="the-function-of-a-load-balancer-probe"></a>Yük dengeleyici probunun işlevi
-Azure Yük Dengeleyicisi, gelen trafiği rol örneklerinize yönlendirmekten sorumludur. Yük dengeleyicisi, söz konusu örneğin durumunu belirlemek için her örneği düzenli olarak inceleyerek hangi örneklerin trafik alabileceğini belirler. Yük dengeleyicisi her örneği dakikada birden çok kez inceler. Yük dengeleyicisine örnek durumu sağlamak için iki farklı seçenek vardır – varsayılan yük dengeleyici prob veya .csdef dosyasında LoadBalancerProbe tanımlanarak uygulanan özel bir yük dengeleyici prob.
+## <a name="the-function-of-a-load-balancer-probe"></a>Yük dengeleyici araştırması işlevi
+Azure Load Balancer, gelen trafiğin rol örneklerinizi yönlendirmesinden sorumludur. Yük dengeleyici, bu örneğin durumunu belirleyebilmek için her bir örneği düzenli olarak yoklama yaparak hangi örneklerin trafik alabileceğini belirler. Yük dengeleyici her örneği dakikada birden çok kez yoklamalar. Yük dengeleyicisine örnek sistem durumu sağlamaya yönelik iki farklı seçenek vardır: varsayılan Yük dengeleyici araştırması veya. csdef dosyasında Loadbalanceraraştırması tanımlayarak uygulanan özel bir yük dengeleyici araştırması.
 
-Varsayılan yük dengeleyici sondası, yalnızca örnek Hazır durumdayken (örneğin Meşgul, Geri Dönüşüm, Durdurma, vb. durumlarında olmadığı gibi) http 200 OK yanıtı yla dinleyen ve yanıtveren sanal makinenin içindeki Konuk Aracıyı kullanır. Konuk Aracıhttp 200 Ok ile yanıt vermezse, Azure Yük Dengeleyici örneği yanıt vermiyor olarak işaretler ve bu örne trafik göndermeyi durdurur. Azure Yük Dengeleyicisi örneği pinglemeye devam eder ve Konuk Aracı http 200 ile yanıt verirse, Azure Yük Dengeleyicisi trafiği o örne yeniden gönderir. Bir web rolü kullanırken web kodunuz genellikle Azure kumaşı veya konuk aracı tarafından izlenmeyen w3wp.exe'de çalışır, bu da w3wp.exe'deki hatalar anlamına gelir (örn. HTTP 500 yanıtları) konuk ajana bildirilmez ve yük dengeleyicisi bu örneği döndürmenin dışında almayı bilmez.
+Varsayılan yük dengeleyici araştırması, sanal makinenin içindeki Konuk aracısından yararlanır ve yalnızca örnek hazır durumda olduğunda (örneğin meşgul, geri dönüşüm, durdurma, vb. durumlar gibi) HTTP 200 OK yanıtını dinler ve bu yanıtı verir. Konuk Aracısı HTTP 200 Tamam ile yanıt vermiyorsa, Azure Load Balancer örneği yanıt vermeyen olarak işaretler ve bu örneğe trafik göndermeyi bırakır. Azure Load Balancer örneğe ping vermeye devam eder ve Konuk Aracısı bir HTTP 200 ile yanıt verirse, Azure Load Balancer trafiği bu örneğe yeniden gönderir. Web rolü kullanılırken, Web sitesi kodunuz genellikle Azure Fabric veya Konuk Aracısı tarafından izlenmeyen W3wp. exe ' de çalışır; bu da W3wp. exe ' deki başarısızlıklar anlamına gelir (örn. HTTP 500 yanıtları) Konuk aracıya bildirilmemiştir ve yük dengeleyici bu örneği döndürme dışında bırakmak için bilmez.
 
-Özel yük dengeleyici sondası varsayılan konuk aracı sondasını geçersiz kılar ve rol örneğinin durumunu belirlemek için kendi özel mantığınızı oluşturmanıza olanak tanır. Yük dengeleyicisi bitiş noktanızı düzenli olarak inceler (varsayılan olarak her 15 saniyede bir) ve zaman zaman dilimi içinde (varsayılan 31 saniye) tcp ACK veya HTTP 200 ile yanıt verirse, örnek döndürme de değerlendirilir. Bu, örneğin %90 CPU'nun üzerindeyse, örneğin 200 olmayan bir durumu döndürme gibi örnekleri yük dengeleyici döndürmeden kaldırmak için kendi mantığınızı uygulamak yararlı olabilir. w3wp.exe kullanarak web rolleri için, bu aynı zamanda web sitenizin otomatik izleme almak anlamına gelir, web sitesi kodundaki hatalar yük dengeleyici sondası için olmayan bir 200 durumu dönmek beri. .csdef dosyasında loadbalancerProbe tanımlamazsanız, varsayılan yük dengeleyici davranışı (daha önce açıklandığı gibi) kullanılır.
+Özel yük dengeleyici araştırması varsayılan Konuk Aracısı araştırmasını geçersiz kılar ve rol örneğinin sistem durumunu öğrenmek için kendi özel mantığınızı oluşturmanızı sağlar. Yük dengeleyici, uç noktanızı düzenli olarak yoklamalar (varsayılan olarak 15 saniyede bir) ve zaman aşımı süresi içinde bir TCP ACK veya HTTP 200 ile yanıt verirse, örnek döndürme olarak değerlendirilir (varsayılan 31 saniye). Bu, örnekleri yük dengeleyici rotasyondan kaldırmak için kendi mantığınızı uygulamak için yararlı olabilir; Örneğin, örnek %90 ' den daha üstündeyse 200 olmayan bir durum döndürüyor. Web sitesi kodunuzdaki hatalardan yük dengeleyici araştırmasına 200 olmayan bir durum döndürdüğü için, bu, W3wp. exe ' yi kullanan Web rolleri için de Web sitenizin otomatik olarak izlenmesini aldığınız anlamına gelir. . Csdef dosyasında bir Loadbalanceraraştırma tanımlamadıysanız, varsayılan Yük dengeleyici davranışı (daha önce açıklandığı gibi) kullanılır.
 
-Özel bir yük dengeleyici prob kullanıyorsanız, mantığınızın RoleEnvironment.OnStop yöntemini dikkate aldığından emin olmalısınız. Varsayılan yük dengeleyici sondası kullanırken, örnek OnStop çağrılmadan önce döndürme dışına çıkarılır, ancak özel bir yük dengeleyici probu OnStop olayı sırasında 200 OK döndürmeye devam edebilir. Önbelleği temizlemek, hizmeti durdurmak veya hizmetin çalışma zamanı davranışını etkileyebilecek değişiklikler yapmak için OnStop olayını kullanıyorsanız, özel yük dengeleyici sondalama mantığınızın örneği döndürmeden kaldırdığından emin olmanız gerekir.
+Özel bir yük dengeleyici araştırması kullanıyorsanız, mantığınızın RoleEnvironment. OnStop metodunu dikkate aldığından emin olmanız gerekir. Varsayılan yük dengeleyici araştırması kullanılırken, örnek, OnStop çağrılmadan önce dönüşten önce döndürülür, ancak özel bir yük dengeleyici araştırması, OnStop olayı sırasında 200 Tamam geri döndürmeye devam edebilir. Önbelleği temizlemek, hizmeti durdurmak veya hizmetinizin çalışma zamanı davranışını etkileyebilecek değişiklikler yapmak için OnStop olayını kullanıyorsanız, özel yük dengeleyici araştırma mantığınızın örneği dönüşten kaldırdığından emin olmanız gerekir.
 
-## <a name="basic-service-definition-schema-for-a-load-balancer-probe"></a>Yük dengeleyici prob için temel hizmet tanımı şeması
- Yük dengeleyici probu içeren hizmet tanım dosyasının temel biçimi aşağıdaki gibidir.
+## <a name="basic-service-definition-schema-for-a-load-balancer-probe"></a>Yük dengeleyici araştırması için temel hizmet tanımı şeması
+ Bir yük dengeleyici araştırması içeren bir hizmet tanımı dosyasının temel biçimi aşağıdaki gibidir.
 
 ```xml
 <ServiceDefinition …>
@@ -41,28 +41,28 @@ Varsayılan yük dengeleyici sondası, yalnızca örnek Hazır durumdayken (örn
 </ServiceDefinition>
 ```
 
-## <a name="schema-elements"></a>Şema elemanları
+## <a name="schema-elements"></a>Şema öğeleri
 Hizmet `LoadBalancerProbes` tanımı dosyasının öğesi aşağıdaki öğeleri içerir:
 
-- [LoadBalancerProbes Elemanı](#LoadBalancerProbes)
-- [LoadBalancerProbe Elemanı](#LoadBalancerProbe)
+- [Loadbalanceraraştırmaları öğesi](#LoadBalancerProbes)
+- [Loadbalanceraraştırma öğesi](#LoadBalancerProbe)
 
-##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>LoadBalancerProbes Elemanı
-Öğe `LoadBalancerProbes` yük dengeleyici probları toplama açıklar. Bu öğe [LoadBalancerProbe Öğesinin](#LoadBalancerProbe)ana elemanıdır. 
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>Loadbalanceraraştırmaları öğesi
+`LoadBalancerProbes` Öğesi, yük dengeleyici araştırmaları koleksiyonunu açıklar. Bu öğe [Loadbalanceraraştırma öğesinin](#LoadBalancerProbe)üst öğesidir. 
 
-##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>LoadBalancerProbe Elemanı
-Öğe, `LoadBalancerProbe` bir model için sistem durumu sondasını tanımlar. Birden çok yük dengeleyici probları tanımlayabilirsiniz. 
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>Loadbalanceraraştırma öğesi
+`LoadBalancerProbe` Öğesi bir modelin sistem durumu araştırmasını tanımlar. Birden çok yük dengeleyici yoklamaları tanımlayabilirsiniz. 
 
-Aşağıdaki tabloda `LoadBalancerProbe` öğenin öznitelikleri açıklanır:
+Aşağıdaki tablo, `LoadBalancerProbe` öğesinin özniteliklerini açıklar:
 
 |Öznitelik|Tür|Açıklama|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | Gereklidir. Yük dengeleyici sondasının adı. İsim benzersiz olmalı.|
-| `protocol`          | `string` | Gereklidir. Bitiş noktasının protokolünü belirtir. Olası değerler: `http` veya `tcp`. `tcp` Belirtilirse, sondanın başarılı olması için alınan bir ACK gereklidir. `http` Belirtilirse, sondanın başarılı olması için belirtilen URI'den 200 Ok yanıtı gerekir.|
-| `path`              | `string` | URI VM'den sağlık durumu istemek için kullanılır. `path`olarak `protocol` ayarlanırsa `http`gereklidir. Aksi takdirde, izin verilmez.<br /><br /> Varsayılan değer yoktur.|
-| `port`              | `integer` | İsteğe bağlı. Sondayı iletmek için bağlantı noktası. Bu herhangi bir bitiş noktası için isteğe bağlıdır, çünkü aynı bağlantı noktası sonda için kullanılacaktır. Onların sondalama için de farklı bir bağlantı noktası yapılandırabilirsiniz. Olası değerler 1 ile 65535 arasında değişir, dahil.<br /><br /> Varsayılan değer bitiş noktasına göre ayarlanır.|
-| `intervalInSeconds` | `integer` | İsteğe bağlı. Aralık, saniye cinsinden, ne sıklıkta sağlık durumu için bitiş noktasını araştırmak için. Genellikle, aralık, örneği döndürmeden çıkarmadan önce iki tam proba izin veren, ayrılan zaman aralığının (saniye cinsinden) yarısından biraz daha azdır.<br /><br /> Varsayılan değer 15, minimum değer 5'tir.|
-| `timeoutInSeconds`  | `integer` | İsteğe bağlı. Zaman sonu süresi, saniyeler içinde, hiçbir yanıtın daha fazla trafiğin bitiş noktasına gönderilmesini engellemeye neden olacağı sondaya uygulanır. Bu değer, uç noktaların Azure'da kullanılan normal sürelerden (varsayılan değerler) daha hızlı veya daha yavaş döndürme dışında alınmasını sağlar.<br /><br /> Varsayılan değer 31, minimum değer 11'dir.|
+| `name`              | `string` | Gereklidir. Yük dengeleyici araştırmasının adı. Ad benzersiz olmalıdır.|
+| `protocol`          | `string` | Gereklidir. Bitiş noktasının protokolünü belirtir. Olası değerler: `http` veya `tcp`. `tcp` Belirtilmişse, araştırmanın başarılı olması için ALıNAN bir ACK gereklidir. `http` Belirtilmişse, araştırmanın başarılı olması IÇIN belirtilen urı 'den 200 bir Tamam yanıtı gerekir.|
+| `path`              | `string` | VM 'den sistem durumu istemek için kullanılan URI. `path`, olarak `http`ayarlandıysa `protocol` gereklidir. Aksi takdirde, buna izin verilmez.<br /><br /> Varsayılan değer yoktur.|
+| `port`              | `integer` | İsteğe bağlı. Araştırmayı iletişim kurmak için bağlantı noktası. Bu, araştırma için aynı bağlantı noktası kullanılacaksa, her bitiş noktası için isteğe bağlıdır. Yoklama için farklı bir bağlantı noktası da yapılandırabilirsiniz. Olası değerler 1 ile 65535 arasında (dahil) arasındadır.<br /><br /> Varsayılan değer bitiş noktası tarafından ayarlanır.|
+| `intervalInSeconds` | `integer` | İsteğe bağlı. Uç noktanın sistem durumu için ne sıklıkla araştırılıp saniye cinsinden aralığı. Genellikle, zaman aralığı, örneği döndürmeden önce iki tam yoklamadan önce ayrılan zaman aşımı süresi (saniye cinsinden) değerinden biraz daha küçüktür.<br /><br /> Varsayılan değer 15 ' tir, en küçük değer 5 ' tir.|
+| `timeoutInSeconds`  | `integer` | İsteğe bağlı. Yanıt olmaması durumunda daha fazla trafiğin bitiş noktasına teslim edilmesine neden olacağı, saniye cinsinden zaman aşımı süresi. Bu değer, uç noktaların Azure 'da kullanılan tipik süreden daha hızlı veya daha yavaş kullanıma alınmasını sağlar (Varsayılanlar olan).<br /><br /> Varsayılan değer 31 ' dir, en küçük değer 11 ' dir.|
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Bulut Hizmeti (klasik) Tanımı Şeması](schema-csdef-file.md)
+[Bulut hizmeti (klasik) Tanım Şeması](schema-csdef-file.md)

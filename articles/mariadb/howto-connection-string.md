@@ -1,31 +1,31 @@
 ---
-title: Bağlantı dizeleri - MariaDB için Azure Veritabanı
-description: Bu belge, ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python ve Ruby de dahil olmak üzere MariaDB için Azure Veritabanı'na bağlanmak üzere uygulamalar için şu anda desteklenen bağlantı dizelerini listeler.
+title: Bağlantı dizeleri-MariaDB için Azure veritabanı
+description: Bu belgede, ADO.NET (C#), JDBC, Node. js, ODBC, PHP, Python ve Ruby dahil olmak üzere MariaDB için Azure veritabanı 'na bağlanmak üzere uygulamalar için şu anda desteklenen bağlantı dizeleri listelenmektedir.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 74574fb905ae4ebd2552ef97cd0b5430eea6363a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530232"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'na uygulama bağlama
-Bu konu, MariaDB için Azure Veritabanı tarafından desteklenen bağlantı dize türlerini şablonlar ve örneklerle birlikte listeler. Bağlantı dizenizde farklı parametreler ve ayarlar olabilir.
+Bu konu, MariaDB için Azure veritabanı tarafından şablonlar ve örneklerle birlikte desteklenen bağlantı dizesi türlerini listeler. Bağlantı dizeniz içinde farklı parametrelere ve ayarlara sahip olabilirsiniz.
 
-- Sertifikayı almak için [SSL'yi nasıl yapılandırılatırılabilirsiniz.](./howto-configure-ssl.md)
-- {your_host} = [servername].mariadb.database.azure.com
-- {your_user}@{servername} = doğru kimlik doğrulama için userID biçimi.  Yalnızca userID kullanırsanız, kimlik doğrulama başarısız olur.
+- Sertifikayı almak için bkz. [SSL 'yi yapılandırma](./howto-configure-ssl.md).
+- {your_host} = [servername]. MariaDB. Database. Azure. com
+- {your_user} @ {ServerName} = kimlik doğrulaması için Kullanıcı kimliği biçimi doğru.  Yalnızca Kullanıcı kimliğini kullanıyorsanız kimlik doğrulaması başarısız olur.
 
 ## <a name="adonet"></a>ADO.NET
 ```csharp
 Server={your_host}; Port=3306; Database={your_database}; Uid={username@servername}; Pwd={your_password}; SslMode=Preferred;
 ```
 
-Bu örnekte, sunucu `mydemoserver`adı , veritabanı `wpdb`adı , `WPAdmin`kullanıcı adı , `mypassword!2`ve şifre . Sonuç olarak, bağlantı dizesi olmalıdır:
+Bu `mydemoserver`örnekte sunucu adı, veritabanı adı `wpdb`, Kullanıcı adı `WPAdmin`ve parola olur. `mypassword!2` Sonuç olarak, bağlantı dizesi şöyle olmalıdır:
 
 ```csharp
 Server= "mydemoserver.mariadb.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -61,10 +61,10 @@ cnx = mysql.connector.connect(user="{username@servername}", password={your_passw
 client = Mysql2::Client.new(username: "{username@servername}", password: {your_password}, database: {your_database}, host: "{your_host}", port: 3306, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA')
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Azure portalından bağlantı dizeayrıntılarını alma
-Azure [portalında,](https://portal.azure.com)MariaDB sunucusu için Azure Veritabanınıza gidin ve ardından örnek için dize ![listesini almak için **Bağlantı dizeleri'ni** tıklatın: Azure portalındaki Bağlantı dizeleri bölmesi](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Azure portal bağlantı dizesi ayrıntılarını alın
+[Azure Portal](https://portal.azure.com), MariaDB sunucusu Için Azure veritabanı 'na gidin ve sonra, örneğinizin dize listesini almak için **bağlantı dizeleri** ' ne tıklayın: ![Azure Portal bağlantı dizeleri bölmesi](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-Dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntıları sağlar. Veritabanı adı, parola ve benzeri kendi parametrelerinizi kullanmak için bu örnekleri değiştirin. Daha sonra koduve uygulamaları sunucuya bağlanmak için bu dize kullanabilirsiniz.
+Dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntılar sağlar. Bu örnekleri, veritabanı adı, parola vb. gibi kendi parametrelerinizi kullanacak şekilde değiştirin. Daha sonra bu dizeyi, kodunuzun ve uygulamalarınızdan sunucuya bağlanmak için kullanabilirsiniz.
 
 <!-- 
 ## Next steps

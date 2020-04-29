@@ -1,51 +1,51 @@
 ---
-title: Sunucuyı yeniden başlat - Azure portalı - MariaDB için Azure Veritabanı
-description: Bu makalede, Azure Portalı'nı kullanarak MariaDB sunucusu için bir Azure Veritabanını nasıl yeniden başlatabileceğiniz açıklanmaktadır.
+title: Sunucuyu yeniden Başlat-Azure portal-MariaDB için Azure veritabanı
+description: Bu makalede, Azure portalını kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı nasıl yeniden başlatabileceğinizi açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ed95304807a1a03880cc824c1a58f010203d418d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534720"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure portalLarını kullanarak MariaDB sunucusu için Azure Veritabanını yeniden başlatın
-Bu konu, MariaDB sunucusu için bir Azure Veritabanını nasıl yeniden başlatabileceğinizi açıklar. Sunucu işlemi gerçekleştirirken kısa bir kesintiye neden olan bakım nedenleriyle sunucunuzu yeniden başlatmanız gerekebilir.
+# <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure portal kullanarak MariaDB sunucusu için Azure veritabanı 'nı yeniden başlatın
+Bu konuda, MariaDB sunucusu için Azure veritabanı 'nı nasıl yeniden başlatabileceğinizi anlatmaktadır. Sunucu işlemi gerçekleştirdiğinden kısa süreli bir kesinti oluşmasına neden olan bakım nedenleriyle sunucunuzu yeniden başlatmanız gerekebilir.
 
-Hizmet meşgulse sunucu yeniden başlatılır. Örneğin, hizmet vCores ölçekleme gibi daha önce istenen bir işlem işliyor olabilir.
+Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sanal çekirdekleri ölçeklendirirken daha önce istenen bir işlemi işliyor olabilir.
 
-Yeniden başlatmayı tamamlamak için gereken süre MariaDB kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda oluşan etkinlik miktarını en aza indirmenizi öneririz.
+Yeniden başlatmanın tamamlanması için gereken süre, MariaDB kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu nasıl yapılacağını kılavuzunu tamamlamak için şunları yapmanız gerekir:
-- [MariaDB sunucusu için bir Azure Veritabanı](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
+- [MariaDB sunucusu Için Azure veritabanı](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="perform-server-restart"></a>Sunucu yeniden başlatmayı gerçekleştirin
+## <a name="perform-server-restart"></a>Sunucu yeniden başlatması gerçekleştir
 
-Aşağıdaki adımlar MariaDB sunucusunu yeniden başlatın:
+Aşağıdaki adımlar MariaDB sunucusunu yeniden başlatır:
 
-1. Azure portalında, MariaDB sunucusu için Azure Veritabanınızı seçin.
+1. Azure portal, MariaDB sunucusu için Azure veritabanınızı seçin.
 
-2. Sunucunun **Genel Bakış** sayfasının araç çubuğunda **Yeniden Başlat'ı**tıklatın.
+2. Sunucunun **genel bakış** sayfasının araç çubuğunda **Yeniden Başlat**' a tıklayın.
 
-   ![MariaDB için Azure Veritabanı - Genel Bakış - Yeniden Başlat düğmesi](./media/howto-restart-server-portal/2-server.png)
+   ![MariaDB için Azure veritabanı-genel bakış-yeniden Başlat düğmesi](./media/howto-restart-server-portal/2-server.png)
 
-3. Sunucunun yeniden başlatılmasını onaylamak için **Evet'i** tıklatın.
+3. Sunucuyu yeniden başlatmayı onaylamak için **Evet** ' e tıklayın.
 
-   ![MariaDB için Azure Veritabanı - Yeniden başlat onaylayın](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![MariaDB için Azure veritabanı-yeniden başlatma Onayla](./media/howto-restart-server-portal/3-restart-confirm.png)
 
-4. Sunucu durumunun "Yeniden Başlatma" olarak değiştiğini gözlemleyin.
+4. Sunucu durumunun "yeniden başlatılıyor" olarak değiştiğini gözlemleyin.
 
-   ![MariaDB için Azure Veritabanı - Yeniden Başlatma durumu](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![MariaDB için Azure veritabanı-yeniden başlatma durumu](./media/howto-restart-server-portal/4-restarting-status.png)
 
-5. Sunucu yeniden başlatmanın başarılı olduğunu onaylayın.
+5. Sunucu yeniden başlatma işleminin başarılı olduğunu onaylayın.
 
-   ![MariaDB için Azure Veritabanı - Başarıyı yeniden başlatın](./media/howto-restart-server-portal/5-restart-success.png)
+   ![MariaDB için Azure veritabanı-yeniden başlatma başarılı](./media/howto-restart-server-portal/5-restart-success.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Quickstart: Azure portalLarını kullanarak MariaDB sunucusu için Azure Veritabanı oluşturma](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+[Hızlı başlangıç: Azure portal kullanarak MariaDB sunucusu için Azure veritabanı oluşturma](./quickstart-create-mariadb-server-database-using-azure-portal.md)

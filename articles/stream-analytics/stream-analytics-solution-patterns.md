@@ -1,6 +1,6 @@
 ---
 title: Azure Stream Analytics çözüm desenleri
-description: Azure Akış Analizi için panolama, olay mesajlaşması, veri depoları, referans veri zenginleştirme ve izleme gibi yaygın çözüm modelleri hakkında bilgi edinin.
+description: Parçalama, olay mesajlaşma, veri depoları, başvuru verileri zenginleştirme ve izleme gibi Azure Stream Analytics yönelik yaygın çözüm desenleri hakkında bilgi edinin.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,185 +8,185 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535791"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics çözüm desenleri
 
-Azure'daki diğer birçok hizmet gibi, Akış Analizi de daha büyük bir uçtan uca çözüm oluşturmak için diğer hizmetlerle birlikte en iyi şekilde kullanılır. Bu makalede, basit Azure Akışı Analizi çözümleri ve çeşitli mimari desenler açıklanmaktadır. Daha karmaşık çözümler geliştirmek için bu desenler üzerine inşa edebilirsiniz. Bu makalede açıklanan desenler çok çeşitli senaryolarda kullanılabilir. Senaryoya özgü desenlere örnek olarak [Azure çözüm mimarilerinde](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics)kullanılabilir.
+Daha büyük bir uçtan uca çözüm oluşturmak için, Azure 'daki pek çok farklı hizmet gibi Stream Analytics, diğer hizmetlerle en iyi şekilde kullanılır. Bu makalede basit Azure Stream Analytics çözümleri ve çeşitli mimari desenler açıklanmaktadır. Daha karmaşık çözümler geliştirmek için bu desenleri oluşturabilirsiniz. Bu makalede açıklanan desenler çok çeşitli senaryolarda kullanılabilir. [Azure çözüm mimarilerinde](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics)senaryoya özgü desenlere örnek olarak ulaşılabilir.
 
-## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Gerçek zamanlı pano deneyimi sağlamak için bir Stream Analytics işi oluşturun
+## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Gerçek zamanlı kesik taslak deneyimi için bir Stream Analytics işi oluşturun
 
-Azure Akış Analizi ile gerçek zamanlı panoları ve uyarıları hızlı bir şekilde ayağa kaldırabilirsiniz. Basit bir çözüm Olay Hub'larından veya IoT Hub'ından olayları yutarak [Power BI panosunu akışlı veri kümesiyle besler.](/power-bi/service-real-time-streaming) Daha fazla bilgi için ayrıntılı öğretici Stream Analytics ile telefon görüşmesi verilerini analiz edin [ve Power BI panosundaki sonuçları görselleştirin.](stream-analytics-manage-job.md)
+Azure Stream Analytics ile, kolayca gerçek zamanlı panolar ve uyarılar oluşturabilirsiniz. Event Hubs veya IoT Hub ait olayları geri alma ve [Power BI panosunun akış veri kümesiyle beslemelerine](/power-bi/service-real-time-streaming)yönelik basit bir çözüm. Daha fazla bilgi için bkz. [Stream Analytics ile telefon araması verilerini analiz etme ve sonuçları Power BI panoda görselleştirme](stream-analytics-manage-job.md).
 
-![ASA Güç BI panosu](media/stream-analytics-solution-patterns/pbidashboard.png)
+![ASA Power BI panosu](media/stream-analytics-solution-patterns/pbidashboard.png)
 
-Bu çözüm, Azure portalından sadece birkaç dakika içinde oluşturulabilir. Kapsamlı bir kodlama söz konusu değildir ve SQL dili iş mantığını ifade etmek için kullanılır.
+Bu çözüm, yalnızca birkaç dakika içinde Azure portal oluşturulabilir. İlgili kapsamlı bir kodlama yoktur ve iş mantığını ifade etmek için SQL dili kullanılır.
 
-Bu çözüm deseni, olay kaynağından tarayıcıdaki Power BI panosuna kadar en düşük gecikme süresini sunar. Azure Akış Analizi, bu yerleşik yeteneğe sahip tek Azure hizmetidir.
+Bu çözüm modelinde, bir tarayıcıda olay kaynağından Power BI panosuna en düşük gecikme süresi sunulur. Azure Stream Analytics bu yerleşik özelliği içeren tek Azure hizmetidir.
 
-## <a name="use-sql-for-dashboard"></a>Pano için SQL'i kullanma
+## <a name="use-sql-for-dashboard"></a>Pano için SQL kullanma
 
-Power BI panosu düşük gecikme gecikmesi sunar, ancak tam teşekküllü Güç BI raporları üretmek için kullanılamaz. Ortak bir raporlama deseni, verilerinizi önce bir SQL veritabanına çıkarmaktır. Ardından, en son veriler için SQL'i sorgulamak için Power BI'nin SQL konektörünü kullanın.
+Power BI panosu düşük gecikme süresi sunar, ancak tam kapsamlı Power BI raporları üretmek için kullanılamaz. Yaygın bir raporlama deseninin verileri, önce SQL veritabanına çıktı olarak kullanılır. Daha sonra Power BI SQL bağlayıcısını kullanarak en son veriler için SQL 'i sorgulayın.
 
 ![ASA SQL panosu](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-SQL veritabanını kullanmak size daha fazla esneklik sağlar, ancak biraz daha yüksek gecikme giderme pahasına. Bu çözüm, gecikme gereksinimleri bir saniyeden büyük olan işler için en uygun çözümdür. Bu yöntemle, raporlar için verileri ve çok daha fazla görselleştirme seçeneğini daha fazla dilimlemek ve zarlamak için Güç BI özelliklerini en üst düzeye çıkarabilirsiniz. Ayrıca Tableau gibi diğer pano çözümlerini kullanma esnekliği kazanırsınız.
+SQL veritabanı kullanmak, daha fazla esneklik elde etmenizi sağlar, ancak biraz daha yüksek bir gecikme olur. Bu çözüm, gecikme süresi bir saniyeden daha büyük olan işler için idealdir. Bu yöntemde, raporlar için verileri daha fazla dilimleyip zarmak ve çok daha fazla görselleştirme seçeneği için Power BI yeteneklerini en üst düzeye çıkarabilirsiniz. Ayrıca, Tableau gibi diğer Pano çözümlerini kullanma esnekliği de elde edersiniz.
 
-SQL yüksek bir iş kaynağı veri deposu değildir. Azure Stream Analytics'ten bir SQL veritabanına maksimum iş akışı şu anda 24 MB/s civarındadır. Çözümünüzdeki olay kaynakları daha yüksek bir oranda veri üretiyorsa, çıktı oranını SQL'e düşürmek için Akış Analizi'nde işlem mantığını kullanmanız gerekir. Filtreleme, pencereli toplamalar, zamansal birleştirmelerle desen eşleştirme ve analitik işlevler gibi teknikler kullanılabilir. SQL'e çıkış oranı, Azure Akış Analizi çıktısında Azure [SQL Veritabanı'nda](stream-analytics-sql-output-perf.md)açıklanan teknikler kullanılarak daha da optimize edilebilir.
+SQL yüksek bir işleme veri deposu değildir. Azure Stream Analytics bir SQL veritabanı için en yüksek aktarım hızı şu anda 24 MB/sn 'nin üzerinde. Çözümünüzdeki olay kaynakları daha yüksek bir hızda veri üretemiyor, SQL 'e çıkış oranını azaltmak için Stream Analytics işlem mantığını kullanmanız gerekir. Filtreleme, pencereli toplamalar, zamana bağlı birleştirmelere göre desenler ve analitik işlevler gibi teknikler de kullanılabilir. SQL için çıkış oranı, [Azure SQL veritabanı 'na Azure Stream Analytics çıktı](stream-analytics-sql-output-perf.md)bölümünde açıklanan teknikler kullanılarak daha da iyileştirilebilir.
 
-## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Etkinlik iletisi ile uygulamanız için gerçek zamanlı öngörüler birleştirin
+## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Olay mesajlaşması ile uygulamanıza gerçek zamanlı Öngörüler ekleyin
 
-Stream Analytics'in ikinci en popüler kullanımı gerçek zamanlı uyarılar oluşturmaktır. Bu çözüm deseninde, Akış Analizi'ndeki iş mantığı [zamansal ve uzamsal desenleri](stream-analytics-geospatial-functions.md) veya [anormallikleri](stream-analytics-machine-learning-anomaly-detection.md)algılamak, ardından uyarı sinyalleri üretmek için kullanılabilir. Ancak, Stream Analytics'in Power BI'yi tercih edilen bir bitiş noktası olarak kullandığı pano çözümünün aksine, bir dizi ara veri lavabosu kullanılabilir. Bu lavabolar, Olay Hub'larını, Hizmet Veri Veri Toslarını ve Azure İşlerini içerir. Uygulama oluşturucu olarak, hangi veri lavabonun senaryonuz için en iyi şekilde çalıştığına karar vermeniz gerekir.
+En popüler Stream Analytics kullanımı gerçek zamanlı uyarılar oluşturmak için kullanılır. Bu çözüm desenindeki Stream Analytics iş mantığı, zamana bağlı [ve uzamsal desenleri](stream-analytics-geospatial-functions.md) ve [anormallikleri](stream-analytics-machine-learning-anomaly-detection.md)algılamak için kullanılabilir ve ardından uyarı sinyalleri üretir. Ancak, Stream Analytics tercih edilen bir uç nokta olarak Power BI kullandığı Pano çözümünün aksine, bir dizi ara veri havuzları kullanılabilir. Bu havuzlar Event Hubs, Service Bus ve Azure Işlevlerini içerir. Uygulama Oluşturucu olarak, senaryolarınız için hangi veri havuzunun en iyi şekilde çalıştığına karar vermeniz gerekir.
 
-Varolan iş akışınızda uyarılar oluşturmak için akış aşağı olay tüketici mantığının uygulanması gerekir. Azure İşlevlerinde özel mantık uygulayabileceğinizden, Azure İşlevleri bu tümleştirmeyi gerçekleştirmenin en hızlı yoludur. Azure İşi'ni Bir Akış Analizi işi için çıktı olarak kullanmak için bir [öğretici, Azure Akış Analizi işlerinden Azure İşlerini Çalıştır'da](stream-analytics-with-azure-functions.md)bulunabilir. Azure İşlevleri, metin ve e-posta gibi çeşitli bildirim türlerini de destekler. Logic App, Akış Analizi ve Mantık Uygulaması arasındaki Olay Hub'ları ile bu tür tümleştirmeler için de kullanılabilir.
+Mevcut iş iş akışınızda uyarı oluşturmak için aşağı akış olay tüketicisi mantığı uygulanmalıdır. Azure Işlevlerinde özel mantık uygulayabilmeniz için, Azure Işlevleri Bu tümleştirmeyi gerçekleştirmenin en hızlı yoludur. Azure Işlevi 'nin bir Stream Analytics işi için çıkış olarak kullanılmasına yönelik bir öğretici, [Azure Stream Analytics ışlerden Azure Işlevleri çalıştırma](stream-analytics-with-azure-functions.md)bölümünde bulunabilir. Azure Işlevleri, metin ve e-posta gibi çeşitli bildirim türlerini de destekler. Mantıksal uygulama, Stream Analytics ve Logic App arasında Event Hubs bir tümleştirme için de kullanılabilir.
 
 ![ASA olay mesajlaşma uygulaması](media/stream-analytics-solution-patterns/eventmessagingapp.png)
 
-Olay Hub'ları ise en esnek entegrasyon noktasını sunar. Azure Veri Gezgini ve Zaman Serisi Öngörüleri gibi diğer birçok hizmet Olay Hub'larından olayları tüketebilir. Hizmetler, çözümü tamamlamak için Azure Stream Analytics'in Etkinlik Hub'larına doğrudan bağlanabilir. Olay Hub'ları, bu tür tümleştirme senaryoları için Azure'da bulunan en yüksek iş hasılatı ileti aracısidır.
+Diğer yandan Event Hubs en esnek tümleştirme noktasını sunar. Azure Veri Gezgini ve Time Series Insights gibi diğer birçok hizmet Event Hubs olayları kullanabilir. Hizmetler, çözümü tamamlayabilmeniz için Azure Stream Analytics Event Hubs havuzuna doğrudan bağlanabilir. Event Hubs Ayrıca, Azure 'da bu tür tümleştirme senaryolarında bulunan en yüksek aktarım hızı ileti aracısıdır.
 
-## <a name="dynamic-applications-and-websites"></a>Dinamik uygulamalar ve web siteleri
+## <a name="dynamic-applications-and-websites"></a>Dinamik uygulamalar ve Web siteleri
 
-Azure Akış Analitiği ve Azure SinyalR Hizmeti'ni kullanarak pano veya harita görselleştirmesi gibi özel gerçek zamanlı görselleştirmeler oluşturabilirsiniz. SignalR kullanarak, web istemcileri güncellenebilir ve gerçek zamanlı olarak dinamik içerik gösterebilir.
+Azure Stream Analytics ve Azure SignalR hizmetini kullanarak pano veya harita görselleştirmesi gibi özel gerçek zamanlı görselleştirmeler oluşturabilirsiniz. SignalR kullanarak Web istemcileri güncelleştirilemeyebilir ve dinamik içeriği gerçek zamanlı olarak gösterebilir.
 
 ![ASA dinamik uygulaması](media/stream-analytics-solution-patterns/dynamicapp.png)
 
-## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>Veri depoları aracılığıyla uygulamanız için gerçek zamanlı öngörüler birleştirin
+## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>Veri depoları aracılığıyla uygulamanıza gerçek zamanlı Öngörüler ekleyin
 
-Günümüzde çoğu web hizmeti ve web uygulaması, sunum katmanına hizmet etmek için bir istek/yanıt deseni kullanır. İstek/yanıt deseni oluşturmak kolaydır ve Cosmos DB gibi stateless frontend ve ölçeklenebilir mağazalar kullanılarak düşük yanıt süresi ile kolayca ölçeklenebilir.
+Günümüzde çoğu Web hizmeti ve Web uygulaması, sunu katmanını sağlamak için bir istek/yanıt kalıbı kullanır. İstek/yanıt deseninin derlenmesi kolaydır ve Cosmos DB gibi durum bilgisi olmayan ön uç ve ölçeklenebilir depolar kullanılarak düşük yanıt süresi ile kolayca ölçeklendirilebilir.
 
-Yüksek veri hacmi genellikle CRUD tabanlı bir sistemde performans darboğazları oluşturur. [Olay kaynak çözüm deseni](/azure/architecture/patterns/event-sourcing) performans darboğazları gidermek için kullanılır. Zamansal desenler ve öngörüler de zor ve verimsiz geleneksel bir veri deposundan ayıklamak için vardır. Modern yüksek hacimli veri odaklı uygulamalar genellikle veri akışı tabanlı bir mimari benimser. Hareket halindeki veriler için bilgi işlem motoru olarak Azure Stream Analytics, bu mimarinin temel taşıdır.
+Yüksek veri hacmi genellikle CRUD tabanlı bir sistemde performans sorunlarını oluşturur. Olay kaynağını belirleme [çözüm deseninin](/azure/architecture/patterns/event-sourcing) performans sorunlarını gidermek için kullanılır. Zamana bağlı desenler ve Öngörüler ayrıca geleneksel bir veri deposundan ayıklamak zor ve verimsiz bir şekilde yapılır. Modern yüksek hacimli veri odaklı uygulamalar genellikle veri akışı tabanlı bir mimari benimseyin. Hareket halindeki veriler için işlem altyapısı, bu mimarideki bir süreçlerini olarak Azure Stream Analytics.
 
-![ASA olay kaynak uygulaması](media/stream-analytics-solution-patterns/eventsourcingapp.png)
+![ASA olayı kaynak kaynağı uygulaması](media/stream-analytics-solution-patterns/eventsourcingapp.png)
 
-Bu çözüm deseninde, olaylar Azure Stream Analytics tarafından işlenir ve veri depolarına toplanır. Uygulama katmanı, geleneksel istek/yanıt deseni kullanarak veri depolarıyla etkileşime girmektedir. Stream Analytics'in çok sayıda olayı gerçek zamanlı olarak işleyebilme özelliği sayesinde, uygulama veri deposu katmanını toplu hale getirmek zorunda kalmadan yüksek oranda ölçeklenebilir. Veri deposu katmanı aslında sistemde maddeleştirilmiş bir görünümdür. [Azure Cosmos DB'ye azure Akış Analizi çıkışı,](stream-analytics-documentdb-output.md) Cosmos DB'nin Akış Analizi çıktısı olarak nasıl kullanıldığını açıklar.
+Bu çözüm modelinde olaylar işlenir ve Azure Stream Analytics tarafından veri depolarında toplanır. Uygulama katmanı, geleneksel istek/yanıt modelini kullanarak veri depolarıyla etkileşime girer. Stream Analytics ' nin gerçek zamanlı çok sayıda olayı işleyebilme özelliği nedeniyle, uygulama, veri deposu katmanını toplu olarak önemli ölçüde ölçeklenebilir olur. Veri deposu katmanı aslında sistemde gerçekleştirilmiş bir görünüm olur. [Azure Cosmos db çıktı Azure Stream Analytics](stream-analytics-documentdb-output.md) Cosmos DB Stream Analytics çıkış olarak nasıl kullanıldığını açıklar.
 
-İşleme mantığının karmaşık olduğu ve mantığın belirli bölümlerini bağımsız olarak yükseltme ihtiyacının olduğu gerçek uygulamalarda, birden çok Akış Analizi işi, aracı etkinlik aracısı olarak Event Hub'ları ile birlikte oluşturulabilir.
+İşlem mantığının karmaşık olduğu ve mantığın belirli kısımlarını bağımsız olarak yükseltme ihtiyacı olan gerçek uygulamalarda, birden çok Stream Analytics işi aracı olay aracısı olarak Event Hubs birlikte oluşturulabilir.
 
-![ASA karmaşık olay kaynak uygulaması](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
+![ASA karmaşık olay kaynağını belirleme uygulaması](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
 
-Bu desen, sistemin esnekliğini ve yönetilebilirliğini artırır. Ancak, Stream Analytics tam olarak bir kez işleme garantisi verse de, yinelenen olayların aracı Etkinlik Hub'larına inme olasılığı düşüktür. Akış Akışı Analizi işinin, geçmişe dönüş penceresinde mantık tuşlarını kullanarak olayları dedupe etmesi önemlidir. Etkinlik teslimi hakkında daha fazla bilgi için [Olay Teslim Garantileri](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) referansına bakın.
+Bu model sistemin esnekliğini ve yönetilebilirliğini geliştirir. Ancak, Stream Analytics tam olarak bir kez işlemeyi garanti etse de, yinelenen olayların ara Event Hubs bir şekilde aratabileceğini belirten küçük bir şansınız vardır. Aşağı akış Stream Analytics işinin, geriye doğru bir penceredeki mantıksal anahtarları kullanarak olayları kaldırmaması önemlidir. Olay teslimi hakkında daha fazla bilgi için bkz. [olay teslimi garantisi](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) başvurusu.
 
-## <a name="use-reference-data-for-application-customization"></a>Uygulama özelleştirmeiçin başvuru verilerini kullanma
+## <a name="use-reference-data-for-application-customization"></a>Uygulama özelleştirmesi için başvuru verilerini kullanma
 
-Azure Akışı Analizi başvuru veri özelliği, eşik uyarı, işleme kuralları ve coğrafi çitler gibi son kullanıcı [özelleştirmesi](geospatial-scenarios.md)için özel olarak tasarlanmıştır. Uygulama katmanı parametre değişikliklerini kabul edebilir ve bunları bir SQL veritabanında depolayabilir. Akış Analizi işi, veritabanındaki değişiklikleri düzenli olarak sorgular ve özelleştirme parametrelerini başvuru verileri birleştirme yoluyla erişilebilir hale getirir. Uygulama özelleştirmeiçin başvuru verilerinin nasıl kullanılacağı hakkında daha fazla bilgi için [SQL başvuru verileri](sql-reference-data.md) ve başvuru [verileri birleştirme'ye](/stream-analytics-query/reference-data-join-azure-stream-analytics)bakın.
+Azure Stream Analytics başvuru verileri özelliği, uyarı eşiği, işleme kuralları ve [bölge dilimleri](geospatial-scenarios.md)gibi son kullanıcı özelleştirmesi için özel olarak tasarlanmıştır. Uygulama katmanı, parametre değişikliklerini kabul edebilir ve bunları bir SQL veritabanında saklayabilir. Stream Analytics işi veritabanındaki değişiklikleri düzenli aralıklarla sorgular ve özelleştirme parametrelerini bir başvuru verileri birleşimi aracılığıyla erişilebilir hale getirir. Uygulama özelleştirmesi için başvuru verilerini kullanma hakkında daha fazla bilgi için bkz. [SQL başvuru verileri](sql-reference-data.md) ve [başvuru verileri katılımı](/stream-analytics-query/reference-data-join-azure-stream-analytics).
 
-Bu desen, başvuru verilerinden kuralların eşiklerinin tanımlandığı bir kural altyapısı uygulamak için de kullanılabilir. Kurallar hakkında daha fazla bilgi için [Azure Akış Analizi'nde Yapılabilen Eşik Tabanlı İşlem kurallarına](stream-analytics-threshold-based-rules.md)bakın.
+Bu model, kural eşiklerinin başvuru verilerinden tanımlandığı bir kural altyapısını uygulamak için de kullanılabilir. Kurallar hakkında daha fazla bilgi için, bkz. [Azure Stream Analytics yapılandırılabilir eşik tabanlı kuralları işleme](stream-analytics-threshold-based-rules.md).
 
-![ASA referans veri uygulaması](media/stream-analytics-solution-patterns/refdataapp.png)
+![ASA başvuru verileri uygulaması](media/stream-analytics-solution-patterns/refdataapp.png)
 
-## <a name="add-machine-learning-to-your-real-time-insights"></a>Gerçek zamanlı öngörülerinize Makine Öğrenimi ekleyin
+## <a name="add-machine-learning-to-your-real-time-insights"></a>Gerçek zamanlı öngörülere Machine Learning ekleyin
 
-Azure Akış Analizi'nin yerleşik [Anomali Algılama modeli,](stream-analytics-machine-learning-anomaly-detection.md) Machine Learning'i gerçek zamanlı uygulamanızla tanıştırmak için kullanışlı bir yoldur. Daha geniş bir Makine Öğrenimi gereksinimleri için Azure [Akış Analizi'nin Azure Machine Learning'in puanlama hizmetiyle tümleştirmesini](stream-analytics-machine-learning-integration-tutorial.md)görün.
+Azure Stream Analytics ' yerleşik [anomali algılama modeli](stream-analytics-machine-learning-anomaly-detection.md) , gerçek zamanlı uygulamanıza Machine Learning tanıtmak için kullanışlı bir yoldur. Machine Learning gereksinimlerle ilgili daha fazla bilgi için bkz. [Azure Stream Analytics Azure Machine Learning Puanlama hizmeti ile tümleşir](stream-analytics-machine-learning-integration-tutorial.md).
 
-Çevrimiçi eğitim ve puanlamayı aynı Stream Analytics ardışık hattına dahil etmek isteyen gelişmiş kullanıcılar için, [doğrusal regresyon](stream-analytics-high-frequency-trading.md)ile bunu nasıl yaptığına ilişkin bu örneğe bakın.
+Çevrimiçi eğitim ve Puanlama 'yı aynı Stream Analytics işlem hattına eklemek isteyen ileri düzey kullanıcılar için, [Doğrusal gerileme](stream-analytics-high-frequency-trading.md)ile nasıl yapılacağını gösteren bu örneğe bakın.
 
-![ASA Makine Öğrenimi uygulaması](media/stream-analytics-solution-patterns/mlapp.png)
+![ASA Machine Learning uygulaması](media/stream-analytics-solution-patterns/mlapp.png)
 
-## <a name="near-real-time-data-warehousing"></a>Gerçek zamanlı veri depolamanın yakınında
+## <a name="near-real-time-data-warehousing"></a>Neredeyse gerçek zamanlı veri depolama
 
-Başka bir yaygın desen gerçek zamanlı veri depolama, ayrıca veri ambarı akışı denir. Uygulamanızdan Event Hub'larına ve IoT Hub'a gelen etkinliklere ek olarak, [IoT Edge'de çalışan Azure Akış Analizi,](stream-analytics-edge.md) veri temizleme, veri azaltma ve veri depolama ve iletme gereksinimlerini karşılamak için kullanılabilir. IoT Edge'de çalışan Stream Analytics, sistemdeki bant genişliği sınırlamasını ve bağlantı sorunlarını zarif bir şekilde işleyebilir. SQL çıkış bağdaştırıcısı, SQL Veri Ambarı'na çıkış için kullanılabilir; ancak, maksimum verim 10 MB/sn ile sınırlıdır.
+Diğer bir yaygın model, akış veri ambarı olarak da adlandırılan gerçek zamanlı veri ambardır. Event Hubs IoT Hub ve uygulamanızdan gelen olaylara ek olarak, [IoT Edge üzerinde çalışan Azure Stream Analytics](stream-analytics-edge.md) veri temizleme, veri azaltma ve veri depolama ve iletme ihtiyaçlarını karşılamak için kullanılabilir. IoT Edge üzerinde çalışan Stream Analytics, sistemdeki bant genişliği sınırlamasını ve bağlantı sorunlarını düzgün şekilde işleyebilir. SQL çıkış bağdaştırıcısı SQL veri ambarı 'na çıkış yapmak için kullanılabilir; Ancak, en fazla üretilen iş 10 MB/sn ile sınırlıdır.
 
-![ASA Veri Depolama](media/stream-analytics-solution-patterns/datawarehousing.png)
+![ASA veri ambarı](media/stream-analytics-solution-patterns/datawarehousing.png)
 
-Bazı gecikme tradeoff ile iş kısmını iyileştirmenin bir yolu, olayları Azure Blob depolama alanına arşivlemek ve bunları [Polybase ile SQL Veri Ambarı'na aktarmaktır.](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md) [Verileri zaman damgasına göre arşivleyerek](stream-analytics-custom-path-patterns-blob-storage-output.md) ve düzenli aralıklarla içe aktararak Stream Analytics'ten blob depolamasına ve blob depolamadan SQL Veri Ambarı'na girişe kadar çıktıyı el ile birleştirmelisiniz.
+Bazı gecikme süresi zorunluluğunu getirir ile üretilen işi geliştirmenin bir yolu, olayları Azure Blob depolama alanına arşivlemek ve daha sonra [PolyBase Ile SQL Data Warehouse 'a içeri aktarmaktır](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md). [Verileri zaman damgasıyla arşivleyerek](stream-analytics-custom-path-patterns-blob-storage-output.md) ve düzenli aralıklarla içeri aktararak BLOB depolama ve BLOB depolamadan SQL veri ambarı 'na giriş Stream Analytics el ile bir araya almalısınız.
 
-Bu kullanım deseninde, Azure Akış Analizi neredeyse gerçek zamanlı ETL motoru olarak kullanılır. Yeni gelen etkinlikler sürekli olarak dönüştürülür ve akış aşağı analiz hizmeti tüketimi için saklanır.
+Bu kullanım modelinde, Azure Stream Analytics neredeyse gerçek zamanlı ETL altyapısı olarak kullanılır. Yeni gelen olaylar sürekli olarak dönüştürülür ve aşağı akış analizi hizmeti tüketimi için depolanır.
 
-![ASA yüksek iş kaynağı Veri Depolama](media/stream-analytics-solution-patterns/datawarehousing2.png)
+![ASA yüksek aktarım hızı veri depolama](media/stream-analytics-solution-patterns/datawarehousing2.png)
 
-## <a name="archiving-real-time-data-for-analytics"></a>Analitik için gerçek zamanlı verileri arşivleme
+## <a name="archiving-real-time-data-for-analytics"></a>Analiz için gerçek zamanlı verileri arşivleme
 
-Çoğu veri bilimi ve analiz aktivitesi hala çevrimdışı gerçekleşir. Veriler Azure Veri Gölü Deposu Gen2 çıktısı ve Parke çıktısı biçimleri aracılığıyla Azure Stream Analytics tarafından arşivlenebilir. Bu özellik, verileri doğrudan Azure Veri Gölü Analizi, Azure Veri Tuğlaları ve Azure HDInsight'a beslemek için sürtünmeyi ortadan kaldırır. Azure Akış Analizi bu çözümde neredeyse gerçek zamanlı ETL motoru olarak kullanılır. Çeşitli bilgi işlem altyapılarını kullanarak Veri Gölü'nde arşivlenmiş verileri keşfedebilirsiniz.
+Çoğu veri bilimi ve analiz etkinliği yine de çevrimdışı gerçekleşir. Veriler, Azure Data Lake Store Gen2 Output ve Parquet çıkış biçimleri aracılığıyla Azure Stream Analytics arşivlenebilir. Bu özellik, verileri doğrudan Azure Data Lake Analytics, Azure Databricks ve Azure HDInsight 'a akışa almak için bu özelliği ortadan kaldırır. Azure Stream Analytics, bu çözümde neredeyse gerçek zamanlı bir ETL altyapısı olarak kullanılır. Data Lake, çeşitli işlem altyapılarını kullanarak arşivlenmiş verileri keşfedebilirsiniz.
 
-![ASA çevrimdışı analitik](media/stream-analytics-solution-patterns/offlineanalytics.png)
+![ASA çevrimdışı Analizi](media/stream-analytics-solution-patterns/offlineanalytics.png)
 
-## <a name="use-reference-data-for-enrichment"></a>Zenginleştirme için referans verilerini kullanma
+## <a name="use-reference-data-for-enrichment"></a>Zenginleştirme için başvuru verilerini kullanma
 
-Veri zenginleştirme genellikle ETL motorları için bir gerekliliktir. Azure Akış Analizi, hem SQL veritabanından hem de Azure Blob depolamasından [gelen referans verilerle](stream-analytics-use-reference-data.md) veri zenginleştirmeyi destekler. Hem Azure Veri Gölü'ne hem de SQL Veri Ambarına veri kiniş için veri zenginleştirme yapılabilir.
+Veri zenginleştirme, genellikle ETL motorları için gereksinimdir. Azure Stream Analytics hem SQL veritabanı hem de Azure Blob depolama alanındaki [başvuru verileriyle](stream-analytics-use-reference-data.md) veri zenginleştirmesini destekler. Veri zenginleştirme, hem Azure Data Lake hem de SQL veri ambarı 'nda veri sahanlığı için yapılabilir.
 
-![Veri zenginleştirme ile ASA çevrimdışı analitik](media/stream-analytics-solution-patterns/offlineanalytics.png)
+![Veri zenginleştirme ile ASA çevrimdışı Analizi](media/stream-analytics-solution-patterns/offlineanalytics.png)
 
-## <a name="operationalize-insights-from-archived-data"></a>Arşivlenmiş verilerden öngörüleri operasyonel hale
+## <a name="operationalize-insights-from-archived-data"></a>Arşivlenmiş verilerden Öngörüler elde edin
 
-Çevrimdışı analitik deseni yakın gerçek zamanlı uygulama deseniyle birleştirirseniz, bir geri bildirim döngüsü oluşturabilirsiniz. Geri bildirim döngüsü, uygulamanın verilerdeki desenleri değiştirmek için otomatik olarak ayarlamasını sağlar. Bu geri bildirim döngüsü, uyarı için eşik değerini değiştirmek kadar basit veya Machine Learning modellerini yeniden eğitmek kadar karmaşık olabilir. Aynı çözüm mimarisi hem bulutta çalışan ASA işlerine hem de IoT Edge'de uygulanabilir.
+Çevrimdışı analiz modelini neredeyse gerçek zamanlı uygulama düzeniyle birleştirirseniz, bir geri bildirim döngüsü oluşturabilirsiniz. Geri bildirim döngüsü, uygulamanın veride değişen desenleri otomatik olarak ayarlamasını sağlar. Bu geri bildirim döngüsü, uyarı için eşik değerini değiştirmek veya Machine Learning modelleri yeniden eğitim olarak karmaşık olabilir. Aynı çözüm mimarisi, bulutta ve IoT Edge çalışan her iki ASA işine da uygulanabilir.
 
-![ASA operasyonelleştirme öngörüleri](media/stream-analytics-solution-patterns/insightsoperationalization.png)
+![ASA öngörüleri işlemleştirme](media/stream-analytics-solution-patterns/insightsoperationalization.png)
 
-## <a name="how-to-monitor-asa-jobs"></a>ASA işleri nasıl izlenir?
+## <a name="how-to-monitor-asa-jobs"></a>ASA işlerini izleme
 
-Bir Azure Akışı Analizi işi, gelen olayları gerçek zamanlı olarak sürekli olarak işlemek için 7/24 çalıştırılabilir. Çalışma süresi garantisi, genel uygulamanın sağlığı için çok önemlidir. Stream Analytics, sektörde [%99,9 kullanılabilirlik garantisi](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)sunan tek akış analizi hizmeti olsa da, yine de bir miktar kapalı kalma süresine maruz kalabilirsiniz. Yıllar içinde Stream Analytics, işlerin durumunu yansıtacak ölçümler, günlükler ve iş durumları getirmiştir. Bunların tümü Azure Monitor hizmeti aracılığıyla su yüzüne çıkar ve OMS'ye daha fazla aktarılabilir. Daha fazla bilgi için [Bkz. Akış Analizi iş izlemeyi ve sorguları nasıl izleyebilirsiniz.](stream-analytics-monitoring.md)
+Azure Stream Analytics bir iş, gelen olayları sürekli olarak gerçek zamanlı olarak işlemek için 24/7 çalıştırılabilir. Çalışma süresi garantisi, genel uygulamanın sistem durumu için önemlidir. Sektörün [% 99,9 kullanılabilirlik garantisi](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)sunan tek akış analizi hizmeti Stream Analytics, ancak yine de bir düzey süre kullanmaya devam edebilirsiniz. Yıl boyunca Stream Analytics, işlerin sistem durumunu yansıtmak için ölçümler, Günlükler ve iş durumları getirmiştir. Bunların hepsi Azure Izleyici hizmeti üzerinden ortaya çıkmış ve OMS 'ye daha fazla aktarılabilir. Daha fazla bilgi için bkz. [Stream Analytics iş Izlemeyi anlama ve sorguları izleme](stream-analytics-monitoring.md).
 
 ![ASA izleme](media/stream-analytics-solution-patterns/monitoring.png)
 
-İzlenmeli iki önemli şey vardır:
+İzlemeniz gereken iki önemli nokta vardır:
 
-- [İş başarısız durum](job-states.md)
+- [İş başarısız durumu](job-states.md)
 
-    Her şeyden önce, işin devam edeceğinden emin olmalısın. Çalışan durumda iş olmadan, yeni ölçümler veya günlükler oluşturulur. İşler, yüksek SU kullanım düzeyine (yani kaynakların tükenmesi) sahip olmak gibi çeşitli nedenlerle başarısız bir duruma dönüşebilir.
+    İlk ve daha sonra, işin çalıştığından emin olmanız gerekir. Çalışma durumunda iş olmadan, yeni ölçüm veya günlük oluşturulmaz. İşler, yüksek SU kullanım düzeyi (örneğin, kaynakları tükenme) dahil olmak üzere çeşitli nedenlerle başarısız durumuna değiştirilebilir.
 
-- [Filigran gecikme ölçümleri](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)
+- [Filigran gecikmesi ölçümleri](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)
 
-    Bu metrik, işlem ardışık nızın duvar saati (saniye) ne kadar gerisinde olduğunu yansıtır. Gecikmenin bir kısmı doğal işleme mantığına atfedilir. Sonuç olarak, artan eğilimi izlemek mutlak değeri izlemekten çok daha önemlidir. Sabit durum gecikmesi, izleme veya uyarılarla değil, uygulama tasarımınızla giderilmelidir.
+    Bu ölçüm, işleme işlem hattının ne kadar gerisinde olduğunu yansıtır (saniye). Gecikmeden bazıları, devralınan işleme mantığına göre belirlenir. Sonuç olarak, artan eğilimi izlemek, mutlak değeri izlemeden çok daha önemlidir. Sabit durum gecikmesi, izleme veya uyarılarla değil, uygulama tasarımınız tarafından değinilmelidir.
 
-Başarısız olduktan sonra, etkinlik günlükleri ve [tanılama günlükleri](stream-analytics-job-diagnostic-logs.md) hataları aramaya başlamak için en iyi yerlerdir.
+Hata sonrasında, etkinlik günlükleri ve [tanılama günlükleri](stream-analytics-job-diagnostic-logs.md) , hata aramaya başlamak için en iyi yer lardır.
 
 ## <a name="build-resilient-and-mission-critical-applications"></a>Esnek ve görev açısından kritik uygulamalar oluşturun
 
-Azure Akış Analizi'nin SLA garantisi ne olursa olsun ve uçtan uca uygulamanızı ne kadar dikkatli çalıştırdığınıza bakılmaksızın kesintiler gerçekleşir. Başvurunuz kritik bir görevse, zarif bir şekilde iyileşmek için kesintilere hazırlıklı olmanız gerekir.
+Azure Stream Analytics ' SLA garantisi ve uçtan uca uygulamanızı ne kadar dikkatli olduğunuza bakılmaksızın kesintiler meydana gelir. Uygulamanız görev açısından önemliyse, düzgün bir şekilde kurtarmak için kesintiler için hazırlıklı olmanız gerekir.
 
-Uygulamaları uyarmak için en önemli şey bir sonraki uyarıyı algılamaktır. Kurtarma yaparken, geçmiş uyarıları yoksayarak işi geçerli zamanda yeniden başlatmayı seçebilirsiniz. İş başlangıç saati semantik ilk çıkış zamanı değil, ilk giriş zamanı vardır. Giriş, belirtilen zamanda ilk çıktının tam ve doğru olduğunu garanti etmek için uygun bir süre geriye doğru olarak yeniden sarılır. Sonuç olarak kısmi toplamlar almaz ve beklenmedik şekilde uyarıları tetiklersiniz.
+Uyarı uygulamaları için en önemli şey, sonraki uyarıyı algılamasıdır. Kurtarma sırasında son uyarıları yoksayarak işi geçerli zamandan yeniden başlatmayı tercih edebilirsiniz. İş başlangıç zamanı semantiği ilk giriş saati değil, ilk çıkış zamanına göre yapılır. Giriş, belirtilen zamanda ilk çıktının tamamlandığı ve doğru olması için uygun bir süre geri gönderilir. Kısmi toplamalar almaz ve uyarılar bir sonuç olarak beklenmedik şekilde tetiklenemez.
 
-Ayrıca, geçmişte bir süre çıktı başlatmak için seçebilirsiniz. Hem Olay Hub'ları hem de IoT Hub'ın bekletme ilkeleri, geçmişten gelen işleme izin vermek için makul miktarda veri tutar. Bunun ne kadar hızlı bir şekilde geçerli saate yetişip zamanında yeni uyarılar oluşturmaya başlabildiğinizdir. Veriler zaman içinde değerini hızla kaybeder, bu nedenle geçerli zamana hızlı bir şekilde yetişmek önemlidir. Hızlı bir şekilde yetişmenin iki yolu vardır:
+Ayrıca, geçmişteki bir süre sonunda çıktıyı başlatmayı da tercih edebilirsiniz. Event Hubs ve IoT Hub bekletme ilkeleri, geçmişteki işleme izin vermek için makul miktarda veriyi tutar. Zorunluluğunu getirir, geçerli zamandan en hızlı şekilde yakalayabilmeniz ve zamanında yeni uyarılar oluşturmaya başlayabilir. Veriler zaman içinde hızlı bir şekilde kaybeder. bu nedenle, geçerli zamana hızlı bir şekilde yakalamak önemlidir. Hızlı bir şekilde hızla yakalayabilmenizi sağlamanın iki yolu vardır:
 
-- Yetişerken daha fazla kaynak (SU) sağlama.
-- Geçerli andan itibaren yeniden başlatın.
+- Yakalama sırasında daha fazla kaynak (SU) sağlayın.
+- Geçerli zamandan yeniden başlatın.
 
-Geçerliden yeniden başlatma işlemi, işleme sırasında bir boşluk bırakmanın dengelenmesi yle yapmak kolaydır. Bu şekilde yeniden başlatma senaryoları uyarmak için tamam olabilir, ancak pano senaryoları için sorunlu olabilir ve arşivleme ve veri depolama senaryoları için başlatıcı olmayan bir başlangıç.
+Geçerli zamandan yeniden başlatma işlemi, işlem sırasında zorunluluğunu getirir bir boşluk bırakarak basittir. Bu şekilde yeniden başlatma, uyarı senaryolarında sorunsuz olabilir, ancak Pano senaryolarında sorunlu olabilir ve arşivleme ve veri ambarı senaryolarında bir Starter olmayan bir yoldur.
 
-Daha fazla kaynak sağlanması işlemi hızlandırabilir, ancak işlem hızında dalgalanma olmasının etkisi karmaşıktır.
+Daha fazla kaynağın sağlanması işlemi hızlandırabilir, ancak işlem hızı dalgalanmasına sahip olmanın etkisi karmaşıktır.
 
-- İşinizin daha fazla sayıda SUs'a ölçeklenebilir olduğunu test edin. Tüm sorgular ölçeklenebilir değildir. Sorgunuzun [paralel leştirilmiş](stream-analytics-parallelization.md)olduğundan emin olmanız gerekir.
+- İşinizin daha fazla sayıda SUs ile ölçeklenebilir olduğunu test edin. Sorguların hepsi ölçeklenebilir değildir. Sorgunuzun [paralelleştirilmesine](stream-analytics-parallelization.md)sahip olduğunuzdan emin olun.
 
-- Akış yukarı Olay Hub'larında veya IoT Hub'ında, giriş çıktısını ölçeklendirmek için daha fazla ThroughPut Birimi (TUs) ekleyebileceğiniz yeterli bölüm olduğundan emin olun. Unutmayın, her Olay Hub'ı TU 2 MB/s'lik bir çıkış hızıyla maksimuma ulaşır.
+- Yukarı akış Event Hubs yeterli bölüm olduğundan emin olun veya giriş aktarım hızını ölçeklendirmek için daha fazla üretilen Iş birimi (DTU) ekleyebilmeniz IoT Hub. Her bir Event Hubs, 2 MB/sn çıkış oranıyla hızlanacağını unutmayın.
 
-- Çıktı lavabolarında (örneğin, SQL Database, Cosmos DB) yeterli kaynak sağladığınızdan emin olun, böylece çıktılardaki dalgalanmayı azaltmaz, bu da bazen sistemin kilitlenmesine neden olabilir.
+- Çıkış havuzları (örneğin, SQL veritabanı, Cosmos DB) için yeterli kaynak sağladığınızdan emin olun, bu nedenle çıkışta ani artışı azalmayın, bu da bazen sistemin kilitlenmesine neden olabilir.
 
-En önemli şey, işlem hızı değişikliğini tahmin etmek, üretime geçmeden önce bu senaryoları test etmek ve hata kurtarma süresi boyunca işlemeyi doğru şekilde ölçeklendirmeye hazır olmaktır.
+En önemli şey, işleme oranı değişikliğini tahmin etmek, üretime geçmeden önce bu senaryoları test etmek ve hata kurtarma zamanı sırasında işlemeyi doğru şekilde ölçeklendirmek için hazırlanmalıdır.
 
-Gelen olayların tüminin geciktiğine dair aşırı senaryoda, işinize geç gelen bir pencere [uyguladıysanız, tüm gecikmiş olayların düşmesi mümkündür.](stream-analytics-time-handling.md) Olayların düşmesi başlangıçta gizemli bir davranış gibi görünebilir; Ancak, Stream Analytics'in gerçek zamanlı bir işlem motoru olduğu göz önüne alındığında, gelen olayların duvar saati zamanına yakın olmasını bekler. Bu kısıtlamaları ihlal eden olayları bırakmak zorunda.
+Gelen olayların tamamen geciktirilen Extreme senaryosunda, işinize geç bir pencere uyguladıysanız [Tüm geciken olaylar bırakılır](stream-analytics-time-handling.md) . Olayların atılması, baştan önce herhangi bir gizdeğerli davranış gibi görünebilir; Ancak, Stream Analytics gerçek zamanlı bir işleme altyapısı olduğunu düşünürken, gelen olayların duvar saati zamanına yakın olmasını bekler. Bu kısıtlamaları ihlal eden olayları bırakması gerekmez.
 
-### <a name="lambda-architectures-or-backfill-process"></a>Lambda Mimariler veya Yedek doldurma işlemi
+### <a name="lambda-architectures-or-backfill-process"></a>Lambda mimarileri veya geri doldurma işlemi
 
-Neyse ki, önceki veri arşivleme deseni bu geç olayları incelikle işlemek için kullanılabilir. Fikir, arşivleme iş süreçleri gelen olaylar varış zamanında ve arşivler olaylar zaman ları ile Azure Blob veya Azure Data Lake Store doğru zaman kova içine olaylar. Bir olayın ne kadar geç geldiği önemli değil, asla bırakılmayacak. Her zaman doğru zamanda kova inecek. Kurtarma sırasında, arşivlenmiş olayları yeniden işlemek ve sonuçları tercih edilen depoya geri doldurmak mümkündür. Bu lambda desenleri nasıl uygulandığına benzer.
+Neyse ki, bu geç olayları düzgün bir şekilde işlemek için önceki veri arşivleme deseninin kullanılması de gerekebilir. Bu düşünce, arşivleme işinin gelen olayları varış zamanında işleme ve olayları Azure blob ' daki doğru zaman demetine ve olay zamanlarıyla Azure Data Lake Store arşivlenmesi. Bir olayın ne kadar geç ulaştığı, hiçbir şekilde bırakılmayacağı önemi yoktur. Her zaman doğru zaman sepete eklenecektir. Kurtarma sırasında, arşivlenmiş olayları yeniden işleyebilir ve sonuçları seçim deposuna geri doldurabilirsiniz. Bu, lambda desenlerinin uygulanma biçimine benzer.
 
-![ASA yedek doldurma](media/stream-analytics-solution-patterns/backfill.png)
+![ASA geri dolgusu](media/stream-analytics-solution-patterns/backfill.png)
 
-Geri doldurma işlemi, büyük olasılıkla Azure Akış Analizi'nden farklı bir programlama modeline sahip çevrimdışı toplu işlem sistemiyle yapılmalıdır. Bu, tüm işleme mantığını yeniden uygulamanız anlamına gelir.
+Geri doldurma işlemi, büyük olasılıkla Azure Stream Analytics farklı bir programlama modeline sahip olan çevrimdışı bir toplu işlem sistemiyle yapılmalıdır. Bu, tüm işlem mantığının yeniden uygulanması gerektiği anlamına gelir.
 
-Geri doldurma için, sabit durum işleme gereksinimlerinden daha yüksek iş verimi işlemek için çıktı lavabolarına en azından geçici olarak daha fazla kaynak sağlamak yine de önemlidir.
+Geri doldurma için, sabit durum işleme gereksinimlerinden daha yüksek aktarım hızını işlemek üzere çıkış havuzları için en az geçici olarak daha fazla kaynak sağlanması hala önemlidir.
 
-|Senaryolar  |Artık yalnızca yeniden başlatın  |Son durdurulan zamandan yeniden başlat |Arşivlenmiş etkinliklerle şimdi + geri doldurmayı yeniden başlatın|
+|Senaryolar  |Yalnızca Şimdi yeniden Başlat  |Son durdurulma zamanından yeniden Başlat |Arşivlenmiş olaylarla şimdi yeniden Başlat + geri doldur|
 |---------|---------|---------|---------|
-|**Pano Lama**   |Boşluk oluşturur    |Kısa kesinti için Tamam    |Uzun kesinti için kullanın |
-|**Uyarı**   |Kabul edilebilir |Kısa kesinti için Tamam    |Gerekli değil |
-|**Olay kaynak uygulaması** |Kabul edilebilir |Kısa kesinti için Tamam    |Uzun kesinti için kullanın |
-|**Veri ambarlama**   |Veri kaybı  |Kabul edilebilir |Gerekli değil |
-|**Çevrimdışı analitik**  |Veri kaybı  |Kabul edilebilir |Gerekli değil|
+|**Kesik taslak**   |Boşluk oluşturur    |Kısa süreli kesinti için Tamam    |Uzun süreli kullanım için kullanın |
+|**Uyarı**   |Kabul edilebilir |Kısa süreli kesinti için Tamam    |Gerekli değil |
+|**Olay kaynağını belirleme uygulaması** |Kabul edilebilir |Kısa süreli kesinti için Tamam    |Uzun süreli kullanım için kullanın |
+|**Veri depolama**   |Veri kaybı  |Kabul edilebilir |Gerekli değil |
+|**Çevrimdışı analiz**  |Veri kaybı  |Kabul edilebilir |Gerekli değil|
 
 ## <a name="putting-it-all-together"></a>Hepsini bir araya getirme
 
-Yukarıda belirtilen tüm çözüm kalıplarının karmaşık bir uçtan uca sistemde bir araya getirilemeyeceğini hayal etmek zor değildir. Birleştirilmiş sistem panolar, uyarı, olay kaynak uygulaması, veri depolama ve çevrimdışı analiz yeteneklerini içerebilir.
+Yukarıda bahsedilen tüm çözüm desenlerinin karmaşık bir uçtan uca sistemde birlikte birleştirildiğini hayal etmek zor değildir. Birleştirilmiş sistem panolar, uyarı, olay kaynağını belirleme uygulaması, veri depolama ve çevrimdışı analiz özellikleri içerebilir.
 
-Anahtar, sisteminizi birleştirilebilir desenlerhalinde tasarlamaktır, böylece her alt sistem oluşturulabilir, test edilebilir, yükseltilebilir ve bağımsız olarak kurtarılabilir.
+Bu anahtar, sisteminizi birleştirilebilir desenlerle tasarlayabiliyor, böylece her alt sistem bağımsız olarak oluşturulabilir, test edilebilir, yükseltilir ve kurtarılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Akış Analizi'ni kullanarak çeşitli çözüm desenleri gördünüz. Bundan sonra derinlere inerek ilk Stream Analytics işinizi oluşturabilirsiniz:
+Artık Azure Stream Analytics kullanarak çeşitli çözüm desenleri gördünüz. Bundan sonra derinlere inerek ilk Stream Analytics işinizi oluşturabilirsiniz:
 
 * [Azure portalını kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-portal.md).
 * [Azure PowerShell kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-powershell.md).
-* [Visual Studio'u kullanarak Bir Stream Analytics işi oluşturun.](stream-analytics-quick-create-vs.md)
+* [Visual Studio 'yu kullanarak bir Stream Analytics Işi oluşturun](stream-analytics-quick-create-vs.md).

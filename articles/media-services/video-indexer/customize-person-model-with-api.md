@@ -1,7 +1,7 @@
 ---
-title: Video Dizinleyici API ile Kişi modelini özelleştirme
+title: Video Indexer API ile kişi modelini özelleştirme
 titleSuffix: Azure Media Services
-description: Video Dizinleyici API ile Bir Kişi modelini nasıl özelleştireceğimiz öğrenin.
+description: Video Indexer API ile bir kişi modelini özelleştirmeyi öğrenin.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,33 +11,33 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: fa41fca7f8ad96cf507aa6f04059b1254c8c3961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80127900"
 ---
-# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Video Dizinleyici API ile Kişi modelini özelleştirme
+# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Video Indexer API ile bir kişi modelini özelleştirme
 
-Video Indexer, video içeriği için yüz algılamayı ve ünlülerin tanınmasını destekler. Ünlü tanıma özelliği, IMDB, Wikipedia ve en çok LinkedIn etkileyenler gibi yaygın olarak istenen veri kaynağına dayalı yaklaşık bir milyon yüzü kapsar. Ünlü tanıma özelliği tarafından tanınmayan yüzler algılanır, ancak adsız bırakılır. Videonuzu Video Indexer'a yükledikten ve sonuçları geri aldıktan sonra, geri dönüp tanınmayan yüzleri adlandırabilirsiniz. Bir yüzü bir adla etiketledikten sonra, yüz ve ad hesabınızın Kişi modeline eklenir. Video Indexer daha sonra gelecekteki videolarınızda ve geçmiş videolarınızda bu yüzü tanıyacaktır.
+Video Indexer, video içeriği için yüz algılamayı ve ünlüy tanımayı destekler. Ünlüçilerin tanınma özelliği, ıDB, Viveze ve en popüler LinkedIn etkileyen, sık istenen veri kaynağına göre 1.000.000 yüz içerir. Ünlüme tanıma özelliği tarafından tanınmayan yüzler algılandı ancak sola adlandırılmamış. Videonuzu Video Indexer karşıya yükledikten ve sonuçları geri aldıktan sonra, geri dönüp tanınmamış yüzlere ad verebilirsiniz. Bir yüzü adı ile etiketledikten sonra, yüz ve ad hesabınızın kişi modeline eklenir. Video Indexer gelecekteki videolarınızdaki ve geçmiş videolarınızdaki bu yüzü tanıyacak.
 
-Video Dizinleyici API'sini, bu konuda açıklandığı gibi, bir videoda algılanan yüzleri yeniden yapmak için kullanabilirsiniz. Video Indexer web sitesini kullanarak Kişiyi [Özelleştir'de](customize-person-model-with-api.md)açıklandığı gibi Video Indexer web sitesini de kullanabilirsiniz.
+Bu konuda açıklandığı gibi, videoda algılanan yüzeyleri düzenlemek için Video Indexer API 'sini kullanabilirsiniz. [Video Indexer Web sitesini kullanarak kişi modelini özelleştirme](customize-person-model-with-api.md)bölümünde açıklandığı gibi video Indexer Web sitesini de kullanabilirsiniz.
 
-## <a name="managing-multiple-person-models"></a>Birden çok Kişi modelini yönetme
+## <a name="managing-multiple-person-models"></a>Birden çok kişi modelini yönetme
 
-Video Indexer hesap başına birden çok Kişi modelini destekler. Bu özellik şu anda yalnızca Video Dizinleyici API'leri aracılığıyla kullanılabilir.
+Video Indexer hesap başına birden çok kişi modelini destekler. Bu özellik şu anda yalnızca Video Indexer API 'Leri üzerinden kullanılabilir.
 
-Hesabınız farklı kullanım durumu senaryolarına hitap ediyorsa, hesap başına birden çok Kişi modeli oluşturmak isteyebilirsiniz. Örneğin, içeriğiniz sporla ilgiliyse, her spor için ayrı bir Kişi modeli (futbol, basketbol, futbol vb.) oluşturabilirsiniz.
+Hesabınız farklı kullanım örneği senaryolarına karşı, hesap başına birden fazla kişi modeli oluşturmak isteyebilirsiniz. Örneğin, içeriğiniz spor ile ilgiliyse, her spor (futbol, basketbol, futbol, vb.) için ayrı bir kişi modeli oluşturabilirsiniz.
 
-Bir model oluşturulduktan sonra, bir videoyu yüklerken/dizine eklerken veya yeniden dizine eklerken belirli bir Kişi modelinin model kimliğini sağlayarak onu kullanabilirsiniz. Video için yeni bir yüz eğitimi, videonun ilişkili olduğu özel modeli güncelleştirir.
+Bir model oluşturulduktan sonra, bir videoyu karşıya yüklerken/dizinleme yaparken veya yeniden dizinlerken belirli bir kişi modelinin model KIMLIĞINI sağlayarak onu kullanabilirsiniz. Video için yeni bir yüz eğitimi, videonun ilişkilendirildiği özel modeli günceller.
 
-Her hesabın 50 Kişi modeli sınırı vardır. Birden çok Kişi modeli desteğine ihtiyacınız yoksa, yükleme/dizin oluşturma veya yeniden dizine ekin oluşturma yaparken videonuza Bir Kişi model kimliği atamayın. Bu durumda, Video Dizinleyici hesabınızda varsayılan özel Kişi modelini kullanır.
+Her hesabın 50 kişi modeli sınırlaması vardır. Birden çok kişi modeli desteği gerekmiyorsa, karşıya yükleme/dizinleme veya yeniden dizin oluşturma sırasında videonuza bir kişi modeli KIMLIĞI atamayın. Bu durumda, Video Indexer hesabınızda varsayılan özel kişi modelini kullanır.
 
-## <a name="create-a-new-person-model"></a>Yeni bir Kişi modeli oluşturma
+## <a name="create-a-new-person-model"></a>Yeni bir kişi modeli oluşturun
 
-Belirtilen hesapta yeni bir Kişi modeli oluşturmak [için, bir kişi modeli](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) API oluşturun kullanın.
+Belirtilen hesapta yeni bir kişi modeli oluşturmak için [kişi modeli oluşturma](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) API 'sini kullanın.
 
-Yanıt, aşağıdaki örnekbiçimiiz aşağıdaki şekilde n için oluşturduğunuz Kişi modelinin adını ve oluşturulan model kimliğini sağlar.
+Yanıt, aşağıdaki örnek biçimini izleyerek yeni oluşturduğunuz kişi modelinin adı ve oluşturulan model KIMLIĞINI sağlar.
 
 ```json
 {
@@ -46,21 +46,21 @@ Yanıt, aşağıdaki örnekbiçimiiz aşağıdaki şekilde n için oluşturduğu
 }
 ```
 
-Daha sonra bir [videoyu dizin yüklemek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) veya bir videoyu yeniden [dizine eklerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) **personModelId** parametresinin **kimlik** değerini kullanırsınız.
+Daha sonra, bir videoyu dizine veya [yeniden dizinlemeyi](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)bir videoyu [karşıya yüklerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) **personmodelıd** parametresinin **kimlik** değerini kullanırsınız.
 
 ## <a name="delete-a-person-model"></a>Kişi modelini silme
 
-Belirtilen hesaptan özel bir Kişi modelini silmek [için, bir kişi modeli API'sini silme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) yi kullanın.
+Belirtilen hesaptan özel bir kişi modelini silmek için [kişi modeli silme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) API 'sini kullanın.
 
-Kişi modeli başarıyla silindikten sonra, silinen modeli kullanan geçerli videolarınızın dizini siz bunları yeniden dizine ekleyene kadar değişmeden kalır. Yeniden dizine alındıktan sonra, silinen modelde adı geçen yüzler, bu model kullanılarak dizine eklenmiş olan geçerli videolarınızda Video Indexer tarafından tanınmaz, ancak yüzler yine de algılanır. Silinen modeli kullanarak dizine eklenmiş geçerli videolarınız artık hesabınızın varsayılan Kişi modelini kullanır. Silinen modelden yüzler de hesabınızın varsayılan modelinde adlandırılmışsa, bu yüzler videolarda tanınmaya devam eder.
+Kişi modeli başarıyla silindikten sonra, silinen modeli kullanan geçerli videolarınızın dizini yeniden dizinleyene kadar değişmeden kalır. Yeniden dizin oluşturma sırasında, silinen modelde adı geçen yüzler, geçerli videolarınızdaki Video Indexer tarafından tanınmayacak, ancak yüz algılanacaktır. Silinen model kullanılarak dizini oluşturulmuş geçerli videolarınız artık hesabınızın varsayılan kişi modelini kullanacaktır. Silinen modeldeki yüzler aynı zamanda hesabınızın varsayılan modelinde da adlandırılmışsa, bu yüzlerin videolarda tanınabilmesi devam edecektir.
 
-Kişi modeli başarıyla silindiğinde iade edilen içerik yoktur.
+Kişi modeli başarıyla silindiğinde döndürülen içerik yok.
 
-## <a name="get-all-person-models"></a>Tüm Kişi modellerini alın
+## <a name="get-all-person-models"></a>Tüm kişi modellerini al
 
-Belirtilen hesaptaki tüm Kişi modellerini almak [için, bir kişi modeli API'yi alın'ı](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) kullanın.
+Belirtilen hesaptaki tüm kişi modellerini almak için [kişi modeli al](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) API 'sini kullanın.
 
-Yanıt, hesabınızdaki tüm Kişi modellerinin (belirtilen hesaptaki varsayılan Kişi modeli dahil) ve aşağıdaki örneğin biçimini izleyen ad ve kimliklerinin her birinin bir listesini sağlar.
+Yanıt, hesabınızdaki tüm kişi modellerinin (belirtilen hesaptaki varsayılan kişi modeli dahil) ve adlarının ve kimliklerinin her birinin aşağıdaki örnekte yer aldığı bir listesini sağlar.
 
 ```json
 [
@@ -75,20 +75,20 @@ Yanıt, hesabınızdaki tüm Kişi modellerinin (belirtilen hesaptaki varsayıla
 ]
 ```
 
-Bir [videoyu dizin](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) yüklemek veya yeniden [dizine](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)eklerken `id` `personModelId` parametre için Kişi modelinin değerini kullanarak bir video için hangi modeli kullanmak istediğinizi seçebilirsiniz.
+Bir videoyu dizine veya [yeniden dizinlemeyi oluşturmaya](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) [yönelik bir video yüklerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) `personModelId` parametre için kişi modelinin `id` değerini kullanarak, bir video için kullanmak istediğiniz modeli seçebilirsiniz.
 
-## <a name="update-a-face"></a>Bir yüzü güncelleştirin
+## <a name="update-a-face"></a>Yüz güncelleştirme
 
-Bu komut, videonun kimliğini ve yüz kimliğini kullanarak videonuzdaki bir yüzü bir adla güncellemenize olanak tanır. Bu eylem daha sonra videonun yüklendikten/dizinlendikten veya yeniden dizine yükledikten sonra ilişkili olduğu Kişi modelini güncelleştirir. Hiçbir Kişi modeli atanmamışsa, hesabın varsayılan Kişi modelini güncelleştirir.
+Bu komut, videonun KIMLIĞINI ve yüzün kimliğini kullanarak Videonuzdaki bir yüzü bir ad ile güncelleştirmenize olanak tanır. Bu eylem daha sonra videonun karşıya yükleme/dizinleme veya yeniden dizin oluşturma sırasında ilişkilendirildiği kişi modelini güncelleştirir. Hiçbir kişi modeli atanmamışsa, hesabın varsayılan kişi modelini güncelleştirir.
 
-Sistem daha sonra aynı Kişi modelini paylaşan diğer geçerli videolarınızda aynı yüzün oluşumlarını tanır. Bu bir toplu işlem olduğundan, diğer geçerli videolarınızdaki yüzün tanınması nın etkili olması biraz zaman alabilir.
+Daha sonra sistem, aynı yüzün aynı yüzü aynı kişi modelini paylaşan diğer geçerli videolarınızdaki tekrarlarını tanır. Diğer geçerli videolarınızdaki yüzün tanınabilmesi, bu bir toplu işlem olduğu için biraz zaman alabilir.
 
-Video Dizinleyici'nin yeni bir adla ünlü olarak tanıdığı bir yüzü güncelleştirebilirsiniz. Verdiğiniz yeni ad, yerleşik ünlü lerin tanınmasından önce gelecektir.
+Ünlüklik olarak tanınan Video Indexer bir yüzü yeni bir adla güncelleştirebilirsiniz. Verdiğiniz yeni ad, yerleşik ünlüğünün tanınmasına göre öncelikli olacaktır.
 
-Yüzü güncellemek [için, güncelleştirmeyi bir video yüz](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) API'si kullanın.
+Yüzü güncelleştirmek için, [video yüz güncelleştirme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) API 'sini kullanın.
 
-Adlar Kişi modelleri için benzersizdir, bu nedenle aynı Kişi `name` modelinde iki farklı yüze aynı parametre değeri verirseniz, Video Dizinleyici yüzleri aynı kişi olarak görüntüler ve videonuzu yeniden dizine diğinizde biraraya gelir.
+Adlar kişi modelleri için benzersizdir, bu nedenle aynı kişi modelinde aynı `name` parametre değerini iki farklı yüz verirseniz, video Indexer yüzeyleri aynı kişi olarak görüntüler ve videonuzu yeniden atadıktan sonra bu kullanıcılara dönüştürüledirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Video Indexer web sitesini kullanarak Kişi modelini özelleştirin](customize-person-model-with-website.md)
+[Video Indexer Web sitesini kullanarak kişi modelini özelleştirme](customize-person-model-with-website.md)

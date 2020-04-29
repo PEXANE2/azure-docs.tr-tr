@@ -4,10 +4,10 @@ description: Yeni bir izleme anahtarı ile yeni bir uygulamayı izlemeye başlam
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671452"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Bir SharePoint sitesini Application Insights ile izleme
@@ -39,7 +39,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-Komut dosyasını izlemek &lt;istediğiniz&gt; her sayfanın /head etiketinden hemen önce ekleyin. Web sitenizde bir ana sayfa varsa, komut dosyasını oraya koyabilirsiniz. Örneğin, bir ASP.NET MVC projesinde View\Shared\_Layout.cshtml’ye koyarsınız
+Komut dosyasını, izlemek istediğiniz her &lt;sayfanın/head&gt; etiketinden hemen önce ekleyin. Web sitenizde bir ana sayfa varsa, betiği buraya yerleştirebilirsiniz. Örneğin, bir ASP.NET MVC projesinde View\Shared\_Layout.cshtml’ye koyarsınız
 
 Betikte, telemetriyi Application Insights kaynağınıza yönlendiren izleme anahtarı bulunur.
 

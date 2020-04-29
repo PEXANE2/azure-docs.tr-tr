@@ -1,6 +1,6 @@
 ---
-title: Intelligent Insights performans tanılama günlüğü
-description: Intelligent Insights, Azure SQL Veritabanı performans sorunlarının tanılama günlüğünü sağlar
+title: Akıllı İçgörüler performans tanılama günlüğü
+description: Akıllı İçgörüler Azure SQL veritabanı performans sorunlarını tanılama günlüğü sağlar
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,21 +12,21 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209455"
 ---
-# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Veritabanı performans tanılama günlüğünü kullanma
+# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Azure SQL veritabanı performans tanılama günlüğünü Akıllı İçgörüler kullanın
 
-Bu sayfa, [Intelligent Insights](sql-database-intelligent-insights.md)tarafından oluşturulan Azure SQL Veritabanı performans tanılama günlüğünün nasıl kullanılacağı, biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler hakkında bilgi sağlar. Bu tanılama günlüğünü [Azure Monitor günlüklerine,](../azure-monitor/insights/azure-sql.md) [Azure Etkinlik Hub'larına,](../azure-monitor/platform/resource-logs-stream-event-hubs.md) [Azure Depolama'ya](sql-database-metrics-diag-logging.md#stream-into-azure-storage)veya özel DevOps uyarı ve raporlama yetenekleri için üçüncü taraf çözümüne gönderebilirsiniz.
+Bu sayfada, [akıllı içgörüler](sql-database-intelligent-insights.md), biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler tarafından oluşturulan Azure SQL veritabanı performans tanılama günlüğünü kullanma hakkında bilgi verilmektedir. Bu tanılama günlüğünü, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-into-azure-storage)'ya veya üçüncü taraf bir çözüme gönderebilirsiniz.
 
-## <a name="log-header"></a>Günlük üstbilgi
+## <a name="log-header"></a>Günlük üst bilgisi
 
-Tanılama günlüğü, Intelligent Insights bulgularını elde etmek için JSON standart biçimini kullanır. Intelligent Insights günlüğüne erişmek için tam kategori özelliği sabit değer "SQLInsights"tır.
+Tanılama günlüğü Akıllı İçgörüler bulguları çıkarmak için JSON standart biçimini kullanır. Akıllı İçgörüler günlüğüne erişmek için tam kategori özelliği, "Sqlinsıghts" sabit değeridir.
 
-Günlüğün üstbilgisi yaygındır ve bir girişin ne zaman oluşturulduğunu gösteren zaman damgası (TimeGenerated) oluşur. Ayrıca, girişin ilgili olduğu belirli SQL Veritabanı'na atıfta bulunan bir kaynak kimliği (ResourceId) içerir. Kategori (Kategori), düzey (Düzey) ve işlem adı (OperationName) değerleri değişmeyen sabit özelliklerdir. Günlük girişinin bilgilendirsel olduğunu ve Intelligent Insights 'tan (SQLInsights) geldiğini belirtirler.
+Günlüğün üst bilgisi ortaktır ve bir girdinin oluşturulduğu zamanı gösteren zaman damgasından (TimeGenerated) oluşur. Ayrıca, girişin ilişkili olduğu belirli SQL veritabanına başvuran bir kaynak KIMLIĞI (RESOURCEID) içerir. Kategori (kategori), düzey (düzey) ve işlem adı (OperationName), değerleri değişmeyen sabit özelliklerdir. Günlük girişinin bilgilendirici olduğunu ve Akıllı İçgörüler (Sqlinsıghts) geldiğini gösterir.
 
 ```json
 "TimeGenerated" : "2017-9-25 11:00:00", // time stamp of the log entry
@@ -36,13 +36,13 @@ Günlüğün üstbilgisi yaygındır ve bir girişin ne zaman oluşturulduğunu 
 "OperationName" : "Insight", // fixed property
 ```
 
-## <a name="issue-id-and-database-affected"></a>Sorun kimliği ve veritabanı etkilenen
+## <a name="issue-id-and-database-affected"></a>Sorun KIMLIĞI ve veritabanı etkilendi
 
-Sorun tanımlama özelliği (issueId_d) çözülene kadar performans sorunlarını benzersiz bir şekilde izlemenin bir yolunu sağlar. Aynı sorunun günlük raporlama durumundaki birden çok olay kaydı aynı kuruluş kimliğini paylaşır.
+Sorun tanımlama özelliği (issueId_d), çözümlenene kadar performans sorunlarını benzersiz bir şekilde izlemenin bir yolunu sağlar. Aynı sorunun günlük raporlama durumundaki birden çok olay kaydı aynı sorun KIMLIĞINI paylaşır.
 
-Tanılama kimliğiyle birlikte, tanılama günlüğü, tanılama günlüğünde bildirilen bir sorunla ilgili belirli olayın başlangıç (intervalStartTime_t) ve bitiş (intervalEndTme_t) zaman damgalarını bildirir.
+Tanılama günlüğü, sorun KIMLIĞIYLE birlikte, tanılama günlüğünde bildirilen bir sorunla ilgili belirli bir olayın başlangıç (intervalStartTime_t) ve bitiş (intervalEndTme_t) zaman damgalarını raporlar.
 
-Elastik havuz (elasticPoolName_s) özelliği, bir sorunla veritabanının hangi elastik havuza ait olduğunu gösterir. Veritabanı elastik bir havuzun parçası değilse, bu özelliğin değeri yoktur. Bir sorunun algılandığı veritabanı veritabanı adı (databaseName_s) özelliğinde açıklanır.
+Elastik havuz (elasticPoolName_s) özelliği, hangi elastik havuzun bir sorun olduğunu gösterir. Veritabanı elastik havuzun bir parçası değilse, bu özelliğin değeri yoktur. Bir sorunun algılandığı veritabanı, veritabanı adı (databaseName_s) özelliğinde açıklanmamıştır.
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
@@ -55,9 +55,9 @@ Elastik havuz (elasticPoolName_s) özelliği, bir sorunla veritabanının hangi 
 
 ## <a name="detected-issues"></a>Algılanan sorunlar
 
-Intelligent Insights performans günlüğünün bir sonraki bölümünde yerleşik yapay zeka ile algılanan performans sorunları yer almaktadır. Algılamalar JSON tanılama günlüğündeki özelliklerde açıklanır. Bu algılamalar, bir sorunun kategorisi, sorunun etkisi, etkilenen sorgular ve ölçümlerden oluşur. Algılama özellikleri, algılanan birden çok performans sorunu içerebilir.
+Akıllı İçgörüler performans günlüğünün sonraki bölümü, yerleşik yapay zeka aracılığıyla algılanan performans sorunlarını içerir. Algılamalar, JSON tanılama günlüğü içindeki özelliklerde duyurulmuştur. Bu algılamalar bir sorun kategorisinden, sorunun etkilerine, etkilenen sorgulara ve ölçülerden oluşur. Algılamalar özellikleri, algılanan birden fazla performans sorunu içerebilir.
 
-Algılanan performans sorunları aşağıdaki algılamalar özellik yapısı ile bildirilir:
+Algılanan performans sorunları aşağıdaki algılama özelliği yapısıyla raporlanır:
 
 ```json
 "detections_s" : [{
@@ -67,41 +67,41 @@ Algılanan performans sorunları aşağıdaki algılamalar özellik yapısı ile
 }]
 ```
 
-Algılanabilir performans desenleri ve tanılama günlüğüne çıktılanan ayrıntılar aşağıdaki tabloda sağlanır.
+Algılanabilir performans desenleri ve tanılama günlüğüne Çıktılanan Ayrıntılar aşağıdaki tabloda verilmiştir.
 
 ### <a name="detection-category"></a>Algılama kategorisi
 
-Kategori (kategori) özelliği, algılanabilir performans desenleri kategorisini açıklar. Algılanabilir performans desenleri olası tüm kategoriler için aşağıdaki tabloya bakın. Daha fazla bilgi için [Intelligent Insights ile sorun giderme veritabanı performansı sorunlarına](sql-database-intelligent-insights-troubleshoot-performance.md)bakın.
+Category (kategori) özelliği, algılanabilir performans desenlerinin kategorisini açıklar. Algılanabilir performans desenlerinin tüm olası kategorileri için aşağıdaki tabloya bakın. Daha fazla bilgi için bkz. [akıllı içgörüler veritabanı performans sorunlarını giderme](sql-database-intelligent-insights-troubleshoot-performance.md).
 
-Algılanan performans sorununa bağlı olarak, tanılama günlüğü dosyasında çıktı alınan ayrıntılar buna göre farklılık gösterir.
+Algılanan performans sorununa bağlı olarak, tanılama günlük dosyasında oluşan ayrıntılar farklı şekilde farklılık gösterir.
 
-| Algılanabilir performans desenleri | Çıktılar |
+| Algılanabilir performans desenleri | Ayrıntılar çıktıladı |
 | :------------------- | ------------------- |
-| Kaynak sınırlarına ulaşma | <li>Etkilenen kaynaklar</li><li>Sorgu ları</li><li>Kaynak tüketim yüzdesi</li> |
-| İş Yükü Artışı | <li>Yürütmesi artan sorgu sayısı</li><li>İş yükü artışına en büyük katkıyı içeren sorguların sorgularını sorgula</li> |
-| Bellek Baskısı | <li>Bellek katibi</li> |
-| Kilitleme | <li>Etkilenen sorgu sorgu ları</li><li>Sorgu işlerini engelleme</li> |
-| Artan MAXDOP | <li>Sorgu ları</li><li>CXP bekleme süreleri</li><li>Bekleme süreleri</li> |
-| Pagelatch Çekişme | <li>Çekişmeye neden olan sorguların sorgu larını sorgula</li> |
-| Eksik Dizini | <li>Sorgu ları</li> |
-| Yeni Sorgu | <li>Yeni sorguların sorgu karma</li> |
-| Olağandışı Bekleme İstatistikleri | <li>Olağandışı bekleme türleri</li><li>Sorgu ları</li><li>Bekleme sürelerini sorgula</li> |
-| TempDB Çekişme | <li>Çekişmeye neden olan sorguların sorgu larını sorgula</li><li>Genel veritabanı pagelatch çekişme bekleme süresi sorgula atıf [%]</li> |
-| Elastik havuz DTU Sıkıntısı | <li>Elastik havuz</li><li>En iyi DTU tüketen veritabanı</li><li>Üst tüketici tarafından kullanılan havuz DTU yüzdesi</li> |
-| Regresyon Planı | <li>Sorgu ları</li><li>İyi planlı t.c.</li><li>Kötü plan lı t'ler</li> |
-| Veritabanı Kapsamı Değer Değişikliği | <li>Varsayılan değerlerle karşılaştırıldığında veritabanı kapsamı nagöre yapılandırma değişiklikleri</li> |
-| Yavaş İstemci | <li>Sorgu ları</li><li>Bekleme süreleri</li> |
-| Fiyatlandırma Tier Downgrade | <li>Metin bildirimi</li> |
+| Kaynak sınırlarına ulaşma | <li>Etkilenen kaynaklar</li><li>Sorgu karmaları</li><li>Kaynak tüketim yüzdesi</li> |
+| İş yükü artışı | <li>Yürütmesi arttığı sorgu sayısı</li><li>İş yükü artışına en büyük katkısıyla sorguların sorgu karmaları</li> |
+| Bellek Baskısı | <li>Bellek memuru</li> |
+| Kilitleme | <li>Etkilenen sorgu karmaları</li><li>Sorgu karmalarını engelleme</li> |
+| Artan MAXDOP | <li>Sorgu karmaları</li><li>CXP bekleme süreleri</li><li>Bekleme süreleri</li> |
+| Pagemandal çekişmesi | <li>Çekişmeye neden olan sorguların karmalarını sorgulama</li> |
+| Eksik dizin | <li>Sorgu karmaları</li> |
+| Yeni Sorgu | <li>Yeni sorguların sorgu karması</li> |
+| Olağan dışı bekleme Istatistiği | <li>Olağan dışı bekleme türleri</li><li>Sorgu karmaları</li><li>Sorgu bekleme süreleri</li> |
+| TempDB çekişmesi | <li>Çekişmeye neden olan sorguların karmalarını sorgulama</li><li>Genel veritabanı pagemanatısyonu bekleme süresi [%] ile sorgulama</li> |
+| Elastik havuz DTU eksik | <li>Elastik havuz</li><li>En yüksek DTU kullanan veritabanı</li><li>Üst tüketici tarafından kullanılan havuz DTU yüzdesi</li> |
+| Gerileme planı | <li>Sorgu karmaları</li><li>İyi plan kimlikleri</li><li>Hatalı plan kimlikleri</li> |
+| Veritabanı kapsamlı yapılandırma değeri değişikliği | <li>Veritabanı kapsamlı yapılandırma değişiklikleri varsayılan değerlerle karşılaştırılır</li> |
+| Yavaş Istemci | <li>Sorgu karmaları</li><li>Bekleme süreleri</li> |
+| Fiyatlandırma Katmanı düşürme | <li>Metin bildirimi</li> |
 
 ### <a name="impact"></a>Etki
 
-Etki (etki) özelliği, algılanan bir davranışın veritabanının sahip olduğu soruna ne kadar katkıda bulunduğunu açıklar. Etkiler 1 ile 3 arasında değişirken, en yüksek katkı 3, 2 orta, en düşük katkı ise 1. Etki değeri, özel gereksinimlerinize bağlı olarak özel uyarı otomasyonu için bir giriş olarak kullanılabilir. Etkilenen özellik sorguları (QueryHashes) belirli bir algılama etkilenen sorgu işlenme bir listesini sağlar.
+Etki (etki) özelliği, algılanan bir davranışın bir veritabanının sahip olduğu soruna ne kadar katkıda bulunduğunu açıklar. 1 ile 3 arasında bir değer, en yüksek katkı olarak 3, orta ve en düşük katkı olarak 1 ' i etkiler. Özel gereksinimlerinize bağlı olarak, etki değeri özel uyarı otomasyonu için giriş olarak kullanılabilir. Etkilenen Özellik sorguları (Querykarmaları), belirli bir algılamanın etkilediği sorgu karmalarının bir listesini sağlar.
 
 ### <a name="impacted-queries"></a>Etkilenen sorgular
 
-Intelligent Insights günlüğünün bir sonraki bölümü, algılanan performans sorunlarından etkilenen belirli sorgular hakkında bilgi sağlar. Bu bilgiler, impact_s özelliğine katıştırılmış bir nesne dizisi olarak açıklanır. Etki özelliği varlıklar ve ölçümlerden oluşur. Varlıklar belirli bir sorguya başvurur (Tür: Sorgu). Benzersiz sorgu karma değeri (Değer) özelliği altında açıklanır. Ayrıca, açıklanan sorguların her biri, algılanan bir performans sorununu gösteren bir metrik ve bir değer tarafından izlenir.
+Akıllı İçgörüler günlüğünün sonraki bölümü, algılanan performans sorunlarından etkilenen belirli sorgular hakkında bilgiler sağlar. Bu bilgiler, impact_s özelliğine katıştırılmış bir nesne dizisi olarak duyurulmuştur. Impact özelliği varlıklardan ve ölçülerden oluşur. Varlıklar belirli bir sorguya başvurur (tür: sorgu). Benzersiz sorgu karması değer (değer) özelliği altında duyurulmuştur. Ayrıca, duyurulan her bir sorgu, algılanan bir performans sorununu gösteren bir ölçüm ve bir değer izler.
 
-Aşağıdaki günlük örneğinde, karma 0x9102EXZ4 ile sorgu yürütme (Metrik: DurationIncreaseSeconds) artan bir süre olduğu tespit edildi. 110 saniyenin değeri, bu özel sorgunun yürütülmesinin 110 saniye daha uzun sürdüğünü gösterir. Birden çok sorgu algılanadığından, bu belirli günlük bölümü birden çok sorgu girişi içerebilir.
+Aşağıdaki günlük örneğinde, 0x9102EXZ4 karmasından oluşan sorgu, daha fazla yürütme süresine sahip olacak şekilde algılandı (ölçüm: DurationIncreaseSeconds). 110 saniyelik değeri, bu belirli sorgunun yürütülmesi için 110 saniye daha uzun sürdüğünü gösterir. Birden çok sorgu algılanabileceğinden, bu günlük bölümünde birden çok sorgu girişi bulunabilir.
 
 ```json
 "impact" : [{
@@ -115,18 +115,18 @@ Aşağıdaki günlük örneğinde, karma 0x9102EXZ4 ile sorgu yürütme (Metrik:
 
 ### <a name="metrics"></a>Ölçümler
 
-Bildirilen her metrik için ölçüm birimi, saniye, sayı ve yüzde olası değerleri ile metrik (metrik) özelliği altında sağlanır. Ölçülen bir ölçümün değeri değer (değer) özelliğinde bildirilir.
+Bildirilen her ölçüm için ölçü birimi, ölçüm (ölçüm) özelliği altında, olası saniye, sayı ve yüzde değerleri ile sağlanır. Ölçülen ölçüm değeri değer (değer) özelliğinde raporlanır.
 
-DurationIncreaseSeconds özelliği saniye cinsinden ölçüm birimini sağlar. CriticalErrorCount ölçüm birimi, hata sayısını temsil eden bir sayıdır.
+DurationIncreaseSeconds özelliği, ölçü birimini saniye cinsinden sağlar. CriticalHandle değeri bir hata sayısını temsil eden bir sayıdır.
 
 ```json
 "metric" : "DurationIncreaseSeconds", // issue metric type – possible values: DurationIncreaseSeconds, CriticalErrorCount, WaitingSeconds
 "value" : 102 // value of the measured metric (in this case seconds)
 ```
 
-## <a name="root-cause-analysis-and-improvement-recommendations"></a>Kök neden analizi ve iyileştirme önerileri
+## <a name="root-cause-analysis-and-improvement-recommendations"></a>Kök neden analizi ve geliştirme önerileri
 
-Intelligent Insights performans günlüğünün son bölümü, tanımlanan performans bozulması sorununun otomatik kök neden çözümlemesi ile ilgilidir. Bu bilgiler, kök neden analizi (rootCauseAnalysis_s) özelliğinde insan dostu bir şekilde görünür. İyileştirme önerileri mümkünse günlüğe dahil edilir.
+Akıllı İçgörüler performans günlüğünün son kısmı, belirlenen performans düşüşü sorununa yönelik otomatik kök neden analizine aittir. Bu bilgiler, kök neden analizi (rootCauseAnalysis_s) özelliğinde insan kullanımı kolay bir şekilde görünür. Geliştirme önerileri, mümkün olduğunda günlüğe dahildir.
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format
@@ -134,11 +134,11 @@ Intelligent Insights performans günlüğünün son bölümü, tanımlanan perfo
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Azure [Monitor günlükleriyle]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) Akıllı Öngörüler performans günlüğünü veya özel DevOps uyarı ve raporlama özellikleri için bir üçüncü taraf çözümü kullanabilirsiniz.
+Özel DevOps uyarı ve raporlama özellikleri için [Azure izleyici günlükleri]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) veya bir üçüncü taraf çözümü ile akıllı içgörüler performans günlüğünü kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Intelligent [Insights](sql-database-intelligent-insights.md) kavramları hakkında bilgi edinin.
-- [Intelligent Insights ile Azure SQL Veritabanı performans sorunlarını](sql-database-intelligent-insights-troubleshoot-performance.md)nasıl gidereceklerini öğrenin.
-- [Azure SQL Analytics'i kullanarak Azure SQL Veritabanı'nı nasıl izleyeceğinizi öğrenin.](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)
-- Azure kaynaklarınızdan günlük verilerini nasıl [toplayıp tükettiğinizi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)öğrenin.
+- [Akıllı içgörüler](sql-database-intelligent-insights.md) kavramları hakkında bilgi edinin.
+- [Akıllı içgörüler Ile Azure SQL veritabanı performans sorunlarını giderme](sql-database-intelligent-insights-troubleshoot-performance.md)hakkında bilgi edinin.
+- [Azure SQL Analytics kullanarak Azure SQL veritabanı 'nı izlemeyi](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)öğrenin.
+- [Azure kaynaklarınızdan günlük verilerini nasıl toplayacağınızı ve](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)kullanacağınızı öğrenin.

@@ -1,6 +1,6 @@
 ---
-title: Büyük Azure Sanal Makine Ölçek Setleri ile çalışma
-description: Uygulamanızda bunları kullanmak için büyük Azure sanal makine ölçek kümeleri hakkında bilmeniz gerekenler.
+title: Büyük Azure sanal makine ölçek kümeleriyle çalışma
+description: Uygulamanızda kullanabilmeniz için büyük Azure sanal makine ölçek kümeleri hakkında bilmeniz gerekenler.
 author: cynthn
 ms.author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79531048"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Büyük sanal makine ölçek kümeleri ile çalışma
@@ -35,7 +35,7 @@ Uygulamanızın büyük ölçek kümelerini etkili bir şekilde kullanıp kullan
 - Birden fazla yerleştirme grubundan oluşan ölçek kümeleriyle Katman-4 yük dengelemesi için [Azure Load Balancer Standart SKU'su](../load-balancer/load-balancer-standard-overview.md) gerekir. Load Balancer Standart SKU'su, birden çok ölçek kümesi arasında yük dengeleme özelliği gibi ek avantajlar sağlar. Standart SKU ayrıca, ölçek kümesinin kendisiyle ilişkilendirilmiş bir Ağ Güvenlik Grubu olmasını da gerektirir; aksi takdirde NAT havuzları düzgün çalışmaz. Azure Load Balancer Temel SKU'sunu kullanmanız gerekirse, ölçek kümesinin tek bir yerleştirme grubu kullanacak şekilde (varsayılan ayar) yapılandırıldığından emin olun.
 - Azure Application Gateway ile 7. katman yük dengeleme tüm ölçek kümeleri için desteklenir.
 - Ölçek kümesi tek bir alt ağ ile tanımlanır; alt ağınızın gereken tüm VM’ler için yeterince geniş bir adres alanına sahip olduğundan emin olun. Varsayılan olarak, dağıtım güvenilirliğini ve performansını artırmak için ölçek kümesi fazla sağlama yapar (dağıtım sırasında veya ölçeklendirme sırasında fazladan VM oluşturur, bunlar için ücret alınmaz). Ölçeklendirmeyi planladığınız VM sayısından %20 daha fazla adres alanı ayırın.
-- Hata etki alanları ve yükseltme etki alanları yalnızca bir yerleştirme grubu içinde tutarlıdır. VM’ler ayrı bir fiziksel donanım üzerinde dağıtıldığı için bu mimari bir ölçek kümesinin genel kullanılabilirliğini değiştirmez, ancak farklı bir donanım üzerinde iki VM’yi garanti etmeniz gerekiyorsa, bunların aynı yerleştirme grubundaki farklı hata etki alanlarında olduğundan emin olmanız gerektiği anlamına gelir. Lütfen bu bağlantıya bakın [Kullanılabilirlik seçenekleri.](/azure/virtual-machines/windows/availability) 
+- Hata etki alanları ve yükseltme etki alanları yalnızca bir yerleştirme grubu içinde tutarlıdır. VM’ler ayrı bir fiziksel donanım üzerinde dağıtıldığı için bu mimari bir ölçek kümesinin genel kullanılabilirliğini değiştirmez, ancak farklı bir donanım üzerinde iki VM’yi garanti etmeniz gerekiyorsa, bunların aynı yerleştirme grubundaki farklı hata etki alanlarında olduğundan emin olmanız gerektiği anlamına gelir. Lütfen bu bağlantı [kullanılabilirliği seçeneklerine](/azure/virtual-machines/windows/availability)bakın. 
 - Hata etki alanı ve yerleştirme grubu kimliği, bir ölçek kümesi sanal makinesinin _örnek görünümünde_ gösterilir. Bir ölçek kümesi sanal makinesinin örnek görünümünü [Azure Kaynak Gezgini](https://resources.azure.com/)’nde görüntüleyebilirsiniz.
 
 ## <a name="creating-a-large-scale-set"></a>Büyük ölçek kümesi oluşturma
@@ -56,7 +56,7 @@ Belirtmemeniz durumunda, _vmss create_ komutu bazı yapılandırma değerlerini 
 az vmss create --help
 ```
 
-Bir Azure Resource Manager şablonu oluşturarak büyük bir ölçek kümesi oluşturuyorsanız, şablonun Azure Yönetilen Diskleri temel alan bir ölçek kümesi oluşturduğundan emin olun. _Microsoft.Compute/virtualMachineScaleSets_ kaynağının _özellikleri_ bölümünde _singlePlacementGroup_ özelliğini _false_ olarak ayarlayabilirsiniz. Aşağıdaki JSON parçası, 1.000 VM kapasite ve _"singlePlacementGroup" : false_ ayarına sahip bir ölçek kümesi şablonunun başlangıcını gösterir:
+Bir Azure Resource Manager şablonu oluşturarak büyük bir ölçek kümesi oluşturuyorsanız, şablonun Azure Yönetilen Diskleri temel alan bir ölçek kümesi oluşturduğundan emin olun. _Microsoft. COMPUTE/virtualMachineScaleSets_ kaynağının _Özellikler_ bölümünde _singleplacementgroup_ özelliğini _false_ olarak ayarlayabilirsiniz. Aşağıdaki JSON parçası, 1.000 VM kapasite ve _"singlePlacementGroup" : false_ ayarına sahip bir ölçek kümesi şablonunun başlangıcını gösterir:
 
 ```json
 {
@@ -75,7 +75,7 @@ Bir Azure Resource Manager şablonu oluşturarak büyük bir ölçek kümesi olu
     }
 ```
 
-Büyük ölçekli küme şablonunun tam bir [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json)örneği için bkz.
+Büyük bir ölçek kümesi şablonunun tamamen bir örneği için bkz [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json)..
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Mevcut bir ölçek kümesini birden fazla yerleştirme grubuna yayılacak şekilde dönüştürme
 Mevcut bir sanal makine ölçek kümesini 100’den fazla VM ölçeklendirebilecek kapasiteye getirmek için, ölçek kümesi modelinde _singplePlacementGroup_ özelliğini _false_ olarak ayarlamanız gerekir. Bu özelliğin değiştirilmesini [Azure Kaynak Gezgini](https://resources.azure.com/) ile test edebilirsiniz. Mevcut bir ölçek kümesini bulun, _Düzenle_’yi seçin ve _singlePlacementGroup_ özelliğini değiştirin. Bu özelliği görmüyorsanız, ölçek kümesini Microsoft.Compute API’sinin daha eski bir sürümüyle görüntülüyor olabilirsiniz.

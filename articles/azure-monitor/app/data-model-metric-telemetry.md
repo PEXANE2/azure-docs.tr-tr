@@ -1,41 +1,41 @@
 ---
-title: Metrik telemetri için veri modeli - Azure Uygulama Öngörüleri
-description: Metrik telemetri için Uygulama Öngörüleri veri modeli
+title: Ölçüm telemetrisi için veri modeli-Azure Application Insights
+description: Ölçüm telemetrisi için Application Insights veri modeli
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671979"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>Metrik telemetri: Uygulama Öngörüleri veri modeli
+# <a name="metric-telemetry-application-insights-data-model"></a>Ölçüm telemetrisi: Application Insights veri modeli
 
-[Uygulama Öngörüleri](../../azure-monitor/app/app-insights-overview.md)tarafından desteklenen iki tür metrik telemetri vardır: tek ölçüm ve önceden toplanmış metrik. Tek ölçüm sadece bir ad ve değerdir. Önceden toplanan metrik, metrik değerlendirme aralığındaki minimum ve maksimum değeri ve bunun standart sapması belirtir.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından desteklenen iki tür ölçüm telemetrisi vardır: tek ölçüm ve önceden toplanmış ölçüm. Tek ölçüm yalnızca bir ad ve değerdir. Ön toplanmış ölçüm, ölçüm aralığı ve standart sapması içindeki ölçümün en küçük ve en büyük değerini belirtir.
 
-Önceden toplanmış metrik telemetri, toplama süresinin bir dakika olduğunu varsayar.
+Ön toplanmış ölçüm telemetrisi, toplama döneminin bir dakika olduğunu varsayar.
 
-Application Insights tarafından desteklenen birkaç tanınmış metrik ad vardır. Bu ölçümler performanceCounters tablosuna yerleştirilir.
+Application Insights tarafından desteklenen birkaç iyi bilinen ölçüm adı vardır. Bu ölçümler, performanceCounters tablosuna yerleştirildi.
 
-Sistem ve işlem sayaçlarını temsil eden metrik:
+Sistem ve işlem sayaçlarını temsil eden ölçüm:
 
-| **.NET adı**             | **Platform agnostik adı** | **REST API adı** | **Açıklama**
+| **.NET adı**             | **Platformun belirsiz adı** | **REST API adı** | **Açıklama**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
-| `\Processor(_Total)\% Processor Time` | Çalışmalar devam ediyor... | [işlemciCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | toplam makine Işlemcisi
-| `\Memory\Available Bytes`                 | Çalışmalar devam ediyor... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Bilgisayarda çalışan işlemler için kullanılabilen, baytlarda bulunan fiziksel bellek miktarını gösterir. Sıfırlanmış, boş ve bekleme bellek listelerindeki alan miktarı nın toplamı ile hesaplanır. Ücretsiz bellek kullanıma hazırdır; sıfırlanmış bellek, daha sonraki işlemlerin önceki bir işlem tarafından kullanılan verileri görmesini önlemek için sıfırlarla dolu bellek sayfalarından oluşur; bekleme belleği, diske giderken bir işlemin çalışma kümesinden (fiziksel belleği) kaldırılan ancak geri çağrılmak üzere hala kullanılabilen bellektir. [Bkz. Bellek Nesnesi](https://msdn.microsoft.com/library/ms804008.aspx)
-| `\Process(??APP_WIN32_PROC??)\% Processor Time` | Çalışmalar devam ediyor... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | Uygulamayı barındıran sürecin CPU'su
-| `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Çalışmalar devam ediyor... | [processPrivateBayt](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | uygulamayı barındıran işlem tarafından kullanılan bellek
-| `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Çalışmalar devam ediyor... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | uygulamayı barındıran prosese göre çalışan G/Ç işlemlerinin oranı
-| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec`             | Çalışmalar devam ediyor... | [istekleriPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsPerSecond) | uygulama tarafından işlenen isteklerin oranı 
-| `\.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec`    | Çalışmalar devam ediyor... | [istisnalarPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FexceptionsPerSecond) | uygulama tarafından atılan istisnaoranı
-| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Çalışmalar devam ediyor... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | ortalama istekleri yürütme süresi
-| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Çalışmalar devam ediyor... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | kuyruktaki işleme için bekleyen istek sayısı
+| `\Processor(_Total)\% Processor Time` | İş devam ediyor... | [Processorcpuyüzdesi](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | Toplam makine CPU 'SU
+| `\Memory\Available Bytes`                 | İş devam ediyor... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Bilgisayarda çalışan işlemlerin kullanabileceği fiziksel bellek miktarını bayt cinsinden gösterir. Sıfırlanmış, ücretsiz ve bekleme belleği listelerindeki alan miktarı toplanarak hesaplanır. Boş bellek kullanıma uygun; Sıfırlı bellek, sonraki işlemlerin önceki bir işlem tarafından kullanılan verileri görmesini engellemek için sıfırlarla doldurulmuş bellek sayfalarından oluşur; bekleme belleği, bir işlemin çalışma kümesinden (fiziksel belleği) en fazla diske giden, ancak geri çekmeye hazır olan bellektir. [Bellek nesnesine](https://msdn.microsoft.com/library/ms804008.aspx) bakın
+| `\Process(??APP_WIN32_PROC??)\% Processor Time` | İş devam ediyor... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | Uygulamayı barındıran işlemin CPU 'SU
+| `\Process(??APP_WIN32_PROC??)\Private Bytes`      | İş devam ediyor... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | uygulamayı barındıran işlem tarafından kullanılan bellek
+| `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | İş devam ediyor... | [Processıobi Tespersecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | uygulamayı barındıran işlem tarafından çalıştırılan g/ç işlemlerinin oranı
+| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec`             | İş devam ediyor... | [requestsPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsPerSecond) | uygulama tarafından işlenen isteklerin oranı 
+| `\.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec`    | İş devam ediyor... | [exceptionsPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FexceptionsPerSecond) | uygulama tarafından oluşturulan özel durumların oranı
+| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | İş devam ediyor... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | ortalama istek yürütme süresi
+| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | İş devam ediyor... | [Requestsınqueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | Kuyruktaki işlemeyi bekleyen istek sayısı
 
 ## <a name="name"></a>Adı
 
-Application Insights portalında ve Kullanıcı Arabirimi'nde görmek istediğiniz metnin adı. 
+Application Insights portalında ve Kullanıcı arabiriminde görmek istediğiniz ölçümün adı. 
 
 ## <a name="value"></a>Değer
 
@@ -43,28 +43,28 @@ Application Insights portalında ve Kullanıcı Arabirimi'nde görmek istediğin
 
 ## <a name="count"></a>Sayı
 
-Toplanan ölçümün metrik ağırlığı. Bir ölçüm için ayarlanmamalıdır.
+Toplu ölçümün ölçüm ağırlığı. Ölçüm için ayarlanmamalıdır.
 
 ## <a name="min"></a>Min
 
-Toplanan ölçümün minimum değeri. Bir ölçüm için ayarlanmamalıdır.
+Toplanan ölçümün en küçük değeri. Ölçüm için ayarlanmamalıdır.
 
 ## <a name="max"></a>Maks
 
-Toplanan ölçümün maksimum değeri. Bir ölçüm için ayarlanmamalıdır.
+Toplanan ölçümün maksimum değeri. Ölçüm için ayarlanmamalıdır.
 
 ## <a name="standard-deviation"></a>Standart sapma
 
-Toplanan metrik standart sapma. Bir ölçüm için ayarlanmamalıdır.
+Toplu ölçümün standart sapması. Ölçüm için ayarlanmamalıdır.
 
-## <a name="custom-properties"></a>Özel özellikler
+## <a name="custom-properties"></a>Özel Özellikler
 
-Metrik, metnin `CustomPerfCounter` windows `true` performans sayacını temsil ettiğini belirtmek için özel özellik kümesine sahip. Bu ölçümler performanceCounters tablosuna yerleştirilir. CustomMetrics'te değil. Ayrıca bu ölçümün adı kategori, sayaç ve örnek adlarını ayıklamak için ayrıştırılır.
+Ölçümün Windows performans sayacını temsil `CustomPerfCounter` ettiğini göstermek `true` için özel özellik ayarlanmış ölçüm. Bu ölçümler performanceCounters tablosuna yerleştirildi. Customölçümler içinde değil. Ayrıca, bu ölçümün adı kategori, sayaç ve örnek adlarını ayıklamak için ayrıştırılır.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Özel olaylar [ve ölçümler için Uygulama Öngörüleri API'sini](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)nasıl kullanacağınızı öğrenin.
-- Uygulama Öngörüleri türleri ve veri modeli için [veri modeline](data-model.md) bakın.
-- Application Insights tarafından desteklenen [platformlara](../../azure-monitor/app/platforms.md) göz atın.
+- [Özel olaylar ve ölçümler için Application Insights API 'sini](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)kullanmayı öğrenin.
+- Application Insights türleri ve veri modeli için [veri modeli](data-model.md) 'ne bakın.
+- Application Insights tarafından desteklenen [platformları](../../azure-monitor/app/platforms.md) inceleyin.

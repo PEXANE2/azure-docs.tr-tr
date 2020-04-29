@@ -1,6 +1,6 @@
 ---
 title: Ölçeği genişletme
-description: Hizmet Olarak Yazılım (SaaS) geliştiricileri bu araçları kullanarak bulutta kolayca elastik, ölçeklenebilir veritabanları oluşturabilir
+description: Hizmet olarak yazılım (SaaS) geliştiricileri, bu araçları kullanarak bulutta esnek, ölçeklenebilir veritabanlarını kolayca oluşturabilir
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -9,85 +9,85 @@ author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 44c6147402cbe05e62c091863cb0bd4f9235bfab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061638"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Veritabanı ile ölçek genişletme
-**Elastik Veritabanı** araçlarını kullanarak Azure SQL veritabanlarını kolayca ölçeklendirebilirsiniz. Bu araçlar ve özellikler, işlem iş yükleri ve özellikle Hizmet Olarak Yazılım (SaaS) uygulamaları için çözümler oluşturmak için **Azure SQL Veritabanı'nın** veritabanı kaynaklarını kullanmanıza izin verir. Elastik Veritabanı özellikleri aşağıdakilerden oluşur:
+**Esnek veritabanı** araçlarını kullanarak Azure SQL veritabanlarını kolayca ölçeklendirebilirsiniz. Bu araçlar ve özellikler, işlemsel iş yükleri ve özellikle hizmet olarak yazılım (SaaS) uygulamaları için çözümler oluşturmak üzere **Azure SQL veritabanı** 'nın veritabanı kaynaklarını kullanmanıza olanak sağlar. Elastik veritabanı özellikleri şunlardan oluşur:
 
-* [Elastik Veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md): İstemci kitaplığı, kırık veritabanları oluşturmanıza ve korumanıza olanak tanıyan bir özelliktir.  Bkz. [Elastik Veritabanı araçları ile başlayın.](sql-database-elastic-scale-get-started.md)
-* [Elastik Veritabanı bölme birleştirme aracı](sql-database-elastic-scale-overview-split-and-merge.md): verileri kırık veritabanları arasında taşır. Bu araç, verileri çok kiracılı bir veritabanından tek kiracıveritabanına (veya tam tersi) taşımak için yararlıdır. Bkz. [Elastik veritabanı Bölme Birleştirme aracı](sql-database-elastic-scale-configure-deploy-split-and-merge.md)öğreticisi.
-* [Esnek Veritabanı işleri](elastic-jobs-overview.md): Çok sayıda Azure SQL veritabanını yönetmek için işleri kullanın. İşleri kullanarak şema değişiklikleri, kimlik bilgileri yönetimi, referans veri güncelleştirmeleri, performans veri toplama veya kiracı (müşteri) telemetri koleksiyonu gibi yönetim işlemlerini kolayca gerçekleştirin.
-* [Elastik Veritabanı sorgusu](sql-database-elastic-query-overview.md) (önizleme): Birden çok veritabanını kapsayan bir Transact-SQL sorgusu çalıştırmanızı sağlar. Bu, Excel, Power BI, Tableau, vb. gibi raporlama araçlarına bağlantı sağlar.
-* [Esnek işlemler](sql-database-elastic-transactions-overview.md): Bu özellik, Azure SQL Veritabanı'nda çeşitli veritabanlarına yayılan hareketleri çalıştırmanızı sağlar. Elastik veritabanı işlemleri ADO .NET kullanarak .NET uygulamaları için kullanılabilir ve [System.Transaction sınıfları](https://msdn.microsoft.com/library/system.transactions.aspx)kullanarak tanıdık programlama deneyimi ile entegre.
+* [Elastik veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md): istemci kitaplığı, parçalı veritabanları oluşturmanıza ve bakımını yapmanıza olanak tanıyan bir özelliktir.  Bkz. [elastik veritabanı araçlarını kullanmaya başlama](sql-database-elastic-scale-get-started.md).
+* [Elastik veritabanı bölünmüş birleştirme aracı](sql-database-elastic-scale-overview-split-and-merge.md): verileri parçalı veritabanları arasında taşıdı. Bu araç, verileri çok kiracılı bir veritabanından tek kiracılı bir veritabanına (veya tam tersi) taşımak için faydalıdır. Bkz. [elastik veritabanı bölünmüş birleştirme araç öğreticisi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+* [Elastik veritabanı işleri](elastic-jobs-overview.md): çok SAYıDA Azure SQL veritabanını yönetmek için işleri kullanın. İşleri kullanarak şema değişiklikleri, kimlik bilgileri yönetimi, başvuru veri güncelleştirmeleri, performans verileri toplama veya kiracı (müşteri) telemetri koleksiyonu gibi yönetim işlemlerini kolayca gerçekleştirin.
+* [Elastik veritabanı sorgusu](sql-database-elastic-query-overview.md) (Önizleme): birden çok veritabanına yayılan bir Transact-SQL sorgusu çalıştırmanızı sağlar. Bu, Excel, Power BI, Tableau vb. gibi raporlama araçlarına bağlantı sağlar.
+* [Elastik işlemler](sql-database-elastic-transactions-overview.md): Bu özellik, Azure SQL veritabanı 'nda birkaç veritabanına yayılan işlemleri çalıştırmanızı sağlar. Esnek veritabanı işlemleri, ADO .NET kullanan .NET uygulamalarında kullanılabilir ve [System. Transaction sınıflarını](https://msdn.microsoft.com/library/system.transactions.aspx)kullanarak tanıdık programlama deneyimiyle tümleştirilebilir.
 
-Aşağıdaki grafik, veritabanları koleksiyonuile ilgili **Olarak Elastik Veritabanı özelliklerini** içeren bir mimari gösterir.
+Aşağıdaki grafikte, bir veritabanı koleksiyonuyla ilişkili **elastik veritabanı özelliklerini** içeren bir mimari gösterilmektedir.
 
-Bu grafikte, veritabanının renkleri şemaları temsil eder. Aynı renkteki veritabanları aynı şemayı paylaşır.
+Bu grafikte, veritabanının renkleri şemaları temsil eder. Aynı renge sahip veritabanları aynı şemayı paylaşır.
 
-1. Bir dizi **Azure SQL veritabanı,** parçalama mimarisi kullanılarak Azure'da barındırılır.
-2. **Elastik Veritabanı istemci kitaplığı** bir parça kümesini yönetmek için kullanılır.
-3. Veritabanlarının bir alt kümesi elastik bir **havuza**konur. [(Bkz. Havuz nedir?](sql-database-elastic-pool.md)).
-4. **Elastik Veritabanı işi,** tüm veritabanlarına karşı zamanlanmış veya geçici T-SQL komut dosyaları çalıştırın.
-5. **Bölme birleştirme aracı,** verileri bir parçadan diğerine taşımak için kullanılır.
-6. **Elastik Veritabanı sorgusu,** parça kümesindeki tüm veritabanlarını kapsayan bir sorgu yazmanızı sağlar.
-7. **Esnek hareketler,** çeşitli veritabanlarına yayılan hareketleri çalıştırmanızı sağlar. 
+1. **Azure SQL veritabanlarının** bir kümesi, Azure 'da parça mimarisi kullanılarak barındırılır.
+2. **Elastik veritabanı istemci kitaplığı** , parça kümesini yönetmek için kullanılır.
+3. Veritabanlarının bir alt kümesi, **elastik bir havuza**konur. (Bkz. [Havuz nedir?](sql-database-elastic-pool.md)).
+4. **Esnek veritabanı işi** , tüm veritabanlarına göre zamanlanmış veya geçici T-SQL betikleri çalıştırır.
+5. **Bölünmüş birleştirme aracı** , verileri bir parçadan diğerine taşımak için kullanılır.
+6. **Elastik veritabanı sorgusu** , parça kümesindeki tüm veritabanlarına yayılan bir sorgu yazmanızı sağlar.
+7. **Elastik işlemler** , çeşitli veritabanlarına yayılan işlemler çalıştırmanızı sağlar. 
 
 ![Elastik Veritabanı araçları][1]
 
-## <a name="why-use-the-tools"></a>Neden araçları kullanıyorsun?
-Bulut uygulamaları için esneklik ve ölçek elde etmek, VM'ler ve blob depolama için kolay olmuştur - sadece birimleri ekleyin veya çıkarın veya gücü artırın. Ancak ilişkisel veritabanlarında durumsal veri işleme için bir meydan okuma kalmıştır. Bu senaryolarda sorunlar ortaya çıktı:
+## <a name="why-use-the-tools"></a>Araçlar neden kullanılmalıdır?
+Bulut uygulamaları için esneklik ve ölçek sağlamak, VM 'Ler ve BLOB depolaması için basit bir işlemdir; birimleri ekleme veya çıkarma veya güç artırma. Ancak, ilişkisel veritabanlarında durum bilgisi olan veri işleme için bir zorluk bıraktı. Bu senaryolarda sorunlar ortaya çıktı:
 
-* İş yükünüzün ilişkisel veritabanı bölümü için büyüyen ve küçülen kapasite.
-* Meşgul bir son müşteri (kiracı) gibi belirli bir veri alt kümesini etkileyen etkin noktaları yönetme.
+* İş yükünüzün ilişkisel veritabanı bölümü için büyüyen ve küçültüme kapasitesi.
+* Meşgul son müşteri (kiracı) gibi belirli bir veri alt kümesini etkileyerek ortaya çıkabilecek etkin noktaları yönetme.
 
-Geleneksel olarak, bu gibi senaryolar uygulamayı desteklemek için daha büyük ölçekli veritabanı sunucularına yatırım yaparak ele alınmıştır. Ancak, bu seçenek, tüm işlemlerin önceden tanımlanmış emtia donanımında gerçekleştiği bulutta sınırlıdır. Bunun yerine, veri ve işlemenin birçok özdeş yapılandırılmış veritabanları ("parçalama" olarak bilinen ölçeklendirme deseni) arasında dağıtılması, hem maliyet hem de elastikiyet açısından geleneksel ölçeklendirme yaklaşımlarına alternatif sağlar.
+Geleneksel olarak, bunlar gibi senaryolar, uygulamayı desteklemek için büyük ölçekli veritabanı sunucularına yatırım yaparak karşılanır. Ancak, bu seçenek, tüm işlemlerin önceden tanımlanmış emtia donanımında gerçekleştiği bulutta sınırlıdır. Bunun yerine, verileri ve işlemeyi birçok özdeş yapılandırılmış veritabanına ("parçalama" olarak bilinen bir genişleme deseninin) dağıtmak, hem maliyet hem de esneklik bakımından geleneksel ölçek artırma yaklaşımına bir alternatif sağlar.
 
 ## <a name="horizontal-and-vertical-scaling"></a>Yatay ve dikey ölçekleme
-Aşağıdaki şekil, elastik veritabanlarının ölçeklendirilebildiği temel yollar olan ölçeklendirmenin yatay ve dikey boyutlarını gösterir.
+Aşağıdaki şekilde, elastik veritabanlarının ölçeklendirilebileceği temel yollar olan ölçeklendirmenin yatay ve dikey boyutları gösterilmektedir.
 
-![Yatay ve dikey ölçeklendirme][2]
+![Yatay ve dikey ölçeğe karşı][2]
 
-Yatay ölçekleme, kapasiteyi veya genel performansı ayarlamak için veritabanları ekleme veya kaldırma anlamına gelir, buna "ölçekleme dışarı" olarak da adlandırılır. Verilerin aynı yapılandırılmış veritabanları koleksiyonuna bölündebağlı olduğu sharding, yatay ölçekleme uygulamanın yaygın bir yoludur.  
+Yatay ölçeklendirme, "ölçeklendirin" olarak da bilinen kapasiteyi veya genel performansı ayarlamak için veritabanlarını ekleme veya kaldırma anlamına gelir. Verilerin özdeş olarak yapılandırılmış veritabanlarının bir koleksiyonu genelinde bölümlendiği parçalama, yatay ölçeklendirmeyi uygulamak için ortak bir yoldur.  
 
-Dikey ölçekleme, "ölçekleme" olarak da bilinen tek bir veritabanının işlem boyutunu artırma veya azaltma anlamına gelir.
+Dikey ölçeklendirme, "ölçeği artırma" olarak da bilinen tek bir veritabanının işlem boyutunu arttırmayı veya azaltmayı ifade eder.
 
-Bulut ölçekli veritabanı uygulamalarının çoğu bu iki stratejinin bir birleşimini kullanır. Örneğin, Hizmet Olarak Yazılım uygulaması, yeni son müşteriler sağlamak için yatay ölçekleme ve her son müşterinin veritabanının iş yükünün gerektirdiği şekilde kaynakları büyütmesine veya küçültmesine izin vermek için dikey ölçekleme kullanabilir.
+Çoğu bulut ölçeğinde veritabanı uygulaması bu iki stratejinin birleşimini kullanır. Örneğin, bir hizmet uygulaması olan yazılım, her bir son müşteri veritabanının, iş yükünün gerektirdiği kaynakları büyümesini veya daralmasına izin vermek üzere yeni son müşteriler ve dikey ölçekleme sağlamak için yatay ölçeklendirmeyi kullanabilir.
 
-* Yatay ölçekleme [Elastik Veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)kullanılarak yönetilir.
-* Dikey ölçekleme, hizmet katmanını değiştirmek için Azure PowerShell cmdlets kullanılarak veya veritabanlarını esnek bir havuza yerleştirerek gerçekleştirilir.
+* Yatay ölçeklendirme, [elastik veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)kullanılarak yönetilir.
+* Dikey ölçeklendirme, hizmet katmanını değiştirmek veya elastik bir havuza veritabanları yerleştirmek için Azure PowerShell cmdlet 'leri kullanılarak gerçekleştirilir.
 
 ## <a name="sharding"></a>Parçalama
-*Parçalama*, aynı yapıya sahip büyük miktarlardaki verilerin bağımsız veritabanlarına dağıtılmasını kapsayan bir tekniktir. Özellikle bulut geliştiricilerin son müşteriler veya işletmeler için Hizmet Olarak Yazılım (SAAS) teklifleri oluşturması yla popülerdir. Bu son müşteriler genellikle "kiracı" olarak adlandırılır. Herhangi bir sayıda nedenden dolayı parçalama gerekebilir:  
+*Parçalama*, aynı yapıya sahip büyük miktarlardaki verilerin bağımsız veritabanlarına dağıtılmasını kapsayan bir tekniktir. Özellikle, son müşteriler veya işletmeler için hizmet olarak yazılım (SAAS) teklifleri oluşturan bulut geliştiricileri ile yaygındır. Bu son müşteriler genellikle "kiracılar" olarak adlandırılır. Parçalama, herhangi bir sayıda nedenden dolayı gerekebilir:  
 
-* Toplam veri miktarı, tek bir veritabanının kısıtlamalarına sığmayacak kadar büyüktür
-* Genel iş yükünün işlem oluşturma işlemi, tek bir veritabanının yeteneklerini aşıyor
-* Kiracılar birbirinden fiziksel izolasyon gerektirebilir, bu nedenle her kiracı için ayrı veritabanları gereklidir
-* Bir veritabanının farklı bölümlerinin uyumluluk, performans veya jeopolitik nedenlerle farklı coğrafyalarda yer etmesi gerekebilir.
+* Toplam veri miktarı tek bir veritabanının kısıtlamalarına sığmayacak kadar büyük
+* Genel iş yükünün işlem performansı tek bir veritabanının yeteneklerini aşıyor
+* Kiracılar her kiracı için ayrı veritabanları gerektirdiğinden her bir kiracı için fiziksel yalıtım gerektirebilir
+* Bir veritabanının farklı bölümlerinin uyumluluk, performans veya politik nedenlerle farklı coğrafi bölgelerde bulunması gerekebilir.
 
-Dağıtılmış aygıtlardan veri alma gibi diğer senaryolarda, parçalama zamansal olarak düzenlenen veritabanları kümesini doldurmak için kullanılabilir. Örneğin, ayrı bir veritabanı her gün veya hafta adanabilir. Bu durumda, parçalama anahtarı tarihi (parçalanmış tabloların tüm satırlarında bulunan) temsil eden bir tamsayı olabilir ve bir tarih aralığı için bilgi alan sorgular, uygulama tarafından söz konusu aralığı kapsayan veritabanlarıalt kümesine yönlendirilmelidir.
+Dağıtılmış cihazlardan verilerin alımı gibi diğer senaryolarda, parça zamana bağlı düzenlenmiş bir veritabanı kümesini dolduracak şekilde kullanılabilir. Örneğin, ayrı bir veritabanı her gün veya haftaya ayrılabilir. Bu durumda, parçalı anahtar, tarihi temsil eden bir tamsayı olabilir (parçalı tabloların tüm satırlarında mevcuttur) ve bir tarih aralığı için bilgi alma sorguları uygulama tarafından söz konusu aralığı kapsayan veritabanlarının alt kümesine yönlendirilmelidir.
 
-Bir uygulamadaki her işlem bir parçalama anahtarının tek bir değeriyle sınırlandırılabilirse, parçalama en iyi şekilde çalışır. Bu, tüm hareketlerin belirli bir veritabanına yerel olmasını sağlar.
+Parçalara ayırma en iyi şekilde çalışarak bir uygulamadaki her işlem, bir parçalama anahtarının tek bir değeriyle kısıtlanabilir. Bu, tüm işlemlerin belirli bir veritabanına yerelmesini sağlar.
 
 ## <a name="multi-tenant-and-single-tenant"></a>Çok kiracılı ve tek kiracılı
-Bazı uygulamalar, her kiracı için ayrı bir veritabanı oluşturma nın en basit yaklaşımını kullanır. Bu yaklaşım, kiracının parçalı lıkta yalıtım, yedekleme/geri yükleme yeteneği ve kaynak ölçekleme sağlayan **tek kiracı parçalama desenidir.** Tek kiracı parçalama ile, her veritabanı belirli bir kiracı kimliği değeri (veya müşteri anahtar değeri) ile ilişkilidir, ancak bu anahtar her zaman veri kendisi nde mevcut olması gerekmez. Her isteği uygun veritabanına yönlendirmek uygulamanın sorumluluğundadır ve istemci kitaplığı bunu basitleştirebilir.
+Bazı uygulamalar her kiracı için ayrı bir veritabanı oluşturmanın en basit yaklaşımını kullanır. Bu yaklaşım, kiracının ayrıntı düzeyinde yalıtım, yedekleme/geri yükleme yeteneği ve kaynak ölçekleme sağlayan **tek kiracılı** parçalara ayırma modelidir. Tek kiracılı parçalar ile, her veritabanı belirli bir kiracı KIMLIĞI değeri (veya müşteri anahtar değeri) ile ilişkilendirilir, ancak bu anahtar, her zaman verilerin kendisinde bulunmamalıdır. Her isteği uygun veritabanına yönlendirmek uygulamanın sorumluluğundadır ve istemci kitaplığı bunu basitleştirebilir.
 
-![Tek kiracı karşı çok kiracı][4]
+![Tek kiracılı ve çok kiracılı][4]
 
-Diğer senaryolar, birden çok kiracıyı ayrı veritabanlarına ayırmak yerine veritabanlarında bir araya getirir. Bu desen tipik bir **çok kiracılı parçalama desenidir** ve bir uygulamanın çok sayıda küçük kiracıyı yönetmesi nedeniyle yönlendirilebilir. Çok kiracılı parçalamada, veritabanı tablolarındaki satırların tümü kiracı kimliğini veya parçalama anahtarını tanımlayan bir anahtar taşımak üzere tasarlanmıştır. Yine, uygulama katmanı kiracının isteğini uygun veritabanına yönlendirmekten sorumludur ve bu, elastik veritabanı istemci kitaplığı tarafından desteklenebilir. Buna ek olarak, satır düzeyinde güvenlik, her kiracının erişebileceği satırları filtrelemek için kullanılabilir - ayrıntılar [için, elastik veritabanı araçları ve satır düzeyinde güvenlik içeren çok kiracılı uygulamalara](sql-database-elastic-tools-multi-tenant-row-level-security.md)bakın. Çok kiracılı parçalama deseni ile veri veritabanları arasında yeniden dağıtmak gerekebilir ve elastik veritabanı bölme birleştirme aracı tarafından kolaylaştırılır. Elastik havuzları kullanan SaaS uygulamalarının tasarım desenleri hakkında daha fazla bilgi edinmek için bkz. [Azure SQL Veritabanı kullanan Çok Kiracılı SaaS Uygulamaları için Tasarım Desenleri](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+Diğer senaryolar, farklı veritabanlarına yalıtmak yerine birden çok kiracıyı veritabanları halinde paketler. Bu model tipik bir çok kiracılı parçalama düzenlidir ve bir uygulamanın çok sayıda küçük **kiracıyı** yönettiği bir olay olabilir. Çok kiracılı parçalar halinde, veritabanı tablolarındaki satırlar, kiracı KIMLIĞINI veya parçalama anahtarını tanımlayan bir anahtarı yürütmek üzere tasarlanmıştır. Yine, uygulama katmanı, kiracının uygun veritabanına yönelik isteğini yönlendirmekten sorumludur ve bu, elastik veritabanı istemci kitaplığı tarafından desteklenebilir. Ayrıca, her kiracının erişebileceği satırları filtrelemek için satır düzeyi güvenlik kullanılabilir-Ayrıntılar için bkz. [elastik veritabanı araçları ve satır düzeyi güvenliği olan çok kiracılı uygulamalar](sql-database-elastic-tools-multi-tenant-row-level-security.md). Veritabanları arasında verileri yeniden dağıtma, çok kiracılı parçalama düzeniyle gerekli olabilir ve elastik veritabanı bölünmüş birleştirme aracı tarafından kolaylaştıralınmıştır. Elastik havuzları kullanan SaaS uygulamalarının tasarım desenleri hakkında daha fazla bilgi edinmek için bkz. [Azure SQL Veritabanı kullanan Çok Kiracılı SaaS Uygulamaları için Tasarım Desenleri](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Verileri birden çok kira veritabanlarından tek kiraveritabanlarına taşıma
-Bir SaaS uygulaması oluştururken, olası müşterilere yazılımın deneme sürümünü sunmak tipiktir. Bu durumda, veriler için çok kiracılı bir veritabanı kullanmak uygun maliyetlidir. Ancak, bir müşteri müşteri olduğunda, daha iyi performans sağladığından tek kiracılı veritabanı daha iyidir. Müşteri deneme süresi boyunca veri oluşturmuşsa, verileri çok kiracıdan yeni tek kiracı veritabanına taşımak için [bölme birleştirme aracını](sql-database-elastic-scale-overview-split-and-merge.md) kullanın.
+### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Verileri birden çok sunucudan tek kiracılı veritabanlarına taşıma
+SaaS uygulaması oluştururken, olası müşterilere Yazılımın deneme sürümünü sunma normaldir. Bu durumda, veriler için çok kiracılı bir veritabanı kullanmak uygun maliyetli bir durumdur. Bununla birlikte, müşteri adayı müşteri olduğunda, daha iyi performans sağladığından tek kiracılı bir veritabanı daha iyidir. Müşterinin deneme süresinde veri oluşturmuş olması halinde, verileri çok kiracılı yeni tek kiracılı veritabanına taşımak için [bölünmüş birleştirme aracını](sql-database-elastic-scale-overview-split-and-merge.md) kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-İstemci kitaplığını gösteren örnek bir uygulama için [bkz.](sql-database-elastic-scale-get-started.md)
+İstemci kitaplığını gösteren örnek bir uygulama için bkz. [elastik veritabanı araçlarıyla çalışmaya başlama](sql-database-elastic-scale-get-started.md).
 
-Araçları kullanmak için varolan veritabanlarını dönüştürmek [için, ölçeklendirmek için varolan veritabanlarını geçir'e](sql-database-elastic-convert-to-use-elastic-tools.md)bakın.
+Mevcut veritabanlarını araçları kullanacak şekilde dönüştürmek için bkz. [genişleme için mevcut veritabanlarını geçirme](sql-database-elastic-convert-to-use-elastic-tools.md).
 
-Elastik havuzun özelliklerini görmek [için, elastik havuz için Fiyat ve performans hususlarına](sql-database-elastic-pool.md)bakın veya [elastik havuzlu](sql-database-elastic-pool-manage-portal.md)yeni bir havuz oluşturun.  
+Elastik havuzun özelliklerini görmek için bkz. [elastik havuz Için fiyat ve performans konuları](sql-database-elastic-pool.md), [elastik havuzlarla](sql-database-elastic-pool-manage-portal.md)yeni bir havuz oluşturma.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

@@ -1,20 +1,20 @@
 ---
-title: Sorun giderme sorgu performansı - MySQL için Azure Veritabanı
-description: MySQL için Azure Veritabanı'nda sorgu performansını gidermek için EXPLAIN'ı nasıl kullanacağınızı öğrenin.
+title: Sorgu performansı sorunlarını giderme-MySQL için Azure veritabanı
+description: MySQL için Azure veritabanı 'nda sorgu performansı sorunlarını gidermek için AÇıKLA ' yı kullanmayı öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: 6b27e47339b80cc46290065c4d17150a301f2534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067834"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda sorgu performansını profillemek için EXPLAIN nasıl kullanılır?
-**EXPLAIN** sorguları en iyi duruma getirmek için kullanışlı bir araçtır. EXPLAIN deyimi, SQL deyimlerinin nasıl yürütüldedildiği hakkında bilgi almak için kullanılabilir. Aşağıdaki çıktı, bir EXPLAIN deyiminin yürütülmesine bir örnek gösterir.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sorgu performansını profil oluşturma hakkında açıklama kullanma
+**Açıkla** sorguları iyileştirmek için kullanışlı bir araçtır. AÇıKLA deyimi, SQL deyimlerinin nasıl yürütüldüğü hakkında bilgi almak için kullanılabilir. Aşağıdaki çıktıda bir açıklama ifadesinin yürütülmesi örneği gösterilmektedir.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Bu örnekten de görüleceği gibi, *anahtarın* değeri NULL'dur. Bu çıktı, MySQL'in sorgu için en iyi duruma getirilmiş dizinleri bulamadığı ve tam tablo taradığı anlamına gelir. Bu sorguyu **kimlik** sütununa bir dizin ekleyerek en iyi duruma getirelim.
+Bu örnekte görünebilirler, *anahtarın* değeri null olur. Bu çıktı, MySQL sorgu için iyileştirilmiş bir dizin bulamadığı ve tam tablo taraması gerçekleştirmediği anlamına gelir. **Kimlik** sütununa bir dizin ekleyerek bu sorguyu iyileştirelim.
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -53,10 +53,10 @@ possible_keys: id
         Extra: NULL
 ```
 
-Yeni EXPLAIN, MySQL'in artık satır sayısını 1 ile sınırlamak için bir dizin kullandığını ve bunun da arama süresini önemli ölçüde kısalttı.
+Yeni AÇıKLA, MySQL 'in artık satır sayısını 1 olarak sınırlandırmak için bir dizin kullandığını gösterir; bu da arama süresini önemli ölçüde kısaltır.
  
-## <a name="covering-index"></a>Kaplama dizini
-Kaplama dizini, veri tablolarından değer alınmasını azaltmak için dizindeki bir sorgunun tüm sütunlarından oluşur. Aşağıda, GROUP **BY** deyiminde bir örnek ve bir örnek verged.
+## <a name="covering-index"></a>Kapsayan Dizin
+Kapsayan Dizin, veri tablolarından değer alımını azaltmak için dizindeki bir sorgunun tüm sütunlarından oluşur. Aşağıdaki **Group By** deyimindeki bir çizim aşağıda verilmiştir.
  
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
@@ -75,9 +75,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Çıktıdan da görüleceği gibi, uygun dizinler bulunmadığından MySQL herhangi bir dizin kullanmaz. Ayrıca *geçici kullanma gösterir; Dosya sıralamasını kullanarak,* **MySQL'in GROUP BY** yan tümcesini karşılamak için geçici bir tablo oluşturduğu anlamına gelir.
+Çıktıda görünebileceğinden, MySQL hiçbir dizin kullanmaz çünkü uygun dizin yok. Ayrıca, *geçici kullanmayı da gösterir; Dosya sıralamayı kullanarak*MySQL, **Group By** yan tümcesini karşılamak için geçici bir tablo oluşturur.
  
-Yalnızca **c2** sütununda dizin oluşturmak hiçbir fark yaratmaz ve MySQL'in geçici bir tablo oluşturması gerekir:
+Yalnızca **C2** sütununda bir dizin oluşturmak farklılık yapmaz ve MySQL 'in yine de geçici bir tablo oluşturması gerekir:
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Bu durumda, hem **c1** hem de **c2** üzerinde kapalı bir **dizin** oluşturulabilir ve böylece daha fazla veri aramasını ortadan kaldırmak için **c2**" değerini doğrudan dizin olarak ekler.
+Bu durumda, daha fazla veri aramasını ortadan kaldırmak için, **C1** ve **C2** ' de **Kapsanan bir dizin** oluşturulabilir ve bu değerin **C2**"değeri doğrudan dizinde eklenmesi
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -117,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Yukarıdaki EXPLAIN'ın gösterdiği gibi, MySQL artık kapsanan dizini kullanır ve geçici bir tablo oluşturmaktan kaçınır. 
+Yukarıdaki konularda gösterildiği gibi MySQL artık kapsanan dizini kullanır ve geçici bir tablo oluşturmaktan kaçınmaz. 
 
-## <a name="combined-index"></a>Birleşik dizin
-Birleşik dizin, birden çok sütundan gelen değerlerden oluşur ve dizinlenmiş sütunların birleştirilmiş değerlerine göre sıralanmış bir dizi satır olarak kabul edilebilir.Bu yöntem **GROUP BY** deyiminde yararlı olabilir.
+## <a name="combined-index"></a>Birleşik Dizin
+Birleşik bir dizin birden fazla sütundan değerler içerir ve dizine alınmış sütunların değerlerini birleştirerek sıralanan bir satır dizisi olarak kabul edilebilir.Bu yöntem **Group By** ifadesinde yararlı olabilir.
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MySQL, özellikle çok sayıda satırı sıralamak zorunda kaldığında oldukça yavaş bir *dosya sıralama* işlemi gerçekleştirir. Bu sorguen iyi duruma getirmek için, sıralanan her iki sütunda da birleştirilmiş dizin oluşturulabilir.
+MySQL, özellikle de birçok satırı sıralamak gerektiğinde oldukça yavaş olan bir *Dosya sıralama* işlemi gerçekleştirir. Bu sorguyu iyileştirmek için, sıralanan her iki sütunda da birleştirilmiş bir dizin oluşturulabilir.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -159,12 +159,12 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-EXPLAIN şimdi MySQL dizin zaten sıralanmış olduğundan ek sıralama önlemek için birleşik dizin kullanabilirsiniz gösterir.
+Şimdi AÇıKLA, MySQL 'in, dizin zaten sıralandığında bu yana ek sıralamayı önlemek için Birleşik dizini kullanabildiğini gösterir.
  
 ## <a name="conclusion"></a>Sonuç
  
-EXPLAIN ve farklı türde Dizinler kullanmak performansı önemli ölçüde artırabilir. Tabloda bir dizin olması, MySQL'in sorgularınız için kullanabileceği anlamına gelmez. EXPLAIN'ı kullanarak varsayımlarınızı her zaman doğrulayın ve dizinleri kullanarak sorgularınızı optimize edin.
+AÇıKLA ve farklı türde dizinlerin kullanılması performansı önemli ölçüde artırabilir. Tabloda bir dizin olması, MySQL 'in sorgular için kullanabilmesi anlamına gelmez. Her zaman varsayımlarınızı doğrulayın ve dizinleri kullanarak sorgularınızı iyileştirin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- En ilgili sorularınıza akran yanıtları bulmak veya yeni bir soru/yanıt göndermek için [MSDN forumunu](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) veya Stack Overflow'u ziyaret [edin.](https://stackoverflow.com/questions/tagged/azure-database-mysql)
+- En çok ilgili sorularınızın eş yanıtlarını bulmak veya yeni bir soru/cevap göndermek için [MSDN Forumu](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)sitesini ziyaret edin.

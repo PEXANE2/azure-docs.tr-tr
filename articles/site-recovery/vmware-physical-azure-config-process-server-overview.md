@@ -1,51 +1,51 @@
 ---
-title: Azure Site Kurtarma yapılandırması/işlem/ana hedef sunucular hakkında
-description: Bu makalede, azure site kurtarma ile şirket içi VMware VM'lerin Azure'a olağanüstü kurtarma sını ayarlarken kullandıkları yapılandırma, işlem ve ana hedef sunuculara genel bir bakış
+title: Azure Site Recovery yapılandırma/işlem/ana hedef sunucuları hakkında
+description: Bu makalede, Azure Site Recovery ile şirket içi VMware VM 'lerinin olağanüstü durum kurtarması ayarlanırken yapılandırma, süreç ve ana hedef sunuculara genel bir bakış sunulmaktadır
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062082"
 ---
-# <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Kurtarma bileşenleri hakkında (yapılandırma, işlem, ana hedef)
+# <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Recovery bileşenleri (yapılandırma, işlem, ana hedef) hakkında
 
-Bu makalede, VMware VM'leri ve fiziksel sunucuları Azure'da çoğaltmak için [Site Kurtarma](site-recovery-overview.md) hizmeti tarafından kullanılan yapılandırma, işlem ve ana hedef sunucular açıklanmaktadır.
+Bu makalede, VMware VM 'lerini ve fiziksel sunucuları Azure 'a çoğaltmak için [Site Recovery](site-recovery-overview.md) hizmeti tarafından kullanılan yapılandırma, işlem ve ana hedef sunucuları açıklanmaktadır.
 
 ## <a name="configuration-server"></a>Yapılandırma Sunucusu
 
-Şirket içi VMware VM'lerinin ve fiziksel sunucuların olağanüstü kurtarma durumu için, şirket içinde bir Site Kurtarma yapılandırma sunucusu dağıtın.
+Şirket içi VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma için, şirket içi Site Recovery yapılandırma sunucusu dağıtın.
 
-**Ayar** | **Şey** | **Bağlantılar**
+**Ayar** | **Bilgileri** | **Bağlantılar**
 --- | --- | ---
-**Bileşenler**  | Yapılandırma sunucusu makinesi, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucuyu içeren tüm şirket içi Site Kurtarma bileşenlerini çalıştırın.<br/><br/> Yapılandırma sunucusunu ayarladığınızda, tüm bileşenler otomatik olarak yüklenir. | Yapılandırma sunucusu SSS'yi [okuyun.](vmware-azure-common-questions.md#configuration-server)
-**Rol** | Yapılandırma sunucusu yerinde bileşenler ile Azure arasındaki iletişimi düzenler ve veri çoğaltma işlemlerini yönetir. | [Azure'da VMware](vmware-azure-architecture.md) mimarisi ve [fiziksel sunucu](physical-azure-architecture.md) olağanüstü durum kurtarma hakkında daha fazla bilgi edinin.
-**VMware gereksinimleri** | Şirket içi VMware VM'lerin olağanüstü kurtarma sı için yapılandırma sunucusunu şirket içi, yüksek kullanılabilir vmware VM olarak yüklemeniz ve çalıştırmanız gerekir. | Ön koşullar [hakkında bilgi edinin.](vmware-azure-deploy-configuration-server.md#prerequisites)
-**VMware dağıtımı** | İndirilen BIR OVA şablonu kullanarak yapılandırma sunucusunu dağıtmanızı öneririz. Bu yöntem, tüm gereksinimlere ve ön koşullara uygun bir yapılandırma sunucusu kurmak için basit bir yol sağlar.<br/><br/> Herhangi bir nedenle BIR VMware VM'yi OVA şablonu kullanarak dağıtamıyorsanız, fiziksel makine olağanüstü durum kurtarma için aşağıda açıklandığı gibi yapılandırma sunucusu makinelerini el ile ayarlayabilirsiniz. | BIR OVA şablonuyla [dağıtın.](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)
-**Fiziksel sunucu gereksinimleri** | Şirket içi fiziksel sunucularda olağanüstü durum kurtarma için yapılandırma sunucusunu el ile dağıtabilirsiniz. | Ön koşullar [hakkında bilgi edinin.](physical-azure-set-up-source.md#prerequisites)
-**Fiziksel sunucu dağıtımı** | VMware VM olarak yüklenemiyorsa, fiziksel bir sunucuya yükleyebilirsiniz. | Yapılandırma sunucusunu el ile [dağıtın.](physical-azure-set-up-source.md#set-up-the-source-environment)
+**Bileşenler**  | Yapılandırma sunucusu makinesi, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucu dahil olmak üzere tüm şirket içi Site Recovery bileşenlerini çalıştırır.<br/><br/> Yapılandırma sunucusunu ayarlarken, tüm bileşenler otomatik olarak yüklenir. | Yapılandırma sunucusu SSS [makalesini okuyun](vmware-azure-common-questions.md#configuration-server) .
+**Rol** | Yapılandırma sunucusu yerinde bileşenler ile Azure arasındaki iletişimi düzenler ve veri çoğaltma işlemlerini yönetir. | Azure 'da [VMware](vmware-azure-architecture.md) ve [fiziksel sunucu](physical-azure-architecture.md) olağanüstü durum kurtarma mimarisi hakkında daha fazla bilgi edinin.
+**VMware gereksinimleri** | Şirket içi VMware VM 'lerinin olağanüstü durum kurtarması için yapılandırma sunucusunu şirket içi, yüksek oranda kullanılabilir bir VMware VM 'si olarak yükleyip çalıştırmanız gerekir. | Önkoşullar [hakkında bilgi edinin](vmware-azure-deploy-configuration-server.md#prerequisites) .
+**VMware dağıtımı** | Yapılandırma sunucusunu indirilen bir OVA şablonu kullanarak dağıtmanızı öneririz. Bu yöntem, tüm gereksinimleri ve önkoşulları karşılayan bir yapılandırma sunucusu kurmak için basit bir yol sağlar.<br/><br/> Bir nedenden dolayı bir OVA şablonu kullanarak bir VMware VM 'yi dağıtamazsınız, yapılandırma sunucusu makinelerini fiziksel makine olağanüstü durum kurtarma için aşağıda açıklandığı gibi el ile ayarlayabilirsiniz. | Bir OVA şablonuyla [dağıtın](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) .
+**Fiziksel sunucu gereksinimleri** | Şirket içi fiziksel sunucularda olağanüstü durum kurtarma için yapılandırma sunucusunu el ile dağıtırsınız. | Önkoşullar [hakkında bilgi edinin](physical-azure-set-up-source.md#prerequisites) .
+**Fiziksel sunucu dağıtımı** | VMware VM olarak yüklenebir fiziksel sunucuya yükleyebilirsiniz. | Yapılandırma sunucusunu el ile [dağıtın](physical-azure-set-up-source.md#set-up-the-source-environment) .
 
 ## <a name="process-server"></a>İşlem sunucusu
 
-Bir işlem sunucusu, failover ve failback sırasında çoğaltma verilerini işler ve şirket içi VMware VM'ler ve fiziksel sunucular için Mobilite hizmetini yükler.
+İşlem sunucusu, yük devretme ve yeniden çalışma sırasında çoğaltma verilerini işler ve şirket içi VMware VM 'Leri ve fiziksel sunucular için Mobility hizmetini kurar.
 
-**Ayar** | **Şey** | **Bağlantılar**
+**Ayar** | **Bilgileri** | **Bağlantılar**
 --- | --- | ---
-**Dağıtım**  | Varsayılan olarak, yapılandırma sunucusu dağıtıldığında işlem sunucusu yüklenir. <br/><br/> Olağanüstü durum kurtarma ve şirket içi VMware VM'lerin ve fiziksel sunucuların çoğaltılması için şirket içi işlem sunucusu gereklidir. | [Daha fazla bilgi edinin](vmware-azure-architecture.md#architectural-components).
-**Rol (şirket içi)** | Çoğaltma için etkinleştirilen makinelerden çoğaltma verileri alır. <br/><br/> Çoğaltma verilerini önbelleğe alma, sıkıştırma ve şifreleme yle en iyi duruma getirin ve Azure Depolama'ya gönderir. <br/><br/> Site Kurtarma Mobilite hizmetinin şirket içi VMware VM'leri ve çoğaltmak istediğiniz fiziksel sunucularda itme yüklemesini gerçekleştirir. <br/><br/> Şirket içi makinelerin otomatik olarak keşfini gerçekleştirir. | [Daha fazla bilgi edinin](vmware-azure-enable-replication.md).
-**Rol (Azure'dan geri dönüş)** | Şirket içi sitenizden geçemedikten sonra, şirket içi konumunuza geri dönme işlemini işlemek için Azure'da Azure'da Azure VM olarak bir işlem sunucusu ayarlarsınız.<br/><br/> Azure'daki işlem sunucusu geçicidir. Azure VM geri ödeme yapıldıktan sonra silinebilir. | [Daha fazla bilgi edinin](vmware-azure-set-up-process-server-azure.md).
-**Ölçekleme** | Daha büyük dağıtımlar için şirket içinde ek, ölçeklendirilebilir işlem sunucuları ayarlayabilirsiniz. Ek sunucular, daha fazla sayıda çoğaltma makinesini ve daha büyük hacimli çoğaltma trafiğini işleyerek kapasiteyi ölçeklendirin.<br/><br/> Bakiye çoğaltma trafiğini yüklemek için makineleri iki işlem sunucusu arasında taşıyabilirsiniz. | [Daha fazla bilgi edinin](vmware-azure-set-up-process-server-scale.md).
+**Dağıtım**  | Varsayılan olarak, yapılandırma sunucusu dağıtıldığında işlem sunucusu yüklenir. <br/><br/> Şirket içi VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma ve çoğaltma için bir şirket içi işlem sunucusu gereklidir. | [Daha fazla bilgi edinin](vmware-azure-architecture.md#architectural-components).
+**Rol (Şirket içi**) | Çoğaltma için etkinleştirilen makinelerden çoğaltma verilerini alır. <br/><br/> Önbelleğe alma, sıkıştırma ve şifreleme ile çoğaltma verilerini iyileştirir ve Azure depolama 'ya gönderir. <br/><br/> Şirket içi VMware VM 'lerinde ve çoğaltmak istediğiniz fiziksel sunucularda Site Recovery Mobility hizmetinin anında yüklenmesini gerçekleştirir. <br/><br/> Şirket içi makinelerin otomatik olarak bulunmasını gerçekleştirir. | [Daha fazla bilgi edinin](vmware-azure-enable-replication.md).
+**Rol (Azure 'dan yeniden çalışma)** | Şirket içi sitenizden yük devretmeden sonra, şirket içi konumunuza yeniden çalışmayı işlemek için Azure sanal makinesi olarak Azure 'da bir işlem sunucusu ayarlarsınız.<br/><br/> Azure 'daki işlem sunucusu geçicidir. Yeniden çalışma yapıldıktan sonra Azure VM silinebilir. | [Daha fazla bilgi edinin](vmware-azure-set-up-process-server-azure.md).
+**Ölçeklendirme** | Daha büyük dağıtımlar için, şirket içi ek, genişleme işlem sunucuları ayarlayabilirsiniz. Ek sunucular, daha fazla sayıda çoğaltma makinesini ve daha büyük depolama kapasitesi trafiğini işleyerek kapasiteyi ölçeklendirir.<br/><br/> Çoğaltma trafiğinin yükünü dengelemek için makineleri iki işlem sunucusu arasında taşıyabilirsiniz. | [Daha fazla bilgi edinin](vmware-azure-set-up-process-server-scale.md).
 
 ## <a name="master-target-server"></a>Ana hedef sunucu
 
 Ana hedef sunucu, Azure'dan yeniden çalışma sırasında çoğaltma verilerini işler.
 
-- Varsayılan olarak, ana hedef sunucu yapılandırma sunucusuna yüklenir.
-- Büyük dağıtımlar için, failback için ek, ayrı bir ana hedef sunucu ekleyebilirsiniz.
+- Varsayılan olarak, ana hedef sunucusu yapılandırma sunucusuna yüklenir.
+- Büyük dağıtımlar için yeniden çalışma için ek ve ayrı bir ana hedef sunucu ekleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- VMware VM'lerin ve fiziksel sunucuların olağanüstü durum kurtarma [mimarisini](vmware-azure-architecture.md) gözden geçirin.
-- VMware VM'lerinin ve fiziksel sunucuların Azure'da olağanüstü durum kurtarma gereksinimlerini ve [ön koşulları](vmware-physical-azure-support-matrix.md) gözden geçirin.
+- VMware VM 'Leri ve fiziksel sunucular için olağanüstü durum kurtarma [mimarisini](vmware-azure-architecture.md) gözden geçirin.
+- VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarmaya yönelik [gereksinimleri ve önkoşulları](vmware-physical-azure-support-matrix.md) gözden geçirin.

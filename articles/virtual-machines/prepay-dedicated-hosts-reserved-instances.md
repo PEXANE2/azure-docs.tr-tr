@@ -1,6 +1,6 @@
 ---
-title: Tasarruf etmek için Azure Özel Ana Bilgisayarlar için ön ödeme
-description: İşlem maliyetlerinizden tasarruf etmek için Azure'a Özel Ana Bilgisayar Ları Ayrılmış Örnekleri nasıl satın alacağınızı öğrenin.
+title: Azure ayrılmış konakları için para tasarrufu sağlamak üzere ön ödeme
+description: İşlem maliyetlerinizi kaydetmek için Azure ayrılmış konakları için ayrılmış örnekler satın almayı öğrenin.
 services: virtual-machines
 author: yashar
 ms.service: virtual-machines
@@ -9,85 +9,85 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
 ms.openlocfilehash: 57123abfe7f343a75d264d43afb88f9de1409e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78207751"
 ---
-# <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>Azure Özel Ana Bilgisayarlarının Ayrılmış Örneği yle maliyetlerden tasarruf edin
+# <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>Ayrılmış bir Azure ayrılmış ana bilgisayar örneğiyle maliyetleri kaydetme
 
-Azure Özel Ana Bilgisayarların ayrılmış bir örneğine bağlandığınızda, paradan tasarruf edebilirsiniz. Rezervasyon indirimi, rezervasyon kapsamı ve öznitelikleriyle eşleşen çalışan özel ana bilgisayar sayısına otomatik olarak uygulanır. İndirimleri almak için özel bir ev sahibine rezervasyon yapmanız gerekmez. Ayrılmış bir örnek satın alma, yalnızca kullanımınızın bilgi işlem kısmını kapsar ve yazılım lisanslama maliyetlerini içerir. Sanal [makineler için Azure Özel Ana Bilgisayarlarına Genel Bakış'a](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)bakın.
+Ayrılmış bir Azure ayrılmış ana bilgisayar örneğine kaydetme yaptığınızda para tasarrufu sağlayabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan adanmış ana bilgisayar sayısına otomatik olarak uygulanır. İndirimleri almak için ayrılmış bir konağa bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca kullanımınızın işlem parçasını kapsar ve yazılım lisanslama maliyetlerini içerir. [Sanal makineler Için Azure adanmış konaklarına genel bakış](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)bölümüne bakın.
 
-## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>Satın almadan önce doğru özel ana bilgisayar SKU'yu belirleyin
-
-
-Rezervasyon satın almadan önce, ihtiyacınız olan özel ana bilgisayara sahip olduğunuza karar verilmelidir. VM serisini ve türünü temsil eden özel bir ana bilgisayar için SKU tanımlanır. 
-
-VM serisini tanımlamak için [Windows sanal makinesi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) için desteklenen boyutları n üzerinden geçirerek başlayın.
-
-Ardından, Azure Özel Ana Bilgisayarlarda desteklenip desteklenmediğini kontrol edin. [Azure Özel Ana Bilgisayar ları fiyatlandırma](https://aka.ms/ADHPricing) sayfasında özel ana bilgisayarların tam listesi, CPU bilgileri ve çeşitli fiyatlandırma seçenekleri (ayrılmış örnekler dahil).
-
-VM serisini destekleyen birkaç SUS bulabilirsiniz (farklı Türleri ile). Ana bilgisayar kapasitesini (vCPUs sayısı) karşılaştırarak en iyi SKU'yu tanımlayın. Aynı VM serisini destekleyen birden fazla özel ana bilgisayar adabına (örneğin DSv3_Type1 ve DSv3_Type2) rezervasyon uygulayabileceğinizi, ancak farklı VM serilerinde (DSv3 ve ESv3 gibi) rezervasyon uygulayabileceğinizi unutmayın.
+## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>Satın almadan önce doğru adanmış ana bilgisayar SKU 'sunu belirleme
 
 
+Bir ayırma satın almadan önce, hangi adanmış ana bilgisayara ihtiyacınız olduğunu belirlemelisiniz. Bir SKU, VM serisini ve türünü temsil eden ayrılmış bir konak için tanımlanır. 
 
-## <a name="purchase-restriction-considerations"></a>Satın alma kısıtlaması hususları
+VM serisini belirlemek için [Windows sanal makinesi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) için desteklenen boyutlara giderek başlayın.
 
-Ayrılmış örnekler, bazı istisnalar dışında, en özel ana bilgisayar boyutları için kullanılabilir.
+Ardından, Azure adanmış konaklarda desteklenip desteklenmediğini kontrol edin. [Azure adanmış konaklar fiyatlandırma](https://aka.ms/ADHPricing) sayfası, adanmış ana bilgisayar SKU 'LARıNıN, CPU bilgilerinin ve çeşitli fiyatlandırma seçeneklerinin (ayrılmış örnekler dahil) tüm listesini içerir.
 
-Rezervasyon indirimleri aşağıdakiler için geçerli değildir:
+VM serisini (farklı türlerle) destekleyen çeşitli SKU 'Lar bulabilirsiniz. Konağın kapasitesini (vCPU sayısı) karşılaştırarak en iyi SKU 'YU belirler. Aynı VM serisini (örneğin, DSv3_Type1 ve DSv3_Type2) destekleyen, ancak farklı VM serisine (DSv3 ve ESv3 gibi) sahip olan birden çok adanmış ana bilgisayar SKU 'Larına rezervasyon uygulayabileceğinizi unutmayın.
 
-- **Bulutlar** - Rezervasyonlar Almanya veya Çin bölgelerinde satın alınamaz.
 
-- **Yetersiz kota** - Tek bir aboneliği kapsamaalan bir rezervasyon, yeni ayrılmış örnek için abonelikte vCPU kotası olmalıdır. Örneğin, hedef aboneliğin DSv3 Serisi için 10 vCPUs kota sınırı varsa, bu seriyi destekleyen rezervasyona özel ana bilgisayarları satın alamazsınız. Rezervasyonlar için kota denetimi, abonelikte zaten dağıtılan VM'leri ve özel ana bilgisayarlarını içerir. Bu sorunu gidermek için [kota artış isteği](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) oluşturabilirsiniz.
 
-- **Kapasite kısıtlamaları** - Nadir durumlarda Azure, bir bölgedeki düşük kapasite nedeniyle özel ana bilgisayar SUK'larının alt kümesi için yeni rezervasyonsatın almayı sınırlar.
+## <a name="purchase-restriction-considerations"></a>Satın alma kısıtlaması konuları
+
+Ayrılmış örnekler, bazı özel durumlar dışında, çoğu adanmış konak boyutları için kullanılabilir.
+
+Rezervasyon iskontoları şunlar için uygulanmaz:
+
+- **Bulutlar** -rezervasyonlar Almanya veya Çin bölgelerinde satın alınabilir.
+
+- **Yetersiz kota** -tek bir abonelik kapsamındaki bir ayırma, yeni ayrılmış örnek için abonelikte vCPU kotası kullanılabilir olmalıdır. Örneğin, hedef aboneliğin DSv3 serisi için 10 vCPU kota sınırı varsa, bu seriyi destekleyen bir ayırma adanmış ana bilgisayar satın alamazsınız. Rezervasyonların kota denetimi, abonelikte zaten dağıtılmış olan VM 'Leri ve ayrılmış Konakları içerir. Bu sorunu çözmek için [Kota artışı isteği](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) oluşturabilirsiniz.
+
+- **Kapasite kısıtlamaları** -nadir koşullarda Azure, bir bölgedeki düşük kapasiteden dolayı adanmış ana bilgisayar SKU 'larının alt kümesi için yeni rezervasyonların satın alınmasını sınırlandırır.
 
 ## <a name="buy-a-reservation"></a>Ayırma satın alma
 
- [Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir Azure Özel Ana Bilgisayar örneği satın alabilirsiniz.
+ [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)Azure ayrılmış ana bilgisayar örneğinin ayrılmış bir örneğini satın alabilirsiniz.
 
-Rezervasyon için [peşin veya aylık ödemelerle](https://docs.microsoft.com/azure/billing/billing-monthly-payments-reservations)ödeme. Bu gereksinimler ayrılmış bir Ayrılmış Ana Bilgisayar örneği satın almak için geçerlidir:
+Rezervasyon için [veya aylık ödemeler](https://docs.microsoft.com/azure/billing/billing-monthly-payments-reservations)için ödeme yapın. Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın almak için geçerlidir:
 
-- En az bir EA aboneliği veya istediğiniz kadar öde fiyatına sahip bir abonelik için Sahip rolünde olmalısınız.
+- En az bir EA aboneliği veya Kullandıkça Öde tarifesine sahip bir abonelik için sahip rolünde olmanız gerekir.
 
-- EA abonelikleri için **Ayrılmış Örnekler Ekle** seçeneği, [EA portalında](https://ea.azure.com/)etkinleştirilmelidir. Veya, bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
+- EA abonelikleri için, **ayrılmış örnekler** ekle seçeneğinin [EA portalında](https://ea.azure.com/)etkinleştirilmiş olması gerekir. Veya, bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
 
-- Bulut Çözüm Sağlayıcısı (CSP) programı için rezervasyonları yalnızca yönetici aracılar veya satış temsilcileri satın alabilir.
+- Bulut çözümü sağlayıcısı (CSP) programı için yalnızca yönetici aracıları veya satış aracıları ayırmaları satın alabilir.
 
-Bir örneği satın almak için:
+Örnek satın almak için:
 
-1.  [Azure portalında](https://portal.azure.com/)oturum açın.
+1.  [Azure Portal](https://portal.azure.com/)oturum açın.
 
-2.  **Tüm hizmetler** \> **rezervasyonlarını**seçin.
+2.  **Tüm hizmet** \> **ayırmaları**' ni seçin.
 
-3. Yeni bir rezervasyon satın almak için **Ekle'yi** seçin ve ardından **Özel Ana Bilgisayarlar'ı**tıklatın.
+3.  **Ekle** ' yi seçerek yeni bir ayırma satın alın ve **ayrılmış konaklar**' a tıklayın.
 
-4. Gerekli alanları doldurun. Seçtiğiniz özniteliklerle eşleşen Özel Ana Bilgisayar örnekleri nin çalıştırılması rezervasyon indirimini almaya hak kazanır. İndirim alan Özel Ana Bilgisayar örneklerinizin gerçek sayısı, seçilen kapsam ve miktara bağlıdır.
+4. Gerekli alanları doldurun. Ayırma indirimi elde etmek için, seçtiğiniz özniteliklerle eşleşen ayrılmış ana bilgisayar örneklerini çalıştırma. İskontoyu alan adanmış ana bilgisayar örneklerinizin gerçek sayısı, seçilen kapsama ve miktara göre değişir.
 
-Bir EA anlaşmanız varsa, hızlı bir şekilde ek örnekler eklemek için **daha fazla ekle seçeneğini** kullanabilirsiniz. Bu seçenek diğer abonelik türleri için kullanılamaz.
+EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle seçeneğini** kullanabilirsiniz. Bu seçenek diğer abonelik türleri için kullanılamaz.
 
 | **Alan**           | **Açıklama**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Abonelik        | Abonelik rezervasyon için ödeme yapmak için kullanılır. Abonelikteki ödeme yöntemi, rezervasyon masraflarından tahsil edilir. Abonelik türü bir kurumsal sözleşme olmalıdır (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi veya kullandıkça öde oranlarına sahip bireysel bir abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, varsa parasal taahhüt bakiyesinden düşülür veya fazlalık olarak tahsil edilir. Kullandıkça öde oranlarına sahip bir abonelik için, ücretler abonelikteki kredi kartına veya fatura ödeme yöntemine faturalandırılır. |
-| Kapsam               | Rezervasyonun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsam) kapsayabilir. Seçerseniz:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Bölge              | Rezervasyon kapsamındaki Azure bölgesi.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| Özel Ana Bilgisayar Boyutu | Adanmış Ana Bilgisayar örneklerinin boyutu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Sözleşme Dönemi                | Bir ya da üç yıl.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Miktar            | Rezervasyon içinde satın alınan örnek sayısı. Miktar, faturalandırma iskontosu alabilen çalışan Adanmış Ana Bilgisayar örneklerinin sayısıdır.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Abonelik        | Ayırma için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, rezervasyonun maliyetlerine göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da Kullandıkça Öde tarifesine sahip tek bir abonelik olmalıdır (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, varsa parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır. |
+| Kapsam               | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Bölge              | Ayırma kapsamındaki Azure bölgesi.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Ayrılmış ana bilgisayar boyutu | Adanmış konak örneklerinin boyutu.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Sözleşme Dönemi                | Bir yıl veya üç yıl.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Miktar            | Ayırma içinde satın alınan örneklerin sayısı. Miktar, fatura iskontosunu elde eden, çalışan ayrılmış ana bilgisayar örneklerinin sayısıdır.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-- **Tek kaynak grubu kapsamı** — Rezervasyon iskontosu yalnızca seçili kaynak grubundaki eşleşen kaynaklara uygulanır.
+- **Tek kaynak grubu kapsamı** — yalnızca seçili kaynak grubundaki eşleşen kaynaklara rezervasyon iskontosunu uygular.
 
-- **Tek abonelik kapsamı** — Seçilen abonelikteki eşleşen kaynaklara rezervasyon indirimi uygulanır.
+- **Tek abonelik kapsamı** — seçili abonelikteki eşleşen kaynaklara rezervasyon iskontosunu uygular.
 
-- **Paylaşılan kapsam** — Rezervasyon indirimi, faturalandırma bağlamında uygun aboneliklerde eşleşen kaynaklara uygulanır. EA müşterileri için faturalandırma bağlamı kayıttır. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
+- **Paylaşılan kapsam** — fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
 
-## <a name="usage-data-and-reservation-utilization"></a>Kullanım verileri ve rezervasyon kullanımı
+## <a name="usage-data-and-reservation-utilization"></a>Kullanım verileri ve ayırma kullanımı
 
-Kullanım verileriniz, kullanım için sıfır geçerli fiyata sahip olup rezervasyon indirimi alır. Her rezervasyon için hangi VM örneğinin rezervasyon indirimialdığını görebilirsiniz.
+Kullanım verileriniz, kullanım için sıfır geçerli fiyata sahip olup rezervasyon indirimi alır. Her rezervasyon için rezervasyon iskontosunu hangi VM örneğinin aldığını görebilirsiniz.
 
-Kullanım verilerinde rezervasyon indirimlerinin nasıl göründüğü hakkında daha fazla bilgi için, EA müşterisiyseniz Kurumsal  [kaydınız için Azure rezervasyon kullanımını anlayın'](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)a bakın. Tek bir aboneliğiniz varsa, [Kullan-Öde aboneliğiniz için Azure rezervasyon kullanımını anlayın'](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)a bakın.
+Kullanım verilerinde rezervasyon iskontolarının nasıl göründüğü hakkında daha fazla bilgi için bkz. EA müşterisiyseniz  [Kurumsal kaydınız için Azure ayırma kullanımını anlayın](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea). Tek bir aboneliğiniz varsa, bkz. [Kullandıkça Öde aboneliğiniz Için Azure ayırma kullanımını anlayın](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
 
 ## <a name="change-a-reservation-after-purchase"></a>Satın alma işleminden sonra rezervasyonu değiştirme
 
@@ -99,11 +99,11 @@ Satın alma işleminden sonra bir rezervasyon üzerinde aşağıdaki değişikli
 
 - Sahiplik
 
-Ayrıca, bir rezervasyonu daha küçük parçalara bölebilir ve zaten bölünmüş rezervasyonları birleştirebilirsiniz. Değişikliklerin hiçbiri yeni bir ticari işlem yapılmasına veya rezervasyonun bitiş tarihini değiştirmeme neden olmaz.
+Ayrıca, bir ayırmayı daha küçük parçalara bölebilir ve zaten bölünmüş rezervasyonları birleştirebilirsiniz. Değişikliklerden hiçbiri yeni bir ticari işleme neden olmaz ya da ayırmanın bitiş tarihini değiştirmez.
 
-Satın alma işleminden sonra aşağıdaki değişiklik türlerini doğrudan yapamazsınız:
+Satın alma işleminden sonra aşağıdaki değişiklik türlerini yapamazsınız:
 
-- Mevcut bir rezervasyonbölgesi
+- Mevcut bir ayırmanın bölgesi
 
 - SKU
 
@@ -111,27 +111,27 @@ Satın alma işleminden sonra aşağıdaki değişiklik türlerini doğrudan yap
 
 - Süre
 
-Ancak, değişiklik yapmak isterseniz rezervasyon *değiştirebilirsiniz.* 
+Ancak, değişiklik yapmak istiyorsanız bir rezervasyon *alışverişi* yapabilirsiniz.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için Azure [Rezervasyonları için Self servis değişimlerine ve geri ödeme lere](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)bakın.
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
-Sorularınız varsa veya yardıma ihtiyacınız varsa, [bir destek isteği oluşturun.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+Sorularınız varsa ya da yardıma gereksinim duyuyorsanız  [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Rezervasyonu nasıl yöneteceklerini öğrenmek için Azure [Rezervasyonlarını Yönet'e](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)bakın.
+Bir ayırmayı yönetme hakkında bilgi edinmek için bkz. [Azure ayırmalarını yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance).
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure Rezervasyonları nedir?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Azure ayırmaları nelerdir?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
 
-- [Azure'a Özel Ana Bilgisayar kullanma](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Azure Ayrılmış Konaklarını kullanma](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
 
-- [Özel Ev Sahipleri Fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
+- [Ayrılmış Konaklar Fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
 - [Azure’da Rezervasyonları Yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 
