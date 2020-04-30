@@ -8,30 +8,34 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Portalı kullanarak Spring Cloud uygulamanızı başlatma
+    - name: Portalı kullanarak Spring Cloud uygulamasını başlatma
       href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Azure CLI'yı kullanarak Spring Cloud uygulamanızı başlatma
+    - name: Azure CLI’yı kullanarak Spring Cloud uygulamasını başlatma
       href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Spring Cloud uygulamanızı kaynaktan başlatma
+    - name: Spring Cloud uygulamasını kaynaktan başlatma
       href: spring-cloud-launch-from-source.md
-    - name: Maven kullanarak Spring Cloud uygulamanızı başlatma
+    - name: Maven kullanarak Spring Cloud uygulamasını başlatma
       href: spring-cloud-quickstart-launch-app-maven.md
 - name: Öğreticiler
   items:
-    - name: Yapılandırma Sunucunuzu ayarlama
+    - name: Yapılandırma Sunucusunu ayarlama
       href: spring-cloud-tutorial-config-server.md
-    - name: Uygulamanızı el ile ölçeklendirme
+    - name: Uygulamayı el ile ölçeklendirme
       href: spring-cloud-tutorial-scale-manual.md
-    - name: Dağıtılmış izleme ve App Insights kullanarak uygulamanızı izleme
+    - name: Dağıtılmış izleme ve App Insights kullanarak uygulamayı izleme
       href: spring-cloud-tutorial-distributed-tracing.md
     - name: Uyarıları ve eylem gruplarını kullanarak Spring Cloud kaynaklarını izleme
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: Uygulamanızı Azure CosmosDB'ye bağlama
+    - name: Uygulamayı Azure Cosmos DB’ye bağlama
       href: spring-cloud-tutorial-bind-cosmos.md
-    - name: Uygulamanızı Redis için Azure Cache ile bağlama
+    - name: Uygulamayı Redis için Azure Cache ile bağlama
       href: spring-cloud-tutorial-bind-redis.md
-    - name: Uygulamanızı Azure MySQL'e bağlama
+    - name: Uygulamayı Azure MySQL’e bağlama
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: Özel DNS adını Azure Spring Cloud ile eşleme
+      href: spring-cloud-tutorial-custom-domain.md
+    - name: IntelliJ kullanarak Azure Spring Cloud uygulamalarını dağıtma
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
 - name: Kavramlar
   items:
     - name: Azure Spring Cloud kotalarını ve sınırlarını anlama
@@ -56,6 +60,9 @@
       href: spring-cloud-howto-log-streaming.md
     - name: Azure Spring Cloud'da kalıcı depolama kullanma
       href: spring-cloud-howto-persistent-storage.md
+    - name: Azure Spring Cloud’a DevOps Dağıtımı
+    - name: Azure Spring Cloud’u Azure Load Balance Çözümleriyle tümleştirme
+      href: spring-cloud-howto-integrate-azure-load-balancers.md
 - name: Azure Spring Cloud’a DevOps Dağıtımı
   items:
     - name: Azure DevOps ile CI/CD

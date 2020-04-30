@@ -91,6 +91,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Kavramlar
   items:
+    - name: Maliyetleri planlama ve yönetme
+      href: concept-plan-manage-cost.md
     - name: Çalışma alanı
       href: concept-workspace.md
     - name: Ortamlar
@@ -156,6 +158,8 @@
               href: how-to-use-azure-ad-identity.md
             - name: Depolama erişim tuşlarını yeniden oluşturma
               href: how-to-change-storage-access-key.md
+            - name: Azure Güvenlik Duvarı’nı kullanma
+              href: how-to-access-azureml-behind-firewall.md
         - name: Kimlik doğrulamasını ayarlama
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md

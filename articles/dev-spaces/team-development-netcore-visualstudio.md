@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde .NET Core uygulamasında takım geliştirme yapmak için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82166045"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces ile .NET Core ve Visual Studio kullanarak takım geliştirme

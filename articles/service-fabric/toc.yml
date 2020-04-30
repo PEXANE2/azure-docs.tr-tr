@@ -138,6 +138,8 @@
           href: service-fabric-security-controls.md
         - name: Service Fabric’te sertifika tabanlı kimlik doğrulaması
           href: cluster-security-certificates.md
+        - name: Service Fabric’te sertifika yönetimi
+          href: cluster-security-certificate-management.md
     - name: Terminoloji
       href: service-fabric-technical-overview.md
     - name: Uygulamalar oluşturma

@@ -23,7 +23,7 @@
               href: ./standard-contract.md
             - name: Azure iş ortağı müşteri kullanımı ilişkilendirmesi
               href: ./azure-partner-customer-usage-attribution.md
-        - name: Teklif türüne göre yayımlama kılavuzu
+        - name: Teklif türüne göre yayımlama kılavuzları
           href: ./publisher-guide-by-offer-type.md
           items:
             - name: Virtual Machines
@@ -38,13 +38,13 @@
               href: ./marketplace-containers.md
             - name: IoT Edge modülleri
               href: ./iot-edge-module.md
-            - name: Danışmanlık Hizmetleri
+            - name: Danışmanlık hizmetleri
               href: ./consulting-services.md
-            - name: 'Office 365, Dynamics 365 ve Power BI yayımlama kılavuzu'
+            - name: 'Office 365, Dynamics 365 ve Power BI'
               href: ./appsource-offer-publishing-guide.md
             - name: Azure Active Directory kullanarak AppSource ve Market listesini etkinleştirme
               href: ./enable-appsource-marketplace-using-azure-ad.md
-            - name: Tümleşik Çözümler
+            - name: Tümleşik çözümler
               href: ./integrated-solutions-for-publishers.md
         - name: En iyi pazarlama deneyimleri
           href: ./gtm-marketing-best-practices.md
@@ -559,6 +559,8 @@
       href: ./partner-center-portal/publishing-status.md
     - name: Mevcut teklifleri güncelleştirme
       href: ./partner-center-portal/update-existing-offer.md
+    - name: Avantajları etkinleştirme
+      href: ./partner-center-portal/marketplace-rewards.md
     - name: Destek seçenekleri
       href: ./partner-center-portal/support.md
     - name: İş Ortağı Merkezi Analizi

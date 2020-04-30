@@ -10,14 +10,8 @@
   items:
     - name: Web üzerinde Content Moderator'ı deneme
       href: quick-start.md
-    - name: İstemci SDK’sini kullanma
-      items:
-        - name: .NET SDK’sini kullanma
-          href: dotnet-sdk-quickstart.md
-        - name: Python SDK'yı kullanma
-          href: python-sdk-quickstart.md
-        - name: Java SDK'yı kullanma
-          href: java-sdk-quickstart.md
+    - name: İstemci kitaplığını kullanma
+      href: client-libraries.md
 - name: Öğreticiler
   items:
     - name: Orta e-ticaret görüntüleri
