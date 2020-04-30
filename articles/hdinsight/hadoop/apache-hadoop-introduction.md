@@ -1,6 +1,6 @@
 ---
-title: Apache Hadoop ve MapReduce nedir - Azure HDInsight
-description: HDInsight'a giriş ve Apache Hadoop teknoloji yığını ve bileşenleri.
+title: Apache Hadoop ve MapReduce-Azure HDInsight nedir?
+description: HDInsight 'a giriş ve Apache Hadoop teknoloji yığını ve bileşenleri.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
 ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78244881"
 ---
-# <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Hadoop nedir?
+# <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop nedir?
 
-Kümelerde büyük veri kümelerinin dağıtılmış işlenmesi ve analizine yönelik ilk açık kaynak çerçeve [Apache Hadoop](https://hadoop.apache.org/)’tu. Hadoop ekosistemi, Apache Hive, Apache HBase, Spark, Kafka ve diğerleri dahil olmak üzere ilgili yazılım ve yardımcı programları içerir.
+Kümelerde büyük veri kümelerinin dağıtılmış işlenmesi ve analizine yönelik ilk açık kaynak çerçeve [Apache Hadoop](https://hadoop.apache.org/)’tu. Hadoop ekosistemi Apache Hive, Apache HBase, Spark, Kafka ve diğer birçok tane dahil olmak üzere ilgili yazılım ve yardımcı programları içerir.
 
-Azure HDInsight, işletmeler için bulutta tam olarak yönetilen, tam spektrumlu, açık kaynak kodlu bir analiz hizmetidir. Azure HDInsight'taki Apache Hadoop küme türü, toplu verileri paralel olarak işlemek ve analiz etmek için HDFS, YARN kaynak yönetimi ve basit bir MapReduce programlama modelini kullanmanıza olanak tanır.
+Azure HDInsight, kuruluşlar için bulutta tam olarak yönetilen, tam bir açık kaynaklı analiz hizmetidir. Azure HDInsight 'taki Apache Hadoop kümesi türü, Batch verilerini paralel olarak işlemek ve analiz etmek için, bu kaynak yönetimini ve basit bir MapReduce programlama modelini kullanmanıza olanak sağlar.
 
 HDInsight üzerindeki kullanılabilir Hadoop teknolojisi yığını bileşenlerini görmek için, bkz. [HDInsight ile sağlanan bileşenler ve sürümler](../hdinsight-component-versioning.md). HDInsight'ta Hadoop hakkında daha fazla bilgi edinmek için bkz. [HDInsight için Azure özellikleri sayfası](https://azure.microsoft.com/services/hdinsight/).
 
-## <a name="what-is-mapreduce"></a>MapReduce nedir
+## <a name="what-is-mapreduce"></a>MapReduce nedir?
 
-Apache Hadoop MapReduce, büyük miktarda veriyi işleyen işler yazmak için bir yazılım çerçevesidir. Giriş verileri bağımsız parçalara ayrılır. Her bir yığın kümenizdeki düğümler arasında paralel olarak işlenir. MapReduce işi iki işlevden oluşur:
+MapReduce Apache Hadoop, çok miktarda veriyi işleyen işleri yazmaya yönelik bir yazılım çerçevesidir. Giriş verileri bağımsız parçalara bölünür. Her bir öbek, kümenizdeki düğümler arasında paralel olarak işlenir. MapReduce işi iki işlevden oluşur:
 
-* **Mapper**: Giriş verilerini tüketir, analiz eder (genellikle filtre ve sıralama işlemleriyle) ve tupül (anahtar değer çiftleri) yayır
+* **Eşleyici**: giriş verilerini kullanır, analiz eder (genellikle filtre ve sıralama işlemleriyle birlikte) ve tanımlama gruplarını yayar (anahtar-değer çiftleri)
 
-* **Azaltıcı**: Mapper tarafından yayılan tuples tüketir ve Mapper verilerinden daha küçük, birleşik bir sonuç oluşturan bir özet işlemi gerçekleştirir
+* **Reducer**: Eşleyici tarafından yayılan başlıkları kullanır ve Eşleyici verilerinden daha küçük ve birleştirilmiş bir sonuç oluşturan bir Özet işlem gerçekleştirir
 
-Temel sözcük sayısı MapReduce iş örneği aşağıdaki diyagramda gösterilmiştir:
+Temel bir sözcük sayısı MapReduce iş örneği aşağıdaki diyagramda gösterilmiştir:
 
- ![Hdı. WordCountDiyagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
+ ![HDI. WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
-Bu işin çıktısı, metinde her sözcüğün kaç kez oluştuğunu n sayısıdır.
+Bu işin çıkışı, metinde her bir sözcüğün kaç kez oluştuğunu gösteren bir saydır.
 
-* Haritaoluşturucu giriş metninden her satırı giriş olarak alır ve sözcüklere ayırır. Sözcüğün bir sözcüğü her oluştuğunda bir anahtar/değer çifti yayır ve ardından 1. Çıktı, indirgeme cile göndermeden önce sıralanır.
-* Azaltıcı, bu tek tek sayıları her sözcük için toplamlar ve sözcüğü ve ardından oluşumlarının toplamını içeren tek bir anahtar/değer çifti yayar.
+* Eşleyici her satırı giriş metinden girdi olarak alır ve sözcüklere ayırır. Bir sözcüğün her oluşması durumunda 1 ' in ardından bir anahtar/değer çifti yayar. Çıktı, Reducer 'e gönderilmeden önce sıralanır.
+* Reducer, her sözcük için bu ayrı sayıları toplar ve sonra tekrarlarının toplamına göre, sözcüğü içeren tek bir anahtar/değer çifti yayar.
 
-MapReduce çeşitli dillerde uygulanabilir. Java en yaygın uygulamadır ve bu belgede gösteri amacıyla kullanılır.
+MapReduce, çeşitli dillerde uygulanabilir. Java en yaygın uygulamasıdır ve bu belgede tanıtım amacıyla kullanılır.
 
 ## <a name="development-languages"></a>Geliştirme dilleri
 
-Java ve Java Sanal Makine'yi temel alan diller veya çerçeveler doğrudan MapReduce işi olarak çalıştırılabilir. Bu belgede kullanılan örnek bir Java MapReduce uygulamasıdır. C#, Python veya bağımsız yürütülebilir ler gibi Java olmayan **dillerhadoop akışını**kullanmalıdır.
+Java ve Java Sanal Makinesi temel alan diller veya çerçeveler doğrudan MapReduce işi olarak çalıştırılabilir. Bu belgede kullanılan örnek bir Java MapReduce uygulamasıdır. C#, Python veya tek başına yürütülebilir dosyalar gibi Java olmayan diller **Hadoop akışını**kullanmalıdır.
 
-Hadoop akışı, STDIN ve STDOUT üzerinden mapper ve redüktör ile iletişim kurar. Haritacısı ve azaltıcı verileri STDIN'den bir defada bir satır okur ve çıktıyı STDOUT'a yazar. Mapper ve redüktör tarafından okunan veya yayılan her satır, sekme karakteriyle sınırlandırılmış bir anahtar/değer çifti biçiminde olmalıdır:
+Hadoop akışı Eşleyici ve Reducer üzerinden STDıN ve STDOUT üzerinden iletişim kurar. Eşleyici ve Reducer verileri STDIN 'den bir kerede bir satıra okur ve çıktıyı STDOUT 'a yazar. Eşleyici ve Reducer tarafından okunan veya yayılan her satır, bir sekme karakteriyle ayrılmış bir anahtar/değer çifti biçiminde olmalıdır:
 
     [key]/t[value]
 
-Daha fazla bilgi için [Hadoop Streaming'e](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html)bakın.
+Daha fazla bilgi için bkz. [Hadoop akışı](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
 
-HDInsight ile Hadoop akış kullanma örnekleri için aşağıdaki belgeye bakın:
+HDInsight ile Hadoop akışını kullanma örnekleri için aşağıdaki belgeye bakın:
 
-* [C# MapKüçülün işleri geliştirin](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [C# MapReduce işleri geliştirme](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight'ta Apache Hadoop kümesi oluşturma](apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [HDInsight 'ta Apache Hadoop kümesi oluşturma](apache-hadoop-linux-create-cluster-get-started-portal.md)

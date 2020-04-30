@@ -1,6 +1,6 @@
 ---
-title: Azure Mekansal Çapalara genel bakış
-description: Azure Uzamsal Çapaların platformlar arası karma gerçeklik deneyimleri geliştirmenize nasıl yardımcı olduğunu öğrenin.
+title: Azure uzamsal Tutturucuların genel bakış
+description: Azure uzamsal Tutturucuların platformlar arası karma gerçeklik deneyimlerini geliştirmenize nasıl yardımcı olduğunu öğrenin.
 author: craigktreasure
 manager: aliemami
 services: azure-spatial-anchors
@@ -9,43 +9,43 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77657316"
 ---
-# <a name="azure-spatial-anchors-overview"></a>Azure Mekansal Çapalara genel bakış
+# <a name="azure-spatial-anchors-overview"></a>Azure uzamsal Tutturucuların genel bakış
 
-Azure Uzamsal Çapalar'a hoş geldiniz. Azure Uzamsal Çapalar, geliştiricilere mekansal olarak farkında olan karma gerçeklik uygulamaları oluşturmada temel özelliklere sahip olmalarını sağlıyor. Bu uygulamalar Microsoft HoloLens'i, ARKit'i destekleyen iOS tabanlı cihazları ve ARCore'u destekleyen Android tabanlı cihazları destekleyebilir. Azure Spatial Anchors geliştiricilerin alanları algılamak, ilgi çekici noktaları tam olarak belirlemek ve desteklenen cihazlarda bu ilgi çekici noktaları anımsamak için karma gerçeklik platformlarıyla çalışmasını sağlar.
-Bu hassas ilgi noktaları uzamsal çapa olarak adlandırılır.
+Azure uzamsal tutturucularını hoş geldiniz. Azure uzamsal bağlantıları, geliştiricilere, istenmeyen ve dağınık karma gerçeklik uygulamaları oluşturmak için önemli yetenekler sağlar. Bu uygulamalar, ARKit destekleyen Microsoft HoloLens, iOS tabanlı cihazları ve ARCore destekleyen Android tabanlı cihazları destekleyebilir. Azure Spatial Anchors geliştiricilerin alanları algılamak, ilgi çekici noktaları tam olarak belirlemek ve desteklenen cihazlarda bu ilgi çekici noktaları anımsamak için karma gerçeklik platformlarıyla çalışmasını sağlar.
+Bu kesin ilgi noktaları, uzamsal bağlayıcı olarak adlandırılır.
 
 ![Çoklu Platform](./media/cross-platform.png)
 
 ## <a name="examples"></a>Örnekler
 
-Uzamsal Çapalar tarafından etkinleştirilen bazı örnek kullanım örnekleri şunlardır:
+Uzamsal Tutturucuların etkinleştirildiği bazı örnek kullanım durumları şunlardır:
 
-- [Çok kullanıcılı deneyimler.](tutorials/tutorial-share-anchors-across-devices.md) Uzamsal Çapalar, aynı yerdeki kişilerin çok kullanıcılı karma gerçeklik uygulamalarına katılmalarını kolaylaştırır. Örneğin, iki kişi bir masaya sanal satranç tahtası yerleştirerek karışık gerçeklik satranç oyunu başlatabilirsiniz. Daha sonra, cihazlarını masaya doğrultarak sanal satranç tahtasını birlikte görüntüleyebilir ve etkileşime girebiliyorlar.
+- [Çok kullanıcılı deneyimler](tutorials/tutorial-share-anchors-across-devices.md). Uzamsal bağlantılar, aynı yerde bulunan kişilerin çok kullanıcılı karma gerçeklik uygulamalarına katılmasını kolaylaştırır. Örneğin, iki kişi bir tabloya sanal satranç panosu yerleştirerek karma gerçeklik satranç oyununu başlatabilir. Ardından, cihazlarını tabloya işaret ederek, sanal satranç panosunu birlikte görüntüleyip etkileşime girebilirler.
 
-- [Yol bulma.](concepts/anchor-relationships-way-finding.md) Geliştiriciler ayrıca Uzamsal Çapaları aralarında ilişkiler oluşturarak birbirine bağlayabilir. Örneğin, bir uygulama, bir kullanıcının görevi tamamlamak için etkileşimde olması gereken iki veya daha fazla ilgi noktası olan bir deneyim içerebilir. Bu ilgi noktaları bağlı bir şekilde oluşturulabilir. Daha sonra, kullanıcı çok adımlı görevi tamamlarken, uygulama, kullanıcıyı görevdeki bir sonraki adıma yönlendirmek için geçerli olanın yakınında bulunan çapaları isteyebilir.
+- [Yol bulma](concepts/anchor-relationships-way-finding.md). Geliştiriciler, uzamsal bağlantıları aralarında ilişkiler oluşturarak da birbirine bağlayabilirler. Örneğin, bir uygulama, bir kullanıcının bir görevi tamamlaması için etkileşimde bulunması gereken iki veya daha fazla ilgi noktasına sahip bir deneyim içerebilir. Bu ilgi çekici noktaları, bağlı bir biçimde oluşturulabilir. Daha sonra, Kullanıcı çok adımlı görevi tamamlarken, uygulama, kullanıcının görevin bir sonraki adımına yaklaşmasını sağlamak için yakın olan bağlantıları ister.
 
-- [Gerçek dünyada kalıcı sanal içerik](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Bir uygulama, bir kullanıcının bir konferans odası duvarına, insanların bir telefon uygulaması veya HoloLens cihazı kullanarak görebileceği sanal bir takvim yerleştirmesine izin verebilir. Endüstriyel ortamda kullanıcı desteklenen bir cihaz kamerasını makineye doğrultarak makine hakkında bağlamsal bilgiler alabilir.
+- [Gerçek dünyada kalıcı sanal içerik](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Bir uygulama, kullanıcının bir telefon uygulaması veya HoloLens cihazı kullanarak görebilmesine olanak tanıyan bir konferans odası duvarından bir sanal takvim yerleştirmesini sağlayabilir. Endüstriyel ortamda kullanıcı desteklenen bir cihaz kamerasını makineye doğrultarak makine hakkında bağlamsal bilgiler alabilir.
 
-Azure Spatial Anchors bir yönetilen hizmetten ve desteklenen cihaz platformları için istemci SDK'larından oluşur. Aşağıdaki bölümler, Azure Uzamsal Çapaları kullanarak uygulama oluşturmaya başlama hakkında bilgi sağlar.
+Azure Spatial Anchors bir yönetilen hizmetten ve desteklenen cihaz platformları için istemci SDK'larından oluşur. Aşağıdaki bölümlerde, Azure uzamsal bağlayıcıları kullanarak uygulama oluşturmaya başlama hakkında bilgi sağlanmaktadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mekansal Çapalar ile ilk uygulamanızı oluşturun.
+Uzamsal bağlayıcılarla ilk uygulamanızı oluşturun.
 
 > [!div class="nextstepaction"]
-> [Birlik (HoloLens)](quickstarts/get-started-unity-hololens.md)
+> [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)
 
 > [!div class="nextstepaction"]
-> [Birlik (iOS)](quickstarts/get-started-unity-ios.md)
+> [Unity (iOS)](quickstarts/get-started-unity-ios.md)
 
 > [!div class="nextstepaction"]
-> [Birlik (Android)](quickstarts/get-started-unity-android.md)
+> [Unity (Android)](quickstarts/get-started-unity-android.md)
 
 > [!div class="nextstepaction"]
 > [iOS](quickstarts/get-started-ios.md)
