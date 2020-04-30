@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 02/12/2020
-ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/10/2020
+ms.openlocfilehash: ed2fe1736c887fd8aa866c8d0c71a5df0aa4fb31
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770308"
+ms.locfileid: "82232845"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
 
@@ -128,6 +128,9 @@ HDInsight ile depolama seçenekleri hakkında daha fazla bilgi için bkz. [Azure
 Yapılandırma sırasında, varsayılan depolama uç noktası için bir Azure depolama hesabının veya Data Lake Storage blob kapsayıcısını belirtirsiniz. Varsayılan depolama, uygulama ve sistem günlükleri içerir. İsteğe bağlı olarak, ek bağlı Azure depolama hesapları ve kümenin erişebileceği Data Lake Storage hesapları belirtebilirsiniz. HDInsight kümesi ve bağımlı depolama hesapları aynı Azure konumunda olmalıdır.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+
+> [!IMPORTANT]
+> Bir küme oluşturduktan sonra güvenli depolama aktarımını etkinleştirmek, depolama hesabınızı kullanırken hatalara neden olabilir ve önerilmez. Güvenli aktarım özelliği zaten etkin olan bir depolama hesabı kullanılarak yeni bir küme oluşturulması daha iyidir.
 
 ### <a name="metastore-settings"></a>Meta veri deposu ayarları
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127560"
+ms.locfileid: "82231977"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -56,7 +56,23 @@ Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-     
+
+* **Panda hataları: genellikle, normal ml denemesi sırasında görüldü:**
+   
+   Environmnet kullanarak environmnet 'i el ile kurarken, desteklenmeyen paket sürümlerinin yüklenmesi nedeniyle öznitelik hataları (özellikle Pandas 'tan) fark edeceksiniz. Bu tür hataları engellemek için [lütfen automl_setup. cmd ' yi kullanarak oto ml SDK 'sını yüklemelisiniz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):
+   
+    1. Bir Anaconda istemi açın ve bir örnek Not defteri kümesi için GitHub deposunu kopyalayın.
+
+    ```bash
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+    
+    2. Örnek Not defterlerinin ayıklandığı nasıl yapılır kullanımı-azureml/otomatik makine öğrenimi klasörü ve ardından şunu çalıştırın:
+    
+    ```bash
+    automl_setup
+    ```
+  
 * **Hata iletisi: ' PyYAML ' kaldırılamıyor**
 
     Python için Azure Machine Learning SDK: PyYAML yüklü bir `distutils` projem. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayarak SDK 'Yı yüklemeye devam etmek için şunu kullanın:

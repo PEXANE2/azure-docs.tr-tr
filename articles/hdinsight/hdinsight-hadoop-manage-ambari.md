@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: 53d8da3f5ff715fa34f007272214823ed60e6326
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192068"
+ms.locfileid: "82232862"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight kümelerini Apache Ambari Web arabiriminden yönetme
 
@@ -135,7 +135,7 @@ Bu bağlantılardan herhangi birini seçmek, tarayıcınızda seçili sayfayı g
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambarı kullanıcıları, grupları ve izinleri
 
-Etki alanına katılmış HDInsight kümesi kullanılırken kullanıcılar, gruplar ve izinlerle çalışma desteklenir. Etki alanına katılmış bir kümede ambarı yönetimi Kullanıcı arabirimini kullanma hakkında daha fazla bilgi için bkz. [etki alanına katılmış HDInsight kümelerini yönetme](./domain-joined/hdinsight-security-overview.md).
+Kullanıcılar, gruplar ve izinlerle çalışma desteklenir. Yerel Yönetim için bkz. [kullanıcıları Apache ambarı görünümleri Için Yetkilendir](./hdinsight-authorize-users-to-ambari.md). Etki alanına katılmış kümeler için bkz. [etki alanına katılmış HDInsight kümelerini yönetme](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
 > Linux tabanlı HDInsight kümenizdeki ambarı izleme (hdinsightwatchdog) parolasını değiştirmeyin. Parola değiştirme, betik eylemlerini kullanma veya kümeniz ile ölçeklendirme işlemleri gerçekleştirme yeteneğini keser.

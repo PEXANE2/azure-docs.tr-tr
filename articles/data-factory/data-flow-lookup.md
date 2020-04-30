@@ -1,6 +1,6 @@
 ---
-title: Veri akışını eşlemede arama dönüşümü
-description: Veri akışını eşlemede arama dönüşümlerini kullanarak başka bir kaynaktan gelen başvuru verileri.
+title: Eşleme veri akışında arama dönüşümü
+description: Eşleme veri akışındaki arama dönüşümünü kullanarak başka bir kaynaktan veri başvurusu.
 author: kromerm
 ms.reviewer: daperlov
 ms.author: makromer
@@ -8,58 +8,58 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: 24fe11610d2a91fcdb0f09b8e45ea6ff4b81bd70
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
-ms.translationtype: MT
+ms.openlocfilehash: af4e33e2653aebe5d1c979aa314463e4beb7b0d7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606373"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233406"
 ---
-# <a name="lookup-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede arama dönüşümü
+# <a name="lookup-transformation-in-mapping-data-flow"></a>Eşleme veri akışında arama dönüşümü
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bir veri akışı akışında başka bir kaynaktan gelen verilere başvurmak için arama dönüşümlerini kullanın. Arama dönüştürme, eşleşen verilerden kaynak verilerinize sütunekler.
+Veri akışı akışındaki başka bir kaynaktaki verilere başvurmak için arama dönüşümünü kullanın. Arama dönüştürmesi, eşleşen verilerden alınan sütunları kaynak verilerinize ekler.
 
-Arama dönüşümü sol dış birleştirmeye benzer. Birincil akıştaki tüm satırlar, çıkış akışında, arama akışından ek sütunlar içeren olarak bulunur. 
+Bir arama dönüştürmesi, bir sol dış birleşime benzer. Birincil akıştaki tüm satırlar, arama akışından ek sütunları olan çıkış akışında bulunur. 
 
 ## <a name="configuration"></a>Yapılandırma
 
-![Arama Dönüşümü](media/data-flow/lookup1.png "Arama")
+![Arama dönüşümü](media/data-flow/lookup1.png "Arama")
 
-**Birincil akış:** Gelen veri akışı. Bu akış, birbirin sol tarafına eşdeğerdir.
+**Birincil akış:** Gelen veri akışı. Bu akış, birleştirmenin sol tarafıyla eşdeğerdir.
 
-**Arama akışı:** Birincil akışa eklenen veriler. Hangi verilerin eklendiği arama koşullarına göre belirlenir. Bu akış, birbirin sağ tarafına eşdeğerdir.
+**Arama akışı:** Birincil akışa eklenen veriler. Eklenen veriler arama koşullarına göre belirlenir. Bu akış, birleştirmenin sağ tarafıyla eşdeğerdir.
 
-**Birden çok satırı eşleştirin:** Etkinleştirilmişse, birincil akışta birden çok eşleşme solan bir satır birden çok satır döndürecek. Aksi takdirde, 'Match on' koşuluna göre yalnızca tek bir satır döndürülür.
+**Birden çok satırı eşleştir:** Etkinleştirilirse, birincil akışta birden fazla eşleşme içeren bir satır birden çok satır döndürür. Aksi takdirde, ' Match on ' koşuluna göre yalnızca tek bir satır döndürülür.
 
-**Maç üzerinde:** Yalnızca 'Birden çok satırı eşleştir' etkinse görünür. Herhangi bir satırda, ilk eşleşmede mi yoksa son eşleşmede mi eşleşeceğinizi seçin. Herhangi bir satır en hızlı yürütülür olarak önerilir. İlk satır veya son satır seçilirse, sıralama koşullarını belirtmeniz gerekir.
+**Eşleşme:** Yalnızca ' birden fazla satırı Eşleştir ' etkinse görünür. Herhangi bir satır, ilk eşleşme veya son eşleşme ile eşleşmeyeceğinizi seçin. En hızlı şekilde çalıştığı için herhangi bir satır önerilir. İlk satır veya son satır seçiliyse sıralama koşullarını belirtmeniz gerekir.
 
-**Arama koşulları:** Hangi sütunlarda eşleşeceğini zindan edin. Eşitlik koşulu karşılanırsa, satırlar eşleşebilir. Hover ve [veri akışı ifade dilini](data-flow-expression-functions.md)kullanarak bir değer ayıklamak için 'Hesaplanmış sütun' seçin.
+**Arama koşulları:** Hangi sütunların eşleşeceğini seçin. Eşitlik koşulu karşılanıyorsa, satırlar eşleşme olarak kabul edilir. [Veri akışı ifade dilini](data-flow-expression-functions.md)kullanarak bir değer ayıklamak için üzerine gelin ve ' hesaplanan sütun ' seçeneğini belirleyin.
 
-Arama dönüşümü yalnızca eşitlik eşleşmelerini destekler. Arama ifadesini, daha büyük gibi diğer işleçleri içerecek şekilde özelleştirmek için, [birleştirme dönüşümünde çapraz birleştirme](data-flow-join.md#custom-cross-join)kullanılması önerilir. Çapraz birleştirme, yürütme de olası kartezyen ürün hatalarını önler.
+Arama dönüştürmesi yalnızca eşitlik eşleşmelerini destekler. Arama ifadesini, büyüktür gibi diğer işleçleri içerecek şekilde özelleştirmek için, [JOIN dönüşümünde bir çapraz birleştirmenin](data-flow-join.md#custom-cross-join)kullanılması önerilir. Çapraz bir birleşime yürütme sırasında olası bir Kartezyen ürün hatalarından kaçınılmasını sağlar.
 
-Her iki akıştaki tüm sütunlar çıktı verilerine dahil edilir. Yinelenen veya istenmeyen sütunları düşürmek için, arama dönüşümünüz sonrasında [bir seçim dönüşümü](data-flow-select.md) ekleyin. Sütunlar, lavabo dönüşümünde de bırakılabilir veya yeniden adlandırılabilir.
+Her iki akıştaki tüm sütunlar çıktı verilerine dahil edilir. Yinelenen veya istenmeyen sütunları bırakmak için, arama dönüşümünüze sonra bir [seçme dönüşümü](data-flow-select.md) ekleyin. Ayrıca, bir havuz dönüşümünde sütunlar bırakılabilir veya yeniden adlandırılabilir.
 
-## <a name="analyzing-matched-rows"></a>Eşleşen satırları çözümleme
+## <a name="analyzing-matched-rows"></a>Eşleşen satırlar çözümleniyor
 
-Arama dönüşümünüzün ardından, `isMatch()` aramanın tek tek satırlarla eşleşip eşleşmeyeceğini görmek için işlev kullanılabilir.
+Arama dönüşümünüzün ardından işlev `isMatch()` , aramanın ayrı satırlar için eşleştirilmesinin olup olmadığını görmek için kullanılabilir.
 
-![Arama deseni](media/data-flow/lookup111.png "Arama deseni")
+![Arama kalıbı](media/data-flow/lookup111.png "Arama kalıbı")
 
-Bu desenin bir `isMatch()` örneği, işlevüzerinde bölmek için koşullu bölme dönüştürme kullanıyor. Yukarıdaki örnekte, eşleşen satırlar üst akıştan geçer ve eşleşmeyen ```NoMatch``` satırlar akış boyunca akar.
+Bu modele bir örnek, `isMatch()` işlev üzerine bölünecek koşullu bölünmüş dönüştürmeyi kullanmaktır. Yukarıdaki örnekte, eşleşen satırlar üst akış ve eşleşen olmayan satırları ```NoMatch``` Stream üzerinden akar.
 
 ## <a name="testing-lookup-conditions"></a>Arama koşullarını test etme
 
-Hata ayıklama modunda veri önizlemesi ile arama dönüşümünün sınanırken, bilinen küçük bir veri kümesikullanın. Büyük bir veri kümesinden satırları örnekleme yaparken, sınama için hangi satırların ve anahtarların okunacağını tahmin edemezsiniz. Sonuç belirleyici değildir, yani birleştirme koşullarınız eşleşmeleri döndürmeyebilir.
+Hata ayıklama modundaki arama dönüşümünü veri önizleme ile sınarken, küçük bir bilinen veri kümesi kullanın. Büyük bir veri kümesinden satırlar örneklenirken, hangi satırların ve anahtarların test için okunacağını tahmin edemeyecektir. Sonuç belirleyici değildir, yani JOIN koşullarınızın herhangi bir eşleşme döndürmeyebilir.
 
-## <a name="broadcast-optimization"></a>Yayın optimizasyonu
+## <a name="broadcast-optimization"></a>Yayın iyileştirmesi
 
-Azure Veri Fabrikası'nda veri eşleme akışları ölçeklenmiş Spark ortamlarında yürütülür. Veri kümeniz alt düğüm bellek alanına sığabiliyorsa, yayını etkinleştirerek arama performansınız en iyi duruma getirilebilir.
+![Yayın katılımı](media/data-flow/broadcast.png "Yayın katılımı")
 
-![Yayın A.B.D.](media/data-flow/broadcast.png "Yayın A.B.D.")
+Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını**etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit**' i seçin.
 
-Yayını etkinleştirmek tüm veri kümesini belleğe iter. Yalnızca birkaç bin satır içeren daha küçük veri kümeleri için yayın, arama performansınızı büyük ölçüde artırabilir. Büyük veri kümeleri için bu seçenek bellek dışı bir özel durum neden olabilir.
+Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dışında yayınlamayı** devre dışı bırakmanız önerilmez.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -72,24 +72,24 @@ Yayını etkinleştirmek tüm veri kümesini belleğe iter. Yalnızca birkaç bi
         multiple: { true | false },
         pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
         { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <lookupTransformationName>
 ```
 ### <a name="example"></a>Örnek
 
-![Arama Dönüşümü](media/data-flow/lookup-dsl-example.png "Arama")
+![Arama dönüşümü](media/data-flow/lookup-dsl-example.png "Arama")
 
-Yukarıdaki arama yapılandırması için veri akışı komut dosyası aşağıdaki kod snippet bulunmaktadır.
+Yukarıdaki arama yapılandırması için veri akışı betiği aşağıdaki kod parçacığında bulunur.
 
 ```
 SQLProducts, DimProd lookup(ProductID == ProductKey,
     multiple: false,
     pickup: 'first',
     asc(ProductKey, true),
-    broadcast: 'none')~> LookupKeys
+    broadcast: 'auto')~> LookupKeys
 ```
 ## 
 Sonraki adımlar
 
-* Birleştirme [join](data-flow-join.md) ve [var olan](data-flow-exists.md) dönüşümler hem birden çok akış girişi alır
-* Eşleşen ve eşleşmeyen ```isMatch()``` değerlerde satırları bölmek için [koşullu bölme dönüştürme](data-flow-conditional-split.md) kullanma
+* [JOIN](data-flow-join.md) ve [Exists](data-flow-exists.md) dönüştürmelerinin ikisi de birden çok akış girişi alır
+* Eşleşen ve eşleşmeyen değerlere satırları ayırmak ```isMatch()``` için ile [koşullu bölünmüş dönüşüm](data-flow-conditional-split.md) kullanın
