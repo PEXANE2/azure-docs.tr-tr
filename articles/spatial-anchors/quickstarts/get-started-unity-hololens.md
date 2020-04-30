@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Unity ile bir HoloLens uygulaması oluşturun'
-description: Bu hızlı başlangıçta, Uzamsal Çapalar'ı kullanarak Unity ile bir HoloLens uygulaması oluşturmayı öğrenirsiniz.
+title: 'Hızlı başlangıç: Unity ile bir HoloLens uygulaması oluşturma'
+description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak Unity ile bir HoloLens uygulaması oluşturmayı öğreneceksiniz.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,23 +9,23 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 9e946d7f4616799768711ee8c18584a2a8fcff2a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81482003"
 ---
-# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Hızlı başlangıç: Azure Uzamsal Çapaları kullanan bir Unity HoloLens uygulaması oluşturun
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity HoloLens uygulaması oluşturma
 
-Bu hızlı başlangıçta, [Azure Uzamsal Çapaları](../overview.md)kullanan bir Unity HoloLens uygulaması oluşturursunuz. Uzamsal Çapalar, zaman içinde aygıtlar arasında konumlarını devam ettirmeye devam eden nesnelerle karışık gerçeklik deneyimleri oluşturmanıza olanak tanıyan bir çapraz platform geliştirici hizmetidir. İşi bittiğinde, bir uzamsal çapayı kaydedip geri çağırabilen Unity ile oluşturulmuş bir HoloLens uygulamasına sahip olacaksınız.
+Bu hızlı başlangıçta, [Azure uzamsal bağlayıcıları](../overview.md)kullanan bir Unity HoloLens uygulaması oluşturacaksınız. Uzamsal bağlantılar, zaman içinde cihazlarda kendi konumlarını kalıcı hale getiremeyen nesneler ile karışık gerçeklik deneyimleri oluşturmanıza olanak tanıyan platformlar arası bir geliştirici hizmetidir. İşiniz bittiğinde, bir uzamsal bağlayıcıyı kaydedip geri çekebilmeniz için Unity ile oluşturulmuş bir HoloLens uygulamanız olacaktır.
 
 Şunları öğrenirsiniz:
 
-- Uzamsal Çapalar hesabı oluşturun.
-- Unity yapı ayarlarını hazırlayın.
-- Uzamsal Çapalar hesap tanımlayıcısını ve hesap anahtarını yapılandırın.
-- HoloLens Visual Studio projesini dışa aktarın.
-- Uygulamayı dağıtın ve holoLens aygıtında çalıştırın.
+- Uzamsal bir bağlayıcı hesabı oluşturun.
+- Unity derleme ayarlarını hazırlayın.
+- Uzamsal Tutturucuların hesap tanımlayıcısını ve hesap anahtarını yapılandırın.
+- HoloLens Visual Studio projesini dışarı aktarın.
+- Uygulamayı dağıtın ve bir HoloLens cihazında çalıştırın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,72 +33,72 @@ Bu hızlı başlangıçta, [Azure Uzamsal Çapaları](../overview.md)kullanan bi
 
 Bu hızlı başlangıcı tamamlamak için:
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 veya 2019.2</a> ve <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> veya sonraki yüklü bir Windows bilgisayarınıza ihtiyacınız vardır. Visual Studio yüklemeniz **Evrensel Windows Platformu geliştirme** iş yükünü ve **Windows 10 SDK (10.0.18362.0 veya daha yeni)** bileşenini içermelidir. Ayrıca Windows ve Git <a href="https://git-lfs.github.com/">LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için Git</a> yüklemeniz gerekir.
-- [Geliştirici modunun](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) etkin olduğu bir HoloLens aygıtına ihtiyacınız vardır. [Windows 10 Ekim 2018 Güncelleştirmesi](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (RS5 olarak da bilinir) aygıta yüklenmiş olmalıdır. HoloLens'teki en son sürümde güncelleme yapmak için **Ayarlar** uygulamasını açın, **& Güvenliği Güncelleştir'e**gidin ve ardından **güncelleştirmeleri**denetle'yi seçin.
-- Uygulamanızda, **Uzamsal Algılama** yeteneğini etkinleştirmeniz gerekir. Bu ayar **Yapı Ayarları** > **Oyuncu Ayarları** > **Yayımlama Ayarları** > **Özellikleri'ndedir.**
-- Uygulamanızda, **Windows Mixed Reality SDK**ile **desteklenen Sanal Gerçeklik'i** etkinleştirmeniz gerekir. Bu ayar **Yapı Ayarları** > **Oyuncu Ayarları** > **XR Ayarları'** ndadır.
+- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 veya 2019,2</a> Ile bir Windows bilgisayara ihtiyacınız vardır ve <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> veya üzeri yüklü olmalıdır. Visual Studio yüklemenizin **Evrensel Windows platformu geliştirme** iş yükü ve **Windows 10 SDK (10.0.18362.0 veya daha yeni)** bileşenini içermesi gerekir. Ayrıca, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> 'i de yüklemelisiniz.
+- [Geliştirici modunun](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) etkinleştirildiği bir HoloLens cihazına ihtiyacınız vardır. [Windows 10 ekim 2018 güncelleştirmesi](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (Ayrıca RS5 olarak da bilinir) cihazda yüklü olmalıdır. HoloLens 'te en son sürüme güncelleştirmek için **Ayarlar** uygulamasını açın, **güncelleştirme & güvenliği**' ne gidin ve ardından **Güncelleştirmeleri denetle**' yi seçin.
+- Uygulamanızda, **Spatialperception** özelliğini etkinleştirmeniz gerekir. Bu ayar, **derleme ayarları** > **oynatıcı ayarları** > **Yayımlama ayarları** > **özellikleri**' nde bulunur.
+- Uygulamanızda, **Windows Mixed REALITY SDK**Ile **desteklenen sanal gerçeklik** 'i etkinleştirmeniz gerekir. Bu ayar, **derleme ayarları** > **oynatıcı ayarları** > **XR ayarları**' nda bulunur.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="download-and-open-the-unity-sample-project"></a>Unity örnek projesini indirin ve açın
+## <a name="download-and-open-the-unity-sample-project"></a>Unity örnek projesini indir ve aç
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
- >  **Dosya**Oluşturma Ayarları'nı seçerek **Yapı Ayarlarını** Açın.**Build Settings**
+**File**Dosya > **derleme ayarları**' nı seçerek **derleme ayarlarını** açın.
 
-**Platform** bölümünde Evrensel **Windows Platformu'nu**seçin. Hedef **Aygıtı** **HoloLens**olarak değiştirin.
+**Platform** bölümünde **Evrensel Windows platformu**' yi seçin. **Hedef cihazı** **HoloLens**olarak değiştirin.
 
-Platformu **Evrensel Windows Platformu**olarak değiştirmek için Platform'u **Değiştir'i** seçin. Unity, eksikse UWP destek bileşenlerini yüklemenizi isteyebilir.
+Platformu **Evrensel Windows platformu**olarak değiştirmek için **platformu** Değiştir ' i seçin. Unity, eksik olmaları durumunda UWP destek bileşenleri yüklemenizi isteyebilir.
 
-![Unity Yapı Ayarları penceresi](./media/get-started-unity-hololens/unity-build-settings.png)
+![Unity derleme ayarları penceresi](./media/get-started-unity-hololens/unity-build-settings.png)
 
-Yapı **Ayarları** penceresini kapatın.
+**Derleme ayarları** penceresini kapatın.
 
-## <a name="configure-the-account-identifier-and-key"></a>Hesap tanımlayıcısını ve anahtarı nı yapılandırma
+## <a name="configure-the-account-identifier-and-key"></a>Hesap tanımlayıcıyı ve anahtarı yapılandırın
 
-**Proje** bölmesinde, sahne `Assets/AzureSpatialAnchors.Examples/Scenes` dosyasına `AzureSpatialAnchorsBasicDemo.unity` gidin ve açın.
+**Proje** bölmesinde, öğesine `Assets/AzureSpatialAnchors.Examples/Scenes` gidin ve `AzureSpatialAnchorsBasicDemo.unity` sahne dosyasını açın.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-**Dosya** > Kaydet'i seçerek sahneyi**kaydedin.**
+**Dosya** > **Kaydet**' i seçerek sahneyi kaydedin.
 
-## <a name="export-the-hololens-visual-studio-project"></a>HoloLens Visual Studio projesini dışa aktarma
+## <a name="export-the-hololens-visual-studio-project"></a>HoloLens Visual Studio projesini dışarı aktarma
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-**Yapı'yı**seçin. İletişim kutusunda, HoloLens Visual Studio projesini dışa aktarmak için bir klasör seçin.
+**Oluştur**' u seçin. İletişim kutusunda, HoloLens Visual Studio projesinin dışarı aktarılacağı klasörü seçin.
 
-Dışa aktarım tamamlandığında, dışa aktarılan HoloLens projesini içeren bir klasör görüntülenir.
+Dışarı aktarma işlemi tamamlandığında, dışarı aktarılmış HoloLens projesini içeren bir klasör görüntülenir.
 
-## <a name="deploy-the-hololens-application"></a>HoloLens uygulamasını dağıtın
+## <a name="deploy-the-hololens-application"></a>HoloLens uygulamasını dağıtma
 
-Klasörde, Visual Studio'da projeyi açmak için **HelloAR U3D.sln'yi** çift tıklatın.
+Klasörde, Visual Studio 'da projeyi açmak için **Merhaba ar U3D. sln** öğesine çift tıklayın.
 
-Çözüm **Yapılandırmasını** **Sürüm**olarak değiştirin, **Çözüm Platformu'nu** **x86**olarak değiştirin ve dağıtım hedef seçeneklerinden **Aygıt'ı** seçin.
+**Çözüm yapılandırmasını** **yayın**olarak değiştirin, **çözüm platformunu** **x86**olarak değiştirin ve dağıtım hedefi seçeneklerinden **cihaz** ' ı seçin.
 
-HoloLens 2 kullanıyorsanız, **x86**yerine **ÇÖZÜM Platformu**olarak **ARM64** kullanın.
+HoloLens 2 kullanıyorsanız, **x86**yerine **çözüm platformu**olarak **ARM64** kullanın.
 
    ![Visual Studio yapılandırması](./media/get-started-unity-hololens/visual-studio-configuration.png)
 
-HoloLens cihazını açın, oturum açın ve usb kablosu kullanarak cihazı BILGISAYARa bağlayın.
+HoloLens cihazını açın, oturum açın ve USB kablosu kullanarak cihazı BILGISAYARA bağlayın.
 
-Uygulamanızı dağıtmak ve hata ayıklamaya başlamak için **Hata** > **Ayıklama Başlat'ı** seçin.
+Uygulamanızı dağıtmak ve hata ayıklamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin.** > 
 
-Bir çapa yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
+Bir bağlayıcıyı yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
 
-Visual Studio'da Hata **Ayıklamayı Durdur** veya Shift+F5'i seçerek uygulamayı durdurun.
+Visual Studio 'da, **hata ayıklamayı Durdur** veya SHIFT + F5 ' i seçerek uygulamayı durdurun.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="unity-20193"></a>Birlik 2019.3
+### <a name="unity-20193"></a>Unity 2019,3
 
-Kırılan değişiklikler nedeniyle, Unity 2019.3 şu anda desteklenmiyor. Lütfen Unity 2019.1 veya 2019.2'yi kullanın.
+Büyük değişiklikler nedeniyle Unity 2019,3 Şu anda desteklenmiyor. Lütfen Unity 2019,1 veya 2019,2 kullanın.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Öğretici: Uzamsal çapaları aygıtlar arasında paylaşın](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Öğretici: cihazlarda uzamsal bağlayıcıları paylaşma](../tutorials/tutorial-share-anchors-across-devices.md)
