@@ -1,6 +1,6 @@
 ---
-title: Azure'da Windows VM'ler için yalıtım
-description: Azure'da VM yalıtım çalışmaları hakkında bilgi edinin.
+title: Azure 'da Windows VM 'Leri için yalıtım
+description: Azure 'da VM yalıtımının çalışması hakkında bilgi edinin.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.openlocfilehash: e03f31d8a78a0d327278768c3f0b66d2119f8dc8
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870063"
 ---
-# <a name="virtual-machine-isolation-in-azure"></a>Azure'da sanal makine yalıtımı
+# <a name="virtual-machine-isolation-in-azure"></a>Azure 'da sanal makine yalıtımı
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "81870063"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure PowerShell,](dedicated-hosts-powershell.md) [portal](dedicated-hosts-portal.md)ve [Azure CLI'yi](../linux/dedicated-hosts-cli.md)kullanarak özel bir ana bilgisayar dağıtabilirsiniz. Daha fazla bilgi [için, Özel ana bilgisayarlarına](dedicated-hosts.md) genel bakış alabakın.
+- [Azure PowerShell](dedicated-hosts-powershell.md), [Portal](dedicated-hosts-portal.md)ve [Azure CLI](../linux/dedicated-hosts-cli.md)kullanarak adanmış bir konak dağıtabilirsiniz. Daha fazla bilgi için bkz. [adanmış ana bilgisayarlara](dedicated-hosts.md) genel bakış.
 
 
 

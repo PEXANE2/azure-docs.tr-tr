@@ -1,6 +1,6 @@
 ---
-title: Nesil 2 VM'ler için Azure desteği
-description: Nesil 2 VM'ler için Azure desteğine genel bakış
+title: 2. nesil VM 'Ler için Azure desteği
+description: 2. nesil sanal makineler için Azure desteğine genel bakış
 author: ju-shim
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -8,155 +8,155 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
 ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084286"
 ---
-# <a name="support-for-generation-2-vms-on-azure"></a>Azure'da nesil 2 VM desteği
+# <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
-Nesil 2 sanal makineler (VM'ler) desteği artık Azure'da kullanılabilir. Sanal makineyi oluşturduktan sonra oluşturmayı değiştiremezsiniz, bu nedenle bir nesil seçmeden önce bu sayfadaki hususları gözden geçirin.
+2. nesil sanal makineler (VM 'Ler) için destek artık Azure 'da kullanıma sunuldu. Oluşturduktan sonra bir sanal makinenin neslini değiştiremezsiniz, bu nedenle bir oluşturma seçmeden önce bu sayfadaki konuları gözden geçirin.
 
-Generation 2 VM'ler, nesil 1 VM'lerde desteklenmeyen temel özellikleri destekler. Bu özellikler arasında artırılmış bellek, Intel Software Guard Uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM) bulunur. Şirket içinde çalışan Generation 2 VM'ler, Azure'da henüz desteklenmeyen bazı özelliklere sahiptir. Daha fazla bilgi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
+2. nesil VM 'ler, 1. nesil VM 'lerde desteklenmeyen önemli özellikleri destekler. Bu özellikler, artan bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM) içerir. Şirket içinde çalışan 2. nesil VM 'lerde, henüz Azure 'da desteklenmeyen bazı özellikler var. Daha fazla bilgi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
-Generation 2 VM'ler, nesil 1 VM'ler tarafından kullanılan BIOS tabanlı mimari yerine yeni UEFI tabanlı önyükleme mimarisini kullanır. Nesil 1 VM ile karşılaştırıldığında, nesil 2 VM'ler önyükleme ve yükleme sürelerini geliştirmiş olabilir. Nesil 2 VM'lere ve nesil 1 ile nesil 2 arasındaki bazı farklara genel bir bakış için bkz. [Hyper-V'de bir nesil 1 veya 2 sanal makine oluşturmalı mıyım?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+2. nesil sanal makineler, 1. nesil VM 'Ler tarafından kullanılan BIOS tabanlı mimaride değil, yeni UEFı tabanlı önyükleme mimarisini kullanır. 1. nesil VM 'Lerle karşılaştırıldığında 2. nesil VM 'Ler geliştirilmiş önyükleme ve yükleme süreleriyle aynı olabilir. 2. nesil VM 'Lere genel bakış ve 1. nesil ve 2. nesil arasındaki farklılıklar için bkz. [Hyper-V ' d e 1. nesil veya 2 sanal makine oluşturmalıyım?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
-## <a name="generation-2-vm-sizes"></a>Nesil 2 VM boyutları
+## <a name="generation-2-vm-sizes"></a>2. nesil VM boyutları
 
-Generation 1 VM'ler Azure'daki tüm VM boyutlarıyla desteklenir (Mv2 serisi VM'ler hariç). Azure artık aşağıdaki seçili VM serisi için nesil 2 desteği sunar:
+1. nesil sanal makineler, Azure 'daki tüm VM boyutları tarafından desteklenir (Mv2 serisi VM 'Ler hariç). Azure şimdi aşağıdaki seçili VM serileri için 2. nesil destek sunuyor:
 
 * [B serisi](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [DCsv2 serisi](../dcv2-series.md)
-* [DSv2 serisi](../dv2-dsv2-series.md) ve [Dsv3 serisi](../dv3-dsv3-series.md)
+* [DSv2-Series](../dv2-dsv2-series.md) ve [Dsv3 serisi](../dv3-dsv3-series.md)
 * [Esv3 serisi](../ev3-esv3-series.md)
 * [Fsv2 serisi](../fsv2-series.md)
 * [GS serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [HB serisi](../hb-series.md)
 * [HC serisi](../hc-series.md)
-* [Ls serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) ve [Lsv2 serisi](../lsv2-series.md)
+* [LS-Serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) ve [Lsv2 serisi](../lsv2-series.md)
 * [Mv2 serisi](../mv2-series.md)
-* [NCv2 serisi](../ncv2-series.md) ve [NCv3 serisi](../ncv3-series.md)
+* [NCv2-Series](../ncv2-series.md) ve [NCv3 serisi](../ncv3-series.md)
 * [ND serisi](../nd-series.md)
 * [NVv3 serisi](../nvv3-series.md)
 
 > [!NOTE]
-> Mv2 serisi VM'ler için nesil 2 VM görüntülerinin kullanımı genellikle kullanılabilir, çünkü Mv2 serisi sadece nesil 2 VM görüntülerle çalışır. Nesil 1 VM görüntüleri Mv2 serisi VM'lerde desteklenmez. 
+> Mv2 serisi VM 'Ler için 2. nesil VM görüntülerinin kullanımı, Mv2 serisi yalnızca 2. nesil VM görüntüleriyle çalıştığından genel kullanıma sunulmuştur. 1. nesil VM görüntüleri Mv2 serisi VM 'lerde desteklenmez. 
 
-## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketinde Nesil 2 VM görüntüleri
+## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketi 'nde 2. nesil VM görüntüleri
 
-Nesil 2 VM'ler aşağıdaki Market görüntülerini destekler:
+2. nesil VM 'Ler aşağıdaki Market görüntülerini destekler:
 
 * Windows Server 2019, 2016, 2012 R2, 2012
 * Windows 10
-* SUSE Linux Kurumsal Sunucu 15 SP1
-* SUSE Linux Kurumsal Sunucu 12 SP4
-* Ubuntu Server 16.04, 18.04, 19.04, 19.10 
-* RHEL 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 7.0
-* Cent İşletim Sistemi 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
-* Oracle Linux 7.7, 7.7-CI
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
+* Ubuntu Server 16,04, 18,04, 19,04, 19,10 
+* RHEL 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 7,0
+* Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4
+* Oracle Linux 7,7, 7,7-CI
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure oluşturma 2 VM'ler
+## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure 2. nesil VM 'Ler
 
-Azure şu anda şirket içi Hyper-V'nin nesil 2 VM'ler için desteklediği bazı özellikleri desteklememektedir.
+Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özellikleri desteklememektedir.
 
-| Nesil 2 özelliği                | Şirket içi Hyper-V | Azure |
+| 2. nesil özelliği                | Şirket içi Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
-| Güvenli önyükleme                         | :heavy_check_mark:  | :x:   |
-| Korumalı VM                         | :heavy_check_mark:  | :x:   |
-| vTPM                                | :heavy_check_mark:  | :x:   |
-| Sanallaştırma tabanlı güvenlik (VBS) | :heavy_check_mark:  | :x:   |
-| VHDX formatı                         | :heavy_check_mark:  | :x:   |
+| Güvenli önyükleme                         | :heavy_check_mark:  | sayı   |
+| Korumalı VM                         | :heavy_check_mark:  | sayı   |
+| vTPM                                | :heavy_check_mark:  | sayı   |
+| Sanallaştırma tabanlı güvenlik (VBS) | :heavy_check_mark:  | sayı   |
+| VHDX biçimi                         | :heavy_check_mark:  | sayı   |
 
 ## <a name="features-and-capabilities"></a>Özellikler ve yetenekler
 
-### <a name="generation-1-vs-generation-2-features"></a>Nesil 1 vs. nesil 2 özellikleri
+### <a name="generation-1-vs-generation-2-features"></a>1. nesil ve 2. nesil Özellikler
 
 | Özellik | 1. nesil | 2. nesil |
 |---------|--------------|--------------|
-| Önyükleme             | PCAT         | Uefı |
+| Başlatma             | PCAT         | UEFı |
 | Disk denetleyicileri | IDE          | SCSI |
-| VM boyutları         | Tüm VM boyutları | Yalnızca premium depolamayı destekleyen VM'ler |
+| VM boyutları         | Tüm VM boyutları | Yalnızca Premium depolamayı destekleyen VM 'Ler |
 
-### <a name="generation-1-vs-generation-2-capabilities"></a>Nesil 1 vs. nesil 2 yetenekleri
+### <a name="generation-1-vs-generation-2-capabilities"></a>1. nesil ve 2. nesil yetenekler
 
 | Özellik | 1. nesil | 2. nesil |
 |------------|--------------|--------------|
-| İşletim sistemi disk > 2 TB                    | :x:                | :heavy_check_mark: |
-| Özel disk/resim/takas işletim sistemi         | :heavy_check_mark: | :heavy_check_mark: |
-| Sanal makine ölçeği seti desteği | :heavy_check_mark: | :heavy_check_mark: |
+| İşletim sistemi diski > 2 TB                    | sayı                | :heavy_check_mark: |
+| Özel disk/görüntü/takas OS         | :heavy_check_mark: | :heavy_check_mark: |
+| Sanal makine ölçek kümesi desteği | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Yedekleme/geri yükleme                    | :heavy_check_mark: | :heavy_check_mark: |
-| Paylaşılan resim galerisi              | :heavy_check_mark: | :heavy_check_mark: |
-| Azure disk şifreleme             | :heavy_check_mark: | :x:                |
+| Paylaşılan görüntü Galerisi              | :heavy_check_mark: | :heavy_check_mark: |
+| Azure disk şifrelemesi             | :heavy_check_mark: | sayı                |
 
-## <a name="creating-a-generation-2-vm"></a>Nesil 2 VM oluşturma
+## <a name="creating-a-generation-2-vm"></a>2. nesil VM oluşturma
 
-### <a name="marketplace-image"></a>Pazar yeri görüntüsü
+### <a name="marketplace-image"></a>Market görüntüsü
 
-Azure portalında veya Azure CLI'de, UEFI önyüklemesini destekleyen bir Market görüntüsünden nesil 2 VM'ler oluşturabilirsiniz.
+Azure portal veya Azure CLı 'de, UEFı önyüklemesini destekleyen bir market görüntüsünden 2. nesil VM 'Ler oluşturabilirsiniz.
 
 #### <a name="azure-portal"></a>Azure portal
 
-Aşağıda, Azure portalında nesil 2 (Gen2) VM oluşturma adımları verilmiştir.
+Aşağıda, Azure portal 'de 2. nesil (Gen2) VM oluşturma adımları verilmiştir.
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 1. **Kaynak oluştur**’u seçin.
-1. Soldaki Azure Marketi'nden **Tümlerini Gör'e** tıklayın.
-1. Gen2'yi destekleyen bir resim seçin.
-1. **Oluştur'u**tıklatın.
-1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünün altında **Gen 2** seçeneğini belirleyin.
-1. Temel **Bilgiler** sekmesinde, **Örnek Altında ayrıntılar,** **Boyut'a** gidin ve VM boyutu bıçakla **seç'i** açın.
-1. Desteklenen [nesil 2 VM](#generation-2-vm-sizes)seçin.
-1. [VM'yi](quick-create-portal.md) oluşturmayı bitirmek için Azure portal oluşturma akışını gözden geçirin.
+1. Sol taraftaki Azure Marketi 'nden **Tümünü gör** ' e tıklayın.
+1. Gen2 destekleyen bir görüntü seçin.
+1. **Oluştur**' a tıklayın.
+1. **Gelişmiş** sekmesinde, **VM oluşturma** bölümünde **Gen 2** seçeneğini belirleyin.
+1. **Temel bilgiler** sekmesinde, **örnek ayrıntıları**altında **Boyut** ' a gidin ve **VM boyutu Seç** dikey penceresini açın.
+1. [Desteklenen 2. nesil VM 'yi](#generation-2-vm-sizes)seçin.
+1. VM oluşturma işleminin tamamlanabilmesi için [Azure Portal oluşturma akışından](quick-create-portal.md) ilerleyin.
 
-![Gen 1 veya Gen 2 VM'yi seçin](./media/generation-2/gen1-gen2-select.png)
+![Gen 1 veya Gen 2 VM seçin](./media/generation-2/gen1-gen2-select.png)
 
 #### <a name="powershell"></a>PowerShell
 
-PowerShell'i, nesil 1 veya nesil 2 SKU'ya doğrudan atıfta bulunarak bir VM oluşturmak için de kullanabilirsiniz.
+Ayrıca, 1. nesil veya 2. nesil SKU 'ya doğrudan başvurarak bir VM oluşturmak için PowerShell 'i de kullanabilirsiniz.
 
-Örneğin, teklifteki SNU'ların listesini almak için aşağıdaki PowerShell `WindowsServer` cmdlet'i kullanın.
+Örneğin, `WindowsServer` teklifte SKU 'ların bir listesini almak Için aşağıdaki PowerShell cmdlet 'ini kullanın.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
 
-Alternatif olarak, **Publisher**tarafından listelenen kullanılabilir nesil 2 resimlerini görmek için Azure CLI'yi kullanabilirsiniz.
+Alternatif olarak, **Yayımcı**tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
 
 ```azurecli
 az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
-Windows Server 2012 işletim sistemi olarak bir VM oluşturuyorsanız, buna benzeyen nesil 1 (BIOS) veya nesil 2 (UEFI) VM SKU'yu seçersiniz:
+İşletim sistemi olarak Windows Server 2012 ile bir VM oluşturuyorsanız, şunun gibi bir 1. nesil (BIOS) veya 2. nesil (UEFı) VM SKU 'SU seçersiniz:
 
 ```powershell
 2012-Datacenter
 2012-datacenter-gensecond
 ```
 
-Desteklenen Market görüntülerinin geçerli bir listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
+Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
 ### <a name="managed-image-or-managed-disk"></a>Yönetilen görüntü veya yönetilen disk
 
-Yönetilen bir görüntüden veya yönetilen diskten, nesil 1 VM oluşturduğunuz şekilde bir nesil 2 VM oluşturabilirsiniz.
+Yönetilen bir görüntüden veya yönetilen diskten, 1. nesil bir VM oluşturduğunuz şekilde bir 2. nesil VM oluşturabilirsiniz.
 
 ### <a name="virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri
 
-Ayrıca, sanal makine ölçek kümelerini kullanarak nesil 2 VM'ler oluşturabilirsiniz. Azure CLI'de, nesil 2 VM'ler oluşturmak için Azure ölçeği kümelerini kullanın.
+Ayrıca, sanal makine ölçek kümelerini kullanarak 2. nesil VM 'Ler oluşturabilirsiniz. Azure CLı 'da 2. nesil VM 'Ler oluşturmak için Azure Ölçek Kümeleri ' ni kullanın.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-* **Nesil 2 VM'ler tüm Azure bölgelerinde kullanılabilir mi?**  
-    Evet. Ancak tüm [nesil 2 VM boyutları](#generation-2-vm-sizes) her bölgede mevcut değildir. Nesil 2 VM'nin kullanılabilirliği VM boyutunun kullanılabilirliğine bağlıdır.
+* **2. nesil VM 'Ler tüm Azure bölgelerinde kullanılabilir mi?**  
+    Evet. Her bölgede [2. nesıl VM boyutları](#generation-2-vm-sizes) kullanılamaz. 2. nesil VM 'nin kullanılabilirliği, VM boyutunun kullanılabilirliğine bağlıdır.
 
-* **Nesil 1 ve nesil 2 VM arasında bir fiyat farkı var mı?**  
+* **1. nesil ve 2. nesil VM 'Ler arasında bir fiyat farkı var mı?**  
     Hayır.
 
-* **Şirket içi nesil 2 VM'imden bir .vhd dosyam var. Bu .vhd dosyasını Azure'da bir nesil 2 VM oluşturmak için kullanabilir miyim?**
-  Evet, nesil 2 .vhd dosyanızı Azure'a getirebilir ve bunu nesil 2 VM oluşturmak için kullanabilirsiniz. Bunu yapmak için aşağıdaki adımları kullanın:
-    1. .vhd'yi VM'nizi oluşturmak istediğiniz bölgedeki bir depolama hesabına yükleyin.
-    1. .vhd dosyasından yönetilen bir disk oluşturun. Hyper-V Generation özelliğini V2 olarak ayarlayın. Aşağıdaki PowerShell komutları yönetilen disk oluştururken Hyper-V Generation özelliğini ayarlar.
+* **Şirket içi nesil 2 VM 'den bir. vhd dosyası var. Azure 'da 2. nesil VM oluşturmak için bu. vhd dosyasını kullanabilir miyim?**
+  Evet, 2. nesil. vhd dosyanızı Azure 'a getirebilir ve bunu kullanarak 2. nesil bir VM oluşturabilirsiniz. Bunu yapmak için aşağıdaki adımları kullanın:
+    1. . Vhd 'yi, sanal makineyi oluşturmak istediğiniz bölgedeki bir depolama hesabına yükleyin.
+    1. . Vhd dosyasından yönetilen disk oluşturun. Hyper-V oluşturma özelliğini v2 olarak ayarlayın. Aşağıdaki PowerShell komutları, yönetilen disk oluştururken Hyper-V oluşturma özelliğini ayarlar.
 
         ```powershell
         $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
@@ -165,41 +165,41 @@ Ayrıca, sanal makine ölçek kümelerini kullanarak nesil 2 VM'ler oluşturabil
         New-AzDisk -DiskName $osDiskName -ResourceGroupName '<Your Resource Group>' -Disk $diskconfig
         ```
 
-    1. Disk kullanılabilir olduğunda, bu diski ekleyerek bir VM oluşturun. Oluşturulan VM bir nesil 2 VM olacaktır.
-    Nesil 2 VM oluşturulduğunda, isteğe bağlı olarak bu VM'nin görüntüsünü genelleştirebilirsiniz. Görüntüyü genelleştirerek birden çok VM oluşturmak için kullanabilirsiniz.
+    1. Disk kullanılabilir olduğunda, bu diski ekleyerek bir VM oluşturun. Oluşturulan VM bir 2. nesil VM olacaktır.
+    2. nesil VM oluşturulduğunda, bu VM 'nin görüntüsünü isteğe bağlı olarak genelleştirmenize de sağlayabilirsiniz. Görüntüyü genelleştirerek birden çok VM oluşturmak için kullanabilirsiniz.
 
-* **İşletim sistemi disk boyutunu nasıl artırırım?**  
-  2 TB'den büyük işletim sistemi diskleri nesilden nesile yeni 2 VM'dir. Varsayılan olarak, işletim sistemi diskleri nesil 2 VM'ler için 2 TB'den daha küçüktür. Disk boyutunu önerilen maksimum 4 TB'ye kadar artırabilirsiniz. İşletim sistemi disk boyutunu artırmak için Azure CLI veya Azure portalını kullanın. Diskleri programlı olarak genişletme hakkında bilgi [için](expand-disks.md)bkz.
+* **Nasıl yaparım? işletim sistemi disk boyutu artsın mı?**  
+  2 TB 'den büyük işletim sistemi diskleri 2. nesil VM 'lere yenidir. Varsayılan olarak, 1. nesil VM 'Ler için işletim sistemi diskleri 2 TB 'den daha küçüktür. Disk boyutunu önerilen en fazla 4 TB 'a kadar artırabilirsiniz. İşletim sistemi disk boyutunu artırmak için Azure CLı veya Azure portal kullanın. Diskleri program aracılığıyla genişletme hakkında daha fazla bilgi için bkz. [diski yeniden boyutlandırma](expand-disks.md).
 
-  Azure portalından işletim sistemi disk boyutunu artırmak için:
+  İşletim sistemi diskinin boyutunu Azure portal artırmak için:
 
-  1. Azure portalında VM özellikleri sayfasına gidin.
-  1. VM'yi kapatmak ve anlaşma yapmak için **Durdur** düğmesini seçin.
-  1. **Diskler** bölümünde, artırmak istediğiniz işletim sistemi diskini seçin.
-  1. **Diskler** bölümünde **Yapılandırma'yı**seçin ve **Boyutu** istediğiniz değere güncelleştirin.
-  1. VM özellikleri sayfasına geri dön ve VM'yi **başlat.**
+  1. Azure portal VM özellikleri sayfasına gidin.
+  1. VM 'yi kapatmak ve serbest bırakmak için **Durdur** düğmesini seçin.
+  1. **Diskler** bölümünde, yükseltmek istediğiniz işletim sistemi diskini seçin.
+  1. **Diskler** bölümünde **yapılandırma**' yı seçin ve **boyutu** istediğiniz değerle güncelleştirin.
+  1. VM özellikleri sayfasına dönün ve VM 'yi **başlatın** .
 
-  2 TB'den büyük işletim sistemi diskleri için bir uyarı görebilirsiniz. Uyarı nesil 2 VM için geçerli değildir. Ancak, 4 TB'den büyük işletim sistemi disk boyutları *önerilmez.*
+  2 TB 'den büyük işletim sistemi diskleri için bir uyarı görebilirsiniz. Uyarı 2. nesil VM 'lere uygulanmaz. Ancak, 4 TB 'tan büyük işletim sistemi disk boyutları *önerilmez.*
 
-* **Nesil 2 VM'ler hızlandırılmış ağ oluşturmayı destekliyor mu?**  
-    Evet. Daha fazla bilgi için bkz: [Hızlandırılmış ağ içeren bir VM oluşturun.](../../virtual-network/create-vm-accelerated-networking-cli.md)
+* **2. nesil VM 'Ler hızlandırılmış ağı destekliyor mu?**  
+    Evet. Daha fazla bilgi için bkz. [hızlandırılmış ağ Ile VM oluşturma](../../virtual-network/create-vm-accelerated-networking-cli.md).
 
-* **VHDX nesil 2'de desteklendi mi?**  
-    Hayır, nesil 2 VM'ler yalnızca VHD'yi destekler.
+* **VHDX 2. nesil üzerinde destekleniyor mu?**  
+    Hayır, 2. nesil VM 'Ler yalnızca VHD 'YI destekler.
 
-* **Nesil 2 VM'ler Azure Ultra Disk Depolama'yı destekliyor mu?**  
+* **2. nesil VM 'Ler Azure Ultra Disk Depolama 'yi destekliyor mu?**  
     Evet.
 
-* **Bir VM'yi nesil 1'den nesil 2'ye geçirebilir miyim?**  
-    Hayır, oluşturduktan sonra VM'nin neslini değiştiremezsiniz. VM nesilleri arasında geçiş yapmanız gerekiyorsa, farklı nesilde yeni bir VM oluşturun.
+* **1. nesil bir VM 'yi 2. nesil 'e geçirebilir miyim?**  
+    Hayır, bir VM 'yi oluşturduktan sonra oluşturmayı değiştiremezsiniz. VM nesilleri arasında geçiş yapmanız gerekiyorsa, farklı nesil yeni bir VM oluşturun.
 
-* **Gen2 VM oluşturmaya çalıştığımda vm boyutum boyut seçicide neden etkinleştirilmez?**
+* **Gen2 sanal makinesi oluşturmaya çalıştığımda, neden VM boyutum boyut seçicide etkin değil mi?**
 
-    Bu, aşağıdakileri yaparak çözülebilir:
+    Bu, aşağıdakiler gerçekleşerek çözülebilir:
 
-    1. **VM oluşturma** özelliğinin **Gelişmiş** sekmesinde **Gen 2** olarak ayarlı olduğundan doğrulayın.
-    1. [Gen2 VM'leri destekleyen bir VM boyutu aradığınızı](#generation-2-vm-sizes)doğrulayın.
+    1. **Gelişmiş** sekmesinde **VM oluşturma** özelliğinin **Gen 2** olarak ayarlandığını doğrulayın.
+    1. [Gen2 VM 'leri destekleyen bir VM boyutu](#generation-2-vm-sizes)arıyor olduğunuzdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hyper-V'de nesil 2 sanal makineler](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)hakkında bilgi edinin.
+* [Hyper-V ' d a 2. nesil sanal makineler](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)hakkında bilgi edinin.

@@ -1,7 +1,7 @@
 ---
-title: Özel bulut ayrıcalıklarını artırın
+title: Özel bulut ayrıcalıklarını ilerletin
 titleSuffix: Azure VMware Solution by CloudSimple
-description: vCenter'daki yönetim işlevleri için özel bulutunuzdaki ayrıcalıkları nasıl artıracağınızı açıklar
+description: VCenter 'daki yönetim işlevleri için özel bulutunuzda ayrıcalıkların nasıl ilerletiloluşturulacağını açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
@@ -10,20 +10,20 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870467"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından Özel Bulut vCenter ayrıcalıklarını artırın
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından özel bulut vCenter ayrıcalıklarını ilerletin
 
-Private Cloud vCenter'ınıza yönetimerişimi için CloudSimple ayrıcalıklarınızı geçici olarak artırabilirsiniz.  Yükseltilmiş ayrıcalıkları kullanarak VMware çözümleri yükleyebilir, kimlik kaynakları ekleyebilir ve kullanıcıları yönetebilirsiniz.
+Özel bulut vCenter 'nize yönetici erişimi için, CloudSimple ayrıcalıklarınızı geçici olarak ilerletebilirsiniz.  Yükseltilmiş ayrıcalıkları kullanarak, VMware çözümlerini yükleyebilir, kimlik kaynakları ekleyebilir ve kullanıcıları yönetebilirsiniz.
 
-VCenter SSO etki alanında yeni kullanıcılar oluşturulabilir ve vCenter'a erişim hakkı verilebilir.  Yeni kullanıcılar oluşturduğunuzda, bunları vCenter'a erişmek için CloudSimple yerleşik gruplarına ekleyin.  Daha fazla bilgi için [VMware vCenter'ın CloudSimple Private Cloud izin modeline](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)bakın.
+Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter erişimi verilebilir.  Yeni kullanıcılar oluştururken, vCenter 'a erişim için onları CloudSimple yerleşik gruplarına ekleyin.  Daha fazla bilgi için bkz. [Cloudsimple özel bulut izin modeli VMware vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/).
 
 > [!CAUTION]
-> Yönetim bileşenleri için yapılandırma değişiklikleri yapmayın. Artırılabilen ayrıcalıklı durum sırasında gerçekleştirilen eylemler sisteminizi olumsuz etkileyebilir veya sisteminizin kullanılamamasına neden olabilir.
+> Yönetim bileşenleri için herhangi bir yapılandırma değişikliği yapmayın. İlerletilen ayrıcalıklı durum sırasında gerçekleştirilen eylemler sisteminizi olumsuz etkileyebilir veya sisteminizin kullanılamaz hale gelmesine neden olabilir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -31,62 +31,62 @@ VCenter SSO etki alanında yeni kullanıcılar oluşturulabilir ve vCenter'a eri
 
 ## <a name="escalate-privileges"></a>Ayrıcalıkları yükseltme
 
-1. [CloudSimple portalına](access-cloudsimple-portal.md)erişin.
+1. [Cloudsimple portalına](access-cloudsimple-portal.md)erişin.
 
-2. **Kaynaklar** sayfasını açın, ayrıcalıkları tırmandırmak istediğiniz Özel Bulut'u seçin.
+2. **Kaynaklar** sayfasını açın, ayrıcalıklarına Iletmek Istediğiniz özel bulutu seçin.
 
-3. **VSphere ayrıcalıklarını Değiştir**altında Özet sayfasının en altında, **Escalate'i**tıklatın.
+3. Özet sayfasının alt kısmındaki **vSphere ayrıcalıklarını Değiştir**altında, **Yükselt**' e tıklayın.
 
-    ![vSphere ayrıcalığını değiştirme](media/escalate-private-cloud-privilege.png)
+    ![VSphere ayrıcalığını değiştirme](media/escalate-private-cloud-privilege.png)
 
-4. vSphere kullanıcı türünü seçin.  Yalnızca `CloudOwner@cloudsimple.local` yerel kullanıcı yükseltilebilir.
+4. VSphere Kullanıcı türünü seçin.  Yalnızca `CloudOwner@cloudsimple.local` Yerel Kullanıcı ilerletilenebilir.
 
-5. Açılan zaman aralığından yükseltme zaman aralığını seçin. Görevi tamamlamanızı sağlayacak en kısa süreyi seçin.
+5. Açılan listeden ilerleme zaman aralığını seçin. Görevi tamamlamanıza olanak sağlayacak en kısa süreyi seçin.
 
-6. Riskleri anladığınızı doğrulamak için onay kutusunu seçin.
+6. Riskleri anladığınızdan emin olmak için onay kutusunu seçin.
 
-    ![Ayrıcalık iletişim kutusunu yükseltme](media/escalate-private-cloud-privilege-dialog.png)
+    ![Ayrıcalığı ilerlet iletişim kutusu](media/escalate-private-cloud-privilege-dialog.png)
 
 7. **Tamam**'a tıklayın.
 
 8. Yükseltme işlemi birkaç dakika sürebilir. İşlem tamamlandığında **Tamam**’a tıklayın.
 
-Ayrıcalık yükseltme si, seçili aralığın sonuna kadar devam eder.  Yönetim görevlerini yapmak için özel bulut vCenter'ınızda oturum açabilirsiniz.
+Ayrıcalık yükseltme başlar ve seçilen aralığın sonuna kadar sürer.  Yönetim görevlerini yapmak için özel bulut vCenter 'unuzda oturum açabilirsiniz.
 
 > [!IMPORTANT]
-> Yalnızca bir kullanıcı nın artırılmış ayrıcalıkları olabilir.  Başka bir kullanıcının ayrıcalıklarını yükseltmeden önce kullanıcının ayrıcalıklarını yükseltmeniz gerekir.
+> Yalnızca bir Kullanıcı ilerletilen ayrıcalıklara sahip olabilir.  Başka bir kullanıcının ayrıcalıklarından daha fazla kullanıcı için kullanıcı ayrıcalıklarını geçersiz bir şekilde ilerletebilirsiniz.
 
 > [!CAUTION]
-> Yeni kullanıcılar yalnızca *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group,* *Cloud-Global-Network-Admin-Group* veya *Cloud-Global-VM-Admin-Group'a*eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılır.  *Yöneticiler* grubuna yalnızca hizmet hesapları eklenmelidir ve hizmet hesapları vSphere web UI'da oturum açmak için kullanılmamalıdır.
+> Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu*için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir ve hizmet hesapları vSphere Web Kullanıcı arabiriminde oturum açmak için kullanılmamalıdır.
 
-## <a name="extend-privilege-escalation"></a>Ayrıcalık yükseltmeyi genişletme
+## <a name="extend-privilege-escalation"></a>Ayrıcalık yükseltmeyi uzat
 
-Görevlerinizi tamamlamak için ek süreye ihtiyacınız varsa, ayrıcalık yükseltme süresini uzatabilirsiniz.  Yönetim görevlerini tamamlamanızı sağlayan ek yükseltme süresini seçin.
+Görevlerinizi tamamlaması için ek süre gerekliyse, ayrıcalık yükseltme dönemini genişletebilirsiniz.  Yönetim görevlerini tamamlamanıza izin veren ek ilerleme zaman aralığını seçin.
 
-1. CloudSimple**portalındaki** **Özel Kaynaklar** > portalında, ayrıcalık yükseltmesini genişletmek istediğiniz Özel Bulut'u seçin.
+1. Cloudsimple portalındaki **kaynaklar** > **özel bulutlarında** , ayrıcalık yükseltme 'yi genişletmek istediğiniz özel bulutu seçin.
 
-2. Özet sekmesinin en altında, **ayrıcalık yükseltmesini genişlet'i**tıklatın.
+2. Özet sekmesinin altındaki **ayrıcalık yükseltmeyi Genişlet**' e tıklayın.
 
-    ![Ayrıcalık yükseltmeyi genişletme](media/de-escalate-private-cloud-privilege.png)
+    ![Ayrıcalık yükseltmeyi uzat](media/de-escalate-private-cloud-privilege.png)
 
-3. Açılan süreden bir yükseltme zaman aralığı seçin. Yeni yükseltme bitiş saatini gözden geçirin.
+3. Açılan listeden bir ilerleme zaman aralığı seçin. Yeni ilerletme bitiş saatini gözden geçirin.
 
-4. Aralığı uzatmak için **Kaydet'i** tıklatın.
+4. Aralığı genişletmek için **Kaydet** ' e tıklayın.
 
-## <a name="de-escalate-privileges"></a>Ayrıcalıkları yükseltme
+## <a name="de-escalate-privileges"></a>Ön yükseltme ayrıcalıkları
 
-İdari görevleriniz tamamlandıktan sonra ayrıcalıklarınızı artırmalısınız.  
+Yönetim görevleriniz tamamlandıktan sonra, ayrıcalıklarınızı geçersiz bir şekilde ilerletin.  
 
-1. CloudSimple**portalındaki** **Özel Kaynaklar** > portalında ayrıcalıkları küçletmek istediğiniz Özel Bulut'u seçin.
+1. Cloudsimple portalındaki **kaynaklar** > **özel bulutlarında** , ayrıcalıklarını yükseltmek istediğiniz özel bulutu seçin.
 
-2. **De-escalate'yi**tıklatın.
+2. **Ön yükseltme**' ye tıklayın.
 
 3. **Tamam**'a tıklayın.
 
 > [!IMPORTANT]
-> Herhangi bir hatadan kaçınmak için vCenter'dan oturum açın ve artan ayrıcalıklardan sonra yeniden oturum açın.
+> Herhangi bir hatayı önlemek için vCenter oturumunu kapatın ve yükseltme ayrıcalıklarından sonra tekrar oturum açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Active Directory'yi kullanmak için vCenter kimlik kaynaklarını ayarlama](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* Yedekleme iş [yükü sanal makinelere](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/) yedekleme çözümü yükleme
+* [Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* Yedekleme [iş yükü sanal makinelerini](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/) yedekleme çözümünü yükler

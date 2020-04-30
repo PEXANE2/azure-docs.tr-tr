@@ -1,433 +1,436 @@
 ---
-title: İş Ortağı Merkezi'nde Azure kapsayıcı teklifi oluşturma - Azure Marketi
-description: Bu makalede, Azure Marketi için bir Kapsayıcı teklifinin nasıl oluşturulup yayımlandırılabildiğini açıklanmaktadır.
+title: Iş Ortağı Merkezi 'nde Azure Container teklifi oluşturma-Azure Marketi
+description: Bu makalede, Azure Marketi için bir kapsayıcı teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: b96fe12ccc0292bb5f689fbecabd53d2af54846e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266324"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81867357"
 ---
-# <a name="create-an-azure-container-offer"></a>Azure Kapsayıcı teklifi oluşturma
+# <a name="create-an-azure-container-offer"></a>Azure Kapsayıcısı teklifi oluşturma
 
 > [!IMPORTANT]
-> Azure Konteyner tekliflerinizin yönetimini Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne taşıyoruz. Teklifleriniz geçirilene kadar, tekliflerinizi yönetmek için lütfen Bulut İş Ortağı Portalı [için Kapsayıcılar'daki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) yönergeleri izleyin.
+> Azure Container tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Tekliflerinizi geçirene kadar, tekliflerinizi yönetmek için lütfen Bulut İş Ortağı Portalı [kapsayıcılarındaki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) yönergeleri izleyin.
 
-Bu makalede, Azure Marketi için bir Kapsayıcı teklifinin nasıl oluşturulup yayımlandırılabildiğini açıklanmaktadır. Başlamadan [önce, İş Merkezi'nde Ticari Pazar Yeri hesabı oluşturun.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
+Bu makalede, Azure Marketi için bir kapsayıcı teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır. Başlamadan önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
-1. [Ortak Merkezi'nde](https://partner.microsoft.com/dashboard/home)oturum açın ve ardından üst menüden **Pano'yu**seçin.
-2. Sol menüde, **Commercial Marketplace'i**seçin, ardından **Genel Bakış'** ı seçin.
-3. Genel **Bakış** sayfasında + **Yeni teklif ,** ardından Azure **Kapsayıcı'yı**seçin. **Yeni teklif** iletişim kutusu görüntülenir.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın ve üst menüden **Pano**' yı seçin.
+2. Sol tarafta, **ticari Market**' i ve ardından **genel bakış**' ı seçin.
+3. **Genel bakış** sayfasında **+ yeni teklif**' i ve ardından **Azure kapsayıcısı**' nı seçin. **Yeni teklif** iletişim kutusu görüntülenir.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="İş Ortağı Merkezi'ndeki Genel Bakış sayfasını gösterilmiştir. Yeni teklif düğmesi ve Danışmanlık hizmet teklifi vurgulanır.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="Iş Ortağı Merkezi 'nde genel bakış sayfası gösterilmektedir. Yeni teklif düğmesi ve danışmanlık hizmeti teklifi vurgulanır.":::
 
 > [!TIP]
-> Bir teklif yayımlandıktan sonra, İş Ortağı Merkezi'nde yapılan yapılan lar yalnızca teklifi yeniden yayımladıktan sonra vitrinlerde görünür. Değişiklik yaptıktan sonra her zaman yeniden yayımladığınızdan emin olun.
+> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
 
-### <a name="offer-id-and-alias"></a>Teklif kimliği ve takma ad
+### <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
 
-Teklif **Kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
+Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
-- Bu kimlik, müşteriler tarafından pazar teklifi ve varsa Azure Kaynak Yöneticisi şablonlarının web adresinde görülebilir.
-- Yalnızca küçük harfleri ve rakamları kullanın. Tireler ve alt çizerler içerebilir, ancak boşluk yoktur ve 50 karakterle sınırlıdır. Örneğin, **test-teklif-1**girerseniz, teklif web adresi `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
-- **Teklif Kimliği, Oluştur'u**seçtikten sonra değiştirilemez.
+- Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
+- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-**Teklif takma adını** **girin.** Bu, Ortak Merkezi'ndeki teklifi ifade etmek için kullanılan addır.
+**Bir** **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklifi ifade etmek için kullanılan addır.
 
-- Bu ad pazarda kullanılmaz ve teklif adı ve müşterilere gösterilen diğer değerlerden farklıdır.
-- **Oluştur'u**seçtikten sonra bu değişiklik edilemez.
+- Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
+- Bu, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-Devam etmeden önce **Oluştur'u** seçin.
+Devam etmeden önce **Oluştur** ' u seçin.
 
-## <a name="offer-overview"></a>Teklife genel bakış
+## <a name="offer-overview"></a>Teklifin genel bakış
 
-**Teklife genel bakış** sayfası, bu teklifi yayımlamak için gereken adımların (hem tamamlanmış hem de yaklaşan) ve her adımın tamamlanmasının ne kadar sürmesi gerektiğinin görsel bir gösterimini gösterir.
+**Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, teklifin geçerli durumuna göre farklı bağlantılar gösterir. Örneğin:
+Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
 
-- Teklif taslaksa - [Taslak teklifi sil](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Teklif canlıise - [Teklifi satmayı bırakın](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Teklif önizlemedeyse - [Canlı Yayına Geçin](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Yayımcı oturum açmayı tamamlamadıysanız - [Yayımlamayı iptal et](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
+- Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
+- Teklif önizleme sürümündedir- [canlı](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
+- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
-Teklifinizi ayarlamak için aşağıdaki adımları izleyin.
+Teklifinizi ayarlamak için bu adımları izleyin.
 
-### <a name="connect-lead-management--optional"></a>Müşteri adayı yönetimini bağlayın – isteğe bağlı
+### <a name="connect-lead-management--optional"></a>Connect lider yönetimi – isteğe bağlı
 
-Teklifinizi İş Ortağı Merkezi ile pazara yayınlarken, müşteri ilişkileri yönetimi (CRM) sisteminize bağlayabilirsiniz. Bu, birisi ürününüzün ilgisini ifade eder etmez veya ürününüzü kullanır kullanmaz müşteri iletişim bilgilerini almanızı sağlar.
+Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, Müşteri Ilişkileri yönetimi (CRM) sisteminize bağlayabilirsiniz. Bu, bir kişi, ürününüzü ilgilendiren veya ürünü kullandığı anda müşteri iletişim bilgilerini almanızı sağlar.
 
-1. **Müşteri müşteri adaylarını göndermemizi istediğiniz bir müşteri adayı seçin.** İş Ortağı Merkezi aşağıdaki CRM sistemlerini destekler:
+1. **Müşteri adaylarını göndermemizi istediğiniz bir müşteri adayı hedefi seçin**. İş Ortağı Merkezi aşağıdaki CRM sistemlerini destekler:
 
-- Müşteri Katılımı için [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)
+- Müşteri katılımı için [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)
 - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
 - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
 > [!NOTE]
-> CRM sisteminiz yukarıda listelenmemişse, müşteri müşteri adayı verilerini depolamak için [Azure Tablosu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) veya [Https Endpoint'i](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) kullanın ve verileri CRM sisteminize aktarın.
+> CRM sisteminiz yukarıda listelenmiyorsa, müşteri adayı verilerini depolamak için [Azure tablosu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) veya [https uç noktasını](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) kullanın, ardından verileri CRM sisteminize dışarı aktarın.
 
-2. İş Ortağı Merkezi'nde yayın yaparken teklifinizi müşteri adayı hedefe bağlayın.
-3. Müşteri adayı hedefine olan bağlantının düzgün şekilde yapılandırıldığı doğrulayın. İş Ortağı Merkezi'nde yayımladıktan sonra bağlantıyı doğrular ve size bir test ipucu göndeririz. Teklifi yayına girmeden önce önizlemenize kadar, teklifi önizleme ortamında kendiniz satın almaya çalışarak müşteri adayı bağlantınızı da test edebilirsiniz.
-4. Müşteri adayını kaybetmemek için müşteri adayı hedefine bağlantının güncel kaldığından emin olun.
+2. Teklifinizi Iş Ortağı Merkezi 'nde yayımlarken lider hedefine bağlayın.
+3. Lider hedefi bağlantısının düzgün yapılandırıldığını onaylayın. Iş Ortağı Merkezi 'nde yayımladıktan sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi canlı olmadan önce önizlerken, teklifi önizleme ortamında satın almayı deneyerek lider bağlantınızı da test edebilirsiniz.
+4. Müşteri adayı hedefine olan bağlantının güncelleştirildiğinden emin olun, böylece müşteri adaylarını kaybetmezsiniz.
 
-Aşağıda bazı ek müşteri adayı yönetim kaynakları vereme
+Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
 - [Müşteri adayı yönetimine genel bakış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Müşteri adayı yönetimi hakkında SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Müşteri Adayı Yönetimine Genel Bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Açılır pencere engelleyicinizin kapalı olduğundan emin olun)
+- [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 
-Özellikler adlı bir sonraki bölüme devam etmeden önce **taslağı kaydet'i** seçin.
+Sonraki bölüme devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ### <a name="properties"></a>Özellikler
 
-Bu sayfa, teklifinizi pazarda gruplandırmak için kullanılan kategorileri ve teklifinizi destekleyen yasal sözleşmeleri tanımlamanızı sağlar.
+Bu sayfa, teklifinizi Market 'te gruplandırmak için kullanılan kategorileri ve teklifinizi destekleyen yasal sözleşmeleri tanımlamanızı sağlar.
 
 #### <a name="category"></a>Kategori
 
-En az bir ve en fazla beş kategori seçin. Bu kategoriler, teklifinizi uygun pazar yeri arama alanlarına yerleştirmek için kullanılır ve teklif ayrıntıları sayfanızda gösterilir. Teklif açıklamasında, teklifinizin bu kategorileri nasıl desteklediğini açıklayın. **Kapsayıcılar Kapsayıcılar** ve ardından **Kapsayıcı Görüntüler** kategorisi altında görünür.
+En az bir ve en fazla beş kategori seçin. Bu kategoriler, teklifinizi uygun Market arama alanlarında yerleştirmek için kullanılır ve teklif ayrıntıları sayfanızda gösterilir. Teklif açıklamasında, teklifinizin bu kategorileri nasıl desteklediğini açıklayın. Kapsayıcılar **kapsayıcılar** ve sonra **kapsayıcı görüntüleri** kategorisi altında görünür.
 
 #### <a name="legal"></a>Yasal Bildirim
 
-Teklif için şart ve koşulları sağlamalısınız. İki seçenek vardır:
+Teklif için hüküm ve koşullar sağlamanız gerekir. İki seçenek vardır:
 
-- Microsoft ticari pazarı için Standart Sözleşme'yi kullanın.
-- Kendi şart ve koşullarınızı sağlayın.
+- Microsoft ticari Market için standart sözleşmeyi kullanın.
+- Kendi hüküm ve koşullarınızı belirtin.
 
-##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari pazarı için standart sözleşme
+##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
 
-Ticari pazardaki işlemleri kolaylaştırmaya yardımcı olmak için standart sözleşme şablonu sunuyoruz. Çözümünüzü, müşterilerin yalnızca bir kez kontrol edip kabul etmesi gereken Standart Sözleşme kapsamında sunmayı seçebilirsiniz. Özel hüküm ve koşullar oluşturmak istemiyorsanız, bu iyi bir seçenektir.
+Ticari Market 'teki işlemleri kolaylaştırmaya yardımcı olmak için standart bir sözleşme şablonu sunuyoruz. Çözümünüzü standart sözleşme altında sunmayı tercih edebilirsiniz; Bu, müşterilerin yalnızca bir kez denetlemesi ve kabul etmesi gereken bir çözümdür. Özel hüküm ve koşullar oluşturmak istemiyorsanız bu iyi bir seçenektir.
 
-Standart Sözleşme hakkında daha fazla bilgi edinmek [için Microsoft ticari pazarı için Standart Sözleşme'ye](https://docs.microsoft.com/azure/marketplace/standard-contract)bakın. [Standart Sözleşme](https://go.microsoft.com/fwlink/?linkid=2041178) PDF'sini de indirebilirsiniz (açılır pencere engelleyicinizin kapalı olduğundan emin olun).
+Standart Sözleşme hakkında daha fazla bilgi edinmek için bkz. [Microsoft ticari Market Için standart sözleşme](https://docs.microsoft.com/azure/marketplace/standard-contract). Ayrıca [standart sözleşme](https://go.microsoft.com/fwlink/?linkid=2041178) PDF 'sini de indirebilirsiniz (açılır pencere engelleyicisinin kapalı olduğundan emin olun).
 
-Standart Sözleşme'yi kullanmak **için, Microsoft'un ticari pazar yeri** onay kutusunu için Standart Sözleşmeyi Kullan'ı seçin ve sonra **Kabul Et'i**tıklatın.
+Standart sözleşmeyi kullanmak için **Microsoft 'un ticari Market Için standart sözleşmeyi kullan** onay kutusunu işaretleyin ve ardından **kabul et**' e tıklayın.
 
 > [!NOTE]
-> Microsoft ticari pazarı için Standart sözleşmeyi kullanarak bir teklif yayımladıktan sonra, kendi özel hüküm ve koşullarınızı kullanamazsınız. Çözümünüzü Standart Sözleşme kapsamında veya kendi hüküm ve koşullarınız altında sunun.
+> Microsoft ticari Market için standart sözleşmeyi kullanarak bir teklifi yayımladıktan sonra, kendi özel hüküm ve koşullarınızı kullanamazsınız. Çözümünüzü standart sözleşme kapsamında ya da kendi hüküm ve koşullarınızın altına sunun.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-1-standard-contract.png" alt-text="Microsoft'un ticari pazar onay kutusu için Standart Sözleşmekullanma'yı gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-1-standard-contract.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
 ##### <a name="your-own-terms-and-conditions"></a>Kendi hüküm ve koşullarınız
 
-Kendi özel hüküm ve koşullarınızı sağlamak için, bunları **Şartlar ve Koşullar** kutusuna girin. Bu kutuya sınırsız miktarda metin karakteri girebilirsiniz. Müşteriler teklifinizi denemeden önce bu koşulları kabul etmelidir.
+Kendi özel hüküm ve koşullarınızı sağlamak için **hüküm ve koşullar** kutusuna girin. Bu kutuya metnin sınırsız miktarda karakterini girebilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
-Bir sonraki bölüme, Teklif listesine devam etmeden önce **taslağı Kaydet'i** seçin.
+Bir sonraki bölüme devam etmeden önce **Taslağı kaydet** ' i seçin, teklif listesi.
 
 ## <a name="offer-listing"></a>Teklif listesi
 
-Bu sayfa, ticari pazarda görüntülenen teklif ayrıntılarını tanımlamanızı sağlar. Bu teklif adı, açıklama ve görüntüleri içerir.
+Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlamanıza olanak sağlar. Bu teklif adını, açıklamasını ve görüntülerini içerir.
 
 > [!NOTE]
-> Teklif açıklaması "Bu uygulama yalnızca [İngilizce olmayan dilde] olarak sunulur" ifadesiyle başlarsa, teklif ayrıntılarının İngilizce olması gerekmez. Teklif listesi ayrıntılarında kullanılandan farklı bir dilde içerik sunmak için yararlı bir bağlantı sağlamak da sorun değildir.
+> Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
 ### <a name="name"></a>Adı
 
-Buraya girdiğiniz ad, teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluşturduğunuzda Teklif **takma adı** kutusuna girdiğiniz metinle önceden doldurulmuştur. Bu adı daha sonra değiştirebilirsiniz.
+Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
-Adı:
+Ad:
 
-- Ticari marka olabilir (ve ticari marka ve telif hakkı sembolleri dahil edebilirsiniz).
+- Trademarked olabilir (ve ticari marka ve telif hakkı sembolleri dahil edebilirsiniz).
 - 50 karakterden uzun olamaz.
-- Emojileri içeremiyorum.
+- Emojıs dahil olamaz.
 
-### <a name="search-results-summary"></a>Arama sonuçları özeti
+### <a name="search-results-summary"></a>Arama sonuçları Özeti
 
-Teklifinizin kısa bir açıklaması. Bu, 100 karaktere kadar uzun olabilir ve pazar yeri arama sonuçlarında kullanılır.
+Teklifinizin kısa bir açıklaması. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="long-summary"></a>Uzun özet
+### <a name="long-summary"></a>Uzun Özet
 
-Teklifinizin daha ayrıntılı bir açıklaması. Bu, 256 karakter uzunluğunda olabilir ve pazar yeri arama sonuçlarında kullanılır.
+Teklifinizin daha ayrıntılı bir açıklaması. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
 ### <a name="description"></a>Açıklama
 
-Teklifinizin 3.000 karaktere kadar daha uzun bir açıklamasını sağlayın. Bu, pazar yeri giriş özetinde müşterilere görüntülenir.
+Teklifinizin en fazla 3.000 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu, Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenir.
 
-Açıklamanıza aşağıdakilerden birini veya birkaçını ekleyin:
+Açıklamasında aşağıdakilerden birini veya birkaçını ekleyin:
 
 - Teklifinizin sağladığı değer ve önemli avantajlar
-- Kategori veya endüstri dernekleri veya her ikisi
+- Kategori veya sektör ilişkilendirmeleri veya her ikisi
 - Uygulama içi satın alma fırsatları
-- Gerekli açıklamalar
+- Gerekli tüm kaldırlar
 
-Açıklamanızı yazmak için bazı ipuçları aşağıda verilmiştir:
+Tanımlarınızı yazmak için bazı ipuçları aşağıda verilmiştir:
 
-- Teklifinizin değerini açıklamanızın ilk birkaç cümlesinde açıkça açıklayın. Aşağıdaki öğeleri ekleyin:
+- Açıklayamlarınızın ilk birkaç cümlede teklifinizin değerini açıkça açıklamalıdır. Aşağıdaki öğeleri ekleyin:
   - Teklifin açıklaması.
-  - Tekliften yararlanan kullanıcı türü
-  - Müşteri ihtiyaçları veya teklif adreslerini sorunları.
-- İlk birkaç cümlenin arama sonuçlarında görüntülenebileceğini unutmayın.
-- Ürününüzü satmak için özelliklere ve işlevselliğe güvenmeyin. Bunun yerine, teklifinizin sağladığı değere odaklanın.
-- Sektöre özgü kelime dağarcığı veya fayda tabanlı ifadeler kullanmayı deneyin.
+  - Tekliften faydalanan Kullanıcı türü
+  - Müşteri ihtiyaçları veya teklif adreslerini yayınlar.
+- İlk birkaç tümcenin arama sonuçlarında görüntülenebileceğini unutmayın.
+- Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teklifinizin sağladığı değere odaklanın.
+- Sektöre özgü sözlük veya avantaj tabanlı bir ifade kullanmayı deneyin.
 
-Teklif **açıklamanızı** daha ilgi çekici hale getirmek için, açıklamanızı biçimlendirmek için zengin metin düzenleyicisini kullanın. numaralandırma, madde işaretleri, kalın, italik ve girintilerle açıklamanızı daha okunabilir hale getirmek için.
+Teklif **açıklamanızı** daha ilgi çekici hale getirmek için, tanımlarınızı biçimlendirmek üzere zengin metin düzenleyicisini kullanın. açıklamanızı daha okunaklı hale getirmek için numaralandırma, madde işaretleri, kalın, italik ve girintiler ile.
 
 :::image type="content" source="media/text-editor2.png" alt-text="Zengin metin düzenleyicisini gösterir." border="false" :::
 
-- Metne paragraf stili uygulamak için bu açılır uygulamayı kullanın.
+- Metne paragraf stili uygulamak için bu açılan eklentiyi kullanın.
 
     :::image type="content" source="media/text-editor3.png" alt-text="Zengin metin düzenleyicisinde metin stili denetimini gösterir." border="false":::
 
 - Metne numaralandırma veya madde işaretleri uygulamak için bu simgeleri kullanın.
 
-     :::image type="content" source="media/text-editor4.png" alt-text="Zengin metin düzenleyicisinde madde işaretli ve numara listesi denetimlerini gösterir." border="false":::
+     :::image type="content" source="media/text-editor4.png" alt-text="Zengin metin düzenleyicisinde madde işaretli ve sayı listesi denetimlerini gösterir." border="false":::
 
-- Girintiyi metine veya metinden eklemek veya kaldırmak için bu simgeleri kullanın.
+- Metne veya metinden girintileme eklemek veya buradan girinti kaldırmak için bu simgeleri kullanın.
 
-    :::image type="content" source="media/text-editor5.png" alt-text="Zengin metin düzenleyicisindeki girinti denetimlerini gösterir." border="false":::
+    :::image type="content" source="media/text-editor5.png" alt-text="Zengin metin düzenleyicisinde girintileme denetimlerini gösterir." border="false":::
 
-#### <a name="privacy-policy-link"></a>Gizlilik politikası bağlantısı
+#### <a name="privacy-policy-link"></a>Gizlilik ilkesi bağlantısı
 
-Kuruluşunuzun gizlilik ilkesinin web adresini girin. Teklifinizin gizlilik yasalarına ve yönetmeliklerine uygun olmasını sağlamaksizin sorumlusunuz. Ayrıca web sitenizde geçerli bir gizlilik politikası yayınlamaksizin de sorumlusunuz.
+Kuruluşunuzun gizlilik ilkesinin Web adresini girin. Teklifinizin gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan sorumlu olursunuz. Ayrıca, Web sitenizde geçerli bir gizlilik ilkesi göndermekten de sorumlusunuz.
 
 #### <a name="useful-links"></a>Yararlı bağlantılar
 
-Teklifiniz hakkında ek çevrimiçi belgeler sağlayın. En fazla 25 bağlantı ekleyebilirsiniz. Bağlantı eklemek için **+ Bağlantı ekle'yi** seçin ve ardından aşağıdaki alanları tamamlayın:
+Teklifiniz hakkında ek çevrimiçi belgeler sağlayın. En fazla 25 bağlantı ekleyebilirsiniz. Bir bağlantı eklemek için **+ bağlantı ekle** ' yi seçin ve ardından aşağıdaki alanları doldurun:
 
-- **Başlık** - Müşteriler bunu teklifinizin ayrıntılar sayfasında göreceksiniz.
-- **Link (URL)** – Müşterilerin çevrimiçi belgenizi görüntülemesi için bir bağlantı girin. Bağlantı http:// veya https:// ile başlamalıdır.
+- **Başlık** : müşteriler bunu teklifinizin ayrıntılar sayfasında görür.
+- **Bağlantı (URL)** – müşterilerin çevrimiçi belgenizi görüntülemesi için bir bağlantı girin. Bağlantı, http://veya https://ile başlamalıdır.
 
 ### <a name="contact-information"></a>İletişim Bilgileri
 
-**Destek kişisi** ve Mühendislik **kişisi**için adı, e-postayı ve telefon numarasını sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir. Bulut Çözüm Sağlayıcısı (CSP) iş ortaklarına da sağlanabilir.
+Bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir. Ayrıca, bulut çözümü sağlayıcısı (CSP) iş ortakları için de kullanılabilir.
 
-- Destek kişisi (gerekli): Genel destek soruları için.
-- Mühendislik iletişimi (gerekli): Teknik sorular ve belgelendirme sorunları için.
-- CSP Programı iletişim bilgileri (isteğe bağlı): CSP programıyla ilgili bayi soruları için.
+- Destek kişisi (gerekli): genel destek soruları Için.
+- Mühendislik ilgili kişisi (gerekli): Teknik sorular ve sertifika sorunları Için.
+- CSP program kişisi (isteğe bağlı): CSP programıyla ilgili satıcı soruları Için.
 
-Destek **iletişim** bölümünde, teklifin genel Azure, Azure Resmi veya her ikisinde de kullanılabilir olup olmadığına bağlı olarak iş ortaklarının teklifiniz için destek bulabilecekleri **Destek web sitesini** sağlayın.
+**Destek kişisi** bölümünde, ortağın küresel Azure 'Da, Azure Kamu 'da veya her ikisinde de kullanılabilir olup olmadığına bağlı olarak, teklif için iş ortaklarının destek bulabileceği **Destek Web sitesini** sağlayın.
 
-**CSP Programı iletişim** bölümünde, CSP iş ortaklarının teklifiniz için pazarlama malzemeleri bulabilecekleri bağlantıyı **(CSP Program Pazarlama Malzemeleri)** sağlayın.
+**CSP program kişisi** bölümünde, CSP iş ortaklarının teklifiniz için pazarlama malzemeleri bulabileceği bağlantıyı ( **CSP program pazarlama malzemeleri** ) sağlayın.
 
-#### <a name="additional-marketplace-listing-resources"></a>Ek pazar yeri listeleme kaynakları
+#### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
-Teklif listeleri oluşturma hakkında daha fazla bilgi edinmek için, [en iyi uygulamaları listele'ye](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) bakın
+Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listesi en iyi uygulamaları](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-### <a name="marketplace-images"></a>Pazar yeri görüntüleri
+### <a name="marketplace-images"></a>Market görüntüleri
 
-Teklifinizle birlikte kullanılacak logolar ve resimler sağlayın. Tüm görüntüler PNG formatında olmalıdır. Bulanık görüntüler reddedilir.
+Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
+
+>[!Note]
+>Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
- Teklifinizin logosunun PNG dosyalarını aşağıdaki dört piksel boyutlarının her birinde sağlayın:
+ Aşağıdaki dört piksel boyutundan her biri için teklifinizin logosunun PNG dosyalarını sağlayın:
 
 - **Küçük** (48 x 48)
-- **Orta** (90 x 90)
+- **Orta** (90 X 90)
 - **Büyük** (216 x 216)
-- **Geniş** (255 x 115)
+- **Geniş** (255 X 115)
 
-Dört logo gereklidir ve pazar listesinde farklı yerlerde kullanılır.
+Dört logo gereklidir ve Market listesindeki farklı yerlerde kullanılır.
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 
-Teklifinizin nasıl çalıştığını gösteren en fazla beş ekran görüntüsü ekleyin. Her biri 1280 x 720 piksel boyutunda ve PNG formatında olmalıdır.
+Teklifinizin nasıl çalıştığını gösteren en fazla beş ekran görüntüsü ekleyin. Her biri, boyut ve PNG biçiminde 1280 x 720 piksel olmalıdır.
 
 #### <a name="videos-optional"></a>Videolar (isteğe bağlı)
 
-Teklifinizi gösteren en fazla beş video ekleyin. Videonun adını, web adresini ve videonun 1280 x 720 piksel boyutunda küçük resim png görüntüsünü girin.
+Teklifinizi gösteren en fazla beş video ekleyin. Videonun adını, Web adresini ve videonun küçük resim PNG görüntüsünü 1280 x 720 piksel boyutunda girin.
 
 #### <a name="offer-examples"></a>Teklif örnekleri
 
-Aşağıdaki örnekler, teklif listeleme alanlarının teklifin farklı yerlerinde nasıl göründüğünü gösterir.
+Aşağıdaki örneklerde teklif listeleme alanlarının teklifin farklı konumlarında nasıl göründüğü gösterilmektedir.
 
-Bu, Azure Marketi'ndeki **Teklif giriş** sayfasını gösterir:
+Bu, Azure Marketi 'ndeki **teklif listesi** sayfasını gösterir:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Azure Marketi'ndeki Teklif giriş sayfasını gösterir." :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Azure Marketi 'ndeki teklif listesi sayfasını gösterir." :::
 
-Bu, Azure Marketi'ndeki arama sonuçlarını gösterir:
+Bu, Azure Marketi 'nde arama sonuçlarını gösterir:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Azure Marketi'ndeki arama sonuçlarını gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Azure Marketi 'ndeki arama sonuçlarını gösterir.":::
 
-Bu, Azure portalındaki **Teklif giriş** sayfasını gösterir:
+Bu, Azure portal **teklif listesi** sayfasını gösterir:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Azure portalındaki Teklif giriş sayfasını gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Azure portal teklif listesi sayfasını gösterir.":::
 
-Bu, Azure portalındaki arama sonuçlarını gösterir:
+Bu, arama sonuçlarını Azure portal gösterir:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Azure portalındaki arama sonuçlarını gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Azure portal arama sonuçlarını gösterir.":::
 
 ## <a name="preview"></a>Önizleme
 
-Önizleme sekmesinde, teklifinizi canlı yayınlamadan önce doğrulamak için sınırlı bir **Önizleme Hedef Kitlesi** seçebilirsiniz.
+Önizleme sekmesinde, canlı yayımlamadan önce teklifinizi doğrulamak için sınırlı bir **Önizleme hedef kitlesi** seçebilirsiniz.
 
 > [!IMPORTANT]
-> Teklifinizi **Önizleme'de**görüntüledikten sonra, teklifinizi herkese yayınlamak için **Canlı Yayına Gönder'i** seçmeniz gerekir.
+> Teklifinizi **önizlemede**güncelleştirdikten sonra teklifinizi herkese açık bir şekilde yayımlamak Için **canlı git** ' i seçmeniz gerekir.
 
-Azure abonelik kimliği GUID'lerini ve her biri için isteğe bağlı bir açıklama kullanarak önizleme hedef kitlenizi belirtin. Bu alanların hiçbiri müşteriler tarafından görülemez.
-
-> [!NOTE]
-> Azure abonelik kimliğinizi Azure portalındaki Abonelikler sayfasında bulabilirsiniz.
-
-Tek tek (10'a kadar) veya bir CSV dosyası yükleyerek (100'e kadar) en az bir Azure abonelik kimliği ekleyin. Bu abonelik adlarını ekleyerek, teklifinizi canlı yayınlanmadan önce kimlerin önizgösterip izleyebileceğini belirlersiniz. Teklifiniz zaten yayındaysa, teklifinizdeki değişiklikleri veya güncellemeleri test etmek için bir önizleme hedef kitlesi seçebilirsiniz.
+Azure abonelik KIMLIĞI GUID 'Lerini kullanarak önizleme Dinleyicilerinizi, her biri için isteğe bağlı bir açıklama ile birlikte belirtin. Bu alanlardan hiçbiri müşteriler tarafından görülenebilir.
 
 > [!NOTE]
-> Önizleme kitlesi özel bir hedef kitleden farklıdır. Önizleme **preview** kitlesi, yalnızca **özel** bir hedef kitleye (Kullanılabilirlik sekmesinde ayarlanmış) yayınlanacak olanlar da dahil olmak üzere, tüm teklif planlarını pazarda yayınlanmadan önce görebilir ve onaylayabilir.
+> Azure abonelik KIMLIĞINIZI Azure portal içindeki abonelikler sayfasında bulabilirsiniz.
 
-Devam etmeden önce **taslağı Kaydet'i** seçin.
+Tek tek (10 ' a kadar) veya bir CSV dosyası karşıya yükleyerek (100 'e kadar) en az bir Azure abonelik KIMLIĞI ekleyin. Bu abonelik kimliklerini ekleyerek teklifinizin canlı olarak yayınlanmadan önce ne kadar önizleyeceğini belirlersiniz. Teklifiniz zaten canlı ise, teklifinizdeki değişiklikleri veya güncelleştirmeleri test etmek için bir önizleme izleyiciyi seçebilirsiniz.
+
+> [!NOTE]
+> Önizleme hedef kitlesi, özel bir hedef kitleye göre farklılık gösterir. Bir **Önizleme** hedef kitlesi, yalnızca **özel** bir hedef kitleye yayımlanmaları (kullanılabilirlik sekmesinde ayarlanır) dahil olmak üzere Market 'te canlı olmadan önce tüm teklif planlarını görebilir ve doğrulayabilirler.
+
+Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ### <a name="plan-overview"></a>Plana genel bakış
 
-Bu sekme, aynı teklif içinde farklı plan seçenekleri sağlamanızı sağlar. Bu planlar daha önce SK'ler veya stok tutma birimleri olarak anılırdı. Planlar, küresel bulutlar, Devlet bulutları ve planın atıfta bulunduğu görüntü gibi bulutların nelerin mevcut olduğu açısından farklılık görebilir. Teklifinizi ticari pazarda listelemek için en az bir plan ayarlamanız gerekir.
+Bu sekme, aynı teklif içinde farklı plan seçenekleri sağlamanıza olanak tanır. Bu planlar daha önce SKU 'Lar veya stok tutma birimleri olarak adlandırılmıştı. Planlar, genel bulutlar, kamu bulutları ve plan tarafından başvurulan görüntü gibi bulutların kullanılabildiği koşullara göre farklılık gösterebilir. Teklifinizi ticari Market 'te listelemek için en az bir plan ayarlamanız gerekir.
 
-Planlarınızı oluşturduktan sonra, **Plana genel bakış** sekmesi şunları gösterir:
+Planlarınızı oluşturduktan sonra **plana genel bakış** sekmesi şunları gösterir:
 
 - Plan adları
 - Fiyatlandırma modeli
-- Bulut kullanılabilirliği (Genel veya Devlet)
+- Bulut kullanılabilirliği (küresel veya kamu)
 - Geçerli yayımlama durumu
 - Kullanılabilir eylemler
 
-Plan'a genel bakışta bulunan eylemler, planınızın geçerli durumuna bağlı olarak değişir. Şunları içerir:
+Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı olarak farklılık gösterir. Şunları içerir:
 
-- **Taslağı sil** – Plan durumu taslaksa.
-- **Satış planını durdurun** – Plan durumu canlı olarak yayınlanırsa.
+- **Taslağı Sil** – plan durumu bir tasladır.
+- **Satış planını durdur** – plan durumu canlı olarak yayımlandı.
 
-#### <a name="create-new-plan"></a>Yeni plan oluşturma
+#### <a name="create-new-plan"></a>Yeni plan oluştur
 
-**Yeni plan Oluştur'u**seçin. **Yeni plan** iletişim kutusu görüntülenir.
+**Yeni plan oluştur**' u seçin. **Yeni plan** iletişim kutusu görüntülenir.
 
-Plan **Kimliği** kutusunda, bu teklifteki her plan için benzersiz bir plan tanımlayıcısı oluşturun. Bu kimlik, ürünün web adresindeki müşteriler tarafından görülebilir. Yalnızca küçük harfleri ve sayıları, tireleri veya alt çiziyi ve en fazla 50 karakter kullanın.
+**Plan kimliği** kutusunda, bu teklifteki her plan için benzersiz bir plan tanımlayıcısı oluşturun. Bu KIMLIK, ürünün Web adresindeki müşteriler tarafından görülebilir. Yalnızca küçük harf ve rakam, tire veya alt çizgi ve en fazla 50 karakter kullanın.
 
 > [!NOTE]
-> **Oluştur'u**seçtikten sonra plan kimliği değiştirilemez.
+> Plan KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-Plan **adı** kutusuna, bu plan için bir ad girin. Müşteriler, teklifiniz içinde hangi planı seçiniz gerekip tespin edindiğinde bu adı görür. Bu teklifteki her plan için benzersiz bir ad oluşturun. Örneğin, Windows Server 2016 ve **Windows Server 2019**planlarını içeren bir **teklif** adı Kullanabilirsiniz. **Windows Server 2016**
+**Plan adı** kutusuna bu plan için bir ad girin. Müşteriler, teklifiniz dahilinde hangi planın seçeceğinize karar verirken bu adı görür. Bu teklifte her plan için benzersiz bir ad oluşturun. Örneğin, Windows Server **2016** ve **Windows Server 2019**planlarına **sahip bir** teklif adı kullanabilirsiniz.
 
-### <a name="plan-setup"></a>Kurulum planı
+### <a name="plan-setup"></a>Planı ayarla
 
-Bu sekme, planın hangi bulutlarda kullanılabileceğini seçmenize olanak tanır. Bu sekmedeki yanıtlarınız, diğer sekmelerde hangi alanların görüntüleneceğini etkiler.
+Bu sekme, planın kullanılabildiği bulutu seçmenize olanak sağlar. Bu sekmedeki yanıtlarınız, diğer sekmelerde hangi alanların görüntülendiğini etkiler.
 
 #### <a name="cloud-availability"></a>Bulut kullanılabilirliği
 
 Planınız en az bir bulutta kullanılabilir olmalıdır.
 
-Planınızın ticari pazarı kullanan tüm küresel Azure bölgelerindeki müşteriler tarafından kullanılabilmesi için **Azure Global** seçeneğini seçin. Ayrıntılar için [Bkz. Coğrafi kullanılabilirlik ve para birimi desteği.](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
+Planınızın, ticari Market kullanan tüm genel Azure bölgelerinde müşteriler tarafından kullanılabilmesi için **Azure genel** seçeneğini belirleyin. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Çözümünüzün burada görünmesini sağlamak için [**Azure Kamu Bulutu**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) seçeneğini belirleyin. Bu, ABD federal, eyalet ve yerel veya kabile devlet kurumlarının yanı sıra onlara hizmet vermeye uygun iş ortaklarından müşteriler için kontrollü erişime sahip bir devlet topluluğu bulutudur. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimlerinden, güvenlik önlemlerinden ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezlerini ve ağlarını kullanır (yalnızca ABD'de bulunur).
+Çözümünüzü burada görünmesini sağlamak için [**Azure Kamu Bulutu**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
 
-Azure Kamu'da [yayımlamadan](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) önce, sonuçlar farklı olabileceğinden, bu alandaki çözümünüzü test edin ve onaylayın. Çözümünüzü oluşturmak ve test etmek için [Microsoft Azure Kamu deneme sürümünden](https://azure.microsoft.com/global-infrastructure/government/request/)bir deneme hesabı isteyin.
+Azure Kamu 'da [yayımlamadan](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü oluşturmak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
 > [!NOTE]
-> Planınız yayınlandıktan ve belirli bir bulutta kullanılabilir hale sunulduktan sonra, bu bulutu kaldıramazsınız.
+> Planınız yayımlandıktan ve belirli bir bulutta kullanılabilir olduktan sonra, bu bulutu kaldıramazsınız.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Kamu Bulutu sertifikaları
+#### <a name="azure-government-cloud-certifications"></a>Azure Kamu bulut sertifikaları
 
-Bu seçenek yalnızca **Azure Kamu Bulutu** **Bulut kullanılabilirliği**altında seçilirse görülebilir.
+Bu seçenek, yalnızca **Azure Kamu Bulutu** 'nın **bulut kullanılabilirliği**altında seçilmesi durumunda görülebilir.
 
-Azure Kamu hizmetleri, belirli devlet yönetmeliklerine ve gereksinimlerine tabi olan verileri işler. Örneğin, FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 ve CJIS.
+Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi olan verileri işler. Örneğin, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 ve CJıS.
 
-Bu programlara ait sertifikalarınızı göstermek için, bunları açıklayan en fazla 100 bağlantı sağlayabilirsiniz. Bunlar, doğrudan programdaki girişlerinize veya kendi web sitenize bağlantılar olabilir. Bu bağlantılar yalnızca Azure Kamu müşterileri tarafından görülebilir.
+Bu programlara yönelik sertifikalarınızı göstermek için, bunları tanımlayan 100 'e kadar bağlantı sağlayabilirsiniz. Bunlar program üzerinde doğrudan veya kendi web sitenizde yer alan dökümlerinizin bağlantısı olabilir. Bu bağlantılar yalnızca Azure Kamu müşterileri tarafından görülebilir.
 
-## <a name="plan-listing"></a>Plan listesi
+## <a name="plan-listing"></a>Planı listeleme
 
-Bu sekme, geçerli teklifteki her farklı plan için belirli bilgileri görüntüler.
+Bu sekme, geçerli teklifin içindeki her farklı plan için belirli bilgileri görüntüler.
 
 ### <a name="plan-name"></a>Plan adı
 
-Bu, planı oluşturduğunuzda vermiş olduğunuz adla önceden doldurulmuştur. Bu adı gerektiği gibi değiştirebilirsiniz. En fazla 50 karakter uzunluğunda olabilir. Bu ad, Azure Marketi ve Azure portalında bu planın başlığı olarak görünür. Plan kullanıma hazır olduktan sonra varsayılan modül adı olarak kullanılır.
+Bu, planınızı oluşturduğunuz sırada verdiğiniz adla önceden doldurulmuştur. Bu adı gerektiği gibi değiştirebilirsiniz. En fazla 50 karakter uzunluğunda olabilir. Bu ad, Azure Marketi 'nde bu planın başlığı olarak görünür ve Azure portal. Plan kullanılmak üzere hazır olduktan sonra varsayılan modül adı olarak kullanılır.
 
-### <a name="plan-summary"></a>Plan özeti
+### <a name="plan-summary"></a>Plan Özeti
 
-Yazılım planınızın kısa bir özeti (teklif değil). Bu özet Azure Marketi arama sonuçlarında görünür ve en fazla 100 karakter içerebilir.
+Yazılım planınızın kısa bir özeti (teklif değildir). Bu Özet, Azure Marketi arama sonuçlarında görünür ve en fazla 100 karakter içerebilir.
 
 ### <a name="plan-description"></a>Plan açıklaması
 
-Bu yazılım planını benzersiz kılan ın yanı sıra teklifinizdeki planlar arasındaki farkları açıklayın. Teklifi tarif etme, sadece planı. Bu açıklama Azure Marketi'nde ve **Teklif giriş** sayfasındaki Azure portalında görünür. Plan özetinde sağladığınız içeriğin aynısı olabilir ve en fazla 2.000 karakter içerebilir.
+Bu yazılım planının ne olduğunu ve teklifinizdeki planlar arasındaki farkları betimleyebilirsiniz. Teklifi değil, yalnızca plan. Bu açıklama, Azure Marketi 'nde ve **teklif listesi** sayfasındaki Azure Portal görüntülenir. Plan özetinde girdiğiniz içerik aynı olabilir ve en fazla 2.000 karakter içerebilir.
 
-Bu alanları tamamladıktan sonra **Kaydet'i** seçin.
+Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
 
 #### <a name="plan-examples"></a>Plan örnekleri
 
-Aşağıdaki örnekler, plan listeleme alanlarının farklı görünümlerde nasıl göründüğünü gösterir.
+Aşağıdaki örneklerde plan listeleme alanlarının farklı görünümlerde nasıl göründüğü gösterilmektedir.
 
-Plan ayrıntılarını görüntülerken Azure Marketi'ndeki alanlar şunlardır:
+Plan ayrıntılarını görüntülerken Azure Marketi 'ndeki alanlar şunlardır:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Azure Marketi'nde plan ayrıntılarını görüntülerken gördüğünüz alanları gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Azure Marketi 'nde plan ayrıntılarını görüntülerken gördüğünüz alanları gösterir.":::
 
-Azure portalındaki plan ayrıntıları şunlardır:
+Bunlar Azure portal plan ayrıntılardır:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portalındaki plan ayrıntılarını gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portal plan ayrıntılarını gösterir.":::
 
 ## <a name="plan-availability"></a>Plan kullanılabilirliği
 
-Müşterilerin pazarda arama yapamaması, göz atmaması veya satın almaması için yayımlanmış teklifinizi gizlemek istiyorsanız, **Kullanılabilirlik** sekmesindeki **Planı Gizle** onay kutusunu seçin.
+Müşterilerin Market 'te arayabilmesi, gözatmasını veya satın almasını sağlamak için yayınlanmış teklifinizi gizlemek istiyorsanız, **kullanılabilirlik** sekmesinde **planı Gizle** onay kutusunu seçin.
 
-Bu alan şu anda kullanılır:
+Bu alan şu durumlarda kullanılır:
 
-- Teklif, başka bir uygulama yla başvurulduğunda dolaylı olarak kullanılmak üzere tasarlanmıştır.
-- Teklif tek tek satın alınmamalıdır.
-- Plan ilk test için kullanıldı ve artık alakalı değil.
-- Plan geçici veya mevsimlik teklifler için kullanıldı ve artık sunulmamalıdır.
+- Teklif, başka bir uygulama başvurulduğunda dolaylı olarak kullanılmak üzere tasarlanmıştır.
+- Teklif ayrı olarak satın alınmamalıdır.
+- Plan ilk test için kullanıldı ve artık ilgili değil.
+- Plan, geçici veya dönemsel teklifler için kullanıldı ve artık sunulmamalıdır.
 
 ## <a name="technical-configuration"></a>Teknik yapılandırma
 
-Kapsayıcı görüntüleri özel bir [Azure Kapsayıcı Kayıt Defteri'nde](https://azure.microsoft.com/services/container-registry/)barındırılmalıdır. Teknik **Yapılandırma** sekmesinde, Azure Kapsayıcı Kayıt Defteri'ndeki kapsayıcı resim deponuz için başvuru bilgilerini sağlayın.
+Kapsayıcı görüntülerinin özel bir [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)barındırılması gerekir. **Teknik yapılandırma** sekmesinde, Azure Container Registry içindeki kapsayıcı görüntüsü deponuzun başvuru bilgilerini girin.
 
-Teklif yayımlandıktan sonra, kapsayıcı resminiz belirli bir genel kapsayıcı kayıt defterinde Azure Marketi'ne kopyalanır. Konteyner resminizi kullanmak için tüm istekler, özel resminizden değil, Azure Marketi genel konteyner kayıt defterinden sunulur. Ayrıntılar için azure [kapsayıcı teknik varlıklarınızı hazırlayın'](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)a bakın.
+Teklif yayımlandıktan sonra, kapsayıcı görüntünüz belirli bir ortak kapsayıcı kayıt defterinde Azure Marketi 'ne kopyalanır. Kapsayıcı görüntünüzü kullanmaya yönelik tüm istekler, özel bir hizmet değil, Azure Marketi ortak kapsayıcı kayıt defterinden sunulur. Ayrıntılar için bkz. [Azure Container teknik varlıklarınızı hazırlama](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
 
-### <a name="image-repository-details"></a>Resim deposu ayrıntıları
+### <a name="image-repository-details"></a>Görüntü deposu ayrıntıları
 
-**Resim deposu ayrıntıları** sekmesinde aşağıdaki bilgileri sağlayın.
+**Görüntü deposu ayrıntıları** sekmesinde aşağıdaki bilgileri sağlayın.
 
-**Azure abonelik kimliği** – Kullanım bildirilen ve kapsayıcı resminizi içeren Azure Kapsayıcı Kayıt Defteri için hizmetlerin faturalandırıldığı abonelik kimliğini sağlayın. Bu kimliği Azure portalında [Abonelikler sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) bulabilirsiniz.
+**Azure ABONELIK kimliği** – kullanım rapor edildiği ve kapsayıcı görüntünüzü içeren Azure Container Registry için hizmetlerin FATURALANDıRıLAN abonelik kimliğini belirtin. Bu KIMLIĞI, Azure portal [abonelikler sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) bulabilirsiniz.
 
-**Azure kaynak grubu adı** – Kapsayıcı resminizle Azure Kapsayıcı Kayıt Defteri'ni içeren [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) adını sağlayın. Kaynak grubuna abonelik kimliğinde (üstte) erişilebilir olmalıdır. Adı Azure portalındaki [Kaynak grupları](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) sayfasında bulabilirsiniz.
+**Azure Kaynak grubu adı** – kapsayıcı yansımanıza Azure Container Registry içeren [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) adını belirtin. Kaynak grubuna abonelik KIMLIĞINDE erişilebilir olması gerekir (yukarıda). Adı Azure portal [kaynak grupları](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) sayfasında bulabilirsiniz.
 
-**Azure Kapsayıcı Kayıt Defteri adı** – Kapsayıcı resminizin olduğu Azure Kapsayıcı Kayıt [Defteri'nin](https://docs.microsoft.com/azure/container-registry/container-registry-intro) adını sağlayın. Kapsayıcı kayıt defteri, daha önce sağladığınız Azure kaynak grubunda olmalıdır. Tam oturum açma sunucusu adını değil, yalnızca kayıt defteri adını ekleyin. Adından **azurecr.io** atlayıp emin olun. Kayıt defteri adını Azure portalında [Konteyner Kayıt Defterleri sayfasında](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) bulabilirsiniz.
+**Azure Container Registry Name** : kapsayıcı yansımanıza sahip [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) adını belirtin. Kapsayıcı kayıt defteri, daha önce belirttiğiniz Azure Kaynak grubunda olmalıdır. Tam oturum açma sunucusu adını değil, yalnızca kayıt defteri adını dahil edin. Adından **azurecr.io** attığınızdan emin olun. Kayıt defteri adını Azure portal [kapsayıcı kayıt defterleri sayfasında](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) bulabilirsiniz.
 
-**Azure Kapsayıcı Kayıt Defteri için yönetici kullanıcı adı** – Kapsayıcı resminizin olduğu Azure Kapsayıcı Kayıt Defteri'ne bağlı yönetici kullanıcı [adı](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) sağlayın. Şirketinizin kayıt defterine erişebilmesini sağlamak için kullanıcı adı ve parola gereklidir. Yönetici kullanıcı adı ve parolasını almak **için, yönetici etkin özelliğiAzure** Komut Satırı Arabirimi (CLI) kullanarak **True** olarak ayarlayın. **Yönetici kullanıcısını** isteğe bağlı olarak Azure portalında **Etkinleştir'e** ayarlayabilirsiniz.
+**Azure Container Registry Için Yönetici Kullanıcı adı** – kapsayıcı görüntünüzü içeren Azure Container Registry bağlantılı [Yönetici Kullanıcı adını](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) sağlayın. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Yönetici Kullanıcı adını ve parolasını almak için, Azure komut satırı arabirimi 'ni (CLı) kullanarak **yönetici özellikli** özelliği **true** olarak ayarlayın. **Yönetici kullanıcıyı** Azure Portal ' de **etkinleştirmek** üzere isteğe bağlı olarak ayarlayabilirsiniz.
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Kapsayıcı kayıt defteri iletişim kutusunu güncelleştirin.":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Kapsayıcı kayıt defterini Güncelleştir iletişim kutusunu gösterir.":::
 
-**Azure Kapsayıcı Kayıt Defteri için Parola** – Azure Kapsayıcı Kayıt Defteri ile ilişkili ve kapsayıcı resminiz olan yönetici kullanıcı adının parolasını sağlayın. Şirketinizin kayıt defterine erişebilmesini sağlamak için kullanıcı adı ve parola gereklidir. Parolayı Azure portalından Konteyner Kayıt **Defteri** > **Erişim Anahtarları'na** giderek veya azure CLI ile [göster komutunu](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)kullanarak alabilirsiniz.
+**Azure Container Registry parolası** – Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry** > **erişim anahtarlarına** giderek veya [göster komutunu](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)kullanarak Azure CLI ile öğrenebilirsiniz.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Access Key menüsünü gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Erişim tuşu menüsünü gösterir.":::
 
-**Azure Kapsayıcı Kayıt Defteri'nde depo adı.** Resminize sahip Azure Kapsayıcı Kayıt Defteri deposunun adını sağlayın. Resmi kayıt defterine iterken deponun adını ekleyin. [Konteyner Kayıt Defteri](https://azure.microsoft.com/services/container-registry/) > **Depoları** sayfasına giderek deponun adını bulabilirsiniz. Daha fazla bilgi için azure [portalındaki kapsayıcı kayıt defteri depolarını görüntüleyin.](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)
+**Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını ekleyin. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/) > **depoları** sayfasına giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](https://docs.microsoft.com/azure/container-registry/container-registry-repositories).
 
 > [!NOTE]
 > Ad ayarlandıktan sonra değiştirilemez. Hesabınızdaki her teklif için benzersiz bir ad kullanın.
 
-### <a name="image-tags-for-new-versions-of-your-offer"></a>Teklifinizin yeni sürümleri için resim etiketleri
+### <a name="image-tags-for-new-versions-of-your-offer"></a>Teklifinizin yeni sürümleri için görüntü etiketleri
 
-Müşteriler, bir güncelleştirme yayımladığınızda Azure Marketi'nden otomatik olarak güncelleştirme alabilmeli. Güncelleştirmek istemiyorlarsa, resminizin belirli bir sürümünde kalabilmeleri gerekir. Bunu, görüntüye her güncelleştirme yaptığınızda yeni görüntü etiketleri ekleyerek yapabilirsiniz.
+Bir güncelleştirme yayımladığınızda müşterilerin Azure Marketi 'nden güncelleştirmeleri otomatik olarak alabilmesi gerekir. Güncelleştirmek istemlerse, görüntünüzün belirli bir sürümünde kalabilmeleri gerekir. Görüntüde her güncelleştirme yaptığınızda bunu yeni resim etiketleri ekleyerek yapabilirsiniz.
 
 ### <a name="image-tag"></a>Resim etiketi
 
-Bu alan, desteklenen tüm platformlarda görüntünüzün en son sürümüne işaret eden **en son** bir etiket içermelidir. Ayrıca bir sürüm etiketi içermelidir (örneğin, xx.xx.xx ile başlayan, xx bir sayı olduğu). Müşteriler birden çok platformu hedeflemek için [bildirim etiketleri](https://github.com/estesp/manifest-tool) kullanmalıdır. Bir bildirim etiketiyle başvurulan tüm etiketlerde de eklenmelidir, böylece bunları yükleyebiliriz.
+Bu alan, tüm desteklenen platformlarda görüntünüzün en son sürümüne işaret eden **en son** bir etiketi içermelidir. Ayrıca, sürüm etiketi de içermelidir (örneğin, xx. xx. xx ile başlayarak xx bir sayıdır). Müşteriler birden çok platformu hedeflemek için [bildirim etiketlerini](https://github.com/estesp/manifest-tool) kullanmalıdır. Bir bildirim etiketi tarafından başvurulan tüm Etiketler de karşıya yüklenebilmemiz için eklenmelidir.
 
-Tüm manifesto etiketleri (en son etiket hariç) **-** X, Y ve Z'nin sondaolduğu X.Y veya X.Y.Z ile başlamalıdır. Örneğin, en **son** etiket 1.0.1-linux-x64, 1.0.1-linux-arm32 ve 1.0.1-windows-arm32'ye işaret ederse, bu altı etiketin bu alana eklenmesi gerekir. Ayrıntılar için azure [kapsayıcı teknik varlıklarınızı hazırlayın'](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)a bakın.
+Tüm bildirim etiketleri (en son etiket hariç), X. Y **-** veya x. y. z ile başlamalı; burada x, y ve z tamsayılardır. Örneğin, **en son** bir etiket 1.0.1-Linux-x64, 1.0.1-Linux-ARM32 ve 1.0.1-Windows-ARM32 ' y i gösteriyorsa, bu altı etiket bu alana eklenmelidir. Ayrıntılar için bkz. [Azure Container teknik varlıklarınızı hazırlama](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
 
 > [!NOTE]
-> Test sırasında görüntüyü tanımlayabilmek için resminize bir test etiketi eklemeyi unutmayın.
+> Test sırasında görüntüyü tanımlayabilmeniz için yansımanıza bir sınama etiketi eklemeyi unutmayın.
 
-## <a name="review-and-publish"></a>İnceleme ve yayınlama
+## <a name="review-and-publish"></a>İnceleme ve yayımlama
 
-Teklifin gerekli tüm bölümlerini tamamladıktan sonra, bunu incelemek ve yayınlamak için gönderebilirsiniz.
+Teklifin tüm gerekli bölümlerini tamamladıktan sonra, bunu gözden geçirmek ve yayımlamak için gönderebilirsiniz.
 
-Portalın sağ üst köşesinde, **Gözden Geçir'i** seçin ve **yayınlayın.**
+Portalın sağ üst köşesinde, **gözden geçir ve** **Yayımla**' yı seçin.
 
 İnceleme sayfasında şunları yapabilirsiniz:
 
-- Teklifin her bölümü için tamamlanma durumuna bakın. Teklifin tüm bölümleri tamamlanana kadar yayımlayamazsınız.
-  - **Başlatılmadı** – Henüz başlatılmadı ve tamamlanması gerekiyor.
-  - **Eksik** – Düzeltilmesi gereken veya daha fazla bilgi sağlamanızı gerektiren hatalar vardır. Yardım için bu belgedeki önceki bölümlere bakın.
-  - **Komple** – Hatasız gerekli tüm verileri içerir. Teklifi sunamadan önce teklifin tüm bölümlerinin tamamlanmış olması gerekmektedir.
-- Teklifinizin doğru test edildiğinden emin olmak için belgelendirme ekibine test talimatları sağlayın. Ayrıca, teklifinizi anlamak için yararlı olan ek notlar sağlayın.
+- Teklifin her bölümü için tamamlanma durumuna bakın. Teklifin tüm bölümleri Tamam olarak işaretlenene kadar yayımlayamazsınız.
+  - **Başlatılmamış** – başlatılmamış ve tamamlanması gerekiyor.
+  - **Tamamlanmamış** – düzeltilmesi gereken hatalar var veya daha fazla bilgi sağlamanızı gerektirir. Yardım için bu belgenin önceki bölümlerine bakın.
+  - **Tamamlanmış** – hatasız tüm gerekli verileri içerir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamlanmış olması gerekir.
+- Teklifinizin doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın. Ayrıca, teklifinizi anlamak için yararlı olan tüm ek notları sağlayın.
 
-Yayımlama teklifini göndermek için **Yayımla'yı**seçin.
+Teklifi yayımlamaya göndermek için **Yayımla**' yı seçin.
 
-Teklifin önizleme sürümünün gözden geçirilip onaylamayacağını bildirmek için size bir e-posta göndeririz.
+Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz.
 
-Teklifinizi halka (veya özel bir teklifte özel bir hedef kitleye) yayınlamak için Ortak Merkezi'ne gidin ve **Go-live'ı**seçin.
+Teklifinizi herkese (veya özel bir teklif, özel bir hedef kitleye) yayımlamak için Iş Ortağı Merkezi ' ne gidin ve **Git-Live**' ı seçin.
 
 ## <a name="next-step"></a>Sonraki adım
 

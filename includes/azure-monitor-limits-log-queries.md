@@ -9,31 +9,31 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: 627b020ce618a2a1f2646a95e143947876bd6a15
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82072646"
 ---
-### <a name="general-query-limits"></a>Genel sorgu sınırları
+### <a name="general-query-limits"></a>Genel sorgu limitleri
 
 | Sınır | Açıklama |
 |:---|:---|
-| Sorgu dili | Azure Monitor, Azure Veri Gezgini ile aynı [Kusto sorgu dilini](/azure/kusto/query/) kullanır. Azure [Monitor'da](../articles/azure-monitor/log-query/data-explorer-difference.md) desteklenmeyen KQL dil öğeleri için Azure Monitor günlük sorgu dil farklılıklarına bakın. |
-| Azure bölgeleri | Günlük sorguları, birden çok Azure bölgesinde Günlük Analizi çalışma alanlarına yayılan veriler aşırı ek yükü yaşayabilir. Ayrıntılar için [Sorgu sınırlarına](../articles/azure-monitor/log-query/scope.md#query-limits) bakın. |
-| Çapraz kaynak sorguları | 100 ile sınırlı tek bir sorguda maksimum Uygulama Öngörüleri kaynağı ve Log Analytics çalışma alanı sayısı.<br>Kaynak karşıtması View Designer'da desteklenmez.<br>Günlük uyarılarındaki çapraz kaynak sorgusu yeni zamanlananQueryRules API'sinde desteklenir.<br>Ayrıntılar için [kaynak ötesi sorgu sınırlarına](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) bakın. |
+| Sorgu dili | Azure Izleyici, Azure Veri Gezgini ile aynı [kusto sorgu dilini](/azure/kusto/query/) kullanır. Azure Izleyici 'de desteklenmeyen KQL dil öğelerine yönelik [Azure İzleyici günlüğü sorgu dili farklılıkları](../articles/azure-monitor/log-query/data-explorer-difference.md) bölümüne bakın. |
+| Azure bölgeleri | Veri, birden çok Azure bölgesindeki çalışma alanlarını Log Analytics yayıldığında günlük sorguları aşırı yük yaşar. Ayrıntılar için bkz. [sorgu sınırları](../articles/azure-monitor/log-query/scope.md#query-limits) . |
+| Çapraz kaynak sorguları | Tek bir sorgudaki maksimum Application Insights kaynak sayısı ve Log Analytics çalışma alanı 100 ile sınırlıdır.<br>Görünüm tasarımcısında çapraz kaynak sorgusu desteklenmez.<br>Log uyarılarındaki çapraz kaynak sorgusu, yeni scheduledQueryRules API 'sinde desteklenir.<br>Ayrıntılar için bkz. [çapraz kaynak sorgu sınırları](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) . |
 
-### <a name="user-query-throttling"></a>Kullanıcı sorgusu azaltma
-Azure Monitor'un, aşırı sayıda sorgu gönderen kullanıcılara karşı korumak için birkaç azaltma sınırı vardır. Bu tür davranışlar, sistem arka uç kaynaklarını aşırı yükleyebilir ve hizmet yanıt verme yeteneğini tehlikeye atabilir. Aşağıdaki sınırlar, müşterileri kesintilerden korumak ve tutarlı hizmet düzeyi sağlamak için tasarlanmıştır. Kullanıcı azaltma ve sınırlamaları yalnızca aşırı kullanım senaryosunu etkileyecek şekilde tasarlanmıştır ve tipik kullanımiçin uygun olmamalıdır.
+### <a name="user-query-throttling"></a>Kullanıcı sorgu azaltma
+Azure Izleyici, çok fazla sayıda sorgu gönderen kullanıcılara karşı koruma için birkaç azaltma sınırlarına sahiptir. Bu davranış, sistem arka uç kaynaklarını aşırı yükleyebilir ve hizmet yanıt hızını düşürebilir. Aşağıdaki sınırlar, müşterilerin kesintileri karşı korumak ve tutarlı hizmet düzeyi sağlamak için tasarlanmıştır. Kullanıcı kısıtlama ve sınırları yalnızca Extreme kullanım senaryosunu etkileyecek şekilde tasarlanmıştır ve tipik kullanım için uygun olmamalıdır.
 
 
-| Measure | Kullanıcı başına limit | Açıklama |
+| Measure | Kullanıcı başına sınır | Açıklama |
 |:---|:---|:---|
-| Eşzamanlı sorgular | 5 | Kullanıcı için çalışan 5 sorgu varsa, kullanıcı başına eşzamanlılık sırana yeni sorgular yerleştirilir. Çalışan sorgulardan biri sona erdiğinde, bir sonraki sorgu kuyruktan çıkarılır ve başlatılır. Bu, uyarı kurallarındaki sorguları içermez.
-| Eşzamanlılık kuyruğundaki süre | 2,5 dakika | Bir sorgu başlatılmadan 2,5 dakikadan fazla sırada kalırsa, kod 429 ile bir HTTP hata yanıtı ile sonlandırılır. |
-| Eşzamanlılık kuyruğundaki toplam sorgular | 40 | Kuyruktaki sorgu sayısı 40'a ulaştığında, ek sorgular BIR HTTP hata kodu 429 ile reddedilir. Bu sayı, aynı anda çalıştırılabilen 5 sorguya ek olarak verilir. |
-| Sorgu oranı | 30 saniyede 200 sorgu | Bu, sorguların tek bir kullanıcı tarafından tüm çalışma alanlarına gönderilebildiği genel orandır.  Bu sınır, Azure panoları ve Log Analytics çalışma alanı özet sayfası gibi görselleştirme bölümleri tarafından başlatılan programlı sorgular veya sorgular için geçerlidir. |
+| Eşzamanlı sorgular | 5 | Kullanıcı için çalıştırılan 5 sorgu varsa, tüm yeni sorgular Kullanıcı başına eşzamanlılık kuyruğuna yerleştirilir. Çalışan sorgulardan biri sona erdiğinde, sonraki sorgu kuyruktan çekilir ve başlatılır. Bu, uyarı kurallarından sorgu içermez.
+| Eşzamanlılık kuyruğundaki süre | 2,5 dakika | Bir sorgu, başlatılmadan 2,5 dakikadan uzun bir süre içinde yer alıyorsa, kod 429 ile bir HTTP hatası yanıtıyla sonlandırılır. |
+| Eşzamanlılık kuyruğundaki toplam sorgu sayısı | 40 | Kuyruktaki sorguların sayısı 40 ' ye ulaştığında, herhangi bir ek sorgu, HTTP hata kodu 429 ile reddedilir. Bu sayı aynı anda çalışabilecek 5 sorguya ek olarak yapılır. |
+| Sorgu hızı | 30 saniye başına 200 sorgu | Bu, sorguların tek bir kullanıcı tarafından tüm çalışma alanlarına gönderilebilmesinin genel hızıdır.  Bu sınır, Azure panoları ve Log Analytics çalışma alanı Özet sayfası gibi görselleştirme parçaları tarafından başlatılan programlı sorgular veya sorgular için geçerlidir. |
 
-- [Azure Monitor'da En İyi Duruma Getir günlük sorgularında](../articles/azure-monitor/log-query/query-optimization.md)açıklandığı gibi sorgularınızı optimize edin.
-- Panolar ve çalışma kitapları, her yüklediklerinde veya yenilediklerinde bir sorgu patlaması oluşturan tek bir görünümde birden çok sorgu içerebilir. Onları isteğe bağlı olarak yüklenen birden çok görünüme bölmeyi düşünün. 
-- Power BI'de, ham günlükler yerine yalnızca toplu sonuçları ayıklamayı düşünün.
+- [Azure izleyici 'de günlük sorgularını iyileştirme](../articles/azure-monitor/log-query/query-optimization.md)bölümünde açıklandığı gibi sorgularınızı iyileştirin.
+- Panolar ve çalışma kitapları, her yüklendiğinde veya yeniledikleri her seferinde sorgu patlaması oluşturan tek bir görünümde birden çok sorgu içerebilir. Bunları isteğe bağlı olarak yüklenen birden çok görünüme bölmek için göz önünde bulundurun. 
+- Power BI ' de, ham Günlükler yerine yalnızca toplanmış sonuçları ayıklamayı göz önünde bulundurun.

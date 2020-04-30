@@ -1,6 +1,6 @@
 ---
-title: Geliştirilmiş gecikme süremi için VM'leri birlikte bulma
-description: Azure VM kaynaklarının birlikte bulunmasının gecikme gecikmesi nasıl artırabileceği hakkında bilgi edinin.
+title: İyileştirilmiş gecikme süresi için VM 'Leri birlikte bulun
+description: Azure VM kaynakları ile gecikme süresini nasıl iyileştirebileceğinizi öğrenin.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
@@ -8,15 +8,15 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
 ms.openlocfilehash: 066b6d10dbe07b902abfd15565c5ccf1a5e9c115
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82083181"
 ---
-# <a name="co-locate-resource-for-improved-latency"></a>Geliştirilmiş gecikme sonu için kaynağı birlikte bulma
+# <a name="co-locate-resource-for-improved-latency"></a>Gelişmiş gecikme için kaynağı birlikte bulun
 
-Uygulamanızı Azure'da dağıtırken, örnekleri bölgelere veya kullanılabilirlik bölgelerine yaymak ağ gecikmesi oluşturur ve bu da uygulamanızın genel performansını etkileyebilir. 
+Uygulamanızı Azure 'da dağıttığınızda, örnekleri bölgeler veya kullanılabilirlik alanları arasında yaymak, uygulamanızın genel performansını etkileyebilecek ağ gecikmesi oluşturur. 
 
 
 ## <a name="proximity-placement-groups"></a>Yakınlık yerleştirme grupları 
@@ -25,10 +25,10 @@ Uygulamanızı Azure'da dağıtırken, örnekleri bölgelere veya kullanılabili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell'i kullanarak [bir VM'yi yakınlık yerleşim grubuna](proximity-placement-groups.md) dağıtın.
+Azure PowerShell kullanarak bir sanal makineyi bir [yakınlık yerleşimi grubuna](proximity-placement-groups.md) dağıtın.
 
-[Ağ gecikmesini](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)nasıl test edebilirsiniz öğrenin.
+[Ağ gecikmesini test](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)etme hakkında bilgi edinin.
 
-Ağ iş akışını nasıl [optimize edebilirsiniz](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)öğrenin.  
+[Ağ aktarım hızını en uygun hale getirmeyi](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)öğrenin.  
 
-[SAP uygulamalarıyla yakınlık yerleşim gruplarını](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)nasıl kullanacağınızı öğrenin.
+[SAP uygulamalarıyla yakınlık yerleştirme gruplarını nasıl kullanacağınızı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)öğrenin.

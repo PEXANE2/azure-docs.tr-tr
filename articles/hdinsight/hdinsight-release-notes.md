@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight sürüm notları
-description: Azure HDInsight için en son sürüm notları. Hadoop, Spark, R Server, Hive ve daha fazlası için geliştirme ipuçları ve ayrıntılar alın.
+description: Azure HDInsight için en son sürüm notları. Hadoop, Spark, R Server, Hive ve daha fazlası için geliştirme ipuçları ve ayrıntıları alın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,60 +9,60 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084898"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
-Bu makalede, **en son** Azure HDInsight sürüm güncelleştirmeleri hakkında bilgi verilmektedir. Önceki sürümler hakkında daha fazla bilgi için [HDInsight Sürüm Notları Arşivi'ne](hdinsight-release-notes-archive.md)bakın.
+Bu makalede **en son** Azure HDInsight sürüm güncelleştirmeleri hakkında bilgi sağlanır. Önceki sürümler hakkında daha fazla bilgi için bkz. [HDInsight sürüm notları Arşivi](hdinsight-release-notes-archive.md).
 
 ## <a name="summary"></a>Özet
 
-Azure HDInsight, Azure'da açık kaynak analizi için kurumsal müşteriler arasında en popüler hizmetlerden biridir.
+Azure HDInsight, Azure üzerinde açık kaynaklı analizler için kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
 
-## <a name="release-date-01092020"></a>Yayın tarihi: 01.09.2020
+## <a name="release-date-01092020"></a>Yayın tarihi: 01/09/2020
 
-Bu sürüm hem HDInsight 3.6 hem de 4.0 için geçerlidir. HDInsight sürümü birkaç gün içinde tüm bölgeleriçin kullanılabilir hale getirilir. Buradaki çıkış tarihi ilk bölge çıkış tarihini gösterir. Aşağıdaki değişiklikleri göremiyorsanız, lütfen sürümün bölgenizde birkaç gün içinde yayınlanmasını bekleyin.
+Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, lütfen bölgenizde bir kaç gün içinde etkin olmasını bekleyin.
 
 > [!IMPORTANT]  
-> Linux, HDInsight sürüm 3.4 ve üzerinde kullanılan tek işletim sistemidir. Daha fazla bilgi için [HDInsight sürüm makalesine](hdinsight-component-versioning.md)bakın.
+> Linux, HDInsight sürüm 3.4 ve üzerinde kullanılan tek işletim sistemidir. Daha fazla bilgi için bkz. [HDInsight sürüm oluşturma makalesi](hdinsight-component-versioning.md).
 
 ## <a name="new-features"></a>Yeni özellikler
 ### <a name="tls-12-enforcement"></a>TLS 1.2 zorlaması
-Aktarım Katmanı Güvenliği (TLS) ve Güvenli Soket katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir. [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)hakkında daha fazla bilgi edinin. HDInsight, ortak HTTS uç noktalarında TLS 1.2 kullanır, ancak TLS 1.1 geriye dönük uyumluluk için hala desteklenir. 
+Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir. [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)hakkında daha fazla bilgi edinin. HDInsight, genel HTTPs uç noktalarında TLS 1,2 kullanır, ancak geriye dönük uyumluluk için TLS 1,1 hala desteklenmektedir. 
 
-Bu sürümle, müşteriler TLS 1.2'yi yalnızca ortak küme bitiş noktası üzerinden tüm bağlantılar için tercih edebilirler. Bunu desteklemek için, yeni özellik **minSupportedTlsVersion** tanıtıldı ve küme oluşturma sırasında belirtilebilir. Özellik ayarlanmazsa, küme hala TLS 1.0, 1.1 ve 1.2'yi destekler, bu da bugünkü davranışla aynıdır. Müşteriler bu özelliğin değerini "1,2" olarak ayarlayabilir, bu da kümenin yalnızca TLS 1,2 ve üzeri destekler anlamına gelir. Daha fazla bilgi için [Taşıma Katmanı Güvenliği'ne](./transport-layer-security.md)bakın.
+Bu sürümde, müşteriler yalnızca genel küme uç noktası üzerinden tüm bağlantılar için TLS 1,2 ' i kabul edebilir. Bunu desteklemek için, **Minsupportedtlsversion** yeni özelliği tanıtılmıştır ve küme oluşturma sırasında belirlenebilir. Özellik ayarlanmamışsa, küme yine de bugün davranışıyla aynı olan TLS 1,0, 1,1 ve 1,2 ' i destekler. Müşteriler bu özelliğin değerini "1,2" olarak ayarlayabilir, bu da kümenin yalnızca TLS 1,2 ve üstünü desteklediği anlamına gelir. Daha fazla bilgi için bkz. [Aktarım Katmanı Güvenliği](./transport-layer-security.md).
 
-### <a name="bring-your-own-key-for-disk-encryption"></a>Disk şifreleme için kendi anahtarınızı getirin
-HDInsight'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunur. Bu disklerde ki veriler varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifrelenir. Bu sürümden başlayarak, disk şifreleme için Kendi Anahtarınızı Getirebilirsiniz (BYOK) ve Azure Key Vault'u kullanarak yönetebilirsiniz. BYOK şifreleme, ek bir ücret ödemeden küme oluşturma sırasında tek adımlı bir yapılandırmadır. HDInsight'ı Azure Key Vault ile yönetilen bir kimlik olarak kaydedin ve kümenizi oluştururken şifreleme anahtarını ekleyin. Daha fazla bilgi için [Müşteri tarafından yönetilen anahtar disk şifrelemesi'ne](https://docs.microsoft.com/azure/hdinsight/disk-encryption)bakın.
+### <a name="bring-your-own-key-for-disk-encryption"></a>Disk şifrelemesi için kendi anahtarınızı getirin
+HDInsight 'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunmaktadır. Bu disklerdeki veriler, varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifrelenir. Bu sürümden itibaren, disk şifrelemesi için Kendi Anahtarını Getir (BYOK) ve Azure Key Vault kullanarak yönetebilirsiniz. BYOK şifrelemesi, küme oluşturma sırasında ek bir ücret olmadan tek adımlı bir yapılandırmadır. HDInsight 'ı Azure Key Vault ile yönetilen kimlik olarak kaydedin ve kümenizi oluştururken şifreleme anahtarını eklemeniz yeterlidir. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtar disk şifrelemesi](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
-Bu sürüm için amortisman yok. Yaklaşan amortismanlara hazırlanmak [için, yaklaşan değişikliklere](#upcoming-changes)bakın.
+Bu yayının kullanım dışı bırakılmasıyla ilgili değildir. Yakında kullanım dışı bırakılmaya hazırlanmak için, [yaklaşan değişikliklere](#upcoming-changes)bakın.
 
 ## <a name="behavior-changes"></a>Davranış değişiklikleri
-Bu sürüm için davranış değişikliği yok. Yaklaşan değişikliklere hazırlanmak [için, yaklaşan değişikliklere](#upcoming-changes)bakın.
+Bu sürümde hiçbir davranış değişikliği yok. Yaklaşan değişikliklere hazırlanmak için, [yaklaşan değişikliklere](#upcoming-changes)bakın.
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
-Aşağıdaki değişiklikler gelecek sürümlerde gerçekleşecektir. 
+Gelecek sürümlerde aşağıdaki değişiklikler olur. 
 
-### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Kafa Düğümü için en az 4 çekirdekli VM gereklidir 
-HDInsight kümelerinin yüksek kullanılabilirliğini ve güvenilirliğini sağlamak için Head Node için en az 4 çekirdekli VM gereklidir. 6 Nisan 2020'den itibaren müşteriler yeni HDInsight kümeleri için Kafa Düğümü olarak yalnızca 4 çekirdekli veya vm'nin üzerinde seçebilecekler. Varolan kümeler beklendiği gibi çalışmaya devam eder. 
+### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Baş düğüm için en az 4 çekirdekli bir VM gereklidir 
+Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek kullanılabilirliğini ve güvenilirliğini güvence altına almak için gereklidir. Müşteriler, 6 Nisan 2020 ' den başlayarak yeni HDInsight kümeleri için yalnızca 4 çekirdekli veya VM 'nin üzerinde baş düğüm olarak seçim yapabilir. Mevcut kümeler beklenen şekilde çalışmaya devam edecektir. 
 
-### <a name="esp-spark-cluster-node-size-change"></a>ESP Kıvılcım küme düğümü boyutu değişikliği 
-Gelecek sürümde, ESP Spark kümesi için izin verilen minimum düğüm boyutu Standard_D13_V2 olarak değiştirilir. A serisi VM'ler, nispeten düşük CPU ve bellek kapasitesi nedeniyle ESP küme sorunlarına neden olabilir. A serisi VM'ler yeni ESP kümeleri oluşturmak için amortismana hazırlanır.
+### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark kümesi düğüm boyutu değişikliği 
+Yaklaşan sürümde, ESP Spark kümesi için izin verilen en düşük düğüm boyutu Standard_D13_V2 olarak değiştirilecektir. A serisi VM 'Ler görece düşük CPU ve bellek kapasitesi nedeniyle ESP kümesi sorunlarına neden olabilir. Yeni ESP kümeleri oluşturmak için A serisi VM 'Ler kullanım dışı olacaktır.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanıyor. Yaklaşan sürümde, HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. Azure sanal makine ölçek kümeleri hakkında daha fazla bilgi edinin.
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Yaklaşan sürümde, HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. Azure sanal makine ölçek kümeleri hakkında daha fazla bilgi için bkz..
 
-### <a name="hbase-20-to-21"></a>HBase 2.0 ile 2.1 arasında
-Yaklaşan HDInsight 4.0 sürümünde, HBase sürümü sürüm 2.0'dan 2.1'e yükseltilecektir.
+### <a name="hbase-20-to-21"></a>HBase 2,0-2,1
+Yakında düzenlenecek HDInsight 4,0 sürümünde HBase sürümü 2,0 sürümünden 2,1 sürümüne yükseltilir.
 
 ## <a name="bug-fixes"></a>Hata düzeltmeleri
-HDInsight küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ediyor. 
+HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
 
-## <a name="component-version-change"></a>Bileşen sürüm değişikliği
-Bu sürüm için bileşen sürümü değişikliği yok. HDInsight 4.0 reklam HDInsight 3.6 için geçerli bileşen sürümlerini burada bulabilirsiniz.
+## <a name="component-version-change"></a>Bileşen sürümü değişikliği
+Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini burada bulabilirsiniz.
 

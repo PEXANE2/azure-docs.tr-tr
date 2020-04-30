@@ -1,6 +1,6 @@
 ---
-title: Azure Yığını Hub'ında denetim noktası deposu olarak Blob Depolama'yı kullanma (önizleme)
-description: Bu makalede, Azure Yığını Hub'ındaki Olay Hub'larında Blob Depolama'nın denetim noktası deposu olarak nasıl kullanılacağı açıklanmaktadır (önizleme).
+title: Azure Stack hub 'da (Önizleme) denetim noktası deposu olarak blob depolamayı kullanma
+description: Bu makalede, Azure Stack hub 'ında (Önizleme) Event Hubs bir denetim noktası deposu olarak blob Storage 'ın nasıl kullanılacağı açıklanır.
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -9,32 +9,32 @@ ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: spelluru
 ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82023675"
 ---
-# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob Depolama'yı denetim noktası deposu olarak kullanma - Azure Stack Hub'ındaki Etkinlik Hub'ları (önizleme)
-Azure Blob Depolama'yı, Depolama Blob SDK'nın azure'da genellikle kullanılabilir sürümünden farklı bir sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, Depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Bir Azure Yığını Hub sürümü 2002'de Etkinlik Hub'ları](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, Depolama hizmeti için kullanılabilir en yüksek sürüm 2017-11-09 sürümüdür. Bu durumda, Depolama hizmeti API sürümünü 2017-11-09'a hedeflemek için kod kullanmanız gerekir. Belirli bir Depolama API sürümünü niçin hedefleneceksiniz hakkında bir örnek için, GitHub'daki şu örneklere bakın: 
+# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob depolamayı denetim noktası deposu olarak kullanma-Azure Stack hub 'da Event Hubs (Önizleme)
+Azure Blob depolama 'Yı, genellikle Azure 'da bulunan farklı bir Storage blob SDK sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Event Hubs bir Azure Stack hub sürümü 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, Storage Service API sürümünü 2017-11-09 'e hedeflemek için kodu kullanmanız gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da şu örneklere bakın: 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). 
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) veya [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
-- Python - [Senkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [Asynchronous](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
+- Python- [zaman uyumlu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [zaman uyumsuz](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 
 > [!IMPORTANT]
-> Azure Yığını Hub'ındaki Olay Hub'ları şu anda [önizlemede](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ve ücretsiz. 
+> Azure Stack hub Event Hubs Şu anda [Önizleme](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) aşamasındadır ve ücretsizdir. 
 
-Azure Stack Hub'ın desteklediği sürümü hedeflemeden Blob Depolama'yı denetim noktası deposu olarak kullanan Event Hub'ları alıcısı çalıştırırsanız, aşağıdaki hata iletisini alırsınız:
+Blob depolamayı kullanan Event Hubs alıcıyı, Azure Stack hub 'ın desteklediği sürümü hedeflemeden denetim noktası deposu olarak çalıştırırsanız, aşağıdaki hata iletisini alırsınız:
 
 ```
 The value for one of the HTTP headers is not in the correct format
 ```
 
 
-## <a name="sample-error-message-in-python"></a>Python'da örnek hata iletisi
-Python için hata, `azure.core.exceptions.HttpResponseError` hata işleyicisine `on_error(partition_context, error)` `EventHubConsumerClient.receive()`aktarılır. Ancak, yöntem `receive()` bir istisna yükseltmez. `print(error)`aşağıdaki özel durum bilgilerini yazdırır:
+## <a name="sample-error-message-in-python"></a>Python 'da örnek hata iletisi
+Python için bir hata `azure.core.exceptions.HttpResponseError` , öğesinin `on_error(partition_context, error)` `EventHubConsumerClient.receive()`hata işleyicisine geçirilir. Ancak, yöntemi `receive()` özel durum oluşturmaz. `print(error)`Aşağıdaki özel durum bilgilerini yazdırır:
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.
@@ -47,7 +47,7 @@ HeaderName:x-ms-version
 HeaderValue:2019-07-07
 ```
 
-Kaydedici aşağıdakiler gibi iki uyarı yı zedler:
+Günlükçü aşağıdaki gibi iki uyarıyı günlüğe kaydeder:
 
 ```bash
 WARNING:azure.eventhub.extensions.checkpointstoreblobaio._blobstoragecsaio: 
@@ -64,4 +64,4 @@ The exception is HttpResponseError('The value for one of the HTTP headers is not
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bölümleme ve denetim noktası hakkında aşağıdaki makaleye bakın: [Uygulamanızın birden çok örneğinde bölüm yükünü dengeleyin](event-processor-balance-partition-load.md)
+Bölümlendirme ve sağlama hakkında bilgi edinmek için aşağıdaki makaleye bakın: [uygulamanızın birden çok örneğinde bölüm yükünü dengeleme](event-processor-balance-partition-load.md)

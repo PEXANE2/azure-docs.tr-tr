@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: .NET ile Tablo API - Azure Cosmos DB'
+title: "Hızlı başlangıç: .NET ile Tablo API'si Azure Cosmos DB"
 description: Bu hızlı başlangıçta Azure portalı ve .NET ile uygulama oluşturmak için Azure Cosmos DB Tablo API’sinin nasıl kullanılacağı gösterilmektedir
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: df26021a3718c17d72f0fdb25588487043918732
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82084116"
 ---
-# <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Hızlı başlatma: .NET SDK ve Azure Cosmos DB ile Tablo API uygulaması oluşturma 
+# <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB Tablo API'si uygulama oluşturma 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -26,9 +26,9 @@ ms.locfileid: "82084116"
 
 Bu hızlı başlangıçta GitHub’dan bir örneği kopyalayarak bir uygulama oluşturmak için .NET ve Azure Cosmos DB [Tablo API’sini](table-introduction.md) nasıl kullanacağınız gösterilmektedir. Bu hızlı başlangıçta ayrıca Azure Cosmos DB hesabı oluşturma ve web tabanlı Azure portalında tablo ve varlıklar oluşturmak için Veri Gezgini’ni kullanma da gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Visual Studio 2019 yüklü değilseniz, **ücretsiz** [Visual Studio 2019 Community Edition'ı](https://www.visualstudio.com/downloads/)indirebilir ve kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
+Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -66,7 +66,7 @@ Visual Studio 2019 yüklü değilseniz, **ücretsiz** [Visual Studio 2019 Commun
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
 
-> ! [İpucu] Benzer kodun daha ayrıntılı bir gözden geçirme için [Cosmos DB Tablo API örnek](table-storage-how-to-use-dotnet.md) makalesine bakın.
+> ! IPUCUYLA Benzer kod hakkında daha ayrıntılı bir anlatım için [Cosmos DB tablo API'si örnek](table-storage-how-to-use-dotnet.md) makalesine bakın.
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Örnek uygulamayı Visual Studio'da açma
 
@@ -74,7 +74,7 @@ Visual Studio 2019 yüklü değilseniz, **ücretsiz** [Visual Studio 2019 Commun
 
    ![Çözümü açma](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
-2. Örnek uygulamayı klonladığınız klasöre gidin ve TableStorage.sln dosyasını açın.
+2. Örnek uygulamayı Klonladığınız klasöre gidin ve TableStorage. sln dosyasını açın.
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
 
@@ -84,9 +84,9 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
    ![Bağlantı Dizesi bölmesindeki PRIMARY CONNECTION STRING’i görüntüleyin ve kopyalayın](./media/create-table-dotnet/connection-string.png)
 
-2. Visual Studio'da **Settings.json** dosyasını açın. 
+2. Visual Studio 'da **Settings. JSON** dosyasını açın. 
 
-3. **PORTALDAN BIRINCIL BAĞLANTI** STRING'ini StorageConnectionString değerine yapıştırın. Dizeyi tırnak işareti içinde yapıştırın.
+3. Portaldan **BIRINCIL bağlantı dizesini** StorageConnectionString değerine yapıştırın. Dizeyi tırnak işareti içinde yapıştırın.
 
    ```csharp
    {
@@ -94,27 +94,27 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
    }
    ```
 
-4. **Settings.json** dosyasını kaydetmek için CTRL+S tuşuna basın.
+4. **Settings. JSON** dosyasını kaydetmek için CTRL + S tuşlarına basın.
 
 Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
 
 ## <a name="build-and-deploy-the-app"></a>Uygulama derleme ve dağıtma
 
-1. Visual Studio'da **Solution Explorer'daki** **CosmosTableSamples** projesine sağ tıklayın ve **ardından NuGet Paketlerini Yönet'e**tıklayın. 
+1. Visual Studio 'da, **Çözüm Gezgini** ' de **Cosmostablesamples** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın. 
 
    ![NuGet Paketlerini yönetme](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
-2. NuGet **Gözat** kutusuna Microsoft.Azure.Cosmos.Table yazın. Cosmos DB Table API istemci kitaplığı görüntülenir. Bu kitaplığın şu anda .NET Framework ve .NET Standard için kullanılabildiğini unutmayın. 
+2. NuGet **Gözden** geçirme kutusuna Microsoft. Azure. Cosmos. Table yazın. Cosmos DB Table API istemci kitaplığı görüntülenir. Bu kitaplığın Şu anda .NET Framework ve .NET Standard için kullanılabilir olduğunu unutmayın. 
    
    ![NuGet Göz at sekmesi](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 
-3. **Microsoft.Azure.Cosmos.Table** kitaplığını yüklemek için **Yükle'yi** tıklatın. Bunu yaptığınızda Azure Cosmos DB Tablo API paketi ve tüm bağımlılıklar yüklenir.
+3. **Microsoft. Azure. Cosmos. Table** kitaplığını yüklemek Için, **yüklensin** ' e tıklayın. Bunu yaptığınızda Azure Cosmos DB Tablo API paketi ve tüm bağımlılıklar yüklenir.
 
-4. Uygulamanın tamamını çalıştırdığınızda, örnek veriler tablo varlığına eklenir ve sonunda silinir, böylece tüm örneği çalıştırdığınızda eklenen verileri görmezsiniz. Ancak, verileri görüntülemek için bazı kesme noktaları ekleyebilirsiniz. DosyaBasicSamples.cs açın ve 52. **Breakpoint** **Insert Breakpoint** 55. satıra da bir kesme noktası ekleyin.
+4. Tüm uygulamayı çalıştırdığınızda, örnek veriler tablo varlığına eklenir ve sonda silinir, böylece tüm örneği çalıştırırsanız hiçbir veri eklenmez. Ancak, verileri görüntülemek için bazı kesme noktaları ekleyebilirsiniz. BasicSamples.cs dosyasını açın ve satır 52 ' ye sağ tıklayıp **kesme noktası**' nı seçin ve **kesme noktası Ekle**' yi seçin. 55. satıra da bir kesme noktası ekleyin.
 
    ![Kesme noktası ekleme](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
 
-5. Uygulamayı çalıştırmak için F5'e basın. Konsol penceresi Azure Cosmos DB'de yeni tablo veritabanının adını (bu durumda demoa13b1) görüntüler. 
+5. Uygulamayı çalıştırmak için F5'e basın. Konsol penceresinde, Azure Cosmos DB yeni tablo veritabanının adı (Bu örnekte demoa13b1) görüntülenir. 
     
    ![Konsol çıktısı](media/create-table-dotnet/azure-cosmosdb-console.png)
 
@@ -122,7 +122,7 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 
    ![Yeni varlık](media/create-table-dotnet/azure-cosmosdb-entity.png)
     
-   Projeyi çalıştırırken Ayarlar.json dosyasının bulunamamasını belirten bir hata alırsanız, proje ayarlarına aşağıdaki XML girişini ekleyerek sorunu çözebilirsiniz. CosmosTableSamples'e sağ tıklayın, CosmosTableSamples.csproj'u edin ve aşağıdaki itemGroup'u ekleyin: 
+   Projeyi çalıştırırken Settings. json dosyasının bulunamadığını bildiren bir hata alırsanız, proje ayarlarına aşağıdaki XML girişini ekleyerek bu sorunu çözebilirsiniz. CosmosTableSamples öğesine sağ tıklayın, CosmosTableSamples. csproj öğesini Düzenle ' yi seçin ve şu ItemGroup 'u ekleyin: 
 
    ```csharp
      <ItemGroup>

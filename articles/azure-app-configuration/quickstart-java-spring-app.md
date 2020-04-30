@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Yapılandırmasını nasıl kullanacağınızı öğrenmek için hızlı başlangıç
-description: Java Spring uygulamalarıyla Azure Uygulama Yapılandırması'nı kullanmak için hızlı bir başlangıç.
+title: Azure Uygulama yapılandırması 'nı kullanmayı öğrenmek için hızlı başlangıç
+description: Java Spring uygulamalarıyla Azure Uygulama yapılandırması 'nı kullanmaya yönelik hızlı başlangıç.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -11,58 +11,58 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.openlocfilehash: 69b9733f4d79f5fc42fe86ca0f8a97305205aeef
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085068"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Quickstart: Azure Uygulama Yapılandırması ile Bir Java Bahar uygulaması oluşturun
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile bir Java Spring uygulaması oluşturma
 
-Bu hızlı başlangıçta, uygulama ayarlarının kodunuzdan ayrı olarak depolanmasını ve yönetimini merkezileştirmek için Azure Uygulama Yapılandırmasını bir Java Spring uygulamasına dahil edersiniz.
+Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure uygulama yapılandırmasını bir Java Spring uygulamasına katabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
-- Sürüm 8 ile desteklenen [bir Java Geliştirme Kiti (JDK).](https://docs.microsoft.com/java/azure/jdk)
-- [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3.0 veya üzeri.
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- Sürüm 8 ile desteklenen bir [Java Geliştirme Seti (JDK)](https://docs.microsoft.com/java/azure/jdk) .
+- [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3,0 veya üzeri.
 
-## <a name="create-an-app-configuration-store"></a>Uygulama Yapılandırma mağazası oluşturma
+## <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar değeri çiftleri eklemek için **Configuration Explorer** > **+ Create** > **Key-value'ı** seçin:
+6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** > **+** > **anahtar-değer** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
-    | /application/config.message | Hello |
+    | /Application/config.exe iletisi | Hello |
 
-    **Etiket** ve **İçerik Türünü** şimdilik boş bırakın.
+    **Etiket** ve **içerik türü** şimdilik boş bırakın.
 
 7. **Uygula**’yı seçin.
 
-## <a name="create-a-spring-boot-app"></a>Bahar Önyükleme uygulaması oluşturma
+## <a name="create-a-spring-boot-app"></a>Spring Boot uygulaması oluşturma
 
-Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı](https://start.spring.io/) kullanın.
+Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.spring.io/) ' i kullanın.
 
 1. <https://start.spring.io/> adresine gidin.
 
 1. Aşağıdaki seçenekleri belirtin:
 
    - **Java** ile bir **Maven** projesi oluşturun.
-   - 2.0'a eşit veya daha büyük bir **Bahar Önyükleme** sürümü belirtin.
+   - 2,0 ' e eşit veya ondan büyük bir **Spring Boot** sürümü belirtin.
    - Uygulamanız için **Grup** ve **Yapıt** adlarını belirtin.
-   - Bahar **Web** bağımlılığını ekleyin.
+   - **Yay Web** bağımlılığını ekleyin.
 
-1. Önceki seçenekleri belirttikten sonra **Project Oluştur'u**seçin. İstendiğinde, projeyi yerel bilgisayarınızda bir yola indirin.
+1. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınızda bir yola indirin.
 
-## <a name="connect-to-an-app-configuration-store"></a>Uygulama Yapılandırma mağazasına bağlanma
+## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-1. Yerel sisteminizdeki dosyaları ayıkladıktan sonra, basit Bahar Önyükleme uygulamanız düzenlemeye hazırdır. *Pom.xml* dosyasını uygulamanızın kök dizininde bulun.
+1. Dosyaları yerel sisteminizde ayıkladıktan sonra, basit Spring Boot uygulamanız düzenlenmek üzere hazırlanın. Uygulamanızın kök dizinindeki *Pok. xml* dosyasını bulun.
 
-1. Bir metin düzenleyicisinde *pom.xml* dosyasını açın ve Spring Cloud Azure `<dependencies>`Config başlatıcısını aşağıdakiler listesine ekleyin:
+1. *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve yay bulutu Azure yapılandırma başlangıç listesini şu listeye ekleyin `<dependencies>`:
 
-    **Bahar Bulutu 1.1.x**
+    **Yay bulutu 1.1. x**
 
     ```xml
     <dependency>
@@ -72,7 +72,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     </dependency>
     ```
 
-    **Bahar Bulutu 1.2.x**
+    **Yay bulutu 1.2. x**
 
     ```xml
     <dependency>
@@ -82,7 +82,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     </dependency>
     ```
 
-1. Uygulamanızın paket dizininde *MessageProperties.java* adında yeni bir Java dosyası oluşturun. Aşağıdaki satırları ekleyin:
+1. Uygulamanızın paket dizininde *MessageProperties. Java* adlı yeni bir Java dosyası oluşturun. Aşağıdaki satırları ekleyin:
 
     ```java
     package com.example.demo;
@@ -103,7 +103,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     }
     ```
 
-1. Uygulamanızın paket dizininde *HelloController.java* adında yeni bir Java dosyası oluşturun. Aşağıdaki satırları ekleyin:
+1. Uygulamanızın paket dizininde *Hellocontroller. Java* adlı yeni bir Java dosyası oluşturun. Aşağıdaki satırları ekleyin:
 
     ```java
     package com.example.demo;
@@ -126,7 +126,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     }
     ```
 
-1. Ana uygulama Java dosyasını `@EnableConfigurationProperties` açın ve bu özelliği etkinleştirmek için ekleyin.
+1. Ana uygulama Java dosyasını açın ve bu özelliği etkinleştirmek `@EnableConfigurationProperties` için ekleyin.
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -140,46 +140,46 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     }
     ```
 
-1. Uygulamanızın kaynak `bootstrap.properties` dizininin altında yeni bir dosya oluşturun ve aşağıdaki satırları dosyaya ekleyin. Örnek değerleri Uygulama Yapılandırma mağazanız için uygun özelliklerle değiştirin.
+1. Uygulamanızın Resources dizininde adlı `bootstrap.properties` yeni bir dosya oluşturun ve aşağıdaki satırları dosyaya ekleyin. Örnek değerleri, uygulama yapılandırma deponuzın uygun özellikleriyle değiştirin.
 
     ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. **APP_CONFIGURATION_CONNECTION_STRING**adlı bir ortam değişkeni ayarlayın ve Uygulama Yapılandırma mağazanızın erişim anahtarına ayarlayın. Komut satırında, aşağıdaki komutu çalıştırın ve değişikliğin etkili olmasını sağlamak için komut istemini yeniden başlatın:
+1. **APP_CONFIGURATION_CONNECTION_STRING**adlı bir ortam değişkeni ayarlayın ve bunu uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Komut satırında, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
     ```cmd
     setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
-    Windows PowerShell kullanıyorsanız, aşağıdaki komutu çalıştırın:
+    Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
     ```azurepowershell
     $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
     ```
 
-    macOS veya Linux kullanıyorsanız, aşağıdaki komutu çalıştırın:
+    MacOS veya Linux kullanıyorsanız şu komutu çalıştırın:
 
     ```cmd
     export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak oluşturma ve çalıştırma
+## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
-1. Bahar Önyükleme uygulamanızı Maven ile oluşturun ve örneğin çalıştırın:
+1. Maven ile Spring Boot uygulamanızı derleyin ve çalıştırın, örneğin:
 
     ```cmd
     mvn clean package
     mvn spring-boot:run
     ```
 
-2. Uygulamanız çalışmaya devam ettikten sonra, örneğin uygulamanızı test etmek için *bukle'yi* kullanın:
+2. Uygulamanız çalıştırıldıktan sonra, uygulamanızı test etmek için *kıvrımlı* kullanın, örneğin:
 
       ```cmd
       curl -X GET http://localhost:8080/
       ```
 
-    Uygulama Yapılandırma sıcağında girdiğiniz iletiyi görürsünüz.
+    Uygulama yapılandırma deposuna girdiğiniz iletiyi görürsünüz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -187,7 +187,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, yeni bir Uygulama Yapılandırma mağazası oluşturdunuz ve java spring uygulamasıyla kullandınız. Daha fazla bilgi için [Azure'da Bahar'a](https://docs.microsoft.com/java/azure/spring-framework/)bakın. Java Spring uygulamanızın yapılandırma ayarlarını dinamik olarak nasıl yenileyebildiğini öğrenmek için bir sonraki eğitime devam edin.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu bir Java Spring uygulamasıyla kullandınız. Daha fazla bilgi için bkz. [Azure 'Da yay](https://docs.microsoft.com/java/azure/spring-framework/). Java Spring uygulamanızı yapılandırma ayarlarını dinamik olarak yenilemek üzere nasıl etkinleştireceğinizi öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Dinamik yapılandırmayı etkinleştirme](./enable-dynamic-configuration-java-spring-app.md)
+> [Dinamik yapılandırmayı etkinleştir](./enable-dynamic-configuration-java-spring-app.md)

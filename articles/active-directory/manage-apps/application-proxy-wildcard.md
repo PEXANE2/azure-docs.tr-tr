@@ -1,6 +1,6 @@
 ---
-title: Azure AD Uygulama Proxy'sinde Joker Karakter uygulamaları
-description: Azure Active Directory uygulama proxy'sinde Joker uygulamaları nasıl kullanacağınızı öğrenin.
+title: Azure AD Uygulama Ara Sunucusu joker karakter uygulamaları
+description: Azure Active Directory uygulama proxy 'sinde joker uygulamalar kullanmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,106 +17,106 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770295"
 ---
-# <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory uygulama proxy'sinde Joker karakter uygulamaları
+# <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory uygulama proxy 'sinde joker uygulamalar
 
-Azure Etkin Dizini'nde (Azure AD), çok sayıda şirket içi uygulamayı yapılandırmak hızla yönetilemez hale gelebilir ve çoğu aynı ayarları gerektiriyorsa yapılandırma hataları için gereksiz riskler doğurabilir. [Azure AD Application Proxy](application-proxy.md)ile, birçok uygulamayı aynı anda yayımlamak ve yönetmek için joker karakter uygulaması yayımlamasını kullanarak bu sorunu giderebilirsiniz. Bu, şunları yapmanızı sağlayan bir çözümdür:
+Azure Active Directory (Azure AD) içinde, çok sayıda şirket içi uygulamayı yapılandırmak hızlı bir şekilde yönetilebilir hale gelebilir ve bunların birçoğu aynı ayarları gerektiriyorsa yapılandırma hatalarıyla ilgili gereksiz riskler sağlar. [Azure AD uygulama ara sunucusu](application-proxy.md)ile, aynı anda birçok uygulamayı yayımlamak ve yönetmek için joker karakter uygulama yayımlamasını kullanarak bu sorunu ele alabilirsiniz. Bu, şunları yapmanıza olanak sağlayan bir çözümdür:
 
-- İdari yükünüze basitleştirin
-- Olası yapılandırma hatalarının sayısını azaltma
+- Yönetim yükünüzü kolaylaştırın
+- Olası yapılandırma hatalarının sayısını azaltın
 - Kullanıcılarınızın daha fazla kaynağa güvenli bir şekilde erişmesini sağlama
 
-Bu makalede, çevrenizde joker karakter uygulaması yayımlama yapılandırmak için gereken bilgileri sağlar.
+Bu makale, ortamınızda joker karakter uygulama yayımlamayı yapılandırmak için gereken bilgileri sağlar.
 
-## <a name="create-a-wildcard-application"></a>Joker karakter uygulaması oluşturma
+## <a name="create-a-wildcard-application"></a>Joker uygulama oluşturma
 
-Aynı yapılandırmaya sahip bir uygulama grubunuz varsa joker karakter (*) uygulaması oluşturabilirsiniz. Joker karakter uygulaması için potansiyel adaylar aşağıdaki ayarları paylaşan uygulamalardır:
+Aynı yapılandırmaya sahip bir uygulama grubunuz varsa, bir joker karakter (*) uygulaması oluşturabilirsiniz. Bir joker uygulama için olası aday uygulamalar aşağıdaki ayarları paylaşan uygulamalardır:
 
-- Bunlara erişimi olan kullanıcı grubu
+- Bunlara erişimi olan Kullanıcı grubu
 - SSO yöntemi
-- Erişim protokolü (http, https)
+- Erişim Protokolü (http, https)
 
-Her ikisi de dahili ve harici URL'ler aşağıdaki biçimdeyse joker karakterlerle uygulamaları yayımlayabilirsiniz:
+Hem iç hem de dış URL 'Ler aşağıdaki biçimde olan joker karakterlerle uygulamalar yayımlayabilirsiniz:
 
-> http(s)http://*. \<etki alanı\>
+> http (s)://*. \<etki alanı\>
 
 Örneğin: `http(s)://*.adventure-works.com`.
 
-İç ve dış URL'ler en iyi yöntem olarak farklı etki alanlarını kullanabilse de, aynı olmalıdır. Uygulamayı yayımlarken, URL'lerden birinin joker kartı yoksa bir hata görürsünüz.
+İç ve dış URL 'Ler, en iyi uygulama olarak farklı etki alanlarını kullanabilir ancak aynı olmaları gerekir. Uygulamayı yayımlarken, URL 'Lerden birinin joker karakteri yoksa bir hata görürsünüz.
 
-Joker karakter uygulaması oluşturmak, diğer tüm uygulamalar için kullanılabilen aynı [uygulama yayımlama akışını](application-proxy-add-on-premises-application.md) temel adatır. Tek fark, URL'lere ve potansiyel olarak SSO yapılandırmasında bir joker karakter eklemenizdir.
+Joker bir uygulama oluşturmak, diğer tüm uygulamalar için kullanılabilir olan aynı [uygulama yayımlama akışını](application-proxy-add-on-premises-application.md) temel alır. Tek fark, URL 'Lere ve potansiyel olarak SSO yapılandırmasına bir joker karakter dahil etmeniz olabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için bu gereksinimleri karşıladığınızdan emin olun.
+Başlamak için, bu gereksinimleri karşıladığınızdan emin olun.
 
 ### <a name="custom-domains"></a>Özel etki alanları
 
-[Özel etki alanları](application-proxy-configure-custom-domain.md) diğer tüm uygulamalar için isteğe bağlı olsa da, joker karakter uygulamaları için bir ön koşuldur. Özel etki alanları oluşturmanız şunları gerektirir:
+[Özel etki alanları](application-proxy-configure-custom-domain.md) diğer tüm uygulamalar için isteğe bağlı olsa da, joker uygulamalar için bir önkoşuldur. Özel etki alanları oluşturmak için şunları yapmanız gerekir:
 
-1. Azure içinde doğrulanmış bir etki alanı oluşturun.
-1. PFX formatında bir TLS/SSL sertifikasını uygulama proxy'nize yükleyin.
+1. Azure 'da doğrulanmış bir etki alanı oluşturun.
+1. PFX biçiminde, uygulama ara sunucunuza bir TLS/SSL sertifikası yükleyin.
 
-Oluşturmayı planladığınız uygulamayla eşleşecek bir joker karakter sertifikası kullanmayı düşünmelisiniz. Alternatif olarak, yalnızca belirli uygulamaları listeleyen bir sertifika da kullanabilirsiniz. Bu durumda, bu joker karakter uygulaması aracılığıyla yalnızca sertifikada listelenen uygulamalara erişilebilir.
+Oluşturmayı planladığınız uygulamayla eşleşmesi için bir joker karakter sertifikası kullanmayı göz önünde bulundurmanız gerekir. Alternatif olarak, yalnızca belirli uygulamaları listeleyen bir sertifika da kullanabilirsiniz. Bu durumda, bu joker uygulama aracılığıyla yalnızca sertifikada listelenen uygulamalara erişilebilecektir.
 
-Güvenlik nedeniyle, bu zor bir gereksinimdir ve harici URL için özel bir etki alanı kullanamayan uygulamalar için joker karakterleri desteklemeyiz.
+Güvenlik nedenleriyle bu bir sabit gereksinimdir ve dış URL için özel bir etki alanı kullanmayan uygulamalar için joker karakterleri desteklemezler.
 
 ### <a name="dns-updates"></a>DNS güncelleştirmeleri
 
-Özel etki alanlarını kullanırken, uygulama proxy bitiş noktasının dış URL'sini gösteren harici `*.adventure-works.com`URL (örneğin,) için CNAME kaydı içeren bir DNS girişi oluşturmanız gerekir. Joker karakter uygulamaları için CNAME kaydının ilgili harici URL'leri işaret etmesi gerekir:
+Özel etki alanları kullanırken, dış URL için CNAME kaydıyla bir DNS girişi oluşturmanız gerekir (örneğin, `*.adventure-works.com`) uygulama proxy uç NOKTASıNıN dış URL 'sini işaret eder. Joker uygulamalar için CNAME kaydının ilgili dış URL 'Leri göstermesi gerekir:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-CNAME'nizi doğru yapılandırdığınızı doğrulamak için, örneğin hedef uç noktalardan birinde [nslookup'u](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) `expenses.adventure-works.com`kullanabilirsiniz.  Yanıtınız daha önce bahsedilen diğer`<yourAADTenantId>.tenant.runtime.msappproxy.net`adı içermelidir ( ).
+CNAME 'nizi doğru şekilde yapılandırdığınızdan emin olmak için, hedef uç noktalardan birinde [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) ' ı kullanabilirsiniz (örneğin, `expenses.adventure-works.com`).  Yanıtınız zaten belirtilen diğer adı (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) içermelidir.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Joker karakter uygulamaları için dikkate almanız gereken bazı hususlar şunlardır.
+Joker uygulamalar için dikkate almanız gereken bazı noktalar aşağıda verilmiştir.
 
 ### <a name="accepted-formats"></a>Kabul edilen biçimler
 
-Joker karakter uygulamaları için **Dahili** URL'nin `http(s)://*.<domain>`' olarak biçimlendirilmesi gerekir.
+Joker uygulamalar için **Iç URL** 'nin olarak `http(s)://*.<domain>`biçimlendirilmesi gerekir.
 
-![Dahili URL için http(ler)://*biçimini kullanın. \<etki alanı>](./media/application-proxy-wildcard/22.png)
+![İç URL için http (s)://* biçimini kullanın. \<etki alanı>](./media/application-proxy-wildcard/22.png)
 
-**Harici URL**yapılandırDığınızda aşağıdaki biçimi kullanmanız gerekir:`https://*.<custom domain>`
+Bir **dış URL**yapılandırdığınızda, aşağıdaki biçimi kullanmanız gerekir:`https://*.<custom domain>`
 
-![Harici URL için https://* biçimini kullanın. \<özel etki alanı>](./media/application-proxy-wildcard/21.png)
+![Dış URL için https://* biçimini kullanın. \<özel etki alanı>](./media/application-proxy-wildcard/21.png)
 
-Joker kartın, birden çok joker kartın veya diğer regex dizelerin diğer konumları desteklenmez ve hatalara neden olur.
+Joker karakter, birden çok joker karakter veya diğer Regex dizelerinin diğer konumları desteklenmez ve hatalara neden oluyor.
 
-### <a name="excluding-applications-from-the-wildcard"></a>Uygulamaları joker karakterden hariç
+### <a name="excluding-applications-from-the-wildcard"></a>Uygulamaları joker karakterle dışlama
 
-Bir uygulamayı joker karakter uygulamasından
+Joker uygulamadan bir uygulamayı dışarıda bırakabilirsiniz
 
-- İstisna uygulamasını düzenli uygulama olarak yayımlama
-- DNS ayarlarınız aracılığıyla joker kartı yalnızca belirli uygulamalar için etkinleştirme
+- Özel durum uygulamasını düzenli uygulama olarak yayımlama
+- Yalnızca DNS ayarlarınız aracılığıyla belirli uygulamalar için joker karakter etkinleştiriliyor
 
-Bir uygulamayı normal bir uygulama olarak yayımlamak, bir uygulamayı joker karakterden dışlamak için tercih edilen yöntemdir. Özel durumlarınızın en başından itibaren uygulandığından emin olmak için, dışlanan uygulamaları joker karakter uygulamalarından önce yayımlamalısınız. En özel uygulama her zaman öncelikli olacaktır `budgets.finance.adventure-works.com` – olarak yayınlanan `*.finance.adventure-works.com`bir uygulama uygulamadan önce gelir `*.adventure-works.com`, bu uygulamadan önce gelir.
+Bir uygulamayı normal uygulama olarak yayımlamak, bir uygulamayı bir joker karakterle dışlamak için tercih edilen yöntemdir. Özel durumlarınızın başlangıçtan itibaren uygulanmasını sağlamak için, joker uygulamalardan önce dışlanan uygulamaları yayımlamanız gerekir. En belirli uygulama her zaman öncelikli olur `budgets.finance.adventure-works.com` `*.finance.adventure-works.com` `*.adventure-works.com`. yayımlanan bir uygulama, uygulamaya göre öncelikli olarak, uygulamanın üzerine daha önceliklidir.
 
-Joker kartı yalnızca DNS yönetiminiz aracılığıyla belirli uygulamalar için çalışacak şekilde sınırlandırabilirsiniz. En iyi uygulama olarak, joker karakter içeren ve yapılandırdığınız dış URL biçimiyle eşleşen bir CNAME girişi oluşturmanız gerekir. Ancak, bunun yerine joker karakterlere belirli uygulama URL'leri işaret edebilirsiniz. Örneğin, `*.adventure-works.com`, noktası `hr.adventure-works.com` `expenses.adventure-works.com` ve `travel.adventure-works.com individually` . `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`
+Ayrıca, joker karakteri yalnızca DNS yönetimanızdan belirli uygulamalar için çalışacak şekilde sınırlayabilirsiniz. En iyi uygulama olarak, bir joker karakter içeren ve yapılandırdığınız dış URL 'nin biçimiyle eşleşen bir CNAME girişi oluşturmalısınız. Ancak, bunun yerine, belirli uygulama URL 'Lerini Joker karakterlere işaret edebilirsiniz. Örneğin,, `*.adventure-works.com`işaret `hr.adventure-works.com` `expenses.adventure-works.com` ve `travel.adventure-works.com individually` yerine. `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`
 
-Bu seçeneği kullanırsanız, aynı konuma işaret eden `AppId.domain`değer için `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`başka bir CNAME girişine de ihtiyacınız olur. Joker karakter uygulamasının uygulama özellikleri sayfasında **AppId'yi** bulabilirsiniz:
+Bu seçeneği kullanırsanız, değer `AppId.domain` `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`için de aynı konuma işaret eden bir CNAME girişi gerekir. Uygulama **kimliği** , joker karakter uygulamasının uygulama özellikleri sayfasında bulunabilir:
 
-![Uygulama kimliğini uygulamanın özellik sayfasında bulma](./media/application-proxy-wildcard/01.png)
+![Uygulamanın özellik sayfasında uygulama KIMLIĞINI bulun](./media/application-proxy-wildcard/01.png)
 
-### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>MyApps paneli için ana sayfa URL'sini ayarlama
+### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>Uygps paneli için giriş sayfası URL 'sini ayarlama
 
-Joker karakter uygulaması [MyApps panelinde](https://myapps.microsoft.com)sadece bir döşeme ile temsil edilir. Varsayılan olarak bu döşeme gizlidir. Döşemeyi göstermek ve kullanıcıların belirli bir sayfaya inmelerini sağlamak için:
+Joker uygulama, [Uygps panelinde](https://myapps.microsoft.com)yalnızca bir kutucuk ile temsil edilir. Bu kutucuk varsayılan olarak gizlidir. Kutucuğu göstermek ve kullanıcıların belirli bir sayfada oturum göstermesini sağlamak için:
 
-1. Ana sayfa [URL'sini ayarlamak](application-proxy-configure-custom-home-page.md)için yönergeleri izleyin.
-1. **Uygulamayı Göster'i** uygulama özellikleri sayfasında **doğru** olarak ayarlayın.
+1. [Giriş sayfası URL 'sini ayarlamaya](application-proxy-configure-custom-home-page.md)yönelik yönergeleri izleyin.
+1. Uygulama özellikleri sayfasında uygulamayı **true** olarak **göster** ' i ayarlayın.
 
-### <a name="kerberos-constrained-delegation"></a>Kerberos kısıtlı delegasyon
+### <a name="kerberos-constrained-delegation"></a>Kerberos kısıtlanmış temsili
 
-[SSO yöntemi olarak kerberos kısıtlı delegasyon (KCD)](application-proxy-configure-single-sign-on-with-kcd.md)kullanan uygulamalar için, SSO yöntemi için listelenen SPN de bir joker gerekebilir. Örneğin, SPN olabilir: `HTTP/*.adventure-works.com`. Yine de tek tek SPN'lerin arka uç sunucularınızda `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`yapılandırılması gerekir (örneğin, ).
+[SSO yöntemi olarak Kerberos kısıtlanmış temsili (KCD)](application-proxy-configure-single-sign-on-with-kcd.md)kullanan uygulamalar IÇIN, SSO yöntemi IÇIN listelenen SPN 'nin de bir joker karakter olması gerekebilir. Örneğin, SPN: `HTTP/*.adventure-works.com`. Yine de arka uç sunucularınızda (örneğin, `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`) ayrı SPN 'leri yapılandırmış olmanız gerekir.
 
-## <a name="scenario-1-general-wildcard-application"></a>Senaryo 1: Genel joker karakter uygulaması
+## <a name="scenario-1-general-wildcard-application"></a>Senaryo 1: genel joker uygulama
 
 Bu senaryoda, yayımlamak istediğiniz üç farklı uygulama vardır:
 
@@ -124,33 +124,33 @@ Bu senaryoda, yayımlamak istediğiniz üç farklı uygulama vardır:
 - `hr.adventure-works.com`
 - `travel.adventure-works.com`
 
-Her üç uygulama:
+Tüm üç uygulama:
 
 - Tüm kullanıcılarınız tarafından kullanılır
-- *Tümleşik Windows Kimlik Doğrulama'yı* kullanma
+- *Tümleşik Windows kimlik doğrulaması* kullan
 - Aynı özelliklere sahip
 
-Azure AD Application Proxy'yi kullanarak [Uygulama Yayımla'da](application-proxy-add-on-premises-application.md)özetlenen adımları kullanarak joker karakter uygulamasını yayımlayabilirsiniz. Bu senaryo varsayar:
+Joker uygulamayı [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md)bölümünde özetlenen adımları kullanarak yayımlayabilirsiniz. Bu senaryo şunları varsayar:
 
-- Aşağıdaki kimliği olan bir kiracı:`000aa000-11b1-2ccc-d333-4444eee4444e`
-- Adı verilen `adventure-works.com` doğrulanmış bir etki alanı yapılandırıldı.
-- Noktayı işaret `*.adventure-works.com` `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` eden bir **CNAME** girişi oluşturuldu.
+- Şu KIMLIĞE sahip bir kiracı:`000aa000-11b1-2ccc-d333-4444eee4444e`
+- Çağrılan `adventure-works.com` doğrulanmış bir etki alanı yapılandırıldı.
+- `*.adventure-works.com` Öğesine `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` işaret eden bir **CNAME** girişi oluşturuldu.
 
-[Belgelenen adımları](application-proxy-add-on-premises-application.md)izleyerek, kiracınızda yeni bir uygulama proxy uygulaması oluşturursunuz. Bu örnekte, joker karakter aşağıdaki alanlardadır:
+[Belgelenen adımları](application-proxy-add-on-premises-application.md)izleyerek kiracınızda yeni bir uygulama proxy 'si uygulaması oluşturursunuz. Bu örnekte, joker karakter aşağıdaki alanlardır:
 
-- Dahili URL:
+- İç URL:
 
-    ![Örnek: Dahili URL'deki Joker Karakter](./media/application-proxy-wildcard/42.png)
+    ![Örnek: İç URL 'de joker karakter](./media/application-proxy-wildcard/42.png)
 
 - Dış URL:
 
-    ![Örnek: Harici URL'deki Joker Karakter](./media/application-proxy-wildcard/43.png)
+    ![Örnek: dış URL 'de joker karakter](./media/application-proxy-wildcard/43.png)
 
-- Dahili Uygulama SPN:
+- İç uygulama SPN 'si:
 
-    ![Örnek: SPN yapılandırmasında Joker Karakter](./media/application-proxy-wildcard/44.png)
+    ![Örnek: SPN yapılandırmasında joker karakter](./media/application-proxy-wildcard/44.png)
 
-Joker karakter uygulamasını yayımlayarak, artık alışık olduğunuz URL'lere (örneğin) `travel.adventure-works.com`gezinerek üç uygulamanıza erişebilirsiniz.
+Joker uygulamayı yayımlayarak, artık kullandığınız URL 'lere giderek üç uygulamanıza erişebilirsiniz (örneğin, `travel.adventure-works.com`).
 
 Yapılandırma aşağıdaki yapıyı uygular:
 
@@ -158,38 +158,38 @@ Yapılandırma aşağıdaki yapıyı uygular:
 
 | Renk | Açıklama |
 | ---   | ---         |
-| Mavi  | Uygulamalar Açıkça yayımlanır ve Azure portalında görünür. |
-| Gri  | Uygulamalara ana uygulama üzerinden erişebilirsiniz. |
+| Mavi  | Azure portal açıkça yayımlanmış ve görünür uygulamalar. |
+| Tonlamalı  | Üst uygulama aracılığıyla erişilebilen uygulamalar. |
 
-## <a name="scenario-2-general-wildcard-application-with-exception"></a>Senaryo 2: Genel joker uygulaması istisna
+## <a name="scenario-2-general-wildcard-application-with-exception"></a>Senaryo 2: özel durum içeren genel joker uygulama
 
-Bu senaryoda, üç genel uygulamalara ek olarak, `finance.adventure-works.com`yalnızca Finans bölümü tarafından erişilebilir olması gereken başka bir uygulama var. Mevcut uygulama yapısı ile, finans uygulamanıza joker karakter uygulaması ve tüm çalışanlar tarafından erişilebilir olacaktır. Bunu değiştirmek için, Finans'ı daha kısıtlayıcı izinlere sahip ayrı bir uygulama olarak yapılandırarak uygulamanızı joker kartınızdan dışlarsınız.
+Bu senaryoda, yalnızca finans bölümünün erişimine açık olması gereken üç genel uygulamanın başka bir uygulamasına `finance.adventure-works.com`ek olarak sahip olursunuz. Geçerli uygulama yapısıyla, finans uygulamanıza joker uygulama ve tüm çalışanlar tarafından erişilebilir. Bunu değiştirmek için, finans 'yi daha kısıtlayıcı izinlerle ayrı bir uygulama olarak yapılandırarak uygulamanızı joker karakterinizden dışlayabilirsiniz.
 
-Uygulama için Uygulama Proxy sayfasında belirtilen uygulamaya `finance.adventure-works.com` özgü bitiş noktasını gösteren bir CNAME kaydının bulunduğundan emin olmanız gerekir. Bu senaryo `finance.adventure-works.com` için, `https://finance-awcycles.msappproxy.net/`işaret .
+Uygulamanın uygulama proxy sayfasında belirtilen uygulamaya özgü uç noktaya işaret `finance.adventure-works.com` eden bir CNAME kaydı olduğundan emin olmanız gerekir. Bu senaryo için, `finance.adventure-works.com` öğesine `https://finance-awcycles.msappproxy.net/`işaret eder.
 
-[Belgelenen adımları](application-proxy-add-on-premises-application.md)takiben, bu senaryo aşağıdaki ayarları gerektirir:
+[Belgelenen adımları](application-proxy-add-on-premises-application.md)izleyerek, bu senaryo aşağıdaki ayarları gerektirir:
 
-- İç **URL'de**joker karakter yerine **finans** ı ayarlarsınız.
+- **Iç URL**'de, bir joker karakter yerine **finans** ayarlarsınız.
 
-    ![Örnek: Dahili URL'de joker karakter yerine finans ı ayarlama](./media/application-proxy-wildcard/52.png)
+    ![Örnek: İç URL 'de joker karakter yerine finans ayarla](./media/application-proxy-wildcard/52.png)
 
-- Dış **URL'de**joker karakter yerine **finans** ı ayarlarsınız.
+- **Dış URL**'de, bir joker karakter yerine **finans** ayarlarsınız.
 
-    ![Örnek: Harici URL'de joker karakter yerine finans ı ayarlama](./media/application-proxy-wildcard/53.png)
+    ![Örnek: dış URL 'de joker karakter yerine finans ayarla](./media/application-proxy-wildcard/53.png)
 
-- Dahili Uygulama SPN bir joker yerine **finans** ayarlayın.
+- İç uygulama SPN 'si, bir joker karakter yerine **finans** 'yi ayarlar.
 
-    ![Örnek: SPN yapılandırmasında joker karakter yerine finans ı ayarlama](./media/application-proxy-wildcard/54.png)
+    ![Örnek: SPN yapılandırmasında joker karakter yerine finans ayarlama](./media/application-proxy-wildcard/54.png)
 
 Bu yapılandırma aşağıdaki senaryoyu uygular:
 
 ![Örnek senaryo tarafından uygulanan yapılandırmayı gösterir](./media/application-proxy-wildcard/09.png)
 
-Çünkü `finance.adventure-works.com` daha özel bir `*.adventure-works.com`URL, öncelik alır. Finans Kaynakları `finance.adventure-works.com` uygulamasında belirtilen deneyime sahip olmak için gezinen kullanıcılar. Bu durumda, yalnızca finans çalışanları `finance.adventure-works.com`erişebilir.
+, `finance.adventure-works.com` ' Den `*.adventure-works.com`daha özel bir URL olduğu için öncelik kazanır. Kullanıcılar finans kaynakları `finance.adventure-works.com` uygulamasında belirtilen deneyimle geziniyor. Bu durumda, yalnızca finans çalışanları erişebiliyor `finance.adventure-works.com`.
 
-Finans için yayınlanmış birden çok uygulamanız `finance.adventure-works.com` varsa ve doğrulanmış bir etki alanı `*.finance.adventure-works.com`nız varsa, başka bir joker karakter uygulaması yayımlayabilirsiniz. Bu genel `*.adventure-works.com`daha spesifik olduğundan, bir kullanıcı finans etki alanında bir uygulamaya erişir önce gelir.
+Finans için yayımlanmış birden fazla uygulamanız varsa ve `finance.adventure-works.com` doğrulanmış bir etki alanınız varsa, başka bir joker uygulama `*.finance.adventure-works.com`yayımlayabilirsiniz. Bu, genel `*.adventure-works.com`' ten daha belirgin olduğundan, bir Kullanıcı finans etki alanındaki bir uygulamaya eriştiğinde öncelik kazanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Özel etki **alanları**hakkında daha fazla bilgi edinmek için Azure [AD Application Proxy'de özel etki alanlarıyla çalışma](application-proxy-configure-custom-domain.md)'ya bakın.
-- **Uygulama Yayımlama**hakkında daha fazla bilgi edinmek için Azure [AD Application Proxy kullanarak uygulama yayımla'ya](application-proxy-add-on-premises-application.md) bakın
+- **Özel etki alanları**hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu özel etki alanları ile çalışma](application-proxy-configure-custom-domain.md).
+- **Uygulama yayımlama**hakkında daha fazla bilgi edinmek için bkz. [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](application-proxy-add-on-premises-application.md)

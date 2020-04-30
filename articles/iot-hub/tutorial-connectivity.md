@@ -13,17 +13,17 @@ ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
 ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770038"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Öğretici: IoT hub’ınızla bağlantıyı test etmek için bir simülasyon cihazı kullanma
 
 Bu öğreticide, cihaz bağlantısını test etmek için Azure IOT Hub'ı portal araçları ve Azure CLI komutlarını kullanırsınız. Bu öğreticide masaüstü bilgisayarınızda çalıştırdığınız bir cihaz simülatörü de kullanılır.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -44,7 +44,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Bu öğreticide çalıştırdığınız cihaz simülatörü uygulaması Node.js kullanarak yazılır. Node.js v10.x.x veya daha sonra geliştirme makinenizde ihtiyacınız vardır.
+Bu öğreticide çalıştırdığınız cihaz simülatörü uygulaması Node.js kullanarak yazılır. Geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir.
 
 [nodejs.org](https://nodejs.org) adresinden birden fazla platform için Node.js’yi indirebilirsiniz.
 
@@ -56,7 +56,7 @@ node --version
 
 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip adresinden örnek cihaz simülatörü Node.js projesini indirin ve ZIP arşivini ayıklayın.
 
-8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu öğreticideki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
+Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
@@ -84,7 +84,7 @@ Yeni bir cihaz kaydetmek için **+ Ekle**’ye tıklayın, **Cihaz Kimliği**’
 
 Geliştirme makinenizdeki terminal penceresinde, indirdiğiniz örnek Node.js projesinin kök klasörüne gidin. Ardından **iot-hub\Tutorials\ConnectivityTests** klasörüne gidin.
 
-Terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını çalıştırın. Aygıtı portala eklediğinizde not aldığınız aygıt bağlantı dizesini kullanın.
+Terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını çalıştırın. Cihazı portala eklerken bir değişiklik yaptığınız cihaz bağlantı dizesini kullanın.
 
 ```cmd/sh
 npm install
@@ -129,7 +129,7 @@ Uygulama bağlanmaya çalıştığında bu kez, bir kimlik doğrulama hatası g�
 
 Cihazınız IoT Hub cihaz SDK'lerinden birini kullanıyorsa, SDK kitaplık kodu hub ile kimlik doğrulaması gerçekleştirmek için kullanılan SAS belirtecini oluşturur. SAS belirteci, hub'ınızın adı, cihazınızın adı ve cihaz anahtarı ile oluşturulur.
 
-Bazı senaryolarda, örneğin bir bulut protokol ağ geçidi veya bir özel kimlik doğrulama düzenin bir parçası olarak, SAS belirtecini kendiniz oluşturmanız gerekebilir. SAS oluşturma kodunuzdaki sorunları gidermek için, sınama sırasında kullanılacak bilinen iyi bir SAS belirteci oluşturmak yararlıdır.
+Bazı senaryolarda, örneğin bir bulut protokol ağ geçidi veya bir özel kimlik doğrulama düzenin bir parçası olarak, SAS belirtecini kendiniz oluşturmanız gerekebilir. SAS oluşturma kodunuzla ilgili sorunları gidermek için, sınama sırasında kullanmak üzere bilinen iyi bir SAS belirteci oluşturmak yararlı olur.
 
 > [!NOTE]
 > SimulatedDevice-2.js örneği, SDK’lı ve SDK’sız SAS belirteci oluşturma örnekleri içerir.
@@ -183,7 +183,7 @@ Bir cihaz bağlandıktan sonra genellikle IoT hub'ınıza telemetri göndermeye 
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-İleti gönderen benzetimli bir aygıtı çalıştırmak için, indirdiğiniz koddaki **iot-hub\Tutorials\ConnectivityTests** klasörüne gidin.
+İleti gönderen bir sanal cihazı çalıştırmak için, indirdiğiniz koddaki **iot-hub\Tutorials\ConnectivityTests** klasörüne gidin.
 
 Terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını çalıştırın:
 
@@ -196,7 +196,7 @@ Hub'ınıza telemetri göndermeye çalışırken terminal penceresinde bilgiler 
 
 ![Simülasyon cihazı ileti gönderirken](media/tutorial-connectivity/sim-3-sending.png)
 
-Telemetri iletilerinin IoT hub'ınıza ulaştığını doğrulamak için portaldaki **Ölçümler'i** kullanabilirsiniz. **Kaynak** açılan listesinde IoT hub'ınızı seçin, ölçüm olarak **Gönderilen telemetri iletilerini** seçin ve zaman aralığını **Son bir saat** olarak ayarlayın. Grafikte simülasyon cihazı tarafından gönderilen iletilerin toplam sayısı gösterilmiştir:
+Telemetri iletilerinin IoT Hub 'ınıza ulaşmasını doğrulamak için portaldaki **ölçümleri** kullanabilirsiniz. **Kaynak** açılan listesinde IoT hub'ınızı seçin, ölçüm olarak **Gönderilen telemetri iletilerini** seçin ve zaman aralığını **Son bir saat** olarak ayarlayın. Grafikte simülasyon cihazı tarafından gönderilen iletilerin toplam sayısı gösterilmiştir:
 
 ![IoT Hub ölçümlerini gösterme](media/tutorial-connectivity/metrics-portal.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Packer ile Windows VM Görüntüleri nasıl oluşturulur?
-description: Azure'da Windows sanal makinelerinin görüntülerini oluşturmak için Packer'ı nasıl kullanacağınızı öğrenin
+title: Packer ile Windows VM görüntüleri oluşturma
+description: Azure 'da Windows sanal makinelerinin görüntülerini oluşturmak için Packer 'ı nasıl kullanacağınızı öğrenin
 author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: imaging
@@ -9,24 +9,24 @@ ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
 ms.openlocfilehash: f813551ed665628898bb219a611947c3026ac67c
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084490"
 ---
-# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Azure'da Windows sanal makine resimleri oluşturmak için Packer nasıl kullanılır?
-Azure'daki her sanal makine (VM), Windows dağıtımını ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler önceden yüklenmiş uygulamaları ve yapılandırmaları içerebilir. Azure Marketi, en yaygın işletim sistemi ve uygulama ortamları için birçok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize göre uyarlanmış kendi özel resimlerinizi oluşturabilirsiniz. Bu makalede, Azure'da özel görüntüleri tanımlamak ve oluşturmak için açık kaynak araç [Packer'ın](https://www.packer.io/) nasıl kullanılacağı ayrıntılı olarak açıklanmaktadır.
+# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Azure 'da Windows sanal makine görüntüleri oluşturmak için Packer kullanma
+Azure 'daki her sanal makine (VM), Windows Dağıtım ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler, önceden yüklenmiş uygulamaları ve konfigürasyonları içerebilir. Azure Marketi, en yaygın işletim sistemi ve uygulama ortamları için pek çok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize uygun kendi özel görüntülerinizi de oluşturabilirsiniz. Bu makalede, Azure 'da özel görüntüler tanımlamak ve derlemek için açık kaynaklı araç [Packer](https://www.packer.io/) 'ın nasıl kullanılacağı açıklanır.
 
-Bu makale en son 21/21/2019 tarihinde [Az PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps) sürüm 1.3.0 ve [Packer](https://www.packer.io/docs/install/index.html) sürümü 1.3.4 kullanılarak test edilmiştir.
+Bu makale, [az PowerShell Module](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.3.0 ve [Packer](https://www.packer.io/docs/install/index.html) sürüm 1.3.4 kullanılarak 2/21/2019 ' de son test edilmiştir.
 
 > [!NOTE]
-> Azure artık kendi özel resimlerinizi tanımlamak ve oluşturmak için Azure Image Builder (önizleme) hizmetine sahiptir. Azure Image Builder Packer üzerine kuruludur, böylece mevcut Packer kabuk provizyoner komut dosyalarınızı da onunla birlikte kullanabilirsiniz. Azure Image Builder'a başlamak için [bkz.](image-builder.md)
+> Azure 'da, kendi özel görüntülerinizi tanımlamak ve oluşturmak için Azure görüntü Oluşturucu (Önizleme) hizmeti artık vardır. Azure Image Builder, Packer üzerine kurulmuştur, bu nedenle mevcut Packer kabuğu hazırlayıcı betikleri ile birlikte kullanabilirsiniz. Azure Image Builder 'ı kullanmaya başlamak için bkz. [Azure Image Builder Ile WINDOWS VM oluşturma](image-builder.md).
 
-## <a name="create-azure-resource-group"></a>Azure kaynak grubu oluşturma
-Oluşturma işlemi sırasında Packer, kaynak VM'yi oluştururken geçici Azure kaynakları oluşturur. Bu kaynak VM'yi görüntü olarak kullanmak üzere yakalamak için bir kaynak grubu tanımlamanız gerekir. Packer yapı işleminden elde edilen çıktı bu kaynak grubunda depolanır.
+## <a name="create-azure-resource-group"></a>Azure Kaynak grubu oluştur
+Yapı işlemi sırasında Packer, kaynak VM 'yi oluşturduğunda geçici Azure kaynakları oluşturur. Bu kaynak VM 'yi bir görüntü olarak kullanılacak şekilde yakalamak için bir kaynak grubu tanımlamanız gerekir. Packer Build işleminin çıktısı bu kaynak grubunda saklanır.
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurepowershell
 $rgName = "myResourceGroup"
@@ -35,9 +35,9 @@ New-AzResourceGroup -Name $rgName -Location $location
 ```
 
 ## <a name="create-azure-credentials"></a>Azure kimlik bilgilerini oluşturma
-Packer, bir hizmet ilkesi ni kullanarak Azure ile kimlik doğrulaması verir. Azure hizmet prensibi, Packer gibi uygulamalar, hizmetler ve otomasyon araçlarıyla kullanabileceğiniz bir güvenlik kimliğidir. Hizmet sorumlusunun Azure'da hangi işlemleri gerçekleştirebileceğine göre izinleri denetler ve tanımlarsınız.
+Packer hizmet sorumlusu kullanarak Azure ile kimlik doğrular. Azure hizmet sorumlusu, Packer gibi uygulamalar, hizmetler ve otomasyon araçlarıyla kullanabileceğiniz bir güvenlik kimliğidir. İzinleri, hizmet sorumlusunun Azure 'da gerçekleştirebileceği işlemlere göre kontrol edersiniz ve tanımlar.
 
-[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) ile bir hizmet sorumlusu oluşturun ve [Yeni-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)ile kaynak oluşturmak ve yönetmek için hizmet sorumlusuiçin izinler atayın. İhtiyaçların `-DisplayName` değeri benzersiz olmalıdır; gerektiğinde kendi değerinizle değiştirin.  
+New- [AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) ile bir hizmet sorumlusu oluşturun ve [Yeni-azroleatama](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)ile kaynakları oluşturmak ve yönetmek için hizmet sorumlusu için izinler atayın. Değerinin benzersiz olması `-DisplayName` gerekir; gerekirse kendi değeri ile değiştirin.  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -46,7 +46,7 @@ $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR
 New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-Sonra şifre ve uygulama kimliği çıktı.
+Sonra parolayı ve uygulama KIMLIĞINI çıkış.
 
 ```powershell
 $plainPassword
@@ -54,24 +54,24 @@ $sp.ApplicationId
 ```
 
 
-Azure'da kimlik doğrulaması yapmak [için, Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription)ile Azure kiracınızı ve abonelik kimliklerinizi de edinmeniz gerekir:
+Azure 'da kimlik doğrulaması yapmak için [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription)ile Azure kiracınızı ve abonelik kimliklerini de edinmeniz gerekir:
 
 ```powershell
 Get-AzSubscription
 ```
 
 
-## <a name="define-packer-template"></a>Packer şablonu tanımla
-Resim oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. Şablonda, gerçek yapı işlemini gerçekleştiren oluşturucuları ve geçici olarak tanımlarsınız. Packer'ın Azure için bir [oluşturucusu](https://www.packer.io/docs/builders/azure.html) vardır ve önceki adımda oluşturulan hizmet temel kimlik bilgileri gibi Azure kaynaklarını tanımlamanızı sağlar.
+## <a name="define-packer-template"></a>Packer şablonunu tanımla
+Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. Şablonda, gerçek yapı işlemini yürüten oluşturucular ve hazırlayıcılar tanımlarsınız. Packer, Azure [için](https://www.packer.io/docs/builders/azure.html) , önceki adımda oluşturulan hizmet sorumlusu kimlik bilgileri gibi Azure kaynaklarını tanımlamanızı sağlayan bir Oluşturucu içerir.
 
-*windows.json* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Aşağıdakiler için kendi değerlerinizi girin:
+*Windows. JSON* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Aşağıdaki değerleri girin:
 
-| Parametre                           | Nereden temin edinilsin |
+| Parametre                           | Nereden alınır |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Hizmet ana kimliğini`$sp.applicationId` |
-| *client_secret*                     | Otomatik oluşturulan parolayı`$plainPassword` |
-| *tenant_id*                         | Komuttan `$sub.TenantId` çıkış |
-| *subscription_id*                   | Komuttan `$sub.SubscriptionId` çıkış |
+| *client_id*                         | Hizmet sorumlusu KIMLIĞINI görüntüleme`$sp.applicationId` |
+| *client_secret*                     | Otomatik olarak oluşturulan parolayı görüntüle`$plainPassword` |
+| *tenant_id*                         | `$sub.TenantId` Komutun çıktısı |
+| *subscription_id*                   | `$sub.SubscriptionId` Komutun çıktısı |
 | *managed_image_resource_group_name* | İlk adımda oluşturduğunuz kaynak grubunun adı |
 | *managed_image_name*                | Oluşturulan yönetilen disk görüntüsünün adı |
 
@@ -118,19 +118,19 @@ Resim oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. Şablo
 }
 ```
 
-Bu şablon bir Windows Server 2016 VM oluşturur, IIS yükler, sonra Sysprep ile VM genelleştirir. IIS yüklemesi, powershell geçici sini ek komutları çalıştırmak için nasıl kullanabileceğinizi gösterir. Son Packer görüntüsü daha sonra gerekli yazılım yükleme ve yapılandırma içerir.
+Bu şablon bir Windows Server 2016 VM oluşturur, IIS 'yi yüklüyor ve sonra VM 'yi Sysprep ile genelleştirir. IIS yüklemesi ek komutlar çalıştırmak için PowerShell hazırlayıcısı 'nı nasıl kullanabileceğinizi gösterir. Son Packer görüntüsü, gerekli yazılım yüklemesi ve yapılandırmasını içerir.
 
 
-## <a name="build-packer-image"></a>Packer görüntüsü oluşturun
-Yerel makinenizde Packer zaten yüklü değilseniz, [Packer yükleme yönergelerini uygulayın.](https://www.packer.io/docs/install/index.html)
+## <a name="build-packer-image"></a>Packer görüntüsü oluştur
+Yerel makinenizde zaten Packer yüklü değilse, [Packer yükleme yönergelerini izleyin](https://www.packer.io/docs/install/index.html).
 
-Cmd istemini açarak ve Packer şablon dosyanızı aşağıdaki gibi belirterek resmi oluşturun:
+Bir komut istemi açıp Packer şablonu dosyanızı aşağıdaki gibi belirterek görüntüyü oluşturun:
 
 ```
 ./packer build windows.json
 ```
 
-Önceki komutlardan çıktı örneği aşağıdaki gibidir:
+Yukarıdaki komutlardan çıkış örneği aşağıdaki gibidir:
 
 ```bash
 azure-arm output will be in this color.
@@ -204,11 +204,11 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-Packer'ın VM'yi oluşturması, geçici maddeyi çalıştırması ve dağıtımı temizlemesi birkaç dakika sürer.
+Packer 'ın VM 'yi oluşturması, hazırlayıcılar çalıştırması ve dağıtımı temizlemesi birkaç dakika sürer.
 
 
-## <a name="create-a-vm-from-the-packer-image"></a>Packer görüntüsünden Bir VM oluşturma
-Artık [Yeni-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile Görüntünüzden bir VM oluşturabilirsiniz. Destekleyen ağ kaynakları zaten yoksa oluşturulur. İstendiğinde, VM'de oluşturulacak bir yönetim kullanıcı adı ve parola girin. Aşağıdaki örnek *myPackerImage* *myVM* adlı bir VM oluşturur:
+## <a name="create-a-vm-from-the-packer-image"></a>Packer görüntüsünden VM oluşturma
+Artık, [Yeni-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile görüntinizden bir VM oluşturabilirsiniz. Destekleyici ağ kaynakları, zaten mevcut değilse oluşturulur. İstendiğinde, VM 'de oluşturulacak bir Yönetici Kullanıcı adı ve parola girin. Aşağıdaki örnek *Mypackerımage*öğesinden *myvm* adlı bir VM oluşturur:
 
 ```powershell
 New-AzVm `
@@ -223,13 +223,13 @@ New-AzVm `
     -Image "myPackerImage"
 ```
 
-Packer resminizden farklı bir kaynak grubunda veya bölgesinde VM oluşturmak istiyorsanız, görüntü adı yerine görüntü kimliğini belirtin. [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage)ile resim kimliğini alabilirsiniz.
+Sanal makineleri, Packer görüntüsünden farklı bir kaynak grubunda veya bölgede oluşturmak istiyorsanız, görüntü adı yerine görüntü KIMLIĞINI belirtin. [Get-azımage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage)Ile görüntü kimliğini elde edebilirsiniz.
 
-Packer resminizden VM'yi oluşturmak birkaç dakika nızı alır.
+Sanal makinenin Packer görüntüsünden oluşturulması birkaç dakika sürer.
 
 
-## <a name="test-vm-and-webserver"></a>Test VM ve web sunucusu
-[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)ile VM'nizin genel IP adresini edinin. Aşağıdaki örnek, daha önce oluşturulan *myPublicIP* için IP adresini alır:
+## <a name="test-vm-and-webserver"></a>Test VM ve Web sunucusu
+[Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)ile sanal MAKINENIZIN genel IP adresini alın. Aşağıdaki örnek, daha önce oluşturulan *myPublicIP* için IP adresini alır:
 
 ```powershell
 Get-AzPublicIPAddress `
@@ -237,10 +237,10 @@ Get-AzPublicIPAddress `
     -Name "myPublicIPAddress" | select "IpAddress"
 ```
 
-Packer geçici maddesinden IIS yüklemesini içeren VM'nizi görmek için ortak IP adresini bir web tarayıcısına girin.
+SANAL makinenizin, Packer provisioner 'dan IIS yüklemesini de içeren bir Web tarayıcısına, ' ye genel IP adresini girin.
 
 ![Varsayılan IIS sitesi](./media/build-image-with-packer/iis.png) 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Image Builder](image-builder.md)ile varolan Packer geçici komut dosyalarını da kullanabilirsiniz.
+Ayrıca, mevcut Packer sağlayıcısı oluştur betiklerini [Azure Image Builder](image-builder.md)ile de kullanabilirsiniz.

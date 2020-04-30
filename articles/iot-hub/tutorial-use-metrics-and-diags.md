@@ -1,6 +1,6 @@
 ---
-title: Azure IoT hub'ı ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
-description: Azure IoT hub'ı ile ölçümleri ve tanılama günlüklerini nasıl ayarlayıp kullanacağınızı öğrenin. Bu, hub'ınızın sahip olabileceği sorunları tanılamaya yardımcı olmak için çözümlenecek veriler sağlar.
+title: Azure IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
+description: Azure IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlamayı ve kullanmayı öğrenin. Bu, hub 'ınızın sahip olabileceği sorunları tanılamanıza yardımcı olması için analiz edilecek verileri sağlar.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -11,59 +11,59 @@ ms.custom:
 - mvc
 - mqtt
 ms.openlocfilehash: 3eda4cd8dc10bd9128186b2ff4f8d6ac0254fe5d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770607"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT hub'ı ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 
-Üretimde çalışan bir IoT Hub çözümünüz varsa, bazı ölçümler ayarlamak ve tanılama günlüklerini etkinleştirmek istiyorsunuz. Daha sonra bir sorun oluşursa, sorunu tanılamanıza ve daha hızlı bir şekilde düzeltmenize yardımcı olacak verilere sahip olursunuz. Bu makalede, tanılama günlüklerini nasıl etkinleştireceğiniz ve hatalar için bunları nasıl denetleyeceksiniz göreceğiniz. Ayrıca izlemek için bazı ölçümler ayarlarsınız ve ölçümler belirli bir sınıra geldiğinde bu uyarıyı uyarır. Örneğin, gönderilen telemetri iletilerinin sayısı belirli bir sınırı aştığında veya kullanılan ileti sayısı IoT Hub'ı için günde izin verilen ileti kotasına yaklaştığında size bir e-posta göndermiş olabilirsiniz. 
+Üretimde çalışan bir IoT Hub çözümünüz varsa, bazı ölçümleri ayarlamak ve tanılama günlüklerini etkinleştirmek istersiniz. Daha sonra bir sorun oluşursa, sorunu tanılamanıza ve daha hızlı düzelmenize yardımcı olacak veriye bakacaksınız. Bu makalede, tanılama günlüklerinin nasıl etkinleştirileceğini ve bunların hatalara karşı nasıl kontrol yükleneceğini göreceksiniz. Ayrıca, izlenecek bazı ölçümleri ve ölçümler belirli bir sınıra geldiğinde harekete gelen uyarıları da ayarlayabilirsiniz. Örneğin, gönderilen telemetri iletilerinin sayısı belirli bir sınırı aştığında veya kullanılan ileti sayısı IoT Hub için günde izin verilen iletilerin kotasına yakın olduğunda size gönderilen bir e-posta alabilirsiniz. 
 
-Bir örnek kullanım örneği pompalar bir IoT hub ile iletişim göndermek IoT cihazlar olduğu bir benzin istasyonudur. Kredi kartları doğrulanır ve son işlem bir veri deposuna yazılır. IoT aygıtları hub'a bağlanmayı ve ileti göndermeyi durdurursa, neler olup bittiğini görünürlüğünüz yoksa bunu düzeltmek çok daha zordur.
+Örnek kullanım örneği, pompalara 'nin IoT Hub ile iletişim Kuran IoT cihazları olduğu bir gaz istasyonlarıdır. Kredi kartları onaylanır ve son işlem bir veri deposuna yazılır. IoT cihazları hub 'a bağlanmayı ve ileti göndermeyi durıyorsa, nelerin açık olduğuna ilişkin bir görünürlük yoksa, düzeltilmesi çok daha zordur.
 
-Bu öğretici, IoT hub'ına ileti göndermek için [IoT Hub Yönlendirme'deki](tutorial-routing.md) Azure örneğini kullanır.
+Bu öğretici, IoT Hub 'ına ileti göndermek için [IoT Hub yönlendirmenin](tutorial-routing.md) Azure örneğini kullanır.
 
 Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 
 > [!div class="checklist"]
-> * Azure CLI'yi kullanarak bir IoT hub'ı, benzetimli bir aygıt ve bir depolama hesabı oluşturun.  
+> * Azure CLı kullanarak bir IoT Hub, sanal cihaz ve depolama hesabı oluşturun.  
 > * Tanılama günlüklerini etkinleştirin.
 > * Ölçümleri etkinleştirin.
-> * Bu ölçümler için uyarılar ayarlayın. 
-> * Hub'a ileti gönderen bir IoT aygıtını taklit eden bir uygulamayı indirin ve çalıştırın. 
-> * Uyarılar çalışmaya başlayana kadar uygulamayı çalıştırın. 
-> * Ölçüm sonuçlarını görüntüleyin ve tanı günlüklerini kontrol edin. 
+> * Bu ölçümler için uyarıları ayarlayın. 
+> * Hub 'a ileti gönderen bir IoT cihazının benzetimini yapan bir uygulamayı indirip çalıştırın. 
+> * Uyarılar çalışmaya başlamadan önce uygulamayı çalıştırın. 
+> * Ölçüm sonuçlarını görüntüleyin ve tanılama günlüklerini denetleyin. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+- Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- [Visual Studio'u](https://www.visualstudio.com/)yükleyin. 
+- [Visual Studio 'yu](https://www.visualstudio.com/)yükler. 
 
-- Posta alabilen bir e-posta hesabı.
+- Posta alan bir e-posta hesabı.
 
-- 8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu öğreticideki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
+- Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-resources"></a>Kaynakları ayarlama
 
-Bu öğretici için bir IoT hub'ı, bir depolama hesabı ve simüle edilmiş bir IoT aygıtına ihtiyacınız vardır. Bu kaynaklar Azure CLI veya Azure PowerShell kullanılarak oluşturulabilir. Tüm kaynaklar için aynı kaynak grubunu ve konumunu kullanın. Sonunda kaynak grubunu silerek her şeyi tek adımda kaldırabilirsiniz.
+Bu öğreticide, bir IoT Hub, bir depolama hesabı ve sanal bir IoT cihazı gerekir. Bu kaynaklar Azure CLI veya Azure PowerShell kullanılarak oluşturulabilir. Tüm kaynaklar için aynı kaynak grubunu ve konumunu kullanın. Sonunda kaynak grubunu silerek her şeyi tek adımda kaldırabilirsiniz.
 
 Bunlar gerekli adımlardır.
 
-1. Kaynak [grubu](../azure-resource-manager/management/overview.md)oluşturun. 
+1. Bir [kaynak grubu](../azure-resource-manager/management/overview.md)oluşturun. 
 
-2. Bir IoT hub'ı oluşturun.
+2. IoT Hub 'ı oluşturun.
 
 3. Standard_LRS çoğaltmasıyla standart bir V1 depolama hesabı oluşturun.
 
 4. Hub'ınıza iletiler gönderen simülasyon cihazı için cihaz kimliği oluşturun. Test aşaması için anahtarı kaydedin.
 
-### <a name="set-up-resources-using-azure-cli"></a>Azure CLI kullanarak kaynak ayarlama
+### <a name="set-up-resources-using-azure-cli"></a>Azure CLı kullanarak kaynakları ayarlama
 
 Bu betiği kopyalayıp Cloud Shell'e yapıştırın. Zaten oturum açmış olduğunuzu varsayarak, betiği bir kerede bir satır olmak üzere çalıştırır. Yeni kaynaklar ContosoResources kaynak grubunda oluşturulur.
 
@@ -120,9 +120,9 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Aygıt kimliğini oluştururken aşağıdaki hatayı alabilirsiniz: *IoT Hub ContosoTestHub'ın iothubowner ilkesi için anahtar bulunamadı.* Bu hatayı düzeltmek için Azure CLI IoT Uzantısı'nı güncelleştirin ve komut dosyasındaki son iki komutu yeniden çalıştırın. 
+>Cihaz kimliğini oluştururken şu hatayı alabilirsiniz: *IoT Hub ContosoTestHub ilke ıothubowner için anahtar bulunamadı*. Bu hatayı onarmak için Azure CLı IoT uzantısını güncelleştirin ve ardından komut dosyasında son iki komutu yeniden çalıştırın. 
 >
->Burada uzantıyı güncelleştirmek için komutu. Bunu Bulut Kabuğu örneğinde çalıştırın.
+>Uzantıyı güncelleştirme komutu aşağıda verilmiştir. Bunu Cloud Shell örneğiniz içinde çalıştırın.
 >
 >```cli
 >az extension update --name azure-iot
@@ -130,155 +130,155 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>Tanılama günlüklerini etkinleştirme 
 
-Yeni bir IoT hub'ı oluşturduğunuzda [tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) varsayılan olarak devre dışı bırakılır. Bu bölümde, hub'ınız için tanılama günlüklerini etkinleştirin.
+Yeni bir IoT Hub oluşturduğunuzda [tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) varsayılan olarak devre dışıdır. Bu bölümde, hub 'ınız için tanılama günlüklerini etkinleştirin.
 
-1. İlk olarak, portalda hub'ınızda zaten değilseniz, **Kaynak gruplarını** tıklatın ve Contoso-Resources kaynak grubunu tıklatın. Görüntülenen kaynaklar listesinden hub'ı seçin. 
+1. İlk olarak, portalda hub 'ınız yoksa, **kaynak grupları** ' na tıklayın ve contoso-Resources kaynak grubu ' na tıklayın. Görünen kaynak listesinden hub 'ı seçin. 
 
-2. IoT Hub bıçağındaki **İzleme** bölümüne bakın. **Tanılama ayarları**'na tıklayın. 
+2. IoT Hub dikey penceresindeki **izleme** bölümünü arayın. **Tanılama ayarları**'na tıklayın. 
 
-   ![IoT Hub bıçağının tanı ayarları nın bir parçasını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+   ![IoT Hub dikey penceresinin Tanılama Ayarları bölümünü gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
-3. Abonelik ve kaynak grubunun doğru olduğundan emin olun. **Kaynak Türü**altında, **Tümünü Seç'in**işaretlerini kaldırın, ardından **IoT Hub'ı**arayın ve denetleyin. (Yine *Tümünü Seç'in* yanındaki onay işaretini koyar, yalnızca yoksay.) **Kaynak**altında hub adını seçin. Ekranınız bu görüntüye benzemeli: 
+3. Aboneliğin ve kaynak grubunun doğru olduğundan emin olun. **Kaynak türü**altında **Tümünü Seç**seçeneğinin işaretini kaldırın, sonra **IoT Hub**bulun ve denetleyin. ( *Tümünü yeniden Seç* ' in yanındaki onay işaretini koyar, tam olarak yoksayın.) **Kaynak**altında Hub adını seçin. Ekranınız şu görüntü gibi görünmelidir: 
 
-   ![IoT Hub bıçağının tanı ayarları nın bir parçasını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
+   ![IoT Hub dikey penceresinin Tanılama Ayarları bölümünü gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
 
-4. Şimdi **tanılamayı aç'ı**tıklatın. Tanılama ayarları bölmesi görüntülenir. Tanılama günlükleri ayarlarınızın adını "diags-hub" olarak belirtin.
+4. Şimdi **tanılamayı aç**' a tıklayın. Tanılama ayarları bölmesi görüntülenir. Tanılama günlükleri ayarlarınızın adını "Diags-Hub" olarak belirtin.
 
-5. **Arşiv'i bir depolama hesabına**denetleyin. 
+5. **Arşivi bir depolama hesabına**çekin. 
 
-   ![Tanılamanın bir depolama hesabına arşivleme ayarını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
+   ![Bir depolama hesabına arşivlemek için tanılamayı ayarlamayı gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
 
-    **Depolama hesabı seç** ekranını görmek için **Yapıl'ı** tıklatın, doğru ekranı seçin *(contosostoragemon),* ve Tanılama ayarları bölmesine dönmek için **Tamam'ı** tıklatın. 
+    **Yapılandırma** ' ya tıklayarak **bir depolama hesabı seçin** ekranını görüntüleyin, doğru bir (*contosostoragemon*) seçin ve Tanılama ayarları bölmesine dönmek için **Tamam** ' ı tıklatın. 
 
-   ![Tanılama günlüklerinin bir depolama hesabına arşivlene ayarını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
+   ![Bir depolama hesabına arşivlemek için tanılama günlüklerinin ayarlanmasını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
 
-6. **LOG** **altında, Bağlantıları** ve **Aygıt Telemetrisini**denetleyin ve **Bekletme'yi (gün)** her biri için 7 güne ayarlayın. Tanılama ayarları ekranınız artık şu görüntüye benzemeli:
+6. **Günlük**altında **bağlantıları** ve **cihaz telemetrisini**denetleyin ve her biri için **bekletme (gün)** ile 7 gün ayarlayın. Tanılama ayarları ekranımızda şu görüntüyle görünmeli:
 
-   ![Son tanı günlüğü ayarlarını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/05-diagnostic-settings-done.png)
+   ![Son tanılama günlüğü ayarlarını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/05-diagnostic-settings-done.png)
 
 7. Ayarları kaydetmek için **Kaydet**’e tıklayın. Tanılama ayarları bölmesini kapatın.
 
-Daha sonra, tanılama günlüklerine baktığınızda, aygıtın bağlantı sını görebilir ve günlüğe kaydetmeyi kesebilirsiniz. 
+Daha sonra, tanılama günlüklerine baktığımızda, cihaz için bağlanma ve bağlantıyı kesme günlüğünü görebileceksiniz. 
 
 ## <a name="set-up-metrics"></a>Ölçümleri ayarlama 
 
-Artık iletilerin hub'a ne zaman gönderildiğine dikkat etmek için bazı ölçümler ayarlayın. 
+Artık iletilerin hub 'a ne zaman gönderileceğini izlemek için bazı ölçümler ayarlayın. 
 
-1. IoT hub'ı için ayarlar **bölmesinde, İzleme** bölümündeki **Ölçümler** seçeneğini tıklatın.
+1. IoT Hub 'ın ayarlar bölmesinde, **izleme** bölümünde **ölçümler** seçeneğine tıklayın.
 
-2. Ekranın üst kısmında, **Son 24 saat (Otomatik)** tıklatın. Görünen açılır durumda, **Zaman Aralığı**için Son **4 saat'i** seçin ve **Zaman Taneciklerini** yerel saate **1 dakikaya**ayarlayın. Bu ayarları kaydetmek için **Uygula'yı** tıklatın. 
+2. Ekranın üst kısmında, **son 24 saat (otomatik)** seçeneğine tıklayın. Görüntülenen açılır menüde **zaman aralığı**için **son 4 saat** ' i seçin ve **zaman parçalı yapısını** **1 dakika**, yerel saat olarak ayarlayın. Bu ayarları kaydetmek için **Uygula** ' ya tıklayın. 
 
-   ![Ölçümler zaman ayarlarını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
+   ![Ölçüm zaman ayarlarını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
-3. Varsayılan olarak bir metrik giriş vardır. Kaynak grubunu varsayılan olarak ve metrik ad alanı olarak bırakın. **Metrik** açılır listesinde, **gönderilen Telemetri iletilerini**seçin. **Toplamayı** **Toplamolarak**Ayarlayın.
+3. Varsayılan olarak bir ölçüm girişi vardır. Kaynak grubunu varsayılan ve ölçüm ad alanı olarak bırakın. **Ölçüm** açılan listesinde, **gönderilen telemetri iletileri**' ni seçin. **Toplamayı** **Sum**olarak ayarlayın.
 
-   ![Gönderilen telemetri iletileri için metrik eklemeyi gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
+   ![Gönderilen telemetri iletileri için ölçüm eklemeyi gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
 
 
-4. Şimdi **grafiğe** başka bir metrik eklemek için metrik ekle'yi tıklatın. Kaynak grubunuzu seçin (**ContosoTestHub**). **Metrik'in**altında, **kullanılan ileti sayısının toplamını**seçin. **Toplama** **için, Avg'yi**seçin. 
+4. Şimdi grafiğe başka bir ölçüm eklemek için **ölçüm Ekle** ' ye tıklayın. Kaynak grubunuzu (**ContosoTestHub**) seçin. **Ölçüm**altında, **kullanılan toplam ileti sayısını**seçin. **Toplama**için **Ort**' ı seçin. 
 
-   Şimdi *ekranınız, gönderilen Telemetri iletileri*için en aza indirgenmiş ölçütü ve *kullanılan toplam ileti sayısı*için yeni metriği gösterir.
+   Artık ekranınızda, *gönderilen telemetri iletileri*için küçültülmüş olan ölçüm ve ayrıca *kullanılan toplam ileti sayısı*için yeni ölçüm gösterilmektedir.
 
-   ![Gönderilen telemetri iletileri için metrik eklemeyi gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+   ![Gönderilen telemetri iletileri için ölçüm eklemeyi gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
 
-   **Panoya Sabitle'yi**tıklatın. Yeniden erişebilmeniz için Azure portalınızın panosuna sabitler. Panoya sabitlemezseniz, ayarlarınız tutulmaz.
+   **Panoya sabitle**' ye tıklayın. Bu işlem, yeniden erişebilmek için Azure portal panoya sabitleyebilir. Panoya sabitleyemez, ayarlarınız korunmaz.
 
 ## <a name="set-up-alerts"></a>Uyarıları ayarlama
 
-Portaldaki merkeze git. **Kaynak Grupları'nı**tıklatın, *ContosoResources'ı*seçin, ardından IoT Hub *ContosoTestHub'ı*seçin. 
+Portalda hub 'a gidin. **Kaynak grupları**' na tıklayın, *contosoresources*' i ve sonra IoT Hub *ContosoTestHub*' yi seçin 
 
-IoT Hub henüz [Azure Monitor'daki ölçümlere](/azure/azure-monitor/platform/data-collection#metrics) geçirilemedi; [klasik uyarıları](/azure/azure-monitor/platform/alerts-classic.overview)kullanmak zorunda.
+IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/data-collection#metrics) geçirilmedi; [Klasik uyarılar](/azure/azure-monitor/platform/alerts-classic.overview)kullanmanız gerekir.
 
-1. **İzleme**altında, **Uyarıları** tıklatın Bu ana uyarı ekranını gösterir. 
+1. **İzleme**altında **Uyarılar** ' a tıklayın, ana uyarı ekranını gösterir. 
 
-   ![Klasik uyarıların nasıl bulunup bulunulacağı ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/08-find-classic-alerts.png)
+   ![Klasik uyarıların nasıl bulunacağını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/08-find-classic-alerts.png)
 
-2. Klasik uyarılara buradan ulaşmak için **klasik uyarıları görüntüle'yi**tıklatın. 
+2. Buradan klasik uyarılara ulaşmak için **Klasik Uyarıları görüntüle**' ye tıklayın. 
 
     ![Klasik uyarılar ekranını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/09-view-classic-alerts.png)
 
     Şu alanları doldurun: 
 
-    **Abonelik**: Bu alanı geçerli aboneliğinize bırakın.
+    **Abonelik**: bu alanı geçerli aboneliğiniz olarak bırakın.
 
-    **Kaynak**: Bu alanı *Ölçümler*olarak ayarlayın.
+    **Kaynak**: bu alanı *ölçümler*olarak ayarlayın.
 
-    **Kaynak grubu**: Bu alanı geçerli kaynak grubunuz *contosoResources*olarak ayarlayın. 
+    **Kaynak grubu**: bu alanı geçerli kaynak grubunuz, *contosoresources*olarak ayarlayın. 
 
-    **Kaynak türü**: Bu alanı IoT Hub olarak ayarlayın. 
+    **Kaynak türü**: bu alanı IoT Hub olarak ayarlayın. 
 
-    **Kaynak**: IoT hub'ınız *ContosoTestHub'ı*seçin.
+    **Kaynak**: IoT Hub 'ınızı, *ContosoTestHub*seçin.
 
-3. Yeni bir uyarı ayarlamak için **metrik uyarı ekle'yi (klasik)** tıklatın.
+3. Yeni bir uyarı ayarlamak için **ölçüm uyarısı Ekle (klasik)** seçeneğine tıklayın.
 
     Şu alanları doldurun:
 
-    **Ad**: *Telemetri-iletileri*gibi uyarı kuralınız için bir ad verin.
+    **Ad**: uyarı kuralınız için *telemetri iletileri*gibi bir ad sağlayın.
 
-    **Açıklama**: *1000 telemetri iletisi gönderildiğinde uyarı*gibi uyarınızın açıklamasını sağlayın. 
+    **Açıklama**: uyarı için *1000 telemetri iletisi gönderildiğinde uyarı*gibi bir açıklama belirtin. 
 
-    **Kaynak**: Bunu *Ölçümler*olarak ayarlayın.
+    **Kaynak**: bunu *ölçümler*olarak ayarlayın.
 
-    **Abonelik**, **Kaynak grubu**ve **Kaynak,** görünüm klasik **uyarıları** ekranında seçtiğiniz değerlere ayarlanmalıdır. 
+    **Abonelik**, **kaynak grubu**ve **kaynak** **Klasik Uyarıları görüntüle** ekranında seçtiğiniz değerlere ayarlanmalıdır. 
 
-    **Metrik'i** *gönderilen Telemetri iletilerine*ayarlayın.
+    **Ölçüyü** *gönderilen telemetri iletileri*olarak ayarlayın.
 
-    ![Gönderilen telemetri iletileri için klasik bir uyarı ayarını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/10-alerts-add-rule-telemetry-top.png)
+    ![Gönderilen telemetri iletileri için klasik uyarı ayarlamayı gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/10-alerts-add-rule-telemetry-top.png)
 
-4. Grafikten sonra aşağıdaki alanları ayarlayın:
+4. Grafik sonrasında aşağıdaki alanları ayarlayın:
 
-   **Koşul**: *Büyük*olarak ayarlayın.
+   **Koşul**: *değerinden büyük*olarak ayarlayın.
 
-   **Eşik**: 1000 olarak ayarlayın.
+   **Threshold**: 1000 olarak ayarlayın.
 
-   **Periyot**: *Son 5 dakikaya*göre ayarlanır.
+   **Süre**: *son 5 dakika içinde*olarak ayarlanır.
 
-   **Bildirim e-posta alıcıları**: E-posta adresinizi buraya koyun. 
+   **Bildirim e-posta alıcıları**: e-posta adresinizi buraya koyun. 
 
-   ![Uyarılar ekranının alt yarısını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
+   ![Uyarıların alt yarısında gösterilen ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
-   Uyarıyı kaydetmek için **Tamam'ı** tıklatın. 
+   Uyarıyı kaydetmek için **Tamam** ' ı tıklatın. 
 
-5. Şimdi *kullanılan iletilerin toplam sayısı*için başka bir uyarı ayarlayın. Bu metrik, kullanılan ileti sayısı IoT hub'ının kotasına yaklaşırken bir uyarı göndermek istiyorsanız, hub'ın yakında iletileri reddetmeye başlayacağını bildirmek için yararlıdır.
+5. Şimdi, *kullanılan toplam ileti sayısı*için başka bir uyarı ayarlayın. Bu ölçüm, kullanılan ileti sayısı IoT Hub kotasına yaklaştığı zaman bir uyarı göndermek istiyorsanız yararlı olur. Bu, hub 'ın iletileri reddetme yakında gönderileceğini bilmenizi sağlamak için yararlıdır.
 
-   Klasik **uyarıları Görüntüle** ekranında **metrik uyarı ekle 'yi (klasik)** tıklatın ve ardından Ekle **kuralı** bölmesinde bu alanları doldurun.
+   **Klasik Uyarıları görüntüle** ekranında, **ölçüm uyarısı Ekle (klasik)** seçeneğine tıklayın ve ardından **Kural Ekle** bölmesinde bu alanları girin.
 
-   **Ad**: *Kullanılan ileti sayısı*gibi uyarı kuralınız için bir ad verin.
+   **Ad**: uyarı kuralınız için, *kullanılan ileti sayısı*gibi bir ad sağlayın.
 
-   **Açıklama**: *Kotaya yaklaşırken uyarı*gibi uyarınızın açıklamasını sağlayın.
+   **Açıklama**: size, *kotasından yakın sürede uyarı*gibi bir açıklama sağlayın.
 
-   **Kaynak**: Bu alanı *Ölçümler*olarak ayarlayın.
+   **Kaynak**: bu alanı *ölçümler*olarak ayarlayın.
 
-    **Abonelik**, **Kaynak grubu**ve **Kaynak,** görünüm klasik **uyarıları** ekranında seçtiğiniz değerlere ayarlanmalıdır. 
+    **Abonelik**, **kaynak grubu**ve **kaynak** **Klasik Uyarıları görüntüle** ekranında seçtiğiniz değerlere ayarlanmalıdır. 
 
-    **Metrik'i** *kullanılan ileti lerin toplam sayısına*ayarlayın.
+    **Ölçüyü** *, kullanılan toplam ileti sayısına*ayarlayın.
 
-6. Grafiğin altında, aşağıdaki alanları doldurun:
+6. Grafik altında aşağıdaki alanları girin:
 
-   **Koşul**: *Büyük*olarak ayarlayın.
+   **Koşul**: *değerinden büyük*olarak ayarlayın.
 
-   **Eşik**: 1000 olarak ayarlayın.
+   **Threshold**: 1000 olarak ayarlayın.
 
-   **Dönem**: Bu alanı *son 5 dakikaya*göre ayarlayın. 
+   **Süre**: bu alanı *son 5 dakika içinde*olacak şekilde ayarlayın. 
 
-   **Bildirim e-posta alıcıları**: E-posta adresinizi buraya koyun. 
+   **Bildirim e-posta alıcıları**: e-posta adresinizi buraya koyun. 
 
    Kuralı kaydetmek için **Tamam**’a tıklayın. 
 
-5. Şimdi klasik uyarılar bölmesinde iki uyarı görmelisiniz: 
+5. Şimdi klasik uyarılar bölmesinde iki uyarı görmeniz gerekir: 
 
    ![Yeni uyarı kurallarıyla klasik uyarılar ekranını gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/12-alerts-done.png)
 
-6. Uyarı bölmesini kapatın. 
+6. Uyarılar bölmesini kapatın. 
     
-    Bu ayarlarla, gönderilen ileti sayısı 400'den büyük olduğunda ve kullanılan toplam ileti sayısı NUMBER'ı aştığında bir uyarı alırsınız.
+    Bu ayarlarla, gönderilen ileti sayısı 400 ' den büyük olduğunda ve kullanılan toplam ileti sayısı SAYıYı aştığında bir uyarı alacaksınız.
 
 ## <a name="run-simulated-device-app"></a>Simülasyon Cihazı uygulamasını çalıştırma
 
 Betik ayarlama bölümünün başlarında, IoT cihazı kullanarak simülasyonu yapılacak bir cihaz ayarlamıştınız. Bu bölümde, IoT Hub'a cihazdan buluta iletiler gönderen bir cihazın simülasyonunu yapan bir .NET konsol uygulaması indireceksiniz.  
 
-[IoT Cihaz Simülasyonu](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) çözümünü indirin. Bu bağlantı içinde çeşitli uygulamalar ile bir repo indirir; aradığınız çözüm iot-hub/Tutorials/Routing/' dedir.
+[IoT Cihaz Simülasyonu](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) çözümünü indirin. Bu bağlantı, içindeki çeşitli uygulamalarla bir depoyu indirir; Aradığınız çözüm IoT-Hub/öğreticiler/yönlendirme/.
 
 Kodu Visual Studio'da açmak için çözüm dosyasına (SimulatedDevice.sln) çift tıklayın, sonra da Program.cs'yi açın. `{iot hub hostname}` değerini IoT hub'ı konak adıyla değiştirin. IoT hub'ı konak adı **{iot-hub-adı}.azure-devices.net** biçimindedid. bu öğreticide, hub konak adı olarak **ContosoTestHub.azure-devices.net** kullanılır. Ardından, `{device key}` değerini daha önce simülasyon cihazını ayarlarken kaydettiğiniz cihaz anahtarıyla değiştirin. 
 
@@ -292,39 +292,39 @@ Kodu Visual Studio'da açmak için çözüm dosyasına (SimulatedDevice.sln) çi
 
 ## <a name="run-and-test"></a>Çalıştırma ve test etme 
 
-Program.cs, ileti `Task.Delay` gönderme arasındaki süreyi 1 saniyeden 0,01 saniyeye düşüren 1000'den 10'a değiştirin. Bu gecikmenin kısaltılması gönderilen ileti sayısını artırır.
+Program.cs ' de, 1 `Task.Delay` saniyeden. 01 saniyeye ileti gönderme arasındaki süreyi azaltan 1000 olarak değiştirin. Bu gecikmeyi kısaltaştırma, gönderilen ileti sayısını artırır.
 
 ```csharp
 await Task.Delay(10);
 ```
 
-Konsol uygulamasını çalıştırın. Birkaç dakika bekleyin (10-15). Benzetimli aygıttan uygulamanın konsol ekranındaki hub'a gönderilen iletileri görebilirsiniz.
+Konsol uygulamasını çalıştırın. Birkaç dakika bekleyin (10-15). Sanal cihazdan gönderilen iletileri uygulamanın konsol ekranındaki hub 'a görebilirsiniz.
 
-### <a name="see-the-metrics-in-the-portal"></a>Portaldaki ölçümlere bakın
+### <a name="see-the-metrics-in-the-portal"></a>Portalda ölçümlere bakın
 
-Ölçümlerinizi Pano'dan açın. Saat değerlerini *1 dakikalık*bir zaman parçalı ile *Son 30 dakika* olarak değiştirin. Gönderilen telemetri iletilerini ve grafikte kullanılan toplam ileti sayısını ve grafiğin altındaki en son sayıları gösterir.
+Panodan ölçümlerinizi açın. Zaman değerlerini *1 dakikalık*bir zaman düzeyi ile *son 30 dakika* olarak değiştirin. Bu, gönderilen telemetri iletilerini ve grafikte kullanılan toplam ileti sayısını, grafiğin alt kısmındaki en son sayılarla gösterir.
 
    ![Ölçümleri gösteren ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
 
-### <a name="see-the-alerts"></a>Uyarıları görme
+### <a name="see-the-alerts"></a>Uyarılara bakın
 
-Uyarılara geri dön. **Kaynak gruplarını**tıklatın, *ContosoResources'ı*seçin, ardından *ContosoTestHub*merkezini seçin. Hub için görüntülenen özellikler sayfasında **Uyarılar'ı**seçin ve **ardından klasik uyarıları görüntüleyin.** 
+Uyarılara geri dönün. **Kaynak grupları**' na tıklayın, *contosoresources*' i seçin ve ardından hub *ContosoTestHub*seçin. Merkez için görünen Özellikler sayfasında **Uyarılar**' ı seçin ve ardından **Klasik uyarıları görüntüleyin**. 
 
-Gönderilen ileti sayısı sınırı aştığında, e-posta uyarıları almaya başlarsınız. Etkin uyarılar olup olmadığını görmek için hub'ınıza gidin ve **Uyarılar'ı**seçin. Etkin olan uyarıları ve herhangi bir uyarı varsa size gösterir. 
+Gönderilen ileti sayısı sınırı aştığında, e-posta uyarıları almaya başlayabilirsiniz. Etkin bir uyarı olup olmadığını görmek için hub 'ınıza gidin ve **Uyarılar**' ı seçin. Bu işlem, etkin olan uyarıları ve herhangi bir uyarı olup olmadığını gösterir. 
 
-   ![Uyarıları gösteren ekran görüntüsü ateşlendi.](./media/tutorial-use-metrics-and-diags/14-alerts-firing.png)
+   ![Uyarıların tetiklendiğinin gösterildiği ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/14-alerts-firing.png)
 
-Telemetri iletileri için uyarıyı tıklatın. Bu metrik sonucu ve sonuçları ile bir grafik gösterir. Ayrıca, uyarı ateş sizi uyarmak için gönderilen e-posta bu görüntü gibi görünüyor:
+Telemetri iletileri için uyarıya tıklayın. Bu, ölçüm sonucunu ve sonuçları içeren bir grafiği gösterir. Ayrıca, uyarı tetiklemek için gönderilen e-posta Şu görüntüye benzer şekilde görünür:
 
-   ![Uyarıları gösteren e-postanın ekran görüntüsü ateşlendi.](./media/tutorial-use-metrics-and-diags/15-alert-email.png)
+   ![Uyarıları gösteren e-postanın ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/15-alert-email.png)
 
 ### <a name="see-the-diagnostic-logs"></a>Tanılama günlüklerine bakın
 
-Tanı günlüklerinizi blob depolamasına dışa aktarılacak şekilde ayarlarsınız. Kaynak grubunuza gidin ve depolama hesabınızı *contosostoragemon'unuzu*seçin. Blobs'u seçin, ardından kapsayıcı *öngörülerini-günlükleri-bağlantıları*açın. Geçerli tarihe gelene kadar ayrıntıya inin ve en son dosyayı seçin. 
+Tanılama günlüklerinizi blob depolamaya aktarılacak şekilde ayarlarsınız. Kaynak grubunuza gidin ve *contosostoragemon*depolama hesabınızı seçin. Bloblar ' ı seçin ve ardından kapsayıcı *öngörüleri*' ni açın. Geçerli tarihi bulana ve en son dosyayı seçene kadar ayrıntıya gidin. 
 
-   ![Tanılama günlüklerini görmek için depolama kabına sondaj ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/16-diagnostics-logs-list.png)
+   ![Tanılama günlüklerini görmek için depolama kapsayıcısının ayrıntılarına gidilme ekran görüntüsü.](./media/tutorial-use-metrics-and-diags/16-diagnostics-logs-list.png)
 
-İndir'i indirmek ve açmak için **İndir'i** tıklatın. Hub'a ileti gönderirken aygıtın bağlanan ve bağlantı kesilen günlüklerini görürsünüz. Burada bir örnek:
+İndirmek için **İndir** ' e tıklayın ve açın. Aygıtın, hub 'a ileti gönderdiği şekilde bağlanıp bağlantısını kestiğini görürsünüz. Örnek:
 
 ``` json
 { 
@@ -365,7 +365,7 @@ Tanı günlüklerinizi blob depolamasına dışa aktarılacak şekilde ayarlars�
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 
-Bu eğitimde oluşturduğunuz tüm kaynakları kaldırmak için kaynak grubunu silin. Bu eylem grubun içerdiği tüm kaynakları siler. Bu durumda, IoT hub'ını, depolama hesabını ve kaynak grubunun kendisini kaldırır. Gösterge paneline sabitlenmiş ölçümleriniz varsa, her birinin sağ üst köşesindeki üç noktayı tıklatıp **Kaldır'ı**seçerek bunları el ile kaldırmanız gerekir.
+Bu öğreticide oluşturduğunuz tüm kaynakları kaldırmak için kaynak grubunu silin. Bu eylem grubun içerdiği tüm kaynakları siler. Bu durumda, IoT Hub, depolama hesabı ve kaynak grubunun kendisini kaldırır. Panoya sabitlenmiş ölçümler varsa, her birinin sağ üst köşesindeki üç noktaya tıklayarak ve **Kaldır**' ı seçerek bunları el ile kaldırmanız gerekir.
 
 Kaynak grubunu kaldırmak için [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanın.
 
@@ -375,16 +375,16 @@ az group delete --name $resourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, aşağıdaki görevleri gerçekleştirerek ölçümleri ve tanılama günlüklerini nasıl kullanacağınızı öğrendiniz:
+Bu öğreticide, aşağıdaki görevleri gerçekleştirerek ölçüm ve tanılama günlüklerinin nasıl kullanılacağını öğrendiniz:
 
 > [!div class="checklist"]
-> * Azure CLI'yi kullanarak bir IoT hub'ı, benzetimli bir aygıt ve bir depolama hesabı oluşturun.  
+> * Azure CLı kullanarak bir IoT Hub, sanal cihaz ve depolama hesabı oluşturun.  
 > * Tanılama günlüklerini etkinleştirin. 
 > * Ölçümleri etkinleştirin.
-> * Bu ölçümler için uyarılar ayarlayın. 
-> * Hub'a ileti gönderen bir IoT aygıtını taklit eden bir uygulamayı indirin ve çalıştırın. 
-> * Uyarılar çalışmaya başlayana kadar uygulamayı çalıştırın. 
-> * Ölçüm sonuçlarını görüntüleyin ve tanı günlüklerini kontrol edin. 
+> * Bu ölçümler için uyarıları ayarlayın. 
+> * Hub 'a ileti gönderen bir IoT cihazının benzetimini yapan bir uygulamayı indirip çalıştırın. 
+> * Uyarılar çalışmaya başlamadan önce uygulamayı çalıştırın. 
+> * Ölçüm sonuçlarını görüntüleyin ve tanılama günlüklerini denetleyin. 
 
 IoT cihazı durumunun nasıl yönetileceğini öğrenmek için sonraki öğreticiye geçin. 
 

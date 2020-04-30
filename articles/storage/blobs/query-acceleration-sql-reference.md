@@ -1,7 +1,7 @@
 ---
-title: Sorgu hızlandırma SQL dil başvurusu (önizleme)
+title: Sorgu hızlandırma SQL dil başvurusu (Önizleme)
 titleSuffix: Azure Storage
-description: Sorgu hızlandırma sql sözdizimini nasıl kullanacağınızı öğrenin.
+description: Sorgu hızlandırma SQL söz dizimini nasıl kullanacağınızı öğrenin.
 services: storage
 author: normesta
 ms.service: storage
@@ -11,44 +11,44 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81772125"
 ---
-# <a name="query-acceleration-sql-language-reference-preview"></a>Sorgu hızlandırma SQL dil başvurusu (önizleme)
+# <a name="query-acceleration-sql-language-reference-preview"></a>Sorgu hızlandırma SQL dil başvurusu (Önizleme)
 
-Sorgu hızlandırma, blob içeriği üzerinde sorguları ifade etmek için ANSI SQL benzeri bir dili destekler.  Sorgu hızlandırma SQL lehçesi, desteklenen veri türleri, işleçler, vb sınırlı bir dizi ile ANSI SQL bir alt kümesidir, ama aynı zamanda JSON gibi hiyerarşik yarı yapılandırılmış veri biçimleri üzerinde sorguları desteklemek için ANSI SQL genişletir. 
+Sorgu hızlandırma, blob içerikleri üzerinde sorguları ifade etmek için ANSI SQL benzeri bir dili destekler.  Sorgu hızlandırma SQL diyalekti, desteklenen veri türleri, işleçler vb. sınırlı bir kümesi olan ANSI SQL 'nin bir alt kümesidir, ancak JSON gibi hiyerarşik yarı yapılandırılmış veri biçimleri üzerinde sorguları desteklemek için ANSI SQL 'de de genişletilir. 
 
 > [!NOTE]
-> Sorgu hızlandırma özelliği genel önizlemededir ve Kanada Orta ve Fransa Orta bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için [Bilinen sorunlar](data-lake-storage-known-issues.md) makalesine bakın. Önizlemeye kaydolmak için [bu forma](https://aka.ms/adls/qa-preview-signup)bakın. 
+> Sorgu hızlandırma özelliği genel önizlemededir ve Kanada Orta ve Fransa Orta bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, [bilinen sorunlar](data-lake-storage-known-issues.md) makalesine bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adls/qa-preview-signup)bakın. 
 
-## <a name="select-syntax"></a>SELECT Sözdizimi
+## <a name="select-syntax"></a>Sözdizimi Seç
 
-Sorgu ivmesi tarafından desteklenen tek SQL deyimi SELECT deyimidir. Bu örnek, ifadenin doğru döndürdüğü her satırı döndürür.
+Sorgu hızlandırma tarafından desteklenen tek SQL deyimleri SELECT deyimidir. Bu örnek, ifadenin true döndüğü her satırı döndürür.
 
 ```sql
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-CSV biçimli veriler *table* için tablo `BlobStorage`.  Bu, sorgunun REST çağrısında belirtilen blob'a karşı çalışacağı anlamına gelir.
-JSON biçimlendirilmiş veriler için *tablo* bir "tablo tanımlayıcısı" dır.   Bu makalenin [Tablo Tanımlayıcıları](#table-descriptors) bölümüne bakın.
+CSV biçimli veriler için *tablo* olmalıdır `BlobStorage`.  Bu, sorgunun REST çağrısında belirtilen Blobun göre çalışacağı anlamına gelir.
+JSON biçimli veriler için *tablo* bir "Tablo tanımlayıcısıdır."   Bu makalenin [tablo tanımlayıcıları](#table-descriptors) bölümüne bakın.
 
-Aşağıdaki örnekte, WHERE *ifadesinin* doğru döndüğü her satır için, bu deyim, projeksiyon ifadelerinin her birini değerlendirmekten yapılan yeni bir satır döndürür.
+Aşağıdaki örnekte, WHERE *ifadesinin* true döndüğü her satır için, bu deyim, projeksiyon ifadelerinin her birini değerlendirmeden oluşturulan yeni bir satır döndürür.
 
 
 ```sql
 SELECT expression [, expression …] FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Aşağıdaki örnek, *ifadenin* doğru döndüğü satırların her biri üzerinde bir toplu hesaplama (örneğin: belirli bir sütunun ortalama değeri) döndürür. 
+Aşağıdaki örnek bir toplam hesaplama (örneğin, belirli bir sütunun ortalama değeri), *ifadenin* true döndüğü her bir satır için döndürür. 
 
 ```sql
 SELECT aggregate_expression FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Aşağıdaki örnek, CSV biçimli bir blob'u bölmek için uygun uzaklıkları döndürür.  Bu makalenin [Sys.Split](#sys-split) bölümüne bakın.
+Aşağıdaki örnek, CSV biçimli bir blobu bölmek için uygun uzaklıkları döndürür.  Bu makalenin [sys. Split](#sys-split) bölümüne bakın.
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
@@ -60,21 +60,21 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 |Veri Türü|Açıklama|
 |---------|-------------------------------------------|
-|INT      |64 bit imzalı biranda.                     |
-|Float    |64 bit ("çift duyarlıklı") kayan nokta.|
-|Dize   |Değişken uzunlukta Unicode dizesi.            |
-|Zaman damgası|Zamanda bir nokta.                           |
-|Boolean  |True veya false.                             |
+|INT      |64-bit işaretli tamsayı.                     |
+|FLOAT    |64-bit ("çift duyarlıklı") kayan nokta.|
+|DIZISINDE   |Değişken uzunlukta Unicode dizesi.            |
+|ILIŞKIN|Zaman içinde bir nokta.                           |
+|BOOLEAN  |True veya false.                             |
 
-CSV biçimli verilerden değerler okunurken, tüm değerler dize olarak okunur.  String değerleri CAST ifadeleri kullanılarak diğer türlere dönüştürülebilir.  Değerler, içeriğe bağlı olarak dolaylı olarak diğer türlere dökülebilir. daha fazla bilgi için [Bkz. Veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+CSV biçimli verilerden değerleri okurken tüm değerler dizeler olarak okunurdur.  Dize değerleri, atama ifadeleri kullanılarak diğer türlere dönüştürülebilir.  Değerler, bağlama göre örtük olarak diğer türlere dönüştürülebilir. daha fazla bilgi için bkz. [veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
 
 ## <a name="expressions"></a>İfadeler
 
-### <a name="referencing-fields"></a>Başvuru alanları
+### <a name="referencing-fields"></a>Başvurulan alanlar
 
-JSON biçimli veriler veya üstbilgi satırı olan CSV biçimli veriler için alanlar ada göre başvurulabilir.  Alan adları alıntılanabilir veya tırnak içinde kalınabilir. Alıntı lanan alan adları çift tırnak karakterleri (") ile çevrilidir, boşluklar içerebilir ve büyük/küçük harf duyarlıdır.  Tırnak içinde verilmemiş alan adları büyük/küçük harf duyarsızdır ve özel karakter içermeyebilir.
+JSON biçimli veriler veya üst bilgi satırı içeren CSV biçimli veriler için alanlara ad tarafından başvurulabilir.  Alan adları tırnak içine alınmış veya tırnak içine alınmış olabilir. Tırnak içine alan adları çift tırnak (") içinde, boşluk içerebilir ve büyük/küçük harfe duyarlıdır.  Tırnak işaretleri olmayan alan adları büyük/küçük harfe duyarlıdır ve özel karakter içeremez.
 
-CSV biçimli verilerde, alanlar alt (_) karakterle önceden belirlenmiş olan ordinal tarafından da başvurulabilir.  Örneğin, ilk alan _1 veya onbirinci alan _11 olarak başvurulabilir.  Alanları ordinal'a göre başvurmak, üstbilgi satırı içermeyen CSV biçimli veriler için yararlıdır ve bu durumda belirli bir alana başvurmanın tek yolu ordinal'dir.
+CSV biçimli verilerde alanlara bir alt çizgi (_) karakteriyle önek olarak de başvurulabilir.  Örneğin, ilk alana _1 olarak başvurulabilir veya on birinci alanına _11 olarak başvurulabilir.  Alanlara göre başvuruda bulunmak, üst bilgi satırı içermeyen CSV biçimli veriler için yararlıdır, bu durumda belirli bir alana başvurmak için tek yol sıralı olur.
 
 ### <a name="operators"></a>İşleçler
 
@@ -82,23 +82,23 @@ Aşağıdaki standart SQL işleçleri desteklenir:
 
 ``=``, ``!=``, ``<>``, ``<``, ``<=``, ``>``, ``>=``, ``+``, ``-``, ``/``, ``*``, ``%``, ``AND``, ``OR``, ``NOT``, ``CAST``, ``BETWEEN``, ``IN``, ``NULLIF``, ``COALESCE``
 
-Bir işlecinin solundaki ve sağındaki veri türleri farklıysa, burada belirtilen kurallara göre otomatik dönüştürme gerçekleştirilir: [Veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+Bir işlecin sol ve sağ tarafındaki veri türleri farklıysa, otomatik dönüştürme burada belirtilen kurallara göre gerçekleştirilir: [veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
 
-Sorgu hızlandırma SQL dili, bu makalede tartışılan veri türlerinin yalnızca çok küçük bir alt kümesini destekler.  Bu makalenin [Veri Türleri](#data-types) bölümüne bakın.
+Sorgu hızlandırma SQL dili, bu makalede ele alınan veri türlerinin yalnızca çok küçük bir alt kümesini destekler.  Bu makalenin [veri türleri](#data-types) bölümüne bakın.
 
-### <a name="casts"></a>Çevirir
+### <a name="casts"></a>Podcast
 
-Sorgu ivmesi SQL dili, buradaki kurallara göre CAST işlecisini destekler: [Veri türü dönüştürme (Database Engine)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
+Sorgu hızlandırma SQL dili, şu kurallara göre atama işlecini destekler: [veri türü dönüştürme (veritabanı altyapısı)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
 
-Sorgu hızlandırma SQL dili, bu makalede tartışılan veri türlerinin yalnızca küçük bir alt kümesini destekler.  Bu makalenin [Veri Türleri](#data-types) bölümüne bakın.
+Sorgu hızlandırma SQL dili, bu makalede ele alınan veri türlerinin yalnızca küçük bir alt kümesini destekler.  Bu makalenin [veri türleri](#data-types) bölümüne bakın.
 
 ### <a name="string-functions"></a>Dize işlevleri
 
-Sorgu hızlandırma SQL dili aşağıdaki standart SQL dize işlevlerini destekler:
+Sorgu hızlandırma SQL dili, aşağıdaki standart SQL dize işlevlerini destekler:
 
 ``LIKE``, ``CHAR_LENGTH``, ``CHARACTER_LENGTH``, ``LOWER``, ``UPPER``, ``SUBSTRING``, ``TRIM``, ``LEADING``, ``TRAILING``.
 
-Aşağıda birkaç örnek verilmiştir:
+İşte birkaç örnek:
 
 |İşlev|Örnek|Sonuç|
 |---|---|---|
@@ -109,7 +109,7 @@ Aşağıda birkaç örnek verilmiştir:
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevi bir desen aramanıza yardımcı olur. Aşağıda, veri dizesini ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``aramak için [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevini kullanan birkaç örnek verilmiştir.
+[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevi, bir model aramanıza yardımcı olur. Veri dizesinde ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``arama yapmak için [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) işlevini kullanan birkaç örnek aşağıda verilmiştir.
 
 |Sorgu|Örnek|
 |--|--|
@@ -125,11 +125,11 @@ Aşağıdaki standart SQL tarih işlevleri desteklenir:
 
 ``DATE_ADD``, ``DATE_DIFF``, ``EXTRACT``, ``TO_STRING``, ``TO_TIMESTAMP``.
 
-Şu anda [standart IS08601](https://www.w3.org/TR/NOTE-datetime)tüm tarih biçimlerini dönüştürmek. 
+Şu anda [Standart IS08601 'in tüm tarih biçimlerini](https://www.w3.org/TR/NOTE-datetime)dönüştürüyoruz. 
 
-#### <a name="date_add-function"></a>DATE_ADD fonksiyonu
+#### <a name="date_add-function"></a>DATE_ADD işlevi
 
-Sorgu hızlandırma SQL dili ``DATE_ADD`` işlevi için yıl, ay, gün, saat, dakika, ikinci destekler.
+Sorgu hızlandırma SQL dili, ``DATE_ADD`` işlevin yıl, ay, gün, saat, dakika ve saniyeyi destekler.
 
 Örnekler:
 
@@ -138,18 +138,18 @@ DATE_ADD(datepart, quantity, timestamp)
 DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 ```
 
-#### <a name="date_diff-function"></a>DATE_DIFF fonksiyonu
+#### <a name="date_diff-function"></a>DATE_DIFF işlevi
 
-Sorgu hızlandırma SQL dili ``DATE_DIFF`` işlevi için yıl, ay, gün, saat, dakika, ikinci destekler.
+Sorgu hızlandırma SQL dili, ``DATE_DIFF`` işlevin yıl, ay, gün, saat, dakika ve saniyeyi destekler.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
 DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00') 
 ```
 
-#### <a name="extract-function"></a>EXTRACT fonksiyonu
+#### <a name="extract-function"></a>EXTRACT işlevi
 
-``DATE_ADD`` İşlev için desteklenen tarih parçası dışındaki EXTRACT için sorgu hızlandırma SQL dili timezone_hour destekler ve tarih parçası olarak timezone_minute.
+``DATE_ADD`` İşlev için desteklenen tarih bölümü dışında ayıklama için, sorgu hızlandırma SQL dili timezone_hour ve timezone_minute Tarih parçası olarak destekler.
 
 Örnekler:
 
@@ -158,7 +158,7 @@ EXTRACT(datepart FROM timestampstring)
 EXTRACT(YEAR FROM '2010-01-01T')
 ```
 
-#### <a name="to_string-function"></a>TO_STRING fonksiyonu
+#### <a name="to_string-function"></a>TO_STRING işlevi
 
 Örnekler:
 
@@ -167,39 +167,39 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-Bu tablo, ``TO_STRING`` işlevin çıktı biçimini belirtmek için kullanabileceğiniz dizeleri açıklar.
+Bu tablo, ``TO_STRING`` işlevinin çıkış biçimini belirtmek için kullanabileceğiniz dizeleri açıklar.
 
 |Biçim dizesi    |Çıktı                               |
 |-----------------|-------------------------------------|
-|yy               |Yıl 2 haneli formatta - 1999 '99' olarak|
-|y                |4 haneli formatta yıl               |
-|yyyy             |4 haneli formatta yıl               |
-|M                |Yılın Ayı – 1                    |
-|MM               |Sıfır yastıklı Ay – 01               |
-|AAA              |Abbr, ne kadar. yıl ayı -OCAK            |
+|yy               |Yıl 2 basamak biçiminde – 1999 ' 99 ' olarak|
+|y                |4 basamaklı biçimde yıl               |
+|yyyy             |4 basamaklı biçimde yıl               |
+|M                |Yılın ayı – 1                    |
+|MM               |Sıfır doldurulmuş ay – 01               |
+|AAA              |İşlenir. Yılın ayı-JAN            |
 |MMMM             |Tam ay – Mayıs                      |
 |d                |Ayın günü (1-31)                  |
-|Ekle               |Ayın sıfır yastıklı günü (01-31)     |
-|a                |veya PM                             |
+|Ekle               |Ayın sıfır doldurulmuş günü (01-31)     |
+|a                |HAR veya PM                             |
 |h                |Günün saati (1-12)                   |
-|hh               |Sıfır yastıklı Saat od gün (01-12)     |
+|hh               |Sıfır saatlik saat od günü (01-12)     |
 |H                |Günün saati (0-23)                   |
-|HH               |Günün Sıfır Yastıklı Saat (00-23)      |
-|m                |Dakika saat (0-59)                |
-|mm               |Sıfır yastıklı dakika (00-59)           |
-|s                |Dakika Nın İkinci (0-59)             |
-|ss               |Sıfır yastıklı Saniye (00-59)          |
-|S                |Saniye Kesir (0.1-0.9)        |
-|SS               |SaniyeLerin Kesir (0.01-0.99)      |
-|SSS              |SaniyeLerin Kesir (0.001-0.999)    |
-|X                |Saatlerde Ofset                      |
-|XX veya XXXX       |Saat ve dakika mahsup (+0430)  |
-|XXX veya XXXXX     |Saat ve dakika içinde ofset (-07:00) |
-|x                |Saat içinde ofset (7)                  |
-|xx veya xxxx       |Saat dakika ofset (+0530)    |
-|Xxx veya xxxxx     |Saat dakika ve saat ofset (+05:30)   |
+|HH               |Gün sıfır saat saat (00-23)      |
+|m                |Saatin dakikası (0-59)                |
+|mm               |Sıfır doldurulmuş dakika (00-59)           |
+|s                |Dakikaların saniyesi (0-59)             |
+|ss               |Sıfır doldurulmuş saniye (00-59)          |
+|S                |Saniye kesri (0,1-0.9)        |
+|SS               |Saniye kesri (0,01-0,99)      |
+|SSS              |Saniye kesri (0,001-0.999)    |
+|X                |Saat cinsinden Aralık                      |
+|XX veya XXXX       |Saat ve dakika cinsinden fark (+ 0430)  |
+|XXX veya XXXXX     |Saat ve dakika cinsinden fark (-07:00) |
+|x                |Saat cinsinden fark (7)                  |
+|xx veya xxxx       |Saat ve dakika cinsinden fark (+ 0530)    |
+|Xxx veya xxxxx     |Saat ve dakika cinsinden fark (+ 05:30)   |
 
-#### <a name="to_timestamp-function"></a>TO_TIMESTAMP fonksiyonu
+#### <a name="to_timestamp-function"></a>TO_TIMESTAMP işlevi
 
 Yalnızca IS08601 biçimleri desteklenir.
 
@@ -211,31 +211,31 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> Ayrıca sistem zamanı ``UTCNOW`` almak için işlevi kullanabilirsiniz.
+> Ayrıca, ``UTCNOW`` sistem saatini almak için işlevini de kullanabilirsiniz.
 
 
-## <a name="aggregate-expressions"></a>Toplu İfadeler
+## <a name="aggregate-expressions"></a>Toplama Ifadeleri
 
-SELECT deyimi bir veya daha fazla projeksiyon deyimi veya tek bir toplu ifade içerebilir.  Aşağıdaki toplu ifadeler desteklenir:
+SELECT deyimi bir veya daha fazla İzdüşüm ifadesi ya da tek bir toplama ifadesi içerebilir.  Aşağıdaki toplama ifadeleri desteklenir:
 
 |İfadeler|Açıklama|
 |--|--|
-|[SAYIN(\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Yüklem ifadesiyle eşleşen kayıt sayısını döndürür.|
-|[COUNT(ifade)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan kayıt sayısını verir.|
-|[ORTALAMA(ifade)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan değerlerinin ortalamasını verir.|
-|[MIN(ifade)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |İfadenin minimum null olmayan değerini verir.|
-|[MAX(ifade](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |İfadenin en fazla null olmayan değerini verir.|
-|[SUM(ifade)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |İfadenin tüm null olmayan değerlerinin toplamını verir.|
+|[COUNT (\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Koşul ifadesiyle eşleşen kayıt sayısını döndürür.|
+|[COUNT (ifade)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan kayıt sayısını döndürür.|
+|[AVERAGE (ifade)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan değerlerinin ortalamasını döndürür.|
+|[MIN (ifade)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan en küçük değerini döndürür.|
+|[Max (ifade](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |İfadenin null olmayan en büyük değerini döndürür.|
+|[SUM (ifade)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |İfadenin null olmayan tüm değerlerinin toplamını döndürür.|
 
-### <a name="missing"></a>Eksik
+### <a name="missing"></a>BULUNMAYAN
 
-İşleç, ``IS MISSING`` sorgu hızlandırma SQL dilinin desteklediği tek standart dışı dır.  JSON verileri için, belirli bir giriş kaydından bir alan ``IS MISSING`` eksikse, ifade alanı Boolean değeri doğru olarak değerlendirilir.
+``IS MISSING`` İşleç, sorgu hızlandırma SQL dilinin desteklediği tek standart olmayan bir dildir.  JSON verileri için belirli bir giriş kaydındaki bir alan eksikse, ifade alanı ``IS MISSING`` true Boole değeri olarak değerlendirilir.
 
 <a id="table-descriptors" />
 
-## <a name="table-descriptors"></a>Tablo Tanımlayıcıları
+## <a name="table-descriptors"></a>Tablo tanımlayıcıları
 
-CSV verileri için tablo adı `BlobStorage`her zaman.  Örneğin:
+CSV verileri için tablo adı her zaman `BlobStorage`olur.  Örneğin:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -247,13 +247,13 @@ JSON verileri için ek seçenekler mevcuttur:
 SELECT * FROM BlobStorage[*].path
 ```
 
-Bu, JSON verilerinin alt kümeleri üzerinde sorguyapılmasına izin verir.
+Bu, JSON verilerinin alt kümeleri üzerinde sorgulara izin verir.
 
-JSON sorguları için, FROM yan tümcesinin bir bölümünde ki yoldan bahsedebilirsiniz. Bu yollar JSON verilerinin alt kümesini ayrıştırmaya yardımcı olur. Bu yollar JSON Dizi ve Nesne değerlerine başvurulabilir.
+JSON sorguları için FROM yan tümcesinin bir parçası olan yoldan bahsetmeniz gerekir. Bu yollar JSON verilerinin alt kümesini ayrıştırmaya yardımcı olur. Bu yollar, JSON dizisine ve nesne değerlerine başvurabilir.
 
 Bunu daha ayrıntılı olarak anlamak için bir örnek alalım.
 
-Bu bizim örnek verilerimiz:
+Bu örnek verilerimize örnektir:
 
 ```json
 {
@@ -279,50 +279,50 @@ Bu bizim örnek verilerimiz:
 }
 ```
 
-Yukarıdaki verilerden yalnızca `warehouses` JSON nesnesi ile ilgilenebilirsiniz. Nesne `warehouses` bir JSON dizi türüdür, bu nedenle FROM yan tümcesinde bu söz edebilirsiniz. Örnek sorgunuz buna benzer bir şey olabilir.
+Yalnızca yukarıdaki verilerden `warehouses` JSON nesnesiyle ilgileniyor olabilirsiniz. `warehouses` NESNESI bir JSON dizisi türüdür, bu nedenle bunu from yan tümcesinde bahsetmeniz gerekir. Örnek sorgunuz aşağıdakine benzer şekilde görünür.
 
 ```sql
 SELECT latitude FROM BlobStorage[*].warehouses[*]
 ```
 
-Sorgu tüm alanları alır, ancak yalnızca enlem seçer.
+Sorgu tüm alanları alır ancak yalnızca Enlem ' i seçer.
 
-Yalnızca JSON nesne `dimensions` değerine erişmek istiyorsanız, sorgunuzdaki nesneye başvuru yapmak için kullanabilirsiniz. Örneğin:
+Yalnızca `dimensions` JSON nesne değerine erişmek isterseniz, sorgunuzda bu nesneye başvurabilirsiniz ' i kullanabilirsiniz. Örneğin:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
 ```
 
-Bu, nesnenin `dimensions` üyelerine erişiminizi de sınırlar. JSON alanlarının diğer üyelerine ve JSON nesnelerinin iç değerlerine erişmek istiyorsanız, aşağıdaki örnekte gösterildiği gibi bir sorgu kullanabilirsiniz:
+Bu ayrıca `dimensions` nesnenin üyelerine erişiminizi sınırlandırır. JSON alanlarının diğer üyelerine ve JSON nesnelerinin iç değerlerine erişmek istiyorsanız, aşağıdaki örnekte gösterildiği gibi bir sorgu kullanabilirsiniz:
 
 ```sql
 SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 ```
 
 > [!NOTE]
-> BlobStorage ve BlobStorage[]\*her ikisi de tüm nesneyi ifade eder. Ancak, FROM yan tümcesinde bir yolunuz varsa, BlobStorage[].path\*
+> BlobStorage ve BlobStorage [\*] her ikisi de tüm nesneye başvurur. Bununla birlikte, FROM yan tümcesinde bir yolunuz varsa BlobStorage [\*]. Path kullanmanız gerekir
 
 <a id="sys-split" />
 
-## <a name="syssplit"></a>Sys.Split
+## <a name="syssplit"></a>Sys. Split
 
-Bu, yalnızca CSV biçimli veriler için kullanılabilen SELECT deyiminin özel bir biçimidir.
+Bu, yalnızca CSV biçimli veriler için kullanılabilen, SELECT ifadesinin özel bir biçimidir.
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-CSV veri kayıtlarını toplu olarak indirmek ve sonra işlemek istediğiniz durumlarda bu deyimi kullanın. Bu şekilde, tüm kayıtları tek seferde indirmek zorunda kalmak yerine kayıtları paralel olarak işleyebilirsiniz. Bu bildirim CSV dosyasındaki kayıtları döndürmez. Bunun yerine, toplu iş boyutları bir koleksiyon döndürür. Daha sonra veri kayıtları toplu almak için her toplu iş boyutunu kullanabilirsiniz. 
+CSV veri kayıtlarını toplu olarak indirmek ve işlemek istediğiniz durumlarda bu ifadeyi kullanın. Bu şekilde, kayıtları tek seferde indirmek yerine, paralel olarak işleyebilirsiniz. Bu ifade CSV dosyasından kayıtları döndürmez. Bunun yerine, toplu iş boyutlarının bir koleksiyonunu döndürür. Daha sonra her toplu iş boyutunu kullanarak veri kayıtlarını toplu olarak alabilirsiniz. 
 
-Her toplu iş içermesini istediğiniz bayt sayısını belirtmek için *split_size* parametresini kullanın. Örneğin, bir seferde yalnızca 10 MB veri işlemek istiyorsanız, deyimi şu şekilde `SELECT sys.split(10485760)FROM BlobStorage` görünür: 10 MB 10.485.760 bayt adedine eşit olduğundan. Her toplu iş, bu 10 MB'a sığabileceği kadar çok kayıt içerir. 
+Her toplu işin içermesini istediğiniz bayt sayısını belirtmek için *split_size* parametresini kullanın. Örneğin, aynı anda yalnızca 10 MB 'lık verileri işlemek istiyorsanız, şu şekilde ifade edersiniz: `SELECT sys.split(10485760)FROM BlobStorage` 10 mb, 10.485.760 bayta eşit. Her Batch, bu 10 MB 'a sığacak kadar çok kayıt içerecektir. 
 
-Çoğu durumda, her toplu iş boyutu belirttiğiniz sayıdan biraz daha yüksek olacaktır. Bunun nedeni, bir toplu iş partisinin kısmi bir kayıt içerememesidir. Bir toplu iş teki son kayıt eşiğizin bitiminden önce başlarsa, toplu iş tam kaydı içerebilmek için daha büyük olur. Son toplu iş boyutu büyük olasılıkla belirttiğiniz boyuttan daha küçük olacaktır.
+Çoğu durumda, her bir toplu işin boyutu belirttiğiniz sayıdan biraz daha yüksek olacaktır. Bunun nedeni, bir Batch 'in kısmi bir kayıt içeremeyeceği. Bir toplu işteki son kayıt eşiğin sonundan önce başlarsa, toplu işlem, tüm kaydı içerebilecek şekilde daha büyük olur. Son toplu işlemin boyutu büyük olasılıkla belirttiğiniz boyuttan daha küçük olacaktır.
 
 >[!NOTE]
-> split_size en az 10 MB (10485760) olmalıdır.
+> Split_size en az 10 MB (10485760) olmalıdır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Veri Gölü Depolama sorgu hızlandırma (önizleme)](data-lake-storage-query-acceleration.md)
-- [Azure Veri Gölü Depolama sorgu hızlandırma (önizleme) kullanarak verileri filtreleme](data-lake-storage-query-acceleration-how-to.md)
+- [Azure Data Lake Storage sorgu hızlandırma (Önizleme)](data-lake-storage-query-acceleration.md)
+- [Azure Data Lake Storage sorgu hızlandırma kullanarak verileri filtreleme (Önizleme)](data-lake-storage-query-acceleration-how-to.md)
 

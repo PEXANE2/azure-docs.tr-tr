@@ -1,6 +1,6 @@
 ---
-title: SSS - Azure Synapse Analytics
-description: Azure Synapse Analytics için SSS
+title: SSS-Azure SYNAPSE Analytics
+description: Azure SYNAPSE Analytics hakkında SSS
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -10,102 +10,102 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770719"
 ---
-# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (çalışma alanı önizleme) sık sorulan sorular
+# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure SYNAPSE Analytics (çalışma alanı önizlemesi) sık sorulan sorular
 
-Bu kılavuzda, Synapse Analytics için en sık sorulan soruları bulacaksınız.
+Bu kılavuzda, SYNAPSE Analytics için en sık sorulan soruları bulacaksınız.
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
 ## <a name="general"></a>Genel
 
-### <a name="q-what-is-azure-synapse-analytics"></a>S: Azure Synapse Analytics nedir
+### <a name="q-what-is-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics nedir?
 
-C: Azure Synapse, BI, AI ve sürekli zeka için entegre bir veri platformudur. SQL ve Spark gibi çeşitli analiz çalışma sürelerini aşağıdakilere birleşik bir yol sağlayan tek bir platform üzerinden bağlar:
+Y: Azure SYNAPSE, BI, AI ve sürekli zeka için tümleşik bir veri platformudur. SQL ve Spark gibi çeşitli analiz çalışma zamanlarını, için birleştirilmiş bir yol sağlayan tek bir platformda bağlar:
 
-- Ağ da dahil olmak üzere analitik kaynaklarınızı güvence altına alın, havuza, verilere ve geliştirme yapılarına tek oturum açma erişimi yönetin.
-- Çalışma alanı etkinliklerinizde herhangi bir katmanda meydana gelen olayları kolayca izleyin ve hızlı bir şekilde optimize edin, tepkie getirin ve hata ayıklayın.
-- Meta verilerinizi motorlar arasında yönetin. Bir Kıvılcım tablosu oluşturun ve Azure Synapse veritabanlarınızda otomatik olarak kullanılabilir.
-- Birleşik bir kullanıcı deneyimi aracılığıyla verilerle etkileşim kurun. Synapse Studio, Büyük Veri Geliştiricileri, Veri Mühendisleri, DAB'ler, Veri Analistleri ve Veri Bilimcileri'ni aynı platforma getiriyor.
+- Ağ dahil olmak üzere analiz kaynaklarınızı güvenli hale getirme, havuza, verilere ve geliştirme yapılarına çoklu oturum açma erişimini yönetme.
+- Dilediğiniz katmandaki çalışma alanı etkinliklerinizde oluşan olayları kolayca Izleyip hızlı bir şekilde iyileştirin, tepki verin ve hatalarını ayıklayın.
+- Altyapılarınızın tamamında meta verilerinizi yönetin. Spark tablosu oluşturun ve Azure SYNAPSE veritabanlarında otomatik olarak kullanılabilir.
+- Birleştirilmiş bir kullanıcı deneyimi aracılığıyla verilerle etkileşime geçin. SYNAPSE Studio, büyük veri geliştiricileri, veri mühendisleri, DBAs, veri analistleri ve veri bilimcilerini aynı platforma taşır.
 
-### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>S: Azure Synapse Analytics ile nasıl başlarım?
+### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics 'i kullanmaya başlama Nasıl yaparım?
 
-C: Azure Synapse Analytics'i kullanmaya başlamak için bir [Synapse çalışma alanı](https://portal.azure.com) oluşturun (ücretsiz!) ve bu çalışma alanı altında istediğiniz kaynakları oluşturun. [Synapse SQL havuzu oluşturma](quickstart-create-sql-pool.md) veya basit kullanım durumunda size yol gösteren [bir çalışma alanı oluşturma](quickstart-create-workspace.md)gibi hızlı başlangıç eğitimlerimizden birini takip edebilirsiniz. 
+Y: Azure SYNAPSE Analytics 'i kullanmaya başlamak Için bir [SYNAPSE çalışma](https://portal.azure.com) alanı (ücretsiz!) oluşturun ve bu çalışma alanı altında istediğiniz kaynakları oluşturun. [SYNAPSE SQL havuzu oluşturma](quickstart-create-sql-pool.md) veya [bir çalışma alanı oluşturma](quickstart-create-workspace.md)gibi hızlı başlangıç öğreticilerimizden birini izleyerek basit kullanım ihtimaline yol gösterecektir. 
 
-Ayrıca, örnek not defterlerini ve SQL komut dosyalarını [depomuzda](https://github.com/Azure/azure-synapse-analytics/tree/master/samples)da bulabilirsiniz. Ortak bir veri kümesine bağlanmanız gerekiyorsa, aşağıdaki özniteliklere sahip yeni bir bağlantılı hizmet oluşturun:
+Ayrıca, [depolarımızda](https://github.com/Azure/azure-synapse-analytics/tree/master/samples)örnek Not DEFTERLERI ve SQL betikleri bulabilirsiniz. Ortak bir veri kümesine bağlanmanız gerekiyorsa, aşağıdaki özniteliklere sahip yeni bir bağlı hizmet oluşturun:
 
 - azure_storage_account_name = "azureopendatastorage"
-- azure_storage_sas_token = "" **(""** yaz)
+- azure_storage_sas_token = "" (yazma **""**)
 
-### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>S: Azure Synapse Analytics'in ana bileşenleri nelerdir
+### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics 'in ana bileşenleri nelerdir?
 
-C: Azure Synapse aşağıdaki özelliklere sahiptir:
+Y: Azure SYNAPSE aşağıdaki yeteneklere sahiptir:
 
-- Analytics yetenekleri SQL havuzu veya isteğe bağlı SQL (önizleme) (Serverless) aracılığıyla sunulur.
-- Scala, Python, SparkSQL ve C için tam destek içeren Apache Spark havuzu (önizleme) #
-- Kodsuz büyük veri dönüşümü deneyimi sunan Veri Akışı
-- Veri Entegrasyonu & Verilerinizi tümleştirmek ve tüm kod geliştirme işlemlerinizi operasyonel hale getirmek için Orkestrasyon
-- Stüdyo tek bir Web UI üzerinden tüm bu yetenekleri erişmek için
+- Analiz özellikleri, SQL havuzu veya isteğe bağlı SQL (Önizleme) (sunucusuz) aracılığıyla sunulur.
+- Scala, Python, Mini SQL ve C için tam desteğe sahip Apache Spark Havuzu (Önizleme) #
+- Kod içermeyen büyük veri dönüştürme deneyimi sunan veri akışı
+- Verilerinizi tümleştirmek ve tüm kod geliştirmenizi sağlamak için veri tümleştirme & düzenleme
+- Bu olanaklarla tek bir Web Kullanıcı arabirimi aracılığıyla erişmek için Studio
 
-### <a name="q-how-does-azure-synapse-analytics-relate-to-azure-sql-data-warehouse"></a>S: Azure Synapse Analytics'in Azure SQL Veri Ambarı ile ilişkisi nedir?
+### <a name="q-how-does-azure-synapse-analytics-relate-to-azure-sql-data-warehouse"></a>S: Azure SYNAPSE Analytics, Azure SQL veri ambarı ile nasıl ilişkilidir
 
-C: Azure Synapse Analytics, Azure SQL Veri Ambarı'nın veri ambarı çözümü olarak SQL havuzunu içeren bir analitik platforma dönüştürür. Bu platform veri arama, yutma, dönüştürme, hazırlama ve servis analizi katmanını birleştirir.
+Y: Azure SYNAPSE Analytics, Azure SQL veri ambarı 'nın veri ambarı çözümü olarak SQL havuzu içeren bir analiz platformuna gelişme hızıdır. Bu platform veri araştırma, alma, dönüştürme, hazırlama ve bir hizmet Analizi katmanını birleştirir.
 
 ## <a name="use-cases"></a>Uygulama alanları
 
-### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>S: Synapse SQL havuzu için iyi kullanım örneği nedir
+### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>S: SYNAPSE SQL havuzu için iyi bir kullanım durumu nedir?
 
-C: SQL havuzu, veri ambarı ihtiyaçlarınızın kalbidir. [Fiyat/performans](https://azure.microsoft.com/services/sql-data-warehouse/compare/)alanında lider veri ambarı çözümüdür. SQL havuzu sektör lideri bulut veri ambarı çözümüdür, çünkü şunları yapabilirsiniz:
+Y: SQL havuzu, veri ambarı gereksinimlerinizin kalbidir. [Fiyat/performans](https://azure.microsoft.com/services/sql-data-warehouse/compare/)' daki önde gelen veri ambarı çözümüdür. SQL havuzu, sektörde önde gelen bulut veri ambarı çözümüdür:
 
-- yüksek eşzamanlılık ve iş yükü yalıtımı sayesinde performansta etkilenmeden çok çeşitli iş yüklerine hizmet
-- Ağ güvenliğinden ince tahıl erişimine kadar çeşitli gelişmiş özelliklerle verilerinizi kolayca güvenli hale
-- geniş bir eko-sistem yelpazesinden yararlanın
+- yüksek eşzamanlılık ve iş yükü yalıtımı sayesinde performansı etkilemeden büyük ve karışık çeşitli iş yükleri sunar
+- Ağ güvenliği ile ince erişime kadar olan gelişmiş özellikler sayesinde verilerinizin güvenliğini kolayca sağlayın
+- çok çeşitli ekonomik sistem avantajlarından yararlanın
 
-### <a name="q-what-is-a-good-use-case-for-spark-in-synapse"></a>S: Ssynapse'de Kıvılcım için iyi kullanım durumu nedir
+### <a name="q-what-is-a-good-use-case-for-spark-in-synapse"></a>S: SYNAPSE içinde Spark için iyi bir kullanım durumu nedir?
 
-C: İlk hedefimiz, verileri toplu olarak veya akış halinde göl üzerinde dönüştürmek için harika bir Veri Mühendisliği deneyimi sunmaktır. Veri orkestrasyonumuza sıkı ve basit entegrasyonu, geliştirme çalışmanızın işlevselleştirilmesini kolaylaştırır.
+Y: ilk hedefiniz, toplu iş veya akışta Gölü verileri dönüştürmek için harika bir veri Mühendisliği deneyimi sağlamaktır. Veri düzenleme konusunda sıkı ve basit tümleştirme, geliştirme çalışmalarınızın kullanım durumunu basit hale getirir.
 
-Spark için başka bir kullanım örneği bir Veri Bilimcisi için:
+Spark için başka bir kullanım durumu şu şekilde bir veri Bilimcı içindir:
 
-- bir özellik ayıklamak
-- verileri keşfedin
-- bir model eğitmek
+- bir özelliği Ayıkla
+- verileri keşfet
+- Model eğitme
 
-### <a name="q-what-is-a-good-use-case-for-sql-on-demand-in-synapse"></a>S: Synapse'de isteğe bağlı SQL için iyi kullanım durumu nedir
+### <a name="q-what-is-a-good-use-case-for-sql-on-demand-in-synapse"></a>S: SYNAPSE 'de SQL isteğe bağlı SQL için iyi kullanım durumu nedir?
 
-C: SQL isteğe bağlı, veri gölünüzdeki veriler üzerinde bir sorgu hizmetidir. Verileri özel bir depoya kopyalamaya veya yüklemeye gerek kalmadan, verileri yerinde sorgulamak için tanıdık bir T-SQL sözdizimini sağlayarak tüm verilerinize erişimi demokratikleştirmenizi sağlar.
+Y: isteğe bağlı SQL, Data Lake 'inizdeki veriler üzerinde bir sorgu hizmetidir. Verileri özel bir depoya kopyalamak veya yüklemeye gerek kalmadan, verileri yerinde sorgulamak üzere tanıdık bir T-SQL sözdizimi sağlayarak tüm verilerinize erişmenizi herkese olanak sağlar.
 
-Kullanım örneği örnekleri şunlardır:
+Kullanım örneği örnekleri şunları içerir:
 
-- temel keşif ve keşif - veri analistleri, gelişmekte olan veri bilim adamları ve veri mühendisleri okuma T-SQL sorguları şema ile veri gölünde yaşayan veri içine ilk içgörü kolay bir yol sağlar
-- mantıksal veri ambarı - veri analistleri, Azure Depolama'da bulunan verileri doğrudan sorgulamak ve analiz etmek ve Starlight Sorgu sorgularını yeniden çalıştırarak panoları yenilemek için tanıdık BI araçlarını (örneğin, Azure Analiz Hizmetleri, Power BI Premium, vb.) kullanmak için T-SQL dilinin tam ifade sini çalıştırabilir
-- "tek sorgu" ETL - veri mühendislerinin Azure Depolama tabanlı verileri bir formattan diğerine dönüştürmesine, filtrelemesine, toplamasına vb. paralel işlem biçiminde dönüştürmesine, sorgu sonuçlarını Azure Depolama'ya devam etmesine ve Starlight Sorgusu'nda veya ilgi çekici diğer hizmetlerde daha fazla işleme için hemen kullanılabilir hale getirmelerine olanak tanır
+- temel bulma ve araştırma-veri analistleri, gelişmekte olan veri bilimcileri ve veri mühendislerini, Veri Gölü, okuma T-SQL sorguları hakkında şema ile ilk bakış için kolay bir yol sağlar.
+- mantıksal veri ambarı-veri analistleri, Azure depolama 'da bulunan verileri doğrudan sorgulamak ve analiz etmek ve tanıdık bı araçlarını (ör. Azure çözümlemeler Hizmetleri, Power BI Premium vb.) kullanarak, Starlight sorgu sorgularını yeniden çalıştırarak panoları yenilemek için tam ifade eden T-SQL dili çalıştırabilir
+- "tek sorgu" ETL-veri mühendislerinin Azure Storage tabanlı verileri bir biçimden diğerine, filtrelemeye, toplamaya, vb. dönüştürmelerine olanak tanır, Azure depolama 'ya sorgu sonuçlarını kalıcı hale getirir ve daha sonra Starlight sorgusunda veya diğer ilgi hizmetlerinde daha fazla işleme için hemen kullanılabilir hale getirin
 
-### <a name="q-what-is-a-good-use-case-for-data-flow-in-synapse"></a>S: Synapse veri akışı için iyi bir kullanım durumu nedir
+### <a name="q-what-is-a-good-use-case-for-data-flow-in-synapse"></a>S: SYNAPSE içinde veri akışı için iyi bir kullanım durumu nedir?
 
-C: Veri akışı, veri mühendislerinin kod yazmadan grafiksel veri dönüştürme mantığı geliştirmelerine olanak tanır. Elde edilen veri akışları, Veri Tümleştirme & Orkestrasyon'da etkinlik olarak yürütülür. Veri akışı etkinlikleri, varolan zamanlama, kontrol, akış ve izleme yetenekleri aracılığıyla operasyonel hale getirilebilir.
+Y: veri akışı, veri mühendislerinin kod yazmadan grafik veri dönüştürme mantığı geliştirmesini sağlar. Elde edilen veri akışları, veri tümleştirme & düzenleme içinde etkinlik olarak yürütülür. Veri akışı etkinlikleri, mevcut zamanlama, denetim, akış ve izleme özellikleri aracılığıyla çalıştırılabilir.
 
-## <a name="security-and-access"></a>Güvenlik ve Erişim
+## <a name="security-and-access"></a>Güvenlik ve erişim
 
-C: Uçlardan uca tek oturum açma deneyimi, Synapse Analytics'te önemli bir kimlik doğrulama işlemidir. Tam bir AAD entegrasyonu ile kimlik yönetimi ve geçirilmesi bir zorunluluktur.
+Y: uçtan uca çoklu oturum açma deneyimi, SYNAPSE Analytics 'teki önemli bir kimlik doğrulama işlemidir. Tam bir AAD tümleştirmesiyle aracılığıyla kimlik yönetimi ve geçirme bir olmalıdır.
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>S: ADLSg2'deki dosya ve klasörlere nasıl erişebilirim?
+### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>S: ADLSg2 içindeki dosyalara ve klasörlere erişim Nasıl yaparım?
 
-C: Dosya ve klasörlere erişim şu anda ADLSg2 üzerinden yönetilir. Daha fazla bilgi için [Bkz. Veri Gölü depolama erişim denetimi.](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Y: dosya ve klasörlere erişim şu anda ADLSg2 aracılığıyla yönetiliyor. Daha fazla bilgi için bkz. [Data Lake Storage Access Control](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>S: Azure Synapse Analytics'e erişmek için üçüncü taraf iş zekası araçlarını kullanabilir miyim?
+### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics 'e erişmek için üçüncü taraf iş zekası araçlarını kullanabilir miyim?
 
-C: Evet, SQL havuzuna ve isteğe bağlı SQL'e bağlanmak için Tableau ve Power BI gibi üçüncü taraf iş uygulamalarınızı kullanabilirsiniz. Kıvılcım, IntelliJ'i destekliyor.
+Y: Evet, SQL Pool 'a ve isteğe bağlı SQL 'e bağlanmak için Tableau ve Power BI gibi üçüncü taraf iş uygulamalarınızı kullanabilirsiniz. Spark, IntelliJ 'yi destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Çalışma alanı oluşturma](quickstart-create-workspace.md)
-- [Synapse Studio'u kullanın](quickstart-synapse-studio.md)
+- [SYNAPSE Studio 'Yu kullanma](quickstart-synapse-studio.md)
 - [SQL havuzu oluşturma](quickstart-create-sql-pool.md)
 - [İsteğe bağlı SQL kullanma](quickstart-sql-on-demand.md)
 - [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool.md) 

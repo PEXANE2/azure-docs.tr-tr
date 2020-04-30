@@ -1,6 +1,6 @@
 ---
 title: Giriş
-description: Azure Uygulama Hizmet Ortamları'nın uygulamalarınızı tamamen yalıtılmış ve özel bir ortamda ölçeklendirmenize, güvenli hale getirmenize ve optimize edeyimize nasıl yardımcı olduğunu öğrenin.
+description: Azure App Service ortamların, uygulamalarınızı tamamen yalıtılmış ve ayrılmış bir ortamda ölçeklendirmenize, güvenli hale getirmenize ve iyileştirmenize nasıl yardımcı olduğunu öğrenin.
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
@@ -8,10 +8,10 @@ ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770640"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Ortamlarına giriş #
@@ -34,14 +34,14 @@ App Service ortamları (ASE), şunları gerektiren uygulama iş yükleri için u
 
 Müşteriler tek bir Azure bölgesinde veya birden fazla Azure bölgesi arasında birden çok ASE oluşturabilir. Bu esneklik ASE’leri yüksek RPS iş yüklerini desteklemek üzere durum bilgisi olmayan uygulama katmanlarını yatay yönde ölçeklendirmek için ideal hale getirir.
 
-ASEs uygulamaları yalnızca bir müşteriden barındırır ve bunu VNet'lerinden birinde yapar. Müşteriler gelen ve giden uygulama ağ trafiği üzerinde ayrıntılı denetime sahiptir. Uygulamalar VPN üzerinden şirket içi kurumsal kaynaklara yüksek hızda güvenli bağlantılar kurabilir.
+Yalnızca bir müşteriden gelen uygulamaları barındırır ve bu uygulamaları sanal ağlardan birinde yapın. Müşteriler gelen ve giden uygulama ağ trafiği üzerinde ayrıntılı denetime sahiptir. Uygulamalar VPN üzerinden şirket içi kurumsal kaynaklara yüksek hızda güvenli bağlantılar kurabilir.
 
 * ASE kendi fiyatlandırma katmanıyla birlikte gelir. [Yalıtılmış teklifin](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment) hiper ölçek ve güvenlik sağlamaya nasıl yardımcı olduğunu öğrenin.
 * [App Service Ortamları v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) ağınızın bir alt ağında uygulamalarınızı çevreleyen bir koruma ve kendi özel Azure App Service dağıtımınızı sağlar.
 * Yatay yönde ölçeklendirme için birden çok ASE kullanılabilir. Daha fazla bilgi için bkz. [Coğrafi olarak dağıtılmış bir uygulama ayak izi ayarlama](app-service-app-service-environment-geo-distributed-scale.md).
 * ASE’ler, AzureCon Ayrıntılı Bakışında gösterildiği gibi güvenlik mimarisini yapılandırmak için kullanılabilir. AzureCon Ayrıntılı Bakışında gösterilen güvenlik mimarisinin nasıl yapılandırıldığını görmek için App Service ortamları ile [katmanlı güvenlik mimarisi uygulama makalesine](app-service-app-service-environment-layered-security.md) bakın.
 * ASE’ler üzerinde çalışan uygulamalara erişim, web uygulaması güvenlik duvarları (WAF) gibi yukarı akış cihazları tarafından sağlanabilir. Daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı (WAF)][AppGW].
-* Uygulama Hizmet Ortamları, bölge sabitleme kullanılarak Kullanılabilirlik Bölgeleri'ne (AZ) dağıtılabilir.  Daha fazla bilgi [için Kullanılabilirlik Bölgeleri için Uygulama Hizmeti Ortamı Desteği'ne][ASEAZ] bakın.
+* App Service ortamlar, bölge sabitleme kullanılarak Kullanılabilirlik Alanları (AZ) ile dağıtılabilir.  Daha fazla bilgi için bkz. [Kullanılabilirlik Alanları App Service ortamı desteği][ASEAZ] .
 
 ## <a name="dedicated-environment"></a>Ayrılmış ortam ##
 
@@ -61,7 +61,7 @@ ASE için altyapıya ilişkin ödeme yapan ve ASE’nin boyutuna göre değişme
 
 ## <a name="virtual-network-support"></a>Sanal ağ desteği ##
 
-ASE özelliği, Azure Uygulama Hizmeti'nin doğrudan müşterinin Azure Kaynak Yöneticisi sanal ağına dağıtılmasıdır. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağları ile ilgili SSS](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Bir ASE her zaman bir sanal ağda ve daha kesin bir şekilde bir sanal ağın alt ağında bulunur. Uygulamalarınıza ilişkin gelen ve giden ağ iletişimini denetlemek için sanal ağların güvenlik özelliklerini kullanabilirsiniz.
+Ao özelliği, Azure App Service doğrudan bir müşterinin Azure Resource Manager sanal ağına bir dağıtımdır. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağları ile ilgili SSS](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Bir ASE her zaman bir sanal ağda ve daha kesin bir şekilde bir sanal ağın alt ağında bulunur. Uygulamalarınıza ilişkin gelen ve giden ağ iletişimini denetlemek için sanal ağların güvenlik özelliklerini kullanabilirsiniz.
 
 ASE bir genel IP adresi ile İnternet’e yönelik veya sadece bir Azure iç yük dengeleyici (ILB) adresi ile iç ağa yönelik olabilir.
 

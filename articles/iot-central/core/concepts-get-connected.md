@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509525"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82024702"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central 'e bağlanın
 
@@ -42,7 +42,7 @@ Bu makalede aşağıdaki kullanım durumları açıklanmaktadır:
 - [X. 509.440 sertifikaları kullanarak cihazları ölçeklendirmeye bağlama](#connect-devices-using-x509-certificates) -üretim ortamları için önerilen yaklaşım.
 - [Cihazları önce kaydetmeden bağlayın](#connect-without-registering-devices)
 - [DPS bireysel kayıtları kullanan cihazları bağlama](#individual-enrollment-based-device-connectivity)
-- [Cihazı bir cihaz şablonuyla otomatik olarak ilişkilendir](#automatically-associate-with-a-device-template)
+- [IoT Tak ve Kullan (Önizleme) özelliklerini kullanarak cihazları bağlama](#connect-devices-with-iot-plug-and-play-preview)
 
 ## <a name="connect-a-single-device"></a>Tek bir cihazı bağlama
 
@@ -139,7 +139,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
     **Yönetim > cihaz bağlantısı** sayfasında, **otomatik onaylama** seçeneği, cihazı veri göndermeye başlayabilmesi için el ile onaylamanız gerekip gerekmediğini denetler.
 
     > [!NOTE]
-    > Bir cihazı bir cihaz şablonuyla otomatik olarak ilişkilendirme hakkında bilgi edinmek için bkz. cihazı [otomatik olarak cihaz şablonuyla ilişkilendirme](#automatically-associate-with-a-device-template).
+    > Bir cihazın cihaz şablonuyla otomatik olarak nasıl ilişkilendirileceğini öğrenmek için bkz. [Cihazları IoT Ile bağlama Tak ve kullan (Önizleme)](#connect-devices-with-iot-plug-and-play-preview).
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Kayıt olmadan X. 509.440 sertifikalarını kullanan cihazları bağlama
 
@@ -156,7 +156,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
     **Yönetim > cihaz bağlantısı** sayfasında, **otomatik onaylama** seçeneği, cihazı veri göndermeye başlayabilmesi için el ile onaylamanız gerekip gerekmediğini denetler.
 
     > [!NOTE]
-    > Bir cihazı bir cihaz şablonuyla otomatik olarak ilişkilendirme hakkında bilgi edinmek için bkz. cihazı [otomatik olarak cihaz şablonuyla ilişkilendirme](#automatically-associate-with-a-device-template).
+    > Bir cihazın cihaz şablonuyla otomatik olarak nasıl ilişkilendirileceğini öğrenmek için bkz. [Cihazları IoT Ile bağlama Tak ve kullan (Önizleme)](#connect-devices-with-iot-plug-and-play-preview).
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Ayrı kayıt tabanlı cihaz bağlantısı
 
@@ -165,7 +165,7 @@ Her biri kendi kimlik doğrulama kimlik bilgilerine sahip olan cihazları bağla
 > [!NOTE]
 > Bir cihaz için tek bir kayıt oluşturduğunuzda, IoT Central uygulamanızdaki varsayılan grup kayıt seçeneklerine göre önceliklidir.
 
-### <a name="create-individual-enrollments"></a>Bireysel kayıtlar oluşturma
+### <a name="creating-individual-enrollments"></a>Bireysel kayıtlar oluşturma
 
 IoT Central, bireysel kayıtlar için aşağıdaki kanıtlama mekanizmalarını destekler:
 
@@ -181,22 +181,14 @@ IoT Central, bireysel kayıtlar için aşağıdaki kanıtlama mekanizmalarını 
 
 - **Güvenilir Platform Modülü (TPM) kanıtlama:** [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) , bir tür donanım güvenlik modülüdür. TPM kullanmak, bir cihazı bağlamak için en güvenli yöntemlerle biridir. Bu makalede ayrı, bellenim veya tümleşik TPM kullandığınız varsayılır. Yazılım öykünmesi, prototip oluşturma veya test etme için idealdir, ancak ayrık, bellenim veya tümleşik TPMs ile aynı güvenlik düzeyini sağlamalardır. Üretimde yazılım TPM 'Leri kullanmayın. TPM kullanan tek bir kayıt oluşturmak için, **cihaz bağlantısı** sayfasını açın, bağlantı yöntemi olarak **bireysel kayıt** ' ı ve, mekanizma olarak **TPM 'yi** seçin. TPM onay anahtarını girin ve cihaz bağlantı bilgilerini kaydedin.
 
-## <a name="automatically-associate-with-a-device-template"></a>Otomatik olarak bir cihaz şablonuyla ilişkilendir
+## <a name="connect-devices-with-iot-plug-and-play-preview"></a>IoT Tak ve Kullan cihazları bağlama (Önizleme)
 
-IoT Central temel özelliklerinden biri cihaz bağlantısıyla cihaz şablonlarını otomatik olarak ilişkilendirebilme özelliğidir. Cihazlar, cihaz kimlik bilgileri ile birlikte cihaz kayıt çağrısının bir parçası olarak bir **Capabilitymodelıd** gönderebilir. **Capabilitymodelıd** , cihazın uyguladığı yetenek modelini TANıMLAYAN bir urn 'dir. IoT Central uygulaması, kullanılacak cihaz şablonunu belirlemek için **Capabilitymodelıd** kullanabilir ve sonra cihazı cihaz şablonuyla otomatik olarak ilişkilendirir. Bulma işlemi aşağıdaki gibi kullanılabilir:
+IoT Tak ve Kullan (Önizleme) IoT Central ile ilgili temel özelliklerden biri, cihaz bağlantısı üzerinde cihaz şablonlarını otomatik olarak ilişkilendirebilme özelliğidir. Cihaz kimlik bilgileriyle birlikte cihazlar artık, cihaz kayıt çağrısının bir parçası olarak **Capabilitymodelıd** 'yi gönderebilir. Bu özellik, IoT Central cihaz şablonunu bulmasına ve cihazla ilişkilendirebilmesine olanak sağlar. Bulma işlemi aşağıdaki gibi kullanılabilir:
 
-1. Cihaz şablonu IoT Central uygulamada zaten yayımlanıyorsa cihaz, cihaz şablonuyla ilişkilendirilir.
-1. Önceden sertifikalı IoT Tak ve Kullan cihazlarında, cihaz şablonu IoT Central uygulamada zaten yayımlanmamışsa, cihaz şablonu genel depodan alınır.
+1. IoT Central uygulamasında zaten yayımlandıysa cihaz şablonuyla ilişkilendirir.
+1. Yayınlanan ve sertifikalı yetenek modellerinin ortak deposundan getirir.
 
-Aşağıdaki kod parçacıkları, otomatik ilişkilendirmenin çalışması için DPS kayıt çağrısı sırasında cihazın gönderilmesi gereken ek yükün biçimini gösterir.
-
-Bu, IoT Tak ve Kullan desteklemeyen, genel olarak kullanılabilir cihaz SDK 'sını kullanan cihazların biçimidir:
-
-```javascript
-    iotcModelId: '< this is the URN for the capability model>';
-```
-
-Bu, IoT Tak ve Kullan destekleyen genel önizleme cihazı SDK 'sını kullanan cihazların biçimidir:
+Aşağıda, cihazın DPS kayıt araması sırasında gönderileceği ek yükün biçimi verilmiştir
 
 ```javascript
 '__iot:interfaces': {
@@ -205,7 +197,7 @@ Bu, IoT Tak ve Kullan destekleyen genel önizleme cihazı SDK 'sını kullanan c
 ```
 
 > [!NOTE]
-> Cihazların otomatik olarak bağlanması, cihaz şablonunu bulması ve veri göndermeye başlaması için **yönetim > cihaz bağlantısı** 'ndaki **otomatik onaylama** seçeneği etkinleştirilmelidir.
+> Cihazların otomatik olarak bağlanması, cihaz şablonunu bulması ve veri göndermeye başlaması için **yönetim > cihaz bağlantısı** 'ndaki **otomatik onaylama** seçeneğinin etkinleştirilmiş olması gerektiğini unutmayın.
 
 ## <a name="device-status-values"></a>Cihaz durumu değerleri
 
