@@ -1,37 +1,37 @@
 ---
-title: Kaynak sağlayıcısı oluşturma
-description: Kaynak sağlayıcısının nasıl oluşturulup özel kaynak türlerinin nasıl dağıtılancaya yapılacağını açıklar.
+title: Kaynak sağlayıcısı oluştur
+description: Bir kaynak sağlayıcısı oluşturmayı ve özel kaynak türlerini dağıtmayı açıklar.
 author: MSEvanhi
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
 ms.openlocfilehash: 393993a44c860525b9bd9a540ed7afff78e5b93c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75649872"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Hızlı başlatma: Özel sağlayıcı oluşturun ve özel kaynakları dağıtın
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Hızlı başlangıç: özel sağlayıcı oluşturma ve özel kaynaklar dağıtma
 
-Bu hızlı başlatmada, kendi kaynak sağlayıcınızı oluşturur ve bu kaynak sağlayıcısı için özel kaynak türlerini dağıtın. Özel sağlayıcılar hakkında daha fazla bilgi için Azure [Özel Sağlayıcıları Önizleme genel görünümüne](overview.md)bakın.
+Bu hızlı başlangıçta, kendi kaynak sağlayıcınızı oluşturup bu kaynak sağlayıcısı için özel kaynak türleri dağıtırsınız. Özel sağlayıcılar hakkında daha fazla bilgi için bkz. [Azure özel sağlayıcılar önizlemeye genel bakış](overview.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıç adımlarını tamamlamak için REST işlemlerini aramanız gerekir. REST [isteklerini göndermenin farklı yolları](/rest/api/azure/)vardır. REST işlemleri için zaten bir aracınız yoksa [ARMClient'ı](https://github.com/projectkudu/ARMClient)yükleyin. Azure Kaynak Yöneticisi API'sini başlatmayı kolaylaştıran açık kaynak kodlu bir komut satırı aracıdır.
+Bu hızlı başlangıçtaki adımları tamamlayabilmeniz için REST işlemlerini çağırmanız gerekir. [Rest isteklerinin gönderilmesi için farklı yollar](/rest/api/azure/)vardır. REST işlemlerine yönelik bir aracınız zaten yoksa, [Armclient](https://github.com/projectkudu/ARMClient)'ı yükleyebilirsiniz. Bu, Azure Resource Manager API 'nin çağrılması basitleşerek açık kaynaklı bir komut satırı aracıdır.
 
-## <a name="deploy-custom-provider"></a>Özel sağlayıcı dağıtma
+## <a name="deploy-custom-provider"></a>Özel sağlayıcı dağıt
 
-Özel sağlayıcıyı ayarlamak için Azure aboneliğinize bir [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/customprovider.json) dağıtın.
+Özel sağlayıcıyı ayarlamak için Azure aboneliğinize [örnek bir şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/customprovider.json) dağıtın.
 
-Şablonu dağıttıktan sonra aboneliğiniz aşağıdaki kaynaklara sahiptir:
+Şablonu dağıttıktan sonra, aboneliğiniz aşağıdaki kaynaklara sahiptir:
 
-* Kaynaklar ve eylemler için işlemler ile İşlev Uygulaması.
-* Özel sağlayıcı aracılığıyla oluşturulan kullanıcıları depolamak için Depolama Hesabı.
-* Özel kaynak türlerini ve eylemleri tanımlayan Özel Sağlayıcı. İstek göndermek için işlev uygulaması bitiş noktasını kullanır.
+* Kaynaklar ve eylemler için işlemlerle İşlev Uygulaması.
+* Özel sağlayıcı aracılığıyla oluşturulan kullanıcıları depolamaya yönelik depolama hesabı.
+* Özel kaynak türlerini ve eylemlerini tanımlayan özel sağlayıcı. İstek göndermek için App Endpoint işlevini kullanır.
 * Özel sağlayıcıdan özel kaynak.
 
-PowerShell ile özel sağlayıcı dağıtmak için kullanın:
+Özel sağlayıcıyı PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 $rgName = "<resource-group-name>"
@@ -43,25 +43,25 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -funcname $funcName
 ```
 
-Veya aşağıdaki düğmeyle çözümü dağıtabilirsiniz:
+Ya da çözümü aşağıdaki düğmeyle dağıtabilirsiniz:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
-## <a name="view-custom-provider-and-resource"></a>Özel sağlayıcıyı ve kaynağı görüntüleme
+## <a name="view-custom-provider-and-resource"></a>Özel sağlayıcıyı ve kaynağı görüntüle
 
-Portalda, özel sağlayıcı gizli bir kaynak türüdür. Kaynak sağlayıcısının dağıtıldığını doğrulamak için kaynak grubuna gidin. Gizli türleri **gösterme**seçeneğini seçin.
+Portalda, özel sağlayıcı gizli bir kaynak türüdür. Kaynak sağlayıcının dağıtıldığını doğrulamak için kaynak grubuna gidin. **Gizli türleri gösterme**seçeneğini belirleyin.
 
 ![Gizli kaynak türlerini göster](./media/create-custom-provider/show-hidden.png)
 
-Dağıttığınız özel kaynak türünü görmek için kaynak türünüzdeki GET işlemini kullanın.
+Dağıttığınız özel kaynak türünü görmek için, kaynak türü üzerinde GET işlemini kullanın.
 
 ```
 GET https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users?api-version=2018-09-01-preview
 ```
 
-ARMClient ile şunları kullanın:
+ARMClient ile şunu kullanın:
 
 ```powershell
 $subID = (Get-AzContext).Subscription.Id
@@ -89,17 +89,17 @@ Yanıtı alırsınız:
 }
 ```
 
-## <a name="call-action"></a>Arama eylemi
+## <a name="call-action"></a>Çağrı eylemi
 
-Özel sağlayıcınız da **ping**adlı bir eylem vardır. İsteği işleyen kod işlev uygulamasında uygulanır. Ping eylemi bir karşılama ile yanıtlar.
+Özel sağlayıcıınızda **ping**adlı bir eylem de vardır. İsteği işleyen kod, işlev uygulamasında uygulanır. Ping eylemi bir selamlama ile yanıt verir.
 
-Ping isteği göndermek için, özel sağlayıcınızda POST işlemini kullanın.
+Bir ping isteği göndermek için özel sağlayıcıınızda POST işlemini kullanın.
 
 ```
 POST https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/ping?api-version=2018-09-01-preview
 ```
 
-ARMClient ile şunları kullanın:
+ARMClient ile şunu kullanın:
 
 ```powershell
 $pingURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/ping?api-version=2018-09-01-preview"
@@ -118,9 +118,9 @@ Yanıtı alırsınız:
 }
 ```
 
-## <a name="create-resource-type"></a>Kaynak türü oluşturma
+## <a name="create-resource-type"></a>Kaynak türü oluştur
 
-Özel kaynak türünü oluşturmak için, kaynağı bir şablonda dağıtabilirsiniz. Bu yaklaşım, bu hızlı başlangıçta dağıttığınız şablonda gösterilir. Ayrıca kaynak türü için bir PUT isteği gönderebilirsiniz.
+Özel kaynak türünü oluşturmak için, kaynağı bir şablonda dağıtabilirsiniz. Bu yaklaşım, bu hızlı başlangıçta dağıttığınız şablonda gösterilmiştir. Kaynak türü için de bir PUT isteği gönderebilirsiniz.
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview
@@ -128,7 +128,7 @@ PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>
 {"properties":{"FullName": "Test User", "Location": "Earth"}}
 ```
 
-ARMClient ile şunları kullanın:
+ARMClient ile şunu kullanın:
 
 ```powershell
 $addURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/users/testuser?api-version=2018-09-01-preview"
@@ -154,4 +154,4 @@ Yanıtı alırsınız:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel sağlayıcılara giriş için Azure [Özel Sağlayıcıları Önizleme genel görünümüne](overview.md)bakın.
+Özel sağlayıcılara giriş için bkz. [Azure özel sağlayıcılar önizlemeye genel bakış](overview.md).

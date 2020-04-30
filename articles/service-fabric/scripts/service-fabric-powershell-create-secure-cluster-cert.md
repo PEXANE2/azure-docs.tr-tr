@@ -1,6 +1,6 @@
 ---
-title: Powershell'de Service Fabric kümesi oluşturma
-description: Azure PowerShell Script Örneği - X.509 sertifikasıyla güvenli bir Hizmet Kumaşı kümesi oluşturun.
+title: PowerShell 'de Service Fabric kümesi oluşturma
+description: Betik örneği Azure PowerShell-X. 509.440 sertifikasıyla güvenli bir Service Fabric kümesi oluşturun.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -15,15 +15,15 @@ ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614783"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Service Fabric kümesi oluşturma
 
-Bu örnek betik bir X.509 sertifikasıyla güvenliği sağlanan beş düğümlü bir Service Fabric kümesi oluşturur.  Bu komut otomatik olarak imzalanan bir sertifika oluşturur ve bunu yeni bir anahtar kasasına yükler. Sertifika aynı zamanda bir yerel dizine de kopyalanır.  Küme düğümleri üzerinde çalışan Windows veya Linux sürümünü seçmek için *-OS* parametresini ayarlayın.  Parametreleri gereken şekilde özelleştirin.
+Bu örnek betik bir X.509 sertifikasıyla güvenliği sağlanan beş düğümlü bir Service Fabric kümesi oluşturur.  Bu komut otomatik olarak imzalanan bir sertifika oluşturur ve bunu yeni bir anahtar kasasına yükler. Sertifika aynı zamanda bir yerel dizine de kopyalanır.  Küme düğümlerinde çalışan Windows veya Linux sürümünü seçmek için *-OS* parametresini ayarlayın.  Parametreleri gereken şekilde özelleştirin.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -48,7 +48,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Yeni bir Service Fabric kümesi oluşturur. |
+| [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Yeni bir Service Fabric kümesi oluşturur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

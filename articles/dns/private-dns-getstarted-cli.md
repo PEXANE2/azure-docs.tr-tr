@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Azure CLI'yi kullanarak Azure özel DNS bölgesi oluşturma
-description: Bu hızlı başlangıçta, azure DNS'de özel bir DNS bölgesi oluşturup sınayıp kaydedebilirsiniz. Bu kılavuzda, Azure CLI kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturup yönetmeniz için adım adım talimatlar sunulmaktadır.
+title: Hızlı başlangıç-Azure CLı kullanarak Azure özel DNS bölgesi oluşturma
+description: Bu hızlı başlangıçta, Azure DNS bir özel DNS bölgesi ve kaydı oluşturup test edersiniz. Bu kılavuzda, Azure CLI kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturup yönetmeniz için adım adım talimatlar sunulmaktadır.
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: 34a9858ffbec2360a347b8c765d53551fd2d9fc0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76935420"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Hızlı başlatma: Azure CLI'yi kullanarak bir Azure özel DNS bölgesi oluşturun
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure özel DNS bölgesi oluşturma
 
-Bu hızlı başlangıç, ilk özel DNS bölgenizi oluşturmak ve Azure CLI'yi kullanarak kaydetmek için size adımlardan geçer.
+Bu hızlı başlangıç, Azure CLı kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturma adımlarında size yol gösterir.
 
-DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınızda özel bir DNS bölgesi yayımlamak için bölge içindeki kaynakları çözümleme izni olan sanal ağların listesini belirtmeniz gerekir.  Bunlara *bağlantılı* sanal ağlar denir. Otomatik kayıt etkinleştirildiğinde, Azure DNS sanal bir makine oluşturulduğunda, IP adresini değiştirdiğinde veya silindiğinde bölge kayıtlarını da güncelleştirir.
+DNS bölgesi, belirli bir etki alanına ait DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınızda özel bir DNS bölgesi yayımlamak için bölge içindeki kaynakları çözümleme izni olan sanal ağların listesini belirtmeniz gerekir.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
@@ -28,9 +28,9 @@ Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 > * Ek bir DNS kaydı oluşturma
 > * Özel bölgeyi test etme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-İsterseniz, [Azure PowerShell'i](private-dns-getstarted-powershell.md)kullanarak bu hızlı başlangıcı tamamlayabilirsiniz.
+İsterseniz [Azure PowerShell](private-dns-getstarted-powershell.md)kullanarak bu hızlı başlangıcı tamamlayabilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,7 +44,7 @@ az group create --name MyAzureResourceGroup --location "East US"
 
 ## <a name="create-a-private-dns-zone"></a>Özel bir DNS bölgesi oluşturma
 
-Aşağıdaki **örnekmyAzureVNet**adlı bir sanal ağ oluşturur. Daha sonra **MyAzureResourceGroup** kaynak grubunda **private.contoso.com** adında bir DNS bölgesi oluşturur, DNS bölgesini **MyAzureVnet** sanal ağına bağlar ve otomatik kayıt sağlar.
+Aşağıdaki örnek, **Myazurevnet**adlı bir sanal ağ oluşturur. Daha sonra, **MyAzureResourceGroup** kaynak grubunda **PRIVATE.contoso.com** adlı bir DNS bölgesi oluşturur, DNS bölgesini **myazurevnet** sanal ağına bağlar ve otomatik kaydı sağlar.
 
 ```azurecli
 az network vnet create \
@@ -62,7 +62,7 @@ az network private-dns link vnet create -g MyAzureResourceGroup -n MyDNSLink \
    -z private.contoso.com -v myAzureVNet -e true
 ```
 
-Sadece ad çözümlemesi için bir bölge oluşturmak istiyorsanız (otomatik ana `-e false` bilgisayar adı kaydı yok), parametreyi kullanabilirsiniz.
+Yalnızca ad çözümlemesi için bir bölge oluşturmak istiyorsanız (otomatik konak adı kaydı olmadan), `-e false` parametresini kullanabilirsiniz.
 
 ### <a name="list-dns-private-zones"></a>DNS özel bölgelerini listeleme
 
@@ -115,7 +115,7 @@ az vm create \
 
 DNS kaydı oluşturmak için `az network private-dns record-set [record type] add-record` komutunu kullanın. A kaydı ekleme konusunda yardım almak için bkz. `az network private-dns record-set A add-record --help`.
 
- Aşağıdaki örnek, **MyAzureResourceGroup**kaynak grubunda dns bölgesi **private.contoso.com,** göreli adı **db** ile bir kayıt oluşturur. Kayıt kümesinin tam nitelikli adı **db.private.contoso.com.** Kayıt türü "A" ve IP adresi "10.2.0.4" olarak belirlenmiştir.
+ Aşağıdaki örnek, **Private.contoso.com**kaynak GRUBUNDAKI **MyAzureResourceGroup**DNS bölgesinde göreli ad **DB** ile bir kayıt oluşturur. Kayıt kümesinin tam nitelikli adı **DB.Private.contoso.com**' dir. Kayıt türü "A" ve IP adresi "10.2.0.4" olarak belirlenmiştir.
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -137,7 +137,7 @@ az network private-dns record-set list \
 
 ## <a name="test-the-private-zone"></a>Özel bölgeyi test etme
 
-Artık **private.contoso.com** özel bölgenizin ad çözümlemesi test edebilirsiniz.
+Artık **Private.contoso.com** özel bölgeniz için ad çözümlemesini test edebilirsiniz.
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Sanal makineleri gelen ICMP paketlerine izin verecek şekilde yapılandırma
 
@@ -204,7 +204,7 @@ myVM02 için yineleyin.
 
 ## <a name="delete-all-resources"></a>Tüm kaynakları silme
 
-Artık ihtiyaç duyulmadığında, bu hızlı başlangıçta oluşturulan kaynakları silmek için **MyAzureResourceGroup** kaynak grubunu silin.
+Artık gerekli değilse, bu hızlı başlangıçta oluşturulan kaynakları silmek için **MyAzureResourceGroup** kaynak grubunu silin.
 
 ```azurecli
 az group delete --name MyAzureResourceGroup

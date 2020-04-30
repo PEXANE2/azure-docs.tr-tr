@@ -1,6 +1,6 @@
 ---
-title: Azure İnternet Çözümleyicisi | Microsoft Dokümanlar
-description: Azure Internet Çözümleyicisi hakkında bilgi edinin
+title: Azure Internet Çözümleyicisi | Microsoft Docs
+description: Azure Internet çözümleyici hakkında bilgi edinin
 services: internet-analyzer
 author: megan-beatty
 ms.service: internet-analyzer
@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73501949"
 ---
-# <a name="what-is-internet-analyzer-preview"></a>İnternet Çözümleyicisi Nedir? (Önizleme)
+# <a name="what-is-internet-analyzer-preview"></a>Internet Çözümleyicisi nedir? (Önizleme)
 
-Internet Analyzer, ağ altyapısı ndaki değişikliklerin müşterilerinizin performansını nasıl etkilediğini test eden istemci tarafı tarafından bir ölçüm platformudur. Şirket içinden Azure'a geçerken veya yeni bir Azure hizmetini değerlendirirken, Internet Analyzer kullanıcılarınızın verilerinden ve Microsoft'un zengin analiz özelliklerinden edindiğiniz bilgilerle geçiş öncesinde Azure'ın yardımıyla ağ mimarinizi daha iyi anlamanızı ve iyileştirmenizi sağlar.
+Internet Çözümleyicisi, ağ altyapısı değişikliklerinin müşterilerinizin performansını nasıl etkilediğini test etmek için bir istemci tarafı ölçüm platformudur. Şirket içinden Azure'a geçerken veya yeni bir Azure hizmetini değerlendirirken, Internet Analyzer kullanıcılarınızın verilerinden ve Microsoft'un zengin analiz özelliklerinden edindiğiniz bilgilerle geçiş öncesinde Azure'ın yardımıyla ağ mimarinizi daha iyi anlamanızı ve iyileştirmenizi sağlar.
 
-Internet Analyzer, son kullanıcılarınızdan seçtiğiniz ağ hedef kümesine gecikme süresini ölçmek için Web uygulamanıza gömülü küçük bir JavaScript _istemcisi_kullanır, biz uç noktaları diyoruz. Internet Analyzer, altyapınız ve müşteri gereksinimleriniz geliştikçe çeşitli senaryoları değerlendirmenize olanak tanıyan birden çok yan yana test ayarlamanızı sağlar. Internet Analyzer, son kullanıcılarınız için güvenilir performans kararları almanız için hem kolaylık hem de esneklik sağlayarak özel ve önceden yapılandırılmış uç noktalar sağlar. 
+Internet Çözümleyicisi, son kullanıcılarınızın seçtiğiniz ağ hedefleri kümesine yönelik gecikme süresini ölçmek için Web uygulamanızda Embedded küçük bir JavaScript istemcisi kullanır, _uç noktaları_çağırıyoruz. Internet Çözümleyicisi, altyapı ve müşteri gereksinimleriniz geliştikçe çeşitli senaryoları değerlendirmenizi sağlayan birden çok yan yana test ayarlamanıza olanak sağlar. Internet Çözümleyicisi, son kullanıcılarınız için güvenilir performans kararları vermek için hem kolaylık hem de esneklik sağlayan özel ve önceden yapılandırılmış uç noktalar sağlar. 
 
 
 > [!IMPORTANT]
@@ -27,13 +27,13 @@ Internet Analyzer, son kullanıcılarınızdan seçtiğiniz ağ hedef kümesine 
 
 ## <a name="quick--customizable-tests"></a>Hızlı & özelleştirilebilir testler
 
-Internet Analyzer, bulut geçişi, yeni veya ek Azure bölgelerine dağıtım veya [Azure Ön Kapısı](https://azure.microsoft.com/services/frontdoor/) ve Microsoft Azure [CDN](https://azure.microsoft.com/services/cdn/)gibi Azure'da yeni uygulama ve içerik teslim platformlarını test etme için performansla ilgili soruları ele alır. 
+Internet çözümleyici, bulut geçişi, yeni veya ek bir Azure bölgesine dağıtma veya Azure [ön kapısı](https://azure.microsoft.com/services/frontdoor/) ve [Microsoft Azure CDN](https://azure.microsoft.com/services/cdn/)gibi yeni uygulama ve içerik teslimi platformlarını test etmeye yönelik performansla ilgili soruları ele alınmaktadır. 
 
-Internet Analyzer'da oluşturduğunuz her test iki uç noktadan oluşur —Bitiş Noktası A ve Bitiş Noktası B. Bitiş Noktası B'nin performansı Bitiş Noktası A'ya göre analiz edilir. 
+Internet Çözümleyicisi 'nde oluşturduğunuz her bir test, uç nokta A ve uç nokta B olmak üzere iki uç noktadan oluşur. uç nokta B 'nin performansı, uç nokta A 'ya göre çözümlenir. 
 
-Kendi özel bitiş noktanızı yapılandırabilir veya önceden yapılandırılmış çeşitli Azure uç noktalarından seçim yapabilirsiniz. Şirket içi iş yüklerini, diğer bulut sağlayıcılarındaki örneklerinizi veya özel Azure yapılandırmalarınızı değerlendirmek için özel uç noktalar kullanılmalıdır. Testler iki özel uç noktadan oluşabilir; ancak Azure'da en az bir özel bitiş noktası barındırılmalıdır. Önceden yapılandırılmış Azure uç noktaları, Azure Ön Kapı, Azure Trafik Yöneticisi ve Azure CDN gibi popüler Azure ağ platformlarının performansını değerlendirmenin hızlı ve kolay bir yoludur. 
+Kendi özel uç noktanızı yapılandırabilir ya da önceden yapılandırılmış çeşitli Azure uç noktalarından seçim yapabilirsiniz. Özel uç noktalar şirket içi iş yüklerini, diğer bulut sağlayıcılarındaki örneklerinizi veya özel Azure yapılandırmalarınızı değerlendirmek için kullanılmalıdır. Testler iki özel uç noktasından oluşabilir; Ancak, en az bir özel uç noktanın Azure 'da barındırılması gerekir. Önceden yapılandırılmış Azure uç noktaları, Azure ön kapısı, Azure Traffic Manager ve Azure CDN gibi popüler Azure ağ platformlarının performansını değerlendirmek için hızlı ve kolay bir yoldur. 
 
-Önizleme sırasında, önceden yapılandırılmış uç noktalar kullanılabilir: 
+Önizleme sırasında, aşağıdaki önceden yapılandırılmış uç noktalar kullanılabilir: 
 
 * **Azure bölgeleri**
     * Güney Brezilya
@@ -50,7 +50,7 @@ Kendi özel bitiş noktanızı yapılandırabilir veya önceden yapılandırılm
     * Batı Avrupa
     * Batı ABD 
     * Batı ABD 2
-* **Birden çok Azure bölge birleşimi** 
+* **Birden çok Azure bölge kombinasyonu** 
     * Doğu ABD, Brezilya Güney 
     * Doğu ABD, Doğu Asya 
     * Batı Avrupa, Brezilya Güney
@@ -61,50 +61,50 @@ Kendi özel bitiş noktanızı yapılandırabilir veya önceden yapılandırılm
     * Batı ABD, BAE Kuzey
     * Batı Avrupa, BAE Kuzey, Güneydoğu Asya
     * Batı ABD, Batı Avrupa, Doğu Asya
-    * Batı ABD, Kuzey Avrupa, Güneydoğu Asya, BAE Kuzey, Güney Afrika Kuzey 
-* **Azure + Azure Ön Kapı** - yukarıda listelenen tek veya birden çok Azure bölge birleşiminde dağıtıldı
-* **Microsoft'tan Azure + Azure CDN** - yukarıda listelenen tek bir Azure bölge birleşiminde dağıtıldı
-* **Azure + Azure Trafik Yöneticisi** - yukarıda listelenen herhangi bir birden çok Azure bölge birleşiminde dağıtıldı
+    * Batı ABD, Kuzey Avrupa, Güneydoğu Asya, BAE Kuzey Güney Afrika Kuzey 
+* **Azure + Azure ön kapısı** -yukarıda listelenen tek veya birden çok Azure bölge birleşimine dağıtıldı
+* **Microsoft 'Tan Azure + Azure CDN** , yukarıda listelenen tek bir Azure bölge birleşimine dağıtılır
+* **Azure + azure Traffic Manager** , yukarıda listelenen birden çok Azure bölge birleşimine dağıtıldı
 
 ## <a name="suggested-test-scenarios"></a>Önerilen test senaryoları 
 
-Müşterileriniz için en iyi performans kararlarını almanıza yardımcı olmak için, Internet Analyzer belirli son kullanıcı popülasyonunuz için iki uç noktayı değerlendirmenize olanak tanır. 
+Müşterilerinizin en iyi performans kararlarını almanıza yardımcı olmak için, Internet çözümleyici, son kullanıcılarınızın özel popülasyonunun iki uç noktasını değerlendirmenize olanak tanır. 
 
-Internet Analyzer çok sayıda soruyu yanıtlayabilirken, en yaygın sorulardan bazıları şunlardır: 
-* Buluta geçişin performans etkisi nedir? 
-    * *Önerilen Test: Özel (mevcut şirket içi altyapınız) ile Azure (önceden yapılandırılmış bitiş noktası)*
-* Verilerimi bir veri merkezine koymanın değeri nedir? 
-    *  *Önerilen Test: Azure ve Azure Ön Kapı, Azure ve Azure CDN Microsoft'tan*
-* Azure Ön Kapı'nın performans avantajı nedir?
-    *  *Önerilen Test: Özel/ Azure/ CDN ve Azure Ön Kapı*
-* Azure CDN'nin Microsoft'un performans avantajı nedir? 
-    *  *Önerilen Test: Microsoft'tan Özel/ Azure/ AFD ve Azure CDN*
-* Microsoft'un Azure CDN'si nasıl birikir? 
-    *  *Önerilen Test: Microsoft'tan Özel (diğer CDN bitiş noktası) ve Azure CDN*
-* Her bölgedeki son kullanıcı popülasyonunuz için en iyi bulut nedir? 
-    *  *Önerilen Test: Özel (diğer bulut hizmeti) ile Azure (önceden yapılandırılmış bitiş noktası)*
+Internet Çözümleyicisi çok sayıda soruyu yanıtlayabilirken, en yaygın olarak karşılaşılan bazı konular şunlardır: 
+* Buluta geçiş performansı etkisi nedir? 
+    * *Önerilen test: özel (Şirket içi altyapınızda) ve Azure (önceden yapılandırılmış herhangi bir uç nokta) karşılaştırması*
+* Verileri bir veri merkezinde Edge 'e ve veri merkezine yerleştirmenin bir değeri nedir? 
+    *  *Önerilen test: Azure ile Azure ön kapısı, Azure ve Microsoft 'tan Azure CDN karşılaştırması*
+* Azure ön kapısının performans avantajı nedir?
+    *  *Önerilen test: özel/Azure/CDN ile Azure ön kapısı karşılaştırması*
+* Microsoft 'tan Azure CDN performans avantajı nedir? 
+    *  *Önerilen test: özel/Azure/AFD ile Microsoft 'tan Azure CDN karşılaştırması*
+* Microsoft Stack 'ten nasıl Azure CDN? 
+    *  *Önerilen test: özel (diğer CDN uç noktası) ve Microsoft 'tan Azure CDN karşılaştırması*
+* Her bölgede Son Kullanıcı popülasyonunuz için en iyi bulut nedir? 
+    *  *Önerilen test: özel (diğer bulut hizmeti) ve Azure (önceden yapılandırılmış herhangi bir uç nokta) karşılaştırması*
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Internet Analyzer'ı kullanmak için Microsoft Azure portalında bir Internet Analyzer kaynağı ayarlayın ve küçük JavaScript istemcisini uygulamanızda yükleyin. İstemci, https üzerinden tek piksellik bir görüntü indirerek son kullanıcılarınızdan seçtiğiniz uç noktalara kadar olan gecikme süresini ölçer. Gecikme ölçer ölçümleri topladıktan sonra, istemci ölçüm verilerini Internet Analyzer'a gönderir.
+Internet çözümleyici 'yi kullanmak için Microsoft Azure portal bir Internet çözümleyici kaynağı ayarlayın ve küçük JavaScript istemcisini uygulamanıza kurun. İstemci, HTTPS üzerinden tek piksellik bir görüntü indirerek son kullanıcılarınızın gecikme süresini seçtiğiniz uç noktalara ölçer. Gecikme ölçümleri toplandıktan sonra istemci, ölçüm verilerini Internet Analyzer 'a gönderir.
 
-Bir kullanıcı Web uygulamasını ziyaret ettiğinde, JavaScript istemcisi tüm yapılandırılmış testlerarasında ölçmek için iki uç nokta seçer. Her uç nokta için, istemci _soğuk_ ve _sıcak_ bir ölçüm gerçekleştirir. _Soğuk_ ölçüm, dns çözünürlüğü, TCP bağlantı el sıkışması ve SSL/TLS anlaşması gibi kullanıcı ile bitiş noktası arasındaki saf ağ gecikmesinin yanında ek gecikmeye neden olur. _Sıcak_ ölçüm, _soğuk_ ölçüm tamamlandıktan hemen sonra gerçekleşir ve uçtan uca gecikmenin doğru bir ölçüsünü almak için modern tarayıcıların kalıcı TCP bağlantı yönetiminden yararlanır. Kullanıcının tarayıcısı tarafından desteklendiğinde, W3C kaynak zamanlama API doğru ölçüm zamanlaması için kullanılır. Şu anda analiz için yalnızca sıcak gecikme ölçümleri kullanılmaktadır.
+Bir Kullanıcı Web uygulamasını ziyaret ettiğinde, JavaScript istemcisi yapılandırılan tüm testlerde ölçmek için iki uç nokta seçer. Her uç nokta için istemci _soğuk_ ve _sıcak_ ölçüm gerçekleştirir. _Soğuk_ ölçüm, Kullanıcı ve uç nokta ARASıNDAKI, DNS ÇÖZÜMLEMESI, TCP bağlantısı el SıKıŞMASı ve SSL/TLS anlaşması gibi saf ağ gecikmesi yanında ek gecikme süresi doğurur. _Normal_ ölçüm, _soğuk_ ölçüm tamamlandıktan hemen sonra ve modern tarayıcıların kalıcı TCP bağlantısı yönetiminden yararlanarak uçtan uca gecikme süresinin doğru bir şekilde ölçülmesine neden olur. Kullanıcının tarayıcısı tarafından desteklenerek, doğru ölçüm zamanlaması için W3C kaynak zamanlama API 'SI kullanılır. Şu anda, analiz için yalnızca ısınma gecikmesi ölçümleri kullanılır.
 
 ![architecture](./media/ia-overview/architecture.png)
 
 
-## <a name="scorecards"></a>Karne 
+## <a name="scorecards"></a>Lere 
 
-Bir test başladıktan sonra, Telemetri verileri Karne sekmesinin altındaki Internet Analyzer kaynağınızda görünür. Bu veriler her zaman toplanır. Gördüğünüz verilerin görünümünü değiştirmek için aşağıdaki filtreleri kullanın: 
+Bir test başladıktan sonra telemetri verileri, Internet çözümleyici kaynağında, karne sekmesinde görünür. Bu veriler her zaman toplanır. Gördüğünüz verilerin hangi görünümünü değiştirmek için aşağıdaki filtreleri kullanın: 
 
-* **Test:** Sonuçları görüntülemek istediğiniz testi seçin. Test verileri, çoğu durumda 24 saat içinde, analizi tamamlamak için yeterli veri olduğunda görünür. 
-* **Bitiş tarihinden & süre:** Internet Analyzer günde üç karne oluşturur – her karne farklı bir toplama süresini yansıtır – 24 saat önce (gün), yedi gün önce (hafta) ve 30 gün önceki (ay). Görmek istediğiniz zaman dilimini seçmek için "Bitiş Tarihi" filtresini kullanın. 
-* **Ülke:** Bir ülkede ikamet eden son kullanıcılara özgü verileri görüntülemek için bu filtreyi kullanın. Genel filtre tüm coğrafyalarda verileri gösterir.  
+* **Test:** Sonuçlarını görüntülemek istediğiniz testi seçin. Test verileri, çoğu durumda, 24 saat içinde çözümlemeyi tamamlayacak kadar veri olduğunda görüntülenir. 
+* **Zaman aralığı & bitiş tarihi:** Internet Çözümleyicisi her gün üç karne oluşturuyor: her bir karne, farklı bir toplama süresi dönemi (önceki 24 saat (gün), önceki yedi gün önce (hafta) ve 30 gün önce (ay) yansıtır. Görmek istediğiniz zaman dilimini seçmek için "bitiş tarihi" filtresini kullanın. 
+* **Ülke:** Bir ülkede bulunan son kullanıcılara özgü verileri görüntülemek için bu filtreyi kullanın. Genel filtre tüm coğrafi cihazlarda verileri gösterir.  
 
-Karneler hakkında daha fazla bilgiyi [karnenizi Yorumlama](internet-analyzer-scorecard.md) sayfasında bulabilirsiniz. 
+Karneler hakkında daha fazla bilgi, [karneyi yorumlama](internet-analyzer-scorecard.md) sayfasında bulunabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [İlk Internet Analyzer kaynağınızı](internet-analyzer-create-test-portal.md)nasıl oluşturabilirsiniz öğrenin.
-* Internet [Analyzer SSS](internet-analyzer-faq.md)okuyun. 
+* [Ilk Internet çözümleyici kaynağını oluşturmayı](internet-analyzer-create-test-portal.md)öğrenin.
+* [Internet ÇÖZÜMLEYICISI SSS](internet-analyzer-faq.md)makalesini okuyun. 

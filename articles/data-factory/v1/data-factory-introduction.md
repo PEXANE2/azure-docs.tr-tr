@@ -1,5 +1,5 @@
 ---
-title: Veri Entegrasyon hizmeti Veri Fabrikası'na Giriş
+title: Veri tümleştirme hizmeti Data Factory giriş
 description: 'Azure Data Factory’nin ne olduğunu öğrenin: verilerin taşınmasını ve dönüştürülmesini düzenleyen ve otomatikleştiren bir bulut veri tümleştirme hizmetidir.'
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73666809"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory'ye giriş 
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-introduction.md)
 > * [Sürüm 2 (geçerli sürüm)](../introduction.md)
 
@@ -114,7 +114,7 @@ Bağlı hizmetler Data Factory'de iki nedenle kullanılır:
 
 * Bir *veri deposunu*, buradakilerle, ancak bunlarla sınırlı olmamak şartıyla göstermek için: şirket içi SQL Server veritabanı, Oracle veritabanı, dosya paylaşımı veya bir Azure blob depolama hesabı. Desteklenen veri depolarının bir listesi için [Veri taşıma etkinlikleri](#data-movement-activities) bölümüne bakın.
 
-* Bir etkinliğin yürütülmesini barındırabilecek bir *bilgi işlem kaynağını* temsil etmek. Örneğin, HDInsightHive etkinliği bir HDInsight Hadoop kümesinde yürütülür. Desteklenen işlem ortamlarının listesi için [Veri dönüştürme etkinlikleri](#data-transformation-activities) bölümüne bakın.
+* Bir etkinliğin yürütülmesini barındırameyen bir *işlem kaynağını* temsil etmek için. Örneğin, HDInsightHive etkinliği bir HDInsight Hadoop kümesinde yürütülür. Desteklenen işlem ortamlarının listesi için [Veri dönüştürme etkinlikleri](#data-transformation-activities) bölümüne bakın.
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory varlıkları arasındaki ilişki
 
@@ -125,7 +125,7 @@ Bağlı hizmetler Data Factory'de iki nedenle kullanılır:
 
 Azure Data Factory’nin kendisi verileri depolamaz. [Desteklenen veri depoları](#data-movement-activities) arasındaki veri taşıma işlemlerini yönetmek için veri odaklı iş akışları oluşturmanızı sağlar. Ayrıca diğer bölgelerdeki veya şirket içi ortamdaki [işlem hizmetlerini](#data-transformation-activities) kullanarak verileri işlemenizi sağlar. Hem programlama, hem de kullanıcı arabirimi mekanizmalarını kullanarak [iş akışlarını izlemenizi ve yönetmenizi](data-factory-monitor-manage-pipelines.md) de sağlar.
 
-Data Factory yalnızca Batı ABD, Doğu ABD ve Kuzey Avrupa bölgelerinde kullanılabilir. Ancak, Data Factory'deki veri taşıma işlemlerini mümkün kılan hizmet birden fazla bölgede [genel olarak](data-factory-data-movement-activities.md#global) kullanılabilir. Bir güvenlik duvarının arkasında bir veri deposu varsa, şirket içi ortamınıza yüklenen bir [Veri Yönetimi Ağ Geçidi](data-factory-move-data-between-onprem-and-cloud.md) verileri bunun yerine taşır.
+Data Factory yalnızca Batı ABD, Doğu ABD ve Kuzey Avrupa bölgelerinde kullanılabilir. Ancak, Data Factory'deki veri taşıma işlemlerini mümkün kılan hizmet birden fazla bölgede [genel olarak](data-factory-data-movement-activities.md#global) kullanılabilir. Bir veri deposu bir güvenlik duvarının arkasındaysa, şirket içi ortamınızda yüklü olan bir [veri yönetimi ağ geçidi](data-factory-move-data-between-onprem-and-cloud.md) bunun yerine verileri taşıdır.
 
 Örneğin, Azure HDInsight kümesi ve Azure Machine Learning gibi işlem ortamlarınızın Batı Avrupa bölgesinde bulunduğunu varsayalım. Kuzey Avrupa bölgesinde Azure Data Factory örneği oluşturabilir ve kullanabilirsiniz. Ardından bunu kullanarak Batı Avrupa'daki işlem ortamlarınızda iş zamanlayabilirsiniz. Data Factory'nin işlem ortamınızda işi tetiklemesi birkaç milisaniye alsa da, bilgi işlem ortamınızda işin çalıştırılma süresi değişmez.
 
@@ -140,7 +140,7 @@ Azure Data Factory'de veri işlem hatları oluşturmak için bu araç veya API'l
 
 Veri işlem hatları ile veri fabrikaları oluşturmayı öğrenmek için aşağıdaki öğreticilerde yer alan adım adım yönergeleri izleyin:
 
-| Öğretici | Açıklama |
+| Eğitmen | Açıklama |
 | --- | --- |
 | [İki bulut veri deposu arasında veri taşıma](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Blob depolamadan SQL veritabanına veri taşıyan bir işlem hattı ile veri fabrikası oluşturun. |
 | [Hadoop kümesi kullanarak veri dönüştürme](data-factory-build-your-first-pipeline.md) |Bir Azure HDInsight (Hadoop) kümesinde Hive betiği çalıştırarak veri işleyen bir veri işlem hattı ile ilk Azure veri fabrikanızı oluşturun. |

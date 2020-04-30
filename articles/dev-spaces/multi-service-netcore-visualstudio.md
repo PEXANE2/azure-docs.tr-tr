@@ -1,25 +1,25 @@
 ---
-title: 'Birden fazla bağımlı hizmet çalıştırın: .NET Core & Visual Studio'
+title: 'Birden çok bağımlı hizmet çalıştırma: .NET Core & Visual Studio'
 services: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Bu öğretici, Azure Kubernetes Hizmeti'nde çok hizmetli bir .NET Core uygulamasını hata ayıklamak için Azure Dev Spaces ve Visual Studio'yu nasıl kullanacağınızı gösterir
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s
+description: Bu öğreticide, Azure Kubernetes hizmetinde birden çok hizmet .NET Core uygulamasında hata ayıklamak için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75438399"
 ---
-# <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Birden fazla bağımlı hizmet çalıştırma: .NET Core ve Visual Studio ile Azure Dev Spaces
+# <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: Azure Dev Spaces .NET Core ve Visual Studio
 
-Bu eğitimde, Dev Spaces'in sağladığı bazı ek avantajlarla birlikte Azure Dev Spaces'i kullanarak çok hizmetli uygulamaların nasıl geliştireceğinizi öğreneceksiniz.
+Bu öğreticide, dev alanlarının sağladığı bazı avantajlarla birlikte Azure Dev Spaces kullanarak çok hizmet uygulamaları geliştirmeyi öğreneceksiniz.
 
 ## <a name="call-another-container"></a>Başka bir kapsayıcı çağırma
-Bu bölümde, ikinci bir hizmet `mywebapi`oluşturacaksın ve `webfrontend` onu çağıracaksın. Her hizmet ayrı kapsayıcılarda çalışır. Ardından her iki kapsayıcıda da hata ayıklayacaksınız.
+Bu bölümde, ikinci bir hizmet `mywebapi`oluşturacak ve bunu `webfrontend` çağıracağız. Her hizmet ayrı kapsayıcılarda çalışır. Ardından her iki kapsayıcıda da hata ayıklayacaksınız.
 
 ![](media/common/multi-container.png)
 
@@ -28,16 +28,16 @@ Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://gi
 
 ### <a name="run-mywebapi"></a>*mywebapi* hizmetini çalıştırın
 1. `mywebapi` projesini *ayrı bir Visual Studio penceresinde* açın.
-1. Daha önce `webfrontend` projesinde yaptığınız gibi başlatma ayarları açılır listesinden **Azure Dev Spaces** seçeneğini belirleyin. Bu sefer yeni bir AKS kümesi oluşturmak yerine, önceden oluşturduğunuz ortamı seçin. Önceki seferde olduğu gibi, Alan açılır listesini varsayılan `default` değerinde bırakın ve **Tamam**’a tıklayın. Çıktı penceresinde, Görsel Studio'nun hata ayıklamaya başladığınızda işleri hızlandırmak için bu yeni hizmeti geliştirme alanınızda "ısıtmaya" başladığını fark edebilirsiniz.
+1. Daha önce `webfrontend` projesinde yaptığınız gibi başlatma ayarları açılır listesinden **Azure Dev Spaces** seçeneğini belirleyin. Bu sefer yeni bir AKS kümesi oluşturmak yerine, önceden oluşturduğunuz ortamı seçin. Önceki seferde olduğu gibi, Alan açılır listesini varsayılan `default` değerinde bırakın ve **Tamam**’a tıklayın. Çıkış penceresinde, hata ayıklamaya başladığınızda bunları hızlandırmak için Visual Studio 'Nun geliştirme alanınızda bu yeni hizmeti "ısınma" olarak başlatabileceğini fark edebilirsiniz.
 1. F5'e bastıktan sonra hizmetin oluşturulup dağıtılmasını bekleyin. Visual Studio durum çubuğu turuncuya döndüğünde hazır olduğunu biliyor olacaksınız
-1. **Çıktı** penceresindeAKS bölmesi **için Azure Dev Spaces'te** görüntülenen bitiş noktası URL'sine dikkat edin. `http://localhost:<portnumber>` gibi görünür. Kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte Azure’daki geliştirme ortamında çalışıyordur.
+1. **Çıkış** penceresindeki **aks için Azure dev Spaces** ' de görünen uç nokta URL 'sini göz önünde yararlanın. `http://localhost:<portnumber>` gibi görünür. Kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte Azure’daki geliştirme ortamında çalışıyordur.
 2. `mywebapi` hazır olduğunda, tarayıcınızı localhost adresine açın ve `ValuesController` için varsayılan GET API’yi çağırmak üzere URL’ye `/api/values` öğesini ekleyin. 
 3. Tüm adımları başarılı olursa, `mywebapi` hizmetinden şöyle bir yanıt görebilmelisiniz.
 
     ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend*’den *mywebapi*’ye istek gönderme
-Şimdi `webfrontend` uygulamasında `mywebapi` hizmetine istek gönderen bir kod yazalım. `webfrontend` projesinin bulunduğu Visual Studio penceresine geçin. Dosyada, `HomeController.cs` About yönteminin kodunu aşağıdaki kodla *değiştirin:*
+Şimdi `webfrontend` uygulamasında `mywebapi` hizmetine istek gönderen bir kod yazalım. `webfrontend` projesinin bulunduğu Visual Studio penceresine geçin. `HomeController.cs` Dosyasında, hakkında yöntemi için kodu aşağıdaki kodla *değiştirin* :
 
    ```csharp
    public async Task<IActionResult> About()
@@ -62,7 +62,7 @@ Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://gi
    }
    ```
 
-Önceki kod örneğinde `azds-route-as` üst bilgisi gelen istekten giden isteğe iletilmektedir. Bunun [takım senaryolarında](team-development-netcore-visualstudio.md)daha üretken bir geliştirme deneyimini nasıl kolaylaştırdığını daha sonra görürsünüz.
+Önceki kod örneğinde `azds-route-as` üst bilgisi gelen istekten giden isteğe iletilmektedir. Daha sonra bu, [Takım senaryolarında](team-development-netcore-visualstudio.md)daha üretken bir geliştirme deneyimini nasıl kolaylaştırdığını göreceksiniz.
 
 ### <a name="debug-across-multiple-services"></a>Birden çok hizmette hata ayıklama
 1. Bu noktada, `mywebapi` hizmetinin hata ayıklayıcısı ekli bir şekilde çalışmaya devam ediyor olması gerekir. Devam etmiyorsa, `mywebapi` projesinde F5'e basın.
@@ -80,4 +80,4 @@ Artık her kapsayıcının ayrı ayrı geliştirilip dağıtılabileceği çok k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dev Spaces'te ekip geliştirme hakkında bilgi edinin](team-development-netcore-visualstudio.md)
+> [Geliştirme alanlarında takım geliştirme hakkında bilgi edinin](team-development-netcore-visualstudio.md)

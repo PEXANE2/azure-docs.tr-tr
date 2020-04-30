@@ -1,6 +1,6 @@
 ---
-title: Blob depolamada gecikme - Azure Depolama
-description: Blob depolama işlemleri için gecikme yi anlayın ve ölçün ve blob depolama uygulamalarınızı düşük gecikme süresi için nasıl tasarlayacağınızı öğrenin.
+title: Blob depolamada gecikme-Azure depolama
+description: BLOB depolama işlemleri için gecikme süresini anlayın ve ölçer ve düşük gecikme süresine sahip BLOB depolama uygulamalarınızı nasıl tasarlayacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,63 +9,63 @@ ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75749719"
 ---
 # <a name="latency-in-blob-storage"></a>Blob depolamada gecikme süresi
 
-Bazen yanıt süresi olarak başvurulan gecikme süresi, bir uygulamanın isteği tamamlamasını beklemesi gereken süredir. Gecikme süresi bir uygulamanın performansını doğrudan etkileyebilir. Düşük gecikme, genellikle kredi kartı işlemleri yapmak veya web sayfalarını yüklemek gibi döngüdeki insanlarla ilgili senaryolar için önemlidir. Gelen olayları telemetri günlüğü veya IoT olayları gibi yüksek oranlarda işlemesi gereken sistemler de düşük gecikme sürelerini gerektirir. Bu makalede, blok lekeleri üzerindeki işlemler için gecikme süresinin nasıl anlayacağı ve ölçüldüğü ve düşük gecikme süresi için uygulamalarınızın nasıl tasarlayacağı açıklanmaktadır.
+Bazen yanıt süresi olarak başvurulan gecikme süresi, bir uygulamanın bir isteğin tamamlanmasını beklemesi gereken süredir. Gecikme süresi, bir uygulamanın performansını doğrudan etkileyebilir. Düşük gecikme süresi genellikle döngüdeki insanlardan (kredi kartı işlemleri veya Web sayfaları yükleme gibi) senaryolar için önemlidir. Telemetri günlüğü veya IoT olayları gibi yüksek hızlarda gelen olayları işlemesi gereken sistemler için de düşük gecikme süresi gerekir. Bu makalede, blok Blobları üzerinde işlemler için gecikme süresini ve ölçüyü nasıl anlayacağınızı ve uygulamalarınızın düşük gecikme süresine nasıl tasarlanacağını açıklanmaktadır.
 
-Azure Depolama, blok blob'ları için iki farklı performans seçeneği sunar: premium ve standart. Premium blok lekeleri, yüksek performanslı SSD diskler aracılığıyla standart blok lekelere göre önemli ölçüde daha düşük ve daha tutarlı gecikme alanı sunar. Daha fazla bilgi için Azure Blob depolama alanında **Premium performans bloğu blob depolama** alanına [bakın: sıcak, serin ve arşiv erişim katmanları.](storage-blob-storage-tiers.md)
+Azure depolama, blok Blobları için iki farklı performans seçeneği sunar: Premium ve standart. Premium blok blob 'ları, yüksek performanslı SSD diskleri aracılığıyla standart blok Bloblarından önemli ölçüde daha düşük ve daha tutarlı gecikme sunar. Daha fazla bilgi için bkz. Azure Blob depolamada **Premium performans bloğu BLOB depolama** [: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md).
 
-## <a name="about-azure-storage-latency"></a>Azure Depolama gecikmesi hakkında
+## <a name="about-azure-storage-latency"></a>Azure depolama gecikmesi hakkında
 
-Azure Depolama gecikmesi, Azure Depolama işlemleri için istek oranlarıyla ilgilidir. İstek oranları saniyede giriş/çıkış işlemleri (IOPS) olarak da bilinir.
+Azure depolama gecikmesi, Azure depolama işlemlerine yönelik istek ücretleri ile ilgilidir. İstek ücretleri, saniye başına giriş/çıkış işlemi (ıOPS) olarak da bilinir.
 
-İstek oranını hesaplamak için, önce her isteğin tamamlanması için gereken süreyi belirleyin, ardından saniyede kaç isteğin işlenebileceğini hesaplayın. Örneğin, bir isteğin tamamlanmasının 50 milisaniye (ms) sürdüğünü varsayalım. Bir olağanüstü okuma veya yazma işlemi ile bir iş parçacığı kullanarak bir uygulama 20 IOPS (1 saniye veya 1000 ms / 50 ms istek başına) elde etmelidir. Teorik olarak, iş parçacığı sayısı ikiye ikiye katlanırsa, uygulama 40 IOPS elde etmek gerekir. Her iş parçacığı için olağanüstü asynchronous okuma veya yazma işlemleri ikiye iki katına çıkarılırsa, uygulama 80 IOPS elde etmek gerekir.
+İstek hızını hesaplamak için, ilk olarak her bir isteğin tamamlanma süresini belirleyip, saniye başına kaç istek işleneceğini hesaplayın. Örneğin, bir isteğin tamamlanma 50 milisaniye (MS) aldığını varsayalım. Bir bekleyen okuma veya yazma işlemine sahip bir iş parçacığı kullanan bir uygulama, 20 ıOPS elde etmelidir (istek başına 1 saniye veya 1000 ms/50 MS). Teorik olarak, iş parçacığı sayısı iki katına çıkardıysanız, uygulama 40 ıOPS elde edebilmelidir. Her iş parçacığı için bekleyen zaman uyumsuz okuma veya yazma işlemleri iki katına çıkardıysanız, uygulama 80 ıOPS elde edebilmelidir.
 
-Uygulamada, istek oranları her zaman bu kadar doğrusal ölçeklendirmez, çünkü istemcide görev planlaması, bağlam değiştirme ve benzeri nedenlerden genel merkezler. Hizmet tarafında, Azure Depolama sistemi üzerindeki baskı, kullanılan depolama ortamındaki farklılıklar, diğer iş yüklerinden kaynaklanan gürültü, bakım görevleri ve diğer etkenler nedeniyle gecikme gecikmesinde değişkenlik olabilir. Son olarak, istemci ve sunucu arasındaki ağ bağlantısı, tıkanıklık, yeniden yönlendirme veya diğer aksaklıklar nedeniyle Azure Depolama gecikmesini etkileyebilir.
+Uygulamada, istek hızları her zaman daha erken ölçeklendirmez. Bu, istemcideki ek yükün görev zamanlamasıyla, bağlam geçişinden ve benzer şekilde ölçeklendirilmesine neden olur. Hizmet tarafında, Azure depolama sisteminde basınç, kullanılan depolama ortamındaki farklılıklar, diğer iş yüklerindeki gürültü, bakım görevleri ve diğer faktörlere bağlı olarak değişkenlik, gecikme süresi olabilir. Son olarak, istemci ile sunucu arasındaki ağ bağlantısı, sıkışıklık, yeniden yönlendirme veya diğer kesintiler nedeniyle Azure depolama gecikmesini etkileyebilir.
 
-İş ortası olarak da adlandırılan Azure Depolama bant genişliği, istek oranıyla ilişkilidir ve istek hızının (IOPS) istek boyutuyla çarpılmasıyla hesaplanabilir. Örneğin, saniyede 160 istek varsayarsak, her 256 KiB veri saniyede 40.960 KiB veya saniyede 40 MiB iş artışı ile sonuçlanır.
+Aktarım hızı olarak da adlandırılan Azure depolama bant genişliği, istek oranı ile ilgilidir ve istek boyutu (ıOPS) istek boyutuyla çarpılarak hesaplanabilir. Örneğin, saniyede 160 istek varsayılarak, her 256 kıb veri, saniyede 40.960 KiB veya 40 MiB işleme ile sonuçlanır.
 
-## <a name="latency-metrics-for-block-blobs"></a>Blok lekeleri için gecikme ölçütleri
+## <a name="latency-metrics-for-block-blobs"></a>Blok Blobları için gecikme ölçümleri
 
-Azure Depolama, blok lekeleri için iki gecikme sonu ölçümü sağlar. Bu ölçümler Azure portalında görüntülenebilir:
+Azure depolama, blok Blobları için iki gecikme süresi sağlar. Bu ölçümler Azure portal görüntülenebilir:
 
-- **Uçtan uca (E2E) gecikme,** Azure Depolama'nın isteğin ilk paketini aldığı tarihten, Azure Depolama'nın yanıtın son paketinde bir istemci bildirimi alana kadar olan aralığı ölçer.
+- **Uçtan uca (e2e) gecikme süresi** , Azure depolama 'nın, yanıtın son paketinde bir istemci bildirimi aldığından isteğin ilk paketini aldığı zaman aralığını ölçer.
 
-- **Sunucu gecikmesi,** Azure Depolama'nın isteğin son paketini aldığı tarihten yanıtın ilk paketi Azure Depolama'dan döndürülene kadar olan aralığı ölçer.
+- **Sunucu gecikmesi** , Azure depolama 'nın, yanıtın Ilk paketi Azure Storage 'dan döndürülünceye kadar isteğin son paketini aldığı zaman aralığını ölçer.
 
-Aşağıdaki resimde, `Get Blob` işlemi çağıran örnek bir iş yükü için Ortalama Başarı **E2E Gecikme si** ve Ortalama Başarı Sunucusu **Gecikmesi** gösterilmektedir:
+Aşağıdaki görüntüde, `Get Blob` işlemi çağıran örnek bir iş yükü Için **Ortalama başarılı e2e gecikme süresi** ve **ortalama başarı sunucusu gecikmesi** gösterilmektedir:
 
-![Blob işlemi için gecikme ölçümlerini gösteren ekran görüntüsü](media/storage-blobs-latency/latency-metrics-get-blob.png)
+![Blob alma işleminin gecikme ölçümlerini gösteren ekran görüntüsü](media/storage-blobs-latency/latency-metrics-get-blob.png)
 
-Normal koşullarda, uçuça gecikme si ile görüntünün örnek iş yükü için gösterdiği sunucu gecikmesi arasında çok az boşluk vardır.
+Normal koşullar altında, uçtan uca gecikme ve sunucu gecikmesi arasında çok az boşluk vardır. Bu, görüntünün örnek iş yükü için gösterdiği şeydir.
 
-Uçtan uca ve sunucu gecikme söktürme ölçümlerinizi gözden geçiriyorsanız ve uçtan uca gecikmenin sunucu gecikmesinden önemli ölçüde daha yüksek olduğunu fark ederseniz, ek gecikme nin kaynağını araştırın ve adreslendirin.
+Uçtan uca ve sunucu gecikme ölçümlerinizi gözden geçirdikten sonra uçtan uca gecikme süresinin sunucu gecikmesinden önemli ölçüde daha yüksek olduğunu fark ederseniz, ek gecikme süresinin kaynağını araştırın ve ele geçirin.
 
-Uçtan uca ve sunucu gecikmeniz benzerse, ancak daha düşük gecikme ye ihtiyacınız varsa, premium blok blob depolamaalanına geçiş yapmayı düşünün.
+Uçtan uca ve sunucu gecikme süresi benzerdir, ancak daha düşük gecikme süresine ihtiyacınız varsa Premium Blok Blob depolama alanına geçiş yapmayı düşünün.
 
-## <a name="factors-influencing-latency"></a>Gecikmeyi etkileyen faktörler
+## <a name="factors-influencing-latency"></a>Gecikme süresini etkileyen faktörler
 
-Gecikmeyi etkileyen ana faktör işlem boyutudur. Ağ üzerinden aktarılan ve Azure Depolama tarafından işlenen veri miktarı nedeniyle daha büyük işlemlerin tamamlanması daha uzun sürer.
+Ana faktör etkileyen gecikme süresi işlem boyutudur. Ağ üzerinden aktarılan ve Azure depolama tarafından işlenen veri miktarı nedeniyle daha büyük işlemleri tamamlaması daha uzun sürer.
 
-Aşağıdaki diyagram, çeşitli boyutlardaki işlemlerin toplam süresini gösterir. Küçük miktarda veri için gecikme aralığı, veri aktarmak yerine ağırlıklı olarak isteği işlemek için harcanmıştır. İşlem boyutu arttıkça gecikme aralığı sadece biraz artar (aşağıdaki diyagramda 1 işaretlenir). İşlem boyutu daha da arttıkça, toplam gecikme aralığının istek işleme ve veri aktarımı arasında bölünmesi için veri aktarımı için daha fazla zaman harcanmıştır (aşağıdaki diyagramda 2 işaretlenir). Daha büyük işlem boyutlarında, gecikme aralığı neredeyse yalnızca veri aktarımı için harcanmıştır ve istek işleme büyük ölçüde önemsizdir (aşağıdaki diyagramda 3 işaretlenmiştir).
+Aşağıdaki diyagramda, çeşitli boyutlardaki işlemler için toplam süre gösterilmektedir. Küçük miktarlarda veri için, gecikme aralığı, verileri aktarmak yerine, isteği işlemek için ağırlıklı. Gecikme aralığı, işlem boyutu arttıkça biraz artar (Aşağıdaki diyagramda 1 işaretlenir). İşlem boyutu arttıkça, veri aktarımı sırasında daha fazla zaman harcanarak toplam gecikme aralığı, istek işleme ve veri aktarımı arasında bölünür (Aşağıdaki diyagramda 2 işaretli). Daha büyük işlem boyutları ile, gecikme aralığı veri aktarımında neredeyse özellikle harcanmıştır ve istek işleme büyük ölçüde çok önemlidir (Aşağıdaki diyagramda 3 işaretlenir).
 
-![Toplam çalışma süresini çalışma boyutuna göre gösteren ekran görüntüsü](media/storage-blobs-latency/operation-time-size-chart.png)
+![İşlem boyutuna göre toplam işlem süresini gösteren ekran görüntüsü](media/storage-blobs-latency/operation-time-size-chart.png)
 
-Eşzamanlılık ve iş parçacığı gibi istemci yapılandırma faktörleri de gecikmeyi etkiler. Genel iş bilgililiği, herhangi bir zamanda kaç depolama isteğinin uçuşta olduğuna ve uygulamanızın iş parçacığı nı nasıl işlediğine bağlıdır. CPU, bellek, yerel depolama ve ağ arabirimleri de dahil olmak üzere istemci kaynakları gecikmeyi de etkileyebilir.
+Eşzamanlılık ve iş parçacığı gibi istemci yapılandırma faktörleri de gecikme süresini etkiler. Genel aktarım hızı, belirli bir zamanda ve uygulamanızın iş parçacığı işleme nasıl işlediğini gösteren depolama isteklerinin kaç tane üzerinde olduğuna bağlıdır. CPU, bellek, yerel depolama ve ağ arabirimleri dahil istemci kaynakları da gecikme süresini etkileyebilir.
 
-Azure Depolama isteklerini işleme, istemci CPU'su ve bellek kaynakları gerektirir. İstemci, yetersiz bir sanal makine veya sistemdeki bazı kaçak işlem nedeniyle baskı altındaysa, Azure Depolama isteklerini işlemek için daha az kaynak vardır. İstemci kaynaklarının herhangi bir çekişme veya eksikliği, sunucu gecikmesinde bir artış olmadan uçtan uca gecikmede artışa neden olur ve bu da iki ölçüm arasındaki boşluğu artırır.
+Azure depolama isteklerini işlemek için istemci CPU 'SU ve bellek kaynakları gerekir. İstemci, düşük güç kullanan bir sanal makine veya sistemdeki bazı ard bir işlem nedeniyle basınç altındaysa Azure Storage isteklerini işlemek için daha az kaynak bulunur. İstemci kaynaklarının herhangi bir çekişmesi veya olmaması, sunucu gecikmede bir artış olmadan uçtan uca gecikme süresi artarak, iki ölçüm arasındaki boşluğu arttırmaya neden olur.
 
-Aynı derecede önemli istemci ve Azure Depolama arasındaki ağ arabirimi ve ağ borusu. Örneğin, istemci VM farklı bir Azure bölgesinde veya şirket içindeyse, fiziksel mesafe tek başına önemli bir faktör olabilir. Ağ atlamaları, ISS yönlendirmesi ve internet durumu gibi diğer etkenler genel depolama gecikmesi etkileyebilir.
+Eşit oranda önemli olan ağ arabirimi ve istemci ile Azure depolama arasındaki ağ kanaldır. Tek başına fiziksel uzaklık önemli bir faktör olabilir. Örneğin, bir istemci VM 'si farklı bir Azure bölgedeyse veya şirket içinde olabilir. Ağ sıçramaları, ISS yönlendirme ve internet durumu gibi diğer faktörler, genel depolama gecikmesini etkileyebilir.
 
-Gecikme yi değerlendirmek için öncelikle senaryonuz için temel ölçümleri belirleyin. Temel ölçümler, iş yükü profilinize, uygulama yapılandırma ayarlarınıza, istemci kaynaklarını, ağ borusuna ve diğer etkenlere bağlı olarak uygulama ortamınız bağlamında beklenen uçtan uca ve sunucu gecikmesini sağlar. Temel ölçümlere sahip olduğunuzda, normal koşullara karşı anormal koşulları daha kolay tanımlayabilirsiniz. Temel ölçümler, uygulama yapılandırması veya VM boyutları gibi değiştirilen parametrelerin etkilerini gözlemlemenize de olanak tanır.
+Gecikme süresini değerlendirmek için öncelikle senaryonuz için temel ölçümleri oluşturun. Temel ölçümler, iş yükü profilinize, uygulama yapılandırma ayarlarınıza, istemci kaynaklarına, ağ kanala ve diğer faktörlere bağlı olarak, uygulama ortamınız bağlamında beklenen uçtan uca ve sunucu gecikme süresi sağlar. Temel ölçümleriniz olduğunda, olağan dışı ve normal koşulları daha kolay bir şekilde tanımlayabilirsiniz. Temel ölçümler Ayrıca, uygulama yapılandırması veya VM boyutları gibi değiştirilen parametrelerin etkilerini gözlemlemeye olanak tanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Blob depolama için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md)
-- [Blob depolama için performans ve ölçeklenebilirlik kontrol listesi](storage-performance-checklist.md)
+- [BLOB depolama için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md)
+- [BLOB depolama için performans ve ölçeklenebilirlik denetim listesi](storage-performance-checklist.md)

@@ -1,5 +1,5 @@
 ---
-title: API Yönetimi'nde kırılmayan değişiklikleri güvenli bir şekilde yapmak için düzeltmeleri kullanma
+title: API Management ' de bozmayan değişiklikler yapmak için düzeltmeleri kullanma
 titleSuffix: Azure API Management
 description: API Management’ta revizyonları kullanarak hataya neden olmayan değişiklikler yapmayı öğrenmek için bu öğreticideki adımları uygulayın.
 services: api-management
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75442743"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Hataya neden olmayan değişiklikleri güvenli bir şekilde yapmak için düzeltmeleri kullanma
 API’niz kullanıma hazır olduğunda ve geliştiriciler tarafından kullanılmaya başladığında genellikle bu API’de değişiklikler yapmak ve aynı zamanda API’nizi çağıranları kesintiye uğratmamak istersiniz. Yaptığınız değişiklikleri geliştiricilere bildirmeniz de yararlıdır. Azure API Management’da **düzeltmeleri** kullanarak bunu yapabilirsiniz. Daha fazla bilgi için bkz. [Sürümler ve revizyonlar](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) ve [Azure API Management ile API Sürümü Oluşturma](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yeni düzeltme ekleme
@@ -53,7 +53,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
     > Ayrıca API’nin açılır menüsünden (**...**) **Düzeltme Ekle**’yi seçebilirsiniz.
 
 5. Ne için kullanılacağını hatırlamaya yardımcı olmak için revizyonunuza ilişkin bir açıklama ekleyin.
-6. **Oluştur**’u seçin
+6. **Oluştur** ' u seçin
 7. Yeni bir düzeltme oluşturulur.
 
     > [!NOTE]
@@ -84,7 +84,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 2. **Düzeltme 2**’nin açılır menüsünü (**... **) açın.
 3. **Geçerli Hale Getir**’i seçin.
-4. Bu değişiklik hakkında notlar yayınlamak istiyorsanız **Bu API için Genel Değişiklik Günlüğüne Gönder**’i işaretleyin. Değişikliğiniz için geliştiricilerin gördüğü bir açıklama sağlayın, örneğin: **Düzeltmeleri test edin. Yeni "test" işlemi eklendi.**
+4. Bu değişiklik hakkında notlar yayınlamak istiyorsanız **Bu API için Genel Değişiklik Günlüğüne Gönder**’i işaretleyin. Değişiklik yapmak için geliştiricilerin göreceği bir açıklama girin, örneğin: **düzeltmeleri test etme. Yeni "test" işlemi eklendi.**
 5. **Düzeltme 2** artık geçerlidir.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Değişiklikleri ve değişiklik günlüğünü görmek için geliştirici portalına göz atma
@@ -93,7 +93,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 2. Üstteki menüden **Geliştirici Portalı**’nı seçin.
 3. **API'ler** ve ardından **Tanıtım Konferans API’si** öğesini seçin.
 4. Yeni **test** işleminizin artık kullanılabilir olduğuna dikkat edin.
-5. API adının yanındaki **Changelog'a** tıklayın.
+5. API adının yakınında **changelog** öğesine tıklayın.
 6. Değişiklik günlüğü girdinizin bu listede göründüğüne dikkat edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

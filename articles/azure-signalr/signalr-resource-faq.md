@@ -1,70 +1,70 @@
 ---
-title: Azure SignalR Hizmeti sık sorulan sorular
-description: Azure Sinyal Hizmeti'nde sorun giderme ve tipik kullanım senaryoları hakkında sık sorulan sorulara hızlı erişim edin.
+title: Azure SignalR hizmeti hakkında sık sorulan sorular
+description: Azure SignalR hizmeti hakkında sık sorulan soruların ve sorun giderme ve tipik kullanım senaryolarında hızlı bir şekilde erişmesini sağlayabilirsiniz.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75891261"
 ---
-# <a name="azure-signalr-service-faq"></a>Azure SignalR Hizmeti SSS
+# <a name="azure-signalr-service-faq"></a>Azure SignalR hizmeti hakkında SSS
 
-## <a name="is-azure-signalr-service-ready-for-production-use"></a>Azure SignalR Hizmeti üretim eki kullanıma hazır mı?
+## <a name="is-azure-signalr-service-ready-for-production-use"></a>Azure SignalR hizmeti üretim kullanımı için hazırlanıyor mu?
 
 Evet.
-Genel kullanılabilirlik duyurumuz için [Azure SignalR Hizmeti'ne](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/)bakın. 
+Genel kullanılabilirlik duyurumız için bkz. [Azure SignalR hizmeti genel kullanıma sunuldu](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/). 
 
 [ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction) tam olarak desteklenir.
 
-SignalR ASP.NET desteği hala *genel önizlemede.* Burada bir [kod örneği.](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom)
+ASP.NET SignalR desteği hala *genel önizlemede*. Aşağıda bir [kod örneği](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom)verilmiştir.
 
-## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>İstemci bağlantısı "Sunucu yok" hata iletisiyle kapanır. Bu ne anlama geliyor?
+## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>Istemci bağlantısı, "sunucu kullanılamıyor" hata iletisiyle kapanıyor. Ne anlama geliyor?
 
-Bu hata yalnızca istemciler SignalR Hizmetine ileti gönderirken oluşur.
+Bu hata yalnızca istemciler SignalR hizmetine ileti gönderirken oluşur.
 
-Herhangi bir uygulama sunucusu yoksa ve yalnızca SignalR Service REST API kullanıyorsanız, bu davranış **tasarım gereğidir.**
-Sunucusuz mimaride istemci bağlantıları **LISTEN** modundadır ve SignalR Hizmeti'ne ileti göndermez.
+Herhangi bir uygulama sunucunuz yoksa ve yalnızca SignalR hizmeti REST API kullanıyorsanız, bu davranış **tasarıma göre**yapılır.
+Sunucusuz mimaride, istemci bağlantıları **dinleme** modundadır ve SignalR hizmetine ileti göndermez.
 [REST API](./signalr-quickstart-rest-api.md)hakkında daha fazla bilgi edinin.
 
-Uygulama sunucularınız varsa, bu hata iletisi SinyalR Hizmeti örneğinize hiçbir uygulama sunucusunun bağlı olmadığı anlamına gelir.
+Uygulama sunucularınız varsa, bu hata iletisi, SignalR hizmet örneğinize bağlı hiçbir uygulama sunucusu olmadığı anlamına gelir.
 
-Olası nedenleri şunlardır:
-- SignalR Hizmeti ile hiçbir uygulama sunucusu bağlı değildir. Olası bağlantı hataları için uygulama sunucusu günlüklerini denetleyin. Bu durumda birden fazla uygulama sunucusu ile yüksek kullanılabilirlik ayarında nadirdir.
-- SignalR Service örnekleriile bağlantı sorunları vardır. Bu sorun geçicidir ve otomatik olarak kurtarılır.
-Bir saatten uzun süre devam ederse, [GitHub'da bir sorun açın](https://github.com/Azure/azure-signalr/issues/new) veya [Azure'da bir destek isteği oluşturun.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
+Olası nedenler şunlardır:
+- SignalR hizmeti ile hiçbir uygulama sunucusu bağlanmadı. Olası bağlantı hataları için uygulama sunucusu günlüklerine bakın. Bu durumda, birden fazla uygulama sunucusu olan yüksek kullanılabilirlik ayarında nadir olarak karşılaşılır.
+- SignalR hizmet örneklerinde bağlantı sorunları var. Bu sorun geçicidir ve otomatik olarak kurtarılır.
+Bir saatten uzun süre devam ederse, [GitHub 'da bir sorun açın](https://github.com/Azure/azure-signalr/issues/new) veya [Azure 'da bir destek isteği oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Birden çok uygulama sunucusu olduğunda, istemci iletileri tüm sunuculara mı yoksa yalnızca bir sunucuya mı gönderilir?
+## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Birden çok uygulama sunucusu olduğunda, istemci iletileri tüm sunuculara mı, yoksa yalnızca biri mi gönderilir?
 
-İstemci ve uygulama sunucusu arasında bire bir eşlemedir. Bir istemciden gelen iletiler her zaman aynı uygulama sunucusuna gönderilir.
+İstemci ve uygulama sunucusu arasında bire bir eşleme olur. Bir istemciden gelen iletiler her zaman aynı uygulama sunucusuna gönderilir.
 
-İstemci ve uygulama sunucusu arasındaki eşleme, istemci veya uygulama sunucusu bağlantı kesilene kadar korunur.
+İstemci veya uygulama sunucusu bağlantısı kesilene kadar, istemci ve uygulama sunucusu arasındaki eşleme korunur.
 
-## <a name="if-one-of-my-application-servers-is-down-how-can-i-find-it-and-get-notified"></a>Uygulama sunucularımdan biri çalışmıyorsa, nasıl bulabilirim ve bilgilendirilebilir miyim?
+## <a name="if-one-of-my-application-servers-is-down-how-can-i-find-it-and-get-notified"></a>Uygulama sunucularım kapalıysa, nasıl öğrenebilirim ve bildirim alabilir?
 
-SignalR Service, uygulama sunucularından sinyalatlarını izler.
-Sinyaller belirli bir süre için alınmazsa, uygulama sunucusu çevrimdışı olarak kabul edilir. Bu uygulama sunucusuna eşlenen tüm istemci bağlantıları nın bağlantısı kesilir.
+SignalR hizmeti, uygulama sunucularından sinyalleri izler.
+Belirli bir süre için sinyaller alınmıyorsa, uygulama sunucusu çevrimdışı kabul edilir. Bu uygulama sunucusuyla eşlenen tüm istemci bağlantılarının bağlantısı kesilecek.
 
-## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>ASP.NET Core `IUserIdProvider` SignalR SDK'dan Azure SignalR Service SDK'ya geçerken özel atma istisnam neden geçerli?
+## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>ASP.NET Core SignalR SDK `IUserIdProvider` 'Dan Azure SignalR HIZMETI SDK 'sına geçiş yaparken özel throw özel durumu neden kullanılır?
 
-Parametre, `HubConnectionContext context` çağrıldığında `IUserIdProvider` ASP.NET Core SignalR SDK ile Azure SignalR Service SDK arasında farklıdır.
+Parametresi `HubConnectionContext context` , çağrıldığında ASP.NET Core SignalR SDK ve Azure SignalR HIZMETI SDK 'sı `IUserIdProvider` arasında farklıdır.
 
-Core SignalR ASP.NET, `HubConnectionContext context` tüm özellikler için geçerli değerler ile fiziksel istemci bağlantısından bağlamdır.
+ASP.NET Core SignalR 'de, `HubConnectionContext context` fiziksel istemci bağlantısının tüm özellikler için geçerli değerlerle olan bağlamıdır.
 
-Azure SignalR Hizmeti SDK, `HubConnectionContext context` mantıksal istemci bağlantısından bağlamdır. Fiziksel istemci bağlantısı SignalR Hizmeti örneğine bağlanır, bu nedenle yalnızca sınırlı sayıda özellik sağlanır.
+Azure SignalR hizmeti SDK 'sında, `HubConnectionContext context` mantıksal istemci bağlantısının bağlamıdır. Fiziksel istemci bağlantısı, SignalR hizmeti örneğine bağlanır, bu nedenle yalnızca sınırlı sayıda özellik sağlanır.
 
-Şimdilik, sadece `HubConnectionContext.GetHttpContext()` `HubConnectionContext.User` ve erişim için kullanılabilir.
-Kaynak kodunu [buradan](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs)kontrol edebilirsiniz.
+Şimdilik yalnızca `HubConnectionContext.GetHttpContext()` ve `HubConnectionContext.User` erişim için kullanılabilir.
+Kaynak kodunu [buradan](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs)denetleyebilirsiniz.
 
-## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>SignalR Hizmeti'nde bulunan taşımaları sunucu tarafında core signalr ile ASP.NET olarak yapılandırabilir miyim? Örneğin, WebSocket aktarımDevre dışı?
+## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>SignalR hizmetinde bulunan aktarımları, sunucu tarafında ASP.NET Core SignalR ile yapılandırma olarak yapılandırabilir miyim? Örneğin, WebSocket aktarımını devre dışı bırakmak istiyor musunuz?
 
 Hayır.
 
-Azure SignalR Hizmeti, Core SignalR'ASP.NET varsayılan olarak desteklediği üç aktarım sağlar. Yapılandırılamaz. SignalR Hizmeti, tüm istemci bağlantıları için bağlantıları ve taşımaları işleyecek.
+Azure SignalR hizmeti, ASP.NET Core SignalR 'nin desteklediği üç aktarımı varsayılan olarak sağlar. Yapılandırılamaz. SignalR hizmeti, tüm istemci bağlantıları için bağlantıları ve aktarımları işleyecek.
 
-İstemci tarafı aktarımlarını [burada](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)belgelenmiş şekilde yapılandırabilirsiniz.
+İstemci tarafı taşımalarını [burada](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)belgelenen şekilde yapılandırabilirsiniz.
