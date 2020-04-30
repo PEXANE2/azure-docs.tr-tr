@@ -3,12 +3,12 @@ title: Tüm ortamlarda Java uygulamalarını izleme-Azure Izleyici Application I
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687726"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508080"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
 
@@ -24,11 +24,11 @@ Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, tüm 
 
 **1. aracıyı indirin**
 
-[Applicationinsights-Agent-3.0.0-PREVIEW. 3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar) dosyasını indirin
+[Applicationinsights-Agent-3.0.0-PREVIEW. 4. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) dosyasını indirin
 
 **2. JVM 'yi aracıya işaret edin**
 
-Uygulamanızın `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` JVM bağımsız değişkenlerini ekleyin
+Uygulamanızın `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` JVM bağımsız değişkenlerini ekleyin
 
 Tipik JVM bağımsız değişkenleri `-Xmx512m` ve `-XX:+UseG1GC`içerir. Bu nedenle, bunların nereye ekleneceğini biliyorsanız, bunun nereye ekleneceğini zaten öğrenmiş olursunuz.
 
@@ -44,7 +44,7 @@ Bir ortam değişkenini ayarlayarak aracıyı Application Insights kaynağına g
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Ya da adlı `ApplicationInsights.json`bir yapılandırma dosyası oluşturup, ile aynı dizine `applicationinsights-agent-3.0.0-PREVIEW.3.jar`yerleştirilerek aşağıdaki içerikle birlikte:
+Ya da adlı `ApplicationInsights.json`bir yapılandırma dosyası oluşturup, ile aynı dizine `applicationinsights-agent-3.0.0-PREVIEW.4.jar`yerleştirilerek aşağıdaki içerikle birlikte:
 
 ```json
 {
@@ -117,7 +117,7 @@ Ayrıntılar için bkz. [3,0 genel önizleme: yapılandırma seçenekleri](https
 
 ### <a name="metrics"></a>Ölçümler
 
-* Micrometer
+* Mikro ölçer (Spring Boot çalıştırıcı ölçümleri dahil)
 * JMX ölçümleri
 
 ## <a name="sending-custom-telemetry-from-your-application"></a>Uygulamanızdan Özel telemetri gönderme
@@ -195,7 +195,7 @@ Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 En sevdiğiniz günlük çatısı aracılığıyla özel özel durum telemetrisi gönderebilirsiniz.
 
 Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:

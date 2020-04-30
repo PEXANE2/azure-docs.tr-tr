@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: a9c167c5767a4156147e13a1e4ae21162e506474
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3618e6d3fe919bc06496d5b41d162bd211c3d404
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75445868"
+ms.locfileid: "82231943"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Azure Logic Apps 'de yinelenme tetikleyicisiyle yinelenen görevleri ve iş akışlarını oluşturma, zamanlama ve çalıştırma
 
@@ -77,7 +77,7 @@ Bu tetikleyici ve kayan pencere tetikleyicisi arasındaki farklar veya yinelenen
    | **Saat dilimi** | `timeZone` | Hayır | Dize | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici [UTC sapmasını](https://en.wikipedia.org/wiki/UTC_offset)kabul etmez. Uygulamak istediğiniz saat dilimini seçin. |
    | **Başlangıç saati** | `startTime` | Hayır | Dize | Bu biçimde bir başlangıç tarihi ve saati belirtin: <p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz <p>-veya- <p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme <p>Örneğin, 18 Eylül 2017, 2:00 PM üzerinde istiyorsanız, "2017-09-18T14:00:00" belirtin ve Pasifik standart saati gibi bir saat dilimi seçin. Ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu başlangıç saati, gelecekte en fazla 49 yıla sahiptir ve UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) UTC [Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC bir fark](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Bir saat dilimi seçmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak karmaşık zamanlamalar için tetikleyici başlangıç zamanından daha önce harekete geçmez. [*Başlangıç tarihini ve saatini kullanmanın yolları nelerdir?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    | **Şu günlerde** | `weekDays` | Hayır | Dize veya dize dizisi | "Hafta" seçeneğini belirlerseniz, iş akışını çalıştırmak istediğinizde bir veya daha fazla gün seçebilirsiniz: **Pazartesi**, **Salı**, **Çarşamba**, **Perşembe**, **Cuma**, **Cumartesi**ve **Pazar** |
-   | **Şu saatlerde** | `hours` | Hayır | Tamsayı veya tamsayı dizisi | "Gün" veya "hafta" seçeneğini belirlerseniz, iş akışını çalıştırmak istediğiniz günün saati olarak 0 ile 23 arasında bir veya daha fazla tamsayı seçebilirsiniz. <p><p>Örneğin, "10", "12" ve "14" belirtirseniz günün saati için 10 har, 12 PM ve 2 PM elde edersiniz, ancak günün tutanakları yineleme başladığı zaman temel alınarak hesaplanır. Günün dakikalarını ayarlamak için, **Bu dakika** özelliği için değeri belirtin. |
+   | **Şu saatlerde** | `hours` | Hayır | Tamsayı veya tamsayı dizisi | "Gün" veya "hafta" seçeneğini belirlerseniz, iş akışını çalıştırmak istediğiniz günün saati olarak 0 ile 23 arasında bir veya daha fazla tamsayı seçebilirsiniz. <p><p>Örneğin, "10", "12" ve "14" belirtirseniz günün saati için 10 har, 12 PM ve 2 PM elde edersiniz, ancak günün tutanakları yineleme başladığı zaman temel alınarak hesaplanır. Günün belirli dakikalarını ayarlamak için (örneğin, 10:00, 12:00 PM ve 2:00 PM), **Bu değerleri bu dakika** özelliğini kullanarak belirtin. |
    | **Şu dakikalarda** | `minutes` | Hayır | Tamsayı veya tamsayı dizisi | "Gün" veya "hafta" seçeneğini belirlerseniz, iş akışını çalıştırmak istediğiniz saatin dakikası olarak 0 ile 59 arasında bir veya daha fazla tamsayı seçebilirsiniz. <p>Örneğin, "30" öğesini dakika işareti olarak belirtebilir ve günün saati için önceki örneği kullanarak 10:30, 12:30 PM ve 2:30 PM kazanın. |
    |||||
 

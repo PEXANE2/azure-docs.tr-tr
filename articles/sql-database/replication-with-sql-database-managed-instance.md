@@ -1,6 +1,6 @@
 ---
 title: Yönetilen örnek veritabanında çoğaltmayı yapılandırma
-description: Azure SQL Veritabanı yönetilen örnek yayımcısı/dağıtıcısı ve yönetilen örnek abone arasında işlem çoğaltma yapılandırmayı öğrenin.
+description: Azure SQL veritabanı yönetilen örneği yayımcısı/dağıtıcı ve yönetilen örnek abonesi arasında işlemsel çoğaltmayı yapılandırmayı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,91 +10,94 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
-ms.date: 02/07/2019
-ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 9ac30b6d502bb0fbdb454d7a3c36cde23a57fb6b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299082"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231637"
 ---
-# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL Veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma
 
-İşlemsel çoğaltma, verileri BIR SQL Server veritabanından veya başka bir örnek veritabanından Azure SQL Veritabanı yönetilen örnek veritabanında çoğaltmanızı sağlar. 
+İşlemsel çoğaltma, verileri bir Azure SQL veritabanı yönetilen örnek veritabanına SQL Server veritabanından veya başka bir örnek veritabanından çoğaltmanıza olanak sağlar.
 
-Bu makalede, yönetilen bir örnek yayımcı/dağıtıcı ve yönetilen bir örnek abone arasında çoğaltma nasıl yapılandırılabildiğini gösterir. 
+> [!NOTE]
+> Bu makalede, Azure SQL yönetilen örneği 'nde [İşlemsel çoğaltmanın](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Her bir örnek için tam okunabilir çoğaltmalar oluşturmanıza olanak sağlayan bir Azure SQL yönetilen örnek özelliği olan etkin coğrafi çoğaltma veya [Yük devretme gruplarıyla](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)ilgisi yoktur.
 
-![Yönetilen iki örnek arasında çoğaltma](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
+Bu makalede, yönetilen bir örnek yayımcısı/dağıtıcı ve yönetilen örnek abonesi arasındaki çoğaltmanın nasıl yapılandırılacağı gösterilir. 
 
-Ayrıca, Azure SQL Veritabanı'nda yönetilen bir örnek veritabanında yapılan değişiklikleri şu şekilde itmek için işlem çoğaltmayı da kullanabilirsiniz:
+![İki yönetilen örnek arasında Çoğalt](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
+
+Azure SQL veritabanı yönetilen örneği 'nde bir örnek veritabanında yapılan değişiklikleri şu şekilde göndermek için işlem çoğaltmayı da kullanabilirsiniz:
 
 - Bir SQL Server veritabanı.
-- Azure SQL Veritabanı'nda tek bir veritabanı.
-- Azure SQL Veritabanı elastik havuzunda havuzlu veritabanı.
+- Azure SQL veritabanı 'nda tek bir veritabanı.
+- Azure SQL veritabanı elastik havuzundaki havuza alınmış bir veritabanı.
  
-İşlem çoğaltma, Azure SQL [Veritabanı yönetilen örnekte](sql-database-managed-instance.md)genel önizlemededir. Yönetilen bir örnek yayımcı, dağıtıcı ve abone veritabanlarını barındırabilir. Kullanılabilir yapılandırmalar için [işlem çoğaltma yapılandırmalarına](sql-database-managed-instance-transactional-replication.md#common-configurations) bakın.
+İşlemsel çoğaltma, [Azure SQL veritabanı yönetilen örneği](sql-database-managed-instance.md)'nin Genel önizlemededir. Yönetilen bir örnek, Yayımcı, dağıtıcı ve abone veritabanlarını barındırabilirler. Kullanılabilir konfigürasyonlar için [işlem çoğaltma yapılandırmalarına](sql-database-managed-instance-transactional-replication.md#common-configurations) bakın.
 
   > [!NOTE]
-  > - Bu makalede, kaynak grubu oluşturma ile başlayarak, bir Azure Veritabanı yönetilen örnek ile çoğaltma yapılandırmada bir kullanıcı ya da baştan sona yönlendirmek için tasarlanmıştır. Zaten dağıtılmış örnekleri başardıysanız, yayımcı veritabanınızı oluşturmak için [Adım 4'e](#4---create-a-publisher-database) veya zaten bir yayımcı ve abone veritabanınız varsa ve çoğaltma yapılandırmaya başlamaya hazırsanız [Adım 6'ya](#6---configure-distribution) geçin.  
-  > - Bu makale, yayımcınızı ve dağıtıcınızı aynı yönetilen örnekte yapılandırır. Dağıtıcıyı ayrı bir manged örneğine yerleştirmek için, [bir MI yayımcısı ile BIR MI dağıtıcısı arasındaki](sql-database-managed-instance-configure-replication-tutorial.md)çoğaltmayı yapılandıran öğreticiye bakın. 
+  > - Bu makale, kaynak grubu oluşturmaya başlamadan önce Azure veritabanı yönetilen örneği ile uçtan uca çoğaltma yapılandırma konusunda bir kullanıcıya kılavuzluk amaçlıdır. Zaten dağıtılan yönetilen örneklere sahipseniz, yayımcı veritabanınızı oluşturmak için [4. adıma](#4---create-a-publisher-database) atlayın veya zaten bir yayımcı ve abone veritabanınız varsa ve çoğaltmayı yapılandırmaya başlamaya hazırsanız [6. adıma](#6---configure-distribution) geçin.  
+  > - Bu makale, aynı yönetilen örnek üzerinde yayımcısını ve dağıtıcısını yapılandırır. Dağıtıcıyı ayrı bir manşlı örneğine yerleştirmek için, [BIR mı yayımcısı ile MI mi dağıtıcısı arasında çoğaltmayı yapılandırma](sql-database-managed-instance-configure-replication-tutorial.md)öğreticisine bakın. 
 
 ## <a name="requirements"></a>Gereksinimler
 
-Yönetilen bir örneğin yayımcı ve/veya dağıtıcı olarak işlev göreyönetilmesi şunları gerektirir:
+Bir yönetilen örneği yayımcı ve/veya bir dağıtıcı olarak çalışacak şekilde yapılandırmak için şunları yapmanız gerekir:
 
-- Yayımcı yönetilen örneğinin dağıtıcı ve aboneyle aynı sanal ağda olması veya üç varlığın sanal ağları arasında [vNet eşleme](../virtual-network/tutorial-connect-virtual-networks-powershell.md) sayılmı oluşturulmuştur. 
+- Yayımcı tarafından yönetilen örnek, dağıtıcı ve abone ile aynı sanal ağda, ya da her üç varlığın sanal ağları arasında [vNet eşlemesi](../virtual-network/tutorial-connect-virtual-networks-powershell.md) oluşturulmuştur. 
 - Bağlantı, çoğaltma katılımcıları arasında SQL Kimlik Doğrulaması kullanır.
-- Çoğaltma çalışma dizini için bir Azure Depolama Hesabı paylaşımı.
-- Azure dosya paylaşımına erişmek için yönetilen örnekler için NSG'nin güvenlik kurallarında Bağlantı Noktası 445 (TCP giden) açıktır.  "Azure depolama depolama \<hesap adı> os hatası 53 ile bağlanamadığını" hatayla karşılaşırsanız, ilgili SQL Yönetilen Örnek Alt netinNG'ye giden bir kural eklemeniz gerekir.
+- Çoğaltma çalışma dizini için bir Azure depolama hesabı payı.
+- Bağlantı noktası 445 (TCP Giden), yönetilen örneklerin Azure dosya paylaşımında erişmesi için NSG güvenlik kurallarında açıktır.  "Azure depolama \<depolama hesabı adına bağlanılamadı> os hatası 53" hatasıyla karşılaşırsanız, uygun SQL yönetilen örnek alt ağının NSG 'ye bir giden kuralı eklemeniz gerekir.
 
 
  > [!NOTE]
- > Azure SQL Veritabanı'nda tek veritabanları ve havuza toplanan veritabanları yalnızca abone olabilir. 
+ > Azure SQL veritabanı 'nda tek veritabanları ve havuza alınmış veritabanları yalnızca aboneler olabilir. 
 
 
 ## <a name="features"></a>Özellikler
 
-Destekle -yen:
+Desteklememektedir
 
-- Sql Server'ın şirket içi ve yönetilen örneklerinin Azure SQL Veritabanı'nda işlem selve anlık çoğaltma karışımı.
-- Aboneler şirket içi SQL Server veritabanlarında, Azure SQL Veritabanı'nda tek veritabanlarında/yönetilen örneklerde veya Azure SQL Veritabanı elastik havuzlarında birleştirilmiş veritabanlarında bulunabilir.
+- Azure SQL veritabanı 'nda şirket içi SQL Server ve yönetilen örneklerin işlem ve anlık görüntü çoğaltma karışımı.
+- Aboneler şirket içi SQL Server veritabanlarında, Azure SQL veritabanı 'nda tek veritabanlarında/yönetilen örneklerde veya Azure SQL veritabanı elastik havuzlarında havuza alınmış veritabanlarında bulunabilir.
 - Tek yönlü veya çift yönlü çoğaltma.
 
-Aşağıdaki özellikler Azure SQL Veritabanı'nda yönetilen bir örnekte desteklenmez:
+Azure SQL veritabanı 'nda yönetilen bir örnekte aşağıdaki özellikler desteklenmez:
 
-- [Güncel abonelikler.](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication)
-- İşlemsel çoğaltma ile [etkin coğrafi çoğaltma.](sql-database-active-geo-replication.md) Etkin coğrafi çoğaltma yerine, [Otomatik başarısız grupları](sql-database-auto-failover-group.md)kullanın, ancak yayının birincil yönetilen örnekten [el ile silinmesi](sql-database-managed-instance-transact-sql-information.md#replication) ve başarısız olduktan sonra ikincil yönetilen örnekte yeniden oluşturulması gerektiğini unutmayın.  
+- [Güncelleştirilebilir abonelikler](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication).
+- Işlemsel çoğaltma ile [etkin coğrafi çoğaltma](sql-database-active-geo-replication.md) . Etkin coğrafi çoğaltma yerine, [otomatik yük devretme grupları](sql-database-auto-failover-group.md)kullanın, ancak yayının birincil yönetilen örnekten [el ile silinmesi](sql-database-managed-instance-transact-sql-information.md#replication) ve yük devretmeden sonra ikincil yönetilen örnek üzerinde yeniden oluşturulması gerektiğini unutmayın.  
  
-## <a name="1---create-a-resource-group"></a>1 - Kaynak grubu oluşturma
+## <a name="1---create-a-resource-group"></a>1-kaynak grubu oluşturma
 
-Adında `SQLMI-Repl`bir kaynak grubu oluşturmak için [Azure portalını](https://portal.azure.com) kullanın.  
+Ada `SQLMI-Repl`sahip bir kaynak grubu oluşturmak için [Azure Portal](https://portal.azure.com) kullanın.  
 
-## <a name="2---create-managed-instances"></a>2 - Yönetilen örnekleri oluşturma
+## <a name="2---create-managed-instances"></a>2-yönetilen örnekler oluşturma
 
-Aynı sanal ağ da ve alt ağda yönetilen iki [örnek](sql-database-managed-instance-create-tutorial-portal.md) oluşturmak için [Azure portalını](https://portal.azure.com) kullanın. Örneğin, yönetilen iki örneği adlandırın:
+Aynı sanal ağ ve alt ağ üzerinde iki [yönetilen örnek](sql-database-managed-instance-create-tutorial-portal.md) oluşturmak için [Azure Portal](https://portal.azure.com) kullanın. Örneğin, iki yönetilen örneği adlandırın:
 
-- `sql-mi-pub`(rastgeleleştirme için bazı karakterlerle birlikte)
-- `sql-mi-sub`(rastgeleleştirme için bazı karakterlerle birlikte)
+- `sql-mi-pub`(rastgele seçme için bazı karakterlerle birlikte)
+- `sql-mi-sub`(rastgele seçme için bazı karakterlerle birlikte)
 
-Ayrıca, Azure SQL Veritabanı yönetilen örneklerinize [bağlanmak için bir Azure VM yapılandırmanız](sql-database-managed-instance-configure-vm.md) gerekir. 
+Ayrıca, Azure SQL veritabanı yönetilen örneklerinizi [bağlamak için bir Azure VM yapılandırmanız](sql-database-managed-instance-configure-vm.md) gerekecektir. 
 
-## <a name="3---create-azure-storage-account"></a>3 - Azure Depolama Hesabı Oluştur
+## <a name="3---create-azure-storage-account"></a>3-Azure depolama hesabı oluşturma
 
-Çalışma dizini için [bir Azure Depolama Hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) ve ardından depolama hesabı içinde bir dosya [paylaşımı](../storage/files/storage-how-to-create-file-share.md) oluşturun. 
+Çalışma dizini için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) ve ardından depolama hesabı içinde bir [dosya paylaşma](../storage/files/storage-how-to-create-file-share.md) oluşturun. 
 
-Dosya paylaşım yolunu aşağıdaki biçiminde kopyalayın:`\\storage-account-name.file.core.windows.net\file-share-name`
+Dosya paylaşımının yolunu şu biçimde kopyalayın:`\\storage-account-name.file.core.windows.net\file-share-name`
 
 Örnek: `\\replstorage.file.core.windows.net\replshare`
 
-Depolama erişim anahtarlarını aşağıdaki biçiminde kopyalayın:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Depolama erişim anahtarlarını şu biçimde kopyalayın:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
 Örnek: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 
-Daha fazla bilgi için [bkz.](../storage/common/storage-account-keys-manage.md) 
+Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md). 
 
-## <a name="4---create-a-publisher-database"></a>4 - Yayıncı veritabanı oluşturma
+## <a name="4---create-a-publisher-database"></a>4-Yayımcı veritabanı oluşturma
 
-SQL Server `sql-mi-pub` Management Studio'yu kullanarak yönetilen örneğinize bağlanın ve yayıncı veritabanınızı oluşturmak için aşağıdaki Transact-SQL (T-SQL) kodunu çalıştırın:
+SQL Server Management Studio kullanarak `sql-mi-pub` yönetilen örneğinize bağlanın ve yayımcı veritabanınızı oluşturmak Için aşağıdaki Transact-SQL (T-SQL) kodunu çalıştırın:
 
 ```sql
 USE [master]
@@ -126,9 +129,9 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="5---create-a-subscriber-database"></a>5 - Abone veritabanı oluşturma
+## <a name="5---create-a-subscriber-database"></a>5-abone veritabanı oluşturma
 
-SQL Server `sql-mi-sub` Management Studio'yu kullanarak yönetilen örneğinize bağlanın ve boş abone veritabanınızı oluşturmak için aşağıdaki T-SQL kodunu çalıştırın:
+SQL Server Management Studio kullanarak `sql-mi-sub` yönetilen örneğinize bağlanın ve boş abone veritabanınızı oluşturmak Için aşağıdaki T-SQL kodunu çalıştırın:
 
 ```sql
 USE [master]
@@ -147,9 +150,9 @@ CREATE TABLE ReplTest (
 GO
 ```
 
-## <a name="6---configure-distribution"></a>6 - Yapıdağılımı
+## <a name="6---configure-distribution"></a>6-dağıtımı yapılandırma
 
-SQL Server `sql-mi-pub` Management Studio'yu kullanarak yönetilen örneğinize bağlanın ve dağıtım veritabanınızı yapılandırmak için aşağıdaki T-SQL kodunu çalıştırın. 
+SQL Server Management Studio kullanarak `sql-mi-pub` yönetilen örneğinize bağlanın ve dağıtım veritabanınızı yapılandırmak Için aşağıdaki T-SQL kodunu çalıştırın. 
 
 ```sql
 USE [master]
@@ -160,9 +163,9 @@ EXEC sp_adddistributiondb @database = N'distribution';
 GO
 ```
 
-## <a name="7---configure-publisher-to-use-distributor"></a>7 - Yayıncıyı distribütör kullanacak şekilde yapılandırın 
+## <a name="7---configure-publisher-to-use-distributor"></a>7-yayımcıyı dağıtıcı kullanacak şekilde yapılandırma 
 
-Yayımcı yönetilen `sql-mi-pub`örneğinde, sorgu yürütmesini [SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) moduna geçin ve yeni dağıtıcıyı yayımcınıza kaydetmek için aşağıdaki kodu çalıştırın. 
+Yayımcı yönetilen `sql-mi-pub`Örneğinizde sorgu yürütmeyi [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) moduna değiştirin ve yeni dağıtıcıyı yayınınızdan kaydettirmek için aşağıdaki kodu çalıştırın. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -184,13 +187,13 @@ EXEC sp_adddistpublisher
 ```
 
    > [!NOTE]
-   > file_storage parametresi için yalnızca`\`ters eğik çizgi () kullandığınızdan emin olun. İleri eğik`/`çizgi () kullanmak, dosya paylaşımına bağlanırken hataya neden olabilir. 
+   > File_storage parametresi için yalnızca ters eğik çizgi`\`() kullandığınızdan emin olun. Eğik çizgi (`/`) kullanmak dosya paylaşımıyla bağlantı kurulurken hataya neden olabilir. 
 
-Bu komut dosyası yönetilen örnekte yerel bir yayımcıyı yapılandırır, bağlantılı bir sunucu ekler ve SQL Server Agent için bir iş kümesi oluşturur. 
+Bu betik, yönetilen örnekte yerel bir yayımcıyı yapılandırır, bağlantılı bir sunucu ekler ve SQL Server Agent bir dizi iş oluşturur. 
 
-## <a name="8---create-publication-and-subscriber"></a>8 - Yayın ve abone oluşturma
+## <a name="8---create-publication-and-subscriber"></a>8-Yayın ve abone oluşturma
 
-[SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) modunu kullanarak, veritabanınız için çoğaltmayı etkinleştirmek ve yayımcınız, dağıtıcınız ve aboneniz arasında çoğaltmayı yapılandırmak için aşağıdaki T-SQL komut dosyasını çalıştırın. 
+[Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) modunu kullanarak, veritabanınız için çoğaltmayı etkinleştirmek ve Yayımcı, dağıtıcı ve abone arasında çoğaltmayı yapılandırmak Için aşağıdaki T-SQL betiğini çalıştırın. 
 
 ```sql
 -- Set variables
@@ -267,11 +270,11 @@ EXEC sp_startpublication_snapshot
   @publication = N'$(publication_name)';
 ```
 
-## <a name="9---modify-agent-parameters"></a>9 - Aracı parametrelerini değiştirin
+## <a name="9---modify-agent-parameters"></a>9-aracı parametrelerini değiştirme
 
-Azure SQL Veritabanı yönetilen örnek şu anda çoğaltma aracıları ile bağlantı ile bazı arka uç sorunları yaşıyor. Bu sorun giderilirken, çoğaltma aracıları için oturum açma süresi değerini artırmak için geçici çözüm. 
+Azure SQL veritabanı yönetilen örneği şu anda çoğaltma aracılarıyla bağlantı ile bazı arka uç sorunları yaşıyor. Bu soruna değinirken, çoğaltma aracıları için oturum açma zaman aşımı değerini artırmak için geçici çözüm. 
 
-Giriş zamanını artırmak için yayımcıda aşağıdaki T-SQL komutunu çalıştırın: 
+Oturum açma zaman aşımını artırmak için yayımcıda aşağıdaki T-SQL komutunu çalıştırın: 
 
 ```sql
 -- Increase login timeout to 150s
@@ -279,7 +282,7 @@ update msdb..sysjobsteps set command = command + N' -LoginTimeout 150'
 where subsystem in ('Distribution','LogReader','Snapshot') and command not like '%-LoginTimeout %'
 ```
 
-Oturum açma zaman larını varsayılan değere geri ayarlamak için aşağıdaki T-SQL komutunu yeniden çalıştırın, bunu yapmanız gerekir:
+Oturum açma zaman aşımını varsayılan değere geri ayarlamak için aşağıdaki T-SQL komutunu tekrar çalıştırın, bunu yapmanız gerekir:
 
 ```sql
 -- Increase login timeout to 30
@@ -287,19 +290,19 @@ update msdb..sysjobsteps set command = command + N' -LoginTimeout 30'
 where subsystem in ('Distribution','LogReader','Snapshot') and command not like '%-LoginTimeout %'
 ```
 
-Bu değişiklikleri uygulamak için üç aracıyı yeniden başlatın. 
+Bu değişiklikleri uygulamak için üç aracıyı de yeniden başlatın. 
 
-## <a name="10---test-replication"></a>10 - Test çoğaltma
+## <a name="10---test-replication"></a>10-test çoğaltma
 
-Çoğaltma yapılandırıldıktan sonra, yayımcıya yeni öğeler ekleyerek ve değişikliklerin aboneye yayılmasını izleyerek bunu sınayabilirsiniz. 
+Çoğaltma yapılandırıldıktan sonra, yayımcıya yeni öğeler ekleyerek ve abonelere yayan değişiklikleri izleyerek test edebilirsiniz. 
 
-Abonedeki satırları görüntülemek için aşağıdaki T-SQL snippet'i çalıştırın:
+Abone üzerindeki satırları görüntülemek için aşağıdaki T-SQL kod parçacığını çalıştırın:
 
 ```sql
 select * from dbo.ReplTest
 ```
 
-Yayımcıya ek satırlar eklemek için aşağıdaki T-SQL snippet'i çalıştırın ve ardından abonelerdeki satırları yeniden denetleyin. 
+Yayımcıya ek satırlar eklemek için aşağıdaki T-SQL kod parçacığını çalıştırın ve ardından abonedeki satırları yeniden kontrol edin. 
 
 ```sql
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
@@ -325,7 +328,7 @@ EXEC sp_removedbreplication
 GO
 ```
 
-Yayımlama ve dağıtımı devre dışı bırakıp aşağıdaki T-SQL komutunu çalıştırın:
+Yayımlamayı ve dağıtımı devre dışı bırakmak için aşağıdaki T-SQL komutunu çalıştırın:
 
 ```sql
 -- Drops the distributor
@@ -334,11 +337,11 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Yönetilen örnek kaynaklarını kaynak [grubundan silerek](../azure-resource-manager/management/manage-resources-portal.md#delete-resources) ve kaynak grubunu `SQLMI-Repl`silerek Azure kaynaklarınızı temizleyebilirsiniz. 
+[Yönetilen örnek kaynaklarını kaynak grubundan silerek](../azure-resource-manager/management/manage-resources-portal.md#delete-resources) ve sonra kaynak grubunu `SQLMI-Repl`silerek Azure kaynaklarınızı temizleyebilirsiniz. 
 
    
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-- [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md)
-- [Öğretici: Bir MI yayımcısı ile SQL Server abonesi arasında işlem çoğaltma yapılandırma](sql-database-managed-instance-configure-replication-tutorial.md)
-- [Yönetilen Örnek nedir?](sql-database-managed-instance.md)
+- [İşlem çoğaltması](sql-database-managed-instance-transactional-replication.md)
+- [Öğretici: bir mı yayımcısı ile SQL Server abonesi arasında işlemsel çoğaltmayı yapılandırma](sql-database-managed-instance-configure-replication-tutorial.md)
+- [Yönetilen örnek nedir?](sql-database-managed-instance.md)

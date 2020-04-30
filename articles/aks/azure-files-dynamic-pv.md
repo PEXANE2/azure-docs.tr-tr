@@ -1,46 +1,46 @@
 ---
-title: Azure Dosyaları paylaşımını dinamik olarak oluşturun
+title: Azure dosya paylaşımının dinamik olarak oluşturulması
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Hizmetinde (AKS) birden çok eşzamanlı bölmeyle kullanılmak üzere Azure Dosyaları ile kalıcı bir birim oluşturmayı öğrenin
+description: Azure Kubernetes hizmetinde (aks) birden çok eş zamanlı Pod ile kullanmak üzere Azure dosyaları ile kalıcı olarak kalıcı bir birim oluşturmayı öğrenin
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 59b773cd4608187fedb24358eac57715e1c271ea
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 0826035a6c81cdbdd8c93f78cb32835dce675eb4
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803543"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207692"
 ---
-# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Azure Dosyaları ile kalıcı bir birim oluşturun ve kullanın
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Azure dosyaları ile kalıcı bir birimi dinamik olarak oluşturma ve kullanma
 
-Kalıcı bir birim, Kubernetes bölmelerinde kullanılmak üzere sağlanmış bir depolama parçasını temsil eder. Kalıcı bir birim bir veya çok bölme tarafından kullanılabilir ve dinamik veya statik olarak sağlanabilir. Birden çok bölmenin aynı depolama birimine eşzamanlı olarak erişmeye ihtiyacı varsa, [Sunucu İleti Bloğu (SMB) protokolünü][smb-overview]kullanarak bağlanmak için Azure Dosyaları'nı kullanabilirsiniz. Bu makalede, bir Azure Kubernetes Hizmeti (AKS) kümesinde birden çok bölme tarafından kullanılmak üzere bir Azure Dosyaları paylaşımını dinamik olarak nasıl oluşturabileceğinizgösterilmektedir.
+Kalıcı bir birim, Kubernetes pods ile kullanılmak üzere sağlanmış bir depolama parçasını temsil eder. Kalıcı bir birim bir veya daha fazla sayıda pods tarafından kullanılabilir ve dinamik veya statik olarak sağlanabilir. Aynı depolama birimine eşzamanlı olarak birden çok Pod erişimi gerekiyorsa, [sunucu ileti bloğu (SMB) protokolünü][smb-overview]kullanarak bağlanmak için Azure dosyalarını kullanabilirsiniz. Bu makalede, bir Azure Kubernetes Service (AKS) kümesinde birden çok düğüm tarafından kullanılmak üzere Azure dosya paylaşımının nasıl dinamik olarak oluşturulacağı gösterilmektedir.
 
-Kubernetes ciltleri hakkında daha fazla bilgi için [AKS'deki uygulamalar için Depolama seçeneklerine][concepts-storage]bakın.
+Kubernetes birimleri hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar Için depolama seçenekleri][concepts-storage].
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, varolan bir AKS kümesi var sayıyor. AKS kümesine ihtiyacınız varsa, [Azure CLI'yi veya][aks-quickstart-cli] [Azure portalını kullanarak][aks-quickstart-portal]AKS hızlı başlat'ına bakın.
+Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLI sürüm 2.0.59 veya daha sonra yüklenmiş ve yapılandırılmış gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="create-a-storage-class"></a>Depolama sınıfı oluşturma
 
-Bir depolama sınıfı, Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için kullanılır. Azure dosya paylaşımlarını tutmak için depolama sınıfıyla kullanılmak üzere [düğüm kaynak grubunda][node-resource-group] otomatik olarak bir depolama hesabı oluşturulur. *skuName*için aşağıdaki [Azure depolama artıklığını][storage-skus] seçin:
+Bir Azure dosya paylaşımının nasıl oluşturulduğunu tanımlamak için bir depolama sınıfı kullanılır. Depolama hesabı, Azure dosya paylaşımlarını tutmak üzere depolama sınıfıyla kullanılmak üzere [düğüm kaynak grubunda][node-resource-group] otomatik olarak oluşturulur. *Skuname*Için aşağıdaki [Azure depolama yedekliliği][storage-skus] arasından seçim yapın:
 
-* *Standard_LRS* - standart yerel yedekli depolama (LRS)
-* *Standard_GRS* - standart jeo-yedekli depolama (GRS)
-* *Standard_ZRS* - standart bölge yedekli depolama (ZRS)
-* *Standard_RAGRS* - standart okuma-erişim coğrafi yedekli depolama (RA-GRS)
-* *Premium_LRS* - premium yerel yedekdepolama (LRS)
-* *Premium_ZRS* - premium bölge yedekli depolama (GRS)
+* *Standard_LRS* -standart yerel olarak yedekli depolama (LRS)
+* *Standard_GRS* -standart coğrafi olarak yedekli depolama (GRS)
+* *Standard_ZRS* -standart bölge yedekli depolama (ZRS)
+* *Standard_RAGRS* -standart Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)
+* *Premium_LRS* -Premium yerel olarak yedekli depolama (LRS)
+* *Premium_ZRS* -Premium bölge yedekli depolama (GRS)
 
 > [!NOTE]
-> Azure Dosyaları, Kubernetes 1,13 veya daha yüksek çalıştıran AKS kümelerinde premium depolamayı destekler, minimum premium dosya paylaşımı 100 GB'dır
+> Azure dosyaları, Kubernetes 1,13 veya üstünü çalıştıran AKS kümelerinde Premium depolamayı destekler, en düşük Premium dosya paylaşma 100 GB 'dir
 
-Azure Dosyaları için Kubernetes depolama sınıfları hakkında daha fazla bilgi için [Kubernetes Depolama Sınıfları'na][kubernetes-storage-classes]bakın.
+Azure dosyaları için Kubernetes Depolama sınıfları hakkında daha fazla bilgi için bkz. [Kubernetes Depolama sınıfları][kubernetes-storage-classes].
 
-Adlandırılmış `azure-file-sc.yaml` bir dosya oluşturun ve aşağıdaki örnek bildirimde kopyalayın. *MountOptions*hakkında daha fazla bilgi için [Mount seçenekleri][mount-options] bölümüne bakın.
+Aşağıdaki örnek bildiriminde adlı `azure-file-sc.yaml` bir dosya oluşturun ve kopyalayın. *Mountoptions*hakkında daha fazla bilgi için [bağlama seçenekleri][mount-options] bölümüne bakın.
 
 ```yaml
 kind: StorageClass
@@ -59,17 +59,17 @@ parameters:
   skuName: Standard_LRS
 ```
 
-[Kubectl uygula][kubectl-apply] komutu ile depolama sınıfını oluşturun:
+[Kubectl Apply][kubectl-apply] komutuyla depolama sınıfını oluşturun:
 
 ```console
 kubectl apply -f azure-file-sc.yaml
 ```
 
-## <a name="create-a-persistent-volume-claim"></a>Kalıcı bir birim talebi oluşturma
+## <a name="create-a-persistent-volume-claim"></a>Kalıcı bir birim talebi oluşturun
 
-Kalıcı bir birim talebi (PVC), Azure dosya paylaşımını dinamik olarak sağlamak için depolama sınıfı nesnesini kullanır. Aşağıdaki YAML *ReadWriteMany* erişimi ile 5 *GB* boyutunda kalıcı bir hacim talebi oluşturmak için kullanılabilir. Erişim modları hakkında daha fazla bilgi için [Kubernetes kalıcı birim][access-modes] belgelerine bakın.
+Kalıcı bir birim talebi (PVC), bir Azure dosya paylaşımının dinamik olarak sağlanması için depolama sınıfı nesnesini kullanır. Aşağıdaki YAML, *Readwritemany* ERIŞIMIYLE *5 GB* boyutunda kalıcı bir birim talebi oluşturmak için kullanılabilir. Erişim modları hakkında daha fazla bilgi için bkz. [Kubernetes kalıcı birimi][access-modes] belgeleri.
 
-Şimdi adlı `azure-file-pvc.yaml` bir dosya oluşturun ve aşağıdaki YAML kopyalayın. *StorageClassName'nin* son adımda oluşturulan depolama sınıfıyla eşleştiğinden emin olun:
+Şimdi aşağıdaki YAML 'de `azure-file-pvc.yaml` adlı bir dosya oluşturun ve kopyalayın. *Storageclassname* 'in, son adımda oluşturulan depolama sınıfıyla eşleştiğinden emin olun:
 
 ```yaml
 apiVersion: v1
@@ -86,15 +86,15 @@ spec:
 ```
 
 > [!NOTE]
-> Depolama sınıfınız için *Premium_LRS* sku kullanıyorsanız, *depolama* için minimum değer *100Gi*olmalıdır.
+> Depolama sınıfınız için *Premium_LRS* SKU kullanıyorsanız, *depolama* Için en düşük değer *100gi*olmalıdır.
 
-[Kubectl uygula][kubectl-apply] komutu ile kalıcı hacim iddiasını oluşturun:
+[Kubectl Apply][kubectl-apply] komutuyla kalıcı birim talebi oluşturun:
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
 ```
 
-Tamamlandıktan sonra, dosya paylaşımı oluşturulur. Bağlantı bilgileri ve kimlik bilgilerini içeren bir Kubernetes sırrı da oluşturulur. PVC durumunu görüntülemek için [kubectl get][kubectl-get] komutunu kullanabilirsiniz:
+İşlem tamamlandıktan sonra dosya paylaşma oluşturulur. Bağlantı bilgilerini ve kimlik bilgilerini içeren bir Kubernetes gizli dizisi de oluşturulur. PVC 'nin durumunu görüntülemek için [kubectl Get][kubectl-get] komutunu kullanabilirsiniz:
 
 ```console
 $ kubectl get pvc azurefile
@@ -103,11 +103,11 @@ NAME        STATUS    VOLUME                                     CAPACITY   ACCE
 azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
 ```
 
-## <a name="use-the-persistent-volume"></a>Kalıcı birimi kullanma
+## <a name="use-the-persistent-volume"></a>Kalıcı birimi kullan
 
-Aşağıdaki YAML, */mnt/azure* yoluna Azure dosya paylaşımını monte etmek için kalıcı birim talebi *azuredosyasını* kullanan bir bölme oluşturur. Windows Server kapsayıcıları için (şu anda AKS'de önizlemede), *'D:'* gibi Windows yolu kuralını kullanan bir *mountPath* belirtin.
+Aşağıdaki YAML, */mnt/Azure* yolundaki Azure dosya paylaşımının bağlanması için kalıcı birim talebi *azurefile* kullanan bir pod oluşturur. Windows Server kapsayıcıları için, Windows yol kuralını kullanarak *":"* gibi bir *bağlamayolu* belirtin.
 
-Adlı `azure-pvc-files.yaml`bir dosya oluşturun ve aşağıdaki YAML'de kopyalayın. *ClaimName'nin* son adımda oluşturulan PVC ile eşleştiğinden emin olun.
+Adlı `azure-pvc-files.yaml`bir dosya oluşturun ve aşağıdaki YAML 'ye kopyalayın. *Claimname* 'in, son ADıMDA oluşturulan PVC ile eşleştiğinden emin olun.
 
 ```yaml
 kind: Pod
@@ -134,13 +134,13 @@ spec:
         claimName: azurefile
 ```
 
-[Kubectl uygula][kubectl-apply] komutu ile pod oluşturun.
+[Kubectl Apply][kubectl-apply] komutuyla Pod 'ı oluşturun.
 
 ```console
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-Artık */mnt/azure* dizininde yer alan Azure Dosyaları paylaşımınızla çalışan bir bölmeniz var. Bu yapılandırma, pod'unuzu incelerken `kubectl describe pod mypod`görülebilir. Aşağıdaki yoğunlaştırılmış örnek çıktı, kapsayıcıya monte edilen hacmi gösterir:
+Artık, */mnt/Azure* dizininde oluşturulmuş Azure dosya paylaşımınızla çalışan bir pod sahipsiniz. Bu yapılandırma, Pod 'niz aracılığıyla `kubectl describe pod mypod`incelenirken görülebilir. Aşağıdaki sıkıştırılmış örnek çıktı, kapsayıcıya takılan birimi gösterir:
 
 ```
 Containers:
@@ -165,7 +165,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Bağlama seçenekleri
 
-*fileMode* ve *dirMode* için varsayılan değer Kubernetes sürüm 1.13.0 ve üzeri için *0777'dir.* Depolama sınıfıyla kalıcı birim dinamik olarak oluşturuyorsa, depolama sınıfı nesnesi üzerinde montaj seçenekleri belirtilebilir. Aşağıdaki örnek *0777*ayarlar:
+*FileMode* ve *dirmode* Için varsayılan değer, Kubernetes sürüm 1.13.0 ve üzeri için *0777* ' dir. Kalıcı birimi bir depolama sınıfıyla dinamik olarak oluşturduğunuzda, bağlama seçenekleri depolama sınıfı nesnesinde belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
 
 ```yaml
 kind: StorageClass
@@ -186,12 +186,12 @@ parameters:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlişkili en iyi uygulamalar [için, AKS'deki depolama ve yedekleme ler için en iyi uygulamalara][operator-best-practices-storage]bakın.
+İlişkili en iyi uygulamalar için bkz. [AKS 'de depolama ve yedeklemeler Için en iyi uygulamalar][operator-best-practices-storage].
 
-Azure Dosyaları'nı kullanarak Kubernetes kalıcı birimleri hakkında daha fazla bilgi edinin.
+Azure dosyalarını kullanarak Kubernetes kalıcı birimleri hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Azure Dosyaları için Kubernetes eklentisi][kubernetes-files]
+> [Azure dosyaları için Kubernetes eklentisi][kubernetes-files]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes

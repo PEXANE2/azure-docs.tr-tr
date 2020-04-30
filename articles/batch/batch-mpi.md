@@ -4,12 +4,12 @@ description: Ileti geçirme arabirimi (MPı) uygulamalarını Azure Batch ' deki
 ms.topic: article
 ms.date: 03/13/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aad2b649c92716a807d577bb4f112d47d447545e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 39c7aff0618daafc2c02efaea229de3741804c7a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115984"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231705"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma
 
@@ -181,9 +181,7 @@ Aşağıdaki ortam değişkenleri, Batch hizmeti tarafından çok örnekli göre
 Bunlarla ilgili tüm ayrıntılar ve bunların içerikleri ve görünürlüğü dahil diğer toplu işlem düğümü ortam değişkenleri için bkz. [işlem düğümü ortam değişkenleri][msdn_env_var].
 
 > [!TIP]
-> Batch Linux MPı kodu örneği, bu ortam değişkenlerinin kaç tane kullanıldığına ilişkin bir örnek içerir. [Koordinasyon-cmd][coord_cmd_example] Bash betiği, Azure depolama 'dan ortak uygulama ve giriş dosyalarını indirir, ana düğümde bir ağ dosya SISTEMI (NFS) paylaşımının yapılmasını sağlar ve çok örnekli görev için ayrılan DIĞER düğümleri NFS istemcileri olarak yapılandırır.
->
->
+> Batch Linux MPı kodu örneği, bu ortam değişkenlerinin kaç tane kullanıldığına ilişkin bir örnek içerir.
 
 ## <a name="resource-files"></a>Kaynak dosyalar
 Çok örnekli görevler için göz önünde bulundurmanız gereken iki kaynak dosyası kümesi vardır: *Tüm* görevlerin indirdiği **ortak kaynak dosyaları** (birincil ve alt görevler) ve *yalnızca birincil* görevin indirileceği çok örnekli görevin kendisi için belirtilen **kaynak dosyaları** .

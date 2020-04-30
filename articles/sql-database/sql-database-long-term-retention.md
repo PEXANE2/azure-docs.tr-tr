@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: e85c8c0990a2659dba1f254a8f1aa7c7be7852eb
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380754"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508097"
 ---
 # <a name="azure-sql-database-long-term-retention"></a>Azure SQL veritabanı uzun süreli saklama
 
@@ -84,8 +84,7 @@ Azure SQL veritabanı yönetilen örnekleri ile uzun süreli yedek saklama kulla
 - **Sınırlı genel önizleme** -bu ÖNIZLEME yalnızca EA ve CSP aboneliklerinde kullanılabilir ve sınırlı kullanılabilirliğe tabidir.  
 - [**Yalnızca PowerShell**](sql-database-managed-instance-long-term-backup-retention-configure.md) -şu anda Azure Portal desteği yok. LTR, PowerShell kullanılarak etkinleştirilmelidir. 
 
-Kayıt istemek için **yedekleme, geri yükleme ve iş sürekliliği/uzun vadeli yedekleme saklama**konuları altında bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/) oluşturun.
-
+Kayıt istemek için bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/)oluşturun. Sorun türü için teknik sorunu seçin, hizmet için SQL veritabanı yönetilen örneğini seçin ve sorun türü için **yedekleme, geri yükleme ve iş sürekliliği/uzun süreli yedekleme saklama ' yı**seçin. İsteğiniz içinde, yönetilen örnek için LTR 'nin sınırlı genel önizlemesine kaydedilmesini istediğinizi unutmayın.
 
 ## <a name="configure-long-term-backup-retention"></a>Uzun süreli yedek saklama yapılandırma
 
@@ -93,7 +92,7 @@ Azure portal veya PowerShell 'i kullanarak uzun süreli saklama yapılandırmay�
 
 ## <a name="restore-database-from-ltr-backup"></a>Veritabanı, LTR yedeğinden geri yükle
 
-Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi zaman damgasına göre seçebilirsiniz. Veritabanı, özgün veritabanıyla aynı abonelikte bulunan mevcut herhangi bir sunucuya geri yüklenebilir. Veritabanınızı bir LTR yedeklemesinden nasıl geri yükleyeceğinizi öğrenmek için, Azure portal veya PowerShell 'i kullanarak bkz. [Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme](sql-database-long-term-backup-retention-configure.md).
+Bir veritabanını LTR depolamadan geri yüklemek için belirli bir yedeklemeyi zaman damgasına göre seçebilirsiniz. Veritabanı, özgün veritabanıyla aynı abonelikte bulunan mevcut herhangi bir sunucuya geri yüklenebilir. Veritabanınızı bir LTR yedeklemesinden nasıl geri yükleyeceğinizi öğrenmek için, Azure portal veya PowerShell 'i kullanarak bkz. [Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme](sql-database-long-term-backup-retention-configure.md). İsteğiniz içinde, yönetilen örnek için LTR 'ın sınırlı genel önizlemesine kaydedilmesini istediğiniz durumu girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

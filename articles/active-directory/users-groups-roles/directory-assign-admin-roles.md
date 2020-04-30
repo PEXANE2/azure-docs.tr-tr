@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2403faf23294afbba539c7240e842f928fed83dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8033122601077945790005e23ec728911c3a4e1f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181299"
+ms.locfileid: "82207539"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -1823,12 +1823,12 @@ CRM hizmet Yöneticisi | Dynamics 365 Yöneticisi | 44367163-eba1-44c3-98af-f578
 Müşteri Kasası erişim onaylayıcısı | Müşteri Kasası erişimi onaylayan | 5c4f9dcd-47dc-4CF7-8c9a-9e4207cbfc91
 Masaüstü Analizi Yöneticisi | Masaüstü Analizi Yöneticisi | 38a96431-2bdf-4B4C-8B6E-5d3d8abac1a4
 Cihaz Yöneticileri | Cihaz yöneticileri | 9f06204d-73c1-4d4c-880a-6edb90606fd8
-Cihaz katılımı | Cihaz katılımı | 9c094953-4995-41C8-84c8-3ebb9b32c93f
-Cihaz yöneticileri | Cihaz yöneticileri | 2b499bcd-da44-4968-8aec-78e1674fa64d
-Cihaz kullanıcıları | Cihaz kullanıcıları | d405c6df-0af8-4e3b-95e4-4d06e542189e
+Cihaz katılımı | Kullanım Dışı | 9c094953-4995-41C8-84c8-3ebb9b32c93f
+Cihaz yöneticileri | Kullanım Dışı | 2b499bcd-da44-4968-8aec-78e1674fa64d
+Cihaz kullanıcıları | Kullanım Dışı | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Dizin okuyucuları | Dizin okuyucuları | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
-Dizin eşitleme hesapları | Dizin eşitleme hesapları | d29b2b05-8046-44ba-8758-1e26182fcf32
-Dizin yazarları | Dizin yazarları | 9360feb5-f418-4baa-8175-e2a00bac4301
+Dizin eşitleme hesapları | Kullanılmaması nedeniyle gösterilmez | d29b2b05-8046-44ba-8758-1e26182fcf32
+Dizin yazarları | Kullanılmaması nedeniyle gösterilmez | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange hizmeti Yöneticisi | Exchange yöneticisi | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Dış kimlik sağlayıcısı Yöneticisi | Dış kimlik sağlayıcısı Yöneticisi | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Genel okuyucu | Genel okuyucu | f2ef992c-3afb-46b9-b7cf-a126ee74c451
@@ -1844,8 +1844,8 @@ Lync Hizmet Yöneticisi | Skype Kurumsal yöneticisi | 75941009-915a-4869-ABE7-6
 İleti Merkezi okuyucusu | İleti Merkezi okuyucusu | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Ağ Yöneticisi | Ağ Yöneticisi | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office uygulamaları Yöneticisi | Office uygulamaları Yöneticisi | 2b745bdf-0803-4d80-aa65-822c4493dadac
-Partner Katman1 desteği | Partner Katman1 desteği | 4ba39ca4-527c-499a-B93D-d9b492c50246
-Partner Katman2 desteği | Partner Katman2 desteği | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+Partner Katman1 desteği | Kullanılmaması nedeniyle gösterilmez | 4ba39ca4-527c-499a-B93D-d9b492c50246
+Partner Katman2 desteği | Kullanılmaması nedeniyle gösterilmez | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Parola Yöneticisi | Parola yöneticisi | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI Hizmet Yöneticisi | Power BI Yöneticisi | a9ea8996-122f-4c74-9520-8edcd192826c
 Power Platform Yöneticisi | Power platformu Yöneticisi | 11648597-926c-4CF3-9c36-bcebb0ba8dcc
@@ -1865,9 +1865,9 @@ Takımlar Iletişim Yöneticisi | Takımlar Iletişim Yöneticisi | baf37b3a-610
 Takımlar Iletişimleri Destek Mühendisi | Takımlar Iletişimleri Destek Mühendisi | f70938a0-fc10-4177-9e90-2178f8765737
 Takımlar Iletişimleri destek uzmanı | Takımlar Iletişimleri destek uzmanı | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Takımlar Hizmet Yöneticisi | Takımlar Hizmet Yöneticisi | 69091246-20e8-4a56-aa4d-066075b2a7a8
-Kullanıcı | Kullanıcı | a0b1b346-4d3e-4e8b-98f8-753987be4970
+Kullanıcı | Kullanılmadığından gösterilmez | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Kullanıcı hesabı Yöneticisi | Kullanıcı Yöneticisi | fe930be7-5e62-47db-91af-98c3a49a38b1
-Çalışma alanına cihaz katılımı | Çalışma alanına cihaz katılımı | c34f683f-4d5a-4403-AFD-6615e00e3a7f
+Çalışma alanına cihaz katılımı | Kullanım Dışı | c34f683f-4d5a-4403-AFD-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Kullanım dışı roller
 

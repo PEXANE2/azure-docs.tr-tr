@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268151"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231773"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -21,21 +21,21 @@ Bir Azure dosya paylaşımını, barındırıldığı Azure bölgesinin dışın
 
 Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azure dosya paylaşımlarını kullanabilirsiniz. Aşağıdaki tabloda, hangi işletim sistemi sürümlerinin hangi ortamlarda dosya paylaşımlarına erişmeyi desteklediği gösterilmektedir:
 
-| Windows sürümü        | SMB sürümü | Azure VM'de Bağlanabilir | Şirket İçinde Bağlanabilir |
+| Windows sürümü        | SMB sürümü | Azure VM'de Bağlanabilir | Şirket içinde takılamaz |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Evet | Evet |
-| Windows 10<sup>1</sup> | SMB 3.0 | Evet | Evet |
-| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Evet | Evet |
-| Windows Server 2016 | SMB 3.0 | Evet | Evet |
-| Windows 8.1 | SMB 3.0 | Evet | Evet |
-| Windows Server 2012 R2 | SMB 3.0 | Evet | Evet |
-| Windows Server 2012 | SMB 3.0 | Evet | Evet |
-| Windows 7<sup>3</sup> | SMB 2.1 | Evet | Hayır |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Evet | Hayır |
+| Windows Server 2019 | SMB 3.0 | Yes | Yes |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server yarı yıllık kanal<sup>2</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server 2016 | SMB 3.0 | Yes | Yes |
+| Windows 8.1 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 | SMB 3.0 | Yes | Yes |
+| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Hayır |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Hayır |
 
-<sup>1.1.2</sup> Windows 10, sürümler 1507, 1607, 1709, 1803, 1809, 1903 ve 1909.  
-<sup>2.000</sup> Windows Server, sürümler 1809, 1903 ve 1909.  
-<sup>3.2.2</sup> Windows 7 ve Windows Server 2008 R2 için düzenli Microsoft desteği sona erdi. Güvenlik güncelleştirmeleri için ek destek satın almak yalnızca [Genişletilmiş Güvenlik Güncelleştirmesi (ESU) programı aracılığıyla mümkündür.](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates) Bu işletim sistemlerinden çıkmanızı şiddetle öneririz.
+<sup>1</sup> Windows 10, sürüm 1507, 1607, 1709, 1803, 1809, 1903 ve 1909.  
+<sup>2</sup> Windows Server, sürüm 1809, 1903 ve 1909.  
+<sup>3</sup> Windows 7 ve Windows Server 2008 R2 için düzenli Microsoft desteği sona erdi. Güvenlik güncelleştirmeleri için yalnızca [Genişletilmiş Güvenlik Güncelleştirmesi (ESU) programı](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)aracılığıyla ek destek satın alınabilir. Bu işletim sistemlerinin geçirilmesini kesinlikle öneririz.
 
 > [!Note]  
 > Her zaman Windows sürümünüz için en yeni KB’yi almanızı öneririz.
@@ -45,9 +45,9 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 
 * **Depolama hesabı anahtarı**: Azure dosya paylaşımını bağlayabilmeniz için birincil (veya ikincil) depolama anahtarı gerekir. SAS anahtarları şu an bağlama için desteklenmemektedir.
 
-* **445 numaralı bağlantı noktasının açık olduğundan emin olun**: SMB protokolü için 445 numaralı TCP bağlantı noktasının açık olması gerekir. 445 numaralı bağlantı noktasının açık olmaması halinde bağlantı gerçekleştirilemez. `Test-NetConnection` cmdlet'ini kullanarak 445 numaralı bağlantı noktasının güvenlik duvarınız tarafından engellenip engellenmediğini görebilirsiniz. Burada [engellenen bağlantı noktası 445 geçici çözüm için çeşitli yollar](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)hakkında bilgi edinebilirsiniz.
+* **445 numaralı bağlantı noktasının açık olduğundan emin olun**: SMB protokolü için 445 numaralı TCP bağlantı noktasının açık olması gerekir. 445 numaralı bağlantı noktasının açık olmaması halinde bağlantı gerçekleştirilemez. `Test-NetConnection` cmdlet'ini kullanarak 445 numaralı bağlantı noktasının güvenlik duvarınız tarafından engellenip engellenmediğini görebilirsiniz. [Geçici çözüm 445 bağlantı noktası ' i engelleyen çeşitli yollar](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)hakkında bilgi edinebilirsiniz.
 
-    Aşağıdaki PowerShell kodu Azure PowerShell modüllerini yüklü olarak kabul eder, daha fazla bilgi için [Azure PowerShell modüllerini yükleyin'](https://docs.microsoft.com/powershell/azure/install-az-ps) e bakın. `<your-storage-account-name>` ile `<your-resource-group-name>` yerine depolama hesabınızla ilgili bilgileri yazmayı unutmayın.
+    Aşağıdaki PowerShell kodunda Azure PowerShell modülünün yüklü olduğu varsayılır, daha fazla bilgi için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps) . `<your-storage-account-name>` ile `<your-resource-group-name>` yerine depolama hesabınızla ilgili bilgileri yazmayı unutmayın.
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -80,7 +80,7 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 ## <a name="using-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 Bir Azure dosya paylaşımını Windows'da kullanmak için bağlayarak bir sürücü harfi veya bağlama noktası yolu atamanız veya [UNC adı](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) aracılığıyla erişmeniz gerekir. 
 
-Etkileşim kurduğunuz ve Windows Server, Linux Samba sunucusu veya NAS cihazı üzerinde barındırılan diğer SMB paylaşımlarından farklı olarak Azure dosya paylaşımları şu an için Active Directory (AD) veya Azure Active Directory (AAD) kimliğiniz ile Kerberos kimlik doğrulamasını desteklemez ancak bu, [üzerinde çalıştığımız](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) bir özelliktir. Bunun yerine Azure dosya paylaşımınıza Azure dosya paylaşımınızı içeren depolama hesabına ait depolama hesabı anahtarıyla erişmeniz gerekir. Depolama hesabı anahtarı, eriştİğİniz dosya paylaşımındaki tüm dosya ve klasörlere ve tüm dosya paylaşımları ve diğer depolama kaynakları (blobs, kuyruklar, tablolar, vb.) için yönetici izinleri de dahil olmak üzere bir depolama hesabı nın yönetici anahtarıdır. depolama hesabınızda. Bu özellik iş yükünüz için yeterli değilse [Azure Dosya Eşitleme](storage-sync-files-planning.md), AAD tabanlı Kerberos kimlik doğrulaması ve ACL desteği genel kullanıma sunulana kadar Kerberos kimlik doğrulamasının yokluğunu telafi edebilir.
+Etkileşim kurduğunuz ve Windows Server, Linux Samba sunucusu veya NAS cihazı üzerinde barındırılan diğer SMB paylaşımlarından farklı olarak Azure dosya paylaşımları şu an için Active Directory (AD) veya Azure Active Directory (AAD) kimliğiniz ile Kerberos kimlik doğrulamasını desteklemez ancak bu, [üzerinde çalıştığımız](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) bir özelliktir. Bunun yerine Azure dosya paylaşımınıza Azure dosya paylaşımınızı içeren depolama hesabına ait depolama hesabı anahtarıyla erişmeniz gerekir. Depolama hesabı anahtarı, eriştiğiniz dosya paylaşımındaki tüm dosya ve klasörlere yönelik yönetici izinleri ve depolama hesabınızda bulunan tüm dosya paylaşımları ve diğer depolama kaynakları (blob 'lar, kuyruklar, tablolar vb.) dahil olmak üzere bir depolama hesabı için yönetici anahtarıdır. Bu özellik iş yükünüz için yeterli değilse [Azure Dosya Eşitleme](storage-sync-files-planning.md), AAD tabanlı Kerberos kimlik doğrulaması ve ACL desteği genel kullanıma sunulana kadar Kerberos kimlik doğrulamasının yokluğunu telafi edebilir.
 
 Azure'da SMB dosya paylaşımına ihtiyaç duyan iş kolu (LOB) uygulamalarını kullanıma sunmak için sıklıkla kullanılan model, Azure dosya paylaşımını Azure VM'de ayrılmış bir Windows dosya sunucusu çalıştırmaya alternatif olarak kullanmaktır. Bir iş kolu uygulamasını, Azure dosya paylaşımını kullanacak şekilde yapılandırma sırasında dikkat edilmesi gereken önemli noktalardan biri, çoğu iş kolu uygulamasının VM'nin yönetici hesabı yerine sınırlı sistem izinlerine sahip adanmış hizmet hesabı bağlamında çalıştığıdır. Bu nedenle Azure dosya paylaşımında yönetici hesabı yerine hizmet hesabı bağlamında bağlama yaptığınızdan/kimlik bilgilerini kaydettiğinizden emin olun.
 
@@ -126,7 +126,7 @@ Artık kimlik bilgilerini kullanmadan paylaşımı bağlayabilmeniz veya paylaş
 #### <a name="advanced-cmdkey-scenarios"></a>Gelişmiş cmdkey senaryoları
 cmdkey ile kullanılabilecek iki ek senaryo daha vardır. Bunlardan biri makineye hizmet hesabı gibi farklı bir kullanıcının kimlik bilgilerini kaydetme, diğeri ise PowerShell uzaktan iletişim özellikleriyle kimlik bilgilerini uzaktaki bir makineye kaydetmedir.
 
-Makinede başka bir kullanıcının kimlik bilgilerini kaydetmek oldukça kolaydır. Hesapta oturum açtığınızda aşağıdaki PowerShell komutunu yürütmeniz yeterlidir:
+Bilgisayardaki başka bir kullanıcı için kimlik bilgilerinin depolanması kolaydır: hesabınızda oturum açıldığında aşağıdaki PowerShell komutunu yürütün:
 
 ```powershell
 $password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
@@ -139,7 +139,7 @@ Bu komut hizmet hesabınızın (veya kullanıcı hesabınızın) kullanıcı ba�
 cmdkey yardımcı programı, kullanıcı PowerShell uzaktan iletişim özellikleriyle oturum açtığında ekleme işlemleri için dahi kimlik bilgisi deposuna erişime izin vermediğinden kimlik bilgilerinin PowerShell uzaktan iletişim özellikleri kullanılarak uzak makineye kaydedilmesi mümkün değildir. Makinede [Uzak Masaüstü](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows) ile oturum açmanızı öneririz.
 
 ### <a name="mount-the-azure-file-share-with-powershell"></a>Azure dosya paylaşımını PowerShell ile bağlama
-Azure dosya paylaşımını bağlamak için aşağıdaki komutları normal (yükseltilmiş olmayan) bir PowerShell oturumundan çalıştırın. `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` ve `<desired-drive-letter>` yerine gerekli bilgileri eklemeyi unutmayın.
+Azure dosya paylaşımının bağlanması için normal (yükseltilmiş bir) PowerShell oturumundan aşağıdaki komutları çalıştırın. `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` ve `<desired-drive-letter>` yerine gerekli bilgileri eklemeyi unutmayın.
 
 ```powershell
 $resourceGroupName = "<your-resource-group-name>"
@@ -182,30 +182,26 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. Dosya Gezgini'ni açın. Başlat Menüsünden veya Win+E kısayoluna basarak açılabilir.
 
-2. Pencerenin sol tarafındaki **bu pc** öğesine gidin. Bu, şeritteki kullanılabilir menüleri değiştirir. Bilgisayar menüsünde **Harita ağ sürücüsünü**seçin.
+1. Pencerenin sol tarafındaki **Bu bilgisayar** öğesine gidin. Bu, şeritteki kullanılabilir menüleri değiştirir. Bilgisayar menüsünde, **Ağ Sürücüsüne Bağlan**' ı seçin.
     
     ![“Ağ sürücüsüne bağlan” açılan menüsünün ekran görüntüsü](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. Azure portaldaki **Bağlan** bölmesinden UNC yolunu kopyalayın. 
-
-    ![Azure Dosyaları Bağlan bölmesinden UNC adı](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
-
-4. Sürücü harfini seçin ve UNC adını girin. 
+1. Sürücü harfini seçin ve UNC yolu biçiminde bir UNC yolu girin `<storageAccountName>.file.core.windows.net/<fileShareName>`. Örneğin: `anexampleaccountname.file.core.windows.net/example-share-name`.
     
     ![“Ağ Sürücüsüne Bağlan” iletişim kutusunun ekran görüntüsü](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
-5. Kullanıcı adı olarak, başına `AZURE\` ekleyip depolama hesabı adını ve parola olarak depolama hesabı anahtarını kullanın.
+1. Kullanıcı adı olarak, başına `AZURE\` ekleyip depolama hesabı adını ve parola olarak depolama hesabı anahtarını kullanın.
     
     ![Ağ kimlik bilgileri iletişim kutusunun ekran görüntüsü](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
 
-6. Azure Dosya paylaşımını istediğiniz gibi kullanın.
+1. Azure Dosya paylaşımını istediğiniz gibi kullanın.
     
     ![Azure dosya paylaşımı artık bağlanmıştır](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. Azure Dosya paylaşımını çıkarmaya hazır olduğunuzda, Dosya Gezgini’ndeki **Ağ konumları**'nın altında bulunan girdiye sağ tıklayıp **Bağlantıyı kes**'i seçerek bunu yapabilirsiniz.
+1. Azure Dosya paylaşımını çıkarmaya hazır olduğunuzda, Dosya Gezgini’ndeki **Ağ konumları**'nın altında bulunan girdiye sağ tıklayıp **Bağlantıyı kes**'i seçerek bunu yapabilirsiniz.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows'dan paylaşım anlık görüntülerine erişme
-El ile veya betik ya da Azure Backup gibi bir hizmet aracılığıyla otomatik olarak paylaşım anlık görüntüsü aldıysanız Windows'da dosya paylaşımından bir paylaşımın, dizinin veya belirli bir dosyanın önceki sürümlerini görüntüleyebilirsiniz. [Azure portalı, Azure](storage-how-to-use-files-portal.md) [PowerShell](storage-how-to-use-files-powershell.md)ve [Azure CLI'den](storage-how-to-use-files-cli.md)paylaşım anlık görüntüsünü alabilirsiniz.
+El ile veya betik ya da Azure Backup gibi bir hizmet aracılığıyla otomatik olarak paylaşım anlık görüntüsü aldıysanız Windows'da dosya paylaşımından bir paylaşımın, dizinin veya belirli bir dosyanın önceki sürümlerini görüntüleyebilirsiniz. [Azure Portal](storage-how-to-use-files-portal.md), [Azure POWERSHELL](storage-how-to-use-files-powershell.md)ve [Azure CLI](storage-how-to-use-files-cli.md)'den bir paylaşma anlık görüntüsü alabilirsiniz.
 
 #### <a name="list-previous-versions"></a>Önceki sürümleri listeleme
 Geri yüklemek istediğiniz öğeye veya üst öğeye gidin. Çift tıklayarak istenen dizine gidin. Sağ tıklayın ve açılan menüden **Özellikler**'i seçin.
@@ -222,6 +218,7 @@ Belirli bir anlık görüntüyü açmak için **Aç**'ı seçebilirsiniz.
 
 #### <a name="restore-from-a-previous-version"></a>Önceki sürümü geri yükleme
 Anlık görüntü oluşturma zamanındaki dizin içeriğinin tamamını özgün konuma yinelemeli bir şekilde kopyalamak için **Geri yükle**'yi seçin.
+
  ![Uyarı iletisindeki geri yükleme düğmesi](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Windows/Windows Server'ı güvenli hale getirme
@@ -243,7 +240,7 @@ Aşağıdaki tabloda tüm Windows sürümlerinde SMB 1 protokolünün durumu hak
 | Windows 7                                 | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
 
 ### <a name="auditing-smb-1-usage"></a>SMB 1 kullanımını denetleme
-> Windows Server 2019, Windows Server yarı yıllık kanal (sürüm 1709 ve 1803), Windows Server 2016, Windows 10 (sürüm1507, 1607, 1703, 1709 ve 1803), Windows Server 2012 R2 ve Windows 8.1 için geçerlidir
+> Windows Server 2019, Windows Server yarı yıllık kanal (sürüm 1709 ve 1803), Windows Server 2016, Windows 10 (sürümler 1507, 1607, 1703, 1709 ve 1803), Windows Server 2012 R2 ve Windows 8.1 için geçerlidir.
 
 SMB 1'i ortamınızdan kaldırmadan önce bu değişiklikten etkilenecek istemciler olup olmadığını görmek için SMB 1 kullanımını denetlemek isteyebilirsiniz. SMB 1 ile yapılan SMB paylaşımı isteği varsa `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` altında bir denetim olayı kaydedilir. 
 

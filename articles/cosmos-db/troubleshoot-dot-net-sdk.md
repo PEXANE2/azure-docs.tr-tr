@@ -8,18 +8,18 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137963"
+ms.locfileid: "82208746"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 Bu makalede, Azure Cosmos DB SQL API hesaplarıyla [.NET SDK](sql-api-sdk-dotnet.md) kullandığınızda yaygın sorunlar, geçici çözümler, Tanılama adımları ve araçlar ele alınmaktadır.
 .NET SDK, Azure Cosmos DB SQL API 'sine erişmek için istemci tarafı mantıksal temsili sağlar. Bu makalede, sorunla karşılaştığınızda size yardımcı olacak araçlar ve yaklaşımlar açıklanır.
 
-## <a name="checklist-for-troubleshooting-issues"></a>Sorun giderme sorunları için denetim listesi:
+## <a name="checklist-for-troubleshooting-issues"></a>Sorun giderme sorunları için denetim listesi
 Uygulamanızı üretime taşımadan önce aşağıdaki denetim listesini göz önünde bulundurun. Denetim listesinin kullanılması, görebileceğiniz bazı yaygın sorunları engeller. Ayrıca bir sorun oluştuğunda hızlı bir şekilde tanılama yapabilirsiniz:
 
 *    En son [SDK 'yı](sql-api-sdk-dotnet-standard.md)kullanın. Önizleme SDK 'Ları üretim için kullanılmamalıdır. Bu, zaten düzeltilen bilinen sorunların vurmasını engeller.
@@ -101,6 +101,30 @@ Sorgu [ölçümleri](sql-api-query-metrics.md) , sorgunun en fazla zaman harcama
 * Arka uç sorgusu hızlı bir şekilde döndürürse ve istemci üzerinde büyük bir zaman harcadıysanız makinedeki yükü kontrol edin. Yeterli miktarda kaynak olmaması ve SDK 'nın yanıtı işlemek için kaynakların kullanılabilir olmasını bekliyor olması olasıdır.
 * Arka uç sorgusu yavaşsa, [sorguyu iyileştirmeyi](optimize-cost-queries.md) ve geçerli [Dizin oluşturma ilkesine](index-overview.md) bakmaya çalışın 
 
+### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: HTTP isteğinde bulunan MAC imzası, hesaplanan imzayla aynı değil
+Aşağıdaki 401 hata iletisini aldıysanız: "HTTP isteğinde bulunan MAC imzası, hesaplanan imzayla aynı değil." Bu, aşağıdaki senaryolardan kaynaklanıyor olabilir.
+
+1. Anahtar döndürüldü ve [en iyi uygulamaları](secure-access-to-data.md#key-rotation)izmedi. Bu genellikle durumdur. Cosmos DB hesap anahtarı döndürme, Cosmos DB hesap boyutuna bağlı olarak birkaç saniye ile muhtemelen gün arasında bir süre sürebilir.
+   1. 401 MAC imzası, anahtar dönüşünün kısa bir süre sonra görülür ve sonuç olarak herhangi bir değişiklik yapılmadan durduruluyor. 
+2. Anahtar, uygulamada, anahtarın hesap ile eşleşmemesi için yanlış yapılandırılmış.
+   1. 401 MAC imzası sorunu tutarlı olacak ve tüm çağrılar için gerçekleşir
+3. Kapsayıcı oluşturma ile bir yarış durumu var. Bir uygulama örneği, kapsayıcı oluşturma işlemi tamamlanmadan önce kapsayıcıya erişmeye çalışıyor. Uygulama çalışıyorsa bu için en yaygın senaryo ve uygulama çalışırken kapsayıcı silinip aynı adla yeniden oluşturulur. SDK yeni kapsayıcıyı kullanmayı deneyecek, ancak kapsayıcı oluşturma hala devam ediyor, bu yüzden anahtarlara sahip değil.
+   1. 401 MAC imzası sorunu bir kapsayıcı oluşturulduktan sonra kısa bir süre sonra görülür ve yalnızca kapsayıcı oluşturma tamamlanana kadar oluşur.
+ 
+ ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP hatası 400. İstek üst bilgilerinin boyutu çok uzun.
+ Üstbilginin boyutu büyük ve izin verilen en büyük boyutu aşıyor. Her zaman en son SDK 'Yı kullanmanız önerilir. Özel durum iletisine üst bilgi boyutu izlemeyi ekleyen en az [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) veya [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)sürümünü kullandığınızdan emin olun.
+
+Mesine
+ 1. Oturum belirteci çok büyük. Kapsayıcıda bulunan bölüm sayısı arttıkça oturum belirteci de artar.
+ 2. Devamlılık belirteci büyüdü. Farklı sorguların farklı devamlılık belirteci boyutları olacaktır.
+ 3. Bunun nedeni, oturum belirtecinin ve devamlılık belirtecinin bir birleşimidir.
+
+Çözüm:
+   1. [Performans ipuçlarını](performance-tips.md) izleyin ve uygulamayı doğrudan + TCP bağlantı moduna dönüştürün. Doğrudan + TCP, bu sorunu önleyen HTTP gibi üst bilgi boyutu kısıtlamasına sahip değildir.
+   2. Oturum belirteci neden olursa, geçici bir risk azaltma uygulamayı yeniden başlatmayı sağlar. Uygulama örneğinin yeniden başlatılması oturum belirtecini sıfırlayacaktır. Yeniden başlatmanın ardından özel durumlar durduktan sonra, oturum belirtecinin neden olduğunu onaylar. Sonuç olarak, özel duruma neden olacak boyuta geri dönüş yapılır.
+   3. Uygulama doğrudan + TCP 'ye dönüştürülemiyorsa ve oturum belirteci neden ise, istemci [tutarlılığı düzeyi](consistency-levels.md)değiştirilerek risk azaltma yapılabilir. Oturum belirteci yalnızca Cosmos DB için varsayılan olan oturum tutarlılığı için kullanılır. Diğer tutarlılık düzeyi, oturum belirtecini kullanmaz. 
+   4. Uygulama doğrudan + TCP 'ye dönüştürülemiyorsa ve devamlılık belirteci neden olursa, Responsecontinuationtokenlimitınkb seçeneğini ayarlamayı deneyin. Bu seçenek, v2 için Feedoseçenekleri veya v3 içindeki QueryRequestOptions içinde bulunabilir.
+
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
@@ -108,5 +132,3 @@ Sorgu [ölçümleri](sql-api-query-metrics.md) , sorgunun en fazla zaman harcama
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
-
-

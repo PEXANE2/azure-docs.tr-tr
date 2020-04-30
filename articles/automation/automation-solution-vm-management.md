@@ -3,14 +3,14 @@ title: VM 'Leri çalışma saatleri dışında Başlat/Durdur
 description: Bu VM yönetimi çözümü, Azure sanal makinelerinizi bir zamanlamaya göre başlatır ve sonlandırır ve Azure Izleyici günlüklerinden daha etkin bir izleyici izler.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187339"
+ms.locfileid: "82207607"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda çalışma saatleri dışında VM 'Leri başlatma/durdurma
 
@@ -19,7 +19,7 @@ ms.locfileid: "82187339"
 Bu çözüm, VM 'Leri başlatmak için [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) kullanır.
 
 > [!NOTE]
-> **Çalışma saatleri dışında VM 'Leri Başlat/Durdur** çözümü, kullanılabilir Azure modüllerinin en yeni sürümlerini destekleyecek şekilde güncelleştirilmiştir.
+> **Çalışma saatleri dışında VM 'Leri Başlat/Durdur** çözümü, kullanılabilir Azure modüllerinin en yeni sürümlerini destekleyecek şekilde güncelleştirilmiştir. Bu çözümün Market 'te bulunan güncelleştirilmiş sürümü azurere modüllerini desteklemez, azurerm'den az modüllere geçirdik.
 
 Çözüm, VM maliyetlerini iyileştirmek isteyen kullanıcılar için merkezileşmemiş düşük maliyetli bir Otomasyon seçeneği sağlar. Bu çözümle şunları yapabilirsiniz:
 

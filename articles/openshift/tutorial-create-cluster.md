@@ -1,236 +1,207 @@
 ---
-title: Öğretici - Azure Kırmızı Şapka OpenShift kümesi oluşturma
-description: Azure CLI'yi kullanarak Microsoft Azure Kırmızı Şapka OpenShift kümesini nasıl oluşturabilirsiniz öğrenin
-author: jimzim
-ms.author: jzim
+title: Öğretici-Azure Red Hat OpenShift 4 kümesi oluşturma
+description: Azure CLı kullanarak Microsoft Azure Red Hat OpenShift kümesi oluşturmayı öğrenin
+author: sakthi-vetrivel
+ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 11/04/2019
-ms.openlocfilehash: 58fc695707995aafe4d804ffab8beee7c52b4320
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/24/2020
+ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79455307"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509729"
 ---
-# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Öğretici: Azure Kırmızı Şapka OpenShift kümesi oluşturma
+# <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Azure CLI'yi kullanarak Microsoft Azure Red Hat OpenShift kümesini nasıl oluşturacağınız, ölçeklendirmenizi ve kaynakları temizlemek için nasıl sildiğinizi öğreneceksiniz.
-
-Serinin birinci bölümünde, nasıl yapılacağını öğreneceksiniz:
-
+Bu öğreticide, üç bölümden biri olmak üzere, ortamınızı OpenShift 4 çalıştıran bir Azure Red Hat Openshıft kümesi oluşturacak ve bir küme oluşturacak şekilde hazırlarsınız. Şunları öğrenirsiniz:
 > [!div class="checklist"]
-> * Azure Red Hat OpenShift kümesi oluşturma
+> * Önkoşulları kurun ve gerekli sanal ağı ve alt ağları oluşturun
+> * Küme dağıtma
 
-Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
-> [!div class="checklist"]
-> * Azure Red Hat OpenShift kümesi oluşturma
-> * [Azure Red Hat OpenShift kümesini ölçeklendirme](tutorial-scale-cluster.md)
-> * [Azure Red Hat OpenShift kümesini silme](tutorial-delete-cluster.md)
+## <a name="before-you-begin"></a>Başlamadan önce
 
-## <a name="prerequisites"></a>Ön koşullar
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.0.75 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-> [!IMPORTANT]
-> Bu öğretici, Azure CLI sürümü 2.0.65 gerektirir.
+### <a name="install-the-az-aro-extension"></a>`az aro` Uzantıyı yükler
+`az aro` Uzantı, Azure CLI kullanarak doğrudan komut satırından Azure Red Hat OpenShift kümelerini oluşturmanıza, erişimlerinize ve silmesine izin verir.
 
-Bu öğreticiye başlamadan önce:
+`az aro` Uzantıyı yüklemek için aşağıdaki komutu çalıştırın.
 
-Aşağıdakileri içeren [geliştirme ortamınızı ayarladığınızdan](howto-setup-environment.md)emin olun:
-- En son CLI'nin yüklenmesi (sürüm 2.0.65 veya üzeri)
-- Zaten bir kiracınız yoksa kiracı oluşturma
-- Zaten bir Azure Uygulama nesneniz yoksa Azure Uygulaması nesnesi oluşturma
-- Güvenlik grubu oluşturma
-- Kümede oturum açabilmek için Etkin Dizin kullanıcısı oluşturma.
-
-## <a name="step-1-sign-in-to-azure"></a>Adım 1: Azure'da oturum açın
-
-Azure CLI'yi yerel olarak çalıştırıyorsanız, Bir Bash `az login` komut kabuğu açın ve Azure'da oturum açmak için çalıştırın.
-
-```azurecli
-az login
+```azurecli-interactive
+az extension add -n aro --index https://az.aroapp.io/stable
 ```
 
- Birden çok aboneye erişiminiz `az account set -s {subscription ID}` varsa, `{subscription ID}` kullanmak istediğiniz abonelikle değiştirin.
+Zaten uzantı yüklüyse, aşağıdaki komutu çalıştırarak güncelleştirebilirsiniz.
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>Adım 2: Azure Kırmızı Şapka OpenShift kümesi oluşturma
-
-Bash komut penceresinde aşağıdaki değişkenleri ayarlayın:
-
-> [!IMPORTANT]
-> Benzersiz küme için bir ad seçin ve tüm küçük harf veya küme oluşturma başarısız olur.
-
-```bash
-CLUSTER_NAME=<cluster name in lowercase>
+```azurecli-interactive
+az extension update -n aro --index https://az.aroapp.io/stable
 ```
 
-Kümenizi oluşturmak için bir konum seçin. Azure'da OpenShift'i destekleyen azure bölgelerinin listesi için [bkz.](supported-resources.md#azure-regions) Örneğin: `LOCATION=eastus`.
+### <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
-```bash
-LOCATION=<location>
+Daha sonra, `Microsoft.RedHatOpenShift` kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir.
+
+```azurecli-interactive
+az provider register -n Microsoft.RedHatOpenShift --wait
 ```
 
-Azure `APPID` AD uygulama kaydı oluşturma adım 5'te kaydettiğiniz [değere](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)ayarlayın.
+Uzantının kayıtlı olduğunu doğrulayın.
 
-```bash
-APPID=<app ID value>
+```azurecli-interactive
+az -v
 ```
 
-[Bir Azure REKLAM güvenlik grubu oluşturma](howto-aad-app-configuration.md#create-an-azure-ad-security-group)adım 10'da kaydettiğiniz değere 'GROUPID' ayarlayın.
+  Aşağıdakine benzer bir çıktı almalısınız.
 
-```bash
-GROUPID=<group ID value>
+```output
+...
+Extensions:
+aro                                1.0.0
+...
 ```
 
-`SECRET` [İstemci sırrı oluştur'un](howto-aad-app-configuration.md#create-a-client-secret)8.
+### <a name="get-a-red-hat-pull-secret-optional"></a>Red hat çekme gizli anahtarı alma (isteğe bağlı)
 
-```bash
-SECRET=<secret value>
+Red hat çekme gizli dizisi, kümenizin ek içerikle birlikte Red Hat kapsayıcısı kayıt defterlerine erişmesine olanak sağlar. Bu adım isteğe bağlıdır, ancak önerilir.
+
+Çekme https://cloud.redhat.com/openshift/install/azure/aro-provisioned *gizliliğini indirin*' a gidip ve sonra çekme gizli dizesini edinin.
+
+Red Hat hesabınızda oturum açmanız veya iş e-postanızı kullanarak yeni bir Red Hat hesabı oluşturmanız ve hüküm ve koşulları kabul etmeniz gerekir.
+
+Kaydedilen `pull-secret.txt` dosyayı güvenli bir yerde tutun-bu, her küme oluşturmada kullanılacaktır.
+
+### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>İki boş alt ağ içeren bir sanal ağ oluşturun
+
+Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
+
+1. **Aşağıdaki değişkenleri ayarlayın.**
+
+   ```console
+   LOCATION=eastus                 # the location of your cluster
+   RESOURCEGROUP=aro-rg            # the name of the resource group where you want to create your cluster
+   CLUSTER=cluster                 # the name of your cluster
+   ```
+
+1. **Kaynak grubu oluşturma**
+
+    Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create] [az-Group-Create] komutunu kullanarak bir kaynak grubu oluşturun.
+
+    ```azurecli-interactive
+    az group create --name $RESOURCEGROUP --location $LOCATION
+    ```
+
+    Aşağıdaki örnek çıktıda başarıyla oluşturulan kaynak grubu gösterilmektedir:
+
+    ```json
+    {
+    "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "aro-rg",
+    "properties": {
+        "provisioningState": "Succeeded"
+    },
+    "tags": null
+    }
+    ```
+
+2. **Bir sanal ağ oluşturun.**
+
+    OpenShift 4 çalıştıran Azure Red Hat OpenShift kümeleri, ana ve çalışan düğümleri için iki boş alt ağa sahip bir sanal ağ gerektirir.
+
+    Daha önce oluşturduğunuz kaynak grubunda yeni bir sanal ağ oluşturun.
+
+    ```azurecli-interactive
+    az network vnet create \
+    --resource-group $RESOURCEGROUP \
+    --name aro-vnet \
+    --address-prefixes 10.0.0.0/22
+    ```
+
+    Aşağıdaki örnek çıktıda başarıyla oluşturulan sanal ağ gösterilmektedir:
+
+    ```json
+    {
+    "newVNet": {
+        "addressSpace": {
+        "addressPrefixes": [
+            "10.0.0.0/22"
+        ]
+        },
+        "id": "/subscriptions/<guid>/resourceGroups/aro-rg/providers/Microsoft.Network/virtualNetworks/aro-vnet",
+        "location": "eastus",
+        "name": "aro-vnet",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "aro-rg",
+        "type": "Microsoft.Network/virtualNetworks"
+    }
+    }
+    ```
+
+3. **Ana düğümler için boş bir alt ağ ekleyin.**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name master-subnet \
+    --address-prefixes 10.0.0.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+4. **Çalışan düğümleri için boş bir alt ağ ekleyin.**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name worker-subnet \
+    --address-prefixes 10.0.2.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+5. **Ana alt ağda [alt ağ özel uç nokta Ilkelerini devre dışı bırakın](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) .** Bu, kümeye bağlanıp yönetebilmek için gereklidir.
+
+    ```azurecli-interactive
+    az network vnet subnet update \
+    --name master-subnet \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --disable-private-link-service-network-policies true
+    ```
+
+## <a name="create-the-cluster"></a>Kümeyi oluşturma
+
+Bir küme oluşturmak için aşağıdaki komutu çalıştırın. İsteğe bağlı olarak, kümenizin Red Hat kapsayıcısı kayıt defterlerine ek içerikle birlikte erişmesine olanak tanıyan bir çekme gizli anahtarı geçirebilirsiniz. [Red Hat OpenShift kümesi Yöneticisi](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) ' ne gidip **çekme gizliliğini Kopyala**' ya tıklayarak çekme gizli dizinizi erişin.
+
+```azurecli-interactive
+az aro create \
+  --resource-group $RESOURCEGROUP \
+  --name $CLUSTER \
+  --vnet aro-vnet \
+  --master-subnet master-subnet \
+  --worker-subnet worker-subnet
+  # --domain foo.example.com # [OPTIONAL] custom domain
+  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
 ```
+>[!NOTE]
+> Genellikle bir küme oluşturmak yaklaşık 35 dakika sürer.
 
-Yeni `TENANT` bir kiracı oluşturma adım 7'de kaydettiğiniz kiracı kimliği [değerine](howto-create-tenant.md#create-a-new-azure-ad-tenant) ayarlayın
-
-```bash
-TENANT=<tenant ID>
-```
-
-Küme için kaynak grubu oluşturun. Yukarıdaki değişkenleri tanımlamak için kullandığınız aynı Bash kabuğundan aşağıdaki komutu çalıştırın:
-
-```azurecli
-az group create --name $CLUSTER_NAME --location $LOCATION
-```
-
-### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>İsteğe bağlı: Kümenin sanal ağını varolan bir sanal ağa bağlayın
-
-Oluşturduğunuz kümenin sanal ağını (VNET) gözleme yoluyla varolan bir VNET'e bağlamanız gerekmiyorsa, bu adımı atlayın.
-
-Varsayılan abonelik dışında bir ağa bakıyorsanız, bu abonelikte microsoft.containerservice sağlayıcısını da kaydetmeniz gerekir. Bunu yapmak için, bu abonelikteki aşağıdaki komutu çalıştırın. Aksi takdirde, bakmakta olduğunuz VNET aynı abonelikte bulunuyorsa, kayıt adımını atlayabilirsiniz.
-
-`az provider register -n Microsoft.ContainerService --wait`
-
-İlk olarak, varolan VNET'in tanımlayıcısını alın. Tanımlayıcı formda olacak: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
-
-Ağ adını veya varolan VNET'in ait olduğu kaynak grubunu bilmiyorsanız, [Sanal ağlar bıçağına](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks) gidin ve sanal ağınızı tıklayın. Sanal ağ sayfası görüntülenir ve ağın adını ve ait olduğu kaynak grubunu listeler.
-
-Bir BASH kabuğunda aşağıdaki CLI komutunu kullanarak bir VNET_ID değişkeni tanımlayın:
-
-```azurecli
-VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
-```
-
-Örneğin, `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
-
-### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>İsteğe bağlı: Kümeyi Azure İzleme'ye bağlayın
-
-İlk olarak, **varolan** günlük analitiği çalışma alanının tanımlayıcısını alın. Tanımlayıcı formdan olacaktır:
-
-`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
-
-Günlük analitiği çalışma alanı adını veya varolan günlük analitiği çalışma alanının ait olduğu kaynak grubunu bilmiyorsanız, [Log-Analytics Çalışma Alanına](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) gidin ve günlük analizi çalışma alanlarınıza tıklayın. Günlük analitiği çalışma alanı sayfası görüntülenir ve çalışma alanının adını ve ait olduğu kaynak grubunu listeler.
-
-_Günlük analizi çalışma alanı oluşturmak için [bkz.](../azure-monitor/learn/quick-create-workspace-cli.md)_
-
-Bir BASH kabuğunda aşağıdaki CLI komutunu kullanarak bir WORKSPACE_ID değişkeni tanımlayın:
-
-```azurecli
-WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
-```
-
-### <a name="create-the-cluster"></a>Kümeyi oluşturma
-
-Artık bir küme oluşturmaya hazırsınız. Aşağıda, belirtilen Azure AD kiracısında küme oluşturulur, güvenlik sorumlusu olarak kullanılacak Azure AD uygulaması nesnesini ve gizlisini ve kümeye yönetici erişimi olan üyeleri içeren güvenlik grubunu belirtin.
-
-> [!IMPORTANT]
-> Kümeoluşturmadan önce Azure AD uygulaması için uygun izinleri burada ayrıntılı olarak [belirttiğiniz](howto-aad-app-configuration.md#add-api-permissions) şekilde doğru şekilde eklediğinizden emin olun
-
-Kümenizi sanal bir ağa **bakmıyorsanız** veya Azure İzleme **istemiyorsanız** aşağıdaki komutu kullanın:
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
-```
-
-Kümenizi sanal bir ağa **bakıyorsanız,** bayrağı ekleyen aşağıdaki `--vnet-peer` komutu kullanın:
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
-```
-
-Kümenizle Azure İzleme **istiyorsanız,** bayrağı ekleyen `--workspace-id` aşağıdaki komutu kullanın:
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
-```
-
-> [!NOTE]
-> Ana bilgisayar adının kullanılamaması yla ilgili bir hata alırsanız, bunun nedeni küme adınız benzersiz olmayabilir. Yeni bir kullanıcı ve güvenlik grubu oluşturma adımını atlayarak, özgün uygulama [kaydınızı](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)silmeyi ve yeni bir uygulama kaydı oluştur'da farklı bir küme adı ile adımları yeniden yapmayı deneyin.
-
-
-
-
-Birkaç dakika sonra, `az openshift create` tamamlanacak.
-
-### <a name="get-the-sign-in-url-for-your-cluster"></a>Kümeniz için oturum açma URL'sini alın
-
-Aşağıdaki komutu çalıştırarak kümenizde oturum açabilmek için URL'yi alın:
-
-```azurecli
-az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
-```
-
-Örneğin, `publicHostName` çıktıdakine bakın:`"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
-
-Kümenizin oturum url'sini `https://` `publicHostName` ardından değer takip edecektir.  Örneğin: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Bu URI'yi, uygulama kaydı yönlendirme URI'nin bir parçası olarak bir sonraki adımda kullanacaksınız.
-
-## <a name="step-3-update-your-app-registration-redirect-uri"></a>Adım 3: Uygulama kaydınızı yeniden yönlendirme URI'yi güncelleyin
-
-Küme için URL'de oturum açilebildiğinize göre, uygulama kaydı yönlendirme Kullanıcı Arabirimi'ni ayarlayın:
-
-1. Uygulama [kayıtlarını aç.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)
-2. Uygulama kayıt nesnenize tıklayın.
-3. Yeniden **yönlendirme URI ekle'ye**tıklayın.
-4. **Tİp'in** **Web** olduğundan emin olun ve aşağıdaki `https://<public host name>/oauth2callback/Azure%20AD`deseni kullanarak **REDIRECT URI'yi** ayarlayın: . Örneğin, `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
-5. **Kaydet'i** tıklatın
-
-## <a name="step-4-sign-in-to-the-openshift-console"></a>Adım 4: OpenShift konsolunda oturum açın
-
-Artık yeni kümeniz için OpenShift konsolunda oturum açmaya hazırsınız. [OpenShift Web Konsolu, OpenShift](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) projelerinizin içeriğini görselleştirmenizi, göz atmanızı ve yönetmenizsağlar.
-
-Azure portalında oturum açarken normalde kullandığınız kimliği önbelleğe almamış yeni bir tarayıcı örneğine ihtiyacınız olacak.
-
-1. *Gizli* pencere (Chrome) veya *Özel Özel* Pencere (Microsoft Edge) açın.
-2. Yukarıda elde ettiğiniz oturum açma URL'sine gidin, örneğin:`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`
-
-[Yeni bir Azure Active Directory kullanıcısı oluştur'un](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user)adım 3'ünde oluşturduğunuz kullanıcı adını kullanarak oturum açın.
-
-**İstenen İzinler** iletişim kutusu görüntülenir. **Kuruluşunuz adına İzin'i** tıklatın ve sonra **Kabul Et'i**tıklatın.
-
-Şimdi küme konsoluna giriş yaptınız.
-
-![OpenShift küme konsolunun ekran görüntüsü](./media/aro-console.png)
-
- [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) belgelerinde görüntüler oluşturmak ve oluşturmak için [OpenShift konsolunu kullanma](https://docs.openshift.com/aro/getting_started/developers_console.html) hakkında daha fazla bilgi edinin.
-
-## <a name="step-5-install-the-openshift-cli"></a>Adım 5: OpenShift CLI'yi yükleyin
-
-[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (veya *OC Araçları),* OpenShift kümenizin çeşitli bileşenleriyle etkileşim kurmak için uygulamalarınızı ve alt düzey yardımcı programları yönetmek için komutlar sağlar.
-
-OpenShift konsolunda, oturum açma adınız ile sağ üst köşedeki soru işaretini tıklatın ve **Komut Satırı Araçlarını**seçin.  Linux, MacOS veya Windows için desteklenen oc CLI'yi indirmek ve yüklemek için **En Son Sürüm** bağlantısını izleyin.
-
-> [!NOTE]
-> Sağ üst köşedeki soru işareti simgesini görmüyorsanız, sol üst köşeden *Hizmet Kataloğu* veya *Uygulama Konsolu'nu* seçin.
+>[!IMPORTANT]
+> Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com**) OpenShift konsolu yerleşik etki alanı `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io`yerine, gibi bir URL 'de kullanılabilir.
 >
-> Alternatif olarak, [oc CLI'yi](https://www.okd.io/download.html) doğrudan indirebilirsiniz.
-
-**Komut Satırı Araçları** sayfası formun `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>`komutunu sağlar.  Bu komutu kopyalamak *için panoya* kopyala düğmesini tıklatın.  Terminal penceresinde, [yolunuzu](https://docs.okd.io/latest/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli) oc araçlarının yerel yüklemesini içerecek şekilde ayarlayın. Ardından kopyaladiğiniz oc CLI komutunu kullanarak kümede oturum açın.
-
-Yukarıdaki adımları kullanarak belirteç değerini alamadıysanız, belirteç değerini `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`şu şekilde alın: .
+> Varsayılan olarak, Openshıft, üzerinde `*.apps.<random>.<location>.aroapp.io`oluşturulan tüm yollar için otomatik olarak imzalanan sertifikalar kullanır.  Kümeye bağlandıktan sonra özel DNS kullanmayı seçerseniz, giriş [denetleyiciniz için özel bır CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) ve [API sunucunuz IÇIN özel bir CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)yapılandırmak üzere OpenShift belgelerini izlemeniz gerekir.
+>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Öğreticinin bu bölümünde, şunların nasıl yapıldığını öğrendiniz:
-
 > [!div class="checklist"]
-> * Azure Red Hat OpenShift kümesi oluşturma
+> * Önkoşulları kurun ve gerekli sanal ağı ve alt ağları oluşturun
+> * Küme dağıtma
 
 Sonraki öğreticiye ilerleyin:
 > [!div class="nextstepaction"]
-> [Azure Red Hat OpenShift kümesini ölçeklendirme](tutorial-scale-cluster.md)
+> [Azure Red Hat OpenShift kümesine bağlanma](tutorial-connect-cluster.md)

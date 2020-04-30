@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408709"
+ms.locfileid: "82229672"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler için geliştirici notları
 
@@ -80,7 +80,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Örneğin, Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Örneğin, Facebook.  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | Örneğin, Twitter. |
-| [SAML2](saml-technical-profile.md) |  |   | X | Örneğin, Salesforce, ADFS. |
+| [SAML2](saml-identity-provider-technical-profile.md) |  |   | X | Örneğin, Salesforce, ADFS. |
 | Wsbes| X |  |  |  |
 
 
@@ -134,7 +134,8 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 | [Varsayılan SSO oturum sağlayıcısı](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [Dış oturum açma oturumu sağlayıcısı](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
 | [SAML SSO oturum sağlayıcısı](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
-
+| [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | X |  |  |
+| [Çoklu oturum kapatma](session-overview.md#sign-out)  |  | X |  |  |
 
 ### <a name="security"></a>Güvenlik
 

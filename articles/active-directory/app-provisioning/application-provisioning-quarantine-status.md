@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 04/28/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0355bb1c4255e6de4ed17d55097b7b22d6b37db6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154636"
+ms.locfileid: "82229910"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda uygulama sağlama
 
@@ -33,7 +33,7 @@ Karantinaya alma sırasında, artımlı döngülerin sıklığı günde bir kez 
 
 Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vardır:
   
-- Azure Portal**Kurumsal uygulamalar** >  **Azure Active Directory** > &lt;*uygulama*adı&gt;Sağlama Azure Active Directory gidin ve alt kısımdaki ilerleme çubuğuna kaydırın.**Provisioning**  >   
+- Azure Portal, **Azure Active Directory** > **Kurumsal uygulamalar** > &lt;*uygulama adı*&gt; > **sağlama** ' ya gidin ve karantina iletisi için ilerleme çubuğunu gözden geçirin.   
 
   ![Karantina durumunu gösteren sağlama durumu çubuğu](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -51,7 +51,13 @@ Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vard�
 
 ## <a name="why-is-my-application-in-quarantine"></a>Uygulamamın neden karantinaya alınsın?
 
-Sağlama işinin durumunu almak için bir Microsoft Graph isteği, karantinaya alma işleminin aşağıdaki nedenini gösterir:
+|Açıklama|Önerilen Eylem|
+|---|---|
+|**SCIM uyumluluk sorunu:** Beklenen HTTP/200 Tamam yanıtı yerine bir HTTP/404 bulunamadı yanıtı döndürüldü. Bu durumda, Azure AD sağlama hizmeti hedef uygulamaya bir istek yaptı ve beklenmeyen bir yanıt aldı.|Uygulamanın kiracı URL 'sini belirtmesini gerektirip gerektirmediğini ve URL 'nin doğru olduğundan emin olmak için yönetici kimlik bilgileri bölümüne bakın. Bir sorun görmüyorsanız, hizmetin SCıM uyumlu olduğundan emin olmak için lütfen uygulama geliştiricisine başvurun. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
+|**Geçersiz kimlik bilgileri:** Hedef uygulamaya erişim yetkisi verme girişiminde, belirtilen kimlik bilgilerinin geçersiz olduğunu belirten hedef uygulamadan bir yanıt aldık.|Lütfen sağlama yapılandırma Kullanıcı arabiriminin yönetici kimlik bilgileri bölümüne gidin ve geçerli kimlik bilgileriyle erişime yeniden yetki verin. Uygulama Galeri 'de ise, gereken ek adımlar için uygulama yapılandırma öğreticisini gözden geçirin.|
+|**Yinelenen roller:** Salesforce ve Zendesk gibi belirli uygulamalardan içeri aktarılan roller benzersiz olmalıdır. |Azure portal uygulama [bildirimine](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) gidin ve yinelenen rolü kaldırın.|
+
+ Sağlama işinin durumunu almak için bir Microsoft Graph isteği, karantinaya alma işleminin aşağıdaki nedenini gösterir:
 
 - `EncounteredQuarantineException`geçersiz kimlik bilgilerinin sağlandığını belirtir. Sağlama Hizmeti, kaynak sistemle hedef sistem arasında bir bağlantı kuramıyor.
 

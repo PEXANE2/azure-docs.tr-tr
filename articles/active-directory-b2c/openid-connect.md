@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 314d7ebe9cc363b4186b81d8eda5f892710d71c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264394"
+ms.locfileid: "82229995"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OpenID Connect ile Web oturumu açma
 
@@ -149,7 +149,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | Kiracı | Yes | Azure AD B2C kiracınızın adı |
 | ilkesinin | Yes | Yetkilendirme kodunu almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. Bu parametreyi, POST gövdesine değil sorgu dizesine ekleyin. |
 | client_id | Yes | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
-| client_secret | Evet, Web Apps | [Azure Portal](https://portal.azure.com/)oluşturulan uygulama gizli dizisi. İstemci gizli dizileri, istemcinin güvenli bir şekilde istemci gizli depolayabileceği Web uygulaması senaryolarında Bu akışta kullanılır. Yerel uygulama (genel istemci) senaryolarında, istemci gizli dizileri güvenli bir şekilde depolanamaz, Bu akışta threön kullanılmaz. İstemci parolası kullanılıyorsa, lütfen düzenli aralıklarla değiştirin. |
+| client_secret | Evet, Web Apps | [Azure Portal](https://portal.azure.com/)oluşturulan uygulama gizli dizisi. İstemci gizli dizileri, istemcinin güvenli bir şekilde istemci gizli depolayabileceği Web uygulaması senaryolarında Bu akışta kullanılır. Yerel uygulama (genel istemci) senaryolarında, istemci gizli dizileri güvenli bir şekilde saklanamaz, bu nedenle bu akışta kullanılmaz. İstemci parolası kullanılıyorsa, lütfen düzenli aralıklarla değiştirin. |
 | kod | Yes | Kullanıcı akışının başlangıcında elde ettiğiniz yetkilendirme kodu. |
 | grant_type | Yes | Yetkilendirme kodu akışı için olması `authorization_code` gereken izin türü. |
 | redirect_uri | Yes | Yetkilendirme `redirect_uri` kodunu aldığınız uygulamanın parametresi. |
@@ -218,7 +218,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | Kiracı | Yes | Azure AD B2C kiracınızın adı |
 | ilkesinin | Yes | Özgün yenileme belirtecini almak için kullanılan Kullanıcı akışı. Bu istekte farklı bir Kullanıcı akışı kullanamazsınız. Bu parametreyi, POST gövdesine değil sorgu dizesine ekleyin. |
 | client_id | Yes | [Azure Portal](https://portal.azure.com/) uygulamanıza atanan uygulama kimliği. |
-| client_secret | Evet, Web Apps | [Azure Portal](https://portal.azure.com/)oluşturulan uygulama gizli dizisi. İstemci gizli dizileri, istemcinin güvenli bir şekilde istemci gizli depolayabileceği Web uygulaması senaryolarında Bu akışta kullanılır. Yerel uygulama (genel istemci) senaryolarında, istemci gizli dizileri güvenli bir şekilde depolanamaz, bu çağrıda threön kullanılmaz. İstemci parolası kullanılıyorsa, lütfen düzenli aralıklarla değiştirin. |
+| client_secret | Evet, Web Apps | [Azure Portal](https://portal.azure.com/)oluşturulan uygulama gizli dizisi. İstemci gizli dizileri, istemcinin güvenli bir şekilde istemci gizli depolayabileceği Web uygulaması senaryolarında Bu akışta kullanılır. Yerel uygulama (genel istemci) senaryolarında, istemci gizli dizileri güvenli bir şekilde saklanamaz, bu nedenle bu çağrıda kullanılmaz. İstemci parolası kullanılıyorsa, lütfen düzenli aralıklarla değiştirin. |
 | grant_type | Yes | Yetkilendirme kodu akışının bu bölümü için yenileme belirteci olması gereken izin türü. |
 | refresh_token | Yes | Akışın ikinci bölümünde alınan orijinal yenileme belirteci. Bir `offline_access` yenileme belirteci almak için kapsamın hem yetkilendirme hem de belirteç isteklerinde kullanılması gerekir. |
 | redirect_uri | Hayır | Yetkilendirme `redirect_uri` kodunu aldığınız uygulamanın parametresi. |
@@ -262,7 +262,7 @@ Hata yanıtları şöyle görünür:
 
 ## <a name="send-a-sign-out-request"></a>Oturum kapatma isteği gönder
 
-Kullanıcının uygulamadan oturum açmasını istediğinizde, uygulamanın tanımlama bilgilerini temizlemek veya oturumu Kullanıcı ile sonlandırmak yeterli değildir. Oturumu kapatmak için kullanıcıyı Azure AD B2C yönlendirin. Bunu yapmazsanız, Kullanıcı kimlik bilgilerini tekrar girmeden uygulamanız için yeniden kimlik doğrulaması yapabilir.
+Kullanıcının uygulamadan oturum açmasını istediğinizde, uygulamanın tanımlama bilgilerini temizlemek veya oturumu Kullanıcı ile sonlandırmak yeterli değildir. Oturumu kapatmak için kullanıcıyı Azure AD B2C yönlendirin. Bunu yapmazsanız, Kullanıcı kimlik bilgilerini tekrar girmeden uygulamanız için yeniden kimlik doğrulaması yapabilir. Daha fazla bilgi için bkz. [Azure AD B2C oturum](session-overview.md).
 
 Kullanıcının oturumunu kapatmak için kullanıcıyı daha önce açıklanan OpenID Connect `end_session` meta veri belgesinde listelenen uç noktaya yönlendirin:
 
@@ -283,6 +283,4 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 Oturum kapatıldıktan sonra, uygulama için belirtilen yanıt URL 'Lerinden bağımsız olarak, `post_logout_redirect_uri` Kullanıcı PARAMETRESINDE belirtilen URI 'ye yönlendirilir. Ancak, geçerli `id_token_hint` bir değer geçirilirse Azure AD B2C, değerinin yeniden yönlendirmeyi gerçekleştirmeden önce uygulamanın `post_logout_redirect_uri` yapılandırılmış yeniden yönlendirme URI 'lerinden biriyle eşleştiğini doğrular. Uygulama için eşleşen bir yanıt URL 'SI yapılandırılmamışsa, bir hata iletisi görüntülenir ve Kullanıcı yeniden yönlendirilmez.
 
-### <a name="external-identity-provider-sign-out"></a>Dış kimlik sağlayıcısı oturumu kapatma
 
-Kullanıcının `end_session` uç noktaya yönlendirilerek, Azure AD B2C ile kullanıcının çoklu oturum açma durumu temizlenir, ancak Kullanıcı sosyal kimlik sağlayıcısı (IDP) oturumunun dışında imzalanmaz. Kullanıcı sonraki oturum açma sırasında aynı ıDP 'yi seçerse, kimlik bilgileri girilmeden bu kimlik doğrulaması yapılır. Kullanıcı uygulamanın oturumunu kapatmak isterse, Facebook hesabında oturumu kapatmak istedikleri anlamına gelmez. Ancak, yerel hesaplar kullanılıyorsa, kullanıcının oturumu doğru şekilde sona erer.

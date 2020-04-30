@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371595"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509831"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure Ölçüm Gezgini’nin gelişmiş özellikleri
 
@@ -47,6 +47,25 @@ Birden çok ölçüm satırını çizdirme veya aynı anda birden çok ölçüm 
 ### <a name="order-or-delete-multiple-charts"></a>Birden çok grafiği sıralama veya silme
 
 Birden çok grafiği sıralamak veya silmek için üç nokta ( **...** ) simgesine tıklayarak grafik menüsünü açın ve **Yukarı taşı**, **aşağı taşı**veya **Sil**seçeneklerini belirleyin.
+
+## <a name="changing-aggregation"></a>Toplamayı değiştirme
+
+Bir grafiğe ölçüm eklediğinizde, Ölçüm Gezgini varsayılan toplamayı otomatik olarak önceden seçer. Varsayılan değer temel senaryolarda anlamlı hale gelir, ancak ölçüm hakkında ek Öngörüler kazanmak için farklı bir toplama kullanabilirsiniz. Bir grafikteki farklı toplamaları görüntülemek için ölçüm Gezgini 'nin bunları nasıl işlediğini anlamanız gerekir. 
+
+Ölçümler, zaman aralığı boyunca yakalanan ölçü dizisidir (veya "ölçüm değerleri"). Bir grafiği çizerseniz, seçili ölçüm değerleri *zaman dilimi*içinde ayrı olarak toplanır. Zaman çizgisi boyutunu [Ölçüm Gezgini saat seçici panelini kullanarak](metrics-getting-started.md#select-a-time-range)seçersiniz. Zaman aralığı üzerinde açık bir seçim yapmazsanız zaman ayrıntı düzeyi, o anda seçili zaman aralığına göre otomatik olarak seçilir. Zaman dilimi saptandıktan sonra, her zaman Gren aralığı boyunca yakalanan ölçüm değerleri toplanır ve tek seferde bir DataPoint şemasına yerleştirilir.
+
+Örneğin, grafiğin **son 24 saatlik** zaman aralığında **Ortalama** toplamayı kullanarak **sunucu yanıt süresi** ölçümünü gösterildiğini varsayalım:
+
+- Zaman ayrıntı düzeyi 30 dakika olarak ayarlandıysa, grafik 48 toplanmış veri noktalarından çizilir (örneğin, çizgi grafik, grafik çizim alanında 48 nokta bağlar). Diğer bir deyişle, 24 saat x 2 veri noktası saat başına. Her DataPoint, ilgili 30 dakikalık zaman döneminin her biri sırasında oluşan sunucu istekleri için yakalanan tüm yanıt sürelerinin *ortalamasını* temsil eder.
+- Zaman parçalı yapısını 15 dakikaya geçerseniz, 96 toplanmış veri noktaları elde edersiniz.  Diğer bir deyişle, saat başına 24 saat x 4 veri noktası.
+
+Ölçüm Gezgininde beş temel istatistik toplama türü mevcuttur: **Sum**, **Count**, **Min**, **Max**ve **Average**. Toplam **toplama bazen** **Toplam** toplama olarak adlandırılır. Birçok ölçüm için, Ölçüm Gezgini tamamen ilgisiz olan ve kullanılamayan toplamaları gizleyecek.
+
+- **Sum** : toplama aralığı boyunca yakalanan tüm değerlerin toplamı
+- **Count** : toplama aralığı boyunca yakalanan ölçüm sayısı. Bu **sayı** , ölçümün her zaman 1 değeriyle yakalanması durumunda **toplamın toplamına** eşit olacağını unutmayın. Bu, ölçüm ayrı olayların sayısını izliyorsa ve her ölçüm bir olayı temsil ettiğinde (yani, her yeni istek geldiğinde kod ölçüm kaydını kapattığında), bu yaygın bir şekilde yapılır.
+- **Average** : toplama aralığı boyunca yakalanan ölçüm değerlerinin ortalaması
+- **Min** : toplama aralığı boyunca yakalanan en küçük değer
+- **Max** : toplama aralığı boyunca yakalanan en büyük değer
 
 ## <a name="apply-filters-to-charts"></a>Grafiklere filtre uygulama
 

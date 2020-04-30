@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de çıkış trafiğini denetlemek
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: daf17ee4d6518de63dc642fd64acd6b4c5be7d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183934"
+ms.locfileid: "82207182"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -165,19 +165,15 @@ Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama k
 | *. gk. \<location\>. azmk8s.io | HTTPS: 443    | Denetim sonuçlarını almak için ana sunucuda çalışan Gatekeeper denetim uç noktası ile iletişim kuran Azure Ilke eklentisi. |
 | dc.services.visualstudio.com | HTTPS: 443 | Uygulama öngörüleri uç noktasına telemetri verileri gönderen Azure Ilke eklentisi. |
 
-## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Windows Server tabanlı düğümler için gerekli (genel önizlemede) etkin
+## <a name="required-by-windows-server-based-nodes-enabled"></a>Windows Server tabanlı düğümlerin gerektirdiği etkin
 
-> [!CAUTION]
-> Aşağıdaki özelliklerden bazıları önizleme aşamasındadır.  Bu makaledeki öneriler, özellik genel önizlemeye ve gelecek sürüm aşamasına taşınıyor şekilde değişir.
-
-Windows Server tabanlı AKS kümeleri için aşağıdaki FQDN/uygulama kuralları gereklidir:
+Windows Server tabanlı düğüm havuzlarını kullanmak için aşağıdaki FQDN/uygulama kuralları gereklidir:
 
 | FQDN                                    | Bağlantı noktası      | Kullanım      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | Windows ile ilgili ikili dosyaları yüklemek için |
 | mp.microsoft.com, www<span></span>. msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows ile ilgili ikili dosyaları yüklemek için |
 | kms.core.windows.net | TCP: 1688 | Windows ile ilgili ikili dosyaları yüklemek için |
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,21 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/19/2020
-ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/29/2020
+ms.openlocfilehash: fba1dcdb8c4e5cfaa8071ae58ad75432b526c887
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677111"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509712"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL veritabanı yönetilen örneğini yönetme uzun süreli yedek saklama (PowerShell)
 
 Azure SQL veritabanı yönetilen örneği 'nde [uzun süreli bir yedekleme bekletme](sql-database-long-term-retention.md#managed-instance-support) IlkesI (LTR) sınırlı bir genel önizleme özelliği olarak yapılandırabilirsiniz. Bu sayede, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak koruyabilirsiniz. Ardından, bu yedeklemeleri PowerShell ile kullanarak bir veritabanını kurtarabilirsiniz.
 
    > [!IMPORTANT]
-   > Yönetilen örnekler için LTR Şu anda sınırlı önizlemededir ve büyük bir süre içinde EA ve CSP aboneliklerinde kullanılabilir. Kayıt istemek için lütfen **yedekleme, geri yükleme ve Iş sürekliliği/uzun vadeli yedekleme saklama**konuları altında bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/) oluşturun. 
-
+   > Yönetilen örnekler için LTR Şu anda sınırlı önizlemededir ve büyük bir süre içinde EA ve CSP aboneliklerinde kullanılabilir. Kayıt istemek için lütfen bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/)oluşturun. Sorun türü için teknik sorunu seçin, hizmet için SQL veritabanı yönetilen örneğini seçin ve sorun türü için **yedekleme, geri yükleme ve Iş sürekliliği/uzun süreli yedekleme saklama ' yı**seçin. İsteğiniz içinde, yönetilen örnek için LTR 'ın sınırlı genel önizlemesine kaydedilmesini istediğiniz durumu girin.
 
 Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azure SQL depolamada yedeklemeleri görüntüleme ve Azure SQL depolama 'daki bir yedekten geri yükleme işlemleri gösterilmektedir.
 

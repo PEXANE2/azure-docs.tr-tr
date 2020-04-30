@@ -1,33 +1,33 @@
 ---
-title: Not defterleri(önizleme) verileri nasıl indirilir?
+title: Not defterlerini indirme (Önizleme) verileri
 titleSuffix: ML Studio (classic) - Azure
-description: Nasıl ML Studio (klasik) dizüstü bilgisayar (önizleme) verileri indirmek için.
+description: ML Studio (klasik) içinde Not defteri (Önizleme) verileri nasıl indirilir.
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: a342ef86817f4f66a6e74b72b4d167fa548b6345
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419196"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208474"
 ---
-# <a name="download-notebookspreview-data"></a>Not Defterleri(önizleme) verilerini indirin
+# <a name="download-notebookspreview-data"></a>Not defterlerini indir (Önizleme) verileri
 
-Notebooks(önizleme) özelliği *13 Nisan 2020*tarihinde kaldırıldı. Not Defterleri(önizleme) sekmesinin ve kullanıcı not defteri dosyalarının kaldırılması şu anda dünya çapında Azure bölgelerine yayılıyor.
+Not defterleri (Önizleme) özelliği *13 2020 Nisan*'da kaldırılmıştır. Not defterleri (Önizleme) sekmesini ve Kullanıcı Not defteri dosyalarını kaldırma işlemi şu anda dünya çapındaki Azure bölgelerine kullanıma sunuldu.
 
-Bu makalede, Not Defterleri(önizleme) verilerinin nasıl indirilen hakkında adım adım yönergeler sağlar.
+Bu makalede, Not defterleri (Önizleme) verilerinin nasıl indirileceği hakkında adım adım yönergeler sağlanmaktadır.
 
-1. Azure Machine Learning Studio'daki **(klasik) Not Defterleri** sekmesine gidin.
-    ![Not Defterleri sekmesine gidin!](./media/download-notebooks/notebooks-list.png)
+1. Azure Machine Learning Studio (klasik) içindeki **Not defterleri** sekmesine gidin.
+    ![Not defterleri sekmesine gidin!](./media/download-notebooks/notebooks-list.png)
 
-1. İndirmek istediğiniz not defterini seçin. Jupyter'da açılacak.
-    ![Aynı anda birden çok not defteri indiren bir not defteri](./media/download-notebooks/select-notebook.png) seçin desteklenmez.
+1. İndirmek istediğiniz Not defterini seçin. Jupyıter 'da açılır.
+    ![Aynı anda birden](./media/download-notebooks/select-notebook.png) çok not defterini karşıdan yüklemek için bir not defteri seçin desteklenmez.
 
-1. **Dosyaları** -> **İndir'e**gidin ve bir biçim seçeneği seçin.
+1. **Dosyalar** -> **karşıdan yükle**' ye gidin ve bir biçim seçeneği belirleyin.
     ![Not defteri indirme seçenekleri](./media/download-notebooks/download-options.PNG)
 
-1. Bir seçenek seçtikten sonra, not defteri dosyası karşıdan yüklemeye başlar. Görünen 500 veya 502 hatanızı yoksayın, bunlar karşıdan yüklemenizi etkilemez.
+1. Bir seçenek belirledikten sonra Not defteri dosyası indirilmek üzere başlatılır. Görüntülenen 500 veya 502 hatalarını yoksayın, bu, indirmenize etkilermez.

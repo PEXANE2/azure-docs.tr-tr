@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde statik bir genel IP adres
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 27b80b1f0b6728b5ad69edae51f0d42bfac351d0
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: f0a8f1f1e1b724745e69aef30e2e6404ff6a5484
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145493"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207369"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde statik bir genel IP adresi ile giriş denetleyicisi oluşturma
 
@@ -56,7 +56,7 @@ Giriş denetleyicisinin hem giriş denetleyicisi hizmetine ayrılacak yük denge
 1. `--set controller.service.loadBalancerIP` Parametresini ekleyin. Önceki adımda oluşturulan kendi genel IP adresini belirtin.
 1. `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` Parametresini ekleyin. Önceki adımda oluşturulan genel IP adresine uygulanacak bir DNS ad etiketi belirtin.
 
-Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Windows Server düğümleri (Şu anda AKS 'deki önizlemede) giriş denetleyicisini çalıştırmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
+Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
 > [!TIP]
 > Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, helk komutlarına ekleyin `--set rbac.create=false` .
@@ -285,7 +285,7 @@ certificate.cert-manager.io/tls-secret created
 
 ## <a name="test-the-ingress-configuration"></a>Giriş yapılandırmasını test etme
 
-Kubernetes giriş denetleyicinizin FQDN 'sine bir Web tarayıcısı açın (örneğin,) *https://demo-aks-ingress.eastus.cloudapp.azure.com*.
+Kubernetes giriş denetleyicinizin FQDN 'sine bir Web tarayıcısı açın (örneğin,) *`https://demo-aks-ingress.eastus.cloudapp.azure.com`*.
 
 Bu örneklerde kullanırken `letsencrypt-staging`, verilen TLS/SSL sertifikasına tarayıcı tarafından güvenilmiyor. Uygulamanıza devam etmek için uyarı isteğini kabul edin. Sertifika bilgileri, bu *sahte bir ara x1* sertifikasının, Şifreleyebilmesine göre verildiğini gösterir. Bu sahte sertifika, `cert-manager` isteğin doğru bir şekilde işlendiğini ve sağlayıcıdan bir sertifika alındığını gösterir:
 
@@ -299,7 +299,7 @@ Demo uygulaması Web tarayıcısında gösterilir:
 
 ![Uygulama örneği bir](media/ingress/app-one.png)
 
-Şimdi */Hello-World-iki* yolunu FQDN 'sine ekleyin, örneğin *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*. Özel başlığa sahip ikinci demo uygulaması gösterilir:
+Şimdi */Hello-World-iki* yolunu FQDN 'sine ekleyin, örneğin *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`*. Özel başlığa sahip ikinci demo uygulaması gösterilir:
 
 ![Uygulama örneği iki](media/ingress/app-two.png)
 

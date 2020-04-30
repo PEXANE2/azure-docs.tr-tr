@@ -4,14 +4,14 @@ description: Azure App Service’in RESTful API’lerinizi CORS desteğiyle bar�
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 04/28/2020
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: 79aff0b90ad62af221102311d3123f93af30ad08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085663"
+ms.locfileid: "82559784"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Öğretici: Azure App Service’te CORS ile RESTful API barındırma
 
@@ -32,8 +32,8 @@ Bu öğreticideki adımları MacOS, Linux ve Windows üzerinde izleyebilirsiniz.
 
 Bu öğreticiyi tamamlamak için:
 
-* [Git 'ı yükler](https://git-scm.com/).
-* [.NET Core'u yükleme](https://www.microsoft.com/net/core/).
+* <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
+ * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core 3,1 SDK 'sını yükler</a>
 
 ## <a name="create-local-aspnet-core-app"></a>Yerel ASP.NET Core uygulaması oluşturma
 
@@ -98,27 +98,28 @@ Bu adımda, SQL Veritabanı’na bağlı .NET Core uygulamanızı App Service’
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 <pre>
-Counting objects: 98, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (92/92), done.
-Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
-Total 98 (delta 8), reused 0 (delta 0)
+Enumerating objects: 83, done.
+Counting objects: 100% (83/83), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (78/78), done.
+Writing objects: 100% (83/83), 22.15 KiB | 3.69 MiB/s, done.
+Total 83 (delta 26), reused 0 (delta 0)
 remote: Updating branch 'master'.
-remote: .
 remote: Updating submodules.
-remote: Preparing deployment for commit id '0c497633b8'.
+remote: Preparing deployment for commit id '509236e13d'.
 remote: Generating deployment script.
-remote: Project file path: ./DotNetCoreSqlDb.csproj
+remote: Project file path: .\TodoApi.csproj
+remote: Generating deployment script for ASP.NET MSBuild16 App
 remote: Generated deployment script files
 remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
+remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
 remote: .
 remote: .
 remote: .
 remote: Finished successfully.
 remote: Running post deployment command(s)...
+remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
 To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
  * [new branch]      master -> master
 </pre>
@@ -159,10 +160,10 @@ Tarayıcı uygulaması (`http://localhost:5000`) ile uzak kaynak (`http://<app_n
 
 ### <a name="enable-cors"></a>CORS'yi etkinleştirme 
 
-Cloud Shell, [`az resource update`](/cli/azure/resource#az-resource-update) komutunu kullanarak istemci URL 'nizin CORS 'yi etkinleştirin. AppName>yer tutucusunu değiştirin. _ &lt;_
+Cloud Shell, [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) komutunu kullanarak istemci URL 'nizin CORS 'yi etkinleştirin. App-Name>yer tutucusunu değiştirin. _ &lt;_
 
 ```azurecli-interactive
-az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
+az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
 ```
 
 `properties.cors.allowedOrigins` içinde birden çok istemci URL'si belirtebilirsiniz (`"['URL1','URL2',...]"`). Ayrıca `"['*']"` ile tüm istemci URL'lerini etkinleştirebilirsiniz.

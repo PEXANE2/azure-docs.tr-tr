@@ -1,6 +1,6 @@
 ---
-title: Azure Servis Veri Yolu Coğrafi felaket kurtarma | Microsoft Dokümanlar
-description: Azure Hizmet Veri Yolu'nda olağanüstü durum kurtarma gerçekleştirmede başarısız olmak ve gerçekleştirmeyapmak için coğrafi bölgeleri kullanma
+title: Azure Service Bus coğrafi olağanüstü durum kurtarma | Microsoft Docs
+description: Azure Service Bus için coğrafi bölgeleri kullanarak yük devretme ve olağanüstü durum kurtarma gerçekleştirme
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,155 +9,155 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49748006baf779e6aea4322068ca3bd07a03a0a3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259584"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209409"
 ---
-# <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Servis Veri Yolu Coğrafi felaket kurtarma
+# <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus coğrafi olağanüstü durum kurtarma
 
-Tüm Azure bölgeleri veya veri merkezleri [(kullanılabilirlik bölgeleri](../availability-zones/az-overview.md) kullanılıyorsa) kapalı kalma süresi yle karşılaştığında, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesi çok önemlidir. Bu nedenle, *Jeo-felaket kurtarma* herhangi bir kuruluş için önemli bir özelliktir. Azure Hizmet Veri Yolu, ad alanı düzeyinde coğrafi felaket kurtarmayı destekler.
+Azure bölgelerinin veya veri merkezlerinin (hiçbir [kullanılabilirlik](../availability-zones/az-overview.md) alanı kullanılmıyorsa) çalışma süresi kapalı kalma süresi, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam edebilmesi için kritik öneme sahiptir. Bu nedenle, *coğrafi olağanüstü durum kurtarma* , tüm kuruluşlar için önemli bir özelliktir. Azure Service Bus, ad alanı düzeyinde coğrafi olağanüstü durum kurtarmayı destekler.
 
-Geo-disaster kurtarma özelliği, Service Bus Premium SKU için küresel olarak kullanılabilir. 
+Coğrafi olağanüstü durum kurtarma özelliği Service Bus Premium SKU için genel kullanıma sunulmuştur. 
 
 >[!NOTE]
-> Coğrafi Durum kurtarma şu anda yalnızca meta verilerin (Kuyruklar, Konular, Abonelikler, Filtreler) eşleştirildiğinde birincil ad alanından ikincil ad alanına kopyalanmasını sağlar.
+> Coğrafi olağanüstü durum kurtarma şu anda yalnızca meta verilerin (kuyruklar, konular, abonelikler, filtreler) birincil ad alanından eşleştirildiği ikincil ad alanına kopyalanmasını sağlar.
 
-## <a name="outages-and-disasters"></a>Kesintiler ve felaketler
+## <a name="outages-and-disasters"></a>Kesintiler ve olağanüstü durumlar
 
-"Kesintiler" ve "felaketler" arasındaki ayrımı dikkate almak önemlidir. 
+"Kesintiler" ve "olağanüstü durumlar" arasındaki ayrımı dikkate almak önemlidir. 
 
-*Kesinti,* Azure Hizmet Veri Servisi'nin geçici olarak kullanılamamasıdır ve ileti deposu ve hatta tüm veri merkezi gibi hizmetin bazı bileşenlerini etkileyebilir. Ancak, sorun giderildikten sonra Servis Veri Servisi yeniden kullanılabilir hale gelir. Genellikle, bir kesinti iletilerin veya diğer verilerin kaybına neden olmaz. Böyle bir kesintiörneği veri merkezinde bir güç kesintisi olabilir. Bazı kesintiler geçici veya ağ sorunları nedeniyle yalnızca kısa bağlantı kayıplarıdır. 
+*Kesinti* , Azure Service Bus geçici olarak kullanılamaz ve hizmetin bir mesajlaşma deposu gibi bazı bileşenlerini veya hatta tüm veri merkezini etkileyebilir. Ancak, sorun giderildikten sonra Service Bus yeniden kullanılabilir hale gelir. Genellikle kesinti, ileti veya diğer verilerin kaybedilmesine neden olmaz. Bu tür bir kesinti, veri merkezinde bir güç hatası olabilir. Bazı kesintiler, geçici veya ağ sorunları nedeniyle yalnızca kısa bağlantı kayıplarıdır. 
 
-*Bir felaket,* bir Hizmet Veri Aracı kümesinin, Azure bölgesinin veya veri merkezinin kalıcı veya uzun vadeli kaybı olarak tanımlanır. Bölge veya veri merkezi yeniden kullanılabilir olabilir veya olmayabilir veya saatlerce veya günlerdir kapanabilir. Bu tür felaketlere örnek olarak yangın, sel veya deprem verilebilir. Kalıcı hale gelen bir felaket, bazı iletilerin, olayların veya diğer verilerin kaybolmasına neden olabilir. Ancak, çoğu durumda veri kaybı olmamalıdır ve veri merkezi yedeklendikten sonra iletiler kurtarılabilir.
+*Olağanüstü durum* , Service Bus kümesi, Azure bölgesi veya veri merkezi 'nin kalıcı veya uzun süreli kaybı olarak tanımlanır. Bölge veya veri merkezi bir kez daha kullanılamayabilir veya kullanılabilir olmayabilir ya da saat veya günler için kapatılmış olabilir. Bu tür felate örnek olarak Fire, taşmasını veya deprem verilebilir. Kalıcı hale gelen bir olağanüstü durum, bazı ileti, olay veya diğer verilerin kaybedilmesine neden olabilir. Ancak çoğu durumda, veri merkezi yedeklendikten sonra veri kaybı olmaması ve iletiler kurtarılabilir.
 
-Azure Servis Veri Yolu'nun Coğrafi felaket kurtarma özelliği bir olağanüstü durum kurtarma çözümüdür. Bu makalede açıklanan kavramlar ve iş akışı, geçici veya geçici kesintiler için değil, felaket senaryoları için geçerlidir. Microsoft Azure'da olağanüstü durum kurtarma yla ilgili ayrıntılı bir tartışma için [bu makaleye](/azure/architecture/resiliency/disaster-recovery-azure-applications)bakın.   
+Azure Service Bus coğrafi olağanüstü durum kurtarma özelliği bir olağanüstü durum kurtarma çözümüdür. Bu makalede açıklanan kavramlar ve iş akışı, geçici veya geçici kesintilere değil olağanüstü durum senaryoları için geçerlidir. Microsoft Azure ' de olağanüstü durum kurtarma hakkında ayrıntılı bir tartışma için [Bu makaleye](/azure/architecture/resiliency/disaster-recovery-azure-applications)bakın.   
 
 ## <a name="basic-concepts-and-terms"></a>Temel kavramlar ve terimler
 
-Olağanüstü durum kurtarma özelliği meta veri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarına dayanır. Geo-disaster kurtarma özelliğinin yalnızca [Premium SKU](service-bus-premium-messaging.md) için kullanılabildiğini unutmayın. Bağlantı bir takma ad aracılığıyla yapıldığından, bağlantı dizedeğişiklikleri yapmanız gerekmez.
+Olağanüstü durum kurtarma özelliği, meta veri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarını kullanır. Coğrafi olağanüstü durum kurtarma özelliğinin yalnızca [PREMIUM SKU](service-bus-premium-messaging.md) için kullanılabilir olduğunu unutmayın. Bağlantı bir diğer ad aracılığıyla yapıldığından herhangi bir bağlantı dizesi değişikliği yapmanız gerekmez.
 
-Bu makalede aşağıdaki terimler kullanılmıştır:
+Bu makalede aşağıdaki terimler kullanılmaktadır:
 
--  *Diğer Ad*: Ayarladığınız olağanüstü durum kurtarma yapılandırmasının adı. Takma ad, tek bir kararlı Tam Nitelikli Etki Alanı Adı (FQDN) bağlantı dizesini sağlar. Uygulamalar, ad alanına bağlanmak için bu diğer ad bağlantı dizesini kullanır. Takma ad kullanmak, hata tetiklendiğinde bağlantı dizesinin değişmemesini sağlar.
+-  *Diğer ad*: ayarladığınız bir olağanüstü durum kurtarma yapılandırması adı. Diğer ad, tek bir tutarlı tam etki alanı adı (FQDN) bağlantı dizesi sağlar. Uygulamalar, bir ad alanına bağlanmak için bu diğer ad bağlantı dizesini kullanır. Diğer ad kullanılması, yük devretme tetiklendiğinde bağlantı dizesinin değişmeden olmasını sağlar.
 
--  *Birincil/ikincil ad alanı*: Diğer ada karşılık gelen ad alanları. Birincil ad alanı "etkin" dir ve iletileri alır (bu varolan veya yeni bir ad alanı olabilir). İkincil ad alanı "pasif" dir ve ileti almaz. Her ikisi arasındaki meta veriler eşitlenir, böylece her ikisi de herhangi bir uygulama kodu veya bağlantı dizesi değişiklikleri olmadan iletileri sorunsuz bir şekilde kabul edebilir. Yalnızca etkin ad alanının ileti aldığından emin olmak için diğer adı kullanmanız gerekir. 
+-  *Birincil/ikincil ad alanı*: diğer ada karşılık gelen ad alanları. Birincil ad alanı "etkin" ve iletileri alır (Bu, var olan veya yeni bir ad alanı olabilir). İkincil ad alanı "pasif" ve ileti almaz. Her ikisi arasındaki meta veriler eşitlenmiş olduğundan, her ikisi de herhangi bir uygulama kodu veya bağlantı dizesi değişikliği olmadan iletileri sorunsuzca kabul edebilir. Yalnızca etkin ad alanının iletileri aldığından emin olmak için diğer adı kullanmanız gerekir. 
 
--  *Meta veriler*: Kuyruklar, konular ve abonelikler gibi varlıklar; ve ad alanıile ilişkili hizmetin özellikleri. Yalnızca varlıkların ve ayarlarının otomatik olarak çoğaltıldığını unutmayın. İletiler çoğaltılamaz.
+-  *Meta veriler*: kuyruklar, konu başlıkları ve abonelikler gibi varlıklar; ve ad alanıyla ilişkili hizmetin özellikleri. Yalnızca varlıkların ve ayarlarının otomatik olarak çoğaltıldığını unutmayın. İletiler çoğaltılmaz.
 
--  *Failover*: İkincil ad alanını etkinleştirme işlemidir.
+-  *Yük devretme*: ikincil ad alanını etkinleştirme işlemi.
 
 ## <a name="setup"></a>Kurulum
 
-Aşağıdaki bölüm, ad alanları arasındaki kurulum eşleştirmesine genel bir bakıştır.
+Aşağıdaki bölüm, ad alanları arasında eşleştirmeye kurulum için bir genel bakıştır.
 
 ![1][]
 
-Kurulum işlemi aşağıdaki gibidir -
+Kurulum işlemi aşağıdaki gibidir-
 
-1. ***Birincil*** Hizmet Veri Günü Premium Ad Alanı sağlama.
+1. ***Birincil*** Service Bus Premium ad alanı sağlayın.
 
-2. *Birincil ad alanının sağlandığı*bölgeden farklı bir bölgede ***İkincil*** Hizmet Veri Günü Premium Ad Alanı sağlama. Bu, farklı veri merkezi bölgeleri arasında hata yalıtımına izin verir.
+2. *Birincil ad alanının sağlandığı farklı*bir bölgede ***Ikincil*** Service Bus Premium ad alanı sağlayın. Bu, farklı veri merkezi bölgelerinde hata yalıtımına izin verir.
 
-3. ***Diğer adı***elde etmek için Birincil ad alanı ve İkincil ad alanı arasında eşleştirme oluşturun.
+3. ***Diğer adı***almak için birincil ad alanı ve ikincil ad alanı arasında eşleştirme oluşturun.
 
     >[!NOTE] 
-    > [Azure Hizmet Veri Yolu Standart ad alanınızı Azure Hizmet Veri Yolu Premium'a geçtiyseniz,](service-bus-migrate-standard-premium.md) **PS/CLI** veya **REST API**aracılığıyla olağanüstü durum kurtarma yapılandırmasını oluşturmak için önceden varolan diğer adı (örneğin Service Bus Standard ad alanı bağlantı dizenizi) kullanmanız gerekir.
+    > [Azure Service Bus standart ad alanınızı Azure Service Bus Premium 'a geçirdiyseniz](service-bus-migrate-standard-premium.md), **PS/CLI** veya **REST API**aracılığıyla olağanüstü durum kurtarma yapılandırması oluşturmak için önceden mevcut diğer adı (yani Service Bus standart ad alanı bağlantı dizeniz) kullanmanız gerekir.
     >
     >
-    > Bunun nedeni, geçiş sırasında Azure Hizmet Veri Kurumu Standart ad alanı bağlantı dizeniz/DNS adınız Azure Hizmet Veri Günü Premium ad alanınızın diğer adı haline gelir.
+    > Bunun nedeni, geçiş sırasında Azure Service Bus standart ad alanı bağlantı dizesinin/DNS adınızın, Azure Service Bus Premium ad alanınız için bir diğer ad haline geldiği bir addır.
     >
-    > İstemci uygulamalarınız, olağanüstü durum kurtarma eşleştirmesinin kurulum yaptığı Premium ad alanına bağlanmak için bu diğer adı (örneğin Azure Hizmet Veri Yolu Standart ad alanı bağlantı dizesini) kullanmalıdır.
+    > İstemci uygulamalarınızın, olağanüstü durum kurtarma eşinin ayarlandığı Premium ad alanına bağlanmak için bu diğer adı (örneğin, Azure Service Bus standart ad alanı bağlantı dizesi) kullanmanız gerekir.
     >
-    > Portalı Olağanüstü Durum kurtarma yapılandırmasını kurmak için kullanırsanız, portal bu uyarıyı sizden soyutlar.
+    > Olağanüstü durum kurtarma yapılandırmasını kurmak için portalını kullanıyorsanız, Portal bu desteklenmediği uyarısıyla sizin için Özet olur.
 
 
-4. İstemci uygulamalarınızı Geo-DR etkin birincil ad alanına bağlamak için adım 3'te elde edilen ***diğer adı*** kullanın. Başlangıçta, diğer ad birincil ad alanına işaret edir.
+4. İstemci uygulamalarınızı coğrafi DR özellikli birincil ad alanına bağlamak için adım 3 ' te elde edilen ***diğer adı*** kullanın. Başlangıçta, diğer ad birincil ad alanını işaret eder.
 
-5. [İsteğe bağlı] Bir hata nın gerekli olup olmadığını algılamak için bazı izlemeler ekleyin.
+5. Seçim Yük devretme gerekli olup olmadığını algılamak için bazı izleme ekleyin.
 
-## <a name="failover-flow"></a>Başarısız akış
+## <a name="failover-flow"></a>Yük devretme akışı
 
-Bir hata, müşteri tarafından el ile tetiklenir (açıkça bir komut aracılığıyla veya komutu tetikleyen istemciye ait iş mantığı aracılığıyla) ve asla Azure tarafından değil. Bu, müşteriye Azure'un omurgası üzerindeki kesinti çözünürlüğü için tam sahiplik ve görünürlük sağlar.
+Yük devretme, müşteri tarafından el ile tetiklenir (bir komutla veya komutu tetikleyen istemci iş mantığı aracılığıyla veya hiçbir şekilde Azure tarafından). Bu, müşteriye tam sahiplik ve Azure 'ın omurga üzerinde kesinti çözümlemesi için görünürlük sağlar.
 
 ![4][]
 
-Failover tetiklendikten sonra -
+Yük devretme tetiklendikten sonra-
 
-1. ***Diğer ad*** bağlantı dizesi, İkincil Premium ad alanına işaret etmek için güncelleştirilir.
+1. ***Diğer ad*** bağlantı dizesi, ikincil Premium ad alanını işaret etmek üzere güncelleştirilir.
 
-2. İstemciler (gönderenler ve alıcılar) Otomatik olarak İkincil ad alanına bağlanır.
+2. İstemciler (Gönderenler ve alıcılar) Ikincil ad alanına otomatik olarak bağlanır.
 
-3. Birincil ve İkincil premium ad alanı arasındaki varolan eşleştirme bozuldu.
+3. Birincil ve Ikincil Premium ad alanı arasındaki mevcut eşleştirme bozuk.
 
-Bir kez failover başlatılır -
+Yük devretme başlatıldıktan sonra-
 
-1. Başka bir kesinti oluşursa, tekrar başarısız olmak isteyebilirsiniz. Bu nedenle, başka bir pasif ad alanı ayarlayın ve eşleştirmegüncelleştirin. 
+1. Başka bir kesinti oluşursa, yeniden yük devredebilmek istersiniz. Bu nedenle, başka bir pasif ad alanı ayarlayın ve eşlemeyi güncelleştirin. 
 
-2. Yeniden kullanılabilir olduğunda eski birincil ad alanından iletileri çekin. Bundan sonra, bu ad alanını coğrafi kurtarma kurulumuzun dışında düzenli ileti için kullanın veya eski birincil ad alanını silin.
+2. Yeniden kullanılabilir olduktan sonra eski birincil ad alanından ileti çekin. Bundan sonra, coğrafi kurtarma kurulumunuzu dışında düzenli mesajlaşma için bu ad alanını kullanın veya eski birincil ad alanını silin.
 
 > [!NOTE]
-> Sadece ileri semantik desteklenir başarısız. Bu senaryoda, üzerinde başarısız ve sonra yeni bir ad alanı ile yeniden eşleştirmek. Geri başarısız desteklenmez; örneğin, bir SQL kümesinde. 
+> Yalnızca başarısız iletme semantiği desteklenir. Bu senaryoda yük devreder ve sonra yeni bir ad alanı ile yeniden eşleştirin. Yeniden başarısız olma desteklenmez; Örneğin, bir SQL kümesinde. 
 
-Failover'ı izleme sistemleriyle veya özel olarak oluşturulmuş izleme çözümleriyle otomatikleştirebilirsiniz. Ancak, bu tür otomasyon bu makalenin kapsamı dışında ekstra planlama ve iş alır.
+Yük devretmeyi, izleme sistemleriyle veya özel olarak oluşturulmuş izleme çözümleriyle otomatik hale getirebilirsiniz. Ancak, bu tür otomasyon, bu makalenin kapsamı dışında daha fazla planlama ve iş alır.
 
 ![2][]
 
 ## <a name="management"></a>Yönetim
 
-Eğer bir hata yaptıysanız; örneğin, ilk kurulum sırasında yanlış bölgeleri eşlediniz, istediğiniz zaman iki ad alanının eşleşmesini kırabilirsiniz. Eşleştirilmiş ad alanlarını normal ad alanları olarak kullanmak istiyorsanız, diğer adı silin.
+Bir hata yaptıysanız, Örneğin, ilk kurulum sırasında yanlış bölgeleri eşleştirdikten sonra, iki ad alanının eşleştirmesini dilediğiniz zaman kesebilirsiniz. Eşleştirilmiş ad alanlarını normal ad alanları olarak kullanmak istiyorsanız, diğer adı silin.
 
-## <a name="use-existing-namespace-as-alias"></a>Varolan ad alanını diğer ad olarak kullanma
+## <a name="use-existing-namespace-as-alias"></a>Mevcut ad alanını diğer ad olarak kullan
 
-Üreticilerin ve tüketicilerin bağlantılarını değiştiremeyeceğiniz bir senaryonuz varsa, ad alanı adınızı takma ad olarak yeniden kullanabilirsiniz. [GitHub'daki örnek kodu burada](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name)görebilirsiniz.
+Üreticileri ve tüketicilerinin bağlantılarını değiştirebir senaryonuz varsa, ad alanı adınızı diğer ad olarak yeniden kullanabilirsiniz. [GitHub 'daki örnek koda buradan](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name)bakın.
 
 ## <a name="samples"></a>Örnekler
 
-[GitHub'daki örnekler,](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) nasıl bir hata ayarlayıp başlatılabildiğini gösterir. Bu örnekler aşağıdaki kavramları göstermektedir:
+[GitHub 'daki örneklerde](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) yük devretmeyi ayarlama ve başlatma işlemi gösterilmektedir. Bu örnekler aşağıdaki kavramları göstermektedir:
 
-- Bir .NET örneği ve Azure Etkin Dizin'de Hizmet Veri Yolu ile Azure Kaynak Yöneticisi'ni kullanmak, Coğrafi felaket kurtarmayı ayarlamak ve etkinleştirmek için gereken ayarlar.
+- Coğrafi olağanüstü durum kurtarma 'yı ayarlamak ve etkinleştirmek için Service Bus Azure Resource Manager kullanmak üzere Azure Active Directory için gereken bir .NET örneği ve ayarları.
 - Örnek kodu yürütmek için gereken adımlar.
-- Varolan bir ad alanı takma ad olarak nasıl kullanılır?
-- PowerShell veya CLI aracılığıyla Coğrafi felaket kurtarmayı alternatif olarak etkinleştirme adımları.
-- Takma adı kullanarak geçerli birincil veya ikincil ad alanından [gönderme ve alma.](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1)
+- Mevcut bir ad alanını diğer ad olarak kullanma.
+- Alternatif olarak PowerShell veya CLı ile coğrafi olağanüstü durum kurtarmayı etkinleştirme adımları.
+- Diğer adı kullanarak geçerli birincil veya ikincil ad alanından [gönderin ve alın](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) .
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Bu sürümde göz önünde bulundurulması gereken hususlara dikkat edin:
+Bu sürümü göz önünde bulundurmanız için aşağıdaki noktalara dikkat edin:
 
-1. Başarısız planlama, aynı zamanda zaman faktörü düşünmelisiniz. Örneğin, bağlantınızı 15 ila 20 dakikadan uzun süre kaybederseniz, başarısızlığı başlatmaya karar verebilirsiniz.
+1. Yük devretme planlamadaki zaman etmenini de göz önünde bulundurmanız gerekir. Örneğin, 15 ila 20 dakikaya kadar olan bağlantıyı kaybederseniz, yük devretmeyi başlatmaya karar verebilirsiniz.
 
-2. Hiçbir verinin çoğaltılmadı olması, şu anda etkin oturumların çoğaltılmadı anlamına gelir. Ayrıca, yinelenen algılama ve zamanlanan iletiler çalışmayabilir. Yeni oturumlar, yeni zamanlanmış iletiler ve yeni yinelenenler çalışacaktır. 
+2. Hiçbir veri çoğaltılmaması, o anda etkin oturumların çoğaltılmadığı anlamına gelir. Ayrıca, yinelenen algılama ve zamanlanan iletiler çalışmayabilir. Yeni oturumlar, yeni zamanlanmış iletiler ve yeni yinelemeler çalışacaktır. 
 
-3. Karmaşık dağıtılmış bir altyapı üzerinde başarısız en az bir kez [prova](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) edilmelidir.
+3. Karmaşık bir dağıtılmış altyapının yük devretmesi en az bir kez [prova](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) edilmelidir.
 
-4. Eşitleme varlıkları, dakikada yaklaşık 50-100 varlıklar biraz zaman alabilir. Abonelikler ve kurallar da varlıklar olarak sayılır.
+4. Varlıkların eşitlenmesi birkaç dakika sürebilir ve dakikada yaklaşık 50-100 varlık olabilir. Abonelikler ve kurallar da varlık olarak sayılır.
 
 ## <a name="availability-zones"></a>Kullanılabilirlik Alanları
 
-Service Bus Premium SKU, Azure bölgesinde hataya yalıtılmış konumlar sağlayarak [Kullanılabilirlik Bölgelerini](../availability-zones/az-overview.md)de destekler.
+Service Bus Premium SKU, bir Azure bölgesi içinde hataya yalıtılmış konumlar sağlayarak [kullanılabilirlik alanları](../availability-zones/az-overview.md)de destekler.
 
 > [!NOTE]
-> Azure Hizmet Veri Servisi Premium için Kullanılabilirlik Bölgeleri desteği yalnızca kullanılabilirlik bölgelerinin bulunduğu [Azure bölgelerinde](../availability-zones/az-overview.md#services-support-by-region) kullanılabilir.
+> Azure Service Bus Premium için Kullanılabilirlik Alanları desteği yalnızca kullanılabilirlik alanlarının bulunduğu [Azure bölgelerinde](../availability-zones/az-region.md) kullanılabilir.
 
-Kullanılabilirlik Bölgelerini yalnızca yeni ad alanlarında Azure portalını kullanarak etkinleştirebilirsiniz. Hizmet Veri Servisi varolan ad boşluklarının geçişini desteklemez. Ad alanınızda etkinleştirdikten sonra bölge artıklığını devre dışı bırakamazsınız.
+Azure portal kullanarak yalnızca yeni ad alanlarında Kullanılabilirlik Alanları etkinleştirebilirsiniz. Service Bus var olan ad alanlarının geçişini desteklemez. Ad alanınız üzerinde etkinleştirildikten sonra bölge yedekliliği devre dışı bırakılamaz.
 
 ![3][]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Geo-afet kurtarma [REST API referans burada](/rest/api/servicebus/disasterrecoveryconfigs)bakın.
-- [GitHub'da](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2)Geo-disaster kurtarma örneğini çalıştırın.
-- [İletileri başka bir takma ada gönderen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1)Coğrafi felaket kurtarma örneğine bakın.
+- Coğrafi olağanüstü durum kurtarma [REST API başvurusunu buraya](/rest/api/servicebus/disasterrecoveryconfigs)bakın.
+- [GitHub 'Da](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2)coğrafi olağanüstü durum kurtarma örneğini çalıştırın.
+- [Bir diğer ada ileti gönderen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1)coğrafi olağanüstü durum kurtarma örneğine bakın.
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus konu başlıklarını ve aboneliklerini kullanma](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-* [Dinlenme API'si](/rest/api/servicebus/) 
+* [REST API 'SI](/rest/api/servicebus/) 
 
 [1]: ./media/service-bus-geo-dr/geodr_setup_pairing.png
 [2]: ./media/service-bus-geo-dr/geo2.png

@@ -1,20 +1,22 @@
 ---
-title: Machine Learning deneme kodunu üretim koduna Dönüştür
+title: Not defteri kodunu Python betiklerine Dönüştür
 titleSuffix: Azure Machine Learning
-description: MLOpsPython Code şablonunu kullanarak makine öğrenimi deneysel kodunu üretim koduna dönüştürmeyi öğrenin.
+description: MLOpsPython Code şablonunu kullanarak Machine Learning not defterlerinizi üretime hazırlamış koda dönüştürün. Daha sonra bu kodu test edebilir, dağıtabilir ve otomatikleştirin.
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/13/2020
-ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/30/2020
+ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521433"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559667"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Öğretici: ML deneysel kodu üretim koduna Dönüştür
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Öğretici: ML denemeleri 'yi üretim Python koduna dönüştürme
+
+Bu öğreticide, Juptyer not defterlerini, MLOpsPython kod şablonu ve Azure Machine Learning kullanarak test etme ve Otomasyonu kolay hale getirmek için Python betiklerine nasıl dönüştürebileceğinizi öğreneceksiniz. Genellikle, bu işlem bir Juptyer Not defterinden deneme/eğitim kodu alıp Python betiklerine dönüştürmek için kullanılır. Bu betikler daha sonra üretim ortamınızda test ve CI/CD otomasyonu için kullanılabilir. 
 
 Machine Learning projesi, gerçek veri kümelerini kullanarak Jupyter Notebook gibi çevik araçlarla deneme gerektirir. Model üretime hazırsa, model kodu bir üretim kodu deposuna yerleştirilmelidir. Bazı durumlarda, model kodu, üretim kodu deposuna yerleştirilecek Python betiklerine dönüştürülmelidir. Bu öğreticide, deneme kodunu Python betiklerine aktarma hakkında önerilen bir yaklaşım ele alınmaktadır.
 

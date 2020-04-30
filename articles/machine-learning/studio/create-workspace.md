@@ -1,7 +1,7 @@
 ---
 title: Çalışma alanı oluşturma
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio'yu (klasik) kullanmak için bir Machine Learning Studio (klasik) çalışma alanına sahip olmanız gerekir. Bu çalışma alanı, denemeleri oluşturmak, yönetmek ve yayımlamak için ihtiyacınız olan araçları içerir.
+description: Azure Machine Learning Studio (klasik) kullanmak için bir Machine Learning Studio (klasik) çalışma alanınız olması gerekir. Bu çalışma alanı, denemeleri oluşturmak, yönetmek ve yayımlamak için ihtiyacınız olan araçları içerir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,94 +10,126 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 1a391a7a061d1382b5e07b45625c44fc0f5dec54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b01e7667392d475bcab70dcd3dfaad2c3956e8f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204469"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208542"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasik) çalışma alanı oluşturma ve paylaşma
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Azure Machine Learning Studio'yu (klasik) kullanmak için bir Machine Learning Studio (klasik) çalışma alanına sahip olmanız gerekir. Bu çalışma alanı, denemeleri oluşturmak, yönetmek ve yayımlamak için ihtiyacınız olan araçları içerir.
+Azure Machine Learning Studio (klasik) kullanmak için bir Machine Learning Studio (klasik) çalışma alanınız olması gerekir. Bu çalışma alanı, denemeleri oluşturmak, yönetmek ve yayımlamak için ihtiyacınız olan araçları içerir.
 
 ## <a name="create-a-studio-classic-workspace"></a>Studio (klasik) çalışma alanı oluşturma
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın
+Machine Learning Studio (klasik) ' de bir çalışma alanı açmak için, çalışma alanını oluşturmak için kullandığınız Microsoft hesabında oturum açmanız veya çalışma alanına katılması için sahibinden bir davetiye almanız gerekir. Azure portal, erişimi yapılandırma özelliğini içeren çalışma alanını yönetebilirsiniz.
+
+1. [Azure Portal](https://portal.azure.com/) oturum açın
 
     > [!NOTE]
-    > Oturum açmak ve bir Studio (klasik) çalışma alanı oluşturmak için Azure abonelik yöneticisi olmanız gerekir. 
+    > Oturum açmak ve bir Studio (klasik) çalışma alanı oluşturmak için bir Azure abonelik yöneticisi olmanız gerekir. 
     >
     > 
 
-2. **+Yeni'yi** tıklatın
+2. **+ Yeni** seçeneğine tıklayın
 
-3. Arama kutusunda, **Machine Learning Studio (klasik) Çalışma Alanı'nı** yazın ve eşleşen öğeyi seçin. Ardından, sayfanın altındaki **Oluştur'u** tıklatın' seçeneğini belirleyin.
+3. Arama kutusuna **Machine Learning Studio (klasik) çalışma alanı** yazın ve eşleşen öğeyi seçin. Ardından sayfanın alt kısmındaki **Oluştur** ' a tıklayın ' ı seçin.
 
 4. Çalışma alanı bilgilerinizi girin:
 
-   - *Çalışma alanı adı* 260 karaktere kadar olabilir ve bir boşlukta bitmeyebilir. Ad bu karakterleri içeremez:`< > * % & : \ ? + /`
-   - Seçtiğiniz *web hizmeti planı* (veya oluşturduğunuz) seçtiğiniz ilişkili fiyatlandırma *katmanı* ile birlikte, bu çalışma alanından web hizmetlerini dağıtıyorsanız kullanılır.
+   - *Çalışma alanı adı* en fazla 260 karakter uzunluğunda olabilir ve bir boşluk ile sonlanmaz. Ad şu karakterleri içeremez:`< > * % & : \ ? + /`
+   - Seçtiğiniz ilişkili *fiyatlandırma katmanıyla* birlikte seçtiğiniz (veya oluşturduğunuz) *Web hizmeti planı* , Web hizmetlerini bu çalışma alanından dağıtırsanız kullanılır.
 
-     ![Yeni bir Studio (klasik) çalışma alanı oluşturma](./media/create-workspace/create-new-workspace.png)
+     ![Yeni bir Studio (klasik) çalışma alanı oluştur](./media/create-workspace/create-new-workspace.png)
 
-5. **Oluştur'u**tıklatın.
+5. **Oluştur**' a tıklayın.
+
+   Machine Learning, şu anda sınırlı sayıda bölgede kullanılabilir. Aboneliğiniz bu bölgelerden birini içermiyorsa, "izin verilen bölgelerde aboneliğiniz yok" hata iletisini görebilirsiniz.  Aboneliğinize bir bölgenin eklenmesini istemek için, Azure portal yeni bir Microsoft destek isteği oluşturun, sorun türü olarak **faturalandırma** ' i seçin ve isteğinizi göndermek için istemleri izleyin.
+
 
 > [!NOTE]
-> Machine Learning Studio (klasik), iş akışını yürütürken ara verileri kaydetmek için sağladığınız bir Azure depolama hesabına güvenir. Çalışma alanı oluşturulduktan sonra, depolama hesabı silinirse veya erişim anahtarları değiştirilirse, çalışma alanı çalışmayı durdurur ve bu çalışma alanındaki tüm denemeler başarısız olur.
-Depolama hesabını yanlışlıkla silerseniz, silinen depolama hesabıyla aynı bölgede aynı ada sahip depolama hesabını yeniden oluşturun ve erişim anahtarını yeniden senkronize edin. Depolama hesabının erişim anahtarlarını değiştirdiyseniz, Azure portalını kullanarak çalışma alanındaki erişim anahtarlarını yeniden eşitleyin.
+> Machine Learning Studio (klasik), iş akışını yürütürken ara verileri kaydetmek için sağladığınız bir Azure Depolama hesabını kullanır. Çalışma alanı oluşturulduktan sonra, depolama hesabı silinirse veya erişim anahtarları değiştirilirse çalışma alanı çalışmayı durdurur ve bu çalışma alanındaki tüm denemeleri başarısız olur.
+Depolama hesabını yanlışlıkla silerseniz, silinen depolama hesabıyla aynı bölgede aynı ada sahip depolama hesabını yeniden oluşturun ve erişim tuşunu yeniden eşitleyin. Depolama hesabının erişim anahtarlarını değiştirdiyseniz, Azure portalını kullanarak çalışma alanındaki erişim anahtarlarını yeniden eşitleyin.
 
-Çalışma alanı dağıtıldıktan sonra Machine Learning Studio'da (klasik) açabilirsiniz.
+Çalışma alanı dağıtıldıktan sonra, Machine Learning Studio (klasik) içinde açabilirsiniz.
 
-1. Machine Learning Studio'ya (klasik) göz [https://studio.azureml.net/](https://studio.azureml.net/)atın.
+1. Machine Learning Studio (klasik) konumuna gidin [https://studio.azureml.net/](https://studio.azureml.net/).
 
 2. Sağ üst köşeden çalışma alanınızı seçin.
 
     ![Çalışma alanını seçme](./media/create-workspace/open-workspace.png)
 
-3. **Denemelerimi**tıklatın.
+3. **Denemeleri**tıklayın.
 
-    ![Açık deneyler](./media/create-workspace/my-experiments.png)
+    ![Açık denemeleri](./media/create-workspace/my-experiments.png)
 
-Studio (klasik) çalışma alanınızı yönetme hakkında daha fazla bilgi için [bkz.](manage-workspace.md)
-Çalışma alanınızı oluştururken bir sorunla karşılaşırsanız, [Sorun Giderme kılavuzuna bakın: Machine Learning Studio (klasik) çalışma alanı oluşturun ve bağlanın.](troubleshooting-creating-ml-workspace.md)
+Studio (klasik) çalışma alanınızı yönetme hakkında daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) çalışma alanını yönetme](manage-workspace.md).
+Çalışma alanınızı oluştururken bir sorunla karşılaşırsanız bkz. [sorun giderme kılavuzu: oluşturma ve Machine Learning Studio (klasik) çalışma alanı ile bağlanma](troubleshooting-creating-ml-workspace.md).
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasik) çalışma alanını paylaşma
-Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, kullanıcıları çalışma alanınıza ve tüm deneylerine, veri kümelerine, not defterlerine vb. erişimi paylaşmaları için iş alanınıza davet edebilirsiniz. Kullanıcıları iki rolden birine ekleyebilirsiniz:
+Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, çalışma alanınıza ve tüm denemeleri, veri kümelerine, Notebook, vb. erişimi paylaşmak için kullanıcıları çalışma alanınıza davet edebilirsiniz. Kullanıcıları, iki rolden birine ekleyebilirsiniz:
 
-* **Kullanıcı** - Çalışma alanı kullanıcısı çalışma alanında denemeler, veri kümeleri vb. oluşturabilir, açabilir, değiştirebilir ve silebilir.
-* **Sahibi** - Bir kullanıcının yapabileceklerine ek olarak, bir kullanıcı çalışma alanındaki kullanıcıları davet edebilir ve kaldırabilir.
+* **Kullanıcı** -bir çalışma alanı kullanıcısı, çalışma alanında denemeleri, veri kümeleri, vb. oluşturabilir, açabilir, değiştirebilir ve silebilir.
+* **Sahip** -bir sahip, kullanıcının ne yapabileceklerini ek olarak çalışma alanındaki kullanıcıları davet edebilir ve kaldırabilir.
 
 > [!NOTE]
-> Çalışma alanını oluşturan yönetici hesabı çalışma alanı sahibi olarak otomatik olarak çalışma alanına eklenir. Ancak, bu abonelikteki diğer yöneticilere veya kullanıcılara çalışma alanına otomatik olarak erişim izni verilmez - bunları açıkça davet etmeniz gerekir.
+> Çalışma alanını oluşturan yönetici hesabı çalışma alanına çalışma alanı sahibi olarak otomatik olarak eklenir. Ancak, Bu abonelikteki diğer yöneticilere veya kullanıcılara otomatik olarak çalışma alanına erişim izni verilmez; bunları açıkça davet etmeniz gerekir.
 > 
 > 
 
-### <a name="to-share-a-studio-classic-workspace"></a>Studio (klasik) çalışma alanını paylaşmak için
+### <a name="to-share-a-studio-classic-workspace"></a>Bir Studio (klasik) çalışma alanını paylaşmak için
 
-1. Machine Learning Studio 'da (klasik) oturum açın[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. Machine Learning Studio 'de (klasik) oturum açın[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. Sol panelde **AYARLAR'ı** tıklatın
+2. Sol bölmede, **Ayarlar** ' a tıklayın.
 
-3. **KULLANIMCIlar** sekmesini tıklatın
+3. **Kullanıcılar** sekmesine tıklayın
 
-4. Sayfanın altındaki **DAHA FAZLA KULLANICI DAVET** ET'E tıklayın
+4. Sayfanın alt kısmındaki **daha fazla kullanıcı davet et** ' e tıklayın
 
-    ![Stüdyo ayarları](./media/create-workspace/settings.png)
+    ![Studio ayarları](./media/create-workspace/settings.png)
 
-5. Bir veya daha fazla e-posta adresi girin. Kullanıcıların geçerli bir Microsoft hesabına veya kuruluş hesabına (Azure Active Directory'den) ihtiyacı vardır.
+5. Bir veya daha fazla e-posta adresi girin. Kullanıcılar geçerli bir Microsoft hesabı veya bir kuruluş hesabına (Azure Active Directory) sahip olmalıdır.
 
-6. Kullanıcıları Sahibi veya Kullanıcı olarak eklemek isteyip istemediğinizi seçin.
+6. Kullanıcıları sahip veya Kullanıcı olarak eklemek isteyip istemediğinizi seçin.
 
-7. **Tamam** onay işareti düğmesini tıklatın.
+7. **Tamam** onay işareti düğmesine tıklayın.
 
-Eklediğiniz her kullanıcı, paylaşılan çalışma alanında nasıl oturum açAcağınıza ilişkin talimatları içeren bir e-posta alır.
+Eklediğiniz her bir Kullanıcı, paylaşılan çalışma alanında nasıl oturum açacağınız hakkında yönergeler içeren bir e-posta alır.
 
 > [!NOTE]
-> Kullanıcıların bu çalışma alanında web hizmetlerini dağıtabilmeleri veya yönetebilmeleri için Azure aboneliğine katkıda bulunan veya yönetici olmaları gerekir. 
+> Kullanıcıların bu çalışma alanında Web hizmetlerini dağıtabilmeleri veya yönetebilmesi için Azure aboneliğinde katkıda bulunan veya yönetici olması gerekir. 
+
+## <a name="troubleshoot-storage-accounts"></a>Depolama hesaplarında sorun giderme
 
 
+Machine Learning hizmeti, verileri depolamak için bir depolama hesabı gerektirir. Mevcut bir depolama hesabını kullanabilir veya yeni Machine Learning Studio (klasik) çalışma alanını oluştururken yeni bir depolama hesabı oluşturabilirsiniz (yeni bir depolama hesabı oluşturmak için kotayı kullanıyorsanız).
 
+Yeni Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, çalışma alanını oluşturmak için kullandığınız Microsoft hesabı kullanarak Machine Learning Studio (klasik) oturum açabilirsiniz. "Çalışma alanı bulunamadı" hata iletisiyle karşılaşırsanız (aşağıdaki ekran görüntüsüne benzer şekilde), lütfen tarayıcı tanımlama bilgilerinizi silmek için aşağıdaki adımları kullanın.
+
+![Çalışma alanı bulunamadı](media/troubleshooting-creating-ml-workspace/screen3.png)
+
+**Tarayıcı tanımlama bilgilerini silmek için**
+
+1. Internet Explorer kullanıyorsanız, sağ üst köşedeki **Araçlar** düğmesine tıklayın ve **Internet seçenekleri**' ni seçin.  
+
+   ![İnternet seçenekleri](media/troubleshooting-creating-ml-workspace/screen4.png)
+
+2. **Genel** sekmesinde Sil ' e tıklayın **...**
+
+   ![Genel sekmesi](media/troubleshooting-creating-ml-workspace/screen5.png)
+
+3. **Gözatma Geçmişini Sil** iletişim kutusunda, **tanımlama bilgileri ve Web sitesi verilerinin** seçili olduğundan emin olun ve **Sil**' e tıklayın.
+
+   ![Tanımlama bilgilerini silme](media/troubleshooting-creating-ml-workspace/screen6.png)
+
+Tanımlama bilgileri silindikten sonra, tarayıcıyı yeniden başlatın ve ardından [Microsoft Azure Machine Learning Studio (klasik)](https://studio.azureml.net) sayfasına gidin. Bir Kullanıcı adı ve parola istendiğinde, çalışma alanını oluşturmak için kullandığınız Microsoft hesabı aynısını girin.
+
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Çalışma alanını yönetme hakkında daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) çalışma alanını yönetme](manage-workspace.md).

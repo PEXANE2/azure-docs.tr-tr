@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02b0d8290e279b6ed4de08d074597154208cac6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184002"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509372"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Öğretici: DocuSign ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -221,7 +221,7 @@ Bu bölümde, bu kullanıcının Azure çoklu oturum açmayı kullanabilmesi iç
        
        1. **Hizmet sağlayıcı onaylama tüketici hizmeti URL 'sini**kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **yanıt URL 'si** kutusuna yapıştırın.
        
-       1. **Hizmet sağlayıcısı oturum açma URL**'sini kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **URL 'yi oturum aç** kutusuna yapıştırın.
+       1. **Hizmet sağlayıcısı oturum açma URL**'sini kopyalayın ve ardından Azure Portal **temel SAML yapılandırması** bölümündeki **URL 'yi oturum aç** kutusuna yapıştırın. **Hizmet sağlayıcı oturum açma URL** 'sinin sonunda ıdpid değerini alırsınız.
 
        1. **Kapat**'ı seçin.
 

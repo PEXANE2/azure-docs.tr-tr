@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Bağlantı noktası iletme yapılandırma - Azure portalı'
+title: 'Öğretici: bağlantı noktası iletmeyi Yapılandırma-Azure portal'
 titleSuffix: Azure Load Balancer
-description: Bu öğretici, bir Azure sanal ağında VM'lere bağlantı oluşturmak için Azure Yük Bakiyesi kullanarak bağlantı noktası iletmenin nasıl yapılandırılabildiğini gösterir.
+description: Bu öğreticide, bir Azure sanal ağındaki VM 'lere bağlantı oluşturmak için Azure Load Balancer kullanarak bağlantı noktası iletmeyi yapılandırma gösterilmektedir.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,266 +15,266 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: e740a65d453a69a987e938a5170ae8e04c7bfe40
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78249874"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207896"
 ---
-# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Öğretici: Portalı kullanarak Azure Yük Dengeleyici'nde bağlantı noktası yönlendirmesini yapılandırın
+# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Öğretici: portalı kullanarak Azure Load Balancer bağlantı noktası iletmeyi yapılandırma
 
-Bağlantı noktası yönlendirme, Azure Yük Bakiyesi genel IP adresi ve bağlantı noktası numarasını kullanarak Azure sanal ağındaki sanal makinelere (VM) bağlanmanızı sağlar. 
+Bağlantı noktası iletme, bir Azure sanal ağındaki sanal makinelere (VM) bir Azure Load Balancer genel IP adresi ve bağlantı noktası numarası kullanarak bağlanmanızı sağlar. 
 
-Bu eğitimde, bir Azure Yük Dengeleyicisi üzerinde bağlantı noktası yönlendirmesi ayarlayın. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu öğreticide, Azure Load Balancer bağlantı noktası iletmeyi ayarlarsınız. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * VM'ler üzerindeki ağ trafiğini dengelemek için genel bir Standart yük dengeleyicioluşturun. 
-> * Ağ güvenlik grubu (NSG) kuralına sahip sanal ağ ve Sanal M'ler oluşturun. 
-> * VM'leri yük bakiyesi arka uç adres havuzuna ekleyin.
-> * Bir yük dengeleyici sağlık sondası ve trafik kuralları oluşturun.
+> * VM 'Ler üzerinden ağ trafiğini dengelemek için genel bir standart yük dengeleyici oluşturun. 
+> * Bir ağ güvenlik grubu (NSG) kuralına sahip bir sanal ağ ve VM 'Ler oluşturun. 
+> * VM 'Leri yük dengeleyici arka uç adres havuzuna ekleyin.
+> * Yük dengeleyici durum araştırması ve trafik kuralları oluşturun.
 > * Yük dengeleyici gelen NAT bağlantı noktası iletme kuralları oluşturun.
-> * Yük dengelemeve bağlantı noktası yönlendirmeyi iş başında görüntülemek için IIS'yi VM'lere yükleyin ve yapılandırın.
+> * Yük Dengeleme ve bağlantı noktası iletmeyi görüntülemek için VM 'Lere IIS yükleyin ve yapılandırın.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-Bu öğreticideki tüm adımlar için Azure portalında oturum aç. [https://portal.azure.com](https://portal.azure.com)
+Bu öğreticideki tüm adımlar için Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-standard-load-balancer"></a>Standart yük dengeleyicisi oluşturma
+## <a name="create-a-standard-load-balancer"></a>Standart yük dengeleyici oluşturma
 
-İlk olarak, VM'ler üzerindeki trafik yükünü dengeleyebilen genel bir Standart yük dengeleyicioluşturun. Standart yük dengeleyicisi yalnızca standart bir genel IP adresini destekler. Standart yük dengeleyicisi oluşturduğunuzda, yük dengeleyiciön ucu olarak yapılandırılan ve varsayılan olarak **LoadBalancerFrontEnd** olarak adlandırılan yeni bir Standart genel IP adresi de oluşturursunuz. 
+İlk olarak, VM 'Ler üzerinden trafik yükünü dengeleyebilir ortak bir standart yük dengeleyici oluşturun. Standart yük dengeleyici yalnızca standart bir genel IP adresini destekler. Standart yük dengeleyici oluşturduğunuzda, yük dengeleyici ön ucu olarak yapılandırılan ve varsayılan olarak **Loadbalancerön uç** olarak yapılandırılmış yeni bir standart genel IP adresi de oluşturursunuz. 
 
-1. Ekranın sol üst tarafında, **kaynak** > **Oluşturma** > **Yük Dengeleyicisi'ni**tıklatın.
-2. **Yük bakiyesi oluştur** sayfasının **Temeller** sekmesinde, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılanları kabul edin ve sonra Gözden Geçir + oluştur seçeneğini **belirleyin:**
+1. Ekranın sol üst kısmında **kaynak** > **ağ** > **Load Balancer**oluştur ' a tıklayın.
+2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
-    | Kaynak grubu         | Metin kutusunda **yeni oluştur'u** ve *MyResourceGroupLB* yazın'ı seçin.|
+    | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegrouplb* yazın.|
     | Adı                   | *myLoadBalancer*                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
-    | Tür          | **Genel'i**seçin.                                        |
-    | SKU           | **Standart'ı**seçin.                          |
+    | Tür          | **Ortak**seçeneğini belirleyin.                                        |
+    | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
-    | Genel IP adresi adı              | Metin kutusuna *myPublicIP* yazın.   |
-    |Kullanılabilirlik alanı| **Bölge yedekli**seçin.    |
+    | Genel IP adresi adı              | Metin kutusuna *Mypublicıp* yazın.   |
+    |Kullanılabilirlik alanı| **Bölge yedekli**seçeneğini belirleyin.    |
      
     >[!NOTE]
-     >Doluluk Bölgelerini destekleyen bir konumda Yük Dengeleyicinizi ve bunun için tüm kaynakları oluşturduğunuzdan emin olun. Daha fazla bilgi için [bkz.](../availability-zones/az-overview.md#services-support-by-region) 
+     >Load Balancer ve tüm kaynaklarınızı, Kullanılabilirlik Alanları destekleyen bir konumda oluşturduğunuzdan emin olun. Daha fazla bilgi için bkz. [kullanılabilirlik alanları destekleyen bölgeler](../availability-zones/az-region.md). 
 
-3. Gözden **Geçir + oluştur** sekmesinde **Oluştur'u**tıklatın.  
+3. **Gözden geçir + oluştur** sekmesinde **Oluştur**' a tıklayın.  
   
 ## <a name="create-and-configure-back-end-servers"></a>Arka uç sunucuları oluşturma ve yapılandırma
 
-İki sanal makineden oluşan bir sanal ağ oluşturun ve VM'leri yük bakiyenizin arka uç havuzuna ekleyin. 
+İki sanal makineyle bir sanal ağ oluşturun ve VM 'Leri yük dengeleyicinizin arka uç havuzuna ekleyin. 
 
 ## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
-Bu bölümde aşağıdaki bilgileri ile adımlarda aşağıdaki parametreleri değiştirmeniz gerekir:
+Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<kaynak-grup adı>**  | myResourceGroupLB (Varolan kaynak grubunu seçin) |
-| **\<sanal ağ adı>** | myVNet          |
+| **\<Kaynak-Grup adı>**  | myResourceGroupLB (mevcut kaynak grubunu Seç) |
+| **\<sanal ağ-adı>** | myVNet          |
 | **\<bölge adı>**          | Batı Avrupa      |
-| **\<IPv4 adres-boşluk>**   | 10.3.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<alt net-adres aralığı>** | 10.3.0.0\24          |
+| **\<IPv4-adres-alanı>**   | 10.3.0.0 \ 16          |
+| **\<alt ağ-adı>**          | myBackendSubnet        |
+| **\<alt ağ-adres aralığı>** | 10.3.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>VM'ler oluşturun ve bunları yük dengeleyici arka uç havuzuna ekleyin
+### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>VM oluşturma ve bunları yük dengeleyici arka uç havuzuna ekleme
 
-1. Portalın sol üst tarafında, **kaynak** > **Oluştur Windows** > **Server 2016 Datacenter'ı**seçin. 
+1. Portalın sol üst tarafında, **kaynak** > oluştur**işlem** > **Windows Server 2016 Datacenter**' u seçin. 
    
-1. **Sanal bir makine oluştur'da,** **TemelLer** sekmesinde aşağıdaki değerleri yazın veya seçin:
-   - **Abonelik** > **Kaynak Grubu**: Açılır ve **MyResourceGroupLB'yi**seçin.
+1. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
+   - **Abonelik** > **kaynak grubu**: açılır ve **myresourcegrouplb**' ı seçin.
    - **Sanal makine adı**: *MyVM1*yazın.
-   - **Bölge**: **Batı Avrupa'yı**seçin. 
-   - **Kullanıcı Adı**: *Azureuser*yazın.
-   - **Şifre**: *Azure1234567*yazın. 
-     **Parolayı Onayla** alanına yeniden yazın.
+   - **Bölge**: **Batı Avrupa**seçin. 
+   - **Kullanıcı adı**: *azureuser*yazın.
+   - **Parola**: *Azure1234567*yazın. 
+     Parolayı **Onayla** alanına parolayı yeniden yazın.
    
-1. **Ağ** sekmesini seçin veya **Sonraki: Diskler,** sonra **Sonraki: Ağ**. 
+1. **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin. 
    
-   Aşağıdakilerin seçildiğinden emin olun:
-   - **Sanal ağ**: **MyVNet**
-   - **Alt ağ**: **MyBackendSubnet**
+   Aşağıdakilerin seçili olduğundan emin olun:
+   - **Sanal ağ**: **myvnet**
+   - **Alt ağ**: **mybackendsubnet**
    
-1. **Genel IP**altında, **yeni oluştur'u**seçin, Ortak IP adresi oluştur sayfasında **Standart'ı** seçin ve ardından **Tamam'ı**seçin. **Create public IP address** 
+1. **Ortak IP**altında, **Yeni oluştur**' u seçin, **genel IP adresi oluştur** sayfasında **Standart** ' ı seçin ve ardından **Tamam**' ı seçin. 
    
-1. **Ağ Güvenliği Grubu**altında, bir güvenlik duvarı türü olan yeni bir ağ güvenlik grubu (NSG) oluşturmak için **Gelişmiş'i** seçin. 
-   1. **Yapılandır ağ güvenlik grubu** alanında **yeni oluştur'u**seçin. 
-   1. *MyNetworkSecurityGroup*yazın ve **Tamam'ı**seçin. 
+1. **Ağ güvenlik grubu**altında, yeni bir ağ güvenlik grubu (NSG) oluşturmak için **Gelişmiş** ' i seçerek bir güvenlik duvarı türü oluşturun. 
+   1. **Ağ güvenlik grubunu yapılandır** alanında **Yeni oluştur**' u seçin. 
+   1. *Mynetworksecuritygroup*yazın ve **Tamam**' ı seçin. 
    
    >[!NOTE]
-   >Varsayılan olarak, NSG'nin uzak masaüstü (RDP) bağlantı noktası olan 3389 bağlantı noktasını açmak için gelen bir kuralı olduğunu gözlemleyin.
+   >Varsayılan olarak NSG 'nin bağlantı noktası 3389, Uzak Masaüstü (RDP) bağlantı noktasını açmak için bir gelen kuralı zaten olduğunu gözlemleyin.
    
-1. Oluşturduğunuz yük dengeleyici arka uç havuzuna VM'yi ekleyin:
+1. VM 'yi, oluşturduğunuz bir yük dengeleyici arka uç havuzuna ekleyin:
    
-   1. **YÜK DENGELEME** > si altında**bu sanal makineyi mevcut bir yük dengeleme çözümünü arkasına yerleştirin?** **Yes** 
-   1. **Yük dengeleme seçenekleri**için, aşağı bırakın ve Azure yük **dengeleyiciseçin.** 
-   1. **Bir yük dengeleyiciseçin,** aşağı bırakın ve **MyLoadBalancer**seçin. 
-   1. **Bir arka uç havuzu seçin,** yeni **oluştur'u**seçin, ardından *MyBackendPool*yazın ve **Oluştur'u**seçin. 
+   1. **Yük Dengeleme** > altında**Bu sanal makineyi var olan bir yük dengeleme çözümünün arkasına yerleştirin**, **Evet**' i seçin. 
+   1. **Yük dengeleme seçenekleri**için, açılır ve **Azure yük dengeleyici**' ni seçin. 
+   1. **Yük dengeleyici seçin**için, açılır ve **myloadbalancer**' ı seçin. 
+   1. **Bir arka uç havuzu seçin**altında **Yeni oluştur**' u seçin, sonra *mybackendpool*yazın ve **Oluştur**' u seçin. 
    
    ![Sanal ağ oluşturma](./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png)
    
-1. **Yönetim** sekmesini seçin veya **Sonraki** > **Yönetim'i**seçin. **İzleme**altında, **Boot tanılamayı** **Kapalı**olarak ayarlayın.
+1. **Yönetim** sekmesini seçin veya **İleri** > **Yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
    
 1. **İncele ve oluştur**’u seçin.
    
-1. Ayarları gözden geçirin ve doğrulama başarılı olduğunda **Oluştur'u**seçin. 
+1. Ayarları gözden geçirin ve doğrulamanın başarılı olması durumunda **Oluştur**' u seçin. 
 
-1. *MyVM2*adlı ikinci bir VM oluşturmak için adımları izleyin , tüm diğer ayarları MyVM1 ile aynı. 
+1. *MyVM2*adlı ikinci bir sanal makine oluşturmak için adımları izleyin, diğer tüm ayarlar MyVM1 ile aynıdır. 
    
-   **Ağ Güvenliği Grubu**için Gelişmiş'i seçtikten sonra aşağı bırakın ve zaten oluşturduğunuz **MyNetworkSecurityGroup'u** seçin. **Advanced** 
+   **Ağ güvenlik grubu**Için, **Gelişmiş**' i seçtikten sonra, açılan listeden daha önce oluşturduğunuz **mynetworksecuritygroup** ' u seçin. 
    
-   **Bir arka uç havuzu seçin**altında, **MyBackendPool'un** seçildiğinden emin olun. 
+   **Bir arka uç havuzu seçin**altında **mybackendpool** ' ın seçili olduğundan emin olun. 
 
-### <a name="create-an-nsg-rule-for-the-vms"></a>VM'ler için NSG kuralı oluşturma
+### <a name="create-an-nsg-rule-for-the-vms"></a>VM 'Ler için bir NSG kuralı oluşturma
 
-VM'lerin gelen internet (HTTP) bağlantılarına izin vermesi için bir ağ güvenlik grubu (NSG) kuralı oluşturun.
+VM 'Ler için gelen internet (HTTP) bağlantılarına izin veren bir ağ güvenlik grubu (NSG) kuralı oluşturun.
 
 >[!NOTE]
->Varsayılan olarak, NSG zaten port 3389, uzak masaüstü (RDP) bağlantı noktası açan bir kural vardır.
+>Varsayılan olarak, NSG bağlantı noktası 3389, Uzak Masaüstü (RDP) bağlantı noktasını açan bir kuralla zaten sahiptir.
 
-1. Soldaki menüden **Tüm kaynaklar**’ı seçin. Kaynak listesinden **MyResourceGroupLB** kaynak grubunda **MyNetworkSecurityGroup'u** seçin.
+1. Soldaki menüden **Tüm kaynaklar**’ı seçin. Kaynak listesinden **Myresourcegrouplb** kaynak grubundaki **Mynetworksecuritygroup** ' u seçin.
    
 1. **Ayarlar** bölümünde **Gelen güvenlik kuralları**’nı ve sonra **Ekle**’yi seçin.
    
-1. Gelen **güvenlik kuralı ekle** iletişim kutusunda aşağıdakileri yazın veya seçin:
+1. **Gelen güvenlik kuralı ekle** iletişim kutusunda, aşağıdakileri yazın veya seçin:
    
-   - **Kaynak**: **Servis Etiketini**Seçin.  
-   - **Kaynak servis etiketi**: **Internet'i**seçin. 
-   - **Hedef bağlantı noktası aralıkları**: Type *80*.
-   - **Protokol**: **TCP'yi**seçin. 
-   - **Eylem**: **İzin Ver'i**seçin.  
-   - **Öncelik**: Tip *100*. 
-   - **Adı**: *MyHTTPRule*yazın. 
-   - **Açıklama**: Type *Allow HTTP*. 
+   - **Kaynak**: **hizmet etiketi**seçin.  
+   - **Kaynak hizmet etiketi**: **Internet**' i seçin. 
+   - **Hedef bağlantı noktası aralıkları**: *80*yazın.
+   - **Protokol**: **TCP**' yi seçin. 
+   - **Eylem**: **izin ver**' i seçin.  
+   - **Öncelik**: *100*yazın. 
+   - **Ad**: *Myhttprule*yazın. 
+   - **Açıklama**: tür *http 'ye izin ver*. 
    
-1. **Ekle'yi**seçin. 
+1. **Add (Ekle)** seçeneğini belirleyin. 
    
    ![NSG kuralı oluşturma](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
    
 ## <a name="create-load-balancer-resources"></a>Yük dengeleyici kaynakları oluşturma
 
-Bu bölümde, yük dengeleyici arka uç havuzunu inceler ve bir yük dengeleyici sağlık sondası ve trafik kurallarını yapılandırın.
+Bu bölümde, yük dengeleyici arka uç havuzunu inceleyeceksiniz, yük dengeleyici durum araştırmasını ve trafik kurallarını yapılandırırsınız.
 
 ### <a name="view-the-back-end-address-pool"></a>Arka uç adres havuzunu görüntüleme
 
-VM'lere trafik dağıtmak için yük dengeleyicisi, yük bakiyesine bağlı sanal ağ arabirimlerinin (NIC) IP adreslerini içeren bir arka uç adres havuzu kullanır. 
+Trafiği VM 'lere dağıtmak için, yük dengeleyici yük dengeleyiciye bağlı sanal ağ arabirimlerinin (NIC 'ler) IP adreslerini içeren bir arka uç adres havuzu kullanır. 
 
-Yük dengeleyici arka uç havuzunuzu oluşturdunuz ve VM'leri oluşturduğunuzda ona VM eklediniz. Ayrıca arka uç havuzları oluşturabilir ve yük bakiyesi Arka **uç havuzları** sayfasından VM'ler ekleyebilir veya kaldırabilirsiniz. 
+Yük dengeleyici arka uç havuzunuzu oluşturdunuz ve VM 'Leri oluştururken buna VM 'Ler eklediniz. Ayrıca, arka uç havuzları oluşturabilir ve yük dengeleyici **arka uç havuzları** sayfasından VM 'ler ekleyebilir veya kaldırabilirsiniz. 
 
-1. Sol menüdeki **tüm kaynakları** seçin ve kaynak listesinden **MyLoadBalancer'ı** seçin.
+1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **myloadbalancer** ' yi seçin.
    
 1. **Ayarlar**’ın altında **Arka Uç Havuzları**’nı seçin.
    
-1. **Backend havuzları** sayfasında **MyBackendPool'u** genişletin ve hem **VM1** hem de **VM2'nin** listelendirilip listelendirilediğinden emin olun.
+1. **Arka uç havuzları** sayfasında, **Mybackendpool** ' u genişletin ve hem **VM1** hem de **VM2** öğelerinin listelendiğinden emin olun.
 
-1. **MyBackendPool'u**seçin. 
+1. **Mybackendpool**öğesini seçin. 
    
-   **MyBackendPool** sayfasında, **VIRTUAL MACHINE** ve **IP ADRESİ**altında, havuza kullanılabilir VM'leri kaldırabilir veya ekleyebilirsiniz.
+   **Mybackendpool** sayfasında, **sanal makıne** ve **IP adresi**altında, havuza kullanılabilir VM 'leri kaldırabilir veya ekleyebilirsiniz.
 
-**Arka uç havuzları** sayfasında **Ekle'yi** seçerek yeni arka uç havuzları oluşturabilirsiniz.
+**Arka uç havuzları** sayfasında **Ekle** ' ye tıklayarak yeni arka uç havuzları oluşturabilirsiniz.
 
 ### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
 
-Yük dengeleyicisinin VM durumunu izlemesine izin vermek için bir sistem durumu sondası kullanırsınız. Durum yoklaması, durum denetimlerine verdikleri yanıtlara göre VM’leri dinamik olarak yük dengeleyici rotasyonuna ekler ve kaldırır. 
+Yük dengeleyicinin VM durumunu izlemesine izin vermek için, bir sistem durumu araştırması kullanırsınız. Durum yoklaması, durum denetimlerine verdikleri yanıtlara göre VM’leri dinamik olarak yük dengeleyici rotasyonuna ekler ve kaldırır. 
 
-1. Sol menüdeki **tüm kaynakları** seçin ve kaynak listesinden **MyLoadBalancer'ı** seçin.
+1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **myloadbalancer** ' yi seçin.
    
 1. **Ayarlar** bölümünde **Durum araştırmaları**’nı ve sonra **Ekle**’yi seçin.
    
-1. Sistem **durumu sondası ekle** sayfasında aşağıdaki değerleri yazın veya seçin:
+1. **Durum araştırması Ekle** sayfasında, aşağıdaki değerleri yazın veya seçin:
    
-   - **Adı**: *MyHealthProbe*yazın.
-   - **Protokol**: Aşağı in ve **HTTP**seçin. 
-   - **Bağlantı Noktası**: Tip *80*. 
-   - **Yol**: */* Varsayılan URI için kabul edin. Bu değeri başka bir URI ile değiştirebilirsiniz. 
-   - **Aralık**: Tip *15*. Aralık, sonda denemeleri arasındaki saniye sayısıdır.
-   - **Sağlıksız eşik**: Tip *2*. Bu değer, VM sağlıksız olarak kabul edilmeden önce oluşan ardışık sonda hatalarının sayısıdır.
+   - **Ad**: *myhealtharaştırması*yazın.
+   - **Protokol**: açılır ve **http**' yi seçin. 
+   - **Bağlantı noktası**: *80*yazın. 
+   - **Yol**: varsayılan */* URI için kabul edin. Bu değeri başka bir URI ile değiştirebilirsiniz. 
+   - **Aralık**: *15*yazın. Aralık, yoklama denemeleri arasındaki saniye sayısıdır.
+   - **Sağlıksız eşik**: tür *2*. Bu değer, bir VM 'nin sağlıksız olduğu kabul edilmeden önce oluşan ardışık yoklama hatalarının sayısıdır.
    
-1. **Tamam'ı**seçin.
+1. **Tamam**’ı seçin.
    
-   ![Sonda ekleme](./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png)
+   ![Araştırma ekleyin](./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png)
 
 ### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
 Yük dengeleyici kuralı, trafiğin sanal makinelere nasıl dağıtıldığını belirler. Kural, gelen trafik için ön uç IP yapılandırmasını, trafiği almak için arka uç IP havuzunu ve gerekli kaynak ve hedef bağlantı noktalarını tanımlar. 
 
-**MyLoadBalancerRule** adlı yük dengeleyici kuralı ön uç **LoadBalancerFrontEnd**port 80 dinler. Kural arka uç adres havuzu **MyBackendPool**ağ trafiği gönderir , ayrıca bağlantı noktası 80. 
+**Myloadbalancerrule** adlı yük dengeleyici kuralı ön uç **loadbalancerön**ucunda 80 numaralı bağlantı noktasını dinler. Kural, bağlantı noktası 80 ' de, **Mybackendpool**arka uç adres havuzuna ağ trafiği gönderir. 
 
-1. Sol menüdeki **tüm kaynakları** seçin ve kaynak listesinden **MyLoadBalancer'ı** seçin.
+1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **myloadbalancer** ' yi seçin.
    
 1. **Ayarlar** bölümünde **Yük dengeleme kuralları**’nı ve sonra **Ekle**’yi seçin.
    
-1. Yük **dengeleme kuralı** ekle sayfasında aşağıdaki değerleri yazın veya seçin:
+1. **Yük Dengeleme kuralı ekle** sayfasında, aşağıdaki değerleri yazın veya seçin:
    
-   - **Adı**: *MyLoadBalancerRule*yazın.
-   - **Protokol**: **TCP'yi**seçin.
-   - **Bağlantı Noktası**: Tip *80*.
-   - **Arka uç bağlantı noktası**: Tip *80*.
-   - **Arka uç havuzu**: **MyBackendPool'u**seçin.
-   - **Sağlık sondası**: **MyHealthProbe'u**seçin. 
+   - **Ad**: *myloadbalancerrule*yazın.
+   - **Protokol**: **TCP**' yi seçin.
+   - **Bağlantı noktası**: *80*yazın.
+   - **Arka uç bağlantı noktası**: *80*yazın.
+   - **Arka uç havuzu**: **mybackendpool**' u seçin.
+   - **Durum araştırması**: **myhealtharaştırması**' ni seçin. 
    
-1. **Tamam'ı**seçin.
+1. **Tamam**’ı seçin.
    
    ![Yük dengeleyici kuralı ekleme](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
 
 ## <a name="create-an-inbound-nat-port-forwarding-rule"></a>Gelen NAT bağlantı noktası iletme kuralı oluşturma
 
-Trafiği ön uç IP adresinin belirli bir bağlantı noktasından belirli bir arka uç VM'nin belirli bir bağlantı noktasına iletmek için bir yük dengeleyici gelen ağ adresi çevirisi (NAT) kuralı oluşturun.
+Ön uç IP adresinin belirli bir bağlantı noktasından gelen trafiği arka uç VM 'sinin belirli bir bağlantı noktasına iletmek için bir yük dengeleyici gelen ağ adresi çevirisi (NAT) kuralı oluşturun.
 
-1. Sol menüdeki **tüm kaynakları** seçin ve kaynak listesinden **MyLoadBalancer'ı** seçin.
+1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **myloadbalancer** ' yi seçin.
    
-1. **Ayarlar**altında **Gelen NAT kurallarını**seçin ve sonra **Ekle'yi**seçin. 
+1. **Ayarlar**altında **gelen NAT kuralları**' nı seçin ve ardından **Ekle**' yi seçin. 
    
-1. Gelen **NAT kuralı** ekle sayfasında aşağıdaki değerleri yazın veya seçin:
+1. **Gelen NAT kuralı ekle** sayfasında, aşağıdaki değerleri yazın veya seçin:
    
-   - **Adı**: *MynATRuleVM1*yazın.
-   - **Bağlantı Noktası**: Tip *4221*.
-   - **Hedef sanal makine**: Açılan yerden **MyVM1'i** seçin.
-   - **Ağ IP Yapılandırması**: Açılan dan **ipconfig1'i** seçin.
-   - **Bağlantı noktası eşleme**: **Özel'i**seçin.
-   - **Hedef bağlantı noktası**: Tip *3389*.
+   - **Ad**: *MyNATRuleVM1*yazın.
+   - **Bağlantı noktası**: *4221*yazın.
+   - **Hedef sanal makine**: açılan listeden **MyVM1** öğesini seçin.
+   - **Ağ IP yapılandırması**: açılan listeden **ipconfig1** öğesini seçin.
+   - **Bağlantı noktası eşleme**: **özel**' i seçin.
+   - **Hedef bağlantı noktası**: *3389*yazın.
    
-1. **Tamam'ı**seçin.
+1. **Tamam**’ı seçin.
    
-1. **Port:** *4222* ve **Hedef sanal makine**kullanarak *MyNATRuleVM2*adlı gelen NAT kuralı eklemek için adımları tekrarlayın : **MyVM2**.
+1. **Bağlantı noktası**: *4222* ve **hedef sanal makine**: **MyVM2**kullanılarak *MyNATRuleVM2*adlı bir gelen NAT kuralı eklemek için adımları yineleyin.
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 
-Bu bölümde, arka uç sunucularına Internet Bilgi Hizmetleri (IIS) yükler ve makine adını göstermek için varsayılan web sayfasını özelleştirin. Ardından, yük bakiyesini test etmek için yük bakiyesinin genel IP adresini kullanırsınız. 
+Bu bölümde, arka uç sunucularına Internet Information Services (IIS) yükleyecek ve varsayılan Web sayfasını makine adını gösterecek şekilde özelleştireceksiniz. Daha sonra yük dengeleyiciyi test etmek için yük dengeleyicinin genel IP adresini kullanacaksınız. 
 
-Her arka uç VM varsayılan IIS web sayfasının farklı bir sürümünü hizmet vermektedir, böylece yük dengeleyicisinin iki VM arasında istekleri dağıttığını görebilirsiniz.
+Her arka uç sanal makinesi varsayılan IIS Web sayfasının farklı bir sürümüne hizmet eder, böylece yük dengeleyici istekleri iki VM arasında dağıtır.
 
-### <a name="connect-to-the-vms-with-rdp"></a>RDP ile VM'lere bağlanma
+### <a name="connect-to-the-vms-with-rdp"></a>RDP ile VM 'lere bağlanma
 
-Uzak Masaüstü (RDP) ile her VM'ye bağlanın. 
+Uzak Masaüstü (RDP) ile her sanal makineye bağlanın. 
 
-1. Portalda, sol menüdeki **Tüm kaynakları** seçin. Kaynak listesinden **MyResourceGroupLB** kaynak grubundaki her VM'yi seçin.
+1. Portalda, sol taraftaki menüden **tüm kaynaklar** ' ı seçin. Kaynak listesinden, **Myresourcegrouplb** kaynak grubundaki her bir VM 'yi seçin.
    
-1. Genel **Bakış** sayfasında **Bağlan'ı**seçin ve ardından **RDP dosyasını indir'i**seçin. 
+1. **Genel bakış** sayfasında **Bağlan**' ı seçin ve ardından **RDP dosyasını indir**' i seçin. 
    
-1. İndirdiğiniz RDP dosyasını açın ve **Bağlan'ı**seçin.
+1. İndirdiğiniz RDP dosyasını açın ve **Bağlan**' ı seçin.
    
-1. Windows Security **ekranında, daha fazla seçenek** seçin ve sonra farklı bir hesap **kullanın.** 
+1. Windows güvenliği ekranında, **diğer seçenekler** ' i seçin ve **farklı bir hesap kullanın**. 
    
-   Kullanıcı adı *azureuser* ve şifre *Azure1234567*girin ve **Tamam'ı**seçin.
+   Kullanıcı adı *azureuser* ve Password *Azure1234567*yazın ve **Tamam**' ı seçin.
    
 1. Herhangi bir sertifika istemine **Evet** yanıtı verin. 
    
    VM masaüstü yeni bir pencerede açılır. 
 
-### <a name="install-iis-and-replace-the-default-iis-web-page"></a>IIS'yi yükleyin ve varsayılan IIS web sayfasını değiştirin 
+### <a name="install-iis-and-replace-the-default-iis-web-page"></a>IIS 'yi yükleyip varsayılan IIS Web sayfasını değiştirme 
 
-IIS'yi yüklemek ve varsayılan IIS web sayfasını VM adını görüntüleyen bir sayfayla değiştirmek için PowerShell'i kullanın.
+IIS yüklemek ve varsayılan IIS Web sayfasını VM 'nin adını görüntüleyen bir sayfayla değiştirmek için PowerShell 'i kullanın.
 
-1. MyVM1'de ve MyVM2'de **Başlat** menüsünden **Windows PowerShell'i** başlatın. 
+1. MyVM1 ve MyVM2 üzerinde, **Başlat** menüsünden **Windows PowerShell** 'i başlatın. 
 
-2. IIS'yi yüklemek ve varsayılan IIS web sayfasını değiştirmek için aşağıdaki komutları çalıştırın:
+2. IIS yüklemek için aşağıdaki komutları çalıştırın ve varsayılan IIS Web sayfasını değiştirin:
    
    ```powershell-interactive
     # Install IIS
@@ -288,56 +288,56 @@ IIS'yi yüklemek ve varsayılan IIS web sayfasını VM adını görüntüleyen b
     
    ```
    
-1. **Bağlantıyı Kesme'yi**seçerek RDP bağlantılarını MyVM1 ve MyVM2 ile kapatın. VM'leri kapatma.
+1. **Bağlantıyı kes**' i seçerek RDP bağlantılarını MyVM1 ve MyVM2 ile kapatın. VM 'Leri kapatmayın.
 
-### <a name="test-load-balancing"></a>Test yük dengeleme
+### <a name="test-load-balancing"></a>Yük dengelemeyi test etme
 
-1. Portalda, **MyLoadBalancer**için **Genel Bakış** sayfasında, Genel **IP adresi**altında genel IP adresini kopyalayın. Adresin üzerine titreyin ve kopyalamak için **Kopyala** simgesini seçin. Bu örnekte, **40.67.218.235'** tir. 
+1. Portalda, **Myloadbalancer** **genel bakış** sayfasında genel IP **adresi**altındaki genel IP adresini kopyalayın. Adresin üzerine gelin ve kopyalamak için **Kopyala** simgesini seçin. Bu örnekte, **40.67.218.235**' dir. 
    
-1. Yük bakiyesi ortak IP adresini *(40.67.218.235)* internet tarayıcınızın adres çubuğuna yapıştırın veya yazın. 
+1. Yük dengeleyicinin genel IP adresini (*40.67.218.235*) Internet tarayıcınızın adres çubuğuna yapıştırın veya yazın. 
    
-   Özelleştirilmiş IIS web sunucusu varsayılan sayfası tarayıcıda görünür. Mesaj myVM1 veya Hello World **myVM2**ya Hello **World**okur.
+   Özelleştirilmiş IIS Web sunucusu varsayılan sayfası tarayıcıda görüntülenir. İleti, MyVM1 ' **dan Merhaba Dünya**veya MyVM2 ' **den Merhaba Dünya**okur.
    
    ![Yeni IIS varsayılan sayfası](./media/tutorial-load-balancer-port-forwarding-portal/9-load-balancer-test.png) 
    
-1. Yük dengeleyicisinin VM'ler arasında trafik dağıttığını görmek için tarayıcıyı yenileyin. Bazen **MyVM1** sayfası görünür, bazen de yük bakiyesi istekleri her arka uç VM'ye dağıttığı için **MyVM2** sayfası görünür.
+1. Yük dengeleyicinin trafiği VM 'Ler arasında dağıtmalarını görmek için tarayıcıyı yenileyin. Bazı durumlarda, yük dengeleyici istekleri her bir arka uç sanal makinesine dağıttığı için, **MyVM1** sayfası görünür ve **MyVM2** sayfasının diğer zamanları görüntülenir.
    
    >[!NOTE]
-   >Denemeler arasında tarayıcı önbelleğinizi temizlemeniz veya yeni bir tarayıcı penceresi açmanız gerekebilir.
+   >Tarayıcı önbelleğinizi temizlemeniz veya denemeler arasında yeni bir tarayıcı penceresi açmanız gerekebilir.
 
 ## <a name="test-port-forwarding"></a>Bağlantı noktası iletmeyi test etme
 
-Bağlantı noktası yönlendirmeile, yük bakiyesinin IP adresini ve NAT kuralında tanımlanan ön uç bağlantı noktası değerini kullanarak masaüstünü arka uç VM'ye uzak tutabilirsiniz. 
+Bağlantı noktası iletme ile, yük dengeleyicinin IP adresini ve NAT kuralında tanımlanmış ön uç bağlantı noktası değerini kullanarak bir arka uç VM 'ye uzak masaüstü 'nü kullanabilirsiniz. 
 
-1. Portalda, **MyLoadBalancer**için **Genel Bakış** sayfasında, genel IP adresini kopyalayın. Adresin üzerine titreyin ve kopyalamak için **Kopyala** simgesini seçin. Bu örnekte, **40.67.218.235'** tir. 
+1. Portalda, **Myloadbalancer** **genel bakış** sayfasında genel IP adresini kopyalayın. Adresin üzerine gelin ve kopyalamak için **Kopyala** simgesini seçin. Bu örnekte, **40.67.218.235**' dir. 
    
-1. Bir komut istemi açın ve yük bakiyesi ortak IP adresini ve VM'nin NAT kuralında tanımladığınız ön uç bağlantı noktasını kullanarak MyVM2 ile uzak bir masaüstü oturumu oluşturmak için aşağıdaki komutu kullanın. 
+1. Bir komut istemi açın ve yük dengeleyicinin genel IP adresini ve VM 'nin NAT kuralında tanımladığınız ön uç bağlantı noktasını kullanarak MyVM2 ile bir Uzak Masaüstü oturumu oluşturmak için aşağıdaki komutu kullanın. 
    
    ```
    mstsc /v:40.67.218.235:4222
    ```
   
-1. İndirilen RDP dosyasını açın ve **Bağlan'ı**seçin.
+1. İndirilen RDP dosyasını açın ve **Bağlan**' ı seçin.
    
-1. Windows Security **ekranında, daha fazla seçenek** seçin ve sonra farklı bir hesap **kullanın.** 
+1. Windows güvenliği ekranında, **diğer seçenekler** ' i seçin ve **farklı bir hesap kullanın**. 
    
-   Kullanıcı adı *azureuser* ve şifre *Azure1234567*girin ve **Tamam'ı**seçin.
+   Kullanıcı adı *azureuser* ve Password *Azure1234567*yazın ve **Tamam**' ı seçin.
    
 1. Herhangi bir sertifika istemine **Evet** yanıtı verin. 
    
    MyVM2 masaüstü yeni bir pencerede açılır. 
 
-Gelen NAT kuralı **MyNATRuleVM2** yük dengeleyicisinin ön uç bağlantı noktası 4222'den MyVM2'nin 3389 (RDP bağlantı noktası) bağlantı noktasına yönlendirdiği için RDP bağlantısı başarılı dır.
+**MyNATRuleVM2** gelen NAT kuralı, trafiği yük dengeleyicinin ön uç bağlantı noktası 4222 ' den MyVM2's bağlantı noktası 3389 ' e (RDP bağlantı noktası) yönlendirdiği IÇIN, RDP bağlantısı başarılı olur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyacınız olmadığında yük bakiyesini ve ilgili tüm kaynakları silmek için **MyResourceGroupLB** kaynak grubunu açın ve **kaynak grubunu sil'i**seçin.
+Artık ihtiyaç kalmadığında yük dengeleyiciyi ve tüm ilgili kaynakları silmek için **Myresourcegrouplb** kaynak grubunu açın ve **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, standart bir genel yük dengeleyicisi oluşturdunuz. Ağ kaynaklarını, arka uç sunucularını, sistem durumu sondasını ve yük dengeleyicisi kurallarını oluşturdunuz ve yapılandırıldınız. Arka uç VM'lerine IIS yükledin ve yük dengeleyicisini test etmek için yük bakiyesinin genel IP adresini kullandınız. Yük dengeleyicisindeki belirli bir bağlantı noktasından arka uç VM'deki bir bağlantı noktasına iletme bağlantı noktasını ayarlar ve test edeyim. 
+Bu öğreticide, standart bir genel yük dengeleyici oluşturdunuz. Ağ kaynakları, arka uç sunucuları, bir sistem durumu araştırması ve yük dengeleyici için kurallar oluşturdunuz ve yapılandırdınız. IIS 'yi arka uç VM 'lerine yüklediniz ve yük dengeleyiciyi test etmek için yük dengeleyicinin genel IP adresini kullandınız. Yük dengeleyicideki belirtilen bir bağlantı noktasından, arka uç VM 'deki bir bağlantı noktasına bağlantı noktası iletmeyi ayarlayın ve test edersiniz. 
 
-Azure Yük Dengeleyicisi hakkında daha fazla bilgi edinmek için daha fazla yük bakiyesi öğreticisine devam edin.
+Azure Load Balancer hakkında daha fazla bilgi edinmek için daha fazla yük dengeleyici öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer öğreticileri](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

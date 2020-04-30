@@ -1,6 +1,6 @@
 ---
-title: Coğrafi felaket kurtarma - Azure Etkinlik Hub'ları| Microsoft Dokümanlar
-description: Azure Olay Hub'larında başarısız olmak ve olağanüstü durum kurtarma gerçekleştirmek için coğrafi bölgeleri kullanma
+title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
+description: Azure Event Hubs yük devretme ve olağanüstü durum kurtarma işlemleri için coğrafi bölgeleri kullanma
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -14,131 +14,131 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 40db6e9f429569bc19641aa5f0f371f287db7b18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61318fbccdf92c6502aa8b2236d8b234cec67668
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281476"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209154"
 ---
-# <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Olay Hub'ları - Coğrafi felaket kurtarma 
+# <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
 
-Tüm Azure bölgeleri veya veri merkezleri [(kullanılabilirlik bölgeleri](../availability-zones/az-overview.md) kullanılıyorsa) kapalı kalma süresi yle karşılaştığında, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesi çok önemlidir. Bu nedenle, *Jeo-felaket kurtarma* ve *Geo-çoğaltma* herhangi bir kuruluş için önemli özelliklerdir. Azure Olay Hub'ları, ad alanı düzeyinde hem coğrafi felaket kurtarma yı hem de coğrafi çoğaltmayı destekler. 
+Azure bölgelerinin veya veri merkezlerinin (hiçbir [kullanılabilirlik](../availability-zones/az-overview.md) alanı kullanılmıyorsa) çalışma süresi kapalı kalma süresi, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam edebilmesi için kritik öneme sahiptir. Bu nedenle, *coğrafi olağanüstü durum kurtarma* ve *coğrafi çoğaltma* , herhangi bir kuruluş için önemli özelliklerdir. Azure Event Hubs, ad alanı düzeyinde hem coğrafi olağanüstü durum kurtarmayı hem de Coğrafi çoğaltmayı destekler. 
 
 > [!NOTE]
-> Geo-disaster kurtarma özelliği yalnızca [standart ve özel SNU'lar](https://azure.microsoft.com/pricing/details/event-hubs/)için kullanılabilir.  
+> Coğrafi olağanüstü durum kurtarma özelliği yalnızca [Standart ve adanmış SKU 'lar](https://azure.microsoft.com/pricing/details/event-hubs/)için kullanılabilir.  
 
-## <a name="outages-and-disasters"></a>Kesintiler ve felaketler
+## <a name="outages-and-disasters"></a>Kesintiler ve olağanüstü durumlar
 
-"Kesintiler" ve "felaketler" arasındaki ayrımı dikkate almak önemlidir. *Kesinti,* Azure Olay Hub'larının geçici olarak kullanılamamasıdır ve ileti deposu ve hatta tüm veri merkezi gibi hizmetin bazı bileşenlerini etkileyebilir. Ancak, sorun giderildikten sonra Olay Hub'ları yeniden kullanılabilir hale gelir. Genellikle, bir kesinti iletilerin veya diğer verilerin kaybına neden olmaz. Böyle bir kesintiörneği veri merkezinde bir güç kesintisi olabilir. Bazı kesintiler geçici veya ağ sorunları nedeniyle yalnızca kısa bağlantı kayıplarıdır. 
+"Kesintiler" ve "olağanüstü durumlar" arasındaki ayrımı dikkate almak önemlidir. *Kesinti* , Azure Event Hubs geçici olarak kullanılamaz ve hizmetin bir mesajlaşma deposu veya hatta tüm veri merkezinin bazı bileşenlerini etkileyebilir. Ancak, sorun giderildikten sonra Event Hubs yeniden kullanılabilir hale gelir. Genellikle kesinti, ileti veya diğer verilerin kaybedilmesine neden olmaz. Bu tür bir kesinti, veri merkezinde bir güç hatası olabilir. Bazı kesintiler, geçici veya ağ sorunları nedeniyle yalnızca kısa bağlantı kayıplarıdır. 
 
-*Bir felaket,* olay hub'ları kümesinin, Azure bölgesinin veya veri merkezinin kalıcı veya uzun vadeli kaybı olarak tanımlanır. Bölge veya veri merkezi yeniden kullanılabilir olabilir veya olmayabilir veya saatlerce veya günlerdir kapanabilir. Bu tür felaketlere örnek olarak yangın, sel veya deprem verilebilir. Kalıcı hale gelen bir felaket, bazı iletilerin, olayların veya diğer verilerin kaybolmasına neden olabilir. Ancak, çoğu durumda veri kaybı olmamalıdır ve veri merkezi yedeklendikten sonra iletiler kurtarılabilir.
+*Olağanüstü durum* , Event Hubs kümesi, Azure bölgesi veya veri merkezi 'nin kalıcı veya uzun süreli kaybı olarak tanımlanır. Bölge veya veri merkezi bir kez daha kullanılamayabilir veya kullanılabilir olmayabilir ya da saat veya günler için kapatılmış olabilir. Bu tür felate örnek olarak Fire, taşmasını veya deprem verilebilir. Kalıcı hale gelen bir olağanüstü durum, bazı ileti, olay veya diğer verilerin kaybedilmesine neden olabilir. Ancak çoğu durumda, veri merkezi yedeklendikten sonra veri kaybı olmaması ve iletiler kurtarılabilir.
 
-Azure Olay Hub'larının Coğrafi durum kurtarma özelliği bir olağanüstü durum kurtarma çözümüdür. Bu makalede açıklanan kavramlar ve iş akışı, geçici veya geçici kesintiler için değil, felaket senaryoları için geçerlidir. Microsoft Azure'da olağanüstü durum kurtarma yla ilgili ayrıntılı bir tartışma için [bu makaleye](/azure/architecture/resiliency/disaster-recovery-azure-applications)bakın.
+Azure Event Hubs coğrafi olağanüstü durum kurtarma özelliği bir olağanüstü durum kurtarma çözümüdür. Bu makalede açıklanan kavramlar ve iş akışı, geçici veya geçici kesintilere değil olağanüstü durum senaryoları için geçerlidir. Microsoft Azure ' de olağanüstü durum kurtarma hakkında ayrıntılı bir tartışma için [Bu makaleye](/azure/architecture/resiliency/disaster-recovery-azure-applications)bakın.
 
 ## <a name="basic-concepts-and-terms"></a>Temel kavramlar ve terimler
 
-Olağanüstü durum kurtarma özelliği meta veri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarına dayanır. 
+Olağanüstü durum kurtarma özelliği, meta veri olağanüstü durum kurtarma uygular ve birincil ve ikincil olağanüstü durum kurtarma ad alanlarını kullanır. 
 
-Geo-disaster kurtarma özelliği yalnızca [standart ve özel SNU'lar](https://azure.microsoft.com/pricing/details/event-hubs/) için kullanılabilir. Bağlantı bir takma ad aracılığıyla yapıldığından, bağlantı dizedeğişiklikleri yapmanız gerekmez.
+Coğrafi olağanüstü durum kurtarma özelliği yalnızca [Standart ve adanmış SKU 'lar](https://azure.microsoft.com/pricing/details/event-hubs/) için kullanılabilir. Bağlantı bir diğer ad aracılığıyla yapıldığından herhangi bir bağlantı dizesi değişikliği yapmanız gerekmez.
 
-Bu makalede aşağıdaki terimler kullanılmıştır:
+Bu makalede aşağıdaki terimler kullanılmaktadır:
 
--  *Diğer Ad*: Ayarladığınız olağanüstü durum kurtarma yapılandırmasının adı. Takma ad, tek bir kararlı Tam Nitelikli Etki Alanı Adı (FQDN) bağlantı dizesini sağlar. Uygulamalar, ad alanına bağlanmak için bu diğer ad bağlantı dizesini kullanır. 
+-  *Diğer ad*: ayarladığınız bir olağanüstü durum kurtarma yapılandırması adı. Diğer ad, tek bir tutarlı tam etki alanı adı (FQDN) bağlantı dizesi sağlar. Uygulamalar, bir ad alanına bağlanmak için bu diğer ad bağlantı dizesini kullanır. 
 
--  *Birincil/ikincil ad alanı*: Diğer ada karşılık gelen ad alanları. Birincil ad alanı "etkin" dir ve iletileri alır (bu varolan veya yeni bir ad alanı olabilir). İkincil ad alanı "pasif" dir ve ileti almaz. Her ikisi arasındaki meta veriler eşitlenir, böylece her ikisi de herhangi bir uygulama kodu veya bağlantı dizesi değişiklikleri olmadan iletileri sorunsuz bir şekilde kabul edebilir. Yalnızca etkin ad alanının ileti aldığından emin olmak için diğer adı kullanmanız gerekir. 
+-  *Birincil/ikincil ad alanı*: diğer ada karşılık gelen ad alanları. Birincil ad alanı "etkin" ve iletileri alır (Bu, var olan veya yeni bir ad alanı olabilir). İkincil ad alanı "pasif" ve ileti almaz. Her ikisi arasındaki meta veriler eşitlenmiş olduğundan, her ikisi de herhangi bir uygulama kodu veya bağlantı dizesi değişikliği olmadan iletileri sorunsuzca kabul edebilir. Yalnızca etkin ad alanının iletileri aldığından emin olmak için diğer adı kullanmanız gerekir. 
 
--  *Meta veriler*: Etkinlik merkezleri ve tüketici grupları gibi varlıklar; ve ad alanıile ilişkili hizmetin özellikleri. Yalnızca varlıkların ve ayarlarının otomatik olarak çoğaltıldığını unutmayın. İletiler ve olaylar çoğaltılamaz. 
+-  *Meta veri*: Olay Hub 'ları ve tüketici grupları gibi varlıklar; ve ad alanıyla ilişkili hizmetin özellikleri. Yalnızca varlıkların ve ayarlarının otomatik olarak çoğaltıldığını unutmayın. İletiler ve olaylar çoğaltılmaz. 
 
--  *Failover*: İkincil ad alanını etkinleştirme işlemidir.
+-  *Yük devretme*: ikincil ad alanını etkinleştirme işlemi.
 
 ## <a name="supported-namespace-pairs"></a>Desteklenen ad alanı çiftleri
-Birincil ve ikincil ad alanlarının aşağıdaki birleşimleri desteklenir:  
+Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:  
 
 | Birincil ad alanı | İkincil ad alanı | Destekleniyor | 
 | ----------------- | -------------------- | ---------- |
-| Standart | Standart | Evet | 
-| Standart | Ayrılmış | Evet | 
-| Ayrılmış | Ayrılmış | Evet | 
+| Standart | Standart | Yes | 
+| Standart | Ayrılmış | Yes | 
+| Ayrılmış | Ayrılmış | Yes | 
 | Ayrılmış | Standart | Hayır | 
 
 > [!NOTE]
-> Aynı özel kümede bulunan ad alanlarını eşleştiremezsiniz. Ayrı kümelerde bulunan ad alanlarını eşleştirebilirsiniz. 
+> Aynı adanmış kümede bulunan ad alanlarını eşleştiriyorsunuz. Ayrı kümelerdeki ad alanlarını eşleştirde ayırabilirsiniz. 
 
-## <a name="setup-and-failover-flow"></a>Kurulum ve arıza akışı
+## <a name="setup-and-failover-flow"></a>Kurulum ve yük devretme akışı
 
-Aşağıdaki bölüm, başarısız sürecin genel bir özetidir ve ilk başarısızın nasıl ayarlanılabildiğini açıklar. 
+Aşağıdaki bölüm, yük devretme işlemine genel bakış ve ilk yük devretmeyi ayarlamayı açıklar. 
 
 ![1][]
 
 ### <a name="setup"></a>Kurulum
 
-Önce varolan bir birincil ad alanı ve yeni bir ikincil ad alanı oluşturun veya kullanın, sonra ikisini eşleştirin. Bu eşleştirme, bağlanmak için kullanabileceğiniz bir diğer ad verir. Takma ad kullandığınızdan, bağlantı dizelerini değiştirmeniz gerekmez. Başarısız eşleştirmenize yalnızca yeni ad alanları eklenebilir. Son olarak, bir hata nın gerekli olup olmadığını algılamak için bazı izleme ler eklemeniz gerekir. Çoğu durumda, hizmet büyük bir ekosistemin bir parçasıdır, bu nedenle otomatik arızalar nadiren mümkündür, çünkü çoğu zaman başarısız lar kalan alt sistem veya altyapıyla senkronize olarak gerçekleştirilmelidir.
+Önce mevcut bir birincil ad alanını ve yeni bir ikincil ad alanını oluşturun veya kullanın, ardından ikisini eşleştirin. Bu eşleştirme size bağlanmak için kullanabileceğiniz bir diğer ad sağlar. Bir diğer ad kullandığınız için bağlantı dizelerini değiştirmek zorunda değilsiniz. Yalnızca yeni ad alanları, yük devretme eşleştirmeye eklenebilir. Son olarak, bir yük devretmenin gerekli olup olmadığını algılamak için bazı izleme eklemelisiniz. Çoğu durumda, hizmet büyük bir ekosisteminin bir parçasıdır ve bu nedenle otomatik yük devretme işlemleri, kalan alt sistemle veya altyapıyla eşitlenmesinin yapılması gerekir.
 
 ### <a name="example"></a>Örnek
 
-Bu senaryonun bir örneğinde, ileti ler veya olaylar yayıtan bir Satış Noktası (POS) çözümünü düşünün. Olay Hub'ları bu olayları, daha fazla işleme için eşlenen verileri başka bir sisteme ileten bazı eşleme veya yeniden biçimlendirme çözümüne geçirir. Bu noktada, bu sistemlerin tümü aynı Azure bölgesinde barındırılabilir. Ne zaman ve hangi bölümde başarısız olursa karar, altyapınızdaki veri akışına bağlıdır. 
+Bu senaryonun bir örneğinde, ileti ya da olay gösteren bir satış noktası (POS) çözümü düşünün. Event Hubs, bu olayları bazı eşleme veya yeniden biçimlendirme çözümüne geçirir ve daha sonra daha fazla işlenmek üzere eşlenen verileri başka bir sisteme iletir. Bu noktada, tüm bu sistemler aynı Azure bölgesinde barındırılıyor olabilir. Ne zaman ve hangi parçanın yük devretme kararı, altyapınızdaki verilerin akışına bağlıdır. 
 
-Failover'ı izleme sistemleriyle veya özel olarak oluşturulmuş izleme çözümleriyle otomatikleştirebilirsiniz. Ancak, bu tür otomasyon bu makalenin kapsamı dışında ekstra planlama ve iş alır.
+Yük devretmeyi, izleme sistemleriyle veya özel olarak oluşturulmuş izleme çözümleriyle otomatik hale getirebilirsiniz. Ancak, bu tür otomasyon, bu makalenin kapsamı dışında daha fazla planlama ve iş alır.
 
-### <a name="failover-flow"></a>Başarısız akış
+### <a name="failover-flow"></a>Yük devretme akışı
 
-Başarısız ı başlatırsanız, iki adım gerekir:
+Yük devretmeyi başlatırsanız iki adım gereklidir:
 
-1. Başka bir kesinti oluşursa, tekrar başarısız olmak isteyebilirsiniz. Bu nedenle, başka bir pasif ad alanı ayarlayın ve eşleştirmegüncelleştirin. 
+1. Başka bir kesinti oluşursa, yeniden yük devredebilmek istersiniz. Bu nedenle, başka bir pasif ad alanı ayarlayın ve eşlemeyi güncelleştirin. 
 
-2. Yeniden kullanılabilir olduğunda eski birincil ad alanından iletileri çekin. Bundan sonra, bu ad alanını coğrafi kurtarma kurulumuzun dışında düzenli ileti için kullanın veya eski birincil ad alanını silin.
+2. Yeniden kullanılabilir olduktan sonra eski birincil ad alanından ileti çekin. Bundan sonra, coğrafi kurtarma kurulumunuzu dışında düzenli mesajlaşma için bu ad alanını kullanın veya eski birincil ad alanını silin.
 
 > [!NOTE]
-> Sadece ileri semantik desteklenir başarısız. Bu senaryoda, üzerinde başarısız ve sonra yeni bir ad alanı ile yeniden eşleştirmek. Geri başarısız desteklenmez; örneğin, bir SQL kümesinde. 
+> Yalnızca başarısız iletme semantiği desteklenir. Bu senaryoda yük devreder ve sonra yeni bir ad alanı ile yeniden eşleştirin. Yeniden başarısız olma desteklenmez; Örneğin, bir SQL kümesinde. 
 
 ![2][]
 
 ## <a name="management"></a>Yönetim
 
-Eğer bir hata yaptıysanız; örneğin, ilk kurulum sırasında yanlış bölgeleri eşlediniz, istediğiniz zaman iki ad alanının eşleşmesini kırabilirsiniz. Eşleştirilmiş ad alanlarını normal ad alanları olarak kullanmak istiyorsanız, diğer adı silin.
+Bir hata yaptıysanız, Örneğin, ilk kurulum sırasında yanlış bölgeleri eşleştirdikten sonra, iki ad alanının eşleştirmesini dilediğiniz zaman kesebilirsiniz. Eşleştirilmiş ad alanlarını normal ad alanları olarak kullanmak istiyorsanız, diğer adı silin.
 
 ## <a name="samples"></a>Örnekler
 
-[GitHub'daki örnek,](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) nasıl bir hata ayarlayıp başlatılabildiğini gösterir. Bu örnek aşağıdaki kavramları göstermektedir:
+[GitHub 'daki örnek](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) , bir yük devretme ayarlamayı ve başlatmayı gösterir. Bu örnek aşağıdaki kavramları göstermektedir:
 
-- Azure Etkin Dizini'nde Etkinlik Hub'larıyla Azure Kaynak Yöneticisi'ni kullanmak için gereken ayarlar. 
+- Event Hubs ile Azure Resource Manager kullanmak için Azure Active Directory gereken ayarlar. 
 - Örnek kodu yürütmek için gereken adımlar. 
 - Geçerli birincil ad alanından gönderin ve alın. 
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Bu sürümde göz önünde bulundurulması gereken hususlara dikkat edin:
+Bu sürümü göz önünde bulundurmanız için aşağıdaki noktalara dikkat edin:
 
-1. Tasarım gereği, Olay Hub'ları coğrafi durum kurtarma verileri çoğaltmaz ve bu nedenle birincil olay hub'ınızın eski ofset değerini ikincil olay hub'ınızda yeniden kullanamazsınız. Etkinlik alıcınızı aşağıdakilerden biriyle yeniden başlatmanızı öneririz:
+1. Tasarım, coğrafi olağanüstü durum kurtarma Event Hubs verileri çoğaltmaz ve bu nedenle ikincil Olay Hub 'ınızdaki birincil olay hub 'ınızın eski değer değerini yeniden kullanamazsınız. Olay alıcılarınızı aşağıdakilerden biriyle yeniden başlatmanız önerilir:
 
-- *EventPosition.FromStart()* - İsterseniz ikincil etkinlik merkezinizdeki tüm verileri okuyun.
-- *EventPosition.FromEnd()* - İkincil olay merkezinize bağlantı zamanındaki tüm yeni verileri okumak isterseniz.
-- *EventPosition.FromEnqueuedTime(dateTime)* - Belirli bir tarih ve saatten itibaren ikincil etkinlik merkezinizde alınan tüm verileri okumak isterseniz.
+- *Eventposition. FromStart ()* -ikincil Olay Hub 'ınızdaki tüm verileri okumak istiyorsanız.
+- *Eventposition. FromEnd ()* -ikincil Olay Hub 'ınıza bağlantı sırasında tüm yeni verileri okumak istiyorsanız.
+- *Eventposition. FromEnqueuedTime (DateTime)* -belirli bir tarih ve saatten itibaren ikincil Olay Hub 'ınızdaki alınan tüm verileri okumak istiyorsanız.
 
-2. Başarısız planlama, aynı zamanda zaman faktörü düşünmelisiniz. Örneğin, bağlantınızı 15 ila 20 dakikadan uzun süre kaybederseniz, başarısızlığı başlatmaya karar verebilirsiniz. 
+2. Yük devretme planlamadaki zaman etmenini de göz önünde bulundurmanız gerekir. Örneğin, 15 ila 20 dakikaya kadar olan bağlantıyı kaybederseniz, yük devretmeyi başlatmaya karar verebilirsiniz. 
  
-3. Hiçbir verinin çoğaltılmadı olması, şu anda etkin oturumların çoğaltılmadı anlamına gelir. Ayrıca, yinelenen algılama ve zamanlanan iletiler çalışmayabilir. Yeni oturumlar, zamanlanmış iletiler ve yeni yinelenenler çalışır. 
+3. Hiçbir veri çoğaltılmaması, o anda etkin oturumların çoğaltılmadığı anlamına gelir. Ayrıca, yinelenen algılama ve zamanlanan iletiler çalışmayabilir. Yeni oturumlar, zamanlanan mesajlar ve yeni yinelemeler çalışacaktır. 
 
-4. Karmaşık dağıtılmış bir altyapı üzerinde başarısız en az bir kez [prova](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) edilmelidir. 
+4. Karmaşık bir dağıtılmış altyapının yük devretmesi en az bir kez [prova](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) edilmelidir. 
 
-5. Eşitleme varlıkları, dakikada yaklaşık 50-100 varlıklar biraz zaman alabilir.
+5. Varlıkların eşitlenmesi birkaç dakika sürebilir ve dakikada yaklaşık 50-100 varlık olabilir.
 
 ## <a name="availability-zones"></a>Kullanılabilirlik Alanları 
 
-Etkinlik Hub'ları Standart SKU, Azure bölgesinde hataya yalıtılmış konumlar sağlayarak [Kullanılabilirlik Bölgelerini](../availability-zones/az-overview.md)destekler. 
+Event Hubs standart SKU, bir Azure bölgesi içinde hataya yalıtılmış konumlar sağlayarak [kullanılabilirlik alanları](../availability-zones/az-overview.md)destekler. 
 
 > [!NOTE]
-> Azure Etkinlik Hub'ları Standardı için Kullanılabilirlik Bölgeleri desteği yalnızca kullanılabilirlik bölgelerinin bulunduğu [Azure bölgelerinde](../availability-zones/az-overview.md#services-support-by-region) kullanılabilir.
+> Azure Event Hubs Standard için Kullanılabilirlik Alanları desteği yalnızca kullanılabilirlik bölgelerinin bulunduğu [Azure bölgelerinde](../availability-zones/az-region.md) kullanılabilir.
 
-Kullanılabilirlik Bölgelerini yalnızca yeni ad alanlarında Azure portalını kullanarak etkinleştirebilirsiniz. Olay Hub'ları varolan ad alanlarının geçişini desteklemez. Ad alanınızda etkinleştirdikten sonra bölge artıklığını devre dışı bırakamazsınız.
+Azure portal kullanarak yalnızca yeni ad alanlarında Kullanılabilirlik Alanları etkinleştirebilirsiniz. Event Hubs var olan ad alanlarının geçişini desteklemez. Ad alanınız üzerinde etkinleştirildikten sonra bölge yedekliliği devre dışı bırakılamaz.
 
 ![3][]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [GitHub'daki örnek,](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) coğrafi eşleştirme oluşturan basit bir iş akışından geçer ve olağanüstü durum kurtarma senaryosu için bir hata başlatma işlemi başlatır.
-* [REST API başvurusu,](/rest/api/eventhub/disasterrecoveryconfigs) Coğrafi felaket kurtarma yapılandırmasını gerçekleştirmek için API'leri açıklar.
+* [GitHub 'daki örnek](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) , coğrafi eşleme oluşturan ve olağanüstü durum kurtarma senaryosu için yük devretme Başlatan basit bir iş akışında gösterilmektedir.
+* [REST API başvurusu](/rest/api/eventhub/disasterrecoveryconfigs) , coğrafi olağanüstü durum kurtarma yapılandırmasını gerçekleştirmek Için API 'leri açıklar.
 
 Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
 
@@ -146,7 +146,7 @@ Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 * [Event Hubs kullanan örnek uygulamalar](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

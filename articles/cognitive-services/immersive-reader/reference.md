@@ -1,7 +1,7 @@
 ---
-title: Sürükleyici Okuyucu SDK Referans
+title: Modern Okuyucu SDK başvurusu
 titleSuffix: Azure Cognitive Services
-description: Immersive Reader SDK, Sürükleyici Okuyucu'yu uygulamanız için entegre etmenizi sağlayan bir JavaScript kitaplığı içerir.
+description: Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığı içerir.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76156412"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231926"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>Sürükleyici Okuyucu SDK Başvuru Kılavuzu
+# <a name="immersive-reader-sdk-reference-guide"></a>Modern Okuyucu SDK 'Sı başvuru kılavuzu
 
-Immersive Reader SDK, Sürükleyici Okuyucu'yu uygulamanız için entegre etmenizi sağlayan bir JavaScript kitaplığı içerir.
+Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığı içerir.
 
 ## <a name="functions"></a>İşlevler
 
-SDK işlevleri ortaya çıkarır:
+SDK işlevleri kullanıma sunar:
 
 - [`ImmersiveReader.launchAsync(token, subdomain, content, options)`](#launchasync)
 
@@ -31,9 +31,9 @@ SDK işlevleri ortaya çıkarır:
 
 - [`ImmersiveReader.renderButtons(options)`](#renderbuttons)
 
-## <a name="launchasync"></a>fırlatmaAsync
+## <a name="launchasync"></a>launchAsync
 
-Bir web uygulama içinde `iframe` Immersive Reader başlattı.
+Web uygulamanızda bir `iframe` Içinde tam ekran okuyucu başlatır.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -44,35 +44,35 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | Adı | Tür | Açıklama |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD kimlik doğrulama belirteci. |
-| `subdomain` | string | Azure'daki Sürükleyici Okuyucu kaynağınızın özel alt etki alanı. |
-| `content` | [İçerik](#content) | Sürükleyici Okuyucu'da gösterilecek içeriği içeren bir nesne. |
-| `options` | [Seçenekler](#options) | Sürükleyici Reader'ın belirli davranışlarını yapılandırma seçenekleri. İsteğe bağlı. |
+| `subdomain` | string | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. |
+| `content` | [İçerik](#content) | Tam ekran okuyucu 'da gösterilecek içeriği içeren nesne. |
+| `options` | [Seçenekler](#options) | Modern okuyucunun belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
 ### <a name="returns"></a>Döndürür
 
-Sürükleyici `Promise<LaunchResponse>`Okuyucu yüklendiğinde çözen bir , döndürür. Bir `Promise` [`LaunchResponse`](#launchresponse) nesneye giderir.
+Derinlikli `Promise<LaunchResponse>`okuyucu yüklendiğinde çözümlenen bir döndürür. Bir `Promise` [`LaunchResponse`](#launchresponse) nesne olarak çözümlenir.
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
-Döndürülen `Promise` Okuyucu yüklenmezse bir [`Error`](#error) nesneyle birlikte reddedilir. Daha fazla bilgi için [hata kodlarına](#error-codes)bakın.
+Tam ekran `Promise` okuyucu yüklenemezse, döndürülen bir [`Error`](#error) nesne ile reddedilir. Daha fazla bilgi için bkz. [hata kodları](#error-codes).
 
 ## <a name="close"></a>close
 
-Sürükleyici Okuyucuyu kapatır.
+Tam ekran okuyucuyu kapatır.
 
-Bu işlev için bir örnek kullanım örneği, çıkış ```hideExitButton: true``` düğmesinin [seçenekleri](#options)ayarlayarak gizli olmasıdır. Ardından, farklı bir düğme (örneğin mobil üstbilginin arka ```close``` oku) tıklatıldığında bu işlevi arayabilir.
+Bu işlev için bir örnek kullanım örneği, ```hideExitButton: true``` [Seçenekler](#options)' de ayar yaparak çıkış düğmesidir. Ardından, farklı bir düğme (örneğin, bir mobil üstbilginin geri oku) tıklandığında bu ```close``` işlevi çağırabilir.
 
 ```typescript
 close(): void;
 ```
 
-## <a name="renderbuttons"></a>renderDüğmeler
+## <a name="renderbuttons"></a>renderButtons
 
-Bu işlev, belgenin Sürükleyici Reader düğmesi öğelerini stilleri ve güncelleştirir. Sağlanırsa, ```options.elements``` bu işlev içindeki ```options.elements```düğmeleri işleyecek. Aksi takdirde, düğmeler sınıfına ```immersive-reader-button```sahip belgenin öğeleri içinde işlenir.
+Bu işlev, belgenin tam ekran okuyucusu düğme öğelerini stiller ve güncelleştirir. ```options.elements``` Sağlanmışsa, bu işlev içindeki ```options.elements```düğmeleri işleyebilir. Aksi halde düğmeler, belgenin sınıfı ```immersive-reader-button```olan öğeleri içinde işlenir.
 
-Bu işlev, pencere yüklendiğinde SDK tarafından otomatik olarak çağrılır.
+Bu işlev, pencere yüklendiğinde SDK tarafından otomatik olarak çağırılır.
 
-Daha fazla görüntüleme seçeneği için [İsteğe Bağlı Özniteliklere](#optional-attributes) bakın.
+Daha fazla işleme seçeneği için bkz. [Isteğe bağlı öznitelikler](#optional-attributes) .
 
 ```typescript
 renderButtons(options?: RenderButtonsOptions): void;
@@ -82,13 +82,13 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 | Adı | Tür | Açıklama |
 | ---- | ---- |------------ |
-| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | RenderButtons işlevinin belirli davranışlarını yapılandırma seçenekleri. İsteğe bağlı. |
+| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | RenderButtons işlevinin belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
 ## <a name="types"></a>Türler
 
 ### <a name="content"></a>İçerik
 
-Sürükleyici Okuyucu'da gösterilecek içeriği içerir.
+Tam ekran okuyucu 'da gösterilecek içeriği içerir.
 
 ```typescript
 {
@@ -99,7 +99,7 @@ Sürükleyici Okuyucu'da gösterilecek içeriği içerir.
 
 ### <a name="chunk"></a>Öbek
 
-Sürükleyici Okuyucu'nun İçeriğine aktalacaktır veri tek bir yığın.
+Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 
 ```typescript
 {
@@ -111,7 +111,7 @@ Sürükleyici Okuyucu'nun İçeriğine aktalacaktır veri tek bir yığın.
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-Aramadan gelen yanıtı `ImmersiveReader.launchAsync`içerir.
+Çağrısının yanıtını içerir `ImmersiveReader.launchAsync`.
 
 ```typescript
 {
@@ -120,9 +120,9 @@ Aramadan gelen yanıtı `ImmersiveReader.launchAsync`içerir.
 }
 ```
 
-### <a name="cookiepolicy-enum"></a>CookiePoliçe enum
+### <a name="cookiepolicy-enum"></a>Tanımlama listesi ıepolicy Enum
 
-Sürükleyici Okuyucu'nun çerez kullanımı için ilkeyi ayarlamak için kullanılan bir enum. [Seçeneklere](#options)bakın.
+Derinlikli okuyucunun tanımlama bilgisi kullanımı için ilkeyi ayarlamak üzere kullanılan bir sabit listesi. Bkz. [Seçenekler](#options).
 
 ```typescript
 enum CookiePolicy { Disable, Enable }
@@ -134,23 +134,22 @@ enum CookiePolicy { Disable, Enable }
 | --------- | ----------- |
 | metin/düz | Düz metin. |
 | text/html | HTML içeriği. [Daha fazlasını öğrenin](#html-support)|
-| uygulama/mathml+xml | Matematiksel Biçimlendirme Dili (MathML). [Daha fazla bilgi edinin](./how-to/display-math.md).
-| uygulama/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word .docx biçimli belge.
+| Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](./how-to/display-math.md).
+| application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx biçim belgesi.
 
-### <a name="html-support"></a>HTML Desteği
+### <a name="html-support"></a>HTML desteği
 
-| HTML | Desteklenen İçerik |
+| HTML | Desteklenen Içerik |
 | --------- | ----------- |
-| Yazı Tipi Stilleri | Kalın, Italik, Altı Çizili, Kod, Strikethrough, Superscript, Subscript |
-| Sırasız listeler | Disk, Daire, Kare |
-| Sipariş Listeleri | Ondalık, Üst-Alfa, Alt-Alfa, Üst-Roma, Alt-Roma |
-| Köprüler | Çok Yakında |
+| Yazı tipi stilleri | Kalın, Italik, altı çizili, kod, üstü çizili, üst simge, alt simge |
+| Sırasız listeler | Disk, daire, kare |
+| Sıralı listeler | Ondalık, büyük Alfa, alt Alfa, büyük Latin, alt roman |
 
-Desteklenmeyen etiketler karşılaştırılarak işlenir. Görüntüler ve tablolar şu anda desteklenmiyor.
+Desteklenmeyen Etiketler comparably işlenecek. Görüntüler ve tablolar şu anda desteklenmiyor.
 
 ### <a name="options"></a>Seçenekler
 
-Sürükleyici Reader'ın belirli davranışlarını yapılandıran özellikler içerir.
+Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
 
 ```typescript
 {
@@ -168,7 +167,7 @@ Sürükleyici Reader'ın belirli davranışlarını yapılandıran özellikler i
 
 ### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
 
-Sürükleyici Reader düğmelerini oluşturma seçenekleri.
+Tam ekran okuyucu düğmelerini işleme seçenekleri.
 
 ```typescript
 {
@@ -178,7 +177,7 @@ Sürükleyici Reader düğmelerini oluşturma seçenekleri.
 
 ### <a name="error"></a>Hata
 
-Hata hakkında bilgi içerir.
+Hata hakkındaki bilgileri içerir.
 
 ```typescript
 {
@@ -191,14 +190,14 @@ Hata hakkında bilgi içerir.
 
 | Kod | Açıklama |
 | ---- | ----------- |
-| BadArgument | Verilen bağımsız değişken geçersizdir, ayrıntılar için bkz. `message` |
-| Zaman aşımı | Immersive Reader belirtilen zaman aşımı içinde yüklemek için başarısız oldu. |
-| TokenExpired | Verilen belirteç süresi doldu. |
-| Bastırma | Arama oranı sınırı aşıldı. |
+| BadArgument | Sağlanan bağımsız değişken geçersiz, Ayrıntılar `message` için bkz.. |
+| Zaman aşımı | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
+| TokenExpired | Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
+| Sürecek | Çağrı hızı sınırı aşıldı. |
 
-## <a name="launching-the-immersive-reader"></a>Sürükleyici Okuyucu başlatma
+## <a name="launching-the-immersive-reader"></a>Modern okuyucu başlatılıyor
 
-SDK, Sürükleyici Okuyucu'yu başlatmak için düğme için varsayılan stil sağlar. Bu `immersive-reader-button` stili etkinleştirmek için sınıf özniteliğini kullanın. Daha fazla bilgi için [bu makaleye](./how-to-customize-launch-button.md) bakın.
+SDK, tam ekran okuyucuyu başlatmaya yönelik düğme için varsayılan stil sağlar. Bu stillendirme özelliğini etkinleştirmek için `immersive-reader-button` Class özniteliğini kullanın. Daha fazla bilgi için [Bu makaleye](./how-to-customize-launch-button.md) bakın.
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -206,17 +205,17 @@ SDK, Sürükleyici Okuyucu'yu başlatmak için düğme için varsayılan stil sa
 
 ### <a name="optional-attributes"></a>İsteğe bağlı öznitelikler
 
-Düğmenin görünümünü ve hissini yapılandırmak için aşağıdaki öznitelikleri kullanın.
+Düğmenin genel görünümünü yapılandırmak için aşağıdaki öznitelikleri kullanın.
 
 | Öznitelik | Açıklama |
 | --------- | ----------- |
-| `data-button-style` | Düğmenin stilini ayarlar. Olabilir `icon`, `text`veya `iconAndText`. Varsayılan `icon`değer. |
-| `data-locale` | Yerel alanı ayarlar. Örneğin `en-US` veya `fr-FR` olabilir. Varsayılan İngilizce. `en` |
-| `data-icon-px-size` | Simgenin boyutunu pikselolarak ayarlar. Varsayılan olarak 20px'e kadar. |
+| `data-button-style` | Düğmenin stilini ayarlar. `icon`, `text`Veya `iconAndText`olabilir. Varsayılan olarak `icon`olur. |
+| `data-locale` | Yerel ayarı ayarlar. Örneğin `en-US` veya `fr-FR` olabilir. Varsayılan olarak Ingilizce `en`'dir. |
+| `data-icon-px-size` | Simgenin boyutunu piksel cinsinden ayarlar. Varsayılan değer 20 px olur. |
 
 ## <a name="browser-support"></a>Tarayıcı desteği
 
-Immersive Reader ile en iyi deneyimi yaşamak için aşağıdaki tarayıcıların en son sürümlerini kullanın.
+Tam ekran okuyucu ile en iyi deneyim için aşağıdaki tarayıcıların en son sürümlerini kullanın.
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -226,5 +225,5 @@ Immersive Reader ile en iyi deneyimi yaşamak için aşağıdaki tarayıcıları
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [GitHub'da Sürükleyici Reader SDK'yı](https://github.com/microsoft/immersive-reader-sdk) keşfedin
-* [Quickstart: Sürükleyici Okuyucu (C#) başlatan bir web uygulaması oluşturun](./quickstart.md)
+* [GitHub 'Da modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) keşfet
+* [Hızlı başlangıç: tam ekran okuyucuyu Başlatan bir Web uygulaması oluşturma (C#)](./quickstart.md)

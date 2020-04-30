@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3616a338666dbb10fe7500bad8c1e8239fd2c92
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "77365311"
+ms.locfileid: "82561624"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Öğretici: Hyper-V ' d a Azure Data Box Gateway sağlama
 
@@ -21,7 +21,7 @@ ms.locfileid: "77365311"
 
 Bu öğreticide Data Box Gateway'i Windows Server 2016, Windows Server 2012 R2 veya Windows Server 2012'de Hyper-V üzerinde çalışan bir ana bilgisayarda sağlama adımları anlatılmaktadır.
 
-Sanal cihaz sağlamak ve yapılandırmak için yönetici ayrıcalıklarına sahip olmanız gerekir. Sağlama ve ilk kurulum adımlarını tamamlamak yaklaşık 10 dakika sürecektir.
+Sanal cihaz sağlamak ve yapılandırmak için yönetici ayrıcalıklarına sahip olmanız gerekir. Sağlama ve ilk kurulum adımlarını tamamlamak yaklaşık 10 dakika sürecektir. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 

@@ -3,12 +3,12 @@ title: Azure dosya paylaşma yedeklemesi için destek matrisi
 description: Azure dosya paylaşımları yedeklenirken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: 03190c6b83fceec88442583a57ff46756cfe6221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3f154f92d8d094654301bc319003adc22299017b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195698"
+ms.locfileid: "82207998"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi için destek matrisi
 
@@ -20,13 +20,13 @@ Azure dosya paylaşımları için yedekleme aşağıdaki GEOS 'da kullanılabili
 
 | GA bölgeleri | Desteklenen bölgeler, ancak GA değil                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Avustralya Güney Doğu (Ao), Kanada Orta (CNC), Orta Batı ABD (WCUS), Batı ABD 2 (WUS 2), Hindistan Güney (INS), Orta Kuzey ABD (NCUS), Japonya Doğu (JPE), Brezilya Güney (BRS), Güney Doğu Asya (SEA)                                                     |Avustralya Doğu (AE), Kanada Doğu (CE), Doğu Asya (EA), Doğu ABD (EUS), Doğu ABD 2 (EUS2), Japonya Batı (JPW), Hindistan Orta (ıNC), Kore Orta (KRONC), Kore Güney (KRS), Kuzey Avrupa (NE), Orta Güney ABD (SKS), UK Güney (ÇW), UK Batı (am), Batı Avrupa (WUS), Batı ABD (UGA), US gov Arizona (UGT), US gov Teksas (EGV), US gov Virginia (ACL) Hindistan Batı (ıNW), Güney Afrika Kuzey (SAN), BAE Kuzey (UA), Fransa Orta (FRC), Almanya Kuzey (GN), Almanya Orta Batı (GWC), Güney Afrika Batı (gördüğünüz), BAE Orta (UAC), Norveç Doğu (NWE), Norveç Batı (NWW), İsviçre Kuzey (SZN), Orta ABD (cu DÜZEYINDE KAPSANıR)           |
+| Avustralya Güney Doğu (Ao), Kanada Orta (CNC), Orta Batı ABD (WCUS), Batı ABD 2 (WUS 2), Hindistan Güney (INS), Orta Kuzey ABD (NCUS), Japonya Doğu (JPE), Brezilya Güney (BRS), Güney Doğu Asya (SEA), İsviçre Batı (SZW), BAE Orta (UAC), Norveç Doğu (NWE), Hindistan Batı (ıNW), Avustralya Orta (ACL)                                                  |Avustralya Doğu (AE), Kanada Doğu (CE), Doğu Asya (EA), Doğu ABD (EUS), Doğu ABD 2 (EUS2), Japonya Batı (JPW), Hindistan Orta (ıNC), Kore Orta (KRONC), Kore Güney (KRS), Kuzey Avrupa (NE), Orta Güney ABD (SKS), UK Güney (ÇW), UK Batı (am), Batı Avrupa (WUS), Batı ABD (UGA), US gov Arizona (UGT), US gov Teksas (SAVAV), US gov Virginia (SAN) BAE Kuzey (UA), Fransa Orta (FRC), Almanya Kuzey (GN), Almanya Orta Batı (GWC), Güney Afrika Batı (gördüğünüz), Norveç Batı (NWW), İsviçre Kuzey (SZN), Orta ABD (cu DÜZEYINDE KAPSANıR)           |
 
 ## <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
 
 | Depolama hesabı ayrıntıları | Destek                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| Hesap türü            | Azure Backup, genel amaçlı v1, genel amaçlı v2 ve dosya paylaşım türü depolama hesaplarında bulunan Azure dosya paylaşımlarını destekler |
+| Hesap türü            | Azure Backup, genel amaçlı v1, genel amaçlı v2 ve dosya depolama türü depolama hesaplarında bulunan Azure dosya paylaşımlarını destekler |
 | Performans              | Azure Backup, hem standart hem de Premium Depolama hesaplarında dosya paylaşımlarını destekler |
 | Çoğaltma              | Depolama hesaplarında bulunan Azure dosya paylaşımları, herhangi bir çoğaltma türüyle desteklenir |
 

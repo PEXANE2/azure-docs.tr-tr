@@ -1,134 +1,134 @@
 ---
-title: Kavramlar - Azure Kubernetes Hizmetleri (AKS) için Kubernetes temelleri
-description: Kubernetes'in temel küme ve iş yükü bileşenlerini ve Bunların Azure Kubernetes Hizmeti (AKS)'deki özelliklerle nasıl ilişkili olduğunu öğrenin
+title: Kavramlar-Azure Kubernetes Hizmetleri (AKS) için Kubernetes temelleri
+description: Kubernetes 'in temel kümesini ve iş yükü bileşenlerini ve bunların Azure Kubernetes Service (AKS) özellikleriyle ilişkisini öğrenin
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 13169628aff2fe4bff64fed36db54d18d4f830b8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617433"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208168"
 ---
-# <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) için Kubernetes temel kavramları
+# <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
-Uygulama geliştirme kapsayıcı tabanlı bir yaklaşıma doğru ilerlerken, kaynakları düzenleme ve yönetme ihtiyacı önemlidir. Kubernetes, hataya dayanıklı uygulama iş yüklerinin güvenilir bir zamanlama sını sağlayan lider bir platformdur. Azure Kubernetes Service (AKS), kapsayıcı tabanlı uygulama dağıtımını ve yönetimini daha da basitleştiren yönetilen bir Kubernetes teklifidir.
+Uygulama geliştirme, kapsayıcı tabanlı bir yaklaşıma doğru şekilde taşındıkça, kaynakları düzenleme ve yönetme gereksinimi önemlidir. Kubernetes, hataya dayanıklı uygulama iş yüklerinin güvenilir bir şekilde planlanmasına olanak sağlayan önde gelen platformudur. Azure Kubernetes hizmeti (AKS), kapsayıcı tabanlı uygulama dağıtımını ve yönetimini kolaylaştıran, yönetilen bir Kubernetes sunumudur.
 
-Bu makalede, *kontrol düzlemi,* *düğümler*ve *düğüm havuzları*gibi çekirdek Kubernetes altyapı bileşenleri tanıtılmaktadır. *Bölmeler,* *dağıtımlar*ve *kümeler* gibi iş yükü kaynakları, kaynakların *ad alanlarına*nasıl gruplandırılanın yanı sıra da tanıtılır.
+Bu makalede, *Denetim düzlemi*, *düğümler*ve *düğüm havuzları*gibi temel Kubernetes altyapı bileşenleri tanıtılmaktadır. *Pod*, *dağıtımlar*ve *kümeler* gibi iş yükü kaynakları, kaynakların *ad alanlarına*nasıl gruplandırılmasına yönelik olarak da sunulmuştur.
 
 ## <a name="what-is-kubernetes"></a>Kubernetes nedir?
 
-Kubernetes, konteyner tabanlı uygulamaları ve bunların ilişkili ağ ve depolama bileşenlerini yöneten hızla gelişen bir platformdur. Odak noktası, temel altyapı bileşenleri değil, uygulama iş yükleridir. Kubernetes, yönetim işlemleri için güçlü bir API kümesi tarafından desteklenen dağıtımlara bildirimsel bir yaklaşım sağlar.
+Kubernetes kapsayıcı tabanlı uygulamaları ve bunların ilişkili ağ ve depolama bileşenlerini yöneten hızlı bir şekilde gelişen platformudur. Odak, temel altyapı bileşenlerinde değil uygulama iş yüklerinde yer alır. Kubernetes, yönetim işlemlerine yönelik güçlü bir API kümesiyle desteklenen dağıtımlar için bildirime dayalı bir yaklaşım sağlar.
 
-Kubernetes'in bu uygulama bileşenlerinin kullanılabilirliğini yönetmesinden ve yönetmesinden yararlanan modern, taşınabilir, mikro hizmetler tabanlı uygulamalar oluşturabilir ve çalıştırabilirsiniz. Kubernetes, mikro hizmetlere dayalı uygulamaların benimsenme yoluyla ekipler ilerledikçe hem devletsiz hem de durumdışı uygulamaları destekler.
+Kubernetes 'in sunduğu ve bu uygulama bileşenlerinin kullanılabilirliğini yöneten modern, taşınabilir ve mikro hizmet tabanlı uygulamalar oluşturabilir ve çalıştırabilirsiniz. Kubernetes hem durum bilgisi olmayan hem de durum bilgisi olan uygulamaları destekleyerek, bu, mikro hizmet tabanlı uygulamaların benimsenmesiyle devam etmektedir.
 
-Açık bir platform olarak Kubernetes, tercih ettiğiniz programlama dili, işletim sistemi, kitaplıklar veya mesajlaşma veri tonunuz ile uygulamalarınızı oluşturmanıza olanak tanır. Mevcut sürekli tümleştirme ve sürekli teslimat (CI/CD) araçları, bültenleri zamanlamak ve dağıtmak için Kubernetes ile tümleştirebilirsiniz.
+Açık bir platform olarak Kubernetes, uygulamalarınızı tercih ettiğiniz programlama dili, işletim sistemi, kitaplıklar veya mesajlaşma veri yolu ile oluşturmanıza olanak sağlar. Mevcut sürekli tümleştirme ve sürekli teslim (CI/CD) araçları, sürümleri planlamak ve dağıtmak için Kubernetes ile tümleştirilebilir.
 
-Azure Kubernetes Hizmeti (AKS), yükseltmeleri koordine etmek de dahil olmak üzere dağıtım ve temel yönetim görevlerinin karmaşıklığını azaltan yönetilen bir Kubernetes hizmeti sağlar. AKS denetim düzlemi Azure platformu tarafından yönetilir ve yalnızca uygulamalarınızı çalıştıran AKS düğümleri için ödeme yaptığınızda. AKS, açık kaynak kodlu Azure Kubernetes Servis Motoru'nun[(aks motoru)][aks-engine]üzerine inşa edilmiştir.
+Azure Kubernetes hizmeti (AKS), dağıtım ve temel yönetim görevlerinin karmaşıklığını azaltan, yükseltme, yükseltme dahil, yönetilen bir Kubernetes hizmeti sağlar. AKS denetim düzlemi, Azure platformu tarafından yönetilir ve yalnızca uygulamalarınızı çalıştıran AKS düğümleri için ödeme yaparsınız. AKS 'ler, açık kaynaklı Azure Kubernetes hizmet altyapısının ([aks-Engine][aks-engine]) üzerine kurulmuştur.
 
-## <a name="kubernetes-cluster-architecture"></a>Kubernetes küme mimarisi
+## <a name="kubernetes-cluster-architecture"></a>Kubernetes kümesi mimarisi
 
-Bir Kubernetes kümesi iki bileşene ayrılır:
+Bir Kubernetes kümesi iki bileşene ayrılmıştır:
 
-- *Kontrol düzlemi* düğümleri temel Kubernetes hizmetlerini ve uygulama iş yüklerinin düzenlenmesini sağlar.
-- *Düğümler* uygulama iş yüklerinizi çalıştırın.
+- *Denetim düzlemi* düğümleri, uygulama iş yüklerinin temel Kubernetes hizmetlerini ve düzenlemesini sağlar.
+- *Düğümler* , uygulama iş yüklerinizi çalıştırır.
 
-![Kubernetes kontrol düzlemi ve düğüm bileşenleri](media/concepts-clusters-workloads/control-plane-and-nodes.png)
+![Kubernetes denetim düzlemi ve düğüm bileşenleri](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 
-## <a name="control-plane"></a>Kontrol düzlemi
+## <a name="control-plane"></a>Denetim düzlemi
 
-Bir AKS kümesi oluşturduğunuzda, bir denetim düzlemi otomatik olarak oluşturulur ve yapılandırılır. Bu denetim düzlemi, kullanıcıdan soyutlanmış yönetilen bir Azure kaynağı olarak sağlanır. Kontrol düzlemi için hiçbir maliyet yoktur, yalnızca AKS kümesinin bir parçası olan düğümler.
+Bir AKS kümesi oluşturduğunuzda, otomatik olarak bir denetim düzlemi oluşturulup yapılandırılır. Bu denetim düzlemi, kullanıcıdan soyutlandığından yönetilen bir Azure kaynağı olarak sağlanır. Denetim düzlemi için herhangi bir maliyet yoktur, yalnızca AKS kümesinin bir parçası olan düğümler vardır.
 
-Kontrol düzlemi aşağıdaki çekirdek Kubernetes bileşenlerini içerir:
+Denetim düzlemi aşağıdaki temel Kubernetes bileşenlerini içerir:
 
-- *kube-apiserver* - API sunucusu, altta yatan Kubernetes API'lerinin nasıl açığa çiktIğidir. Bu bileşen, Kubernetes panosu `kubectl` gibi yönetim araçları için etkileşim sağlar.
-- *etcd* - Kubernetes küme ve yapılandırma durumunu korumak için, yüksek kullanılabilir *etcd* Kubernetes içinde önemli bir değer deposudur.
-- *kube-scheduler* - Uygulamaları oluşturduğunuzda veya ölçeklendirdiğinizde, Zamanlayıcı hangi düğümlerin iş yükünü çalıştırabileceğini belirler ve bunları başlatır.
-- *kube-controller-manager* - Denetleyici Yöneticisi, bölmeçoğaltma ve düğüm işlemlerini işleme gibi eylemleri gerçekleştiren bir dizi küçük Denetleyiciyi denetler.
+- *kuin-apiserver* -API sunucusu, temeldeki Kubernetes API 'lerinin sunulma şekli. Bu bileşen, `kubectl` veya Kubernetes panosu gibi yönetim araçları için etkileşim sağlar.
+- *etcd* -Kubernetes kümenizin ve yapılandırmanızın durumunu korumak için, yüksek oranda kullanılabilir *Etcd* , Kubernetes içindeki bir anahtar değer deposudur.
+- *kuin-Scheduler* -uygulamaları oluştururken veya ölçeklendirerek, Zamanlayıcı hangi düğümlerin iş yükünü çalıştırabileceğini belirler ve bunları başlatır.
+- *kuin-Controller-Manager* -Denetleyici Yöneticisi, Pod 'yi çoğaltma ve düğüm işlemlerini işleme gibi eylemleri gerçekleştiren bir dizi küçük denetleyiciyi fazla görür.
 
-AKS, özel bir API sunucusu, Zamanlayıcı, vb. içeren tek kiracılı bir kontrol düzlemi sağlar. Düğümlerin sayısını ve boyutunu tanımlarsınız ve Azure platformu denetim düzlemi ile düğümler arasındaki güvenli iletişimi yapılandırır. Kontrol düzlemi ile etkileşim Kubernetes API'ler aracılığıyla oluşur, gibi `kubectl` veya Kubernetes panosu.
+AKS, adanmış bir API sunucusu, Zamanlayıcı vb. ile tek kiracılı bir denetim düzlemi sağlar. Düğümlerin sayısını ve boyutunu tanımlarsınız ve Azure platformu denetim düzlemi ve düğümleri arasındaki güvenli iletişimi yapılandırır. Denetim düzlemi ile etkileşim, `kubectl` ya da Kubernetes panosu gibi Kubernetes API 'leri aracılığıyla oluşur.
 
-Bu yönetilen denetim düzlemi, bileşenleri yüksek kullanılabilir *bir etcd* deposu gibi yapılandırmanız gerekolmadığı anlamına gelir, ancak aynı zamanda kontrol düzlemine doğrudan erişemediğiniz anlamına gelir. Kubernetes yükseltmeleri, kontrol düzlemini ve ardından düğümleri yükselten Azure CLI veya Azure portalı aracılığıyla düzenlenir. Olası sorunları gidermek için, Azure Monitor günlükleri aracılığıyla denetim düzlemi günlüklerini inceleyebilirsiniz.
+Bu yönetilen denetim düzlemi, yüksek oranda kullanılabilir bir *etcd* deposu gibi bileşenleri yapılandırmanız gerekmediği anlamına gelir, ancak aynı zamanda denetim düzlemini doğrudan erişemeyeceğiniz anlamına gelir. Kubernetes yükseltmeleri, denetim düzlemini ve sonra düğümleri yükselten Azure CLı veya Azure portal aracılığıyla düzenlenir. Olası sorunları gidermek için, Azure Izleyici günlükleri aracılığıyla denetim düzlemi günlüklerini gözden geçirebilirsiniz.
 
-Kontrol düzlemini belirli bir şekilde yapılandırmanız gerekiyorsa veya doğrudan erişime ihtiyacınız varsa, [aks-engine][aks-engine]kullanarak kendi Kubernetes kümenizi dağıtabilirsiniz.
+Denetim düzlemi 'ni belirli bir şekilde yapılandırmanız veya buna doğrudan erişmeniz gerekiyorsa, [aks-Engine][aks-engine]kullanarak kendi Kubernetes kümenizi dağıtabilirsiniz.
 
-İlişkili en iyi uygulamalar [için, AKS'deki küme güvenliği ve yükseltmeleri için en iyi uygulamalara][operator-best-practices-cluster-security]bakın.
+İlişkili en iyi uygulamalar için bkz. [AKS 'de küme güvenliği ve yükseltmeleri Için en iyi uygulamalar][operator-best-practices-cluster-security].
 
 ## <a name="nodes-and-node-pools"></a>Düğümler ve düğüm havuzları
 
-Uygulamalarınızı ve destekleyici hizmetleri çalıştırmak için bir Kubernetes *düğümüne*ihtiyacınız vardır. Bir AKS kümesinde, Kubernetes düğüm bileşenlerini ve kapsayıcı çalışma süresini çalıştıran bir Azure sanal makinesi (VM) olan bir veya daha fazla düğüm vardır:
+Uygulamalarınızı ve destekleyici hizmetleri çalıştırmak için bir Kubernetes *düğümüne*ihtiyacınız vardır. AKS kümesi, Kubernetes düğüm bileşenlerini ve kapsayıcı çalışma zamanını çalıştıran bir Azure sanal makinesi (VM) olan bir veya daha fazla düğüme sahiptir:
 
-- Kontrol `kubelet` düzleminden gelen düzenleme isteklerini işleyen ve istenen kapsayıcıları çalıştırmanın zamanlamasını sağlayan Kubernetes aracısidır.
-- Sanal ağ her düğümde *kube-proxy* tarafından işlenir. Proxy ağ trafiğini yönlendirir ve hizmetler ve bölmeler için IP adresleme yönetir.
-- *Kapsayıcı çalışma süresi,* kapsayıcı laştırılmış uygulamaların çalışmasına ve sanal ağ ve depolama gibi ek kaynaklarla etkileşimkurmasına olanak tanıyan bileşendir. AKS'de Moby, kapsayıcı çalışma zamanı olarak kullanılır.
+- , `kubelet` Denetim düzleminden düzenleme isteklerini işleyen ve istenen kapsayıcıları çalıştırmanın zamanlanması olan Kubernetes aracısıdır.
+- Sanal ağ, her düğümde *kug-proxy* tarafından işlenir. Proxy, ağ trafiğini yönlendirir ve hizmetler ve pods için IP adresini yönetir.
+- *Kapsayıcı çalışma zamanı* , Kapsayıcılı uygulamaların sanal ağ ve depolama gibi ek kaynaklarla çalışmasına ve bunlarla etkileşime geçmesini sağlayan bileşendir. AKS 'de, Moby kapsayıcı çalışma zamanı olarak kullanılır.
 
-![Azure sanal makine ve Bir Kubernetes düğümü için destek kaynakları](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
+![Bir Kubernetes düğümü için Azure sanal makinesi ve destekleyici kaynaklar](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-Düğümleriniz için Azure VM boyutu kaç CPU'yu, ne kadar bellek olduğunu ve kullanılabilir depolama alanının boyutunu ve türünü (yüksek performanslı SSD veya normal HDD gibi) tanımlar. Büyük miktarda CPU ve bellek veya yüksek performanslı depolama gerektiren uygulamalar için bir gereksinim bekliyorsanız, düğüm boyutunu buna göre planlayın. Talebi karşılamak için AKS kümenizdeki düğüm sayısını da ölçeklendirebilirsiniz.
+Düğümleriniz için Azure VM boyutu, kaç tane CPU, bellek miktarı ve kullanılabilir depolama alanı boyutu ve türü (yüksek performanslı SSD veya normal HDD gibi) tanımlar. Büyük miktarlarda CPU ve bellek veya yüksek performanslı depolama gerektiren uygulamalar gereksinimini tahmin ediyorsanız, düğüm boyutunu uygun şekilde planlayın. Ayrıca, talepleri karşılamak için AKS kümenizdeki düğüm sayısını da genişletebilirsiniz.
 
-AKS'de, kümenizdeki düğümlerin VM görüntüsü şu anda Ubuntu Linux veya Windows Server 2019'u temel almaktadır. Bir AKS kümesi oluşturduğunuzda veya düğüm sayısını ölçeklediğinizde, Azure platformu istenen vm sayısını oluşturur ve bunları yapılandırır. Gerçekleştirmeniz için manuel yapılandırma yoktur. Aracı düğümleri standart sanal makineler olarak faturalandırılır, bu nedenle kullandığınız VM boyutunda [(Azure rezervasyonları][reservation-discounts]dahil) yaptığınız tüm indirimler otomatik olarak uygulanır.
+AKS 'de, kümenizdeki düğümlerin VM görüntüsü şu anda Ubuntu Linux veya Windows Server 2019 ' i temel alır. Bir AKS kümesi oluşturduğunuzda veya düğüm sayısını ölçeklendirirseniz, Azure platformu istenen sayıda VM oluşturur ve bunları yapılandırır. Yapmanız için el ile yapılandırma yoktur. Aracı düğümleri standart sanal makineler olarak faturalandırılır. bu nedenle, kullanmakta olduğunuz VM boyutu ( [Azure ayırmaları][reservation-discounts]dahil) üzerinde bulunan tüm indirimler otomatik olarak uygulanır.
 
-Farklı bir ana bilgisayar işletim sistemi, konteyner çalışma zamanı kullanmanız veya özel paketler eklemeniz gerekiyorsa, [aks-engine][aks-engine]kullanarak kendi Kubernetes kümenizi dağıtabilirsiniz. Yukarı akış `aks-engine` özellikleri yayımlar ve aks kümelerinde resmi olarak desteklenmeden önce yapılandırma seçenekleri sağlar. Örneğin, Moby dışında bir kapsayıcı çalışma zamanı kullanmak istiyorsanız, `aks-engine` mevcut gereksinimlerinizi karşılayan bir Kubernetes kümesini yapılandırmak ve dağıtmak için kullanabilirsiniz.
+Farklı bir konak işletim sistemi, kapsayıcı çalışma zamanı kullanmanız veya özel paketler eklemeniz gerekiyorsa, [aks-Engine][aks-engine]kullanarak kendi Kubernetes kümenizi dağıtabilirsiniz. Yukarı akış `aks-engine` sürümleri, aks kümelerinde resmi olarak desteklenmeye başlamadan önce yapılandırma seçenekleri sunar. Örneğin, Moby dışında bir kapsayıcı çalışma zamanı kullanmak isterseniz, geçerli ihtiyaçlarınızı karşılayan bir Kubernetes kümesini yapılandırmak ve dağıtmak için kullanabilirsiniz `aks-engine` .
 
-### <a name="resource-reservations"></a>Kaynak rezervasyonları
+### <a name="resource-reservations"></a>Kaynak ayırmaları
 
-Düğüm kaynakları, düğümün kümenizin bir parçası olarak çalışmasını sağlamak için AKS tarafından kullanılır. Bu, düğümünüzün toplam kaynakları ile AKS'de kullanıldığında ayrılabilen kaynaklar arasında bir tutarsızlık oluşturabilir. Bu, kullanıcı dağıtılan bölmeler için istek ler ve sınırlar belirlerken dikkat edilmesi gereken öneme sahiptir.
+Düğüm kaynakları, kümenin bir parçası olarak düğüm işlevini yapmak için AKS tarafından kullanılır. Bu, AKS 'te kullanıldığında, düğümünüz için toplam kaynak ve kaynak ayırıcılar tablosu arasında bir tutarsızlık oluşturabilir. Bu, Kullanıcı tarafından dağıtılan pods 'lerin istek ve sınırlarını ayarlarken dikkat etmeniz önemlidir.
 
-Düğümün ayrılabilen kaynaklarını çalıştırmak için:
+Bir düğümün allocatable kaynaklarını bulmak için şunu çalıştırın:
 ```kubectl
 kubectl describe node [NODE_NAME]
 
 ```
 
-Düğüm performansını ve işlevselliğini korumak için, kaynaklar AKS tarafından her düğüme ayrılmıştır. Kaynaklarda bir düğüm büyüdükçe, yönetime ihtiyaç duyan daha yüksek miktarda kullanıcı dağıtılan bölmeler nedeniyle kaynak ayırma büyür.
+Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bir düğüme AKS tarafından ayrılır. Düğüm, kaynaklarda daha büyük bir süre büyüdükçe, daha yüksek miktarda Kullanıcı tarafından dağıtılan yük olması nedeniyle kaynak ayırma artar.
 
 >[!NOTE]
-> Kapsayıcı Öngörüleri (OMS) gibi AKS eklentilerinin kullanılması ek düğüm kaynaklarını tüketir.
+> Container Insights (OMS) gibi AKS eklentilerinin kullanılması ek düğüm kaynakları kullanacaktır.
 
-- **CPU** - ayrılmış CPU ek özellikleri çalıştıran nedeniyle daha az tahsis EDIlebilen CPU neden olabilir düğüm türü ve küme yapılandırmasına bağlıdır
+- **CPU** Ile ayrılmış CPU, ek özellikleri çalıştırmak nedeniyle daha az ayrılamayabilir CPU türüne ve küme yapılandırmasına bağımlıdır
 
-| Ana bilgisayarda CPU çekirdekleri | 1 | 2 | 4 | 8 | 16 | 32|64|
+| Konaktaki CPU çekirdekleri | 1    | 2    | 4    | 8    | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kube-ayrılmış (millicores)|60|100|140|180|260|420|740|
+|Kule ayrılmış (miliçekirdekler)|60|100|140|180|260|420|740|
 
-- **AKS** tarafından kullanılan bellek - bellek iki değerin toplamını içerir.
+- **Bellek** -aks tarafından kullanılan bellek, iki değerin toplamını içerir.
 
-1. Kubelet daemon konteyner oluşturma ve sonlandırma yönetmek için tüm Kubernetes aracı düğümleri yüklü. AKS varsayılan olarak, bu daemon aşağıdaki tahliye kuralı vardır: *memory.available<750Mi*, bir düğüm her zaman her zaman en az 750 Mi tahsis olmalıdır anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altında olduğunda, kubelet çalışan bölmelerden birini sonlandırarak ana makinedeki belleği serbest ve korur. Kullanılabilir bellek 750Mi eşiğinin ötesine geçince bu reaktif bir eylemdir.
+1. Kubelet arka plan programı, kapsayıcı oluşturma ve sonlandırmayı yönetmek için tüm Kubernetes aracı düğümlerine yüklenir. AKS ' de varsayılan olarak, bu arka plan programı aşağıdaki çıkarma kuralına sahiptir: *bellek. kullanılabilir<750Mı*, bu da bir düğümün her zaman en az 750 mi ayrıma göre olması gerektiği anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altındaysa, kubelet konak makinede belleği boşaltmak ve korumak için çalışan bir yığından birini sonlandırır. Kullanılabilir bellek, 750Mı eşiğinin ötesinde azaldıkça bu bir reaktif eylemdir.
 
-2. İkinci değer, kubelet daemonunun düzgün çalışması için bellek rezervasyonlarının gerileme oranıdır (kube-ayrılmış).
-    - İlk 4 GB bellek%25'i
-    - Sonraki 4 GB belleğin %20'si (8 GB'a kadar)
-    - Sonraki 8 GB belleğin %10'u (16 GB'a kadar)
-    - Sonraki 112 GB bellek (128 GB'a kadar) %6'sı
-    - 128 GB üzerindeki tüm belleklerin %2'si
+2. İkinci değer, kubelet arka plan programının düzgün çalışması için (Kuto-ayrılmış) bellek ayırmalarının gerileme hızıdır.
+    - ilk 4 GB belleğin %25 ' i
+    - sonraki 4 GB belleğin %20 ' si (8 GB 'a kadar)
+    - Sonraki 8 GB belleğin %10 ' ından (16 GB 'a kadar)
+    - sonraki 112 GB belleğin %6 ' ından (128 GB 'a kadar)
+    - 128 GB üzerinde herhangi bir belleğin %2 ' i
 
-Bellek ve CPU ayırma için yukarıdaki kurallar, sistem durumu kümelemek için kritik olan bazı barındırma sistemi bölmeleri de dahil olmak üzere aracı düğümlerini sağlıklı tutmak için kullanılır. Bu ayırma kuralları, düğümün bir Kubernetes kümesinin parçası değilse, daha az tahsis edilebilir bellek ve CPU bildirmesine de neden olur. Yukarıdaki kaynak rezervasyonları değiştirilemez.
+Yukarıdaki bellek ve CPU ayırması kuralları, küme durumu için kritik olan bazı barındırma sistemi bilgisayarları dahil olmak üzere, aracı düğümlerinin sağlıklı tutulması için kullanılır. Bu ayırma kuralları, düğümün bir Kubernetes kümesinin parçası olmasaydı daha az ayrılanmasa belleği ve CPU 'YU rapormasına neden olur. Yukarıdaki kaynak ayırmaları değiştirilemez.
 
-Örneğin, bir düğüm 7 GB sunuyorsa, 750Mi sabit tahliye eşiğinin üzerine ayrılamayan belleğin %34'ünü bildirir.
+Örneğin, bir düğüm 7 GB sunuyorsa, en fazla %34 bellek ayırıcıdan çıkarılan eşiğin üzerinde% ' ü rapor eder.
 
 `(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
-Kubernetes kendisi için rezervasyonları ek olarak, altta yatan düğüm os işlevlerini korumak için CPU ve bellek kaynakları bir miktar ayırır.
+Kubernetes 'in kendine yönelik ayırmaların yanı sıra, temeldeki düğüm IŞLETIM sistemi, işletim sistemi işlevlerini sürdürmek için bir miktar CPU ve bellek kaynağı da ayırır.
 
-İlişkili en iyi uygulamalar [için, AKS'deki temel zamanlayıcı özellikleri için en iyi uygulamalara][operator-best-practices-scheduler]bakın.
+İlişkili en iyi uygulamalar için bkz. [AKS 'deki temel Zamanlayıcı özellikleri Için en iyi uygulamalar][operator-best-practices-scheduler].
 
 ### <a name="node-pools"></a>Düğüm havuzları
 
-Aynı yapılandırmanın düğümleri düğüm *havuzlarında*birlikte gruplandırılır. Bir Kubernetes kümesi bir veya daha fazla düğüm havuzu içerir. Varsayılan düğüm *havuzu*oluşturan bir AKS kümesi oluşturduğunuzda ilk düğüm sayısı ve boyutu tanımlanır. AKS'deki bu varsayılan düğüm havuzu, aracı düğümünüzü çalıştıran temel VM'leri içerir.
+Aynı yapılandırmanın düğümleri, *düğüm havuzlarında*birlikte gruplandırılır. Bir Kubernetes kümesi bir veya daha fazla düğüm havuzu içerir. Düğüm ve boyutun ilk sayısı, *varsayılan bir düğüm havuzu*oluşturan bir aks kümesi oluşturduğunuzda tanımlanır. AKS 'deki bu varsayılan düğüm havuzu, aracı düğümlerinizi çalıştıran temel VM 'Leri içerir.
 
 > [!NOTE]
-> Kümenizin güvenilir çalıştığından emin olmak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmalısınız.
+> Kümenizin güvenilir bir şekilde çalıştığından emin olmak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmalısınız.
 
-Bir AKS kümesini ölçeklediğinizde veya yükselttiğiniz de, eylem varsayılan düğüm havuzuna karşı gerçekleştirilir. Ayrıca, belirli bir düğüm havuzuna ölçeklendirmeyi veya yükseltmeyi de seçebilirsiniz. Yükseltme işlemleri için, çalışan kapsayıcılar tüm düğümler başarıyla yükseltilene kadar düğüm havuzundaki diğer düğümlerde zamanlanır.
+Bir AKS kümesini ölçeklendirerek veya yükselttiğinizde, eylem varsayılan düğüm havuzunda gerçekleştirilir. Ayrıca belirli bir düğüm havuzunu ölçeklendirmeyi veya yükseltmeyi de tercih edebilirsiniz. Yükseltme işlemleri için, tüm düğümler başarıyla yükseltilene kadar, çalışan kapsayıcılar düğüm havuzundaki diğer düğümlerde zamanlanır.
 
-AKS'de birden çok düğüm havuzunun nasıl kullanılacağı hakkında daha fazla bilgi için, [AKS'deki bir küme için birden çok düğüm havuzu oluştur ve yönet'][use-multiple-node-pools]e bakın.
+AKS 'de birden çok düğüm havuzu kullanma hakkında daha fazla bilgi için bkz. [AKS 'deki bir küme için birden çok düğüm havuzu oluşturma ve yönetme][use-multiple-node-pools].
 
 ### <a name="node-selectors"></a>Düğüm seçicileri
 
-Birden çok düğüm havuzu içeren bir AKS kümesinde, Kubernetes Zamanlayıcısı'na belirli bir kaynak için hangi düğüm havuzunu kullanacağınızı söylemeniz gerekebilir. Örneğin, giriş denetleyicileri Windows Server düğümlerinde çalışmamalıdır (şu anda AKS'de önizlemede). Düğüm seçiciler, bölmenin zamanlanması gereken yeri denetlemek için düğüm işletim sistemi gibi çeşitli parametreleri tanımlamanıza izin verebiliyor.
+Birden çok düğüm havuzu içeren bir AKS kümesinde, belirli bir kaynak için hangi düğüm havuzunun kullanılacağını Kubernetes Scheduler 'a bildirmeniz gerekebilir. Örneğin, giriş denetleyicileri Windows Server düğümlerinde çalıştırılmamalıdır. Düğüm seçicileri, bir pod 'ın zamanlanması gereken yeri denetlemek için düğüm işletim sistemi gibi çeşitli parametreleri tanımlamanıza olanak sağlar.
 
-Aşağıdaki temel örnek, "beta.kubernetes.io/os" düğüm seçicisini kullanarak bir Linux düğümünde bir NGINX örneğini *planlar: linux:*
+Aşağıdaki temel örnek, *"Beta.Kubernetes.io/OS"* düğüm seçicisini kullanarak bir Linux düğümündeki NGINX örneğini zamanlar: Linux:
 
 ```yaml
 kind: Pod
@@ -143,29 +143,29 @@ spec:
     "beta.kubernetes.io/os": linux
 ```
 
-Bölmelerin nerede zamanlandığını nasıl denetleyebileceğiniz hakkında daha fazla bilgi için [AKS'deki gelişmiş zamanlayıcı özellikleri için en iyi uygulamalara][operator-best-practices-advanced-scheduler]bakın.
+Yığınların nerede zamanlandığını denetleme hakkında daha fazla bilgi için bkz. [AKS 'de gelişmiş Zamanlayıcı özellikleri Için en iyi uygulamalar][operator-best-practices-advanced-scheduler].
 
-## <a name="pods"></a>Bakla
+## <a name="pods"></a>Pod
 
-Kubernetes, uygulamanızın bir örneğini çalıştırmak için *bölmekullanır.* Bir bölme, uygulamanızın tek bir örneğini temsil eder. Pod'ların genellikle kapsayıcıyla 1:1 eşlemeleri vardır, ancak bir bölmenin birden çok kapsayıcı içerebileceği gelişmiş senaryolar vardır. Bu çok kapsayıcılı bölmeler aynı düğümüzerinde birlikte zamanlanır ve kapsayıcıların ilgili kaynakları paylaşmasına izin verir.
+Kubernetes, uygulamanızın bir örneğini çalıştırmak için *Pod* 'yi kullanır. Pod, uygulamanızın tek bir örneğini temsil eder. Bir pod 'un birden çok kapsayıcı içerebileceği gelişmiş senaryolar olsa da, pods 'nin genellikle kapsayıcı ile 1:1 eşlemesi vardır. Bu çok Kapsayıcılı FID 'ler aynı düğümde birlikte zamanlanır ve kapsayıcıların ilgili kaynakları paylaşmasına izin verir.
 
-Bir bölme oluşturduğunuzda, belirli bir miktarda CPU veya bellek kaynağı istemek için *kaynak isteklerini* tanımlayabilirsiniz. Kubernetes Zamanlayıcısı, isteği karşılamak için kullanılabilir kaynaklara sahip bir düğüm üzerinde çalışacak bölmeleri zamanlamaya çalışır. Ayrıca, belirli bir bölmenin alttaki düğümden çok fazla bilgi işlem kaynağı tüketmesini engelleyen maksimum kaynak sınırları da belirtebilirsiniz. En iyi uygulama, Kubernetes Zamanlayıcısının hangi kaynaklara ihtiyaç duyulduğunu ve izin verilip verilenolduğunu anlamasına yardımcı olmak için tüm bölmeler için kaynak sınırları eklemektir.
+Pod oluşturduğunuzda, belirli miktarda CPU veya bellek kaynağı istemek için *kaynak istekleri* tanımlayabilirsiniz. Kubernetes Zamanlayıcı, isteği karşılamak için kaynakları kullanılabilir kaynaklarla bir düğümde çalışacak şekilde zamanlamaya çalışır. Ayrıca, belirli bir pod 'un temeldeki düğümden çok fazla bilgi işlem kaynağı tüketmesini önleyen en fazla kaynak sınırı belirtebilirsiniz. Kubernetes Scheduler 'ın hangi kaynakların gerekli ve izin verileceğini anlamasına yardımcı olmak için tüm yığınların kaynak sınırlarını içermesi en iyi uygulamadır.
 
-Daha fazla bilgi için [Kubernetes pod'ları][kubernetes-pods] ve [Kubernetes pod yaşam döngüsüne][kubernetes-pod-lifecycle]bakın.
+Daha fazla bilgi için bkz. [Kubernetes Pod][kubernetes-pods] ve [Kubernetes Pod yaşam döngüsü][kubernetes-pod-lifecycle].
 
-Bölme mantıksal bir kaynaktır, ancak kapsayıcı(lar) uygulama iş yüklerinin çalıştığı yerdir. Bölmeler genellikle geçici, tek kullanımlık kaynaklardır ve tek tek zamanlanmış bölmeler Kubernetes'in sağladığı yüksek kullanılabilirlik ve artıklık özelliklerinden bazılarını kaçırır. Bunun yerine, bölmeler genellikle dağıtılır ve Dağıtım *Denetleyicisi*gibi Kubernetes Denetleyicileri tarafından yönetilir.
+Pod, mantıksal bir kaynaktır, ancak kapsayıcı (ler) uygulama iş yüklerinin çalıştığı yerdir. Kubernetes 'in sağladığı yüksek kullanılabilirlik ve artıklık özelliklerinden bazıları genellikle kısa ömürlü, atılabilir kaynaklardır ve tek bir zamanlanmış Pod tarafından kaçırılabilirdi. Bunun yerine, Pod genellikle dağıtım denetleyicisi gibi Kubernetes *denetleyicileri*tarafından dağıtılır ve yönetilir.
 
 ## <a name="deployments-and-yaml-manifests"></a>Dağıtımlar ve YAML bildirimleri
 
-*Dağıtım,* Kubernetes Dağıtım Denetleyicisi tarafından yönetilen bir veya daha fazla özdeş bölmeyi temsil eder. Dağıtım oluşturulacak *yineleme* (bakla) sayısını tanımlar ve Kubernetes Zamanlayıcısı, bölmeveya düğümlerle karşılaşırsa, sağlıklı düğümlerde ek bölmelerin zamanlandığını sağlar.
+*Dağıtım* , Kubernetes dağıtım denetleyicisi tarafından yönetilen bir veya daha fazla özdeş Pod 'yi temsil eder. Dağıtım, oluşturulacak *çoğaltma* sayısını (pod) tanımlar ve Kubernetes Zamanlayıcı, düğüm veya düğümlerin sorun yaşadığında, sağlıklı düğümlerde ek yığınların zamanlanmasını sağlar.
 
-Bölmelerin, kullanılan kapsayıcı görüntüsünün veya ekli depolama alanının yapılandırmasını değiştirmek için dağıtımları güncelleştirebilirsiniz. Dağıtım Denetleyicisi, belirli sayıda yinelemeyi boşaltır ve sonlandırır, yeni dağıtım tanımından yinelemeler oluşturur ve dağıtımdaki tüm yinelemeler güncelleştirilene kadar işlemi sürdürür.
+Pads yapılandırmalarını, kullanılan kapsayıcı görüntüsünü veya bağlı depolamayı değiştirmek için dağıtımları güncelleştirebilirsiniz. Dağıtım denetleyicisi belirtilen sayıda kopyayı boşaltır ve sonlandırır, yeni dağıtım tanımından çoğaltmalar oluşturur ve dağıtımdaki tüm çoğaltmalar güncelleştirilene kadar işlemi devam ettirir.
 
-AKS'deki çoğu durum ifadesüz uygulama, tek tek bölmeleri zamanletmek yerine dağıtım modelini kullanmalıdır. Kubernetes, küme içinde gerekli çoğaltma sayısının çalıştığından emin olmak için dağıtımların durumunu ve durumunu izleyebilir. Tek tek bölmeleri zamanladiğinizde, bir sorunla karşılaştıklarında bölmeler yeniden başlatılmazsa ve geçerli düğümleri bir sorunla karşılaşırsa sağlıklı düğümlerde yeniden zamanlanmaz.
+AKS 'teki çoğu durum bilgisiz uygulamaların, tek tek DS zamanlaması yerine dağıtım modelini kullanması gerekir. Kubernetes, küme içinde gerekli sayıda çoğaltmanın çalıştığından emin olmak için dağıtımların durumunu ve durumunu izleyebilir. Yalnızca tek tek Pod 'yi zamanladığınızda, bir sorunla karşılaştıklarında, düğüm yeniden başlatılmaz ve geçerli düğümleri bir sorunla karşılaştığında sağlıklı düğümlerde yeniden planlanmazlar.
 
-Bir uygulama, yönetim kararlarının her zaman alınabilmesi için bir çok örnek gerektiriyorsa, bu özelliği bozacak bir güncelleştirme işlemi istemezsinüz. *Pod Disruption Bütçeleri,* bir güncelleştirme veya düğüm yükseltmesi sırasında bir dağıtımda kaç yinelemenin indirilebileceğini tanımlamak için kullanılabilir. Örneğin, dağıtımınızda *5* yineleme varsa, bir seferde silinen/yeniden zamanlanan yalnızca bir yinelemeye izin vermek için *4'lük* bir bölme kesintisi tanımlayabilirsiniz. Pod kaynak sınırlarında olduğu gibi, en iyi yöntem, her zaman var olmak için en az sayıda yineleme gerektiren uygulamalarda bölme kesintisi bütçelerini tanımlamaktır.
+Bir uygulama, yönetim kararlarının yapılabilmesi için her zaman kullanılabilir bir örnek çekirdeği gerektiriyorsa, bu özelliği bir güncelleştirme işleminin kesintiye uğramasını istemezsiniz. *Pod kesinti bütçeleri* , bir güncelleştirme veya düğüm yükseltmesi sırasında bir dağıtımda kaç çoğaltmanın alınacağını belirlemek için kullanılabilir. Örneğin, dağıtımınızda *5* çoğaltmalarınız varsa, tek seferde yalnızca bir çoğaltmanın silinmesini/yeniden zamanlanmasını sağlamak için *4* ' ün Pod kesintisini tanımlayabilirsiniz. Pod kaynak limitleriyle birlikte, en iyi uygulama, her zaman en az sayıda çoğaltma olmasını gerektiren uygulamalarda Pod kesinti bütçeleri tanımlamaktır.
 
-Dağıtımlar genellikle oluşturulur ve `kubectl create` yönetilir `kubectl apply`veya . Dağıtım oluşturmak için YAML (YAML Ain't Markup Language) biçiminde bir bildirim dosyası tanımlarsınız. Aşağıdaki örnek, NGINX web sunucusunun temel dağıtımını oluşturur. Dağıtım oluşturulacak *3* yineleme belirtir ve bu bağlantı noktası *80* kapsayıcı üzerinde açık olması. Kaynak istekleri ve sınırları da CPU ve bellek için tanımlanır.
+Dağıtımlar genellikle veya `kubectl create` `kubectl apply`ile oluşturulur ve yönetilir. Bir dağıtım oluşturmak için, YAML (YAML Aini biçimlendirme dili) biçiminde bir bildirim dosyası tanımlarsınız. Aşağıdaki örnek NGıNX Web sunucusunun temel bir dağıtımını oluşturur. Dağıtım, oluşturulacak *3* çoğaltma ve bağlantı noktası *80* ' nin kapsayıcıda açık olduğunu belirtir. Kaynak istekleri ve sınırları, CPU ve bellek için de tanımlanır.
 
 ```yaml
 apiVersion: apps/v1
@@ -196,75 +196,75 @@ spec:
             memory: 256Mi
 ```
 
-Yaml manifestosuna yük dengeleyicileri gibi hizmetler de dahil edilerek daha karmaşık uygulamalar oluşturulabilir.
+YAML bildiriminde yük dengeleyiciler gibi hizmetler de dahil olmak üzere daha karmaşık uygulamalar oluşturulabilir.
 
-Daha fazla bilgi için [Kubernetes dağıtımlarına][kubernetes-deployments]bakın.
+Daha fazla bilgi için bkz. [Kubernetes dağıtımları][kubernetes-deployments].
 
-### <a name="package-management-with-helm"></a>Helm ile paket yönetimi
+### <a name="package-management-with-helm"></a>Held ile paket yönetimi
 
-Kubernetes uygulamaları yönetmek için ortak bir yaklaşım [Helm][helm]ile. Kaynakları dağıtmak için uygulama kodunun ve Kubernetes YAML bildirimlerinin paketlenmiş bir sürümünü içeren varolan genel Miğfer *grafiklerini* oluşturabilir ve kullanabilirsiniz. Bu Miğfer grafikleri yerel olarak veya genellikle Azure Kapsayıcı Kayıt [Defteri Miğferi grafiği reposu][acr-helm]gibi uzak bir depoda depolanabilir.
+Kubernetes 'te uygulamaları yönetmeye yönelik yaygın bir yaklaşım [Held][helm]ile yapılır. Kaynak dağıtmak için uygulama kodunun paketlenmiş bir sürümünü ve Kubernetes YAML bildirimlerini içeren mevcut genel Held *grafiklerini* oluşturabilir ve kullanabilirsiniz. Bu HELI grafikleri yerel olarak veya [Azure Container Registry Held grafik deposu][acr-helm]gibi bir uzak depoda depolanabilir.
 
-Helm'i kullanmak için, Kubernetes kümenizde *Tiller* adlı bir sunucu bileşeni yüklenir. Tiller küme içinde grafiklerin yüklenmesini yönetir. Helm istemcisinin kendisi bilgisayarınıza yerel olarak yüklenir veya [Azure Bulut BulutU][azure-cloud-shell]içinde kullanılabilir. İstemci ile Miğfer grafiklerini arayabilir veya oluşturabilir ve bunları Kubernetes kümenize yükleyebilirsiniz.
+Held 'yi kullanmak için Kubernetes kümenize *Tiller* adlı bir sunucu bileşeni yüklenir. Tiller, küme içindeki grafiklerin yüklenmesini yönetir. HELI istemcisinin kendisi bilgisayarınıza yerel olarak yüklenir veya [Azure Cloud Shell][azure-cloud-shell]içinde kullanılabilir. İstemcisiyle hele grafikleri arayabilir veya oluşturabilir, sonra bunları Kubernetes kümenize yükleyebilirsiniz.
 
-![Miğfer, Bir istemci bileşeni ve Kubernetes kümesi içinde kaynak oluşturan sunucu tarafı çapa makinesi bileşeni içerir](media/concepts-clusters-workloads/use-helm.png)
+![Held, Kubernetes kümesi içinde kaynak oluşturan bir istemci bileşeni ve sunucu tarafı Tiller bileşeni içerir](media/concepts-clusters-workloads/use-helm.png)
 
-Daha fazla bilgi için Azure [Kubernetes Hizmetinde (AKS) Helm ile Uygulama Yükle'ye][aks-helm]bakın.
+Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti 'nde (AKS) Held ile uygulama yüklemesi][aks-helm].
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSets ve DaemonSets
 
-Dağıtım Denetleyicisi, kullanılabilir kaynaklara sahip herhangi bir düğümde belirli sayıda yineleme çalıştırmak için Kubernetes Zamanlayıcısı'nı kullanır. Dağıtımları kullanma nın bu yaklaşımı, devletsiz uygulamalar için yeterli olabilir, ancak kalıcı bir adlandırma kuralı veya depolama gerektiren uygulamalar için yeterli olmayabilir. Bir küme içinde her düğümde veya seçili düğümlerde yineleme olmasını gerektiren uygulamalarda Dağıtım Denetleyicisi yinelemelerin düğümler arasında nasıl dağıtıldığına bakmaz.
+Dağıtım denetleyicisi, kullanılabilir kaynaklarla kullanılabilir olan herhangi bir düğümde verilen sayıda kopyayı çalıştırmak için Kubernetes zamanlayıcısını kullanır. Dağıtımları kullanmanın bu yaklaşımı, durum bilgisi olmayan uygulamalar için yeterli olabilir, ancak kalıcı bir adlandırma kuralı veya depolama gerektiren uygulamalar için kullanılamaz. Bir küme içindeki her düğümde veya seçili düğümlerde bir çoğaltmanın mevcut olmasını gerektiren uygulamalar için, dağıtım denetleyicisi çoğaltmaların düğümlerde nasıl dağıtıldığını göz atalım.
 
-Bu tür uygulamaları yönetmenize izin veren iki Kubernetes kaynağı vardır:
+Bu tür uygulamaları yönetmenize olanak sağlayan iki Kubernetes kaynağı vardır:
 
-- *StatefulSets* - Depolama gibi tek bir pod yaşam döngüsünün ötesinde ki uygulamaların durumunu koruyun.
-- *DaemonSets* - Kubernetes bootstrap işleminin başlarında, her düğüm üzerinde çalışan bir örnek olun.
+- *Statefulsets* -depolama gibi tek bir pod yaşam döngüsünün ötesinde uygulamaların durumunu koruyun.
+- *DaemonSets* -Kubernetes Bootstrap işleminin başlarında, her düğümde çalışan bir örnek olduğundan emin olun.
 
 ### <a name="statefulsets"></a>StatefulSets
 
-Modern uygulama geliştirme genellikle devletsiz uygulamaları hedefler, ancak *StatefulSets* veritabanı bileşenleri içeren uygulamalar gibi durumsal uygulamalar için kullanılabilir. StatefulSet, bir veya daha fazla özdeş bölmenin oluşturulduğu ve yönetildiği dağıtıma benzer. StatefulSet'teki yinelemeler dağıtım, ölçeklendirme, yükseltmeler ve sonlandırmalar için zarif ve sıralı bir yaklaşım izler. StatefulSet ile (yinelemeler yeniden zamanlanırken) adlandırma kuralı, ağ adları ve depolama devam eder.
+Modern uygulama geliştirme genellikle durum bilgisiz uygulamalar için amaçlar, ancak *statefulsets* , veritabanı bileşenlerini içeren uygulamalar gibi durum bilgisi olan uygulamalar için kullanılabilir. Statefulset, bir veya daha fazla özdeş Pod 'nin oluşturulup yönetildiği bir dağıtıma benzer. Bir StatefulSet içindeki çoğaltmalar, dağıtıma, ölçeğe, yükseltmelere ve sonlandırmalara yönelik düzgün, sıralı bir yaklaşıma uyar. Bir StatefulSet ile (çoğaltmalar yeniden zamanlanırsa) adlandırma kuralı, ağ adları ve depolama korunur.
 
-Uygulamayı YAML biçiminde kullanarak `kind: StatefulSet`tanımlarsınız ve StatefulSet Denetleyicisi daha sonra gerekli yinelemelerin dağıtımını ve yönetimini işler. Veriler, Azure Yönetilen Diskler veya Azure Dosyaları tarafından sağlanan kalıcı depolama alanına yazılır. StatefulSets ile, StatefulSet silindiğinde bile altta yatan kalıcı depolama kalır.
+Kullanarak `kind: StatefulSet`uygulamayı YAML biçiminde tanımlarsınız ve StatefulSet denetleyicisi, gerekli çoğaltmaların dağıtımını ve yönetimini işler. Veriler, Azure yönetilen diskler veya Azure dosyaları tarafından belirtilen kalıcı depolama alanına yazılır. StatefulSets ile, StatefulSet silindiğinde bile temeldeki kalıcı depolama alanı kalır.
 
-Daha fazla bilgi için [Kubernetes StatefulSets'e][kubernetes-statefulsets]bakın.
+Daha fazla bilgi için bkz. [Kubernetes StatefulSets][kubernetes-statefulsets].
 
-StatefulSet'teki yinelemeler zamanlanır ve aks kümesindeki kullanılabilir düğümüzerinde çalıştırılır. Setinizdeki en az bir bölmenin düğüm üzerinde çalıştığından emin olmanız gerekiyorsa, bunun yerine bir DaemonSet kullanabilirsiniz.
+Bir StatefulSet içindeki çoğaltmalar zamanlanır ve bir AKS kümesindeki tüm kullanılabilir düğümlerde çalıştırılır. Bir düğümde, küme içindeki en az bir pod 'ın çalıştığından emin olmanız gerekiyorsa, bunun yerine bir DaemonSet kullanabilirsiniz.
 
 ### <a name="daemonsets"></a>DaemonSets
 
-Belirli günlük toplama veya izleme gereksinimleri için, belirli bir bölmeyi tüm veya seçili düğümlerde çalıştırmanız gerekebilir. *DaemonSet* yine bir veya daha fazla özdeş bölmedağıtmak için kullanılır, ancak DaemonSet Denetleyici belirtilen her düğümün bölmenin bir örneğini çalıştırmasını sağlar.
+Belirli günlük koleksiyonu veya izleme ihtiyaçları için, belirli bir pod 'ı tüm veya seçili düğümlerde çalıştırmanız gerekebilir. Bir veya daha fazla özdeş pods dağıtmak için bir *DaemonSet* kullanılır, ancak DaemonSet denetleyicisi, belirtilen her düğümün Pod 'ın bir örneğini çalıştırmasını sağlar.
 
-DaemonSet Denetleyicisi, varsayılan Kubernetes zamanlayıcısı başlamadan önce küme önyükleme işleminin başlarında düğümler üzerinde bölmeleri zamanlayabilir. Bu yetenek, Dağıtım veya StatefulSet'teki geleneksel bölmeler zamanlanmadan önce DaemonSet'teki bölmelerin başlatılmasını sağlar.
+DaemonSet denetleyicisi, varsayılan Kubernetes Scheduler başlatılmadan önce küme önyükleme işlemindeki düğümlerde düğüm zamanlayabilir. Bu özellik, bir dağıtımdaki geleneksel köler veya StatefulSet zamanlanmadan önce bir DaemonSet içindeki yığınların başlatılmasını sağlar.
 
-StatefulSets gibi, Bir DaemonSet kullanarak `kind: DaemonSet`bir YAML tanımının bir parçası olarak tanımlanır.
+StatefulSets gibi, bir DaemonSet, kullanılarak `kind: DaemonSet`YAML tanımının bir parçası olarak tanımlanır.
 
-Daha fazla bilgi için [Kubernetes DaemonSets'e][kubernetes-daemonset]bakın.
+Daha fazla bilgi için bkz. [Kubernetes DaemonSets][kubernetes-daemonset].
 
 > [!NOTE]
-> [Sanal Düğümler eklentisini](virtual-nodes-cli.md#enable-virtual-nodes-addon)kullanıyorsanız, DaemonSets sanal düğümüzerinde bölme oluşturmaz.
+> [Sanal düğümler eklentisi](virtual-nodes-cli.md#enable-virtual-nodes-addon)kullanılıyorsa, DaemonSets sanal düğümde Pod oluşturmaz.
 
 ## <a name="namespaces"></a>Ad Alanları
 
-Bölmeler ve Dağıtımlar gibi Kubernetes kaynakları mantıksal olarak bir *ad alanı*olarak gruplandırılır. Bu gruplandırmalar, aks kümesini mantıksal olarak bölmenin ve kaynakları oluşturmak, görüntülemek veya yönetmek için erişimi kısıtlamanın bir yolunu sağlar. Örneğin, iş gruplarını ayırmak için ad alanları oluşturabilirsiniz. Kullanıcılar yalnızca kendilerine atanan ad alanlarındaki kaynaklarla etkileşim kurabilir.
+Pod ve dağıtımlar gibi Kubernetes kaynakları, mantıksal olarak bir *ad alanı*halinde gruplandırılır. Bu gruplandırmalar, bir AKS kümesini mantıksal olarak bölmek ve kaynakları oluşturmak, görüntülemek veya yönetmek için erişimi kısıtlamak için bir yol sağlar. Örneğin, iş gruplarını ayırmak için ad alanları oluşturabilirsiniz. Kullanıcılar yalnızca atanan ad alanları içindeki kaynaklarla etkileşime girebilirler.
 
-![Kaynakları ve uygulamaları mantıksal olarak bölmek için kubernetes ad alanları](media/concepts-clusters-workloads/namespaces.png)
+![Kaynak ve uygulamaları mantıksal olarak bölmek için Kubernetes ad alanları](media/concepts-clusters-workloads/namespaces.png)
 
 Bir AKS kümesi oluşturduğunuzda, aşağıdaki ad alanları kullanılabilir:
 
-- *varsayılan* - Bu ad alanı, bölmelerin ve dağıtımların hiçbiri sağlanmadığında varsayılan olarak oluşturulduğu yerdir. Daha küçük ortamlarda, ek mantıksal ayrımlar oluşturmadan uygulamaları doğrudan varsayılan ad alanına dağıtabilirsiniz. Kubernetes API ile etkileşimde olduğunuzda, `kubectl get pods`örneğin , varsayılan ad alanı belirtilmediğinde kullanılır.
-- *kube-system* - Bu ad alanı, DNS ve proxy veya Kubernetes panosu gibi ağ özellikleri gibi temel kaynakların bulunduğu yerdir. Genellikle kendi uygulamalarınızı bu ad alanına dağıtmazsınız.
-- *kube-public* - Bu ad alanı genellikle kullanılmaz, ancak kaynakların tüm küme de görülebilir için kullanılabilir ve herhangi bir kullanıcı tarafından görüntülenebilir.
+- *varsayılan* -bu ad alanı, hiçbir değer sağlanmadıysa, varsayılan olarak Pod ve dağıtımların oluşturulduğu yerdir. Daha küçük ortamlarda, ek mantıksal ayırmalar oluşturmadan uygulamaları doğrudan varsayılan ad alanına dağıtabilirsiniz. İle `kubectl get pods`gibi Kubernetes API 'siyle etkileşim kurarken, hiçbiri belirtilmediğinde varsayılan ad alanı kullanılır.
+- *kuas-System* -bu ad alanı, DNS ve proxy gibi ağ özellikleri veya Kubernetes panosu gibi çekirdek kaynakların bulunduğu yerdir. Genellikle kendi uygulamalarınızı bu ad alanına dağıtmazsınız.
+- *Kuto-public* -bu ad alanı genellikle kullanılmaz, ancak kaynakların tüm küme genelinde görünür olması için kullanılabilir ve herhangi bir kullanıcı tarafından görüntülenebilir.
 
-Daha fazla bilgi için [Kubernetes ad alanlarına][kubernetes-namespaces]bakın.
+Daha fazla bilgi için bkz. [Kubernetes ad alanları][kubernetes-namespaces].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bazı çekirdek Kubernetes bileşenleri ve nasıl AKS kümeleri için geçerli kapsar. Çekirdek Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makalede, bazı çekirdek Kubernetes bileşenleri ve AKS kümelerine nasıl uygulandığı ele alınmaktadır. Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Kubernetes / AKS erişim ve kimlik][aks-concepts-identity]
-- [Kubernetes / AKS güvenlik][aks-concepts-security]
-- [Kubernetes / AKS sanal ağlar][aks-concepts-network]
-- [Kubernetes / AKS depolama][aks-concepts-storage]
-- [Kubernetes / AKS ölçeği][aks-concepts-scale]
+- [Kubernetes/AKS erişimi ve kimliği][aks-concepts-identity]
+- [Kubernetes/AKS güvenliği][aks-concepts-security]
+- [Kubernetes/AKS sanal ağları][aks-concepts-network]
+- [Kubernetes/AKS depolaması][aks-concepts-storage]
+- [Kubernetes/AKS ölçeği][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 [aks-engine]: https://github.com/Azure/aks-engine

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Bağlantısı: Grupları bir ormandan diğerine geçir | Microsoft Dokümanlar'
+title: 'Azure AD Connect: grupları bir ormandan diğerine geçirme'
 description: Bu makalede, Azure AD Connect için grupları bir ormandan diğerine başarıyla geçirmek için gereken adımlar açıklanmaktadır.
 services: active-directory
 author: billmath
@@ -11,29 +11,31 @@ ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c60de392afbff18bc141605a936636e48dbfe
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729696"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229808"
 ---
-# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Azure AD Connect için grupları bir ormandan diğerine geçirin
+# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Azure AD Connect için grupları bir ormandan diğerine geçirme
 
-Bu makalede, taşınan grup nesnelerinin buluttaki varolan nesnelerle eşleşmesi için grupları bir ormandan diğerine başarıyla geçirmek için gereken adımlar açıklanmaktadır.
+Bu makalede, geçirilmiş grup nesnelerinin buluttaki mevcut nesnelerle eşleşmesi için grupların bir ormandan diğerine geçirilmesi açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure AD Connect sürümü 1.5.18.0 veya üstü
-- Kaynak Çapa özniteliği`mS-DS-ConsistencyGuid`
+- Azure AD Connect sürüm 1.5.18.0 veya üzeri
+- Olarak ayarlanan kaynak bağlantı özniteliği`mS-DS-ConsistencyGuid`
 
-Azure AD Connect, sürüm 1.5.18.0'dan itibaren `mS-DS-ConsistencyGuid` gruplar için kullanımını desteklemeye başladı. `mS-DS-ConsistencyGuid` Kaynak bağlantı özelliği olarak seçilirve değer AD'de doldurulursa, Azure `mS-DS-ConsistencyGuid` AD Connect değişmezId olarak değerini kullanır. Aksi takdirde, geri `objectGUID`kullanarak düşüyor. Ancak, Azure AD Connect'in AD'deki `mS-DS-ConsistencyGuid` özniteliğe değer **yazmadığını** lütfen unutmayın.
+## <a name="migrate-groups"></a>Grupları geçirme
 
-Bir grup nesnesinin bir ormandan (F1 deyin) başka bir ormana (F2 deyin) taşındığı bir `mS-DS-ConsistencyGuid` çapraz orman taşıma `objectGUID` senaryosu sırasında, F1 ormanındaki `mS-DS-ConsistencyGuid` nesnenin değerini (Varsa) veya değeri F2'deki nesnenin özniteliğine kopyalamamız gerekir. 
+Sürüm 1.5.18.0 ' den başlayarak, Azure AD Connect gruplar için `mS-DS-ConsistencyGuid` özniteliğin kullanımını destekler. Kaynak bağlantısı özniteliği `mS-DS-ConsistencyGuid` olarak ' yi seçerseniz ve değer Active Directory doldurulduktan sonra, Azure AD Connect değerini `mS-DS-ConsistencyGuid` kullanır. `immutableId` Aksi takdirde, kullanmaya `objectGUID`geri döner. Ancak Azure AD Connect değeri Active Directory `mS-DS-ConsistencyGuid` özniteliğe geri yazmadığını unutmayın.
 
-F1 ormanından orman F2'ye tek bir grubu nasıl geçirebileceğinizi görmek için lütfen kılavuz olarak aşağıdaki komut dosyalarını kullanın. Lütfen birden fazla grup için geçiş yapmak için bir kılavuz olarak kullanmaktan çekinmeyin.
+Bir ormanlar arası taşıma sırasında, bir grup nesnesi bir ormandan (F1) başka bir ormana geçtiğinde (F2 deyin), `mS-DS-ConsistencyGuid` değeri (varsa) veya ormandaki nesnedeki `objectGUID` değeri F2 içindeki nesnesinin `mS-DS-ConsistencyGuid` özniteliğiyle (varsa) kopyalamanız gerekir.
 
-İlk olarak, `objectGUID` f1 ormanındaki grup nesnesini ve `mS-DS-ConsistencyGuid` grubunu alıyoruz. Bu öznitelikler bir CSV dosyasına dışa aktarılır.
+Tek bir grubu bir ormandan diğerine geçirmeyi öğrenmek için aşağıdaki komut dosyalarını kılavuz olarak kullanın. Bu komut dosyalarını birden çok grubun geçişi için kılavuz olarak da kullanabilirsiniz. Betikler, kaynak orman için F1 orman adını ve hedef orman için F2 'yi kullanır.
+
+İlk olarak, grup nesnesinin `objectGUID` ve `mS-DS-ConsistencyGuid` içindeki Grup nesnesini F1 'e ekledik. Bu öznitelikler bir CSV dosyasına aktarılmalıdır.
 ```
 <#
 DESCRIPTION
@@ -41,7 +43,7 @@ DESCRIPTION
 This script will take DN of a group as input.
 It then copies the objectGUID and mS-DS-ConsistencyGuid values along with other attributes of the given group to a CSV file.
 
-This CSV file can then be used as input to Export-Group script
+This CSV file can then be used as input to the Export-Group script.
 #>
 Param(
        [ValidateNotNullOrEmpty()]
@@ -81,15 +83,15 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-Daha sonra, oluşturulan çıktı CSV dosyasını, F2 ormanındaki hedef nesneye damgalamak `mS-DS-ConsistencyGuid` için kullanırız.
+Daha sonra, oluşturulan çıkış CSV dosyasını, ormandaki hedef nesne üzerindeki `mS-DS-ConsistencyGuid` özniteliğini damgalamak için kullanırız:
 
 
 ```
 <#
 DESCRIPTION
 ============
-This script will take DN of a group as input and the CSV file that was generated by Import-Group script
-It copies either the objectGUID or mS-DS-ConsistencyGuid value from CSV file to the given object.
+This script will take DN of a group as input and the CSV file that was generated by the Import-Group script.
+It copies either the objectGUID or the mS-DS-ConsistencyGuid value from the CSV file to the given object.
 
 #>
 Param(
@@ -123,4 +125,4 @@ Set-ADGroup -Identity $dn -Replace @{'mS-DS-ConsistencyGuid'=$targetGuid} -Error
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.
+[Şirket içi kimliklerinizi Azure Active Directory tümleştirme](whatis-hybrid-identity.md)hakkında daha fazla bilgi edinin.

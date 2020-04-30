@@ -3,12 +3,12 @@ title: Tüm ortamlarda çalışan Java uygulamalarını izleme-Azure Izleyici Ap
 description: Uygulamayı işaretlemeden Java tek başına aracı ile herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 08a83fbc05276808b62a0391a5c4217cc09f6d00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641881"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508046"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Azure Izleyici için JVM args Java tek başına Aracısı 'nı yapılandırma Application Insights
 
@@ -20,15 +20,25 @@ ms.locfileid: "81641881"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-Daha önce `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar <myapp.jar>`bir yere JVM bağımsız değişkeni ekleyin, örneğin:
+Daha önce `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`bir yere JVM bağımsız değişkeni ekleyin, örneğin:
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
 ```
 
-> [!NOTE]
-> Sonrasında `-jar <myapp.jar>` yerleştirilmiş olan bağımsız değişkenler uygulamaya program bağımsız değişkenleri olarak geçirilir.
+## <a name="spring-boot-via-docker-entry-point"></a>Docker giriş noktası aracılığıyla Spring Boot
 
+*Exec* formunu kullanıyorsanız, parametresini parametre listesine parametresinden önce `"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"` `"-jar"` bir yerde ekleyin, örneğin:
+
+```
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
+```
+
+*Kabuk* formunu kullanıyorsanız, daha önce `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`bir yere JVM bağımsız değişkeni ekleyin, örneğin:
+
+```
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
+```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
 

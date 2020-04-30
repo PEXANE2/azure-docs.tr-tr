@@ -1,67 +1,67 @@
 ---
 title: Küme güvenliği için en iyi uygulamalar
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Hizmeti'nde (AKS) küme güvenliği ve yükseltmeleri yönetme ye yönelik küme operatörünün en iyi uygulamalarını öğrenin
+description: Azure Kubernetes Service (AKS) ' de küme güvenliğini ve yükseltmelerini yönetme için en iyi küme işletmeni uygulamalarını öğrenin
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 3d4e8577116ba1d78aaa881887f64e71c04af4f2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668321"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208100"
 ---
-# <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) küme güvenliği ve yükseltmeleri için en iyi uygulamalar
+# <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde küme güvenliği ve yükseltmeleri için en iyi uygulamalar
 
-Azure Kubernetes Hizmeti'nde (AKS) kümeleri yönetirken, iş yüklerinizin ve verilerinizin güvenliği önemli bir husustur. Özellikle mantıksal yalıtım kullanarak çok kiracılı kümeler çalıştırdığınızda, kaynaklara ve iş yüklerine erişimi güvence altına almanız gerekir. Saldırı riskini en aza indirmek için, en son Kubernetes ve düğüm işletim sistemi güvenlik güncelleştirmelerini uyguladığınıza da emin olmanız gerekir.
+Azure Kubernetes Service (AKS) içindeki kümeleri yönetirken, iş yüklerinizin ve verilerinizin güvenliği önemli bir konudur. Özellikle, mantıksal yalıtım kullanarak çok kiracılı kümeler çalıştırdığınızda, kaynaklara ve iş yüklerine erişimi güvence altına almanız gerekir. Saldırı riskini en aza indirmek için, en son Kubernetes ve Node OS güvenlik güncelleştirmelerini de uyguladığınızdan emin olmanız gerekir.
 
-Bu makalede, AKS kümenizi nasıl güvene alabildiğiniz üzerinde duruluyor. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu makalede AKS kümenizin güvenliğini sağlama konusuna odaklanılmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * API sunucusu erişimini sağlamak için Azure Etkin Dizini ve rol tabanlı erişim denetimlerini kullanma
+> * API sunucusu erişimini güvenli hale getirmek için Azure Active Directory ve rol tabanlı erişim denetimleri kullanma
 > * Düğüm kaynaklarına güvenli kapsayıcı erişimi
-> * Bir AKS kümesini en son Kubernetes sürümüne yükseltin
-> * Düğümleri güncel tutun ve güvenlik yamaları otomatik olarak uygulayın
+> * AKS kümesini en son Kubernetes sürümüne yükseltme
+> * Düğümleri güncel tut ve güvenlik düzeltme eklerini otomatik olarak Uygula
 
-Ayrıca [konteyner görüntü yönetimi][best-practices-container-image-management] ve pod [güvenliği][best-practices-pod-security]için en iyi uygulamaları okuyabilirsiniz.
+Ayrıca, [kapsayıcı görüntüsü yönetimi][best-practices-container-image-management] ve [Pod güvenliği][best-practices-pod-security]için en iyi yöntemleri okuyabilirsiniz.
 
-Tehditleri algılamaya ve AKS kümelerinizi güvence altına almak için önerileri görüntülemeye yardımcı olmak için [Azure Kubernetes Hizmetleri tümleştirmesini Güvenlik Merkezi ile][security-center-aks] de kullanabilirsiniz.
+Tehditleri algılamaya ve AKS kümelerinizi korumaya yönelik önerileri görüntülemenize yardımcı olması için [Güvenlik Merkezi Ile Azure Kubernetes Hizmetleri tümleştirmesini][security-center-aks] da kullanabilirsiniz.
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>API sunucusuna ve küme düğümlerine güvenli erişim
 
-**En iyi uygulama kılavuzu** - Kubernetes API-Server'a erişimi güvence altına almak, kümenizi güvence altına almak için yapabileceğiniz en önemli şeylerden biridir. API sunucusuna erişimi denetlemek için Kubernetes rol tabanlı erişim denetimini (RBAC) Azure Active Directory ile tümleştirin. Bu denetimler, AKS'yi Azure aboneliklerinize erişimi güvence altına aldığınız gibi güvenli hale almanızı sağlar.
+**En iyi Yöntem Kılavuzu** -Kubernetes API-Server erişimini güvenli hale getirmek, kümenizin güvenliğini sağlamak için yapabileceğiniz en önemli işlemlerden biridir. API sunucusuna erişimi denetlemek için Kubernetes rol tabanlı erişim denetimini (RBAC) Azure Active Directory ile tümleştirin. Bu denetimler, Azure aboneliklerinize erişiminizi güvenli hale getirmenin aynı şekilde güvenliğini sağlamanıza olanak tanır.
 
-Kubernetes API sunucusu, bir küme içinde eylem gerçekleştirmek için istekleri n için tek bir bağlantı noktası sağlar. API sunucusuna erişimi güvence altına almak ve denetlemek için erişimi sınırlandırın ve gereken en az ayrıcalıklı erişim izinlerini sağlayın. Bu yaklaşım Kubernetes'e özgü değildir, ancak AKS kümesi çok kiracılı kullanım için mantıksal olarak yalıtıldığında özellikle önemlidir.
+Kubernetes API sunucusu, bir küme içinde eylemleri gerçekleştirmek için istekler için tek bir bağlantı noktası sağlar. API sunucusuna erişimi güvenli hale getirmek ve denetlemek için erişimi sınırlayın ve gereken en az ayrıcalıklı erişim izinlerini sağlayın. Bu yaklaşım Kubernetes için benzersiz değildir, ancak AKS kümesi çok kiracılı kullanım için mantıksal olarak yalıtılmışsa özellikle önemlidir.
 
-Azure Active Directory (AD), AKS kümeleriyle tümlebilen kurumsal kullanıma hazır bir kimlik yönetimi çözümü sağlar. Kubernetes bir kimlik yönetimi çözümü sağlamadığından, API sunucusuna erişimi kısıtlamak için ayrıntılı bir yol sağlamak zor olabilir. AKS'deki Azure AD tümleşik kümeleriyle, kullanıcıların API sunucusuna kimliğini doğrulamak için varolan kullanıcı ve grup hesaplarınızı kullanırsınız.
+Azure Active Directory (AD), AKS kümeleriyle tümleştirilen kurumsal özellikli bir kimlik yönetimi çözümü sağlar. Kubernetes bir kimlik yönetimi çözümü sunmazsa, API sunucusuna erişimi kısıtlamak için parçalı bir yol sağlamak zor olabilir. AKS 'deki Azure AD ile tümleşik kümeler sayesinde, API sunucusuna kullanıcıların kimliğini doğrulamak için mevcut kullanıcı ve grup hesaplarınızı kullanırsınız.
 
-![AKS kümeleri için Azure Active Directory tümleştirmesi](media/operator-best-practices-cluster-security/aad-integration.png)
+![AKS kümeleri için Azure Active Directory tümleştirme](media/operator-best-practices-cluster-security/aad-integration.png)
 
-API sunucusunun güvenliğini sağlamak ve tek bir ad alanı gibi kapsamlı bir kaynak kümesi için gereken en az sayıda izin sağlamak için Kubernetes RBAC ve Azure AD tümleştirmesini kullanın. Azure AD'deki farklı kullanıcılara veya gruplara farklı RBAC rolleri verilebilir. Bu parçalı izinler, API sunucusuna erişimi kısıtlamanızı ve gerçekleştirilen eylemlerin net bir denetim izinini sağlamanıza izin verir.
+API sunucusunu güvenli hale getirmek ve tek bir ad alanı gibi kapsamlı bir kaynak kümesine gereken en az sayıda izin sağlamak için Kubernetes RBAC ve Azure AD-Integration kullanın. Azure AD 'deki farklı kullanıcılara veya gruplara farklı RBAC rolleri verilebilir. Bu ayrıntılı izinler, API sunucusuna erişimi kısıtlamanıza ve gerçekleştirilen eylemlerin net bir denetim izini sağlamanıza olanak tanır.
 
-Önerilen en iyi yöntem, dosyaları ve klasörlere ve tek tek kimliklere erişim sağlamak için grupları kullanmak, kullanıcıları tek tek *kullanıcılar*yerine RBAC rollerine bağlamak için Azure AD *grup* üyeliğini kullanmaktır. Kullanıcının grup üyeliği değiştikçe, AKS kümesindeki erişim izinleri buna göre değişir. Kullanıcıyı doğrudan bir role bağlarsanız, iş işlevi değişebilir. Azure AD grup üyelikleri güncellenir, ancak AKS kümesindeki izinler bunu yansıtmaz. Bu senaryoda, kullanıcıya bir kullanıcının gerektirdiğinden daha fazla izin verilir.
+Önerilen en iyi yöntem, dosyalara ve klasörlere tek tek kimlikler için erişim sağlamak üzere grupları kullanmak, kullanıcıları bireysel *Kullanıcılar*yerine RBAC rollerine bağlamak IÇIN Azure AD *Grup* üyeliği kullanmaktır. Bir kullanıcının grup üyeliği değiştikçe, AKS kümesindeki erişim izinleri buna göre değişir. Kullanıcıyı doğrudan bir role bağlarsanız, iş işlevi değişebilir. Azure AD grup üyelikleri güncelleştirebilir, ancak AKS kümesindeki izinler bunu yansıtmaz. Bu senaryoda, kullanıcıya bir kullanıcının gerektirdiğinden daha fazla izin verilmeye sona eriyor.
 
-Azure AD tümleştirmesi ve RBAC hakkında daha fazla bilgi için [AKS'de kimlik doğrulama ve yetkilendirme için en iyi uygulamalara][aks-best-practices-identity]bakın.
+Azure AD tümleştirmesi ve RBAC hakkında daha fazla bilgi için bkz. [AKS 'de kimlik doğrulama ve yetkilendirme Için en iyi uygulamalar][aks-best-practices-identity].
 
 ## <a name="secure-container-access-to-resources"></a>Kaynaklara güvenli kapsayıcı erişimi
 
-**En iyi uygulama kılavuzu** - Kapsayıcıların gerçekleştirebileceği eylemlere erişimi sınırlandırın. En az sayıda izin sağlayın ve kök / ayrıcalıklı yükseltme kullanımını önleyebilirsiniz.
+Kapsayıcının gerçekleştirebileceği eylemlere erişimi **en iyi yöntem kılavuzlarından** sınırlayın. En az sayıda izin sağlayın ve kök/ayrıcalıklı yükseltme kullanmaktan kaçının.
 
-Kullanıcılara veya gruplara gereken en az sayıda ayrıcalık vermeniz gerektiği gibi, kapsayıcılar da yalnızca gereksinim duydukları eylem ve işlemlerle sınırlı olmalıdır. Saldırı riskini en aza indirmek için, artırılmış ayrıcalıklar veya kök erişimi gerektiren uygulamaları ve kapsayıcıları yapılandırmayın. Örneğin, pod `allowPrivilegeEscalation: false` bildiriminde ayarlayın. Bu *bölme güvenlik bağlamları* Kubernetes'te yerleşiktir ve çalışacak kullanıcı veya grup veya hangi Linux yeteneklerini ortaya çıkarabileceğiniz gibi ek izinler tanımlamanıza olanak sağlar. Daha iyi uygulamalar için [kaynaklara güvenli pod erişimi][pod-security-contexts]bakın.
+Kullanıcılara veya gruplara gereken en az ayrıcalık sayısını vermeniz gerektiği gibi, kapsayıcılar de yalnızca ihtiyaç duydukları eylemlerle ve işlemlerle sınırlandırılmalıdır. Saldırı riskini en aza indirmek için, ilerletilen ayrıcalıklar veya kök erişim gerektiren uygulamaları ve kapsayıcıları yapılandırmayın. Örneğin, Pod bildiriminde `allowPrivilegeEscalation: false` ayarlayın. Bu *Pod güvenlik bağlamları* , Kubernetes 'te yerleşiktir ve çalıştırılacak Kullanıcı veya grup gibi ek izinler tanımlamanızı veya kullanıma sunulacak Linux özelliklerini tanımlamanızı sağlar. Daha iyi uygulamalar için bkz. [kaynaklara güvenli Pod erişimi][pod-security-contexts].
 
-Kapsayıcı eylemlerinin daha ayrıntılı denetimi için *AppArmor* ve *seccomp*gibi yerleşik Linux güvenlik özelliklerini de kullanabilirsiniz. Bu özellikler düğüm düzeyinde tanımlanır ve daha sonra bir bakla bildirimi aracılığıyla uygulanır. Yerleşik Linux güvenlik özellikleri yalnızca Linux düğümleri ve bölmelerinde kullanılabilir.
+Kapsayıcı eylemlerinin daha ayrıntılı denetimi için *AppArmor* ve *Seccomp*gibi yerleşik Linux güvenlik özelliklerini de kullanabilirsiniz. Bu özellikler düğüm düzeyinde tanımlanmıştır ve sonra Pod bildirimi aracılığıyla uygulanır. Yerleşik Linux güvenlik özellikleri yalnızca Linux düğümlerinde ve yığınların üzerinde kullanılabilir.
 
 > [!NOTE]
-> Kubernetes ortamları, AKS veya başka bir yerde, düşmanca çok kiracı kullanımı için tamamen güvenli değildir. *AppArmor,* *seccomp,* *Pod Security İlkeleri*veya düğümler için daha ince taneli rol tabanlı erişim denetimleri (RBAC) gibi ek güvenlik özellikleri açıkları daha zor hale getirmektedir. Ancak, düşmanca çok kiracılı iş yüklerini çalıştırırken gerçek güvenlik için, bir hipervizör güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes için güvenlik etki alanı tek bir düğüm değil, tüm küme olur. Bu tür çok kiracılı çok kiracılı iş yükleri için fiziksel olarak yalıtılmış kümeler kullanmalısınız.
+> Kubernetes ortamları, AKS veya başka bir yerde, çok kiracılı Kullanıcı kullanımı için tamamen güvenli değildir. Düğümler için *AppArmor*, *seccomp*, *Pod güvenlik ilkeleri*veya daha AYRıNTıLı rol tabanlı erişim denetimleri (RBAC) gibi ek güvenlik özellikleri, güvenli hale getirme daha zordur. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir.
 
-### <a name="app-armor"></a>Uygulama Zırhı
+### <a name="app-armor"></a>Uygulama koruma sağlamak
 
-Kapsayıcıların gerçekleştirebileceği eylemleri sınırlamak için [AppArmor][k8s-apparmor] Linux çekirdek güvenlik modüllerini kullanabilirsiniz. AppArmor, temel AKS düğüm işletim sistemi'nin bir parçası olarak kullanılabilir ve varsayılan olarak etkinleştirilir. Okuma, yazma veya yürütme gibi eylemleri kısıtlayan AppArmor profilleri veya dosya sistemlerini montaj gibi sistem işlevleri oluşturursunuz. Varsayılan AppArmor profilleri çeşitli `/proc` konumlara ve `/sys` konumlara erişimi kısıtlar ve kapsayıcıları temel düğümden mantıksal olarak yalıtmak için bir araç sağlar. AppArmor Linux üzerinde çalışan herhangi bir uygulama için çalışır, sadece Kubernetes pods.
+Kapsayıcıların gerçekleştirebileceği eylemleri sınırlandırmak için [AppArmor][k8s-apparmor] Linux çekirdek güvenlik modülünü kullanabilirsiniz. AppArmor, temel alınan AKS düğüm işletim sisteminin bir parçası olarak kullanılabilir ve varsayılan olarak etkindir. Okuma, yazma veya yürütme gibi eylemleri kısıtlayan AppArmor profilleri veya filesystems bağlama gibi sistem işlevleri oluşturabilirsiniz. Varsayılan AppArmor profilleri, çeşitli `/proc` ve `/sys` konumlarına erişimi kısıtlar ve temel alınan düğümden kapsayıcıları mantıksal olarak yalıtmak için bir yol sağlar. AppArmor, yalnızca Kubernetes pods değil, Linux üzerinde çalışan tüm uygulamalar için çalışır.
 
-![Kapsayıcı eylemlerini sınırlamak için aks kümesinde kullanılan AppArmor profilleri](media/operator-best-practices-container-security/apparmor.png)
+![Bir AKS kümesinde kullanılan AppArmor profilleri kapsayıcı eylemlerini sınırlandırmaya](media/operator-best-practices-container-security/apparmor.png)
 
-AppArmor'u iş başında görmek için aşağıdaki örnek, dosyalara yazmayı engelleyen bir profil oluşturur. Bir AKS düğümüne [SSH,][aks-ssh] ardından *deny-write.profile* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
+AppArmor 'i görmek için aşağıdaki örnek, dosyalara yazmayı önleyen bir profil oluşturur. [SSH][aks-ssh] 'YI BIR aks düğümüne, ardından *deny-Write. Profile* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
 
 ```
 #include <tunables/global>
@@ -74,15 +74,15 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 }
 ```
 
-AppArmor profilleri komutu `apparmor_parser` kullanılarak eklenir. Profili AppArmor'a ekleyin ve önceki adımda oluşturulan profilin adını belirtin:
+AppArmor profilleri `apparmor_parser` komutu kullanılarak eklenir. Profili AppArmor öğesine ekleyin ve önceki adımda oluşturulan profilin adını belirtin:
 
 ```console
 sudo apparmor_parser deny-write.profile
 ```
 
-Profil doğru bir şekilde ayrıştırılır ve AppArmor'a uygulanırsa hiçbir çıktı döndürülmez. Komut istemine döndürülürsün.
+Profil doğru ayrıştırılırsa ve AppArmor 'e uygulanırsa hiçbir çıkış döndürülmedi. Komut istemine döndürülürsünüz.
 
-Yerel makinenizden, şimdi *aks-apparmor.yaml* adlı bir pod manifestosu oluşturun ve aşağıdaki içeriği yapıştırın. Bu bildirim, önceki adımlarda `container.apparmor.security.beta.kubernetes` oluşturulan *reddet-yazma* profili ekleme başvuruları için bir ek açıklama tanımlar:
+Şimdi, yerel makinenizden *aks-AppArmor. YAML* adlı bir pod bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Bu bildirim, önceki adımlarda oluşturulan `container.apparmor.security.beta.kubernetes` *reddetme-yazma* profiline başvuru Ekle için bir ek açıklama tanımlar:
 
 ```yaml
 apiVersion: v1
@@ -98,13 +98,13 @@ spec:
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
 ```
 
-[Kubectl uygula][kubectl-apply] komutunu kullanarak örnek bölmeyi dağıtın:
+[Kubectl Apply][kubectl-apply] komutunu kullanarak örnek Pod 'u dağıtın:
 
 ```console
 kubectl apply -f aks-apparmor.yaml
 ```
 
-Pod dağıtıldı, bir dosyaya yazmak için [kubectl exec][kubectl-exec] komutunu kullanın. Aşağıdaki örnek çıktıda gösterildiği gibi komut yürütülemez:
+Pod ile dağıtılan bir dosyaya yazmak için [kubectl exec][kubectl-exec] komutunu kullanın. Komut aşağıdaki örnek çıktıda gösterildiği gibi yürütülemez:
 
 ```
 $ kubectl exec hello-apparmor touch /tmp/test
@@ -113,13 +113,13 @@ touch: /tmp/test: Permission denied
 command terminated with exit code 1
 ```
 
-AppArmor hakkında daha fazla bilgi için [Kubernetes'teki AppArmor profillerine][k8s-apparmor]bakın.
+AppArmor hakkında daha fazla bilgi için bkz. [Kubernetes 'Te AppArmor profilleri][k8s-apparmor].
 
 ### <a name="secure-computing"></a>Güvenli bilgi işlem
 
-AppArmor herhangi bir Linux uygulaması için çalışırken, [*seccomp (sec*ure *comp*uting)][seccomp] işlem düzeyinde çalışır. Seccomp aynı zamanda bir Linux çekirdeği güvenlik modülüdür ve aks düğümleri tarafından kullanılan Docker çalışma zamanı tarafından yerel olarak desteklenir. Seccomp ile, kapsayıcıların gerçekleştirebileceği işlem çağrıları sınırlıdır. Hangi eylemlerin izin verilip reddedilemeyeceğini tanımlayan filtreler oluşturur sunuz ve ardından seccomp filtresiyle ilişkilendirmek için bir bölme YAML bildiriminde ek açıklamalar kullanırsınız. Bu, yalnızca kapsayıcıya çalışması için gereken en az izinleri ve daha fazlasını verme nin en iyi uygulamasına hizalanır.
+AppArmor tüm Linux uygulamaları için çalışırken, [seccomp (*San*) işlem *comp*][seccomp] düzeyinde çalışmaktadır. Seccomp Ayrıca bir Linux çekirdek güvenlik modülüdür ve AKS düğümleri tarafından kullanılan Docker çalışma zamanı tarafından yerel olarak desteklenir. Seccomp ile, kapsayıcıların gerçekleştirebileceği işlem çağrıları sınırlıdır. İzin verilecek veya reddedilecek eylemleri tanımlayan filtreler oluşturun ve ardından seccomp filtresiyle ilişkilendirmek üzere Pod YAML bildiriminde ek açıklamaları kullanın. Bu, yalnızca kapsayıcıyı çalıştırmak için gereken en düşük izinleri ve daha fazlasını veren en iyi uygulamaya hizalanır.
 
-Eylem de seccomp görmek için, bir dosya üzerinde izinleri değiştirmeyi engelleyen bir filtre oluşturun. Bir AKS düğümüne [SSH,][aks-ssh] ardından */var/lib/kubelet/seccomp/prevent-chmod* adlı bir seccomp filtresi oluşturun ve aşağıdaki içeriği yapıştırın:
+Seccomp eylemini görmek için, bir dosyada izinleri değiştirmeyi önleyen bir filtre oluşturun. Bir AKS düğümüne [SSH][aks-ssh] ekleyin, ardından */var/lib/kubelet/seccomp/prevent-chmod* adlı bir seccomp filtresi oluşturun ve aşağıdaki içeriği yapıştırın:
 
 ```
 {
@@ -133,7 +133,7 @@ Eylem de seccomp görmek için, bir dosya üzerinde izinleri değiştirmeyi enge
 }
 ```
 
-Yerel makinenizden, şimdi *aks-seccomp.yaml* adlı bir pod manifestosu oluşturun ve aşağıdaki içeriği yapıştırın. Bu bildirim, önceki adımda `seccomp.security.alpha.kubernetes.io` oluşturulan *prevent-chmod* filtresi için bir ek açıklama tanımlar ve başvurur:
+Şimdi, yerel makinenizden *aks-seccomp. YAML* adlı bir pod bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Bu bildirim, için `seccomp.security.alpha.kubernetes.io` bir ek açıklama tanımlar ve önceki adımda oluşturulan *Önle-chmod* filtresine başvurur:
 
 ```yaml
 apiVersion: v1
@@ -154,13 +154,13 @@ spec:
   restartPolicy: Never
 ```
 
-[Kubectl uygula][kubectl-apply] komutunu kullanarak örnek bölmeyi dağıtın:
+[Kubectl Apply][kubectl-apply] komutunu kullanarak örnek Pod 'u dağıtın:
 
 ```console
 kubectl apply -f ./aks-seccomp.yaml
 ```
 
-[Kubectl get pods][kubectl-get] komutunu kullanarak bölmelerin durumunu görüntüleyin. Pod bir hata bildirir. Komutun, `chmod` aşağıdaki örnek çıktıda gösterildiği gibi seccomp filtresi tarafından çalıştırılması engellenir:
+[Kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'nin durumunu görüntüleyin. Pod bir hata bildiriyor. Aşağıdaki `chmod` örnek çıktıda gösterildiği gibi komutun seccomp filtresi tarafından çalışması engellenir:
 
 ```
 $ kubectl get pods
@@ -169,51 +169,51 @@ NAME                      READY     STATUS    RESTARTS   AGE
 chmod-prevented           0/1       Error     0          7s
 ```
 
-Kullanılabilir filtreler hakkında daha fazla bilgi için [Docker için Seccomp güvenlik profillerine][seccomp]bakın.
+Kullanılabilir filtreler hakkında daha fazla bilgi için bkz. [Docker Için Seccomp güvenlik profilleri][seccomp].
 
-## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>Düzenli olarak Kubernetes en son sürümüne güncelleme
+## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>En son Kubernetes sürümüne düzenli olarak güncelleştir
 
-**En iyi uygulama kılavuzu** - Yeni özellikler ve hata düzeltmeleri üzerinde güncel kalmak için, AKS kümenizdeki Kubernetes sürümüne düzenli olarak yükseltin.
+**En iyi Yöntem Kılavuzu** -yeni özellikler ve hata düzeltmeleri üzerinde güncel kalmak için aks kümenizdeki Kubernetes sürümüne düzenli olarak yükseltin.
 
-Kubernetes yeni özellikleri daha geleneksel altyapı platformlarından daha hızlı bir hızda yayınlar. Kubernetes güncelleştirmeleri yeni özellikler ve hata veya güvenlik düzeltmeleri içerir. Yeni özellikler genellikle *kararlı* hale gelmeden önce bir *alfa* ve daha sonra *beta* durumu ile hareket ve genellikle kullanılabilir ve üretim kullanımı için önerilir. Bu sürüm döngüsü, düzenli olarak çığır açan değişikliklerle karşılaşmadan veya dağıtımlarınızı ve şablonlarınızı ayarlamadan Kubernetes'i güncelleştirmenize olanak sağlar.
+Kubernetes, daha geleneksel altyapı platformlarından daha hızlı bir şekilde yeni özellikler yayımlar. Kubernetes güncelleştirmeleri yeni özellikler ve hata veya güvenlik düzeltmelerini içerir. Yeni özellikler tipik olarak bir *Alfa* ve ardından *Beta* durumunu *kararlı* hale gelmeden önce ve üretim kullanımı için kullanılması önerilen bir şekilde taşır. Bu yayın döngüsünün, Kubernetes 'i düzenli olarak bozmadan veya dağıtımlarınızı ve şablonlarınızı ayarlamadan güncelleştirmenize izin vermeniz gerekir.
 
-AKS, Kubernetes'in dört küçük versiyonunu destekler. Bu, yeni bir küçük yama sürümü tanıtıldığında, desteklenen en eski küçük sürüm ve yama sürümlerinin kullanımdan kaldırıldığı anlamına gelir. Kubernetes için küçük güncellemeler periyodik olarak olur. Destekten düşmemek için gerektiğinde kontrol etmek ve yükseltmek için bir yönetim sürecine sahip olduğundan emin olun. Daha fazla bilgi için, [desteklenen Kubernetes sürümleri AKS][aks-supported-versions] bakın
+AKS, Kubernetes 'in dört küçük sürümünü destekler. Bu, yeni bir ikincil yama sürümü ortaya çıkdığında, desteklenen en eski alt sürüm ve düzeltme eki sürümlerinin kullanımdan kalktığını gösterir. Kubernetes 'e yönelik küçük güncelleştirmeler düzenli aralıklarla gerçekleşir. Destek dışı kalmaması için gereken şekilde denetim ve yükseltme yapmak üzere bir idare işlemi kullandığınızdan emin olun. Daha fazla bilgi için bkz. [desteklenen Kubernetes sürümleri AKS][aks-supported-versions]
 
-Kümeniz için kullanılabilen sürümleri denetlemek için aşağıdaki örnekte gösterildiği gibi [az aks get-upgrades][az-aks-get-upgrades] komutunu kullanın:
+Kümeniz için kullanılabilen sürümleri denetlemek için, aşağıdaki örnekte gösterildiği gibi [az aks Get-yükseltmeler][az-aks-get-upgrades] komutunu kullanın:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Daha sonra [az aks yükseltme][az-aks-upgrade] komutunu kullanarak AKS kümeyükseltebilirsiniz. Yükseltme işlemi, aynı anda bir düğümü güvenli bir şekilde kordon altına alıp boşaltır, kalan düğümlerde bölmeleri zamanlar ve ardından en son işletim sistemi ve Kubernetes sürümlerini çalıştıran yeni bir düğüm dağıtır.
+Daha sonra, [az aks Upgrade][az-aks-upgrade] komutunu kullanarak aks kümenizi yükseltebilirsiniz. Yükseltme işlemi aynı anda bir düğümü güvenli bir şekilde alır ve kapatır, kalan düğümlerde Pod 'yi zamanlar ve ardından en son işletim sistemi ve Kubernetes sürümlerini çalıştıran yeni bir düğüm dağıtır.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
 ```
 
-AKS yükseltmeleri hakkında daha fazla bilgi için, [AKS'deki Desteklenen Kubernetes sürümlerine][aks-supported-versions] bakın ve [bir AKS kümesini yükseltin.][aks-upgrade]
+AKS 'teki yükseltmeler hakkında daha fazla bilgi için bkz. [aks 'de desteklenen Kubernetes sürümleri][aks-supported-versions] ve [aks kümesini yükseltme][aks-upgrade].
 
-## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Kured kullanarak Linux düğümü güncellemelerini ve yeniden başlatmaları işleme
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Linux düğüm güncelleştirmelerini işleme ve kured kullanarak yeniden başlatmalar
 
-**En iyi uygulama kılavuzu** - AKS otomatik olarak her Linux düğümünde güvenlik düzeltmeleri indirir ve yükler, ancak gerekirse otomatik olarak yeniden başlatmaz. Bekleyen `kured` yeniden başlatmaları izlemek için kullanın, ardından düğümügüvenli bir şekilde kordon altına alın ve düğümün yeniden başlatılmasına, güncelleştirmelerin uygulanmasına ve işletim sistemi yle ilgili olarak mümkün olduğunca güvenli olması için düğümü boşaltın. Windows Server düğümleri için (şu anda AKS'de önizlemede), bölmeleri güvenli bir şekilde kordon altına almak ve boşaltmak ve güncelleştirilmiş düğümleri dağıtmak için düzenli olarak bir AKS yükseltme işlemi gerçekleştirin.
+**En iyi Yöntem Kılavuzu** -aks her bir Linux düğümünde güvenlik düzeltmelerini otomatik olarak indirir ve yükler, ancak gerektiğinde otomatik olarak yeniden başlatılır. Bekleyen `kured` yeniden başlatmalar için izlemek üzere öğesini kullanın, ardından düğümün yeniden başlatılmasını sağlamak için düğümü güvenle kapatıp boşaltın, güncelleştirmeleri uygulayın ve işletim sistemine göre mümkün olduğunca güvenli hale getirin. Windows Server düğümleri için düzenli olarak bir AKS yükseltme işlemi gerçekleştirip, büyük/dışarı boşaltma ve güncelleştirilmiş düğümleri dağıtma işlemleri yapılır.
 
-Her akşam, AKS'deki Linux düğümleri dağıtım güncelleştirme kanalı aracılığıyla güvenlik yamaları elde eder. Düğümler bir AKS kümesinde dağıtıldığında bu davranış otomatik olarak yapılandırılır. İş yüklerinin çalıştırılmasındaki kesintiyi ve olası etkiyi en aza indirmek için, bir güvenlik düzeltme ekini veya çekirdek güncelleştirmesi gerektiriyorsa düğümler otomatik olarak yeniden başlatılmez.
+AKS içindeki her akşam Linux düğümü, kendi sahip oldukları güncelleştirme kanalıyla sunulan güvenlik düzeltme eklerini alır. Bu davranış, düğümler bir AKS kümesinde dağıtıldığında otomatik olarak yapılandırılır. Çalışma yüklerini çalıştırmaya yönelik kesintiyi ve olası etkiyi en aza indirmek için, bir güvenlik düzeltme eki veya çekirdek güncelleştirmesi gerektiriyorsa düğümler otomatik olarak yeniden başlatılır.
 
-Açık kaynak [kured (KUbernetes REboot Daemon)][kured] Weaveworks tarafından proje bekleyen düğüm yeniden başlatmaları için saatler. Bir Linux düğümü yeniden başlatma gerektiren güncelleştirmeler uyguladığında, düğüm güvenli bir şekilde kordon altına edilir ve kümedeki diğer düğümlerde bölmeleri taşımak ve zamanlamak için güvenli bir şekilde boşaltılır. Düğüm yeniden başlatıldıktan sonra kümeye geri eklenir ve Kubernetes üzerinde zamanlama bölmelerine devam eder. Bozulmayı en aza indirmek için, aynı anda yalnızca bir `kured`düğümün yeniden başlatılmasına izin verilir.
+Açık kaynaklı [kured (KUbernetes önyükleme cini)][kured] projesi, bekleyen düğüm yeniden başlatmaları için izler. Bir Linux düğümü, yeniden başlatma gerektiren güncelleştirmeler uygularsa, düğüm, kümedeki diğer düğümlerde bulunan düğümleri taşımak ve zamanlamak için güvenli bir şekilde donmış ve taşınabilir. Düğüm yeniden başlatıldıktan sonra, kümeye geri eklenir ve Kubernetes bu, üzerinde yer alan zamanlamaya devam eder. Kesintiyi en aza indirmek için, tek seferde yalnızca bir düğümün tarafından `kured`yeniden başlatılması izin verilir.
 
-![KURED kullanarak AKS düğümü yeniden başlatma işlemi](media/operator-best-practices-cluster-security/node-reboot-process.png)
+![Kured kullanarak AKS düğümü yeniden başlatma işlemi](media/operator-best-practices-cluster-security/node-reboot-process.png)
 
-Yeniden başlatmalar ne zaman daha ince `kured` gren denetimi istiyorsanız, devam eden diğer bakım olayları veya küme sorunları varsa yeniden başlatmaları önlemek için Prometheus ile tümleştirebilirsiniz. Bu tümleştirme, siz etkin olarak diğer sorunları giderirken düğümleri yeniden başlatarak ek komplikasyonları en aza indirir.
+Yeniden başlatmalar gerçekleştiğinde daha hassas bir denetim istiyorsanız, devam eden `kured` başka bakım olayları veya küme sorunları varsa, yeniden başlatmaları engellemek Için Prometheus ile tümleştirilebilir. Bu tümleştirme, diğer sorunları etkin bir şekilde giderirken düğümleri yeniden başlatarak ek karmaşıklıkları en aza indirir.
 
-Düğüm yeniden başlatmaları nasıl işlenir hakkında daha fazla bilgi için, [aks düğümlerine güvenlik ve çekirdek güncelleştirmeleri uygula'ya][aks-kured]bakın.
+Düğüm yeniden başlatmaların nasıl işleneceği hakkında daha fazla bilgi için bkz. [AKS 'deki düğümlere güvenlik ve çekirdek güncelleştirmelerini uygulama][aks-kured].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, AKS kümenizin nasıl güvenli hale alındığı üzerinde duruluyor. Bu alanlardan bazılarını uygulamak için aşağıdaki makalelere bakın:
+Bu makalede, AKS kümenizin güvenliğini sağlama konusunda odaklanılmıştır. Bu alanlardan bazılarını uygulamak için aşağıdaki makalelere bakın:
 
-* [Azure Etkin Dizini AKS ile tümleştir][aks-aad]
-* [Bir AKS kümesini Kubernetes'in en son sürümüne yükseltin][aks-upgrade]
-* [Kured ile işlem güvenlik güncelleştirmeleri ve düğüm yeniden başlatma][aks-kured]
+* [Azure Active Directory AKS ile tümleştirme][aks-aad]
+* [Bir AKS kümesini Kubernetes 'in en son sürümüne yükseltme][aks-upgrade]
+* [Kured ile güvenlik güncelleştirmelerini ve düğüm yeniden başlatmaları işleme][aks-kured]
 
 <!-- EXTERNAL LINKS -->
 [kured]: https://github.com/weaveworks/kured
