@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Gizli Sunucu ile Azure Active Directory entegrasyonu (Şirket İçi) | Microsoft Dokümanlar'
-description: Azure Active Directory ve Secret Server (Şirket İçi) arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Secret Server (On-Premises) ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Secret Server (On-Premises) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,150 +17,150 @@ ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4926fc1833cc14b2ad81a01e230a5c3c37ba6ab3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68880153"
 ---
-# <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>Öğretici: Gizli Sunucu'yı (Şirket İçi) Azure Active Directory ile tümleştirin
+# <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>Öğretici: Secret Server (On-Premises) Azure Active Directory ile tümleştirin
 
-Bu eğitimde, Secret Server'ı (Şirket Içi) Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Gizli Sunucu'yu (Şirket içi) Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Secret Server (On-Premises) Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Secret Server (On-Premises) Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Gizli Sunucu'ya (Şirket İçi) erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Secret Server'da (Şirket İçi) otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de Secret Server (On-Premises) erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Secret Server (On-Premises) için otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Secret Server (Şirket İçi) tek oturum açma (SSO) aboneliğini etkinleştirildi.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Çoklu oturum açma (SSO) özellikli abonelik Secret Server (On-Premises).
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Secret Server (Şirket İçi) **SP ve IDP'nin** başlattığı SSO'yı destekliyor
+* Secret Server (On-Premises) **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-secret-server-on-premises-from-the-gallery"></a>Galeriden Gizli Sunucu (Şirket İçi) Ekleme
+## <a name="adding-secret-server-on-premises-from-the-gallery"></a>Galeriden Secret Server (On-Premises) ekleme
 
-Gizli Sunucu'nun (Şirket İçi) Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Secret Server (Şirket İçi) eklemeniz gerekir.
+Secret Server (On-Premises) tümleştirmesini Azure AD ile yapılandırmak için, Galeriden Secret Server (On-Premises) yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Gizli Sunucu (Şirket İçi)** yazın.
-1. Sonuç panelinden **Gizli Sunucu'yu (Şirket İçi)** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Secret Server (on-premises)** yazın.
+1. Sonuçlar panelinden **Secret Server (on-premises)** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu Gizli Sunucu (Şirket İçi) ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Gizli Sunucu'daki (Şirket İçi) ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Secret Server (on-premises) ile yapılandırın ve test edin. SSO 'nun çalışması için, Secret Server (On-Premises) bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO'yu Secret Server (Şirket İçi) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Secret Server (On-Premises) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-2. **[Gizli Sunucu (Şirket İçi) SSO'yu uygulama](#configure-secret-server-on-premises-sso)** tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
-3. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Gizli Sunucu (Şirket İçi) test kullanıcısı oluşturun](#create-secret-server-on-premises-test-user)** - Kullanıcının Azure AD gösterimine bağlı Secret Server'da (Şirket İçi) B.Simon'ın bir örneğine sahip olmak için.
-6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Secret Server (on-PREMISES) SSO 'Yu yapılandırın](#configure-secret-server-on-premises-sso)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+5. Kullanıcının Azure AD gösterimine bağlı olan Secret Server (On-Premises) bir B. Simon 'ya sahip olmak için **[Secret Server (on-premises) test kullanıcısı oluşturun](#create-secret-server-on-premises-test-user)** .
+6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Gizli Sunucu (Şirket İçi)** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve Tek **oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **Secret Server (on-premises)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna, kullanıcı seçilen değeri örnek olarak girin:`https://secretserveronpremises.azure`
+    a. **Tanımlayıcı** metin kutusuna kullanıcı tarafından seçilen değeri bir örnek olarak girin:`https://secretserveronpremises.azure`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
-
-    > [!NOTE]
-    > Yukarıda gösterilen Varlık Kimliği yalnızca bir örnektir ve Azure AD'deki Gizli Sunucu örneğini tanımlayan benzersiz bir değer seçmekte özgürüz. Bu Varlık Kimliğini Gizli [Sunucu (Şirket İçi) İstemci destek ekibine](https://thycotic.force.com/support/s/) göndermeniz ve bu kimliği kendi taraflarında yapılandırmaları gerekir. Daha fazla bilgi için lütfen [bu makaleyi](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server)okuyun.
-
-1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
-
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<SecretServerURL>/login.aspx`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Yanıtla URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [Gizli Sunucu (Şirket İçi) İstemci destek ekibine](https://thycotic.force.com/support/s/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Yukarıda gösterilen varlık KIMLIĞI yalnızca bir örnektir ve Azure AD 'de gizli sunucu örneğinizi tanımlayan benzersiz bir değer seçebilirsiniz. Bu varlık KIMLIĞINI [Secret Server (on-premises) istemci desteği ekibine](https://thycotic.force.com/support/s/) göndermeniz gerekir ve bunları tarafında yapılandıracaksınız. Daha fazla ayrıntı için lütfen [Bu makaleyi](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server)okuyun.
 
-1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde Sertifika **'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SecretServerURL>/login.aspx`
+
+    > [!NOTE]
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Secret Server (on-premises) istemci destek ekibine](https://thycotic.force.com/support/s/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **SAML** ile Tek Oturum Açma'da, **SAML İmzaSertifikası** iletişim kutusunu açmak için **Edit** simgesini tıklatın.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![İmzalama seçenekleri](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
 
-1. **Oturum Açma Seçeneği'ni** **SAML yanıtını ve iddiasını imzala**olarak seçin.
+1. **Imza seçeneğini** belirtin **SAML yanıtı ve onaylama olarak imzala**.
 
     ![İmzalama seçenekleri](./media/secretserver-on-premises-tutorial/signing-option.png)
 
-1. Gizli **Sunucu 'yu (Şirket İçi) Kurulumu** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Secret Server (on-premises) ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-secret-server-on-premises-sso"></a>Gizli Sunucu (Şirket İçi) SSO'su yapılandırın
+### <a name="configure-secret-server-on-premises-sso"></a>Secret Server (On-Premises) SSO 'yu yapılandırma
 
-**Secret Server (Şirket içi)** tarafında tek oturum açma yapılandırmak için, indirilen **Sertifikayı (Base64)** ve uygun kopyalanmış URL'leri Azure portalından [Gizli Sunucu (Şirket İçi) destek ekibine](https://thycotic.force.com/support/s/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Secret Server (on-premises)** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'leri Azure Portal [Secret Server (on-premises) destek ekibine](https://thycotic.force.com/support/s/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Gizli Sunucu'ya (Şirket İçi) erişim sağlayarak B.Simon'Un Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Secret Server (On-Premises) erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Secret Server (Şirket İçi)** seçeneğini belirleyin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Secret Server (on-premises)**' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-secret-server-on-premises-test-user"></a>Gizli Sunucu (Şirket İçi) test kullanıcısı oluşturma
+### <a name="create-secret-server-on-premises-test-user"></a>Secret Server (On-Premises) test kullanıcısı oluştur
 
-Bu bölümde, Gizli Sunucu 'da (Şirket İçi) Britta Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları Gizli Sunucu (Şirket İçi) platformuna eklemek için [Secret Server (Şirket İçi) destek ekibiyle](https://thycotic.force.com/support/s/) çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, Secret Server (On-Premises) 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Secret Server (On-Premises) platformunda kullanıcıları eklemek için [Secret Server (on-premises) destek ekibi](https://thycotic.force.com/support/s/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki Gizli Sunucu (Şirket İçi) döşemesini tıklattığınızda, SSO'yu kurduğunuz Gizli Sunucu'da (Şirket İçi) otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Secret Server (On-Premises) kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Secret Server (On-Premises) otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

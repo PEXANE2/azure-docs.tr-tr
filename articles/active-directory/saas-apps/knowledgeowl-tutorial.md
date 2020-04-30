@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: KnowledgeOwl ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve KnowledgeOwl arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: KnowledgeOwl ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve KnowledgeOwl arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,81 +17,81 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc7d481b757a76ba65e0c78a93bde1bc58ace7cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72791628"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Öğretici: KnowledgeOwl ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Öğretici: KnowledgeOwl ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, KnowledgeOwl'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. KnowledgeOwl'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, KnowledgeOwl 'yi Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. KnowledgeOwl 'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* KnowledgeOwl erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla KnowledgeOwl'da otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de KnowledgeOwl erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla KnowledgeOwl için otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* KnowledgeOwl tek oturum açma (SSO) aboneliği ni sağladı.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* KnowledgeOwl çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* KnowledgeOwl **SP ve IDP'nin** başlattığı SSO'ya destek veriyor
-* KnowledgeOwl **Just In Time** kullanıcı sağlama destekler
+* KnowledgeOwl **, SP ve ıDP** tarafından başlatılan SSO 'yu destekliyor
+* KnowledgeOwl **, tam zamanında** Kullanıcı sağlamayı destekliyor
 
-## <a name="adding-knowledgeowl-from-the-gallery"></a>Galeriden KnowledgeOwl ekleme
+## <a name="adding-knowledgeowl-from-the-gallery"></a>Galeriden KnowledgeOwl ekleniyor
 
-KnowledgeOwl'un Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Yönetilen SaaS uygulamaları listenize KnowledgeOwl'u eklemeniz gerekir.
+KnowledgeOwl 'nin tümleştirmesini Azure AD 'ye yapılandırmak için, Galeriden KnowledgeOwl 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **KnowledgeOwl** yazın.
-1. Sonuç panelinden **KnowledgeOwl'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **knowledgeowl** yazın.
+1. Sonuçlar panelinden **Knowledgeowl** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-knowledgeowl"></a>KnowledgeOwl için Azure AD oturum açma işlemlerini yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-knowledgeowl"></a>KnowledgeOwl için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak KnowledgeOwl ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure AD kullanıcısı ile KnowledgeOwl'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak KnowledgeOwl Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve KnowledgeOwl içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu KnowledgeOwl ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu KnowledgeOwl ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[KnowledgeOwl SSO'yu yapılandırır](#configure-knowledgeowl-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    * **[KnowledgeOwl test kullanıcısını oluşturun](#create-knowledgeowl-test-user)** - Kullanıcının Azure AD gösterimine bağlı KnowledgeOwl'da B.Simon'ın bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[KnowledgeOwl SSO 'Yu yapılandırın](#configure-knowledgeowl-sso)** .
+    * Knowledgeowl **[test kullanıcısı oluşturma](#create-knowledgeowl-test-user)** -kullanıcının Azure AD gösterimine bağlı olan knowledgeowl 'de B. Simon 'ın bir karşılığı olacak.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **KnowledgeOwl** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **knowledgeowl** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
     | | |
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
     | `https://app.knowledgeowl.com/sp/id/<unique ID>`|
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
     
     | | |
     |-|-|
@@ -102,9 +102,9 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://privatedomain.com/docs/saml-login`|
     | `https://privatedomain.com/home/saml-login`|
 
-1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
     | | |
     |-|-|
@@ -116,115 +116,115 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://privatedomain.com/home/saml-login`|
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değeri, öğreticide daha sonra açıklanan gerçek Tanımlayıcı, Yanıt URL'si ve Oturum Açma URL'sinden güncelleştirmeniz gerekir.
+    > Bu değerler gerçek değildir. Bu değeri, öğreticide daha sonra açıklanan gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'sinden güncelleştirmeniz gerekir.
 
-1. KnowledgeOwl uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. KnowledgeOwl uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakilere ek olarak, KnowledgeOwl uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Ayrıca, KnowledgeOwl uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak Özniteliği | Ad Alanı |
+    | Adı | Kaynak özniteliği | Ad Alanı |
     | ------------ | -------------------- | -----|
-    | ssoid | kullanıcı.posta | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | ssoıd | Kullanıcı. Mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
-1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika (Ham)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
-1. **KnowledgeOwl'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Set up KnowledgeOwl** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın KnowledgeOwl'a erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, KnowledgeOwl erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **KnowledgeOwl'u**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Knowledgeowl**öğesini seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-knowledgeowl-sso"></a>Yapılandırma BilgiOwl SSO
+## <a name="configure-knowledgeowl-sso"></a>KnowledgeOwl SSO 'yu yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, KnowledgeOwl şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, KnowledgeOwl şirket sitenizde yönetici olarak oturum açın.
 
-1. **Ayarlar'a** tıklayın ve ardından **Güvenlik'i**seçin.
+1. **Ayarlar** ' a ve ardından **güvenlik**' i seçin.
 
-    ![KnowledgeOwl Yapılandırma](./media/knowledgeowl-tutorial/configure1.png)
+    ![KnowledgeOwl yapılandırması](./media/knowledgeowl-tutorial/configure1.png)
 
-1. **SAML SSO Tümleştirmesine** gidin ve aşağıdaki adımları gerçekleştirin:
+1. **SAML SSO tümleştirmesi** ' ne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![KnowledgeOwl Yapılandırma](./media/knowledgeowl-tutorial/configure2.png)
+    ![KnowledgeOwl yapılandırması](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. **SAML SSO'ya Etkin'i**seçin.
+    a. **SAML SSO 'Yu etkinleştir**' i seçin.
 
-    b. **SP Entity ID** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırması** bölümündeki **Tanımlayıcıya (Entity ID)** yapıştırın.
+    b. **SP VARLıK kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** BÖLÜMÜNDEKI **tanımlayıcıya (varlık kimliği)** yapıştırın.
 
-    c. **SP Giriş URL** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırması** bölümünde **Oturum Aç URL ve Yanıtla URL** metin kutularına yapıştırın.
+    c. **SP oturum açma URL 'si** değerini kopyalayın ve Azure Portal ÜZERINDEKI **temel SAML yapılandırması** bölümünde bulunan **oturum açma URL 'si ve yanıt URL** 'si metin kutularına yapıştırın.
 
-    d. **IdP entityID** textbox'ına, Azure portalından kopyalamış olduğunuz **Azure AD Tanımlayıcı** değerini yapıştırın.
+    d. **IDP EntityId** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 
-    e. **IdP Giriş URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL** değerini yapıştırın.
+    e. **IDP oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    f. **IdP Giriş URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL** değerini yapıştırın
+    f. **IDP oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın
 
-    g. İndirilen sertifika formunu **Yükleme IdP Sertifikası'na**tıklayarak Azure portalına yükleyin.
+    g. **Yükleme IDP sertifikasına**tıklayarak Azure Portal indirilen sertifikayı karşıya yükleyin.
 
-    h. Öznitelikleri eşlemek ve aşağıdaki adımları gerçekleştirmek için **Eş SAML Öznitelikleri'ni** tıklatın:
+    h. Öznitelikleri eşlemek için **SAML özniteliklerini eşle** ' ye tıklayın ve aşağıdaki adımları uygulayın:
 
-    ![KnowledgeOwl Yapılandırma](./media/knowledgeowl-tutorial/configure3.png)
+    ![KnowledgeOwl yapılandırması](./media/knowledgeowl-tutorial/configure3.png)
 
-    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` **SSO Kimlik** metin kutusuna girin
-    * Kullanıcı `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` **Adı/E-posta** metin kutusuna girin.
-    * Ad `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` **metin** kutusuna girin.
-    * Soyadı `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` metin **Last Name** kutusuna girin.
-    * **Kaydet'i** tıklatın
+    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` **SSO kimliği** metin kutusuna girin
+    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` **Kullanıcı adı/e-posta** metin kutusuna girin.
+    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` **İlk ad** metin kutusuna girin.
+    * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` **Son ad** metin kutusuna girin.
+    * **Kaydet** 'e tıklayın
 
     i. Sayfanın alt kısmındaki **Kaydet**’e tıklayın.
 
-    ![KnowledgeOwl Yapılandırma](./media/knowledgeowl-tutorial/configure4.png)
+    ![KnowledgeOwl yapılandırması](./media/knowledgeowl-tutorial/configure4.png)
 
-### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl test kullanıcısı oluşturma
+### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl test kullanıcısı oluştur
 
-Bu bölümde, B.Simon adlı bir kullanıcı KnowledgeOwl oluşturulur. KnowledgeOwl, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Bir kullanıcı KnowledgeOwl'da zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
+Bu bölümde, KnowledgeOwl içinde B. Simon adlı bir Kullanıcı oluşturulur. KnowledgeOwl, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı KnowledgeOwl 'de zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 > [!Note]
-> El ile bir kullanıcı oluşturmanız gerekiyorsa, [KnowledgeOwl destek ekibine](mailto:support@knowledgeowl.com)başvurun.
+> El ile bir kullanıcı oluşturmanız gerekiyorsa, [Knowledgeowl destek ekibine](mailto:support@knowledgeowl.com)başvurun.
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki KnowledgeOwl karosu tıklattığınızda, SSO'yu kurduğunuz KnowledgeOwl'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde KnowledgeOwl kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız KnowledgeOwl öğesinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile KnowledgeOwl'u deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile KnowledgeOwl 'yi deneyin](https://aad.portal.azure.com/)

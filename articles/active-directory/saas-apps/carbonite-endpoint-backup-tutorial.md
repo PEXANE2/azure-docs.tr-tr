@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Carbonite Endpoint Backup ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Carbonite Endpoint Backup arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Carbonite uç noktası yedeklemeyle Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve Carbonite uç noktası yedeklemesi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,72 +17,72 @@ ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68879699"
 ---
-# <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Öğretici: Karbonit Uç Nokta Yedekleme'yi Azure Etkin Dizini ile tümleştirin
+# <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Öğretici: Carbonite uç nokta yedeklemesini Azure Active Directory ile tümleştirme
 
-Bu eğitimde, Carbonite Endpoint Backup ile Azure Etkin Dizin (Azure AD) ile nasıl entegre edileceksiniz. Carbonite Endpoint Backup'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Carbonite uç nokta yedeklemesini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Carbonite uç noktası yedeklemesini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Carbonite Endpoint Backup erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Carbonite Endpoint Backup'da otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de Carbonite uç noktası yedeklemesine erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Carbonite uç noktası yedeklemesine otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Carbonite Endpoint Backup tek oturum açma (SSO) aboneliği ni etkinleştirdi.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Carbonite uç noktası yedeklemesi çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Carbonite Endpoint Backup **SP ve IDP** SSO başlatılan destekler
+* Carbonite uç noktası yedeklemesi **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-carbonite-endpoint-backup-from-the-gallery"></a>Galeriden Karbonit Uç Noktası Yedeklemesi Ekleme
+## <a name="adding-carbonite-endpoint-backup-from-the-gallery"></a>Galeriden Carbonite uç noktası yedeklemesi ekleme
 
-Carbonite Endpoint Backup'ın Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Carbonite Endpoint Backup eklemeniz gerekir.
+Carbonite uç nokta yedeğinin tümleştirmesini Azure AD ile yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize Carbonite uç noktası yedeklemesi eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Karbonit Uç Noktası Yedeklemesi** yazın.
-1. Sonuç panelinden **Carbonite Endpoint Backup'ı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Carbonite uç noktası yedeklemesi** yazın.
+1. Sonuçlar panelinden **Carbonite uç noktası yedeklemesi** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Carbonite Endpoint Backup ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Carbonite Endpoint Yedekleme'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Carbonite uç noktası yedeklemesi Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Carbonite uç noktası yedeklemesiyle ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Carbonite Endpoint Backup ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Carbonite uç noktası yedeklemesi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-2. **[Karbonit Endpoint Backup SSO'yu yapılandırır](#configure-carbonite-endpoint-backup-sso)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
-3. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Carbonite Endpoint Backup test kullanıcısını oluşturun](#create-carbonite-endpoint-backup-test-user)** - kullanıcının Azure AD gösterimine bağlı Carbonite Endpoint Backup'da B.Simon'ın bir muadili olması için.
-6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+2. **[Carbonite uç nokta yedekleme SSO 'Su yapılandırma](#configure-carbonite-endpoint-backup-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+5. **[Carbonite uç nokta yedekleme testi kullanıcısına](#create-carbonite-endpoint-backup-test-user)** , kullanıcının Azure AD gösterimine bağlı olan Carbonite uç noktası yedeğine ait B. Simon 'un bir karşılığı olacak şekilde.
+6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Carbonite Endpoint Backup** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve Tek **oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **Carbonite uç nokta yedekleme** uygulaması tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna aşağıdaki URL'lerden birini yazın:
+    a. **Tanımlayıcı** metin kutusuna aşağıdaki URL 'lerden birini yazın:
 
     | | |
     |-|-|
@@ -93,7 +93,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://kamino.mysecuredatavault.com`|
     | | |
 
-    b. **Yanıtla URL** metin kutusuna aşağıdaki URL'lerden birini yazın:
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki URL 'lerden birini yazın:
 
     | | |
     |-|-|
@@ -103,9 +103,9 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx`|
     | | |
 
-1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki URL'lerden birini yazın:
+    **Oturum açma URL 'si** metin kutusuna aşağıdaki URL 'lerden birini yazın:
 
     | | |
     |-|-|
@@ -115,106 +115,106 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://red-emea.mysecuredatavault.com/`|
     | | |
 
-1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde Sertifika **'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Karbonit Uç Nokta Yedeklemesini Ayarla** bölümünde, gereksiniminize göre uygun URL'yi(ler) kopyalayın.
+1. **Carpriite uç noktası yedeklemesini ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-carbonite-endpoint-backup-sso"></a>Karbonit Uç Nokta Yedekleme SSO'su yapılandırın
+### <a name="configure-carbonite-endpoint-backup-sso"></a>Carbonite uç nokta yedekleme SSO 'SU yapılandırma
 
-1. Carbonite Endpoint Backup içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. Carbonite uç noktası yedeklemesiyle yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
-2. Tarayıcıya uzantı ekledikten sonra, **Kurulum Carbonite Endpoint Backup'a** tıklayın ve sizi Carbonite Endpoint Backup uygulamasına yönlendirecektir. Buradan, Carbonite Endpoint Backup'da oturum açabilmek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-7 adımlarını otomatikleştirecektir.
+2. Tarayıcıya Uzantı eklendikten sonra, **Kurulum Carbonite uç noktası yedeklemesi** ' ne tıklayın, sizi Carbonite uç noktası yedekleme uygulamasına yönlendirir. Buradan, Carbonite uç noktası yedeklemesi 'nde oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-3. Carbonite Endpoint Backup'ı el ile kurmak istiyorsanız, yeni bir web tarayıcısı penceresi açın ve Administrator olarak Carbonite Endpoint Backup şirket sitenizde oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Carbonite uç noktası yedeklemesini el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve Carbonite uç noktası yedeklemesi şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Sol bölmeden **Şirket'e** tıklayın.
+4. Sol bölmeden **Şirket** ' e tıklayın.
 
-    ![Karbonit Uç Nokta Yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-5. Tek **oturum açma'ya**tıklayın.
+5. **Çoklu oturum**açma ' ya tıklayın.
 
-    ![Karbonit Uç Nokta Yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
-6. **Etkinleştir'e** tıklayın ve ardından yapılandırmak için **Ayarları Ede'yi** tıklatın.
+6. **Etkinleştir** ' e tıklayın ve ardından yapılandırmak Için **Ayarları Düzenle** ' ye tıklayın.
 
-    ![Karbonit Uç Nokta Yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
-7. Tek **oturum açma** ayarları sayfasında aşağıdaki adımları gerçekleştirin:
+7. **Çoklu oturum açma** ayarları sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Karbonit Uç Nokta Yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. Kimlik **sağlayıcı ad** metin kutusuna, Azure portalından kopyalamış olduğunuz **Azure AD Tanımlayıcı** değerini yapıştırın.
+    1. **Kimlik sağlayıcısı adı** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 
-    1. Kimlik **sağlayıcısı URL** textbox'ına, Azure portalından kopyalamış olduğunuz **Giriş URL** değerini yapıştırın.
+    1. **Kimlik sağlayıcısı URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    1. İndirilen **Sertifika(Base64)** dosyasını Azure portalından yüklemek için **Dosyayı Seç'e** tıklayın.
+    1. Azure portal indirilen **sertifika (base64)** dosyasını karşıya yüklemek Için **Dosya Seç** ' e tıklayın.
 
-    1. **Kaydet**'e tıklayın.
+    1. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Carbonite Endpoint Backup'a erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Carbonite uç noktası yedeklemesine erişim vererek, B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Karbonit Uç Nokta Yedekleme'yi**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Carbonite uç noktası yedeklemesi**' ni seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-carbonite-endpoint-backup-test-user"></a>Karbonit Uç Nokta Yedekleme test kullanıcıoluşturma
+### <a name="create-carbonite-endpoint-backup-test-user"></a>Carbonite uç noktası yedekleme testi Kullanıcı Oluştur
 
-1. Farklı bir web tarayıcısı penceresinde, administrator olarak Carbonite Endpoint Backup şirket sitenizde oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, Carbonite uç nokta yedekleme şirket sitenizde yönetici olarak oturum açın.
 
-1. Sol bölmeden **Kullanıcılar'a** tıklayın ve ardından **Kullanıcı Ekle'yi**tıklatın.
+1. Sol bölmeden **Kullanıcılar** ' a ve ardından **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Karbonit Uç Nokta Yedekleme Kullanıcı ekle](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![Carbonite uç noktası yedeklemesine Kullanıcı ekleme](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
-1. Kullanıcı **Ekle** sayfasında aşağıdaki adımları gerçekleştirin:
+1. **Kullanıcı Ekle** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Karbonit Uç Nokta Yedekleme Kullanıcı ekle](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![Carbonite uç noktası yedeklemesine Kullanıcı ekleme](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
-    1. **E-posta,** **Ad**, Kullanıcının **Soyadı** girin ve Kuruluş gereksinimlerine göre kullanıcıya gerekli izinleri sağlayın.
+    1. **E-posta**, **ad**, kullanıcının **Soyadı** ve Kullanıcı için gerekli izinleri kurumsal gereksinimlere göre girin.
 
-    1. **Kullanıcı Ekle'yi**tıklatın.
+    1. **Kullanıcı Ekle**' ye tıklayın.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki Carbonite Endpoint Yedekleme döşemesini tıklattığınızda, SSO'yu kurduğunuz Carbonite Endpoint Backup'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Carbonite uç nokta yedekleme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Carbonite uç noktası yedeğine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

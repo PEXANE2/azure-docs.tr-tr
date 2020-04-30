@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: HubSpot ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve HubSpot arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: HubSpot ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ile HubSpot arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,251 +17,251 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68944443"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Öğretici: HubSpot ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Öğretici: HubSpot ile tümleştirme Azure Active Directory
 
-Bu eğitimde, HubSpot'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Bu öğreticide, Hubu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
 
-HubSpot'u Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Hubleke 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* HubSpot'a kimlerin erişebileceğini denetlemek için Azure AD'yi kullanabilirsiniz.
-* Kullanıcılar, Azure REKLAM hesaplarıyla (tek oturum açma) HubSpot'ta otomatik olarak oturum açabilir.
-* Hesaplarınızı tek bir merkezi konumda, Yani Azure portalında yönetebilirsiniz.
+* Azure AD 'yi, hub 'a kimlerin erişebileceğini denetlemek için kullanabilirsiniz.
+* Kullanıcılar, Azure AD hesapları (çoklu oturum açma) ile HubG 'de otomatik olarak oturum açabilirler.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz Azure portal.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için [Azure Active Directory'deki uygulamalarda tek oturum açma'ya](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini HubSpot ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini HubSpot ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure AD aboneliğiniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/) oluşturun.
-* Tek oturum açma özelliği etkin hubspot aboneliği.
+* Bir Azure AD aboneliği. Azure AD aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Çoklu oturum açma özelliği etkinleştirilmiş bir HubSpot aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Bir test ortamında Azure AD tek oturum açma işlemlerini yapılandırıp sınayın ve HubSpot'u Azure AD ile tümleştirirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edin ve Hubu Azure AD ile tümleştirin.
 
 HubSpot aşağıdaki özellikleri destekler:
 
-* **SP tarafından başlatılan tek oturum açma**
-* **IDP tarafından başlatılan tek oturum açma**
+* **SP tarafından başlatılan çoklu oturum açma**
+* **IDP-başlatılan çoklu oturum açma**
 
-## <a name="add-hubspot-in-the-azure-portal"></a>Azure portalına HubSpot ekleme
+## <a name="add-hubspot-in-the-azure-portal"></a>Azure portal HubSpot ekleme
 
-HubSpot'u Azure AD ile tümleştirmek için, yönetilen SaaS uygulamaları listenize HubSpot eklemeniz gerekir.
+Hubleke 'yi Azure AD ile bütünleştirmek için, yönetilen SaaS uygulamaları listenize HubSpot eklemeniz gerekir.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Sol menüde **Azure Etkin Dizin'i**seçin.
+1. Sol menüden **Azure Active Directory**' yi seçin.
 
-    ![Azure Etkin Dizin seçeneği](common/select-azuread.png)
+    ![Azure Active Directory seçeneği](common/select-azuread.png)
 
-1. **Kurumsal uygulamaları** > seçin**Tüm uygulamalar**.
+1. **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
-1. Uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Bir uygulama eklemek için **Yeni uygulama**' yı seçin.
 
     ![Yeni uygulama seçeneği](common/add-new-app.png)
 
-1. Arama kutusuna **HubSpot'u**girin. Arama sonuçlarında **HubSpot'u**seçin ve sonra **Ekle'yi**seçin.
+1. Arama kutusuna **HubSpot**girin. Arama sonuçlarında, **HubSpot**' yı seçin ve ardından **Ekle**' yi seçin.
 
-    ![Sonuçlar listesinde HubSpot](common/search-new-app.png)
+    ![Sonuç listesinde HubSpot](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre HubSpot ile yapılandırıp test esiniz. Tek oturum açmanın çalışması için, HubSpot'taki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bağlantılı bir ilişki kurmanız gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre HubSpot ile yapılandırıp test edersiniz. Çoklu oturum açma için, hub 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
 
-HubSpot ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açmayı hub spot ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamalısınız:
 
 | Görev | Açıklama |
 | --- | --- |
-| **[Azure AD'yi tek oturum açma yapılandırma](#configure-azure-ad-single-sign-on)** | Kullanıcılarınızın bu özelliği kullanmasını sağlar. |
-| **[HubSpot'u tek oturum açma yı yapılandırma](#configure-hubspot-single-sign-on)** | Uygulamadaki tek oturum açma ayarlarını yapılandırır. |
-| **[Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)** | Britta Simon adlı bir kullanıcı için Azure AD tek oturum açma testlerini. |
-| **[Azure AD test kullanıcısını atama](#assign-the-azure-ad-test-user)** | Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlar. |
-| **[HubSpot test kullanıcısı oluşturma](#create-a-hubspot-test-user)** | HubSpot'ta Britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir karşılığını oluşturur. |
+| **[Azure AD çoklu oturum açmayı yapılandırma](#configure-azure-ad-single-sign-on)** | Kullanıcılarınızın bu özelliği kullanmasına olanak sağlar. |
+| **[HubSpot çoklu oturum açmayı yapılandırma](#configure-hubspot-single-sign-on)** | Uygulamadaki çoklu oturum açma ayarlarını yapılandırır. |
+| **[Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)** | Britta Simon adlı Kullanıcı için Azure AD çoklu oturum açmayı sınar. |
+| **[Azure AD test kullanıcısını atama](#assign-the-azure-ad-test-user)** | Azure AD çoklu oturum açma kullanımı için Britta Simon 'U sağlar. |
+| **[HubSpot test kullanıcısı oluşturma](#create-a-hubspot-test-user)** | Kullanıcının Azure AD gösterimine bağlı olan hubo 'da Britta Simon 'ın bir karşılığı oluşturur. |
 | **[Çoklu oturum açma testi](#test-single-sign-on)** | Yapılandırmanın çalıştığını doğrular. |
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında HubSpot ile Azure AD oturum açma işlemlerini yapılandırabilirsiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı Azure portal HubSpot ile yapılandırırsınız.
 
-1. **HubSpot** uygulama tümleştirme bölmesinde [bulunan Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **HubSpot** uygulama tümleştirme bölmesinde **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma seçeneğini yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma seçeneğini yapılandırma](common/select-sso.png)
 
-1. Tek **oturum açma yöntemi** bölmesinde, tek oturum açmayı etkinleştirmek için SAML veya **SAML/WS-Fed** modunu seçin. **SAML**
+1. Çoklu oturum **açma yöntemi seçin** bölmesinde, çoklu oturum açmayı etkinleştirmek için **SAML** veya **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-1. **SAML bölmeli Tek Oturum Açma'da** **Temel SAML Yapılandırma** bölmesini açmak için **Düzenleme** (kalem simgesi) seçeneğini belirleyin.
+1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** bölmesinde, *IDP tarafından başlatılan modu*yapılandırmak için aşağıdaki adımları tamamlayın:
+1. **Temel SAML yapılandırması** bölmesinde, *IDP tarafından başlatılan modu*yapılandırmak için aşağıdaki adımları izleyin:
 
-    1. **Tanımlayıcı** kutusuna, aşağıdaki desene sahip bir URL girin:\/https:\</api.hubspot.com/login-api/v1/saml/login?portalId= MÜŞTERİ KİmLİğİ\>.
+    1. **Tanımlayıcı** kutusuna şu düzene sahıp bir URL girin: https:\//api.HubSpot.com/login-api/v1/SAML/Login?portalId =\<Customer ID.\>
 
-    1. **Yanıtla URL** kutusuna, aşağıdaki desene sahip bir\/URL\<girin:\>https: /api.hubspot.com/login-api/v1/saml/acs?portalId= MÜŞTERİ KİmLİğİ .
+    1. **Yanıt URL 'si** kutusuna şu düzene sahıp bir URL girin: https:\//api.HubSpot.com/login-api/v1/SAML/ACS?portalId =\<Customer ID.\>
 
-    ![HubSpot etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![HubSpot etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
     > [!NOTE]
-    > URL'leri biçimlendirmek için Azure portalındaki Temel **SAML Yapılandırma** bölmesinde gösterilen desenlere de başvurabilirsiniz.
+    > URL 'Leri biçimlendirmek için, Azure portal **temel SAML yapılandırması** bölmesinde gösterilen desenlere de başvurabilirsiniz.
 
 1. Uygulamayı *SP tarafından başlatılan* modda yapılandırmak için:
 
-    1. **Ek URL'ler Ayarla'yı**seçin.
+    1. **Ek URL 'Ler ayarla**' yı seçin.
 
-    1. **URL'de Oturum Aç** kutusuna **https girin:\//app.hubspot.com/login**.
+    1. **Oturum açma URL 'si** kutusuna **https:\//App.HubSpot.com/login**girin.
 
-    ![Ayarek URL'ler seçeneği](common/metadata-upload-additional-signon.png)
+    ![Ek URL ayarla seçeneği](common/metadata-upload-additional-signon.png)
 
-1. **SAML bölmeli Tek Oturum** Açma'da, **SAML İmza Sertifikası** bölümünde Sertifikanın yanında **İndir'i (Base64)** seçin. **Download** Gereksinimlerinize göre bir indirme seçeneği seçin. Sertifikayı bilgisayarınıza kaydedin.
+1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** yanındaki **İndir** ' i seçin. Gereksinimlerinize göre bir indirme seçeneği belirleyin. Sertifikayı bilgisayarınıza kaydedin.
 
-    ![Sertifika (Base64) indirme seçeneği](common/certificatebase64.png)
+    ![Sertifika (base64) indirme seçeneği](common/certificatebase64.png)
 
-1. **HubSpot'u Ayarla** bölümünde, gereksinimlerinize göre aşağıdaki URL'leri kopyalayın:
+1. **Hub kümesi ayarla** bölümünde, gereksinimlerinize göre aşağıdaki URL 'leri kopyalayın:
 
     * Oturum Açma URL’si
-    * Azure AD Tanımlayıcısı
-    * Giriş URL'si
+    * Azure AD tanımlayıcısı
+    * Oturum kapatma URL 'SI
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-hubspot-single-sign-on"></a>HubSpot'u tek oturum açma yı yapılandırma
+### <a name="configure-hubspot-single-sign-on"></a>HubSpot çoklu oturum açmayı yapılandırma
 
 1. Tarayıcınızda yeni bir sekme açın ve HubSpot yönetici hesabınızda oturum açın.
 
 1. Sayfanın sağ üst köşesindeki **Ayarlar** simgesini seçin.
 
-    ![HubSpot'taki Ayarlar simgesi](./media/hubspot-tutorial/config1.png)
+    ![Hubworkıdaki ayarlar simgesi](./media/hubspot-tutorial/config1.png)
 
-1. **Hesap Varsayılanlarını**seçin.
+1. **Hesap Varsayılanları**' nı seçin.
 
-    ![HubSpot'ta Hesap Varsayılanları seçeneği](./media/hubspot-tutorial/config2.png)
+    ![HubSpot 'daki hesap Varsayılanları seçeneği](./media/hubspot-tutorial/config2.png)
 
-1. **Güvenlik** bölümüne aşağı kaydırın ve ardından **Ayarla'yı**seçin.
+1. **Güvenlik** bölümüne ilerleyin ve sonra **Ayarla**' yı seçin.
 
-    ![HubSpot'ta Ayarlama seçeneği](./media/hubspot-tutorial/config3.png)
+    ![HubSpot 'da ayarla seçeneği](./media/hubspot-tutorial/config3.png)
 
-1. Tek **oturum açma** bölümünde aşağıdaki adımları tamamlayın:
+1. **Çoklu oturum açma ayarla** bölümünde aşağıdaki adımları uygulayın:
 
-    1. Hedef **Kitle URl (Servis Sağlayıcı Varlık Kimliği)** kutusunda, değeri kopyalamak için **Kopyala'yı** seçin. Azure portalında, **Temel SAML Yapılandırma** bölmesinde, değeri **Tanımlayıcı** kutusuna yapıştırın.
+    1. **Hedef kitle URl 'si (hizmet sağlayıcısı VARLıK kimliği)** kutusunda, değeri kopyalamak için **Kopyala** ' yı seçin. Azure portal, **temel SAML yapılandırması** bölmesinde, değeri **tanımlayıcı** kutusuna yapıştırın.
 
-    1. **URl, ACS, Alıcı veya Yeniden Yönlendirme** kutusunda Oturum aç'ta, değeri kopyalamak için **Kopyala'yı** seçin. Azure portalında, **Temel SAML Yapılandırma** bölmesinde, yanıtı **URL** kutusuna değeri yapıştırın.
+    1. **Oturum açma URl 'si, ACS, alıcı veya yeniden yönlendirme** kutusunda, değeri kopyalamak için **Kopyala** ' yı seçin. Azure portal, **temel SAML yapılandırması** bölmesinde, **yanıt URL 'si** kutusuna değeri yapıştırın.
 
-    1. HubSpot'ta, **Kimlik Sağlayıcı Tanımlayıcı veya Veren URL** kutusuna, Azure portalında kopyaladığınız Azure AD **Tanımlayıcısı** değerini yapıştırın.
+    1. Hubworkıda, **kimlik sağlayıcısı tanımlayıcısı veya veren URL** kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısı** için değeri yapıştırın.
 
-    1. HubSpot'ta, **Kimlik Sağlayıcısı Tek Oturum Açma URL** kutusuna, Azure portalında kopyaladığınız Giriş **URL'sinin** değerini yapıştırın.
+    1. Hubworkıda, **kimlik sağlayıcısı çoklu oturum açma URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** için değeri yapıştırın.
 
-    1. Windows Notepad'de, indirdiğiniz Sertifika(Base64) dosyasını açın. Dosyanın içeriğini seçin ve kopyalayın. Ardından HubSpot'ta **X.509 Sertifika** kutusuna yapıştırın.
+    1. Windows Not defteri 'nde indirdiğiniz sertifika (base64) dosyasını açın. Dosyanın içeriğini seçin ve kopyalayın. Ardından, Hubin ' de **X. 509.440 sertifika** kutusuna yapıştırın.
 
     1. **Doğrula** seçeneğini belirleyin.
 
-        ![HubSpot'ta tek oturum açma bölümü](./media/hubspot-tutorial/config4.png)
+        ![Hubın içinde çoklu oturum açma ayarlama bölümü](./media/hubspot-tutorial/config4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalında Azure **Etkin Dizin** > **Kullanıcıları** > Tüm**kullanıcıları**seçin.
+1. Azure Portal,**Kullanıcılar** >  **Azure Active Directory** > **tüm kullanıcılar**' ı seçin.
 
-    ![Kullanıcılar ve Tüm Kullanıcı Seçenekleri](common/users.png)
+    ![Kullanıcılar ve tüm kullanıcılar seçenekleri](common/users.png)
 
-1. **Yeni kullanıcıyı**seçin.
+1. **Yeni Kullanıcı**' yı seçin.
 
-    ![Yeni kullanıcı seçeneği](common/new-user.png)
+    ![Yeni Kullanıcı seçeneği](common/new-user.png)
 
-1. **Kullanıcı** bölmesinde aşağıdaki adımları tamamlayın:
+1. **Kullanıcı** bölmesinde, aşağıdaki adımları izleyin:
 
-    1. **Ad** **kutusuna BrittaSimon**girin.
+    1. **Ad** kutusuna **Brittasıon**yazın.
   
-    1. Kullanıcı **adı** kutusuna, **şirketinizin\@\<etki alanı>\< brittasimon girin. uzantısı\>**. Örneğin, **brittasimon\@contoso.com.**
+    1. **Kullanıcı adı** kutusuna, **Şirket içi etki alanı> brittasıon\@\<yazın.\< uzantı\>**. Örneğin, **brittasıon\@contoso.com**.
 
     1. **Parolayı göster** onay kutusunu seçin. **Parola** kutusunda görüntülenen değeri yazın.
 
-    1. **Oluştur'u**seçin.
+    1. **Oluştur**’u seçin.
 
     ![Kullanıcı bölmesi](common/user-properties.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'a HubSpot'a erişim izni vererek Azure tek oturum açma işlemini kullanabiliyor.
+Bu bölümde, Azure çoklu oturum açma 'yı kullanabilmesi için, Gsıtta, Gleke 'e erişim izni verirsiniz.
 
-1. Azure portalında Kurumsal **uygulamaları** > seçin**Tüm uygulamalar** > **HubSpot.**
+1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar** > **HubSpot**' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
-1. Uygulamalar listesinde **HubSpot'u**seçin.
+1. Uygulamalar listesinde, **HubSpot**' ı seçin.
 
     ![Uygulamalar listesinde HubSpot](common/all-applications.png)
 
-1. **Menüde, Kullanıcıları ve grupları**seçin.
+1. Menüsünde **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Kullanıcılar ve gruplar seçeneği](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin. Ardından, **Atama Ekle** bölmesinde, Kullanıcılar **ve gruplar**seçin.
+1. **Kullanıcı Ekle**' yi seçin. Sonra **atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Atama ekle bölmesi](common/add-assign-user.png)
+    ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** bölmesinde, kullanıcı listesinde **Britta Simon'ı** seçin. **Seç**’i seçin.
+1. **Kullanıcılar ve gruplar** bölmesinde, Kullanıcı listesinde **Britta Simon** ' u seçin. **Seç**’i seçin.
 
-1. SAML iddiasında bir rol değeri bekliyorsanız, **Select rol** bölmesinde, listeden kullanıcı için ilgili rolü seçin. **Seç**’i seçin.
+1. SAML assertion 'da bir rol değeri bekliyorsanız, **Rol Seç** bölmesinde, kullanıcının listeden ilgili rolünü seçin. **Seç**’i seçin.
 
-1. Atama **Ekle** bölmesinde **Atama'yı**seçin.
+1. **Atama Ekle** bölmesinde **ata**' yı seçin.
 
 ### <a name="create-a-hubspot-test-user"></a>HubSpot test kullanıcısı oluşturma
 
-Azure AD kullanıcısının HubSpot'ta oturum açabilmesi için, kullanıcının HubSpot'ta sağlanması gerekir. HubSpot'ta, sağlama el ile bir görevdir.
+Azure AD 'nin bir kullanıcının HubG 'de oturum açmasını sağlamak için, kullanıcının hubın içinde sağlanması gerekir. HubSpot 'da, sağlama el ile gerçekleştirilen bir görevdir.
 
-HubSpot'ta bir kullanıcı hesabı sağlamak için:
+Hubın içinde bir kullanıcı hesabı sağlamak için:
 
 1. HubSpot şirket sitenizde yönetici olarak oturum açın.
 
 1. Sayfanın sağ üst köşesindeki **Ayarlar** simgesini seçin.
 
-    ![HubSpot'taki Ayarlar simgesi](./media/hubspot-tutorial/config1.png)
+    ![Hubworkıdaki ayarlar simgesi](./media/hubspot-tutorial/config1.png)
 
-1. **Takım& Kullanıcıları**Seçin.
+1. **Takımlar & kullanıcılar**' ı seçin.
 
-    ![Kullanıcılar & Takımlar seçeneği HubSpot'ta](./media/hubspot-tutorial/user1.png)
+    ![Hubın içindeki Kullanıcı & takımları seçeneği](./media/hubspot-tutorial/user1.png)
 
-1. **Kullanıcı Oluştur'u**seçin.
+1. **Kullanıcı oluştur**' u seçin.
 
-    ![HubSpot'ta Kullanıcı Oluştur seçeneği](./media/hubspot-tutorial/user2.png)
+    ![HubSpot 'da kullanıcı oluştur seçeneği](./media/hubspot-tutorial/user2.png)
 
-1. **E-posta ekle(es)** kutusuna, brittasimon\@contoso.com biçiminde kullanıcının e-posta adresini girin ve sonra **İleri'yi**seçin.
+1. **E-posta addess 'Leri Ekle** kutusunda, kullanıcının e-posta adresini brittasıon\@contoso.com biçiminde girin ve ardından **İleri**' yi seçin.
 
-    ![HubSpot'taki Kullanıcı Oluştur bölümündeki e-posta adresi ekle(es) kutusu](./media/hubspot-tutorial/user3.png)
+    ![Hubın kullanıcıları Oluştur bölümünde e-posta adresi ekle (es) kutusu](./media/hubspot-tutorial/user3.png)
 
-1. Kullanıcıları **Oluştur** bölümünde, her sekmeyi seçin. Her sekmede, kullanıcı için ilgili seçenekleri ve izinleri ayarlayın. Ardından **İleri'yi**seçin.
+1. **Kullanıcıları oluştur** bölümünde her bir sekmeyi seçin. Her sekmede, Kullanıcı için ilgili seçenekleri ve izinleri ayarlayın. Ardından **İleri**' yi seçin.
 
-    ![HubSpot'taki kullanıcı oluştur bölümündeki sekmeler](./media/hubspot-tutorial/user4.png)
+    ![Hubın kullanıcı oluştur bölümündeki sekmeler](./media/hubspot-tutorial/user4.png)
 
-1. Daveti kullanıcıya göndermek için **Gönder'i**seçin.
+1. Daveti kullanıcıya göndermek için **Gönder**' i seçin.
 
-    ![HubSpot'ta Gönder seçeneği](./media/hubspot-tutorial/user5.png)
+    ![HubSpot 'daki gönder seçeneği](./media/hubspot-tutorial/user5.png)
 
     > [!NOTE]
-    > Kullanıcı daveti kabul ettikten sonra kullanıcı etkinleştirilir.
+    > Kullanıcı daveti kabul ettikten sonra Kullanıcı etkinleştirilir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, Azure AD tek oturum açma yapılandırmanızı Uygulamalarım portalını kullanarak test edeyim.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı My Apps portalını kullanarak test edersiniz.
 
-Tek oturum açtıktan sonra, Uygulamalarım portalında **HubSpot'u** seçtiğinizde otomatik olarak HubSpot'ta oturum açarsınız. Uygulamalarım portalı hakkında daha fazla bilgi [için, Uygulamalarım portalındaki Access'e](../user-help/my-apps-portal-end-user-access.md)bakın ve uygulamaları kullanın.
+Çoklu oturum açmayı ayarladıktan sonra, My Apps portalında **Hubnokta** ' ı seçtiğinizde, otomatik olarak hubset oturumunuz açılır. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [Apps Portalındaki uygulamalara erişme ve bunları kullanma](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinmek için şu makaleleri inceleyin:
+Daha fazla bilgi edinmek için şu makaleleri gözden geçirin:
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme yle ilgili öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory'deki uygulamalarda tek oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [SaaS uygulamalarını Azure Active Directory tümleştirme öğreticilerinin listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

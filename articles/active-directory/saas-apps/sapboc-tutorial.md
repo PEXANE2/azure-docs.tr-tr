@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: SAP Analytics Cloud ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve SAP Analytics Cloud arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: SAP Analytics bulutu ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve SAP Analytics bulutu arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,80 +17,80 @@ ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68347790"
 ---
-# <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Öğretici: SAP Analytics Cloud'u Azure Active Directory ile tümleştirin
+# <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Öğretici: SAP Analytics bulutunu Azure Active Directory tümleştirin
 
-Bu eğitimde, SAP Analytics Cloud'u Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. SAP Analytics Cloud'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide SAP Analytics bulutunu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. SAP Analytics bulutu 'nı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* SAP Analytics Cloud erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla SAP Analytics Cloud'da otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de SAP Analytics bulutuna erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla SAP Analytics bulutuna otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* SAP Analytics Cloud tek oturum açma (SSO) aboneliği ni etkinleştirdi.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* SAP Analytics bulutu çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* SAP Analytics **Cloud, SP** tarafından başlatılan SSO'ya destek verdi
+* SAP Analytics bulutu **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-sap-analytics-cloud-from-the-gallery"></a>Galeriden SAP Analytics Cloud ekleme
+## <a name="adding-sap-analytics-cloud-from-the-gallery"></a>Galeriden SAP Analytics bulutu ekleme
 
-SAP Analytics Cloud'un Azure AD'ye entegrasyonunu yapılandırmak için galeriden SAP Analytics Cloud'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+SAP Analytics bulutu 'nın Azure AD ile tümleştirilmesini yapılandırmak için, galerisinden SAP Analytics bulutu 'nı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **SAP Analytics Cloud** yazın.
-1. Sonuç panelinden **SAP Analytics Cloud'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **SAP Analytics bulutu** yazın.
+1. Sonuçlar panelinden **SAP Analytics bulutu** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B.Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO'nu SAP Analytics Cloud ile yapılandırın ve test edin. SSO'nun çalışması için, SAP Analytics Cloud'daki bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test KULLANıCıSı kullanarak SAP Analytics bulutu Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, SAP Analytics bulutu 'ndaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu SAP Analytics Cloud ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu SAP Analytics bulutu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-2. **[Sap Analytics Cloud SSO'yu uygulama](#configure-sap-analytics-cloud-sso)** tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
-3. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[SAP Analytics Cloud test kullanıcısını oluşturun](#create-sap-analytics-cloud-test-user)** - kullanıcının Azure AD gösterimine bağlı SAP Analytics Cloud'da B.Simon'ın bir muadili olması için.
-6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+2. **[SAP Analytics Cloud SSO 'Yu yapılandırma](#configure-sap-analytics-cloud-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+5. SAP Analytics **[Cloud test kullanıcısı oluşturun](#create-sap-analytics-cloud-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan SAP Analytics bulutu 'nda B. Simon 'a karşılık gelen bir.
+6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. AZURE [portalında,](https://portal.azure.com/) **SAP Analytics Cloud** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve Tek **oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **SAP Analytics bulutu** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     |-|-|
     | `https://<sub-domain>.sapanalytics.cloud/` |
     | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
     | |
     |-|-|
@@ -98,125 +98,125 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `<sub-domain>.sapanalytics.cloud` |
 
     > [!NOTE] 
-    > Bu URL'lerde değerler yalnızca gösteri içindir. Değerleri gerçek oturum açma URL'si ve tanımlayıcı URL'si ile güncelleştirin. Oturum açma URL'sini almak için [SAP Analytics Cloud Client destek ekibine](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)başvurun. Yönetici konsolundan SAP Analytics Cloud meta verilerini indirerek tanımlayıcı URL'sini alabilirsiniz. Bu daha sonra öğretici açıklanmıştır.
+    > Bu URL 'Lerdeki değerler yalnızca tanıtım amaçlıdır. Değerleri, gerçek oturum açma URL 'SI ve tanımlayıcı URL 'SI ile güncelleştirin. Oturum açma URL 'sini almak için [SAP Analytics bulut istemci desteği ekibine](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)başvurun. Yönetim konsolundan SAP Analytics bulut meta verilerini indirerek tanımlayıcı URL 'sini alabilirsiniz. Bu, öğreticide daha sonra açıklanmaktadır.
 
-4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federation **Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. SAP **Analytics Cloud'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **SAP Analytics bulutu ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-sap-analytics-cloud-sso"></a>SAP Analytics Cloud SSO'ya yapılandır
+### <a name="configure-sap-analytics-cloud-sso"></a>SAP Analytics Cloud SSO 'yu yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, SAP Analytics Cloud şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, SAP Analytics bulut şirket sitenizde yönetici olarak oturum açın.
 
-2. **Menü** > Sistem**Yönetimi'ni****System** > seçin.
+2. **Menü** > **System**sistem > **yönetimi**' ni seçin.
     
-    ![Menü'yü seçin, ardından Sistem'i ve ardından Yönetim](./media/sapboc-tutorial/config1.png)
+    ![Menü, sistem ve ardından Yönetim ' i seçin](./media/sapboc-tutorial/config1.png)
 
-3. **Güvenlik** **sekmesinde, Edit** (kalem) simgesini seçin.
+3. **Güvenlik** sekmesinde **Düzenle** (kalem) simgesini seçin.
     
-    ![Güvenlik sekmesinde, Edit simgesini seçin](./media/sapboc-tutorial/config2.png)  
+    ![Güvenlik sekmesinde, Düzenle simgesini seçin.](./media/sapboc-tutorial/config2.png)  
 
-4. **Kimlik Doğrulama Yöntemi**için **SAML Tek Oturum Açma (SSO) seçeneğini belirleyin.**
+4. **Kimlik doğrulama yöntemi**Için **SAML çoklu oturum açma (SSO)** seçeneğini belirleyin.
 
-    ![Kimlik doğrulama yöntemi için SAML Tek Oturum Açma'yı seçin](./media/sapboc-tutorial/config3.png)  
+    ![Kimlik doğrulama yöntemi için SAML çoklu oturum açma seçin](./media/sapboc-tutorial/config3.png)  
 
-5. Servis sağlayıcı meta verilerini (Adım 1) indirmek için **İndir'i**seçin. Meta veri dosyasında **entityID** değerini bulun ve kopyalayın. Azure portalında, **Temel SAML Yapılandırma** iletişim kutusunda, Değeri **Tanımlayıcı** kutusuna yapıştırın.
+5. Hizmet sağlayıcısı meta verilerini indirmek için (1. adım), **İndir**' i seçin. Meta veri dosyasında **EntityId** değerini bulup kopyalayın. Azure portal, **temel SAML yapılandırması** iletişim kutusunda, değeri **tanımlayıcı** kutusuna yapıştırın.
 
-    ![EntityID değerini kopyalayıp yapıştırın](./media/sapboc-tutorial/config4.png)  
+    ![EntityId değerini kopyalayıp yapıştırın](./media/sapboc-tutorial/config4.png)  
 
-6. Azure portalından indirdiğiniz dosyaya servis sağlayıcı meta verilerini (Adım 2) **Yüklemek Kimlik Sağlayıcısı meta verileri**altında yüklemek için **Yükleyin'i**seçin.  
+6. Azure portal indirdiğiniz dosyadaki hizmet sağlayıcısı meta verilerini (2. adım) karşıya yüklemek için, **kimlik sağlayıcısı meta verilerini karşıya yükle**altında **karşıya yükle**' yi seçin.  
 
-    ![Kimlik Sağlayıcısı Yükle meta verileri altında, Yükle'yi seçin](./media/sapboc-tutorial/config5.png)
+    ![Kimlik sağlayıcısı meta verilerini karşıya yükle altında Yükle ' yi seçin.](./media/sapboc-tutorial/config5.png)
 
-7. Kullanıcı **Özniteliği** listesinde, uygulamanız için kullanmak istediğiniz kullanıcı özniteliğini (Adım 3) seçin. Bu kullanıcı eşlemleri kimlik sağlayıcısına atfedebilir. Kullanıcının sayfasına özel bir öznitelik girmek için **Özel SAML Eşleme** seçeneğini kullanın. Veya, kullanıcı özniteliği olarak **E-posta** veya **USER ID'yi** seçebilirsiniz. Örneğimizde, Azure portalındaki **Kullanıcı Öznitelikleri & Talepler** bölümünde ki **kullanıcı ilkesi özniteliği** ile kullanıcı tanımlayıcı iddiasını eşlediğimiz için **E-posta'yı** seçtik. Bu, her başarılı SAML yanıtında SAP Analytics Cloud uygulamasına gönderilen benzersiz bir kullanıcı e-postası sağlar.
+7. **Kullanıcı özniteliği** listesinde, uygulamanız için kullanmak istediğiniz kullanıcı özniteliğini (3. adım) seçin. Bu kullanıcı özniteliği kimlik sağlayıcısına eşlenir. Kullanıcının sayfasına özel bir öznitelik girmek için **özel SAML eşleme** seçeneğini kullanın. Ya da Kullanıcı özniteliği olarak **e-posta** veya **Kullanıcı kimliği** ' ni seçebilirsiniz. Örneğimizde, Azure portal Kullanıcı **öznitelikleri & talepler** bölümündeki **userPrincipalName** özniteliğiyle Kullanıcı tanımlayıcısı talebini eşleştirdiğimiz için **e-posta** seçtik. Bu, her başarılı SAML yanıtında SAP Analytics bulut uygulamasına gönderilen benzersiz bir kullanıcı e-postası sağlar.
 
-    ![Kullanıcı Özniteliği ni seçin](./media/sapboc-tutorial/config6.png)
+    ![Kullanıcı özniteliği seçin](./media/sapboc-tutorial/config6.png)
 
-8. Hesabı kimlik sağlayıcısına (Adım 4) doğrulamak **için, Giriş Kimlik Belgesi (E-posta)** kutusunda kullanıcının e-posta adresini girin. Ardından, **Hesabı Doğrula'yı**seçin. Sistem kullanıcı hesabına oturum açma kimlik bilgileri ekler.
+8. Kimlik sağlayıcısıyla hesabı doğrulamak için (4. adım), **oturum açma kimlik bilgileri (e-posta)** kutusuna kullanıcının e-posta adresini girin. Ardından, **hesabı doğrula**' yı seçin. Sistem, Kullanıcı hesabına oturum açma kimlik bilgilerini ekler.
 
-    ![E-posta girin ve Hesabı Doğrula'yı seçin](./media/sapboc-tutorial/config7.png)
+    ![E-posta girin ve hesabı Doğrula ' yı seçin.](./media/sapboc-tutorial/config7.png)
 
 9. **Kaydet** simgesini seçin.
 
-    ![Simgeyi kaydet](./media/sapboc-tutorial/save.png)
+    ![Kaydet simgesi](./media/sapboc-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, SAP Analytics Cloud'a erişim sağlayarak B.Simon'ın Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, SAP Analytics bulutuna erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **SAP Analytics Cloud'u**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **SAP Analytics bulutu**' nı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-sap-analytics-cloud-test-user"></a>SAP Analytics Cloud test kullanıcısı oluşturun
+### <a name="create-sap-analytics-cloud-test-user"></a>SAP Analytics bulut testi Kullanıcı Oluştur
 
-Azure AD kullanıcılarının SAP Analytics Cloud'da oturum açabilmesi için SAP Analytics Cloud'da sağlanması gerekir. SAP Analytics Cloud'da sağlama el ile bir görevdir.
+SAP Analytics bulutu 'nda oturum açabilmeniz için önce Azure AD kullanıcıları 'nın SAP Analytics bulutu 'nda sağlanması gerekir. SAP Analytics bulutu 'nda sağlama, el ile gerçekleştirilen bir görevdir.
 
 Bir kullanıcı hesabı sağlamak için:
 
-1. SAP Analytics Cloud şirket sitenizde yönetici olarak oturum açın.
+1. SAP Analytics bulut şirket sitenizde yönetici olarak oturum açın.
 
-2. **Menü** > **Güvenlik** > **Kullanıcıları'nı**seçin.
+2. **Menü** > **Security**güvenliği > **kullanıcıları**' nı seçin.
 
     ![Çalışan Ekle](./media/sapboc-tutorial/user1.png)
 
-3. **Kullanıcılar** sayfasında, yeni kullanıcı ayrıntıları eklemek **+** için. 
+3. **Kullanıcılar** sayfasında, yeni kullanıcı ayrıntıları eklemek için öğesini seçin **+**. 
 
     ![Kullanıcı Ekle sayfası](./media/sapboc-tutorial/user4.png)
 
-    Ardından, aşağıdaki adımları tamamlayın:
+    Ardından, aşağıdaki adımları izleyin:
 
-    a. **KULLANICI KİmLİğİ** kutusuna, Kullanıcı kimliğini **B**gibi girin.
+    a. **Kullanıcı kimliği** kutusuna kullanıcının kullanıcı kimliğini ( **B**gibi) girin.
 
-    b. First **NAME** kutusuna, **B**gibi kullanıcının ilk adını girin.
+    b. **Ilk ad** kutusuna, **B**gibi, kullanıcının adını girin.
 
-    c. LAST **NAME** kutusuna, **Simon**gibi kullanıcının soyadını girin.
+    c. **Soyadı** kutusuna kullanıcının soyadı ( **Simon**gibi) girin.
 
-    d. DISPLAY **NAME** kutusuna, **B.Simon**gibi kullanıcının tam adını girin.
+    d. **Görünen ad** kutusuna, **B. Simon**gibi kullanıcının tam adını girin.
 
-    e. E-POSTA kutusuna, kullanıcının **e-posta** adresini `b.simon@contoso.com`girin, gibi.
+    e. **E-posta** kutusuna kullanıcının e-posta adresini girin, örneğin `b.simon@contoso.com`.
 
-    f. Rolleri **Seç** sayfasında, kullanıcı için uygun rolü seçin ve ardından **Tamam'ı**seçin.
+    f. **Rolleri seçin** sayfasında, Kullanıcı için uygun rolü seçin ve ardından **Tamam**' ı seçin.
 
       ![Rol seç](./media/sapboc-tutorial/user3.png)
 
     g. **Kaydet** simgesini seçin.
 
-### <a name="test-sso"></a>Test SSO 
+### <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki SAP Analytics Cloud döşemesini tıklattığınızda, SSO'yu kurduğunuz SAP Analytics Cloud'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde SAP Analytics bulutu kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız SAP Analytics bulutu 'nda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Bildirim Hub'larını kullanarak Xamarin.Android uygulamalarına anında iletme bildirimleri gönderme | Microsoft Dokümanlar
+title: Azure Notification Hubs kullanarak Xamarin. Android uygulamalarına anında iletme bildirimleri gönderin | Microsoft Docs
 description: Bu öğreticide, bir Xamarin Android uygulamasına anında iletme bildirimleri göndermek için Azure Notification Hubs'ın nasıl kullanılacağını öğrenirsiniz.
 author: sethmanheim
 manager: femila
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
 ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72387659"
 ---
-# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Öğretici: Bildirim Hub'larını kullanarak Xamarin.Android uygulamalarına anında iletme bildirimleri gönderme
+# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Öğretici: Notification Hubs kullanarak Xamarin. Android uygulamalarına anında iletme bildirimleri gönderme
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -42,7 +42,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği.** Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir Azure hesabı oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * Windows'da [Xamarin ile Visual Studio] veya OS X'te [Mac için Visual Studio].
 * Etkin Google hesabı
 
@@ -54,55 +54,55 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>Bildirim merkezi için GCM/FCM ayarlarını yapılandırın
+### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>Bildirim Hub 'ı için GCM/FCM ayarlarını yapılandırma
 
-1. Sol menüdeki **Ayarlar** bölümünde **Google (GCM/FCM)/** seçeneğini belirleyin.
-2. Google Firebase Konsolu'ndan belirttiğiniz **sunucu anahtarını** girin.
+1. Soldaki menüdeki **Ayarlar** bölümünde **Google (GCM/FCM)/** öğesini seçin.
+2. Google Firebase konsolundan not ettiğiniz **sunucu anahtarını** girin.
 3. Araç çubuğunda **Kaydet**’i seçin.
 
     ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayrıca, uygulamanızı anında iletme bildirimleri alması ve anında iletme bildirimlerini göndermesi amacıyla kaydetmenizi sağlayan bağlantı dizelerine sahipsiniz.
 
-## <a name="create-a-xamarinandroid-app-and-connect-it-to-notification-hub"></a>Bir Xamarin.Android uygulaması oluşturun ve bildirim merkezine bağlayın
+## <a name="create-a-xamarinandroid-app-and-connect-it-to-notification-hub"></a>Bir Xamarin. Android uygulaması oluşturma ve Bildirim Hub 'ına bağlama
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Visual Studio projesi oluşturma ve NuGet paketleri ekleme
 
 > [!NOTE]
-> Bu eğitimde belgelenen adımlar Visual Studio 2017 içindir. 
+> Bu öğreticide belgelenen adımlar Visual Studio 2017 içindir. 
 
-1. Visual Studio'da **Dosya** menüsünü açın, **Yeni'yi**seçin ve ardından **Project'i**seçin. Yeni **Proje** penceresinde aşağıdaki adımları yapın:
-    1. **Yüklü**genişletin , **Görsel C#** ve sonra **Android'i**tıklatın.
-    2. Listeden **Android Uygulaması'nı (Xamarin)** seçin.
+1. Visual Studio 'da **Dosya** menüsünü açın, **Yeni**' yi ve ardından **Proje**' yi seçin. **Yeni proje** penceresinde aşağıdaki adımları uygulayın:
+    1. **Yüklü**ve **Visual C#**' yi genişletin ve ardından **Android**' e tıklayın.
+    2. Listeden **Android uygulaması (Xamarin)** öğesini seçin.
     3. Proje için bir **ad** girin.
     4. Proje için bir **konum** seçin.
-    5. **Tamam'ı** seçin
+    5. **Tamam 'ı** seçin
 
         ![Yeni Proje iletişim kutusu](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
-2. Yeni **Android Uygulaması** iletişim kutusunda **Boş Uygulama'yı**seçin ve **Tamam'ı**seçin.
+2. **Yeni Android uygulaması** Iletişim kutusunda **boş uygulama**' yı seçin ve **Tamam**' ı seçin.
 
     ![Yeni Proje iletişim kutusu](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. **Çözüm Gezgini** penceresinde **Özellikler**’i genişletin ve **AndroidManifest.xml** dosyasına tıklayın. Paket adını, Google Firebase Console’da projenize Firebase Cloud Messaging eklerken girdiğiniz paket adıyla eşleşecek şekilde güncelleştirin.
 
     ![GCM’de paket adı](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
-4. Proje için hedef Android sürümünü aşağıdaki adımları izleyerek **Android 9.0 (pasta)** olarak ayarlayın: 
-    1. Projenizi sağ tıklatın ve **Özellikler'i**seçin. 
-    1. Android **sürümünü kullanarak Derleme için: (Hedef çerçeve)** alanı, **Android 9.0 (Pasta)** seçin. 
-    1. Hedef çerçeveyi değiştirmeye devam etmek için ileti kutusunda **Evet'i** seçin.
-1. Aşağıdaki adımları izleyerek projeye gerekli NuGet paketlerini ekleyin:
+4. Projenin hedef Android sürümünü şu adımları izleyerek **Android 9,0 (pasta)** olarak ayarlayın: 
+    1. Projenize sağ tıklayın ve **Özellikler**' i seçin. 
+    1. **Android sürümünü kullanarak derle: (hedef çerçeve)** alanı için **Android 9,0 (pasta)** öğesini seçin. 
+    1. Hedef Framework 'ü değiştirmeye devam etmek için ileti kutusunda **Evet** ' i seçin.
+1. Aşağıdaki adımları izleyerek, gerekli NuGet paketlerini projeye ekleyin:
     1. Projeye sağ tıklayın ve **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
-    1. **Yüklü** sekmesine geçin, **Xamarin.Android.Support.Design'ı**seçin ve paketi en son sürüme güncellemek için sağ bölmede **Güncelleştir'i** seçin.
-    1. **Gözat** sekmesine geçin. **Xamarin.GooglePlayServices.Base'i**arayın. Sonuç listesinden **Xamarin.GooglePlayServices.Base** öğesini seçin. Ardından **Yükle'yi**seçin.
+    1. **Yüklü** sekmesine geçiş yapın, **Xamarin. Android. support. Design**' ı seçin ve sağ bölmedeki **Güncelleştir** ' i seçerek paketi en son sürüme güncelleştirin.
+    1. **Tarama** sekmesine geçin. **Xamarin. GooglePlayServices. Base**için arama yapın. Sonuç listesinden **Xamarin.GooglePlayServices.Base** öğesini seçin. Ardından, **Install**' ı seçin.
 
         ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
-    6. **NuGet Package Manager** penceresinde **Xamarin.Firebase.Messaging** öğesini arayın. Sonuç listesinden **Xamarin.Firebase.Messaging** öğesini seçin. Ardından **Yükle'yi**seçin.
-    7. Şimdi **Xamarin.Azure.NotificationHubs.Android** araması yapın. Sonuç listesinden **Xamarin.Azure.NotificationHubs.Android** öğesini seçin. Ardından **Yükle'yi**seçin.
+    6. **NuGet Package Manager** penceresinde **Xamarin.Firebase.Messaging** öğesini arayın. Sonuç listesinden **Xamarin.Firebase.Messaging** öğesini seçin. Ardından, **Install**' ı seçin.
+    7. Şimdi **Xamarin.Azure.NotificationHubs.Android** araması yapın. Sonuç listesinden **Xamarin.Azure.NotificationHubs.Android** öğesini seçin. Ardından, **Install**' ı seçin.
 
 ### <a name="add-the-google-services-json-file"></a>Google Services JSON Dosyasını ekleme
 
-1. Google `google-services.json` Firebase Console'dan indirdiğiniz dosyayı proje klasörüne kopyalayın.
+1. Google Firebase konsolundan indirdiğiniz `google-services.json` dosyayı proje klasörüne kopyalayın.
 2. Projeye `google-services.json` ekleyin.
-3. Çözüm `google-services.json` **Gezgini** penceresinden seçin.
+3. Çözüm Gezgini `google-services.json` penceresinde öğesini **Solution Explorer** seçin.
 4. **Özellikler** bölmesinde, Derleme Eylemini **GoogleServicesJson** olarak ayarlayın. **GoogleServicesJson** öğesini görmezseniz, Visual Studio’yu kapatın, yeniden başlatın, projeyi yeniden açın ve yeniden deneyin.
 
     ![GoogleServicesJson derleme eylemi](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
@@ -111,7 +111,7 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Firebase Cloud Messaging ile kaydolma
 
-1. Dosyayı `AndroidManifest.xml` açın ve öğeye `<receiver>` `<application>` aşağıdaki öğeleri ekleyin:
+1. `AndroidManifest.xml` Dosyasını açın ve aşağıdaki `<receiver>` öğeleri `<application>` öğesine ekleyin:
 
     ```xml
     <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -124,7 +124,7 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
     </receiver>
     ```
 
-2. **Uygulama öğesinden önce** aşağıdaki ifadeleri ekleyin.
+2. **Uygulama öğesinden önce** aşağıdaki deyimlerini ekleyin.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -135,10 +135,10 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
 
 3. Android uygulamanız ve bildirim hub'ınız için aşağıdaki bilgileri toplayın:
 
-   * **Dinleme bağlantı dizesi**: [Azure portalındaki] panoda **Bağlantı dizelerini görüntüle**'yi seçin. Bu `DefaultListenSharedAccessSignature` değer için bağlantı dizesini kopyalayın.
+   * **Dinleme bağlantı dizesi**: [Azure portalındaki] panoda **Bağlantı dizelerini görüntüle**'yi seçin. Bu değer `DefaultListenSharedAccessSignature` için bağlantı dizesini kopyalayın.
    * **Hub adı**: [Azure portalındaki] hub’ınızın adı. Örneğin, *mynotificationhub2*.
-4. Çözüm **Gezgini** penceresinde, **projenizi**sağ tıklatın , **Ekle'yi**seçin ve ardından **Sınıf'ı**seçin.
-5. Xamarin projeniz için bir `Constants.cs` sınıf oluşturun ve sınıfta aşağıdaki sabit değerleri tanımlayın. Yer tutucuları değerleriniz ile değiştirin.
+4. **Çözüm Gezgini** penceresinde **projenize**sağ tıklayın, **Ekle**' yi ve ardından **sınıf**' ı seçin.
+5. Xamarin projeniz `Constants.cs` için bir sınıf oluşturun ve sınıfında aşağıdaki sabit değerleri tanımlayın. Yer tutucuları değerleriniz ile değiştirin.
 
     ```csharp
     public static class Constants
@@ -148,21 +148,21 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
     }
     ```
 
-6. Aşağıdaki ifadeleri kullanarak `MainActivity.cs`ekleyin:
+6. Aşağıdaki using deyimlerini öğesine `MainActivity.cs`ekleyin:
 
     ```csharp
     using Android.Util;
     using Android.Gms.Common;
     ```
 
-7. MainActivity sınıfına aşağıdaki özellikleri ekleyin. TAG değişkeni, uygulama çalışırken bir uyarı iletişim kutusunu göstermek için kullanılır:
+7. Aşağıdaki özellikleri MainActivity sınıfına ekleyin. ETIKET değişkeni, uygulama çalışırken bir uyarı iletişim kutusu göstermek için kullanılacaktır:
 
     ```csharp
     public const string TAG = "MainActivity";
     internal static readonly string CHANNEL_ID = "my_notification_channel";
     ```
 
-8. MainActivity sınıfına aşağıdaki yöntemi ekleyin. **Google Play Hizmetleri'nin** cihazda kullanılabilir olup olmadığını denetler.
+8. Aşağıdaki yöntemi MainActivity sınıfına ekleyin. **Google Play hizmetleri** cihazda kullanılabilir olup olmadığını denetler.
 
     ```csharp
     public bool IsPlayServicesAvailable()
@@ -185,7 +185,7 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
     }
     ```
 
-9. Bildirim kanalı oluşturan MainActivity sınıfına aşağıdaki yöntemi ekleyin.
+9. Aşağıdaki yöntemi bir bildirim kanalı oluşturan MainActivity sınıfına ekleyin.
 
     ```csharp
     private void CreateNotificationChannel()
@@ -210,7 +210,7 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
     }
     ```
 
-10. In `MainActivity.cs`, `OnCreate` sonra `base.OnCreate(savedInstanceState)`aşağıdaki kodu ekleyin:
+10. İçinde `MainActivity.cs`, `OnCreate` sonrasında `base.OnCreate(savedInstanceState)`aşağıdaki kodu ekleyin:
 
     ```csharp
     if (Intent.Extras != null)
@@ -229,8 +229,8 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
     CreateNotificationChannel();
     ```
 
-15. Projenize adlandırılmış `MyFirebaseMessagingService` bir sınıf ekleyin. 
-16. Aşağıdaki ifadeleri kullanarak `MyFirebaseMessagingService.cs`ekleyin.
+15. Projenize adlı `MyFirebaseMessagingService` bir sınıf ekleyin. 
+16. Aşağıdaki using deyimlerini öğesine `MyFirebaseMessagingService.cs`ekleyin.
 
     ```csharp
     using Android.Util;
@@ -239,7 +239,7 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
     using WindowsAzure.Messaging;
     ```
 
-17. Sınıf bildirgenizin üzerine aşağıdakileri ekleyin `FirebaseMessagingService`ve sınıfınızın aşağıdakilerden devralsın:
+17. Aşağıdaki ' u sınıf bildirimin üzerine ekleyin ve sınıfınızın şuradan `FirebaseMessagingService`devralmasını sağlayın:
 
     ```csharp
     [Service]
@@ -248,7 +248,7 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. Alınan iletileri `MyFirebaseMessagingService.cs` işlemek için aşağıdaki kodu ekleyin. 
+18. Alınan iletileri işlemek `MyFirebaseMessagingService.cs` için aşağıdaki kodu ekleyin. 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";
@@ -292,7 +292,7 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
         }
     ```
 
-19. FCM kayıt belirteci almak ve Bildirim Hub'ları örneğine (hub) göndermek için MyFirebaseMessagingService sınıfına aşağıdaki yöntemleri ekleyin. 
+19. FCM kayıt belirtecini almak ve Notification Hubs örneğine (hub) göndermek için, MyFirebaseMessagingService sınıfına aşağıdaki yöntemleri ekleyin. 
 
     ```csharp
         public override void OnNewToken(string token)
@@ -322,7 +322,7 @@ Bildirim hub'ınız FCM ile birlikte çalışmak üzere yapılandırıldı. Ayr�
 
 ![Azure portalı - Test Gönderimi](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
-Anında iletme bildirimleri normalde, uyumlu bir kitaplık aracılığıyla Mobile Services veya ASP.NET gibi bir arka uç hizmetinde gönderilir. Arka uç için bir kitaplık yoksa, bildirim iletileri göndermek için doğrudan REST API'yi de kullanabilirsiniz.
+Anında iletme bildirimleri normalde, uyumlu bir kitaplık aracılığıyla Mobile Services veya ASP.NET gibi bir arka uç hizmetinde gönderilir. Arka uçta bir kitaplık yoksa, bildirim iletilerini göndermek için doğrudan REST API de kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -359,9 +359,9 @@ Bu öğreticide, arka uca kayıtlı olan tüm Android cihazlarınıza yayın bil
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
-[Xamarin ile Görsel Stüdyo]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
+[Xamarin ile Visual Studio]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Mac için Visual Studio]: https://www.visualstudio.com/vs/visual-studio-mac/
-[Azure portalında]: https://portal.azure.com/
+[Azure portalı]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx

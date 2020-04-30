@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: EAB Ile Azure Active Directory tek oturum açma (SSO) entegrasyonu Stratejik Bakımda Gezinme | Microsoft Dokümanlar'
-description: Azure Active Directory ve EAB Arasında Tek Oturum Açma'yı nasıl yapılandıracak larını öğrenin Stratejik Bakımda Gezinme.
+title: "Öğretici Azure Active Directory: EAB 'de çoklu oturum açma (SSO) Tümleştirmesi stratejik Bakımı | Microsoft Docs"
+description: Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin ve bu da stratejik bir Ilgi gezin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,132 +17,132 @@ ms.date: 08/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1185217d6b12d3efd5dedc9faf903f1b365481db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70014072"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-strategic-care"></a>Öğretici: EAB Ile Azure Active Directory tek oturum açma (SSO) entegrasyonu Stratejik Bakımda Gezinme
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-strategic-care"></a>Öğretici Azure Active Directory: EAB 'ye gitmek için çoklu oturum açma (SSO) Tümleştirmesi stratejik bakım
 
-Bu eğitimde, EAB'nin Stratejik Bakımda Gezinme'yi Azure Etkin Dizini (Azure AD) ile nasıl entegre edeceğinizi öğreneceksiniz. EAB Gezinme Stratejik Bakım'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Azure Active Directory (Azure AD) ile EAB 'ye yönelik bir stratejik eğitim ile tümleştirmeyi öğreneceksiniz. EAB 'yi tümleştirdiğinizde Azure AD ile ilgili stratejik bir Ilgiyle şunları yapabilirsiniz:
 
-* EAB'nin Stratejik Bakımda Gezinme'sine erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla EAB'de Otomatik Olarak Oturum Aç'a kaydolmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de EAB 'ye erişimi olan denetim stratejik bir şekilde gezinmelidir.
+* Kullanıcılarınızın Azure AD hesaplarıyla stratejik bir şekilde gezinmelerini sağlamak için kullanıcılarınızın otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* EAB Navigate Strategic Care tek oturum açma (SSO) aboneliği etkin.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* EAB, stratejik bakım çoklu oturum açma (SSO) etkin aboneliğine gider.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* EAB Navigate Stratejik Bakım **SP** başlatılan SSO destekler
+* EAB, stratejik bakım gezin **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-eab-navigate-strategic-care-from-the-gallery"></a>Galeriden EAB Gezinme Stratejik Bakım ekleme
+## <a name="adding-eab-navigate-strategic-care-from-the-gallery"></a>EAB 'yi ekleme Galerisi 'nden stratejik bakım gezin
 
-EAB Navigate Strategic Care'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Yönetilen SaaS uygulamaları listenize EAB Navigate Stratejik Bakım'ı eklemeniz gerekir.
+EAB 'nin bir kısmını Azure AD 'ye ekleme hakkında daha fazla şekilde yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize EAB 'ye yönelik bir stratejik bakım ekleyin.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Stratejik Bakımda Gezinme'yi** yazın.
-1. Sonuçlar panelinden **Stratejik Bakım'da Gezinme'yi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, ara kutusuna **EAB** ' yi stratejik olarak gezin yazın.
+1. Sonuçlar panelinden **stratejik bakım gezin** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate-strategic-care"></a>EAB Stratejik Bakımda Gezinmek için Azure AD oturum açma işlemlerini yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate-strategic-care"></a>Azure AD 'ye yönelik çoklu oturum açmayı yapılandırma ve test etme stratejik bakım
 
-Azure AD SSO'nu EAB Ile **B.Simon**adlı bir test kullanıcısı kullanarak Stratejik Bakımda gezinme ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile EAB'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO 'yu yapılandırın ve test edin EAB, **B. Simon**adlı bir test kullanıcısı kullanarak stratejik bir sorun gider. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve EAB 'deki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu EAB Gezinme Stratejik Bakım ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu yapılandırmak ve test etmek için EAB ile ilgili ayrıntılı gezinin aşağıdaki yapı taşlarını izleyin:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[EAB Navigate Strategic Care SSO'yu yapılandırır](#configure-eab-navigate-strategic-care-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    1. **[EAB Navigate Strategic Care test kullanıcısını oluşturun](#create-eab-navigate-strategic-care-test-user)** - EAB'deki B.Simon'ın, kullanıcının Azure AD temsiline bağlı Stratejik Bakımda Gezinme'deki bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[EAB ' nin stratejik bakım SSO 'su](#configure-eab-navigate-strategic-care-sso)** ' ni yapılandırın.
+    1. **[EAB 'ye gidebileceğiniz stratejik bakım test kullanıcısına](#create-eab-navigate-strategic-care-test-user)** bir sahip olmak için b. Simon 'ıN Azure AD gösterimine bağlı olan stratejik bir ilginin bulunduğu
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **EAB'nin Stratejik Bakım** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **EAB 'de stratejik bakım 'a git** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<CUSTOMERURL>.eab.com`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<CUSTOMERURL>.eab.com`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri gerçek Oturum Açma URL'si ile güncelleştirin. Değeri almak için [EAB'nin Stratejik Bakım İstemci destek ekibine](mailto:tech@gradesfirst.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değer almak için [EAB 'ye giderek stratejik bakım istemci destek ekibine](mailto:tech@gradesfirst.com) ulaşın. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML ile Tek Oturum** Açma sayfasında, **SAML İmza Sertifikası** bölümünde, App Federation **Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde Kopyala düğmesine tıklayarak **uygulama Federasyon meta verileri URL 'sini** kopyalayın ve bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın EAB'nin Stratejik Bakımda Gezinme'ye erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, B. Simon, EAB 'ye erişim sağlayarak stratejik bir şekilde oturum açmaya yönelik olarak Azure çoklu oturum açma özelliğini etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde, **EAB'nin Stratejik Bakımda Gezinme'yi**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **EAB stratejik bakım 'A git**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-eab-navigate-strategic-care-sso"></a>EAB'yi Yapılandırın Stratejik Bakım SSO'su gezin
+## <a name="configure-eab-navigate-strategic-care-sso"></a>EAB 'yi gezin stratejik bakım SSO 'SU yapılandırma
 
-**EAB Navigate Strategic Care** tarafında tek oturum açma yapılandırmak için, [EAB Navigate Stratejik Bakım destek ekibine](mailto:tech@gradesfirst.com) **App Federation Metadata Url'sini** göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+EAB 'de çoklu oturum açma 'yı yapılandırmak için, **stratejik bakım** ' a gidin, takım ekibi **meta veri URL 'sini** [EAB 'Nin stratejik bakım destek ekibine gitmeniz](mailto:tech@gradesfirst.com)gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-eab-navigate-strategic-care-test-user"></a>EAB'yi Stratejik Bakım testi kullanıcısında gezinme oluşturma
+### <a name="create-eab-navigate-strategic-care-test-user"></a>EAB 'ye gitme stratejik bakım test kullanıcısı oluşturma
 
-Bu bölümde, EAB'de Stratejik Bakımda Gezinme'de B.Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları EAB'nin Stratejik Bakımda Gezinme platformuna eklemek için [EAB'de Gezinme Stratejik Bakım destek ekibiyle](mailto:tech@gradesfirst.com) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, EAB 'de B. Simon adlı bir Kullanıcı oluşturursunuz. EAB ile çalışma stratejik bakım [destek ekibi](mailto:tech@gradesfirst.com) ' ne giderek Kullanıcı ekleme stratejik bakım platformunda kullanıcıları ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki EAB Navigate Stratejik Bakım döşemesini tıklattığınızda, SSO'yu kurduğunuz EAB Navigate Stratejik Bakım'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde EAB 'ye git ' i tıklattığınızda, SSO 'yu ayarladığınız EAB 'nin stratejik bakım bölümüne otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile EAB'nin Stratejik Bakımda Gezinmeyi deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile stratejik bir şekilde gezinmenize çalışın](https://aad.portal.azure.com/)
 

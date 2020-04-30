@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72386314"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak Android cihazlara anında Iletme bildirimleri gönderme
@@ -53,7 +53,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Uygulamanızı bildirim hub'ına bağlama
 > * Uygulamayı test edin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
@@ -746,4 +746,4 @@ Bu öğreticide, arka uca kayıtlı olan tüm Android cihazlarınıza yayın bil
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com
